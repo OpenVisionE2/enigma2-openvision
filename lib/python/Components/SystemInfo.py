@@ -153,3 +153,4 @@ SystemInfo["ArchIsARM"] = SystemInfo["HiSilicon"] or getBoxBrand() in ("dinobot"
 SystemInfo["SeekStatePlay"] = False
 SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False
+SystemInfo["LEDButtons"] = getBoxType() == "vuultimo"

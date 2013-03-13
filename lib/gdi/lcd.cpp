@@ -1046,6 +1046,29 @@ int eDBoxLCD::setLCDBrightness(int brightness)
 	return(0);
 }
 
+int eDBoxLCD::setLED(int value, int option)
+{
+	switch(option)
+	{
+		case LED_BRIGHTNESS:
+			eDebug("setLEDNormalState %d", value);
+			if(ioctl(lcdfd, LED_IOCTL_BRIGHTNESS_NORMAL, (unsigned char)value) < 0)
+				eDebug("[LED] can't set led brightness");
+			break;
+		case LED_DEEPSTANDBY:
+			eDebug("setLEDBlinkingTime %d", value);
+			if(ioctl(lcdfd, LED_IOCTL_BRIGHTNESS_DEEPSTANDBY, (unsigned char)value) < 0)
+				eDebug("[LED] can't set led deep standby");
+			break;
+		case LED_BLINKINGTIME:
+			eDebug("setLEDBlinkingTime %d", value);
+			if(ioctl(lcdfd, LED_IOCTL_BLINKING_TIME, (unsigned char)value) < 0)
+				eDebug("[LED] can't set led blinking time");
+			break;
+	}
+	return(0);
+}
+
 eDBoxLCD::~eDBoxLCD()
 {
 	if (lcdfd >= 0)

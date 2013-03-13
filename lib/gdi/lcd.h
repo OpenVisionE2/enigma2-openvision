@@ -11,6 +11,13 @@
 #define LCD_BRIGHTNESS_MIN 0
 #define LCD_BRIGHTNESS_MAX 255
 
+enum op { LED_BRIGHTNESS = 0, LED_DEEPSTANDBY, LED_BLINKINGTIME };
+
+#define LED_IOCTL_BRIGHTNESS_NORMAL 0X10
+#define LED_IOCTL_BRIGHTNESS_DEEPSTANDBY 0X11
+#define LED_IOCTL_BLINKING_TIME 0X12
+#define LED_IOCTL_SET_DEFAULT 0x13
+
 class eLCD
 {
 #ifdef SWIG
@@ -70,6 +77,7 @@ public:
 #endif
 	int setLCDContrast(int contrast);
 	int setLCDBrightness(int brightness);
+	int setLED(int value, int option);
 	void setInverted( unsigned char );
 	void setFlipped(bool);
 	void dumpLCD(bool);
