@@ -16,6 +16,8 @@ class RemainingToText(Poll, Converter, object):
 	VFD_NO_SECONDS = 7
 	VFD_IN_SECONDS = 8
 	VFD_PERCENTAGE = 9
+	PROGRESS = 10
+	WITH_SECONDSPROGRESS = 11
 
 	def __init__(self, type):
 		Poll.__init__(self)
@@ -52,6 +54,14 @@ class RemainingToText(Poll, Converter, object):
 			self.poll_enabled = True
 		elif type == "VFDPercentage":
 			self.type = self.VFD_PERCENTAGE
+			self.poll_interval = 60*1000
+			self.poll_enabled = True
+		elif type == "Progress":
+			self.type = self.PROGRESS
+			self.poll_interval = 60*1000
+			self.poll_enabled = True
+		elif type == "WithSecondsProgress":
+			self.type = self.WITH_SECONDSPROGRESS
 			self.poll_interval = 60*1000
 			self.poll_enabled = True
 		else:
@@ -195,7 +205,7 @@ class RemainingToText(Poll, Converter, object):
 							return sign_r + ngettext("%d Min", "%d Mins", (r/60)) % (r/60)
 					else:
 						return ngettext("%d Min", "%d Mins", (l/60)) % (l/60)
-				elif self.type == self.WITH_SECONDS:
+				elif self.type == self.WITH_SECONDS or self.type == self.WITH_SECONDSPROGRESS:
 					if remaining is not None:
 						if config.usage.swap_time_remaining_on_osd.value == "1":  # Elapsed
 							return sign_p + "%d:%02d:%02d" % (p/3600, p%3600/60, p%60)
@@ -207,7 +217,7 @@ class RemainingToText(Poll, Converter, object):
 							return sign_r + "%d:%02d:%02d" % (r/3600, r%3600/60, r%60)
 					else:
 						return sign_l + "%d:%02d:%02d" % (l/3600, l%3600/60, l%60)
-				elif self.type == self.NO_SECONDS:
+				elif self.type == self.NO_SECONDS or self.type == self.PROGRESS:
 					if remaining is not None:
 						if config.usage.swap_time_remaining_on_osd.value == "1":  # Elapsed
 							return sign_p + "%d:%02d" % (p/3600, p%3600/60)
