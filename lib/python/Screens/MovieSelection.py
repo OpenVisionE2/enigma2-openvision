@@ -61,6 +61,7 @@ config.movielist.settings_per_directory = ConfigYesNo(default=True)
 config.movielist.perm_sort_changes = ConfigYesNo(default=True)
 config.movielist.root = ConfigSelection(default="/media", choices=["/", "/media", "/media/hdd", "/media/hdd/movie", "/media/usb", "/media/usb/movie"])
 config.movielist.hide_extensions = ConfigYesNo(default=False)
+config.movielist.hide_images = ConfigYesNo(default=True)
 config.movielist.stop_service = ConfigYesNo(default=True)
 config.movielist.add_bookmark = ConfigYesNo(default=True)
 config.movielist.show_underlines = ConfigYesNo(default=False)
@@ -300,6 +301,7 @@ class MovieBrowserConfiguration(ConfigListScreen, Screen):
 		self.list.append(getConfigListEntry(_("Play audio in background"), config.movielist.play_audio_internal, _("Keeps the movie list open whilst playing audio files.")))
 		self.list.append(getConfigListEntry(_("Root directory"), config.movielist.root, _("Sets the root directory of movie list, to remove the '..' from being shown in that folder.")))
 		self.list.append(getConfigListEntry(_("Hide known extensions"), config.movielist.hide_extensions, _("Allows you to hide the extensions of known file types.")))
+		self.list.append(getConfigListEntry(_("Show image items"), config.movielist.hide_images, _("Allows you to show images.")))
 		self.list.append(getConfigListEntry(_("Automatic bookmarks"), config.movielist.add_bookmark, _("If enabled, bookmarks will be updated with the new location when you move or copy a recording.")))
 		self.list.append(getConfigListEntry(_("Show underline characters in filenames"), config.movielist.show_underlines, _("If disabled, underline characters in file and directory names are not shown and are replaced with spaces.")))
 		self.list.append(getConfigListEntry(_("Show live tv when movie stopped"), config.movielist.show_live_tv_in_movielist, _("When set the PIG will return to live after a movie has stopped playing.")))
@@ -334,6 +336,7 @@ class MovieBrowserConfiguration(ConfigListScreen, Screen):
 			config.movielist.description.save()
 			config.movielist.useslim.save()
 			config.usage.on_movie_eof.save()
+			config.movielist.hide_images.save()
 		self.close(True)
 
 	def cancel(self):
@@ -1544,7 +1547,10 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 	def setCurrentRef(self, path):
 		self.current_ref = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + path)
 		# Magic: this sets extra things to show
-		self.current_ref.setName('16384:jpg 16384:png 16384:gif 16384:bmp')
+		if config.movielist.hide_images.value:
+			self.current_ref.setName('16384:jpg 16384:png 16384:gif 16384:bmp')
+		else:
+			self.current_ref.setName('16384:png')
 
 	def reloadList(self, sel = None, home = False):
 		self.reload_sel = sel
