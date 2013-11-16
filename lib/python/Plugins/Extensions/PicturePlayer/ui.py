@@ -23,7 +23,7 @@ def getScale():
 
 
 config.pic = ConfigSubsection()
-config.pic.framesize = ConfigInteger(default=30, limits=(5, 99))
+config.pic.framesize = ConfigInteger(default=30, limits=(0, 99))
 config.pic.slidetime = ConfigInteger(default=10, limits=(1, 60))
 config.pic.resize = ConfigSelection(default="1", choices=[("0", _("simple")), ("1", _("better"))])
 config.pic.cache = ConfigYesNo(default=True)
@@ -62,6 +62,8 @@ class picshow(Screen):
 			"menu": self.KeyMenu,
 			"ok": self.KeyOk
 		}, -1)
+
+		self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
 
 		self["key_red"] = StaticText(_("Close"))
 		self["key_green"] = StaticText(_("Thumbnails"))
@@ -145,6 +147,7 @@ class picshow(Screen):
 			config.pic.lastDir.value = self.filelist.getCurrentDirectory()
 
 		config.pic.save()
+		self.session.nav.playService(self.oldService)
 		self.close()
 
 #------------------------------------------------------------------------------------------
@@ -544,7 +547,9 @@ class Pic_Full_View(Screen):
 		self.picload.setPara([self["pic"].instance.size().width(), self["pic"].instance.size().height(), sc[0], sc[1], 0, int(config.pic.resize.value), self.bgcolor, config.pic.autoOrientation.value])
 
 	def ShowPicture(self):
+		self.session.nav.stopService()
 		if self.shownow and len(self.currPic):
+
 			self.shownow = False
 			if config.pic.infoline.value:
 				self["file"].setText(self.currPic[0])
