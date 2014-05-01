@@ -69,6 +69,10 @@ while : ; do
 
 	# start enigma
 	sync
+
+	(sleep 1; echo "enigma2 is the main application so adjust oom score!"; PID=$(pidof enigma2); \
+		[ -e /proc/$PID/oom_score_adj ] && echo "-999" > /proc/$PID/oom_score_adj || echo "-17" > /proc/$PID/oom_adj;) &
+
 	if [ $DEBUG_LVL -lt 4 ]; then
 		LD_PRELOAD=$LIBS ENIGMA_DEBUG_LVL=$DEBUG_LVL @bindir@/enigma2
 	else
