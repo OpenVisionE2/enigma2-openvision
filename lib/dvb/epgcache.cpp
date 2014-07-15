@@ -30,11 +30,18 @@
 #include <Python.h>
 
 /* Interval between "garbage collect" cycles */
-#define CLEAN_INTERVAL 60000    //  1 min
+#define CLEAN_INTERVAL (60 * 1000)       //  1 minute
+#ifdef AUSTRALIA
 /* Restart EPG data capture */
-#define UPDATE_INTERVAL 3600000  // 60 min
+#define UPDATE_INTERVAL (5 * 60 * 1000)  // Australian EIT EPG is very dynamic, updates can come less than a minute apart
 /* Time to wait after tuning in before EPG data capturing starts */
-#define ZAP_DELAY 2000          // 2 sec
+#define ZAP_DELAY (500)                  // 1/2 second (want to grab EPG data before timeshift starts)
+#else
+/* Restart EPG data capture */
+#define UPDATE_INTERVAL (60 * 60 * 1000)  // 60 minutes
+/* Time to wait after tuning in before EPG data capturing starts */
+#define ZAP_DELAY (2 * 1000)          // 2 seconds
+#endif
 
 struct DescriptorPair
 {
@@ -1676,6 +1683,11 @@ void eEPGCache::channel_data::finishEPG()
 	}
 }
 
+/**
+ * @brief Entry point for the EPG update timer
+ *
+ * @return void
+ */
 void eEPGCache::channel_data::startEPG()
 {
 	eDebug("[eEPGCache] start caching events(%ld)", ::time(0));
@@ -2467,7 +2479,7 @@ void eEPGCache::channel_data::startChannel()
 	if (update < ZAP_DELAY)
 		update = ZAP_DELAY;
 
-	zapTimer->start(update, 1);
+	zapTimer->start(update, true);
 	if (update >= 60000)
 		eDebug("[eEPGCache] next update in %i min", update/60000);
 	else if (update >= 1000)

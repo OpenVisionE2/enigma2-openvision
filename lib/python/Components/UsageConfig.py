@@ -15,6 +15,7 @@ import locale
 import skin
 from boxbranding import getDisplayType, getMachineBuild, getHaveWOL, getSoCFamily
 
+model = getBoxType()
 displaytype = getDisplayType()
 
 def InitUsageConfig():
@@ -101,7 +102,10 @@ def InitUsageConfig():
 	config.usage.show_spinner = ConfigYesNo(default = True)
 	config.usage.menu_sort_weight = ConfigDictionarySet(default = { "mainmenu" : {"submenu" : {} }})
 	config.usage.menu_sort_mode = ConfigSelection(default = "default", choices = [("a_z", _("alphabetical")), ("default", _("Default")), ("user", _("user defined")), ("user_hidden", _("user defined hidden"))])
-	config.usage.show_genre_info = ConfigYesNo(default=False)
+	if model.startswith("bey"):
+		config.usage.show_genre_info = ConfigYesNo(default=True)
+	else:
+		config.usage.show_genre_info = ConfigYesNo(default=False)	
 	config.usage.menu_show_numbers = ConfigSelection(default = "no", choices = [("no", _("no")), ("menu&plugins", _("in menu and plugins")), ("menu", _("in menu only")), ("plugins", _("in plugins only"))])
 	config.usage.showScreenPath = ConfigSelection(default="small", choices=[("off", _("Disabled")), ("small", _("Small")), ("large", _("Large"))])
 	config.usage.enable_tt_caching = ConfigYesNo(default = True)
@@ -855,8 +859,12 @@ def InitUsageConfig():
 		eEPGCache.getInstance().setEpgmaxdays(config.epg.maxdays.getValue())
 	config.epg.maxdays.addNotifier(EpgmaxdaysChanged)
 
-	config.misc.epgratingcountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
-	config.misc.epggenrecountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
+	if model.startswith("bey"):
+		config.misc.epgratingcountry = ConfigSelection(default="AUS", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
+		config.misc.epggenrecountry = ConfigSelection(default="AUS", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
+	else:
+		config.misc.epgratingcountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
+		config.misc.epggenrecountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
 
 	def EpgSettingsChanged(configElement):
 		mask = 0xffffffff
@@ -1085,7 +1093,7 @@ def InitUsageConfig():
 		if SystemInfo["HasColorspaceSimple"]:
 			config.av.hdmicolorspace = ConfigSelection(default = "Edid(Auto)", choices={"Edid(Auto)": _("Auto"), "Hdmi_Rgb": _("RGB"), "444": _("YCbCr444"), "422": _("YCbCr422"), "420": _("YCbCr420")})
 		else:
-			if getBoxType() == "vuzero4k" or getMachineBuild() == "dm4kgen":
+			if model == "vuzero4k" or getMachineBuild() == "dm4kgen":
 				config.av.hdmicolorspace = ConfigSelection(choices={
 						"Edid(Auto)": _("Auto"),
 						"Hdmi_Rgb": _("RGB"),

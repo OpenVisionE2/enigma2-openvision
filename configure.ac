@@ -533,6 +533,10 @@ if test "$BOXTYPE" == "et1x000" -o "$BOXTYPE" == "et7x00" -o "$BOXTYPE" == "ultr
 	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
 fi
 
+if test `echo "$BOXTYPE" | cut -b 1-3` == "bey"; then
+	AC_DEFINE(AUSTRALIA, 1,[define Australia to enable country config])
+fi
+
 if test "$BOXTYPE" == "et13000" -o "$BOXTYPE" == "beyonwizu4"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 	AC_DEFINE(KEY_BOOKMARKS_IS_KEY_DIRECTORY, 1,[define when rc sends a KEY_BOOKMARKS but other box use this key for different mapping we remap to KEY_DIRECTORY])
