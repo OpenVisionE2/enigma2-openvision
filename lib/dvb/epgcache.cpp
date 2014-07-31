@@ -484,7 +484,7 @@ void eEPGCache::timeUpdated()
 			messages.send(Message(Message::timeChanged));
 	}
 	else
-		eDebug("[eEPGCache] time updated.. but cache file not set yet.. dont start epg!!");
+		eDebug("[eEPGCache] time updated.. but cache file not set yet.. do not start epg!!");
 }
 
 void eEPGCache::DVBChannelAdded(eDVBChannel *chan)
@@ -539,21 +539,21 @@ void eEPGCache::DVBChannelRunning(iDVBChannel *chan)
 				RESULT res = demux->createSectionReader( this, data.m_NowNextReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize nownext reader!!");
+					eDebug("[eEPGCache] could not initialize nownext reader!!");
 					return;
 				}
 
 				res = demux->createSectionReader( this, data.m_ScheduleReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize schedule reader!!");
+					eDebug("[eEPGCache] could not initialize schedule reader!!");
 					return;
 				}
 
 				res = demux->createSectionReader( this, data.m_ScheduleOtherReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize schedule other reader!!");
+					eDebug("[eEPGCache] could not initialize schedule other reader!!");
 					return;
 				}
 
@@ -561,14 +561,14 @@ void eEPGCache::DVBChannelRunning(iDVBChannel *chan)
 				res = demux->createSectionReader( this, data.m_VirginNowNextReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize virgin nownext reader!!");
+					eDebug("[eEPGCache] could not initialize virgin nownext reader!!");
 					return;
 				}
 
 				res = demux->createSectionReader( this, data.m_VirginScheduleReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize virgin schedule reader!!");
+					eDebug("[eEPGCache] could not initialize virgin schedule reader!!");
 					return;
 				}
 #endif
@@ -576,28 +576,28 @@ void eEPGCache::DVBChannelRunning(iDVBChannel *chan)
 				res = demux->createSectionReader( this, data.m_NetmedScheduleReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize netmed schedule reader!!");
+					eDebug("[eEPGCache] could not initialize netmed schedule reader!!");
 					return;
 				}
 
 				res = demux->createSectionReader( this, data.m_NetmedScheduleOtherReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize netmed schedule other reader!!");
+					eDebug("[eEPGCache] could not initialize netmed schedule other reader!!");
 					return;
 				}
 #endif
 				res = demux->createSectionReader( this, data.m_ViasatReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize viasat reader!!");
+					eDebug("[eEPGCache] could not initialize viasat reader!!");
 					return;
 				}
 #ifdef ENABLE_PRIVATE_EPG
 				res = demux->createSectionReader( this, data.m_PrivateReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize private reader!!");
+					eDebug("[eEPGCache] could not initialize private reader!!");
 					return;
 				}
 #endif
@@ -605,13 +605,13 @@ void eEPGCache::DVBChannelRunning(iDVBChannel *chan)
 				res = demux->createSectionReader( this, data.m_MHWReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize mhw reader!!");
+					eDebug("[eEPGCache] could not initialize mhw reader!!");
 					return;
 				}
 				res = demux->createSectionReader( this, data.m_MHWReader2 );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize mhw reader!!");
+					eDebug("[eEPGCache] could not initialize mhw reader!!");
 					return;
 				}
 #endif
@@ -619,13 +619,13 @@ void eEPGCache::DVBChannelRunning(iDVBChannel *chan)
 				res = demux->createSectionReader( this, data.m_FreeSatScheduleOtherReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize FreeSat reader!!");
+					eDebug("[eEPGCache] could not initialize FreeSat reader!!");
 					return;
 				}
 				res = demux->createSectionReader( this, data.m_FreeSatScheduleOtherReader2 );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize FreeSat reader 2!!");
+					eDebug("[eEPGCache] could not initialize FreeSat reader 2!!");
 					return;
 				}
 #endif
@@ -643,25 +643,25 @@ void eEPGCache::DVBChannelRunning(iDVBChannel *chan)
 						res = demux->createSectionReader( this, data.m_ATSC_VCTReader );
 						if ( res )
 						{
-							eDebug("[eEPGCache] couldnt initialize ATSC VCT reader!!");
+							eDebug("[eEPGCache] could not initialize ATSC VCT reader!!");
 							return;
 						}
 						res = demux->createSectionReader( this, data.m_ATSC_MGTReader );
 						if ( res )
 						{
-							eDebug("[eEPGCache] couldnt initialize ATSC MGT reader!!");
+							eDebug("[eEPGCache] could not initialize ATSC MGT reader!!");
 							return;
 						}
 						res = demux->createSectionReader( this, data.m_ATSC_EITReader );
 						if ( res )
 						{
-							eDebug("[eEPGCache] couldnt initialize ATSC EIT reader!!");
+							eDebug("[eEPGCache] could not initialize ATSC EIT reader!!");
 							return;
 						}
 						res = demux->createSectionReader( this, data.m_ATSC_ETTReader );
 						if ( res )
 						{
-							eDebug("[eEPGCache] couldnt initialize ATSC ETT reader!!");
+							eDebug("[eEPGCache] could not initialize ATSC ETT reader!!");
 							return;
 						}
 					}
@@ -671,19 +671,19 @@ void eEPGCache::DVBChannelRunning(iDVBChannel *chan)
 				res = demux->createSectionReader( this, data.m_OPENTV_ChannelsReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize OpenTV channels reader!!");
+					eDebug("[eEPGCache] could not initialize OpenTV channels reader!!");
 					return;
 				}
 				res = demux->createSectionReader( this, data.m_OPENTV_TitlesReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize OpenTV titles reader!!");
+					eDebug("[eEPGCache] could not initialize OpenTV titles reader!!");
 					return;
 				}
 				res = demux->createSectionReader( this, data.m_OPENTV_SummariesReader );
 				if ( res )
 				{
-					eDebug("[eEPGCache] couldnt initialize OpenTV summaries reader!!");
+					eDebug("[eEPGCache] could not initialize OpenTV summaries reader!!");
 					return;
 				}
 #endif
@@ -904,7 +904,7 @@ void eEPGCache::sectionRead(const uint8_t *data, int source, channel_data *chann
 
 			if (event_id == 0) {
 				// hack for some polsat services on 13.0E..... but this also replaces other valid event_ids with value 0..
-				// but we dont care about it...
+				// but we do not care about it...
 				event_id = event_hash;
 				eit_event->event_id_hi = event_hash >> 8;
 				eit_event->event_id_lo = event_hash & 0xFF;
@@ -1410,7 +1410,7 @@ void eEPGCache::load()
 		ret = fread( &magic, sizeof(int), 1, f);
 		if (magic != 0x98765432)
 		{
-			eDebug("[eEPGCache] epg file has incorrect byte order.. dont read it");
+			eDebug("[eEPGCache] epg file has incorrect byte order.. do not read it");
 			fclose(f);
 			return;
 		}
@@ -3701,14 +3701,22 @@ void eEPGCache::importEvent(ePyObject serviceReference, ePyObject list)
 	importEvents(serviceReference, list);
 }
 
-//here we get a python tuple of tuples ;)
-// consider it an array of objects with the following data
-// 1. start time (long)
-// 2. duration (int)
-// 3. event title (string)
-// 4. short description (string)
-// 5. extended description (string)
-// 6. event type (byte)
+/**
+ * @brief Import EPG events from Python into the EPG database. Each event in the @p list
+ * is added to each service in the @p serviceReferences list.
+ *
+ * @param serviceReferences Any of: a single service reference string; a list of service reference
+ * strings; a single tuple with DVB triplet or a list of tuples with DVB triplets. A DVB triplet is
+ * (onid, tsid, sid)
+ * @param list Either a list or a tuple of EPG events. Each event is a tuple of at least 6 elements:
+ * 1. start time (long)
+ * 2. duration (int)
+ * 3. event title (string)
+ * 4. short description (string)
+ * 5. extended description (string)
+ * 6. event type (byte) or list or tuple of event types
+ * @return void
+ */
 void eEPGCache::importEvents(ePyObject serviceReferences, ePyObject list)
 {
 	std::vector<eServiceReferenceDVB> refs;
@@ -3723,10 +3731,22 @@ void eEPGCache::importEvents(ePyObject serviceReferences, ePyObject list)
 		refstr = PyString_AS_STRING(serviceReferences);
 		if (!refstr)
 		{
-			eDebug("[eEPGCache:import] serviceReference string is 0, aborting");
+			eDebug("[eEPGCache:import] serviceReferences string is 0, aborting");
 			return;
 		}
 		refs.push_back(eServiceReferenceDVB(refstr));
+	}
+	else if (PyTuple_Check(serviceReferences))
+	{
+		if (PyTuple_Size(serviceReferences) != 3)
+		{
+			eDebug("[eEPGCache:import] serviceReferences tuple must contain 3 numbers (onid, tsid, sid), aborting");
+			return;
+		}
+		int onid = PyInt_AsLong(PyTuple_GET_ITEM(serviceReferences, 0));
+		int tsid = PyInt_AsLong(PyTuple_GET_ITEM(serviceReferences, 1));
+		int sid = PyInt_AsLong(PyTuple_GET_ITEM(serviceReferences, 2));
+		refs.push_back(eServiceReferenceDVB(0, tsid, onid, sid, 0));
 	}
 	else if (PyList_Check(serviceReferences))
 	{
@@ -3734,25 +3754,49 @@ void eEPGCache::importEvents(ePyObject serviceReferences, ePyObject list)
 		for (int i = 0; i < nRefs; ++i)
 		{
 			PyObject* item = PyList_GET_ITEM(serviceReferences, i);
-#if PY_MAJOR_VERSION < 3
-			char *refstr;
-#else
-			const char *refstr;
-#endif
-			refstr = PyString_AS_STRING(item);
-			if (!refstr)
+			if (PyString_Check(item))
 			{
-				eDebug("[eEPGCache:import] a serviceref item is not a string");
+#if PY_MAJOR_VERSION < 3
+				char *refstr;
+#else
+				const char *refstr;
+#endif
+				refstr = PyString_AS_STRING(item);
+				if (!refstr)
+				{
+					eDebug("[eEPGCache:import] serviceReferences[%d] is not a string", i);
+				}
+				else
+				{
+					refs.push_back(eServiceReferenceDVB(refstr));
+				}
+			}
+			else if (PyTuple_Check(item))
+			{
+				if (PyTuple_Size(item) != 3)
+				{
+					eDebug("[eEPGCache:import] serviceReferences[%d] tuple must contain 3 numbers (onid, tsid, sid)", i);
+				}
+				int onid = PyInt_AsLong(PyTuple_GET_ITEM(item, 0));
+				int tsid = PyInt_AsLong(PyTuple_GET_ITEM(item, 1));
+				int sid = PyInt_AsLong(PyTuple_GET_ITEM(item, 2));
+				refs.push_back(eServiceReferenceDVB(0, tsid, onid, sid, 0));
 			}
 			else
 			{
-				refs.push_back(eServiceReferenceDVB(refstr));
+				eDebug("[eEPGCache:import] serviceReferences[%d] is not a string or a tuple", i);
 			}
 		}
 	}
 	else
 	{
-		eDebug("[eEPGCache:import] serviceReference string is neither string nor list, aborting");
+		eDebug("[eEPGCache:import] serviceReferences is not a string, a list of strings, a tuple or a list of tuples, aborting");
+		return;
+	}
+
+	if (refs.empty())
+	{
+		eDebug("[eEPGCache:import] no valid serviceReferences found, aborting");
 		return;
 	}
 
@@ -5064,7 +5108,7 @@ void eEPGCache::channel_data::readMHWData(const uint8_t *data)
 		m_MHWReader2->stop();
 
 	if ( state > 1 || // aborted
-		// have si data.. so we dont read mhw data
+		// have si data.. so we do not read mhw data
 		(haveData & (SCHEDULE|SCHEDULE_OTHER|VIASAT)) )
 	{
 		eDebug("[eEPGCache] mhw aborted %d", state);
@@ -5268,7 +5312,7 @@ void eEPGCache::channel_data::readMHWData2(const uint8_t *data)
 		m_MHWReader->stop();
 
 	if ( state > 1 || // aborted
-		// have si data.. so we dont read mhw data
+		// have si data.. so we do not read mhw data
 		(haveData & (SCHEDULE|SCHEDULE_OTHER|VIASAT)) )
 	{
 		eDebug("[eEPGCache] mhw2 aborted %d", state);
@@ -5693,7 +5737,7 @@ void eEPGCache::channel_data::readMHWData2_old(const uint8_t *data)
 		m_MHWReader->stop();
 
 	if ( state > 1 || // aborted
-		// have si data.. so we dont read mhw data
+		// have si data.. so we do not read mhw data
 		(haveData & (SCHEDULE|SCHEDULE_OTHER|VIASAT)) )
 	{
 		eDebug("[eEPGCache] mhw2 aborted %d", state);
