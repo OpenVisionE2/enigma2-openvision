@@ -845,6 +845,7 @@ def InitUsageConfig():
 	config.epg.netmed = ConfigYesNo(default = False)
 	config.epg.virgin = ConfigYesNo(default = False)
 	config.epg.opentv = ConfigYesNo(default = False)
+	config.epg.saveepg = ConfigYesNo(default = True)
 
 	config.epg.maxdays = ConfigSelectionNumber(min = 1, max = 365, stepwidth = 1, default = 7, wraparound = True)
 	def EpgmaxdaysChanged(configElement):
