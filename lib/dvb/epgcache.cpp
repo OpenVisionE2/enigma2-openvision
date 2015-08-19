@@ -330,6 +330,7 @@ void eventData::load(FILE *f)
 	uint8_t header[2];
 	size_t ret; /* dummy value to store fread return values */
 	ret = fread(&size, sizeof(int), 1, f);
+	descriptors.clear();
 	descriptors.rehash(size);
 	while(size)
 	{
@@ -1419,6 +1420,7 @@ void eEPGCache::load()
 		{
 			singleLock s(cache_lock);
 			ret = fread( &size, sizeof(int), 1, f);
+			eventDB.clear();
 			eventDB.rehash(size); /* Reserve buckets in advance */
 			while(size--)
 			{
