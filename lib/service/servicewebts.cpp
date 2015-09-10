@@ -120,13 +120,6 @@ int eStaticServiceWebTSInfo::getInfo(const eServiceReference &ref, int w)
 			return s.st_mtime;
 	}
 	break;
-	case iServiceInformation::sFileSize:
-	{
-		struct stat s;
-		if (!stat(ref.path.c_str(), &s))
-			return s.st_size;
-	}
-	break;
 	}
 	return iServiceInformation::resNA;
 }
