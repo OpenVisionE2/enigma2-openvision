@@ -846,6 +846,12 @@ def InitUsageConfig():
 	config.epg.virgin = ConfigYesNo(default = False)
 	config.epg.opentv = ConfigYesNo(default = False)
 
+	config.epg.maxdays = ConfigSelectionNumber(min = 1, max = 365, stepwidth = 1, default = 7, wraparound = True)
+	def EpgmaxdaysChanged(configElement):
+		from enigma import eEPGCache
+		eEPGCache.getInstance().setEpgmaxdays(config.epg.maxdays.getValue())
+	config.epg.maxdays.addNotifier(EpgmaxdaysChanged)
+
 	config.misc.epgratingcountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
 	config.misc.epggenrecountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
 
