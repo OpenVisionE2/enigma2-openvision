@@ -314,7 +314,7 @@ public:
 		sDescription,
 		sServiceref,
 		sTimeCreate, 		/* unix time or string */
-		sFileSize,
+		sFileSize_deprecated,   /* Value too large for int in getInfo(), use getFileSize() instead */
 
 		sCAIDs,
 		sCAIDPIDs,
