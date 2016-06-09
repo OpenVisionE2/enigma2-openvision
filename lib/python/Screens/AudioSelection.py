@@ -504,6 +504,8 @@ class QuickSubtitlesConfigMenu(ConfigListScreen, Screen):
 		self.infobar = infobar or self.session.infobar
 		self.wait = eTimer()
 		self.wait.timeout.get().append(self.resyncSubtitles)
+		self.resume = eTimer()
+		self.resume.timeout.get().append(self.resyncSubtitlesResume)
 		self.service = self.session.nav.getCurrentlyPlayingServiceReference()
 		servicepath = self.service and self.service.getPath()
 		if servicepath and servicepath.startswith("/") and self.service.toString().startswith("1:"):
@@ -584,6 +586,9 @@ class QuickSubtitlesConfigMenu(ConfigListScreen, Screen):
 
 	def resyncSubtitles(self):
 		self.infobar.setSeekState(self.infobar.SEEK_STATE_PAUSE)
+		self.resume.start(100, True)
+
+	def resyncSubtitlesResume(self):
 		self.infobar.setSeekState(self.infobar.SEEK_STATE_PLAY)
 
 	def getFps(self):
