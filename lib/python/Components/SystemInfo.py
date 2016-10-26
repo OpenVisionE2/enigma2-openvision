@@ -103,7 +103,7 @@ SystemInfo["Has3DSurroundSoftLimiter"] = fileExists("/proc/stb/audio/3dsurround_
 SystemInfo["hasXcoreVFD"] = getBoxType() in ("osmega","spycat4k","spycat4kmini","spycat4kcombo") and fileCheck("/sys/module/brcmstb_%s/parameters/pt6302_cgram" % getBoxType())
 SystemInfo["HasOfflineDecoding"] = getBoxType() not in ("osmini","osminiplus","et7000mini","et11000","mbmicro","mbtwinplus","mbmicrov2","et7x00","et8500")
 SystemInfo["HasRootSubdir"] = fileHas("/proc/cmdline", "rootsubdir=")
-SystemInfo["canMultiBoot"] = SystemInfo["HiSilicon"] or SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or fileHas("/proc/cmdline", "_4.boxmode=") and (1, 4, "mmcblk0", False) or getBoxType() in ("gbue4k","gbquad4k") and (3, 3, "mmcblk0", True) or getBoxType() == "e4hdultra" and (1, 4, "mmcblk0", False) or getBoxType() in ("osmio4k","osmio4kplus") and (1, 4, "mmcblk1", True)
+SystemInfo["canMultiBoot"] = SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or fileHas("/proc/cmdline", "_4.boxmode=") and (1, 4, "mmcblk0", False) or getBoxType() in ("gbue4k","gbquad4k") and (3, 3, "mmcblk0", True) or getBoxType() == "e4hdultra" and (1, 4, "mmcblk0", False) or getBoxType() in ("osmio4k","osmio4kplus") and (1, 4, "mmcblk1", True)
 SystemInfo["canMode12"] = fileHas("/proc/cmdline", "_4.boxmode=1 ") and '192M' or fileHas("/proc/cmdline", "_4.boxmode=12") and '192M'
 SystemInfo["canFlashWithOfgwrite"] = getBoxBrand() != "dreambox"
 SystemInfo["HDRSupport"] = fileExists("/proc/stb/hdmi/hlg_support_choices") and fileCheck("/proc/stb/hdmi/hlg_support")
