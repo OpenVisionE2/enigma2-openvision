@@ -1,5 +1,5 @@
 import os
-from enigma import eEPGCache, getBestPlayableServiceReference, eStreamServer, eServiceReference, iRecordableService, quitMainloop, eActionMap, setPreferredTuner
+from enigma import eEPGCache, getBestPlayableServiceReference, eStreamServer, eServiceReference, iRecordableService, quitMainloop, eActionMap, setPreferredTuner, getBoxType
 
 from Components.config import config
 from Components.UsageConfig import defaultMoviePath
@@ -73,6 +73,67 @@ def findSafeRecordPath(dirname):
 			print '[RecordTimer] Failed to create dir "%s":' % dirname, ex
 			return None
 	return dirname
+
+# This code is for use by hardware with a stb device file which, when
+# non-zero, can display a visual indication on the front-panel that
+# recordings are in progress, with possibly different icons for
+# different numbers of concurrent recordings.
+# NOTE that Navigation.py uses symbol_signal (which the mbtwin does not
+#  have) to indicate that a recording is being played back. Different.
+#
+# Define the list of boxes which can use the code by setting the device
+# path and number of different states it supports.
+# Any undefined box will not use this code.
+#
+SID_symbol_states = {
+	"mbtwin": ('/proc/stb/lcd/symbol_circle', 4)
+}
+
+SID_code_states = SID_symbol_states.setdefault(getBoxType(), (None, 0))
+
+n_recordings = 0  # Must be when we start running...
+def SetIconDisplay(nrec):
+	if SID_code_states[0] == None:  # Not the code for us
+		return
+	(wdev, max_states) = SID_code_states
+	if nrec == 0:                   # An absolute setting - clear it...
+		open(wdev, "w").write("0")
+		return
+#
+	sym = nrec
+	if sym > max_states:
+		sym = max_states
+	if sym < 0:		    # Sanity check - just in case...
+		sym = 0
+	open(wdev, "w").write(str(sym))
+	return
+
+# Define a function that is called at the start and stop of all
+# recordings. This allows us to track the number of actual recordings.
+# Other recording-related accounting could also be added here.
+# alter is 1 at a recording start, -1 at a stop and 0 as enigma2 starts
+# (to initialize things).
+
+
+def RecordingsState(alter):
+# Since we are about to modify it we need to declare it as global
+#
+	global n_recordings
+	if not -1 <= alter <= 1:
+		return
+
+# Adjust the number of currently running recordings...
+#
+	if alter == 0:              # Initialize
+		n_recordings = 0
+	else:
+		n_recordings += alter
+	if n_recordings < 0:        # Sanity check - just in case...
+		n_recordings = 0
+	SetIconDisplay(n_recordings)
+	return
+
+RecordingsState(0)       # Initialize
 
 def checkForRecordings():
 	if NavigationInstance.instance.getRecordings():
@@ -376,6 +437,8 @@ class RecordTimerEntry(timer.TimerEntry, object):
 				if not self.justplay:
 					open(self.Filename + self.record_service.getFilenameExtension(), "w").close()
 					# Give the Trashcan a chance to clean up
+					# Need try/except as Trashcan.instance may not exist
+					# for a missed recording started at boot-time.
 					try:
 						Trashcan.instance.cleanIfIdle(self.Filename)
 					except Exception, e:
@@ -493,6 +556,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 				self.state -= 1
 				return True
 			self.log_tuner(12, "stop")
+			RecordingsState(-1)
 			if not self.justplay:
 				NavigationInstance.instance.stopRecordService(self.record_service)
 				self.record_service = None
@@ -671,6 +735,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 			# that in our state, with also keeping the possibility to re-try.
 			# TODO: this has to be done.
 		elif event == iRecordableService.evStart:
+			RecordingsState(1)
 			text = _("A record has been started:\n%s") % self.name
 			notify = config.usage.show_message_when_recording_starts.value and not Screens.Standby.inStandby and self.InfoBarInstance and self.InfoBarInstance.execing
 			if self.dirnameHadToFallback:

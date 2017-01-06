@@ -53,6 +53,7 @@ class Trashcan:
 		self.dirty.add(trash)
 
 	def gotRecordEvent(self, service, event):
+		from RecordTimer import n_recordings
 		if event == enigma.iRecordableService.evEnd:
 			self.cleanIfIdle()
 
@@ -68,6 +69,10 @@ class Trashcan:
 		# RecordTimer calls this when preparing a recording. That is a
 		# nice moment to clean up. It also mentions the path, so mark
 		# it as dirty.
+		from RecordTimer import n_recordings
+		if n_recordings > 0:
+			print "[Trashcan] Recording(s) in progress:", n_recordings
+			return
 		self.markDirty(path)
 		if not self.dirty:
 			return
