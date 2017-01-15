@@ -2051,7 +2051,8 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 		self.revertMode = None
 
 	def togglePipzap(self):
-		assert(self.session.pip)
+		if not (hasattr(self.session, 'pip') and self.session.pip):
+			raise AssertionError("Invalid self.session.pip")
 		title = self.instance.getTitle()
 		pos = title.find(" (")
 		if pos != -1:
