@@ -487,7 +487,7 @@ static int jpeg_save(const char * filename, int ox, int oy, unsigned char *pic_b
 	cinfo.err = jpeg_std_error(&jerr);
 	jpeg_create_compress(&cinfo);
 
-	eDebug("[ePicLoad] save Thumbnail... %s",filename);
+	// eDebug("[ePicLoad] save Thumbnail... %s",filename);
 
 	jpeg_stdio_dest(&cinfo, outfile);
 
@@ -775,7 +775,7 @@ void ePicLoad::thread()
 
 void ePicLoad::decodePic()
 {
-	eDebug("[ePicLoad] decode picture... %s", m_filepara->file);
+	// eDebug("[ePicLoad] decode picture... %s", m_filepara->file);
 
 	getExif(m_filepara->file, m_filepara->id);
 	switch(m_filepara->id)
@@ -795,7 +795,7 @@ void ePicLoad::decodePic()
 
 void ePicLoad::decodeThumb()
 {
-	eDebug("[ePicLoad] get Thumbnail... %s", m_filepara->file);
+	// eDebug("[ePicLoad] get Thumbnail... %s", m_filepara->file);
 
 	bool exif_thumbnail = false;
 	bool cachefile_found = false;
@@ -811,7 +811,7 @@ void ePicLoad::decodeThumb()
 			m_filepara->file = strdup(THUMBNAILTMPFILE);
 			m_filepara->id = F_JPEG; // imbedded thumbnail seem to be jpeg
 			exif_thumbnail = true;
-			eDebug("[ePicLoad] decodeThumb: Exif Thumbnail found");
+		//	eDebug("[ePicLoad] decodeThumb: Exif Thumbnail found");
 		}
 		//else
 		//	eDebug("[ePicLoad] decodeThumb: NO Exif Thumbnail found");
@@ -854,7 +854,7 @@ void ePicLoad::decodeThumb()
 				free(m_filepara->file);
 				m_filepara->file = strdup(cachefile.c_str());
 				m_filepara->id = F_JPEG;
-				eDebug("[ePicLoad] Cache File %s found", cachefile.c_str());
+			//	eDebug("[ePicLoad] Cache File %s found", cachefile.c_str());
 			}
 		}
 	}
@@ -922,7 +922,7 @@ void ePicLoad::gotMessage(const Message &msg)
 			msg_main.send(Message(Message::decode_finished));
 			break;
 		case Message::quit: // called from decode thread
-			eDebug("[ePicLoad] decode thread ... got quit msg");
+			// eDebug("[ePicLoad] decode thread ... got quit msg");
 			quit(0);
 			break;
 		case Message::decode_finished: // called from main thread
@@ -952,7 +952,7 @@ int ePicLoad::startThread(int what, const char *file, int x, int y, bool async)
 {
 	if(async && threadrunning && m_filepara != NULL)
 	{
-		eDebug("[ePicLoad] thread running");
+		// eDebug("[ePicLoad] thread running");
 		m_filepara->callback = false;
 		return 1;
 	}
@@ -1403,9 +1403,11 @@ RESULT ePicLoad::setPara(int width, int height, double aspectRatio, int as, bool
 
 	if(bg_str[0] == '#' && strlen(bg_str)==9)
 		m_conf.background = strtoul(bg_str+1, NULL, 16);
+	/*
 	eDebug("[ePicLoad] setPara max-X=%d max-Y=%d aspect_ratio=%lf cache=%d resize=%d bg=#%08X auto_orient=%d",
 			m_conf.max_x, m_conf.max_y, m_conf.aspect_ratio,
 			(int)m_conf.usecache, (int)m_conf.resizetype, m_conf.background, m_conf.auto_orientation);
+	*/
 	return 1;
 }
 
