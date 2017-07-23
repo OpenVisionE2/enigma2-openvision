@@ -68,25 +68,26 @@ class TimerEntry(Screen, ConfigListScreen):
 
 		weekday_table = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
 
+		# calculate default values
 		day = []
 		weekday = 0
 		for x in (0, 1, 2, 3, 4, 5, 6):
 			day.append(0)
-		if self.timer.repeated:
+		if self.timer.repeated: # repeated
 			type = "repeated"
-			if self.timer.repeated == 31:
+			if self.timer.repeated == 31: # Mon-Fri
 				repeated = "weekdays"
-			elif self.timer.repeated == 127:
+			elif self.timer.repeated == 127: # daily
 				repeated = "daily"
 			else:
 				flags = self.timer.repeated
 				repeated = "user"
 				count = 0
 				for x in (0, 1, 2, 3, 4, 5, 6):
-					if flags == 1:
+					if flags == 1: # weekly
 						print("[PowerTimerEntry] Set to weekday " + str(x))
 						weekday = x
-					if flags & 1 == 1:
+					if flags & 1 == 1: # set user defined flags
 						day[x] = 1
 						count += 1
 					else:
@@ -94,7 +95,7 @@ class TimerEntry(Screen, ConfigListScreen):
 					flags >>= 1
 				if count == 1:
 					repeated = "weekly"
-		else:
+		else: # once
 			type = "once"
 			repeated = None
 			weekday = int(strftime("%u", localtime(self.timer.begin))) - 1
@@ -150,7 +151,7 @@ class TimerEntry(Screen, ConfigListScreen):
 
 			if self.timerentry_type.value == "once":
 				self.frequencyEntry = None
-			else:
+			else: # repeated
 				self.frequencyEntry = getConfigListEntry(_("Repeats"), self.timerentry_repeated)
 				self.list.append(self.frequencyEntry)
 				self.repeatedbegindateEntry = getConfigListEntry(_("Starting on"), self.timerentry_repeatedbegindate)
@@ -218,6 +219,7 @@ class TimerEntry(Screen, ConfigListScreen):
 		begin = self.getTimestamp(date, starttime)
 		end = self.getTimestamp(date, endtime)
 
+		# if the endtime is less than the starttime, add 1 day.
 		if end < begin:
 			end += 86400
 
@@ -254,9 +256,10 @@ class TimerEntry(Screen, ConfigListScreen):
 			self.timer.autosleepinstandbyonly = self.timerentry_autosleepinstandbyonly.value
 			self.timer.autosleepdelay = self.timerentry_autosleepdelay.value
 			self.timer.autosleeprepeat = self.timerentry_autosleeprepeat.value
+# Ensure that the timer repeated is cleared if we have an autosleeprepeat
 			if self.timerentry_type.value == "repeated":
 				self.timer.resetRepeated()
-				self.timerentry_type.value = "once"
+				self.timerentry_type.value = "once" # Stop it being set again
 
 		if self.timerentry_type.value == "repeated":
 			if self.timerentry_repeated.value == "daily":
@@ -283,12 +286,15 @@ class TimerEntry(Screen, ConfigListScreen):
 				self.timer.begin = self.getTimestamp(time.time(), self.timerentry_starttime.value)
 				self.timer.end = self.getTimestamp(time.time(), self.timerentry_endtime.value)
 
+			# when a timer end is set before the start, add 1 day
 			if self.timer.end < self.timer.begin:
 				self.timer.end += 86400
 
 		self.saveTimer()
 		self.close((True, self.timer))
 
+# The following four functions check for the item to be changed existing
+# as for auto[deep]standby timers it doesn't, so we'll crash otherwise.
 	def incrementStart(self):
 		if not hasattr(self, "entryStartTime"):
 			return

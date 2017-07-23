@@ -196,6 +196,7 @@ class PowerTimerEditList(Screen):
 			cb(time, duration, state)
 
 	def fillTimerList(self):
+		#helper function to move finished timers to end of list
 		def eol_compare(x, y):
 			if x[0].state != y[0].state and x[0].state == RealTimerEntry.StateEnded or y[0].state == RealTimerEntry.StateEnded:
 				return cmp(x[0].state, y[0].state)
@@ -205,7 +206,7 @@ class PowerTimerEditList(Screen):
 		del list[:]
 		list.extend([(timer, False) for timer in self.session.nav.PowerTimer.timer_list])
 		list.extend([(timer, True) for timer in self.session.nav.PowerTimer.processed_timers])
-		if config.usage.timerlist_finished_timer_position.index:
+		if config.usage.timerlist_finished_timer_position.index: #end of list
 			list.sort(cmp = eol_compare)
 		else:
 			list.sort(key = lambda x: x[0].begin)

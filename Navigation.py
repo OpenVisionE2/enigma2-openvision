@@ -22,7 +22,7 @@ from os import path
 
 # TODO: remove pNavgation, eNavigation and rewrite this stuff in python.
 class Navigation:
-	def __init__(self):
+	def __init__(self, nextRecordTimerAfterEventActionAuto=False, nextPowerManagerAfterEventActionAuto=False):
 		if NavigationInstance.instance is not None:
 			raise NavigationInstance.instance
 
@@ -42,7 +42,13 @@ class Navigation:
 		self.currentlyPlayingService = None
 		self.RecordTimer = RecordTimer.RecordTimer()
 		self.PowerTimer = PowerTimer.PowerTimer()		
-		self.__wasTimerWakeup = getFPWasTimerWakeup(True)
+		self.__wasTimerWakeup = False
+		self.__nextRecordTimerAfterEventActionAuto = nextRecordTimerAfterEventActionAuto
+		self.__nextPowerManagerAfterEventActionAuto = nextPowerManagerAfterEventActionAuto
+		if getFPWasTimerWakeup():
+			self.__wasTimerWakeup = True
+			self._processTimerWakeup()
+
 		self.__isRestartUI = config.misc.RestartUI.value
 		startup_to_standby = config.usage.startup_to_standby.value
 		wakeup_time_type = config.misc.prev_wakeup_time_type.value
@@ -94,6 +100,11 @@ class Navigation:
 
 	def wasTimerWakeup(self):
 		return self.__wasTimerWakeup
+
+	def gotostandby(self):
+		print('[Navigation] TIMER: now entering standby')
+		from Tools import Notifications
+		Notifications.AddNotification(Screens.Standby.Standby)
 
 	def isRestartUI(self):
 		return self.__isRestartUI
@@ -215,7 +226,8 @@ class Navigation:
 
 	def recordService(self, ref, simulate=False):
 		service = None
-		if not simulate: print("[Navigation] recording service: %s" % (str(ref)))
+		if not simulate:
+			print("[Navigation] recording service:", (ref and ref.toString()))
 		if isinstance(ref, ServiceReference):
 			ref = ref.ref
 		if ref:
@@ -258,6 +270,7 @@ class Navigation:
 
 	def shutdown(self):
 		self.RecordTimer.shutdown()
+		self.PowerTimer.shutdown()
 		self.ServiceHandler = None
 		self.pnav = None
 

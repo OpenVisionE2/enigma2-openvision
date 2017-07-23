@@ -11,6 +11,10 @@ from PowerTimer import AFTEREVENT, TIMERTYPE
 
 
 class PowerTimerList(GUIComponent, object):
+
+#  | <Service>     <Name of the Timer>  |
+#  | <start, end>              <state>  |
+
 	def buildTimerEntry(self, timer, processed):
 		screenwidth = getDesktop(0).size().width()
 		timertype = {
@@ -79,7 +83,7 @@ class PowerTimerList(GUIComponent, object):
 				if self.iconRepeat:
 					res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, 2, self.rowSplit, 20, 20, self.iconRepeat))
 			else:
-				repeatedtext = begin[0]
+				repeatedtext = begin[0] # date
 			text = repeatedtext + ((" %s ... %s (%d " + _("mins") + ")") % (begin[1], FuzzyTime(timer.end)[1], (timer.end - timer.begin) / 60))
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, 148, self.itemHeight - self.rowSplit, width-150, self.rowSplit, 2, RT_HALIGN_RIGHT|RT_VALIGN_BOTTOM, text))
 			icon = None
