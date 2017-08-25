@@ -223,6 +223,9 @@ int main(int argc, char **argv)
 	atexit(object_dump);
 #endif
 
+	// Clear LD_PRELOAD so that shells and processes launched by Enigma2 can pass on file handles and pipes
+	unsetenv("LD_PRELOAD");
+
 	// set pythonpath if unset
 	setenv("PYTHONPATH", eEnv::resolve("${libdir}/enigma2/python").c_str(), 0);
 	printf("PYTHONPATH: %s\n", getenv("PYTHONPATH"));
