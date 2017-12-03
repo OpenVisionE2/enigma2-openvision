@@ -31,26 +31,38 @@ def getKeyId(id):
 
 	return keyid
 
+unmapDict = {}
 
 def parseKeys(context, filename, actionmap, device, keys):
 	for x in keys.findall("key"):
 		get_attr = x.attrib.get
 		mapto = get_attr("mapto")
+		unmap = get_attr("unmap")
 		id = get_attr("id")
 		flags = get_attr("flags")
 
-		flag_ascii_to_id = lambda x: {'m':1,'b':2,'r':4,'l':8}[x]
+		if unmap is not None:
+			assert id, "[keymapparser] %s: must specify id in context %s, unmap '%s'" % (filename, context, unmap)
+			keyid = getKeyId(id)
+			actionmap.unbindPythonKey(context, keyid, unmap)
+			unmapDict.update({(context, id, unmap):filename})
+		else:
 
-		flags = sum(map(flag_ascii_to_id, flags))
+			assert mapto, "[keymapparser] %s: must specify mapto in context %s, id '%s'" % (filename, context, id)
+			assert id, "[keymapparser] %s: must specify id in context %s, mapto '%s'" % (filename, context, mapto)
+			keyid = getKeyId(id)
 
-		assert mapto, "[keymapparser] %s: must specify mapto in context %s, id '%s'" % (filename, context, id)
-		assert id, "[keymapparser] %s: must specify id in context %s, mapto '%s'" % (filename, context, mapto)
-		assert flags, "[keymapparser] %s: must specify at least one flag in context %s, id '%s'" % (filename, context, id)
+			flag_ascii_to_id = lambda x: {'m':1,'b':2,'r':4,'l':8}[x]
 
-		keyid = getKeyId(id)
+			flags = sum(map(flag_ascii_to_id, flags))
+
+			assert flags, "[keymapparser] %s: must specify at least one flag in context %s, id '%s'" % (filename, context, id)
+
+			# if a key was unmapped, it can only be assigned a new function in the same keymap file (avoid file parsing sequence dependency)
+			if unmapDict.get((context, id, mapto)) in [filename, None]:
 #				print "[keymapparser] " + context + "::" + mapto + " -> " + device + "." + hex(keyid)
-		actionmap.bindKey(filename, device, keyid, flags, context, mapto)
-		addKeyBinding(filename, keyid, context, mapto, flags)
+				actionmap.bindKey(filename, device, keyid, flags, context, mapto)
+				addKeyBinding(filename, keyid, context, mapto, flags)
 
 
 def parseTrans(filename, actionmap, device, keys):
