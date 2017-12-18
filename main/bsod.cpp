@@ -141,8 +141,13 @@ void bsodFatal(const char *component)
 	}
 #endif
 	/* show no more than one bsod while shutting down/crashing */
-	if (bsodhandled)
+	if (bsodhandled) {
+		if (component) {
+			sleep(1);
+			raise(SIGKILL);
+		}
 		return;
+	}
 	bsodhandled = true;
 
 	if (!component)
