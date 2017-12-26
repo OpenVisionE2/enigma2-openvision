@@ -223,15 +223,7 @@ eDVBLocalTimeHandler::eDVBLocalTimeHandler()
 	else
 	{
 		res_mgr->connectChannelAdded(sigc::mem_fun(*this,&eDVBLocalTimeHandler::DVBChannelAdded), m_chanAddedConn);
-		time_t now = time(0);
-		if ( now < 1072224000 ) // 01.01.2004
-			eDebug("[eDVBLocalTimeHandler] RTC not ready... wait for transponder time");
-		else // inform all who's waiting for valid system time..
-		{
-			eDebug("[eDVBLocalTimeHandler] Use valid Linux Time :) (RTC?)");
-			m_time_ready = true;
-			/*emit*/ m_timeUpdated();
-		}
+		eDebug("[eDVBLocalTimeHandler] RTC not ready... wait for transponder time");
 	}
 	CONNECT(m_updateNonTunedTimer->timeout, eDVBLocalTimeHandler::updateNonTuned);
 }
