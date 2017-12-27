@@ -21,7 +21,7 @@ eTuxtxtApp *eTuxtxtApp::instance = NULL;
 #if HAVE_AMLOGIC
 eTuxtxtApp::eTuxtxtApp() : pid(0), demux(0), enableTtCaching(false), uiRunning(false), messagePump(eApp, 0)
 #else
-eTuxtxtApp::eTuxtxtApp() : pid(0), enableTtCaching(false), uiRunning(false), messagePump(eApp, 0)
+eTuxtxtApp::eTuxtxtApp() : pid(0), enableTtCaching(false), uiRunning(false), messagePump(eApp, 0, "eTuxtxtApp")
 #endif
 {
 	CONNECT(messagePump.recv_msg, eTuxtxtApp::recvEvent);
