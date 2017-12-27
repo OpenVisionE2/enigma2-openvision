@@ -118,7 +118,7 @@ public:
 		uint64_t data;
 		if (::read(m_fd, &data, sizeof(data)) <= 0)
 		{
-			eFatal("[eFixedMessagePump] read error %m");
+			eWarning("[eFixedMessagePump<%s>] read error %m", name);
 			return;
 		}
 
@@ -131,7 +131,7 @@ public:
 			if (m_queue.empty())
 			{
 				lock.unlock();
-				eFatal("[eFixedMessagePump] Got event but queue is empty");
+				eWarning("[eFixedMessagePump<%s>] Got event but queue is empty", name);
 				break;
 			}
 			T msg = m_queue.front();
