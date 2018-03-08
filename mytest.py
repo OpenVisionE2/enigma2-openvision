@@ -472,6 +472,10 @@ from Screens.Ci import CiHandler
 profile("Load:VolumeControl")
 from Components.VolumeControl import VolumeControl
 
+profile("Load:StackTracePrinter")
+from Components.StackTrace import StackTracePrinter
+StackTracePrinterInst = StackTracePrinter()
+
 def runScreenTest():
 	config.misc.startCounter.value += 1
 	config.misc.startCounter.save()
