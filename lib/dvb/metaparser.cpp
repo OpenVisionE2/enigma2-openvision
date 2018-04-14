@@ -15,19 +15,24 @@ eDVBMetaParser::eDVBMetaParser()
 	m_scrambled = 0;
 }
 
-static int getctime(const std::string &basename)
+// For the recording creation time if there is no .ts.meta file
+// or no creation time in the .ts.meta file.
+// It's the time of the last write to the .ts file, but that's
+// as good as it gets.
+
+static time_t getmtime(const std::string &basename)
 {
 	struct stat s;
 	if (::stat(basename.c_str(), &s) == 0)
 	{
-		return s.st_ctime;
+		return s.st_mtime;
 	}
 	return 0;
 }
 
-static long long fileSize(const std::string &basename)
+static off_t fileSize(const std::string &basename)
 {
-	long long filesize = 0;
+	off_t filesize = 0;
 	char buf[8];
 	std::string splitname;
 	struct stat64 s;
@@ -58,7 +63,7 @@ int eDVBMetaParser::parseFile(const std::string &basename)
 	if (!parseRecordings(basename))
 		return 0;
 	m_filesize = fileSize(basename);
-	m_time_create = getctime(basename);
+	m_time_create = getmtime(basename);
 	return -1;
 }
 
@@ -104,10 +109,10 @@ int eDVBMetaParser::parseMeta(const std::string &tsname)
 			m_description = line;
 			break;
 		case 3:
-			m_time_create = atoi(line);
+			m_time_create = atol(line);
 			if (m_time_create == 0)
 			{
-				m_time_create = getctime(tsname);
+				m_time_create = getmtime(tsname);
 			}
 			break;
 		case 4:
@@ -118,6 +123,10 @@ int eDVBMetaParser::parseMeta(const std::string &tsname)
 			break;
 		case 6:
 			m_filesize = atoll(line);
+			if (m_filesize == 0)
+			{
+				m_filesize = fileSize(tsname);
+			}
 			break;
 		case 7:
 			m_service_data = line;
@@ -188,7 +197,7 @@ int eDVBMetaParser::parseRecordings(const std::string &filename)
 			m_ref = ref;
 			m_name = description;
 			m_description = "";
-			m_time_create = getctime(filename);
+			m_time_create = getmtime(filename);
 			m_length = 0;
 			m_filesize = fileSize(filename);
 			m_data_ok = 1;
@@ -227,6 +236,6 @@ int eDVBMetaParser::updateMeta(const std::string &tsname)
 		}
 	}
 
-	fprintf(f, "%s\n%s\n%s\n%d\n%s\n%lld\n%lld\n%s\n%d\n%d\n", ref.toString().c_str(), m_name.c_str(), m_description.c_str(), m_time_create, m_tags.c_str(), m_length, m_filesize, m_service_data.c_str(), m_packet_size, m_scrambled);
+	fprintf(f, "%s\n%s\n%s\n%ld\n%s\n%lld\n%lld\n%s\n%d\n%d\n", ref.toString().c_str(), m_name.c_str(), m_description.c_str(), m_time_create, m_tags.c_str(), m_length, m_filesize, m_service_data.c_str(), m_packet_size, m_scrambled);
 	return 0;
 }
