@@ -420,6 +420,8 @@ def InitUsageConfig():
 
 	config.usage.boolean_graphic = ConfigYesNo(default=True)
 
+	config.usage.cursorscroll = ConfigSelectionNumber(min=0, max=50, stepwidth=5, default=0, wraparound=True)
+
 	config.epg = ConfigSubsection()
 	config.epg.eit = ConfigYesNo(default = True)
 	config.epg.mhw = ConfigYesNo(default = False)
