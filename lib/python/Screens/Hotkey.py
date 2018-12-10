@@ -355,15 +355,15 @@ class HotkeySetup(Screen):
 		key = self["list"].l.getCurrentSelection()[0][1]
 		if key:
 			selected = []
-			for x in eval("config.misc.hotkey." + key + ".value.split(',')"):
+			for x in getattr(config.misc.hotkey, key).value.split(','):
 				if x.startswith("ZapPanic"):
 					selected.append(ChoiceEntryComponent('',((_("Panic to") + " " + ServiceReference(eServiceReference(x.split("/", 1)[1]).toString()).getServiceName()), x)))
 				elif x.startswith("Zap"):
 					selected.append(ChoiceEntryComponent('',((_("Zap to") + " " + ServiceReference(eServiceReference(x.split("/", 1)[1]).toString()).getServiceName()), x)))
 				else:
-					function = list(function for function in hotkey.functions if function[1] == x )
+					function = next((function for function in hotkey.functions if function[1] == x), None)
 					if function:
-						selected.append(ChoiceEntryComponent('',((function[0][0]), function[0][1])))
+						selected.append(ChoiceEntryComponent('',((function[0]), function[1])))
 			self["choosen"].setList(selected)
 		self["description"].setText(_("Press or select button and then press 'OK' for attach next function or edit attached.") if len(selected) else _("Press or select button and then press 'OK' for attach function."))
 
@@ -382,7 +382,7 @@ class HotkeySetupSelect(Screen):
 		self["description"] = Label()
 
 		self.mode = "list"
-		self.config = eval("config.misc.hotkey." + key[0][1])
+		self.config = getattr(config.misc.hotkey, key[0][1])
 		self.expanded = []
 		self.selected = []
 		for x in self.config.value.split(','):
@@ -391,9 +391,9 @@ class HotkeySetupSelect(Screen):
 			elif x.startswith("Zap"):
 				self.selected.append(ChoiceEntryComponent('',((_("Zap to") + " " + ServiceReference(eServiceReference(x.split("/", 1)[1]).toString()).getServiceName()), x)))
 			else:
-				function = list(function for function in hotkey.functions if function[1] == x )
+				function = next((function for function in hotkey.functions if function[1] == x), None)
 				if function:
-					self.selected.append(ChoiceEntryComponent('',((function[0][0]), function[0][1])))
+					self.selected.append(ChoiceEntryComponent('',((function[0]), function[1])))
 		text = _("Press 'OK' for attach next function or 'CH+/-' for edit attached.") if len(self.selected) else _("Press 'OK' for attach function.")
 		self.prevselected = self.selected[:]
 		if self.prevselected:
@@ -598,17 +598,17 @@ class InfoBarHotkey():
 	def getKeyFunctions(self, key):
 		if key in ("play", "playpause", "Stop", "stop", "pause", "rewind", "next", "previous", "fastforward", "skip_back", "skip_forward") and (self.__class__.__name__ == "MoviePlayer" or hasattr(self, "timeshiftActivated") and self.timeshiftActivated()):
 			return False
-		selection = eval("config.misc.hotkey." + key + ".value.split(',')")
+		selection = getattr(config.misc.hotkey, key).value.split(',')
 		selected = []
 		for x in selection:
 			if x.startswith("ZapPanic"):
 				selected.append(((_("Panic to") + " " + ServiceReference(eServiceReference(x.split("/", 1)[1]).toString()).getServiceName()), x))
 			elif x.startswith("Zap"):
 				selected.append(((_("Zap to") + " " + ServiceReference(eServiceReference(x.split("/", 1)[1]).toString()).getServiceName()), x))
-			else:
-				function = list(function for function in hotkey.functions if function[1] == x )
+			elif x:
+				function = next((function for function in hotkey.functions if function[1] == x), None)
 				if function:
-					selected.append(function[0])
+					selected.append(function)
 		return selected
 
 	def getHelpText(self, key):
