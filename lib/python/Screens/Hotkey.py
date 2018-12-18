@@ -615,10 +615,7 @@ class InfoBarHotkey():
 		selected = self.getKeyFunctions(key)
 		if not selected:
 			return
-		if len(selected) == 1:
-			return selected[0][0]
-		else:
-			return _("Hotkey") + " " + tuple(x[0] for x in hotkey.hotkeys if x[1] == key)[0]
+		return pgettext("Hotkey help separator", '/').join(sel[0] for sel in selected)
 
 	def hotkeyGlobal(self, key):
 		selected = self.getKeyFunctions(key)
