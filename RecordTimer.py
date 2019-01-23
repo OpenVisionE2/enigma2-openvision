@@ -29,6 +29,9 @@ from sys import maxint
 # description        (description)
 # event data         (ONLY for time adjustments etc.)
 
+# We need to handle concurrency when updating timers.xml
+import threading
+write_lock = threading.Lock()
 
 # parses an event, and gives out a (begin, end, name, duration, eit)-tuple.
 # begin and end will be corrected
@@ -824,7 +827,6 @@ class RecordTimer(timer.Timer):
 
 			print "timers.xml failed to load!"
 			try:
-				import os
 				os.rename(self.Filename, self.Filename + "_old")
 			except (IOError, OSError):
 				print "renaming broken timer failed"
@@ -945,15 +947,32 @@ class RecordTimer(timer.Timer):
 
 		list.append('</timers>\n')
 
-		file = open(self.Filename + ".writing", "w")
-		for x in list:
-			file.write(x)
-		file.flush()
+# We have to run this section with a lock.
+#  Imagine setting a timer manually while the (background) AutoTimer
+#  scan is also setting a timer.
+#  So we have two timers being set at "the same time".
+# Two process arrive at the open().
+# First opens it and writes to *.writing.
+# Second opens it and overwrites (possibly slightly different data) to
+# the same file.
+# First then gets to the rename - succeeds
+# Second then tries to rename, but the "*.writing" file is now absent.
+# Result:
+#  OSError: [Errno 2] No such file or directory
+#
+# NOTE that as Python threads are not concurrent (they run serially and
+# switch when one does something like I/O) we don't need to run the
+# list-creating loop under the lock.
+#
+		with write_lock:
+			file = open(self.Filename + ".writing", "w")
+			for x in list:
+				file.write(x)
+			file.flush()
 
-		import os
-		os.fsync(file.fileno())
-		file.close()
-		os.rename(self.Filename + ".writing", self.Filename)
+			os.fsync(file.fileno())
+			file.close()
+			os.rename(self.Filename + ".writing", self.Filename)
 
 	def getNextZapTime(self, isWakeup=False):
 		now = time()
