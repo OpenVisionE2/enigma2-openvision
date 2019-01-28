@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <fstream>
 #include <lib/gdi/grc.h>
 #include <lib/gdi/font.h>
 #include <lib/base/init.h>
@@ -19,12 +20,10 @@ gRC::gRC(): rp(0), wp(0)
 #else
 ,m_notify_pump(eApp, 1)
 #endif
+,m_spinner_enabled(0), m_spinneronoff(1), m_prev_idle_count(0)
 {
 	ASSERT(!instance);
 	instance=this;
-	m_prev_idle_count = -1;
-	m_spinner_enabled = 0;
-	m_spinneronoff = 1;
 	CONNECT(m_notify_pump.recv_msg, gRC::recv_notify);
 #ifndef SYNC_PAINT
 	pthread_mutex_init(&mutex, 0);
@@ -40,9 +39,23 @@ gRC::gRC(): rp(0), wp(0)
 	else
 		eDebug("[gRC] thread created successfully");
 #endif
-	m_spinner_enabled = 0;
-	m_spinneronoff = 1;
 }
+
+#ifdef CONFIG_ION
+void gRC::lock()
+{
+#ifndef SYNC_PAINT
+	pthread_mutex_lock(&mutex);
+#endif
+}
+
+void gRC::unlock()
+{
+#ifndef SYNC_PAINT
+	pthread_mutex_unlock(&mutex);
+#endif
+}
+#endif
 
 DEFINE_REF(gRC);
 
@@ -185,7 +198,11 @@ void *gRC::thread()
 				if (!idle)
 				{
 					if (!m_spinner_enabled)
+					{
 						eDebug("[gRC] main thread is non-idle! display spinner!");
+							std::ofstream dummy("/tmp/doPythonStackTrace");
+							dummy.close();
+					}
 					enableSpinner();
 				} else
 					disableSpinner();
@@ -609,6 +626,32 @@ void gPainter::end()
 		return;
 }
 
+void gPainter::sendShow(ePoint point, eSize size)
+{
+	if ( m_dc->islocked() )
+		return;
+	gOpcode o;
+	o.opcode=gOpcode::sendShow;
+	o.dc = m_dc.grabRef();
+	o.parm.setShowHideInfo = new gOpcode::para::psetShowHideInfo;
+	o.parm.setShowHideInfo->point = point;
+	o.parm.setShowHideInfo->size = size;
+	m_rc->submit(o);
+}
+
+void gPainter::sendHide(ePoint point, eSize size)
+{
+	if ( m_dc->islocked() )
+		return;
+	gOpcode o;
+	o.opcode=gOpcode::sendHide;
+	o.dc = m_dc.grabRef();
+	o.parm.setShowHideInfo = new gOpcode::para::psetShowHideInfo;
+	o.parm.setShowHideInfo->point = point;
+	o.parm.setShowHideInfo->size = size;
+	m_rc->submit(o);
+}
+
 gDC::gDC()
 {
 	m_spinner_pic = 0;
@@ -683,7 +726,7 @@ void gDC::exec(const gOpcode *o)
 			int vcentered_top = o->parm.renderText->area.top() + ((o->parm.renderText->area.height() - bbox.height()) / 2);
 			int correction = vcentered_top - bbox.top();
 			// Only center if it fits, don't push text out the top
-			if (correction > 0)
+			if ((correction > 0) || (para->getLineCount() == 1))
 			{
 				offset += ePoint(0, correction);
 			}
@@ -820,6 +863,10 @@ void gDC::exec(const gOpcode *o)
 		break;
 	case gOpcode::flush:
 		break;
+	case gOpcode::sendShow:
+		break;
+	case gOpcode::sendHide:
+		break;
 	case gOpcode::enableSpinner:
 		enableSpinner();
 		break;
@@ -888,7 +935,7 @@ void gDC::incrementSpinner()
 	m_spinner_temp->blit(*m_spinner_saved, eRect(0, 0, 0, 0), eRect(ePoint(0, 0), m_spinner_pos.size()));
 
 	if (m_spinner_pic[m_spinner_i])
-		m_spinner_temp->blit(*m_spinner_pic[m_spinner_i], eRect(0, 0, 0, 0), eRect(ePoint(0, 0), m_spinner_pos.size()), gPixmap::blitAlphaTest);
+		m_spinner_temp->blit(*m_spinner_pic[m_spinner_i], eRect(0, 0, 0, 0), eRect(ePoint(0, 0), m_spinner_pos.size()), gPixmap::blitAlphaBlend);
 
 	m_pixmap->blit(*m_spinner_temp, eRect(m_spinner_pos.topLeft(), eSize()), gRegion(m_spinner_pos), 0);
 	m_spinner_i++;
