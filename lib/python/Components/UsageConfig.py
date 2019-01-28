@@ -312,6 +312,8 @@ def InitUsageConfig():
 
 	config.usage.swap_snr_on_osd = ConfigYesNo(default = False)
 
+	config.usage.frontled_on = ConfigYesNo(default = False)
+
 	def SpinnerOnOffChanged(configElement):
 		setSpinnerOnOff(int(configElement.value))
 	config.usage.show_spinner.addNotifier(SpinnerOnOffChanged)
