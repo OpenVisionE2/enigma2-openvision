@@ -1,4 +1,4 @@
-AC_INIT([enigma2],[4],[openvision.tech])
+AC_INIT([enigma2],[7],[openvision.tech])
 AM_INIT_AUTOMAKE([dist-bzip2 no-define tar-pax -Wno-portability])
 AC_CONFIG_HEADERS([enigma2_config.h])
 
@@ -51,21 +51,10 @@ AC_SUBST(CRASHLOGEMAIL)
 AC_DEFINE_UNQUOTED(CRASH_EMAILADDR,"$CRASHLOGEMAIL",[crash log email address])
 
 AC_ARG_WITH(boxtype,
-	[  --with-boxtype=NAME box type [[none,dm7025,dm800...]]],
+	[  --with-boxtype=NAME box type [[none,dm800...]]],
 	[BOXTYPE="$withval"],[BOXTYPE="dm800"])
 AC_SUBST(BOXTYPE)
 AC_DEFINE_UNQUOTED(BOXTYPE,"$BOXTYPE",[box type])
-
-AM_CONDITIONAL(DREAMBOX, test `echo "$BOXTYPE" | cut -b 1-2` == "dm")
-AM_CONDITIONAL(HAVE_TEMPFANCONTROL, test "$BOXTYPE" == dm8000 -o "$BOXTYPE" == dm800se -o "$BOXTYPE" == dm500hd)
-if test `echo "$BOXTYPE" | cut -b 1-2` == "dm"; then
-	AC_DEFINE(DREAMBOX, 1, [Dreambox hardware])
-	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
-fi
-
-if test "$BOXTYPE" == "dm7080" -o "$BOXTYPE" == "dm820" -o "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm900" -o "$BOXTYPE" == "dm920"; then
-	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define BOXTYPE DM7080])
-fi
 
 AC_ARG_WITH(textlcd,
 	AC_HELP_STRING([--with-textlcd], [use ascii based lcd, yes or no]),
@@ -184,23 +173,6 @@ if test x"$withbwlcd255" != xno ; then
 fi
 AM_CONDITIONAL(HAVE_BWLCD255, test x"$withbwlcd255" != xno)
 
-if test `echo "$BOXTYPE" | cut -b 1-7` == "mbmicro"; then
-	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
-	AC_DEFINE(FORCE_NO_FILL_ACCELERATION, 1,[define when the framebuffer acceleration does not have fill support])
-	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])
-	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
-fi
-
-if test `echo "$BOXTYPE" | cut -b 1-2` == "vu"; then
-	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
-	AC_DEFINE(FORCE_NO_FILL_ACCELERATION, 1,[define when the framebuffer acceleration does not have fill support])
-	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])
-fi
-
-if test `echo "$BOXTYPE" | cut -b 1-5` == "ixuss"; then
-	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
-fi
-
 AC_ARG_WITH(libsdl,
 	AS_HELP_STRING([--with-libsdl],[use libsdl, yes or no]),
 	[with_libsdl=$withval],[with_libsdl=no])
@@ -293,19 +265,6 @@ if test x"$with_lcddev" != xno ; then
 	AC_DEFINE_UNQUOTED(LCD_DEV, "$withval", [Defines which device to use for lcd (e.g. /dev/fb1)])
 fi
 
-AC_ARG_WITH(amlogic,
-	AC_HELP_STRING([--with-amlogic], [use amlogic MPEG decoder]),
-	[[with_amlogic=$withval]],
-	[[with_amlogic=no]]
-)
-AM_CONDITIONAL(HAVE_AMLOGIC, test x"$with_amlogic" = xyes)
-if test x"$with_amlogic" = xyes ; then
-	AC_DEFINE(HAVE_AMLOGIC, 1,[Enables AMLOGIC decoder support])
-	PKG_CHECK_MODULES(AMCODEC, libamcodec)
-	PKG_CHECK_MODULES(AMADEC, libamadec)
-	PKG_CHECK_MODULES(DVBCSA, libdvbcsa)
-fi
-
 AC_ARG_WITH(alphablendingacceleration,
 	AC_HELP_STRING([--with-alphablendingacceleration=never/always/auto], [alphablending acceleration strategy: never accelerate / always accelerate / automatically decide when to accelerate (default)]),
 	[[with_alphablendingacceleration=$withval]],
@@ -350,6 +309,82 @@ AC_ARG_WITH(accelerationaccumulation,
 
 if test x"$with_accelerationaccumulation" = xyes ; then
 	AC_DEFINE(SUPPORT_ACCUMULATED_ACCELERATION_OPERATIONS, 1,[Accumulate blit/fill acceleration operations])
+fi
+
+if test "$BOXTYPE" == "alien5"; then
+	AC_DEFINE(HAVE_ALIEN5, 1,[enable Alien5 Tuner Hack only for testing])
+fi
+
+AC_ARG_WITH(amlogic,
+	AC_HELP_STRING([--with-amlogic], [use amlogic MPEG decoder]),
+	[[with_amlogic=$withval]],
+	[[with_amlogic=no]]
+)
+AM_CONDITIONAL(HAVE_AMLOGIC, test x"$with_amlogic" = xyes)
+if test x"$with_amlogic" = xyes ; then
+	AC_DEFINE(HAVE_AMLOGIC, 1,[Enables AMLOGIC decoder support])
+	PKG_CHECK_MODULES(AMCODEC, libamcodec)
+	PKG_CHECK_MODULES(AMADEC, libamadec)
+	PKG_CHECK_MODULES(DVBCSA, libdvbcsa)
+fi
+
+if test "$BOXTYPE" == "cc1" -o "$BOXTYPE" == "sf8008" -o "$BOXTYPE" == "ustym4kpro" -o "$BOXTYPE" == "gbmv200"; then
+	AC_DEFINE(HAVE_HISILICON, 1,[define add HISILICON chip])
+	AC_DEFINE(CONFIG_HISILICON_FB, 1,[define add HISILICON framebuffer blit])
+	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
+fi
+
+AM_CONDITIONAL(DREAMBOX, test `echo "$BOXTYPE" | cut -b 1-2` == "dm")
+AM_CONDITIONAL(HAVE_TEMPFANCONTROL, test "$BOXTYPE" == dm8000 -o "$BOXTYPE" == dm800se -o "$BOXTYPE" == dm500hd)
+if test `echo "$BOXTYPE" | cut -b 1-2` == "dm"; then
+	AC_DEFINE(DREAMBOX, 1, [Dreambox hardware])
+	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
+fi
+
+if test "$BOXTYPE" == "dm7080" -o "$BOXTYPE" == "dm820" -o "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm900" -o "$BOXTYPE" == "dm920"; then
+	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define BOXTYPE DM7080])
+fi
+
+if test "$BOXTYPE" == "dm7080" -o "$BOXTYPE" == "dm820"  -o "$BOXTYPE" == "dm900" -o "$BOXTYPE" == "dm920" -o "$BOXTYPE" == "dm520"; then
+	AC_DEFINE(CONFIG_ION, 1,[define BOX use ION Allocator])
+fi
+
+if test `echo "$BOXTYPE" | cut -b 1-5` == "ixuss"; then
+	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
+fi
+
+if test `echo "$BOXTYPE" | cut -b 1-7` == "mbmicro"; then
+	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
+	AC_DEFINE(FORCE_NO_FILL_ACCELERATION, 1,[define when the framebuffer acceleration does not have fill support])
+	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])
+	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
+fi
+
+if test "$BOXTYPE" == "u5" -o "$BOXTYPE" == "u5pvr" -o "$BOXTYPE" == "u51" -o "$BOXTYPE" == "u52" -o "$BOXTYPE" == "u53" -o "$BOXTYPE" == "u54" -o "$BOXTYPE" == "u55" -o "$BOXTYPE" == "u41"; then
+	AC_DEFINE(HAVE_HISILICON, 1,[define add HISILICON chip])
+fi
+
+if test "$BOXTYPE" == "u53"; then
+	AC_DEFINE(KEY_F6_TO_KEY_FAVORITES, 1,[define when rc FAV key sends a KEY_F6 event for its KEY_FAVORITES key])
+	AC_DEFINE(KEY_CONTEXT_MENU_TO_KEY_BACK, 1,[define when rc MOUSE key sends a KEY_CONTEXT_MENU event for its KEY_BACK key])
+	AC_DEFINE(KEY_WWW_TO_KEY_FILE, 1,[define when rc HOME key sends a KEY_WWW event for its KEY_FILE key])
+	AC_DEFINE(KEY_HELP_TO_KEY_AUDIO, 1,[define when rc SETTINGS key sends a KEY_HELP event for its KEY_AUDIO key])
+fi
+
+if test `echo "$BOXTYPE" | cut -b 1-2` == "vu"; then
+	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
+	AC_DEFINE(FORCE_NO_FILL_ACCELERATION, 1,[define when the framebuffer acceleration does not have fill support])
+	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])
+fi
+
+if test "$BOXTYPE" == "wetekplay" -o "$BOXTYPE" == "wetekplay2" -o "$BOXTYPE" == "wetekhub"; then
+	AC_DEFINE(KEY_F7_TO_KEY_MENU, 1,[define when rc sends a KEY_F7 event for its KEY_MENU])
+	AC_DEFINE(KEY_F1_TO_KEY_MEDIA, 1,[define when rc sends a KEY_F1 event for its KEY_MEDIA])
+	AC_DEFINE(KEY_HOME_TO_KEY_INFO, 1,[define when rc sends a KEY_HOME event for its KEY_INFO])
+	AC_DEFINE(KEY_BACK_TO_KEY_EXIT, 1,[define when rc sends a KEY_BACK event for its KEY_EXIT])
+	AC_DEFINE(KEY_F2_TO_KEY_EPG, 1,[define when rc sends a KEY_F2 event for its KEY_EPG])
+	AC_DEFINE(KEY_ENTER_TO_KEY_OK, 1,[define when rc sends a KEY_ENTER event for its KEY_OK])
+	AC_DEFINE(WETEKRC, 1, [WetekPlay Remote-use BACKSPACE to toggle extended functions on numeric buttons])
 fi
 
 AC_CHECK_HEADERS([sys/klog.h])
