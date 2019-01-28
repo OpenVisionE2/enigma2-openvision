@@ -193,6 +193,9 @@ class ChannelContextMenu(Screen):
 							else:
 								append_when_current_valid(current, menu, (_("Do center DVB subs on this service"), self.addCenterDVBSubsFlag), level=2)
 
+					if not eDVBDB.getInstance().isCrypted(eServiceReference(current.toString())):
+						append_when_current_valid(current, menu, (_("Add BISS CaID to service"), self.setBISS), level=0)
+
 					if haveBouquets:
 						bouquets = self.csel.getBouquetList()
 						if bouquets is None:
@@ -290,6 +293,14 @@ class ChannelContextMenu(Screen):
 
 		menu.append(ChoiceEntryComponent("menu", (_("Configuration..."), self.openSetup)))
 		self["menu"] = ChoiceList(menu)
+
+	def setCAID(self, value):
+		eDVBDB.getInstance().addCAID(eServiceReference(self.csel.getCurrentSelection().toString()), value)
+		eDVBDB.getInstance().reloadBouquets()
+		self.close()
+
+	def setBISS(self):
+		self.setCAID(0x2600)
 
 	def set3DMode(self, value):
 		playingref = self.session.nav.getCurrentlyPlayingServiceReference()
