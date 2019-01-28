@@ -17,6 +17,12 @@ void eRCDeviceInputDev::handleCode(long rccode)
 {
 	struct input_event *ev = (struct input_event *)rccode;
 
+#if WETEKRC
+	if (ev->code == KEY_BACKSPACE && ev->value == 1 ) {
+		bflag = !bflag;
+	}
+#endif
+
 	if (ev->type != EV_KEY)
 		return;
 
@@ -88,6 +94,41 @@ void eRCDeviceInputDev::handleCode(long rccode)
 		}
 	}
 
+#if WETEKRC
+	if (bflag) {
+		if (ev->code == KEY_1) {
+			ev->code = KEY_RED;
+		}
+		if (ev->code == KEY_2) {
+			ev->code = KEY_GREEN;
+		}
+		if (ev->code == KEY_3) {
+			ev->code = KEY_YELLOW;
+		}
+		if (ev->code == KEY_4) {
+			ev->code = KEY_BLUE;
+		}
+		if (ev->code == KEY_5) {
+			ev->code = KEY_PREVIOUS;
+		}
+		if (ev->code == KEY_6) {
+			ev->code = KEY_NEXT;
+		}
+		if (ev->code == KEY_7) {
+			ev->code = KEY_REWIND;
+		}
+		if (ev->code == KEY_8) {
+			ev->code = KEY_STOP;
+		}
+		if (ev->code == KEY_9) {
+			ev->code = KEY_FASTFORWARD;
+		}
+		if (ev->code == KEY_0) {
+			ev->code = KEY_PLAYPAUSE;
+		}
+	}
+#endif
+
 #if KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE
 	if (ev->code == KEY_PLAY)
 	{
@@ -96,6 +137,66 @@ void eRCDeviceInputDev::handleCode(long rccode)
 			/* 8k rc has a KEY_PLAYPAUSE key, which sends KEY_PLAY events. Correct this, so we do not have to place hacks in the keymaps. */
 			ev->code = KEY_PLAYPAUSE;
 		}
+	}
+#endif
+
+#if KEY_F6_TO_KEY_FAVORITES
+	if (ev->code == KEY_F6) {
+		ev->code = KEY_FAVORITES;
+	}
+#endif
+
+#if KEY_CONTEXT_MENU_TO_KEY_BACK
+	if (ev->code == KEY_CONTEXT_MENU) {
+		ev->code = KEY_BACK;
+	}
+#endif
+
+#if KEY_WWW_TO_KEY_FILE
+	if (ev->code == KEY_WWW) {
+		ev->code = KEY_FILE;
+	}
+#endif
+
+#if KEY_HELP_TO_KEY_AUDIO
+	if (ev->code == KEY_HELP) {
+		ev->code = KEY_AUDIO;
+	}
+#endif
+
+#if KEY_F7_TO_KEY_MENU
+	if (ev->code == KEY_F7) {
+		ev->code = KEY_MENU;
+	}
+#endif
+
+#if KEY_F1_TO_KEY_MEDIA
+	if (ev->code == KEY_F1) {
+		ev->code = KEY_MEDIA;
+	}
+#endif
+
+#if KEY_HOME_TO_KEY_INFO
+	if (ev->code == KEY_HOME) {
+		ev->code = KEY_INFO;
+	}
+#endif
+
+#if KEY_BACK_TO_KEY_EXIT
+	if (ev->code == KEY_BACK) {
+		ev->code = KEY_EXIT;
+	}
+#endif
+
+#if KEY_F2_TO_KEY_EPG
+	if (ev->code == KEY_F2) {
+		ev->code = KEY_EPG;
+	}
+#endif
+
+#if KEY_ENTER_TO_KEY_OK
+	if (ev->code == KEY_ENTER) {
+		ev->code = KEY_OK;
 	}
 #endif
 
