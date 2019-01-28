@@ -90,8 +90,8 @@ script:
 - echo installing libdvbsi++
 - pushd .
 - cd /tmp
-- git clone git://git.opendreambox.org/git/obi/libdvbsi++.git
-- cd libdvbsi++
+- git clone https://github.com/OpenVisionE2/libdvbsi.git
+- cd libdvbsi
 - autoreconf -i
 - ./configure
 - make
