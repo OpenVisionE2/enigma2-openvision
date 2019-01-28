@@ -587,6 +587,7 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 #ifdef GPIXMAP_CHECK_THRESHOLD
 		accel = (surface->data_phys && src.surface->data_phys);
 #endif
+#endif
 
 #ifdef GPIXMAP_DEBUG
 		Stopwatch s;
