@@ -467,6 +467,36 @@ void eRCDeviceInputDev::handleCode(long rccode)
 	}
 #endif
 
+#if KEY_LAST_TO_KEY_PVR
+	if (ev->code == KEY_LAST) {
+		ev->code = KEY_PVR;
+	}
+#endif
+
+#if KEY_MEDIA_TO_KEY_BOOKMARKS
+	if (ev->code == KEY_MEDIA) {
+		ev->code = KEY_BOOKMARKS;
+	}
+#endif
+
+#if KEY_VIDEO_IS_KEY_SCREEN
+	if (ev->code == KEY_VIDEO) {
+		ev->code = KEY_SCREEN;
+	}
+#endif
+
+#if KEY_ARCHIVE_TO_KEY_DIRECTORY
+	if (ev->code == KEY_ARCHIVE) {
+		ev->code = KEY_DIRECTORY;
+	}
+#endif
+
+#if KEY_TIME_TO_KEY_SLOW
+	if (ev->code == KEY_TIME) {
+		ev->code = KEY_SLOW;
+	}
+#endif
+
 	switch (ev->value)
 	{
 		case 0:
