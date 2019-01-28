@@ -546,7 +546,9 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 
 //		eDebug("[gPixmap] srcarea after scale: %d %d %d %d",
 //			srcarea.x(), srcarea.y(), srcarea.width(), srcarea.height());
-
+#ifdef FORCE_NO_ACCELNEVER
+		accel = false;
+#else
 		if (accel)
 		{
 			if (srcarea.surface() * src.surface->bypp < accelerationthreshold)
