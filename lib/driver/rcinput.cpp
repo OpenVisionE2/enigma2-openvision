@@ -200,6 +200,51 @@ void eRCDeviceInputDev::handleCode(long rccode)
 	}
 #endif
 
+#if KEY_TV_TO_KEY_STOP
+	if (ev->code == KEY_TV) {
+		ev->code = KEY_STOP;
+	}
+#endif
+
+#if KEY_VIDEO_TO_KEY_SUBTITLE
+	if (ev->code == KEY_VIDEO) {
+		ev->code = KEY_SUBTITLE;
+	}
+#endif
+
+#if KEY_RADIO_TO_KEY_RECORD
+	if (ev->code == KEY_RADIO) {
+		ev->code = KEY_RECORD;
+	}
+#endif
+
+#if KEY_HOME_TO_KEY_OPEN
+	if (ev->code == KEY_HOME) {
+		ev->code = KEY_OPEN;
+	}
+#endif
+
+#if KEY_VIDEO_TO_KEY_EPG
+	if (ev->code == KEY_VIDEO) {
+		ev->code = KEY_EPG;
+	}
+#endif
+
+#if KEY_TV_TO_KEY_MODE
+	if (ev->code == KEY_TV) {
+		ev->code = KEY_MODE;
+	}
+#endif
+
+#if KEY_TEXT_TO_KEY_AUDIO
+	if (ev->code == KEY_AUDIO) {
+		ev->code = KEY_TEXT;
+	}
+	else if (ev->code == KEY_AUDIO) {
+		ev->code = KEY_TEXT;
+	}
+#endif
+
 	switch (ev->value)
 	{
 		case 0:
