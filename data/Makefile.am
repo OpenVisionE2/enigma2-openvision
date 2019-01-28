@@ -1,5 +1,49 @@
 SUBDIRS = countries fonts extensions keymaps skin_default rc_models hw_info
 
+if HAVE_BWLCD128
+SUBDIRS += vfd128
+endif
+
+if HAVE_BWLCD140
+SUBDIRS += vfd140
+endif
+
+if HAVE_BWLCD255
+SUBDIRS += vfd255
+endif
+
+if HAVE_COLORLCD220
+SUBDIRS += display220
+endif
+
+if HAVE_COLORLCD390
+SUBDIRS += display390
+endif
+
+if HAVE_COLORLCD400
+SUBDIRS += display400
+endif
+
+if HAVE_COLORLCD480
+SUBDIRS += display480
+endif
+
+if HAVE_COLORLCD720
+SUBDIRS += display720
+endif
+
+if HAVE_COLORLCD800
+SUBDIRS += display800
+endif
+
+if HAVE_TEXTLCD
+if HAVE_7SEGMENT
+SUBDIRS += 7segment
+else
+SUBDIRS += displaytext
+endif
+endif
+
 dist_pkgdata_DATA = \
 	encoding.conf \
 	keymap.xml \
@@ -22,15 +66,10 @@ dist_pkgdata_DATA = \
 
 if HAVE_TEXTLCD
 dist_pkgdata_DATA += skin_text.xml
-else
-dist_pkgdata_DATA += skin_display.xml
 endif
 
-skin_display.xml: $(srcdir)/skin_display_default.xml
-	test -f $(srcdir)/skin_display_$(BOXTYPE).xml && cp $(srcdir)/skin_display_$(BOXTYPE).xml skin_display.xml || cp $(srcdir)/skin_display_default.xml skin_display.xml
-
 skin_text.xml: $(srcdir)/skin_text_default.xml
-	test -f $(srcdir)/skin_text_$(BOXTYPE).xml && cp $(srcdir)/skin_text_$(BOXTYPE).xml skin_text.xml || cp $(srcdir)/skin_text_$(TEXTSKIN).xml skin_text.xml
+	cp $(srcdir)/skin_text_$(TEXTSKIN).xml skin_text.xml
 
 iso-639-3.pck: $(srcdir)/iso-639-3.tab
 	python $(srcdir)/convert-iso-639-3.py $< $@
