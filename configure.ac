@@ -588,6 +588,9 @@ data/Makefile
 data/7segment/Makefile
 data/fonts/Makefile
 data/countries/Makefile
+data/display96/Makefile
+data/display128/Makefile
+data/display128dm/Makefile
 data/display220/Makefile
 data/display390/Makefile
 data/display400/Makefile
@@ -596,6 +599,10 @@ data/display720/Makefile
 data/display800/Makefile
 data/display800/Default_with_Picon_Fullscreen/Makefile
 data/displaytext/Makefile
+data/grautec70x0/Makefile
+data/grautec70x0/fonts/Makefile
+data/grautec8000/Makefile
+data/grautec8000/fonts/Makefile
 data/vfd128/Makefile
 data/vfd140/Makefile
 data/vfd255/Makefile
