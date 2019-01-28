@@ -27,11 +27,11 @@ def InitUsageConfig():
 	config.usage.hide_number_markers = ConfigYesNo(default = True)
 	config.usage.hide_number_markers.addNotifier(refreshServiceList)
 
-	config.usage.servicetype_icon_mode = ConfigSelection(default = "0", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename"))])
+	config.usage.servicetype_icon_mode = ConfigSelection(default = "1", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename"))])
 	config.usage.servicetype_icon_mode.addNotifier(refreshServiceList)
-	config.usage.crypto_icon_mode = ConfigSelection(default = "0", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename"))])
+	config.usage.crypto_icon_mode = ConfigSelection(default = "2", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename"))])
 	config.usage.crypto_icon_mode.addNotifier(refreshServiceList)
-	config.usage.record_indicator_mode = ConfigSelection(default = "0", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename")), ("3", _("Red colored"))])
+	config.usage.record_indicator_mode = ConfigSelection(default = "3", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename")), ("3", _("Red colored"))])
 	config.usage.record_indicator_mode.addNotifier(refreshServiceList)
 
 	choicelist = [("-1", _("Disable"))]
@@ -40,7 +40,7 @@ def InitUsageConfig():
 	config.usage.servicelist_column = ConfigSelection(default="-1", choices=choicelist)
 	config.usage.servicelist_column.addNotifier(refreshServiceList)
 
-	config.usage.service_icon_enable = ConfigYesNo(default = False)
+	config.usage.service_icon_enable = ConfigYesNo(default = True)
 	config.usage.service_icon_enable.addNotifier(refreshServiceList)
 	config.usage.servicelist_cursor_behavior = ConfigSelection(default = "keep", choices = [
 		("standard", _("Standard")),
@@ -57,7 +57,7 @@ def InitUsageConfig():
 	config.usage.multiepg_ask_bouquet = ConfigYesNo(default = False)
 
 	config.usage.quickzap_bouquet_change = ConfigYesNo(default = False)
-	config.usage.e1like_radio_mode = ConfigYesNo(default = True)
+	config.usage.e1like_radio_mode = ConfigYesNo(default = False)
 	choicelist = [("0", _("No timeout"))]
 	for i in range(1, 12):
 		choicelist.append((str(i), ngettext("%d second", "%d seconds", i) % i))
@@ -80,7 +80,7 @@ def InitUsageConfig():
 		("a_z", _("alphabetical")),
 		("default", _("Default")),
 		("user", _("user defined")),])
-	config.usage.menu_show_numbers = ConfigSelection(default = "no", choices = [("no", _("no")), ("menu&plugins", _("in menu and plugins")), ("menu", _("in menu only")), ("plugins", _("in plugins only"))])
+	config.usage.menu_show_numbers = ConfigSelection(default = "menu&plugins", choices = [("no", _("no")), ("menu&plugins", _("in menu and plugins")), ("menu", _("in menu only")), ("plugins", _("in plugins only"))])
 	config.usage.menu_path = ConfigSelection(default = "off", choices = [
 		("off", _("Disabled")),
 		("small", _("Small")),
@@ -118,7 +118,7 @@ def InitUsageConfig():
 	config.usage.allowed_timeshift_paths = ConfigLocations(default = ["/media/hdd/"])
 
 	config.usage.movielist_trashcan = ConfigYesNo(default=True)
-	config.usage.movielist_trashcan_days = ConfigNumber(default=8)
+	config.usage.movielist_trashcan_days = ConfigNumber(default=7)
 	config.usage.movielist_trashcan_reserve = ConfigNumber(default=40)
 	config.usage.on_movie_start = ConfigSelection(default = "resume", choices = [
 		("ask yes", _("Ask user") + " " + _("default") + " " + _("yes")),
@@ -135,7 +135,7 @@ def InitUsageConfig():
 	config.usage.leave_movieplayer_onExit = ConfigSelection(default = "popup", choices = [
 		("no", _("no")), ("popup", _("With popup")), ("without popup", _("Without popup")), ("movielist", _("Return to movie list")) ])
 
-	config.usage.setup_level = ConfigSelection(default = "simple", choices = [
+	config.usage.setup_level = ConfigSelection(default = "expert", choices = [
 		("simple", _("Normal")),
 		("intermediate", _("Advanced")),
 		("expert", _("Expert")) ])
@@ -215,7 +215,7 @@ def InitUsageConfig():
 		choicelist.append((str(i), ngettext("%d minute", "%d minutes", m) % m))
 	config.usage.timeshift_start_delay = ConfigSelection(default = "0", choices = choicelist)
 
-	config.usage.alternatives_priority = ConfigSelection(default = "0", choices = [
+	config.usage.alternatives_priority = ConfigSelection(default = "1", choices = [
 		("0", "DVB-S/-C/-T"),
 		("1", "DVB-S/-T/-C"),
 		("2", "DVB-C/-S/-T"),
@@ -287,7 +287,7 @@ def InitUsageConfig():
 
 	config.misc.disable_background_scan = ConfigYesNo(default = False)
 	config.misc.use_ci_assignment = ConfigYesNo(default = False)
-	config.usage.show_event_progress_in_servicelist = ConfigSelection(default = 'barright', choices = [
+	config.usage.show_event_progress_in_servicelist = ConfigSelection(default = 'percright', choices = [
 		('barleft', _("Progress bar left")),
 		('barright', _("Progress bar right")),
 		('percleft', _("Percentage left")),

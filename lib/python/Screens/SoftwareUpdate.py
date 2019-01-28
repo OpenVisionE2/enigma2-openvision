@@ -80,7 +80,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 		try:
 			# TODO: Use Twisted's URL fetcher, urlopen is evil. And it can
 			# run in parallel to the package update.
-			url = "https://openpli.org/status/"
+			url = "https://openvision.tech/status/"
 			try:
 				status = urlopen(url, timeout=5).read().split('!', 1)
 			except:
@@ -89,14 +89,14 @@ class UpdatePlugin(Screen, ProtectedScreen):
 				status = urlopen(url, timeout=5, context=_create_unverified_context()).read().split('!', 1)
 				print status
 			if getBoxType() in status[0].split(','):
-				message = len(status) > 1 and status[1] or _("The current image might not be stable.\nFor more information see %s.") % ("www.openpli.org")
+				message = len(status) > 1 and status[1] or _("The current image might not be stable.\nFor more information see %s.") % ("openvision.tech")
 				# strip any HTML that may be in the message, but retain line breaks
 				import re
 				message = message.replace("<br />", "\n\n").replace("<br>", "\n\n")
 				message = re.sub('<[^<]+?>', '', re.sub('&#8209;', '-', message))
 				picon = MessageBox.TYPE_ERROR
 		except:
-			message = _("The status of the current image could not be checked because %s can not be reached.") % ("www.openpli.org")
+			message = _("The status of the current image could not be checked because %s can not be reached.") % ("openvision.tech")
 			picon = MessageBox.TYPE_ERROR
 		if message != "":
 			message += "\n" + _("Do you want to update your receiver?")
@@ -111,7 +111,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 			from time import strftime
 			from datetime import datetime
 			import json
-			jsonlist = json.loads(urlopen('http://downloads.openpli.org/json/%s' % HardwareInfo().get_device_model(), timeout=5).read())
+			jsonlist = json.loads(urlopen('https://openvision.tech/download/json/%s' % HardwareInfo().get_device_model(), timeout=5).read())
 			release = about.getImageTypeString().split()[1].lower()
 			date = sorted([jsonlist[release][x]['date'] for x in jsonlist[release]], reverse=True)[0]
 			return datetime.fromtimestamp(date).strftime('%Y-%m-%d %H:%M:%S')

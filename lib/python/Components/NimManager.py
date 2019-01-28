@@ -1576,7 +1576,7 @@ def InitNimManager(nimmgr, update_slots = []):
 					"enabled": _("enabled"),
 					"nothing": _("disabled"),
 					},
-				default = "enabled")
+				default = "nothing")
 			createCableConfig(nim, x)
 		elif slot.isCompatible("DVB-T"):
 			nim.configMode = ConfigSelection(
@@ -1584,7 +1584,7 @@ def InitNimManager(nimmgr, update_slots = []):
 					"enabled": _("enabled"),
 					"nothing": _("disabled"),
 					},
-				default = "enabled")
+				default = "nothing")
 			createTerrestrialConfig(nim, x)
 		elif slot.isCompatible("ATSC"):
 			nim.configMode = ConfigSelection(
@@ -1592,7 +1592,7 @@ def InitNimManager(nimmgr, update_slots = []):
 					"enabled": _("enabled"),
 					"nothing": _("disabled"),
 					},
-				default = "enabled")
+				default = "nothing")
 			createATSCConfig(nim, x)
 		else:
 			empty_slots += 1
