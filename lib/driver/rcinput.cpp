@@ -281,6 +281,48 @@ void eRCDeviceInputDev::handleCode(long rccode)
 	}
 #endif
 
+#if KEY_LIST_TO_KEY_PVR
+	if (ev->code == KEY_LIST) {
+		ev->code = KEY_PVR;
+	}
+#endif
+
+#if KEY_MEDIA_TO_KEY_LIST
+	if (ev->code == KEY_MEDIA) {
+		ev->code = KEY_LIST;
+	}
+#endif
+
+#if KEY_VIDEO_TO_KEY_ANGLE
+	if (ev->code == KEY_VIDEO) {
+		ev->code = KEY_ANGLE;
+	}
+#endif
+
+#if KEY_LAST_TO_KEY_BACK
+	if (ev->code == KEY_LAST) {
+		ev->code = KEY_BACK;
+	}
+#endif
+
+#if KEY_BOOKMARKS_TO_KEY_MEDIA
+	if (ev->code == KEY_BOOKMARKS) {
+		ev->code = KEY_MEDIA;
+	}
+#endif
+
+#if KEY_VIDEO_TO_KEY_FAVORITES
+	if (ev->code == KEY_VIDEO) {
+		ev->code = KEY_FAVORITES;
+	}
+#endif
+
+#if KEY_VIDEO_TO_KEY_BOOKMARKS
+	if (ev->code == KEY_VIDEO) {
+		ev->code = KEY_BOOKMARKS;
+	}
+#endif
+
 	switch (ev->value)
 	{
 		case 0:
