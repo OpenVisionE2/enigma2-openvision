@@ -94,6 +94,66 @@ void eRCDeviceInputDev::handleCode(long rccode)
 		}
 	}
 
+#if TIVIARRC
+	if (ev->code == KEY_EPG) {
+		ev->code = KEY_INFO;
+	}
+	else if (ev->code == KEY_MEDIA) {
+		ev->code = KEY_EPG;
+	}
+	else if (ev->code == KEY_INFO) {
+		ev->code = KEY_BACK;
+	}
+	else if (ev->code == KEY_PREVIOUS) {
+		ev->code = KEY_SUBTITLE;
+	}
+	else if (ev->code == KEY_NEXT) {
+		ev->code = KEY_TEXT;
+	}
+	else if (ev->code == KEY_BACK) {
+		ev->code = KEY_MEDIA;
+	}
+	else if (ev->code == KEY_PLAYPAUSE) {
+		ev->code = KEY_PLAY;
+	}
+	else if (ev->code == KEY_RECORD) {
+		ev->code = KEY_PREVIOUS;
+	}
+	else if (ev->code == KEY_STOP) {
+		ev->code = KEY_PAUSE;
+	}
+	else if (ev->code == KEY_PROGRAM) {
+		ev->code = KEY_STOP;
+	}
+	else if (ev->code == KEY_BOOKMARKS) {
+		ev->code = KEY_RECORD;
+	}
+	else if (ev->code == KEY_SLEEP) {
+		ev->code = KEY_NEXT;
+	}
+	else if (ev->code == KEY_TEXT) {
+		ev->code = KEY_PAGEUP;
+	}
+	else if (ev->code == KEY_SUBTITLE) {
+		ev->code = KEY_PAGEDOWN;
+	}
+	else if (ev->code == KEY_LIST) {
+		ev->code = KEY_F3;
+	}
+	else if (ev->code ==  KEY_RADIO) {
+		ev->code =  KEY_MODE;
+	}
+	else if (ev->code == KEY_AUDIO) {
+		ev->code = KEY_TV;
+	}
+	else if (ev->code == KEY_HELP) {
+		ev->code = KEY_SLEEP;
+	}
+	else if (ev->code == KEY_TV) {
+		ev->code = KEY_VMODE;
+	}
+#endif
+
 #if WETEKRC
 	if (bflag) {
 		if (ev->code == KEY_1) {
@@ -320,6 +380,90 @@ void eRCDeviceInputDev::handleCode(long rccode)
 #if KEY_VIDEO_TO_KEY_BOOKMARKS
 	if (ev->code == KEY_VIDEO) {
 		ev->code = KEY_BOOKMARKS;
+	}
+#endif
+
+#if KEY_POWER2_TO_KEY_WWW
+	if (ev->code == KEY_POWER2) {
+		ev->code = KEY_WWW;
+	}
+#endif
+
+#if KEY_DIRECTORY_TO_KEY_FILE
+	if (ev->code == KEY_DIRECTORY) {
+		ev->code = KEY_FILE;
+	}
+#endif
+
+#if KEY_HELP_TO_KEY_INFO
+	if (ev->code == KEY_HELP) {
+		ev->code = KEY_INFO;
+	}
+#endif
+
+#if KEY_INFO_TO_KEY_EPG
+	if (ev->code == KEY_INFO) {
+		ev->code = KEY_EPG;
+	}
+#endif
+
+#if KEY_GUIDE_TO_KEY_EPG
+	if (ev->code == KEY_HELP) {
+		ev->code = KEY_EPG;
+	}
+#endif
+
+#if KEY_F2_TO_KEY_F6
+	if (ev->code == KEY_F2) {
+		ev->code = KEY_F6;
+	}
+#endif
+
+#if KEY_SCREEN_TO_KEY_MODE
+	if (ev->code == KEY_SCREEN) {
+		ev->code = KEY_MODE;
+	}
+#endif
+
+#if KEY_CONTEXT_MENU_TO_KEY_AUX
+	if (ev->code == KEY_CONTEXT_MENU) {
+		ev->code = KEY_AUX;
+	}
+#endif
+
+#if KEY_MEDIA_TO_KEY_OPEN
+	if (ev->code == KEY_MEDIA) {
+		ev->code = KEY_OPEN;
+	}
+#endif
+
+#if KEY_SEARCH_TO_KEY_WWW
+	if (ev->code == KEY_SEARCH) {
+		ev->code = KEY_WWW;
+	}
+#endif
+
+#if KEY_OPTION_TO_KEY_PC
+	if (ev->code == KEY_OPTION) {
+		ev->code = KEY_PC;
+	}
+#endif
+
+#if KEY_ZOOM_TO_KEY_SCREEN
+	if (ev->code == KEY_ZOOM) {
+		ev->code = KEY_SCREEN;
+	}
+#endif
+
+#if KEY_VIDEO_TO_KEY_MODE
+	if (ev->code == KEY_VIDEO) {
+		ev->code = KEY_MODE;
+	}
+#endif
+
+#if KEY_BOOKMARKS_TO_KEY_DIRECTORY
+	if (ev->code == KEY_BOOKMARKS) {
+		ev->code = KEY_DIRECTORY;
 	}
 #endif
 
