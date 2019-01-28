@@ -3,6 +3,7 @@ from Components.SystemInfo import SystemInfo
 from Tools.CList import CList
 from Tools.HardwareInfo import HardwareInfo
 import os
+from enigma import getBoxType
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -52,7 +53,13 @@ class VideoHardware:
 								"multi":	{ 50: "2160p25", 60: "2160p30" },
 								"auto":		{ 50: "2160p25", 60: "2160p30", 24: "2160p24" } }
 
-	rates["2160p"] =		{ "50Hz":	{ 50: "2160p50" },
+	if getBoxType().startswith('dm9'):
+		rates["2160p"] =	{ 	"50Hz":		{ 50: "2160p50" },
+								"60Hz":		{ 60: "2160p60" },
+								"multi":	{ 50: "2160p50", 60: "2160p60" },
+								"auto":		{ 50: "2160p50", 60: "2160p60", 24: "2160p24" } }
+	else:
+		rates["2160p"] =	{ 	"50Hz":		{ 50: "2160p50" },
 								"60Hz":		{ 60: "2160p" },
 								"multi":	{ 50: "2160p50", 60: "2160p" }, 
 								"auto":		{ 50: "2160p50", 60: "2160p", 24: "2160p24" }}
