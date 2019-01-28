@@ -219,11 +219,16 @@ RESULT eAMLTSMPEGDecoder::setVideoPID(int vpid, int type)
 				t = "MPEG4 H264";
 				break;
 			case MPEG4_Part2:
-				m_codec.video_type = VFORMAT_MPEG4; //maybe?
+				m_codec.video_type = VFORMAT_MPEG4;
 				t = "MPEG4 Part2";
 				break;
-		}
-		eDebug("[eAMLTSMPEGDecoder::setVideoPID] vpid=%d, type=%d %s", vpid, type, t.c_str());
+			case H265_HEVC:
+				m_codec.video_type = VFORMAT_HEVC;
+				t = "H265 HEVC";
+				break;
+ 		}
+ 		eDebug("[eAMLTSMPEGDecoder::setVideoPID] vpid=%d, type=%d %s", vpid, type, t.c_str());
+		aml_change_vpid(vpid, m_codec.video_type);
 	}
 	return 0;
 }
@@ -753,3 +758,10 @@ int eAMLTSMPEGDecoder::getVideoAspect()
 
 	return m_aspect == 1 ? 2 : 3;
 }
+
+int eAMLTSMPEGDecoder::getVideoGamma()
+{
+	//if (m_video)
+	//	return m_video->getGamma();
+	return -1;
+ }

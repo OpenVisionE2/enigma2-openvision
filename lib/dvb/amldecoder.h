@@ -89,7 +89,7 @@ private:
 	void *adec_handle;
 
 public:
-	enum { aMPEG, aAC3, aDTS, aAAC, aAACHE, aLPCM, aDTSHD, aDDP, MPEG2 = 0, MPEG4_H264, MPEG1, MPEG4_Part2, VC1, VC1_SM };
+	enum { aMPEG, aAC3, aDTS, aAAC, aAACHE, aLPCM, aDTSHD, aDDP,UNKNOWN = -1, MPEG2=0, MPEG4_H264, VC1 = 3, MPEG4_Part2, VC1_SM, MPEG1, H265_HEVC, AVS = 16 };
 	enum { pidNone = -1 };
 	eAMLTSMPEGDecoder(eDVBDemux *demux, int decoder);
 	virtual ~eAMLTSMPEGDecoder();
@@ -141,6 +141,7 @@ public:
 	int getVideoProgressive();
 	int getVideoFrameRate();
 	int getVideoAspect();
+	int getVideoGamma();
 	static RESULT setHwPCMDelay(int delay);
 	static RESULT setHwAC3Delay(int delay);
 };
