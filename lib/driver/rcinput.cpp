@@ -245,6 +245,42 @@ void eRCDeviceInputDev::handleCode(long rccode)
 	}
 #endif
 
+#if KEY_SCREEN_TO_KEY_ANGLE
+	if (ev->code == KEY_SCREEN) {
+		ev->code = KEY_ANGLE;
+	}
+#endif
+
+#if KEY_TIME_TO_KEY_SLEEP
+	if (ev->code == KEY_SLEEP) {
+		ev->code = KEY_PROGRAM;
+	}
+#endif
+
+#if KEY_MODE_TO_KEY_AUDIO
+	if (ev->code == KEY_MODE) {
+		ev->code = KEY_AUDIO;
+	}
+#endif
+
+#if KEY_F3_TO_KEY_LIST
+	if (ev->code == KEY_F3) {
+		ev->code = KEY_LIST;
+	}
+#endif
+
+#if KEY_F1_TO_KEY_F2
+	if (ev->code == KEY_F1) {
+		ev->code = KEY_F2;
+	}
+#endif
+
+#if KEY_BOOKMARKS_IS_KEY_DIRECTORY
+	if (ev->code == KEY_BOOKMARKS) {
+		ev->code = KEY_DIRECTORY;
+	}
+#endif
+
 	switch (ev->value)
 	{
 		case 0:
