@@ -140,6 +140,7 @@ class eTextPara: public iObject
 	std::list<int> lineOffsets;
 	std::list<int> lineChars;
 	int charCount;
+	int lineCount;
 	int totalheight;
 	int bboxValid;
 	eRect boundBox;
@@ -169,6 +170,7 @@ public:
 	int renderString(const char *string, int flags=0, int border=0);
 
 	void clear();
+	int getLineCount(void) const { return lineCount; }
 
 	void blit(gDC &dc, const ePoint &offset, const gRGB &background, const gRGB &foreground, bool border = false);
 
