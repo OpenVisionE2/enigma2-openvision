@@ -98,7 +98,7 @@ FT_Error fontRenderClass::FTC_Face_Requester(FTC_FaceID	face_id, FT_Face* aface)
 	int error;
 	if ((error=FT_New_Face(library, font->filename.c_str(), 0, aface)))
 	{
-		eDebug("[FONT] failed: %m");
+		eDebug("[FONT] failed: %s", strerror(error));
 		return error;
 	}
 	FT_Select_Charmap(*aface, ft_encoding_unicode);
@@ -119,12 +119,20 @@ int fontRenderClass::getFaceProperties(const std::string &face, FTC_FaceID &id, 
 	return -1;
 }
 
-inline FT_Error fontRenderClass::getGlyphBitmap(FTC_Image_Desc *font, GlyphIndex glyph_index, FTC_SBit *sbit)
+#ifdef HAVE_FREETYPE2
+inline FT_Error fontRenderClass::getGlyphBitmap(FTC_Image_Desc *font, FT_UInt glyph_index, FTC_SBit *sbit)
+#else
+inline FT_Error fontRenderClass::getGlyphBitmap(FTC_Image_Desc *font, FT_ULong glyph_index, FTC_SBit *sbit)
+#endif
 {
 	return FTC_SBit_Cache_Lookup(sbitsCache, font, glyph_index, sbit);
 }
 
-inline FT_Error fontRenderClass::getGlyphImage(FTC_Image_Desc *font, GlyphIndex glyph_index, FT_Glyph *glyph, FT_Glyph *borderglyph, int bordersize)
+#ifdef HAVE_FREETYPE2
+inline FT_Error fontRenderClass::getGlyphImage(FTC_Image_Desc *font, FT_UInt glyph_index, FT_Glyph *glyph, FT_Glyph *borderglyph, int bordersize)
+#else
+inline FT_Error fontRenderClass::getGlyphImage(FTC_Image_Desc *font, FT_ULong glyph_index, FT_Glyph *glyph, FT_Glyph *borderglyph, int bordersize)
+#endif
 {
 	FT_Glyph image;
 	FT_Error err = FTC_ImageCache_Lookup(imageCache, font, glyph_index, &image, NULL);
@@ -152,7 +160,8 @@ inline FT_Error fontRenderClass::getGlyphImage(FTC_Image_Desc *font, GlyphIndex 
 
 std::string fontRenderClass::AddFont(const std::string &filename, const std::string &name, int scale, int renderflags)
 {
-	eDebugNoNewLineStart("[FONT] adding font %s", filename.c_str());
+	eDebugNoNewLineStart("[FONT] adding font %s...", filename.c_str());
+	fflush(stdout);
 	int error;
 	fontListEntry *n=new fontListEntry;
 
@@ -161,7 +170,7 @@ std::string fontRenderClass::AddFont(const std::string &filename, const std::str
 	singleLock s(ftlock);
 
 	if ((error=FT_New_Face(library, filename.c_str(), 0, &face)))
-		eFatal("[FONT] failed: %m");
+		eDebugNoNewLine("[FONT] failed: %s", strerror(error));
 
 	n->filename=filename;
 	n->face=name;
@@ -169,7 +178,7 @@ std::string fontRenderClass::AddFont(const std::string &filename, const std::str
 	FT_Done_Face(face);
 
 	n->next=font;
-	eDebugNoNewLine(" -> %s\n", n->face.c_str());
+	eDebugNoNewLine("OK (%s)", n->face.c_str());
 	font=n;
 
 	return n->face;
@@ -191,6 +200,7 @@ fontRenderClass::fontRenderClass(): fb(fbClass::getInstance())
 		}
 	}
 	eDebug("[FONT] loading fonts...");
+	fflush(stdout);
 	font=0;
 
 	int maxbytes=4*1024*1024;
@@ -307,18 +317,26 @@ Font::Font(fontRenderClass *render, FTC_FaceID faceid, int isize, int tw, int re
 //	font.image_type |= ftc_image_flag_autohinted;
 }
 
-Font::~Font()
-{
-}
-
-inline FT_Error Font::getGlyphBitmap(GlyphIndex glyph_index, FTC_SBit *sbit)
+#ifdef HAVE_FREETYPE2
+inline FT_Error Font::getGlyphBitmap(FT_UInt glyph_index, FTC_SBit *sbit)
+#else
+inline FT_Error Font::getGlyphBitmap(FT_ULong glyph_index, FTC_SBit *sbit)
+#endif
 {
 	return renderer->getGlyphBitmap(&font, glyph_index, sbit);
 }
 
-inline FT_Error Font::getGlyphImage(GlyphIndex glyph_index, FT_Glyph *glyph, FT_Glyph *borderglyph, int bordersize)
+#ifdef HAVE_FREETYPE2
+inline FT_Error Font::getGlyphImage(FT_UInt glyph_index, FT_Glyph *glyph, FT_Glyph *borderglyph, int bordersize)
+#else
+inline FT_Error Font::getGlyphImage(FT_ULong glyph_index, FT_Glyph *glyph, FT_Glyph *borderglyph, int bordersize)
+#endif
 {
 	return renderer->getGlyphImage(&font, glyph_index, glyph, borderglyph, bordersize);
+}
+
+Font::~Font()
+{
 }
 
 DEFINE_REF(eTextPara);
@@ -552,6 +570,7 @@ void eTextPara::newLine(int flags)
 		maximum.setHeight(cursor.y());
 	previous=0;
 	totalheight += height;
+	lineCount++;
 }
 
 eTextPara::~eTextPara()
@@ -593,7 +612,7 @@ void eTextPara::setFont(Font *fnt, Font *replacement, Font *fallback)
 					    &replacement_font->scaler,
 					    &replacement_font->size) < 0))
 		{
-			eDebug("[eTextPara] setFont FTC_Manager_Lookup_Size replacement_font failed!");
+			eDebug("[eTextPara] FTC_Manager_Lookup_Size failed!");
 			return;
 		}
 	}
@@ -606,7 +625,7 @@ void eTextPara::setFont(Font *fnt, Font *replacement, Font *fallback)
 					    &current_font->scaler,
 					    &current_font->size) < 0))
 		{
-			eDebug("[eTextPara] setFont FTC_Manager_Lookup_Size current_font failed!");
+			eDebug("[eTextPara] FTC_Manager_Lookup_Size failed!");
 			return;
 		}
 	}
@@ -637,10 +656,16 @@ int eTextPara::renderString(const char *string, int rflags, int border)
 	if (!current_font)
 		return -1;
 
-	if (!current_face)
-		eFatal("[eTextPara] renderString: no current_face");
-	if (!current_face->size)
-		eFatal("[eTextPara] renderString: no current_face->size");
+	if ((FTC_Manager_LookupFace(fontRenderClass::instance->cacheManager,
+				current_font->scaler.face_id,
+				&current_face) < 0) ||
+	    (FTC_Manager_LookupSize(fontRenderClass::instance->cacheManager,
+				&current_font->scaler,
+				&current_font->size) < 0))
+	{
+		eDebug("[eTextPara] FTC_Manager_Lookup_Size failed!");
+		return -1;
+	}
 
 	if (cursor.y()==-1)
 	{
@@ -662,19 +687,9 @@ int eTextPara::renderString(const char *string, int rflags, int border)
 			}
 		}
 		totalheight = height >> 6;
+		lineCount = 1;
 		cursor=ePoint(area.x(), area.y()+(ascender>>6));
 		left=cursor.x();
-	}
-
-	if ((FTC_Manager_LookupFace(fontRenderClass::instance->cacheManager,
- 				    current_font->scaler.face_id,
- 				    &current_face) < 0) ||
-	    (FTC_Manager_LookupSize(fontRenderClass::instance->cacheManager,
-				    &current_font->scaler,
-				    &current_font->size) < 0))
-	{
-		eDebug("[eTextPara] renderString FTC_Manager_Lookup_Size current_font failed!");
-		return -1;
 	}
 
 	std::vector<unsigned long> uc_string, uc_visual;
@@ -1295,6 +1310,7 @@ void eTextPara::clear()
 	}
 	glyphs.clear();
 	totalheight = 0;
+	lineCount = 0;
 }
 
 eAutoInitP0<fontRenderClass> init_fontRenderClass(eAutoInitNumbers::graphic-1, "Font Render Class");
