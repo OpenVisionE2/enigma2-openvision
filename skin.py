@@ -103,6 +103,8 @@ addSkin('skin_second_infobar.xml')
 
 display_skin_id = 1
 addSkin('skin_display.xml')
+if SystemInfo["grautec"]:
+	addSkin('skin_display_grautec.xml')
 addSkin('skin_text.xml')
 addSkin('skin_subtitles.xml')
 
