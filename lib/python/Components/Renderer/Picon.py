@@ -1,6 +1,6 @@
 import os, re, unicodedata
 from Renderer import Renderer
-from enigma import ePixmap
+from enigma import ePixmap, getBoxType
 from Tools.Alternatives import GetWithAlternative
 from Tools.Directories import pathExists, SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, resolveFilename
 from Components.Harddisk import harddiskmanager
@@ -21,7 +21,10 @@ def initPiconPaths():
 def onMountpointAdded(mountpoint):
 	global searchPaths
 	try:
-		path = os.path.join(mountpoint, 'picon') + '/'
+		if getBoxType() in ('vuultimo','sezammarvel','xpeedlx3','atemionemesis','mbultra','beyonwizt4','hd2400','vuduo2') and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+			path = os.path.join(mountpoint, 'piconlcd') + '/'
+		else:
+			path = os.path.join(mountpoint, 'picon') + '/'
 		if os.path.isdir(path) and path not in searchPaths:
 			for fn in os.listdir(path):
 				if fn.endswith('.png'):
@@ -33,7 +36,10 @@ def onMountpointAdded(mountpoint):
 
 def onMountpointRemoved(mountpoint):
 	global searchPaths
-	path = os.path.join(mountpoint, 'picon') + '/'
+	if getBoxType() in ('vuultimo','sezammarvel','xpeedlx3','atemionemesis','mbultra','beyonwizt4','hd2400','vuduo2') and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+		path = os.path.join(mountpoint, 'piconlcd') + '/'
+	else:
+		path = os.path.join(mountpoint, 'picon') + '/'
 	try:
 		searchPaths.remove(path)
 		print "[Picon] removed path:", path
@@ -98,14 +104,24 @@ class Picon(Renderer):
 		self.pngname = ""
 		self.lastPath = None
 		pngname = findPicon("picon_default")
+		if getBoxType() in ('vuultimo','sezammarvel','xpeedlx3','atemionemesis','mbultra','beyonwizt4','hd2400','vuduo2') and not SystemInfo["grautec"]:
+			pngname = findPicon("lcd_picon_default")
+		else:
+			pngname = findPicon("picon_default")
 		self.defaultpngname = None
 		self.showPicon = True
 		if not pngname:
-			tmp = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
+			if getBoxType() in ('vuultimo','sezammarvel','xpeedlx3','atemionemesis','mbultra','beyonwizt4','hd2400','vuduo2') and not SystemInfo["grautec"]:
+				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "lcd_picon_default.png")
+			else:
+				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
 			if pathExists(tmp):
 				pngname = tmp
 			else:
-				pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/picon_default.png")
+				if getBoxType() in ('vuultimo','sezammarvel','xpeedlx3','atemionemesis','mbultra','beyonwizt4','hd2400','vuduo2') and not SystemInfo["grautec"]:
+					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/lcd_picon_default.png")
+				else:
+					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/picon_default.png")
 		if os.path.getsize(pngname):
 			self.defaultpngname = pngname
 
