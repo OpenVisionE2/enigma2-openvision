@@ -16,7 +16,7 @@ from enigma import eEnv
 import os
 
 SKINXML = "skin.xml"
-DEFAULTSKIN = "<Default Skin>"
+DEFAULTSKIN = _("<Default Skin>")
 PICONSKINXML = "skin_display_picon.xml"
 PICONDEFAULTSKIN = _("<Default Skin with Picon>")
 ALTERNATESKINXML = "skin_display_alternate.xml"
