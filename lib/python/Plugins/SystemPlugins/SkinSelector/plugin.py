@@ -38,9 +38,9 @@ class SkinSelector(Screen):
 		if os.path.exists(os.path.join(self.root, SKINXML)):
 			self.skinlist.append(DEFAULTSKIN)
 		if os.path.exists(os.path.join(self.root, PICONSKINXML)):
-			self.skinlist.append(self.PICONDEFAULTSKIN)
+			self.skinlist.append(PICONDEFAULTSKIN)
 		if os.path.exists(os.path.join(self.root, ALTERNATESKINXML)):
-			self.skinlist.append(self.ALTERNATESKIN)
+			self.skinlist.append(ALTERNATESKIN)
 		for root, dirs, files in os.walk(self.root, followlinks=True):
 			for subdir in dirs:
 				file = os.path.join(os.path.join(root, subdir), SKINXML)
