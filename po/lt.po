@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-05 11:50+0330\n"
-"PO-Revision-Date: 2019-01-11 19:33+0200\n"
+"PO-Revision-Date: 2019-02-05 15:10+0200\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
 "Language: lt_LT\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 msgid ""
 "\n"
@@ -382,14 +382,15 @@ msgstr "%d:%02d"
 msgid "%k:%M %e/%m"
 msgstr "%m/%e %k:%M"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "%s\n"
 "Do you still want to flash image\n"
 "%s?"
 msgstr ""
-"Ar norite įdiegti šį atvaizdą\n"
-"%s"
+"%s\n"
+"Ar vis tiek norite įdiegti atvaizdą\n"
+"%s?"
 
 #, python-format
 msgid ""
@@ -618,20 +619,17 @@ msgstr "9"
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - numatytasis (išjungta)"
 
-#, fuzzy
 msgid "<Alternate Skin>"
-msgstr "Alternatyva"
+msgstr "< Alternatyvi tema >"
 
 msgid "<Current movielist location>"
 msgstr "<Dabartinė filmų sąrašo vieta>"
 
-#, fuzzy
 msgid "<Default Skin with Picon>"
-msgstr "<Numatytoji filmų vieta>"
+msgstr "<Numatytoji tema su logotipu>"
 
-#, fuzzy
 msgid "<Default Skin>"
-msgstr "Numatytosios nuostatos"
+msgstr "<Numatytoji tema>"
 
 msgid "<Default movie location>"
 msgstr "<Numatytoji filmų vieta>"
@@ -814,9 +812,8 @@ msgstr "Adapterio nustatymai"
 msgid "Add"
 msgstr "Pridėti"
 
-#, fuzzy
 msgid "Add BISS CaID to service"
-msgstr "Pridėti kanalą"
+msgstr "Pridėti Biss Caid į kanalą"
 
 msgid "Add a mark"
 msgstr "Pridėti žymę"
@@ -1002,7 +999,7 @@ msgid "Alternative"
 msgstr "Alternatyva"
 
 msgid "Alternative URL for images listed on FlashImage"
-msgstr ""
+msgstr "Alternatyvus atvaizdų URL, rodomas vidiniame atvaizde"
 
 msgid "Alternative numbering mode"
 msgstr "Alternatyvus numeravimo būdas"
@@ -1784,7 +1781,7 @@ msgid "Clear playlist"
 msgstr "Išvalyti grojaraštį"
 
 msgid "Client is streaming from this box!"
-msgstr ""
+msgstr "Klientas transliuoja iš šio imtuvo!"
 
 msgid "Clone TV screen to LCD"
 msgstr "Klonuoti TV vaizdą į LCD"
@@ -2485,9 +2482,8 @@ msgstr "Datos / laiko įvestis"
 msgid "Debug to file"
 msgstr "Sukurti klaidų žurnalo failą"
 
-#, fuzzy
 msgid "Deep Standby LED"
-msgstr "Visiškai išjungti"
+msgstr "Gilaus budėjimo LED"
 
 msgid "Deep standby"
 msgstr "Visiškai išjungti"
@@ -2727,15 +2723,13 @@ msgid "Display >16:9 content as"
 msgstr ">16:9 santykio turinį rodyti, kaip"
 
 msgid "Display EPG as MultiEPG"
-msgstr ""
+msgstr "Rodyti EPG kaip MultiEPG"
 
-#, fuzzy
 msgid "Display EPG info for current event"
-msgstr "Išsaugoti laiko poslinkį tik šiam įvykiui"
+msgstr "Rodyti EPG informaciją apie dabartinį įvykį"
 
-#, fuzzy
 msgid "Display EPG list for current channel"
-msgstr "Rodyti šio kanalo EPG..."
+msgstr "Rodyti dabartinio kanalo EPG sąrašą"
 
 msgid "Display and userinterface"
 msgstr "Ekranas ir vartotojo sąsaja"
@@ -3184,7 +3178,7 @@ msgid "Enter URL"
 msgstr "Įrašykite internetinį adresą"
 
 msgid "Enter an URL where alternative images could be listed for FlashImage"
-msgstr ""
+msgstr "Įveskite URL, kuriame vidiniame atvaizde gali būti įrašyti alternatyvūs atvaizdai"
 
 msgid "Enter if you are in the east or west hemisphere."
 msgstr "Įveskite, jei esate rytų ar vakarų pusrutulyje."
@@ -3707,7 +3701,7 @@ msgid "From :"
 msgstr "Nuo:"
 
 msgid "Front LED on"
-msgstr ""
+msgstr "Įjungti priekinį LED"
 
 #, python-format
 msgid "Frontprocessor version: %s"
@@ -3981,7 +3975,7 @@ msgid "Harddisk Setup"
 msgstr "HDD valdymas"
 
 msgid "Harddisk is not in sleepmode it could be in use!"
-msgstr ""
+msgstr "Kietasis diskas yra ne miego režime, jis gali būti naudojamas!"
 
 msgid "Hardware: "
 msgstr "Techninė įranga: "
@@ -4415,16 +4409,16 @@ msgstr "Meno sala"
 msgid "Israel"
 msgstr "Izraelis"
 
-#, fuzzy
 msgid ""
 "It seems you did not see all the eight arrow heads. This means your TV has overscan enabled, and is not configured properly.\n"
 "\n"
 "Please refer to your TV's manual to find how you can disable overscan on your TV. Look for terms like 'Just fit', 'Full width', etc. If you can't find it, ask other users at https://openvision.tech\n"
 "\n"
 msgstr ""
-"Atrodo, kad nematote visų aštuonių rodyklių galų. Tai reiškia, kad TV įjungtas ekrano kraštinių nustatymas, bet jis netinkamai sukonfigūruotas.\n"
+"Atrodo negalima pamatyti visų aštuonių rodyklių galvučių. Tai reiškia, kad jūsų televizoriuje vaizdo kraštinių rodymas jau įjungtas, ir jis nėra tinkamai sukonfigūruotas.\n"
 "\n"
-"Susiraskite savo televizoriaus aprašyme, kaip išjungti ekrano kraštinių nustatymą Jūsų televizoriuje. Ieškokite terminų, pvz., \"Tiesiog tinkamas\", \"Visiškas plotis\" ir t.t. Jei negalite jo rasti, paprašykite kitų naudotojų adresu http://forums.openpli.org..\n"
+"Prašome žiūrėti į savo televizoriaus vadovą ir rasti, kaip galite išjungti vaizdo kraštinių rodymą savo televizoriuje. Ieškokite sąvokų kaip \"Tiesiog tinka\", \"Visas plotis\" ir t.t Jei negalite jų rasti, paprašykite kitų vartotojų https://openvision.tech\n"
+"\n"
 
 msgid "Italian"
 msgstr "Italų"
@@ -6017,7 +6011,7 @@ msgid "Positioner setup log"
 msgstr "Pozicionieriaus sąrankos žurnalas"
 
 msgid "Power LED"
-msgstr ""
+msgstr "Maitinimo LED"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Maitinimo valdymas. Daugiau informacijos ieškokite savo imtuvo naudojimo instrukcijoje."
@@ -6289,9 +6283,8 @@ msgstr "Tikrai ištrinti baigtus laikmačius?"
 msgid "Really exit the subservices quickzap?"
 msgstr "Ar tikrai užverti greitą subkanalų perjungimą?"
 
-#, fuzzy
 msgid "Really reboot into Recovery Mode?"
-msgstr "Tikrai perjungti dabar?"
+msgstr "Tikrai iš naujo paleisti į atkūrimo režimą?"
 
 msgid "Really reboot now?"
 msgstr "Tikrai perjungti dabar?"
@@ -6361,9 +6354,8 @@ msgstr "Įrašai"
 msgid "Recordings always have priority"
 msgstr "Įrašai visada turi pirmenybę"
 
-#, fuzzy
 msgid "Recovery Mode"
-msgstr "Vartotojo režimas"
+msgstr "Atkūrimo režimas"
 
 msgid "Red"
 msgstr "Raudonas"
@@ -8022,9 +8014,8 @@ msgstr "Budėjimo režimas"
 msgid "Standby / restart"
 msgstr "Išjungimo meniu"
 
-#, fuzzy
 msgid "Standby LED"
-msgstr "LED budėjime"
+msgstr "Budėjimo LED"
 
 msgid "Standby after current event"
 msgstr "Po šio įvykio pereiti į budėjimo režimą"
@@ -9108,18 +9099,16 @@ msgid "Turks and Caicos Islands"
 msgstr "Terkso ir Kaikoso salos"
 
 msgid "Turn on the front LED (this needs enigma2 restart)."
-msgstr ""
+msgstr "Įjunkite priekinį šviesos diodą (tai reikalauja pakartotinio paleidimo)."
 
-#, fuzzy
 msgid "Turn on the power LED during deep standby."
-msgstr "Įjunkite maitinimo LED indikatorių budėjimo režimu metu."
+msgstr "Įjunkite įtampos LED gilaus budėjimo režime."
 
 msgid "Turn on the power LED during standby."
 msgstr "Įjunkite maitinimo LED indikatorių budėjimo režimu metu."
 
-#, fuzzy
 msgid "Turn on the power LED."
-msgstr "Įjunkite maitinimo LED indikatorių budėjimo režimu metu."
+msgstr "Įjunkite maitinimo LED indikatorių."
 
 msgid "Turning step size"
 msgstr "Sukimosi žingsnio dydis"
@@ -9392,9 +9381,8 @@ msgstr "Naudoti šiuos nustatymus?"
 msgid "Use this video enhancement settings?"
 msgstr "Naudoti šiuos vaizdo gerinimo nustatymus?"
 
-#, fuzzy
 msgid "Use transponder time"
-msgstr "rodyti transponderio informaciją"
+msgstr "Naudoti transponderio laiką"
 
 msgid "Use trash can in movielist"
 msgstr "Naudoti šiukšlinę filmų sąraše"
@@ -10235,14 +10223,13 @@ msgstr ""
 "Spauskite 'OK', kad tęsti."
 
 msgid "Your receiver is rebooting"
-msgstr "Imtuvas paleidžiamas iš naujo"
+msgstr "Jūsų imtuvas paleidžiamas iš naujo"
 
-#, fuzzy
 msgid "Your receiver is rebooting into Recovery Mode"
-msgstr "Imtuvas paleidžiamas iš naujo"
+msgstr "Jūsų imtuvas paleidžiamas iš naujo į atkūrimo režimą"
 
 msgid "Your receiver is shutting down"
-msgstr "Imtuvas išjungiamas"
+msgstr "Jūsų Imtuvas išjungiamas"
 
 msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
 msgstr "Jūsų imtuvas gali tapti netinkamu naudoti. Vadovaukitės vartotojo vadovu, prieš paleisdami imtuvą iš naujo."
@@ -10251,10 +10238,10 @@ msgid "Your receiver will got to stand by due to the sleeptimer."
 msgstr "Pagal miego laikmatį, imtuvas dabar persijungs į budėjimo režimą."
 
 msgid "Your receiver will got to standby due to inactivity."
-msgstr "Įmtuvas persijungs į budėjimo režimą, nes yra nenaudojamas."
+msgstr "Jūsų imtuvas persijungs į budėjimo režimą, nes yra nenaudojamas."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
-msgstr "Paspaudus 'OK', imtuvas bus paleistas iš naujo."
+msgstr "Paspaudus OK, Jūsų imtuvas bus paleistas iš naujo."
 
 msgid ""
 "Your wireless LAN internet connection could not be started!\n"
@@ -10277,7 +10264,7 @@ msgid "Zap back to previously tuned service?"
 msgstr "Perjungti į ankstesnį suderintą kanalą?"
 
 msgid "Zap back to service before positioner setup?"
-msgstr "Įjungti, prieš pozicionieriaus konfigūraciją, naudotą kanalą?"
+msgstr "Perjungti į, prieš pozicionieriaus konfigūraciją, naudotą kanalą?"
 
 msgid "Zap bouquets blindly on zap buttons"
 msgstr "Perjungti paketus aklai, perjungimo mygtukais"
@@ -10311,11 +10298,11 @@ msgstr "Perjungti aukštyn"
 
 #, python-format
 msgid "Zapped to timer service %s as PiP!"
-msgstr "Įjungta į laikmačio kanalą %s kaip PiP!"
+msgstr "Perjungta į laikmačio kanalą %s kaip PiP!"
 
 #, python-format
 msgid "Zapped to timer service %s!"
-msgstr "Įjungta į laikmačio kanalą %s!"
+msgstr "Perjungta į laikmačio kanalą %s!"
 
 msgid "Zgemma H.S/H.2S/H.2H/H5/H7"
 msgstr "Zgemma H.S/H.2S/H.2H/H5/H7"
@@ -11499,3 +11486,54 @@ msgstr "perjungti ir įrašyti"
 
 msgid "zapped"
 msgstr "perjungta"
+
+#~ msgid "%Y-%m-%d %H:%M"
+#~ msgstr "%Y-%m-%d %H:%M"
+
+#~ msgid "EtPortal"
+#~ msgstr "EtPortalas"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "G"
+#~ msgstr "G"
+
+#~ msgid "H"
+#~ msgstr "H"
+
+#~ msgid "I"
+#~ msgstr "I"
+
+#~ msgid "J"
+#~ msgstr "J"
+
+#~ msgid "REC"
+#~ msgstr "REC"
+
+#~ msgid "TUNER:"
+#~ msgstr "IMTUVAS:"
+
+#~ msgid "[REC]"
+#~ msgstr "[REC]"
+
+#~ msgid "®"
+#~ msgstr "®"
+
+#~ msgid "Force LNB Power"
+#~ msgstr "Priverstinė LNB įtampa"
+
+#~ msgid "Force ToneBurst"
+#~ msgstr "Priverstinis tono impulsas"
+
+#~ msgid "Not yet implemented!"
+#~ msgstr "Dar neįgyvendinta!"
+
+#~ msgid ""
+#~ "Recording(s) are in progress or coming up in few seconds!\n"
+#~ "Do you still want to flash image\n"
+#~ "%s?"
+#~ msgstr ""
+#~ "Įrašymas(-ai) vyksta arba prasidės netrukus!\n"
+#~ "Ar vis dar norite įdiegti atvaizdą\n"
+#~ "%s?"
