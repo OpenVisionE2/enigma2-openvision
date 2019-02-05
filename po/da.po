@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-25 20:37+0100\n"
+"POT-Creation-Date: 2019-02-05 11:50+0330\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -238,9 +238,6 @@ msgstr "%A %e %B %Y"
 #
 msgid "%H:%M"
 msgstr "%T:%M"
-
-msgid "%Y-%m-%d %H:%M"
-msgstr "%Y-%m-%d %H:%M"
 
 #. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
 #, fuzzy
@@ -649,8 +646,23 @@ msgstr "9"
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - standard (deaktiveret)"
 
+#
+#, fuzzy
+msgid "<Alternate Skin>"
+msgstr "Alternativer"
+
 msgid "<Current movielist location>"
 msgstr "<Nuværende filmliste placering>"
+
+#
+#, fuzzy
+msgid "<Default Skin with Picon>"
+msgstr "<Standardplacering af film>"
+
+#
+#, fuzzy
+msgid "<Default Skin>"
+msgstr "Standard indstillinger"
 
 #
 msgid "<Default movie location>"
@@ -861,6 +873,11 @@ msgstr "Adapter indstillinger"
 #
 msgid "Add"
 msgstr "Tilføj"
+
+#
+#, fuzzy
+msgid "Add BISS CaID to service"
+msgstr "Tilføj kanal"
 
 #
 msgid "Add a mark"
@@ -3706,9 +3723,6 @@ msgstr "Estisk"
 msgid "Estonian"
 msgstr "Estisk"
 
-msgid "EtPortal"
-msgstr "EtPortal"
-
 msgid "Ethernet network interface"
 msgstr "Ethernet netværksinterface"
 
@@ -3880,9 +3894,6 @@ msgstr "Ekstra motor indstilinger"
 
 msgid "Extra start time to ignore inactivity sleeptimer"
 msgstr "Ekstra starttid til at ignorere inaktiv slumretimer"
-
-msgid "F"
-msgstr "F"
 
 #, fuzzy
 msgid "F1/F3/F4/F4-TURBO"
@@ -4167,6 +4178,9 @@ msgstr "Fredag"
 msgid "From :"
 msgstr "Fra"
 
+msgid "Front LED on"
+msgstr ""
+
 #, python-format
 msgid "Frontprocessor version: %s"
 msgstr "Frontprocessor version: %s"
@@ -4190,9 +4204,6 @@ msgstr "Yderligere indstillinger"
 
 msgid "Further options"
 msgstr "Yderligere muligheder"
-
-msgid "G"
-msgstr "G"
 
 #
 #, fuzzy
@@ -4387,9 +4398,6 @@ msgstr ""
 
 msgid "Guyana"
 msgstr ""
-
-msgid "H"
-msgstr "H"
 
 msgid "HD list"
 msgstr "HD Liste"
@@ -4589,9 +4597,6 @@ msgstr "Ungarsk"
 #, fuzzy
 msgid "Hungary"
 msgstr "Ungarsk"
-
-msgid "I"
-msgstr "I"
 
 #
 #, fuzzy
@@ -4968,7 +4973,7 @@ msgstr ""
 msgid ""
 "It seems you did not see all the eight arrow heads. This means your TV has overscan enabled, and is not configured properly.\n"
 "\n"
-"Please refer to your TV's manual to find how you can disable overscan on your TV. Look for terms like 'Just fit', 'Full width', etc. If you can't find it, ask other users at http://forums.openpli.org.\n"
+"Please refer to your TV's manual to find how you can disable overscan on your TV. Look for terms like 'Just fit', 'Full width', etc. If you can't find it, ask other users at https://openvision.tech\n"
 "\n"
 msgstr ""
 "Det ser ud til at du ikke så alle otte pilehoveder. Dette betyder at dit TV har overscan aktiveret, og ikke konfigureret ordenligt.\n"
@@ -4991,9 +4996,6 @@ msgstr "Emner pr side"
 
 msgid "Items per page for list screen"
 msgstr "Emner pr side for listnings skærm"
-
-msgid "J"
-msgstr "J"
 
 msgid "Jamaica"
 msgstr ""
@@ -6856,6 +6858,9 @@ msgstr "Motor Opsætning"
 msgid "Positioner setup log"
 msgstr ""
 
+msgid "Power LED"
+msgstr ""
+
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr ""
 
@@ -7123,9 +7128,6 @@ msgstr "Kvik"
 msgid "Quick zap"
 msgstr "Hurtigzap"
 
-msgid "REC"
-msgstr "REC"
-
 #
 msgid "RF output"
 msgstr "RF Udgang"
@@ -7164,6 +7166,11 @@ msgstr "Slette udførte timere?"
 #
 msgid "Really exit the subservices quickzap?"
 msgstr "Vil du afslutte underkanals hurtigskift?"
+
+#
+#, fuzzy
+msgid "Really reboot into Recovery Mode?"
+msgstr "Virkelig reboote nu?"
 
 #
 msgid "Really reboot now?"
@@ -7247,6 +7254,11 @@ msgstr "Optaggelser"
 #
 msgid "Recordings always have priority"
 msgstr "Optagelser har altid prioritet"
+
+#
+#, fuzzy
+msgid "Recovery Mode"
+msgstr "Brugerdefineret"
 
 msgid "Red"
 msgstr "Rød"
@@ -9567,9 +9579,6 @@ msgstr "TS filen er for stor til ISO9660 level 1!"
 msgid "TSID"
 msgstr "TSID"
 
-msgid "TUNER:"
-msgstr "TUNER:"
-
 msgid "TUNING"
 msgstr ""
 
@@ -10404,11 +10413,18 @@ msgstr "Tyrkisk"
 msgid "Turks and Caicos Islands"
 msgstr ""
 
+msgid "Turn on the front LED (this needs enigma2 restart)."
+msgstr ""
+
 #, fuzzy
 msgid "Turn on the power LED during deep standby."
 msgstr "Tænd for strøm LED under standby."
 
 msgid "Turn on the power LED during standby."
+msgstr "Tænd for strøm LED under standby."
+
+#, fuzzy
+msgid "Turn on the power LED."
 msgstr "Tænd for strøm LED under standby."
 
 msgid "Turning step size"
@@ -10717,6 +10733,11 @@ msgstr "Brug disse indstillinger?"
 #
 msgid "Use this video enhancement settings?"
 msgstr "Anvend denne opsætning af videoforbedring?"
+
+#
+#, fuzzy
+msgid "Use transponder time"
+msgstr "vis transponer info"
 
 msgid "Use trash can in movielist"
 msgstr "Brug papirkurv i filmliste"
@@ -11644,6 +11665,10 @@ msgstr ""
 msgid "Your receiver is rebooting"
 msgstr "Din modtager genstarter"
 
+#, fuzzy
+msgid "Your receiver is rebooting into Recovery Mode"
+msgstr "Din modtager genstarter"
+
 msgid "Your receiver is shutting down"
 msgstr "Din modtager lukker ned"
 
@@ -11736,9 +11761,6 @@ msgstr "Zgemma Star S/2S/H1/H2"
 
 msgid "Zimbabwe"
 msgstr ""
-
-msgid "[REC]"
-msgstr "[REC]"
 
 msgid "[a]"
 msgstr ""
@@ -13104,6 +13126,3 @@ msgstr "zap og skift"
 #
 msgid "zapped"
 msgstr "zapped"
-
-msgid "®"
-msgstr "®"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-25 20:37+0100\n"
+"POT-Creation-Date: 2019-02-05 11:50+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -242,9 +242,6 @@ msgstr "%A %e. %B %Y"
 #
 msgid "%H:%M"
 msgstr "%H:%M"
-
-msgid "%Y-%m-%d %H:%M"
-msgstr ""
 
 #. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
 msgid "%a %e %B %Y"
@@ -680,8 +677,23 @@ msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - výchozí (zakázáno)"
 
 #
+#, fuzzy
+msgid "<Alternate Skin>"
+msgstr "alternativní"
+
+#
 msgid "<Current movielist location>"
 msgstr "<současný seznam souborů>"
+
+#
+#, fuzzy
+msgid "<Default Skin with Picon>"
+msgstr "<standardní umístění>"
+
+#
+#, fuzzy
+msgid "<Default Skin>"
+msgstr "Standardní nastavení"
 
 #
 msgid "<Default movie location>"
@@ -891,6 +903,11 @@ msgstr "Nastavení adaptéru"
 #
 msgid "Add"
 msgstr "Přidat"
+
+#
+#, fuzzy
+msgid "Add BISS CaID to service"
+msgstr "Přidat program"
 
 #
 msgid "Add a mark"
@@ -3752,9 +3769,6 @@ msgstr "Estonsko"
 msgid "Estonian"
 msgstr "Estonsky"
 
-msgid "EtPortal"
-msgstr ""
-
 msgid "Ethernet network interface"
 msgstr "Ethernet síťové rozhraní"
 
@@ -3927,9 +3941,6 @@ msgstr "Další nastavení motoru"
 
 msgid "Extra start time to ignore inactivity sleeptimer"
 msgstr "Začátek dalšího úseku ignorování časovače vypnutí"
-
-msgid "F"
-msgstr ""
 
 msgid "F1/F3/F4/F4-TURBO"
 msgstr ""
@@ -4214,6 +4225,9 @@ msgstr "Pátek"
 msgid "From :"
 msgstr "Z :"
 
+msgid "Front LED on"
+msgstr ""
+
 #, python-format
 msgid "Frontprocessor version: %s"
 msgstr "Frontprocesor: %s"
@@ -4239,9 +4253,6 @@ msgstr "Další možnosti"
 #
 msgid "Further options"
 msgstr "Další možnosti"
-
-msgid "G"
-msgstr ""
 
 msgid "GStreamer version: "
 msgstr "GStreamer: "
@@ -4437,9 +4448,6 @@ msgstr "Guinea-Bissau"
 msgid "Guyana"
 msgstr "Guyana"
 
-msgid "H"
-msgstr "H"
-
 msgid "HD list"
 msgstr "Seznam HD"
 
@@ -4633,9 +4641,6 @@ msgstr "Maďarsky"
 #
 msgid "Hungary"
 msgstr "Maďarsko"
-
-msgid "I"
-msgstr ""
 
 #
 msgid "I do not want to perform any service scans"
@@ -5018,10 +5023,11 @@ msgstr "Ostrov Man"
 msgid "Israel"
 msgstr "Izrael"
 
+#, fuzzy
 msgid ""
 "It seems you did not see all the eight arrow heads. This means your TV has overscan enabled, and is not configured properly.\n"
 "\n"
-"Please refer to your TV's manual to find how you can disable overscan on your TV. Look for terms like 'Just fit', 'Full width', etc. If you can't find it, ask other users at http://forums.openpli.org.\n"
+"Please refer to your TV's manual to find how you can disable overscan on your TV. Look for terms like 'Just fit', 'Full width', etc. If you can't find it, ask other users at https://openvision.tech\n"
 "\n"
 msgstr ""
 "Zdá se, že jste neviděli všech osm vrcholů šipek. To znamená, že televizor má povolen OVERSCAN a není správně nakonfigurován.\n"
@@ -5042,9 +5048,6 @@ msgstr "Položek na stránku "
 
 msgid "Items per page for list screen"
 msgstr "Položek na stránku pro seznam"
-
-msgid "J"
-msgstr ""
 
 msgid "Jamaica"
 msgstr "Jamajka"
@@ -6903,6 +6906,9 @@ msgstr "Nastavení pozicioneru"
 msgid "Positioner setup log"
 msgstr "Log nastavení pozicioneru"
 
+msgid "Power LED"
+msgstr ""
+
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Řízení spotřeby. Další informace získáte v návodu k přijímači."
 
@@ -7185,10 +7191,6 @@ msgid "Quick zap"
 msgstr "Rychlé přepínání"
 
 #
-msgid "REC"
-msgstr "REC"
-
-#
 msgid "RF output"
 msgstr "RF výstup"
 
@@ -7226,6 +7228,11 @@ msgstr "Opravdu smazat dokončené časovače?"
 #
 msgid "Really exit the subservices quickzap?"
 msgstr "Opravdu opustit rychlé přepínání podprogramů?"
+
+#
+#, fuzzy
+msgid "Really reboot into Recovery Mode?"
+msgstr "Opravdu restartovat přijímač?"
 
 #
 msgid "Really reboot now?"
@@ -7310,6 +7317,11 @@ msgstr "Nahrávání"
 #
 msgid "Recordings always have priority"
 msgstr "Nahrávání má vždy prioritu"
+
+#
+#, fuzzy
+msgid "Recovery Mode"
+msgstr "Uživatelsky mód"
 
 msgid "Red"
 msgstr ""
@@ -9631,9 +9643,6 @@ msgstr "TS soubor je příliš velký pro ISO9660 level 1!"
 msgid "TSID"
 msgstr ""
 
-msgid "TUNER:"
-msgstr ""
-
 msgid "TUNING"
 msgstr ""
 
@@ -10448,10 +10457,17 @@ msgstr "Turkmenistán"
 msgid "Turks and Caicos Islands"
 msgstr "Turks a Caicos"
 
+msgid "Turn on the front LED (this needs enigma2 restart)."
+msgstr ""
+
 msgid "Turn on the power LED during deep standby."
 msgstr "Zapne LED napájení při hlubokém spánku."
 
 msgid "Turn on the power LED during standby."
+msgstr "Zapne LED napájení při standby."
+
+#, fuzzy
+msgid "Turn on the power LED."
 msgstr "Zapne LED napájení při standby."
 
 msgid "Turning step size"
@@ -10759,6 +10775,11 @@ msgstr "Použít tato nastavení?"
 #
 msgid "Use this video enhancement settings?"
 msgstr "Použít toto rozšiřující video nastavení?"
+
+#
+#, fuzzy
+msgid "Use transponder time"
+msgstr "Zobrazit info o transpondéru"
 
 #
 msgid "Use trash can in movielist"
@@ -11692,6 +11713,10 @@ msgstr ""
 msgid "Your receiver is rebooting"
 msgstr "Přijímač se restartuje"
 
+#, fuzzy
+msgid "Your receiver is rebooting into Recovery Mode"
+msgstr "Přijímač se restartuje"
+
 msgid "Your receiver is shutting down"
 msgstr "Přijímač se vypíná"
 
@@ -11784,9 +11809,6 @@ msgstr ""
 
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
-
-msgid "[REC]"
-msgstr "[REC]"
 
 msgid "[a]"
 msgstr ""
@@ -13171,6 +13193,3 @@ msgstr "Přepnout a nahrát"
 #
 msgid "zapped"
 msgstr "přepnutý"
-
-msgid "®"
-msgstr ""

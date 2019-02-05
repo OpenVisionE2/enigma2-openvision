@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi-enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-25 20:37+0100\n"
+"POT-Creation-Date: 2019-02-05 11:50+0330\n"
 "PO-Revision-Date: 2018-05-22 13:54+0200\n"
 "Last-Translator: Gringo <openpli@tiscali.it>\n"
 "Language-Team: www.linsat.net <spaeleus@croci.org>\n"
@@ -233,9 +233,6 @@ msgstr "%A %e %B %Y"
 
 msgid "%H:%M"
 msgstr "%H:%M"
-
-msgid "%Y-%m-%d %H:%M"
-msgstr "%d-%m-%Y %H:%M"
 
 #. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
 msgid "%a %e %B %Y"
@@ -610,8 +607,20 @@ msgstr "9"
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - predefinito (disabilitato)"
 
+#, fuzzy
+msgid "<Alternate Skin>"
+msgstr "Alternativa"
+
 msgid "<Current movielist location>"
 msgstr "<Percorso attuale dei video>"
+
+#, fuzzy
+msgid "<Default Skin with Picon>"
+msgstr "<Percorso predefinito delle registrazioni>"
+
+#, fuzzy
+msgid "<Default Skin>"
+msgstr "Impostazioni predefinite"
 
 msgid "<Default movie location>"
 msgstr "<Percorso predefinito delle registrazioni>"
@@ -794,6 +803,10 @@ msgstr "Impostazioni interfaccia"
 
 msgid "Add"
 msgstr "Aggiungere"
+
+#, fuzzy
+msgid "Add BISS CaID to service"
+msgstr "Aggiungere un canale"
 
 msgid "Add a mark"
 msgstr "Aggiungere un marcatore"
@@ -3296,9 +3309,6 @@ msgstr "Estonia"
 msgid "Estonian"
 msgstr "Estone"
 
-msgid "EtPortal"
-msgstr "EtPortal"
-
 msgid "Ethernet network interface"
 msgstr "Interfaccia di rete Ethernet"
 
@@ -3447,9 +3457,6 @@ msgstr "Opzioni aggiuntive del motore"
 
 msgid "Extra start time to ignore inactivity sleeptimer"
 msgstr "Orario iniziale aggiuntivo per ignorare il timer di spegnimento per inutilizzo"
-
-msgid "F"
-msgstr "F"
 
 msgid "F1/F3/F4/F4-TURBO"
 msgstr "F1/F3/F4/F4-TURBO"
@@ -3704,6 +3711,9 @@ msgstr "Venerdì"
 msgid "From :"
 msgstr "Da:"
 
+msgid "Front LED on"
+msgstr ""
+
 #, python-format
 msgid "Frontprocessor version: %s"
 msgstr "Versione del frontprocessor: %s"
@@ -3726,9 +3736,6 @@ msgstr "Ulteriori opzioni"
 
 msgid "Further options"
 msgstr "Ulteriori opzioni"
-
-msgid "G"
-msgstr "G"
 
 msgid "GStreamer version: "
 msgstr "Versione GStreamer: "
@@ -3905,9 +3912,6 @@ msgstr "Guinea-Bissau"
 
 msgid "Guyana"
 msgstr "Guyana"
-
-msgid "H"
-msgstr "H"
 
 msgid "HD list"
 msgstr "Elenco HD"
@@ -4088,9 +4092,6 @@ msgstr "Ungherese"
 
 msgid "Hungary"
 msgstr "Ungheria"
-
-msgid "I"
-msgstr "I"
 
 msgid "I do not want to perform any service scans"
 msgstr "Non voglio effettuare nessuna scansione"
@@ -4421,10 +4422,11 @@ msgstr "Isola di Man"
 msgid "Israel"
 msgstr "Israele"
 
+#, fuzzy
 msgid ""
 "It seems you did not see all the eight arrow heads. This means your TV has overscan enabled, and is not configured properly.\n"
 "\n"
-"Please refer to your TV's manual to find how you can disable overscan on your TV. Look for terms like 'Just fit', 'Full width', etc. If you can't find it, ask other users at http://forums.openpli.org.\n"
+"Please refer to your TV's manual to find how you can disable overscan on your TV. Look for terms like 'Just fit', 'Full width', etc. If you can't find it, ask other users at https://openvision.tech\n"
 "\n"
 msgstr ""
 "Apparentemente non sono visibili tutte le punte delle 8 frecce. Quindi il televisore ha l'overscan abilitato e non è regolato correttamente.\n"
@@ -4443,9 +4445,6 @@ msgstr "Elementi per pagina "
 
 msgid "Items per page for list screen"
 msgstr "Elementi per pagina nell'elenco"
-
-msgid "J"
-msgstr "J"
 
 msgid "Jamaica"
 msgstr "Giamaica"
@@ -6032,6 +6031,9 @@ msgstr "Impostazioni motore"
 msgid "Positioner setup log"
 msgstr "Registro della configurazione del motore"
 
+msgid "Power LED"
+msgstr ""
+
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Gestione dell'alimentazione. Consultare il manuale del ricevitore per ulteriori informazioni."
 
@@ -6272,9 +6274,6 @@ msgstr "Veloce"
 msgid "Quick zap"
 msgstr "Cambio canali veloce"
 
-msgid "REC"
-msgstr "REC"
-
 msgid "RF output"
 msgstr "Uscita RF"
 
@@ -6305,6 +6304,10 @@ msgstr "Eliminare i timer conclusi?"
 
 msgid "Really exit the subservices quickzap?"
 msgstr "Uscire dal cambio veloce dei sottocanali?"
+
+#, fuzzy
+msgid "Really reboot into Recovery Mode?"
+msgstr "Riavviare adesso?"
 
 msgid "Really reboot now?"
 msgstr "Riavviare adesso?"
@@ -6374,6 +6377,10 @@ msgstr "Registrazioni"
 
 msgid "Recordings always have priority"
 msgstr "Le registrazioni hanno sempre la priorità"
+
+#, fuzzy
+msgid "Recovery Mode"
+msgstr "Modalità utente"
 
 msgid "Red"
 msgstr "Rosso"
@@ -8416,9 +8423,6 @@ msgstr "File TS troppo grande per ISO9660 livello 1!"
 msgid "TSID"
 msgstr "TSID"
 
-msgid "TUNER:"
-msgstr "SINTONIZZATORE:"
-
 msgid "TUNING"
 msgstr "SINTONIA"
 
@@ -9160,11 +9164,18 @@ msgstr "Turkmenistan"
 msgid "Turks and Caicos Islands"
 msgstr "Isole Turks e Caicos"
 
+msgid "Turn on the front LED (this needs enigma2 restart)."
+msgstr ""
+
 #, fuzzy
 msgid "Turn on the power LED during deep standby."
 msgstr "Attivare il LED di accensione durante la sospensione."
 
 msgid "Turn on the power LED during standby."
+msgstr "Attivare il LED di accensione durante la sospensione."
+
+#, fuzzy
+msgid "Turn on the power LED."
 msgstr "Attivare il LED di accensione durante la sospensione."
 
 msgid "Turning step size"
@@ -9441,6 +9452,10 @@ msgstr "Utilizzare queste impostazioni?"
 
 msgid "Use this video enhancement settings?"
 msgstr "Utilizzare queste impostazioni per il miglioramento dell'immagine?"
+
+#, fuzzy
+msgid "Use transponder time"
+msgstr "Mostrare le informazioni sul transponder"
 
 msgid "Use trash can in movielist"
 msgstr "Utilizzare il Cestino nell'elenco dei video"
@@ -10290,6 +10305,10 @@ msgstr ""
 msgid "Your receiver is rebooting"
 msgstr "Il ricevitore è in fase di riavvio..."
 
+#, fuzzy
+msgid "Your receiver is rebooting into Recovery Mode"
+msgstr "Il ricevitore è in fase di riavvio..."
+
 msgid "Your receiver is shutting down"
 msgstr "Il ricevitore è in fase di spegnimento..."
 
@@ -10377,9 +10396,6 @@ msgstr "Zgemma Star S/2S/H1/H2"
 
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
-
-msgid "[REC]"
-msgstr "[REC]"
 
 msgid "[a]"
 msgstr "[a]"
@@ -11555,6 +11571,3 @@ msgstr "Cambiare canale e registrare"
 
 msgid "zapped"
 msgstr "Cambiato!"
-
-msgid "®"
-msgstr "®"
