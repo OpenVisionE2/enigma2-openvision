@@ -13,6 +13,8 @@
 #include <lib/base/init_num.h>
 #include <lib/driver/input_fake.h>
 
+static bool bflag;
+
 void eRCDeviceInputDev::handleCode(long rccode)
 {
 	struct input_event *ev = (struct input_event *)rccode;
