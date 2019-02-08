@@ -776,7 +776,12 @@ class RecordTimerEntry(timer.TimerEntry, object):
 
 	# Report the tuner that the current recording is using
 	def log_tuner(self, level, state):
-		feinfo = self.record_service and hasattr(self.record_service, "frontendInfo") and self.record_service.frontendInfo()
+# If we have a Zap timer then the tuner is for the current service
+		if self.justplay:
+			timer_rs = NavigationInstance.instance.getCurrentService()
+		else:
+			timer_rs = self.record_service
+		feinfo = timer_rs and hasattr(timer_rs, "frontendInfo") and timer_rs.frontendInfo()
 		fedata = feinfo and hasattr(feinfo, "getFrontendData") and feinfo.getFrontendData()
 		tuner_info = fedata and "tuner_number" in fedata and chr(ord('A') + fedata.get("tuner_number")) or "(fallback) stream"
 		self.log(level, "%s recording on tuner: %s" % (state, tuner_info))
