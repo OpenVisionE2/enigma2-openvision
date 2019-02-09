@@ -51,5 +51,4 @@ done
 rm enigma2-py.pot enigma2-xml.pot enigma2.pot
 IFS=$OLDIFS
 printf "Po files update/creation from script finished!\n"
-
-
+find -name "*.mo" -type f | xargs -L1 rm -rf
