@@ -153,13 +153,21 @@ void eFilePushThread::thread()
 			if (m_stream_mode)
 			{
 				eDebug("[eFilePushThread] reached EOF, but we are in stream mode. delaying 1 second.");
+#if HAVE_ALIEN5
+				usleep(50000);
+#else
 				sleep(1);
+#endif
 				continue;
 			}
 			else if (++eofcount < 10)
 			{
 				eDebug("[eFilePushThread] reached EOF, but the file may grow. delaying 1 second.");
+#if HAVE_ALIEN5
+				usleep(50000);
+#else
 				sleep(1);
+#endif
 				continue;
 			}
 			break;
@@ -182,7 +190,18 @@ void eFilePushThread::thread()
 						break;
 					}
 					if (w < 0 && (errno == EINTR || errno == EAGAIN || errno == EBUSY))
+					{
+#if HAVE_HISILICON
+						usleep(100000);
+#endif
+#if HAVE_ALIEN5
+						usleep(100000);
+#endif
 						continue;
+					}
+#if HAVE_ALIEN5
+					usleep(50000);
+#endif
 					eDebug("[eFilePushThread] write: %m");
 					sendEvent(evtWriteError);
 					break;
@@ -196,6 +215,9 @@ void eFilePushThread::thread()
 			if (m_sg)
 				current_span_remaining -= buf_end;
 		}
+#if HAVE_ALIEN5
+		usleep(10);
+#endif
 	}
 	sendEvent(evtStopped);
 
@@ -343,6 +365,9 @@ void eFilePushThreadRecorder::thread()
 				break;
 			}
 			if (errno == EINTR || errno == EBUSY || errno == EAGAIN)
+#if HAVE_HISILICON
+				usleep(100000);
+#endif
 				continue;
 			if (errno == EOVERFLOW)
 			{
