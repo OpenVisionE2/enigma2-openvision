@@ -562,8 +562,13 @@ if test "$BOXTYPE" == "wetekplay" -o "$BOXTYPE" == "wetekplay2" -o "$BOXTYPE" ==
 	AC_DEFINE(WETEKRC, 1, [WetekPlay Remote-use BACKSPACE to toggle extended functions on numeric buttons])
 fi
 
+if test "$BOXTYPE" == "alien5"; then
+	AC_DEFINE(HAVE_ALIEN5, 1,[enable Alien5 specific hacks])
+fi
+
 if test "$BOXTYPE" == "k1plus" -o "$BOXTYPE" == "k1pro" -o "$BOXTYPE" == "k2pro" -o "$BOXTYPE" == "k2prov2" -o "$BOXTYPE" == "k3pro"; then
-	AC_DEFINE(Disable_DMX_SET_SOURCE, 1, [Disable DMX_SET_SOURCE on Mecool devices])
+	AC_DEFINE(HAVE_ALIEN5, 1,[enable Alien5 specific hacks])
+	AC_DEFINE(Disable_DMX_SET_SOURCE, 1, [disable DMX_SET_SOURCE on Mecool devices])
 fi
 
 if test "$BOXTYPE" == "spycat" -o "$BOXTYPE" == "spycatmini" -o "$BOXTYPE" == "spycatminiplus" -o "$BOXTYPE" == "osmini" -o "$BOXTYPE" == "osminiplus" -o "$BOXTYPE" == "osmega" -o "$BOXTYPE" == "spycat4kmini" -o "$BOXTYPE" == "spycat4k" -o "$BOXTYPE" == "spycat4kcombo"; then

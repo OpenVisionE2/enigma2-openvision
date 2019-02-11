@@ -228,6 +228,9 @@ RESULT eAMLTSMPEGDecoder::setVideoPID(int vpid, int type)
 				break;
  		}
  		eDebug("[eAMLTSMPEGDecoder::setVideoPID] vpid=%d, type=%d %s", vpid, type, t.c_str());
+#if HAVE_ALIEN5
+		aml_change_vpid(vpid, m_codec.video_type);
+#endif
 	}
 	return 0;
 }
