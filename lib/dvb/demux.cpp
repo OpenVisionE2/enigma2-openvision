@@ -114,10 +114,12 @@ RESULT eDVBDemux::setSourceFrontend(int fenum)
 	if (res)
 	{
  		eDebug("[eDVBDemux] DMX_SET_SOURCE Frontend%d failed: %m", fenum);
-#if Disable_DMX_SET_SOURCE
+#if HAVE_AMLOGIC
+		/** FIXME: begin dirty hack  */
 		eDebug("[eDVBDemux] Ignoring due to limitation to one frontend for each adapter and missing ioctl ...");
 		source = fenum;
 		res = 0;
+		/** FIXME: end dirty hack  */
 #endif
 	}
 	else
