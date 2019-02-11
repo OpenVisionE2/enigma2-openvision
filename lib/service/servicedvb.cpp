@@ -38,6 +38,12 @@
 #include <sstream>
 #include <iomanip>
 
+#if HAVE_ALIEN5
+extern "C" {
+#include <codec.h>
+}
+#endif
+
 class eStaticServiceDVBInformation: public iStaticServiceInformation
 {
 	DECLARE_REF(eStaticServiceDVBInformation);
@@ -1367,6 +1373,14 @@ RESULT eDVBServicePlay::start()
 
 		type = eDVBServicePMTHandler::streamclient;
 	}
+
+#if HAVE_ALIEN5
+	if(m_is_stream || m_is_pvr)
+	{
+			eDebug("[eDVBServicePlay]start m_is_pvr %d", m_is_pvr);
+			aml_set_demux2_source();
+	}
+#endif
 
 	m_first_program_info = 1;
 	ePtr<iTsSource> source = createTsSource(service, packetsize);
