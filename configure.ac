@@ -562,7 +562,7 @@ if test "$BOXTYPE" == "wetekplay" -o "$BOXTYPE" == "wetekplay2" -o "$BOXTYPE" ==
 	AC_DEFINE(WETEKRC, 1, [WetekPlay Remote-use BACKSPACE to toggle extended functions on numeric buttons])
 fi
 
-if test "$BOXTYPE" == "alien5" -o "$BOXTYPE" == "k1plus" -o "$BOXTYPE" == "k1pro" -o "$BOXTYPE" == "k2pro" -o "$BOXTYPE" == "k2prov2" -o "$BOXTYPE" == "k3pro" -o "$BOXTYPE" == "kvim2"; then
+if test "$BOXTYPE" == "alien5" -o "$BOXTYPE" == "k1plus" -o "$BOXTYPE" == "k1pro" -o "$BOXTYPE" == "k2pro" -o "$BOXTYPE" == "k2prov2" -o "$BOXTYPE" == "k3pro" -o "$BOXTYPE" == "kvim2" -o "$BOXTYPE" == "c300" -o "$BOXTYPE" == "c300pro" -o "$BOXTYPE" == "c400plus"; then
 	AC_DEFINE(HAVE_ALIEN5, 1,[enable Alien5 specific hacks])
 fi
 
