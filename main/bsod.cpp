@@ -23,7 +23,7 @@
 
 static const char *crash_emailaddr =
 #ifndef CRASH_EMAILADDR
-	"the Open Vision forum (https://openvision.tech) or https://github.com/OpenVisionE2/openvision-oe/issues";
+	"the Open Vision forum (https://forum.openvision.tech) or https://github.com/OpenVisionE2/openvision-oe/issues";
 #else
 	CRASH_EMAILADDR;
 #endif

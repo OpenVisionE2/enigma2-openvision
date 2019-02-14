@@ -195,7 +195,6 @@ class CommitInfo(Screen):
 		self.projects = [
 			("https://api.github.com/repos/openpli/enigma2/commits" + branch, "Enigma2 - PLi"),
 			("https://api.github.com/repos/OpenVisionE2/enigma2-openvision/commits" + branch, "Enigma2 - Vision"),
-			("https://api.github.com/repos/OpenVisionE2/enigma2-openvision-sh4/commits" + branch, "Enigma2 - SH4"),
 			("https://api.github.com/repos/openpli/openpli-oe-core/commits" + branch, "OE - PLi"),
 			("https://api.github.com/repos/OpenVisionE2/openvision-oe/commits" + branch, "OE - Vision"),
 			("https://api.github.com/repos/OpenVisionE2/extra_rc_models/commits", "Extra RC Models"),
