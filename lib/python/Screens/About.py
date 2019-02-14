@@ -198,7 +198,9 @@ class CommitInfo(Screen):
 			("https://api.github.com/repos/openpli/openpli-oe-core/commits" + branch, "OE - PLi"),
 			("https://api.github.com/repos/OpenVisionE2/openvision-oe/commits" + branch, "OE - Vision"),
 			("https://api.github.com/repos/OpenVisionE2/extra_rc_models/commits", "Extra RC Models"),
+			("https://api.github.com/repos/openpli/servicemp3/commits", "Service MP3"),
 			("https://api.github.com/repos/openpli/enigma2-plugins/commits", "Enigma2 Plugins"),
+			("https://api.github.com/repos/OpenVisionE2/alliance-plugins/commits", "Alliance Plugins"),
 			("https://api.github.com/repos/E2OpenPlugins/e2openplugin-OpenWebif/commits", "Open WebIF"),
 			("https://api.github.com/repos/OpenVisionE2/BackupSuite/commits", "Backup Suite")
 		]
