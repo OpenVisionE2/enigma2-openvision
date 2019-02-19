@@ -155,7 +155,6 @@ git config core.safecrlf true
 #
 # Git commands to sync with origin.
 #
-git reset HEAD --hard
 git checkout -B $branch $remote/$branch
 git pull
 #
