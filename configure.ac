@@ -414,6 +414,11 @@ if test "$BOXTYPE" == "ebox5000" -o "$BOXTYPE" == "ebox7358" -o "$BOXTYPE" == "e
 	AC_DEFINE(KEY_MODE_TO_KEY_AUDIO, 1,[define when rc sends a KEY_MODE event for its AV plus])
 fi
 
+if test "$BOXTYPE" == "et10000"; then
+	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
+	AC_DEFINE(HAVE_BWLCD128, 1,[Define when using a 128x32 black and white display device])
+fi
+
 if test "$BOXTYPE" == "et4x00" -o "$BOXTYPE" == "et5x00" -o "$BOXTYPE" == "et6x00"  -o "$BOXTYPE" == "et7x00" -o "$BOXTYPE" == "et9x00" -o "$BOXTYPE" == "et8000" -o "$BOXTYPE" == "et8500" -o "$BOXTYPE" == "et10000"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 	AC_DEFINE(KEY_F3_TO_KEY_LIST, 1,[define when rc sends a KEY_F3 event for its KEY_LIST key])
@@ -421,6 +426,7 @@ fi
 
 if test "$BOXTYPE" == "et8500"; then
 	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
+	AC_DEFINE(HAVE_COLORLCD720, 1,[Define when using a 720x576 color display device])
 fi
 
 if test "$BOXTYPE" == "et1x000" -o "$BOXTYPE" == "et7x00" -o "$BOXTYPE" == "ultramini"; then
@@ -457,7 +463,7 @@ if test "$BOXTYPE" == "gb800solo" -o "$BOXTYPE" == "gb800se" -o "$BOXTYPE" == "g
 	AC_DEFINE(KEY_SCREEN_TO_KEY_MODE, 1,[define when rc sends a KEY_MODE event for its KEY_ASPECT key])
 fi
 
-if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "gbue4k"; then
+if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "vuuno4kse"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 	AC_DEFINE(KEY_GUIDE_TO_KEY_EPG, 1,[define when rc sends a KEY_HELP event for its KEY_EPG key])
 	AC_DEFINE(KEY_F2_TO_KEY_F6, 1,[define when rc sends a KEY_F2 event for its KEY_F6 key])
@@ -465,9 +471,21 @@ if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "gbue4k"; then
 	AC_DEFINE(KEY_CONTEXT_MENU_TO_KEY_AUX, 1,[define when rc sends a KEY_CONTEXT_MENU event for its KEY_AUX key])
 fi
 
+if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "gbue4k"; then
+	AC_DEFINE(HAVE_COLORLCD400, 1,[Define when using a 400x176 color display device])
+fi
+
+if test "$BOXTYPE" == "gbue4k"; then
+	AC_DEFINE(HAVE_COLORLCD220, 1,[Define when using a 220x176 color display device])
+fi
+
 if test "$BOXTYPE" == "hd2400" -o "$BOXTYPE" == "hd11" -o "$BOXTYPE" == "hd1100" -o "$BOXTYPE" == "hd1200" -o "$BOXTYPE" == "hd500c" -o "$BOXTYPE" == "hd530c" -o "$BOXTYPE" == "hd1265" -o "$BOXTYPE" == "hd1500" -o "$BOXTYPE" == "hd51" -o "$BOXTYPE" == "hd60" -o "$BOXTYPE" == "hd61" -o "$BOXTYPE" == "hd52" -o "$BOXTYPE" == "vs1000" -o "$BOXTYPE" == "vs1500"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 	AC_DEFINE(KEY_F3_TO_KEY_LIST, 1,[define when rc sends a KEY_F3 event for its KEY_LIST key])
+fi
+
+if test "$BOXTYPE" == "hd2400" -o "$BOXTYPE" == "vuultimo"; then
+	AC_DEFINE(HAVE_BWLCD255, 1,[Define when using a 255x64 black and white display device])
 fi
 
 if test "$BOXTYPE" == "atemio5x00" -o "$BOXTYPE" == "atemio6000" -o "$BOXTYPE" == "atemio6100" -o "$BOXTYPE" == "atemio6200" -o "$BOXTYPE" == "atemionemesis" -o "$BOXTYPE" == "beyonwizt2" -o "$BOXTYPE" == "beyonwizt3" -o "$BOXTYPE" == "beyonwizt4" -o "$BOXTYPE" == "bwidowx" -o "$BOXTYPE" == "bwidowx2" -o "$BOXTYPE" == "evoslim" -o "$BOXTYPE" == "mbhybrid" -o "$BOXTYPE" == "mbmini" -o "$BOXTYPE" == "mbminiplus" -o "$BOXTYPE" == "mbtwin" -o "$BOXTYPE" == "mbultra" -o "$BOXTYPE" == "opticumtt" -o "$BOXTYPE" == "sezam1000hd" -o "$BOXTYPE" == "sezam5000hd" -o "$BOXTYPE" == "sezammarvel" -o "$BOXTYPE" == "ventonhdx" -o "$BOXTYPE" == "xpeedlx" -o "$BOXTYPE" == "xpeedlx3"; then
@@ -550,6 +568,18 @@ if test `echo "$BOXTYPE" | cut -b 1-2` == "vu"; then
 	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])
 	AC_DEFINE(KEY_HELP_TO_KEY_INFO, 1,[define when rc sends a KEY_HELP event we need KEY_INFO])
 	AC_DEFINE(KEY_INFO_TO_KEY_EPG, 1,[define when rc sends a KEY_INFO event for its KEY_EPG key])
+fi
+
+if test "$BOXTYPE" == "vuduo2"; then
+	AC_DEFINE(HAVE_BWLCD140, 1,[Define when using a 140x32 black and white display device])
+fi
+
+if test "$BOXTYPE" == "vusolo4k" -o "$BOXTYPE" == "vuduo4k"; then
+	AC_DEFINE(HAVE_COLORLCD480, 1,[Define when using a 480x320 color display device])
+fi
+
+if test "$BOXTYPE" == "vuultimo4k"; then
+	AC_DEFINE(HAVE_COLORLCD800, 1,[Define when using a 800x480 color display device])
 fi
 
 if test "$BOXTYPE" == "wetekplay" -o "$BOXTYPE" == "wetekplay2" -o "$BOXTYPE" == "wetekhub" -o "$BOXTYPE" == "x8hp"; then
