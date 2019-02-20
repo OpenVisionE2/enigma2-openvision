@@ -415,7 +415,6 @@ if test "$BOXTYPE" == "ebox5000" -o "$BOXTYPE" == "ebox7358" -o "$BOXTYPE" == "e
 fi
 
 if test "$BOXTYPE" == "et10000"; then
-	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
 	AC_DEFINE(HAVE_BWLCD128, 1,[Define when using a 128x32 black and white display device])
 fi
 
@@ -463,7 +462,7 @@ if test "$BOXTYPE" == "gb800solo" -o "$BOXTYPE" == "gb800se" -o "$BOXTYPE" == "g
 	AC_DEFINE(KEY_SCREEN_TO_KEY_MODE, 1,[define when rc sends a KEY_MODE event for its KEY_ASPECT key])
 fi
 
-if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "vuuno4kse"; then
+if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "gbue4k"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 	AC_DEFINE(KEY_GUIDE_TO_KEY_EPG, 1,[define when rc sends a KEY_HELP event for its KEY_EPG key])
 	AC_DEFINE(KEY_F2_TO_KEY_F6, 1,[define when rc sends a KEY_F2 event for its KEY_F6 key])
@@ -471,7 +470,7 @@ if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "vuuno4kse"; then
 	AC_DEFINE(KEY_CONTEXT_MENU_TO_KEY_AUX, 1,[define when rc sends a KEY_CONTEXT_MENU event for its KEY_AUX key])
 fi
 
-if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "gbue4k"; then
+if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "vuuno4kse"; then
 	AC_DEFINE(HAVE_COLORLCD400, 1,[Define when using a 400x176 color display device])
 fi
 
