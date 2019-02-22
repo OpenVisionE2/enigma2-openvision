@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-14 12:56+0330\n"
+"POT-Creation-Date: 2019-02-22 14:24+0330\n"
 "PO-Revision-Date: 2018-10-22T21:44:30+02:00\n"
 "Last-Translator: daddelfalk <OpenPLi>\n"
 "Language-Team: Sfteam  angelo2807@hotmail.com\n"
@@ -1874,6 +1874,21 @@ msgstr "Konfigurationsmodus: %s"
 msgid "Configuration..."
 msgstr "Konfiguration…"
 
+msgid "Configure DVB-ATSC"
+msgstr ""
+
+#, fuzzy
+msgid "Configure DVB-C"
+msgstr "Konfiguriere"
+
+#, fuzzy
+msgid "Configure DVB-S"
+msgstr "Konfiguriere"
+
+#, fuzzy
+msgid "Configure DVB-T"
+msgstr "Konfiguriere"
+
 msgid "Configure an additional delay to improve external subtitle synchronisation."
 msgstr "Konfiguriert eine zusätzliche Verzögerung zur besseren Synchronisation externer Untertitel."
 
@@ -1885,6 +1900,18 @@ msgstr "Konfigurieren Sie wie lange die Infoleiste nach Einblendung sichtbar ble
 
 msgid "Configure for how many minutes finished events should remain visible in the EPG. Useful when you need information about an event which has just finished, or has been delayed."
 msgstr "Konfigurieren Sie wie viele Minuten eine abgeschlossene Sendung im EPG sichtbar bleiben soll. Nützlich, wenn Sie Informationen zu einer Sendung benötigen, die vor Kurzem endete bzw. etwas länger als geplant andauert."
+
+msgid "Configure front LED color during recording (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during recording in standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color in normal mode (this needs an enigma2 restart)."
+msgstr ""
 
 msgid "Configure how many channels are shown in the selection list."
 msgstr "Konfiguriere wie viele Sender in der Kanalauswahlliste angezeigt werden sollen."
@@ -3717,7 +3744,17 @@ msgstr "Freitag"
 msgid "From :"
 msgstr "Von:"
 
-msgid "Front LED on"
+msgid "Front LED color during recording"
+msgstr ""
+
+msgid "Front LED color during recording in standby"
+msgstr ""
+
+#, fuzzy
+msgid "Front LED color during standby"
+msgstr "Die LED im Standy-Modus ausschalten."
+
+msgid "Front LED color in normal mode"
 msgstr ""
 
 #, python-format
@@ -4092,6 +4129,14 @@ msgstr "Hotkey-Tastenbelegung"
 msgid "Hotkey zap"
 msgstr "Tastenkombination \"umschalten\""
 
+#, fuzzy
+msgid "Hotswitchable"
+msgstr "untestbar"
+
+#, fuzzy
+msgid "Hotswitchable tuner"
+msgstr "Umschaltbare Tuner-Typen:"
+
 msgid "How many minutes do you want add to the recording?"
 msgstr "Wie viele Minuten wollen Sie der Aufnahme hinzufügen?"
 
@@ -4397,6 +4442,10 @@ msgid "Invalid directory selected: %s"
 msgstr "Ungültiges Verzeichnis ausgewählt: %s"
 
 msgid "Invalid location"
+msgstr "Fehlerhafter Ort"
+
+#, fuzzy
+msgid "Invalid reason"
 msgstr "Fehlerhafter Ort"
 
 msgid "Invalid transponder data"
@@ -7009,6 +7058,18 @@ msgstr "Wählen Sie “A” oder “B”, wenn Ihr Antennensystem dies erfordert
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Wählen Sie “FBC SCR”, wenn dieser Tuner ein Unicable/SCR-Gerät verwendet. Für alle anderen Setups wählen Sie “FBC automatisch”."
 
+msgid "Select 'Yes' when you want to configure this tuner for DVB-ATSC"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-C"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-S"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-T"
+msgstr ""
+
 msgid "Select 'band' if using a 'universal' LNB, otherwise consult your LNB spec sheet."
 msgstr "Wählen Sie “Band”, wenn Sie ein “universelles” LNB verwenden, andernfalls konsultieren Sie Ihr LNB-Datenblatt."
 
@@ -8375,7 +8436,8 @@ msgstr "Zum vorhergehenden Unterkanal schalten"
 msgid "Switch to radio mode"
 msgstr "Wechsel zum Radio Modus"
 
-msgid "Switchable tuner types:"
+#, fuzzy
+msgid "Switchable tuner types"
 msgstr "Umschaltbare Tuner-Typen:"
 
 msgid "Switzerland"
@@ -8685,8 +8747,8 @@ msgstr ""
 "Sie ist für den normalen Benutzer nicht relevant.\n"
 "Es besteht kein Grund zur Beunruhigung, wenn Werte angezeigt werden, die suspekt erscheinen!"
 
-msgid "This is a multitype tuner. Available options depend on the hardware. Cable and terrestrial cannot be configured at the same time. If you want to use as cable + satellite or terrestrial + satellite, configure cable/terrestrial first and then save. Re-open and configure again as satellite."
-msgstr "Dies ist ein Multitype-Tuner. Die verfügbaren Optionen hängen von der Hardware ab. Kabel und terrestrisch können nicht gleichzeitig konfiguriert werden. Wenn Sie als Kabel + Satellit oder terrestrisch + Satellit verwenden wollen, konfigurieren Sie zunächst Kabel / terrestrisch und speichern Sie dann. Erneut öffnen und als Satellit konfigurieren."
+msgid "This is a multitype tuner. Available options depend on the hardware."
+msgstr ""
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "In dieser Reihenfolge werden DiSEqC-Befehle an das Antennensystem gesendet. Die Reihenfolge muss genau der Reihenfolge entsprechen, in der die physikalischen Geräte entlang des Signalkabels angeordnet sind (ausgehend vom Empfängerende)."
@@ -9155,9 +9217,6 @@ msgstr "Turkmenistan"
 
 msgid "Turks and Caicos Islands"
 msgstr "Turks- und Caicosinseln"
-
-msgid "Turn on the front LED (this needs enigma2 restart)."
-msgstr ""
 
 #, fuzzy
 msgid "Turn on the power LED during deep standby."
@@ -10532,8 +10591,18 @@ msgstr "Schwarz & Weiß"
 msgid "blacklist"
 msgstr "Negativliste"
 
+msgid "blinking blue/green"
+msgstr ""
+
+msgid "blinking red"
+msgstr ""
+
 msgid "blue"
 msgstr "Blau"
+
+#, fuzzy
+msgid "blue/green"
+msgstr "Grün"
 
 msgid "bottom"
 msgstr "Unten"
@@ -10705,9 +10774,6 @@ msgstr "Unterhaltung (6-14 Jahre)"
 
 msgid "epg cache backup"
 msgstr "EPG-Cache Sicherung"
-
-msgid "equal to"
-msgstr "Gleich wie"
 
 msgid "equestrian"
 msgstr "Pferdesport"
@@ -10921,9 +10987,6 @@ msgstr "gesperrt"
 
 msgid "long"
 msgstr "lang"
-
-msgid "loopthrough to"
-msgstr "Verbunden mit"
 
 msgid "magazines/reports/documentary"
 msgstr "Magazine/Reportagen/Dokumentationen"
@@ -11227,9 +11290,6 @@ msgstr "Status"
 
 msgid "science fiction/fantasy/horror"
 msgstr "Science-Fiction/Fantasie/Horror"
-
-msgid "second cable of motorized LNB"
-msgstr "Zweites Kabel vom Rotor"
 
 msgid "seconds"
 msgstr "Sekunden"

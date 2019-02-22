@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Project Slovenia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-14 12:56+0330\n"
+"POT-Creation-Date: 2019-02-22 14:24+0330\n"
 "PO-Revision-Date: 2015-08-30 09:00+0200\n"
 "Last-Translator: Taykun345 <support@satnigmo.com>\n"
 "Language-Team: Satnigmo <support@satnigmo.com>\n"
@@ -2164,6 +2164,24 @@ msgstr "Nastavitveni način:  %s"
 msgid "Configuration..."
 msgstr "Dodatne nastavitve"
 
+msgid "Configure DVB-ATSC"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Configure DVB-C"
+msgstr "Nastavljam..."
+
+#
+#, fuzzy
+msgid "Configure DVB-S"
+msgstr "Nastavljam..."
+
+#
+#, fuzzy
+msgid "Configure DVB-T"
+msgstr "Nastavljam..."
+
 msgid "Configure an additional delay to improve external subtitle synchronisation."
 msgstr "Določitev dodatnega zamika za izboljšanje sinhronizacije zunanjih podnapisov."
 
@@ -2175,6 +2193,18 @@ msgstr "Nastavitev trajanja vidnosti informacije vrstice, ki se sicer pojavi po 
 
 msgid "Configure for how many minutes finished events should remain visible in the EPG. Useful when you need information about an event which has just finished, or has been delayed."
 msgstr "Nastavitev trajanja vidnosti končanih dogodkov v EPG sistemu. To je uporabno takrat, ko zamudite neko oddajo ali film, a bi za nazaj vseeno želeli izvedeti določene informacije o tem dogodku (npr. angleško ime filma)."
+
+msgid "Configure front LED color during recording (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during recording in standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color in normal mode (this needs an enigma2 restart)."
+msgstr ""
 
 msgid "Configure how many channels are shown in the selection list."
 msgstr ""
@@ -4282,7 +4312,17 @@ msgstr "Petek"
 msgid "From :"
 msgstr "Od:"
 
-msgid "Front LED on"
+msgid "Front LED color during recording"
+msgstr ""
+
+msgid "Front LED color during recording in standby"
+msgstr ""
+
+#, fuzzy
+msgid "Front LED color during standby"
+msgstr " "
+
+msgid "Front LED color in normal mode"
 msgstr ""
 
 #, python-format
@@ -4698,6 +4738,14 @@ msgstr ""
 msgid "Hotkey zap"
 msgstr ""
 
+msgid "Hotswitchable"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Hotswitchable tuner"
+msgstr "Preklopljive vrste kanalnikov:"
+
 #
 #, fuzzy
 msgid "How many minutes do you want add to the recording?"
@@ -5056,6 +5104,11 @@ msgstr "Izbrana neveljavna mapa: %s"
 
 #
 msgid "Invalid location"
+msgstr "Neveljavna lokacija"
+
+#
+#, fuzzy
+msgid "Invalid reason"
 msgstr "Neveljavna lokacija"
 
 #
@@ -8148,6 +8201,18 @@ msgstr ""
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr ""
 
+msgid "Select 'Yes' when you want to configure this tuner for DVB-ATSC"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-C"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-S"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-T"
+msgstr ""
+
 msgid "Select 'band' if using a 'universal' LNB, otherwise consult your LNB spec sheet."
 msgstr ""
 
@@ -9773,7 +9838,8 @@ msgid "Switch to radio mode"
 msgstr "Preklop v način radio"
 
 #
-msgid "Switchable tuner types:"
+#, fuzzy
+msgid "Switchable tuner types"
 msgstr "Preklopljive vrste kanalnikov:"
 
 msgid "Switzerland"
@@ -10096,7 +10162,7 @@ msgid ""
 "Don't panic please when you see values being displayed that you think look suspicious!"
 msgstr ""
 
-msgid "This is a multitype tuner. Available options depend on the hardware. Cable and terrestrial cannot be configured at the same time. If you want to use as cable + satellite or terrestrial + satellite, configure cable/terrestrial first and then save. Re-open and configure again as satellite."
+msgid "This is a multitype tuner. Available options depend on the hardware."
 msgstr ""
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
@@ -10636,9 +10702,6 @@ msgid "Turkmenistan"
 msgstr "Turško"
 
 msgid "Turks and Caicos Islands"
-msgstr ""
-
-msgid "Turn on the front LED (this needs enigma2 restart)."
 msgstr ""
 
 #, fuzzy
@@ -12178,9 +12241,20 @@ msgstr "črno/belo"
 msgid "blacklist"
 msgstr "črni seznam"
 
+msgid "blinking blue/green"
+msgstr ""
+
+msgid "blinking red"
+msgstr ""
+
 #
 msgid "blue"
 msgstr "Modra"
+
+#
+#, fuzzy
+msgid "blue/green"
+msgstr "Zelena"
 
 msgid "bottom"
 msgstr ""
@@ -12384,10 +12458,6 @@ msgstr ""
 
 msgid "epg cache backup"
 msgstr "varnostno kopiranje epg podatkov"
-
-#
-msgid "equal to"
-msgstr "enako kot"
 
 msgid "equestrian"
 msgstr ""
@@ -12638,10 +12708,6 @@ msgstr "zaklenjen"
 
 msgid "long"
 msgstr ""
-
-#
-msgid "loopthrough to"
-msgstr "preskoči na"
 
 msgid "magazines/reports/documentary"
 msgstr ""
@@ -13001,10 +13067,6 @@ msgstr "stanje iskanja"
 
 msgid "science fiction/fantasy/horror"
 msgstr ""
-
-#
-msgid "second cable of motorized LNB"
-msgstr "drugi kabel motoriziranega LNB-a"
 
 msgid "seconds"
 msgstr "sekund"

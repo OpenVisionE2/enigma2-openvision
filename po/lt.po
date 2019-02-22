@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-14 12:56+0330\n"
+"POT-Creation-Date: 2019-02-22 14:24+0330\n"
 "PO-Revision-Date: 2019-02-10 15:03+0200\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -1883,6 +1883,21 @@ msgstr "Konfigūravimo būdas: %s"
 msgid "Configuration..."
 msgstr "Konfigūracija..."
 
+msgid "Configure DVB-ATSC"
+msgstr ""
+
+#, fuzzy
+msgid "Configure DVB-C"
+msgstr "Konfigūruojama"
+
+#, fuzzy
+msgid "Configure DVB-S"
+msgstr "Konfigūruojama"
+
+#, fuzzy
+msgid "Configure DVB-T"
+msgstr "Konfigūruojama"
+
 msgid "Configure an additional delay to improve external subtitle synchronisation."
 msgstr "Nustatykite papildomą delsą, kad pagerinti išorinį subtitrų sinchronizavimą."
 
@@ -1894,6 +1909,22 @@ msgstr "Nustatykite, kiek laiko ekrane išliks matoma info juosta."
 
 msgid "Configure for how many minutes finished events should remain visible in the EPG. Useful when you need information about an event which has just finished, or has been delayed."
 msgstr "Nustatykite, kiek minučių pasibaigę įvykiai išliks matomi EPG sąraše. Naudinga, kai prireikia informacijos apie ką tik pasibaigusį, ar ilgiau užtrukusį įvykį."
+
+#, fuzzy
+msgid "Configure front LED color during recording (this needs an enigma2 restart)."
+msgstr "Įjunkite priekinį šviesos diodą (tai reikalauja pakartotinio paleidimo)."
+
+#, fuzzy
+msgid "Configure front LED color during recording in standby (this needs an enigma2 restart)."
+msgstr "Įjunkite priekinį šviesos diodą (tai reikalauja pakartotinio paleidimo)."
+
+#, fuzzy
+msgid "Configure front LED color during standby (this needs an enigma2 restart)."
+msgstr "Įjunkite priekinį šviesos diodą (tai reikalauja pakartotinio paleidimo)."
+
+#, fuzzy
+msgid "Configure front LED color in normal mode (this needs an enigma2 restart)."
+msgstr "Įjunkite priekinį šviesos diodą (tai reikalauja pakartotinio paleidimo)."
 
 msgid "Configure how many channels are shown in the selection list."
 msgstr "Nustatykite, kiek kanalų rodyti kanalų pasirinkimo sąrašo lange."
@@ -3724,8 +3755,18 @@ msgstr "Penktadienis"
 msgid "From :"
 msgstr "Nuo:"
 
-msgid "Front LED on"
-msgstr "Įjungti priekinį LED"
+msgid "Front LED color during recording"
+msgstr ""
+
+msgid "Front LED color during recording in standby"
+msgstr ""
+
+#, fuzzy
+msgid "Front LED color during standby"
+msgstr "Įjunkite maitinimo LED indikatorių budėjimo režimu metu."
+
+msgid "Front LED color in normal mode"
+msgstr ""
 
 #, python-format
 msgid "Frontprocessor version: %s"
@@ -4097,6 +4138,14 @@ msgstr "Sparčiųjų klavišų valdymas"
 msgid "Hotkey zap"
 msgstr "Spartusis perjungimas"
 
+#, fuzzy
+msgid "Hotswitchable"
+msgstr "netikrintinas"
+
+#, fuzzy
+msgid "Hotswitchable tuner"
+msgstr "Perjungiami imtuvų tipai:"
+
 msgid "How many minutes do you want add to the recording?"
 msgstr "Kiek minučių norite pridėti prie įrašo?"
 
@@ -4404,6 +4453,10 @@ msgid "Invalid directory selected: %s"
 msgstr "Pasirinktas negaliojantis katalogas: %s"
 
 msgid "Invalid location"
+msgstr "Neteisinga vieta"
+
+#, fuzzy
+msgid "Invalid reason"
 msgstr "Neteisinga vieta"
 
 msgid "Invalid transponder data"
@@ -7010,6 +7063,18 @@ msgstr "Pasirinkite 'A' arba 'B', jei jūsų antenos sistema reikalauja to, kita
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Pasirinkite 'FBC SCR' jei šis imtuvas prisijungtas prie SCR (Unicable/JESS) įrenginio. Visiems kitiems nustatymams pasirinkite 'FBC automatinis'."
 
+msgid "Select 'Yes' when you want to configure this tuner for DVB-ATSC"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-C"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-S"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-T"
+msgstr ""
+
 msgid "Select 'band' if using a 'universal' LNB, otherwise consult your LNB spec sheet."
 msgstr "Jei naudojate 'universalią' LNB, pasirinkite 'juosta', kitaip kreipkitės į savo LNB specifikacijų lapą."
 
@@ -8377,7 +8442,8 @@ msgstr "Perjungti į ankstesnį subkanalą"
 msgid "Switch to radio mode"
 msgstr "Perjungti į radiją"
 
-msgid "Switchable tuner types:"
+#, fuzzy
+msgid "Switchable tuner types"
 msgstr "Perjungiami imtuvų tipai:"
 
 msgid "Switzerland"
@@ -8687,8 +8753,8 @@ msgstr ""
 "Eiliniams vartotojams tai nėra svarbu.\n"
 "Nepulkit į paniką, perskaitę čia kokią nors jums nesuprantamą, ar įtartiną informaciją!"
 
-msgid "This is a multitype tuner. Available options depend on the hardware. Cable and terrestrial cannot be configured at the same time. If you want to use as cable + satellite or terrestrial + satellite, configure cable/terrestrial first and then save. Re-open and configure again as satellite."
-msgstr "Tai daugialustis imtuvas. Galimos parinktys priklauso nuo aparatūros. Kabelinės ir antžeminės negalima konfigūruoti vienu metu. Jei norite naudoti kabelinę + palydovinę arba antžeminę + palydovinę, pirmiausia sukonfigūruokite kabelinę/antžeminę ir tada išsaugokite. Dar kartą atidarykite ir konfigūruokite kaip palydovą."
+msgid "This is a multitype tuner. Available options depend on the hardware."
+msgstr ""
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Tai yra tvarka, kuria DiSEqC komandos siunčiamos į antenos sistemą. Užsakymas turi tiksliai atitikti tvarką, pagal kurią fiziniai įrenginiai išdėstomi palei signalo kabelį (pradedant imtuvo pabaigos)."
@@ -9155,9 +9221,6 @@ msgstr "Turkmenistanas"
 
 msgid "Turks and Caicos Islands"
 msgstr "Terkso ir Kaikoso salos"
-
-msgid "Turn on the front LED (this needs enigma2 restart)."
-msgstr "Įjunkite priekinį šviesos diodą (tai reikalauja pakartotinio paleidimo)."
 
 msgid "Turn on the power LED during deep standby."
 msgstr "Įjunkite įtampos LED gilaus budėjimo režime."
@@ -10531,8 +10594,18 @@ msgstr "juodai balta"
 msgid "blacklist"
 msgstr "juodasis sąrašas"
 
+msgid "blinking blue/green"
+msgstr ""
+
+msgid "blinking red"
+msgstr ""
+
 msgid "blue"
 msgstr "mėlyna"
+
+#, fuzzy
+msgid "blue/green"
+msgstr "žalia"
 
 msgid "bottom"
 msgstr "apačia"
@@ -10704,9 +10777,6 @@ msgstr "pramogos (6-14 metų vaikams)"
 
 msgid "epg cache backup"
 msgstr "epg talpyklos atsarginė kopija"
-
-msgid "equal to"
-msgstr "lygus"
 
 msgid "equestrian"
 msgstr "jojimas"
@@ -10920,9 +10990,6 @@ msgstr "fiksuota"
 
 msgid "long"
 msgstr "ilgas paspaudimas"
-
-msgid "loopthrough to"
-msgstr "kilpa į"
 
 msgid "magazines/reports/documentary"
 msgstr "žurnalai, pranešimai, dokumentika"
@@ -11226,9 +11293,6 @@ msgstr "paieškos eiga"
 
 msgid "science fiction/fantasy/horror"
 msgstr "mokslinė fantastika, fantastika, siaubai"
-
-msgid "second cable of motorized LNB"
-msgstr "antras kabelis nuo motorizuotos LNB"
 
 msgid "seconds"
 msgstr "sekundžių"

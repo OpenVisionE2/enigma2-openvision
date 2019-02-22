@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OPENPLi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-14 12:56+0330\n"
+"POT-Creation-Date: 2019-02-22 14:24+0330\n"
 "PO-Revision-Date: 2015-12-18 21:05+0200\n"
 "Last-Translator: Yetkin AYDIN <yetkina@gmail.com>\n"
 "Language-Team: http://www.hurforum.com <yetkina@gmail.com>\n"
@@ -1885,6 +1885,21 @@ msgstr "Yapılandırma modu: %s"
 msgid "Configuration..."
 msgstr "Yapılandırma..."
 
+msgid "Configure DVB-ATSC"
+msgstr ""
+
+#, fuzzy
+msgid "Configure DVB-C"
+msgstr "Ayarlanıyor"
+
+#, fuzzy
+msgid "Configure DVB-S"
+msgstr "Ayarlanıyor"
+
+#, fuzzy
+msgid "Configure DVB-T"
+msgstr "Ayarlanıyor"
+
 msgid "Configure an additional delay to improve external subtitle synchronisation."
 msgstr "Altyazı senkronizasyonu için gecikme yapılandırması."
 
@@ -1896,6 +1911,18 @@ msgstr "Bilgi çubuğunun görünme süresi."
 
 msgid "Configure for how many minutes finished events should remain visible in the EPG. Useful when you need information about an event which has just finished, or has been delayed."
 msgstr "Biten olaylar EPG de kaç dakika görünmeli.  Kullanışlı, biten veya ertelenmişti bir olay hakkında bilgi gerektiğinde."
+
+msgid "Configure front LED color during recording (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during recording in standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color in normal mode (this needs an enigma2 restart)."
+msgstr ""
 
 msgid "Configure how many channels are shown in the selection list."
 msgstr ""
@@ -3753,7 +3780,17 @@ msgstr "Cuma"
 msgid "From :"
 msgstr "Gönderen :"
 
-msgid "Front LED on"
+msgid "Front LED color during recording"
+msgstr ""
+
+msgid "Front LED color during recording in standby"
+msgstr ""
+
+#, fuzzy
+msgid "Front LED color during standby"
+msgstr "H.Bekleme modunda LED açık kalsın"
+
+msgid "Front LED color in normal mode"
 msgstr ""
 
 #, python-format
@@ -4137,6 +4174,13 @@ msgstr "Kurulum Tuşu"
 msgid "Hotkey zap"
 msgstr "ZAP Tuşu"
 
+msgid "Hotswitchable"
+msgstr ""
+
+#, fuzzy
+msgid "Hotswitchable tuner"
+msgstr "Seçilebilir tuner tipleri:"
+
 #, fuzzy
 msgid "How many minutes do you want add to the recording?"
 msgstr "Kaç dakika kayıt eklemek istiyorsunuz?"
@@ -4449,6 +4493,10 @@ msgid "Invalid directory selected: %s"
 msgstr "Seçilen klasör geçersiz: %s"
 
 msgid "Invalid location"
+msgstr "Geçersiz konum"
+
+#, fuzzy
+msgid "Invalid reason"
 msgstr "Geçersiz konum"
 
 msgid "Invalid transponder data"
@@ -7099,6 +7147,18 @@ msgstr ""
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr ""
 
+msgid "Select 'Yes' when you want to configure this tuner for DVB-ATSC"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-C"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-S"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-T"
+msgstr ""
+
 msgid "Select 'band' if using a 'universal' LNB, otherwise consult your LNB spec sheet."
 msgstr ""
 
@@ -8496,7 +8556,8 @@ msgstr "Önceki alt servise geç"
 msgid "Switch to radio mode"
 msgstr "Radyo modu"
 
-msgid "Switchable tuner types:"
+#, fuzzy
+msgid "Switchable tuner types"
 msgstr "Seçilebilir tuner tipleri:"
 
 msgid "Switzerland"
@@ -8796,7 +8857,7 @@ msgid ""
 "Don't panic please when you see values being displayed that you think look suspicious!"
 msgstr ""
 
-msgid "This is a multitype tuner. Available options depend on the hardware. Cable and terrestrial cannot be configured at the same time. If you want to use as cable + satellite or terrestrial + satellite, configure cable/terrestrial first and then save. Re-open and configure again as satellite."
+msgid "This is a multitype tuner. Available options depend on the hardware."
 msgstr ""
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
@@ -9281,9 +9342,6 @@ msgid "Turkmenistan"
 msgstr "Türkçe"
 
 msgid "Turks and Caicos Islands"
-msgstr ""
-
-msgid "Turn on the front LED (this needs enigma2 restart)."
 msgstr ""
 
 #, fuzzy
@@ -10667,8 +10725,18 @@ msgstr "Kara & Beyaz"
 msgid "blacklist"
 msgstr "Kara Liste"
 
+msgid "blinking blue/green"
+msgstr ""
+
+msgid "blinking red"
+msgstr ""
+
 msgid "blue"
 msgstr "Mavi"
+
+#, fuzzy
+msgid "blue/green"
+msgstr "Yeşil"
 
 msgid "bottom"
 msgstr ""
@@ -10840,9 +10908,6 @@ msgstr "Eğlence (6-14 yaş)"
 
 msgid "epg cache backup"
 msgstr "epg önbelleğini yedekle"
-
-msgid "equal to"
-msgstr "Eşit"
 
 msgid "equestrian"
 msgstr "Binicilik"
@@ -11061,9 +11126,6 @@ msgstr "Kilitli"
 
 msgid "long"
 msgstr "Uzun"
-
-msgid "loopthrough to"
-msgstr "Üzerinden bağla"
 
 msgid "magazines/reports/documentary"
 msgstr "Magazin/Belgesel"
@@ -11369,9 +11431,6 @@ msgstr "Kanal arama durumu"
 
 msgid "science fiction/fantasy/horror"
 msgstr "Bilim Kurgu/Fantastik/Korku"
-
-msgid "second cable of motorized LNB"
-msgstr "Motorlu LNB'nin ikinci kablosu"
 
 msgid "seconds"
 msgstr "Saniye"

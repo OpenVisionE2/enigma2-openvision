@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-14 12:56+0330\n"
+"POT-Creation-Date: 2019-02-22 14:24+0330\n"
 "PO-Revision-Date: 2016-11-17 12:51+0200\n"
 "Last-Translator: vovan43<vovan43@ex.ua>, sety <tim1065@mail.ru>, Irkoff <irkoff@gmail.com>\n"
 "Language-Team: gisclub.tv <http://gisclub.tv/>\n"
@@ -1909,6 +1909,21 @@ msgstr "Режим конфігурації: %s"
 msgid "Configuration..."
 msgstr "Конфігурація..."
 
+msgid "Configure DVB-ATSC"
+msgstr ""
+
+#, fuzzy
+msgid "Configure DVB-C"
+msgstr "Налаштування"
+
+#, fuzzy
+msgid "Configure DVB-S"
+msgstr "Налаштування"
+
+#, fuzzy
+msgid "Configure DVB-T"
+msgstr "Налаштування"
+
 msgid "Configure an additional delay to improve external subtitle synchronisation."
 msgstr "Налаштування додаткової затримки для поліпшення синхронізації зовнішніх субтитрів."
 
@@ -1920,6 +1935,18 @@ msgstr "Вкажіть, як довго інфобар залишатиметь�
 
 msgid "Configure for how many minutes finished events should remain visible in the EPG. Useful when you need information about an event which has just finished, or has been delayed."
 msgstr "Дозволяє показати дані EPG про минулі події. Зручно коли хочете знати щось про передачу, яка ось-ось закінчиться або тільки що закінчилася (у хвилинах)."
+
+msgid "Configure front LED color during recording (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during recording in standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color in normal mode (this needs an enigma2 restart)."
+msgstr ""
 
 msgid "Configure how many channels are shown in the selection list."
 msgstr "Налаштувати скільки каналів відображати в списку"
@@ -3782,7 +3809,17 @@ msgstr "П'ятниця"
 msgid "From :"
 msgstr "Від :"
 
-msgid "Front LED on"
+msgid "Front LED color during recording"
+msgstr ""
+
+msgid "Front LED color during recording in standby"
+msgstr ""
+
+#, fuzzy
+msgid "Front LED color during standby"
+msgstr "Увімкніть LED індикатор в режимі очікування."
+
+msgid "Front LED color in normal mode"
 msgstr ""
 
 #, python-format
@@ -4170,6 +4207,14 @@ msgid "Hotkey zap"
 msgstr "Перемикання кольорових кнопок"
 
 #, fuzzy
+msgid "Hotswitchable"
+msgstr "неперевірено"
+
+#, fuzzy
+msgid "Hotswitchable tuner"
+msgstr "Перемикані типи тюнерів:"
+
+#, fuzzy
 msgid "How many minutes do you want add to the recording?"
 msgstr "Скільки хвилин ви хочете додати до запису?"
 
@@ -4483,6 +4528,10 @@ msgid "Invalid directory selected: %s"
 msgstr "Вибрано неправильний каталог: %s"
 
 msgid "Invalid location"
+msgstr "Неправильне розташування"
+
+#, fuzzy
+msgid "Invalid reason"
 msgstr "Неправильне розташування"
 
 msgid "Invalid transponder data"
@@ -7154,6 +7203,18 @@ msgstr ""
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr ""
 
+msgid "Select 'Yes' when you want to configure this tuner for DVB-ATSC"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-C"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-S"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-T"
+msgstr ""
+
 msgid "Select 'band' if using a 'universal' LNB, otherwise consult your LNB spec sheet."
 msgstr ""
 
@@ -8555,7 +8616,8 @@ msgstr "Перейти на попередній підсервіс"
 msgid "Switch to radio mode"
 msgstr "Перемикання в режим радіо"
 
-msgid "Switchable tuner types:"
+#, fuzzy
+msgid "Switchable tuner types"
 msgstr "Перемикані типи тюнерів:"
 
 msgid "Switzerland"
@@ -8867,7 +8929,7 @@ msgid ""
 "Don't panic please when you see values being displayed that you think look suspicious!"
 msgstr "Ця інфо тільки для розробників! Для звичайних користувачів це не важливо. Не панікуйте, якщо тут з'явиться незрозуміла інформація!"
 
-msgid "This is a multitype tuner. Available options depend on the hardware. Cable and terrestrial cannot be configured at the same time. If you want to use as cable + satellite or terrestrial + satellite, configure cable/terrestrial first and then save. Re-open and configure again as satellite."
+msgid "This is a multitype tuner. Available options depend on the hardware."
 msgstr ""
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
@@ -9362,9 +9424,6 @@ msgid "Turkmenistan"
 msgstr "Турецький"
 
 msgid "Turks and Caicos Islands"
-msgstr ""
-
-msgid "Turn on the front LED (this needs enigma2 restart)."
 msgstr ""
 
 #, fuzzy
@@ -10783,8 +10842,18 @@ msgstr "чорне і біле"
 msgid "blacklist"
 msgstr "чорний список"
 
+msgid "blinking blue/green"
+msgstr ""
+
+msgid "blinking red"
+msgstr ""
+
 msgid "blue"
 msgstr "синій"
+
+#, fuzzy
+msgid "blue/green"
+msgstr "зелений"
 
 msgid "bottom"
 msgstr "низ"
@@ -10956,9 +11025,6 @@ msgstr "розваги (6-14 років)"
 
 msgid "epg cache backup"
 msgstr "резервне копіювання кеш epg"
-
-msgid "equal to"
-msgstr "також як"
 
 msgid "equestrian"
 msgstr "кінний спорт"
@@ -11177,9 +11243,6 @@ msgstr "захоплено"
 
 msgid "long"
 msgstr "довго"
-
-msgid "loopthrough to"
-msgstr "петля до"
 
 msgid "magazines/reports/documentary"
 msgstr "журнали/репортажі/документальний"
@@ -11485,9 +11548,6 @@ msgstr "стан пошуку"
 
 msgid "science fiction/fantasy/horror"
 msgstr "наукова фантастика/фентезі/жахи"
-
-msgid "second cable of motorized LNB"
-msgstr "другий кабель від LNB на моторі"
 
 msgid "seconds"
 msgstr "секунди"

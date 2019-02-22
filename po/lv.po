@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-14 12:56+0330\n"
+"POT-Creation-Date: 2019-02-22 14:24+0330\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -1887,6 +1887,21 @@ msgstr "Konfigurēšanas režīms: %s"
 msgid "Configuration..."
 msgstr "Konfigurācija..."
 
+msgid "Configure DVB-ATSC"
+msgstr ""
+
+#, fuzzy
+msgid "Configure DVB-C"
+msgstr "Konfigurē"
+
+#, fuzzy
+msgid "Configure DVB-S"
+msgstr "Konfigurē"
+
+#, fuzzy
+msgid "Configure DVB-T"
+msgstr "Konfigurē"
+
 msgid "Configure an additional delay to improve external subtitle synchronisation."
 msgstr "Uzstāda papildus aizturi lai darbotos ārējo subtitru sinhronizācija."
 
@@ -1898,6 +1913,18 @@ msgstr "Uzstāda cik ilgi infojosla paliek redzama pēc aktivizācijas."
 
 msgid "Configure for how many minutes finished events should remain visible in the EPG. Useful when you need information about an event which has just finished, or has been delayed."
 msgstr "Uzstāda cik minūtes pabeigtiem notikumiem jāpaliek redzamiem EPG. Noderīgi, ja jums ir nepieciešama informācija par kādu notikumu, kas tikko ir pabeigts, vai ir atlikts."
+
+msgid "Configure front LED color during recording (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during recording in standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color during standby (this needs an enigma2 restart)."
+msgstr ""
+
+msgid "Configure front LED color in normal mode (this needs an enigma2 restart)."
+msgstr ""
 
 msgid "Configure how many channels are shown in the selection list."
 msgstr "Uzstāda cik daudz kanālu tiks attēlots kanālu sarakstā."
@@ -3732,7 +3759,17 @@ msgstr "Piektdiena"
 msgid "From :"
 msgstr "No :"
 
-msgid "Front LED on"
+msgid "Front LED color during recording"
+msgstr ""
+
+msgid "Front LED color during recording in standby"
+msgstr ""
+
+#, fuzzy
+msgid "Front LED color during standby"
+msgstr "Ieslēgt LED gaidstāvē."
+
+msgid "Front LED color in normal mode"
 msgstr ""
 
 #, python-format
@@ -4107,6 +4144,14 @@ msgstr "Ātro taustiņu iestatījumi"
 msgid "Hotkey zap"
 msgstr "Pārslēgšana uz"
 
+#, fuzzy
+msgid "Hotswitchable"
+msgstr "netestēts"
+
+#, fuzzy
+msgid "Hotswitchable tuner"
+msgstr "Pārslēdzamo uztvērēju tipi:"
+
 msgid "How many minutes do you want add to the recording?"
 msgstr "Cik minūšu vēlaties pievienot ierakstam?"
 
@@ -4412,6 +4457,10 @@ msgid "Invalid directory selected: %s"
 msgstr "Izvēlēta nepareiza mape: %s"
 
 msgid "Invalid location"
+msgstr "Nederīga vieta"
+
+#, fuzzy
+msgid "Invalid reason"
 msgstr "Nederīga vieta"
 
 msgid "Invalid transponder data"
@@ -7020,6 +7069,18 @@ msgstr "Izvēlieties 'A' vai 'B', ja tas nepieciešmas jūsu antenu sistēmai, p
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Izvēlieties 'FBC SCR', ja šis uztvērējs izmantos SCR (Unicable/JESS) ierīci. Visiem citiem iestatījumiem izvēlieties 'FBC automātiski'."
 
+msgid "Select 'Yes' when you want to configure this tuner for DVB-ATSC"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-C"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-S"
+msgstr ""
+
+msgid "Select 'Yes' when you want to configure this tuner for DVB-T"
+msgstr ""
+
 msgid "Select 'band' if using a 'universal' LNB, otherwise consult your LNB spec sheet."
 msgstr "Ja izmantojat 'universālo' LNB, izvēlieties 'josla', pretējā gadījumā skatiet LNB specifikāciju."
 
@@ -8385,7 +8446,8 @@ msgstr "Pārslēgt uz iepriekšējo papildkanālu"
 msgid "Switch to radio mode"
 msgstr "Pārslēgt uz radio režīmu"
 
-msgid "Switchable tuner types:"
+#, fuzzy
+msgid "Switchable tuner types"
 msgstr "Pārslēdzamo uztvērēju tipi:"
 
 msgid "Switzerland"
@@ -8691,8 +8753,8 @@ msgstr ""
 "Vienkāršam lietotājam tā nav svarīga.\n"
 "Lūdzu neuztraucieties ja jums liekas, ka šeit attēlotas aizdomīgas vērtības!"
 
-msgid "This is a multitype tuner. Available options depend on the hardware. Cable and terrestrial cannot be configured at the same time. If you want to use as cable + satellite or terrestrial + satellite, configure cable/terrestrial first and then save. Re-open and configure again as satellite."
-msgstr "Šis ir vairāku veidu uztvērējs. Pieejamās opcijas ir atkarīgas no aparatūras. Vienlaikus nevar konfigurēt kabeļu un virszemes uztveršanu. Ja vēlaties izmantot kā kabeļu + satelīta vai virszemes + satelīta, vispirms konfigurējiet kā kabeļu vai virszemes uztvērēju un pēc tam saglabājiet. Atkārtoti atveriet un konfigurējiet kā satelīta uztvērēju."
+msgid "This is a multitype tuner. Available options depend on the hardware."
+msgstr ""
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Komadu rinda, kādā DiSEqC komandas tiek nosūtītas. Komandu rindai precīzi jāatbilst kārtībai, kādā sākot no uztvērēja fiziskās ierīces tiek pielēgtas kabelim."
@@ -9161,9 +9223,6 @@ msgstr "Turkmenistāna"
 
 msgid "Turks and Caicos Islands"
 msgstr "Turks un Kaikosas salas"
-
-msgid "Turn on the front LED (this needs enigma2 restart)."
-msgstr ""
 
 msgid "Turn on the power LED during deep standby."
 msgstr "Ieslēgt LED dziļās gaidstāves režīmā."
@@ -10537,8 +10596,18 @@ msgstr "melns un balts"
 msgid "blacklist"
 msgstr "melnais saraksts"
 
+msgid "blinking blue/green"
+msgstr ""
+
+msgid "blinking red"
+msgstr ""
+
 msgid "blue"
 msgstr "zilā"
+
+#, fuzzy
+msgid "blue/green"
+msgstr "zaļā"
 
 msgid "bottom"
 msgstr "apakšā"
@@ -10710,9 +10779,6 @@ msgstr "izklaide (6-14 gadu veciem)"
 
 msgid "epg cache backup"
 msgstr "epg kešatmiņas dublējumkopija"
-
-msgid "equal to"
-msgstr "vienāds ar"
 
 msgid "equestrian"
 msgstr "jātnieka"
@@ -10926,9 +10992,6 @@ msgstr "noenkurojies"
 
 msgid "long"
 msgstr "ilgi"
-
-msgid "loopthrough to"
-msgstr "cilpot uz"
 
 msgid "magazines/reports/documentary"
 msgstr "avīzes/atskaites/dokumentālais"
@@ -11232,9 +11295,6 @@ msgstr "meklēšanas statuss"
 
 msgid "science fiction/fantasy/horror"
 msgstr "zinātniskā fantastika/fantāzijas/šausmu"
-
-msgid "second cable of motorized LNB"
-msgstr "otrs motorizētās LNB kabelis"
 
 msgid "seconds"
 msgstr "sekundes"
