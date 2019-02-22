@@ -1,5 +1,5 @@
 from config import config, ConfigSlider, ConfigSelection, ConfigYesNo, ConfigEnableDisable, ConfigSubsection, ConfigBoolean, ConfigSelectionNumber, ConfigNothing, NoSave
-from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop
+from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop, getBoxType
 from SystemInfo import SystemInfo
 import os
 
@@ -65,7 +65,10 @@ class AVSwitch:
 
 def InitAVSwitch():
 	config.av = ConfigSubsection()
-	config.av.yuvenabled = ConfigBoolean(default=True)
+	if getBoxType() == "vuduo" or getBoxType().startswith("ixuss"):
+		config.av.yuvenabled = ConfigBoolean(default=False)
+	else:
+		config.av.yuvenabled = ConfigBoolean(default=True)
 	colorformat_choices = {"cvbs": _("CVBS")}
 
 	# when YUV, Scart or S-Video is not support by HW, don't let the user select it
@@ -147,7 +150,12 @@ def InitAVSwitch():
 	iAVSwitch = AVSwitch()
 
 	def setColorFormat(configElement):
-		map = {"cvbs": 0, "rgb": 1, "svideo": 2, "yuv": 3}
+		if getBoxType() == "et6x00":
+			map = {"cvbs": 3, "rgb": 3, "svideo": 2, "yuv": 3}	
+		elif getBoxType() in ("gbquad", "gbquadplus") or getBoxType().startswith('et'):
+			map = {"cvbs": 0, "rgb": 3, "svideo": 2, "yuv": 3}
+		else:
+			map = {"cvbs": 0, "rgb": 1, "svideo": 2, "yuv": 3}
 		iAVSwitch.setColorFormat(map[configElement.value])
 
 	def setAspectRatio(configElement):
