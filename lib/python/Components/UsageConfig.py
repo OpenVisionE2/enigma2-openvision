@@ -1,7 +1,7 @@
 from Components.Harddisk import harddiskmanager
 from config import ConfigSubsection, ConfigYesNo, config, ConfigSelection, ConfigText, ConfigNumber, ConfigSet, ConfigLocations, ConfigSelectionNumber, ConfigClock, ConfigSlider, ConfigEnableDisable, ConfigSubDict, ConfigDictionarySet, ConfigInteger, ConfigPassword
 from Tools.Directories import defaultRecordingLocation
-from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff, setEnableTtCachingOnOff, eEnv, eDVBDB, Misc_Options, eBackgroundFileEraser, eServiceEvent
+from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff, setEnableTtCachingOnOff, eEnv, eDVBDB, Misc_Options, eBackgroundFileEraser, eServiceEvent, getBoxType
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.ServiceList import refreshServiceList
@@ -570,7 +570,23 @@ def InitUsageConfig():
 		if SystemInfo["HasColorspaceSimple"]:
 			config.av.hdmicolorspace = ConfigSelection(default = "Edid(Auto)", choices={"Edid(Auto)": _("Auto"), "Hdmi_Rgb": _("RGB"), "444": _("YCbCr444"), "422": _("YCbCr422"), "420": _("YCbCr420")})
 		else:
-			config.av.hdmicolorspace = ConfigSelection(default = "auto", choices={"auto": _("auto"), "rgb": _("rgb"), "420": _("420"), "422": _("422"), "444": _("444")})
+			if getBoxType() in ("dm900","dm920","vuzero4k"):
+				config.av.hdmicolorspace = ConfigSelection(choices={
+						"Edid(Auto)": _("Auto"),
+						"Hdmi_Rgb": _("RGB"),
+						"Itu_R_BT_709": _("BT709"),
+						"DVI_Full_Range_RGB": _("Full Range RGB"),
+						"FCC": _("FCC 1953"),
+						"Itu_R_BT_470_2_BG": _("BT470 BG"),
+						"Smpte_170M": _("Smpte 170M"),
+						"Smpte_240M": _("Smpte 240M"),
+						"Itu_R_BT_2020_NCL": _("BT2020 NCL"),
+						"Itu_R_BT_2020_CL": _("BT2020 CL"),
+						"XvYCC_709": _("BT709 XvYCC"),
+						"XvYCC_601": _("BT601 XvYCC")},
+						default = "Edid(Auto)")
+			else:
+				config.av.hdmicolorspace = ConfigSelection(default = "auto", choices={"auto": _("auto"), "rgb": _("rgb"), "420": _("420"), "422": _("422"), "444": _("444")})
 		config.av.hdmicolorspace.addNotifier(setHaveColorspace)
 
 	if SystemInfo["HasColordepth"]:

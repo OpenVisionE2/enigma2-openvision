@@ -176,12 +176,24 @@ def InitAVSwitch():
 	config.av.wss.addNotifier(setWSS)
 
 	iAVSwitch.setInput("ENCODER") # init on startup
-	SystemInfo["ScartSwitch"] = eAVSwitch.getInstance().haveScartSwitch()
+	if getBoxType() in ("gbquad", "gbquadplus", "et5x00", "et6x00", "ixussone", "ixusszero", "axodin", "axodinc", "starsatlx", "galaxym6", "geniuse3hd", "evoe3hd", "axase3", "axase3c", "optimussos1", "optimussos2", "gb800seplus", "gb800ueplus", "gbultrase", "gbultraue", "gbultraueh" , "twinboxlcd"):
+		detected = False
+	else:
+		detected = eAVSwitch.getInstance().haveScartSwitch()
+
+	SystemInfo["ScartSwitch"] = detected
 
 	if SystemInfo["CanDownmixAC3"]:
 		def setAC3Downmix(configElement):
-			open("/proc/stb/audio/ac3", "w").write(configElement.value and "downmix" or "passthrough")
-		config.av.downmix_ac3 = ConfigYesNo(default = True)
+			if getBoxType() in ("dm900", "dm920", "dm7080", "dm800"):
+				open("/proc/stb/audio/ac3", "w").write(configElement.value)
+			else:
+				open("/proc/stb/audio/ac3", "w").write(configElement.value and "downmix" or "passthrough")
+		if getBoxType() in ("dm900", "dm920", "dm7080", "dm800"):
+			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI"))]
+			config.av.downmix_ac3 = ConfigSelection(choices = choice_list, default = "downmix")
+		else:
+			config.av.downmix_ac3 = ConfigYesNo(default = True)
 		config.av.downmix_ac3.addNotifier(setAC3Downmix)
 
 	if SystemInfo["CanDownmixDTS"]:
@@ -192,8 +204,18 @@ def InitAVSwitch():
 
 	if SystemInfo["CanDownmixAAC"]:
 		def setAACDownmix(configElement):
-			open("/proc/stb/audio/aac", "w").write(configElement.value and "downmix" or "passthrough")
-		config.av.downmix_aac = ConfigYesNo(default = True)
+			if getBoxType() in ("dm900", "dm920", "dm7080", "dm800", "gbquad4k", "gbue4k"):
+				open("/proc/stb/audio/aac", "w").write(configElement.value)
+			else:
+				open("/proc/stb/audio/aac", "w").write(configElement.value and "downmix" or "passthrough")
+		if getBoxType() in ("dm900", "dm920", "dm7080", "dm800"):
+			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI"))]
+			config.av.downmix_aac = ConfigSelection(choices = choice_list, default = "downmix")
+		elif getBoxType() in ("gbquad4k", "gbue4k"):
+			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("force_ac3", _("convert to AC3")), ("force_dts",  _("convert to DTS")), ("use_hdmi_cacenter",  _("use_hdmi_cacenter")), ("wide",  _("wide")), ("extrawide",  _("extrawide"))]
+			config.av.downmix_aac = ConfigSelection(choices = choice_list, default = "downmix")
+		else:
+			config.av.downmix_aac = ConfigYesNo(default = True)
 		config.av.downmix_aac.addNotifier(setAACDownmix)
 
 	try:
@@ -217,7 +239,10 @@ def InitAVSwitch():
 			except IOError:
 				print "couldn't write pep_scaler_sharpness"
 
-		config.av.scaler_sharpness = ConfigSlider(default=13, limits=(0,26))
+		if getBoxType() in ("gbquad", "gbquadplus"):
+			config.av.scaler_sharpness = ConfigSlider(default=5, limits=(0,26))
+		else:
+			config.av.scaler_sharpness = ConfigSlider(default=13, limits=(0,26))
 		config.av.scaler_sharpness.addNotifier(setScaler_sharpness)
 	else:
 		config.av.scaler_sharpness = NoSave(ConfigNothing())
