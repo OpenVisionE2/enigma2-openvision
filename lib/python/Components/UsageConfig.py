@@ -312,10 +312,10 @@ def InitUsageConfig():
 
 	config.usage.swap_snr_on_osd = ConfigYesNo(default = False)
 
-	config.usage.frontled_color = ConfigSelection(default = "2", choices = [("0", _("none")), ("1", _("red")), ("2", _("blue/green")), ("3", _("blinking red")), ("4",  _("blinking blue/green"))])
-	config.usage.frontledrec_color = ConfigSelection(default = "3", choices = [("0", _("none")), ("1", _("red")), ("2", _("blue/green")), ("3", _("blinking red")), ("4",  _("blinking blue/green"))])
-	config.usage.frontledstdby_color = ConfigSelection(default = "0", choices = [("0", _("none")), ("1", _("red")), ("2", _("blue/green")), ("3", _("blinking red")), ("4",  _("blinking blue/green"))])
-	config.usage.frontledrecstdby_color = ConfigSelection(default = "3", choices = [("0", _("none")), ("1", _("red")), ("2", _("blue/green")), ("3", _("blinking red")), ("4",  _("blinking blue/green"))])
+	config.usage.frontled_color = ConfigSelection(default = "0", choices = [("0", _("Off")), ("1", _("Red")), ("2", _("Blue")), ("3", _("Blinking red")), ("4",  _("Blinking blue"))])
+	config.usage.frontledrec_color = ConfigSelection(default = "3", choices = [("0", _("Off")), ("1", _("Red")), ("2", _("Blue")), ("3", _("Blinking red")), ("4",  _("Blinking blue"))])
+	config.usage.frontledstdby_color = ConfigSelection(default = "0", choices = [("0", _("Off")), ("1", _("Red")), ("2", _("Blue")), ("3", _("Blinking red")), ("4",  _("Blinking blue"))])
+	config.usage.frontledrecstdby_color = ConfigSelection(default = "3", choices = [("0", _("Off")), ("1", _("Red")), ("2", _("Blue")), ("3", _("Blinking red")), ("4",  _("Blinking blue"))])
 
 	def SpinnerOnOffChanged(configElement):
 		setSpinnerOnOff(int(configElement.value))
