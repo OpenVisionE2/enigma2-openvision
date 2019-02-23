@@ -382,7 +382,15 @@ class VideoHardware:
 			wss = "auto"
 
 		print "[VideoHardware] -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss
-		open("/proc/stb/video/aspect", "w").write(aspect)
+		arw = "0"
+		if getBoxType() in ("alien5", "c300", "c300pro", "c400plus", "k1plus", "k1pro", "k2pro", "k2prov2", "k3pro", "kvim2", "x8hp", "odroidc2", "wetekhub", "wetekplay", "wetekplay2"):
+			if config.av.policy_43.value == "panscan" : arw = "11"
+			if config.av.policy_43.value == "letterbox" : arw = "12"
+			if config.av.policy_43.value == "bestfit" : arw = "10"			
+			open("/sys/class/video/screen_mode", "w").write(arw)
+			open("/proc/stb/video/aspect", "w").write(aspect)
+		else:
+			open("/proc/stb/video/aspect", "w").write(aspect)
 		open("/proc/stb/video/policy", "w").write(policy)
 		try:
 			open("/proc/stb/denc/0/wss", "w").write(wss)
