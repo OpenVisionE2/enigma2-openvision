@@ -135,10 +135,8 @@ class AudioSelection(Screen, ConfigListScreen):
 					self.settings.channelmode = ConfigSelection(choices = choicelist, default = str(self.audioChannel.getCurrentChannel()))
 					self.settings.channelmode.addNotifier(self.changeMode, initial_call = False)
 					conflist.append(getConfigListEntry(_("Channel"), self.settings.channelmode))
-					self["key_green"].setBoolean(True)
 				else:
 					conflist.append(('',))
-					self["key_green"].setBoolean(False)
 				selectedAudio = self.audioTracks.getCurrentTrack()
 				for x in range(n):
 					number = str(x + 1)
@@ -169,13 +167,10 @@ class AudioSelection(Screen, ConfigListScreen):
 			else:
 				streams = []
 				conflist.append(('',))
-				self["key_green"].setBoolean(False)
 
 			if subtitlelist:
-				self["key_yellow"].setBoolean(True)
 				conflist.append(getConfigListEntry(_("To subtitle selection"), self.settings.menupage))
 			else:
-				self["key_yellow"].setBoolean(False)
 				conflist.append(('',))
 
 			from Components.PluginComponent import plugins
@@ -192,7 +187,6 @@ class AudioSelection(Screen, ConfigListScreen):
 				self.Plugins = [ (p.name, PluginCaller(self.infobar.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_AUDIOMENU) ]
 
 				if self.Plugins:
-					self["key_blue"].setBoolean(True)
 					if len(self.Plugins) > 1:
 						conflist.append(getConfigListEntry(_("Audio plugins"), ConfigNothing()))
 						self.plugincallfunc = [(x[0], x[1]) for x in self.Plugins]
@@ -205,8 +199,6 @@ class AudioSelection(Screen, ConfigListScreen):
 			self.setTitle(_("Subtitle selection"))
 			conflist.append(('',))
 			conflist.append(('',))
-			self["key_red"].setBoolean(False)
-			self["key_green"].setBoolean(False)
 
 			idx = 0
 
@@ -252,7 +244,6 @@ class AudioSelection(Screen, ConfigListScreen):
 			conflist.append(getConfigListEntry(_("To audio selection"), self.settings.menupage))
 
 			if self.infobar.selected_subtitle and self.infobar.selected_subtitle != (0,0,0,0)  and not ".DVDPlayer'>" in `self.infobar`:
-				self["key_blue"].setBoolean(True)
 				conflist.append(getConfigListEntry(_("Subtitle Quickmenu"), ConfigNothing()))
 
 		if len(conflist) > 0 and conflist[0][0]:
