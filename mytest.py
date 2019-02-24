@@ -11,7 +11,6 @@ profile("PYTHON_START")
 import Tools.RedirectOutput
 import enigma
 
-from enigma import getBoxType
 boxtype = getBoxType()
 
 import eConsoleImpl
