@@ -407,12 +407,6 @@ def InitUsageConfig():
 		config.usage.wakeOnLAN = ConfigYesNo(default = False)
 		config.usage.wakeOnLAN.addNotifier(wakeOnLANChanged)
 
-	if SystemInfo["hasXcoreVFD"]:
-		def set12to8characterVFD(configElement):
-			open(SystemInfo["hasXcoreVFD"], "w").write(not configElement.value and "1" or "0")
-		config.usage.toggle12to8characterVFD = ConfigYesNo(default = False)
-		config.usage.toggle12to8characterVFD.addNotifier(set12to8characterVFD)
-
 	if SystemInfo["LcdLiveTVMode"]:
 		def setLcdLiveTVMode(configElement):
 			open(SystemInfo["LcdLiveTVMode"], "w").write(configElement.value)

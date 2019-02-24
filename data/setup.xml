@@ -226,7 +226,7 @@
 		<item level="2" text="Final scroll delay" description="Delay in miliseconds after finish scrolling text on display." requires="VFD_final_scroll_delay">config.usage.vfd_final_scroll_delay</item>
 		<item level="0" text="Power on display" description="This option allows you to power off the display." requires="PowerOffDisplay">config.usage.powerOffDisplay</item>
 		<item level="2" text="Show symbols on display" description="This option allows you to show all symbols on the display." requires="LCDshow_symbols">config.usage.lcd_show_symbols</item>
-		<item level="2" text="Use 12 characters display mode" description="If enabled, display shows 12 chars instead 8, but in latin-1/translit only." requires="hasXcoreVFD">config.usage.toggle12to8characterVFD</item>
+		<item level="2" text="Use 12 characters display mode" description="If enabled, display shows 12 chars instead 8, but in latin-1/translit only." requires="hasXcoreVFD">config.usage.vfd_xcorevfd</item>
 		<item level="1" requires="GraphicLCD" text="LCD scroll speed" description="Set the scrolling speed of text on the front display.">config.usage.lcd_scroll_speed</item>
 		<item level="1" requires="GraphicLCD" text="Time for next LCD scrolling" description="If the text is too long to be displayed on the front panel, it will be repeated (number of times):">config.usage.lcd_scroll_delay</item>
 		<item level="0" text="LED Normal" description="LED brightness during normal operations.">config.lcd.ledbrightness</item>
@@ -240,10 +240,9 @@
 		<item level="1" requires="ConfigDisplay" text="Scrolling speed (software renderer)" description="Set the scrolling speed of text on the front display, this is used by software renderer in some skins.">config.lcd.scroll_speed</item>
 		<item level="1" requires="ConfigDisplay" text="Scrolling delay (software renderer)" description="Set the delay time between repeated loops, this is used by software renderer in some skins.">config.lcd.scroll_delay</item>
 		<item level="0" requires="ConfigDisplay" text="Power On Display" description="This option allows you to Power Off the display.">config.lcd.power</item>
-		<item level="1" requires="XcoreVFD" text="switch 12 to 8 character display mode" description="12, show latin-1 characters except for greek and cyrillic, switch to 8 if needed.">config.usage.vfd_xcorevfd</item>
 		<item level="0" requires="PowerLed" text="Turn on the power LED." description="Power LED can be turned on or off here.">config.usage.lcd_powerled</item>
-		<item level="0" requires="StandbyPowerLed" text="Power LED State in Standby" description="Power LED state during standby.">config.usage.lcd_standbypowerled</item>
-		<item level="0" requires="SuspendPowerLed" text="Power LED State in Deep-Standby" description="Power LED state during deep-standby.">config.usage.lcd_deepstandbypowerled</item>
+		<item level="0" requires="StandbyLED" text="Power LED State in Standby" description="Power LED state during standby.">config.usage.lcd_standbypowerled</item>
+		<item level="0" requires="SuspendLED" text="Power LED State in Deep-Standby" description="Power LED state during deep-standby.">config.usage.lcd_deepstandbypowerled</item>
 		<item level="0" requires="ConfigDisplay" text="Show HDD progress" description="Disable the HDD Process on VFD">config.lcd.hdd</item>
 		<item level="0" requires="FBLCDDisplay" text="Clone TV screen to LCD" description="Shows live tv or informations on LCD.">config.lcd.fblcddisplay</item>
 		<item level="0" requires="ConfigDisplay" text="Show HDMI-Output Res" description="Show HDMI Output Resulution">config.lcd.showoutputresolution</item>
