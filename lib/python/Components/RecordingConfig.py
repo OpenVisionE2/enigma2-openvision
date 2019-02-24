@@ -17,3 +17,4 @@ def InitRecordingConfig():
 	config.recording.always_ecm = ConfigYesNo(default = False)
 	config.recording.never_decrypt = ConfigYesNo(default = False)
 	config.recording.offline_decode_delay = ConfigNumber(default = 1000)
+	config.recording.show_rec_symbol_for_rec_types = ConfigSelection(choices = [("any", _("any recordings")), ("real", _("real recordings")), ("real_streaming", _("real recordings or streaming")), ("real_pseudo", _("real or pseudo recordings"))], default = "real_streaming")
