@@ -6,7 +6,6 @@ from Tools.Directories import fileExists
 from Components.ParentalControl import parentalControl
 from Components.ServiceEventTracker import ServiceEventTracker
 from Components.SystemInfo import SystemInfo
-import Components.RecordingConfig
 
 POLLTIME = 5 # seconds
 
@@ -60,19 +59,19 @@ class SymbolsCheckPoller:
 
 	def Recording(self):
 		if fileExists("/proc/stb/lcd/symbol_circle"):
-			recordings = len(NavigationInstance.instance.getRecordings(False,Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue())))
+			recordings = len(NavigationInstance.instance.getRecordings())
 			if recordings > 0:
 				open("/proc/stb/lcd/symbol_circle", "w").write("3")
 			else:
 				open("/proc/stb/lcd/symbol_circle", "w").write("0")
 		elif getBoxType() in ("alphatriplehd","ebox5000","ebox7358","eboxlumi","ebox5000","sf3038"):
-			recordings = len(NavigationInstance.instance.getRecordings(False,Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue())))
+			recordings = len(NavigationInstance.instance.getRecordings())
 			if recordings > 0:
 				open("/proc/stb/lcd/symbol_recording", "w").write("1")
 			else:
 				open("/proc/stb/lcd/symbol_recording", "w").write("0")
 		elif getBoxType() in ("alien5","osninopro","wetekplay","wetekplay2","wetekhub","ixussone","ixusszero","9910lx","9911lx","osnino","osninoplus","9920lx"):
-			recordings = len(NavigationInstance.instance.getRecordings(False,Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue())))
+			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
 				if self.blink:
@@ -84,7 +83,7 @@ class SymbolsCheckPoller:
 			elif self.led == "1":
 				open("/proc/stb/lcd/powerled", "w").write("0")
 		elif getBoxType() in ("mbmicrov2","mbmicro","e4hd","e4hdhybrid"):
-			recordings = len(NavigationInstance.instance.getRecordings(False,Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue())))
+			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
 				if self.blink:
@@ -96,7 +95,7 @@ class SymbolsCheckPoller:
 			elif self.led == "1":
 				open("/proc/stb/lcd/powerled", "w").write("1")
 		elif getBoxType() in ("dm7020hd","dm7020hdv2"):
-			recordings = len(NavigationInstance.instance.getRecordings(False,Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue())))
+			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
 				if self.blink:
@@ -108,7 +107,7 @@ class SymbolsCheckPoller:
 			else:
 				open("/proc/stb/fp/led_set", "w").write("0xffffffff")
 		elif getMachineBuild() in ("valalinux","lunix","tmnanose","tmnanoseplus","tmnanosem2","tmnanom3","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","purehd","force2nano","force2plushv","purehdse","tmtwin4k","revo4k","force3uhd"):
-			recordings = len(NavigationInstance.instance.getRecordings(False,Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue())))
+			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
 				if self.blink:
@@ -121,7 +120,7 @@ class SymbolsCheckPoller:
 				open("/proc/stb/lcd/symbol_rec", "w").write("0")
 		elif getMachineBuild() in ("gbtrio4k","sf8008","cc1","ustym4kpro","beyonwizv2"):
 			import Screens.Standby
-			recordings = len(NavigationInstance.instance.getRecordings(False,Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue())))
+			recordings = len(NavigationInstance.instance.getRecordings())
 			if recordings > 0:
 				open("/proc/stb/fp/mixerled", "w").write("on")
 			elif not Screens.Standby.inStandby:
@@ -133,7 +132,7 @@ class SymbolsCheckPoller:
 			if not fileExists("/proc/stb/lcd/symbol_recording") or not fileExists("/proc/stb/lcd/symbol_record_1") or not fileExists("/proc/stb/lcd/symbol_record_2"):
 				return
 	
-			recordings = len(NavigationInstance.instance.getRecordings(False,Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue())))
+			recordings = len(NavigationInstance.instance.getRecordings())
 		
 			if recordings > 0:
 				open("/proc/stb/lcd/symbol_recording", "w").write("1")
