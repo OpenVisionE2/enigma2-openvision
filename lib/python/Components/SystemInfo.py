@@ -1,4 +1,4 @@
-from enigma import eDVBResourceManager, Misc_Options, eDVBCIInterfaces
+from enigma import eDVBResourceManager, Misc_Options, eDVBCIInterfaces, getBoxType
 from Tools.Directories import fileExists, fileCheck, pathExists, fileHas
 from Tools.HardwareInfo import HardwareInfo
 
