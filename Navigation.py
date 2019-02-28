@@ -13,6 +13,7 @@ import NavigationInstance
 import ServiceReference
 from Screens.InfoBar import InfoBar
 from Components.Sources.StreamService import StreamServiceList
+from os import path
 
 # TODO: remove pNavgation, eNavigation and rewrite this stuff in python.
 class Navigation:
