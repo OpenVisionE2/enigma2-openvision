@@ -75,10 +75,10 @@ def skin_user_skinname():
 # so the first screen found will be used.
 
 config.skin = ConfigSubsection()
-if SystemInfo["SmallFlash"]:
-	DEFAULT_SKIN = "PLi-HD/skin.xml"
+if SystemInfo["HasFullHDSkinSupport"]:
+	DEFAULT_SKIN = "PLi-FullNightHD/skin.xml"
 else:
-	DEFAULT_SKIN = "MetrixHD/skin.xml"
+	DEFAULT_SKIN = "PLi-HD/skin.xml"
 # on SD hardware, PLi-HD will not be available
 if not fileExists(resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)):
 	DEFAULT_SKIN = "skin.xml"
@@ -102,6 +102,8 @@ addSkin('skin_display.xml')
 if SystemInfo["grautec"]:
 	addSkin('skin_display_grautec.xml')
 addSkin('skin_subtitles.xml')
+if fileExists(resolveFilename(SCOPE_SKIN_IMAGE, "skin_display_picon.xml")):
+	addSkin('skin_display_picon.xml')
 
 try:
 	if not addSkin(config.skin.primary_skin.value):

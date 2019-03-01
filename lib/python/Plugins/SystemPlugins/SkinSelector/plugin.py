@@ -105,10 +105,10 @@ class SkinSelector(Screen):
 		if self["SkinList"].getCurrent() == DEFAULTSKIN:
 			self.skinfile = "."
 		elif self["SkinList"].getCurrent() == PICONDEFAULTSKIN:
-			self.skinfile = ""
+			self.skinfile = "."
 			self.skinfile = os.path.join(self.skinfile, PICONSKINXML)
 		elif self["SkinList"].getCurrent() == ALTERNATESKIN:
-			self.skinfile = ""
+			self.skinfile = "."
 			self.skinfile = os.path.join(self.skinfile, ALTERNATESKINXML)
 		else:
 			self.skinfile = self["SkinList"].getCurrent()
