@@ -98,7 +98,7 @@ class FallbackTimerList():
 			timer.justplay,
 			timer.afterEvent,
 			timer.repeated,
-			None,
+			timer.dirname,
 			timer.eit or 0,
 		)
 		self.getUrl(url).addCallback(self.getUrlFallback).addErrback(self.fallback)	
@@ -119,7 +119,7 @@ class FallbackTimerList():
 			timer.service_ref_prev,
 			timer.begin_prev,
 			timer.end_prev,
-			None,
+			timer.dirname,
 			timer.eit or 0,
 		)
 		self.getUrl(url).addCallback(self.getUrlFallback).addErrback(self.fallback)
@@ -162,10 +162,9 @@ class FallbackTimerDirs(FallbackTimerList):
 			self.fallbackFunction()
 
 	def getcurrlocation(self, data):
-		self.currlocation = [c.text for c in xml.etree.ElementTree.fromstring(data)]
-		if self.currlocation:
-			self.currlocation = self.currlocation[0]
-			self.fallbackFunction(self.currlocation, self.locations)
+		currlocation = [c.text for c in xml.etree.ElementTree.fromstring(data)]
+		if currlocation:
+			self.fallbackFunction(currlocation[0], self.locations)
 		else:
 			self.fallbackFunction()
 
