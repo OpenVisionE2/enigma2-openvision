@@ -1,5 +1,3 @@
-from Tools.Directories import SCOPE_SKIN, resolveFilename
-
 hw_info = None
 
 class HardwareInfo:
@@ -30,26 +28,15 @@ class HardwareInfo:
 
 		# Name ... bit odd, but history prevails
 		try:
-			self.device_name = open("/proc/stb/info/model").read().strip()
+			self.device_name = open("/etc/model").read().strip()
 		except:
 			pass
 
 		# Model
-		for line in open((resolveFilename(SCOPE_SKIN, 'hw_info/hw_info.cfg')), 'r'):
-			if not line.startswith('#') and not line.isspace():
-				l = line.strip().replace('\t', ' ')
-				if ' ' in l:
-					infoFname, prefix = l.split()
-				else:
-					infoFname = l
-					prefix = ""
-				try:
-					self.device_model = prefix + open("/proc/stb/info/" + infoFname).read().strip()
-					break
-				except:
-					pass
-
-		self.device_model = self.device_model or self.device_name
+		try:
+			self.device_model = open("/etc/model").read().strip()
+		except:
+			pass
 
 		# map for Xtrend device models to machine names
 		if self.device_model.startswith(("et9", "et4", "et5", "et6", "et7")):
@@ -65,7 +52,7 @@ class HardwareInfo:
 			self.device_string = self.device_model
 
 		# only some early DMM boxes do not have HDMI hardware
-		self.device_hdmi =  self.device_model not in ("dm7025", "dm800", "dm8000")
+		self.device_hdmi =  self.device_model not in ("dm800", "dm8000")
 
 		print "Detected: " + self.get_device_string()
 
