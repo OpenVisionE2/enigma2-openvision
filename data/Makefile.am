@@ -67,6 +67,7 @@ endif
 dist_pkgdata_DATA = \
 	encoding.conf \
 	keymap.xml \
+	keytranslation.xml \
 	menu.xml \
 	prev.png \
 	radio.mvi \
@@ -83,13 +84,6 @@ dist_pkgdata_DATA = \
 	timezone.xml \
 	unicable.xml \
 	groupedservices
-
-if HAVE_TEXTLCD
-dist_pkgdata_DATA += skin_text.xml
-endif
-
-skin_text.xml: $(srcdir)/skin_text_default.xml
-	cp $(srcdir)/skin_text_$(TEXTSKIN).xml skin_text.xml
 
 iso-639-3.pck: $(srcdir)/iso-639-3.tab
 	python $(srcdir)/convert-iso-639-3.py $< $@
