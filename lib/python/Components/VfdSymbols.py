@@ -106,7 +106,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			else:
 				open("/proc/stb/fp/led_set", "w").write("0xffffffff")
-		elif getMachineBuild() in ("valalinux","lunix","tmnanose","tmnanoseplus","tmnanosem2","tmnanom3","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","purehd","force2nano","force2plushv","purehdse","tmtwin4k","revo4k","force3uhd"):
+		elif getBoxType() in ("valalinux","lunix","tmnanose","tmnanoseplus","tmnanosem2","tmnanom3","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","purehd","force2nano","force2plushv","purehdse","tmtwin4k","revo4k","force3uhd"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
@@ -118,7 +118,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			elif self.led == "1":
 				open("/proc/stb/lcd/symbol_rec", "w").write("0")
-		elif getMachineBuild() in ("gbtrio4k","sf8008","cc1","ustym4kpro","beyonwizv2"):
+		elif getBoxType() in ("gbtrio4k","sf8008","cc1","ustym4kpro","beyonwizv2"):
 			import Screens.Standby
 			recordings = len(NavigationInstance.instance.getRecordings())
 			if recordings > 0:
