@@ -3,6 +3,7 @@ import sys, os, time
 import re
 from Tools.HardwareInfo import HardwareInfo
 from enigma import getBoxType
+from Components.SystemInfo import SystemInfo
 
 def getVersionString():
 	return getImageVersionString()
@@ -123,6 +124,12 @@ def getCPUInfoString():
 		return "%s %s MHz (%s)" % (processor, cpu_speed, ngettext("%d core", "%d cores", cpu_count) % cpu_count)
 	except:
 		return _("undefined")
+
+def getFlashType():
+	if SystemInfo["SmallFlash"]:
+		return _("Small flash STB")
+	else:
+		return _("Normal flash STB")
 
 def getDriverInstalledDate():
 	try:
