@@ -383,7 +383,7 @@ class VideoHardware:
 
 		print "[VideoHardware] -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss
 		arw = "0"
-		if getBoxType() in ("alien5", "c300", "c300pro", "c400plus", "k1plus", "k1pro", "k2pro", "k2prov2", "k3pro", "kvim2", "x8hp", "odroidc2", "wetekhub", "wetekplay", "wetekplay2"):
+		if SystemInfo["AmlogicFamily"]:
 			if config.av.policy_43.value == "panscan" : arw = "11"
 			if config.av.policy_43.value == "letterbox" : arw = "12"
 			if config.av.policy_43.value == "bestfit" : arw = "10"			
