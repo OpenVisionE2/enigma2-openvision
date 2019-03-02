@@ -260,7 +260,7 @@ def standbyCounterChanged(configElement):
 	config.lcd.ledbrightnessdeepstandby.apply()
 
 def InitLcd():
-	if getBoxType() in ("force4","alien5","viperslim","lunix","lunix4k","purehdse","vipert2c","evoslimse","evoslimt2c","valalinux","tmtwin4k","tmnanom3","mbmicrov2","revo4k","force3uhd","force2nano","evoslim","wetekplay","wetekplay2","wetekhub","ultrabox","i55","dm520","purehd","hd11","sf98","et7000mini","xpeedc","e4hd","e4hdhybrid","mbmicro","beyonwizt2","gb800se","gb800solo","gb800seplus","gbultrase","gbipbox","tmsingle","tmnano2super","iqonios300hd","iqonios300hdv2","optimussos1plus","optimussos1","vusolo","et4x00","et5x00","et6x00","et7x00","ebox7358","eboxlumi","gbx1","gbx2","gbx3","gbx3h"):
+	if SystemInfo["FirstCheckModel"] or getBoxType() in ("force4","viperslim","lunix4k","vipert2c","evoslimse","evoslimt2c","tmtwin4k","evoslim","ultrabox","i55","dm520","hd11","sf98","et7000mini","xpeedc","beyonwizt2","gb800se","gb800solo","gb800seplus","gbultrase","gbipbox","tmsingle","tmnano2super","iqonios300hd","iqonios300hdv2","optimussos1plus","optimussos1","vusolo","et4x00","et5x00","et6x00","et7x00","ebox7358","eboxlumi","gbx1","gbx2","gbx3","gbx3h"):
 		detected = False
 	else:
 		detected = eDBoxLCD.getInstance().detected()
@@ -420,7 +420,7 @@ def InitLcd():
 
 		if getBoxType() in ("dm900","dm920","e4hdultra","protek4k"):
 			standby_default = 4
-		elif getBoxType() in ("spycat4kmini","osmega"):
+		elif SystemInfo["DifferentLCDSettings"]:
 			standby_default = 10
 		else:
 			standby_default = 1
@@ -435,7 +435,7 @@ def InitLcd():
 			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 4))
 			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 4))
 			config.lcd.bright = ConfigSlider(default=4, limits=(0, 4))
-		elif getBoxType() in ("spycat4kmini","osmega"):
+		elif SystemInfo["DifferentLCDSettings"]:
 			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 10))
 			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 10))
 			config.lcd.bright = ConfigSlider(default=10, limits=(0, 10))

@@ -11,7 +11,7 @@ POLLTIME = 5 # seconds
 
 def SymbolsCheck(session, **kwargs):
 		global symbolspoller, POLLTIME
-		if getBoxType() in ("alien5","osninopro","osnino","osninoplus","tmtwin4k","mbmicrov2","revo4k","force3uhd","wetekplay","wetekplay2","wetekhub","ixussone","ixusszero","mbmicro","e4hd","e4hdhybrid","dm7020hd","dm7020hdv2","9910lx","9911lx","9920lx","valalinux","lunix","tmnanose","tmnanoseplus","tmnanosem2","tmnanom3","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","purehd","force2nano","force2plushv","purehdse","ustym4kpro","beyonwizv2","sf8008","gbtrio4k","cc1"):
+		if SystemInfo["FirstCheckModel"] or SystemInfo["SecondCheckModel"] or SystemInfo["HiSilicon"]:
 			POLLTIME = 1
 		symbolspoller = SymbolsCheckPoller(session)
 		symbolspoller.start()

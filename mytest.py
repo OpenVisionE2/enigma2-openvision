@@ -10,9 +10,6 @@ profile("PYTHON_START")
 # it will break output redirection for crash logs.
 import Tools.RedirectOutput
 import enigma
-
-from enigma import getBoxType
-
 import eConsoleImpl
 import eBaseImpl
 enigma.eTimer = eBaseImpl.eTimer
@@ -476,7 +473,9 @@ def runScreenTest():
 	profile("Init:PowerKey")
 	power = PowerKey(session)
 
-	if getBoxType() in ("alien5","osninopro","osnino","osninoplus","alphatriplehd","spycat4kmini","tmtwin4k","mbmicrov2","revo4k","force3uhd","wetekplay","wetekplay2","wetekhub","dm7020hd","dm7020hdv2","osminiplus","osmega","sf3038","spycat","e4hd","e4hdhybrid","mbmicro","et7x00","ebox5000","ebox7358","eboxlumi","ebox5000","maram9","ixussone","ixusszero","sezam5000hd","mbtwin","sezam1000hd","mbmini","atemio5x00","beyonwizt3","9910lx","9911lx","9920lx","ustym4kpro","beyonwizv2","sf8008","cc1","gbtrio4k","valalinux","lunix","tmnanose","tmnanoseplus","tmnanosem2","tmnanom3","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","purehd","force2nano","force2plushv","purehdse"):
+	from Components.SystemInfo import SystemInfo
+	from enigma import getBoxType
+	if SystemInfo["FirstCheckModel"] or SystemInfo["SecondCheckModel"] or SystemInfo["HiSilicon"] or SystemInfo["DifferentLCDSettings"] or getBoxType() in ("alphatriplehd","tmtwin4k","osminiplus","sf3038","spycat","et7x00","ebox5000","ebox7358","eboxlumi","ebox5000","maram9","sezam5000hd","mbtwin","sezam1000hd","mbmini","atemio5x00","beyonwizt3"):
 		profile("VFDSYMBOLS")
 		import Components.VfdSymbols
 		Components.VfdSymbols.SymbolsCheck(session)
