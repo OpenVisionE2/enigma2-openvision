@@ -21,7 +21,7 @@ def initPiconPaths():
 def onMountpointAdded(mountpoint):
 	global searchPaths
 	try:
-		if getBoxType() in ('vuultimo','sezammarvel','xpeedlx3','atemionemesis','mbultra','beyonwizt4','hd2400','vuduo2') and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+		if getBoxType() in ('vuultimo','sezammarvel','xpeedlx3','atemionemesis','mbultra','beyonwizt4','hd2400','vuduo2') and not SystemInfo["grautec"]:
 			path = os.path.join(mountpoint, 'piconlcd') + '/'
 		else:
 			path = os.path.join(mountpoint, 'picon') + '/'
@@ -36,7 +36,7 @@ def onMountpointAdded(mountpoint):
 
 def onMountpointRemoved(mountpoint):
 	global searchPaths
-	if getBoxType() in ('vuultimo','sezammarvel','xpeedlx3','atemionemesis','mbultra','beyonwizt4','hd2400','vuduo2') and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+	if getBoxType() in ('vuultimo','sezammarvel','xpeedlx3','atemionemesis','mbultra','beyonwizt4','hd2400','vuduo2') and not SystemInfo["grautec"]:
 		path = os.path.join(mountpoint, 'piconlcd') + '/'
 	else:
 		path = os.path.join(mountpoint, 'picon') + '/'
