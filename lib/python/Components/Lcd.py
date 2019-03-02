@@ -298,7 +298,7 @@ def InitLcd():
 					"5": _("PIP"),
 					"7": _("PIP with OSD")},
 					default = "0")
-			if getBoxType() in ("gbquad","gbquadplus"):
+			if SystemInfo["GigaBlueQuad"]:
 				config.lcd.modepip.addNotifier(setLCDModePiP)
 			else:
 				config.lcd.modepip = ConfigNothing()
@@ -477,7 +477,7 @@ def InitLcd():
 			config.lcd.showTv = ConfigYesNo(default = False)
 			config.lcd.showTv.addNotifier(lcdLiveTvChanged)
 
-		if SystemInfo["LCDMiniTV"] and getBoxType() not in ("gbquad","gbquadplus","gbquad4k","gbue4k"):
+		if SystemInfo["LCDMiniTV"] and not SystemInfo["GigaBlueQuad"] and not SystemInfo["GigaBlueAudio"]:
 			config.lcd.minitvmode = ConfigSelection([("0", _("normal")), ("1", _("MiniTV")), ("2", _("OSD")), ("3", _("MiniTV with OSD"))], "0")
 			config.lcd.minitvmode.addNotifier(setLCDminitvmode)
 			config.lcd.minitvpipmode = ConfigSelection([("0", _("off")), ("5", _("PIP")), ("7", _("PIP with OSD"))], "0")
@@ -485,7 +485,7 @@ def InitLcd():
 			config.lcd.minitvfps = ConfigSlider(default=30, limits=(0, 30))
 			config.lcd.minitvfps.addNotifier(setLCDminitvfps)
 
-		if SystemInfo["VFD_scroll_repeats"] and getBoxType() not in ("ixussone","ixusszero","atemio6000","atemio6100","bwidowx2","mbhybrid","opticumtt","osmini","spycatmini","spycatminiplus","bwidowx","xpeedlx1","odinplus","xp1000","h3","h5","h6","sh1","9910lx","9911lx","9920lx","e4hdcombo","odin2hybrid","bre2ze","h4","h7","lc","vipercombohdd","evominiplus","enfinity","marvel1","vipercombo","formuler3","formuler4","hd1100","hd1200","hd1265","hd1500","hd500c","hd530c","vs1000","classm","axodin","axodinc","starsatlx","genius","evo","galaxym6","9900lx","tiviarmin","t2cable","xcombo","enibox","mago","x1plus","sf108","anadol4k","anadol4kcombo","anadol4kv2","axashis4kcombo","axashis4kcomboplus","dinobot4k","dinobot4kl","dinobot4kmini","dinobot4kplus","dinobot4kpro","dinobot4kse","dinobotu55","ferguson4k","mediabox4k","sf128","sf138","bre2zet2c","formuler4turbo","osninopro","osnino","osninoplus","osmio4k","hd60","hd61","h9combo","et1x000","bcm7358","vp7358ci","gbtrio4k","ustym4kpro","cc1","sf8008","beyonwizv2"):
+		if SystemInfo["VFD_scroll_repeats"] and SystemInfo["VFDRepeats"]:
 			def scroll_repeats(el):
 				open(SystemInfo["VFD_scroll_repeats"], "w").write(el.value)
 			choicelist = [("0", _("None")), ("1", _("1X")), ("2", _("2X")), ("3", _("3X")), ("4", _("4X")), ("500", _("Continues"))]
@@ -494,10 +494,10 @@ def InitLcd():
 		else:
 			config.usage.vfd_scroll_repeats = ConfigNothing()
 
-		if SystemInfo["VFD_scroll_delay"] and getBoxType() not in ("ixussone","ixusszero","atemio6000","atemio6100","bwidowx2","mbhybrid","opticumtt","osmini","spycatmini","spycatminiplus","bwidowx","xpeedlx1","odinplus","xp1000","h3","h5","h6","sh1","9910lx","9911lx","9920lx","e4hdcombo","odin2hybrid","bre2ze","h4","h7","lc","vipercombohdd","evominiplus","enfinity","marvel1","vipercombo","formuler3","formuler4","hd1100","hd1200","hd1265","hd1500","hd500c","hd530c","vs1000","classm","axodin","axodinc","starsatlx","genius","evo","galaxym6","9900lx","tiviarmin","t2cable","xcombo","enibox","mago","x1plus","sf108","anadol4k","anadol4kcombo","anadol4kv2","axashis4kcombo","axashis4kcomboplus","dinobot4k","dinobot4kl","dinobot4kmini","dinobot4kplus","dinobot4kpro","dinobot4kse","dinobotu55","ferguson4k","mediabox4k","sf128","sf138","bre2zet2c","formuler4turbo","osninopro","osnino","osninoplus","osmio4k","hd60","hd61","h9combo","et1x000","bcm7358","vp7358ci","gbtrio4k","ustym4kpro","cc1","sf8008","beyonwizv2"):
+		if SystemInfo["VFD_scroll_delay"] and SystemInfo["VFDRepeats"]:
 			def scroll_delay(el):
 				# add workaround for Boxes who need hex code
-				if getBoxType() in ("sf4008","beyonwizu4"):
+				if SystemInfo["VFDDelay"]:
 					open(SystemInfo["VFD_scroll_delay"], "w").write(hex(int(el.value)))
 				else:
 					open(SystemInfo["VFD_scroll_delay"], "w").write(str(el.value))
@@ -508,9 +508,9 @@ def InitLcd():
 			config.lcd.hdd = ConfigNothing()
 			config.usage.vfd_scroll_delay = ConfigNothing()
 
-		if SystemInfo["VFD_initial_scroll_delay"] and getBoxType() not in ("ixussone","ixusszero","atemio6000","atemio6100","bwidowx2","mbhybrid","opticumtt","osmini","spycatmini","spycatminiplus","bwidowx","xpeedlx1","odinplus","xp1000","h3","h5","h6","sh1","9910lx","9911lx","9920lx","e4hdcombo","odin2hybrid","bre2ze","h4","h7","lc","vipercombohdd","evominiplus","enfinity","marvel1","vipercombo","formuler3","formuler4","hd1100","hd1200","hd1265","hd1500","hd500c","hd530c","vs1000","classm","axodin","axodinc","starsatlx","genius","evo","galaxym6","9900lx","tiviarmin","t2cable","xcombo","enibox","mago","x1plus","sf108","anadol4k","anadol4kcombo","anadol4kv2","axashis4kcombo","axashis4kcomboplus","dinobot4k","dinobot4kl","dinobot4kmini","dinobot4kplus","dinobot4kpro","dinobot4kse","dinobotu55","ferguson4k","mediabox4k","sf128","sf138","bre2zet2c","formuler4turbo","osninopro","osnino","osninoplus","osmio4k","hd60","hd61","h9combo","et1x000","bcm7358","vp7358ci","gbtrio4k","ustym4kpro","cc1","sf8008","beyonwizv2"):
+		if SystemInfo["VFD_initial_scroll_delay"] and SystemInfo["VFDRepeats"]:
 			def initial_scroll_delay(el):
-				if getBoxType() in ("sf4008","beyonwizu4"):
+				if SystemInfo["VFDDelay"]:
 					# add workaround for Boxes who need hex code
 					open(SystemInfo["VFD_initial_scroll_delay"], "w").write(hex(int(el.value)))
 				else:
@@ -528,9 +528,9 @@ def InitLcd():
 		else:
 			config.usage.vfd_initial_scroll_delay = ConfigNothing()
 
-		if SystemInfo["VFD_final_scroll_delay"] and getBoxType() not in ("ixussone","ixusszero","atemio6000","atemio6100","bwidowx2","mbhybrid","opticumtt","osmini","spycatmini","spycatminiplus","bwidowx","xpeedlx1","odinplus","xp1000","h3","h5","h6","sh1","9910lx","9911lx","9920lx","e4hdcombo","odin2hybrid","bre2ze","h4","h7","lc","vipercombohdd","evominiplus","enfinity","marvel1","vipercombo","formuler3","formuler4","hd1100","hd1200","hd1265","hd1500","hd500c","hd530c","vs1000","classm","axodin","axodinc","starsatlx","genius","evo","galaxym6","9900lx","tiviarmin","t2cable","xcombo","enibox","mago","x1plus","sf108","anadol4k","anadol4kcombo","anadol4kv2","axashis4kcombo","axashis4kcomboplus","dinobot4k","dinobot4kl","dinobot4kmini","dinobot4kplus","dinobot4kpro","dinobot4kse","dinobotu55","ferguson4k","mediabox4k","sf128","sf138","bre2zet2c","formuler4turbo","osninopro","osnino","osninoplus","osmio4k","hd60","hd61","h9combo","et1x000","bcm7358","vp7358ci","gbtrio4k","ustym4kpro","cc1","sf8008","beyonwizv2"):
+		if SystemInfo["VFD_final_scroll_delay"] and SystemInfo["VFDRepeats"]:
 			def final_scroll_delay(el):
-				if getBoxType() in ("sf4008","beyonwizu4"):
+				if SystemInfo["VFDDelay"]:
 					# add workaround for Boxes who need hex code
 					open(SystemInfo["VFD_final_scroll_delay"], "w").write(hex(int(el.value)))
 				else:

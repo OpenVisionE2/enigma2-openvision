@@ -118,7 +118,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			elif self.led == "1":
 				open("/proc/stb/lcd/symbol_rec", "w").write("0")
-		elif getBoxType() in ("gbtrio4k","sf8008","cc1","ustym4kpro","beyonwizv2"):
+		elif SystemInfo["HiSilicon"]:
 			import Screens.Standby
 			recordings = len(NavigationInstance.instance.getRecordings())
 			if recordings > 0:
