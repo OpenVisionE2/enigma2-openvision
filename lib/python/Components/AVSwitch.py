@@ -219,7 +219,7 @@ def InitAVSwitch():
 	if SystemInfo["CanDTSHD"]:
 		def setDTSHD(configElement):
 			open("/proc/stb/audio/dtshd", "w").write(configElement.value)
-		if getBoxType() in ("dm7080","dm820"):
+		if SystemInfo["DreamBoxDTSAudio"]:
 			choice_list = [("use_hdmi_caps",  _("controlled by HDMI")), ("force_dts", _("convert to DTS"))]
 			config.av.dtshd = ConfigSelection(choices = choice_list, default = "use_hdmi_caps")
 		else:

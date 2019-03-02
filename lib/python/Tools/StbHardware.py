@@ -3,11 +3,12 @@ from fcntl import ioctl
 from struct import pack, unpack
 from time import time, localtime, gmtime
 from enigma import getBoxType
+from Components.SystemInfo import SystemInfo
 
 def getFPVersion():
 	ret = None
 	try:
-		if getBoxType() in ("dm7080","dm820","dm520","dm525","dm900","dm920"):
+		if SystemInfo["DreamBoxDTSAudio"] or getBoxType().startswith('dm9') or getBoxType().startswith('dm52'):
 			ret = open("/proc/stb/fp/version", "r").read()
 		else:
 			ret = long(open("/proc/stb/fp/version", "r").read())
