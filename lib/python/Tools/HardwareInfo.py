@@ -38,6 +38,8 @@ class HardwareInfo:
 		except:
 			pass
 
+		self.device_model = self.device_model or self.device_name
+
 		# map for Xtrend device models to machine names
 		if self.device_model.startswith(("et9", "et4", "et5", "et6", "et7")):
 			self.machine_name = "%sx00" % self.device_model[:3]
