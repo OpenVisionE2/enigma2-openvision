@@ -312,10 +312,10 @@ def InitUsageConfig():
 
 	config.usage.swap_snr_on_osd = ConfigYesNo(default = False)
 
-	config.usage.frontled_color = ConfigSelection(default = "0", choices = [("0", _("Off")), ("1", _("Red")), ("2", _("Blue")), ("3", _("Blinking red")), ("4",  _("Blinking blue"))])
-	config.usage.frontledrec_color = ConfigSelection(default = "3", choices = [("0", _("Off")), ("1", _("Red")), ("2", _("Blue")), ("3", _("Blinking red")), ("4",  _("Blinking blue"))])
-	config.usage.frontledstdby_color = ConfigSelection(default = "0", choices = [("0", _("Off")), ("1", _("Red")), ("2", _("Blue")), ("3", _("Blinking red")), ("4",  _("Blinking blue"))])
-	config.usage.frontledrecstdby_color = ConfigSelection(default = "3", choices = [("0", _("Off")), ("1", _("Red")), ("2", _("Blue")), ("3", _("Blinking red")), ("4",  _("Blinking blue"))])
+	config.usage.frontled_color = ConfigSelection(default = "0", choices = [("0", _("Off")), ("1", _("Blue")), ("2", _("Red")), ("3", _("Blinking blue")), ("4",  _("Blinking red"))])
+	config.usage.frontledrec_color = ConfigSelection(default = "3", choices = [("0", _("Off")), ("1", _("Blue")), ("2", _("Red")), ("3", _("Blinking blue")), ("4",  _("Blinking red"))])
+	config.usage.frontledstdby_color = ConfigSelection(default = "0", choices = [("0", _("Off")), ("1", _("Blue")), ("2", _("Red")), ("3", _("Blinking blue")), ("4",  _("Blinking red"))])
+	config.usage.frontledrecstdby_color = ConfigSelection(default = "3", choices = [("0", _("Off")), ("1", _("Blue")), ("2", _("Red")), ("3", _("Blinking blue")), ("4",  _("Blinking red"))])
 
 	config.usage.lcd_scroll_delay = ConfigSelection(default = "10000", choices = [
 		("10000", "10 " + _("seconds")),
