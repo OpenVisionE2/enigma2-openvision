@@ -506,6 +506,7 @@ class NIM(object):
 			}
 
 		# get multi type using delsys information
+		self.hotswitchable = False
 		if self.frontend_id is not None:
 			types = [type for type in nim_types if eDVBResourceManager.getInstance().frontendIsCompatible(self.frontend_id, type)]
 			if "DVB-T2" in types:
@@ -516,6 +517,7 @@ class NIM(object):
 				types.remove("DVB-S")
 			if len(types) > 1:
 				self.multi_type = {}
+				self.hotswitchable = True
 				for type in types:
 					self.multi_type[str(types.index(type))] = type
 
@@ -580,8 +582,7 @@ class NIM(object):
 		return not self.isHotSwitchable() and bool(len(self.multi_type))
 
 	def isHotSwitchable(self):
-		all_tuner_capabilities =  set([y for x in [self.compatible[x] for x in self.multi_type.values()] for y in x])
-		return self.description.upper().startswith("AVL") and "DVB-S" in all_tuner_capabilities and ("DVB-C" in all_tuner_capabilities or "DVB-T" in all_tuner_capabilities)
+		return self.hotswitchable
 
 	def isEmpty(self):
 		return self.__is_empty
