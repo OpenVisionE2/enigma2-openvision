@@ -12,7 +12,7 @@ from Components.ProgressBar import ProgressBar
 from Components.SystemInfo import SystemInfo
 from Tools.BoundFunction import boundFunction
 from Tools.Downloader import downloadWithProgress
-from Tools.HardwareInfo import HardwareInfo
+from enigma import getBoxType
 from Tools.Multiboot import GetImagelist, GetCurrentImage, GetCurrentImageMode
 import os, urllib2, json, time, zipfile, shutil
 
@@ -71,7 +71,7 @@ class SelectImage(Screen):
 				except:
 					pass
 
-		model = HardwareInfo().get_machine_name()
+		model = getBoxType()
 
 		if not self.imagesList:
 			if not self.jsonlist:
@@ -459,7 +459,7 @@ class MultibootSelection(SelectImage):
 	def ContainterFallback(self, data=None, retval=None, extra_args=None):
 		self.container.killAll()
 		slot = self.currentSelected[0][1]
-		model = HardwareInfo().get_machine_name()
+		model = getBoxType()
 		if SystemInfo["canMultiBoot"][3]:
 			shutil.copyfile("/tmp/startupmount/STARTUP_%s" % slot, "/tmp/startupmount/STARTUP")
 		else:
