@@ -288,6 +288,10 @@ class ConfigListScreen:
 			x[1].save()
 		configfile.save()
 
+	# Allow ConfigList screens to be used from Wizards
+	def run(self):
+		self.keySave()
+
 	# keySave and keyCancel are just provided in case you need them.
 	# you have to call them by yourself.
 	def keySave(self):
