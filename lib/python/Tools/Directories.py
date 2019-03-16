@@ -323,3 +323,29 @@ def getSize(path, pattern=".*"):
 	elif os.path.isfile(path):
 		path_size = os.path.getsize(path)
 	return path_size
+
+def lsof():
+	lsof = []
+	for pid in os.listdir('/proc'):
+		if pid.isdigit():
+			try:
+				prog = os.readlink(os.path.join('/proc', pid, 'exe'))
+				dir = os.path.join('/proc', pid, 'fd')
+				for file in [os.path.join(dir, file) for file in os.listdir(dir)]:
+					lsof.append((pid, prog, os.readlink(file)))
+			except:
+				pass
+	return lsof
+
+def getExtension(file):
+	filename, file_extension = os.path.splitext(file)
+	return file_extension
+
+def mediafilesInUse(session):
+	from Components.MovieList import KNOWN_EXTENSIONS
+	files = [x[2] for x in lsof() if x[2].startswith('/media') and getExtension(x[2]) in KNOWN_EXTENSIONS]
+	service = session.nav.getCurrentlyPlayingServiceOrGroup()
+	filename = service and service.getPath()
+	if filename and "://" in filename: #when path is a stream ignore it
+		filename = None
+	return set([file for file in files if not(filename and file.startswith(filename) and files.count(filename) < 2)])
