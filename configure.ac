@@ -56,6 +56,16 @@ AC_ARG_WITH(boxtype,
 AC_SUBST(BOXTYPE)
 AC_DEFINE_UNQUOTED(BOXTYPE,"$BOXTYPE",[box type])
 
+AC_ARG_WITH(nolcd,
+	AC_HELP_STRING([--with-nolcd], [disable ascii based lcd, yes or no]),
+	[[withnolcd=$withval]],
+	[[withnolcd=no]]
+)
+if test x"$withnolcd" != xno ; then
+	AC_DEFINE(NO_LCD, 1,[Define when disable an ascii based lcd device])
+fi
+AM_CONDITIONAL(NO_LCD, test x"$withnolcd" != xno)
+
 AC_ARG_WITH(textlcd,
 	AC_HELP_STRING([--with-textlcd], [use ascii based lcd, yes or no]),
 	[[withtextlcd=$withval]],
