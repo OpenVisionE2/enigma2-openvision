@@ -14,6 +14,7 @@
 class eDVBCISession;
 class eDVBCIApplicationManagerSession;
 class eDVBCICAManagerSession;
+class eDVBCICcSession;
 class eDVBCIMMISession;
 class eDVBServicePMTHandler;
 class eDVBCISlot;
@@ -51,6 +52,7 @@ class eDVBCISlot: public iObject, public sigc::trackable
 	std::map<uint16_t, uint8_t> running_services;
 	eDVBCIApplicationManagerSession *application_manager;
 	eDVBCICAManagerSession *ca_manager;
+	eDVBCICcSession *cc_manager;
 	eDVBCIMMISession *mmi_session;
 	std::priority_queue<queueData> sendqueue;
 	caidSet possible_caids;
@@ -65,6 +67,7 @@ class eDVBCISlot: public iObject, public sigc::trackable
 	bool plugged;
 public:
 	enum {stateRemoved, stateInserted, stateInvalid, stateResetted};
+	enum {versionUnknown=-1, versionCI=0, versionCIPlus1=1, versionCIPlus2=2};
 	eDVBCISlot(eMainloop *context, int nr);
 	~eDVBCISlot();
 
@@ -73,12 +76,15 @@ public:
 	void setAppManager( eDVBCIApplicationManagerSession *session );
 	void setMMIManager( eDVBCIMMISession *session );
 	void setCAManager( eDVBCICAManagerSession *session );
+	void setCCManager( eDVBCICcSession *session );
 
 	eDVBCIApplicationManagerSession *getAppManager() { return application_manager; }
 	eDVBCIMMISession *getMMIManager() { return mmi_session; }
 	eDVBCICAManagerSession *getCAManager() { return ca_manager; }
+	eDVBCICcSession *getCCManager() { return cc_manager; }
 
 	int getState() { return state; }
+	int getVersion();
 	int getSlotID();
 	int reset();
 	int startMMI();

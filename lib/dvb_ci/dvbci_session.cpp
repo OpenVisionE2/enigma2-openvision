@@ -9,6 +9,11 @@
 #include <lib/dvb_ci/dvbci_mmi.h>
 #include <lib/dvb_ci/dvbci.h>
 #include <lib/dvb_ci/dvbci_ui.h>
+#include <lib/dvb_ci/dvbci_ccmgr.h>
+#include <lib/dvb_ci/dvbci_hlcmgr.h>
+#include <lib/dvb_ci/dvbci_host_ctrl.h>
+#include <lib/dvb_ci/dvbci_cam_upgrade.h>
+#include <lib/dvb_ci/dvbci_app_mmi.h>
 
 eDVBCIPlusHelper::eDVBCIPlusHelper(eDVBCISlot *tslot, unsigned long tag, int session)
 {
@@ -171,7 +176,8 @@ void eDVBCISession::createSession(eDVBCISlot *slot, const unsigned char *resourc
 	switch (tag)
 	{
 	case 0x00010041:
-		session=new eDVBCIResourceManagerSession;
+	case 0x00010042:
+		session=new eDVBCIResourceManagerSession(slot->getVersion());
 		eDebug("[CI SESS] RESOURCE MANAGER");
 		break;
 	case 0x00020041:
@@ -187,6 +193,26 @@ void eDVBCISession::createSession(eDVBCISlot *slot, const unsigned char *resourc
 		session = new eDVBCIMMISession(slot);
 		eDebug("[CI SESS] MMI - create session");
 		break;
+	case 0x008C1001:
+		session = new eDVBCICcSession(slot);
+		eDebug("Content Control");
+		break;
+	case 0x008D1001:
+		session = new eDVBCIHostLanguageAndCountrySession;
+		eDebug("Host Language & Country");
+		break;
+	case 0x008E1001:
+		session = new eDVBCICAMUpgradeSession;
+		eDebug("CAM Upgrade");
+		break;
+	case 0x00200041:
+		session = new eDVBCIHostControlSession;
+		eDebug("Host Control");
+		break;
+	case 0x00410041:
+		session = new eDVBCIApplicationMMISession;
+		eDebug("Application MMI");
+		break;
 	case 0x00100041:
 //		session=new eDVBCIAuthSession;
 		eDebug("[CI SESS] AuthSession");
@@ -197,14 +223,6 @@ void eDVBCISession::createSession(eDVBCISlot *slot, const unsigned char *resourc
 			session=new eDVBCIDateTimeSession;
 			eDebug("[CI SESS] DATE-TIME");
 			break;
-		}
-	case 0x008C1001:
-	case 0x008D1001:
-	case 0x008E1001:
-	case 0x00200041:
-		if (eDVBCIInterfaces::getInstance()->isClientConnected())
-		{
-			session = new eDVBCIPlusHelper(slot, tag, session_nb);
 		}
 		break;
 	default:

@@ -11,7 +11,7 @@ from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.Console import Console
 from Components.SystemInfo import SystemInfo
 from Tools.Directories import fileExists
-from os import remove, rename
+from os import rename
 from enigma import eTimer, eDVBCI_UI, eDVBCIInterfaces
 import Screens.Standby
 import time
@@ -580,17 +580,16 @@ class CIHelper(Screen):
 		Screen.setTitle(self, _("CIHelper Setup"))
 		self.skinName = "CIHelper"
 		self.onChangedEntry = [ ]
-		self['ci0'] = Label(_("CIHelper for SLOT CI0"))
+		self['ci0'] = Label(_("CIHelper for slot CI0"))
 		self['ci0active'] = Pixmap()
 		self['ci0inactive'] = Pixmap()
-		self['ci1'] = Label(_("CIHelper for SLOT CI1"))
+		self['ci1'] = Label(_("CIHelper for slot CI1"))
 		self['ci1active'] = Pixmap()
 		self['ci1inactive'] = Pixmap()
-
 		self['autostart'] = Label(_("Autostart:"))
 		self['labactive'] = Label(_(_("Active")))
 		self['labdisabled'] = Label(_(_("Disabled")))
-		self['status'] = Label(_("Current Status:"))
+		self['status'] = Label(_("Current status:"))
 		self['labstop'] = Label(_("Stopped"))
 		self['labrun'] = Label(_("Running"))
 		self['key_red'] = Label()
@@ -725,7 +724,7 @@ class CIHelperSetup(Screen, ConfigListScreen):
 						self.cihelper_ci0.value = False
 					else:
 						self.cihelper_ci0.value = True
-					cihelper_ci0x = getConfigListEntry(_("Enable CIHelper for SLOT CI0") + ":", self.cihelper_ci0)
+					cihelper_ci0x = getConfigListEntry(_("Enable CIHelper for slot CI0") + ":", self.cihelper_ci0)
 					self.list.append(cihelper_ci0x)
 				elif line.startswith('ENABLE_CI1='):
 					if line[11:] == 'no':
@@ -733,7 +732,7 @@ class CIHelperSetup(Screen, ConfigListScreen):
 					else:
 						self.cihelper_ci1.value = True
 					if fileExists('/dev/ci1'):
-						cihelper_ci1x = getConfigListEntry(_("Enable CIHelper for SLOT CI1") + ":", self.cihelper_ci1)
+						cihelper_ci1x = getConfigListEntry(_("Enable CIHelper for slot CI1") + ":", self.cihelper_ci1)
 						self.list.append(cihelper_ci1x)
 			f.close()
 		self['config'].list = self.list
@@ -759,8 +758,8 @@ class CIHelperSetup(Screen, ConfigListScreen):
 			out.close()
 			inme.close()
 		else:
-			open('/tmp/CIHelper.log', "a").write(_("Sorry CIHelper Config is Missing") + '\n')
-			self.session.open(MessageBox, _("Sorry CIHelper Config is Missing"), MessageBox.TYPE_INFO)
+			open('/tmp/CIHelper.log', "a").write(_("Sorry CIHelper config is missing") + '\n')
+			self.session.open(MessageBox, _("Sorry CIHelper config is missing"), MessageBox.TYPE_INFO)
 			self.close()
 		if fileExists('/etc/cihelper.conf.tmp'):
 			rename('/etc/cihelper.conf.tmp', '/etc/cihelper.conf')
