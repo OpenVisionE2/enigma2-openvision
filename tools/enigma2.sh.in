@@ -26,7 +26,22 @@ else
 	DEBUG_LVL=$ENIGMA_DEBUG_LVL
 fi
 
-LIBS=@libdir@/libopen.so.0.0.0
+#check for sundtek tuner helper lib
+if [ -e /opt/lib/libmediaclient.so ]; then
+	LIBS="/opt/lib/libmediaclient.so @libdir@/libopen.so.0.0.0"
+else
+	LIBS="@libdir@/libopen.so.0.0.0"
+fi
+
+#check for specific pagecache helper lib
+if [ -e @libdir@/libpagecache.so ]; then
+	LIBS="$LIBS @libdir@/libpagecache.so"
+fi
+
+#check for stb specific passthrough helper lib
+if [ -e @libdir@/libpassthrough.so ]; then
+	LIBS="$LIBS @libdir@/libpassthrough.so"
+fi
 
 # enigma main loop
 while : ; do
@@ -44,6 +59,11 @@ while : ; do
 	# hook to execute scripts always before enigma2 start
 	if [ -x @bindir@/enigma2_pre_start.sh ]; then
 		@bindir@/enigma2_pre_start.sh
+	fi
+
+	# dreamci
+	if [ -x @bindir@/enigma2_pre_start_ciplus.sh ]; then
+		@bindir@/enigma2_pre_start_ciplus.sh
 	fi
 
 	# start enigma
@@ -79,6 +99,9 @@ while : ; do
 			/sbin/halt
 			;;
 		2)
+			if [ -f /proc/stb/fp/force_restart ]; then
+				echo 1 > /proc/stb/fp/force_restart
+			fi
 			/sbin/reboot
 			;;
 		3)
@@ -133,6 +156,18 @@ while : ; do
 			/etc/init.d/avahi-daemon start
 			[ ! -f /home/root/autoinstall.log ] && touch /etc/.doAutoinstall
 			break
+			;;
+		44)
+			@libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/bin/fbclear
+			@bindir@/showiframe @libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/wait.mvi
+			echo fpupload >/proc/vfd && sleep 3 && dd bs=256k if=/tmp/micom.bin of=/dev/mcu
+			@bindir@/showiframe @libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/reboot.mvi
+			# Wait forever for the user to power off
+			while(true) ; do sleep 60 ; done
+			;;
+		45)
+			echo "    " > /dev/lcd0
+			/usr/bin/gigablue_wol
 			;;
 		*)
 			break
