@@ -171,9 +171,7 @@ void bsodFatal(const char *component)
 			enigma2_rev,
 			component);
 
-		stringFromFile(f, "stbmodel", "/proc/stb/info/boxtype");
-		stringFromFile(f, "stbmodel", "/proc/stb/info/vumodel");
-		stringFromFile(f, "stbmodel", "/proc/stb/info/model");
+		stringFromFile(f, "stbmodel", "/etc/model");
 		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
 		stringFromFile(f, "imageversion", "/etc/image-version");
