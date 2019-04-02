@@ -12,7 +12,7 @@ from Components.ImportChannels import ImportChannels
 from Tools.Directories import mediafilesInUse
 from Components.SystemInfo import SystemInfo
 from GlobalActions import globalActionMap
-from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer
+from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, getBoxType
 from Components.Sources.StreamService import StreamServiceList
 
 inStandby = None
@@ -91,6 +91,12 @@ class Standby(Screen):
 			self.avswitch.setInput("SCART")
 		else:
 			self.avswitch.setInput("AUX")
+
+		if getBoxType() in ("gbtrio4k","sf8008","ustym4kpro","beyonwizv2","cc1") or getBoxType().startswith(("anadol","axashis","dinobot","ferguson4","mediabox4")):
+			try:
+				open("/proc/stb/hdmi/output", "w").write("off")
+			except:
+				pass
 
 		gotoShutdownTime = int(config.usage.standby_to_shutdown_timer.value)
 		if gotoShutdownTime:
@@ -208,6 +214,8 @@ class QuitMainloopScreen(Screen):
 			6: _("The user interface of your receiver is restarting in debug mode"),
 			16: _("Your receiver is rebooting into Recovery Mode"),
 			42: _("Unattended upgrade in progress\nPlease wait until your receiver reboots\nThis may take a few minutes") }.get(retvalue)
+			44: _("Your front panel will be upgraded\nThis may take a few minutes"),
+			45: _("Your receiver goes to WOL") }.get(retvalue)
 		self["text"] = Label(text)
 
 inTryQuitMainloop = False
@@ -246,6 +254,8 @@ class TryQuitMainloop(MessageBox):
 				6: _("Really restart in debug mode now?"),
 				16: _("Really reboot into Recovery Mode?"),
 				42: _("Really upgrade your settop box and reboot now?") }.get(retvalue, None)
+				44: _("Really upgrade the front panel and reboot now?"),
+				45: _("Really WOL now?")}.get(retvalue)
 			if text:
 				MessageBox.__init__(self, session, "%s\n%s" % (reason, text), type=MessageBox.TYPE_YESNO, timeout=timeout, default=default_yes)
 				self.skinName = "MessageBoxSimple"
@@ -292,6 +302,17 @@ class TryQuitMainloop(MessageBox):
 			elif not inStandby:
 				config.misc.RestartUI.value = True
 				config.misc.RestartUI.save()
+			if SystemInfo["Display"] and SystemInfo["LCDMiniTV"]:
+				print "[Standby] LCDminiTV off"
+				try:
+					open("/proc/stb/lcd/mode", "w").write(0)
+				except:
+					pass
+			if getBoxType() == "vusolo4k":
+				try:
+					open("/proc/stb/fp/oled_brightness", "w").write("0")
+				except:
+					pass
 			self.quitMainloop()
 		else:
 			MessageBox.close(self, True)
