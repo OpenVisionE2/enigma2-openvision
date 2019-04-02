@@ -4,13 +4,12 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 datarootdir=@datarootdir@
 
-if [ -e /etc/model ]; then
-	stbcheck=`cat /etc/model`
-	if [ $stbcheck == "sf8008" ] || [ $stbcheck == "ustym4kpro" ] || [ $stbcheck == "cc1" ] || [ $stbcheck == "gbtrio4k" ] || [ $stbcheck == "beyonwizv2" ]; then
-		count=`ps -ef |grep libreader |grep -v "grep" |wc -l`
-		if [ 0 == $count ];then
-			libreader 720P_50
-		fi
+stbcheck=`cat /etc/model`
+	
+if [ $stbcheck == "sf8008" ] || [ $stbcheck == "ustym4kpro" ] || [ $stbcheck == "cc1" ] || [ $stbcheck == "gbtrio4k" ] || [ $stbcheck == "beyonwizv2" ]; then
+	count=`ps -ef |grep libreader |grep -v "grep" |wc -l`
+	if [ 0 == $count ];then
+		libreader 720P_50
 	fi
 fi
 
@@ -90,6 +89,8 @@ while : ; do
 	#  6 - restart enigma in debug mode
 	# 42 - offline update
 	# 43 - restart for autoinstall
+	# 44 - INI MICOM upgrade
+	# 45 - GigaBlue WOL
 	#
 	# >128 signal
 
