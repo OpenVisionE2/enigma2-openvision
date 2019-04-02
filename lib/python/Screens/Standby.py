@@ -213,7 +213,7 @@ class QuitMainloopScreen(Screen):
 			5: _("The user interface of your receiver is restarting\ndue to an error in mytest.py"),
 			6: _("The user interface of your receiver is restarting in debug mode"),
 			16: _("Your receiver is rebooting into Recovery Mode"),
-			42: _("Unattended upgrade in progress\nPlease wait until your receiver reboots\nThis may take a few minutes") }.get(retvalue)
+			42: _("Unattended upgrade in progress\nPlease wait until your receiver reboots\nThis may take a few minutes"),
 			44: _("Your front panel will be upgraded\nThis may take a few minutes"),
 			45: _("Your receiver goes to WOL") }.get(retvalue)
 		self["text"] = Label(text)
@@ -253,7 +253,7 @@ class TryQuitMainloop(MessageBox):
 				4: _("Really upgrade the frontprocessor and reboot now?"),
 				6: _("Really restart in debug mode now?"),
 				16: _("Really reboot into Recovery Mode?"),
-				42: _("Really upgrade your settop box and reboot now?") }.get(retvalue, None)
+				42: _("Really upgrade your settop box and reboot now?"),
 				44: _("Really upgrade the front panel and reboot now?"),
 				45: _("Really WOL now?")}.get(retvalue)
 			if text:
