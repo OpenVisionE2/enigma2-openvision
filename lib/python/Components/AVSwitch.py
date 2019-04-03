@@ -266,6 +266,23 @@ def InitAVSwitch():
 	else:
 		config.av.transcodeaac = ConfigNothing()
 
+	if SystemInfo["CanBTAudio"]:
+		def setBTAudio(configElement):
+			open("/proc/stb/audio/btaudio", "w").write(configElement.value)
+		choice_list = [("off", _("off")), ("on", _("on"))]
+		config.av.btaudio = ConfigSelection(choices = choice_list, default = "off")
+		config.av.btaudio.addNotifier(setBTAudio)
+	else:
+		config.av.btaudio = ConfigNothing()
+
+	if SystemInfo["CanBTAudioDelay"]:
+		def setBTAudioDelay(configElement):
+			open("/proc/stb/audio/btaudio", "w").write(format(configElement.value * 90,"x"))
+		config.av.btaudiodelay = ConfigSelectionNumber(-1000, 1000, 5, default = 0)
+		config.av.btaudiodelay.addNotifier(setBTAudioDelay)
+	else:
+		config.av.btaudiodelay = ConfigNothing()
+
 	try:
 		SystemInfo["CanChangeOsdAlpha"] = open("/proc/stb/video/alpha", "r") and True or False
 	except:
