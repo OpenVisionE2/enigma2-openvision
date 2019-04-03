@@ -131,5 +131,7 @@ SystemInfo["SecondCheckModel"] = getBoxType() in ("osninopro","osnino","osninopl
 SystemInfo["DifferentLCDSettings"] = getBoxType() in ("spycat4kmini","osmega")
 SystemInfo["CIHelper"] = fileExists("/usr/bin/cihelper")
 SystemInfo["HaveCISSL"] = fileCheck("/etc/ssl/certs/customer.pem") and fileCheck("/etc/ssl/certs/device.pem")
+SystemInfo["CanChangeOsdAlpha"] = open("/proc/stb/video/alpha", "r") and True or False
+SystemInfo["ScalerSharpness"] = fileExists("/proc/stb/vmpeg/0/pep_scaler_sharpness")
 SystemInfo["CanBTAudio"] = fileCheck("/proc/stb/audio/btaudio")
 SystemInfo["CanBTAudioDelay"] = fileCheck("/proc/stb/audio/btaudio_delay")
