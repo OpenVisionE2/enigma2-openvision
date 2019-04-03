@@ -155,7 +155,6 @@ git config core.safecrlf true
 #
 # Git commands to sync with origin.
 #
-git checkout -B $branch $remote/$branch
 git pull
 #
 # Retrieve languages from Makefile.am LANGS variable for backward compatibility
