@@ -32,16 +32,6 @@ else
 	LIBS="@libdir@/libopen.so.0.0.0"
 fi
 
-#check for specific pagecache helper lib
-if [ -e @libdir@/libpagecache.so ]; then
-	LIBS="$LIBS @libdir@/libpagecache.so"
-fi
-
-#check for stb specific passthrough helper lib
-if [ -e @libdir@/libpassthrough.so ]; then
-	LIBS="$LIBS @libdir@/libpassthrough.so"
-fi
-
 # enigma main loop
 while : ; do
 	# show bootlogo on enigma2 start
