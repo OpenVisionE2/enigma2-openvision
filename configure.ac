@@ -531,7 +531,7 @@ if test "$BOXTYPE" == "maram9"; then
 	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
 fi
 
-if test "$BOXTYPE" == "osnino" -o "$BOXTYPE" == "osninoplus" -o "$BOXTYPE" == "osninopro" -o "$BOXTYPE" == "osmio4k"; then
+if test "$BOXTYPE" == "osnino" -o "$BOXTYPE" == "osninoplus" -o "$BOXTYPE" == "osninopro" -o "$BOXTYPE" == "osmio4k" -o "$BOXTYPE" == "osmio4kplus"; then
 	AC_DEFINE(KEY_MEDIA_TO_KEY_LIST, 1,[define MEDIA to LIST])
 	AC_DEFINE(KEY_VIDEO_TO_KEY_ANGLE, 1,[define VIDEO to ANGLE])
 fi
