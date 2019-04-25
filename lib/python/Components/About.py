@@ -109,6 +109,10 @@ def getCPUInfoString():
 			temperature = open("/proc/stb/power/avs").readline().replace('\n','')
 		elif os.path.isfile('/proc/stb/fp/temp_sensor'):
 			temperature = open("/proc/stb/fp/temp_sensor").readline().replace('\n','')
+		elif os.path.isfile('/proc/stb/sensors/temp0/value'):
+			temperature = open("/proc/stb/sensors/temp0/value").readline().replace('\n','')
+		elif os.path.isfile('/proc/stb/sensors/temp/value'):
+			temperature = open("/proc/stb/sensors/temp/value").readline().replace('\n','')
 		elif os.path.isfile("/sys/devices/virtual/thermal/thermal_zone0/temp"):
 			try:
 				temperature = int(open("/sys/devices/virtual/thermal/thermal_zone0/temp").read().strip())/1000
