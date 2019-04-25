@@ -129,6 +129,14 @@ def getCPUInfoString():
 	except:
 		return _("undefined")
 
+def getCPUBrand():
+	if SystemInfo["AmlogicFamily"]:
+		return _("Amlogic")
+	elif SystemInfo["HiSilicon"] or os.path.isfile("/proc/hisi/msp/pm_cpu"):
+		return _("HiSilicon")
+	else:
+		return _("Broadcom")
+
 def getFlashType():
 	if SystemInfo["SmallFlash"]:
 		return _("Small flash STB")
