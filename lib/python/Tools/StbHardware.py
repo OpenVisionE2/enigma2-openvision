@@ -2,13 +2,13 @@ from os import path
 from fcntl import ioctl
 from struct import pack, unpack
 from time import time, localtime, gmtime
-from enigma import getBoxType
+from enigma import getBoxType, getBoxBrand
 from Components.SystemInfo import SystemInfo
 
 def getFPVersion():
 	ret = None
 	try:
-		if getBoxType() in ("sogno8800hd","uniboxhde"):
+		if getBoxBrand() == "blackbox":
 			ret = open("/proc/stb/info/micomver", "r").read()
 		elif SystemInfo["DreamBoxDTSAudio"] or getBoxType().startswith("dm9") or getBoxType().startswith("dm52"):
 			ret = open("/proc/stb/fp/version", "r").read()

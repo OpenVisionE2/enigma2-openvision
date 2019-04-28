@@ -1,4 +1,5 @@
 from config import config, ConfigSlider, ConfigSubsection, ConfigYesNo, ConfigText, ConfigInteger
+from enigma import getBoxType, getBoxBrand
 from SystemInfo import SystemInfo
 from fcntl import ioctl
 import os
@@ -45,6 +46,8 @@ class inputDevices:
 
 			if self.name:
 				self.Devices[evdev] = {'name': self.name, 'type': self.getInputDeviceType(self.name),'enabled': False, 'configuredName': None }
+				if getBoxType().startswith('et'):
+					self.setDefaults(evdev)
 
 
 	def getInputDeviceType(self,name):
@@ -171,7 +174,10 @@ class InitInputDevices:
 	def setupConfigEntries(self,device):
 		cmd = "config.inputDevices." + device + " = ConfigSubsection()"
 		exec cmd
-		cmd = "config.inputDevices." + device + ".enabled = ConfigYesNo(default = False)"
+		if getBoxType() in ("dm800","azboxhd"):
+			cmd = "config.inputDevices." + device + ".enabled = ConfigYesNo(default = True)"
+		else:
+			cmd = "config.inputDevices." + device + ".enabled = ConfigYesNo(default = False)"
 		exec cmd
 		cmd = "config.inputDevices." + device + ".enabled.addNotifier(self.inputDevicesEnabledChanged,config.inputDevices." + device + ".enabled)"
 		exec cmd
@@ -197,7 +203,7 @@ config.plugins.remotecontroltype.rctype = ConfigInteger(default = 0)
 
 class RcTypeControl():
 	def __init__(self):
-		if SystemInfo["RcTypeChangable"] and os.path.exists('/proc/stb/info/boxtype'):
+		if SystemInfo["RcTypeChangable"] and and getBoxBrand() not in ("gigablue","odin","ini","entwopia","tripledot"):
 			self.isSupported = True
 			self.boxType = open('/proc/stb/info/boxtype', 'r').read().strip()
 			if config.plugins.remotecontroltype.rctype.value != 0:
