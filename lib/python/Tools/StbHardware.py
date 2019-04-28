@@ -8,7 +8,9 @@ from Components.SystemInfo import SystemInfo
 def getFPVersion():
 	ret = None
 	try:
-		if SystemInfo["DreamBoxDTSAudio"] or getBoxType().startswith('dm9') or getBoxType().startswith('dm52'):
+		if getBoxType() in ("sogno8800hd","uniboxhde"):
+			ret = open("/proc/stb/info/micomver", "r").read()
+		elif SystemInfo["DreamBoxDTSAudio"] or getBoxType().startswith('dm9') or getBoxType().startswith('dm52'):
 			ret = open("/proc/stb/fp/version", "r").read()
 		else:
 			ret = long(open("/proc/stb/fp/version", "r").read())
