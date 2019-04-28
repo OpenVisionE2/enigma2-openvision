@@ -1,6 +1,6 @@
 from twisted.internet import threads
 from config import config
-from enigma import eDBoxLCD, eTimer, iPlayableService, pNavigation, getBoxType
+from enigma import eDBoxLCD, eTimer, iPlayableService, pNavigation, getBoxType, getBoxBrand
 import NavigationInstance
 from Tools.Directories import fileExists
 from Components.ParentalControl import parentalControl
@@ -64,13 +64,13 @@ class SymbolsCheckPoller:
 				open("/proc/stb/lcd/symbol_circle", "w").write("3")
 			else:
 				open("/proc/stb/lcd/symbol_circle", "w").write("0")
-		elif getBoxType() in ("alphatriplehd","ebox5000","ebox7358","eboxlumi","ebox5000","sf3038"):
+		elif getBoxType() in ("alphatriplehd","sf3038") or getBoxBrand() in ("ebox"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			if recordings > 0:
 				open("/proc/stb/lcd/symbol_recording", "w").write("1")
 			else:
 				open("/proc/stb/lcd/symbol_recording", "w").write("0")
-		elif getBoxType() in ("alien5","osninopro","wetekplay","wetekplay2","wetekhub","ixussone","ixusszero","9910lx","9911lx","osnino","osninoplus","9920lx"):
+		elif getBoxType() in ("osninopro","9910lx","9911lx","osnino","osninoplus","9920lx") or getBoxBrand() in ("linkdroid","wetek","ixuss"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:

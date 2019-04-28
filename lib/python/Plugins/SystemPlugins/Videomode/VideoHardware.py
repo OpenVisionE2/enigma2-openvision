@@ -3,14 +3,14 @@ from Components.SystemInfo import SystemInfo
 from Tools.CList import CList
 from Tools.HardwareInfo import HardwareInfo
 import os
-from enigma import getBoxType
+from enigma import getBoxType, getBoxBrand
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
 # available and preferred modes, as well as handling the currently
 # selected mode. No other strict checking is done.
 
-if getBoxType().startswith('az'):
+if getBoxBrand() == "azbox"
 	config.av.edid_override = ConfigYesNo(default = True)
 else:
 	config.av.edid_override = ConfigYesNo(default = False)
