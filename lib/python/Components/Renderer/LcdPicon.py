@@ -6,11 +6,12 @@ from Tools.Directories import pathExists, SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, 
 from Components.Harddisk import harddiskmanager
 from ServiceReference import ServiceReference
 from Components.config import config
+from Components.SystemInfo import SystemInfo
 
 searchPaths = []
-lastPiconPath = None
+lastLcdPiconPath = None
 
-def initPiconPaths():
+def initLcdPiconPaths():
 	global searchPaths
 	searchPaths = []
 	for mp in ('/usr/share/enigma2/', '/'):
@@ -21,22 +22,28 @@ def initPiconPaths():
 def onMountpointAdded(mountpoint):
 	global searchPaths
 	try:
-		path = os.path.join(mountpoint, 'picon') + '/'
+		if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+			path = os.path.join(mountpoint, 'piconlcd') + '/'
+		else:
+			path = os.path.join(mountpoint, 'picon') + '/'
 		if os.path.isdir(path) and path not in searchPaths:
 			for fn in os.listdir(path):
 				if fn.endswith('.png'):
-					print "[Picon] adding path:", path
+					print "[LcdPicon] adding path:", path
 					searchPaths.append(path)
 					break
 	except Exception, ex:
-		print "[Picon] Failed to investigate %s:" % mountpoint, ex
+		print "[LcdPicon] Failed to investigate %s:" % mountpoint, ex
 
 def onMountpointRemoved(mountpoint):
 	global searchPaths
-	path = os.path.join(mountpoint, 'picon') + '/'
+	if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+		path = os.path.join(mountpoint, 'piconlcd') + '/'
+	else:
+		path = os.path.join(mountpoint, 'picon') + '/'
 	try:
 		searchPaths.remove(path)
-		print "[Picon] removed path:", path
+		print "[LcdPicon] removed path:", path
 	except:
 		pass
 
@@ -46,10 +53,10 @@ def onPartitionChange(why, part):
 	elif why == 'remove':
 		onMountpointRemoved(part.mountpoint)
 
-def findPicon(serviceName):
-	global lastPiconPath
-	if lastPiconPath is not None:
-		pngname = lastPiconPath + serviceName + ".png"
+def findLcdPicon(serviceName):
+	global lastLcdPiconPath
+	if lastLcdPiconPath is not None:
+		pngname = lastLcdPiconPath + serviceName + ".png"
 		if pathExists(pngname):
 			return pngname
 	global searchPaths
@@ -57,55 +64,65 @@ def findPicon(serviceName):
 		if pathExists(path):
 			pngname = path + serviceName + ".png"
 			if pathExists(pngname):
-				lastPiconPath = path
+				lastLcdPiconPath = path
 				return pngname
 	return ""
 
-def getPiconName(serviceName):
+def getLcdPiconName(serviceName):
 	#remove the path and name fields, and replace ':' by '_'
 	fields = GetWithAlternative(serviceName).split(':', 10)[:10]
 	if not fields or len(fields) < 10:
 		return ""
-	pngname = findPicon('_'.join(fields))
+	pngname = findLcdPicon('_'.join(fields))
 	if not pngname and not fields[6].endswith("0000"):
 		#remove "sub-network" from namespace
 		fields[6] = fields[6][:-4] + "0000"
-		pngname = findPicon('_'.join(fields))
+		pngname = findLcdPicon('_'.join(fields))
 	if not pngname and fields[0] != '1':
 		#fallback to 1 for IPTV streams
 		fields[0] = '1'
-		pngname = findPicon('_'.join(fields))
+		pngname = findLcdPicon('_'.join(fields))
 	if not pngname and fields[2] != '2':
 		#fallback to 1 for TV services with non-standard service types
 		fields[2] = '1'
-		pngname = findPicon('_'.join(fields))
+		pngname = findLcdPicon('_'.join(fields))
 	if not pngname: # picon by channel name
 		name = ServiceReference(serviceName).getServiceName()
 		name = unicodedata.normalize('NFKD', unicode(name, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 		name = re.sub('[^a-z0-9]', '', name.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 		if name:
-			pngname = findPicon(name)
+			pngname = findLcdPicon(name)
 			if not pngname and len(name) > 2 and name.endswith('hd'):
-				pngname = findPicon(name[:-2])
+				pngname = findLcdPicon(name[:-2])
 			if not pngname and len(name) > 6:
 				series = re.sub(r's[0-9]*e[0-9]*$', '', name)
-				pngname = findPicon(series)
+				pngname = findLcdPicon(series)
 	return pngname
 
-class Picon(Renderer):
+class LcdPicon(Renderer):
 	def __init__(self):
 		Renderer.__init__(self)
 		self.pngname = ""
 		self.lastPath = None
-		pngname = findPicon("picon_default")
+		pngname = findLcdPicon("picon_default")
+		if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+			pngname = findLcdPicon("lcd_picon_default")
+		else:
+			pngname = findLcdPicon("picon_default")
 		self.defaultpngname = None
 		self.showPicon = True
 		if not pngname:
-			tmp = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
+			if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "lcd_picon_default.png")
+			else:
+				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
 			if pathExists(tmp):
 				pngname = tmp
 			else:
-				pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/picon_default.png")
+				if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/lcd_picon_default.png")
+				else:
+					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/picon_default.png")
 		if os.path.getsize(pngname):
 			self.defaultpngname = pngname
 
@@ -136,7 +153,7 @@ class Picon(Renderer):
 			if self.showPicon or config.usage.show_picon_in_display.value:
 				pngname = ""
 				if what[0] != self.CHANGED_CLEAR:
-					pngname = getPiconName(self.source.text)
+					pngname = getLcdPiconName(self.source.text)
 				if not pngname: # no picon for service found
 					pngname = self.defaultpngname
 				if self.pngname != pngname:
@@ -151,4 +168,4 @@ class Picon(Renderer):
 				self.instance.hide()
 
 harddiskmanager.on_partition_list_change.append(onPartitionChange)
-initPiconPaths()
+initLcdPiconPaths()
