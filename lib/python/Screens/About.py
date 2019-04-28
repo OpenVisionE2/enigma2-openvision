@@ -25,7 +25,7 @@ class About(Screen):
 		hddsplit = skin.parameters.get("AboutHddSplit", 0)
 
 		AboutText = _("Hardware: ") + about.getHardwareTypeString() + "\n"
-		AboutText = _("Brand: ") + about.getHardwareBrand() + "\n"
+		AboutText += _("Brand: ") + about.getHardwareBrand() + "\n"
 		AboutText += _("CPU: ") + about.getCPUInfoString() + "\n"
 		AboutText += _("CPU brand: ") + about.getCPUBrand() + "\n"
 		AboutText += _("Flash type: ") + about.getFlashType() + "\n"
