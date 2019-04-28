@@ -82,7 +82,12 @@ else:
 # on SD hardware, PLi-HD will not be available
 if not fileExists(resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)):
 	DEFAULT_SKIN = "skin.xml"
+if SystemInfo["grautec"]:
+	DEFAULT_DISPLAY_SKIN = "skin_display_grautec.xml"
+else:
+	DEFAULT_DISPLAY_SKIN = "skin_display.xml"
 config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
+config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
 
 profile("LoadSkin")
 res = None
@@ -99,8 +104,7 @@ addSkin('skin_second_infobar.xml')
 
 display_skin_id = 1
 addSkin('skin_display.xml')
-if SystemInfo["grautec"]:
-	addSkin('skin_display_grautec.xml')
+addSkin('skin_text.xml')
 addSkin('skin_subtitles.xml')
 if fileExists(resolveFilename(SCOPE_SKIN_IMAGE, "skin_display_picon.xml")):
 	addSkin('skin_display_picon.xml')
