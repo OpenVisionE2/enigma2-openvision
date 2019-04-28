@@ -46,7 +46,7 @@ class inputDevices:
 
 			if self.name:
 				self.Devices[evdev] = {'name': self.name, 'type': self.getInputDeviceType(self.name),'enabled': False, 'configuredName': None }
-				if getBoxType().startswith('et'):
+				if getBoxType().startswith("et"):
 					self.setDefaults(evdev)
 
 
@@ -203,7 +203,7 @@ config.plugins.remotecontroltype.rctype = ConfigInteger(default = 0)
 
 class RcTypeControl():
 	def __init__(self):
-		if SystemInfo["RcTypeChangable"] and and getBoxBrand() not in ("gigablue","odin","ini","entwopia","tripledot"):
+		if SystemInfo["RcTypeChangable"] and getBoxBrand() not in ("gigablue","odin","ini","entwopia","tripledot"):
 			self.isSupported = True
 			self.boxType = open('/proc/stb/info/boxtype', 'r').read().strip()
 			if config.plugins.remotecontroltype.rctype.value != 0:
