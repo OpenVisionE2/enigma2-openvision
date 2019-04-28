@@ -172,6 +172,7 @@ void bsodFatal(const char *component)
 			component);
 
 		stringFromFile(f, "stbmodel", "/etc/model");
+		stringFromFile(f, "stbbrand", "/etc/brand");
 		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
 		stringFromFile(f, "imageversion", "/etc/image-version");

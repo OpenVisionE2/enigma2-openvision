@@ -3,6 +3,7 @@ hw_info = None
 class HardwareInfo:
 	device_name = _("unavailable")
 	device_model = None
+	device_brand = None
 	device_version = ""
 	device_revision = ""
 	device_hdmi = False
@@ -38,6 +39,12 @@ class HardwareInfo:
 		except:
 			pass
 
+		# Brand
+		try:
+			self.device_brand = open("/etc/brand").read().strip()
+		except:
+			pass
+
 		self.device_model = self.device_model or self.device_name
 
 		# map for Xtrend device models to machine names
@@ -63,6 +70,9 @@ class HardwareInfo:
 
 	def get_device_model(self):
 		return hw_info.device_model
+
+	def get_device_brand(self):
+		return hw_info.device_brand
 
 	def get_device_version(self):
 		return hw_info.device_version

@@ -66,7 +66,10 @@ def getKernelVersionString():
 		return _("unknown")
 
 def getHardwareTypeString():
-	return HardwareInfo().get_device_string()
+	return HardwareInfo().get_device_model()
+
+def getHardwareBrand():
+	return HardwareInfo().get_device_brand()
 
 def getImageTypeString():
 	try:
