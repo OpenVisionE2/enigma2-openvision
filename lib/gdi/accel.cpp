@@ -144,6 +144,7 @@ bool gAccel::hasAlphaBlendingSupport()
 {
 #ifdef BCM_ACCEL
 	return bcm_accel_has_alphablending();
+#endif
 #ifdef HAVE_HISILICON_ACCEL
 	return dinobot_accel_has_alphablending();
 #else

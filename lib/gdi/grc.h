@@ -66,6 +66,11 @@ struct gOpcode
 		setCompositing,
 		sendShow,
 		sendHide,
+#ifdef USE_LIBVUGLES2
+		sendShowItem,
+		setFlush,
+		setView,
+#endif
 	} opcode;
 
 	gDC *dc;
@@ -152,6 +157,24 @@ struct gOpcode
 			ePoint point;
 			eSize size;
 		} *setShowHideInfo;
+#ifdef USE_LIBVUGLES2
+		struct psetShowItemInfo
+		{
+			long dir;
+			ePoint point;
+			eSize size;
+		} *setShowItemInfo;
+		
+		struct psetFlush
+		{
+			bool enable;
+		} *setFlush;
+		
+		struct psetViewInfo
+		{
+			eSize size;
+		} *setViewInfo;
+#endif
 	} parm;
 };
 
@@ -293,6 +316,11 @@ public:
 	void flush();
 	void sendShow(ePoint point, eSize size);
 	void sendHide(ePoint point, eSize size);
+#ifdef USE_LIBVUGLES2
+	void sendShowItem(long dir, ePoint point, eSize size);
+	void setFlush(bool val);
+	void setView(eSize size);
+#endif
 };
 
 class gDC: public iObject
