@@ -1007,6 +1007,7 @@ class ConfigText(ConfigElement, NumericalTextInput):
 		if session is not None:
 			from Screens.NumericalTextInputHelpDialog import NumericalTextInputHelpDialog
 			self.help_window = session.instantiateDialog(NumericalTextInputHelpDialog, self)
+			self.help_window.setAnimationMode(0)
 			self.help_window.show()
 
 	def onDeselect(self, session):
