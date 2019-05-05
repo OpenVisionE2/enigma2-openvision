@@ -378,6 +378,7 @@ if test x"$with_amlogic" = xyes ; then
 	PKG_CHECK_MODULES(AMCODEC, libamcodec)
 	PKG_CHECK_MODULES(AMADEC, libamadec)
 	PKG_CHECK_MODULES(DVBCSA, libdvbcsa)
+	ALSA_CFLAGS="-lasound"
 fi
 
 if test "$BOXTYPE" == "azboxme" -o "$BOXTYPE" == "azboxminime"; then
