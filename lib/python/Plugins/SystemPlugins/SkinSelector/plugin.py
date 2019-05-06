@@ -17,10 +17,12 @@ import os
 
 SKINXML = "skin.xml"
 DEFAULTSKIN = _("<Default Skin>")
-PICONSKINXML = "skin_display_picon.xml"
-PICONDEFAULTSKIN = _("<Default Skin with Picon>")
-ALTERNATESKINXML = "skin_display_alternate.xml"
-ALTERNATESKIN = _("<Alternate Skin>")
+DISPLAYSKINXML = "skin_display.xml"
+DISPLAYSKIN = _("<Display Skin>")
+PICONDISPLAYSKINXML = "skin_display_picon.xml"
+PICONDISPLAYSKIN = _("<Display Skin with Picon>")
+ALTERNATEDISPLAYSKINXML = "skin_display_alternate.xml"
+ALTERNATEDISPLAYSKIN = _("<Alternate Display Skin>")
 
 class SkinSelector(Screen):
 
@@ -37,10 +39,12 @@ class SkinSelector(Screen):
 		self.previewPath = ""
 		if os.path.exists(os.path.join(self.root, SKINXML)):
 			self.skinlist.append(DEFAULTSKIN)
-		if os.path.exists(os.path.join(self.root, PICONSKINXML)):
-			self.skinlist.append(PICONDEFAULTSKIN)
-		if os.path.exists(os.path.join(self.root, ALTERNATESKINXML)):
-			self.skinlist.append(ALTERNATESKIN)
+		if os.path.exists(os.path.join(self.root, DISPLAYSKINXML)):
+			self.skinlist.append(DISPLAYSKIN)
+		if os.path.exists(os.path.join(self.root, PICONDISPLAYSKINXML)):
+			self.skinlist.append(PICONDISPLAYSKIN)
+		if os.path.exists(os.path.join(self.root, ALTERNATEDISPLAYSKINXML)):
+			self.skinlist.append(ALTERNATEDISPLAYSKIN)
 		for root, dirs, files in os.walk(self.root, followlinks=True):
 			for subdir in dirs:
 				file = os.path.join(os.path.join(root, subdir), SKINXML)
@@ -104,12 +108,15 @@ class SkinSelector(Screen):
 	def ok(self):
 		if self["SkinList"].getCurrent() == DEFAULTSKIN:
 			self.skinfile = "."
-		elif self["SkinList"].getCurrent() == PICONDEFAULTSKIN:
+		elif self["SkinList"].getCurrent() == DISPLAYSKIN:
 			self.skinfile = "."
-			self.skinfile = os.path.join(self.skinfile, PICONSKINXML)
-		elif self["SkinList"].getCurrent() == ALTERNATESKIN:
+			self.skinfile = os.path.join(self.skinfile, DISPLAYSKINXML)
+		elif self["SkinList"].getCurrent() == PICONDISPLAYSKIN:
 			self.skinfile = "."
-			self.skinfile = os.path.join(self.skinfile, ALTERNATESKINXML)
+			self.skinfile = os.path.join(self.skinfile, PICONDISPLAYSKINXML)
+		elif self["SkinList"].getCurrent() == ALTERNATEDISPLAYSKIN:
+			self.skinfile = "."
+			self.skinfile = os.path.join(self.skinfile, ALTERNATEDISPLAYSKINXML)
 		else:
 			self.skinfile = self["SkinList"].getCurrent()
 		self.skinfile = os.path.join(self.skinfile, SKINXML)
@@ -121,10 +128,10 @@ class SkinSelector(Screen):
 	def loadPreview(self):
 		if self["SkinList"].getCurrent() == DEFAULTSKIN:
 			pngpath = "."
-		elif self["SkinList"].getCurrent() == PICONDEFAULTSKIN:
+		elif self["SkinList"].getCurrent() == PICONDISPLAYSKIN:
 			pngpath = "."
 			pngpath = os.path.join(os.path.join(self.root, pngpath), "piconprev.png")
-		elif self["SkinList"].getCurrent() == ALTERNATESKIN:
+		elif self["SkinList"].getCurrent() == ALTERNATEDISPLAYSKIN:
 			pngpath = "."
 			pngpath = os.path.join(os.path.join(self.root, pngpath), "alternate.png")
 		else:

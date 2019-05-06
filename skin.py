@@ -40,6 +40,13 @@ class SkinError(Exception):
 	def __str__(self):
 		return "{%s}: %s. Please contact the skin's author!" % (config.skin.primary_skin.value, self.msg)
 
+class DisplaySkinError(Exception):
+	def __init__(self, message):
+		self.msg = message
+
+	def __str__(self):
+		return "{%s}: %s. Please contact the skin's author!" % (config.skin.display_skin.value, self.msg)
+
 dom_skins = [ ]
 
 def addSkin(name, scope = SCOPE_CURRENT_SKIN):
@@ -82,11 +89,11 @@ else:
 # on SD hardware, PLi-HD will not be available
 if not fileExists(resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)):
 	DEFAULT_SKIN = "skin.xml"
+config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
 if SystemInfo["grautec"]:
 	DEFAULT_DISPLAY_SKIN = "skin_display_grautec.xml"
 else:
 	DEFAULT_DISPLAY_SKIN = "skin_display.xml"
-config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
 config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
 
 profile("LoadSkin")
@@ -103,11 +110,21 @@ addSkin('skin_box.xml')
 addSkin('skin_second_infobar.xml')
 
 display_skin_id = 1
-addSkin('skin_display.xml')
-addSkin('skin_text.xml')
+
+try:
+	if not addSkin(config.skin.display_skin.value):
+		raise DisplaySkinError, "display skin not found"
+except Exception, err:
+	print "SKIN ERROR:", err
+	skin = DEFAULT_DISPLAY_SKIN
+	if config.skin.display_skin.value == skin:
+		skin = 'skin_display.xml'
+	print "defaulting to standard display skin...", skin
+	config.skin.display_skin.value = skin
+	addSkin(skin)
+	del skin
+
 addSkin('skin_subtitles.xml')
-if fileExists(resolveFilename(SCOPE_SKIN_IMAGE, "skin_display_picon.xml")):
-	addSkin('skin_display_picon.xml')
 
 try:
 	if not addSkin(config.skin.primary_skin.value):
