@@ -206,7 +206,7 @@ class SkinSelector(Screen, SkinSelectorBase):
 
 class LcdSkinSelector(Screen, SkinSelectorBase):
 	SKINXML = "skin_display.xml"
-	DEFAULTSKIN = _("<Default Skin>")
+	DEFAULTSKIN = _("<Display Skin>")
 	PICONSKINXML = "skin_display_picon.xml"
 	PICONDEFAULTSKIN = _("<Display Skin with Picon>")
 	ALTERNATESKINXML = "skin_display_alternate.xml"
