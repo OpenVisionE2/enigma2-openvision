@@ -1,4 +1,4 @@
-installdir = $(pkgdatadir)
+installdir = $(pkgdatadir)/display
 
 SUBDIRS = fonts
 

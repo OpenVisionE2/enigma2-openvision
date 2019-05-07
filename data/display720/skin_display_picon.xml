@@ -173,7 +173,7 @@
 			<convert type="MSNWeather">temperature_current</convert>
 		</widget>
 		<widget render="MSNWeatherPixmap" position="540,355" size="220,120" source="MSNWeather" transparent="1" zPosition="8" alphatest="blend" >
-			<convert type="MSNWeather">weathericon,current,/usr/share/enigma2/skin_default/,png</convert>
+			<convert type="MSNWeather">weathericon,current,/usr/share/enigma2/display/skin_default/,png</convert>
 		</widget-->
 		<widget source="session.CurrentService" render="Pixmap" pixmap="~/skin_default/hd.png" position="10,360" size="65,50" >
 			<convert type="ServiceInfo">IsHD</convert>
@@ -505,7 +505,7 @@
 			<convert type="MSNWeather">temperature_current</convert>
 		</widget>
 		<widget render="MSNWeatherPixmap" position="20,260" size="360,200" source="session.MSNWeather" transparent="1" zPosition="8" alphatest="blend" >
-			<convert type="MSNWeather">weathericon,current,/usr/share/enigma2/skin_default/,png</convert>
+			<convert type="MSNWeather">weathericon,current,/usr/share/enigma2/display/skin_default/,png</convert>
 		</widget>
 		<panel name="SummaryClockPanel" />
 	</screen>
