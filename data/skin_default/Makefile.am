@@ -101,4 +101,5 @@ dist_install_DATA = \
 	vkey_yellow_m.png \
 	vkey_yellow_r.png \
 	volume.png \
-	wizard.png
+	wizard.png \
+	noprev.png

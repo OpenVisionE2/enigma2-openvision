@@ -20,6 +20,9 @@ SCOPE_PLAYLIST = 11
 SCOPE_CURRENT_SKIN = 12
 SCOPE_METADIR = 16
 SCOPE_CURRENT_PLUGIN = 17
+SCOPE_ACTIVE_SKIN = 18
+SCOPE_LCDSKIN = 19
+SCOPE_ACTIVE_LCDSKIN = 20
 
 PATH_CREATE = 0
 PATH_DONTCREATE = 1
@@ -34,6 +37,7 @@ defaultPaths = {
 		SCOPE_LANGUAGE: (eEnv.resolve("${datadir}/enigma2/po/"), PATH_DONTCREATE),
 
 		SCOPE_SKIN: (eEnv.resolve("${datadir}/enigma2/"), PATH_DONTCREATE),
+		SCOPE_LCDSKIN: (eEnv.resolve("${datadir}/enigma2/display/"), PATH_DONTCREATE),
 		SCOPE_SKIN_IMAGE: (eEnv.resolve("${datadir}/enigma2/"), PATH_DONTCREATE),
 		SCOPE_HDD: ("/hdd/movie/", PATH_DONTCREATE),
 		SCOPE_MEDIA: ("/media/", PATH_DONTCREATE),
@@ -74,6 +78,60 @@ def resolveFilename(scope, base = "", path_prefix = None):
 				for file in (base, os.path.basename(base)):
 					if pathExists("%s%s"% (dir, file)):
 						return "%s%s" % (dir, file)
+
+	elif scope == SCOPE_ACTIVE_SKIN:
+		from Components.config import config
+		# allow files in the config directory to replace skin files
+		tmp = defaultPaths[SCOPE_CONFIG][0]
+		if base and pathExists(tmp + base):
+			path = tmp
+		else:
+			tmp = defaultPaths[SCOPE_SKIN][0]
+			pos = config.skin.primary_skin.value.rfind('/')
+			if pos != -1:
+				tmpfile = tmp+config.skin.primary_skin.value[:pos+1] + base
+				if pathExists(tmpfile) or (':' in tmpfile and pathExists(tmpfile.split(':')[0])):
+					path = tmp+config.skin.primary_skin.value[:pos+1]
+				elif pathExists(tmp + base) or (':' in base and pathExists(tmp + base.split(':')[0])):
+					path = tmp
+				else:
+					if 'skin_default' not in tmp:
+						path = tmp + 'skin_default/'
+					else:
+						path = tmp
+			else:
+				if pathExists(tmp + base):
+					path = tmp
+				elif 'skin_default' not in tmp:
+					path = tmp + 'skin_default/'
+				else:
+					path = tmp
+
+	elif scope == SCOPE_ACTIVE_LCDSKIN:
+		from Components.config import config
+		# allow files in the config directory to replace skin files
+		tmp = defaultPaths[SCOPE_CONFIG][0]
+		if base and pathExists(tmp + base):
+			path = tmp
+		elif base and pathExists(defaultPaths[SCOPE_LCDSKIN][0] + base):
+			path = defaultPaths[SCOPE_LCDSKIN][0]
+		else:
+			tmp = defaultPaths[SCOPE_LCDSKIN][0]
+			pos = config.skin.display_skin.value.rfind('/')
+			if pos != -1:
+				tmpfile = tmp+config.skin.display_skin.value[:pos+1] + base
+				if pathExists(tmpfile):
+					path = tmp+config.skin.display_skin.value[:pos+1]
+				else:
+					if 'skin_default' not in tmp:
+						path = tmp + 'skin_default/'
+					else:
+						path = tmp
+			else:
+				if 'skin_default' not in tmp:
+					path = tmp + 'skin_default/'
+				else:
+					path = tmp
 
 	elif scope == SCOPE_CURRENT_PLUGIN:
 		tmp = defaultPaths[SCOPE_PLUGINS]

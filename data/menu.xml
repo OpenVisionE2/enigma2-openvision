@@ -51,13 +51,19 @@
 				<item level="0" entryID="timezone_setup"><setup id="timezone"/></item>
 				<item level="2" entryID="epg_settings"><setup id="epgsettings"/></item>
 				<item level="0" entryID="user_interface"><setup id="userinterface"/></item>
+				<item level="0" text="Skin" entryID="skin_setup"><screen module="SkinSelector" screen="SkinSelector"/></item>
+					<menu level="0" text="Front panel display" entryID="display_selection" requires="Display">
+					<id val="lcd"/>
+					<item weight="1" level="0" text="Display Skin" entryID="lcd_skin_setup"><screen module="SkinSelector" screen="LcdSkinSelector"/></item>
+					<item weight="2" level="1" entryID="lcd_setup" text="LCD setup"><setup id="lcd"/></item>
+					<item weight="3" level="1" entryID="led_setup" text="LED setup"><setup id="ledsetup"/></item>
+					</menu>
 				</menu>
 				<item level="1" entryID="rfmod_setup" requires="RfModulator"><setup id="RFmod"/></item>
 				<menu level="0" text="Expert settings" entryID="expert_selection">
 				<id val="expert"/>
 				<item level="0" entryID="accesslevel_setup"><setup id="accesslevel"/></item>
 				<item level="0" entryID="recording_setup"><setup id="recording"/></item>
-
 					<menu level="0" text="Harddisk" entryID="hardisk_selection" requires="Harddisk">
 					<id val="harddisk"/>
 					<item level="0" entryID="harddisk_setup"><setup id="harddisk"/></item>
@@ -66,8 +72,6 @@
 					</menu>
 				<item level="0" text="Network" entryID="network_setup"><screen module="NetworkSetup" screen="NetworkAdapterSelection"/></item>
 				<item level="1" text="Input devices" entryID="input_device_setup"><screen module="InputDeviceSetup" screen="InputDeviceSelection"/></item>
-				<item entryID="lcd_setup" requires="Display"><setup level="1" id="lcd"/></item>
-				<item entryID="led_setup" text="LED setup"><setup id="ledsetup"/></item>
 				<item entryID="keyboard_setup" text="Keyboard"><setup id="keyboard"/></item>
 				<item level="2" text="Recording paths" entryID="RecordPaths"><screen module="RecordPaths" screen="RecordPathsSettings"/></item>
 				<item level="1" text="Hotkey" entryID="hotkey_setup"><screen module="Hotkey" screen="HotkeySetup"/></item>
