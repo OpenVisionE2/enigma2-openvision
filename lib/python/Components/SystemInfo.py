@@ -99,7 +99,7 @@ SystemInfo["HasOfflineDecoding"] = getBoxType() not in ("osmini","osminiplus","e
 SystemInfo["HasRootSubdir"] = fileHas("/proc/cmdline", "rootsubdir=")
 SystemInfo["canMultiBoot"] = SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or fileHas("/proc/cmdline", "_4.boxmode=") and (1, 4, "mmcblk0", False) or getBoxType() in ("gbue4k","gbquad4k") and (3, 3, "mmcblk0", True) or getBoxType() in ("e4hdultra") and (1, 4, "mmcblk0", False) or getBoxType() in ("osmio4k") and (1, 4, "mmcblk1", True)
 SystemInfo["canMode12"] = fileHas("/proc/cmdline", "_4.boxmode=1 ") and '192M' or fileHas("/proc/cmdline", "_4.boxmode=12") and '192M'
-SystemInfo["canFlashWithOfgwrite"] = not(getBoxType().startswith("dm") or getBoxType() in ("hd60","hd61") or SystemInfo["HasRootSubdir"])
+SystemInfo["canFlashWithOfgwrite"] = not(getBoxType().startswith("dm")
 SystemInfo["HDRSupport"] = fileExists("/proc/stb/hdmi/hlg_support_choices") and fileCheck("/proc/stb/hdmi/hlg_support")
 SystemInfo["CanDownmixAC3"] = fileHas("/proc/stb/audio/ac3_choices","downmix")
 SystemInfo["CanDownmixDTS"] = fileHas("/proc/stb/audio/dts_choices","downmix")
