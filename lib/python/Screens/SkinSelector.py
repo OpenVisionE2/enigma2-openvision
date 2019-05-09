@@ -169,7 +169,7 @@ class SkinSelector(Screen, SkinSelectorBase):
 	skinlist = []
 	root = os.path.join(eEnv.resolve("${datadir}"),"enigma2")
 
-	def __init__(self, session, menu_path="", skin_name=None):
+	def __init__(self, session, args = None, skin_name=None):
 		Screen.__init__(self, session)
 		SkinSelectorBase.__init__(self, session)
 		self.onChangedEntry = []
@@ -178,16 +178,8 @@ class SkinSelector(Screen, SkinSelectorBase):
 			self.skinName.insert(0,skin_name)
 
 		screentitle = _("Skin")
-		if config.usage.show_menupath.value == 'large':
-			menu_path += screentitle
-			title = menu_path
-			self["menu_path_compressed"] = StaticText("")
-		elif config.usage.show_menupath.value == 'small':
-			title = screentitle
-			self["menu_path_compressed"] = StaticText(menu_path + " >" if not menu_path.endswith(' / ') else menu_path[:-3] + " >" or "")
-		else:
-			title = screentitle
-			self["menu_path_compressed"] = StaticText("")
+		title = screentitle
+		self["menu_path_compressed"] = StaticText("")
 		Screen.setTitle(self, title)
 		self.config = config.skin.primary_skin
 
@@ -215,21 +207,13 @@ class LcdSkinSelector(Screen, SkinSelectorBase):
 	skinlist = []
 	root = os.path.join(eEnv.resolve("${datadir}"),"enigma2/display/")
 
-	def __init__(self, session, menu_path=""):
+	def __init__(self, session, args = None):
 		Screen.__init__(self, session)
 		SkinSelectorBase.__init__(self, session)
 		self.onChangedEntry = []
 		screentitle = _("Skin setup")
-		if config.usage.show_menupath.value == 'large':
-			menu_path += screentitle
-			title = menu_path
-			self["menu_path_compressed"] = StaticText("")
-		elif config.usage.show_menupath.value == 'small':
-			title = screentitle
-			self["menu_path_compressed"] = StaticText(menu_path + " >" if not menu_path.endswith(' / ') else menu_path[:-3] + " >" or "")
-		else:
-			title = screentitle
-			self["menu_path_compressed"] = StaticText("")
+		title = screentitle
+		self["menu_path_compressed"] = StaticText("")
 		Screen.setTitle(self, title)
 		self.skinName = "SkinSelector"
 		self.config = config.skin.display_skin
