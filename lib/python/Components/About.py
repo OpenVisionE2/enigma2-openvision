@@ -135,7 +135,7 @@ def getCPUInfoString():
 def getCPUBrand():
 	if SystemInfo["AmlogicFamily"]:
 		return _("Amlogic")
-	elif SystemInfo["HiSilicon"] or os.path.isfile("/proc/hisi/msp/pm_cpu"):
+	elif SystemInfo["HiSilicon"] or os.path.isfile("/proc/hisi/msp/pm_cpu") or os.path.isfile("/usr/bin/hihalt"):
 		return _("HiSilicon")
 	else:
 		return _("Broadcom")
