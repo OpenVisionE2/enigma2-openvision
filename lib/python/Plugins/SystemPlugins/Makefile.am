@@ -14,5 +14,9 @@ if HAVE_OSDANIMATION
 SUBDIRS += AnimationSetup
 endif
 
+if DM9X0
+SUBDIRS += FSBLUpdater
+endif
+
 install_PYTHON =	\
 	__init__.py
