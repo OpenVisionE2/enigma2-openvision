@@ -1,10 +1,8 @@
 from Components.config import config, ConfigBoolean
 from Screens.ChoiceBox import ChoiceBox
 from Plugins.Plugin import PluginDescriptor
-from Tools.HardwareInfo import HardwareInfo
-
+from enigma import getBoxType
 from FSBLUpdater import FSBLUpdater
-
 from Tools.Log import Log
 from Tools import Notifications
 
@@ -13,7 +11,7 @@ config.misc.fsbl_update_never = ConfigBoolean(default=False)
 
 class FSBLUpdateHandler(object):
 	def __init__(self):
-		self._boxtype = HardwareInfo().get_device_name()
+		self._boxtype = getBoxType()
 		self._session = None
 
 	def check(self, session):
@@ -38,7 +36,7 @@ class FSBLUpdateHandler(object):
 		Log.i(answer)
 		answer = answer[1]
 		if answer == "yes":
-			self._session.open(FSBLUpdater, HardwareInfo().get_device_name())
+			self._session.open(FSBLUpdater, getBoxType())
 		elif answer == "never":
 			config.misc.fsbl_update_never.value = True
 			config.misc.fsbl_update_never.save()
