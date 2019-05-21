@@ -623,6 +623,7 @@ fi
 
 if test "$BOXTYPE" == "vuduo2"; then
 	AC_DEFINE(HAVE_BWLCD140, 1,[Define when using a 140x32 black and white display device])
+	AC_DEFINE(FORCE_AUTO_INV, 1,[force Inversion auto for vu mipsel boxes])
 fi
 
 if test "$BOXTYPE" == "vusolo4k" -o "$BOXTYPE" == "vuduo4k"; then
@@ -637,6 +638,10 @@ fi
 
 if test "$BOXTYPE" == "vuuno4k" -o "$BOXTYPE" == "vuuno4kse" -o "$BOXTYPE" == "vuzero4k" -o "$BOXTYPE" == "sf4008"; then
 	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
+fi
+
+if test "$BOXTYPE" == "vuzero" -o "$BOXTYPE" == "vuuno" -o "$BOXTYPE" == "vuultimo" -o "$BOXTYPE" == "vusolose" -o "$BOXTYPE" == "vusolo2" -o "$BOXTYPE" == "vusolo" -o "$BOXTYPE" == "vuduo"; then
+	AC_DEFINE(FORCE_AUTO_INV, 1,[force Inversion auto for vu mipsel boxes])
 fi
 
 if test "$BOXTYPE" == "wetekplay" -o "$BOXTYPE" == "wetekplay2" -o "$BOXTYPE" == "wetekhub" -o "$BOXTYPE" == "x8hp"; then
