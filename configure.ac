@@ -424,6 +424,7 @@ if test "$BOXTYPE" == "cc1" -o "$BOXTYPE" == "sf8008" -o "$BOXTYPE" == "ustym4kp
 	AC_DEFINE(HAVE_HISILICON, 1,[define add HISILICON chip])
 	AC_DEFINE(CONFIG_HISILICON_FB, 1,[define add HISILICON framebuffer blit])
 	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
+	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi
 
 if test "$BOXTYPE" == "force1" -o "$BOXTYPE" == "force1plus" -o "$BOXTYPE" == "force2" -o "$BOXTYPE" == "force2nano" -o "$BOXTYPE" == "force2plus" -o "$BOXTYPE" == "force2plushv" -o "$BOXTYPE" == "force2se" -o "$BOXTYPE" == "force3uhd" -o "$BOXTYPE" == "force3uhdplus" -o "$BOXTYPE" == "force4" -o "$BOXTYPE" == "iqonios100hd" -o "$BOXTYPE" == "iqonios200hd" -o "$BOXTYPE" == "iqonios300hd" -o "$BOXTYPE" == "iqonios300hdv2" -o "$BOXTYPE" == "mediabox" -o "$BOXTYPE" == "optimussos" -o "$BOXTYPE" == "optimussos1" -o "$BOXTYPE" == "optimussos1plus" -o "$BOXTYPE" == "optimussos2" -o "$BOXTYPE" == "optimussos2plus" -o "$BOXTYPE" == "optimussos3plus" -o "$BOXTYPE" == "tm2t" -o "$BOXTYPE" == "tm4ksuper" -o "$BOXTYPE" == "tmnano" -o "$BOXTYPE" == "tmnano2super" -o "$BOXTYPE" == "tmnano2t" -o "$BOXTYPE" == "tmnano3t" -o "$BOXTYPE" == "tmnanom3" -o "$BOXTYPE" == "tmnanose" -o "$BOXTYPE" == "tmnanosecombo" -o "$BOXTYPE" == "tmnanosem2" -o "$BOXTYPE" == "tmnanoseplus" -o "$BOXTYPE" == "tmsingle" -o "$BOXTYPE" == "tmtwin" -o "$BOXTYPE" == "tmtwin4k" -o "$BOXTYPE" == "valalinux" -o "$BOXTYPE" == "worldvisionf1" -o "$BOXTYPE" == "worldvisionf1plus" -o "$BOXTYPE" == "fusionhd" -o "$BOXTYPE" == "fusionhdse" -o "$BOXTYPE" == "galaxy4k" -o "$BOXTYPE" == "purehd" -o "$BOXTYPE" == "purehdse" -o "$BOXTYPE" == "revo4k" -o "$BOXTYPE" == "lunix" -o "$BOXTYPE" == "lunix3-4k" -o "$BOXTYPE" == "lunix4k"; then
@@ -626,10 +627,16 @@ fi
 
 if test "$BOXTYPE" == "vusolo4k" -o "$BOXTYPE" == "vuduo4k"; then
 	AC_DEFINE(HAVE_COLORLCD480, 1,[Define when using a 480x320 color display device])
+	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi
 
 if test "$BOXTYPE" == "vuultimo4k"; then
 	AC_DEFINE(HAVE_COLORLCD800, 1,[Define when using a 800x480 color display device])
+	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
+fi
+
+if test "$BOXTYPE" == "vuuno4k" -o "$BOXTYPE" == "vuuno4kse" -o "$BOXTYPE" == "vuzero4k" -o "$BOXTYPE" == "sf4008"; then
+	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi
 
 if test "$BOXTYPE" == "wetekplay" -o "$BOXTYPE" == "wetekplay2" -o "$BOXTYPE" == "wetekhub" -o "$BOXTYPE" == "x8hp"; then
