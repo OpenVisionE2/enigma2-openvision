@@ -589,10 +589,13 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 				/* alpha blending is requested */
 				if (gAccel::getInstance()->hasAlphaBlendingSupport())
 				{
-#ifndef FORCE_ALPHABLENDING_ACCELERATION
+#ifdef FORCE_ALPHABLENDING_ACCELERATION
 					/* Hardware alpha blending is broken on the few
 					 * boxes that support it, so only use it
 					 * when scaling */
+
+					accel = true;
+#else
 					if (flag & blitScale)
 						accel = true;
 					else if (flag & blitAlphaTest) /* Alpha test only on 8-bit */

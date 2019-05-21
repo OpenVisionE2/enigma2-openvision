@@ -354,10 +354,17 @@ AC_ARG_WITH(osdanimation,
 	[[withosdanimation=no]]
 )
 if test x"$withosdanimation" != xno ; then
-
 	AC_DEFINE(HAVE_OSDANIMATION, 1,[Define if driver supports animation of osd])
 fi
 AM_CONDITIONAL(HAVE_OSDANIMATION, test x"$withosdanimation" != xno)
+
+AC_ARG_WITH(subttxtabnormalptsdiffs,
+	AC_HELP_STRING([--with-subttxtabnormalptsdiffs=n], [use n/90 msec diffs for subtitle and teletext abnormal pts]),
+	[[with_subttxtabnormalptsdiffs=$withval]],
+	[[with_subttxtabnormalptsdiffs=1800000]]
+)
+
+AC_DEFINE_UNQUOTED(SUBT_TXT_ABNORMAL_PTS_DIFFS, $with_subttxtabnormalptsdiffs,[Configure abnormal pts for subtitle and teletext])
 
 if test "$BOXTYPE" == "mbmicro" -o "$BOXTYPE" == "e4hd" -o "$BOXTYPE" == "e4hdhybrid" -o "$BOXTYPE" == "twinboxlcd" -o "$BOXTYPE" == "singleboxlcd" -o "$BOXTYPE" == "twinboxlcdci5" -o "$BOXTYPE" == "sf208" -o "$BOXTYPE" == "sf228" -o "$BOXTYPE" == "sf238" -o "$BOXTYPE" == "odin2hybrid" -o "$BOXTYPE" == "odinplus"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
