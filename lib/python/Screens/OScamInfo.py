@@ -372,19 +372,11 @@ class oscMenuList(MenuList):
 		self.l.setFont(3, gFont("Regular", int(12*f)))
 
 class OscamInfoMenu(Screen):
-	def __init__(self, session, menu_path = ""):
+	def __init__(self, session):
 		Screen.__init__(self, session)
 		screentitle = _("Oscam Info - Main Menu")
-		if config.usage.show_menupath.value == 'large':
-			menu_path += screentitle
-			title = menu_path
-			self["menu_path_compressed"] = StaticText("")
-		elif config.usage.show_menupath.value == 'small':
-			title = screentitle
-			self["menu_path_compressed"] = StaticText(menu_path + " >" if not menu_path.endswith(' / ') else menu_path[:-3] + " >" or "")
-		else:
-			title = screentitle
-			self["menu_path_compressed"] = StaticText("")
+		title = screentitle
+		self["menu_path_compressed"] = StaticText("")
 		Screen.setTitle(self, title)
 		self.menu = [ _("Show /tmp/ecm.info"), _("Show Clients"), _("Show Readers/Proxies"), _("Show Log"), _("Card infos (CCcam-Reader)"), _("ECM Statistics"), _("Setup") ]
 		self.osc = OscamInfo()
