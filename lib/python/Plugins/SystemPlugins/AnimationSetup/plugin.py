@@ -278,8 +278,8 @@ def sessionAnimationSetup(session, reason, **kwargs):
 def Plugins(**kwargs):
 	plugin_list = [
 		PluginDescriptor(
-			name = "Animations",
-			description = "Setup UI animations",
+			name = _("Animations"),
+			description = _("Setup UI animations"),
 			where = PluginDescriptor.WHERE_MENU,
 			needsRestart = False,
 			fnc = startAnimationSetup),
