@@ -598,7 +598,7 @@ if test "$BOXTYPE" == "tiviarmin"; then
 	AC_DEFINE(TIVIARRC, 1,[define use TIVIARRC KEY MAPPING])
 fi
 
-if test "$BOXTYPE" == "anadol4k" -o "$BOXTYPE" == "dinobot4k" -o "$BOXTYPE" == "mediabox4k" -o "$BOXTYPE" == "dinobot4kse" -o "$BOXTYPE" == "ferguson4k" -o "$BOXTYPE" == "anadol4kv2" -o "$BOXTYPE" == "anadol4kcombo" -o "$BOXTYPE" == "axashis4kcombo" -o "$BOXTYPE" == "dinobot4kl" -o "$BOXTYPE" == "dinobot4kplus" -o "$BOXTYPE" == "axashis4kcomboplus" -o "$BOXTYPE" == "dinobot4kmini" -o "$BOXTYPE" == "dinobot4kpro" -o "$BOXTYPE" == "dinobotu55" -o "$BOXTYPE" == "dinoboth265" -o "$BOXTYPE" == "axashistwin" -o "$BOXTYPE" == "axashisc4k"; then
+if test "$BOXTYPE" == "anadol4k" -o "$BOXTYPE" == "dinobot4k" -o "$BOXTYPE" == "mediabox4k" -o "$BOXTYPE" == "dinobot4kse" -o "$BOXTYPE" == "ferguson4k" -o "$BOXTYPE" == "anadol4kv2" -o "$BOXTYPE" == "anadol4kcombo" -o "$BOXTYPE" == "axashis4kcombo" -o "$BOXTYPE" == "dinobot4kl" -o "$BOXTYPE" == "dinobot4kplus" -o "$BOXTYPE" == "axashis4kcomboplus" -o "$BOXTYPE" == "dinobot4kmini" -o "$BOXTYPE" == "dinobot4kpro" -o "$BOXTYPE" == "dinobotu55" -o "$BOXTYPE" == "dinoboth265" -o "$BOXTYPE" == "axashistwin" -o "$BOXTYPE" == "axashisc4k" -o "$BOXTYPE" == "anadolprohd5"; then
 	AC_DEFINE(HAVE_HISILICON, 1,[define add HISILICON chip])
 fi
 
