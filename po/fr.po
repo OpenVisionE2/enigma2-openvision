@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-22 08:13+0430\n"
-"PO-Revision-Date: 2019-05-11 22:20+0200\n"
+"POT-Creation-Date: 2019-05-22 18:38+0430\n"
+"PO-Revision-Date: 2019-05-21 20:49+0200\n"
 "Last-Translator: Pr2\n"
 "Language-Team: french\n"
 "Language: fr\n"
@@ -1627,6 +1627,7 @@ msgstr "Cameroun"
 
 msgid ""
 "Can be used to test defect pixels on TV screen.\n"
+"\n"
 "Available color test screens:\n"
 "\n"
 "red\n"
@@ -1638,8 +1639,24 @@ msgid ""
 "magenta\n"
 "yellow\n"
 "\n"
-"Screens change with left/right buttons or use red, green, blue.\n"
+"Screens change with left/right buttons or use red, green, blue to toggle.\n"
+"Yellow for returning back to this intro"
 msgstr ""
+"Peut être utilisé pour tester les pixels défectueux de l’écran.\n"
+"\n"
+"Ecrans disponible dans les couleurs suivantes:\n"
+"\n"
+"rouge\n"
+"vert\n"
+"bleu\n"
+"blanc\n"
+"noir\n"
+"cyan\n"
+"magenta\n"
+"jaune\n"
+"\n"
+"Les écrans changent avec les boutons gauches/droites ou en utilisant rouge, vert, bleu pour basculer.\n"
+"Jaune pour revenir à cette introduction"
 
 msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternativaly you can mount the network drive after the flash and perform a manufacurer reset to autorestore"
 msgstr "N’a pu trouver qu’un lecteur réseau pour stocker la sauvegarde, cela signifie qu’après un flash la fonction de restauration automatique ne fonctionnera pas. Comme alternative, vous pouvez monter le disque réseau après avoir flashé l’image et effectuer un retour à la configuration par défaut pour lancer la restauration automatique."
@@ -2323,6 +2340,10 @@ msgstr "Lecteur DVD"
 
 msgid "DVD titlelist"
 msgstr "Liste titres DVD"
+
+#, fuzzy
+msgid "DVDPlayer"
+msgstr "Lecteur DVD"
 
 msgid "Danish"
 msgstr "Danois"
@@ -3875,6 +3896,9 @@ msgstr "Configurer Hotkey"
 
 msgid "Hotkey zap"
 msgstr "Hotkey zap"
+
+msgid "Hotplug"
+msgstr ""
 
 msgid "How many minutes do you want add to the recording?"
 msgstr "Combien de minutes voulez-vous ajouter à l'enregistrement?"
@@ -5436,12 +5460,16 @@ msgid "Pitcairn"
 msgstr "Pitcairn"
 
 msgid "Pixels\n"
-msgstr ""
+msgstr "Pixels\n"
 
 msgid "Play"
 msgstr "Lire"
 
 msgid "Play DVD"
+msgstr "Lire DVD"
+
+#, fuzzy
+msgid "Play DVDs"
 msgstr "Lire DVD"
 
 msgid "Play audio-CD..."
@@ -7124,7 +7152,7 @@ msgstr "Paramétrer"
 
 #, fuzzy
 msgid "Setup UI animations"
-msgstr "Activer la configuration actuelle"
+msgstr "Configurer votre positionneur"
 
 msgid "Setup hard disk"
 msgstr "Configurer un disque dur"
@@ -7470,6 +7498,9 @@ msgstr ""
 
 msgid "Social/Political/Economics"
 msgstr "Société/Politique/Economie"
+
+msgid "SocketMMI"
+msgstr ""
 
 msgid "SoftCam / CI"
 msgstr "Lecteur de cartes (Softcam/CI)"
@@ -7963,7 +7994,7 @@ msgstr ""
 "\n"
 "Traducteur: Pr2\n"
 "Support: www.openpli.org\n"
-"Dernière MAJ: 12-05-2019"
+"Dernière MAJ: 21-05-2019"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "Fichier TS trop grand pour le niveau 1 ISO9660!"
@@ -10218,6 +10249,10 @@ msgstr "Style liste standard"
 msgid "list style single line"
 msgstr "Style liste ligne unique"
 
+#, fuzzy
+msgid "listens to hotplug events"
+msgstr "Alignement des évènements"
+
 msgid "literature"
 msgstr "Littérature"
 
@@ -10633,13 +10668,13 @@ msgstr "Retour rapide"
 msgid "skip forward"
 msgstr "Avance rapide"
 
-#, fuzzy, python-format
+#, python-format
 msgid "slot%s - %s"
-msgstr "slot%s - %s mode 1"
+msgstr "slot%s - %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "slot%s - %s (current image)"
-msgstr "slot%s - %s mode 1 (image courante)"
+msgstr "slot%s - %s (image courante)"
 
 #, python-format
 msgid "slot%s - %s (current image) with, backup"
