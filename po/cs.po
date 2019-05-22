@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 20:30+0430\n"
+"POT-Creation-Date: 2019-05-22 08:13+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -444,6 +444,11 @@ msgid "%s %s free disk space"
 msgstr "%s %s volného místa"
 
 #
+#, fuzzy, python-format
+msgid "%s ( %s Cards )"
+msgstr "%s (%s)\n"
+
+#
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
@@ -477,6 +482,13 @@ msgstr "%s/%s: %s"
 #, python-format
 msgid "%s:%s"
 msgstr "%s:%s"
+
+#, fuzzy
+msgid "( All readers)"
+msgstr "všechny kategorie"
+
+msgid "(Show only reader:"
+msgstr ""
 
 msgid "(VU+ type)"
 msgstr "(VU+ typ)"
@@ -1007,6 +1019,10 @@ msgstr "Další možnosti motoru umožňují zadat podrobnosti z dokumentace k V
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move to another satellite."
 msgstr "Další možnosti motoru Vám umožňují zadat podrobnosti z dokumentace k Vašemu motoru, takže enigma dokáže zjistit, jak dlouho bude trvat přesun na další satelit."
 
+#, fuzzy
+msgid "Address"
+msgstr "IP adresa"
+
 #
 msgid "Adjust 3D settings"
 msgstr "Seřídit 3D nastavení"
@@ -1450,6 +1466,9 @@ msgstr "Automatické záložky"
 msgid "Automatic scan"
 msgstr "Automatické prohledávání"
 
+msgid "Automatically update Client/Server View?"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Autostart"
@@ -1727,6 +1746,12 @@ msgstr "C"
 msgid "C-Band"
 msgstr "C-Band"
 
+msgid "CAID"
+msgstr ""
+
+msgid "CAID:SrvID"
+msgstr ""
+
 msgid "CH"
 msgstr "K"
 
@@ -1872,6 +1897,14 @@ msgstr "Kapacita: "
 
 #
 msgid "Card"
+msgstr "Karta"
+
+msgid "Card infos (CCcam-Reader)"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Cards:"
 msgstr "Karta"
 
 msgid "Cascade PiP"
@@ -2080,8 +2113,15 @@ msgstr "Smazat log"
 msgid "Clear playlist"
 msgstr "Vymazat playlist"
 
+#, python-format
+msgid "Client Info ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Client is streaming from this box!"
 msgstr "Klient streamuje z tohoto přijímače!"
+
+msgid "Clients"
+msgstr ""
 
 #
 msgid "Close"
@@ -3137,6 +3177,25 @@ msgstr "Východní"
 msgid "ECM Info"
 msgstr "ECM Info"
 
+msgid "ECM Statistics"
+msgstr ""
+
+#
+#, fuzzy
+msgid "ECM Time"
+msgstr "Čas"
+
+msgid "ECM avg"
+msgstr ""
+
+msgid "ECM last"
+msgstr ""
+
+#
+#, fuzzy
+msgid "ECM-Time"
+msgstr "Čas"
+
 msgid "EPG"
 msgstr "EPG"
 
@@ -3790,6 +3849,11 @@ msgstr "Fidži"
 msgid "File appears to be busy.\n"
 msgstr "Soubor se zdá být zaneprázdněn.\n"
 
+msgid ""
+"File oscam.conf not found.\n"
+"Please enter username/password manually."
+msgstr ""
+
 msgid "Filename"
 msgstr "Název souboru"
 
@@ -4307,6 +4371,9 @@ msgstr "Honduras"
 msgid "Hong Kong"
 msgstr "Hongkong"
 
+msgid "Hops"
+msgstr ""
+
 #
 msgid "Horizontal"
 msgstr "Horizontální"
@@ -4809,6 +4876,9 @@ msgstr "OSD 3D nastavení"
 msgid "LNB"
 msgstr "LNB"
 
+msgid "Label"
+msgstr ""
+
 #
 msgid "Language"
 msgstr "Jazyk"
@@ -4822,6 +4892,11 @@ msgstr "Laos"
 
 msgid "Large"
 msgstr "Velké"
+
+#
+#, fuzzy
+msgid "Last Req."
+msgstr "Poslední rychlost"
 
 #
 msgid "Last config"
@@ -4996,6 +5071,9 @@ msgstr "Zachovat poměr"
 #
 msgid "Lock:"
 msgstr "Zámek:"
+
+msgid "Log"
+msgstr ""
 
 #
 msgid "Log results to /tmp"
@@ -5832,6 +5910,9 @@ msgstr "Požadavek OSD názvu"
 msgid "OSD transparency"
 msgstr "Průhlednost OSD"
 
+msgid "OScam Info"
+msgstr ""
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -5913,6 +5994,17 @@ msgstr "Obvyklý"
 msgid "Original"
 msgstr "Původní"
 
+#, fuzzy
+msgid "Oscam Info - Configuration"
+msgstr "Konfigurace tuneru"
+
+msgid "Oscam Info - Main Menu"
+msgstr ""
+
+#, python-format
+msgid "Oscam Log ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Other"
 msgstr "Další"
 
@@ -5955,6 +6047,10 @@ msgstr "PGS soubor"
 
 msgid "PGS file"
 msgstr "PGS soubor"
+
+#, fuzzy
+msgid "PID"
+msgstr "PDC"
 
 msgid "PIP"
 msgstr ""
@@ -6035,6 +6131,10 @@ msgid "Passthrough"
 msgstr ""
 
 msgid "Password"
+msgstr "Heslo"
+
+#, fuzzy
+msgid "Password (httpwd)"
 msgstr "Heslo"
 
 #
@@ -6160,7 +6260,17 @@ msgid "Please change recording endtime"
 msgstr "Změňte dobu ukončení nahrávání"
 
 #
+#, fuzzy
+msgid "Please choose CCcam-Reader"
+msgstr "Vyberte si z nabídky rozšíření..."
+
+#
 msgid "Please choose an extension..."
+msgstr "Vyberte si z nabídky rozšíření..."
+
+#
+#, fuzzy
+msgid "Please choose reader"
 msgstr "Vyberte si z nabídky rozšíření..."
 
 #
@@ -6646,12 +6756,20 @@ msgstr "  Standby/restart"
 msgid "Protect timer menu"
 msgstr "  Časovač"
 
+msgid "Protocol"
+msgstr ""
+
 #
 msgid "Provider"
 msgstr "Poskytovatel"
 
 #
 msgid "Providers"
+msgstr "Poskytovatelé"
+
+#
+#, fuzzy
+msgid "Providers: "
 msgstr "Poskytovatelé"
 
 msgid "Puerto Rico"
@@ -6715,6 +6833,15 @@ msgstr "hodnocení určeno vysíláním - %d"
 
 msgid "Rating undefined"
 msgstr "hodnocení neurčeno"
+
+msgid "Read Userdata from oscam.conf"
+msgstr ""
+
+msgid "Reader"
+msgstr ""
+
+msgid "Reader Statistics"
+msgstr ""
 
 #
 #, fuzzy
@@ -7013,6 +7140,9 @@ msgstr "Nastavit pokročilá nastavení videa na výchozí nastavení?"
 #
 msgid "Reset video enhancement settings to your last configuration?"
 msgstr "Nastavit pokročilá nastavení videa na Vaši poslední konfiguraci?"
+
+msgid "Reshare"
+msgstr ""
 
 #
 msgid "Resolution"
@@ -7840,6 +7970,24 @@ msgstr "Srbskp"
 msgid "Serbian"
 msgstr "Srbsky"
 
+#, fuzzy
+msgid "Serv.Name"
+msgstr "Název programu"
+
+#, python-format
+msgid "Server Info ( Oscam-Version: %s )"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Server:"
+msgstr "O programu"
+
+#
+#, fuzzy
+msgid "Servers"
+msgstr "Programy"
+
 #
 msgid "Service"
 msgstr "O programu"
@@ -8058,11 +8206,20 @@ msgstr "Krátké názvy souborů"
 msgid "Show"
 msgstr "Zobrazit"
 
+#
+#, fuzzy
+msgid "Show /tmp/ecm.info"
+msgstr "Zobrazit info"
+
 msgid "Show Audioselection"
 msgstr "Nastavení zvuku"
 
 msgid "Show CI messages"
 msgstr "Zobrazovat CI zprávy"
+
+#, fuzzy
+msgid "Show Clients"
+msgstr "Nahrané soubory"
 
 #
 msgid "Show EPG for current channel..."
@@ -8078,8 +8235,16 @@ msgstr "zábava"
 msgid "Show InfoBar"
 msgstr "Zobrazit infobar"
 
+#
+#, fuzzy
+msgid "Show Log"
+msgstr "Zobrazit info"
+
 msgid "Show PIP"
 msgstr "Zobrazit PiP"
+
+msgid "Show Readers/Proxies"
+msgstr ""
 
 #
 msgid "Show WLAN status"
@@ -8655,6 +8820,9 @@ msgstr "Start se seznamem"
 #
 msgid "Starting on"
 msgstr "Začíná"
+
+msgid "Status"
+msgstr ""
 
 #
 msgid "Step east"
@@ -9628,6 +9796,9 @@ msgstr "Tonga"
 msgid "Top and bottom"
 msgstr "Nahoru a dolů"
 
+msgid "Total"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr "Celkový počet klientů ve streamu: %d (%s)"
@@ -9938,6 +10109,11 @@ msgstr "Dokončeno!"
 msgid "Update has completed."
 msgstr "Aktualizace je dokončena."
 
+#
+#, fuzzy
+msgid "Update interval (in seconds)"
+msgstr "Interval prezentace (sek.)"
+
 msgid ""
 "Update succeeded!\n"
 "Your Bootloader is now up-to-date!"
@@ -10055,6 +10231,9 @@ msgstr "Uživatelem definovaný transpondér"
 
 msgid "User interface"
 msgstr "Uživatelské rozhraní"
+
+msgid "Username (httpuser)"
+msgstr ""
 
 #, python-format
 msgid "Using LNB %d"
@@ -11589,6 +11768,14 @@ msgstr "hudba/balet/tanec (obecně)"
 msgid "musical/opera"
 msgstr "muzikál/opera"
 
+#
+#, fuzzy
+msgid "n/A"
+msgstr "N/A"
+
+msgid "n/a"
+msgstr ""
+
 msgid "nature/animals/environment"
 msgstr "příroda/zvířata/životní prostředí"
 
@@ -11719,6 +11906,11 @@ msgstr "Původní"
 
 msgid "original language"
 msgstr "původní jazyk"
+
+#
+#, fuzzy
+msgid "oscam webif disabled"
+msgstr "Zakázat vynucení"
 
 #
 msgid "pass"

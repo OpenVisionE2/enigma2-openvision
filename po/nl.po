@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 20:30+0430\n"
+"POT-Creation-Date: 2019-05-22 08:13+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -408,6 +408,10 @@ msgstr "%s %d.%d"
 msgid "%s %s free disk space"
 msgstr "%s %s beschikbare schijfruimte"
 
+#, fuzzy, python-format
+msgid "%s ( %s Cards )"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
@@ -438,6 +442,13 @@ msgstr "%s/%s: %s"
 #, python-format
 msgid "%s:%s"
 msgstr "%s:%s"
+
+#, fuzzy
+msgid "( All readers)"
+msgstr "Alle leeftijden"
+
+msgid "(Show only reader:"
+msgstr ""
 
 msgid "(VU+ type)"
 msgstr "(VU+ type)"
@@ -892,6 +903,10 @@ msgstr "Met aanvullende motoropties kunt u details van de specificaties uw motor
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move to another satellite."
 msgstr "Met aanvullende motoropties kunt u details van de specificaties van uw motor invoeren waarmee Enigma kan bepalen hoe lang het duurt om naar een andere satelliet te switchen."
 
+#, fuzzy
+msgid "Address"
+msgstr "IP-adres:"
+
 msgid "Adjust 3D settings"
 msgstr "3D instellingen aanpassen"
 
@@ -1277,6 +1292,9 @@ msgstr "Automatische bladwijzers"
 msgid "Automatic scan"
 msgstr "Automatisch zoeken"
 
+msgid "Automatically update Client/Server View?"
+msgstr ""
+
 #, fuzzy
 msgid "Autostart"
 msgstr "start zodadelijk"
@@ -1524,6 +1542,12 @@ msgstr "C"
 msgid "C-Band"
 msgstr "C-Band"
 
+msgid "CAID"
+msgstr ""
+
+msgid "CAID:SrvID"
+msgstr ""
+
 msgid "CH"
 msgstr "CH"
 
@@ -1658,6 +1682,13 @@ msgid "Capacity: "
 msgstr "Capaciteit: "
 
 msgid "Card"
+msgstr "Kaart"
+
+msgid "Card infos (CCcam-Reader)"
+msgstr ""
+
+#, fuzzy
+msgid "Cards:"
 msgstr "Kaart"
 
 msgid "Cascade PiP"
@@ -1842,8 +1873,15 @@ msgstr "Log wissen"
 msgid "Clear playlist"
 msgstr "Afspeellijst leeg maken"
 
+#, python-format
+msgid "Client Info ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Client is streaming from this box!"
 msgstr "Er wordt momenteel gestreamd vanaf deze box!"
+
+msgid "Clients"
+msgstr ""
 
 msgid "Close"
 msgstr "Sluiten"
@@ -2756,6 +2794,23 @@ msgstr "O"
 msgid "ECM Info"
 msgstr "ECM info"
 
+msgid "ECM Statistics"
+msgstr ""
+
+#, fuzzy
+msgid "ECM Time"
+msgstr "Tijd"
+
+msgid "ECM avg"
+msgstr ""
+
+msgid "ECM last"
+msgstr ""
+
+#, fuzzy
+msgid "ECM-Time"
+msgstr "Tijd"
+
 msgid "EPG"
 msgstr "EPG"
 
@@ -3341,6 +3396,11 @@ msgstr "Fiji"
 msgid "File appears to be busy.\n"
 msgstr "Bestand mogelijk in gebruik door ander proces.\n"
 
+msgid ""
+"File oscam.conf not found.\n"
+"Please enter username/password manually."
+msgstr ""
+
 msgid "Filename"
 msgstr "Bestandsnaam"
 
@@ -3810,6 +3870,9 @@ msgstr "Honduras"
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
+msgid "Hops"
+msgstr ""
+
 msgid "Horizontal"
 msgstr "Horizontaal"
 
@@ -4255,6 +4318,9 @@ msgstr "OSD 3D instelling"
 msgid "LNB"
 msgstr "LNB"
 
+msgid "Label"
+msgstr ""
+
 msgid "Language"
 msgstr "Taal"
 
@@ -4266,6 +4332,10 @@ msgstr "Laos (Volksrepubliek)"
 
 msgid "Large"
 msgstr "Groot"
+
+#, fuzzy
+msgid "Last Req."
+msgstr "Laatste snelheid"
 
 msgid "Last config"
 msgstr "Laatste configuratie"
@@ -4411,6 +4481,9 @@ msgstr "Lock verhouding"
 
 msgid "Lock:"
 msgstr "Lock:"
+
+msgid "Log"
+msgstr ""
 
 msgid "Log results to /tmp"
 msgstr "Log resultaat naar /tmp"
@@ -5136,6 +5209,9 @@ msgstr "OSD naam aanvragen"
 msgid "OSD transparency"
 msgstr "OSD transparantie"
 
+msgid "OScam Info"
+msgstr ""
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -5208,6 +5284,17 @@ msgstr "Gewone"
 msgid "Original"
 msgstr "Origineel"
 
+#, fuzzy
+msgid "Oscam Info - Configuration"
+msgstr "Tunerconfiguratie"
+
+msgid "Oscam Info - Main Menu"
+msgstr ""
+
+#, python-format
+msgid "Oscam Log ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Other"
 msgstr "Anders"
 
@@ -5246,6 +5333,10 @@ msgstr "PGS bestand"
 
 msgid "PGS file"
 msgstr "PGS bestand"
+
+#, fuzzy
+msgid "PID"
+msgstr "PDC"
 
 msgid "PIP"
 msgstr ""
@@ -5318,6 +5409,10 @@ msgid "Passthrough"
 msgstr ""
 
 msgid "Password"
+msgstr "Wachtwoord"
+
+#, fuzzy
+msgid "Password (httpwd)"
 msgstr "Wachtwoord"
 
 msgid "Pause"
@@ -5423,7 +5518,15 @@ msgstr "Voeg aub titels toe aan de compilatie"
 msgid "Please change recording endtime"
 msgstr "Wijzig de opname-eindtijd aub."
 
+#, fuzzy
+msgid "Please choose CCcam-Reader"
+msgstr "Kies een plugin aub..."
+
 msgid "Please choose an extension..."
+msgstr "Kies een plugin aub..."
+
+#, fuzzy
+msgid "Please choose reader"
 msgstr "Kies een plugin aub..."
 
 msgid ""
@@ -5829,10 +5932,17 @@ msgstr "Beveilig standby menu"
 msgid "Protect timer menu"
 msgstr "Beveilig timer menu"
 
+msgid "Protocol"
+msgstr ""
+
 msgid "Provider"
 msgstr "Provider"
 
 msgid "Providers"
+msgstr "Providers"
+
+#, fuzzy
+msgid "Providers: "
 msgstr "Providers"
 
 msgid "Puerto Rico"
@@ -5887,6 +5997,15 @@ msgstr "Beoordeling door provider - %d"
 
 msgid "Rating undefined"
 msgstr "Beoordeling niet gedefinieerd"
+
+msgid "Read Userdata from oscam.conf"
+msgstr ""
+
+msgid "Reader"
+msgstr ""
+
+msgid "Reader Statistics"
+msgstr ""
 
 #, fuzzy
 msgid "Really WOL now?"
@@ -6140,6 +6259,9 @@ msgstr "Herstel videoverbetering-instellingen naar de standaard?"
 
 msgid "Reset video enhancement settings to your last configuration?"
 msgstr "Herstel videoverbetering-instellingen naar de laatste configuratie?"
+
+msgid "Reshare"
+msgstr ""
 
 msgid "Resolution"
 msgstr "Resolutie"
@@ -6858,6 +6980,22 @@ msgstr "Servië"
 msgid "Serbian"
 msgstr "Servisch"
 
+#, fuzzy
+msgid "Serv.Name"
+msgstr "Zendernaam"
+
+#, python-format
+msgid "Server Info ( Oscam-Version: %s )"
+msgstr ""
+
+#, fuzzy
+msgid "Server:"
+msgstr "Zender"
+
+#, fuzzy
+msgid "Servers"
+msgstr "Zenders"
+
 msgid "Service"
 msgstr "Zender"
 
@@ -7054,11 +7192,19 @@ msgstr "Korte bestandsnamen"
 msgid "Show"
 msgstr "Toon"
 
+#, fuzzy
+msgid "Show /tmp/ecm.info"
+msgstr "Toon de informatie"
+
 msgid "Show Audioselection"
 msgstr "Toon de audioselectie"
 
 msgid "Show CI messages"
 msgstr "CI berichten tonen"
+
+#, fuzzy
+msgid "Show Clients"
+msgstr "Toon de films"
 
 msgid "Show EPG for current channel..."
 msgstr "Toon de EPG van de huidige zender"
@@ -7072,8 +7218,15 @@ msgstr "Show/Quiz"
 msgid "Show InfoBar"
 msgstr "Toon de informatiebalk"
 
+#, fuzzy
+msgid "Show Log"
+msgstr "Toon de informatie"
+
 msgid "Show PIP"
 msgstr "Toon de PIP"
+
+msgid "Show Readers/Proxies"
+msgstr ""
 
 msgid "Show WLAN status"
 msgstr "WIFIstatus weergeven"
@@ -7573,6 +7726,9 @@ msgstr "Start met een zichtbare lijst"
 
 msgid "Starting on"
 msgstr "Start op"
+
+msgid "Status"
+msgstr ""
 
 msgid "Step east"
 msgstr "Stap > oost"
@@ -8462,6 +8618,9 @@ msgstr "Tonga"
 msgid "Top and bottom"
 msgstr "Boven en onderzijde"
 
+msgid "Total"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr "Totaal aantal streamende clients: %d (%s)"
@@ -8732,6 +8891,10 @@ msgstr "Voortgang voltooid!"
 msgid "Update has completed."
 msgstr "De update is gereed."
 
+#, fuzzy
+msgid "Update interval (in seconds)"
+msgstr "Diavoorstelling interval in (sec.)"
+
 msgid ""
 "Update succeeded!\n"
 "Your Bootloader is now up-to-date!"
@@ -8833,6 +8996,9 @@ msgstr "Gebruikergedefinieerde transponder"
 
 msgid "User interface"
 msgstr "Gebruikersinterface"
+
+msgid "Username (httpuser)"
+msgstr ""
 
 #, python-format
 msgid "Using LNB %d"
@@ -10186,6 +10352,13 @@ msgstr "Muziek/Ballet/Dans (Algemeen)"
 msgid "musical/opera"
 msgstr "Musical/Opera"
 
+#, fuzzy
+msgid "n/A"
+msgstr "0.0 "
+
+msgid "n/a"
+msgstr ""
+
 msgid "nature/animals/environment"
 msgstr "Natuur/Dieren/Milieu"
 
@@ -10294,6 +10467,10 @@ msgstr "Origineel"
 
 msgid "original language"
 msgstr "originele taal"
+
+#, fuzzy
+msgid "oscam webif disabled"
+msgstr "geforceerd uitgeschakeld"
 
 msgid "pass"
 msgstr "passage"

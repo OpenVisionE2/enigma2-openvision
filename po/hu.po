@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 20:30+0430\n"
+"POT-Creation-Date: 2019-05-22 08:13+0430\n"
 "PO-Revision-Date: 2019-04-23 16:45+0200\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -407,6 +407,10 @@ msgstr "%s %d.%d"
 msgid "%s %s free disk space"
 msgstr "%s %s szabad tárterület"
 
+#, fuzzy, python-format
+msgid "%s ( %s Cards )"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
@@ -437,6 +441,13 @@ msgstr "%s/%s: %s"
 #, python-format
 msgid "%s:%s"
 msgstr "%s:%s"
+
+#, fuzzy
+msgid "( All readers)"
+msgstr "Minden korosztály"
+
+msgid "(Show only reader:"
+msgstr ""
 
 msgid "(VU+ type)"
 msgstr "(VU+ típus)"
@@ -891,6 +902,10 @@ msgstr "A további motorbeállítások lehetővé teszik az adott motor technika
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move to another satellite."
 msgstr "A további motorbeállítások lehetővé teszik az adott motor technikai részleteinek megadását, így az enigma ki tudja számítani a műholdváltás idejét."
 
+#, fuzzy
+msgid "Address"
+msgstr "IP cím"
+
 msgid "Adjust 3D settings"
 msgstr "3D beállítások"
 
@@ -1277,6 +1292,9 @@ msgstr "Automatikus könyvjelzők"
 msgid "Automatic scan"
 msgstr "Automatikus keresés"
 
+msgid "Automatically update Client/Server View?"
+msgstr ""
+
 #, fuzzy
 msgid "Autostart"
 msgstr "az indításról"
@@ -1524,6 +1542,12 @@ msgstr "C"
 msgid "C-Band"
 msgstr "C-sáv"
 
+msgid "CAID"
+msgstr ""
+
+msgid "CAID:SrvID"
+msgstr ""
+
 msgid "CH"
 msgstr "CH"
 
@@ -1658,6 +1682,13 @@ msgid "Capacity: "
 msgstr "Kapacitás: "
 
 msgid "Card"
+msgstr "Kártya"
+
+msgid "Card infos (CCcam-Reader)"
+msgstr ""
+
+#, fuzzy
+msgid "Cards:"
 msgstr "Kártya"
 
 msgid "Cascade PiP"
@@ -1842,8 +1873,15 @@ msgstr "Napló törlése"
 msgid "Clear playlist"
 msgstr "Lejátszási lista törlése"
 
+#, python-format
+msgid "Client Info ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Client is streaming from this box!"
 msgstr "Van streamelő kliens erről a boxról!"
+
+msgid "Clients"
+msgstr ""
 
 msgid "Close"
 msgstr "Bezárás"
@@ -2741,6 +2779,23 @@ msgstr "K"
 msgid "ECM Info"
 msgstr "ECM információ"
 
+msgid "ECM Statistics"
+msgstr ""
+
+#, fuzzy
+msgid "ECM Time"
+msgstr "Idő"
+
+msgid "ECM avg"
+msgstr ""
+
+msgid "ECM last"
+msgstr ""
+
+#, fuzzy
+msgid "ECM-Time"
+msgstr "Idő"
+
 msgid "EPG"
 msgstr "EPG"
 
@@ -3317,6 +3372,11 @@ msgstr "Fidzsi"
 msgid "File appears to be busy.\n"
 msgstr "A fájl használatban van.\n"
 
+msgid ""
+"File oscam.conf not found.\n"
+"Please enter username/password manually."
+msgstr ""
+
 msgid "Filename"
 msgstr "Fájlnév"
 
@@ -3786,6 +3846,9 @@ msgstr "Honduras"
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
+msgid "Hops"
+msgstr ""
+
 msgid "Horizontal"
 msgstr "Horizontális"
 
@@ -4227,6 +4290,9 @@ msgstr "OSD 3D beállítások"
 msgid "LNB"
 msgstr "Fej"
 
+msgid "Label"
+msgstr ""
+
 msgid "Language"
 msgstr "Kezelőfelület nyelve"
 
@@ -4238,6 +4304,10 @@ msgstr "Laosz"
 
 msgid "Large"
 msgstr "Nagy"
+
+#, fuzzy
+msgid "Last Req."
+msgstr "Utolsó sebesség"
 
 msgid "Last config"
 msgstr "Utolsó konfiguráció"
@@ -4383,6 +4453,9 @@ msgstr "Hangolási arány"
 
 msgid "Lock:"
 msgstr "Hangolás:"
+
+msgid "Log"
+msgstr ""
 
 msgid "Log results to /tmp"
 msgstr "Az eredmények naplózása a /tmp könyvtárba"
@@ -5105,6 +5178,9 @@ msgstr "OSD név kérés"
 msgid "OSD transparency"
 msgstr "OSD áttetszőség"
 
+msgid "OScam Info"
+msgstr ""
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -5177,6 +5253,17 @@ msgstr "Szokásos"
 msgid "Original"
 msgstr "Eredeti"
 
+#, fuzzy
+msgid "Oscam Info - Configuration"
+msgstr "Tuner beállítás"
+
+msgid "Oscam Info - Main Menu"
+msgstr ""
+
+#, python-format
+msgid "Oscam Log ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Other"
 msgstr "Egyéb"
 
@@ -5215,6 +5302,10 @@ msgstr "PGS fájl"
 
 msgid "PGS file"
 msgstr "PGS fájl"
+
+#, fuzzy
+msgid "PID"
+msgstr "PDC"
 
 msgid "PIP"
 msgstr ""
@@ -5287,6 +5378,10 @@ msgid "Passthrough"
 msgstr ""
 
 msgid "Password"
+msgstr "Jelszó"
+
+#, fuzzy
+msgid "Password (httpwd)"
 msgstr "Jelszó"
 
 msgid "Pause"
@@ -5392,7 +5487,15 @@ msgstr "Kérem, adjon a válogatáshoz hozzá tételeket."
 msgid "Please change recording endtime"
 msgstr "Kérem, változtassa meg a felvétel vége idejét"
 
+#, fuzzy
+msgid "Please choose CCcam-Reader"
+msgstr "Kérem, válasszon egy funkciót..."
+
 msgid "Please choose an extension..."
+msgstr "Kérem, válasszon egy funkciót..."
+
+#, fuzzy
+msgid "Please choose reader"
 msgstr "Kérem, válasszon egy funkciót..."
 
 msgid ""
@@ -5798,10 +5901,17 @@ msgstr "Készenléti menü védelme"
 msgid "Protect timer menu"
 msgstr "Időzítő menü védelme"
 
+msgid "Protocol"
+msgstr ""
+
 msgid "Provider"
 msgstr "Szolgáltató"
 
 msgid "Providers"
+msgstr "Szolgáltatók"
+
+#, fuzzy
+msgid "Providers: "
 msgstr "Szolgáltatók"
 
 msgid "Puerto Rico"
@@ -5856,6 +5966,15 @@ msgstr "Adás besorolása - %d"
 
 msgid "Rating undefined"
 msgstr "Nincs besorolás"
+
+msgid "Read Userdata from oscam.conf"
+msgstr ""
+
+msgid "Reader"
+msgstr ""
+
+msgid "Reader Statistics"
+msgstr ""
 
 #, fuzzy
 msgid "Really WOL now?"
@@ -6105,6 +6224,9 @@ msgstr "Videó-beállítások visszaállítása a gyári értékekre?"
 
 msgid "Reset video enhancement settings to your last configuration?"
 msgstr "Videó-beállítások visszaállítása az előbbi értékekre?"
+
+msgid "Reshare"
+msgstr ""
 
 msgid "Resolution"
 msgstr "Felbontás"
@@ -6821,6 +6943,22 @@ msgstr "Szerbia"
 msgid "Serbian"
 msgstr "Szerb"
 
+#, fuzzy
+msgid "Serv.Name"
+msgstr "Csatornanév"
+
+#, python-format
+msgid "Server Info ( Oscam-Version: %s )"
+msgstr ""
+
+#, fuzzy
+msgid "Server:"
+msgstr "Csatorna információ"
+
+#, fuzzy
+msgid "Servers"
+msgstr "Csatornák"
+
 msgid "Service"
 msgstr "Csatorna információ"
 
@@ -7016,11 +7154,19 @@ msgstr "Rövid fájlnevek"
 msgid "Show"
 msgstr "Mutatás"
 
+#, fuzzy
+msgid "Show /tmp/ecm.info"
+msgstr "Info megjelenítése"
+
 msgid "Show Audioselection"
 msgstr "Hangsáv választásának megjelenítése"
 
 msgid "Show CI messages"
 msgstr "CI üzenetek mutatása"
+
+#, fuzzy
+msgid "Show Clients"
+msgstr "Filmek megjelenítése"
 
 msgid "Show EPG for current channel..."
 msgstr "Az aktuális csatorna EPG-jének megjelenítése..."
@@ -7034,8 +7180,15 @@ msgstr "Játék/Show"
 msgid "Show InfoBar"
 msgstr "Infobar megjelenítése"
 
+#, fuzzy
+msgid "Show Log"
+msgstr "Info megjelenítése"
+
 msgid "Show PIP"
 msgstr "Kép a képben megjelenítése"
+
+msgid "Show Readers/Proxies"
+msgstr ""
 
 msgid "Show WLAN status"
 msgstr "A vezeték nélküli hálózat állapotának megjelenítése"
@@ -7535,6 +7688,9 @@ msgstr "Indítás lista-nézettel"
 
 msgid "Starting on"
 msgstr "Mely dátumtól?"
+
+msgid "Status"
+msgstr ""
 
 msgid "Step east"
 msgstr "Léptetés kelet felé"
@@ -8408,6 +8564,9 @@ msgstr "Tonga"
 msgid "Top and bottom"
 msgstr "Teteje és Alja"
 
+msgid "Total"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr "Streamelő kliensek száma: %d (%s)"
@@ -8678,6 +8837,10 @@ msgstr "Végrehajtás befejezve!"
 msgid "Update has completed."
 msgstr "A frissítés elkészült."
 
+#, fuzzy
+msgid "Update interval (in seconds)"
+msgstr "Slideshow intervallum (mp.)"
+
 msgid ""
 "Update succeeded!\n"
 "Your Bootloader is now up-to-date!"
@@ -8778,6 +8941,9 @@ msgstr "Alább beállított transzponderen"
 
 msgid "User interface"
 msgstr "Felhasználói felület"
+
+msgid "Username (httpuser)"
+msgstr ""
 
 #, python-format
 msgid "Using LNB %d"
@@ -10118,6 +10284,13 @@ msgstr "zene/balett/tánc (általános)"
 msgid "musical/opera"
 msgstr "musical/opera"
 
+#, fuzzy
+msgid "n/A"
+msgstr "N/A"
+
+msgid "n/a"
+msgstr ""
+
 msgid "nature/animals/environment"
 msgstr "természet/állatvilág/környezet"
 
@@ -10226,6 +10399,10 @@ msgstr "eredeti"
 
 msgid "original language"
 msgstr "eredeti nyelv"
+
+#, fuzzy
+msgid "oscam webif disabled"
+msgstr "kényszerített tiltás"
 
 msgid "pass"
 msgstr "művelet"

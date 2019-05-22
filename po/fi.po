@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 20:30+0430\n"
+"POT-Creation-Date: 2019-05-22 08:13+0430\n"
 "PO-Revision-Date: 2019-02-13 20:52+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -426,6 +426,10 @@ msgstr ""
 msgid "%s %s free disk space"
 msgstr "%s %s vapaata levytilaa"
 
+#, fuzzy, python-format
+msgid "%s ( %s Cards )"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
@@ -458,6 +462,13 @@ msgstr "%s/%s: %s"
 #, python-format
 msgid "%s:%s"
 msgstr "%s:%s"
+
+#, fuzzy
+msgid "( All readers)"
+msgstr "Kaikenikäisille"
+
+msgid "(Show only reader:"
+msgstr ""
 
 msgid "(VU+ type)"
 msgstr ""
@@ -971,6 +982,11 @@ msgstr ""
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move to another satellite."
 msgstr ""
 
+#
+#, fuzzy
+msgid "Address"
+msgstr "IP-osoite"
+
 msgid "Adjust 3D settings"
 msgstr "Säädä 3D-asetuksia"
 
@@ -1397,6 +1413,9 @@ msgstr "Automaattiset kirjanmerkit"
 msgid "Automatic scan"
 msgstr "Automaattihaku"
 
+msgid "Automatically update Client/Server View?"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Autostart"
@@ -1670,6 +1689,12 @@ msgstr "C"
 msgid "C-Band"
 msgstr "C-taajuusalue"
 
+msgid "CAID"
+msgstr ""
+
+msgid "CAID:SrvID"
+msgstr ""
+
 msgid "CH"
 msgstr "CH"
 
@@ -1814,6 +1839,14 @@ msgstr "Kapasiteetti: "
 
 #
 msgid "Card"
+msgstr "Kortti"
+
+msgid "Card infos (CCcam-Reader)"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Cards:"
 msgstr "Kortti"
 
 msgid "Cascade PiP"
@@ -2026,8 +2059,15 @@ msgstr "Tyhjennä loki"
 msgid "Clear playlist"
 msgstr "Tyhjennä soittolista"
 
+#, python-format
+msgid "Client Info ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Client is streaming from this box!"
 msgstr "Striimaus on käynnissä tältä laitteelta!"
+
+msgid "Clients"
+msgstr ""
 
 #
 msgid "Close"
@@ -3050,6 +3090,25 @@ msgstr "E"
 msgid "ECM Info"
 msgstr "ECM tietoja"
 
+msgid "ECM Statistics"
+msgstr ""
+
+#
+#, fuzzy
+msgid "ECM Time"
+msgstr "Aika-asetukset"
+
+msgid "ECM avg"
+msgstr ""
+
+msgid "ECM last"
+msgstr ""
+
+#
+#, fuzzy
+msgid "ECM-Time"
+msgstr "Aika-asetukset"
+
 msgid "EPG"
 msgstr "Ohjelmaopas"
 
@@ -3673,6 +3732,11 @@ msgstr "Fiji"
 msgid "File appears to be busy.\n"
 msgstr "Tiedosto näyttää olevan käytössä.\n"
 
+msgid ""
+"File oscam.conf not found.\n"
+"Please enter username/password manually."
+msgstr ""
+
 #
 msgid "Filename"
 msgstr "Tiedostonnimi"
@@ -4183,6 +4247,9 @@ msgstr "Honduras"
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
+msgid "Hops"
+msgstr ""
+
 #
 msgid "Horizontal"
 msgstr "Horisontaali"
@@ -4675,6 +4742,9 @@ msgstr "3D kuva-asetukset"
 msgid "LNB"
 msgstr "LNB"
 
+msgid "Label"
+msgstr ""
+
 #
 msgid "Language"
 msgstr "Kielivalinta"
@@ -4688,6 +4758,11 @@ msgstr "Lao People's Democratic Republic"
 
 msgid "Large"
 msgstr "Suuri"
+
+#
+#, fuzzy
+msgid "Last Req."
+msgstr "Aikaisempi nopeus"
 
 #
 msgid "Last config"
@@ -4862,6 +4937,9 @@ msgstr "Lukitse kuvasuhde"
 
 msgid "Lock:"
 msgstr "Lukittu:"
+
+msgid "Log"
+msgstr ""
 
 msgid "Log results to /tmp"
 msgstr ""
@@ -5701,6 +5779,9 @@ msgstr "Kuvaruutunäytön nimipyyntö"
 msgid "OSD transparency"
 msgstr "Valikon läpinäkyvyys"
 
+msgid "OScam Info"
+msgstr ""
+
 msgid "OVR"
 msgstr ""
 
@@ -5777,6 +5858,17 @@ msgstr "Tavallinen"
 msgid "Original"
 msgstr "Alkuperäinen"
 
+#, fuzzy
+msgid "Oscam Info - Configuration"
+msgstr "Virittimien asetukset"
+
+msgid "Oscam Info - Main Menu"
+msgstr ""
+
+#, python-format
+msgid "Oscam Log ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Other"
 msgstr "Muu"
 
@@ -5816,6 +5908,10 @@ msgstr ""
 
 msgid "PGS file"
 msgstr "PGS-tiedosto"
+
+#, fuzzy
+msgid "PID"
+msgstr "PDC"
 
 msgid "PIP"
 msgstr ""
@@ -5895,6 +5991,11 @@ msgstr ""
 
 #
 msgid "Password"
+msgstr "Salasana"
+
+#
+#, fuzzy
+msgid "Password (httpwd)"
 msgstr "Salasana"
 
 #
@@ -6014,7 +6115,17 @@ msgid "Please change recording endtime"
 msgstr "Aseta tallennuksen päättymisaika"
 
 #
+#, fuzzy
+msgid "Please choose CCcam-Reader"
+msgstr "Valitse laajennus..."
+
+#
 msgid "Please choose an extension..."
+msgstr "Valitse laajennus..."
+
+#
+#, fuzzy
+msgid "Please choose reader"
 msgstr "Valitse laajennus..."
 
 #
@@ -6508,12 +6619,20 @@ msgstr "Suojaa valmiustilavalikko"
 msgid "Protect timer menu"
 msgstr "Suojaa ajastusvalikko"
 
+msgid "Protocol"
+msgstr ""
+
 #
 msgid "Provider"
 msgstr "Palveluntarjoaja"
 
 #
 msgid "Providers"
+msgstr "Palveluntarjoajat"
+
+#
+#, fuzzy
+msgid "Providers: "
 msgstr "Palveluntarjoajat"
 
 msgid "Puerto Rico"
@@ -6575,6 +6694,15 @@ msgstr "Kanavan määrittelemä ikäraja - %d"
 
 msgid "Rating undefined"
 msgstr "Ikärajaa ei määritelty"
+
+msgid "Read Userdata from oscam.conf"
+msgstr ""
+
+msgid "Reader"
+msgstr ""
+
+msgid "Reader Statistics"
+msgstr ""
 
 #
 #, fuzzy
@@ -6868,6 +6996,9 @@ msgstr "Nollaa kuvasäädöt oletusarvoihin?"
 #
 msgid "Reset video enhancement settings to your last configuration?"
 msgstr "Nollaa kuvasäädöt aikaisempiin arvoihin?"
+
+msgid "Reshare"
+msgstr ""
 
 #
 msgid "Resolution"
@@ -7680,6 +7811,24 @@ msgstr "Serbia"
 msgid "Serbian"
 msgstr "Serbia"
 
+#, fuzzy
+msgid "Serv.Name"
+msgstr "Kanavan nimi"
+
+#, python-format
+msgid "Server Info ( Oscam-Version: %s )"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Server:"
+msgstr "Kanava"
+
+#
+#, fuzzy
+msgid "Servers"
+msgstr "Palvelut"
+
 #
 msgid "Service"
 msgstr "Kanava"
@@ -7896,11 +8045,21 @@ msgstr "Lyhyet tiedostonimet"
 msgid "Show"
 msgstr "Näytä"
 
+#
+#, fuzzy
+msgid "Show /tmp/ecm.info"
+msgstr "Näytä tiedot"
+
 msgid "Show Audioselection"
 msgstr "Näytä ääniasetukset"
 
 msgid "Show CI messages"
 msgstr "Näytä CI:n ilmoitukset"
+
+#
+#, fuzzy
+msgid "Show Clients"
+msgstr "Näytä tallennukset"
 
 msgid "Show EPG for current channel..."
 msgstr "Näytä nykyisen kanavan ohjelmaopas..."
@@ -7914,8 +8073,16 @@ msgstr "Show Visailu"
 msgid "Show InfoBar"
 msgstr "Näytä tietopalkki"
 
+#
+#, fuzzy
+msgid "Show Log"
+msgstr "Näytä tiedot"
+
 msgid "Show PIP"
 msgstr "Näytä PiP"
+
+msgid "Show Readers/Proxies"
+msgstr ""
 
 #
 msgid "Show WLAN status"
@@ -8484,6 +8651,9 @@ msgstr "Käynnistä luettelotilaan"
 #
 msgid "Starting on"
 msgstr "Alkaen"
+
+msgid "Status"
+msgstr ""
 
 #
 msgid "Step east"
@@ -9452,6 +9622,9 @@ msgstr "Tonga"
 msgid "Top and bottom"
 msgstr "Ylä ja ala"
 
+msgid "Total"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr "Etäasiakkaita: %d (%s)"
@@ -9760,6 +9933,11 @@ msgstr "Tehtävä suoritettu, paina OK"
 msgid "Update has completed."
 msgstr "Päivitys on valmis."
 
+#
+#, fuzzy
+msgid "Update interval (in seconds)"
+msgstr "Kuvien näyttöaika (sekuntia)"
+
 msgid ""
 "Update succeeded!\n"
 "Your Bootloader is now up-to-date!"
@@ -9873,6 +10051,9 @@ msgstr "Käyttäjän määrittelemä lähetin"
 
 msgid "User interface"
 msgstr "Käyttöliittymä"
+
+msgid "Username (httpuser)"
+msgstr ""
 
 #, python-format
 msgid "Using LNB %d"
@@ -11367,6 +11548,14 @@ msgstr "musiikki/baletti/tanssi (yleinen)"
 msgid "musical/opera"
 msgstr "musikaali/ooppera"
 
+#
+#, fuzzy
+msgid "n/A"
+msgstr "Ei saatavilla"
+
+msgid "n/a"
+msgstr ""
+
 msgid "nature/animals/environment"
 msgstr "luonto/eläimet/ympäristö"
 
@@ -11492,6 +11681,10 @@ msgstr "Alkuperäinen"
 
 msgid "original language"
 msgstr "Alkuperäinen kieli"
+
+#, fuzzy
+msgid "oscam webif disabled"
+msgstr "Pois päältä"
 
 #
 msgid "pass"

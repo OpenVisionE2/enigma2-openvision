@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 20:30+0430\n"
+"POT-Creation-Date: 2019-05-22 08:13+0430\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -420,6 +420,10 @@ msgstr ""
 msgid "%s %s free disk space"
 msgstr "%s %s ledigt diskutrymme"
 
+#, fuzzy, python-format
+msgid "%s ( %s Cards )"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
@@ -450,6 +454,13 @@ msgstr "%s/%s: %s"
 
 #, python-format
 msgid "%s:%s"
+msgstr ""
+
+#, fuzzy
+msgid "( All readers)"
+msgstr "Alla åldersgrupper"
+
+msgid "(Show only reader:"
 msgstr ""
 
 #, fuzzy
@@ -978,6 +989,11 @@ msgstr ""
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move to another satellite."
 msgstr ""
 
+#
+#, fuzzy
+msgid "Address"
+msgstr "IP adress"
+
 msgid "Adjust 3D settings"
 msgstr "Justera 3D-inställningar"
 
@@ -1419,6 +1435,9 @@ msgstr "Automatisk Sökning"
 msgid "Automatic scan"
 msgstr "Automatisk sökning"
 
+msgid "Automatically update Client/Server View?"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Autostart"
@@ -1702,6 +1721,12 @@ msgstr "C"
 msgid "C-Band"
 msgstr "C-Band"
 
+msgid "CAID"
+msgstr ""
+
+msgid "CAID:SrvID"
+msgstr ""
+
 msgid "CH"
 msgstr ""
 
@@ -1845,6 +1870,14 @@ msgstr "Kapacitet : "
 
 #
 msgid "Card"
+msgstr "Kort"
+
+msgid "Card infos (CCcam-Reader)"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Cards:"
 msgstr "Kort"
 
 msgid "Cascade PiP"
@@ -2054,7 +2087,14 @@ msgstr "Rensa logg"
 msgid "Clear playlist"
 msgstr "Rensa spellista"
 
+#, python-format
+msgid "Client Info ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Client is streaming from this box!"
+msgstr ""
+
+msgid "Clients"
 msgstr ""
 
 #
@@ -3108,6 +3148,25 @@ msgstr "E"
 msgid "ECM Info"
 msgstr "Info"
 
+msgid "ECM Statistics"
+msgstr ""
+
+#
+#, fuzzy
+msgid "ECM Time"
+msgstr "Tid"
+
+msgid "ECM avg"
+msgstr ""
+
+msgid "ECM last"
+msgstr ""
+
+#
+#, fuzzy
+msgid "ECM-Time"
+msgstr "Tid"
+
 msgid "EPG"
 msgstr "EPG"
 
@@ -3747,6 +3806,11 @@ msgstr ""
 msgid "File appears to be busy.\n"
 msgstr "Filen verkar vara upptagen.\n"
 
+msgid ""
+"File oscam.conf not found.\n"
+"Please enter username/password manually."
+msgstr ""
+
 msgid "Filename"
 msgstr "Filnamn"
 
@@ -4273,6 +4337,9 @@ msgstr ""
 msgid "Hong Kong"
 msgstr ""
 
+msgid "Hops"
+msgstr ""
+
 msgid "Horizontal"
 msgstr "Horisontal"
 
@@ -4771,6 +4838,9 @@ msgstr "OSD 3D inställning"
 msgid "LNB"
 msgstr "LNB"
 
+msgid "Label"
+msgstr ""
+
 #
 msgid "Language"
 msgstr "Språk"
@@ -4784,6 +4854,11 @@ msgstr ""
 
 msgid "Large"
 msgstr "Stor"
+
+#
+#, fuzzy
+msgid "Last Req."
+msgstr "Föregående hastighet"
 
 #
 msgid "Last config"
@@ -4960,6 +5035,9 @@ msgstr "Lås ratio"
 #
 msgid "Lock:"
 msgstr "Lås :"
+
+msgid "Log"
+msgstr ""
 
 msgid "Log results to /tmp"
 msgstr "Logga resultat till /tmp"
@@ -5794,6 +5872,9 @@ msgstr "OSD namnförfrågan"
 msgid "OSD transparency"
 msgstr "OSD transparens"
 
+msgid "OScam Info"
+msgstr ""
+
 msgid "OVR"
 msgstr ""
 
@@ -5873,6 +5954,17 @@ msgstr ""
 msgid "Original"
 msgstr "Original"
 
+#, fuzzy
+msgid "Oscam Info - Configuration"
+msgstr "Tunerkonfiguration"
+
+msgid "Oscam Info - Main Menu"
+msgstr ""
+
+#, python-format
+msgid "Oscam Log ( Oscam-Version: %s )"
+msgstr ""
+
 msgid "Other"
 msgstr "Annan"
 
@@ -5914,6 +6006,10 @@ msgstr "PGS fil"
 
 msgid "PGS file"
 msgstr "PGS fil"
+
+#, fuzzy
+msgid "PID"
+msgstr "PLP ID"
 
 msgid "PIP"
 msgstr ""
@@ -5995,6 +6091,9 @@ msgid "Passthrough"
 msgstr ""
 
 msgid "Password"
+msgstr ""
+
+msgid "Password (httpwd)"
 msgstr ""
 
 #
@@ -6118,7 +6217,17 @@ msgid "Please change recording endtime"
 msgstr "Vänligen ändra inspelningens sluttid"
 
 #
+#, fuzzy
+msgid "Please choose CCcam-Reader"
+msgstr "Vänligen välj en utökning..."
+
+#
 msgid "Please choose an extension..."
+msgstr "Vänligen välj en utökning..."
+
+#
+#, fuzzy
+msgid "Please choose reader"
 msgstr "Vänligen välj en utökning..."
 
 msgid ""
@@ -6604,12 +6713,20 @@ msgstr "Skydda vilolägesmeny"
 msgid "Protect timer menu"
 msgstr "Skydda timermeny"
 
+msgid "Protocol"
+msgstr ""
+
 #
 msgid "Provider"
 msgstr "Operatör"
 
 #
 msgid "Providers"
+msgstr "Operatörer"
+
+#
+#, fuzzy
+msgid "Providers: "
 msgstr "Operatörer"
 
 msgid "Puerto Rico"
@@ -6673,6 +6790,15 @@ msgstr "Ranking definerad av sändaren - %d"
 
 msgid "Rating undefined"
 msgstr "Betyg odefinierat"
+
+msgid "Read Userdata from oscam.conf"
+msgstr ""
+
+msgid "Reader"
+msgstr ""
+
+msgid "Reader Statistics"
+msgstr ""
 
 #
 #, fuzzy
@@ -6970,6 +7096,9 @@ msgstr "Återställ videoförbättringarna till grundinställningarna?"
 #
 msgid "Reset video enhancement settings to your last configuration?"
 msgstr "Återställ videoförbättringarna till föregående inställning?"
+
+msgid "Reshare"
+msgstr ""
 
 #
 msgid "Resolution"
@@ -7805,6 +7934,24 @@ msgstr "Serbiska"
 msgid "Serbian"
 msgstr "Serbiska"
 
+#, fuzzy
+msgid "Serv.Name"
+msgstr "Kanalnamn"
+
+#, python-format
+msgid "Server Info ( Oscam-Version: %s )"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Server:"
+msgstr "Kanal"
+
+#
+#, fuzzy
+msgid "Servers"
+msgstr "Kanaler"
+
 #
 msgid "Service"
 msgstr "Kanal"
@@ -8025,11 +8172,20 @@ msgstr "Korta filnamn"
 msgid "Show"
 msgstr "Visa BiB"
 
+#
+#, fuzzy
+msgid "Show /tmp/ecm.info"
+msgstr "Visa Info"
+
 msgid "Show Audioselection"
 msgstr "Visa ljudval"
 
 msgid "Show CI messages"
 msgstr "Visa CI meddelanden"
+
+#, fuzzy
+msgid "Show Clients"
+msgstr "Visa filmer"
 
 #
 msgid "Show EPG for current channel..."
@@ -8045,8 +8201,16 @@ msgstr "Visa Spel show"
 msgid "Show InfoBar"
 msgstr "Visa infobalk"
 
+#
+#, fuzzy
+msgid "Show Log"
+msgstr "Visa Info"
+
 msgid "Show PIP"
 msgstr "Visa BiB"
+
+msgid "Show Readers/Proxies"
+msgstr ""
 
 #
 msgid "Show WLAN status"
@@ -8618,6 +8782,9 @@ msgstr "Börja med listskärmen"
 #
 msgid "Starting on"
 msgstr "Startar på"
+
+msgid "Status"
+msgstr ""
 
 #
 msgid "Step east"
@@ -9614,6 +9781,9 @@ msgstr ""
 msgid "Top and bottom"
 msgstr "Längst upp och längst ner"
 
+msgid "Total"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr "Klienter som strömmar : %d (%s)"
@@ -9930,6 +10100,11 @@ msgstr "Exekvering färdig!!"
 msgid "Update has completed."
 msgstr "Uppdatering har slutförts."
 
+#
+#, fuzzy
+msgid "Update interval (in seconds)"
+msgstr "Slideshow intervall (sec.)"
+
 msgid ""
 "Update succeeded!\n"
 "Your Bootloader is now up-to-date!"
@@ -10045,6 +10220,9 @@ msgstr "Användardefinerad transponder"
 
 msgid "User interface"
 msgstr "Användargränssnitt"
+
+msgid "Username (httpuser)"
+msgstr ""
 
 #, python-format
 msgid "Using LNB %d"
@@ -11581,6 +11759,13 @@ msgstr "musik / balett / dans (allmänt)"
 msgid "musical/opera"
 msgstr "musikal / opera"
 
+#, fuzzy
+msgid "n/A"
+msgstr "N / A"
+
+msgid "n/a"
+msgstr ""
+
 msgid "nature/animals/environment"
 msgstr "natur / djur / miljö"
 
@@ -11706,6 +11891,11 @@ msgstr "original"
 
 msgid "original language"
 msgstr "originalspråk"
+
+#
+#, fuzzy
+msgid "oscam webif disabled"
+msgstr "avaktiverad"
 
 #
 #
