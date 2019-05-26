@@ -473,6 +473,13 @@ def runScreenTest():
 	profile("Init:PowerKey")
 	power = PowerKey(session)
 
+	from Components.SystemInfo import SystemInfo
+	from enigma import getBoxType
+	if SystemInfo in ["FirstCheckModel","SecondCheckModel","HiSilicon","DifferentLCDSettings"] or getBoxType() in ("alphatriplehd","tmtwin4k","osminiplus","sf3038","spycat","et7x00","ebox5000","ebox7358","eboxlumi","ebox5000","maram9","sezam5000hd","mbtwin","sezam1000hd","mbmini","atemio5x00","beyonwizt3"):
+		profile("VFDSYMBOLS")
+		import Components.VfdSymbols
+		Components.VfdSymbols.SymbolsCheck(session)
+
 	# we need session.scart to access it from within menu.xml
 	session.scart = AutoScartControl(session)
 
