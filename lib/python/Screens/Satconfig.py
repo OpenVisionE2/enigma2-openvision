@@ -714,8 +714,13 @@ class NimSelection(Screen):
 			"epg": self.extraInfo,
 			"cancel": self.close,
 			"menu": self.exit,
+			"yellow": self.clientmode,
 		}, -2)
 		self.setTitle(_("Choose Tuner"))
+
+	def clientmode(self):
+		from Screens.ClientMode import ClientModeScreen
+		self.session.open(ClientModeScreen)
 
 	def exit(self):
 		self.close(True)
