@@ -258,11 +258,6 @@ class ChannelsImporter():
 		file.close()
 		self.remoteEPGpath = self.DIR_ENIGMA2
 		self.remoteEPGfile = "epg"
-		for line in lines:
-			if "config.misc.epgcachepath" in line:
-				self.remoteEPGpath = line.strip().split("=")[1]
-			if "config.misc.epgcachefilename" in line:
-				self.remoteEPGfile = "%s" % line.strip().split("=")[1]
 		self.remoteEPGfile = "%s.dat" % self.remoteEPGfile.replace('.dat','')
 		print "[ChannelsImporter] Remote EPG filename. '%s%s'" % (self.remoteEPGpath, self.remoteEPGfile)
 		self.removeFiles(self.DIR_TMP, "settings")
