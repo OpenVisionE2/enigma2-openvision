@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OPENPLi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-24 19:26+0200\n"
+"POT-Creation-Date: 2019-05-27 09:44+0430\n"
 "PO-Revision-Date: 2015-12-18 21:05+0200\n"
 "Last-Translator: Yetkin AYDIN <yetkina@gmail.com>\n"
 "Language-Team: http://www.hurforum.com <yetkina@gmail.com>\n"
@@ -131,9 +131,6 @@ msgstr ""
 "\n"
 "Paketleri görün, yükleyin veya yüklü paketleri kaldırın."
 
-msgid "  REC  "
-msgstr ""
-
 msgid " (0 - all networks)"
 msgstr ""
 
@@ -245,6 +242,10 @@ msgstr "%H:%M"
 #, fuzzy
 msgid "%a %e %B %Y"
 msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %e %b  %-H:%M"
+msgstr "%a %e/%m  %-H:%M"
 
 #. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
 msgid "%a %e/%m"
@@ -471,9 +472,6 @@ msgstr "* Yalnızca birden fazla arayüz olduğunda kullanılabilir."
 msgid "* current animation"
 msgstr "Geçerli yapılandırmayı etkinleştirin"
 
-msgid "-"
-msgstr ""
-
 msgid "-NO SERVICE\n"
 msgstr ""
 
@@ -483,14 +481,6 @@ msgstr ""
 
 msgid "/s"
 msgstr "/s"
-
-#, fuzzy
-msgid "0"
-msgstr "30"
-
-#, fuzzy
-msgid "1"
-msgstr "1"
 
 msgid "1.0"
 msgstr "1.0"
@@ -544,10 +534,6 @@ msgstr "18 V"
 msgid "1X"
 msgstr "1"
 
-#, fuzzy
-msgid "2"
-msgstr "24"
-
 msgid "20 MB/s"
 msgstr ""
 
@@ -566,10 +552,6 @@ msgstr "29.97"
 #, fuzzy
 msgid "2X"
 msgstr "2"
-
-#, fuzzy
-msgid "3"
-msgstr "30"
 
 msgid "30"
 msgstr "30"
@@ -597,10 +579,6 @@ msgstr "3"
 msgid "3d mode"
 msgstr "3D Modu"
 
-#, fuzzy
-msgid "4"
-msgstr "24"
-
 msgid "420"
 msgstr ""
 
@@ -623,20 +601,7 @@ msgstr "4:3 PanScan"
 msgid "4X"
 msgstr "4"
 
-#, fuzzy
-msgid "5"
-msgstr "25"
-
 msgid "50 MB/s"
-msgstr ""
-
-msgid "6"
-msgstr ""
-
-msgid "7"
-msgstr ""
-
-msgid "8"
 msgstr ""
 
 msgid "8 character"
@@ -645,15 +610,11 @@ msgstr ""
 msgid "8bit"
 msgstr ""
 
-msgid "9"
-msgstr ""
-
 msgid ": 0000 - default (disabled)"
 msgstr ""
 
-#, fuzzy
 msgid "<Alternate Display Skin>"
-msgstr "Alternatif"
+msgstr ""
 
 msgid "<Current movielist location>"
 msgstr "<Mevcut film listesi konumu>"
@@ -665,9 +626,8 @@ msgstr "Varsayılan ayarlar"
 msgid "<Default movie location>"
 msgstr "<Varsayılan film konumu>"
 
-#, fuzzy
 msgid "<Display Skin with Picon>"
-msgstr "<Varsayılan film konumu>"
+msgstr ""
 
 #, fuzzy
 msgid "<Display Skin>"
@@ -687,6 +647,9 @@ msgstr "??"
 
 msgid "A"
 msgstr "A"
+
+msgid "A background update check is in progress, please wait a few minutes and try again."
+msgstr ""
 
 #, python-format
 msgid ""
@@ -1033,6 +996,9 @@ msgstr "Çıkışta Film Oynatıcıyi kapat"
 msgid "Allow unsupported modes"
 msgstr "Desteklenmiyor"
 
+msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
 msgid "Also import at reboot/restart enigma2"
 msgstr ""
 
@@ -1147,6 +1113,12 @@ msgid ""
 msgstr ""
 "Aşağıdaki yedeği\n"
 "silmek istiyor musun?:\n"
+
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this:\n"
+" "
+msgstr "Sihirbazdan çıkmak istiyor musunuz?"
 
 msgid "Are you sure you want to exit this wizard?"
 msgstr "Sihirbazdan çıkmak istiyor musunuz?"
@@ -1802,10 +1774,6 @@ msgstr "Kanal Seçimi"
 msgid "Channel:"
 msgstr "Kanal:"
 
-#, fuzzy
-msgid "Channellist menu"
-msgstr "Kanal Listesi Tipi"
-
 msgid "Channelnumber and picon"
 msgstr ""
 
@@ -1842,20 +1810,8 @@ msgstr "Bölüm:"
 msgid "Check"
 msgstr "Kontrol"
 
-#, fuzzy
-msgid "Check the internet connection"
-msgstr "Alıcıda kurulu bir internet bağlantısı yok."
-
-#, fuzzy
-msgid "Check the internet connection again"
-msgstr "Alıcıda kurulu bir internet bağlantısı yok."
-
 msgid "Checking filesystem..."
 msgstr "Dosya sistemi kontrol ediliyor..."
-
-#, fuzzy
-msgid "Checking the internet connection"
-msgstr "Alıcıda kurulu bir internet bağlantısı yok."
 
 #, python-format
 msgid ""
@@ -1944,6 +1900,17 @@ msgstr ""
 msgid "Client is streaming from this box!"
 msgstr ""
 
+#, fuzzy
+msgid "Client mode"
+msgstr "Modülü Başlat"
+
+msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgstr ""
+
+#, fuzzy
+msgid "Client tuner configuration"
+msgstr "Tuner ayarları"
+
 msgid "Clients"
 msgstr ""
 
@@ -1985,16 +1952,16 @@ msgstr "Renk formatı"
 msgid "Combo"
 msgstr ""
 
-#, fuzzy
-msgid "Command execution..."
-msgstr "Zamanlayıcı seçimi..."
-
 msgid "Command order"
 msgstr "Komut sırası"
 
 #, fuzzy
-msgid "Commit info"
-msgstr "İletişim"
+msgid "Command to run"
+msgstr "Komut sırası"
+
+#, fuzzy
+msgid "Command type"
+msgstr "Komut sırası"
 
 msgid "Common Interface"
 msgstr "Kart/Modül"
@@ -2052,6 +2019,9 @@ msgstr "Ayarlanıyor"
 
 msgid "Configure if the HDMI EDID checking should be bypassed as this might solve issue with some TVs."
 msgstr ""
+
+msgid "Configure interface"
+msgstr "Arabirim yapılandırması"
 
 msgid "Configure nameservers"
 msgstr "İsim sunucularını yapılandır"
@@ -2111,6 +2081,9 @@ msgstr "SCART çıkışında kullanılması gereken renk formatını yapılandı
 msgid "Configure your internal LAN"
 msgstr "Yerel ağ ayarlarınızı yapılandırın"
 
+msgid "Configure your network again"
+msgstr "Ağınızı tekrar yapılandırın"
+
 #, fuzzy
 msgid "Configure your network settings and press OK to scan"
 msgstr "Ağ ayarlarınızı yapılandırmak ve taramayı başlatmak için OK tuşuna basın"
@@ -2150,6 +2123,9 @@ msgid "Connected to"
 msgstr "Bağlanılıyor"
 
 msgid "Connected transcoding, limit - no PiP!"
+msgstr ""
+
+msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
 
 msgid "Console"
@@ -2252,6 +2228,17 @@ msgstr "Hırvatça"
 msgid "Croatian"
 msgstr "Hırvatça"
 
+msgid "Cron Manager"
+msgstr ""
+
+#, fuzzy
+msgid "Cron manager"
+msgstr "Kaynak Yöneticisi bulunamadı."
+
+#, fuzzy
+msgid "Cron timers"
+msgstr "Saati değiştir"
+
 msgid "Cuba"
 msgstr ""
 
@@ -2260,6 +2247,10 @@ msgstr ""
 
 msgid "Current CEC address"
 msgstr "Güncel CEC adresi"
+
+#, fuzzy
+msgid "Current Status:"
+msgstr "Geçerli ayarlar:"
 
 msgid "Current device: "
 msgstr "Geçerli aygıt:"
@@ -2296,6 +2287,10 @@ msgstr "Mevcut değer: "
 
 msgid "Currently the commit log cannot be retrieved - please try later again"
 msgstr "Şu anda işlemeye günlüğü alınamaz. Lütfen daha sonra tekrar deneyin."
+
+#, fuzzy
+msgid "Custom"
+msgstr "Özelleştir"
 
 msgid "Customize OpenWebIF settings for fallback tuner"
 msgstr ""
@@ -2410,6 +2405,10 @@ msgstr "DVD parça listesi"
 #, fuzzy
 msgid "DVDPlayer"
 msgstr "DVD oynatıcı"
+
+#, fuzzy
+msgid "Daily"
+msgstr "Günlük"
 
 msgid "Danish"
 msgstr "Danca"
@@ -2650,7 +2649,7 @@ msgstr "Mevcut kanal için EPG göster..."
 
 #, fuzzy
 msgid "Display Skin"
-msgstr "Varsayılan ayarlar"
+msgstr "Ekran kurulumu"
 
 msgid "Display and userinterface"
 msgstr "Görüntüleme ve kullanıcı arayüzü"
@@ -2760,14 +2759,6 @@ msgid ""
 "%s"
 msgstr "%s bellenimini indirmek istiyor musunuz?"
 
-#, fuzzy
-msgid "Do you want to install Plugins?"
-msgstr "Bu eklentiyi yükleyebilirsiniz."
-
-#, fuzzy
-msgid "Do you want to install a channel list?"
-msgstr "Seçilen paketi yüklemek istiyor musunuz?:\n"
-
 msgid "Do you want to install the package:\n"
 msgstr "Seçilen paketi yüklemek istiyor musunuz?:\n"
 
@@ -2811,6 +2802,9 @@ msgstr "Seçilen paketi güncellemek istiyor musunuz?:\n"
 msgid "Dolby"
 msgstr ""
 
+msgid "Domain"
+msgstr ""
+
 msgid "Dominica"
 msgstr ""
 
@@ -2852,10 +2846,6 @@ msgid "Download plugins"
 msgstr "Eklenti İndir"
 
 msgid "Downloadable new plugins"
-msgstr "İndirilebilir yeni eklentiler"
-
-#, fuzzy
-msgid "Downloadable plugins"
 msgstr "İndirilebilir yeni eklentiler"
 
 msgid "Downloading"
@@ -2909,16 +2899,8 @@ msgstr "Zaman"
 msgid "EPG"
 msgstr "EPG"
 
-#, fuzzy
-msgid "EPG Selection"
-msgstr "EPG Dil seçimi"
-
 msgid "EPG only"
 msgstr ""
-
-#, fuzzy
-msgid "EPG selection"
-msgstr "EPG Dil seçimi"
 
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
@@ -3018,6 +3000,10 @@ msgstr "Otomatik hızlı taramayı etkinleştir"
 msgid "Enable auto fast scan for %s"
 msgstr ""
 
+#, fuzzy
+msgid "Enable client mode"
+msgstr "Taşıma kipini aç"
+
 msgid "Enable fallback remote receiver"
 msgstr "Yedek cihaz kontrolu"
 
@@ -3084,9 +3070,6 @@ msgstr "Çekirdek sürümü:"
 msgid "Enigma2 skin selector"
 msgstr "Arayüz Seçici"
 
-msgid "Enigmalight"
-msgstr ""
-
 #, fuzzy
 msgid "Enter"
 msgstr "Merkez"
@@ -3116,6 +3099,21 @@ msgstr ""
 msgid "Enter pin code"
 msgstr "Şİfre"
 
+msgid "Enter the FTP password of the host receiver (normally just leave empty)."
+msgstr ""
+
+msgid "Enter the FTP port of the host receiver (normally '21')."
+msgstr ""
+
+msgid "Enter the FTP username of the host receiver (normally 'root')."
+msgstr ""
+
+msgid "Enter the IP address of the host receiver."
+msgstr ""
+
+msgid "Enter the domain of the host receiver. Do not include 'http://' or port number."
+msgstr ""
+
 msgid "Enter the frequency at which you LNB switches between low band and high band. For more information consult the spec sheet of your LNB."
 msgstr ""
 
@@ -3127,6 +3125,9 @@ msgstr ""
 
 msgid "Enter the service pin"
 msgstr "Kanal şifresini girin"
+
+msgid "Enter the streaming port of the host receiver (normally '8001')."
+msgstr ""
 
 msgid "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
 msgstr ""
@@ -3215,10 +3216,6 @@ msgstr "Estçe"
 msgid "Estonian"
 msgstr "Estçe"
 
-#, fuzzy
-msgid "EtPortal"
-msgstr "EtPortal"
-
 msgid "Ethernet network interface"
 msgstr "Ağ arayüzü"
 
@@ -3231,18 +3228,30 @@ msgstr "Olay yazı tipi boyutu (arayüz ayarlarıyla aynı)"
 msgid "Event name first"
 msgstr ""
 
-msgid "Event view"
-msgstr ""
-
 msgid "Event view context menu"
 msgstr ""
 
-#, fuzzy
-msgid "Event view menu"
-msgstr "Önizleme menüsü"
-
 msgid "Events info menu"
 msgstr ""
+
+msgid "Every 12 hours"
+msgstr ""
+
+#, fuzzy
+msgid "Every 2 hours"
+msgstr "Heryerde"
+
+#, fuzzy
+msgid "Every 3 hours"
+msgstr "Heryerde"
+
+#, fuzzy
+msgid "Every 6 hours"
+msgstr "Heryerde"
+
+#, fuzzy
+msgid "Every hour"
+msgstr "Heryerde"
 
 msgid "Every known"
 msgstr ""
@@ -3293,10 +3302,6 @@ msgid "Exit network interface list"
 msgstr "Ağ arabirimi listesinden Çık"
 
 msgid "Exit network wizard"
-msgstr "Ağ sihirbazından çık"
-
-#, fuzzy
-msgid "Exit the wizard"
 msgstr "Ağ sihirbazından çık"
 
 msgid "Exit/OK"
@@ -3368,9 +3373,6 @@ msgstr "İlave başlatma saati için uyku zamanlayıcıyı görmezden gel"
 msgid "Extrude from left"
 msgstr ""
 
-msgid "F"
-msgstr ""
-
 msgid "F1/F3/F4/F4-TURBO"
 msgstr ""
 
@@ -3413,6 +3415,14 @@ msgstr ""
 
 msgid "FTA"
 msgstr "FTA"
+
+#, fuzzy
+msgid "FTP connection failure"
+msgstr "LAN bağlantısı"
+
+#, fuzzy
+msgid "FTP passive mode"
+msgstr "İletim (transmisyon) modu"
 
 msgid "Factory reset"
 msgstr "Fabrika ayarlarına dön (RESET)"
@@ -3652,9 +3662,6 @@ msgstr "Ek Seçenekler"
 msgid "Further options"
 msgstr ""
 
-msgid "G"
-msgstr ""
-
 #, fuzzy
 msgid "GStreamer version: "
 msgstr "Çekirdek sürümü:"
@@ -3670,6 +3677,14 @@ msgstr ""
 
 msgid ""
 "GUI needs a restart to apply a new skin\n"
+"Do you want to restart the GUI now?"
+msgstr ""
+"Yeni arayüzü etkinleştirmek için yeniden başlatma gerekiyor\n"
+"Grafik arayüzünü (GUI) yeniden başlatmak istiyor musunuz?"
+
+#, fuzzy
+msgid ""
+"GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
 "Yeni arayüzü etkinleştirmek için yeniden başlatma gerekiyor\n"
@@ -3791,10 +3806,6 @@ msgstr "GotoX kalibrasyonu"
 msgid "GraphMultiEpg Settings"
 msgstr "Grafik arayüzlü çoklu Epg Ayarları"
 
-#, fuzzy
-msgid "Graphical EPG"
-msgstr "Grafik arayüzlü çoklu EPG'yi göster"
-
 msgid "Graphical Multi EPG"
 msgstr "Grafik arayüzlü çoklu EPG'yi göster"
 
@@ -3848,9 +3859,8 @@ msgstr ""
 msgid "Guyana"
 msgstr ""
 
-#, fuzzy
-msgid "H"
-msgstr "Kanal"
+msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
+msgstr ""
 
 msgid "HD list"
 msgstr "HD listesi"
@@ -3992,6 +4002,31 @@ msgstr "Yatay"
 msgid "Horizontal turning speed"
 msgstr "Yatay tarama hızı"
 
+#, fuzzy
+msgid "Host domain"
+msgstr "Kapat"
+
+msgid "Host receiver FTP password"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver FTP port"
+msgstr "Yedek cihaz  URL"
+
+msgid "Host receiver FTP username"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver IP address"
+msgstr "IP adresi"
+
+msgid "Host receiver address type"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver streaming port"
+msgstr "Uydu Alıcınız yeniden baştatılıyor."
+
 msgid "HotKey Setup"
 msgstr "Kısayol Tuşu Ayarla"
 
@@ -4008,6 +4043,9 @@ msgid "Hotkey zap"
 msgstr "ZAP Tuşu"
 
 msgid "Hotplug"
+msgstr ""
+
+msgid "Hourly"
 msgstr ""
 
 #, fuzzy
@@ -4027,9 +4065,6 @@ msgstr "Macarca"
 msgid "Hungary"
 msgstr "Macarca"
 
-msgid "I"
-msgstr ""
-
 #, fuzzy
 msgid "I do not want to perform any service scans"
 msgstr "Servis taraması yapmak ister misiniz?"
@@ -4037,14 +4072,13 @@ msgstr "Servis taraması yapmak ister misiniz?"
 msgid "IDLE"
 msgstr ""
 
-#, fuzzy
-msgid "IMDB Search"
-msgstr "Aranıyor"
-
 msgid "INFO"
 msgstr ""
 
 msgid "INS"
+msgstr ""
+
+msgid "IP"
 msgstr ""
 
 msgid "IP address"
@@ -4159,9 +4193,6 @@ msgstr "RiR için geçersiz servis!"
 msgid "Increased voltage"
 msgstr "Arttırılmış voltaj"
 
-msgid "Index"
-msgstr ""
-
 msgid "Index allocated:"
 msgstr "Ayrılan Endeks:"
 
@@ -4251,7 +4282,7 @@ msgid "Installing"
 msgstr "Kuruluyor"
 
 #, fuzzy
-msgid "Installing software..."
+msgid "Installing service"
 msgstr "Kuruluyor"
 
 msgid "Instant record"
@@ -4347,9 +4378,6 @@ msgstr "Sayfa başına görüntüle"
 
 msgid "Items per page for list screen"
 msgstr "Sayfa başına görüntüleme listesi ekranı"
-
-msgid "J"
-msgstr ""
 
 msgid "Jamaica"
 msgstr ""
@@ -4549,6 +4577,9 @@ msgstr "Bağlantı:"
 msgid "Linked titles with a DVD menu"
 msgstr "DVD Menüsü ile bağlı başlıklar"
 
+msgid "List available networks"
+msgstr "Kullanılabilir ağ listesi"
+
 msgid "List mode"
 msgstr "Liste modu"
 
@@ -4638,9 +4669,6 @@ msgstr "Lüksemburgca"
 msgid "MMC card"
 msgstr "MMC kart"
 
-msgid "MORE"
-msgstr ""
-
 msgid "Macao"
 msgstr ""
 
@@ -4691,6 +4719,9 @@ msgstr "Elle"
 
 msgid "Manual Scan"
 msgstr "Elle Tarama"
+
+msgid "Manual configuration"
+msgstr "El ile yapılandırma"
 
 msgid "Manual scan"
 msgstr "Elle Tarama"
@@ -4759,10 +4790,6 @@ msgid "Menusort (%s)"
 msgstr ""
 
 msgid "Message"
-msgstr "Mesaj"
-
-#, fuzzy
-msgid "Message..."
 msgstr "Mesaj"
 
 #, fuzzy
@@ -4837,6 +4864,10 @@ msgstr ""
 
 msgid "Montenegro"
 msgstr ""
+
+#, fuzzy
+msgid "Monthly"
+msgstr "Ay"
 
 msgid "Montserrat"
 msgstr ""
@@ -4973,25 +5004,16 @@ msgstr "Çoklu Uydu"
 msgid "Music/Ballet/Dance"
 msgstr "Müzik/Bale/Dans"
 
-msgid "Mute"
-msgstr ""
-
 msgid "Myanmar"
 msgstr ""
 
 msgid "N/A"
 msgstr "N/A"
 
-msgid "NEXT"
-msgstr ""
-
 msgid "NIM & Type"
 msgstr ""
 
 msgid "NO"
-msgstr ""
-
-msgid "NOW"
 msgstr ""
 
 msgid "NTSC"
@@ -5008,10 +5030,6 @@ msgid "Nameserver %d"
 msgstr "İsim sunucusu (DNS) %d"
 
 msgid "Nameserver settings"
-msgstr "İsim sunucusu (DNS) ayarları"
-
-#, fuzzy
-msgid "Nameserver setup"
 msgstr "İsim sunucusu (DNS) ayarları"
 
 msgid "Namespace & Orbital pos."
@@ -5044,10 +5062,6 @@ msgstr ""
 msgid "Network configuration"
 msgstr ""
 
-#, fuzzy
-msgid "Network configuration..."
-msgstr "Kablosuz ağ yapılandırması ..."
-
 msgid "Network mount"
 msgstr "Ağ bağlantısı"
 
@@ -5065,10 +5079,6 @@ msgid "Network setup"
 msgstr "Ağ kurulumu"
 
 msgid "Network test"
-msgstr "Ağ yapılandırmasını test et"
-
-#, fuzzy
-msgid "Network test..."
 msgstr "Ağ yapılandırmasını test et"
 
 msgid "Network test: "
@@ -5348,10 +5358,6 @@ msgctxt "now/next: 'now' event label"
 msgid "Now"
 msgstr "Şimdi"
 
-#, fuzzy
-msgid "Now playing"
-msgstr "Oynatmaya devam et"
-
 msgid "Now, use the contrast setting to turn up the brightness of the background as much as possible, but make sure that you can still see the difference between the two brightest levels of shades.If you have done that, press OK."
 msgstr "Şimdi, kontrast ayarlarını kullanarak arkazemin üzerinde, ekrandaki iki parlaklık tonunu ayırt edebilecek şekilde ve mümkün olduğunca parlaklık seviyesini arttırın. İşlemi tamamladıktan sonra OK tuşuna basın."
 
@@ -5373,10 +5379,6 @@ msgstr "3D OSD Ayarı"
 
 msgid "OSD name request"
 msgstr "OSD adı isteği"
-
-#, fuzzy
-msgid "OSD settings"
-msgstr "Ayarlar"
 
 msgid "OSD transparency"
 msgstr "OSD şeffaflığı"
@@ -5512,9 +5514,6 @@ msgstr ""
 msgid "PID"
 msgstr "PDC"
 
-msgid "PIN code needed"
-msgstr ""
-
 msgid "PIP"
 msgstr ""
 
@@ -5580,10 +5579,6 @@ msgstr "Üst Dizin"
 msgid "Parental control"
 msgstr "Aile Koruması"
 
-#, fuzzy
-msgid "Parental control services editor"
-msgstr "Aile Koruması olan kanalları göster"
-
 msgid "Parental control setup"
 msgstr "Aile Koruması Kurulumu"
 
@@ -5629,10 +5624,6 @@ msgstr ""
 
 msgid "Philippines"
 msgstr ""
-
-#, fuzzy
-msgid "PiP setup"
-msgstr "RiR kurulumu"
 
 msgid "Picon"
 msgstr "Simge"
@@ -5720,15 +5711,19 @@ msgstr "Lütfen kullanmak istediğiniz eklentiyi seçin..."
 msgid "Please choose reader"
 msgstr "Lütfen kullanmak istediğiniz eklentiyi seçin..."
 
-#, fuzzy
-msgid "Please configure the fallback tuner setup?"
-msgstr "Yedek cihaz  URL"
-
-#, fuzzy
-msgid "Please connect your receiver to the internet"
+msgid ""
+"Please configure or verify your Nameservers by filling out the required values.\n"
+"When you are ready press OK to continue."
 msgstr ""
-"\n"
-"Alıcının ayarlarını geri yükle."
+"Yapılandırın veya gerekli değerleri yazarak isim sunucusunu kontrol edin.\n"
+"Devam etmek için OK tuşuna basın."
+
+msgid ""
+"Please configure your internet connection by filling out the required values.\n"
+"When you are ready press OK to continue."
+msgstr ""
+"Gerekli değerleri doldurarak internet bağlantınızı yapılandırın.\n"
+"Devam etmek için OK tuşuna basın."
 
 msgid "Please do not change any values unless you know what you are doing!"
 msgstr "Lütfen ne yaptığınızı bilmiyorsanız hiçbir değeri değiştirmeyin!"
@@ -5762,6 +5757,9 @@ msgstr "Yeni bir PIN kodu girin"
 
 msgid "Please enter the old PIN code"
 msgstr "Lütfen eşki şifreyi girin"
+
+msgid "Please follow the instructions on the TV"
+msgstr "TV'deki talimatları takip edin"
 
 msgid "Please note that the previously selected media could not be accessed and therefore the default directory is being used instead."
 msgstr "Seçtiğiniz medyaya erişilemedi, yerine varsayılan klasör kullanılıyor."
@@ -5799,60 +5797,23 @@ msgstr "Lütfen filtreleme için etiket seçin ..."
 msgid "Please select the movie path..."
 msgstr "Filmlerin bulunduğu  klasörü seçin..."
 
-#, fuzzy
-msgid "Please set up tuner A"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner B"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner C"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner D"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner E"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner F"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner G"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner H"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner I"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner J"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner Q"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set up tuner R"
-msgstr "Tuner Kurulumu"
-
-#, fuzzy
-msgid "Please set your time zone"
-msgstr "Yeni bir isim girin:"
-
-msgid "Please setup the following basic configs!"
+msgid ""
+"Please select the network interface that you want to use for your internet connection.\n"
+"\n"
+"Please press OK to continue."
 msgstr ""
+"İnternet bağlantısı için kullanmak istediğiniz ağ ara yüzünü seçiniz.\n"
+"\n"
+"Devam etmek için OK tuşuna basın."
+
+msgid ""
+"Please select the wireless network that you want to connect to.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Kablosuz bağlantı için kullanmak istediğiniz ağ ara yüzünü seçiniz.\n"
+"\n"
+"Devam etmek için OK tuşuna basın."
 
 msgid ""
 "Please use direction keys to move the PiP window.\n"
@@ -5997,6 +5958,10 @@ msgstr ""
 
 msgid "PowerMenu"
 msgstr ""
+
+#, fuzzy
+msgid "Predefined"
+msgstr "Tanımsız"
 
 msgid "Predefined transponder"
 msgstr "Önceden tanımlanmış transponder"
@@ -6199,26 +6164,17 @@ msgstr "Soru"
 msgid "Quick"
 msgstr "Hızlı"
 
-#, fuzzy
-msgid "Quick EPG"
-msgstr "Hızlı"
-
 msgid "Quick zap"
 msgstr "Hızlı kanal değiştirme"
 
-#, fuzzy
 msgid "REC"
-msgstr "FEC"
+msgstr ""
 
 msgid "REC "
 msgstr ""
 
 msgid "RGB"
 msgstr "RGB"
-
-#, fuzzy
-msgid "Radio"
-msgstr " (Radyo)"
 
 msgid "Ram disk"
 msgstr "Ram disk"
@@ -6240,6 +6196,14 @@ msgid "Reader"
 msgstr ""
 
 msgid "Reader Statistics"
+msgstr ""
+
+#, python-format
+msgid "Ready to install \"%s\" ?"
+msgstr ""
+
+#, python-format
+msgid "Ready to remove \"%s\" ?"
 msgstr ""
 
 #, fuzzy
@@ -6294,10 +6258,6 @@ msgstr "Kayıt"
 
 msgid "Recall to previous service"
 msgstr "Önceki servisi çağır"
-
-#, fuzzy
-msgid "Reception settings"
-msgstr "Koleksiyon ayarları"
 
 msgid "Record"
 msgstr "Kayıt"
@@ -6355,6 +6315,9 @@ msgstr "Yenile"
 msgid "Refresh rate"
 msgstr "Tazeleme hızı"
 
+msgid "Refresh rate selection."
+msgstr "Yenileme hızı seçimi."
+
 #, fuzzy
 msgid "Refusing to move to the same directory"
 msgstr "Lütfen klasör için bir isim girin"
@@ -6399,6 +6362,10 @@ msgstr "Kaldırma tamamladı."
 msgid "Remove"
 msgstr "Sil"
 
+#, fuzzy
+msgid "Remove Confirmation"
+msgstr "Uyku Zamanlayıcı Yapılandırması"
+
 msgid "Remove a mark"
 msgstr "İşaret Kaldır"
 
@@ -6433,6 +6400,10 @@ msgstr "%s klasörü silinemedi. (Klasör boş olmayabilir.)"
 msgid "Removing partition table"
 msgstr "Bölümleme tablosu kaldırılıyor"
 
+#, fuzzy
+msgid "Removing service"
+msgstr "Servis yok"
+
 msgid "Rename"
 msgstr "Ad değiştir "
 
@@ -6441,6 +6412,10 @@ msgstr "Yeni etkinlik için adını ve açıklamasını yeniden adlandırın"
 
 msgid "Repeat"
 msgstr "Tekrar"
+
+#, fuzzy
+msgid "Repeat how often"
+msgstr "Çeşidi yineleyin"
 
 msgid "Repeat leave standby messages"
 msgstr ""
@@ -6626,6 +6601,9 @@ msgstr "Rotor: "
 
 msgid "Round start time on"
 msgstr "Zamanında dön"
+
+msgid "Run how often ?"
+msgstr ""
 
 #, fuzzy
 msgid "Running"
@@ -6874,6 +6852,9 @@ msgstr "Taranıyor..."
 msgid "Scans default lamedbs sorted by satellite with a connected dish positioner"
 msgstr "Bağlı pozisyoner üzerinden varsayılan lamedb dosyasıyla uydu sıralı arama yapar"
 
+msgid "Schedule EPG and channel list import"
+msgstr ""
+
 #, fuzzy
 msgid "Search"
 msgstr "Aranıyor"
@@ -6991,10 +6972,6 @@ msgid "Select Fast DiSEqC if your aerial system supports this. If you are unsure
 msgstr ""
 
 #, fuzzy
-msgid "Select HDD"
-msgstr "Seç"
-
-#, fuzzy
 msgid "Select Image"
 msgstr "Film seç"
 
@@ -7005,24 +6982,8 @@ msgstr "Yuva (Slot) seç"
 msgid "Select Softcam"
 msgstr "SoftCam Seç"
 
-#, fuzzy
-msgid "Select a bouquet"
-msgstr "Buket oluştur"
-
-#, fuzzy
-msgid "Select a movie"
-msgstr "Film seç"
-
 msgid "Select a network adapter"
 msgstr "Bir ağ bağdaştırıcısı seçin"
-
-#, fuzzy
-msgid "Select a skin"
-msgstr "Eylem seçimi"
-
-#, fuzzy
-msgid "Select a tuner"
-msgstr "Eylem seçimi"
 
 msgid "Select a wireless network"
 msgstr "Kablosuz ağ seç"
@@ -7045,6 +7006,9 @@ msgstr "Yedekleme dosyalarını seçin"
 
 msgid "Select backup location"
 msgstr "Yedekleme konumu seçin"
+
+msgid "Select between entering an IP address or a domain."
+msgstr ""
 
 msgid "Select channel"
 msgstr "Kanal Seç"
@@ -7111,6 +7075,9 @@ msgstr "Hedef klasörü seçin"
 
 msgid "Select provider to add..."
 msgstr "Eklenecek yayıncıyı seçin..."
+
+msgid "Select refresh rate"
+msgstr "Yenileme hızını seçin"
 
 msgid "Select satellites"
 msgstr "Uyduları seç"
@@ -7195,6 +7162,15 @@ msgstr "Güncelleme kaynağı seçin"
 
 msgid "Select upgrade source to edit."
 msgstr "Düzenlemek istediğiniz güncelleme kaynağını seçin."
+
+msgid "Select video input with up/down buttons"
+msgstr "Yukarı / aşağı düğmeleri ile  video girişi seçin"
+
+msgid "Select video mode"
+msgstr "Video modu seç"
+
+msgid "Select wireless network"
+msgstr "Kablosuz ağ seçin"
 
 #, fuzzy
 msgid "Select your ATSC provider."
@@ -7399,6 +7375,13 @@ msgstr ""
 msgid "Set the port of the OpenWebif from your fallback tuner"
 msgstr ""
 
+#, fuzzy
+msgid "Set the repeat interval of the schedule."
+msgstr "Ekranın yenileme hızını yapılandırın."
+
+msgid "Set the time of day to perform the import."
+msgstr ""
+
 msgid "Set time window to 1 hour"
 msgstr "Zaman penceresini 1 saat olarak ayarlayın"
 
@@ -7431,7 +7414,7 @@ msgstr "Kurulum"
 
 #, fuzzy
 msgid "Setup UI animations"
-msgstr "Geçerli yapılandırmayı etkinleştirin"
+msgstr "Pozisyoner kurulumu"
 
 #, fuzzy
 msgid "Setup hard disk"
@@ -7457,6 +7440,9 @@ msgstr "Komut Çalıştır (ShellScript)"
 
 msgid "Short filenames"
 msgstr "Kısa dosya adları"
+
+msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
+msgstr ""
 
 #, fuzzy
 msgid "Show"
@@ -7704,9 +7690,6 @@ msgstr "Görsel Arayüzler"
 
 msgid "Skip empty services"
 msgstr "Boş kanalları atla"
-
-msgid "Skip internet connection check (disables automatic package installation)"
-msgstr ""
 
 msgid "Sleep timer"
 msgstr "Uyku zamanlayıcı"
@@ -8357,10 +8340,9 @@ msgstr "Tay Dili"
 msgid "Thailand"
 msgstr "Tay Dili"
 
-#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard.\n"
+"Please press OK to continue."
 msgstr ""
 "Sihirbazını kullandığınız için teşekkür ederiz.\n"
 "Devam etmek için OK tuşuna basın."
@@ -8480,6 +8462,13 @@ msgstr ""
 #, fuzzy
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Alıcınızın kullanıcı arayüzü yeniden başlatılıyor..."
+
+msgid ""
+"The wireless LAN plugin is not installed!\n"
+"Please install it and choose what you want to do next."
+msgstr ""
+"Kablosuz LAN eklentisi yüklü değil!\n"
+"Yüklemek için bir sonraki adımda yapmak istediğinizi seçin."
 
 msgid ""
 "The wireless LAN plugin is not installed!\n"
@@ -8745,18 +8734,20 @@ msgstr "Perşembe"
 msgid "Time"
 msgstr "Zaman"
 
+msgid "Time import should start"
+msgstr ""
+
 msgid "Time scale"
 msgstr "Zaman cetveli"
+
+msgid "Time to execute command or script"
+msgstr ""
 
 msgid "Timer"
 msgstr "Zamanlayıcı"
 
 msgid "Timer Overview"
 msgstr "Zamanlayıcı Özeti"
-
-#, fuzzy
-msgid "Timer edit"
-msgstr "Zamanlayıcı girişi"
 
 msgid "Timer entry"
 msgstr "Zamanlayıcı girişi"
@@ -8797,11 +8788,11 @@ msgstr "Zamanlayıcı"
 msgid "Timerlist"
 msgstr "Zamanlayıcı ayarı"
 
-msgid "Timeshift"
-msgstr "Zaman Kaydırma"
-
 #, fuzzy
-msgid "Timeshift Live"
+msgid "Timers"
+msgstr "Zamanlayıcı"
+
+msgid "Timeshift"
 msgstr "Zaman Kaydırma"
 
 msgid "Timeshift is running. Select an action.\n"
@@ -8902,10 +8893,6 @@ msgid "Transcoding: "
 msgstr ""
 
 msgid "Translation"
-msgstr "Çeviri"
-
-#, fuzzy
-msgid "Translation:"
 msgstr "Çeviri"
 
 msgid "Translations"
@@ -9086,9 +9073,6 @@ msgstr "Şifresiz"
 msgid "Unexpected error while retreiving fallback tuner's timer information"
 msgstr ""
 
-msgid "UnhandledKey"
-msgstr ""
-
 msgid "Unhide parental control services"
 msgstr "Aile Koruması olan kanalları göster"
 
@@ -9257,12 +9241,6 @@ msgstr "Seçilen ağ bağdaştırıcısını yapılandırmak için ağ sihirbaz�
 msgid "Use the network wizard to configure your network\n"
 msgstr "Ağ yapılandırmak için ağ sihirbazını kullan\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
-msgstr ""
-
-msgid "Use the wizard to set up basic features"
-msgstr ""
-
 msgid "Use these input device settings?"
 msgstr "Bu giriş cihazının ayarlarını kullan?"
 
@@ -9362,6 +9340,22 @@ msgstr "Görüntü iyileştirme ayarları"
 msgid "Video enhancement setup"
 msgstr "Görüntü iyileştirme kurulumu"
 
+msgid ""
+"Video input selection\n"
+"\n"
+"Please press OK if you can see this page on your TV (or select a different input port).\n"
+"\n"
+"The next input port will be automatically probed in 20 seconds."
+msgstr ""
+"Video giriş seçimi\n"
+"\n"
+"TV'nizde bu sayfayı görüyorsanız (veya farklı bir giriş portu seçin) OK tuşuna basın.\n"
+"\n"
+"Sıradaki giriş portu  20 saniye içinde otomatik olarak seçilmiş olacak."
+
+msgid "Video mode selection."
+msgstr "Video modu seçimi."
+
 msgid "Video output"
 msgstr "Video çıkışı"
 
@@ -9374,10 +9368,6 @@ msgstr "Görüntü sihirbazı"
 #, python-format
 msgid "Video: %s fps"
 msgstr "Görüntü: % s fps"
-
-#, fuzzy
-msgid "VideoMode"
-msgstr "S-Video"
 
 msgid "Videocodec, size & format"
 msgstr ""
@@ -9458,10 +9448,6 @@ msgstr "Sanal klavye"
 
 msgid "Voltage mode"
 msgstr "Voltaj kipi"
-
-#, fuzzy
-msgid "Volume"
-msgstr "Ses Aç"
 
 msgid "Volume down"
 msgstr "Ses Kıs"
@@ -9553,6 +9539,10 @@ msgstr "Çarşamba"
 msgid "Weekday"
 msgstr "Haftaiçi"
 
+#, fuzzy
+msgid "Weekly"
+msgstr "Haftalık"
+
 msgid "Weighted position"
 msgstr "Ağırlıklı pozisyon"
 
@@ -9569,21 +9559,18 @@ msgstr ""
 "\n"
 "Daha sonra kesmek istediğiniz yedere kadak bekleyin ve OK basın 'kesme sonu'. Bu kadar basit."
 
-#, fuzzy
 msgid ""
 "Welcome.\n"
 "\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
+"If you want to connect your receiver to the Internet, this wizard will guide you through the basic network setup of your receiver.\n"
+"\n"
+"Press OK to start configuring your network"
 msgstr ""
 "Hoşgeldiniz.\n"
 "\n"
 "Eğer internete alıcınızı bağlamak istiyorsanız, bu sihirbaz alıcınızın temel ağ kurulumu boyunca size rehberlik edecek.\n"
 "\n"
 "Ağ yapılandırmasını başlatmak için OK tuşuna basın."
-
-msgid "Welcome..."
-msgstr ""
 
 msgid "West"
 msgstr "Batı"
@@ -9594,7 +9581,10 @@ msgstr "Batı limit ayarı"
 msgid "Western Sahara"
 msgstr ""
 
-msgid "What type of service scan do you want?"
+msgid "What date of month ?"
+msgstr ""
+
+msgid "What day of week ?"
 msgstr ""
 
 msgid "When enabled the timer from the fallback tuner is imported"
@@ -9640,6 +9630,12 @@ msgstr "Kablosuz ağ"
 
 msgid "Wireless network configuration..."
 msgstr "Kablosuz ağ yapılandırması ..."
+
+msgid "Wireless network connection setup"
+msgstr "Kablosuz ağ bağlantısı kurulumu"
+
+msgid "Wireless network connection setup."
+msgstr "Kablosuz ağ bağlantısı kurulumu."
 
 msgid "Wireless network state"
 msgstr "Kablosuz ağ durumu"
@@ -9851,6 +9847,13 @@ msgstr ""
 msgid "Your hardware can detect CI mode itself or works only in legacy mode."
 msgstr ""
 
+msgid ""
+"Your internet connection is not working!\n"
+"Please choose what you want to do next."
+msgstr ""
+"İnternet bağlantısı çalışmıyor!\n"
+"Bir sonraki adımda ne yapmak istediğinizi seçin."
+
 #, python-format
 msgid "Your internet connection is working (ip: %s)"
 msgstr "Internet bağlantısı çalışıyor (IP: %s)"
@@ -9882,6 +9885,19 @@ msgstr ""
 "Internet bağlantısı çalışıyor..\n"
 "\n"
 
+msgid ""
+"Your receiver is now ready to use.\n"
+"\n"
+"Your internet connection is working now.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Alıcınız artık kullanıma hazır.\n"
+"\n"
+"İnternet bağlantınız çalışıyor.\n"
+"\n"
+"Devam etmek için OK tuşuna basın."
+
 msgid "Your receiver is rebooting"
 msgstr "Uydu Alıcınız yeniden baştatılıyor."
 
@@ -9903,6 +9919,17 @@ msgstr "Hareket olmadığından Bekleme Moduna geçilecek."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
 msgstr "Uydu alıcınız, uzaktan kumandadaki OK bastıktan sonra yeniden başlatıcak."
+
+msgid ""
+"Your wireless LAN internet connection could not be started!\n"
+"Have you attached your USB WLAN Stick?\n"
+"\n"
+"Please choose what you want to do next."
+msgstr ""
+"Kablosuz LAN internet bağlantısı başlatılamadı!\n"
+"USB WLAN Çubuk ile mi bağlanacaksınız?\n"
+"\n"
+"Bir sonraki adımda ne yapmak istediğinizi seçin."
 
 msgid "Zambia"
 msgstr ""
@@ -10173,10 +10200,6 @@ msgstr ""
 
 msgid "comedy"
 msgstr "Komedi"
-
-#, fuzzy
-msgid "config menu"
-msgstr "Onaylı"
 
 msgid "confirmed"
 msgstr "Onaylı"
@@ -11220,6 +11243,3 @@ msgstr "Değiştir ve Kaydet"
 
 msgid "zapped"
 msgstr "Kanal değiştirildi"
-
-msgid "®"
-msgstr ""

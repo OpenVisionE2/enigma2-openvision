@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-24 19:26+0200\n"
+"POT-Creation-Date: 2019-05-27 09:44+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -138,9 +138,6 @@ msgstr ""
 "\n"
 "Zobrazit, instalovat a odstranit dostupné nebo instalované balíčky."
 
-msgid "  REC  "
-msgstr ""
-
 msgid " (0 - all networks)"
 msgstr " (0 - všechny sítě)"
 
@@ -256,6 +253,10 @@ msgstr "%H:%M"
 #. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
 msgid "%a %e %B %Y"
 msgstr "%a %e. %B %Y"
+
+#, fuzzy
+msgid "%a %e %b  %-H:%M"
+msgstr "%a %e/%m  %-H:%M"
 
 #. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
 msgid "%a %e/%m"
@@ -528,9 +529,6 @@ msgstr "* dostupné pouze při více než jenom aktivním interface."
 msgid "* current animation"
 msgstr "Aktivovat současnou konfiguraci"
 
-msgid "-"
-msgstr ""
-
 msgid "-NO SERVICE\n"
 msgstr ""
 
@@ -540,15 +538,6 @@ msgstr ""
 
 msgid "/s"
 msgstr "/s"
-
-#, fuzzy
-msgid "0"
-msgstr "30"
-
-#
-#, fuzzy
-msgid "1"
-msgstr "1"
 
 #
 msgid "1.0"
@@ -614,10 +603,6 @@ msgstr "18 V"
 msgid "1X"
 msgstr "1"
 
-#, fuzzy
-msgid "2"
-msgstr "24"
-
 msgid "20 MB/s"
 msgstr "20 MB/s"
 
@@ -637,10 +622,6 @@ msgstr "29.97"
 #, fuzzy
 msgid "2X"
 msgstr "2"
-
-#, fuzzy
-msgid "3"
-msgstr "30"
 
 msgid "30"
 msgstr "30"
@@ -671,10 +652,6 @@ msgstr "3"
 msgid "3d mode"
 msgstr "3D mód"
 
-#, fuzzy
-msgid "4"
-msgstr "24"
-
 msgid "420"
 msgstr "420"
 
@@ -701,21 +678,8 @@ msgstr "4:3 PanScan"
 msgid "4X"
 msgstr "4"
 
-#, fuzzy
-msgid "5"
-msgstr "25"
-
 msgid "50 MB/s"
 msgstr "50 MB/s"
-
-msgid "6"
-msgstr ""
-
-msgid "7"
-msgstr ""
-
-msgid "8"
-msgstr ""
 
 msgid "8 character"
 msgstr ""
@@ -723,16 +687,11 @@ msgstr ""
 msgid "8bit"
 msgstr "8bit"
 
-msgid "9"
-msgstr ""
-
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - výchozí (zakázáno)"
 
-#
-#, fuzzy
 msgid "<Alternate Display Skin>"
-msgstr "Alternativní 1"
+msgstr ""
 
 #
 msgid "<Current movielist location>"
@@ -746,10 +705,8 @@ msgstr "<Defaultní Skin>"
 msgid "<Default movie location>"
 msgstr "<standardní umístění>"
 
-#
-#, fuzzy
 msgid "<Display Skin with Picon>"
-msgstr "<Defaultní Skin>"
+msgstr ""
 
 #
 #, fuzzy
@@ -774,6 +731,9 @@ msgstr "??"
 #
 msgid "A"
 msgstr "A"
+
+msgid "A background update check is in progress, please wait a few minutes and try again."
+msgstr ""
 
 #
 #, python-format
@@ -1176,6 +1136,9 @@ msgstr "Umožnit zavírat movieplayer pomocí Exit"
 msgid "Allow unsupported modes"
 msgstr "Povolit nepodporované režimy"
 
+msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
 msgid "Also import at reboot/restart enigma2"
 msgstr "Importovat též při restartu přijímače/enigma2"
 
@@ -1299,6 +1262,13 @@ msgid ""
 msgstr ""
 "Opravdu chcete smazat následující zálohu:\n"
 "\n"
+
+#
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this:\n"
+" "
+msgstr "Opravdu chcete ukončit tohoto průvodce?"
 
 #
 msgid "Are you sure you want to exit this wizard?"
@@ -2040,11 +2010,6 @@ msgstr "Výběr programu"
 msgid "Channel:"
 msgstr "Kanál:"
 
-#
-#, fuzzy
-msgid "Channellist menu"
-msgstr "Typ seznamu programů"
-
 msgid "Channelnumber and picon"
 msgstr "Číslo kanálu a pikona"
 
@@ -2083,21 +2048,9 @@ msgstr "Kapitola:"
 msgid "Check"
 msgstr "Ověřit"
 
-#, fuzzy
-msgid "Check the internet connection"
-msgstr "Přijímač není připojen k internetu"
-
-#, fuzzy
-msgid "Check the internet connection again"
-msgstr "Přijímač není připojen k internetu"
-
 #
 msgid "Checking filesystem..."
 msgstr "Ověřuje se souborový systém..."
-
-#, fuzzy
-msgid "Checking the internet connection"
-msgstr "Přijímač není připojen k internetu"
 
 #, python-format
 msgid ""
@@ -2194,6 +2147,19 @@ msgstr ""
 msgid "Client is streaming from this box!"
 msgstr "Klient streamuje z tohoto přijímače!"
 
+#
+#, fuzzy
+msgid "Client mode"
+msgstr "inicializační modul"
+
+msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgstr ""
+
+#
+#, fuzzy
+msgid "Client tuner configuration"
+msgstr "Konfigurace tuneru"
+
 msgid "Clients"
 msgstr ""
 
@@ -2240,18 +2206,19 @@ msgstr "kombinovaný"
 msgid "Combo"
 msgstr "Combo"
 
-#, fuzzy
-msgid "Command execution..."
-msgstr "Výběr časovače..."
-
 #
 msgid "Command order"
 msgstr "Pořadí příkazů"
 
 #
 #, fuzzy
-msgid "Commit info"
-msgstr "Komunikace"
+msgid "Command to run"
+msgstr "Pořadí příkazů"
+
+#
+#, fuzzy
+msgid "Command type"
+msgstr "Pořadí příkazů"
 
 #
 msgid "Common Interface"
@@ -2316,6 +2283,10 @@ msgid "Configure if the HDMI EDID checking should be bypassed as this might solv
 msgstr "Nastavuje vynechání kontroly HDMI EDID, které může vyřešit problémy s některými TV."
 
 #
+msgid "Configure interface"
+msgstr "Nastavuje interface"
+
+#
 msgid "Configure nameservers"
 msgstr "Nastavuje DNS servery"
 
@@ -2376,6 +2347,10 @@ msgstr "Nastavuje barevný formát pro SCART výstup."
 msgid "Configure your internal LAN"
 msgstr "Nastavte vnitřní LAN"
 
+#
+msgid "Configure your network again"
+msgstr "Nastavte znovu Vaši síť"
+
 msgid "Configure your network settings and press OK to scan"
 msgstr "Nastavte Vaši síť a stiskněte OK pro začátek vyhledávání"
 
@@ -2421,6 +2396,9 @@ msgstr "Připojeno k"
 
 msgid "Connected transcoding, limit - no PiP!"
 msgstr "Připojené překódování, omezení - bez PIP!"
+
+msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgstr ""
 
 msgid "Console"
 msgstr "Console"
@@ -2532,6 +2510,18 @@ msgstr "Chorvatsko"
 msgid "Croatian"
 msgstr "Chorvatsky"
 
+msgid "Cron Manager"
+msgstr ""
+
+#, fuzzy
+msgid "Cron manager"
+msgstr "žádný správce zdrojů"
+
+#
+#, fuzzy
+msgid "Cron timers"
+msgstr "Změnit časovač"
+
 msgid "Cuba"
 msgstr "Kuba"
 
@@ -2540,6 +2530,11 @@ msgstr "Curaçao"
 
 msgid "Current CEC address"
 msgstr "Současná CEC adresa"
+
+#
+#, fuzzy
+msgid "Current Status:"
+msgstr "Aktuální nastavení:"
 
 msgid "Current device: "
 msgstr "Aktuální zařízení: "
@@ -2581,6 +2576,11 @@ msgstr "Aktuální hodnota: "
 
 msgid "Currently the commit log cannot be retrieved - please try later again"
 msgstr "V současné době není možné získat aktuální seznam změn - prosím, zkuste to později"
+
+#
+#, fuzzy
+msgid "Custom"
+msgstr "Přizpůsobení"
 
 msgid "Customize OpenWebIF settings for fallback tuner"
 msgstr "Úprava nastavení OpenWebIf pro záložní přijímač"
@@ -2709,6 +2709,11 @@ msgstr "DVD seznam titulů"
 #, fuzzy
 msgid "DVDPlayer"
 msgstr "DVD přehrávač"
+
+#
+#, fuzzy
+msgid "Daily"
+msgstr "Denně"
 
 #
 msgid "Danish"
@@ -2993,7 +2998,7 @@ msgstr "Zobrazení EPG aktuálního kanálu"
 #
 #, fuzzy
 msgid "Display Skin"
-msgstr "<Defaultní Skin>"
+msgstr "Nastavení displeje"
 
 #
 msgid "Display and userinterface"
@@ -3122,16 +3127,6 @@ msgstr ""
 "%s"
 
 #
-#, fuzzy
-msgid "Do you want to install Plugins?"
-msgstr "Ano, chci instalovat pluginy."
-
-#
-#, fuzzy
-msgid "Do you want to install a channel list?"
-msgstr "Přejete si nainstalovat balíček:\n"
-
-#
 msgid "Do you want to install the package:\n"
 msgstr "Přejete si nainstalovat balíček:\n"
 
@@ -3183,6 +3178,9 @@ msgstr "Chcete aktualizovat balíček:\n"
 msgid "Dolby"
 msgstr "Dolby"
 
+msgid "Domain"
+msgstr ""
+
 msgid "Dominica"
 msgstr "Dominika"
 
@@ -3230,11 +3228,6 @@ msgstr "Stáhnout pluginy"
 
 #
 msgid "Downloadable new plugins"
-msgstr "Instalovat nové pluginy"
-
-#
-#, fuzzy
-msgid "Downloadable plugins"
 msgstr "Instalovat nové pluginy"
 
 #
@@ -3294,18 +3287,8 @@ msgstr "Čas"
 msgid "EPG"
 msgstr "EPG"
 
-#
-#, fuzzy
-msgid "EPG Selection"
-msgstr "Výběr EPG"
-
 msgid "EPG only"
 msgstr "Pouze EPG"
-
-#
-#, fuzzy
-msgid "EPG selection"
-msgstr "Výběr EPG"
 
 #
 #, python-format
@@ -3417,6 +3400,11 @@ msgstr "Povolit automatický Fast scan"
 msgid "Enable auto fast scan for %s"
 msgstr "Povolit automatický Fast scan pro %s"
 
+#
+#, fuzzy
+msgid "Enable client mode"
+msgstr "Povolit přesun"
+
 msgid "Enable fallback remote receiver"
 msgstr "Povolit záložní přijímač"
 
@@ -3494,9 +3482,6 @@ msgstr "Enigma verze: "
 msgid "Enigma2 skin selector"
 msgstr "Enigma2 výběr skinu"
 
-msgid "Enigmalight"
-msgstr ""
-
 #
 msgid "Enter"
 msgstr "Enter"
@@ -3528,6 +3513,22 @@ msgstr "Zadejte trvalý PIN kód"
 msgid "Enter pin code"
 msgstr "Zadejte pin kód"
 
+msgid "Enter the FTP password of the host receiver (normally just leave empty)."
+msgstr ""
+
+msgid "Enter the FTP port of the host receiver (normally '21')."
+msgstr ""
+
+msgid "Enter the FTP username of the host receiver (normally 'root')."
+msgstr ""
+
+#, fuzzy
+msgid "Enter the IP address of the host receiver."
+msgstr "Zadejte, zda jste na východní nebo západní polokouli."
+
+msgid "Enter the domain of the host receiver. Do not include 'http://' or port number."
+msgstr ""
+
 msgid "Enter the frequency at which you LNB switches between low band and high band. For more information consult the spec sheet of your LNB."
 msgstr "Zadejte frekvenci kterou přepíná Váš LNB mezi nízkým a vysokým pásmem. Další informace naleznete v technické dokumentaci Vašeho LNB."
 
@@ -3540,6 +3541,9 @@ msgstr "Zadejte číslo uložené v pozicioneru, které odpovídá tomuto sateli
 #
 msgid "Enter the service pin"
 msgstr "Zadejte programový PIN"
+
+msgid "Enter the streaming port of the host receiver (normally '8001')."
+msgstr ""
 
 msgid "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
 msgstr "Zadejte aktuální zeměpisnou šířku. Jde o počet stupňů a desetin stupně o které jste vzdáleni od rovníku."
@@ -3642,9 +3646,6 @@ msgstr "Estonsko"
 msgid "Estonian"
 msgstr "Estonsky"
 
-msgid "EtPortal"
-msgstr "EtPortal"
-
 msgid "Ethernet network interface"
 msgstr "Ethernet síťové rozhraní"
 
@@ -3658,22 +3659,35 @@ msgid "Event name first"
 msgstr "Název pořadu na začátku"
 
 #
-#, fuzzy
-msgid "Event view"
-msgstr "Informační menu událostí"
-
-#
 msgid "Event view context menu"
-msgstr "Kontextové menu události"
-
-#
-#, fuzzy
-msgid "Event view menu"
 msgstr "Kontextové menu události"
 
 #
 msgid "Events info menu"
 msgstr "Informační menu událostí"
+
+msgid "Every 12 hours"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Every 2 hours"
+msgstr "Všude"
+
+#
+#, fuzzy
+msgid "Every 3 hours"
+msgstr "Všude"
+
+#
+#, fuzzy
+msgid "Every 6 hours"
+msgstr "Všude"
+
+#
+#, fuzzy
+msgid "Every hour"
+msgstr "Všude"
 
 msgid "Every known"
 msgstr "Vždy znám"
@@ -3736,11 +3750,6 @@ msgstr "Zavřít seznam síťových rozhraní"
 
 #
 msgid "Exit network wizard"
-msgstr "Ukončit síťového průvodce"
-
-#
-#, fuzzy
-msgid "Exit the wizard"
 msgstr "Ukončit síťového průvodce"
 
 #
@@ -3818,9 +3827,6 @@ msgstr "Začátek dalšího úseku ignorování časovače neaktivity"
 msgid "Extrude from left"
 msgstr ""
 
-msgid "F"
-msgstr "F"
-
 msgid "F1/F3/F4/F4-TURBO"
 msgstr "F1/F3/F4/F4-TURBO"
 
@@ -3870,6 +3876,15 @@ msgstr ""
 
 msgid "FTA"
 msgstr "FTA"
+
+#, fuzzy
+msgid "FTP connection failure"
+msgstr "LAN připojení"
+
+#
+#, fuzzy
+msgid "FTP passive mode"
+msgstr "Přenosový mód"
 
 #
 msgid "Factory reset"
@@ -4135,9 +4150,6 @@ msgstr "Další možnosti"
 msgid "Further options"
 msgstr "Další možnosti"
 
-msgid "G"
-msgstr "G"
-
 msgid "GStreamer version: "
 msgstr "GStreamer: "
 
@@ -4155,6 +4167,15 @@ msgstr ""
 #
 msgid ""
 "GUI needs a restart to apply a new skin\n"
+"Do you want to restart the GUI now?"
+msgstr ""
+"Pro uplatnění skinu je potřeba restartovat GUI\n"
+"Chcete nyní restartovat GUI?"
+
+#
+#, fuzzy
+msgid ""
+"GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
 "Pro uplatnění skinu je potřeba restartovat GUI\n"
@@ -4290,11 +4311,6 @@ msgid "GraphMultiEpg Settings"
 msgstr "Nastavení GraphMultiEPG"
 
 #
-#, fuzzy
-msgid "Graphical EPG"
-msgstr "Grafická Multi EPG"
-
-#
 msgid "Graphical Multi EPG"
 msgstr "Grafická Multi EPG"
 
@@ -4348,8 +4364,8 @@ msgstr "Guinea-Bissau"
 msgid "Guyana"
 msgstr "Guyana"
 
-msgid "H"
-msgstr "H"
+msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
+msgstr ""
 
 msgid "HD list"
 msgstr "Seznam HD"
@@ -4496,6 +4512,33 @@ msgstr "Horizontální"
 msgid "Horizontal turning speed"
 msgstr "Horizontální rychlost ladění"
 
+#
+#, fuzzy
+msgid "Host domain"
+msgstr "vypnout"
+
+msgid "Host receiver FTP password"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver FTP port"
+msgstr "Port záložního přijímače"
+
+msgid "Host receiver FTP username"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver IP address"
+msgstr "Zadejte IP adresu"
+
+#, fuzzy
+msgid "Host receiver address type"
+msgstr "Dosud nebyla přijata žádná data"
+
+#, fuzzy
+msgid "Host receiver streaming port"
+msgstr "Přijímač se restartuje"
+
 msgid "HotKey Setup"
 msgstr "Nastavení Hotkey"
 
@@ -4512,6 +4555,9 @@ msgid "Hotkey zap"
 msgstr "Hotkey zap"
 
 msgid "Hotplug"
+msgstr ""
+
+msgid "Hourly"
 msgstr ""
 
 msgid "How many minutes do you want add to the recording?"
@@ -4533,9 +4579,6 @@ msgstr "Maďarsky"
 msgid "Hungary"
 msgstr "Maďarsko"
 
-msgid "I"
-msgstr "I"
-
 #
 msgid "I do not want to perform any service scans"
 msgstr "Nechci provést žádné vyhledání programů"
@@ -4543,15 +4586,15 @@ msgstr "Nechci provést žádné vyhledání programů"
 msgid "IDLE"
 msgstr ""
 
-#, fuzzy
-msgid "IMDB Search"
-msgstr "Vyhledat"
-
 msgid "INFO"
 msgstr ""
 
 msgid "INS"
 msgstr "INS"
+
+#, fuzzy
+msgid "IP"
+msgstr "I"
 
 msgid "IP address"
 msgstr "IP adresa"
@@ -4675,9 +4718,6 @@ msgstr "Nekorektní typ služby pro PiP!"
 msgid "Increased voltage"
 msgstr "Zvýšit napětí"
 
-msgid "Index"
-msgstr ""
-
 msgid "Index allocated:"
 msgstr "Index přiřazen:"
 
@@ -4785,7 +4825,7 @@ msgstr "Instaluji"
 
 #
 #, fuzzy
-msgid "Installing software..."
+msgid "Installing service"
 msgstr "Instaluji"
 
 msgid "Instant record"
@@ -4900,9 +4940,6 @@ msgstr "Položek na stránku "
 
 msgid "Items per page for list screen"
 msgstr "Položek na stránku pro seznam"
-
-msgid "J"
-msgstr "J"
 
 msgid "Jamaica"
 msgstr "Jamajka"
@@ -5128,6 +5165,9 @@ msgstr "Spojení:"
 msgid "Linked titles with a DVD menu"
 msgstr "Připojené tituly s DVD nabídkou"
 
+msgid "List available networks"
+msgstr "Seznam dostupných sítí"
+
 msgid "List mode"
 msgstr "Seznam"
 
@@ -5232,9 +5272,6 @@ msgstr "Lucembursky"
 msgid "MMC card"
 msgstr "MMC karta"
 
-msgid "MORE"
-msgstr ""
-
 msgid "Macao"
 msgstr "Macao"
 
@@ -5293,6 +5330,9 @@ msgstr "Ručně"
 #
 msgid "Manual Scan"
 msgstr "Ruční prohledávání"
+
+msgid "Manual configuration"
+msgstr "Ruční konfigurace"
 
 #
 msgid "Manual scan"
@@ -5375,11 +5415,6 @@ msgstr "Třídění menu (%s)"
 msgid "Message"
 msgstr "Zpráva"
 
-#
-#, fuzzy
-msgid "Message..."
-msgstr "Zpráva"
-
 msgid "Messages"
 msgstr "Zprávy"
 
@@ -5457,6 +5492,11 @@ msgstr "Mongolsko"
 
 msgid "Montenegro"
 msgstr "Černá Hora"
+
+#
+#, fuzzy
+msgid "Monthly"
+msgstr "měsíc"
 
 msgid "Montserrat"
 msgstr "Montserrat"
@@ -5606,9 +5646,6 @@ msgstr "Multistream"
 msgid "Music/Ballet/Dance"
 msgstr "hudba/balet/tanec"
 
-msgid "Mute"
-msgstr ""
-
 msgid "Myanmar"
 msgstr "Myanmar"
 
@@ -5616,17 +5653,11 @@ msgstr "Myanmar"
 msgid "N/A"
 msgstr "N/A"
 
-msgid "NEXT"
-msgstr ""
-
 msgid "NIM & Type"
 msgstr "NIM & Typ"
 
 #
 msgid "NO"
-msgstr ""
-
-msgid "NOW"
 msgstr ""
 
 #
@@ -5648,11 +5679,6 @@ msgstr "DNS server %d"
 
 #
 msgid "Nameserver settings"
-msgstr "Nastavení DNS"
-
-#
-#, fuzzy
-msgid "Nameserver setup"
 msgstr "Nastavení DNS"
 
 msgid "Namespace & Orbital pos."
@@ -5691,11 +5717,6 @@ msgid "Network configuration"
 msgstr "Nastavení sítě"
 
 #
-#, fuzzy
-msgid "Network configuration..."
-msgstr "Nastavení sítě"
-
-#
 msgid "Network mount"
 msgstr "Síťové připojení"
 
@@ -5717,11 +5738,6 @@ msgstr "Nastavení sítě"
 
 #
 msgid "Network test"
-msgstr "Test sítě"
-
-#
-#, fuzzy
-msgid "Network test..."
 msgstr "Test sítě"
 
 msgid "Network test: "
@@ -6038,11 +6054,6 @@ msgid "Now"
 msgstr "Nyní"
 
 #
-#, fuzzy
-msgid "Now playing"
-msgstr "pokračovat v přehrávání"
-
-#
 msgid "Now, use the contrast setting to turn up the brightness of the background as much as possible, but make sure that you can still see the difference between the two brightest levels of shades.If you have done that, press OK."
 msgstr "Nyní použijte nastavení kontrastu pro nastavení světlosti pozadí na nejvyšší hodnotu, ale ujistěte se, že stále vidíte rozdíl mezi dvěma nejsvětlejšími odstíny. Pokud jste hotovi, stiskněte OK."
 
@@ -6066,11 +6077,6 @@ msgstr "OSD 3D nastavení"
 
 msgid "OSD name request"
 msgstr "Požadavek OSD názvu"
-
-#
-#, fuzzy
-msgid "OSD settings"
-msgstr "Nastavení"
 
 #
 msgid "OSD transparency"
@@ -6218,9 +6224,6 @@ msgstr "PGS soubor"
 msgid "PID"
 msgstr "PDC"
 
-msgid "PIN code needed"
-msgstr ""
-
 msgid "PIP"
 msgstr ""
 
@@ -6292,10 +6295,6 @@ msgstr "Rodičovský adresář"
 msgid "Parental control"
 msgstr "Rodičovský zámek"
 
-#, fuzzy
-msgid "Parental control services editor"
-msgstr "Zobrazit programy v rodičovské ochraně"
-
 #
 msgid "Parental control setup"
 msgstr "Nastavení rodičovského zámku"
@@ -6345,11 +6344,6 @@ msgstr "Peru"
 
 msgid "Philippines"
 msgstr "Filipíny"
-
-#
-#, fuzzy
-msgid "PiP setup"
-msgstr "Nastavení PiP"
 
 msgid "Picon"
 msgstr "Pikona"
@@ -6456,14 +6450,21 @@ msgstr "Vyberte si z nabídky rozšíření..."
 msgid "Please choose reader"
 msgstr "Vyberte si z nabídky rozšíření..."
 
-#, fuzzy
-msgid "Please configure the fallback tuner setup?"
-msgstr "Nastavení záložního tuneru"
+#
+msgid ""
+"Please configure or verify your Nameservers by filling out the required values.\n"
+"When you are ready press OK to continue."
+msgstr ""
+"Nakonfigurujte nebo zkontrolujte DNS servery vyplněním požadovaných hodnot.\n"
+"Pro pokračování stiskněte OK."
 
 #
-#, fuzzy
-msgid "Please connect your receiver to the internet"
-msgstr "Prosím, nastavte časové pásmo"
+msgid ""
+"Please configure your internet connection by filling out the required values.\n"
+"When you are ready press OK to continue."
+msgstr ""
+"Nakonfigurujte internetové připojení vyplněním požadovaných hodnot.\n"
+"Pro pokračování stiskněte OK."
 
 #
 msgid "Please do not change any values unless you know what you are doing!"
@@ -6504,6 +6505,10 @@ msgstr "Zadejte nový PIN"
 
 msgid "Please enter the old PIN code"
 msgstr "Zadejte starý PIN kód"
+
+#
+msgid "Please follow the instructions on the TV"
+msgstr "Následujte instrukce na TV"
 
 #
 msgid "Please note that the previously selected media could not be accessed and therefore the default directory is being used instead."
@@ -6553,59 +6558,24 @@ msgid "Please select the movie path..."
 msgstr "Vyberte cestu k filmům..."
 
 #
-msgid "Please set up tuner A"
-msgstr "Prosím, nastavte tuner A"
+msgid ""
+"Please select the network interface that you want to use for your internet connection.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Zvolte síťový interface, který chcete používat pro internetové připojení.\n"
+"\n"
+"Stiskněte OK pro pokračování."
 
 #
-msgid "Please set up tuner B"
-msgstr "Prosím, nastavte tuner B"
-
-#
-msgid "Please set up tuner C"
-msgstr "Prosím, nastavte tuner C"
-
-#
-msgid "Please set up tuner D"
-msgstr "Prosím, nastavte tuner D"
-
-#
-msgid "Please set up tuner E"
-msgstr "Prosím, nastavte tuner E"
-
-#
-msgid "Please set up tuner F"
-msgstr "Prosím, nastavte tuner F"
-
-#
-msgid "Please set up tuner G"
-msgstr "Prosím, nastavte tuner G"
-
-#
-msgid "Please set up tuner H"
-msgstr "Prosím, nastavte tuner H"
-
-#
-msgid "Please set up tuner I"
-msgstr "Prosím, nastavte tuner I"
-
-#
-msgid "Please set up tuner J"
-msgstr "Prosím, nastavte tuner J"
-
-#
-msgid "Please set up tuner Q"
-msgstr "Prosím, nastavte tuner Q"
-
-#
-msgid "Please set up tuner R"
-msgstr "Prosím, nastavte tuner R"
-
-#
-msgid "Please set your time zone"
-msgstr "Prosím, nastavte časové pásmo"
-
-msgid "Please setup the following basic configs!"
-msgstr "Prosím, nastavte následující základní nastavení!"
+msgid ""
+"Please select the wireless network that you want to connect to.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Zvolte bezdrátovou síť ke které se chcete připojit.\n"
+"\n"
+"Stiskněte OK pro pokračování."
 
 #
 msgid ""
@@ -6775,6 +6745,10 @@ msgstr "Prahová hodnota napájení. Další informace získáte v návodu k př
 #
 msgid "PowerMenu"
 msgstr "Menu napájení"
+
+#, fuzzy
+msgid "Predefined"
+msgstr "Nedefinováno"
 
 #
 msgid "Predefined transponder"
@@ -7007,11 +6981,6 @@ msgid "Quick"
 msgstr "Rychlý"
 
 #
-#, fuzzy
-msgid "Quick EPG"
-msgstr "Rychlý"
-
-#
 msgid "Quick zap"
 msgstr "Rychlé přepínání"
 
@@ -7025,10 +6994,6 @@ msgstr ""
 #
 msgid "RGB"
 msgstr "RGB"
-
-#, fuzzy
-msgid "Radio"
-msgstr " (Rádio)"
 
 #
 msgid "Ram disk"
@@ -7052,6 +7017,14 @@ msgid "Reader"
 msgstr ""
 
 msgid "Reader Statistics"
+msgstr ""
+
+#, python-format
+msgid "Ready to install \"%s\" ?"
+msgstr ""
+
+#, python-format
+msgid "Ready to remove \"%s\" ?"
 msgstr ""
 
 #
@@ -7116,11 +7089,6 @@ msgstr "Rec"
 
 msgid "Recall to previous service"
 msgstr "Vyvolat předchozí program"
-
-#
-#, fuzzy
-msgid "Reception settings"
-msgstr "Nastavení kompilace"
 
 #
 msgid "Record"
@@ -7189,6 +7157,10 @@ msgid "Refresh rate"
 msgstr "Obnovovací frekvence"
 
 #
+msgid "Refresh rate selection."
+msgstr "Volba obnovovací rychlosti."
+
+#
 msgid "Refusing to move to the same directory"
 msgstr "Odmítnutí přesunu do stejného adresáře"
 
@@ -7237,6 +7209,10 @@ msgstr "Odstranění bylo dokončeno."
 msgid "Remove"
 msgstr "Smazat"
 
+#, fuzzy
+msgid "Remove Confirmation"
+msgstr "Konfigurace časovače usínání"
+
 #
 msgid "Remove a mark"
 msgstr "Odstranit značku"
@@ -7279,6 +7255,10 @@ msgstr "Odstranění adresáře %s se nezdařilo. (Možná není prázdný.)"
 msgid "Removing partition table"
 msgstr "Odstraňuje se tabulka rozdělení disku"
 
+#, fuzzy
+msgid "Removing service"
+msgstr "Žádný kanál"
+
 #
 msgid "Rename"
 msgstr "Přejmenovat"
@@ -7288,6 +7268,11 @@ msgstr "Přejmenovat název a popis pro nové události"
 
 msgid "Repeat"
 msgstr "Opakovat"
+
+#
+#, fuzzy
+msgid "Repeat how often"
+msgstr "Druh opakování"
 
 msgid "Repeat leave standby messages"
 msgstr "Opakovat odeslání probuzení ze standby"
@@ -7500,6 +7485,9 @@ msgstr "Rotor: "
 
 msgid "Round start time on"
 msgstr "Zarovnat začátek na"
+
+msgid "Run how often ?"
+msgstr ""
 
 #, fuzzy
 msgid "Running"
@@ -7778,6 +7766,9 @@ msgstr "prohledávání..."
 msgid "Scans default lamedbs sorted by satellite with a connected dish positioner"
 msgstr "Prohledá standardní lamedbs setříděné podle satelitu a připojeného pozicioneru"
 
+msgid "Schedule EPG and channel list import"
+msgstr ""
+
 msgid "Search"
 msgstr "Vyhledat"
 
@@ -7906,11 +7897,6 @@ msgstr "Vybrat kanál"
 msgid "Select Fast DiSEqC if your aerial system supports this. If you are unsure select 'no'."
 msgstr "Zvolte možnost Rychlý DiSEqC pokud to Váš anténní systém podporuje. Pokud si nejste jisti, vyberte 'Ne'."
 
-#
-#, fuzzy
-msgid "Select HDD"
-msgstr "Zvolit"
-
 msgid "Select Image"
 msgstr "Výběr image"
 
@@ -7921,28 +7907,8 @@ msgid "Select Softcam"
 msgstr "Softcam"
 
 #
-#, fuzzy
-msgid "Select a bouquet"
-msgstr "Přidat přehled"
-
-#
-#, fuzzy
-msgid "Select a movie"
-msgstr "Vyberte film"
-
-#
 msgid "Select a network adapter"
 msgstr "Vyberte síťový adaptér"
-
-#
-#, fuzzy
-msgid "Select a skin"
-msgstr "Zvolte akci"
-
-#
-#, fuzzy
-msgid "Select a tuner"
-msgstr "Zvolte akci"
 
 #
 msgid "Select a wireless network"
@@ -7971,6 +7937,9 @@ msgstr "Vyberte zálohované soubory"
 #
 msgid "Select backup location"
 msgstr "Vyberte umístění záloh"
+
+msgid "Select between entering an IP address or a domain."
+msgstr ""
 
 msgid "Select channel"
 msgstr "Vybrat kanál"
@@ -8042,6 +8011,10 @@ msgstr "Vyberte cestu pro logfile"
 #
 msgid "Select provider to add..."
 msgstr "Vyberte poskytovatele pro přidání..."
+
+#
+msgid "Select refresh rate"
+msgstr "Vyberte obnovovací frekvenci"
 
 #
 msgid "Select satellites"
@@ -8134,6 +8107,18 @@ msgstr "Vyberte zdroje pro aktualizaci"
 #
 msgid "Select upgrade source to edit."
 msgstr "Výběr zdroje pro aktualizaci k úpravě."
+
+#
+msgid "Select video input with up/down buttons"
+msgstr "Vybere video vstup pomocí tlačítek nahoru/dolů"
+
+#
+msgid "Select video mode"
+msgstr "Zvolte video mód"
+
+#
+msgid "Select wireless network"
+msgstr "Vyberte bezdrátovou síť"
 
 msgid "Select your ATSC provider."
 msgstr "Vyberte ATSC poskytovatele."
@@ -8358,6 +8343,13 @@ msgstr "Nastavte heslo pro OpenWebIf z Vašeho záložního přijímače."
 msgid "Set the port of the OpenWebif from your fallback tuner"
 msgstr "Nastavte port pro OpenWebIf z Vašeho záložního přijímače."
 
+#, fuzzy
+msgid "Set the repeat interval of the schedule."
+msgstr "Nastavuje obnovovací frekvenci obrazu."
+
+msgid "Set the time of day to perform the import."
+msgstr ""
+
 msgid "Set time window to 1 hour"
 msgstr "Nastavit časové okno na 1 hodinu"
 
@@ -8392,10 +8384,9 @@ msgstr "Nastavení může být odlišné pro každý adresář zvlášť (pouze 
 msgid "Setup"
 msgstr "Nastavení"
 
-#
 #, fuzzy
 msgid "Setup UI animations"
-msgstr "Aktivovat současnou konfiguraci"
+msgstr "Nastavení pozicioneru"
 
 #
 msgid "Setup hard disk"
@@ -8423,6 +8414,9 @@ msgstr "Skript"
 
 msgid "Short filenames"
 msgstr "Krátké názvy souborů"
+
+msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
+msgstr ""
 
 msgid "Show"
 msgstr "Zobrazit"
@@ -8703,9 +8697,6 @@ msgstr "Skiny"
 
 msgid "Skip empty services"
 msgstr "Přeskakovat prázdné programy"
-
-msgid "Skip internet connection check (disables automatic package installation)"
-msgstr ""
 
 #
 msgid "Sleep timer"
@@ -9429,10 +9420,9 @@ msgid "Thailand"
 msgstr "Thajsko"
 
 #
-#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard.\n"
+"Please press OK to continue."
 msgstr ""
 "Děkujeme za použití průvodce.\n"
 "Stiskněte OK pro pokračování."
@@ -9574,6 +9564,13 @@ msgstr ""
 
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Uživatelské rozhraní se restartuje v debug módu"
+
+msgid ""
+"The wireless LAN plugin is not installed!\n"
+"Please install it and choose what you want to do next."
+msgstr ""
+"Plugin pro bezdrátovou LAN není nainstalován!\n"
+"Nainstalujte plugin a zvolte, co chcete dělat dál."
 
 msgid ""
 "The wireless LAN plugin is not installed!\n"
@@ -9855,9 +9852,15 @@ msgstr "Čtvrtek"
 msgid "Time"
 msgstr "Čas"
 
+msgid "Time import should start"
+msgstr ""
+
 #
 msgid "Time scale"
 msgstr "Měřítko času"
+
+msgid "Time to execute command or script"
+msgstr ""
 
 #
 msgid "Timer"
@@ -9866,11 +9869,6 @@ msgstr "Časovač"
 #
 msgid "Timer Overview"
 msgstr "Přehled časovačů"
-
-#
-#, fuzzy
-msgid "Timer edit"
-msgstr "Zadání časovače"
 
 #
 msgid "Timer entry"
@@ -9921,12 +9919,12 @@ msgid "Timerlist"
 msgstr "Upravit časovač"
 
 #
-msgid "Timeshift"
-msgstr "Timeshift"
+#, fuzzy
+msgid "Timers"
+msgstr "Časovač"
 
 #
-#, fuzzy
-msgid "Timeshift Live"
+msgid "Timeshift"
 msgstr "Timeshift"
 
 msgid "Timeshift is running. Select an action.\n"
@@ -10044,11 +10042,6 @@ msgstr "Transkódování: "
 
 #
 msgid "Translation"
-msgstr "O překladu"
-
-#
-#, fuzzy
-msgid "Translation:"
 msgstr "O překladu"
 
 msgid "Translations"
@@ -10249,9 +10242,6 @@ msgstr "Nezabezpečeno"
 msgid "Unexpected error while retreiving fallback tuner's timer information"
 msgstr "Neočekávaná chyba při načítání informací o časovači záložního přijímače."
 
-msgid "UnhandledKey"
-msgstr ""
-
 msgid "Unhide parental control services"
 msgstr "Zobrazit programy v rodičovské ochraně"
 
@@ -10439,12 +10429,6 @@ msgstr "Použijte síťového průvodce k nakonfigurování vybraného síťové
 msgid "Use the network wizard to configure your network\n"
 msgstr "Použijte průvodce pro nakonfigurování vaší sítě\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
-msgstr ""
-
-msgid "Use the wizard to set up basic features"
-msgstr ""
-
 msgid "Use these input device settings?"
 msgstr "Použít nastavení tohoto vstupního zařízení?"
 
@@ -10555,6 +10539,24 @@ msgid "Video enhancement setup"
 msgstr "Nastavení korekce obrazu"
 
 #
+msgid ""
+"Video input selection\n"
+"\n"
+"Please press OK if you can see this page on your TV (or select a different input port).\n"
+"\n"
+"The next input port will be automatically probed in 20 seconds."
+msgstr ""
+"Výběr zdroje signálu\n"
+"\n"
+"Stiskněte OK jestliže vidíte tuto stránku na TV (nebo vyberte jiný zdroj signálu).\n"
+"\n"
+"Další zdroj signálu bude automaticky prozkoumán během 10 sekund."
+
+#
+msgid "Video mode selection."
+msgstr "Výběr video módu"
+
+#
 msgid "Video output"
 msgstr "Video výstup"
 
@@ -10569,11 +10571,6 @@ msgstr "Video průvodce"
 #, python-format
 msgid "Video: %s fps"
 msgstr "Video: %s fps"
-
-#
-#, fuzzy
-msgid "VideoMode"
-msgstr "S-Video"
 
 msgid "Videocodec, size & format"
 msgstr "Video kodek, rozměr & formát"
@@ -10674,10 +10671,6 @@ msgstr "Virtuální klávesnice"
 #
 msgid "Voltage mode"
 msgstr "Mód napětí"
-
-#, fuzzy
-msgid "Volume"
-msgstr "Zasílit zvuk"
 
 msgid "Volume down"
 msgstr "Zeslabit zvuk"
@@ -10783,6 +10776,11 @@ msgstr "Středa"
 msgid "Weekday"
 msgstr "Všední den"
 
+#
+#, fuzzy
+msgid "Weekly"
+msgstr "Týdně"
+
 msgid "Weighted position"
 msgstr "Vážená pozice"
 
@@ -10800,21 +10798,18 @@ msgstr ""
 "\n"
 "Poté najděte konec, stiskněte OK a zvolte 'konec střihu'. To je vše."
 
-#, fuzzy
 msgid ""
 "Welcome.\n"
 "\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
+"If you want to connect your receiver to the Internet, this wizard will guide you through the basic network setup of your receiver.\n"
+"\n"
+"Press OK to start configuring your network"
 msgstr ""
 "Vítáme Vás.\n"
 "\n"
 "Chcete-li připojit Váš přijímač do internetu, tento průvodce Vás provede základním nastavením sítě přijímače.\n"
 "\n"
 "Stiskněte OK pro spuštění konfigurace Vaší sítě"
-
-msgid "Welcome..."
-msgstr ""
 
 #
 msgid "West"
@@ -10826,7 +10821,10 @@ msgstr "Západní limit nastaven"
 msgid "Western Sahara"
 msgstr "Západní Sahara"
 
-msgid "What type of service scan do you want?"
+msgid "What date of month ?"
+msgstr ""
+
+msgid "What day of week ?"
 msgstr ""
 
 msgid "When enabled the timer from the fallback tuner is imported"
@@ -10874,6 +10872,12 @@ msgstr "Bezdrátová síť"
 
 msgid "Wireless network configuration..."
 msgstr "Nastavení bezdrátové sítě..."
+
+msgid "Wireless network connection setup"
+msgstr "Nastavení připojení bezdrátové sítě"
+
+msgid "Wireless network connection setup."
+msgstr "Nastavení připojení bezdrátové sítě."
 
 msgid "Wireless network state"
 msgstr "Stav bezdrátové sítě"
@@ -11118,6 +11122,14 @@ msgstr ""
 msgid "Your hardware can detect CI mode itself or works only in legacy mode."
 msgstr ""
 
+#
+msgid ""
+"Your internet connection is not working!\n"
+"Please choose what you want to do next."
+msgstr ""
+"Vaše internetové připojení nepracuje!\n"
+"Zvolte prosím, co chcete dělat dál."
+
 #, python-format
 msgid "Your internet connection is working (ip: %s)"
 msgstr "Internetové připojení je funkční (ip: %s)"
@@ -11151,6 +11163,19 @@ msgstr ""
 "Internetové připojení nyní pracuje.\n"
 "\n"
 
+msgid ""
+"Your receiver is now ready to use.\n"
+"\n"
+"Your internet connection is working now.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Váš přijímač je nyní připraven k používání.\n"
+"\n"
+"Vaše internetové připojení nyní pracuje.\n"
+"\n"
+"Prosím, stiskněte OK pro pokračování."
+
 msgid "Your receiver is rebooting"
 msgstr "Přijímač se restartuje"
 
@@ -11172,6 +11197,18 @@ msgstr "Přijímač přešel do standby z důvodu neaktivity."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
 msgstr "Váš přijímač bude restartován po stisknutí OK na dálkovém ovladači."
+
+#
+msgid ""
+"Your wireless LAN internet connection could not be started!\n"
+"Have you attached your USB WLAN Stick?\n"
+"\n"
+"Please choose what you want to do next."
+msgstr ""
+"Vaše bezdrátové LAN internetové připojení nemůže být spuštěno!\n"
+"Máte připojeno Váše USB WLAN zařízení?\n"
+"\n"
+"Zvolte prosím, co chcete dělat dál."
 
 msgid "Zambia"
 msgstr "Zambie"
@@ -11481,11 +11518,6 @@ msgstr ""
 
 msgid "comedy"
 msgstr "komedie"
-
-#
-#, fuzzy
-msgid "config menu"
-msgstr "potvrzeno"
 
 #
 msgid "confirmed"
@@ -12700,6 +12732,3 @@ msgstr "Přepnout a nahrát"
 #
 msgid "zapped"
 msgstr "přepnutý"
-
-msgid "®"
-msgstr "®"

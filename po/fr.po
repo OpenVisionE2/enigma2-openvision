@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-24 19:26+0200\n"
-"PO-Revision-Date: 2019-05-21 20:49+0200\n"
+"POT-Creation-Date: 2019-05-27 09:44+0430\n"
+"PO-Revision-Date: 2019-05-25 06:58+0200\n"
 "Last-Translator: Pr2\n"
 "Language-Team: french\n"
 "Language: fr\n"
@@ -128,9 +128,6 @@ msgstr ""
 "\n"
 "Visualiser, installer et retirer les paquets disponibles ou installés."
 
-msgid "  REC  "
-msgstr ""
-
 msgid " (0 - all networks)"
 msgstr " (0 - tous les réseaux)"
 
@@ -240,6 +237,10 @@ msgstr "%H:%M"
 #. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
 msgid "%a %e %B %Y"
 msgstr "%a %e %B %Y"
+
+#, fuzzy
+msgid "%a %e %b  %-H:%M"
+msgstr "%a %e/%m  %-H:%M"
 
 #. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
 msgid "%a %e/%m"
@@ -482,9 +483,6 @@ msgstr "* Seulement disponible si plus d'une interface est active."
 msgid "* current animation"
 msgstr "Activer la configuration actuelle"
 
-msgid "-"
-msgstr ""
-
 msgid "-NO SERVICE\n"
 msgstr "-PAS DE SERVICE\n"
 
@@ -494,14 +492,6 @@ msgstr "-ERREUR AU SERVICE:%d\n"
 
 msgid "/s"
 msgstr "/s"
-
-#, fuzzy
-msgid "0"
-msgstr "30"
-
-#, fuzzy
-msgid "1"
-msgstr "1"
 
 msgid "1.0"
 msgstr "1.0"
@@ -555,10 +545,6 @@ msgstr "18 V"
 msgid "1X"
 msgstr "1"
 
-#, fuzzy
-msgid "2"
-msgstr "24"
-
 msgid "20 MB/s"
 msgstr "20 MB/s"
 
@@ -577,10 +563,6 @@ msgstr "29.97"
 #, fuzzy
 msgid "2X"
 msgstr "2"
-
-#, fuzzy
-msgid "3"
-msgstr "30"
 
 msgid "30"
 msgstr "30"
@@ -609,10 +591,6 @@ msgstr "3"
 msgid "3d mode"
 msgstr "Mode 3D"
 
-#, fuzzy
-msgid "4"
-msgstr "24"
-
 msgid "420"
 msgstr "420"
 
@@ -635,30 +613,14 @@ msgstr "4:3 PanScan"
 msgid "4X"
 msgstr "4"
 
-#, fuzzy
-msgid "5"
-msgstr "25"
-
 msgid "50 MB/s"
 msgstr "50 MB/s"
-
-msgid "6"
-msgstr ""
-
-msgid "7"
-msgstr ""
-
-msgid "8"
-msgstr ""
 
 msgid "8 character"
 msgstr ""
 
 msgid "8bit"
 msgstr "8bit"
-
-msgid "9"
-msgstr ""
 
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - par défaut (désactivé)"
@@ -696,6 +658,9 @@ msgstr "??"
 
 msgid "A"
 msgstr "A"
+
+msgid "A background update check is in progress, please wait a few minutes and try again."
+msgstr ""
 
 #, python-format
 msgid ""
@@ -1040,6 +1005,9 @@ msgstr "Autoriser de quitter Movieplayer avec la touche EXIT"
 msgid "Allow unsupported modes"
 msgstr "Autoriser les modes non supportés"
 
+msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
 msgid "Also import at reboot/restart enigma2"
 msgstr "Importer aussi au redémarrage d’Enigma2"
 
@@ -1150,6 +1118,12 @@ msgid ""
 msgstr ""
 "Êtes-vous sûr de vouloir supprimer\n"
 "la sauvegarde suivante:\n"
+
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this:\n"
+" "
+msgstr "Êtes-vous sûr de vouloir quitter cet assistant?"
 
 msgid "Are you sure you want to exit this wizard?"
 msgstr "Êtes-vous sûr de vouloir quitter cet assistant?"
@@ -1809,10 +1783,6 @@ msgstr "Sélection de la chaîne"
 msgid "Channel:"
 msgstr "Chaîne:"
 
-#, fuzzy
-msgid "Channellist menu"
-msgstr "Liste des chaînes"
-
 msgid "Channelnumber and picon"
 msgstr "Numéro de la chaîne et picon"
 
@@ -1847,20 +1817,8 @@ msgstr "Chapitre:"
 msgid "Check"
 msgstr "Vérification"
 
-#, fuzzy
-msgid "Check the internet connection"
-msgstr "Votre récepteur ne dispose pas d'une connexion Internet"
-
-#, fuzzy
-msgid "Check the internet connection again"
-msgstr "Votre récepteur ne dispose pas d'une connexion Internet"
-
 msgid "Checking filesystem..."
 msgstr "Vérification du système de fichiers..."
-
-#, fuzzy
-msgid "Checking the internet connection"
-msgstr "Votre récepteur ne dispose pas d'une connexion Internet"
 
 #, python-format
 msgid ""
@@ -1951,6 +1909,17 @@ msgstr ""
 msgid "Client is streaming from this box!"
 msgstr "Un client regarde en streaming depuis ce récepteur!"
 
+#, fuzzy
+msgid "Client mode"
+msgstr "Initialiser le module"
+
+msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgstr ""
+
+#, fuzzy
+msgid "Client tuner configuration"
+msgstr "Configuration tuner"
+
 msgid "Clients"
 msgstr ""
 
@@ -1990,16 +1959,16 @@ msgstr "Combiné"
 msgid "Combo"
 msgstr "Combo"
 
-#, fuzzy
-msgid "Command execution..."
-msgstr "Sélection de programmation..."
-
 msgid "Command order"
 msgstr "Ordre de la commande"
 
 #, fuzzy
-msgid "Commit info"
-msgstr "Communication"
+msgid "Command to run"
+msgstr "Ordre de la commande"
+
+#, fuzzy
+msgid "Command type"
+msgstr "Ordre de la commande"
 
 msgid "Common Interface"
 msgstr "Interface Commune"
@@ -2052,6 +2021,9 @@ msgstr "Configurer DVB-T"
 
 msgid "Configure if the HDMI EDID checking should be bypassed as this might solve issue with some TVs."
 msgstr "Configurer si la vérification HDMI EDID doit être contournée étant donné que cela peut résoudre un problème avec certaines TVs."
+
+msgid "Configure interface"
+msgstr "Configure l'interface"
 
 msgid "Configure nameservers"
 msgstr "Configure les serveurs de noms"
@@ -2110,6 +2082,9 @@ msgstr "Configure le format couleur qui devra être utilisé sur la sortie péri
 msgid "Configure your internal LAN"
 msgstr "Configure votre réseau interne"
 
+msgid "Configure your network again"
+msgstr "Configure encore votre réseau"
+
 msgid "Configure your network settings and press OK to scan"
 msgstr "Configure vos paramètres réseau, puis appuyez sur OK pour lancer la recherche"
 
@@ -2148,6 +2123,9 @@ msgstr "Connecté à"
 
 msgid "Connected transcoding, limit - no PiP!"
 msgstr "Connecté en transcodage, limite - pas de PiP!"
+
+msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgstr ""
 
 msgid "Console"
 msgstr "Console"
@@ -2246,6 +2224,17 @@ msgstr "Croatie"
 msgid "Croatian"
 msgstr "Croate"
 
+msgid "Cron Manager"
+msgstr ""
+
+#, fuzzy
+msgid "Cron manager"
+msgstr "aucun gestionnaire de ressource"
+
+#, fuzzy
+msgid "Cron timers"
+msgstr "Changer programmation"
+
 msgid "Cuba"
 msgstr "Cuba"
 
@@ -2254,6 +2243,10 @@ msgstr "Curacao"
 
 msgid "Current CEC address"
 msgstr "Adresse CEC actuelle"
+
+#, fuzzy
+msgid "Current Status:"
+msgstr "Paramètres actuels:"
 
 msgid "Current device: "
 msgstr "Périphérique actuel: "
@@ -2290,6 +2283,10 @@ msgstr "Valeur actuelle: "
 
 msgid "Currently the commit log cannot be retrieved - please try later again"
 msgstr "Actuellement le log des changements ne peut pas être retrouvé - merci de réessayer plus tard"
+
+#, fuzzy
+msgid "Custom"
+msgstr "Personnaliser"
 
 msgid "Customize OpenWebIF settings for fallback tuner"
 msgstr "Personnaliser les paramètres OpenWebIF pour le tuner de secours"
@@ -2398,9 +2395,12 @@ msgstr "Lecteur DVD"
 msgid "DVD titlelist"
 msgstr "Liste titres DVD"
 
-#, fuzzy
 msgid "DVDPlayer"
 msgstr "Lecteur DVD"
+
+#, fuzzy
+msgid "Daily"
+msgstr "Quotidien"
 
 msgid "Danish"
 msgstr "Danois"
@@ -2743,14 +2743,6 @@ msgstr ""
 "Voulez-vous flasher l'image\n"
 "%s"
 
-#, fuzzy
-msgid "Do you want to install Plugins?"
-msgstr "Oui, je désire installer les plugins"
-
-#, fuzzy
-msgid "Do you want to install a channel list?"
-msgstr "Voulez-vous installer le paquet:\n"
-
 msgid "Do you want to install the package:\n"
 msgstr "Voulez-vous installer le paquet:\n"
 
@@ -2794,6 +2786,9 @@ msgstr "Voulez-vous mettre à jour le paquet:\n"
 msgid "Dolby"
 msgstr "Dolby"
 
+msgid "Domain"
+msgstr ""
+
 msgid "Dominica"
 msgstr "Dominique"
 
@@ -2836,10 +2831,6 @@ msgid "Download plugins"
 msgstr "Ajouter extensions"
 
 msgid "Downloadable new plugins"
-msgstr "Nouvelles extensions téléchargeables"
-
-#, fuzzy
-msgid "Downloadable plugins"
 msgstr "Nouvelles extensions téléchargeables"
 
 msgid "Downloading"
@@ -2890,16 +2881,8 @@ msgstr "Heure"
 msgid "EPG"
 msgstr "EPG"
 
-#, fuzzy
-msgid "EPG Selection"
-msgstr "Sélection EPG"
-
 msgid "EPG only"
 msgstr "Seulement l’EPG"
-
-#, fuzzy
-msgid "EPG selection"
-msgstr "Sélection EPG"
 
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
@@ -2998,6 +2981,10 @@ msgstr "Activer la recherche rapide automatique"
 msgid "Enable auto fast scan for %s"
 msgstr "Activer la recherche rapide automatique pour %s"
 
+#, fuzzy
+msgid "Enable client mode"
+msgstr "Activer le mode déplacement"
+
 msgid "Enable fallback remote receiver"
 msgstr "Activer le récepteur distant de repli"
 
@@ -3063,9 +3050,6 @@ msgstr "Version Enigma: "
 msgid "Enigma2 skin selector"
 msgstr "Sélecteur de thème/skin Enigma2"
 
-msgid "Enigmalight"
-msgstr ""
-
 msgid "Enter"
 msgstr "Entrer"
 
@@ -3093,6 +3077,22 @@ msgstr "Saisir le code PIN persistant"
 msgid "Enter pin code"
 msgstr "Saisir code PIN"
 
+msgid "Enter the FTP password of the host receiver (normally just leave empty)."
+msgstr ""
+
+msgid "Enter the FTP port of the host receiver (normally '21')."
+msgstr ""
+
+msgid "Enter the FTP username of the host receiver (normally 'root')."
+msgstr ""
+
+#, fuzzy
+msgid "Enter the IP address of the host receiver."
+msgstr "Saisissez si vous êtes dans l’hémisphère est ou ouest."
+
+msgid "Enter the domain of the host receiver. Do not include 'http://' or port number."
+msgstr ""
+
 msgid "Enter the frequency at which you LNB switches between low band and high band. For more information consult the spec sheet of your LNB."
 msgstr "Entrez la fréquence à la quelle votre LNB bascule entre la bande basse et haute. Pour plus d’information consultez la fiche technique de votre LNB."
 
@@ -3104,6 +3104,9 @@ msgstr "Entrez le numéro stocké dans le positionneur qui correspond à ce sate
 
 msgid "Enter the service pin"
 msgstr "Entrer le code PIN de maintenace"
+
+msgid "Enter the streaming port of the host receiver (normally '8001')."
+msgstr ""
 
 msgid "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
 msgstr "Entrer votre latitude actuelle. C’est le nombre de degré qui vous sépare de l’équateur sous forme décimale."
@@ -3199,9 +3202,6 @@ msgstr "Estonie"
 msgid "Estonian"
 msgstr "Estonien"
 
-msgid "EtPortal"
-msgstr "EtPortal"
-
 msgid "Ethernet network interface"
 msgstr "Interface réseau Ethernet"
 
@@ -3214,19 +3214,30 @@ msgstr "Taille de la police de l'événement (par rapport à la taille du skin)"
 msgid "Event name first"
 msgstr "D'abord le nom de l'événement"
 
-#, fuzzy
-msgid "Event view"
-msgstr "Menu info évènements"
-
 msgid "Event view context menu"
-msgstr "Menu contextuel de l’évènement"
-
-#, fuzzy
-msgid "Event view menu"
 msgstr "Menu contextuel de l’évènement"
 
 msgid "Events info menu"
 msgstr "Menu info évènements"
+
+msgid "Every 12 hours"
+msgstr ""
+
+#, fuzzy
+msgid "Every 2 hours"
+msgstr "Partout"
+
+#, fuzzy
+msgid "Every 3 hours"
+msgstr "Partout"
+
+#, fuzzy
+msgid "Every 6 hours"
+msgstr "Partout"
+
+#, fuzzy
+msgid "Every hour"
+msgstr "Partout"
 
 msgid "Every known"
 msgstr "Tout ce qui est connu"
@@ -3277,10 +3288,6 @@ msgid "Exit network interface list"
 msgstr "Quitter la liste des interfaces réseau"
 
 msgid "Exit network wizard"
-msgstr "Quitter l’assistant réseau"
-
-#, fuzzy
-msgid "Exit the wizard"
 msgstr "Quitter l’assistant réseau"
 
 msgid "Exit/OK"
@@ -3350,9 +3357,6 @@ msgstr "Heure de début supplémentaire pour ignorer l'arrêt automatique"
 msgid "Extrude from left"
 msgstr ""
 
-msgid "F"
-msgstr "F"
-
 msgid "F1/F3/F4/F4-TURBO"
 msgstr "F1/F3/F4/F4-TURBO"
 
@@ -3401,6 +3405,14 @@ msgstr ""
 
 msgid "FTA"
 msgstr "En clair"
+
+#, fuzzy
+msgid "FTP connection failure"
+msgstr "Connexion LAN"
+
+#, fuzzy
+msgid "FTP passive mode"
+msgstr "Mode de transmission"
 
 msgid "Factory reset"
 msgstr "Réinitialisation d’usine"
@@ -3636,9 +3648,6 @@ msgstr "Options supplémentaires"
 msgid "Further options"
 msgstr "Options supplémentaires"
 
-msgid "G"
-msgstr "G"
-
 msgid "GStreamer version: "
 msgstr "Version de GStreamer: "
 
@@ -3654,6 +3663,14 @@ msgstr ""
 
 msgid ""
 "GUI needs a restart to apply a new skin\n"
+"Do you want to restart the GUI now?"
+msgstr ""
+"L'interface doit redémarrer pour appliquer ce thème\n"
+"Voulez-vous relancer l'interface maintenant?"
+
+#, fuzzy
+msgid ""
+"GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
 "L'interface doit redémarrer pour appliquer ce thème\n"
@@ -3774,10 +3791,6 @@ msgstr "Aller sur X calibration"
 msgid "GraphMultiEpg Settings"
 msgstr "Paramètres GraphMultiEpg"
 
-#, fuzzy
-msgid "Graphical EPG"
-msgstr "Multi EPG Graphique"
-
 msgid "Graphical Multi EPG"
 msgstr "Multi EPG Graphique"
 
@@ -3829,8 +3842,8 @@ msgstr "Guinée-Bissau"
 msgid "Guyana"
 msgstr "Guyane"
 
-msgid "H"
-msgstr "H"
+msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
+msgstr ""
 
 msgid "HD list"
 msgstr "Liste HD"
@@ -3967,6 +3980,32 @@ msgstr "Horizontal"
 msgid "Horizontal turning speed"
 msgstr "Vitesse de rotation horizontale"
 
+#, fuzzy
+msgid "Host domain"
+msgstr "Éteindre"
+
+msgid "Host receiver FTP password"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver FTP port"
+msgstr "Configuration du port du récepteur distant de repli"
+
+msgid "Host receiver FTP username"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver IP address"
+msgstr "Entrer l’adresse IP"
+
+#, fuzzy
+msgid "Host receiver address type"
+msgstr "Encore aucune donnée reçue"
+
+#, fuzzy
+msgid "Host receiver streaming port"
+msgstr "Votre récepteur redémarre"
+
 msgid "HotKey Setup"
 msgstr "Configurer Hotkey"
 
@@ -3983,6 +4022,9 @@ msgid "Hotkey zap"
 msgstr "Hotkey zap"
 
 msgid "Hotplug"
+msgstr "Connexion à chaud (Hotplug)"
+
+msgid "Hourly"
 msgstr ""
 
 msgid "How many minutes do you want add to the recording?"
@@ -4000,24 +4042,21 @@ msgstr "Hongrois"
 msgid "Hungary"
 msgstr "Hongrie"
 
-msgid "I"
-msgstr "I"
-
 msgid "I do not want to perform any service scans"
 msgstr "Je ne désire pas rechercher les services"
 
 msgid "IDLE"
 msgstr "VEILLE"
 
-#, fuzzy
-msgid "IMDB Search"
-msgstr "Recherche"
-
 msgid "INFO"
 msgstr "INFO"
 
 msgid "INS"
 msgstr "INS"
+
+#, fuzzy
+msgid "IP"
+msgstr "I"
 
 msgid "IP address"
 msgstr "Adresse IP"
@@ -4126,9 +4165,6 @@ msgstr "Type de service incorrect pour PiP (image-dans-image)!"
 msgid "Increased voltage"
 msgstr "Augmenter la tension"
 
-msgid "Index"
-msgstr ""
-
 msgid "Index allocated:"
 msgstr "Indice attribué:"
 
@@ -4217,7 +4253,7 @@ msgid "Installing"
 msgstr "Installation"
 
 #, fuzzy
-msgid "Installing software..."
+msgid "Installing service"
 msgstr "Installation"
 
 msgid "Instant record"
@@ -4316,9 +4352,6 @@ msgstr "Éléments par page "
 
 msgid "Items per page for list screen"
 msgstr "Éléments par page en mode liste"
-
-msgid "J"
-msgstr "J"
 
 msgid "Jamaica"
 msgstr "Jamaïque"
@@ -4514,6 +4547,9 @@ msgstr "Lien:"
 msgid "Linked titles with a DVD menu"
 msgstr "Titres liés avec un menu DVD"
 
+msgid "List available networks"
+msgstr "Liste des réseaux disponibles"
+
 msgid "List mode"
 msgstr "Mode liste"
 
@@ -4601,9 +4637,6 @@ msgstr "Luxembourgeois"
 msgid "MMC card"
 msgstr "Carte MMC"
 
-msgid "MORE"
-msgstr ""
-
 msgid "Macao"
 msgstr "Macao"
 
@@ -4654,6 +4687,9 @@ msgstr "Manuel"
 
 msgid "Manual Scan"
 msgstr "Recherche manuelle"
+
+msgid "Manual configuration"
+msgstr "Configuration manuelle"
 
 msgid "Manual scan"
 msgstr "Recherche manuelle"
@@ -4720,10 +4756,6 @@ msgid "Menusort (%s)"
 msgstr "Trier le menu (%s)"
 
 msgid "Message"
-msgstr "Message"
-
-#, fuzzy
-msgid "Message..."
 msgstr "Message"
 
 msgid "Messages"
@@ -4794,6 +4826,10 @@ msgstr "Mongolie"
 
 msgid "Montenegro"
 msgstr "Monténégro"
+
+#, fuzzy
+msgid "Monthly"
+msgstr "Mois"
 
 msgid "Montserrat"
 msgstr "Montserrat"
@@ -4927,26 +4963,16 @@ msgstr "Multistream"
 msgid "Music/Ballet/Dance"
 msgstr "Musique/Ballet/Danse"
 
-msgid "Mute"
-msgstr ""
-
 msgid "Myanmar"
 msgstr "Birmanie"
 
 msgid "N/A"
 msgstr "N/A"
 
-msgid "NEXT"
-msgstr ""
-
 msgid "NIM & Type"
 msgstr "NIM & type"
 
 msgid "NO"
-msgstr "NON"
-
-#, fuzzy
-msgid "NOW"
 msgstr "NON"
 
 msgid "NTSC"
@@ -4963,10 +4989,6 @@ msgid "Nameserver %d"
 msgstr "Serveur de nom %d"
 
 msgid "Nameserver settings"
-msgstr "Paramètres du serveur de nom"
-
-#, fuzzy
-msgid "Nameserver setup"
 msgstr "Paramètres du serveur de nom"
 
 msgid "Namespace & Orbital pos."
@@ -4999,10 +5021,6 @@ msgstr "Info réseau:"
 msgid "Network configuration"
 msgstr "Configuration du réseau"
 
-#, fuzzy
-msgid "Network configuration..."
-msgstr "Configuration du réseau"
-
 msgid "Network mount"
 msgstr "Montage réseau"
 
@@ -5020,10 +5038,6 @@ msgid "Network setup"
 msgstr "Paramètres du réseau"
 
 msgid "Network test"
-msgstr "Test du réseau"
-
-#, fuzzy
-msgid "Network test..."
 msgstr "Test du réseau"
 
 msgid "Network test: "
@@ -5082,9 +5096,8 @@ msgstr "Pas de ECMPids disponible (Service en clair (FTA))"
 msgid "No HDD found or HDD not initialized!"
 msgstr "Aucun disque dur trouvé, ou disque dur non initialisé!"
 
-#, fuzzy
 msgid "No active subservices available."
-msgstr "Aucune mise à jour disponible"
+msgstr "Aucune sous service actif disponible"
 
 msgid "No age block"
 msgstr "Pas de blocage sur l'âge"
@@ -5295,10 +5308,6 @@ msgctxt "now/next: 'now' event label"
 msgid "Now"
 msgstr "Maintenant"
 
-#, fuzzy
-msgid "Now playing"
-msgstr "Continuer de jouer"
-
 msgid "Now, use the contrast setting to turn up the brightness of the background as much as possible, but make sure that you can still see the difference between the two brightest levels of shades.If you have done that, press OK."
 msgstr "Maintenant, utilisez les paramètres de contraste pour indiquer la luminosité du fond autant que possible, mais assurez-vous que vous pouvez toujours voir la différence entre les deux niveaux les plus lumineux des nuances. Si vous avez fait cela, appuyez sur OK."
 
@@ -5320,10 +5329,6 @@ msgstr "Configuration affichage 3D (OSD)"
 
 msgid "OSD name request"
 msgstr "Demande de nom de l'OSD"
-
-#, fuzzy
-msgid "OSD settings"
-msgstr "Paramètres"
 
 msgid "OSD transparency"
 msgstr "Transparence OSD"
@@ -5457,9 +5462,6 @@ msgstr "Fichier PGS"
 msgid "PID"
 msgstr "PDC"
 
-msgid "PIN code needed"
-msgstr ""
-
 msgid "PIP"
 msgstr ""
 
@@ -5524,10 +5526,6 @@ msgstr "Répertoire parent"
 msgid "Parental control"
 msgstr "Contrôle parental"
 
-#, fuzzy
-msgid "Parental control services editor"
-msgstr "Afficher les services avec contrôle parental"
-
 msgid "Parental control setup"
 msgstr "Paramètres du contrôle parental"
 
@@ -5574,10 +5572,6 @@ msgstr "Pérou"
 msgid "Philippines"
 msgstr "Philippines"
 
-#, fuzzy
-msgid "PiP setup"
-msgstr "Paramètres PiP"
-
 msgid "Picon"
 msgstr "Picon"
 
@@ -5606,9 +5600,8 @@ msgstr "Lire"
 msgid "Play DVD"
 msgstr "Lire DVD"
 
-#, fuzzy
 msgid "Play DVDs"
-msgstr "Lire DVD"
+msgstr "Lire DVDs"
 
 msgid "Play audio-CD..."
 msgstr "Lire CD-Audio..."
@@ -5663,15 +5656,19 @@ msgstr "Veuillez choisir une extension..."
 msgid "Please choose reader"
 msgstr "Veuillez choisir une extension..."
 
-#, fuzzy
-msgid "Please configure the fallback tuner setup?"
-msgstr "Configuration du tuner de repli"
-
-#, fuzzy
-msgid "Please connect your receiver to the internet"
+msgid ""
+"Please configure or verify your Nameservers by filling out the required values.\n"
+"When you are ready press OK to continue."
 msgstr ""
-"\n"
-"Restaurer les réglages de votre récepteur."
+"Veuillez configurer ou vérifier vos serveurs de noms en renseignant les valeurs nécessaires.\n"
+"Quand vous serez prêt, appuyez sur OK pour continuer."
+
+msgid ""
+"Please configure your internet connection by filling out the required values.\n"
+"When you are ready press OK to continue."
+msgstr ""
+"Veuillez configurer votre connexion Internet en renseignant les valeurs nécessaires.\n"
+"Quand vous serez prêt, appuyez sur OK pour continuer."
 
 msgid "Please do not change any values unless you know what you are doing!"
 msgstr "Veuillez ne changer aucune valeur si vous ne savez pas ce que vous faites!"
@@ -5705,6 +5702,9 @@ msgstr "Veuillez saisir le nouveau code PIN"
 
 msgid "Please enter the old PIN code"
 msgstr "Veuillez saisir l'ancien code PIN"
+
+msgid "Please follow the instructions on the TV"
+msgstr "Veuillez suivre les instructions sur la TV"
 
 msgid "Please note that the previously selected media could not be accessed and therefore the default directory is being used instead."
 msgstr "Veuillez noter que le média sélectionné précédent n'est pas accessible, par conséquent, le répertoire par défaut sera utilisé à la place."
@@ -5742,60 +5742,23 @@ msgstr "Veuillez choisir une étiquette pour filtrer..."
 msgid "Please select the movie path..."
 msgstr "Veuillez choisir le chemin d’accès au film..."
 
-#, fuzzy
-msgid "Please set up tuner A"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner B"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner C"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner D"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner E"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner F"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner G"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner H"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner I"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner J"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner Q"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set up tuner R"
-msgstr "Ouvrir la configuration du tuner "
-
-#, fuzzy
-msgid "Please set your time zone"
-msgstr "Merci d'entrer un nouveau nom:"
-
-msgid "Please setup the following basic configs!"
+msgid ""
+"Please select the network interface that you want to use for your internet connection.\n"
+"\n"
+"Please press OK to continue."
 msgstr ""
+"Veuillez sélectionner l'interface réseau que vous voulez utiliser pour votre connexion Internet.\n"
+"\n"
+"Veuillez appuyer sur OK pour continuer."
+
+msgid ""
+"Please select the wireless network that you want to connect to.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Veuillez sélectionner le réseau sans fil auquel se connecter.\n"
+"\n"
+"Veuillez appuyer sur OK pour continuer."
 
 msgid ""
 "Please use direction keys to move the PiP window.\n"
@@ -5934,6 +5897,10 @@ msgstr "Seuil de puissance. Consulter le manuel de votre récepteur pour plus d�
 
 msgid "PowerMenu"
 msgstr "Menu alimentation"
+
+#, fuzzy
+msgid "Predefined"
+msgstr "Indéfini"
 
 msgid "Predefined transponder"
 msgstr "Transpondeur prédéfini"
@@ -6133,10 +6100,6 @@ msgstr "Question"
 msgid "Quick"
 msgstr "Rapide"
 
-#, fuzzy
-msgid "Quick EPG"
-msgstr "Rapide"
-
 msgid "Quick zap"
 msgstr "Zapping rapide"
 
@@ -6148,10 +6111,6 @@ msgstr ""
 
 msgid "RGB"
 msgstr "RGB"
-
-#, fuzzy
-msgid "Radio"
-msgstr " (Radio)"
 
 msgid "Ram disk"
 msgstr "Disque RAM"
@@ -6173,6 +6132,14 @@ msgid "Reader"
 msgstr ""
 
 msgid "Reader Statistics"
+msgstr ""
+
+#, python-format
+msgid "Ready to install \"%s\" ?"
+msgstr ""
+
+#, python-format
+msgid "Ready to remove \"%s\" ?"
 msgstr ""
 
 #, fuzzy
@@ -6226,10 +6193,6 @@ msgstr "Enr"
 
 msgid "Recall to previous service"
 msgstr "Retour au service précédent"
-
-#, fuzzy
-msgid "Reception settings"
-msgstr "Paramètres de la collection"
 
 msgid "Record"
 msgstr "Enregistrer"
@@ -6287,6 +6250,9 @@ msgstr "Rafraîchissement"
 msgid "Refresh rate"
 msgstr "Vitesse de rafraîchissement"
 
+msgid "Refresh rate selection."
+msgstr "Sélection de vitesse de rafraîchissement"
+
 msgid "Refusing to move to the same directory"
 msgstr "Refus de déplacer vers le même répertoire"
 
@@ -6329,6 +6295,10 @@ msgstr "Suppression terminée."
 msgid "Remove"
 msgstr "Supprimer"
 
+#, fuzzy
+msgid "Remove Confirmation"
+msgstr "Configuration de l'arrêt automatique"
+
 msgid "Remove a mark"
 msgstr "Supprimer un marqueur"
 
@@ -6363,6 +6333,10 @@ msgstr "Échec de la suppression du répertoire %s. (Peut-être non vide.)"
 msgid "Removing partition table"
 msgstr "Suppression de la table de partition"
 
+#, fuzzy
+msgid "Removing service"
+msgstr "Pas de service"
+
 msgid "Rename"
 msgstr "Renommer"
 
@@ -6371,6 +6345,10 @@ msgstr "Renommer le nom et la description pour les nouveaux événements"
 
 msgid "Repeat"
 msgstr "Répéter"
+
+#, fuzzy
+msgid "Repeat how often"
+msgstr "Type de répétition"
 
 msgid "Repeat leave standby messages"
 msgstr "Répéter les messages pour quitter le mode veille"
@@ -6548,6 +6526,9 @@ msgstr "Rotor: "
 
 msgid "Round start time on"
 msgstr "Heure de début de rotation"
+
+msgid "Run how often ?"
+msgstr ""
 
 #, fuzzy
 msgid "Running"
@@ -6793,6 +6774,9 @@ msgstr "Recherche en cours..."
 msgid "Scans default lamedbs sorted by satellite with a connected dish positioner"
 msgstr "Rechercher les lamedbs standards triés par satellite avec un positionneur de parabole connecté"
 
+msgid "Schedule EPG and channel list import"
+msgstr ""
+
 msgid "Search"
 msgstr "Recherche"
 
@@ -6907,10 +6891,6 @@ msgstr "Sélectionner une chaîne"
 msgid "Select Fast DiSEqC if your aerial system supports this. If you are unsure select 'no'."
 msgstr "Sélectionner Fast DiSEqC si votre système aérien le supporte. Si vous n’êtes pas certain choisissez ‘non’."
 
-#, fuzzy
-msgid "Select HDD"
-msgstr "Sélectionner"
-
 msgid "Select Image"
 msgstr "Sélectionner l'image"
 
@@ -6920,24 +6900,8 @@ msgstr "Sélectionner le Multiboot"
 msgid "Select Softcam"
 msgstr "Sélectionner un Softcam"
 
-#, fuzzy
-msgid "Select a bouquet"
-msgstr "Ajouter un bouquet"
-
-#, fuzzy
-msgid "Select a movie"
-msgstr "Sélectionner un film"
-
 msgid "Select a network adapter"
 msgstr "Sélectionner un adaptateur réseau"
-
-#, fuzzy
-msgid "Select a skin"
-msgstr "Sélectionner une action"
-
-#, fuzzy
-msgid "Select a tuner"
-msgstr "Sélectionner une action"
 
 msgid "Select a wireless network"
 msgstr "Sélectionner un réseau sans fil"
@@ -6960,6 +6924,9 @@ msgstr "Sélectionner les fichiers de sauvegarde"
 
 msgid "Select backup location"
 msgstr "Sélectionner l'emplacement de sauvegarde"
+
+msgid "Select between entering an IP address or a domain."
+msgstr ""
 
 msgid "Select channel"
 msgstr "Sélectionner une chaîne"
@@ -7020,6 +6987,9 @@ msgstr "Sélectionner le répertoire pour le fichier log"
 
 msgid "Select provider to add..."
 msgstr "Sélectionner l’opérateur à ajouter..."
+
+msgid "Select refresh rate"
+msgstr "Sélectionner la vitesse rafraîchissement"
 
 msgid "Select satellites"
 msgstr "Sélectionner les satellites"
@@ -7104,6 +7074,15 @@ msgstr "Sélectionnez la source de mise à jour"
 
 msgid "Select upgrade source to edit."
 msgstr "Sélectionnez la source de mise à niveau pour éditer."
+
+msgid "Select video input with up/down buttons"
+msgstr "Sélectionner l’entrée vidéo avec les boutons haut/bas"
+
+msgid "Select video mode"
+msgstr "Sélectionner le mode vidéo"
+
+msgid "Select wireless network"
+msgstr "Sélectionner l'interface sans fil"
 
 msgid "Select your ATSC provider."
 msgstr "Sélectionner votre opérateur ATSC"
@@ -7301,6 +7280,13 @@ msgstr "Définir le mot de passe d’OpenWebif de votre tuner de secours"
 msgid "Set the port of the OpenWebif from your fallback tuner"
 msgstr "Définir le port d’OpenWebif de votre tuner de secours"
 
+#, fuzzy
+msgid "Set the repeat interval of the schedule."
+msgstr "Configure la fréquence de rafraîchissement de l'écran."
+
+msgid "Set the time of day to perform the import."
+msgstr ""
+
 msgid "Set time window to 1 hour"
 msgstr "Réglez la fenêtre de temps à 1 heure"
 
@@ -7358,6 +7344,9 @@ msgstr "Shellscript"
 
 msgid "Short filenames"
 msgstr "Noms de fichiers court"
+
+msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
+msgstr ""
 
 msgid "Show"
 msgstr "Afficher"
@@ -7603,9 +7592,6 @@ msgstr "Thèmes/Skins"
 msgid "Skip empty services"
 msgstr "Ignorer les services vides"
 
-msgid "Skip internet connection check (disables automatic package installation)"
-msgstr ""
-
 msgid "Sleep timer"
 msgstr "Arrêt automatique"
 
@@ -7684,7 +7670,7 @@ msgid "Social/Political/Economics"
 msgstr "Société/Politique/Economie"
 
 msgid "SocketMMI"
-msgstr ""
+msgstr "Douille IMM (SocketMMI)"
 
 msgid "SoftCam / CI"
 msgstr "Lecteur de cartes (Softcam/CI)"
@@ -8178,7 +8164,7 @@ msgstr ""
 "\n"
 "Traducteur: Pr2\n"
 "Support: www.openpli.org\n"
-"Dernière MAJ: 21-05-2019"
+"Dernière MAJ: 25-05-2019"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "Fichier TS trop grand pour le niveau 1 ISO9660!"
@@ -8243,10 +8229,9 @@ msgstr "Thaï"
 msgid "Thailand"
 msgstr "Thailand"
 
-#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard.\n"
+"Please press OK to continue."
 msgstr ""
 "Merci d'utiliser l'assistant.\n"
 "Veuillez appuyer sur OK pour continuer."
@@ -8382,6 +8367,13 @@ msgstr ""
 
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "L'interface utilisateur de votre récepteur redémarre en mode déboggage"
+
+msgid ""
+"The wireless LAN plugin is not installed!\n"
+"Please install it and choose what you want to do next."
+msgstr ""
+"L'extension LAN sans fil n'est pas installée !\n"
+"Veuillez l'installer et choisir ce que vous voulez faire ensuite."
 
 msgid ""
 "The wireless LAN plugin is not installed!\n"
@@ -8640,18 +8632,20 @@ msgstr "Jeudi"
 msgid "Time"
 msgstr "Heure"
 
+msgid "Time import should start"
+msgstr ""
+
 msgid "Time scale"
 msgstr "Echelle de temps"
+
+msgid "Time to execute command or script"
+msgstr ""
 
 msgid "Timer"
 msgstr "Programmation"
 
 msgid "Timer Overview"
 msgstr "Aperçu des programmations"
-
-#, fuzzy
-msgid "Timer edit"
-msgstr "Saisir programmation"
 
 msgid "Timer entry"
 msgstr "Saisir programmation"
@@ -8692,11 +8686,11 @@ msgstr "Programmation"
 msgid "Timerlist"
 msgstr "Édition des programmations"
 
-msgid "Timeshift"
-msgstr "PauseDirect"
-
 #, fuzzy
-msgid "Timeshift Live"
+msgid "Timers"
+msgstr "Programmation"
+
+msgid "Timeshift"
 msgstr "PauseDirect"
 
 msgid "Timeshift is running. Select an action.\n"
@@ -8797,10 +8791,6 @@ msgid "Transcoding: "
 msgstr "Transcodage: "
 
 msgid "Translation"
-msgstr "Traduction"
-
-#, fuzzy
-msgid "Translation:"
 msgstr "Traduction"
 
 msgid "Translations"
@@ -8978,9 +8968,6 @@ msgstr "Non crypté"
 msgid "Unexpected error while retreiving fallback tuner's timer information"
 msgstr "Erreur inattendue lors de la récupération des informations de programmation du récepteur de repli"
 
-msgid "UnhandledKey"
-msgstr ""
-
 msgid "Unhide parental control services"
 msgstr "Afficher les services avec contrôle parental"
 
@@ -9145,12 +9132,6 @@ msgstr "Utiliser l'assistant réseau pour configurer l'adaptateur réseau"
 msgid "Use the network wizard to configure your network\n"
 msgstr "Utiliser l'assistant réseau pour configurer votre réseau\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
-msgstr ""
-
-msgid "Use the wizard to set up basic features"
-msgstr ""
-
 msgid "Use these input device settings?"
 msgstr "Utiliser ces paramètres périphérique entrée?"
 
@@ -9246,6 +9227,22 @@ msgstr "Paramètres pour vidéo améliorée"
 msgid "Video enhancement setup"
 msgstr "Configuration pour vidéo améliorée"
 
+msgid ""
+"Video input selection\n"
+"\n"
+"Please press OK if you can see this page on your TV (or select a different input port).\n"
+"\n"
+"The next input port will be automatically probed in 20 seconds."
+msgstr ""
+"Sélection entrée vidéo\n"
+"\n"
+"Veuillez appuyer sur OK si vous pouvez voir cette page sur la TV (ou choisir un port d'entrée différent).\n"
+"\n"
+"Le port entrée suivant sera automatiquement scanné dans 20 secondes."
+
+msgid "Video mode selection."
+msgstr "Sélection du mode vidéo."
+
 msgid "Video output"
 msgstr "Sortie vidéo"
 
@@ -9258,10 +9255,6 @@ msgstr "Assistant vidéo"
 #, python-format
 msgid "Video: %s fps"
 msgstr "Vidéo: %s fps"
-
-#, fuzzy
-msgid "VideoMode"
-msgstr "S-Vidéo"
 
 msgid "Videocodec, size & format"
 msgstr "Codec vidéo - taille - format"
@@ -9340,10 +9333,6 @@ msgstr "Clavier virtuel"
 
 msgid "Voltage mode"
 msgstr "Mode tension"
-
-#, fuzzy
-msgid "Volume"
-msgstr "Volume haut"
 
 msgid "Volume down"
 msgstr "Volume bas"
@@ -9438,6 +9427,10 @@ msgstr "Mercredi"
 msgid "Weekday"
 msgstr "Jour de la semaine"
 
+#, fuzzy
+msgid "Weekly"
+msgstr "Hebdomadaire"
+
 msgid "Weighted position"
 msgstr "Position pondérée"
 
@@ -9454,21 +9447,18 @@ msgstr ""
 "\n"
 "Puis rechercher la fin, appuyer sur OK, sélectionner 'fin de coupe'. C'est fait."
 
-#, fuzzy
 msgid ""
 "Welcome.\n"
 "\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
+"If you want to connect your receiver to the Internet, this wizard will guide you through the basic network setup of your receiver.\n"
+"\n"
+"Press OK to start configuring your network"
 msgstr ""
 "Bienvenue.\n"
 "\n"
 "Si vous souhaitez connecter votre récepteur à Internet, cet assistant vous guidera à travers la configuration réseau de base de votre récepteur.\n"
 "\n"
 "Appuyez sur OK pour commencer à configurer votre réseau"
-
-msgid "Welcome..."
-msgstr ""
 
 msgid "West"
 msgstr "Ouest"
@@ -9479,7 +9469,10 @@ msgstr "Fixer limite Ouest"
 msgid "Western Sahara"
 msgstr "Sahara Occidental"
 
-msgid "What type of service scan do you want?"
+msgid "What date of month ?"
+msgstr ""
+
+msgid "What day of week ?"
 msgstr ""
 
 msgid "When enabled the timer from the fallback tuner is imported"
@@ -9522,6 +9515,12 @@ msgid "Wireless network"
 msgstr "Réseau sans fil"
 
 msgid "Wireless network configuration..."
+msgstr "Configuration connexion réseau sans fil."
+
+msgid "Wireless network connection setup"
+msgstr "Configuration connexion réseau sans fil"
+
+msgid "Wireless network connection setup."
 msgstr "Configuration connexion réseau sans fil."
 
 msgid "Wireless network state"
@@ -9744,6 +9743,13 @@ msgstr ""
 msgid "Your hardware can detect CI mode itself or works only in legacy mode."
 msgstr ""
 
+msgid ""
+"Your internet connection is not working!\n"
+"Please choose what you want to do next."
+msgstr ""
+"Votre connexion Internet ne fonctionne pas!\n"
+"Veuillez choisir ce que vous voulez faire ensuite."
+
 #, python-format
 msgid "Your internet connection is working (ip: %s)"
 msgstr "Votre connexion Internet fonctionne (ip: %s)"
@@ -9775,6 +9781,19 @@ msgstr ""
 "Votre connexion Internet fonctionne.\n"
 "\n"
 
+msgid ""
+"Your receiver is now ready to use.\n"
+"\n"
+"Your internet connection is working now.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Votre récepteur est maintenant prêt à être utilisé.\n"
+"\n"
+"Votre connexion Internet fonctionne maintenant.\n"
+"\n"
+"S'il vous plaît appuyez sur OK pour continuer."
+
 msgid "Your receiver is rebooting"
 msgstr "Votre récepteur redémarre"
 
@@ -9796,6 +9815,17 @@ msgstr "Votre récepteur va se mettre en veille faute d'activité."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
 msgstr "Votre récepteur va redémarrer après avoir appuyé sur OK de votre télécommande."
+
+msgid ""
+"Your wireless LAN internet connection could not be started!\n"
+"Have you attached your USB WLAN Stick?\n"
+"\n"
+"Please choose what you want to do next."
+msgstr ""
+"Votre connexion Internet LAN sans fil ne peut démarrer!\n"
+"Avez-vous connecté correctement votre clé USB WLAN?\n"
+"\n"
+"Veuillez choisir ce que vous voulez faire ensuite."
 
 msgid "Zambia"
 msgstr "Zambie"
@@ -10064,10 +10094,6 @@ msgstr "couper (clip) overscan / bandes noires (letterbox)"
 
 msgid "comedy"
 msgstr "Comédie"
-
-#, fuzzy
-msgid "config menu"
-msgstr "Confirmé"
 
 msgid "confirmed"
 msgstr "Confirmé"
@@ -10413,9 +10439,8 @@ msgstr "Style liste standard"
 msgid "list style single line"
 msgstr "Style liste ligne unique"
 
-#, fuzzy
 msgid "listens to hotplug events"
-msgstr "Alignement des évènements"
+msgstr "écoute des événements de connexion à chaud (hotplug)"
 
 msgid "literature"
 msgstr "Littérature"
@@ -11103,6 +11128,3 @@ msgstr "Zapper et enregistrer"
 
 msgid "zapped"
 msgstr "Zappé"
-
-msgid "®"
-msgstr "®"

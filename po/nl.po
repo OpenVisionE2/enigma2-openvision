@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-24 19:26+0200\n"
+"POT-Creation-Date: 2019-05-27 09:44+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -128,9 +128,6 @@ msgstr ""
 "\n"
 "Bekijk, installeer en verwijder beschikbare of geïnstalleerde pakketten."
 
-msgid "  REC  "
-msgstr ""
-
 msgid " (0 - all networks)"
 msgstr " (0 - alle netwerken)"
 
@@ -240,6 +237,10 @@ msgstr "%H:%M"
 #. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
 msgid "%a %e %B %Y"
 msgstr "%a %e %B %Y"
+
+#, fuzzy
+msgid "%a %e %b  %-H:%M"
+msgstr "%a %e/%m  %-H:%M"
 
 #. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
 msgid "%a %e/%m"
@@ -482,9 +483,6 @@ msgstr "* Alleen beschikbaar indien meer dan één interface is geactiveerd."
 msgid "* current animation"
 msgstr "Activeer de huidige configuratie"
 
-msgid "-"
-msgstr ""
-
 msgid "-NO SERVICE\n"
 msgstr "-GEEN ZENDER\n"
 
@@ -494,14 +492,6 @@ msgstr "-ZENDERFOUT:%d\n"
 
 msgid "/s"
 msgstr "/s"
-
-#, fuzzy
-msgid "0"
-msgstr "30"
-
-#, fuzzy
-msgid "1"
-msgstr "1"
 
 msgid "1.0"
 msgstr "1.0"
@@ -555,10 +545,6 @@ msgstr "18V"
 msgid "1X"
 msgstr "1"
 
-#, fuzzy
-msgid "2"
-msgstr "24"
-
 msgid "20 MB/s"
 msgstr "20 MB/s"
 
@@ -577,10 +563,6 @@ msgstr "29.97"
 #, fuzzy
 msgid "2X"
 msgstr "2"
-
-#, fuzzy
-msgid "3"
-msgstr "30"
 
 msgid "30"
 msgstr "30"
@@ -609,10 +591,6 @@ msgstr "3"
 msgid "3d mode"
 msgstr "3d modus"
 
-#, fuzzy
-msgid "4"
-msgstr "24"
-
 msgid "420"
 msgstr "420"
 
@@ -635,21 +613,8 @@ msgstr "4:3 PanScan"
 msgid "4X"
 msgstr "4"
 
-#, fuzzy
-msgid "5"
-msgstr "25"
-
 msgid "50 MB/s"
 msgstr "50 MB/s"
-
-msgid "6"
-msgstr ""
-
-msgid "7"
-msgstr ""
-
-msgid "8"
-msgstr ""
 
 msgid "8 character"
 msgstr ""
@@ -657,15 +622,11 @@ msgstr ""
 msgid "8bit"
 msgstr "8 bit"
 
-msgid "9"
-msgstr ""
-
 msgid ": 0000 - default (disabled)"
 msgstr ":0000 - standaard (uitgeschakeld)"
 
-#, fuzzy
 msgid "<Alternate Display Skin>"
-msgstr "Eerste alternatief"
+msgstr ""
 
 msgid "<Current movielist location>"
 msgstr "<Huidige opnamelijstlocatie>"
@@ -676,9 +637,8 @@ msgstr "<Standaard skin>"
 msgid "<Default movie location>"
 msgstr "<Standaard opnamelocatie>"
 
-#, fuzzy
 msgid "<Display Skin with Picon>"
-msgstr "<Standaard skin>"
+msgstr ""
 
 #, fuzzy
 msgid "<Display Skin>"
@@ -698,6 +658,9 @@ msgstr "??"
 
 msgid "A"
 msgstr "A"
+
+msgid "A background update check is in progress, please wait a few minutes and try again."
+msgstr ""
 
 #, python-format
 msgid ""
@@ -1042,6 +1005,9 @@ msgstr "Verlaat de movieplayer d.m.v. de 'exit' toets"
 msgid "Allow unsupported modes"
 msgstr "Sta niet ondersteunde video modi toe"
 
+msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
 msgid "Also import at reboot/restart enigma2"
 msgstr "Importeer ook na een reboot/herstart van enigma2"
 
@@ -1152,6 +1118,12 @@ msgid ""
 msgstr ""
 "Weet u zeker dat u deze backup\n"
 "wilt verwijderen:\n"
+
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this:\n"
+" "
+msgstr "Wilt u deze wizard beëindigen?"
 
 msgid "Are you sure you want to exit this wizard?"
 msgstr "Wilt u deze wizard beëindigen?"
@@ -1795,10 +1767,6 @@ msgstr "Zenderkeuze"
 msgid "Channel:"
 msgstr "Zender:"
 
-#, fuzzy
-msgid "Channellist menu"
-msgstr "Zenderlijsttype"
-
 msgid "Channelnumber and picon"
 msgstr "Kanaalnummer en picon"
 
@@ -1833,20 +1801,8 @@ msgstr "Hoofdstuk:"
 msgid "Check"
 msgstr "Controleer"
 
-#, fuzzy
-msgid "Check the internet connection"
-msgstr "Uw ontvanger heeft geen (actieve) internetverbinding."
-
-#, fuzzy
-msgid "Check the internet connection again"
-msgstr "Uw ontvanger heeft geen (actieve) internetverbinding."
-
 msgid "Checking filesystem..."
 msgstr "Controleert bestandssysteem..."
-
-#, fuzzy
-msgid "Checking the internet connection"
-msgstr "Uw ontvanger heeft geen (actieve) internetverbinding."
 
 #, python-format
 msgid ""
@@ -1937,6 +1893,17 @@ msgstr ""
 msgid "Client is streaming from this box!"
 msgstr "Er wordt momenteel gestreamd vanaf deze box!"
 
+#, fuzzy
+msgid "Client mode"
+msgstr "module initialiseren"
+
+msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgstr ""
+
+#, fuzzy
+msgid "Client tuner configuration"
+msgstr "Tunerconfiguratie"
+
 msgid "Clients"
 msgstr ""
 
@@ -1976,16 +1943,16 @@ msgstr "Gecombineerd"
 msgid "Combo"
 msgstr "Combo"
 
-#, fuzzy
-msgid "Command execution..."
-msgstr "Timerselectie"
-
 msgid "Command order"
 msgstr "Commando volgorde"
 
 #, fuzzy
-msgid "Commit info"
-msgstr "Mededeling"
+msgid "Command to run"
+msgstr "Commando volgorde"
+
+#, fuzzy
+msgid "Command type"
+msgstr "Commando volgorde"
 
 msgid "Common Interface"
 msgstr "Common Interface"
@@ -2038,6 +2005,9 @@ msgstr "Configureer DVB-T"
 
 msgid "Configure if the HDMI EDID checking should be bypassed as this might solve issue with some TVs."
 msgstr "Configureer of de HDMI EDID controle  overgeslagen mag worden omdat dit mogelijk problemen kan oplossen met sommige TV's."
+
+msgid "Configure interface"
+msgstr "Configureer interface"
 
 msgid "Configure nameservers"
 msgstr "Configureer nameservers"
@@ -2106,6 +2076,9 @@ msgstr "Stel in welk kleurformaat gebruikt wordt bij weergave via de Scart."
 msgid "Configure your internal LAN"
 msgstr "Configureer uw interne netwerk"
 
+msgid "Configure your network again"
+msgstr "Configureer uw netwerk opnieuw"
+
 msgid "Configure your network settings and press OK to scan"
 msgstr "Configureer uw netwerkinstellingen en druk 'Ok' om de scan te starten."
 
@@ -2147,6 +2120,9 @@ msgstr "Verbonden met"
 
 msgid "Connected transcoding, limit - no PiP!"
 msgstr "Verbonden transcoding, beperking - geen PIP!"
+
+msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgstr ""
 
 msgid "Console"
 msgstr "Console"
@@ -2245,6 +2221,17 @@ msgstr "Kroatië"
 msgid "Croatian"
 msgstr "Kroatisch"
 
+msgid "Cron Manager"
+msgstr ""
+
+#, fuzzy
+msgid "Cron manager"
+msgstr "geen bron beheerder"
+
+#, fuzzy
+msgid "Cron timers"
+msgstr "Wijzig timer"
+
 msgid "Cuba"
 msgstr "Cuba"
 
@@ -2253,6 +2240,10 @@ msgstr "Curacao"
 
 msgid "Current CEC address"
 msgstr "Huidig CEC adres"
+
+#, fuzzy
+msgid "Current Status:"
+msgstr "Huidige instellingen:"
 
 msgid "Current device: "
 msgstr "Huidig apparaat: "
@@ -2289,6 +2280,10 @@ msgstr "Huidige waarde:"
 
 msgid "Currently the commit log cannot be retrieved - please try later again"
 msgstr "Op dit moment kan het commitlog niet bereikt worden - probeer het later opnieuw"
+
+#, fuzzy
+msgid "Custom"
+msgstr "Diverse instellingen"
 
 msgid "Customize OpenWebIF settings for fallback tuner"
 msgstr "Pas de instellingen van de fallback tuner aan in de OpenWebif"
@@ -2400,6 +2395,10 @@ msgstr "DVD titellijst"
 #, fuzzy
 msgid "DVDPlayer"
 msgstr "DVD-speler"
+
+#, fuzzy
+msgid "Daily"
+msgstr "dagelijks"
 
 msgid "Danish"
 msgstr "Deens"
@@ -2635,7 +2634,7 @@ msgstr "Toon het EPG overzicht voor de huidige zender"
 
 #, fuzzy
 msgid "Display Skin"
-msgstr "<Standaard skin>"
+msgstr "Instellingen voor het display"
 
 msgid "Display and userinterface"
 msgstr "Display en gebruikersinterface"
@@ -2742,14 +2741,6 @@ msgstr ""
 "Wilt u een image flashen?\n"
 "%s"
 
-#, fuzzy
-msgid "Do you want to install Plugins?"
-msgstr "Ik wil nog wél aanvullende plugins installeren."
-
-#, fuzzy
-msgid "Do you want to install a channel list?"
-msgstr "Wilt u dit pakket installeren:\n"
-
 msgid "Do you want to install the package:\n"
 msgstr "Wilt u dit pakket installeren:\n"
 
@@ -2793,6 +2784,9 @@ msgstr "Wilt u een dit pakket opwaarderen:\n"
 msgid "Dolby"
 msgstr "Dolby"
 
+msgid "Domain"
+msgstr ""
+
 msgid "Dominica"
 msgstr "Gemenebest Dominica"
 
@@ -2835,10 +2829,6 @@ msgid "Download plugins"
 msgstr "Downloaden plugins"
 
 msgid "Downloadable new plugins"
-msgstr "Beschikbare plugins"
-
-#, fuzzy
-msgid "Downloadable plugins"
 msgstr "Beschikbare plugins"
 
 msgid "Downloading"
@@ -2889,16 +2879,8 @@ msgstr "Tijd"
 msgid "EPG"
 msgstr "EPG"
 
-#, fuzzy
-msgid "EPG Selection"
-msgstr "EPG selectie"
-
 msgid "EPG only"
 msgstr "Alléén de EPG"
-
-#, fuzzy
-msgid "EPG selection"
-msgstr "EPG selectie"
 
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
@@ -3001,6 +2983,10 @@ msgstr "Wilt u de automatische Fastscan activeren"
 msgid "Enable auto fast scan for %s"
 msgstr "Activeer automatische fastscan voor %s"
 
+#, fuzzy
+msgid "Enable client mode"
+msgstr "Activeer de verplaatsmodus"
+
 msgid "Enable fallback remote receiver"
 msgstr "Activeer de 'Fallback tuner'"
 
@@ -3066,9 +3052,6 @@ msgstr "Enigma versie: "
 msgid "Enigma2 skin selector"
 msgstr "Enigma2 skinkeuze"
 
-msgid "Enigmalight"
-msgstr ""
-
 msgid "Enter"
 msgstr "Enter"
 
@@ -3096,6 +3079,22 @@ msgstr "Voer een vaste code in"
 msgid "Enter pin code"
 msgstr "Voer pincode in"
 
+msgid "Enter the FTP password of the host receiver (normally just leave empty)."
+msgstr ""
+
+msgid "Enter the FTP port of the host receiver (normally '21')."
+msgstr ""
+
+msgid "Enter the FTP username of the host receiver (normally 'root')."
+msgstr ""
+
+#, fuzzy
+msgid "Enter the IP address of the host receiver."
+msgstr "Geef aan of je je in het oostelijk of westelijk halfrond bevindt."
+
+msgid "Enter the domain of the host receiver. Do not include 'http://' or port number."
+msgstr ""
+
 msgid "Enter the frequency at which you LNB switches between low band and high band. For more information consult the spec sheet of your LNB."
 msgstr "Voer de frequentie in waarmee uw LNB tussen de lage band en hoge band schakelt. Raadpleeg het specificatieblad van uw LNB voor meer informatie."
 
@@ -3107,6 +3106,9 @@ msgstr "Voor het in de positioner opgeslagen nummer in dat overeen komt met deze
 
 msgid "Enter the service pin"
 msgstr "Voer de zender pincode in"
+
+msgid "Enter the streaming port of the host receiver (normally '8001')."
+msgstr ""
 
 msgid "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
 msgstr "Voor de huidige latitude in. Dit is het aantal (decimale) graden dat u verwijderd bent van de evenaar."
@@ -3202,9 +3204,6 @@ msgstr "Estland"
 msgid "Estonian"
 msgstr "Ests"
 
-msgid "EtPortal"
-msgstr "EtPortal"
-
 msgid "Ethernet network interface"
 msgstr "Ethernet netwerkinterface"
 
@@ -3217,19 +3216,30 @@ msgstr "Fontgrootte van de programmaomschrijving (skinafhankelijke grootte)"
 msgid "Event name first"
 msgstr "Event naam eerst"
 
-#, fuzzy
-msgid "Event view"
-msgstr "Events info menu"
-
 msgid "Event view context menu"
-msgstr "Event tonen context menu"
-
-#, fuzzy
-msgid "Event view menu"
 msgstr "Event tonen context menu"
 
 msgid "Events info menu"
 msgstr "Events info menu"
+
+msgid "Every 12 hours"
+msgstr ""
+
+#, fuzzy
+msgid "Every 2 hours"
+msgstr "Overal"
+
+#, fuzzy
+msgid "Every 3 hours"
+msgstr "Overal"
+
+#, fuzzy
+msgid "Every 6 hours"
+msgstr "Overal"
+
+#, fuzzy
+msgid "Every hour"
+msgstr "Overal"
 
 msgid "Every known"
 msgstr "Elke bekende"
@@ -3280,10 +3290,6 @@ msgid "Exit network interface list"
 msgstr "Verlaat het netwerkinterfaceoverzicht"
 
 msgid "Exit network wizard"
-msgstr "Verlaat netwerkwizard"
-
-#, fuzzy
-msgid "Exit the wizard"
 msgstr "Verlaat netwerkwizard"
 
 # # Rick: Ik denk dat Exit/OK moet blijven bestaan omdat de Exit waarschijnlijk de Exit knop bedoelt wordt.
@@ -3354,9 +3360,6 @@ msgstr "Extra begintijd om de inactiviteit sleeptimer te negeren"
 msgid "Extrude from left"
 msgstr ""
 
-msgid "F"
-msgstr "F"
-
 msgid "F1/F3/F4/F4-TURBO"
 msgstr "F1/F3/F4/F4-TURBO"
 
@@ -3405,6 +3408,14 @@ msgstr ""
 
 msgid "FTA"
 msgstr "FTA"
+
+#, fuzzy
+msgid "FTP connection failure"
+msgstr "LAN verbinding"
+
+#, fuzzy
+msgid "FTP passive mode"
+msgstr "Transmissiemodus"
 
 msgid "Factory reset"
 msgstr "Fabrieksinstellingen"
@@ -3639,9 +3650,6 @@ msgstr "Extra opties"
 msgid "Further options"
 msgstr "Verdere opties"
 
-msgid "G"
-msgstr "G"
-
 msgid "GStreamer version: "
 msgstr "GStreamer versie: "
 
@@ -3657,6 +3665,14 @@ msgstr ""
 
 msgid ""
 "GUI needs a restart to apply a new skin\n"
+"Do you want to restart the GUI now?"
+msgstr ""
+"De gebruikersinterface moet herstart worden om\n"
+"de nieuwe skin te activeren. Nu herstarten?"
+
+#, fuzzy
+msgid ""
+"GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
 "De gebruikersinterface moet herstart worden om\n"
@@ -3777,10 +3793,6 @@ msgstr "GotoX calibratie"
 msgid "GraphMultiEpg Settings"
 msgstr "Grafische MultiEPG instellingen"
 
-#, fuzzy
-msgid "Graphical EPG"
-msgstr "Grafische MultiEPG"
-
 msgid "Graphical Multi EPG"
 msgstr "Grafische MultiEPG"
 
@@ -3832,8 +3844,8 @@ msgstr "Guinee-Bissau"
 msgid "Guyana"
 msgstr "Guyana"
 
-msgid "H"
-msgstr "H"
+msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
+msgstr ""
 
 msgid "HD list"
 msgstr "HD lijst"
@@ -3970,6 +3982,32 @@ msgstr "Horizontaal"
 msgid "Horizontal turning speed"
 msgstr "Horizontale draaisnelheid"
 
+#, fuzzy
+msgid "Host domain"
+msgstr "uitschakelen"
+
+msgid "Host receiver FTP password"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver FTP port"
+msgstr "Ingave van de poort van de Fallback tuner"
+
+msgid "Host receiver FTP username"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver IP address"
+msgstr "Voer een IPadres in"
+
+#, fuzzy
+msgid "Host receiver address type"
+msgstr "Nog geen data ontvangen"
+
+#, fuzzy
+msgid "Host receiver streaming port"
+msgstr "Uw ontvanger wordt herstart."
+
 msgid "HotKey Setup"
 msgstr "Instellen Hotkey plugin"
 
@@ -3988,6 +4026,9 @@ msgstr "Hotkey zappen"
 msgid "Hotplug"
 msgstr ""
 
+msgid "Hourly"
+msgstr ""
+
 msgid "How many minutes do you want add to the recording?"
 msgstr "Hoeveel minuten wilt u aan de opname toevoegen?"
 
@@ -4003,24 +4044,21 @@ msgstr "Hongaars"
 msgid "Hungary"
 msgstr "Hongarije"
 
-msgid "I"
-msgstr "I"
-
 msgid "I do not want to perform any service scans"
 msgstr "Ik wil verder geen (aanvullende) zenderscan uitvoeren."
 
 msgid "IDLE"
 msgstr "INACTIEF"
 
-#, fuzzy
-msgid "IMDB Search"
-msgstr "Zoeken"
-
 msgid "INFO"
 msgstr "INFO"
 
 msgid "INS"
 msgstr "Invoegen"
+
+#, fuzzy
+msgid "IP"
+msgstr "I"
 
 msgid "IP address"
 msgstr "IP-adres:"
@@ -4139,9 +4177,6 @@ msgstr "Onjuist service type voor PIP!"
 msgid "Increased voltage"
 msgstr "Verhoogd voltage"
 
-msgid "Index"
-msgstr ""
-
 msgid "Index allocated:"
 msgstr "Index gespecificeerd:"
 
@@ -4230,7 +4265,7 @@ msgid "Installing"
 msgstr "Installeert"
 
 #, fuzzy
-msgid "Installing software..."
+msgid "Installing service"
 msgstr "Installeert"
 
 msgid "Instant record"
@@ -4328,9 +4363,6 @@ msgstr "Items per pagina"
 
 msgid "Items per page for list screen"
 msgstr "Aantal regels in de lijstmode"
-
-msgid "J"
-msgstr "J"
 
 msgid "Jamaica"
 msgstr "Jamaica"
@@ -4526,6 +4558,9 @@ msgstr "Verbinding:"
 msgid "Linked titles with a DVD menu"
 msgstr "Verbind titels met een DVD menu"
 
+msgid "List available networks"
+msgstr "Toon beschikbare netwerken"
+
 msgid "List mode"
 msgstr "Lijstmode"
 
@@ -4613,9 +4648,6 @@ msgstr "Luxemburgs"
 msgid "MMC card"
 msgstr "MMC kaart"
 
-msgid "MORE"
-msgstr ""
-
 msgid "Macao"
 msgstr "Macao"
 
@@ -4666,6 +4698,9 @@ msgstr "Handmatig"
 
 msgid "Manual Scan"
 msgstr "Handmatig zoeken"
+
+msgid "Manual configuration"
+msgstr "Handmatige configuratie"
 
 msgid "Manual scan"
 msgstr "Handmatig zoeken"
@@ -4732,10 +4767,6 @@ msgid "Menusort (%s)"
 msgstr "Sorteer menu (%s)"
 
 msgid "Message"
-msgstr "Bericht"
-
-#, fuzzy
-msgid "Message..."
 msgstr "Bericht"
 
 msgid "Messages"
@@ -4806,6 +4837,10 @@ msgstr "Mongolië"
 
 msgid "Montenegro"
 msgstr "Montenegro"
+
+#, fuzzy
+msgid "Monthly"
+msgstr "maand"
 
 msgid "Montserrat"
 msgstr "Montserrat"
@@ -4939,26 +4974,16 @@ msgstr "Multistream"
 msgid "Music/Ballet/Dance"
 msgstr "Muziek/Ballet/Dans"
 
-msgid "Mute"
-msgstr ""
-
 msgid "Myanmar"
 msgstr "Myanmar"
 
 msgid "N/A"
 msgstr "0.0 "
 
-msgid "NEXT"
-msgstr ""
-
 msgid "NIM & Type"
 msgstr "NIM & Type"
 
 msgid "NO"
-msgstr "NEE"
-
-#, fuzzy
-msgid "NOW"
 msgstr "NEE"
 
 msgid "NTSC"
@@ -4975,10 +5000,6 @@ msgid "Nameserver %d"
 msgstr "Nameserver %d"
 
 msgid "Nameserver settings"
-msgstr "Nameserver-instellingen"
-
-#, fuzzy
-msgid "Nameserver setup"
 msgstr "Nameserver-instellingen"
 
 msgid "Namespace & Orbital pos."
@@ -5011,10 +5032,6 @@ msgstr "Netwerk informatie:"
 msgid "Network configuration"
 msgstr "Netwerk configuratie"
 
-#, fuzzy
-msgid "Network configuration..."
-msgstr "Netwerk configuratie"
-
 msgid "Network mount"
 msgstr "Netwerkmount"
 
@@ -5032,10 +5049,6 @@ msgid "Network setup"
 msgstr "Netwerkinstellingen"
 
 msgid "Network test"
-msgstr "Netwerktest"
-
-#, fuzzy
-msgid "Network test..."
 msgstr "Netwerktest"
 
 msgid "Network test: "
@@ -5309,10 +5322,6 @@ msgctxt "now/next: 'now' event label"
 msgid "Now"
 msgstr "Nu"
 
-#, fuzzy
-msgid "Now playing"
-msgstr "Afspelen voortzetten"
-
 msgid "Now, use the contrast setting to turn up the brightness of the background as much as possible, but make sure that you can still see the difference between the two brightest levels of shades.If you have done that, press OK."
 msgstr ""
 "Gebruik nu de 'contrast' instelling op uw TV om de helderheid van de achtergrond zo hoog mogelijk in te stellen, maar zorgt u er wel voor dat u nog steeds de helderste grijze vlakken van elkaar kunt onderscheiden.\n"
@@ -5337,10 +5346,6 @@ msgstr "OSD 3D instelling"
 
 msgid "OSD name request"
 msgstr "OSD naam aanvragen"
-
-#, fuzzy
-msgid "OSD settings"
-msgstr "Settings"
 
 msgid "OSD transparency"
 msgstr "OSD transparantie"
@@ -5474,9 +5479,6 @@ msgstr "PGS bestand"
 msgid "PID"
 msgstr "PDC"
 
-msgid "PIN code needed"
-msgstr ""
-
 msgid "PIP"
 msgstr ""
 
@@ -5541,10 +5543,6 @@ msgstr "Bovengelegen map"
 msgid "Parental control"
 msgstr "Kinderslot"
 
-#, fuzzy
-msgid "Parental control services editor"
-msgstr "Maak het kinderslot zichtbaar"
-
 msgid "Parental control setup"
 msgstr "Kinderslotinstellingen"
 
@@ -5590,10 +5588,6 @@ msgstr "Peru"
 
 msgid "Philippines"
 msgstr "Philippijnen"
-
-#, fuzzy
-msgid "PiP setup"
-msgstr "PIP instellingen"
 
 msgid "Picon"
 msgstr "Picon"
@@ -5680,15 +5674,19 @@ msgstr "Kies een plugin aub..."
 msgid "Please choose reader"
 msgstr "Kies een plugin aub..."
 
-#, fuzzy
-msgid "Please configure the fallback tuner setup?"
-msgstr "Instellen van de Fallback (externe) tuner"
-
-#, fuzzy
-msgid "Please connect your receiver to the internet"
+msgid ""
+"Please configure or verify your Nameservers by filling out the required values.\n"
+"When you are ready press OK to continue."
 msgstr ""
-"\n"
-"Herstel de ontvangerinstellingen."
+"Configureer of controleer uw nameservers door de verplichte velden in te vullen.\n"
+"Druk op Ok om verder te gaan."
+
+msgid ""
+"Please configure your internet connection by filling out the required values.\n"
+"When you are ready press OK to continue."
+msgstr ""
+"Configureer uw internetverbinding door de verplichte velden in te vullen.\n"
+"Druk op Ok om verder te gaan."
 
 msgid "Please do not change any values unless you know what you are doing!"
 msgstr "Wijzig hier geen instellingen tenzij u precies weet wat u doet"
@@ -5722,6 +5720,9 @@ msgstr "Voer de nieuwe PIN code in"
 
 msgid "Please enter the old PIN code"
 msgstr "Toets de oude pincode in aub."
+
+msgid "Please follow the instructions on the TV"
+msgstr "Volg nu de instructies op uw TV"
 
 msgid "Please note that the previously selected media could not be accessed and therefore the default directory is being used instead."
 msgstr "Het eerder geselecteerde medium kon niet worden benaderd en om die reden wordt nu de standaard map gebruikt."
@@ -5759,60 +5760,23 @@ msgstr "Selecteer markering om te filteren..."
 msgid "Please select the movie path..."
 msgstr "Selecteer het opnamepad..."
 
-#, fuzzy
-msgid "Please set up tuner A"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner B"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner C"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner D"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner E"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner F"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner G"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner H"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner I"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner J"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner Q"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set up tuner R"
-msgstr "Open tunerinstellingen "
-
-#, fuzzy
-msgid "Please set your time zone"
-msgstr "Geef aub een nieuwe naam in:"
-
-msgid "Please setup the following basic configs!"
+msgid ""
+"Please select the network interface that you want to use for your internet connection.\n"
+"\n"
+"Please press OK to continue."
 msgstr ""
+"Selecteer de netwerkinterface die u wilt gebruiken voor uw internetverbinding.\n"
+"\n"
+"Druk op Ok om verder te gaan."
+
+msgid ""
+"Please select the wireless network that you want to connect to.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Selecteer het draadloze netwerk dat u wenst te gebruiken.\n"
+"\n"
+"Druk op Ok om verder te gaan."
 
 msgid ""
 "Please use direction keys to move the PiP window.\n"
@@ -5951,6 +5915,10 @@ msgstr "Maximaal voltage. Raadpleeg de handleiding van uw ontvanger voor meer de
 
 msgid "PowerMenu"
 msgstr "Powermenu"
+
+#, fuzzy
+msgid "Predefined"
+msgstr "Ongedefinieerd"
 
 msgid "Predefined transponder"
 msgstr "Vooraf ingestelde transponder"
@@ -6150,10 +6118,6 @@ msgstr "Vraag"
 msgid "Quick"
 msgstr "Snel"
 
-#, fuzzy
-msgid "Quick EPG"
-msgstr "Snel"
-
 msgid "Quick zap"
 msgstr "Snelzap"
 
@@ -6165,10 +6129,6 @@ msgstr ""
 
 msgid "RGB"
 msgstr "RGB"
-
-#, fuzzy
-msgid "Radio"
-msgstr " (Radio)"
 
 msgid "Ram disk"
 msgstr "Ramdisk"
@@ -6190,6 +6150,14 @@ msgid "Reader"
 msgstr ""
 
 msgid "Reader Statistics"
+msgstr ""
+
+#, python-format
+msgid "Ready to install \"%s\" ?"
+msgstr ""
+
+#, python-format
+msgid "Ready to remove \"%s\" ?"
 msgstr ""
 
 #, fuzzy
@@ -6243,10 +6211,6 @@ msgstr "Rec"
 
 msgid "Recall to previous service"
 msgstr "Herinner aan het eerdere programma"
-
-#, fuzzy
-msgid "Reception settings"
-msgstr "Verzamelinstellingen"
 
 msgid "Record"
 msgstr "Opname"
@@ -6304,6 +6268,9 @@ msgstr "Verversen"
 msgid "Refresh rate"
 msgstr "Herhaalfrequentie"
 
+msgid "Refresh rate selection."
+msgstr "Herhalingsfrequentie"
+
 msgid "Refusing to move to the same directory"
 msgstr "Verplaatsen naar dezelfde doelmap wordt niet geaccepteerd."
 
@@ -6346,6 +6313,10 @@ msgstr "Verwijderen is afgerond."
 msgid "Remove"
 msgstr "Verwijderen"
 
+#, fuzzy
+msgid "Remove Confirmation"
+msgstr "Configuratie van de sleeptimer"
+
 msgid "Remove a mark"
 msgstr "Wis markeerpunt"
 
@@ -6380,6 +6351,10 @@ msgstr "Verwijderen van map %s mislukt (map niet leeg?)."
 msgid "Removing partition table"
 msgstr "Verwijderd de partitietabel"
 
+#, fuzzy
+msgid "Removing service"
+msgstr "Geen uitzending"
+
 msgid "Rename"
 msgstr "Wijzigen"
 
@@ -6388,6 +6363,10 @@ msgstr "Wijzig de naam + de omschrijving voor nieuwe programma's"
 
 msgid "Repeat"
 msgstr "Herhaal"
+
+#, fuzzy
+msgid "Repeat how often"
+msgstr "Herhaal type"
 
 msgid "Repeat leave standby messages"
 msgstr "Herhaal 'blijf standby' voor andere hardware"
@@ -6569,6 +6548,9 @@ msgstr "Rotor:"
 
 msgid "Round start time on"
 msgstr "Starttijd afronden op"
+
+msgid "Run how often ?"
+msgstr ""
 
 #, fuzzy
 msgid "Running"
@@ -6814,6 +6796,9 @@ msgstr "Zoeken..."
 msgid "Scans default lamedbs sorted by satellite with a connected dish positioner"
 msgstr "Doorzoekt standaard lamedbs gesorteerd op satelliet met een diseqc rotor"
 
+msgid "Schedule EPG and channel list import"
+msgstr ""
+
 msgid "Search"
 msgstr "Zoeken"
 
@@ -6928,10 +6913,6 @@ msgstr "Kies de zender"
 msgid "Select Fast DiSEqC if your aerial system supports this. If you are unsure select 'no'."
 msgstr "Kies voor snelle diseqc indien uw systeem dit ondersteunt. Bij twijfel kies ‘nee’."
 
-#, fuzzy
-msgid "Select HDD"
-msgstr "Selecteer"
-
 msgid "Select Image"
 msgstr "Kies een Image"
 
@@ -6941,24 +6922,8 @@ msgstr "Kies Multiboot"
 msgid "Select Softcam"
 msgstr "Kies de Softcam"
 
-#, fuzzy
-msgid "Select a bouquet"
-msgstr "Voeg een bouquet toe"
-
-#, fuzzy
-msgid "Select a movie"
-msgstr "Kies een film"
-
 msgid "Select a network adapter"
 msgstr "Kies een netwerkadapter"
-
-#, fuzzy
-msgid "Select a skin"
-msgstr "Maak uw keuze"
-
-#, fuzzy
-msgid "Select a tuner"
-msgstr "Maak uw keuze"
 
 msgid "Select a wireless network"
 msgstr "Secteer draadloos netwerk"
@@ -6981,6 +6946,9 @@ msgstr "Kies backupbestanden"
 
 msgid "Select backup location"
 msgstr "Kies een backuplocatie"
+
+msgid "Select between entering an IP address or a domain."
+msgstr ""
 
 msgid "Select channel"
 msgstr "Kies de zender"
@@ -7041,6 +7009,9 @@ msgstr "Kies de doelmap t.b.v. het logfile"
 
 msgid "Select provider to add..."
 msgstr "Selecteer provider om toe te voegen..."
+
+msgid "Select refresh rate"
+msgstr "Selecteer herhalingsfrequentie"
 
 msgid "Select satellites"
 msgstr "Kies de satellieten"
@@ -7125,6 +7096,15 @@ msgstr "Kies de bron om te upgraden"
 
 msgid "Select upgrade source to edit."
 msgstr "Kies de te wijzigen upgradefeed."
+
+msgid "Select video input with up/down buttons"
+msgstr "Selecteer video-ingang met de omhoog/omlaag toetsen"
+
+msgid "Select video mode"
+msgstr "Selecteer videomodus"
+
+msgid "Select wireless network"
+msgstr "Selecteer draadloos netwerk"
 
 msgid "Select your ATSC provider."
 msgstr "Kies uw ATSC aanbieder."
@@ -7325,6 +7305,16 @@ msgstr "Stel het wachtwoord van de OpenWebif in vanaf je fallback tuner"
 msgid "Set the port of the OpenWebif from your fallback tuner"
 msgstr "Stel de poort van de OpenWebif in vanaf de fallback tuner."
 
+#, fuzzy
+msgid "Set the repeat interval of the schedule."
+msgstr ""
+"Met deze optie stelt u de verversingssnelheid van het scherm in.\n"
+"\n"
+"U kunt kiezen voor multi, 50Hz of 60Hz."
+
+msgid "Set the time of day to perform the import."
+msgstr ""
+
 msgid "Set time window to 1 hour"
 msgstr "Tijdinterval 1 uur"
 
@@ -7357,7 +7347,7 @@ msgstr "Instellingen"
 
 #, fuzzy
 msgid "Setup UI animations"
-msgstr "Activeer de huidige configuratie"
+msgstr "Instellen rotor"
 
 msgid "Setup hard disk"
 msgstr "Harddisk instellen"
@@ -7382,6 +7372,9 @@ msgstr "Shellscript"
 
 msgid "Short filenames"
 msgstr "Korte bestandsnamen"
+
+msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
+msgstr ""
 
 msgid "Show"
 msgstr "Toon"
@@ -7626,9 +7619,6 @@ msgstr "Skins"
 
 msgid "Skip empty services"
 msgstr "Sla de lege kanalen over"
-
-msgid "Skip internet connection check (disables automatic package installation)"
-msgstr ""
 
 msgid "Sleep timer"
 msgstr "Sleeptimer"
@@ -8264,10 +8254,9 @@ msgstr "Thais"
 msgid "Thailand"
 msgstr "Thailand"
 
-#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard.\n"
+"Please press OK to continue."
 msgstr ""
 "Bedankt voor het gebruik van deze wizard.\n"
 "Druk op Ok om verder te gaan.\n"
@@ -8406,6 +8395,13 @@ msgstr ""
 
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "De gebruikersomgeving van uw ontvanger wordt in debug modus herstart"
+
+msgid ""
+"The wireless LAN plugin is not installed!\n"
+"Please install it and choose what you want to do next."
+msgstr ""
+"De WiFi plugin is niet geïnstalleerd!\n"
+"Installeer deze en kies wat u vervolgens wilt doen."
 
 msgid ""
 "The wireless LAN plugin is not installed!\n"
@@ -8677,18 +8673,20 @@ msgstr "Donderdag"
 msgid "Time"
 msgstr "Tijd"
 
+msgid "Time import should start"
+msgstr ""
+
 msgid "Time scale"
 msgstr "Tijdschaal"
+
+msgid "Time to execute command or script"
+msgstr ""
 
 msgid "Timer"
 msgstr "Timer"
 
 msgid "Timer Overview"
 msgstr "Timeroverzicht"
-
-#, fuzzy
-msgid "Timer edit"
-msgstr "Timerinvoer"
 
 msgid "Timer entry"
 msgstr "Timerinvoer"
@@ -8729,11 +8727,11 @@ msgstr "Timer"
 msgid "Timerlist"
 msgstr "Timer bewerken"
 
-msgid "Timeshift"
-msgstr "Timeshift"
-
 #, fuzzy
-msgid "Timeshift Live"
+msgid "Timers"
+msgstr "Timer"
+
+msgid "Timeshift"
 msgstr "Timeshift"
 
 msgid "Timeshift is running. Select an action.\n"
@@ -8834,10 +8832,6 @@ msgid "Transcoding: "
 msgstr "Transcoderen:"
 
 msgid "Translation"
-msgstr "Vertaling"
-
-#, fuzzy
-msgid "Translation:"
 msgstr "Vertaling"
 
 msgid "Translations"
@@ -9011,9 +9005,6 @@ msgstr "Ongecodeerd"
 msgid "Unexpected error while retreiving fallback tuner's timer information"
 msgstr "Onverwachte fout tijdens het ophalen van de timerinformatie van de Fallback tuner"
 
-msgid "UnhandledKey"
-msgstr ""
-
 msgid "Unhide parental control services"
 msgstr "Maak het kinderslot zichtbaar"
 
@@ -9179,12 +9170,6 @@ msgstr "Gebruik de netwerkwizard om de geselecteerde netwerkadapter te configure
 msgid "Use the network wizard to configure your network\n"
 msgstr "Gebruik de netwerkwizard om uw netwerk in te stellen\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
-msgstr ""
-
-msgid "Use the wizard to set up basic features"
-msgstr ""
-
 msgid "Use these input device settings?"
 msgstr "Instellingen voor dit apparaat gebruiken?"
 
@@ -9280,6 +9265,27 @@ msgstr "Videoverbeteringsinstellingen..."
 msgid "Video enhancement setup"
 msgstr "Videoverbeteringsinstelling..."
 
+msgid ""
+"Video input selection\n"
+"\n"
+"Please press OK if you can see this page on your TV (or select a different input port).\n"
+"\n"
+"The next input port will be automatically probed in 20 seconds."
+msgstr ""
+"Video uitgangsselectie.\n"
+"\n"
+"Druk op Ok zodra u dit bericht kunt zien (of selecteer een andere uitgang). In vrijwel alle gevallen is HDMI de standaard uitgang. De volgende video-optie wordt elke 10 seconden automatisch geprobeerd.\n"
+"\n"
+"Bevestig uw keuze met Ok."
+
+msgid "Video mode selection."
+msgstr ""
+"Video modeselectie.\n"
+"\n"
+"Deze keuze is afhankelijk van uw TV. Voor de meeste oudere toestellen functioneert 720p. Voor een full HD toestel is 1080P de juiste waarde. Bij een UHD / 4K TV is 2160P de juiste keuze. In het volgende scherm dienen alle pijlen zichtbaar te zijn. Dit kunt u later nog alsnog corrigeren met de overscanwizard. \n"
+"\n"
+"Bevestig uw keuze met Ok."
+
 msgid "Video output"
 msgstr "Video uitgang"
 
@@ -9292,10 +9298,6 @@ msgstr "Video wizard"
 #, python-format
 msgid "Video: %s fps"
 msgstr "Video: %s fps"
-
-#, fuzzy
-msgid "VideoMode"
-msgstr "S-Video"
 
 msgid "Videocodec, size & format"
 msgstr "Videocodec, grootte en formaat"
@@ -9374,10 +9376,6 @@ msgstr "Virtueel toetsenbord"
 
 msgid "Voltage mode"
 msgstr "Spanningsmodus"
-
-#, fuzzy
-msgid "Volume"
-msgstr "Volume +"
 
 msgid "Volume down"
 msgstr "Volume -"
@@ -9472,6 +9470,10 @@ msgstr "Woensdag"
 msgid "Weekday"
 msgstr "Dag van de week"
 
+#, fuzzy
+msgid "Weekly"
+msgstr "wekelijks"
+
 msgid "Weighted position"
 msgstr "Gewogen positie"
 
@@ -9488,21 +9490,18 @@ msgstr ""
 "\n"
 "Ga naar het einde, druk op Ok, selecteer 'eindpunt'. Eenvoudiger kan niet."
 
-#, fuzzy
 msgid ""
 "Welcome.\n"
 "\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
+"If you want to connect your receiver to the Internet, this wizard will guide you through the basic network setup of your receiver.\n"
+"\n"
+"Press OK to start configuring your network"
 msgstr ""
 "Welkom.\n"
 "\n"
 "Indien u de ontvanger aan het internet wilt koppelen zal de wizard u daarbij begeleiden om de basis netwerksettings te plaatsen.\n"
 "\n"
 "Druk Ok om te beginnen met de configuratie van uw netwerk."
-
-msgid "Welcome..."
-msgstr ""
 
 msgid "West"
 msgstr "West"
@@ -9513,7 +9512,10 @@ msgstr "Westlimiet gezet"
 msgid "Western Sahara"
 msgstr "Westelijke Sahara"
 
-msgid "What type of service scan do you want?"
+msgid "What date of month ?"
+msgstr ""
+
+msgid "What day of week ?"
 msgstr ""
 
 msgid "When enabled the timer from the fallback tuner is imported"
@@ -9563,6 +9565,12 @@ msgstr "WIFI netwerk"
 
 msgid "Wireless network configuration..."
 msgstr "WIFI netwerk instellingen..."
+
+msgid "Wireless network connection setup"
+msgstr "Installatie van het draadloos netwerk"
+
+msgid "Wireless network connection setup."
+msgstr "Installatie van het draadloos netwerk."
 
 msgid "Wireless network state"
 msgstr "Status draadloos netwerk"
@@ -9785,6 +9793,13 @@ msgstr ""
 msgid "Your hardware can detect CI mode itself or works only in legacy mode."
 msgstr ""
 
+msgid ""
+"Your internet connection is not working!\n"
+"Please choose what you want to do next."
+msgstr ""
+"Uw internetverbinding werkt helaas niet!\n"
+"Kies wat u nu wilt te doen."
+
 #, python-format
 msgid "Your internet connection is working (ip: %s)"
 msgstr "Uw internetverbinding is actief. Het IP adres is (ip: %s) "
@@ -9816,6 +9831,19 @@ msgstr ""
 "De internetverbinding werkt correct.\n"
 "\n"
 
+msgid ""
+"Your receiver is now ready to use.\n"
+"\n"
+"Your internet connection is working now.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Uw ontvanger is gereed voor gebruik.\n"
+"\n"
+"De internetverbinding is nu actief.\n"
+"\n"
+"Druk Ok om verder te gaan."
+
 msgid "Your receiver is rebooting"
 msgstr "Uw ontvanger wordt herstart."
 
@@ -9837,6 +9865,17 @@ msgstr "Uw ontvanger wordt vanwege inactiviteit, naar standby geschakeld."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
 msgstr "De ontvanger zal herstarten nadat u op Ok gedrukt heeft."
+
+msgid ""
+"Your wireless LAN internet connection could not be started!\n"
+"Have you attached your USB WLAN Stick?\n"
+"\n"
+"Please choose what you want to do next."
+msgstr ""
+"Uw WiFi internetverbinding kan niet gestart worden!\n"
+"Is de USB WLAN Stick in de box geplaatst?\n"
+"\n"
+"Kies wat u vervolgens wilt doen."
 
 msgid "Zambia"
 msgstr "Zambia"
@@ -10105,10 +10144,6 @@ msgstr "clip overscan/letterbox randen"
 
 msgid "comedy"
 msgstr "Komedie"
-
-#, fuzzy
-msgid "config menu"
-msgstr "bevestigd"
 
 msgid "confirmed"
 msgstr "bevestigd"
@@ -11145,6 +11180,3 @@ msgstr "zap en neem op"
 
 msgid "zapped"
 msgstr "zapte"
-
-msgid "®"
-msgstr "®"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-24 19:26+0200\n"
+"POT-Creation-Date: 2019-05-27 09:44+0430\n"
 "PO-Revision-Date: 2019-04-23 16:45+0200\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -128,9 +128,6 @@ msgstr ""
 "\n"
 "Szoftvercsomagok megtekintése, telepítése vagy eltávolítása."
 
-msgid "  REC  "
-msgstr ""
-
 msgid " (0 - all networks)"
 msgstr " (0 - összes hálózat)"
 
@@ -240,6 +237,10 @@ msgstr "%H:%M"
 #. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
 msgid "%a %e %B %Y"
 msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %e %b  %-H:%M"
+msgstr "%m. %e %a  %-H:%M"
 
 #. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
 msgid "%a %e/%m"
@@ -481,9 +482,6 @@ msgstr "* Csak akkor érvényes, ha egynél több interfész aktív."
 msgid "* current animation"
 msgstr "Aktuális konfiguráció aktiválása"
 
-msgid "-"
-msgstr ""
-
 msgid "-NO SERVICE\n"
 msgstr "-NINCS CSATORNA\n"
 
@@ -493,14 +491,6 @@ msgstr "-CSATORNA HIBA:%d\n"
 
 msgid "/s"
 msgstr "/s"
-
-#, fuzzy
-msgid "0"
-msgstr "30"
-
-#, fuzzy
-msgid "1"
-msgstr "1"
 
 msgid "1.0"
 msgstr "1.0"
@@ -554,10 +544,6 @@ msgstr "18 V"
 msgid "1X"
 msgstr "1"
 
-#, fuzzy
-msgid "2"
-msgstr "24"
-
 msgid "20 MB/s"
 msgstr "20 MB/s"
 
@@ -576,10 +562,6 @@ msgstr "29.97"
 #, fuzzy
 msgid "2X"
 msgstr "2"
-
-#, fuzzy
-msgid "3"
-msgstr "30"
 
 msgid "30"
 msgstr "30"
@@ -608,10 +590,6 @@ msgstr "3"
 msgid "3d mode"
 msgstr "3D mód"
 
-#, fuzzy
-msgid "4"
-msgstr "24"
-
 msgid "420"
 msgstr "420"
 
@@ -634,21 +612,8 @@ msgstr "4:3 PanScan"
 msgid "4X"
 msgstr "4"
 
-#, fuzzy
-msgid "5"
-msgstr "25"
-
 msgid "50 MB/s"
 msgstr "50 MB/s"
-
-msgid "6"
-msgstr ""
-
-msgid "7"
-msgstr ""
-
-msgid "8"
-msgstr ""
 
 msgid "8 character"
 msgstr ""
@@ -656,15 +621,11 @@ msgstr ""
 msgid "8bit"
 msgstr "8bit"
 
-msgid "9"
-msgstr ""
-
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - alapértelmezett (kikapcsolva)"
 
-#, fuzzy
 msgid "<Alternate Display Skin>"
-msgstr "Alternatív 1"
+msgstr ""
 
 msgid "<Current movielist location>"
 msgstr "<Filmlista aktuális tárhelye>"
@@ -675,9 +636,8 @@ msgstr "<Alapértelmezett Kinézet>"
 msgid "<Default movie location>"
 msgstr "<Felvételek tárhelye>"
 
-#, fuzzy
 msgid "<Display Skin with Picon>"
-msgstr "<Alapértelmezett Kinézet>"
+msgstr ""
 
 #, fuzzy
 msgid "<Display Skin>"
@@ -697,6 +657,9 @@ msgstr "??"
 
 msgid "A"
 msgstr "A"
+
+msgid "A background update check is in progress, please wait a few minutes and try again."
+msgstr ""
 
 #, python-format
 msgid ""
@@ -1041,6 +1004,9 @@ msgstr "Médialejátszó bezárása kilépés gombbal"
 msgid "Allow unsupported modes"
 msgstr "Nem támogatott módok engedélyezése"
 
+msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
 msgid "Also import at reboot/restart enigma2"
 msgstr "Importáljon a készülék/kezelőfelület újraindításakor"
 
@@ -1151,6 +1117,12 @@ msgid ""
 msgstr ""
 "Biztos benne, hogy törölni kívánja\n"
 "ezt a mentést:\n"
+
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this:\n"
+" "
+msgstr "Biztos benne, hogy kilép a Varázslóból?"
 
 msgid "Are you sure you want to exit this wizard?"
 msgstr "Biztos benne, hogy kilép a Varázslóból?"
@@ -1795,10 +1767,6 @@ msgstr "Csatorna választás"
 msgid "Channel:"
 msgstr "Csatorna:"
 
-#, fuzzy
-msgid "Channellist menu"
-msgstr "Csatornalista típusa"
-
 msgid "Channelnumber and picon"
 msgstr "Csatornaszám és picon"
 
@@ -1833,20 +1801,8 @@ msgstr "Fejezet:"
 msgid "Check"
 msgstr "Ellenőrzés"
 
-#, fuzzy
-msgid "Check the internet connection"
-msgstr "A készüléknek nincs kapcsolata az internettel."
-
-#, fuzzy
-msgid "Check the internet connection again"
-msgstr "A készüléknek nincs kapcsolata az internettel."
-
 msgid "Checking filesystem..."
 msgstr "Fájlrendszer ellenőrzése..."
-
-#, fuzzy
-msgid "Checking the internet connection"
-msgstr "A készüléknek nincs kapcsolata az internettel."
 
 #, python-format
 msgid ""
@@ -1937,6 +1893,17 @@ msgstr ""
 msgid "Client is streaming from this box!"
 msgstr "Van streamelő kliens erről a boxról!"
 
+#, fuzzy
+msgid "Client mode"
+msgstr "modul inicializálása"
+
+msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgstr ""
+
+#, fuzzy
+msgid "Client tuner configuration"
+msgstr "Tuner beállítások"
+
 msgid "Clients"
 msgstr ""
 
@@ -1976,16 +1943,16 @@ msgstr "Kombinált"
 msgid "Combo"
 msgstr "Kombó"
 
-#, fuzzy
-msgid "Command execution..."
-msgstr "Időzítés kiválasztása..."
-
 msgid "Command order"
 msgstr "Parancs sorrend"
 
 #, fuzzy
-msgid "Commit info"
-msgstr "Kommunikáció"
+msgid "Command to run"
+msgstr "Parancs sorrend"
+
+#, fuzzy
+msgid "Command type"
+msgstr "Parancs sorrend"
 
 msgid "Common Interface"
 msgstr "CI modulfogadó"
@@ -2038,6 +2005,9 @@ msgstr "DVB-T konfigurálása"
 
 msgid "Configure if the HDMI EDID checking should be bypassed as this might solve issue with some TVs."
 msgstr "Állítsa be, ha a HDMI EDID ellenőrzést ki kell hagyni, mivel ez problémát okozhat néhány TV készüléknél."
+
+msgid "Configure interface"
+msgstr "Interfész konfigurálása"
 
 msgid "Configure nameservers"
 msgstr "Névszerverek konfigurálása"
@@ -2096,6 +2066,9 @@ msgstr "Milyen típusú videó jel jelenjen meg a SCART kimeneten."
 msgid "Configure your internal LAN"
 msgstr "A hálózat konfigurálása"
 
+msgid "Configure your network again"
+msgstr "A hálózat újrakonfigurálása"
+
 msgid "Configure your network settings and press OK to scan"
 msgstr "Állítsa be a hálózati paramétereket, majd nyomja meg az OK gombot a kereséshez"
 
@@ -2134,6 +2107,9 @@ msgstr "Csatlakoztatva ehhez"
 
 msgid "Connected transcoding, limit - no PiP!"
 msgstr "Csatlakoztatott transzkódolás limit - nincs kép a képben!"
+
+msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgstr ""
 
 msgid "Console"
 msgstr "Konzol"
@@ -2232,6 +2208,17 @@ msgstr "Horvátország"
 msgid "Croatian"
 msgstr "Horvát"
 
+msgid "Cron Manager"
+msgstr ""
+
+#, fuzzy
+msgid "Cron manager"
+msgstr "nincs erőforrás-kezelő"
+
+#, fuzzy
+msgid "Cron timers"
+msgstr "Időzítő módosítása"
+
 msgid "Cuba"
 msgstr "Kuba"
 
@@ -2240,6 +2227,10 @@ msgstr "Curaçao"
 
 msgid "Current CEC address"
 msgstr "Aktuális CEC cím"
+
+#, fuzzy
+msgid "Current Status:"
+msgstr "Aktuális beállítások:"
 
 msgid "Current device: "
 msgstr "Aktuális eszköz: "
@@ -2274,6 +2265,10 @@ msgstr "Aktuális érték: "
 
 msgid "Currently the commit log cannot be retrieved - please try later again"
 msgstr "Jelenleg a kiadási jegyzék nem elérhető - próbálja újra később"
+
+#, fuzzy
+msgid "Custom"
+msgstr "Testreszabás"
 
 msgid "Customize OpenWebIF settings for fallback tuner"
 msgstr "OpenWebIf beállítások testreszabása a tartalék tunerhez"
@@ -2385,6 +2380,10 @@ msgstr "DVD Címlista"
 #, fuzzy
 msgid "DVDPlayer"
 msgstr "DVD lejátszó"
+
+#, fuzzy
+msgid "Daily"
+msgstr "naponta"
 
 msgid "Danish"
 msgstr "Dán"
@@ -2620,7 +2619,7 @@ msgstr "Az aktuális csatorna EPG-jének megjelenítése"
 
 #, fuzzy
 msgid "Display Skin"
-msgstr "<Alapértelmezett Kinézet>"
+msgstr "Előlapi kijelző"
 
 msgid "Display and userinterface"
 msgstr "Képernyő és felhasználói felület"
@@ -2727,14 +2726,6 @@ msgid ""
 "%s"
 msgstr "Biztos benne, hogy flashelni szeretné a %s image-t?"
 
-#, fuzzy
-msgid "Do you want to install Plugins?"
-msgstr "Igen, telepíteni szeretném a bővítményeket"
-
-#, fuzzy
-msgid "Do you want to install a channel list?"
-msgstr "Biztos benne, hogy feltelepíti ezt a csomagot:\n"
-
 msgid "Do you want to install the package:\n"
 msgstr "Biztos benne, hogy feltelepíti ezt a csomagot:\n"
 
@@ -2778,6 +2769,9 @@ msgstr "Biztos benne, hogy frissíteni szeretné ezt a csomagot:\n"
 msgid "Dolby"
 msgstr "Dolby"
 
+msgid "Domain"
+msgstr ""
+
 msgid "Dominica"
 msgstr "Dominikai Közösség"
 
@@ -2820,10 +2814,6 @@ msgid "Download plugins"
 msgstr "Bővítmények letöltése"
 
 msgid "Downloadable new plugins"
-msgstr "Letölthető új bővítmények"
-
-#, fuzzy
-msgid "Downloadable plugins"
 msgstr "Letölthető új bővítmények"
 
 msgid "Downloading"
@@ -2874,16 +2864,8 @@ msgstr "Idő"
 msgid "EPG"
 msgstr "EPG"
 
-#, fuzzy
-msgid "EPG Selection"
-msgstr "Elektronikus műsorújság"
-
 msgid "EPG only"
 msgstr "Csak EPG"
-
-#, fuzzy
-msgid "EPG selection"
-msgstr "Elektronikus műsorújság"
 
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
@@ -2982,6 +2964,10 @@ msgstr "Automatikus gyorskeresés engedélyezése"
 msgid "Enable auto fast scan for %s"
 msgstr "Automatikus gyorskeresés engedélyezése ehhez: %s"
 
+#, fuzzy
+msgid "Enable client mode"
+msgstr "mozgatási mód engedélyezése"
+
 msgid "Enable fallback remote receiver"
 msgstr "Tartalék távoli vevő engedélyezése"
 
@@ -3047,9 +3033,6 @@ msgstr "Kezelőfelület verzió: "
 msgid "Enigma2 skin selector"
 msgstr "Kinézet választó"
 
-msgid "Enigmalight"
-msgstr ""
-
 msgid "Enter"
 msgstr "Bevitel"
 
@@ -3077,6 +3060,22 @@ msgstr "Adja meg a tartós PIN-kódot"
 msgid "Enter pin code"
 msgstr "Adja meg a PIN-kódot"
 
+msgid "Enter the FTP password of the host receiver (normally just leave empty)."
+msgstr ""
+
+msgid "Enter the FTP port of the host receiver (normally '21')."
+msgstr ""
+
+msgid "Enter the FTP username of the host receiver (normally 'root')."
+msgstr ""
+
+#, fuzzy
+msgid "Enter the IP address of the host receiver."
+msgstr "Adja meg, hogy a keleti vagy a nyugati féltekén tartózkodik."
+
+msgid "Enter the domain of the host receiver. Do not include 'http://' or port number."
+msgstr ""
+
 msgid "Enter the frequency at which you LNB switches between low band and high band. For more information consult the spec sheet of your LNB."
 msgstr "Adja meg a frekvenciát, ahol a fej vált az alsó és a felső sáv között. További információért nézze meg a fej technikai adatlapját."
 
@@ -3088,6 +3087,9 @@ msgstr "Adja meg ehhez a műholdhoz a pozicionerben tárolt számot."
 
 msgid "Enter the service pin"
 msgstr "Adja meg a csatornavédelem PIN kódját"
+
+msgid "Enter the streaming port of the host receiver (normally '8001')."
+msgstr ""
 
 msgid "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
 msgstr "Adja mega földrajzi szélességét. Ez a Föld felszínén az Egyenlítőtől (0°) északra vagy délre való szögtávolságot jelenti, decimális értékben."
@@ -3179,9 +3181,6 @@ msgstr "Észtország"
 msgid "Estonian"
 msgstr "Észt"
 
-msgid "EtPortal"
-msgstr "EtPortal"
-
 msgid "Ethernet network interface"
 msgstr "Ethernet hálózati interfész"
 
@@ -3194,19 +3193,30 @@ msgstr "Esemény betűmérete (kinézet méretéhez viszonyítva)"
 msgid "Event name first"
 msgstr "Esemény neve először"
 
-#, fuzzy
-msgid "Event view"
-msgstr "Esemény információs menü"
-
 msgid "Event view context menu"
-msgstr "Eseménynézet menü"
-
-#, fuzzy
-msgid "Event view menu"
 msgstr "Eseménynézet menü"
 
 msgid "Events info menu"
 msgstr "Esemény információs menü"
+
+msgid "Every 12 hours"
+msgstr ""
+
+#, fuzzy
+msgid "Every 2 hours"
+msgstr "Mindenhonnan"
+
+#, fuzzy
+msgid "Every 3 hours"
+msgstr "Mindenhonnan"
+
+#, fuzzy
+msgid "Every 6 hours"
+msgstr "Mindenhonnan"
+
+#, fuzzy
+msgid "Every hour"
+msgstr "Mindenhonnan"
 
 msgid "Every known"
 msgstr "Minden ismert"
@@ -3257,10 +3267,6 @@ msgid "Exit network interface list"
 msgstr "Kilépés a hálózati interfészek listájából"
 
 msgid "Exit network wizard"
-msgstr "Kilépés a Hálózati Varázslóból"
-
-#, fuzzy
-msgid "Exit the wizard"
 msgstr "Kilépés a Hálózati Varázslóból"
 
 msgid "Exit/OK"
@@ -3330,9 +3336,6 @@ msgstr "Inaktivitás figyelmen kívül hagyásának kezdő ideje (extra időkere
 msgid "Extrude from left"
 msgstr ""
 
-msgid "F"
-msgstr "F"
-
 msgid "F1/F3/F4/F4-TURBO"
 msgstr "F1/F3/F4/F4-TURBO"
 
@@ -3381,6 +3384,14 @@ msgstr ""
 
 msgid "FTA"
 msgstr "FTA"
+
+#, fuzzy
+msgid "FTP connection failure"
+msgstr "Helyi privát"
+
+#, fuzzy
+msgid "FTP passive mode"
+msgstr "Adási mód"
 
 msgid "Factory reset"
 msgstr "Gyári alapbeállítások"
@@ -3615,9 +3626,6 @@ msgstr "További beállítások"
 msgid "Further options"
 msgstr "További beállítások"
 
-msgid "G"
-msgstr "G"
-
 msgid "GStreamer version: "
 msgstr "GStreamer verzió: "
 
@@ -3633,6 +3641,14 @@ msgstr ""
 
 msgid ""
 "GUI needs a restart to apply a new skin\n"
+"Do you want to restart the GUI now?"
+msgstr ""
+"Az új kinézet betöltéséhez újra kell indítani a kezelőfelületet.\n"
+"Újraindítja most?"
+
+#, fuzzy
+msgid ""
+"GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
 "Az új kinézet betöltéséhez újra kell indítani a kezelőfelületet.\n"
@@ -3753,10 +3769,6 @@ msgstr "'Goto X' kalibrálása"
 msgid "GraphMultiEpg Settings"
 msgstr "Grafikus EPG beállítások"
 
-#, fuzzy
-msgid "Graphical EPG"
-msgstr "Grafikus multi EPG"
-
 msgid "Graphical Multi EPG"
 msgstr "Grafikus multi EPG"
 
@@ -3808,8 +3820,8 @@ msgstr "Bissau-Guinea"
 msgid "Guyana"
 msgstr "Guyana"
 
-msgid "H"
-msgstr "H"
+msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
+msgstr ""
 
 msgid "HD list"
 msgstr "HD csatornák"
@@ -3946,6 +3958,32 @@ msgstr "Horizontális"
 msgid "Horizontal turning speed"
 msgstr "Horizontális fordulási sebesség"
 
+#, fuzzy
+msgid "Host domain"
+msgstr "kikapcsolás"
+
+msgid "Host receiver FTP password"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver FTP port"
+msgstr "Tartalék távoli vevő portja"
+
+msgid "Host receiver FTP username"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver IP address"
+msgstr "Adja meg az IP címet"
+
+#, fuzzy
+msgid "Host receiver address type"
+msgstr "Még nincs fogadott adat"
+
+#, fuzzy
+msgid "Host receiver streaming port"
+msgstr "A készülék most újraindul"
+
 msgid "HotKey Setup"
 msgstr "HotKey beállítás"
 
@@ -3964,6 +4002,9 @@ msgstr "Hotkey csatornaváltás"
 msgid "Hotplug"
 msgstr ""
 
+msgid "Hourly"
+msgstr ""
+
 msgid "How many minutes do you want add to the recording?"
 msgstr "Hány percet szeretne felvenni?"
 
@@ -3979,24 +4020,21 @@ msgstr "Magyar"
 msgid "Hungary"
 msgstr "Magyarország"
 
-msgid "I"
-msgstr "I"
-
 msgid "I do not want to perform any service scans"
 msgstr "Nem szeretnék csatornakeresést végezni"
 
 msgid "IDLE"
 msgstr "TÉTLEN"
 
-#, fuzzy
-msgid "IMDB Search"
-msgstr "Keresés"
-
 msgid "INFO"
 msgstr "INFO"
 
 msgid "INS"
 msgstr "INS"
+
+#, fuzzy
+msgid "IP"
+msgstr "I"
 
 msgid "IP address"
 msgstr "IP cím"
@@ -4110,9 +4148,6 @@ msgstr "Nem megfelelő csatorna a Kép-a-Képben módhoz!"
 msgid "Increased voltage"
 msgstr "Magasabb feszültség"
 
-msgid "Index"
-msgstr ""
-
 msgid "Index allocated:"
 msgstr "Hozzárendelt index:"
 
@@ -4201,7 +4236,7 @@ msgid "Installing"
 msgstr "Telepítés"
 
 #, fuzzy
-msgid "Installing software..."
+msgid "Installing service"
 msgstr "Telepítés"
 
 msgid "Instant record"
@@ -4300,9 +4335,6 @@ msgstr "Elem oldalanként "
 
 msgid "Items per page for list screen"
 msgstr "Elemek oldalanként listanézetben"
-
-msgid "J"
-msgstr "J"
 
 msgid "Jamaica"
 msgstr "Jamaica"
@@ -4498,6 +4530,9 @@ msgstr "Kapcsolat:"
 msgid "Linked titles with a DVD menu"
 msgstr "DVD menüvel linkelt címek"
 
+msgid "List available networks"
+msgstr "Elérhető hálózatok listázása"
+
 msgid "List mode"
 msgstr "Listázás módja"
 
@@ -4585,9 +4620,6 @@ msgstr "Luxemburgi"
 msgid "MMC card"
 msgstr "MMC kártya"
 
-msgid "MORE"
-msgstr ""
-
 msgid "Macao"
 msgstr "Makaó"
 
@@ -4638,6 +4670,9 @@ msgstr "Kézi"
 
 msgid "Manual Scan"
 msgstr "Kézi keresés"
+
+msgid "Manual configuration"
+msgstr "Kézi konfiguráció"
 
 msgid "Manual scan"
 msgstr "Kézi keresés"
@@ -4704,10 +4739,6 @@ msgid "Menusort (%s)"
 msgstr "Menü rendezés (%s)"
 
 msgid "Message"
-msgstr "Üzenet"
-
-#, fuzzy
-msgid "Message..."
 msgstr "Üzenet"
 
 msgid "Messages"
@@ -4778,6 +4809,10 @@ msgstr "Mongólia"
 
 msgid "Montenegro"
 msgstr "Montenegró"
+
+#, fuzzy
+msgid "Monthly"
+msgstr "hónap"
 
 msgid "Montserrat"
 msgstr "Montserrat"
@@ -4911,26 +4946,16 @@ msgstr "Multistream"
 msgid "Music/Ballet/Dance"
 msgstr "Zene/Balett/Tánc"
 
-msgid "Mute"
-msgstr ""
-
 msgid "Myanmar"
 msgstr "Myanmar"
 
 msgid "N/A"
 msgstr "N/A"
 
-msgid "NEXT"
-msgstr ""
-
 msgid "NIM & Type"
 msgstr "Jelölés és típus"
 
 msgid "NO"
-msgstr "NEM"
-
-#, fuzzy
-msgid "NOW"
 msgstr "NEM"
 
 msgid "NTSC"
@@ -4947,10 +4972,6 @@ msgid "Nameserver %d"
 msgstr "Névszerver %d"
 
 msgid "Nameserver settings"
-msgstr "Névszerver beállítások"
-
-#, fuzzy
-msgid "Nameserver setup"
 msgstr "Névszerver beállítások"
 
 msgid "Namespace & Orbital pos."
@@ -4983,10 +5004,6 @@ msgstr "Hálózati információ:"
 msgid "Network configuration"
 msgstr "Hálózati beállítások"
 
-#, fuzzy
-msgid "Network configuration..."
-msgstr "Hálózati beállítások"
-
 msgid "Network mount"
 msgstr "Hálózat felépítése"
 
@@ -5004,10 +5021,6 @@ msgid "Network setup"
 msgstr "Hálózati beállítások"
 
 msgid "Network test"
-msgstr "Hálózat ellenőrzése"
-
-#, fuzzy
-msgid "Network test..."
 msgstr "Hálózat ellenőrzése"
 
 msgid "Network test: "
@@ -5281,10 +5294,6 @@ msgctxt "now/next: 'now' event label"
 msgid "Now"
 msgstr "Most"
 
-#, fuzzy
-msgid "Now playing"
-msgstr "Lejátszás folytatása"
-
 msgid "Now, use the contrast setting to turn up the brightness of the background as much as possible, but make sure that you can still see the difference between the two brightest levels of shades.If you have done that, press OK."
 msgstr "Most a kontraszt beállító funkció segítségével állítsa be a háttér világosságát a lehető legmagasabb értékre, de arra ügyeljen hogy a két világosság csík között lásson különbséget. Ha készen van, nyomja meg az OK gombot."
 
@@ -5306,10 +5315,6 @@ msgstr "OSD 3D beállítások"
 
 msgid "OSD name request"
 msgstr "OSD név kérés"
-
-#, fuzzy
-msgid "OSD settings"
-msgstr "Beállítások"
 
 msgid "OSD transparency"
 msgstr "OSD áttetszőség"
@@ -5443,9 +5448,6 @@ msgstr "PGS fájl"
 msgid "PID"
 msgstr "PDC"
 
-msgid "PIN code needed"
-msgstr ""
-
 msgid "PIP"
 msgstr ""
 
@@ -5510,10 +5512,6 @@ msgstr "Szülő mappa"
 msgid "Parental control"
 msgstr "Gyermekzár"
 
-#, fuzzy
-msgid "Parental control services editor"
-msgstr "Gyermekzárral védett csatornák mutatása"
-
 msgid "Parental control setup"
 msgstr "Gyermekzár beállítások"
 
@@ -5559,10 +5557,6 @@ msgstr "Peru"
 
 msgid "Philippines"
 msgstr "Fülöp-szigetek"
-
-#, fuzzy
-msgid "PiP setup"
-msgstr "Kép-a-Képben beállítások"
 
 msgid "Picon"
 msgstr "Picon"
@@ -5649,15 +5643,19 @@ msgstr "Kérem, válasszon egy funkciót..."
 msgid "Please choose reader"
 msgstr "Kérem, válasszon egy funkciót..."
 
-#, fuzzy
-msgid "Please configure the fallback tuner setup?"
-msgstr "Tartalék távoli vevő beállítása"
-
-#, fuzzy
-msgid "Please connect your receiver to the internet"
+msgid ""
+"Please configure or verify your Nameservers by filling out the required values.\n"
+"When you are ready press OK to continue."
 msgstr ""
-"\n"
-"A készülék beállításainak visszaállítása."
+"Kérem, ellenőrizze vagy állítsa be a névszervereket, a kért adatok kitöltésével.\n"
+"Befejezés után, nyomja le az OK gombot a folytatáshoz."
+
+msgid ""
+"Please configure your internet connection by filling out the required values.\n"
+"When you are ready press OK to continue."
+msgstr ""
+"Kérem, állítsa be az interket kapcsolatát a kért adatok kitöltésével.\n"
+"Befejezés után, nyomja le az OK gombot a folytatáshoz."
 
 msgid "Please do not change any values unless you know what you are doing!"
 msgstr "Ha nem tudja mi mit jelent, akkor kérem, ne változtassa meg az adatokat!"
@@ -5691,6 +5689,9 @@ msgstr "Kérem, adja meg az új PIN kódot"
 
 msgid "Please enter the old PIN code"
 msgstr "Régi PIN kód"
+
+msgid "Please follow the instructions on the TV"
+msgstr "Kérem, kövesse a képernyőn megjelenő instrukciókat"
 
 msgid "Please note that the previously selected media could not be accessed and therefore the default directory is being used instead."
 msgstr "Az előbb kiválaszott média nem elérhető és ezért inkább az alapmappa lesz használva."
@@ -5728,60 +5729,23 @@ msgstr "Válassza ki, milyen metaadatok legyenek szűrve..."
 msgid "Please select the movie path..."
 msgstr "Válassza ki a felvételek útvonalát..."
 
-#, fuzzy
-msgid "Please set up tuner A"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner B"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner C"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner D"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner E"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner F"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner G"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner H"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner I"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner J"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner Q"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set up tuner R"
-msgstr "Tuner beállító megnyitása "
-
-#, fuzzy
-msgid "Please set your time zone"
-msgstr "Kérem, adja meg az új nevet:"
-
-msgid "Please setup the following basic configs!"
+msgid ""
+"Please select the network interface that you want to use for your internet connection.\n"
+"\n"
+"Please press OK to continue."
 msgstr ""
+"Kérem, válassza ki azt a hálózati interfészt, amit használni kíván az internet kapcsolathoz.\n"
+"\n"
+"Nyomja le az OK gombot a folytatáshoz."
+
+msgid ""
+"Please select the wireless network that you want to connect to.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Kérem, válassza ki a vezeték nélküli hálózatot, amihez csatlakozni kíván.\n"
+"\n"
+"Nyomja le az OK gombot a folytatáshoz."
 
 msgid ""
 "Please use direction keys to move the PiP window.\n"
@@ -5920,6 +5884,10 @@ msgstr "Áram határérték. További információkért olvassa el készüléke 
 
 msgid "PowerMenu"
 msgstr "Kikapcsolási menü"
+
+#, fuzzy
+msgid "Predefined"
+msgstr "Nem meghatározott"
 
 msgid "Predefined transponder"
 msgstr "Előre beállított transzponderen"
@@ -6119,10 +6087,6 @@ msgstr "Kérdés"
 msgid "Quick"
 msgstr "Gyors"
 
-#, fuzzy
-msgid "Quick EPG"
-msgstr "Gyors"
-
 msgid "Quick zap"
 msgstr "Gyors ugrás"
 
@@ -6134,10 +6098,6 @@ msgstr ""
 
 msgid "RGB"
 msgstr "RGB"
-
-#, fuzzy
-msgid "Radio"
-msgstr " (Rádió)"
 
 msgid "Ram disk"
 msgstr "Ram Disk"
@@ -6159,6 +6119,14 @@ msgid "Reader"
 msgstr ""
 
 msgid "Reader Statistics"
+msgstr ""
+
+#, python-format
+msgid "Ready to install \"%s\" ?"
+msgstr ""
+
+#, python-format
+msgid "Ready to remove \"%s\" ?"
 msgstr ""
 
 #, fuzzy
@@ -6212,10 +6180,6 @@ msgstr "Felvétel"
 
 msgid "Recall to previous service"
 msgstr "Előző csatornára váltás"
-
-#, fuzzy
-msgid "Reception settings"
-msgstr "Gyűjtemény beállítások"
 
 msgid "Record"
 msgstr "Felvétel"
@@ -6273,6 +6237,9 @@ msgstr "Újraflashelés"
 msgid "Refresh rate"
 msgstr "Képernyőfrissítés"
 
+msgid "Refresh rate selection."
+msgstr "Frissítés kiválasztása."
+
 msgid "Refusing to move to the same directory"
 msgstr "Ugyanabba a mappába való áthelyezés elutasítása"
 
@@ -6315,6 +6282,10 @@ msgstr "Az eltávolítás sikertelen."
 msgid "Remove"
 msgstr "Eltávolítás"
 
+#, fuzzy
+msgid "Remove Confirmation"
+msgstr "Elalvás időzítő beállításai"
+
 msgid "Remove a mark"
 msgstr "Egy marker eltávolítása"
 
@@ -6349,6 +6320,10 @@ msgstr "%s mappaak eltávolítása sikertelen. (Lehet nem üres.)"
 msgid "Removing partition table"
 msgstr "Partíciótábla újraolvasása"
 
+#, fuzzy
+msgid "Removing service"
+msgstr "Nincs csatorna"
+
 msgid "Rename"
 msgstr "Átnevezés"
 
@@ -6357,6 +6332,10 @@ msgstr "Új események nevének és leírásának szerkesztése"
 
 msgid "Repeat"
 msgstr "Ismétlés"
+
+#, fuzzy
+msgid "Repeat how often"
+msgstr "Ismétlés típusa"
 
 msgid "Repeat leave standby messages"
 msgstr "Készenléti üzenetek ismétlése"
@@ -6532,6 +6511,9 @@ msgstr "Motor: "
 
 msgid "Round start time on"
 msgstr "Kerek kezdési idő"
+
+msgid "Run how often ?"
+msgstr ""
 
 #, fuzzy
 msgid "Running"
@@ -6777,6 +6759,9 @@ msgstr "Keresés..."
 msgid "Scans default lamedbs sorted by satellite with a connected dish positioner"
 msgstr "Műholdanként rendezett Lamedb keresése csatlakoztatott pozícionerhez"
 
+msgid "Schedule EPG and channel list import"
+msgstr ""
+
 msgid "Search"
 msgstr "Keresés"
 
@@ -6891,10 +6876,6 @@ msgstr "Csatorna választása"
 msgid "Select Fast DiSEqC if your aerial system supports this. If you are unsure select 'no'."
 msgstr "Válassza a 'Gyors DiSEqC' módot, amennyiben a földfelszíni rendszere támogatja ezt. Ha nem biztos benne, válassza a 'Nem'-et."
 
-#, fuzzy
-msgid "Select HDD"
-msgstr "Megjelölés"
-
 msgid "Select Image"
 msgstr "Image kiválasztása"
 
@@ -6904,24 +6885,8 @@ msgstr "Multiboot kiválasztása"
 msgid "Select Softcam"
 msgstr "Softcam kiválasztása"
 
-#, fuzzy
-msgid "Select a bouquet"
-msgstr "lista hozzáadása"
-
-#, fuzzy
-msgid "Select a movie"
-msgstr "Felvétel kiválasztása"
-
 msgid "Select a network adapter"
 msgstr "Válasszon hálózati adaptert"
-
-#, fuzzy
-msgid "Select a skin"
-msgstr "Művelet kiválasztása"
-
-#, fuzzy
-msgid "Select a tuner"
-msgstr "Művelet kiválasztása"
 
 msgid "Select a wireless network"
 msgstr "Vezeték nélküli hálózat kiválasztása"
@@ -6944,6 +6909,9 @@ msgstr "Válasszon mentés-fájlokat"
 
 msgid "Select backup location"
 msgstr "Válasszon mentés-helyet"
+
+msgid "Select between entering an IP address or a domain."
+msgstr ""
 
 msgid "Select channel"
 msgstr "Válasszon csatornát"
@@ -7004,6 +6972,9 @@ msgstr "Válassza ki a célmappát a logfájlhoz"
 
 msgid "Select provider to add..."
 msgstr "Válasszon hozzáadandó szolgáltatót..."
+
+msgid "Select refresh rate"
+msgstr "Válassza ki a frissítési arányt"
 
 msgid "Select satellites"
 msgstr "Válasszon műholdat"
@@ -7088,6 +7059,15 @@ msgstr "Válasszon szerkesztendő frissítési forrást"
 
 msgid "Select upgrade source to edit."
 msgstr "Válasszon szerkesztendő frissítési forrást."
+
+msgid "Select video input with up/down buttons"
+msgstr "Válasszon videó bemenetet a FEL/LE gombokkal"
+
+msgid "Select video mode"
+msgstr "Válassza ki a video módot"
+
+msgid "Select wireless network"
+msgstr "Válasszon vezeték nélküli hálózatot"
 
 msgid "Select your ATSC provider."
 msgstr "Válassza ki az ATSC szolgáltatóját."
@@ -7286,6 +7266,13 @@ msgstr "Állítsa be az OpenWebIf jelszót a tartalék tunerből"
 msgid "Set the port of the OpenWebif from your fallback tuner"
 msgstr "Állítsa be az OpenWebIf portot a tartalék tunerből"
 
+#, fuzzy
+msgid "Set the repeat interval of the schedule."
+msgstr "A képernyőfrissítési gyakoriság beállítása."
+
+msgid "Set the time of day to perform the import."
+msgstr ""
+
 msgid "Set time window to 1 hour"
 msgstr "Időablak beállítása 1 órára"
 
@@ -7319,7 +7306,7 @@ msgstr "Beállítások"
 
 #, fuzzy
 msgid "Setup UI animations"
-msgstr "Aktuális konfiguráció aktiválása"
+msgstr "Forgatómotor beállítása"
 
 msgid "Setup hard disk"
 msgstr "Háttértár beállítása"
@@ -7344,6 +7331,9 @@ msgstr "Shellscript (parancssor)"
 
 msgid "Short filenames"
 msgstr "Rövid fájlnevek"
+
+msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
+msgstr ""
 
 msgid "Show"
 msgstr "Mutatás"
@@ -7588,9 +7578,6 @@ msgstr "Kinézetek"
 
 msgid "Skip empty services"
 msgstr "Üres csatornák átugrása"
-
-msgid "Skip internet connection check (disables automatic package installation)"
-msgstr ""
 
 msgid "Sleep timer"
 msgstr "Elalvás időzítő"
@@ -8226,10 +8213,9 @@ msgstr "Thái"
 msgid "Thailand"
 msgstr "Thaiföld"
 
-#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard.\n"
+"Please press OK to continue."
 msgstr ""
 "Köszönöm, hogy használta a Varázslót.\n"
 "Kérem, nyomja le az OK gombot a folytatáshoz."
@@ -8365,6 +8351,13 @@ msgstr ""
 
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "A kezelőfelület hibakeresési módban indul újra"
+
+msgid ""
+"The wireless LAN plugin is not installed!\n"
+"Please install it and choose what you want to do next."
+msgstr ""
+"A vezeték nélküli bővítmény nincs telepítve!\n"
+"Kérem, telepítse fel előbb, majd folytassa."
 
 msgid ""
 "The wireless LAN plugin is not installed!\n"
@@ -8623,18 +8616,20 @@ msgstr "Csütörtök"
 msgid "Time"
 msgstr "Idő"
 
+msgid "Time import should start"
+msgstr ""
+
 msgid "Time scale"
 msgstr "Időskála"
+
+msgid "Time to execute command or script"
+msgstr ""
 
 msgid "Timer"
 msgstr "Időzítő"
 
 msgid "Timer Overview"
 msgstr "Időzítő áttekintés"
-
-#, fuzzy
-msgid "Timer edit"
-msgstr "Időzítés megadása"
 
 msgid "Timer entry"
 msgstr "Időzítés megadása"
@@ -8675,11 +8670,11 @@ msgstr "Időzítő"
 msgid "Timerlist"
 msgstr "Időzítő módosítása"
 
-msgid "Timeshift"
-msgstr "Időcsúsztatás"
-
 #, fuzzy
-msgid "Timeshift Live"
+msgid "Timers"
+msgstr "Időzítő"
+
+msgid "Timeshift"
 msgstr "Időcsúsztatás"
 
 msgid "Timeshift is running. Select an action.\n"
@@ -8780,10 +8775,6 @@ msgid "Transcoding: "
 msgstr "Átkódolás: "
 
 msgid "Translation"
-msgstr "Fordítás"
-
-#, fuzzy
-msgid "Translation:"
 msgstr "Fordítás"
 
 msgid "Translations"
@@ -8957,9 +8948,6 @@ msgstr "Kódolatlan"
 msgid "Unexpected error while retreiving fallback tuner's timer information"
 msgstr "Váratlan hiba történt a tartalék tuner időzítők letöltésekor"
 
-msgid "UnhandledKey"
-msgstr ""
-
 msgid "Unhide parental control services"
 msgstr "Gyermekzárral védett csatornák mutatása"
 
@@ -9124,12 +9112,6 @@ msgstr "A hálózati Varázsló használata a kijelölt hálózati interfész ko
 msgid "Use the network wizard to configure your network\n"
 msgstr "A hálózat beállításához használja a hálózati Varázslót\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
-msgstr ""
-
-msgid "Use the wizard to set up basic features"
-msgstr ""
-
 msgid "Use these input device settings?"
 msgstr "Használhatók ezek a beviteli eszköz beállítások?"
 
@@ -9225,6 +9207,21 @@ msgstr "Videó-beállítások"
 msgid "Video enhancement setup"
 msgstr "Videó-beállítások"
 
+msgid ""
+"Video input selection\n"
+"\n"
+"Please press OK if you can see this page on your TV (or select a different input port).\n"
+"\n"
+"The next input port will be automatically probed in 20 seconds."
+msgstr ""
+"Video bementi kiválasztás\n"
+"\n"
+"Nyomja meg az OK-t ha látja ezt a képet a TV képernyőn (vagy válasszon más bemeneti portot).\n"
+"A következő bemeneti port automatikusan átkapcsol 10 mp múlva."
+
+msgid "Video mode selection."
+msgstr "Video mód kiválasztás."
+
 msgid "Video output"
 msgstr "Videó kimenet"
 
@@ -9237,10 +9234,6 @@ msgstr "Video varázsló"
 #, python-format
 msgid "Video: %s fps"
 msgstr "Videó: %s fps"
-
-#, fuzzy
-msgid "VideoMode"
-msgstr "S-Video"
 
 msgid "Videocodec, size & format"
 msgstr "Videokodek, méret, formátum"
@@ -9319,10 +9312,6 @@ msgstr "Virtuális Billentyűzet"
 
 msgid "Voltage mode"
 msgstr "Feszültség"
-
-#, fuzzy
-msgid "Volume"
-msgstr "Hangerő fel"
 
 msgid "Volume down"
 msgstr "Hangerő le"
@@ -9414,6 +9403,10 @@ msgstr "Szerda"
 msgid "Weekday"
 msgstr "Hétköznap"
 
+#, fuzzy
+msgid "Weekly"
+msgstr "hetente"
+
 msgid "Weighted position"
 msgstr "Kiegyensúlyzozott pozíció"
 
@@ -9430,21 +9423,18 @@ msgstr ""
 "\n"
 "Majd menjen a kivágandó rész végére, nyomja meg az OK gombot és válassza a \"Vágás vége\" opciót. Ennyi az egész."
 
-#, fuzzy
 msgid ""
 "Welcome.\n"
 "\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
+"If you want to connect your receiver to the Internet, this wizard will guide you through the basic network setup of your receiver.\n"
+"\n"
+"Press OK to start configuring your network"
 msgstr ""
 "Üdvözüljük.\n"
 "\n"
 "Ha szeretné a készülékét az Internetre csatlakoztatni, ez a Varázsló segíthet Önnek, hogy az alap-konfigurációt létrehozhassa.\n"
 "\n"
 "Kérem, nyomja le az OK gombot a hákózat konfigurálásához"
-
-msgid "Welcome..."
-msgstr ""
 
 msgid "West"
 msgstr "Nyugat"
@@ -9455,7 +9445,10 @@ msgstr "Nyugati limit beállítás"
 msgid "Western Sahara"
 msgstr "Nyugat-Szahara"
 
-msgid "What type of service scan do you want?"
+msgid "What date of month ?"
+msgstr ""
+
+msgid "What day of week ?"
 msgstr ""
 
 msgid "When enabled the timer from the fallback tuner is imported"
@@ -9499,6 +9492,12 @@ msgstr "Vezeték nélküli hálózat"
 
 msgid "Wireless network configuration..."
 msgstr "Vezeték nélküli hálózat beállítása..."
+
+msgid "Wireless network connection setup"
+msgstr "Vezeték nélküli hálózat beállítása"
+
+msgid "Wireless network connection setup."
+msgstr "Vezeték nélküli hálózat beállítása."
 
 msgid "Wireless network state"
 msgstr "Vezeték nélküli hálózat állapota"
@@ -9723,6 +9722,13 @@ msgstr ""
 msgid "Your hardware can detect CI mode itself or works only in legacy mode."
 msgstr ""
 
+msgid ""
+"Your internet connection is not working!\n"
+"Please choose what you want to do next."
+msgstr ""
+"Az internetkapcsolata nem működik!\n"
+"Kérem, válassza ki, mi legyen a teendő."
+
 #, python-format
 msgid "Your internet connection is working (ip: %s)"
 msgstr "Az internetkapcsolat működik (IP: %s)"
@@ -9754,6 +9760,19 @@ msgstr ""
 "Az internetkapcsolata működőképes.\n"
 "\n"
 
+msgid ""
+"Your receiver is now ready to use.\n"
+"\n"
+"Your internet connection is working now.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"A készülék most már használható állapotban van.\n"
+"\n"
+"Az internetkapcsolata működőképes.\n"
+"\n"
+"Nyomja le az OK gombot a folytatáshoz."
+
 msgid "Your receiver is rebooting"
 msgstr "A készülék most újraindul"
 
@@ -9775,6 +9794,17 @@ msgstr "A készülék most készenlétbe kapcsol inaktivitás miatt."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
 msgstr "Az OK gomb megnyomása után a készülék újra fog indulni."
+
+msgid ""
+"Your wireless LAN internet connection could not be started!\n"
+"Have you attached your USB WLAN Stick?\n"
+"\n"
+"Please choose what you want to do next."
+msgstr ""
+"A vezeték nélküli hálózati kapcsolata nem hozható létre!\n"
+"Csatlakoztatva van az USB-s vezeték nélküli adapter?\n"
+"\n"
+"Kérem, válassza ki, mi legyen a teendő."
 
 msgid "Zambia"
 msgstr "Zambia"
@@ -10043,10 +10073,6 @@ msgstr "overscan/letterbox szélek összekapcsolása"
 
 msgid "comedy"
 msgstr "vígjáték"
-
-#, fuzzy
-msgid "config menu"
-msgstr "visszaigazolt"
 
 msgid "confirmed"
 msgstr "visszaigazolt"
@@ -11082,6 +11108,3 @@ msgstr "ugrás és felvétel"
 
 msgid "zapped"
 msgstr "ugrott"
-
-msgid "®"
-msgstr "®"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Project Slovenia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-24 19:26+0200\n"
+"POT-Creation-Date: 2019-05-27 09:44+0430\n"
 "PO-Revision-Date: 2015-08-30 09:00+0200\n"
 "Last-Translator: Taykun345 <support@satnigmo.com>\n"
 "Language-Team: Satnigmo <support@satnigmo.com>\n"
@@ -134,9 +134,6 @@ msgstr ""
 "\n"
 "Poglejte, namestite in odstranite pakete, ki so nameščeni oz. so na voljo."
 
-msgid "  REC  "
-msgstr ""
-
 msgid " (0 - all networks)"
 msgstr ""
 
@@ -251,6 +248,10 @@ msgstr "%S:%M"
 #, fuzzy
 msgid "%a %e %B %Y"
 msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %e %b  %-H:%M"
+msgstr "%a %e/%m  %-H:%M"
 
 #. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
 msgid "%a %e/%m"
@@ -531,9 +532,6 @@ msgstr "* Na voljo samo kadar je hkrati aktivnih več vmesnikov."
 msgid "* current animation"
 msgstr "Aktiviranje trenutnih nastavitev"
 
-msgid "-"
-msgstr ""
-
 msgid "-NO SERVICE\n"
 msgstr ""
 
@@ -543,16 +541,6 @@ msgstr ""
 
 msgid "/s"
 msgstr "/s"
-
-#
-#, fuzzy
-msgid "0"
-msgstr "30"
-
-#
-#, fuzzy
-msgid "1"
-msgstr "1"
 
 #
 msgid "1.0"
@@ -618,11 +606,6 @@ msgstr "18 V"
 msgid "1X"
 msgstr "1"
 
-#
-#, fuzzy
-msgid "2"
-msgstr "24"
-
 msgid "20 MB/s"
 msgstr ""
 
@@ -644,11 +627,6 @@ msgstr "29.97"
 #, fuzzy
 msgid "2X"
 msgstr "2"
-
-#
-#, fuzzy
-msgid "3"
-msgstr "30"
 
 #
 msgid "30"
@@ -679,11 +657,6 @@ msgstr "3"
 msgid "3d mode"
 msgstr "3D način"
 
-#
-#, fuzzy
-msgid "4"
-msgstr "24"
-
 msgid "420"
 msgstr ""
 
@@ -710,21 +683,7 @@ msgstr "4:3 PanScan"
 msgid "4X"
 msgstr "4"
 
-#
-#, fuzzy
-msgid "5"
-msgstr "25"
-
 msgid "50 MB/s"
-msgstr ""
-
-msgid "6"
-msgstr ""
-
-msgid "7"
-msgstr ""
-
-msgid "8"
 msgstr ""
 
 msgid "8 character"
@@ -733,16 +692,11 @@ msgstr ""
 msgid "8bit"
 msgstr ""
 
-msgid "9"
-msgstr ""
-
 msgid ": 0000 - default (disabled)"
 msgstr ""
 
-#
-#, fuzzy
 msgid "<Alternate Display Skin>"
-msgstr "Dodajanje alternativ"
+msgstr ""
 
 #
 msgid "<Current movielist location>"
@@ -757,10 +711,8 @@ msgstr "Privzete nastavitve"
 msgid "<Default movie location>"
 msgstr "<Privzeta \"movie\" lokacija>"
 
-#
-#, fuzzy
 msgid "<Display Skin with Picon>"
-msgstr "<Privzeta \"movie\" lokacija>"
+msgstr ""
 
 #
 #, fuzzy
@@ -785,6 +737,9 @@ msgstr "??"
 #
 msgid "A"
 msgstr "A"
+
+msgid "A background update check is in progress, please wait a few minutes and try again."
+msgstr ""
 
 #
 #, python-format
@@ -1179,6 +1134,9 @@ msgstr "Izhod iz predvajalnika vsebin s pritiskom na tipko \"izhod\""
 msgid "Allow unsupported modes"
 msgstr "ni podprto"
 
+msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
 msgid "Also import at reboot/restart enigma2"
 msgstr ""
 
@@ -1307,6 +1265,13 @@ msgid ""
 msgstr ""
 "Ste prepričani, da želite izbrisati\n"
 "izbrano varnostno kopijo:\n"
+
+#
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this:\n"
+" "
+msgstr "Ste prepričani, da želite zapreti čarovnik?"
 
 #
 msgid "Are you sure you want to exit this wizard?"
@@ -2042,11 +2007,6 @@ msgstr "Seznam kanalov"
 msgid "Channel:"
 msgstr "Kanal:"
 
-#
-#, fuzzy
-msgid "Channellist menu"
-msgstr "Tip seznama kanalov"
-
 msgid "Channelnumber and picon"
 msgstr ""
 
@@ -2087,21 +2047,9 @@ msgstr "Poglavje:"
 msgid "Check"
 msgstr "Preveri"
 
-#, fuzzy
-msgid "Check the internet connection"
-msgstr "Sprejemnik nima delujoče internetne povezave"
-
-#, fuzzy
-msgid "Check the internet connection again"
-msgstr "Sprejemnik nima delujoče internetne povezave"
-
 #
 msgid "Checking filesystem..."
 msgstr "Poteka preverjanje datotečnega sistema..."
-
-#, fuzzy
-msgid "Checking the internet connection"
-msgstr "Sprejemnik nima delujoče internetne povezave"
 
 #, python-format
 msgid ""
@@ -2197,6 +2145,19 @@ msgstr ""
 msgid "Client is streaming from this box!"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Client mode"
+msgstr "zagon modula"
+
+msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgstr ""
+
+#
+#, fuzzy
+msgid "Client tuner configuration"
+msgstr "Nastavitev kanalnikov"
+
 msgid "Clients"
 msgstr ""
 
@@ -2246,18 +2207,18 @@ msgid "Combo"
 msgstr ""
 
 #
-#, fuzzy
-msgid "Command execution..."
-msgstr "Izbira časovnika"
-
-#
 msgid "Command order"
 msgstr "Zaporedje ukazov"
 
 #
 #, fuzzy
-msgid "Commit info"
-msgstr "Komunikacija"
+msgid "Command to run"
+msgstr "Zaporedje ukazov"
+
+#
+#, fuzzy
+msgid "Command type"
+msgstr "Zaporedje ukazov"
 
 #
 msgid "Common Interface"
@@ -2329,6 +2290,10 @@ msgid "Configure if the HDMI EDID checking should be bypassed as this might solv
 msgstr ""
 
 #
+msgid "Configure interface"
+msgstr "Nastavite vmesnik"
+
+#
 msgid "Configure nameservers"
 msgstr "Nastavite imenske strežnike"
 
@@ -2388,6 +2353,10 @@ msgstr "Določitev barvnega formata pri uporabi SCART izhoda."
 msgid "Configure your internal LAN"
 msgstr "Nastavite LAN omrežje"
 
+#
+msgid "Configure your network again"
+msgstr "Ponovno nastavite omrežje"
+
 #, fuzzy
 msgid "Configure your network settings and press OK to scan"
 msgstr "Nastavite omrežje in za pričetek pregledovanja pritisnite tipko \"OK\"."
@@ -2434,6 +2403,9 @@ msgid "Connected to"
 msgstr "Povezan s"
 
 msgid "Connected transcoding, limit - no PiP!"
+msgstr ""
+
+msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
 
 msgid "Console"
@@ -2548,6 +2520,19 @@ msgstr "Hrvaško"
 msgid "Croatian"
 msgstr "Hrvaško"
 
+msgid "Cron Manager"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Cron manager"
+msgstr "Upravljanje paketkov"
+
+#
+#, fuzzy
+msgid "Cron timers"
+msgstr "Sprememba časovnika"
+
 msgid "Cuba"
 msgstr ""
 
@@ -2556,6 +2541,11 @@ msgstr ""
 
 msgid "Current CEC address"
 msgstr "Trenutni CEC naslov"
+
+#
+#, fuzzy
+msgid "Current Status:"
+msgstr "Trenutne nastavitve:"
 
 msgid "Current device: "
 msgstr "Trenutna naprava:"
@@ -2596,6 +2586,11 @@ msgstr "Trenutna vrednost:"
 
 msgid "Currently the commit log cannot be retrieved - please try later again"
 msgstr "Seznam sprememb v tem trenutku ni mogoče prenesti - prosim poskusite kasneje!"
+
+#
+#, fuzzy
+msgid "Custom"
+msgstr "Ostale nastavitve"
 
 msgid "Customize OpenWebIF settings for fallback tuner"
 msgstr ""
@@ -2722,6 +2717,11 @@ msgstr "DVD seznam naslovov"
 #, fuzzy
 msgid "DVDPlayer"
 msgstr "DVD predvajalnik"
+
+#
+#, fuzzy
+msgid "Daily"
+msgstr "vsak dan"
 
 #
 msgid "Danish"
@@ -3004,7 +3004,7 @@ msgstr "Prikaz EPG za trenutni kanal"
 #
 #, fuzzy
 msgid "Display Skin"
-msgstr "Privzete nastavitve"
+msgstr "Zaslon sprejemnika"
 
 msgid "Display and userinterface"
 msgstr "Zaslon in uporabniški vmesnik"
@@ -3132,16 +3132,6 @@ msgid ""
 msgstr "Želite presneti sliko k %s?"
 
 #
-#, fuzzy
-msgid "Do you want to install Plugins?"
-msgstr "Izbrani vtičnik lahko namestite."
-
-#
-#, fuzzy
-msgid "Do you want to install a channel list?"
-msgstr "Želite namestiti ta paket?:\n"
-
-#
 msgid "Do you want to install the package:\n"
 msgstr "Želite namestiti ta paket?:\n"
 
@@ -3192,6 +3182,9 @@ msgstr "Želite nadgraditi paket:\n"
 msgid "Dolby"
 msgstr ""
 
+msgid "Domain"
+msgstr ""
+
 msgid "Dominica"
 msgstr ""
 
@@ -3240,11 +3233,6 @@ msgstr "Prenos"
 
 #
 msgid "Downloadable new plugins"
-msgstr "Seznam vtičnikov"
-
-#
-#, fuzzy
-msgid "Downloadable plugins"
 msgstr "Seznam vtičnikov"
 
 #
@@ -3308,18 +3296,8 @@ msgstr "Čas"
 msgid "EPG"
 msgstr "EPG"
 
-#
-#, fuzzy
-msgid "EPG Selection"
-msgstr "EPG izbira"
-
 msgid "EPG only"
 msgstr ""
-
-#
-#, fuzzy
-msgid "EPG selection"
-msgstr "EPG izbira"
 
 #
 #, python-format
@@ -3434,6 +3412,11 @@ msgstr "Omogoči samodejno hitro iskanje"
 msgid "Enable auto fast scan for %s"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Enable client mode"
+msgstr "Premik kanalov znotraj paketa"
+
 msgid "Enable fallback remote receiver"
 msgstr "Vklopi rezervni oddaljeni sprejemnik"
 
@@ -3508,9 +3491,6 @@ msgstr "Verzija jedra: "
 msgid "Enigma2 skin selector"
 msgstr "Izbirnik Enigma2 preoblek"
 
-msgid "Enigmalight"
-msgstr ""
-
 #
 #, fuzzy
 msgid "Enter"
@@ -3543,6 +3523,21 @@ msgstr ""
 msgid "Enter pin code"
 msgstr "Vnesite PIN kodo"
 
+msgid "Enter the FTP password of the host receiver (normally just leave empty)."
+msgstr ""
+
+msgid "Enter the FTP port of the host receiver (normally '21')."
+msgstr ""
+
+msgid "Enter the FTP username of the host receiver (normally 'root')."
+msgstr ""
+
+msgid "Enter the IP address of the host receiver."
+msgstr ""
+
+msgid "Enter the domain of the host receiver. Do not include 'http://' or port number."
+msgstr ""
+
 msgid "Enter the frequency at which you LNB switches between low band and high band. For more information consult the spec sheet of your LNB."
 msgstr ""
 
@@ -3555,6 +3550,9 @@ msgstr ""
 #
 msgid "Enter the service pin"
 msgstr "Vnesite PIN kodo za kanale"
+
+msgid "Enter the streaming port of the host receiver (normally '8001')."
+msgstr ""
 
 msgid "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
 msgstr ""
@@ -3650,10 +3648,6 @@ msgstr "Estonsko"
 msgid "Estonian"
 msgstr "Estonsko"
 
-#, fuzzy
-msgid "EtPortal"
-msgstr "EtPortal"
-
 msgid "Ethernet network interface"
 msgstr "Omrežni vmesnik"
 
@@ -3666,19 +3660,30 @@ msgstr "Velikost pisave dogodka"
 msgid "Event name first"
 msgstr ""
 
-msgid "Event view"
-msgstr ""
-
 msgid "Event view context menu"
 msgstr ""
 
-#
-#, fuzzy
-msgid "Event view menu"
-msgstr "Predogled menija"
-
 msgid "Events info menu"
 msgstr ""
+
+msgid "Every 12 hours"
+msgstr ""
+
+#, fuzzy
+msgid "Every 2 hours"
+msgstr "Povsod"
+
+#, fuzzy
+msgid "Every 3 hours"
+msgstr "Povsod"
+
+#, fuzzy
+msgid "Every 6 hours"
+msgstr "Povsod"
+
+#, fuzzy
+msgid "Every hour"
+msgstr "Povsod"
 
 msgid "Every known"
 msgstr ""
@@ -3742,11 +3747,6 @@ msgstr "Izhod iz seznama omrežnih vmesnikov"
 
 #
 msgid "Exit network wizard"
-msgstr "Izhod iz omrežnega čarovnika"
-
-#
-#, fuzzy
-msgid "Exit the wizard"
 msgstr "Izhod iz omrežnega čarovnika"
 
 msgid "Exit/OK"
@@ -3825,9 +3825,6 @@ msgstr "Dodatni začetni čas za ignoriranje časovnika neaktivnosti"
 msgid "Extrude from left"
 msgstr ""
 
-msgid "F"
-msgstr ""
-
 msgid "F1/F3/F4/F4-TURBO"
 msgstr ""
 
@@ -3871,6 +3868,15 @@ msgstr ""
 
 msgid "FTA"
 msgstr "FTA"
+
+#, fuzzy
+msgid "FTP connection failure"
+msgstr "Žična omrežna povezava"
+
+#
+#, fuzzy
+msgid "FTP passive mode"
+msgstr "Način posredovanja"
 
 #
 msgid "Factory reset"
@@ -4142,9 +4148,6 @@ msgstr "Nadaljne možnosti"
 msgid "Further options"
 msgstr ""
 
-msgid "G"
-msgstr ""
-
 #, fuzzy
 msgid "GStreamer version: "
 msgstr "Verzija jedra: "
@@ -4162,6 +4165,15 @@ msgstr ""
 #
 msgid ""
 "GUI needs a restart to apply a new skin\n"
+"Do you want to restart the GUI now?"
+msgstr ""
+"Za spremembo predloge je potrebno ponovno zagnati uporabniški vmesnik (GUI)!\n"
+"Želite to storiti sedaj?"
+
+#
+#, fuzzy
+msgid ""
+"GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
 "Za spremembo predloge je potrebno ponovno zagnati uporabniški vmesnik (GUI)!\n"
@@ -4300,11 +4312,6 @@ msgid "GraphMultiEpg Settings"
 msgstr "GraphMultiEPG nastavitve"
 
 #
-#, fuzzy
-msgid "Graphical EPG"
-msgstr "Grafični Multi-EPG sistem"
-
-#
 msgid "Graphical Multi EPG"
 msgstr "Grafični Multi-EPG sistem"
 
@@ -4359,10 +4366,8 @@ msgstr ""
 msgid "Guyana"
 msgstr ""
 
-#
-#, fuzzy
-msgid "H"
-msgstr "CH"
+msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
+msgstr ""
 
 msgid "HD list"
 msgstr "HD seznam"
@@ -4510,6 +4515,32 @@ msgstr "Horizontalno"
 msgid "Horizontal turning speed"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Host domain"
+msgstr "izklop"
+
+msgid "Host receiver FTP password"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver FTP port"
+msgstr "Naslov rezervnega oddaljenega sprejemnika"
+
+msgid "Host receiver FTP username"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver IP address"
+msgstr "IP naslov"
+
+msgid "Host receiver address type"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver streaming port"
+msgstr "Poteka ponovni zagon vašega sprejemnika ..."
+
 msgid "HotKey Setup"
 msgstr ""
 
@@ -4526,6 +4557,9 @@ msgid "Hotkey zap"
 msgstr ""
 
 msgid "Hotplug"
+msgstr ""
+
+msgid "Hourly"
 msgstr ""
 
 #
@@ -4550,9 +4584,6 @@ msgstr "Madžarščina"
 msgid "Hungary"
 msgstr "Madžarščina"
 
-msgid "I"
-msgstr ""
-
 #
 #, fuzzy
 msgid "I do not want to perform any service scans"
@@ -4561,14 +4592,13 @@ msgstr "Želite iskati kanale?"
 msgid "IDLE"
 msgstr ""
 
-#, fuzzy
-msgid "IMDB Search"
-msgstr "Iskanje"
-
 msgid "INFO"
 msgstr ""
 
 msgid "INS"
+msgstr ""
+
+msgid "IP"
 msgstr ""
 
 msgid "IP address"
@@ -4692,9 +4722,6 @@ msgstr "Napačna vrsta kanala za način \"Slika v sliki\"!"
 msgid "Increased voltage"
 msgstr "Povečana napetost"
 
-msgid "Index"
-msgstr ""
-
 msgid "Index allocated:"
 msgstr ""
 
@@ -4801,7 +4828,7 @@ msgstr "Nameščam..."
 
 #
 #, fuzzy
-msgid "Installing software..."
+msgid "Installing service"
 msgstr "Nameščam..."
 
 msgid "Instant record"
@@ -4910,9 +4937,6 @@ msgstr "Št. dogodkov na stran"
 
 msgid "Items per page for list screen"
 msgstr "Št. dogodkov na stran v polnem načinu"
-
-msgid "J"
-msgstr ""
 
 msgid "Jamaica"
 msgstr ""
@@ -5142,6 +5166,9 @@ msgstr "Stanje:"
 msgid "Linked titles with a DVD menu"
 msgstr "Povezani naslovi z DVD menujem"
 
+msgid "List available networks"
+msgstr "Prikaz razpoložljivih omrežij"
+
 msgid "List mode"
 msgstr "Polni način"
 
@@ -5248,9 +5275,6 @@ msgstr ""
 msgid "MMC card"
 msgstr "MMC kartica"
 
-msgid "MORE"
-msgstr ""
-
 msgid "Macao"
 msgstr ""
 
@@ -5309,6 +5333,9 @@ msgstr "Ročno"
 #
 msgid "Manual Scan"
 msgstr "Ročno iskanje"
+
+msgid "Manual configuration"
+msgstr "Ročna nastavitev"
 
 #
 msgid "Manual scan"
@@ -5394,11 +5421,6 @@ msgstr "Obvestilo"
 
 #
 #, fuzzy
-msgid "Message..."
-msgstr "Obvestilo"
-
-#
-#, fuzzy
 msgid "Messages"
 msgstr "Obvestilo"
 
@@ -5480,6 +5502,11 @@ msgstr ""
 
 msgid "Montenegro"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Monthly"
+msgstr "mesec"
 
 msgid "Montserrat"
 msgstr ""
@@ -5632,9 +5659,6 @@ msgstr "Multisat"
 msgid "Music/Ballet/Dance"
 msgstr ""
 
-msgid "Mute"
-msgstr ""
-
 msgid "Myanmar"
 msgstr ""
 
@@ -5642,16 +5666,10 @@ msgstr ""
 msgid "N/A"
 msgstr "N/A"
 
-msgid "NEXT"
-msgstr ""
-
 msgid "NIM & Type"
 msgstr ""
 
 msgid "NO"
-msgstr ""
-
-msgid "NOW"
 msgstr ""
 
 #
@@ -5673,11 +5691,6 @@ msgstr "Imenski strežnik %d"
 
 #
 msgid "Nameserver settings"
-msgstr "Nastavitve imenskega strežnika"
-
-#
-#, fuzzy
-msgid "Nameserver setup"
 msgstr "Nastavitve imenskega strežnika"
 
 msgid "Namespace & Orbital pos."
@@ -5712,10 +5725,6 @@ msgstr ""
 msgid "Network configuration"
 msgstr ""
 
-#, fuzzy
-msgid "Network configuration..."
-msgstr "Nastavitve brezžičnega omrežja"
-
 #
 msgid "Network mount"
 msgstr "Dodajanje mrežne naprave"
@@ -5738,11 +5747,6 @@ msgstr "Omrežne nastavitve "
 
 #
 msgid "Network test"
-msgstr "Preizkus omrežja"
-
-#
-#, fuzzy
-msgid "Network test..."
 msgstr "Preizkus omrežja"
 
 msgid "Network test: "
@@ -6065,11 +6069,6 @@ msgid "Now"
 msgstr "Zdaj"
 
 #
-#, fuzzy
-msgid "Now playing"
-msgstr "Nadaljuj predvajanje"
-
-#
 msgid "Now, use the contrast setting to turn up the brightness of the background as much as possible, but make sure that you can still see the difference between the two brightest levels of shades.If you have done that, press OK."
 msgstr "Sedaj spremenite nastavitve kontrasta za zvišanje svetlosti ozadja kolikor je možno, vendar se prepričajte da lahko opazite razliko med dvema nivojema svetlosti. Ko boste zadovoljni z nastavitvami, pritisnite OK. "
 
@@ -6093,11 +6092,6 @@ msgstr "OSD 3D nastavitve"
 
 msgid "OSD name request"
 msgstr "Zahtevek za OSD ime"
-
-#
-#, fuzzy
-msgid "OSD settings"
-msgstr "Nastavitve"
 
 #
 msgid "OSD transparency"
@@ -6242,9 +6236,6 @@ msgstr ""
 msgid "PID"
 msgstr "PLP ID"
 
-msgid "PIN code needed"
-msgstr ""
-
 msgid "PIP"
 msgstr ""
 
@@ -6317,10 +6308,6 @@ msgstr "Prvotna mapa"
 msgid "Parental control"
 msgstr "Starševska zaščita"
 
-#, fuzzy
-msgid "Parental control services editor"
-msgstr "Odkrij zaščitene kanale"
-
 #
 msgid "Parental control setup"
 msgstr "Nastavitve starševske zaščite"
@@ -6372,11 +6359,6 @@ msgstr ""
 
 msgid "Philippines"
 msgstr ""
-
-#
-#, fuzzy
-msgid "PiP setup"
-msgstr "Nastavitve PiP"
 
 msgid "Picon"
 msgstr "Sličica"
@@ -6481,15 +6463,21 @@ msgstr "Izbor razširitve"
 msgid "Please choose reader"
 msgstr "Izbor razširitve"
 
-#, fuzzy
-msgid "Please configure the fallback tuner setup?"
-msgstr "Naslov rezervnega oddaljenega sprejemnika"
-
-#, fuzzy
-msgid "Please connect your receiver to the internet"
+#
+msgid ""
+"Please configure or verify your Nameservers by filling out the required values.\n"
+"When you are ready press OK to continue."
 msgstr ""
-"\n"
-"Obnovitev nastavitev sprejemnika."
+"Preverite vaše imenske strežnike.\n"
+"Ko boste pripravljeni, pritisnite tipko OK."
+
+#
+msgid ""
+"Please configure your internet connection by filling out the required values.\n"
+"When you are ready press OK to continue."
+msgstr ""
+"Nastavite vašo internetno povezavo.\n"
+"Po vnosu vseh podatkov, pritisnite OK."
 
 #
 msgid "Please do not change any values unless you know what you are doing!"
@@ -6531,6 +6519,10 @@ msgstr "Prosim vnesi novo PIN kodo"
 
 msgid "Please enter the old PIN code"
 msgstr "Vnesite prejšnjo PIN kodo"
+
+#
+msgid "Please follow the instructions on the TV"
+msgstr "Prosim, da sledite navodilom na TV zaslonu"
 
 #
 msgid "Please note that the previously selected media could not be accessed and therefore the default directory is being used instead."
@@ -6580,72 +6572,24 @@ msgid "Please select the movie path..."
 msgstr "Izberite pot do datotek:"
 
 #
-#, fuzzy
-msgid "Please set up tuner A"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner B"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner C"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner D"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner E"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner F"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner G"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner H"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner I"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner J"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner Q"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set up tuner R"
-msgstr "Vnesite novo ime datoteke:"
-
-#
-#, fuzzy
-msgid "Please set your time zone"
-msgstr "Vnesite novo ime datoteke:"
-
-msgid "Please setup the following basic configs!"
+msgid ""
+"Please select the network interface that you want to use for your internet connection.\n"
+"\n"
+"Please press OK to continue."
 msgstr ""
+"Izberite omrežni vmesnik, ki ga želite uporabiti za internetno povezavo.\n"
+"\n"
+"Za nadaljevanje pritisnite OK."
+
+#
+msgid ""
+"Please select the wireless network that you want to connect to.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Izberite brezžično omrežje na katerega se želite povezati.\n"
+"\n"
+"Za nadaljevanje pritisnite OK."
 
 #
 msgid ""
@@ -6820,6 +6764,10 @@ msgstr ""
 
 msgid "PowerMenu"
 msgstr ""
+
+#, fuzzy
+msgid "Predefined"
+msgstr "nedoločeno"
 
 #
 msgid "Predefined transponder"
@@ -7055,18 +7003,11 @@ msgid "Quick"
 msgstr "Hitro"
 
 #
-#, fuzzy
-msgid "Quick EPG"
-msgstr "Hitro"
-
-#
 msgid "Quick zap"
 msgstr "Hitri preklop"
 
-#
-#, fuzzy
 msgid "REC"
-msgstr "FEC"
+msgstr ""
 
 msgid "REC "
 msgstr ""
@@ -7074,10 +7015,6 @@ msgstr ""
 #
 msgid "RGB"
 msgstr "RGB"
-
-#, fuzzy
-msgid "Radio"
-msgstr " (Radio)"
 
 #
 msgid "Ram disk"
@@ -7101,6 +7038,14 @@ msgid "Reader"
 msgstr ""
 
 msgid "Reader Statistics"
+msgstr ""
+
+#, python-format
+msgid "Ready to install \"%s\" ?"
+msgstr ""
+
+#, python-format
+msgid "Ready to remove \"%s\" ?"
 msgstr ""
 
 #
@@ -7165,11 +7110,6 @@ msgstr "Rec"
 
 msgid "Recall to previous service"
 msgstr ""
-
-#
-#, fuzzy
-msgid "Reception settings"
-msgstr "Nastavitve zbirke"
 
 #
 msgid "Record"
@@ -7237,6 +7177,10 @@ msgid "Refresh rate"
 msgstr "Hitrost osveževanja"
 
 #
+msgid "Refresh rate selection."
+msgstr "Izbira hitrosti osveževanja."
+
+#
 #, fuzzy
 msgid "Refusing to move to the same directory"
 msgstr "Vnesite ime nove mape:"
@@ -7287,6 +7231,11 @@ msgid "Remove"
 msgstr "Odstrani"
 
 #
+#, fuzzy
+msgid "Remove Confirmation"
+msgstr "Nastavitve časovnika spanja"
+
+#
 msgid "Remove a mark"
 msgstr "Odstrani oznako"
 
@@ -7329,6 +7278,11 @@ msgid "Removing partition table"
 msgstr "Odstranjevanje particijske tabele"
 
 #
+#, fuzzy
+msgid "Removing service"
+msgstr "Napaka ..."
+
+#
 msgid "Rename"
 msgstr "Preimenovanje"
 
@@ -7338,6 +7292,11 @@ msgstr "Preimenuj ime in opis za nove dogodke"
 #
 msgid "Repeat"
 msgstr "Ponovitev"
+
+#
+#, fuzzy
+msgid "Repeat how often"
+msgstr "Vrsta ponavljanja"
 
 msgid "Repeat leave standby messages"
 msgstr ""
@@ -7555,6 +7514,9 @@ msgid "Rotor: "
 msgstr ""
 
 msgid "Round start time on"
+msgstr ""
+
+msgid "Run how often ?"
 msgstr ""
 
 #
@@ -7846,6 +7808,9 @@ msgstr "Pregledovanje..."
 msgid "Scans default lamedbs sorted by satellite with a connected dish positioner"
 msgstr "Iskanje privzetih lamedbs razvrščenih po satelitih s povezanimi pozicionerji."
 
+msgid "Schedule EPG and channel list import"
+msgstr ""
+
 #, fuzzy
 msgid "Search"
 msgstr "Iskanje"
@@ -7978,11 +7943,6 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "Select HDD"
-msgstr "Izberite"
-
-#
-#, fuzzy
 msgid "Select Image"
 msgstr "Izberite posnetek"
 
@@ -7997,28 +7957,8 @@ msgid "Select Softcam"
 msgstr "Izberi vse"
 
 #
-#, fuzzy
-msgid "Select a bouquet"
-msgstr "Nov paket"
-
-#
-#, fuzzy
-msgid "Select a movie"
-msgstr "Izberite posnetek"
-
-#
 msgid "Select a network adapter"
 msgstr "Izberite omrežni vmesnik"
-
-#
-#, fuzzy
-msgid "Select a skin"
-msgstr "Izberi dogodek"
-
-#
-#, fuzzy
-msgid "Select a tuner"
-msgstr "Izberi dogodek"
 
 #
 msgid "Select a wireless network"
@@ -8047,6 +7987,9 @@ msgstr "Izberite datoteke, ki jih boste varnostno kopirali"
 #
 msgid "Select backup location"
 msgstr "Izberite lokacijo varnostnih kopij"
+
+msgid "Select between entering an IP address or a domain."
+msgstr ""
 
 msgid "Select channel"
 msgstr "Izberi kanal"
@@ -8128,6 +8071,10 @@ msgstr "Izberite ciljno mapo"
 #
 msgid "Select provider to add..."
 msgstr "Izberite ponudnika, ki ga želite dodati."
+
+#
+msgid "Select refresh rate"
+msgstr "Izberite hitrost osveževanja"
 
 #
 msgid "Select satellites"
@@ -8219,6 +8166,18 @@ msgstr "Izberite vir nadgradnje"
 #
 msgid "Select upgrade source to edit."
 msgstr "Izberite vir, ki ga boste urejali."
+
+#
+msgid "Select video input with up/down buttons"
+msgstr "Z gor in dol tipkami izberite video vhod"
+
+#
+msgid "Select video mode"
+msgstr "Izberite video način"
+
+#
+msgid "Select wireless network"
+msgstr "Izberite brezžično omrežje"
 
 #
 #, fuzzy
@@ -8452,6 +8411,13 @@ msgstr ""
 msgid "Set the port of the OpenWebif from your fallback tuner"
 msgstr ""
 
+#, fuzzy
+msgid "Set the repeat interval of the schedule."
+msgstr "Določitev hitrosti osveževanja zaslona. Evropa uporablja sistem PAL, pravilna nastavitev je torej 50Hz."
+
+msgid "Set the time of day to perform the import."
+msgstr ""
+
 msgid "Set time window to 1 hour"
 msgstr "Določi časovno okno na 1 uro"
 
@@ -8485,10 +8451,9 @@ msgstr ""
 msgid "Setup"
 msgstr "Nastavitve"
 
-#
 #, fuzzy
 msgid "Setup UI animations"
-msgstr "Aktiviranje trenutnih nastavitev"
+msgstr "Nastavitev pozicionerja"
 
 #
 #, fuzzy
@@ -8517,6 +8482,9 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Kratka imena datotek"
+
+msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
+msgstr ""
 
 #, fuzzy
 msgid "Show"
@@ -8798,9 +8766,6 @@ msgstr "Predloge"
 
 msgid "Skip empty services"
 msgstr "Preskok kanalov brez sporeda"
-
-msgid "Skip internet connection check (disables automatic package installation)"
-msgstr ""
 
 #
 msgid "Sleep timer"
@@ -9541,10 +9506,9 @@ msgid "Thailand"
 msgstr ""
 
 #
-#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard.\n"
+"Please press OK to continue."
 msgstr "Hvala, da ste uporabili čarovnik. Za nadaljevanje pritisnite OK!"
 
 #, python-format
@@ -9667,6 +9631,14 @@ msgstr ""
 #, fuzzy
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Poteka ponovni zagon uporabniškega vmesnika (GUI) ..."
+
+#
+msgid ""
+"The wireless LAN plugin is not installed!\n"
+"Please install it and choose what you want to do next."
+msgstr ""
+"Vtičnik za brezžično omrežje ni nameščen!\n"
+"Prosim, da ga namestite!"
 
 #
 msgid ""
@@ -9947,9 +9919,15 @@ msgstr "Četrtek"
 msgid "Time"
 msgstr "Čas"
 
+msgid "Time import should start"
+msgstr ""
+
 #
 msgid "Time scale"
 msgstr "Izbira časovnika"
+
+msgid "Time to execute command or script"
+msgstr ""
 
 #
 msgid "Timer"
@@ -9957,11 +9935,6 @@ msgstr "Časovniki"
 
 msgid "Timer Overview"
 msgstr "Pregled časovnikov"
-
-#
-#, fuzzy
-msgid "Timer edit"
-msgstr "Vnos časovnika"
 
 #
 msgid "Timer entry"
@@ -10013,12 +9986,12 @@ msgid "Timerlist"
 msgstr "Urejanje časovnika"
 
 #
-msgid "Timeshift"
-msgstr "Časovni zamik"
+#, fuzzy
+msgid "Timers"
+msgstr "Časovniki"
 
 #
-#, fuzzy
-msgid "Timeshift Live"
+msgid "Timeshift"
 msgstr "Časovni zamik"
 
 msgid "Timeshift is running. Select an action.\n"
@@ -10134,11 +10107,6 @@ msgstr ""
 
 #
 msgid "Translation"
-msgstr "Prevod"
-
-#
-#, fuzzy
-msgid "Translation:"
 msgstr "Prevod"
 
 #
@@ -10345,9 +10313,6 @@ msgstr "Nekodirano"
 msgid "Unexpected error while retreiving fallback tuner's timer information"
 msgstr ""
 
-msgid "UnhandledKey"
-msgstr ""
-
 msgid "Unhide parental control services"
 msgstr "Odkrij zaščitene kanale"
 
@@ -10536,12 +10501,6 @@ msgstr "Za nastavljanje izbranega omrežnega vmesnika, izberite omrežni čarovn
 msgid "Use the network wizard to configure your network\n"
 msgstr "Za nastavljanje vašega omrežja, uporabite omrežni čarovnik.\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
-msgstr ""
-
-msgid "Use the wizard to set up basic features"
-msgstr ""
-
 msgid "Use these input device settings?"
 msgstr "Uporabim te nastavitve vhodne naprave?"
 
@@ -10654,6 +10613,24 @@ msgid "Video enhancement setup"
 msgstr "Nastavitve slike"
 
 #
+msgid ""
+"Video input selection\n"
+"\n"
+"Please press OK if you can see this page on your TV (or select a different input port).\n"
+"\n"
+"The next input port will be automatically probed in 20 seconds."
+msgstr ""
+"Izbira video vira\n"
+"\n"
+"Če vidite to sliko na zaslonu vašega TVja, pritisnite tipko OK ali pa izberite drugi vir.\n"
+"\n"
+"Naslednji video vir bo samodejno preverjen čez 10 sekund."
+
+#
+msgid "Video mode selection."
+msgstr "Izbira video načina."
+
+#
 msgid "Video output"
 msgstr "Video izhod"
 
@@ -10669,11 +10646,6 @@ msgstr "Video čarovnik"
 #, python-format
 msgid "Video: %s fps"
 msgstr "Video: %s slik na sekundo"
-
-#
-#, fuzzy
-msgid "VideoMode"
-msgstr "S-Video"
 
 msgid "Videocodec, size & format"
 msgstr ""
@@ -10776,10 +10748,6 @@ msgstr "Navidezna tipkovnica"
 #
 msgid "Voltage mode"
 msgstr "Način \"Napetost\""
-
-#, fuzzy
-msgid "Volume"
-msgstr "Glasnost gor"
 
 msgid "Volume down"
 msgstr "Glasnost dol"
@@ -10885,6 +10853,11 @@ msgid "Weekday"
 msgstr "Delovni dan"
 
 #
+#, fuzzy
+msgid "Weekly"
+msgstr "vsak teden"
+
+#
 msgid "Weighted position"
 msgstr ""
 
@@ -10902,21 +10875,18 @@ msgstr ""
 "\n"
 "Nato poiščite konec in pritisnite OK, izberite 'Končaj brisanje'."
 
-#, fuzzy
 msgid ""
 "Welcome.\n"
 "\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
+"If you want to connect your receiver to the Internet, this wizard will guide you through the basic network setup of your receiver.\n"
+"\n"
+"Press OK to start configuring your network"
 msgstr ""
 "Dobrodošli.\n"
 "\n"
 "Če želite sprejemnik povezati na internet, vas bo omenjeni čarovnik vodil skozi vse potrebne nastavitve, ki so potrebne za delovanje internetne povezave na vašem sprejemniku!\n"
 "\n"
 "Za nadaljevanje pritisnite tipko OK."
-
-msgid "Welcome..."
-msgstr ""
 
 #
 msgid "West"
@@ -10928,7 +10898,10 @@ msgstr ""
 msgid "Western Sahara"
 msgstr ""
 
-msgid "What type of service scan do you want?"
+msgid "What date of month ?"
+msgstr ""
+
+msgid "What day of week ?"
 msgstr ""
 
 msgid "When enabled the timer from the fallback tuner is imported"
@@ -10977,6 +10950,12 @@ msgstr "Brezžično omrežje"
 
 msgid "Wireless network configuration..."
 msgstr "Nastavitve brezžičnega omrežja"
+
+msgid "Wireless network connection setup"
+msgstr "Nastavitve brezžične povezave"
+
+msgid "Wireless network connection setup."
+msgstr "Nastavitve brezžične povezave."
 
 msgid "Wireless network state"
 msgstr "Stanje brezžičnega omrežja"
@@ -11203,6 +11182,14 @@ msgstr ""
 msgid "Your hardware can detect CI mode itself or works only in legacy mode."
 msgstr ""
 
+#
+msgid ""
+"Your internet connection is not working!\n"
+"Please choose what you want to do next."
+msgstr ""
+"Internetna povezava ne deluje!\n"
+"Prosim, da izberete kaj želite storiti v nadaljevanju."
+
 #, python-format
 msgid "Your internet connection is working (ip: %s)"
 msgstr "Internetna povezava deluje (IP naslov: %s)"
@@ -11236,6 +11223,19 @@ msgstr ""
 "Internetna povezava sedaj deluje.\n"
 "\n"
 
+msgid ""
+"Your receiver is now ready to use.\n"
+"\n"
+"Your internet connection is working now.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Sprejemnik je sedaj pripravljen za uporabo.\n"
+"\n"
+"Internetna povezava sedaj deluje.\n"
+"\n"
+"Za nadaljevanje pritisnite tipko OK."
+
 msgid "Your receiver is rebooting"
 msgstr "Poteka ponovni zagon vašega sprejemnika ..."
 
@@ -11258,6 +11258,18 @@ msgstr "Sprejemnik bo prešel v spanje pripravljenosti zaradi neaktivnosti."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
 msgstr "Sprejemnik se bo po pritisku tipke OK ponovno zagnal."
+
+#
+msgid ""
+"Your wireless LAN internet connection could not be started!\n"
+"Have you attached your USB WLAN Stick?\n"
+"\n"
+"Please choose what you want to do next."
+msgstr ""
+"Brezžične internet povezave ni mogoče omogočiti!\n"
+"Ste priključili brezžični USB vmesnik?\n"
+"\n"
+"Izberite, kaj želite storiti v nadaljevanju."
 
 msgid "Zambia"
 msgstr ""
@@ -11569,11 +11581,6 @@ msgstr ""
 
 msgid "comedy"
 msgstr ""
-
-#
-#, fuzzy
-msgid "config menu"
-msgstr "potrjeno"
 
 #
 msgid "confirmed"
@@ -12782,6 +12789,3 @@ msgstr "preklopi in snemaj"
 #
 msgid "zapped"
 msgstr "preklopljeno"
-
-msgid "®"
-msgstr ""

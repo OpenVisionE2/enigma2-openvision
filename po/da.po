@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-24 19:26+0200\n"
+"POT-Creation-Date: 2019-05-27 09:44+0430\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -138,9 +138,6 @@ msgstr ""
 "\n"
 "Se, installer og fjern nuværende eller installerede pakker."
 
-msgid "  REC  "
-msgstr ""
-
 msgid " (0 - all networks)"
 msgstr "(0 - alle netværk)"
 
@@ -254,6 +251,10 @@ msgstr "%T:%M"
 #, fuzzy
 msgid "%a %e %B %Y"
 msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %e %b  %-H:%M"
+msgstr "%a %e/%m  %-H:%M"
 
 #. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
 msgid "%a %e/%m"
@@ -507,9 +508,6 @@ msgstr "* Kun tilgængelig hvis mere end et interface er aktivt."
 msgid "* current animation"
 msgstr "Aktiver den aktuelle opsætning"
 
-msgid "-"
-msgstr ""
-
 msgid "-NO SERVICE\n"
 msgstr ""
 
@@ -519,15 +517,6 @@ msgstr ""
 
 msgid "/s"
 msgstr "/s"
-
-#, fuzzy
-msgid "0"
-msgstr "30"
-
-#
-#, fuzzy
-msgid "1"
-msgstr "1"
 
 #
 msgid "1.0"
@@ -589,10 +578,6 @@ msgstr "18 V"
 msgid "1X"
 msgstr "1"
 
-#, fuzzy
-msgid "2"
-msgstr "24"
-
 msgid "20 MB/s"
 msgstr ""
 
@@ -612,10 +597,6 @@ msgstr "29.97"
 #, fuzzy
 msgid "2X"
 msgstr "2"
-
-#, fuzzy
-msgid "3"
-msgstr "30"
 
 msgid "30"
 msgstr "30"
@@ -645,10 +626,6 @@ msgstr "3"
 msgid "3d mode"
 msgstr "3d tilstand"
 
-#, fuzzy
-msgid "4"
-msgstr "24"
-
 msgid "420"
 msgstr "420"
 
@@ -673,20 +650,7 @@ msgstr "4:3 Panscan"
 msgid "4X"
 msgstr "4"
 
-#, fuzzy
-msgid "5"
-msgstr "25"
-
 msgid "50 MB/s"
-msgstr ""
-
-msgid "6"
-msgstr ""
-
-msgid "7"
-msgstr ""
-
-msgid "8"
 msgstr ""
 
 msgid "8 character"
@@ -695,16 +659,11 @@ msgstr ""
 msgid "8bit"
 msgstr ""
 
-msgid "9"
-msgstr ""
-
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - standard (deaktiveret)"
 
-#
-#, fuzzy
 msgid "<Alternate Display Skin>"
-msgstr "Alternativer"
+msgstr ""
 
 msgid "<Current movielist location>"
 msgstr "<Nuværende filmliste placering>"
@@ -718,10 +677,8 @@ msgstr "Standard indstillinger"
 msgid "<Default movie location>"
 msgstr "<Standardplacering af film>"
 
-#
-#, fuzzy
 msgid "<Display Skin with Picon>"
-msgstr "<Standardplacering af film>"
+msgstr ""
 
 #
 #, fuzzy
@@ -746,6 +703,9 @@ msgstr "??"
 #
 msgid "A"
 msgstr "A"
+
+msgid "A background update check is in progress, please wait a few minutes and try again."
+msgstr ""
 
 #
 #, python-format
@@ -1143,6 +1103,9 @@ msgstr "Tillad "
 msgid "Allow unsupported modes"
 msgstr "ikke supporteret"
 
+msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
 msgid "Also import at reboot/restart enigma2"
 msgstr ""
 
@@ -1269,6 +1232,13 @@ msgid ""
 msgstr ""
 "Bekræft at du vil slette\n"
 "følgende backup:\n"
+
+#
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this:\n"
+" "
+msgstr "Bekræft at du vil afslutte denne hjælper?"
 
 #
 msgid "Are you sure you want to exit this wizard?"
@@ -2003,11 +1973,6 @@ msgstr "Kanal valg"
 msgid "Channel:"
 msgstr "Kanal:"
 
-#
-#, fuzzy
-msgid "Channellist menu"
-msgstr "Kanalliste type"
-
 msgid "Channelnumber and picon"
 msgstr "Kanalnummer og picon"
 
@@ -2048,21 +2013,9 @@ msgstr "Kapitel:"
 msgid "Check"
 msgstr "Undersøg"
 
-#, fuzzy
-msgid "Check the internet connection"
-msgstr "Din receiver har ikke en internetforbindelse"
-
-#, fuzzy
-msgid "Check the internet connection again"
-msgstr "Din receiver har ikke en internetforbindelse"
-
 #
 msgid "Checking filesystem..."
 msgstr "Undersøger filsystemet..."
-
-#, fuzzy
-msgid "Checking the internet connection"
-msgstr "Din receiver har ikke en internetforbindelse"
 
 #, python-format
 msgid ""
@@ -2159,6 +2112,19 @@ msgstr ""
 msgid "Client is streaming from this box!"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Client mode"
+msgstr "initialiser modul"
+
+msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgstr ""
+
+#
+#, fuzzy
+msgid "Client tuner configuration"
+msgstr "Tuner opsætning"
+
 msgid "Clients"
 msgstr ""
 
@@ -2207,18 +2173,19 @@ msgstr "Farve format"
 msgid "Combo"
 msgstr ""
 
-#, fuzzy
-msgid "Command execution..."
-msgstr "Timer valg..."
-
 #
 msgid "Command order"
 msgstr "Kommando rækkefølge"
 
 #
 #, fuzzy
-msgid "Commit info"
-msgstr "Kommunikation"
+msgid "Command to run"
+msgstr "Kommando rækkefølge"
+
+#
+#, fuzzy
+msgid "Command type"
+msgstr "Kommando rækkefølge"
 
 #
 msgid "Common Interface"
@@ -2292,6 +2259,10 @@ msgid "Configure if the HDMI EDID checking should be bypassed as this might solv
 msgstr "Konfigurer om HDMI EDID tjek skal bypasses da dette kan løse problemer med nogle TV."
 
 #
+msgid "Configure interface"
+msgstr "Konfigurer interface"
+
+#
 msgid "Configure nameservers"
 msgstr "Konfigurer navneservere"
 
@@ -2351,6 +2322,10 @@ msgstr "Konfigurer hvilket farve format der skal bruges ved brug af SCART udgang
 msgid "Configure your internal LAN"
 msgstr "Konfigurer dit interne LAN"
 
+#
+msgid "Configure your network again"
+msgstr "Konfigurer dit netværk igen"
+
 #, fuzzy
 msgid "Configure your network settings and press OK to scan"
 msgstr "Konfigurer dine indstillinger, og tryk OK for at starte søgning"
@@ -2396,6 +2371,9 @@ msgid "Connected to"
 msgstr "Forbundet til"
 
 msgid "Connected transcoding, limit - no PiP!"
+msgstr ""
+
+msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
 
 msgid "Console"
@@ -2511,6 +2489,17 @@ msgstr "Kroatisk"
 msgid "Croatian"
 msgstr "Kroatisk"
 
+msgid "Cron Manager"
+msgstr ""
+
+#, fuzzy
+msgid "Cron manager"
+msgstr "Ingen resource manager"
+
+#, fuzzy
+msgid "Cron timers"
+msgstr "Ændre timer"
+
 msgid "Cuba"
 msgstr ""
 
@@ -2519,6 +2508,11 @@ msgstr ""
 
 msgid "Current CEC address"
 msgstr "Nuværende CEC Adresse"
+
+#
+#, fuzzy
+msgid "Current Status:"
+msgstr "Nuværende indstillinger:"
 
 msgid "Current device: "
 msgstr "Nuværende enhed"
@@ -2559,6 +2553,11 @@ msgstr "Nuværende værdi:"
 
 msgid "Currently the commit log cannot be retrieved - please try later again"
 msgstr "Commit logbogen kunne ikke hentes - prøv venligst senere"
+
+#
+#, fuzzy
+msgid "Custom"
+msgstr "Tilpas"
 
 msgid "Customize OpenWebIF settings for fallback tuner"
 msgstr ""
@@ -2688,6 +2687,11 @@ msgstr "DVD titelliste"
 #, fuzzy
 msgid "DVDPlayer"
 msgstr "DVD afspiller"
+
+#
+#, fuzzy
+msgid "Daily"
+msgstr "daglig"
 
 #
 msgid "Danish"
@@ -2963,7 +2967,7 @@ msgstr "Vis EPG for nuværende kanal..."
 #
 #, fuzzy
 msgid "Display Skin"
-msgstr "Standard indstillinger"
+msgstr "Display indstillinger"
 
 #
 msgid "Display and userinterface"
@@ -3091,16 +3095,6 @@ msgid ""
 msgstr "Vil du downloade imaget til %s ?"
 
 #
-#, fuzzy
-msgid "Do you want to install Plugins?"
-msgstr "Du kan installere dette plugin"
-
-#
-#, fuzzy
-msgid "Do you want to install a channel list?"
-msgstr "Vil du installere pakken:\n"
-
-#
 msgid "Do you want to install the package:\n"
 msgstr "Vil du installere pakken:\n"
 
@@ -3150,6 +3144,9 @@ msgstr "Vil du opgradere pakken:\n"
 msgid "Dolby"
 msgstr ""
 
+msgid "Domain"
+msgstr ""
+
 msgid "Dominica"
 msgstr ""
 
@@ -3196,11 +3193,6 @@ msgstr "Hente plugins"
 
 #
 msgid "Downloadable new plugins"
-msgstr "Hente nye Plugins"
-
-#
-#, fuzzy
-msgid "Downloadable plugins"
 msgstr "Hente nye Plugins"
 
 #
@@ -3263,18 +3255,8 @@ msgstr "Tid"
 msgid "EPG"
 msgstr "EPG"
 
-#
-#, fuzzy
-msgid "EPG Selection"
-msgstr "EPG valg"
-
 msgid "EPG only"
 msgstr ""
-
-#
-#, fuzzy
-msgid "EPG selection"
-msgstr "EPG valg"
 
 #
 #, python-format
@@ -3389,6 +3371,11 @@ msgstr "Aktiver auto hurtig scan"
 msgid "Enable auto fast scan for %s"
 msgstr "Aktiver auto hurtig skan for %s"
 
+#
+#, fuzzy
+msgid "Enable client mode"
+msgstr "åbne flyttetype"
+
 msgid "Enable fallback remote receiver"
 msgstr "Aktiver fallback remote receiver"
 
@@ -3465,9 +3452,6 @@ msgstr "Kernel version:"
 msgid "Enigma2 skin selector"
 msgstr "Enigma2 tema vælger"
 
-msgid "Enigmalight"
-msgstr ""
-
 #, fuzzy
 msgid "Enter"
 msgstr "centrer"
@@ -3501,6 +3485,21 @@ msgstr "Indtast vedvarende PIN kode"
 msgid "Enter pin code"
 msgstr "Indtast pinkode"
 
+msgid "Enter the FTP password of the host receiver (normally just leave empty)."
+msgstr ""
+
+msgid "Enter the FTP port of the host receiver (normally '21')."
+msgstr ""
+
+msgid "Enter the FTP username of the host receiver (normally 'root')."
+msgstr ""
+
+msgid "Enter the IP address of the host receiver."
+msgstr ""
+
+msgid "Enter the domain of the host receiver. Do not include 'http://' or port number."
+msgstr ""
+
 msgid "Enter the frequency at which you LNB switches between low band and high band. For more information consult the spec sheet of your LNB."
 msgstr ""
 
@@ -3513,6 +3512,9 @@ msgstr ""
 #
 msgid "Enter the service pin"
 msgstr "Skriv service koden"
+
+msgid "Enter the streaming port of the host receiver (normally '8001')."
+msgstr ""
 
 msgid "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
 msgstr ""
@@ -3607,10 +3609,6 @@ msgstr "Estisk"
 msgid "Estonian"
 msgstr "Estisk"
 
-#, fuzzy
-msgid "EtPortal"
-msgstr "EtPortal"
-
 msgid "Ethernet network interface"
 msgstr "Ethernet netværksinterface"
 
@@ -3623,19 +3621,30 @@ msgstr "Begivenheds font størrelse (i forhold til tema størrelse)"
 msgid "Event name first"
 msgstr ""
 
-#, fuzzy
-msgid "Event view"
-msgstr "Begivenheds info menu"
-
 msgid "Event view context menu"
-msgstr "Begivenhed vis kontekst menu"
-
-#, fuzzy
-msgid "Event view menu"
 msgstr "Begivenhed vis kontekst menu"
 
 msgid "Events info menu"
 msgstr "Begivenheds info menu"
+
+msgid "Every 12 hours"
+msgstr ""
+
+#, fuzzy
+msgid "Every 2 hours"
+msgstr "Overalt"
+
+#, fuzzy
+msgid "Every 3 hours"
+msgstr "Overalt"
+
+#, fuzzy
+msgid "Every 6 hours"
+msgstr "Overalt"
+
+#, fuzzy
+msgid "Every hour"
+msgstr "Overalt"
 
 msgid "Every known"
 msgstr "Alle kendte"
@@ -3698,11 +3707,6 @@ msgstr "Luk netværksinterfaceliste"
 
 #
 msgid "Exit network wizard"
-msgstr "Afbryd netværkshjælper"
-
-#
-#, fuzzy
-msgid "Exit the wizard"
 msgstr "Afbryd netværkshjælper"
 
 msgid "Exit/OK"
@@ -3782,9 +3786,6 @@ msgstr "Ekstra starttid til at ignorere inaktiv slumretimer"
 msgid "Extrude from left"
 msgstr ""
 
-msgid "F"
-msgstr ""
-
 #, fuzzy
 msgid "F1/F3/F4/F4-TURBO"
 msgstr "F1/F3/F4"
@@ -3829,6 +3830,15 @@ msgstr ""
 
 msgid "FTA"
 msgstr "FTA"
+
+#, fuzzy
+msgid "FTP connection failure"
+msgstr "LAN Forbindelse"
+
+#
+#, fuzzy
+msgid "FTP passive mode"
+msgstr "Transmissions type"
 
 #
 msgid "Factory reset"
@@ -4097,9 +4107,6 @@ msgstr "Yderligere indstillinger"
 msgid "Further options"
 msgstr "Yderligere muligheder"
 
-msgid "G"
-msgstr ""
-
 #
 #, fuzzy
 msgid "GStreamer version: "
@@ -4118,6 +4125,15 @@ msgstr ""
 #
 msgid ""
 "GUI needs a restart to apply a new skin\n"
+"Do you want to restart the GUI now?"
+msgstr ""
+"GUI skal genstartes for aktivering af nyt grafisk tema\n"
+"Vil du genstarte GUI nu?"
+
+#
+#, fuzzy
+msgid ""
+"GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
 "GUI skal genstartes for aktivering af nyt grafisk tema\n"
@@ -4250,11 +4266,6 @@ msgid "GraphMultiEpg Settings"
 msgstr "GrafiskMultiEpg indstillinger"
 
 #
-#, fuzzy
-msgid "Graphical EPG"
-msgstr "Grafisk multi EPG"
-
-#
 msgid "Graphical Multi EPG"
 msgstr "Grafisk multi EPG"
 
@@ -4310,9 +4321,8 @@ msgstr ""
 msgid "Guyana"
 msgstr ""
 
-#, fuzzy
-msgid "H"
-msgstr "CH"
+msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
+msgstr ""
 
 msgid "HD list"
 msgstr "HD Liste"
@@ -4463,6 +4473,33 @@ msgstr "Horisontal"
 msgid "Horizontal turning speed"
 msgstr "Horisontal drejehastighed"
 
+#
+#, fuzzy
+msgid "Host domain"
+msgstr "afslut"
+
+msgid "Host receiver FTP password"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver FTP port"
+msgstr "Fallback remote receiver URL"
+
+msgid "Host receiver FTP username"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Host receiver IP address"
+msgstr "IP adresse"
+
+msgid "Host receiver address type"
+msgstr ""
+
+#, fuzzy
+msgid "Host receiver streaming port"
+msgstr "Din modtager genstarter"
+
 msgid "HotKey Setup"
 msgstr "HotKey Setup"
 
@@ -4479,6 +4516,9 @@ msgid "Hotkey zap"
 msgstr "Hotkey zap"
 
 msgid "Hotplug"
+msgstr ""
+
+msgid "Hourly"
 msgstr ""
 
 #, fuzzy
@@ -4502,9 +4542,6 @@ msgstr "Ungarsk"
 msgid "Hungary"
 msgstr "Ungarsk"
 
-msgid "I"
-msgstr ""
-
 #
 #, fuzzy
 msgid "I do not want to perform any service scans"
@@ -4513,15 +4550,15 @@ msgstr "Vil du lave en kanal søgning?"
 msgid "IDLE"
 msgstr ""
 
-#, fuzzy
-msgid "IMDB Search"
-msgstr "Søger"
-
 msgid "INFO"
 msgstr ""
 
 msgid "INS"
 msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "I"
 
 #
 msgid "IP address"
@@ -4643,9 +4680,6 @@ msgstr "Ukorrekt kanaltype for BiB!"
 msgid "Increased voltage"
 msgstr "Øget spænding"
 
-msgid "Index"
-msgstr ""
-
 msgid "Index allocated:"
 msgstr "Oversigt anvendt:"
 
@@ -4751,7 +4785,7 @@ msgstr "Installerer"
 
 #
 #, fuzzy
-msgid "Installing software..."
+msgid "Installing service"
 msgstr "Installerer"
 
 msgid "Instant record"
@@ -4847,7 +4881,7 @@ msgid ""
 msgstr ""
 "Det ser ud til at du ikke så alle otte pilehoveder. Dette betyder at dit TV har overscan aktiveret, og ikke konfigureret ordenligt.\n"
 "\n"
-"Kig i dit TV's manual for at finde ud af, hvordan du deaktiverer overscan på dit TV.  Hvis du ikke kan finde det, kan du spørge andre brugere på https://openvision.tech\n"
+"Kig i dit TV's manual for at finde ud af, hvordan du deaktiverer overscan på dit TV.  Hvis du ikke kan finde det, kan du spørge andre brugere på  http://forums.openpli.org.\n"
 "\n"
 "\n"
 
@@ -4865,9 +4899,6 @@ msgstr "Emner pr side"
 
 msgid "Items per page for list screen"
 msgstr "Emner pr side for listnings skærm"
-
-msgid "J"
-msgstr ""
 
 msgid "Jamaica"
 msgstr ""
@@ -5096,6 +5127,9 @@ msgstr "Link:"
 msgid "Linked titles with a DVD menu"
 msgstr "Lænkede titler med en DVD menu"
 
+msgid "List available networks"
+msgstr "Tilgængelige netværk"
+
 msgid "List mode"
 msgstr "Listningsmetode"
 
@@ -5201,9 +5235,6 @@ msgstr "Luxemborgsk"
 msgid "MMC card"
 msgstr "MMC kort"
 
-msgid "MORE"
-msgstr ""
-
 msgid "Macao"
 msgstr ""
 
@@ -5261,6 +5292,9 @@ msgstr "Manuel"
 #
 msgid "Manual Scan"
 msgstr "Manuel søgning"
+
+msgid "Manual configuration"
+msgstr "Manuel konfiguration"
 
 #
 msgid "Manual scan"
@@ -5341,11 +5375,6 @@ msgstr "Menusortering (%s)"
 
 #
 msgid "Message"
-msgstr "Besked"
-
-#
-#, fuzzy
-msgid "Message..."
 msgstr "Besked"
 
 #
@@ -5431,6 +5460,11 @@ msgstr ""
 
 msgid "Montenegro"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Monthly"
+msgstr "måned"
 
 msgid "Montserrat"
 msgstr ""
@@ -5581,9 +5615,6 @@ msgstr "Multisat"
 msgid "Music/Ballet/Dance"
 msgstr "Musik/Ballet/Dans"
 
-msgid "Mute"
-msgstr ""
-
 msgid "Myanmar"
 msgstr ""
 
@@ -5591,17 +5622,10 @@ msgstr ""
 msgid "N/A"
 msgstr "Ikke tilgængelig"
 
-msgid "NEXT"
-msgstr ""
-
 msgid "NIM & Type"
 msgstr "NIM & Type"
 
 msgid "NO"
-msgstr "NEJ"
-
-#, fuzzy
-msgid "NOW"
 msgstr "NEJ"
 
 #
@@ -5623,11 +5647,6 @@ msgstr "Navneserver %d"
 
 #
 msgid "Nameserver settings"
-msgstr "Navneserver indstillinger"
-
-#
-#, fuzzy
-msgid "Nameserver setup"
 msgstr "Navneserver indstillinger"
 
 msgid "Namespace & Orbital pos."
@@ -5662,10 +5681,6 @@ msgstr "Netværksinfo: "
 msgid "Network configuration"
 msgstr "Netværkskonfiguration"
 
-#, fuzzy
-msgid "Network configuration..."
-msgstr "Netværkskonfiguration"
-
 #
 msgid "Network mount"
 msgstr "Monter netværk"
@@ -5688,11 +5703,6 @@ msgstr "Netværks opsætning"
 
 #
 msgid "Network test"
-msgstr "Netværks test"
-
-#
-#, fuzzy
-msgid "Network test..."
 msgstr "Netværks test"
 
 msgid "Network test: "
@@ -6014,11 +6024,6 @@ msgid "Now"
 msgstr "Nu [nu/næste: 'nu' begivenheds etiket]"
 
 #
-#, fuzzy
-msgid "Now playing"
-msgstr "Fortsæt afspilning"
-
-#
 msgid "Now, use the contrast setting to turn up the brightness of the background as much as possible, but make sure that you can still see the difference between the two brightest levels of shades.If you have done that, press OK."
 msgstr "Nu, kan du bruge Kontrast indstilling og skrue op for Lystyrken på baggrunden, så meget som muligt, men vær sikker på, at du stadig kan se forskel mellem de 2 lyseste skygger. Hvis du har gjort det, tryk OK."
 
@@ -6042,11 +6047,6 @@ msgstr "OSD 3D setup"
 
 msgid "OSD name request"
 msgstr "OSD navne forespørgsel"
-
-#
-#, fuzzy
-msgid "OSD settings"
-msgstr "Indstillings menu"
 
 msgid "OSD transparency"
 msgstr "OSD gennemsigtighed"
@@ -6191,9 +6191,6 @@ msgstr "PGS fil"
 msgid "PID"
 msgstr "PDC"
 
-msgid "PIN code needed"
-msgstr ""
-
 msgid "PIP"
 msgstr ""
 
@@ -6266,10 +6263,6 @@ msgstr "Øvre mappe"
 msgid "Parental control"
 msgstr "Forældre Kontrol"
 
-#, fuzzy
-msgid "Parental control services editor"
-msgstr "Vis forældrekontrol services igen"
-
 #
 msgid "Parental control setup"
 msgstr "Forældrekontrol opsætning"
@@ -6320,11 +6313,6 @@ msgstr ""
 
 msgid "Philippines"
 msgstr ""
-
-#
-#, fuzzy
-msgid "PiP setup"
-msgstr "BiB opsætning"
 
 msgid "Picon"
 msgstr "Picon"
@@ -6429,15 +6417,21 @@ msgstr "Vælg venligst en udvidelse..."
 msgid "Please choose reader"
 msgstr "Vælg venligst en udvidelse..."
 
-#, fuzzy
-msgid "Please configure the fallback tuner setup?"
-msgstr "Fallback remote receiver URL"
-
-#, fuzzy
-msgid "Please connect your receiver to the internet"
+#
+msgid ""
+"Please configure or verify your Nameservers by filling out the required values.\n"
+"When you are ready press OK to continue."
 msgstr ""
-"\n"
-"Genetabler receiverens indstillinger."
+"Opsæt venligst eller bekræft dine navneservere ved at udfylde de ønskede værdier.\n"
+"Tryk på OK når du er færdig, for at fortsætte."
+
+#
+msgid ""
+"Please configure your internet connection by filling out the required values.\n"
+"When you are ready press OK to continue."
+msgstr ""
+"Opsæt venligst din internetforbindelse ved at udfylde de ønskede værdier.\n"
+"Tryk på OK når du er færdig, for at fortsætte."
 
 #
 msgid "Please do not change any values unless you know what you are doing!"
@@ -6478,6 +6472,10 @@ msgstr "Indtast ny PIN kode"
 
 msgid "Please enter the old PIN code"
 msgstr "Indtast den gamle pin kode"
+
+#
+msgid "Please follow the instructions on the TV"
+msgstr "Følg venligst instruktionerne på dit TV"
 
 #
 msgid "Please note that the previously selected media could not be accessed and therefore the default directory is being used instead."
@@ -6526,60 +6524,25 @@ msgstr "Vælg venligst tag til filtrering..."
 msgid "Please select the movie path..."
 msgstr "Venligst vælg en film sti..."
 
-#, fuzzy
-msgid "Please set up tuner A"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner B"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner C"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner D"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner E"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner F"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner G"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner H"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner I"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner J"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner Q"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set up tuner R"
-msgstr "Åben setup tuner"
-
-#, fuzzy
-msgid "Please set your time zone"
-msgstr "Indtast nyt navn:"
-
-msgid "Please setup the following basic configs!"
+#
+msgid ""
+"Please select the network interface that you want to use for your internet connection.\n"
+"\n"
+"Please press OK to continue."
 msgstr ""
+"Vælg venligst det netværk interface, som du vil benytte til din internet forbindelse.\n"
+"\n"
+"Tryk venligst på OK for at fortsætte."
+
+#
+msgid ""
+"Please select the wireless network that you want to connect to.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Vælg venligst det trådløse netværk, som du vil oprette forbindelse til.\n"
+"\n"
+"Tryk venligst på OK for at fortsætte."
 
 #
 msgid ""
@@ -6754,6 +6717,10 @@ msgstr ""
 
 msgid "PowerMenu"
 msgstr "PowerMenu"
+
+#, fuzzy
+msgid "Predefined"
+msgstr "udefineret"
 
 #
 msgid "Predefined transponder"
@@ -6983,18 +6950,11 @@ msgid "Quick"
 msgstr "Kvik"
 
 #
-#, fuzzy
-msgid "Quick EPG"
-msgstr "Kvik"
-
-#
 msgid "Quick zap"
 msgstr "Hurtigzap"
 
-#
-#, fuzzy
 msgid "REC"
-msgstr "FEC"
+msgstr "REC"
 
 msgid "REC "
 msgstr ""
@@ -7002,10 +6962,6 @@ msgstr ""
 #
 msgid "RGB"
 msgstr "RGB"
-
-#, fuzzy
-msgid "Radio"
-msgstr "(Radio)"
 
 #
 msgid "Ram disk"
@@ -7029,6 +6985,14 @@ msgid "Reader"
 msgstr ""
 
 msgid "Reader Statistics"
+msgstr ""
+
+#, python-format
+msgid "Ready to install \"%s\" ?"
+msgstr ""
+
+#, python-format
+msgid "Ready to remove \"%s\" ?"
 msgstr ""
 
 #
@@ -7093,11 +7057,6 @@ msgstr "Optag"
 
 msgid "Recall to previous service"
 msgstr ""
-
-#
-#, fuzzy
-msgid "Reception settings"
-msgstr "Kollektions indstillinger"
 
 #
 msgid "Record"
@@ -7165,6 +7124,10 @@ msgid "Refresh rate"
 msgstr "Opdateringshastighed"
 
 #
+msgid "Refresh rate selection."
+msgstr "Opdateringsrate vælger."
+
+#
 #, fuzzy
 msgid "Refusing to move to the same directory"
 msgstr "Indtast venligst navn på den ny mappe"
@@ -7214,6 +7177,10 @@ msgstr "Fjernelse er lykkedes."
 msgid "Remove"
 msgstr "Fjern"
 
+#, fuzzy
+msgid "Remove Confirmation"
+msgstr "Sleeptimer konfiguration"
+
 #
 msgid "Remove a mark"
 msgstr "Fjerne et mærke"
@@ -7256,6 +7223,10 @@ msgstr "Fjernelsen af mappen %s mislykkedes. (Måske ikke tom.)"
 msgid "Removing partition table"
 msgstr "Fjerner partitionstabel"
 
+#, fuzzy
+msgid "Removing service"
+msgstr "Ingen kanal."
+
 #
 msgid "Rename"
 msgstr "Omdøb"
@@ -7265,6 +7236,11 @@ msgstr "Omdøb navn og beskrivelse for nye begivenheder"
 
 msgid "Repeat"
 msgstr "Gentag"
+
+#
+#, fuzzy
+msgid "Repeat how often"
+msgstr "Gentagelses type"
 
 msgid "Repeat leave standby messages"
 msgstr ""
@@ -7480,6 +7456,9 @@ msgstr "Rotor:"
 
 msgid "Round start time on"
 msgstr "start tid på"
+
+msgid "Run how often ?"
+msgstr ""
 
 #, fuzzy
 msgid "Running"
@@ -7761,6 +7740,9 @@ msgstr "Søger"
 msgid "Scans default lamedbs sorted by satellite with a connected dish positioner"
 msgstr "Søge standard lamedbs sorteret efter satellit med tilsluttet parabol motor"
 
+msgid "Schedule EPG and channel list import"
+msgstr ""
+
 #, fuzzy
 msgid "Search"
 msgstr "Søger"
@@ -7892,11 +7874,6 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "Select HDD"
-msgstr "Vælg"
-
-#
-#, fuzzy
 msgid "Select Image"
 msgstr "Vælg film"
 
@@ -7909,26 +7886,8 @@ msgid "Select Softcam"
 msgstr "Vælg lokation"
 
 #
-#, fuzzy
-msgid "Select a bouquet"
-msgstr "tilføj pakke..."
-
-#
-#, fuzzy
-msgid "Select a movie"
-msgstr "Vælg film"
-
-#
 msgid "Select a network adapter"
 msgstr "Vælg en netværks adapter"
-
-#, fuzzy
-msgid "Select a skin"
-msgstr "Vælg handling"
-
-#, fuzzy
-msgid "Select a tuner"
-msgstr "Vælg handling"
 
 #
 msgid "Select a wireless network"
@@ -7955,6 +7914,9 @@ msgstr "Vælg backup filer"
 #
 msgid "Select backup location"
 msgstr "Vælg backup placering"
+
+msgid "Select between entering an IP address or a domain."
+msgstr ""
 
 msgid "Select channel"
 msgstr "Vælg kanal"
@@ -8029,6 +7991,10 @@ msgstr "Vælg målfolderen"
 #
 msgid "Select provider to add..."
 msgstr "Vælg udbyder, der skal tilføjes..."
+
+#
+msgid "Select refresh rate"
+msgstr "Vælg opdaterings hastighed"
 
 msgid "Select satellites"
 msgstr "Vælg satelitter"
@@ -8118,6 +8084,18 @@ msgstr "Vælg opgraderingskilde"
 #
 msgid "Select upgrade source to edit."
 msgstr "Vælg opgraderingskilde til redigering."
+
+#
+msgid "Select video input with up/down buttons"
+msgstr "Vælg video input med op/ned knapperne"
+
+#
+msgid "Select video mode"
+msgstr "Vælg video type"
+
+#
+msgid "Select wireless network"
+msgstr "Vælg trådløst netværk"
 
 #, fuzzy
 msgid "Select your ATSC provider."
@@ -8345,6 +8323,13 @@ msgstr ""
 msgid "Set the port of the OpenWebif from your fallback tuner"
 msgstr ""
 
+#, fuzzy
+msgid "Set the repeat interval of the schedule."
+msgstr "Konfigurer skærmens opdateringshastighed."
+
+msgid "Set the time of day to perform the import."
+msgstr ""
+
 msgid "Set time window to 1 hour"
 msgstr "Udsættelse 1 time"
 
@@ -8378,10 +8363,9 @@ msgstr ""
 msgid "Setup"
 msgstr "Indstillinger"
 
-#
 #, fuzzy
 msgid "Setup UI animations"
-msgstr "Aktiver den aktuelle opsætning"
+msgstr "Motor opsætning"
 
 #
 #, fuzzy
@@ -8410,6 +8394,9 @@ msgstr "Shellscript"
 
 msgid "Short filenames"
 msgstr "Korte filnavne"
+
+msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
+msgstr ""
 
 #, fuzzy
 msgid "Show"
@@ -8689,9 +8676,6 @@ msgstr "Grafiske temaer"
 
 msgid "Skip empty services"
 msgstr "Spring tomme kanaler over"
-
-msgid "Skip internet connection check (disables automatic package installation)"
-msgstr ""
 
 #
 msgid "Sleep timer"
@@ -9353,7 +9337,7 @@ msgid "TSID"
 msgstr "TSID"
 
 msgid "TUNER:"
-msgstr ""
+msgstr "TUNER:"
 
 msgid "TUNING"
 msgstr ""
@@ -9419,10 +9403,9 @@ msgid "Thailand"
 msgstr "Thai"
 
 #
-#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard.\n"
+"Please press OK to continue."
 msgstr ""
 "Tak for brug af hjælperen.\n"
 "Tryk venligst OK for at fortsætte."
@@ -9557,6 +9540,14 @@ msgstr ""
 #, fuzzy
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Brugerinterfacet på din modtager genstarter"
+
+#
+msgid ""
+"The wireless LAN plugin is not installed!\n"
+"Please install it and choose what you want to do next."
+msgstr ""
+"Det trådløs LAN plugin er ikke installeret!\n"
+"Installer det venligst og vælg hvad du herefter vil gøre."
 
 #
 msgid ""
@@ -9858,8 +9849,14 @@ msgstr "Torsdag"
 msgid "Time"
 msgstr "Tid"
 
+msgid "Time import should start"
+msgstr ""
+
 msgid "Time scale"
 msgstr "Tidsskala"
+
+msgid "Time to execute command or script"
+msgstr ""
 
 #
 msgid "Timer"
@@ -9867,11 +9864,6 @@ msgstr "Timer"
 
 msgid "Timer Overview"
 msgstr "Timer oversigt"
-
-#
-#, fuzzy
-msgid "Timer edit"
-msgstr "Timer punkt"
 
 #
 msgid "Timer entry"
@@ -9922,12 +9914,12 @@ msgid "Timerlist"
 msgstr "Timer redigering"
 
 #
-msgid "Timeshift"
-msgstr "Tidsforskydning"
+#, fuzzy
+msgid "Timers"
+msgstr "Timer"
 
 #
-#, fuzzy
-msgid "Timeshift Live"
+msgid "Timeshift"
 msgstr "Tidsforskydning"
 
 msgid "Timeshift is running. Select an action.\n"
@@ -10041,11 +10033,6 @@ msgstr "Transcoding: "
 
 #
 msgid "Translation"
-msgstr "Oversættelse"
-
-#
-#, fuzzy
-msgid "Translation:"
 msgstr "Oversættelse"
 
 msgid "Translations"
@@ -10251,9 +10238,6 @@ msgstr "Ikke krypteret"
 msgid "Unexpected error while retreiving fallback tuner's timer information"
 msgstr ""
 
-msgid "UnhandledKey"
-msgstr ""
-
 msgid "Unhide parental control services"
 msgstr "Vis forældrekontrol services igen"
 
@@ -10443,12 +10427,6 @@ msgstr "Brug netværksassistenten til at indstille valgte netværks adapter"
 msgid "Use the network wizard to configure your network\n"
 msgstr "Brug netværksassistenten til at konfigurere dit Netværk\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
-msgstr ""
-
-msgid "Use the wizard to set up basic features"
-msgstr ""
-
 msgid "Use these input device settings?"
 msgstr "Brug disse enhedsindstillinger til indtastningsenhed?"
 
@@ -10561,6 +10539,24 @@ msgid "Video enhancement setup"
 msgstr "Opsæt videoforbedring"
 
 #
+msgid ""
+"Video input selection\n"
+"\n"
+"Please press OK if you can see this page on your TV (or select a different input port).\n"
+"\n"
+"The next input port will be automatically probed in 20 seconds."
+msgstr ""
+"Video indgangs vælger\n"
+"\n"
+"Venligst tryk OK hvis du kan se denne side på dit TV (eller vælg en anden indgangs port).\n"
+"\n"
+"Næste indgangs port vil automatisk blive testet om 20 sekunder."
+
+#
+msgid "Video mode selection."
+msgstr "Video type vælger."
+
+#
 msgid "Video output"
 msgstr "Video udgang"
 
@@ -10575,11 +10571,6 @@ msgstr "Video assistenten"
 #, python-format
 msgid "Video: %s fps"
 msgstr "Video: %s fps"
-
-#
-#, fuzzy
-msgid "VideoMode"
-msgstr "S-Video"
 
 msgid "Videocodec, size & format"
 msgstr "Videocodec, størrelse & format"
@@ -10682,10 +10673,6 @@ msgstr "Virtuelt tastatur"
 #
 msgid "Voltage mode"
 msgstr "Spændings type"
-
-#, fuzzy
-msgid "Volume"
-msgstr "Lydstyrke op"
 
 msgid "Volume down"
 msgstr "Lydstyrke ned"
@@ -10792,6 +10779,11 @@ msgstr "Onsdag"
 msgid "Weekday"
 msgstr "Ugedag"
 
+#
+#, fuzzy
+msgid "Weekly"
+msgstr "ugentlig"
+
 msgid "Weighted position"
 msgstr "Vægtet position"
 
@@ -10809,21 +10801,18 @@ msgstr ""
 "\n"
 "Søg derefter til slutningen, tryk OK, vælg 'afslut klip'. Det er det hele."
 
-#, fuzzy
 msgid ""
 "Welcome.\n"
 "\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
+"If you want to connect your receiver to the Internet, this wizard will guide you through the basic network setup of your receiver.\n"
+"\n"
+"Press OK to start configuring your network"
 msgstr ""
 "Velkommen.\n"
 "\n"
 "hvis du vil forbinde din receiver til internettet, så vil denne assisten guide dig igennem en grundlæggende opsætning af din receiver.\n"
 "\n"
 "Tryk OK for at starte en konfiguration af dit netværk"
-
-msgid "Welcome..."
-msgstr ""
 
 #
 msgid "West"
@@ -10835,7 +10824,10 @@ msgstr "Vest grænse opsætning"
 msgid "Western Sahara"
 msgstr ""
 
-msgid "What type of service scan do you want?"
+msgid "What date of month ?"
+msgstr ""
+
+msgid "What day of week ?"
 msgstr ""
 
 msgid "When enabled the timer from the fallback tuner is imported"
@@ -10884,6 +10876,12 @@ msgstr "Trådløst netværk"
 
 msgid "Wireless network configuration..."
 msgstr "Konfiguration af trådløst netværk..."
+
+msgid "Wireless network connection setup"
+msgstr "Opsæt trådløs netværksforbindelse"
+
+msgid "Wireless network connection setup."
+msgstr "Opsæt trådløs netværksforbindelse."
 
 msgid "Wireless network state"
 msgstr "Status trådløs netværksforbindelse"
@@ -11116,6 +11114,14 @@ msgstr ""
 msgid "Your hardware can detect CI mode itself or works only in legacy mode."
 msgstr ""
 
+#
+msgid ""
+"Your internet connection is not working!\n"
+"Please choose what you want to do next."
+msgstr ""
+"Din internetforbindelse virker ikke!\n"
+"Vælg hvad du vil gøre herefter."
+
 #, python-format
 msgid "Your internet connection is working (ip: %s)"
 msgstr "Din internetforbindelse virker (ip: %s)"
@@ -11149,6 +11155,19 @@ msgstr ""
 "Din internetforbindelse fungerer nu.\n"
 "\n"
 
+msgid ""
+"Your receiver is now ready to use.\n"
+"\n"
+"Your internet connection is working now.\n"
+"\n"
+"Please press OK to continue."
+msgstr ""
+"Din receiver er klar til brug.\n"
+"\n"
+"Din internetforbindelse fungerer nu.\n"
+"\n"
+"Tryk på OK for at fortsætte."
+
 msgid "Your receiver is rebooting"
 msgstr "Din modtager genstarter"
 
@@ -11170,6 +11189,18 @@ msgstr "Din receiver vil gå i standby på grund af inaktivitet."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
 msgstr "Din receiver vil genstarte efter at du trykke OK på fjernbetjeningen."
+
+#
+msgid ""
+"Your wireless LAN internet connection could not be started!\n"
+"Have you attached your USB WLAN Stick?\n"
+"\n"
+"Please choose what you want to do next."
+msgstr ""
+"Din trådløse LAN internetforbindelse kunne ikke startes!\n"
+"Har du forbundet din USB WLAN Stick?\n"
+"\n"
+"Vælg hvad du herefter vil gøre."
 
 msgid "Zambia"
 msgstr ""
@@ -11477,11 +11508,6 @@ msgstr "Klip overscan / letterbox grænser"
 
 msgid "comedy"
 msgstr "komedie"
-
-#
-#, fuzzy
-msgid "config menu"
-msgstr "bekræftet"
 
 #
 msgid "confirmed"
@@ -12678,6 +12704,3 @@ msgstr "zap og skift"
 #
 msgid "zapped"
 msgstr "zapped"
-
-msgid "®"
-msgstr ""
