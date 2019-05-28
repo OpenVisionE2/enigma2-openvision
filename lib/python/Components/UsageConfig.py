@@ -4,7 +4,7 @@ from Tools.Directories import defaultRecordingLocation
 from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff, setEnableTtCachingOnOff, eEnv, eDVBDB, Misc_Options, eBackgroundFileEraser, eServiceEvent, getBoxType
 from Components.NimManager import nimmanager
 from Components.ServiceList import refreshServiceList
-from SystemInfo import SystemInfo
+from Components.SystemInfo import SystemInfo
 import os
 import time
 
