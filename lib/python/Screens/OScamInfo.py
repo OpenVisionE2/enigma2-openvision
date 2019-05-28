@@ -12,7 +12,7 @@ from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename, fileExists
 from enigma import eTimer, RT_HALIGN_LEFT, eListboxPythonMultiContent, gFont, getDesktop
 from xml.etree import ElementTree
 from operator import itemgetter
-from SystemInfo import SystemInfo
+from Components.SystemInfo import SystemInfo
 import os, time
 import urllib2
 import skin
