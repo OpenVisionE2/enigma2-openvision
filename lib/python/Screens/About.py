@@ -30,6 +30,8 @@ class About(Screen):
 		AboutText += _("CPU brand: ") + about.getCPUBrand() + "\n"
 		AboutText += _("Flash type: ") + about.getFlashType() + "\n"
 		AboutText += _("Image: ") + about.getImageTypeString() + "\n"
+		AboutText += _("Open Vision version: ") + about.getVisionVersion() + "\n"
+		AboutText += _("Open Vision revision: ") + about.getVisionRevision() + "\n"
 		AboutText += _("Build date: ") + about.getBuildDateString() + "\n"
 		AboutText += _("Last upgrade: ") + about.getUpdateDateString() + "\n"
 

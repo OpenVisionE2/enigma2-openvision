@@ -142,9 +142,21 @@ def getCPUBrand():
 
 def getFlashType():
 	if SystemInfo["SmallFlash"]:
-		return _("Small flash STB")
+		return _("Small, this is a lite image")
 	else:
-		return _("Normal flash STB")
+		return _("Normal, this is a normal image")
+
+def getVisionVersion():
+	try:
+		return open("/etc/visionversion","r").read()
+	except:
+		return _("It's not a genuine Open Vision!")
+
+def getVisionRevision():
+	try:
+		return open("/etc/visionrevision","r").read()
+	except:
+		return _("It's not a genuine Open Vision!")
 
 def getDriverInstalledDate():
 	try:
