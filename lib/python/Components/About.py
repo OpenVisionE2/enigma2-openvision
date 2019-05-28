@@ -148,13 +148,13 @@ def getFlashType():
 
 def getVisionVersion():
 	try:
-		return open("/etc/visionversion","r").read()
+		return open("/etc/visionversion","r").read().strip()
 	except:
 		return _("It's not a genuine Open Vision!")
 
 def getVisionRevision():
 	try:
-		return open("/etc/visionrevision","r").read()
+		return open("/etc/visionrevision","r").read().strip()
 	except:
 		return _("It's not a genuine Open Vision!")
 
