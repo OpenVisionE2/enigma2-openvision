@@ -792,7 +792,7 @@ def InitUsageConfig():
 	config.autolanguage.subtitle_usecache = ConfigYesNo(default = True)
 
 	config.oscaminfo = ConfigSubsection()
-	if SystemInfo["OScamInstalled"]:
+	if SystemInfo["OScamInstalled"] or SystemInfo["NCamInstalled"]:
 		config.oscaminfo.showInExtensions = ConfigYesNo(default=True)
 	else:
 		config.oscaminfo.showInExtensions = ConfigYesNo(default=False)

@@ -12,6 +12,7 @@ from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename, fileExists
 from enigma import eTimer, RT_HALIGN_LEFT, eListboxPythonMultiContent, gFont, getDesktop
 from xml.etree import ElementTree
 from operator import itemgetter
+from SystemInfo import SystemInfo
 import os, time
 import urllib2
 import skin
@@ -57,8 +58,31 @@ class OscamInfo:
 		ipcompiled = False
 
 		# Find and parse running oscam
-		if fileExists("/tmp/.oscam/oscam.version"):
+		if SystemInfo["OScamIsActive"]:
 			with open('/tmp/.oscam/oscam.version', 'r') as data:
+				for i in data:
+					if "web interface support:" in i.lower():
+						owebif = i.split(":")[1].strip()
+						if owebif == "no":
+							owebif = False
+						elif owebif == "yes":
+							owebif = True
+					elif "webifport:" in i.lower():
+						oport = i.split(":")[1].strip()
+						if oport == "0":
+							oport = None
+					elif "configdir:" in i.lower():
+						opath = i.split(":")[1].strip()
+					elif "ipv6 support:" in i.lower():
+						ipcompiled = i.split(":")[1].strip()
+						if ipcompiled == "no":
+							ipcompiled = False
+						elif ipcompiled == "yes":
+							ipcompiled = True
+					else:
+						continue
+		if SystemInfo["NCamIsActive"]:
+			with open('/tmp/.ncam/ncam.version', 'r') as data:
 				for i in data:
 					if "web interface support:" in i.lower():
 						owebif = i.split(":")[1].strip()
@@ -86,7 +110,10 @@ class OscamInfo:
 		[webif, port, conf, ipcompiled] = self.confPath()
 		if conf == None:
 			conf = ""
-		conf += "/oscam.conf"
+		if SystemInfo["OScamIsActive"]:
+			conf += "/oscam.conf"
+		if SystemInfo["NCamIsActive"]:
+			conf += "/ncam.conf"
 
 		# Assume that oscam webif is NOT blocking localhost, IPv6 is also configured if it is compiled in,
 		# and no user and password are required
@@ -150,11 +177,20 @@ class OscamInfo:
 			self.port.replace("+","")
 
 		if part is None:
-			self.url = "%s://%s:%s/oscamapi.html?part=status" % ( self.proto, self.ip, self.port )
+			if SystemInfo["OScamIsActive"]:
+				self.url = "%s://%s:%s/oscamapi.html?part=status" % ( self.proto, self.ip, self.port )
+			if SystemInfo["NCamIsActive"]:
+				self.url = "%s://%s:%s/ncamapi.html?part=status" % ( self.proto, self.ip, self.port )
 		else:
-			self.url = "%s://%s:%s/oscamapi.html?part=%s" % ( self.proto, self.ip, self.port, part )
+			if SystemInfo["OScamIsActive"]:
+				self.url = "%s://%s:%s/oscamapi.html?part=%s" % ( self.proto, self.ip, self.port, part )
+			if SystemInfo["NCamIsActive"]:
+				self.url = "%s://%s:%s/ncamapi.html?part=%s" % ( self.proto, self.ip, self.port, part )
 		if part is not None and reader is not None:
-			self.url = "%s://%s:%s/oscamapi.html?part=%s&label=%s" % ( self.proto, self.ip, self.port, part, reader )
+			if SystemInfo["OScamIsActive"]:
+				self.url = "%s://%s:%s/oscamapi.html?part=%s&label=%s" % ( self.proto, self.ip, self.port, part, reader )
+			if SystemInfo["NCamIsActive"]:
+				self.url = "%s://%s:%s/ncamapi.html?part=%s&label=%s" % ( self.proto, self.ip, self.port, part, reader )
 
 		opener = urllib2.build_opener( urllib2.HTTPHandler )
 		if not self.username == "":
@@ -440,7 +476,7 @@ class OscamInfoMenu(Screen):
 		if entry in (1,2,3) and config.oscaminfo.userdatafromconf.value and self.osc.confPath()[0] is None:
 			config.oscaminfo.userdatafromconf.setValue(False)
 			config.oscaminfo.userdatafromconf.save()
-			self.session.openWithCallback(self.ErrMsgCallback, MessageBox, _("File oscam.conf not found.\nPlease enter username/password manually."), MessageBox.TYPE_ERROR)
+			self.session.openWithCallback(self.ErrMsgCallback, MessageBox, _("File oscam.conf/ncam.conf not found.\nPlease enter username/password manually."), MessageBox.TYPE_ERROR)
 		elif entry == 0:
 			if os.path.exists("/tmp/ecm.info"):
 				self.session.open(oscECMInfo)
@@ -1157,7 +1193,7 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 
 	def createSetup(self):
 		self.oscamconfig = []
-		self.oscamconfig.append(getConfigListEntry(_("Read Userdata from oscam.conf"), config.oscaminfo.userdatafromconf))
+		self.oscamconfig.append(getConfigListEntry(_("Read Userdata from oscam.conf/ncam.conf"), config.oscaminfo.userdatafromconf))
 		if not config.oscaminfo.userdatafromconf.value:
 			self.oscamconfig.append(getConfigListEntry(_("Username (httpuser)"), config.oscaminfo.username))
 			self.oscamconfig.append(getConfigListEntry(_("Password (httpwd)"), config.oscaminfo.password))

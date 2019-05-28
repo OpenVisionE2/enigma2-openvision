@@ -2144,7 +2144,7 @@ class InfoBarExtensions:
 		return _("OScam Info")
 
 	def getOScamInfo(self):
-		if SystemInfo["OScamInstalled"]:
+		if SystemInfo["OScamInstalled"] or SystemInfo["NCamInstalled"]:
 			return [((boundFunction(self.getOSname), boundFunction(self.openOScamInfo), lambda: True), None)] or []
 		else:
 			return []
