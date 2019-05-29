@@ -83,9 +83,15 @@ def skin_user_skinname():
 
 config.skin = ConfigSubsection()
 if SystemInfo["HasFullHDSkinSupport"]:
-	DEFAULT_SKIN = "PLi-FullNightHD/skin.xml"
+	if os.path.isfile('/usr/share/enigma2/OctEtFHD/skin.xml'):
+		DEFAULT_SKIN = "OctEtFHD/skin.xml"
+	else:
+		DEFAULT_SKIN = "PLi-FullNightHD/skin.xml"
 else:
-	DEFAULT_SKIN = "PLi-HD/skin.xml"
+	if os.path.isfile('/usr/share/enigma2/OctEtSD/skin.xml'):
+		DEFAULT_SKIN = "OctEtSD/skin.xml"
+	else:
+		DEFAULT_SKIN = "PLi-HD/skin.xml"
 # on SD hardware, PLi-HD will not be available
 if not fileExists(resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)):
 	DEFAULT_SKIN = "skin.xml"
