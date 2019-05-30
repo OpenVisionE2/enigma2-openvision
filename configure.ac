@@ -237,8 +237,8 @@ AM_CONDITIONAL(UPDATE_PO, test "$with_po" = "yes")
 
 AC_ARG_WITH(alsa,
 	AC_HELP_STRING([--with-alsa], [Enable ALSA support]),
-	[[with_alse=$withval]],
-	[[with_alse=no]]
+	[[with_alsa=$withval]],
+	[[with_alsa=no]]
 )
 if test x"$with_alsa" == xyes ; then
 	AC_DEFINE(HAVE_ALSA, 1,[Enables ALSA support])
