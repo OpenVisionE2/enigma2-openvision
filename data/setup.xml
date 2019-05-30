@@ -249,8 +249,14 @@
 		<item level="0" text="LED Standby" description="LED brightness during standby.">config.lcd.ledbrightnessstandby</item>
 		<item level="0" text="LED Deep Standby" description="LED brightness during deep standby.">config.lcd.ledbrightnessdeepstandby</item>
 		<item level="0" requires="PowerLed" text="Turn on the power LED." description="Power LED can be turned on or off here.">config.usage.lcd_powerled</item>
-		<item level="0" requires="StandbyLED" text="Power LED State in Standby" description="Power LED state during standby.">config.usage.lcd_standbypowerled</item>
-		<item level="0" requires="SuspendLED" text="Power LED State in Deep-Standby" description="Power LED state during deep-standby.">config.usage.lcd_deepstandbypowerled</item>
+		<item level="0" requires="StandbyLED" text="Power LED state in Standby" description="Power LED state during standby.">config.usage.lcd_standbypowerled</item>
+		<item level="0" requires="SuspendLED" text="Power LED state in Deep-Standby" description="Power LED state during deep-standby.">config.usage.lcd_deepstandbypowerled</item>
+		<item level="0" requires="LedPowerColor" text="Power LED state when running." description="Set LED color or disable the LED.">config.usage.lcd_ledpowercolor</item>
+		<item level="0" requires="LedStandbyColor" text="Power LED state in Standby" description="Set LED color or disable the LED during standby.">config.usage.lcd_ledstandbycolor</item>
+		<item level="0" requires="LedSuspendColor" text="Power LED state in Deep-Standby" description="Set LED color or disable the LED during deep-standby.">config.usage.lcd_ledsuspendcolor</item>
+		<item level="0" requires="Power4x7On" text="PowerControl FrontDisplay normal mode" description="This option allows you to Power Off the display.">config.usage.lcd_power4x7on</item>
+		<item level="0" requires="Power4x7Standby" text="PowerControl FrontDisplay standby mode" description="This option allows you to Power Off the display.">config.usage.lcd_power4x7standby</item>
+<item level="0" requires="Power4x7Suspend" text="PowerControl FrontDisplay Suspend Mode" description="This option allows you to Power Off the display.">config.usage.lcd_power4x7suspend</item>
 	</setup>
 	<setup key="satconfig" title="Satellite dish setup">
 		<item text="Tuner slot" description="Choose which tuner to configure.">config.sat.tunerslot</item>
