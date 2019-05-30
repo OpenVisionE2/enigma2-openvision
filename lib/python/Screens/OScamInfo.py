@@ -410,7 +410,17 @@ class oscMenuList(MenuList):
 class OscamInfoMenu(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
+		global f
+		xmain = wmain= 425 *f
+		ymain = hmain= 240 *f
+		xmenu = ymenu = 33 *f
+		hmain = ymain + ymenu
+		wmenu = wmain - xmenu
+		hmenu = hmain - ymenu
 		screentitle = _("Oscam Info - Main Menu")
+		self.skin = """<screen position="%d ,%d" size="%d, %d" title="Main menu">""" % (xmain, ymain, wmain, hmain)
+		self.skin +="""<widget name="mainmenu" position="%d, %d" size="%d, %d" zPosition="1" scrollbarMode="showOnDemand" />""" % (xmenu, ymenu, wmenu, hmenu)
+		self.skin += """</screen>"""
 		title = screentitle
 		self["menu_path_compressed"] = StaticText("")
 		Screen.setTitle(self, title)
