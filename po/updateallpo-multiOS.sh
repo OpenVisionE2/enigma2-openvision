@@ -39,7 +39,7 @@
 remote="origin"
 branch="develop"
 python="python"
-localgsed="gsed"
+localgsed="sed"
 xml2po="xml2po.py"
 findoptions=""
 delete=1
