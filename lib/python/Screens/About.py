@@ -32,6 +32,7 @@ class About(Screen):
 		AboutText += _("Image: ") + about.getImageTypeString() + "\n"
 		AboutText += _("Open Vision version: ") + about.getVisionVersion() + "\n"
 		AboutText += _("Open Vision revision: ") + about.getVisionRevision() + "\n"
+		AboutText += _("Open Vision module: ") + about.getVisionModule() + "\n"
 		AboutText += _("Build date: ") + about.getBuildDateString() + "\n"
 		AboutText += _("Last upgrade: ") + about.getUpdateDateString() + "\n"
 
