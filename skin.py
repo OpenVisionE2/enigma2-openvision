@@ -82,15 +82,7 @@ def skin_user_skinname():
 # so the first screen found will be used.
 
 config.skin = ConfigSubsection()
-if SystemInfo["HasFullHDSkinSupport"]:
-	if os.path.isfile('/usr/share/enigma2/OctEtFHD/skin.xml'):
-		DEFAULT_SKIN = "OctEtFHD/skin.xml"
-	else:
-		if os.path.isfile('/usr/share/enigma2/OctEtSD/skin.xml'):
-			DEFAULT_SKIN = "OctEtSD/skin.xml"
-else:
-	if os.path.isfile('/usr/share/enigma2/OctEtSD/skin.xml'):
-		DEFAULT_SKIN = "OctEtSD/skin.xml"
+DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "OctEtFHD/skin.xml" or "PLi-HD/skin.xml"
 # on SD hardware, HD skin will not be available
 if not fileExists(resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)):
 	DEFAULT_SKIN = "skin.xml"
