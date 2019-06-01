@@ -85,14 +85,10 @@ config.skin = ConfigSubsection()
 if SystemInfo["HasFullHDSkinSupport"]:
 	if os.path.isfile('/usr/share/enigma2/OctEtFHD/skin.xml'):
 		DEFAULT_SKIN = "OctEtFHD/skin.xml"
-	else:
-		DEFAULT_SKIN = "PLi-FullNightHD/skin.xml"
 else:
 	if os.path.isfile('/usr/share/enigma2/OctEtSD/skin.xml'):
 		DEFAULT_SKIN = "OctEtSD/skin.xml"
-	else:
-		DEFAULT_SKIN = "PLi-HD/skin.xml"
-# on SD hardware, PLi-HD will not be available
+# on SD hardware, HD skin will not be available
 if not fileExists(resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)):
 	DEFAULT_SKIN = "skin.xml"
 config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
