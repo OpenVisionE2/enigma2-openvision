@@ -583,7 +583,7 @@ class oscECMInfo(Screen, OscamInfo):
 			self.loop = eTimer()
 			self.loop.callback.append(self.showData)
 			timeout = config.oscaminfo.intervall.value * 1000
-			self.loop.start(timeout, False)
+			self.loop.start(int(100))
 		self["actions"] = ActionMap(["OkCancelActions"],
 					{
 						"ok": self.exit,
@@ -661,7 +661,7 @@ class oscInfo(Screen, OscamInfo):
 			self.loop = eTimer()
 			self.loop.callback.append(self.showData)
 			timeout = config.oscaminfo.intervall.value * 1000
-			self.loop.start(timeout, False)
+			self.loop.start(int(100))
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions"],
 					{
 						"ok": self.key_ok,
