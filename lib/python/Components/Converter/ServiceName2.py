@@ -1,23 +1,3 @@
-# -*- coding: utf-8 -*-
-#
-# Extended ServiceName Converter for Enigma2 Dreamboxes (ServiceName2.py)
-# Coded by vlamo (c) 2011
-#
-# Version: 0.4 (03.06.2011 18:40)
-# Version: 0.5 (08.09.2012) add Alternative numbering mode support - Dmitry73 & 2boom
-# Version: 0.6 (19.10.2012) add stream mapping
-# Version: 0.7 (19.09.2013) add iptv info - nikolasi & 2boom
-# Version: 0.8 (29.10.2013) add correct output channelnumner - Dmitry73
-# Version: 0.9 (18.11.2013) code fix and optimization - Taapat & nikolasi
-# Version: 1.0 (04.12.2013) code fix and optimization - Dmitry73
-# Version: 1.1 (06-17.12.2013) small cosmetic fix - 2boom
-# Version: 1.2 (25.12.2013) small iptv fix - MegAndretH
-# Version: 1.3 (27.01.2014) small iptv fix - 2boom
-# Version: 1.4 (30.06.2014) fix iptv reference - 2boom
-# Version: 1.5 (04.07.2014) fix iptv reference cosmetic - 2boom
-# Support: http://dream.altmaster.net/ & http://gisclub.tv
-#
-
 from Components.Converter.Converter import Converter
 from enigma import iServiceInformation, iPlayableService, iPlayableServicePtr, eServiceReference, eServiceCenter, eTimer, getBestPlayableServiceReference
 from Components.Element import cached
