@@ -1406,7 +1406,10 @@ def InitNimManager(nimmgr, update_slots = []):
 		nim.diseqcMode = ConfigSelection(diseqc_mode_choices, "diseqc_a_b")
 		nim.connectedTo = ConfigSelection([(str(id), nimmgr.getNimDescription(id)) for id in nimmgr.getNimListOfType("DVB-S") if id != slot_id])
 		nim.simpleSingleSendDiSEqC = ConfigYesNo(False)
-		nim.simpleDiSEqCSetVoltageTone = ConfigYesNo(True)
+		if getBoxType() == "alien5":
+			nim.simpleDiSEqCSetVoltageTone = ConfigYesNo(False)
+		else:
+			nim.simpleDiSEqCSetVoltageTone = ConfigYesNo(True)
 		nim.simpleDiSEqCOnlyOnSatChange = ConfigYesNo(False)
 		nim.simpleDiSEqCSetCircularLNB = ConfigYesNo(True)
 		nim.diseqcA = ConfigSatlist(list = diseqc_satlist_choices)
