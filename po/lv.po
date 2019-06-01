@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-02 00:42+0430\n"
+"POT-Creation-Date: 2019-06-02 01:30+0430\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -130,7 +130,29 @@ msgstr ""
 "\n"
 "Skatīt, instalēt un dzēst pieejamās vai instalētās pakotnes."
 
+#, python-format
+msgid ""
+"\n"
+"optional parameter:\n"
+"%s"
+msgstr ""
+
+msgid " "
+msgstr ""
+
 msgid "  REC  "
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished successefully."
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished with error messages."
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished with error number [%d]."
 msgstr ""
 
 msgid " (0 - all networks)"
@@ -165,6 +187,19 @@ msgstr " (lielāks kā rotora jebkurš auto)"
 msgid " (lower than any auto)"
 msgstr " (mazāks kā jebkurš auto)"
 
+#, python-format
+msgid " - %d elements exist! Overwrite"
+msgstr ""
+
+msgid " - 1 element exist! Overwrite"
+msgstr ""
+
+msgid " - file exist! Overwrite"
+msgstr ""
+
+msgid " - folder exist! Overwrite"
+msgstr ""
+
 msgid " extensions."
 msgstr " paplašinājumiem."
 
@@ -173,6 +208,9 @@ msgstr " min"
 
 msgid " ms"
 msgstr " ms"
+
+msgid " or save the picture additionally to a file"
+msgstr ""
 
 msgid " packages selected."
 msgstr " pakotnes izvēlētas."
@@ -428,14 +466,38 @@ msgstr "%s %s brīva vieta uz diska"
 msgid "%s ( %s Cards )"
 msgstr "%s (%s)\n"
 
+#, fuzzy, python-format
+msgid "%s (%04o)"
+msgstr "%s (%s)\n"
+
+#, fuzzy, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
+
+#, fuzzy, python-format
+msgid "%s (%sB"
+msgstr "%s (%s)\n"
+
+#, python-format
+msgid "%s - extraction errors."
+msgstr ""
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
 msgstr "%s vairs neizmanto. Vai izdzēst?"
+
+#, python-format
+msgid "%s is password protected."
+msgstr ""
+
+#, python-format
+msgid "%s successfully extracted."
+msgstr ""
 
 #, python-format
 msgid "%s updated package available"
@@ -456,13 +518,36 @@ msgstr "%s%d min"
 msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
+#, fuzzy, python-format
+msgid "%s: %s"
+msgstr "%s/%s: %s"
+
 #, python-format
 msgid "%s:%s"
 msgstr "%s:%s"
 
+#, python-format
+msgid "%sB"
+msgstr ""
+
+#, python-format
+msgid "'%s' not installed and no known package"
+msgstr ""
+
 #, fuzzy
 msgid "( All readers)"
 msgstr "Visi vecumi"
+
+#, python-format
+msgid "(%d jobs)"
+msgstr ""
+
+msgid "(1 job)"
+msgstr ""
+
+#, fuzzy
+msgid "(Selectmode)"
+msgstr "Izvēlieties filmu"
 
 msgid "(Show only reader:"
 msgstr ""
@@ -677,6 +762,9 @@ msgstr "8bit"
 msgid "9"
 msgstr "9"
 
+msgid ": "
+msgstr ""
+
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - pēc noklusējuma (nedarbosies)"
 
@@ -707,6 +795,10 @@ msgstr "<nezināms>"
 
 msgid "=NO STREAM\n"
 msgstr "-NAV STRAUMJU\n"
+
+#, fuzzy
+msgid "?"
+msgstr "??"
 
 msgid "??"
 msgstr "??"
@@ -869,6 +961,10 @@ msgstr "Par"
 msgid "About..."
 msgstr "Par..."
 
+#, fuzzy
+msgid "Accessed:"
+msgstr "Piekļuves punkts:"
+
 msgid "Accesspoint:"
 msgstr "Piekļuves punkts:"
 
@@ -881,8 +977,20 @@ msgstr "Aktivizēt funkciju attēls attēlā"
 msgid "Activate current configuration"
 msgstr "Aktivizēt pašreizējo konfigurāciju"
 
+msgid "Activate left-hand file list as multi-select source"
+msgstr ""
+
+msgid "Activate left-hand file list as source"
+msgstr ""
+
 msgid "Activate network settings"
 msgstr "Aktivizēt tīkla iestatījumus"
+
+msgid "Activate right-hand file list as multi-select source"
+msgstr ""
+
+msgid "Activate right-hand file list as source"
+msgstr ""
 
 msgid "Activate the configured network settings."
 msgstr "Aktivizēt nokonfigurētos tīkla iestatījumus"
@@ -918,6 +1026,10 @@ msgstr "Pievienot jaunu nosaukumu"
 msgid "Add bookmark"
 msgstr "Grāmatzīme"
 
+#, fuzzy
+msgid "Add current folder to bookmarks"
+msgstr "Veidot grāmatzīmes automātiski"
+
 msgid "Add directory to playlist"
 msgstr "Pievienot mapi repertuāram"
 
@@ -926,6 +1038,13 @@ msgstr "Pievienot failu repertuāram"
 
 msgid "Add files to playlist"
 msgstr "Pievienot failus repertuāram"
+
+#, fuzzy
+msgid "Add plugin to Extensions menu*"
+msgstr "Rādīt paplašinājumu izvēlnē"
+
+msgid "Add plugin to main menu*"
+msgstr ""
 
 msgid "Add provider"
 msgstr "Pievienot operatoru"
@@ -941,6 +1060,10 @@ msgstr "Sākt ierakstu (nenoteikti)"
 
 msgid "Add recording (stop after current event)"
 msgstr "Sākt ierakstu (apturēt pēc pašreizējās pārraides)"
+
+#, fuzzy
+msgid "Add selected folder to bookmarks"
+msgstr "Izvēlieties dublējumkopijas failus vai mapes"
 
 msgid "Add service"
 msgstr "Pievienot kanālu"
@@ -1595,6 +1718,10 @@ msgstr ""
 msgid "Blinking red"
 msgstr ""
 
+#, fuzzy
+msgid "Block device"
+msgstr "Nav kanāla"
+
 msgid "Block noise reduction"
 msgstr "Bloķēt trokšņu slāpēšanu"
 
@@ -1745,6 +1872,9 @@ msgstr ""
 msgid "CPU brand: "
 msgstr ""
 
+msgid "CPU priority for script execution"
+msgstr ""
+
 msgid "CPU: "
 msgstr "Procesors: "
 
@@ -1768,6 +1898,9 @@ msgstr "Izskaitļot"
 
 msgid "Calculate all positions"
 msgstr "Izskaitļot visas pozīcijas"
+
+msgid "Calculate file checksums"
+msgstr ""
 
 msgid "Calculation complete"
 msgstr "Izskaitļošana pabeigta"
@@ -1802,8 +1935,18 @@ msgid ""
 "Yellow for returning back to this intro"
 msgstr ""
 
+#, python-format
+msgid ""
+"Can not run %s: %s.\n"
+"%s may be in a plugin that is not installed."
+msgstr ""
+
 msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternativaly you can mount the network drive after the flash and perform a manufacurer reset to autorestore"
 msgstr "Ir atrasts tikai tīkla disks kur saglabāt rezerves kopiju. Tas nozīmē, ka pēc imidža uzstādīšanas automātiskā atjaunošana nenotiks. Jūs varat piemontēt tīkla disku pēc imidža uzstādīšanas un izmantot rūpnīcas uzstādījumus lai automātiski atjaunotu iestatījumus."
+
+#, python-format
+msgid "Can't read link contents: %s"
+msgstr ""
 
 msgid "Canada"
 msgstr "Kanāda"
@@ -1813,6 +1956,10 @@ msgstr "Atcelt"
 
 msgid "Cancel any text changes and exit"
 msgstr "Atcelt teksta izmaiņas un iziet"
+
+#, fuzzy
+msgid "Cancel execution?"
+msgstr "Kanālu izvēle"
 
 msgid "Cancelled upon user request"
 msgstr "Atcelts pēc lietotāja pieprasījuma"
@@ -1881,6 +2028,12 @@ msgstr "Mainīt PIN"
 msgid "Change bouquets in quickzap"
 msgstr "Mainīt buķetes ātrās slēgšanas režīmā"
 
+msgid "Change buttons for list navigation"
+msgstr ""
+
+msgid "Change execute permissions (755/644)"
+msgstr ""
+
 msgid "Change recording (add time)"
 msgstr "Mainīt ierakstu (pievienot laiku)"
 
@@ -1904,6 +2057,9 @@ msgstr "Kanāls"
 
 msgid "Channel Info"
 msgstr "Info par kanālu"
+
+msgid "Channel button always changes sides"
+msgstr ""
 
 msgid "Channel context menu"
 msgstr "Kanāla papildus izvēlne"
@@ -1953,6 +2109,10 @@ msgstr "Nodaļa"
 
 msgid "Chapter:"
 msgstr "Nodaļa:"
+
+#, fuzzy
+msgid "Character device"
+msgstr "Pašreizējā iekārta: "
 
 msgid "Check"
 msgstr "Pārbaude"
@@ -2596,6 +2756,26 @@ msgstr "Kuka salas"
 msgid "Copy"
 msgstr "Kopēt"
 
+#, python-format
+msgid "Copy %d elements"
+msgstr ""
+
+msgid "Copy 1 element"
+msgstr ""
+
+#, fuzzy
+msgid "Copy file"
+msgstr "%d fails"
+
+msgid "Copy file/directory to target directory"
+msgstr ""
+
+msgid "Copy files/directories to target directory"
+msgstr ""
+
+msgid "Copy folder"
+msgstr ""
+
 msgid "Costa Rica"
 msgstr "Kostarika"
 
@@ -2631,11 +2811,21 @@ msgstr "šim kanālam slēpt mirgojošo līniju"
 msgid "Create DVD-ISO"
 msgstr "Izveidot DVD-ISO"
 
+#, fuzzy
+msgid "Create directory/folder"
+msgstr "izveidot mapi"
+
 msgid "Create new folder and exit"
 msgstr "Izveidot jaunu mapi un iziet"
 
 msgid "Create separate radio userbouquet"
 msgstr "Izveidot atsevišķu radio buķeti"
+
+msgid "Create symlink to file"
+msgstr ""
+
+msgid "Create user-named symbolic link"
+msgstr ""
 
 #, python-format
 msgid "Creating directory %s failed."
@@ -2856,6 +3046,10 @@ msgstr "Dāņu"
 msgid "Date"
 msgstr "Datums"
 
+#, fuzzy
+msgid "Date reverse"
+msgstr "alfabētiski reversā"
+
 msgid "Date/time input"
 msgstr "Datuma/laika ievade"
 
@@ -2871,8 +3065,28 @@ msgstr "Izslēgt"
 msgid "Default"
 msgstr "Noklusētais"
 
+#, fuzzy
+msgid "Default Folder"
+msgstr "Noklusētais"
+
 msgid "Default Services Scanner"
 msgstr "Kanālu meklētājs pēc noklusējuma"
+
+#, fuzzy
+msgid "Default directory sorting"
+msgstr "Noklusējuma iestatījumi"
+
+#, fuzzy
+msgid "Default file sorting left"
+msgstr "Mediju failu atrašanās vieta pēc noklusējuma"
+
+#, fuzzy
+msgid "Default file sorting right"
+msgstr "Mediju failu atrašanās vieta pēc noklusējuma"
+
+#, fuzzy
+msgid "Default folder"
+msgstr "Noklusētais"
 
 msgid "Default movie location"
 msgstr "Mediju failu atrašanās vieta pēc noklusējuma"
@@ -2949,6 +3163,18 @@ msgstr "Aizture milisekundēs simbolu ritināšanas ātrumam displejā."
 msgid "Delete"
 msgstr "Dzēst"
 
+#, fuzzy, python-format
+msgid "Delete %d elements"
+msgstr "Dzēsts"
+
+#, fuzzy
+msgid "Delete 1 element"
+msgstr "Dzēst ierakstu "
+
+#, fuzzy
+msgid "Delete current line"
+msgstr "Dzēst ierakstu "
+
 msgid "Delete entry"
 msgstr "Dzēst ierakstu "
 
@@ -2956,6 +3182,13 @@ msgid "Delete failed!"
 msgstr "Dzēšana neizdevās!"
 
 msgid "Delete file"
+msgstr "Dzēst failu"
+
+msgid "Delete file or directory (and all its contents)"
+msgstr ""
+
+#, fuzzy
+msgid "Delete folder"
 msgstr "Dzēst failu"
 
 msgid "Delete image"
@@ -2972,6 +3205,9 @@ msgstr "Dzēst burtu pa kreisi"
 
 msgid "Delete the character under the text buffer cursor"
 msgstr "Dzēst burtu"
+
+msgid "Delete the selected files or directories"
+msgstr ""
 
 msgid "Delete timer"
 msgstr "Dzēst taimeri"
@@ -3223,6 +3459,10 @@ msgstr "Vai tiešām vēlaties dzēst grāmatzīmi %s?"
 msgid "Do you really want to stop current event and delete timer %s?"
 msgstr "Vai tiešām vēlaties apturēt pašreizējo notikumu un dzēst taimeri %s?"
 
+#, fuzzy
+msgid "Do you want change rights?\\n"
+msgstr "Vai to vēlaties?"
+
 msgid "Do you want this?"
 msgstr "Vai to vēlaties?"
 
@@ -3285,6 +3525,10 @@ msgstr "Vai vēlaties atjaunot uztvērēju?"
 
 msgid "Do you want to upgrade the package:\n"
 msgstr "Vai vēlaties atjaunināt pakotni:\n"
+
+#, fuzzy
+msgid "Do you want to view or run the script?\n"
+msgstr "Vai vēlaties pārstartēt uztvērēju?"
 
 msgid "Dolby"
 msgstr "Dolby"
@@ -3435,6 +3679,18 @@ msgstr "Rediģēt DNS"
 
 msgid "Edit chapters of current title"
 msgstr "Rediģēt pašreizējā nosaukuma nodaļas"
+
+#, fuzzy
+msgid "Edit current line"
+msgstr "Rediģēt pašreizējā nosaukuma nodaļas"
+
+#, fuzzy
+msgid "Edit line "
+msgstr "Rediģēt taimeri"
+
+#, fuzzy
+msgid "Edit position is the line end"
+msgstr "Griezt uz pozīciju indeksā"
 
 msgid "Edit selection"
 msgstr "Rediģēt"
@@ -3655,6 +3911,10 @@ msgstr "Ievadiet, ja esat uz ziemeļiem vai uz dienvidiem no ekvatora."
 msgid "Enter main menu..."
 msgstr "Atvērt galveno izvēlni..."
 
+#, fuzzy
+msgid "Enter multi-file selection mode"
+msgstr "Aizvērt virsrakstu atlasi"
+
 msgid "Enter persistent PIN code"
 msgstr "Ievadiet patstāvīgo PIN kodu"
 
@@ -3723,6 +3983,12 @@ msgstr "Kļūda %s"
 msgid "Error code"
 msgstr "Kļūdas kods"
 
+#, fuzzy, python-format
+msgid ""
+"Error creating directory %s:\n"
+"%s"
+msgstr "Neizdevās izveidot mapi %s."
+
 #, python-format
 msgid ""
 "Error during backup settings\n"
@@ -3752,6 +4018,18 @@ msgstr ""
 msgid "Error executing plugin"
 msgstr "Kļūda, palaižot spraudni"
 
+#, python-format
+msgid ""
+"Error linking %s to %s:\n"
+"%s"
+msgstr ""
+
+#, python-format
+msgid ""
+"Error renaming %s to %s:\n"
+"%s"
+msgstr ""
+
 msgid "Error stop stream!"
 msgstr "Kļūda apturot straumēšanu!"
 
@@ -3771,6 +4049,10 @@ msgstr ""
 
 msgid "Error while retreiving location of epg.dat on server"
 msgstr "Kļūda iegūstot epg.dat faila atrašanās vietu no servera"
+
+#, fuzzy
+msgid "Error..."
+msgstr "Kļūda"
 
 #, python-format
 msgid ""
@@ -3859,6 +4141,9 @@ msgstr "Iziet no EPG"
 msgid "Exit editor"
 msgstr "Iziet no redaktora"
 
+msgid "Exit editor and write changes (if any)"
+msgstr ""
+
 msgid "Exit input device selection."
 msgstr "Iziet no ievades iekārtas izvēlnes."
 
@@ -3882,6 +4167,9 @@ msgstr "Iziet no tīkla interfeisu saraksta"
 
 msgid "Exit network wizard"
 msgstr "Iziet no tīkla iestatīšanas vedņa"
+
+msgid "Exit picture viewer"
+msgstr ""
 
 msgid "Exit the wizard"
 msgstr "Iziet no vedņa"
@@ -4008,6 +4296,9 @@ msgstr "FEC"
 msgid "FEC:"
 msgstr "FEC:"
 
+msgid "FIFO"
+msgstr ""
+
 msgid "FSBL Update Check"
 msgstr ""
 
@@ -4112,12 +4403,70 @@ msgstr "Favorīti"
 msgid "Fiji"
 msgstr "Fidži"
 
+#, fuzzy
+msgid "File Commander"
+msgstr "Komandu secība"
+
+msgid "File Commander - Addon File-Viewer"
+msgstr ""
+
+msgid "File Commander - Addon Mediaplayer"
+msgstr ""
+
+msgid "File Commander - Addon Movieplayer"
+msgstr ""
+
+msgid "File Commander - all Task's completed!"
+msgstr ""
+
+msgid "File Commander - generalised archive handler"
+msgstr ""
+
+msgid "File Commander - gzip Addon"
+msgstr ""
+
+msgid "File Commander - ipk Addon"
+msgstr ""
+
+msgid "File Commander - tar Addon"
+msgstr ""
+
+msgid "File Commander - unrar Addon"
+msgstr ""
+
+msgid "File Commander - unzip Addon"
+msgstr ""
+
+#, fuzzy
+msgid "File Commander context menu"
+msgstr "Kanāla papildus izvēlne"
+
+msgid "File Commander menu"
+msgstr ""
+
 msgid "File appears to be busy.\n"
 msgstr "Fails šķiet aizņemts.\n"
+
+msgid "File checksums/hashes"
+msgstr ""
+
+#, python-format
+msgid "File not found: %s"
+msgstr ""
 
 msgid ""
 "File oscam.conf/ncam.conf not found.\n"
 "Please enter username/password manually."
+msgstr ""
+
+msgid "File transfer was cancelled by user"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "File write error: '%s'"
+msgstr "ar kļūdām"
+
+msgid "File/Directory Status Information"
 msgstr ""
 
 msgid "Filename"
@@ -4125,6 +4474,9 @@ msgstr "Fails"
 
 msgid "Filesystem check"
 msgstr "Failu sistēmas pārbaude"
+
+msgid "Filter extension, (*) appears in title"
+msgstr ""
 
 msgid "Final position at"
 msgstr "Beigu pozīcija"
@@ -4347,6 +4699,13 @@ msgstr "Gibraltārs"
 msgid "Go down the list"
 msgstr "Iet uz saraksta leju"
 
+msgid "Go to bookmarked folder"
+msgstr ""
+
+#, fuzzy
+msgid "Go to end of file"
+msgstr "Pārlēkt uz saraksta beigām"
+
 msgid "Go to first movie or last item"
 msgstr "Iet uz pirmo vai pēdējo filmu"
 
@@ -4365,11 +4724,19 @@ msgstr "Iet uz nākamo notikumu"
 msgid "Go to next page of service"
 msgstr "Iet uz nākamo kanālu lapu"
 
+#, fuzzy
+msgid "Go to parent directory"
+msgstr "Iepriekšējā mape"
+
 msgid "Go to previous event"
 msgstr "Iet uz iepriekšējo notikumu"
 
 msgid "Go to previous page of service"
 msgstr "Iet uz iepriekšējo kanālu lapu"
+
+#, fuzzy
+msgid "Go to start of file"
+msgstr "Iet uz nākamo kanālu lapu"
 
 msgid "Go up the list"
 msgstr "Iet uz saraksta augšu"
@@ -4443,6 +4810,9 @@ msgstr "Grenlande"
 
 msgid "Grenada"
 msgstr "Grenāda"
+
+msgid "Group:"
+msgstr ""
 
 msgid "Grow drop"
 msgstr ""
@@ -4698,6 +5068,9 @@ msgstr "I"
 msgid "I do not want to perform any service scans"
 msgstr "Es nevēlos veikt kanālu meklēšanu"
 
+msgid "I/O priority for script execution"
+msgstr ""
+
 msgid "IDLE"
 msgstr "NEIZMANTOTS"
 
@@ -4918,6 +5291,9 @@ msgstr "Inicializēt"
 msgid "Initializing storage device..."
 msgstr "Inicializēt ieraksta ierīci..."
 
+msgid "Inode:"
+msgstr ""
+
 msgid "Input"
 msgstr "Ievade"
 
@@ -4933,8 +5309,19 @@ msgstr "Ievades ierīces iestatījumi"
 msgid "Input devices"
 msgstr "Ievades ierīces"
 
+msgid "Insert"
+msgstr ""
+
+#, fuzzy
+msgid "Insert line before current line"
+msgstr "Aktīvā nosaukuma parametri"
+
 msgid "Install"
 msgstr "Instalēt"
+
+#, python-format
+msgid "Install '%s' and enable this operation"
+msgstr ""
 
 msgid "Install channel list"
 msgstr "Instalēt kanālu sarakstu"
@@ -4959,6 +5346,10 @@ msgstr "Uzstādīšana vai noņemšana pabeigta."
 
 msgid "Installing"
 msgstr "Uzstāda"
+
+#, fuzzy
+msgid "Installing Plugin ..."
+msgstr "Uzstāda programmatūru..."
 
 #, fuzzy
 msgid "Installing service"
@@ -5044,6 +5435,19 @@ msgstr "Manas salas"
 msgid "Israel"
 msgstr "Izraēla"
 
+msgid "It is not possible to calculate hashes on <List of Storage Devices>"
+msgstr ""
+
+msgid "It is not possible to change the file mode of <List of Storage Devices>"
+msgstr ""
+
+msgid "It is not possible to get the file status of <List of Storage Devices>"
+msgstr ""
+
+#, python-format
+msgid "It is not possible to run '%s' on <List of Storage Devices>"
+msgstr ""
+
 #, fuzzy
 msgid ""
 "It seems you did not see all the eight arrow heads. This means your TV has overscan enabled, and is not configured properly.\n"
@@ -5055,6 +5459,9 @@ msgstr ""
 "\n"
 
 msgid "It's not a genuine Open Vision!"
+msgstr ""
+
+msgid "It's not possible to rename the filesystem root."
 msgstr ""
 
 msgid "Italian"
@@ -5251,6 +5658,13 @@ msgstr "Latviešu"
 msgid "Leave DVD player?"
 msgstr "Iziet no DVD atskaņotāja?"
 
+msgid "Leave File Commander"
+msgstr ""
+
+#, fuzzy
+msgid "Leave multi-select mode"
+msgstr "Izvēlieties kanāla attēla režīmu"
+
 msgid "Leave this set to 'yes' unless you fully understand why you are adjusting it."
 msgstr "Atstājiet šo iestatījumu uz 'jā', ja vien jūs pilnībā nesaprotat kāpēc to mainat."
 
@@ -5312,17 +5726,29 @@ msgstr "Limiti ieslēgti"
 msgid "Link quality:"
 msgstr "Saites kvalitāte:"
 
+#, fuzzy
+msgid "Link target:"
+msgstr "Saites kvalitāte:"
+
 msgid "Link:"
 msgstr "Saite:"
 
 msgid "Linked titles with a DVD menu"
 msgstr "Saistītie nosaukumi ar DVD izvēlni"
 
+#, fuzzy
+msgid "Links:"
+msgstr "Saite:"
+
 msgid "List available networks"
 msgstr "Skatīt pieejamos tīklus"
 
 msgid "List mode"
 msgstr "Saraksta režīms"
+
+#, fuzzy
+msgid "List of Storage Devices"
+msgstr "Atmiņas ierīču saraksts"
 
 msgid "List of storage devices"
 msgstr "Atmiņas ierīču saraksts"
@@ -5564,6 +5990,9 @@ msgstr "Paziņojums..."
 msgid "Messages"
 msgstr "Paziņojumus"
 
+msgid "Metadata changed:"
+msgstr ""
+
 msgid "Mexico"
 msgstr "Meksika"
 
@@ -5597,6 +6026,10 @@ msgctxt "Video output mode"
 msgid "Mode"
 msgstr "Režīms"
 
+#, python-format
+msgid "Mode %s (%04o)"
+msgstr ""
+
 msgid "Model"
 msgstr "Modelis"
 
@@ -5605,6 +6038,9 @@ msgstr "Modelis: "
 
 msgid "Modes"
 msgstr "Režīmi"
+
+msgid "Modified:"
+msgstr ""
 
 msgid "Modulation"
 msgstr "Modulācija"
@@ -5658,6 +6094,14 @@ msgstr "Montēt"
 msgid "Move"
 msgstr "Pārvietot"
 
+#, fuzzy, python-format
+msgid "Move %d elements"
+msgstr "Kustība"
+
+#, fuzzy
+msgid "Move 1 element"
+msgstr "Kustība"
+
 msgid "Move PIP"
 msgstr "Pārvietot PIP"
 
@@ -5667,8 +6111,27 @@ msgstr "Pārvietot PiP uz galveno attēlu"
 msgid "Move Picture in Picture"
 msgstr "Pārvietot attēlu attēlā"
 
+#, fuzzy
+msgid "Move down list"
+msgstr "Iet uz saraksta leju"
+
 msgid "Move east"
 msgstr "Griezt uz austrumiem"
+
+#, fuzzy
+msgid "Move file"
+msgstr "Griezt uz austrumiem"
+
+msgid "Move file/directory to target directory"
+msgstr ""
+
+#, fuzzy
+msgid "Move files/directories to target directory"
+msgstr "Nevar pārvietot tajā pašā mapē!"
+
+#, fuzzy
+msgid "Move folder"
+msgstr "[pārvietošanas režīms]"
 
 msgid "Move the text buffer cursor left"
 msgstr "Pārvietot kursoru pa kreisi"
@@ -5697,6 +6160,10 @@ msgstr "Pārvietot kursoru uz augšu"
 msgid "Move to position X"
 msgstr "Griezt uz pozīciju X"
 
+#, fuzzy
+msgid "Move up list"
+msgstr "Iet uz saraksta augšu"
+
 msgid "Move west"
 msgstr "Griezt uz rietumiem"
 
@@ -5708,6 +6175,10 @@ msgstr "Griezt uz pozīciju indeksā"
 
 msgid "Movement"
 msgstr "Kustība"
+
+#, fuzzy
+msgid "Movie"
+msgstr "Griezt"
 
 msgid "Movie list configuration"
 msgstr "Mediju iestatījumi"
@@ -5769,11 +6240,22 @@ msgstr "Izvēlēti visi multisat"
 msgid "Multistream"
 msgstr "Multistream"
 
+msgid "Music"
+msgstr ""
+
 msgid "Music/Ballet/Dance"
 msgstr "Mūzika/Balets/Dejas"
 
 msgid "Mute"
 msgstr "Klusēt"
+
+#, fuzzy
+msgid "My Extension"
+msgstr "Paplašinājumi"
+
+#, fuzzy
+msgid "My extension"
+msgstr " paplašinājumiem."
 
 msgid "Myanmar"
 msgstr "Mjanma"
@@ -5802,6 +6284,10 @@ msgstr "NTSC"
 
 msgid "Name"
 msgstr "Nosaukums"
+
+#, fuzzy
+msgid "Name reverse"
+msgstr "Domēna vārdu serveris"
 
 msgid "Nameserver"
 msgstr "Domēna vārdu serveris"
@@ -5895,6 +6381,9 @@ msgstr "Jaunkaledonija"
 msgid "New Zealand"
 msgstr "Jaunzēlande"
 
+msgid "New folder"
+msgstr ""
+
 msgid "News Current Affairs"
 msgstr "Jaunumi Aktualitātes"
 
@@ -5968,11 +6457,18 @@ msgstr "Nav atrasta informācija par pārraidi, ierakstīs nepārtraukti."
 msgid "No fast winding possible yet.. but you can use the number buttons to skip forward/backward!"
 msgstr "Pārtīšana pašreiz nav iespējama.. bet varat lietot ciparu taustiņus lai pārlektu uz priekšu/atpakaļ!"
 
+#, fuzzy
+msgid "No files found."
+msgstr "Tīkli nav atrasti"
+
 msgid "No free index available"
 msgstr "Nav pieejami brīvi indeksi"
 
 msgid "No free tuner!"
 msgstr "Nav brīva uztvērēja!"
+
+msgid "No hash calculations configured"
+msgstr ""
 
 #, fuzzy
 msgid "No images found"
@@ -6043,6 +6539,10 @@ msgstr "atjauninājumi nav pieejami"
 msgid "No updates available. Please try again later."
 msgstr "atjauninājumi nav pieejami. Lūdzu mēģiniet vēlāk."
 
+#, python-format
+msgid "No viewer installed for this file type: %s"
+msgstr ""
+
 msgid "No wireless networks found! Searching..."
 msgstr "Bezvadu tīkli nav atrasti! Meklē..."
 
@@ -6085,6 +6585,10 @@ msgstr "Nē, nekad"
 msgid "None"
 msgstr "Nav"
 
+#, python-format
+msgid "None of the hash programs for the hashes %s are available"
+msgstr ""
+
 #. TRANSLATORS: (aspect ratio policy: display as fullscreen, with stretching the left/right)
 msgid "Nonlinear"
 msgstr "Nelineāri mērogot"
@@ -6115,6 +6619,9 @@ msgstr "Norvēģu"
 
 msgid "Not Defined"
 msgstr "Nav definēts"
+
+msgid "Not allowed with folders"
+msgstr ""
 
 msgid "Not associated"
 msgstr "Nav piešķirts"
@@ -6154,6 +6661,9 @@ msgstr "Tagad lietojiet kontrasta iestatīšanu lai palielinātu fona spilgtumu 
 
 msgid "Number of channels shown in channel selection list"
 msgstr "Kanālu daudzums kanālu sarakstā"
+
+msgid "Number of lines in script messages"
+msgstr ""
 
 msgid "Number of repeating text on display."
 msgstr "Atkārtojamā teksta skaits displejā."
@@ -6203,6 +6713,10 @@ msgstr "Omāna"
 
 msgid "On"
 msgstr "Ieslēgts"
+
+#, fuzzy
+msgid "On device:"
+msgstr "Ievades ierīces"
 
 msgid "On end of movie"
 msgstr "Uz filmas beigām"
@@ -6257,11 +6771,18 @@ msgstr "Atvērt izvēlēto mapi ar taimera nosaukumu"
 msgid "Open service list"
 msgstr "Atvērt kanālu sarakstu"
 
+#, fuzzy
+msgid "Open settings/actions menu"
+msgstr "Rādīt paplašinājumu izvēlnē"
+
 msgid "Open setup tuner "
 msgstr "Atvērt iestatījumus uztvērējam "
 
 msgid "Open the movie list"
 msgstr "Atvērt mediju sarakstu"
+
+msgid "Open with File Commander"
+msgstr ""
 
 msgid "Options disable timer"
 msgstr "Iespēja izslēgt taimeri"
@@ -6306,6 +6827,9 @@ msgstr "Pārrakstīt konfigurācijas failus atjauninot programmatūru?"
 
 msgid "Overwrite configuration files?"
 msgstr "Pārrakstīt konfigurācijas failus?"
+
+msgid "Owner:"
+msgstr ""
 
 msgid "PAL"
 msgstr "PAL"
@@ -6365,6 +6889,14 @@ msgstr "Pakotņu pārvaldība"
 msgid "Packet manager"
 msgstr "Pakotņu pārvaldnieks"
 
+#, fuzzy
+msgid "Page down list"
+msgstr "Iet uz saraksta leju"
+
+#, fuzzy
+msgid "Page up list"
+msgstr "Saglabāt repertuāru"
+
 msgid "Pakistan"
 msgstr "Pakistāna"
 
@@ -6390,6 +6922,10 @@ msgstr "Papua Jaungvineja"
 msgid "Paraguay"
 msgstr "Paragvaja"
 
+#, fuzzy
+msgid "Parent Directory"
+msgstr "Iepriekšējā mape"
+
 msgid "Parent directory"
 msgstr "Iepriekšējā mape"
 
@@ -6411,6 +6947,9 @@ msgstr "Parole"
 #, fuzzy
 msgid "Password (httpwd)"
 msgstr "Parole"
+
+msgid "Path to save not exist: '/tmp/'"
+msgstr ""
 
 msgid "Pause"
 msgstr "Pauze"
@@ -6436,6 +6975,9 @@ msgstr "Neatgriezeniski dzēst visus ierakstus miskastē?"
 msgid "Permanently remove all deleted items"
 msgstr "Neatgriezeniski dzēst visus dzēstos"
 
+msgid "Permissions:"
+msgstr ""
+
 msgid "Persian"
 msgstr "Persiešu"
 
@@ -6455,6 +6997,10 @@ msgid "Picon and servicename"
 msgstr "Pikona un kanāla nosaukums"
 
 msgid "Picture player"
+msgstr "Attēlu rādītājs"
+
+#, fuzzy
+msgid "Pictures"
 msgstr "Attēlu rādītājs"
 
 #. TRANSLATORS: (aspect ratio policy: black bars on left/right) in doubt, keep english term.
@@ -6492,6 +7038,10 @@ msgstr "Atskaņot mediju failus"
 msgid "Play entry"
 msgstr "Atskaņot ierakstu"
 
+#, fuzzy
+msgid "Play folder"
+msgstr "Atskaņot ierakstu"
+
 msgid "Play from next mark or playlist entry"
 msgstr "Atskaņot no nākamās iezīmes vai repertuāra ieraksta"
 
@@ -6515,6 +7065,13 @@ msgstr "Atskaņot iepriekšējo"
 
 msgid "Play recorded movies..."
 msgstr "Atskaņot ierakstītās filmas..."
+
+#, fuzzy
+msgid "Play title"
+msgstr "Pievienot nosaukumu"
+
+msgid "Play/view/edit/install/extract/run file or enter directory"
+msgstr ""
 
 msgid "Please add titles to the compilation."
 msgstr "Lūdzu pievienot virsrakstus kompilācijai."
@@ -6571,10 +7128,18 @@ msgstr "Lūdzu ievadiet faila nosaukumu (tukšs = lietot pašreizējo datumu)"
 msgid "Please enter name of the new directory"
 msgstr "Lūdzu ievadiet jaunās mapes nosaukumu"
 
+#, fuzzy
+msgid "Please enter name of the new symlink"
+msgstr "Lūdzu ievadiet jaunās mapes nosaukumu"
+
 msgid "Please enter new description:"
 msgstr "Lūdzu ievadiet jauno aprakstu:"
 
 msgid "Please enter new name:"
+msgstr "Lūdzu ievadiet jauno nosaukumu:"
+
+#, fuzzy
+msgid "Please enter password"
 msgstr "Lūdzu ievadiet jauno nosaukumu:"
 
 msgid "Please enter the correct pin code"
@@ -6582,6 +7147,14 @@ msgstr "Lūdzu ievadiet pareizu PIN kodu"
 
 msgid "Please enter the new PIN code"
 msgstr "Lūdzu ievadiet jauno PIN kodu"
+
+#, fuzzy
+msgid "Please enter the new directory name"
+msgstr "Lūdzu ievadiet jaunās mapes nosaukumu"
+
+#, fuzzy
+msgid "Please enter the new file name"
+msgstr "Lūdzu ievadiet jauno faila nosaukumu"
 
 msgid "Please enter the old PIN code"
 msgstr "Lūdzu ievadiet iepriekšējo PIN kodu"
@@ -6724,6 +7297,10 @@ msgstr "Lūdzu uzgaidiet kamēr pārbauda tīklu..."
 
 msgid "Please wait while your network is restarting..."
 msgstr "Lūdzu uzgaidiet kamēr tīkls tiek pārstartēts..."
+
+#, fuzzy
+msgid "Please wait, Loading image."
+msgstr "Lūdzu uzgaidiet... Ielādē sarakstu..."
 
 msgid "Please wait, restarting cardserver."
 msgstr "Lūdzu uzgaidiet, pārstartē karšu serveri."
@@ -7023,6 +7600,30 @@ msgstr "Prioritāte"
 msgid "Process"
 msgstr "Norise"
 
+#, python-format
+msgid ""
+"Program '%s' is installed.\n"
+"The package containing this program isn't known, so it can't be uninstalled."
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run the '%s' action.\n"
+"Uninstall the '%s' package to uninstall the program?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run this action.\n"
+"Install the '%s' package to install the program?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' not installed.\n"
+"The package containing this program isn't known."
+msgstr ""
+
 msgid "Progress"
 msgstr "Progress"
 
@@ -7256,6 +7857,10 @@ msgid "Recordings always have priority"
 msgstr "Ierakstiem vienmēr ir prioritāte"
 
 #, fuzzy
+msgid "Records"
+msgstr "Ierakstu iestatījumi"
+
+#, fuzzy
 msgid "Recovery Mode"
 msgstr "Lietotāja režīms"
 
@@ -7283,6 +7888,10 @@ msgstr "Atjaunināšanas biežums"
 msgid "Refresh rate selection."
 msgstr "Atjaunināšanas ātruma izvēle."
 
+#, fuzzy
+msgid "Refresh screen"
+msgstr "Atjaunināšanas biežums"
+
 msgid "Refusing to move to the same directory"
 msgstr "Nevar pārvietot tajā pašā mapē!"
 
@@ -7291,6 +7900,10 @@ msgstr "Pieņemt dziļo gaidīšanu kā gaidīšanu"
 
 msgid "Region"
 msgstr "Reģions"
+
+#, fuzzy
+msgid "Regular file"
+msgstr "šablona fails"
 
 msgid "Relative"
 msgstr "Relatīvs"
@@ -7347,6 +7960,9 @@ msgstr "Dzēst"
 msgid "Remove completed timers after (days)"
 msgstr "Dzēst pabeigtos taimerus pēc (dienām)"
 
+msgid "Remove current folder from bookmarks"
+msgstr ""
+
 msgid "Remove currently selected title"
 msgstr "Dzēst pašreiz izvēlēto virsrakstu"
 
@@ -7355,6 +7971,9 @@ msgstr "Dzēst no miskastes pēc (dienām)"
 
 msgid "Remove plugins"
 msgstr "Dzēst spraudņus"
+
+msgid "Remove selected folder from bookmarks"
+msgstr ""
 
 msgid "Remove this logfile"
 msgstr "Dzēst šo žurnāla failu"
@@ -7378,6 +7997,10 @@ msgstr "Nav kanāla"
 
 msgid "Rename"
 msgstr "Pārsaukt"
+
+#, fuzzy
+msgid "Rename file/directory"
+msgstr "izveidot mapi"
 
 msgid "Rename name and description for new events"
 msgstr "Jauniem notikumiem pārsaukt nosaukumu un aprakstu"
@@ -7536,8 +8159,16 @@ msgstr "Reinjona"
 msgid "Reverse bouquet buttons"
 msgstr "Reversēt buķešu taustiņus"
 
+#, fuzzy
+msgid "Reverse left file sorting"
+msgstr "Reversēt sarakstu"
+
 msgid "Reverse list"
 msgstr "Reversēt sarakstu"
+
+#, fuzzy
+msgid "Reverse right file sorting"
+msgstr "Neveikt atšifrēšanu kad ieraksta"
 
 msgid "Rewind speeds"
 msgstr "Attīšanas ātrumi"
@@ -7578,7 +8209,24 @@ msgstr "Rotors: "
 msgid "Round start time on"
 msgstr "Raunda sākuma laiks"
 
+#, python-format
+msgid "Run '%s' command"
+msgstr ""
+
 msgid "Run how often ?"
+msgstr ""
+
+msgid "Run script"
+msgstr ""
+
+#, fuzzy
+msgid "Run script in background"
+msgstr "%d darbs tiek veikts fonā!"
+
+msgid "Run script with optional parameter"
+msgstr ""
+
+msgid "Run script with optional parameter in background"
 msgstr ""
 
 #, fuzzy
@@ -7732,11 +8380,25 @@ msgstr "Saglabāt un apturēt laika aizturi"
 msgid "Save changes"
 msgstr "Saglabāt"
 
+#, fuzzy
+msgid "Save left folder on exit"
+msgstr "Izveidot jaunu mapi un iziet"
+
 msgid "Save playlist"
 msgstr "Saglabāt repertuāru"
 
+#, fuzzy
+msgid "Save right folder on exit"
+msgstr "Izveidot jaunu mapi un iziet"
+
 msgid "Save settings and EPG data"
 msgstr "Saglabā iestatījumus un EPG datus"
+
+#, python-format
+msgid ""
+"Save the commands and the output to a file?\n"
+"('%s')"
+msgstr ""
 
 msgid "Save timeshift and zap"
 msgstr "Saglabāt laika aiztures failu un pārslēgt"
@@ -7838,6 +8500,10 @@ msgid "Schedule EPG and channel list import"
 msgstr ""
 
 msgid "Screenshot of LCD in /tmp"
+msgstr ""
+
+#, python-format
+msgid "Script '%s' must have read permission to be able to run it"
 msgstr ""
 
 msgid "Scroll delay"
@@ -7955,6 +8621,9 @@ msgstr "Izvēlieties 'jā', lai meklēšanā iekļautu joslu %s."
 msgid "Select 'yes' to only send the DiSEqC command when changing from one satellite to another, or select 'no' for the DiSEqC command to be resent on every zap."
 msgstr "Izvēlieties 'Jā', lai  DiSEqC komandu nosūtītu tikai mainot satelītus, izvēlieties 'nē', lai DiSEqC komandu nosūtītu pie ktras kanālu pārslēgšanas."
 
+msgid "Select (source list) or enter directory (target list)"
+msgstr ""
+
 msgid "Select CAId"
 msgstr "CAId izvēle"
 
@@ -7987,6 +8656,10 @@ msgstr "Izvēlieties filmu"
 
 msgid "Select a network adapter"
 msgstr "Izvēlieties tīkla adapteri"
+
+#, fuzzy
+msgid "Select a path"
+msgstr "Izvēlieties uztvērēju"
 
 msgid "Select a skin"
 msgstr "Izvēlieties noformējumu"
@@ -8181,6 +8854,10 @@ msgstr "Izvēlieties ATSC operatoru."
 msgid "Select your country. If not available select 'all'."
 msgstr "Izvēlieties savu valsti. Ja nav pieejams, izvēlieties 'visam'"
 
+#, fuzzy
+msgid "Select your personal settings:"
+msgstr "Izvēlieties izšķirtspēju:"
+
 msgid "Select your provider and region. If not present in this list you will need to select one of the other 'service scan types'."
 msgstr "Izvēlieties pakalpojumu sniedzēju un reģionu. Ja tie nav šajā sarakstā, jums jāizvēlas cits kanālu meklēšanas veids."
 
@@ -8349,6 +9026,9 @@ msgstr "Iestatiet ko darīt kad filma vai mediju fails beidzas."
 msgid "Set all hotkey to default?"
 msgstr "Iestatīt visu taustiņu noklusētās vērtības?"
 
+msgid "Set archive mode (644)"
+msgstr ""
+
 msgid "Set blocktimes by weekday"
 msgstr "Iestatīt bloķēšanas laikus pa dienām"
 
@@ -8360,6 +9040,9 @@ msgstr "Iestatīt pēc noklusējuma?"
 
 msgid "Set end time"
 msgstr "Iestatīt beigu laiku"
+
+msgid "Set executable mode (755)"
+msgstr ""
 
 msgid "Set fixed"
 msgstr "Fiksētā"
@@ -8444,6 +9127,10 @@ msgstr "Iestatījumi"
 msgid "Settings can be different for each directory separately (for non removeable devices only)."
 msgstr "Iestatījumi būs atšķirīgi katrai direktorijai. Neattiecas uz noņemamiem datu nesējiem."
 
+#, fuzzy
+msgid "Settings..."
+msgstr "Iestatījumi"
+
 msgid "Setup"
 msgstr "Iestatījumi"
 
@@ -8483,6 +9170,12 @@ msgstr ""
 
 msgid "Show"
 msgstr "Rādīt"
+
+#, python-format
+msgid ""
+"Show '%s' as picture%s?\n"
+"The current service must be interrupted!"
+msgstr ""
 
 #, fuzzy
 msgid "Show /tmp/ecm.info"
@@ -8549,6 +9242,12 @@ msgstr ""
 msgid "Show SNR percentage instead of dB value"
 msgstr "Rādīt SNR procentos dB vietā"
 
+msgid "Show Script completed message"
+msgstr ""
+
+msgid "Show Task's completed message"
+msgstr ""
+
 msgid "Show True/False as graphical switch"
 msgstr "Rādīt jā/nē iestatījums ar ikonu"
 
@@ -8560,6 +9259,13 @@ msgstr "Rādīt bezvadu tīkla statusu"
 
 msgid "Show animation while busy"
 msgstr "Rādīt animāciju kad aizņemts"
+
+msgid "Show as Picture (press any key to close)"
+msgstr ""
+
+#, python-format
+msgid "Show as Picture and save as file ('%s')"
+msgstr ""
 
 msgid "Show background behind subtitles"
 msgstr "Subtitriem lietot fonu"
@@ -8579,6 +9285,18 @@ msgstr "Rādīt kanālu numurus kanālu izvēlnē"
 msgid "Show columns"
 msgstr "Rādīt kolonas"
 
+msgid "Show contents of ipk file"
+msgstr ""
+
+msgid "Show contents of rar file"
+msgstr ""
+
+msgid "Show contents of tar or compressed tar file"
+msgstr ""
+
+msgid "Show contents of zip file"
+msgstr ""
+
 msgid "Show crypto icons"
 msgstr "Rādīt crypto ikonu"
 
@@ -8587,6 +9305,10 @@ msgstr "Rādīt šifrēšanas info infojoslā"
 
 msgid "Show detailed event info"
 msgstr "Rādīt detalizētu notikumu info"
+
+#, fuzzy
+msgid "Show directories first"
+msgstr "Atvērt favorītu sarakstu"
 
 msgid "Show event details"
 msgstr "Rādīt pārraides papildus informāciju"
@@ -8614,6 +9336,10 @@ msgstr "Rādīt palīdzību"
 
 msgid "Show icon for new/unseen items"
 msgstr "Rādīt ikonu jauniem vai neskatītiem"
+
+#, fuzzy
+msgid "Show image information"
+msgstr "Programmatūras pārvaldnieka informācija"
 
 msgid "Show in extensions menu"
 msgstr "Rādīt paplašinājumu izvēlnē"
@@ -8657,6 +9383,9 @@ msgstr "Rādīt ierakstus"
 msgid "Show multi channel EPG"
 msgstr "Rādīt daudzkanālu EPG"
 
+msgid "Show next picture"
+msgstr ""
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Parādīt brīdinājumu kad kanālu un/vai EPG imports no attālinātā uztvērēja nav izdevies"
 
@@ -8683,6 +9412,10 @@ msgstr "Rādīt pozicioniera kustību"
 
 msgid "Show positioner position"
 msgstr "Rādīt pozicioniera pozīciju"
+
+#, fuzzy
+msgid "Show previous picture"
+msgstr "Pārslēgt iepriekšējo buķeti"
 
 msgid "Show record clock icons"
 msgstr "Rādīt ieraksta pulksteņa ikonu"
@@ -8733,11 +9466,19 @@ msgstr "Subtitru iestatīšana"
 msgid "Show symbols on display"
 msgstr "Rādīt displejā simbolus"
 
+#, fuzzy
+msgid "Show task list"
+msgstr "Atvērt kanālu sarakstu"
+
 msgid "Show the radio player..."
 msgstr "Klausīties radio..."
 
 msgid "Show the tv player..."
 msgstr "Skatīties TV..."
+
+#, fuzzy
+msgid "Show unknown extension as text"
+msgstr "Rādīt paplašinājumu izvēlnē"
 
 msgid "Show vertical timelines"
 msgstr "Rādīt vertikālās līnijas laikam"
@@ -8834,6 +9575,16 @@ msgstr "Vietas platums"
 msgid "Site longitude"
 msgstr "Vietas garums"
 
+msgid "Size"
+msgstr ""
+
+#, fuzzy
+msgid "Size reverse"
+msgstr "Kanāli"
+
+msgid "Size:"
+msgstr ""
+
 msgid "Skin"
 msgstr "Noformējums"
 
@@ -8853,6 +9604,10 @@ msgstr "Izlaist tukšos kanālus"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Izlaist interneta savienojuma pārbaudi (atspējo automātisku pakotņu uzstādīšanu)"
+
+#, fuzzy
+msgid "Skip selection"
+msgstr "Rediģēt"
 
 msgid "Sleep timer"
 msgstr "Miega taimeris"
@@ -8934,6 +9689,10 @@ msgstr ""
 
 msgid "Social/Political/Economics"
 msgstr "Sociālie/Politika/Ekonomika"
+
+#, fuzzy
+msgid "Socket"
+msgstr "noenkurojies"
 
 msgid "SocketMMI"
 msgstr ""
@@ -9025,6 +9784,12 @@ msgstr "Sakārtot spraudņus noklusētā kārtībā?"
 #. TRANSLATORS: This must fit into the header button in the EPG-List
 msgid "Sort time"
 msgstr "Kārt. laiks"
+
+msgid "Sorting left files by name, date or size"
+msgstr ""
+
+msgid "Sorting right files by name, date or size"
+msgstr ""
 
 msgid "Sound"
 msgstr "Skaņa"
@@ -9170,6 +9935,9 @@ msgstr "Sākt laika aizturi"
 msgid "Start with list screen"
 msgstr "Sākt ar saraksta logu"
 
+msgid "Start/stop slide show"
+msgstr ""
+
 msgid "Starting on"
 msgstr "Sākot ar"
 
@@ -9271,6 +10039,10 @@ msgstr "Apturēt laika aizturi?"
 
 msgid "Stopped"
 msgstr "Apturēt"
+
+#, fuzzy
+msgid "Storage devices"
+msgstr "Atmiņas ierīču saraksts"
 
 msgid "Store at index"
 msgstr "Saglabāt indeksā"
@@ -9460,6 +10232,12 @@ msgstr "Simbola vērtība un FEC"
 msgid "Symbol rate:"
 msgstr "Simbola vērtība:"
 
+msgid "Symbolic link"
+msgstr ""
+
+msgid "Symlink to "
+msgstr ""
+
 msgid "Sync failure moving back to origin !"
 msgstr "Sinhronizēšana pārtraukta, atiestata uz oriģinālu!"
 
@@ -9523,6 +10301,10 @@ msgstr "Tadžikistāna"
 msgid "Tanzania, United Republic of"
 msgstr "Tanzānija, Apvienotā Republika"
 
+#, fuzzy
+msgid "Task list"
+msgstr "melnais saraksts"
+
 msgid "Teletext subtitle color"
 msgstr "Teleteksta subtitru krāsa"
 
@@ -9580,6 +10362,9 @@ msgstr "Līdz pārraides beigām atlikušas %d minūtes."
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standarts neatbalsta H.264 (HDTV) video. Vai jūs vēlaties izveidot īpaša formāta datu DVD (kuru nevarēs atskaņot standarta DVD atskaņotāji)?"
 
+msgid "The Image Viewer component of the File Commander requires the PicturePlayer extension. Install PicturePlayer to enable this operation."
+msgstr ""
+
 msgid "The PIN code has been changed successfully."
 msgstr "PIN kods nomainīts veiksmīgi."
 
@@ -9588,6 +10373,9 @@ msgstr "PIN kods nomainīts veiksmīgi."
 
 msgid "The PIN codes you entered are different."
 msgstr "Ievadītie PIN kodi atšķiras."
+
+msgid "The authors are NOT RESPONSIBLE"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -9607,6 +10395,14 @@ msgstr ""
 
 msgid "The following files were found..."
 msgstr "Tika atrasti sekojoši faili..."
+
+msgid ""
+"The function has been interrupted.\n"
+"Don't press any key until the picture from mvi-file is displayed!"
+msgstr ""
+
+msgid "The hash of a directory can't be calculated."
+msgstr ""
 
 msgid ""
 "The network wizard extension is not installed!\n"
@@ -9767,6 +10563,10 @@ msgstr "Šis ir vairāku veidu uztvērējs. Pieejamās opcijas ir atkarīgas no 
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Komandu rinda, kādā DiSEqC komandas tiek nosūtītas. Komandu rindai precīzi jāatbilst kārtībai, kādā sākot no uztvērēja fiziskās ierīces tiek pieslēgtas kabelim."
+
+#, fuzzy
+msgid "This line is not editable!"
+msgstr "Šis spraudnis nav instalēts."
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
 msgstr "Atļauj samazināt trokšņus attēlā. Diemžēl tas samazina arī attēla asumu."
@@ -9991,6 +10791,10 @@ msgstr "Ceturtdiena"
 
 msgid "Time"
 msgstr "Laiks"
+
+#, fuzzy
+msgid "Time for Slideshow"
+msgstr "Taimeru pārskats"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -10288,6 +11092,10 @@ msgstr "LNB/ierīces veids"
 msgid "Type of scan"
 msgstr "Meklēšanas veids"
 
+#, fuzzy
+msgid "Type:"
+msgstr "Veids"
+
 msgid "UNKNOWN"
 msgstr "NEZINĀMS"
 
@@ -10369,6 +11177,10 @@ msgstr "Unicable aizture pēc pēdējās DiSEqC komandas"
 msgid "Uninstall"
 msgstr "Atinstalēt"
 
+#, python-format
+msgid "Uninstall '%s' package and disable '%s'"
+msgstr ""
+
 msgid "United Arab Emirates"
 msgstr "Apvienotie Arābu Emirāti"
 
@@ -10390,6 +11202,14 @@ msgstr "Universālā LNB"
 msgid "Unknown"
 msgstr "Nezināms"
 
+#, fuzzy, python-format
+msgid "Unknown group: %d"
+msgstr "nezināma kļūda"
+
+#, fuzzy, python-format
+msgid "Unknown user: %d"
+msgstr "nezināms kanāls"
+
 msgid "Unknown, multiboot situation!"
 msgstr ""
 
@@ -10398,6 +11218,13 @@ msgstr "neatzīmēt kā 3D kanālu"
 
 msgid "Unmount"
 msgstr "Atmontēt"
+
+#, python-format
+msgid "Unpack to %s"
+msgstr ""
+
+msgid "Unpack to current folder"
+msgstr ""
 
 msgid "Unsupported"
 msgstr "Neatbalstāms"
@@ -10746,6 +11573,13 @@ msgstr "Skatīt sarakstu ar pieejamiem programmatūras paplašinājumiem"
 msgid "View list of available system extensions"
 msgstr "Skatīt sarakstu ar pieejamiem sistēmas paplašinājumiem"
 
+msgid "View or edit file (if size < 1MB)"
+msgstr ""
+
+#, python-format
+msgid "View or edit this %s script"
+msgstr ""
+
 msgid "View photos..."
 msgstr "Skatīt fotogrāfijas..."
 
@@ -10784,6 +11618,9 @@ msgstr "Skaļāk"
 
 msgid "W"
 msgstr "W"
+
+msgid "WARNING!"
+msgstr ""
 
 msgid "WEP"
 msgstr "WEP"
@@ -10933,6 +11770,10 @@ msgstr ""
 
 msgid "What day of week ?"
 msgstr ""
+
+#, fuzzy
+msgid "What do you want to play?\n"
+msgstr "Vai vēlaties atskaņot DVD?"
 
 msgid "What type of service scan do you want?"
 msgstr "Kāda veida kanālu meklēšanu vēlaties veikt?"
@@ -11316,6 +12157,14 @@ msgstr "Iestatiet noklusēto (root) mapi mediju atskaņotājam."
 
 msgid "You can set sorting type for items in movielist."
 msgstr "Iestatiet mediju saraksta kārtošanas veidu."
+
+#, python-format
+msgid "You can't usefully run '%s' on '%s'."
+msgstr ""
+
+#, python-format
+msgid "You can't usefully run '%s' on a directory."
+msgstr ""
 
 msgid "You cannot delete this!"
 msgstr "Jūs šo nevarat dzēst!"
@@ -11777,11 +12626,21 @@ msgstr "Dudzkanālu PCM"
 msgid "cooking"
 msgstr "cepšana"
 
+#, fuzzy
+msgid "copy file"
+msgstr "%d fails"
+
+msgid "copy folder"
+msgstr ""
+
 msgid "copy to bouquets"
 msgstr "kopēt uz buķetēm"
 
 msgid "create directory"
 msgstr "izveidot mapi"
+
+msgid "create symlink ..."
+msgstr ""
 
 msgid "daily"
 msgstr "ik dienu"
@@ -11984,6 +12843,9 @@ msgstr "folks/tautas mūzika"
 msgid "football/soccer"
 msgstr "futbols"
 
+msgid "for DATA LOSS OR DAMAGE !!!"
+msgstr ""
+
 msgid "force AC3plus"
 msgstr ""
 
@@ -12003,6 +12865,10 @@ msgid "free"
 msgstr "brīvs"
 
 msgid "from"
+msgstr "no"
+
+#, fuzzy
+msgid "from dir"
 msgstr "no"
 
 msgid "further education"
@@ -12029,11 +12895,17 @@ msgstr "zaļā"
 msgid "handicraft"
 msgstr "rokdarbi"
 
+msgid "has been CHANGED! Do you want to save it?"
+msgstr ""
+
 msgid "height"
 msgstr "augstums"
 
 msgid "help..."
 msgstr "palīdzība..."
+
+msgid "hide"
+msgstr ""
 
 msgid "horizontal"
 msgstr "horizontālā"
@@ -12058,6 +12930,9 @@ msgstr "inicializēt moduļus"
 
 msgid "insert mark here"
 msgstr "ievietot iezīmi"
+
+msgid "install/unpack ipk Files"
+msgstr ""
 
 msgid "invalid type"
 msgstr "nepareizs veids"
@@ -12126,6 +13001,9 @@ msgstr "ilgi"
 msgid "magazines/reports/documentary"
 msgstr "avīzes/atskaites/dokumentālais"
 
+msgid "manage local Files"
+msgstr ""
+
 msgid "manual"
 msgstr "manuāls"
 
@@ -12162,6 +13040,14 @@ msgstr "pārvietot lejup uz pēdējo ierakstu"
 
 msgid "move down to next entry"
 msgstr "pārvietot lejup uz nākamo ierakstu"
+
+#, fuzzy
+msgid "move file"
+msgstr "Dzēst virsrakstu"
+
+#, fuzzy
+msgid "move folder"
+msgstr "[pārvietošanas režīms]"
 
 msgid "move up to first entry"
 msgstr "pārvietot augšup uz pirmo ierakstu"
@@ -12328,11 +13214,17 @@ msgstr "nopauzēts"
 msgid "performing arts"
 msgstr "skatuves māksla"
 
+msgid "play Files"
+msgstr ""
+
 msgid "play as picture in picture"
 msgstr "atskaņot kā attēlu attēlā"
 
 msgid "play in mainwindow"
 msgstr "atskaņot pamatlogā"
+
+msgid "play/show Files"
+msgstr ""
 
 msgid "please press OK when ready"
 msgstr "kad gatavs, lūdzu spiediet OK"
@@ -12348,6 +13240,9 @@ msgstr "pirmsskolas bērnu programma"
 
 msgid "purge deleted userbouquets"
 msgstr "iztīrīt dzēstās buķetes"
+
+msgid "python"
+msgstr ""
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -12472,6 +13367,12 @@ msgstr "meklēšanas statuss"
 msgid "science fiction/fantasy/horror"
 msgstr "zinātniskā fantastika/fantāzijas/šausmu"
 
+msgid "script 'sterr':"
+msgstr ""
+
+msgid "script 'stout':"
+msgstr ""
+
 #, fuzzy
 msgid "se"
 msgstr "Lietot"
@@ -12502,6 +13403,9 @@ msgstr "kanāls nedarbojas"
 
 msgid "set as startup service"
 msgstr "iestatīt kā starta kanālu"
+
+msgid "shell"
+msgstr ""
 
 msgid "show DVD main menu"
 msgstr "rādīt DVD galveno izvēlni"
@@ -12685,6 +13589,9 @@ msgstr "šim ierakstam"
 msgid "this service is protected by a parental control pin"
 msgstr "šis kanāls ir aizsargāts ar vecāku kontroles PIN kodu"
 
+msgid "to dir"
+msgstr ""
+
 msgid "toggle time, chapter, audio, subtitle info"
 msgstr "Ie/izslēgt laiku, nodaļu, skaņu, subtitru informāciju"
 
@@ -12717,6 +13624,21 @@ msgstr "nezināma kļūda"
 
 msgid "unknown service"
 msgstr "nezināms kanāls"
+
+msgid "unpack Rar Files"
+msgstr ""
+
+msgid "unpack archives"
+msgstr ""
+
+msgid "unpack gzip Files"
+msgstr ""
+
+msgid "unpack tar/compressed tar Files"
+msgstr ""
+
+msgid "unpack zip Files"
+msgstr ""
 
 msgid "unpublished"
 msgstr "nepublicēts"
@@ -12806,6 +13728,10 @@ msgstr "ar uztvērēja nosaukumu"
 
 msgid "with_errors"
 msgstr "ar_kļūdām"
+
+#, fuzzy
+msgid "without"
+msgstr "ar tekstu"
 
 msgid "wnw"
 msgstr ""

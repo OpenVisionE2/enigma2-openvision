@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1-En-Th\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-02 00:42+0430\n"
+"POT-Creation-Date: 2019-06-02 01:30+0430\n"
 "PO-Revision-Date: 2010-04-08 18:13+0700\n"
 "Last-Translator: Tony - Thaidreambox\n"
 "Language-Team: Tony @ Thai Dreambox <tonyboyth@gmail.com>\n"
@@ -117,7 +117,29 @@ msgstr ""
 "\n"
 "ตรวจดู ติดตั้งหรือลบส่วนประกอบ"
 
+#, python-format
+msgid ""
+"\n"
+"optional parameter:\n"
+"%s"
+msgstr ""
+
+msgid " "
+msgstr ""
+
 msgid "  REC  "
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished successefully."
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished with error messages."
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished with error number [%d]."
 msgstr ""
 
 msgid " (0 - all networks)"
@@ -152,6 +174,19 @@ msgstr ""
 msgid " (lower than any auto)"
 msgstr ""
 
+#, python-format
+msgid " - %d elements exist! Overwrite"
+msgstr ""
+
+msgid " - 1 element exist! Overwrite"
+msgstr ""
+
+msgid " - file exist! Overwrite"
+msgstr ""
+
+msgid " - folder exist! Overwrite"
+msgstr ""
+
 msgid " extensions."
 msgstr " ส่วนเพิ่มเติม"
 
@@ -160,6 +195,9 @@ msgid " min"
 msgstr "%d นาที"
 
 msgid " ms"
+msgstr ""
+
+msgid " or save the picture additionally to a file"
 msgstr ""
 
 msgid " packages selected."
@@ -401,13 +439,37 @@ msgstr "เนื้อที่เหลือยู่"
 msgid "%s ( %s Cards )"
 msgstr "%s (%s)\n"
 
+#, fuzzy, python-format
+msgid "%s (%04o)"
+msgstr "%s (%s)\n"
+
+#, fuzzy, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
 
+#, fuzzy, python-format
+msgid "%s (%sB"
+msgstr "%s (%s)\n"
+
+#, python-format
+msgid "%s - extraction errors."
+msgstr ""
+
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
+msgstr ""
+
+#, python-format
+msgid "%s is password protected."
+msgstr ""
+
+#, python-format
+msgid "%s successfully extracted."
 msgstr ""
 
 #, fuzzy, python-format
@@ -429,11 +491,34 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s"
+msgstr ""
+
+#, python-format
 msgid "%s:%s"
+msgstr ""
+
+#, python-format
+msgid "%sB"
+msgstr ""
+
+#, python-format
+msgid "'%s' not installed and no known package"
 msgstr ""
 
 msgid "( All readers)"
 msgstr ""
+
+#, python-format
+msgid "(%d jobs)"
+msgstr ""
+
+msgid "(1 job)"
+msgstr ""
+
+#, fuzzy
+msgid "(Selectmode)"
+msgstr "เลือกภาพยนต์"
 
 msgid "(Show only reader:"
 msgstr ""
@@ -648,6 +733,9 @@ msgstr ""
 msgid "9"
 msgstr "9"
 
+msgid ": "
+msgstr ""
+
 msgid ": 0000 - default (disabled)"
 msgstr ""
 
@@ -679,6 +767,10 @@ msgstr "<ไม่ทราบ>"
 
 msgid "=NO STREAM\n"
 msgstr ""
+
+#, fuzzy
+msgid "?"
+msgstr "??"
 
 msgid "??"
 msgstr "??"
@@ -829,6 +921,10 @@ msgstr "เกี่ยวกับ"
 msgid "About..."
 msgstr "เกี่ยวกับ..."
 
+#, fuzzy
+msgid "Accessed:"
+msgstr "Accesspoint:"
+
 msgid "Accesspoint:"
 msgstr "Accesspoint:"
 
@@ -842,8 +938,20 @@ msgstr "ภาพซ้อนภาพ"
 msgid "Activate current configuration"
 msgstr "สั่งใช้งานการตั้งค่าปัจจุบัน"
 
+msgid "Activate left-hand file list as multi-select source"
+msgstr ""
+
+msgid "Activate left-hand file list as source"
+msgstr ""
+
 msgid "Activate network settings"
 msgstr "ตั้งค่าเครือข่าย"
+
+msgid "Activate right-hand file list as multi-select source"
+msgstr ""
+
+msgid "Activate right-hand file list as source"
+msgstr ""
 
 #, fuzzy
 msgid "Activate the configured network settings."
@@ -883,6 +991,10 @@ msgid "Add bookmark"
 msgstr "เพิ่มบุ๊คมาร์ค"
 
 #, fuzzy
+msgid "Add current folder to bookmarks"
+msgstr "ค้นหาอัตโนมัติ"
+
+#, fuzzy
 msgid "Add directory to playlist"
 msgstr "เพิ่มทั้งโฟล์เดอร์เข้าสารบัญ"
 
@@ -893,6 +1005,12 @@ msgstr "เพิ่มไฟล์นี้ในสารบัญ"
 #, fuzzy
 msgid "Add files to playlist"
 msgstr "เพิ่มไฟล์ในสารบัญ"
+
+msgid "Add plugin to Extensions menu*"
+msgstr ""
+
+msgid "Add plugin to main menu*"
+msgstr ""
 
 #, fuzzy
 msgid "Add provider"
@@ -913,6 +1031,10 @@ msgstr "บันทึกรายการ (จนกว่าจะสั่�
 #, fuzzy
 msgid "Add recording (stop after current event)"
 msgstr "บันทึกรายการ (หยุดเมื่อจบรายการ)"
+
+#, fuzzy
+msgid "Add selected folder to bookmarks"
+msgstr "เลือกไฟล์/โฟล์เดอร์ที่จะสำรอง"
 
 #, fuzzy
 msgid "Add service"
@@ -1587,6 +1709,9 @@ msgstr ""
 msgid "Blinking red"
 msgstr ""
 
+msgid "Block device"
+msgstr ""
+
 msgid "Block noise reduction"
 msgstr "Block noise reduction"
 
@@ -1739,6 +1864,9 @@ msgstr ""
 msgid "CPU brand: "
 msgstr ""
 
+msgid "CPU priority for script execution"
+msgstr ""
+
 msgid "CPU: "
 msgstr ""
 
@@ -1762,6 +1890,9 @@ msgid "Calculate"
 msgstr ""
 
 msgid "Calculate all positions"
+msgstr ""
+
+msgid "Calculate file checksums"
 msgstr ""
 
 msgid "Calculation complete"
@@ -1797,7 +1928,17 @@ msgid ""
 "Yellow for returning back to this intro"
 msgstr ""
 
+#, python-format
+msgid ""
+"Can not run %s: %s.\n"
+"%s may be in a plugin that is not installed."
+msgstr ""
+
 msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternativaly you can mount the network drive after the flash and perform a manufacurer reset to autorestore"
+msgstr ""
+
+#, python-format
+msgid "Can't read link contents: %s"
 msgstr ""
 
 msgid "Canada"
@@ -1808,6 +1949,10 @@ msgstr "ยกเลิก"
 
 msgid "Cancel any text changes and exit"
 msgstr ""
+
+#, fuzzy
+msgid "Cancel execution?"
+msgstr "เลือกช่องรายการ"
 
 msgid "Cancelled upon user request"
 msgstr ""
@@ -1878,6 +2023,12 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "เปลี่ยนกลุ่มรายการเมื่อย้ายช่อง"
 
+msgid "Change buttons for list navigation"
+msgstr ""
+
+msgid "Change execute permissions (755/644)"
+msgstr ""
+
 msgid "Change recording (add time)"
 msgstr ""
 
@@ -1902,6 +2053,9 @@ msgid "Channel"
 msgstr "ช่อง"
 
 msgid "Channel Info"
+msgstr ""
+
+msgid "Channel button always changes sides"
 msgstr ""
 
 #, fuzzy
@@ -1957,6 +2111,9 @@ msgstr "ตอนที่"
 
 msgid "Chapter:"
 msgstr "ตอนที่:"
+
+msgid "Character device"
+msgstr ""
 
 msgid "Check"
 msgstr "ตรวจสอบ"
@@ -2622,6 +2779,25 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
+#, python-format
+msgid "Copy %d elements"
+msgstr ""
+
+msgid "Copy 1 element"
+msgstr ""
+
+msgid "Copy file"
+msgstr ""
+
+msgid "Copy file/directory to target directory"
+msgstr ""
+
+msgid "Copy files/directories to target directory"
+msgstr ""
+
+msgid "Copy folder"
+msgstr ""
+
 msgid "Costa Rica"
 msgstr ""
 
@@ -2658,10 +2834,20 @@ msgstr ""
 msgid "Create DVD-ISO"
 msgstr "สร้างแผ่นดีวีดีแบบ ISO"
 
+#, fuzzy
+msgid "Create directory/folder"
+msgstr "สร้างโฟล์เดอร์"
+
 msgid "Create new folder and exit"
 msgstr ""
 
 msgid "Create separate radio userbouquet"
+msgstr ""
+
+msgid "Create symlink to file"
+msgstr ""
+
+msgid "Create user-named symbolic link"
 msgstr ""
 
 #, python-format
@@ -2894,6 +3080,10 @@ msgid "Date"
 msgstr "วันที่"
 
 #, fuzzy
+msgid "Date reverse"
+msgstr "บริการต่างๆ"
+
+#, fuzzy
 msgid "Date/time input"
 msgstr "ป้อนวัน/เวลา"
 
@@ -2912,8 +3102,28 @@ msgstr "Deep Standby"
 msgid "Default"
 msgstr "ค่าเริ่มต้น"
 
+#, fuzzy
+msgid "Default Folder"
+msgstr "ค่าเริ่มต้น"
+
 msgid "Default Services Scanner"
 msgstr ""
+
+#, fuzzy
+msgid "Default directory sorting"
+msgstr "ตั้งค่าเริ่มต้น"
+
+#, fuzzy
+msgid "Default file sorting left"
+msgstr "ตั้งค่าเริ่มต้น"
+
+#, fuzzy
+msgid "Default file sorting right"
+msgstr "ตั้งค่าเริ่มต้น"
+
+#, fuzzy
+msgid "Default folder"
+msgstr "ค่าเริ่มต้น"
 
 msgid "Default movie location"
 msgstr ""
@@ -2991,6 +3201,18 @@ msgstr ""
 msgid "Delete"
 msgstr "ลบ"
 
+#, fuzzy, python-format
+msgid "Delete %d elements"
+msgstr "ลบรายการ"
+
+#, fuzzy
+msgid "Delete 1 element"
+msgstr "ลบรายการ"
+
+#, fuzzy
+msgid "Delete current line"
+msgstr "ลบรายการ"
+
 msgid "Delete entry"
 msgstr "ลบรายการ"
 
@@ -2999,6 +3221,13 @@ msgstr "ลบไม่ได้!"
 
 #, fuzzy
 msgid "Delete file"
+msgstr "ลบไฟล์"
+
+msgid "Delete file or directory (and all its contents)"
+msgstr ""
+
+#, fuzzy
+msgid "Delete folder"
 msgstr "ลบไฟล์"
 
 #, fuzzy
@@ -3017,6 +3246,9 @@ msgid "Delete the character to the left of text buffer cursor"
 msgstr ""
 
 msgid "Delete the character under the text buffer cursor"
+msgstr ""
+
+msgid "Delete the selected files or directories"
 msgstr ""
 
 msgid "Delete timer"
@@ -3277,6 +3509,10 @@ msgstr "ท่านต้องการที่ลบบุ๊คมาร์
 msgid "Do you really want to stop current event and delete timer %s?"
 msgstr "ท่านต้องการที่จะลบ %s ออกจากระบบหรือไม่?"
 
+#, fuzzy
+msgid "Do you want change rights?\\n"
+msgstr "ท่านต้องการที่จะติดตั้งส่วนประกอบนี้:\n"
+
 msgid "Do you want this?"
 msgstr ""
 
@@ -3339,6 +3575,10 @@ msgstr ""
 
 msgid "Do you want to upgrade the package:\n"
 msgstr "ยืนยันจะปรับปรุงส่วนประกอบนี้:\n"
+
+#, fuzzy
+msgid "Do you want to view or run the script?\n"
+msgstr "ท่านต้องการที่จะลบส่วนประกอบนี้:\n"
 
 msgid "Dolby"
 msgstr ""
@@ -3492,6 +3732,17 @@ msgstr "แก้ไข DNS"
 
 msgid "Edit chapters of current title"
 msgstr "แก้ไขตอนที่ของเรื่องปัจจุบัน"
+
+#, fuzzy
+msgid "Edit current line"
+msgstr "แก้ไขตอนที่ของเรื่องปัจจุบัน"
+
+#, fuzzy
+msgid "Edit line "
+msgstr "แก้ไขชื่อเรื่อง"
+
+msgid "Edit position is the line end"
+msgstr ""
 
 #, fuzzy
 msgid "Edit selection"
@@ -3719,6 +3970,10 @@ msgstr ""
 msgid "Enter main menu..."
 msgstr "เข้าสู่เมนูหลัก..."
 
+#, fuzzy
+msgid "Enter multi-file selection mode"
+msgstr "ปิดหน้าเลือกชื่อเรื่อง"
+
 msgid "Enter persistent PIN code"
 msgstr ""
 
@@ -3786,6 +4041,12 @@ msgstr "ผิดพลาด"
 msgid "Error code"
 msgstr ""
 
+#, fuzzy, python-format
+msgid ""
+"Error creating directory %s:\n"
+"%s"
+msgstr "ไม่สามารถสร้างโฟลเดอร์ %s ได้"
+
 #, python-format
 msgid ""
 "Error during backup settings\n"
@@ -3808,6 +4069,18 @@ msgstr ""
 msgid "Error executing plugin"
 msgstr "เรียกใช้งาน Plugin ผิดพลาด"
 
+#, python-format
+msgid ""
+"Error linking %s to %s:\n"
+"%s"
+msgstr ""
+
+#, python-format
+msgid ""
+"Error renaming %s to %s:\n"
+"%s"
+msgstr ""
+
 msgid "Error stop stream!"
 msgstr ""
 
@@ -3825,6 +4098,10 @@ msgstr ""
 
 msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
+
+#, fuzzy
+msgid "Error..."
+msgstr "ผิดพลาด"
 
 #, python-format
 msgid ""
@@ -3913,6 +4190,9 @@ msgstr ""
 msgid "Exit editor"
 msgstr "ออกจากการแก้ไข"
 
+msgid "Exit editor and write changes (if any)"
+msgstr ""
+
 msgid "Exit input device selection."
 msgstr ""
 
@@ -3941,6 +4221,9 @@ msgstr "ออกจากรายการเครือข่าย"
 
 msgid "Exit network wizard"
 msgstr "ออกจากตัวช่วยเครือข่าย"
+
+msgid "Exit picture viewer"
+msgstr ""
 
 msgid "Exit the wizard"
 msgstr "ออกจากตัวช่วย"
@@ -4064,6 +4347,9 @@ msgstr "FEC"
 msgid "FEC:"
 msgstr ""
 
+msgid "FIFO"
+msgstr ""
+
 msgid "FSBL Update Check"
 msgstr ""
 
@@ -4165,7 +4451,55 @@ msgstr "รายการโปรด"
 msgid "Fiji"
 msgstr ""
 
+#, fuzzy
+msgid "File Commander"
+msgstr "เรียงลำดับคำสั่ง"
+
+msgid "File Commander - Addon File-Viewer"
+msgstr ""
+
+msgid "File Commander - Addon Mediaplayer"
+msgstr ""
+
+msgid "File Commander - Addon Movieplayer"
+msgstr ""
+
+msgid "File Commander - all Task's completed!"
+msgstr ""
+
+msgid "File Commander - generalised archive handler"
+msgstr ""
+
+msgid "File Commander - gzip Addon"
+msgstr ""
+
+msgid "File Commander - ipk Addon"
+msgstr ""
+
+msgid "File Commander - tar Addon"
+msgstr ""
+
+msgid "File Commander - unrar Addon"
+msgstr ""
+
+msgid "File Commander - unzip Addon"
+msgstr ""
+
+#, fuzzy
+msgid "File Commander context menu"
+msgstr "เมนูช่องรายการ"
+
+msgid "File Commander menu"
+msgstr ""
+
 msgid "File appears to be busy.\n"
+msgstr ""
+
+msgid "File checksums/hashes"
+msgstr ""
+
+#, python-format
+msgid "File not found: %s"
 msgstr ""
 
 msgid ""
@@ -4173,10 +4507,23 @@ msgid ""
 "Please enter username/password manually."
 msgstr ""
 
+msgid "File transfer was cancelled by user"
+msgstr ""
+
+#, python-format
+msgid "File write error: '%s'"
+msgstr ""
+
+msgid "File/Directory Status Information"
+msgstr ""
+
 msgid "Filename"
 msgstr ""
 
 msgid "Filesystem check"
+msgstr ""
+
+msgid "Filter extension, (*) appears in title"
 msgstr ""
 
 msgid "Final position at"
@@ -4405,6 +4752,13 @@ msgstr ""
 msgid "Go down the list"
 msgstr ""
 
+msgid "Go to bookmarked folder"
+msgstr ""
+
+#, fuzzy
+msgid "Go to end of file"
+msgstr "ไปส่วนรายการสุดท้าย"
+
 msgid "Go to first movie or last item"
 msgstr ""
 
@@ -4428,12 +4782,20 @@ msgid "Go to next page of service"
 msgstr "ไปบริการย่อยถัดไป"
 
 #, fuzzy
+msgid "Go to parent directory"
+msgstr "โฟล์เดอร์ก่อนหน้า"
+
+#, fuzzy
 msgid "Go to previous event"
 msgstr "ย้ายไปก่อนหน้านี้"
 
 #, fuzzy
 msgid "Go to previous page of service"
 msgstr "กลับไปยังบริการก่อนหน้า"
+
+#, fuzzy
+msgid "Go to start of file"
+msgstr "ไปบริการย่อยถัดไป"
 
 msgid "Go up the list"
 msgstr ""
@@ -4507,6 +4869,9 @@ msgid "Greenland"
 msgstr ""
 
 msgid "Grenada"
+msgstr ""
+
+msgid "Group:"
 msgstr ""
 
 msgid "Grow drop"
@@ -4768,6 +5133,9 @@ msgstr ""
 msgid "I do not want to perform any service scans"
 msgstr "ท่านต้องการค้นหารายการหรือไม่?"
 
+msgid "I/O priority for script execution"
+msgstr ""
+
 msgid "IDLE"
 msgstr ""
 
@@ -4992,6 +5360,9 @@ msgstr "เตรียมการ"
 msgid "Initializing storage device..."
 msgstr ""
 
+msgid "Inode:"
+msgstr ""
+
 msgid "Input"
 msgstr "นำเข้า (Input)"
 
@@ -5008,8 +5379,19 @@ msgstr ""
 msgid "Input devices"
 msgstr ""
 
+msgid "Insert"
+msgstr ""
+
+#, fuzzy
+msgid "Insert line before current line"
+msgstr "รายละเอียดเรื่องนี้"
+
 msgid "Install"
 msgstr "ติดตั้ง"
+
+#, python-format
+msgid "Install '%s' and enable this operation"
+msgstr ""
 
 #, fuzzy
 msgid "Install channel list"
@@ -5037,6 +5419,10 @@ msgstr "ติดตั้งหรือลบออกเสร็จแล้
 
 msgid "Installing"
 msgstr "กำลังติดตั้ง"
+
+#, fuzzy
+msgid "Installing Plugin ..."
+msgstr "กำลังติดตั้งซอพท์แวร์..."
 
 #, fuzzy
 msgid "Installing service"
@@ -5129,6 +5515,19 @@ msgstr "ประเภทการค้นหา"
 msgid "Israel"
 msgstr ""
 
+msgid "It is not possible to calculate hashes on <List of Storage Devices>"
+msgstr ""
+
+msgid "It is not possible to change the file mode of <List of Storage Devices>"
+msgstr ""
+
+msgid "It is not possible to get the file status of <List of Storage Devices>"
+msgstr ""
+
+#, python-format
+msgid "It is not possible to run '%s' on <List of Storage Devices>"
+msgstr ""
+
 msgid ""
 "It seems you did not see all the eight arrow heads. This means your TV has overscan enabled, and is not configured properly.\n"
 "\n"
@@ -5137,6 +5536,9 @@ msgid ""
 msgstr ""
 
 msgid "It's not a genuine Open Vision!"
+msgstr ""
+
+msgid "It's not possible to rename the filesystem root."
 msgstr ""
 
 msgid "Italian"
@@ -5345,6 +5747,13 @@ msgstr "ภาษาลัทเวีย"
 msgid "Leave DVD player?"
 msgstr "ออกจากการเล่นดีวีดี"
 
+msgid "Leave File Commander"
+msgstr ""
+
+#, fuzzy
+msgid "Leave multi-select mode"
+msgstr "เลือกโหมดวีดีโอ"
+
 msgid "Leave this set to 'yes' unless you fully understand why you are adjusting it."
 msgstr ""
 
@@ -5408,17 +5817,29 @@ msgstr "จำกัดที่"
 msgid "Link quality:"
 msgstr "คุณภาพการเชื่อมต่อ:"
 
+#, fuzzy
+msgid "Link target:"
+msgstr "คุณภาพการเชื่อมต่อ:"
+
 msgid "Link:"
 msgstr "เชื่อมต่อ:"
 
 msgid "Linked titles with a DVD menu"
 msgstr "เชื่อมโดยชื่อเรื่องกับเมนูดีวีดี"
 
+#, fuzzy
+msgid "Links:"
+msgstr "เชื่อมต่อ:"
+
 msgid "List available networks"
 msgstr ""
 
 msgid "List mode"
 msgstr ""
+
+#, fuzzy
+msgid "List of Storage Devices"
+msgstr "อุปกรณ์สำหรับบันทึก"
 
 #, fuzzy
 msgid "List of storage devices"
@@ -5676,6 +6097,9 @@ msgstr "ข้อความ..."
 msgid "Messages"
 msgstr "ข้อความ"
 
+msgid "Metadata changed:"
+msgstr ""
+
 msgid "Mexico"
 msgstr ""
 
@@ -5712,6 +6136,10 @@ msgctxt "Video output mode"
 msgid "Mode"
 msgstr "โหมด"
 
+#, python-format
+msgid "Mode %s (%04o)"
+msgstr ""
+
 #, fuzzy
 msgid "Model"
 msgstr "โหมด"
@@ -5722,6 +6150,9 @@ msgstr "รุ่น:"
 #, fuzzy
 msgid "Modes"
 msgstr "โหมด"
+
+msgid "Modified:"
+msgstr ""
 
 msgid "Modulation"
 msgstr "Modulation"
@@ -5775,6 +6206,14 @@ msgstr ""
 msgid "Move"
 msgstr ""
 
+#, python-format
+msgid "Move %d elements"
+msgstr ""
+
+#, fuzzy
+msgid "Move 1 element"
+msgstr "เคลื่อนไปทางทิศตะวันออก"
+
 msgid "Move PIP"
 msgstr ""
 
@@ -5785,8 +6224,27 @@ msgstr "สลับให้ PIP เต็มจอ"
 msgid "Move Picture in Picture"
 msgstr "ย้ายภาพซ้อนภาพ"
 
+#, fuzzy
+msgid "Move down list"
+msgstr "เคลื่อนไปทางทิศตะวันตก"
+
 msgid "Move east"
 msgstr "เคลื่อนไปทางทิศตะวันออก"
+
+#, fuzzy
+msgid "Move file"
+msgstr "เคลื่อนไปทางทิศตะวันออก"
+
+msgid "Move file/directory to target directory"
+msgstr ""
+
+#, fuzzy
+msgid "Move files/directories to target directory"
+msgstr "กรุณาป้อนชื่อโฟล์เดอร์ใหม่"
+
+#, fuzzy
+msgid "Move folder"
+msgstr "[โหมดย้าย]"
 
 msgid "Move the text buffer cursor left"
 msgstr ""
@@ -5815,6 +6273,10 @@ msgstr ""
 msgid "Move to position X"
 msgstr ""
 
+#, fuzzy
+msgid "Move up list"
+msgstr "เคลื่อนไปทางทิศตะวันออก"
+
 msgid "Move west"
 msgstr "เคลื่อนไปทางทิศตะวันตก"
 
@@ -5825,6 +6287,9 @@ msgid "Moved to position at index"
 msgstr ""
 
 msgid "Movement"
+msgstr ""
+
+msgid "Movie"
 msgstr ""
 
 #, fuzzy
@@ -5892,11 +6357,22 @@ msgstr ""
 msgid "Multistream"
 msgstr "Multisat"
 
+msgid "Music"
+msgstr ""
+
 msgid "Music/Ballet/Dance"
 msgstr ""
 
 msgid "Mute"
 msgstr "ปิดเสียง"
+
+#, fuzzy
+msgid "My Extension"
+msgstr "ส่วนเพิ่มเติม"
+
+#, fuzzy
+msgid "My extension"
+msgstr " ส่วนเพิ่มเติม"
 
 msgid "Myanmar"
 msgstr ""
@@ -5925,6 +6401,10 @@ msgstr "NTSC"
 
 msgid "Name"
 msgstr "ชื่อ"
+
+#, fuzzy
+msgid "Name reverse"
+msgstr "Nameserver"
 
 msgid "Nameserver"
 msgstr "Nameserver"
@@ -6022,6 +6502,9 @@ msgstr ""
 msgid "New Zealand"
 msgstr ""
 
+msgid "New folder"
+msgstr ""
+
 msgid "News Current Affairs"
 msgstr ""
 
@@ -6095,11 +6578,18 @@ msgstr "ไม่พบข้อมูลเวลากำกับ บัน�
 msgid "No fast winding possible yet.. but you can use the number buttons to skip forward/backward!"
 msgstr ""
 
+#, fuzzy
+msgid "No files found."
+msgstr "ไม่พบเครือข่าย"
+
 msgid "No free index available"
 msgstr ""
 
 msgid "No free tuner!"
 msgstr "ไม่มี Tuner ว่างที่จะใช้งานได้"
+
+msgid "No hash calculations configured"
+msgstr ""
 
 #, fuzzy
 msgid "No images found"
@@ -6174,6 +6664,10 @@ msgstr " มีรายการปรับปรุง"
 msgid "No updates available. Please try again later."
 msgstr ""
 
+#, python-format
+msgid "No viewer installed for this file type: %s"
+msgstr ""
+
 msgid "No wireless networks found! Searching..."
 msgstr ""
 
@@ -6218,6 +6712,10 @@ msgstr ""
 msgid "None"
 msgstr "ไม่มี"
 
+#, python-format
+msgid "None of the hash programs for the hashes %s are available"
+msgstr ""
+
 #. TRANSLATORS: (aspect ratio policy: display as fullscreen, with stretching the left/right)
 msgid "Nonlinear"
 msgstr "ไม่เป็นเส้นตรง"
@@ -6249,6 +6747,9 @@ msgid "Norwegian"
 msgstr "ภาษานอร์เว"
 
 msgid "Not Defined"
+msgstr ""
+
+msgid "Not allowed with folders"
 msgstr ""
 
 msgid "Not associated"
@@ -6292,6 +6793,9 @@ msgid "Now, use the contrast setting to turn up the brightness of the background
 msgstr "ตอนนี้.. ให้ปรับความชัดของหน้าจอโดยการเพิ่มความสว่างให้มากที่สุด แต่ต้องแน่ใจว่าเห็นความแตกต่างของสีที่สว่างที่สุด หากจบกระบวนการแล้วให้กดปุ่ม OK"
 
 msgid "Number of channels shown in channel selection list"
+msgstr ""
+
+msgid "Number of lines in script messages"
 msgstr ""
 
 msgid "Number of repeating text on display."
@@ -6343,6 +6847,9 @@ msgstr ""
 
 msgid "On"
 msgstr "เปิด"
+
+msgid "On device:"
+msgstr ""
 
 msgid "On end of movie"
 msgstr ""
@@ -6399,12 +6906,18 @@ msgstr ""
 msgid "Open service list"
 msgstr "เปิดสารบัญบริการ"
 
+msgid "Open settings/actions menu"
+msgstr ""
+
 msgid "Open setup tuner "
 msgstr ""
 
 #, fuzzy
 msgid "Open the movie list"
 msgstr "กลับไปยังสารบัญภาพยนต์"
+
+msgid "Open with File Commander"
+msgstr ""
 
 msgid "Options disable timer"
 msgstr ""
@@ -6450,6 +6963,9 @@ msgstr ""
 #, fuzzy
 msgid "Overwrite configuration files?"
 msgstr "ตั้งค่า Tuner"
+
+msgid "Owner:"
+msgstr ""
 
 msgid "PAL"
 msgstr "PAL"
@@ -6510,6 +7026,13 @@ msgstr "จัดการส่วนประกอบ"
 msgid "Packet manager"
 msgstr "ตัวจัดการส่วนประกอบ"
 
+msgid "Page down list"
+msgstr ""
+
+#, fuzzy
+msgid "Page up list"
+msgstr "บันทึกสารบัญรายการ"
+
 msgid "Pakistan"
 msgstr ""
 
@@ -6537,6 +7060,10 @@ msgid "Paraguay"
 msgstr ""
 
 #, fuzzy
+msgid "Parent Directory"
+msgstr "โฟล์เดอร์ก่อนหน้า"
+
+#, fuzzy
 msgid "Parent directory"
 msgstr "โฟล์เดอร์ก่อนหน้า"
 
@@ -6557,6 +7084,9 @@ msgid "Password"
 msgstr ""
 
 msgid "Password (httpwd)"
+msgstr ""
+
+msgid "Path to save not exist: '/tmp/'"
 msgstr ""
 
 #, fuzzy
@@ -6587,6 +7117,9 @@ msgstr ""
 msgid "Permanently remove all deleted items"
 msgstr ""
 
+msgid "Permissions:"
+msgstr ""
+
 msgid "Persian"
 msgstr ""
 
@@ -6608,6 +7141,10 @@ msgstr ""
 
 #, fuzzy
 msgid "Picture player"
+msgstr "ดูภาพ"
+
+#, fuzzy
+msgid "Pictures"
 msgstr "ดูภาพ"
 
 #. TRANSLATORS: (aspect ratio policy: black bars on left/right) in doubt, keep english term.
@@ -6648,6 +7185,10 @@ msgid "Play entry"
 msgstr "เล่นไฟล์นี้"
 
 #, fuzzy
+msgid "Play folder"
+msgstr "เล่นไฟล์นี้"
+
+#, fuzzy
 msgid "Play from next mark or playlist entry"
 msgstr "เล่นไฟล์ต่อไป หรือจากสารบัญรายการ"
 
@@ -6673,6 +7214,13 @@ msgstr ""
 
 msgid "Play recorded movies..."
 msgstr "เล่นภาพยนต์ที่ได้บันทึกไว้..."
+
+#, fuzzy
+msgid "Play title"
+msgstr "เพิ่มเรื่อง"
+
+msgid "Play/view/edit/install/extract/run file or enter directory"
+msgstr ""
 
 msgid "Please add titles to the compilation."
 msgstr ""
@@ -6729,17 +7277,33 @@ msgstr "กรุณาป้อนชื่อไฟล์ (เป็นช่�
 msgid "Please enter name of the new directory"
 msgstr "กรุณาป้อนชื่อโฟล์เดอร์ใหม่"
 
+#, fuzzy
+msgid "Please enter name of the new symlink"
+msgstr "กรุณาป้อนชื่อโฟล์เดอร์ใหม่"
+
 msgid "Please enter new description:"
 msgstr ""
 
 msgid "Please enter new name:"
 msgstr ""
 
+#, fuzzy
+msgid "Please enter password"
+msgstr "กรุณป้อนชื่อไฟล์ใหม่"
+
 msgid "Please enter the correct pin code"
 msgstr "กรุณาป้อนรหัสที่ถูกต้องด้วย"
 
 msgid "Please enter the new PIN code"
 msgstr ""
+
+#, fuzzy
+msgid "Please enter the new directory name"
+msgstr "กรุณาป้อนชื่อโฟล์เดอร์ใหม่"
+
+#, fuzzy
+msgid "Please enter the new file name"
+msgstr "กรุณป้อนชื่อไฟล์ใหม่"
 
 msgid "Please enter the old PIN code"
 msgstr ""
@@ -6889,6 +7453,10 @@ msgstr "กรุณารอสักครู่... กำลังตรว�
 
 msgid "Please wait while your network is restarting..."
 msgstr "กรุณารอสักครู่... กำลังเริ่มระบบเครือข่าย..."
+
+#, fuzzy
+msgid "Please wait, Loading image."
+msgstr "กำลังโหลด... รอสักครู่..."
 
 #, fuzzy
 msgid "Please wait, restarting cardserver."
@@ -7192,6 +7760,30 @@ msgstr "สำคัญ"
 msgid "Process"
 msgstr "โพรเซส"
 
+#, python-format
+msgid ""
+"Program '%s' is installed.\n"
+"The package containing this program isn't known, so it can't be uninstalled."
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run the '%s' action.\n"
+"Uninstall the '%s' package to uninstall the program?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run this action.\n"
+"Install the '%s' package to install the program?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' not installed.\n"
+"The package containing this program isn't known."
+msgstr ""
+
 msgid "Progress"
 msgstr ""
 
@@ -7429,6 +8021,10 @@ msgid "Recordings always have priority"
 msgstr "บันทึกรายการสำคัญมากกว่า"
 
 #, fuzzy
+msgid "Records"
+msgstr "บันทึก"
+
+#, fuzzy
 msgid "Recovery Mode"
 msgstr "ผู้ใช้กำหนด"
 
@@ -7458,6 +8054,10 @@ msgid "Refresh rate selection."
 msgstr "เลือกความถี่หน้าจอ"
 
 #, fuzzy
+msgid "Refresh screen"
+msgstr "ความถี่หน้าจอ"
+
+#, fuzzy
 msgid "Refusing to move to the same directory"
 msgstr "กรุณาป้อนชื่อโฟล์เดอร์ใหม่"
 
@@ -7466,6 +8066,10 @@ msgstr ""
 
 msgid "Region"
 msgstr ""
+
+#, fuzzy
+msgid "Regular file"
+msgstr "ไฟล์ต้นฉบับ"
 
 msgid "Relative"
 msgstr ""
@@ -7527,6 +8131,9 @@ msgstr "ลบบุ๊คมาร์ค"
 msgid "Remove completed timers after (days)"
 msgstr ""
 
+msgid "Remove current folder from bookmarks"
+msgstr ""
+
 msgid "Remove currently selected title"
 msgstr "ลบเชื่อเรื่องที่เลือกออก"
 
@@ -7535,6 +8142,9 @@ msgstr ""
 
 msgid "Remove plugins"
 msgstr "ลบ Plugin ออก"
+
+msgid "Remove selected folder from bookmarks"
+msgstr ""
 
 msgid "Remove this logfile"
 msgstr ""
@@ -7559,6 +8169,10 @@ msgstr "กำลังลบออก"
 
 msgid "Rename"
 msgstr "เปลี่ยนชื่อ"
+
+#, fuzzy
+msgid "Rename file/directory"
+msgstr "สร้างโฟล์เดอร์"
 
 msgid "Rename name and description for new events"
 msgstr ""
@@ -7722,7 +8336,13 @@ msgstr ""
 msgid "Reverse bouquet buttons"
 msgstr ""
 
+msgid "Reverse left file sorting"
+msgstr ""
+
 msgid "Reverse list"
+msgstr ""
+
+msgid "Reverse right file sorting"
 msgstr ""
 
 msgid "Rewind speeds"
@@ -7764,7 +8384,24 @@ msgstr ""
 msgid "Round start time on"
 msgstr ""
 
+#, python-format
+msgid "Run '%s' command"
+msgstr ""
+
 msgid "Run how often ?"
+msgstr ""
+
+msgid "Run script"
+msgstr ""
+
+#, fuzzy
+msgid "Run script in background"
+msgstr "กำลังมีงานแบบฉากหลัง %d งาน"
+
+msgid "Run script with optional parameter"
+msgstr ""
+
+msgid "Run script with optional parameter in background"
 msgstr ""
 
 #, fuzzy
@@ -7923,10 +8560,24 @@ msgid "Save changes"
 msgstr ""
 
 #, fuzzy
+msgid "Save left folder on exit"
+msgstr "บันทึกโฟล์เดอร์ปัจจุบันเมื่อออก"
+
+#, fuzzy
 msgid "Save playlist"
 msgstr "บันทึกสารบัญรายการ"
 
+#, fuzzy
+msgid "Save right folder on exit"
+msgstr "บันทึกโฟล์เดอร์ปัจจุบันเมื่อออก"
+
 msgid "Save settings and EPG data"
+msgstr ""
+
+#, python-format
+msgid ""
+"Save the commands and the output to a file?\n"
+"('%s')"
 msgstr ""
 
 msgid "Save timeshift and zap"
@@ -8031,6 +8682,10 @@ msgid "Schedule EPG and channel list import"
 msgstr ""
 
 msgid "Screenshot of LCD in /tmp"
+msgstr ""
+
+#, python-format
+msgid "Script '%s' must have read permission to be able to run it"
 msgstr ""
 
 msgid "Scroll delay"
@@ -8152,6 +8807,9 @@ msgstr ""
 msgid "Select 'yes' to only send the DiSEqC command when changing from one satellite to another, or select 'no' for the DiSEqC command to be resent on every zap."
 msgstr ""
 
+msgid "Select (source list) or enter directory (target list)"
+msgstr ""
+
 #, fuzzy
 msgid "Select CAId"
 msgstr "เลือก CAId"
@@ -8191,6 +8849,10 @@ msgstr "เลือกภาพยนต์"
 #, fuzzy
 msgid "Select a network adapter"
 msgstr "เลือกการ์ดเครือข่าย"
+
+#, fuzzy
+msgid "Select a path"
+msgstr "เลือกภาพยนต์"
 
 #, fuzzy
 msgid "Select a skin"
@@ -8400,6 +9062,10 @@ msgstr "เลือกผู้ให้บริการที่ต้อง
 msgid "Select your country. If not available select 'all'."
 msgstr ""
 
+#, fuzzy
+msgid "Select your personal settings:"
+msgstr "ตั้งค่าคอลเลคชั่น"
+
 msgid "Select your provider and region. If not present in this list you will need to select one of the other 'service scan types'."
 msgstr ""
 
@@ -8575,6 +9241,9 @@ msgstr "เมื่อภาพยนต์เริ่มเล่นให้
 msgid "Set all hotkey to default?"
 msgstr ""
 
+msgid "Set archive mode (644)"
+msgstr ""
+
 msgid "Set blocktimes by weekday"
 msgstr ""
 
@@ -8587,6 +9256,9 @@ msgstr ""
 #, fuzzy
 msgid "Set end time"
 msgstr "เวลาสิ้นสุด"
+
+msgid "Set executable mode (755)"
+msgstr ""
 
 msgid "Set fixed"
 msgstr ""
@@ -8671,6 +9343,10 @@ msgstr "การตั้งค่า"
 msgid "Settings can be different for each directory separately (for non removeable devices only)."
 msgstr ""
 
+#, fuzzy
+msgid "Settings..."
+msgstr "การตั้งค่า"
+
 msgid "Setup"
 msgstr "ตั้งค่า"
 
@@ -8713,6 +9389,12 @@ msgstr ""
 #, fuzzy
 msgid "Show"
 msgstr "แสดงข้อมูล"
+
+#, python-format
+msgid ""
+"Show '%s' as picture%s?\n"
+"The current service must be interrupted!"
+msgstr ""
 
 #, fuzzy
 msgid "Show /tmp/ecm.info"
@@ -8779,6 +9461,12 @@ msgstr ""
 msgid "Show SNR percentage instead of dB value"
 msgstr ""
 
+msgid "Show Script completed message"
+msgstr ""
+
+msgid "Show Task's completed message"
+msgstr ""
+
 msgid "Show True/False as graphical switch"
 msgstr ""
 
@@ -8790,6 +9478,13 @@ msgid "Show WLAN status"
 msgstr "แสดงสถานะของ WLAN"
 
 msgid "Show animation while busy"
+msgstr ""
+
+msgid "Show as Picture (press any key to close)"
+msgstr ""
+
+#, python-format
+msgid "Show as Picture and save as file ('%s')"
 msgstr ""
 
 msgid "Show background behind subtitles"
@@ -8811,6 +9506,18 @@ msgstr ""
 msgid "Show columns"
 msgstr ""
 
+msgid "Show contents of ipk file"
+msgstr ""
+
+msgid "Show contents of rar file"
+msgstr ""
+
+msgid "Show contents of tar or compressed tar file"
+msgstr ""
+
+msgid "Show contents of zip file"
+msgstr ""
+
 msgid "Show crypto icons"
 msgstr ""
 
@@ -8819,6 +9526,10 @@ msgstr ""
 
 msgid "Show detailed event info"
 msgstr ""
+
+#, fuzzy
+msgid "Show directories first"
+msgstr "กำลังถูกบันทึก"
 
 #, fuzzy
 msgid "Show event details"
@@ -8849,6 +9560,10 @@ msgstr ""
 
 msgid "Show icon for new/unseen items"
 msgstr ""
+
+#, fuzzy
+msgid "Show image information"
+msgstr "แสดง Infoline"
 
 msgid "Show in extensions menu"
 msgstr ""
@@ -8896,6 +9611,9 @@ msgstr ""
 msgid "Show multi channel EPG"
 msgstr ""
 
+msgid "Show next picture"
+msgstr ""
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr ""
 
@@ -8922,6 +9640,10 @@ msgstr "แสดงตำแหน่งตัวขับจาน"
 
 msgid "Show positioner position"
 msgstr ""
+
+#, fuzzy
+msgid "Show previous picture"
+msgstr "ไปบริการย่อยก่อนหน้า"
 
 msgid "Show record clock icons"
 msgstr ""
@@ -8972,11 +9694,19 @@ msgstr ""
 msgid "Show symbols on display"
 msgstr ""
 
+#, fuzzy
+msgid "Show task list"
+msgstr "แสดงข้อมูล"
+
 msgid "Show the radio player..."
 msgstr "แสดงเครื่องเล่นวิทยุ..."
 
 msgid "Show the tv player..."
 msgstr "แสดงเครื่องเล่นโทรทัศน์..."
+
+#, fuzzy
+msgid "Show unknown extension as text"
+msgstr "ดูส่วนเพิ่มเติม..."
 
 msgid "Show vertical timelines"
 msgstr ""
@@ -9078,6 +9808,16 @@ msgstr ""
 msgid "Site longitude"
 msgstr ""
 
+msgid "Size"
+msgstr ""
+
+#, fuzzy
+msgid "Size reverse"
+msgstr "บริการต่างๆ"
+
+msgid "Size:"
+msgstr ""
+
 msgid "Skin"
 msgstr "สกิน"
 
@@ -9098,6 +9838,10 @@ msgstr "ป้องกันบริการ"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr ""
+
+#, fuzzy
+msgid "Skip selection"
+msgstr "เลือกผังรายการ"
 
 #, fuzzy
 msgid "Sleep timer"
@@ -9185,6 +9929,10 @@ msgstr ""
 
 msgid "Social/Political/Economics"
 msgstr ""
+
+#, fuzzy
+msgid "Socket"
+msgstr "ล๊อคแล้ว"
 
 msgid "SocketMMI"
 msgstr ""
@@ -9282,6 +10030,12 @@ msgstr ""
 #, fuzzy
 msgid "Sort time"
 msgstr "จัดเรียงเวลา"
+
+msgid "Sorting left files by name, date or size"
+msgstr ""
+
+msgid "Sorting right files by name, date or size"
+msgstr ""
 
 msgid "Sound"
 msgstr "เสียง"
@@ -9434,6 +10188,9 @@ msgstr "เริ่มควบคุมรายการสด"
 msgid "Start with list screen"
 msgstr ""
 
+msgid "Start/stop slide show"
+msgstr ""
+
 msgid "Starting on"
 msgstr "เริ่มตอน"
 
@@ -9541,6 +10298,10 @@ msgstr "หยุดควบคุมรายการสด?"
 
 msgid "Stopped"
 msgstr ""
+
+#, fuzzy
+msgid "Storage devices"
+msgstr "อุปกรณ์สำหรับบันทึก"
 
 msgid "Store at index"
 msgstr ""
@@ -9742,6 +10503,12 @@ msgstr ""
 msgid "Symbol rate:"
 msgstr ""
 
+msgid "Symbolic link"
+msgstr ""
+
+msgid "Symlink to "
+msgstr ""
+
 msgid "Sync failure moving back to origin !"
 msgstr ""
 
@@ -9805,6 +10572,10 @@ msgstr ""
 msgid "Tanzania, United Republic of"
 msgstr ""
 
+#, fuzzy
+msgid "Task list"
+msgstr "รายการต้องห้าม"
+
 msgid "Teletext subtitle color"
 msgstr ""
 
@@ -9866,6 +10637,9 @@ msgstr ""
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr ""
 
+msgid "The Image Viewer component of the File Commander requires the PicturePlayer extension. Install PicturePlayer to enable this operation."
+msgstr ""
+
 msgid "The PIN code has been changed successfully."
 msgstr ""
 
@@ -9873,6 +10647,9 @@ msgid "The PIN code has been saved successfully."
 msgstr ""
 
 msgid "The PIN codes you entered are different."
+msgstr ""
+
+msgid "The authors are NOT RESPONSIBLE"
 msgstr ""
 
 #, python-format
@@ -9889,6 +10666,14 @@ msgstr ""
 
 msgid "The following files were found..."
 msgstr "พบไฟล์เหล่านี้..."
+
+msgid ""
+"The function has been interrupted.\n"
+"Don't press any key until the picture from mvi-file is displayed!"
+msgstr ""
+
+msgid "The hash of a directory can't be calculated."
+msgstr ""
 
 #, fuzzy
 msgid ""
@@ -10029,6 +10814,10 @@ msgstr ""
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr ""
+
+#, fuzzy
+msgid "This line is not editable!"
+msgstr "ปลั๊กอินตัวนี้ยังไม่ได้ติดตั้ง"
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
 msgstr ""
@@ -10253,6 +11042,10 @@ msgstr "วันพฤหัสบดี"
 
 msgid "Time"
 msgstr "เวลา"
+
+#, fuzzy
+msgid "Time for Slideshow"
+msgstr "ตั้งเวลา"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -10564,6 +11357,10 @@ msgstr "ประเภทการค้นหา"
 msgid "Type of scan"
 msgstr "ประเภทการค้นหา"
 
+#, fuzzy
+msgid "Type:"
+msgstr "ประเภท"
+
 msgid "UNKNOWN"
 msgstr ""
 
@@ -10644,6 +11441,10 @@ msgstr ""
 msgid "Uninstall"
 msgstr ""
 
+#, python-format
+msgid "Uninstall '%s' package and disable '%s'"
+msgstr ""
+
 msgid "United Arab Emirates"
 msgstr ""
 
@@ -10665,6 +11466,14 @@ msgstr "Universal LNB"
 msgid "Unknown"
 msgstr ""
 
+#, python-format
+msgid "Unknown group: %d"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Unknown user: %d"
+msgstr "ไม่ทราบชนิดบริการ"
+
 msgid "Unknown, multiboot situation!"
 msgstr ""
 
@@ -10672,6 +11481,13 @@ msgid "Unmark service as dedicated 3D service"
 msgstr ""
 
 msgid "Unmount"
+msgstr ""
+
+#, python-format
+msgid "Unpack to %s"
+msgstr ""
+
+msgid "Unpack to current folder"
 msgstr ""
 
 msgid "Unsupported"
@@ -11040,6 +11856,13 @@ msgstr "แสดงรายการซอพท์แวร์ที่สา
 msgid "View list of available system extensions"
 msgstr "แสดงรายการส่วนเพิ่มเติมระบบที่สามารถติดตั้งได้"
 
+msgid "View or edit file (if size < 1MB)"
+msgstr ""
+
+#, python-format
+msgid "View or edit this %s script"
+msgstr ""
+
 #, fuzzy
 msgid "View photos..."
 msgstr "ดูภาพ"
@@ -11083,6 +11906,9 @@ msgstr ""
 
 msgid "W"
 msgstr "W"
+
+msgid "WARNING!"
+msgstr ""
 
 msgid "WEP"
 msgstr "WEP"
@@ -11223,6 +12049,10 @@ msgstr ""
 
 msgid "What day of week ?"
 msgstr ""
+
+#, fuzzy
+msgid "What do you want to play?\n"
+msgstr "ท่านต้องการที่จะเล่นแผ่นดีวีดีนี้หรือไม่?"
 
 msgid "What type of service scan do you want?"
 msgstr ""
@@ -11612,6 +12442,14 @@ msgstr ""
 #, fuzzy
 msgid "You can set sorting type for items in movielist."
 msgstr "โหลดความยาวของภาพยนต์"
+
+#, python-format
+msgid "You can't usefully run '%s' on '%s'."
+msgstr ""
+
+#, python-format
+msgid "You can't usefully run '%s' on a directory."
+msgstr ""
 
 msgid "You cannot delete this!"
 msgstr "ท่านไม่สามารถลบรายการนี้ได้!"
@@ -12042,11 +12880,20 @@ msgstr ""
 msgid "cooking"
 msgstr ""
 
+msgid "copy file"
+msgstr ""
+
+msgid "copy folder"
+msgstr ""
+
 msgid "copy to bouquets"
 msgstr "คัดลอกเข้าสู่กลุ่มรายการ"
 
 msgid "create directory"
 msgstr "สร้างโฟล์เดอร์"
+
+msgid "create symlink ..."
+msgstr ""
 
 msgid "daily"
 msgstr "รายวัน"
@@ -12251,6 +13098,9 @@ msgstr ""
 msgid "football/soccer"
 msgstr ""
 
+msgid "for DATA LOSS OR DAMAGE !!!"
+msgstr ""
+
 msgid "force AC3plus"
 msgstr ""
 
@@ -12272,6 +13122,9 @@ msgid "free"
 msgstr "เหลืออยู่"
 
 msgid "from"
+msgstr ""
+
+msgid "from dir"
 msgstr ""
 
 msgid "further education"
@@ -12298,11 +13151,17 @@ msgstr "เขียว"
 msgid "handicraft"
 msgstr ""
 
+msgid "has been CHANGED! Do you want to save it?"
+msgstr ""
+
 msgid "height"
 msgstr ""
 
 msgid "help..."
 msgstr "ช่วยเหลือ..."
+
+msgid "hide"
+msgstr ""
 
 msgid "horizontal"
 msgstr "แนวนอน (H)"
@@ -12330,6 +13189,9 @@ msgstr "เริ่มต้นโมดูล"
 
 msgid "insert mark here"
 msgstr "แทรกตรงตำแหน่งนี้"
+
+msgid "install/unpack ipk Files"
+msgstr ""
 
 msgid "invalid type"
 msgstr ""
@@ -12397,6 +13259,9 @@ msgstr ""
 msgid "magazines/reports/documentary"
 msgstr ""
 
+msgid "manage local Files"
+msgstr ""
+
 msgid "manual"
 msgstr "ทำเอง"
 
@@ -12433,6 +13298,14 @@ msgstr "ย้ายลงไปท้ายสุด"
 
 msgid "move down to next entry"
 msgstr "ย้ายลงไป"
+
+#, fuzzy
+msgid "move file"
+msgstr "ลบเรื่อง"
+
+#, fuzzy
+msgid "move folder"
+msgstr "[โหมดย้าย]"
 
 msgid "move up to first entry"
 msgstr "ย้ายไปบนสุด"
@@ -12599,10 +13472,16 @@ msgstr ""
 msgid "performing arts"
 msgstr ""
 
+msgid "play Files"
+msgstr ""
+
 msgid "play as picture in picture"
 msgstr ""
 
 msgid "play in mainwindow"
+msgstr ""
+
+msgid "play/show Files"
 msgstr ""
 
 msgid "please press OK when ready"
@@ -12618,6 +13497,9 @@ msgid "pre-school children's program"
 msgstr ""
 
 msgid "purge deleted userbouquets"
+msgstr ""
+
+msgid "python"
 msgstr ""
 
 msgid "real or pseudo recordings"
@@ -12742,6 +13624,12 @@ msgstr "สถานะการค้นหา"
 msgid "science fiction/fantasy/horror"
 msgstr ""
 
+msgid "script 'sterr':"
+msgstr ""
+
+msgid "script 'stout':"
+msgstr ""
+
 #, fuzzy
 msgid "se"
 msgstr "ใช้"
@@ -12772,6 +13660,9 @@ msgid "service off-air"
 msgstr "เพิ่มบริการเข้าสู่รายการโปรด"
 
 msgid "set as startup service"
+msgstr ""
+
+msgid "shell"
 msgstr ""
 
 msgid "show DVD main menu"
@@ -12956,6 +13847,9 @@ msgstr "กำลังถูกบันทึก"
 msgid "this service is protected by a parental control pin"
 msgstr "บริการนี้ถูกควบคุมอายุรับชม"
 
+msgid "to dir"
+msgstr ""
+
 msgid "toggle time, chapter, audio, subtitle info"
 msgstr "สลับช่วงเวลา ตอนที่ เสียง หรือซับไตเติ้ล"
 
@@ -12989,6 +13883,21 @@ msgstr ""
 
 msgid "unknown service"
 msgstr "ไม่ทราบชนิดบริการ"
+
+msgid "unpack Rar Files"
+msgstr ""
+
+msgid "unpack archives"
+msgstr ""
+
+msgid "unpack gzip Files"
+msgstr ""
+
+msgid "unpack tar/compressed tar Files"
+msgstr ""
+
+msgid "unpack zip Files"
+msgstr ""
 
 msgid "unpublished"
 msgstr ""
@@ -13076,6 +13985,9 @@ msgid "with tuner name"
 msgstr ""
 
 msgid "with_errors"
+msgstr ""
+
+msgid "without"
 msgstr ""
 
 msgid "wnw"

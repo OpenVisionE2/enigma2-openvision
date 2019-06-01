@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-02 00:42+0430\n"
+"POT-Creation-Date: 2019-06-02 01:30+0430\n"
 "PO-Revision-Date: 2019-05-27 00:08+0200\n"
 "Last-Translator: Željko <zeljko2@hi.ht.hr>\n"
 "Language-Team: Željko\n"
@@ -128,7 +128,29 @@ msgstr ""
 "\n"
 "Pogled, instalacija dostupnih ili uklanjanje instaliranih paketa."
 
+#, python-format
+msgid ""
+"\n"
+"optional parameter:\n"
+"%s"
+msgstr ""
+
+msgid " "
+msgstr ""
+
 msgid "  REC  "
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished successefully."
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished with error messages."
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished with error number [%d]."
 msgstr ""
 
 msgid " (0 - all networks)"
@@ -163,6 +185,19 @@ msgstr " (veći od bilo kojeg automatskog rotora)"
 msgid " (lower than any auto)"
 msgstr " (niži od bilo kojeg automatskog)"
 
+#, python-format
+msgid " - %d elements exist! Overwrite"
+msgstr ""
+
+msgid " - 1 element exist! Overwrite"
+msgstr ""
+
+msgid " - file exist! Overwrite"
+msgstr ""
+
+msgid " - folder exist! Overwrite"
+msgstr ""
+
 msgid " extensions."
 msgstr " proširenja."
 
@@ -171,6 +206,9 @@ msgstr " min"
 
 msgid " ms"
 msgstr " ms"
+
+msgid " or save the picture additionally to a file"
+msgstr ""
 
 msgid " packages selected."
 msgstr " izabrano paketa."
@@ -426,14 +464,38 @@ msgstr "%s %s slobodnog prostora na disku"
 msgid "%s ( %s Cards )"
 msgstr "%s (%s)\n"
 
+#, fuzzy, python-format
+msgid "%s (%04o)"
+msgstr "%s (%s)\n"
+
+#, fuzzy, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
+
+#, fuzzy, python-format
+msgid "%s (%sB"
+msgstr "%s (%s)\n"
+
+#, python-format
+msgid "%s - extraction errors."
+msgstr ""
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
 msgstr "%s više se ne koristi. Treba li ukloniti?"
+
+#, python-format
+msgid "%s is password protected."
+msgstr ""
+
+#, python-format
+msgid "%s successfully extracted."
+msgstr ""
 
 #, python-format
 msgid "%s updated package available"
@@ -454,13 +516,36 @@ msgstr "%s%d min"
 msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
+#, fuzzy, python-format
+msgid "%s: %s"
+msgstr "%s/%s: %s"
+
 #, python-format
 msgid "%s:%s"
 msgstr "%s:%s"
 
+#, python-format
+msgid "%sB"
+msgstr ""
+
+#, python-format
+msgid "'%s' not installed and no known package"
+msgstr ""
+
 #, fuzzy
 msgid "( All readers)"
 msgstr "Svi uzrasti"
+
+#, python-format
+msgid "(%d jobs)"
+msgstr ""
+
+msgid "(1 job)"
+msgstr ""
+
+#, fuzzy
+msgid "(Selectmode)"
+msgstr "Odaberite video"
 
 msgid "(Show only reader:"
 msgstr ""
@@ -675,6 +760,9 @@ msgstr "8bit"
 msgid "9"
 msgstr "9"
 
+msgid ": "
+msgstr ""
+
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - zadano (onemogućeno)"
 
@@ -705,6 +793,10 @@ msgstr "<nepoznat>"
 
 msgid "=NO STREAM\n"
 msgstr "=NEMA WEB PRIJENOSA\n"
+
+#, fuzzy
+msgid "?"
+msgstr "??"
 
 msgid "??"
 msgstr "??"
@@ -867,6 +959,10 @@ msgstr "Informacije o programu"
 msgid "About..."
 msgstr "O prijemniku..."
 
+#, fuzzy
+msgid "Accessed:"
+msgstr "Pristupna točka:"
+
 msgid "Accesspoint:"
 msgstr "Pristupna točka:"
 
@@ -879,8 +975,20 @@ msgstr "Aktivirajte sliku u slici"
 msgid "Activate current configuration"
 msgstr "Aktivirajte aktualnu konfiguraciju"
 
+msgid "Activate left-hand file list as multi-select source"
+msgstr ""
+
+msgid "Activate left-hand file list as source"
+msgstr ""
+
 msgid "Activate network settings"
 msgstr "Aktivirajte mrežne postavke"
+
+msgid "Activate right-hand file list as multi-select source"
+msgstr ""
+
+msgid "Activate right-hand file list as source"
+msgstr ""
 
 msgid "Activate the configured network settings."
 msgstr "Aktivirajte konfigurirane mrežne postavke."
@@ -916,6 +1024,10 @@ msgstr "Dodaj novi titl"
 msgid "Add bookmark"
 msgstr "Dodaj oznaku"
 
+#, fuzzy
+msgid "Add current folder to bookmarks"
+msgstr "Automatsko stvaranje oznaka"
+
 msgid "Add directory to playlist"
 msgstr "Dodaj direktorij u play listu"
 
@@ -924,6 +1036,13 @@ msgstr "Dodaj datoteku u play listu"
 
 msgid "Add files to playlist"
 msgstr "Dodaj datoteke u play listu"
+
+#, fuzzy
+msgid "Add plugin to Extensions menu*"
+msgstr "Prikažite u izborniku proširenja"
+
+msgid "Add plugin to main menu*"
+msgstr ""
 
 msgid "Add provider"
 msgstr "Dodaj provajdera"
@@ -939,6 +1058,10 @@ msgstr "Dodaj vrijeme snimanja (nedefinirano)"
 
 msgid "Add recording (stop after current event)"
 msgstr "Dodaj snimku (zaustavi poslije trenutnog događaja)"
+
+#, fuzzy
+msgid "Add selected folder to bookmarks"
+msgstr "Odaberite datoteke/mape za izradu sigurnosne kopije"
 
 msgid "Add service"
 msgstr "Dodaj kanal"
@@ -1590,6 +1713,10 @@ msgstr ""
 msgid "Blinking red"
 msgstr ""
 
+#, fuzzy
+msgid "Block device"
+msgstr "Nema usluge"
+
 msgid "Block noise reduction"
 msgstr "Smanjenje buke šuma"
 
@@ -1740,6 +1867,9 @@ msgstr ""
 msgid "CPU brand: "
 msgstr ""
 
+msgid "CPU priority for script execution"
+msgstr ""
+
 msgid "CPU: "
 msgstr "CPU: "
 
@@ -1763,6 +1893,9 @@ msgstr "Računanje"
 
 msgid "Calculate all positions"
 msgstr "Izračunajte sve pozicije"
+
+msgid "Calculate file checksums"
+msgstr ""
 
 msgid "Calculation complete"
 msgstr "Izračun je završen"
@@ -1812,8 +1945,18 @@ msgstr ""
 "Zasloni se mijenjaju lijevim/desnim gumbima ili koriste crvenu, zelenu, plavu za prebacivanje.\n"
 "Žuta za povratak na ovaj uvod."
 
+#, python-format
+msgid ""
+"Can not run %s: %s.\n"
+"%s may be in a plugin that is not installed."
+msgstr ""
+
 msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternativaly you can mount the network drive after the flash and perform a manufacurer reset to autorestore"
 msgstr "Može pronaći samo mrežni pogon za pohranu sigurnosne kopije, što znači da nakon flešanja autorestore neće raditi. Alternativno možete montirati mrežni pogon nakon flešanja i obaviti reset proizvođača na automatsko vračanje."
+
+#, python-format
+msgid "Can't read link contents: %s"
+msgstr ""
 
 msgid "Canada"
 msgstr "Kanada"
@@ -1823,6 +1966,10 @@ msgstr "Otkazati"
 
 msgid "Cancel any text changes and exit"
 msgstr "Poništite sve izmjene teksta i izađite"
+
+#, fuzzy
+msgid "Cancel execution?"
+msgstr "Odabir kanala"
 
 msgid "Cancelled upon user request"
 msgstr "Otkazuje se na zahtjev korisnika"
@@ -1891,6 +2038,12 @@ msgstr "Promijeni PIN"
 msgid "Change bouquets in quickzap"
 msgstr "Promijeni paket u brzom prebacivanju"
 
+msgid "Change buttons for list navigation"
+msgstr ""
+
+msgid "Change execute permissions (755/644)"
+msgstr ""
+
 msgid "Change recording (add time)"
 msgstr "Promijeni snimanje (dodaj vrijeme)"
 
@@ -1914,6 +2067,9 @@ msgstr "Kanal"
 
 msgid "Channel Info"
 msgstr "Informacije o kanalu"
+
+msgid "Channel button always changes sides"
+msgstr ""
 
 msgid "Channel context menu"
 msgstr "Kontekstni izbornik kanala"
@@ -1963,6 +2119,10 @@ msgstr "Poglavlje"
 
 msgid "Chapter:"
 msgstr "Poglavlje:"
+
+#, fuzzy
+msgid "Character device"
+msgstr "Trenutni uređaj: "
 
 msgid "Check"
 msgstr "Provjera"
@@ -2606,6 +2766,26 @@ msgstr "Kukovi otoci"
 msgid "Copy"
 msgstr "Kopirati"
 
+#, python-format
+msgid "Copy %d elements"
+msgstr ""
+
+msgid "Copy 1 element"
+msgstr ""
+
+#, fuzzy
+msgid "Copy file"
+msgstr "%d fajl"
+
+msgid "Copy file/directory to target directory"
+msgstr ""
+
+msgid "Copy files/directories to target directory"
+msgstr ""
+
+msgid "Copy folder"
+msgstr ""
+
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
@@ -2641,11 +2821,21 @@ msgstr "sakrij isprekidanu liniju za ovu uslugu"
 msgid "Create DVD-ISO"
 msgstr "Kreirajte DVD-ISO"
 
+#, fuzzy
+msgid "Create directory/folder"
+msgstr "kreiraj direktorij"
+
 msgid "Create new folder and exit"
 msgstr "Stvorite novu mapu i izađite"
 
 msgid "Create separate radio userbouquet"
 msgstr "Stvorite poseban radijski paket"
+
+msgid "Create symlink to file"
+msgstr ""
+
+msgid "Create user-named symbolic link"
+msgstr ""
 
 #, python-format
 msgid "Creating directory %s failed."
@@ -2865,6 +3055,10 @@ msgstr "Danski"
 msgid "Date"
 msgstr "Datum"
 
+#, fuzzy
+msgid "Date reverse"
+msgstr "abecedno obrnuto"
+
 msgid "Date/time input"
 msgstr "Unesite vrijeme/datum"
 
@@ -2880,8 +3074,28 @@ msgstr "Deep standby (Duboko stanje mirovanja)"
 msgid "Default"
 msgstr "Zadano"
 
+#, fuzzy
+msgid "Default Folder"
+msgstr "Zadano"
+
 msgid "Default Services Scanner"
 msgstr "Zadani skener usluga"
+
+#, fuzzy
+msgid "Default directory sorting"
+msgstr "Zadane postavke"
+
+#, fuzzy
+msgid "Default file sorting left"
+msgstr "Zadana lokacija filma"
+
+#, fuzzy
+msgid "Default file sorting right"
+msgstr "Zadana lokacija filma"
+
+#, fuzzy
+msgid "Default folder"
+msgstr "Zadano"
 
 msgid "Default movie location"
 msgstr "Zadana lokacija filma"
@@ -2958,6 +3172,18 @@ msgstr "Odgoda u milisekundama između pomicanja znakova na zaslonu."
 msgid "Delete"
 msgstr "Izbrisati"
 
+#, fuzzy, python-format
+msgid "Delete %d elements"
+msgstr "Izbrisane stavke"
+
+#, fuzzy
+msgid "Delete 1 element"
+msgstr "Brisanje unosa"
+
+#, fuzzy
+msgid "Delete current line"
+msgstr "Brisanje unosa"
+
 msgid "Delete entry"
 msgstr "Brisanje unosa"
 
@@ -2965,6 +3191,13 @@ msgid "Delete failed!"
 msgstr "Brisanje nije uspjelo!"
 
 msgid "Delete file"
+msgstr "Brisanje fajla"
+
+msgid "Delete file or directory (and all its contents)"
+msgstr ""
+
+#, fuzzy
+msgid "Delete folder"
 msgstr "Brisanje fajla"
 
 msgid "Delete image"
@@ -2981,6 +3214,9 @@ msgstr "Izbrišite znak s lijeve strane pokazivača međuspremnika"
 
 msgid "Delete the character under the text buffer cursor"
 msgstr "Izbrišite znak ispod pokazivača međuspremnika"
+
+msgid "Delete the selected files or directories"
+msgstr ""
 
 msgid "Delete timer"
 msgstr "Brisanje tajmera"
@@ -3232,6 +3468,10 @@ msgstr "Jeste li sigurni da želite izbrisati oznaku %s?"
 msgid "Do you really want to stop current event and delete timer %s?"
 msgstr "Želite li zaista zaustaviti trenutni događaj i izbrisati tajmer %s?"
 
+#, fuzzy
+msgid "Do you want change rights?\\n"
+msgstr "Želite li to učiniti?"
+
 msgid "Do you want this?"
 msgstr "Želite li to učiniti?"
 
@@ -3294,6 +3534,10 @@ msgstr "Želite li ažurirati svoj prijemnik?"
 
 msgid "Do you want to upgrade the package:\n"
 msgstr "Želite li nadograditi paket:\n"
+
+#, fuzzy
+msgid "Do you want to view or run the script?\n"
+msgstr "Želite li ponovno pokrenuti prijemnik?"
 
 msgid "Dolby"
 msgstr "Dolby"
@@ -3446,6 +3690,18 @@ msgstr "Uredite DNS"
 
 msgid "Edit chapters of current title"
 msgstr "Uredite poglavlje trenutnog naslova"
+
+#, fuzzy
+msgid "Edit current line"
+msgstr "Uredite poglavlje trenutnog naslova"
+
+#, fuzzy
+msgid "Edit line "
+msgstr "Uredite tajmer"
+
+#, fuzzy
+msgid "Edit position is the line end"
+msgstr "Premjesti na poziciju broja"
 
 msgid "Edit selection"
 msgstr "Uredi odabir"
@@ -3665,6 +3921,10 @@ msgstr "Unesite gdje se nalazite sjeverno ili južno od ekvatora."
 msgid "Enter main menu..."
 msgstr "Uđite u glavni izbornik..."
 
+#, fuzzy
+msgid "Enter multi-file selection mode"
+msgstr "Zatvori odabir naslova"
+
 msgid "Enter persistent PIN code"
 msgstr "Unesite trajni PIN kod"
 
@@ -3733,6 +3993,12 @@ msgstr "Greška %s"
 msgid "Error code"
 msgstr "Greška koda"
 
+#, fuzzy, python-format
+msgid ""
+"Error creating directory %s:\n"
+"%s"
+msgstr "Izrada direktorija %s nije uspjela."
+
 #, python-format
 msgid ""
 "Error during backup settings\n"
@@ -3762,6 +4028,18 @@ msgstr ""
 msgid "Error executing plugin"
 msgstr "Pogreška pri pokretanju dodatka"
 
+#, python-format
+msgid ""
+"Error linking %s to %s:\n"
+"%s"
+msgstr ""
+
+#, python-format
+msgid ""
+"Error renaming %s to %s:\n"
+"%s"
+msgstr ""
+
 msgid "Error stop stream!"
 msgstr "Pogreška pri zaustavljanju web prijenosa!"
 
@@ -3781,6 +4059,10 @@ msgstr ""
 
 msgid "Error while retreiving location of epg.dat on server"
 msgstr "Pogreška pri dohvaćanju lokacije datoteke epg.dat s poslužitelja"
+
+#, fuzzy
+msgid "Error..."
+msgstr "Greška"
 
 #, python-format
 msgid ""
@@ -3869,6 +4151,9 @@ msgstr "Izlaz iz EPG"
 msgid "Exit editor"
 msgstr "Izlaz iz uređenja"
 
+msgid "Exit editor and write changes (if any)"
+msgstr ""
+
 msgid "Exit input device selection."
 msgstr "Izlaz iz odabira ulaznog uređaja."
 
@@ -3892,6 +4177,9 @@ msgstr "Izlaz iz popisa mrežnog sučelja"
 
 msgid "Exit network wizard"
 msgstr "Izađite iz vodiča za postavljanje mreže"
+
+msgid "Exit picture viewer"
+msgstr ""
 
 msgid "Exit the wizard"
 msgstr "Izađite iz vodiča"
@@ -4018,6 +4306,9 @@ msgstr "FEC"
 msgid "FEC:"
 msgstr "FEC:"
 
+msgid "FIFO"
+msgstr ""
+
 msgid "FSBL Update Check"
 msgstr ""
 
@@ -4122,12 +4413,70 @@ msgstr "Favoriti"
 msgid "Fiji"
 msgstr "Fidži"
 
+#, fuzzy
+msgid "File Commander"
+msgstr "Redosljed naredbe"
+
+msgid "File Commander - Addon File-Viewer"
+msgstr ""
+
+msgid "File Commander - Addon Mediaplayer"
+msgstr ""
+
+msgid "File Commander - Addon Movieplayer"
+msgstr ""
+
+msgid "File Commander - all Task's completed!"
+msgstr ""
+
+msgid "File Commander - generalised archive handler"
+msgstr ""
+
+msgid "File Commander - gzip Addon"
+msgstr ""
+
+msgid "File Commander - ipk Addon"
+msgstr ""
+
+msgid "File Commander - tar Addon"
+msgstr ""
+
+msgid "File Commander - unrar Addon"
+msgstr ""
+
+msgid "File Commander - unzip Addon"
+msgstr ""
+
+#, fuzzy
+msgid "File Commander context menu"
+msgstr "Kontekstni izbornik kanala"
+
+msgid "File Commander menu"
+msgstr ""
+
 msgid "File appears to be busy.\n"
 msgstr "Datoteka koja se trenutno koristi.\n"
+
+msgid "File checksums/hashes"
+msgstr ""
+
+#, python-format
+msgid "File not found: %s"
+msgstr ""
 
 msgid ""
 "File oscam.conf/ncam.conf not found.\n"
 "Please enter username/password manually."
+msgstr ""
+
+msgid "File transfer was cancelled by user"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "File write error: '%s'"
+msgstr "s greškama"
+
+msgid "File/Directory Status Information"
 msgstr ""
 
 msgid "Filename"
@@ -4135,6 +4484,9 @@ msgstr "Naziv datoteke"
 
 msgid "Filesystem check"
 msgstr "Provjera datotečnog sustava"
+
+msgid "Filter extension, (*) appears in title"
+msgstr ""
 
 msgid "Final position at"
 msgstr "Završna pozicija na"
@@ -4357,6 +4709,13 @@ msgstr "Gibraltar"
 msgid "Go down the list"
 msgstr "Idite niz popis"
 
+msgid "Go to bookmarked folder"
+msgstr ""
+
+#, fuzzy
+msgid "Go to end of file"
+msgstr "Skoči na kraj liste"
+
 msgid "Go to first movie or last item"
 msgstr "Idite na prvi video zapis ili posljednju stavku"
 
@@ -4375,11 +4734,19 @@ msgstr "Idite na sljedeći događaj"
 msgid "Go to next page of service"
 msgstr "Idite na sljedeću stranicu usluge"
 
+#, fuzzy
+msgid "Go to parent directory"
+msgstr "Roditeljski imenik"
+
 msgid "Go to previous event"
 msgstr "Idite na prethodni događaj"
 
 msgid "Go to previous page of service"
 msgstr "Idite na prethodnu stranicu usluge"
+
+#, fuzzy
+msgid "Go to start of file"
+msgstr "Idite na sljedeću stranicu usluge"
 
 msgid "Go up the list"
 msgstr "Idite na vrh liste"
@@ -4453,6 +4820,9 @@ msgstr "Grenland"
 
 msgid "Grenada"
 msgstr "Grenada"
+
+msgid "Group:"
+msgstr ""
 
 msgid "Grow drop"
 msgstr ""
@@ -4708,6 +5078,9 @@ msgstr "I"
 msgid "I do not want to perform any service scans"
 msgstr "Ne želim izvršiti nikakvo skeniranje usluga"
 
+msgid "I/O priority for script execution"
+msgstr ""
+
 msgid "IDLE"
 msgstr "PROPUST"
 
@@ -4927,6 +5300,9 @@ msgstr "Inicijalizirati"
 msgid "Initializing storage device..."
 msgstr "Inicijalizacija uređaja za pohranu..."
 
+msgid "Inode:"
+msgstr ""
+
 msgid "Input"
 msgstr "Ulaz"
 
@@ -4942,8 +5318,19 @@ msgstr "Postavljanje uređaja za unos"
 msgid "Input devices"
 msgstr "Ulazni uređaji"
 
+msgid "Insert"
+msgstr ""
+
+#, fuzzy
+msgid "Insert line before current line"
+msgstr "Svojstva trenutnog naslova"
+
 msgid "Install"
 msgstr "Instaliranje"
+
+#, python-format
+msgid "Install '%s' and enable this operation"
+msgstr ""
 
 msgid "Install channel list"
 msgstr "Instalirajte popis kanala"
@@ -4968,6 +5355,10 @@ msgstr "Instalacija ili uklanjanje je završeno."
 
 msgid "Installing"
 msgstr "Instalacija"
+
+#, fuzzy
+msgid "Installing Plugin ..."
+msgstr "Instaliranje softvera..."
 
 #, fuzzy
 msgid "Installing service"
@@ -5053,6 +5444,19 @@ msgstr "Otok Man"
 msgid "Israel"
 msgstr "Izrael"
 
+msgid "It is not possible to calculate hashes on <List of Storage Devices>"
+msgstr ""
+
+msgid "It is not possible to change the file mode of <List of Storage Devices>"
+msgstr ""
+
+msgid "It is not possible to get the file status of <List of Storage Devices>"
+msgstr ""
+
+#, python-format
+msgid "It is not possible to run '%s' on <List of Storage Devices>"
+msgstr ""
+
 #, fuzzy
 msgid ""
 "It seems you did not see all the eight arrow heads. This means your TV has overscan enabled, and is not configured properly.\n"
@@ -5067,6 +5471,9 @@ msgstr ""
 "\n"
 
 msgid "It's not a genuine Open Vision!"
+msgstr ""
+
+msgid "It's not possible to rename the filesystem root."
 msgstr ""
 
 msgid "Italian"
@@ -5263,6 +5670,13 @@ msgstr "Latvijski"
 msgid "Leave DVD player?"
 msgstr "Izaći iz DVD playera?"
 
+msgid "Leave File Commander"
+msgstr ""
+
+#, fuzzy
+msgid "Leave multi-select mode"
+msgstr "Način naziva usluge"
+
 msgid "Leave this set to 'yes' unless you fully understand why you are adjusting it."
 msgstr "Ostavite ovu opciju na 'da' ako ne znate za što služi."
 
@@ -5324,17 +5738,29 @@ msgstr "Ograničenje uključeno"
 msgid "Link quality:"
 msgstr "Kvaliteta veze:"
 
+#, fuzzy
+msgid "Link target:"
+msgstr "Kvaliteta veze:"
+
 msgid "Link:"
 msgstr "Veza:"
 
 msgid "Linked titles with a DVD menu"
 msgstr "Povezani naslovi s DVD izbornikom"
 
+#, fuzzy
+msgid "Links:"
+msgstr "Veza:"
+
 msgid "List available networks"
 msgstr "Popis dostupnih mreža"
 
 msgid "List mode"
 msgstr "Način liste"
+
+#, fuzzy
+msgid "List of Storage Devices"
+msgstr "Popis uređaja za pohranu"
 
 msgid "List of storage devices"
 msgstr "Popis uređaja za pohranu"
@@ -5576,6 +6002,9 @@ msgstr "Poruka..."
 msgid "Messages"
 msgstr "Poruke"
 
+msgid "Metadata changed:"
+msgstr ""
+
 msgid "Mexico"
 msgstr "Meksiko"
 
@@ -5609,6 +6038,10 @@ msgctxt "Video output mode"
 msgid "Mode"
 msgstr "Način"
 
+#, python-format
+msgid "Mode %s (%04o)"
+msgstr ""
+
 msgid "Model"
 msgstr "Model"
 
@@ -5617,6 +6050,9 @@ msgstr "Model: "
 
 msgid "Modes"
 msgstr "Načini"
+
+msgid "Modified:"
+msgstr ""
 
 msgid "Modulation"
 msgstr "Modulacija"
@@ -5670,6 +6106,14 @@ msgstr "Montiranje"
 msgid "Move"
 msgstr "Premještanje"
 
+#, fuzzy, python-format
+msgid "Move %d elements"
+msgstr "Kretanje"
+
+#, fuzzy
+msgid "Move 1 element"
+msgstr "Kretanje"
+
 msgid "Move PIP"
 msgstr "Premjestite PIP"
 
@@ -5679,8 +6123,27 @@ msgstr "Premjestite PiP na glavnu sliku"
 msgid "Move Picture in Picture"
 msgstr "Premjestite sliku u slici"
 
+#, fuzzy
+msgid "Move down list"
+msgstr "Idite niz popis"
+
 msgid "Move east"
 msgstr "Pomaknite na istok"
+
+#, fuzzy
+msgid "Move file"
+msgstr "Pomaknite na istok"
+
+msgid "Move file/directory to target directory"
+msgstr ""
+
+#, fuzzy
+msgid "Move files/directories to target directory"
+msgstr "Odbija premještanje u isti direktorij"
+
+#, fuzzy
+msgid "Move folder"
+msgstr "[premjesti način]"
 
 msgid "Move the text buffer cursor left"
 msgstr "Premjestite kursor ulijevo"
@@ -5709,6 +6172,10 @@ msgstr "Pomaknite kursor virtualne tipkovnice prema gore"
 msgid "Move to position X"
 msgstr "Pomaknite na poziciju X"
 
+#, fuzzy
+msgid "Move up list"
+msgstr "Idite na vrh liste"
+
 msgid "Move west"
 msgstr "Pomaknite na zapad"
 
@@ -5719,6 +6186,10 @@ msgid "Moved to position at index"
 msgstr "Premjesti na poziciju broja"
 
 msgid "Movement"
+msgstr "Kretanje"
+
+#, fuzzy
+msgid "Movie"
 msgstr "Kretanje"
 
 msgid "Movie list configuration"
@@ -5781,11 +6252,22 @@ msgstr "Više satelita (odaberite sve)"
 msgid "Multistream"
 msgstr "Više web prijenosa"
 
+msgid "Music"
+msgstr ""
+
 msgid "Music/Ballet/Dance"
 msgstr "Muzika/Balet/Ples"
 
 msgid "Mute"
 msgstr "Isključi zvuk"
+
+#, fuzzy
+msgid "My Extension"
+msgstr "Proširenja"
+
+#, fuzzy
+msgid "My extension"
+msgstr " proširenja."
 
 msgid "Myanmar"
 msgstr "Myanmar"
@@ -5814,6 +6296,10 @@ msgstr "NTSC"
 
 msgid "Name"
 msgstr "Naziv"
+
+#, fuzzy
+msgid "Name reverse"
+msgstr "Naziv poslužitelja (DNS)"
 
 msgid "Nameserver"
 msgstr "Naziv poslužitelja (DNS)"
@@ -5907,6 +6393,9 @@ msgstr "Nova Kaledonija"
 msgid "New Zealand"
 msgstr "Novi Zeland"
 
+msgid "New folder"
+msgstr ""
+
 msgid "News Current Affairs"
 msgstr "Aktualne vijesti o događajima"
 
@@ -5979,11 +6468,18 @@ msgstr "Nije pronađen nijedan podatak o događaju, snimanje na neodređeno vrij
 msgid "No fast winding possible yet.. but you can use the number buttons to skip forward/backward!"
 msgstr "Još nije moguće brzo premotavanje.. ali možete koristiti brojčane tipke za preskakanje naprijed/natrag!"
 
+#, fuzzy
+msgid "No files found."
+msgstr "Nije pronađen nijedan image"
+
 msgid "No free index available"
 msgstr "Nema slobodnog indeksa"
 
 msgid "No free tuner!"
 msgstr "Nema slobodnog tjunera!"
+
+msgid "No hash calculations configured"
+msgstr ""
 
 msgid "No images found"
 msgstr "Nije pronađen nijedan image"
@@ -6053,6 +6549,10 @@ msgstr "Nema dostupnih ažuriranja"
 msgid "No updates available. Please try again later."
 msgstr "Nema dostupnih ažuriranja. Molimo pokušajte kasnije."
 
+#, python-format
+msgid "No viewer installed for this file type: %s"
+msgstr ""
+
 msgid "No wireless networks found! Searching..."
 msgstr "Nisu pronađene bežične mreže! Traženje..."
 
@@ -6095,6 +6595,10 @@ msgstr "Ne, nikada"
 msgid "None"
 msgstr "Nijedan"
 
+#, python-format
+msgid "None of the hash programs for the hashes %s are available"
+msgstr ""
+
 #. TRANSLATORS: (aspect ratio policy: display as fullscreen, with stretching the left/right)
 msgid "Nonlinear"
 msgstr "Ne linearna"
@@ -6125,6 +6629,9 @@ msgstr "Norveški"
 
 msgid "Not Defined"
 msgstr "Nije definirano"
+
+msgid "Not allowed with folders"
+msgstr ""
 
 msgid "Not associated"
 msgstr "Nije povezano"
@@ -6164,6 +6671,9 @@ msgstr "Sada upotrijebite postavku kontrasta kako biste povećali svjetlinu poza
 
 msgid "Number of channels shown in channel selection list"
 msgstr "Broj kanala na popisu za odabir kanala"
+
+msgid "Number of lines in script messages"
+msgstr ""
 
 msgid "Number of repeating text on display."
 msgstr "Broj ponavljanja teksta na zaslonu."
@@ -6213,6 +6723,10 @@ msgstr "Oman"
 
 msgid "On"
 msgstr "Uklj."
+
+#, fuzzy
+msgid "On device:"
+msgstr "Ulazni uređaji"
 
 msgid "On end of movie"
 msgstr "Na kraju filma"
@@ -6267,11 +6781,18 @@ msgstr "Otvorite odabir mjesta kao naziv timera"
 msgid "Open service list"
 msgstr "Otvorite popis usluga"
 
+#, fuzzy
+msgid "Open settings/actions menu"
+msgstr "Prikažite u izborniku proširenja"
+
 msgid "Open setup tuner "
 msgstr "Otvorite postavke tjunera "
 
 msgid "Open the movie list"
 msgstr "Otvorite popis filmova"
+
+msgid "Open with File Commander"
+msgstr ""
 
 msgid "Options disable timer"
 msgstr "Opcije isključivanja tajmera"
@@ -6316,6 +6837,9 @@ msgstr "Prebrisati konfiguracijske datoteke tijekom ažuriranja softvera?"
 
 msgid "Overwrite configuration files?"
 msgstr "Prebrisati konfiguracijske datoteke?"
+
+msgid "Owner:"
+msgstr ""
 
 msgid "PAL"
 msgstr "PAL"
@@ -6375,6 +6899,14 @@ msgstr "Upravljanje paketima"
 msgid "Packet manager"
 msgstr "Upravitelj paketa"
 
+#, fuzzy
+msgid "Page down list"
+msgstr "Idite niz popis"
+
+#, fuzzy
+msgid "Page up list"
+msgstr "Spremite popis pjesama"
+
 msgid "Pakistan"
 msgstr "Pakistan"
 
@@ -6400,6 +6932,10 @@ msgstr "Papua Nova Gvineja"
 msgid "Paraguay"
 msgstr "Paragvaj"
 
+#, fuzzy
+msgid "Parent Directory"
+msgstr "Roditeljski imenik"
+
 msgid "Parent directory"
 msgstr "Roditeljski imenik"
 
@@ -6421,6 +6957,9 @@ msgstr "Lozinka"
 #, fuzzy
 msgid "Password (httpwd)"
 msgstr "Lozinka"
+
+msgid "Path to save not exist: '/tmp/'"
+msgstr ""
 
 msgid "Pause"
 msgstr "Pauza"
@@ -6446,6 +6985,9 @@ msgstr "Trajno izbrisati sve snimke u kantu za smeće?"
 msgid "Permanently remove all deleted items"
 msgstr "Trajno uklonite sve izbrisane stavke"
 
+msgid "Permissions:"
+msgstr ""
+
 msgid "Persian"
 msgstr "Persijski"
 
@@ -6465,6 +7007,10 @@ msgid "Picon and servicename"
 msgstr "Pikon i naziv usluge"
 
 msgid "Picture player"
+msgstr "Foto player"
+
+#, fuzzy
+msgid "Pictures"
 msgstr "Foto player"
 
 #. TRANSLATORS: (aspect ratio policy: black bars on left/right) in doubt, keep english term.
@@ -6501,6 +7047,10 @@ msgstr "Reproducirajte medijske datoteke"
 msgid "Play entry"
 msgstr "Reproduciraj stavku"
 
+#, fuzzy
+msgid "Play folder"
+msgstr "Reproduciraj stavku"
+
 msgid "Play from next mark or playlist entry"
 msgstr "Reproduciraj s sljedeće oznake ili unosa popisa pjesama"
 
@@ -6524,6 +7074,13 @@ msgstr "Reproduciraj prethodnu"
 
 msgid "Play recorded movies..."
 msgstr "Reproducirajte snimljene filmove..."
+
+#, fuzzy
+msgid "Play title"
+msgstr "Dodaj naslov"
+
+msgid "Play/view/edit/install/extract/run file or enter directory"
+msgstr ""
 
 msgid "Please add titles to the compilation."
 msgstr "Dodajte naslove kompilaciji."
@@ -6580,10 +7137,18 @@ msgstr "Unesite naziv datoteke (prazno = koristite trenutni datum)"
 msgid "Please enter name of the new directory"
 msgstr "Unesite naziv novog direktorija"
 
+#, fuzzy
+msgid "Please enter name of the new symlink"
+msgstr "Unesite naziv novog direktorija"
+
 msgid "Please enter new description:"
 msgstr "Unesite novi opis:"
 
 msgid "Please enter new name:"
+msgstr "Unesite novi naziv:"
+
+#, fuzzy
+msgid "Please enter password"
 msgstr "Unesite novi naziv:"
 
 msgid "Please enter the correct pin code"
@@ -6591,6 +7156,14 @@ msgstr "Unesite ispravan PIN kod"
 
 msgid "Please enter the new PIN code"
 msgstr "Unesite novi PIN kod"
+
+#, fuzzy
+msgid "Please enter the new directory name"
+msgstr "Unesite naziv novog direktorija"
+
+#, fuzzy
+msgid "Please enter the new file name"
+msgstr "Unesite novo ime datoteke"
 
 msgid "Please enter the old PIN code"
 msgstr "Unesite stari PIN kod"
@@ -6732,6 +7305,10 @@ msgstr "Molimo pričekajte dok testiramo vašu mrežu..."
 
 msgid "Please wait while your network is restarting..."
 msgstr "Molimo pričekajte da se mreža ponovno pokrene..."
+
+#, fuzzy
+msgid "Please wait, Loading image."
+msgstr "Molimo pričekajte... učitavanje popisa..."
 
 msgid "Please wait, restarting cardserver."
 msgstr "Molmo pričekajte, carderver se ponovno pokreće."
@@ -7031,6 +7608,30 @@ msgstr "Prioritet"
 msgid "Process"
 msgstr "Postupak"
 
+#, python-format
+msgid ""
+"Program '%s' is installed.\n"
+"The package containing this program isn't known, so it can't be uninstalled."
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run the '%s' action.\n"
+"Uninstall the '%s' package to uninstall the program?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run this action.\n"
+"Install the '%s' package to install the program?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' not installed.\n"
+"The package containing this program isn't known."
+msgstr ""
+
 msgid "Progress"
 msgstr "Napredak"
 
@@ -7264,6 +7865,10 @@ msgid "Recordings always have priority"
 msgstr "Snimanje uvijek ima prioritet"
 
 #, fuzzy
+msgid "Records"
+msgstr "Snimanje"
+
+#, fuzzy
 msgid "Recovery Mode"
 msgstr "Korisnički način rada"
 
@@ -7291,6 +7896,10 @@ msgstr "Brzina osvježavanja"
 msgid "Refresh rate selection."
 msgstr "Odabir brzine osvježavanja."
 
+#, fuzzy
+msgid "Refresh screen"
+msgstr "Brzina osvježavanja"
+
 msgid "Refusing to move to the same directory"
 msgstr "Odbija premještanje u isti direktorij"
 
@@ -7299,6 +7908,10 @@ msgstr "Duboko stanje mirovanja kao pripravnost"
 
 msgid "Region"
 msgstr "Regija"
+
+#, fuzzy
+msgid "Regular file"
+msgstr "predložak datoteke"
 
 msgid "Relative"
 msgstr "Relativno"
@@ -7355,6 +7968,9 @@ msgstr "Uklonite oznake"
 msgid "Remove completed timers after (days)"
 msgstr "Uklanjanje dovršenih tajmera nakon (dana)"
 
+msgid "Remove current folder from bookmarks"
+msgstr ""
+
 msgid "Remove currently selected title"
 msgstr "Uklonite trenutno odabrani naslov"
 
@@ -7363,6 +7979,9 @@ msgstr "Uklonjanje stavki iz kante za smeće nakon (dana)"
 
 msgid "Remove plugins"
 msgstr "Uklonite dodatke"
+
+msgid "Remove selected folder from bookmarks"
+msgstr ""
 
 msgid "Remove this logfile"
 msgstr "Uklonite ovu datoteku dnevnika"
@@ -7386,6 +8005,10 @@ msgstr "Nema usluge"
 
 msgid "Rename"
 msgstr "Preimenovati"
+
+#, fuzzy
+msgid "Rename file/directory"
+msgstr "kreiraj direktorij"
 
 msgid "Rename name and description for new events"
 msgstr "Preimenujte ime i opis novih događaja"
@@ -7544,8 +8167,16 @@ msgstr "Ponovno sjedinjenje"
 msgid "Reverse bouquet buttons"
 msgstr "Gumbi obrnutog paketa"
 
+#, fuzzy
+msgid "Reverse left file sorting"
+msgstr "Obrnuti popis"
+
 msgid "Reverse list"
 msgstr "Obrnuti popis"
+
+#, fuzzy
+msgid "Reverse right file sorting"
+msgstr "Dešifrirajte sadržaja tijekom snimanja"
 
 msgid "Rewind speeds"
 msgstr "Brzine premotavanja"
@@ -7586,7 +8217,24 @@ msgstr "Motor: "
 msgid "Round start time on"
 msgstr "Vrijeme početka kruga na"
 
+#, python-format
+msgid "Run '%s' command"
+msgstr ""
+
 msgid "Run how often ?"
+msgstr ""
+
+msgid "Run script"
+msgstr ""
+
+#, fuzzy
+msgid "Run script in background"
+msgstr "%d Proces se izvodi u pozadini!"
+
+msgid "Run script with optional parameter"
+msgstr ""
+
+msgid "Run script with optional parameter in background"
 msgstr ""
 
 #, fuzzy
@@ -7740,11 +8388,25 @@ msgstr "Spremite i zaustavite vremenski pomak"
 msgid "Save changes"
 msgstr "Spremite promjene"
 
+#, fuzzy
+msgid "Save left folder on exit"
+msgstr "Stvorite novu mapu i izađite"
+
 msgid "Save playlist"
 msgstr "Spremite popis pjesama"
 
+#, fuzzy
+msgid "Save right folder on exit"
+msgstr "Stvorite novu mapu i izađite"
+
 msgid "Save settings and EPG data"
 msgstr "Spremite postavke i EPG podatke"
+
+#, python-format
+msgid ""
+"Save the commands and the output to a file?\n"
+"('%s')"
+msgstr ""
 
 msgid "Save timeshift and zap"
 msgstr "Spremite vremenski pomak i prebacite"
@@ -7846,6 +8508,10 @@ msgid "Schedule EPG and channel list import"
 msgstr ""
 
 msgid "Screenshot of LCD in /tmp"
+msgstr ""
+
+#, python-format
+msgid "Script '%s' must have read permission to be able to run it"
 msgstr ""
 
 msgid "Scroll delay"
@@ -7962,6 +8628,9 @@ msgstr "Odaberite 'da' da biste uključili %s opseg u pretraživanje."
 msgid "Select 'yes' to only send the DiSEqC command when changing from one satellite to another, or select 'no' for the DiSEqC command to be resent on every zap."
 msgstr "Odaberite 'da', da biste poslali naredbu DiSEqC samo ako ste se prebacili s jednog uređaja na drugu ili odaberite 'ne', da biste poslali naredbu DiSEqC da se pridruži prilikom svakog isključivanja."
 
+msgid "Select (source list) or enter directory (target list)"
+msgstr ""
+
 msgid "Select CAId"
 msgstr "Odaberite CAId"
 
@@ -7994,6 +8663,10 @@ msgstr "Odaberite film"
 
 msgid "Select a network adapter"
 msgstr "Odaberite mrežni adapter"
+
+#, fuzzy
+msgid "Select a path"
+msgstr "Odaberite tjuner"
 
 msgid "Select a skin"
 msgstr "Odaberite skin"
@@ -8188,6 +8861,10 @@ msgstr "Odaberite svog ATSC davatelja usluga ."
 msgid "Select your country. If not available select 'all'."
 msgstr "Izaberite svoju zemlju. Ako nije dostupno, odaberite 'sve'."
 
+#, fuzzy
+msgid "Select your personal settings:"
+msgstr "Odaberite horizontalnu rezoluciju:"
+
 msgid "Select your provider and region. If not present in this list you will need to select one of the other 'service scan types'."
 msgstr "Odaberite svog davatelja usluga i regiju. Ako se ne nalazi na ovom popisu, morat ćete odabrati jednu od drugih 'vrsta skeniranja usluga'."
 
@@ -8356,6 +9033,9 @@ msgstr "Podesite radnju kada je reprodukcija filma gotova."
 msgid "Set all hotkey to default?"
 msgstr "Postavite sve prečace tipki prema zadanim postavkama?"
 
+msgid "Set archive mode (644)"
+msgstr ""
+
 msgid "Set blocktimes by weekday"
 msgstr "Postavljanje se ignorira iz dana u dan"
 
@@ -8367,6 +9047,9 @@ msgstr "Postaviti zadane postavke?"
 
 msgid "Set end time"
 msgstr "Postavite vrijeme završetka"
+
+msgid "Set executable mode (755)"
+msgstr ""
 
 msgid "Set fixed"
 msgstr "Postavite fiksno"
@@ -8451,6 +9134,10 @@ msgstr "Postavke"
 msgid "Settings can be different for each directory separately (for non removeable devices only)."
 msgstr "Postavke mogu biti različite za svaki direktorij zasebno (samo za prijenosne uređaje)."
 
+#, fuzzy
+msgid "Settings..."
+msgstr "Postavke"
+
 msgid "Setup"
 msgstr "Postavljanje"
 
@@ -8490,6 +9177,12 @@ msgstr ""
 
 msgid "Show"
 msgstr "Prikazati"
+
+#, python-format
+msgid ""
+"Show '%s' as picture%s?\n"
+"The current service must be interrupted!"
+msgstr ""
 
 #, fuzzy
 msgid "Show /tmp/ecm.info"
@@ -8556,6 +9249,12 @@ msgstr ""
 msgid "Show SNR percentage instead of dB value"
 msgstr "Prikažite postotke SNR umjesto dB vrijednosti"
 
+msgid "Show Script completed message"
+msgstr ""
+
+msgid "Show Task's completed message"
+msgstr ""
+
 msgid "Show True/False as graphical switch"
 msgstr "Prikažite pravi/lažni kao grafički prekidač"
 
@@ -8567,6 +9266,13 @@ msgstr "Prikažite WLAN status"
 
 msgid "Show animation while busy"
 msgstr "Prikažite animaciju dok je zauzet"
+
+msgid "Show as Picture (press any key to close)"
+msgstr ""
+
+#, python-format
+msgid "Show as Picture and save as file ('%s')"
+msgstr ""
 
 msgid "Show background behind subtitles"
 msgstr "Prikažitete pozadinu iza titlova"
@@ -8586,6 +9292,18 @@ msgstr "Prikažite brojeve kanala u odabiru kanala"
 msgid "Show columns"
 msgstr "Prikažite stupce"
 
+msgid "Show contents of ipk file"
+msgstr ""
+
+msgid "Show contents of rar file"
+msgstr ""
+
+msgid "Show contents of tar or compressed tar file"
+msgstr ""
+
+msgid "Show contents of zip file"
+msgstr ""
+
 msgid "Show crypto icons"
 msgstr "Prikažite kriptografske ikone"
 
@@ -8594,6 +9312,10 @@ msgstr "Prikažite kripto-informacije u info traci"
 
 msgid "Show detailed event info"
 msgstr "Prikažite detaljne informacije o događaju"
+
+#, fuzzy
+msgid "Show directories first"
+msgstr "Prikažite popis favorita"
 
 msgid "Show event details"
 msgstr "Prikažite pojedinosti o događaju"
@@ -8621,6 +9343,10 @@ msgstr "Prikažite pomoć"
 
 msgid "Show icon for new/unseen items"
 msgstr "Prikažite ikonu za nove/nevidljive stavke"
+
+#, fuzzy
+msgid "Show image information"
+msgstr "Informacije o softverskom upravitelju"
 
 msgid "Show in extensions menu"
 msgstr "Prikažite u izborniku proširenja"
@@ -8664,6 +9390,9 @@ msgstr "Prikažite filmove"
 msgid "Show multi channel EPG"
 msgstr "Prikažite višekanalni EPG"
 
+msgid "Show next picture"
+msgstr ""
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Prikažite obavijest prilikom uvoza kanala i/ili EPG s URL-a udaljenog primatelja kada nije kompletan"
 
@@ -8690,6 +9419,10 @@ msgstr "Prikažite kretanje motora"
 
 msgid "Show positioner position"
 msgstr "Prikažite položaj motora"
+
+#, fuzzy
+msgid "Show previous picture"
+msgstr "Prebacite se na prethodni paket"
 
 msgid "Show record clock icons"
 msgstr "Prikažite ikone sata za snimanje"
@@ -8740,11 +9473,19 @@ msgstr "Prikažite odabir titlova"
 msgid "Show symbols on display"
 msgstr "Prikažite simbole na zaslonu"
 
+#, fuzzy
+msgid "Show task list"
+msgstr "Prikažite popis usluga"
+
 msgid "Show the radio player..."
 msgstr "Prikažite radio player......"
 
 msgid "Show the tv player..."
 msgstr "Prikažite tv player..."
+
+#, fuzzy
+msgid "Show unknown extension as text"
+msgstr "Prikažite u izborniku proširenja"
 
 msgid "Show vertical timelines"
 msgstr "Prikažite okomite vremenske linije"
@@ -8841,6 +9582,16 @@ msgstr "Zemljopisna širina"
 msgid "Site longitude"
 msgstr "Zemljopisna dužina"
 
+msgid "Size"
+msgstr ""
+
+#, fuzzy
+msgid "Size reverse"
+msgstr "Usluge"
+
+msgid "Size:"
+msgstr ""
+
 msgid "Skin"
 msgstr "Skin"
 
@@ -8860,6 +9611,10 @@ msgstr "Preskoči prazne usluge"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Preskoči provjeru internetske veze (onemogući automatsku instalaciju paketa)"
+
+#, fuzzy
+msgid "Skip selection"
+msgstr "Uredi odabir"
 
 msgid "Sleep timer"
 msgstr "Sleep timer (Tajmer spavanja)"
@@ -8941,6 +9696,10 @@ msgstr ""
 
 msgid "Social/Political/Economics"
 msgstr "Socijalne/političke/ekonomske"
+
+#, fuzzy
+msgid "Socket"
+msgstr "UtičnicaMMI"
 
 msgid "SocketMMI"
 msgstr "UtičnicaMMI"
@@ -9032,6 +9791,12 @@ msgstr "Sortiranje popisa dodataka prema zadanim postavkama?"
 #. TRANSLATORS: This must fit into the header button in the EPG-List
 msgid "Sort time"
 msgstr "Sortiranje po vremenu"
+
+msgid "Sorting left files by name, date or size"
+msgstr ""
+
+msgid "Sorting right files by name, date or size"
+msgstr ""
 
 msgid "Sound"
 msgstr "Zvuk"
@@ -9177,6 +9942,9 @@ msgstr "Početak vremenskog pomaka"
 msgid "Start with list screen"
 msgstr "Počnite s prikazom popisa"
 
+msgid "Start/stop slide show"
+msgstr ""
+
 msgid "Starting on"
 msgstr "Počevši od"
 
@@ -9278,6 +10046,10 @@ msgstr "Zaustaviti vremenski pomak?"
 
 msgid "Stopped"
 msgstr "Zaustavljen"
+
+#, fuzzy
+msgid "Storage devices"
+msgstr "Popis uređaja za pohranu"
 
 msgid "Store at index"
 msgstr "Spremite u index"
@@ -9467,6 +10239,12 @@ msgstr "Brzina protoka & FEC"
 msgid "Symbol rate:"
 msgstr "Brzina protoka:"
 
+msgid "Symbolic link"
+msgstr ""
+
+msgid "Symlink to "
+msgstr ""
+
 msgid "Sync failure moving back to origin !"
 msgstr "Sinkronizacija nije uspjela, vratite se na izvornik !"
 
@@ -9528,6 +10306,10 @@ msgstr "Tadžikistan"
 msgid "Tanzania, United Republic of"
 msgstr "Tanzanija, Ujedinjena Republika"
 
+#, fuzzy
+msgid "Task list"
+msgstr "crna lista"
+
 msgid "Teletext subtitle color"
 msgstr "Boja titla teleteksta"
 
@@ -9585,6 +10367,9 @@ msgstr "%d minuta preostalo do kraja događaja."
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standard ne podržava H.264 (HDTV) video web prijenos. Želite li stvoriti DVD s posebnim formatom podataka (koji se neće reproducirati u samostalnim DVD playerima)?"
 
+msgid "The Image Viewer component of the File Commander requires the PicturePlayer extension. Install PicturePlayer to enable this operation."
+msgstr ""
+
 msgid "The PIN code has been changed successfully."
 msgstr "PIN je uspješno promijenjen."
 
@@ -9593,6 +10378,9 @@ msgstr "PIN kod je uspješno spremljen."
 
 msgid "The PIN codes you entered are different."
 msgstr "PIN kodovi koje ste unijeli su različiti."
+
+msgid "The authors are NOT RESPONSIBLE"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -9612,6 +10400,14 @@ msgstr ""
 
 msgid "The following files were found..."
 msgstr "Pronađene su sljedeće datoteke..."
+
+msgid ""
+"The function has been interrupted.\n"
+"Don't press any key until the picture from mvi-file is displayed!"
+msgstr ""
+
+msgid "The hash of a directory can't be calculated."
+msgstr ""
 
 msgid ""
 "The network wizard extension is not installed!\n"
@@ -9774,6 +10570,10 @@ msgstr "Ovo je višenamjenski tjuner. Dostupne opcije ovise o hardveru."
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Ovo je redoslijed slanja DiSEqC naredbi u antenski sustav. Poredak mora točno odgovarati poretku postavljanja uređaja koji su postavljeni duž signalnog kabela (počevši od kraja prijemnika)."
+
+#, fuzzy
+msgid "This line is not editable!"
+msgstr "Ovaj dodatak nije instaliran."
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
 msgstr "Ova opcija omogućuje smanjenje smetnji na slici. Manifestira se kao oštrina slike."
@@ -9998,6 +10798,10 @@ msgstr "Četvrtak"
 
 msgid "Time"
 msgstr "Vrijeme"
+
+#, fuzzy
+msgid "Time for Slideshow"
+msgstr "Pregled tajmera"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -10295,6 +11099,10 @@ msgstr "Tip LNB/uređaj"
 msgid "Type of scan"
 msgstr "Vrsta skeniranja"
 
+#, fuzzy
+msgid "Type:"
+msgstr "Tip"
+
 msgid "UNKNOWN"
 msgstr "NEPOZNATO"
 
@@ -10376,6 +11184,10 @@ msgstr "Kašnjenje nakon zadnje diseqc naredbe"
 msgid "Uninstall"
 msgstr "Deinstalacija"
 
+#, python-format
+msgid "Uninstall '%s' package and disable '%s'"
+msgstr ""
+
 msgid "United Arab Emirates"
 msgstr "Ujedinjeni Arapski Emirati"
 
@@ -10397,6 +11209,14 @@ msgstr "Univerzalni LNB"
 msgid "Unknown"
 msgstr "Nepoznato"
 
+#, fuzzy, python-format
+msgid "Unknown group: %d"
+msgstr "nepoznata greška"
+
+#, fuzzy, python-format
+msgid "Unknown user: %d"
+msgstr "nepoznat kanal"
+
 msgid "Unknown, multiboot situation!"
 msgstr ""
 
@@ -10405,6 +11225,13 @@ msgstr "Uklonite oznaku usluge kao 3D uslugu"
 
 msgid "Unmount"
 msgstr "Demontiranje"
+
+#, python-format
+msgid "Unpack to %s"
+msgstr ""
+
+msgid "Unpack to current folder"
+msgstr ""
 
 msgid "Unsupported"
 msgstr "Nepodržano"
@@ -10753,6 +11580,13 @@ msgstr "Pogledajte popis dostupnih softverskih proširenja"
 msgid "View list of available system extensions"
 msgstr "Pogledajte popis dostupnih sistemskih proširenja"
 
+msgid "View or edit file (if size < 1MB)"
+msgstr ""
+
+#, python-format
+msgid "View or edit this %s script"
+msgstr ""
+
 msgid "View photos..."
 msgstr "Prikažite fotografije..."
 
@@ -10791,6 +11625,9 @@ msgstr "Pojačavanje glasnoće"
 
 msgid "W"
 msgstr "W"
+
+msgid "WARNING!"
+msgstr ""
 
 msgid "WEP"
 msgstr "WEP"
@@ -10940,6 +11777,10 @@ msgstr ""
 
 msgid "What day of week ?"
 msgstr ""
+
+#, fuzzy
+msgid "What do you want to play?\n"
+msgstr "Želite li reproducirati DVD u pogonu?"
 
 msgid "What type of service scan do you want?"
 msgstr "Koju vrstu skeniranja usluga želite?"
@@ -11323,6 +12164,14 @@ msgstr "Možete postaviti odabrani direktorij kao 'root' direktorij za filmski p
 
 msgid "You can set sorting type for items in movielist."
 msgstr "Možete postaviti vrstu sortiranja za stavke u popisu filmskih zapisa."
+
+#, python-format
+msgid "You can't usefully run '%s' on '%s'."
+msgstr ""
+
+#, python-format
+msgid "You can't usefully run '%s' on a directory."
+msgstr ""
 
 msgid "You cannot delete this!"
 msgstr "Ne možete to izbrisati!"
@@ -11783,11 +12632,21 @@ msgstr "Višekanalni PCM"
 msgid "cooking"
 msgstr "kuhanje"
 
+#, fuzzy
+msgid "copy file"
+msgstr "%d fajl"
+
+msgid "copy folder"
+msgstr ""
+
 msgid "copy to bouquets"
 msgstr "kopiraj u pakete"
 
 msgid "create directory"
 msgstr "kreiraj direktorij"
+
+msgid "create symlink ..."
+msgstr ""
 
 msgid "daily"
 msgstr "dnevno"
@@ -11990,6 +12849,9 @@ msgstr "narodna/tradicionalna muzika"
 msgid "football/soccer"
 msgstr "nogomet"
 
+msgid "for DATA LOSS OR DAMAGE !!!"
+msgstr ""
+
 msgid "force AC3plus"
 msgstr ""
 
@@ -12009,6 +12871,10 @@ msgid "free"
 msgstr "slobodno"
 
 msgid "from"
+msgstr "iz"
+
+#, fuzzy
+msgid "from dir"
 msgstr "iz"
 
 msgid "further education"
@@ -12035,11 +12901,17 @@ msgstr "zelena"
 msgid "handicraft"
 msgstr "ručni rad"
 
+msgid "has been CHANGED! Do you want to save it?"
+msgstr ""
+
 msgid "height"
 msgstr "visina"
 
 msgid "help..."
 msgstr "pomoć..."
+
+msgid "hide"
+msgstr ""
 
 msgid "horizontal"
 msgstr "horizontalno"
@@ -12064,6 +12936,9 @@ msgstr "inicijalizacije modula"
 
 msgid "insert mark here"
 msgstr "ovdje umetnite oznaku"
+
+msgid "install/unpack ipk Files"
+msgstr ""
 
 msgid "invalid type"
 msgstr "nevažeći tip"
@@ -12131,6 +13006,9 @@ msgstr "dugo"
 msgid "magazines/reports/documentary"
 msgstr "časopisi/izvješća/dokumentarni"
 
+msgid "manage local Files"
+msgstr ""
+
 msgid "manual"
 msgstr "ručno"
 
@@ -12167,6 +13045,14 @@ msgstr "pomaknite dolje na zadnji unos"
 
 msgid "move down to next entry"
 msgstr "pomaknite dolje na sljedeći unos"
+
+#, fuzzy
+msgid "move file"
+msgstr "Uklonite naslov"
+
+#, fuzzy
+msgid "move folder"
+msgstr "[premjesti način]"
 
 msgid "move up to first entry"
 msgstr "pomaknite gore na prvi unos"
@@ -12333,11 +13219,17 @@ msgstr "pauza"
 msgid "performing arts"
 msgstr "izvedbene umjetnosti"
 
+msgid "play Files"
+msgstr ""
+
 msgid "play as picture in picture"
 msgstr "prikazati kao slika u slici"
 
 msgid "play in mainwindow"
 msgstr "igrati u glavnom prozoru"
+
+msgid "play/show Files"
+msgstr ""
 
 msgid "please press OK when ready"
 msgstr "pritisnite OK kada budete spremni"
@@ -12353,6 +13245,9 @@ msgstr "predškolski program za djecu"
 
 msgid "purge deleted userbouquets"
 msgstr "očistiti izbrisane korisničke pakete"
+
+msgid "python"
+msgstr ""
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -12477,6 +13372,12 @@ msgstr "status pretraživanja"
 msgid "science fiction/fantasy/horror"
 msgstr "znanstvena fantastika/fantazija/horor"
 
+msgid "script 'sterr':"
+msgstr ""
+
+msgid "script 'stout':"
+msgstr ""
+
 #, fuzzy
 msgid "se"
 msgstr "Upotreba"
@@ -12507,6 +13408,9 @@ msgstr "otvorene usluge"
 
 msgid "set as startup service"
 msgstr "postaviti kao startup kanal"
+
+msgid "shell"
+msgstr ""
 
 msgid "show DVD main menu"
 msgstr "prikaži glavni izbornik DVD-a"
@@ -12690,6 +13594,9 @@ msgstr "ovu snimku"
 msgid "this service is protected by a parental control pin"
 msgstr "ova usluga je zaštićena pinom roditeljske kontrole"
 
+msgid "to dir"
+msgstr ""
+
 msgid "toggle time, chapter, audio, subtitle info"
 msgstr "prebacivanje vremena, poglavlja, zvuka i informacija o titlovima"
 
@@ -12722,6 +13629,21 @@ msgstr "nepoznata greška"
 
 msgid "unknown service"
 msgstr "nepoznat kanal"
+
+msgid "unpack Rar Files"
+msgstr ""
+
+msgid "unpack archives"
+msgstr ""
+
+msgid "unpack gzip Files"
+msgstr ""
+
+msgid "unpack tar/compressed tar Files"
+msgstr ""
+
+msgid "unpack zip Files"
+msgstr ""
 
 msgid "unpublished"
 msgstr "neobjavljen"
@@ -12811,6 +13733,10 @@ msgstr "s imenom tjunera"
 
 msgid "with_errors"
 msgstr "s_greškama"
+
+#, fuzzy
+msgid "without"
+msgstr "с tekstom"
 
 msgid "wnw"
 msgstr ""

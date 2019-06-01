@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-02 00:42+0430\n"
+"POT-Creation-Date: 2019-06-02 01:30+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -128,7 +128,29 @@ msgstr ""
 "\n"
 "Bekijk, installeer en verwijder beschikbare of geïnstalleerde pakketten."
 
+#, python-format
+msgid ""
+"\n"
+"optional parameter:\n"
+"%s"
+msgstr ""
+
+msgid " "
+msgstr ""
+
 msgid "  REC  "
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished successefully."
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished with error messages."
+msgstr ""
+
+#, python-format
+msgid " ('%s') finished with error number [%d]."
 msgstr ""
 
 msgid " (0 - all networks)"
@@ -163,6 +185,19 @@ msgstr " (hoger dan de rotor van elke 'auto')"
 msgid " (lower than any auto)"
 msgstr " (lager dan elke auto)"
 
+#, python-format
+msgid " - %d elements exist! Overwrite"
+msgstr ""
+
+msgid " - 1 element exist! Overwrite"
+msgstr ""
+
+msgid " - file exist! Overwrite"
+msgstr ""
+
+msgid " - folder exist! Overwrite"
+msgstr ""
+
 msgid " extensions."
 msgstr " applicaties."
 
@@ -171,6 +206,9 @@ msgstr "min"
 
 msgid " ms"
 msgstr " ms"
+
+msgid " or save the picture additionally to a file"
+msgstr ""
 
 msgid " packages selected."
 msgstr " geselecteerde pakketten."
@@ -416,14 +454,38 @@ msgstr "%s %s beschikbare schijfruimte"
 msgid "%s ( %s Cards )"
 msgstr "%s (%s)\n"
 
+#, fuzzy, python-format
+msgid "%s (%04o)"
+msgstr "%s (%s)\n"
+
+#, fuzzy, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
+
+#, fuzzy, python-format
+msgid "%s (%sB"
+msgstr "%s (%s)\n"
+
+#, python-format
+msgid "%s - extraction errors."
+msgstr ""
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
 msgstr "%s wordt niet langer gebruikt. Kan deze verwijderd worden?"
+
+#, python-format
+msgid "%s is password protected."
+msgstr ""
+
+#, python-format
+msgid "%s successfully extracted."
+msgstr ""
 
 #, python-format
 msgid "%s updated package available"
@@ -443,13 +505,36 @@ msgstr "%s%d min"
 msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
+#, fuzzy, python-format
+msgid "%s: %s"
+msgstr "%s/%s: %s"
+
 #, python-format
 msgid "%s:%s"
 msgstr "%s:%s"
 
+#, python-format
+msgid "%sB"
+msgstr ""
+
+#, python-format
+msgid "'%s' not installed and no known package"
+msgstr ""
+
 #, fuzzy
 msgid "( All readers)"
 msgstr "Alle leeftijden"
+
+#, python-format
+msgid "(%d jobs)"
+msgstr ""
+
+msgid "(1 job)"
+msgstr ""
+
+#, fuzzy
+msgid "(Selectmode)"
+msgstr "Kies een film"
 
 msgid "(Show only reader:"
 msgstr ""
@@ -664,6 +749,9 @@ msgstr "8 bit"
 msgid "9"
 msgstr "9"
 
+msgid ": "
+msgstr ""
+
 msgid ": 0000 - default (disabled)"
 msgstr ":0000 - standaard (uitgeschakeld)"
 
@@ -694,6 +782,10 @@ msgstr "<onbekend>"
 
 msgid "=NO STREAM\n"
 msgstr "=GEEN STREAM\n"
+
+#, fuzzy
+msgid "?"
+msgstr "??"
 
 msgid "??"
 msgstr "??"
@@ -856,6 +948,10 @@ msgstr "Uw ontvanger"
 msgid "About..."
 msgstr "Informatie over uw ontvanger…"
 
+#, fuzzy
+msgid "Accessed:"
+msgstr "Accesspoint:"
+
 msgid "Accesspoint:"
 msgstr "Accesspoint:"
 
@@ -868,8 +964,20 @@ msgstr "Activeer Picture In Picture"
 msgid "Activate current configuration"
 msgstr "Activeer de huidige configuratie"
 
+msgid "Activate left-hand file list as multi-select source"
+msgstr ""
+
+msgid "Activate left-hand file list as source"
+msgstr ""
+
 msgid "Activate network settings"
 msgstr "Activeer de netwerkinstellingen"
+
+msgid "Activate right-hand file list as multi-select source"
+msgstr ""
+
+msgid "Activate right-hand file list as source"
+msgstr ""
 
 msgid "Activate the configured network settings."
 msgstr "Activeer de geconfigureerde netwerkinstellingen"
@@ -905,6 +1013,10 @@ msgstr "Voeg een nieuwe titel toe"
 msgid "Add bookmark"
 msgstr "Maak markeerpunt"
 
+#, fuzzy
+msgid "Add current folder to bookmarks"
+msgstr "Automatische bladwijzers"
+
 msgid "Add directory to playlist"
 msgstr "Voeg de map aan de afspeellijst toe"
 
@@ -913,6 +1025,13 @@ msgstr "Voeg het bestand toe aan de afspeellijst"
 
 msgid "Add files to playlist"
 msgstr "Voeg de bestanden toe aan de afspeellijst"
+
+#, fuzzy
+msgid "Add plugin to Extensions menu*"
+msgstr "In applicatie-menu tonen"
+
+msgid "Add plugin to main menu*"
+msgstr ""
 
 msgid "Add provider"
 msgstr "Provider toevoegen"
@@ -928,6 +1047,10 @@ msgstr "Voeg een opname toe (doorlopend)"
 
 msgid "Add recording (stop after current event)"
 msgstr "Voeg een opname toe (stop na huidige uitzending)"
+
+#, fuzzy
+msgid "Add selected folder to bookmarks"
+msgstr "Kies bestanden/mappen voor de backup"
 
 msgid "Add service"
 msgstr "Voeg een zender toe"
@@ -1579,6 +1702,10 @@ msgstr ""
 msgid "Blinking red"
 msgstr ""
 
+#, fuzzy
+msgid "Block device"
+msgstr "Geen uitzending"
+
 msgid "Block noise reduction"
 msgstr "Blokruisvermindering"
 
@@ -1732,6 +1859,9 @@ msgstr ""
 msgid "CPU brand: "
 msgstr ""
 
+msgid "CPU priority for script execution"
+msgstr ""
+
 msgid "CPU: "
 msgstr "CPU: "
 
@@ -1755,6 +1885,9 @@ msgstr "Berekenen"
 
 msgid "Calculate all positions"
 msgstr "Bereken alle posities"
+
+msgid "Calculate file checksums"
+msgstr ""
 
 msgid "Calculation complete"
 msgstr "Berekening gereed"
@@ -1792,8 +1925,18 @@ msgid ""
 "Yellow for returning back to this intro"
 msgstr ""
 
+#, python-format
+msgid ""
+"Can not run %s: %s.\n"
+"%s may be in a plugin that is not installed."
+msgstr ""
+
 msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternativaly you can mount the network drive after the flash and perform a manufacurer reset to autorestore"
 msgstr "Ik kan enkel een netwerkdevice vinden om de backup in op slaan waardoor herstellen na het flashen niet zal werken. Als alternatief kunt u na het flashen de netwerkdrive mounten en vervolgens een fabrieksreset en daarna een herstelbewerking uitvoeren. "
+
+#, python-format
+msgid "Can't read link contents: %s"
+msgstr ""
 
 msgid "Canada"
 msgstr "Canada"
@@ -1803,6 +1946,10 @@ msgstr "Annuleren"
 
 msgid "Cancel any text changes and exit"
 msgstr "Annuleer alle wijzigingen en stop"
+
+#, fuzzy
+msgid "Cancel execution?"
+msgstr "Zenderkeuze"
 
 msgid "Cancelled upon user request"
 msgstr "Geannuleerd a.g.v. een verzoek van de gebruiker"
@@ -1871,6 +2018,12 @@ msgstr "Wijzig PIN"
 msgid "Change bouquets in quickzap"
 msgstr "Verander van bouquet tijdens zappen"
 
+msgid "Change buttons for list navigation"
+msgstr ""
+
+msgid "Change execute permissions (755/644)"
+msgstr ""
+
 msgid "Change recording (add time)"
 msgstr "Wijzig de opname (voeg de tijd toe)"
 
@@ -1894,6 +2047,9 @@ msgstr "Kanaal"
 
 msgid "Channel Info"
 msgstr "Zenderinfo"
+
+msgid "Channel button always changes sides"
+msgstr ""
 
 msgid "Channel context menu"
 msgstr "Zenderlijstmenu"
@@ -1943,6 +2099,10 @@ msgstr "Hoofdstuk"
 
 msgid "Chapter:"
 msgstr "Hoofdstuk:"
+
+#, fuzzy
+msgid "Character device"
+msgstr "Huidig apparaat: "
 
 msgid "Check"
 msgstr "Controleer"
@@ -2754,6 +2914,26 @@ msgstr "Cook eilanden"
 msgid "Copy"
 msgstr "Kopieër"
 
+#, python-format
+msgid "Copy %d elements"
+msgstr ""
+
+msgid "Copy 1 element"
+msgstr ""
+
+#, fuzzy
+msgid "Copy file"
+msgstr "%d bestand"
+
+msgid "Copy file/directory to target directory"
+msgstr ""
+
+msgid "Copy files/directories to target directory"
+msgstr ""
+
+msgid "Copy folder"
+msgstr ""
+
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
@@ -2789,11 +2969,21 @@ msgstr "Verberg voor deze zender de flikkerende lijn bovenin het beeld"
 msgid "Create DVD-ISO"
 msgstr "DVD-ISO maken"
 
+#, fuzzy
+msgid "Create directory/folder"
+msgstr "Map aanmaken"
+
 msgid "Create new folder and exit"
 msgstr "Maak een nieuwe map en ga terug"
 
 msgid "Create separate radio userbouquet"
 msgstr "Maak een gescheiden radioboeket aan"
+
+msgid "Create symlink to file"
+msgstr ""
+
+msgid "Create user-named symbolic link"
+msgstr ""
 
 #, python-format
 msgid "Creating directory %s failed."
@@ -3014,6 +3204,10 @@ msgstr "Deens"
 msgid "Date"
 msgstr "Datum"
 
+#, fuzzy
+msgid "Date reverse"
+msgstr "Alfabetisch terug"
+
 msgid "Date/time input"
 msgstr "Tijd/Datum invoer"
 
@@ -3029,8 +3223,28 @@ msgstr "Volledig uitschakelen"
 msgid "Default"
 msgstr "Standaard"
 
+#, fuzzy
+msgid "Default Folder"
+msgstr "Standaard"
+
 msgid "Default Services Scanner"
 msgstr "Standaard kanalen scanner"
+
+#, fuzzy
+msgid "Default directory sorting"
+msgstr "Standaard instellingen"
+
+#, fuzzy
+msgid "Default file sorting left"
+msgstr "Standaard opnamelocatie."
+
+#, fuzzy
+msgid "Default file sorting right"
+msgstr "Standaard opnamelocatie."
+
+#, fuzzy
+msgid "Default folder"
+msgstr "Standaard"
 
 msgid "Default movie location"
 msgstr "Standaard opnamelocatie."
@@ -3107,6 +3321,18 @@ msgstr "De onderlinge vertraging in msec tussen de scrollende karakters op het d
 msgid "Delete"
 msgstr "Verwijderen"
 
+#, fuzzy, python-format
+msgid "Delete %d elements"
+msgstr "Verwijderde bestanden"
+
+#, fuzzy
+msgid "Delete 1 element"
+msgstr "Verwijder de invoer"
+
+#, fuzzy
+msgid "Delete current line"
+msgstr "Verwijder de invoer"
+
 msgid "Delete entry"
 msgstr "Verwijder de invoer"
 
@@ -3114,6 +3340,13 @@ msgid "Delete failed!"
 msgstr "Verwijderen mislukt!"
 
 msgid "Delete file"
+msgstr "Verwijder bestand"
+
+msgid "Delete file or directory (and all its contents)"
+msgstr ""
+
+#, fuzzy
+msgid "Delete folder"
 msgstr "Verwijder bestand"
 
 msgid "Delete image"
@@ -3130,6 +3363,9 @@ msgstr "Verwijder het teken links van de cursor"
 
 msgid "Delete the character under the text buffer cursor"
 msgstr "Verwijder het teken onder de cursor"
+
+msgid "Delete the selected files or directories"
+msgstr ""
 
 msgid "Delete timer"
 msgstr "Verwijder timer"
@@ -3381,6 +3617,10 @@ msgstr "De markering %s echt verwijderen?"
 msgid "Do you really want to stop current event and delete timer %s?"
 msgstr "Wilt u het huidige programma afbreken en de timer %s verwijderen?"
 
+#, fuzzy
+msgid "Do you want change rights?\\n"
+msgstr "Wilt u dit doen?"
+
 msgid "Do you want this?"
 msgstr "Wilt u dit doen?"
 
@@ -3453,6 +3693,10 @@ msgstr "Wilt u de ontvanger updaten?"
 
 msgid "Do you want to upgrade the package:\n"
 msgstr "Wilt u een dit pakket opwaarderen:\n"
+
+#, fuzzy
+msgid "Do you want to view or run the script?\n"
+msgstr "Wilt u de ontvanger opnieuw opstarten?"
 
 msgid "Dolby"
 msgstr "Dolby"
@@ -3602,6 +3846,18 @@ msgstr "DNS wijzigen"
 
 msgid "Edit chapters of current title"
 msgstr "Wijzig hoofdstuk van de huidige titel"
+
+#, fuzzy
+msgid "Edit current line"
+msgstr "Wijzig hoofdstuk van de huidige titel"
+
+#, fuzzy
+msgid "Edit line "
+msgstr "Wijzig timer"
+
+#, fuzzy
+msgid "Edit position is the line end"
+msgstr "Gedraaid naar positie op index"
 
 msgid "Edit selection"
 msgstr "Wijzig de selectie"
@@ -3828,6 +4084,10 @@ msgstr "Geef aan of u zich noordelijk of zuidelijk van de evenaar bevindt."
 msgid "Enter main menu..."
 msgstr "Ga naar hoofdmenu..."
 
+#, fuzzy
+msgid "Enter multi-file selection mode"
+msgstr "Sluit titelselectie"
+
 msgid "Enter persistent PIN code"
 msgstr "Voer een vaste code in"
 
@@ -3896,6 +4156,12 @@ msgstr "Fout %s"
 msgid "Error code"
 msgstr "Foutcode"
 
+#, fuzzy, python-format
+msgid ""
+"Error creating directory %s:\n"
+"%s"
+msgstr "Het aanmaken van de map %s is mislukt."
+
 #, python-format
 msgid ""
 "Error during backup settings\n"
@@ -3925,6 +4191,18 @@ msgstr ""
 msgid "Error executing plugin"
 msgstr "Fout bij uitvoeren plugin"
 
+#, python-format
+msgid ""
+"Error linking %s to %s:\n"
+"%s"
+msgstr ""
+
+#, python-format
+msgid ""
+"Error renaming %s to %s:\n"
+"%s"
+msgstr ""
+
 msgid "Error stop stream!"
 msgstr "Fout stop de stream!"
 
@@ -3944,6 +4222,10 @@ msgstr ""
 
 msgid "Error while retreiving location of epg.dat on server"
 msgstr "Fout tijdens het benaderen van de epg.dat locatie op de server "
+
+#, fuzzy
+msgid "Error..."
+msgstr "Fout"
 
 #, python-format
 msgid ""
@@ -4032,6 +4314,9 @@ msgstr "EPG afsluiten"
 msgid "Exit editor"
 msgstr "Editor afsluiten"
 
+msgid "Exit editor and write changes (if any)"
+msgstr ""
+
 msgid "Exit input device selection."
 msgstr "Beëindig invoerapparaatselectie"
 
@@ -4055,6 +4340,9 @@ msgstr "Verlaat het netwerkinterfaceoverzicht"
 
 msgid "Exit network wizard"
 msgstr "Verlaat netwerkwizard"
+
+msgid "Exit picture viewer"
+msgstr ""
 
 msgid "Exit the wizard"
 msgstr "Wizard afsluiten."
@@ -4182,6 +4470,9 @@ msgstr "FEC"
 msgid "FEC:"
 msgstr "FEC:"
 
+msgid "FIFO"
+msgstr ""
+
 msgid "FSBL Update Check"
 msgstr ""
 
@@ -4286,12 +4577,70 @@ msgstr "Favorieten"
 msgid "Fiji"
 msgstr "Fiji"
 
+#, fuzzy
+msgid "File Commander"
+msgstr "Commando volgorde"
+
+msgid "File Commander - Addon File-Viewer"
+msgstr ""
+
+msgid "File Commander - Addon Mediaplayer"
+msgstr ""
+
+msgid "File Commander - Addon Movieplayer"
+msgstr ""
+
+msgid "File Commander - all Task's completed!"
+msgstr ""
+
+msgid "File Commander - generalised archive handler"
+msgstr ""
+
+msgid "File Commander - gzip Addon"
+msgstr ""
+
+msgid "File Commander - ipk Addon"
+msgstr ""
+
+msgid "File Commander - tar Addon"
+msgstr ""
+
+msgid "File Commander - unrar Addon"
+msgstr ""
+
+msgid "File Commander - unzip Addon"
+msgstr ""
+
+#, fuzzy
+msgid "File Commander context menu"
+msgstr "Zenderlijstmenu"
+
+msgid "File Commander menu"
+msgstr ""
+
 msgid "File appears to be busy.\n"
 msgstr "Bestand mogelijk in gebruik door ander proces.\n"
+
+msgid "File checksums/hashes"
+msgstr ""
+
+#, python-format
+msgid "File not found: %s"
+msgstr ""
 
 msgid ""
 "File oscam.conf/ncam.conf not found.\n"
 "Please enter username/password manually."
+msgstr ""
+
+msgid "File transfer was cancelled by user"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "File write error: '%s'"
+msgstr "met fouten"
+
+msgid "File/Directory Status Information"
 msgstr ""
 
 msgid "Filename"
@@ -4299,6 +4648,9 @@ msgstr "Bestandsnaam"
 
 msgid "Filesystem check"
 msgstr "Bestandssysteemcontrole"
+
+msgid "Filter extension, (*) appears in title"
+msgstr ""
 
 msgid "Final position at"
 msgstr "Eindpositie op"
@@ -4521,6 +4873,13 @@ msgstr "Gibraltar"
 msgid "Go down the list"
 msgstr "Ga naar beneden"
 
+msgid "Go to bookmarked folder"
+msgstr ""
+
+#, fuzzy
+msgid "Go to end of file"
+msgstr "Spring naar het eind van de lijst"
+
 msgid "Go to first movie or last item"
 msgstr "Ga naar de eerste film of einde van de lijst"
 
@@ -4539,11 +4898,19 @@ msgstr "Ga naar de volgende EPG info"
 msgid "Go to next page of service"
 msgstr "Ga naar volgende pagina met kanalen"
 
+#, fuzzy
+msgid "Go to parent directory"
+msgstr "Bovengelegen map"
+
 msgid "Go to previous event"
 msgstr "Ga naar de vorige EPG info"
 
 msgid "Go to previous page of service"
 msgstr "Ga naar de vorige pagina met kanalen"
+
+#, fuzzy
+msgid "Go to start of file"
+msgstr "Ga naar volgende pagina met kanalen"
 
 msgid "Go up the list"
 msgstr "Ga naar boven"
@@ -4617,6 +4984,9 @@ msgstr "Groenland"
 
 msgid "Grenada"
 msgstr "Grenada"
+
+msgid "Group:"
+msgstr ""
 
 msgid "Grow drop"
 msgstr ""
@@ -4872,6 +5242,9 @@ msgstr "I"
 msgid "I do not want to perform any service scans"
 msgstr "Ik wil verder geen (aanvullende) zenderscan uitvoeren."
 
+msgid "I/O priority for script execution"
+msgstr ""
+
 msgid "IDLE"
 msgstr "INACTIEF"
 
@@ -5099,6 +5472,9 @@ msgstr "Initialiseer"
 msgid "Initializing storage device..."
 msgstr "Opslagapparaat initialiseren"
 
+msgid "Inode:"
+msgstr ""
+
 msgid "Input"
 msgstr "Invoer"
 
@@ -5114,8 +5490,19 @@ msgstr "Invoerapparaat setup"
 msgid "Input devices"
 msgstr "Invoerapparaten"
 
+msgid "Insert"
+msgstr ""
+
+#, fuzzy
+msgid "Insert line before current line"
+msgstr "Eigenschappen van huidige titel"
+
 msgid "Install"
 msgstr "Installeer"
+
+#, python-format
+msgid "Install '%s' and enable this operation"
+msgstr ""
 
 msgid "Install channel list"
 msgstr "Plaats een zenderlijst"
@@ -5140,6 +5527,10 @@ msgstr "Het installeren of verwijderen is voltooid."
 
 msgid "Installing"
 msgstr "Installeert"
+
+#, fuzzy
+msgid "Installing Plugin ..."
+msgstr "De software wordt geïnstalleerd..."
 
 #, fuzzy
 msgid "Installing service"
@@ -5225,6 +5616,19 @@ msgstr "Ieland Man"
 msgid "Israel"
 msgstr "Israel"
 
+msgid "It is not possible to calculate hashes on <List of Storage Devices>"
+msgstr ""
+
+msgid "It is not possible to change the file mode of <List of Storage Devices>"
+msgstr ""
+
+msgid "It is not possible to get the file status of <List of Storage Devices>"
+msgstr ""
+
+#, python-format
+msgid "It is not possible to run '%s' on <List of Storage Devices>"
+msgstr ""
+
 #, fuzzy
 msgid ""
 "It seems you did not see all the eight arrow heads. This means your TV has overscan enabled, and is not configured properly.\n"
@@ -5237,6 +5641,9 @@ msgstr ""
 "Kijk in de handleiding van de TV hoe overscan op de TV kan worden uitgeschakeld. Zoek op een term als 'passend', etc. Indien u het niet kunt vinden kunt u deze dit aan andere gebruikers stellen op ons supportboard. http://forums.openpli.org\n"
 
 msgid "It's not a genuine Open Vision!"
+msgstr ""
+
+msgid "It's not possible to rename the filesystem root."
 msgstr ""
 
 msgid "Italian"
@@ -5433,6 +5840,13 @@ msgstr "Lets"
 msgid "Leave DVD player?"
 msgstr "Verlaat de DVD-speler?"
 
+msgid "Leave File Commander"
+msgstr ""
+
+#, fuzzy
+msgid "Leave multi-select mode"
+msgstr "Zenders titel mode"
+
 msgid "Leave this set to 'yes' unless you fully understand why you are adjusting it."
 msgstr "Laat deze waarde op 'ja' staan tenzij u exact begrijpt waarom u deze optie gebruikt."
 
@@ -5494,17 +5908,29 @@ msgstr "Limieten aan"
 msgid "Link quality:"
 msgstr "Kwaliteit van de verbinding:"
 
+#, fuzzy
+msgid "Link target:"
+msgstr "Kwaliteit van de verbinding:"
+
 msgid "Link:"
 msgstr "Verbinding:"
 
 msgid "Linked titles with a DVD menu"
 msgstr "Verbind titels met een DVD menu"
 
+#, fuzzy
+msgid "Links:"
+msgstr "Verbinding:"
+
 msgid "List available networks"
 msgstr "Toon beschikbare netwerken"
 
 msgid "List mode"
 msgstr "Lijstmode"
+
+#, fuzzy
+msgid "List of Storage Devices"
+msgstr "Overzicht van opslagmedia"
 
 msgid "List of storage devices"
 msgstr "Overzicht van opslagmedia"
@@ -5745,6 +6171,9 @@ msgstr "Bericht..."
 msgid "Messages"
 msgstr "Berichten"
 
+msgid "Metadata changed:"
+msgstr ""
+
 msgid "Mexico"
 msgstr "Mexico"
 
@@ -5778,6 +6207,10 @@ msgctxt "Video output mode"
 msgid "Mode"
 msgstr "Modus (resolutie van het beeldscherm)"
 
+#, python-format
+msgid "Mode %s (%04o)"
+msgstr ""
+
 msgid "Model"
 msgstr "Model"
 
@@ -5786,6 +6219,9 @@ msgstr "Model: "
 
 msgid "Modes"
 msgstr "Modi"
+
+msgid "Modified:"
+msgstr ""
 
 msgid "Modulation"
 msgstr "Modulatie"
@@ -5839,6 +6275,14 @@ msgstr "Mount"
 msgid "Move"
 msgstr "Verplaats"
 
+#, fuzzy, python-format
+msgid "Move %d elements"
+msgstr "Beweging"
+
+#, fuzzy
+msgid "Move 1 element"
+msgstr "Beweging"
+
 msgid "Move PIP"
 msgstr "Verplaats PIP"
 
@@ -5848,8 +6292,27 @@ msgstr "Verplaats het PIP beeld naar het hoofdbeeld"
 msgid "Move Picture in Picture"
 msgstr "Verplaats het PIP scherm"
 
+#, fuzzy
+msgid "Move down list"
+msgstr "Ga naar beneden"
+
 msgid "Move east"
 msgstr "Draai oost"
+
+#, fuzzy
+msgid "Move file"
+msgstr "Draai oost"
+
+msgid "Move file/directory to target directory"
+msgstr ""
+
+#, fuzzy
+msgid "Move files/directories to target directory"
+msgstr "Verplaatsen naar dezelfde doelmap wordt niet geaccepteerd."
+
+#, fuzzy
+msgid "Move folder"
+msgstr "[verplaatsmodus]"
 
 msgid "Move the text buffer cursor left"
 msgstr "Verplaatst de cursor naar links"
@@ -5878,6 +6341,10 @@ msgstr "Verplaats de cursor van het virtuale toetsenbord naar boven"
 msgid "Move to position X"
 msgstr "Ga naar positie X"
 
+#, fuzzy
+msgid "Move up list"
+msgstr "Ga naar boven"
+
 msgid "Move west"
 msgstr "Draai west"
 
@@ -5889,6 +6356,10 @@ msgstr "Gedraaid naar positie op index"
 
 msgid "Movement"
 msgstr "Beweging"
+
+#, fuzzy
+msgid "Movie"
+msgstr "Draaien"
 
 msgid "Movie list configuration"
 msgstr "Configuratie van de opnamelijst"
@@ -5950,11 +6421,22 @@ msgstr "Multisat. (Alle satellieten)"
 msgid "Multistream"
 msgstr "Multistream"
 
+msgid "Music"
+msgstr ""
+
 msgid "Music/Ballet/Dance"
 msgstr "Muziek/Ballet/Dans"
 
 msgid "Mute"
 msgstr "Geluid uit"
+
+#, fuzzy
+msgid "My Extension"
+msgstr "Applicaties"
+
+#, fuzzy
+msgid "My extension"
+msgstr " applicaties."
 
 msgid "Myanmar"
 msgstr "Myanmar"
@@ -5983,6 +6465,10 @@ msgstr "NTSC"
 
 msgid "Name"
 msgstr "Naam"
+
+#, fuzzy
+msgid "Name reverse"
+msgstr "Nameserver"
 
 msgid "Nameserver"
 msgstr "Nameserver"
@@ -6078,6 +6564,9 @@ msgstr "Nieuw Caledonië"
 msgid "New Zealand"
 msgstr "Nieuw Zeeland"
 
+msgid "New folder"
+msgstr ""
+
 msgid "News Current Affairs"
 msgstr "Nieuws/Actualiteiten"
 
@@ -6151,11 +6640,18 @@ msgstr "Geen EPG gegevens gevonden. Opname voor onbepaalde tijd."
 msgid "No fast winding possible yet.. but you can use the number buttons to skip forward/backward!"
 msgstr "Snel spoelen is nog niet mogelijk maar u kunt wel de cijfertoetsen gebruiken om voorwaarts of terug te springen!"
 
+#, fuzzy
+msgid "No files found."
+msgstr "Er zijn geen images gevonden"
+
 msgid "No free index available"
 msgstr "Geen vrije index beschikbaar"
 
 msgid "No free tuner!"
 msgstr "Geen vrije tuner!"
+
+msgid "No hash calculations configured"
+msgstr ""
 
 msgid "No images found"
 msgstr "Er zijn geen images gevonden"
@@ -6225,6 +6721,10 @@ msgstr "Geen updates beschikbaar."
 msgid "No updates available. Please try again later."
 msgstr "Geen update beschikbaar. Probeer het later nogmaals."
 
+#, python-format
+msgid "No viewer installed for this file type: %s"
+msgstr ""
+
 msgid "No wireless networks found! Searching..."
 msgstr "Geen draadloze netwerken gevonden! Zoeken..."
 
@@ -6267,6 +6767,10 @@ msgstr "Nee, nooit"
 msgid "None"
 msgstr "Geen"
 
+#, python-format
+msgid "None of the hash programs for the hashes %s are available"
+msgstr ""
+
 #. TRANSLATORS: (aspect ratio policy: display as fullscreen, with stretching the left/right)
 msgid "Nonlinear"
 msgstr "Niet lineair"
@@ -6297,6 +6801,9 @@ msgstr "Noors"
 
 msgid "Not Defined"
 msgstr "Niet vestgelegd"
+
+msgid "Not allowed with folders"
+msgstr ""
 
 msgid "Not associated"
 msgstr "Geen verband"
@@ -6341,6 +6848,9 @@ msgstr ""
 
 msgid "Number of channels shown in channel selection list"
 msgstr "Aantal weer te geven zenders in de zenderlijst"
+
+msgid "Number of lines in script messages"
+msgstr ""
 
 msgid "Number of repeating text on display."
 msgstr "Het aantal herhaalde teksten op het display"
@@ -6390,6 +6900,10 @@ msgstr "Oman"
 
 msgid "On"
 msgstr "Aan"
+
+#, fuzzy
+msgid "On device:"
+msgstr "Invoerapparaten"
 
 msgid "On end of movie"
 msgstr "Op het einde van de opname"
@@ -6444,11 +6958,18 @@ msgstr "Open selectie keuze als timer naam"
 msgid "Open service list"
 msgstr "Open de zenderlijst"
 
+#, fuzzy
+msgid "Open settings/actions menu"
+msgstr "In applicatie-menu tonen"
+
 msgid "Open setup tuner "
 msgstr "Open tunerinstellingen "
 
 msgid "Open the movie list"
 msgstr "Open de opnamelijst"
+
+msgid "Open with File Commander"
+msgstr ""
 
 msgid "Options disable timer"
 msgstr "Opties m.b.t. déactiveren timer"
@@ -6493,6 +7014,9 @@ msgstr "Configuratie bestanden tijdens de software update overschrijven?"
 
 msgid "Overwrite configuration files?"
 msgstr "Configuratie bestanden overschrijven?"
+
+msgid "Owner:"
+msgstr ""
 
 msgid "PAL"
 msgstr "PAL"
@@ -6552,6 +7076,14 @@ msgstr "Pakketbeheer"
 msgid "Packet manager"
 msgstr "Pakketbeheer"
 
+#, fuzzy
+msgid "Page down list"
+msgstr "Ga naar beneden"
+
+#, fuzzy
+msgid "Page up list"
+msgstr "Sla de afspeellijst op"
+
 msgid "Pakistan"
 msgstr "Pakistan"
 
@@ -6577,6 +7109,10 @@ msgstr "Papua Nieuw Guinea"
 msgid "Paraguay"
 msgstr "Paraguay"
 
+#, fuzzy
+msgid "Parent Directory"
+msgstr "Bovengelegen map"
+
 msgid "Parent directory"
 msgstr "Bovengelegen map"
 
@@ -6598,6 +7134,9 @@ msgstr "Wachtwoord"
 #, fuzzy
 msgid "Password (httpwd)"
 msgstr "Wachtwoord"
+
+msgid "Path to save not exist: '/tmp/'"
+msgstr ""
 
 msgid "Pause"
 msgstr "Pauze"
@@ -6623,6 +7162,9 @@ msgstr "Alle bestanden in de prullenbak nu permanent verwijderen?"
 msgid "Permanently remove all deleted items"
 msgstr "Prullenbak leegmaken?"
 
+msgid "Permissions:"
+msgstr ""
+
 msgid "Persian"
 msgstr "Perzisch"
 
@@ -6642,6 +7184,10 @@ msgid "Picon and servicename"
 msgstr "Picon en zendernaam"
 
 msgid "Picture player"
+msgstr "Slideshow"
+
+#, fuzzy
+msgid "Pictures"
 msgstr "Slideshow"
 
 #. TRANSLATORS: (aspect ratio policy: black bars on left/right) in doubt, keep english term.
@@ -6679,6 +7225,10 @@ msgstr "Speel mediabestanden af"
 msgid "Play entry"
 msgstr "Afspelen"
 
+#, fuzzy
+msgid "Play folder"
+msgstr "Afspelen"
+
 msgid "Play from next mark or playlist entry"
 msgstr "Afspelen vanaf het volgende markeerpunt of de volgende opname"
 
@@ -6702,6 +7252,13 @@ msgstr "Vorige afspelen"
 
 msgid "Play recorded movies..."
 msgstr "Opname afspelen..."
+
+#, fuzzy
+msgid "Play title"
+msgstr "Voeg titel toe"
+
+msgid "Play/view/edit/install/extract/run file or enter directory"
+msgstr ""
 
 msgid "Please add titles to the compilation."
 msgstr "Voeg aub titels toe aan de compilatie"
@@ -6763,10 +7320,18 @@ msgstr "Voer een bestandsnaam in (leeg= huidige datum)"
 msgid "Please enter name of the new directory"
 msgstr "Voer de naam van de nieuwe map in aub."
 
+#, fuzzy
+msgid "Please enter name of the new symlink"
+msgstr "Voer de naam van de nieuwe map in aub."
+
 msgid "Please enter new description:"
 msgstr "Voer aub de nieuwe omschrijving in"
 
 msgid "Please enter new name:"
+msgstr "Geef aub een nieuwe naam in:"
+
+#, fuzzy
+msgid "Please enter password"
 msgstr "Geef aub een nieuwe naam in:"
 
 msgid "Please enter the correct pin code"
@@ -6774,6 +7339,14 @@ msgstr "Gelieve de juiste pincode in te voeren"
 
 msgid "Please enter the new PIN code"
 msgstr "Voer de nieuwe PIN code in"
+
+#, fuzzy
+msgid "Please enter the new directory name"
+msgstr "Voer de naam van de nieuwe map in aub."
+
+#, fuzzy
+msgid "Please enter the new file name"
+msgstr "Voer aub een bestandsnaam in "
 
 msgid "Please enter the old PIN code"
 msgstr "Toets de oude pincode in aub."
@@ -6941,6 +7514,10 @@ msgstr "Een ogenblik geduld aub terwijl uw netwerk getest wordt..."
 
 msgid "Please wait while your network is restarting..."
 msgstr "Een ogenblik geduld aub terwijl uw netwerk wordt herstart..."
+
+#, fuzzy
+msgid "Please wait, Loading image."
+msgstr "Even geduld... De lijst wordt geladen..."
 
 msgid "Please wait, restarting cardserver."
 msgstr "Een moment aub, de kaartserver wordt herstart."
@@ -7240,6 +7817,30 @@ msgstr "Prioriteit"
 msgid "Process"
 msgstr "Proces"
 
+#, python-format
+msgid ""
+"Program '%s' is installed.\n"
+"The package containing this program isn't known, so it can't be uninstalled."
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run the '%s' action.\n"
+"Uninstall the '%s' package to uninstall the program?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run this action.\n"
+"Install the '%s' package to install the program?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Program '%s' not installed.\n"
+"The package containing this program isn't known."
+msgstr ""
+
 msgid "Progress"
 msgstr "Voortgang"
 
@@ -7473,6 +8074,10 @@ msgid "Recordings always have priority"
 msgstr "Een opname heeft altijd voorrang"
 
 #, fuzzy
+msgid "Records"
+msgstr "Opname"
+
+#, fuzzy
 msgid "Recovery Mode"
 msgstr "Gebruikersinstellingen"
 
@@ -7500,6 +8105,10 @@ msgstr "Herhaalfrequentie"
 msgid "Refresh rate selection."
 msgstr "Herhalingsfrequentie"
 
+#, fuzzy
+msgid "Refresh screen"
+msgstr "Herhaalfrequentie"
+
 msgid "Refusing to move to the same directory"
 msgstr "Verplaatsen naar dezelfde doelmap wordt niet geaccepteerd."
 
@@ -7508,6 +8117,10 @@ msgstr "Beschouw de diepe standby als normale standby"
 
 msgid "Region"
 msgstr "Regio"
+
+#, fuzzy
+msgid "Regular file"
+msgstr "sjabloonbestand"
 
 msgid "Relative"
 msgstr "Relatief"
@@ -7564,6 +8177,9 @@ msgstr "Wis markeerpunt"
 msgid "Remove completed timers after (days)"
 msgstr "Verwijder de afgeronde timers na ... dagen"
 
+msgid "Remove current folder from bookmarks"
+msgstr ""
+
 msgid "Remove currently selected title"
 msgstr "Verwijder de huidig geselecteerde titel"
 
@@ -7572,6 +8188,9 @@ msgstr "Verwijder de opnames uit de prullenbak na ... dagen"
 
 msgid "Remove plugins"
 msgstr "Verwijderen plugins"
+
+msgid "Remove selected folder from bookmarks"
+msgstr ""
 
 msgid "Remove this logfile"
 msgstr "Verwijder dit logbestand"
@@ -7595,6 +8214,10 @@ msgstr "Geen uitzending"
 
 msgid "Rename"
 msgstr "Wijzigen"
+
+#, fuzzy
+msgid "Rename file/directory"
+msgstr "Map aanmaken"
 
 msgid "Rename name and description for new events"
 msgstr "Wijzig de naam + de omschrijving voor nieuwe programma's"
@@ -7757,8 +8380,16 @@ msgstr "Reunion"
 msgid "Reverse bouquet buttons"
 msgstr "Wijzig het bouquet +/- gedrag"
 
+#, fuzzy
+msgid "Reverse left file sorting"
+msgstr "Omgekeerde volgorde"
+
 msgid "Reverse list"
 msgstr "Omgekeerde volgorde"
+
+#, fuzzy
+msgid "Reverse right file sorting"
+msgstr "Nooit decoderen tijdens een opname"
 
 msgid "Rewind speeds"
 msgstr "Terugspoelsnelheden"
@@ -7799,7 +8430,24 @@ msgstr "Rotor:"
 msgid "Round start time on"
 msgstr "Starttijd afronden op"
 
+#, python-format
+msgid "Run '%s' command"
+msgstr ""
+
 msgid "Run how often ?"
+msgstr ""
+
+msgid "Run script"
+msgstr ""
+
+#, fuzzy
+msgid "Run script in background"
+msgstr "%d opdracht draait op de achtergrond!"
+
+msgid "Run script with optional parameter"
+msgstr ""
+
+msgid "Run script with optional parameter in background"
 msgstr ""
 
 #, fuzzy
@@ -7953,11 +8601,25 @@ msgstr "Sla de timeshift op en beëindig deze"
 msgid "Save changes"
 msgstr "Wijzigingen opslaan"
 
+#, fuzzy
+msgid "Save left folder on exit"
+msgstr "Maak een nieuwe map en ga terug"
+
 msgid "Save playlist"
 msgstr "Sla de afspeellijst op"
 
+#, fuzzy
+msgid "Save right folder on exit"
+msgstr "Maak een nieuwe map en ga terug"
+
 msgid "Save settings and EPG data"
 msgstr "Sla de instellingen plus EPG data op"
+
+#, python-format
+msgid ""
+"Save the commands and the output to a file?\n"
+"('%s')"
+msgstr ""
 
 msgid "Save timeshift and zap"
 msgstr "Sla de timeshift op en schakel om"
@@ -8056,6 +8718,10 @@ msgid "Schedule EPG and channel list import"
 msgstr ""
 
 msgid "Screenshot of LCD in /tmp"
+msgstr ""
+
+#, python-format
+msgid "Script '%s' must have read permission to be able to run it"
 msgstr ""
 
 msgid "Scroll delay"
@@ -8172,6 +8838,9 @@ msgstr "Kies 'ja' om %s band te voegen aan uw scan."
 msgid "Select 'yes' to only send the DiSEqC command when changing from one satellite to another, or select 'no' for the DiSEqC command to be resent on every zap."
 msgstr "Selecteer ‘ja’ om enkel een diseqc signaal te versturen bij het wisselen van satelliet, of kies voor ‘nee’ om het diseqc commando te versturen bij iedere keer dat u zapt."
 
+msgid "Select (source list) or enter directory (target list)"
+msgstr ""
+
 msgid "Select CAId"
 msgstr "Selecteer CAId"
 
@@ -8204,6 +8873,10 @@ msgstr "Kies een opname"
 
 msgid "Select a network adapter"
 msgstr "Kies een netwerkadapter"
+
+#, fuzzy
+msgid "Select a path"
+msgstr "Kies een tuner"
 
 msgid "Select a skin"
 msgstr "Kies een skin"
@@ -8398,6 +9071,10 @@ msgstr "Kies uw ATSC aanbieder."
 msgid "Select your country. If not available select 'all'."
 msgstr "Kies uw land. Indien niet beschikbaar kies 'alle'."
 
+#, fuzzy
+msgid "Select your personal settings:"
+msgstr "Kies de horizontale resolutie:"
+
 msgid "Select your provider and region. If not present in this list you will need to select one of the other 'service scan types'."
 msgstr "Kies uw provider en regio. Indien niet aanwezig in de lijst kies dan voor een van de alternatieve scanopties."
 
@@ -8569,6 +9246,9 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Zet alle Hotkey instellingen terug?"
 
+msgid "Set archive mode (644)"
+msgstr ""
+
 msgid "Set blocktimes by weekday"
 msgstr "Stel bloktijden in als wekelijks"
 
@@ -8580,6 +9260,9 @@ msgstr "Naar standaard instellingen?"
 
 msgid "Set end time"
 msgstr "Stel de eindtijd in"
+
+msgid "Set executable mode (755)"
+msgstr ""
 
 msgid "Set fixed"
 msgstr "Zet vast"
@@ -8670,6 +9353,10 @@ msgstr "Settings"
 msgid "Settings can be different for each directory separately (for non removeable devices only)."
 msgstr "Instellingen kunnen verschillen per directory (enkel voor niet verwisselbare apparaten)."
 
+#, fuzzy
+msgid "Settings..."
+msgstr "Settings"
+
 msgid "Setup"
 msgstr "Instellingen"
 
@@ -8709,6 +9396,12 @@ msgstr ""
 
 msgid "Show"
 msgstr "Toon"
+
+#, python-format
+msgid ""
+"Show '%s' as picture%s?\n"
+"The current service must be interrupted!"
+msgstr ""
 
 #, fuzzy
 msgid "Show /tmp/ecm.info"
@@ -8775,6 +9468,12 @@ msgstr ""
 msgid "Show SNR percentage instead of dB value"
 msgstr "Toon de signaalwaarde in procenten i.p.v. in dB"
 
+msgid "Show Script completed message"
+msgstr ""
+
+msgid "Show Task's completed message"
+msgstr ""
+
 msgid "Show True/False as graphical switch"
 msgstr "Toon 'waar/niet waar' als grafische schakelaar"
 
@@ -8786,6 +9485,13 @@ msgstr "WIFIstatus weergeven"
 
 msgid "Show animation while busy"
 msgstr "Laat een animatie zien bij lopende activiteiten"
+
+msgid "Show as Picture (press any key to close)"
+msgstr ""
+
+#, python-format
+msgid "Show as Picture and save as file ('%s')"
+msgstr ""
 
 msgid "Show background behind subtitles"
 msgstr "Toon een achtergrond achter de ondertitels"
@@ -8805,6 +9511,18 @@ msgstr "Toon de kanaalnummers in de zenderlijst"
 msgid "Show columns"
 msgstr "Toon de kolommen"
 
+msgid "Show contents of ipk file"
+msgstr ""
+
+msgid "Show contents of rar file"
+msgstr ""
+
+msgid "Show contents of tar or compressed tar file"
+msgstr ""
+
+msgid "Show contents of zip file"
+msgstr ""
+
 msgid "Show crypto icons"
 msgstr "Toon icoon indien gecodeerd"
 
@@ -8813,6 +9531,10 @@ msgstr "Toon coderingsinfo in de informatiebalk"
 
 msgid "Show detailed event info"
 msgstr "Gedetailleerde EPG info weergeven"
+
+#, fuzzy
+msgid "Show directories first"
+msgstr "Toon de favorietenlijsten"
 
 msgid "Show event details"
 msgstr "EPG details weergeven"
@@ -8840,6 +9562,10 @@ msgstr "Toon de help"
 
 msgid "Show icon for new/unseen items"
 msgstr "Icoon tonen voor nieuwe of niet bekeken items"
+
+#, fuzzy
+msgid "Show image information"
+msgstr "Softwarebeheerinformatie"
 
 msgid "Show in extensions menu"
 msgstr "In applicatie-menu tonen"
@@ -8883,6 +9609,9 @@ msgstr "Toon de films"
 msgid "Show multi channel EPG"
 msgstr "Toon de meerkanaals EPG"
 
+msgid "Show next picture"
+msgstr ""
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Indien geactiveerd, dan wordt er een melding weergegeven indien de import van zenders en/of EPG vanaf de externe ontvanger niet (compleet) gelukt is."
 
@@ -8909,6 +9638,10 @@ msgstr "Rotorbewegingen zichtbaar"
 
 msgid "Show positioner position"
 msgstr "Toon de positie van de diseqc motor"
+
+#, fuzzy
+msgid "Show previous picture"
+msgstr "Schakel naar het vorige bouquet"
 
 msgid "Show record clock icons"
 msgstr "Opname klok iconen tonen"
@@ -8959,11 +9692,19 @@ msgstr "Toon de selectie van de ondertitels"
 msgid "Show symbols on display"
 msgstr "Toon symbolen op het display"
 
+#, fuzzy
+msgid "Show task list"
+msgstr "Toon de zenderlijst"
+
 msgid "Show the radio player..."
 msgstr "Radio weergave modus..."
 
 msgid "Show the tv player..."
 msgstr "TV weergave modus..."
+
+#, fuzzy
+msgid "Show unknown extension as text"
+msgstr "In applicatie-menu tonen"
 
 msgid "Show vertical timelines"
 msgstr "Toon de verticale tijdlijnen"
@@ -9060,6 +9801,16 @@ msgstr "Breedtegraad van de locatie"
 msgid "Site longitude"
 msgstr "Lengtegraad van de locatie"
 
+msgid "Size"
+msgstr ""
+
+#, fuzzy
+msgid "Size reverse"
+msgstr "Zenders"
+
+msgid "Size:"
+msgstr ""
+
 msgid "Skin"
 msgstr "Skin selectie"
 
@@ -9079,6 +9830,10 @@ msgstr "Sla de lege kanalen over"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Sla deze over. (De automatische installatie van pakketten vervalt)"
+
+#, fuzzy
+msgid "Skip selection"
+msgstr "Wijzig de selectie"
 
 msgid "Sleep timer"
 msgstr "Sleeptimer"
@@ -9160,6 +9915,10 @@ msgstr ""
 
 msgid "Social/Political/Economics"
 msgstr "Sociaal/Politiek/Economisch"
+
+#, fuzzy
+msgid "Socket"
+msgstr "locked"
 
 msgid "SocketMMI"
 msgstr ""
@@ -9251,6 +10010,12 @@ msgstr "Sorteer de plugins in de standaard volgorde?"
 #. TRANSLATORS: This must fit into the header button in the EPG-List
 msgid "Sort time"
 msgstr "Sorteertijd"
+
+msgid "Sorting left files by name, date or size"
+msgstr ""
+
+msgid "Sorting right files by name, date or size"
+msgstr ""
 
 msgid "Sound"
 msgstr "Geluid"
@@ -9396,6 +10161,9 @@ msgstr "Start de timeshift"
 msgid "Start with list screen"
 msgstr "Start met een zichtbare lijst"
 
+msgid "Start/stop slide show"
+msgstr ""
+
 msgid "Starting on"
 msgstr "Start op"
 
@@ -9500,6 +10268,10 @@ msgstr "Beëindig de timeshift?"
 
 msgid "Stopped"
 msgstr "Gestopt"
+
+#, fuzzy
+msgid "Storage devices"
+msgstr "Overzicht van opslagmedia"
 
 msgid "Store at index"
 msgstr "Opslaan op index"
@@ -9689,6 +10461,12 @@ msgstr "Symbol rate & FEC"
 msgid "Symbol rate:"
 msgstr "Symbol rate:"
 
+msgid "Symbolic link"
+msgstr ""
+
+msgid "Symlink to "
+msgstr ""
+
 msgid "Sync failure moving back to origin !"
 msgstr "Sync probleem bij draaiing naar nulpunt !"
 
@@ -9754,6 +10532,10 @@ msgstr "Tajikistan"
 msgid "Tanzania, United Republic of"
 msgstr "Tanzania, verenigde republiek"
 
+#, fuzzy
+msgid "Task list"
+msgstr "zwarte lijst"
+
 msgid "Teletext subtitle color"
 msgstr "Teletekst kleur van de ondertitel"
 
@@ -9815,6 +10597,9 @@ msgstr "Nog %d min tot het einde van het programma."
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "De DVD standaard ondersteunt geen H.264 (HDTV) videostreams. Wilt u een DVD aanmaken met een speciaal formaat (veel DVD spelers kunnen dat niet afspelen)?"
 
+msgid "The Image Viewer component of the File Commander requires the PicturePlayer extension. Install PicturePlayer to enable this operation."
+msgstr ""
+
 msgid "The PIN code has been changed successfully."
 msgstr "De pincode is gewijzigd."
 
@@ -9823,6 +10608,9 @@ msgstr "Pincode met succes opgeslagen."
 
 msgid "The PIN codes you entered are different."
 msgstr "De ingevoerde pincodes zijn niet gelijk."
+
+msgid "The authors are NOT RESPONSIBLE"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -9842,6 +10630,14 @@ msgstr ""
 
 msgid "The following files were found..."
 msgstr "De volgende bestanden werden gevonden..."
+
+msgid ""
+"The function has been interrupted.\n"
+"Don't press any key until the picture from mvi-file is displayed!"
+msgstr ""
+
+msgid "The hash of a directory can't be calculated."
+msgstr ""
 
 msgid ""
 "The network wizard extension is not installed!\n"
@@ -10003,6 +10799,10 @@ msgstr "Dit is een multitype tuner. Beschikbare opties zijn afhankelijk van de h
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Dit is hoe de diseqc commando's naar het ontvangstsysteem verstuurd worden. Dit moet exact overeenkomen met de volgorde zoals de fysieke apparaten op de coax aangesloten zijn, te beginnen bij de ontvanger."
+
+#, fuzzy
+msgid "This line is not editable!"
+msgstr "Deze plugin is niet geïnstalleerd."
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
 msgstr "Deze optie staat toe om ruis in het beeld te blokken. Uiteraard gaat e.e.a. ten koste van de beeldscherpte."
@@ -10248,6 +11048,10 @@ msgstr "Donderdag"
 
 msgid "Time"
 msgstr "Tijd"
+
+#, fuzzy
+msgid "Time for Slideshow"
+msgstr "Timeroverzicht"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -10545,6 +11349,10 @@ msgstr "LNB/apparaat type"
 msgid "Type of scan"
 msgstr "Zoekmodus"
 
+#, fuzzy
+msgid "Type:"
+msgstr "Type"
+
 msgid "UNKNOWN"
 msgstr "ONBEKEND"
 
@@ -10626,6 +11434,10 @@ msgstr "De Unicable-vertraging na het laatste diseqc commando"
 msgid "Uninstall"
 msgstr "De-installeer"
 
+#, python-format
+msgid "Uninstall '%s' package and disable '%s'"
+msgstr ""
+
 msgid "United Arab Emirates"
 msgstr "Arabische Emiraten"
 
@@ -10647,6 +11459,14 @@ msgstr "Universeel LNB"
 msgid "Unknown"
 msgstr "Onbekend"
 
+#, fuzzy, python-format
+msgid "Unknown group: %d"
+msgstr "onbekende fout"
+
+#, fuzzy, python-format
+msgid "Unknown user: %d"
+msgstr "onbekende zender"
+
 msgid "Unknown, multiboot situation!"
 msgstr ""
 
@@ -10655,6 +11475,13 @@ msgstr "Déselecteer deze zender als 3D zender."
 
 msgid "Unmount"
 msgstr "Ontkoppel"
+
+#, python-format
+msgid "Unpack to %s"
+msgstr ""
+
+msgid "Unpack to current folder"
+msgstr ""
 
 msgid "Unsupported"
 msgstr "Niet ondersteund"
@@ -11013,6 +11840,13 @@ msgstr "Bekijk de lijst met beschikbare softwareplugins"
 msgid "View list of available system extensions"
 msgstr "Bekijk de lijst met beschikbare systeemplugins"
 
+msgid "View or edit file (if size < 1MB)"
+msgstr ""
+
+#, python-format
+msgid "View or edit this %s script"
+msgstr ""
+
 msgid "View photos..."
 msgstr "Bekijk foto's..."
 
@@ -11051,6 +11885,9 @@ msgstr "Volume +"
 
 msgid "W"
 msgstr "W"
+
+msgid "WARNING!"
+msgstr ""
 
 msgid "WEP"
 msgstr "WEP"
@@ -11201,6 +12038,10 @@ msgstr ""
 
 msgid "What day of week ?"
 msgstr ""
+
+#, fuzzy
+msgid "What do you want to play?\n"
+msgstr "Wilt u de DVD in de speler afspelen?"
 
 msgid "What type of service scan do you want?"
 msgstr ""
@@ -11616,6 +12457,14 @@ msgstr "U kunt de gekozen directory instellen als 'root' directory voor de movie
 
 msgid "You can set sorting type for items in movielist."
 msgstr "U kunt aangeven hoe u een filmoverzicht wilt sorteren."
+
+#, python-format
+msgid "You can't usefully run '%s' on '%s'."
+msgstr ""
+
+#, python-format
+msgid "You can't usefully run '%s' on a directory."
+msgstr ""
 
 msgid "You cannot delete this!"
 msgstr "U kunt dit niet wissen!"
@@ -12082,11 +12931,21 @@ msgstr "Multichannel PCM"
 msgid "cooking"
 msgstr "Kookprogramma"
 
+#, fuzzy
+msgid "copy file"
+msgstr "%d bestand"
+
+msgid "copy folder"
+msgstr ""
+
 msgid "copy to bouquets"
 msgstr "Kopieer naar bouquetten"
 
 msgid "create directory"
 msgstr "Map aanmaken"
+
+msgid "create symlink ..."
+msgstr ""
 
 msgid "daily"
 msgstr "dagelijks"
@@ -12289,6 +13148,9 @@ msgstr "Folk/Traditionele muziek"
 msgid "football/soccer"
 msgstr "Voetbal"
 
+msgid "for DATA LOSS OR DAMAGE !!!"
+msgstr ""
+
 msgid "force AC3plus"
 msgstr ""
 
@@ -12308,6 +13170,10 @@ msgid "free"
 msgstr "vrij"
 
 msgid "from"
+msgstr "van"
+
+#, fuzzy
+msgid "from dir"
 msgstr "van"
 
 msgid "further education"
@@ -12334,11 +13200,17 @@ msgstr "groen"
 msgid "handicraft"
 msgstr "Ambacht"
 
+msgid "has been CHANGED! Do you want to save it?"
+msgstr ""
+
 msgid "height"
 msgstr "hoogte"
 
 msgid "help..."
 msgstr "Help..."
+
+msgid "hide"
+msgstr ""
 
 msgid "horizontal"
 msgstr "horizontaal"
@@ -12363,6 +13235,9 @@ msgstr "initialiseer modules"
 
 msgid "insert mark here"
 msgstr "Markeerpunt invoegen"
+
+msgid "install/unpack ipk Files"
+msgstr ""
 
 msgid "invalid type"
 msgstr "ongeldig type"
@@ -12431,6 +13306,9 @@ msgstr "lang"
 msgid "magazines/reports/documentary"
 msgstr "Magazines/Verslagen/Documentaires"
 
+msgid "manage local Files"
+msgstr ""
+
 msgid "manual"
 msgstr "handmatig"
 
@@ -12467,6 +13345,14 @@ msgstr "verplaats omlaag naar laatste ingave"
 
 msgid "move down to next entry"
 msgstr "verplaats omlaag naar volgende ingave"
+
+#, fuzzy
+msgid "move file"
+msgstr "Titel verwijderen"
+
+#, fuzzy
+msgid "move folder"
+msgstr "[verplaatsmodus]"
 
 msgid "move up to first entry"
 msgstr "verplaats omhoog naar eerste ingave"
@@ -12633,11 +13519,17 @@ msgstr "gepauseerd"
 msgid "performing arts"
 msgstr "Uitvoerende kunsten"
 
+msgid "play Files"
+msgstr ""
+
 msgid "play as picture in picture"
 msgstr "Speel deze zender af in het PIP venster"
 
 msgid "play in mainwindow"
 msgstr "afspelen in hoofdscherm"
+
+msgid "play/show Files"
+msgstr ""
 
 msgid "please press OK when ready"
 msgstr "druk op Ok als u klaar bent"
@@ -12653,6 +13545,9 @@ msgstr "Peuter/Kleuterprogramma"
 
 msgid "purge deleted userbouquets"
 msgstr "Ruim gewiste gebruikersboeket(ten) op"
+
+msgid "python"
+msgstr ""
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -12777,6 +13672,12 @@ msgstr "zoekstatus"
 msgid "science fiction/fantasy/horror"
 msgstr "Science Fiction/Fantasie/Horror"
 
+msgid "script 'sterr':"
+msgstr ""
+
+msgid "script 'stout':"
+msgstr ""
+
 #, fuzzy
 msgid "se"
 msgstr "Gebruik"
@@ -12808,6 +13709,9 @@ msgstr "zenders buiten gebruik"
 
 msgid "set as startup service"
 msgstr "Kanaal kiezen bij opstarten"
+
+msgid "shell"
+msgstr ""
 
 msgid "show DVD main menu"
 msgstr "DVD hoofdmenu weergeven"
@@ -12991,6 +13895,9 @@ msgstr "deze opname"
 msgid "this service is protected by a parental control pin"
 msgstr "Dit kanaal is beveiligd met een kinderslot"
 
+msgid "to dir"
+msgstr ""
+
 msgid "toggle time, chapter, audio, subtitle info"
 msgstr "Tijd, hoofdstuk, audio en ondertitels instellen"
 
@@ -13023,6 +13930,21 @@ msgstr "onbekende fout"
 
 msgid "unknown service"
 msgstr "onbekende zender"
+
+msgid "unpack Rar Files"
+msgstr ""
+
+msgid "unpack archives"
+msgstr ""
+
+msgid "unpack gzip Files"
+msgstr ""
+
+msgid "unpack tar/compressed tar Files"
+msgstr ""
+
+msgid "unpack zip Files"
+msgstr ""
 
 msgid "unpublished"
 msgstr "niet gepubliceerd"
@@ -13111,6 +14033,10 @@ msgstr "Met de tunernaam"
 
 msgid "with_errors"
 msgstr "met_fouten"
+
+#, fuzzy
+msgid "without"
+msgstr "Met tekst"
 
 msgid "wnw"
 msgstr ""
