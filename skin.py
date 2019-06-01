@@ -85,6 +85,9 @@ config.skin = ConfigSubsection()
 if SystemInfo["HasFullHDSkinSupport"]:
 	if os.path.isfile('/usr/share/enigma2/OctEtFHD/skin.xml'):
 		DEFAULT_SKIN = "OctEtFHD/skin.xml"
+	else:
+		if os.path.isfile('/usr/share/enigma2/OctEtSD/skin.xml'):
+			DEFAULT_SKIN = "OctEtSD/skin.xml"
 else:
 	if os.path.isfile('/usr/share/enigma2/OctEtSD/skin.xml'):
 		DEFAULT_SKIN = "OctEtSD/skin.xml"
