@@ -140,6 +140,14 @@ def getCPUBrand():
 	else:
 		return _("Broadcom")
 
+def getCPUArch():
+	if SystemInfo["ArchIsARM64"]:
+		return _("ARM64")
+	elif SystemInfo["ArchIsARM"]:
+		return _("ARM")
+	else:
+		return _("Mipsel")
+
 def getFlashType():
 	if SystemInfo["SmallFlash"]:
 		return _("Small - Lite image")

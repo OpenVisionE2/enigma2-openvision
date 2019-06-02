@@ -103,7 +103,7 @@ SystemInfo["Has3DSurroundSoftLimiter"] = fileExists("/proc/stb/audio/3dsurround_
 SystemInfo["hasXcoreVFD"] = getBoxType() in ("osmega","spycat4k","spycat4kmini","spycat4kcombo") and fileCheck("/sys/module/brcmstb_%s/parameters/pt6302_cgram" % getBoxType())
 SystemInfo["HasOfflineDecoding"] = getBoxType() not in ("osmini","osminiplus","et7000mini","et11000","mbmicro","mbtwinplus","mbmicrov2","et7x00","et8500")
 SystemInfo["HasRootSubdir"] = fileHas("/proc/cmdline", "rootsubdir=")
-SystemInfo["canMultiBoot"] = SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or fileHas("/proc/cmdline", "_4.boxmode=") and (1, 4, "mmcblk0", False) or getBoxType() in ("gbue4k","gbquad4k") and (3, 3, "mmcblk0", True) or getBoxType() in ("e4hdultra") and (1, 4, "mmcblk0", False) or getBoxType() in ("osmio4k") and (1, 4, "mmcblk1", True)
+SystemInfo["canMultiBoot"] = SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or fileHas("/proc/cmdline", "_4.boxmode=") and (1, 4, "mmcblk0", False) or getBoxType() in ("gbue4k","gbquad4k") and (3, 3, "mmcblk0", True) or getBoxType() in ("e4hdultra") and (1, 4, "mmcblk0", False) or getBoxType() in ("osmio4k","osmio4kplus") and (1, 4, "mmcblk1", True)
 SystemInfo["canMode12"] = fileHas("/proc/cmdline", "_4.boxmode=1 ") and '192M' or fileHas("/proc/cmdline", "_4.boxmode=12") and '192M'
 SystemInfo["canFlashWithOfgwrite"] = not(getBoxType().startswith("dm"))
 SystemInfo["HDRSupport"] = fileExists("/proc/stb/hdmi/hlg_support_choices") and fileCheck("/proc/stb/hdmi/hlg_support")
@@ -147,3 +147,5 @@ SystemInfo["SecondCheckModel"] = getBoxType() in ("osninopro","osnino","osninopl
 SystemInfo["DifferentLCDSettings"] = getBoxType() in ("spycat4kmini","osmega")
 SystemInfo["CanBTAudio"] = fileCheck("/proc/stb/audio/btaudio")
 SystemInfo["CanBTAudioDelay"] = fileCheck("/proc/stb/audio/btaudio_delay")
+SystemInfo["ArchIsARM64"] = getBoxBrand() in ("linkdroid","mecool") or getBoxType() in ("wetekplay2","wetekhub","osmio4k","osmio4kplus")
+SystemInfo["ArchIsARM"] = SystemInfo["HiSilicon"] or getBoxBrand() in ("dinobot","rpi","maxytec","octagon") or getBoxType() in ("cube","su980","wetekplay","x8hp","odroidc2","beyonwizu4","bre2ze4k","hd51","hd60","hd61","h7","h9","h9combo","h10","i55plus","e4hdultra","protek4k","vs1500","et1x000","et13000","vusolo4k","vuuno4k","vuuno4kse","vuzero4k","vuultimo4k","vuduo4k","revo4k","tmtwin4k","galaxy4k","tm4ksuper","lunix3-4k","force4","lunix4k") or getBoxType().startswith("spycat4") or getBoxType().startswith("dm9") or getBoxType().startswith("force3u") or SystemInfo["GigaBlueAudio"]
