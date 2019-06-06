@@ -26,7 +26,8 @@ class About(Screen):
 
 		AboutText = _("Hardware: ") + about.getHardwareTypeString() + "\n"
 		AboutText += _("Brand: ") + about.getHardwareBrand() + "\n"
-		AboutText += _("CPU: ") + about.getCPUInfoString() + "\n"
+		cpu = about.getCPUInfoString()
+		AboutText += _("CPU: ") + cpu + "\n"
 		AboutText += _("CPU brand: ") + about.getCPUBrand() + "\n"
 		AboutText += _("CPU architecture: ") + about.getCPUArch() + "\n"
 		AboutText += _("Flash type: ") + about.getFlashType() + "\n"
@@ -54,7 +55,7 @@ class About(Screen):
 
 		AboutText += _("DVB driver version: ") + about.getDriverInstalledDate() + "\n"
 
-		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString().replace("GStreamer","")
+		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer","")
 		self["GStreamerVersion"] = StaticText(GStreamerVersion)
 		AboutText += GStreamerVersion + "\n"
 
