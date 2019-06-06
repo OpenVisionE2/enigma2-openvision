@@ -16,12 +16,15 @@ from Components.ScrollLabel import ScrollLabel
 from Components.config import config, ConfigBoolean, configfile
 from LanguageSelection import LanguageWizard
 from enigma import eConsoleAppContainer, eTimer
-
+from Components.SystemInfo import SystemInfo
 import os
 
 config.misc.firstrun = ConfigBoolean(default = True)
-config.misc.languageselected = ConfigBoolean(default = True)
-config.misc.do_overscanwizard = ConfigBoolean(default = OverscanWizard and config.skin.primary_skin.value == "PLi-FullNightHD/skin.xml")
+if SystemInfo["SmallFlash"]:
+	config.misc.languageselected = ConfigBoolean(default = False)
+else:
+	config.misc.languageselected = ConfigBoolean(default = True)	
+config.misc.do_overscanwizard = ConfigBoolean(default = OverscanWizard)
 
 class StartWizard(WizardLanguage, Rc):
 	def __init__(self, session, silent = True, showSteps = False, neededTag = None):
