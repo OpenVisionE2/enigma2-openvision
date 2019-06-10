@@ -383,7 +383,7 @@ class VideoHardware:
 
 		print "[VideoHardware] -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss
 		arw = "0"
-		if SystemInfo["AmlogicFamily"]:
+		if getBoxBrand() in ("linkdroid","mecool"):
 			if config.av.policy_43.value == "panscan" : arw = "11"
 			if config.av.policy_43.value == "letterbox" : arw = "12"
 			if config.av.policy_43.value == "bestfit" : arw = "10"			
