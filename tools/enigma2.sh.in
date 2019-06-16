@@ -115,9 +115,15 @@ while : ; do
 			DEBUG_LVL=4
 			;;
 		16)
-			echo "rescue" > /proc/stb/fp/boot_mode
+			if [ -e /dev/block/by-name/bootoptions ]; then
+				mkdir -p /tmp/bootoptions
+				mount /dev/block/by-name/bootoptions /tmp/bootoptions
+				cp -f /tmp/bootoptions/STARTUP_RECOVERY /tmp/bootoptions/STARTUP_ONCE
+			else
+				echo "rescue" > /proc/stb/fp/boot_mode
+			fi
 			/sbin/reboot
-			;;
+		;;
 		42)
 			df -P | grep -v "tmpfs " | awk '{print $6}' | tail -n +3 > /tmp/upgrade_mountpoints.txt
 			while read line; do

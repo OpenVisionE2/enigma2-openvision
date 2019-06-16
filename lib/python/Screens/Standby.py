@@ -12,10 +12,22 @@ from Components.ImportChannels import ImportChannels
 from Tools.Directories import mediafilesInUse
 from Components.SystemInfo import SystemInfo
 from GlobalActions import globalActionMap
-from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, getBoxType
+from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, getBoxType, getBoxBrand
 from Components.Sources.StreamService import StreamServiceList
 
 inStandby = None
+
+QUIT_SHUTDOWN = 1
+QUIT_REBOOT = 2
+QUIT_RESTART = 3
+QUIT_UPGRADE_FP = 4
+QUIT_ERROR_RESTART = 5
+QUIT_DEBUG_RESTART = 6
+QUIT_REBOOT_RECOVERY = 16
+QUIT_UPGRADE_PROGRAM = 42
+QUIT_IMAGE_RESTORE = 43
+QUIT_UPGRADE_FPANEL = 44
+QUIT_WOL = 45
 
 class Standby(Screen):
 	def Power(self):
@@ -92,7 +104,7 @@ class Standby(Screen):
 		else:
 			self.avswitch.setInput("AUX")
 
-		if getBoxType() in ("gbtrio4k","sf8008","ustym4kpro","beyonwizv2","cc1") or getBoxType().startswith(("anadol","axashis","dinobot","ferguson4","mediabox4")):
+		if SystemInfo["HiSilicon"] or getBoxBrand() == "dinobot":
 			try:
 				open("/proc/stb/hdmi/output", "w").write("off")
 			except:
@@ -199,28 +211,30 @@ from Components.Task import job_manager
 
 
 class QuitMainloopScreen(Screen):
-	def __init__(self, session, retvalue=1):
+	def __init__(self, session, retvalue=QUIT_SHUTDOWN):
 		self.skin = """<screen name="QuitMainloopScreen" position="fill" flags="wfNoBorder">
 				<ePixmap pixmap="skin_default/icons/input_info.png" position="c-27,c-60" size="53,53" alphatest="on" />
 				<widget name="text" position="center,c+5" size="720,100" font="Regular;22" halign="center" />
 			</screen>"""
 		Screen.__init__(self, session)
 		from Components.Label import Label
-		text = { 1: _("Your receiver is shutting down"),
-			2: _("Your receiver is rebooting"),
-			3: _("The user interface of your receiver is restarting"),
-			4: _("Your frontprocessor will be upgraded\nPlease wait until your receiver reboots\nThis may take a few minutes"),
-			5: _("The user interface of your receiver is restarting\ndue to an error in mytest.py"),
-			6: _("The user interface of your receiver is restarting in debug mode"),
-			16: _("Your receiver is rebooting into Recovery Mode"),
-			42: _("Unattended upgrade in progress\nPlease wait until your receiver reboots\nThis may take a few minutes"),
-			44: _("Your front panel will be upgraded\nThis may take a few minutes"),
-			45: _("Your receiver goes to WOL") }.get(retvalue)
+		text = {
+			QUIT_SHUTDOWN: _("Your receiver is shutting down"),
+			QUIT_REBOOT: _("Your receiver is rebooting"),
+			QUIT_RESTART: _("The user interface of your receiver is restarting"),
+			QUIT_UPGRADE_FP: _("Your frontprocessor will be upgraded\nPlease wait until your receiver reboots\nThis may take a few minutes"),
+			QUIT_ERROR_RESTART: _("The user interface of your receiver is restarting\ndue to an error in mytest.py"),
+			QUIT_DEBUG_RESTART: _("The user interface of your receiver is restarting in debug mode"),
+			QUIT_REBOOT_RECOVERY: _("Your receiver is rebooting into Recovery Mode"),
+			QUIT_UPGRADE_PROGRAM: _("Unattended upgrade in progress\nPlease wait until your receiver reboots\nThis may take a few minutes"),
+			QUIT_UPGRADE_FPANEL: _("Your front panel will be upgraded\nThis may take a few minutes"),
+			QUIT_WOL: _("Your receiver goes to WOL")
+		}.get(retvalue)
 		self["text"] = Label(text)
 
 inTryQuitMainloop = False
 
-def getReasons(session, retvalue=1):
+def getReasons(session, retvalue=QUIT_SHUTDOWN):
 	recordings = session.nav.getRecordings()
 	jobs = len(job_manager.getPendingJobs())
 	reasons = []
@@ -237,25 +251,27 @@ def getReasons(session, retvalue=1):
 			reasons.append((ngettext("%d job is running in the background!", "%d jobs are running in the background!", jobs) % jobs))
 	if eStreamServer.getInstance().getConnectedClients() or StreamServiceList:
 			reasons.append(_("Client is streaming from this box!"))
-	if not reasons and mediafilesInUse(session) and retvalue in (1, 2, 4, 42):
+	if not reasons and mediafilesInUse(session) and retvalue in (QUIT_SHUTDOWN, QUIT_REBOOT, QUIT_UPGRADE_FP, QUIT_UPGRADE_PROGRAM, QUIT_UPGRADE_FPANEL):
 			reasons.append(_("A file from media is in use!"))
 	return "\n".join(reasons)
 
 class TryQuitMainloop(MessageBox):
-	def __init__(self, session, retvalue=1, timeout=-1, default_yes=False, check_reasons=True):
+	def __init__(self, session, retvalue=QUIT_SHUTDOWN, timeout=-1, default_yes=False, check_reasons=True):
 		self.retval = retvalue
 		self.connected = False
 		reason = check_reasons and getReasons(session, retvalue)
 		if reason:
-			text = { 1: _("Really shutdown now?"),
-				2: _("Really reboot now?"),
-				3: _("Really restart now?"),
-				4: _("Really upgrade the frontprocessor and reboot now?"),
-				6: _("Really restart in debug mode now?"),
-				16: _("Really reboot into Recovery Mode?"),
-				42: _("Really upgrade your settop box and reboot now?"),
-				44: _("Really upgrade the front panel and reboot now?"),
-				45: _("Really WOL now?")}.get(retvalue)
+			text = {
+				QUIT_SHUTDOWN: _("Really shutdown now?"),
+				QUIT_REBOOT: _("Really reboot now?"),
+				QUIT_RESTART: _("Really restart now?"),
+				QUIT_UPGRADE_FP: _("Really upgrade the frontprocessor and reboot now?"),
+				QUIT_DEBUG_RESTART: _("Really restart in debug mode now?"),
+				QUIT_REBOOT_RECOVERY: _("Really reboot into Recovery Mode"),
+				QUIT_UPGRADE_PROGRAM: _("Really upgrade your settop box and reboot now?"),
+				QUIT_UPGRADE_FPANEL: _("Really upgrade the front panel and reboot now?"),
+				QUIT_WOL: _("Really WOL now?")
+			}.get(retvalue, None)
 			if text:
 				MessageBox.__init__(self, session, "%s\n%s" % (reason, text), type=MessageBox.TYPE_YESNO, timeout=timeout, default=default_yes)
 				self.skinName = "MessageBoxSimple"
@@ -287,7 +303,7 @@ class TryQuitMainloop(MessageBox):
 			self.session.nav.record_event.remove(self.getRecordEvent)
 		if value:
 			self.hide()
-			if self.retval == 1:
+			if self.retval == QUIT_SHUTDOWN:
 				config.misc.DeepStandby.value = True
 				if not inStandby:
 					if os.path.exists("/usr/script/standby_enter.sh"):
