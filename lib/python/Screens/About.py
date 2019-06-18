@@ -8,12 +8,12 @@ from Components.NimManager import nimmanager
 from Components.About import about
 from Components.ScrollLabel import ScrollLabel
 from Components.Button import Button
-
+from Components.SystemInfo import SystemInfo
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 
 from Tools.StbHardware import getFPVersion
-from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl
+from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl, getBoxBrand
 
 from Components.GUIComponent import GUIComponent
 import skin, os
@@ -202,12 +202,12 @@ class CommitInfo(Screen):
 
 		self.project = 0
 		self.projects = [
-			("https://api.github.com/repos/openpli/enigma2/commits" + branch, "Enigma2 - PLi"),
 			("https://api.github.com/repos/OpenVisionE2/enigma2-openvision/commits" + branch, "Enigma2 - Vision"),
-			("https://api.github.com/repos/openpli/openpli-oe-core/commits" + branch, "OE - PLi"),
-			("https://api.github.com/repos/OpenVisionE2/openvision-oe/commits" + branch, "OE - Vision"),
+			("https://api.github.com/repos/OpenVisionE2/openvision-oe/commits", "OE - Vision 7.x"),
+			("https://api.github.com/repos/OpenVisionE2/openvision-development-platform/commits", "OE - Vision 9.x"),
 			("https://api.github.com/repos/OpenVisionE2/extra_rc_models/commits", "Extra RC Models"),
 			("https://api.github.com/repos/openpli/servicemp3/commits", "Service MP3"),
+			("https://api.github.com/repos/OpenVisionE2/gstreamer1.0-plugin-multibox-dvbmediasink/commits", "DVB MediaSink"),
 			("https://api.github.com/repos/openpli/enigma2-plugins/commits", "Enigma2 Plugins"),
 			("https://api.github.com/repos/OpenVisionE2/alliance-plugins/commits", "Alliance Plugins"),
 			("https://api.github.com/repos/E2OpenPlugins/e2openplugin-OpenWebif/commits", "Open WebIF"),
