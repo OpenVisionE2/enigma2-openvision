@@ -267,7 +267,7 @@ class TryQuitMainloop(MessageBox):
 				QUIT_RESTART: _("Really restart now?"),
 				QUIT_UPGRADE_FP: _("Really upgrade the frontprocessor and reboot now?"),
 				QUIT_DEBUG_RESTART: _("Really restart in debug mode now?"),
-				QUIT_REBOOT_RECOVERY: _("Really reboot into Recovery Mode"),
+				QUIT_REBOOT_RECOVERY: _("Really reboot into Recovery Mode?"),
 				QUIT_UPGRADE_PROGRAM: _("Really upgrade your settop box and reboot now?"),
 				QUIT_UPGRADE_FPANEL: _("Really upgrade the front panel and reboot now?"),
 				QUIT_WOL: _("Really WOL now?")
