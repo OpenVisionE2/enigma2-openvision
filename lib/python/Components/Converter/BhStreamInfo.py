@@ -4,9 +4,7 @@ from Poll import Poll
 import NavigationInstance
 from ServiceReference import ServiceReference
 from enigma import iServiceInformation, iPlayableService
-from string import upper
 from Tools.Transponder import ConvertToHumanReadable
-from os import rename, system
 
 class BhStreamInfo(Poll, Converter, object):
     DUMMY = 0
