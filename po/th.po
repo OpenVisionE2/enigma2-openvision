@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1-En-Th\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: 2010-04-08 18:13+0700\n"
 "Last-Translator: Tony - Thaidreambox\n"
 "Language-Team: Tony @ Thai Dreambox <tonyboyth@gmail.com>\n"
@@ -457,6 +457,10 @@ msgstr "%s (%s)\n"
 
 #, python-format
 msgid "%s - extraction errors."
+msgstr ""
+
+#, python-format
+msgid "%s imported from fallback tuner"
 msgstr ""
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
@@ -2100,13 +2104,6 @@ msgstr ""
 #, fuzzy
 msgid "Channels and EPG"
 msgstr "เมนูช่องรายการ"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr ""
-
-msgid "Channels from fallback tuner imported"
-msgstr ""
 
 #, fuzzy
 msgid "Channels only"
@@ -5264,7 +5261,8 @@ msgstr ""
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr ""
 
-msgid "Import channels from fallback tuner"
+#, python-format
+msgid "Import from fallback tuner failed, %s"
 msgstr ""
 
 msgid "Import from remote receiver URL"
@@ -6025,6 +6023,9 @@ msgstr "ค้นหาเอง"
 
 msgid "Manual transponder"
 msgstr "ป้อนทรานสปอนเดอร์เอง"
+
+msgid "Manually import from fallback tuner"
+msgstr ""
 
 msgid "Manufacturer"
 msgstr "ผู้ผลิต"
@@ -7963,7 +7964,7 @@ msgid "Really exit the subservices quickzap?"
 msgstr "ต้องการออกจากส่วนย่อยของ Quickzap หรือไม่?"
 
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "ต้องการบูทเครื่องใหม่หรือไม่?"
 
 msgid "Really reboot now?"

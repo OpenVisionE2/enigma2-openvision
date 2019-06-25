@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Budiarno Pedode\n"
 "Language-Team: \n"
@@ -472,6 +472,10 @@ msgstr "%s (%s)\n"
 #, python-format
 msgid "%s - extraction errors."
 msgstr ""
+
+#, fuzzy, python-format
+msgid "%s imported from fallback tuner"
+msgstr "Impor kanal dari penala digunakan"
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
@@ -2107,13 +2111,6 @@ msgstr "Nomor kanal, pikon dan nama layanan"
 #, fuzzy
 msgid "Channels and EPG"
 msgstr "Kanal dan EPG"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr "Kanal dari penala terpakai gagal %s"
-
-msgid "Channels from fallback tuner imported"
-msgstr "Kanal dari penala terpakai diimpor"
 
 #, fuzzy
 msgid "Channels only"
@@ -5272,8 +5269,9 @@ msgstr "Impor kanal dan/atau EPG dari URL Rx jauh ketika Rx dihidupkan."
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "Impor kanal dan/atau EPG dari URL Rx jauh ketika Rx atau enigma2 dimulai ulang"
 
-msgid "Import channels from fallback tuner"
-msgstr "Impor kanal dari penala digunakan"
+#, fuzzy, python-format
+msgid "Import from fallback tuner failed, %s"
+msgstr "Kanal dari penala terpakai gagal %s"
 
 #, fuzzy
 msgid "Import from remote receiver URL"
@@ -6012,6 +6010,10 @@ msgstr "Pelacakan manual"
 
 msgid "Manual transponder"
 msgstr "Transponder manual"
+
+#, fuzzy
+msgid "Manually import from fallback tuner"
+msgstr "Impor kanal dari penala digunakan"
 
 msgid "Manufacturer"
 msgstr "Pabrikan"
@@ -7918,7 +7920,7 @@ msgid "Really exit the subservices quickzap?"
 msgstr "Yakit keluar zapcepat sub layanan?"
 
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "Yakin ingin reboot sekarang?"
 
 msgid "Really reboot now?"

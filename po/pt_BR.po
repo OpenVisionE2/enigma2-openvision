@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: 2013-10-20 19:13-0300\n"
 "Last-Translator: Diogo <pingflood@gmail.com>\n"
 "Language-Team: Traduzido por Frank Viana <franksrviana@gmail.com>\n"
@@ -465,6 +465,10 @@ msgstr ""
 
 #, python-format
 msgid "%s - extraction errors."
+msgstr ""
+
+#, python-format
+msgid "%s imported from fallback tuner"
 msgstr ""
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
@@ -2083,13 +2087,6 @@ msgstr ""
 #, fuzzy
 msgid "Channels and EPG"
 msgstr "Informação do canal"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr ""
-
-msgid "Channels from fallback tuner imported"
-msgstr ""
 
 #, fuzzy
 msgid "Channels only"
@@ -5203,7 +5200,8 @@ msgstr ""
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr ""
 
-msgid "Import channels from fallback tuner"
+#, python-format
+msgid "Import from fallback tuner failed, %s"
 msgstr ""
 
 msgid "Import from remote receiver URL"
@@ -5931,6 +5929,9 @@ msgstr "Busca avançada"
 
 msgid "Manual transponder"
 msgstr "Transponder manual"
+
+msgid "Manually import from fallback tuner"
+msgstr ""
 
 msgid "Manufacturer"
 msgstr "Fabricante"
@@ -7831,7 +7832,7 @@ msgid "Really exit the subservices quickzap?"
 msgstr "Deseja realmente sair?"
 
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "Reiniciar agora?"
 
 msgid "Really reboot now?"

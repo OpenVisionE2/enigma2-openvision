@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: 2019-05-30 12:03+0200\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -472,6 +472,10 @@ msgstr "%s (%s)\n"
 #, python-format
 msgid "%s - extraction errors."
 msgstr ""
+
+#, fuzzy, python-format
+msgid "%s imported from fallback tuner"
+msgstr "Csatornák importálása a tartalék tunerből"
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
@@ -2098,13 +2102,6 @@ msgstr "Csatornaszám, picon és szolgáltatásnév"
 
 msgid "Channels and EPG"
 msgstr "Csatornák és EPG"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr "A csatornák importálása a tartalék tunerből sikertelen: %s"
-
-msgid "Channels from fallback tuner imported"
-msgstr "A csatornák importálása a tartalék tunerből sikeres"
 
 msgid "Channels only"
 msgstr "Csak csatornák"
@@ -5193,8 +5190,9 @@ msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címébő
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címéből a kezelőfelület újraindításakor"
 
-msgid "Import channels from fallback tuner"
-msgstr "Csatornák importálása a tartalék tunerből"
+#, fuzzy, python-format
+msgid "Import from fallback tuner failed, %s"
+msgstr "A csatornák importálása a tartalék tunerből sikertelen: %s"
 
 msgid "Import from remote receiver URL"
 msgstr "Importálás a távoli vevő URL címéből"
@@ -5918,6 +5916,10 @@ msgstr "Kézi keresés"
 
 msgid "Manual transponder"
 msgstr "Kézi transzponder"
+
+#, fuzzy
+msgid "Manually import from fallback tuner"
+msgstr "Csatornák importálása a tartalék tunerből"
 
 msgid "Manufacturer"
 msgstr "Gyártó"
@@ -7792,7 +7794,7 @@ msgid "Really exit the subservices quickzap?"
 msgstr "Biztos ki szeretne lépni az alcsatorna gyorsUGRÁS módból?"
 
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "Biztos újraindítsam most?"
 
 msgid "Really reboot now?"

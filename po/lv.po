@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -485,6 +485,10 @@ msgstr "%s (%s)\n"
 #, python-format
 msgid "%s - extraction errors."
 msgstr ""
+
+#, fuzzy, python-format
+msgid "%s imported from fallback tuner"
+msgstr "Importēt taimerus no attālinātā uztvērēja"
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
@@ -2099,13 +2103,6 @@ msgstr "Kanāla numurs, pikona un kanāla nosaukums"
 
 msgid "Channels and EPG"
 msgstr "Kanālus un EPG"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr "Kanālu importēšana no attālinātā uztvērēja neizdevās %s"
-
-msgid "Channels from fallback tuner imported"
-msgstr "Kanāli no attālinātā uztvērēja importēti!"
 
 msgid "Channels only"
 msgstr "Tikai kanālus"
@@ -5201,8 +5198,9 @@ msgstr "Importēt kanālus un/vai EPG no attālinātā uztvērēja kad uztvērē
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "Importēt kanālus un/vai EPG no attālinātā uztvērēja kad enigma tiek pārstartēta"
 
-msgid "Import channels from fallback tuner"
-msgstr "Importēt kanālus no attālinātā uztvērēja"
+#, fuzzy, python-format
+msgid "Import from fallback tuner failed, %s"
+msgstr "Kanālu importēšana no attālinātā uztvērēja neizdevās %s"
 
 msgid "Import from remote receiver URL"
 msgstr "Importēt no attālinātā uztvērēja"
@@ -5925,6 +5923,10 @@ msgstr "Manuālā meklēšana"
 
 msgid "Manual transponder"
 msgstr "Manuāls transponderis"
+
+#, fuzzy
+msgid "Manually import from fallback tuner"
+msgstr "Importēt taimerus no attālinātā uztvērēja"
 
 msgid "Manufacturer"
 msgstr "Ražotājs"
@@ -7801,7 +7803,7 @@ msgid "Really exit the subservices quickzap?"
 msgstr "Vai tiešām iziet no papildkanālu ātrās pārslēgšanas režīma?"
 
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "Vai tiešām pārstartēt?"
 
 msgid "Really reboot now?"

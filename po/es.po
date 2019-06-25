@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: 2019-05-15 22:50+0200\n"
 "Last-Translator: Jose Juan <jzapater@gmail.com>\n"
 "Language-Team: ANGELODOS  angelo2807@hotmail.com\n"
@@ -502,6 +502,10 @@ msgstr "%s (%s)\n"
 #, python-format
 msgid "%s - extraction errors."
 msgstr ""
+
+#, fuzzy, python-format
+msgid "%s imported from fallback tuner"
+msgstr "Habilitar el temporizador de importación desde el sintonizador de retroceso"
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
@@ -2304,13 +2308,6 @@ msgstr "Numero, picon y nombre del canal"
 
 msgid "Channels and EPG"
 msgstr "Canales y EPG"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr "Los canales del sintonizador de respaldo fallaron% s"
-
-msgid "Channels from fallback tuner imported"
-msgstr "Canales del sintonizador de respaldo importados"
 
 msgid "Channels only"
 msgstr "Solo canales"
@@ -5709,8 +5706,9 @@ msgstr "Importe canales y / o EPG desde la URL del receptor remoto cuando se ini
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "Importe canales y / o EPG desde la URL del receptor remoto cuando se reinicie el receptor o enigma2"
 
-msgid "Import channels from fallback tuner"
-msgstr "Importar canales desde el sintonizador de respaldo"
+#, fuzzy, python-format
+msgid "Import from fallback tuner failed, %s"
+msgstr "Los canales del sintonizador de respaldo fallaron% s"
 
 msgid "Import from remote receiver URL"
 msgstr "Importar desde el receptor remoto URL"
@@ -6532,6 +6530,10 @@ msgstr "Exploración manual"
 #
 msgid "Manual transponder"
 msgstr "Transponder manual"
+
+#, fuzzy
+msgid "Manually import from fallback tuner"
+msgstr "Habilitar el temporizador de importación desde el sintonizador de retroceso"
 
 #
 msgid "Manufacturer"
@@ -8651,7 +8653,7 @@ msgstr "¿Quiere salir del zapeo rápido de subcananles?"
 
 #
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "¿Quiere reiniciar ahora?"
 
 #

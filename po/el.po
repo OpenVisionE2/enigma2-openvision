@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: MCelliotG <mcelliotg@gmail.com>\n"
@@ -474,6 +474,10 @@ msgstr "%s (%s)\n"
 #, python-format
 msgid "%s - extraction errors."
 msgstr ""
+
+#, fuzzy, python-format
+msgid "%s imported from fallback tuner"
+msgstr "Ενεργοποίηση εισαγωγής χρονοδιακόπτη από το εφεδρικό tuner"
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
@@ -2095,13 +2099,6 @@ msgstr "Αριθμός καναλιού, λογότυπο και όνομα υπ
 
 msgid "Channels and EPG"
 msgstr "Κανάλια και EPG"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr "Αποτυχία καναλιών από το εφεδρικό tuner %s"
-
-msgid "Channels from fallback tuner imported"
-msgstr "Έγινε εισαγωγή των καναλιών από το εφεδρικό tuner"
 
 msgid "Channels only"
 msgstr "Μόνο κανάλια"
@@ -5194,8 +5191,9 @@ msgstr "Εισαγωγή καναλιών ή/και EPG από την απομα
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "Εισαγωγή καναλιών ή/και EPG από την απομακρυσμένη URL δέκτη κατά την εκκίνηση του δέκτη ή του enigma2"
 
-msgid "Import channels from fallback tuner"
-msgstr "Εισαγωγή καναλιών από το εφεδρικό tuner"
+#, fuzzy, python-format
+msgid "Import from fallback tuner failed, %s"
+msgstr "Αποτυχία καναλιών από το εφεδρικό tuner %s"
 
 msgid "Import from remote receiver URL"
 msgstr "Εισαγωγή από απομακρυσμένη URL δέκτη"
@@ -5919,6 +5917,10 @@ msgstr "Χειροκίνητη ανίχνευση"
 
 msgid "Manual transponder"
 msgstr "Χειροκίνητος αναμεταδότης"
+
+#, fuzzy
+msgid "Manually import from fallback tuner"
+msgstr "Ενεργοποίηση εισαγωγής χρονοδιακόπτη από το εφεδρικό tuner"
 
 msgid "Manufacturer"
 msgstr "Κατασκευαστής"
@@ -7791,7 +7793,7 @@ msgid "Really exit the subservices quickzap?"
 msgstr "Έξοδος από γρήγορο ζάπινγκ των υπό-υπηρεσιών;"
 
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "Να γίνει σίγουρα επανεκκίνηση τώρα;"
 
 msgid "Really reboot now?"

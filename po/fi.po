@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: 2019-02-13 20:52+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -491,6 +491,10 @@ msgstr "%s (%s)\n"
 #, python-format
 msgid "%s - extraction errors."
 msgstr ""
+
+#, fuzzy, python-format
+msgid "%s imported from fallback tuner"
+msgstr "Tuo ajastimet etävastaaottimelta"
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
@@ -2268,13 +2272,6 @@ msgstr "Kanavanumero, logo ja nimi"
 #
 msgid "Channels and EPG"
 msgstr "Kanavat ja ohjelmaopas"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr ""
-
-msgid "Channels from fallback tuner imported"
-msgstr ""
 
 #
 msgid "Channels only"
@@ -5654,7 +5651,8 @@ msgstr "Tuo kanavat ja/tai ohjelmaopas etävastaanottimelta uudelleenkäynnistyk
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "Tuo kanavat ja/tai ohjelmaopas etävastaanottimelta uudelleenkäynnistyksen yhteydessä"
 
-msgid "Import channels from fallback tuner"
+#, fuzzy, python-format
+msgid "Import from fallback tuner failed, %s"
 msgstr "Tuo kanavat etävastaanottimelta"
 
 msgid "Import from remote receiver URL"
@@ -6480,6 +6478,10 @@ msgstr "Manuaalihaku"
 #
 msgid "Manual transponder"
 msgstr "Manuaalinen lähetin"
+
+#, fuzzy
+msgid "Manually import from fallback tuner"
+msgstr "Tuo ajastimet etävastaaottimelta"
 
 #
 msgid "Manufacturer"
@@ -8637,7 +8639,7 @@ msgstr "Poistu alipalveluiden pikavaihdosta?"
 
 #
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "Haluatko silti käynnistää uudelleen?"
 
 #

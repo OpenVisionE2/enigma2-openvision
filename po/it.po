@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi-enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: 2018-05-22 13:54+0200\n"
 "Last-Translator: Gringo <openpli@tiscali.it>\n"
 "Language-Team: www.linsat.net <spaeleus@croci.org>\n"
@@ -474,6 +474,10 @@ msgstr "%s (%s)\n"
 #, python-format
 msgid "%s - extraction errors."
 msgstr ""
+
+#, fuzzy, python-format
+msgid "%s imported from fallback tuner"
+msgstr "Importare i canali dal sintonizzatore di fallback"
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
@@ -2096,13 +2100,6 @@ msgstr "Numero, Picon e nome del canale"
 
 msgid "Channels and EPG"
 msgstr "Canali ed EPG"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr "Canali dal sintonizzatore di fallback non riusciti %s"
-
-msgid "Channels from fallback tuner imported"
-msgstr "Canali dal sintonizzatore di fallback importati"
 
 msgid "Channels only"
 msgstr "Solo canali"
@@ -5213,8 +5210,9 @@ msgstr "Importare i canali e/o l'EPG dall'URL del ricevitore remoto quando il ri
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "Importare i canali e/o l'EPG dall'URL del ricevitore remoto quando il ricevitore o Enigma2 viene riavviato"
 
-msgid "Import channels from fallback tuner"
-msgstr "Importare i canali dal sintonizzatore di fallback"
+#, fuzzy, python-format
+msgid "Import from fallback tuner failed, %s"
+msgstr "Canali dal sintonizzatore di fallback non riusciti %s"
 
 msgid "Import from remote receiver URL"
 msgstr "Importare dall'URL del ricevitore remoto"
@@ -5942,6 +5940,10 @@ msgstr "Ricerca manuale"
 
 msgid "Manual transponder"
 msgstr "Transponder definito dall'utente"
+
+#, fuzzy
+msgid "Manually import from fallback tuner"
+msgstr "Importare i canali dal sintonizzatore di fallback"
 
 msgid "Manufacturer"
 msgstr "Produttore"
@@ -7828,7 +7830,7 @@ msgid "Really exit the subservices quickzap?"
 msgstr "Uscire dal cambio veloce dei sottocanali?"
 
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "Riavviare adesso?"
 
 msgid "Really reboot now?"

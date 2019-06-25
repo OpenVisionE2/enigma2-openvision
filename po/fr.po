@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: 2019-05-25 06:58+0200\n"
 "Last-Translator: Pr2\n"
 "Language-Team: french\n"
@@ -473,6 +473,10 @@ msgstr "%s (%s)\n"
 #, python-format
 msgid "%s - extraction errors."
 msgstr ""
+
+#, fuzzy, python-format
+msgid "%s imported from fallback tuner"
+msgstr "Importer les programmations du récepteur distant de repli"
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
@@ -2099,13 +2103,6 @@ msgstr "Numéro de la chaîne, picon et nom du service"
 
 msgid "Channels and EPG"
 msgstr "Chaînes et EPG"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr "Les chaînes du tuner de repli ont échoué %s"
-
-msgid "Channels from fallback tuner imported"
-msgstr "Les chaînes du récepteur de repli ont été importées"
 
 msgid "Channels only"
 msgstr "Uniquement les chaînes"
@@ -5196,8 +5193,9 @@ msgstr "Importer les chaînes et/ou l’EPG depuis l’URL du récepteur distant
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "Importer les chaînes et/ou l’EPG depuis l’URL du récepteur distant lorsque le récepteur ou Enigma2 est redémarré"
 
-msgid "Import channels from fallback tuner"
-msgstr "Importer les chaînes du récepteur distant de repli"
+#, fuzzy, python-format
+msgid "Import from fallback tuner failed, %s"
+msgstr "Les chaînes du tuner de repli ont échoué %s"
 
 msgid "Import from remote receiver URL"
 msgstr "Importer depuis l’URL du récepteur distant"
@@ -5921,6 +5919,10 @@ msgstr "Recherche manuelle"
 
 msgid "Manual transponder"
 msgstr "Transpondeur manuel"
+
+#, fuzzy
+msgid "Manually import from fallback tuner"
+msgstr "Importer les programmations du récepteur distant de repli"
 
 msgid "Manufacturer"
 msgstr "Constructeur"
@@ -7793,7 +7795,7 @@ msgid "Really exit the subservices quickzap?"
 msgstr "Voulez-vous vraiment quitter le zapping rapide?"
 
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "Voulez-vous vraiment rebooter maintenant?"
 
 msgid "Really reboot now?"

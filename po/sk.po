@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-21 13:51+0430\n"
+"POT-Creation-Date: 2019-06-25 10:03+0430\n"
 "PO-Revision-Date: 2019-02-06 13:41+0100\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -485,6 +485,10 @@ msgstr "%s (%s)\n"
 #, python-format
 msgid "%s - extraction errors."
 msgstr ""
+
+#, fuzzy, python-format
+msgid "%s imported from fallback tuner"
+msgstr "Povoliť import časovača zo záložného tuneru"
 
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
@@ -2098,13 +2102,6 @@ msgstr "Číslo kanálu, picona a názov služby"
 
 msgid "Channels and EPG"
 msgstr "Stanice a EPG"
-
-#, python-format
-msgid "Channels from fallback tuner failed %s"
-msgstr "Stanice zo záložného tuneru zlyhali %s"
-
-msgid "Channels from fallback tuner imported"
-msgstr "Stanice zo záložného tuneru boli importované"
 
 msgid "Channels only"
 msgstr "Len stanice"
@@ -5204,8 +5201,9 @@ msgstr "Importovať stanice a/alebo EPG z URL adresy vzdialeného prijímača v 
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "Importovať stanice a/alebo EPG z URL adresy vzdialeného prijímača v prípade, že sa prijímač alebo Enigma2 reštartuje"
 
-msgid "Import channels from fallback tuner"
-msgstr "Import staníc zo záložného tuneru"
+#, fuzzy, python-format
+msgid "Import from fallback tuner failed, %s"
+msgstr "Stanice zo záložného tuneru zlyhali %s"
 
 msgid "Import from remote receiver URL"
 msgstr "Importovať stanice z URL adresy vzdialeného prijímača"
@@ -5930,6 +5928,10 @@ msgstr "Ručné vyhľadávanie"
 
 msgid "Manual transponder"
 msgstr "Transpondér ručne"
+
+#, fuzzy
+msgid "Manually import from fallback tuner"
+msgstr "Povoliť import časovača zo záložného tuneru"
 
 msgid "Manufacturer"
 msgstr "Výrobca"
@@ -7810,7 +7812,7 @@ msgid "Really exit the subservices quickzap?"
 msgstr "Naozaj ukončiť rýchle prepínanie podkanálov?"
 
 #, fuzzy
-msgid "Really reboot into Recovery Mode"
+msgid "Really reboot into Recovery Mode?"
 msgstr "Naozaj reštartovať?"
 
 msgid "Really reboot now?"
