@@ -1497,6 +1497,7 @@ class InfoBarSeek:
 			self.unPauseService()
 
 	def pauseService(self):
+		SystemInfo["StatePlayPause"] = True
 		if self.seekstate == self.SEEK_STATE_PAUSE:
 			if config.seek.on_pause.value == "play":
 				self.unPauseService()
@@ -1511,6 +1512,7 @@ class InfoBarSeek:
 			self.setSeekState(self.SEEK_STATE_PAUSE)
 
 	def unPauseService(self):
+		SystemInfo["StatePlayPause"] = False
 		print "unpause"
 		if self.seekstate == self.SEEK_STATE_PLAY:
 			return 0

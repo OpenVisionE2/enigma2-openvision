@@ -149,3 +149,6 @@ SystemInfo["CanBTAudio"] = fileCheck("/proc/stb/audio/btaudio")
 SystemInfo["CanBTAudioDelay"] = fileCheck("/proc/stb/audio/btaudio_delay")
 SystemInfo["ArchIsARM64"] = getBoxBrand() in ("linkdroid","mecool") or getBoxType() in ("wetekplay2","wetekhub","osmio4k","osmio4kplus","dreamone")
 SystemInfo["ArchIsARM"] = SystemInfo["HiSilicon"] or getBoxBrand() in ("dinobot","rpi","maxytec","octagon") or getBoxType() in ("cube","su980","wetekplay","x8hp","odroidc2","beyonwizu4","bre2ze4k","hd51","hd60","hd61","h7","h9","h9combo","h10","i55plus","e4hdultra","protek4k","vs1500","et1x000","et13000","vusolo4k","vuuno4k","vuuno4kse","vuzero4k","vuultimo4k","vuduo4k","revo4k","tmtwin4k","galaxy4k","tm4ksuper","lunix3-4k","force4","lunix4k") or getBoxType().startswith("spycat4") or getBoxType().startswith("dm9") or getBoxType().startswith("force3u") or SystemInfo["GigaBlueAudio"]
+SystemInfo["SeekStatePlay"] = False
+SystemInfo["StatePlayPause"] = False
+SystemInfo["StandbyState"] = False
