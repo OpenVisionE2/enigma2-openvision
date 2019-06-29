@@ -7,7 +7,7 @@
 #include <lib/gdi/esize.h>
 #include <lib/base/init.h>
 #include <lib/base/init_num.h>
-#if defined(HAVE_TEXTLCD) || defined(HAVE_7SEGMENT)
+#ifdef HAVE_TEXTLCD
 	#include <lib/base/estring.h>
 #endif
 #include <lib/gdi/glcddc.h>
@@ -57,7 +57,7 @@ void eLCD::unlock()
 	locked = 0;
 }
 
-#if defined(HAVE_TEXTLCD) || defined(HAVE_7SEGMENT)
+#ifdef HAVE_TEXTLCD
 void eLCD::renderText(ePoint start, const char *text)
 {
 	if (lcdfd >= 0 && start.y() < 5)
@@ -219,7 +219,7 @@ eDBoxLCD::~eDBoxLCD()
 
 void eDBoxLCD::update()
 {
-#if !defined(HAVE_TEXTLCD) && !defined(HAVE_7SEGMENT)
+#ifndef HAVE_TEXTLCD
 	if (lcdfd < 0)
 		return;
 
