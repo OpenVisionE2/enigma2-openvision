@@ -175,8 +175,8 @@ void bsodFatal(const char *component)
 		stringFromFile(f, "stbbrand", "/etc/brand");
 		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
-		stringFromFile(f, "imageversion", "/etc/image-version");
-		stringFromFile(f, "imageissue", "/etc/issue.net");
+		stringFromFile(f, "visionversion", "/etc/visionversion");
+		stringFromFile(f, "visionrevision", "/etc/visionrevision");
 
 		/* dump the log ringbuffer */
 		fprintf(f, "\n\n");
