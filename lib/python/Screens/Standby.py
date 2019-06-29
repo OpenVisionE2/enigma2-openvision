@@ -32,7 +32,17 @@ QUIT_WOL = 45
 class Standby(Screen):
 	def Power(self):
 		print "[Standby] leave standby"
+		SystemInfo["StandbyState"] = False
 		self.close(True)
+
+		if os.path.exists("/usr/script/StandbyLeave.sh"):
+			Console().ePopen("/usr/script/StandbyLeave.sh")
+
+		if SystemInfo["HiSilicon"] or getBoxBrand() == "dinobot":
+			try:
+				open("/proc/stb/hdmi/output", "w").write("on")
+			except:
+				pass
 
 	def setMute(self):
 		self.wasMuted = eDVBVolumecontrol.getInstance().isMuted()
@@ -48,6 +58,7 @@ class Standby(Screen):
 		self.avswitch = AVSwitch()
 
 		print "[Standby] enter standby"
+		SystemInfo["StandbyState"] = True
 
 		if os.path.exists("/usr/script/standby_enter.sh"):
 			Console().ePopen("/usr/script/standby_enter.sh")
