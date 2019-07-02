@@ -261,6 +261,10 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 		eDebug("[eDVBVideo] Video Device: %s", filename);
 		m_sn = eSocketNotifier::create(eApp, m_fd, eSocketNotifier::Priority);
 		CONNECT(m_sn->activated, eDVBVideo::video_event);
+#ifdef AZBOX
+		if (ioctl(m_fd, VIDEO_SELECT_SOURCE, VIDEO_SOURCE_DEMUX) < 0)
+			eDebug("[eTSMPEGDecoder] VIDEO_SELECT_SOURCE DEMUX failed: %m");
+#endif
 	}
 	if (demux)
 	{
@@ -1267,11 +1271,12 @@ RESULT eTSMPEGDecoder::showSinglePic(const char *filename)
 
 #if HAVE_HISILICON
 				if (ioctl(m_video_clip_fd, VIDEO_SELECT_SOURCE, 0xff) < 0)
-					eDebug("[eTSMPEGDecoder] VIDEO_SELECT_SOURCE MEMORY failed: %m");
+#elseif AZBOX
+				if (ioctl(m_video_clip_fd, VIDEO_SELECT_SOURCE, 2) < 0)
 #else
 				if (ioctl(m_video_clip_fd, VIDEO_SELECT_SOURCE, VIDEO_SOURCE_MEMORY) < 0)
-					eDebug("[eTSMPEGDecoder] VIDEO_SELECT_SOURCE MEMORY failed: %m");
 #endif
+					eDebug("[eTSMPEGDecoder] VIDEO_SELECT_SOURCE MEMORY failed: %m");
 				if (ioctl(m_video_clip_fd, VIDEO_SET_STREAMTYPE, streamtype) < 0)
 					eDebug("[eTSMPEGDecoder] VIDEO_SET_STREAMTYPE failed: %m");
 				if (ioctl(m_video_clip_fd, VIDEO_PLAY) < 0)
@@ -1318,8 +1323,10 @@ void eTSMPEGDecoder::finishShowSinglePic()
 	{
 		if (ioctl(m_video_clip_fd, VIDEO_STOP, 0) < 0)
 			eDebug("[eTSMPEGDecoder] VIDEO_STOP failed: %m");
+#ifndef AZBOX
 		if (ioctl(m_video_clip_fd, VIDEO_SELECT_SOURCE, VIDEO_SOURCE_DEMUX) < 0)
 				eDebug("[eTSMPEGDecoder] VIDEO_SELECT_SOURCE DEMUX failed: %m");
+#endif
 		close(m_video_clip_fd);
 		m_video_clip_fd = -1;
 	}

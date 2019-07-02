@@ -374,6 +374,18 @@ void eDVBLocalTimeHandler::updateTime( time_t tp_time, eDVBChannel *chan, int up
 {
 	int time_difference;
 	bool restart_tdt = false;
+#ifdef AZBOX
+	/* Azbox Sigma mode check, leave update time checking while we are in exclusive player mode */
+	int val=0;
+	FILE *f = fopen("/proc/player_status", "r");
+	if (f)
+	{		
+		fscanf(f, "%d", &val);
+		fclose(f);	
+	}
+	if(val)
+		return;
+#endif
 	if (!tp_time)
 		restart_tdt = true;
 	else if (tp_time == -1)

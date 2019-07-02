@@ -3011,7 +3011,7 @@ void eDVBServicePlay::updateDecoder(bool sendSeekableStateChanged)
 			selectAudioStream();
 		}
 
-#if HAVE_AMLOGIC
+#if defined(HAVE_AMLOGIC) || defined(AZBOX)
 		m_decoder->setSyncPCR(pcrpid);
 #else
 		if (!(m_is_pvr || m_is_stream || m_timeshift_active))
