@@ -44,7 +44,7 @@ eDVBAudio::eDVBAudio(eDVBDemux *demux, int dev)
 		m_fd_demux = -1;
 	}
 
-#ifndef DREAMBOX
+#if !defined(DREAMBOX) && !defined(AZBOX)
 	if (m_fd >= 0)
 	{
 		::ioctl(m_fd, AUDIO_SELECT_SOURCE, demux ? AUDIO_SOURCE_DEMUX : AUDIO_SOURCE_HDMI);
