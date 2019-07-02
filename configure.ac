@@ -410,7 +410,7 @@ if test "$BOXTYPE" == "azboxhd"; then
 	AC_DEFINE(KEY_VIDEO_TO_KEY_EPG, 1,[define when rc sends a KEY_VIDEO event for its KEY_EPG])
 	AC_DEFINE(KEY_TV_TO_KEY_MODE, 1,[define when rc sends a KEY_TV event for its KEY_MODE key])
 	AC_DEFINE(KEY_TEXT_TO_KEY_AUDIO, 1,[define when rc sends a KEY_TEXT event for its KEY_AUDIO key])
-	AC_DEFINE(AZBOXHD_LCD_CHARACTERS, 1,[define when characters for azboxhd family])
+	AC_DEFINE(AZBOXHD_LCD_CHARACTERS, 1,[define lcd characters for azboxhd family])
 fi
 
 if test "$BOXTYPE" == "blackbox7405"; then
