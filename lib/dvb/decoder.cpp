@@ -1271,7 +1271,7 @@ RESULT eTSMPEGDecoder::showSinglePic(const char *filename)
 
 #if HAVE_HISILICON
 				if (ioctl(m_video_clip_fd, VIDEO_SELECT_SOURCE, 0xff) < 0)
-#elseif AZBOX
+#elif defined AZBOX
 				if (ioctl(m_video_clip_fd, VIDEO_SELECT_SOURCE, 2) < 0)
 #else
 				if (ioctl(m_video_clip_fd, VIDEO_SELECT_SOURCE, VIDEO_SOURCE_MEMORY) < 0)
