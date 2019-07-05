@@ -9,7 +9,6 @@ from Components.PluginComponent import plugins
 from Components.NimManager import nimmanager
 from Components.config import config, ConfigDictionarySet, NoSave
 from Components.SystemInfo import SystemInfo
-from Components.Label import Label
 from Tools.BoundFunction import boundFunction
 from Plugins.Plugin import PluginDescriptor
 from Tools.Directories import resolveFilename, SCOPE_SKIN
@@ -163,7 +162,7 @@ class Menu(Screen, ProtectedScreen):
 	def __init__(self, session, parent):
 		self.parentmenu = parent
 		Screen.__init__(self, session)
-
+		self["key_blue"] = StaticText("")
 		self["menu"] = List([])
 		self["menu"].enableWrapAround = True
 		self.showNumericHelp = False
@@ -177,7 +176,7 @@ class Menu(Screen, ProtectedScreen):
 
 		ProtectedScreen.__init__(self)
 
-		self["actions"] = NumberActionMap(["OkCancelActions", "MenuActions", "NumberActions", "HelpActions"],
+		self["actions"] = NumberActionMap(["OkCancelActions", "MenuActions", "NumberActions", "HelpActions", "ColorActions"],
 			{
 				"ok": self.okbuttonClick,
 				"cancel": self.closeNonRecursive,
@@ -193,13 +192,8 @@ class Menu(Screen, ProtectedScreen):
 				"8": self.keyNumberGlobal,
 				"9": self.keyNumberGlobal,
 				"displayHelp": self.showHelp,
-			})
-		if config.usage.menu_sort_mode.value == "user":
-			self["EditActions"] = ActionMap(["ColorActions"],
-			{
 				"blue": self.keyBlue,
 			})
-
 		title = parent.get("title", "").encode("UTF-8") or None
 		title = title and _(title) or _(parent.get("text", "").encode("UTF-8"))
 		title = self.__class__.__name__ == "MenuSort" and _("Menusort (%s)") % title or title
@@ -217,6 +211,7 @@ class Menu(Screen, ProtectedScreen):
 			self.createMenuList(self.showNumericHelp)
 
 	def createMenuList(self, showNumericHelp=False):
+		self["key_blue"].text = _("Edit menu") if config.usage.menu_sort_mode.value == "user" else ""
 		self.list = []
 		self.menuID = None
 		for x in self.parentmenu: #walk through the actual nodelist
@@ -254,7 +249,7 @@ class Menu(Screen, ProtectedScreen):
 						break
 				self.list.append((l[0], boundFunction(l[1], self.session, close=self.close), l[2], l[3] or 50))
 
-		if config.usage.menu_sort_mode.value == "user" and self.menuID == "mainmenu":
+		if "user" in config.usage.menu_sort_mode.value and self.menuID == "mainmenu":
 			plugin_list = []
 			id_list = []
 			for l in plugins.getPlugins([PluginDescriptor.WHERE_PLUGINMENU ,PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_EVENTINFO]):
@@ -263,7 +258,7 @@ class Menu(Screen, ProtectedScreen):
 					id_list.append(l.id)
 					plugin_list.append((l.name, boundFunction(l.__call__, self.session), l.id, 200))
 
-		if self.menuID is not None and config.usage.menu_sort_mode.value == "user":
+		if self.menuID is not None and "user" in config.usage.menu_sort_mode.value:
 			self.sub_menu_sort = NoSave(ConfigDictionarySet())
 			self.sub_menu_sort.value = config.usage.menu_sort_weight.getConfigValue(self.menuID, "submenu") or {}
 			idx = 0
@@ -279,7 +274,7 @@ class Menu(Screen, ProtectedScreen):
 		if config.usage.menu_sort_mode.value == "a_z":
 			# Sort by Name
 			self.list.sort(key=self.sortByName)
-		elif config.usage.menu_sort_mode.value == "user":
+		elif "user" in config.usage.menu_sort_mode.value:
 			self.hide_show_entries()
 		else:
 			# Sort by Weight
@@ -327,8 +322,10 @@ class Menu(Screen, ProtectedScreen):
 				return True
 
 	def keyBlue(self):
-		if config.usage.menu_sort_mode.value == "user":
+		if "user" in config.usage.menu_sort_mode.value:
 			self.session.openWithCallback(self.menuSortCallBack, MenuSort, self.parentmenu)
+		else:
+			return 0
 
 	def menuSortCallBack(self, key=False):
 		self.createMenuList()
@@ -347,13 +344,13 @@ class Menu(Screen, ProtectedScreen):
 
 class MenuSort(Menu):
 	def __init__(self, session, parent):
-		self["key_red"] = Label(_("Exit"))
-		self["key_green"] = Label(_("Save changes"))
-		self["key_yellow"] = Label(_("Toggle show/hide"))
-		self["key_blue"] = Label(_("Reset order (All)"))
 		self.somethingChanged = False
 		Menu.__init__(self, session, parent)
 		self.skinName = "MenuSort"
+		self["key_red"] = StaticText(_("Exit"))
+		self["key_green"] = StaticText(_("Save changes"))
+		self["key_yellow"] = StaticText(_("Toggle show/hide"))
+		self["key_blue"] = StaticText(_("Reset order (All)"))
 		self["menu"].onSelectionChanged.append(self.selectionChanged)
 
 		self["MoveActions"] = ActionMap(["WizardActions", "DirectionActions"],
