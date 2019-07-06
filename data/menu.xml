@@ -41,28 +41,29 @@
 			</menu>
 			<menu weight="5" level="0" text="System" entryID="system_selection">
 				<id val="system"/>
-
 				<menu level="0" text="Audio / Video" entryID="video_selection">
-				<id val="video"/>
-				<item level="0" entryID="av_setup"><setup id="avsetup"/></item>
-				<item level="2" entryID="subtitle_setup"><setup id="subtitlesetup"/></item>
-				<item level="0" entryID="autolanguage_setup"><setup id="autolanguagesetup"/></item>
+					<id val="video"/>
+					<item level="0" entryID="av_setup"><setup id="avsetup"/></item>
+					<item level="2" entryID="subtitle_setup"><setup id="subtitlesetup"/></item>
+					<item level="0" entryID="autolanguage_setup"><setup id="autolanguagesetup"/></item>
 				</menu>
-
 				<item level="0" entryID="usage_setup"><setup id="usage"/></item>
-
 				<menu level="0" text="GUI Settings" entryID="gui_settings">
-				<id val="gui"/>
-				<item level="0" text="Language" entryID="language_setup"><screen module="LanguageSelection"/></item>
-				<item level="0" entryID="timezone_setup"><setup id="timezone"/></item>
-				<item level="0" entryID="user_interface"><setup id="userinterface"/></item>
-				<item level="0" text="Skin" entryID="skin_setup"><screen module="SkinSelector" screen="SkinSelector"/></item>
+					<id val="gui"/>
+					<item level="0" text="Language" entryID="language_setup"><screen module="LanguageSelection"/></item>
+					<item level="0" entryID="timezone_setup"><setup id="timezone"/></item>
+					<item level="0" entryID="user_interface"><setup id="userinterface"/></item>
+					<item level="0" text="Skin" entryID="skin_setup"><screen module="SkinSelector" screen="SkinSelector"/></item>
 					<menu level="0" text="Front panel display" entryID="display_selection" requires="Display">
-					<id val="lcd"/>
-					<item weight="1" level="0" text="Display Skin" entryID="lcd_skin_setup"><screen module="SkinSelector" screen="LcdSkinSelector"/></item>
-					<item weight="2" level="1" entryID="lcd_setup" text="LCD setup"><setup id="lcd"/></item>
-					<item weight="3" level="1" entryID="led_setup" text="LED setup"><setup id="ledsetup"/></item>
+						<id val="lcd"/>
+						<item weight="1" level="0" text="Display Skin" entryID="lcd_skin_setup"><screen module="SkinSelector" screen="LcdSkinSelector"/></item>
+						<item weight="2" level="1" entryID="lcd_setup" text="LCD setup"><setup id="lcd"/></item>
+						<item weight="3" level="1" entryID="led_setup" text="LED setup"><setup id="ledsetup"/></item>
 					</menu>
+				</menu>
+				<menu level="0" text="EPG" entryID="epg_menu">
+					<id val="epg"/>
+					<item level="0" entryID="epg_setup"><setup id="epgsettings"/></item>
 				</menu>
 				<item level="1" entryID="rfmod_setup" requires="RfModulator"><setup id="RFmod"/></item>
 				<menu level="0" text="Expert settings" entryID="expert_selection">
@@ -88,10 +89,6 @@
 				<item weight="10" level="0" text="Common Interface" entryID="ci_setup" requires="CommonInterface"><screen module="Ci" screen="CiSelection"/></item>
 				<item weight="10" level="1" text="CIHelper Setup" entryID="ci_setup" requires="CIHelper"><screen module="Ci" screen="CIHelper" /></item>
 			</menu>
-			<menu weight="15" text="EPG" entryID="epg_menu">
-				<id val="epg"/>
-				<item level="0" entryID="epg_setup"><setup id="epgsettings"/></item>
-			</menu>			
 			<item weight="15" level="0" text="Parental control" entryID="parental_setup"><screen module="ParentalControlSetup" screen="ParentalControlSetup"/></item>
 			<item weight="15" level="0" text="Factory reset" entryID="factory_reset">
 				<code>
