@@ -440,6 +440,13 @@ if test "$BOXTYPE" == "force1" -o "$BOXTYPE" == "force1plus" -o "$BOXTYPE" == "f
 	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])
 fi
 
+AM_CONDITIONAL(DM9X0, test `echo "$BOXTYPE" | cut -b 1-3` == "dm9")
+AM_CONDITIONAL(HAVE_COLORLCD1, test "$BOXTYPE" == "dm8000" -o "$BOXTYPE" == "dm800" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2")
+AM_CONDITIONAL(HAVE_COLORLCD2, test "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2" -o "$BOXTYPE" == "dm820")
+AM_CONDITIONAL(HAVE_COLORLCD3, test "$BOXTYPE" == "dm7080")
+AM_CONDITIONAL(HAVE_GRAUTEC70X0, test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm7080")
+AM_CONDITIONAL(HAVE_GRAUTEC8000, test "$BOXTYPE" == "dm8000")
+
 if test `echo "$BOXTYPE" | cut -b 1-2` == "dm"; then
 	AC_DEFINE(DREAMBOX, 1, [Dreambox hardware])
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
@@ -450,31 +457,13 @@ if test `echo "$BOXTYPE" | cut -b 1-5` == "dream"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 fi
 
-if test "$BOXTYPE" == "dm800"; then
-	AC_DEFINE(HAVE_COLORLCD1, 1,[define when using a COLORLCD1 display device])
-fi
-
-if test "$BOXTYPE" == "dm8000"; then
-	AC_DEFINE(HAVE_COLORLCD1, 1,[define when using a COLORLCD1 display device])
-	AC_DEFINE(HAVE_GRAUTEC8000, 1,[define when using a GRAUTEC8000 display device])
-fi
-
 if test "$BOXTYPE" == "dm7080"; then
 	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
 	AC_DEFINE(CONFIG_ION, 1,[define when we need to use ION allocator])
-	AC_DEFINE(HAVE_COLORLCD3, 1,[define when using a COLORLCD3 display device])
-	AC_DEFINE(HAVE_GRAUTEC70X0, 1,[define when using a GRAUTEC70X0 display device])
 fi
 
-if test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2"; then
+if test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm820" -o "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2"; then
 	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
-	AC_DEFINE(HAVE_COLORLCD1, 1,[define when using a COLORLCD1 display device])
-	AC_DEFINE(HAVE_GRAUTEC70X0, 1,[define when using a GRAUTEC70X0 display device])
-fi
-
-if test "$BOXTYPE" == "dm820" -o "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2"; then
-	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
-	AC_DEFINE(HAVE_COLORLCD2, 1,[define when using a COLORLCD2 display device])
 fi
 
 if test "$BOXTYPE" == "dm820" -o "$BOXTYPE" == "dm520"; then
@@ -484,7 +473,6 @@ fi
 if test `echo "$BOXTYPE" | cut -b 1-3` == "dm9"; then
 	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
 	AC_DEFINE(CONFIG_ION, 1,[define when we need to use ION allocator])
-	AC_DEFINE(DM9X0, 1, [DM9X hardware])
 	AC_DEFINE(DREAMBOX_MOVE_LCD, 1,[define when we need to move lcd text a bit to the right])
 fi
 
