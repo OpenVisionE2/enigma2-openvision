@@ -10,10 +10,7 @@ from enigma import getBoxType, getBoxBrand
 # available and preferred modes, as well as handling the currently
 # selected mode. No other strict checking is done.
 
-if getBoxBrand() == "azbox":
-	config.av.edid_override = ConfigYesNo(default = True)
-else:
-	config.av.edid_override = ConfigYesNo(default = False)
+config.av.edid_override = ConfigYesNo(default = True)
 
 class VideoHardware:
 	rates = { } # high-level, use selectable modes.
