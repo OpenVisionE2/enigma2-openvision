@@ -616,11 +616,11 @@ if test "$BOXTYPE" == "tiviarmin"; then
 	AC_DEFINE(TIVIARRC, 1,[define use Tiviar RC keymap])
 fi
 
-if test "$BOXTYPE" == "anadol4k" -o "$BOXTYPE" == "dinobot4k" -o "$BOXTYPE" == "mediabox4k" -o "$BOXTYPE" == "dinobot4kse" -o "$BOXTYPE" == "ferguson4k" -o "$BOXTYPE" == "anadol4kv2" -o "$BOXTYPE" == "anadol4kcombo" -o "$BOXTYPE" == "axashis4kcombo" -o "$BOXTYPE" == "dinobot4kl" -o "$BOXTYPE" == "dinobot4kplus" -o "$BOXTYPE" == "axashis4kcomboplus" -o "$BOXTYPE" == "dinobot4kmini" -o "$BOXTYPE" == "dinobot4kpro" -o "$BOXTYPE" == "dinobotu55" -o "$BOXTYPE" == "dinoboth265" -o "$BOXTYPE" == "axashistwin" -o "$BOXTYPE" == "axashisc4k" -o "$BOXTYPE" == "anadolprohd5" -o "$BOXTYPE" == "dinobotu43"; then
+if test "$BOXTYPE" == "anadol4k" -o "$BOXTYPE" == "dinobot4k" -o "$BOXTYPE" == "mediabox4k" -o "$BOXTYPE" == "dinobot4kse" -o "$BOXTYPE" == "ferguson4k" -o "$BOXTYPE" == "anadol4kv2" -o "$BOXTYPE" == "anadol4kcombo" -o "$BOXTYPE" == "axashis4kcombo" -o "$BOXTYPE" == "dinobot4kl" -o "$BOXTYPE" == "dinobot4kplus" -o "$BOXTYPE" == "axashis4kcomboplus" -o "$BOXTYPE" == "dinobot4kmini" -o "$BOXTYPE" == "dinobot4kpro" -o "$BOXTYPE" == "dinobotu55" -o "$BOXTYPE" == "dinoboth265" -o "$BOXTYPE" == "axashistwin" -o "$BOXTYPE" == "axashisc4k" -o "$BOXTYPE" == "anadolprohd5" -o "$BOXTYPE" == "dinobotu43" -o "$BOXTYPE" == "protek4kx1" -o "$BOXTYPE" == "spycatminiv2" -o "$BOXTYPE" == "iziboxecohd" -o "$BOXTYPE" == "jdhdduo" -o "$BOXTYPE" == "turing" -o "$BOXTYPE" == "arivatwin" -o "$BOXTYPE" == "arivacombo"; then
 	AC_DEFINE(HAVE_HISILICON, 1,[define it's a HISILICON chip])
 fi
 
-if test "$BOXTYPE" == "dinobot4kmini"; then
+if test "$BOXTYPE" == "dinobot4kmini" -o "$BOXTYPE" == "arivatwin" -o "$BOXTYPE" == "arivacombo"; then
 	AC_DEFINE(KEY_F6_TO_KEY_FAVORITES, 1,[define when rc FAV key sends a KEY_F6 event for its KEY_FAVORITES key])
 	AC_DEFINE(KEY_CONTEXT_MENU_TO_KEY_BACK, 1,[define when rc MOUSE key sends a KEY_CONTEXT_MENU event for its KEY_BACK key])
 	AC_DEFINE(KEY_WWW_TO_KEY_FILE, 1,[define when rc HOME key sends a KEY_WWW event for its KEY_FILE key])
