@@ -12,9 +12,9 @@ from Tools.camcontrol import CamControl
 from enigma import eTimer, getDesktop
 
 class SoftcamSetup(Screen, ConfigListScreen):
-      if getDesktop(0).size().width() == 1280:
-	skin = """
-	<screen name="SoftcamSetup" position="center,center" size="560,550" >
+	if getDesktop(0).size().width() == 1280:
+	   skin = """
+	   <screen name="SoftcamSetup" position="center,center" size="560,550" >
 		<widget name="config" position="5,10" size="550,180" />
 		<widget name="info" position="5,200" size="550,340" font="Fixed;18" />
 		<ePixmap name="red" position="0,510" zPosition="1" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
@@ -25,10 +25,10 @@ class SoftcamSetup(Screen, ConfigListScreen):
 		<widget objectTypes="key_blue,StaticText" source="key_blue" render="Pixmap" pixmap="skin_default/buttons/blue.png"  position="420,510" zPosition="1" size="140,40" transparent="1" alphatest="on">
 			<convert type="ConditionalShowHide"/>
 		</widget>
-	</screen>"""
-      else:
-	skin = """
-	<screen name="SoftcamSetup" position="485,center" size="951,860" >
+	   </screen>"""
+	else:
+	   skin = """
+	   <screen name="SoftcamSetup" position="485,center" size="951,860" >
 		<widget name="config" position="5,10" size="941,180" font="Fixed;28" itemHeight="32" />
 		<widget name="info" position="5,200" size="941,500" font="Fixed;32" />
 		<ePixmap name="red" position="0,819" zPosition="1" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
@@ -39,7 +39,7 @@ class SoftcamSetup(Screen, ConfigListScreen):
 		<widget objectTypes="key_blue,StaticText" source="key_blue" render="Pixmap" pixmap="skin_default/buttons/blue.png"  position="809,819" zPosition="1" size="140,40" transparent="1" alphatest="on">
 			<convert type="ConditionalShowHide"/>
 		</widget>
-	</screen>"""
+	   </screen>"""
 	def __init__(self, session):
 		Screen.__init__(self, session)
 
