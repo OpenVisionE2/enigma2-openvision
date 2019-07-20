@@ -411,15 +411,13 @@ class OscamInfoMenu(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		global f
-		xmain = wmain= 425 *f
-		ymain = hmain= 240 *f
-		xmenu = ymenu = 33 *f
-		hmain = ymain + ymenu
-		wmenu = wmain - xmenu
-		hmenu = hmain - ymenu
-		screentitle = _("Oscam Info - Main Menu")
-		self.skin = """<screen position="%d ,%d" size="%d, %d" title="Main menu">""" % (xmain, ymain, wmain, hmain)
-		self.skin +="""<widget name="mainmenu" position="%d, %d" size="%d, %d" zPosition="1" scrollbarMode="showOnDemand" />""" % (xmenu, ymenu, wmenu, hmenu)
+		screentitle = _("Oscam Info Main Menu")
+		if f == 1.5:
+			self.skin = """<screen position="center,center" size="640,400" title="Oscam Info Main Menu">"""
+			self.skin +="""<widget name="mainmenu" position="50,50" size="590, 350" zPosition="1" scrollbarMode="showOnDemand" />"""
+		else:
+			self.skin = """<screen position="center,center" size="425, 240" title="Oscam Info Main Menu">"""
+			self.skin +="""<widget name="mainmenu" position="33,33" size="392,207" zPosition="1" scrollbarMode="showOnDemand" />"""
 		self.skin += """</screen>"""
 		title = screentitle
 		self["menu_path_compressed"] = StaticText("")
@@ -519,6 +517,7 @@ class OscamInfoMenu(Screen):
 						self.callbackmode = "readers"
 						self.session.openWithCallback(self.chooseReaderCallback, ChoiceBox, title = _("Please choose reader"), list=reader)
 		elif entry == 6:
+			screentitle = _("Oscam Config info")
 			self.session.open(OscamInfoConfigScreen)
 
 	def chooseReaderCallback(self, retval):
@@ -576,7 +575,16 @@ class OscamInfoMenu(Screen):
 
 class oscECMInfo(Screen, OscamInfo):
 	def __init__(self, session):
+		global f
 		Screen.__init__(self, session)
+		screentitle = _("Oscam ECM info")
+		if f == 1.5:
+			self.skin = """<screen position="center,center" size="960,540" title="OScam ECM info">"""
+			self.skin += """<widget name="output" font="FHD; 30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="50,50" size="960,540" transparent="1" />"""
+		else:
+			self.skin = """<screen position="center ,center" size="640,360" title="OScam ECM info">"""
+			self.skin += """<widget name="output" font="FHD; 30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="33,33" size="640,360" transparent="1" />"""
+		self.skin += """</screen>"""
 		self.ecminfo = "/tmp/ecm.info"
 		self["output"] = oscMenuList([])
 		if config.oscaminfo.autoupdate.value:
@@ -1167,6 +1175,26 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 	def __init__(self, session, msg = None):
 		Screen.__init__(self, session)
 		self.session = session
+		screentitle = _("Oscam Info Config Screen")
+		if f == 1.5:
+			self.skin = """<screen position="center ,center" size="960,540" title="Oscam Info Config Screen">"""
+			self.skin += """<widget name="config" font="Regular;30" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="960,540" transparent="1" />"""
+			self.skin += """<widget name="status" render="Label" font="Regular;30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="50,50" size="960,540" transparent="1" />"""
+			self.skin += """<eLabel backgroundColor="white" name="" position="0,450" size="960,2" zPosition="-9" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="OctEtFHD/skin_default/buttons/key_red.png" position="60,475" size="40,40" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="OctEtFHD/skin_default/buttons/key_green.png" position="240,475" size="40,40" />"""
+			self.skin += """<widget source="key_red" render="Label" font="Regular;28" position="120,480" size="270,40" transparent="1" zPosition="1" />"""
+			self.skin += """<widget source="key_green" render="Label" font="Regular;28" position="300,480" size="270,40" transparent="1" zPosition="1" />"""
+		else:
+			self.skin = """<screen position="center ,center" size="640,360" title="Oscam Info Config Screen">"""
+			self.skin += """<widget name="config" font="Regular;20" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="640,360" transparent="1" />"""
+			self.skin += """<widget name="status" render="Label" font="Regular;20" itemHeight="30" scrollbarMode="showOnDemand" enableWrapAround="1" position="33,33" size="640,360" transparent="1" />"""
+			self.skin += """<eLabel backgroundColor="white" name="" position="0,300" size="640,2" zPosition="-9" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="OctEtFHD/skin_default/buttons/key_red.png" position="40,320" size="28,28" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="OctEtFHD/skin_default/buttons/key_green.png" position="160,320" size="28,28" />"""
+			self.skin += """<widget source="key_red" render="Label" font="Regular;18" position="80,320" size="180,28" transparent="1" zPosition="1" />"""
+			self.skin += """<widget source="key_green" render="Label" font="Regular;18" position="300,320" size="180,28" transparent="1" zPosition="1" />"""
+		self.skin += """</screen>"""
 		if msg is not None:
 			self.msg = "Error:\n%s" % msg
 		else:
@@ -1188,7 +1216,7 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 		self.createSetup()
 		config.oscaminfo.userdatafromconf.addNotifier(self.elementChanged, initial_call = False)
 		config.oscaminfo.autoupdate.addNotifier(self.elementChanged, initial_call = False)
-		self.onLayoutFinish.append(self.layoutFinished)
+		self["config"].l.setList(self.oscamconfig)
 
 	def elementChanged(self, instance):
 		self.createSetup()
