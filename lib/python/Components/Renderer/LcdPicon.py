@@ -125,9 +125,9 @@ class LcdPicon(Renderer):
 				pngname = tmp
 			else:
 				if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
-					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "lcd_picon_default.png")
+					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/lcd_picon_default.png")
 				else:
-					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "picon_default.png")
+					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/picon_default.png")
 		if os.path.getsize(pngname):
 			self.defaultpngname = pngname
 
