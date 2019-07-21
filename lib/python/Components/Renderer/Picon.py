@@ -110,7 +110,7 @@ class Picon(Renderer):
 			if pathExists(tmp):
 				pngname = tmp
 			else:
-				pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/picon_default.png")
+				pngname = resolveFilename(SCOPE_SKIN_IMAGE, "picon_default.png")
 		if os.path.getsize(pngname):
 			self.defaultpngname = pngname
 

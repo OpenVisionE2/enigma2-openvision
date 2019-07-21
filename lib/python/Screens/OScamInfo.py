@@ -539,7 +539,7 @@ class OscamInfoMenu(Screen):
 		for t in mlist:
 			res = [ t ]
 			if t.startswith("--"):
-				png = resolveFilename(SCOPE_CURRENT_SKIN, "skin_default/div-h.png")
+				png = resolveFilename(SCOPE_CURRENT_SKIN, "div-h.png")
 				if fileExists(png):
 					png = LoadPixmap(png)
 				if png is not None:
@@ -556,7 +556,7 @@ class OscamInfoMenu(Screen):
 			else:
 				x, y, w, h = skin.parameters.get("ChoicelistName",(45*f, 2*f, 800*f, 25*f))
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, x, y, w, h, 0, RT_HALIGN_LEFT, t))
-				png2 = resolveFilename(SCOPE_CURRENT_SKIN, "skin_default/buttons/key_" + keys[k] + ".png")
+				png2 = resolveFilename(SCOPE_CURRENT_SKIN, "buttons/key_" + keys[k] + ".png")
 				if fileExists(png2):
 					png2 = LoadPixmap(png2)
 				if png2 is not None:
@@ -639,9 +639,9 @@ class oscInfo(Screen, OscamInfo):
 		button_width = int(sizeH / 4)
 		for k, v in enumerate(["red", "green", "yellow", "blue"]):
 			xpos = k * button_width
-			self.skin += """<ePixmap name="%s" position="%d,%d" size="35,25" pixmap="/usr/share/enigma2/skin_default/buttons/key_%s.png" zPosition="1" transparent="1" alphatest="on" />""" % (v, xpos, ypos, v)
+			self.skin += """<ePixmap name="%s" position="%d,%d" size="35,25" pixmap="buttons/key_%s.png" zPosition="1" transparent="1" alphatest="on" />""" % (v, xpos, ypos, v)
 			self.skin += """<widget source="key_%s" render="Label" position="%d,%d" size="%d,%d" font="Regular;18" zPosition="1" valign="center" transparent="1" />""" % (v, xpos + 40, ypos, button_width, 22)
-		self.skin +="""<ePixmap name="divh" position="0,37" size="%d,2" pixmap="/usr/share/enigma2/skin_default/div-h.png" transparent="1" alphatest="on" />""" % sizeH
+		self.skin +="""<ePixmap name="divh" position="0,37" size="%d,2" pixmap="div-h.png" transparent="1" alphatest="on" />""" % sizeH
 		self.skin +="""<widget name="output" position="10,45" size="%d,%d" zPosition="1" scrollbarMode="showOnDemand" />""" % ( self.sizeLH, ysize - 50)
 		self.skin += """</screen>"""
 		Screen.__init__(self, session)
@@ -786,7 +786,7 @@ class oscInfo(Screen, OscamInfo):
 			res.append( (eListboxPythonMultiContent.TYPE_TEXT, xpos, ypos*f, xsize, self.itemheight*f, useFont, RT_HALIGN_LEFT, i, int(colour, 16)) )
 			x += 1
 		if heading:
-			png = resolveFilename(SCOPE_CURRENT_SKIN, "skin_default/div-h.png")
+			png = resolveFilename(SCOPE_CURRENT_SKIN, "div-h.png")
 			if fileExists(png):
 				png = LoadPixmap(png)
 			if png is not None:
@@ -1181,8 +1181,8 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 			self.skin += """<widget name="config" font="Regular;30" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="960,540" transparent="1" />"""
 			self.skin += """<widget name="status" render="Label" font="Regular;30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="50,50" size="960,540" transparent="1" />"""
 			self.skin += """<eLabel backgroundColor="white" name="" position="0,450" size="960,2" zPosition="-9" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="OctEtFHD/skin_default/buttons/key_red.png" position="60,475" size="40,40" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="OctEtFHD/skin_default/buttons/key_green.png" position="240,475" size="40,40" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="60,475" size="40,40" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="240,475" size="40,40" />"""
 			self.skin += """<widget source="key_red" render="Label" font="Regular;28" position="120,480" size="270,40" transparent="1" zPosition="1" />"""
 			self.skin += """<widget source="key_green" render="Label" font="Regular;28" position="300,480" size="270,40" transparent="1" zPosition="1" />"""
 		else:
@@ -1190,8 +1190,8 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 			self.skin += """<widget name="config" font="Regular;20" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="640,360" transparent="1" />"""
 			self.skin += """<widget name="status" render="Label" font="Regular;20" itemHeight="30" scrollbarMode="showOnDemand" enableWrapAround="1" position="33,33" size="640,360" transparent="1" />"""
 			self.skin += """<eLabel backgroundColor="white" name="" position="0,300" size="640,2" zPosition="-9" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="OctEtFHD/skin_default/buttons/key_red.png" position="40,320" size="28,28" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="OctEtFHD/skin_default/buttons/key_green.png" position="160,320" size="28,28" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="40,320" size="28,28" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="160,320" size="28,28" />"""
 			self.skin += """<widget source="key_red" render="Label" font="Regular;18" position="80,320" size="180,28" transparent="1" zPosition="1" />"""
 			self.skin += """<widget source="key_green" render="Label" font="Regular;18" position="300,320" size="180,28" transparent="1" zPosition="1" />"""
 		self.skin += """</screen>"""
