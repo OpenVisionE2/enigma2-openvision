@@ -14,6 +14,10 @@ dist_install_DATA = \
 	epgclock_post.png \
 	epgclock_pre.png \
 	epgclock_prepost.png \
+	expandable.png \
+	expandable-plugins.png \
+	expanded.png \
+	expanded-plugins.png \
 	faz.png \
 	folder.png \
 	fza.png \
@@ -72,6 +76,7 @@ dist_install_DATA = \
 	part_new.png \
 	part_unwatched.png \
 	pause.png \
+	pic_frame.png \
 	playlist.png \
 	playlistquit.png \
 	plilogo-fs8.png \
@@ -125,6 +130,8 @@ dist_install_DATA = \
 	trashcan.png \
 	unlock.png \
 	unlockBouquet.png \
+	verticalline.png \
+	verticalline-plugins.png \
 	za.png \
 	zapclock.png \
 	zapclock_add.png \
