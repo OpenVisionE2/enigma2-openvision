@@ -416,8 +416,8 @@ class OscamInfoMenu(Screen):
 			self.skin = """<screen position="center,center" size="640,400" title="Oscam Info Main Menu">"""
 			self.skin +="""<widget name="mainmenu" position="50,50" size="590, 350" zPosition="1" scrollbarMode="showOnDemand" />"""
 		else:
-			self.skin = """<screen position="center,center" size="425, 240" title="Oscam Info Main Menu">"""
-			self.skin +="""<widget name="mainmenu" position="33,33" size="392,207" zPosition="1" scrollbarMode="showOnDemand" />"""
+			self.skin = """<screen position="center,center" size="425,260" title="Oscam Info Main Menu">"""
+			self.skin +="""<widget name="mainmenu" position="33,33" size="392,220" zPosition="1" scrollbarMode="showOnDemand" />"""
 		self.skin += """</screen>"""
 		title = screentitle
 		self["menu_path_compressed"] = StaticText("")
@@ -1175,25 +1175,24 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 	def __init__(self, session, msg = None):
 		Screen.__init__(self, session)
 		self.session = session
-		screentitle = _("Oscam Info Config Screen")
 		if f == 1.5:
-			self.skin = """<screen position="center ,center" size="960,540" title="Oscam Info Config Screen">"""
+			self.skin = """<screen position="center,center" size="960,540" title="Oscam Setup">"""
 			self.skin += """<widget name="config" font="Regular;30" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="960,540" transparent="1" />"""
 			self.skin += """<widget name="status" render="Label" font="Regular;30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="50,50" size="960,540" transparent="1" />"""
 			self.skin += """<eLabel backgroundColor="white" name="" position="0,450" size="960,2" zPosition="-9" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="60,475" size="40,40" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="240,475" size="40,40" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="60,485" size="40,40" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="240,485" size="40,40" />"""
 			self.skin += """<widget source="key_red" render="Label" font="Regular;28" position="120,480" size="270,40" transparent="1" zPosition="1" />"""
 			self.skin += """<widget source="key_green" render="Label" font="Regular;28" position="300,480" size="270,40" transparent="1" zPosition="1" />"""
 		else:
-			self.skin = """<screen position="center ,center" size="640,360" title="Oscam Info Config Screen">"""
-			self.skin += """<widget name="config" font="Regular;20" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="640,360" transparent="1" />"""
+			self.skin = """<screen position="center,center" size="640,400" title="Oscam Setup">"""
+			self.skin += """<widget name="config" font="Regular;20" itemHeight="50" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="640,400" transparent="1" />"""
 			self.skin += """<widget name="status" render="Label" font="Regular;20" itemHeight="30" scrollbarMode="showOnDemand" enableWrapAround="1" position="33,33" size="640,360" transparent="1" />"""
-			self.skin += """<eLabel backgroundColor="white" name="" position="0,300" size="640,2" zPosition="-9" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="40,320" size="28,28" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="160,320" size="28,28" />"""
-			self.skin += """<widget source="key_red" render="Label" font="Regular;18" position="80,320" size="180,28" transparent="1" zPosition="1" />"""
-			self.skin += """<widget source="key_green" render="Label" font="Regular;18" position="300,320" size="180,28" transparent="1" zPosition="1" />"""
+			self.skin += """<eLabel backgroundColor="white" name="" position="0,350" size="640,2" zPosition="-9" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="40,365" size="35,35" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="180,365" size="35,35" />"""
+			self.skin += """<widget source="key_red" render="Label" font="Regular;18" position="80,367" size="180,35" transparent="1" zPosition="1" />"""
+			self.skin += """<widget source="key_green" render="Label" font="Regular;18" position="220,367" size="220,35" transparent="1" zPosition="1" />"""
 		self.skin += """</screen>"""
 		if msg is not None:
 			self.msg = "Error:\n%s" % msg
@@ -1216,7 +1215,7 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 		self.createSetup()
 		config.oscaminfo.userdatafromconf.addNotifier(self.elementChanged, initial_call = False)
 		config.oscaminfo.autoupdate.addNotifier(self.elementChanged, initial_call = False)
-		self["config"].l.setList(self.oscamconfig)
+		self.onLayoutFinish.append(self.layoutFinished)
 
 	def elementChanged(self, instance):
 		self.createSetup()
