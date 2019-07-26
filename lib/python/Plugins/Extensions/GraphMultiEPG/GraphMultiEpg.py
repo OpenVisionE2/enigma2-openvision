@@ -293,7 +293,7 @@ class EPGList(GUIComponent):
 	def getIndexFromService(self, serviceref):
 		if serviceref is not None:
 			for x in range(len(self.list)):
-				if CompareWithAlternatives(self.list[x][0], serviceref.toString()):
+				if CompareWithAlternatives(self.list[x][0], serviceref):
 					return x
 		return None
 
@@ -453,7 +453,7 @@ class EPGList(GUIComponent):
 		selected = self.cur_service[0] == service
 
 		# Picon and Service name
-		if CompareWithAlternatives(service, self.currentlyPlaying and self.currentlyPlaying.toString()):
+		if CompareWithAlternatives(service, self.currentlyPlaying and self.currentlyPlaying):
 			serviceForeColor = self.foreColorServiceSelected
 			serviceBackColor = self.backColorServiceSelected
 			bgpng = self.curSerPix or self.nowEvPix

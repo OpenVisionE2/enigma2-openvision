@@ -381,7 +381,7 @@ class EPGList(GUIComponent):
 		index = 0
 		refstr = serviceref.toString()
 		for x in self.list:
-			if CompareWithAlternatives(x[1], refstr):
+			if CompareWithAlternatives(x[1], serviceref):
 				self.instance.moveSelectionTo(index)
 				break
 			index += 1
