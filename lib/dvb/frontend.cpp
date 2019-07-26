@@ -988,10 +988,11 @@ int eDVBFrontend::calculateSignalPercentage(int signalqualitydb)
 
 void eDVBFrontend::calculateSignalQuality(int snr, int &signalquality, int &signalqualitydb)
 {
-	int sat_max = 1600; // for stv0288 / bsbe2
 	int ret = 0x12345678;
-	int ter_max = 2900;
-	int atsc_max = 4200;
+	int sat_max = 1600; // we assume a max of 16db here
+	int ter_max = 2900; // we assume a max of 29db here
+	int cab_max = 4200; // we assume a max of 42db here
+	int atsc_max = 4200; // we assume a max of 42db here
 
 	if (!strcmp(m_description, "AVL2108")) // ET9000
 	{
@@ -1156,6 +1157,11 @@ void eDVBFrontend::calculateSignalQuality(int snr, int &signalquality, int &sign
 	{
 		ret = snr*10;
 	}
+	else if (!strcmp(m_description, "ATBM7821 DVB-T2/C"))
+	{
+		ret = snr*10;
+		ter_max = cab_max = 4200;
+	}
 	else if (!strcmp(m_description, "Vuplus DVB-S NIM(AVL2108)")) // VU+Ultimo/VU+Uno DVB-S2 NIM
 	{
 		ret = (int)((((double(snr) / (65535.0 / 100.0)) * 0.1600) + 0.2100) * 100);
@@ -1189,6 +1195,29 @@ void eDVBFrontend::calculateSignalQuality(int snr, int &signalquality, int &sign
 	else if (!strcmp(m_description, "DVB-C NIM(3128 FBC)"))
 	{
 		ret = (int)(snr / 17);
+	}
+	else if (!strcmp(m_description, "GIGA DVB-C/T NIM (SP8221L)")
+		|| !strcmp(m_description, "GIGA DVB-C/T NIM (SI4765)")
+		|| !strcmp(m_description, "GIGA DVB-C/T NIM (SI41652)")
+		|| !strcmp(m_description, "GIGA DVB-C/T2 NIM (SI4768)")
+		|| !strcmp(m_description, "GIGA DVB-C/T2 NIM (SI41682)")
+		|| !strcmp(m_description, "GIGA DVB-T2/C NIM (TT2L10)")
+		|| !strcmp(m_description, "GIGA DVB-T2/C NIM (TT3L10)")
+		)
+	{
+		int type = -1;
+		oparm.getSystem(type);
+		switch (type)
+		{
+			case feCable:
+				ret = (int)(snr / 15);
+				cab_max = 4200;
+				break;
+			case feTerrestrial:
+				ret = (int)(snr / 30);
+				ter_max = 1700;
+				break;
+		}
 	}
 	else if (!strcmp(m_description, "Genpix"))
 	{
@@ -1252,6 +1281,22 @@ void eDVBFrontend::calculateSignalQuality(int snr, int &signalquality, int &sign
 		ret = (int)(snr / 46.8);
 		sat_max = 1620;
 	}
+	else if (!strcmp(m_description, "Si21682") || !strcmp(m_description, "Si2168"))
+	{
+	    int type = -1;
+		oparm.getSystem(type);
+		switch (type)
+		{
+			case feCable:
+				ret = (int)(snr / 17);
+				cab_max = 3800;
+				break;
+			case feTerrestrial:
+				ret = (int)(snr / 22.3);
+				ter_max = 2900;
+				break;
+		}
+	}
 	else if(!strcmp(m_description, "WinTV HVR-850") || !strcmp(m_description, "Hauppauge") || !strcmp(m_description, "LG Electronics LGDT3306A VSB/QAM Frontend"))
 	{
 		eDVBFrontendParametersATSC parm = {0};
@@ -1301,13 +1346,13 @@ void eDVBFrontend::calculateSignalQuality(int snr, int &signalquality, int &sign
 		case feSatellite:
 			signalquality = (ret >= sat_max ? 65535 : ret * 65535 / sat_max);
 			break;
-		case feCable: // we assume a max of 42db here
-			signalquality = (ret >= 4200 ? 65535 : ret * 65535 / 4200);
+		case feCable:
+			signalquality = (ret >= cab_max ? 65535 : ret * 65535 / cab_max);
 			break;
-		case feTerrestrial: // we assume a max of 29db here
+		case feTerrestrial:
 			signalquality = (ret >= ter_max ? 65535 : ret * 65535 / ter_max);
 			break;
-		case feATSC: // we assume a max of 42db here
+		case feATSC:
 			signalquality = (ret >= atsc_max ? 65535 : ret * 65535 / atsc_max);
 			break;
 		}
