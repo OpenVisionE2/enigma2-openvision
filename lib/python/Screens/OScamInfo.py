@@ -1180,10 +1180,10 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 			self.skin += """<widget name="config" font="Regular;30" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="960,540" transparent="1" />"""
 			self.skin += """<widget name="status" render="Label" font="Regular;30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="50,50" size="960,540" transparent="1" />"""
 			self.skin += """<eLabel backgroundColor="white" name="" position="0,450" size="960,2" zPosition="-9" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="60,485" size="40,40" />"""
-			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="240,485" size="40,40" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="60,475" size="40,40" />"""
+			self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="255,475" size="40,40" />"""
 			self.skin += """<widget source="key_red" render="Label" font="Regular;28" position="120,480" size="270,40" transparent="1" zPosition="1" />"""
-			self.skin += """<widget source="key_green" render="Label" font="Regular;28" position="300,480" size="270,40" transparent="1" zPosition="1" />"""
+			self.skin += """<widget source="key_green" render="Label" font="Regular;28" position="315,480" size="270,40" transparent="1" zPosition="1" />"""
 		else:
 			self.skin = """<screen position="center,center" size="640,400" title="Oscam Setup">"""
 			self.skin += """<widget name="config" font="Regular;20" itemHeight="50" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="640,400" transparent="1" />"""
