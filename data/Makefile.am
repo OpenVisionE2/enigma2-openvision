@@ -83,7 +83,8 @@ dist_pkgdata_DATA = \
 	iso-639-3.pck \
 	timezone.xml \
 	unicable.xml \
-	groupedservices
+	groupedservices \
+	otv_011a0000_0002_07d4.dict
 
 iso-639-3.pck: $(srcdir)/iso-639-3.tab
 	python $(srcdir)/convert-iso-639-3.py $< $@
