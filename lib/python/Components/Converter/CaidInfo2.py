@@ -1,9 +1,3 @@
-#
-#  CaidInfo2 - Converter
-#  ver 1.2.1 28.11.2013
-#
-#  Coded by bigroma & 2boom
-
 from Components.Converter.Converter import Converter
 from enigma import iServiceInformation
 from Tools.Directories import fileExists
@@ -607,5 +601,3 @@ class CaidInfo2(Poll, Converter, object):
 
 	def changed(self, what):
 		Converter.changed(self, (self.CHANGED_POLL,))
-
-
