@@ -77,6 +77,8 @@ while : ; do
 	#  4 - front processor upgrade
 	#  5 - install new settings
 	#  6 - restart enigma in debug mode
+	# 12 - Reboot to android
+	# 16 - Reboot to recovery
 	# 42 - offline update
 	# 43 - restart for autoinstall
 	# 44 - INI MICOM upgrade
@@ -113,6 +115,16 @@ while : ; do
 			;;
 		6)
 			DEBUG_LVL=4
+			;;
+		12)
+			if [ -e /dev/block/by-name/bootoptions ]; then
+				mkdir -p /tmp/bootoptions
+				mount /dev/block/by-name/bootoptions /tmp/bootoptions
+				cp -f /tmp/bootoptions/STARTUP_ANDROID /tmp/bootoptions/STARTUP_ONCE
+			else
+				echo "rescue" > /proc/stb/fp/boot_mode
+			fi
+			/sbin/reboot
 			;;
 		16)
 			if [ -e /dev/block/by-name/bootoptions ]; then
