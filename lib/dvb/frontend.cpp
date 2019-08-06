@@ -1238,6 +1238,10 @@ void eDVBFrontend::calculateSignalQuality(int snr, int &signalquality, int &sign
 		default: break;
 		}
 	}
+	else if (!strcmp(m_description, "Typhoon(internal)") || !strcmp(m_description, "DS3103"))
+	{
+	    ret = (int)(snr * 10); //snr unit is x10 db, change it to x100 db.
+	}
 	else if (!strcmp(m_description, "Broadcom BCM73XX") ||
 			 !strcmp(m_description, "FTS-260 (Montage RS6000)") ||
 			 !strcmp(m_description, "Panasonic MN88472") ||

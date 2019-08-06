@@ -23,6 +23,10 @@ gdi_libenigma_gdi_a_SOURCES = \
 	gdi/pixmapcache.cpp \
 	gdi/region.cpp
 
+if HAVE_HYPERCUBE
+gdi_libenigma_gdi_a_SOURCES += gdi/tridentFB.cpp
+endif
+
 gdiincludedir = $(pkgincludedir)/lib/gdi
 gdiinclude_HEADERS = \
 	gdi/accel.h \

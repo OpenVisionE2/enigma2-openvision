@@ -8,6 +8,11 @@
 #include <lib/base/elock.h>
 #include <lib/gdi/grc.h>
 
+#if HAVE_HYPERCUBE
+#include <lib/dvb_ci/dvbci.h>
+#endif
+
+
 DEFINE_REF(eSocketNotifier);
 
 eSocketNotifier::eSocketNotifier(eMainloop *context, int fd, int requested, bool startnow):
@@ -173,7 +178,9 @@ void eMainloop::removeSocketNotifier(eSocketNotifier *sn)
 int eMainloop::processOneEvent(long user_timeout, PyObject **res, ePyObject additional)
 {
 	int return_reason = 0;
-
+#if HAVE_HYPERCUBE
+	unsigned int uiTridCi = 0;
+#endif
 	if (additional && !PyDict_Check(additional))
 		eFatal("[eMainloop::processOneEvent] additional, but it's not dict");
 
@@ -228,8 +235,27 @@ int eMainloop::processOneEvent(long user_timeout, PyObject **res, ePyObject addi
 	std::map<int,eSocketNotifier*>::iterator it = notifiers.begin();
 
 	int i=0;
+#if HAVE_HYPERCUBE
+	int j;
+	j=fdcount;
+#endif
 	for (; i < nativecount; ++i, ++it)
 	{
+#if HAVE_HYPERCUBE
+		if (it->first == 0x12345678)
+		{
+			it->second->state = 1; // running and in poll
+			uiTridCi = 0x12345678;
+			++it;
+			nativecount--;
+			fdcount--;
+			//printf("-");
+			if (i >= nativecount)
+			{
+				break;
+			}
+		}
+#endif
 		it->second->state = 1; // running and in poll
 		pfd[i].fd = it->first;
 		pfd[i].events = it->second->getRequested();
@@ -302,7 +328,29 @@ int eMainloop::processOneEvent(long user_timeout, PyObject **res, ePyObject addi
 		else
 			return_reason = 2; /* don't assume the timeout has passed when we got a signal */
 	}
-
+#if HAVE_HYPERCUBE
+	if (uiTridCi == 0x12345678)
+	{
+		if (DVBCI_GetCbStatus()!=0)
+		{
+		eDebug("call ci notify here %d.", DVBCI_GetCbStatus());
+			it = notifiers.find(uiTridCi);
+			if (it != notifiers.end()
+				&& it->second->state == 1) // added and in poll
+			{
+				m_inActivate = it->second;
+				{
+					m_inActivate->AddRef();
+					m_inActivate->activate(DVBCI_GetCbStatus());
+					m_inActivate->Release();
+				}
+				m_inActivate = 0;
+			}
+			return_reason = 0; /* don't assume the timeout has passed when we got a signal */
+		eDebug("out ci notify here.");
+		}
+	}
+#endif
 	return return_reason;
 }
 

@@ -122,7 +122,14 @@ while : ; do
 				mount /dev/block/by-name/bootoptions /tmp/bootoptions
 				cp -f /tmp/bootoptions/STARTUP_ANDROID /tmp/bootoptions/STARTUP_ONCE
 			else
-				echo "rescue" > /proc/stb/fp/boot_mode
+				if [ $stbcheck == "su980" ]; then
+					echo "rescue not needed!"
+				else
+					echo "rescue" > /proc/stb/fp/boot_mode
+				fi
+			fi
+			if [ -e /usr/bin/setenv ]; then
+				/usr/bin/setenv  default_sys  1
 			fi
 			/sbin/reboot
 			;;

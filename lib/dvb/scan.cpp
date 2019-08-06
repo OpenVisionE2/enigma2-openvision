@@ -408,7 +408,11 @@ RESULT eDVBScan::startFilter()
 			if (m_SDT->start(m_demux, eDVBSDTSpec()))
 				return -1;
 		}
+#if HAVE_HYPERCUBE
+		else if (m_SDT->start(m_demux, eDVBSDTSpec(tsid, false)))
+#else
 		else if (m_SDT->start(m_demux, eDVBSDTSpec(tsid, true)))
+#endif
 			return -1;
 		CONNECT(m_SDT->tableReady, eDVBScan::SDTready);
 	}

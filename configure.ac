@@ -348,6 +348,18 @@ if test x"$with_libhiaccel" != xno ; then
 	AC_DEFINE(HAVE_HISILICON_ACCEL, 1,[define add HISILICON ACCEL])
 fi
 
+AC_ARG_WITH(libtriaccel,
+	AS_HELP_STRING([--with-libtriaccel],[use libtriaccel, yes or no]),
+	[with_libtriaccel=$withval],[with_libtriaccel=no])
+if test "$with_libtriaccel" = "yes"; then
+	PKG_CHECK_MODULES(LIBTRIACCEL, [libtriaccel])
+	TRIACCEL_CFLAGS="-DUSE_LIBTRIACCEL"
+fi
+
+if test x"$with_libtriaccel" != xno ; then
+	AC_DEFINE(HAVE_TRIDENT_ACCEL, 1,[define add TRIDENT ACCEL])
+fi
+
 AC_ARG_WITH(osdanimation,
 	AC_HELP_STRING([--with-osdanimation], [use osd animation, yes or no]),
 	[[withosdanimation=$withval]],
@@ -686,6 +698,12 @@ fi
 if test "$BOXTYPE" == "spycat" -o "$BOXTYPE" == "spycatmini" -o "$BOXTYPE" == "spycatminiplus" -o "$BOXTYPE" == "osmini" -o "$BOXTYPE" == "osminiplus" -o "$BOXTYPE" == "osmega" -o "$BOXTYPE" == "spycat4kmini" -o "$BOXTYPE" == "spycat4k" -o "$BOXTYPE" == "spycat4kcombo"; then
 	AC_DEFINE(KEY_MEDIA_TO_KEY_LIST, 1,[define when rc sends a MEDIA event for its LIST])
 fi
+
+if test "$BOXTYPE" == "su980"; then
+	AC_DEFINE(HAVE_HYPERCUBE, 1,[enable HyperCube specific stuff])
+fi
+
+AM_CONDITIONAL(HAVE_HYPERCUBE, test `echo "$BOXTYPE" | cut -b 1-3` == "su9")
 
 AC_CHECK_HEADERS([sys/klog.h])
 AC_CHECK_FUNCS([klogctl])

@@ -1196,7 +1196,11 @@ void eDVBResourceManager::DVBChannelStateChanged(iDVBChannel *chan)
 		case iDVBChannel::state_last_instance:
 		{
 			eDebug("[eDVBResourceManager] start release channel timer");
+#if HAVE_HYPERCUBE
+			m_releaseCachedChannelTimer->start(10000, true);
+#else
 			m_releaseCachedChannelTimer->start(3000, true);
+#endif
 			break;
 		}
 		default: // ignore all other events

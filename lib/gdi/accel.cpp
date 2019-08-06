@@ -51,6 +51,22 @@ extern int bcm_accel_accumulate();
 extern int bcm_accel_sync();
 #endif
 
+#ifdef HAVE_TRIDENT_ACCEL
+extern int tridentFB_accel_init(void);
+extern void tridentFB_accel_close(void);
+extern int tridentFB_accel_blit(
+		int src_addr, int src_width, int src_height, int src_stride, int bpp,
+		int dst_addr, int dst_width, int dst_height, int dst_stride,
+		int src_x, int src_y, int width, int height,
+		int dst_x, int dst_y, int dwidth, int dheight,
+		struct fb_cmap* pal_addr, unsigned int numOfColors, int flags);
+
+extern int tridentFB_accel_fill(
+		int dst_addr, int dst_width, int dst_height, int dst_stride,
+		int x, int y, int width, int height,
+		unsigned long color);
+#endif
+
 gAccel::gAccel():
 	m_accel_addr(0),
 	m_accel_phys_addr(0),
@@ -64,6 +80,9 @@ gAccel::gAccel():
 #ifdef HAVE_HISILICON_ACCEL
 	dinobot_accel_init();
 #endif
+#ifdef HAVE_TRIDENT_ACCEL
+	m_tridentFB_accel_state =  tridentFB_accel_init();
+#endif
 }
 
 gAccel::~gAccel()
@@ -73,6 +92,10 @@ gAccel::~gAccel()
 #endif
 #ifdef HAVE_HISILICON_ACCEL
 	dinobot_accel_close();
+#endif
+#ifdef HAVE_TRIDENT_ACCEL
+	m_tridentFB_accel_state = -1;
+	tridentFB_accel_close();
 #endif
 	instance = 0;
 }
@@ -236,6 +259,56 @@ int gAccel::blit(gUnmanagedSurface *dst, gUnmanagedSurface *src, const eRect &p,
 		}
 		return 0;
 #endif
+#ifdef HAVE_TRIDENT_ACCEL	/* TODO: blitAlphaTest flag is not clear */
+	/* unsupported flags */
+	if (flags & gPixmap::blitAlphaTest)
+	{
+		eDebug("gAccel::blit error\n");
+		return -1;
+	}
+	if (!m_tridentFB_accel_state)
+	{
+		if ((src->bpp == 8) && src->clut.data)
+		{
+			unsigned int numOfColors = 0;
+			int ret = -1;
+			struct fb_cmap cmap;
+			cmap.start = src->clut.start;
+			cmap.len = src->clut.colors;
+			numOfColors = src->clut.colors;
+			if(cmap.len >0)
+			{
+				cmap.red = new unsigned short[cmap.len];
+				cmap.green = new unsigned short[cmap.len];
+				cmap.blue = new unsigned short[cmap.len];
+				cmap.transp= new unsigned short[cmap.len];
+				for(int i= 0;i<cmap.len;i++)
+				{
+					cmap.red[i] = src->clut.data[i].r;
+					cmap.green[i] = src->clut.data[i].g;
+					cmap.blue[i] = src->clut.data[i].b;
+					cmap.transp[i] = 0xff;
+				}
+				cmap.transp[0] = 0x00;
+			}
+			ret = tridentFB_accel_blit(
+				src->data, src->x, src->y, src->stride, src->bpp,
+				dst->data, dst->x, dst->y, dst->stride,
+				p.x(), p.y(), p.width(), p.height(),
+				area.left(), area.top(), area.width(), area.height(),
+				&cmap, numOfColors,flags);
+			delete[] cmap.red;
+			delete[] cmap.green;
+			delete[] cmap.blue;
+			delete[] cmap.transp;
+			return ret;
+		}
+		else
+		{
+			return -1;
+		}
+	}
+#endif
 	return -1;
 }
 
@@ -259,6 +332,17 @@ int gAccel::fill(gUnmanagedSurface *dst, const eRect &area, unsigned long col)
 		area.left(), area.top(), area.width(), area.height(),
 		col);
 	return 0;
+#endif
+#ifdef HAVE_TRIDENT_ACCEL
+	if (!m_tridentFB_accel_state)
+	{
+		int ret;
+		ret = tridentFB_accel_fill(
+			dst->data_phys, dst->x, dst->y, dst->stride,
+			area.left(), area.top(), area.width(), area.height(),
+			col);
+		return ret;
+	}
 #endif
 	return -1;
 }

@@ -61,6 +61,17 @@ int eMMI_UI::processMMIData(int slot_id, const unsigned char *tag, const void *d
 			eDebug("[eMMI_UI] displeay control failes: expected 1 as first byte, got %d", ((unsigned char*)data)[0]);
 		return 1;
 	case 0x07:		//Tmenu_enq
+#if HAVE_HYPERCUBE
+{
+	if (data != NULL)
+	{
+		Trid_T_Enq *d=(Trid_T_Enq*)data;
+		printf("<eMMI_UI processMMIData> menu enqure blind answ(%d), text %s,len %d.\n", d->blind_answ, d->text.strings, d->answ_len);
+		mmiScreenEnq(slot_id, d->blind_answ, d->answ_len, d->text.strings);
+	}
+	break;
+}
+#else
 	{
 		unsigned char *d=(unsigned char*)data;
 		unsigned char *max=((unsigned char*)d) + len;
@@ -80,8 +91,49 @@ int eMMI_UI::processMMIData(int slot_id, const unsigned char *tag, const void *d
 		mmiScreenEnq(slot_id, blind, alen, (char*)convertDVBUTF8(str).c_str());
 		break;
 	}
+#endif
 	case 0x09:		//Tmenu_last
+#if HAVE_HYPERCUBE
+{
+	Trid_T_Menu *d=(Trid_T_Menu*)data;
+	int i=0;
+	mmiScreenBegin(slot_id, 0);
+	if (d->title.len > 0)
+	{
+		mmiScreenAddText(slot_id, /*i++*/0, d->title.strings);
+	}
+	if (d->sub_title.len > 0)
+	{
+		mmiScreenAddText(slot_id, /*i++*/1, d->sub_title.strings);
+	}
+	if (d->bottom.len > 0)
+	{
+		mmiScreenAddText(slot_id, /*i++*/2, d->bottom.strings);
+	}
+	for (i=0; i < (d->choice_nb); ++i)
+	{
+		mmiScreenAddText(slot_id, i+3, d->texts[i].strings);
+	}
+	mmiScreenFinish(slot_id);
+}
+#endif
 	case 0x0c:		//Tlist_last
+#if HAVE_HYPERCUBE
+{
+	Trid_T_List *d=(Trid_T_List*)data;
+	int i=0;
+	mmiScreenBegin(slot_id, 1);
+	mmiScreenAddText(slot_id, /*i++*/0, d->title.strings);
+	mmiScreenAddText(slot_id, /*i++*/1, d->sub_title.strings);
+	mmiScreenAddText(slot_id, /*i++*/2, d->bottom.strings);
+	for (i=0; i < (d->item_nb); ++i)
+	{
+		mmiScreenAddText(slot_id, i+3, d->texts[i].strings);
+	}
+	mmiScreenFinish(slot_id);
+	break;
+}		
+#else
 	{
 		unsigned char *d=(unsigned char*)data;
 		unsigned char *max=((unsigned char*)d) + len;
@@ -118,6 +170,7 @@ int eMMI_UI::processMMIData(int slot_id, const unsigned char *tag, const void *d
 			d += textlen;
 		}
 		mmiScreenFinish(slot_id);
+#endif
 		break;
 	}
 	default:
@@ -294,7 +347,16 @@ int eMMI_UI::mmiScreenFinish(int slot)
 
 void eMMI_UI::mmiSessionDestroyed(int slot)
 {
+#if HAVE_HYPERCUBE
+	if (slot < m_max_slots)
+		mmiScreenClose(slot, 0);
+	else
+	{
+		printf("<eMMI_UI mmiSessionDestroyed>very seriously error. slot >= m_max_slots\n");
+	}
+#else
 	mmiScreenClose(slot, 0);
+#endif
 }
 
 PyObject *eMMI_UI::getMMIScreen(int slot)

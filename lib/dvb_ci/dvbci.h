@@ -1,6 +1,10 @@
 #ifndef __dvbci_dvbci_h
 #define __dvbci_dvbci_h
 
+#if HAVE_HYPERCUBE
+#define trid_ci 1
+#endif
+
 #ifndef SWIG
 
 #include <lib/base/ebase.h>
@@ -8,6 +12,15 @@
 #include <lib/python/python.h>
 #include <set>
 #include <queue>
+
+#if HAVE_HYPERCUBE
+#include <lib/ciplus/driver_dvbci.h>
+#include <lib/ciplus/inc/trid_datatype.h>
+#include <lib/ciplus/inc/trid_errno.h>
+#include <lib/ciplus/inc/trid_ci_types.h>
+#include <lib/ciplus/inc/trid_ci_api.h>
+#include <lib/dvb_ci/dvbci_ui.h>
+#endif
 
 #include <lib/network/serversocket.h>
 
@@ -50,10 +63,16 @@ class eDVBCISlot: public iObject, public sigc::trackable
 	ePtr<eSocketNotifier> notifier;
 	int state;
 	std::map<uint16_t, uint8_t> running_services;
+#if HAVE_HYPERCUBE
+	int application_manager;
+	int ca_manager;
+	int mmi_session;
+#else
 	eDVBCIApplicationManagerSession *application_manager;
 	eDVBCICAManagerSession *ca_manager;
 	eDVBCICcSession *cc_manager;
 	eDVBCIMMISession *mmi_session;
+#endif
 	std::priority_queue<queueData> sendqueue;
 	caidSet possible_caids;
 	serviceSet possible_services;
@@ -63,16 +82,29 @@ class eDVBCISlot: public iObject, public sigc::trackable
 	std::string current_source;
 	int current_tuner;
 	bool user_mapped;
+#ifndef HAVE_HYPERCUBE
 	void data(int);
+#endif
 	bool plugged;
 public:
+#if HAVE_HYPERCUBE
+	void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status);
+	void eDVBCISlot::cdata(int/*Trid_CI_CardStatus_t*/ status);
+#endif
 	enum {stateRemoved, stateInserted, stateInvalid, stateResetted};
 	enum {versionUnknown=-1, versionCI=0, versionCIPlus1=1, versionCIPlus2=2};
 	eDVBCISlot(eMainloop *context, int nr);
 	~eDVBCISlot();
 
 	int send(const unsigned char *data, size_t len);
-
+#if HAVE_HYPERCUBE
+	void setAppManager(int session );
+	void setMMIManager(int session );
+	void setCAManager(int session );
+	int getAppManager() { return application_manager; }
+	int getMMIManager() { return mmi_session; }
+	int getCAManager() { return ca_manager; }
+#else
 	void setAppManager( eDVBCIApplicationManagerSession *session );
 	void setMMIManager( eDVBCIMMISession *session );
 	void setCAManager( eDVBCICAManagerSession *session );
@@ -82,7 +114,7 @@ public:
 	eDVBCIMMISession *getMMIManager() { return mmi_session; }
 	eDVBCICAManagerSession *getCAManager() { return ca_manager; }
 	eDVBCICcSession *getCCManager() { return cc_manager; }
-
+#endif
 	int getState() { return state; }
 	int getVersion();
 	int getSlotID();
@@ -101,6 +133,13 @@ public:
 	static std::string getTunerLetter(int tuner_no) { return std::string(1, char(65 + tuner_no)); }
 	static std::string getTunerLetterDM(int);
 	static char* readInputCI(int);
+#if HAVE_HYPERCUBE
+	trid_sint32 MenuDataNotifyCallbackProcess(Trid_T_Menu* menu);
+	trid_sint32 ListDataNotifyCallbackProcess(Trid_T_List* list);
+	trid_sint32 EnqDataNotifyCallbackProcess(Trid_T_Enq* enq);
+	trid_sint32 CloseMMINotifyCallbackProcess();
+	trid_sint32 GetHostAVPIDCallback(trid_uint16 *AudioPID, trid_uint16 *VideoPID);
+#endif
 };
 
 struct CIPmtHandler
@@ -237,9 +276,21 @@ public:
 	PyObject *getDescrambleRules(int slotid);
 	RESULT setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject) );
 	PyObject *readCICaIds(int slotid);
-
+#if HAVE_HYPERCUBE
+	int CardStatusChangeNotifyCallback(int slotid, Trid_CI_CardStatus_t status);
+	trid_sint32 MenuDataNotifyCallback(Trid_T_Menu* menu);
+	trid_sint32 ListDataNotifyCallback(Trid_T_List* list);
+	trid_sint32 EnqDataNotifyCallback(Trid_T_Enq* enq);
+	trid_sint32 CloseMMINotifyCallback();
+	trid_sint32 GetHostAVPIDCallback(trid_uint16 *AudioPID, trid_uint16 *VideoPID);
+#endif
 	void sendDataToHelper(int cmd, int slot, int session, unsigned long idtag, unsigned char *tag, unsigned char *data, int len);
 	bool isClientConnected();
 };
+#if HAVE_HYPERCUBE
+extern "C" {
 
+int DVBCI_GetCbStatus();
+}
+#endif
 #endif

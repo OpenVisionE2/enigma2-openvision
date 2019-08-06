@@ -1,5 +1,10 @@
 noinst_LIBRARIES += dvb_ci/libenigma_dvb_ci.a
 
+if HAVE_HYPERCUBE
+dvb_ci_libenigma_dvb_ci_a_SOURCES = \
+	dvbci.cpp \
+	dvbci_ui.cpp
+else
 dvb_ci_libenigma_dvb_ci_a_SOURCES = \
 	dvb_ci/dvbci.cpp \
 	dvb_ci/dvbci_appmgr.cpp \
@@ -17,9 +22,15 @@ dvb_ci_libenigma_dvb_ci_a_SOURCES = \
 	dvb_ci/aes_xcbc_mac.cpp \
 	dvb_ci/descrambler.cpp \
 	dvb_ci/res_content_ctrl.cpp
+endif
 
 
 dvbciincludedir = $(pkgincludedir)/lib/dvb_ci
+if HAVE_HYPERCUBE
+dvbciinclude_HEADERS = \
+	dvbci.h \
+	dvbci_ui.h
+else
 dvbciinclude_HEADERS = \
 	dvb_ci/dvbci.h \
 	dvb_ci/dvbci_appmgr.h \
@@ -38,3 +49,4 @@ dvbciinclude_HEADERS = \
 	dvb_ci/aes_xcbc_mac.h \
 	dvb_ci/descrambler.h \
 	dvb_ci/res_content_ctrl.h
+endif

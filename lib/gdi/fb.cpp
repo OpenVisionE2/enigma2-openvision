@@ -205,6 +205,9 @@ int fbClass::SetMode(int nxRes, int nyRes, int nbpp)
 	screeninfo.width=0;
 	screeninfo.xoffset=screeninfo.yoffset=0;
 	screeninfo.bits_per_pixel=nbpp;
+#if HAVE_HYPERCUBE
+	screeninfo.activate = FB_ACTIVATE_NOW;
+#endif
 
 	switch (nbpp) {
 	case 16:
