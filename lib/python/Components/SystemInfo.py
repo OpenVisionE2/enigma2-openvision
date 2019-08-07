@@ -121,6 +121,7 @@ SystemInfo["OScamIsActive"] = SystemInfo["OScamInstalled"] and fileExists("/tmp/
 SystemInfo["NCamInstalled"] = fileExists("/usr/bin/ncam")
 SystemInfo["NCamIsActive"] = SystemInfo["NCamInstalled"] and fileExists("/tmp/.ncam/ncam.version")
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/stb/info/openvision")
+SystemInfo["OLDE2API"] = getBoxType() in ("dm800","su980")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and getBoxType() not in ("hd51","h7")
 SystemInfo["AndroidMode"] = getBoxType() == "su980" or SystemInfo["RecoveryMode"] and getBoxType() == "multibox"
 SystemInfo["grautec"] = fileExists("/tmp/usbtft")

@@ -11,6 +11,10 @@
 #include <lib/base/estring.h>
 #include <lib/base/nconfig.h>
 
+#ifndef NO_STREAM_ID_FILTER
+#define NO_STREAM_ID_FILTER    (~0U)
+#endif
+
 FastScanLogicalChannel::FastScanLogicalChannel(const uint8_t *const buffer)
 {
 	serviceId = UINT16(&buffer[0]);

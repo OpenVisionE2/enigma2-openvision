@@ -14,6 +14,14 @@
 
 #include <linux/dvb/frontend.h>
 
+#ifndef NO_STREAM_ID_FILTER
+#define NO_STREAM_ID_FILTER    (~0U)
+#endif
+
+#ifndef DTV_STREAM_ID
+#define DTV_STREAM_ID DTV_ISDBS_TS_ID
+#endif
+
 class eDVBFrontendParametersSatellite
 {
 public:

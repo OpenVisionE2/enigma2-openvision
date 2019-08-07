@@ -8,7 +8,6 @@ from Components.NimManager import nimmanager
 from Components.About import about
 from Components.ScrollLabel import ScrollLabel
 from Components.Button import Button
-from Components.SystemInfo import SystemInfo
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 
@@ -54,6 +53,7 @@ class About(Screen):
 		AboutText += _("Kernel version: ") + about.getKernelVersionString() + "\n"
 
 		AboutText += _("DVB driver version: ") + about.getDriverInstalledDate() + "\n"
+		AboutText += _("DVB API: ") + about.getDVBAPI() + "\n"
 
 		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer","")
 		self["GStreamerVersion"] = StaticText(GStreamerVersion)
