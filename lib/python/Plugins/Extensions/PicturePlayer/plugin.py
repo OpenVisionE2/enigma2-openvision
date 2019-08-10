@@ -30,7 +30,7 @@ def filescan(**kwargs):
 			return os.path.exists(file.path)
 
 	return \
-		LocalScanner(mimetypes = ["image/jpeg", "image/png", "image/gif", "image/bmp"],
+		LocalScanner(mimetypes = ["image/jpeg", "image/png", "image/gif", "image/bmp", "image/svg+xml"],
 			paths_to_scan =
 				[
 					ScanPath(path = "DCIM", with_subdirs = True),

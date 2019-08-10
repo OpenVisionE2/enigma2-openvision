@@ -34,6 +34,7 @@ EXTENSIONS = {
 		"bmp": "picture",
 		"jpeg": "picture",
 		"jpe": "picture",
+		"svg": "picture",
 		"mpg": "movie",
 		"vob": "movie",
 		"m4v": "movie",
