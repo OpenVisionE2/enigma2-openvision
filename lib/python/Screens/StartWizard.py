@@ -65,7 +65,7 @@ def setLanguageFromBackup(backupfile):
 		pass
 
 def checkForAvailableAutoBackup():
-	for backupfile in ["/media/%s/backup/PLi-AutoBackup.tar.gz" % media for media in os.listdir("/media/") if os.path.isdir(os.path.join("/media/", media))]:
+	for backupfile in ["/media/%s/backup/Vision-AutoBackup.tar.gz" % media for media in os.listdir("/media/") if os.path.isdir(os.path.join("/media/", media))]:
 		if os.path.isfile(backupfile):
 			setLanguageFromBackup(backupfile)
 			return True
