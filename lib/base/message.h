@@ -63,7 +63,6 @@ class eFixedMessagePump: public sigc::trackable, FD
 	std::queue<T> m_queue;
 #ifdef HAVE_OLDE2_API
 	int m_pipe[2];
-	eSingleLock lock;
 #endif
 	void do_recv(int)
 	{
