@@ -87,12 +87,11 @@ AC_ARG_WITH(7segment,
 	[[TEXTSKIN="7segment"]],
 	[[TEXTSKIN="default"]]
 )
+AC_SUBST(TEXTSKIN)
 if test x"$with7segment" != xno ; then
 	AC_DEFINE(HAVE_7SEGMENT, 1,[Define when using an ascii based lcd device])
 fi
 AM_CONDITIONAL(HAVE_7SEGMENT, test x"$with7segment" != xno)
-
-AC_SUBST(TEXTSKIN)
 
 AC_ARG_WITH(colorlcd220,
 	AC_HELP_STRING([--with-colorlcd220], [use 220x176 16bpp color display, yes or no]),
@@ -112,7 +111,6 @@ AC_ARG_WITH(colorlcd390,
 if test x"$withcolorlcd390" != xno ; then
 	AC_DEFINE(HAVE_COLORLCD390, 1,[Define when using a 390x240 color display device])
 fi
-
 AM_CONDITIONAL(HAVE_COLORLCD390, test x"$withcolorlcd390" != xno)
 
 AC_ARG_WITH(colorlcd400,
@@ -123,7 +121,6 @@ AC_ARG_WITH(colorlcd400,
 if test x"$withcolorlcd400" != xno ; then
 	AC_DEFINE(HAVE_COLORLCD400, 1,[Define when using a 400x176 color display device])
 fi
-
 AM_CONDITIONAL(HAVE_COLORLCD400, test x"$withcolorlcd400" != xno)
 
 AC_ARG_WITH(colorlcd480,
@@ -134,7 +131,6 @@ AC_ARG_WITH(colorlcd480,
 if test x"$withcolorlcd480" != xno ; then
 	AC_DEFINE(HAVE_COLORLCD480, 1,[Define when using a 480x320 color display device])
 fi
-
 AM_CONDITIONAL(HAVE_COLORLCD480, test x"$withcolorlcd480" != xno)
 
 AC_ARG_WITH(colorlcd720,
@@ -145,7 +141,6 @@ AC_ARG_WITH(colorlcd720,
 if test x"$withcolorlcd720" != xno ; then
 	AC_DEFINE(HAVE_COLORLCD720, 1,[Define when using a 720x576 color display device])
 fi
-
 AM_CONDITIONAL(HAVE_COLORLCD720, test x"$withcolorlcd720" != xno)
 
 AC_ARG_WITH(colorlcd800,
@@ -156,7 +151,6 @@ AC_ARG_WITH(colorlcd800,
 if test x"$withcolorlcd800" != xno ; then
 	AC_DEFINE(HAVE_COLORLCD800, 1,[Define when using a 800x480 color display device])
 fi
-
 AM_CONDITIONAL(HAVE_COLORLCD800, test x"$withcolorlcd800" != xno)
 
 AC_ARG_WITH(bwlcd128,
@@ -286,7 +280,6 @@ AC_ARG_WITH(alphablendingacceleration,
 	[[with_alphablendingacceleration=$withval]],
 	[[with_alphablendingacceleration=auto]]
 )
-
 if test x"$with_alphablendingacceleration" = xnever ; then
 	AC_DEFINE_UNQUOTED(FORCE_NO_BLENDING_ACCELERATION, 1, [Do not attempt to accelerate alphablending blits])
 elif test x"$with_alphablendingacceleration" = xalways ; then
@@ -298,7 +291,6 @@ AC_ARG_WITH(accelerationthreshold,
 	[[with_accelerationthreshold=$withval]],
 	[[with_accelerationthreshold=48000]]
 )
-
 AC_DEFINE_UNQUOTED(GFX_SURFACE_ACCELERATION_THRESHOLD, $with_accelerationthreshold,[Configure threshold for accelerated surfaces (in bytes)])
 
 AC_ARG_WITH(fillaccelerationthreshold,
@@ -306,7 +298,6 @@ AC_ARG_WITH(fillaccelerationthreshold,
 	[[with_fillaccelerationthreshold=$withval]],
 	[[with_fillaccelerationthreshold=80000]]
 )
-
 AC_DEFINE_UNQUOTED(GFX_SURFACE_FILL_ACCELERATION_THRESHOLD, $with_fillaccelerationthreshold,[Configure threshold for accelerated fill operations (in bytes)])
 
 AC_ARG_WITH(blitaccelerationthreshold,
@@ -314,7 +305,6 @@ AC_ARG_WITH(blitaccelerationthreshold,
 	[[with_blitaccelerationthreshold=$withval]],
 	[[with_blitaccelerationthreshold=0]]
 )
-
 AC_DEFINE_UNQUOTED(GFX_SURFACE_BLIT_ACCELERATION_THRESHOLD, $with_blitaccelerationthreshold,[Configure threshold for accelerated blit operations (in bytes)])
 
 AC_ARG_WITH(accelerationaccumulation,
@@ -322,7 +312,6 @@ AC_ARG_WITH(accelerationaccumulation,
 	[[with_accelerationaccumulation=$withval]],
 	[[with_accelerationaccumulation=no]]
 )
-
 if test x"$with_accelerationaccumulation" = xyes ; then
 	AC_DEFINE(SUPPORT_ACCUMULATED_ACCELERATION_OPERATIONS, 1,[Accumulate blit/fill acceleration operations])
 fi
@@ -343,7 +332,6 @@ if test "$with_libhiaccel" = "yes"; then
 	PKG_CHECK_MODULES(LIBHIACCEL, [libhiaccel])
 	HIACCEL_CFLAGS="-DUSE_LIBHIACCEL"
 fi
-
 if test x"$with_libhiaccel" != xno ; then
 	AC_DEFINE(HAVE_HISILICON_ACCEL, 1,[define add HISILICON ACCEL])
 fi
@@ -351,11 +339,6 @@ fi
 AC_ARG_WITH(libtriaccel,
 	AS_HELP_STRING([--with-libtriaccel],[use libtriaccel, yes or no]),
 	[with_libtriaccel=$withval],[with_libtriaccel=no])
-if test "$with_libtriaccel" = "yes"; then
-	PKG_CHECK_MODULES(LIBTRIACCEL, [libtriaccel])
-	TRIACCEL_CFLAGS="-DUSE_LIBTRIACCEL"
-fi
-
 if test x"$with_libtriaccel" != xno ; then
 	AC_DEFINE(HAVE_TRIDENT_ACCEL, 1,[define add TRIDENT ACCEL])
 fi
@@ -363,7 +346,6 @@ fi
 AC_ARG_WITH(olde2api,
 	AS_HELP_STRING([--with-olde2api],[use olde2api, yes or no]),
 	[with_olde2api=$withval],[with_olde2api=no])
-
 if test x"$with_olde2api" != xno ; then
 	AC_DEFINE(HAVE_OLDE2_API, 1,[define add old api of enigma2])
 fi
@@ -383,7 +365,6 @@ AC_ARG_WITH(subttxtabnormalptsdiffs,
 	[[with_subttxtabnormalptsdiffs=$withval]],
 	[[with_subttxtabnormalptsdiffs=1800000]]
 )
-
 AC_DEFINE_UNQUOTED(SUBT_TXT_ABNORMAL_PTS_DIFFS, $with_subttxtabnormalptsdiffs,[Configure abnormal pts for subtitle and teletext])
 
 AC_ARG_WITH(amlogic,
@@ -710,7 +691,6 @@ fi
 if test "$BOXTYPE" == "su980"; then
 	AC_DEFINE(HAVE_HYPERCUBE, 1,[enable HyperCube specific stuff])
 fi
-
 AM_CONDITIONAL(HAVE_HYPERCUBE, test `echo "$BOXTYPE" | cut -b 1-3` == "su9")
 
 AC_CHECK_HEADERS([sys/klog.h])
