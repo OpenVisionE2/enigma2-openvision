@@ -363,10 +363,6 @@ fi
 AC_ARG_WITH(olde2api,
 	AS_HELP_STRING([--with-olde2api],[use olde2api, yes or no]),
 	[with_olde2api=$withval],[with_olde2api=no])
-if test "$with_olde2api" = "yes"; then
-	PKG_CHECK_MODULES(OLDE2API, [olde2api])
-	OLDE2API_CFLAGS="-DUSE_OLDE2API"
-fi
 
 if test x"$with_olde2api" != xno ; then
 	AC_DEFINE(HAVE_OLDE2_API, 1,[define add old api of enigma2])
