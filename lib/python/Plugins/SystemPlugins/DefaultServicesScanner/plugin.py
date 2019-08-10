@@ -108,7 +108,7 @@ class DefaultServicesScannerPlugin(ScanSetup):
 		<file type="services" name="lamedb.%d">
 		</file>
 	</files>
-</default>""" % (satint, "OpenPli", nimmanager.getSatDescription(satint), satint)
+</default>""" % (satint, "OpenVision", nimmanager.getSatDescription(satint), satint)
 			file.write(xml)
 			file.close()
 
