@@ -1,6 +1,3 @@
-# Copyright (c) 2boom 2012-14
-# v.1.5-r3
-
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from enigma import eEPGCache

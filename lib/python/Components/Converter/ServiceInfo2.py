@@ -1,6 +1,3 @@
-# ServiceInfo2 based on standart ServiceInfo from E2
-# made by bigroma & 2boom
-
 from Poll import Poll
 from Components.Converter.Converter import Converter
 from enigma import iServiceInformation, iPlayableService

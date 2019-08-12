@@ -1,11 +1,3 @@
-# Original file by 2boom 2011-14
-#  VisionCamInfo by RAED (fairbird) - Converter
-# <widget source="session.CurrentService" render="Label" position="189,397" zPosition="4" size="350,20" noWrap="1" valign="center" halign="center" font="Regular;14" foregroundColor="clText" transparent="1"  backgroundColor="#20002450">
-#       <convert type="VisionCamInfo">Camd</convert>
-# </widget>                     
-# Edit By RAED 16-04-2013
-# Updated By RAED 07-01-2016 Fixed Some Bugs
-
 from Components.Converter.Converter import Converter
 from Components.config import config
 from Components.Element import cached

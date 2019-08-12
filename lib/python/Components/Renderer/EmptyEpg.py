@@ -1,5 +1,3 @@
-# Coded by shamann (c)2011
-
 from Renderer import Renderer
 from enigma import eLabel, eTimer
 from Components.VariableText import VariableText
@@ -72,4 +70,3 @@ class EmptyEpg(VariableText, Renderer):
 			self.fillTimer.start(50, True)
 		else:
 			self.text = self.backText 					
-					
