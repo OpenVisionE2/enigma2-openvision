@@ -1,6 +1,7 @@
 # the implementation here is a bit crappy.
 import time
 from Directories import resolveFilename, SCOPE_CONFIG
+from enigma import getBoxType
 
 PERCENTAGE_START = 0
 PERCENTAGE_END = 100
@@ -30,6 +31,23 @@ except IOError:
 
 def profile(id):
 	now = time.time() - profile_start
+
+	if getBoxType() in ("classm","axodin","axodinc","starsatlx","genius","evo","galaxym6"):
+		dev_fmt = ("/dev/dbox/oled0", "%d")
+	elif getBoxType() in ("gb800se","gb800solo"):
+		dev_fmt = ("/dev/dbox/oled0", "%d  \n")
+	elif getBoxType() == "mbtwin":
+		dev_fmt = ("/dev/dbox/oled0", "%d%%")
+	elif getBoxType() == "gb800seplus":
+		dev_fmt = ("/dev/mcu", "%d  \n")
+	elif getBoxType() == "ebox5000":
+		dev_fmt = ("/proc/progress", "%d"),
+	elif getBoxType() in ("sezammarvel","xpeedlx3","atemionemesis","mbultra","beyonwizt4","ventonhdx","sezam5000hd","mbtwin","beyonwizt3"):
+		dev_fmt = ("/proc/vfd", "Loading %d%%\n")
+	else:
+		dev_fmt = ("/proc/progress", "%d \n")
+	(dev, fmt) = dev_fmt
+
 	if profile_file:
 		profile_file.write("%7.3f\t%s\n" % (now, id))
 
@@ -40,7 +58,7 @@ def profile(id):
 			else:
 				perc = PERCENTAGE_START
 			try:
-				open("/proc/progress", "w").write("%d \n" % perc)
+				open(dev, "w").write(fmt % perc)
 			except IOError:
 				pass
 
