@@ -44,6 +44,8 @@ def profile(id):
 		dev_fmt = ("/proc/progress", "%d"),
 	elif getBoxType() in ("sezammarvel","xpeedlx3","atemionemesis","mbultra","beyonwizt4","ventonhdx","sezam5000hd","mbtwin","beyonwizt3"):
 		dev_fmt = ("/proc/vfd", "Loading %d%%\n")
+	elif getBoxType() == "beyonwizu4":
+		dev_fmt = ("/dev/dbox/oled0", "Loading %d%%\n")
 	else:
 		dev_fmt = ("/proc/progress", "%d \n")
 	(dev, fmt) = dev_fmt
