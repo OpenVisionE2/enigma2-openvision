@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-12 18:42+0430\n"
+"POT-Creation-Date: 2019-08-17 22:53+0430\n"
 "PO-Revision-Date: 2019-08-10 17:53+0300\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -1575,6 +1575,10 @@ msgstr "Butanas"
 msgid "Big PiP"
 msgstr "Didelis PiP"
 
+#, fuzzy
+msgid "Bitrate"
+msgstr "Bitų sparta:"
+
 msgid "Bitrate:"
 msgstr "Bitų sparta:"
 
@@ -2468,9 +2472,6 @@ msgstr "Konfigūruokite imtuvo režimą."
 msgid "Configure the type of status indication icons shown in the movielist."
 msgstr "Konfigūruoti būsenos rodymo piktogramas, kurios bus rodomos filmų sąraše."
 
-msgid "Configure the vertical position of the subtitles, measured from the bottom of the screen."
-msgstr "Nustatykite vertikalią poziciją subtitruose, matuojant nuo ekrano apačios."
-
 msgid "Configure the video output mode (or resolution)."
 msgstr "Nustatykite vaizdo išvesties režimą (ar rezoliuciją)."
 
@@ -2797,6 +2798,10 @@ msgstr "DVB CI delsa"
 
 msgid "DVB Subtitles PID & lang"
 msgstr "DVB subtitrai PID ir kalba"
+
+#, fuzzy
+msgid "DVB and Pango subtitle position"
+msgstr "Subtitrų padėtis"
 
 msgid "DVB driver version: "
 msgstr "DVB tvarkyklės versija: "
@@ -4217,6 +4222,10 @@ msgstr "Formatas"
 msgid "Forward volume keys"
 msgstr "Reguliuoti TV garsumą imtuvo pulteliu"
 
+#, fuzzy
+msgid "Frame rate"
+msgstr "Atnaujinimo norma"
+
 msgid "Frame size in full view"
 msgstr "Kadro dydis viso ekrano režimu"
 
@@ -4519,6 +4528,10 @@ msgstr "HDMI spalvų erdvė"
 msgid "HDMI HDR Type"
 msgstr "HDMI HDR tipas"
 
+#, fuzzy
+msgid "HDMI Recording"
+msgstr "Įrašas"
+
 msgid "HDMI-CEC Source Active"
 msgstr "HDMI-CEC veikiantys šaltiniai"
 
@@ -4578,6 +4591,10 @@ msgstr "Herdo ir Makdonaldo salos"
 
 msgid "Hebrew"
 msgstr "Hebrajų"
+
+#, fuzzy
+msgid "Height"
+msgstr "aukštis"
 
 msgid "Helps setting up your antenna"
 msgstr "Padės jums suderinti anteną"
@@ -4842,6 +4859,9 @@ msgstr "Importuoti epg iš nuotolinio imtuvo URL"
 msgid "Import remote receiver URL"
 msgstr "Importuoti nuotolinio imtuvo URL"
 
+msgid "In most cases this should be set to No. Only enable if you have a very specific need."
+msgstr ""
+
 msgid "In order to record a timer, the TV was switched to the recording service!\n"
 msgstr "Pradėjus rašyti pagal pasirinktą laikmatį, TV bus perjungtas į įrašomą kanalą!\n"
 
@@ -4950,6 +4970,10 @@ msgstr "Įvesties įrenginio nustatymas"
 msgid "Input devices"
 msgstr "Įvesties įrenginiai"
 
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Į poziciją"
+
 msgid "Install"
 msgstr "Įdiegti"
 
@@ -4993,6 +5017,10 @@ msgid "Instant recording..."
 msgstr "Momentinis įrašymas..."
 
 msgid "Interface: "
+msgstr "Sąsaja: "
+
+#, fuzzy
+msgid "Interlaced"
 msgstr "Sąsaja: "
 
 msgid "Internal"
@@ -8441,6 +8469,10 @@ msgstr "Nustatykite laiką importui atlikti."
 msgid "Set the type of the progress indication in the channel selection screen."
 msgstr "Nustatykite pasirinkto kanalo progreso indikacijos tipą ekrane."
 
+#, fuzzy
+msgid "Set the vertical position of subtitles, measured from the bottom of the screen."
+msgstr "Nustatykite vertikalią poziciją subtitruose, matuojant nuo ekrano apačios."
+
 msgid "Set time window to 1 hour"
 msgstr "Nustatyti laiko langą 1 valandai"
 
@@ -9599,6 +9631,13 @@ msgstr "PIN kodas sėkmingai išsaugotas."
 msgid "The PIN codes you entered are different."
 msgstr "Jūsų įrašyti PIN kodai yra skirtingi."
 
+#, fuzzy
+msgid "The aspect ratio of the recording."
+msgstr "Nustatykite ekrano kraštinių proporcijas."
+
+msgid "The bitrate of the video encoder. Larger value improves quality and increases file size."
+msgstr ""
+
 #, python-format
 msgid ""
 "The current image might not be stable.\n"
@@ -9617,6 +9656,12 @@ msgstr ""
 
 msgid "The following files were found..."
 msgstr "Kiti failai buvo surasti..."
+
+msgid "The frame rate of the recording. Ideally, this will match the frame rate of the source or be an integer multiple. If in doubt, set to 60, which should work with most sources."
+msgstr ""
+
+msgid "The height of the picture. The input will be scaled to match this value."
+msgstr ""
 
 msgid ""
 "The network wizard extension is not installed!\n"
@@ -9714,6 +9759,9 @@ msgstr ""
 
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Jūsų imtuvo vartotojo sąsaja paleidžiama iš naujo derinimo režimu"
+
+msgid "The width of the picture. The input will be scaled to match this value."
+msgstr ""
 
 msgid ""
 "The wireless LAN plugin is not installed!\n"
@@ -11153,8 +11201,15 @@ msgstr "Kai turinys yra kraštinių santykis 16:9, pasirinkti, ar didinti mastel
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Kai turinys yra kraštinių santykis 4:3, pasirinkti, ar didinti mastelį/ištempti vaizdą."
 
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
+
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Kur saugoti laikinus laiko poslinkio įrašus?"
+
+#, fuzzy
+msgid "Width"
+msgstr "plotis"
 
 msgid "Wireless LAN"
 msgstr "Belaidis vietinis tinklas"

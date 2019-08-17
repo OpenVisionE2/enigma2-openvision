@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-10 14:49+0430\n"
+"POT-Creation-Date: 2019-08-17 22:53+0430\n"
 "PO-Revision-Date: 2019-06-27 16:02+0200\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -1600,6 +1600,10 @@ msgstr "Bhutan"
 msgid "Big PiP"
 msgstr "Veľký PiP"
 
+#, fuzzy
+msgid "Bitrate"
+msgstr "Dátový tok:"
+
 msgid "Bitrate:"
 msgstr "Dátový tok:"
 
@@ -2510,9 +2514,6 @@ msgstr "Konfigurácia režimu tunera."
 msgid "Configure the type of status indication icons shown in the movielist."
 msgstr "Konfigurácia typu ikon indikujúcich stav zobrazených v zozname filmov."
 
-msgid "Configure the vertical position of the subtitles, measured from the bottom of the screen."
-msgstr "Konfigurácia vertikálnej pozície titulkov, meraná od spodnej časti obrazovky."
-
 msgid "Configure the video output mode (or resolution)."
 msgstr "Nastavenie režimu video výstupu (alebo rozlíšenie)."
 
@@ -2843,6 +2844,10 @@ msgstr "DVB CI oneskorenie"
 
 msgid "DVB Subtitles PID & lang"
 msgstr "DVB titulky, PID a jazyk"
+
+#, fuzzy
+msgid "DVB and Pango subtitle position"
+msgstr "Pozícia titulkov"
 
 msgid "DVB driver version: "
 msgstr "Verzia DVB ovládača: "
@@ -4288,6 +4293,10 @@ msgstr "Formát"
 msgid "Forward volume keys"
 msgstr "Preposielať tlačidlá hlasitosti"
 
+#, fuzzy
+msgid "Frame rate"
+msgstr "Obnovovacia frekvencia"
+
 msgid "Frame size in full view"
 msgstr "Veľkosť obrazu pri plnom zobrazení"
 
@@ -4594,6 +4603,10 @@ msgstr "Farebný výstup HDMI"
 msgid "HDMI HDR Type"
 msgstr "Typ HDMI HDR"
 
+#, fuzzy
+msgid "HDMI Recording"
+msgstr "Nahrávanie"
+
 msgid "HDMI-CEC Source Active"
 msgstr "Zdroj HDMI-CEC aktívny"
 
@@ -4653,6 +4666,10 @@ msgstr "Heardské ostrovy a McDonald ostrovy"
 
 msgid "Hebrew"
 msgstr "Hebrejsky"
+
+#, fuzzy
+msgid "Height"
+msgstr "výška"
 
 msgid "Helps setting up your antenna"
 msgstr "Pomáha nastaviť Vašu parabolu"
@@ -4922,6 +4939,9 @@ msgstr "Importovať stanice z URL adresy vzdialeného prijímača"
 msgid "Import remote receiver URL"
 msgstr "Importovať stanice z URL adresy vzdialeného prijímača"
 
+msgid "In most cases this should be set to No. Only enable if you have a very specific need."
+msgstr ""
+
 msgid "In order to record a timer, the TV was switched to the recording service!\n"
 msgstr "Aby sa mohol nahrať načasovaný program, preplo sa na nahrávanú stanicu!\n"
 
@@ -5031,6 +5051,10 @@ msgstr "Nastavenie vstupného zariadenia"
 msgid "Input devices"
 msgstr "Vstupné zariadenia"
 
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Otočiť do pozície"
+
 msgid "Install"
 msgstr "Inštalovať"
 
@@ -5075,6 +5099,10 @@ msgid "Instant recording..."
 msgstr "Okamžité nahrávanie..."
 
 msgid "Interface: "
+msgstr "Rozhranie: "
+
+#, fuzzy
+msgid "Interlaced"
 msgstr "Rozhranie: "
 
 msgid "Internal"
@@ -8577,6 +8605,10 @@ msgstr ""
 msgid "Set the type of the progress indication in the channel selection screen."
 msgstr "Zvoliť typ zobrazenia priebehu programu v zozname staníc"
 
+#, fuzzy
+msgid "Set the vertical position of subtitles, measured from the bottom of the screen."
+msgstr "Konfigurácia vertikálnej pozície titulkov, meraná od spodnej časti obrazovky."
+
 msgid "Set time window to 1 hour"
 msgstr "Nastaviť časové okno na 1 hodinu"
 
@@ -9753,6 +9785,13 @@ msgstr "PIN kód bol úspešne uložený."
 msgid "The PIN codes you entered are different."
 msgstr "PIN kódy, ktoré ste zadali, sú odlišné."
 
+#, fuzzy
+msgid "The aspect ratio of the recording."
+msgstr "Nastavenie pomeru strán obrazovky."
+
+msgid "The bitrate of the video encoder. Larger value improves quality and increases file size."
+msgstr ""
+
 #, python-format
 msgid ""
 "The current image might not be stable.\n"
@@ -9771,6 +9810,12 @@ msgstr ""
 
 msgid "The following files were found..."
 msgstr "Boli nájdené tieto súbory..."
+
+msgid "The frame rate of the recording. Ideally, this will match the frame rate of the source or be an integer multiple. If in doubt, set to 60, which should work with most sources."
+msgstr ""
+
+msgid "The height of the picture. The input will be scaled to match this value."
+msgstr ""
 
 msgid ""
 "The network wizard extension is not installed!\n"
@@ -9868,6 +9913,9 @@ msgstr ""
 
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Užívateľské rozhranie prijímača sa reštartuje v debug režime..."
+
+msgid "The width of the picture. The input will be scaled to match this value."
+msgstr ""
 
 msgid ""
 "The wireless LAN plugin is not installed!\n"
@@ -11316,8 +11364,15 @@ msgstr "Ak má obsah pomer strán 16: 9, vyberte, či chcete veľkosť obrazu pr
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Ak má obsah pomer strán 4:3, vyberte, či chcete veľkosť obrazu prispôsobiť alebo obraz roztiahnuť. Doporučená hodnota: Pillarbox."
 
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
+
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Kam uložiť dočasné záznamy s posunom času?"
+
+#, fuzzy
+msgid "Width"
+msgstr "šírka"
 
 msgid "Wireless LAN"
 msgstr "Bezdrôtová LAN"
