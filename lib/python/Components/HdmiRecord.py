@@ -52,20 +52,20 @@ def InitHdmiRecord():
     ]
 
     config.hdmirecord.height = ConfigSelection(choices, default="720")
-        choices = [
-            ("144", "144"),       # SD / 4
-            ("135", "135"),       # FullHD / 8
-            ("192", "192"),       # SD / 3
-            ("180", "180"),       # FullHD / 6
-            ("288", "288"),       # SD / 2
-            ("216", "216"),       # FullHD / 5
-            ("270", "270"),       # FullHD / 4
-            ("360", "360"),       # FullHD / 3
-            ("576", "576"),       # SD
-            ("540", "540"),       # FullHD / 2
-            ("720", "720"),       # FullHD / 1.5
-            ("1080", "1080"),     # FullHD
-        ]
+    choices = [
+        ("144", "144"),       # SD / 4
+        ("135", "135"),       # FullHD / 8
+        ("192", "192"),       # SD / 3
+        ("180", "180"),       # FullHD / 6
+        ("288", "288"),       # SD / 2
+        ("216", "216"),       # FullHD / 5
+        ("270", "270"),       # FullHD / 4
+        ("360", "360"),       # FullHD / 3
+        ("576", "576"),       # SD
+        ("540", "540"),       # FullHD / 2
+        ("720", "720"),       # FullHD / 1.5
+        ("1080", "1080"),     # FullHD
+    ]
 
     config.hdmirecord.framerate = ConfigSelection(
         choices=[
