@@ -790,7 +790,7 @@ int eDVBScan::sameChannel(iDVBFrontendParameters *ch1, iDVBFrontendParameters *c
 	int diff;
 	if (ch1->calculateDifference(ch2, diff, exact))
 		return 0;
-	if (diff < 2000) // more than 2mhz difference?
+	if (diff < 120) // Closer than Australian offset frequency
 		return 1;
 	return 0;
 }
@@ -861,6 +861,8 @@ void eDVBScan::channelDone()
 			{
 				SCAN_eDebug("[eDVBScan] TSID: %04x ONID: %04x", (*tsinfo)->getTransportStreamId(),
 					(*tsinfo)->getOriginalNetworkId());
+				eOriginalNetworkID onid = (*tsinfo)->getOriginalNetworkId();
+				eTransportStreamID tsid = (*tsinfo)->getTransportStreamId();
 				eDVBNamespace ns(0);
 				bool T2 = false;
 				eDVBFrontendParametersTerrestrial t2transponder;
