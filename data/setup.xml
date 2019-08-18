@@ -183,13 +183,17 @@
 		<item level="2" text="Never decrypt while recording" description="Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off.">config.recording.never_decrypt</item>
 		<item level="2" text="Offline decode delay (ms)" requires="HasOfflineDecoding" description="Configure the offline decoding delay in milliseconds. The configured delay is observed at each control word parity change.">config.recording.offline_decode_delay</item>
 	</setup>
-	<setup key="hdmirecord" title="HDMI Recording">
+	<setup key="hdmirecord" title="HDMI recording">
 		<item level="0" text="Bitrate" description="The bitrate of the video encoder. Larger value improves quality and increases file size.">config.hdmirecord.bitrate</item>
 		<item level="0" text="Width" description="The width of the picture. The input will be scaled to match this value.">config.hdmirecord.width</item>
 		<item level="0" text="Height" description="The height of the picture. The input will be scaled to match this value.">config.hdmirecord.height</item>
 		<item level="0" text="Frame rate" description="The frame rate of the recording. Ideally, this will match the frame rate of the source or be an integer multiple. If in doubt, set to 60, which should work with most sources.">config.hdmirecord.framerate</item>
 		<item level="2" text="Interlaced" description="In most cases this should be set to No. Only enable if you have a very specific need.">config.hdmirecord.interlaced</item>
 		<item level="1" text="Aspect ratio" description="The aspect ratio of the recording.">config.hdmirecord.aspectratio</item>
+	</setup>
+	<setup key="fanspeed" title="Fan speed control" requires="FanPWM">
+		<item level="0" text="Normal speed" description="The speed of the fan when the %s %s is in normal use.">config.fans[0].pwm</item>
+		<item level="0" text="Standby speed" description="The speed of the fan when the %s %s is in standby mode.">config.fans[0].pwm_standby</item>
 	</setup>
 	<setup key="accesslevel" title="User Mode">
 		<item level="0" text="Setup mode" description="Configure which access level to use for the configuration menu. Expert level gives access to all items.">config.usage.setup_level</item>

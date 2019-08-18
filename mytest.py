@@ -74,6 +74,9 @@ def setEPGCachePath(configElement):
 		configElement.value = os.path.join(configElement.value, "epg.dat")
 	enigma.eEPGCache.getInstance().setCacheFile(configElement.value)
 
+profile("FanControl")
+from Components.FanControl import fancontrol
+
 #demo code for use of standby enter leave callbacks
 #def leaveStandby():
 #	print "!!!!!!!!!!!!!!!!!leave standby"
