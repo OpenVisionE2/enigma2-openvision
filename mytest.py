@@ -242,7 +242,7 @@ class Session:
 		self.current_dialog.restoreKeyboardMode()
 		self.current_dialog.hide()
 
-		if last and self.summary:
+		if last and self.summary is not None:
 			self.current_dialog.removeSummary(self.summary)
 			self.popSummary()
 
@@ -252,6 +252,12 @@ class Session:
 	def deleteDialog(self, screen):
 		screen.hide()
 		screen.doClose()
+
+	def deleteDialogWithCallback(self, callback, screen, *retval):
+		screen.hide()
+		screen.doClose()
+		if callback is not None:
+			callback(*retval)
 
 	def instantiateSummaryDialog(self, screen, **kwargs):
 		if self.summary_desktop is not None:
@@ -329,16 +335,19 @@ class Session:
 		self.execEnd()
 
 	def pushSummary(self):
-		if self.summary:
+		if self.summary is not None:
 			self.summary.hide()
 			self.summary_stack.append(self.summary)
 			self.summary = None
 
 	def popSummary(self):
-		if self.summary:
+		if self.summary is not None:
 			self.summary.doClose()
-		self.summary = self.summary_stack and self.summary_stack.pop()
-		if self.summary:
+		if not self.summary_stack:
+			self.summary = None
+		else:
+			self.summary = self.summary_stack.pop()
+		if self.summary is not None:
 			self.summary.show()
 
 profile("Standby,PowerKey")
