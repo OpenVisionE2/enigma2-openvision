@@ -30,6 +30,8 @@ def getChannelNumber(frequency, nim):
 			elif 470 <= f < 863: 	# IV,V
 				d = (f + 2) % 8
 				return str(int(f - 470) / 8 + 21) + (d < 3.5 and "-" or d > 4.5 and "+" or "")
+		elif "Zealand" in descr and 506 <= f <= 700:
+			return str(int(f - 506) / 8 + 25)
 		elif "Australia" in descr:
 			d = (f + 1) % 7
 			ds = (d < 3 and "-" or d > 4 and "+" or "")
@@ -55,7 +57,19 @@ def channel2frequency(channel, nim):
 			return (177500 + 7000*(channel- 5))*1000
 		elif 21 <= channel <= 69:
 			return (474000 + 8000*(channel-21))*1000
-	return 474000000
+	elif "Zealand" in descr and 25 <= channel <= 50:
+			return (506000 + 8000 * (int(channel) - 25)) * 1000
+	else:	# Australian rules
+		res = 474000000
+		if channel != "9A":
+			ch = int(channel)
+			if 6 <= ch <= 9:
+				res = (177500 + 7000 * (ch - 6)) * 1000
+			elif 10 <= ch <= 12:
+				res = (212500 + 7000 * (ch - 10)) * 1000
+			elif 28 <= ch <= 69:
+				res = (529500 + 7000 * (ch - 28)) * 1000
+		return res
 
 def ConvertToHumanReadable(tp, tunertype = None):
 	ret = { }
