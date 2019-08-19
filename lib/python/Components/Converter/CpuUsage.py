@@ -132,4 +132,3 @@ class CpuUsageMonitor(Poll, object):
 
 
 cpuUsageMonitor = CpuUsageMonitor()
-

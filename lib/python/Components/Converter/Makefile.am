@@ -10,4 +10,5 @@ install_PYTHON = \
 	Combine.py SensorToText.py ValueToPixmap.py PliExtraInfo.py genre.py TransponderInfo.py \
 	RotorPosition.py VfdDisplay.py AnalogClock.py ServiceName2.py LayoutInfo.py \
 	ConverterRotator.py MovieReference.py YWeather.py EtAnalogClock.py ExtendedServiceInfo.py ExtremeInfo.py VExtraNumText.py VWeather.py VtiTempFan.py \
-	HbbtvApplicationInfo.py BhAnalogic.py BhStreamInfo.py VNetSpeedInfo.py VisionCamInfo.py CaidInfo2.py RefString.py
+	HbbtvApplicationInfo.py BhAnalogic.py BhStreamInfo.py VNetSpeedInfo.py VisionCamInfo.py CaidInfo2.py RefString.py \
+	EventName2.py ServiceInfo2.py CpuUsage.py ProgressDiskSpaceInfo.py RouteInfo.py ServiceInfoEX.py
