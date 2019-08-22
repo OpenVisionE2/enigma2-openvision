@@ -6,7 +6,7 @@ datarootdir=@datarootdir@
 
 stbcheck=`cat /etc/model`
 	
-if [ $stbcheck == "sf8008" ] || [ $stbcheck == "ustym4kpro" ] || [ $stbcheck == "cc1" ] || [ $stbcheck == "gbtrio4k" ] || [ $stbcheck == "beyonwizv2" ] || [ $stbcheck == "viper4k" ]; then
+if [ $stbcheck == "sf8008" ] || [ $stbcheck == "ustym4kpro" ] || [ $stbcheck == "cc1" ] || [ $stbcheck == "gbtrio4k" ] || [ $stbcheck == "gbip4k" ] || [ $stbcheck == "beyonwizv2" ] || [ $stbcheck == "viper4k" ]; then
 	count=`ps -ef |grep libreader |grep -v "grep" |wc -l`
 	if [ 0 == $count ];then
 		libreader 720P_50
