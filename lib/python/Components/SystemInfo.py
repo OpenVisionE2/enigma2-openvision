@@ -93,7 +93,7 @@ SystemInfo["HasHDMI-CEC"] = HardwareInfo().has_hdmi() and fileExists("/usr/lib/e
 SystemInfo["HasYPbPr"] = getBoxType() in ("dm8000","et5x00","et6x00","et9x00","et10000","formuler1","mbtwinplus","spycat","vusolo","vuduo","vuduo2","vuultimo")
 SystemInfo["HasScart"] = getBoxType() in ("dm8000","et4x00","et6x00","et8000","et9x00","et10000","formuler1","hd1100","hd1200","hd1265","hd2400","vusolo","vusolo2","vuduo","vuduo2","vuultimo","vuuno","xp1000")
 SystemInfo["HasSVideo"] = getBoxType() == "dm8000"
-SystemInfo["HasComposite"] = getBoxType() not in ("dm900","dm920","i55","gbquad4k","gbue4k","hd1500","osnino","osninoplus","purehd","purehdse","revo4k","vusolo4k","vuzero4k")
+SystemInfo["HasComposite"] = getBoxType() not in ("dm900","dm920","dreamone","i55","gbquad4k","gbue4k","hd1500","osnino","osninoplus","purehd","purehdse","revo4k","vusolo4k","vuzero4k")
 SystemInfo["HasAutoVolume"] = fileExists("/proc/stb/audio/avl_choices") and fileCheck("/proc/stb/audio/avl")
 SystemInfo["HasAutoVolumeLevel"] = fileExists("/proc/stb/audio/autovolumelevel_choices") and fileCheck("/proc/stb/audio/autovolumelevel")
 SystemInfo["Has3DSurround"] = fileExists("/proc/stb/audio/3d_surround_choices") and fileCheck("/proc/stb/audio/3d_surround")
