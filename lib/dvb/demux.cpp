@@ -49,7 +49,11 @@ static int determineBufferCount()
 	}
 	unsigned int megabytes = si.totalram >> 20;
 	int result;
-	if (megabytes > 400)
+	if (megabytes > 1600)
+		result = 160; // 4096MB systems: Use 32MB IO buffers (PC)
+	else if (megabytes > 800)
+		result = 80; // 2048MB systems: Use 16MB IO buffers (PC,rpi)
+	else if (megabytes > 400)
 		result = 40; // 1024MB systems: Use 8MB IO buffers (vusolo2, vuduo2, ...)
 	else if (megabytes > 200)
 		result = 20; // 512MB systems: Use 4MB IO buffers (et9x00, vuultimo, ...)
