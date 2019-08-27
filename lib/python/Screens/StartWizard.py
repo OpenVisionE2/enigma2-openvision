@@ -15,7 +15,7 @@ from Components.Label import Label
 from Components.ScrollLabel import ScrollLabel
 from Components.config import config, ConfigBoolean, configfile
 from LanguageSelection import LanguageWizard
-from enigma import eConsoleAppContainer, eTimer
+from enigma import eConsoleAppContainer, eTimer, eActionMap
 from Components.SystemInfo import SystemInfo
 import os
 
@@ -47,14 +47,12 @@ class StartWizard(WizardLanguage, Rc):
 
 def setLanguageFromBackup(backupfile):
 	try:
-		print backupfile
 		import tarfile
 		tar = tarfile.open(backupfile)
 		for member in tar.getmembers():
 			if member.name == 'etc/enigma2/settings':
 				for line in tar.extractfile(member):
 					if line.startswith('config.osd.language'):
-						print line
 						languageToSelect = line.strip().split('=')[1]
 						if languageToSelect:
 							from Components.Language import language
@@ -111,7 +109,8 @@ class AutoInstallWizard(Screen):
 			autoinstallfiles = glob.glob('/media/*/backup/autoinstall') + glob.glob('/media/net/*/backup/autoinstall')
 		autoinstallfiles.sort(key=os.path.getmtime, reverse=True)
 		for autoinstallfile in autoinstallfiles:
-			self.packages = [package.strip() for package in open(autoinstallfile).readlines()]
+			autoinstalldir = os.path.dirname(autoinstallfile)
+			self.packages = [package.strip() for package in open(autoinstallfile).readlines()] + [os.path.join(autoinstalldir, file) for file in os.listdir(autoinstalldir) if file.endswith(".ipk")]
 			if self.packages:
 				self.number_of_packages = len(self.packages)
 				# make sure we have a valid package list before attempting to restore packages
@@ -153,9 +152,12 @@ class AutoInstallWizard(Screen):
 			self["header"].setText(_("Autoinstalling Completed"))
 			self.delay = eTimer()
 			self.delay.callback.append(self.abort)
+			eActionMap.getInstance().bindAction('', 0, self.abort)
 			self.delay.startLongTimer(5)
 
 	def abort(self):
+		self.delay.stop()
+		eActionMap.getInstance().unbindAction('', self.abort)
 		self.container.appClosed.remove(self.appClosed)
 		self.container.dataAvail.remove(self.dataAvail)
 		self.container = None
