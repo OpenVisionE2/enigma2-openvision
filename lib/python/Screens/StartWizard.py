@@ -155,7 +155,7 @@ class AutoInstallWizard(Screen):
 			eActionMap.getInstance().bindAction('', 0, self.abort)
 			self.delay.startLongTimer(5)
 
-	def abort(self):
+	def abort(self, key=None, flag=None):
 		self.delay.stop()
 		eActionMap.getInstance().unbindAction('', self.abort)
 		self.container.appClosed.remove(self.appClosed)
