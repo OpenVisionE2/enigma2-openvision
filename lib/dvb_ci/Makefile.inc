@@ -1,6 +1,6 @@
 noinst_LIBRARIES += dvb_ci/libenigma_dvb_ci.a
 
-if HAVE_HYPERCUBE
+if HYPERCUBE
 dvb_ci_libenigma_dvb_ci_a_SOURCES = \
 	dvbci.cpp \
 	dvbci_ui.cpp
@@ -26,7 +26,7 @@ endif
 
 
 dvbciincludedir = $(pkgincludedir)/lib/dvb_ci
-if HAVE_HYPERCUBE
+if HYPERCUBE
 dvbciinclude_HEADERS = \
 	dvbci.h \
 	dvbci_ui.h

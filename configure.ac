@@ -381,6 +381,51 @@ if test x"$with_amlogic" = xyes ; then
 	ALSA_CFLAGS="-lasound"
 fi
 
+AM_CONDITIONAL(AMIKO, test "$BOXBRAND" == "amiko")
+AM_CONDITIONAL(AX, test "$BOXBRAND" == "ax")
+AM_CONDITIONAL(AZBOX, test "$BOXBRAND" == "azbox")
+AM_CONDITIONAL(BEYONWIZ, test `echo "$BOXTYPE" | cut -b 1-3` == "bey")
+AM_CONDITIONAL(BLACKBOX, test "$BOXBRAND" == "blackbox")
+AM_CONDITIONAL(BRE2ZE, test `echo "$BOXTYPE" | cut -b 1-4` == "bre2")
+AM_CONDITIONAL(BROADNEDIA, test "$BOXBRAND" == "broadmedia")
+AM_CONDITIONAL(CERYON, test "$BOXBRAND" == "ceryon")
+AM_CONDITIONAL(CLAP, test "$BOXBRAND" == "clap")
+AM_CONDITIONAL(DAGS, test "$BOXBRAND" == "dags")
+AM_CONDITIONAL(DINOBOT, test "$BOXBRAND" == "dinobot")
+AM_CONDITIONAL(DM9X0, test `echo "$BOXTYPE" | cut -b 1-3` == "dm9")
+AM_CONDITIONAL(EBOX, test "$BOXBRAND" == "ebox")
+AM_CONDITIONAL(EDISION, test "$BOXBRAND" == "edision")
+AM_CONDITIONAL(ENTWOPIA, test "$BOXBRAND" == "entwopia")
+AM_CONDITIONAL(FORMULER, test "$BOXBRAND" == "formuler")
+AM_CONDITIONAL(GFUTURES, test "$BOXBRAND" == "gfutures")
+AM_CONDITIONAL(GIGABLUE, test "$BOXBRAND" == "gigablue")
+AM_CONDITIONAL(HYPERCUBE, test "$BOXBRAND" == "hypercube")
+AM_CONDITIONAL(INI, test "$BOXBRAND" == "ini")
+AM_CONDITIONAL(IXUSS, test "$BOXBRAND" == "ixuss")
+AM_CONDITIONAL(LINKDROID, test "$BOXBRAND" == "linkdroid")
+AM_CONDITIONAL(MAXYTEC, test "$BOXBRAND" == "maxytec")
+AM_CONDITIONAL(MINIX, test "$BOXBRAND" == "minix")
+AM_CONDITIONAL(OCTAGON, test `echo "$BOXTYPE" | cut -b 1-2` == "sf")
+AM_CONDITIONAL(ODIN, test "$BOXBRAND" == "odin")
+AM_CONDITIONAL(ODROID, test "$BOXBRAND" == "odroid")
+AM_CONDITIONAL(TECHNOMATE, test `echo "$BOXTYPE" | cut -b 1-2` == "tm")
+AM_CONDITIONAL(TIVIAR, test "$BOXBRAND" == "Tiviar")
+AM_CONDITIONAL(TRIPLEDOT, test "$BOXBRAND" == "tripledot")
+AM_CONDITIONAL(UCLAN, test "$BOXBRAND" == "uclan")
+AM_CONDITIONAL(ULTRAMINI, test "$BOXBRAND" == "ultramini")
+AM_CONDITIONAL(VUPLUS, test "$BOXBRAND" == "vuplus")
+AM_CONDITIONAL(WETEK, test "$BOXBRAND" == "wetek")
+AM_CONDITIONAL(XCORE, test "$BOXBRAND" == "xcore")
+AM_CONDITIONAL(XP, test "$BOXBRAND" == "xp")
+AM_CONDITIONAL(XTREND, test `echo "$BOXTYPE" | cut -b 1-2` == "et")
+AM_CONDITIONAL(ZGEMMA, test "$BOXBRAND" == "zgemma")
+
+AM_CONDITIONAL(HAVE_COLORLCD1, test "$BOXTYPE" == "dm8000" -o "$BOXTYPE" == "dm800" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2")
+AM_CONDITIONAL(HAVE_COLORLCD2, test "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2" -o "$BOXTYPE" == "dm820")
+AM_CONDITIONAL(HAVE_COLORLCD3, test "$BOXTYPE" == "dm7080")
+AM_CONDITIONAL(HAVE_GRAUTEC70X0, test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm7080")
+AM_CONDITIONAL(HAVE_GRAUTEC8000, test "$BOXTYPE" == "dm8000")
+
 if test "$BOXTYPE" == "mbmicro" -o "$BOXTYPE" == "e4hd" -o "$BOXTYPE" == "e4hdhybrid" -o "$BOXTYPE" == "twinboxlcd" -o "$BOXTYPE" == "singleboxlcd" -o "$BOXTYPE" == "twinboxlcdci5" -o "$BOXTYPE" == "sf208" -o "$BOXTYPE" == "sf228" -o "$BOXTYPE" == "sf238" -o "$BOXTYPE" == "odin2hybrid" -o "$BOXTYPE" == "odinplus"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 fi
@@ -388,8 +433,6 @@ fi
 if test "$BOXTYPE" == "e4hdultra" -o "$BOXTYPE" == "protek4k"; then
 	AC_DEFINE(KEY_VIDEO_TO_KEY_BOOKMARKS, 1,[define when rc sends a KEY_VIDEO event for its KEY_BOOKMARKS])
 fi
-
-AM_CONDITIONAL(AZBOX, test `echo "$BOXTYPE" | cut -b 1-2` == "az")
 
 if test "$BOXTYPE" == "azboxme" -o "$BOXTYPE" == "azboxminime"; then
 	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])
@@ -440,13 +483,6 @@ if test "$BOXTYPE" == "force1" -o "$BOXTYPE" == "force1plus" -o "$BOXTYPE" == "f
 	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
 	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])
 fi
-
-AM_CONDITIONAL(DM9X0, test `echo "$BOXTYPE" | cut -b 1-3` == "dm9")
-AM_CONDITIONAL(HAVE_COLORLCD1, test "$BOXTYPE" == "dm8000" -o "$BOXTYPE" == "dm800" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2")
-AM_CONDITIONAL(HAVE_COLORLCD2, test "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2" -o "$BOXTYPE" == "dm820")
-AM_CONDITIONAL(HAVE_COLORLCD3, test "$BOXTYPE" == "dm7080")
-AM_CONDITIONAL(HAVE_GRAUTEC70X0, test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm7080")
-AM_CONDITIONAL(HAVE_GRAUTEC8000, test "$BOXTYPE" == "dm8000")
 
 if test `echo "$BOXTYPE" | cut -b 1-2` == "dm"; then
 	AC_DEFINE(DREAMBOX, 1, [Dreambox hardware])
@@ -691,7 +727,6 @@ fi
 if test "$BOXTYPE" == "su980"; then
 	AC_DEFINE(HAVE_HYPERCUBE, 1,[enable HyperCube specific stuff])
 fi
-AM_CONDITIONAL(HAVE_HYPERCUBE, test `echo "$BOXTYPE" | cut -b 1-3` == "su9")
 
 AC_CHECK_HEADERS([sys/klog.h])
 AC_CHECK_FUNCS([klogctl])

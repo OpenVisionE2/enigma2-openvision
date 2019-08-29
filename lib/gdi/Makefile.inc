@@ -23,7 +23,7 @@ gdi_libenigma_gdi_a_SOURCES = \
 	gdi/pixmapcache.cpp \
 	gdi/region.cpp
 
-if HAVE_HYPERCUBE
+if HYPERCUBE
 gdi_libenigma_gdi_a_SOURCES += gdi/tridentFB.cpp
 endif
 

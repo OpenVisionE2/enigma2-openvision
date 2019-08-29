@@ -16,7 +16,7 @@ localgsed="sed"
 findoptions=""
 
 #
-# Script only run with gsed but on some distro normal sed is already gsed so checking it.
+# Script only run with sed but on some distro normal sed is already sed so checking it.
 #
 sed --version 2> /dev/null | grep -q "GNU"
 if [ $? -eq 0 ]; then

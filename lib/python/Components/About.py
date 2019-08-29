@@ -2,7 +2,7 @@
 import sys, os, time
 import re
 from Tools.HardwareInfo import HardwareInfo
-from enigma import getBoxType
+from enigma import getBoxType, getBoxBrand
 from Components.SystemInfo import SystemInfo
 
 def getVersionString():
@@ -15,7 +15,7 @@ def getImageVersionString():
 		else:
 			st = os.stat('/usr/lib/ipkg/status')
 		tm = time.localtime(st.st_mtime)
-		if tm.tm_year >= 2011:
+		if tm.tm_year >= 2018:
 			return time.strftime("%Y-%m-%d %H:%M:%S", tm)
 	except:
 		pass
@@ -145,6 +145,8 @@ def getCPUBrand():
 		return _("Amlogic")
 	elif SystemInfo["HiSilicon"] or os.path.isfile("/proc/hisi/msp/pm_cpu") or os.path.isfile("/usr/bin/hihalt"):
 		return _("HiSilicon")
+	elif getBoxBrand() == "azbox":
+		return _("Sigma Designs")
 	else:
 		return _("Broadcom")
 
