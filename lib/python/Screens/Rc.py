@@ -3,6 +3,8 @@ from Tools.Directories import resolveFilename, SCOPE_SKIN
 from xml.etree.ElementTree import ElementTree
 from Components.config import config, ConfigInteger
 from Components.RcModel import rc_model
+from enigma import getBoxType
+from Tools.StbHardware import getBoxProc
 
 config.misc.rcused = ConfigInteger(default = 1)
 
@@ -28,7 +30,7 @@ class Rc:
 		self.onShown.append(self.initRc)
 
 	def initRc(self):
-		if self.isDefaultRc:
+		if self.isDefaultRc or getBoxType() in ("ventonhdx","sezam5000hd","mbtwin","beyonwizt3") or getBoxProc() in ("ini-3000","ini-5000","ini-7000","ini-7012"):
 			self["rc"].setPixmapNum(config.misc.rcused.value)
 		else:
 			self["rc"].setPixmapNum(0)

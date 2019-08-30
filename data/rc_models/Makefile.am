@@ -71,7 +71,7 @@ dist_install_DATA += cube.png cube.xml
 endif
 
 if INI
-dist_install_DATA += evo8.png evo8.xml ini0.png ini0.xml ini2.png ini2.xml ini3.png ini3.xml ini4.png ini4.xml ini6.png ini6.xml ini8.png ini8.xml
+dist_install_DATA += evo8.png evo8.xml ini0.png ini0.xml ini1.png ini1.xml ini2.png ini2.xml ini3.png ini3.xml ini4.png ini4.xml ini6.png ini6.xml ini8.png ini8.xml
 endif
 
 if IXUSS
