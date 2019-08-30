@@ -362,6 +362,19 @@ class PluginDownloadBrowser(Screen):
 						self.postInstallCall = Picon.initPiconPaths
 						self.session.openWithCallback(self.installDestinationCallback, ChoiceBox, title=_("Install picons on"), list=candidates)
 					return
+				elif self["list"].l.getCurrentSelection()[0].name.startswith("display-picon"):
+					supported_filesystems = frozenset(('ext4', 'ext3', 'ext2', 'reiser', 'reiser4', 'jffs2', 'ubifs', 'rootfs'))
+					candidates = []
+					import Components.Harddisk
+					mounts = Components.Harddisk.getProcMounts()
+					for partition in harddiskmanager.getMountedPartitions(False, mounts):
+						if partition.filesystem(mounts) in supported_filesystems:
+							candidates.append((partition.description, partition.mountpoint))
+					if candidates:
+						from Components.Renderer import LcdPicon
+						self.postInstallCall = LcdPicon.initLcdPiconPaths
+						self.session.openWithCallback(self.installDestinationCallback, ChoiceBox, title=_("Install lcd picons on"), list=candidates)
+					return
 				self.install_settings_name = self["list"].l.getCurrentSelection()[0].name
 				if self["list"].l.getCurrentSelection()[0].name.startswith('settings-'):
 					self.check_settings = True

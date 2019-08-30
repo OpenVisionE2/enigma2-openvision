@@ -22,7 +22,7 @@ def initLcdPiconPaths():
 def onMountpointAdded(mountpoint):
 	global searchPaths
 	try:
-		if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+		if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
 			path = os.path.join(mountpoint, 'piconlcd') + '/'
 		else:
 			path = os.path.join(mountpoint, 'picon') + '/'
@@ -37,7 +37,7 @@ def onMountpointAdded(mountpoint):
 
 def onMountpointRemoved(mountpoint):
 	global searchPaths
-	if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+	if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
 		path = os.path.join(mountpoint, 'piconlcd') + '/'
 	else:
 		path = os.path.join(mountpoint, 'picon') + '/'
@@ -59,14 +59,26 @@ def findLcdPicon(serviceName):
 		pngname = lastLcdPiconPath + serviceName + ".png"
 		if pathExists(pngname):
 			return pngname
-	global searchPaths
-	for path in searchPaths:
-		if pathExists(path):
-			pngname = path + serviceName + ".png"
-			if pathExists(pngname):
-				lastLcdPiconPath = path
-				return pngname
-	return ""
+		else:
+			return ""
+	else:
+		global searchPaths
+		pngname = ""
+		for path in searchPaths:
+			if pathExists(path) and not path.startswith('/media/net') and not path.startswith('/media/autofs'):
+				pngname = path + serviceName + ".png"
+				if pathExists(pngname):
+					lastLcdPiconPath = path
+					break
+			elif pathExists(path):
+				pngname = path + serviceName + ".png"
+				if pathExists(pngname):
+					lastLcdPiconPath = path
+					break
+		if pathExists(pngname):
+			return pngname
+		else:
+			return ""
 
 def getLcdPiconName(serviceName):
 	service = eServiceReference(serviceRef)
@@ -110,21 +122,21 @@ class LcdPicon(Renderer):
 		self.pngname = ""
 		self.lastPath = None
 		pngname = findLcdPicon("picon_default")
-		if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+		if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
 			pngname = findLcdPicon("lcd_picon_default")
 		else:
 			pngname = findLcdPicon("picon_default")
 		self.defaultpngname = None
 		self.showPicon = True
 		if not pngname:
-			if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+			if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
 				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "lcd_picon_default.png")
 			else:
 				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
 			if pathExists(tmp):
 				pngname = tmp
 			else:
-				if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or os.path.isdir(mountpoint + 'piconlcd'):
+				if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
 					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/lcd_picon_default.png")
 				else:
 					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/picon_default.png")
