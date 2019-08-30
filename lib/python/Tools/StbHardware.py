@@ -4,11 +4,34 @@ from struct import pack, unpack
 from time import time, localtime, gmtime
 from enigma import getBoxType, getBoxBrand
 from Components.SystemInfo import SystemInfo
+from Tools.Directories import fileExists
+
+def getBoxProc():
+	procmodel = "unknown"
+	try:
+		if fileExists("/proc/stb/info/hwmodel"):
+			procmodel = open("/proc/stb/info/hwmodel", "r").readline().strip().lower()
+		elif fileExists("/proc/stb/info/azmodel"):
+			procmodel = open("/proc/stb/info/azmodel", "r").readline().strip().lower()
+		elif fileExists("/proc/stb/info/gbmodel"):
+			procmodel = open("/proc/stb/info/gbmodel", "r").readline().strip().lower()
+		elif fileExists("/proc/stb/info/vumodel") and not fileExists("/proc/stb/info/boxtype"):
+			procmodel = open("/proc/stb/info/vumodel", "r").readline().strip().lower()
+		elif fileExists("/proc/stb/info/boxtype"):
+			procmodel = open("/proc/stb/info/boxtype", "r").readline().strip().lower()
+		elif fileExists("/proc/boxtype"):
+			procmodel = open("/proc/boxtype", "r").readline().strip().lower()
+
+		else:
+			procmodel = open("/proc/stb/info/model", "r").readline().strip().lower()
+	except IOError:
+		print "getBoxProc failed!"
+	return procmodel
 
 def getFPVersion():
 	ret = None
 	try:
-		if getBoxBrand() == "blackbox":
+		if getBoxBrand() == "blackbox" and fileExists("/proc/stb/info/micomver"):
 			ret = open("/proc/stb/info/micomver", "r").read()
 		elif SystemInfo["DreamBoxDTSAudio"] or getBoxType().startswith("dm9") or getBoxType().startswith("dm52"):
 			ret = open("/proc/stb/fp/version", "r").read()
