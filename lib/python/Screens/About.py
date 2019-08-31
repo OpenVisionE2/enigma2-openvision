@@ -25,8 +25,7 @@ class About(Screen):
 		AboutText = _("Hardware: ") + about.getHardwareTypeString() + "\n"
 		if fileExists("/proc/stb/info/sn"):
 			hwserial = open("/proc/stb/info/sn", "r").read().strip()
-				if hwserial != "":
-					AboutText += _("Hardware serial: ") + hwserial + "\n"
+			AboutText += _("Hardware serial: ") + hwserial + "\n"
 
 		AboutText += _("Brand: ") + about.getHardwareBrand() + "\n"
 
