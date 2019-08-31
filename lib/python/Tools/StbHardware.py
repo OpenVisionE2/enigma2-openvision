@@ -21,7 +21,6 @@ def getBoxProc():
 			procmodel = open("/proc/stb/info/boxtype", "r").readline().strip().lower()
 		elif fileExists("/proc/boxtype"):
 			procmodel = open("/proc/boxtype", "r").readline().strip().lower()
-
 		else:
 			procmodel = open("/proc/stb/info/model", "r").readline().strip().lower()
 	except IOError:

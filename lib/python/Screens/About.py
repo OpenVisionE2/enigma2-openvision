@@ -10,10 +10,9 @@ from Components.ScrollLabel import ScrollLabel
 from Components.Button import Button
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
-
 from Tools.StbHardware import getFPVersion
 from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl
-
+from Tools.Directories import fileExists
 from Components.GUIComponent import GUIComponent
 import skin, os
 
@@ -24,16 +23,26 @@ class About(Screen):
 		hddsplit = skin.parameters.get("AboutHddSplit", 0)
 
 		AboutText = _("Hardware: ") + about.getHardwareTypeString() + "\n"
+		if fileExists("/proc/stb/info/sn"):
+			hwserial = open("/proc/stb/info/sn", "r").read().strip()
+				if hwserial != "":
+					AboutText += _("Hardware serial: ") + hwserial + "\n"
+
 		AboutText += _("Brand: ") + about.getHardwareBrand() + "\n"
+
 		cpu = about.getCPUInfoString()
 		AboutText += _("CPU: ") + cpu + "\n"
 		AboutText += _("CPU brand: ") + about.getCPUBrand() + "\n"
 		AboutText += _("CPU architecture: ") + about.getCPUArch() + "\n"
+
 		AboutText += _("Flash type: ") + about.getFlashType() + "\n"
+
 		AboutText += _("Image: ") + about.getImageTypeString() + "\n"
+
 		AboutText += _("Open Vision version: ") + about.getVisionVersion() + "\n"
 		AboutText += _("Open Vision revision: ") + about.getVisionRevision() + "\n"
 		AboutText += _("Open Vision module: ") + about.getVisionModule() + "\n"
+
 		AboutText += _("Build date: ") + about.getBuildDateString() + "\n"
 		AboutText += _("Last upgrade: ") + about.getUpdateDateString() + "\n"
 
