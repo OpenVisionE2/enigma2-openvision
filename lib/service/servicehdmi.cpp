@@ -123,9 +123,15 @@ RESULT eServiceHDMI::connectEvent(const sigc::slot2<void,iPlayableService*,int> 
 RESULT eServiceHDMI::start()
 {
 	m_decoder = new eTSMPEGDecoder(NULL, m_decoder_index);
+#ifdef HAVE_RASPBERRYPI
+	m_decoder->setVideoPID(1, 0, 0);
+	if (!m_noaudio)
+		m_decoder->setAudioPID(1, 0, 0);
+#else
 	m_decoder->setVideoPID(1, 0);
 	if (!m_noaudio)
 		m_decoder->setAudioPID(1, 0);
+#endif
 	m_decoder->play();
 	m_event(this, evStart);
 	return 0;

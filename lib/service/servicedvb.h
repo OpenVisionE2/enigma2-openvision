@@ -9,6 +9,10 @@
 #include <lib/dvb/subtitle.h>
 #include <lib/dvb/teletext.h>
 #include <lib/dvb/radiotext.h>
+#ifdef HAVE_RASPBERRYPI
+#include <lib/dvb/filepush.h>
+#include <omx.h>
+#endif
 
 class eStaticServiceDVBInformation;
 class eStaticServiceDVBBouquetInformation;
@@ -246,7 +250,11 @@ protected:
 	ePtr<iDVBTSRecorder> m_record;
 	ePtr<eConnection> m_con_record_event;
 	std::set<int> m_pids_active;
-
+#ifdef HAVE_RASPBERRYPI
+	ePtr<iDVBTSRecorder> m_enigma2RPi_record;
+	std::string m_enigma2RPi_file;
+	int m_enigma2RPi_fd;
+#endif
 	void updateTimeshiftPids();
 
 	void resetTimeshift(int start);
@@ -316,6 +324,8 @@ protected:
 	void video_event(struct iTSMPEGDecoder::videoEvent);
 
 	virtual ePtr<iTsSource> createTsSource(eServiceReferenceDVB &ref, int packetsize = 188);
+/*	sigc::connection xine_connection;
+	cXineLib* xineLib;*/
 };
 
 class eStaticServiceDVBBouquetInformation: public iStaticServiceInformation

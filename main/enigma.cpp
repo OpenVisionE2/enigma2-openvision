@@ -94,6 +94,9 @@ void keyEvent(const eRCKey &key)
 #include <lib/dvb/db.h>
 #include <lib/dvb/dvbtime.h>
 #include <lib/dvb/epgcache.h>
+#ifdef HAVE_RASPBERRYPI
+#include <rpisetup.h>
+#endif
 
 /* Defined in eerror.cpp */
 void setDebugTime(bool enable);
@@ -238,7 +241,10 @@ int main(int argc, char **argv)
 	printf("ENIGMA_DEBUG_LVL=%d\n", debugLvl);
 	if (getenv("ENIGMA_DEBUG_TIME"))
 		setDebugTime(atoi(getenv("ENIGMA_DEBUG_TIME")) != 0);
-
+#ifdef HAVE_RASPBERRYPI
+	cRpiSetup *m_setup;
+	m_setup->HwInit();
+#endif
 	ePython python;
 	eMain main;
 
@@ -349,7 +355,9 @@ int main(int argc, char **argv)
 		p.clear();
 		p.flush();
 	}
-
+#ifdef HAVE_RASPBERRYPI
+	m_setup->DropInstance();
+#endif
 	return exit_code;
 }
 

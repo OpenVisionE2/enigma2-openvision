@@ -24,7 +24,6 @@ dvb_ci_libenigma_dvb_ci_a_SOURCES = \
 	dvb_ci/res_content_ctrl.cpp
 endif
 
-
 dvbciincludedir = $(pkgincludedir)/lib/dvb_ci
 if HYPERCUBE
 dvbciinclude_HEADERS = \

@@ -701,12 +701,18 @@ class iTSMPEGDecoder: public iObject
 public:
 	enum { pidDisabled = -1 };
 		/** Set Displayed Video PID and type */
+#ifdef HAVE_RASPBERRYPI
+	virtual RESULT setVideoPID(int vpid, int type, int streamtype)=0;
+#else
 	virtual RESULT setVideoPID(int vpid, int type)=0;
-
+#endif
 	enum { af_MPEG, af_AC3, af_DTS, af_AAC, af_DTSHD };
 		/** Set Displayed Audio PID and type */
+#ifdef HAVE_RASPBERRYPI
+	virtual RESULT setAudioPID(int apid, int type, bool mode)=0;
+#else
 	virtual RESULT setAudioPID(int apid, int type)=0;
-
+#endif
 	enum { ac_left, ac_stereo, ac_right };
 		/** Set Displayed Audio Channel */
 	virtual RESULT setAudioChannel(int channel)=0;

@@ -390,6 +390,23 @@ if test `echo "$OE_VER" | cut -b 1-2` == "9."; then
 	AC_DEFINE(HAVE_NEWOE, 1,[enable new OpenEmbedded specific stuff])
 fi
 
+if test `echo "$BOXTYPE" | cut -b 1-4` == "rasp"; then
+	PKG_CHECK_MODULES(DVBCSA, libdvbcsa)
+	PKG_CHECK_MODULES(LIBNL, libnl-1 >= 1.0-pre8, has_libnl=yes, dummy=no)
+	PKG_CHECK_MODULES(LIBNL, libnl-3.0, has_libnl=yes, dummy=no)
+	if (test "${has_libnl}" = "no"); then
+		AC_MSG_ERROR(Netlink library is required)
+	fi
+#	AC_CHECK_LIB([rpihddevice], [LIBRPIHDDEVICE_LIBS="-lrpihddevice"], [AC_MSG_ERROR([Could not find librpihddevice])])
+#	AC_SUBST(LIBRPIHDDEVICE_LIBS)
+#	PKG_CHECK_MODULES(LIBRPIHDDEVICE, e2-rpihddevice)
+	BASE_LIBS+=" -lrpihddevice"
+	AC_DEFINE(OMX_SKIP64BIT, 1, [Required by the RPi implementation])
+	RPI_CFLAGS=" $LIBNL_CFLAGS"
+	CXXFLAGS+="$RPI_CFLAGS"
+	AC_DEFINE(HAVE_RASPBERRYPI, 1,[enable rpi specific stuff])
+fi
+
 AM_CONDITIONAL(AMIKO, test "$BOXBRAND" == "amiko")
 AM_CONDITIONAL(AX, test "$BOXBRAND" == "ax")
 AM_CONDITIONAL(AZBOX, test "$BOXBRAND" == "azbox")
@@ -417,6 +434,7 @@ AM_CONDITIONAL(MINIX, test "$BOXBRAND" == "minix")
 AM_CONDITIONAL(OCTAGON, test `echo "$BOXTYPE" | cut -b 1-2` == "sf")
 AM_CONDITIONAL(ODIN, test "$BOXBRAND" == "odin")
 AM_CONDITIONAL(ODROID, test "$BOXBRAND" == "odroid")
+AM_CONDITIONAL(RASPBERRYPI, test "$BOXBRAND" == "rpi")
 AM_CONDITIONAL(TECHNOMATE, test `echo "$BOXTYPE" | cut -b 1-2` == "tm")
 AM_CONDITIONAL(TIVIAR, test "$BOXBRAND" == "Tiviar")
 AM_CONDITIONAL(TRIPLEDOT, test "$BOXBRAND" == "tripledot")

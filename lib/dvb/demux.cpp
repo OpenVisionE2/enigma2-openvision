@@ -79,11 +79,17 @@ eDVBDemux::eDVBDemux(int adapter, int demux):
 {
 	if (CFile::parseInt(&m_dvr_source_offset, "/proc/stb/frontend/dvr_source_offset") == 0)
 		eDebug("[eDVBDemux] using %d for PVR DMX_SET_SOURCE", m_dvr_source_offset);
-
+#ifdef HAVE_RASPBERRYPI
+	decsa = new cDeCSA(adapter, demux);
+	eDebug("[RPi eDVBDemux] new cDeCSA (adapter%d, demux%d)", adapter, demux);
+#endif
 }
 
 eDVBDemux::~eDVBDemux()
 {
+#ifdef HAVE_RASPBERRYPI
+	delete decsa;
+#endif
 }
 
 int eDVBDemux::openDemux(void)
@@ -221,7 +227,21 @@ RESULT eDVBDemux::connectEvent(const sigc::slot1<void,int> &event, ePtr<eConnect
 	conn = new eConnection(this, m_event.connect(event));
 	return 0;
 }
+#ifdef HAVE_RASPBERRYPI
+RESULT eDVBDemux::setCaDescr(ca_descr_t *ca_descr, bool initial)
+{
+	return decsa->SetDescr(ca_descr, initial);
+}
 
+RESULT eDVBDemux::setCaPid(ca_pid_t *ca_pid)
+{
+	return decsa->SetCaPid(ca_pid);
+}
+
+bool eDVBDemux::decrypt(uint8_t *data, int len, int &packetsCount) {
+	return decsa->Decrypt(data, len, packetsCount);
+}
+#endif
 void eDVBSectionReader::data(int)
 {
 	uint8_t data[4096]; // max. section size
@@ -742,6 +762,9 @@ eDVBTSRecorder::~eDVBTSRecorder()
 
 RESULT eDVBTSRecorder::start()
 {
+#ifdef HAVE_RASPBERRYPI
+	eDebug("eDVBTSRecorder::start");
+#endif
 	std::map<int,int>::iterator i(m_pids.begin());
 
 	if (m_running)
@@ -755,7 +778,9 @@ RESULT eDVBTSRecorder::start()
 
 	char filename[128];
 	snprintf(filename, 128, "/dev/dvb/adapter%d/demux%d", m_demux->adapter, m_demux->demux);
-
+#ifdef HAVE_RASPBERRYPI
+	eDebug("eDVBTSRecorder::start %s", filename);
+#endif
 #if HAVE_HISILICON
 	m_source_fd = ::open(filename, O_RDONLY | O_CLOEXEC | O_NONBLOCK);
 #else
@@ -790,15 +815,18 @@ RESULT eDVBTSRecorder::start()
 
 	if (!m_target_filename.empty())
 		m_thread->startSaveMetaInformation(m_target_filename);
-
+#ifndef HAVE_RASPBERRYPI
 	m_thread->start(m_source_fd);
 	m_running = 1;
-
+#endif
 	while (i != m_pids.end()) {
 		startPID(i->first);
 		++i;
 	}
-
+#ifdef HAVE_RASPBERRYPI
+	m_thread->start(m_source_fd, m_demux);
+	m_running = 1;
+#endif
 	return 0;
 }
 

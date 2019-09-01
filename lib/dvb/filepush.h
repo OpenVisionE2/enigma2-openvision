@@ -73,7 +73,9 @@ public:
 	void thread();
 	void stop();
 	void start(int sourcefd);
-
+#ifdef HAVE_RASPBERRYPI
+	void start(int fd, ePtr<eDVBDemux> &demux);
+#endif
 	enum { evtEOF, evtReadError, evtWriteError, evtUser, evtStopped, evtRetune };
 	sigc::signal1<void,int> m_event;
 
@@ -94,6 +96,9 @@ protected:
 private:
 	int m_stop;
 	eFixedMessagePump<int> m_messagepump;
+#ifdef HAVE_RASPBERRYPI
+	ePtr<iTsSource> m_source;
+#endif
 	void recvEvent(const int &evt);
 };
 

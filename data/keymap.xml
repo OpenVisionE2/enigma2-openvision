@@ -287,6 +287,9 @@
 		<key id="KEY_EXIT" mapto="exit" flags="m"/>
 		<key id="KEY_ESC" mapto="exit" flags="m"/>
 		<key id="KEY_TV" mapto="exit" flags="b"/>
+		<device name="Lirc">
+			<key id="KEY_TV" mapto="exit" flags="m"/>
+		</device>
 	</map>
 
 	<map context="GlobalActions">
@@ -329,6 +332,11 @@
 	</map>
 
 	<map context="InfobarSeekActions">
+		<device name="Lirc">
+			<key id="KEY_PLAY" mapto="playpauseService" flags="m"/>
+			<key id="KEY_RED" mapto="seekBack" flags="b"/>
+			<key id="KEY_BLUE" mapto="seekFwd" flags="b"/>
+		</device>
 		<key id="KEY_PREVIOUSSONG" mapto="seekBack" flags="b"/>
 		<key id="KEY_NEXTSONG" mapto="seekFwd" flags="b"/>
 		<key id="KEY_PREVIOUSSONG" mapto="seekBackManual" flags="l"/>
@@ -354,6 +362,10 @@
 	</map>
 
 	<map context="MediaPlayerSeekActions">
+		<device name="Lirc">
+			<key id="KEY_RED" mapto="seekBack" flags="b"/>
+			<key id="KEY_BLUE" mapto="seekFwd" flags="b"/>
+		</device>
 		<key id="KEY_PREVIOUSSONG" mapto="seekBack" flags="b"/>
 		<key id="KEY_NEXTSONG" mapto="seekFwd" flags="b"/>
 		<key id="KEY_PREVIOUSSONG" mapto="seekBackManual" flags="l"/>
@@ -372,6 +384,10 @@
 
 	<map context="InfobarTimeshiftActions">
 		<key id="KEY_PLAYPAUSE" mapto="timeshiftStart" flags="m"/>
+		<device name="Lirc">
+			<key id="KEY_TV" mapto="timeshiftStop" flags="m"/>
+			<key id="KEY_PLAYPAUSE" mapto="timeshiftStart" flags="b"/>
+		</device>
 		<key id="KEY_PAUSE" mapto="timeshiftStart" flags="m"/>
 		<key id="KEY_STOP" mapto="timeshiftStop" flags="m"/>
 		<key id="KEY_TIME" mapto="timeshiftStart" flags="m"/>
@@ -417,6 +433,13 @@
 		<key id="KEY_PREVIOUS" mapto="movePrev" flags="b"/>
 		<key id="KEY_NEXT" mapto="moveNext" flags="b"/>
 		<key id="KEY_AUDIO" mapto="AudioSelection" flags="m"/>
+		<device name="Lirc">
+			<key id="KEY_TV" mapto="leavePlayer" flags="m"/>
+			<key id="KEY_INFO" mapto="InfoButtonPressed" flags="b"/>
+			<key id="KEY_EPG" mapto="EPGButtonPressed" flags="b"/>
+			<key id="KEY_INFO" mapto="InfoButtonPressedLong" flags="l"/>
+			<key id="KEY_EPG" mapto="EPGButtonPressedLong" flags="l"/>
+		</device>
 	</map>
 
 	<map context="InfobarCueSheetActions">

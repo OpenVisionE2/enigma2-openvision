@@ -1401,7 +1401,9 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 									case interface_use_dvr:
 									{
 										std::stringstream source;
+#ifndef HAVE_RASPBERRYPI
 										source << "DVR" << channel->getDvrId();
+#endif
 										ci_it->setSource(source.str());
 										break;
 									}

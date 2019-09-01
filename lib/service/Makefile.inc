@@ -34,15 +34,11 @@ serviceinclude_HEADERS = \
 	service/servicewebts.h
 
 if HAVE_LIBXINE
-service_libenigma_service_a_SOURCES += \
-	service/servicexine.cpp
-serviceinclude_HEADERS += \
-	service/servicexine.h
+service_libenigma_service_a_SOURCES += service/servicexine.cpp
+serviceinclude_HEADERS += service/servicexine.h
 endif
 
 if HAVE_LIBDDVD
-service_libenigma_service_a_SOURCES += \
-	service/servicedvd.cpp
-serviceinclude_HEADERS += \
-	service/servicedvd.h
+service_libenigma_service_a_SOURCES += service/servicedvd.cpp
+serviceinclude_HEADERS += service/servicedvd.h
 endif

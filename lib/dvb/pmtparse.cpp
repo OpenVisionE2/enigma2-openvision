@@ -100,7 +100,9 @@ int eDVBPMTParser::getProgramInfo(program &program)
 				video.type = videoStream::vtMPEG2;
 				audio.type = audioStream::atMPEG;
 				audio.rdsPid = -1;
-
+#ifdef HAVE_RASPBERRYPI
+				video.orig_streamtype= streamtype;
+#endif
 				switch (streamtype)
 				{
 				case 0x1b: // AVC Video Stream (MPEG4 H264)

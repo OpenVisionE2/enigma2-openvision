@@ -243,6 +243,9 @@ public:
 	bool frontendIsMultistream(int index);
 	std::string getFrontendCapabilities(int index);
 	void setFrontendType(int index, const char *types);
+#ifdef HAVE_RASPBERRYPI
+	RESULT getAdapterDemux(ePtr<eDVBDemux> &demux, int adapter_nr, int demux_nr);
+#endif
 };
 SWIG_TEMPLATE_TYPEDEF(ePtr<eDVBResourceManager>, eDVBResourceManager);
 SWIG_EXTEND(ePtr<eDVBResourceManager>,

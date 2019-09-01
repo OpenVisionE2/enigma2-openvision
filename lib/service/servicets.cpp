@@ -250,8 +250,13 @@ RESULT eServiceTS::start()
 			return -1;
 		}
 	}
+#ifdef HAVE_RASPBERRYPI
+	m_decoder->setVideoPID(m_vpid, eDVBVideo::MPEG2, 0);
+	m_decoder->setAudioPID(m_apid, eDVBAudio::aMPEG, 0);
+#else
 	m_decoder->setVideoPID(m_vpid, eDVBVideo::MPEG2);
 	m_decoder->setAudioPID(m_apid, eDVBAudio::aMPEG);
+#endif
 	m_streamthread = new eStreamThread();
 	CONNECT(m_streamthread->m_event, eServiceTS::recv_event);
 	m_decoder->pause();
@@ -420,7 +425,11 @@ RESULT eServiceTS::selectTrack(unsigned int i) {
 	if (m_audioInfo) {
 		m_apid = m_audioInfo->audioStreams[i].pid;
 		eDebug("[servicets] audio track %d PID 0x%02x type %d\n", i, m_apid, m_audioInfo->audioStreams[i].type);
+#ifdef HAVE_RASPBERRYPI
+		m_decoder->setAudioPID(m_apid, m_audioInfo->audioStreams[i].type, 0);
+#else
 		m_decoder->setAudioPID(m_apid, m_audioInfo->audioStreams[i].type);
+#endif
 		m_decoder->set();
 		return 0;
 	} else {

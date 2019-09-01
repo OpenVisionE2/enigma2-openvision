@@ -3,6 +3,10 @@
 #include <fcntl.h>
 #include <lib/base/rawfile.h>
 #include <lib/base/eerror.h>
+#ifdef HAVE_RASPBERRYPI
+#include <omx.h>
+#include <lib/dvb/omxdecoder.h>
+#endif
 
 DEFINE_REF(eRawFile);
 
@@ -36,7 +40,14 @@ int eRawFile::open(const char *filename)
 	posix_fadvise(m_fd, 0, 0, POSIX_FADV_SEQUENTIAL);
 	return m_fd;
 }
-
+#ifdef HAVE_RASPBERRYPI
+void eRawFile::setfd(int fd)
+{
+	close();
+	m_nrfiles = 1;
+	m_fd = fd;
+}
+#endif
 off_t eRawFile::lseek_internal(off_t offset)
 {
 //	eDebug("[eRawFile] lseek: %lld, %d", offset, whence);
@@ -175,3 +186,125 @@ off_t eRawFile::offset()
 {
 	return m_last_offset;
 }
+#ifdef HAVE_RASPBERRYPI
+#define KILOBYTE(n) ((n) * 1024)
+#define MEGABYTE(n) ((n) * 1024LL * 1024LL)
+#define AUDIO_STREAM_S   0xC0
+#define AUDIO_STREAM_E   0xDF
+#define VIDEO_STREAM_S   0xE0
+#define VIDEO_STREAM_E   0xEF
+
+eDecryptRawFile::eDecryptRawFile(int packetsize)
+ : eRawFile(packetsize)
+{
+	ringBuffer = new cRingBufferLinear(KILOBYTE(8192),TS_SIZE,true,"IN-TS");
+	ringBuffer->SetTimeouts(100,100);
+	bs_size = dvbcsa_bs_batch_size();
+	delivered=false;
+	lastPacketsCount = 0;
+	stream_correct = false;
+}
+
+eDecryptRawFile::~eDecryptRawFile()
+{
+	delete ringBuffer;
+}
+
+void eDecryptRawFile::setDemux(ePtr<eDVBDemux> _demux) {
+	demux = _demux;
+}
+
+uint8_t* eDecryptRawFile::getPackets(int &packetsCount) {
+	int Count=0;
+	if(delivered) {
+		ringBuffer->Del(lastPacketsCount*TS_SIZE);
+		delivered=false;
+	}
+	packetsCount = 0;
+
+	if (ringBuffer->Available()<bs_size*TS_SIZE)
+		return NULL;
+
+	uint8_t* p=ringBuffer->Get(Count);
+	if (Count>KILOBYTE(16))
+		Count = KILOBYTE(16);
+
+	if(p && Count>=TS_SIZE) {
+		if(*p!=TS_SYNC_BYTE) {
+			for(int i=1; i<Count; i++)
+				if(p[i]==TS_SYNC_BYTE &&
+						(i+TS_SIZE==Count || (i+TS_SIZE>Count && p[i+TS_SIZE]==TS_SYNC_BYTE)) ) {
+					Count=i;
+					break;
+				}
+				ringBuffer->Del(Count);
+				eDebug("ERROR: skipped %d bytes to sync on TS packet", Count);
+				return NULL;
+		}
+		if(!demux->decrypt(p, Count, packetsCount)) {
+			cCondWait::SleepMs(20);
+			return NULL;
+		}
+		lastPacketsCount = packetsCount;
+		delivered=true;
+		return p;
+	}
+
+	return NULL;
+}
+
+ssize_t eDecryptRawFile::read(off_t offset, void *buf, size_t count)
+{
+	eSingleLocker l(m_lock);
+	int ret = 0;
+
+	while (ringBuffer->Available()<KILOBYTE(32)) {
+		ret = ringBuffer->Read(m_fd, KILOBYTE(16));
+		if (ret<0)
+			break;
+	}
+
+	int packetsCount = 0;
+
+	uint8_t *data = getPackets(packetsCount);
+
+	ret = -EBUSY;
+	if (data && packetsCount>0) {
+		if (!stream_correct) {
+			for (int i=0;i<packetsCount;i++) {
+				unsigned char* packet = data+i*TS_SIZE;
+				int adaptation_field_exist = (packet[3]&0x30)>>4;
+				unsigned char* wsk;
+				int len;
+
+				if (adaptation_field_exist==3) {
+					wsk = packet+5+packet[4];
+					len = 183-packet[4];
+				} else {
+					wsk = packet+4;
+					len = 184;
+				}
+
+				if (len>4 && wsk[0]==0 && wsk[1]==0 && wsk[2]==1
+						&& ((wsk[3]>=VIDEO_STREAM_S && wsk[3]<=VIDEO_STREAM_E)
+						|| (wsk[3]>=AUDIO_STREAM_S && wsk[3]<=AUDIO_STREAM_E)) ) {
+					stream_correct = true;
+					printf("-------------------- I have PES ---------------------- %02X\n", wsk[3]);
+					ret = (packetsCount-i)*TS_SIZE;
+					memcpy(buf, packet, (packetsCount-i)*TS_SIZE);
+/* When channel descramble, then start m_device-playVideo()			---------> To recode for rpi with omx
+					cOmxDevice *m_device; // = cXineLib::getInstance();
+					m_device->setScrambled(false);
+					m_device->PlayVideo();	*/
+					break;
+				}
+			}
+          	} else {
+			ret = packetsCount*TS_SIZE;
+			memcpy(buf, data, ret);
+		}
+	}
+
+	return ret;
+}
+#endif

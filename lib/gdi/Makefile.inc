@@ -23,10 +23,6 @@ gdi_libenigma_gdi_a_SOURCES = \
 	gdi/pixmapcache.cpp \
 	gdi/region.cpp
 
-if HYPERCUBE
-gdi_libenigma_gdi_a_SOURCES += gdi/tridentFB.cpp
-endif
-
 gdiincludedir = $(pkgincludedir)/lib/gdi
 gdiinclude_HEADERS = \
 	gdi/accel.h \
@@ -49,11 +45,13 @@ gdiinclude_HEADERS = \
 	gdi/region.h
 
 if HAVE_LIBSDL
-gdi_libenigma_gdi_a_SOURCES += \
-	gdi/sdl.cpp \
-	gdi/sdl.h
+gdi_libenigma_gdi_a_SOURCES += gdi/sdl.cpp
+gdiinclude_HEADERS += gdi/sdl.h
 else
-gdi_libenigma_gdi_a_SOURCES += \
-	gdi/gfbdc.cpp \
-	gdi/gfbdc.h
+gdi_libenigma_gdi_a_SOURCES += gdi/gfbdc.cpp
+gdiinclude_HEADERS += gdi/gfbdc.h
+endif
+
+if HYPERCUBE
+gdi_libenigma_gdi_a_SOURCES += gdi/tridentFB.cpp
 endif

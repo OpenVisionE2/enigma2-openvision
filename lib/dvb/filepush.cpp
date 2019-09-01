@@ -48,6 +48,7 @@ void eFilePushThread::thread()
 {
 	ignore_but_report_signals();
 	hasStarted(); /* "start()" blocks until we get here */
+//	cXineLib *xineLib = cXineLib::getInstance();	--->	 [rpi] to be replaced with omx
 	setIoPrio(IOPRIO_CLASS_BE, 0);
 	eDebug("[eFilePushThread] START thread");
 
@@ -150,6 +151,8 @@ void eFilePushThread::thread()
 				   over and over until somebody responds.
 
 				   in stream_mode, think of evtEOF as "buffer underrun occurred". */
+
+//			if (xineLib->end_of_stream == true)	--->	 [rpi] to be replaced with omx
 			if (m_sof == 0)
 				sendEvent(evtEOF);
 			else
@@ -330,9 +333,6 @@ void eFilePushThread::filterRecordData(const unsigned char *data, int len)
 {
 }
 
-
-
-
 eFilePushThreadRecorder::eFilePushThreadRecorder(unsigned char* buffer, size_t buffersize):
 	m_fd_source(-1),
 	m_buffersize(buffersize),
@@ -361,7 +361,15 @@ void eFilePushThreadRecorder::thread()
 	/* m_stop must be evaluated after each syscall. */
 	while (!m_stop)
 	{
+#ifdef HAVE_RASPBERRYPI
+		ssize_t bytes;
+		if (m_fd_source == 0)
+			bytes = m_source->read(0, m_buffer, 0);
+		else
+			bytes = ::read(m_fd_source, m_buffer, m_buffersize);
+#else
 		ssize_t bytes = ::read(m_fd_source, m_buffer, m_buffersize);
+#endif
 		if (bytes < 0)
 		{
 			bytes = 0;
@@ -414,7 +422,18 @@ void eFilePushThreadRecorder::start(int fd)
 	m_stop = 0;
 	run();
 }
-
+#ifdef HAVE_RASPBERRYPI
+void eFilePushThreadRecorder::start(int fd, ePtr<eDVBDemux> &demux)
+{
+	eDecryptRawFile *f = new eDecryptRawFile();
+	m_source = f;
+	f->setfd(fd);
+	f->setDemux(demux);
+	m_fd_source = 0;
+	m_stop = 0;
+	run();
+}
+#endif
 void eFilePushThreadRecorder::stop()
 {
 	/* if we aren't running, don't bother stopping. */

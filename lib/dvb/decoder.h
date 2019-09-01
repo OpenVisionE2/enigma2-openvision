@@ -3,6 +3,9 @@
 
 #include <lib/base/object.h>
 #include <lib/dvb/demux.h>
+#ifdef HAVE_RASPBERRYPI
+#include <omx.h>
+#endif
 
 class eSocketNotifier;
 
@@ -18,7 +21,11 @@ public:
 	enum { aMonoLeft, aStereo, aMonoRight };
 	void setChannel(int channel);
 	void stop();
+#ifdef HAVE_RASPBERRYPI
+	int startPid(int pid, int type, bool mode);
+#else
 	int startPid(int pid, int type);
+#endif
 	void flush();
 	void freeze();
 	void unfreeze();
@@ -30,6 +37,9 @@ class eDVBVideo: public iObject, public sigc::trackable
 {
 	DECLARE_REF(eDVBVideo);
 private:
+#ifdef HAVE_RASPBERRYPI
+	cOmx *m_omx;
+#endif
 	ePtr<eDVBDemux> m_demux;
 	int m_fd, m_fd_demux, m_dev;
 	static int m_close_invalidates_attributes;
@@ -43,7 +53,11 @@ public:
 	enum { UNKNOWN = -1, MPEG2, MPEG4_H264, VC1 = 3, MPEG4_Part2, VC1_SM, MPEG1, H265_HEVC, AVS = 16 };
 	eDVBVideo(eDVBDemux *demux, int dev);
 	void stop();
+#ifdef HAVE_RASPBERRYPI
+	int startPid(int pid, int type=MPEG2, bool is_pvr=false);
+#else
 	int startPid(int pid, int type=MPEG2);
+#endif
 	void flush();
 	void freeze();
 	int setSlowMotion(int repeat);
@@ -99,7 +113,12 @@ private:
 	ePtr<eDVBVideo> m_video;
 	ePtr<eDVBPCR> m_pcr;
 	ePtr<eDVBTText> m_text;
+#ifdef HAVE_RASPBERRYPI
+	int m_vpid, m_vtype, m_apid, m_atype, m_pcrpid, m_textpid, m_vstreamtype;
+	bool m_is_pvr, m_is_radio;
+#else
 	int m_vpid, m_vtype, m_apid, m_atype, m_pcrpid, m_textpid;
+#endif
 	enum
 	{
 		changeVideo = 1,
@@ -126,8 +145,13 @@ public:
 	enum { pidNone = -1 };
 	eTSMPEGDecoder(eDVBDemux *demux, int decoder);
 	virtual ~eTSMPEGDecoder();
+#ifdef HAVE_RASPBERRYPI
+	RESULT setVideoPID(int vpid, int type, int streamtype);
+	RESULT setAudioPID(int apid, int type, bool amode);
+#else
 	RESULT setVideoPID(int vpid, int type);
 	RESULT setAudioPID(int apid, int type);
+#endif
 	RESULT setAudioChannel(int channel);
 	int getAudioChannel();
 	RESULT setPCMDelay(int delay);

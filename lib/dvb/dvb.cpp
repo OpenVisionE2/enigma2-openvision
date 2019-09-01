@@ -97,7 +97,18 @@ eDVBResourceManager::eDVBResourceManager()
 		if (eDVBAdapterLinux::isusb(num_adapter))
 		{
 			eDVBAdapterLinux *adapter = new eDVBUsbAdapter(num_adapter);
+#ifdef HAVE_RASPBERRYPI
+			adapter->scanDevices();
+			addAdapter(adapter, true);
+		}
+		else
+		{
+			eDVBAdapterLinux *adapter = new eDVBAdapterLinux(num_adapter);
+			adapter->scanDevices();
+			addAdapter(adapter, true);
+#else
 			addAdapter(adapter);
+#endif
 		}
 		num_adapter++;
 	}
@@ -1507,7 +1518,22 @@ bool eDVBResourceManager::canMeasureFrontendInputPower()
 	}
 	return false;
 }
+#ifdef HAVE_RASPBERRYPI
+RESULT eDVBResourceManager::getAdapterDemux(ePtr<eDVBDemux> &demux, int adapter_nr, int demux_nr)
+{
+	eSmartPtrList<iDVBAdapter>::iterator i(m_adapter.begin());
 
+	while (adapter_nr && (i != m_adapter.end())) {
+		--adapter_nr;
+		++i;
+	}
+
+	if (i != m_adapter.end())
+		return i->getDemux(demux, demux_nr);
+	else
+		return -1;
+}
+#endif
 class eDVBChannelFilePush: public eFilePushThread
 {
 public:
@@ -2132,8 +2158,11 @@ RESULT eDVBChannel::requestTsidOnid()
 
 RESULT eDVBChannel::getDemux(ePtr<iDVBDemux> &demux, int cap)
 {
+#ifdef HAVE_RASPBERRYPI
+	ePtr<eDVBAllocatedDemux> &our_demux = m_demux;
+#else
 	ePtr<eDVBAllocatedDemux> &our_demux = (cap & capDecode) ? m_decoder_demux : m_demux;
-
+#endif
 	eDebug("[eDVBChannel] getDemux cap=%02X", cap);
 
 	if (!m_frontend)
@@ -2205,7 +2234,13 @@ RESULT eDVBChannel::playSource(ePtr<iTsSource> &source, const char *streaminfo_f
 
 	m_source = source;
 	m_tstools.setSource(m_source, streaminfo_file);
-
+#ifdef HAVE_RASPBERRYPI
+	m_pvr_fd_dst = ::open("/tmp/ENIGMA_FIFO", O_RDWR);
+	if (m_pvr_fd_dst < 0)
+	{
+		eDebug("can't open DVR device - FIFO file (%m)");
+		return -ENODEV;
+#else
 	if (m_pvr_fd_dst < 0)
 	{
 		ePtr<eDVBAllocatedDemux> &demux = m_demux ? m_demux : m_decoder_demux;
@@ -2223,6 +2258,7 @@ RESULT eDVBChannel::playSource(ePtr<iTsSource> &source, const char *streaminfo_f
 			eDebug("[eDVBChannel] no demux allocated yet.. so its not possible to open the dvr device!!");
 			return -ENODEV;
 		}
+#endif
 	}
 
 	m_pvr_thread = new eDVBChannelFilePush(m_source->getPacketSize());
@@ -2250,7 +2286,10 @@ void eDVBChannel::stop()
 	}
 	if (m_pvr_fd_dst >= 0)
 	{
+#ifndef HAVE_RASPBERRYPI
 		::close(m_pvr_fd_dst);
+#endif
+/*	Pipe '/tmp/ENIGMA_FIFO' closed in eDVBServicePlay::stop() (lib/service/servicedvb.cpp) */
 		m_pvr_fd_dst = -1;
 	}
 	m_source = NULL;

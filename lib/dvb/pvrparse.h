@@ -137,6 +137,11 @@ private:
 	pts_t m_first_pts;
 	int m_packetsize;
 	int m_header_offset;
+#ifdef HAVE_RASPBERRYPI
+	int m_broken_count; /* count broken starting  */
+	bool m_broken; /* when broken starting = true */
+	time_t m_last_time; /* last time when stream is broken*/
+#endif
 	timespec m_last_access_point; /* timespec at which the previous access point was reported */
 	bool m_enable_accesspoints; /* set to false to prevent saving .ap files (e.g. timeshift) */
 	bool m_pts_found; /* 'real' mpeg pts has been found, no longer measuring streamtime */

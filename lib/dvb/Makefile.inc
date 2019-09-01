@@ -35,10 +35,6 @@ dvb_libenigma_dvb_a_SOURCES = \
 	dvb/fbc.cpp \
 	dvb/atsc.cpp
 
-if HAVE_AMLOGIC
-dvb_libenigma_dvb_a_SOURCES += dvb/amldecoder.cpp
-endif
-
 dvbincludedir = $(pkgincludedir)/lib/dvb
 dvbinclude_HEADERS = \
 	dvb/absdiff.h \
@@ -80,6 +76,22 @@ dvbinclude_HEADERS = \
 	dvb/encoder.h \
 	dvb/fbc.h \
 	dvb/atsc.h
+
 if HAVE_AMLOGIC
+dvb_libenigma_dvb_a_SOURCES += dvb/amldecoder.cpp
 dvbinclude_HEADERS += dvb/amldecoder.h
+endif
+
+if RASPBERRYPI
+dvb_libenigma_dvb_a_SOURCES += \
+	dvb/ca_connector.cpp \
+	dvb/decsa.cpp \
+	dvb/edvbdemux.cpp \
+	dvb/omxdecoder.cpp
+
+dvbinclude_HEADERS += \
+	dvb/ca_connector.h \
+	dvb/decsa.h \
+	dvb/edvbdemux.h \
+	dvb/omxdecoder.h
 endif
