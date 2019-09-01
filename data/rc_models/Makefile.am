@@ -87,11 +87,15 @@ dist_install_DATA += gb0.png gb0.xml gb1.png gb1.xml gb2.png gb2.xml gb3.png gb3
 endif
 
 if LINKDROID
-dist_install_DATA += amiko3.png amiko3.xml k1pro.png k1pro.xml k3pro.png k3pro.xml
+dist_install_DATA += amiko3.png amiko3.xml
 endif
 
 if MAXYTEC
 dist_install_DATA += maxytec1.png maxytec1.xml
+endif
+
+if MECOOL
+dist_install_DATA += amiko3.png amiko3.xml k1pro.png k1pro.xml k3pro.png k3pro.xml
 endif
 
 if MINIX
