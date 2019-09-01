@@ -1019,7 +1019,11 @@ void eDVBFrontend::calculateSignalQuality(int snr, int &signalquality, int &sign
 	int cab_max = 4200; // we assume a max of 42db here
 	int atsc_max = 4200; // we assume a max of 42db here
 
-	if (!strcmp(m_description, "AVL2108")) // ET9000
+	if (strstr(m_description, "STV090x Multistandard"))
+	{
+		ret = (int)(snr / 32.768);
+	}
+	else if (!strcmp(m_description, "AVL2108")) // ET9000
 	{
 		ret = (int)(snr / 40.5);
 		sat_max = 1618;
@@ -1285,7 +1289,7 @@ void eDVBFrontend::calculateSignalQuality(int snr, int &signalquality, int &sign
 		switch (parm.system)
 		{
 			case eDVBFrontendParametersTerrestrial::System_DVB_T:
-			case eDVBFrontendParametersTerrestrial::System_DVB_T2: 
+			case eDVBFrontendParametersTerrestrial::System_DVB_T2:
 			case eDVBFrontendParametersTerrestrial::System_DVB_T_T2: ret = (int)(snr / 58); ter_max = 1700; break;
 			default: break;
 		}
