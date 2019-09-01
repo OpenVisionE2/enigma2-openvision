@@ -36,9 +36,9 @@ public:
 	int openDVR(int flags);
 
 	int getRefCount() { return ref; }
-	RESULT setCaDescr(ca_descr_t *ca_descr, bool initial);
-	RESULT setCaPid(ca_pid_t *ca_pid);
-	bool decrypt(uint8_t *data, int len, int &packetsCount);
+//	RESULT setCaDescr(ca_descr_t *ca_descr, bool initial);
+//	RESULT setCaPid(ca_pid_t *ca_pid);
+//	bool decrypt(uint8_t *data, int len, int &packetsCount);
 private:
 	int adapter, demux, source;
 //	cDeCSA *decsa;

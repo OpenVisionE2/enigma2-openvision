@@ -157,12 +157,12 @@ int eDVBAudio::startPid(int pid, int type)
 			bypass = 0x40;
 			break;
 		case aDDP:
-		#ifdef DREAMBOX
+#ifdef DREAMBOX
 			bypass = 7;
-		#else
+#else
 			bypass = 0x22;
 //			xine_type = HDMV_AUDIO_84_EAC3;
-		#endif
+#endif
 		break;
 		}
 
