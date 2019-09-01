@@ -381,6 +381,15 @@ if test x"$with_amlogic" = xyes ; then
 	ALSA_CFLAGS="-lasound"
 fi
 
+AC_ARG_WITH(oever,
+	[  --with-oever=NAME oe name [[7.2,...]]],
+	[OE_VER="$withval"],[OE_VER=""])
+AC_SUBST(OE_VER)
+AC_DEFINE_UNQUOTED(OE_VER,"$OE_VER",[oe name])
+if test `echo "$OE_VER" | cut -b 1-2` == "9."; then
+	AC_DEFINE(HAVE_NEWOE, 1,[enable new OpenEmbedded specific stuff])
+fi
+
 AM_CONDITIONAL(AMIKO, test "$BOXBRAND" == "amiko")
 AM_CONDITIONAL(AX, test "$BOXBRAND" == "ax")
 AM_CONDITIONAL(AZBOX, test "$BOXBRAND" == "azbox")
