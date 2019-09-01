@@ -4,6 +4,9 @@ from socket import *
 from Components.Console import Console
 from Components.PluginComponent import plugins
 from Plugins.Plugin import PluginDescriptor
+from Components.About import about
+
+oeversion = about.getVisionVersion()
 
 class Network:
 	def __init__(self):
@@ -61,7 +64,10 @@ class Network:
 		return [ int(n) for n in ip.split('.') ]
 
 	def getAddrInet(self, iface, callback):
-		cmd = ("/sbin/ip", "/sbin/ip", "addr", "show", "dev", iface)
+		if oeversion.startswith('9'):
+			cmd = ("/sbin/ip", "/sbin/ip", "addr", "show", "dev", iface)
+		else:
+			cmd = ("/sbin/ip", "/sbin/ip", "-o", "addr", "show", "dev", iface)
 		self.console.ePopen(cmd, self.IPaddrFinished, [iface, callback])
 
 	def IPaddrFinished(self, result, retval, extra_args):
@@ -71,7 +77,10 @@ class Network:
 		ipRegexp = '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 		netRegexp = '[0-9]{1,2}'
 		macRegexp = '[0-9a-fA-F]{2}\:[0-9a-fA-F]{2}\:[0-9a-fA-F]{2}\:[0-9a-fA-F]{2}\:[0-9a-fA-F]{2}\:[0-9a-fA-F]{2}'
-		ipLinePattern = re.compile(ipRegexp + '/')
+		if oeversion.startswith('9'):
+			ipLinePattern = re.compile(ipRegexp + '/')
+		else:
+			ipLinePattern = re.compile('inet ' + ipRegexp + '/')
 		ipPattern = re.compile(ipRegexp)
 		netmaskLinePattern = re.compile('/' + netRegexp)
 		netmaskPattern = re.compile(netRegexp)
@@ -79,30 +88,52 @@ class Network:
 		upPattern = re.compile('UP')
 		macPattern = re.compile(macRegexp)
 		macLinePattern = re.compile('link/ether ' + macRegexp)
-
-		for line in result.splitlines():
-			split = line.strip().split(' ',2)
-			if (split[1][:-1] == iface) or (split[1][:-1] == (iface + '@sys0')):
-				up = self.regExpMatch(upPattern, split[2])
-				if up is not None:
-					data['up'] = True
-					if iface is not 'lo':
-						self.configuredInterfaces.append(iface)
-			if split[0] == "link/ether":
-				mac = self.regExpMatch(macPattern, self.regExpMatch(macLinePattern, split[0]))
-				bcast = self.regExpMatch(ipPattern, self.regExpMatch(bcastLinePattern, split[2]))
-				if mac is not None:
-					data['mac'] = mac
-				if bcast is not None:
-					data['bcast'] = self.convertIP(bcast)
-			if split[0] == "inet":
-				ip = self.regExpMatch(ipPattern, self.regExpMatch(ipLinePattern, split[1]))
-				netmask = self.calc_netmask(self.regExpMatch(netmaskPattern, self.regExpMatch(netmaskLinePattern, split[1])))
-				if ip is not None:
-					data['ip'] = self.convertIP(ip)
-				if netmask is not None:
-					data['netmask'] = self.convertIP(netmask)
-
+		if oeversion.startswith('9'):
+			for line in result.splitlines():
+				split = line.strip().split(' ',2)
+				if (split[1][:-1] == iface) or (split[1][:-1] == (iface + '@sys0')):
+					up = self.regExpMatch(upPattern, split[2])
+					if up is not None:
+						data['up'] = True
+						if iface is not 'lo':
+							self.configuredInterfaces.append(iface)
+				if split[0] == "link/ether":
+					mac = self.regExpMatch(macPattern, self.regExpMatch(macLinePattern, split[0]))
+					bcast = self.regExpMatch(ipPattern, self.regExpMatch(bcastLinePattern, split[2]))
+					if mac is not None:
+						data['mac'] = mac
+					if bcast is not None:
+						data['bcast'] = self.convertIP(bcast)
+				if split[0] == "inet":
+					ip = self.regExpMatch(ipPattern, self.regExpMatch(ipLinePattern, split[1]))
+					netmask = self.calc_netmask(self.regExpMatch(netmaskPattern, self.regExpMatch(netmaskLinePattern, split[1])))
+					if ip is not None:
+						data['ip'] = self.convertIP(ip)
+					if netmask is not None:
+						data['netmask'] = self.convertIP(netmask)
+		else:
+			for line in result.splitlines():
+				split = line.strip().split(' ',2)
+				if (split[1][:-1] == iface) or (split[1][:-1] == (iface + '@sys0')):
+					up = self.regExpMatch(upPattern, split[2])
+					mac = self.regExpMatch(macPattern, self.regExpMatch(macLinePattern, split[2]))
+					if up is not None:
+						data['up'] = True
+						if iface is not 'lo':
+							self.configuredInterfaces.append(iface)
+					if mac is not None:
+						data['mac'] = mac
+				if split[1] == iface:
+					if re.search(globalIPpattern, split[2]):
+						ip = self.regExpMatch(ipPattern, self.regExpMatch(ipLinePattern, split[2]))
+						netmask = self.calc_netmask(self.regExpMatch(netmaskPattern, self.regExpMatch(netmaskLinePattern, split[2])))
+						bcast = self.regExpMatch(ipPattern, self.regExpMatch(bcastLinePattern, split[2]))
+						if ip is not None:
+							data['ip'] = self.convertIP(ip)
+						if netmask is not None:
+							data['netmask'] = self.convertIP(netmask)
+						if bcast is not None:
+							data['bcast'] = self.convertIP(bcast)
 		if 'ip' not in data:
 			data['dhcp'] = True
 			data['ip'] = [0, 0, 0, 0]
