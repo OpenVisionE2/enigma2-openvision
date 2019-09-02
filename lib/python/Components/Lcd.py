@@ -385,9 +385,7 @@ def InitLcd():
 
 		def setPowerLEDstate(configElement):
 			if fileExists("/proc/stb/power/powerled"):
-				f = open("/proc/stb/power/powerled", "w")
-				f.write(configElement.value)
-				f.close()
+				open("/proc/stb/power/powerled", "w").write(configElement.value)
 
 		def setPowerLEDstanbystate(configElement):
 			if fileExists("/proc/stb/power/standbyled"):

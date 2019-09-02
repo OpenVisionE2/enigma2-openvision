@@ -36,14 +36,10 @@ def end_log(test_name):
 	expected = None
 
 	try:
-		f = open(test_name + ".results", "rb")
-		expected = f.read()
-		f.close()
+		expected = open(test_name + ".results", "rb").read()
 	except:
 		print "NO TEST RESULT FOUND, creating new"
-		f = open(test_name + ".new_results", "wb")
-		f.write(results)
-		f.close()
+		open(test_name + ".new_results", "wb").write(results)
 
 	print results
 
