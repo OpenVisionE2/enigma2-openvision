@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 17:01+0430\n"
+"POT-Creation-Date: 2019-09-03 18:15+0430\n"
 "PO-Revision-Date: 2019-07-22 20:15+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -287,10 +287,6 @@ msgstr "%.0f kB"
 #, python-format
 msgid "%.2f GB"
 msgstr "%.2f GB"
-
-#, python-format
-msgid "%02d:%02d"
-msgstr "%02d:%02d"
 
 #, python-format
 msgid "%03d MB"
@@ -952,10 +948,6 @@ msgid "%d-%m"
 msgstr "%d-%m"
 
 #, python-format
-msgid "%d.%02d. %02d:%02d"
-msgstr "%d.%02d. %02d:%02d"
-
-#, python-format
 msgid "%d.%03d GB"
 msgstr "%d.%03d GB"
 
@@ -1586,6 +1578,9 @@ msgstr "Điều chỉnh cài đặt 3D"
 msgid "Adjust the color settings so that all the color shades are distinguishable, but appear as saturated as possible. If you are happy with the result, press OK to close the video fine-tuning, or use the number keys to select other test screens."
 msgstr "Điều chỉnh cài đặt màu sao cho tất cả các sắc thái màu có thể phân biệt được, nhưng xuất hiện càng bão hòa càng tốt. Nếu bạn hài lòng với kết quả này, nhấn OK để đóng tinh chỉnh video hoặc sử dụng các phím số để chọn các màn hình kiểm tra khác."
 
+msgid "Adult Audience, Strong Violence 15+"
+msgstr ""
+
 msgid "Advanced"
 msgstr "Nâng cao"
 
@@ -1985,6 +1980,10 @@ msgstr "Chế độ ủy quyền"
 msgid "Auto"
 msgstr "Tự động"
 
+#, fuzzy
+msgid "Auto Detect"
+msgstr "Tự động Diseqc"
+
 msgid "Auto Diseqc"
 msgstr "Tự động Diseqc"
 
@@ -2065,6 +2064,10 @@ msgstr "Ailen"
 
 msgid "B"
 msgstr "B"
+
+#, python-format
+msgid "BC%d"
+msgstr ""
 
 msgid "BER"
 msgstr "BER"
@@ -2629,8 +2632,16 @@ msgstr ""
 "Kiểm tra bộ chỉnh%s\n"
 "Cổng DiSEqC%s cho%s"
 
+#, fuzzy
+msgid "Children"
+msgstr "Chile"
+
 msgid "Children/Youth"
 msgstr "Trẻ em / Thanh niên"
+
+#, fuzzy
+msgid "Childrens"
+msgstr "Chile"
 
 msgid "Chile"
 msgstr "Chile"
@@ -2646,6 +2657,12 @@ msgstr "Truyền thống Trung Hoa"
 
 msgid "Choose Tuner"
 msgstr "Chọn bộ chỉnh"
+
+msgid "Choose a country scheme for decoding genre information in EPG events."
+msgstr ""
+
+msgid "Choose a country scheme for decoding rating information in EPG events."
+msgstr ""
 
 msgid "Choose bouquet"
 msgstr "Chọn gói kênh"
@@ -2787,6 +2804,10 @@ msgstr "Kết hợp"
 
 msgid "Combo"
 msgstr "Combo"
+
+#, fuzzy
+msgid "Comedy"
+msgstr "phim hài"
 
 msgid "Command execution..."
 msgstr "Thực hiện lệnh .."
@@ -3298,6 +3319,14 @@ msgstr "Không thể ghi do dịch vụ không hợp lệ%s"
 msgid "Country"
 msgstr "Quốc gia"
 
+#, fuzzy
+msgid "Country for EPG event genre information"
+msgstr "Thông tin về phần mềm"
+
+#, fuzzy
+msgid "Country for EPG event rating information"
+msgstr "Tham khảo bảng thông số thiết bị SCR của bạn để biết thông tin này."
+
 msgid "Cover dashed flickering line for this service"
 msgstr "Che đường nhấp nháy đứt nét cho dịch vụ này"
 
@@ -3342,6 +3371,10 @@ msgstr "Cuba"
 
 msgid "Curacao"
 msgstr "Curacao"
+
+#, fuzzy
+msgid "Current Affairs"
+msgstr "Tin tức thời sự"
 
 msgid "Current CEC address"
 msgstr "Địa chỉ CEC hiện tại"
@@ -4098,6 +4131,10 @@ msgstr "Bạn có muốn cập nhật đầu thu của bạn?"
 msgid "Do you want to upgrade the package:\n"
 msgstr "Bạn có muốn nâng cấp gói:\n"
 
+#, fuzzy
+msgid "Documentary"
+msgstr "phim tài liệu"
+
 msgid "Dolby"
 msgstr "Dolby"
 
@@ -4163,6 +4200,10 @@ msgstr "Tải về thông tin plugin. Xin vui lòng chờ ..."
 #, fuzzy
 msgid "Downmix"
 msgstr "DTS downmix"
+
+#, fuzzy
+msgid "Drama"
+msgstr "Phim / Kịch"
 
 msgid "Drop unconfigured satellites"
 msgstr "Thả các vệ tinh chưa được định cấu hình"
@@ -4282,7 +4323,12 @@ msgstr "Chỉnh sửa tiêu đề"
 msgid "Edit upgrade source url."
 msgstr "Chỉnh sửa url nguồn nâng cấp."
 
-msgid "Education/Science/..."
+#, fuzzy
+msgid "Education/Information"
+msgstr "Thông tin"
+
+#, fuzzy
+msgid "Education/Science/Factual"
 msgstr "Giáo dục / Khoa học / ..."
 
 msgid "Egypt"
@@ -4544,6 +4590,10 @@ msgstr "Nhập tần số dao động cục bộ băng tần cao của bạn. Đ
 
 msgid "Enter your low band local oscillator frequency. For more information consult the spec sheet of your LNB."
 msgstr "Nhập tần số dao động cục bộ băng tần thấp của bạn. Để biết thêm thông tin tham khảo bảng thông số kỹ thuật của LNB của bạn."
+
+#, fuzzy
+msgid "Entertainment"
+msgstr "Vào menu chính ..."
 
 msgid "Equal to"
 msgstr "Tương đương với"
@@ -5197,6 +5247,9 @@ msgstr "Quần đảo Faroe"
 msgid "Gateway"
 msgstr "Cổng"
 
+msgid "General"
+msgstr ""
+
 msgid "General AC3 delay"
 msgstr "Độ trễ AC3 chung"
 
@@ -5206,6 +5259,9 @@ msgstr "Độ trễ AC3 chung"
 
 msgid "General PCM delay"
 msgstr "Độ trễ PCM chung"
+
+msgid "Generic"
+msgstr ""
 
 msgid "Genre"
 msgstr "Thể loại"
@@ -5823,6 +5879,10 @@ msgstr "Nguồn dữ liệu lối vào Infobar"
 msgid "Information"
 msgstr "Thông tin"
 
+#, fuzzy
+msgid "Infotainment"
+msgstr "Hết thời gian chờ thanh thông tin"
+
 msgid "Init"
 msgstr "Trong đó"
 
@@ -6191,6 +6251,10 @@ msgstr "Tốc độ cuối"
 msgid "Last upgrade: "
 msgstr "Nâng cấp lần cuối: "
 
+msgctxt "third event: 'third' event label"
+msgid "Later"
+msgstr ""
+
 msgid "Latest Commits"
 msgstr "Cam kết mới nhất"
 
@@ -6483,6 +6547,12 @@ msgstr "Đảo Marshall"
 msgid "Martinique"
 msgstr "Martinique"
 
+msgid "Mature Adult Audience 15+"
+msgstr ""
+
+msgid "Mature Audience 15+"
+msgstr ""
+
 msgid "Mauritania"
 msgstr "Mauritania"
 
@@ -6699,6 +6769,10 @@ msgstr "Đã chuyển đến vị trí tại chỉ mục"
 msgid "Movement"
 msgstr "Cách cử động"
 
+#, fuzzy
+msgid "Movie"
+msgstr "Di chuyển"
+
 msgid "Movie list configuration"
 msgstr "Cấu hình danh sách phim"
 
@@ -6758,6 +6832,9 @@ msgstr "Nhiều lựa chọn tất cả"
 
 msgid "Multistream"
 msgstr "Đa tầng"
+
+msgid "Music"
+msgstr ""
 
 msgid "Music/Ballet/Dance"
 msgstr "Âm nhạc / Ba lê / Khiêu vũ"
@@ -6918,7 +6995,11 @@ msgstr "Caledonia mới"
 msgid "New Zealand"
 msgstr "New Zealand"
 
-msgid "News Current Affairs"
+msgid "News"
+msgstr ""
+
+#, fuzzy
+msgid "News/Current Affairs"
 msgstr "Tin tức thời sự"
 
 msgctxt "button label, 'next screen'"
@@ -7142,6 +7223,10 @@ msgstr "Na Uy"
 msgid "Norwegian"
 msgstr "Na Uy"
 
+#, fuzzy
+msgid "Not Classified"
+msgstr "Không liên quan"
+
 msgid "Not Defined"
 msgstr "Không xác định"
 
@@ -7157,6 +7242,10 @@ msgstr "Không liên quan"
 #, python-format
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "Không đủ dung lượng đĩa. Vui lòng giải phóng không gian đĩa và thử lại. (Yêu cầu%d MB,%d MB khả dụng)"
+
+#, fuzzy
+msgid "Not running"
+msgstr "không chạy"
 
 msgid "Not tested:"
 msgstr "Không được kiểm tra:"
@@ -7458,6 +7547,9 @@ msgstr "Paraguay"
 msgid "Parent directory"
 msgstr "Thư mục phụ huynh"
 
+msgid "Parental Guidance Recommended"
+msgstr ""
+
 msgid "Parental control"
 msgstr "Kiểm soát của cha mẹ"
 
@@ -7488,6 +7580,10 @@ msgstr "Tạm dừng phát lại"
 
 msgid "Pause/Continue playback"
 msgstr "Tạm dừng / Tiếp tục phát lại"
+
+#, fuzzy
+msgid "Pausing"
+msgstr "tạm dừng"
 
 #, fuzzy
 msgid "Percentage"
@@ -7992,6 +8088,9 @@ msgstr "Bộ chỉnh ưu tiên cho bản ghi"
 
 msgid "Preparing... Please wait"
 msgstr "Chuẩn bị ... Xin vui lòng chờ"
+
+msgid "Preschool"
+msgstr ""
 
 msgid "Press '0' to toggle PiP mode"
 msgstr "Nhấn '0' để chuyển chế độ PiP"
@@ -8514,6 +8613,10 @@ msgstr "Bảng phân vùng đọc lại"
 msgid "Reserved"
 msgstr "Kín đáo"
 
+#, fuzzy
+msgid "Reserved for future use"
+msgstr "để dành mai sau dùng"
+
 msgid "Reset"
 msgstr "Cài lại"
 
@@ -8585,6 +8688,9 @@ msgstr "Khôi phục cài đặt hệ thống"
 
 msgid "Restoring..."
 msgstr "Khôi phục ..."
+
+msgid "Restricted 18+"
+msgstr ""
 
 msgid "Resume from last position"
 msgstr "Tiếp tục từ vị trí cuối cùng"
@@ -9383,6 +9489,10 @@ msgstr ""
 "Không tìm thấy dịch vụ!\n"
 "(Không tìm thấy SID trong PAT)"
 
+#, fuzzy
+msgid "Service off-air"
+msgstr "dịch vụ ngoài không khí"
+
 msgid "Service reference"
 msgstr "Tham khảo dịch vụ"
 
@@ -9611,9 +9721,6 @@ msgstr "Hiển thị EPG cho kênh hiện tại ..."
 msgid "Show EPG..."
 msgstr "Hiển thị EPG ..."
 
-msgid "Show Games show"
-msgstr "Chương trình trò chơi"
-
 #, fuzzy
 msgid "Show HDD progress"
 msgstr "Tiến triển nhỏ"
@@ -9699,6 +9806,10 @@ msgstr "Hiển thị thông tin chi tiết sự kiện"
 
 msgid "Show event details"
 msgstr "Hiển thị chi tiết sự kiện"
+
+#, fuzzy
+msgid "Show event genre information"
+msgstr "Thông tin về phần mềm"
 
 msgid "Show event-progress in channel selection"
 msgstr "Hiển thị tiến trình sự kiện trong lựa chọn kênh"
@@ -9872,6 +9983,10 @@ msgstr "Hiển thị cảnh báo trước khi đặt 'Bỏ qua xung đột'"
 
 msgid "Show warning when timeshift is stopped"
 msgstr "Hiển thị cảnh báo khi dừng timeshift"
+
+#, fuzzy
+msgid "Show/Games show"
+msgstr "Chương trình trò chơi"
 
 msgid "Show/hide window"
 msgstr "Hiển thị / ẩn cửa sổ"
@@ -10190,6 +10305,10 @@ msgstr "Tây Ban Nha"
 msgid "Spanish"
 msgstr "Người Tây Ban Nha"
 
+#, fuzzy
+msgid "Special"
+msgstr "Đặc biệt 1"
+
 msgid "Special 1"
 msgstr "Đặc biệt 1"
 
@@ -10234,6 +10353,10 @@ msgstr "Chia chế độ xem trước"
 
 msgid "Splitscreen"
 msgstr "Màn hình chia nhỏ"
+
+#, fuzzy
+msgid "Sport"
+msgstr "Các môn thể thao"
 
 msgid "Sports"
 msgstr "Các môn thể thao"
@@ -10313,6 +10436,10 @@ msgstr "Bắt đầu với màn hình danh sách"
 
 msgid "Starting on"
 msgstr "Bắt đầu vào"
+
+#, fuzzy
+msgid "Starts in a few seconds"
+msgstr "bắt đầu trong vài giây"
 
 msgid "Startup the set top box in standby"
 msgstr "Khởi động đầu thu ở chế độ chờ"
@@ -11001,6 +11128,10 @@ msgstr "Tùy chọn này cho phép bạn tăng tông màu xanh lục trong ảnh
 #, fuzzy
 msgid "This option allows you to choose how to display the remaining/elapsed time for media playback."
 msgstr "Tùy chọn này cho phép bạn hiển thị tất cả các biểu tượng trên màn hình."
+
+#, fuzzy
+msgid "This option allows you to choose whether or not to display genre information for the event."
+msgstr "Tùy chọn này cho phép bạn tăng tông màu xanh lục trong ảnh."
 
 msgid "This option allows you to configure the Colordepth for UHD"
 msgstr "Tùy chọn này cho phép bạn định cấu hình Colordepth cho UHD"
@@ -12930,6 +13061,10 @@ msgstr "Ghi chép"
 msgid "are you sure to cancel all changes"
 msgstr "bạn có chắc chắn hủy tất cả các thay đổi"
 
+#, fuzzy
+msgid "arts/culture (general)"
+msgstr "nghệ thuật / văn hóa (không có âm nhạc, nói chung)"
+
 msgid "arts/culture (without music, general)"
 msgstr "nghệ thuật / văn hóa (không có âm nhạc, nói chung)"
 
@@ -12958,8 +13093,8 @@ msgid "ballet"
 msgstr "vở ballet"
 
 #, python-format
-msgid "bc%s"
-msgstr "bc%s"
+msgid "bc%d"
+msgstr ""
 
 msgid "better"
 msgstr "tốt hơn"
@@ -13003,7 +13138,12 @@ msgstr "trung tâm, bao bọc"
 msgid "chapters"
 msgstr "chương"
 
-msgid "childrens's/youth program (general)"
+#, fuzzy
+msgid "children's/youth program (general)"
+msgstr "chương trình trẻ em / thanh thiếu niên (nói chung)"
+
+#, fuzzy
+msgid "childrens (general)"
 msgstr "chương trình trẻ em / thanh thiếu niên (nói chung)"
 
 msgid "circular left"
@@ -13017,6 +13157,10 @@ msgstr "clip overscan / hộp thư"
 
 msgid "comedy"
 msgstr "phim hài"
+
+#, fuzzy
+msgid "comedy (general)"
+msgstr "phim / kịch (nói chung)"
 
 msgid "config menu"
 msgstr "menu cấu hình"
@@ -13051,6 +13195,10 @@ msgstr "sao chép vào gói kênh"
 
 msgid "create directory"
 msgstr "tạo thư mục"
+
+#, fuzzy
+msgid "current affairs (general)"
+msgstr "tin tức / vấn đề thời sự (chung)"
 
 msgid "daily"
 msgstr "hằng ngày"
@@ -13094,11 +13242,19 @@ msgstr "không làm gì cả"
 msgid "documentary"
 msgstr "phim tài liệu"
 
+#, fuzzy
+msgid "documentary (general)"
+msgstr "phim tài liệu"
+
 msgid "don't descramble, record ecm"
 msgstr "không giải mã, ghi lại ecm"
 
 msgid "done!"
 msgstr "làm xong!"
+
+#, fuzzy
+msgid "drama (general)"
+msgstr "phim / kịch (nói chung)"
 
 msgid "east"
 msgstr "đông"
@@ -13108,6 +13264,10 @@ msgstr "kinh tế / tư vấn xã hội"
 
 msgid "edit alternatives"
 msgstr "chỉnh sửa thay thế"
+
+#, fuzzy
+msgid "education/information (general)"
+msgstr "giáo dục / khoa học / chủ đề thực tế (chung)"
 
 msgid "education/science/factual topics (general)"
 msgstr "giáo dục / khoa học / chủ đề thực tế (chung)"
@@ -13156,6 +13316,10 @@ msgid "entertainment (10-16 year old)"
 msgstr "giải trí (10-16 tuổi)"
 
 msgid "entertainment (6-14 year old)"
+msgstr "giải trí (6-14 tuổi)"
+
+#, fuzzy
+msgid "entertainment (general)"
 msgstr "giải trí (6-14 tuổi)"
 
 msgid "epg cache backup"
@@ -13360,6 +13524,10 @@ msgstr "chỉ trong plugin"
 msgid "information/education/school program"
 msgstr "thông tin / giáo dục / chương trình học"
 
+#, fuzzy
+msgid "infotainment (general)"
+msgstr "thể thao (nói chung)"
+
 msgid "init module"
 msgstr "mô-đun init"
 
@@ -13478,6 +13646,10 @@ msgstr "di chuyển đến mục đầu tiên"
 msgid "move up to previous entry"
 msgstr "di chuyển đến mục trước"
 
+#, fuzzy
+msgid "movie (general)"
+msgstr "phim / kịch (nói chung)"
+
 msgid "movie/drama (general)"
 msgstr "phim / kịch (nói chung)"
 
@@ -13486,6 +13658,10 @@ msgstr "đa"
 
 msgid "multinorm"
 msgstr "đa chủng"
+
+#, fuzzy
+msgid "music (general)"
+msgstr "thể thao (nói chung)"
 
 msgid "music/ballet/dance (general)"
 msgstr "âm nhạc / ballet / khiêu vũ (nói chung)"
@@ -13512,6 +13688,10 @@ msgstr "không bao giờ"
 
 msgid "new media"
 msgstr "phương tiện truyền thông mới"
+
+#, fuzzy
+msgid "news (general)"
+msgstr "thể thao (nói chung)"
 
 msgid "news magazine"
 msgstr "tạp chí"
@@ -13566,9 +13746,6 @@ msgstr "không được cấu hình"
 
 msgid "not locked"
 msgstr "không bị khóa"
-
-msgid "not running"
-msgstr "không chạy"
 
 msgid "not supported"
 msgstr "không được hỗ trợ"
@@ -13626,9 +13803,6 @@ msgstr "ngôn ngữ gốc"
 
 msgid "pass"
 msgstr "vượt qua"
-
-msgid "pausing"
-msgstr "tạm dừng"
 
 msgid "performing arts"
 msgstr "biểu diễn nghệ thuật"
@@ -13735,9 +13909,6 @@ msgstr "phát lại danh sách"
 msgid "repeated"
 msgstr "lặp đi lặp lại"
 
-msgid "reserved for future use"
-msgstr "để dành mai sau dùng"
-
 msgid "restore deleted userbouquets"
 msgstr "khôi phục lại những người dùng đã xóa"
 
@@ -13761,9 +13932,6 @@ msgstr "nhạc rock / pop"
 
 msgid "romance"
 msgstr "lãng mạn"
-
-msgid "running"
-msgstr "đang chạy"
 
 msgid "save last directory on exit"
 msgstr "lưu thư mục cuối cùng khi thoát"
@@ -13801,9 +13969,6 @@ msgstr "nghiêm túc / cổ điển / tôn giáo / lịch sử phim / kịch"
 
 msgid "service is in bouquet parental protection"
 msgstr "dịch vụ là trong bó hoa bảo vệ cha mẹ"
-
-msgid "service off-air"
-msgstr "dịch vụ ngoài không khí"
 
 msgid "set as startup service"
 msgstr "đặt làm dịch vụ khởi động"
@@ -13893,7 +14058,8 @@ msgstr "vị trí%s -%s, không cần sao lưu"
 msgid "slow"
 msgstr ""
 
-msgid "soap/melodram/folkloric"
+#, fuzzy
+msgid "soap/melodrama/folkloric"
 msgstr "xà phòng / melodram / dân gian"
 
 msgid "social/political issues/economics (general)"
@@ -13905,11 +14071,19 @@ msgstr "khoa học xã hội / tâm linh"
 msgid "sorting of playlists"
 msgstr "sắp xếp danh sách phát"
 
+#, fuzzy
+msgid "special (general)"
+msgstr "thể thao (nói chung)"
+
 msgid "special events"
 msgstr "sự kiện đặc biệt"
 
 msgid "special format data DVD (HDTV compatible)"
 msgstr "dữ liệu định dạng đặc biệtDVD (tương thích HDTV)"
+
+#, fuzzy
+msgid "sport (general)"
+msgstr "thể thao (nói chung)"
 
 msgid "sports (general)"
 msgstr "thể thao (nói chung)"
@@ -13932,9 +14106,6 @@ msgstr "bắt đầu cắt ở đây"
 
 msgid "start directory"
 msgstr "bắt đầu thư mục"
-
-msgid "starts in a few seconds"
-msgstr "bắt đầu trong vài giây"
 
 msgid "stepsize"
 msgstr "kích cỡ"
