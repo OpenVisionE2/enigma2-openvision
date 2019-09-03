@@ -108,6 +108,7 @@ def saveResumePoints():
 	try:
 		f = open('/home/root/resumepoints.pkl', 'wb')
 		cPickle.dump(resumePointCache, f, cPickle.HIGHEST_PROTOCOL)
+		f.close()
 	except Exception, ex:
 		print "[InfoBar] Failed to write resumepoints:", ex
 	resumePointCacheLast = int(time())
@@ -323,7 +324,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 		self.doWriteAlpha(config.av.osd_alpha.value)
 
 	def doWriteAlpha(self, value):
-		if fileExists("/proc/stb/video/alpha"):
+		if SystemInfo["CanChangeOsdAlpha"]:
 			f=open("/proc/stb/video/alpha","w")
 			f.write("%i" % (value))
 			f.close()
