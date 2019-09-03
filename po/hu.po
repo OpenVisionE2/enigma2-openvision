@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 20:20+0430\n"
+"POT-Creation-Date: 2019-09-03 17:01+0430\n"
 "PO-Revision-Date: 2019-05-30 12:03+0200\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -169,9 +169,6 @@ msgstr ""
 msgid " extensions."
 msgstr " bővítmények."
 
-msgid " min"
-msgstr " perc"
-
 msgid " ms"
 msgstr " ms"
 
@@ -182,6 +179,97 @@ msgid " updates available."
 msgstr " frissítés elérhető."
 
 msgid "!! Bootloader Upgrade !!"
+msgstr ""
+
+#, fuzzy
+msgid "%-H:%M"
+msgstr "%H:%M"
+
+#, fuzzy
+msgid "%-H:%M:%S"
+msgstr "%H:%M"
+
+msgid "%-I:%M"
+msgstr ""
+
+msgid "%-I:%M%P"
+msgstr ""
+
+msgid "%-I:%M%^p"
+msgstr ""
+
+msgid "%-I:%M:%S"
+msgstr ""
+
+msgid "%-I:%M:%S%P"
+msgstr ""
+
+msgid "%-I:%M:%S%^p"
+msgstr ""
+
+#. TRANSLATORS: full date representation daynum monthname year in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%-d %B %Y"
+msgstr "%Y. %B %d."
+
+#. TRANSLATORS: small date representation daynum short monthname in strftime() format! See 'man strftime'
+#. TRANSLATORS: compact date representation (for VFD) daynum short monthname in strftime() format! See 'man strftime'
+msgid "%-d %b"
+msgstr ""
+
+#. TRANSLATORS: long date representation daynum short monthname year in strftime() format! See 'man strftime'
+msgid "%-d %b %Y"
+msgstr ""
+
+msgid "%-d+%b_"
+msgstr ""
+
+msgid "%-d-%B-%Y"
+msgstr ""
+
+msgid "%-d-%b"
+msgstr ""
+
+msgid "%-d-%b-%Y"
+msgstr ""
+
+msgid "%-d/%-m"
+msgstr ""
+
+msgid "%-d/%-m "
+msgstr ""
+
+msgid "%-d/%-m/%Y"
+msgstr ""
+
+msgid "%-d/%m"
+msgstr ""
+
+msgid "%-d/%m "
+msgstr ""
+
+msgid "%-d/%m/%Y"
+msgstr ""
+
+msgid "%-d=%b_"
+msgstr ""
+
+msgid "%-m/%-d"
+msgstr ""
+
+msgid "%-m/%-d "
+msgstr ""
+
+msgid "%-m/%-d/%Y"
+msgstr ""
+
+msgid "%-m/%d"
+msgstr ""
+
+msgid "%-m/%d "
+msgstr ""
+
+msgid "%-m/%d/%Y"
 msgstr ""
 
 #, python-format
@@ -212,49 +300,514 @@ msgstr "%03d MB"
 msgid "%2.1f sec"
 msgstr "%2.1f mp"
 
-#. TRANSLATORS: short time representation hour:minute
-#, python-format
-msgid "%2d:%02d"
-msgstr "%2d:%02d"
-
-#. TRANSLATORS: full time representation hour:minute:seconds
-#, python-format
-msgid "%2d:%02d:%02d"
-msgstr "%2d:%02d:%02d"
-
 #, python-format
 msgid "%3.01f dB"
 msgstr "%3.01f dB"
 
+#. TRANSLATORS: short date representation dayname daynum short monthname in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%A %-d %B"
+msgstr "%B %d. %A"
+
+#. TRANSLATORS: full date representation dayname daynum monthname year in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%A %-d %B %Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %-d-%B"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %-d-%B-%Y"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %-d/%-m"
+msgstr "%B %d. %A"
+
+msgid "%A %-d/%-m/%Y"
+msgstr ""
+
+#, fuzzy
+msgid "%A %-d/%m"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %-d/%m/%Y"
+msgstr "%Y. %B %e. %A"
+
+msgid "%A %-m/%-d"
+msgstr ""
+
+msgid "%A %-m/%-d/%Y"
+msgstr ""
+
+msgid "%A %-m/%d"
+msgstr ""
+
+#, fuzzy
+msgid "%A %-m/%d/%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %B %-d"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %B %-d %Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %B %d"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %B %d %Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %B-%-d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %B-%-d-%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %B-%d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %B-%d-%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %Y %B %-d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %Y %B %d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %Y-%B-%-d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %Y-%B-%d"
+msgstr "%Y. %B %e. %A"
+
+msgid "%A %Y/%-m/%-d"
+msgstr ""
+
+msgid "%A %Y/%-m/%d"
+msgstr ""
+
+msgid "%A %Y/%m/%-d"
+msgstr ""
+
+msgid "%A %Y/%m/%d"
+msgstr ""
+
 msgid "%A %d %B"
 msgstr "%B %d. %A"
 
-#. TRANSLATORS: long date representations dayname daynum monthname in strftime() format! See 'man strftime'
-msgid "%A %e %B"
-msgstr "%B %e. %A"
-
-#. TRANSLATORS: full date representation dayname daynum monthname year in strftime() format! See 'man strftime'
-msgid "%A %e %B %Y"
+#, fuzzy
+msgid "%A %d %B %Y"
 msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %d-%B"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %d-%B-%Y"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %d/%-m"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %d/%-m/%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %d/%m"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %d/%m/%Y"
+msgstr "%Y. %B %e. %A"
+
+msgid "%A %m/%-d"
+msgstr ""
+
+#, fuzzy
+msgid "%A %m/%-d/%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%A %m/%d"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%A %m/%d/%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%B %-d %Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%B %d %Y"
+msgstr "%B %d. %A"
+
+msgid "%B-%-d-%Y"
+msgstr ""
+
+#, fuzzy
+msgid "%B-%d-%Y"
+msgstr "%d-%m"
 
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
-msgid "%a %e %B %Y"
+msgid "%I:%M"
+msgstr ""
+
+msgid "%I:%M%P"
+msgstr ""
+
+msgid "%I:%M%^p"
+msgstr ""
+
+msgid "%I:%M:%S"
+msgstr ""
+
+msgid "%I:%M:%S%P"
+msgstr ""
+
+msgid "%I:%M:%S%^p"
+msgstr ""
+
+#. TRANSLATORS: short time representation hour:minute (Same as "Default")
+msgid "%R"
+msgstr ""
+
+#. TRANSLATORS: time representation hour:minute:seconds for 24 hour clock or 12 hour clock without AM/PM and hour:minute for 12 hour clocks with AM/PM
+msgid "%T"
+msgstr ""
+
+#, fuzzy
+msgid "%Y %B %-d"
 msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%Y %B %d"
+msgstr "%Y. %B %e. %A"
+
+msgid "%Y %b %-d"
+msgstr ""
+
+msgid "%Y %b %d"
+msgstr ""
+
+msgid "%Y-%B-%-d"
+msgstr ""
+
+msgid "%Y-%B-%d"
+msgstr ""
+
+msgid "%Y-%b-%-d"
+msgstr ""
+
+msgid "%Y-%b-%d"
+msgstr ""
+
+msgid "%Y/%-m/%-d"
+msgstr ""
+
+msgid "%Y/%-m/%d"
+msgstr ""
+
+msgid "%Y/%m/%-d"
+msgstr ""
+
+msgid "%Y/%m/%d"
+msgstr ""
+
+#. TRANSLATORS: small date representation short dayname daynum in strftime() format! See 'man strftime'
+msgid "%a %-d"
+msgstr ""
+
+#. TRANSLATORS: long date representation short dayname daynum monthname year in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%a %-d %B %Y"
+msgstr "%Y. %B %e. %A"
+
+#. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%a %-d %b"
+msgstr "%Y. %B %e. %A"
+
+#. TRANSLATORS: long date representation short dayname daynum short monthname year in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%a %-d %b %Y"
+msgstr "%Y. %B %e. %A"
+
+msgid "%a %-d+%b_"
+msgstr ""
+
+#, fuzzy
+msgid "%a %-d-%B-%Y"
+msgstr "%Y. %B %e. %A"
+
+msgid "%a %-d-%b"
+msgstr ""
+
+#, fuzzy
+msgid "%a %-d-%b-%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %-d/%-m"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %-d/%-m/%Y"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %-d/%m"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %-d/%m/%Y"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %-m/%-d"
+msgstr "%m. %e %a"
+
+msgid "%a %-m/%-d/%Y"
+msgstr ""
+
+#, fuzzy
+msgid "%a %-m/%d"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %-m/%d/%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %B %-d %Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %B %d %Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %B-%-d-%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %B-%d-%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %Y %B %-d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %Y %B %d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %Y %b %-d"
+msgstr "%m. %e %a  %-H:%M"
+
+#, fuzzy
+msgid "%a %Y %b %d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %Y-%B-%-d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %Y-%B-%d"
+msgstr "%Y. %B %e. %A"
+
+msgid "%a %Y-%b-%-d"
+msgstr ""
+
+msgid "%a %Y-%b-%d"
+msgstr ""
+
+#, fuzzy
+msgid "%a %Y/%-m/%-d"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %Y/%-m/%d"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %Y/%m/%-d"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %Y/%m/%d"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %b %-d"
+msgstr "%m. %e %a  %-H:%M"
+
+#, fuzzy
+msgid "%a %b %-d %Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %b %d"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %b %d %Y"
+msgstr "%Y. %B %e. %A"
+
+msgid "%a %b-%-d"
+msgstr ""
+
+#, fuzzy
+msgid "%a %b-%-d-%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %b-%d"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %b-%d-%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %d"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %d %B %Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %d %b"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%a %d %b %Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %d-%B-%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %d-%b"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %d-%b-%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %d/%-m"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %d/%-m/%Y"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %d/%m"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %d/%m/%Y"
+msgstr "%m. %e %a"
 
 #, fuzzy
 msgid "%a %e %b  %-H:%M"
 msgstr "%m. %e %a  %-H:%M"
 
-#. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
-msgid "%a %e/%m"
+#, fuzzy
+msgid "%a %m/%-d"
 msgstr "%m. %e %a"
 
-#. TRANSLATORS: long date representation short dayname daynum short monthname hour:minute in strftime() format! See 'man strftime'
-msgid "%a %e/%m  %-H:%M"
-msgstr "%m. %e %a  %-H:%M"
+#, fuzzy
+msgid "%a %m/%-d/%Y"
+msgstr "%Y. %B %e. %A"
+
+#, fuzzy
+msgid "%a %m/%d"
+msgstr "%m. %e %a"
+
+#, fuzzy
+msgid "%a %m/%d/%Y"
+msgstr "%Y. %B %e. %A"
+
+msgid "%b %-d"
+msgstr ""
+
+msgid "%b %-d %Y"
+msgstr ""
+
+msgid "%b %d"
+msgstr ""
+
+#, fuzzy
+msgid "%b %d %Y"
+msgstr "%B %d. %A"
+
+msgid "%b+%-d "
+msgstr ""
+
+msgid "%b+%d "
+msgstr ""
+
+msgid "%b-%-d"
+msgstr ""
+
+msgid "%b-%-d-%Y"
+msgstr ""
+
+msgid "%b-%d"
+msgstr ""
+
+#, fuzzy
+msgid "%b-%d-%Y"
+msgstr "%d-%m"
+
+msgid "%b=%-d "
+msgstr ""
+
+msgid "%b=%d "
+msgstr ""
+
+#, fuzzy
+msgid "%d %B %Y"
+msgstr "%Y. %B %d."
+
+#, fuzzy
+msgid "%d %b"
+msgstr "%B %d. %A"
+
+#, fuzzy
+msgid "%d %b %Y"
+msgstr "%B %d. %A"
 
 #, python-format
 msgid "%d B"
@@ -267,6 +820,29 @@ msgstr "%d GB"
 #, python-format
 msgid "%d MB"
 msgstr "%d MB"
+
+#. TRANSLATORS: full date representation dayname daynum monthname year in strftime() format! See 'man strftime'
+#. _("%A %e %B %Y")
+#. TRANSLATORS: short time representation hour:minute in strftime() format! See 'man strftime'
+#. _("%R")
+#. TRANSLATORS: short time representation hour:minute in strftime() format! See 'man strftime'
+#. _("%R")
+#. TRANSLATORS: short date representation daynum short monthname in strftime() format! See 'man strftime'
+#. _("%e %b")
+#. TRANSLATORS: short date representation daynum short monthname in strftime() format! See 'man strftime'
+#. _("%a %e %b")
+#. TRANSLATORS: short time representation hour:minute in strftime() format! See 'man strftime'
+#. _("%R")
+#. TRANSLATORS: long date representation short dayname daynum short monthname hour:minute in strftime() format! See 'man strftime'
+#. _("%a %e %b %R")
+#. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
+#. _("%a %e %B %Y")
+#.
+#, fuzzy, python-format
+msgid "%d Min"
+msgid_plural "%d Mins"
+msgstr[0] "%d MB"
+msgstr[1] "%d MB"
 
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
 #, python-format
@@ -357,6 +933,21 @@ msgid_plural "%d wireless networks found!"
 msgstr[0] "%d elérhető vezeték nélküli hálózat!"
 msgstr[1] "%d elérhető vezeték nélküli hálózat!"
 
+msgid "%d+%b_"
+msgstr ""
+
+#, fuzzy
+msgid "%d-%B-%Y"
+msgstr "%d-%m"
+
+#, fuzzy
+msgid "%d-%b"
+msgstr "%d-%m"
+
+#, fuzzy
+msgid "%d-%b-%Y"
+msgstr "%d-%m"
+
 msgid "%d-%m"
 msgstr "%d-%m"
 
@@ -368,24 +959,44 @@ msgstr "%d.%02d. %02d:%02d"
 msgid "%d.%03d GB"
 msgstr "%d.%03d GB"
 
-msgid "%d.%B %Y"
-msgstr "%Y. %B %d."
+msgid "%d/%-m"
+msgstr ""
 
-#, python-format
-msgid "%d.%d"
-msgstr "%d.%d"
+msgid "%d/%-m "
+msgstr ""
 
-#, python-format
-msgid "%d.%d.%d"
-msgstr "%d.%d.%d"
+msgid "%d/%-m/%Y"
+msgstr ""
 
-#, python-format
-msgid "%d:%02d"
-msgstr "%d:%02d"
+msgid "%d/%m"
+msgstr ""
 
-#. TRANSLATORS: VFD hour:minute daynum short monthname in strftime() format! See 'man strftime'
-msgid "%k:%M %e/%m"
-msgstr "%k:%M %m.%e"
+msgid "%d/%m "
+msgstr ""
+
+msgid "%d/%m/%Y"
+msgstr ""
+
+msgid "%d=%b_"
+msgstr ""
+
+msgid "%m/%-d"
+msgstr ""
+
+msgid "%m/%-d "
+msgstr ""
+
+msgid "%m/%-d/%Y"
+msgstr ""
+
+msgid "%m/%d"
+msgstr ""
+
+msgid "%m/%d "
+msgstr ""
+
+msgid "%m/%d/%Y"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -405,10 +1016,6 @@ msgstr ""
 "%s\n"
 "Nyomja meg az 'OK'-t a multiboot kiválasztásához\n"
 "Nyomja meg az 'Exit'-et a kilépéshez"
-
-#, python-format
-msgid "%s %d.%d"
-msgstr "%s %d.%d"
 
 #, python-format
 msgid "%s %s free disk space"
@@ -897,6 +1504,9 @@ msgstr ""
 
 msgid "Adapter settings"
 msgstr "Adapter beállításai"
+
+msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.  It hides the day of the week for recordings made in previous years."
+msgstr ""
 
 msgid "Add"
 msgstr "Hozzáadás"
@@ -1997,6 +2607,10 @@ msgstr "Fejezet"
 msgid "Chapter:"
 msgstr "Fejezet:"
 
+#, fuzzy
+msgid "Chatham Islands"
+msgstr "Kajmán-szigetek"
+
 msgid "Check"
 msgstr "Ellenőrzés"
 
@@ -2042,6 +2656,18 @@ msgid "Choose bouquet"
 msgstr "Lista kiválasztása"
 
 msgid "Choose the CI protocol operation mode for standard CI or CI Plus."
+msgstr ""
+
+msgid "Choose the display formatting style for dates. 'D' / 'DD' is the date and 'M' / 'MM' is the month in digits.  ('DD' and 'MM' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin."
+msgstr ""
+
+msgid "Choose the display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes and 'ss' is the seconds.  ('HH' and 'hh' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin."
+msgstr ""
+
+msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is the date and 'M' / 'MM' is the month in digits.  ('DD' and 'MM' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin."
+msgstr ""
+
+msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
 msgstr ""
 
 #, fuzzy
@@ -2556,6 +3182,10 @@ msgstr "Melyik fajta tuner legyen választva, ha ugyanaz a csatorna egyszerre t�
 msgid "Configure which tuner will be preferred, when more than one tuner is available. If set to 'auto' the system will give priority to the tuner having the lowest number of channels/satellites."
 msgstr "Melyik tuner legyen választva, ha ugyanaz a csatorna egyszerre több tuneren keresztül is fogható (a csatornának vannak beállított alternatívái). Ha ez 'Automatikus', akkor mindig a legkevesebb csatornát fogó tuner lesz választva."
 
+#, fuzzy
+msgid "Configure your NTP server."
+msgstr "Névszerverek konfigurálása"
+
 msgid "Configure your internal LAN"
 msgstr "A hálózat konfigurálása"
 
@@ -2908,8 +3538,132 @@ msgstr "Dán"
 msgid "Date"
 msgstr "Dátum"
 
+msgid "Date style"
+msgstr ""
+
 msgid "Date/time input"
 msgstr "Idő/Dátum megadása"
+
+msgid "Day D Mon"
+msgstr ""
+
+msgid "Day D-Mon"
+msgstr ""
+
+msgid "Day D/M"
+msgstr ""
+
+msgid "Day D/MM"
+msgstr ""
+
+msgid "Day DD Mon"
+msgstr ""
+
+msgid "Day DD-Mon"
+msgstr ""
+
+#, fuzzy
+msgid "Day DD/M"
+msgstr "DVD lejátszás"
+
+msgid "Day DD/MM"
+msgstr ""
+
+msgid "Day M/D"
+msgstr ""
+
+msgid "Day M/DD"
+msgstr ""
+
+msgid "Day MM/D"
+msgstr ""
+
+msgid "Day MM/DD"
+msgstr ""
+
+msgid "Day Mon D"
+msgstr ""
+
+msgid "Day Mon DD"
+msgstr ""
+
+msgid "Day Mon-D"
+msgstr ""
+
+msgid "Day Mon-DD"
+msgstr ""
+
+msgid "Dayname D Month Year"
+msgstr ""
+
+msgid "Dayname D-Month-Year"
+msgstr ""
+
+msgid "Dayname D/M/Year"
+msgstr ""
+
+msgid "Dayname D/MM/Year"
+msgstr ""
+
+msgid "Dayname DD Month Year"
+msgstr ""
+
+msgid "Dayname DD-Month-Year"
+msgstr ""
+
+msgid "Dayname DD/M/Year"
+msgstr ""
+
+msgid "Dayname DD/MM/Year"
+msgstr ""
+
+msgid "Dayname M/D/Year"
+msgstr ""
+
+msgid "Dayname M/DD/Year"
+msgstr ""
+
+msgid "Dayname MM/D/Year"
+msgstr ""
+
+msgid "Dayname MM/DD/Year"
+msgstr ""
+
+msgid "Dayname Month D Year"
+msgstr ""
+
+msgid "Dayname Month DD Year"
+msgstr ""
+
+msgid "Dayname Month-D-Year"
+msgstr ""
+
+msgid "Dayname Month-DD-Year"
+msgstr ""
+
+msgid "Dayname Year Month D"
+msgstr ""
+
+msgid "Dayname Year Month DD"
+msgstr ""
+
+msgid "Dayname Year-Month-D"
+msgstr ""
+
+msgid "Dayname Year-Month-DD"
+msgstr ""
+
+msgid "Dayname Year/M/D"
+msgstr ""
+
+msgid "Dayname Year/M/DD"
+msgstr ""
+
+msgid "Dayname Year/MM/D"
+msgstr ""
+
+msgid "Dayname Year/MM/DD"
+msgstr ""
 
 msgid "Debug to file"
 msgstr "Hibakeresés fájlba"
@@ -3491,6 +4245,10 @@ msgstr "Kelet"
 msgid "East limit set"
 msgstr "Keleti limit beállítás"
 
+#, fuzzy
+msgid "Easter Island"
+msgstr "Feröer-szigetek"
+
 msgid "EasyMedia"
 msgstr ""
 
@@ -3539,6 +4297,12 @@ msgstr "Egyiptom"
 
 msgid "El Salvador"
 msgstr "Salvador"
+
+msgid "Elapsed"
+msgstr ""
+
+msgid "Elapsed & Remaining"
+msgstr ""
 
 msgid "Electronic Program Guide"
 msgstr "Elektronikus Műsorújság"
@@ -4217,6 +4981,9 @@ msgstr "Előretekerési sebességek"
 msgid "Favourites"
 msgstr "Kedvencek"
 
+msgid "Fernando de Noronha"
+msgstr ""
+
 msgid "Fiji"
 msgstr "Fidzsi"
 
@@ -4422,8 +5189,16 @@ msgstr ""
 msgid "Gabon"
 msgstr "Gabon"
 
+#, fuzzy
+msgid "Galapagos Islands"
+msgstr "Åland-szigetek"
+
 msgid "Gambia"
 msgstr "Gambia"
+
+#, fuzzy
+msgid "Gambier Islands"
+msgstr "Feröer-szigetek"
 
 msgid "Gateway"
 msgstr "Átjáró IP címe"
@@ -4595,6 +5370,12 @@ msgstr "H"
 msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
 msgstr ""
 
+msgid "H:mm"
+msgstr ""
+
+msgid "H:mm:ss"
+msgstr ""
+
 msgid "HD list"
 msgstr "HD csatornák"
 
@@ -4647,6 +5428,12 @@ msgstr "HDR10 támogatás"
 msgid "HELP"
 msgstr "SEGÍTSÉG"
 
+msgid "HH:mm"
+msgstr ""
+
+msgid "HH:mm:ss"
+msgstr ""
+
 msgid "HLG"
 msgstr "HLG"
 
@@ -4677,6 +5464,10 @@ msgstr "Háttértár"
 msgid "Harddisk Setup"
 msgstr "Háttértár beállítások"
 
+#, fuzzy
+msgid "Hardware serial: "
+msgstr "Hardver: "
+
 msgid "Hardware: "
 msgstr "Hardver: "
 
@@ -4695,6 +5486,10 @@ msgstr "Segít beállítani az antennát"
 
 msgid "HiSilicon"
 msgstr ""
+
+#, fuzzy
+msgid "Hidden / Blank"
+msgstr "Rejtett hálózat"
 
 msgid "Hidden network"
 msgstr "Rejtett hálózat"
@@ -4731,6 +5526,9 @@ msgstr "Előzmények előző"
 
 msgid "History next"
 msgstr "Előzmények következő"
+
+msgid "Ho Chi Minh City"
+msgstr ""
 
 msgid "Hold screen"
 msgstr "Képernyő megtartás"
@@ -4803,7 +5601,16 @@ msgstr "Hotkey csatornaváltás"
 msgid "Hotplug"
 msgstr "Hotplug"
 
+msgid "Hour"
+msgstr ""
+
 msgid "Hourly"
+msgstr ""
+
+msgid "Hours Mins"
+msgstr ""
+
+msgid "Hours Mins Secs"
 msgstr ""
 
 msgid "How many minutes do you want add to the recording?"
@@ -5146,6 +5953,10 @@ msgstr "Belső"
 msgid "Interval between keys when repeating:"
 msgstr "Billentyű-ismétlés időköze:"
 
+#, fuzzy
+msgid "Invalid"
+msgstr "helytelen típus"
+
 #, python-format
 msgid "Invalid directory selected: %s"
 msgstr "A kiválasztott mappa érvénytelen: %s"
@@ -5236,6 +6047,9 @@ msgstr "Jersey"
 
 msgid "Job overview"
 msgstr "Folyamat nézet"
+
+msgid "Johnston Atoll"
+msgstr ""
 
 msgid "Jordan"
 msgstr "Jordánia"
@@ -5562,6 +6376,10 @@ msgstr "Földrajzi hosszúsági fok"
 msgid "Loop through from"
 msgstr "Felfűzés ebből"
 
+#, fuzzy
+msgid "Lord Howe Island"
+msgstr "Feröer-szigetek"
+
 msgid "Lower Framerate save CPU Time"
 msgstr ""
 
@@ -5665,6 +6483,10 @@ msgstr "Felvétel előtti ráhagyás (perc)"
 msgid "Mark service as dedicated 3D service"
 msgstr "A csatorna megjelölése mint 'dedikált 3D csatorna'"
 
+#, fuzzy
+msgid "Marquesas Islands"
+msgstr "Marshall-szigetek"
+
 msgid "Marshall Islands"
 msgstr "Marshall-szigetek"
 
@@ -5688,6 +6510,9 @@ msgstr "Talán egy felvétel folyamatban van. Állítsa le a felvételt, mielőt
 
 msgid "Mayotte"
 msgstr "Mayotte"
+
+msgid "Media playback Remaining/Elapsed as"
+msgstr ""
 
 msgid "Media player"
 msgstr "Médialejátszó"
@@ -5732,6 +6557,10 @@ msgstr "Mexikó"
 msgid "Micronesia (Federated States of)"
 msgstr "Mikronézia"
 
+#, fuzzy
+msgid "Midway Islands"
+msgstr "Kajmán-szigetek"
+
 msgid "MiniTV"
 msgstr ""
 
@@ -5744,6 +6573,12 @@ msgstr "Minimális korhatár %d év"
 
 msgid "Minimum send interval"
 msgstr "Minimális ismétlési időköz"
+
+msgid "Mins"
+msgstr ""
+
+msgid "Mins Secs"
+msgstr ""
 
 msgid "Mipsel"
 msgstr ""
@@ -5989,6 +6824,13 @@ msgstr "NEM"
 
 msgid "NOW"
 msgstr "MOST"
+
+msgid "NTP"
+msgstr ""
+
+#, fuzzy
+msgid "NTP server"
+msgstr "Névszerver"
 
 msgid "NTSC"
 msgstr "NTSC"
@@ -6302,6 +7144,10 @@ msgstr "Észak"
 msgid "Northern Mariana Islands"
 msgstr "Északi-Mariana-szigetek"
 
+#, fuzzy
+msgid "Northern Territory"
+msgstr "Francia déli és antarktiszi területek"
+
 msgid "Norway"
 msgstr "Norvégia"
 
@@ -6457,6 +7303,9 @@ msgstr "Film végén (menü)"
 
 msgid "On valid ONIDs, ignore frequency sub network part"
 msgstr "Érvényes ONID-k esetén a frekvencia alhálózat-rész figyelmen kívül hagyása"
+
+msgid "Once per day"
+msgstr ""
 
 msgid "One"
 msgstr "Egy"
@@ -6658,6 +7507,10 @@ msgstr "Lejátszás megállítása"
 msgid "Pause/Continue playback"
 msgstr "Lejátszás megállítása/folytatása"
 
+#, fuzzy
+msgid "Percentage"
+msgstr "Százalék balra"
+
 msgid "Percentage left"
 msgstr "Százalék balra"
 
@@ -6700,6 +7553,10 @@ msgstr "Pilot"
 
 msgid "Pitcairn"
 msgstr "Pitcairn-szigetek"
+
+#, fuzzy
+msgid "Pitcairn Islands"
+msgstr "Åland-szigetek"
 
 msgid "Pixels\n"
 msgstr "Pixel\n"
@@ -7545,6 +8402,13 @@ msgstr "Feketelista újratöltése"
 
 msgid "Reloading bouquets and services..."
 msgstr "Listák és csatornák frissítése..."
+
+#, fuzzy
+msgid "Remaining"
+msgstr "futó"
+
+msgid "Remaining & Elapsed"
+msgstr ""
 
 msgid "Remember last service in PiP"
 msgstr "Utolsó csatorna megjegyzése Kép-a-Képben módban"
@@ -8705,11 +9569,18 @@ msgstr "Beállítások menü"
 msgid "Setup mode"
 msgstr "Beállítás módja"
 
+msgid "Setup network time synchronization interval."
+msgstr ""
+
 msgid "Setup your positioner"
 msgstr "Forgatómotor beállítása"
 
 msgid "Setup your satellite equipment"
 msgstr "Műholvevő-berendezés"
+
+#, fuzzy
+msgid "Setup your timezone area."
+msgstr "Forgatómotor beállítása"
 
 msgid "Seychelles"
 msgstr "Seychelle-szigetek"
@@ -8780,6 +9651,9 @@ msgstr "Infobar megjelenítése"
 msgid "Show Log"
 msgstr "Info megjelenítése"
 
+msgid "Show Media playback Remaining/Elapsed as"
+msgstr ""
+
 #, fuzzy
 msgid "Show MiniTV in the front panel display"
 msgstr "Piconok mutatása a kijelzőn"
@@ -8796,6 +9670,12 @@ msgstr ""
 
 msgid "Show SNR percentage instead of dB value"
 msgstr "A Jel/Zaj viszony (SNR) megjelenítése százalékban dB helyett"
+
+msgid "Show Time Remaining/Elapsed"
+msgstr ""
+
+msgid "Show Transponder Remaining/Elapsed as"
+msgstr ""
 
 msgid "Show True/False as graphical switch"
 msgstr "Igaz/hamis mutatása grafikus kapcsolóként"
@@ -8990,6 +9870,16 @@ msgstr "Rádió csatornalista..."
 msgid "Show the tv player..."
 msgstr "TV csatorna lista..."
 
+msgid "Show time elapsed as positive"
+msgstr ""
+
+msgid "Show time remaining/elapsed"
+msgstr ""
+
+#, fuzzy
+msgid "Show transponder remaining/elapsed as"
+msgstr "transzponder infó megjelenítése"
+
 msgid "Show two lines per entry"
 msgstr ""
 
@@ -9098,6 +9988,10 @@ msgstr "Kinézet"
 #, python-format
 msgid "Skin & Resolution: %s (%sx%s)\n"
 msgstr "Kinézet és felbontás: %s (%sx%s)\n"
+
+#, fuzzy
+msgid "Skin Setting"
+msgstr "Beállítások"
 
 #, fuzzy
 msgid "Skin setup"
@@ -9298,6 +10192,10 @@ msgstr "Dél"
 
 msgid "South Africa"
 msgstr "Dél-afrikai Köztársaság"
+
+#, fuzzy
+msgid "South Australia"
+msgstr "Ausztrália"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Déli-Georgia és Déli-Sandwich-szigetek"
@@ -9722,8 +10620,17 @@ msgstr "Sebesség & FEC"
 msgid "Symbol rate:"
 msgstr "Szimbólumsebesség:"
 
+msgid "Sync NTP every (minutes)"
+msgstr ""
+
 msgid "Sync failure moving back to origin !"
 msgstr "Szinkronhiba 0-hoz visszatérésk!"
+
+msgid "Sync time using"
+msgstr ""
+
+msgid "Synchronize system time using transponder or internet."
+msgstr ""
 
 msgid "Syrian Arab Republic"
 msgstr "Szíriai Arab Köztársaság"
@@ -10067,6 +10974,18 @@ msgstr "Ezzel beállíthatja a kép dinamikus kontraszt szintjét."
 msgid "This option allows you can to set the auto volume level."
 msgstr "Ezzel beállíthatja az automatikus hangerő szintjét."
 
+#, fuzzy
+msgid "This option allows you choose how to display elapsed time as + or -"
+msgstr "Ezzel kikapcsolhatja a kijelzőt."
+
+#, fuzzy
+msgid "This option allows you choose how to display remaining time, or elapsed time, or both."
+msgstr "Letilthatja vagy megváltoztathatja a virtuális hangszórók pozícióját."
+
+#, fuzzy
+msgid "This option allows you choose how to display the remaining/elapsed time for live TV."
+msgstr "A képernyőn lévő zöld színek kiemelése."
+
 msgid "This option allows you enable smoothing filter to control the dithering process."
 msgstr "A szürkeárnyalat lágyabbá tétele."
 
@@ -10091,6 +11010,22 @@ msgstr "A képernyőn lévő zöld színek kiemelése."
 
 msgid "This option allows you to change the virtuell loadspeaker position."
 msgstr "Megváltoztathatja a virtuális hangszórók pozícióját."
+
+#, fuzzy
+msgid "This option allows you to choose how to display elapsed time. As + or -"
+msgstr "Ezzel kikapcsolhatja a kijelzőt."
+
+#, fuzzy
+msgid "This option allows you to choose how to display the remaining/elapsed time for Media playback."
+msgstr "A kijelzőn minden szimbólum jelenjen meg."
+
+#, fuzzy
+msgid "This option allows you to choose how to display the remaining/elapsed time for live TV."
+msgstr "A képernyőn lévő zöld színek kiemelése."
+
+#, fuzzy
+msgid "This option allows you to choose how to display the remaining/elapsed time for media playback."
+msgstr "A kijelzőn minden szimbólum jelenjen meg."
 
 msgid "This option allows you to configure the Colordepth for UHD"
 msgstr "Beállíthatja az UHD színmélységet"
@@ -10292,6 +11227,10 @@ msgstr ""
 msgid "Time scale"
 msgstr "Időskála"
 
+#, fuzzy
+msgid "Time style"
+msgstr "Időskála"
+
 msgid "Time to execute command or script"
 msgstr ""
 
@@ -10363,6 +11302,10 @@ msgid "Timeshift not possible!"
 msgstr "Időcsúsztatás nem lehetséges!"
 
 msgid "Timezone"
+msgstr "Időzóna"
+
+#, fuzzy
+msgid "Timezone area"
 msgstr "Időzóna"
 
 msgid "Timor-Leste"
@@ -10467,6 +11410,10 @@ msgstr "Adási mód"
 
 msgid "Transponder"
 msgstr "Transzponder"
+
+#, fuzzy
+msgid "Transponder time"
+msgstr "transzponder infó megjelenítése"
 
 msgid "Transport Stream Type"
 msgstr "Transzponder adatfolyam típusa"
@@ -10810,6 +11757,9 @@ msgstr "Virgin EPG információk beolvasása a jelforrásból."
 msgid "Use a gateway"
 msgstr "Átjáró használata"
 
+msgid "Use adaptive date display"
+msgstr ""
+
 msgid "Use as PiP if possible"
 msgstr "Kép a képben használata, ha lehetséges"
 
@@ -10870,10 +11820,6 @@ msgstr "Ezen beállítások használata?"
 
 msgid "Use this video enhancement settings?"
 msgstr "Alkalmazhatók a Videó-beállítások?"
-
-#, fuzzy
-msgid "Use transponder time"
-msgstr "transzponder infó megjelenítése"
 
 msgid "Use trash can in movielist"
 msgstr "Kuka használata a filmlistában"
@@ -11131,6 +12077,10 @@ msgstr "Várakozás a megosztás csatlakozására"
 msgid "Waiting for partition"
 msgstr "Várakozás a partícióra"
 
+#, fuzzy
+msgid "Wake Island"
+msgstr "Feröer-szigetek"
+
 msgid "Wake On LAN"
 msgstr "Ébresztés LAN-on"
 
@@ -11237,6 +12187,10 @@ msgstr "Nyugat"
 
 msgid "West limit set"
 msgstr "Nyugati limit beállítás"
+
+#, fuzzy
+msgid "Western Australia"
+msgstr "Ausztrália"
 
 msgid "Western Sahara"
 msgstr "Nyugat-Szahara"
@@ -11800,6 +12754,10 @@ msgstr "A készülék most készenlétbe kapcsol inaktivitás miatt."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
 msgstr "Az OK gomb megnyomása után a készülék újra fog indulni."
+
+#, fuzzy
+msgid "Your timezone in the area."
+msgstr "Az eltávolítás folyamata leállítható."
 
 msgid ""
 "Your wireless LAN internet connection could not be started!\n"
@@ -12370,6 +13328,24 @@ msgstr "pillanatkép mentése"
 msgid "green"
 msgstr "zöld"
 
+msgid "h:mm"
+msgstr ""
+
+msgid "h:mm:ss"
+msgstr ""
+
+msgid "h:mm:ssAM/PM"
+msgstr ""
+
+msgid "h:mm:ssam/pm"
+msgstr ""
+
+msgid "h:mmAM/PM"
+msgstr ""
+
+msgid "h:mmam/pm"
+msgstr ""
+
 msgid "handicraft"
 msgstr "kézművesség"
 
@@ -12378,6 +13354,24 @@ msgstr "magasság"
 
 msgid "help..."
 msgstr "súgó..."
+
+msgid "hh:mm"
+msgstr ""
+
+msgid "hh:mm:ss"
+msgstr ""
+
+msgid "hh:mm:ssAM/PM"
+msgstr ""
+
+msgid "hh:mm:ssam/pm"
+msgstr ""
+
+msgid "hh:mmAM/PM"
+msgstr ""
+
+msgid "hh:mmam/pm"
+msgstr ""
 
 msgid "horizontal"
 msgstr "horizontális"

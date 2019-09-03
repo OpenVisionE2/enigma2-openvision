@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 20:20+0430\n"
+"POT-Creation-Date: 2019-09-03 17:01+0430\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -179,11 +179,6 @@ msgstr ""
 msgid " extensions."
 msgstr " filendelser."
 
-#
-#, fuzzy
-msgid " min"
-msgstr "%d min"
-
 msgid " ms"
 msgstr "ms"
 
@@ -194,6 +189,100 @@ msgid " updates available."
 msgstr "opdateringer tilgængelige."
 
 msgid "!! Bootloader Upgrade !!"
+msgstr ""
+
+#
+#, fuzzy
+msgid "%-H:%M"
+msgstr "%T:%M"
+
+#
+#, fuzzy
+msgid "%-H:%M:%S"
+msgstr "%T:%M"
+
+msgid "%-I:%M"
+msgstr ""
+
+msgid "%-I:%M%P"
+msgstr ""
+
+msgid "%-I:%M%^p"
+msgstr ""
+
+msgid "%-I:%M:%S"
+msgstr ""
+
+msgid "%-I:%M:%S%P"
+msgstr ""
+
+msgid "%-I:%M:%S%^p"
+msgstr ""
+
+#
+#. TRANSLATORS: full date representation daynum monthname year in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%-d %B %Y"
+msgstr "%d.%B %Y"
+
+#. TRANSLATORS: small date representation daynum short monthname in strftime() format! See 'man strftime'
+#. TRANSLATORS: compact date representation (for VFD) daynum short monthname in strftime() format! See 'man strftime'
+msgid "%-d %b"
+msgstr ""
+
+#. TRANSLATORS: long date representation daynum short monthname year in strftime() format! See 'man strftime'
+msgid "%-d %b %Y"
+msgstr ""
+
+msgid "%-d+%b_"
+msgstr ""
+
+msgid "%-d-%B-%Y"
+msgstr ""
+
+msgid "%-d-%b"
+msgstr ""
+
+msgid "%-d-%b-%Y"
+msgstr ""
+
+msgid "%-d/%-m"
+msgstr ""
+
+msgid "%-d/%-m "
+msgstr ""
+
+msgid "%-d/%-m/%Y"
+msgstr ""
+
+msgid "%-d/%m"
+msgstr ""
+
+msgid "%-d/%m "
+msgstr ""
+
+msgid "%-d/%m/%Y"
+msgstr ""
+
+msgid "%-d=%b_"
+msgstr ""
+
+msgid "%-m/%-d"
+msgstr ""
+
+msgid "%-m/%-d "
+msgstr ""
+
+msgid "%-m/%-d/%Y"
+msgstr ""
+
+msgid "%-m/%d"
+msgstr ""
+
+msgid "%-m/%d "
+msgstr ""
+
+msgid "%-m/%d/%Y"
 msgstr ""
 
 #, python-format
@@ -224,51 +313,516 @@ msgstr ""
 msgid "%2.1f sec"
 msgstr ""
 
-#. TRANSLATORS: short time representation hour:minute
-#, python-format
-msgid "%2d:%02d"
-msgstr "%2d:%02d"
-
-#. TRANSLATORS: full time representation hour:minute:seconds
-#, python-format
-msgid "%2d:%02d:%02d"
-msgstr "%2d:%02d:%02d"
-
 #, python-format
 msgid "%3.01f dB"
+msgstr ""
+
+#. TRANSLATORS: short date representation dayname daynum short monthname in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%A %-d %B"
+msgstr "%A %d %B"
+
+#. TRANSLATORS: full date representation dayname daynum monthname year in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%A %-d %B %Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %-d-%B"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %-d-%B-%Y"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %-d/%-m"
+msgstr "%A %d %B"
+
+msgid "%A %-d/%-m/%Y"
+msgstr ""
+
+#, fuzzy
+msgid "%A %-d/%m"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %-d/%m/%Y"
+msgstr "%A %e %B %Y"
+
+msgid "%A %-m/%-d"
+msgstr ""
+
+msgid "%A %-m/%-d/%Y"
+msgstr ""
+
+msgid "%A %-m/%d"
+msgstr ""
+
+#, fuzzy
+msgid "%A %-m/%d/%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %B %-d"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %B %-d %Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %B %d"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %B %d %Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %B-%-d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %B-%-d-%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %B-%d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %B-%d-%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %Y %B %-d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %Y %B %d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %Y-%B-%-d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %Y-%B-%d"
+msgstr "%A %e %B %Y"
+
+msgid "%A %Y/%-m/%-d"
+msgstr ""
+
+msgid "%A %Y/%-m/%d"
+msgstr ""
+
+msgid "%A %Y/%m/%-d"
+msgstr ""
+
+msgid "%A %Y/%m/%d"
 msgstr ""
 
 msgid "%A %d %B"
 msgstr "%A %d %B"
 
-#. TRANSLATORS: long date representations dayname daynum monthname in strftime() format! See 'man strftime'
-msgid "%A %e %B"
-msgstr "%A %e %B"
-
-#. TRANSLATORS: full date representation dayname daynum monthname year in strftime() format! See 'man strftime'
-msgid "%A %e %B %Y"
+#, fuzzy
+msgid "%A %d %B %Y"
 msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %d-%B"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %d-%B-%Y"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %d/%-m"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %d/%-m/%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %d/%m"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %d/%m/%Y"
+msgstr "%A %e %B %Y"
+
+msgid "%A %m/%-d"
+msgstr ""
+
+#, fuzzy
+msgid "%A %m/%-d/%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%A %m/%d"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%A %m/%d/%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%B %-d %Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%B %d %Y"
+msgstr "%A %d %B"
+
+msgid "%B-%-d-%Y"
+msgstr ""
+
+#, fuzzy
+msgid "%B-%d-%Y"
+msgstr "%d-%m"
 
 #
 msgid "%H:%M"
 msgstr "%T:%M"
 
-#. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
+msgid "%I:%M"
+msgstr ""
+
+msgid "%I:%M%P"
+msgstr ""
+
+msgid "%I:%M%^p"
+msgstr ""
+
+msgid "%I:%M:%S"
+msgstr ""
+
+msgid "%I:%M:%S%P"
+msgstr ""
+
+msgid "%I:%M:%S%^p"
+msgstr ""
+
+#. TRANSLATORS: short time representation hour:minute (Same as "Default")
+msgid "%R"
+msgstr ""
+
+#. TRANSLATORS: time representation hour:minute:seconds for 24 hour clock or 12 hour clock without AM/PM and hour:minute for 12 hour clocks with AM/PM
+msgid "%T"
+msgstr ""
+
 #, fuzzy
-msgid "%a %e %B %Y"
+msgid "%Y %B %-d"
 msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%Y %B %d"
+msgstr "%A %e %B %Y"
+
+msgid "%Y %b %-d"
+msgstr ""
+
+msgid "%Y %b %d"
+msgstr ""
+
+msgid "%Y-%B-%-d"
+msgstr ""
+
+msgid "%Y-%B-%d"
+msgstr ""
+
+msgid "%Y-%b-%-d"
+msgstr ""
+
+msgid "%Y-%b-%d"
+msgstr ""
+
+msgid "%Y/%-m/%-d"
+msgstr ""
+
+msgid "%Y/%-m/%d"
+msgstr ""
+
+msgid "%Y/%m/%-d"
+msgstr ""
+
+msgid "%Y/%m/%d"
+msgstr ""
+
+#. TRANSLATORS: small date representation short dayname daynum in strftime() format! See 'man strftime'
+msgid "%a %-d"
+msgstr ""
+
+#. TRANSLATORS: long date representation short dayname daynum monthname year in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%a %-d %B %Y"
+msgstr "%A %e %B %Y"
+
+#. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%a %-d %b"
+msgstr "%A %e %B %Y"
+
+#. TRANSLATORS: long date representation short dayname daynum short monthname year in strftime() format! See 'man strftime'
+#, fuzzy
+msgid "%a %-d %b %Y"
+msgstr "%A %e %B %Y"
+
+msgid "%a %-d+%b_"
+msgstr ""
+
+#, fuzzy
+msgid "%a %-d-%B-%Y"
+msgstr "%A %e %B %Y"
+
+msgid "%a %-d-%b"
+msgstr ""
+
+#, fuzzy
+msgid "%a %-d-%b-%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %-d/%-m"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %-d/%-m/%Y"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %-d/%m"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %-d/%m/%Y"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %-m/%-d"
+msgstr "%a %e/%m"
+
+msgid "%a %-m/%-d/%Y"
+msgstr ""
+
+#, fuzzy
+msgid "%a %-m/%d"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %-m/%d/%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %B %-d %Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %B %d %Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %B-%-d-%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %B-%d-%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %Y %B %-d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %Y %B %d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %Y %b %-d"
+msgstr "%a %e/%m  %-H:%M"
+
+#, fuzzy
+msgid "%a %Y %b %d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %Y-%B-%-d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %Y-%B-%d"
+msgstr "%A %e %B %Y"
+
+msgid "%a %Y-%b-%-d"
+msgstr ""
+
+msgid "%a %Y-%b-%d"
+msgstr ""
+
+#, fuzzy
+msgid "%a %Y/%-m/%-d"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %Y/%-m/%d"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %Y/%m/%-d"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %Y/%m/%d"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %b %-d"
+msgstr "%a %e/%m  %-H:%M"
+
+#, fuzzy
+msgid "%a %b %-d %Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %b %d"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %b %d %Y"
+msgstr "%A %e %B %Y"
+
+msgid "%a %b-%-d"
+msgstr ""
+
+#, fuzzy
+msgid "%a %b-%-d-%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %b-%d"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %b-%d-%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %d"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %d %B %Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %d %b"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%a %d %b %Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %d-%B-%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %d-%b"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %d-%b-%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %d/%-m"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %d/%-m/%Y"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %d/%m"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %d/%m/%Y"
+msgstr "%a %e/%m"
 
 #, fuzzy
 msgid "%a %e %b  %-H:%M"
 msgstr "%a %e/%m  %-H:%M"
 
-#. TRANSLATORS: short date representation short dayname daynum short monthname in strftime() format! See 'man strftime'
-msgid "%a %e/%m"
+#, fuzzy
+msgid "%a %m/%-d"
 msgstr "%a %e/%m"
 
-#. TRANSLATORS: long date representation short dayname daynum short monthname hour:minute in strftime() format! See 'man strftime'
-msgid "%a %e/%m  %-H:%M"
-msgstr "%a %e/%m  %-H:%M"
+#, fuzzy
+msgid "%a %m/%-d/%Y"
+msgstr "%A %e %B %Y"
+
+#, fuzzy
+msgid "%a %m/%d"
+msgstr "%a %e/%m"
+
+#, fuzzy
+msgid "%a %m/%d/%Y"
+msgstr "%A %e %B %Y"
+
+msgid "%b %-d"
+msgstr ""
+
+msgid "%b %-d %Y"
+msgstr ""
+
+msgid "%b %d"
+msgstr ""
+
+#, fuzzy
+msgid "%b %d %Y"
+msgstr "%A %d %B"
+
+msgid "%b+%-d "
+msgstr ""
+
+msgid "%b+%d "
+msgstr ""
+
+msgid "%b-%-d"
+msgstr ""
+
+msgid "%b-%-d-%Y"
+msgstr ""
+
+msgid "%b-%d"
+msgstr ""
+
+#, fuzzy
+msgid "%b-%d-%Y"
+msgstr "%d-%m"
+
+msgid "%b=%-d "
+msgstr ""
+
+msgid "%b=%d "
+msgstr ""
+
+#
+#, fuzzy
+msgid "%d %B %Y"
+msgstr "%d.%B %Y"
+
+#, fuzzy
+msgid "%d %b"
+msgstr "%A %d %B"
+
+#, fuzzy
+msgid "%d %b %Y"
+msgstr "%A %d %B"
 
 #, python-format
 msgid "%d B"
@@ -281,6 +835,29 @@ msgstr ""
 #, python-format
 msgid "%d MB"
 msgstr ""
+
+#. TRANSLATORS: full date representation dayname daynum monthname year in strftime() format! See 'man strftime'
+#. _("%A %e %B %Y")
+#. TRANSLATORS: short time representation hour:minute in strftime() format! See 'man strftime'
+#. _("%R")
+#. TRANSLATORS: short time representation hour:minute in strftime() format! See 'man strftime'
+#. _("%R")
+#. TRANSLATORS: short date representation daynum short monthname in strftime() format! See 'man strftime'
+#. _("%e %b")
+#. TRANSLATORS: short date representation daynum short monthname in strftime() format! See 'man strftime'
+#. _("%a %e %b")
+#. TRANSLATORS: short time representation hour:minute in strftime() format! See 'man strftime'
+#. _("%R")
+#. TRANSLATORS: long date representation short dayname daynum short monthname hour:minute in strftime() format! See 'man strftime'
+#. _("%a %e %b %R")
+#. TRANSLATORS: full date representations short dayname daynum monthname long year in strftime() format! See 'man strftime'
+#. _("%a %e %B %Y")
+#.
+#, python-format
+msgid "%d Min"
+msgid_plural "%d Mins"
+msgstr[0] ""
+msgstr[1] ""
 
 #
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
@@ -375,6 +952,21 @@ msgid_plural "%d wireless networks found!"
 msgstr[0] "%d trådløst netværk fundet!"
 msgstr[1] "%d trådløse netværk fundet!"
 
+msgid "%d+%b_"
+msgstr ""
+
+#, fuzzy
+msgid "%d-%B-%Y"
+msgstr "%d-%m"
+
+#, fuzzy
+msgid "%d-%b"
+msgstr "%d-%m"
+
+#, fuzzy
+msgid "%d-%b-%Y"
+msgstr "%d-%m"
+
 msgid "%d-%m"
 msgstr "%d-%m"
 
@@ -386,27 +978,44 @@ msgstr "%d.%02d. %02d:%02d"
 msgid "%d.%03d GB"
 msgstr ""
 
-#
-msgid "%d.%B %Y"
-msgstr "%d.%B %Y"
+msgid "%d/%-m"
+msgstr ""
 
-#
-#, fuzzy, python-format
-msgid "%d.%d"
-msgstr "%d.%B %Y"
+msgid "%d/%-m "
+msgstr ""
 
-#
-#, fuzzy, python-format
-msgid "%d.%d.%d"
-msgstr "%d.%B %Y"
+msgid "%d/%-m/%Y"
+msgstr ""
 
-#, fuzzy, python-format
-msgid "%d:%02d"
-msgstr "%2d:%02d"
+msgid "%d/%m"
+msgstr ""
 
-#. TRANSLATORS: VFD hour:minute daynum short monthname in strftime() format! See 'man strftime'
-msgid "%k:%M %e/%m"
-msgstr "%k:%M %e/%m"
+msgid "%d/%m "
+msgstr ""
+
+msgid "%d/%m/%Y"
+msgstr ""
+
+msgid "%d=%b_"
+msgstr ""
+
+msgid "%m/%-d"
+msgstr ""
+
+msgid "%m/%-d "
+msgstr ""
+
+msgid "%m/%-d/%Y"
+msgstr ""
+
+msgid "%m/%d"
+msgstr ""
+
+msgid "%m/%d "
+msgstr ""
+
+msgid "%m/%d/%Y"
+msgstr ""
 
 #, fuzzy, python-format
 msgid ""
@@ -420,10 +1029,6 @@ msgid ""
 "%s\n"
 "Press ok for multiboot selection\n"
 "Press exit to close"
-msgstr ""
-
-#, python-format
-msgid "%s %d.%d"
 msgstr ""
 
 #
@@ -976,6 +1581,9 @@ msgstr ""
 #
 msgid "Adapter settings"
 msgstr "Adapter indstillinger"
+
+msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.  It hides the day of the week for recordings made in previous years."
+msgstr ""
 
 #
 msgid "Add"
@@ -2217,6 +2825,9 @@ msgstr "Kapitel"
 msgid "Chapter:"
 msgstr "Kapitel:"
 
+msgid "Chatham Islands"
+msgstr ""
+
 #
 msgid "Check"
 msgstr "Undersøg"
@@ -2264,6 +2875,18 @@ msgid "Choose bouquet"
 msgstr "Vælg bouquet"
 
 msgid "Choose the CI protocol operation mode for standard CI or CI Plus."
+msgstr ""
+
+msgid "Choose the display formatting style for dates. 'D' / 'DD' is the date and 'M' / 'MM' is the month in digits.  ('DD' and 'MM' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin."
+msgstr ""
+
+msgid "Choose the display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes and 'ss' is the seconds.  ('HH' and 'hh' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin."
+msgstr ""
+
+msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is the date and 'M' / 'MM' is the month in digits.  ('DD' and 'MM' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin."
+msgstr ""
+
+msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
 msgstr ""
 
 #, fuzzy
@@ -2837,6 +3460,11 @@ msgid "Configure which tuner will be preferred, when more than one tuner is avai
 msgstr "Konfigurer hvilken tuner der er foretrukket når flere tunere er tilgængelige. Hvis denne indstilling er sat til 'auto' vil systemet prioritere den tuner med laveste nummer af kanaler/satellitter."
 
 #
+#, fuzzy
+msgid "Configure your NTP server."
+msgstr "Konfigurer navneservere"
+
+#
 msgid "Configure your internal LAN"
 msgstr "Konfigurer dit interne LAN"
 
@@ -3249,9 +3877,134 @@ msgstr "Dansk"
 msgid "Date"
 msgstr "Dato"
 
+msgid "Date style"
+msgstr ""
+
 #
 msgid "Date/time input"
 msgstr "Dato/tid input"
+
+msgid "Day D Mon"
+msgstr ""
+
+msgid "Day D-Mon"
+msgstr ""
+
+msgid "Day D/M"
+msgstr ""
+
+msgid "Day D/MM"
+msgstr ""
+
+msgid "Day DD Mon"
+msgstr ""
+
+msgid "Day DD-Mon"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Day DD/M"
+msgstr "Afspil DVD"
+
+msgid "Day DD/MM"
+msgstr ""
+
+msgid "Day M/D"
+msgstr ""
+
+msgid "Day M/DD"
+msgstr ""
+
+msgid "Day MM/D"
+msgstr ""
+
+msgid "Day MM/DD"
+msgstr ""
+
+msgid "Day Mon D"
+msgstr ""
+
+msgid "Day Mon DD"
+msgstr ""
+
+msgid "Day Mon-D"
+msgstr ""
+
+msgid "Day Mon-DD"
+msgstr ""
+
+msgid "Dayname D Month Year"
+msgstr ""
+
+msgid "Dayname D-Month-Year"
+msgstr ""
+
+msgid "Dayname D/M/Year"
+msgstr ""
+
+msgid "Dayname D/MM/Year"
+msgstr ""
+
+msgid "Dayname DD Month Year"
+msgstr ""
+
+msgid "Dayname DD-Month-Year"
+msgstr ""
+
+msgid "Dayname DD/M/Year"
+msgstr ""
+
+msgid "Dayname DD/MM/Year"
+msgstr ""
+
+msgid "Dayname M/D/Year"
+msgstr ""
+
+msgid "Dayname M/DD/Year"
+msgstr ""
+
+msgid "Dayname MM/D/Year"
+msgstr ""
+
+msgid "Dayname MM/DD/Year"
+msgstr ""
+
+msgid "Dayname Month D Year"
+msgstr ""
+
+msgid "Dayname Month DD Year"
+msgstr ""
+
+msgid "Dayname Month-D-Year"
+msgstr ""
+
+msgid "Dayname Month-DD-Year"
+msgstr ""
+
+msgid "Dayname Year Month D"
+msgstr ""
+
+msgid "Dayname Year Month DD"
+msgstr ""
+
+msgid "Dayname Year-Month-D"
+msgstr ""
+
+msgid "Dayname Year-Month-DD"
+msgstr ""
+
+msgid "Dayname Year/M/D"
+msgstr ""
+
+msgid "Dayname Year/M/DD"
+msgstr ""
+
+msgid "Dayname Year/MM/D"
+msgstr ""
+
+msgid "Dayname Year/MM/DD"
+msgstr ""
 
 #
 #, fuzzy
@@ -3927,6 +4680,9 @@ msgstr "Øst"
 msgid "East limit set"
 msgstr "Indstil østlig grænse"
 
+msgid "Easter Island"
+msgstr ""
+
 msgid "EasyMedia"
 msgstr ""
 
@@ -3983,6 +4739,12 @@ msgid "Egypt"
 msgstr ""
 
 msgid "El Salvador"
+msgstr ""
+
+msgid "Elapsed"
+msgstr ""
+
+msgid "Elapsed & Remaining"
 msgstr ""
 
 #
@@ -4723,6 +5485,9 @@ msgstr "Hurtig fremad spolnings hastigheder"
 msgid "Favourites"
 msgstr "Favoritter"
 
+msgid "Fernando de Noronha"
+msgstr ""
+
 msgid "Fiji"
 msgstr ""
 
@@ -4957,7 +5722,13 @@ msgstr ""
 msgid "Gabon"
 msgstr ""
 
+msgid "Galapagos Islands"
+msgstr ""
+
 msgid "Gambia"
+msgstr ""
+
+msgid "Gambier Islands"
 msgstr ""
 
 #
@@ -5147,6 +5918,12 @@ msgstr "H"
 msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
 msgstr ""
 
+msgid "H:mm"
+msgstr ""
+
+msgid "H:mm:ss"
+msgstr ""
+
 msgid "HD list"
 msgstr "HD Liste"
 
@@ -5204,6 +5981,12 @@ msgstr "ikke supporteret"
 msgid "HELP"
 msgstr ""
 
+msgid "HH:mm"
+msgstr ""
+
+msgid "HH:mm:ss"
+msgstr ""
+
 msgid "HLG"
 msgstr ""
 
@@ -5241,6 +6024,10 @@ msgstr "Harddisk..."
 msgid "Harddisk Setup"
 msgstr "Harddisk Setup"
 
+#, fuzzy
+msgid "Hardware serial: "
+msgstr "Hardware:"
+
 msgid "Hardware: "
 msgstr "Hardware:"
 
@@ -5259,6 +6046,10 @@ msgstr "Hjælper med at sætte din antenne op"
 
 msgid "HiSilicon"
 msgstr ""
+
+#, fuzzy
+msgid "Hidden / Blank"
+msgstr "Skjult netværk"
 
 msgid "Hidden network"
 msgstr "Skjult netværk"
@@ -5297,6 +6088,9 @@ msgstr "Historie tilbage"
 
 msgid "History next"
 msgstr "Historie næste"
+
+msgid "Ho Chi Minh City"
+msgstr ""
 
 msgid "Hold screen"
 msgstr "Frys skærm"
@@ -5372,7 +6166,16 @@ msgstr "Hotkey zap"
 msgid "Hotplug"
 msgstr ""
 
+msgid "Hour"
+msgstr ""
+
 msgid "Hourly"
+msgstr ""
+
+msgid "Hours Mins"
+msgstr ""
+
+msgid "Hours Mins Secs"
 msgstr ""
 
 #, fuzzy
@@ -5760,6 +6563,10 @@ msgstr "Intern"
 msgid "Interval between keys when repeating:"
 msgstr "Interval mellem trykgentagelse"
 
+#, fuzzy
+msgid "Invalid"
+msgstr "forkert type"
+
 #
 #, python-format
 msgid "Invalid directory selected: %s"
@@ -5862,6 +6669,9 @@ msgstr ""
 #
 msgid "Job overview"
 msgstr "Job oversigt"
+
+msgid "Johnston Atoll"
+msgstr ""
 
 msgid "Jordan"
 msgstr ""
@@ -6244,6 +7054,9 @@ msgstr "Længdegrad"
 msgid "Loop through from"
 msgstr ""
 
+msgid "Lord Howe Island"
+msgstr ""
+
 msgid "Lower Framerate save CPU Time"
 msgstr ""
 
@@ -6361,6 +7174,9 @@ msgstr "Margin før optagelse (minutter)"
 msgid "Mark service as dedicated 3D service"
 msgstr "Markér service som dedikeret 3D service"
 
+msgid "Marquesas Islands"
+msgstr ""
+
 msgid "Marshall Islands"
 msgstr ""
 
@@ -6388,6 +7204,9 @@ msgid "Maybe the reason that recording is currently running. Please stop the rec
 msgstr ""
 
 msgid "Mayotte"
+msgstr ""
+
+msgid "Media playback Remaining/Elapsed as"
 msgstr ""
 
 #
@@ -6442,6 +7261,9 @@ msgstr ""
 msgid "Micronesia (Federated States of)"
 msgstr ""
 
+msgid "Midway Islands"
+msgstr ""
+
 msgid "MiniTV"
 msgstr ""
 
@@ -6454,6 +7276,12 @@ msgstr "Minimumsalder %d år"
 
 msgid "Minimum send interval"
 msgstr "Minimum afsendelses interval"
+
+msgid "Mins"
+msgstr ""
+
+msgid "Mins Secs"
+msgstr ""
 
 msgid "Mipsel"
 msgstr ""
@@ -6737,6 +7565,14 @@ msgstr "NEJ"
 #
 msgid "NOW"
 msgstr "NU"
+
+msgid "NTP"
+msgstr ""
+
+#
+#, fuzzy
+msgid "NTP server"
+msgstr "Navneserver"
 
 #
 msgid "NTSC"
@@ -7105,6 +7941,9 @@ msgstr "Nord"
 msgid "Northern Mariana Islands"
 msgstr ""
 
+msgid "Northern Territory"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Norway"
@@ -7276,6 +8115,9 @@ msgid "On end of movie (as menu)"
 msgstr "Ved slutningen af film (som menu)"
 
 msgid "On valid ONIDs, ignore frequency sub network part"
+msgstr ""
+
+msgid "Once per day"
 msgstr ""
 
 #
@@ -7501,6 +8343,10 @@ msgstr "Pause afspilning"
 msgid "Pause/Continue playback"
 msgstr "Pause/Fortsæt afspilning"
 
+#, fuzzy
+msgid "Percentage"
+msgstr "Procent til venstre"
+
 msgid "Percentage left"
 msgstr "Procent til venstre"
 
@@ -7547,6 +8393,9 @@ msgid "Pilot"
 msgstr "Pilot"
 
 msgid "Pitcairn"
+msgstr ""
+
+msgid "Pitcairn Islands"
 msgstr ""
 
 msgid "Pixels\n"
@@ -8541,6 +9390,13 @@ msgstr "Genindlæs blackliste"
 
 msgid "Reloading bouquets and services..."
 msgstr "Genindlæser favoritlister og kanaler..."
+
+#, fuzzy
+msgid "Remaining"
+msgstr "Advarsel"
+
+msgid "Remaining & Elapsed"
+msgstr ""
 
 msgid "Remember last service in PiP"
 msgstr "Husk sidste kanal i BiB"
@@ -9878,12 +10734,19 @@ msgstr "Opsætningsmenu"
 msgid "Setup mode"
 msgstr "Opsætnings type"
 
+msgid "Setup network time synchronization interval."
+msgstr ""
+
 msgid "Setup your positioner"
 msgstr "Motor opsætning"
 
 #
 msgid "Setup your satellite equipment"
 msgstr "Indstil dit satellitudstyr"
+
+#, fuzzy
+msgid "Setup your timezone area."
+msgstr "Motor opsætning"
 
 msgid "Seychelles"
 msgstr ""
@@ -9961,6 +10824,9 @@ msgstr "Vis InfoBar"
 msgid "Show Log"
 msgstr "Vis info"
 
+msgid "Show Media playback Remaining/Elapsed as"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Show MiniTV in the front panel display"
@@ -9979,6 +10845,12 @@ msgstr ""
 
 msgid "Show SNR percentage instead of dB value"
 msgstr "Vis SNR procent i stedet for dB værdi"
+
+msgid "Show Time Remaining/Elapsed"
+msgstr ""
+
+msgid "Show Transponder Remaining/Elapsed as"
+msgstr ""
 
 msgid "Show True/False as graphical switch"
 msgstr ""
@@ -10189,6 +11061,17 @@ msgstr "Vis radio afspilleren..."
 msgid "Show the tv player..."
 msgstr "Vis TV afspiller..."
 
+msgid "Show time elapsed as positive"
+msgstr ""
+
+msgid "Show time remaining/elapsed"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Show transponder remaining/elapsed as"
+msgstr "vis transponer info"
+
 msgid "Show two lines per entry"
 msgstr ""
 
@@ -10318,6 +11201,11 @@ msgstr "Grafisk tema"
 #, python-format
 msgid "Skin & Resolution: %s (%sx%s)\n"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Skin Setting"
+msgstr "Indstillings menu"
 
 #
 #, fuzzy
@@ -10549,6 +11437,11 @@ msgstr "Syd"
 
 msgid "South Africa"
 msgstr ""
+
+#
+#, fuzzy
+msgid "South Australia"
+msgstr "Italiensk"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr ""
@@ -11030,8 +11923,17 @@ msgstr "Symbol rate & FEC"
 msgid "Symbol rate:"
 msgstr "Symbol rate:"
 
+msgid "Sync NTP every (minutes)"
+msgstr ""
+
 msgid "Sync failure moving back to origin !"
 msgstr "Synkronationsfejl, går tilbage!"
+
+msgid "Sync time using"
+msgstr ""
+
+msgid "Synchronize system time using transponder or internet."
+msgstr ""
 
 msgid "Syrian Arab Republic"
 msgstr ""
@@ -11401,6 +12303,18 @@ msgstr ""
 msgid "This option allows you can to set the auto volume level."
 msgstr "Denne mulighed tillader dig at vise menuernes sti"
 
+#, fuzzy
+msgid "This option allows you choose how to display elapsed time as + or -"
+msgstr "Denne mulighed tillader dig at konfigurer Colorspace fra Auto til RGB"
+
+#, fuzzy
+msgid "This option allows you choose how to display remaining time, or elapsed time, or both."
+msgstr "Denne mulighed tillader dig at konfigurer Colorspace fra Auto til RGB"
+
+#, fuzzy
+msgid "This option allows you choose how to display the remaining/elapsed time for live TV."
+msgstr "Denne mulighed tillader dig at vise menuernes sti"
+
 msgid "This option allows you enable smoothing filter to control the dithering process."
 msgstr ""
 
@@ -11430,6 +12344,22 @@ msgstr "Denne mulighed tillader dig at vise menuernes sti"
 #, fuzzy
 msgid "This option allows you to change the virtuell loadspeaker position."
 msgstr "Denne mulighed tillader dig at konfigurer Colorspace fra Auto til RGB"
+
+#, fuzzy
+msgid "This option allows you to choose how to display elapsed time. As + or -"
+msgstr "Denne mulighed tillader dig at vise menuernes sti"
+
+#, fuzzy
+msgid "This option allows you to choose how to display the remaining/elapsed time for Media playback."
+msgstr "Denne mulighed tillader dig at vise menuernes sti"
+
+#, fuzzy
+msgid "This option allows you to choose how to display the remaining/elapsed time for live TV."
+msgstr "Denne mulighed tillader dig at vise menuernes sti"
+
+#, fuzzy
+msgid "This option allows you to choose how to display the remaining/elapsed time for media playback."
+msgstr "Denne mulighed tillader dig at vise menuernes sti"
 
 #, fuzzy
 msgid "This option allows you to configure the Colordepth for UHD"
@@ -11661,6 +12591,10 @@ msgstr ""
 msgid "Time scale"
 msgstr "Tidsskala"
 
+#, fuzzy
+msgid "Time style"
+msgstr "Tidsskala"
+
 msgid "Time to execute command or script"
 msgstr ""
 
@@ -11748,6 +12682,11 @@ msgstr "Tidsforskydning ikke mulig!."
 
 #
 msgid "Timezone"
+msgstr "Tidszone"
+
+#
+#, fuzzy
+msgid "Timezone area"
 msgstr "Tidszone"
 
 msgid "Timor-Leste"
@@ -11866,6 +12805,11 @@ msgstr "Transmissions type"
 #
 msgid "Transponder"
 msgstr "Transponder"
+
+#
+#, fuzzy
+msgid "Transponder time"
+msgstr "vis transponer info"
 
 #
 #, fuzzy
@@ -12264,6 +13208,9 @@ msgstr "Brug Virgin EPG information når det er tilgængeligt."
 msgid "Use a gateway"
 msgstr "Brug af gateway"
 
+msgid "Use adaptive date display"
+msgstr ""
+
 msgid "Use as PiP if possible"
 msgstr ""
 
@@ -12331,11 +13278,6 @@ msgstr "Brug disse indstillinger?"
 #
 msgid "Use this video enhancement settings?"
 msgstr "Anvend denne opsætning af videoforbedring?"
-
-#
-#, fuzzy
-msgid "Use transponder time"
-msgstr "vis transponer info"
 
 msgid "Use trash can in movielist"
 msgstr "Brug papirkurv i filmliste"
@@ -12648,6 +13590,9 @@ msgstr "Vent på mount"
 msgid "Waiting for partition"
 msgstr "Vent på partitionering"
 
+msgid "Wake Island"
+msgstr ""
+
 msgid "Wake On LAN"
 msgstr "Wake On LAN"
 
@@ -12766,6 +13711,11 @@ msgstr "Vest"
 
 msgid "West limit set"
 msgstr "Vest grænse opsætning"
+
+#
+#, fuzzy
+msgid "Western Australia"
+msgstr "Italiensk"
 
 msgid "Western Sahara"
 msgstr ""
@@ -13351,6 +14301,11 @@ msgstr "Din receiver vil gå i standby på grund af inaktivitet."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
 msgstr "Din receiver vil genstarte efter at du trykke OK på fjernbetjeningen."
+
+#
+#, fuzzy
+msgid "Your timezone in the area."
+msgstr "Du kan afbryde fjernelsen."
 
 #
 msgid ""
@@ -14002,6 +14957,24 @@ msgstr "grab denne frame som bitmap"
 msgid "green"
 msgstr "grøn"
 
+msgid "h:mm"
+msgstr ""
+
+msgid "h:mm:ss"
+msgstr ""
+
+msgid "h:mm:ssAM/PM"
+msgstr ""
+
+msgid "h:mm:ssam/pm"
+msgstr ""
+
+msgid "h:mmAM/PM"
+msgstr ""
+
+msgid "h:mmam/pm"
+msgstr ""
+
 msgid "handicraft"
 msgstr "gør-det-selv"
 
@@ -14011,6 +14984,24 @@ msgstr "højde"
 #
 msgid "help..."
 msgstr "hjælp..."
+
+msgid "hh:mm"
+msgstr ""
+
+msgid "hh:mm:ss"
+msgstr ""
+
+msgid "hh:mm:ssAM/PM"
+msgstr ""
+
+msgid "hh:mm:ssam/pm"
+msgstr ""
+
+msgid "hh:mmAM/PM"
+msgstr ""
+
+msgid "hh:mmam/pm"
+msgstr ""
 
 #
 msgid "horizontal"
