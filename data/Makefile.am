@@ -81,7 +81,6 @@ dist_pkgdata_DATA = \
 	freesat.t1 \
 	freesat.t2 \
 	iso-639-3.pck \
-	timezone.xml \
 	unicable.xml \
 	groupedservices \
 	otv_011a0000_0002_07d4.dict \

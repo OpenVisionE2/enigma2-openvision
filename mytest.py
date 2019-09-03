@@ -1,5 +1,7 @@
 import sys
 import os
+from time import time
+
 if os.path.isfile("/usr/lib/enigma2/python/enigma.zip"):
 	sys.path.append("/usr/lib/enigma2/python/enigma.zip")
 
@@ -22,10 +24,6 @@ profile("ClientMode")
 import Components.ClientMode
 Components.ClientMode.InitClientMode()
 
-profile("SetupDevices")
-import Components.SetupDevices
-Components.SetupDevices.InitSetupDevices()
-
 profile("SimpleSummary")
 from Screens import InfoBar
 from Screens.SimpleSummary import SimpleSummary
@@ -33,7 +31,7 @@ from Screens.SimpleSummary import SimpleSummary
 from sys import stdout
 
 profile("Bouquets")
-from Components.config import config, configfile, ConfigText, ConfigYesNo, ConfigInteger, NoSave
+from Components.config import config, configfile, ConfigText, ConfigYesNo, ConfigInteger, ConfigSelection, NoSave
 config.misc.load_unlinked_userbouquets = ConfigYesNo(default=True)
 def setLoadUnlinkedUserbouquets(configElement):
 	enigma.eDVBDB.getInstance().setLoadUnlinkedUserbouquets(configElement.value)
@@ -58,7 +56,8 @@ InitFallbackFiles()
 profile("config.misc")
 config.misc.radiopic = ConfigText(default = resolveFilename(SCOPE_CURRENT_SKIN, "radio.mvi"))
 config.misc.blackradiopic = ConfigText(default = resolveFilename(SCOPE_CURRENT_SKIN, "black.mvi"))
-config.misc.useTransponderTime = ConfigYesNo(default=True)
+config.misc.SyncTimeUsing = ConfigSelection(default = "0", choices = [("0", _("Transponder time")), ("1", _("NTP"))])
+config.misc.NTPserver = ConfigText(default = 'pool.ntp.org', fixed_size=False)
 config.misc.startCounter = ConfigInteger(default=0) # number of e2 starts...
 config.misc.standbyCounter = NoSave(ConfigInteger(default=0)) # number of standby
 config.misc.DeepStandby = NoSave(ConfigYesNo(default=False)) # detect deepstandby
@@ -74,9 +73,6 @@ def setEPGCachePath(configElement):
 		configElement.value = os.path.join(configElement.value, "epg.dat")
 	enigma.eEPGCache.getInstance().setCacheFile(configElement.value)
 
-profile("FanControl")
-from Components.FanControl import fancontrol
-
 #demo code for use of standby enter leave callbacks
 #def leaveStandby():
 #	print "!!!!!!!!!!!!!!!!!leave standby"
@@ -89,9 +85,27 @@ from Components.FanControl import fancontrol
 #config.misc.standbyCounter.addNotifier(standbyCountChanged, initial_call = False)
 ####################################################
 
-def useTransponderTimeChanged(configElement):
-	enigma.eDVBLocalTimeHandler.getInstance().setUseDVBTime(configElement.value)
-config.misc.useTransponderTime.addNotifier(useTransponderTimeChanged)
+def useSyncUsingChanged(configelement):
+	if configelement.value == "0":
+		print "[Time By]: Transponder"
+		enigma.eDVBLocalTimeHandler.getInstance().setUseDVBTime(True)
+		enigma.eEPGCache.getInstance().timeUpdated()
+	else:
+		print "[Time By]: NTP"
+		enigma.eDVBLocalTimeHandler.getInstance().setUseDVBTime(False)
+		enigma.eEPGCache.getInstance().timeUpdated()
+config.misc.SyncTimeUsing.addNotifier(useSyncUsingChanged)
+
+def NTPserverChanged(configelement):
+	f = open("/etc/default/ntpdate", "w")
+	f.write('NTPSERVERS="' + configelement.value + '"\n')
+	f.close()
+	os.chmod("/etc/default/ntpdate", 0755)
+	from Components.Console import Console
+	Console = Console()
+	Console.ePopen('/usr/bin/ntpdate-sync')
+config.misc.NTPserver.addNotifier(NTPserverChanged, immediate_feedback = False)
+config.misc.NTPserver.callNotifiersOnSaveAndCancel = True
 
 profile("Twisted")
 try:
@@ -535,12 +549,16 @@ def runScreenTest():
 	wakeupList.sort()
 	if wakeupList:
 		from time import strftime
+		from enigma import getBoxBrand
 		startTime = wakeupList[0]
 		if (startTime[0] - nowTime) < 270: # no time to switch box back on
 			wptime = nowTime + 30  # so switch back on in 30 seconds
 		else:
-			wptime = startTime[0] - 240
-		if not config.misc.useTransponderTime.value:
+			if getBoxBrand() == 'gigablue':
+				wptime = startTime[0] - 120 # GigaBlue already starts 2 min. before wakeup time
+			else:
+				wptime = startTime[0] - 240
+		if not config.misc.SyncTimeUsing.value == "0" or getBoxBrand() == 'gigablue':
 			print "dvb time sync disabled... so set RTC now to current linux time!", strftime("%Y/%m/%d %H:%M", localtime(nowTime))
 			setRTCtime(nowTime)
 		print "set wakeup time to", strftime("%Y/%m/%d %H:%M", localtime(wptime))
@@ -573,9 +591,20 @@ import Components.InputDevice
 Components.InputDevice.InitInputDevices()
 import Components.InputHotplug
 
+profile("TimeZones")
+import Components.Timezones
+Components.Timezones.InitTimeZones()
+
+profile("SetupDevices")
+import Components.SetupDevices
+Components.SetupDevices.InitSetupDevices()
+
 profile("AVSwitch")
 import Components.AVSwitch
 Components.AVSwitch.InitAVSwitch()
+
+profile("FanControl")
+from Components.FanControl import fancontrol
 
 profile("HdmiRecord")
 import Components.HdmiRecord
@@ -588,6 +617,10 @@ Components.RecordingConfig.InitRecordingConfig()
 profile("UsageConfig")
 import Components.UsageConfig
 Components.UsageConfig.InitUsageConfig()
+
+profile("Init:NTPSync")
+import Components.NetworkTime
+Components.NetworkTime.AutoNTPSync()
 
 profile("keymapparser")
 import keymapparser

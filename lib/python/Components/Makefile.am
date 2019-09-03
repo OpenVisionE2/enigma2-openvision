@@ -22,4 +22,4 @@ install_PYTHON = \
 	Keyboard.py Sensors.py FanControl.py HdmiCec.py RcModel.py \
 	Netlink.py InputHotplug.py \
 	opkg.py ImportChannels.py VfdSymbols.py ChannelsImporter.py ClientMode.py \
-	HdmiRecord.py
+	HdmiRecord.py NetworkTime.py

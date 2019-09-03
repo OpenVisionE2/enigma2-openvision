@@ -553,9 +553,9 @@ class EPGSelection(Screen):
 				nowTime = localtime(now)
 				begTime = localtime(beg)
 				if nowTime[2] != begTime[2]:
-					datestr = '%s %d.%d.'%(days[begTime[6]], begTime[2], begTime[1])
+					datestr = strftime(config.usage.date.dayshort.value, begTime)
 				else:
-					datestr = '%s %d.%d.'%(_("Today"), begTime[2], begTime[1])
+					datestr = '%s' % _('Today')
 			self["date"].setText(datestr)
 			if cur[1] is None:
 				self["Service"].newService(None)

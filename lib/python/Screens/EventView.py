@@ -247,7 +247,10 @@ class EventViewBase:
 		self["epg_eventname"].setText(event.getEventName())
 		self["epg_description"].setText(text)
 		self["FullDescription"].setText(ext)
-		self["datetime"].setText(event.getBeginTimeString())
+		begint = event.getBeginTime()
+		begintime = localtime(begint)
+		endtime = localtime(begint + event.getDuration())
+		self["datetime"].setText("%s - %s" % (strftime("%s, %s" % (config.usage.date.short.value, config.usage.time.short.value), begintime), strftime(config.usage.time.short.value, endtime)))
 		self["duration"].setText(_("%d min")%(event.getDuration()/60))
 		self["key_red"].setText("")
 		if self.SimilarBroadcastTimer is not None:
@@ -295,8 +298,7 @@ class EventViewBase:
 			text = '\n\n' + _('Similar broadcasts:')
 			ret.sort(self.sort_func)
 			for x in ret:
-				t = localtime(x[1])
-				text += '\n%02d.%02d.%d, %02d:%02d  -  %s' % (t[2], t[1], t[0], t[3], t[4], x[0])
+				text += "\n%s  -  %s" % (strftime(config.usage.date.long.value + ", " + config.usage.time.short.value, localtime(x[1])), x[0])
 
 			descr = self["epg_description"]
 			descr.setText(descr.getText()+text)
