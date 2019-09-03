@@ -17,7 +17,7 @@ def getBoxProc():
 			procmodel = open("/proc/stb/info/gbmodel", "r").readline().strip().lower()
 		elif fileExists("/proc/stb/info/vumodel") and not fileExists("/proc/stb/info/boxtype"):
 			procmodel = open("/proc/stb/info/vumodel", "r").readline().strip().lower()
-		elif fileExists("/proc/stb/info/boxtype"):
+		elif fileExists("/proc/stb/info/boxtype") and not fileExists("/proc/stb/info/vumodel"):
 			procmodel = open("/proc/stb/info/boxtype", "r").readline().strip().lower()
 		elif fileExists("/proc/boxtype"):
 			procmodel = open("/proc/boxtype", "r").readline().strip().lower()
