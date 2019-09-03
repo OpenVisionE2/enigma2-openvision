@@ -460,8 +460,8 @@ RESULT eDVBPESReader::connectRead(const sigc::slot2<void,const uint8_t*,int> &r,
 
 eDVBRecordFileThread::eDVBRecordFileThread(int packetsize, int bufferCount):
 	eFilePushThreadRecorder(
-		/* buffer */ (unsigned char*) ::mmap(NULL, bufferCount * packetsize * 1024, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, /*ignored*/-1, 0),
-		/*buffersize*/ packetsize * 1024),
+		/* buffer */ (unsigned char*) ::mmap(NULL, bufferCount * packetsize * 1050, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, /*ignored*/-1, 0),
+		/*buffersize*/ packetsize * 1050),	// the buffer should be higher than the hardware buffer size, accounts for RTSP header
 	 m_ts_parser(packetsize),
 	 m_current_offset(0),
 	 m_fd_dest(-1),
@@ -586,7 +586,8 @@ int eDVBRecordFileThread::asyncWrite(int len)
 	gettimeofday(&starttime, NULL);
 #endif
 
-	m_ts_parser.parseData(m_current_offset, m_buffer, len);
+	if(!getProtocol())
+		m_ts_parser.parseData(m_current_offset, m_buffer, len);
 	if (m_ts_parser.broken())
 		sendEvent(evtRetune);
 

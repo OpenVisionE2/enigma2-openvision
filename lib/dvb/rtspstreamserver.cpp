@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2017-2027 Catalin Toda <catalinii@yahoo.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ * USA
+ *
+ */
+
 #include <sys/select.h>
 #include <unistd.h>
 #include <string.h>
@@ -9,10 +29,16 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <time.h>
 #include <linux/dvb/frontend.h>
 #include <linux/dvb/dmx.h>
 #include <linux/dvb/ca.h>
 #include <linux/dvb/version.h>
+
+#include <iomanip>
+#include <sstream>
+
+#include <lib/base/modelinformation.h>
 #include <lib/base/eerror.h>
 #include <lib/base/init.h>
 #include <lib/base/init_num.h>
@@ -21,11 +47,13 @@
 #include <lib/base/cfile.h>
 #include <lib/base/e2avahi.h>
 #include <lib/dvb/decoder.h>
-
 #include <lib/dvb/rtspstreamserver.h>
 #include <lib/dvb/encoder.h>
 #include <lib/dvb/db.h>
 #include <lib/dvb_ci/dvbci.h>
+#include <lib/network/uri.h>
+
+#include "absdiff.h"
 
 #define _ADD_PIDS 1
 #define _DEL_PIDS 2
@@ -40,27 +68,9 @@
 #endif
 
 static int global_stream_id = 0;
-int tcp_port = 8554;
 
-static const char *satip_xml =
-	"<?xml version=\"1.0\"?>"
-	"<root xmlns=\"urn:schemas-upnp-org:device-1-0\" configId=\"0\">"
-	"<specVersion><major>1</major><minor>1</minor></specVersion>"
-	"<device><deviceType>urn:ses-com:device:SatIPServer:1</deviceType>"
-	"<friendlyName>enigma</friendlyName><manufacturer>Gigablue</manufacturer>"
-	"<manufacturerURL>http://gigablue.de</manufacturerURL>"
-	"<modelDescription>Enigma for Linux</modelDescription><modelName>enigma</modelName>"
-	"<modelNumber>1.1</modelNumber><modelURL></modelURL><serialNumber>1</serialNumber><UDN>uuid:11223344-9999-0001-b7ae</UDN>"
-	"<iconList>"
-	//	"<icon><mimetype>image/png</mimetype><width>48</width><height>48</height><depth>24</depth><url>/sm.png</url></icon>"
-	//	"<icon><mimetype>image/png</mimetype><width>120</width><height>120</height><depth>24</depth><url>/lr.png</url></icon>"
-	//	"<icon><mimetype>image/jpeg</mimetype><width>48</width><height>48</height><depth>24</depth><url>/sm.jpg</url></icon>"
-	//	"<icon><mimetype>image/jpeg</mimetype><width>120</width><height>120</height><depth>24</depth><url>/lr.jpg</url></icon>"
-	"</iconList>"
-	"<presentationURL>http://%s:%d/</presentationURL>\r\n"
-	"<satip:X_SATIPCAP xmlns:satip=\"urn:ses-com:satip\">%s</satip:X_SATIPCAP>"
-	"%s"
-	"</device></root>";
+const char *app_name = "enigma2";
+const char *version = "0.1";
 
 std::set<eServiceReferenceDVB> processed_sr;
 
@@ -113,7 +123,6 @@ void eRTSPStreamClient::init_rtsp()
 	m_channel = NULL;
 	tune_completed = 0;
 	m_record_no_pids = 1;
-	n_service_list = 0;
 	time_addsr = 0;
 	transponder_id = 0;
 	proto = PROTO_RTSP_TCP;
@@ -123,85 +132,6 @@ void eRTSPStreamClient::start()
 {
 	rsn = eSocketNotifier::create(eApp, streamFd, eSocketNotifier::Read);
 	CONNECT(rsn->activated, eRTSPStreamClient::notifier);
-}
-
-char *strip(char *s) // strip spaces from the front of a string
-{
-	if (s < (char *)1000)
-		return NULL;
-
-	while (*s && *s == ' ')
-		s++;
-	return s;
-}
-
-int split(char **rv, char *s, int lrv, char sep)
-{
-	int i = 0, j = 0;
-
-	if (!s)
-		return 0;
-	for (i = 0; s[i] && s[i] == sep && s[i] < 32; i++)
-		;
-
-	rv[j++] = &s[i];
-	//      LOG("start %d %d\n",i,j);
-	while (j < lrv)
-	{
-		if (s[i] == 0 || s[i + 1] == 0)
-			break;
-		if (s[i] == sep || s[i] < 33)
-		{
-			s[i] = 0;
-			if (s[i + 1] != sep && s[i + 1] > 32)
-				rv[j++] = &s[i + 1];
-		}
-		else if (s[i] < 14)
-			s[i] = 0;
-		//              LOG("i=%d j=%d %d %c \n",i,j,s[i],s[i]);
-		i++;
-	}
-	if (s[i] == sep)
-		s[i] = 0;
-	rv[j] = NULL;
-	return j;
-}
-
-#define LR(s)                         \
-	{                                 \
-		LOG("map_int returns %d", s); \
-		return s;                     \
-	}
-int map_intd(char *s, char **v, int dv)
-{
-	int i, n = dv;
-
-	if (s == NULL)
-	{
-		eDebug("map_int: s=>NULL, v=%p, %s %s", v, v ? v[0] : "NULL", v ? v[1] : "NULL");
-		return dv;
-	}
-
-	s = strip(s);
-
-	if (!*s)
-	{
-		eDebug("map_int: s is empty");
-		return dv;
-	}
-	if (v == NULL)
-	{
-		if (s[0] != '+' && s[0] != '-' && (s[0] < '0' || s[0] > '9'))
-		{
-			eDebug("map_int: s not a number: %s, v=%p, %s %s", s, v, v ? v[0] : "NULL", v ? v[1] : "NULL");
-			return dv;
-		}
-		return atoi(s);
-	}
-	for (i = 0; v[i]; i++)
-		if (!strncasecmp(s, v[i], strlen(v[i])))
-			n = i;
-	return n;
 }
 
 void eRTSPStreamClient::getFontends(int &dvbt, int &dvbt2, int &dvbs2, int &dvbc, int &dvbc2)
@@ -218,7 +148,11 @@ void eRTSPStreamClient::getFontends(int &dvbt, int &dvbt2, int &dvbs2, int &dvbc
 	{
 		if (it->m_frontend->supportsDeliverySystem((fe_delivery_system_t)SYS_DVBS2, false))
 			dvbs2++;
+#ifdef SYS_DVBC_ANNEX_A
 		if (it->m_frontend->supportsDeliverySystem((fe_delivery_system_t)SYS_DVBC_ANNEX_A, false))
+#else
+		if (it->m_frontend->supportsDeliverySystem((fe_delivery_system_t)SYS_DVBC_ANNEX_AC, false))
+#endif
 			dvbc++;
 		if (it->m_frontend->supportsDeliverySystem((fe_delivery_system_t)SYS_DVBC2, false))
 			dvbc2++;
@@ -287,7 +221,6 @@ std::string eRTSPStreamClient::searchServiceRef(int sys, int freq, int pol, int 
 	eDVBFrontendParametersSatellite sat1;
 	eDVBFrontendParametersTerrestrial ter1;
 	eDVBFrontendParametersCable cab1;
-	n_service_list = 0;
 	int found = 0;
 	memset(&sat, 0, sizeof(sat));
 	memset(&ter, 0, sizeof(ter));
@@ -309,11 +242,10 @@ std::string eRTSPStreamClient::searchServiceRef(int sys, int freq, int pol, int 
 		if (!p->getDVBS(sat1) && ((sys == SYS_DVBS) || (sys == SYS_DVBS2)))
 		{
 			//			eDebug("freq = %d, sat.freq %d, OP %d, SOP %d, pol %d pol %d", freq, sat1.frequency, orbital_position, sat1.orbital_position, pol, sat1.polarisation);
-			if ((abs(sat1.frequency - freq) < 2000) && sat1.polarisation == pol && orbital_position == sat1.orbital_position)
+			if ((absdiff(sat1.frequency, freq) < 2000) && sat1.polarisation == pol && orbital_position == sat1.orbital_position)
 			{
 				sat = sat1;
 				eDebug("Adding %s to the list for frequency %d (%s) f:%x", s.toString().c_str(), sat.frequency, i->second->m_service_name.c_str(), flags);
-				service_list[n_service_list++] = s;
 				srvc = &i->first;
 				found = 1;
 			}
@@ -321,23 +253,24 @@ std::string eRTSPStreamClient::searchServiceRef(int sys, int freq, int pol, int 
 
 		if (!p->getDVBT(ter1) && ((sys == SYS_DVBT) || (sys == SYS_DVBT2)))
 		{
-			if ((abs(ter1.frequency / 1000 - freq) < 2000))
+			if ((absdiff(ter1.frequency / 1000, freq) < 2000))
 			{
 				ter = ter1;
 				eDebug("Adding %s to the list (%s) f:%x", s.toString().c_str(), i->second->m_service_name.c_str(), flags);
-				service_list[n_service_list++] = s;
 				srvc = &i->first;
 				found = 1;
 			}
 		}
-
+#ifdef SYS_DVBC_ANNEX_A
 		if (!p->getDVBC(cab1) && ((sys == SYS_DVBC_ANNEX_A) || (sys == SYS_DVBC2)))
+#else
+		if (!p->getDVBC(cab1) && ((sys == SYS_DVBC_ANNEX_AC) || (sys == SYS_DVBC2)))
+#endif
 		{
-			if ((abs(cab1.frequency - freq) < 2000))
+			if ((absdiff(cab1.frequency, freq) < 2000))
 			{
 				cab = cab1;
 				eDebug("Adding %s to the list (%s) f:%x", s.toString().c_str(), i->second->m_service_name.c_str(), flags);
-				service_list[n_service_list++] = s;
 				srvc = &i->first;
 				found = 1;
 			}
@@ -369,39 +302,32 @@ std::string eRTSPStreamClient::searchServiceRef(int sys, int freq, int pol, int 
 	return "";
 }
 
-void eRTSPStreamClient::process_pids(int op, char *pid_str)
+void eRTSPStreamClient::process_pids(int op, const std::string &pid_str)
 {
-	int n = ::strlen(pid_str);
-	int la;
-	char buf[n + 10];
-	char *arg[128];
-	memset(buf, 0, n + 10);
-	char *sep = ::strchr(buf, '?');
-	if (sep)
-		*sep = 0;
-	strncpy(buf, pid_str, n);
+	eDebug("%s: operation %d, pid_str %s (len pids: %d)", __FUNCTION__, op, pid_str.c_str(), pids.size());
 
 	if (op == _PIDS)
+	{
 		pids.clear();
 
-	if (buf_size == 0)
-		pids.insert(301);
-	else
-		pids.erase(301);
-
-	eDebug("%s: operation %d, pid_str %s (len pids: %d)", __FUNCTION__, op, pid_str, pids.size());
-	if (op == _PIDS && !::strcmp(buf, "all"))
-	{
-		pids.insert(8192);
-		update_service_list();
-		return;
+		if (pid_str.find("all") != std::string::npos)
+		{
+			pids.insert(8192);
+			update_service_list();
+			return;
+		}
 	}
 
-	la = split(arg, buf, 128, ',');
-	for (int i = 0; i < la; i++)
+	std::stringstream ss(pid_str);
+	std::string s;
+
+	while (!ss.eof())
 	{
-		int p = map_intd(arg[i], NULL, -1);
-		if (p < 0 && p > 8191)
+		std::getline(ss, s, ',');
+		if (s.empty())
+			break;
+		int p = atoi(s.c_str());
+		if (p < 0 || p > 8191)
 			continue;
 		if (op == _PIDS || op == _ADD_PIDS)
 			add_pid(p);
@@ -416,66 +342,77 @@ const char *fe_delsys[] =
 	 "isdbs", "isdbc", "atsc", "atscmh", "dmbth", "cmmb", "dab", "dvbt2",
 	 "turbo", "dvbcc", "dvbc2",
 	 NULL};
+
 const char *fe_pol[] = {"h", "v", "l", "r", NULL};
+
 int eRTSPStreamClient::satip2enigma(std::string satipstr)
 {
-	int freq1 = 0, pol1 = -1, sys1 = 0, sid = 0;
-	char *sep = NULL, *addpids = NULL, *delpids = NULL, *pids = NULL;
-	int n = satipstr.size();
-	char buf[n + 10];
+	int new_freq = 0, new_pol = -1, new_sys = 0, sid = 0;
 	int do_tune = 0;
+
 	eDVBResourceManager::getInstance(m_mgr);
 	/* als Primary datenbank setzen */
 	m_dvbdb = eDVBDB::getInstance();
 	eDebug("Start %s", __FUNCTION__);
-	/* testtransponder adden */
-	::memset(buf, 0, n + 10);
-	::strncpy(buf, satipstr.c_str(), n);
 
-	sep = (char *)::strstr(buf, (char *)"fe=");
-	if (sep)
-		fe = map_intd(buf + 3, NULL, 0) - 1;
+	URI u(satipstr); // parse URL using new class URI
 
-	sep = (char *)::strstr(buf, (char *)"src=");
-	if (sep)
-		src = map_intd(sep + 4, NULL, 0) - 1;
+	eDebug("Is URL %s valid? %d fe=%s src=%s freq=%s msys=%s pol=%s sid=%s addpids=%s delpids=%s pids=%s",
+		   satipstr.c_str(), u.Valid(), u.Query("fe").c_str(), u.Query("src").c_str(), u.Query("freq").c_str(),
+		   u.Query("msys").c_str(), u.Query("pol").c_str(), u.Query("sid").c_str(), u.Query("addpids").c_str(),
+		   u.Query("delpids").c_str(), u.Query("pids").c_str());
 
-	sep = (char *)::strstr(buf, (char *)"freq=");
-	if (sep)
-		freq1 = map_intd(sep + 5, NULL, 0) * 1000;
+	if (!u.Query("fe").empty())
+		fe = atoi(u.Query("fe").c_str()) + 1;
 
-	sep = (char *)::strstr(buf, (char *)"msys=");
-	if (sep)
-		sys1 = map_intd(sep + 5, (char **)fe_delsys, 0);
+	if (!u.Query("src").empty())
+		src = atoi(u.Query("src").c_str()) - 1;
 
-	sep = (char *)::strstr(buf, (char *)"pol=");
-	if (sep)
-		pol1 = map_intd(sep + 4, (char **)fe_pol, -1);
+	if (!u.Query("freq").empty())
+		new_freq = atof(u.Query("freq").c_str()) * 1000;
 
-	sep = (char *)::strstr(buf, (char *)"sid=");
-	if (sep)
-		sid = map_intd(sep + 4, NULL, 0);
+	if (!u.Query("msys").empty())
+	{
+		new_sys = 0;
+		const char *s = u.Query("msys").c_str();
+		for (int i = 0; fe_delsys[i]; i++)
+			if (!strncasecmp(s, fe_delsys[i], strlen(fe_delsys[i])))
+				new_sys = i;
+	}
 
-	if (freq && freq1 && (freq != freq1))
+	if (!u.Query("pol").empty())
+	{
+		new_pol = -1;
+		const char *s = u.Query("pol").c_str();
+		for (int i = 0; fe_pol[i]; i++)
+			if (!strncasecmp(s, fe_pol[i], strlen(fe_pol[i])))
+				new_pol = i;
+	}
+
+	if (!u.Query("sid").empty())
+		sid = atoi(u.Query("sid").c_str());
+
+	if (freq && new_freq && freq != new_freq)
 		do_tune = 1;
 
-	if ((pol != -1) && (pol1 != -1) && (pol != pol1))
+	if (pol != -1 && new_pol != -1 && pol != new_pol)
 		do_tune = 1;
 
-	eDebug("initial values, freq %d, pol %d, sys %d, old freq = %d, tune %d", freq1, pol1, sys1, freq, do_tune);
+	eDebug("initial values, freq %d, pol %d, sys %d, old freq = %d, tune %d", new_freq, new_pol, new_sys, freq, do_tune);
 
 	if (do_tune)
 	{
 		eDebug("Tuning multiple transponders not supported, state %d", m_state);
 		clear_previous_channel = 1;
 		this->pids.clear();
-		n_service_list = 0;
 		//	m_state = stateIdle;
 		update_pids();
 		return -1;
 		stop();
+
 		eDebug("free service handler, state %d", m_state);
 		m_service_handler.free();
+
 		eDebug("done freeing service handler");
 		m_mgr->removeChannel(m_channel);
 		m_channel->stop();
@@ -484,37 +421,36 @@ int eRTSPStreamClient::satip2enigma(std::string satipstr)
 		clear_previous_channel = 1;
 		//return -1;
 	}
-	if (freq1)
-		freq = freq1;
-	if (pol1 != -1)
-		pol = pol1;
-	if (sys1)
-		sys = sys1;
 
-	if ((addpids = (char *)::strstr(buf, (char *)"addpids=")))
-		addpids += 8;
+	if (new_freq)
+		freq = new_freq;
+	if (new_pol != -1)
+		pol = new_pol;
+	if (new_sys)
+		sys = new_sys;
 
-	if ((delpids = (char *)::strstr(buf, (char *)"delpids=")))
-		delpids += 8;
+	if (!u.Query("addpids").empty())
+		process_pids(_ADD_PIDS, u.Query("addpids"));
 
-	if ((pids = (char *)::strstr(buf, (char *)"pids=")))
-		pids += 5;
+	if (!u.Query("delpids").empty())
+		process_pids(_DEL_PIDS, u.Query("delpids"));
 
-	if (addpids)
-		process_pids(_ADD_PIDS, addpids);
+	if (!u.Query("pids").empty() && u.Query("addpids").empty() && u.Query("delpids").empty())
+		process_pids(_PIDS, u.Query("pids"));
 
-	if (delpids)
-		process_pids(_DEL_PIDS, delpids);
-
-	if (pids && !addpids && !delpids)
-		process_pids(_PIDS, pids);
-
-	std::string sref = "";
 	int op = 0;
 	if (sys == SYS_DVBS || sys == SYS_DVBS2)
 		op = getOrbitalPosition(fe, src);
-	eDebug("tunning to %d, pol %d, sys %d", freq, pol, sys);
-	if (freq1 && ("" != (sref = searchServiceRef(sys, freq, pol, op, sid)))) // 0 - horizontal, 1 - vertical , 2 ->left, 3->Right
+	// searchServiceRef should be executed just once, when freq= is specified
+
+	std::string sref;
+	if (new_freq > 0)
+	{
+		sref = searchServiceRef(sys, freq, pol, op, sid);
+		eDebug("tunning to %d, pol %d, sys %d -> SR: %s", freq, pol, sys, sref.c_str());
+	}
+
+	if ((new_freq > 0) && !sref.empty()) // 0 - horizontal, 1 - vertical , 2 ->left, 3->Right
 	{
 		eDebug("Using service ref %s, state %d %d", sref.c_str(), m_state, stateIdle);
 		m_serviceref = sref;
@@ -546,12 +482,10 @@ int eRTSPStreamClient::addCachedPids(ePtr<eDVBService> service, eServiceReferenc
 	return !found;
 }
 
-int64_t getTick();
-
 void eRTSPStreamClient::update_service_list()
 {
 	eServiceReferenceDVB sr;
-	//	uint64_t now = getTick();
+	//	uint64_t now = eFilePushThreadRecorder::getTick();
 	std::set<eServiceReferenceDVB> new_sr, obsolete_sr, delete_cached;
 	if (clear_previous_channel == 1)
 		return;
@@ -617,6 +551,7 @@ void eRTSPStreamClient::update_service_list()
 					service->setCacheEntry(eDVBService::cDDPPID, apidtype == eDVBAudio::aDDP ? apid : -1);
 					service->setCacheEntry(eDVBService::cAACHEAPID, apidtype == eDVBAudio::aAACHE ? apid : -1);
 					service->setCacheEntry(eDVBService::cAACAPID, apidtype == eDVBAudio::aAAC ? apid : -1);
+					service->setCacheEntry(eDVBService::cDRAAPID, apidtype == eDVBAudio::aDRA ? apid : -1);
 					if (vpid == -1)
 						continue;
 				}
@@ -632,8 +567,8 @@ void eRTSPStreamClient::update_service_list()
 			}
 		}
 		if (m_record && !time_addsr)
-			time_addsr = getTick();
-		if (time_addsr && (getTick() - time_addsr > 2000))
+			time_addsr = eFilePushThreadRecorder::getTick();
+		if (time_addsr && (eFilePushThreadRecorder::getTick() - time_addsr > 2000))
 		{
 			eDebug("deleting SR %s because it timed out", ref.toString().c_str());
 			delete_cached.insert(ref);
@@ -755,39 +690,6 @@ void eRTSPStreamClient::del_pid(int p)
 	//	update_service_list();
 }
 
-/*
-   eServiceReferenceDVB *eRTSPStreamClient::getServiceforPid(int p)
-   {
-   eServiceReferenceDVB *m_ref = NULL;
-   int sid = 0;
-   if(first && (m_service_handler.pid_sid.size() > 0))
-   {
-   first = false;
-   for(std::map<int, int>::iterator search = m_service_handler.pid_sid.begin(); search != m_service_handler.pid_sid.end(); search++)
-   {
-   eDebug("PMT pid %d sid %d", search->first, search->second);
-   }
-   }
-   std::map<int, int>::iterator search = m_service_handler.pid_sid.find(p);
-   if(search != m_service_handler.pid_sid.end())
-   {
-   sid = search->second;
-   for(int i = 0; i<n_service_list; i++)
-   {
-   if(service_list[i].getServiceID() == sid)
-    m_ref = &service_list[i];
-   }
-   }
-   if(m_ref == NULL)
-   {
-   eDebug("service ref for pid %d, sid %d not found", p, sid);
-   return NULL;
-   }
-   eDebug("pid %d returned service ref %s", p, m_ref->toString().c_str());
-   return m_ref;
-   }
- */
-
 const char *event_desc[] = {"NoResources", "TuneFailed", "NoPAT", "NoPATEntry", "NoPMT", "NewProgramInfo", "Tuned", "PreStart", "SOF", "EOF", "Misconfiguration", "HBBTVInfo", "Stopped"};
 
 int eRTSPStreamClient::set_demux_buffer(int size)
@@ -805,7 +707,7 @@ int eRTSPStreamClient::set_demux_buffer(int size)
 
 void eRTSPStreamClient::eventUpdate(int event)
 {
-	if (event >= 0 && event <= sizeof(event_desc))
+	if (event >= 0 && event <= (int)sizeof(event_desc))
 		eDebug("eventUpdate %s", event_desc[event]);
 	else
 		eDebug("eventUpdate %d", event);
@@ -840,94 +742,91 @@ void eRTSPStreamClient::eventUpdate(int event)
 	update_service_list();
 }
 
-char *
-get_current_timestamp(void)
+std::string eRTSPStreamClient::get_current_timestamp()
 {
-	static char date_str[200];
 	time_t date;
 	struct tm *t;
-	const char *day[] =
-		{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-	const char *month[] =
-		{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
-		 "Nov", "Dec"};
+	char buffer[40];
+
 	time(&date);
 	t = gmtime(&date);
 	if (!t)
-		return (char *)"Fri, Sat Jan 1 00:00:20 2000 GMT";
-	snprintf(date_str, sizeof(date_str), "%s, %s %d %02d:%02d:%02d %d GMT",
-			 day[t->tm_wday], month[t->tm_mon], t->tm_mday, t->tm_hour,
-			 t->tm_min, t->tm_sec, t->tm_year + 1900);
-	return date_str;
+		return "Sat, Jan 1 00:00:20 2000 GMT";
+
+	strftime(buffer, sizeof(buffer), "%a, %b %d %H:%M:%S %Y GMT", t);
+
+	return std::string(buffer);
 }
 
-char public_str[] = "Public: OPTIONS, DESCRIBE, SETUP, PLAY, TEARDOWN";
-const char *app_name = "enigma_minisatip";
-const char *version = "0.1";
-
-void eRTSPStreamClient::http_response(int sock, int rc, char *ah, char *desc, int cseq, int lr)
+void eRTSPStreamClient::http_response(int sock, int rc, const std::string &ah, const std::string &desc, int cseq, int lr)
 {
-	char *desc1;
-	char server[50];
-	const char *reply =
-		"%s/1.0 %d %s\r\nDate: %s%s%s\r\n%s%s\r\nContent-Length: %d\r\n\r\n%s";
-	const char *reply0 = "%s/1.0 %d %s\r\nDate: %s%s%s\r\n%s%s\r\n\r\n";
-	char *d;
-	char *proto;
-	char sess_id[100], scseq[100];
+	std::stringstream ss;
 
-	proto = (char *)"RTSP";
+	if (!lr)
+		lr = desc.size();
 
-	if (!ah || !ah[0])
-		ah = public_str;
-	if (!desc)
-		desc = (char *)"";
+	ss << "RTSP"
+	   << "/1.0"
+	   << " ";
+
 	if (rc == 200)
-		d = (char *)"OK";
+		ss << rc << " "
+		   << "OK";
 	else if (rc == 400)
-		d = (char *)"Bad Request";
+		ss << rc << " "
+		   << "Bad Request";
 	else if (rc == 403)
-		d = (char *)"Forbidden";
+		ss << rc << " "
+		   << "Forbidden";
 	else if (rc == 404)
-		d = (char *)"Not Found";
+		ss << rc << " "
+		   << "Not Found";
 	else if (rc == 500)
-		d = (char *)"Internal Server Error";
+		ss << rc << " "
+		   << "Internal Server Error";
 	else if (rc == 501)
-		d = (char *)"Not Implemented";
+		ss << rc << " "
+		   << "Not Implemented";
 	else if (rc == 405)
-		d = (char *)"Method Not Allowed";
+		ss << rc << " "
+		   << "Method Not Allowed";
 	else if (rc == 454)
-		d = (char *)"Session Not Found";
+		ss << rc << " "
+		   << "Session Not Found";
 	else
 	{
-		d = (char *)"Service Unavailable";
 		rc = 503;
+		ss << rc << " "
+		   << "Service Unavailable";
 	}
-	char resp[10000];
-	desc1 = desc;
-	resp[sizeof(resp) - 1] = 0;
-	if (!lr)
-		lr = strlen(desc);
+	ss << "\r\n";
 
-	sess_id[0] = 0;
-	scseq[0] = 0;
-	server[0] = 0;
+	ss << "Date: " << get_current_timestamp() << "\r\n";
 
-	sprintf(server, "\r\nServer: %s/%s", app_name, version);
+	if (session_id && ah.find("Session") == std::string::npos && rc != 454)
+		ss << "Session: " << std::setfill('0') << std::setw(10) << session_id << "\r\n";
 
-	if (session_id && ah && !strstr(ah, "Session") && rc != 454)
-		sprintf(sess_id, "\r\nSession: %010d", session_id);
 	if (cseq > 0)
-		sprintf(scseq, "\r\nCseq: %d", cseq);
+		ss << "Cseq: " << cseq << "\r\n";
+
+	ss << ah << "\r\n";
+
+	ss << "Server: " << app_name << "/" << version << "\r\n";
 
 	if (lr > 0)
-		snprintf(resp, sizeof(resp) - 1, reply, proto, rc, d, get_current_timestamp(), sess_id, scseq, ah, server, lr, desc1);
+		ss << "Content-Length: " << lr << "\r\n\r\n"
+		   << desc;
 	else
-		snprintf(resp, sizeof(resp) - 1, reply0, proto, rc, d, get_current_timestamp(), sess_id, scseq, ah, server);
-	eDebug("reply to %d, mr %p,len %d: %s", sock, mr, strlen(resp), resp);
+		ss << "\r\n";
+
+	char *resp = strdup(ss.str().c_str());
+	int len = strlen(resp);
+
+	eDebug("reply to %d, mr %p, len %d: %s", sock, mr, len, resp);
+
 	if (mr)
 	{
-		mr->pushReply(resp, strlen(resp));
+		mr->pushReply((void *)resp, len);
 	}
 	else
 	{
@@ -936,7 +835,6 @@ void eRTSPStreamClient::http_response(int sock, int rc, char *ah, char *desc, in
 		tv.tv_nsec = 5000000;
 		int times = 20;
 		int pos = 0;
-		int len = strlen(resp);
 		int rb = 0;
 		while (pos < len)
 		{
@@ -958,6 +856,8 @@ void eRTSPStreamClient::http_response(int sock, int rc, char *ah, char *desc, in
 			eDebug("error writing %d out of %d to socket %d, errno: %d", pos, len, sock, errno);
 		eDebug("wrote successfully %d", len);
 	}
+
+	free(resp);
 }
 
 const char *fe_inversion[] =
@@ -996,10 +896,10 @@ const char *fe_gi[] =
 	 "1128", "19128", "19256", "pn420", "pn595", "pn945",
 	 NULL};
 
-void eRTSPStreamClient::describe_frontend(char *buf, int max_len)
+std::string eRTSPStreamClient::describe_frontend()
 {
+	std::stringstream ss;
 	int strength = 0, status = 0, snr = 0;
-	int len = 0;
 	m_channel = NULL;
 	m_channel = (eDVBChannel *)(iDVBChannel *)m_service_handler.m_channel;
 	ePtr<iDVBFrontend> frontend;
@@ -1008,8 +908,8 @@ void eRTSPStreamClient::describe_frontend(char *buf, int max_len)
 		m_channel->getFrontend(frontend);
 		if (frontend)
 		{
-			snr = frontend->readFrontendData(iFrontendInformation_ENUMS::signalQualitydB);
-			strength = frontend->readFrontendData(iFrontendInformation_ENUMS::signalPower);
+			int init_snr = snr = frontend->readFrontendData(iFrontendInformation_ENUMS::signalQuality);
+			int init_str = strength = frontend->readFrontendData(iFrontendInformation_ENUMS::signalPower);
 			status = ((frontend->readFrontendData(iFrontendInformation_ENUMS::frontendStatus) & FE_HAS_LOCK) > 0);
 			if (snr > 65535)
 				snr = snr >> 28;
@@ -1017,46 +917,75 @@ void eRTSPStreamClient::describe_frontend(char *buf, int max_len)
 				snr = snr >> 12;
 			strength = strength >> 8;
 			eDVBFrontend *f = (eDVBFrontend *)(iDVBFrontend *)frontend;
-			eDebug("%s: adapter %d slot %d frequency %d", __FUNCTION__, f->getDVBID(), f->getSlotID(), frontend->readFrontendData(iFrontendInformation_ENUMS::frequency));
+			eDebug("%s: adapter %d slot %d frequency %d, snr: %d -> %d, strength: %d -> %d", __FUNCTION__, f->getDVBID(), f->getSlotID(), frontend->readFrontendData(iFrontendInformation_ENUMS::frequency), init_snr, snr, init_str, strength);
 		}
 	}
 	if (sys == 0)
-		len += snprintf(buf + len, max_len - len, "ver=1.0;src=1;tuner=%d,0,0,0,0,,,,,,,;pids=", fe + 1);
+		ss << "ver=1.0;src=1;tuner=" << fe + 1 << ",0,0,0,0,,,,,,,";
 	else if (sys == SYS_DVBS || sys == SYS_DVBS2)
-		len +=
-			snprintf(buf + len, max_len - len,
-					 "ver=1.0;src=%d;tuner=%d,%d,%d,%d,%d,%s,%s,%s,%s,%s,%d,%s;pids=",
-					 src + 1, fe + 1, strength, status, snr,
-					 sat.frequency / 1000, fe_pol[sat.polarisation],
-					 fe_modulation_sat[sat.modulation], fe_pilot[sat.pilot],
-					 fe_rolloff[sat.rolloff], fe_delsys[sys], sat.symbol_rate / 1000,
-					 fe_fec[sat.fec]);
-	else if (sys == SYS_DVBT || sys == SYS_DVBT2)
-		len +=
-			snprintf(buf + len, max_len - len,
-					 "ver=1.1;tuner=%d,%d,%d,%d,%.2f,%d,%s,%s,%s,%s,%s,%d,%d,%d;pids=",
-					 fe + 1, strength, status, snr,
-					 (double)ter.frequency / 1000000.0, ter.bandwidth / 1000000, fe_delsys[sys],
-					 fe_tmode[ter.transmission_mode], fe_modulation_ter[ter.modulation],
-					 fe_gi[ter.guard_interval], "", ter.plp_id, 0, 0);
-	else
-		len +=
-			snprintf(buf + len, max_len - len,
-					 "ver=1.2;tuner=%d,%d,%d,%d,%.2f,8,%s,%s,%d,%d,%d,%d,%d;pids=",
-					 fe + 1, strength, status, snr,
-					 (double)cab.frequency / 1000.0, fe_delsys[sys],
-					 fe_modulation_cab[cab.modulation], cab.symbol_rate, 0, 0,
-					 0, cab.inversion);
-
-	int pid = -1;
-	for (std::set<int>::iterator it = pids.begin(); it != pids.end(); it++)
 	{
-		pid = *it;
-		len += snprintf(buf + len, max_len - len, "%d,", pid);
+		ss << "ver=1.0;src=" << src + 1;
+		ss << ";tuner=" << fe + 1;
+		ss << "," << strength;
+		ss << "," << status;
+		ss << "," << snr;
+		ss << "," << sat.frequency / 1000;
+		ss << "," << fe_pol[sat.polarisation];
+		ss << "," << fe_modulation_sat[sat.modulation];
+		ss << "," << fe_pilot[sat.pilot];
+		ss << "," << fe_rolloff[sat.rolloff];
+		ss << "," << fe_delsys[sys];
+		ss << "," << sat.symbol_rate / 1000;
+		ss << "," << fe_fec[sat.fec];
 	}
-	if (pid != -1)
-		buf[len - 1] = 0;
-	eDebug("describe_frontend => %s", buf);
+	else if (sys == SYS_DVBT || sys == SYS_DVBT2)
+	{
+		ss << "ver=1.1;tuner=" << fe + 1;
+		ss << "," << strength;
+		ss << "," << status;
+		ss << "," << snr;
+		ss << "," << std::setprecision(2) << std::fixed << (double)ter.frequency / 1000000.0;
+		ss << "," << ter.bandwidth / 1000000;
+		ss << "," << fe_delsys[sys];
+		ss << "," << fe_tmode[ter.transmission_mode];
+		ss << "," << fe_modulation_ter[ter.modulation];
+		ss << "," << fe_gi[ter.guard_interval];
+		ss << ","
+		   << "";
+		ss << "," << ter.plp_id;
+		ss << "," << 0;
+		ss << "," << 0;
+	}
+	else
+	{
+		ss << "ver=1.2;tuner=" << fe + 1;
+		ss << "," << strength;
+		ss << "," << status;
+		ss << "," << snr;
+		ss << "," << std::setprecision(2) << std::fixed << (double)cab.frequency / 1000.0;
+		ss << "," << 8;
+		ss << "," << fe_delsys[sys];
+		ss << "," << fe_modulation_cab[cab.modulation];
+		ss << "," << cab.symbol_rate;
+		ss << "," << 0;
+		ss << "," << 0;
+		ss << "," << 0;
+		ss << "," << cab.inversion;
+	}
+
+	ss << ";pids=";
+
+	if (!pids.empty())
+	{
+		std::set<int>::iterator it = pids.begin();
+		ss << *it;
+		for (it++; it != pids.end(); it++)
+			ss << "," << *it;
+	}
+
+	std::string s = ss.str();
+	eDebug("describe_frontend => %s", s.c_str());
+	return s;
 }
 
 void eRTSPStreamClient::notifier(int what)
@@ -1065,40 +994,41 @@ void eRTSPStreamClient::notifier(int what)
 		return;
 
 	ePtr<eRTSPStreamClient> ref = this;
-	char tmpbuf[4096], buf[8192];
-	int len;
-	int rlen;
-	if ((len = singleRead(streamFd, tmpbuf, sizeof(tmpbuf))) <= 0)
+	std::string transport_reply;
+	std::string public_str = "Public: OPTIONS, DESCRIBE, SETUP, PLAY, TEARDOWN";
+
 	{
-		eDebug("error on reading from socket %d", streamFd);
-		rsn->stop();
-		stop();
-		parent->connectionLost(this);
-		return;
+		char tmpbuf[4096];
+		int len;
+
+		if ((len = singleRead(streamFd, tmpbuf, sizeof(tmpbuf))) <= 0)
+		{
+			eDebug("error on reading from socket %d", streamFd);
+			rsn->stop();
+			stop();
+			parent->connectionLost(this);
+			return;
+		}
+		tmpbuf[len] = 0;
+		eDebug("rtsp read %d\n%s", len, tmpbuf);
+
+		request.append(tmpbuf, len);
 	}
 
-	tmpbuf[len] = 0;
-	eDebug("rtsp read\n%s", tmpbuf);
-	request.append(tmpbuf, len);
-	memset(buf, 0, sizeof(buf));
-	rlen = request.size();
-	if (rlen > (int)sizeof(buf))
-		rlen = sizeof(buf);
-	strncpy(buf, request.c_str(), rlen);
-	//	for(int i = 0; i < strlen(buf); i++)
-	//		eDebugNoNewLine("%02X ", buf[i]); eDebug("\n");
+	const char *buf = request.c_str();
+
 	if ((request.find("\n\n") == std::string::npos) && (request.find("\r\n\r\n") == std::string::npos))
 	{
 		eDebug("New Line not found, continuing to read");
 		return;
 	}
+
 	int cseq = 0;
-	char *sep = ::strcasestr(buf, (char *)"cseq:");
-
+	const char *sep = ::strcasestr(buf, "cseq:");
 	if (sep)
-		cseq = map_intd(sep + 5, NULL, 0);
+		cseq = strtol(sep + 5, NULL, 10);
 
-	int pos1 = request.find(' ', 0);
+	int pos1 = request.find(' ', 0) + 1;
 	int pos = request.find(' ', pos1 + 1);
 	std::string url = urlDecode(request.substr(pos1, pos - pos1));
 	eDebug("URL = %s", url.c_str());
@@ -1107,73 +1037,66 @@ void eRTSPStreamClient::notifier(int what)
 	{
 		if (satip2enigma(url))
 		{
-			char error[100];
-			snprintf(error, sizeof(error), "Error: Tuning multiple transponders not supprted");
-			http_response(streamFd, 404, error, NULL, cseq, 0);
+			http_response(streamFd, 404, "Error: Tuning multiple transponders not supported", "", cseq, 0);
 			goto done;
 		}
 	}
 
 	if ((request.substr(0, 8) == "OPTIONS "))
 	{
-		http_response(streamFd, 200, public_str, NULL, cseq, 0);
+		http_response(streamFd, 200, public_str, "", cseq, 0);
 		update_service_list();
 		goto done;
 	}
 
 	if ((request.substr(0, 9) == "DESCRIBE "))
 	{
-		char sbuf[1000];
-		char buf[100];
-		char tp[100];
-		int pos = 0;
-		pos = request.find('?', 10);
-		if (pos == (int)std::string::npos)
-			pos = request.find(' ', 10);
+		std::stringstream ss;
 
-		describe_frontend(tp, sizeof(tp));
-		snprintf(sbuf, sizeof(sbuf),
-				 "m=video 0 RTP/AVP 33\r\nc=IN IP4 0.0.0.0\r\na=control:stream=%d\r\na=fmtp:33 %s\r\nb=AS:5000\r\na=%s\r\n",
-				 stream_id + 1, tp, running ? "sendonly" : "inactive");
-		// NEEDS CHANGED
+		ss << "m=video 0 RTP/AVP 33\r\nc=IN IP4 0.0.0.0\r\na=control:stream=" << stream_id + 1 << "\r\n";
+		ss << "a=fmtp:33 " << describe_frontend() << "\r\nb=AS:5000\r\n"
+		   << "a=" << (running ? "sendonly" : "inactive") << "\r\n";
+
+		// TODO: NEEDS CHANGED
 		if (!stream_id)
 		{
-			http_response(streamFd, 404, NULL, NULL, cseq, 0);
+			http_response(streamFd, 404, public_str, "", cseq, 0);
 			goto done;
 		}
-		snprintf(buf, sizeof(buf), "Content-type: application/sdp\r\nContent-Base: %s",
-				 request.substr(9, pos - 9).c_str());
 
-		http_response(streamFd, 200, buf, sbuf, cseq, 0);
+		size_t pos = request.find('?', 10);
+		if (pos == std::string::npos)
+			pos = request.find(' ', 10);
 
+		std::string ah = "Content-type: application/sdp\r\nContent-Base: " + request.substr(9, pos - 9);
+
+		http_response(streamFd, 200, ah, ss.str(), cseq, 0);
 		goto done;
 	}
-	char transport_reply[300];
-	transport_reply[0] = 0;
 
 	if ((request.substr(0, 6) == "SETUP ") || (request.substr(0, 5) == "PLAY "))
 	{
-		char *transport = NULL, *tcp = NULL, *port = NULL;
-
-		transport = ::strcasestr(buf, (char *)"transport:");
-		tcp = ::strcasestr(buf, (char *)"RTP/AVP/TCP");
-		port = ::strcasestr(buf, (char *)"client_port=");
-		if (port)
-			port += 12;
+		bool transport = !!::strcasestr(buf, "transport:");
+		bool tcp = !!::strcasestr(buf, "RTP/AVP/TCP");
+		bool port = !!::strcasestr(buf, "client_port=");
 
 		if (transport && tcp)
 		{
 			proto = PROTO_RTSP_TCP;
-			snprintf(transport_reply, sizeof(transport_reply),
-					 "Transport: RTP/AVP/TCP;interleaved=0-1\r\nSession: %010d;timeout=%d\r\ncom.ses.streamID: %d",
-					 session_id, 30, stream_id);
+			std::stringstream tr;
+			tr << "Transport: RTP/AVP/TCP;interleaved=0-1\r\n";
+			tr << "Session: " << std::setfill('0') << std::setw(10) << session_id;
+			tr << ";timeout=" << 30 << "\r\n"
+			   << "com.ses.streamID: " << stream_id;
+			transport_reply = tr.str();
 		}
 		if (transport && port)
 		{
-			eDebug("UDP transport not supported to %s, use RTSP over TCP", (char *)m_remotehost.c_str());
-			http_response(streamFd, 405, (char *)"UDP: Not supported, use rtsp over tcp", NULL, cseq, 0);
+			eDebug("UDP transport not supported to %s, use RTSP over TCP", m_remotehost.c_str());
+			http_response(streamFd, 405, "UDP: Not supported, use rtsp over tcp", "", cseq, 0);
 			goto done;
 			/*
+			   //FIXME parse port
 			   int client_port = map_intd(port, NULL, -1);
 			   char *rhost = (char *)m_remotehost.c_str();
 			   proto = PROTO_RTSP_UDP;
@@ -1182,7 +1105,7 @@ void eRTSPStreamClient::notifier(int what)
 			   if(remote_socket < 0 )
 			   {
 			   eDebug("Could not create udp socket to %s:%d", rhost, client_port);
-			   http_response(streamFd, 404, NULL, NULL, cseq, 0);
+			   http_response(streamFd, 404, public_str, "", cseq, 0);
 			   goto done;
 
 			   }
@@ -1199,10 +1122,10 @@ void eRTSPStreamClient::notifier(int what)
 		}
 		if ((request.substr(0, 6) == "SETUP "))
 		{
-			if (transport[0])
-				http_response(streamFd, 200, transport_reply, NULL, cseq, 0);
+			if (transport)
+				http_response(streamFd, 200, transport_reply, "", cseq, 0);
 			else
-				http_response(streamFd, 454, NULL, NULL, cseq, 0);
+				http_response(streamFd, 454, public_str, "", cseq, 0);
 			goto done;
 		}
 	}
@@ -1221,49 +1144,99 @@ void eRTSPStreamClient::notifier(int what)
 		else if (!tune_completed)
 		{
 			eDebug("No service ref detected: <%s>, proto %d", m_serviceref.c_str(), proto);
-			http_response(streamFd, 404, (char *)"Transponder: Not Found in Enigma DB, do network scan", NULL, cseq, 0);
+			http_response(streamFd, 404, "Transponder: Not Found in Enigma DB, do network scan", "", cseq, 0);
 			goto done;
 		}
 		else if (proto == 0)
 		{
 			eDebug("No (TCP) transport detected  detected: <%s>", m_serviceref.c_str());
-			http_response(streamFd, 405, (char *)"rtsp_over_tcp: not specified", NULL, cseq, 0);
+			http_response(streamFd, 405, "rtsp_over_tcp: not specified", "", cseq, 0);
 			goto done;
 		}
-		http_response(streamFd, 200, transport_reply[0] ? transport_reply : NULL, NULL, cseq, 0);
+		http_response(streamFd, 200, transport_reply.empty() ? public_str : transport_reply, "", cseq, 0);
 
 		goto done;
 	}
 
 	if (request.substr(0, 5) == "GET /")
 	{
-		char buf[2000];
-		char reply_all[3000];
-		char adapters[200];
-		int len = 0;
+		std::stringstream ss;
+		std::string s;
 		int tuner_s2, tuner_t, tuner_c, tuner_t2, tuner_c2;
-		const char *reply = "HTTP/1.0 200 OK\r\nCACHE-CONTROL: no-cache\r\nContent-type: text/xml\r\nX-SATIP-RTSP-Port: %d\r\nContent-Length: %d\r\n\r\n%s";
 
-		memset(buf, 0, sizeof(buf));
+		eModelInformation &modelinformation = eModelInformation::getInstance();
+
+		// TODO Add atsc tuner
 		getFontends(tuner_t, tuner_t2, tuner_s2, tuner_c, tuner_c2);
-		memset(adapters, 0, sizeof(adapters));
-		if (tuner_s2)
-			len += sprintf(adapters, "DVBS2-%d,", tuner_s2);
-		if (tuner_t)
-			len += sprintf(adapters + len, "DVBT-%d,", tuner_t);
-		if (tuner_c)
-			len += sprintf(adapters + len, "DVBC-%d,", tuner_c);
-		if (tuner_t2)
-			len += sprintf(adapters + len, "DVBT2-%d,", tuner_t2);
-		if (tuner_c2)
-			len += sprintf(adapters + len, "DVBC2-%d,", tuner_c2);
-		if (tuner_s2 + tuner_t + tuner_c + tuner_t2 + tuner_c2 == 0)
-			len = sprintf(adapters, "DVBS2-0,");
-		adapters[len - 1] = 0;
-		sprintf(buf, satip_xml, m_remotehost.c_str(), tcp_port, adapters);
 
-		len = sprintf(reply_all, reply, tcp_port, strlen(buf), buf);
-		writeAll(streamFd, reply_all, len);
+		ss << "<?xml version=\"1.0\"?>";
+		ss << "<root xmlns=\"urn:schemas-upnp-org:device-1-0\" configId=\"0\">";
+		ss << "<specVersion><major>1</major><minor>1</minor></specVersion>";
+		ss << "<device><deviceType>urn:ses-com:device:SatIPServer:1</deviceType>";
+		ss << "<friendlyName>" << app_name << "</friendlyName>";
+		ss << "<manufacturer>" << modelinformation.MachineBrand() << "</manufacturer>";
+		ss << "<manufacturerURL>" << modelinformation.Url() << "</manufacturerURL>";
+		ss << "<modelDescription>" << modelinformation.Creator() << "</modelDescription>";
+		ss << "<modelName>" << modelinformation.MachineName() << "</modelName>";
+		ss << "<modelNumber>1.1</modelNumber>";
+		ss << "<modelURL>" << modelinformation.Url() << "</modelURL>";
+		ss << "<serialNumber>1</serialNumber>";
+		ss << "<UDN>uuid:11223344-9999-0001-b7ae-" << modelinformation.Date() << "</UDN>";
+		ss << "<iconList>";
+		//ss << "<icon><mimetype>image/png</mimetype><width>48</width><height>48</height><depth>24</depth><url>/sm.png</url></icon>";
+		//ss << "<icon><mimetype>image/png</mimetype><width>120</width><height>120</height><depth>24</depth><url>/lr.png</url></icon>";
+		//ss <<"<icon><mimetype>image/jpeg</mimetype><width>48</width><height>48</height><depth>24</depth><url>/sm.jpg</url></icon>";
+		//ss <<"<icon><mimetype>image/jpeg</mimetype><width>120</width><height>120</height><depth>24</depth><url>/lr.jpg</url></icon>";
+		ss << "</iconList>";
+		ss << "<presentationURL>http://" << m_remotehost << ":" << parent->Port() << "/</presentationURL>\r\n";
+		ss << "<satip:X_SATIPCAP xmlns:satip=\"urn:ses-com:satip\">";
+
+		if (tuner_s2)
+		{
+			ss << "DVBS2-" << tuner_s2;
+			s = ",";
+		}
+		if (tuner_t)
+		{
+			ss << s << "DVBT-" << tuner_t;
+			s = ",";
+		}
+		if (tuner_c)
+		{
+			ss << s << "DVBC-" << tuner_c;
+			s = ",";
+		}
+		if (tuner_t2)
+		{
+			ss << s << "DVBT2-" << tuner_t2;
+			s = ",";
+		}
+		if (tuner_c2)
+		{
+			ss << s << "DVBC2-" << tuner_c2;
+			s = ",";
+		}
+		if (!s.length())
+		{
+			ss << "DVBS2-0";
+		}
+
+		ss << "</satip:X_SATIPCAP>";
+		ss << "</device></root>";
+
+		s = ss.str();
+
+		ss.str(std::string());
+		ss.clear();
+
+		ss << "HTTP/1.0 200 OK\r\nCACHE-CONTROL: no-cache\r\nContent-type: text/xml\r\n";
+		ss << "X-SATIP-RTSP-Port: " << parent->Port() << "\r\n";
+		ss << "Content-Length: " << s.length() << "\r\n\r\n";
+		ss << s;
+
+		s = ss.str();
+
+		writeAll(streamFd, s.c_str(), s.length());
 		rsn->stop();
 		parent->connectionLost(this);
 		return;
@@ -1307,7 +1280,7 @@ DEFINE_REF(eRTSPStreamServer);
 eRTSPStreamServer *eRTSPStreamServer::m_instance = NULL;
 
 eRTSPStreamServer::eRTSPStreamServer()
-	: eServerSocket(tcp_port, eApp)
+	: eServerSocket(8554, eApp)
 {
 	m_instance = this;
 	//	e2avahi_announce(NULL, "_e2stream._tcp", 8001);

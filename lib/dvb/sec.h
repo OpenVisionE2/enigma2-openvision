@@ -409,6 +409,7 @@ public:
 	bool isOrbitalPositionConfigured(int orbital_position);
 
 	friend class eFBCTunerManager;
+	friend class eRTSPStreamClient;
 };
 
 #endif

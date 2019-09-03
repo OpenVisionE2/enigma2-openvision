@@ -41,6 +41,7 @@ is usually caused by not marking PSignals as immutable.
 #include <lib/base/eenv.h>
 #include <lib/base/eerror.h>
 #include <lib/base/message.h>
+#include <lib/base/modelinformation.h>
 #include <lib/base/e2avahi.h>
 #include <lib/driver/rc.h>
 #include <lib/driver/rcinput_swig.h>
@@ -48,6 +49,7 @@ is usually caused by not marking PSignals as immutable.
 #include <lib/service/iservice.h>
 #include <lib/service/service.h>
 #include <lib/service/servicedvb.h>
+#include <lib/service/servicefs.h>
 #include <lib/service/servicepeer.h>
 #include <lib/gdi/fb.h>
 #include <lib/gdi/font.h>
@@ -158,9 +160,11 @@ typedef long time_t;
 
 %immutable eSocketNotifier::activated;
 %include <lib/base/ebase.h>
+%include <lib/base/modelinformation.h>
 %include <lib/base/smartptr.h>
 %include <lib/service/event.h>
 %include <lib/service/iservice.h>
+%include <lib/service/servicefs.h>
 %include <lib/service/service.h>
 %include <lib/base/e2avahi.h>
 %include <lib/service/servicepeer.h>
@@ -200,6 +204,7 @@ typedef long time_t;
 %include <lib/gdi/fb.h>
 %include <lib/gdi/font.h>
 %include <lib/gdi/gpixmap.h>
+%include <lib/gdi/gfbdc.h>
 %include <lib/gdi/gmaindc.h>
 %include <lib/gdi/epoint.h>
 %include <lib/gdi/erect.h>

@@ -79,7 +79,14 @@ public:
 	enum { evtEOF, evtReadError, evtWriteError, evtUser, evtStopped, evtRetune };
 	sigc::signal1<void,int> m_event;
 
+	int getProtocol() { return m_protocol;}
+        void setProtocol(int i){ m_protocol = i;}
+        void setSession(int se, int st) { m_session_id = se; m_stream_id = st;}
+	int read_dmx(int fd, void *m_buffer, int size);
+	int pushReply(void *buf, int len);
 	void sendEvent(int evt);
+	static int64_t getTick();
+	static int read_ts(int fd, unsigned char *buf, int size);
 protected:
 	// This method should write the data out and return the number of bytes written.
 	// If result <0, set 'errno'. The simplest implementation is just "::write(m_buffer, ...)"
@@ -100,6 +107,8 @@ private:
 	ePtr<iTsSource> m_source;
 #endif
 	void recvEvent(const int &evt);
+	int m_protocol, m_session_id, m_stream_id, m_packet_no;
+	std::vector<unsigned char> m_reply;
 };
 
 #endif
