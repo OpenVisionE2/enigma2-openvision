@@ -1,7 +1,7 @@
 from os import path
 from fcntl import ioctl
 from struct import pack, unpack
-from time import time, localtime, gmtime
+from time import time, localtime
 from enigma import getBoxType, getBoxBrand
 from Components.SystemInfo import SystemInfo
 from Tools.Directories import fileExists

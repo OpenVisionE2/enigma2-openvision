@@ -42,7 +42,7 @@
 }
 
 eDVBServicePMTHandler::eDVBServicePMTHandler()
-	:m_ca_servicePtr(0), m_dvb_scan(0), m_decode_demux_num(0xFF), m_no_pat_entry_delay(eTimer::create())
+	:m_ca_servicePtr(0), m_dvb_scan(0), m_decode_demux_num(0xFF), m_no_pat_entry_delay(eTimer::create()), m_have_cached_program(false)
 {
 	m_use_decode_demux = 0;
 	m_pmt_pid = -1;
