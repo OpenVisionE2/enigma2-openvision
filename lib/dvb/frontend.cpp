@@ -18,12 +18,14 @@
 #define I2C_SLAVE_FORCE	0x0706
 #endif
 
+#ifdef HAVE_OLDE2_API
 #ifndef NO_STREAM_ID_FILTER
 #define NO_STREAM_ID_FILTER    (~0U)
 #endif
 
 #ifndef DTV_STREAM_ID
 #define DTV_STREAM_ID DTV_ISDBS_TS_ID
+#endif
 #endif
 
 #define eDebugNoSimulate(x...) \
@@ -3240,10 +3242,14 @@ bool eDVBFrontend::setSlotInfo(int id, const char *descr, bool enabled, bool isD
 
 bool eDVBFrontend::is_multistream()
 {
+#ifdef HAVE_OLDE2_API
 #if defined FE_CAN_MULTISTREAM
 	return fe_info.caps & FE_CAN_MULTISTREAM;
 #else
 	return false;
+#endif
+#else
+	return fe_info.caps & FE_CAN_MULTISTREAM;
 #endif
 }
 
@@ -3291,7 +3297,11 @@ std::string eDVBFrontend::getCapabilities()
 	if (fe_info.caps &  FE_CAN_8VSB)			ss << " FE_CAN_8VSB";
 	if (fe_info.caps &  FE_CAN_16VSB)			ss << " FE_CAN_16VSB";
 	if (fe_info.caps &  FE_HAS_EXTENDED_CAPS)		ss << " FE_HAS_EXTENDED_CAPS";
+#ifdef HAVE_OLDE2_API
 #if defined FE_CAN_MULTISTREAM
+	if (fe_info.caps &  FE_CAN_MULTISTREAM)			ss << " FE_CAN_MULTISTREAM";
+#endif
+#else
 	if (fe_info.caps &  FE_CAN_MULTISTREAM)			ss << " FE_CAN_MULTISTREAM";
 #endif
 	if (fe_info.caps &  FE_CAN_TURBO_FEC)			ss << " FE_CAN_TURBO_FEC";
@@ -3324,12 +3334,18 @@ std::string eDVBFrontend::getCapabilities()
 		case SYS_ISDBT:		ss << " ISDBT"; break;
 		case SYS_UNDEFINED:	ss << " UNDEFINED"; break;
 		case SYS_DVBC_ANNEX_A:	ss << " DVBC_ANNEX_A"; break;
+#ifdef HAVE_OLDE2_API
 #if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 6
 		case SYS_DVBC_ANNEX_C:	ss << " DVBC_ANNEX_C"; break;
 		case SYS_TURBO:		ss << " TURBO"; break;
 		case SYS_DTMB:		ss << " DTMB"; break;
 #else
 		case SYS_DMBTH:		ss << " DMBTH"; break;
+#endif
+#else
+		case SYS_DVBC_ANNEX_C:	ss << " DVBC_ANNEX_C"; break;
+		case SYS_TURBO:		ss << " TURBO"; break;
+		case SYS_DTMB:		ss << " DTMB"; break;
 #endif
 		case SYS_DVBT2:		ss << " DVBT2"; break;
 		}
