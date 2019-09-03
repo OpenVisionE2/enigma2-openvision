@@ -159,21 +159,21 @@ script:
 - echo installing tuxbox
 - pushd .
 - cd /tmp
-- git clone --depth 1 https://github.com/OpenPLi/tuxtxt.git
+- git clone --depth 1 https://github.com/OpenVisionE2/tuxtxt.git
 - cd tuxtxt/libtuxtxt
 - autoreconf -i
-- ./configure --with-boxtype=generic DVB_API_VERSION=5
+- ./configure --with-boxtype=generic
 - make
 - sudo make install
 - cd ../tuxtxt
 - autoreconf -i
-- ./configure --with-boxtype=generic DVB_API_VERSION=5
+- ./configure --with-boxtype=generic
 - make
 - sudo make install
 - popd
 - echo compiling enigma2
 - autoreconf -i
-- ./configure --with-libsdl=no --with-boxtype=nobox --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-gstversion=1.0 --with-textlcd
+- ./configure --with-libsdl=no --with-boxtype=nobox --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-gstversion=1.0 --with-nolcd
 - make
 - python -m compileall .
 - echo done!
