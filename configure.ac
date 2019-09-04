@@ -390,7 +390,7 @@ if test `echo "$OE_VER" | cut -b 1-2` == "9."; then
 	AC_DEFINE(HAVE_NEWOE, 1,[enable new OpenEmbedded specific stuff])
 fi
 
-if test "$BOXBRAND" == "raspberrypi"; then
+if test "$BOXBRAND" == "rpi"; then
 	PKG_CHECK_MODULES(DVBCSA, libdvbcsa)
 	PKG_CHECK_MODULES(LIBNL, libnl-1 >= 1.0-pre8, has_libnl=yes, dummy=no)
 	PKG_CHECK_MODULES(LIBNL, libnl-3.0, has_libnl=yes, dummy=no)
