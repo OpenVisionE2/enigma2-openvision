@@ -70,7 +70,7 @@ void eServerSocket::notifier(int)
 	newConnection(clientfd);
 }
 
-eServerSocket::eServerSocket(int port, eMainloop *ml):  m_port(port), eSocket(ml)
+eServerSocket::eServerSocket(int port, eMainloop *ml): m_port(port), eSocket(ml)
 {
 	int res;
 	struct addrinfo *addr = NULL;
@@ -105,7 +105,7 @@ eServerSocket::eServerSocket(int port, eMainloop *ml):  m_port(port), eSocket(ml
 	freeaddrinfo(addr);
 }
 
-eServerSocket::eServerSocket(std::string path, eMainloop *ml) : eSocket(ml)
+eServerSocket::eServerSocket(std::string path, eMainloop *ml): eSocket(ml)
 {
 	struct sockaddr_un serv_addr_un;
 	struct addrinfo addr;

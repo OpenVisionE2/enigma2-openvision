@@ -5016,7 +5016,8 @@ void eEPGCache::channel_data::readMHWData2(const uint8_t *data)
 			uint8_t slen = data[pos+18] & 0x3f;
 			uint8_t *dest = ((uint8_t*)title.title)-4;
 			memcpy(dest, &data[pos+19], slen>35 ? 35 : slen);
-			memset(dest+slen, 0, 35-slen);
+			if ( slen < 35 )
+				memset(dest+slen, 0, 35-slen);
 			pos += 19 + slen;
 //			eDebugNoNewLine("%02x [%02x %02x]: %s\n", data[pos], data[pos+1], data[pos+2], dest);
 
