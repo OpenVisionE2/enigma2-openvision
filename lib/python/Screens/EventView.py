@@ -16,7 +16,7 @@ from TimerEntry import TimerEntry
 from Plugins.Plugin import PluginDescriptor
 from Tools.BoundFunction import boundFunction
 from Tools.FallbackTimer import FallbackTimerList
-from time import localtime
+from time import localtime, strftime
 from Components.config import config
 
 class EventViewBase:
