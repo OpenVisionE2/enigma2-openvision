@@ -5,6 +5,7 @@ from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff
 from Components.NimManager import nimmanager
 from Components.ServiceList import refreshServiceList
 from Components.SystemInfo import SystemInfo
+from Components.Console import Console
 import os
 import time
 import locale
@@ -1281,7 +1282,7 @@ def patchTuxtxtConfFile(dummyConfigElement):
 		#if keyword is not found in file, append keyword and value
 		command += " ; if ! grep -q '%s' %s ; then echo '%s %d' >> %s ; fi"  % (f[0],TUXTXT_CFG_FILE,f[0],f[1],TUXTXT_CFG_FILE)
 	try:
-		os.system(command)
+		Console().ePopen(command)
 	except:
 		print "Error: failed to patch %s!" % TUXTXT_CFG_FILE
 	print "[tuxtxt] patched tuxtxt2.conf"
