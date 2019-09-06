@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 02:19+0430\n"
+"POT-Creation-Date: 2019-09-07 00:27+0430\n"
 "PO-Revision-Date: 2016-06-17 12:13+0800\n"
 "Last-Translator: nx111 <gdzdz@163.com>\n"
 "Language-Team: NEWBOLT\n"
@@ -4440,6 +4440,10 @@ msgstr ""
 msgid "Encryption:"
 msgstr "加密方式:"
 
+#, fuzzy
+msgid "End cut"
+msgstr "结束时间"
+
 msgid "End time"
 msgstr "结束时间"
 
@@ -4675,6 +4679,9 @@ msgstr "随时"
 
 msgid "Exceeds dual layer medium!"
 msgstr "超出双层介质!"
+
+msgid "Execute cuts and exit"
+msgstr ""
 
 msgid "Execution finished!!"
 msgstr "执行完毕！"
@@ -5608,6 +5615,11 @@ msgstr "您想录制多少分钟?"
 msgid "How many minutes do you want to record?"
 msgstr "您想录制多少分钟?"
 
+msgid ""
+"How would you like to modify the movie?\n"
+"Warning: This operation cannot be undone!"
+msgstr ""
+
 msgid "Hue"
 msgstr "色相"
 
@@ -6419,6 +6431,14 @@ msgstr "这个标记作为'out'节点"
 
 msgid "Make this mark just a mark"
 msgstr "这仅仅只是一标记"
+
+#, fuzzy
+msgid "Make this mark the final 'out' point"
+msgstr "这个标记作为'out'节点"
+
+#, fuzzy
+msgid "Make this mark the initial 'in' point"
+msgstr "这个标记作为'in'节点"
 
 msgid "Malawi"
 msgstr ""
@@ -8247,6 +8267,9 @@ msgstr "快速"
 msgid "Quick EPG"
 msgstr "快速"
 
+msgid "Quick execute..."
+msgstr ""
+
 msgid "Quick zap"
 msgstr ""
 
@@ -8643,6 +8666,14 @@ msgstr "恢复"
 
 msgid "Restore backups"
 msgstr "恢复备份"
+
+#, fuzzy
+msgid "Restore cuts"
+msgstr "恢复备份"
+
+#, fuzzy
+msgid "Restore previous cuts..."
+msgstr "返回之前的频道"
 
 msgid "Restore system settings"
 msgstr "恢复系统设置"
@@ -9206,9 +9237,6 @@ msgstr "选择位置"
 #, fuzzy
 msgid "Select hard disk"
 msgstr "选择一部电影"
-
-msgid "Select horizontal resolution:"
-msgstr ""
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr ""
@@ -10373,6 +10401,10 @@ msgstr "待机"
 msgid "Start"
 msgstr "重新测试"
 
+#, fuzzy
+msgid "Start cut"
+msgstr "重新测试"
+
 msgid "Start from the beginning"
 msgstr "重头开始"
 
@@ -10422,8 +10454,16 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+#, fuzzy
+msgid "Step back"
+msgstr "向东步进"
+
 msgid "Step east"
 msgstr "向东步进"
+
+#, fuzzy
+msgid "Step forward"
+msgstr "快进"
 
 msgid "Step west"
 msgstr "向西步进"
@@ -10869,6 +10909,10 @@ msgstr ""
 
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr ""
+
+#, fuzzy
+msgid "The MovieCut plugin is not installed."
+msgstr "此插件未安装."
 
 msgid "The PIN code has been changed successfully."
 msgstr "服务密码 已被成功修改."
@@ -12228,9 +12272,9 @@ msgstr ""
 msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
-"Seek to the start of the stuff you want to cut away. Press OK, select 'start cut'.\n"
+"Seek to the start of the stuff you want to cut away, press RED.\n"
 "\n"
-"Then seek to the end, press OK, select 'end cut'. That's it."
+"Then seek to the end, press GREEN. That's it."
 msgstr ""
 
 msgid ""
@@ -13037,6 +13081,9 @@ msgstr "黑名单"
 msgid "blue"
 msgstr "蓝色"
 
+msgid "both"
+msgstr ""
+
 msgid "bottom"
 msgstr ""
 
@@ -13048,6 +13095,10 @@ msgstr ""
 
 msgid "by hmmmdada"
 msgstr ""
+
+#, fuzzy
+msgid "cancel"
+msgstr "取消"
 
 msgid "cartoon/puppets"
 msgstr ""
@@ -13133,6 +13184,10 @@ msgstr "默认"
 msgid "delete cut"
 msgstr "删除剪辑"
 
+#, fuzzy
+msgid "delete cut (disabled)"
+msgstr "删除剪辑"
+
 msgid "descramble and record ecm"
 msgstr ""
 
@@ -13142,8 +13197,9 @@ msgstr ""
 msgid "disable"
 msgstr "禁止"
 
-msgid "disable intro screen"
-msgstr ""
+#, fuzzy
+msgid "disable cuts (edit)"
+msgstr "允许编辑自定义组"
 
 msgid "disable move mode"
 msgstr "禁用移动模式"
@@ -13202,11 +13258,12 @@ msgstr "启用"
 msgid "enable bouquet edit"
 msgstr "允许编辑自定义组"
 
+#, fuzzy
+msgid "enable cuts (preview)"
+msgstr "允许编辑自定义组"
+
 msgid "enable favourite edit"
 msgstr "允许编辑喜爱频道"
-
-msgid "enable intro screen"
-msgstr ""
 
 msgid "enable move mode"
 msgstr "允许移动模式"
@@ -13217,10 +13274,18 @@ msgstr "启用"
 msgid "end alternatives edit"
 msgstr "结速项目编辑"
 
+#, fuzzy
+msgid "end at this position"
+msgstr "移除这个位置之后的"
+
 msgid "end bouquet edit"
 msgstr "结束自定义组编辑"
 
 msgid "end cut here"
+msgstr "结束录像剪辑"
+
+#, fuzzy
+msgid "end cut here (reset)"
 msgstr "结束录像剪辑"
 
 msgid "end favourites edit"
@@ -13273,7 +13338,7 @@ msgstr ""
 msgid "et9200/9500/6500"
 msgstr ""
 
-msgid "execute cuts (requires MovieCut plugin)"
+msgid "execute cuts and exit"
 msgstr ""
 
 msgid "exit DVD player or return to file browser"
@@ -13453,6 +13518,10 @@ msgstr "模块初始化"
 
 msgid "init modules"
 msgstr "模块初始化"
+
+#, fuzzy
+msgid "insert mark after each in"
+msgstr "在这里标记"
 
 msgid "insert mark here"
 msgstr "在这里标记"
@@ -13741,7 +13810,13 @@ msgstr ""
 msgid "pre-school children's program"
 msgstr ""
 
+msgid "punch cuts"
+msgstr ""
+
 msgid "purge deleted userbouquets"
+msgstr ""
+
+msgid "quick execute"
 msgstr ""
 
 #, fuzzy
@@ -13776,6 +13851,10 @@ msgstr ""
 msgid "remove after this position"
 msgstr "移除这个位置之后的"
 
+#, fuzzy
+msgid "remove all"
+msgstr "移除书签"
+
 msgid "remove all alternatives"
 msgstr "移除所有项目"
 
@@ -13794,6 +13873,10 @@ msgstr ""
 msgid "remove cable services"
 msgstr ""
 
+#, fuzzy
+msgid "remove cuts (preserve marks)"
+msgstr "移除这个标记"
+
 msgid "remove directory"
 msgstr "移除目录"
 
@@ -13802,6 +13885,9 @@ msgstr "移除项目"
 
 msgid "remove from parental protection"
 msgstr "取消家长控制"
+
+msgid "remove marks (preserve cuts)"
+msgstr ""
 
 msgid "remove new found flag"
 msgstr "移除新发现标记"
@@ -13826,6 +13912,14 @@ msgstr "重复"
 
 msgid "restore deleted userbouquets"
 msgstr ""
+
+#, fuzzy
+msgid "restore previous cuts"
+msgstr "退回上一个章节"
+
+#, fuzzy
+msgid "restore previous cuts & exit"
+msgstr "退回上一个章节"
 
 msgid "reverse by date"
 msgstr "按日期排序"
@@ -14014,6 +14108,10 @@ msgid "standard"
 msgstr "标准"
 
 msgid "start cut here"
+msgstr "从这里开始剪接"
+
+#, fuzzy
+msgid "start cut here (reset)"
 msgstr "从这里开始剪接"
 
 msgid "start directory"

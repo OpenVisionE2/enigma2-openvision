@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi-enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 02:19+0430\n"
+"POT-Creation-Date: 2019-09-07 00:27+0430\n"
 "PO-Revision-Date: 2018-05-22 13:54+0200\n"
 "Last-Translator: Gringo <openpli@tiscali.it>\n"
 "Language-Team: www.linsat.net <spaeleus@croci.org>\n"
@@ -4552,6 +4552,10 @@ msgstr "Tipo di chiave di codifica"
 msgid "Encryption:"
 msgstr "Codifica:"
 
+#, fuzzy
+msgid "End cut"
+msgstr "Ora fine"
+
 msgid "End time"
 msgstr "Ora fine"
 
@@ -4793,6 +4797,9 @@ msgstr "Ovunque"
 
 msgid "Exceeds dual layer medium!"
 msgstr "Supera la capacità del supporto a doppio strato!"
+
+msgid "Execute cuts and exit"
+msgstr ""
 
 msgid "Execution finished!!"
 msgstr "Esecuzione terminata!!"
@@ -5745,6 +5752,11 @@ msgstr "Quanti minuti devono essere aggiunti alla registrazione?"
 msgid "How many minutes do you want to record?"
 msgstr "Quanti minuti deve durare la registrazione?"
 
+msgid ""
+"How would you like to modify the movie?\n"
+"Warning: This operation cannot be undone!"
+msgstr ""
+
 msgid "Hue"
 msgstr "Tonalità"
 
@@ -6563,6 +6575,14 @@ msgstr "Impostare questo marcatore come punto 'out'"
 
 msgid "Make this mark just a mark"
 msgstr "Impostare questo marcatore come punto normale"
+
+#, fuzzy
+msgid "Make this mark the final 'out' point"
+msgstr "Impostare questo marcatore come punto 'out'"
+
+#, fuzzy
+msgid "Make this mark the initial 'in' point"
+msgstr "Impostare questo marcatore come punto 'in'"
 
 msgid "Malawi"
 msgstr "Malawi"
@@ -8393,6 +8413,9 @@ msgstr "Veloce"
 msgid "Quick EPG"
 msgstr "Veloce"
 
+msgid "Quick execute..."
+msgstr ""
+
 msgid "Quick zap"
 msgstr "Cambio canali veloce"
 
@@ -8787,6 +8810,14 @@ msgstr "Ripristinare"
 
 msgid "Restore backups"
 msgstr "Ripristino dei backup"
+
+#, fuzzy
+msgid "Restore cuts"
+msgstr "Ripristino dei backup"
+
+#, fuzzy
+msgid "Restore previous cuts..."
+msgstr "Ritorno al canale precedente"
 
 msgid "Restore system settings"
 msgstr "Ripristino delle impostazioni di sistema"
@@ -9343,9 +9374,6 @@ msgstr "Selezionare la funzione"
 
 msgid "Select hard disk"
 msgstr "Selezionare il disco rigido"
-
-msgid "Select horizontal resolution:"
-msgstr "Selezionare la risoluzione orizzontale:"
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr "Selezionare la velocità con la quale la parabola si sposta tra i satelliti."
@@ -10530,6 +10558,10 @@ msgstr "Velocità ventola"
 msgid "Start"
 msgstr "Avviare verifica"
 
+#, fuzzy
+msgid "Start cut"
+msgstr "Avviare verifica"
+
 msgid "Start from the beginning"
 msgstr "Partire dall'inizio"
 
@@ -10579,8 +10611,16 @@ msgstr "Accensione in stato di sospensione"
 msgid "Status"
 msgstr ""
 
+#, fuzzy
+msgid "Step back"
+msgstr "Passo verso Est"
+
 msgid "Step east"
 msgstr "Passo verso Est"
+
+#, fuzzy
+msgid "Step forward"
+msgstr "Ricercare avanti"
 
 msgid "Step west"
 msgstr "Passo verso Ovest"
@@ -11042,6 +11082,10 @@ msgstr "%d minuti mancanti alla fine dell'evento."
 
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "Lo standard DVD non è compatibile con i flussi video H.264 (HDTV). Creare un DVD con un formato dati speciale (che non sarà leggibile dai lettori DVD standard)?"
+
+#, fuzzy
+msgid "The MovieCut plugin is not installed."
+msgstr "Questo plugin non è installato."
 
 msgid "The PIN code has been changed successfully."
 msgstr "Il codice PIN è stato aggiornato con successo."
@@ -12473,12 +12517,13 @@ msgstr "Settimanale"
 msgid "Weighted position"
 msgstr "Posizione media"
 
+#, fuzzy
 msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
-"Seek to the start of the stuff you want to cut away. Press OK, select 'start cut'.\n"
+"Seek to the start of the stuff you want to cut away, press RED.\n"
 "\n"
-"Then seek to the end, press OK, select 'end cut'. That's it."
+"Then seek to the end, press GREEN. That's it."
 msgstr ""
 "Plugin che consente di eseguire dei tagli nelle registrazioni.\n"
 "\n"
@@ -13338,6 +13383,9 @@ msgstr "Lista vietati"
 msgid "blue"
 msgstr "Blu"
 
+msgid "both"
+msgstr ""
+
 msgid "bottom"
 msgstr "Basso"
 
@@ -13349,6 +13397,10 @@ msgstr "Per data crescente"
 
 msgid "by hmmmdada"
 msgstr ""
+
+#, fuzzy
+msgid "cancel"
+msgstr "Annullare"
 
 msgid "cartoon/puppets"
 msgstr "Cartoni/Pupazzi"
@@ -13439,6 +13491,10 @@ msgstr "Predefinito"
 msgid "delete cut"
 msgstr "Eliminare il taglio"
 
+#, fuzzy
+msgid "delete cut (disabled)"
+msgstr " (disabilitato)"
+
 msgid "descramble and record ecm"
 msgstr "Decodificare e registrare gli ECM"
 
@@ -13448,8 +13504,9 @@ msgstr "Polizieschi/Thriller"
 msgid "disable"
 msgstr "Disabilitare"
 
-msgid "disable intro screen"
-msgstr "Disabilitare la schermata introduttiva"
+#, fuzzy
+msgid "disable cuts (edit)"
+msgstr "Abilitare la modifica del bouquet"
 
 msgid "disable move mode"
 msgstr "Disabilitare la modalità spostamento"
@@ -13511,11 +13568,12 @@ msgstr "Abilitare"
 msgid "enable bouquet edit"
 msgstr "Abilitare la modifica del bouquet"
 
+#, fuzzy
+msgid "enable cuts (preview)"
+msgstr "Abilitare la modifica del bouquet"
+
 msgid "enable favourite edit"
 msgstr "Abilitare la modifica dei Preferiti"
-
-msgid "enable intro screen"
-msgstr "Abilitare la schermata introduttiva"
 
 msgid "enable move mode"
 msgstr "Abilitare la modalità spostamento"
@@ -13526,10 +13584,18 @@ msgstr "Abilitato"
 msgid "end alternatives edit"
 msgstr "Fine modifiche alternative"
 
+#, fuzzy
+msgid "end at this position"
+msgstr "Eliminare dopo questo punto"
+
 msgid "end bouquet edit"
 msgstr "Fine modifiche del bouquet"
 
 msgid "end cut here"
+msgstr "Terminare il taglio qui"
+
+#, fuzzy
+msgid "end cut here (reset)"
 msgstr "Terminare il taglio qui"
 
 msgid "end favourites edit"
@@ -13585,8 +13651,8 @@ msgstr "et9000/et9100"
 msgid "et9200/9500/6500"
 msgstr "et9200/9500/6500"
 
-msgid "execute cuts (requires MovieCut plugin)"
-msgstr "Eseguire i tagli (richiede il plugin MovieCut)"
+msgid "execute cuts and exit"
+msgstr ""
 
 msgid "exit DVD player or return to file browser"
 msgstr "Uscire dal lettore DVD o ritornare all'elenco dei file"
@@ -13765,6 +13831,10 @@ msgstr "Inizializzare il modulo"
 
 msgid "init modules"
 msgstr "Inizializzare i moduli"
+
+#, fuzzy
+msgid "insert mark after each in"
+msgstr "Inserire un marcatore qui"
 
 msgid "insert mark here"
 msgstr "Inserire un marcatore qui"
@@ -14058,8 +14128,14 @@ msgstr "Cultura popolare/Arti tradizionali"
 msgid "pre-school children's program"
 msgstr "Programmi per bambini in età prescolare"
 
+msgid "punch cuts"
+msgstr ""
+
 msgid "purge deleted userbouquets"
 msgstr "Rimozione dei bouquets eliminati"
+
+msgid "quick execute"
+msgstr ""
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -14094,6 +14170,10 @@ msgstr "Persone eccezionali"
 msgid "remove after this position"
 msgstr "Eliminare dopo questo punto"
 
+#, fuzzy
+msgid "remove all"
+msgstr "Eliminare un percorso preferito"
+
 msgid "remove all alternatives"
 msgstr "Eliminare tutte le alternative"
 
@@ -14112,6 +14192,10 @@ msgstr "Escludere il bouquet dal Controllo genitori"
 msgid "remove cable services"
 msgstr "Eliminare il canale via cavo"
 
+#, fuzzy
+msgid "remove cuts (preserve marks)"
+msgstr "Eliminare questo marcatore"
+
 msgid "remove directory"
 msgstr "Eliminare la cartella"
 
@@ -14120,6 +14204,10 @@ msgstr "Eliminare la voce selezionata"
 
 msgid "remove from parental protection"
 msgstr "Escludere dal Controllo genitori"
+
+#, fuzzy
+msgid "remove marks (preserve cuts)"
+msgstr "Eliminare il canale via cavo"
 
 msgid "remove new found flag"
 msgstr "Eliminare il nuovo marcatore trovato"
@@ -14144,6 +14232,14 @@ msgstr "Ricorrente"
 
 msgid "restore deleted userbouquets"
 msgstr "Ripristinare i bouquet eliminati"
+
+#, fuzzy
+msgid "restore previous cuts"
+msgstr "Ritornare al capitolo precedente"
+
+#, fuzzy
+msgid "restore previous cuts & exit"
+msgstr "Ritornare al capitolo precedente"
 
 msgid "reverse by date"
 msgstr "Per data decrescente"
@@ -14335,6 +14431,10 @@ msgid "standard"
 msgstr "Predefinito"
 
 msgid "start cut here"
+msgstr "Iniziare il taglio qui"
+
+#, fuzzy
+msgid "start cut here (reset)"
 msgstr "Iniziare il taglio qui"
 
 msgid "start directory"

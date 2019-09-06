@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 02:19+0430\n"
+"POT-Creation-Date: 2019-09-07 00:27+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -4745,6 +4745,10 @@ msgstr "Coderingssleuteltype"
 msgid "Encryption:"
 msgstr "Codering:"
 
+#, fuzzy
+msgid "End cut"
+msgstr "Eindtijd"
+
 msgid "End time"
 msgstr "Eindtijd"
 
@@ -4987,6 +4991,9 @@ msgstr "Overal"
 
 msgid "Exceeds dual layer medium!"
 msgstr "Overschrijdt een dual layer schijf"
+
+msgid "Execute cuts and exit"
+msgstr ""
 
 msgid "Execution finished!!"
 msgstr "Voortgang voltooid!"
@@ -5936,6 +5943,11 @@ msgstr "Hoeveel minuten wilt u aan de opname toevoegen?"
 msgid "How many minutes do you want to record?"
 msgstr "Hoeveel minuten wilt u opnemen?"
 
+msgid ""
+"How would you like to modify the movie?\n"
+"Warning: This operation cannot be undone!"
+msgstr ""
+
 msgid "Hue"
 msgstr "Tint"
 
@@ -6756,6 +6768,14 @@ msgstr "Markeer dit als 'uit' punt"
 
 msgid "Make this mark just a mark"
 msgstr "Universele markering"
+
+#, fuzzy
+msgid "Make this mark the final 'out' point"
+msgstr "Markeer dit als 'uit' punt"
+
+#, fuzzy
+msgid "Make this mark the initial 'in' point"
+msgstr "Markeer dit als 'in' punt"
 
 msgid "Malawi"
 msgstr "Malawi"
@@ -8600,6 +8620,9 @@ msgstr "Snel"
 msgid "Quick EPG"
 msgstr "Snel"
 
+msgid "Quick execute..."
+msgstr ""
+
 msgid "Quick zap"
 msgstr "Snelzap"
 
@@ -8995,6 +9018,14 @@ msgstr "Herstellen"
 
 msgid "Restore backups"
 msgstr "Backups terugzetten"
+
+#, fuzzy
+msgid "Restore cuts"
+msgstr "Backups terugzetten"
+
+#, fuzzy
+msgid "Restore previous cuts..."
+msgstr "Herinner aan het eerdere programma"
 
 msgid "Restore system settings"
 msgstr "Herstel uw instellingen"
@@ -9545,9 +9576,6 @@ msgstr "Kies de gewenste functie"
 
 msgid "Select hard disk"
 msgstr "Kies een harddisk"
-
-msgid "Select horizontal resolution:"
-msgstr "Kies de horizontale resolutie:"
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr "Kies hoe snel de diseqc motor van satelliet moet wisselen."
@@ -10730,6 +10758,10 @@ msgstr "Ventilator snelheid"
 msgid "Start"
 msgstr "Start test"
 
+#, fuzzy
+msgid "Start cut"
+msgstr "Start test"
+
 msgid "Start from the beginning"
 msgstr "Start vanaf het begin"
 
@@ -10782,8 +10814,16 @@ msgstr "Opstarten en ga naar direct naar standby"
 msgid "Status"
 msgstr ""
 
+#, fuzzy
+msgid "Step back"
+msgstr "Stap > oost"
+
 msgid "Step east"
 msgstr "Stap > oost"
+
+#, fuzzy
+msgid "Step forward"
+msgstr "Vooruit springen"
 
 msgid "Step west"
 msgstr "Stap > west"
@@ -11236,6 +11276,10 @@ msgstr "Nog %d min tot het einde van het programma."
 
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "De DVD standaard ondersteunt geen H.264 (HDTV) videostreams. Wilt u een DVD aanmaken met een speciaal formaat (veel DVD spelers kunnen dat niet afspelen)?"
+
+#, fuzzy
+msgid "The MovieCut plugin is not installed."
+msgstr "Deze plugin is niet geïnstalleerd."
 
 msgid "The PIN code has been changed successfully."
 msgstr "De pincode is gewijzigd."
@@ -12672,12 +12716,13 @@ msgstr "wekelijks"
 msgid "Weighted position"
 msgstr "Gewogen positie"
 
+#, fuzzy
 msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
-"Seek to the start of the stuff you want to cut away. Press OK, select 'start cut'.\n"
+"Seek to the start of the stuff you want to cut away, press RED.\n"
 "\n"
-"Then seek to the end, press OK, select 'end cut'. That's it."
+"Then seek to the end, press GREEN. That's it."
 msgstr ""
 "Welkom bij de Cutlist editor.\n"
 "\n"
@@ -13569,6 +13614,9 @@ msgstr "zwarte lijst"
 msgid "blue"
 msgstr "blauw"
 
+msgid "both"
+msgstr ""
+
 msgid "bottom"
 msgstr "onder"
 
@@ -13580,6 +13628,10 @@ msgstr "op datum"
 
 msgid "by hmmmdada"
 msgstr ""
+
+#, fuzzy
+msgid "cancel"
+msgstr "Annuleren"
 
 msgid "cartoon/puppets"
 msgstr "Tekenfilm/Animatie"
@@ -13674,6 +13726,10 @@ msgstr "standaard"
 msgid "delete cut"
 msgstr "Wis snijpunt"
 
+#, fuzzy
+msgid "delete cut (disabled)"
+msgstr " (uitgeschakeld)"
+
 msgid "descramble and record ecm"
 msgstr "ECM decoderen en opnemen"
 
@@ -13683,8 +13739,9 @@ msgstr "Detective/Thriller"
 msgid "disable"
 msgstr "gedéactiveerd"
 
-msgid "disable intro screen"
-msgstr "introdutiescherm overslaan"
+#, fuzzy
+msgid "disable cuts (edit)"
+msgstr "Activeer het bewerken van een bouquet"
 
 msgid "disable move mode"
 msgstr "Verplaatsmode deactiveren"
@@ -13746,11 +13803,12 @@ msgstr "Geactiveerd"
 msgid "enable bouquet edit"
 msgstr "Activeer het bewerken van een bouquet"
 
+#, fuzzy
+msgid "enable cuts (preview)"
+msgstr "Activeer het bewerken van een bouquet"
+
 msgid "enable favourite edit"
 msgstr "Favorieten bewerken activeren"
-
-msgid "enable intro screen"
-msgstr "introductiescherm inschakelen"
 
 msgid "enable move mode"
 msgstr "Activeer de verplaatsmodus"
@@ -13761,10 +13819,18 @@ msgstr "Ingeschakeld"
 msgid "end alternatives edit"
 msgstr "Alternatieven bewerken stoppen"
 
+#, fuzzy
+msgid "end at this position"
+msgstr "Verwijder achter deze positie"
+
 msgid "end bouquet edit"
 msgstr "Bouquet bewerken stoppen"
 
 msgid "end cut here"
+msgstr "Stop snijpunt hier"
+
+#, fuzzy
+msgid "end cut here (reset)"
 msgstr "Stop snijpunt hier"
 
 msgid "end favourites edit"
@@ -13820,8 +13886,8 @@ msgstr "ET9000/9100"
 msgid "et9200/9500/6500"
 msgstr "ET9200/9500/6500"
 
-msgid "execute cuts (requires MovieCut plugin)"
-msgstr "Voor de knipbewerking uit (MovieCut plugin is hiervoor nodig)"
+msgid "execute cuts and exit"
+msgstr ""
 
 msgid "exit DVD player or return to file browser"
 msgstr "DVD speler afsluiten of terug naar bestandslijst"
@@ -13995,6 +14061,10 @@ msgstr "module initialiseren"
 
 msgid "init modules"
 msgstr "initialiseer modules"
+
+#, fuzzy
+msgid "insert mark after each in"
+msgstr "Markeerpunt invoegen"
 
 msgid "insert mark here"
 msgstr "Markeerpunt invoegen"
@@ -14287,8 +14357,14 @@ msgstr "Moderne cultuur/Traditionele kunst"
 msgid "pre-school children's program"
 msgstr "Peuter/Kleuterprogramma"
 
+msgid "punch cuts"
+msgstr ""
+
 msgid "purge deleted userbouquets"
 msgstr "Ruim gewiste gebruikersboeket(ten) op"
+
+msgid "quick execute"
+msgstr ""
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -14323,6 +14399,10 @@ msgstr "opmerkelijke personen"
 msgid "remove after this position"
 msgstr "Verwijder achter deze positie"
 
+#, fuzzy
+msgid "remove all"
+msgstr "Markeerpunt verwijderen"
+
 msgid "remove all alternatives"
 msgstr "Verwijder alle alternatieven"
 
@@ -14341,6 +14421,10 @@ msgstr "verwijder bouquet uit het kinderslot"
 msgid "remove cable services"
 msgstr "verwijder kabelkanalen"
 
+#, fuzzy
+msgid "remove cuts (preserve marks)"
+msgstr "verwijder deze markering"
+
 msgid "remove directory"
 msgstr "Map verwijderen"
 
@@ -14349,6 +14433,10 @@ msgstr "Verwijder het huidige item"
 
 msgid "remove from parental protection"
 msgstr "Verwijder kinderslot"
+
+#, fuzzy
+msgid "remove marks (preserve cuts)"
+msgstr "verwijder kabelkanalen"
 
 msgid "remove new found flag"
 msgstr "verwijder 'nieuw gevonden' markering"
@@ -14373,6 +14461,14 @@ msgstr "herhalen"
 
 msgid "restore deleted userbouquets"
 msgstr "Herstel verwijderde gebruikersbouquet(ten)"
+
+#, fuzzy
+msgid "restore previous cuts"
+msgstr "terugspoelen naar vorig hoofdstuk"
+
+#, fuzzy
+msgid "restore previous cuts & exit"
+msgstr "terugspoelen naar vorig hoofdstuk"
 
 msgid "reverse by date"
 msgstr "Terug op datum"
@@ -14564,6 +14660,10 @@ msgid "standard"
 msgstr "Standaard"
 
 msgid "start cut here"
+msgstr "Start knippen hier"
+
+#, fuzzy
+msgid "start cut here (reset)"
 msgstr "Start knippen hier"
 
 msgid "start directory"

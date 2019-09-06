@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 02:19+0430\n"
+"POT-Creation-Date: 2019-09-07 00:27+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: satdreamgr\n"
 "Language-Team: \n"
@@ -4546,6 +4546,10 @@ msgstr "Encryption key type"
 msgid "Encryption:"
 msgstr "Encryption:"
 
+#, fuzzy
+msgid "End cut"
+msgstr "End time"
+
 msgid "End time"
 msgstr "End time"
 
@@ -4783,6 +4787,9 @@ msgstr "Everywhere"
 
 msgid "Exceeds dual layer medium!"
 msgstr "Exceeds dual layer medium!"
+
+msgid "Execute cuts and exit"
+msgstr ""
 
 msgid "Execution finished!!"
 msgstr "Execution finished!!"
@@ -5724,6 +5731,11 @@ msgstr "How many minutes do you want to record?"
 msgid "How many minutes do you want to record?"
 msgstr "How many minutes do you want to record?"
 
+msgid ""
+"How would you like to modify the movie?\n"
+"Warning: This operation cannot be undone!"
+msgstr ""
+
 msgid "Hue"
 msgstr "Hue"
 
@@ -6543,6 +6555,14 @@ msgstr "Make this mark an 'out' point"
 
 msgid "Make this mark just a mark"
 msgstr "Make this mark just a mark"
+
+#, fuzzy
+msgid "Make this mark the final 'out' point"
+msgstr "Make this mark an 'out' point"
+
+#, fuzzy
+msgid "Make this mark the initial 'in' point"
+msgstr "Make this mark an 'in' point"
 
 msgid "Malawi"
 msgstr ""
@@ -8382,6 +8402,9 @@ msgstr "Quick"
 msgid "Quick EPG"
 msgstr "Quick"
 
+msgid "Quick execute..."
+msgstr ""
+
 msgid "Quick zap"
 msgstr "Quick zap"
 
@@ -8779,6 +8802,14 @@ msgstr "Restore"
 
 msgid "Restore backups"
 msgstr "Restore backups"
+
+#, fuzzy
+msgid "Restore cuts"
+msgstr "Restore backups"
+
+#, fuzzy
+msgid "Restore previous cuts..."
+msgstr "Return to previous service"
 
 msgid "Restore system settings"
 msgstr "Restore system settings"
@@ -9344,9 +9375,6 @@ msgstr "Select backup location"
 #, fuzzy
 msgid "Select hard disk"
 msgstr "Select a skin"
-
-msgid "Select horizontal resolution:"
-msgstr ""
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr ""
@@ -10534,6 +10562,10 @@ msgstr "Standby"
 msgid "Start"
 msgstr "Start test"
 
+#, fuzzy
+msgid "Start cut"
+msgstr "Start test"
+
 msgid "Start from the beginning"
 msgstr "Start from the beginning"
 
@@ -10583,8 +10615,16 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+#, fuzzy
+msgid "Step back"
+msgstr "Step east"
+
 msgid "Step east"
 msgstr "Step east"
+
+#, fuzzy
+msgid "Step forward"
+msgstr "Seek forward"
 
 msgid "Step west"
 msgstr "Step west"
@@ -11039,6 +11079,10 @@ msgstr ""
 
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
+
+#, fuzzy
+msgid "The MovieCut plugin is not installed."
+msgstr "This plugin is not installed."
 
 msgid "The PIN code has been changed successfully."
 msgstr "The PIN code has been changed successfully."
@@ -12429,12 +12473,13 @@ msgstr "weekly"
 msgid "Weighted position"
 msgstr "Weighted position"
 
+#, fuzzy
 msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
-"Seek to the start of the stuff you want to cut away. Press OK, select 'start cut'.\n"
+"Seek to the start of the stuff you want to cut away, press RED.\n"
 "\n"
-"Then seek to the end, press OK, select 'end cut'. That's it."
+"Then seek to the end, press GREEN. That's it."
 msgstr ""
 "Welcome to the cutlist editor.\n"
 "\n"
@@ -13284,6 +13329,9 @@ msgstr "blacklist"
 msgid "blue"
 msgstr "blue"
 
+msgid "both"
+msgstr ""
+
 msgid "bottom"
 msgstr ""
 
@@ -13295,6 +13343,10 @@ msgstr "by date"
 
 msgid "by hmmmdada"
 msgstr ""
+
+#, fuzzy
+msgid "cancel"
+msgstr "Cancel"
 
 msgid "cartoon/puppets"
 msgstr "cartoon/puppets"
@@ -13384,6 +13436,10 @@ msgstr "default"
 msgid "delete cut"
 msgstr "delete cut"
 
+#, fuzzy
+msgid "delete cut (disabled)"
+msgstr "delete cut"
+
 msgid "descramble and record ecm"
 msgstr "descramble and record ecm"
 
@@ -13393,8 +13449,9 @@ msgstr "detective/thriller"
 msgid "disable"
 msgstr "disable"
 
-msgid "disable intro screen"
-msgstr ""
+#, fuzzy
+msgid "disable cuts (edit)"
+msgstr "enable bouquet edit"
 
 msgid "disable move mode"
 msgstr "disable move mode"
@@ -13456,11 +13513,12 @@ msgstr "enable"
 msgid "enable bouquet edit"
 msgstr "enable bouquet edit"
 
+#, fuzzy
+msgid "enable cuts (preview)"
+msgstr "enable bouquet edit"
+
 msgid "enable favourite edit"
 msgstr "enable favourite edit"
-
-msgid "enable intro screen"
-msgstr ""
 
 msgid "enable move mode"
 msgstr "enable move mode"
@@ -13471,10 +13529,18 @@ msgstr "enabled"
 msgid "end alternatives edit"
 msgstr "end alternatives edit"
 
+#, fuzzy
+msgid "end at this position"
+msgstr "remove after this position"
+
 msgid "end bouquet edit"
 msgstr "end bouquet edit"
 
 msgid "end cut here"
+msgstr "end cut here"
+
+#, fuzzy
+msgid "end cut here (reset)"
 msgstr "end cut here"
 
 msgid "end favourites edit"
@@ -13528,7 +13594,7 @@ msgstr ""
 msgid "et9200/9500/6500"
 msgstr ""
 
-msgid "execute cuts (requires MovieCut plugin)"
+msgid "execute cuts and exit"
 msgstr ""
 
 msgid "exit DVD player or return to file browser"
@@ -13707,6 +13773,10 @@ msgstr "init module"
 
 msgid "init modules"
 msgstr "init modules"
+
+#, fuzzy
+msgid "insert mark after each in"
+msgstr "insert mark here"
 
 msgid "insert mark here"
 msgstr "insert mark here"
@@ -13999,7 +14069,13 @@ msgstr "popular culture/traditional arts"
 msgid "pre-school children's program"
 msgstr "pre-school children's program"
 
+msgid "punch cuts"
+msgstr ""
+
 msgid "purge deleted userbouquets"
+msgstr ""
+
+msgid "quick execute"
 msgstr ""
 
 #, fuzzy
@@ -14035,6 +14111,10 @@ msgstr "remarkable people"
 msgid "remove after this position"
 msgstr "remove after this position"
 
+#, fuzzy
+msgid "remove all"
+msgstr "remove bookmark"
+
 msgid "remove all alternatives"
 msgstr "remove all alternatives"
 
@@ -14053,6 +14133,10 @@ msgstr ""
 msgid "remove cable services"
 msgstr ""
 
+#, fuzzy
+msgid "remove cuts (preserve marks)"
+msgstr "remove this mark"
+
 msgid "remove directory"
 msgstr "remove directory"
 
@@ -14061,6 +14145,10 @@ msgstr "remove entry"
 
 msgid "remove from parental protection"
 msgstr "remove from parental protection"
+
+#, fuzzy
+msgid "remove marks (preserve cuts)"
+msgstr "Remove a nameserver entry"
 
 msgid "remove new found flag"
 msgstr "remove new found flag"
@@ -14085,6 +14173,14 @@ msgstr "repeated"
 
 msgid "restore deleted userbouquets"
 msgstr ""
+
+#, fuzzy
+msgid "restore previous cuts"
+msgstr "rewind to the previous chapter"
+
+#, fuzzy
+msgid "restore previous cuts & exit"
+msgstr "rewind to the previous chapter"
 
 msgid "reverse by date"
 msgstr "reverse by date"
@@ -14276,6 +14372,10 @@ msgid "standard"
 msgstr "standard"
 
 msgid "start cut here"
+msgstr "start cut here"
+
+#, fuzzy
+msgid "start cut here (reset)"
 msgstr "start cut here"
 
 msgid "start directory"

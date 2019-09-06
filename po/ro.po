@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 02:19+0430\n"
+"POT-Creation-Date: 2019-09-07 00:27+0430\n"
 "PO-Revision-Date: 2010-03-09 21:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: HDTV ROMANIA(superonic,costel_mbc,neutrin,otheitis,cipy_1982,neutrin,runcanion)\n"
@@ -4471,6 +4471,10 @@ msgstr "Tipul cheii de criptare"
 msgid "Encryption:"
 msgstr ""
 
+#, fuzzy
+msgid "End cut"
+msgstr "Momentul incheierii"
+
 msgid "End time"
 msgstr "Momentul incheierii"
 
@@ -4703,6 +4707,9 @@ msgid "Everywhere"
 msgstr ""
 
 msgid "Exceeds dual layer medium!"
+msgstr ""
+
+msgid "Execute cuts and exit"
 msgstr ""
 
 msgid "Execution finished!!"
@@ -5653,6 +5660,11 @@ msgstr "Pentru cate minute doriti sa inregistrati?"
 msgid "How many minutes do you want to record?"
 msgstr "Pentru cate minute doriti sa inregistrati?"
 
+msgid ""
+"How would you like to modify the movie?\n"
+"Warning: This operation cannot be undone!"
+msgstr ""
+
 msgid "Hue"
 msgstr ""
 
@@ -6494,6 +6506,14 @@ msgstr "Fa acest semn un punct de iesire"
 
 msgid "Make this mark just a mark"
 msgstr "Fa acest semn doar un semn"
+
+#, fuzzy
+msgid "Make this mark the final 'out' point"
+msgstr "Fa acest semn un punct de iesire"
+
+#, fuzzy
+msgid "Make this mark the initial 'in' point"
+msgstr "Fa acest semn un punct de intrare"
 
 msgid "Malawi"
 msgstr ""
@@ -8359,6 +8379,9 @@ msgstr "Rapid"
 msgid "Quick EPG"
 msgstr "Rapid"
 
+msgid "Quick execute..."
+msgstr ""
+
 #, fuzzy
 msgid "Quick zap"
 msgstr "Zap rapid"
@@ -8762,6 +8785,14 @@ msgstr "Revenire"
 
 msgid "Restore backups"
 msgstr ""
+
+#, fuzzy
+msgid "Restore cuts"
+msgstr "Revenire"
+
+#, fuzzy
+msgid "Restore previous cuts..."
+msgstr "Revenire la serviciul anterior"
 
 msgid "Restore system settings"
 msgstr "Revenire la setarile sistemului"
@@ -9345,9 +9376,6 @@ msgstr "Alege locatia copiei de siguranta"
 #, fuzzy
 msgid "Select hard disk"
 msgstr "Alegeti un film"
-
-msgid "Select horizontal resolution:"
-msgstr ""
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr ""
@@ -10556,6 +10584,10 @@ msgstr "Asteptare"
 msgid "Start"
 msgstr "Incepe test"
 
+#, fuzzy
+msgid "Start cut"
+msgstr "Incepe test"
+
 msgid "Start from the beginning"
 msgstr "Incepe de la capat"
 
@@ -10606,8 +10638,16 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+#, fuzzy
+msgid "Step back"
+msgstr "Un pas catre est"
+
 msgid "Step east"
 msgstr "Un pas catre est"
+
+#, fuzzy
+msgid "Step forward"
+msgstr "skin inainte"
 
 msgid "Step west"
 msgstr "Un pas catre vest"
@@ -11068,6 +11108,12 @@ msgstr ""
 
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr ""
+
+#, fuzzy
+msgid "The MovieCut plugin is not installed."
+msgstr ""
+"Plugin-ul LAN wireless nu este instalat!\n"
+"Va rugam sa-l instalati."
 
 msgid "The PIN code has been changed successfully."
 msgstr ""
@@ -12479,9 +12525,9 @@ msgstr ""
 msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
-"Seek to the start of the stuff you want to cut away. Press OK, select 'start cut'.\n"
+"Seek to the start of the stuff you want to cut away, press RED.\n"
 "\n"
-"Then seek to the end, press OK, select 'end cut'. That's it."
+"Then seek to the end, press GREEN. That's it."
 msgstr ""
 "Bine ai venit la editarea Cutlist.\n"
 "\n"
@@ -13291,6 +13337,9 @@ msgstr "lista neagra"
 msgid "blue"
 msgstr "albastru"
 
+msgid "both"
+msgstr ""
+
 msgid "bottom"
 msgstr ""
 
@@ -13303,6 +13352,10 @@ msgstr "sorteaza dupa data"
 
 msgid "by hmmmdada"
 msgstr ""
+
+#, fuzzy
+msgid "cancel"
+msgstr "Anuleaza"
 
 msgid "cartoon/puppets"
 msgstr ""
@@ -13388,6 +13441,10 @@ msgstr ""
 msgid "delete cut"
 msgstr "sterge decupare"
 
+#, fuzzy
+msgid "delete cut (disabled)"
+msgstr "sterge decupare"
+
 msgid "descramble and record ecm"
 msgstr ""
 
@@ -13397,8 +13454,9 @@ msgstr ""
 msgid "disable"
 msgstr "dezactiveaza"
 
-msgid "disable intro screen"
-msgstr ""
+#, fuzzy
+msgid "disable cuts (edit)"
+msgstr "activeaza editare bouquet"
 
 msgid "disable move mode"
 msgstr "dezactiveaza mod mutare"
@@ -13457,11 +13515,12 @@ msgstr "activeaza"
 msgid "enable bouquet edit"
 msgstr "activeaza editare bouquet"
 
+#, fuzzy
+msgid "enable cuts (preview)"
+msgstr "activeaza editare bouquet"
+
 msgid "enable favourite edit"
 msgstr "activeaza editare favorite"
-
-msgid "enable intro screen"
-msgstr ""
 
 msgid "enable move mode"
 msgstr "activeaza mod mutare"
@@ -13472,10 +13531,18 @@ msgstr "activat"
 msgid "end alternatives edit"
 msgstr "sfarsit editare alternative"
 
+#, fuzzy
+msgid "end at this position"
+msgstr "elimina dupa aceasta pozitie"
+
 msgid "end bouquet edit"
 msgstr "sfarsit editare bouquet"
 
 msgid "end cut here"
+msgstr "sfarsit decupare aici"
+
+#, fuzzy
+msgid "end cut here (reset)"
 msgstr "sfarsit decupare aici"
 
 msgid "end favourites edit"
@@ -13528,7 +13595,7 @@ msgstr ""
 msgid "et9200/9500/6500"
 msgstr ""
 
-msgid "execute cuts (requires MovieCut plugin)"
+msgid "execute cuts and exit"
 msgstr ""
 
 msgid "exit DVD player or return to file browser"
@@ -13707,6 +13774,10 @@ msgstr "init modul"
 
 msgid "init modules"
 msgstr "init module"
+
+#, fuzzy
+msgid "insert mark after each in"
+msgstr "introdu semn aici"
 
 msgid "insert mark here"
 msgstr "introdu semn aici"
@@ -13995,7 +14066,13 @@ msgstr ""
 msgid "pre-school children's program"
 msgstr ""
 
+msgid "punch cuts"
+msgstr ""
+
 msgid "purge deleted userbouquets"
+msgstr ""
+
+msgid "quick execute"
 msgstr ""
 
 msgid "real or pseudo recordings"
@@ -14030,6 +14107,10 @@ msgstr ""
 msgid "remove after this position"
 msgstr "elimina dupa aceasta pozitie"
 
+#, fuzzy
+msgid "remove all"
+msgstr "elimina bookmark-ul"
+
 msgid "remove all alternatives"
 msgstr "elimina toate alternativele"
 
@@ -14048,6 +14129,10 @@ msgstr ""
 msgid "remove cable services"
 msgstr ""
 
+#, fuzzy
+msgid "remove cuts (preserve marks)"
+msgstr "elimina aceasta marcare"
+
 msgid "remove directory"
 msgstr "elimina directorul"
 
@@ -14056,6 +14141,10 @@ msgstr "elimina intrarea"
 
 msgid "remove from parental protection"
 msgstr "elimina din protectie parentala"
+
+#, fuzzy
+msgid "remove marks (preserve cuts)"
+msgstr "elimina o intrare de nameserver"
 
 msgid "remove new found flag"
 msgstr "elimina insemnul nou"
@@ -14080,6 +14169,14 @@ msgstr "repetat"
 
 msgid "restore deleted userbouquets"
 msgstr ""
+
+#, fuzzy
+msgid "restore previous cuts"
+msgstr "deruleaza la capitolul anterior"
+
+#, fuzzy
+msgid "restore previous cuts & exit"
+msgstr "deruleaza la capitolul anterior"
 
 msgid "reverse by date"
 msgstr ""
@@ -14268,6 +14365,10 @@ msgid "standard"
 msgstr "standard"
 
 msgid "start cut here"
+msgstr "incepe decupare aici"
+
+#, fuzzy
+msgid "start cut here (reset)"
 msgstr "incepe decupare aici"
 
 msgid "start directory"

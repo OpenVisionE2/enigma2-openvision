@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 02:19+0430\n"
+"POT-Creation-Date: 2019-09-07 00:27+0430\n"
 "PO-Revision-Date: 2019-02-13 20:52+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -4898,6 +4898,11 @@ msgid "Encryption:"
 msgstr "Salaus:"
 
 #
+#, fuzzy
+msgid "End cut"
+msgstr "Lopetusaika"
+
+#
 msgid "End time"
 msgstr "Lopetusaika"
 
@@ -5143,6 +5148,9 @@ msgstr "Kaikkialla"
 
 msgid "Exceeds dual layer medium!"
 msgstr "Ylittää kaksikerroslevyn tilavuuden!"
+
+msgid "Execute cuts and exit"
+msgstr ""
 
 #
 msgid "Execution finished!!"
@@ -6165,6 +6173,11 @@ msgstr "Kuinka monta minuuttia haluat lisätä tallennukseen?"
 msgid "How many minutes do you want to record?"
 msgstr "Kuinka monta minuuttia haluat tallentaa?"
 
+msgid ""
+"How would you like to modify the movie?\n"
+"Warning: This operation cannot be undone!"
+msgstr ""
+
 #
 msgid "Hue"
 msgstr "Sävy"
@@ -7083,6 +7096,16 @@ msgstr "Tee tästä merkistä lopetuspiste"
 #
 msgid "Make this mark just a mark"
 msgstr "Tee tästä tavallinen merkki"
+
+#
+#, fuzzy
+msgid "Make this mark the final 'out' point"
+msgstr "Tee tästä merkistä lopetuspiste"
+
+#
+#, fuzzy
+msgid "Make this mark the initial 'in' point"
+msgstr "Tee tästä merkistä aloituspiste"
 
 msgid "Malawi"
 msgstr "Malawi"
@@ -9161,6 +9184,9 @@ msgstr "Nopea"
 msgid "Quick EPG"
 msgstr "Nopea"
 
+msgid "Quick execute..."
+msgstr ""
+
 #
 msgid "Quick zap"
 msgstr "Pika kanavanvaihto"
@@ -9614,6 +9640,15 @@ msgstr "Palauta"
 #
 msgid "Restore backups"
 msgstr "Palauta varmuuskopiot"
+
+#
+#, fuzzy
+msgid "Restore cuts"
+msgstr "Palauta varmuuskopiot"
+
+#, fuzzy
+msgid "Restore previous cuts..."
+msgstr "Palaa edelliselle kanavalle"
 
 #
 msgid "Restore system settings"
@@ -10231,9 +10266,6 @@ msgstr "Valitse toiminto"
 #
 msgid "Select hard disk"
 msgstr "Valitse kovalevy"
-
-msgid "Select horizontal resolution:"
-msgstr ""
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr ""
@@ -11541,6 +11573,11 @@ msgid "Start"
 msgstr "Aloita testi"
 
 #
+#, fuzzy
+msgid "Start cut"
+msgstr "Aloita testi"
+
+#
 msgid "Start from the beginning"
 msgstr "Aloita alusta"
 
@@ -11597,8 +11634,17 @@ msgid "Status"
 msgstr ""
 
 #
+#, fuzzy
+msgid "Step back"
+msgstr "Askel itään"
+
+#
 msgid "Step east"
 msgstr "Askel itään"
+
+#, fuzzy
+msgid "Step forward"
+msgstr "Hae eteenpäin"
 
 #
 msgid "Step west"
@@ -12101,6 +12147,11 @@ msgstr ""
 
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standardi ei tue H.264 (HDTV) videota. Haluatko luoda erikoisformaattisen data DVD:n (jota ei voi soittaa normaaleilla DVD soittimilla) sen sijaan?"
+
+#
+#, fuzzy
+msgid "The MovieCut plugin is not installed."
+msgstr "Tätä lisäosaa ei ole asennettu."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN-koodin vaihto onnistui."
@@ -13657,12 +13708,13 @@ msgid "Weighted position"
 msgstr "Painotettu sijainti"
 
 #
+#, fuzzy
 msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
-"Seek to the start of the stuff you want to cut away. Press OK, select 'start cut'.\n"
+"Seek to the start of the stuff you want to cut away, press RED.\n"
 "\n"
-"Then seek to the end, press OK, select 'end cut'. That's it."
+"Then seek to the end, press GREEN. That's it."
 msgstr ""
 "Tervetuloa leikkauskohtien muokkaukseen.\n"
 "\n"
@@ -14570,6 +14622,9 @@ msgstr "Kielletyt"
 msgid "blue"
 msgstr "Sininen"
 
+msgid "both"
+msgstr ""
+
 msgid "bottom"
 msgstr "Alhaalla"
 
@@ -14581,6 +14636,11 @@ msgstr "Aikajärjestys"
 
 msgid "by hmmmdada"
 msgstr ""
+
+#
+#, fuzzy
+msgid "cancel"
+msgstr "Peruuta"
 
 msgid "cartoon/puppets"
 msgstr "piirretty/nukke"
@@ -14683,6 +14743,11 @@ msgstr "Oletus"
 msgid "delete cut"
 msgstr "Poista leikkausmääritys"
 
+#
+#, fuzzy
+msgid "delete cut (disabled)"
+msgstr " (ei käytössä)"
+
 msgid "descramble and record ecm"
 msgstr "Pura ja tallenna ECM"
 
@@ -14693,8 +14758,10 @@ msgstr "etsivä/trilleri"
 msgid "disable"
 msgstr "Pois"
 
-msgid "disable intro screen"
-msgstr ""
+#
+#, fuzzy
+msgid "disable cuts (edit)"
+msgstr "Kanavalistojen lisäys ja poisto"
 
 #
 msgid "disable move mode"
@@ -14767,11 +14834,13 @@ msgid "enable bouquet edit"
 msgstr "Kanavalistojen lisäys ja poisto"
 
 #
+#, fuzzy
+msgid "enable cuts (preview)"
+msgstr "Kanavalistojen lisäys ja poisto"
+
+#
 msgid "enable favourite edit"
 msgstr "Suosikkien lisäys ja poisto"
-
-msgid "enable intro screen"
-msgstr ""
 
 #
 msgid "enable move mode"
@@ -14786,11 +14855,21 @@ msgid "end alternatives edit"
 msgstr "tallenna muutokset ja poistu"
 
 #
+#, fuzzy
+msgid "end at this position"
+msgstr "Poista tämän kohdan jälkeen"
+
+#
 msgid "end bouquet edit"
 msgstr "tallenna muutokset ja poistu"
 
 #
 msgid "end cut here"
+msgstr "Lopeta leikkaus tähän"
+
+#
+#, fuzzy
+msgid "end cut here (reset)"
 msgstr "Lopeta leikkaus tähän"
 
 #
@@ -14849,7 +14928,7 @@ msgstr "et9000/et9100"
 msgid "et9200/9500/6500"
 msgstr "et9200/9500/6500"
 
-msgid "execute cuts (requires MovieCut plugin)"
+msgid "execute cuts and exit"
 msgstr ""
 
 #
@@ -15039,6 +15118,11 @@ msgstr "alusta moduuli"
 #
 msgid "init modules"
 msgstr "alusta moduulit"
+
+#
+#, fuzzy
+msgid "insert mark after each in"
+msgstr "Aseta tähän merkki"
 
 #
 msgid "insert mark here"
@@ -15377,7 +15461,13 @@ msgstr "populäärikulttuuri/perinteinen taide"
 msgid "pre-school children's program"
 msgstr "esikouluikäisten lastenohjelma"
 
+msgid "punch cuts"
+msgstr ""
+
 msgid "purge deleted userbouquets"
+msgstr ""
+
+msgid "quick execute"
 msgstr ""
 
 #, fuzzy
@@ -15419,6 +15509,11 @@ msgid "remove after this position"
 msgstr "Poista tämän kohdan jälkeen"
 
 #
+#, fuzzy
+msgid "remove all"
+msgstr "Poista kirjanmerkki"
+
+#
 msgid "remove all alternatives"
 msgstr "Poista kaikki vaihtoehtoiset kanavat"
 
@@ -15441,6 +15536,11 @@ msgid "remove cable services"
 msgstr ""
 
 #
+#, fuzzy
+msgid "remove cuts (preserve marks)"
+msgstr "Poista tämä merkki"
+
+#
 msgid "remove directory"
 msgstr "Poista hakemisto"
 
@@ -15451,6 +15551,11 @@ msgstr "Poista valittu"
 #
 msgid "remove from parental protection"
 msgstr "Poista lapsilukosta"
+
+#
+#, fuzzy
+msgid "remove marks (preserve cuts)"
+msgstr "Poista nimipalvelin"
 
 #
 msgid "remove new found flag"
@@ -15481,6 +15586,16 @@ msgstr "Useita kertoja"
 
 msgid "restore deleted userbouquets"
 msgstr ""
+
+#
+#, fuzzy
+msgid "restore previous cuts"
+msgstr "Kelaa edelliseen kappaleeseen"
+
+#
+#, fuzzy
+msgid "restore previous cuts & exit"
+msgstr "Kelaa edelliseen kappaleeseen"
 
 msgid "reverse by date"
 msgstr "Käänteinen aikajärjestys"
@@ -15693,6 +15808,11 @@ msgstr "Vakio"
 
 #
 msgid "start cut here"
+msgstr "Aloita leikkaus tästä"
+
+#
+#, fuzzy
+msgid "start cut here (reset)"
 msgstr "Aloita leikkaus tästä"
 
 #

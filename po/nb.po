@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 02:19+0430\n"
+"POT-Creation-Date: 2019-09-07 00:27+0430\n"
 "PO-Revision-Date: 2019-08-25 12:48+0200\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
@@ -4905,6 +4905,11 @@ msgid "Encryption:"
 msgstr "Kryptering:"
 
 #
+#, fuzzy
+msgid "End cut"
+msgstr "Slutt tid"
+
+#
 msgid "End time"
 msgstr "Slutt tid"
 
@@ -5168,6 +5173,9 @@ msgstr "Overalt"
 #
 msgid "Exceeds dual layer medium!"
 msgstr "Overgår to lags medium!"
+
+msgid "Execute cuts and exit"
+msgstr ""
 
 #
 msgid "Execution finished!!"
@@ -6201,6 +6209,11 @@ msgstr "Hvor mange minutter vil du legge til opptaket?"
 msgid "How many minutes do you want to record?"
 msgstr "Hvor mange minutter vil du ta opp?"
 
+msgid ""
+"How would you like to modify the movie?\n"
+"Warning: This operation cannot be undone!"
+msgstr ""
+
 #
 msgid "Hue"
 msgstr "Fargetone"
@@ -7119,6 +7132,16 @@ msgstr "Marker som et slutt punkt"
 #
 msgid "Make this mark just a mark"
 msgstr "Marker som et punkt"
+
+#
+#, fuzzy
+msgid "Make this mark the final 'out' point"
+msgstr "Marker som et slutt punkt"
+
+#
+#, fuzzy
+msgid "Make this mark the initial 'in' point"
+msgstr "Marker som et start punkt"
 
 msgid "Malawi"
 msgstr "Malawi"
@@ -9142,6 +9165,9 @@ msgstr "Hurtig"
 msgid "Quick EPG"
 msgstr "Hurtig"
 
+msgid "Quick execute..."
+msgstr ""
+
 #
 msgid "Quick zap"
 msgstr "Hurtig bytte"
@@ -9581,6 +9607,15 @@ msgstr "Gjenopprett"
 #
 msgid "Restore backups"
 msgstr "Gjenopprett sikkerhetskopier"
+
+#
+#, fuzzy
+msgid "Restore cuts"
+msgstr "Gjenopprett sikkerhetskopier"
+
+#, fuzzy
+msgid "Restore previous cuts..."
+msgstr "Husk tilbake til forrige kanal"
 
 #
 msgid "Restore system settings"
@@ -10193,10 +10228,6 @@ msgstr "Velg funksjon"
 #
 msgid "Select hard disk"
 msgstr "Velg harddisk"
-
-#
-msgid "Select horizontal resolution:"
-msgstr "Velg horisontal oppløsning:"
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr "Velg hvor raskt parabolen skal kjøre mellom satellitter."
@@ -11483,6 +11514,11 @@ msgid "Start"
 msgstr "Start test"
 
 #
+#, fuzzy
+msgid "Start cut"
+msgstr "Start test"
+
+#
 msgid "Start from the beginning"
 msgstr "Start fra begynnelsen"
 
@@ -11538,8 +11574,18 @@ msgid "Status"
 msgstr ""
 
 #
+#, fuzzy
+msgid "Step back"
+msgstr "Gå østover"
+
+#
 msgid "Step east"
 msgstr "Gå østover"
+
+#
+#, fuzzy
+msgid "Step forward"
+msgstr "Spol framover"
 
 #
 msgid "Step west"
@@ -12032,6 +12078,11 @@ msgstr "%d min gjenstår av opptaket."
 
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standarden støtter ikke videoprotokollen H.264 (HDTV). Vil du heller opprette et spesielt dataformat for DVD? (dette formatet kan ikke spilles i frittstående DVD-spillere)"
+
+#
+#, fuzzy
+msgid "The MovieCut plugin is not installed."
+msgstr "Dette tillegget er ikke installert."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN-koden har blitt endret."
@@ -13584,12 +13635,13 @@ msgstr "ukentlig"
 msgid "Weighted position"
 msgstr "Hoved posisjon"
 
+#, fuzzy
 msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
-"Seek to the start of the stuff you want to cut away. Press OK, select 'start cut'.\n"
+"Seek to the start of the stuff you want to cut away, press RED.\n"
 "\n"
-"Then seek to the end, press OK, select 'end cut'. That's it."
+"Then seek to the end, press GREEN. That's it."
 msgstr ""
 "Velkommen til klipp og redigering.\n"
 "\n"
@@ -14503,6 +14555,9 @@ msgstr "svarteliste"
 msgid "blue"
 msgstr "blå"
 
+msgid "both"
+msgstr ""
+
 msgid "bottom"
 msgstr "bunn"
 
@@ -14515,6 +14570,11 @@ msgstr "etter dato"
 
 msgid "by hmmmdada"
 msgstr ""
+
+#
+#, fuzzy
+msgid "cancel"
+msgstr "Tilbake"
 
 msgid "cartoon/puppets"
 msgstr "tegneserie/dukker"
@@ -14615,6 +14675,11 @@ msgstr "standard"
 msgid "delete cut"
 msgstr "slett klipp"
 
+#
+#, fuzzy
+msgid "delete cut (disabled)"
+msgstr " (deaktivert)"
+
 msgid "descramble and record ecm"
 msgstr "avkode og spill inn ecm"
 
@@ -14625,8 +14690,10 @@ msgstr "krim/spenning"
 msgid "disable"
 msgstr "deaktiver"
 
-msgid "disable intro screen"
-msgstr "deaktiver intro skjerm"
+#
+#, fuzzy
+msgid "disable cuts (edit)"
+msgstr "aktiver redigering i kanallisten"
 
 msgid "disable move mode"
 msgstr "slå av flytte modus"
@@ -14696,11 +14763,13 @@ msgid "enable bouquet edit"
 msgstr "aktiver redigering i kanallisten"
 
 #
+#, fuzzy
+msgid "enable cuts (preview)"
+msgstr "aktiver redigering i kanallisten"
+
+#
 msgid "enable favourite edit"
 msgstr "aktiver redigering i favorittlisten"
-
-msgid "enable intro screen"
-msgstr "aktiver introduksjons skjerm"
 
 #
 msgid "enable move mode"
@@ -14714,12 +14783,21 @@ msgstr "aktivert"
 msgid "end alternatives edit"
 msgstr "avslutt redigering"
 
+#, fuzzy
+msgid "end at this position"
+msgstr "slett etter denne posisjon"
+
 #
 msgid "end bouquet edit"
 msgstr "avslutt redigering i kanallister"
 
 #
 msgid "end cut here"
+msgstr "avslutt klippet her"
+
+#
+#, fuzzy
+msgid "end cut here (reset)"
 msgstr "avslutt klippet her"
 
 #
@@ -14778,8 +14856,8 @@ msgstr "et9000/et9100"
 msgid "et9200/9500/6500"
 msgstr "et9200/9500/6500"
 
-msgid "execute cuts (requires MovieCut plugin)"
-msgstr "bruk klipp og lim (må ha tillegget MovieCut)"
+msgid "execute cuts and exit"
+msgstr ""
 
 #
 msgid "exit DVD player or return to file browser"
@@ -14975,6 +15053,10 @@ msgstr "igangsett modul"
 #
 msgid "init modules"
 msgstr "igangsett modulene"
+
+#, fuzzy
+msgid "insert mark after each in"
+msgstr "sett et merke her"
 
 msgid "insert mark here"
 msgstr "sett et merke her"
@@ -15312,8 +15394,14 @@ msgstr "populær kultur/tradisjonell kunst"
 msgid "pre-school children's program"
 msgstr "førskole barneprogram"
 
+msgid "punch cuts"
+msgstr ""
+
 msgid "purge deleted userbouquets"
 msgstr "fjern slettede kanallister"
+
+msgid "quick execute"
+msgstr ""
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -15351,6 +15439,10 @@ msgstr "bemerkelsesverdige mennesker"
 msgid "remove after this position"
 msgstr "slett etter denne posisjon"
 
+#, fuzzy
+msgid "remove all"
+msgstr "fjern bokmerke"
+
 msgid "remove all alternatives"
 msgstr "slett alle alternativer"
 
@@ -15370,6 +15462,10 @@ msgstr "fjern kanallisten fra foreldrekontroll beskyttelsen"
 msgid "remove cable services"
 msgstr "fjern kabel TV kanaler"
 
+#, fuzzy
+msgid "remove cuts (preserve marks)"
+msgstr "fjern dette merket"
+
 msgid "remove directory"
 msgstr "fjern mappe"
 
@@ -15378,6 +15474,11 @@ msgstr "fjern denne kanal fra kanallisten"
 
 msgid "remove from parental protection"
 msgstr "fjern fra foreldrekontroll beskyttelsen"
+
+#
+#, fuzzy
+msgid "remove marks (preserve cuts)"
+msgstr "fjern kabel TV kanaler"
 
 msgid "remove new found flag"
 msgstr "fjern nye flagg"
@@ -15405,6 +15506,16 @@ msgstr "gjentatt"
 
 msgid "restore deleted userbouquets"
 msgstr "gjenopprett slettede kanallister"
+
+#
+#, fuzzy
+msgid "restore previous cuts"
+msgstr "spol tilbake til forrige kapittel"
+
+#
+#, fuzzy
+msgid "restore previous cuts & exit"
+msgstr "spol tilbake til forrige kapittel"
 
 msgid "reverse by date"
 msgstr "bakover etter dato"
@@ -15613,6 +15724,11 @@ msgstr "standard"
 
 #
 msgid "start cut here"
+msgstr "start klipp her"
+
+#
+#, fuzzy
+msgid "start cut here (reset)"
 msgstr "start klipp her"
 
 msgid "start directory"

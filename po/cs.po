@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 02:19+0430\n"
+"POT-Creation-Date: 2019-09-07 00:27+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -5054,6 +5054,11 @@ msgid "Encryption:"
 msgstr "Zabezpečení:"
 
 #
+#, fuzzy
+msgid "End cut"
+msgstr "Čas konce"
+
+#
 msgid "End time"
 msgstr "Čas konce"
 
@@ -5323,6 +5328,9 @@ msgstr "Všude"
 #
 msgid "Exceeds dual layer medium!"
 msgstr "Překračuje kapacitu dvouvrstvého média!"
+
+msgid "Execute cuts and exit"
+msgstr ""
 
 #
 msgid "Execution finished!!"
@@ -6362,6 +6370,11 @@ msgstr "Kolik minut chcete přidat k nahrávání?"
 msgid "How many minutes do you want to record?"
 msgstr "Kolik minut chcete nahrát?"
 
+msgid ""
+"How would you like to modify the movie?\n"
+"Warning: This operation cannot be undone!"
+msgstr ""
+
 #
 msgid "Hue"
 msgstr "Odstín"
@@ -7302,6 +7315,16 @@ msgstr "Udělat z této značky 'out' bod"
 #
 msgid "Make this mark just a mark"
 msgstr "Udělat z této značky jen značku"
+
+#
+#, fuzzy
+msgid "Make this mark the final 'out' point"
+msgstr "Udělat z této značky 'out' bod"
+
+#
+#, fuzzy
+msgid "Make this mark the initial 'in' point"
+msgstr "Udělat z této značky 'in' bod"
 
 msgid "Malawi"
 msgstr "Malawi"
@@ -9395,6 +9418,9 @@ msgstr "Rychlý"
 msgid "Quick EPG"
 msgstr "Rychlý"
 
+msgid "Quick execute..."
+msgstr ""
+
 #
 msgid "Quick zap"
 msgstr "Rychlé přepínání"
@@ -9856,6 +9882,15 @@ msgstr "Obnovit"
 #
 msgid "Restore backups"
 msgstr "Obnovit zálohu"
+
+#
+#, fuzzy
+msgid "Restore cuts"
+msgstr "Obnovit zálohu"
+
+#, fuzzy
+msgid "Restore previous cuts..."
+msgstr "Vyvolat předchozí program"
 
 #
 msgid "Restore system settings"
@@ -10487,10 +10522,6 @@ msgstr "Výběr funkce"
 #
 msgid "Select hard disk"
 msgstr "Zvolte pevný disk"
-
-#
-msgid "Select horizontal resolution:"
-msgstr "Zvolte horizontání rozlišení:"
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr "Nastavte jak rychle by se měla parabola natáčet mezi družicemi."
@@ -11806,6 +11837,11 @@ msgid "Start"
 msgstr "Spustit test"
 
 #
+#, fuzzy
+msgid "Start cut"
+msgstr "Spustit test"
+
+#
 msgid "Start from the beginning"
 msgstr "Spustit od začátku"
 
@@ -11866,8 +11902,18 @@ msgid "Status"
 msgstr ""
 
 #
+#, fuzzy
+msgid "Step back"
+msgstr "Krok východně"
+
+#
 msgid "Step east"
 msgstr "Krok východně"
+
+#
+#, fuzzy
+msgid "Step forward"
+msgstr "Přeskočit dopředu"
 
 #
 msgid "Step west"
@@ -12369,6 +12415,11 @@ msgstr "Do skončení události zbývá %d minut."
 
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standard nepodporuje H.264 (HDTV) video streamy. Chcete místo toho vytvořit speciální formát data DVD (které ale nepůjde přehrát ve stolních DVD přehrávačích)?"
+
+#
+#, fuzzy
+msgid "The MovieCut plugin is not installed."
+msgstr "Plugin není nainstalován."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN kód byl úspěšně změněn."
@@ -13953,12 +14004,13 @@ msgid "Weighted position"
 msgstr "Vážená pozice"
 
 #
+#, fuzzy
 msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
-"Seek to the start of the stuff you want to cut away. Press OK, select 'start cut'.\n"
+"Seek to the start of the stuff you want to cut away, press RED.\n"
 "\n"
-"Then seek to the end, press OK, select 'end cut'. That's it."
+"Then seek to the end, press GREEN. That's it."
 msgstr ""
 "Vítejte v editoru střihů.\n"
 "\n"
@@ -14895,6 +14947,9 @@ msgstr "blacklist"
 msgid "blue"
 msgstr "Modré"
 
+msgid "both"
+msgstr ""
+
 msgid "bottom"
 msgstr "dole"
 
@@ -14907,6 +14962,11 @@ msgstr "Podle data"
 
 msgid "by hmmmdada"
 msgstr ""
+
+#
+#, fuzzy
+msgid "cancel"
+msgstr "Zavřít"
 
 msgid "cartoon/puppets"
 msgstr "karikatury/loutky"
@@ -15011,6 +15071,11 @@ msgstr "Výchozí"
 msgid "delete cut"
 msgstr "odstranit střih"
 
+#
+#, fuzzy
+msgid "delete cut (disabled)"
+msgstr " (zakázáno)"
+
 msgid "descramble and record ecm"
 msgstr "Dekódovat a nahrávat ecm"
 
@@ -15022,8 +15087,9 @@ msgid "disable"
 msgstr "Zakázat"
 
 #
-msgid "disable intro screen"
-msgstr "zakázat úvodní obrazovku"
+#, fuzzy
+msgid "disable cuts (edit)"
+msgstr "Povolit úpravu přehledu"
 
 #
 msgid "disable move mode"
@@ -15095,11 +15161,13 @@ msgid "enable bouquet edit"
 msgstr "Povolit úpravu přehledu"
 
 #
+#, fuzzy
+msgid "enable cuts (preview)"
+msgstr "Povolit úpravu přehledu"
+
+#
 msgid "enable favourite edit"
 msgstr "Povolit úpravu oblíbených"
-
-msgid "enable intro screen"
-msgstr "povolit úvodní obrazovku"
 
 #
 msgid "enable move mode"
@@ -15114,11 +15182,21 @@ msgid "end alternatives edit"
 msgstr "Ukončit úpravu alternativ"
 
 #
+#, fuzzy
+msgid "end at this position"
+msgstr "odebrat po této pozici"
+
+#
 msgid "end bouquet edit"
 msgstr "Ukončit úpravu přehledu"
 
 #
 msgid "end cut here"
+msgstr "konec střihu zde"
+
+#
+#, fuzzy
+msgid "end cut here (reset)"
 msgstr "konec střihu zde"
 
 #
@@ -15177,8 +15255,8 @@ msgstr "et9000/et9100"
 msgid "et9200/9500/6500"
 msgstr "et9200/9500/6500"
 
-msgid "execute cuts (requires MovieCut plugin)"
-msgstr "provést střihy (vyžaduje MovieCut plugin)"
+msgid "execute cuts and exit"
+msgstr ""
 
 #
 msgid "exit DVD player or return to file browser"
@@ -15375,6 +15453,11 @@ msgstr "inicializační modul"
 #
 msgid "init modules"
 msgstr "inicializace modulů"
+
+#
+#, fuzzy
+msgid "insert mark after each in"
+msgstr "vložit značku"
 
 #
 msgid "insert mark here"
@@ -15718,8 +15801,14 @@ msgstr "lidová kultura/tradiční umění"
 msgid "pre-school children's program"
 msgstr "program pro předškolní děti"
 
+msgid "punch cuts"
+msgstr ""
+
 msgid "purge deleted userbouquets"
 msgstr "Odstranit smazané přehledy"
+
+msgid "quick execute"
+msgstr ""
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -15761,6 +15850,11 @@ msgid "remove after this position"
 msgstr "odebrat po této pozici"
 
 #
+#, fuzzy
+msgid "remove all"
+msgstr "Smazat záložku"
+
+#
 msgid "remove all alternatives"
 msgstr "Odstranit všechny alternativy"
 
@@ -15783,6 +15877,11 @@ msgid "remove cable services"
 msgstr "Odstranit programy kabelové televize"
 
 #
+#, fuzzy
+msgid "remove cuts (preserve marks)"
+msgstr "odebrat tuto značku"
+
+#
 msgid "remove directory"
 msgstr "Smazat adresář"
 
@@ -15793,6 +15892,10 @@ msgstr "Odstranit položku"
 #
 msgid "remove from parental protection"
 msgstr "Odebrat z rodičovské ochrany"
+
+#, fuzzy
+msgid "remove marks (preserve cuts)"
+msgstr "Odstranit programy kabelové televize"
 
 #
 msgid "remove new found flag"
@@ -15822,6 +15925,16 @@ msgstr "Opakování"
 
 msgid "restore deleted userbouquets"
 msgstr "Obnovit smazané přehledy"
+
+#
+#, fuzzy
+msgid "restore previous cuts"
+msgstr "zpět na předchozí kapitolu"
+
+#
+#, fuzzy
+msgid "restore previous cuts & exit"
+msgstr "zpět na předchozí kapitolu"
 
 #
 msgid "reverse by date"
@@ -16039,6 +16152,11 @@ msgstr "Standardní"
 
 #
 msgid "start cut here"
+msgstr "začátek střihu zde"
+
+#
+#, fuzzy
+msgid "start cut here (reset)"
 msgstr "začátek střihu zde"
 
 #
