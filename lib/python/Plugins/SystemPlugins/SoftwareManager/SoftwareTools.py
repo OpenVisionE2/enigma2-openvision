@@ -7,7 +7,7 @@ from Components.Sources.List import List
 from Components.Ipkg import IpkgComponent
 from Components.Network import iNetwork
 from Tools.Directories import resolveFilename, SCOPE_METADIR
-from Tools.HardwareInfo import HardwareInfo
+from enigma import getBoxType
 from time import time
 
 
@@ -265,7 +265,7 @@ class SoftwareTools(PackageInfoHandler):
 		if "hardware" in prerequisites:
 			hardware_found = False
 			for hardware in prerequisites["hardware"]:
-				if hardware == HardwareInfo().device_name:
+				if hardware == getBoxType():
 					hardware_found = True
 			if not hardware_found:
 				return False

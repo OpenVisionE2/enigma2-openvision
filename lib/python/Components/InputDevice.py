@@ -5,6 +5,7 @@ from fcntl import ioctl
 import os
 import struct
 import platform
+from Tools.Directories import pathExists
 
 # include/uapi/asm-generic/ioctl.h
 # asm-generic/ioctl.h for HAVE_OLDE2_API
@@ -209,7 +210,7 @@ config.plugins.remotecontroltype.rctype = ConfigInteger(default = 0)
 
 class RcTypeControl():
 	def __init__(self):
-		if SystemInfo["RcTypeChangable"] and getBoxBrand() not in ("gigablue","odin","ini","entwopia","tripledot"):
+		if SystemInfo["RcTypeChangable"] and pathExists('/proc/stb/info/boxtype') and getBoxBrand() not in ("gigablue","odin","ini","entwopia","tripledot"):
 			self.isSupported = True
 			self.boxType = open('/proc/stb/info/boxtype', 'r').read().strip()
 			if config.plugins.remotecontroltype.rctype.value != 0:

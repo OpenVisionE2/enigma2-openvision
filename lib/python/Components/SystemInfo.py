@@ -3,6 +3,7 @@ from Tools.Directories import fileExists, fileCheck, pathExists, fileHas
 from Tools.HardwareInfo import HardwareInfo
 import os
 from os import access, R_OK
+from Tools.StbHardware import getBoxProc
 
 SystemInfo = {}
 
@@ -31,7 +32,7 @@ for cislot in range (0, SystemInfo["CommonInterface"]):
 
 SystemInfo["HasSoftcamInstalled"] = hassoftcaminstalled()
 SystemInfo["NumVideoDecoders"] = getNumVideoDecoders()
-SystemInfo["PIPAvailable"] = SystemInfo["NumVideoDecoders"] > 1
+SystemInfo["PIPAvailable"] = getBoxType() != "i55plus" and SystemInfo["NumVideoDecoders"] > 1
 SystemInfo["CanMeasureFrontendInputPower"] = eDVBResourceManager.getInstance().canMeasureFrontendInputPower()
 SystemInfo["12V_Output"] = Misc_Options.getInstance().detected_12V_output()
 SystemInfo["ZapMode"] = fileCheck("/proc/stb/video/zapmode") or fileCheck("/proc/stb/video/zapping_mode")
@@ -56,15 +57,15 @@ SystemInfo["Power4x7Standby"] = fileExists("/proc/stb/fp/power4x7standby")
 SystemInfo["Power4x7Suspend"] = fileExists("/proc/stb/fp/power4x7suspend")
 SystemInfo["Display"] = SystemInfo["FrontpanelDisplay"] or SystemInfo["StandbyLED"]
 SystemInfo["PowerOffDisplay"] = getBoxType() != "formuler1" and fileCheck("/proc/stb/power/vfd") or fileCheck("/proc/stb/lcd/vfd")
-SystemInfo["WakeOnLAN"] = not getBoxType().startswith("et80") and fileCheck("/proc/stb/power/wol") or fileCheck("/proc/stb/fp/wol")
-SystemInfo["HasExternalPIP"] = not (getBoxType().startswith("et9") or getBoxType().startswith("et5") or getBoxType().startswith("et6")) and fileCheck("/proc/stb/vmpeg/1/external")
+SystemInfo["WakeOnLAN"] = getBoxType() not in ("et8000","et10000") and fileCheck("/proc/stb/power/wol") or fileCheck("/proc/stb/fp/wol")
+SystemInfo["HasExternalPIP"] = not (getBoxProc().startswith("et9") or getBoxProc().startswith("et5") or getBoxType().getBoxProc("et6")) and fileCheck("/proc/stb/vmpeg/1/external")
 SystemInfo["VideoDestinationConfigurable"] = fileExists("/proc/stb/vmpeg/0/dst_left")
 SystemInfo["hasPIPVisibleProc"] = fileCheck("/proc/stb/vmpeg/1/visible")
 SystemInfo["MaxPIPSize"] = getBoxType() in ("hd51","h7","vs1500","e4hdultra") and (360, 288) or (540, 432)
-SystemInfo["VFD_scroll_repeats"] = not getBoxType().startswith("et85") and fileCheck("/proc/stb/lcd/scroll_repeats")
-SystemInfo["VFD_scroll_delay"] = not getBoxType().startswith("et85") and fileCheck("/proc/stb/lcd/scroll_delay")
-SystemInfo["VFD_initial_scroll_delay"] = not getBoxType().startswith("et85") and fileCheck("/proc/stb/lcd/initial_scroll_delay")
-SystemInfo["VFD_final_scroll_delay"] = not getBoxType().startswith("et85") and fileCheck("/proc/stb/lcd/final_scroll_delay")
+SystemInfo["VFD_scroll_repeats"] = getBoxType() != "et8500" and fileCheck("/proc/stb/lcd/scroll_repeats")
+SystemInfo["VFD_scroll_delay"] = getBoxType() != "et8500" and fileCheck("/proc/stb/lcd/scroll_delay")
+SystemInfo["VFD_initial_scroll_delay"] = getBoxType() != "et8500" and fileCheck("/proc/stb/lcd/initial_scroll_delay")
+SystemInfo["VFD_final_scroll_delay"] = getBoxType() != "et8500" and fileCheck("/proc/stb/lcd/final_scroll_delay")
 SystemInfo["LcdLiveTV"] = fileCheck("/proc/stb/fb/sd_detach") or fileCheck("/proc/stb/lcd/live_enable")
 SystemInfo["LcdLiveTVMode"] = fileCheck("/proc/stb/lcd/mode")
 SystemInfo["LcdLiveDecoder"] = fileCheck("/proc/stb/lcd/live_decoder")
@@ -81,7 +82,7 @@ SystemInfo["HasMultichannelPCM"] = fileCheck("/proc/stb/audio/multichannel_pcm")
 SystemInfo["HasMMC"] = fileExists("/proc/cmdline") and "root=/dev/mmcblk" in open("/proc/cmdline","r").read()
 SystemInfo["HasTranscoding"] = pathExists("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
 SystemInfo["HasH265Encoder"] = fileHas("/proc/stb/encoder/0/vcodec_choices","h265")
-SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = getBoxType() == "vusolo4k"
+SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = getBoxType() in ("vusolo4k","gbquad4k")
 SystemInfo["HasColordepth"] = fileCheck("/proc/stb/video/hdmi_colordepth")
 SystemInfo["HasFrontDisplayPicon"] = getBoxType() in ("vusolo4k","et8500")
 SystemInfo["Has24hz"] = fileCheck("/proc/stb/video/videomode_24hz")
@@ -103,9 +104,9 @@ SystemInfo["Has3DSurroundSoftLimiter"] = fileExists("/proc/stb/audio/3dsurround_
 SystemInfo["hasXcoreVFD"] = getBoxType() in ("osmega","spycat4k","spycat4kmini","spycat4kcombo") and fileCheck("/sys/module/brcmstb_%s/parameters/pt6302_cgram" % getBoxType())
 SystemInfo["HasOfflineDecoding"] = getBoxType() not in ("osmini","osminiplus","et7000mini","et11000","mbmicro","mbtwinplus","mbmicrov2","et7x00","et8500")
 SystemInfo["HasRootSubdir"] = fileHas("/proc/cmdline", "rootsubdir=")
-SystemInfo["canMultiBoot"] = SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or fileHas("/proc/cmdline", "_4.boxmode=") and (1, 4, "mmcblk0", False) or getBoxType() in ("gbue4k","gbquad4k") and (3, 3, "mmcblk0", True) or getBoxType() == "e4hdultra" and (1, 4, "mmcblk0", False) or getBoxType() in ("osmio4k","osmio4kplus") and (1, 4, "mmcblk1", True)
+SystemInfo["canMultiBoot"] = SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or fileHas("/proc/cmdline", "_4.boxmode=") and (1, 4, "mmcblk0", False) or getBoxType() in ("gbue4k","gbquad4k") and (3, 3, "mmcblk0", True) or getBoxType() == "e4hdultra" and (1, 4, "mmcblk0", False) or getBoxType() in ("osmio4k","osmio4kplus") and (1, 4, "mmcblk1", True) or SystemInfo["HiSilicon"]
 SystemInfo["canMode12"] = fileHas("/proc/cmdline", "_4.boxmode=1 ") and '192M' or fileHas("/proc/cmdline", "_4.boxmode=12") and '192M'
-SystemInfo["canFlashWithOfgwrite"] = not(getBoxType().startswith("dm"))
+SystemInfo["canFlashWithOfgwrite"] = getBoxBrand() != "dreambox"
 SystemInfo["HDRSupport"] = fileExists("/proc/stb/hdmi/hlg_support_choices") and fileCheck("/proc/stb/hdmi/hlg_support")
 SystemInfo["CanDownmixAC3"] = fileHas("/proc/stb/audio/ac3_choices","downmix")
 SystemInfo["CanDownmixDTS"] = fileHas("/proc/stb/audio/dts_choices","downmix")
@@ -123,7 +124,7 @@ SystemInfo["NCamIsActive"] = SystemInfo["NCamInstalled"] and fileExists("/tmp/.n
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/stb/info/openvision")
 SystemInfo["OLDE2API"] = getBoxType() in ("dm800","su980")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and getBoxType() not in ("hd51","h7")
-SystemInfo["AndroidMode"] = getBoxType() == "su980" or SystemInfo["RecoveryMode"] and getBoxType() == "multibox"
+SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and getBoxType() == "multibox" or getBoxType() == "su980"
 SystemInfo["grautec"] = fileExists("/tmp/usbtft")
 SystemInfo["CanAC3plusTranscode"] = fileExists("/proc/stb/audio/ac3plus_choices")
 SystemInfo["CanDTSHD"] = fileExists("/proc/stb/audio/dtshd_choices")
@@ -142,7 +143,7 @@ SystemInfo["GigaBlueQuad"] = getBoxType() in ("gbquad","gbquadplus")
 SystemInfo["AmlogicFamily"] = getBoxBrand() in ("linkdroid","mecool","minix","wetek","hardkernel") or getBoxType() == "dreamone"
 SystemInfo["VFDDelay"] = getBoxType() in ("sf4008","beyonwizu4")
 SystemInfo["VFDRepeats"] = getBoxBrand() != "ixuss" and getBoxType() not in ("atemio6000","atemio6100","bwidowx2","mbhybrid","opticumtt","osmini","spycatmini","spycatminiplus","bwidowx","xpeedlx1","odinplus","xp1000","h3","h5","h6","sh1","9910lx","9911lx","9920lx","e4hdcombo","odin2hybrid","bre2ze","h4","h7","lc","vipercombohdd","evominiplus","enfinity","marvel1","vipercombo","formuler3","formuler4","hd1100","hd1200","hd1265","hd1500","hd500c","hd530c","vs1000","classm","axodin","axodinc","starsatlx","genius","evo","galaxym6","9900lx","tiviarmin","t2cable","xcombo","enibox","mago","x1plus","sf108","anadol4k","anadol4kcombo","anadol4kv2","axashis4kcombo","axashis4kcomboplus","dinobot4k","dinobot4kl","dinobot4kmini","dinobot4kplus","dinobot4kpro","dinobot4kse","dinobotu55","ferguson4k","mediabox4k","sf128","sf138","bre2zet2c","formuler4turbo","osninopro","osnino","osninoplus","osmio4k","hd60","hd61","h9combo","et1x000","bcm7358","vp7358ci","gbtrio4k","ustym4kpro","cc1","sf8008","beyonwizv2")
-SystemInfo["HiSilicon"] = getBoxType() in ("gbtrio4k","gbip4k","sf8008","cc1","ustym4kpro","beyonwizv2","viper4k")
+SystemInfo["HiSilicon"] = getBoxType() in ("gbtrio4k","gbip4k","sf8008","cc1","ustym4kpro","beyonwizv2","viper4k") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt")
 SystemInfo["FirstCheckModel"] = getBoxType() in ("tmtwin4k","mbmicrov2","revo4k","force3uhd","mbmicro","e4hd","e4hdhybrid","valalinux","lunix","tmnanom3","purehd","force2nano","purehdse") or getBoxBrand() in ("linkdroid","wetek")
 SystemInfo["SecondCheckModel"] = getBoxType() in ("osninopro","osnino","osninoplus","dm7020hd","dm7020hdv2","9910lx","9911lx","9920lx","tmnanose","tmnanoseplus","tmnanosem2","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","force2plushv") or getBoxBrand() == "ixuss"
 SystemInfo["DifferentLCDSettings"] = getBoxType() in ("spycat4kmini","osmega")

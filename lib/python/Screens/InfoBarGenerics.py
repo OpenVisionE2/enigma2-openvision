@@ -39,7 +39,7 @@ from ServiceReference import ServiceReference, isPlayableForCur
 from Tools import Notifications, ASCIItranslit
 from Tools.Directories import fileExists, getRecordingFilename, moveFiles
 
-from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB
+from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB, getBoxBrand
 
 from time import time, localtime, strftime
 import os
@@ -1198,11 +1198,14 @@ class InfoBarEPG:
 		plugin(session = self.session, servicelist = self.servicelist)
 
 	def showEventInfoPlugins(self):
-		pluginlist = self.getEPGPluginList()
-		if pluginlist:
-			self.session.openWithCallback(self.EventInfoPluginChosen, ChoiceBox, title=_("Please choose an extension..."), list=pluginlist, skin_name="EPGExtensionsList", reorderConfig="eventinfo_order", windowTitle=_("Events info menu"))
+		if getBoxBrand() not in ("xtrend","odin","ini","dags","gigablue","xp"):
+			pluginlist = self.getEPGPluginList()
+			if pluginlist:
+				self.session.openWithCallback(self.EventInfoPluginChosen, ChoiceBox, title=_("Please choose an extension..."), list=pluginlist, skin_name="EPGExtensionsList", reorderConfig="eventinfo_order", windowTitle=_("Events info menu"))
+			else:
+				self.openSingleServiceEPG()
 		else:
-			self.openSingleServiceEPG()
+			self.openEventView()
 
 	def EventInfoPluginChosen(self, answer):
 		if answer is not None:

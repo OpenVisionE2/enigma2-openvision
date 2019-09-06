@@ -1,5 +1,5 @@
 from Tools.Profile import profile
-from enigma import eServiceReference
+from enigma import eServiceReference, getBoxBrand
 
 # workaround for required config entry dependencies.
 import Screens.MovieSelection
@@ -48,7 +48,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 			{
 				"showMovies": (self.showMovies, _("Play recorded movies...")),
 				"showRadio": (self.showRadio, _("Show the radio player...")),
-				"showTv": (self.showTv, _("Show the tv player...")),
+				"showTv": (self.TvRadioToggle, _("Show the tv player...")),
 				"toggleTvRadio": (self.toggleTvRadio, _("Toggle the tv and the radio player...")),
 			}, prio=2)
 
@@ -117,6 +117,12 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 			self.rds_display.hide() # in InfoBarRdsDecoder
 			from Screens.ChannelSelection import ChannelSelectionRadio
 			self.session.openWithCallback(self.ChannelSelectionRadioClosed, ChannelSelectionRadio, self)
+
+	def TvRadioToggle(self):
+		if getBoxBrand() == "gigablue":
+			self.toggleTvRadio()
+		else:
+			self.showTv()
 
 	def toggleTvRadio(self):
 		if self.radioTV == 1:
