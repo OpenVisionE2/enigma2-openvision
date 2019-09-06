@@ -280,7 +280,7 @@ class CronTimers(Screen):
 				myline = mysel[1]
 				file('/etc/cron/crontabs/root.tmp', 'w').writelines([l for l in file('/etc/cron/crontabs/root').readlines() if myline not in l])
 				rename('/etc/cron/crontabs/root.tmp','/etc/cron/crontabs/root')
-				rc = system('crontab /etc/cron/crontabs/root -c /etc/cron/crontabs')
+				rc = Console().ePopen('crontab /etc/cron/crontabs/root -c /etc/cron/crontabs')
 				self.updateList()
 
 	def info(self):
@@ -401,7 +401,7 @@ class CronTimersConfig(Screen, ConfigListScreen):
 		out = open('/etc/cron/crontabs/root', 'a')
 		out.write(newcron)
 		out.close()
-		rc = system('crontab /etc/cron/crontabs/root -c /etc/cron/crontabs')
+		rc = Console().ePopen('crontab /etc/cron/crontabs/root -c /etc/cron/crontabs')
 		config.crontimers.predefined_command.value = 'None'
 		config.crontimers.user_command.value = 'None'
 		config.crontimers.runwhen.value = 'Daily'
