@@ -4,6 +4,10 @@ from Tools.CList import CList
 from SystemInfo import SystemInfo
 from Components.Console import Console
 import Task
+from Tools.StbHardware import getBoxProc
+from boxbranding import getMachineMtdRoot
+
+hw_type = getBoxProc()
 
 def readFile(filename):
 	file = open(filename)
@@ -69,7 +73,7 @@ class Harddisk:
 		self.phys_path = os.path.realpath(self.sysfsPath('device'))
 
 		self.removable = removable
-		self.internal = "pci" in self.phys_path or "ahci" in self.phys_path or "sata" in self.phys_path
+		self.internal = "ide" in self.phys_path or "pci" in self.phys_path or "ahci" in self.phys_path or "sata" in self.phys_path
 		try:
 			data = open("/sys/block/%s/queue/rotational" % device, "r").read().strip()
 			self.rotational = int(data)
@@ -107,7 +111,7 @@ class Harddisk:
 
 	def partitionPath(self, n):
 		if self.type == DEVTYPE_UDEV:
-			if self.dev_path.startswith('/dev/mmcblk0'):
+			if self.dev_path.startswith('/dev/mmcblk'):
 				return self.dev_path + "p" + n
 			else:
 				return self.dev_path + n
@@ -173,7 +177,7 @@ class Harddisk:
 				vendor = readFile(self.sysfsPath('device/vendor'))
 				model = readFile(self.sysfsPath('device/model'))
 				return vendor + '(' + model + ')'
-			elif self.device.startswith('mmcblk0'):
+			elif self.device.startswith('mmcblk'):
 				return readFile(self.sysfsPath('device/name'))
 			else:
 				raise Exception, "[Harddisk] no hdX or sdX or mmcX"
@@ -577,6 +581,7 @@ class HarddiskManager:
 		self.devices_scanned_on_init = [ ]
 		self.on_partition_list_change = CList()
 		self.enumerateBlockDevices()
+		self.enumerateNetworkMounts()
 		# Find stuff not detected by the enumeration
 		p = (
 			("/media/hdd", _("Hard disk")),
@@ -600,7 +605,17 @@ class HarddiskManager:
 		devpath = "/sys/block/" + blockdev
 		error = False
 		removable = False
+		z = open('/proc/cmdline', 'r').read()
+		BLACKLIST=[]
+		if SystemInfo["HasMMC"]:
+			BLACKLIST=["%s" %(getMachineMtdRoot()[0:7])]
+		if SystemInfo["HasMMC"] and "root=/dev/mmcblk0p1" in z:
+			BLACKLIST=["mmcblk0p1"]
 		blacklisted = False
+		if blockdev[:7] in BLACKLIST:
+			blacklisted = True
+		if blockdev.startswith("mmcblk") and (re.search(r"mmcblk\dboot", blockdev) or re.search(r"mmcblk\drpmb", blockdev)):
+			blacklisted = True
 		is_cdrom = False
 		partitions = []
 		try:
@@ -611,6 +626,8 @@ class HarddiskManager:
 			else:
 				dev = None
 			blacklisted = dev in [1, 7, 31, 253, 254] + (SystemInfo["HasMMC"] and [179] or []) #ram, loop, mtdblock, romblock, ramzswap, mmc
+			if blockdev == "mmcblk1" and "mmcblk1" not in BLACKLIST:
+				blacklisted = False
 			if blockdev[0:2] == 'sr':
 				is_cdrom = True
 			if blockdev[0:2] == 'hd':
@@ -625,6 +642,8 @@ class HarddiskManager:
 				for partition in os.listdir(devpath):
 					if partition[0:len(blockdev)] != blockdev:
 						continue
+					if dev == 179 and not re.search(r"mmcblk\dp\d+", partition):
+						continue
 					partitions.append(partition)
 			else:
 				self.cd = blockdev
@@ -633,7 +652,8 @@ class HarddiskManager:
 		# check for medium
 		medium_found = True
 		try:
-			open("/dev/" + blockdev).close()
+			if os.path.exists("/dev/" + blockdev):
+				open("/dev/" + blockdev).close()
 		except IOError, err:
 			if err.errno == 159: # no medium present
 				medium_found = False
@@ -648,6 +668,24 @@ class HarddiskManager:
 				for part in partitions:
 					self.addHotplugPartition(part)
 				self.devices_scanned_on_init.append((blockdev, removable, is_cdrom, medium_found))
+
+	def enumerateNetworkMounts(self):
+		print "[Harddisk] enumerating network mounts..."
+		netmount = (os.path.exists('/media/net') and os.listdir('/media/net')) or ""
+		if len(netmount) > 0:
+			for fil in netmount:
+				if os.path.ismount('/media/net/' + fil):
+					print "[Harddisk] new Network Mount", fil, '->', os.path.join('/media/net/',fil)
+					self.partitions.append(Partition(mountpoint = os.path.join('/media/net/',fil + '/'), description = fil))
+		autofsmount = (os.path.exists('/media/autofs') and os.listdir('/media/autofs')) or ""
+		if len(autofsmount) > 0:
+			for fil in autofsmount:
+				if os.path.ismount('/media/autofs/' + fil) or os.path.exists('/media/autofs/' + fil):
+					print "[Harddisk] new Network Mount", fil, '->', os.path.join('/media/autofs/',fil)
+					self.partitions.append(Partition(mountpoint = os.path.join('/media/autofs/',fil + '/'), description = fil))
+		if os.path.ismount('/media/hdd') and '/media/hdd/' not in [p.mountpoint for p in self.partitions]:
+			print "[Harddisk] new Network Mount being used as HDD replacement -> /media/hdd/"
+			self.partitions.append(Partition(mountpoint = '/media/hdd/', description = '/media/hdd'))
 
 	def getAutofsMountpoint(self, device):
 		r = self.getMountpoint(device)
@@ -673,6 +711,8 @@ class HarddiskManager:
 				physdev = dev
 				print "couldn't determine blockdev physdev for device", device
 		error, blacklisted, removable, is_cdrom, partitions, medium_found = self.getBlockDevInfo(device)
+		if hw_type in ("elite","premium"."premium+","ultra"):
+			if device[0:3] == "hda": blacklisted = True
 		if not blacklisted and medium_found:
 			description = self.getUserfriendlyDeviceName(device, physdev)
 			p = Partition(mountpoint = self.getMountpoint(device), description = description, force_mounted = True, device = device)
@@ -681,7 +721,7 @@ class HarddiskManager:
 				self.on_partition_list_change("add", p)
 			# see if this is a harddrive
 			l = len(device)
-			if l and (not device[l-1].isdigit() or device == 'mmcblk0'):
+			if l and (not device[l-1].isdigit() or (device.startswith('mmcblk') and not re.search(r"mmcblk\dp\d+", device))):
 				self.hdd.append(Harddisk(device, removable))
 				self.hdd.sort()
 				SystemInfo["Harddisk"] = True
@@ -713,7 +753,7 @@ class HarddiskManager:
 				if x.mountpoint: # Plugins won't expect unmounted devices
 					self.on_partition_list_change("remove", x)
 		l = len(device)
-		if l and not device[l-1].isdigit():
+		if l and (not device[l-1].isdigit() or (device.startswith('mmcblk') and not re.search(r"mmcblk\dp\d+", device))):
 			for hdd in self.hdd:
 				if hdd.device == device:
 					hdd.stop()
@@ -753,19 +793,31 @@ class HarddiskManager:
 		return [x for x in parts if not x.device or x.device in devs]
 
 	def splitDeviceName(self, devname):
-		# this works for: sdaX, hdaX, sr0 (which is in fact dev="sr0", part=""). It doesn't work for other names like mtdblock3, but they are blacklisted anyway.
-		dev = devname[:3]
-		part = devname[3:]
-		for p in part:
-			if not p.isdigit():
+		if re.search(r"^mmcblk\d(?:p\d+$|$)", devname):
+			m = re.search(r"(?P<dev>mmcblk\d)p(?P<part>\d+)$", devname)
+			if m:
+				return m.group('dev'), m.group('part') and int(m.group('part')) or 0
+			else:
 				return devname, 0
-		return dev, part and int(part) or 0
+		else:
+			# this works for: sdaX, hdaX, sr0 (which is in fact dev="sr0", part=""). It doesn't work for other names like mtdblock3, but they are blacklisted anyway.
+			dev = devname[:3]
+			part = devname[3:]
+			for p in part:
+				if not p.isdigit():
+					return devname, 0
+			return dev, part and int(part) or 0
 
 	def getUserfriendlyDeviceName(self, dev, phys):
 		dev, part = self.splitDeviceName(dev)
 		description = _("External Storage %s") % dev
 		try:
-			description = readFile("/sys" + phys + "/model")
+			if os.path.exists('/sys' + phys + '/model'):
+				description = readFile("/sys" + phys + "/model")
+			elif os.path.exists('/sys' + phys + '/name'):
+				description = readFile("/sys" + phys + "/name")
+			else:
+				print "[Harddisk] couldn't read model: "
 		except IOError, s:
 			print "couldn't read model: ", s
 		# not wholedisk and not partition 1
