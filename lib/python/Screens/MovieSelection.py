@@ -423,6 +423,7 @@ class MovieContextMenu(Screen, ProtectedScreen):
 			append_to_menu(menu, (_("Add bookmark"), csel.do_addbookmark))
 		append_to_menu(menu, (_("create directory"), csel.do_createdir), key="7")
 		append_to_menu(menu, (_("Sort by") + "...", csel.selectSortby))
+		append_to_menu(menu, (_("On end of movie") + "...", csel.do_movieoff_menu))
 		append_to_menu(menu, (_("Network") + "...", csel.showNetworkSetup), key="yellow")
 		append_to_menu(menu, (_("Settings") + "...", csel.configure), key="menu")
 
@@ -1233,7 +1234,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			except IOError, e:
 				updates = {
 					"listtype": config.movielist.listtype.default,
-					"movie": config.movielist.moviesort.default,
+					"moviesort": config.movielist.moviesort.default,
 					"description": config.movielist.description.default,
 					"movieoff": config.usage.on_movie_eof.default
 				}
