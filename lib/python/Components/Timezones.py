@@ -111,23 +111,11 @@ class Timezones:
 		return sorted(self.timezones.keys())
 
 	userFriendlyTZNames = {
-		"Asia/Ho_Chi_Minh": _("Ho Chi Minh City"),
 		"Australia/LHI": None, # Exclude
 		"Australia/Lord_Howe": _("Lord Howe Island"),
 		"Australia/North": _("Northern Territory"),
 		"Australia/South": _("South Australia"),
 		"Australia/West": _("Western Australia"),
-		"Brazil/DeNoronha": _("Fernando de Noronha"),
-		"Pacific/Chatham": _("Chatham Islands"),
-		"Pacific/Easter": _("Easter Island"),
-		"Pacific/Galapagos": _("Galapagos Islands"),
-		"Pacific/Gambier": _("Gambier Islands"),
-		"Pacific/Johnston": _("Johnston Atoll"),
-		"Pacific/Marquesas": _("Marquesas Islands"),
-		"Pacific/Midway": _("Midway Islands"),
-		"Pacific/Norfolk": _("Norfolk Island"),
-		"Pacific/Pitcairn": _("Pitcairn Islands"),
-		"Pacific/Wake": _("Wake Island"),
 	}
 
 	@staticmethod
