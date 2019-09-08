@@ -1467,6 +1467,11 @@ class InfoBarSeek:
 	def __seekableStatusChanged(self):
 #		print "seekable status changed!"
 		if not self.isSeekable():
+			SystemInfo["SeekStatePlay"] = False
+			if os.path.exists("/proc/stb/lcd/symbol_hdd"):
+				open("/proc/stb/lcd/symbol_hdd", "w").write("0")   
+			if os.path.exists("/proc/stb/lcd/symbol_hddprogress"):
+				open("/proc/stb/lcd/symbol_hddprogress", "w").write("0")
 			self["SeekActions"].setEnabled(False)
 #			print "not seekable, return to play"
 			self.setSeekState(self.SEEK_STATE_PLAY)
@@ -2381,6 +2386,10 @@ class InfoBarPiP:
 					if lastPiPServiceTimeout:
 						self.lastPiPServiceTimeoutTimer.startLongTimer(lastPiPServiceTimeout)
 				del self.session.pip
+				if SystemInfo["LCDMiniTV"]:
+					if config.lcd.modepip.value >= "1":
+						print '[LCDMiniTV] disable PIP'
+						open("/proc/stb/lcd/mode", "w").write(config.lcd.modeminitv.value)
 				self.session.pipshown = False
 			if hasattr(self, "ScreenSaverTimerStart"):
 				self.ScreenSaverTimerStart()
@@ -2392,11 +2401,23 @@ class InfoBarPiP:
 			if self.session.pip.playService(newservice):
 				self.session.pipshown = True
 				self.session.pip.servicePath = slist and slist.getCurrentServicePath()
+				if SystemInfo["LCDMiniTVPiP"] and int(config.lcd.modepip.value) >= 1:
+					print '[LCDMiniTV] enable PIP'
+					open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)
+					open("/proc/stb/vmpeg/1/dst_width", "w").write("0")
+					open("/proc/stb/vmpeg/1/dst_height", "w").write("0")
+					open("/proc/stb/vmpeg/1/dst_apply", "w").write("1")
 			else:
 				newservice = self.session.nav.getCurrentlyPlayingServiceOrGroup() or (slist and slist.servicelist.getCurrent())
 				if self.session.pip.playService(newservice):
 					self.session.pipshown = True
 					self.session.pip.servicePath = slist and slist.getCurrentServicePath()
+					if SystemInfo["LCDMiniTVPiP"] and int(config.lcd.modepip.value) >= 1:
+						print '[LCDMiniTV] enable PIP'
+						open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)
+						open("/proc/stb/vmpeg/1/dst_width", "w").write("0")
+						open("/proc/stb/vmpeg/1/dst_height", "w").write("0")
+						open("/proc/stb/vmpeg/1/dst_apply", "w").write("1")
 				else:
 					self.session.pipshown = False
 					del self.session.pip

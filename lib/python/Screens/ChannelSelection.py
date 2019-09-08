@@ -526,6 +526,9 @@ class ChannelContextMenu(Screen):
 		if ref and root or (self.PiPAvailable and not self.csel.dopipzap and newservice and newservice.valid() and Components.ParentalControl.parentalControl.isServicePlayable(newservice, boundFunction(self.showServiceInPiP, root=currentBouquet), self.session)):
 			if hasattr(self.session, 'pipshown') and self.session.pipshown and hasattr(self.session, 'pip'):
 				del self.session.pip
+				if SystemInfo["LCDMiniTVPiP"] and int(config.lcd.modepip.value) >= 1:
+					print '[LCDMiniTV] disable PIP'
+					open("/proc/stb/lcd/mode", "w").write(config.lcd.modeminitv.value)
 			self.session.pip = self.session.instantiateDialog(PictureInPicture)
 			self.session.pip.setAnimationMode(0)
 			self.session.pip.show()
@@ -533,10 +536,19 @@ class ChannelContextMenu(Screen):
 				self.session.pipshown = True
 				self.session.pip.servicePath = self.csel.getCurrentServicePath()
 				self.session.pip.servicePath[1] = currentBouquet
+				if SystemInfo["LCDMiniTVPiP"] and int(config.lcd.modepip.value) >= 1:
+					print '[LCDMiniTV] enable PIP'
+					open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)
+					open("/proc/stb/vmpeg/1/dst_width", "w").write("0")
+					open("/proc/stb/vmpeg/1/dst_height", "w").write("0")
+					open("/proc/stb/vmpeg/1/dst_apply", "w").write("1")
 				self.close(True)
 			else:
 				self.session.pipshown = False
 				del self.session.pip
+				if SystemInfo["LCDMiniTV"] and int(config.lcd.modepip.value) >= 1:
+					print '[LCDMiniTV] disable PIP'
+					open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)
 				self.session.openWithCallback(self.close, MessageBox, _("Could not open Picture in Picture"), MessageBox.TYPE_ERROR)
 		else:
 			return 0
