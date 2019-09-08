@@ -6,6 +6,7 @@ from Components.Console import Console
 import Task
 from Tools.StbHardware import getBoxProc
 from boxbranding import getMachineMtdRoot
+import re
 
 hw_type = getBoxProc()
 
