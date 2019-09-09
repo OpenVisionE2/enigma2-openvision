@@ -162,12 +162,12 @@ script:
 - git clone --depth 1 https://github.com/OpenVisionE2/tuxtxt.git
 - cd tuxtxt/libtuxtxt
 - autoreconf -i
-- ./configure --with-boxtype=generic
+- ./configure
 - make
 - sudo make install
 - cd ../tuxtxt
 - autoreconf -i
-- ./configure --with-boxtype=generic
+- ./configure
 - make
 - sudo make install
 - popd
