@@ -6,7 +6,7 @@ from Tools.Directories import pathExists, SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, 
 from Components.Harddisk import harddiskmanager
 from ServiceReference import ServiceReference
 from Components.config import config
-from Components.SystemInfo import SystemInfo
+from boxbranding import getDisplayType
 
 searchPaths = []
 lastLcdPiconPath = None
@@ -22,7 +22,7 @@ def initLcdPiconPaths():
 def onMountpointAdded(mountpoint):
 	global searchPaths
 	try:
-		if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
+		if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
 			path = os.path.join(mountpoint, 'piconlcd') + '/'
 		else:
 			path = os.path.join(mountpoint, 'picon') + '/'
@@ -37,7 +37,7 @@ def onMountpointAdded(mountpoint):
 
 def onMountpointRemoved(mountpoint):
 	global searchPaths
-	if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
+	if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
 		path = os.path.join(mountpoint, 'piconlcd') + '/'
 	else:
 		path = os.path.join(mountpoint, 'picon') + '/'
@@ -122,21 +122,21 @@ class LcdPicon(Renderer):
 		self.pngname = ""
 		self.lastPath = None
 		pngname = findLcdPicon("picon_default")
-		if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
+		if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
 			pngname = findLcdPicon("lcd_picon_default")
 		else:
 			pngname = findLcdPicon("picon_default")
 		self.defaultpngname = None
 		self.showPicon = True
 		if not pngname:
-			if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
+			if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
 				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "lcd_picon_default.png")
 			else:
 				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
 			if pathExists(tmp):
 				pngname = tmp
 			else:
-				if SystemInfo["PiconLCDSupport"] and not SystemInfo["grautec"] or config.lcd.picon_pack.value:
+				if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
 					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/lcd_picon_default.png")
 				else:
 					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/picon_default.png")

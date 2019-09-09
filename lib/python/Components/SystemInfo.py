@@ -3,6 +3,7 @@ from Tools.Directories import fileExists, fileCheck, pathExists, fileHas
 from Tools.HardwareInfo import HardwareInfo
 import os
 from os import access, R_OK
+from boxbranding import getDisplayType
 
 SystemInfo = {}
 
@@ -134,15 +135,15 @@ SystemInfo["GraphicLCD"] = getBoxType() in ("vuultimo","xpeedlx3","et10000","hd2
 SystemInfo["LCDMiniTV"] = fileExists("/proc/stb/lcd/mode")
 SystemInfo["LCDMiniTVPiP"] = SystemInfo["LCDMiniTV"] and getBoxType() not in ("gb800ueplus","gbquad4k","gbue4k")
 SystemInfo["DefaultDisplayBrightness"] = getBoxType() in ("dm900","dm920") and 8 or 5
-SystemInfo["ConfigDisplay"] = SystemInfo["FrontpanelDisplay"] and getBoxType() not in ("atemio6000","atemio6100","bwidowx2","mbhybrid","opticumtt","osmini","spycatmini","spycatminiplus","bwidowx","xpeedlx1","odinplus","xp1000","h3","h5","h6","sh1","9910lx","9911lx","9920lx","e4hdcombo","odin2hybrid","bre2ze","h4","h7","lc","vipercombohdd","evominiplus","enfinity","marvel1","vipercombo","formuler3","formuler4","hd1100","hd1200","hd1265","hd1500","hd500c","hd530c","vs1000","classm","axodin","axodinc","starsatlx","genius","evo","galaxym6","9900lx","tiviarmin","t2cable","xcombo","enibox","mago","x1plus","sf108","anadol4k","anadol4kcombo","anadol4kv2","axashis4kcombo","axashis4kcomboplus","dinobot4k","dinobot4kl","dinobot4kmini","dinobot4kplus","dinobot4kpro","dinobot4kse","dinobotu55","ferguson4k","mediabox4k","sf128","sf138","bre2zet2c","formuler4turbo","osninopro","osnino","osninoplus","osmio4k","hd60","hd61","h9combo","et1x000","bcm7358","vp7358ci","gbtrio4k","ustym4kpro","cc1","sf8008","beyonwizv2")
-SystemInfo["PiconLCDSupport"] = getBoxType() in ("vuultimo","sezammarvel","xpeedlx3","atemionemesis","mbultra","beyonwizt4","hd2400","vuduo2")
+SystemInfo["ConfigDisplay"] = SystemInfo["FrontpanelDisplay"] and getDisplayType() != "7segment"
+SystemInfo["7segment"] = getDisplayType() == "7segment"
 SystemInfo["DreamBoxAudio"] = getBoxType() in ("dm900","dm920","dm7080","dm800")
 SystemInfo["DreamBoxDTSAudio"] = getBoxType() in ("dm7080","dm820")
 SystemInfo["GigaBlueAudio"] = getBoxType() in ("gbquad4k","gbue4k")
 SystemInfo["GigaBlueQuad"] = getBoxType() in ("gbquad","gbquadplus")
 SystemInfo["AmlogicFamily"] = getBoxBrand() in ("linkdroid","mecool","minix","wetek","hardkernel") or getBoxType() == "dreamone"
 SystemInfo["VFDDelay"] = getBoxType() in ("sf4008","beyonwizu4")
-SystemInfo["VFDRepeats"] = getBoxBrand() != "ixuss" and getBoxType() not in ("atemio6000","atemio6100","bwidowx2","mbhybrid","opticumtt","osmini","spycatmini","spycatminiplus","bwidowx","xpeedlx1","odinplus","xp1000","h3","h5","h6","sh1","9910lx","9911lx","9920lx","e4hdcombo","odin2hybrid","bre2ze","h4","h7","lc","vipercombohdd","evominiplus","enfinity","marvel1","vipercombo","formuler3","formuler4","hd1100","hd1200","hd1265","hd1500","hd500c","hd530c","vs1000","classm","axodin","axodinc","starsatlx","genius","evo","galaxym6","9900lx","tiviarmin","t2cable","xcombo","enibox","mago","x1plus","sf108","anadol4k","anadol4kcombo","anadol4kv2","axashis4kcombo","axashis4kcomboplus","dinobot4k","dinobot4kl","dinobot4kmini","dinobot4kplus","dinobot4kpro","dinobot4kse","dinobotu55","ferguson4k","mediabox4k","sf128","sf138","bre2zet2c","formuler4turbo","osninopro","osnino","osninoplus","osmio4k","hd60","hd61","h9combo","et1x000","bcm7358","vp7358ci","gbtrio4k","ustym4kpro","cc1","sf8008","beyonwizv2")
+SystemInfo["VFDRepeats"] = getBoxBrand() != "ixuss" and getDisplayType() != "7segment"
 SystemInfo["HiSilicon"] = getBoxType() in ("gbtrio4k","gbip4k","sf8008","cc1","ustym4kpro","beyonwizv2","viper4k") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt")
 SystemInfo["FirstCheckModel"] = getBoxType() in ("tmtwin4k","mbmicrov2","revo4k","force3uhd","mbmicro","e4hd","e4hdhybrid","valalinux","lunix","tmnanom3","purehd","force2nano","purehdse") or getBoxBrand() in ("linkdroid","wetek")
 SystemInfo["SecondCheckModel"] = getBoxType() in ("osninopro","osnino","osninoplus","dm7020hd","dm7020hdv2","9910lx","9911lx","9920lx","tmnanose","tmnanoseplus","tmnanosem2","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","force2plushv") or getBoxBrand() == "ixuss"
