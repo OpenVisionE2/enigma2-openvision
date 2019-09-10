@@ -11,6 +11,9 @@ profile("PYTHON_START")
 # Don't remove this line. It may seem to do nothing, but if removed,
 # it will break output redirection for crash logs.
 import Tools.RedirectOutput
+from boxbranding import getVisionVersion, getVisionRevision
+print "Open Vision version = %s" % getVisionVersion()
+print "Open Vision revision = %s" % getVisionRevision()
 import enigma
 import eConsoleImpl
 import eBaseImpl
