@@ -277,7 +277,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 			InfoBarInstance.hideVBILineScreen.hide()
 		self.hideVBILineScreen = self.session.instantiateDialog(HideVBILine)
 		self.hideVBILineScreen.show()
-
+		self.lastResetAlpha = True
 		self.onLayoutFinish.append(self.__layoutFinished)
 		self.onExecBegin.append(self.__onExecBegin)
 
@@ -306,7 +306,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 			x(False)
 	
 	def resetAlpha(self):
-		if config.usage.show_infobar_do_dimming.value:
+		if config.usage.show_infobar_do_dimming.value and self.lastResetAlpha is False:
 			self.unDimmingTimer = eTimer()
 			self.unDimmingTimer.callback.append(self.unDimming)
 			self.unDimmingTimer.start(300, True)
@@ -328,6 +328,10 @@ class InfoBarShowHide(InfoBarScreenSaver):
 			f=open("/proc/stb/video/alpha","w")
 			f.write("%i" % (value))
 			f.close()
+			if value == config.av.osd_alpha.value:
+				self.lastResetAlpha = True
+			else:
+				self.lastResetAlpha = False
 
 	def toggleShowLong(self):
 		if not config.usage.ok_is_channelselection.value:
@@ -386,6 +390,9 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 	def doShow(self):
 		self.show()
+		self.hideTimer.stop()
+		self.DimmingTimer.stop()
+		self.doWriteAlpha(config.av.osd_alpha.value)
 		self.startHideTimer()
 
 	def doTimerHide(self):
@@ -403,6 +410,14 @@ class InfoBarShowHide(InfoBarScreenSaver):
 			else:
 				self.DimmingTimer.stop()
 				self.hide()
+		elif self.__state == self.STATE_HIDDEN and self.secondInfoBarScreen and self.secondInfoBarScreen.shown:
+			if self.dimmed > 0:
+				self.doWriteAlpha(int(int(config.av.osd_alpha.value) * int(self.dimmed) / int(config.usage.show_infobar_dimming_speed.value)))
+				self.DimmingTimer.start(5, True)
+			else:
+				self.DimmingTimer.stop()
+				self.secondInfoBarScreen.hide()
+				self.resetAlpha()
 
 	def okButtonCheck(self):
 		if config.usage.ok_is_channelselection.value and hasattr(self, "openServiceList"):
@@ -445,7 +460,14 @@ class InfoBarShowHide(InfoBarScreenSaver):
 			self.hideTimer.stop()
 
 	def unlockShow(self):
-		self.__locked -= 1
+		if config.usage.show_infobar_do_dimming.value and self.lastResetAlpha is False:
+			self.doWriteAlpha(config.av.osd_alpha.value)
+		try:
+			self.__locked -= 1
+		except:
+			self.__locked = 0
+		if self.__locked  <0:
+			self.__locked = 0
 		if self.execing:
 			self.startHideTimer()
 
@@ -1757,6 +1779,11 @@ class InfoBarPVRState:
 	def _mayShow(self):
 		if self.shown and self.seekstate != self.SEEK_STATE_PLAY:
 			self.pvrStateDialog.show()
+		if self.shown and self.seekstate != self.SEEK_STATE_EOF:
+			self.DimmingTimer.stop()
+			self.doWriteAlpha(config.av.osd_alpha.value)
+			self.pvrStateDialog.show()
+			self.startHideTimer()
 
 	def __playStateChanged(self, state):
 		playstateString = state[3]
