@@ -254,6 +254,8 @@ class InfoBarShowHide(InfoBarScreenSaver):
 		self.__state = self.STATE_SHOWN
 		self.__locked = 0
 
+		self.DimmingTimer = eTimer()
+		self.DimmingTimer.callback.append(self.doDimming)
 		self.hideTimer = eTimer()
 		self.hideTimer.callback.append(self.doTimerHide)
 		self.hideTimer.start(5000, True)
@@ -397,8 +399,6 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 	def doTimerHide(self):
 		self.hideTimer.stop()
-		self.DimmingTimer = eTimer()
-		self.DimmingTimer.callback.append(self.doDimming)
 		self.DimmingTimer.start(70, True)
 		self.dimmed = config.usage.show_infobar_dimming_speed.value
 
