@@ -2,6 +2,10 @@ installdir = $(pkgdatadir)/rc_models
 
 dist_install_DATA = rc_models.cfg dmm0.png dmm0.xml dmm1.png dmm1.xml dmm2.png dmm2.xml
 
+if AIRDIGITAL
+dist_install_DATA += zgemma1.png zgemma1.xml zgemma3.png zgemma3.xml zgemma5.png zgemma5.xml
+endif
+
 if AMIKO
 dist_install_DATA += amiko1.png amiko1.xml amiko2.png amiko2.xml amiko4.png amiko4.xml
 endif
@@ -38,6 +42,10 @@ if CLAP
 dist_install_DATA += cc1.png cc1.xml
 endif
 
+if CUBE
+dist_install_DATA += cube.png cube.xml
+endif
+
 if DAGS
 if TECHNOMATE
 dist_install_DATA += tm1.png tm1.xml tm2.png tm2.xml tm3.png tm3.xml tm4.png tm4.xml tm5.png tm5.xml tm6.png tm6.xml
@@ -66,8 +74,16 @@ if FORMULER
 dist_install_DATA += formuler1.png formuler1.xml
 endif
 
-if HYPERCUBE
-dist_install_DATA += cube.png cube.xml
+if GFUTURES
+dist_install_DATA += ax51.png ax51.xml hd1x00.png hd1x00.xml hd2400.png hd2400.xml hd530c.png hd530c.xml hd60.png hd60.xml
+endif
+
+if GIGABLUE
+dist_install_DATA += gb0.png gb0.xml gb1.png gb1.xml gb2.png gb2.xml gb3.png gb3.xml
+endif
+
+if HARDKERNEL
+dist_install_DATA +=  hardkernel.png hardkernel.xml
 endif
 
 if INI
@@ -76,14 +92,6 @@ endif
 
 if IXUSS
 dist_install_DATA += ixuss.png ixuss.xml
-endif
-
-if GFUTURES
-dist_install_DATA += ax51.png ax51.xml hd1x00.png hd1x00.xml hd2400.png hd2400.xml hd530c.png hd530c.xml hd60.png hd60.xml
-endif
-
-if GIGABLUE
-dist_install_DATA += gb0.png gb0.xml gb1.png gb1.xml gb2.png gb2.xml gb3.png gb3.xml
 endif
 
 if LINKDROID
@@ -108,10 +116,6 @@ endif
 
 if ODIN
 dist_install_DATA +=  e3hd.png e3hd.xml odinm6.png odinm6.xml odinm7.png odinm7.xml odinm9.png odinm9.xml
-endif
-
-if ODROID
-dist_install_DATA +=  hardkernel.png hardkernel.xml
 endif
 
 if TIVIAR
@@ -148,8 +152,4 @@ endif
 
 if XTREND
 dist_install_DATA += et4x00.png et4x00.xml et6500.png et6500.xml et6x00.png et6x00.xml et7x00.png et7x00.xml et7x00mini.png et7x00mini.xml et8000.png et8000.xml et9500.png et9500.xml et9x00.png et9x00.xml
-endif
-
-if ZGEMMA
-dist_install_DATA += zgemma1.png zgemma1.xml zgemma3.png zgemma3.xml zgemma5.png zgemma5.xml
 endif
