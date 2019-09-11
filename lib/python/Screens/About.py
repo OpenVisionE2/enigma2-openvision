@@ -10,11 +10,11 @@ from Components.ScrollLabel import ScrollLabel
 from Components.Button import Button
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
-from Tools.StbHardware import getFPVersion
+from Tools.StbHardware import getFPVersion, getBoxProc
 from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl
 from Tools.Directories import fileExists
 from Components.GUIComponent import GUIComponent
-import skin, os
+import skin, os, boxbranding
 
 class About(Screen):
 	def __init__(self, session):
@@ -22,7 +22,11 @@ class About(Screen):
 		self.setTitle(_("About"))
 		hddsplit = skin.parameters.get("AboutHddSplit", 0)
 
+		procmodel = getBoxProc()
+
 		AboutText = _("Hardware: ") + about.getHardwareTypeString() + "\n"
+		if procmodel != about.getHardwareTypeString():
+			AboutText += _("Proc model: ") + procmodel + "\n"
 		if fileExists("/proc/stb/info/sn"):
 			hwserial = open("/proc/stb/info/sn", "r").read().strip()
 			AboutText += _("Hardware serial: ") + hwserial + "\n"
@@ -33,10 +37,12 @@ class About(Screen):
 		AboutText += _("CPU: ") + cpu + "\n"
 		AboutText += _("CPU brand: ") + about.getCPUBrand() + "\n"
 		AboutText += _("CPU architecture: ") + about.getCPUArch() + "\n"
+		AboutText += _("Image architecture: ") + boxbranding.getImageArch() + "\n"
 
 		AboutText += _("Flash type: ") + about.getFlashType() + "\n"
 
-		AboutText += _("Image: ") + about.getImageTypeString() + "\n"
+		AboutText += "\n" + _("Image: ") + about.getImageTypeString() + "\n"
+		AboutText += _("Feed URL: ") + boxbranding.getFeedsUrl() + "\n"
 
 		AboutText += _("Open Vision version: ") + about.getVisionVersion() + "\n"
 		AboutText += _("Open Vision revision: ") + about.getVisionRevision() + "\n"
@@ -57,8 +63,10 @@ class About(Screen):
 		EnigmaVersion = _("Enigma version: ") + EnigmaVersion
 		self["EnigmaVersion"] = StaticText(EnigmaVersion)
 		AboutText += "\n" + EnigmaVersion + "\n"
+		AboutText += _("Enigma (re)starts: %d\n") % config.misc.startCounter.value
+		AboutText += _("Enigma debug level: %d\n") % eGetEnigmaDebugLvl()
 
-		AboutText += _("Kernel version: ") + about.getKernelVersionString() + "\n"
+		AboutText += "\n" + _("Kernel version: ") + about.getKernelVersionString() + "\n"
 
 		AboutText += _("DVB driver version: ") + about.getDriverInstalledDate() + "\n"
 		AboutText += _("DVB API: ") + about.getDVBAPI() + "\n"
@@ -73,9 +81,6 @@ class About(Screen):
 
 		AboutText += _("Python version: ") + about.getPythonVersionString() + "\n"
 
-		AboutText += _("Enigma (re)starts: %d\n") % config.misc.startCounter.value
-		AboutText += _("Enigma debug level: %d\n") % eGetEnigmaDebugLvl()
-
 		fp_version = getFPVersion()
 		if fp_version is None:
 			fp_version = ""
@@ -84,6 +89,16 @@ class About(Screen):
 			AboutText += fp_version + "\n"
 
 		self["FPVersion"] = StaticText(fp_version)
+
+		if boxbranding.getHaveTranscoding() != "":
+			AboutText += _("Transcoding: Yes") + "\n"
+		else:
+			AboutText += _("Transcoding: No") + "\n"
+
+		if boxbranding.getHaveMultiTranscoding() != "":
+			AboutText += _("MultiTranscoding: Yes") + "\n"
+		else:
+			AboutText += _("MultiTranscoding: No") + "\n"
 
 		AboutText += _('Skin & Resolution: %s (%sx%s)\n') % (config.skin.primary_skin.value.split('/')[0], getDesktop(0).size().width(), getDesktop(0).size().height())
 
@@ -217,12 +232,11 @@ class CommitInfo(Screen):
 			("https://api.github.com/repos/OpenVisionE2/enigma2-openvision/commits" + branch, "Enigma2 - Vision"),
 			("https://api.github.com/repos/OpenVisionE2/openvision-oe/commits", "OE - Vision 7.x"),
 			("https://api.github.com/repos/OpenVisionE2/openvision-development-platform/commits", "OE - Vision 9.x"),
-			("https://api.github.com/repos/OpenVisionE2/extra_rc_models/commits", "Extra RC Models"),
 			("https://api.github.com/repos/openpli/servicemp3/commits", "Service MP3"),
 			("https://api.github.com/repos/OpenVisionE2/gstreamer1.0-plugin-multibox-dvbmediasink/commits", "DVB MediaSink"),
-			("https://api.github.com/repos/openpli/enigma2-plugins/commits", "Enigma2 Plugins"),
+			("https://api.github.com/repos/OpenVisionE2/enigma2-plugins/commits", "Enigma2 Plugins"),
 			("https://api.github.com/repos/OpenVisionE2/alliance-plugins/commits", "Alliance Plugins"),
-			("https://api.github.com/repos/E2OpenPlugins/e2openplugin-OpenWebif/commits", "Open WebIF"),
+			("https://api.github.com/repos/OpenVisionE2/OpenWebif/commits", "Open WebIF"),
 			("https://api.github.com/repos/OpenVisionE2/BackupSuite/commits", "Backup Suite")
 		]
 		self.cachedProjects = {}
