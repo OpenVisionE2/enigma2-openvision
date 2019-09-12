@@ -20,12 +20,14 @@ def getHotkeys():
 		(_("Green") + " " + _("long"), "green_long", ""),
 		(_("Yellow") + " " + _("long"), "yellow_long", "Plugins/Extensions/GraphMultiEPG/1"),
 		(_("Blue") + " " + _("long"), "blue_long", "SoftcamSetup"),
-		("F1/LAN", "f1", ""),
+		("F1", "f1", ""),
 		("F1" + " " + _("long"), "f1_long", ""),
 		("F2", "f2", ""),
 		("F2" + " " + _("long"), "f2_long", ""),
 		("F3", "f3", ""),
 		("F3" + " " + _("long"), "f3_long", ""),
+		("PIP", "f6", ""),
+		("PIP" + " " + _("long"), "f6_long", ""),
 		(_("Red"), "red", ""),
 		(_("Green"), "green", ""),
 		(_("Yellow"), "yellow", ""),
@@ -96,12 +98,24 @@ def getHotkeys():
 		("HDMIin" + " " + _("long"), "HDMIin_long", ""),
 		("Media", "media", ""),
 		("Media" + " " + _("long"), "media_long", ""),
+		("Open", "open", ""),
+		("Open" + " " + _("long"), "open_long", ""),
+		("Option", "option", ""),
+		("Option" + " " + _("long"), "option_long", ""),
 		("Favorites", "favorites", "Infobar/openFavouritesList"),
 		("Favorites" + " " + _("long"), "favorites_long", ""),
 		("Mouse", "mouse", ""),
 		("Mouse" + " " + _("long"), "mouse_long", ""),
+		("Directory", "directory", ""),
+		("Directory" + " " + _("long"), "directory_long", ""),
 		("Sat", "sat", ""),
 		("Sat" + " " + _("long"), "sat_long", ""),
+		("Prov", "prov", ""),
+		("Prov" + " " + _("long"), "prov_long", ""),
+		("LAN", "lan", ""),
+		("LAN" + " " + _("long"), "lan_long", ""),
+		("PC", "pc", ""),
+		("PC" + " " + _("long"), "pc_long", ""),
 		("Homepage", "homepage", ""),
 		("Homepage" + " " + _("long"), "homepage_long", ""),
 		("EjectCD", "ejectcd", ""),
@@ -109,7 +123,9 @@ def getHotkeys():
 		("VOD", "vod", ""),
 		("VOD" + " " + _("long"), "vod_long", ""),
 		("WWW Portal", "www", ""),
-		("WWW Portal" + " " + _("long"), "www_long", "")]
+		("WWW Portal" + " " + _("long"), "www_long", ""),
+		("ZOOM", "zoom", ""),
+		("ZOOM" + " " + _("long"), "zoom_long", "")]
 
 config.misc.hotkey = ConfigSubsection()
 config.misc.hotkey.additional_keys = ConfigYesNo(default=False)
@@ -201,6 +217,8 @@ def getHotkeyFunctions():
 	for plugin in plugins.getPluginsForMenu("scan"):
 		hotkeyFunctions.append((plugin[0], "MenuPlugin/scan/" + plugin[2], "Scanning"))
 	hotkeyFunctions.append((_("Network"), "Module/Screens.NetworkSetup/NetworkAdapterSelection", "Setup"))
+	hotkeyFunctions.append((_("Skin"), "Module/Screens.SkinSelector/SkinSelector", "Setup"))
+	hotkeyFunctions.append((_("Display skin"), "Module/Screens.SkinSelector/LcdSkinSelector", "Setup"))
 	hotkeyFunctions.append((_("Plugin Browser"), "Module/Screens.PluginBrowser/PluginBrowser", "Setup"))
 	hotkeyFunctions.append((_("Sleeptimer edit"), "Module/Screens.SleepTimerEdit/SleepTimerEdit", "Setup"))
 	hotkeyFunctions.append((_("Channel Info"), "Module/Screens.ServiceInfo/ServiceInfo", "Setup"))
@@ -225,6 +243,7 @@ def getHotkeyFunctions():
 	hotkeyFunctions.append((_("Harddisk Setup"), "Setup/harddisk", "Setup"))
 	hotkeyFunctions.append((_("Subtitles Settings"), "Setup/subtitlesetup", "Setup"))
 	hotkeyFunctions.append((_("Language"), "Module/Screens.LanguageSelection/LanguageSelection", "Setup"))
+	hotkeyFunctions.append((_("OScam Info"), "Module/Screens.OScamInfo/OscamInfoMenu", "Plugins"))
 	hotkeyFunctions.append((_("Memory Info"), "Module/Screens.About/MemoryInfo", "Setup"))
 	if SystemInfo["canMultiBoot"]:
 		hotkeyFunctions.append((_("Multiboot"), "Module/Screens.FlashImage/MultibootSelection", "Setup"))
