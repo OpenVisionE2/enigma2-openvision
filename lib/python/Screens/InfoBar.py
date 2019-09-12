@@ -1,5 +1,6 @@
 from Tools.Profile import profile
-from enigma import eServiceReference, getBoxBrand
+from enigma import eServiceReference, getBoxType, getBoxBrand
+from Tools.StbHardware import getBoxProc
 
 # workaround for required config entry dependencies.
 import Screens.MovieSelection
@@ -47,8 +48,8 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self["actions"] = HelpableActionMap(self, "InfobarActions",
 			{
 				"showMovies": (self.showMovies, _("Play recorded movies...")),
-				"showRadio": (self.showRadio, _("Show the radio player...")),
-				"showTv": (self.TvRadioToggle, _("Show the tv player...")),
+				"showRadio": (self.showRadioButton, _("Show the radio player...")),
+				"showTv": (self.showTvButton, _("Show the tv player...")),
 				"toggleTvRadio": (self.toggleTvRadio, _("Toggle the tv and the radio player...")),
 			}, prio=2)
 
@@ -108,8 +109,22 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self.serviceStarted()
 		self.onShown.remove(self.__checkServiceStarted)
 
+	def showTvButton(self):
+		if getBoxBrand() == "gigablue" or getBoxType() in ("classm","genius","evo","galaxym6"):
+			self.toggleTvRadio()
+		elif getBoxType() in ("sezam5000hd","mbtwin") or getBoxProc() in ("ini-3000","ini-5000","ini-7000","ini-7012"):
+			self.showMovies()
+		else:
+			self.showTv()
+
 	def showTv(self):
 		self.showTvChannelList(True)
+
+	def showRadioButton(self):
+		if getBoxBrand()in ("gigablue","azbox") or getBoxType() in ("classm","genius","evo","galaxym6","sezam5000hd","mbtwin","beyonwizt3") or getBoxProc() in ("ini-3000","ini-5000","ini-7000","ini-7012"):
+			self.toggleTvRadio()
+		else:
+			self.showRadio()
 
 	def showRadio(self):
 		if config.usage.e1like_radio_mode.value:
@@ -118,12 +133,6 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 			self.rds_display.hide() # in InfoBarRdsDecoder
 			from Screens.ChannelSelection import ChannelSelectionRadio
 			self.session.openWithCallback(self.ChannelSelectionRadioClosed, ChannelSelectionRadio, self)
-
-	def TvRadioToggle(self):
-		if getBoxBrand() == "gigablue":
-			self.toggleTvRadio()
-		else:
-			self.showTv()
 
 	def toggleTvRadio(self):
 		if self.radioTV == 1:
