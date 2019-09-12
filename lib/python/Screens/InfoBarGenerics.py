@@ -3680,6 +3680,43 @@ class InfoBarPowersaver:
 			print "[InfoBarPowersaver] goto standby"
 			self.session.open(Screens.Standby.Standby)
 
+class InfoBarZoom:
+	def __init__(self):
+		self.zoomrate = 0
+		self.zoomin = 1
+
+		self["ZoomActions"] = HelpableActionMap(self, "InfobarZoomActions",
+			{
+				"ZoomInOut": (self.ZoomInOut, _("Zoom In/Out TV...")),
+				"ZoomOff": (self.ZoomOff, _("Zoom Off...")),
+			}, prio=2)
+
+	def ZoomInOut(self):
+		zoomval=0
+		if self.zoomrate > 3:
+			self.zoomin = 0
+		elif self.zoomrate < -9:
+			self.zoomin = 1
+
+		if self.zoomin == 1:
+			self.zoomrate += 1
+		else:
+			self.zoomrate -= 1
+
+		if self.zoomrate < 0:
+			zoomval=abs(self.zoomrate)+10
+		else:
+			zoomval=self.zoomrate
+
+		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
+			open("/proc/stb/vmpeg/0/zoomrate", "w").write(int(zoomval))
+
+	def ZoomOff(self):
+		self.zoomrate = 0
+		self.zoomin = 1
+		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
+			open("/proc/stb/vmpeg/0/zoomrate", "w").write(str(0))
+
 class InfoBarHDMI:
 	def HDMIIn(self):
 		slist = self.servicelist
