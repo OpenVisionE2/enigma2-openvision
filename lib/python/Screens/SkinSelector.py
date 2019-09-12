@@ -179,7 +179,6 @@ class SkinSelector(Screen, SkinSelectorBase):
 
 		screentitle = _("Skin")
 		title = screentitle
-		self["menu_path_compressed"] = StaticText("")
 		Screen.setTitle(self, title)
 		self.config = config.skin.primary_skin
 
@@ -213,7 +212,6 @@ class LcdSkinSelector(Screen, SkinSelectorBase):
 		self.onChangedEntry = []
 		screentitle = _("Skin setup")
 		title = screentitle
-		self["menu_path_compressed"] = StaticText("")
 		Screen.setTitle(self, title)
 		self.skinName = "SkinSelector"
 		self.config = config.skin.display_skin

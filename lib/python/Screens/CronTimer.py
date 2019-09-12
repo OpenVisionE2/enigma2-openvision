@@ -22,7 +22,6 @@ class CronTimers(Screen):
 			mkdir('/usr/script', 0755)
 		screentitle = _("Cron manager")
 		title = screentitle
-		self["menu_path_compressed"] = StaticText("")
 		Screen.setTitle(self, title)
 		self.onChangedEntry = [ ]
 		self['lab1'] = Label(_("Autostart:"))

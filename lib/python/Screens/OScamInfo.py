@@ -405,7 +405,6 @@ class OscamInfoMenu(Screen):
 				self.skin +="""<widget name="mainmenu" position="33,33" size="392,220" zPosition="1" scrollbarMode="showOnDemand" />"""
 		self.skin += """</screen>"""
 		title = screentitle
-		self["menu_path_compressed"] = StaticText("")
 		Screen.setTitle(self, title)
 		self.menu = [ _("Show /tmp/ecm.info"), _("Show Clients"), _("Show Readers/Proxies"), _("Show Log"), _("Card infos (CCcam-Reader)"), _("ECM Statistics"), _("Setup") ]
 		self.osc = OscamInfo()

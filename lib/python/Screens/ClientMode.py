@@ -19,7 +19,6 @@ class ClientModeScreen(ConfigListScreen, Screen):
 		Screen.__init__(self, session)
 		self.setup_title = screentitle = _("Client mode")
 		title = screentitle
-		self["menu_path_compressed"] = StaticText("")
 		Screen.setTitle(self, title)
 		self.skinName = "Setup"
 		self.initial_state = config.clientmode.enabled.value
