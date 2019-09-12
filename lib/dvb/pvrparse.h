@@ -139,7 +139,6 @@ private:
 	int m_header_offset;
 #ifdef HAVE_RASPBERRYPI
 	int m_broken_count; /* count broken starting  */
-	bool m_broken; /* when broken starting = true */
 	time_t m_last_time; /* last time when stream is broken*/
 #endif
 	timespec m_last_access_point; /* timespec at which the previous access point was reported */
