@@ -256,6 +256,8 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 		self.DimmingTimer = eTimer()
 		self.DimmingTimer.callback.append(self.doDimming)
+		self.unDimmingTimer = eTimer()
+		self.unDimmingTimer.callback.append(self.unDimming)
 		self.hideTimer = eTimer()
 		self.hideTimer.callback.append(self.doTimerHide)
 		self.hideTimer.start(5000, True)
@@ -301,16 +303,14 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 	def __onHide(self):
 		self.__state = self.STATE_HIDDEN
+		self.resetAlpha()
 		if self.actualSecondInfoBarScreen:
 			self.actualSecondInfoBarScreen.hide()
-		self.resetAlpha()
 		for x in self.onShowHideNotifiers:
 			x(False)
 	
 	def resetAlpha(self):
 		if config.usage.show_infobar_do_dimming.value and self.lastResetAlpha is False:
-			self.unDimmingTimer = eTimer()
-			self.unDimmingTimer.callback.append(self.unDimming)
 			self.unDimmingTimer.start(300, True)
 	
 	def doDimming(self):
@@ -327,9 +327,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 	def doWriteAlpha(self, value):
 		if SystemInfo["CanChangeOsdAlpha"]:
-			f=open("/proc/stb/video/alpha","w")
-			f.write("%i" % (value))
-			f.close()
+			open("/proc/stb/video/alpha", "w").write(str(value))
 			if value == config.av.osd_alpha.value:
 				self.lastResetAlpha = True
 			else:
