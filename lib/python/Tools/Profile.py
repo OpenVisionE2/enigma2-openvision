@@ -34,15 +34,11 @@ def profile(id):
 
 	if getBoxType() in ("classm","axodin","axodinc","starsatlx","genius","evo","galaxym6"):
 		dev_fmt = ("/dev/dbox/oled0", "%d")
-	elif getBoxType() in ("gb800se","gb800solo"):
-		dev_fmt = ("/dev/dbox/oled0", "%d  \n")
-	elif getBoxType() == "mbtwin":
-		dev_fmt = ("/dev/dbox/oled0", "%d%%")
-	elif getBoxType() == "gb800seplus":
+	elif getBoxType() in ("gb800solo","gb800se","gb800seplus","gbultrase"):
 		dev_fmt = ("/dev/mcu", "%d  \n")
-	elif getBoxType() == "ebox5000":
+	elif getBoxType() in ("ebox5000","osmini","spycatmini","osminiplus","spycatminiplus"):
 		dev_fmt = ("/proc/progress", "%d"),
-	elif getBoxType() in ("sezammarvel","xpeedlx3","atemionemesis","mbultra","beyonwizt4","ventonhdx","sezam5000hd","mbtwin","beyonwizt3"):
+	elif getBoxType() in ("sezammarvel","xpeedlx3","atemionemesis"):
 		dev_fmt = ("/proc/vfd", "Loading %d%%\n")
 	elif getBoxType() == "beyonwizu4":
 		dev_fmt = ("/dev/dbox/oled0", "Loading %d%%\n")
