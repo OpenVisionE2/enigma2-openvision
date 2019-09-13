@@ -289,6 +289,10 @@ def InitAVSwitch():
 		config.av.osd_alpha = ConfigSlider(default=255, limits=(0,255))
 		config.av.osd_alpha.addNotifier(setAlpha)
 
+		def setTeletextAlpha(config):
+			config.osd.alpha_teletext = ConfigSlider(default=255, limits=(0,255))
+		config.osd.alpha_teletext.addNotifier(setTeletextAlpha)
+
 	if SystemInfo["ScalerSharpness"]:
 		def setScaler_sharpness(config):
 			myval = int(config.value)
