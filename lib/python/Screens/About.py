@@ -14,7 +14,7 @@ from Tools.StbHardware import getFPVersion, getBoxProc
 from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl
 from Tools.Directories import fileExists, fileHas
 from Components.GUIComponent import GUIComponent
-import skin, os, time, boxbranding
+import skin, os, boxbranding
 from Components.Console import Console
 
 class About(Screen):
@@ -72,12 +72,13 @@ class About(Screen):
 		AboutText += _("DVB driver version: ") + about.getDriverInstalledDate() + "\n"
 		AboutText += _("DVB API: ") + about.getDVBAPI() + "\n"
 		if fileExists("/usr/bin/dvb-fe-tool"):
+			import time
 			try:
 				cmd = 'dvb-fe-tool > /tmp/dvbfetool.txt'
 				res = Console().ePopen(cmd)
+				time.sleep(0.1)
 			except:
 				pass
-		time.sleep(0.1)
 		if fileExists("/tmp/dvbfetool.txt"):
 			if fileHas("/tmp/dvbfetool.txt","DVBC") or fileHas("/tmp/dvbfetool.txt","DVB-C"):
 				AboutText += _("DVB-C: ") + _("Yes") + "\n"
