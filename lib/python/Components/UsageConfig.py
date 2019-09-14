@@ -848,6 +848,8 @@ def InitUsageConfig():
 	config.usage.keytrans = ConfigText(default = eEnv.resolve("${datadir}/enigma2/keytranslation.xml"))
 	config.usage.alternative_imagefeed = ConfigText(default="", fixed_size=False)
 
+	config.crash = ConfigSubsection()
+
 	def updateStackTracePrinter(configElement):
 		from Components.StackTrace import StackTracePrinter
 		if configElement.value:
