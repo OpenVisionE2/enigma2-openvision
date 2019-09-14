@@ -36,7 +36,7 @@ class Navigation:
 		self.currentlyPlayingServiceOrGroup = None
 		self.currentlyPlayingService = None
 		self.RecordTimer = RecordTimer.RecordTimer()
-		self.__wasTimerWakeup = getFPWasTimerWakeup()
+		self.__wasTimerWakeup = getFPWasTimerWakeup(True)
 		self.__isRestartUI = config.misc.RestartUI.value
 		startup_to_standby = config.usage.startup_to_standby.value
 		wakeup_time_type = config.misc.prev_wakeup_time_type.value
@@ -211,6 +211,8 @@ class Navigation:
 			self.pnav.stopService()
 		self.currentlyPlayingServiceReference = None
 		self.currentlyPlayingServiceOrGroup = None
+		if path.exists("/proc/stb/lcd/symbol_signal"):
+			open("/proc/stb/lcd/symbol_signal", "w").write("0")
 
 	def pause(self, p):
 		return self.pnav and self.pnav.pause(p)
