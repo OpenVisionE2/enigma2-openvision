@@ -5,7 +5,7 @@ import time
 
 def InitTimeZones():
 	config.timezone = ConfigSubsection()
-	config.timezone.area = ConfigSelection(default = "Generic", choices = timezones.getTimezoneAreaList())
+	config.timezone.area = ConfigSelection(default = "Europe", choices = timezones.getTimezoneAreaList())
 	def timezoneAreaChoices(configElement):
 		timezones.updateTimezoneChoices(configElement.getValue(), config.timezone.val)
 	config.timezone.area.addNotifier(timezoneAreaChoices, initial_call = False, immediate_feedback = True)
@@ -129,6 +129,7 @@ class Timezones:
 		return sorttzChoices((tzname, self.getUserFriendlyTZName(area, tzname)) for tzname in self.timezones[area] if self.getUserFriendlyTZName(area, tzname))
 
 	default_for_area = {
+		'Europe': 'London',
 		'Generic': 'UTC',
 	}
 	def getTimezoneDefault(self, area=None, choices=None):
@@ -136,8 +137,8 @@ class Timezones:
 			try:
 				area = config.timezone.area.getValue()
 			except:
-				print "[Timezones] getTimezoneDefault, no area found, using Generic"
-				area = "Generic"
+				print "[Timezones] getTimezoneDefault, no area found, using Europe"
+				area = "Europe"
 		if choices == None:
 			choices = self.getTimezoneList(area=area)
 		return Timezones.default_for_area.setdefault(area, choices[0][0])
