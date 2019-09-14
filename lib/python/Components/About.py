@@ -216,6 +216,14 @@ def getPythonVersionString():
 	except:
 		return _("unknown")
 
+def getDVBFETool():
+	try:
+		import commands
+		status, output = commands.getstatusoutput("dvb-fe-tool")
+		return output.lower()
+	except:
+		return _("unknown")
+
 def GetIPsFromNetworkInterfaces():
 	import socket, fcntl, struct, array, sys
 	is_64bits = sys.maxsize > 2**32

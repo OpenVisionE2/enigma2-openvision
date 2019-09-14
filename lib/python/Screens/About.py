@@ -70,10 +70,15 @@ class About(Screen):
 
 		AboutText += _("DVB driver version: ") + about.getDriverInstalledDate() + "\n"
 		AboutText += _("DVB API: ") + about.getDVBAPI() + "\n"
+		if fileExists("/usr/bin/dvb-fe-tool"):
+			if "can_multistream" in about.getDVBFETool():
+				AboutText += _("Multistream: ") + _("Yes") + "\n"
+			else:
+				AboutText += _("Multistream: ") + _("No") + "\n"
 
 		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer","")
 		self["GStreamerVersion"] = StaticText(GStreamerVersion)
-		AboutText += GStreamerVersion + "\n"
+		AboutText += "\n" + GStreamerVersion + "\n"
 
 		FFmpegVersion = _("FFmpeg version: ") + about.getFFmpegVersionString()
 		self["FFmpegVersion"] = StaticText(FFmpegVersion)
@@ -91,14 +96,14 @@ class About(Screen):
 		self["FPVersion"] = StaticText(fp_version)
 
 		if boxbranding.getHaveTranscoding() != "":
-			AboutText += _("Transcoding: Yes") + "\n"
+			AboutText += _("Transcoding: ") + _("Yes") + "\n"
 		else:
-			AboutText += _("Transcoding: No") + "\n"
+			AboutText += _("Transcoding: ") + _("No") + "\n"
 
 		if boxbranding.getHaveMultiTranscoding() != "":
-			AboutText += _("MultiTranscoding: Yes") + "\n"
+			AboutText += _("MultiTranscoding: ") + _("Yes") + "\n"
 		else:
-			AboutText += _("MultiTranscoding: No") + "\n"
+			AboutText += _("MultiTranscoding: ") + _("No") + "\n"
 
 		AboutText += _('Skin & Resolution: %s (%sx%s)\n') % (config.skin.primary_skin.value.split('/')[0], getDesktop(0).size().width(), getDesktop(0).size().height())
 
