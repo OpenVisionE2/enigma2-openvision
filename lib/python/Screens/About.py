@@ -12,9 +12,10 @@ from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 from Tools.StbHardware import getFPVersion, getBoxProc
 from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl
-from Tools.Directories import fileExists
+from Tools.Directories import fileExists, fileHas
 from Components.GUIComponent import GUIComponent
-import skin, os, boxbranding
+import skin, os, time, boxbranding
+from Components.Console import Console
 
 class About(Screen):
 	def __init__(self, session):
@@ -71,10 +72,41 @@ class About(Screen):
 		AboutText += _("DVB driver version: ") + about.getDriverInstalledDate() + "\n"
 		AboutText += _("DVB API: ") + about.getDVBAPI() + "\n"
 		if fileExists("/usr/bin/dvb-fe-tool"):
-			if "can_multistream" in about.getDVBFETool():
+			try:
+				cmd = 'dvb-fe-tool > /tmp/dvbfetool.txt'
+				res = Console().ePopen(cmd)
+			except:
+				pass
+		time.sleep(0.1)
+		if fileExists("/tmp/dvbfetool.txt"):
+			if fileHas("/tmp/dvbfetool.txt","DVBC") or fileHas("/tmp/dvbfetool.txt","DVB-C"):
+				AboutText += _("DVB-C: ") + _("Yes") + "\n"
+			else:
+				AboutText += _("DVB-C: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","DVBS") or fileHas("/tmp/dvbfetool.txt","DVB-S"):
+				AboutText += _("DVB-S: ") + _("Yes") + "\n"
+			else:
+				AboutText += _("DVB-S: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","DVBT") or fileHas("/tmp/dvbfetool.txt","DVB-T"):
+				AboutText += _("DVB-T: ") + _("Yes") + "\n"
+			else:
+				AboutText += _("DVB-T: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","MULTISTREAM"):
 				AboutText += _("Multistream: ") + _("Yes") + "\n"
 			else:
 				AboutText += _("Multistream: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","ANNEX_A") or fileHas("/tmp/dvbfetool.txt","ANNEX-A"):
+				AboutText += _("ANNEX-A: ") + _("Yes") + "\n"
+			else:
+				AboutText += _("ANNEX-A: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","ANNEX_B") or fileHas("/tmp/dvbfetool.txt","ANNEX-B"):
+				AboutText += _("ANNEX-B: ") + _("Yes") + "\n"
+			else:
+				AboutText += _("ANNEX-B: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","ANNEX_C") or fileHas("/tmp/dvbfetool.txt","ANNEX-C"):
+				AboutText += _("ANNEX-C: ") + _("Yes") + "\n"
+			else:
+				AboutText += _("ANNEX-C: ") + _("No") + "\n"
 
 		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer","")
 		self["GStreamerVersion"] = StaticText(GStreamerVersion)
