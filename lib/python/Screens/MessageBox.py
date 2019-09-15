@@ -61,6 +61,7 @@ class MessageBox(Screen, HelpableScreen):
 		self["InfoPixmap"].hide()
 		self["ErrorPixmap"] = Pixmap()
 		self["ErrorPixmap"].hide()
+		self["WarningPixmap"] = Pixmap()
 		self["icon"] = MultiPixmap()
 		self["icon"].hide()
 		self.picon = picon
@@ -73,6 +74,8 @@ class MessageBox(Screen, HelpableScreen):
 			elif self.type == self.TYPE_ERROR:
 				self["ErrorPixmap"].show()
 			self["icon"].show()
+		if picon != self.TYPE_WARNING:
+			self["WarningPixmap"].hide()
 		self.skinName = ["MessageBox"]
 		if simple:
 			self.skinName = ["MessageBoxSimple"]
@@ -266,3 +269,9 @@ class MessageBox(Screen, HelpableScreen):
 
 	def __repr__(self):
 		return "%s(%s)" % (str(type(self)), self.text)
+
+	def getListWidth(self):
+		def getListLineTextWidth(text):
+			self["autoresize"].setText(text)
+			return self["autoresize"].getSize()[0]
+		return max([getListLineTextWidth(line[0]) for line in self.list]) if self.list else 0
