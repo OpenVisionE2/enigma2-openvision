@@ -114,9 +114,7 @@ def resetMoviePlayState(cutsFileName, ref=None):
 			if cutType != 3:
 				cutlist.append(data)
 		f.close()
-		f = open(cutsFileName, 'wb')
-		f.write(''.join(cutlist))
-		f.close()
+		open(cutsFileName, 'wb').write(''.join(cutlist))
 	except:
 		pass
 		#import sys

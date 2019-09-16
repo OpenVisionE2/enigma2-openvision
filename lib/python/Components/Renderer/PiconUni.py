@@ -1,5 +1,3 @@
-# Copyright (c) 2boom 2012-16
-
 from Renderer import Renderer 
 from enigma import ePixmap
 from Tools.Directories import SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, resolveFilename 

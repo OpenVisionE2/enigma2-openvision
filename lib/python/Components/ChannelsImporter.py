@@ -288,9 +288,7 @@ class ChannelsImporter():
 		for filename in self.workList:
 			if filename != "lamedb":
 				try:
-					fp = open(self.DIR_TMP + filename)
-					lines = fp.readlines()
-					fp.close()
+					lines = open(self.DIR_TMP + filename).readlines()
 					for line in lines:
 						if '#SERVICE' in line and int(line.split()[1].split(":")[1]) & eServiceReference.mustDescent:
 							result = re.match("^.*FROM BOUQUET \"(.+)\" ORDER BY.*$", line) or re.match("[#]SERVICE[:] (?:[0-9a-f]+[:])+([^:]+[.](?:tv|radio))$", line, re.IGNORECASE)

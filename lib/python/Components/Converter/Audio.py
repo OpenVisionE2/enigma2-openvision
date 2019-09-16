@@ -159,12 +159,8 @@ class Audio(Converter, object):
 		temp = ''
 		unit = ''
 		try:
-			f = open('/proc/stb/sensors/temp0/value', 'rb')
-			temp = f.readline().strip()
-			f.close()
-			f = open('/proc/stb/sensors/temp0/unit', 'rb')
-			unit = f.readline().strip()
-			f.close()
+			temp = open("/proc/stb/sensors/temp0/value", "rb").readline().strip()
+			unit = open("/proc/stb/sensors/temp0/unit", "rb").readline().strip()
 			tempinfo = str(temp) + ' \xc2\xb0' + str(unit)
 			return tempinfo
 		except:

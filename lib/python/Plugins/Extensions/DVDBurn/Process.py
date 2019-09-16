@@ -641,9 +641,7 @@ class MenuImageTask(Task):
 	</stream>
 	</subpictures>"""
 
-		f = open(self.spuxmlfilename, "w")
-		f.write(spuxml)
-		f.close()
+		open(self.spuxmlfilename, "w").write(spuxml)
 		Task.processFinished(self, 0)
 		#except:
 			#Task.processFinished(self, 1)

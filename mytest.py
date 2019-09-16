@@ -100,9 +100,7 @@ def useSyncUsingChanged(configelement):
 config.misc.SyncTimeUsing.addNotifier(useSyncUsingChanged)
 
 def NTPserverChanged(configelement):
-	f = open("/etc/default/ntpdate", "w")
-	f.write('NTPSERVERS="' + configelement.value + '"\n')
-	f.close()
+	open("/etc/default/ntpdate", "w").write('NTPSERVERS="' + configelement.value + '"\n')
 	os.chmod("/etc/default/ntpdate", 0755)
 	from Components.Console import Console
 	Console = Console()

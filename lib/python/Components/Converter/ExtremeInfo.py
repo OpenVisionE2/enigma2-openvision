@@ -288,9 +288,7 @@ class ExtremeInfo(Poll, Converter, object):
 
     def getEmu(self):
         try:
-            f = open('/tmp/ecm.info', 'r')
-            content = f.read()
-            f.close()
+            content = open("/tmp/ecm.info", "r").read()
         except:
             content = ''
 
@@ -309,9 +307,7 @@ class ExtremeInfo(Poll, Converter, object):
 
     def getCrd(self):
         try:
-            f = open('/tmp/ecm.info', 'r')
-            content = f.read()
-            f.close()
+            content = open("/tmp/ecm.info", "r").read()
         except:
             content = ''
 
@@ -330,9 +326,7 @@ class ExtremeInfo(Poll, Converter, object):
 
     def getNet(self):
         try:
-            f = open('/tmp/ecm.info', 'r')
-            content = f.read()
-            f.close()
+            content = open("/tmp/ecm.info", "r").read()
         except:
             content = ''
 
@@ -356,9 +350,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -395,9 +387,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -434,9 +424,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -473,9 +461,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -512,9 +498,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -551,9 +535,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -590,9 +572,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -629,9 +609,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -668,9 +646,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -707,9 +683,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -746,9 +720,7 @@ class ExtremeInfo(Poll, Converter, object):
             info = service and service.info()
             if info:
                 try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
+                    content = open("/tmp/ecm.info", "r").read()
                 except:
                     content = ''
 
@@ -1024,9 +996,7 @@ class ExtremeInfo(Poll, Converter, object):
                 idx = emu.index('\n')
                 emu = emu[:idx]
         try:
-            f = open('/usr/bin/csactive', 'r')
-            content = f.read()
-            f.close()
+            content = open("/usr/bin/csactive", "r").read()
         except:
             content = ''
 
@@ -1044,9 +1014,7 @@ class ExtremeInfo(Poll, Converter, object):
         if cs != '' and emu == '':
             return cs
         try:
-            f = open('/tmp/cam.info', 'r')
-            content = f.read()
-            f.close()
+            content = open("/tmp/cam.info", "r").read()
         except:
             content = ''
 
