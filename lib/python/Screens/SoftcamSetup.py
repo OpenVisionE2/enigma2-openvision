@@ -107,7 +107,7 @@ class SoftcamSetup(Screen, ConfigListScreen):
 
 	def ppanelShortcut(self):
 		ppanelFileName = '/etc/ppanels/' + self.softcams.value + '.xml'
-		if "oscam" in self.softcams.value.lower() and os.path.isfile('/usr/lib/enigma2/python/Screens/OScamInfo.pyo'):
+		if "oscam" or "ncam" in self.softcams.value.lower():
 			from Screens.OScamInfo import OscamInfoMenu
 			self.session.open(OscamInfoMenu)
 		elif "cccam" in self.softcams.value.lower() and os.path.isfile('/usr/lib/enigma2/python/Plugins/Extensions/CCcamInfo/plugin.pyo'):
