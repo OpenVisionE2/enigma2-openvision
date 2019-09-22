@@ -1,5 +1,5 @@
 from GUIComponent import GUIComponent
-from config import KEY_LEFT, KEY_RIGHT, KEY_HOME, KEY_END, KEY_0, KEY_DELETE, KEY_BACKSPACE, KEY_OK, KEY_TOGGLEOW, KEY_ASCII, KEY_TIMEOUT, KEY_NUMBERS, ConfigElement
+from config import KEY_LEFT, KEY_RIGHT, KEY_HOME, KEY_END, KEY_0, KEY_DELETE, KEY_BACKSPACE, KEY_OK, KEY_TOGGLEOW, KEY_ASCII, KEY_TIMEOUT, KEY_NUMBERS, ConfigElement, configfile
 from Components.ActionMap import NumberActionMap, ActionMap
 from enigma import eListbox, eListboxPythonConfigContent, eRCInput, eTimer
 from Screens.MessageBox import MessageBox
@@ -10,7 +10,7 @@ class ConfigList(GUIComponent, object):
 	def __init__(self, list, session=None):
 		GUIComponent.__init__(self)
 		self.l = eListboxPythonConfigContent()
-		seperation, = skin.parameters.get("ConfigListSeperator", (200, ))
+		seperation = skin.parameters.get("ConfigListSeperator", 200)
 		self.l.setSeperation(seperation)
 		height, space = skin.parameters.get("ConfigListSlider", (17, 0))
 		self.l.setSlider(height, space)
@@ -112,11 +112,10 @@ class ConfigList(GUIComponent, object):
 		self.handleKey(KEY_TIMEOUT)
 
 	def isChanged(self):
-		is_changed = False
 		for x in self.list:
-			is_changed |= x[1].isChanged()
-
-		return is_changed
+			if x[1].isChanged():
+				return True
+		return False
 
 	def pageUp(self):
 		if self.instance is not None:
@@ -211,7 +210,7 @@ class ConfigListScreen:
 		self.session.openWithCallback(self.VirtualKeyBoardCallback, VirtualKeyBoard, title=self["config"].getCurrent()[0], text=self["config"].getCurrent()[1].getValue())
 
 	def VirtualKeyBoardCallback(self, callback=None):
-		if callback is not None and len(callback):
+		if callback is not None:
 			self["config"].getCurrent()[1].setValue(callback)
 			self["config"].invalidate(self["config"].getCurrent())
 		self["config"].showHelp()
@@ -280,6 +279,7 @@ class ConfigListScreen:
 	def saveAll(self):
 		for x in self["config"].list:
 			x[1].save()
+		configfile.save()
 
 	# keySave and keyCancel are just provided in case you need them.
 	# you have to call them by yourself.
