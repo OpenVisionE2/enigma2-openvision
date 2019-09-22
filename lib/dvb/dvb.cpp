@@ -2,9 +2,11 @@
 #include <linux/dvb/dmx.h>
 #include <linux/dvb/version.h>
 
+#include <lib/base/cfile.h>
 #include <lib/base/eerror.h>
 #include <lib/base/estring.h>
 #include <lib/base/wrappers.h>
+#include <lib/base/httpstream.h>
 #include <lib/dvb/cahandler.h>
 #include <lib/dvb/idvb.h>
 #include <lib/dvb/dvb.h>
@@ -1710,6 +1712,19 @@ void eDVBChannel::pvrEvent(int event)
 		eDebug("[eDVBChannel] End of file!");
 		m_event(this, evtEOF);
 		break;
+	case eFilePushThread::evtReadError:
+		eDebug("[eDVBChannel] Read error!");
+		if (m_source->isStream()) {
+			eDebug("[eDVBChannel] We are in stream mode, trying to reconnect it!");
+			ePtr<iTsSource> source = m_source;
+			stop();
+			source->reconnect();
+			playSource(source, m_streaminfo_file.c_str());
+		}
+		else {
+			stop();
+		}
+		break;
 	case eFilePushThread::evtUser: /* start */
 		eDebug("[eDVBChannel] SOF");
 		m_event(this, evtSOF);
@@ -2266,6 +2281,7 @@ RESULT eDVBChannel::playSource(ePtr<iTsSource> &source, const char *streaminfo_f
 	}
 
 	m_source = source;
+	m_streaminfo_file = std::string(streaminfo_file);
 	m_tstools.setSource(m_source, streaminfo_file);
 #ifdef HAVE_RASPBERRYPI
 	m_pvr_fd_dst = ::open("/tmp/ENIGMA_FIFO", O_RDWR);

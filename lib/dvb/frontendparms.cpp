@@ -466,6 +466,7 @@ int eDVBCableTransponderData::getFecInner() const
 	case FEC_3_5: return eDVBFrontendParametersCable::FEC_3_5;
 	case FEC_4_5: return eDVBFrontendParametersCable::FEC_4_5;
 	case FEC_9_10: return eDVBFrontendParametersCable::FEC_9_10;
+	case FEC_6_7: return eDVBFrontendParametersCable::FEC_6_7;
 	default:
 	case FEC_AUTO: return eDVBFrontendParametersCable::FEC_Auto;
 	}
