@@ -3,7 +3,7 @@ from Renderer import Renderer
 from enigma import iServiceInformation 
 from string import upper 
 from enigma import ePixmap 
-from Tools.Directories import fileExists, SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, resolveFilename 
+from Tools.Directories import fileExists, SCOPE_CURRENT_SKIN, resolveFilename 
 from Components.Element import cached
 from Components.Converter.Poll import Poll
 import os
@@ -170,8 +170,6 @@ class PicEmu2(Renderer, Poll):
                                             tmp = resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png')
                                             if fileExists(tmp):
                                                     pngname = tmp
-                                            else:
-                                                    pngname = resolveFilename(SCOPE_SKIN_IMAGE, 'skin_default/picon_default.png')
                                             self.nameCache['default'] = pngname
 
                         if (self.pngname != pngname):
