@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Budiarno Pedode\n"
 "Language-Team: \n"
@@ -1674,10 +1674,6 @@ msgstr "Semua satelit 4 (USALS)"
 msgid "All services provider"
 msgstr "Semua penyedia layanan"
 
-#, fuzzy
-msgid "All slots"
-msgstr "Pilih slot"
-
 msgid "Allocate"
 msgstr "Alokasikan"
 
@@ -2423,16 +2419,6 @@ msgstr "penetapan CI"
 
 msgid "CI slot: "
 msgstr "slot CI"
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Pengaturan Tombol Pintas"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3404,9 +3390,6 @@ msgstr "Tidak bisa menemukan media yg cocok - Mohon hapus beberapa image yg diun
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Tidak bisa memuat media! Tidak ada piringan dimasukkan?"
-
-msgid "Could not locate epg file on fallback tuner"
-msgstr ""
 
 msgid "Could not open Picture in Picture"
 msgstr "Tidak bisa membuka PiP"
@@ -4411,6 +4394,10 @@ msgstr "Pengaturan EPG"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "Kesalahan - gagal melacak (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Timur"
 
@@ -4502,12 +4489,6 @@ msgstr "Aktifkan 5V pada antena aktif"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Diaktifkan"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Aktifkan EPG EIT"
@@ -4754,6 +4735,10 @@ msgstr ""
 msgid "Error"
 msgstr "Kesalahan"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Kesalahan"
+
 msgid "Error code"
 msgstr "Kode kesalahan"
 
@@ -4789,10 +4774,25 @@ msgstr "Kesalahan eksekusi plugin"
 msgid "Error stop stream!"
 msgstr "Kesalahan, hentikan stream!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Kesalahan ketika mengambil informasi pewaktu mundur\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Kesalahan ketika mengambil informasi pewaktu mundur\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Kesalahan ketika mengambil informasi pewaktu mundur\n"
 "%s"
@@ -6111,10 +6111,6 @@ msgstr "Atur perangkat input"
 msgid "Input devices"
 msgstr "Perangkat Input"
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Menuju letak"
-
 msgid "Install"
 msgstr "Pasang"
 
@@ -7294,6 +7290,9 @@ msgstr "Deskripsi tidak tersedia."
 msgid "No displayable files on this medium found!"
 msgstr "Tidak ditemukan file yang bisa dilihat pada medium ini!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Info acara tidak ditemukan, merekam tanpa batas waktu."
 
@@ -7336,9 +7335,6 @@ msgstr "Tidak ada layanan"
 
 msgid "No services/providers selected"
 msgstr "Tidak ada layanan/penyedia yang dipilih"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Tidak bisa standby"
@@ -10557,9 +10553,6 @@ msgstr ""
 msgid "Some plugins are not available:\n"
 msgstr "Beberapa plugin tidak tersedia:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "Maaf, %s belum dipasang!"
@@ -12972,9 +12965,6 @@ msgstr "Ketika konten punya rasio aspek 16:9, pilih apakah akan menskala/merenta
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Ketika konten punya rasio aspek 4:3, pilih apakah akan menskala/merentangkan gambar."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Di mana menyimpan rekaman timeshift temporer?"

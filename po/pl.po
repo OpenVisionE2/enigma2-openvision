@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2019-09-13 12:44+0200\n"
 "Last-Translator: blzr <blzr@o2.pl>\n"
 "Language-Team: \n"
@@ -1604,9 +1604,6 @@ msgstr "Wszystkie satelity 4 (USALS)"
 msgid "All services provider"
 msgstr "Wszystkie kanały nadawcy"
 
-msgid "All slots"
-msgstr "Wszystkie sloty"
-
 msgid "Allocate"
 msgstr "Przydziel"
 
@@ -2332,16 +2329,6 @@ msgstr "Zadania CI"
 
 msgid "CI slot: "
 msgstr "Slot CI"
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Ustawienia Hotkey"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3308,10 +3295,6 @@ msgstr "Nie można znaleźć odpowiedniego nośnika - usuń niektóre pobrane im
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nie można odczytać nośnika. Czy płyta jest w napędzie?"
-
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Włącz import timerów z tunera rezerwowego"
 
 msgid "Could not open Picture in Picture"
 msgstr "Nie mozna otworzyć PiP"
@@ -4294,6 +4277,10 @@ msgstr "EPG"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "BŁĄD - skanowanie (%s) nie powiodło się!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Wschód"
 
@@ -4383,12 +4370,6 @@ msgstr "Włącz 5V dla aktywnej anteny"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Włączone"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Włącz EIT EPG"
@@ -4629,6 +4610,10 @@ msgstr "Erytrea"
 msgid "Error"
 msgstr "Błąd"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Błąd"
+
 msgid "Error code"
 msgstr "Kod błędu"
 
@@ -4664,10 +4649,25 @@ msgstr "Błąd podczas uruchamiania wtyczki"
 msgid "Error stop stream!"
 msgstr "Błąd zatrzymania streamu!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Błąd podczas pobierania  informacji o timerze z tunera zapasowego\n"
+"% s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Błąd podczas pobierania  informacji o timerze z tunera zapasowego\n"
+"% s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Błąd podczas pobierania  informacji o timerze z tunera zapasowego\n"
 "% s"
@@ -5951,10 +5951,6 @@ msgstr "Konfiguracjia urządzenia wejściowego"
 msgid "Input devices"
 msgstr "Urządzenia wejścia"
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Idź na pozycję"
-
 msgid "Install"
 msgstr "Instalacja"
 
@@ -7108,6 +7104,9 @@ msgstr "Brak dostępnego opisu."
 msgid "No displayable files on this medium found!"
 msgstr "Brak plików do wyświetlenia na tym nośniku!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Nie znaleziono informacji o wydarzeniu, nagrywanie na czas nieokreślony."
 
@@ -7149,9 +7148,6 @@ msgstr "Brak kanału"
 
 msgid "No services/providers selected"
 msgstr "Brak wybranych kanałów/nadawców"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Bez stanu czuwania"
@@ -10297,9 +10293,6 @@ msgstr ""
 msgid "Some plugins are not available:\n"
 msgstr "Niektóre wtyczki są niedostępne:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "Niestety, %s nie został zainstalowany!"
@@ -12674,9 +12667,6 @@ msgstr "Wybierz czy skalować/rozciągać zawartość z aspect ratio 16:9."
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Wybierz czy skalować/rozciągać zawartość z aspect ratio 4:3."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Gdzie zapisywać tymczasowe nagrania timeshift?"

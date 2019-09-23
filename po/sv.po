@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -1783,10 +1783,6 @@ msgstr "Alla Satelliter 4 (USALS)"
 msgid "All services provider"
 msgstr "Alla kanaloperatörer"
 
-#, fuzzy
-msgid "All slots"
-msgstr "Välj plats"
-
 msgid "Allocate"
 msgstr "Allokera"
 
@@ -2609,16 +2605,6 @@ msgstr "CI tilldelning"
 
 msgid "CI slot: "
 msgstr "CI plats :"
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "HotKey inställning"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3675,9 +3661,6 @@ msgstr ""
 #
 msgid "Could not load medium! No disc inserted?"
 msgstr "Kunde inte ladda media! Ingen disk istoppad?"
-
-msgid "Could not locate epg file on fallback tuner"
-msgstr ""
 
 #
 msgid "Could not open Picture in Picture"
@@ -4797,6 +4780,10 @@ msgstr "EPG inställningar"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "FEL - misslyckad sökning (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 #
 msgid "East"
 msgstr "Öst"
@@ -4901,12 +4888,6 @@ msgstr "Aktivera 5V för aktiv antenn"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Aktiverad"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Aktivera EIT EPG"
@@ -5169,6 +5150,11 @@ msgstr "Strömning"
 msgid "Error"
 msgstr "Fel"
 
+#
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Fel"
+
 msgid "Error code"
 msgstr "Felkod"
 
@@ -5198,10 +5184,19 @@ msgstr "Fel vid körning av plugin"
 msgid "Error stop stream!"
 msgstr ""
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #
@@ -6622,11 +6617,6 @@ msgid "Input devices"
 msgstr "Inmatningsenheter"
 
 #
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Gå till position"
-
-#
 msgid "Install"
 msgstr "Installera"
 
@@ -7951,6 +7941,9 @@ msgstr "Ingen beskrivning tillgänglig."
 msgid "No displayable files on this medium found!"
 msgstr "Inga visningsbara filer hittade på detta media!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 #
 msgid "No event info found, recording indefinitely."
 msgstr "Ingen programinfo hittades, inspelning oändlig."
@@ -8000,9 +7993,6 @@ msgstr "Ingen kanal"
 #
 msgid "No services/providers selected"
 msgstr "Ingen kanal / operatör vald"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 #
 msgid "No standby"
@@ -11601,9 +11591,6 @@ msgstr ""
 msgid "Some plugins are not available:\n"
 msgstr "Några plugins är inte tillgängliga :\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #
 #, python-format
 msgid "Sorry, %s has not been installed!"
@@ -14283,9 +14270,6 @@ msgstr "När innehållet har ett bildförhållande på 16:9, välj om man ska sk
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "När innehållet har ett bildförhållande på 4:3, välj om man ska skala / sträcka bilden."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 #
 msgid "Where to save temporary timeshift recordings?"

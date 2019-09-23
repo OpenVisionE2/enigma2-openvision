@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1-En-Th\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2010-04-08 18:13+0700\n"
 "Last-Translator: Tony - Thaidreambox\n"
 "Language-Team: Tony @ Thai Dreambox <tonyboyth@gmail.com>\n"
@@ -1616,9 +1616,6 @@ msgstr ""
 msgid "All services provider"
 msgstr ""
 
-msgid "All slots"
-msgstr ""
-
 msgid "Allocate"
 msgstr ""
 
@@ -2364,15 +2361,6 @@ msgid "CI assignment"
 msgstr "CI assignment"
 
 msgid "CI slot: "
-msgstr ""
-
-msgid "CIHelper Setup"
-msgstr ""
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
 msgstr ""
 
 msgid "CPU architecture: "
@@ -3350,9 +3338,6 @@ msgstr ""
 #, fuzzy
 msgid "Could not load medium! No disc inserted?"
 msgstr "โหลดไม่ได้ ยังไม่ได้ใส่แผ่นหรือเปล่า?"
-
-msgid "Could not locate epg file on fallback tuner"
-msgstr ""
 
 msgid "Could not open Picture in Picture"
 msgstr ""
@@ -4363,6 +4348,10 @@ msgstr ""
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ผิดพลาด - การค้นหา (%s) ล้มเหลว"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "ตะวันออก"
 
@@ -4454,12 +4443,6 @@ msgstr "เปิดใช้งาน 5V สำหรับเสาอาก�
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "เปิดใช้งาน"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr ""
@@ -4705,6 +4688,10 @@ msgstr ""
 msgid "Error"
 msgstr "ผิดพลาด"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "ผิดพลาด"
+
 msgid "Error code"
 msgstr ""
 
@@ -4733,10 +4720,19 @@ msgstr "เรียกใช้งาน Plugin ผิดพลาด"
 msgid "Error stop stream!"
 msgstr ""
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #, python-format
@@ -6037,10 +6033,6 @@ msgstr ""
 msgid "Input devices"
 msgstr ""
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "ไปยังตำแหน่ง"
-
 msgid "Install"
 msgstr "ติดตั้ง"
 
@@ -7246,6 +7238,9 @@ msgstr "ไม่มีรายละเอียดเพิ่มเติม
 msgid "No displayable files on this medium found!"
 msgstr "ไม่พบชนิดไฟล์ที่สามารถเล่นได้ในสื่อบันทีกนี้!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "ไม่พบข้อมูลเวลากำกับ บันทึกรายโดยไม่มีข้อกำหนด"
 
@@ -7289,9 +7284,6 @@ msgstr ""
 #, fuzzy
 msgid "No services/providers selected"
 msgstr "ยังไม่ได้เลือกบริการหรือผู้ให้บริการ"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 #, fuzzy
 msgid "No standby"
@@ -10567,9 +10559,6 @@ msgstr ""
 msgid "Some plugins are not available:\n"
 msgstr "Plugin บางตัวยังไม่สามารถใช้งานได้:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, fuzzy, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "ท่านยังไม่ได้ติดตั้งตัว MediaScanner!"
@@ -12961,9 +12950,6 @@ msgid "When the content has an aspect ratio of 16:9, choose whether to scale/str
 msgstr ""
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
-msgstr ""
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
 msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -1688,10 +1688,6 @@ msgstr "Visi pavadoņi 4 (USALS)"
 msgid "All services provider"
 msgstr "Visu kanālu operatori"
 
-#, fuzzy
-msgid "All slots"
-msgstr "Izvēlieties slotu"
-
 msgid "Allocate"
 msgstr "Iedalīt"
 
@@ -2422,16 +2418,6 @@ msgstr "CI piešķiršana"
 
 msgid "CI slot: "
 msgstr "CI slots: "
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Ātro taustiņu iestatījumi"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3384,10 +3370,6 @@ msgstr "Nav pieejams piemērots datu nesējs - lūdzu izdzēsiet kādu imidžu v
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nevar ielādēt datu nesēju! Disks nav ievietots?"
-
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Importēt taimerus no attālinātā uztvērēja"
 
 msgid "Could not open Picture in Picture"
 msgstr "Nevar atvērt attēlu attēlā"
@@ -4375,6 +4357,10 @@ msgstr "EPG iestatījumi"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "KĻŪDA - meklēšana neizdevās (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Austrumi"
 
@@ -4465,12 +4451,6 @@ msgstr "Aktivizēt 5V aktīvai antenai"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Aktivizēts"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Aktivizēt EIT EPG"
@@ -4713,6 +4693,10 @@ msgstr "Eritreja"
 msgid "Error"
 msgstr "Kļūda"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Kļūda"
+
 msgid "Error code"
 msgstr "Kļūdas kods"
 
@@ -4748,10 +4732,25 @@ msgstr "Kļūda, palaižot spraudni"
 msgid "Error stop stream!"
 msgstr "Kļūda apturot straumēšanu!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Kļūda iegūstot taimerus no attālinātā uztvērēja\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Kļūda iegūstot taimerus no attālinātā uztvērēja\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Kļūda iegūstot taimerus no attālinātā uztvērēja\n"
 "%s"
@@ -6041,10 +6040,6 @@ msgstr "Ievades ierīces iestatījumi"
 msgid "Input devices"
 msgstr "Ievades ierīces"
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Iet uz pozīciju"
-
 msgid "Install"
 msgstr "Instalēt"
 
@@ -7203,6 +7198,9 @@ msgstr "Apraksts nav pieejams."
 msgid "No displayable files on this medium found!"
 msgstr "Šinī datu nesējā nav atrasti attēlojami faili!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Nav atrasta informācija par pārraidi, ierakstīs nepārtraukti."
 
@@ -7245,9 +7243,6 @@ msgstr "Nav kanāla"
 
 msgid "No services/providers selected"
 msgstr "Kanāli/operatori nav izvēlēti"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Nav gaidstāves"
@@ -10407,9 +10402,6 @@ msgstr "Somālija"
 msgid "Some plugins are not available:\n"
 msgstr "Daži spraudņi nav pieejami:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "Atvainojiet, %s nav instalēts!"
@@ -12783,9 +12775,6 @@ msgstr "Ja attēla malu attiecība ir 16:9 izvēlieties, kā palielināt/stiept 
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Ja attēla malu attiecība ir 4:3 izvēlieties, kā palielināt/stiept attēlu."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Kur saglabāt pagaidu laika aiztures ierakstus?"

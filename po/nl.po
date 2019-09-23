@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -1677,9 +1677,6 @@ msgstr "Alle satellieten 4 (USALS)"
 msgid "All services provider"
 msgstr "Alle kanalen per provider"
 
-msgid "All slots"
-msgstr "Alle slots"
-
 msgid "Allocate"
 msgstr "Toewijzen"
 
@@ -2409,16 +2406,6 @@ msgstr "CI toewijzing"
 
 msgid "CI slot: "
 msgstr "CI slot: "
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Instellen Hotkey plugin"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3570,10 +3557,6 @@ msgstr "Kon geen geschikt medium vinden - Verwijder aub enkele gedownloade image
 msgid "Could not load medium! No disc inserted?"
 msgstr "Kon het medium niet laden! Is er geen schijf geplaatst?"
 
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Activeer de import van timers van de Fallback tuner"
-
 msgid "Could not open Picture in Picture"
 msgstr "Kan Picture In Picture niet openen"
 
@@ -4565,6 +4548,10 @@ msgstr "EPG instellingen"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "Fout - zoeken mislukt (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Oost"
 
@@ -4658,12 +4645,6 @@ msgstr "5V voor actieve antenne inschakelen"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Ingeschakeld"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "EIT EPG inschakelen"
@@ -4907,6 +4888,10 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Fout"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Fout"
+
 msgid "Error code"
 msgstr "Foutcode"
 
@@ -4942,10 +4927,25 @@ msgstr "Fout bij uitvoeren plugin"
 msgid "Error stop stream!"
 msgstr "Fout stop de stream!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Fout tijdens het ophalen van de Fallback timer informatie\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Fout tijdens het ophalen van de Fallback timer informatie\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Fout tijdens het ophalen van de Fallback timer informatie\n"
 "%s"
@@ -6239,10 +6239,6 @@ msgstr "Invoerapparaat setup"
 msgid "Input devices"
 msgstr "Invoerapparaten"
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Naar positie draaien"
-
 msgid "Install"
 msgstr "Installeer"
 
@@ -7398,6 +7394,9 @@ msgstr "Geen beschrijving beschikbaar."
 msgid "No displayable files on this medium found!"
 msgstr "Geen weer te geven bestanden op dit medium gevonden!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Geen EPG gegevens gevonden. Opname voor onbepaalde tijd."
 
@@ -7439,9 +7438,6 @@ msgstr "Geen uitzending"
 
 msgid "No services/providers selected"
 msgstr "Geen zender/provider gekozen"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Geen standby"
@@ -10634,9 +10630,6 @@ msgstr "Somalië"
 msgid "Some plugins are not available:\n"
 msgstr "Enkele plugins zijn niet beschikbaar:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "Sorry, %s is niet geïnstalleerd!"
@@ -13082,9 +13075,6 @@ msgstr ""
 "Indien het beeld een beeldverhouding heeft van 4:3, kies dan of u het beeld geschaald of uitgerekt wenst te zien.\n"
 "\n"
 "U kunt kiezen uit pillarbox, schalen, automatisch, non liniair of pan & scan."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Waar wilt u de tijdelijke timeshift opnames opslaan?"

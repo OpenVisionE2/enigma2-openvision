@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: MCelliotG <mcelliotg@gmail.com>\n"
@@ -1675,9 +1675,6 @@ msgstr "Όλοι οι δορυφόροι 4 (USALS)"
 msgid "All services provider"
 msgstr "Πάροχος όλων των υπηρεσιών"
 
-msgid "All slots"
-msgstr "Όλες οι θέσεις"
-
 msgid "Allocate"
 msgstr "Κατανομή"
 
@@ -2400,16 +2397,6 @@ msgstr "Ανάθεση CI"
 
 msgid "CI slot: "
 msgstr "Θύρα CI: "
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Ρυθμίσεις HotKey"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3376,10 +3363,6 @@ msgstr "Δεν βρέθηκε το κατάλληλο μέσο - Παρακαλ�
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Το μέσο δεν φορτώθηκε! Δεν έγινε εισαγωγή δίσκου;"
-
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Ενεργοποίηση εισαγωγής χρονοδιακόπτη από το εφεδρικό tuner"
 
 msgid "Could not open Picture in Picture"
 msgstr "Αδυναμία εκκίνησης PiP"
@@ -4362,6 +4345,10 @@ msgstr "Ρυθμίσεις EPG"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ΣΦΑΛΜΑ - Αποτυχία ανίχνευσης  (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Ανατολικά"
 
@@ -4451,12 +4438,6 @@ msgstr "Ενεργοποίηση των 5V για την ενεργή κεραί
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Ενεργό"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Ενεργοποίηση EIT EPG"
@@ -4697,6 +4678,10 @@ msgstr "Ερυθραία"
 msgid "Error"
 msgstr "Σφάλμα"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Σφάλμα"
+
 msgid "Error code"
 msgstr "Κωδικός σφάλματος"
 
@@ -4732,10 +4717,25 @@ msgstr "Σφάλμα κατά την εκτέλεση προσθέτου"
 msgid "Error stop stream!"
 msgstr "Σφάλμα διακοπής ροής!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Σφάλμα ανάκτησης πληροφοριών χρονοδιακόπτη από το εφεδρικό tuner\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Σφάλμα ανάκτησης πληροφοριών χρονοδιακόπτη από το εφεδρικό tuner\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Σφάλμα ανάκτησης πληροφοριών χρονοδιακόπτη από το εφεδρικό tuner\n"
 "%s"
@@ -6022,10 +6022,6 @@ msgstr "Ρύθμιση συσκευής εισόδου"
 msgid "Input devices"
 msgstr "Συσκευές εισόδου"
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Μετάβαση στη θέση"
-
 msgid "Install"
 msgstr "Εγκατάσταση"
 
@@ -7180,6 +7176,9 @@ msgstr "Μη διαθέσιμη περιγραφή."
 msgid "No displayable files on this medium found!"
 msgstr "Δεν υπάρχουν αρχεία προς εμφάνιση σε αυτό το μέσο!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Δεν βρέθηκαν πληροφορίες προγράμματος, η εγγραφή δεν θα σταματήσει."
 
@@ -7221,9 +7220,6 @@ msgstr "Καμία υπηρεσία"
 
 msgid "No services/providers selected"
 msgstr "Δεν έχουν επιλεγεί υπηρεσίες/πάροχοι"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Χωρίς αναμονή"
@@ -10370,9 +10366,6 @@ msgstr "Σομαλία"
 msgid "Some plugins are not available:\n"
 msgstr "Μερικά πρόσθετα δεν είναι διαθέσιμα:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "Λυπούμαστε, το %s δεν έχει εγκατασταθεί!"
@@ -12745,9 +12738,6 @@ msgstr "Όταν το περιεχόμενο έχει λόγο πλευρών 16
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Όταν το περιεχόμενο έχει λόγο πλευρών 4:3, επιλέξτε αν θα γίνεται κλιμάκωση/άπλωμα της εικόνας."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Που θέλετε να αποθηκεύονται προσωρινά οι χρονομετατοπισμένες εγγραφές;"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi-enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2018-05-22 13:54+0200\n"
 "Last-Translator: Gringo <openpli@tiscali.it>\n"
 "Language-Team: www.linsat.net <spaeleus@croci.org>\n"
@@ -1676,10 +1676,6 @@ msgstr "Tutti i satelliti 4 (USALS)"
 msgid "All services provider"
 msgstr "Tutti i provider di canali"
 
-#, fuzzy
-msgid "All slots"
-msgstr "Selezionare lo slot"
-
 msgid "Allocate"
 msgstr "Assegnare"
 
@@ -2416,16 +2412,6 @@ msgstr "Assegnazione CI"
 
 msgid "CI slot: "
 msgstr "Slot CI: "
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Configurazione dei tasti"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3386,10 +3372,6 @@ msgstr "Impossibile trovare dei supporti adatti. Inserire un supporto (ad. es un
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Impossibile caricare il supporto. Nessun disco inserito?"
-
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Importare i canali dal sintonizzatore di fallback"
 
 msgid "Could not open Picture in Picture"
 msgstr "Impossibile attivare il PIP"
@@ -4379,6 +4361,10 @@ msgstr "EPG"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ERRORE - Ricerca non riuscita (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Est"
 
@@ -4470,12 +4456,6 @@ msgstr "Abilitare 5V per antenna attiva"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Abilitato"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Abilitare l'EPG EIT"
@@ -4720,6 +4700,10 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Errore"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Errore"
+
 msgid "Error code"
 msgstr "Codice errore"
 
@@ -4755,10 +4739,21 @@ msgstr "Errore di esecuzione del plugin"
 msgid "Error stop stream!"
 msgstr "Errore di interruzione nel flusso!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr "Errore durante il recupero della posizione di epg.data sul server"
+
 #, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr "Errore durante il recupero della posizione di epg.data sul server"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr "Errore durante il recupero della posizione di epg.data sul server"
 
 #, python-format
@@ -6051,10 +6046,6 @@ msgstr "Impostazioni della periferica di ingresso"
 msgid "Input devices"
 msgstr "Periferiche di ingresso"
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Andare alla posizione"
-
 msgid "Install"
 msgstr "Installare"
 
@@ -7220,6 +7211,9 @@ msgstr "Nessuna descrizione disponibile."
 msgid "No displayable files on this medium found!"
 msgstr "Questo supporto non contiene file riproducibili!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Nessuna informazione disponibile sull'evento, registrazione illimitata in corso."
 
@@ -7262,9 +7256,6 @@ msgstr "Nessun canale"
 
 msgid "No services/providers selected"
 msgstr "Nessun canale/provider selezionato"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Nessuna sospensione"
@@ -10447,9 +10438,6 @@ msgstr "Somalia"
 msgid "Some plugins are not available:\n"
 msgstr "Alcuni plugin non sono disponibili:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "Purtroppo %s non è stato installato!"
@@ -12869,9 +12857,6 @@ msgstr "Quando il video ha un formato 16:9 selezionare se scalare o allargare l'
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Quando il video ha un formato 4:3 selezionare se scalare o allargare l'immagine."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Scegliere una destinazione per il salvataggio delle registrazioni temporanee del timeshift."

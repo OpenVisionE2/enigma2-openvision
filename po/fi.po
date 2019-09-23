@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2019-02-13 20:52+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -1767,11 +1767,6 @@ msgstr "Kaikki satelliitit 4 (DiSEqC-tila 1.2)"
 msgid "All services provider"
 msgstr ""
 
-#
-#, fuzzy
-msgid "All slots"
-msgstr "Valitse paikka"
-
 msgid "Allocate"
 msgstr "Varaa"
 
@@ -2563,16 +2558,6 @@ msgid "CI assignment"
 msgstr "CI-määritys"
 
 msgid "CI slot: "
-msgstr ""
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Pikanäppäinasetukset"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
 msgstr ""
 
 msgid "CPU architecture: "
@@ -3601,10 +3586,6 @@ msgstr "Soveltuvaa tallennustilaa ei löytynyt - Varmista vapaa levytila, tai li
 #
 msgid "Could not load medium! No disc inserted?"
 msgstr "Levyä ei voitu ladata! Levy puuttuu?"
-
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Tuo ajastimet etävastaaottimelta"
 
 msgid "Could not open Picture in Picture"
 msgstr "PiP-kuvaa ei voitu avata"
@@ -4707,6 +4688,10 @@ msgstr "Ohjelmaoppaan asetukset"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "VIRHE - haku epäonnistui (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 #
 msgid "East"
 msgstr "Itäistä pituutta"
@@ -4812,12 +4797,6 @@ msgstr "Syötä 5 voltin käyttöjännite aktiiviantennille"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Käytössä"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Ota käyttöön EIT EPG"
@@ -5077,6 +5056,11 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Virhe"
 
+#
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Virhe"
+
 msgid "Error code"
 msgstr "Virhekoodi"
 
@@ -5106,10 +5090,19 @@ msgstr "Virhe plugin-lisäosan suorittamisessa"
 msgid "Error stop stream!"
 msgstr ""
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #
@@ -6505,11 +6498,6 @@ msgid "Input devices"
 msgstr "Syöttölaitteet"
 
 #
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Mene sijaintiin"
-
-#
 msgid "Install"
 msgstr "Asenna"
 
@@ -7829,6 +7817,9 @@ msgstr "Kuvausta ei ole saatavilla."
 msgid "No displayable files on this medium found!"
 msgstr "Tiedostoja ei löytynyt!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 #
 msgid "No event info found, recording indefinitely."
 msgstr ""
@@ -7885,9 +7876,6 @@ msgstr "Ei kanavaa"
 #
 msgid "No services/providers selected"
 msgstr "Kanavia/palveluntarjoajia ei valittu"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 #
 msgid "No standby"
@@ -11458,9 +11446,6 @@ msgstr "Somalia"
 msgid "Some plugins are not available:\n"
 msgstr "Seuraavat lisäosat eivät ole saatavilla:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "%s ei ole asennettu!"
@@ -14069,9 +14054,6 @@ msgstr "Kun ohjelman kuvasuhde on 16:9, valitse skaalataanko/venytetäänkö kuv
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Kun ohjelman kuvasuhde on 4:3, valitse skaalataanko/venytetäänkö kuvaa."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 #
 msgid "Where to save temporary timeshift recordings?"

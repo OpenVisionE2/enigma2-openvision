@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2016-06-17 12:13+0800\n"
 "Last-Translator: nx111 <gdzdz@163.com>\n"
 "Language-Team: NEWBOLT\n"
@@ -1591,9 +1591,6 @@ msgstr ""
 msgid "All services provider"
 msgstr ""
 
-msgid "All slots"
-msgstr ""
-
 msgid "Allocate"
 msgstr ""
 
@@ -2321,15 +2318,6 @@ msgid "CI assignment"
 msgstr "CI选择"
 
 msgid "CI slot: "
-msgstr ""
-
-msgid "CIHelper Setup"
-msgstr ""
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
 msgstr ""
 
 msgid "CPU architecture: "
@@ -3279,9 +3267,6 @@ msgid "Could not find suitable media - Please remove some downloaded images or i
 msgstr ""
 
 msgid "Could not load medium! No disc inserted?"
-msgstr ""
-
-msgid "Could not locate epg file on fallback tuner"
 msgstr ""
 
 msgid "Could not open Picture in Picture"
@@ -4270,6 +4255,10 @@ msgstr ""
 msgid "ERROR - failed to scan (%s)!"
 msgstr "错误 - 扫描 (%s)失败!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "东"
 
@@ -4360,12 +4349,6 @@ msgstr "为有源天线启用5V供电"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "启用的"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "启用EIT EPG"
@@ -4609,6 +4592,10 @@ msgstr ""
 msgid "Error"
 msgstr "错误"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "错误"
+
 msgid "Error code"
 msgstr "错误码"
 
@@ -4638,10 +4625,19 @@ msgstr "执行插件发生错误"
 msgid "Error stop stream!"
 msgstr "固定流"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #, python-format
@@ -5915,10 +5911,6 @@ msgstr "输入设备"
 msgid "Input devices"
 msgstr "输入设备"
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "转到位置"
-
 msgid "Install"
 msgstr "安装"
 
@@ -7080,6 +7072,9 @@ msgstr "无可用信息"
 msgid "No displayable files on this medium found!"
 msgstr "当前位置未找到文件"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "EPG数据没有发现,无限制录制."
 
@@ -7121,9 +7116,6 @@ msgid "No service"
 msgstr ""
 
 msgid "No services/providers selected"
-msgstr ""
-
-msgid "No settings files to download on fallback tuner"
 msgstr ""
 
 msgid "No standby"
@@ -10298,9 +10290,6 @@ msgstr ""
 msgid "Some plugins are not available:\n"
 msgstr "一些插件不可用:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr ""
@@ -12605,9 +12594,6 @@ msgid "When the content has an aspect ratio of 16:9, choose whether to scale/str
 msgstr ""
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
-msgstr ""
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
 msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"

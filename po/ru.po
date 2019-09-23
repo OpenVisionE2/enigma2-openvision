@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2019-07-25 17:52+0300\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: openPLi Dimitrij\n"
@@ -1686,9 +1686,6 @@ msgstr "Все спутники 4 (USALS)"
 msgid "All services provider"
 msgstr "Все сервисы провайдера"
 
-msgid "All slots"
-msgstr "Все слоты"
-
 msgid "Allocate"
 msgstr "Выделить"
 
@@ -2415,16 +2412,6 @@ msgstr "Присвоение CI"
 
 msgid "CI slot: "
 msgstr "Слот CI: "
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Настройки горячих кнопок"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3376,10 +3363,6 @@ msgstr "Не удалось найти подходящие носители. У
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Не удалось загрузить носитель! Проверьте, вставлен ли диск?"
-
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Включить импорт таймеров из резервного ресивера"
 
 msgid "Could not open Picture in Picture"
 msgstr "Невозможно открыть PiP (картинку в картинке)"
@@ -4363,6 +4346,10 @@ msgstr "Настройки EPG"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ОШИБКА - сканирование не удалось (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Восток"
 
@@ -4452,12 +4439,6 @@ msgstr "Включить 5V для активной антенны"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Включено"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Включить EIT EPG"
@@ -4699,6 +4680,10 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Ошибка"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Ошибка"
+
 msgid "Error code"
 msgstr "Код ошибки"
 
@@ -4734,10 +4719,25 @@ msgstr "Ошибка запуска плагина"
 msgid "Error stop stream!"
 msgstr "Ошибка при остановке стрима!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Ошибка получения информации о резервных таймерах\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Ошибка получения информации о резервных таймерах\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Ошибка получения информации о резервных таймерах\n"
 "%s"
@@ -6026,10 +6026,6 @@ msgstr "Настройки устройства ввода"
 msgid "Input devices"
 msgstr "Настройки пульта"
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Перейти на позицию"
-
 msgid "Install"
 msgstr "Инсталлировать"
 
@@ -7184,6 +7180,9 @@ msgstr "Нет доступного описания."
 msgid "No displayable files on this medium found!"
 msgstr "Нет отображаемых файлов на этом носителе!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Информация о событии не найдена, запись на неопределенное время."
 
@@ -7225,9 +7224,6 @@ msgstr "Нет сервиса"
 
 msgid "No services/providers selected"
 msgstr "Не выбраны сервисы/провайдеры"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "не переходить в режим ожидания"
@@ -10383,9 +10379,6 @@ msgstr "Somalia"
 msgid "Some plugins are not available:\n"
 msgstr "Некоторые плагины недоступны:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "Извините, %s не установлен!"
@@ -12755,9 +12748,6 @@ msgstr "Когда изображение на канале имеет соот�
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Когда изображение на канале имеет соотношение сторон 4:3, выберите, следует ли масштабировать/растянуть картинку."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Куда Вы хотите сохранять временные файлы таймшифта?"

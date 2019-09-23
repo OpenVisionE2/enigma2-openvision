@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2019-06-27 16:02+0200\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -1686,10 +1686,6 @@ msgstr "Všetky satelity 4 (USALS)"
 msgid "All services provider"
 msgstr "Všetky služby poskytovateľa"
 
-#, fuzzy
-msgid "All slots"
-msgstr "Zvoľte slot"
-
 msgid "Allocate"
 msgstr "Prideliť"
 
@@ -2418,16 +2414,6 @@ msgstr "Priradenie CI"
 
 msgid "CI slot: "
 msgstr "CI slot: "
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Nastavenie klávesových skratiek"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3395,10 +3381,6 @@ msgstr "Nebolo možné nájsť vhodné médium - odstráňte prosím stiahnuté 
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nemôžem použiť médium. Je vložený disk?"
-
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Povoliť import časovača zo záložného tuneru"
 
 msgid "Could not open Picture in Picture"
 msgstr "Nedá sa otvoriť obraz v obraze"
@@ -4385,6 +4367,10 @@ msgstr "Nastavenie EPG"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "CHYBA - zlyhalo vyhľadávanie (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Východne"
 
@@ -4475,12 +4461,6 @@ msgstr "Zapnúť 5 V pre aktívnu anténu"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Povolené"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Povoliť EIT EPG"
@@ -4722,6 +4702,10 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Chyba"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Chyba"
+
 msgid "Error code"
 msgstr "Kód chyby"
 
@@ -4757,10 +4741,25 @@ msgstr "Chyba spúšťania doplnku"
 msgid "Error stop stream!"
 msgstr "Chyba zastavenia streamu!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Chyba počas načítania informácie záložného časovača\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Chyba počas načítania informácie záložného časovača\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Chyba počas načítania informácie záložného časovača\n"
 "%s"
@@ -6050,10 +6049,6 @@ msgstr "Nastavenie vstupného zariadenia"
 msgid "Input devices"
 msgstr "Vstupné zariadenia"
 
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Otočiť do pozície"
-
 msgid "Install"
 msgstr "Inštalovať"
 
@@ -7212,6 +7207,9 @@ msgstr "Opis nie je k dispozícii."
 msgid "No displayable files on this medium found!"
 msgstr "Na tomto médiu sa nenašli žiadne zobraziteľné súbory!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Žiadne informácie z EPG, spúšťam nekonečné nahrávanie."
 
@@ -7253,9 +7251,6 @@ msgstr "Žiadna stanica"
 
 msgid "No services/providers selected"
 msgstr "Žiadne služby/poskytovatelia nie sú zvolené"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Neprechádzať do pohotovostného režimu"
@@ -10406,9 +10401,6 @@ msgstr "Somálsko"
 msgid "Some plugins are not available:\n"
 msgstr "Niektoré doplnky nie sú dostupné:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "Ospravedlňujeme sa, %s nebol nainštalovaný!"
@@ -12782,9 +12774,6 @@ msgstr "Ak má obsah pomer strán 16: 9, vyberte, či chcete veľkosť obrazu pr
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Ak má obsah pomer strán 4:3, vyberte, či chcete veľkosť obrazu prispôsobiť alebo obraz roztiahnuť. Doporučená hodnota: Pillarbox."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Kam uložiť dočasné záznamy s posunom času?"

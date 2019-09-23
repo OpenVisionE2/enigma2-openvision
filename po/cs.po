@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -1821,10 +1821,6 @@ msgstr "Všechny satelity 4 (USALS)"
 msgid "All services provider"
 msgstr "Všechny programy poskytovatele"
 
-#
-msgid "All slots"
-msgstr "Všechny sloty"
-
 msgid "Allocate"
 msgstr "Přidělit"
 
@@ -2641,16 +2637,6 @@ msgstr "CI přiřazení"
 #
 msgid "CI slot: "
 msgstr "CI slot: "
-
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Nastavení Hotkey"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3719,10 +3705,6 @@ msgstr "Nebylo nalezeno vhodné médium - odstraňte některé stažené obrázk
 #
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nelze načíst médium. Není vložen disk?"
-
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Importovat časovače ze záložního přijímače"
 
 #
 msgid "Could not open Picture in Picture"
@@ -4860,6 +4842,10 @@ msgstr "Nastavení EPG"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "CHYBA - prohledávání selhalo (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 #
 msgid "East"
 msgstr "Východní"
@@ -4963,12 +4949,6 @@ msgstr "Povolit 5V pro aktivní anténu"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Povolen"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 #
 msgid "Enable EIT EPG"
@@ -5240,6 +5220,11 @@ msgid "Error"
 msgstr "Chyba"
 
 #
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Chyba"
+
+#
 msgid "Error code"
 msgstr "Kód chyby"
 
@@ -5276,10 +5261,25 @@ msgstr "Chyba při provádění pluginu"
 msgid "Error stop stream!"
 msgstr "Chyba při zrušení streamu!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Chyba při získávání informací o záložních časovačích\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Chyba při získávání informací o záložních časovačích\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Chyba při získávání informací o záložních časovačích\n"
 "%s"
@@ -6710,11 +6710,6 @@ msgid "Input devices"
 msgstr "Vstupní zařízení"
 
 #
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Jdi na pozici"
-
-#
 msgid "Install"
 msgstr "Instalovat"
 
@@ -8053,6 +8048,9 @@ msgstr "Žádný popis k dispozici."
 msgid "No displayable files on this medium found!"
 msgstr "Žádné zobrazitelné soubory na tomto médiu nebyly nalezeny!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 #
 msgid "No event info found, recording indefinitely."
 msgstr "Žádná informace o programu. Nekonečné nahrávání."
@@ -8103,9 +8101,6 @@ msgstr "Žádný kanál"
 #
 msgid "No services/providers selected"
 msgstr "Žádný program/poskytovatel není vybrán"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 #
 msgid "No standby"
@@ -11714,9 +11709,6 @@ msgstr "Somálsko"
 msgid "Some plugins are not available:\n"
 msgstr "Některé pluginy nejsou dostupné:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #
 #, python-format
 msgid "Sorry, %s has not been installed!"
@@ -14373,9 +14365,6 @@ msgstr "Pro obsah s poměrem stran 16:9 zvolte, zda chcete změnit velikost/rozt
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Pro obsah s poměrem stran 4:3 zvolte, zda chcete změnit velikost/roztáhnout obraz."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 #
 msgid "Where to save temporary timeshift recordings?"

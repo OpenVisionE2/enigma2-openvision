@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 00:04+0430\n"
+"POT-Creation-Date: 2019-09-23 05:35+0330\n"
 "PO-Revision-Date: 2019-08-25 12:48+0200\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
@@ -1769,10 +1769,6 @@ msgstr "Alle satellitt posisjoner 4 (USALS)"
 msgid "All services provider"
 msgstr "Alle distributører"
 
-#
-msgid "All slots"
-msgstr "Alle spor"
-
 msgid "Allocate"
 msgstr "Tildel"
 
@@ -2572,17 +2568,6 @@ msgstr "CI tildeling"
 #
 msgid "CI slot: "
 msgstr "CI spor: "
-
-#
-#, fuzzy
-msgid "CIHelper Setup"
-msgstr "Snarveistast innstilling"
-
-msgid "CIHelper for slot CI0"
-msgstr ""
-
-msgid "CIHelper for slot CI1"
-msgstr ""
 
 msgid "CPU architecture: "
 msgstr ""
@@ -3626,10 +3611,6 @@ msgstr "Finner ikke passende Media - Vennligst frigjør diskplass eller sett inn
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Kunne ikke laste data! Ingen disk er satt inn?"
-
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Aktiver import timer fra reserve tuner"
 
 msgid "Could not open Picture in Picture"
 msgstr "Kunne ikke åpne bilde i bilde"
@@ -4719,6 +4700,10 @@ msgstr "EPG-innstilling"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "FEIL - kunne ikke søke (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 #
 msgid "East"
 msgstr "Øst"
@@ -4818,12 +4803,6 @@ msgstr "Slå på 5V for aktiv DVB-T antenne"
 #, fuzzy
 msgid "Enable BT audio"
 msgstr "Aktivert"
-
-msgid "Enable CIHelper for slot CI0"
-msgstr ""
-
-msgid "Enable CIHelper for slot CI1"
-msgstr ""
 
 msgid "Enable EIT EPG"
 msgstr "Aktiver EIT EPG"
@@ -5086,6 +5065,11 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Feil"
 
+#
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Feil"
+
 msgid "Error code"
 msgstr "Feil kode"
 
@@ -5123,10 +5107,25 @@ msgstr "Feil under oppstart av tillegget"
 msgid "Error stop stream!"
 msgstr "Feil stopp stream!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Feil ved henting av reserve timer informasjon\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Feil ved henting av reserve timer informasjon\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Feil ved henting av reserve timer informasjon\n"
 "%s"
@@ -6535,11 +6534,6 @@ msgid "Input devices"
 msgstr "Enhets innstilling"
 
 #
-#, fuzzy
-msgid "Input scroll position"
-msgstr "Gå til posisjon"
-
-#
 msgid "Install"
 msgstr "Installer"
 
@@ -7844,6 +7838,9 @@ msgstr "Ingen forklaring er tilgjengelig."
 msgid "No displayable files on this medium found!"
 msgstr "Ingen visbare filer på dette mediet funnet!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 #
 msgid "No event info found, recording indefinitely."
 msgstr "Ingen kanalinfo ble funnet, tar opp på ubestemt tid."
@@ -7895,9 +7892,6 @@ msgstr "Ingen tjeneste"
 
 msgid "No services/providers selected"
 msgstr "Ingen kanaler/distributører er valgt"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 #
 msgid "No standby"
@@ -11396,9 +11390,6 @@ msgstr "Somalia"
 msgid "Some plugins are not available:\n"
 msgstr "Noen tillegg er ikke tilgjengelig:\n"
 
-msgid "Sorry CIHelper config is missing"
-msgstr ""
-
 #, python-format
 msgid "Sorry, %s has not been installed!"
 msgstr "Beklager, %s har ikke blitt installert!"
@@ -13993,9 +13984,6 @@ msgstr "Når bildet har et sideforhold på 16:9. Velg om det skal skaleres/strek
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Når bildet har et sideforhold på 4:3. Velg om det skal skaleres/strekkes ut."
-
-msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
-msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Hvor skal midlertidige tidsskift opptak lagres?"
