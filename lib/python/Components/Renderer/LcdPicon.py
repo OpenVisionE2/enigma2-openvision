@@ -2,7 +2,7 @@ import os, re, unicodedata
 from Renderer import Renderer
 from enigma import ePixmap, ePicLoad
 from Tools.Alternatives import GetWithAlternative
-from Tools.Directories import pathExists, SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, resolveFilename
+from Tools.Directories import pathExists, SCOPE_CURRENT_SKIN, resolveFilename
 from Components.Harddisk import harddiskmanager
 from ServiceReference import ServiceReference
 from Components.config import config
@@ -128,11 +128,6 @@ class LcdPicon(Renderer):
 				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
 			if pathExists(tmp):
 				pngname = tmp
-			else:
-				if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
-					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "lcd_picon_default.png")
-				else:
-					pngname = resolveFilename(SCOPE_SKIN_IMAGE, "picon_default.png")
 		if os.path.getsize(pngname):
 			self.defaultpngname = pngname
 

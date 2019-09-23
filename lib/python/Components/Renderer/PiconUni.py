@@ -1,6 +1,6 @@
 from Renderer import Renderer 
 from enigma import ePixmap
-from Tools.Directories import SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, resolveFilename 
+from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename 
 import os
 
 searchPaths = []
@@ -63,8 +63,6 @@ class PiconUni(Renderer):
 						tmp = resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png')
 						if os.path.isfile(tmp):
 							pngname = tmp
-						else:
-							pngname = resolveFilename(SCOPE_SKIN_IMAGE, 'skin_default/picon_default.png')
 					self.nameCache['default'] = pngname
 			if not self.pngname is pngname:
 				if self.scale is '0':

@@ -2,7 +2,7 @@ import os, re, unicodedata
 from Renderer import Renderer
 from enigma import ePixmap, eServiceCenter, eServiceReference, iServiceInformation
 from Tools.Alternatives import GetWithAlternative
-from Tools.Directories import pathExists, SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, resolveFilename
+from Tools.Directories import pathExists, SCOPE_CURRENT_SKIN, resolveFilename
 from Components.Harddisk import harddiskmanager
 from ServiceReference import ServiceReference
 from Components.config import config
@@ -121,8 +121,6 @@ class Picon(Renderer):
 			tmp = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
 			if pathExists(tmp):
 				pngname = tmp
-			else:
-				pngname = resolveFilename(SCOPE_SKIN_IMAGE, "picon_default.png")
 		if os.path.getsize(pngname):
 			self.defaultpngname = pngname
 

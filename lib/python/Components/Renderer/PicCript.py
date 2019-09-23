@@ -3,7 +3,7 @@ from Renderer import Renderer
 from enigma import iServiceInformation 
 from string import upper 
 from enigma import ePixmap 
-from Tools.Directories import fileExists, SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, resolveFilename
+from Tools.Directories import fileExists, SCOPE_CURRENT_SKIN, resolveFilename
 
 class PicCript(Renderer):
 	__module__ = __name__
@@ -94,8 +94,6 @@ class PicCript(Renderer):
 					    tmp = resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png')
 					    if fileExists(tmp):
 						    pngname = tmp
-					    else:
-						    pngname = resolveFilename(SCOPE_SKIN_IMAGE, '/media/hdd/cript/picon_default.png')
 					    self.nameCache['default'] = pngname
 					
 			if (self.pngname != pngname):
