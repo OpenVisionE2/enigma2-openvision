@@ -8,7 +8,7 @@ from enigma import eSize, ePoint, eRect, gFont, eWindow, eLabel, ePixmap, eWindo
 from Components.config import ConfigSubsection, ConfigText, config
 from Components.Converter.Converter import Converter
 from Components.Sources.Source import Source, ObsoleteSource
-from Tools.Directories import resolveFilename, SCOPE_SKIN, SCOPE_FONTS, SCOPE_CURRENT_SKIN, SCOPE_CONFIG, fileExists, SCOPE_SKIN_IMAGE
+from Tools.Directories import resolveFilename, SCOPE_SKIN, SCOPE_FONTS, SCOPE_CURRENT_SKIN, SCOPE_CURRENT_LCDSKIN, SCOPE_CONFIG, fileExists, SCOPE_SKIN_IMAGE
 from Tools.Import import my_import
 from Tools.LoadPixmap import LoadPixmap
 from Components.RcModel import rc_model
@@ -57,7 +57,7 @@ def addSkin(name, scope = SCOPE_CURRENT_SKIN):
 		try:
 			dom_skins.append((mpath, xml.etree.cElementTree.parse(filename).getroot()))
 		except:
-			print "[SKIN ERROR] error in %s" % filename
+			print "[Skin] Error in %s" % filename
 			return False
 		else:
 			return True
@@ -121,7 +121,7 @@ try:
 	if not addSkin(os.path.join('display', config.skin.display_skin.value)):
 		raise DisplaySkinError, "display skin not found"
 except Exception, err:
-	print "SKIN ERROR:", err
+	print "[Skin] Error:", err
 	skin = DEFAULT_DISPLAY_SKIN
 	if config.skin.display_skin.value == skin:
 		skin = 'skin_display.xml'
@@ -137,7 +137,7 @@ try:
 	if not addSkin(config.skin.primary_skin.value):
 		raise SkinError, "primary skin not found"
 except Exception, err:
-	print "SKIN ERROR:", err
+	print "[Skin] Error:", err
 	skin = DEFAULT_SKIN
 	if config.skin.primary_skin.value == skin:
 		skin = 'skin.xml'
@@ -172,7 +172,10 @@ profile("LoadSkinDefaultDone")
 def parseCoordinate(s, e, size=0, font=None):
 	s = s.strip()
 	if s == "center":		# for speed, can be common case
-		val = (e - size)/2
+		if not size:
+			val = 0
+		else:
+			val = (e - size)/2
 	elif s == '*':
 		return None
 	else:
@@ -276,10 +279,10 @@ def collectAttributes(skinAttributes, node, context, skin_path_prefix=None, igno
 	for attrib, value in node.items():
 		if attrib not in ignore:
 			if attrib in filenames:
-				if "pointer" in attrib:
-					value = "%s%s%s" % (resolveFilename(SCOPE_CURRENT_SKIN, value.split(":")[0], path_prefix=skin_path_prefix), ":", value.split(":")[1])
-				else:
-					value = resolveFilename(SCOPE_CURRENT_SKIN, value, path_prefix=skin_path_prefix)
+				pngfile = resolveFilename(SCOPE_CURRENT_SKIN, value, path_prefix=skin_path_prefix)
+				if fileExists(resolveFilename(SCOPE_CURRENT_LCDSKIN, value, path_prefix=skin_path_prefix)):
+					pngfile = resolveFilename(SCOPE_CURRENT_LCDSKIN, value, path_prefix=skin_path_prefix)
+				value = pngfile
 			# Bit of a hack this, really. When a window has a flag (e.g. wfNoBorder)
 			# it needs to be set at least before the size is set, in order for the
 			# window dimensions to be calculated correctly in all situations.
@@ -423,7 +426,7 @@ class AttributeParser:
 					"orRightToLeft": (self.guiObject.orHorizontal, True),
 				}[value])
 		except KeyError:
-			print "oprientation must be either orVertical or orHorizontal!"
+			print "[Skin] Orientation must be either vertical or horizontal!"
 	def valign(self, value):
 		try:
 			self.guiObject.setVAlign(
@@ -432,7 +435,7 @@ class AttributeParser:
 					"bottom": self.guiObject.alignBottom
 				}[value])
 		except KeyError:
-			print "valign must be either top, center or bottom!"
+			print "[Skin] Valign must be either top, center or bottom!"
 	def halign(self, value):
 		try:
 			self.guiObject.setHAlign(
@@ -442,7 +445,7 @@ class AttributeParser:
 					"block": self.guiObject.alignBlock
 				}[value])
 		except KeyError:
-			print "halign must be either left, center, right or block!"
+			print "[Skin] Halign must be either left, center, right or block!"
 	def textOffset(self, value):
 		x, y = value.split(',')
 		self.guiObject.setTextOffset(ePoint(int(x) * self.scaleTuple[0][0] / self.scaleTuple[0][1], int(y) * self.scaleTuple[1][0] / self.scaleTuple[1][1]))
@@ -462,6 +465,18 @@ class AttributeParser:
 		self.guiObject.setForegroundColor(parseColor(value))
 	def foregroundColorSelected(self, value):
 		self.guiObject.setForegroundColorSelected(parseColor(value))
+	def foregroundNotCrypted(self, value):
+		self.guiObject.setForegroundColor(parseColor(value))
+	def backgroundNotCrypted(self, value):
+		self.guiObject.setBackgroundColor(parseColor(value))
+	def foregroundCrypted(self, value):
+		self.guiObject.setForegroundColor(parseColor(value))
+	def backgroundCrypted(self, value):
+		self.guiObject.setBackgroundColor(parseColor(value))
+	def foregroundEncrypted(self, value):
+		self.guiObject.setForegroundColor(parseColor(value))
+	def backgroundEncrypted(self, value):
+		self.guiObject.setBackgroundColor(parseColor(value))
 	def shadowColor(self, value):
 		self.guiObject.setShadowColor(parseColor(value))
 	def selectionDisabled(self, value):
@@ -654,6 +669,8 @@ def loadSingleSkinData(desktop, skin, path_prefix):
 				skin_path = resolveFilename(SCOPE_CURRENT_SKIN, filename)
 				if fileExists(skin_path):
 					resolved_font = skin_path
+				elif fileExists(resolveFilename(SCOPE_CURRENT_LCDSKIN, filename)):
+					resolved_font = resolveFilename(SCOPE_CURRENT_LCDSKIN, filename)
 			addFont(resolved_font, name, scale, is_replacement, render)
 			#print "Font: ", resolved_font, name, scale, is_replacement
 
@@ -726,7 +743,7 @@ def loadSingleSkinData(desktop, skin, path_prefix):
 			offset = parseSize(get_attr("offset"), ((1,1),(1,1)))
 			font = parseFont(get_attr("font"), ((1,1),(1,1)))
 
-		style.setTitleFont(font);
+		style.setTitleFont(font)
 		style.setTitleOffset(offset)
 		#print "  ", font, offset
 		for borderset in windowstyle.findall("borderset"):
