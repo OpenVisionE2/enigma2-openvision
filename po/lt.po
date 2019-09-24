@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-23 05:35+0330\n"
-"PO-Revision-Date: 2019-09-20 15:17+0300\n"
+"POT-Creation-Date: 2019-09-24 22:23+0330\n"
+"PO-Revision-Date: 2019-09-23 20:11+0300\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
 "Language: lt_LT\n"
@@ -281,6 +281,14 @@ msgstr "%.0f MB"
 #, python-format
 msgid "%.0f kB"
 msgstr "%.0f kB"
+
+#, python-format
+msgid "%.1f°E"
+msgstr ""
+
+#, python-format
+msgid "%.1f°W"
+msgstr ""
 
 #, python-format
 msgid "%.2f GB"
@@ -4195,7 +4203,7 @@ msgstr "KLAIDA - paieška nepavyko (%s)!"
 
 #, python-format
 msgid "ERROR downloading file %s"
-msgstr ""
+msgstr "KLAIDA, parsiunčiant failą %s"
 
 msgid "East"
 msgstr "Rytai"
@@ -4518,9 +4526,9 @@ msgstr "Eritrėja"
 msgid "Error"
 msgstr "Klaida"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error %s"
-msgstr "Klaida"
+msgstr "Klaida %s"
 
 msgid "Error code"
 msgstr "Klaidos kodas"
@@ -4558,13 +4566,10 @@ msgid "Error stop stream!"
 msgstr "Srauto stabdymo klaida!"
 
 msgid "Error when writing epg.dat on server"
-msgstr ""
+msgstr "Klaida, įrašant epg.dat serveryje"
 
-#, fuzzy
 msgid "Error while retreiving epg.dat from server"
-msgstr ""
-"Klaida atsisiunčiant atsarginio imtuvo laikmačio informaciją\n"
-"%s"
+msgstr "Klaida, ieškant epg.data iš serverio"
 
 #, python-format
 msgid ""
@@ -4574,11 +4579,8 @@ msgstr ""
 "Klaida atsisiunčiant atsarginio imtuvo laikmačio informaciją\n"
 "%s"
 
-#, fuzzy
 msgid "Error while retreiving location of epg.dat on server"
-msgstr ""
-"Klaida atsisiunčiant atsarginio imtuvo laikmačio informaciją\n"
-"%s"
+msgstr "Klaida atkūrus epg.dat vietą serveryje"
 
 #, python-format
 msgid ""
@@ -5075,7 +5077,8 @@ msgstr "Pen"
 msgid "Friday"
 msgstr "Penktadienis"
 
-msgid "From :"
+#, fuzzy
+msgid "From:"
 msgstr "Nuo:"
 
 msgid "Front panel display"
@@ -5224,9 +5227,6 @@ msgstr "Eiti į"
 msgid "Goto 0"
 msgstr "Eiti į 0"
 
-msgid "Goto :"
-msgstr "Eiti į :"
-
 msgid "Goto X"
 msgstr "Eiti į X"
 
@@ -5253,6 +5253,10 @@ msgstr "Į geriausią laiką / dabar"
 
 msgid "Goto specific date/time"
 msgstr "Į konkrečią datą/laiką"
+
+#, fuzzy
+msgid "Goto:"
+msgstr "Eiti į :"
 
 msgid "GotoX calibration"
 msgstr "Eiti į X kalibravimą"
@@ -6955,7 +6959,7 @@ msgid "No displayable files on this medium found!"
 msgstr "Jokių failų čia nerasta!"
 
 msgid "No epg.dat file found server"
-msgstr ""
+msgstr "Failo epg.dat serveryje nerasta"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Informacija apie įvykius nerasta, tęsiamas įrašymas."
@@ -10622,7 +10626,7 @@ msgstr "T2MI RAW režimas"
 msgid "TRANSLATOR_INFO"
 msgstr ""
 "Adga, Pasvalys, Lietuva\n"
-"2019-09-20 versija"
+"2019-09-23 versija"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "TS failas per didelis 1 lygio ISO9660!"
