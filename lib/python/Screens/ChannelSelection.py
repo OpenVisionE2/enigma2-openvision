@@ -533,7 +533,8 @@ class ChannelContextMenu(Screen):
 					print '[LCDMiniTV] disable PIP'
 					open("/proc/stb/lcd/mode", "w").write(config.lcd.modeminitv.value)
 			self.session.pip = self.session.instantiateDialog(PictureInPicture)
-			self.session.pip.setAnimationMode(0)
+			if SystemInfo["OSDAnimation"]:
+				self.session.pip.setAnimationMode(0)
 			self.session.pip.show()
 			if self.session.pip.playService(newservice):
 				self.session.pipshown = True
@@ -2422,7 +2423,8 @@ class ChannelSelectionRadio(ChannelSelectionBase, ChannelSelectionEdit, ChannelS
 		self.onLayoutFinish.append(self.onCreate)
 
 		self.info = session.instantiateDialog(RadioInfoBar) # our simple infobar
-		self.info.setAnimationMode(0)
+		if SystemInfo["OSDAnimation"]:
+			self.info.setAnimationMode(0)
 
 		self["actions"] = ActionMap(["OkCancelActions", "TvRadioActions"],
 			{

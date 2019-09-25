@@ -122,6 +122,8 @@ SystemInfo["NCamInstalled"] = fileExists("/usr/bin/ncam")
 SystemInfo["NCamIsActive"] = SystemInfo["NCamInstalled"] and fileExists("/tmp/.ncam/ncam.version")
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/stb/info/openvision")
 SystemInfo["OLDE2API"] = getBoxType() in ("dm800","su980")
+SystemInfo["7segment"] = getDisplayType() == "7segment"
+SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and getBoxType() not in ("hd51","h7")
 SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and getBoxType() == "multibox" or getBoxType() == "su980"
 SystemInfo["grautec"] = fileExists("/tmp/usbtft")
@@ -135,7 +137,6 @@ SystemInfo["LCDMiniTV"] = fileExists("/proc/stb/lcd/mode")
 SystemInfo["LCDMiniTVPiP"] = SystemInfo["LCDMiniTV"] and getBoxType() not in ("gb800ueplus","gbquad4k","gbue4k")
 SystemInfo["DefaultDisplayBrightness"] = getBoxType() in ("dm900","dm920") and 8 or 5
 SystemInfo["ConfigDisplay"] = SystemInfo["FrontpanelDisplay"] and getDisplayType() != "7segment"
-SystemInfo["7segment"] = getDisplayType() == "7segment"
 SystemInfo["DreamBoxAudio"] = getBoxType() in ("dm900","dm920","dm7080","dm800")
 SystemInfo["DreamBoxDTSAudio"] = getBoxType() in ("dm7080","dm820")
 SystemInfo["GigaBlueAudio"] = getBoxType() in ("gbquad4k","gbue4k")

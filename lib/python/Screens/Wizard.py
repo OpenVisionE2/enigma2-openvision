@@ -1,7 +1,7 @@
 from Screen import Screen
 from Screens.MessageBox import MessageBox
 from Components.config import config, ConfigText, ConfigPassword, KEY_LEFT, KEY_RIGHT, KEY_0, KEY_DELETE, KEY_BACKSPACE, KEY_ASCII
-
+from Components.SystemInfo import SystemInfo
 from Components.Label import Label
 from Components.Sources.StaticText import StaticText
 from Components.Slider import Slider
@@ -600,7 +600,8 @@ class Wizard(Screen):
 								self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"], eval(self.wizard[self.currStep]["config"]["args"]))
 							except:
 								self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"], self.wizard[self.currStep]["config"]["args"])
-						self.configInstance.setAnimationMode(0)
+						if SystemInfo["OSDAnimation"]:
+							self.configInstance.setAnimationMode(0)
 						self["config"].l.setList(self.configInstance["config"].list)
 						callbacks = self.configInstance["config"].onSelectionChanged
 						self.configInstance["config"].destroy()
