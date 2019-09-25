@@ -9,14 +9,16 @@ from Components.Sources.List import List
 from Components.Label import Label, MultiColorLabel
 from Components.Pixmap import Pixmap, MultiPixmap
 from Components.MenuList import MenuList
-from Components.config import config, ConfigYesNo, ConfigIP, NoSave, ConfigText, ConfigPassword, ConfigSelection, getConfigListEntry
+from Components.config import config, ConfigYesNo, ConfigIP, NoSave, ConfigText, ConfigPassword, ConfigSelection, getConfigListEntry, ConfigMacText
 from Components.ConfigList import ConfigListScreen
 from Components.PluginComponent import plugins
 from Components.ActionMap import ActionMap, NumberActionMap, HelpableActionMap
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_CURRENT_SKIN
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_CURRENT_SKIN, fileExists
 from Tools.LoadPixmap import LoadPixmap
 from Plugins.Plugin import PluginDescriptor
 from enigma import eTimer
+import commands
+from Components.Console import Console
 
 class NetworkAdapterSelection(Screen,HelpableScreen):
 	def __init__(self, session):
@@ -289,6 +291,216 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 			iNetwork.removeNameserver(self.nameservers[index])
 			self.createConfig()
 			self.createSetup()
+
+
+class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		HelpableScreen.__init__(self)
+		Screen.setTitle(self, _("MAC address settings"))
+		self.curMac = self.getmac('eth0')
+		self.getConfigMac = NoSave(ConfigMacText(default=self.curMac))
+
+		self["key_red"] = StaticText(_("Cancel"))
+		self["key_green"] = StaticText(_("Save"))
+
+		self["introduction"] = StaticText(_("Press OK to set the MAC address."))
+
+		self["OkCancelActions"] = HelpableActionMap(self, "OkCancelActions",
+			{
+			"cancel": (self.cancel, _("Exit nameserver configuration")),
+			"ok": (self.ok, _("Activate current configuration")),
+			})
+
+		self["ColorActions"] = HelpableActionMap(self, "ColorActions",
+			{
+			"red": (self.cancel, _("Exit MAC address configuration")),
+			"green": (self.ok, _("Activate MAC address configuration")),
+			})
+
+		self["actions"] = NumberActionMap(["SetupActions"],
+		{
+			"ok": self.ok,
+		}, -2)
+
+		self.list = []
+		ConfigListScreen.__init__(self, self.list)
+		self.createSetup()
+
+	def getmac(self, iface):
+		mac = (0,0,0,0,0,0)
+		ifconfig = commands.getoutput("ifconfig " + iface + "| grep HWaddr | awk '{ print $5 }'").strip()
+		if len(ifconfig) == 0:
+			mac = "00:00:00:00:00:00"
+		else:
+			mac = ifconfig[:17]
+		return mac
+
+	def createSetup(self):
+		self.list = []
+		self.list.append(getConfigListEntry(_("MAC address"), self.getConfigMac))
+		self["config"].list = self.list
+		self["config"].l.setList(self.list)
+
+	def ok(self):
+		MAC = self.getConfigMac.value
+		open("/etc/enigma2/hwmac", "w").write(MAC)
+		route = commands.getoutput("route -n |grep UG | awk '{print $2}'")
+		self.restartLan()
+
+	def run(self):
+		self.ok()
+
+	def cancel(self):
+		self.close()
+
+	def restartLan(self, ret = False):
+		if ret:
+			iNetwork.restartNetwork(self.restartLanDataAvail)
+			self.restartLanRef = self.session.openWithCallback(self.restartfinishedCB, MessageBox, _("Please wait while your network is restarting..."), type = MessageBox.TYPE_INFO, enable_input = False)
+
+	def restartLanDataAvail(self, data):
+		if data is True:
+			iNetwork.getInterfaces(self.getInterfacesDataAvail)
+
+	def getInterfacesDataAvail(self, data):
+		if data is True:
+			self.restartLanRef.close(True)
+
+	def restartfinishedCB(self, data):
+		if data is True:
+			self.updateStatusbar()
+			self.session.open(MessageBox, _("Finished restarting your network"), type = MessageBox.TYPE_INFO, timeout = 10, default = False)
+
+
+class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		HelpableScreen.__init__(self)
+		Screen.setTitle(self, _("IPv6 support"))
+
+		self["key_red"] = StaticText(_("Cancel"))
+		self["key_green"] = StaticText(_("Save"))
+		self["key_blue"] = StaticText(_("Restore inetd"))
+
+		self["introduction"] = StaticText(_("Enable or disable IPv6"))
+
+		self["OkCancelActions"] = HelpableActionMap(self, "OkCancelActions",
+			{
+			"cancel": (self.cancel, _("Exit IPv6 configuration")),
+			"ok": (self.ok, _("Activate IPv6 configuration")),
+			})
+
+		self["ColorActions"] = HelpableActionMap(self, "ColorActions",
+			{
+			"red": (self.cancel, _("Exit IPv6 configuration")),
+			"green": (self.ok, _("Activate IPv6 configuration")),
+			"blue": (self.restoreinetdData, _("Restore inetd.conf")),
+			})
+
+		self["actions"] = NumberActionMap(["SetupActions"],
+		{
+			"ok": self.ok,
+		}, -2)
+
+		self.list = []
+		ConfigListScreen.__init__(self, self.list)
+
+		old_ipv6 = open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "r").read()
+		if int(old_ipv6) == 1:
+			self.ipv6 = False
+		else:
+			self.ipv6 = True
+		self.IPv6ConfigEntry = NoSave(ConfigYesNo(default=self.ipv6 or False))
+		self.createSetup()
+
+	def createSetup(self):
+		self.list = []
+		self.IPv6Entry = getConfigListEntry(_("IPv6 support"), self.IPv6ConfigEntry)
+		self.list.append(self.IPv6Entry)
+		self["config"].list = self.list
+		self["config"].l.setList(self.list)
+
+	def restoreinetdData(self):
+		inetdData  = "# /etc/inetd.conf:  see inetd(music) for further informations.\n"
+		inetdData += "#\n"
+		inetdData += "# Internet server configuration database\n"
+		inetdData += "#\n"
+		inetdData += "# If you want to disable an entry so it isn't touched during\n"
+		inetdData += "# package updates just comment it out with a single '#' character.\n"
+		inetdData += "#\n"
+		inetdData += "# <service_name> <sock_type> <proto> <flags> <user> <server_path> <args>\n"
+		inetdData += "#\n"
+		inetdData += "#:INTERNAL: Internal services\n"
+		inetdData += "#echo	stream	tcp	nowait	root	internal\n"
+		inetdData += "#echo	dgram	udp	wait	root	internal\n"
+		inetdData += "#chargen	stream	tcp	nowait	root	internal\n"
+		inetdData += "#chargen	dgram	udp	wait	root	internal\n"
+		inetdData += "#discard	stream	tcp	nowait	root	internal\n"
+		inetdData += "#discard	dgram	udp	wait	root	internal\n"
+		inetdData += "#daytime	stream	tcp	nowait	root	internal\n"
+		inetdData += "#daytime	dgram	udp	wait	root	internal\n"
+		inetdData += "#time	stream	tcp	nowait	root	internal\n"
+		inetdData += "#time	dgram	udp	wait	root	internal\n"
+
+		if self.IPv6ConfigEntry.value == True:
+			inetdData += "#ftp	stream	tcp6	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
+		else:
+			inetdData += "#ftp	stream	tcp	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
+		inetdData += "#ftp	stream	tcp	nowait	root	ftpd	ftpd -w /\n"
+
+		if self.IPv6ConfigEntry.value == True:
+			inetdData += "#telnet	stream	tcp6	nowait	root	/usr/sbin/telnetd	telnetd\n"
+		else:
+			inetdData += "#telnet	stream	tcp	nowait	root	/usr/sbin/telnetd	telnetd\n"
+
+		if fileExists("/usr/sbin/smbd") and self.IPv6ConfigEntry.value == True:
+			inetdData += "#microsoft-ds	stream	tcp6	nowait	root	/usr/sbin/smbd	smbd\n"
+		elif fileExists("/usr/sbin/smbd") and self.IPv6ConfigEntry.value == False:
+			inetdData += "#microsoft-ds	stream	tcp	nowait	root	/usr/sbin/smbd	smbd\n"
+		else:
+			pass
+
+		if fileExists("/usr/sbin/nmbd") and self.IPv6ConfigEntry.value == True:
+			inetdData += "#netbios-ns	dgram	udp6	wait	root	/usr/sbin/nmbd	nmbd\n"
+		elif fileExists("/usr/sbin/nmbd") and self.IPv6ConfigEntry.value == False:
+			inetdData += "#netbios-ns	dgram	udp	wait	root	/usr/sbin/nmbd	nmbd\n"
+		else:
+			pass
+
+		if fileExists("/usr/bin/streamproxy") and self.IPv6ConfigEntry.value == True:
+			inetdData += "#8001	stream	tcp6	nowait	root	/usr/bin/streamproxy	streamproxy\n"
+		elif fileExists("/usr/bin/streamproxy") and self.IPv6ConfigEntry.value == False:
+			inetdData += "#8001	stream	tcp	nowait	root	/usr/bin/streamproxy	streamproxy\n"
+		else:
+			pass
+
+		if fileExists("/usr/bin/transtreamproxy") and self.IPv6ConfigEntry.value == True:
+			inetdData += "8002	stream	tcp6	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
+		elif fileExists("/usr/bin/transtreamproxy") and self.IPv6ConfigEntry.value == False:
+			inetdData += "8002	stream	tcp	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
+		else:
+			pass
+
+		open("/etc/inetd.conf", "w").write(inetdData)
+
+		self.session.open(MessageBox, _("Successfully restored /etc/inetd.conf!"), type = MessageBox.TYPE_INFO,timeout = 10 )
+
+	def ok(self):
+		if self.IPv6ConfigEntry.value == False:
+			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("1")
+			open("/etc/enigma2/ipv6", "w").write("1")
+		else:
+			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("0")
+			Console().ePopen('rm -R %s' % ipv6)
+		self.restoreinetdData()
+		self.close()
+
+	def run(self):
+		self.ok()
+
+	def cancel(self):
+		self.close()
 
 
 class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
@@ -747,6 +959,10 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 			self.session.open(NetworkAdapterTest,self.iface)
 		if self["menulist"].getCurrent()[1] == 'dns':
 			self.session.open(NameserverSetup)
+		if self["menulist"].getCurrent()[1] == 'mac':
+			self.session.open(NetworkMacSetup)
+		if self["menulist"].getCurrent()[1] == 'ipv6':
+			self.session.open(IPv6Setup)
 		if self["menulist"].getCurrent()[1] == 'scanwlan':
 			try:
 				from Plugins.SystemPlugins.WirelessLan.plugin import WlanScan
@@ -814,6 +1030,10 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 			self["description"].setText(_("Use the network wizard to configure your network\n" ) + self.oktext )
 		if self["menulist"].getCurrent()[1][0] == 'extendedSetup':
 			self["description"].setText(_(self["menulist"].getCurrent()[1][1]) + self.oktext )
+		if self["menulist"].getCurrent()[1] == 'mac':
+			self["description"].setText(_("Set the MAC address of your receiver.\n" ) + self.oktext )
+		if self["menulist"].getCurrent()[1] == 'ipv6':
+			self["description"].setText(_("Enable/Disable IPv6 support of your receiver.\n" ) + self.oktext )
 
 	def updateStatusbar(self, data = None):
 		self.mainmenu = self.genMainMenu()
@@ -867,6 +1087,9 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 
 		if os.path.exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/NetworkWizard/networkwizard.xml")):
 			menu.append((_("Network wizard"), "openwizard"))
+		if self.iface == 'eth0':
+			menu.append((_("Network MAC settings"), "mac"))
+			menu.append((_("Enable/Disable IPv6"), "ipv6"))
 
 		return menu
 

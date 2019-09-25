@@ -658,6 +658,13 @@ if config.clientmode.enabled.value:
 	import Components.ChannelsImporter
 	Components.ChannelsImporter.autostart()
 
+profile("IPv6")
+if os.path.exists('/etc/enigma2/ipv6'):
+	try:
+		open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("1")
+	except:
+		pass
+
 #from enigma import dump_malloc_stats
 #t = eTimer()
 #t.callback.append(dump_malloc_stats)
