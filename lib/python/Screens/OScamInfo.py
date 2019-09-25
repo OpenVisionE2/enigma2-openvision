@@ -406,7 +406,7 @@ class OscamInfoMenu(Screen):
 		self.skin += """</screen>"""
 		title = screentitle
 		Screen.setTitle(self, title)
-		self.menu = [ _("Show /tmp/ecm.info"), _("Show Clients"), _("Show Readers/Proxies"), _("Show Log"), _("Card infos (CCcam-Reader)"), _("ECM Statistics"), _("Setup") ]
+		self.menu = [ _("Show /tmp/ecm.info"), _("Show Clients"), _("Show Readers/Proxies"), _("Show log"), _("Card infos (CCcam-Reader)"), _("ECM Statistics"), _("Setup") ]
 		self.osc = OscamInfo()
 		self["mainmenu"] = oscMenuList([])
 		self["actions"] = NumberActionMap(["OkCancelActions", "InputActions", "ColorActions"],
