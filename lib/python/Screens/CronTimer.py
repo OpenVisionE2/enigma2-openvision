@@ -55,7 +55,7 @@ class CronTimers(Screen):
 
 	def checkNetworkState(self, str, retval, extra_args):
 		if 'Collected errors' in str:
-			self.session.openWithCallback(self.close, MessageBox, _("A background update check is in progress, please wait a few minutes and try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
+			self.session.openWithCallback(self.close, MessageBox, _("Seems a background update check is in progress, please try again later."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 		elif not str:
 			self.session.openWithCallback(self.InstallPackage, MessageBox, _('Ready to install "%s" ?') % self.service_name, MessageBox.TYPE_YESNO)
 		else:
@@ -118,7 +118,7 @@ class CronTimers(Screen):
 				name = ""
 		except:
 			name = ""
-		desc = _("Current Status:") + ' ' +self.summary_running
+		desc = _("Current status:") + ' ' +self.summary_running
 		for cb in self.onChangedEntry:
 			cb(name, desc)
 
@@ -359,7 +359,7 @@ class CronTimersConfig(Screen, ConfigListScreen):
 	def checkentry(self):
 		msg = ''
 		if (config.crontimers.commandtype.value == 'predefined' and config.crontimers.predefined_command.value == '') or config.crontimers.commandtype.value == 'custom' and config.crontimers.user_command.value == '':
-			msg = 'You must set at least one Command'
+			msg = 'You must set at least one command'
 		if msg:
 			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR)
 		else:
@@ -397,9 +397,7 @@ class CronTimersConfig(Screen, ConfigListScreen):
 		else:
 			command = config.crontimers.user_command.value
 
-		out = open('/etc/cron/crontabs/root', 'a')
-		out.write(newcron)
-		out.close()
+		open("/etc/cron/crontabs/root", "a").write(newcron)
 		rc = Console().ePopen('crontab /etc/cron/crontabs/root -c /etc/cron/crontabs')
 		config.crontimers.predefined_command.value = 'None'
 		config.crontimers.user_command.value = 'None'
