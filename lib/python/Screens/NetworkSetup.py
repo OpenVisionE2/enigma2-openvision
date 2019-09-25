@@ -1801,11 +1801,11 @@ class NetworkMountsMenu(Screen,HelpableScreen):
 				if p.__call__.has_key("menuEntryName"):
 					menuEntryName = p.__call__["menuEntryName"](self)
 				else:
-					menuEntryName = _('Extended setup')
+					menuEntryName = _('Extended setup...')
 				if p.__call__.has_key("menuEntryDescription"):
 					menuEntryDescription = p.__call__["menuEntryDescription"](self)
 				else:
-					menuEntryDescription = _('Extended network setup plugin')
+					menuEntryDescription = _('Extended network setup plugin...')
 				self.extendedSetup = ('extendedSetup',menuEntryDescription, self.extended)
 				menu.append((menuEntryName,self.extendedSetup))
 		return menu
@@ -1945,7 +1945,7 @@ class NetworkAfp(Screen):
 			self['labactive'].show()
 			self['key_green'].setText(_("Start"))
 			status_summary= self['lab2'].text + ' ' + self['labstop'].text
-		title = _("AFP Setup")
+		title = _("AFP setup")
 		autostartstatus_summary = self['lab1'].text + ' ' + self['labactive'].text
 
 		for cb in self.onChangedEntry:
@@ -1955,7 +1955,7 @@ class NetworkAfp(Screen):
 class NetworkSABnzbd(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		Screen.setTitle(self, _("SABnzbd Setup"))
+		Screen.setTitle(self, _("SABnzbd setup"))
 		self.skinName = "NetworkSABnzbd"
 		self.onChangedEntry = [ ]
 		self['lab1'] = Label(_("Autostart:"))
