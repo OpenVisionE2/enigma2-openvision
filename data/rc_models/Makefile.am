@@ -103,7 +103,7 @@ dist_install_DATA += maxytec1.png maxytec1.xml
 endif
 
 if MECOOL
-dist_install_DATA += amiko3.png amiko3.xml k1pro.png k1pro.xml k3pro.png k3pro.xml
+dist_install_DATA += amiko3.png amiko3.xml amlogic.png amlogic.xml k1pro.png k1pro.xml k3pro.png k3pro.xml
 endif
 
 if MINIX

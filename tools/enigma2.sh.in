@@ -4,9 +4,36 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 datarootdir=@datarootdir@
 
-stbcheck=`cat /etc/model`
+brandcheck=`cat /etc/brand`
+modelcheck=`cat /etc/model`
+
+if [ $brandcheck == "mecool" ]; then
+	echo 0 > /sys/class/video/disable_video
+	echo "0 0 0 0" > /sys/class/video/axis
+	echo 0 > /sys/class/graphics/fb0/blank
+	echo 1 > /sys/class/graphics/fb1/blank
+	/usr/bin/remotecfg /etc/amremote/remote.conf > /dev/null
+	# new kernel
+	# echo "dmx0" > /sys/class/stb/source
+	# echo "ts0" > /sys/class/stb/demux0_source
+	# reset scale
+	# fbset -fb /dev/fb0 -g 1920 1080 1920 2160 32
+	# echo "0 0 1919 1079" > /sys/class/graphics/fb0/free_scale_axis
+	# echo "0 0 1919 1079" > /sys/class/graphics/fb0/window_axis
+	# echo "0x10001" > /sys/class/graphics/fb0/free_scale
+	# clear screen
+	# dd if=/dev/zero of=/dev/fb0 bs=1920 count=4320 > /dev/null 2>&1
+fi
+
+if [ $brandcheck == "linkdroid" ]; then
+	/usr/bin/remotecfg /etc/amremote/remote.conf
+fi
+
+if [ $brandcheck == "wetek" ]; then
+	/usr/bin/remotecfg /etc/amremote/wetek.conf
+fi
 	
-if [ $stbcheck == "sf8008" ] || [ $stbcheck == "ustym4kpro" ] || [ $stbcheck == "cc1" ] || [ $stbcheck == "gbtrio4k" ] || [ $stbcheck == "gbip4k" ] || [ $stbcheck == "beyonwizv2" ] || [ $stbcheck == "viper4k" ]; then
+if [ $modelcheck == "sf8008" ] || [ $modelcheck == "ustym4kpro" ] || [ $modelcheck == "cc1" ] || [ $modelcheck == "gbtrio4k" ] || [ $modelcheck == "gbip4k" ] || [ $modelcheck == "beyonwizv2" ] || [ $modelcheck == "viper4k" ]; then
 	count=`ps -ef |grep libreader |grep -v "grep" |wc -l`
 	if [ 0 == $count ];then
 		libreader 720P_50
@@ -122,7 +149,7 @@ while : ; do
 				mount /dev/block/by-name/bootoptions /tmp/bootoptions
 				cp -f /tmp/bootoptions/STARTUP_ANDROID /tmp/bootoptions/STARTUP_ONCE
 			else
-				if [ $stbcheck == "su980" ]; then
+				if [ $modelcheck == "su980" ]; then
 					echo "rescue not needed!"
 				else
 					echo "rescue" > /proc/stb/fp/boot_mode
@@ -130,6 +157,9 @@ while : ; do
 			fi
 			if [ -e /usr/bin/setenv ]; then
 				/usr/bin/setenv  default_sys  1
+			fi
+			if [ -e /usr/sbin/fw_setenv ]; then
+				/usr/sbin/fw_setenv bootfromnand 1
 			fi
 			/sbin/reboot
 			;;

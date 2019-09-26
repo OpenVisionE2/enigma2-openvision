@@ -45,6 +45,16 @@ class Standby(Screen):
 			except:
 				pass
 
+		if SystemInfo["AmlogicFamily"]:
+			try:
+				open("/sys/class/leds/led-sys/brightness", "w").write("1")
+			except:
+				pass
+			try:
+				open("/sys/class/cec/cmd", "w").write("10 04")
+			except:
+				pass
+
 	def setMute(self):
 		self.wasMuted = eDVBVolumecontrol.getInstance().isMuted()
 		if not self.wasMuted:
@@ -119,6 +129,16 @@ class Standby(Screen):
 		if SystemInfo["HiSilicon"] or getBoxBrand() == "dinobot":
 			try:
 				open("/proc/stb/hdmi/output", "w").write("off")
+			except:
+				pass
+
+		if SystemInfo["AmlogicFamily"]:
+			try:
+				open("/sys/class/leds/led-sys/brightness", "w").write("0")
+			except:
+				pass
+			try:
+				open("/sys/class/cec/cmd", "w").write("0f 36")
 			except:
 				pass
 

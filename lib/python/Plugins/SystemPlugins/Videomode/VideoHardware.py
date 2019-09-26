@@ -3,7 +3,7 @@ from Components.SystemInfo import SystemInfo
 from Tools.CList import CList
 from Tools.HardwareInfo import HardwareInfo
 import os
-from enigma import getBoxType, getBoxBrand
+from enigma import getBoxType
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -214,12 +214,17 @@ class VideoHardware:
 				mode_24 = mode_50
 
 		try:
+			if SystemInfo["AmlogicFamily"]:
+				open("/proc/stb/video/videomode", "w").write(mode + rate.lower())
 			open("/proc/stb/video/videomode_50hz", "w").write(mode_50)
 			open("/proc/stb/video/videomode_60hz", "w").write(mode_60)
 		except IOError:
 			try:
 				# fallback if no possibility to setup 50/60 hz mode
-				open("/proc/stb/video/videomode", "w").write(mode_50)
+				if SystemInfo["AmlogicFamily"]:
+					open("/proc/stb/video/videomode", "w").write(mode + rate.lower())
+				else:
+					open("/proc/stb/video/videomode", "w").write(mode_50)
 			except IOError:
 				print "[VideoHardware] setting videomode failed."
 
@@ -379,16 +384,29 @@ class VideoHardware:
 			wss = "auto"
 
 		print "[VideoHardware] -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss
-		arw = "0"
-		if getBoxBrand() in ("linkdroid","mecool"):
-			if config.av.policy_43.value == "panscan" : arw = "11"
-			if config.av.policy_43.value == "letterbox" : arw = "12"
-			if config.av.policy_43.value == "bestfit" : arw = "10"			
-			open("/sys/class/video/screen_mode", "w").write(arw)
-			open("/proc/stb/video/aspect", "w").write(aspect)
+		if SystemInfo["AmlogicFamily"]:
+			arw = "0"
+			if config.av.policy_43.value == "pillarbox" : arw = "0"
+			if config.av.policy_43.value == "scale" : arw = "3"
+			if config.av.policy_43.value == "nonlinear" : arw = "4"
+			if config.av.policy_43.value == "panscan" : arw = "12"
+			try:
+				open("/sys/class/video/screen_mode", "w").write(arw)
+			except IOError:
+				pass
+			try:
+				open("/proc/stb/video/aspect", "w").write(aspect)
+			except IOError:
+				pass
 		else:
-			open("/proc/stb/video/aspect", "w").write(aspect)
-		open("/proc/stb/video/policy", "w").write(policy)
+			try:
+				open("/proc/stb/video/aspect", "w").write(aspect)
+			except IOError:
+				pass
+		try:
+			open("/proc/stb/video/policy", "w").write(policy)
+		except IOError:
+			pass
 		try:
 			open("/proc/stb/denc/0/wss", "w").write(wss)
 		except IOError:
