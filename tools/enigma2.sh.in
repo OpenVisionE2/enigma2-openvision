@@ -33,6 +33,11 @@ else
 	LIBS="@libdir@/libopen.so.0.0.0"
 fi
 
+if [ -f /proc/stb/fp/nec_ir ]; then
+	echo 1 > /proc/stb/fp/nec_ir
+	[ -f /sys/class/remote/amremote/protocol ] && echo 2 > /sys/class/remote/amremote/protocol
+fi
+
 # enigma main loop
 while : ; do
 	# show bootlogo on enigma2 start

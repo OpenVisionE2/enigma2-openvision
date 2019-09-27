@@ -125,7 +125,7 @@ SystemInfo["OLDE2API"] = getBoxType() in ("dm800","su980")
 SystemInfo["7segment"] = getDisplayType() == "7segment"
 SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and getBoxType() not in ("hd51","h7")
-SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and getBoxType() == "multibox" or getBoxBrand() in ("hypercube","linkdroid","mecool","wetek")
+SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and getBoxType() == "multibox" or getBoxBrand() in ("hypercube","linkdroid","mecool","wetek") or getBoxType() == "dreamone"
 SystemInfo["grautec"] = fileExists("/tmp/usbtft")
 SystemInfo["CanAC3plusTranscode"] = fileExists("/proc/stb/audio/ac3plus_choices")
 SystemInfo["CanDTSHD"] = fileExists("/proc/stb/audio/dtshd_choices")
