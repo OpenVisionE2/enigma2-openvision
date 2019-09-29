@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 04:04+0330\n"
-"PO-Revision-Date: 2019-09-07 13:01+0200\n"
+"POT-Creation-Date: 2019-09-29 15:36+0330\n"
+"PO-Revision-Date: 2019-09-29 09:29+0200\n"
 "Last-Translator: Pr2\n"
 "Language-Team: french\n"
 "Language: fr\n"
@@ -286,11 +286,11 @@ msgstr "%.0f kB"
 
 #, python-format
 msgid "%.1f°E"
-msgstr ""
+msgstr "%.1f°E"
 
 #, python-format
 msgid "%.1f°W"
-msgstr ""
+msgstr "%.1f°O"
 
 #, python-format
 msgid "%.2f GB"
@@ -1093,6 +1093,10 @@ msgstr "(Afficher le menu DVD audio optionnel)"
 msgid "(unknown)"
 msgstr "(inconnu)"
 
+#, fuzzy
+msgid "(used)"
+msgstr "utilisé"
+
 msgid "* Only available if more than one interface is active."
 msgstr "* Seulement disponible si plus d'une interface est active."
 
@@ -1849,9 +1853,8 @@ msgstr "Arabe"
 msgid "Are you sure to purge all deleted userbouquets?"
 msgstr "Êtes-vous certains de vouloir supprimer tous les bouquets utilisateurs effacés?"
 
-#, fuzzy
 msgid "Are you sure to reboot to"
-msgstr "Êtes-vous sûr de vouloir supprimer cette entrée?"
+msgstr "Etes-vous sûr de redémarrer sur"
 
 #, python-format
 msgid "Are you sure to remove all %d.%d%s%s services?"
@@ -2728,6 +2731,10 @@ msgstr ""
 msgid "Choose bouquet"
 msgstr "Choisir le bouquet"
 
+#, fuzzy
+msgid "Choose style of main menus"
+msgstr "Afficher le menu péritel magnétoscope sur l'écran principal"
+
 msgid "Choose the CI protocol operation mode for standard CI or CI Plus."
 msgstr ""
 
@@ -2913,6 +2920,10 @@ msgstr "Composition noms de fichiers d'enregistrement"
 
 msgid "Compress"
 msgstr "Compresser"
+
+#, fuzzy
+msgid "Config"
+msgstr "Configuration"
 
 msgid "Config Scan Details"
 msgstr "Configurer les détails de la recherche"
@@ -4397,7 +4408,7 @@ msgstr "ERREUR - échec lors de la recherche (%s)!"
 
 #, python-format
 msgid "ERROR downloading file %s"
-msgstr ""
+msgstr "ERREUR téléchargement du fichier %s"
 
 msgid "East"
 msgstr "Est"
@@ -4739,9 +4750,9 @@ msgstr "Eritrée"
 msgid "Error"
 msgstr "Erreur"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error %s"
-msgstr "Erreur"
+msgstr "Erreur %s"
 
 msgid "Error code"
 msgstr "Code d'erreur"
@@ -4779,13 +4790,10 @@ msgid "Error stop stream!"
 msgstr "Erreur arrêt du stream (diffusion)!"
 
 msgid "Error when writing epg.dat on server"
-msgstr ""
+msgstr "Erreur lors de l’écriture du epg.dat sur le serveur"
 
-#, fuzzy
 msgid "Error while retreiving epg.dat from server"
-msgstr ""
-"Erreur lors de la récupération des informations de programmation de repli\n"
-"%s"
+msgstr "Erreur lors de la réception du fichier epg.dat du serveur"
 
 #, python-format
 msgid ""
@@ -4795,11 +4803,8 @@ msgstr ""
 "Erreur lors de la récupération des informations de programmation de repli\n"
 "%s"
 
-#, fuzzy
 msgid "Error while retreiving location of epg.dat on server"
-msgstr ""
-"Erreur lors de la récupération des informations de programmation de repli\n"
-"%s"
+msgstr "Erreur pour trouver la localisation du fichier epg.dat sur le serveur"
 
 #, python-format
 msgid ""
@@ -5777,6 +5782,14 @@ msgstr ""
 msgid "Horizontal"
 msgstr "Horizontal"
 
+#, fuzzy
+msgid "Horizontal icons"
+msgstr "Horizontal"
+
+#, fuzzy
+msgid "Horizontal menu"
+msgstr "Horizontal"
+
 msgid "Horizontal turning speed"
 msgstr "Vitesse de rotation horizontale"
 
@@ -6675,7 +6688,7 @@ msgstr "Paramètres adaptateur"
 
 #, fuzzy
 msgid "MAC address setup"
-msgstr "Paramètres adaptateur"
+msgstr "Paramètres du disque dur"
 
 msgid "MIRACLEBOX_TWINPLUS"
 msgstr ""
@@ -7180,7 +7193,7 @@ msgstr "INS"
 
 #, fuzzy
 msgid "NFS setup"
-msgstr "Paramètres PiP"
+msgstr "Paramétrer"
 
 msgid "NIM & Type"
 msgstr "NIM & type"
@@ -7372,7 +7385,7 @@ msgid "No displayable files on this medium found!"
 msgstr "Aucun fichier affichable trouvé sur ce support!"
 
 msgid "No epg.dat file found server"
-msgstr ""
+msgstr "Pas de fichier epg.dat trouvé sur le serveur"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Aucune information sur l’événement trouvée, enregistrement indéfini."
@@ -8642,7 +8655,7 @@ msgstr ""
 
 #, fuzzy
 msgid "REC symbol in Standby"
-msgstr "Allumer la LED d’alimentation pendant la veille."
+msgstr "Aussi en veille"
 
 msgid "REC symbol in use"
 msgstr ""
@@ -8797,7 +8810,7 @@ msgstr "Enregistrer"
 
 #, fuzzy
 msgid "Recover inetd"
-msgstr "[Mode déplacement]"
+msgstr "Configuration enregistrement"
 
 #, fuzzy
 msgid "Recovery mode"
@@ -8909,7 +8922,7 @@ msgstr "Supprimer extensions"
 
 #, fuzzy
 msgid "Remove service"
-msgstr "Pas de service"
+msgstr "Garder le service"
 
 msgid "Remove texts for the hearing impaired from external subtitles (instrumental music or environmental sounds, e.g., when a doorbell rings or a gun shot is heard)."
 msgstr ""
@@ -9063,7 +9076,7 @@ msgstr "Restaurer sauvegardes"
 
 #, fuzzy
 msgid "Restore inetd"
-msgstr "Restaurer sauvegardes"
+msgstr "Restaurer"
 
 #, fuzzy
 msgid "Restore inetd.conf"
@@ -9186,7 +9199,7 @@ msgstr ""
 
 #, fuzzy
 msgid "SABnzbd setup"
-msgstr "Paramètres PiP"
+msgstr "Configuration de l'Assistant"
 
 msgid "SCPC optimized search range"
 msgstr "Plage de recherche SCPC optimisée"
@@ -10009,7 +10022,7 @@ msgstr "Système"
 
 #, fuzzy
 msgid "Set the MAC address of your receiver.\n"
-msgstr "Saisissez si vous êtes dans l’hémisphère est ou ouest."
+msgstr "Tester la configuration réseau de votre récepteur.\n"
 
 msgid "Set the User ID of the OpenWebif from your fallback tuner"
 msgstr "Définir l'ID utilisateur d’OpenWebif de votre tuner de secours"
@@ -10173,6 +10186,10 @@ msgstr ""
 msgid "Show InfoBar"
 msgstr "Afficher la barre d'information"
 
+#, fuzzy
+msgid "Show Main Menu as"
+msgstr "Afficher les chemins des menus"
+
 msgid "Show Media playback Remaining/Elapsed as"
 msgstr ""
 
@@ -10299,7 +10316,7 @@ msgstr "Afficher le log de la dernière mise à jour"
 
 #, fuzzy
 msgid "Show log"
-msgstr "Afficher info"
+msgstr "Afficher l’aide"
 
 msgid "Show menu or plugin numbers"
 msgstr "Afficher les numéros des menus ou des plugins"
@@ -10806,6 +10823,10 @@ msgstr "Sri Lanka"
 msgid "Standard"
 msgstr "Standard"
 
+#, fuzzy
+msgid "Standard menu"
+msgstr "Standard"
+
 msgid "Standart list"
 msgstr "Liste standard"
 
@@ -11229,7 +11250,7 @@ msgstr ""
 "\n"
 "Traducteur: Pr2\n"
 "Support: www.openpli.org\n"
-"Dernière MAJ: 07-09-2019"
+"Dernière MAJ: 29-09-2019"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "Fichier TS trop grand pour le niveau 1 ISO9660!"
@@ -11626,7 +11647,7 @@ msgstr "Cette option vous permet d'augmenter les tons verts dans l'image."
 
 #, fuzzy
 msgid "This option allows you choose how to display the time or nothing in Standby"
-msgstr "Cette option vous permet d'éteindre l'affichage avant."
+msgstr "Cette option vous permet d’afficher tous les symboles sur l’affichage avant."
 
 msgid "This option allows you enable smoothing filter to control the dithering process."
 msgstr "Cette option vous permet d'activer le filtre de lissage pour contrôler le processus de tramage."
@@ -14897,9 +14918,6 @@ msgstr "Contrôlé par HDMI"
 msgid "use_hdmi_cacenter"
 msgstr ""
 
-msgid "used"
-msgstr ""
-
 msgid "user defined"
 msgstr "Défini par l'utilisateur"
 
@@ -14991,7 +15009,7 @@ msgid "yes (keep feeds)"
 msgstr "Oui (garder feeds)"
 
 msgid "yes, but not in multi selections"
-msgstr ""
+msgstr "oui, mais pas en multi sélections"
 
 msgid "zap"
 msgstr "Zapper"
