@@ -399,7 +399,7 @@ class CiSelection(Screen):
 	def selectionChanged(self):
 		if self.slot > 1:
 			cur = self["entries"].getCurrent()
-			if cur and len(cur) > 2:
+			if cur and len(cur) > 2 and cur[0] != _("CI Operation Mode"):
 				self["text"].setText(cur[0] == "**************************" and " " or cur[0] == _("DVB CI Delay") and _("All slots") or _("Slot %d") % (cur[3] + 1))
 
 	def keyConfigEntry(self, key):
