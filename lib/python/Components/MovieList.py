@@ -130,6 +130,10 @@ class MovieList(GUIComponent):
 	SORT_ALPHANUMERIC_FLAT = 6
 	SORT_ALPHANUMERIC_FLAT_REVERSE = 7
 	SORT_GROUPWISE = 8
+	SORT_ALPHA_DATE_OLDEST_FIRST = 9
+	SORT_ALPHAREV_DATE_NEWEST_FIRST = 10
+	SORT_LONGEST = 11
+	SORT_SHORTEST = 12
 
 	LISTTYPE_ORIGINAL = 1
 	LISTTYPE_COMPACT_DESCRIPTION = 2
@@ -669,6 +673,14 @@ class MovieList(GUIComponent):
 			self.list.sort(key=self.buildAlphaNumericFlatSortKey, reverse = True)
 		elif self.sort_type == MovieList.SORT_RECORDED:
 			self.list.sort(key=self.buildBeginTimeSortKey)
+		elif self.sort_type == MovieList.SORT_ALPHA_DATE_OLDEST_FIRST:
+			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaDateSortKey) + sorted(self.list[numberOfDirs:], key=self.buildAlphaDateSortKey)
+		elif self.sort_type == MovieList.SORT_ALPHAREV_DATE_NEWEST_FIRST:
+			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaDateSortKey, reverse = True) + sorted(self.list[numberOfDirs:], key=self.buildAlphaDateSortKey, reverse = True)
+		elif self.sort_type == MovieList.SORT_LONGEST:
+			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaNumericSortKey) + sorted(self.list[numberOfDirs:], key=self.buildLengthSortKey, reverse = True)
+		elif self.sort_type == MovieList.SORT_SHORTEST:
+			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaNumericSortKey) + sorted(self.list[numberOfDirs:], key=self.buildLengthSortKey)
 		else:
 			#always sort first this way to avoid shuffle and reverse-sort directories
 			self.list.sort(key=self.buildGroupwiseSortkey)
@@ -743,6 +755,15 @@ class MovieList(GUIComponent):
 		for tag in realtags:
 			self.tags[tag] = set([tag])
 
+	def buildLengthSortKey(self, x):
+		# x = ref,info,begin,...
+		ref = x[0]
+		name = x[1] and x[1].getName(ref)
+		len = x[1] and x[1].getLength(ref)
+		if ref.flags & eServiceReference.mustDescent:
+			return (0, len or 0, name and name.lower() or "", -x[2])
+		return (1, len or 0, name and name.lower() or "", -x[2])
+
 	def buildAlphaNumericSortKey(self, x):
 		# x = ref,info,begin,...
 		ref = x[0]
@@ -750,6 +771,14 @@ class MovieList(GUIComponent):
 		if ref.flags & eServiceReference.mustDescent:
 			return (0, name and name.lower() or "", -x[2])
 		return (1, name and name.lower() or "", -x[2])
+
+	def buildAlphaDateSortKey(self, x):
+		# x = ref,info,begin,...
+		ref = x[0]
+		name = x[1] and x[1].getName(ref)
+		if ref.flags & eServiceReference.mustDescent:
+			return (0, name and name.lower() or "", x[2])
+		return (1, name and name.lower() or "", x[2])
 
 	def buildAlphaNumericFlatSortKey(self, x):
 		# x = ref,info,begin,...
