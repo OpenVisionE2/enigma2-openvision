@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 15:36+0330\n"
+"POT-Creation-Date: 2019-10-03 01:42+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -1112,9 +1112,6 @@ msgstr "(visa utökad DVD ljudmeny)"
 msgid "(unknown)"
 msgstr "okänd"
 
-msgid "(used)"
-msgstr ""
-
 #
 msgid "* Only available if more than one interface is active."
 msgstr "* Enbart tillgänglig om mer än ett kort är aktivt."
@@ -1812,6 +1809,10 @@ msgstr "Alla Satelliter 4 (USALS)"
 msgid "All services provider"
 msgstr "Alla kanaloperatörer"
 
+#, fuzzy
+msgid "All slots"
+msgstr "Välj plats"
+
 msgid "Allocate"
 msgstr "Allokera"
 
@@ -1979,6 +1980,16 @@ msgstr "Vilken aktivitet som helst"
 #
 msgid "Arabic"
 msgstr "Arabiska"
+
+#
+#, fuzzy, python-format
+msgid "Are you ready to install \"%s\" ?"
+msgstr "Ångra installation"
+
+#
+#, fuzzy, python-format
+msgid "Are you ready to remove \"%s\" ?"
+msgstr "Återvänd till filmlista"
 
 msgid "Are you sure to purge all deleted userbouquets?"
 msgstr "Är du säker på att rensa bort alla raderade favoritlistor?"
@@ -4608,11 +4619,6 @@ msgstr "Vill du verkligen ta bort %s?"
 
 msgid "Do you want this?"
 msgstr "Vill du göra detta?"
-
-msgid ""
-"Do you want to also install samba client ?\n"
-"This allows you to mount your windows shares on this device."
-msgstr ""
 
 msgid "Do you want to autorestore settings?"
 msgstr "Vill du automatiskt återställa inställningar?"
@@ -9688,19 +9694,9 @@ msgstr ""
 msgid "Ready to install \"%s\" ?"
 msgstr ""
 
-#
-#, fuzzy, python-format
-msgid "Ready to install %s ?"
-msgstr "Ångra installation"
-
 #, python-format
 msgid "Ready to remove \"%s\" ?"
 msgstr ""
-
-#
-#, fuzzy, python-format
-msgid "Ready to remove %s ?"
-msgstr "Återvänd till filmlista"
 
 #
 #, fuzzy
@@ -10628,6 +10624,10 @@ msgstr "Sök framåt (ange tid)"
 
 #, fuzzy
 msgid "Seems a background update check is in progress, please try again later."
+msgstr "Inga uppdateringar tillgängliga. Försök igen senare."
+
+#, fuzzy
+msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "Inga uppdateringar tillgängliga. Försök igen senare."
 
 #
@@ -15057,14 +15057,14 @@ msgstr "Din mottagare kanske inte fungerar längre. Vänligen läs manualen hur 
 
 #, fuzzy, python-format
 msgid ""
-"Your receiver will be restarted after the installation of service\n"
-"Ready to install %s ?"
+"Your receiver will be restarted after the installation of the service\n"
+"Are you ready to install \"%s\" ?"
 msgstr "Din mottagare kommer att starta om när du trycker på OK på din fjärrkontroll."
 
 #, fuzzy
 msgid ""
-"Your receiver will be restarted after the removal of service\n"
-"Do you want to remove now ?"
+"Your receiver will be restarted after the removal of the service\n"
+"Do you want to remove the service now ?"
 msgstr "Din mottagare kommer att starta om när du trycker på OK på din fjärrkontroll."
 
 msgid "Your receiver will got to stand by due to the sleeptimer."
@@ -15219,6 +15219,10 @@ msgstr "håller på att starta"
 msgid "activate network adapter configuration"
 msgstr "aktivera nätverksconfiguration"
 
+#, fuzzy
+msgid "active"
+msgstr "Relativ"
+
 msgid "actual time only"
 msgstr "Endast aktuell tid"
 
@@ -15277,6 +15281,14 @@ msgid "alphabetic"
 msgstr "sortera alfabetiskt"
 
 msgid "alphabetic reverse"
+msgstr "omvänd alfabetisk ordning"
+
+#, fuzzy
+msgid "alphabetic then newest"
+msgstr "omvänd alfabetisk ordning"
+
+#, fuzzy
+msgid "alphabetic then oldest"
 msgstr "omvänd alfabetisk ordning"
 
 msgid "alphabetical"
@@ -15954,6 +15966,10 @@ msgstr "låst"
 msgid "long"
 msgstr "lång"
 
+#, fuzzy
+msgid "longest"
+msgstr "lång"
+
 msgid "magazines/reports/documentary"
 msgstr "tidningar / rapporter / dokumentär"
 
@@ -16206,11 +16222,6 @@ msgstr "tryck OK när du är klar"
 msgid "please wait, loading picture..."
 msgstr "vänligen vänta, laddar bild..."
 
-#
-#, fuzzy
-msgid "please wait..."
-msgstr "Vänligen vänta..."
-
 msgid "popular culture/traditional arts"
 msgstr "populärkultur / traditionell konst"
 
@@ -16420,6 +16431,11 @@ msgstr "kanalen är i föräldraskyddad i kanallistan"
 
 msgid "set as startup service"
 msgstr "använd som startkanal"
+
+#
+#, fuzzy
+msgid "shortest"
+msgstr "Nätverktest"
 
 #
 msgid "show DVD main menu"

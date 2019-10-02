@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 15:36+0330\n"
+"POT-Creation-Date: 2019-10-03 01:42+0330\n"
 "PO-Revision-Date: 2019-02-13 20:52+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -1114,9 +1114,6 @@ msgstr "(näytä  DVD-äänen lisävalikko)"
 msgid "(unknown)"
 msgstr "(tuntematon)"
 
-msgid "(used)"
-msgstr ""
-
 #
 msgid "* Only available if more than one interface is active."
 msgstr "* Käytettävissä vain kun useampi kuin yksi sovitin on aktiivinen."
@@ -1796,6 +1793,11 @@ msgstr "Kaikki satelliitit 4 (DiSEqC-tila 1.2)"
 msgid "All services provider"
 msgstr ""
 
+#
+#, fuzzy
+msgid "All slots"
+msgstr "Valitse paikka"
+
 msgid "Allocate"
 msgstr "Varaa"
 
@@ -1953,6 +1955,16 @@ msgstr "Mikä tahansa toiminta"
 #
 msgid "Arabic"
 msgstr "Arabia"
+
+#
+#, fuzzy, python-format
+msgid "Are you ready to install \"%s\" ?"
+msgstr "Kumoa asennus"
+
+#
+#, fuzzy, python-format
+msgid "Are you ready to remove \"%s\" ?"
+msgstr "Avaa tallenneluettelo"
 
 msgid "Are you sure to purge all deleted userbouquets?"
 msgstr ""
@@ -4518,11 +4530,6 @@ msgstr "Haluatko pysäyttää toiston ja poistaa ajastimen %s?"
 
 msgid "Do you want this?"
 msgstr "Haluatko tehdä niin?"
-
-msgid ""
-"Do you want to also install samba client ?\n"
-"This allows you to mount your windows shares on this device."
-msgstr ""
 
 msgid "Do you want to autorestore settings?"
 msgstr ""
@@ -9569,19 +9576,9 @@ msgstr ""
 msgid "Ready to install \"%s\" ?"
 msgstr ""
 
-#
-#, fuzzy, python-format
-msgid "Ready to install %s ?"
-msgstr "Kumoa asennus"
-
 #, python-format
 msgid "Ready to remove \"%s\" ?"
 msgstr ""
-
-#
-#, fuzzy, python-format
-msgid "Ready to remove %s ?"
-msgstr "Avaa tallenneluettelo"
 
 #
 #, fuzzy
@@ -10486,6 +10483,10 @@ msgstr "Hae eteenpäin (syötä aika)"
 
 #, fuzzy
 msgid "Seems a background update check is in progress, please try again later."
+msgstr "Päivityksiä ei ole nyt saatavilla. Yritä myöhemmin uudestaan."
+
+#, fuzzy
+msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "Päivityksiä ei ole nyt saatavilla. Yritä myöhemmin uudestaan."
 
 #
@@ -14835,14 +14836,14 @@ msgstr "Vastaanottimesi saattaa olla nyt poissa käytöstä. Lue käsikirjasta l
 
 #, fuzzy, python-format
 msgid ""
-"Your receiver will be restarted after the installation of service\n"
-"Ready to install %s ?"
+"Your receiver will be restarted after the installation of the service\n"
+"Are you ready to install \"%s\" ?"
 msgstr "Vastaanottimesi uudelleenkäynnistyy kun painat OK näppäintä kaukosäätimessäsi."
 
 #, fuzzy
 msgid ""
-"Your receiver will be restarted after the removal of service\n"
-"Do you want to remove now ?"
+"Your receiver will be restarted after the removal of the service\n"
+"Do you want to remove the service now ?"
 msgstr "Vastaanottimesi uudelleenkäynnistyy kun painat OK näppäintä kaukosäätimessäsi."
 
 msgid "Your receiver will got to stand by due to the sleeptimer."
@@ -14994,6 +14995,10 @@ msgstr "alkaa juuri"
 msgid "activate network adapter configuration"
 msgstr "aktivoi verkkosovittimen asetukset"
 
+#, fuzzy
+msgid "active"
+msgstr "Suhteellinen"
+
 msgid "actual time only"
 msgstr "Vain nykyinen hetki"
 
@@ -15051,6 +15056,14 @@ msgid "alphabetic"
 msgstr "Aakkosjärjestys"
 
 msgid "alphabetic reverse"
+msgstr "Käänteinen aakkosjärjestys"
+
+#, fuzzy
+msgid "alphabetic then newest"
+msgstr "Käänteinen aakkosjärjestys"
+
+#, fuzzy
+msgid "alphabetic then oldest"
 msgstr "Käänteinen aakkosjärjestys"
 
 msgid "alphabetical"
@@ -15723,6 +15736,10 @@ msgstr "Lukittu"
 msgid "long"
 msgstr "Pitkä"
 
+#, fuzzy
+msgid "longest"
+msgstr "Pitkä"
+
 msgid "magazines/reports/documentary"
 msgstr "makasiini/raportti/dokumentti"
 
@@ -15976,11 +15993,6 @@ msgstr "paina OK kun olet valmis"
 msgid "please wait, loading picture..."
 msgstr "Kuvaa ladataan. Odota..."
 
-#
-#, fuzzy
-msgid "please wait..."
-msgstr "Odota..."
-
 msgid "popular culture/traditional arts"
 msgstr "populäärikulttuuri/perinteinen taide"
 
@@ -16193,6 +16205,11 @@ msgstr ""
 
 msgid "set as startup service"
 msgstr "Aseta käynnistyskanavaksi"
+
+#
+#, fuzzy
+msgid "shortest"
+msgstr "Lähiverkon testi"
 
 #
 msgid "show DVD main menu"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 15:36+0330\n"
+"POT-Creation-Date: 2019-10-03 01:42+0330\n"
 "PO-Revision-Date: 2019-07-25 17:52+0300\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: openPLi Dimitrij\n"
@@ -286,11 +286,11 @@ msgstr "%.0f kB"
 
 #, python-format
 msgid "%.1f°E"
-msgstr ""
+msgstr "%.1f°E"
 
 #, python-format
 msgid "%.1f°W"
-msgstr ""
+msgstr "%.1f°W"
 
 #, python-format
 msgid "%.2f GB"
@@ -632,7 +632,7 @@ msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %Y %b %-d"
-msgstr "%a %e/%m  %-H:%M"
+msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %Y %b %d"
@@ -670,7 +670,7 @@ msgstr "%a %e/%m"
 
 #, fuzzy
 msgid "%a %b %-d"
-msgstr "%a %e/%m  %-H:%M"
+msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %b %-d %Y"
@@ -1105,9 +1105,6 @@ msgstr "(показать дополнительное DVD аудио меню)"
 msgid "(unknown)"
 msgstr "(неизвестно)"
 
-msgid "(used)"
-msgstr ""
-
 msgid "* Only available if more than one interface is active."
 msgstr "* Доступно, если более чем один интерфейс активен."
 
@@ -1347,7 +1344,7 @@ msgstr ""
 "Сохранить вашу версию?"
 
 msgid "A file from media is in use!"
-msgstr ""
+msgstr "Медиа файл используется!"
 
 msgid ""
 "A finished record timer wants to set your\n"
@@ -1712,6 +1709,9 @@ msgstr "Все спутники 4 (USALS)"
 msgid "All services provider"
 msgstr "Все сервисы провайдера"
 
+msgid "All slots"
+msgstr "Все слоты"
+
 msgid "Allocate"
 msgstr "Выделить"
 
@@ -1861,12 +1861,19 @@ msgstr "Любая активность"
 msgid "Arabic"
 msgstr "Арабский"
 
+#, fuzzy, python-format
+msgid "Are you ready to install \"%s\" ?"
+msgstr "Вы хотите установить плагины?"
+
+#, fuzzy, python-format
+msgid "Are you ready to remove \"%s\" ?"
+msgstr "Вы действительно хотите удалить выбранное?"
+
 msgid "Are you sure to purge all deleted userbouquets?"
 msgstr "Вы действительно хотите очистить все удаленные пользовательские букеты?"
 
-#, fuzzy
 msgid "Are you sure to reboot to"
-msgstr "Вы действительно хотите удалить выбранное?"
+msgstr "Вы действительно хотите выполнить перезагрузку ресивера?"
 
 #, python-format
 msgid "Are you sure to remove all %d.%d%s%s services?"
@@ -2508,6 +2515,21 @@ msgid ""
 "Screens change with left/right buttons or use red, green, blue to toggle.\n"
 "Yellow for returning back to this intro"
 msgstr ""
+"Может использоваться для проверки дефектных пикселей на экране ТВ.\n"
+"\n"
+"Доступны цветовые тестовые экраны:\n"
+"\n"
+"красный\n"
+"зеленый\n"
+"синий\n"
+"белый\n"
+"черный\n"
+"бирюзовый\n"
+"magenta\n"
+"пурпурно-красный\n"
+"\n"
+"Экраны меняются с помощью кнопок влево/вправо или используйте красный, зеленый, синий для переключения.\n"
+"Желтый для возвращения к этому вступлению."
 
 msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternativaly you can mount the network drive after the flash and perform a manufacurer reset to autorestore"
 msgstr "Можно только найти сетевой диск для хранения резервной копии, это означает, что после прошивки автообновление не будет работать. Альтернативно вы можете смонтировать сетевой диск после прошивки и выполнить автоматическое восстановление."
@@ -4198,11 +4220,6 @@ msgstr "Вы действительно хотите остановить тек
 msgid "Do you want this?"
 msgstr "Вы хотите это сделать?"
 
-msgid ""
-"Do you want to also install samba client ?\n"
-"This allows you to mount your windows shares on this device."
-msgstr ""
-
 msgid "Do you want to autorestore settings?"
 msgstr "Вы хотите автоматически восстановить настройки?"
 
@@ -4405,7 +4422,7 @@ msgstr "ОШИБКА - сканирование не удалось (%s)!"
 
 #, python-format
 msgid "ERROR downloading file %s"
-msgstr ""
+msgstr "Ошибка загрузки файла %s"
 
 msgid "East"
 msgstr "Восток"
@@ -4518,9 +4535,8 @@ msgstr "Включить ОК как превью, в списке выбора 
 msgid "Enable OK for channel selection"
 msgstr "Включить OK для списка выбора каналов"
 
-#, fuzzy
 msgid "Enable OpenTV EPG"
-msgstr "Включить EIT EPG"
+msgstr "Включить OpenTV EPG"
 
 msgid "Enable ViaSat EPG"
 msgstr "Включить ViaSat EPG"
@@ -4748,9 +4764,9 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Ошибка"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error %s"
-msgstr "Ошибка"
+msgstr "Ошибка %s"
 
 msgid "Error code"
 msgstr "Код ошибки"
@@ -4788,13 +4804,10 @@ msgid "Error stop stream!"
 msgstr "Ошибка при остановке стрима!"
 
 msgid "Error when writing epg.dat on server"
-msgstr ""
+msgstr "Ошибка при записи epg.dat на сервере"
 
-#, fuzzy
 msgid "Error while retreiving epg.dat from server"
-msgstr ""
-"Ошибка получения информации о резервных таймерах\n"
-"%s"
+msgstr "Ошибка при получении epg.dat с сервера"
 
 #, python-format
 msgid ""
@@ -4804,11 +4817,8 @@ msgstr ""
 "Ошибка получения информации о резервных таймерах\n"
 "%s"
 
-#, fuzzy
 msgid "Error while retreiving location of epg.dat on server"
-msgstr ""
-"Ошибка получения информации о резервных таймерах\n"
-"%s"
+msgstr "Ошибка получения расположения файла epg.dat с сервера"
 
 #, python-format
 msgid ""
@@ -5160,7 +5170,6 @@ msgstr "Настройки удаленного резервного ресив�
 msgid "Fallback tuner setup"
 msgstr "Настройки удаленного резервного ресивера"
 
-#, fuzzy
 msgid "False"
 msgstr "нет"
 
@@ -5639,7 +5648,7 @@ msgstr "HDMI HDR тип"
 
 #, fuzzy
 msgid "HDMI recording"
-msgstr "Запись"
+msgstr "Остановить запись"
 
 msgid "HDMI-CEC Source Active"
 msgstr "HDMI-CEC источник активный"
@@ -6696,7 +6705,7 @@ msgstr "Настройки адаптера"
 
 #, fuzzy
 msgid "MAC address setup"
-msgstr "Настройки адаптера"
+msgstr "Настройка диска"
 
 msgid "MIRACLEBOX_TWINPLUS"
 msgstr ""
@@ -7167,9 +7176,8 @@ msgstr "НЕТ"
 msgid "N/A"
 msgstr "N/A"
 
-#, fuzzy
 msgid "NCam Config info"
-msgstr "ECM инфо"
+msgstr ""
 
 #, fuzzy
 msgid "NCam ECM info"
@@ -7202,7 +7210,7 @@ msgstr "INS"
 
 #, fuzzy
 msgid "NFS setup"
-msgstr "Настройки PiP"
+msgstr "Настройки"
 
 msgid "NIM & Type"
 msgstr "NIM & Тип тюнера"
@@ -7394,7 +7402,7 @@ msgid "No displayable files on this medium found!"
 msgstr "Нет отображаемых файлов на этом носителе!"
 
 msgid "No epg.dat file found server"
-msgstr ""
+msgstr "Не найден сервер с epg.dat"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Информация о событии не найдена, запись на неопределенное время."
@@ -7653,9 +7661,8 @@ msgstr "Установки экранного меню (OSD)"
 msgid "OSD transparency"
 msgstr "Прозрачность экранного меню (OSD)"
 
-#, fuzzy
 msgid "OScam Config info"
-msgstr "ECM инфо"
+msgstr ""
 
 #, fuzzy
 msgid "OScam ECM info"
@@ -7668,9 +7675,8 @@ msgstr ""
 msgid "OScam Info - Configuration"
 msgstr "Конфигурация тюнера"
 
-#, fuzzy
 msgid "OScam Info - Main Menu"
-msgstr "Конфигурация тюнера"
+msgstr ""
 
 msgid "OScam Info Main Menu"
 msgstr ""
@@ -7988,7 +7994,7 @@ msgid "Pitcairn"
 msgstr "Pitcairn"
 
 msgid "Pixels\n"
-msgstr ""
+msgstr "Пиксель\n"
 
 msgid "Play"
 msgstr "Воспроизвести"
@@ -8668,7 +8674,7 @@ msgstr ""
 
 #, fuzzy
 msgid "REC symbol in Standby"
-msgstr "Включить питание на кнопке LED, на передней панели в режиме ожидания / режиме глубокого ожидания."
+msgstr "Также из режима ожидания"
 
 msgid "REC symbol in use"
 msgstr ""
@@ -8712,17 +8718,9 @@ msgstr ""
 msgid "Ready to install \"%s\" ?"
 msgstr ""
 
-#, fuzzy, python-format
-msgid "Ready to install %s ?"
-msgstr "Отмена установки"
-
 #, python-format
 msgid "Ready to remove \"%s\" ?"
 msgstr ""
-
-#, fuzzy, python-format
-msgid "Ready to remove %s ?"
-msgstr "Вернуться к списку видео"
 
 #, fuzzy
 msgid "Really WOL now?"
@@ -8823,11 +8821,11 @@ msgstr "Запись"
 
 #, fuzzy
 msgid "Recover inetd"
-msgstr "Пользовательский режим"
+msgstr "Настройка записей"
 
 #, fuzzy
 msgid "Recovery mode"
-msgstr "Пользовательский режим"
+msgstr "[режим перемещения]"
 
 msgid "Red"
 msgstr "Красная"
@@ -8879,7 +8877,7 @@ msgstr "Обновление букетов и сервисов..."
 
 #, fuzzy
 msgid "Remaining"
-msgstr "запущено"
+msgstr "Внимание"
 
 msgid "Remaining & Elapsed"
 msgstr ""
@@ -8935,7 +8933,7 @@ msgstr "Удаление плагинов"
 
 #, fuzzy
 msgid "Remove service"
-msgstr "Нет сервиса"
+msgstr "Держать на сервисе"
 
 msgid "Remove texts for the hearing impaired from external subtitles (instrumental music or environmental sounds, e.g., when a doorbell rings or a gun shot is heard)."
 msgstr ""
@@ -9091,7 +9089,7 @@ msgstr "Востановление бэкапов"
 
 #, fuzzy
 msgid "Restore inetd"
-msgstr "Востановление бэкапов"
+msgstr "Восстановить"
 
 #, fuzzy
 msgid "Restore inetd.conf"
@@ -9214,7 +9212,7 @@ msgstr ""
 
 #, fuzzy
 msgid "SABnzbd setup"
-msgstr "Настройки PiP"
+msgstr "Настройки мастера"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC оптимизированный диапазон поиска"
@@ -9523,6 +9521,9 @@ msgstr "Перемотать вперед (введите время)"
 #, fuzzy
 msgid "Seems a background update check is in progress, please try again later."
 msgstr "Обновлений пока нет. Пожалуйста, попробуйте еще раз позже."
+
+msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
+msgstr ""
 
 msgid "Select"
 msgstr "Выбор"
@@ -10040,7 +10041,7 @@ msgstr "Система"
 
 #, fuzzy
 msgid "Set the MAC address of your receiver.\n"
-msgstr "Ввод, где Вы находитесь, в восточном или западном полушарии."
+msgstr "Тест сетевой конфигурации Вашего ресивера.\n"
 
 msgid "Set the User ID of the OpenWebif from your fallback tuner"
 msgstr "Установить ID пользователя OpenWebif из вашего резервного ресивера"
@@ -10058,9 +10059,8 @@ msgstr "Установить порт OpenWebif из вашего резервн
 msgid "Set the repeat interval of the schedule."
 msgstr "Настройка частоты обновления экрана."
 
-#, fuzzy
 msgid "Set the scrolling speed of text on the front panel display, this is used by software renderer in some skins."
-msgstr "Настройка  уровня контрастности дисплея на передней панели."
+msgstr ""
 
 #, fuzzy
 msgid "Set the scrolling speed of text on the front panel display."
@@ -10214,7 +10214,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Show MiniTV in the front panel display"
-msgstr "Показать пиконы на дисплее"
+msgstr "Настройка уровня яркости дисплея на передней панели."
 
 msgid "Show PIP"
 msgstr "Показать PiP"
@@ -10335,7 +10335,7 @@ msgstr "Показать последний лог обновления"
 
 #, fuzzy
 msgid "Show log"
-msgstr "Показать инфо"
+msgstr "Показать помощь"
 
 msgid "Show menu or plugin numbers"
 msgstr "Показать номера меню или плагинов"
@@ -11655,7 +11655,7 @@ msgstr "Эта опция позволяет вам увеличивать зе�
 
 #, fuzzy
 msgid "This option allows you choose how to display the time or nothing in Standby"
-msgstr "Эта опция позволяет отключить дисплей."
+msgstr "Эта опция позволяет Вам показывать все символы на дисплее."
 
 msgid "This option allows you enable smoothing filter to control the dithering process."
 msgstr "Эта опция позволяет включить фильтр плавности для управления процессом сглаживания."
@@ -12097,7 +12097,7 @@ msgstr "Транспондер"
 
 #, fuzzy
 msgid "Transponder time"
-msgstr "показать инфо транспондера"
+msgstr "Транспондер"
 
 msgid "Transport Stream Type"
 msgstr "Тип транспортного потока"
@@ -12115,7 +12115,7 @@ msgid "Troubleshoot"
 msgstr "Решение проблем (просмотр)"
 
 msgid "True"
-msgstr ""
+msgstr "да"
 
 msgid "TrueType font (HD)"
 msgstr ""
@@ -13460,14 +13460,14 @@ msgstr "Сейчас ваш ресивер может быть непригод�
 
 #, fuzzy, python-format
 msgid ""
-"Your receiver will be restarted after the installation of service\n"
-"Ready to install %s ?"
+"Your receiver will be restarted after the installation of the service\n"
+"Are you ready to install \"%s\" ?"
 msgstr "Ваш ресивер будет перезагружен после нажатия кнопки OK на Вашем пульте Д/У."
 
 #, fuzzy
 msgid ""
-"Your receiver will be restarted after the removal of service\n"
-"Do you want to remove now ?"
+"Your receiver will be restarted after the removal of the service\n"
+"Do you want to remove the service now ?"
 msgstr "Ваш ресивер будет перезагружен после нажатия кнопки OK на Вашем пульте Д/У."
 
 msgid "Your receiver will got to stand by due to the sleeptimer."
@@ -13609,6 +13609,10 @@ msgstr "стартует"
 msgid "activate network adapter configuration"
 msgstr "активировать конфигурацию сетевого адаптера"
 
+#, fuzzy
+msgid "active"
+msgstr "относительная"
+
 msgid "actual time only"
 msgstr "только фактическое время"
 
@@ -13658,6 +13662,14 @@ msgid "alphabetic"
 msgstr "сортировать по алфавиту"
 
 msgid "alphabetic reverse"
+msgstr "по обратному алфавиту"
+
+#, fuzzy
+msgid "alphabetic then newest"
+msgstr "по обратному алфавиту"
+
+#, fuzzy
+msgid "alphabetic then oldest"
 msgstr "по обратному алфавиту"
 
 msgid "alphabetical"
@@ -14252,6 +14264,10 @@ msgstr "захвачено"
 msgid "long"
 msgstr "длинная"
 
+#, fuzzy
+msgid "longest"
+msgstr "длинная"
+
 msgid "magazines/reports/documentary"
 msgstr "журналы/репортажы/документальный"
 
@@ -14471,10 +14487,6 @@ msgstr "пожалуйста, нажмите OK, когда будете гот�
 msgid "please wait, loading picture..."
 msgstr "Пожалуйста, подождите ... загрузка изображений..."
 
-#, fuzzy
-msgid "please wait..."
-msgstr "Пожалуйста, подождите..."
-
 msgid "popular culture/traditional arts"
 msgstr "популярные культура/традиции искусства"
 
@@ -14654,6 +14666,10 @@ msgstr "сервис находится в букете родительског
 
 msgid "set as startup service"
 msgstr "назначить сервис стартовым при загрузке"
+
+#, fuzzy
+msgid "shortest"
+msgstr "Тест сети"
 
 msgid "show DVD main menu"
 msgstr "показать DVD в главном меню"
@@ -15014,7 +15030,7 @@ msgid "yes (keep feeds)"
 msgstr "да (сохранить feeds сервисы)"
 
 msgid "yes, but not in multi selections"
-msgstr ""
+msgstr "да, но только в да/нет (без множеств. выбора)"
 
 msgid "zap"
 msgstr "перейти"

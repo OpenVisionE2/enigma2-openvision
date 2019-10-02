@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 15:36+0330\n"
+"POT-Creation-Date: 2019-10-03 01:42+0330\n"
 "PO-Revision-Date: 2019-07-22 20:15+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -1093,9 +1093,6 @@ msgstr "(hiển thị menu âm thanh DVD tùy chọn)"
 msgid "(unknown)"
 msgstr "(không xác định)"
 
-msgid "(used)"
-msgstr ""
-
 msgid "* Only available if more than one interface is active."
 msgstr "* Chỉ khả dụng nếu có nhiều giao diện được kích hoạt."
 
@@ -1700,6 +1697,10 @@ msgstr "Tất cả các vệ tinh 4 (USALS)"
 msgid "All services provider"
 msgstr "Tất cả các nhà cung cấp dịch vụ"
 
+#, fuzzy
+msgid "All slots"
+msgstr "Chọn vị trí"
+
 msgid "Allocate"
 msgstr "Chỉ định"
 
@@ -1848,6 +1849,14 @@ msgstr "Bất kỳ hoạt động"
 
 msgid "Arabic"
 msgstr "Tiếng Ả Rập"
+
+#, fuzzy, python-format
+msgid "Are you ready to install \"%s\" ?"
+msgstr "Hoàn tác cài đặt"
+
+#, fuzzy, python-format
+msgid "Are you ready to remove \"%s\" ?"
+msgstr "Quay trở lại danh sách phim"
 
 msgid "Are you sure to purge all deleted userbouquets?"
 msgstr "Bạn có chắc chắn để xóa tất cả các userbouquets đã xóa?"
@@ -4197,11 +4206,6 @@ msgstr "Bạn có thực sự muốn dừng sự kiện hiện tại và xóa b�
 
 msgid "Do you want this?"
 msgstr "Bạn có muốn cái này không?"
-
-msgid ""
-"Do you want to also install samba client ?\n"
-"This allows you to mount your windows shares on this device."
-msgstr ""
 
 msgid "Do you want to autorestore settings?"
 msgstr "Bạn có muốn cài đặt autorestore?"
@@ -8707,17 +8711,9 @@ msgstr ""
 msgid "Ready to install \"%s\" ?"
 msgstr ""
 
-#, fuzzy, python-format
-msgid "Ready to install %s ?"
-msgstr "Hoàn tác cài đặt"
-
 #, python-format
 msgid "Ready to remove \"%s\" ?"
 msgstr ""
-
-#, fuzzy, python-format
-msgid "Ready to remove %s ?"
-msgstr "Quay trở lại danh sách phim"
 
 #, fuzzy
 msgid "Really WOL now?"
@@ -9512,6 +9508,10 @@ msgstr "Tìm kiếm về phía trước (nhập thời gian)"
 
 #, fuzzy
 msgid "Seems a background update check is in progress, please try again later."
+msgstr "Không có bảng cập nhật có sẵn. Vui lòng thử lại sau."
+
+#, fuzzy
+msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "Không có bảng cập nhật có sẵn. Vui lòng thử lại sau."
 
 msgid "Select"
@@ -13450,14 +13450,14 @@ msgstr "Đầu thu  của bạn có thể không sử dụng được ngay bây 
 
 #, fuzzy, python-format
 msgid ""
-"Your receiver will be restarted after the installation of service\n"
-"Ready to install %s ?"
+"Your receiver will be restarted after the installation of the service\n"
+"Are you ready to install \"%s\" ?"
 msgstr "Đầu thu của bạn sẽ khởi động lại sau khi nhấn OK trên điều khiển từ xa của bạn."
 
 #, fuzzy
 msgid ""
-"Your receiver will be restarted after the removal of service\n"
-"Do you want to remove now ?"
+"Your receiver will be restarted after the removal of the service\n"
+"Do you want to remove the service now ?"
 msgstr "Đầu thu của bạn sẽ khởi động lại sau khi nhấn OK trên điều khiển từ xa của bạn."
 
 msgid "Your receiver will got to stand by due to the sleeptimer."
@@ -13599,6 +13599,10 @@ msgstr "về để bắt đầu"
 msgid "activate network adapter configuration"
 msgstr "kích hoạt cấu hình bộ điều hợp mạng"
 
+#, fuzzy
+msgid "active"
+msgstr "Quan hệ"
+
 msgid "actual time only"
 msgstr "chỉ thời gian thực tế"
 
@@ -13648,6 +13652,14 @@ msgid "alphabetic"
 msgstr "bảng chữ cái"
 
 msgid "alphabetic reverse"
+msgstr "bảng chữ cái ngược"
+
+#, fuzzy
+msgid "alphabetic then newest"
+msgstr "bảng chữ cái ngược"
+
+#, fuzzy
+msgid "alphabetic then oldest"
 msgstr "bảng chữ cái ngược"
 
 msgid "alphabetical"
@@ -14242,6 +14254,10 @@ msgstr "bị khóa"
 msgid "long"
 msgstr "dài"
 
+#, fuzzy
+msgid "longest"
+msgstr "dài"
+
 msgid "magazines/reports/documentary"
 msgstr "tạp chí / báo cáo / phim tài liệu"
 
@@ -14461,10 +14477,6 @@ msgstr "vui lòng nhấn OK khi sẵn sàng"
 msgid "please wait, loading picture..."
 msgstr "vui lòng đợi, tải hình ảnh ..."
 
-#, fuzzy
-msgid "please wait..."
-msgstr "Xin vui lòng chờ ..."
-
 msgid "popular culture/traditional arts"
 msgstr "văn hóa đại chúng / nghệ thuật truyền thống"
 
@@ -14644,6 +14656,10 @@ msgstr "dịch vụ là trong bó hoa bảo vệ cha mẹ"
 
 msgid "set as startup service"
 msgstr "đặt làm dịch vụ khởi động"
+
+#, fuzzy
+msgid "shortest"
+msgstr "Kiểm tra mạng"
 
 msgid "show DVD main menu"
 msgstr "hiển thị menu chính DVD"
