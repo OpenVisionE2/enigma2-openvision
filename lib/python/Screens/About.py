@@ -628,7 +628,69 @@ class SystemNetworkInfo(Screen):
 				self["statuspic"].setPixmapNum(1)
 			self["statuspic"].show()
 		except:
-			pass		
+			pass
+
+class SystemMemoryInfo(Screen):
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		screentitle = _("Memory")
+		title = screentitle
+		Screen.setTitle(self, title)
+		self.skinName = ["SystemMemoryInfo", "About"]
+		self["lab1"] = StaticText(_("Image OpenVision"))
+		self["lab2"] = StaticText(_("By Team OpenVision"))
+		self["lab3"] = StaticText(_("Support at %s") % "https://openvision.tech")
+		self["AboutScrollLabel"] = ScrollLabel()
+
+		self["key_red"] = Button(_("Close"))
+		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
+									{
+										"cancel": self.close,
+										"ok": self.close,
+										"red": self.close,
+									})
+
+		out_lines = file("/proc/meminfo").readlines()
+		self.AboutText = _("RAM") + '\n\n'
+		RamTotal = "-"
+		RamFree = "-"
+		for lidx in range(len(out_lines) - 1):
+			tstLine = out_lines[lidx].split()
+			if "MemTotal:" in tstLine:
+				MemTotal = out_lines[lidx].split()
+				self.AboutText += _("Total memory:") + "\t" + MemTotal[1] + "\n"
+			if "MemFree:" in tstLine:
+				MemFree = out_lines[lidx].split()
+				self.AboutText += _("Free memory:") + "\t" + MemFree[1] + "\n"
+			if "Buffers:" in tstLine:
+				Buffers = out_lines[lidx].split()
+				self.AboutText += _("Buffers:") + "\t" + Buffers[1] + "\n"
+			if "Cached:" in tstLine:
+				Cached = out_lines[lidx].split()
+				self.AboutText += _("Cached:") + "\t" + Cached[1] + "\n"
+			if "SwapTotal:" in tstLine:
+				SwapTotal = out_lines[lidx].split()
+				self.AboutText += _("Total swap:") + "\t" + SwapTotal[1] + "\n"
+			if "SwapFree:" in tstLine:
+				SwapFree = out_lines[lidx].split()
+				self.AboutText += _("Free swap:") + "\t" + SwapFree[1] + "\n\n"
+
+		self["actions"].setEnabled(False)
+		self.Console = Console()
+		self.Console.ePopen("df -mh / | grep -v '^Filesystem'", self.Stage1Complete2)
+
+	def Stage1Complete2(self, result, retval, extra_args=None):
+		flash = str(result).replace('\n', '')
+		flash = flash.split()
+		RamTotal = flash[1]
+		RamFree = flash[3]
+
+		self.AboutText += _("FLASH") + '\n\n'
+		self.AboutText += _("Total:") + "\t" + RamTotal + "\n"
+		self.AboutText += _("Free:") + "\t" + RamFree + "\n\n"
+
+		self["AboutScrollLabel"].setText(self.AboutText)
+		self["actions"].setEnabled(True)			
 
 class TranslationInfo(Screen):
 	def __init__(self, session):
