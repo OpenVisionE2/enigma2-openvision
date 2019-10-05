@@ -38,17 +38,18 @@ def ServiceIsEnabled(service_name):
 	return len(starter_list) > 0
 
 # Lets have some global functions to reduce python code
-def StartStopCallback(self, result = None, retval = None, extra_args = None):
+class NSCommon:
+   def StartStopCallback(self, result = None, retval = None, extra_args = None):
 	time.sleep(3)
 	self.updateService()
 
-def removeComplete(self, result = None, retval = None, extra_args = None):
+   def removeComplete(self, result = None, retval = None, extra_args = None):
 	if self.reboot_at_end:
 		self.session.open(TryQuitMainloop, 2)
 	self.message.close()
 	self.close()
 
-def installComplete(self, result = None, retval = None, extra_args = None):
+   def installComplete(self, result = None, retval = None, extra_args = None):
 	self.message.close()
 	self.feedscheck.close()
 	if self.reboot_at_end:
@@ -57,17 +58,17 @@ def installComplete(self, result = None, retval = None, extra_args = None):
 		self.updateService()
 	self.close()
 
-def doRemove(self, callback, pkgname):
+   def doRemove(self, callback, pkgname):
 	self.message = self.session.open(MessageBox,_("Please wait..."), MessageBox.TYPE_INFO, enable_input = False)
 	self.message.setTitle(_('Removing service'))
 	self.Console.ePopen('/usr/bin/opkg remove ' + pkgname + ' --force-remove --autoremove', callback)
 
-def doInstall(self, callback, pkgname):
+   def doInstall(self, callback, pkgname):
 	self.message = self.session.open(MessageBox,_("Please wait..."), MessageBox.TYPE_INFO, enable_input = False)
 	self.message.setTitle(_('Installing service'))
 	self.Console.ePopen('/usr/bin/opkg install ' + pkgname, callback)
 
-def checkNetworkState(self, str, retval, extra_args):
+   def checkNetworkState(self, str, retval, extra_args):
 	if 'Collected errors' in str:
 		self.session.openWithCallback(self.close, MessageBox, _("Seems a background update check is in progress, please wait a few minutes and then try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 	elif not str:
@@ -79,7 +80,7 @@ def checkNetworkState(self, str, retval, extra_args):
 	else:
 		self.updateService()
 
-def checkNetworkStateFinished(self, result, retval, extra_args=None):
+   def checkNetworkStateFinished(self, result, retval, extra_args=None):
 	if 'bad address' in result:
 		self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("Your receiver is not connected to the internet, please check your network settings and try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 	elif ('wget returned 1' or 'wget returned 255' or '404 Not Found') in result:
@@ -91,10 +92,10 @@ def checkNetworkStateFinished(self, result, retval, extra_args=None):
 			mtext = _('Are you ready to install "%s" ?') % self.service_name
 		self.session.openWithCallback(self.InstallPackage, MessageBox, mtext, MessageBox.TYPE_YESNO)
 
-def UninstallCheck(self):
+   def UninstallCheck(self):
 	self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.RemovedataAvail)
 
-def RemovedataAvail(self, str, retval, extra_args):
+   def RemovedataAvail(self, str, retval, extra_args):
 	if str:
 		if self.reboot_at_end:
 			restartbox = self.session.openWithCallback(self.RemovePackage,MessageBox,_('Your receiver will be restarted after the removal of the service\nDo you want to remove the service now ?'), MessageBox.TYPE_YESNO)
@@ -104,22 +105,22 @@ def RemovedataAvail(self, str, retval, extra_args):
 	else:
 		self.updateService()
 
-def RemovePackage(self, val):
+   def RemovePackage(self, val):
 	if val:
 		self.doRemove(self.removeComplete, self.service_name)
 
-def InstallPackage(self, val):
+   def InstallPackage(self, val):
 	if val:
 		self.doInstall(self.installComplete, self.service_name)
 	else:
 		self.feedscheck.close()
 		self.close()
 
-def InstallPackageFailed(self, val):
+   def InstallPackageFailed(self, val):
 	self.feedscheck.close()
 	self.close()
 
-def InstallCheck(self):
+   def InstallCheck(self):
 	self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.checkNetworkState)
 # Now global functions will help us to reduce code
 
@@ -1904,7 +1905,7 @@ class NetworkMountsMenu(Screen,HelpableScreen):
 		return menu
 
 
-class NetworkAfp(Screen):
+class NetworkAfp(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("AFP setup"))
@@ -2058,7 +2059,7 @@ class NetworkSABnzbd(Screen):
 			cb(title, status_summary, autostartstatus_summary)
 
 
-class NetworkFtp(Screen):
+class NetworkFtp(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("FTP setup"))
@@ -2087,17 +2088,17 @@ class NetworkFtp(Screen):
 	def FtpStartStop(self):
 		commands = []
 		if not self.my_ftp_run:
-			commands.append('/etc/init.d/vsftpd start')
+			commands.append('mv /etc/pam.d/vsftpdd /etc/pam.d/vsftpd')
 		elif self.my_ftp_run:
-			commands.append('/etc/init.d/vsftpd stop')
+			commands.append('killall vsftpd ; mv /etc/pam.d/vsftpd /etc/pam.d/vsftpdd')
 		self.Console.eBatch(commands, self.StartStopCallback, debug=True)
 
 	def activateFtp(self):
 		commands = []
-		if ServiceIsEnabled('vsftpd'):
-			commands.append('update-rc.d -f vsftpd remove')
+		if fileExists('/etc/pam.d/vsftpd'):
+			commands.append('mv /etc/pam.d/vsftpd /etc/pam.d/vsftpdd')
 		else:
-			commands.append('update-rc.d -f vsftpd defaults')
+			commands.append('mv /etc/pam.d/vsftpdd /etc/pam.d/vsftpd')
 		self.Console.eBatch(commands, self.StartStopCallback, debug=True)
 
 	def updateService(self):
@@ -2108,7 +2109,7 @@ class NetworkFtp(Screen):
 		self['labstop'].hide()
 		self['labactive'].setText(_("Disabled"))
 		self.my_ftp_active = False
-		if ServiceIsEnabled('vsftpd'):
+		if fileExists('/etc/pam.d/vsftpd'):
 			self['labactive'].setText(_("Enabled"))
 			self['labactive'].show()
 			self.my_ftp_active = True
@@ -2116,7 +2117,7 @@ class NetworkFtp(Screen):
 		self.my_ftp_run = False
 		if ftp_process:
 			self.my_ftp_run = True
-		if self.my_ftp_run:
+		if fileExists('/etc/pam.d/vsftpd'):
 			self['labstop'].hide()
 			self['labactive'].show()
 			self['labrun'].show()
@@ -2135,7 +2136,7 @@ class NetworkFtp(Screen):
 			cb(title, status_summary, autostartstatus_summary)
 
 
-class NetworkNfs(Screen):
+class NetworkNfs(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("NFS setup"))
@@ -2205,7 +2206,7 @@ class NetworkNfs(Screen):
 			cb(title, status_summary, autostartstatus_summary)
 
 
-class NetworkOpenvpn(Screen):
+class NetworkOpenvpn(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("OpenVPN setup"))
@@ -2313,7 +2314,7 @@ class NetworkVpnLog(Screen):
 		self['infotext'].setText(strview)
 
 
-class NetworkSamba(Screen):
+class NetworkSamba(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("Samba setup"))
@@ -2415,11 +2416,11 @@ class NetworkSambaLog(Screen):
 		self['infotext'].setText(strview)
 
 
-class NetworkTelnet(Screen):
+class NetworkTelnet(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("Telnet setup"))
-		self.skinName = "NetworkSamba"
+		self.skinName = "NetworkServiceSetup"
 		self.onChangedEntry = [ ]
 		self['lab1'] = Label(_("Autostart:"))
 		self['labactive'] = Label(_(_("Disabled")))
@@ -2441,21 +2442,20 @@ class NetworkTelnet(Screen):
 
 	def TelnetStartStop(self):
 		commands = []
-		if fileExists('/etc/init.d/telnetd.busybox'):
+		if fileExists('/bin/busybox.nosuid'):
 			if self.my_telnet_run:
-				commands.append('/etc/init.d/telnetd.busybox stop')
+				commands.append('killall telnetd ; rm -f /usr/sbin/telnetd')
 			else:
-				commands.append('/bin/su -l -c "/etc/init.d/telnetd.busybox start"')
+				commands.append('ln -s /bin/busybox.nosuid /usr/sbin/telnetd')
 			self.Console.eBatch(commands, self.StartStopCallback, debug=True)
 
 	def activateTelnet(self):
 		commands = []
-		if fileExists('/etc/init.d/telnetd.busybox'):
-			if ServiceIsEnabled('telnetd.busybox'):
-				commands.append('update-rc.d -f telnetd.busybox remove')
-			else:
-				commands.append('update-rc.d -f telnetd.busybox defaults')
-		self.Console.eBatch(commands, self.StartStopCallback, debug=True)
+		if fileExists('/usr/sbin/telnetd'):
+			commands.append('rm -f /usr/sbin/telnetd')
+		else:
+			commands.append('ln -s /bin/busybox.nosuid /usr/sbin/telnetd')
+		self.Console.eBatch(commands, self.StartStopCallback, debug=True)	
 
 	def updateService(self):
 		import process
@@ -2466,24 +2466,24 @@ class NetworkTelnet(Screen):
 		self['labactive'].setText(_("Disabled"))
 		self.my_telnet_active = False
 		self.my_telnet_run = False
-		if ServiceIsEnabled('telnetd.busybox'):
+		if fileExists('/usr/sbin/telnetd'):
 			self['labactive'].setText(_("Enabled"))
 			self['labactive'].show()
 			self.my_telnet_active = True
 
-		if telnet_process:
-			self.my_telnet_run = True
-		if self.my_telnet_run:
+		if fileExists('/usr/sbin/telnetd'):
 			self['labstop'].hide()
 			self['labactive'].show()
 			self['labrun'].show()
 			self['key_green'].setText(_("Stop"))
+			self.my_telnet_run = True
 			status_summary = self['lab2'].text + ' ' + self['labrun'].text
-		else:
+		if not fileExists('/usr/sbin/telnetd'):
 			self['labrun'].hide()
 			self['labstop'].show()
 			self['labactive'].show()
 			self['key_green'].setText(_("Start"))
+			self.my_telnet_run = False
 			status_summary = self['lab2'].text + ' ' + self['labstop'].text
 		title = _("Telnet setup")
 		autostartstatus_summary = self['lab1'].text + ' ' + self['labactive'].text
@@ -2491,8 +2491,7 @@ class NetworkTelnet(Screen):
 		for cb in self.onChangedEntry:
 			cb(title, status_summary, autostartstatus_summary)
 
-
-class NetworkInadyn(Screen):
+class NetworkInadyn(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("Inadyn setup"))
@@ -2763,7 +2762,7 @@ class NetworkInadynLog(Screen):
 
 config.networkushare = ConfigSubsection()
 config.networkushare.mediafolders = NoSave(ConfigLocations(default=""))
-class NetworkuShare(Screen):
+class NetworkuShare(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("uShare setup"))
@@ -3191,7 +3190,7 @@ class NetworkuShareLog(Screen):
 
 config.networkminidlna = ConfigSubsection()
 config.networkminidlna.mediafolders = NoSave(ConfigLocations(default=""))
-class NetworkMiniDLNA(Screen):
+class NetworkMiniDLNA(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("MiniDLNA setup"))
