@@ -39,89 +39,89 @@ def ServiceIsEnabled(service_name):
 
 # Lets have some global functions to reduce python code
 class NSCommon:
-   def StartStopCallback(self, result = None, retval = None, extra_args = None):
-	time.sleep(3)
-	self.updateService()
-
-   def removeComplete(self, result = None, retval = None, extra_args = None):
-	if self.reboot_at_end:
-		self.session.open(TryQuitMainloop, 2)
-	self.message.close()
-	self.close()
-
-   def installComplete(self, result = None, retval = None, extra_args = None):
-	self.message.close()
-	self.feedscheck.close()
-	if self.reboot_at_end:
-		self.session.open(TryQuitMainloop, 2)
-	else:
-		self.updateService()
-	self.close()
-
-   def doRemove(self, callback, pkgname):
-	self.message = self.session.open(MessageBox,_("Please wait..."), MessageBox.TYPE_INFO, enable_input = False)
-	self.message.setTitle(_('Removing service'))
-	self.Console.ePopen('/usr/bin/opkg remove ' + pkgname + ' --force-remove --autoremove', callback)
-
-   def doInstall(self, callback, pkgname):
-	self.message = self.session.open(MessageBox,_("Please wait..."), MessageBox.TYPE_INFO, enable_input = False)
-	self.message.setTitle(_('Installing service'))
-	self.Console.ePopen('/usr/bin/opkg install ' + pkgname, callback)
-
-   def checkNetworkState(self, str, retval, extra_args):
-	if 'Collected errors' in str:
-		self.session.openWithCallback(self.close, MessageBox, _("Seems a background update check is in progress, please wait a few minutes and then try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
-	elif not str:
-		self.feedscheck = self.session.open(MessageBox,_('Please wait while feeds state is being checked.'), MessageBox.TYPE_INFO, enable_input = False)
-		self.feedscheck.setTitle(_('Checking feeds'))
-		cmd1 = "opkg update"
-		self.CheckConsole = Console()
-		self.CheckConsole.ePopen(cmd1, self.checkNetworkStateFinished)
-	else:
+	def StartStopCallback(self, result = None, retval = None, extra_args = None):
+		time.sleep(3)
 		self.updateService()
 
-   def checkNetworkStateFinished(self, result, retval, extra_args=None):
-	if 'bad address' in result:
-		self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("Your receiver is not connected to the internet, please check your network settings and try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
-	elif ('wget returned 1' or 'wget returned 255' or '404 Not Found') in result:
-		self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("Feeds are not accessible, please try again later."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
-	else:
+	def removeComplete(self, result = None, retval = None, extra_args = None):
 		if self.reboot_at_end:
-			mtext = _('Your receiver will be restarted after the installation of the service\nAre you ready to install "%s" ?') % self.service_name
-		else:
-			mtext = _('Are you ready to install "%s" ?') % self.service_name
-		self.session.openWithCallback(self.InstallPackage, MessageBox, mtext, MessageBox.TYPE_YESNO)
+			self.session.open(TryQuitMainloop, 2)
+		self.message.close()
+		self.close()
 
-   def UninstallCheck(self):
-	self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.RemovedataAvail)
-
-   def RemovedataAvail(self, str, retval, extra_args):
-	if str:
+	def installComplete(self, result = None, retval = None, extra_args = None):
+		self.message.close()
+		self.feedscheck.close()
 		if self.reboot_at_end:
-			restartbox = self.session.openWithCallback(self.RemovePackage,MessageBox,_('Your receiver will be restarted after the removal of the service\nDo you want to remove the service now ?'), MessageBox.TYPE_YESNO)
-			restartbox.setTitle(_('Are you ready to remove "%s" ?') % self.service_name)
+			self.session.open(TryQuitMainloop, 2)
 		else:
-			self.session.openWithCallback(self.RemovePackage, MessageBox, _('Ready to remove "%s" ?') % self.service_name, MessageBox.TYPE_YESNO)
-	else:
-		self.updateService()
+			self.updateService()
+		self.close()
 
-   def RemovePackage(self, val):
-	if val:
-		self.doRemove(self.removeComplete, self.service_name)
+	def doRemove(self, callback, pkgname):
+		self.message = self.session.open(MessageBox,_("Please wait..."), MessageBox.TYPE_INFO, enable_input = False)
+		self.message.setTitle(_('Removing service'))
+		self.Console.ePopen('/usr/bin/opkg remove ' + pkgname + ' --force-remove --autoremove', callback)
 
-   def InstallPackage(self, val):
-	if val:
-		self.doInstall(self.installComplete, self.service_name)
-	else:
+	def doInstall(self, callback, pkgname):
+		self.message = self.session.open(MessageBox,_("Please wait..."), MessageBox.TYPE_INFO, enable_input = False)
+		self.message.setTitle(_('Installing service'))
+		self.Console.ePopen('/usr/bin/opkg install ' + pkgname, callback)
+
+	def checkNetworkState(self, str, retval, extra_args):
+		if 'Collected errors' in str:
+			self.session.openWithCallback(self.close, MessageBox, _("Seems a background update check is in progress, please wait a few minutes and then try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
+		elif not str:
+			self.feedscheck = self.session.open(MessageBox,_('Please wait while feeds state is being checked.'), MessageBox.TYPE_INFO, enable_input = False)
+			self.feedscheck.setTitle(_('Checking feeds'))
+			cmd1 = "opkg update"
+			self.CheckConsole = Console()
+			self.CheckConsole.ePopen(cmd1, self.checkNetworkStateFinished)
+		else:
+			self.updateService()
+
+	def checkNetworkStateFinished(self, result, retval, extra_args=None):
+		if 'bad address' in result:
+			self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("Your receiver is not connected to the internet, please check your network settings and try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
+		elif ('wget returned 1' or 'wget returned 255' or '404 Not Found') in result:
+			self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("Feeds are not accessible, please try again later."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
+		else:
+			if self.reboot_at_end:
+				mtext = _('Your receiver will be restarted after the installation of the service\nAre you ready to install "%s" ?') % self.service_name
+			else:
+				mtext = _('Are you ready to install "%s" ?') % self.service_name
+			self.session.openWithCallback(self.InstallPackage, MessageBox, mtext, MessageBox.TYPE_YESNO)
+
+	def UninstallCheck(self):
+		self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.RemovedataAvail)
+
+	def RemovedataAvail(self, str, retval, extra_args):
+		if str:
+			if self.reboot_at_end:
+				restartbox = self.session.openWithCallback(self.RemovePackage,MessageBox,_('Your receiver will be restarted after the removal of the service\nDo you want to remove the service now ?'), MessageBox.TYPE_YESNO)
+				restartbox.setTitle(_('Are you ready to remove "%s" ?') % self.service_name)
+			else:
+				self.session.openWithCallback(self.RemovePackage, MessageBox, _('Ready to remove "%s" ?') % self.service_name, MessageBox.TYPE_YESNO)
+		else:
+			self.updateService()
+
+	def RemovePackage(self, val):
+		if val:
+			self.doRemove(self.removeComplete, self.service_name)
+
+	def InstallPackage(self, val):
+		if val:
+			self.doInstall(self.installComplete, self.service_name)
+		else:
+			self.feedscheck.close()
+			self.close()
+
+	def InstallPackageFailed(self, val):
 		self.feedscheck.close()
 		self.close()
 
-   def InstallPackageFailed(self, val):
-	self.feedscheck.close()
-	self.close()
-
-   def InstallCheck(self):
-	self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.checkNetworkState)
+	def InstallCheck(self):
+		self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.checkNetworkState)
 # Now global functions will help us to reduce code
 
 
