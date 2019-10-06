@@ -637,8 +637,8 @@ class SystemMemoryInfo(Screen):
 		title = screentitle
 		Screen.setTitle(self, title)
 		self.skinName = ["SystemMemoryInfo", "About"]
-		self["lab1"] = StaticText(_("Image OpenVision"))
-		self["lab2"] = StaticText(_("By Team OpenVision"))
+		self["lab1"] = StaticText(_("Open Vision enigma2 image"))
+		self["lab2"] = StaticText(_("by Open Vision developers"))
 		self["lab3"] = StaticText(_("Support at %s") % "https://openvision.tech")
 		self["AboutScrollLabel"] = ScrollLabel()
 
@@ -685,7 +685,7 @@ class SystemMemoryInfo(Screen):
 		RamTotal = flash[1]
 		RamFree = flash[3]
 
-		self.AboutText += _("FLASH") + '\n\n'
+		self.AboutText += _("Flash") + '\n\n'
 		self.AboutText += _("Total:") + "\t" + RamTotal + "\n"
 		self.AboutText += _("Free:") + "\t" + RamFree + "\n\n"
 
