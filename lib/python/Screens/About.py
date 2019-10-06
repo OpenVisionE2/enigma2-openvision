@@ -12,7 +12,7 @@ from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 from Tools.StbHardware import getFPVersion, getBoxProc
 from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl
-from Tools.Directories import fileExists, fileHas
+from Tools.Directories import fileExists, fileHas, pathExists
 from Components.GUIComponent import GUIComponent
 import skin, os, boxbranding
 from Components.Console import Console
