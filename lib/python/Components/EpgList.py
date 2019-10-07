@@ -175,11 +175,11 @@ class EPGList(GUIComponent):
 		if self.type == EPG_TYPE_SINGLE:
 			if self.skinColumns:
 				x = 0
-				self.weekday_rect = Rect(0, 0, self.gap(self.col[0]), height)
+				self.weekday_rect = Rect(0, 0, self.gap(self.col[0]+80), height)
 				x += self.col[0]
-				self.datetime_rect = Rect(x, 0, self.gap(self.col[1]), height)
+				self.datetime_rect = Rect(x+80, 0, self.gap(self.col[1]), height)
 				x += self.col[1]
-				self.descr_rect = Rect(x, 0, width-x, height)
+				self.descr_rect = Rect(x+80, 0, width-x, height)
 			else:
 				self.weekday_rect = Rect(0, 0, width/20*2-10, height)
 				self.datetime_rect = Rect(width/20*2, 0, width/20*5-15, height)
