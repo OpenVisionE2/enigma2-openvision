@@ -1,6 +1,6 @@
 from bisect import insort
 from time import time, localtime, mktime
-from enigma import eTimer
+from enigma import eTimer, eActionMap
 import datetime
 
 class TimerEntry:
@@ -8,6 +8,7 @@ class TimerEntry:
 	StatePrepared = 1
 	StateRunning  = 2
 	StateEnded    = 3
+	StateFailed   = 4
 
 	def __init__(self, begin, end):
 		self.begin = begin
@@ -23,6 +24,7 @@ class TimerEntry:
 		self.backoff = 0
 
 		self.disabled = False
+		self.failed = False
 
 	def resetState(self):
 		self.state = self.StateWaiting
@@ -80,7 +82,7 @@ class TimerEntry:
 			# if day is NOT in the list of repeated days
 			# OR if the day IS in the list of the repeated days, check, if event is currently running... then if findRunningEvent is false, go to the next event
 			while ((day[localbegin.tm_wday] != 0) or (mktime(localrepeatedbegindate) > mktime(localbegin))  or
-				((day[localbegin.tm_wday] == 0) and ((findRunningEvent and localend < localnow) or ((not findRunningEvent) and localbegin < localnow)))):
+				(day[localbegin.tm_wday] == 0 and (findRunningEvent and localend < localnow) or ((not findRunningEvent) and localbegin < localnow))):
 				localbegin = self.addOneDay(localbegin)
 				localend = self.addOneDay(localend)
 
@@ -105,11 +107,21 @@ class TimerEntry:
 
 	# check if a timer entry must be skipped
 	def shouldSkip(self):
-		if self.disabled and not self.repeated:
-			if self.end <= time():
+		if self.disabled:
+			if self.end <= time() and not "PowerTimerEntry" in `self`:
 				self.disabled = False
 			return True
-		return self.end <= time() and self.state == TimerEntry.StateWaiting
+		if "PowerTimerEntry" in `self`:
+			if (self.timerType == 3 or self.timerType == 4) and self.autosleeprepeat != 'once':
+				return False
+			elif self.begin >= time() and (self.timerType == 3 or self.timerType == 4) and self.autosleeprepeat == 'once':
+				return False
+			elif (self.timerType == 3 or self.timerType == 4) and self.autosleeprepeat == 'once' and self.state != TimerEntry.StatePrepared:
+				return True
+			else:
+				return self.end <= time() and self.state == TimerEntry.StateWaiting and self.timerType != 3 and self.timerType != 4
+		else:
+			return self.end <= time() and (self.state == TimerEntry.StateWaiting or self.state == TimerEntry.StateFailed)
 
 	def abort(self):
 		self.end = time()
@@ -124,6 +136,9 @@ class TimerEntry:
 	# must be overridden!
 	def getNextActivation(self):
 		pass
+
+	def fail(self):
+		self.faileded = True
 
 	def disable(self):
 		self.disabled = True
@@ -177,12 +192,10 @@ class Timer:
 		# don't go trough waiting/running/end-states, but sort it
 		# right into the processedTimers.
 		if entry.shouldSkip() or entry.state == TimerEntry.StateEnded or (entry.state == TimerEntry.StateWaiting and entry.disabled):
-			if entry not in self.processed_timers:
-				insort(self.processed_timers, entry)
+			insort(self.processed_timers, entry)
 			entry.state = TimerEntry.StateEnded
 		else:
-			if entry not in self.timer_list:
-				insort(self.timer_list, entry)
+			insort(self.timer_list, entry)
 			if not noRecalc:
 				self.calcNextActivation()
 
@@ -244,11 +257,9 @@ class Timer:
 		self.setNextActivation(now, min)
 
 	def timeChanged(self, timer):
-		print "time changed"
 		timer.timeChanged()
 		if timer.state == TimerEntry.StateEnded:
-			if timer in self.processed_timers:
-				self.processed_timers.remove(timer)
+			self.processed_timers.remove(timer)
 		else:
 			try:
 				self.timer_list.remove(timer)
@@ -258,6 +269,11 @@ class Timer:
 		# give the timer a chance to re-enqueue
 		if timer.state == TimerEntry.StateEnded:
 			timer.state = TimerEntry.StateWaiting
+		elif "PowerTimerEntry" in `timer` and (timer.timerType == 3 or timer.timerType == 4):
+			if timer.state > 0:
+				eActionMap.getInstance().unbindAction('', timer.keyPressed)
+			timer.state = TimerEntry.StateWaiting
+
 		self.addTimerEntry(timer)
 
 	def doActivate(self, w):
@@ -285,8 +301,7 @@ class Timer:
 				w.state = TimerEntry.StateWaiting
 				self.addTimerEntry(w)
 			else:
-				if w not in self.processed_timers:
-					insort(self.processed_timers, w)
+				insort(self.processed_timers, w)
 
 		self.stateChanged(w)
 
