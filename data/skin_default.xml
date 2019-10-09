@@ -1726,10 +1726,20 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 		<ePixmap pixmap="buttons/green.png" position="140,0" size="140,40" alphatest="on"/>
 		<ePixmap pixmap="buttons/yellow.png" position="280,0" size="140,40" alphatest="on"/>
 		<ePixmap pixmap="buttons/blue.png" position="420,0" size="140,40" alphatest="on"/>
+		<widget source="key_red" render="Label" position="0,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#9f1313" transparent="1"/>
+		<widget source="key_green" render="Label" position="140,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#1f771f" transparent="1"/>
+		<widget source="key_yellow" render="Label" position="280,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#a08500" transparent="1"/>
+		<widget source="key_blue" render="Label" position="420,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#18188b" transparent="1"/>
+		<widget name="config" position="10,45" size="540,385" scrollbarMode="showOnDemand"/>
+	</screen>
+	<!-- Timer entry PowerManager -->
+	<screen name="PowerTimerEntry" position="center,center" size="560,440" title="Timer entry">
 		<widget name="key_red" position="0,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#9f1313" transparent="1"/>
 		<widget name="key_green" position="140,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#1f771f" transparent="1"/>
-		<widget name="key_yellow" position="280,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#a08500" transparent="1"/>
-		<widget name="key_blue" position="420,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#18188b" transparent="1"/>
+		<widget name="cancel" pixmap="buttons/red.png" position="0,0" size="140,40" alphatest="on"/>
+		<widget name="ok" pixmap="buttons/green.png" position="140,0" size="140,40" alphatest="on"/>
+		<widget name="canceltext" position="0,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#9f1313" transparent="1"/>
+		<widget name="oktext" position="140,0" zPosition="2" size="140,40" halign="center" valign="center" font="Regular;21" backgroundColor="#1f771f" transparent="1"/>
 		<widget name="config" position="10,45" size="540,385" scrollbarMode="showOnDemand"/>
 	</screen>
 	<!-- Timer log -->
