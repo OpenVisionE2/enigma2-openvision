@@ -110,7 +110,7 @@ class PowerTimerList(GUIComponent, object):
 			icon = self.iconFailed
 		icon and res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, self.iconMargin / 2, (self.rowSplit - self.iconHeight) / 2, self.iconWidth, self.iconHeight, icon))
 
-		res.append((eListboxPythonMultiContent.TYPE_TEXT, self.iconMargin + self.iconWidth, self.rowSplit, 126, height - self.rowSplit, 2, RT_HALIGN_LEFT|RT_VALIGN_BOTTOM, state))
+		res.append((eListboxPythonMultiContent.TYPE_TEXT, self.iconMargin + self.iconWidth, self.rowSplit, 150, height - self.rowSplit, 2, RT_HALIGN_LEFT|RT_VALIGN_BOTTOM, state))
 
 
 		line = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "div-h.png"))
