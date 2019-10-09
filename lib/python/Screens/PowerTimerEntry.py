@@ -7,7 +7,6 @@ from Components.Button import Button
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.SystemInfo import SystemInfo
-from Components.Sources.StaticText import StaticText
 from Components.config import config
 from PowerTimer import AFTEREVENT, TIMERTYPE
 from time import localtime, mktime, time, strftime
@@ -16,10 +15,7 @@ from datetime import datetime
 class TimerEntry(Screen, ConfigListScreen):
 	def __init__(self, session, timer):
 		Screen.__init__(self, session)
-		screentitle = _("PowerManager entry")
-		title = screentitle
-		self.setup_title = title
-		Screen.setTitle(self, title)
+		Screen.setTitle(self, _("PowerManager entry"))
 
 		self.timer = timer
 
@@ -331,9 +327,7 @@ class TimerEntry(Screen, ConfigListScreen):
 class TimerLog(Screen):
 	def __init__(self, session, timer):
 		Screen.__init__(self, session)
-		screentitle = _("Log")
-		title = screentitle
-		Screen.setTitle(self, title)
+		Screen.setTitle(self, _("Log"))
 
 		self.skinName = "TimerLog"
 		self.timer = timer

@@ -4,7 +4,6 @@ from Components.Label import Label
 from Components.config import config
 from Components.PowerTimerList import PowerTimerList
 from Components.Sources.StaticText import StaticText
-from Components.Sources.StaticText import StaticText
 from PowerTimer import PowerTimerEntry, AFTEREVENT
 from Screens.Screen import Screen
 from Screens.ChoiceBox import ChoiceBox
@@ -25,9 +24,7 @@ class PowerTimerEditList(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.skinName = "TimerEditList"
-		screentitle = _("PowerTimer List")
-		title = screentitle
-		Screen.setTitle(self, title)
+		Screen.setTitle(self, _("PowerTimer list"))
 
 		self.onChangedEntry = [ ]
 		list = [ ]
@@ -85,7 +82,7 @@ class PowerTimerEditList(Screen):
 		if cur:
 			t = cur
 			if t.disabled:
-				print "[PowerTimerEdit] try to ENABLE timer"
+				print "[PowerTimerEdit] try to enable timer"
 				t.enable()
 			else:
 				if t.isRunning():
@@ -228,7 +225,7 @@ class PowerTimerEditList(Screen):
 		if not cur:
 			return
 
-		self.session.openWithCallback(self.removeTimer, MessageBox, _("Do you really want to delete this timer ?"), default = False)
+		self.session.openWithCallback(self.removeTimer, MessageBox, _("Do you really want to delete this timer?"), default = False)
 
 	def removeTimer(self, result):
 		if not result:
@@ -267,7 +264,7 @@ class PowerTimerEditList(Screen):
 			self.fillTimerList()
 			self.updateState()
 		else:
-			print "[PowerTimerEdit] PowerTimeredit aborted"
+			print "[PowerTimerEdit] PowerTimerEdit aborted"
 
 	def finishedAdd(self, answer):
 		if answer[0]:
@@ -276,7 +273,7 @@ class PowerTimerEditList(Screen):
 			self.fillTimerList()
 			self.updateState()
 		else:
-			print "[PowerTimerEdit] Timeredit aborted"
+			print "[PowerTimerEdit] TimerEdit aborted"
 
 	def finishSanityCorrection(self, answer):
 		self.finishedAdd(answer)

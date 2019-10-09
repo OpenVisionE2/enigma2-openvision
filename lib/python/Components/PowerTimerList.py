@@ -1,5 +1,4 @@
-from enigma import eListboxPythonMultiContent, eListbox, gFont, getDesktop, \
-	RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_TOP, RT_VALIGN_BOTTOM
+from enigma import eListboxPythonMultiContent, eListbox, gFont, getDesktop, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_BOTTOM
 from GUIComponent import GUIComponent
 from skin import parseFont
 from Tools.FuzzyDate import FuzzyTime
@@ -13,21 +12,21 @@ class PowerTimerList(GUIComponent, object):
 	def buildTimerEntry(self, timer, processed):
 		screenwidth = getDesktop(0).size().width()
 		timertype = {
-			TIMERTYPE.WAKEUP: _("Wake Up"),
-			TIMERTYPE.WAKEUPTOSTANDBY: _("Wake Up To Standby"),
+			TIMERTYPE.WAKEUP: _("Wake up"),
+			TIMERTYPE.WAKEUPTOSTANDBY: _("Wake up to standby"),
 			TIMERTYPE.STANDBY: _("Standby"),
-			TIMERTYPE.AUTOSTANDBY: _("Auto Standby"),
-			TIMERTYPE.AUTODEEPSTANDBY: _("Auto Deep Standby"),
-			TIMERTYPE.DEEPSTANDBY: _("Deep Standby"),
+			TIMERTYPE.AUTOSTANDBY: _("Auto standby"),
+			TIMERTYPE.AUTODEEPSTANDBY: _("Auto deep standby"),
+			TIMERTYPE.DEEPSTANDBY: _("Deep standby"),
 			TIMERTYPE.REBOOT: _("Reboot"),
 			TIMERTYPE.RESTART: _("Restart GUI")
 			}[timer.timerType]
 
 		afterevent = {
 			AFTEREVENT.NONE: _("Nothing"),
-			AFTEREVENT.WAKEUPTOSTANDBY: _("Wake Up To Standby"),
+			AFTEREVENT.WAKEUPTOSTANDBY: _("Wake up to standby"),
 			AFTEREVENT.STANDBY: _("Standby"),
-			AFTEREVENT.DEEPSTANDBY: _("Deep Standby")
+			AFTEREVENT.DEEPSTANDBY: _("Deep standby")
 			}[timer.afterEvent]
 
 		height = self.l.getItemSize().height()

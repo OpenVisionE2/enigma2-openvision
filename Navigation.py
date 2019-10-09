@@ -64,7 +64,7 @@ class Navigation:
 	def _processTimerWakeup(self):
 		now = time()
 		timeHandlerCallbacks =  eDVBLocalTimeHandler.getInstance().m_timeUpdated.get()
-		if self.__nextRecordTimerAfterEventActionAuto and now < eDVBLocalTimeHandler.timeOK:  # 01.01.2004
+		if self.__nextRecordTimerAfterEventActionAuto and now < eDVBLocalTimeHandler.timeOK:
 			print '[Navigation] RECTIMER: wakeup to standby but system time not set.'
 			if self._processTimerWakeup not in timeHandlerCallbacks:
 				timeHandlerCallbacks.append(self._processTimerWakeup)
@@ -74,9 +74,7 @@ class Navigation:
 
 		if self.__nextRecordTimerAfterEventActionAuto and abs(self.RecordTimer.getNextRecordingTime() - now) <= 360:
 			print '[Navigation] RECTIMER: wakeup to standby detected.'
-			f = open("/tmp/was_rectimer_wakeup", "w")
-			f.write('1')
-			f.close()
+			open("/tmp/was_rectimer_wakeup", "w").write("1")
 			# as we woke the box to record, place the box in standby.
 			self.standbytimer = eTimer()
 			self.standbytimer.callback.append(self.gotostandby)
@@ -84,9 +82,7 @@ class Navigation:
 
 		elif self.__nextPowerManagerAfterEventActionAuto:
 			print '[Navigation] POWERTIMER: wakeup to standby detected.'
-			f = open("/tmp/was_powertimer_wakeup", "w")
-			f.write('1')
-			f.close()
+			open("/tmp/was_powertimer_wakeup", "w").write("1")
 			# as a PowerTimer WakeToStandby was actiond to it.
 			self.standbytimer = eTimer()
 			self.standbytimer.callback.append(self.gotostandby)
