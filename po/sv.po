@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-06 14:21+0330\n"
+"POT-Creation-Date: 2019-10-09 04:00+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -1392,6 +1392,32 @@ msgstr ""
 msgid "A file from media is in use!"
 msgstr ""
 
+#, fuzzy
+msgid "A finished powertimer wants to reboot your receiver. Do that now?"
+msgstr ""
+"En avslutad inspelningstimer vill försätta din\n"
+"mottagare i viloläge. Utföra det nu?"
+
+#, fuzzy
+msgid ""
+"A finished powertimer wants to restart the user interface.\n"
+"Do that now?"
+msgstr ""
+"En avslutad inspelningstimer vill försätta din\n"
+"mottagare i viloläge. Utföra det nu?"
+
+#, fuzzy
+msgid "A finished powertimer wants to set your receiver to standby. Do that now?"
+msgstr ""
+"En avslutad inspelningstimer vill försätta din\n"
+"mottagare i viloläge. Utföra det nu?"
+
+#, fuzzy
+msgid "A finished powertimer wants to shutdown your receiver. Do that now?"
+msgstr ""
+"En avslutad inspelningstimer vill stänga av\n"
+"din mottagare. Stänga av nu?"
+
 msgid ""
 "A finished record timer wants to set your\n"
 "receiver to standby. Do that now?"
@@ -2101,6 +2127,9 @@ msgstr "Tilldelade CAid :"
 msgid "Assigned services/provider:"
 msgstr "Tilldelad kanal / operatör :"
 
+msgid "At End:"
+msgstr ""
+
 msgid "At beginning"
 msgstr "I början"
 
@@ -2220,6 +2249,11 @@ msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Auto kapitelsplit varje ? minut (0=aldrig)"
 
 #
+#, fuzzy
+msgid "Auto deep standby"
+msgstr "stäng av mottagaren"
+
+#
 msgid "Auto flesh"
 msgstr "Auto hudfärg"
 
@@ -2238,6 +2272,11 @@ msgstr "Auto uppspelning av blu-ray fil"
 #
 msgid "Auto scart switching"
 msgstr "Auto scart växling"
+
+#
+#, fuzzy
+msgid "Auto standby"
+msgstr "Inget viloläge"
 
 #, fuzzy
 msgid "Autoinstalling Completed"
@@ -2602,9 +2641,6 @@ msgstr ""
 #
 msgid "Bus: "
 msgstr "Bus : "
-
-msgid "By Team OpenVision"
-msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr "Som standard kommer SNR att visas i dB (om det stöds av tunern). Denna inställning tvingar SNR att visas som en procentsats i stället."
@@ -4280,6 +4316,10 @@ msgstr "Fördröjning i millisekunder före start av rullande text på display."
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Fördröjning i millisekunder mellan rullande tecken på display."
 
+#, fuzzy
+msgid "Delay:"
+msgstr "Ingen fördröjning"
+
 #
 msgid "Delete"
 msgstr "Ta bort"
@@ -4604,6 +4644,11 @@ msgid "Do you really want to delete %s?"
 msgstr "Vill du verkligen ta bort %s?"
 
 #
+#, fuzzy
+msgid "Do you really want to delete this timer?"
+msgstr "Vill du verkligen ta bort %s?"
+
+#
 #, python-format
 msgid ""
 "Do you really want to download\n"
@@ -4743,6 +4788,11 @@ msgstr "Spara inte och stoppa timeshift"
 
 #
 msgid "Don't stop current event but disable coming events"
+msgstr "Avsluta inte pågående program men avaktivera kommande program"
+
+#
+#, fuzzy
+msgid "Don't stop current event but disable future events"
 msgstr "Avsluta inte pågående program men avaktivera kommande program"
 
 msgid ""
@@ -5376,6 +5426,9 @@ msgstr "Överallt"
 msgid "Every known"
 msgstr "Alla kända"
 
+msgid "Everyday"
+msgstr ""
+
 msgid "Everywhere"
 msgstr "Överallt"
 
@@ -5605,9 +5658,6 @@ msgstr "FEC :"
 msgid "FFmpeg version: "
 msgstr "Kernel Version : "
 
-msgid "FLASH"
-msgstr ""
-
 msgid "FSBL Update Check"
 msgstr ""
 
@@ -5818,6 +5868,11 @@ msgstr "Fixerad"
 
 msgid "Fixed X11 font (SD)"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Flash"
+msgstr "Flash"
 
 #
 #, fuzzy
@@ -6637,11 +6692,6 @@ msgstr ""
 
 msgid "Ignore conflict"
 msgstr "Ignorera konflikt"
-
-#
-#, fuzzy
-msgid "Image OpenVision"
-msgstr "Hantera utökningar"
 
 msgid "Image architecture: "
 msgstr ""
@@ -8650,6 +8700,10 @@ msgstr ""
 msgid "One"
 msgstr "En"
 
+#, fuzzy
+msgid "Only active when in standby"
+msgstr "Sätt mottagaren i viloläge"
+
 msgid "Only change this setting if you are using a SCR device that has been reprogrammed with a custom programmer. For further information check with the person that reprogrammed the device."
 msgstr ""
 
@@ -8672,6 +8726,10 @@ msgstr "Endast vid uppstart"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr ""
+
+#, fuzzy
+msgid "Open Vision enigma2 image"
+msgstr "Pythonversion :"
 
 #, fuzzy
 msgid "Open Vision module: "
@@ -9428,8 +9486,17 @@ msgstr ""
 msgid "PowerControl front display suspend mode"
 msgstr ""
 
+#, fuzzy
+msgid "PowerManager entry"
+msgstr "döp om kanal"
+
 msgid "PowerMenu"
 msgstr "PowerMeny"
+
+#
+#, fuzzy
+msgid "PowerTimer list"
+msgstr "Ändra Timer"
 
 #, fuzzy
 msgid "Predefined"
@@ -9811,6 +9878,11 @@ msgid "Really close without saving settings?"
 msgstr "Verkligen stänga utan att spara inställningarna?"
 
 #
+#, fuzzy
+msgid "Really delete completed timers?"
+msgstr "Verkligen ta bort färdiga timerinspelningar?"
+
+#
 msgid "Really delete done timers?"
 msgstr "Verkligen ta bort färdiga timerinspelningar?"
 
@@ -10112,6 +10184,11 @@ msgid "Repeating event currently recording... What do you want to do?"
 msgstr "Ett upprepande program spelas in... Vad vill du göra?"
 
 #
+#, fuzzy
+msgid "Repeating the event currently recording... What do you want to do?"
+msgstr "Ett upprepande program spelas in... Vad vill du göra?"
+
+#
 msgid "Repeats"
 msgstr "Upprepningar"
 
@@ -10176,6 +10253,11 @@ msgstr "Upplösning"
 #
 msgid "Restart"
 msgstr "Omstart"
+
+#
+#, fuzzy
+msgid "Restart GUI"
+msgstr "Starta om GUI nu?"
 
 #
 msgid "Restart GUI now?"
@@ -11915,6 +11997,10 @@ msgstr "Hoppa över tomma kanaler"
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Hoppa över kontroll av internetanslutning (inaktiverar automatisk paketinstallation)"
 
+#, fuzzy
+msgid "Sleep delay"
+msgstr "Skrollfördröjning"
+
 #
 msgid "Sleep timer"
 msgstr "Insomningstimer"
@@ -12379,7 +12465,17 @@ msgid "Stop current event and disable coming events"
 msgstr "Avsluta nuvarande och avaktivera kommande program"
 
 #
+#, fuzzy
+msgid "Stop current event and disable future events"
+msgstr "Avsluta nuvarande och avaktivera kommande program"
+
+#
 msgid "Stop current event but not coming events"
+msgstr "Avsluta nuvarande program men inte kommande"
+
+#
+#, fuzzy
+msgid "Stop current event but not future events"
 msgstr "Avsluta nuvarande program men inte kommande"
 
 #, fuzzy
@@ -13013,6 +13109,11 @@ msgid "The status of the current image could not be checked because %s can not b
 msgstr "Statusen för den aktuella beta-imagen kunde inte kontrolleras eftersom %s inte kunde nås."
 
 #
+#, fuzzy
+msgid "The timer file (pm_timers.xml) is corrupt and could not be loaded."
+msgstr "Timerfilen (timers.xml) är skadad och kan inte laddas."
+
+#
 msgid "The timer file (timers.xml) is corrupt and could not be loaded."
 msgstr "Timerfilen (timers.xml) är skadad och kan inte laddas."
 
@@ -13455,6 +13556,15 @@ msgstr "Timerinmatning"
 #
 msgid "Timer log"
 msgstr "Timerlogg"
+
+#
+#, fuzzy
+msgid ""
+"Timer overlap in pm_timers.xml detected!\n"
+"Please recheck it!"
+msgstr ""
+"Timer överlappning upptäckt i timers.xml!\n"
+"Vänligen kontrollera igen!"
 
 #
 msgid ""
@@ -14458,6 +14568,14 @@ msgstr "Vänta på partition"
 msgid "Wake On LAN"
 msgstr ""
 
+#, fuzzy
+msgid "Wake up"
+msgstr "Väck"
+
+#, fuzzy
+msgid "Wake up to standby"
+msgstr "Väck TV från viloläge"
+
 msgid "Wakeup"
 msgstr "Väck"
 
@@ -14520,6 +14638,11 @@ msgstr "Onsdag"
 
 #
 msgid "Weekday"
+msgstr "Veckodag"
+
+#
+#, fuzzy
+msgid "Weekend"
 msgstr "Veckodag"
 
 #
@@ -15470,6 +15593,16 @@ msgid "auto"
 msgstr "auto"
 
 #
+#, fuzzy
+msgid "auto deepstandby"
+msgstr "stäng av mottagaren"
+
+#
+#, fuzzy
+msgid "auto standby"
+msgstr "Inget viloläge"
+
+#
 msgid "automatic"
 msgstr "Automatisk"
 
@@ -15515,6 +15648,10 @@ msgstr "Botten"
 
 msgid "broadcasting/press"
 msgstr "tv / press"
+
+#, fuzzy
+msgid "by Open Vision developers"
+msgstr "Pythonversion :"
 
 #
 msgid "by date"
@@ -16381,6 +16518,11 @@ msgstr "Inspelningar"
 msgid "real recordings or streaming"
 msgstr "Timerinspelningens plats"
 
+#
+#, fuzzy
+msgid "reboot system"
+msgstr "System"
+
 msgid "receiver software because updates are available."
 msgstr "mottagarens programvara för att uppdateringar finns tillgängliga."
 
@@ -16478,6 +16620,11 @@ msgstr "upprepa spellista"
 msgid "repeated"
 msgstr "repeterande"
 
+#
+#, fuzzy
+msgid "restart GUI"
+msgstr "Starta om GUI nu?"
+
 msgid "restore deleted userbouquets"
 msgstr "återställ borttagna favoritlistor"
 
@@ -16513,6 +16660,10 @@ msgstr "rock / pop"
 
 msgid "romance"
 msgstr "romantik"
+
+#, fuzzy
+msgid "running..."
+msgstr "Söker..."
 
 #
 msgid "save last directory on exit"
@@ -16896,6 +17047,14 @@ msgstr "vänta på mmi..."
 #
 msgid "waiting"
 msgstr "väntar"
+
+#, fuzzy
+msgid "wakeup"
+msgstr "Väck"
+
+#, fuzzy
+msgid "wakeup to standby"
+msgstr "Väck TV från viloläge"
 
 msgid "water sport"
 msgstr "vattensport"

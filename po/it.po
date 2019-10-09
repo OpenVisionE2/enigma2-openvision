@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi-enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-06 14:21+0330\n"
+"POT-Creation-Date: 2019-10-09 04:00+0330\n"
 "PO-Revision-Date: 2018-05-22 13:54+0200\n"
 "Last-Translator: Gringo <openpli@tiscali.it>\n"
 "Language-Team: www.linsat.net <spaeleus@croci.org>\n"
@@ -1335,6 +1335,32 @@ msgstr ""
 msgid "A file from media is in use!"
 msgstr ""
 
+#, fuzzy
+msgid "A finished powertimer wants to reboot your receiver. Do that now?"
+msgstr ""
+"Il completamento di una registrazione programmata prevede\n"
+"di mettere il ricevitore in sospensione. Procedere adesso?"
+
+#, fuzzy
+msgid ""
+"A finished powertimer wants to restart the user interface.\n"
+"Do that now?"
+msgstr ""
+"Il completamento di una registrazione programmata prevede\n"
+"di mettere il ricevitore in sospensione. Procedere adesso?"
+
+#, fuzzy
+msgid "A finished powertimer wants to set your receiver to standby. Do that now?"
+msgstr ""
+"Il completamento di una registrazione programmata prevede\n"
+"di mettere il ricevitore in sospensione. Procedere adesso?"
+
+#, fuzzy
+msgid "A finished powertimer wants to shutdown your receiver. Do that now?"
+msgstr ""
+"Il completamento di una registrazione programmata prevede\n"
+"di spegnere il ricevitore. Spegnere adesso?"
+
 msgid ""
 "A finished record timer wants to set your\n"
 "receiver to standby. Do that now?"
@@ -1963,6 +1989,9 @@ msgstr "CAIds assegnati:"
 msgid "Assigned services/provider:"
 msgstr "Canali/Provider assegnati:"
 
+msgid "At End:"
+msgstr ""
+
 msgid "At beginning"
 msgstr "All'inizio"
 
@@ -2067,6 +2096,10 @@ msgstr "Volume audio automatico"
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Suddivisione automatica in capitoli ogni x minuti (0=mai)"
 
+#, fuzzy
+msgid "Auto deep standby"
+msgstr "Spegnimento"
+
 msgid "Auto flesh"
 msgstr "Correzione automatica colore incarnato"
 
@@ -2084,6 +2117,10 @@ msgstr "Riproduzione automatica del file Blu-ray"
 
 msgid "Auto scart switching"
 msgstr "Selezione automatica SCART"
+
+#, fuzzy
+msgid "Auto standby"
+msgstr "Nessuna sospensione"
 
 #, fuzzy
 msgid "Autoinstalling Completed"
@@ -2407,9 +2444,6 @@ msgstr "Burundi"
 
 msgid "Bus: "
 msgstr "Bus: "
-
-msgid "By Team OpenVision"
-msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr "La modalità predefinita è di visualizzare il valore dell'SNR in dB (se supportato dal sintonizzatore). Questa opzione forza la visualizzazione dell'SNR in valore percentuale."
@@ -3938,6 +3972,10 @@ msgstr "Ritardo (ms) prima dell'inizio dello scorrimento del testo sullo schermo
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Ritardo (ms) tra i caratteri scorrevoli sullo schermo."
 
+#, fuzzy
+msgid "Delay:"
+msgstr "Nessun ritardo"
+
 msgid "Delete"
 msgstr "Eliminare"
 
@@ -4211,6 +4249,10 @@ msgstr ""
 msgid "Do you really want to delete %s?"
 msgstr "Si desidera davvero eliminare %s?"
 
+#, fuzzy
+msgid "Do you really want to delete this timer?"
+msgstr "Si desidera davvero eliminare %s?"
+
 #, python-format
 msgid ""
 "Do you really want to download\n"
@@ -4333,6 +4375,10 @@ msgid "Don't save and stop timeshift"
 msgstr "Non salvare ed arrestare il timeshift"
 
 msgid "Don't stop current event but disable coming events"
+msgstr "Non interrompere l'evento attuale ma annullare quelli futuri"
+
+#, fuzzy
+msgid "Don't stop current event but disable future events"
 msgstr "Non interrompere l'evento attuale ma annullare quelli futuri"
 
 msgid ""
@@ -4918,6 +4964,9 @@ msgstr "Ovunque"
 msgid "Every known"
 msgstr "Qualunque conosciuto"
 
+msgid "Everyday"
+msgstr ""
+
 msgid "Everywhere"
 msgstr "Ovunque"
 
@@ -5124,9 +5173,6 @@ msgstr "FEC:"
 msgid "FFmpeg version: "
 msgstr "Versione Enigma: "
 
-msgid "FLASH"
-msgstr ""
-
 msgid "FSBL Update Check"
 msgstr ""
 
@@ -5318,6 +5364,10 @@ msgstr "Fissa"
 
 msgid "Fixed X11 font (SD)"
 msgstr ""
+
+#, fuzzy
+msgid "Flash"
+msgstr "Installazione immagine"
 
 msgid "Flash Image"
 msgstr "Installazione immagine"
@@ -6068,10 +6118,6 @@ msgstr "Ignorare la sottorete dello spazio dei nomi DVB-T"
 
 msgid "Ignore conflict"
 msgstr "Ignorare il conflitto"
-
-#, fuzzy
-msgid "Image OpenVision"
-msgstr "Gestire le estensioni"
 
 msgid "Image architecture: "
 msgstr ""
@@ -7842,6 +7888,10 @@ msgid "One"
 msgstr "Uno"
 
 #, fuzzy
+msgid "Only active when in standby"
+msgstr "Mettere il ricevitore in sospensione"
+
+#, fuzzy
 msgid "Only change this setting if you are using a SCR device that has been reprogrammed with a custom programmer. For further information check with the person that reprogrammed the device."
 msgstr "Modificare questa impostazione solo se si utilizza un dispositivo Unicable che è stato riprogrammato con un programmatore proprietario. Per ulteriori informazioni contattare la persona che ha riprogrammato il dispositivo."
 
@@ -7862,6 +7912,10 @@ msgstr "Solo all'avvio"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Scegliere \"Sì\" solo se si sta utilizzando un multiswitch che ha bisogno di un comando DiSEqC Porta A. Per tutte le altre configurazioni scegliere \"No\"."
+
+#, fuzzy
+msgid "Open Vision enigma2 image"
+msgstr "Versione Python: "
 
 #, fuzzy
 msgid "Open Vision module: "
@@ -8516,8 +8570,16 @@ msgstr ""
 msgid "PowerControl front display suspend mode"
 msgstr ""
 
+#, fuzzy
+msgid "PowerManager entry"
+msgstr "Rinominare la voce selezionata"
+
 msgid "PowerMenu"
 msgstr "Menu Accensione"
+
+#, fuzzy
+msgid "PowerTimer list"
+msgstr "Modificare timer"
 
 #, fuzzy
 msgid "Predefined"
@@ -8860,6 +8922,10 @@ msgstr "Riavviare adesso?"
 msgid "Really close without saving settings?"
 msgstr "Chiudere senza salvare le impostazioni?"
 
+#, fuzzy
+msgid "Really delete completed timers?"
+msgstr "Eliminare i timer conclusi?"
+
 msgid "Really delete done timers?"
 msgstr "Eliminare i timer conclusi?"
 
@@ -9119,6 +9185,10 @@ msgstr ""
 msgid "Repeating event currently recording... What do you want to do?"
 msgstr "Registrazione in corso di un evento ricorrente... Cosa si desidera fare?"
 
+#, fuzzy
+msgid "Repeating the event currently recording... What do you want to do?"
+msgstr "Registrazione in corso di un evento ricorrente... Cosa si desidera fare?"
+
 msgid "Repeats"
 msgstr "Repliche"
 
@@ -9176,6 +9246,10 @@ msgstr "Risoluzione"
 
 msgid "Restart"
 msgstr "Riavvio del ricevitore"
+
+#, fuzzy
+msgid "Restart GUI"
+msgstr "Riavviare l'interfaccia utente?"
 
 msgid "Restart GUI now?"
 msgstr "Riavviare l'interfaccia utente?"
@@ -10732,6 +10806,10 @@ msgstr "Saltare i canali vuoti"
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Non effettuare la verifica della connessione Internet (disabiliterà l'installazione automatica dei pacchetti)"
 
+#, fuzzy
+msgid "Sleep delay"
+msgstr "Ritardo di scorrimento"
+
 msgid "Sleep timer"
 msgstr "Timer di spegnimento"
 
@@ -11138,7 +11216,15 @@ msgstr "Interrompere ed eliminare le registrazioni:"
 msgid "Stop current event and disable coming events"
 msgstr "Interrompere l'evento in corso e disabilitare i successivi"
 
+#, fuzzy
+msgid "Stop current event and disable future events"
+msgstr "Interrompere l'evento in corso e disabilitare i successivi"
+
 msgid "Stop current event but not coming events"
+msgstr "Interrompere l'evento in corso ma non i successivi"
+
+#, fuzzy
+msgid "Stop current event but not future events"
 msgstr "Interrompere l'evento in corso ma non i successivi"
 
 msgid "Stop current stream"
@@ -11730,6 +11816,10 @@ msgstr ""
 msgid "The status of the current image could not be checked because %s can not be reached."
 msgstr "Lo stato dell'immagine in uso non può essere verificato: %s non è raggiungibile."
 
+#, fuzzy
+msgid "The timer file (pm_timers.xml) is corrupt and could not be loaded."
+msgstr "Il file dei timer (timers.xml) è danneggiato e non può essere caricato."
+
 msgid "The timer file (timers.xml) is corrupt and could not be loaded."
 msgstr "Il file dei timer (timers.xml) è danneggiato e non può essere caricato."
 
@@ -12126,6 +12216,14 @@ msgstr "Dati del timer"
 
 msgid "Timer log"
 msgstr "Registro del timer"
+
+#, fuzzy
+msgid ""
+"Timer overlap in pm_timers.xml detected!\n"
+"Please recheck it!"
+msgstr ""
+"Sovrapposizione timer rilevata in timers.xml!\n"
+"Ricontrollare!"
 
 msgid ""
 "Timer overlap in timers.xml detected!\n"
@@ -13004,6 +13102,14 @@ msgstr "In attesa della partizione"
 msgid "Wake On LAN"
 msgstr "Riattivazione via rete"
 
+#, fuzzy
+msgid "Wake up"
+msgstr "Riattivare"
+
+#, fuzzy
+msgid "Wake up to standby"
+msgstr "Riattivare la TV dalla sospensione"
+
 msgid "Wakeup"
 msgstr "Riattivare"
 
@@ -13060,6 +13166,10 @@ msgid "Wednesday"
 msgstr "Mercoledì"
 
 msgid "Weekday"
+msgstr "Giorno della settimana"
+
+#, fuzzy
+msgid "Weekend"
 msgstr "Giorno della settimana"
 
 #, fuzzy
@@ -13941,6 +14051,14 @@ msgstr "tracce audio"
 msgid "auto"
 msgstr "Automatico"
 
+#, fuzzy
+msgid "auto deepstandby"
+msgstr "Spegnimento"
+
+#, fuzzy
+msgid "auto standby"
+msgstr "Nessuna sospensione"
+
 msgid "automatic"
 msgstr "Automatico"
 
@@ -13980,6 +14098,10 @@ msgstr "Basso"
 
 msgid "broadcasting/press"
 msgstr "Diffusione radio TV/Stampa"
+
+#, fuzzy
+msgid "by Open Vision developers"
+msgstr "Versione Python: "
 
 msgid "by date"
 msgstr "Per data crescente"
@@ -14745,6 +14867,10 @@ msgstr "Registrazioni"
 msgid "real recordings or streaming"
 msgstr "Percorso dei timer di registrazione"
 
+#, fuzzy
+msgid "reboot system"
+msgstr "Impostazioni sistema"
+
 msgid "receiver software because updates are available."
 msgstr "il software del ricevitore perché sono disponibili aggiornamenti."
 
@@ -14826,6 +14952,10 @@ msgstr "Ripetere la playlist"
 msgid "repeated"
 msgstr "Ricorrente"
 
+#, fuzzy
+msgid "restart GUI"
+msgstr "Riavviare l'interfaccia utente?"
+
 msgid "restore deleted userbouquets"
 msgstr "Ripristinare i bouquet eliminati"
 
@@ -14857,6 +14987,10 @@ msgstr "Rock/Pop"
 
 msgid "romance"
 msgstr "Romanzo rosa"
+
+#, fuzzy
+msgid "running..."
+msgstr "Ricerca in corso..."
 
 msgid "save last directory on exit"
 msgstr "Ricordare l'ultima cartella al momento di uscire"
@@ -15193,6 +15327,14 @@ msgstr "In attesa della MMI (Multi Media Interface)..."
 
 msgid "waiting"
 msgstr "In attesa"
+
+#, fuzzy
+msgid "wakeup"
+msgstr "Riattivare"
+
+#, fuzzy
+msgid "wakeup to standby"
+msgstr "Riattivare la TV dalla sospensione"
 
 msgid "water sport"
 msgstr "Sport acquatici"

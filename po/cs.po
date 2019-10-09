@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-06 14:21+0330\n"
+"POT-Creation-Date: 2019-10-09 04:00+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -1421,6 +1421,32 @@ msgstr ""
 msgid "A file from media is in use!"
 msgstr "Soubor na médiu je používán!"
 
+#, fuzzy
+msgid "A finished powertimer wants to reboot your receiver. Do that now?"
+msgstr ""
+"Dokončený časovač nahrávání chce přepnout\n"
+"přijímač do pohotovostního režimu. Přepnout?"
+
+#, fuzzy
+msgid ""
+"A finished powertimer wants to restart the user interface.\n"
+"Do that now?"
+msgstr ""
+"Dokončený časovač nahrávání chce přepnout\n"
+"přijímač do pohotovostního režimu. Přepnout?"
+
+#, fuzzy
+msgid "A finished powertimer wants to set your receiver to standby. Do that now?"
+msgstr ""
+"Dokončený časovač nahrávání chce přepnout\n"
+"přijímač do pohotovostního režimu. Přepnout?"
+
+#, fuzzy
+msgid "A finished powertimer wants to shutdown your receiver. Do that now?"
+msgstr ""
+"Dokončený časovač nahrávání chce vypnout\n"
+"přijímač. Vypnout?"
+
 msgid ""
 "A finished record timer wants to set your\n"
 "receiver to standby. Do that now?"
@@ -2136,6 +2162,9 @@ msgstr "Přiřazené CAIds:"
 msgid "Assigned services/provider:"
 msgstr "Přiřazený program/poskytovatel:"
 
+msgid "At End:"
+msgstr ""
+
 #
 msgid "At beginning"
 msgstr "Na začátek"
@@ -2257,6 +2286,11 @@ msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Automaticky vytvořit kapitoly každých ? minut (0=žádné)"
 
 #
+#, fuzzy
+msgid "Auto deep standby"
+msgstr "Přejít do hlubokého spánku"
+
+#
 msgid "Auto flesh"
 msgstr "Pleťová barva"
 
@@ -2276,6 +2310,11 @@ msgstr "Automaticky přehrávat blue-ray soubor"
 #
 msgid "Auto scart switching"
 msgstr "Automatické přepínání scart"
+
+#
+#, fuzzy
+msgid "Auto standby"
+msgstr "Neusínat"
 
 msgid "Autoinstalling Completed"
 msgstr "Automatická Instalace dokončena"
@@ -2633,9 +2672,6 @@ msgstr "Burundi"
 #
 msgid "Bus: "
 msgstr "Sběrnice: "
-
-msgid "By Team OpenVision"
-msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr "Standardně ( jestliže to podporuje tuner) je SNR zobrazován v dB. Toto nastavení umožní zobrazování v procentech."
@@ -4327,6 +4363,11 @@ msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Zpoždění v milisekundách mezi přetáčením znaků na displeji."
 
 #
+#, fuzzy
+msgid "Delay:"
+msgstr "Žádné"
+
+#
 msgid "Delete"
 msgstr "Smazat"
 
@@ -4660,6 +4701,11 @@ msgid "Do you really want to delete %s?"
 msgstr "Opravdu chcete smazat \"%s\"?"
 
 #
+#, fuzzy
+msgid "Do you really want to delete this timer?"
+msgstr "Opravdu chcete smazat \"%s\"?"
+
+#
 #, python-format
 msgid ""
 "Do you really want to download\n"
@@ -4804,6 +4850,11 @@ msgstr "Neukládat a ukončit timeshift"
 
 #
 msgid "Don't stop current event but disable coming events"
+msgstr "Nezastavovat aktuální událost, ale zakázat následující události"
+
+#
+#, fuzzy
+msgid "Don't stop current event but disable future events"
 msgstr "Nezastavovat aktuální událost, ale zakázat následující události"
 
 msgid ""
@@ -5460,6 +5511,9 @@ msgstr "Všude"
 msgid "Every known"
 msgstr "Vždy znám"
 
+msgid "Everyday"
+msgstr ""
+
 #
 msgid "Everywhere"
 msgstr "Všude"
@@ -5692,9 +5746,6 @@ msgstr "FEC:"
 msgid "FFmpeg version: "
 msgstr "Enigma verze: "
 
-msgid "FLASH"
-msgstr ""
-
 msgid "FSBL Update Check"
 msgstr ""
 
@@ -5904,6 +5955,10 @@ msgstr "Pevná"
 
 msgid "Fixed X11 font (SD)"
 msgstr ""
+
+#, fuzzy
+msgid "Flash"
+msgstr "Nahrát image"
 
 msgid "Flash Image"
 msgstr "Nahrát image"
@@ -6721,11 +6776,6 @@ msgstr "Ignorovat DVB-T namespace podsítě"
 
 msgid "Ignore conflict"
 msgstr "Ignorovat konflikt"
-
-#
-#, fuzzy
-msgid "Image OpenVision"
-msgstr "Správa rozšíření"
 
 msgid "Image architecture: "
 msgstr ""
@@ -8750,6 +8800,10 @@ msgstr ""
 msgid "One"
 msgstr "Jeden"
 
+#, fuzzy
+msgid "Only active when in standby"
+msgstr "Přepínat A/V receiver do standby"
+
 msgid "Only change this setting if you are using a SCR device that has been reprogrammed with a custom programmer. For further information check with the person that reprogrammed the device."
 msgstr "Toto nastavení měňte pouze v případě, že používáte SRC zařízení, které bylo přeprogramováno vlastním programátorem. Další informace získáte u osoby, která zařízení přeprogramovala."
 
@@ -8772,6 +8826,10 @@ msgstr "Pouze při startu"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Zvolte pouze 'Ano', pokud používáte multiswitch, který vyžaduje DiSEqC Port-A příkazový signál. Pro všechna ostatní nastavení zvolte 'Ne'."
+
+#, fuzzy
+msgid "Open Vision enigma2 image"
+msgstr "Python: "
 
 msgid "Open Vision module: "
 msgstr ""
@@ -9531,9 +9589,18 @@ msgstr ""
 msgid "PowerControl front display suspend mode"
 msgstr ""
 
+#, fuzzy
+msgid "PowerManager entry"
+msgstr "Přejmenovat"
+
 #
 msgid "PowerMenu"
 msgstr "Menu napájení"
+
+#
+#, fuzzy
+msgid "PowerTimer list"
+msgstr "Upravit časovač"
 
 #, fuzzy
 msgid "Predefined"
@@ -9928,6 +9995,11 @@ msgid "Really close without saving settings?"
 msgstr "Opravdu zavřít bez uloženého nastavení?"
 
 #
+#, fuzzy
+msgid "Really delete completed timers?"
+msgstr "Opravdu smazat dokončené časovače?"
+
+#
 msgid "Really delete done timers?"
 msgstr "Opravdu smazat dokončené časovače?"
 
@@ -10230,6 +10302,11 @@ msgid "Repeating event currently recording... What do you want to do?"
 msgstr "Opakovaná událost je právě nahrávána... Co chcete dělat?"
 
 #
+#, fuzzy
+msgid "Repeating the event currently recording... What do you want to do?"
+msgstr "Opakovaná událost je právě nahrávána... Co chcete dělat?"
+
+#
 msgid "Repeats"
 msgstr "Opakování"
 
@@ -10296,6 +10373,11 @@ msgstr "Rozlišení"
 #
 msgid "Restart"
 msgstr "Restartovat"
+
+#
+#, fuzzy
+msgid "Restart GUI"
+msgstr "Restartovat GUI nyní?"
 
 #
 msgid "Restart GUI now?"
@@ -12032,6 +12114,10 @@ msgstr "Přeskakovat prázdné programy"
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Přeskočit test internetového připojení (zakáže automatickou instalaci balíčků)."
 
+#, fuzzy
+msgid "Sleep delay"
+msgstr "Zpoždění přetáčení"
+
 #
 msgid "Sleep timer"
 msgstr "Časovač usínání"
@@ -12497,7 +12583,17 @@ msgid "Stop current event and disable coming events"
 msgstr "Zastavit aktuální událost a zakázat následující události"
 
 #
+#, fuzzy
+msgid "Stop current event and disable future events"
+msgstr "Zastavit aktuální událost a zakázat následující události"
+
+#
 msgid "Stop current event but not coming events"
+msgstr "Zastavit aktuální událost, ale nezakazovat následující události"
+
+#
+#, fuzzy
+msgid "Stop current event but not future events"
 msgstr "Zastavit aktuální událost, ale nezakazovat následující události"
 
 msgid "Stop current stream"
@@ -13134,6 +13230,10 @@ msgstr ""
 msgid "The status of the current image could not be checked because %s can not be reached."
 msgstr "Stav aktuálního image nemohl být ověřen z důvodu nedostupnosti %s."
 
+#, fuzzy
+msgid "The timer file (pm_timers.xml) is corrupt and could not be loaded."
+msgstr "Soubor časovače (timers.xml) je porušený a nemohl být načten."
+
 msgid "The timer file (timers.xml) is corrupt and could not be loaded."
 msgstr "Soubor časovače (timers.xml) je porušený a nemohl být načten."
 
@@ -13551,6 +13651,15 @@ msgstr "Zadání časovače"
 #
 msgid "Timer log"
 msgstr "Log časovače"
+
+#
+#, fuzzy
+msgid ""
+"Timer overlap in pm_timers.xml detected!\n"
+"Please recheck it!"
+msgstr ""
+"Zjištěno překrývání časovačů v timers.xml!\n"
+"Zkontrolujte to, prosím!"
 
 #
 msgid ""
@@ -14551,6 +14660,14 @@ msgstr "Čeká se na oddíl"
 msgid "Wake On LAN"
 msgstr "Wake On LAN"
 
+#, fuzzy
+msgid "Wake up"
+msgstr "Probudit"
+
+#, fuzzy
+msgid "Wake up to standby"
+msgstr "Probouzet TV ze standby"
+
 msgid "Wakeup"
 msgstr "Probudit"
 
@@ -14612,6 +14729,10 @@ msgid "Wednesday"
 msgstr "Středa"
 
 msgid "Weekday"
+msgstr "Všední den"
+
+#, fuzzy
+msgid "Weekend"
 msgstr "Všední den"
 
 #
@@ -15569,6 +15690,16 @@ msgid "auto"
 msgstr "Automaticky"
 
 #
+#, fuzzy
+msgid "auto deepstandby"
+msgstr "Přejít do hlubokého spánku"
+
+#
+#, fuzzy
+msgid "auto standby"
+msgstr "Neusínat"
+
+#
 msgid "automatic"
 msgstr "Automaticky"
 
@@ -15614,6 +15745,10 @@ msgstr "dole"
 
 msgid "broadcasting/press"
 msgstr "vysílání/tisk"
+
+#, fuzzy
+msgid "by Open Vision developers"
+msgstr "Python: "
 
 #
 msgid "by date"
@@ -16489,6 +16624,11 @@ msgstr "Nahrávání"
 msgid "real recordings or streaming"
 msgstr "Umístění nahrávek časovače"
 
+#
+#, fuzzy
+msgid "reboot system"
+msgstr "Systém"
+
 msgid "receiver software because updates are available."
 msgstr "software přijímače, jelikož aktualizace jsou dostupné."
 
@@ -16588,6 +16728,11 @@ msgstr "Opakovat playlist"
 msgid "repeated"
 msgstr "Opakování"
 
+#
+#, fuzzy
+msgid "restart GUI"
+msgstr "Restartovat GUI nyní?"
+
 msgid "restore deleted userbouquets"
 msgstr "Obnovit smazané přehledy"
 
@@ -16624,6 +16769,11 @@ msgstr "rock/pop"
 
 msgid "romance"
 msgstr "romance"
+
+#
+#, fuzzy
+msgid "running..."
+msgstr "prohledávání..."
 
 #
 msgid "save last directory on exit"
@@ -17013,6 +17163,14 @@ msgstr "čekat na mmi..."
 #
 msgid "waiting"
 msgstr "čekání"
+
+#, fuzzy
+msgid "wakeup"
+msgstr "Probudit"
+
+#, fuzzy
+msgid "wakeup to standby"
+msgstr "Probouzet TV ze standby"
 
 msgid "water sport"
 msgstr "vodní sporty"

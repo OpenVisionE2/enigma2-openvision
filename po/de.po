@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-06 14:21+0330\n"
+"POT-Creation-Date: 2019-10-09 04:00+0330\n"
 "PO-Revision-Date: 2019-07-24 20:23+0200\n"
 "Last-Translator: Pike_Bishop <alfredzngr023@gmail.com>\n"
 "Language-Team: Sfteam  angelo2807@hotmail.com\n"
@@ -1335,6 +1335,32 @@ msgstr ""
 msgid "A file from media is in use!"
 msgstr "Eine Media-Datei ist aktiv"
 
+#, fuzzy
+msgid "A finished powertimer wants to reboot your receiver. Do that now?"
+msgstr ""
+"Ein Aufnahmetimer will Ihren Receiver in den Standby-Modus schalten.\n"
+"Jetzt ausführen?"
+
+#, fuzzy
+msgid ""
+"A finished powertimer wants to restart the user interface.\n"
+"Do that now?"
+msgstr ""
+"Ein Aufnahmetimer will Ihren Receiver in den Standby-Modus schalten.\n"
+"Jetzt ausführen?"
+
+#, fuzzy
+msgid "A finished powertimer wants to set your receiver to standby. Do that now?"
+msgstr ""
+"Ein Aufnahmetimer will Ihren Receiver in den Standby-Modus schalten.\n"
+"Jetzt ausführen?"
+
+#, fuzzy
+msgid "A finished powertimer wants to shutdown your receiver. Do that now?"
+msgstr ""
+"Ein Aufnahmetimer will Ihren Receiver ausschalten.\n"
+"Jetzt ausschalten?"
+
 msgid ""
 "A finished record timer wants to set your\n"
 "receiver to standby. Do that now?"
@@ -1957,6 +1983,9 @@ msgstr "Zugewiesene CAIDs:"
 msgid "Assigned services/provider:"
 msgstr "Zugewiesene Kanäle/Anbieter:"
 
+msgid "At End:"
+msgstr ""
+
 msgid "At beginning"
 msgstr "Am Anfang"
 
@@ -2060,6 +2089,10 @@ msgstr "Audio-Auto-Lautstärkepegel"
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Automatische Kapitelwechsel alle ? Minuten (0=nie)"
 
+#, fuzzy
+msgid "Auto deep standby"
+msgstr "In Deep Standby gehen"
+
 msgid "Auto flesh"
 msgstr "Auto Flesh"
 
@@ -2077,6 +2110,10 @@ msgstr "Autoplay Bluray Datei"
 
 msgid "Auto scart switching"
 msgstr "Automatische Scart-Umschaltung"
+
+#, fuzzy
+msgid "Auto standby"
+msgstr "Kein Standby"
 
 msgid "Autoinstalling Completed"
 msgstr "Automatische Installation abgeschlossen"
@@ -2396,9 +2433,6 @@ msgstr "Burundi"
 
 msgid "Bus: "
 msgstr "Bus: "
-
-msgid "By Team OpenVision"
-msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr "Standardmässig wird SNR in Dezibel angezeigt (falls vom Tuner unterstützt). Diese Einstellung erzwingt die Darstellung von SNR in Prozent."
@@ -3933,6 +3967,10 @@ msgstr "Verzögerung in Millisekunden bevor Text im Display anfängt zu scrollen
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Verzögerung in Millisekunden zwischen Scroll-Zeichen auf dem Display."
 
+#, fuzzy
+msgid "Delay:"
+msgstr "Keine Verzögerung"
+
 msgid "Delete"
 msgstr "Löschen"
 
@@ -4201,6 +4239,10 @@ msgstr ""
 msgid "Do you really want to delete %s?"
 msgstr "%s wirklich löschen?"
 
+#, fuzzy
+msgid "Do you really want to delete this timer?"
+msgstr "%s wirklich löschen?"
+
 #, python-format
 msgid ""
 "Do you really want to download\n"
@@ -4321,6 +4363,10 @@ msgid "Don't save and stop timeshift"
 msgstr "Nicht speichern und Timeshift beenden"
 
 msgid "Don't stop current event but disable coming events"
+msgstr "Aktuelles Event nicht beenden, aber alle zukünftige Events deaktivieren"
+
+#, fuzzy
+msgid "Don't stop current event but disable future events"
 msgstr "Aktuelles Event nicht beenden, aber alle zukünftige Events deaktivieren"
 
 msgid ""
@@ -4910,6 +4956,9 @@ msgstr "Überall"
 msgid "Every known"
 msgstr "Alle bekannten"
 
+msgid "Everyday"
+msgstr ""
+
 msgid "Everywhere"
 msgstr "Überall"
 
@@ -5115,9 +5164,6 @@ msgstr "FEC:"
 msgid "FFmpeg version: "
 msgstr "Enigma-Version:"
 
-msgid "FLASH"
-msgstr ""
-
 msgid "FSBL Update Check"
 msgstr ""
 
@@ -5306,6 +5352,10 @@ msgstr "Fixiert"
 
 msgid "Fixed X11 font (SD)"
 msgstr ""
+
+#, fuzzy
+msgid "Flash"
+msgstr "Flashe Image"
 
 msgid "Flash Image"
 msgstr "Flashe Image"
@@ -6053,10 +6103,6 @@ msgstr "Ignoriere das DVB-T-Namespace-Subnetzwerk"
 
 msgid "Ignore conflict"
 msgstr "Ignoriere Konflikt"
-
-#, fuzzy
-msgid "Image OpenVision"
-msgstr "Erweiterungen verwalten"
 
 msgid "Image architecture: "
 msgstr ""
@@ -7815,6 +7861,10 @@ msgstr ""
 msgid "One"
 msgstr "Eins"
 
+#, fuzzy
+msgid "Only active when in standby"
+msgstr "A/V-Receiver in den Standby versetzen"
+
 msgid "Only change this setting if you are using a SCR device that has been reprogrammed with a custom programmer. For further information check with the person that reprogrammed the device."
 msgstr "Ändern Sie diese Einstellung nur, wenn Sie ein Unicable/SCR-Gerät verwenden, das mit einem benutzerdefinierten Programmiergerät neu programmiert wurde. Weitere Informationen erhalten Sie von der Person, die das Gerät neu programmiert hat."
 
@@ -7835,6 +7885,10 @@ msgstr "Nur beim Start"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Wählen Sie nur “Ja”, wenn Sie einen Multiswitch verwenden, der ein DiSEqC Port-A-Befehlssignal benötigt. Für alle anderen Setups wählen Sie ‘Nein’."
+
+#, fuzzy
+msgid "Open Vision enigma2 image"
+msgstr "Python Version: "
 
 msgid "Open Vision module: "
 msgstr ""
@@ -8484,8 +8538,16 @@ msgstr ""
 msgid "PowerControl front display suspend mode"
 msgstr ""
 
+#, fuzzy
+msgid "PowerManager entry"
+msgstr "Eintrag umbenennen"
+
 msgid "PowerMenu"
 msgstr "Power Menü"
+
+#, fuzzy
+msgid "PowerTimer list"
+msgstr "Timer bearbeiten"
 
 #, fuzzy
 msgid "Predefined"
@@ -8827,6 +8889,10 @@ msgstr "Wollen Sie trotzdem neu booten?"
 msgid "Really close without saving settings?"
 msgstr "Wirklich ohne Sichern beenden?"
 
+#, fuzzy
+msgid "Really delete completed timers?"
+msgstr "Vollendete Timer wirklich löschen?"
+
 msgid "Really delete done timers?"
 msgstr "Vollendete Timer wirklich löschen?"
 
@@ -9088,6 +9154,12 @@ msgstr ""
 "Wiederholender Aufnahmetimer ist zurzeit aktiv…\n"
 "Was wollen Sie machen?"
 
+#, fuzzy
+msgid "Repeating the event currently recording... What do you want to do?"
+msgstr ""
+"Wiederholender Aufnahmetimer ist zurzeit aktiv…\n"
+"Was wollen Sie machen?"
+
 msgid "Repeats"
 msgstr "Wiederholungen"
 
@@ -9145,6 +9217,10 @@ msgstr "Auflösung"
 
 msgid "Restart"
 msgstr "Neustart"
+
+#, fuzzy
+msgid "Restart GUI"
+msgstr "Benutzeroberfläche jetzt neu starten?"
 
 msgid "Restart GUI now?"
 msgstr "Benutzeroberfläche jetzt neu starten?"
@@ -10681,6 +10757,10 @@ msgstr "Überspringe leere Sender"
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Überspringe Internet-Verbindungstest (automatische Paketinstallation deaktivieren)"
 
+#, fuzzy
+msgid "Sleep delay"
+msgstr "Scroll Verzögerrung"
+
 msgid "Sleep timer"
 msgstr "Ausschalt-Timer"
 
@@ -11088,7 +11168,15 @@ msgstr "Aufnahmen beenden und löschen"
 msgid "Stop current event and disable coming events"
 msgstr "Laufendes Ereignis abbrechen und kommende ignorieren"
 
+#, fuzzy
+msgid "Stop current event and disable future events"
+msgstr "Laufendes Ereignis abbrechen und kommende ignorieren"
+
 msgid "Stop current event but not coming events"
+msgstr "Laufendes Ereignis abbrechen, aber kommende ausführen"
+
+#, fuzzy
+msgid "Stop current event but not future events"
 msgstr "Laufendes Ereignis abbrechen, aber kommende ausführen"
 
 msgid "Stop current stream"
@@ -11664,6 +11752,10 @@ msgstr ""
 msgid "The status of the current image could not be checked because %s can not be reached."
 msgstr "Der Status des aktuellen Images konnte nicht überprüft werden, da% s nicht erreicht werden kann."
 
+#, fuzzy
+msgid "The timer file (pm_timers.xml) is corrupt and could not be loaded."
+msgstr "Die Timer-Datei (timers.xml) ist defekt und konnte nicht geladen werden."
+
 msgid "The timer file (timers.xml) is corrupt and could not be loaded."
 msgstr "Die Timer-Datei (timers.xml) ist defekt und konnte nicht geladen werden."
 
@@ -12054,6 +12146,14 @@ msgstr "Timer-Eintrag"
 
 msgid "Timer log"
 msgstr "Timer-Logbuch"
+
+#, fuzzy
+msgid ""
+"Timer overlap in pm_timers.xml detected!\n"
+"Please recheck it!"
+msgstr ""
+"Timerüberlappung in der timers.xml entdeckt!\n"
+"Bitte überprüfen!"
 
 msgid ""
 "Timer overlap in timers.xml detected!\n"
@@ -12915,6 +13015,14 @@ msgstr "Warte auf Partition"
 msgid "Wake On LAN"
 msgstr "Wake On LAN"
 
+#, fuzzy
+msgid "Wake up"
+msgstr "Anschalten"
+
+#, fuzzy
+msgid "Wake up to standby"
+msgstr "Fernseher aus Standby anschalten"
+
 msgid "Wakeup"
 msgstr "Anschalten"
 
@@ -12971,6 +13079,10 @@ msgid "Wednesday"
 msgstr "Mittwoch"
 
 msgid "Weekday"
+msgstr "Wochentag"
+
+#, fuzzy
+msgid "Weekend"
 msgstr "Wochentag"
 
 #, fuzzy
@@ -13856,6 +13968,14 @@ msgstr "Tonspuren"
 msgid "auto"
 msgstr "Automatisch"
 
+#, fuzzy
+msgid "auto deepstandby"
+msgstr "In Deep Standby gehen"
+
+#, fuzzy
+msgid "auto standby"
+msgstr "Kein Standby"
+
 msgid "automatic"
 msgstr "Automatisch"
 
@@ -13895,6 +14015,10 @@ msgstr "Unten"
 
 msgid "broadcasting/press"
 msgstr "Rundsendung/Presse"
+
+#, fuzzy
+msgid "by Open Vision developers"
+msgstr "Python Version: "
 
 msgid "by date"
 msgstr "Aufnahmen nach Datum sortieren"
@@ -14656,6 +14780,10 @@ msgstr "Aufnahmen"
 msgid "real recordings or streaming"
 msgstr "Timeraufnahme-Verzeichnis"
 
+#, fuzzy
+msgid "reboot system"
+msgstr "System"
+
 msgid "receiver software because updates are available."
 msgstr "Receiver Software, weil Updates verfügbar sind."
 
@@ -14737,6 +14865,10 @@ msgstr "Wiederholung der Wiedergabeliste"
 msgid "repeated"
 msgstr "Wiederholend"
 
+#, fuzzy
+msgid "restart GUI"
+msgstr "Benutzeroberfläche jetzt neu starten?"
+
 msgid "restore deleted userbouquets"
 msgstr "Gelöschte Userbouquets wiederherstellen"
 
@@ -14768,6 +14900,10 @@ msgstr "Rock/Pop"
 
 msgid "romance"
 msgstr "Romanze"
+
+#, fuzzy
+msgid "running..."
+msgstr "Suche…"
 
 msgid "save last directory on exit"
 msgstr "Anfangsverzeichnis beim Beenden merken"
@@ -15103,6 +15239,14 @@ msgstr "Warte auf mmi…"
 
 msgid "waiting"
 msgstr "Wartend"
+
+#, fuzzy
+msgid "wakeup"
+msgstr "Anschalten"
+
+#, fuzzy
+msgid "wakeup to standby"
+msgstr "Fernseher aus Standby anschalten"
 
 msgid "water sport"
 msgstr "Wassersport"

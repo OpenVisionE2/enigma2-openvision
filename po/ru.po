@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-06 14:21+0330\n"
+"POT-Creation-Date: 2019-10-09 04:00+0330\n"
 "PO-Revision-Date: 2019-07-25 17:52+0300\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: openPLi Dimitrij\n"
@@ -1346,6 +1346,32 @@ msgstr ""
 msgid "A file from media is in use!"
 msgstr "Медиа файл используется!"
 
+#, fuzzy
+msgid "A finished powertimer wants to reboot your receiver. Do that now?"
+msgstr ""
+"Запись по таймеру завершена, ресивер будет переведен в режим ожидания.\n"
+"Сделать это сейчас?"
+
+#, fuzzy
+msgid ""
+"A finished powertimer wants to restart the user interface.\n"
+"Do that now?"
+msgstr ""
+"Запись по таймеру завершена, ресивер будет переведен в режим ожидания.\n"
+"Сделать это сейчас?"
+
+#, fuzzy
+msgid "A finished powertimer wants to set your receiver to standby. Do that now?"
+msgstr ""
+"Запись по таймеру завершена, ресивер будет переведен в режим ожидания.\n"
+"Сделать это сейчас?"
+
+#, fuzzy
+msgid "A finished powertimer wants to shutdown your receiver. Do that now?"
+msgstr ""
+"Запись по таймеру закончена, ваш ресивер будет выключен (режим глубокого ожидания).\n"
+"Выключить сейчас?"
+
 msgid ""
 "A finished record timer wants to set your\n"
 "receiver to standby. Do that now?"
@@ -1966,6 +1992,9 @@ msgstr "Назначеный CAID:"
 msgid "Assigned services/provider:"
 msgstr "Назначеные каналы/провайдеры:"
 
+msgid "At End:"
+msgstr ""
+
 msgid "At beginning"
 msgstr "В начале"
 
@@ -2069,6 +2098,10 @@ msgstr "Уровень авто громкости звука"
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Автоматически разделять на главы каждые ? минут (0=никогда)"
 
+#, fuzzy
+msgid "Auto deep standby"
+msgstr "перейти в глубокий режим ожидания"
+
 msgid "Auto flesh"
 msgstr "Авто flesh"
 
@@ -2086,6 +2119,10 @@ msgstr "Авто проигрывание blu-ray файла"
 
 msgid "Auto scart switching"
 msgstr "Автоматическое переключение SCART"
+
+#, fuzzy
+msgid "Auto standby"
+msgstr "не переходить в режим ожидания"
 
 msgid "Autoinstalling Completed"
 msgstr "Авто инсталляция завершена."
@@ -2405,9 +2442,6 @@ msgstr "Burundi"
 
 msgid "Bus: "
 msgstr "Шина(подключение): "
-
-msgid "By Team OpenVision"
-msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr "По умолчанию, SNR показывается в dB, если это поддерживает тюнер. Это настройка уровня SNR, будет показывать значение в процентах."
@@ -3938,6 +3972,10 @@ msgstr "Задержка текста в миллисекундах перед �
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Задержка прокрутки в миллисекундах между символами на дисплее."
 
+#, fuzzy
+msgid "Delay:"
+msgstr "Без задержки"
+
 msgid "Delete"
 msgstr "Удалить"
 
@@ -4206,6 +4244,10 @@ msgstr ""
 msgid "Do you really want to delete %s?"
 msgstr "Вы действительно хотите удалить %s?"
 
+#, fuzzy
+msgid "Do you really want to delete this timer?"
+msgstr "Вы действительно хотите удалить %s?"
+
 #, python-format
 msgid ""
 "Do you really want to download\n"
@@ -4330,6 +4372,10 @@ msgid "Don't save and stop timeshift"
 msgstr "Не сохранять и остановить таймшифт"
 
 msgid "Don't stop current event but disable coming events"
+msgstr "Не останавливать текущее событие, но отключить этот таймер"
+
+#, fuzzy
+msgid "Don't stop current event but disable future events"
 msgstr "Не останавливать текущее событие, но отключить этот таймер"
 
 msgid ""
@@ -4910,6 +4956,9 @@ msgstr "Везде"
 msgid "Every known"
 msgstr "Каждый известный"
 
+msgid "Everyday"
+msgstr ""
+
 msgid "Everywhere"
 msgstr "Везде"
 
@@ -5115,9 +5164,6 @@ msgstr "FEC:"
 msgid "FFmpeg version: "
 msgstr "Версия энигмы: "
 
-msgid "FLASH"
-msgstr ""
-
 msgid "FSBL Update Check"
 msgstr ""
 
@@ -5305,6 +5351,10 @@ msgstr "фиксированно"
 
 msgid "Fixed X11 font (SD)"
 msgstr ""
+
+#, fuzzy
+msgid "Flash"
+msgstr "Прошивка имиджа"
 
 msgid "Flash Image"
 msgstr "Прошивка имиджа"
@@ -6052,10 +6102,6 @@ msgstr "Игнорировать DVB-T пространство имен суб�
 
 msgid "Ignore conflict"
 msgstr "Игнорировать конфликт"
-
-#, fuzzy
-msgid "Image OpenVision"
-msgstr "Менеджер дополнений"
 
 msgid "Image architecture: "
 msgstr ""
@@ -7812,6 +7858,10 @@ msgstr ""
 msgid "One"
 msgstr "Один"
 
+#, fuzzy
+msgid "Only active when in standby"
+msgstr "Перевод аудио/видео системы в режим ожидания"
+
 msgid "Only change this setting if you are using a SCR device that has been reprogrammed with a custom programmer. For further information check with the person that reprogrammed the device."
 msgstr "Измените этот параметр только в том случае, если Вы используете устройство SCR, которое было перепрограммировано с помощью специального программиста. Для получения дополнительной информации обратитесь к человеку, который перепрограммировал устройство."
 
@@ -7832,6 +7882,10 @@ msgstr "Только при старте"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Выберите 'да', тоьлко если вы используете мультисвич, для которого требуется командный сигнал DiSEqC Port-A. Для всех других установок выберите 'нет'."
+
+#, fuzzy
+msgid "Open Vision enigma2 image"
+msgstr "Версия пайтон: "
 
 msgid "Open Vision module: "
 msgstr ""
@@ -8480,8 +8534,16 @@ msgstr ""
 msgid "PowerControl front display suspend mode"
 msgstr ""
 
+#, fuzzy
+msgid "PowerManager entry"
+msgstr "переименовать выбранное"
+
 msgid "PowerMenu"
 msgstr "Меню выключения"
+
+#, fuzzy
+msgid "PowerTimer list"
+msgstr "Редактирование таймера"
 
 #, fuzzy
 msgid "Predefined"
@@ -8823,6 +8885,10 @@ msgstr "Действительно выполнить перезагрузку �
 msgid "Really close without saving settings?"
 msgstr "Действительно закрыть без сохранения настроек?"
 
+#, fuzzy
+msgid "Really delete completed timers?"
+msgstr "Действительно удалить выполненные таймеры?"
+
 msgid "Really delete done timers?"
 msgstr "Действительно удалить выполненные таймеры?"
 
@@ -9083,6 +9149,12 @@ msgstr ""
 "Текущее событие повторного таймера сейчас записывается.\n"
 "Что вы хотите сделать?"
 
+#, fuzzy
+msgid "Repeating the event currently recording... What do you want to do?"
+msgstr ""
+"Текущее событие повторного таймера сейчас записывается.\n"
+"Что вы хотите сделать?"
+
 msgid "Repeats"
 msgstr "Повторы"
 
@@ -9140,6 +9212,10 @@ msgstr "Разрешение"
 
 msgid "Restart"
 msgstr "Перезагрузка"
+
+#, fuzzy
+msgid "Restart GUI"
+msgstr "Рестарт GUI сейчас?"
 
 msgid "Restart GUI now?"
 msgstr "Рестарт GUI сейчас?"
@@ -10677,6 +10753,10 @@ msgstr "Пропускать пустые сервисы"
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Пропустить проверку интернет соединения (отключает автоматическую установку пакетов)"
 
+#, fuzzy
+msgid "Sleep delay"
+msgstr "Время задержки прокрутки"
+
 msgid "Sleep timer"
 msgstr "Таймер сна"
 
@@ -11080,7 +11160,15 @@ msgstr "Остановить и удалить записи:"
 msgid "Stop current event and disable coming events"
 msgstr "Остановить текущее событие и отключить этот таймер"
 
+#, fuzzy
+msgid "Stop current event and disable future events"
+msgstr "Остановить текущее событие и отключить этот таймер"
+
 msgid "Stop current event but not coming events"
+msgstr "Остановить текущее событие, но не отключать таймер"
+
+#, fuzzy
+msgid "Stop current event but not future events"
 msgstr "Остановить текущее событие, но не отключать таймер"
 
 msgid "Stop current stream"
@@ -11653,6 +11741,10 @@ msgstr ""
 msgid "The status of the current image could not be checked because %s can not be reached."
 msgstr "Статус текущей бета версии не может быть проверен,одна из причин, %s не отвечает."
 
+#, fuzzy
+msgid "The timer file (pm_timers.xml) is corrupt and could not be loaded."
+msgstr "Файл таймеров (timers.xml) поврежден и не может быть загружен."
+
 msgid "The timer file (timers.xml) is corrupt and could not be loaded."
 msgstr "Файл таймеров (timers.xml) поврежден и не может быть загружен."
 
@@ -12040,6 +12132,14 @@ msgstr "Ввод таймера"
 
 msgid "Timer log"
 msgstr "Лог таймера"
+
+#, fuzzy
+msgid ""
+"Timer overlap in pm_timers.xml detected!\n"
+"Please recheck it!"
+msgstr ""
+"Перекрытие таймера обнаружено в timers.xml!\n"
+"Пожалуйста, перепроверьте это,открыв меню с Вашим списком таймеров!"
 
 msgid ""
 "Timer overlap in timers.xml detected!\n"
@@ -12902,6 +13002,14 @@ msgstr "Ожидание раздела"
 msgid "Wake On LAN"
 msgstr "Wake On LAN (включение по сети)"
 
+#, fuzzy
+msgid "Wake up"
+msgstr "Включить"
+
+#, fuzzy
+msgid "Wake up to standby"
+msgstr "Включить ТВ при выходе из режима ожидания"
+
 msgid "Wakeup"
 msgstr "Включить"
 
@@ -12958,6 +13066,10 @@ msgid "Wednesday"
 msgstr "Среда"
 
 msgid "Weekday"
+msgstr "День недели"
+
+#, fuzzy
+msgid "Weekend"
 msgstr "День недели"
 
 #, fuzzy
@@ -13836,6 +13948,14 @@ msgstr "звуковые дорожки"
 msgid "auto"
 msgstr "авто"
 
+#, fuzzy
+msgid "auto deepstandby"
+msgstr "перейти в глубокий режим ожидания"
+
+#, fuzzy
+msgid "auto standby"
+msgstr "не переходить в режим ожидания"
+
 msgid "automatic"
 msgstr "автоматически"
 
@@ -13875,6 +13995,10 @@ msgstr "снизу"
 
 msgid "broadcasting/press"
 msgstr "вещание/пресса"
+
+#, fuzzy
+msgid "by Open Vision developers"
+msgstr "Версия пайтон: "
 
 msgid "by date"
 msgstr "по дате"
@@ -14634,6 +14758,10 @@ msgstr "Записи"
 msgid "real recordings or streaming"
 msgstr "Место записи по таймеру"
 
+#, fuzzy
+msgid "reboot system"
+msgstr "Система"
+
 msgid "receiver software because updates are available."
 msgstr "доступно обновление для вашего ресивера."
 
@@ -14715,6 +14843,10 @@ msgstr "повторить плейлист"
 msgid "repeated"
 msgstr "повторный"
 
+#, fuzzy
+msgid "restart GUI"
+msgstr "Рестарт GUI сейчас?"
+
 msgid "restore deleted userbouquets"
 msgstr "восстановить удаленные пользовательские букеты"
 
@@ -14746,6 +14878,10 @@ msgstr "рок/поп"
 
 msgid "romance"
 msgstr "романс"
+
+#, fuzzy
+msgid "running..."
+msgstr "Сканирование..."
 
 msgid "save last directory on exit"
 msgstr "сохранить последний каталог при выходе"
@@ -15081,6 +15217,14 @@ msgstr "ожидание для mmi..."
 
 msgid "waiting"
 msgstr "ожидание"
+
+#, fuzzy
+msgid "wakeup"
+msgstr "Включить"
+
+#, fuzzy
+msgid "wakeup to standby"
+msgstr "Включить ТВ при выходе из режима ожидания"
 
 msgid "water sport"
 msgstr "водный спорт"
