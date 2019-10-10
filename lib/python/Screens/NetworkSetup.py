@@ -592,6 +592,7 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		self.session.open(MessageBox, _("Successfully restored /etc/inetd.conf!"), type = MessageBox.TYPE_INFO,timeout = 10 )
 
 	def ok(self):
+		ipv6 = "/etc/enigma2/ipv6"
 		if self.IPv6ConfigEntry.value == False:
 			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("1")
 			open("/etc/enigma2/ipv6", "w").write("1")
