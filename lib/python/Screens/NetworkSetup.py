@@ -2087,9 +2087,9 @@ class NetworkFtp(NSCommon,Screen):
 
 	def FtpStartStop(self):
 		commands = []
-		if not self.my_ftp_run:
+		if not fileExists('/etc/pam.d/vsftpd'):
 			commands.append('mv /etc/pam.d/vsftpdd /etc/pam.d/vsftpd')
-		elif self.my_ftp_run:
+		if fileExists('/etc/pam.d/vsftpd'):
 			commands.append('killall vsftpd ; mv /etc/pam.d/vsftpd /etc/pam.d/vsftpdd')
 		self.Console.eBatch(commands, self.StartStopCallback, debug=True)
 
