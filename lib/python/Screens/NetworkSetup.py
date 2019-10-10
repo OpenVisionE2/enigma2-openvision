@@ -50,12 +50,12 @@ class NSCommon:
 		self.close()
 
 	def installComplete(self, result = None, retval = None, extra_args = None):
-		self.message.close()
-		self.feedscheck.close()
+		self.feedscheck.close()	
 		if self.reboot_at_end:
 			self.session.open(TryQuitMainloop, 2)
 		else:
 			self.updateService()
+		self.message.close()
 		self.close()
 
 	def doRemove(self, callback, pkgname):
@@ -549,15 +549,23 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		inetdData += "#time	dgram	udp	wait	root	internal\n"
 
 		if self.IPv6ConfigEntry.value == True:
-			inetdData += "#ftp	stream	tcp6	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
+			inetdData += "ftp	stream	tcp6	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
 		else:
 			inetdData += "#ftp	stream	tcp	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
 		inetdData += "#ftp	stream	tcp	nowait	root	ftpd	ftpd -w /\n"
 
 		if self.IPv6ConfigEntry.value == True:
-			inetdData += "#telnet	stream	tcp6	nowait	root	/usr/sbin/telnetd	telnetd\n"
+			inetdData += "telnet	stream	tcp6	nowait	root	/usr/sbin/telnetd	telnetd\n"
 		else:
 			inetdData += "#telnet	stream	tcp	nowait	root	/usr/sbin/telnetd	telnetd\n"
+		if self.IPv6ConfigEntry.value == False:
+			inetdData += "ftp	stream	tcp	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
+		else:
+			inetdData += "#ftp	stream	tcp6	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
+		if self.IPv6ConfigEntry.value == False:
+			inetdData += "telnet	stream	tcp	nowait	root	/usr/sbin/telnetd	telnetd\n"
+		else:
+			inetdData += "#telnet	stream	tcp6	nowait	root	/usr/sbin/telnetd	telnetd\n"			
 
 		if fileExists("/usr/sbin/smbd") and self.IPv6ConfigEntry.value == True:
 			inetdData += "#microsoft-ds	stream	tcp6	nowait	root	/usr/sbin/smbd	smbd\n"
@@ -592,7 +600,7 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		self.session.open(MessageBox, _("Successfully restored /etc/inetd.conf!"), type = MessageBox.TYPE_INFO,timeout = 10 )
 
 	def ok(self):
-		ipv6 = "/etc/enigma2/ipv6"
+		ipv6 = '/etc/enigma2/ipv6'
 		if self.IPv6ConfigEntry.value == False:
 			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("1")
 			open("/etc/enigma2/ipv6", "w").write("1")
@@ -659,9 +667,9 @@ class InetdRecovery(Screen, ConfigListScreen):
 		inetdData += "#daytime	dgram	" + sockTypeudp + "	wait	root	internal\n"
 		inetdData += "#time	stream	tcp	nowait	root	internal\n"
 		inetdData += "#time	dgram	" + sockTypeudp + "	wait	root	internal\n"
-		inetdData += "#ftp	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
+		inetdData += "ftp	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
 		inetdData += "#ftp	stream	" + sockTypetcp + "	nowait	root	ftpd	ftpd -w /\n"
-		inetdData += "#telnet	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/telnetd	telnetd\n"
+		inetdData += "telnet	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/telnetd	telnetd\n"
 		if fileExists("/usr/sbin/smbd"):
 			inetdData += "#microsoft-ds	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/smbd	smbd\n"
 		if fileExists("/usr/sbin/nmbd"):
@@ -680,11 +688,9 @@ class InetdRecovery(Screen, ConfigListScreen):
 		self.close()
 		
 	def inetdRestart(self):
-		if fileExists("/etc/init.d/inetd"):
-			Console.ePopen("/etc/init.d/inetd restart")
-		elif fileExists("/etc/init.d/inetd.busybox"):
-			Console.ePopen("/etc/init.d/inetd.busybox restart")
-
+		commands = []	
+		if fileExists("/etc/init.d/inetd.busybox"):
+			commands.append('/etc/init.d/inetd.busybox restart')
 
 class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
 	def __init__(self, session, networkinfo, essid=None):
