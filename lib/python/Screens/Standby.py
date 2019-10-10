@@ -254,13 +254,13 @@ class QuitMainloopScreen(Screen):
 			QUIT_SHUTDOWN: _("Your receiver is shutting down"),
 			QUIT_REBOOT: _("Your receiver is rebooting"),
 			QUIT_RESTART: _("The user interface of your receiver is restarting"),
-			QUIT_UPGRADE_FP: _("Your frontprocessor will be upgraded\nPlease wait until your receiver reboots\nThis may take a few minutes"),
+			QUIT_UPGRADE_FP: _("Your frontprocessor will be updated\nPlease wait until your receiver reboots\nThis may take a few minutes"),
 			QUIT_ERROR_RESTART: _("The user interface of your receiver is restarting\ndue to an error in mytest.py"),
 			QUIT_DEBUG_RESTART: _("The user interface of your receiver is restarting in debug mode"),
 			QUIT_REBOOT_ANDROID: _("Your receiver is rebooting into android mode"),
 			QUIT_REBOOT_RECOVERY: _("Your receiver is rebooting into recovery mode"),
 			QUIT_UPGRADE_PROGRAM: _("Unattended upgrade in progress\nPlease wait until your receiver reboots\nThis may take a few minutes"),
-			QUIT_UPGRADE_FPANEL: _("Your front panel will be upgraded\nThis may take a few minutes"),
+			QUIT_UPGRADE_FPANEL: _("Your front panel will be updated\nThis may take a few minutes"),
 			QUIT_WOL: _("Your receiver goes to WOL")
 		}.get(retvalue)
 		self["text"] = Label(text)
@@ -298,12 +298,12 @@ class TryQuitMainloop(MessageBox):
 				QUIT_SHUTDOWN: _("Really shutdown now?"),
 				QUIT_REBOOT: _("Really reboot now?"),
 				QUIT_RESTART: _("Really restart now?"),
-				QUIT_UPGRADE_FP: _("Really upgrade the frontprocessor and reboot now?"),
+				QUIT_UPGRADE_FP: _("Really update the frontprocessor and reboot now?"),
 				QUIT_DEBUG_RESTART: _("Really restart in debug mode now?"),
 				QUIT_REBOOT_ANDROID: _("Really reboot into android mode?"),
 				QUIT_REBOOT_RECOVERY: _("Really reboot into recovery mode?"),
-				QUIT_UPGRADE_PROGRAM: _("Really upgrade your settop box and reboot now?"),
-				QUIT_UPGRADE_FPANEL: _("Really upgrade the front panel and reboot now?"),
+				QUIT_UPGRADE_PROGRAM: _("Really update your settop box and reboot now?"),
+				QUIT_UPGRADE_FPANEL: _("Really update the front panel and reboot now?"),
 				QUIT_WOL: _("Really WOL now?")
 			}.get(retvalue, None)
 			if text:

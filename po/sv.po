@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-09 04:00+0330\n"
+"POT-Creation-Date: 2019-10-10 20:09+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -46,9 +46,10 @@ msgstr ""
 "Konfliktdetektering avstängd!"
 
 #
+#, fuzzy
 msgid ""
 "\n"
-"Edit the upgrade source address."
+"Edit the update source address."
 msgstr ""
 "\n"
 "Ändra uppgraderingskällans adress."
@@ -4753,16 +4754,17 @@ msgstr "Vill du återuppta uppspelningen?"
 msgid "Do you want to select a different skin?"
 msgstr "Vill du välja ett annat utseende?"
 
+#
+#, fuzzy
+msgid "Do you want to update the package:\n"
+msgstr "Vill du uppgradera paketet :\n"
+
 #, python-format
 msgid "Do you want to update your receiver to %s?"
 msgstr "Vill du uppdatera din mottagare till %s?"
 
 msgid "Do you want to update your receiver?"
 msgstr "Vill du uppdatera din mottagare?"
-
-#
-msgid "Do you want to upgrade the package:\n"
-msgstr "Vill du uppgradera paketet :\n"
 
 #, fuzzy
 msgid "Documentary"
@@ -4813,9 +4815,9 @@ msgid "Done"
 msgstr ""
 
 #
-#, python-format
-msgid "Done - Installed, upgraded or removed %d package (%s)"
-msgid_plural "Done - Installed, upgraded or removed %d packages (%s)"
+#, fuzzy, python-format
+msgid "Done - Installed, updated or removed %d package (%s)"
+msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Klar - installerat, uppgraderat eller avinstallerat %d paket (%s)"
 msgstr[1] "Klar - installerat, uppgraderat eller avinstallerat %d paket (%s)"
 
@@ -4983,7 +4985,8 @@ msgstr "Ändra timer"
 msgid "Edit title"
 msgstr "Ändra titel"
 
-msgid "Edit upgrade source url."
+#, fuzzy
+msgid "Edit update source url."
 msgstr "Ändra uppgraderingskällans url."
 
 #
@@ -7252,7 +7255,8 @@ msgstr "Senaste konfiguration"
 msgid "Last speed"
 msgstr "Föregående hastighet"
 
-msgid "Last upgrade: "
+#, fuzzy
+msgid "Last update: "
 msgstr "Senaste uppgradering :"
 
 msgctxt "third event: 'third' event label"
@@ -7263,7 +7267,7 @@ msgid "Latest Commits"
 msgstr "Senaste commits"
 
 #, fuzzy
-msgid "Latest upgrade log"
+msgid "Latest update log"
 msgstr "Visa senaste uppdateringslogg"
 
 #
@@ -8797,7 +8801,8 @@ msgstr "Generellt framsteg :"
 msgid "Overscan wizard"
 msgstr "Överskanningsguide"
 
-msgid "Overwrite configuration files during software upgrade?"
+#, fuzzy
+msgid "Overwrite configuration files during software update?"
 msgstr "Skriva över konfigurationsfilerna vid mjukvaruuppgradering?"
 
 msgid "Overwrite configuration files?"
@@ -9922,13 +9927,15 @@ msgid "Really store at index %2d for current position?"
 msgstr "Vill du verkligen spara vid index %2d för denna position?"
 
 #, fuzzy
-msgid "Really upgrade the front panel and reboot now?"
+msgid "Really update the front panel and reboot now?"
 msgstr "Vill du verkligen uppgradera frontprocessorn och starta om nu?"
 
-msgid "Really upgrade the frontprocessor and reboot now?"
+#, fuzzy
+msgid "Really update the frontprocessor and reboot now?"
 msgstr "Vill du verkligen uppgradera frontprocessorn och starta om nu?"
 
-msgid "Really upgrade your settop box and reboot now?"
+#, fuzzy
+msgid "Really update your settop box and reboot now?"
 msgstr "Vill du verkligen uppdatera din mottagare och starta om nu?"
 
 #
@@ -10167,6 +10174,11 @@ msgstr "Upprepningstyp"
 
 msgid "Repeat leave standby messages"
 msgstr "Upprepa, lämna standby meddelanden"
+
+#
+#, fuzzy
+msgid "Repeat playlist"
+msgstr "upprepa spellista"
 
 #
 msgid "Repeat type"
@@ -10623,8 +10635,18 @@ msgid "Save changes"
 msgstr "Spara ändringar"
 
 #
+#, fuzzy
+msgid "Save last directory on exit"
+msgstr "spara sista biblioteket vid avslut"
+
+#
 msgid "Save playlist"
 msgstr "Spara spellista"
+
+#
+#, fuzzy
+msgid "Save playlist on exit"
+msgstr "spara spellista vid avslut"
 
 msgid "Save settings and EPG data"
 msgstr ""
@@ -11121,11 +11143,13 @@ msgid "Select the virtual keyboard shifted character set for the next character 
 msgstr ""
 
 #
-msgid "Select upgrade source"
+#, fuzzy
+msgid "Select update source"
 msgstr "Ange uppgraderingskälla."
 
 #
-msgid "Select upgrade source to edit."
+#, fuzzy
+msgid "Select update source to edit."
 msgstr "Ange uppgraderingskälla att ändra."
 
 #
@@ -11714,13 +11738,18 @@ msgstr "Visa infobalk vid hopp framåt / bakåt"
 msgid "Show latest commits"
 msgstr "Visa senaste commits"
 
-msgid "Show latest upgrade log"
+#, fuzzy
+msgid "Show latest update log"
 msgstr "Visa senaste uppdateringslogg"
 
 #
 #, fuzzy
 msgid "Show log"
 msgstr "Visa Info"
+
+#, fuzzy
+msgid "Show media player on main menu"
+msgstr "visa mediaspelaren i huvudmenyn"
 
 #, fuzzy
 msgid "Show menu or plugin numbers"
@@ -11753,7 +11782,8 @@ msgstr ""
 msgid "Show notification when import channels was successful"
 msgstr ""
 
-msgid "Show packages to be upgraded"
+#, fuzzy
+msgid "Show packages to be updated"
 msgstr "Visa paket som skall uppdateras"
 
 msgid "Show picons in channel selection list"
@@ -12196,6 +12226,10 @@ msgstr "Sortera pluginlistan till standard och avsluta?"
 msgid "Sort time"
 msgstr "Sortera tid"
 
+#, fuzzy
+msgid "Sorting of playlists"
+msgstr "sortering av spellistor"
+
 #
 msgid "Sound"
 msgstr "Ljud"
@@ -12352,6 +12386,11 @@ msgstr "Starta test"
 #, fuzzy
 msgid "Start cut"
 msgstr "Starta test"
+
+#
+#, fuzzy
+msgid "Start directory"
+msgstr "startbibliotek"
 
 #
 msgid "Start from the beginning"
@@ -14115,12 +14154,13 @@ msgid "Updatefeed not available."
 msgstr "Uppdateringsfeed ej tillgänglig."
 
 #
-msgid "Updating software catalog"
-msgstr "Uppdaterar mjukvarukatalogen"
+#, fuzzy
+msgid "Updating"
+msgstr "Uppdatera"
 
 #
-msgid "Upgrading"
-msgstr "Uppgradering"
+msgid "Updating software catalog"
+msgstr "Uppdaterar mjukvarukatalogen"
 
 msgid "Upper case"
 msgstr ""
@@ -14720,7 +14760,8 @@ msgstr ""
 msgid "What type of service scan do you want?"
 msgstr ""
 
-msgid "When enabled enigma2 will load unlinked userbouquets. This means that userbouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are upgraded"
+#, fuzzy
+msgid "When enabled enigma2 will load unlinked userbouquets. This means that userbouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are updated"
 msgstr "Vid aktiverad laddar enigma2 olänkade favoritlistor. Detta innebär att favoritlistor som är tillgängliga men som inte ingår i bouquet.tv eller bouquet.radio filer kommer fortfarande laddas. Detta gör att du till exempel kan behålla dina egna favoritlistor medan installerade inställningar uppgraderas."
 
 msgid "When enabled the PiP can be closed by the exit button."
@@ -15212,15 +15253,16 @@ msgstr "Din nuvarande samling kommer försvinna!"
 
 #, fuzzy
 msgid ""
-"Your front panel will be upgraded\n"
+"Your front panel will be updated\n"
 "This may take a few minutes"
 msgstr ""
 "Din frontprocessor kommer att uppgraderas\n"
 "Vänta tills din mottagare startat om\n"
 "Detta kan ta några minuter!"
 
+#, fuzzy
 msgid ""
-"Your frontprocessor will be upgraded\n"
+"Your frontprocessor will be updated\n"
 "Please wait until your receiver reboots\n"
 "This may take a few minutes"
 msgstr ""
@@ -16613,10 +16655,6 @@ msgid "rename entry"
 msgstr "döp om kanal"
 
 #
-msgid "repeat playlist"
-msgstr "upprepa spellista"
-
-#
 msgid "repeated"
 msgstr "repeterande"
 
@@ -16664,14 +16702,6 @@ msgstr "romantik"
 #, fuzzy
 msgid "running..."
 msgstr "Söker..."
-
-#
-msgid "save last directory on exit"
-msgstr "spara sista biblioteket vid avslut"
-
-#
-msgid "save playlist on exit"
-msgstr "spara spellista vid avslut"
 
 #
 msgid "scan state"
@@ -16732,9 +16762,6 @@ msgstr "visa alternativ"
 #
 msgid "show event details"
 msgstr "visa programdetaljer"
-
-msgid "show mediaplayer on mainmenu"
-msgstr "visa mediaspelaren i huvudmenyn"
 
 msgid "show softwaremanager in setup menu"
 msgstr "visar mjukvaruhanterare i inställningsmeny"
@@ -16821,9 +16848,6 @@ msgstr "sociala / politiska frågor / ekonomi (allmänt)"
 msgid "social/spiritual science"
 msgstr "social / andlig vetenskap"
 
-msgid "sorting of playlists"
-msgstr "sortering av spellistor"
-
 #, fuzzy
 msgid "special (general)"
 msgstr "sport (allmänt)"
@@ -16864,10 +16888,6 @@ msgstr "startklipp här"
 #, fuzzy
 msgid "start cut here (reset)"
 msgstr "startklipp här"
-
-#
-msgid "start directory"
-msgstr "startbibliotek"
 
 msgid "stepsize"
 msgstr "stegstorlek"

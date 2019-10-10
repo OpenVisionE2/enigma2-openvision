@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-09 04:00+0330\n"
+"POT-Creation-Date: 2019-10-10 20:09+0330\n"
 "PO-Revision-Date: 2019-05-15 22:50+0200\n"
 "Last-Translator: Jose Juan <jzapater@gmail.com>\n"
 "Language-Team: ANGELODOS  angelo2807@hotmail.com\n"
@@ -47,9 +47,10 @@ msgstr ""
 "Desactivada la deteccion de conflictos!"
 
 #
+#, fuzzy
 msgid ""
 "\n"
-"Edit the upgrade source address."
+"Edit the update source address."
 msgstr ""
 "\n"
 "Editar la dirección fuente de actualización."
@@ -4711,16 +4712,17 @@ msgstr "¿Quiere continuar esta reproducción?"
 msgid "Do you want to select a different skin?"
 msgstr "¿Desea seleccionar una piel diferente?"
 
+#
+#, fuzzy
+msgid "Do you want to update the package:\n"
+msgstr "Quiere actualizar el paquete:\n"
+
 #, python-format
 msgid "Do you want to update your receiver to %s?"
 msgstr "¿Quiere descargar la imagen a %s?"
 
 msgid "Do you want to update your receiver?"
 msgstr "¿Desea actualizar su receptor?"
-
-#
-msgid "Do you want to upgrade the package:\n"
-msgstr "Quiere actualizar el paquete:\n"
 
 #, fuzzy
 msgid "Documentary"
@@ -4771,9 +4773,9 @@ msgid "Done"
 msgstr "Hecho"
 
 #
-#, python-format
-msgid "Done - Installed, upgraded or removed %d package (%s)"
-msgid_plural "Done - Installed, upgraded or removed %d packages (%s)"
+#, fuzzy, python-format
+msgid "Done - Installed, updated or removed %d package (%s)"
+msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Hecho - Instalado, actualizado o eliminados %d paquetes con %s errores"
 msgstr[1] "Hecho - Instalado, actualizado o eliminados %d paquetes con %s errores"
 
@@ -4937,7 +4939,8 @@ msgid "Edit title"
 msgstr "Editar título"
 
 #
-msgid "Edit upgrade source url."
+#, fuzzy
+msgid "Edit update source url."
 msgstr "Editar url de fuente de actualización."
 
 #
@@ -7183,7 +7186,8 @@ msgstr "Última config:"
 msgid "Last speed"
 msgstr "Última velocidad"
 
-msgid "Last upgrade: "
+#, fuzzy
+msgid "Last update: "
 msgstr "Última actualización:"
 
 msgctxt "third event: 'third' event label"
@@ -7193,7 +7197,8 @@ msgstr ""
 msgid "Latest Commits"
 msgstr "Últimos compromisos"
 
-msgid "Latest upgrade log"
+#, fuzzy
+msgid "Latest update log"
 msgstr "Último registro de actualización"
 
 #
@@ -8702,7 +8707,8 @@ msgstr "Progreso general:"
 msgid "Overscan wizard"
 msgstr "Overscan wizard"
 
-msgid "Overwrite configuration files during software upgrade?"
+#, fuzzy
+msgid "Overwrite configuration files during software update?"
 msgstr "¿Sobreescribir los ficheros de configuración durante la actualización del software?"
 
 msgid "Overwrite configuration files?"
@@ -9809,13 +9815,15 @@ msgid "Really store at index %2d for current position?"
 msgstr "Realmente almacenar en el índice% 2d para la posición actual?"
 
 #, fuzzy
-msgid "Really upgrade the front panel and reboot now?"
+msgid "Really update the front panel and reboot now?"
 msgstr "Realmente actualizar el frontprocessor y reiniciar ahora?"
 
-msgid "Really upgrade the frontprocessor and reboot now?"
+#, fuzzy
+msgid "Really update the frontprocessor and reboot now?"
 msgstr "Realmente actualizar el frontprocessor y reiniciar ahora?"
 
-msgid "Really upgrade your settop box and reboot now?"
+#, fuzzy
+msgid "Really update your settop box and reboot now?"
 msgstr "Realmente actualizar su caja settop y reiniciar ahora?"
 
 #
@@ -10051,6 +10059,11 @@ msgstr "Repetir tipo"
 
 msgid "Repeat leave standby messages"
 msgstr "Repetir mensajes de espera de espera"
+
+#
+#, fuzzy
+msgid "Repeat playlist"
+msgstr "repetir liste de reproducción"
 
 #
 msgid "Repeat type"
@@ -10483,8 +10496,18 @@ msgid "Save changes"
 msgstr "Guardar cambios"
 
 #
+#, fuzzy
+msgid "Save last directory on exit"
+msgstr "guardar el último directorio al salir"
+
+#
 msgid "Save playlist"
 msgstr "Guardar lista de reproducción"
+
+#
+#, fuzzy
+msgid "Save playlist on exit"
+msgstr "guardar la lista al salir"
 
 msgid "Save settings and EPG data"
 msgstr "Guarde la configuración y los datos EPG"
@@ -10969,11 +10992,13 @@ msgid "Select the virtual keyboard shifted character set for the next character 
 msgstr "Seleccione el teclado virtual cambiado el conjunto de caracteres"
 
 #
-msgid "Select upgrade source"
+#, fuzzy
+msgid "Select update source"
 msgstr "Seleccionar fuente de actualización"
 
 #
-msgid "Select upgrade source to edit."
+#, fuzzy
+msgid "Select update source to edit."
 msgstr "Seleccione fuente de actualización a editar."
 
 #
@@ -11551,13 +11576,18 @@ msgstr "Mostrar la infobar al pasar adelante/atras"
 msgid "Show latest commits"
 msgstr "Mostrar los últimos compromisos"
 
-msgid "Show latest upgrade log"
+#, fuzzy
+msgid "Show latest update log"
 msgstr "Mostrar el último registro de actualización"
 
 #
 #, fuzzy
 msgid "Show log"
 msgstr "Mostrar información"
+
+#, fuzzy
+msgid "Show media player on main menu"
+msgstr "Mostrar mediaplayer en mainmenu"
 
 msgid "Show menu or plugin numbers"
 msgstr "Mostrar números de menú o plugin"
@@ -11591,7 +11621,8 @@ msgstr "Mostrar notificación cuando los canales de importación no tuvieron éx
 msgid "Show notification when import channels was successful"
 msgstr "Mostrar notificación cuando los canales de importación tuvieron éxito"
 
-msgid "Show packages to be upgraded"
+#, fuzzy
+msgid "Show packages to be updated"
 msgstr "Mostrar los paquetes que se van a actualizar"
 
 msgid "Show picons in channel selection list"
@@ -12022,6 +12053,10 @@ msgstr "¿Ordenar la lista de complementos por defecto?"
 msgid "Sort time"
 msgstr "Hora de la orden"
 
+#, fuzzy
+msgid "Sorting of playlists"
+msgstr "Clasificación de listas de reproducción"
+
 #
 msgid "Sound"
 msgstr "Sonido"
@@ -12170,6 +12205,11 @@ msgstr "Comenzar test"
 #, fuzzy
 msgid "Start cut"
 msgstr "Comenzar test"
+
+#
+#, fuzzy
+msgid "Start directory"
+msgstr "directorio de inicio"
 
 #
 msgid "Start from the beginning"
@@ -13891,12 +13931,13 @@ msgid "Updatefeed not available."
 msgstr "Updatefeed no disponible."
 
 #
-msgid "Updating software catalog"
-msgstr "Actualizando el catálogo de software"
+#, fuzzy
+msgid "Updating"
+msgstr "Actualizar"
 
 #
-msgid "Upgrading"
-msgstr "Actualizando"
+msgid "Updating software catalog"
+msgstr "Actualizando el catálogo de software"
 
 msgid "Upper case"
 msgstr "Mayúsculas"
@@ -14489,7 +14530,8 @@ msgstr ""
 msgid "What type of service scan do you want?"
 msgstr "¿Qué tipo de escaneo de servicio quieres?"
 
-msgid "When enabled enigma2 will load unlinked userbouquets. This means that userbouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are upgraded"
+#, fuzzy
+msgid "When enabled enigma2 will load unlinked userbouquets. This means that userbouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are updated"
 msgstr "Cuando está habilitado, enigma2 cargará los usuarios desvinculados. Esto significa que los userbouquets que están disponibles, pero que no están incluidos en los archivos bouquets.tv o bouquets.radio, seguirán cargándose. Esto le permite, por ejemplo, mantener su propio ramo de usuario mientras se instalan los ajustes instalados"
 
 msgid "When enabled the PiP can be closed by the exit button."
@@ -14967,15 +15009,16 @@ msgstr "¡Su colección actual se perdió!"
 
 #, fuzzy
 msgid ""
-"Your front panel will be upgraded\n"
+"Your front panel will be updated\n"
 "This may take a few minutes"
 msgstr ""
 "Tu procesador de front se actualizará\n"
 "Espere hasta que el receptor se reinicie\n"
 "Esto puede tomar unos pocos minutos"
 
+#, fuzzy
 msgid ""
-"Your frontprocessor will be upgraded\n"
+"Your frontprocessor will be updated\n"
 "Please wait until your receiver reboots\n"
 "This may take a few minutes"
 msgstr ""
@@ -16365,10 +16408,6 @@ msgid "rename entry"
 msgstr "Renombrar entrada"
 
 #
-msgid "repeat playlist"
-msgstr "repetir liste de reproducción"
-
-#
 msgid "repeated"
 msgstr "repetido"
 
@@ -16416,14 +16455,6 @@ msgstr "romance"
 #, fuzzy
 msgid "running..."
 msgstr "Exploración…"
-
-#
-msgid "save last directory on exit"
-msgstr "guardar el último directorio al salir"
-
-#
-msgid "save playlist on exit"
-msgstr "guardar la lista al salir"
 
 #
 msgid "scan state"
@@ -16484,9 +16515,6 @@ msgstr "mostrar alternativas"
 #
 msgid "show event details"
 msgstr "mostrar detalles del evento"
-
-msgid "show mediaplayer on mainmenu"
-msgstr "Mostrar mediaplayer en mainmenu"
 
 msgid "show softwaremanager in setup menu"
 msgstr "Show softwaremanager en el menú de configuración"
@@ -16573,9 +16601,6 @@ msgstr "Cuestiones sociales / políticas / economía (general)"
 msgid "social/spiritual science"
 msgstr "Ciencia social / espiritual"
 
-msgid "sorting of playlists"
-msgstr "Clasificación de listas de reproducción"
-
 #, fuzzy
 msgid "special (general)"
 msgstr "Deportes (general)"
@@ -16616,10 +16641,6 @@ msgstr "comenzar corte aquí"
 #, fuzzy
 msgid "start cut here (reset)"
 msgstr "comenzar corte aquí"
-
-#
-msgid "start directory"
-msgstr "directorio de inicio"
 
 msgid "stepsize"
 msgstr "Numero de pie"

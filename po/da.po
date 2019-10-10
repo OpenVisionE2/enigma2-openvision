@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-09 04:00+0330\n"
+"POT-Creation-Date: 2019-10-10 20:09+0330\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -46,9 +46,10 @@ msgstr ""
 "Konflikt detektion deaktiveret!"
 
 #
+#, fuzzy
 msgid ""
 "\n"
-"Edit the upgrade source address."
+"Edit the update source address."
 msgstr ""
 "\n"
 "Rediger kildeadressen til opgradering."
@@ -4762,16 +4763,17 @@ msgstr "Vil du genoptage denne afspilning?"
 msgid "Do you want to select a different skin?"
 msgstr "Vil du vælge et andet skin?"
 
+#
+#, fuzzy
+msgid "Do you want to update the package:\n"
+msgstr "Vil du opgradere pakken:\n"
+
 #, python-format
 msgid "Do you want to update your receiver to %s?"
 msgstr "Vil du hente opdateringer til din receiver %s ?"
 
 msgid "Do you want to update your receiver?"
 msgstr "Vil du opdatere din receiver?"
-
-#
-msgid "Do you want to upgrade the package:\n"
-msgstr "Vil du opgradere pakken:\n"
 
 #, fuzzy
 msgid "Documentary"
@@ -4822,9 +4824,9 @@ msgid "Done"
 msgstr ""
 
 #
-#, python-format
-msgid "Done - Installed, upgraded or removed %d package (%s)"
-msgid_plural "Done - Installed, upgraded or removed %d packages (%s)"
+#, fuzzy, python-format
+msgid "Done - Installed, updated or removed %d package (%s)"
+msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Færdig - Installeret, opgraderet eller fjernet %d pakken (%s)"
 msgstr[1] "Færdig - Installeret, opgraderet eller fjernet %d pakkerne (%s)"
 
@@ -4995,7 +4997,8 @@ msgid "Edit title"
 msgstr "Rediger titel"
 
 #
-msgid "Edit upgrade source url."
+#, fuzzy
+msgid "Edit update source url."
 msgstr "Rediger url for opgraderingskilde."
 
 #
@@ -7276,7 +7279,8 @@ msgstr "Seneste opsætning"
 msgid "Last speed"
 msgstr "Sidste hastighed"
 
-msgid "Last upgrade: "
+#, fuzzy
+msgid "Last update: "
 msgstr "Seneste opdatering"
 
 msgctxt "third event: 'third' event label"
@@ -7287,7 +7291,7 @@ msgid "Latest Commits"
 msgstr "Seneste commit"
 
 #, fuzzy
-msgid "Latest upgrade log"
+msgid "Latest update log"
 msgstr "Vis seneste opgraderingslog"
 
 #
@@ -8834,7 +8838,8 @@ msgstr "Overordnet fremskridt:"
 msgid "Overscan wizard"
 msgstr "Overscan guide"
 
-msgid "Overwrite configuration files during software upgrade?"
+#, fuzzy
+msgid "Overwrite configuration files during software update?"
 msgstr "Overskriv konfigurationsfilerne under softwareopdateringen?"
 
 msgid "Overwrite configuration files?"
@@ -9965,13 +9970,15 @@ msgid "Really store at index %2d for current position?"
 msgstr "Ønsker du virkelig at gemme indeks %2d på nuværende position?"
 
 #, fuzzy
-msgid "Really upgrade the front panel and reboot now?"
+msgid "Really update the front panel and reboot now?"
 msgstr "Opdater frontprocessor og genstart nu?"
 
-msgid "Really upgrade the frontprocessor and reboot now?"
+#, fuzzy
+msgid "Really update the frontprocessor and reboot now?"
 msgstr "Opdater frontprocessor og genstart nu?"
 
-msgid "Really upgrade your settop box and reboot now?"
+#, fuzzy
+msgid "Really update your settop box and reboot now?"
 msgstr "Opdater boksen og genstart nu?"
 
 #
@@ -10211,6 +10218,11 @@ msgstr "Gentagelses type"
 
 msgid "Repeat leave standby messages"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Repeat playlist"
+msgstr "gentag afspilningsliste"
 
 #
 msgid "Repeat type"
@@ -10668,8 +10680,18 @@ msgid "Save changes"
 msgstr "Gem ændringer"
 
 #
+#, fuzzy
+msgid "Save last directory on exit"
+msgstr "gem seneste mappe ved afbrydelse"
+
+#
 msgid "Save playlist"
 msgstr "Gem spilleliste"
+
+#
+#, fuzzy
+msgid "Save playlist on exit"
+msgstr "gem afspilningsliste ved afbrydelse"
 
 msgid "Save settings and EPG data"
 msgstr ""
@@ -11168,11 +11190,13 @@ msgid "Select the virtual keyboard shifted character set for the next character 
 msgstr ""
 
 #
-msgid "Select upgrade source"
+#, fuzzy
+msgid "Select update source"
 msgstr "Vælg opgraderingskilde"
 
 #
-msgid "Select upgrade source to edit."
+#, fuzzy
+msgid "Select update source to edit."
 msgstr "Vælg opgraderingskilde til redigering."
 
 #
@@ -11765,13 +11789,18 @@ msgstr "Vis infobjælke ved skip fremspoling/tilbagespoling"
 msgid "Show latest commits"
 msgstr "Vis seneste commits"
 
-msgid "Show latest upgrade log"
+#, fuzzy
+msgid "Show latest update log"
 msgstr "Vis seneste opgraderingslog"
 
 #
 #, fuzzy
 msgid "Show log"
 msgstr "Vis info"
+
+#, fuzzy
+msgid "Show media player on main menu"
+msgstr "vis mediaplayer på hovedmenu"
 
 #, fuzzy
 msgid "Show menu or plugin numbers"
@@ -11805,7 +11834,8 @@ msgstr ""
 msgid "Show notification when import channels was successful"
 msgstr ""
 
-msgid "Show packages to be upgraded"
+#, fuzzy
+msgid "Show packages to be updated"
 msgstr "Vis pakker der skal opgraderes"
 
 msgid "Show picons in channel selection list"
@@ -12249,6 +12279,10 @@ msgstr "Sorter plugin liste til default?"
 msgid "Sort time"
 msgstr "Sorter tid"
 
+#, fuzzy
+msgid "Sorting of playlists"
+msgstr "sortering af spilleliste"
+
 #
 msgid "Sound"
 msgstr "Lyd"
@@ -12405,6 +12439,11 @@ msgstr "Start test"
 #, fuzzy
 msgid "Start cut"
 msgstr "Start test"
+
+#
+#, fuzzy
+msgid "Start directory"
+msgstr "start mappe"
 
 #
 msgid "Start from the beginning"
@@ -14161,12 +14200,13 @@ msgid "Updatefeed not available."
 msgstr "Opdateringsservice er ikke tilgengælig."
 
 #
-msgid "Updating software catalog"
-msgstr "Opdaterer softwarekatalog"
+#, fuzzy
+msgid "Updating"
+msgstr "Opdater"
 
 #
-msgid "Upgrading"
-msgstr "Opdaterer"
+msgid "Updating software catalog"
+msgstr "Opdaterer softwarekatalog"
 
 msgid "Upper case"
 msgstr ""
@@ -14769,7 +14809,8 @@ msgstr ""
 msgid "What type of service scan do you want?"
 msgstr ""
 
-msgid "When enabled enigma2 will load unlinked userbouquets. This means that userbouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are upgraded"
+#, fuzzy
+msgid "When enabled enigma2 will load unlinked userbouquets. This means that userbouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are updated"
 msgstr "Når aktiveret vil enigma2 indlæse ikke sammenkædet brugerbouquets. Dette betyder at brugerbouquets der er tilgængelig, men ikke inkluderet i bouquets.tv eller bouquets.radio filer, vil stadig blive indlæst. Dette tillader dig f.eks. til at beholde dine egn brugerbouquet imens installerede indstillinger bliver opgraderet"
 
 msgid "When enabled the PiP can be closed by the exit button."
@@ -15247,15 +15288,16 @@ msgstr "Din nuværende samling vil forsvinde!"
 
 #, fuzzy
 msgid ""
-"Your front panel will be upgraded\n"
+"Your front panel will be updated\n"
 "This may take a few minutes"
 msgstr ""
 "din frontprocessor bliver opdateret\n"
 "Vent venligst til din modtager genstarter\n"
 "Dette kan tage nogle minutter"
 
+#, fuzzy
 msgid ""
-"Your frontprocessor will be upgraded\n"
+"Your frontprocessor will be updated\n"
 "Please wait until your receiver reboots\n"
 "This may take a few minutes"
 msgstr ""
@@ -16653,10 +16695,6 @@ msgid "rename entry"
 msgstr "omdøb punkt"
 
 #
-msgid "repeat playlist"
-msgstr "gentag afspilningsliste"
-
-#
 msgid "repeated"
 msgstr "gentaget"
 
@@ -16704,14 +16742,6 @@ msgstr "romantik"
 #, fuzzy
 msgid "running..."
 msgstr "Søger"
-
-#
-msgid "save last directory on exit"
-msgstr "gem seneste mappe ved afbrydelse"
-
-#
-msgid "save playlist on exit"
-msgstr "gem afspilningsliste ved afbrydelse"
 
 #
 msgid "scan state"
@@ -16772,9 +16802,6 @@ msgstr "Vis alternativer"
 #
 msgid "show event details"
 msgstr "vis program detaljer"
-
-msgid "show mediaplayer on mainmenu"
-msgstr "vis mediaplayer på hovedmenu"
 
 msgid "show softwaremanager in setup menu"
 msgstr "vis softwaremanager i setup menuen"
@@ -16861,9 +16888,6 @@ msgstr "social/politiske emner/økonomi"
 msgid "social/spiritual science"
 msgstr "social/spirituel science"
 
-msgid "sorting of playlists"
-msgstr "sortering af spilleliste"
-
 #, fuzzy
 msgid "special (general)"
 msgstr "sport"
@@ -16904,10 +16928,6 @@ msgstr "start klip her"
 #, fuzzy
 msgid "start cut here (reset)"
 msgstr "start klip her"
-
-#
-msgid "start directory"
-msgstr "start mappe"
 
 msgid "stepsize"
 msgstr "trinstørrelse"
