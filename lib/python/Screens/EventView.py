@@ -37,7 +37,10 @@ class EventViewBase:
 		self["datetime"] = Label()
 		self["channel"] = Label()
 		self["duration"] = Label()
-		self["key_red"] = StaticText("")
+		if self['Event'] == StaticText:
+			self["key_red"] = StaticText("")
+		else:
+			self["key_red"] = Button("")
 		if similarEPGCB is not None:
 			self.SimilarBroadcastTimer = eTimer()
 			self.SimilarBroadcastTimer.callback.append(self.getSimilarEvents)
@@ -45,11 +48,23 @@ class EventViewBase:
 			self.SimilarBroadcastTimer = None
 		self.key_green_choice = self.ADD_TIMER
 		if self.isRecording:
-			self["key_green"] = StaticText("")
+			if self['Event'] == StaticText:
+				self["key_green"] = StaticText("")
+			else:
+				self["key_green"] = Button("")
 		else:
-			self["key_green"] = StaticText(_("Add timer"))
-		self["key_yellow"] = StaticText("")
-		self["key_blue"] = StaticText("")
+			if self['Event'] == StaticText:
+				self["key_green"] = StaticText(_("Add timer"))
+			else:
+				self["key_green"] = Button(_("Add timer"))
+		if self['Event'] == StaticText:
+			self["key_yellow"] = StaticText("")
+		else:
+			self["key_yellow"] = Button("")
+		if self['Event'] == StaticText:
+			self["key_blue"] = StaticText("")
+		else:
+			self["key_blue"] = Button("")
 		self["actions"] = ActionMap(["OkCancelActions", "EventViewActions"],
 			{
 				"cancel": self.close,

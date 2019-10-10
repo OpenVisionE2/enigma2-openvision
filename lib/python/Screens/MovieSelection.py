@@ -573,10 +573,16 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		# Need list for init
 		SelectionEventInfo.__init__(self)
 
-		self["key_red"] = StaticText("")
-		self["key_green"] = StaticText("")
-		self["key_yellow"] = StaticText("")
-		self["key_blue"] = StaticText("")
+		if userDefinedButtons == StaticText:
+			self["key_red"] = StaticText("")
+			self["key_green"] = StaticText("")
+			self["key_yellow"] = StaticText("")
+			self["key_blue"] = StaticText("")
+		else:
+			self["key_red"] = Button("")
+			self["key_green"] = Button("")
+			self["key_yellow"] = Button("")
+			self["key_blue"] = Button("")
 		self["movie_off"] = MultiPixmap()
 		self["movie_off"].hide()
 		self["movie_sort"] = MultiPixmap()

@@ -38,10 +38,16 @@ class TimerEntry(Screen, ConfigListScreen):
 		self.entryDate = None
 		self.entryService = None
 
-		self["key_red"] = StaticText(_("Cancel"))
-		self["key_green"] = StaticText(_("Save"))
-		self["key_yellow"] = StaticText(_("Timer type"))
-		self["key_blue"] = StaticText("")
+		if self.entryService == StaticText:
+			self["key_red"] = StaticText(_("Cancel"))
+			self["key_green"] = StaticText(_("Save"))
+			self["key_yellow"] = StaticText(_("Timer type"))
+			self["key_blue"] = StaticText("")
+		else:
+			self["oktext"] = Label(_("OK"))
+			self["canceltext"] = Label(_("Cancel"))
+			self["ok"] = Pixmap()
+			self["cancel"] = Pixmap()
 
 		self["actions"] = NumberActionMap(["SetupActions", "GlobalActions", "PiPSetupActions", "ColorActions"],
 		{
