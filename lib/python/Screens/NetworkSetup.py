@@ -500,7 +500,7 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 			{
 			"red": (self.cancel, _("Exit IPv6 configuration")),
 			"green": (self.ok, _("Activate IPv6 configuration")),
-			"blue": (self.restoreinetdData, _("Restore inetd.conf")),
+			"blue": (self.restoreinetdData2, _("Restore inetd.conf")),
 			})
 
 		self["actions"] = NumberActionMap(["SetupActions"],
@@ -526,8 +526,14 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
 
-	def restoreinetdData(self):
-		inetdData  = "# /etc/inetd.conf:  see inetd(music) for further informations.\n"
+	def restoreinetdData2(self):
+		sockTypetcp = "tcp"
+		sockTypeudp = "udp"
+		if self.IPv6ConfigEntry.value == True:
+			sockTypetcp = "tcp6"
+			sockTypeudp = "udp6"
+			
+		inetdData  = "# /etc/inetd.conf:  see inetd(8) for further informations.\n"
 		inetdData += "#\n"
 		inetdData += "# Internet server configuration database\n"
 		inetdData += "#\n"
@@ -537,35 +543,19 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		inetdData += "# <service_name> <sock_type> <proto> <flags> <user> <server_path> <args>\n"
 		inetdData += "#\n"
 		inetdData += "#:INTERNAL: Internal services\n"
-		inetdData += "#echo	stream	tcp	nowait	root	internal\n"
-		inetdData += "#echo	dgram	udp	wait	root	internal\n"
-		inetdData += "#chargen	stream	tcp	nowait	root	internal\n"
-		inetdData += "#chargen	dgram	udp	wait	root	internal\n"
-		inetdData += "#discard	stream	tcp	nowait	root	internal\n"
-		inetdData += "#discard	dgram	udp	wait	root	internal\n"
-		inetdData += "#daytime	stream	tcp	nowait	root	internal\n"
-		inetdData += "#daytime	dgram	udp	wait	root	internal\n"
+		inetdData += "#echo	stream	" + sockTypetcp + "	nowait	root	internal\n"
+		inetdData += "#echo	dgram	" + sockTypeudp + "	wait	root	internal\n"
+		inetdData += "#chargen	stream	" + sockTypetcp + "	nowait	root	internal\n"
+		inetdData += "#chargen	dgram	" + sockTypeudp + "	wait	root	internal\n"
+		inetdData += "#discard	stream	" + sockTypetcp + "	nowait	root	internal\n"
+		inetdData += "#discard	dgram	" + sockTypeudp + "	wait	root	internal\n"
+		inetdData += "#daytime	stream	" + sockTypetcp + "	nowait	root	internal\n"
+		inetdData += "#daytime	dgram	" + sockTypeudp + "	wait	root	internal\n"
 		inetdData += "#time	stream	tcp	nowait	root	internal\n"
-		inetdData += "#time	dgram	udp	wait	root	internal\n"
-
-		if self.IPv6ConfigEntry.value == True:
-			inetdData += "ftp	stream	tcp6	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
-		else:
-			inetdData += "#ftp	stream	tcp	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
-		inetdData += "#ftp	stream	tcp	nowait	root	ftpd	ftpd -w /\n"
-
-		if self.IPv6ConfigEntry.value == True:
-			inetdData += "telnet	stream	tcp6	nowait	root	/usr/sbin/telnetd	telnetd\n"
-		else:
-			inetdData += "#telnet	stream	tcp	nowait	root	/usr/sbin/telnetd	telnetd\n"
-		if self.IPv6ConfigEntry.value == False:
-			inetdData += "ftp	stream	tcp	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
-		else:
-			inetdData += "#ftp	stream	tcp6	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
-		if self.IPv6ConfigEntry.value == False:
-			inetdData += "telnet	stream	tcp	nowait	root	/usr/sbin/telnetd	telnetd\n"
-		else:
-			inetdData += "#telnet	stream	tcp6	nowait	root	/usr/sbin/telnetd	telnetd\n"			
+		inetdData += "#time	dgram	" + sockTypeudp + "	wait	root	internal\n"
+		inetdData += "ftp	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
+		inetdData += "#ftp	stream	" + sockTypetcp + "	nowait	root	ftpd	ftpd -w /\n"
+		inetdData += "telnet	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/telnetd	telnetd\n"			
 
 		if fileExists("/usr/sbin/smbd") and self.IPv6ConfigEntry.value == True:
 			inetdData += "#microsoft-ds	stream	tcp6	nowait	root	/usr/sbin/smbd	smbd\n"
@@ -607,7 +597,7 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		else:
 			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("0")
 			Console().ePopen('rm -R %s' % ipv6)
-		self.restoreinetdData()
+		self.restoreinetdData2()
 		self.close()
 
 	def run(self):
@@ -1069,6 +1059,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		self["Statustext"] = StaticText()
 		self["statuspic"] = MultiPixmap()
 		self["statuspic"].hide()
+		self["devicepic"] = MultiPixmap()		
 
 		self.oktext = _("Press OK on your remote control to continue.")
 		self.reboottext = _("Your receiver will restart after pressing OK on your remote control.")
@@ -1232,6 +1223,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		self["Statustext"].setText(_("Link:"))
 
 		if iNetwork.isWirelessInterface(self.iface):
+			self["devicepic"].setPixmapNum(1)		
 			try:
 				from Plugins.SystemPlugins.WirelessLan.Wlan import iStatus
 			except:
@@ -1241,6 +1233,8 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 				iStatus.getDataForInterface(self.iface,self.getInfoCB)
 		else:
 			iNetwork.getLinkState(self.iface,self.dataAvail)
+			self["devicepic"].setPixmapNum(0)
+		self["devicepic"].show()			
 
 	def doNothing(self):
 		pass
