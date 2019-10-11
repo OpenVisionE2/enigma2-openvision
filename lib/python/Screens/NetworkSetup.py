@@ -556,34 +556,15 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		inetdData += "ftp	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
 		inetdData += "#ftp	stream	" + sockTypetcp + "	nowait	root	ftpd	ftpd -w /\n"
 		inetdData += "telnet	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/telnetd	telnetd\n"			
+		if fileExists("/usr/sbin/smbd"):
+			inetdData += "#microsoft-ds	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/smbd	smbd\n"
+		if fileExists("/usr/sbin/nmbd"):
+			inetdData += "#netbios-ns	dgram	" + sockTypeudp + "	wait	root	/usr/sbin/nmbd	nmbd\n"
+		if fileExists("/usr/bin/streamproxy"):
+			inetdData += "8001	stream	" + sockTypetcp + "	nowait	root	/usr/bin/streamproxy	streamproxy\n"
 
-		if fileExists("/usr/sbin/smbd") and self.IPv6ConfigEntry.value == True:
-			inetdData += "#microsoft-ds	stream	tcp6	nowait	root	/usr/sbin/smbd	smbd\n"
-		elif fileExists("/usr/sbin/smbd") and self.IPv6ConfigEntry.value == False:
-			inetdData += "#microsoft-ds	stream	tcp	nowait	root	/usr/sbin/smbd	smbd\n"
-		else:
-			pass
-
-		if fileExists("/usr/sbin/nmbd") and self.IPv6ConfigEntry.value == True:
-			inetdData += "#netbios-ns	dgram	udp6	wait	root	/usr/sbin/nmbd	nmbd\n"
-		elif fileExists("/usr/sbin/nmbd") and self.IPv6ConfigEntry.value == False:
-			inetdData += "#netbios-ns	dgram	udp	wait	root	/usr/sbin/nmbd	nmbd\n"
-		else:
-			pass
-
-		if fileExists("/usr/bin/streamproxy") and self.IPv6ConfigEntry.value == True:
-			inetdData += "#8001	stream	tcp6	nowait	root	/usr/bin/streamproxy	streamproxy\n"
-		elif fileExists("/usr/bin/streamproxy") and self.IPv6ConfigEntry.value == False:
-			inetdData += "#8001	stream	tcp	nowait	root	/usr/bin/streamproxy	streamproxy\n"
-		else:
-			pass
-
-		if fileExists("/usr/bin/transtreamproxy") and self.IPv6ConfigEntry.value == True:
-			inetdData += "8002	stream	tcp6	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
-		elif fileExists("/usr/bin/transtreamproxy") and self.IPv6ConfigEntry.value == False:
-			inetdData += "8002	stream	tcp	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
-		else:
-			pass
+		if getBoxType() in ("gbquad4k","gbquad","gbquadplus"):
+			inetdData += "8002	stream	" + sockTypetcp + "	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
 
 		open("/etc/inetd.conf", "w").write(inetdData)
 
@@ -665,7 +646,7 @@ class InetdRecovery(Screen, ConfigListScreen):
 		if fileExists("/usr/sbin/nmbd"):
 			inetdData += "#netbios-ns	dgram	" + sockTypeudp + "	wait	root	/usr/sbin/nmbd	nmbd\n"
 		if fileExists("/usr/bin/streamproxy"):
-			inetdData += "#8001	stream	" + sockTypetcp + "	nowait	root	/usr/bin/streamproxy	streamproxy\n"
+			inetdData += "8001	stream	" + sockTypetcp + "	nowait	root	/usr/bin/streamproxy	streamproxy\n"
 
 		if getBoxType() in ("gbquad4k","gbquad","gbquadplus"):
 			inetdData += "8002	stream	" + sockTypetcp + "	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
@@ -2431,7 +2412,6 @@ class NetworkTelnet(NSCommon,Screen):
 		self['key_green'] = Label(_("Start"))
 		self['key_red'] = Label(_("Remove service"))
 		self['key_yellow'] = Label(_("Autostart"))
-		self['key_blue'] = Label(_("Show log"))
 		self.Console = Console()
 		self.my_telnet_active = False
 		self.my_telnet_run = False
