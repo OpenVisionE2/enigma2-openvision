@@ -12,6 +12,7 @@ from Components.NimManager import nimmanager
 from Components.SystemInfo import SystemInfo
 from Components.UsageConfig import defaultMoviePath
 from Components.Button import Button
+from Components.Pixmap import Pixmap
 from Screens.MovieSelection import getPreferredTagEditor
 from Screens.LocationBox import MovieLocationBox
 from Screens.ChoiceBox import ChoiceBox
