@@ -11,8 +11,6 @@ from Components.Label import Label
 from Components.NimManager import nimmanager
 from Components.SystemInfo import SystemInfo
 from Components.UsageConfig import defaultMoviePath
-from Components.Button import Button
-from Components.Pixmap import Pixmap
 from Screens.MovieSelection import getPreferredTagEditor
 from Screens.LocationBox import MovieLocationBox
 from Screens.ChoiceBox import ChoiceBox
@@ -40,16 +38,10 @@ class TimerEntry(Screen, ConfigListScreen):
 		self.entryDate = None
 		self.entryService = None
 
-		if self.entryService == StaticText:
-			self["key_red"] = StaticText(_("Cancel"))
-			self["key_green"] = StaticText(_("Save"))
-			self["key_yellow"] = StaticText(_("Timer type"))
-			self["key_blue"] = StaticText("")
-		else:
-			self["oktext"] = Label(_("OK"))
-			self["canceltext"] = Label(_("Cancel"))
-			self["ok"] = Pixmap()
-			self["cancel"] = Pixmap()
+		self["key_red"] = StaticText(_("Cancel"))
+		self["key_green"] = StaticText(_("Save"))
+		self["key_yellow"] = StaticText(_("Timer type"))
+		self["key_blue"] = StaticText("")
 
 		self["actions"] = NumberActionMap(["SetupActions", "GlobalActions", "PiPSetupActions", "ColorActions"],
 		{
@@ -220,19 +212,14 @@ class TimerEntry(Screen, ConfigListScreen):
 
 		self.entryShowEndTime = getConfigListEntry(_("Set end time"), self.timerentry_showendtime)
 		self.entryZapWakeup = getConfigListEntry(_("Wakeup receiver for start timer"), self.timerentry_zapwakeup)
-		if self.entryService == StaticText:
-			if self.timerentry_justplay.value == "zap":
-				self.list.append(self.entryZapWakeup)
-				if SystemInfo["PIPAvailable"]:
-					self.list.append(getConfigListEntry(_("Use as PiP if possible"), self.timerentry_pipzap))
-				self.list.append(self.entryShowEndTime)
-				self["key_blue"].setText(_("Wakeup type"))
-			else:
-				self["key_blue"].setText("")
- 		else:
-			if self.timerentry_justplay.value == "zap":
-				self.list.append(self.entryZapWakeup)
-				self.list.append(self.entryShowEndTime)
+		if self.timerentry_justplay.value == "zap":
+			self.list.append(self.entryZapWakeup)
+			if SystemInfo["PIPAvailable"]:
+				self.list.append(getConfigListEntry(_("Use as PiP if possible"), self.timerentry_pipzap))
+			self.list.append(self.entryShowEndTime)
+			self["key_blue"].setText(_("Wakeup type"))
+		else:
+			self["key_blue"].setText("")
 		self.entryEndTime = getConfigListEntry(_("End time"), self.timerentry_endtime)
 		if self.timerentry_justplay.value != "zap" or self.timerentry_showendtime.value:
 			self.list.append(self.entryEndTime)
