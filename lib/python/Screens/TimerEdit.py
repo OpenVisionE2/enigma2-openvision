@@ -5,6 +5,7 @@ from Components.config import config
 from Components.TimerList import TimerList
 from Components.TimerSanityCheck import TimerSanityCheck
 from Components.UsageConfig import preferredTimerPath
+from Components.Button import Button
 from RecordTimer import RecordTimerEntry, parseEvent, AFTEREVENT, createRecordTimerEntry
 from Screen import Screen
 from Screens.ChoiceBox import ChoiceBox

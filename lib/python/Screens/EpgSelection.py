@@ -23,6 +23,7 @@ from Components.PluginComponent import plugins
 from Plugins.Plugin import PluginDescriptor
 from Tools.BoundFunction import boundFunction
 from Tools.FallbackTimer import FallbackTimerList
+from Components.Button import Button
 
 mepg_config_initialized = False
 
