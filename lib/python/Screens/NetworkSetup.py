@@ -2053,9 +2053,7 @@ class NetworkFtp(NSCommon,Screen):
 		self['labstop'] = Label(_("Stopped"))
 		self['labrun'] = Label(_("Running"))
 		self['key_green'] = Label(_("Start"))
-		self["key_red"] = Label()
 		self['key_yellow'] = Label(_("Autostart"))
-		self["key_blue"] =  Label()
 		self.Console = Console()
 		self.my_ftp_active = False
 		self.my_ftp_run = False
@@ -2410,7 +2408,6 @@ class NetworkTelnet(NSCommon,Screen):
 		self['labstop'] = Label(_("Stopped"))
 		self['labrun'] = Label(_("Running"))
 		self['key_green'] = Label(_("Start"))
-		self['key_red'] = Label(_("Remove service"))
 		self['key_yellow'] = Label(_("Autostart"))
 		self.Console = Console()
 		self.my_telnet_active = False
