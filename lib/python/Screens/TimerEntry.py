@@ -220,14 +220,19 @@ class TimerEntry(Screen, ConfigListScreen):
 
 		self.entryShowEndTime = getConfigListEntry(_("Set end time"), self.timerentry_showendtime)
 		self.entryZapWakeup = getConfigListEntry(_("Wakeup receiver for start timer"), self.timerentry_zapwakeup)
-		if self.timerentry_justplay.value == "zap":
-			self.list.append(self.entryZapWakeup)
-			if SystemInfo["PIPAvailable"]:
-				self.list.append(getConfigListEntry(_("Use as PiP if possible"), self.timerentry_pipzap))
-			self.list.append(self.entryShowEndTime)
-			self["key_blue"].setText(_("Wakeup type"))
-		else:
-			self["key_blue"].setText("")
+		if self.entryService == StaticText:
+			if self.timerentry_justplay.value == "zap":
+				self.list.append(self.entryZapWakeup)
+				if SystemInfo["PIPAvailable"]:
+					self.list.append(getConfigListEntry(_("Use as PiP if possible"), self.timerentry_pipzap))
+				self.list.append(self.entryShowEndTime)
+				self["key_blue"].setText(_("Wakeup type"))
+			else:
+				self["key_blue"].setText("")
+ 		else:
+			if self.timerentry_justplay.value == "zap":
+				self.list.append(self.entryZapWakeup)
+				self.list.append(self.entryShowEndTime)
 		self.entryEndTime = getConfigListEntry(_("End time"), self.timerentry_endtime)
 		if self.timerentry_justplay.value != "zap" or self.timerentry_showendtime.value:
 			self.list.append(self.entryEndTime)
