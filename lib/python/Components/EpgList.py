@@ -207,11 +207,11 @@ class EPGList(GUIComponent):
 		else: # EPG_TYPE_SIMILAR
 			if self.skinColumns:
 				x = 0
-				self.weekday_rect = Rect(0, 0, self.gap(self.col[0]+80), height)
+				self.weekday_rect = Rect(0, 0, self.gap(self.col[0]+85), height)
 				x += self.col[0]
-				self.datetime_rect = Rect(x+80, 0, self.gap(self.col[1]), height)
+				self.datetime_rect = Rect(x+75, 0, self.gap(self.col[1]+15), height)
 				x += self.col[1]
-				self.service_rect = Rect(x+80, 0, width-x, height)
+				self.service_rect = Rect(x+85, 0, width-x, height)
 			else:
 				self.weekday_rect = Rect(0, 0, width/20*2-10, height)
 				self.datetime_rect = Rect(width/20*2, 0, width/20*5-15, height)
@@ -262,7 +262,7 @@ class EPGList(GUIComponent):
 		res = [
 			None,  # no private data needed
 			(eListboxPythonMultiContent.TYPE_TEXT, r1.x, r1.y, r1.w, r1.h, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, strftime(config.usage.date.dayshort.value, t)),
-			(eListboxPythonMultiContent.TYPE_TEXT, r2.x, r2.y, split, r2.h, 0, RT_HALIGN_RIGHT|RT_VALIGN_CENTER, strftime(config.usage.time.short.value + "  -", t)),
+			(eListboxPythonMultiContent.TYPE_TEXT, r2.x, r2.y, split, r2.h, 0, RT_HALIGN_RIGHT|RT_VALIGN_CENTER, strftime(config.usage.time.short.value + " -", t)),
 			(eListboxPythonMultiContent.TYPE_TEXT, r2.x + split, r2.y, r2.w - split, r2.h, 0, RT_HALIGN_RIGHT|RT_VALIGN_CENTER, strftime(config.usage.time.short.value, et))
 		]
 		if clock_types:
@@ -303,7 +303,7 @@ class EPGList(GUIComponent):
 					prefix = ""
 				res.extend((
 					(eListboxPythonMultiContent.TYPE_PROGRESS, r2.x, r2.y, self.tw, r2.h, percent),
-					(eListboxPythonMultiContent.TYPE_TEXT, r3.x, r3.y, self.gap(self.tw), r3.h, 1, RT_HALIGN_LEFT, _("%s%d min") % (prefix, remaining)),
+					(eListboxPythonMultiContent.TYPE_TEXT, r3.x, r3.y, self.gap(self.tw), r3.h, 1, RT_HALIGN_CENTER, _("%s%d min") % (prefix, remaining)),
 					(eListboxPythonMultiContent.TYPE_TEXT, r3.x + self.tw, r3.y, r3.w, r3.h, 0, RT_HALIGN_LEFT, EventName)
 				))
 		return res
