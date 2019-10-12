@@ -563,7 +563,7 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		if fileExists("/usr/bin/streamproxy"):
 			inetdData += "8001	stream	" + sockTypetcp + "	nowait	root	/usr/bin/streamproxy	streamproxy\n"
 
-		if getBoxType() in ("gbquad4k","gbquad","gbquadplus"):
+		if fileExists("/usr/bin/transtreamproxy"):
 			inetdData += "8002	stream	" + sockTypetcp + "	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
 
 		open("/etc/inetd.conf", "w").write(inetdData)
@@ -648,7 +648,7 @@ class InetdRecovery(Screen, ConfigListScreen):
 		if fileExists("/usr/bin/streamproxy"):
 			inetdData += "8001	stream	" + sockTypetcp + "	nowait	root	/usr/bin/streamproxy	streamproxy\n"
 
-		if getBoxType() in ("gbquad4k","gbquad","gbquadplus"):
+		if fileExists("/usr/bin/transtreamproxy"):
 			inetdData += "8002	stream	" + sockTypetcp + "	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
 			
 		file("/etc/inetd.conf", "w").write(inetdData)
