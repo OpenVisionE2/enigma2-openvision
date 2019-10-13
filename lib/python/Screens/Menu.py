@@ -40,7 +40,7 @@ def MenuEntryPixmap(entryID, png_cache, lastMenuID):
 		if png is None:
 			if lastMenuID is not None:
 				png = png_cache.get(lastMenuID, None)
-		png_cache[entryID] = png
+			png_cache[entryID] = png
 	if png is None:
 		png = png_cache.get('missing', None)
 		if png is None:
@@ -226,22 +226,20 @@ class Menu(Screen, ProtectedScreen):
 
 		# for the skin: first try a menu_<menuID>, then Menu
 		self.skinName = [ ]
-		skfile = '/usr/share/enigma2/' + config.skin.primary_skin.value
-		f1 = open(skfile, 'r')
-		self.sktxt = f1.read()
-		f1.close()
+		if 'horz' in config.usage.menutype.value:
+			skfile = '/usr/share/enigma2/' + config.skin.primary_skin.value
+			f1 = open(skfile, 'r')
+			self.sktxt = f1.read()
+			f1.close()
 		if self.menuID is not None:
-			if '<screen name="Animmain" ' in self.sktxt and config.usage.menutype.value == 'horzanim':
+			if config.usage.menutype.value == 'horzanim' and '<screen name="Animmain" ' in self.sktxt:
 				self.skinName.append('Animmain')
-			elif '<screen name="Iconmain" ' in self.sktxt and config.usage.menutype.value == 'horzicon':
-				if '<screen name="Iconmain" ' in self.sktxt:
-					self.skinName.append('Iconmain')
+			elif config.usage.menutype.value == 'horzicon' and '<screen name="Iconmain" ' in self.sktxt:
+				self.skinName.append('Iconmain')
 			else:
 				self.skinName.append('menu_' + self.menuID)
 		self.skinName.append("Menu")
-
 		ProtectedScreen.__init__(self)
-
 		self["actions"] = NumberActionMap(["OkCancelActions", "MenuActions", "NumberActions", "HelpActions", "ColorActions"],
 			{
 				"ok": self.okbuttonClick,
@@ -289,11 +287,34 @@ class Menu(Screen, ProtectedScreen):
 			t_history.thistory = str(title) + ' > '
 		else:
 			t_history.thistory = t_history.thistory + str(title) + ' > '
-		if '<screen name="Animmain" ' in self.sktxt and config.usage.menutype.value == 'horzanim':
+		if config.usage.menutype.value == 'horzanim' and '<screen name="Animmain" ' in self.sktxt:
+			self['label1'] = StaticText()
+			self['label2'] = StaticText()
+			self['label3'] = StaticText()
+			self['label4'] = StaticText()
+			self['label5'] = StaticText()
 			self.onShown.append(self.openTestA)
-		elif '<screen name="Iconmain" ' in self.sktxt and config.usage.menutype.value == 'horzicon':
-			if '<screen name="Iconmain" ' in self.sktxt:
-				self.onShown.append(self.openTestB)
+		elif config.usage.menutype.value == 'horzicon' and '<screen name="Iconmain" ' in self.sktxt:
+			self['label1'] = StaticText()
+			self['label2'] = StaticText()
+			self['label3'] = StaticText()
+			self['label4'] = StaticText()
+			self['label5'] = StaticText()
+			self['label6'] = StaticText()
+			self['label1s'] = StaticText()
+			self['label2s'] = StaticText()
+			self['label3s'] = StaticText()
+			self['label4s'] = StaticText()
+			self['label5s'] = StaticText()
+			self['label6s'] = StaticText()
+			self['pointer'] = Pixmap()
+			self['pixmap1'] = Pixmap()
+			self['pixmap2'] = Pixmap()
+			self['pixmap3'] = Pixmap()
+			self['pixmap4'] = Pixmap()
+			self['pixmap5'] = Pixmap()
+			self['pixmap6'] = Pixmap()
+			self.onShown.append(self.openTestB)
 
 		self.number = 0
 		self.nextNumberTimer = eTimer()
@@ -416,7 +437,8 @@ class Menu(Screen, ProtectedScreen):
 		self.close(True)
 
 	def createSummary(self):
-		return MenuSummary
+		if config.usage.menutype.value == "standard":
+			return MenuSummary
 
 	def isProtected(self):
 		if config.ParentalControl.setuppinactive.value:
@@ -447,7 +469,7 @@ class Menu(Screen, ProtectedScreen):
 			if not self.sub_menu_sort.getConfigValue(entry[2], "hidden"):
 				self.list.append(entry)
 		if not self.list:
-			self.list.append(('',None,'dummy','10',10))
+			self.list.append(('', None, 'dummy', '10', '', None, 10))
 		self.list.sort(key=lambda listweight : int(listweight[4]))
 
 class MenuSort(Menu):
@@ -503,9 +525,9 @@ class MenuSort(Menu):
 			idx = 0
 			for x in self.list:
 				self.sub_menu_sort.changeConfigValue(x[2], "sort", i)
-				if len(x) >= 5:
+				if len(x) >= 7:
 					entry = list(x)
-					entry[4] = i
+					entry[6] = i
 					entry = tuple(entry)
 					self.list.pop(idx)
 					self.list.insert(idx, entry)
@@ -631,24 +653,19 @@ class AnimMain(Screen):
 		pass
 
 	def getname(self, name):
-		if 'AutoBouquetsMaker' in name:
-			name = 'AutoBouquets\nMakerProvider'
-		if len(name) > 14:
+		maxlen = 18
+		if len(name) > maxlen:
 			if '-' in name or '/' in name or ' ' in name:
-				name = name.replace('-', '/')
-				name = name.replace(' /', '/')
-				name = name.replace('/ ', '/')
-				name = name.replace(' ', '\n')
+				name = name.replace('-', ' ').replace(' /', ' ').replace('/ ', ' ').split()
+				name = "\n".join(name)
 			else:
-				name = name[:14] + '/' + name[12:]
-		if 'A/V' not in name:
-			name = name.replace('/', '\n')
-		if 'di\n' in name:
-			name = name.replace('di\n', 'di ')
-		if 'de\n' in name:
-			name = name.replace('de\n', 'de ')
-		if 'la\n' in name:
-			name = name.replace('la\n', 'la ')
+				maxlen = 16
+				for c in range(len(name),0,-1):
+					if name[c-1].isupper() and c-1 and c-1 <= maxlen:
+						name = name[:c-1] + '\n' + name[c-1:]
+						break
+				if not '\n' in name:
+					name = name[:maxlen] + '\n' + name[maxlen:]
 		return name
 
 	def openTest(self):
@@ -679,42 +696,27 @@ class AnimMain(Screen):
 	def key_left(self):
 		self.index -= 1
 		if self.index < 1:
-			self.index = 1
-			return
+			self.index = self.nop
 		self.openTest()
 
 	def key_right(self):
 		self.index += 1
 		if self.index > self.nop:
-			self.index = self.nop
-			return
+			self.index = 1
 		self.openTest()
 
 	def key_up(self):
-		pass
+		self.index = 1 if self.index > 1 else self.nop
+		self.openTest()
 
 	def key_down(self):
-		pass
+		self.index = self.nop if self.index < self.nop else 1
+		self.openTest()
 
 	def keyNumberGlobal(self, number):
-		number -= 1
-		if len(self['menu'].list) > number:
-			self['menu'].setIndex(number)
-			self.okbuttonClick()
-
-	def closeNonRecursive(self):
-		self.close(False)
-
-	def closeRecursive(self):
-		self.close(True)
-
-	def createSummary(self):
-		pass
-
-	def keyNumberGlobal(self, number):
-		number -= 1
-		if len(self['menu'].list) > number:
-			self['menu'].setIndex(number)
+		if number <= self.nop:
+			self.index = number
+			self.openTest()
 			self.okbuttonClick()
 
 	def closeNonRecursive(self):
@@ -731,7 +733,6 @@ class AnimMain(Screen):
 		selection = self.tlist[idx]
 		if selection is not None:
 			selection[1]()
-
 
 class IconMain(Screen):
 
@@ -836,18 +837,19 @@ class IconMain(Screen):
 				name = ''
 			else:
 				name = self.tlist[i][0]
-			if 'AutoBouquetsMaker' in name:
-				name = 'AutoBouquets\nMakerProvider'
-			if len(name) > 14:
+			maxlen = 18
+			if len(name) > maxlen:
 				if '-' in name or '/' in name or ' ' in name:
-					name = name.replace('-', '/')
-					name = name.replace(' /', '/')
-					name = name.replace('/ ', '/')
-					name = name.replace(' ', '\n')
+					name = name.replace('-', ' ').replace(' /', ' ').replace('/ ', ' ').split()
+					name = "\n".join(name)
 				else:
-					name = name[:14] + '/' + name[12:]
-			if 'A/V' not in name:
-				name = name.replace('/', '\n')
+					maxlen = 16
+					for c in range(len(name),0,-1):
+						if name[c-1].isupper() and c-1 and c-1 <= maxlen:
+							name = name[:c-1] + '\n' + name[c-1:]
+							break
+					if not '\n' in name:
+						name = name[:maxlen] + '\n' + name[maxlen:]
 			if j == self.index + 1:
 				self['label' + str(j)].setText(' ')
 				self['label' + str(j) + 's'].setText(name)
@@ -876,7 +878,6 @@ class IconMain(Screen):
 			except:
 				dpointer = '/usr/share/enigma2/skin_default/pointer.png'
 				self['pointer'].instance.setPixmapFromFile(dpointer)
-
 		else:
 			try:
 				dpointer = '/usr/share/enigma2/' + dskin[0] + '/blank.png'
@@ -887,25 +888,24 @@ class IconMain(Screen):
 
 	def key_left(self):
 		self.index -= 1
-		inum = self.picnum - 1 - (self.ipage - 1) * 6
 		if self.index < 0:
-			if inum < 5:
-				self.index = inum
-			else:
-				self.index = 5
-		self.openTest()
+			self.key_up(True)
+		else:
+			self.openTest()
 
 	def key_right(self):
 		self.index += 1
 		inum = self.picnum - 1 - (self.ipage - 1) * 6
 		if self.index > inum or self.index > 5:
-			self.index = 0
-		self.openTest()
+			self.key_down()
+		else:
+			self.openTest()
 
-	def key_up(self):
+	def key_up(self, focusLastPic = False):
 		self.ipage = self.ipage - 1
 		if self.ipage < 1 and 7 > self.picnum > 0:
 			self.ipage = 1
+			focusLastPic = focusLastPic or self.index == 0
 		elif self.ipage < 1 and 13 > self.picnum > 6:
 			self.ipage = 2
 		elif self.ipage < 1 and 19 > self.picnum > 12:
@@ -914,13 +914,18 @@ class IconMain(Screen):
 			self.ipage = 4
 		elif self.ipage < 1 and 31 > self.picnum > 24:
 			self.ipage = 5
-		self.index = 0
+		if focusLastPic:
+			inum = self.picnum - 1 - (self.ipage - 1) * 6
+			self.index = inum if inum < 5 else 5
+		else:
+			self.index = 0
 		self.openTest()
 
-	def key_down(self):
+	def key_down(self, focusLastPic = False):
 		self.ipage = self.ipage + 1
 		if self.ipage == 2 and 7 > self.picnum > 0:
 			self.ipage = 1
+			focusLastPic = focusLastPic or self.index < self.picnum - 1 - (self.ipage - 1) * 6
 		elif self.ipage == 3 and 13 > self.picnum > 6:
 			self.ipage = 1
 		elif self.ipage == 4 and 19 > self.picnum > 12:
@@ -929,29 +934,26 @@ class IconMain(Screen):
 			self.ipage = 1
 		elif self.ipage == 6 and 31 > self.picnum > 24:
 			self.ipage = 1
-		self.index = 0
+		if focusLastPic:
+			inum = self.picnum - 1 - (self.ipage - 1) * 6
+			self.index = inum if inum < 5 else 5
+		else:
+			self.index = 0
 		self.openTest()
 
 	def keyNumberGlobal(self, number):
-		number -= 1
-		if len(self['menu'].list) > number:
-			self['menu'].setIndex(number)
-			self.okbuttonClick()
-
-	def closeNonRecursive(self):
-		self.close(False)
-
-	def closeRecursive(self):
-		self.close(True)
-
-	def createSummary(self):
-		pass
-
-	def keyNumberGlobal(self, number):
-		number -= 1
-		if len(self['menu'].list) > number:
-			self['menu'].setIndex(number)
-			self.okbuttonClick()
+		if number == 7:
+			self.key_up()
+		elif  number == 8:
+			self.closeNonRecursive()
+		elif  number == 9:
+			self.key_down()
+		else:
+			number -= 1
+			if number <= self.picnum - 1 - (self.ipage - 1) * 6:
+				self.index = number
+				self.openTest()
+				self.okbuttonClick()
 
 	def closeNonRecursive(self):
 		self.close(False)
