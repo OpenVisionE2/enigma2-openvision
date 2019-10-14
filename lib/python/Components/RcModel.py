@@ -3,11 +3,12 @@ from enigma import getBoxType
 from Tools.Directories import SCOPE_SKIN, resolveFilename
 from Tools.StbHardware import getFPVersion, getBoxProc
 
+fp_version = str(getFPVersion())
+procmodel = getBoxProc()
+
 class RcModel:
 	RcModels = {}
-	fp_version = str(getFPVersion())
-	procmodel = getBoxProc()
-	remote = "dmm1"	# default. Assume files for dmm1 exists
+
 	def __init__(self):
 		self.model = getBoxType()
 		# cfg files has modelname  rcname entries.
@@ -28,7 +29,7 @@ class RcModel:
 			modeltype = '%s.%s' % (self.model, rc)
 		else:
 			modeltype = None
-
+		remote = "dmm1"	# default. Assume files for dmm1 exists
 		if modeltype is not None and modeltype in self.RcModels.keys():
 			remote = self.RcModels[modeltype]
 		elif self.model in self.RcModels.keys():
