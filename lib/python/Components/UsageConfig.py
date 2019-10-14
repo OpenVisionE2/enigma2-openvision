@@ -1,7 +1,7 @@
 from Components.Harddisk import harddiskmanager
 from config import ConfigSubsection, ConfigYesNo, config, ConfigSelection, ConfigText, ConfigNumber, ConfigSet, ConfigLocations, ConfigSelectionNumber, ConfigClock, ConfigSlider, ConfigEnableDisable, ConfigSubDict, ConfigDictionarySet, ConfigInteger, ConfigPassword, ConfigIP, NoSave, ConfigBoolean
 from Tools.Directories import defaultRecordingLocation
-from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff, setEnableTtCachingOnOff, eEnv, eDVBDB, Misc_Options, eBackgroundFileEraser, eServiceEvent, getBoxType
+from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff, setEnableTtCachingOnOff, eEnv, eDVBDB, Misc_Options, eBackgroundFileEraser, eServiceEvent, getBoxType, eEPGCache
 from Components.NimManager import nimmanager
 from Components.ServiceList import refreshServiceList
 from Components.SystemInfo import SystemInfo
@@ -797,13 +797,11 @@ def InitUsageConfig():
 	config.epg.netmed = ConfigYesNo(default = True)
 	config.epg.virgin = ConfigYesNo(default = True)
 	config.epg.opentv = ConfigYesNo(default = True)
-	config.misc.showradiopic = ConfigYesNo(default = True)
 
 	config.misc.epgratingcountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
 	config.misc.epggenrecountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
 
 	def EpgSettingsChanged(configElement):
-		from enigma import eEPGCache
 		mask = 0xffffffff
 		if not config.epg.eit.value:
 			mask &= ~(eEPGCache.NOWNEXT | eEPGCache.SCHEDULE | eEPGCache.SCHEDULE_OTHER)
@@ -833,6 +831,45 @@ def InitUsageConfig():
 		from enigma import eEPGCache
 		eEPGCache.getInstance().setEpgHistorySeconds(config.epg.histminutes.getValue()*60)
 	config.epg.histminutes.addNotifier(EpgHistorySecondsChanged)
+	
+	config.epg.cacheloadsched = ConfigYesNo(default = False)
+	config.epg.cachesavesched = ConfigYesNo(default = False)
+	def EpgCacheLoadSchedChanged(configElement):
+		import EpgLoadSave
+		EpgLoadSave.EpgCacheLoadCheck()
+	def EpgCacheSaveSchedChanged(configElement):
+		import EpgLoadSave
+		EpgLoadSave.EpgCacheSaveCheck()
+	config.epg.cacheloadsched.addNotifier(EpgCacheLoadSchedChanged, immediate_feedback = False)
+	config.epg.cachesavesched.addNotifier(EpgCacheSaveSchedChanged, immediate_feedback = False)
+	config.epg.cacheloadtimer = ConfigSelectionNumber(default = 24, stepwidth = 1, min = 1, max = 24, wraparound = True)
+	config.epg.cachesavetimer = ConfigSelectionNumber(default = 24, stepwidth = 1, min = 1, max = 24, wraparound = True)
+
+	hddchoises = [('/etc/enigma2/', 'Internal Flash')]
+	for p in harddiskmanager.getMountedPartitions():
+		if os.path.exists(p.mountpoint):
+			d = os.path.normpath(p.mountpoint)
+			if p.mountpoint != '/':
+				hddchoises.append((p.mountpoint, d))
+	config.misc.epgcachepath = ConfigSelection(default = '/etc/enigma2/', choices = hddchoises)
+	config.misc.epgcachefilename = ConfigText(default='epg', fixed_size=False)
+	config.misc.epgcache_filename = ConfigText(default = (config.misc.epgcachepath.value + config.misc.epgcachefilename.value.replace('.dat','') + '.dat'))
+	def EpgCacheChanged(configElement):
+		config.misc.epgcache_filename.setValue(os.path.join(config.misc.epgcachepath.value, config.misc.epgcachefilename.value.replace('.dat','') + '.dat'))
+		config.misc.epgcache_filename.save()
+		eEPGCache.getInstance().setCacheFile(config.misc.epgcache_filename.value)
+		epgcache = eEPGCache.getInstance()
+		epgcache.save()
+		if not config.misc.epgcache_filename.value.startswith("/etc/enigma2/"):
+			if os.path.exists('/etc/enigma2/' + config.misc.epgcachefilename.value.replace('.dat','') + '.dat'):
+				os.remove('/etc/enigma2/' + config.misc.epgcachefilename.value.replace('.dat','') + '.dat')
+	config.misc.epgcachepath.addNotifier(EpgCacheChanged, immediate_feedback = False)
+	config.misc.epgcachefilename.addNotifier(EpgCacheChanged, immediate_feedback = False)
+
+	config.misc.epgratingcountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
+	config.misc.epggenrecountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
+
+	config.misc.showradiopic = ConfigYesNo(default = True)	
 
 	def setHDDStandby(configElement):
 		for hdd in harddiskmanager.HDDList():

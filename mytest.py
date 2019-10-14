@@ -654,6 +654,11 @@ Screens.Ci.InitCiConfig()
 profile("RcModel")
 import Components.RcModel
 
+profile("EpgCacheSched")
+import Components.EpgLoadSave
+Components.EpgLoadSave.EpgCacheSaveCheck()
+Components.EpgLoadSave.EpgCacheLoadCheck()
+
 if config.clientmode.enabled.value:
 	import Components.ChannelsImporter
 	Components.ChannelsImporter.autostart()
