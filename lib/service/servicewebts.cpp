@@ -379,6 +379,7 @@ void eServiceWebTS::recv_event(int evt)
 				m_decoder->setVideoPID(VPID, eDVBVideo::MPEG4_H264, 0);
 			else
 				m_decoder->setVideoPID(VPID, eDVBVideo::MPEG2, 0);
+			m_decoder->setAudioPID(APID, eDVBAudio::aMPEG, 0);
 #else
 			if (H264)
 				m_decoder->setVideoPID(VPID, eDVBVideo::MPEG4_H264);
