@@ -49,22 +49,20 @@ class EventViewBase:
 			self.SimilarBroadcastTimer = None
 		self.key_green_choice = self.ADD_TIMER
 		if self.isRecording:
-			if self['Event'] == StaticText:
+			if self["Event"] == StaticText:
 				self["key_green"] = StaticText("")
 			else:
 				self["key_green"] = Button("")
 		else:
-			if self['Event'] == StaticText:
+			if self["Event"] == StaticText:
 				self["key_green"] = StaticText(_("Add timer"))
 			else:
 				self["key_green"] = Button(_("Add timer"))
-		if self['Event'] == StaticText:
+		if self["Event"] == StaticText:
 			self["key_yellow"] = StaticText("")
-		else:
-			self["key_yellow"] = Button("")
-		if self['Event'] == StaticText:
 			self["key_blue"] = StaticText("")
 		else:
+			self["key_yellow"] = Button("")
 			self["key_blue"] = Button("")
 		self["actions"] = ActionMap(["OkCancelActions", "EventViewActions"],
 			{
