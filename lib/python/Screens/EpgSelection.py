@@ -589,8 +589,11 @@ class EPGSelection(Screen):
 				self["key_red"].setText("")
 				self.key_red_choice = self.EMPTY
 			return
-		elif self.key_red_choice != self.ZAP and self.type == EPG_TYPE_MULTI:
-				self["key_red"].setText(_("Zap"))
+		elif self.key_red_choice != self.ZAP:
+				if self.type == EPG_TYPE_MULTI:
+					self["key_red"].setText(_("Zap"))
+				elif self.type == EPG_TYPE_SINGLE:
+					self["key_red"].setText(_("Exit"))
 				self.key_red_choice = self.ZAP
 
 		if event is None:
