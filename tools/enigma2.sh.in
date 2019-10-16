@@ -128,7 +128,7 @@ while : ; do
 				mount /dev/block/by-name/bootoptions /tmp/bootoptions
 				cp -f /tmp/bootoptions/STARTUP_ANDROID /tmp/bootoptions/STARTUP_ONCE
 			else
-				if [ $modelcheck == "su980" ]; then
+				if [ $modelcheck == "su980" ] || [ $brandcheck == "mecool" ]; then
 					echo "rescue not needed!"
 				else
 					echo "rescue" > /proc/stb/fp/boot_mode
