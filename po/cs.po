@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 08:30+0330\n"
+"POT-Creation-Date: 2019-10-17 11:04+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -1754,6 +1754,9 @@ msgstr "Přidat do oblíbených"
 msgid "Add/remove change timer for current event"
 msgstr "Přidat/odstranit časovač pro aktuální událost"
 
+msgid "Adding schedule..."
+msgstr ""
+
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move the dish from one satellite to another satellite."
 msgstr "Další možnosti motoru umožňují zadat podrobnosti z dokumentace k Vašemu motoru, takže enigma dokáže zjistit, jak dlouho bude trvat přechod z jednoho satelitu na jiný satelit."
 
@@ -1907,6 +1910,12 @@ msgstr "Povolit titulky pro sluchově postižené"
 
 msgid "Allow unsupported modes"
 msgstr "Povolit nepodporované režimy"
+
+msgid "Allows the %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows the %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
@@ -2090,6 +2099,11 @@ msgstr ""
 
 #
 #, fuzzy
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "Opravdu chcete ukončit tohoto průvodce?"
+
+#
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
@@ -2097,6 +2111,11 @@ msgstr "Opravdu chcete ukončit tohoto průvodce?"
 
 #
 msgid "Are you sure you want to exit this wizard?"
+msgstr "Opravdu chcete ukončit tohoto průvodce?"
+
+#
+#, fuzzy
+msgid "Are you sure you want to reload the EPG data from:\n"
 msgstr "Opravdu chcete ukončit tohoto průvodce?"
 
 #
@@ -2127,6 +2146,11 @@ msgid ""
 msgstr ""
 "Opravdu chcete obnovit zálohu?\n"
 "Po obnově bude přijímač restartován!"
+
+#
+#, fuzzy
+msgid "Are you sure you want to save the EPG Cache to:\n"
+msgstr "Opravdu chcete ukončit tohoto průvodce?"
 
 msgid "Argentina"
 msgstr "Argentina"
@@ -2333,6 +2357,16 @@ msgstr "Automatické prohledávání"
 #
 msgid "Automatic bookmarks"
 msgstr "Automatické záložky"
+
+#
+#, fuzzy
+msgid "Automatic refresh"
+msgstr "Automatické prohledávání"
+
+#
+#, fuzzy
+msgid "Automatic save"
+msgstr "Automatické prohledávání"
 
 #
 msgid "Automatic scan"
@@ -3084,6 +3118,12 @@ msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is 
 msgstr ""
 
 msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
+msgstr ""
+
+msgid "Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time."
+msgstr ""
+
+msgid "Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -4301,9 +4341,6 @@ msgstr "Standardní umístění souborů"
 msgid "Default settings"
 msgstr "Standardní nastavení"
 
-msgid "Define the location of the EPG Cache file."
-msgstr "Určuje umístění souboru pro EPG cache."
-
 msgid "Delay after change voltage before switch command"
 msgstr "Zpoždění po změně napětí před povelem pro přepínač"
 
@@ -4375,6 +4412,11 @@ msgstr "Žádné"
 
 #
 msgid "Delete"
+msgstr "Smazat"
+
+#
+#, fuzzy
+msgid "Delete EPG"
 msgstr "Smazat"
 
 #
@@ -4651,6 +4693,10 @@ msgstr "Nastavení displeje"
 #, fuzzy
 msgid "Display skin"
 msgstr "Nastavení displeje"
+
+#, fuzzy
+msgid "Display the EIT now/next eventdata in infobar."
+msgstr "Zobrazovat EIT nyní/další v infobaru"
 
 #
 msgid "Djibouti"
@@ -4970,10 +5016,18 @@ msgstr "Čas"
 msgid "EPG"
 msgstr "EPG"
 
+msgid "EPG Cache Check"
+msgstr ""
+
 #
 #, fuzzy
 msgid "EPG Selection"
 msgstr "Výběr EPG"
+
+#
+#, fuzzy
+msgid "EPG filename"
+msgstr "Název souboru"
 
 #
 msgid "EPG language selection 1"
@@ -4982,6 +5036,11 @@ msgstr "EPG jazyk 1"
 #
 msgid "EPG language selection 2"
 msgstr "EPG jazyk 2"
+
+#
+#, fuzzy
+msgid "EPG location"
+msgstr "Výběr EPG"
 
 msgid "EPG only"
 msgstr "Pouze EPG"
@@ -5114,6 +5173,10 @@ msgstr "Povolit EIT EPG"
 msgid "Enable Focus Animation"
 msgstr ""
 
+#, fuzzy
+msgid "Enable FreeSat EPG"
+msgstr "Povolit freesat EPG"
+
 #
 msgid "Enable HDMI-CEC"
 msgstr "Povolit HDMI-CEC"
@@ -5166,9 +5229,6 @@ msgstr "Povolit přesun"
 
 msgid "Enable fallback remote receiver"
 msgstr "Povolit záložní přijímač"
-
-msgid "Enable freesat EPG"
-msgstr "Povolit freesat EPG"
 
 msgid "Enable import timer from fallback tuner"
 msgstr "Importovat časovače ze záložního přijímače"
@@ -7028,6 +7088,11 @@ msgstr "Instaluji"
 
 #
 #, fuzzy
+msgid "Installing TMBD"
+msgstr "Instaluji"
+
+#
+#, fuzzy
 msgid "Installing service"
 msgstr "Instaluji"
 
@@ -7504,6 +7569,11 @@ msgid "Load"
 msgstr "Načíst"
 
 #
+#, fuzzy
+msgid "Load EPG"
+msgstr "Načíst"
+
+#
 msgid "Load length of movies in movie list"
 msgstr "Vkládat délku filmů do seznamu filmů"
 
@@ -7530,9 +7600,6 @@ msgstr "Rozložení"
 #
 msgid "Location"
 msgstr "Umístění"
-
-msgid "Location EPG Cache file"
-msgstr "Umístění souboru EPG cache"
 
 #
 msgid "Location for instant recordings"
@@ -9906,6 +9973,9 @@ msgstr "Python: "
 msgid "Qatar"
 msgstr "Katar"
 
+msgid "Query details from the Internet Movie Database"
+msgstr ""
+
 #
 msgid "Question"
 msgstr "Otázka"
@@ -10148,6 +10218,9 @@ msgstr "Reflash doporučen!"
 msgid "Refresh"
 msgstr "Obnovit"
 
+msgid "Refresh every (in hours)"
+msgstr ""
+
 #
 msgid "Refresh rate"
 msgstr "Obnovovací frekvence"
@@ -10179,6 +10252,10 @@ msgstr "Znovu načíst"
 
 msgid "Reload blacklists"
 msgstr "  Znovu načíst blacklisty"
+
+#, fuzzy
+msgid "Reloading EPG Cache..."
+msgstr "Umístění souboru EPG cache"
 
 msgid "Reloading bouquets and services..."
 msgstr "Obnovuji přehledy a programy..."
@@ -10740,6 +10817,11 @@ msgstr "Uložit"
 msgid "Save / Enter text and exit"
 msgstr "Uložit / zadat text a zavřít"
 
+#
+#, fuzzy
+msgid "Save EPG"
+msgstr "EPG programu"
+
 msgid "Save and exit"
 msgstr "Uložit a zavřít"
 
@@ -10751,6 +10833,11 @@ msgstr "Uložit a zastavit timeshift"
 
 msgid "Save changes"
 msgstr "Uložit změny"
+
+#
+#, fuzzy
+msgid "Save every (in hours)"
+msgstr "Všude"
 
 #
 #, fuzzy
@@ -10783,6 +10870,13 @@ msgstr "Uložit timeshift do adresáře filmů a přepnout"
 
 msgid "Save timeshift only for current event"
 msgstr "Uložit timeshift pouze pro aktuální událost"
+
+msgid "Save-Load-Delete"
+msgstr ""
+
+#, fuzzy
+msgid "Saving EPG Cache..."
+msgstr "Umístění souboru EPG cache"
 
 #
 msgid "Scaler sharpness"
@@ -10899,13 +10993,23 @@ msgstr ""
 msgid "Search"
 msgstr "Vyhledat"
 
+#, fuzzy
+msgid "Search TMBD"
+msgstr "Vyhledat"
+
 #
 msgid "Search east"
 msgstr "Hledej východ"
 
+msgid "Search event in TMBD"
+msgstr ""
+
 #
 msgid "Search west"
 msgstr "Hledej západ"
+
+msgid "Search yt-trailer for event"
+msgstr ""
 
 msgid "Searching"
 msgstr "Hledání"
@@ -10957,6 +11061,9 @@ msgid "Seems a background update check is in progress, please try again later."
 msgstr "Žádné aktualizace k dispozici. Zkuste to později."
 
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
+msgstr ""
+
+msgid "Seems internet connection down, Or TMBD Plugin not on feed."
 msgstr ""
 
 #
@@ -12972,6 +13079,18 @@ msgstr "T2MI RAW mód"
 msgid "TB"
 msgstr "B"
 
+msgid "TMBD Details"
+msgstr ""
+
+#
+#, fuzzy
+msgid "TMBD Not Installed"
+msgstr "Neinstalováno"
+
+#, fuzzy
+msgid "TMBD details for event"
+msgstr "Detaily pluginu: "
+
 #
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
@@ -13143,6 +13262,12 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "Do skončení události zbývá %d minut."
 
+msgid "The %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "The %s %s stores the EPG data every (hours)."
+msgstr ""
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standard nepodporuje H.264 (HDTV) video streamy. Chcete místo toho vytvořit speciální formát data DVD (které ale nepůjde přehrát ve stolních DVD přehrávačích)?"
 
@@ -13159,6 +13284,14 @@ msgstr "PIN kód byl úspěšně uložen."
 
 msgid "The PIN codes you entered are different."
 msgstr "PIN kód, který jste zadali, je odlišný."
+
+#, fuzzy
+msgid ""
+"The TMBD plugin is not installed!\n"
+"Do you want to install it?"
+msgstr ""
+"Plugin pro bezdrátovou LAN není nainstalován!\n"
+"Nainstalujte plugin."
 
 #, fuzzy
 msgid "The aspect ratio of the recording."
@@ -14307,7 +14440,7 @@ msgstr "Používat MHW EPG informace, jestliže jsou dostupné."
 msgid "Use Netmed EPG information when it is available."
 msgstr "Používat Netmed EPG informace, jestliže jsou dostupné."
 
-msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required."
+msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required"
 msgstr ""
 
 msgid "Use TV remote control"
@@ -14961,9 +15094,6 @@ msgstr "Při povolení bude po dosažení posledního programu v aktuálním př
 
 msgid "When enabled, deleted recordings are moved to the trash can, instead of being deleted immediately."
 msgstr "Jestliže je povoleno, pak smazané nahrávky jsou umístěny do koše, místo toho, aby byly ihned odstraněny."
-
-msgid "When enabled, display the EIT now/next eventdata in infobar. When disabled, display now/next eventdata from the EPG cache instead."
-msgstr "Jestliže je povoleno, zobrazují se EIT nyní/další data události v infobaru. Při zakázání se místo toho zobrazují nyní/další data události z EPG cache."
 
 msgid "When enabled, encryption info will be shown in the infobar (when supported by the skin)."
 msgstr "Jestliže je povoleno, informace o kódování budou zobrazovány v infobaru ( umožňuje-li to skin )."

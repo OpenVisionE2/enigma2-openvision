@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 08:30+0330\n"
+"POT-Creation-Date: 2019-10-17 11:04+0330\n"
 "PO-Revision-Date: 2019-02-13 20:52+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -1703,6 +1703,9 @@ msgstr "Lisää suosikkilistalle"
 msgid "Add/remove change timer for current event"
 msgstr "Lisää/poista ajastus nykyiselle ohjelmalle"
 
+msgid "Adding schedule..."
+msgstr ""
+
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move the dish from one satellite to another satellite."
 msgstr ""
 
@@ -1854,6 +1857,12 @@ msgstr "Salli kuulovammaisten tekstitys"
 
 msgid "Allow unsupported modes"
 msgstr "Salli kaikki videotilat"
+
+msgid "Allows the %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows the %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
@@ -2029,12 +2038,20 @@ msgstr ""
 "seuraavan varmuuskopion:\n"
 
 #, fuzzy
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "Haluatko lopettaa avustustoiminnon?"
+
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
 msgstr "Haluatko lopettaa avustustoiminnon?"
 
 msgid "Are you sure you want to exit this wizard?"
+msgstr "Haluatko lopettaa avustustoiminnon?"
+
+#, fuzzy
+msgid "Are you sure you want to reload the EPG data from:\n"
 msgstr "Haluatko lopettaa avustustoiminnon?"
 
 #
@@ -2063,6 +2080,10 @@ msgid ""
 msgstr ""
 "Oletko varma, että haluat palauttaa varmuuskopion?\n"
 "Vastaanotin käynnistyy uudelleen varmuuskopion palautuksen jälkeen!"
+
+#, fuzzy
+msgid "Are you sure you want to save the EPG Cache to:\n"
+msgstr "Haluatko lopettaa avustustoiminnon?"
 
 msgid "Argentina"
 msgstr "Argentiina"
@@ -2261,6 +2282,14 @@ msgstr "Automaattihaku"
 #
 msgid "Automatic bookmarks"
 msgstr "Automaattiset kirjanmerkit"
+
+#, fuzzy
+msgid "Automatic refresh"
+msgstr "Automaattihaku"
+
+#, fuzzy
+msgid "Automatic save"
+msgstr "Automaattihaku"
 
 msgid "Automatic scan"
 msgstr "Automaattihaku"
@@ -2991,6 +3020,12 @@ msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is 
 msgstr ""
 
 msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
+msgstr ""
+
+msgid "Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time."
+msgstr ""
+
+msgid "Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -4171,9 +4206,6 @@ msgstr "Oletushakemisto tallennuksille"
 msgid "Default settings"
 msgstr "Oletusasetukset"
 
-msgid "Define the location of the EPG Cache file."
-msgstr "Määritä ohjelmaoppaan välimuistitiedoston sijainti."
-
 msgid "Delay after change voltage before switch command"
 msgstr "Viive polarisaation vaihdon jälkeen ennen vaihtokomentoa"
 
@@ -4243,6 +4275,11 @@ msgstr "Ei viivettä"
 
 #
 msgid "Delete"
+msgstr "Poista"
+
+#
+#, fuzzy
+msgid "Delete EPG"
 msgstr "Poista"
 
 #
@@ -4506,6 +4543,10 @@ msgstr "Etupaneelin näyttö"
 #, fuzzy
 msgid "Display skin"
 msgstr "Etupaneelin näyttö"
+
+#, fuzzy
+msgid "Display the EIT now/next eventdata in infobar."
+msgstr "Näytä EIT nyt/seuraava tietopalkissa"
 
 #
 msgid "Djibouti"
@@ -4819,16 +4860,29 @@ msgstr "Aika-asetukset"
 msgid "EPG"
 msgstr "Ohjelmaopas"
 
+msgid "EPG Cache Check"
+msgstr ""
+
 #
 #, fuzzy
 msgid "EPG Selection"
 msgstr "Ohjelmaoppaan valinta"
+
+#
+#, fuzzy
+msgid "EPG filename"
+msgstr "Tiedostonimi"
 
 msgid "EPG language selection 1"
 msgstr "Ohjelmaoppaan kieli 1"
 
 msgid "EPG language selection 2"
 msgstr "Ohjelmaoppaan kieli 2"
+
+#
+#, fuzzy
+msgid "EPG location"
+msgstr "Ohjelmaoppaan valinta"
 
 msgid "EPG only"
 msgstr "Vain ohjelmaopas"
@@ -4962,6 +5016,10 @@ msgstr "Ota käyttöön EIT EPG"
 msgid "Enable Focus Animation"
 msgstr ""
 
+#, fuzzy
+msgid "Enable FreeSat EPG"
+msgstr "Ota käyttöön Freesat EPG"
+
 msgid "Enable HDMI-CEC"
 msgstr "Ota käyttöön HDMI-CEC"
 
@@ -5010,9 +5068,6 @@ msgstr "Suosikkien järjestely"
 
 msgid "Enable fallback remote receiver"
 msgstr "Ota käyttöön etävastaanotin"
-
-msgid "Enable freesat EPG"
-msgstr "Ota käyttöön Freesat EPG"
 
 msgid "Enable import timer from fallback tuner"
 msgstr "Tuo ajastimet etävastaaottimelta"
@@ -6820,6 +6875,11 @@ msgstr "Asennetaan"
 
 #
 #, fuzzy
+msgid "Installing TMBD"
+msgstr "Asennetaan"
+
+#
+#, fuzzy
 msgid "Installing service"
 msgstr "Asennetaan"
 
@@ -7284,6 +7344,11 @@ msgid "Load"
 msgstr "Lataa"
 
 #
+#, fuzzy
+msgid "Load EPG"
+msgstr "Lataa"
+
+#
 msgid "Load length of movies in movie list"
 msgstr "Näytä tallenteiden pituus tallenneluettelossa"
 
@@ -7311,9 +7376,6 @@ msgstr "Kieli"
 #
 msgid "Location"
 msgstr "Hakemisto"
-
-msgid "Location EPG Cache file"
-msgstr "Ohjelmaoppaan välimuistitiedosto"
 
 msgid "Location for instant recordings"
 msgstr "Tallennuksien hakemisto"
@@ -9671,6 +9733,9 @@ msgstr "Pythonin versio: "
 msgid "Qatar"
 msgstr "Qatar"
 
+msgid "Query details from the Internet Movie Database"
+msgstr ""
+
 #
 msgid "Question"
 msgstr "Kysymys"
@@ -9911,6 +9976,9 @@ msgstr "Uudelleenasennusta suositellaan!"
 msgid "Refresh"
 msgstr "Päivitä"
 
+msgid "Refresh every (in hours)"
+msgstr ""
+
 msgid "Refresh rate"
 msgstr "Virkistystaajuus"
 
@@ -9940,6 +10008,10 @@ msgstr "Päivitä"
 
 msgid "Reload blacklists"
 msgstr "Lataa estolistat uudestaan"
+
+#, fuzzy
+msgid "Reloading EPG Cache..."
+msgstr "Ohjelmaoppaan välimuistitiedosto"
 
 msgid "Reloading bouquets and services..."
 msgstr "Päivitetään suosikkilistoja ja kanavia..."
@@ -10493,6 +10565,11 @@ msgstr "Tallenna"
 msgid "Save / Enter text and exit"
 msgstr "Tallenna teksti ja poistu"
 
+#
+#, fuzzy
+msgid "Save EPG"
+msgstr "Ohjelmaopas"
+
 msgid "Save and exit"
 msgstr "Tallenna ja poistu"
 
@@ -10504,6 +10581,10 @@ msgstr "Tallenna ja lopeta ajansiirto"
 
 msgid "Save changes"
 msgstr "Tallenna"
+
+#, fuzzy
+msgid "Save every (in hours)"
+msgstr "Kaikkialla"
 
 #
 #, fuzzy
@@ -10537,6 +10618,13 @@ msgstr "Tallenna tallennehakemistoon ja vaihda kanava"
 
 msgid "Save timeshift only for current event"
 msgstr "Tallenna ajansiirto vain tästä ohjelmasta"
+
+msgid "Save-Load-Delete"
+msgstr ""
+
+#, fuzzy
+msgid "Saving EPG Cache..."
+msgstr "Ohjelmaoppaan välimuistitiedosto"
 
 #
 msgid "Scaler sharpness"
@@ -10645,13 +10733,23 @@ msgstr ""
 msgid "Search"
 msgstr "Etsi"
 
+#, fuzzy
+msgid "Search TMBD"
+msgstr "Etsi"
+
 #
 msgid "Search east"
 msgstr "Etsintä itään"
 
+msgid "Search event in TMBD"
+msgstr ""
+
 #
 msgid "Search west"
 msgstr "Etsintä länteen"
+
+msgid "Search yt-trailer for event"
+msgstr ""
 
 msgid "Searching"
 msgstr "Etsitään"
@@ -10703,6 +10801,9 @@ msgstr "Päivityksiä ei ole nyt saatavilla. Yritä myöhemmin uudestaan."
 #, fuzzy
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "Päivityksiä ei ole nyt saatavilla. Yritä myöhemmin uudestaan."
+
+msgid "Seems internet connection down, Or TMBD Plugin not on feed."
+msgstr ""
 
 #
 msgid "Select"
@@ -12711,6 +12812,18 @@ msgstr ""
 msgid "TB"
 msgstr "B"
 
+msgid "TMBD Details"
+msgstr ""
+
+#
+#, fuzzy
+msgid "TMBD Not Installed"
+msgstr "Asenna"
+
+#, fuzzy
+msgid "TMBD details for event"
+msgstr "Lisäosan tiedot: "
+
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr ""
@@ -12878,6 +12991,12 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr ""
 
+msgid "The %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "The %s %s stores the EPG data every (hours)."
+msgstr ""
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standardi ei tue H.264 (HDTV) videota. Haluatko luoda erikoisformaattisen data DVD:n (jota ei voi soittaa normaaleilla DVD soittimilla) sen sijaan?"
 
@@ -12894,6 +13013,15 @@ msgstr "PIN-koodin tallennus onnistui."
 
 msgid "The PIN codes you entered are different."
 msgstr "Syöttämäsi PIN-koodit olivat erilaiset."
+
+#
+#, fuzzy
+msgid ""
+"The TMBD plugin is not installed!\n"
+"Do you want to install it?"
+msgstr ""
+"WLAN-lisäosaa ei ole asennettu!\n"
+"Asenna se."
 
 #, fuzzy
 msgid "The aspect ratio of the recording."
@@ -14023,7 +14151,7 @@ msgstr "Käytä MHW-ohjelmaoppaan tietoja, jos saatavilla."
 msgid "Use Netmed EPG information when it is available."
 msgstr "Käytä Netmed-ohjelmaoppaan tietoja, jos saatavilla."
 
-msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required."
+msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required"
 msgstr ""
 
 msgid "Use TV remote control"
@@ -14666,9 +14794,6 @@ msgstr "Kun päällä,  siirrytään kanavanvaihdolla suosikkilistan viimeiselt�
 
 msgid "When enabled, deleted recordings are moved to the trash can, instead of being deleted immediately."
 msgstr "Kun päällä, poistetut tallenteet siirretään roskakoriin, sen sijaan että ne tuhottaisiin välittömästi."
-
-msgid "When enabled, display the EIT now/next eventdata in infobar. When disabled, display now/next eventdata from the EPG cache instead."
-msgstr "Kun päällä, näytetään EIT:n nyt/seuraava ohjelmatieto tietopalkissa. Kun pois päältä, näytetään nyt/seuraava ohjelmatieto ohjelmaoppaan välimuistista sen sijaan."
 
 msgid "When enabled, encryption info will be shown in the infobar (when supported by the skin)."
 msgstr "Kun päällä, salaustieto näytetään tietopalkissa (mikäli teema tukee tätä)."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 08:30+0330\n"
+"POT-Creation-Date: 2019-10-17 11:04+0330\n"
 "PO-Revision-Date: 2019-09-13 23:02+0200\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -1621,6 +1621,9 @@ msgstr "Hozzáadás a kedvencekhez"
 msgid "Add/remove change timer for current event"
 msgstr "Hozzáadás/eltávolítás változtatása a jelenlegi eseménynél"
 
+msgid "Adding schedule..."
+msgstr ""
+
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move the dish from one satellite to another satellite."
 msgstr "A további motorbeállítások lehetővé teszik az adott motor technikai részleteinek megadását, így az enigma ki tudja számítani a motor mozgásának idejét műholdváltás esetén."
 
@@ -1756,6 +1759,12 @@ msgstr "Hallássérülteknek szánt feliratok engedélyezése"
 
 msgid "Allow unsupported modes"
 msgstr "Nem támogatott módok engedélyezése"
+
+msgid "Allows the %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows the %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
@@ -1919,12 +1928,20 @@ msgstr ""
 "ezt a mentést:\n"
 
 #, fuzzy
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "Biztos benne, hogy kilép a Varázslóból?"
+
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
 msgstr "Biztos benne, hogy kilép a Varázslóból?"
 
 msgid "Are you sure you want to exit this wizard?"
+msgstr "Biztos benne, hogy kilép a Varázslóból?"
+
+#, fuzzy
+msgid "Are you sure you want to reload the EPG data from:\n"
 msgstr "Biztos benne, hogy kilép a Varázslóból?"
 
 msgid ""
@@ -1952,6 +1969,10 @@ msgid ""
 msgstr ""
 "Biztos benne, hogy vissza szeretné állítani a mentést?\n"
 "A készülék újra fog indulni a visszaállítás után!"
+
+#, fuzzy
+msgid "Are you sure you want to save the EPG Cache to:\n"
+msgstr "Biztos benne, hogy kilép a Varázslóból?"
 
 msgid "Argentina"
 msgstr "Argentína"
@@ -2129,6 +2150,14 @@ msgstr "Automatikus keresés"
 
 msgid "Automatic bookmarks"
 msgstr "Automatikus könyvjelzők"
+
+#, fuzzy
+msgid "Automatic refresh"
+msgstr "Automatikus keresés"
+
+#, fuzzy
+msgid "Automatic save"
+msgstr "Automatikus keresés"
 
 msgid "Automatic scan"
 msgstr "Automatikus keresés"
@@ -2806,6 +2835,12 @@ msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is 
 msgstr ""
 
 msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
+msgstr ""
+
+msgid "Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time."
+msgstr ""
+
+msgid "Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -3899,9 +3934,6 @@ msgstr "Felvételek tárhelye"
 msgid "Default settings"
 msgstr "Alapértelmezett beállítások"
 
-msgid "Define the location of the EPG Cache file."
-msgstr "Az EPG cache fájl helyének megadása."
-
 msgid "Delay after change voltage before switch command"
 msgstr "Késleltetés a feszültség változás után a kapcsoló parancs előtt"
 
@@ -3970,6 +4002,10 @@ msgid "Delay:"
 msgstr "Nincs késleltetés"
 
 msgid "Delete"
+msgstr "Törlés"
+
+#, fuzzy
+msgid "Delete EPG"
 msgstr "Törlés"
 
 msgid "Delete entry"
@@ -4193,6 +4229,10 @@ msgstr "Előlapi kijelző"
 #, fuzzy
 msgid "Display skin"
 msgstr "Előlapi kijelző"
+
+#, fuzzy
+msgid "Display the EIT now/next eventdata in infobar."
+msgstr "Most/Következik információ EIT-ből származzon"
 
 msgid "Djibouti"
 msgstr "Dzsibuti"
@@ -4463,15 +4503,26 @@ msgstr "Idő"
 msgid "EPG"
 msgstr "EPG"
 
+msgid "EPG Cache Check"
+msgstr ""
+
 #, fuzzy
 msgid "EPG Selection"
 msgstr "Elektronikus műsorújság"
+
+#, fuzzy
+msgid "EPG filename"
+msgstr "fájlnév"
 
 msgid "EPG language selection 1"
 msgstr "EPG nyelvválasztás 1."
 
 msgid "EPG language selection 2"
 msgstr "EPG nyelvválasztás 2."
+
+#, fuzzy
+msgid "EPG location"
+msgstr "Elektronikus műsorújság"
 
 msgid "EPG only"
 msgstr "Csak EPG"
@@ -4587,6 +4638,10 @@ msgstr "EIT EPG engedélyezése"
 msgid "Enable Focus Animation"
 msgstr ""
 
+#, fuzzy
+msgid "Enable FreeSat EPG"
+msgstr "Freesat EPG engedélyezése"
+
 msgid "Enable HDMI-CEC"
 msgstr "HDMI-CEC engedélyezése"
 
@@ -4633,9 +4688,6 @@ msgstr "mozgatási mód engedélyezése"
 
 msgid "Enable fallback remote receiver"
 msgstr "Tartalék távoli vevő engedélyezése"
-
-msgid "Enable freesat EPG"
-msgstr "Freesat EPG engedélyezése"
 
 msgid "Enable import timer from fallback tuner"
 msgstr "Csatornák importálása a tartalék tunerből"
@@ -6310,6 +6362,10 @@ msgid "Installing"
 msgstr "Telepítés"
 
 #, fuzzy
+msgid "Installing TMBD"
+msgstr "Telepítés"
+
+#, fuzzy
 msgid "Installing service"
 msgstr "Telepítés"
 
@@ -6723,6 +6779,10 @@ msgstr "Valós idejű dekóder"
 msgid "Load"
 msgstr "Betöltés"
 
+#, fuzzy
+msgid "Load EPG"
+msgstr "Betöltés"
+
 msgid "Load length of movies in movie list"
 msgstr "Filmek hosszának betöltése a filmlistában"
 
@@ -6744,9 +6804,6 @@ msgstr "Hely"
 
 msgid "Location"
 msgstr "Tárhely"
-
-msgid "Location EPG Cache file"
-msgstr "EPG cache fájl helye"
 
 msgid "Location for instant recordings"
 msgstr "Azonnali felvételek helye"
@@ -8798,6 +8855,9 @@ msgstr "Python verzió: "
 msgid "Qatar"
 msgstr "Katar"
 
+msgid "Query details from the Internet Movie Database"
+msgstr ""
+
 msgid "Question"
 msgstr "Kérdés"
 
@@ -9005,6 +9065,9 @@ msgstr "Újraflashelés ajánlott!"
 msgid "Refresh"
 msgstr "Újraflashelés"
 
+msgid "Refresh every (in hours)"
+msgstr ""
+
 msgid "Refresh rate"
 msgstr "Képernyőfrissítés"
 
@@ -9031,6 +9094,10 @@ msgstr "Újratöltés"
 
 msgid "Reload blacklists"
 msgstr "Feketelista újratöltése"
+
+#, fuzzy
+msgid "Reloading EPG Cache..."
+msgstr "EPG cache fájl helye"
 
 msgid "Reloading bouquets and services..."
 msgstr "Listák és csatornák frissítése..."
@@ -9513,6 +9580,10 @@ msgstr "Mentés"
 msgid "Save / Enter text and exit"
 msgstr "Szöveg bevitele/mentése és kilépés"
 
+#, fuzzy
+msgid "Save EPG"
+msgstr "Műsorújság"
+
 msgid "Save and exit"
 msgstr "Mentés és kilépés"
 
@@ -9524,6 +9595,10 @@ msgstr "Mentés és időcsúsztatás leállítása"
 
 msgid "Save changes"
 msgstr "Változások mentése"
+
+#, fuzzy
+msgid "Save every (in hours)"
+msgstr "Mindenhonnan"
 
 #, fuzzy
 msgid "Save last directory on exit"
@@ -9553,6 +9628,13 @@ msgstr "Időcsúsztatás felvételének megtartása a felvételek mappájában �
 
 msgid "Save timeshift only for current event"
 msgstr "Csak ezen időcsúsztatás felvételének megtartása"
+
+msgid "Save-Load-Delete"
+msgstr ""
+
+#, fuzzy
+msgid "Saving EPG Cache..."
+msgstr "EPG cache fájl helye"
 
 msgid "Scaler sharpness"
 msgstr "Skálázó élesség"
@@ -9653,11 +9735,21 @@ msgstr ""
 msgid "Search"
 msgstr "Keresés"
 
+#, fuzzy
+msgid "Search TMBD"
+msgstr "Keresés"
+
 msgid "Search east"
 msgstr "Léptetés kelet felé"
 
+msgid "Search event in TMBD"
+msgstr ""
+
 msgid "Search west"
 msgstr "Léptetés nyugat felé"
+
+msgid "Search yt-trailer for event"
+msgstr ""
 
 msgid "Searching"
 msgstr "Keresés"
@@ -9702,6 +9794,9 @@ msgstr "Nincs elérhető frissítés. Kérem, próbálja meg később."
 #, fuzzy
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "Nincs elérhető frissítés. Kérem, próbálja meg később."
+
+msgid "Seems internet connection down, Or TMBD Plugin not on feed."
+msgstr ""
 
 msgid "Select"
 msgstr "Megjelölés"
@@ -11483,6 +11578,17 @@ msgstr "T2MI RAW mód"
 msgid "TB"
 msgstr "B"
 
+msgid "TMBD Details"
+msgstr ""
+
+#, fuzzy
+msgid "TMBD Not Installed"
+msgstr "Nincs telepítve"
+
+#, fuzzy
+msgid "TMBD details for event"
+msgstr "Bővítmény részletei: "
+
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr ""
@@ -11643,6 +11749,12 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "%d perc van hátra az esemény végéig."
 
+msgid "The %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "The %s %s stores the EPG data every (hours)."
+msgstr ""
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "A DVD szabvány nem támogatja a H.264 (HDTV) videó streamet. Szeretne ehelyett létrehozni egy speciális formátumú adat DVD-t (mely azonban nem játszható le a hagyományos lejátszókban)?"
 
@@ -11658,6 +11770,14 @@ msgstr "A PIN-kód sikeresen tárolva."
 
 msgid "The PIN codes you entered are different."
 msgstr "A megadott PIN-kódok eltérnek egymástól."
+
+#, fuzzy
+msgid ""
+"The TMBD plugin is not installed!\n"
+"Do you want to install it?"
+msgstr ""
+"A vezeték nélküli bővítmény nincs telepítve!\n"
+"Kérem, telepítse."
 
 #, fuzzy
 msgid "The aspect ratio of the recording."
@@ -12693,7 +12813,7 @@ msgstr "MHW EPG információk beolvasása a jelforrásból."
 msgid "Use Netmed EPG information when it is available."
 msgstr "Netmed EPG információk beolvasása a jelforrásból."
 
-msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required."
+msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required"
 msgstr ""
 
 msgid "Use TV remote control"
@@ -13266,9 +13386,6 @@ msgstr "Csatornaváltás közben, ha a lista utolsó csatornájához értünk, u
 
 msgid "When enabled, deleted recordings are moved to the trash can, instead of being deleted immediately."
 msgstr "A törölt fájlok kukába kerüljenek, azonnali megsemmisítés helyett."
-
-msgid "When enabled, display the EIT now/next eventdata in infobar. When disabled, display now/next eventdata from the EPG cache instead."
-msgstr "Az információs sávba közvetlenül az EIT-jelfolyamból származzon a 'Most/Következik' információ, vagy az EPG cache-ból vegye ki."
 
 msgid "When enabled, encryption info will be shown in the infobar (when supported by the skin)."
 msgstr "A kódolási információ jelenjen-e meg vagy sem az információs sávban (amennyiben az kinézet támogatja)."

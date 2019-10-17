@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 08:30+0330\n"
+"POT-Creation-Date: 2019-10-17 11:04+0330\n"
 "PO-Revision-Date: 2016-11-17 12:51+0200\n"
 "Last-Translator: vovan43<vovan43@ex.ua>, sety <tim1065@mail.ru>, Irkoff <irkoff@gmail.com>\n"
 "Language-Team: gisclub.tv <http://gisclub.tv/>\n"
@@ -1632,6 +1632,9 @@ msgstr "Додати в фаворити"
 msgid "Add/remove change timer for current event"
 msgstr "Додати/видалити зміни таймера для поточнї події"
 
+msgid "Adding schedule..."
+msgstr ""
+
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move the dish from one satellite to another satellite."
 msgstr ""
 
@@ -1769,6 +1772,12 @@ msgstr "Субтитри для людей з ослабленим слухом"
 #, fuzzy
 msgid "Allow unsupported modes"
 msgstr "невідома"
+
+msgid "Allows the %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows the %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
@@ -1936,12 +1945,20 @@ msgstr ""
 "наступний бекап:\n"
 
 #, fuzzy
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "Ви впевнені, що хочете вийти з цього майстра?"
+
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
 msgstr "Ви впевнені, що хочете вийти з цього майстра?"
 
 msgid "Are you sure you want to exit this wizard?"
+msgstr "Ви впевнені, що хочете вийти з цього майстра?"
+
+#, fuzzy
+msgid "Are you sure you want to reload the EPG data from:\n"
 msgstr "Ви впевнені, що хочете вийти з цього майстра?"
 
 msgid ""
@@ -1968,6 +1985,10 @@ msgid ""
 msgstr ""
 "Ви впевнені, що хочете відновити бекап?\n"
 "Ваш ресивер буде перезавантажений після відновлення!"
+
+#, fuzzy
+msgid "Are you sure you want to save the EPG Cache to:\n"
+msgstr "Ви впевнені, що хочете вийти з цього майстра?"
 
 msgid "Argentina"
 msgstr ""
@@ -2151,6 +2172,14 @@ msgstr "Автоматичне Сканування"
 #, fuzzy
 msgid "Automatic bookmarks"
 msgstr "Автоматичне Сканування"
+
+#, fuzzy
+msgid "Automatic refresh"
+msgstr "Автоматичний пошук"
+
+#, fuzzy
+msgid "Automatic save"
+msgstr "Автоматичний пошук"
 
 msgid "Automatic scan"
 msgstr "Автоматичний пошук"
@@ -2825,6 +2854,12 @@ msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is 
 msgstr ""
 
 msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
+msgstr ""
+
+msgid "Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time."
+msgstr ""
+
+msgid "Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -3943,10 +3978,6 @@ msgstr "Місце записів за замовчуванням"
 msgid "Default settings"
 msgstr "Налаштування за замовчуванням"
 
-#, fuzzy
-msgid "Define the location of the EPG Cache file."
-msgstr "Налаштування співвідношення сторін екрану."
-
 msgid "Delay after change voltage before switch command"
 msgstr "Затримка після зміни напруги перед командою перемикача"
 
@@ -4015,6 +4046,10 @@ msgid "Delay:"
 msgstr "Без затримки"
 
 msgid "Delete"
+msgstr "Видалити"
+
+#, fuzzy
+msgid "Delete EPG"
 msgstr "Видалити"
 
 msgid "Delete entry"
@@ -4244,6 +4279,10 @@ msgstr "Налаштування дисплея"
 #, fuzzy
 msgid "Display skin"
 msgstr "Налаштування дисплея"
+
+#, fuzzy
+msgid "Display the EIT now/next eventdata in infobar."
+msgstr "Показати EIT зараз/далі в інфобарі"
 
 #, fuzzy
 msgid "Djibouti"
@@ -4523,15 +4562,26 @@ msgstr "Час"
 msgid "EPG"
 msgstr "EPG"
 
+msgid "EPG Cache Check"
+msgstr ""
+
 #, fuzzy
 msgid "EPG Selection"
 msgstr "Вибір EPG"
+
+#, fuzzy
+msgid "EPG filename"
+msgstr "ім'я файлу"
 
 msgid "EPG language selection 1"
 msgstr "Вибір мови EPG 1"
 
 msgid "EPG language selection 2"
 msgstr "Вибір мови EPG 2"
+
+#, fuzzy
+msgid "EPG location"
+msgstr "Вибір EPG"
 
 msgid "EPG only"
 msgstr ""
@@ -4651,6 +4701,10 @@ msgid "Enable Focus Animation"
 msgstr ""
 
 #, fuzzy
+msgid "Enable FreeSat EPG"
+msgstr "Увімкнути freesat EPG"
+
+#, fuzzy
 msgid "Enable HDMI-CEC"
 msgstr "Увімкнути EIT EPG"
 
@@ -4698,9 +4752,6 @@ msgstr "увімкнути режим переміщення"
 
 msgid "Enable fallback remote receiver"
 msgstr "Включити резервний віддалений приймач"
-
-msgid "Enable freesat EPG"
-msgstr "Увімкнути freesat EPG"
 
 msgid "Enable import timer from fallback tuner"
 msgstr ""
@@ -6386,6 +6437,10 @@ msgid "Installing"
 msgstr "Інсталяція"
 
 #, fuzzy
+msgid "Installing TMBD"
+msgstr "Інсталяція"
+
+#, fuzzy
 msgid "Installing service"
 msgstr "Інсталяція"
 
@@ -6810,6 +6865,10 @@ msgstr ""
 msgid "Load"
 msgstr "Завантажити"
 
+#, fuzzy
+msgid "Load EPG"
+msgstr "Завантажити"
+
 msgid "Load length of movies in movie list"
 msgstr "Тривалість завантаження фільмів в списку фільмів"
 
@@ -6832,9 +6891,6 @@ msgstr "Локальна мережа"
 
 msgid "Location"
 msgstr "Розташування"
-
-msgid "Location EPG Cache file"
-msgstr ""
 
 msgid "Location for instant recordings"
 msgstr "Розташування моментальних записів"
@@ -8925,6 +8981,9 @@ msgstr "Версія пайтон: "
 msgid "Qatar"
 msgstr ""
 
+msgid "Query details from the Internet Movie Database"
+msgstr ""
+
 msgid "Question"
 msgstr "Питання"
 
@@ -9132,6 +9191,9 @@ msgstr "Оновити рекомедується! "
 msgid "Refresh"
 msgstr "Оновлення"
 
+msgid "Refresh every (in hours)"
+msgstr ""
+
 msgid "Refresh rate"
 msgstr "Частота оновлення"
 
@@ -9159,6 +9221,10 @@ msgstr "Оновити"
 
 msgid "Reload blacklists"
 msgstr "Оновити чорний список"
+
+#, fuzzy
+msgid "Reloading EPG Cache..."
+msgstr "Оновлення фаворитів і сервісів...."
 
 msgid "Reloading bouquets and services..."
 msgstr "Оновлення фаворитів і сервісів...."
@@ -9658,6 +9724,10 @@ msgstr "Зберегти"
 msgid "Save / Enter text and exit"
 msgstr "Збереження і вихід"
 
+#, fuzzy
+msgid "Save EPG"
+msgstr "Одиночне EPG"
+
 msgid "Save and exit"
 msgstr "Збереження і вихід"
 
@@ -9669,6 +9739,10 @@ msgstr "Зберегти і зупинити таймшифт"
 
 msgid "Save changes"
 msgstr "Зберегти зміни"
+
+#, fuzzy
+msgid "Save every (in hours)"
+msgstr "Скрізь"
 
 #, fuzzy
 msgid "Save last directory on exit"
@@ -9698,6 +9772,12 @@ msgstr "Зберегти таймшифт в каталогу movie і пере�
 
 msgid "Save timeshift only for current event"
 msgstr "Зберегти таймшифт тільки для поточної події"
+
+msgid "Save-Load-Delete"
+msgstr ""
+
+msgid "Saving EPG Cache..."
+msgstr ""
 
 msgid "Scaler sharpness"
 msgstr "Чіткість"
@@ -9804,11 +9884,21 @@ msgstr ""
 msgid "Search"
 msgstr "Пошук"
 
+#, fuzzy
+msgid "Search TMBD"
+msgstr "Пошук"
+
 msgid "Search east"
 msgstr "Пошук на сході"
 
+msgid "Search event in TMBD"
+msgstr ""
+
 msgid "Search west"
 msgstr "Пошук на заході"
+
+msgid "Search yt-trailer for event"
+msgstr ""
 
 msgid "Searching"
 msgstr "Пошук"
@@ -9853,6 +9943,9 @@ msgstr "Оновлень поки немає. Будь ласка спробуй
 #, fuzzy
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "Оновлень поки немає. Будь ласка спробуйте пізніше."
+
+msgid "Seems internet connection down, Or TMBD Plugin not on feed."
+msgstr ""
 
 msgid "Select"
 msgstr "Вибрати"
@@ -11669,6 +11762,17 @@ msgstr ""
 msgid "TB"
 msgstr "B"
 
+msgid "TMBD Details"
+msgstr ""
+
+#, fuzzy
+msgid "TMBD Not Installed"
+msgstr "Встановити"
+
+#, fuzzy
+msgid "TMBD details for event"
+msgstr "Детальніше про плагін: "
+
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr "vovan43 <vovan43@ex.ua>."
@@ -11825,6 +11929,12 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "Решта до кінця події %d хв."
 
+msgid "The %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "The %s %s stores the EPG data every (hours)."
+msgstr ""
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD стандарт не підтримує H.264 (HDTV) відео потоків. Ви хочете створити спеціальний формат DVD (який можливо не програватиметься в стаціонарних DVD програвачах)?"
 
@@ -11842,6 +11952,14 @@ msgstr "PIN-код був успішно збережений."
 
 msgid "The PIN codes you entered are different."
 msgstr "Введений PIN код не вірний"
+
+#, fuzzy
+msgid ""
+"The TMBD plugin is not installed!\n"
+"Do you want to install it?"
+msgstr ""
+"Плагін Witeless LAN не встановлений!\n"
+"Будь ласка, встановіть його."
 
 #, fuzzy
 msgid "The aspect ratio of the recording."
@@ -12918,7 +13036,7 @@ msgstr "Використовувати інформацію MHW EPG, коли в
 msgid "Use Netmed EPG information when it is available."
 msgstr "Використовувати інформацію Netmed EPG, коли вона існує."
 
-msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required."
+msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required"
 msgstr ""
 
 msgid "Use TV remote control"
@@ -13513,9 +13631,6 @@ msgstr "Якщо увімкнено, при перемиканні каналі�
 
 msgid "When enabled, deleted recordings are moved to the trash can, instead of being deleted immediately."
 msgstr "Колі ця функція включена, видалені записи будуть переміщені в кошик, замість безповоротного видалення."
-
-msgid "When enabled, display the EIT now/next eventdata in infobar. When disabled, display now/next eventdata from the EPG cache instead."
-msgstr "Якщо увімкнено, події зараз/далі з DVB EPG будуть показані в інфобарі. При відключенні, дані події будуть показуватися з файлу кеша EPG."
 
 msgid "When enabled, encryption info will be shown in the infobar (when supported by the skin)."
 msgstr "Показати інформацію про декодування в інфобарі (якщо це підтримується скіном)."

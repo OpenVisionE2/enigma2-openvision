@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 08:30+0330\n"
+"POT-Creation-Date: 2019-10-17 11:04+0330\n"
 "PO-Revision-Date: 2019-05-15 22:50+0200\n"
 "Last-Translator: Jose Juan <jzapater@gmail.com>\n"
 "Language-Team: ANGELODOS  angelo2807@hotmail.com\n"
@@ -1737,6 +1737,9 @@ msgstr "Añadir a favoritos"
 msgid "Add/remove change timer for current event"
 msgstr "Añadir/eliminar temporizador para el programa actual"
 
+msgid "Adding schedule..."
+msgstr ""
+
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move the dish from one satellite to another satellite."
 msgstr "Las opciones de motor adicionales le permiten salir de la hoja de especificaciones de su motor para que pueda calcular cuánto tardará en mover el plato de un satélite a otro satélite."
 
@@ -1884,6 +1887,12 @@ msgstr "Permitir subtítulos para personas con impedimentos auditivos"
 
 msgid "Allow unsupported modes"
 msgstr "Permitir modos no soportados"
+
+msgid "Allows the %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows the %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
@@ -2065,6 +2074,11 @@ msgstr ""
 
 #
 #, fuzzy
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "¿Está seguro que quiere salir de este asistente?"
+
+#
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
@@ -2072,6 +2086,11 @@ msgstr "¿Está seguro que quiere salir de este asistente?"
 
 #
 msgid "Are you sure you want to exit this wizard?"
+msgstr "¿Está seguro que quiere salir de este asistente?"
+
+#
+#, fuzzy
+msgid "Are you sure you want to reload the EPG data from:\n"
 msgstr "¿Está seguro que quiere salir de este asistente?"
 
 #
@@ -2100,6 +2119,11 @@ msgid ""
 "Are you sure you want to restore the backup?\n"
 "Your receiver will restart after the backup has been restored!"
 msgstr "¿Está seguro que quiere restaurar su backup Enigma2?Enigma2 reiniciará después de restaurar"
+
+#
+#, fuzzy
+msgid "Are you sure you want to save the EPG Cache to:\n"
+msgstr "¿Está seguro que quiere salir de este asistente?"
 
 msgid "Argentina"
 msgstr "Argentina"
@@ -2297,6 +2321,16 @@ msgstr "Búsqueda automática"
 
 msgid "Automatic bookmarks"
 msgstr "Marcadores automáticos"
+
+#
+#, fuzzy
+msgid "Automatic refresh"
+msgstr "Búsqueda automática"
+
+#
+#, fuzzy
+msgid "Automatic save"
+msgstr "Búsqueda automática"
 
 #
 msgid "Automatic scan"
@@ -3025,6 +3059,12 @@ msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is 
 msgstr ""
 
 msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
+msgstr ""
+
+msgid "Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time."
+msgstr ""
+
+msgid "Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -4225,9 +4265,6 @@ msgstr "Ubicación por defecto de películas"
 msgid "Default settings"
 msgstr "Parámetros por Defecto"
 
-msgid "Define the location of the EPG Cache file."
-msgstr "Defina la ubicación del archivo EPG Cache."
-
 msgid "Delay after change voltage before switch command"
 msgstr "Retardo después del cambio de voltaje antes del comando de conmutación"
 
@@ -4297,6 +4334,11 @@ msgstr "Sin demora"
 
 #
 msgid "Delete"
+msgstr "Borrar"
+
+#
+#, fuzzy
+msgid "Delete EPG"
 msgstr "Borrar"
 
 #
@@ -4557,6 +4599,10 @@ msgstr "Configuración de pantalla"
 #, fuzzy
 msgid "Display skin"
 msgstr "Configuración de pantalla"
+
+#, fuzzy
+msgid "Display the EIT now/next eventdata in infobar."
+msgstr "Mostrar EIT ahora / siguiente en infobar"
 
 msgid "Djibouti"
 msgstr "Djibouti"
@@ -4863,16 +4909,29 @@ msgstr "Hora"
 msgid "EPG"
 msgstr "EPG"
 
+msgid "EPG Cache Check"
+msgstr ""
+
 #
 #, fuzzy
 msgid "EPG Selection"
 msgstr "Selección de EPG"
+
+#
+#, fuzzy
+msgid "EPG filename"
+msgstr "nombre de fichero"
 
 msgid "EPG language selection 1"
 msgstr "Selección del idioma EPG 1"
 
 msgid "EPG language selection 2"
 msgstr "Selección del idioma EPG 2"
+
+#
+#, fuzzy
+msgid "EPG location"
+msgstr "Selección de EPG"
 
 msgid "EPG only"
 msgstr "Solo EPG"
@@ -5004,6 +5063,10 @@ msgstr "Activar EIT EPG"
 msgid "Enable Focus Animation"
 msgstr ""
 
+#, fuzzy
+msgid "Enable FreeSat EPG"
+msgstr "Habilitar freesat EPG"
+
 msgid "Enable HDMI-CEC"
 msgstr "Activar HDMI- CEC"
 
@@ -5053,9 +5116,6 @@ msgstr "habilitar modo movimiento"
 
 msgid "Enable fallback remote receiver"
 msgstr "Habilitar receptor remoto de fallback"
-
-msgid "Enable freesat EPG"
-msgstr "Habilitar freesat EPG"
 
 msgid "Enable import timer from fallback tuner"
 msgstr "Habilitar el temporizador de importación desde el sintonizador de retroceso"
@@ -6875,6 +6935,11 @@ msgstr "Instalando"
 
 #
 #, fuzzy
+msgid "Installing TMBD"
+msgstr "Instalando"
+
+#
+#, fuzzy
 msgid "Installing service"
 msgstr "Instalando"
 
@@ -7339,6 +7404,11 @@ msgid "Load"
 msgstr "Cargar"
 
 #
+#, fuzzy
+msgid "Load EPG"
+msgstr "Cargar"
+
+#
 msgid "Load length of movies in movie list"
 msgstr "Carga de películas en la lista de películas"
 
@@ -7365,9 +7435,6 @@ msgstr "Lugar"
 #
 msgid "Location"
 msgstr "Localización"
-
-msgid "Location EPG Cache file"
-msgstr "Ubicación del archivo de caché EPG"
 
 #
 msgid "Location for instant recordings"
@@ -9679,6 +9746,9 @@ msgstr "Python version: "
 msgid "Qatar"
 msgstr "Qatar"
 
+msgid "Query details from the Internet Movie Database"
+msgstr ""
+
 msgid "Question"
 msgstr "Pregunta"
 
@@ -9917,6 +9987,9 @@ msgstr "Reflash recomendado!"
 msgid "Refresh"
 msgstr "Refresco"
 
+msgid "Refresh every (in hours)"
+msgstr ""
+
 #
 msgid "Refresh rate"
 msgstr "Velocidad de refresco"
@@ -9946,6 +10019,10 @@ msgstr "Recargar"
 
 msgid "Reload blacklists"
 msgstr "Actualizar listas negras"
+
+#, fuzzy
+msgid "Reloading EPG Cache..."
+msgstr "Ubicación del archivo de caché EPG"
 
 msgid "Reloading bouquets and services..."
 msgstr "Recarga de ramos y servicios …"
@@ -10491,6 +10568,11 @@ msgstr "Guardar"
 msgid "Save / Enter text and exit"
 msgstr "Guardar / ingresar texto y salir"
 
+#
+#, fuzzy
+msgid "Save EPG"
+msgstr "EPG Sencillo"
+
 msgid "Save and exit"
 msgstr "Guardar"
 
@@ -10502,6 +10584,10 @@ msgstr "Guardar y detener el turno de tiempo"
 
 msgid "Save changes"
 msgstr "Guardar cambios"
+
+#, fuzzy
+msgid "Save every (in hours)"
+msgstr "En todos lados"
 
 #
 #, fuzzy
@@ -10534,6 +10620,13 @@ msgstr "Ahorro de tiempo en películas dir y zap"
 
 msgid "Save timeshift only for current event"
 msgstr "Ahorro de tiempo sólo para el evento actual"
+
+msgid "Save-Load-Delete"
+msgstr ""
+
+#, fuzzy
+msgid "Saving EPG Cache..."
+msgstr "Ubicación del archivo de caché EPG"
 
 #
 msgid "Scaler sharpness"
@@ -10644,13 +10737,23 @@ msgstr ""
 msgid "Search"
 msgstr "Buscar"
 
+#, fuzzy
+msgid "Search TMBD"
+msgstr "Buscar"
+
 #
 msgid "Search east"
 msgstr "Buscar este"
 
+msgid "Search event in TMBD"
+msgstr ""
+
 #
 msgid "Search west"
 msgstr "Buscar oeste"
+
+msgid "Search yt-trailer for event"
+msgstr ""
 
 msgid "Searching"
 msgstr "Buscando"
@@ -10703,6 +10806,9 @@ msgstr "No hay actualizaciones disponibles. Por favor, inténtelo de nuevo más 
 #, fuzzy
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "No hay actualizaciones disponibles. Por favor, inténtelo de nuevo más tarde"
+
+msgid "Seems internet connection down, Or TMBD Plugin not on feed."
+msgstr ""
 
 #
 msgid "Select"
@@ -12660,6 +12766,18 @@ msgstr "Modo T2MI RAW"
 msgid "TB"
 msgstr "B"
 
+msgid "TMBD Details"
+msgstr ""
+
+#
+#, fuzzy
+msgid "TMBD Not Installed"
+msgstr "Instalar"
+
+#, fuzzy
+msgid "TMBD details for event"
+msgstr "Detalles del plugin:"
+
 #
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
@@ -12834,6 +12952,12 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "El% d min restante antes del final del evento."
 
+msgid "The %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "The %s %s stores the EPG data every (hours)."
+msgstr ""
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "El estándar de DVD no admite flujos de vídeo H.264 (HDTV). ¿Desea crear un DVD de datos de formato especial (que no se reproducirá en los reproductores de DVD independientes)?"
 
@@ -12850,6 +12974,15 @@ msgstr "El código PIN se ha guardado correctamente."
 
 msgid "The PIN codes you entered are different."
 msgstr "El código PIN que ha introducido es diferente."
+
+#
+#, fuzzy
+msgid ""
+"The TMBD plugin is not installed!\n"
+"Do you want to install it?"
+msgstr ""
+"El plugin de la red inalámbrica no ha sido instalado!\n"
+"Por favor, instálelo."
 
 #, fuzzy
 msgid "The aspect ratio of the recording."
@@ -13991,7 +14124,7 @@ msgstr "Use la información de EPG de MHW cuando esté disponible."
 msgid "Use Netmed EPG information when it is available."
 msgstr "Utilice la información Netg EPG cuando esté disponible."
 
-msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required."
+msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required"
 msgstr ""
 
 msgid "Use TV remote control"
@@ -14635,9 +14768,6 @@ msgstr "Cuando esté activado, continúe con el siguiente ramo cuando se alcance
 
 msgid "When enabled, deleted recordings are moved to the trash can, instead of being deleted immediately."
 msgstr "Cuando está activada, las grabaciones borradas se mueven a la papelera, en lugar de ser eliminadas inmediatamente."
-
-msgid "When enabled, display the EIT now/next eventdata in infobar. When disabled, display now/next eventdata from the EPG cache instead."
-msgstr "Cuando esté habilitado, muestre el EIT now / next eventdata en infobar. Cuando está deshabilitado, muestre ahora / next eventdata de la caché EPG."
 
 msgid "When enabled, encryption info will be shown in the infobar (when supported by the skin)."
 msgstr "Cuando está activada, la información de cifrado se mostrará en el infobar (cuando está soportado por el skin)."

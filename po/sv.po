@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 08:30+0330\n"
+"POT-Creation-Date: 2019-10-17 11:04+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -1723,6 +1723,9 @@ msgstr "Lägg till i favoriter"
 msgid "Add/remove change timer for current event"
 msgstr "Lägg till / Ta bort ändrad timer för detta program"
 
+msgid "Adding schedule..."
+msgstr ""
+
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move the dish from one satellite to another satellite."
 msgstr ""
 
@@ -1871,6 +1874,12 @@ msgstr "Tillåt undertexter för hörselnedsatta"
 #, fuzzy
 msgid "Allow unsupported modes"
 msgstr "stöds ej"
+
+msgid "Allows the %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows the %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
@@ -2056,6 +2065,11 @@ msgstr ""
 
 #
 #, fuzzy
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "Är du säker på att du vill avsluta den här guiden?"
+
+#
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
@@ -2063,6 +2077,11 @@ msgstr "Är du säker på att du vill avsluta den här guiden?"
 
 #
 msgid "Are you sure you want to exit this wizard?"
+msgstr "Är du säker på att du vill avsluta den här guiden?"
+
+#
+#, fuzzy
+msgid "Are you sure you want to reload the EPG data from:\n"
 msgstr "Är du säker på att du vill avsluta den här guiden?"
 
 #
@@ -2093,6 +2112,11 @@ msgid ""
 msgstr ""
 "Är du säker på att du vill återställa säkerhetskopian?\n"
 "Din mottagare kommer starta om när säkerhetskopian har blivit återställd!"
+
+#
+#, fuzzy
+msgid "Are you sure you want to save the EPG Cache to:\n"
+msgstr "Är du säker på att du vill avsluta den här guiden?"
 
 msgid "Argentina"
 msgstr ""
@@ -2296,6 +2320,16 @@ msgstr "Automatisk Sökning"
 #, fuzzy
 msgid "Automatic bookmarks"
 msgstr "Automatisk Sökning"
+
+#
+#, fuzzy
+msgid "Automatic refresh"
+msgstr "Automatisk sökning"
+
+#
+#, fuzzy
+msgid "Automatic save"
+msgstr "Automatisk sökning"
 
 #
 msgid "Automatic scan"
@@ -3038,6 +3072,12 @@ msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is 
 msgstr ""
 
 msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
+msgstr ""
+
+msgid "Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time."
+msgstr ""
+
+msgid "Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -4255,10 +4295,6 @@ msgstr "Grundplats för film"
 msgid "Default settings"
 msgstr "Grundinställningar"
 
-#, fuzzy
-msgid "Define the location of the EPG Cache file."
-msgstr "Konfigurera bildförhållandet på skärmen."
-
 msgid "Delay after change voltage before switch command"
 msgstr "Fördröjning efter ändrad spänning före switchkommando"
 
@@ -4328,6 +4364,11 @@ msgstr "Ingen fördröjning"
 
 #
 msgid "Delete"
+msgstr "Ta bort"
+
+#
+#, fuzzy
+msgid "Delete EPG"
 msgstr "Ta bort"
 
 #
@@ -4590,6 +4631,10 @@ msgstr "Displayinställningar"
 #, fuzzy
 msgid "Display skin"
 msgstr "Displayinställningar"
+
+#, fuzzy
+msgid "Display the EIT now/next eventdata in infobar."
+msgstr "Visa EIT nu / nästa i infobalken"
 
 #
 #, fuzzy
@@ -4910,16 +4955,29 @@ msgstr "Tid"
 msgid "EPG"
 msgstr "EPG"
 
+msgid "EPG Cache Check"
+msgstr ""
+
 #
 #, fuzzy
 msgid "EPG Selection"
 msgstr "EPG val"
+
+#
+#, fuzzy
+msgid "EPG filename"
+msgstr "filnamn"
 
 msgid "EPG language selection 1"
 msgstr "Val av EPG språk 1"
 
 msgid "EPG language selection 2"
 msgstr "Val av EPG språk 2"
+
+#
+#, fuzzy
+msgid "EPG location"
+msgstr "EPG val"
 
 msgid "EPG only"
 msgstr ""
@@ -5052,6 +5110,10 @@ msgid "Enable Focus Animation"
 msgstr ""
 
 #, fuzzy
+msgid "Enable FreeSat EPG"
+msgstr "Aktivera freeSat EPG"
+
+#, fuzzy
 msgid "Enable HDMI-CEC"
 msgstr "Aktivera EIT EPG"
 
@@ -5100,9 +5162,6 @@ msgstr "aktivera flyttläge"
 
 msgid "Enable fallback remote receiver"
 msgstr "Aktivera reserv fjärrmottagare"
-
-msgid "Enable freesat EPG"
-msgstr "Aktivera freeSat EPG"
 
 msgid "Enable import timer from fallback tuner"
 msgstr ""
@@ -6937,6 +6996,11 @@ msgstr "Installerar"
 
 #
 #, fuzzy
+msgid "Installing TMBD"
+msgstr "Installerar"
+
+#
+#, fuzzy
 msgid "Installing service"
 msgstr "Installerar"
 
@@ -7412,6 +7476,11 @@ msgid "Load"
 msgstr "Ladda"
 
 #
+#, fuzzy
+msgid "Load EPG"
+msgstr "Ladda"
+
+#
 msgid "Load length of movies in movie list"
 msgstr "Ladda filmens längd i Filmlistan"
 
@@ -7439,9 +7508,6 @@ msgstr "Lokalt nätverk"
 #
 msgid "Location"
 msgstr "Sökväg"
-
-msgid "Location EPG Cache file"
-msgstr ""
 
 #
 msgid "Location for instant recordings"
@@ -9791,6 +9857,9 @@ msgstr "Pythonversion :"
 msgid "Qatar"
 msgstr ""
 
+msgid "Query details from the Internet Movie Database"
+msgstr ""
+
 msgid "Question"
 msgstr "Fråga"
 
@@ -10029,6 +10098,9 @@ msgstr "Omflashning rekommenderad!"
 msgid "Refresh"
 msgstr "Uppdatera"
 
+msgid "Refresh every (in hours)"
+msgstr ""
+
 #
 msgid "Refresh rate"
 msgstr "Uppdateringsfrekvens"
@@ -10060,6 +10132,10 @@ msgstr "Ladda om"
 
 msgid "Reload blacklists"
 msgstr "Ladda om svartlistor"
+
+#, fuzzy
+msgid "Reloading EPG Cache..."
+msgstr "Laddar om favoritlistor och kanaler..."
 
 msgid "Reloading bouquets and services..."
 msgstr "Laddar om favoritlistor och kanaler..."
@@ -10630,6 +10706,11 @@ msgstr "Spara"
 msgid "Save / Enter text and exit"
 msgstr "Spara och avsluta"
 
+#
+#, fuzzy
+msgid "Save EPG"
+msgstr "Singel EPG"
+
 msgid "Save and exit"
 msgstr "Spara och avsluta"
 
@@ -10641,6 +10722,10 @@ msgstr "Spara och stoppa timeshift"
 
 msgid "Save changes"
 msgstr "Spara ändringar"
+
+#, fuzzy
+msgid "Save every (in hours)"
+msgstr "Överallt"
 
 #
 #, fuzzy
@@ -10673,6 +10758,12 @@ msgstr "Spara timeshift i filmmapp och zappa"
 
 msgid "Save timeshift only for current event"
 msgstr "Spara endast timeshift för aktuellt program"
+
+msgid "Save-Load-Delete"
+msgstr ""
+
+msgid "Saving EPG Cache..."
+msgstr ""
 
 #
 msgid "Scaler sharpness"
@@ -10785,13 +10876,23 @@ msgstr ""
 msgid "Search"
 msgstr "Söker"
 
+#, fuzzy
+msgid "Search TMBD"
+msgstr "Söker"
+
 #
 msgid "Search east"
 msgstr "Sök öst"
 
+msgid "Search event in TMBD"
+msgstr ""
+
 #
 msgid "Search west"
 msgstr "Sök väst"
+
+msgid "Search yt-trailer for event"
+msgstr ""
 
 msgid "Searching"
 msgstr "Söker"
@@ -10844,6 +10945,9 @@ msgstr "Inga uppdateringar tillgängliga. Försök igen senare."
 #, fuzzy
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "Inga uppdateringar tillgängliga. Försök igen senare."
+
+msgid "Seems internet connection down, Or TMBD Plugin not on feed."
+msgstr ""
 
 #
 msgid "Select"
@@ -12847,6 +12951,18 @@ msgstr ""
 msgid "TB"
 msgstr "B"
 
+msgid "TMBD Details"
+msgstr ""
+
+#
+#, fuzzy
+msgid "TMBD Not Installed"
+msgstr "Installera"
+
+#, fuzzy
+msgid "TMBD details for event"
+msgstr "Detaljer för plugin : "
+
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr "Information för översättare"
@@ -13015,6 +13131,12 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "Det återstår %d min före slutet av programmet."
 
+msgid "The %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "The %s %s stores the EPG data every (hours)."
+msgstr ""
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standarden stödjer inte H.264 (HDTV) videoströmmar. Vill du skapa en speciell format data DVD (kommer ej kunna spelas i vanlig DVD spelare) istället?"
 
@@ -13031,6 +13153,15 @@ msgstr "PIN-koden har sparats ."
 
 msgid "The PIN codes you entered are different."
 msgstr "PIN-koden matchar inte."
+
+#
+#, fuzzy
+msgid ""
+"The TMBD plugin is not installed!\n"
+"Do you want to install it?"
+msgstr ""
+"Pluginet för trådlöst LAN är inte installerad!\n"
+"Vänligen installera den."
 
 #, fuzzy
 msgid "The aspect ratio of the recording."
@@ -14214,7 +14345,7 @@ msgstr "Använd MHW EPG information när den är tillgänglig."
 msgid "Use Netmed EPG information when it is available."
 msgstr "Använd Netmed EPG information när den är tillgänglig."
 
-msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required."
+msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required"
 msgstr ""
 
 msgid "Use TV remote control"
@@ -14868,9 +14999,6 @@ msgstr "Vid aktiverad fortsätt till nästa favoritlista när man nått sista ka
 
 msgid "When enabled, deleted recordings are moved to the trash can, instead of being deleted immediately."
 msgstr "Vid aktiverad kommer raderade inspelningar flyttas till papperskorgen, istället för att raderas omedelbart."
-
-msgid "When enabled, display the EIT now/next eventdata in infobar. When disabled, display now/next eventdata from the EPG cache instead."
-msgstr "Vid aktiverad kommer EIT nu / nästa programdata visas i infobalken. När den är avaktiverad visas nu/nästa programdata från EPG cache istället."
 
 msgid "When enabled, encryption info will be shown in the infobar (when supported by the skin)."
 msgstr "Vid aktiverad kommer krypteringsinfo att visas i infobalken (om det stöds av utseendet)."

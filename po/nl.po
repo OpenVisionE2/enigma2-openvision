@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 08:30+0330\n"
+"POT-Creation-Date: 2019-10-17 11:04+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -1622,6 +1622,9 @@ msgstr "Voeg toe aan favorieten"
 msgid "Add/remove change timer for current event"
 msgstr "Voeg een timerwijziging voor het huidige programma toe of verwijder deze"
 
+msgid "Adding schedule..."
+msgstr ""
+
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move the dish from one satellite to another satellite."
 msgstr "Met aanvullende motoropties kunt u details van de specificaties uw motor invoeren waarmee Enigma kan bepalen hoe lang het duurt om de schotel van de ene naar de andere satelliet te verplaatsen."
 
@@ -1760,6 +1763,12 @@ msgstr "Sta de ondertiteling voor doven en slechthorenden toe"
 
 msgid "Allow unsupported modes"
 msgstr "Sta niet ondersteunde video modi toe"
+
+msgid "Allows the %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows the %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
@@ -1923,12 +1932,20 @@ msgstr ""
 "wilt verwijderen:\n"
 
 #, fuzzy
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "Wilt u deze wizard beëindigen?"
+
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
 msgstr "Wilt u deze wizard beëindigen?"
 
 msgid "Are you sure you want to exit this wizard?"
+msgstr "Wilt u deze wizard beëindigen?"
+
+#, fuzzy
+msgid "Are you sure you want to reload the EPG data from:\n"
 msgstr "Wilt u deze wizard beëindigen?"
 
 msgid ""
@@ -1955,6 +1972,10 @@ msgid ""
 msgstr ""
 "Weet u zeker dat u de backup wilt terugplaatsen?\n"
 "Uw ontvanger zal herstarten nadat het restoren gereed is?"
+
+#, fuzzy
+msgid "Are you sure you want to save the EPG Cache to:\n"
+msgstr "Wilt u deze wizard beëindigen?"
 
 msgid "Argentina"
 msgstr "Argentinië"
@@ -2132,6 +2153,14 @@ msgstr "Automatische scan"
 
 msgid "Automatic bookmarks"
 msgstr "Automatische bladwijzers"
+
+#, fuzzy
+msgid "Automatic refresh"
+msgstr "Automatisch zoeken"
+
+#, fuzzy
+msgid "Automatic save"
+msgstr "Automatisch zoeken"
 
 msgid "Automatic scan"
 msgstr "Automatisch zoeken"
@@ -2820,6 +2849,12 @@ msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is 
 msgstr ""
 
 msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
+msgstr ""
+
+msgid "Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time."
+msgstr ""
+
+msgid "Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -4091,9 +4126,6 @@ msgstr "Standaard opnamelocatie."
 msgid "Default settings"
 msgstr "Standaard instellingen"
 
-msgid "Define the location of the EPG Cache file."
-msgstr "Geef de plaats van het EPG cache bestand aan."
-
 msgid "Delay after change voltage before switch command"
 msgstr "Schakel-commando vertraging nadat de spanning gewijzigd is."
 
@@ -4162,6 +4194,10 @@ msgid "Delay:"
 msgstr "Geen vertraging"
 
 msgid "Delete"
+msgstr "Verwijderen"
+
+#, fuzzy
+msgid "Delete EPG"
 msgstr "Verwijderen"
 
 msgid "Delete entry"
@@ -4384,6 +4420,10 @@ msgstr "Instellingen voor het display"
 #, fuzzy
 msgid "Display skin"
 msgstr "Instellingen voor het display"
+
+#, fuzzy
+msgid "Display the EIT now/next eventdata in infobar."
+msgstr "Toon EIT nu/straks in de informatiebalk"
 
 msgid "Djibouti"
 msgstr "Djibouti"
@@ -4665,15 +4705,26 @@ msgstr "Tijd"
 msgid "EPG"
 msgstr "EPG"
 
+msgid "EPG Cache Check"
+msgstr ""
+
 #, fuzzy
 msgid "EPG Selection"
 msgstr "EPG selectie"
+
+#, fuzzy
+msgid "EPG filename"
+msgstr "bestandnaam"
 
 msgid "EPG language selection 1"
 msgstr "Eerste taalkeuze t.b.v. de EPG weergave"
 
 msgid "EPG language selection 2"
 msgstr "Tweede taalkeuze t.b.v. de EPG weergave"
+
+#, fuzzy
+msgid "EPG location"
+msgstr "EPG selectie"
 
 msgid "EPG only"
 msgstr "Alléén de EPG"
@@ -4793,6 +4844,10 @@ msgstr "EIT EPG inschakelen"
 msgid "Enable Focus Animation"
 msgstr ""
 
+#, fuzzy
+msgid "Enable FreeSat EPG"
+msgstr "Freesat EPG inschakelen"
+
 msgid "Enable HDMI-CEC"
 msgstr "HDMI-CEC inschakelen"
 
@@ -4839,9 +4894,6 @@ msgstr "Activeer de verplaatsmodus"
 
 msgid "Enable fallback remote receiver"
 msgstr "Activeer de 'Fallback tuner'"
-
-msgid "Enable freesat EPG"
-msgstr "Freesat EPG inschakelen"
 
 msgid "Enable import timer from fallback tuner"
 msgstr "Activeer de import van timers van de Fallback tuner"
@@ -6531,6 +6583,10 @@ msgid "Installing"
 msgstr "Installeert"
 
 #, fuzzy
+msgid "Installing TMBD"
+msgstr "Installeert"
+
+#, fuzzy
 msgid "Installing service"
 msgstr "Installeert"
 
@@ -6943,6 +6999,10 @@ msgstr "Live decoder"
 msgid "Load"
 msgstr "Laden"
 
+#, fuzzy
+msgid "Load EPG"
+msgstr "Laden"
+
 msgid "Load length of movies in movie list"
 msgstr "Toon lengte van opnames in opnamemenu"
 
@@ -6964,9 +7024,6 @@ msgstr "Taal"
 
 msgid "Location"
 msgstr "Locatie"
-
-msgid "Location EPG Cache file"
-msgstr "Locatie van het EPG cache bestand"
 
 msgid "Location for instant recordings"
 msgstr "Opnamelocatie directe opnames"
@@ -9048,6 +9105,9 @@ msgstr "Pythonversie:"
 msgid "Qatar"
 msgstr "Qatar"
 
+msgid "Query details from the Internet Movie Database"
+msgstr ""
+
 msgid "Question"
 msgstr "Vraag"
 
@@ -9255,6 +9315,9 @@ msgstr "Opnieuw flashen aanbevolen!"
 msgid "Refresh"
 msgstr "Verversen"
 
+msgid "Refresh every (in hours)"
+msgstr ""
+
 msgid "Refresh rate"
 msgstr "Herhaalfrequentie"
 
@@ -9281,6 +9344,10 @@ msgstr "Herlaad"
 
 msgid "Reload blacklists"
 msgstr "Herlaadt blacklist"
+
+#, fuzzy
+msgid "Reloading EPG Cache..."
+msgstr "Locatie van het EPG cache bestand"
 
 msgid "Reloading bouquets and services..."
 msgstr "Bouquetten en zenders opnieuw inladen"
@@ -9769,6 +9836,10 @@ msgstr "Opslaan"
 msgid "Save / Enter text and exit"
 msgstr "Sla de tekst op / Voer tekst in en stop"
 
+#, fuzzy
+msgid "Save EPG"
+msgstr "Zender EPG"
+
 msgid "Save and exit"
 msgstr "Opslaan en beëindigen"
 
@@ -9780,6 +9851,10 @@ msgstr "Sla de timeshift op en beëindig deze"
 
 msgid "Save changes"
 msgstr "Wijzigingen opslaan"
+
+#, fuzzy
+msgid "Save every (in hours)"
+msgstr "Overal"
 
 #, fuzzy
 msgid "Save last directory on exit"
@@ -9809,6 +9884,13 @@ msgstr "Sla de timeshift op in de movie directory en schakel om"
 
 msgid "Save timeshift only for current event"
 msgstr "Sla de timeshift enkel op voor het lopende programma"
+
+msgid "Save-Load-Delete"
+msgstr ""
+
+#, fuzzy
+msgid "Saving EPG Cache..."
+msgstr "Locatie van het EPG cache bestand"
 
 msgid "Scaler sharpness"
 msgstr "Scaler scherpte"
@@ -9909,11 +9991,21 @@ msgstr ""
 msgid "Search"
 msgstr "Zoeken"
 
+#, fuzzy
+msgid "Search TMBD"
+msgstr "Zoeken"
+
 msgid "Search east"
 msgstr "Zoek oost"
 
+msgid "Search event in TMBD"
+msgstr ""
+
 msgid "Search west"
 msgstr "Zoek west"
+
+msgid "Search yt-trailer for event"
+msgstr ""
 
 msgid "Searching"
 msgstr "Zoeken"
@@ -9958,6 +10050,9 @@ msgstr "Geen update beschikbaar. Probeer het later nogmaals."
 #, fuzzy
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "Geen update beschikbaar. Probeer het later nogmaals."
+
+msgid "Seems internet connection down, Or TMBD Plugin not on feed."
+msgstr ""
 
 msgid "Select"
 msgstr "Selecteer"
@@ -11754,6 +11849,17 @@ msgstr "T2MI RAW Modus"
 msgid "TB"
 msgstr "B"
 
+msgid "TMBD Details"
+msgstr ""
+
+#, fuzzy
+msgid "TMBD Not Installed"
+msgstr "Niet geïnstalleerd"
+
+#, fuzzy
+msgid "TMBD details for event"
+msgstr "Plugin details:"
+
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr ""
@@ -11916,6 +12022,12 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "Nog %d min tot het einde van het programma."
 
+msgid "The %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "The %s %s stores the EPG data every (hours)."
+msgstr ""
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "De DVD standaard ondersteunt geen H.264 (HDTV) videostreams. Wilt u een DVD aanmaken met een speciaal formaat (veel DVD spelers kunnen dat niet afspelen)?"
 
@@ -11931,6 +12043,12 @@ msgstr "Pincode met succes opgeslagen."
 
 msgid "The PIN codes you entered are different."
 msgstr "De ingevoerde pincodes zijn niet gelijk."
+
+#, fuzzy
+msgid ""
+"The TMBD plugin is not installed!\n"
+"Do you want to install it?"
+msgstr "De WiFi plugin is niet geïnstalleerd. Deze plugin eerst installeren aub."
 
 #, fuzzy
 msgid "The aspect ratio of the recording."
@@ -12987,7 +13105,7 @@ msgstr "Indien geactiveerd kunt u, indien deze beschikbaar is, de MHW EPG inform
 msgid "Use Netmed EPG information when it is available."
 msgstr "Indien geactiveerd kunt u, indien deze beschikbaar is, de Netmed EPG informatie inschakelen."
 
-msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required."
+msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required"
 msgstr ""
 
 msgid "Use TV remote control"
@@ -13583,9 +13701,6 @@ msgstr "Indien geactiveerd, dan kunt u doorzappen naar het volgende bouquet indi
 
 msgid "When enabled, deleted recordings are moved to the trash can, instead of being deleted immediately."
 msgstr "Indien geactiveerd, dan zullen gewiste opnames verplaatst worden naar de prullenmand i.p.v. dat deze direct verwijderd worden."
-
-msgid "When enabled, display the EIT now/next eventdata in infobar. When disabled, display now/next eventdata from the EPG cache instead."
-msgstr "Indien geactiveerd, dan wordt de EIT nu/straks informatie in de informatiebalk getoond. Zo niet, toon dan de nu/straks informatie vanuit de EPG cache."
 
 msgid "When enabled, encryption info will be shown in the infobar (when supported by the skin)."
 msgstr "Indien geactiveerd, dan wordt de gebruikte kaartlezer + de coderingsinfo getoond in de informatiebalk."

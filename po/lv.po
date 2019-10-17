@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 08:30+0330\n"
+"POT-Creation-Date: 2019-10-17 11:04+0330\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -1636,6 +1636,9 @@ msgstr "Pievienot favorītiem"
 msgid "Add/remove change timer for current event"
 msgstr "Pievienot/noņemt mainīt taimeri tekošajai pārraidei"
 
+msgid "Adding schedule..."
+msgstr ""
+
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move the dish from one satellite to another satellite."
 msgstr "Papildu motora iespējas ļauj izmantot informāciju no sava motora specifikācijas. Tāpēc enigma var noteikt, cik ilgs laiks būs nepieciešams, lai pārvietotu satelītantenu no viena satelīta uz citu."
 
@@ -1771,6 +1774,12 @@ msgstr "Atļaut subtitrus dzirdes traucējumiem"
 
 msgid "Allow unsupported modes"
 msgstr "Izmantot neatbalstītus režīmus"
+
+msgid "Allows the %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows the %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
@@ -1936,12 +1945,20 @@ msgstr ""
 "šo dublējumkopiju:\n"
 
 #, fuzzy
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "Vai tiešām vēlaties iziet no šī veidņa?"
+
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
 msgstr "Vai tiešām vēlaties iziet no šī veidņa?"
 
 msgid "Are you sure you want to exit this wizard?"
+msgstr "Vai tiešām vēlaties iziet no šī veidņa?"
+
+#, fuzzy
+msgid "Are you sure you want to reload the EPG data from:\n"
 msgstr "Vai tiešām vēlaties iziet no šī veidņa?"
 
 msgid ""
@@ -1969,6 +1986,10 @@ msgid ""
 msgstr ""
 "Vai tiešām vēlaties atjaunot dublējumkopiju?\n"
 "Uztvērējs pārstartēsies pēc atjaunošanas!"
+
+#, fuzzy
+msgid "Are you sure you want to save the EPG Cache to:\n"
+msgstr "Vai tiešām vēlaties iziet no šī veidņa?"
 
 msgid "Argentina"
 msgstr "Argentīna"
@@ -2146,6 +2167,14 @@ msgstr "Automātiskā meklēšana"
 
 msgid "Automatic bookmarks"
 msgstr "Veidot grāmatzīmes automātiski"
+
+#, fuzzy
+msgid "Automatic refresh"
+msgstr "Automātiskā meklēšana"
+
+#, fuzzy
+msgid "Automatic save"
+msgstr "Automātiskā meklēšana"
 
 msgid "Automatic scan"
 msgstr "Automātiskā meklēšana"
@@ -2810,6 +2839,12 @@ msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is 
 msgstr ""
 
 msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
+msgstr ""
+
+msgid "Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time."
+msgstr ""
+
+msgid "Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -3906,9 +3941,6 @@ msgstr "Mediju failu atrašanās vieta pēc noklusējuma"
 msgid "Default settings"
 msgstr "Noklusējuma iestatījumi"
 
-msgid "Define the location of the EPG Cache file."
-msgstr "Norādiet EPG kešatmiņas faila atrašanās vietu."
-
 msgid "Delay after change voltage before switch command"
 msgstr "Aizture pēc sprieguma izmaiņas līdz komutatora komandai"
 
@@ -3977,6 +4009,10 @@ msgid "Delay:"
 msgstr "Nav aiztures"
 
 msgid "Delete"
+msgstr "Dzēst"
+
+#, fuzzy
+msgid "Delete EPG"
 msgstr "Dzēst"
 
 msgid "Delete entry"
@@ -4202,6 +4238,10 @@ msgstr "Displeja iestatījumi"
 #, fuzzy
 msgid "Display skin"
 msgstr "Displeja iestatījumi"
+
+#, fuzzy
+msgid "Display the EIT now/next eventdata in infobar."
+msgstr "Rādīt EIT pašreiz/nākamais infojoslā"
 
 msgid "Djibouti"
 msgstr "Džibuti"
@@ -4474,15 +4514,26 @@ msgstr "Laiks"
 msgid "EPG"
 msgstr "EPG"
 
+msgid "EPG Cache Check"
+msgstr ""
+
 #, fuzzy
 msgid "EPG Selection"
 msgstr "EPG izvēle"
+
+#, fuzzy
+msgid "EPG filename"
+msgstr "faila nosaukums"
 
 msgid "EPG language selection 1"
 msgstr "EPG valodas izvēle 1"
 
 msgid "EPG language selection 2"
 msgstr "EPG valodas izvēle 2"
+
+#, fuzzy
+msgid "EPG location"
+msgstr "EPG izvēle"
 
 msgid "EPG only"
 msgstr "Tikai EPG"
@@ -4599,6 +4650,10 @@ msgstr "Aktivizēt EIT EPG"
 msgid "Enable Focus Animation"
 msgstr ""
 
+#, fuzzy
+msgid "Enable FreeSat EPG"
+msgstr "Aktivizēt freesat EPG"
+
 msgid "Enable HDMI-CEC"
 msgstr "Izmantot HDMI-CEC iestatījumus"
 
@@ -4646,9 +4701,6 @@ msgstr "aktivizēt pārvietošanas režīmu"
 
 msgid "Enable fallback remote receiver"
 msgstr "Izmantot citu rezeves uztvērēju"
-
-msgid "Enable freesat EPG"
-msgstr "Aktivizēt freesat EPG"
 
 msgid "Enable import timer from fallback tuner"
 msgstr "Importēt taimerus no attālinātā uztvērēja"
@@ -6330,6 +6382,10 @@ msgid "Installing"
 msgstr "Uzstāda"
 
 #, fuzzy
+msgid "Installing TMBD"
+msgstr "Uzstāda"
+
+#, fuzzy
 msgid "Installing service"
 msgstr "Uzstāda"
 
@@ -6742,6 +6798,10 @@ msgstr "Dekodētājs"
 msgid "Load"
 msgstr "Ielādēt"
 
+#, fuzzy
+msgid "Load EPG"
+msgstr "Ielādēt"
+
 msgid "Load length of movies in movie list"
 msgstr "Ielādēt filmu sarakstā filmu garumus"
 
@@ -6763,9 +6823,6 @@ msgstr "Valoda"
 
 msgid "Location"
 msgstr "Atrašanās vieta"
-
-msgid "Location EPG Cache file"
-msgstr "EPG kešatmiņas fails"
 
 msgid "Location for instant recordings"
 msgstr "Ierakstu atrašanās vieta"
@@ -8829,6 +8886,9 @@ msgstr "Python versija: "
 msgid "Qatar"
 msgstr "Katara"
 
+msgid "Query details from the Internet Movie Database"
+msgstr ""
+
 msgid "Question"
 msgstr "Jautājums"
 
@@ -9036,6 +9096,9 @@ msgstr "Ieteicams pāršūt programmatūru!"
 msgid "Refresh"
 msgstr "Atjaunināt"
 
+msgid "Refresh every (in hours)"
+msgstr ""
+
 msgid "Refresh rate"
 msgstr "Atjaunināšanas biežums"
 
@@ -9062,6 +9125,10 @@ msgstr "Pārlādēt"
 
 msgid "Reload blacklists"
 msgstr "Pārlādēt melno sarakstu"
+
+#, fuzzy
+msgid "Reloading EPG Cache..."
+msgstr "EPG kešatmiņas fails"
 
 msgid "Reloading bouquets and services..."
 msgstr "Pārlādē buķetes un kanālus..."
@@ -9546,6 +9613,10 @@ msgstr "Saglabāt"
 msgid "Save / Enter text and exit"
 msgstr "Saglabāt vai ievadīt tekstu un iziet"
 
+#, fuzzy
+msgid "Save EPG"
+msgstr "Kanāla EPG"
+
 msgid "Save and exit"
 msgstr "Saglabāt un iziet"
 
@@ -9557,6 +9628,10 @@ msgstr "Saglabāt un apturēt laika aizturi"
 
 msgid "Save changes"
 msgstr "Saglabāt"
+
+#, fuzzy
+msgid "Save every (in hours)"
+msgstr "Jebkur"
 
 #, fuzzy
 msgid "Save last directory on exit"
@@ -9586,6 +9661,13 @@ msgstr "Saglabāt laika aiztures failu ierakstu mapē un pārslēgt"
 
 msgid "Save timeshift only for current event"
 msgstr "Saglabāt laika aizturi tikai pašreizējai pārraidei"
+
+msgid "Save-Load-Delete"
+msgstr ""
+
+#, fuzzy
+msgid "Saving EPG Cache..."
+msgstr "EPG kešatmiņas fails"
 
 msgid "Scaler sharpness"
 msgstr "Asuma skala"
@@ -9690,11 +9772,21 @@ msgstr ""
 msgid "Search"
 msgstr "Meklē"
 
+#, fuzzy
+msgid "Search TMBD"
+msgstr "Meklē"
+
 msgid "Search east"
 msgstr "Meklēt austrumos"
 
+msgid "Search event in TMBD"
+msgstr ""
+
 msgid "Search west"
 msgstr "Meklēt rietumos"
+
+msgid "Search yt-trailer for event"
+msgstr ""
 
 msgid "Searching"
 msgstr "Meklē"
@@ -9739,6 +9831,9 @@ msgstr "atjauninājumi nav pieejami. Lūdzu mēģiniet vēlāk."
 #, fuzzy
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "atjauninājumi nav pieejami. Lūdzu mēģiniet vēlāk."
+
+msgid "Seems internet connection down, Or TMBD Plugin not on feed."
+msgstr ""
 
 msgid "Select"
 msgstr "Izvēlēties"
@@ -11523,6 +11618,17 @@ msgstr "T2MI RAW režīms"
 msgid "TB"
 msgstr "B"
 
+msgid "TMBD Details"
+msgstr ""
+
+#, fuzzy
+msgid "TMBD Not Installed"
+msgstr "Instalēt"
+
+#, fuzzy
+msgid "TMBD details for event"
+msgstr "Spraudņu papildinformācija: "
+
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr "Taapat, Madars Auns Latvija, Talsi"
@@ -11677,6 +11783,12 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "Līdz pārraides beigām atlikušas %d minūtes."
 
+msgid "The %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "The %s %s stores the EPG data every (hours)."
+msgstr ""
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standarts neatbalsta H.264 (HDTV) video. Vai jūs vēlaties izveidot īpaša formāta datu DVD (kuru nevarēs atskaņot standarta DVD atskaņotāji)?"
 
@@ -11692,6 +11804,14 @@ msgstr "PIN kods nomainīts veiksmīgi."
 
 msgid "The PIN codes you entered are different."
 msgstr "Ievadītie PIN kodi atšķiras."
+
+#, fuzzy
+msgid ""
+"The TMBD plugin is not installed!\n"
+"Do you want to install it?"
+msgstr ""
+"Bezvadu tīkla spraudnis nav instalēts!\n"
+"Lūdzu uzstādiet to."
 
 #, fuzzy
 msgid "The aspect ratio of the recording."
@@ -12728,7 +12848,7 @@ msgstr "Lietot MHW EPG informāciju kad pieejama."
 msgid "Use Netmed EPG information when it is available."
 msgstr "Lietot Netmed EPG informāciju kad pieejama."
 
-msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required."
+msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required"
 msgstr ""
 
 msgid "Use TV remote control"
@@ -13305,9 +13425,6 @@ msgstr "Ja ieslēgts, pārslēdzot kanālus pārslēgšana turpināsies nākoša
 
 msgid "When enabled, deleted recordings are moved to the trash can, instead of being deleted immediately."
 msgstr "Ja ieslēgts, dzēstie ieraksti tiks pārvietoti uz miskasti nevis neatgriezeniski dzēsti."
-
-msgid "When enabled, display the EIT now/next eventdata in infobar. When disabled, display now/next eventdata from the EPG cache instead."
-msgstr "Ja ieslēgts, attēlos pašreiz/nākamais EIT notikumus infojoslā. Ja izslēgts pašreiz/nākamais notikumi netiks rādīti no EPG kešatmiņas."
 
 msgid "When enabled, encryption info will be shown in the infobar (when supported by the skin)."
 msgstr "Ja ieslēgts, infojoslā tiks attēlota kodēšanas informācija (ja to uztur noformējums)."

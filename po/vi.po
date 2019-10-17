@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 08:30+0330\n"
+"POT-Creation-Date: 2019-10-17 11:04+0330\n"
 "PO-Revision-Date: 2019-07-22 20:15+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -1622,6 +1622,9 @@ msgstr "Thêm vào mục ưa thích"
 msgid "Add/remove change timer for current event"
 msgstr "Thêm / xóa bộ đếm thời gian thay đổi cho sự kiện hiện tại"
 
+msgid "Adding schedule..."
+msgstr ""
+
 msgid "Additional motor options allow you to enter details from your motor's spec sheet so enigma can work out how long it will take to move the dish from one satellite to another satellite."
 msgstr "Tùy chọn động cơ bổ sung cho phép bạn nhập chi tiết từ bảng thông số kỹ thuật của động cơ để enigma có thể biết được sẽ mất bao lâu để di chuyển món ăn từ vệ tinh này sang vệ tinh khác."
 
@@ -1757,6 +1760,12 @@ msgstr "Cho phép phụ đề cho người khiếm thính"
 
 msgid "Allow unsupported modes"
 msgstr "Cho phép các chế độ không được hỗ trợ"
+
+msgid "Allows the %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows the %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
@@ -1918,12 +1927,20 @@ msgstr ""
 "sao lưu sau:\n"
 
 #, fuzzy
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "Bạn có chắc chắn muốn thoát khỏi thuật sĩ này?"
+
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
 msgstr "Bạn có chắc chắn muốn thoát khỏi thuật sĩ này?"
 
 msgid "Are you sure you want to exit this wizard?"
+msgstr "Bạn có chắc chắn muốn thoát khỏi thuật sĩ này?"
+
+#, fuzzy
+msgid "Are you sure you want to reload the EPG data from:\n"
 msgstr "Bạn có chắc chắn muốn thoát khỏi thuật sĩ này?"
 
 msgid ""
@@ -1949,6 +1966,10 @@ msgid ""
 msgstr ""
 "Bạn có chắc chắn muốn khôi phục lại bản sao lưu?\n"
 "Đầu thu của bạn sẽ khởi động lại sau khi sao lưu đã được khôi phục!"
+
+#, fuzzy
+msgid "Are you sure you want to save the EPG Cache to:\n"
+msgstr "Bạn có chắc chắn muốn thoát khỏi thuật sĩ này?"
 
 msgid "Argentina"
 msgstr "Argentina"
@@ -2126,6 +2147,14 @@ msgstr "Quét tự động"
 
 msgid "Automatic bookmarks"
 msgstr "Đánh dấu tự động"
+
+#, fuzzy
+msgid "Automatic refresh"
+msgstr "Quét tự động"
+
+#, fuzzy
+msgid "Automatic save"
+msgstr "Quét tự động"
 
 msgid "Automatic scan"
 msgstr "Quét tự động"
@@ -2803,6 +2832,12 @@ msgid "Choose the front panel display formatting style for dates. 'D' / 'DD' is 
 msgstr ""
 
 msgid "Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin."
+msgstr ""
+
+msgid "Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time."
+msgstr ""
+
+msgid "Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -3898,9 +3933,6 @@ msgstr "Vị trí phim mặc định"
 msgid "Default settings"
 msgstr "Thiết lập mặc định"
 
-msgid "Define the location of the EPG Cache file."
-msgstr "Xác định vị trí của tệp EPG Cache."
-
 msgid "Delay after change voltage before switch command"
 msgstr "Trì hoãn sau khi thay đổi điện áp trước lệnh chuyển đổi"
 
@@ -3969,6 +4001,10 @@ msgid "Delay:"
 msgstr "Không chậm trễ"
 
 msgid "Delete"
+msgstr "Xóa bỏ"
+
+#, fuzzy
+msgid "Delete EPG"
 msgstr "Xóa bỏ"
 
 msgid "Delete entry"
@@ -4191,6 +4227,10 @@ msgstr "Thiết lập hiển thị"
 #, fuzzy
 msgid "Display skin"
 msgstr "Thiết lập hiển thị"
+
+#, fuzzy
+msgid "Display the EIT now/next eventdata in infobar."
+msgstr "Hiển thị EIT ngay bây giờ / tiếp theo trong infobar"
 
 msgid "Djibouti"
 msgstr "Djibouti"
@@ -4462,15 +4502,26 @@ msgstr "Thời gian"
 msgid "EPG"
 msgstr "EPG"
 
+msgid "EPG Cache Check"
+msgstr ""
+
 #, fuzzy
 msgid "EPG Selection"
 msgstr "Lựa chọn EPG"
+
+#, fuzzy
+msgid "EPG filename"
+msgstr "tên tệp"
 
 msgid "EPG language selection 1"
 msgstr "Lựa chọn ngôn ngữ EPG 1"
 
 msgid "EPG language selection 2"
 msgstr "Lựa chọn ngôn ngữ EPG 2"
+
+#, fuzzy
+msgid "EPG location"
+msgstr "Lựa chọn EPG"
 
 msgid "EPG only"
 msgstr "Chỉ EPG"
@@ -4586,6 +4637,10 @@ msgstr "Kích hoạt EIT EPG"
 msgid "Enable Focus Animation"
 msgstr ""
 
+#, fuzzy
+msgid "Enable FreeSat EPG"
+msgstr "Kích hoạt EPG freesat"
+
 msgid "Enable HDMI-CEC"
 msgstr "Kích hoạt HDMI-CEC"
 
@@ -4633,9 +4688,6 @@ msgstr "cho phép chế độ di chuyển"
 
 msgid "Enable fallback remote receiver"
 msgstr "Cho phép thu từ xa dự phòng"
-
-msgid "Enable freesat EPG"
-msgstr "Kích hoạt EPG freesat"
 
 msgid "Enable import timer from fallback tuner"
 msgstr "Kích hoạt tính năng hẹn giờ nhập từ bộ điều chỉnh dự phòng"
@@ -6313,6 +6365,10 @@ msgid "Installing"
 msgstr "Đang Cài đặt"
 
 #, fuzzy
+msgid "Installing TMBD"
+msgstr "Đang Cài đặt"
+
+#, fuzzy
 msgid "Installing service"
 msgstr "Đang Cài đặt"
 
@@ -6725,6 +6781,10 @@ msgstr "Bộ giải mã trực tiếp"
 msgid "Load"
 msgstr "Tải"
 
+#, fuzzy
+msgid "Load EPG"
+msgstr "Tải"
+
 msgid "Load length of movies in movie list"
 msgstr "Tải thời lượng phim trong danh sách phim"
 
@@ -6746,9 +6806,6 @@ msgstr "Địa phương"
 
 msgid "Location"
 msgstr "Vị trí"
-
-msgid "Location EPG Cache file"
-msgstr "Vị trí tệp bộ nhớ cache EPG"
 
 msgid "Location for instant recordings"
 msgstr "Vị trí ghi âm tức thì"
@@ -8801,6 +8858,9 @@ msgstr "Phiên bản Python: "
 msgid "Qatar"
 msgstr "Qatar"
 
+msgid "Query details from the Internet Movie Database"
+msgstr ""
+
 msgid "Question"
 msgstr "Câu hỏi"
 
@@ -9008,6 +9068,9 @@ msgstr "Đề nghị phản xạ!"
 msgid "Refresh"
 msgstr "Làm tươi"
 
+msgid "Refresh every (in hours)"
+msgstr ""
+
 msgid "Refresh rate"
 msgstr "Tốc độ làm tươi"
 
@@ -9034,6 +9097,10 @@ msgstr "Tải lại"
 
 msgid "Reload blacklists"
 msgstr "Tải lại danh sách đen"
+
+#, fuzzy
+msgid "Reloading EPG Cache..."
+msgstr "Vị trí tệp bộ nhớ cache EPG"
 
 msgid "Reloading bouquets and services..."
 msgstr "Tải lại bó hoa và dịch vụ ..."
@@ -9518,6 +9585,10 @@ msgstr "Lưu lại"
 msgid "Save / Enter text and exit"
 msgstr "Lưu / Nhập văn bản và thoát"
 
+#, fuzzy
+msgid "Save EPG"
+msgstr "EPG đơn"
+
 msgid "Save and exit"
 msgstr "Lưu và thoát"
 
@@ -9529,6 +9600,10 @@ msgstr "Lưu và dừng timeshift"
 
 msgid "Save changes"
 msgstr "Lưu thay đổi"
+
+#, fuzzy
+msgid "Save every (in hours)"
+msgstr "Mọi nơi"
 
 #, fuzzy
 msgid "Save last directory on exit"
@@ -9558,6 +9633,13 @@ msgstr "Lưu timeshift trong thư mục phim và zap"
 
 msgid "Save timeshift only for current event"
 msgstr "Chỉ lưu thời gian cho sự kiện hiện tại"
+
+msgid "Save-Load-Delete"
+msgstr ""
+
+#, fuzzy
+msgid "Saving EPG Cache..."
+msgstr "Vị trí tệp bộ nhớ cache EPG"
 
 msgid "Scaler sharpness"
 msgstr "Độ sắc nét"
@@ -9658,11 +9740,21 @@ msgstr ""
 msgid "Search"
 msgstr "Tìm kiếm"
 
+#, fuzzy
+msgid "Search TMBD"
+msgstr "Tìm kiếm"
+
 msgid "Search east"
 msgstr "Tìm kiếm phía đông"
 
+msgid "Search event in TMBD"
+msgstr ""
+
 msgid "Search west"
 msgstr "Tìm kiếm về phía tây"
+
+msgid "Search yt-trailer for event"
+msgstr ""
 
 msgid "Searching"
 msgstr "Đang tìm kiếm"
@@ -9707,6 +9799,9 @@ msgstr "Không có bảng cập nhật có sẵn. Vui lòng thử lại sau."
 #, fuzzy
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
 msgstr "Không có bảng cập nhật có sẵn. Vui lòng thử lại sau."
+
+msgid "Seems internet connection down, Or TMBD Plugin not on feed."
+msgstr ""
 
 msgid "Select"
 msgstr "Lựa chọn"
@@ -11488,6 +11583,17 @@ msgstr "Chế độ RAW T2MI"
 msgid "TB"
 msgstr "B"
 
+msgid "TMBD Details"
+msgstr ""
+
+#, fuzzy
+msgid "TMBD Not Installed"
+msgstr "Chưa cài đặt"
+
+#, fuzzy
+msgid "TMBD details for event"
+msgstr "Chi tiết cho plugin: "
+
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr "THÔNG TIN TRUYỀN THÔNG"
@@ -11642,6 +11748,12 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "%d phút còn lại trước khi kết thúc sự kiện."
 
+msgid "The %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "The %s %s stores the EPG data every (hours)."
+msgstr ""
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "Chuẩn DVD không hỗ trợ luồng video H.264 (HDTV). Bạn có muốn tạo một DVD dữ liệu định dạng đặc biệt (thay vào đó sẽ không phát trong các đầu DVD độc lập) không?"
 
@@ -11657,6 +11769,14 @@ msgstr "Mã PIN đã được lưu thành công."
 
 msgid "The PIN codes you entered are different."
 msgstr "Mã PIN bạn đã nhập là khác nhau."
+
+#, fuzzy
+msgid ""
+"The TMBD plugin is not installed!\n"
+"Do you want to install it?"
+msgstr ""
+"Plugin LAN không dây chưa được cài đặt!\n"
+"Vui lòng cài đặt nó."
 
 #, fuzzy
 msgid "The aspect ratio of the recording."
@@ -12692,7 +12812,7 @@ msgstr "Sử dụng thông tin MHW EPG khi có sẵn."
 msgid "Use Netmed EPG information when it is available."
 msgstr "Sử dụng thông tin EPG Netmed khi có sẵn."
 
-msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required."
+msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG data tuning to a dedicated transponder is required"
 msgstr ""
 
 msgid "Use TV remote control"
@@ -13269,9 +13389,6 @@ msgstr "Khi được bật, tiếp tục đến bó hoa tiếp theo khi đạt �
 
 msgid "When enabled, deleted recordings are moved to the trash can, instead of being deleted immediately."
 msgstr "Khi được bật, các bản ghi bị xóa sẽ được chuyển vào thùng rác, thay vì bị xóa ngay lập tức."
-
-msgid "When enabled, display the EIT now/next eventdata in infobar. When disabled, display now/next eventdata from the EPG cache instead."
-msgstr "Khi được bật, hiển thị EIT now / next eventdata trong infobar. Khi bị tắt, thay vào đó hãy hiển thị eventdata từ bộ đệm EPG."
 
 msgid "When enabled, encryption info will be shown in the infobar (when supported by the skin)."
 msgstr "Khi được bật, thông tin mã hóa sẽ được hiển thị trong infobar (khi được hỗ trợ bởi skin)."
