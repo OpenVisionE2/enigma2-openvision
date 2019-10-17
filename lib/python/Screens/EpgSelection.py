@@ -145,18 +145,19 @@ class EPGSelection(Screen):
 			self.onLayoutFinish.append(self.onCreate)
 		else:
 			self.fallbackTimer = FallbackTimerList(self, self.onCreate)
-			
+
 	def GoToTmbd(self):
 		if fileExists("/usr/lib/enigma2/python/Plugins/Extensions/TMBD/plugin.pyo"):
 			self.runTMBD()
 		if not fileExists("/usr/lib/enigma2/python/Plugins/Extensions/TMBD/plugin.pyo"):
-			self.session.openWithCallback(self.doInstall, MessageBox, _('The TMBD plugin is not installed!\nDo you want to install it ?!'), MessageBox.TYPE_YESNO)
+			self.session.openWithCallback(self.doInstall, MessageBox, _('The TMBD plugin is not installed!\nDo you want to install it?'), MessageBox.TYPE_YESNO)
 
 	def runTMBD(self):
 		if fileExists("/usr/lib/enigma2/python/Plugins/Extensions/TMBD/plugin.pyo"):
 			from Plugins.Extensions.TMBD.plugin import TMBD
+			description=_("TMBD Details")
 			description=_("TMBD details for event")
-			description=_("Query details from the Internet Movie Database")	
+			description=_("Query details from the Internet Movie Database")
 			cur = self["list"].getCurrent()
 			if cur[0] is not None:
 				name2 = cur[0].getEventName() or ''
