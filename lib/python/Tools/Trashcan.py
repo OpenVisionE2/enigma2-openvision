@@ -4,22 +4,52 @@ import enigma
 from Components.config import config
 from Components import Harddisk
 from twisted.internet import threads
+from Components.GUIComponent import GUIComponent
+from Components.VariableText import VariableText
+import Components.Task
 
-def getTrashFolder(path):
-	# Returns trash folder without symlinks. Path may be file or directory or whatever.
-	mountpoint = Harddisk.findMountPoint(os.path.realpath(path))
-	movie = os.path.join(mountpoint, 'movie')
-	if os.path.isdir(movie):
-		mountpoint = movie
-	return os.path.join(mountpoint, ".Trash")
+def getTrashFolder(path=None):
+	# Returns trash folder without symlinks
+	try:
+		if path is None or os.path.realpath(path) == '/media/autofs':
+			print 'path is none'
+			return ""
+		else:
+			trashcan = Harddisk.findMountPoint(os.path.realpath(path))
+			if '/movie' in path:
+				trashcan = os.path.join(trashcan, 'movie')
+			elif config.usage.default_path.value in path:
+				# if default_path happens to not be the default /hdd/media/movie, then we can have a trash folder there instead
+				trashcan = os.path.join(trashcan, config.usage.default_path.value)
+			return os.path.realpath(os.path.join(trashcan, ".Trash"))
+	except:
+		return None
 
-def createTrashFolder(path):
-	# Create and return trash folder for given file or dir
+def createTrashFolder(path=None):
+	print '[TRASHCAN DeBug path]', path
 	trash = getTrashFolder(path)
-	if not os.path.isdir(trash):
-		print "[Trashcan] create:", trash
-		os.mkdir(trash)
-	return trash
+	print '[TRASHCAN DeBug]', trash
+	if trash and os.access(os.path.split(trash)[0], os.W_OK):
+		if not os.path.isdir(trash):
+			try:
+				os.mkdir(trash)
+			except:
+				return None
+		return trash
+	else:
+		return None
+
+def get_size(start_path = '.'):
+	total_size = 0
+	if start_path:
+		for dirpath, dirnames, filenames in os.walk(start_path):
+			for f in filenames:
+				try:
+					fp = os.path.join(dirpath, f)
+					total_size += os.path.getsize(fp)
+				except:
+					pass
+	return total_size
 
 def enumTrashFolders():
 	# Walk through all Trash folders. This may access network
@@ -35,7 +65,8 @@ def enumTrashFolders():
 				yield result
 
 class Trashcan:
-	def __init__(self):
+	def __init__(self, session):
+		self.session = session
 		self.isCleaning = False
 		self.session = None
 		self.dirty = set()
@@ -161,6 +192,112 @@ def cleanAll(trash):
 
 def init(session):
 	global instance
-	instance.init(session)
+	instance = Trashcan(session)
 
-instance = Trashcan()
+class CleanTrashTask(Components.Task.PythonTask):
+	def openFiles(self, ctimeLimit, reserveBytes):
+		self.ctimeLimit = ctimeLimit
+		self.reserveBytes = reserveBytes
+
+	def work(self):
+		mounts=[]
+		matches = []
+		print "[Trashcan] probing folders"
+		f = open('/proc/mounts', 'r')
+		for line in f.readlines():
+			parts = line.strip().split()
+			if parts[1] == '/media/autofs':
+				continue
+			if config.usage.movielist_trashcan_network_clean.value and parts[1].startswith('/media/net'):
+				mounts.append(parts[1])
+			elif config.usage.movielist_trashcan_network_clean.value and parts[1].startswith('/media/autofs'):
+				mounts.append(parts[1])
+			elif not parts[1].startswith('/media/net') and not parts[1].startswith('/media/autofs'):
+				mounts.append(parts[1])
+		f.close()
+
+		for mount in mounts:
+			if os.path.isdir(os.path.join(mount,'.Trash')):
+				matches.append(os.path.join(mount,'.Trash'))
+			if os.path.isdir(os.path.join(mount,'movie/.Trash')):
+				matches.append(os.path.join(mount,'movie/.Trash'))
+
+		print "[Trashcan] found following trashcan's:",matches
+		if len(matches):
+			for trashfolder in matches:
+				print "[Trashcan] looking in trashcan",trashfolder
+				trashsize = get_size(trashfolder)
+				diskstat = os.statvfs(trashfolder)
+				free = diskstat.f_bfree * diskstat.f_bsize
+				bytesToRemove = self.reserveBytes - free
+				print "[Trashcan] " + str(trashfolder) + ": Size:",trashsize
+				candidates = []
+				size = 0
+				for root, dirs, files in os.walk(trashfolder, topdown=False):
+					for name in files:
+# Don't delete any per-directory config files from .Trash if the option is in use
+						if (config.movielist.settings_per_directory.value and name == ".e2settings.pkl"):
+							continue
+						try:
+							fn = os.path.join(root, name)
+							st = os.stat(fn)
+							if st.st_ctime < self.ctimeLimit:
+								enigma.eBackgroundFileEraser.getInstance().erase(fn)
+								bytesToRemove -= st.st_size
+							else:
+								candidates.append((st.st_ctime, fn, st.st_size))
+								size += st.st_size
+						except Exception, e:
+							print "[Trashcan] Failed to stat %s:"% name, e
+					# Remove empty directories if possible
+					for name in dirs:
+						try:
+							os.rmdir(os.path.join(root, name))
+						except:
+							pass
+					candidates.sort()
+					# Now we have a list of ctime, candidates, size. Sorted by ctime (=deletion time)
+					for st_ctime, fn, st_size in candidates:
+						if bytesToRemove < 0:
+							break
+						try:
+							# somtimes the file does not exist, can happen if trashcan is on a network, the main box could also be emptying trash at same time.
+							enigma.eBackgroundFileEraser.getInstance().erase(fn)
+						except:
+							pass
+						bytesToRemove -= st_size
+						size -= st_size
+					print "[Trashcan] " + str(trashfolder) + ": Size now:",size
+
+class TrashInfo(VariableText, GUIComponent):
+	FREE = 0
+	USED = 1
+	SIZE = 2
+
+	def __init__(self, path, type, update = True):
+		GUIComponent.__init__(self)
+		VariableText.__init__(self)
+		self.type = type
+		if update and path != '/media/autofs/':
+			self.update(path)
+
+	def update(self, path):
+		try:
+			total_size = get_size(getTrashFolder(path))
+		except OSError:
+			return -1
+
+		if self.type == self.USED:
+			try:
+				if total_size < 10000000:
+					total_size = _("%d KB") % (total_size >> 10)
+				elif total_size < 10000000000:
+					total_size = _("%d MB") % (total_size >> 20)
+				else:
+					total_size = _("%d GB") % (total_size >> 30)
+				self.setText(_("Trashcan:") + " " + total_size)
+			except:
+				# occurs when f_blocks is 0 or a similar error
+				self.setText("-?-")
+
+	GUI_WIDGET = enigma.eLabel

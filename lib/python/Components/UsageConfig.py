@@ -152,12 +152,18 @@ def InitUsageConfig():
 	config.usage.timeshift_path = ConfigText(default = "/media/hdd/")
 	config.usage.allowed_timeshift_paths = ConfigLocations(default = ["/media/hdd/"])
 
+	config.usage.trashsort_deltime = ConfigSelection(default = "no", choices = [
+		("no", _("no")),
+		("show record time", _("Yes, show record time")),
+		("show delete time", _("Yes, show delete time"))])
 	config.usage.movielist_trashcan = ConfigYesNo(default=True)
-	config.usage.movielist_trashcan_days = ConfigNumber(default=7)
-	config.usage.movielist_trashcan_reserve = ConfigNumber(default=40)
-	config.usage.on_movie_start = ConfigSelection(default = "resume", choices = [
-		("ask yes", _("Ask user") + " " + _("default") + " " + _("yes")),
-		("ask no", _("Ask user") + " " + _("default") + " " + _("no")),
+	config.usage.movielist_trashcan_network_clean = ConfigYesNo(default=False)
+
+	config.usage.movielist_trashcan_days = ConfigSelectionNumber(min = 0, max = 31, stepwidth = 1, default = 8, wraparound = True)
+	config.usage.movielist_trashcan_reserve = ConfigNumber(default = 40)
+	config.usage.on_movie_start = ConfigSelection(default = "ask yes", choices = [
+		("ask yes", _("Ask user (with default as 'yes')")),
+		("ask no", _("Ask user (with default as 'no')")),
 		("resume", _("Resume from last position")),
 		("beginning", _("Start from the beginning"))])
 	config.usage.on_movie_stop = ConfigSelection(default = "movielist", choices = [
@@ -167,8 +173,8 @@ def InitUsageConfig():
 		("playlistquit", _("Play next (return to previous service)")), ("loop", _("Continues play (loop)")), ("repeatcurrent", _("Repeat"))])
 	config.usage.next_movie_msg = ConfigYesNo(default = True)
 	config.usage.last_movie_played = ConfigText()
-	config.usage.leave_movieplayer_onExit = ConfigSelection(default = "popup", choices = [
-		("no", _("no")), ("popup", _("With popup")), ("without popup", _("Without popup")), ("movielist", _("Return to movie list")) ])
+	config.usage.leave_movieplayer_onExit = ConfigSelection(default = "no", choices = [
+		("no", _("No")), ("popup", _("With popup")), ("without popup", _("Without popup")) ])
 
 	config.usage.setup_level = ConfigSelection(default = "expert", choices = [
 		("simple", _("Normal")),
@@ -305,7 +311,7 @@ def InitUsageConfig():
 		elif x.isCompatible("ATSC"):
 			atsc_nims.append((str(x.slot), x.getSlotName()))
 		nims.append((str(x.slot), x.getSlotName()))
-		
+
 	config.usage.menutype = ConfigSelection(default='standard', choices=[('horzanim', _('Horizontal menu')), ('horzicon', _('Horizontal icons')), ('standard', _('Standard menu'))])
 
 	config.usage.frontend_priority = ConfigSelection(default = "-1", choices = list(nims))
@@ -352,19 +358,19 @@ def InitUsageConfig():
 
 	if getDisplayType() == "textlcd":
 		config.usage.blinking_rec_symbol_during_recording = ConfigSelection(default = "Channel", choices = [
-						("Rec", _("REC Symbol")), 
-						("RecBlink", _("Blinking REC Symbol")), 
+						("Rec", _("REC Symbol")),
+						("RecBlink", _("Blinking REC Symbol")),
 						("Channel", _("Channelname"))])
 	if getDisplayType() == "7segment":
 		config.usage.blinking_rec_symbol_during_recording = ConfigSelection(default = "Rec", choices = [
-						("Rec", _("REC")), 
-						("RecBlink", _("Blinking REC")), 
+						("Rec", _("REC")),
+						("RecBlink", _("Blinking REC")),
 						("Time", _("Time"))])
 	else:
 		config.usage.blinking_rec_symbol_during_recording = ConfigYesNo(default = True)
 
 	config.usage.show_in_standby = ConfigSelection(default = "time", choices = [
-					("time", _("Time")), 
+					("time", _("Time")),
 					("nothing", _("Nothing"))])
 
 	config.usage.show_message_when_recording_starts = ConfigYesNo(default = True)
@@ -376,7 +382,12 @@ def InitUsageConfig():
 		('s', _("Small progress")),
 		('i', _("Icons")),
 	])
-	config.usage.movielist_unseen = ConfigYesNo(default = False)
+	config.usage.movielist_unseen = ConfigYesNo(default = True)
+	config.usage.movielist_servicename_mode = ConfigSelection(default = "", choices = [
+		("", _("None")),
+		("picon", _("Picon"))
+	])
+	config.usage.movielist_piconwidth = ConfigSelectionNumber(default = 100, stepwidth = 1, min = 50, max = 500, wraparound = True)
 
 	config.usage.swap_snr_on_osd = ConfigYesNo(default = False)
 	config.usage.swap_time_display_on_osd = ConfigSelection(default = "0", choices = [("0", _("Skin Setting")), ("1", _("Mins")), ("2", _("Mins Secs")), ("3", _("Hours Mins")), ("4", _("Hours Mins Secs")), ("5", _("Percentage"))])
@@ -389,7 +400,7 @@ def InitUsageConfig():
 	config.usage.elapsed_time_positive_vfd = ConfigYesNo(default = False)
 
 	config.usage.frontled_color = ConfigSelection(default = "2", choices = [("0", _("Off")), ("1", _("Blue")), ("2", _("Red")), ("3", _("Blinking blue")), ("4",  _("Blinking red"))])
-	config.usage.frontledrec_color = ConfigSelection(default = "3", choices = [("0", _("Off")), ("1", _("Blue")), ("2", _("Red")), ("3", _("Blinking blue")), ("4",  _("Blinking red"))])
+	config.usage.frontledrec_color = ConfigSelection(default = "3", choices = [("0", _("Off")), ("1", _("Blue")), ("2", _("Red")), ("3", _("Blinking blue")), ("4",	 _("Blinking red"))])
 	config.usage.frontledstdby_color = ConfigSelection(default = "0", choices = [("0", _("Off")), ("1", _("Blue")), ("2", _("Red")), ("3", _("Blinking blue")), ("4",  _("Blinking red"))])
 	config.usage.frontledrecstdby_color = ConfigSelection(default = "3", choices = [("0", _("Off")), ("1", _("Blue")), ("2", _("Red")), ("3", _("Blinking blue")), ("4",  _("Blinking red"))])
 
@@ -493,7 +504,7 @@ def InitUsageConfig():
 
 	def setDateStyles(configElement):
 		dateStyles = {
-			# dayfull            shortdayfull      daylong           dayshortfull   dayshort       daysmall    full           long           short
+			# dayfull			 shortdayfull	   daylong			 dayshortfull	dayshort	   daysmall	   full			  long			 short
 			_("%A %d %B %Y"): (_("%a %d %B %Y"), _("%a %d %b %Y"), _("%A %d %B"), _("%a %d %b"), _("%a %d"), _("%d %B %Y"), _("%d %b %Y"), _("%d %b")),
 			_("%A %-d %B %Y"): (_("%a %-d %B %Y"), _("%a %-d %b %Y"), _("%A %-d %B"), _("%a %-d %b"), _("%a %-d"), _("%-d %B %Y"), _("%-d %b %Y"), _("%-d %b")),
 			_("%A %d-%B-%Y"): (_("%a %d-%B-%Y"), _("%a %d-%b-%Y"), _("%A %d-%B"), _("%a %d-%b"), _("%a %d"), _("%d-%B-%Y"), _("%d-%b-%Y"), _("%d-%b")),
@@ -567,7 +578,7 @@ def InitUsageConfig():
 
 	def setTimeStyles(configElement):
 		timeStyles = {
-			# long      mixed    short
+			# long		mixed	 short
 			_("%T"): (_("%T"), _("%R")),
 			_("%-H:%M:%S"): (_("%-H:%M:%S"), _("%-H:%M")),
 			_("%I:%M:%S%^p"): (_("%I:%M%^p"), _("%I:%M%^p")),
@@ -652,7 +663,7 @@ def InitUsageConfig():
 
 	def setDateDisplayStyles(configElement):
 		dateDisplayStyles = {
-			# display      displayday     template
+			# display	   displayday	  template
 			"": ("", ""),
 			_("%d %b"): (_("%a %d %b"), _("%d+%b_")),
 			_("%-d %b"): (_("%a %-d %b"), _("%-d+%b_")),
@@ -831,7 +842,7 @@ def InitUsageConfig():
 		from enigma import eEPGCache
 		eEPGCache.getInstance().setEpgHistorySeconds(config.epg.histminutes.getValue()*60)
 	config.epg.histminutes.addNotifier(EpgHistorySecondsChanged)
-	
+
 	config.epg.cacheloadsched = ConfigYesNo(default = False)
 	config.epg.cachesavesched = ConfigYesNo(default = False)
 	def EpgCacheLoadSchedChanged(configElement):
@@ -869,7 +880,7 @@ def InitUsageConfig():
 	config.misc.epgratingcountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
 	config.misc.epggenrecountry = ConfigSelection(default="", choices=[("", _("Auto Detect")), ("ETSI", _("Generic")), ("AUS", _("Australia"))])
 
-	config.misc.showradiopic = ConfigYesNo(default = True)	
+	config.misc.showradiopic = ConfigYesNo(default = True)
 
 	def setHDDStandby(configElement):
 		for hdd in harddiskmanager.HDDList():
@@ -1046,17 +1057,17 @@ def InitUsageConfig():
 			open(SystemInfo["HasHdrType"], "w").write(configElement.value)
 		config.av.hdmihdrtype = ConfigSelection(default = "auto", choices={"auto": _("Auto"), "none": _("SDR"), "hdr10": _("HDR10"), "hlg": _("HLG"), "dolby": _("Dolby")})
 		config.av.hdmihdrtype.addNotifier(setHdmiHdrType)
-		
+
 	if SystemInfo["HDRSupport"]:
 		def setHlgSupport(configElement):
 			open("/proc/stb/hdmi/hlg_support", "w").write(configElement.value)
-		config.av.hlg_support = ConfigSelection(default = "auto(EDID)", 
+		config.av.hlg_support = ConfigSelection(default = "auto(EDID)",
 			choices = [ ("auto(EDID)", _("controlled by HDMI")), ("yes", _("force enabled")), ("no", _("force disabled")) ])
 		config.av.hlg_support.addNotifier(setHlgSupport)
 
 		def setHdr10Support(configElement):
 			open("/proc/stb/hdmi/hdr10_support", "w").write(configElement.value)
-		config.av.hdr10_support = ConfigSelection(default = "auto(EDID)", 
+		config.av.hdr10_support = ConfigSelection(default = "auto(EDID)",
 			choices = [ ("auto(EDID)", _("controlled by HDMI")), ("yes", _("force enabled")), ("no", _("force disabled")) ])
 		config.av.hdr10_support.addNotifier(setHdr10Support)
 
@@ -1081,7 +1092,7 @@ def InitUsageConfig():
 	config.subtitles.subtitle_rewrap = ConfigYesNo(default = False)
 	config.subtitles.colourise_dialogs = ConfigYesNo(default = False)
 	config.subtitles.subtitle_borderwidth = ConfigSelection(choices = ["1", "2", "3", "4", "5"], default = "3")
-	config.subtitles.subtitle_fontsize  = ConfigSelection(choices = ["%d" % x for x in range(16,101) if not x % 2], default = "40")
+	config.subtitles.subtitle_fontsize = ConfigSelection(choices = ["%d" % x for x in range(16,101) if not x % 2], default = "40")
 	config.subtitles.showbackground = ConfigYesNo(default = False)
 
 	subtitle_delay_choicelist = []
@@ -1271,7 +1282,7 @@ def updateChoices(sel, choices):
 
 def preferredPath(path):
 	if config.usage.setup_level.index < 2 or path == "<default>" or not path:
-		return None  # config.usage.default_path.value, but delay lookup until usage
+		return None	 # config.usage.default_path.value, but delay lookup until usage
 	elif path == "<current>":
 		return config.movielist.last_videodir.value
 	elif path == "<timer>":
@@ -1292,65 +1303,65 @@ def patchTuxtxtConfFile(dummyConfigElement):
 	print "[tuxtxt] patching tuxtxt2.conf"
 	if config.usage.tuxtxt_font_and_res.value == "X11_SD":
 		tuxtxt2 = [["UseTTF",0],
-		           ["TTFBold",1],
-		           ["TTFScreenResX",720],
-		           ["StartX",50],
-		           ["EndX",670],
-		           ["StartY",30],
-		           ["EndY",555],
-		           ["TTFShiftY",0],
-		           ["TTFShiftX",0],
-		           ["TTFWidthFactor16",26],
-		           ["TTFHeightFactor16",14]]
+				   ["TTFBold",1],
+				   ["TTFScreenResX",720],
+				   ["StartX",50],
+				   ["EndX",670],
+				   ["StartY",30],
+				   ["EndY",555],
+				   ["TTFShiftY",0],
+				   ["TTFShiftX",0],
+				   ["TTFWidthFactor16",26],
+				   ["TTFHeightFactor16",14]]
 	elif config.usage.tuxtxt_font_and_res.value == "TTF_SD":
 		tuxtxt2 = [["UseTTF",1],
-		           ["TTFBold",1],
-		           ["TTFScreenResX",720],
-		           ["StartX",50],
-		           ["EndX",670],
-		           ["StartY",30],
-		           ["EndY",555],
-		           ["TTFShiftY",2],
-		           ["TTFShiftX",0],
-		           ["TTFWidthFactor16",29],
-		           ["TTFHeightFactor16",14]]
+				   ["TTFBold",1],
+				   ["TTFScreenResX",720],
+				   ["StartX",50],
+				   ["EndX",670],
+				   ["StartY",30],
+				   ["EndY",555],
+				   ["TTFShiftY",2],
+				   ["TTFShiftX",0],
+				   ["TTFWidthFactor16",29],
+				   ["TTFHeightFactor16",14]]
 	elif config.usage.tuxtxt_font_and_res.value == "TTF_HD":
 		tuxtxt2 = [["UseTTF",1],
-		           ["TTFBold",0],
-		           ["TTFScreenResX",1280],
-		           ["StartX",80],
-		           ["EndX",1200],
-		           ["StartY",35],
-		           ["EndY",685],
-		           ["TTFShiftY",-3],
-		           ["TTFShiftX",0],
-		           ["TTFWidthFactor16",26],
-		           ["TTFHeightFactor16",14]]
+				   ["TTFBold",0],
+				   ["TTFScreenResX",1280],
+				   ["StartX",80],
+				   ["EndX",1200],
+				   ["StartY",35],
+				   ["EndY",685],
+				   ["TTFShiftY",-3],
+				   ["TTFShiftX",0],
+				   ["TTFWidthFactor16",26],
+				   ["TTFHeightFactor16",14]]
 	elif config.usage.tuxtxt_font_and_res.value == "TTF_FHD":
 		tuxtxt2 = [["UseTTF",1],
-		           ["TTFBold",0],
-		           ["TTFScreenResX",1920],
-		           ["StartX",140],
-		           ["EndX",1780],
-		           ["StartY",52],
-		           ["EndY",1027],
-		           ["TTFShiftY",-6],
-		           ["TTFShiftX",0],
-		           ["TTFWidthFactor16",26],
-		           ["TTFHeightFactor16",14]]
+				   ["TTFBold",0],
+				   ["TTFScreenResX",1920],
+				   ["StartX",140],
+				   ["EndX",1780],
+				   ["StartY",52],
+				   ["EndY",1027],
+				   ["TTFShiftY",-6],
+				   ["TTFShiftX",0],
+				   ["TTFWidthFactor16",26],
+				   ["TTFHeightFactor16",14]]
 	elif config.usage.tuxtxt_font_and_res.value == "expert_mode":
-		tuxtxt2 = [["UseTTF",            int(config.usage.tuxtxt_UseTTF.value)],
-		           ["TTFBold",           int(config.usage.tuxtxt_TTFBold.value)],
-		           ["TTFScreenResX",     int(config.usage.tuxtxt_TTFScreenResX.value)],
-		           ["StartX",            config.usage.tuxtxt_StartX.value],
-		           ["EndX",              config.usage.tuxtxt_EndX.value],
-		           ["StartY",            config.usage.tuxtxt_StartY.value],
-		           ["EndY",              config.usage.tuxtxt_EndY.value],
-		           ["TTFShiftY",         int(config.usage.tuxtxt_TTFShiftY.value)],
-		           ["TTFShiftX",         int(config.usage.tuxtxt_TTFShiftX.value)],
-		           ["TTFWidthFactor16",  config.usage.tuxtxt_TTFWidthFactor16.value],
-		           ["TTFHeightFactor16", config.usage.tuxtxt_TTFHeightFactor16.value]]
-	tuxtxt2.append(    ["CleanAlgo",         config.usage.tuxtxt_CleanAlgo.value] )
+		tuxtxt2 = [["UseTTF",			 int(config.usage.tuxtxt_UseTTF.value)],
+				   ["TTFBold",			 int(config.usage.tuxtxt_TTFBold.value)],
+				   ["TTFScreenResX",	 int(config.usage.tuxtxt_TTFScreenResX.value)],
+				   ["StartX",			 config.usage.tuxtxt_StartX.value],
+				   ["EndX",				 config.usage.tuxtxt_EndX.value],
+				   ["StartY",			 config.usage.tuxtxt_StartY.value],
+				   ["EndY",				 config.usage.tuxtxt_EndY.value],
+				   ["TTFShiftY",		 int(config.usage.tuxtxt_TTFShiftY.value)],
+				   ["TTFShiftX",		 int(config.usage.tuxtxt_TTFShiftX.value)],
+				   ["TTFWidthFactor16",	 config.usage.tuxtxt_TTFWidthFactor16.value],
+				   ["TTFHeightFactor16", config.usage.tuxtxt_TTFHeightFactor16.value]]
+	tuxtxt2.append(	   ["CleanAlgo",		 config.usage.tuxtxt_CleanAlgo.value] )
 
 	TUXTXT_CFG_FILE = "/etc/tuxtxt/tuxtxt2.conf"
 	command = "sed -i -r '"
@@ -1360,7 +1371,7 @@ def patchTuxtxtConfFile(dummyConfigElement):
 	command += "' %s" % TUXTXT_CFG_FILE
 	for f in tuxtxt2:
 		#if keyword is not found in file, append keyword and value
-		command += " ; if ! grep -q '%s' %s ; then echo '%s %d' >> %s ; fi"  % (f[0],TUXTXT_CFG_FILE,f[0],f[1],TUXTXT_CFG_FILE)
+		command += " ; if ! grep -q '%s' %s ; then echo '%s %d' >> %s ; fi"	 % (f[0],TUXTXT_CFG_FILE,f[0],f[1],TUXTXT_CFG_FILE)
 	try:
 		Console().ePopen(command)
 	except:
