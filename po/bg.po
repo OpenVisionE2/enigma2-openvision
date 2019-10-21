@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-17 11:04+0330\n"
+"POT-Creation-Date: 2019-10-21 09:17+0330\n"
 "PO-Revision-Date: 2018-11-12 20:51+0200\n"
 "Last-Translator: Мартин Петков <marto74bg@yahoo.co.uk>\n"
 "Language-Team: Bulgarian\n"
@@ -820,6 +820,10 @@ msgid "%d GB"
 msgstr ""
 
 #, python-format
+msgid "%d KB"
+msgstr ""
+
+#, python-format
 msgid "%d MB"
 msgstr ""
 
@@ -858,12 +862,6 @@ msgid "%d core"
 msgid_plural "%d cores"
 msgstr[0] "%d ядро"
 msgstr[1] "%d ядра"
-
-#, python-format
-msgid "%d file"
-msgid_plural "%d files"
-msgstr[0] "%d файл"
-msgstr[1] "%d файла"
 
 #, fuzzy, python-format
 msgid "%d fps"
@@ -908,6 +906,14 @@ msgid "%d ms"
 msgstr "%d мс"
 
 #, python-format
+msgid "%d of %d Bytes"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%d of %d KB"
+msgstr "%A %d %B"
+
+#, python-format
 msgid "%d pixel wide"
 msgid_plural "%d pixels wide"
 msgstr[0] "ширина на пиксела %d"
@@ -922,12 +928,6 @@ msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d секунда"
 msgstr[1] "%d секунди"
-
-#, python-format
-msgid "%d subdirectory"
-msgid_plural "%d subdirectories"
-msgstr[0] "%d поддиректория"
-msgstr[1] "%d поддиректории"
 
 #, python-format
 msgid "%d wireless network found!"
@@ -997,6 +997,10 @@ msgid "%m/%d/%Y"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "%s"
+msgstr "CH%s"
+
+#, fuzzy, python-format
 msgid ""
 "%s\n"
 "Do you still want to flash image\n"
@@ -1032,6 +1036,14 @@ msgid "%s is no longer used. Should it be deleted?"
 msgstr "%s вече не се използва. Да се се изтрие ли?"
 
 #, python-format
+msgid "%s of %s GB"
+msgstr ""
+
+#, python-format
+msgid "%s of %s MB"
+msgstr ""
+
+#, python-format
 msgid "%s updated package available"
 msgid_plural "%s updated packages available"
 msgstr[0] "%s актуализиран пакет е наличен"
@@ -1053,6 +1065,10 @@ msgstr "%s/%s: %s"
 msgid "%s:%s"
 msgstr "%s:%s"
 
+#, python-format
+msgid "'%s' contains %d file(s) and %d sub-directories.\n"
+msgstr ""
+
 #, fuzzy
 msgid "( All readers)"
 msgstr "Всички възрасти"
@@ -1062,6 +1078,9 @@ msgstr ""
 
 msgid "(VU+ type)"
 msgstr "(VU+ тип)"
+
+msgid "(You are currently using a temporary sort method)"
+msgstr ""
 
 msgid "(ZAP as PiP)"
 msgstr "(Превключване като PiP)"
@@ -1552,7 +1571,7 @@ msgstr ""
 msgid "Adapter settings"
 msgstr "Настройки на адаптера"
 
-msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.  It hides the day of the week for recordings made in previous years."
+msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.\t It hides the day of the week for recordings made in previous years."
 msgstr ""
 
 msgid "Add"
@@ -1745,9 +1764,6 @@ msgstr "12bit"
 msgid "Allow quit movieplayer with exit"
 msgstr "Позволи изход от видеоплеъра с exit"
 
-msgid "Allow quitting movieplayer with exit"
-msgstr "Позволи изход от видеоплеъра с exit"
-
 msgid "Allow subtitle language to equal audio language"
 msgstr "Позволи езика на субтитрите да съответстват на езика на звука"
 
@@ -1769,7 +1785,13 @@ msgstr ""
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr ""
 
+msgid "Allows you to hide the extensions of known file types."
+msgstr ""
+
 msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
+msgid "Allows you to setup the button to do what you choose."
 msgstr ""
 
 msgid "Alpha"
@@ -1994,6 +2016,12 @@ msgstr "Както е зададено в скина"
 msgid "Ask user"
 msgstr "Питай потребител"
 
+msgid "Ask user (with default as 'no')"
+msgstr ""
+
+msgid "Ask user (with default as 'yes')"
+msgstr ""
+
 msgid "Aspect ratio"
 msgstr "Режим Картина"
 
@@ -2147,10 +2175,6 @@ msgid "Automatic"
 msgstr "Автоматично"
 
 msgid "Automatic Scan"
-msgstr "Автоматично Търсене"
-
-#, fuzzy
-msgid "Automatic bookmarks"
 msgstr "Автоматично Търсене"
 
 #, fuzzy
@@ -2374,6 +2398,10 @@ msgstr "Блокиране на филтъра за MPEG шум"
 msgid "Blue"
 msgstr "Син"
 
+#, fuzzy
+msgid "Blue long"
+msgstr "Изтрий лога"
+
 msgid "Bolivia (Plurinational State of)"
 msgstr "Боливия"
 
@@ -2467,6 +2495,9 @@ msgstr "Бурунди"
 
 msgid "Bus: "
 msgstr "Bus: "
+
+msgid "Button"
+msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr "По подразбиране, SNR ще се показва в dB (когато се поддържа от тунера). Тази настройка позволява SNR да се показва в проценти вместо в dB."
@@ -2613,6 +2644,10 @@ msgstr ""
 msgid "Cannot delete downloaded image"
 msgstr "Да изтрия ли завършените таймери?"
 
+#, fuzzy
+msgid "Cannot delete file"
+msgstr "Не може да се определи"
+
 msgid "Cannot determine"
 msgstr "Не може да се определи"
 
@@ -2622,8 +2657,9 @@ msgstr "Не може да се открие сигнал ..., изход !"
 msgid "Cannot find images - please try later"
 msgstr "Няма открити имиджи - моля опитайте по-късно"
 
-msgid "Cannot move files on a different disk or system to the trash can"
-msgstr "Не може да се преместват файлове от различни дискове или системи в кошчето"
+#, fuzzy
+msgid "Cannot move to the trash can"
+msgstr "Не може да се премести в кошчето"
 
 msgid "Cannot move to trash can"
 msgstr "Не може да се премести в кошчето"
@@ -2870,6 +2906,10 @@ msgstr "Кръгова лява"
 
 msgid "Circular right"
 msgstr "Кръгова дясна"
+
+#, fuzzy
+msgid "Clean network trash cans"
+msgstr "Не може да се премести в кошчето"
 
 msgid "Cleanup"
 msgstr "Почистване"
@@ -3256,6 +3296,12 @@ msgstr "Настройка на (DNS) сървър."
 msgid "Configure the netmask."
 msgstr "Настройка на мрежова маска."
 
+#, fuzzy
+msgid ""
+"Configure the number of days after which items are automatically removed from the trash can.\n"
+"A setting of 0 disables this."
+msgstr "Настройки броя дни след които файлове ще бъдат автоматично премахнати от кошчето."
+
 msgid "Configure the number of days after which items are automaticaly removed from the trash can."
 msgstr "Настройки броя дни след които файлове ще бъдат автоматично премахнати от кошчето."
 
@@ -3494,6 +3540,10 @@ msgstr "Готварски Острови"
 msgid "Copy"
 msgstr "Копие"
 
+#, fuzzy
+msgid "Copying files"
+msgstr "Дълго наименование"
+
 msgid "Costa Rica"
 msgstr "Коста Рика"
 
@@ -3508,6 +3558,10 @@ msgstr ""
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Не може да се зареди съдържанието! Не е вкаран диск?"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Импортиране на канали от резервния тунер"
 
 msgid "Could not open Picture in Picture"
 msgstr "Не може да се отвори Картина в Картината"
@@ -4046,6 +4100,10 @@ msgstr "Изтрит"
 msgid "Deleted items"
 msgstr "Изтрити елементи"
 
+#, fuzzy
+msgid "Deleting files"
+msgstr "Изтриване на файл"
+
 msgid "Denmark"
 msgstr "Дания"
 
@@ -4102,6 +4160,10 @@ msgstr "Открит NIMs:"
 
 #, fuzzy
 msgid "Device"
+msgstr "Канали"
+
+#, fuzzy
+msgid "Device mounts"
 msgstr "Канали"
 
 msgid "Devicename:"
@@ -4168,10 +4230,6 @@ msgstr "Директория %s не съществува."
 msgid "Directory browser"
 msgstr "Браузър директории"
 
-#, python-format
-msgid "Directory contains %s and %s."
-msgstr " Директорията съдържа %s и %s."
-
 msgid "Disable"
 msgstr "Спри"
 
@@ -4230,9 +4288,6 @@ msgstr "Дисплей и потребителски интерфейс"
 msgid "Display message before playing next movie"
 msgstr "Показване на съобщение преди изпълнението на следващия филм"
 
-msgid "Display movie length in movielist (except single line style)."
-msgstr ""
-
 msgid "Display setup"
 msgstr "Настройки Дисплей"
 
@@ -4271,9 +4326,6 @@ msgstr "Не променяй"
 msgid "Do not record"
 msgstr "Не записвай"
 
-msgid "Do not show file extensions for registered multimedia files."
-msgstr ""
-
 msgid "Do nothing"
 msgstr "Не прави нищо"
 
@@ -4284,8 +4336,16 @@ msgstr ""
 "Искате ли да проверите файловата система?\n"
 "Това може да отнеме доста време!"
 
+#, fuzzy, python-format
+msgid "Do you really want to delete %s ?"
+msgstr "Наистина ли искате да изтриете %s?"
+
 #, python-format
 msgid "Do you really want to delete %s?"
+msgstr "Наистина ли искате да изтриете %s?"
+
+#, fuzzy
+msgid "Do you really want to delete ?"
 msgstr "Наистина ли искате да изтриете %s?"
 
 #, fuzzy
@@ -4309,6 +4369,20 @@ msgid ""
 msgstr ""
 "Наистина ли искате да инициализирате устройството?\n"
 "Ще загубите цялата информация на диска!"
+
+#, fuzzy
+msgid "Do you really want to move to the trash can ?"
+msgstr ""
+"Искате ли да премахнете\n"
+"плъгина \"%s\"?"
+
+#, fuzzy, python-format
+msgid "Do you really want to permamently remove '%s' from the trash can ?"
+msgstr "Наистина ли искате да премахнете директория %s от диска?"
+
+#, fuzzy
+msgid "Do you really want to permanently remove from the trash can ?"
+msgstr "Наистина ли искате да премахнете директория %s от диска?"
 
 #, python-format
 msgid ""
@@ -4546,10 +4620,6 @@ msgstr "EPG настройки"
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
 msgstr "Грешка при сканиране (%s)!"
-
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr ""
 
 msgid "East"
 msgstr "Изток"
@@ -4901,10 +4971,6 @@ msgstr "Еритрея"
 msgid "Error"
 msgstr "Грешка"
 
-#, fuzzy, python-format
-msgid "Error %s"
-msgstr "Грешка"
-
 msgid "Error code"
 msgstr "Грешен код"
 
@@ -4940,21 +5006,10 @@ msgstr "Грешка при стартиране на плъгина"
 msgid "Error stop stream!"
 msgstr "Грешка при спиране на стрийма!"
 
-msgid "Error when writing epg.dat on server"
-msgstr ""
-
-#, fuzzy
-msgid "Error while retreiving epg.dat from server"
-msgstr "Грешка при получаване местоположението на файла epg.dat от сървъра"
-
 #, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr "Грешка при получаване местоположението на файла epg.dat от сървъра"
-
-#, fuzzy
-msgid "Error while retreiving location of epg.dat on server"
 msgstr "Грешка при получаване местоположението на файла epg.dat от сървъра"
 
 #, python-format
@@ -5182,8 +5237,20 @@ msgid "F"
 msgstr "F"
 
 #, fuzzy
+msgid "F1"
+msgstr "1"
+
+#, fuzzy
 msgid "F1/F3/F4/F4-TURBO/TRIPLEX"
 msgstr "F1/F3/F4/F4-TURBO"
+
+#, fuzzy
+msgid "F2"
+msgstr "2"
+
+#, fuzzy
+msgid "F3"
+msgstr "3"
 
 msgid "FAILED"
 msgstr "ГРЕШКА"
@@ -5458,6 +5525,9 @@ msgstr ""
 
 msgid "Following tasks will be done after you press OK!"
 msgstr "Следните задачи ще бъдат изпълнени, след като натиснете OK!"
+
+msgid "Font size"
+msgstr ""
 
 msgid "Force legacy signal stats"
 msgstr "Избиране на старите стат.данни за сигнала"
@@ -5740,6 +5810,10 @@ msgstr ""
 
 msgid "Green"
 msgstr "Зелен"
+
+#, fuzzy
+msgid "Green long"
+msgstr "Гренландия"
 
 msgid "Greenland"
 msgstr "Гренландия"
@@ -6121,21 +6195,8 @@ msgstr "Исландия"
 msgid "Icons"
 msgstr "Икони"
 
-msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
-msgstr ""
-
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Ако се активира, на дисплея ще се показват 12 символа вместо 8, но само за кодировка latin-1 или транслит."
-
-#, fuzzy
-msgid "If enabled, then there will be displayed icons for new/unseen items too."
-msgstr "Ако е включено, инфо-лентата ще се показва при начало на ново предаване."
-
-msgid "If is enabled and movie playback is finished, then after return to movielist will not be automaticaly start service playback."
-msgstr ""
-
-msgid "If set as 'Yes', then audiofiles are played in 'list mode' only, instead in full screen player."
-msgstr ""
 
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "При ‘Да’, данните за сигнала (SNR,и т.н.) ще се изчисляват от API V3. Това е стара API версия, която е вече заменена."
@@ -6564,6 +6625,9 @@ msgstr "Казахстан"
 msgid "Keep service"
 msgstr "Задръж на канала"
 
+msgid "Keeps the movie list open whilst playing audio files."
+msgstr ""
+
 msgid "Kenya"
 msgstr "Кения"
 
@@ -6786,9 +6850,6 @@ msgstr "Режим списък"
 msgid "List of storage devices"
 msgstr "Списък с устройствата за съхранение"
 
-msgid "List type"
-msgstr "Вид на списъка"
-
 #, python-format
 msgid "List version %d, found %d channel"
 msgid_plural "List version %d, found %d channels"
@@ -6816,9 +6877,6 @@ msgstr "Зареди"
 #, fuzzy
 msgid "Load EPG"
 msgstr "Зареди"
-
-msgid "Load length of movies in movie list"
-msgstr "Зареждане продължителността на филмите във видео списъка"
 
 msgid "Load playlist"
 msgstr "Зареждане на плейлист"
@@ -7296,8 +7354,9 @@ msgstr "Движение"
 msgid "Movie"
 msgstr "Завъртам"
 
-msgid "Movie list configuration"
-msgstr "Конфигурация на списъка с филми"
+#, fuzzy
+msgid "Movie List Setup"
+msgstr "Меню на списъка с филми"
 
 msgid "Movie location"
 msgstr "Местоположение на филмите"
@@ -7316,6 +7375,10 @@ msgstr "Завъртам"
 
 msgid "Moving east ..."
 msgstr "Завъртам на изток ..."
+
+#, fuzzy
+msgid "Moving files"
+msgstr "Дълго наименование"
 
 msgid "Moving to position"
 msgstr "Завъртам към позиция"
@@ -7505,6 +7568,10 @@ msgstr "Мрежов Маунт"
 msgid "Network mount %s"
 msgstr "Мрежов Маунт %s"
 
+#, fuzzy
+msgid "Network mounts"
+msgstr "Мрежов Маунт"
+
 msgid "Network name (SSID)"
 msgstr "Име на мрежа (SSID)"
 
@@ -7623,9 +7690,6 @@ msgstr "Няма налично описание."
 msgid "No displayable files on this medium found!"
 msgstr "Няма поддържани файлове на този носител!"
 
-msgid "No epg.dat file found server"
-msgstr ""
-
 msgid "No event info found, recording indefinitely."
 msgstr "Няма инфо за предаването, незабавен запис."
 
@@ -7668,6 +7732,9 @@ msgstr "Няма канал"
 
 msgid "No services/providers selected"
 msgstr "Не са избрани канали/провайдери"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 msgid "No standby"
 msgstr "Не преминавай в режим готовност"
@@ -7790,6 +7857,10 @@ msgid "Not Classified"
 msgstr "Няма асоциации"
 
 #, fuzzy
+msgid "Not Defined"
+msgstr "Не определен"
+
+#, fuzzy
 msgid "Not Installed"
 msgstr "Инсталирай"
 
@@ -7799,10 +7870,6 @@ msgstr "Няма налични актуализации"
 
 msgid "Not associated"
 msgstr "Няма асоциации"
-
-#, fuzzy
-msgid "Not defined"
-msgstr "Не определен"
 
 #, python-format
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
@@ -7857,6 +7924,13 @@ msgid "Number of channels shown in channel selection list"
 msgstr "Брой на каналите показвани в списъка за избор на канал"
 
 msgid "Number of repeating text on display."
+msgstr "Брой повторения на текста на дисплея."
+
+msgid "Number of rows"
+msgstr ""
+
+#, fuzzy
+msgid "Number of rows to display"
 msgstr "Брой повторения на текста на дисплея."
 
 msgid "Number or SMS style data entry"
@@ -8200,6 +8274,9 @@ msgstr "Процента отляво"
 msgid "Percentage right"
 msgstr "Процента отдясно"
 
+msgid "Permanent sort key changes"
+msgstr ""
+
 msgid "Permanently delete all recordings in the trash can?"
 msgstr "Окончателно изтриване на всички записи в кошчето?"
 
@@ -8219,6 +8296,14 @@ msgid "PiP setup"
 msgstr "PiP настройка"
 
 msgid "Picon"
+msgstr "Пикон"
+
+#, fuzzy
+msgid "Picon Size"
+msgstr "Пикон"
+
+#, fuzzy
+msgid "Picon Width"
 msgstr "Пикон"
 
 msgid "Picon and servicename"
@@ -8250,11 +8335,11 @@ msgstr "Възпроизвеждане на DVD"
 msgid "Play DVDs"
 msgstr "Възпроизвеждане на DVD"
 
+msgid "Play audio in background"
+msgstr ""
+
 msgid "Play audio-CD..."
 msgstr "Възпроизвеждане на аудио-CD..."
-
-msgid "Play audiofiles in list mode"
-msgstr ""
 
 msgid "Play back media files"
 msgstr "Възпроизвеждане на медия файлове"
@@ -8350,6 +8435,10 @@ msgstr "Моля, въведете ново име:"
 msgid "Please enter the correct pin code"
 msgstr "Моля въведете коректен ПИН код"
 
+#, fuzzy
+msgid "Please enter the name of the new directory"
+msgstr "Моля въведете име за новата директория"
+
 msgid "Please enter the new PIN code"
 msgstr "Моля въведете нов PIN-код"
 
@@ -8389,9 +8478,6 @@ msgstr "Моля изберете устройство за Сканиране"
 msgid "Please select medium to use as backup location"
 msgstr "Моля изберете устройство за backup"
 
-msgid "Please select tag to filter..."
-msgstr "Моля изберете таг за филтъра..."
-
 msgid "Please select the movie path..."
 msgstr "Моля изберете път към филма..."
 
@@ -8403,6 +8489,10 @@ msgstr ""
 "Моля изберете мрежов интерфейс който искате да използвате за вашата интернет връзка.\n"
 "\n"
 "Натиснете ОК за да продължите."
+
+#, fuzzy
+msgid "Please select the tag to filter..."
+msgstr "Моля изберете таг за филтъра..."
 
 msgid ""
 "Please select the wireless network that you want to connect to.\n"
@@ -9062,9 +9152,6 @@ msgstr "Запис"
 msgid "Record time limited due to conflicting timer %s"
 msgstr "Времето за запис е ограничено поради конфликт с таймер %s"
 
-msgid "Recorded files..."
-msgstr "Записани файлове..."
-
 msgid "Recording"
 msgstr "Запис"
 
@@ -9110,6 +9197,10 @@ msgstr "Червен бутон..."
 msgid "Red colored"
 msgstr "Оцветен в червено"
 
+#, fuzzy
+msgid "Red long"
+msgstr "дълго"
+
 msgid "Reenter PIN"
 msgstr "Въведете отново PIN-кода"
 
@@ -9127,9 +9218,6 @@ msgstr "Честота на обновяване"
 
 msgid "Refresh rate selection."
 msgstr "Избор честота на обновяване."
-
-msgid "Refusing to move to the same directory"
-msgstr "Не може да се премести в същата директория"
 
 msgid "Regard deep standby as standby"
 msgstr "Считай изключването както режим готовност"
@@ -10244,6 +10332,10 @@ msgstr "Канал & PIDs"
 msgid "Service ID"
 msgstr "ID на канала"
 
+#, fuzzy
+msgid "Service Title mode"
+msgstr "Режим име на канала"
+
 msgid "Service has been added to the favourites."
 msgstr "Каналът беше добавен към предпочитани."
 
@@ -10333,9 +10425,8 @@ msgstr ""
 msgid "Set PIN"
 msgstr "Задайте PIN-код"
 
-#, fuzzy
-msgid "Set action when movie playback is finished."
-msgstr "Настройка какво да се случи когато бъде стартирано възпроизвеждането на филм."
+msgid "Set a temporary sort method for this directory"
+msgstr ""
 
 msgid "Set all hotkey to default?"
 msgstr "Задаване на всички бързи бутони по подразбиране?"
@@ -10364,18 +10455,11 @@ msgstr "Задайте fps (кадри в секунда) за външни су
 msgid "Set framerate for MiniTV"
 msgstr ""
 
-msgid "Set if You want see status icons, progress bars or nothing."
-msgstr ""
-
 msgid "Set interface as default Interface"
 msgstr "Направи интерфейса като основен Интерфейс"
 
 msgid "Set limits"
 msgstr "Поставяне лимити"
-
-#, fuzzy
-msgid "Set movielist type."
-msgstr "Защита на списъка с филми"
 
 msgid "Set pin code persistent"
 msgstr "Задайте постоянен PIN-код"
@@ -10398,8 +10482,16 @@ msgstr "Въведете ако се намирате в източното ил
 msgid "Set the User ID of the OpenWebif from your fallback tuner"
 msgstr "Импортиране на канали от резервния тунер"
 
+#, fuzzy
+msgid "Set the default sorting method."
+msgstr "Задаване на настройките по подразбиране?"
+
 msgid "Set the delay time between repeated loops, this is used by software renderer in some skins."
 msgstr ""
+
+#, fuzzy
+msgid "Set the global sort method"
+msgstr "Избор на метод за подреждане:"
 
 #, fuzzy
 msgid "Set the password of the OpenWebif from your fallback tuner"
@@ -10420,6 +10512,10 @@ msgstr "Настройка на контраста на дисплея на пр
 #, fuzzy
 msgid "Set the scrolling speed of text on the front panel display."
 msgstr "Настройка на контраста на дисплея на предния панел."
+
+#, fuzzy
+msgid "Set the sort method for this directory"
+msgstr "Не може да се премести в същата директория"
 
 msgid "Set the time of day to perform the import."
 msgstr ""
@@ -10455,11 +10551,11 @@ msgstr ""
 msgid "Set voltage and 22KHz"
 msgstr "Задаване на напрежение и 22KHz"
 
+msgid "Sets the root directory of movie list, to remove the '..' from being shown in that folder."
+msgstr ""
+
 msgid "Settings"
 msgstr "Настройки"
-
-msgid "Settings can be different for each directory separately (for non removeable devices only)."
-msgstr ""
 
 msgid "Setup"
 msgstr "Настройки"
@@ -10691,6 +10787,10 @@ msgid "Show latest update log"
 msgstr "Покажи последния лог от обновяването"
 
 #, fuzzy
+msgid "Show live tv when movie stopped"
+msgstr "Действие при спиране на филм"
+
+#, fuzzy
 msgid "Show log"
 msgstr "Покажи Инфо"
 
@@ -10707,6 +10807,10 @@ msgstr "Показвай пътя към менюто"
 
 msgid "Show message when recording starts"
 msgstr "Показвай съобщение когато започне  запис"
+
+#, fuzzy
+msgid "Show movie lengths in movie list"
+msgstr "Покажи дължината на филма в списъка с филми"
 
 msgid "Show movie lengths in movielist"
 msgstr "Покажи дължината на филма в списъка с филми"
@@ -10730,6 +10834,10 @@ msgid "Show notification when import channels was successful"
 msgstr "Покажи известие когато импортирането на канали завърши успешно"
 
 #, fuzzy
+msgid "Show or hide the extended description, (skin dependant)."
+msgstr "Покажи разширено описание"
+
+#, fuzzy
 msgid "Show packages to be updated"
 msgstr "Покажи пакетите, които ще бъдат обновени"
 
@@ -10738,6 +10846,10 @@ msgstr "Покажи пикони в списъка за избор на кан�
 
 msgid "Show picons in display"
 msgstr "Показвай пикони на дисплея"
+
+#, fuzzy
+msgid "Show picons in the movie list."
+msgstr "Показвай статус иконки в списъка с филми"
 
 msgid "Show positioner movement"
 msgstr "Показвай въртенето на антената"
@@ -10835,8 +10947,15 @@ msgstr "Показвай/скривай прозорец"
 msgid "Shows live tv or informations on LCD."
 msgstr "Показва live тв или информация на LCD."
 
+msgid "Shows the icons when new/unseen, otherwise it will not show an icon."
+msgstr ""
+
 msgid "Shows the state of your wireless LAN connection.\n"
 msgstr "Показва статуса на вашата безжична LAN връзка.\n"
+
+#, fuzzy
+msgid "Shows the watched status of the movie."
+msgstr "Няма етикети за тези филми."
 
 msgid "Shuffle playlist"
 msgstr "Разбъркай плейлист"
@@ -11071,9 +11190,6 @@ msgstr "Някои плъгини не са налични:\n"
 msgid "Sorry, %s has not been installed!"
 msgstr "Извинете, %s не беше инсталиран!"
 
-msgid "Sorry, deleting directories can (for now) only be done through the trash can."
-msgstr "Извинете, изтриване на директории (за сега) може да се извърши само от кошчето,"
-
 msgid "Sorry, no backups found!"
 msgstr "Не са открити резервни копия!"
 
@@ -11097,8 +11213,15 @@ msgstr "Подреждане"
 msgid "Sort A-Z"
 msgstr "Подреждане A-Z"
 
+msgid "Sort Trash by deletion time"
+msgstr ""
+
 msgid "Sort by"
 msgstr "Подреждане по"
+
+#, fuzzy
+msgid "Sort by default"
+msgstr "Задаване по подразбиране"
 
 msgid "Sort list to default and exit?"
 msgstr "Подреждане на списъка по подразбиране и изход?"
@@ -11386,6 +11509,10 @@ msgstr ""
 
 msgid "Stop playing this movie?"
 msgstr "Да спра този филм?"
+
+#, fuzzy
+msgid "Stop previous broadcasted service on return to movie list."
+msgstr "Спиране на сървис при връщане в списъка с филми"
 
 msgid "Stop recording"
 msgstr "Спри запис"
@@ -11692,6 +11819,9 @@ msgstr "ТУНЕР:"
 msgid "TUNING"
 msgstr "НАСТРОЙКА"
 
+msgid "TV"
+msgstr ""
+
 msgid "TV physical address report"
 msgstr "Инфо от физическия адрес на ТВ"
 
@@ -11803,6 +11933,9 @@ msgstr "Тестови екрани"
 
 msgid "Testscreens that are helpfull to fine-tune your display"
 msgstr "Тестови екрани, които се явяват полезни при фина настройка на вашия дисплей"
+
+msgid "Text"
+msgstr ""
 
 msgid "Text color"
 msgstr "Цвят на текста"
@@ -12052,6 +12185,9 @@ msgstr ""
 
 msgid "This DVD RW medium is already formatted - reformatting will erase all content on the disc."
 msgstr "Този DVD RW диск е вече форматиран - преформатирането му ще изтрие цялото съдържание на диска."
+
+msgid "This allows you change the font size relative to skin size, so 1 increases by 1 point size, and -1 decreases by 1 point size"
+msgstr ""
 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
@@ -12563,6 +12699,10 @@ msgstr "Тип на транспортния стрийм"
 msgid "Trash can"
 msgstr "Кошче"
 
+#, fuzzy
+msgid "Trashcan:"
+msgstr "Кошче"
+
 msgid "Tries left:"
 msgstr "Оставащи опити:"
 
@@ -12966,6 +13106,19 @@ msgstr "Използвай мерител на напрежение"
 msgid "Use separate picon pack for front panel display"
 msgstr "Настройка на контраста на дисплея на предния панел."
 
+#, fuzzy
+msgid "Use slim screen"
+msgstr "Задържане на екрана"
+
+#, fuzzy
+msgid "Use the alternative screen"
+msgstr "промени алтернативи"
+
+msgid ""
+"Use the deletion time to sort Trash directories.\n"
+"Most recently deleted at the top."
+msgstr ""
+
 msgid "Use the network wizard to configure selected network adapter"
 msgstr "Използвайте помощника за настройка на мрежа за конфигурация на избрания мрежов адаптер"
 
@@ -12986,6 +13139,10 @@ msgstr "Използване на тези настройки?"
 
 msgid "Use this video enhancement settings?"
 msgstr "Използване на тези настройки за подобряване на картината?"
+
+#, fuzzy
+msgid "Use trash can in movie list"
+msgstr "Използвай кошче в списъка с филми"
 
 msgid "Use trash can in movielist"
 msgstr "Използвай кошче в списъка с филми"
@@ -13521,6 +13678,9 @@ msgstr "Ако е включено, можете да затворите вид�
 msgid "When enabled, measure power consumption to detect when the rotor stops turning (when supported by the tuner)."
 msgstr "Ако е включено, се използва измерване на консумираната мощност от приемника когато мотора престане да се върти (ако се поддържа от приемника)."
 
+msgid "When enabled, network trash cans are probed for cleaning."
+msgstr ""
+
 msgid "When enabled, number markers will be hidden."
 msgstr "Ако е включено, номерата на маркерите няма да се показват."
 
@@ -13563,6 +13723,10 @@ msgstr "Ако е включено, инфо-лентата ще се показ
 msgid "When enabled, the lenght of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Ако е включено, дължината на всеки запис ще се показва в списъка с филми (това може да доведе до допълнително време за зареждане на списъка)."
 
+#, fuzzy
+msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
+msgstr "Ако е включено, дължината на всеки запис ще се показва в списъка с филми (това може да доведе до допълнително време за зареждане на списъка)."
+
 msgid "When enabled, the receiver will automatically use the audio track which you selected before."
 msgstr "Ако е включено, приемника ще използва автоматично предишно избрана аудио пътечка. "
 
@@ -13602,11 +13766,23 @@ msgstr "Укажете колко минути по-късно да започн
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
 msgstr "Когато е избрано, това позволява да се изберат видео режими, дори ако те не се отчитат като поддържани."
 
+msgid "When set the PIG will return to live after a movie has stopped playing."
+msgstr ""
+
+msgid "When set, each directory will show the previous state used. When off, the default values will be shown."
+msgstr ""
+
+msgid "When set, sort changes via the sort key will be permanent."
+msgstr ""
+
 msgid "When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture."
 msgstr "Когато изображението на канала има съотношение на страните 16:9, изберете дали да се мащабира/разтегне картината."
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Когато изображението на канала има съотношение на страните 4:3, изберете дали да се мащабира/разтегне картината."
+
+msgid "When unset, sort changes will be temporary - just for this view of a directory."
+msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Къде да съхраня временните таймшифт записи?"
@@ -13700,6 +13876,10 @@ msgstr "Жълт"
 msgid "Yellow DVB subtitles"
 msgstr "Жълти DVB субтитри"
 
+#, fuzzy
+msgid "Yellow long"
+msgstr "Жълт"
+
 msgid "Yemen"
 msgstr "Йемен"
 
@@ -13739,6 +13919,14 @@ msgstr "Да, само от режим готовност"
 msgid "Yes, returning to movie list"
 msgstr "Да, върни към списъка с филми"
 
+#, fuzzy
+msgid "Yes, show delete time"
+msgstr "Да, и изтрий филма"
+
+#, fuzzy
+msgid "Yes, show record time"
+msgstr "Променете времето за край на записа"
+
 msgid "Yes, with backup"
 msgstr "Да, с бакъп"
 
@@ -13776,9 +13964,6 @@ msgstr ""
 msgid "You can display PIP with or without OSD menu"
 msgstr ""
 
-msgid "You can enable if will be displayed extended EPG description for item."
-msgstr ""
-
 msgid "You can install this plugin."
 msgstr "Можете да инсталирате този плъгин."
 
@@ -13787,16 +13972,6 @@ msgstr "Можете да записвате(на диск) само запис�
 
 msgid "You can remove this plugin."
 msgstr "Можете да премахнете този плъгин."
-
-msgid "You can set how will be finished movieplayer with 'Exit' button."
-msgstr ""
-
-msgid "You can set selected directory as 'root' directory for movie player."
-msgstr ""
-
-#, fuzzy
-msgid "You can set sorting type for items in movielist."
-msgstr "Зареждане продължителността на филмите във видео списъка"
 
 msgid "You cannot delete this!"
 msgstr "Не може да го изтриете!"
@@ -14131,22 +14306,22 @@ msgstr "след "
 msgid "all"
 msgstr "всички"
 
+#, fuzzy
+msgid "alpha then oldest"
+msgstr "обратно по азбучен ред"
+
 msgid "alphabetic"
 msgstr "сортиране по азбучен ред"
 
 msgid "alphabetic reverse"
 msgstr "обратно по азбучен ред"
 
-#, fuzzy
-msgid "alphabetic then newest"
-msgstr "обратно по азбучен ред"
-
-#, fuzzy
-msgid "alphabetic then oldest"
-msgstr "обратно по азбучен ред"
-
 msgid "alphabetical"
 msgstr "по азбучен ред"
+
+#, fuzzy
+msgid "alpharev then newest"
+msgstr "обратно по азбучен ред"
 
 msgid "alternative"
 msgstr "алтернативен"
@@ -14343,6 +14518,12 @@ msgstr "изтрий изрязаното"
 #, fuzzy
 msgid "delete cut (disabled)"
 msgstr " (деактивиран)"
+
+msgid "delete time - show delete time (Trash ONLY)"
+msgstr ""
+
+msgid "delete time - show record time (Trash ONLY)"
+msgstr ""
 
 msgid "descramble and record ecm"
 msgstr "декодиране и запис на ECM"
@@ -14726,18 +14907,6 @@ msgstr "дължина"
 
 msgid "limit ..., aborting !"
 msgstr "Лимит ..., прекъсване !"
-
-msgid "list style compact"
-msgstr "компактен списък"
-
-msgid "list style compact with description"
-msgstr "компактен списък с описание"
-
-msgid "list style default"
-msgstr "Списък по подразбиране"
-
-msgid "list style single line"
-msgstr "Списък на един ред"
 
 #, fuzzy
 msgid "listens to hotplug events"

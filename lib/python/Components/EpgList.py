@@ -54,12 +54,12 @@ class EPGList(GUIComponent):
 		self.tw = 120
 		self.dy = 0
 
-		if type == EPG_TYPE_SINGLE:
+		if type is EPG_TYPE_SINGLE:
 			self.l.setBuildFunc(self.buildSingleEntry)
-		elif type == EPG_TYPE_MULTI:
+		elif type is EPG_TYPE_MULTI:
 			self.l.setBuildFunc(self.buildMultiEntry)
 		else:
-			assert(type == EPG_TYPE_SIMILAR)
+			assert(type is EPG_TYPE_SIMILAR)
 			self.l.setBuildFunc(self.buildSimilarEntry)
 		self.epgcache = eEPGCache.getInstance()
 		self.clocks = [ LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_add.png')),
@@ -111,13 +111,13 @@ class EPGList(GUIComponent):
 		return event
 
 	def getCurrentChangeCount(self):
-		if self.type == EPG_TYPE_MULTI and self.l.getCurrentSelection() is not None:
+		if self.type is EPG_TYPE_MULTI and self.l.getCurrentSelection() is not None:
 			return self.l.getCurrentSelection()[0]
 		return 0
 
 	def getCurrent(self):
 		idx=0
-		if self.type == EPG_TYPE_MULTI:
+		if self.type is EPG_TYPE_MULTI:
 			idx += 1
 		tmp = self.l.getCurrentSelection()
 		if tmp is None:
@@ -172,7 +172,7 @@ class EPGList(GUIComponent):
 		self.space = self.iconSize + self.iconDistance
 		self.dy = int((height - self.iconSize)/2.)
 
-		if self.type == EPG_TYPE_SINGLE:
+		if self.type is EPG_TYPE_SINGLE:
 			if self.skinColumns:
 				x = 0
 				self.weekday_rect = Rect(0, 0, self.gap(self.col[0]+90), height)
@@ -184,7 +184,7 @@ class EPGList(GUIComponent):
 				self.weekday_rect = Rect(0, 0, width/20*2-10, height)
 				self.datetime_rect = Rect(width/20*2, 0, width/20*5-15, height)
 				self.descr_rect = Rect(width/20*7, 0, width/20*13, height)
-		elif self.type == EPG_TYPE_MULTI:
+		elif self.type is EPG_TYPE_MULTI:
 			if self.skinColumns:
 				x = 0
 				self.service_rect = Rect(x, 0, self.gap(self.col[0]), height)
@@ -293,7 +293,7 @@ class EPGList(GUIComponent):
 				res.extend((
 					(eListboxPythonMultiContent.TYPE_TEXT, r2.x, r2.y, split, r2.h, 0, RT_HALIGN_RIGHT|RT_VALIGN_CENTER, strftime(config.usage.time.short.value + "- ", begin)),
 					(eListboxPythonMultiContent.TYPE_TEXT, r2.x + split, r2.y, r2.w - split, r2.h, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, strftime(config.usage.time.short.value, end)),
-					(eListboxPythonMultiContent.TYPE_TEXT, r3.x + self.tw, r3.y, r3.w, r3.h, 0, RT_HALIGN_LEFT, EventName)
+					(eListboxPythonMultiContent.TYPE_TEXT, r3.x + self.tw, r3.y, r3.w, r3.h, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, EventName)
 				))
 			else:
 				percent = (nowTime - beginTime) * 100 / duration
@@ -304,7 +304,7 @@ class EPGList(GUIComponent):
 				res.extend((
 					(eListboxPythonMultiContent.TYPE_PROGRESS, r2.x, r2.y, self.tw, r2.h, percent),
 					(eListboxPythonMultiContent.TYPE_TEXT, r3.x, r3.y, self.gap(self.tw), r3.h, 1, RT_HALIGN_CENTER, _("%s%d min") % (prefix, remaining)),
-					(eListboxPythonMultiContent.TYPE_TEXT, r3.x + self.tw, r3.y, r3.w, r3.h, 0, RT_HALIGN_LEFT, EventName)
+					(eListboxPythonMultiContent.TYPE_TEXT, r3.x + self.tw, r3.y, r3.w, r3.h, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, EventName)
 				))
 		return res
 
@@ -360,10 +360,10 @@ class EPGList(GUIComponent):
 		list = self.list
 		if list:
 			event_id = self.getSelectedEventId()
-			if type == 1:
+			if type is 1:
 				list.sort(key=lambda x: (x[4] and x[4].lower(), x[2]))
 			else:
-				assert(type == 0)
+				assert(type is 0)
 				list.sort(key=lambda x: x[2])
 			self.l.invalidate()
 			self.moveToEventId(event_id)

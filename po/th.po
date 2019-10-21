@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1-En-Th\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-17 11:04+0330\n"
+"POT-Creation-Date: 2019-10-21 09:17+0330\n"
 "PO-Revision-Date: 2010-04-08 18:13+0700\n"
 "Last-Translator: Tony - Thaidreambox\n"
 "Language-Team: Tony @ Thai Dreambox <tonyboyth@gmail.com>\n"
@@ -769,6 +769,10 @@ msgid "%d GB"
 msgstr ""
 
 #, python-format
+msgid "%d KB"
+msgstr ""
+
+#, python-format
 msgid "%d MB"
 msgstr ""
 
@@ -805,12 +809,6 @@ msgstr[1] "บริการนี้ %d ไม่มี!"
 #, python-format
 msgid "%d core"
 msgid_plural "%d cores"
-msgstr[0] ""
-msgstr[1] ""
-
-#, python-format
-msgid "%d file"
-msgid_plural "%d files"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -857,6 +855,14 @@ msgid "%d ms"
 msgstr ""
 
 #, python-format
+msgid "%d of %d Bytes"
+msgstr ""
+
+#, python-format
+msgid "%d of %d KB"
+msgstr ""
+
+#, python-format
 msgid "%d pixel wide"
 msgid_plural "%d pixels wide"
 msgstr[0] ""
@@ -871,12 +877,6 @@ msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 msgstr[1] ""
-
-#, fuzzy, python-format
-msgid "%d subdirectory"
-msgid_plural "%d subdirectories"
-msgstr[0] "/var โฟล์เดอร์"
-msgstr[1] "/var โฟล์เดอร์"
 
 #, fuzzy, python-format
 msgid "%d wireless network found!"
@@ -942,6 +942,10 @@ msgstr ""
 msgid "%m/%d/%Y"
 msgstr ""
 
+#, python-format
+msgid "%s"
+msgstr ""
+
 #, fuzzy, python-format
 msgid ""
 "%s\n"
@@ -977,6 +981,14 @@ msgstr ""
 msgid "%s is no longer used. Should it be deleted?"
 msgstr ""
 
+#, python-format
+msgid "%s of %s GB"
+msgstr ""
+
+#, python-format
+msgid "%s of %s MB"
+msgstr ""
+
 #, fuzzy, python-format
 msgid "%s updated package available"
 msgid_plural "%s updated packages available"
@@ -999,6 +1011,10 @@ msgstr ""
 msgid "%s:%s"
 msgstr ""
 
+#, python-format
+msgid "'%s' contains %d file(s) and %d sub-directories.\n"
+msgstr ""
+
 msgid "( All readers)"
 msgstr ""
 
@@ -1006,6 +1022,9 @@ msgid "(Show only reader:"
 msgstr ""
 
 msgid "(VU+ type)"
+msgstr ""
+
+msgid "(You are currently using a temporary sort method)"
 msgstr ""
 
 msgid "(ZAP as PiP)"
@@ -1473,7 +1492,7 @@ msgstr ""
 msgid "Adapter settings"
 msgstr "ตั้งค่าอะแด๊ปเตอร์"
 
-msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.  It hides the day of the week for recordings made in previous years."
+msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.\t It hides the day of the week for recordings made in previous years."
 msgstr ""
 
 msgid "Add"
@@ -1678,9 +1697,6 @@ msgstr ""
 msgid "Allow quit movieplayer with exit"
 msgstr ""
 
-msgid "Allow quitting movieplayer with exit"
-msgstr ""
-
 msgid "Allow subtitle language to equal audio language"
 msgstr ""
 
@@ -1702,7 +1718,13 @@ msgstr ""
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr ""
 
+msgid "Allows you to hide the extensions of known file types."
+msgstr ""
+
 msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
+msgid "Allows you to setup the button to do what you choose."
 msgstr ""
 
 msgid "Alpha"
@@ -1930,6 +1952,12 @@ msgstr ""
 msgid "Ask user"
 msgstr "ถามผู้ใช้"
 
+msgid "Ask user (with default as 'no')"
+msgstr ""
+
+msgid "Ask user (with default as 'yes')"
+msgstr ""
+
 #, fuzzy
 msgid "Aspect ratio"
 msgstr "สัดส่วนภาพ"
@@ -2087,10 +2115,6 @@ msgstr "อัตโนมัติ"
 
 msgid "Automatic Scan"
 msgstr ""
-
-#, fuzzy
-msgid "Automatic bookmarks"
-msgstr "ค้นหาอัตโนมัติ"
 
 #, fuzzy
 msgid "Automatic refresh"
@@ -2315,6 +2339,10 @@ msgstr "Block noise reduction"
 msgid "Blue"
 msgstr ""
 
+#, fuzzy
+msgid "Blue long"
+msgstr "Clear log"
+
 msgid "Bolivia (Plurinational State of)"
 msgstr ""
 
@@ -2411,6 +2439,9 @@ msgstr ""
 
 msgid "Bus: "
 msgstr "Bus: "
+
+msgid "Button"
+msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr ""
@@ -2558,6 +2589,10 @@ msgstr ""
 msgid "Cannot delete downloaded image"
 msgstr "ต้องการลบตารางเวลาที่เสร็จแล้วหรือไม่?"
 
+#, fuzzy
+msgid "Cannot delete file"
+msgstr "ลบไฟล์"
+
 msgid "Cannot determine"
 msgstr ""
 
@@ -2567,7 +2602,7 @@ msgstr ""
 msgid "Cannot find images - please try later"
 msgstr ""
 
-msgid "Cannot move files on a different disk or system to the trash can"
+msgid "Cannot move to the trash can"
 msgstr ""
 
 msgid "Cannot move to trash can"
@@ -2813,6 +2848,10 @@ msgstr "วนซ้าย"
 
 msgid "Circular right"
 msgstr "วนขวา"
+
+#, fuzzy
+msgid "Clean network trash cans"
+msgstr "ลบข้อมูลเดิมก่อนค้นหา"
 
 msgid "Cleanup"
 msgstr "Cleanup"
@@ -3210,6 +3249,11 @@ msgstr "ตั้งค่า Nameservers"
 msgid "Configure the netmask."
 msgstr "ตั้งค่าอินเตอร์เฟซ"
 
+msgid ""
+"Configure the number of days after which items are automatically removed from the trash can.\n"
+"A setting of 0 disables this."
+msgstr ""
+
 msgid "Configure the number of days after which items are automaticaly removed from the trash can."
 msgstr ""
 
@@ -3451,6 +3495,10 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
+#, fuzzy
+msgid "Copying files"
+msgstr "กำลังตรวจสอบระบบไฟล์..."
+
 msgid "Costa Rica"
 msgstr ""
 
@@ -3466,6 +3514,9 @@ msgstr ""
 #, fuzzy
 msgid "Could not load medium! No disc inserted?"
 msgstr "โหลดไม่ได้ ยังไม่ได้ใส่แผ่นหรือเปล่า?"
+
+msgid "Could not locate epg file on fallback tuner"
+msgstr ""
 
 msgid "Could not open Picture in Picture"
 msgstr ""
@@ -4018,6 +4069,10 @@ msgstr ""
 msgid "Deleted items"
 msgstr ""
 
+#, fuzzy
+msgid "Deleting files"
+msgstr "ลบไฟล์"
+
 msgid "Denmark"
 msgstr ""
 
@@ -4070,6 +4125,10 @@ msgstr "NIMs ที่พบ:"
 
 #, fuzzy
 msgid "Device"
+msgstr "บริการ"
+
+#, fuzzy
+msgid "Device mounts"
 msgstr "บริการ"
 
 msgid "Devicename:"
@@ -4136,10 +4195,6 @@ msgstr "ไม่พบโฟล์เดอร์ %s ในระบบ"
 msgid "Directory browser"
 msgstr "ดูโฟล์เดอร์"
 
-#, fuzzy, python-format
-msgid "Directory contains %s and %s."
-msgstr "ไม่พบโฟล์เดอร์ %s ในระบบ"
-
 msgid "Disable"
 msgstr "ไม่ใช้งาน"
 
@@ -4197,9 +4252,6 @@ msgstr "การแสดงผลและส่วนติดต่อผู
 msgid "Display message before playing next movie"
 msgstr ""
 
-msgid "Display movie length in movielist (except single line style)."
-msgstr ""
-
 #, fuzzy
 msgid "Display setup"
 msgstr "ตั้งค่าการแสดงผล"
@@ -4245,9 +4297,6 @@ msgstr "ไม่ต้องเปลี่ยน"
 msgid "Do not record"
 msgstr "ไม่ต้องบันทึก"
 
-msgid "Do not show file extensions for registered multimedia files."
-msgstr ""
-
 #, fuzzy
 msgid "Do nothing"
 msgstr "ไม่ต้องทำอะไร"
@@ -4259,8 +4308,16 @@ msgstr ""
 "ท่านแน่ใจหรือไม่ที่จะตรวจสอบระบบไฟล์?\n"
 "เนื่องจากจะใช้เวลานานมากกว่าจะแล้วเสร็จ!"
 
+#, fuzzy, python-format
+msgid "Do you really want to delete %s ?"
+msgstr "ท่านต้องการที่จะลบ %s ออกจากระบบหรือไม่?"
+
 #, python-format
 msgid "Do you really want to delete %s?"
+msgstr "ท่านต้องการที่จะลบ %s ออกจากระบบหรือไม่?"
+
+#, fuzzy
+msgid "Do you really want to delete ?"
 msgstr "ท่านต้องการที่จะลบ %s ออกจากระบบหรือไม่?"
 
 #, fuzzy
@@ -4282,6 +4339,20 @@ msgid ""
 "Do you really want to initialize the device?\n"
 "All data on the disk will be lost!"
 msgstr ""
+
+#, fuzzy
+msgid "Do you really want to move to the trash can ?"
+msgstr ""
+"ท่านต้องการที่จะโหลด\n"
+"Plugin \"%s\" นี้หรือไม่?"
+
+#, fuzzy, python-format
+msgid "Do you really want to permamently remove '%s' from the trash can ?"
+msgstr "ท่านต้องการที่จะลบโฟล์เดอร์ %s ออกจากระบบหรือไม่?"
+
+#, fuzzy
+msgid "Do you really want to permanently remove from the trash can ?"
+msgstr "ท่านต้องการที่จะลบโฟล์เดอร์ %s ออกจากระบบหรือไม่?"
 
 #, fuzzy, python-format
 msgid ""
@@ -4522,10 +4593,6 @@ msgstr ""
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ผิดพลาด - การค้นหา (%s) ล้มเหลว"
-
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr ""
 
 msgid "East"
 msgstr "ตะวันออก"
@@ -4874,10 +4941,6 @@ msgstr ""
 msgid "Error"
 msgstr "ผิดพลาด"
 
-#, fuzzy, python-format
-msgid "Error %s"
-msgstr "ผิดพลาด"
-
 msgid "Error code"
 msgstr ""
 
@@ -4906,19 +4969,10 @@ msgstr "เรียกใช้งาน Plugin ผิดพลาด"
 msgid "Error stop stream!"
 msgstr ""
 
-msgid "Error when writing epg.dat on server"
-msgstr ""
-
-msgid "Error while retreiving epg.dat from server"
-msgstr ""
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr ""
-
-msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #, python-format
@@ -5152,8 +5206,20 @@ msgstr ""
 msgid "F"
 msgstr ""
 
+#, fuzzy
+msgid "F1"
+msgstr "1"
+
 msgid "F1/F3/F4/F4-TURBO/TRIPLEX"
 msgstr ""
+
+#, fuzzy
+msgid "F2"
+msgstr "2"
+
+#, fuzzy
+msgid "F3"
+msgstr "3"
 
 msgid "FAILED"
 msgstr ""
@@ -5407,6 +5473,9 @@ msgid ""
 msgstr ""
 
 msgid "Following tasks will be done after you press OK!"
+msgstr ""
+
+msgid "Font size"
 msgstr ""
 
 msgid "Force legacy signal stats"
@@ -5699,6 +5768,9 @@ msgid "Greek (Modern)"
 msgstr ""
 
 msgid "Green"
+msgstr ""
+
+msgid "Green long"
 msgstr ""
 
 msgid "Greenland"
@@ -6078,19 +6150,7 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
-msgstr ""
-
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
-msgstr ""
-
-msgid "If enabled, then there will be displayed icons for new/unseen items too."
-msgstr ""
-
-msgid "If is enabled and movie playback is finished, then after return to movielist will not be automaticaly start service playback."
-msgstr ""
-
-msgid "If set as 'Yes', then audiofiles are played in 'list mode' only, instead in full screen player."
 msgstr ""
 
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
@@ -6532,6 +6592,9 @@ msgstr ""
 msgid "Keep service"
 msgstr ""
 
+msgid "Keeps the movie list open whilst playing audio files."
+msgstr ""
+
 msgid "Kenya"
 msgstr ""
 
@@ -6761,9 +6824,6 @@ msgstr ""
 msgid "List of storage devices"
 msgstr "อุปกรณ์สำหรับบันทึก"
 
-msgid "List type"
-msgstr ""
-
 #, python-format
 msgid "List version %d, found %d channel"
 msgid_plural "List version %d, found %d channels"
@@ -6793,10 +6853,6 @@ msgstr "โหลด"
 #, fuzzy
 msgid "Load EPG"
 msgstr "โหลด"
-
-#, fuzzy
-msgid "Load length of movies in movie list"
-msgstr "โหลดความยาวของภาพยนต์"
 
 #, fuzzy
 msgid "Load playlist"
@@ -7286,8 +7342,8 @@ msgid "Movie"
 msgstr ""
 
 #, fuzzy
-msgid "Movie list configuration"
-msgstr "ตั้งค่า Tuner"
+msgid "Movie List Setup"
+msgstr "เมนูรายการภาพยนต์"
 
 msgid "Movie location"
 msgstr ""
@@ -7306,6 +7362,9 @@ msgid "Moving"
 msgstr ""
 
 msgid "Moving east ..."
+msgstr ""
+
+msgid "Moving files"
 msgstr ""
 
 msgid "Moving to position"
@@ -7501,6 +7560,10 @@ msgstr "Network Mount"
 msgid "Network mount %s"
 msgstr "Network Mount"
 
+#, fuzzy
+msgid "Network mounts"
+msgstr "Network Mount"
+
 msgid "Network name (SSID)"
 msgstr ""
 
@@ -7619,9 +7682,6 @@ msgstr "ไม่มีรายละเอียดเพิ่มเติม
 msgid "No displayable files on this medium found!"
 msgstr "ไม่พบชนิดไฟล์ที่สามารถเล่นได้ในสื่อบันทีกนี้!"
 
-msgid "No epg.dat file found server"
-msgstr ""
-
 msgid "No event info found, recording indefinitely."
 msgstr "ไม่พบข้อมูลเวลากำกับ บันทึกรายโดยไม่มีข้อกำหนด"
 
@@ -7665,6 +7725,9 @@ msgstr ""
 #, fuzzy
 msgid "No services/providers selected"
 msgstr "ยังไม่ได้เลือกบริการหรือผู้ให้บริการ"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 #, fuzzy
 msgid "No standby"
@@ -7792,6 +7855,10 @@ msgid "Not Classified"
 msgstr ""
 
 #, fuzzy
+msgid "Not Defined"
+msgstr "ผู้ใช้กำหนด"
+
+#, fuzzy
 msgid "Not Installed"
 msgstr "ติดตั้ง"
 
@@ -7801,10 +7868,6 @@ msgstr " มีรายการปรับปรุง"
 
 msgid "Not associated"
 msgstr ""
-
-#, fuzzy
-msgid "Not defined"
-msgstr "ผู้ใช้กำหนด"
 
 #, fuzzy, python-format
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
@@ -7862,6 +7925,12 @@ msgid "Number of channels shown in channel selection list"
 msgstr ""
 
 msgid "Number of repeating text on display."
+msgstr ""
+
+msgid "Number of rows"
+msgstr ""
+
+msgid "Number of rows to display"
 msgstr ""
 
 msgid "Number or SMS style data entry"
@@ -8213,6 +8282,9 @@ msgstr ""
 msgid "Percentage right"
 msgstr "วนขวา"
 
+msgid "Permanent sort key changes"
+msgstr ""
+
 msgid "Permanently delete all recordings in the trash can?"
 msgstr ""
 
@@ -8233,6 +8305,12 @@ msgid "PiP setup"
 msgstr "ตั้งค่า PIP"
 
 msgid "Picon"
+msgstr ""
+
+msgid "Picon Size"
+msgstr ""
+
+msgid "Picon Width"
 msgstr ""
 
 msgid "Picon and servicename"
@@ -8265,12 +8343,12 @@ msgstr "เล่นดีวีดี"
 msgid "Play DVDs"
 msgstr "เล่นดีวีดี"
 
+msgid "Play audio in background"
+msgstr ""
+
 #, fuzzy
 msgid "Play audio-CD..."
 msgstr "เล่นซีดีเสียง..."
-
-msgid "Play audiofiles in list mode"
-msgstr ""
 
 msgid "Play back media files"
 msgstr ""
@@ -8370,6 +8448,10 @@ msgstr ""
 msgid "Please enter the correct pin code"
 msgstr "กรุณาป้อนรหัสที่ถูกต้องด้วย"
 
+#, fuzzy
+msgid "Please enter the name of the new directory"
+msgstr "กรุณาป้อนชื่อโฟล์เดอร์ใหม่"
+
 msgid "Please enter the new PIN code"
 msgstr ""
 
@@ -8411,9 +8493,6 @@ msgstr "เลือกสื่อบันทึกที่ต้องกา
 msgid "Please select medium to use as backup location"
 msgstr "กรุณาเลือกสื่อบันทึกปลายทางที่จะสำรองข้อมูล"
 
-msgid "Please select tag to filter..."
-msgstr "กรุณาเลือกป้ายที่จะกรอง..."
-
 msgid "Please select the movie path..."
 msgstr "กรุณาเลือกตำแหน่งของภาพยนต์"
 
@@ -8425,6 +8504,10 @@ msgstr ""
 "เลือกอุปกรณ์เครือข่ายที่ต้องกใช้เชื่อมต่ออินเตอร์เน็ต\n"
 "\n"
 "จากนั้นกดปุ่ม OK เพื่อทำงานต่อ"
+
+#, fuzzy
+msgid "Please select the tag to filter..."
+msgstr "กรุณาเลือกป้ายที่จะกรอง..."
 
 msgid ""
 "Please select the wireless network that you want to connect to.\n"
@@ -9091,9 +9174,6 @@ msgstr "บันทึก"
 msgid "Record time limited due to conflicting timer %s"
 msgstr "การบันทึกถูกจำกัด เนื่องจากซ้ำซ้อนกับ %s"
 
-msgid "Recorded files..."
-msgstr "ชื่อไฟล์ที่บันทึก..."
-
 msgid "Recording"
 msgstr "กำลังบันทึกรายการ"
 
@@ -9139,6 +9219,9 @@ msgstr ""
 msgid "Red colored"
 msgstr ""
 
+msgid "Red long"
+msgstr ""
+
 msgid "Reenter PIN"
 msgstr ""
 
@@ -9157,10 +9240,6 @@ msgstr "ความถี่หน้าจอ"
 
 msgid "Refresh rate selection."
 msgstr "เลือกความถี่หน้าจอ"
-
-#, fuzzy
-msgid "Refusing to move to the same directory"
-msgstr "กรุณาป้อนชื่อโฟล์เดอร์ใหม่"
 
 msgid "Regard deep standby as standby"
 msgstr ""
@@ -10299,6 +10378,10 @@ msgstr ""
 msgid "Service ID"
 msgstr ""
 
+#, fuzzy
+msgid "Service Title mode"
+msgstr "เลือกโหมดวีดีโอ"
+
 msgid "Service has been added to the favourites."
 msgstr "บริการนี้ถูกเพิ่มเข้ารายการโปรดแล้ว"
 
@@ -10390,9 +10473,8 @@ msgstr ""
 msgid "Set PIN"
 msgstr ""
 
-#, fuzzy
-msgid "Set action when movie playback is finished."
-msgstr "เมื่อภาพยนต์เริ่มเล่นให้"
+msgid "Set a temporary sort method for this directory"
+msgstr ""
 
 msgid "Set all hotkey to default?"
 msgstr ""
@@ -10422,18 +10504,11 @@ msgstr ""
 msgid "Set framerate for MiniTV"
 msgstr ""
 
-msgid "Set if You want see status icons, progress bars or nothing."
-msgstr ""
-
 msgid "Set interface as default Interface"
 msgstr "ตั้งให้อินเตอร์เฟซนี้เป็นค่าเริ่มต้น"
 
 msgid "Set limits"
 msgstr ""
-
-#, fuzzy
-msgid "Set movielist type."
-msgstr "ออกจากสารบัญภาพยนต์"
 
 msgid "Set pin code persistent"
 msgstr ""
@@ -10455,7 +10530,13 @@ msgstr "ออกจากการตั้งค่า Nameserver"
 msgid "Set the User ID of the OpenWebif from your fallback tuner"
 msgstr ""
 
+msgid "Set the default sorting method."
+msgstr ""
+
 msgid "Set the delay time between repeated loops, this is used by software renderer in some skins."
+msgstr ""
+
+msgid "Set the global sort method"
 msgstr ""
 
 msgid "Set the password of the OpenWebif from your fallback tuner"
@@ -10472,6 +10553,10 @@ msgstr ""
 
 msgid "Set the scrolling speed of text on the front panel display."
 msgstr ""
+
+#, fuzzy
+msgid "Set the sort method for this directory"
+msgstr "กรุณาป้อนชื่อโฟล์เดอร์ใหม่"
 
 msgid "Set the time of day to perform the import."
 msgstr ""
@@ -10507,11 +10592,11 @@ msgstr ""
 msgid "Set voltage and 22KHz"
 msgstr "ตั้งค่า Voltage และ 22KHz"
 
+msgid "Sets the root directory of movie list, to remove the '..' from being shown in that folder."
+msgstr ""
+
 msgid "Settings"
 msgstr "การตั้งค่า"
-
-msgid "Settings can be different for each directory separately (for non removeable devices only)."
-msgstr ""
 
 msgid "Setup"
 msgstr "ตั้งค่า"
@@ -10753,6 +10838,10 @@ msgid "Show latest update log"
 msgstr "เลือกที่มาเพื่อปรับปรุง"
 
 #, fuzzy
+msgid "Show live tv when movie stopped"
+msgstr "เมื่อภาพยนต์หยุดเล่นให้"
+
+#, fuzzy
 msgid "Show log"
 msgstr "แสดงข้อมูล"
 
@@ -10768,6 +10857,10 @@ msgstr ""
 #, fuzzy
 msgid "Show message when recording starts"
 msgstr "แสดงข้อความเริ่มเมื่อบับทึกรายการ"
+
+#, fuzzy
+msgid "Show movie lengths in movie list"
+msgstr "โหลดความยาวของภาพยนต์"
 
 #, fuzzy
 msgid "Show movie lengths in movielist"
@@ -10792,6 +10885,10 @@ msgid "Show notification when import channels was successful"
 msgstr ""
 
 #, fuzzy
+msgid "Show or hide the extended description, (skin dependant)."
+msgstr "แสดงคำอธิบายรายการเพิ่มเติม"
+
+#, fuzzy
 msgid "Show packages to be updated"
 msgstr "ปรับปรุงรายการของส่วนประกอบ"
 
@@ -10800,6 +10897,10 @@ msgstr ""
 
 msgid "Show picons in display"
 msgstr ""
+
+#, fuzzy
+msgid "Show picons in the movie list."
+msgstr "กลับไปยังสารบัญภาพยนต์"
 
 msgid "Show positioner movement"
 msgstr "แสดงตำแหน่งตัวขับจาน"
@@ -10896,8 +10997,15 @@ msgstr ""
 msgid "Shows live tv or informations on LCD."
 msgstr ""
 
+msgid "Shows the icons when new/unseen, otherwise it will not show an icon."
+msgstr ""
+
 msgid "Shows the state of your wireless LAN connection.\n"
 msgstr "แสดงสถานะการเชื่อมต่อเครือข่ายไร้สาย\n"
+
+#, fuzzy
+msgid "Shows the watched status of the movie."
+msgstr "ไม่พบป้ายใดๆ กับภาพยนต์ชุดนี้"
 
 #, fuzzy
 msgid "Shuffle playlist"
@@ -11146,9 +11254,6 @@ msgstr "Plugin บางตัวยังไม่สามารถใช้�
 msgid "Sorry, %s has not been installed!"
 msgstr "ท่านยังไม่ได้ติดตั้งตัว MediaScanner!"
 
-msgid "Sorry, deleting directories can (for now) only be done through the trash can."
-msgstr ""
-
 #, fuzzy
 msgid "Sorry, no backups found!"
 msgstr "ไม่พบชุดสำรองข้อมูล"
@@ -11175,8 +11280,15 @@ msgstr ""
 msgid "Sort A-Z"
 msgstr "เรียง A-Z"
 
+msgid "Sort Trash by deletion time"
+msgstr ""
+
 msgid "Sort by"
 msgstr ""
+
+#, fuzzy
+msgid "Sort by default"
+msgstr "แสดงรูปแบบเริ่มต้น"
 
 msgid "Sort list to default and exit?"
 msgstr ""
@@ -11470,6 +11582,9 @@ msgstr ""
 
 msgid "Stop playing this movie?"
 msgstr "หยุดเล่นภาพยนต์นี้หรือไม่?"
+
+msgid "Stop previous broadcasted service on return to movie list."
+msgstr ""
 
 msgid "Stop recording"
 msgstr ""
@@ -11786,6 +11901,9 @@ msgstr ""
 msgid "TUNING"
 msgstr ""
 
+msgid "TV"
+msgstr ""
+
 msgid "TV physical address report"
 msgstr ""
 
@@ -11895,6 +12013,9 @@ msgid "Testscreens"
 msgstr ""
 
 msgid "Testscreens that are helpfull to fine-tune your display"
+msgstr ""
+
+msgid "Text"
 msgstr ""
 
 #, fuzzy
@@ -12120,6 +12241,9 @@ msgstr ""
 
 msgid "This DVD RW medium is already formatted - reformatting will erase all content on the disc."
 msgstr "แผ่น DVD-RW นี้ได้รับการฟอร์แมทมาแล้ว หากทำซ้ำจะเป็นการลบข้อมูลออกทั้งหมด"
+
+msgid "This allows you change the font size relative to skin size, so 1 increases by 1 point size, and -1 decreases by 1 point size"
+msgstr ""
 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
@@ -12626,6 +12750,9 @@ msgstr "ประเภทของทรานสปอนเดอร์"
 msgid "Trash can"
 msgstr ""
 
+msgid "Trashcan:"
+msgstr ""
+
 msgid "Tries left:"
 msgstr "เหลืออยู่:"
 
@@ -13029,6 +13156,18 @@ msgstr "ใช้ power measurement"
 msgid "Use separate picon pack for front panel display"
 msgstr ""
 
+msgid "Use slim screen"
+msgstr ""
+
+#, fuzzy
+msgid "Use the alternative screen"
+msgstr "แก้ไขแบบอื่น"
+
+msgid ""
+"Use the deletion time to sort Trash directories.\n"
+"Most recently deleted at the top."
+msgstr ""
+
 #, fuzzy
 msgid "Use the network wizard to configure selected network adapter"
 msgstr "ใช้ตัวช่วยสำหรับตั้งค่าเครือข่าวย\n"
@@ -13054,6 +13193,10 @@ msgstr "นำสำรองการตั้งค่าต่างๆ ก�
 
 msgid "Use this video enhancement settings?"
 msgstr "ยอมรับการตั้งค่านี้?"
+
+#, fuzzy
+msgid "Use trash can in movie list"
+msgstr "กลับไปยังสารบัญภาพยนต์"
 
 #, fuzzy
 msgid "Use trash can in movielist"
@@ -13585,6 +13728,9 @@ msgstr ""
 msgid "When enabled, measure power consumption to detect when the rotor stops turning (when supported by the tuner)."
 msgstr ""
 
+msgid "When enabled, network trash cans are probed for cleaning."
+msgstr ""
+
 msgid "When enabled, number markers will be hidden."
 msgstr ""
 
@@ -13627,6 +13773,9 @@ msgstr ""
 msgid "When enabled, the lenght of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr ""
 
+msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
+msgstr ""
+
 msgid "When enabled, the receiver will automatically use the audio track which you selected before."
 msgstr ""
 
@@ -13667,10 +13816,22 @@ msgstr ""
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
 msgstr ""
 
+msgid "When set the PIG will return to live after a movie has stopped playing."
+msgstr ""
+
+msgid "When set, each directory will show the previous state used. When off, the default values will be shown."
+msgstr ""
+
+msgid "When set, sort changes via the sort key will be permanent."
+msgstr ""
+
 msgid "When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture."
 msgstr ""
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
+msgstr ""
+
+msgid "When unset, sort changes will be temporary - just for this view of a directory."
 msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
@@ -13765,6 +13926,10 @@ msgstr ""
 msgid "Yellow DVB subtitles"
 msgstr ""
 
+#, fuzzy
+msgid "Yellow long"
+msgstr "แสดงข้อมูล"
+
 msgid "Yemen"
 msgstr ""
 
@@ -13806,6 +13971,14 @@ msgid "Yes, returning to movie list"
 msgstr "ใช่ - กลับไปที่สารบัญ Movie"
 
 #, fuzzy
+msgid "Yes, show delete time"
+msgstr "ใช่ - ต้องการที่จะลบภาพยนต์นี้"
+
+#, fuzzy
+msgid "Yes, show record time"
+msgstr "กรุณาเปลี่ยนเวลาสิ้นสุดการบันทึกรายการ"
+
+#, fuzzy
 msgid "Yes, with backup"
 msgstr "นำสำรองกลับมาใช้"
 
@@ -13841,9 +14014,6 @@ msgstr ""
 msgid "You can display PIP with or without OSD menu"
 msgstr ""
 
-msgid "You can enable if will be displayed extended EPG description for item."
-msgstr ""
-
 msgid "You can install this plugin."
 msgstr "ท่านสามารถติดตั้งปลั๊กอินตัวนี้ได้"
 
@@ -13852,16 +14022,6 @@ msgstr ""
 
 msgid "You can remove this plugin."
 msgstr "ท่านสามารถลบปลั๊กอินตัวนี้ได้"
-
-msgid "You can set how will be finished movieplayer with 'Exit' button."
-msgstr ""
-
-msgid "You can set selected directory as 'root' directory for movie player."
-msgstr ""
-
-#, fuzzy
-msgid "You can set sorting type for items in movielist."
-msgstr "โหลดความยาวของภาพยนต์"
 
 msgid "You cannot delete this!"
 msgstr "ท่านไม่สามารถลบรายการนี้ได้!"
@@ -14175,22 +14335,22 @@ msgid "all"
 msgstr ""
 
 #, fuzzy
+msgid "alpha then oldest"
+msgstr "เรียงตามอักษร"
+
+#, fuzzy
 msgid "alphabetic"
 msgstr "เรียงตามอักษร"
 
 msgid "alphabetic reverse"
 msgstr ""
 
-#, fuzzy
-msgid "alphabetic then newest"
-msgstr "เรียงตามอักษร"
-
-#, fuzzy
-msgid "alphabetic then oldest"
-msgstr "เรียงตามอักษร"
-
 msgid "alphabetical"
 msgstr ""
+
+#, fuzzy
+msgid "alpharev then newest"
+msgstr "เรียงตามอักษร"
 
 msgid "alternative"
 msgstr ""
@@ -14384,6 +14544,12 @@ msgstr "ลบส่วนตัดต่อ"
 #, fuzzy
 msgid "delete cut (disabled)"
 msgstr "ลบส่วนตัดต่อ"
+
+msgid "delete time - show delete time (Trash ONLY)"
+msgstr ""
+
+msgid "delete time - show record time (Trash ONLY)"
+msgstr ""
 
 msgid "descramble and record ecm"
 msgstr ""
@@ -14761,18 +14927,6 @@ msgstr "ความยาว"
 
 msgid "limit ..., aborting !"
 msgstr ""
-
-msgid "list style compact"
-msgstr "แสดงรายการแบบสั้น"
-
-msgid "list style compact with description"
-msgstr "แสดงรายการแบบสั้นพร้อมคำอธิบาย"
-
-msgid "list style default"
-msgstr "แสดงรูปแบบเริ่มต้น"
-
-msgid "list style single line"
-msgstr "แสดงแบบบรรทัดเดียว"
 
 msgid "listens to hotplug events"
 msgstr ""

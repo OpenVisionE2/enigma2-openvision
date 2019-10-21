@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-17 11:04+0330\n"
+"POT-Creation-Date: 2019-10-21 09:17+0330\n"
 "PO-Revision-Date: 2019-02-13 20:52+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -835,6 +835,10 @@ msgid "%d GB"
 msgstr "%d GB"
 
 #, python-format
+msgid "%d KB"
+msgstr ""
+
+#, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
@@ -874,12 +878,6 @@ msgid "%d core"
 msgid_plural "%d cores"
 msgstr[0] "%d ydin"
 msgstr[1] "%d ydintä"
-
-#, python-format
-msgid "%d file"
-msgid_plural "%d files"
-msgstr[0] "%d tiedosto"
-msgstr[1] "%d tiedostoa"
 
 #, python-format
 msgid "%d fps"
@@ -927,6 +925,14 @@ msgid "%d ms"
 msgstr "%d ms"
 
 #, python-format
+msgid "%d of %d Bytes"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%d of %d KB"
+msgstr "%A %d %B"
+
+#, python-format
 msgid "%d pixel wide"
 msgid_plural "%d pixels wide"
 msgstr[0] "%d pixeli leveys"
@@ -941,12 +947,6 @@ msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d sekunti"
 msgstr[1] "%d sekuntia"
-
-#, python-format
-msgid "%d subdirectory"
-msgid_plural "%d subdirectories"
-msgstr[0] "%d alihakemisto"
-msgstr[1] "%d alihakemistoa"
 
 #
 #, python-format
@@ -1016,6 +1016,10 @@ msgstr ""
 msgid "%m/%d/%Y"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "%s"
+msgstr "CH%s"
+
 #, python-format
 msgid ""
 "%s\n"
@@ -1056,6 +1060,14 @@ msgid "%s is no longer used. Should it be deleted?"
 msgstr "%s ei ole enää käytössä. Poistetaanko se?"
 
 #, python-format
+msgid "%s of %s GB"
+msgstr ""
+
+#, python-format
+msgid "%s of %s MB"
+msgstr ""
+
+#, python-format
 msgid "%s updated package available"
 msgid_plural "%s updated packages available"
 msgstr[0] "%s päivitetty ohjelmapaketti saatavilla"
@@ -1079,6 +1091,10 @@ msgstr "%s/%s: %s"
 msgid "%s:%s"
 msgstr "%s:%s"
 
+#, python-format
+msgid "'%s' contains %d file(s) and %d sub-directories.\n"
+msgstr ""
+
 #, fuzzy
 msgid "( All readers)"
 msgstr "Kaikenikäisille"
@@ -1087,6 +1103,9 @@ msgid "(Show only reader:"
 msgstr ""
 
 msgid "(VU+ type)"
+msgstr ""
+
+msgid "(You are currently using a temporary sort method)"
 msgstr ""
 
 msgid "(ZAP as PiP)"
@@ -1624,7 +1643,7 @@ msgstr ""
 msgid "Adapter settings"
 msgstr "Sovittimen asetukset"
 
-msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.  It hides the day of the week for recordings made in previous years."
+msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.\t It hides the day of the week for recordings made in previous years."
 msgstr ""
 
 #
@@ -1846,9 +1865,6 @@ msgstr ""
 msgid "Allow quit movieplayer with exit"
 msgstr "Salli tallenteista poistuminen exit-napilla"
 
-msgid "Allow quitting movieplayer with exit"
-msgstr "Salli tallenteista poistuminen exit-napilla"
-
 msgid "Allow subtitle language to equal audio language"
 msgstr "Salli tekstityskielen vastata äänivalintaa"
 
@@ -1870,7 +1886,13 @@ msgstr ""
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr ""
 
+msgid "Allows you to hide the extensions of known file types."
+msgstr ""
+
 msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
+msgid "Allows you to setup the button to do what you choose."
 msgstr ""
 
 #
@@ -2108,6 +2130,12 @@ msgstr "Teeman mukaisesti"
 msgid "Ask user"
 msgstr "Kysy käyttäjältä"
 
+msgid "Ask user (with default as 'no')"
+msgstr ""
+
+msgid "Ask user (with default as 'yes')"
+msgstr ""
+
 msgid "Aspect ratio"
 msgstr "Kuvasuhde"
 
@@ -2278,10 +2306,6 @@ msgstr "Automaattinen"
 #
 msgid "Automatic Scan"
 msgstr "Automaattihaku"
-
-#
-msgid "Automatic bookmarks"
-msgstr "Automaattiset kirjanmerkit"
 
 #, fuzzy
 msgid "Automatic refresh"
@@ -2525,6 +2549,11 @@ msgstr "Pakkausneliöiden pehmennys"
 msgid "Blue"
 msgstr "Sininen"
 
+#
+#, fuzzy
+msgid "Blue long"
+msgstr "Tyhjennä loki"
+
 msgid "Bolivia (Plurinational State of)"
 msgstr "Bolivia"
 
@@ -2626,6 +2655,9 @@ msgstr "Burundi"
 #
 msgid "Bus: "
 msgstr "Väylä: "
+
+msgid "Button"
+msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr "Oletuksena SNR näytetään dB:nä (jos viritin tukee tätä). Tämä asetus vaihtaa SNR:n näkymään prosentteina."
@@ -2780,6 +2812,10 @@ msgstr "Keskeytetty käyttäjän toimesta"
 msgid "Cannot delete downloaded image"
 msgstr "Ladatun ohjelmistokuvan poisto ei onnistunut"
 
+#, fuzzy
+msgid "Cannot delete file"
+msgstr "Ei voida määrittää"
+
 msgid "Cannot determine"
 msgstr "Ei voida määrittää"
 
@@ -2789,8 +2825,9 @@ msgstr "Signaalia ei löydy... keskeytetään!"
 msgid "Cannot find images - please try later"
 msgstr "Ohjelmistokuvia ei löytynyt - yritä myöhemmin uudestaan"
 
-msgid "Cannot move files on a different disk or system to the trash can"
-msgstr "Tiedostoja ei voida siirtää toisella levyllä tai järjestelmästä roskakoriin"
+#, fuzzy
+msgid "Cannot move to the trash can"
+msgstr "Ei voida siirtää roskakoriin"
 
 msgid "Cannot move to trash can"
 msgstr "Ei voida siirtää roskakoriin"
@@ -3065,6 +3102,10 @@ msgstr "Kiertopol. vasen"
 #
 msgid "Circular right"
 msgstr "Kiertopol. oikea"
+
+#, fuzzy
+msgid "Clean network trash cans"
+msgstr "Ei voida siirtää roskakoriin"
 
 #
 msgid "Cleanup"
@@ -3476,6 +3517,12 @@ msgstr "Määritä nimipalvelin (DNS)."
 msgid "Configure the netmask."
 msgstr "Määritä verkkomaski."
 
+#, fuzzy
+msgid ""
+"Configure the number of days after which items are automatically removed from the trash can.\n"
+"A setting of 0 disables this."
+msgstr "Määrittää kuinka monen päivän jälkeen tiedostot tyhjennetään automaattisesti roskakorista."
+
 msgid "Configure the number of days after which items are automaticaly removed from the trash can."
 msgstr "Määrittää kuinka monen päivän jälkeen tiedostot tyhjennetään automaattisesti roskakorista."
 
@@ -3724,6 +3771,10 @@ msgstr "Cook Islands"
 msgid "Copy"
 msgstr "Kopioi"
 
+#, fuzzy
+msgid "Copying files"
+msgstr "Pitkät tiedostonimet"
+
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
@@ -3739,6 +3790,10 @@ msgstr "Soveltuvaa tallennustilaa ei löytynyt - Varmista vapaa levytila, tai li
 #
 msgid "Could not load medium! No disc inserted?"
 msgstr "Levyä ei voitu ladata! Levy puuttuu?"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Tuo ajastimet etävastaaottimelta"
 
 msgid "Could not open Picture in Picture"
 msgstr "PiP-kuvaa ei voitu avata"
@@ -4322,6 +4377,11 @@ msgstr "Poistettu"
 msgid "Deleted items"
 msgstr "Poistetut kohteet"
 
+#
+#, fuzzy
+msgid "Deleting files"
+msgstr "Poista tiedosto"
+
 msgid "Denmark"
 msgstr "Tanska"
 
@@ -4384,6 +4444,11 @@ msgstr "Virittimet:"
 #
 #, fuzzy
 msgid "Device"
+msgstr "Kanava"
+
+#
+#, fuzzy
+msgid "Device mounts"
 msgstr "Kanava"
 
 msgid "Devicename:"
@@ -4463,10 +4528,6 @@ msgstr "Hakemistoa %s ei löydy."
 msgid "Directory browser"
 msgstr "Hakemistoselain"
 
-#, python-format
-msgid "Directory contains %s and %s."
-msgstr "Hakemisto sisältää %s ja %s."
-
 #
 msgid "Disable"
 msgstr "Poista käytöstä"
@@ -4534,9 +4595,6 @@ msgstr "Näyttö ja käyttöliittymä"
 msgid "Display message before playing next movie"
 msgstr "Näytä viesti ennen seuraavan tallenteen toistoa"
 
-msgid "Display movie length in movielist (except single line style)."
-msgstr "Näytä tallenteen pituus tallenneluettelossa (paitsi yhden rivin tyylissä)."
-
 msgid "Display setup"
 msgstr "Etupaneelin näyttö"
 
@@ -4582,9 +4640,6 @@ msgstr "Älä muuta"
 msgid "Do not record"
 msgstr "Älä tallenna"
 
-msgid "Do not show file extensions for registered multimedia files."
-msgstr "Piilotetaanko tunnettujen multimedia tiedostojen tiedostopäätteet."
-
 #
 msgid "Do nothing"
 msgstr "Älä tee mitään"
@@ -4598,8 +4653,18 @@ msgstr ""
 "Tarkistus saattaa kestää kauan!"
 
 #
+#, fuzzy, python-format
+msgid "Do you really want to delete %s ?"
+msgstr "Haluatko poistaa %s?"
+
+#
 #, python-format
 msgid "Do you really want to delete %s?"
+msgstr "Haluatko poistaa %s?"
+
+#
+#, fuzzy
+msgid "Do you really want to delete ?"
 msgstr "Haluatko poistaa %s?"
 
 #
@@ -4625,6 +4690,23 @@ msgid ""
 msgstr ""
 "Haluatko todellakin alustaa tämän laitteen?\n"
 "Kaikki tiedostot katoaa!"
+
+#
+#, fuzzy
+msgid "Do you really want to move to the trash can ?"
+msgstr ""
+"Haluatko todella poistaa\n"
+"lisäosan \"%s\"?"
+
+#
+#, fuzzy, python-format
+msgid "Do you really want to permamently remove '%s' from the trash can ?"
+msgstr "Haluatko poistaa levyltä hakemiston %s?"
+
+#
+#, fuzzy
+msgid "Do you really want to permanently remove from the trash can ?"
+msgstr "Haluatko poistaa levyltä hakemiston %s?"
 
 #
 #, python-format
@@ -4898,10 +4980,6 @@ msgstr "Ohjelmaoppaan asetukset"
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
 msgstr "VIRHE - haku epäonnistui (%s)!"
-
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr ""
 
 #
 msgid "East"
@@ -5280,11 +5358,6 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Virhe"
 
-#
-#, fuzzy, python-format
-msgid "Error %s"
-msgstr "Virhe"
-
 msgid "Error code"
 msgstr "Virhekoodi"
 
@@ -5314,19 +5387,10 @@ msgstr "Virhe plugin-lisäosan suorittamisessa"
 msgid "Error stop stream!"
 msgstr ""
 
-msgid "Error when writing epg.dat on server"
-msgstr ""
-
-msgid "Error while retreiving epg.dat from server"
-msgstr ""
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr ""
-
-msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #
@@ -5577,8 +5641,20 @@ msgstr ""
 msgid "F"
 msgstr ""
 
+#, fuzzy
+msgid "F1"
+msgstr "1"
+
 msgid "F1/F3/F4/F4-TURBO/TRIPLEX"
 msgstr ""
+
+#, fuzzy
+msgid "F2"
+msgstr "2"
+
+#, fuzzy
+msgid "F3"
+msgstr "3"
 
 msgid "FAILED"
 msgstr "EPÄONNISTUI"
@@ -5860,6 +5936,9 @@ msgstr ""
 
 msgid "Following tasks will be done after you press OK!"
 msgstr "Seuraavat tehtävät suoritetaan kun painat OK!"
+
+msgid "Font size"
+msgstr ""
 
 msgid "Force legacy signal stats"
 msgstr "Pakota vanhat signaalitiedot"
@@ -6171,6 +6250,10 @@ msgstr ""
 #
 msgid "Green"
 msgstr "Vihreä"
+
+#, fuzzy
+msgid "Green long"
+msgstr "Gröönlanti"
 
 msgid "Greenland"
 msgstr "Gröönlanti"
@@ -6572,20 +6655,8 @@ msgstr "Islanti"
 msgid "Icons"
 msgstr "Kuvake"
 
-msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
-msgstr "Jos päällä, kirjamerkit päivitetään automaattisesti tallennuksen kopioinnin tai siirron jälkeen."
-
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Jos päällä, näytössä näytetään 12 merkkiä 8 sijaan, mutta vain latin-1-käännöksenä."
-
-msgid "If enabled, then there will be displayed icons for new/unseen items too."
-msgstr "Jos päällä, uusille tiedostoille näytetään erillinen merkki"
-
-msgid "If is enabled and movie playback is finished, then after return to movielist will not be automaticaly start service playback."
-msgstr "Palataan tallenneluetteloon tallenteen toiston päätyttyä, eikä vaihdeta televisiokanavalle."
-
-msgid "If set as 'Yes', then audiofiles are played in 'list mode' only, instead in full screen player."
-msgstr "Toistetaanko äänitiedostot listaus-tilassa, vai kokoruudun soittimessa."
 
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "Jos päällä, signaalitiedot (SNR, jne) lasketaan API V3:lla. Tämä on vanhentunut API versio."
@@ -7062,6 +7133,9 @@ msgstr "Kasakstan"
 msgid "Keep service"
 msgstr "Säilytä kanava"
 
+msgid "Keeps the movie list open whilst playing audio files."
+msgstr ""
+
 msgid "Kenya"
 msgstr "Kenia"
 
@@ -7312,9 +7386,6 @@ msgstr "Luettelotila"
 msgid "List of storage devices"
 msgstr "Tallennuslaitteet"
 
-msgid "List type"
-msgstr "Luettelon tyyppi"
-
 #, python-format
 msgid "List version %d, found %d channel"
 msgid_plural "List version %d, found %d channels"
@@ -7347,10 +7418,6 @@ msgstr "Lataa"
 #, fuzzy
 msgid "Load EPG"
 msgstr "Lataa"
-
-#
-msgid "Load length of movies in movie list"
-msgstr "Näytä tallenteiden pituus tallenneluettelossa"
 
 #
 msgid "Load playlist"
@@ -7893,8 +7960,10 @@ msgstr "Liikutus"
 msgid "Movie"
 msgstr "Siirretään"
 
-msgid "Movie list configuration"
-msgstr "Tallenneluettelon asetukset"
+#
+#, fuzzy
+msgid "Movie List Setup"
+msgstr "Tallenneluettelon valikko"
 
 msgid "Movie location"
 msgstr "Tallennushakemisto"
@@ -7916,6 +7985,10 @@ msgstr "Siirretään"
 #
 msgid "Moving east ..."
 msgstr "Liikkuu itään..."
+
+#, fuzzy
+msgid "Moving files"
+msgstr "Pitkät tiedostonimet"
 
 #
 msgid "Moving to position"
@@ -8135,6 +8208,11 @@ msgstr "Verkkojaon nimi"
 msgid "Network mount %s"
 msgstr "Verkkojaon nimi %s"
 
+#
+#, fuzzy
+msgid "Network mounts"
+msgstr "Verkkojaon nimi"
+
 msgid "Network name (SSID)"
 msgstr "Verkkonimi (SSID)"
 
@@ -8270,9 +8348,6 @@ msgstr "Kuvausta ei ole saatavilla."
 msgid "No displayable files on this medium found!"
 msgstr "Tiedostoja ei löytynyt!"
 
-msgid "No epg.dat file found server"
-msgstr ""
-
 #
 msgid "No event info found, recording indefinitely."
 msgstr ""
@@ -8329,6 +8404,9 @@ msgstr "Ei kanavaa"
 #
 msgid "No services/providers selected"
 msgstr "Kanavia/palveluntarjoajia ei valittu"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 #
 msgid "No standby"
@@ -8470,6 +8548,11 @@ msgstr "Ei assosioitu"
 
 #
 #, fuzzy
+msgid "Not Defined"
+msgstr "Ei määritetty"
+
+#
+#, fuzzy
 msgid "Not Installed"
 msgstr "Asenna"
 
@@ -8479,11 +8562,6 @@ msgstr "Ei päivityksiä saatavilla"
 
 msgid "Not associated"
 msgstr "Ei assosioitu"
-
-#
-#, fuzzy
-msgid "Not defined"
-msgstr "Ei määritetty"
 
 #
 #, python-format
@@ -8547,6 +8625,12 @@ msgid "Number of channels shown in channel selection list"
 msgstr "Kanavalistassa näkyvien kanavien määrä"
 
 msgid "Number of repeating text on display."
+msgstr ""
+
+msgid "Number of rows"
+msgstr ""
+
+msgid "Number of rows to display"
 msgstr ""
 
 msgid "Number or SMS style data entry"
@@ -8912,6 +8996,9 @@ msgstr "Prosentit vasemmalla"
 msgid "Percentage right"
 msgstr "Prosentit oikealla"
 
+msgid "Permanent sort key changes"
+msgstr ""
+
 msgid "Permanently delete all recordings in the trash can?"
 msgstr "Poista kaikki roskakorin tallenteet pysyvästi?"
 
@@ -8932,6 +9019,14 @@ msgid "PiP setup"
 msgstr "PiP-kuvan asetukset"
 
 msgid "Picon"
+msgstr "Logo"
+
+#, fuzzy
+msgid "Picon Size"
+msgstr "Logo"
+
+#, fuzzy
+msgid "Picon Width"
 msgstr "Logo"
 
 msgid "Picon and servicename"
@@ -8967,12 +9062,13 @@ msgstr "Toista DVD"
 msgid "Play DVDs"
 msgstr "Toista DVD"
 
+#, fuzzy
+msgid "Play audio in background"
+msgstr "Toista äänitiedostot listaus-tilassa"
+
 #
 msgid "Play audio-CD..."
 msgstr "Toista ääni-CD..."
-
-msgid "Play audiofiles in list mode"
-msgstr "Toista äänitiedostot listaus-tilassa"
 
 msgid "Play back media files"
 msgstr "Toista media-tiedostoja"
@@ -9088,6 +9184,11 @@ msgstr "Syötä uusi nimi:"
 msgid "Please enter the correct pin code"
 msgstr "Syötä oikea tunnusluku"
 
+#
+#, fuzzy
+msgid "Please enter the name of the new directory"
+msgstr "Syötä uuden hakemiston nimi"
+
 msgid "Please enter the new PIN code"
 msgstr "Syötä uusi PIN-koodi"
 
@@ -9138,10 +9239,6 @@ msgid "Please select medium to use as backup location"
 msgstr "Valitse tallennuspaikka varmuuskopiolle"
 
 #
-msgid "Please select tag to filter..."
-msgstr "Valitse suodatettava avainsana..."
-
-#
 msgid "Please select the movie path..."
 msgstr "Valitse tallennehakemisto..."
 
@@ -9154,6 +9251,11 @@ msgstr ""
 "Valitse verkkosovitin jota haluat käyttää lähiverkkoyhteyteen.\n"
 "\n"
 "Jatka painamalla OK-näppäintä."
+
+#
+#, fuzzy
+msgid "Please select the tag to filter..."
+msgstr "Valitse suodatettava avainsana..."
 
 msgid ""
 "Please select the wireless network that you want to connect to.\n"
@@ -9911,10 +10013,6 @@ msgid "Record time limited due to conflicting timer %s"
 msgstr "Ajastusaika rajoitettu, ristiriita ajastukseen %s"
 
 #
-msgid "Recorded files..."
-msgstr "Tallenteet..."
-
-#
 msgid "Recording"
 msgstr "Tallenne"
 
@@ -9967,6 +10065,10 @@ msgstr "Punainen näppäin..."
 msgid "Red colored"
 msgstr "Punainen väritys"
 
+#, fuzzy
+msgid "Red long"
+msgstr "Pitkä"
+
 msgid "Reenter PIN"
 msgstr ""
 
@@ -9985,10 +10087,6 @@ msgstr "Virkistystaajuus"
 #
 msgid "Refresh rate selection."
 msgstr "Virkistystaajuuden valinta."
-
-#
-msgid "Refusing to move to the same directory"
-msgstr "Samaan hakemistoon siirtäminen ei mahdollista"
 
 msgid "Regard deep standby as standby"
 msgstr "Käytä virransäästötilaa valmiustilana"
@@ -11233,6 +11331,10 @@ msgstr "Kanava & PID:t"
 msgid "Service ID"
 msgstr "Kanava ID"
 
+#, fuzzy
+msgid "Service Title mode"
+msgstr "Kanavan otsikko"
+
 #
 msgid "Service has been added to the favourites."
 msgstr "Kanava on lisätty suosikkeihin."
@@ -11331,9 +11433,8 @@ msgstr ""
 msgid "Set PIN"
 msgstr ""
 
-#
-msgid "Set action when movie playback is finished."
-msgstr "Määrittää toiminnan tallenteen toiston lopussa."
+msgid "Set a temporary sort method for this directory"
+msgstr ""
 
 msgid "Set all hotkey to default?"
 msgstr ""
@@ -11363,18 +11464,12 @@ msgstr "Aseta ulkoisen tekstityksen nopeus (fps)"
 msgid "Set framerate for MiniTV"
 msgstr ""
 
-msgid "Set if You want see status icons, progress bars or nothing."
-msgstr "Määritä näytetäänkö talleenteen katselun tilakuvake, etenemispalkki, vai ei mitään."
-
 #
 msgid "Set interface as default Interface"
 msgstr "Määritä sovitin oletussovittimeksi"
 
 msgid "Set limits"
 msgstr "Aseta rajat"
-
-msgid "Set movielist type."
-msgstr "Valitse listauksen tyyli."
 
 msgid "Set pin code persistent"
 msgstr "Aseta PIN-koodi katselulle"
@@ -11397,8 +11492,18 @@ msgstr "Aseta oletko maapallon itä- vai länsipuolella"
 msgid "Set the User ID of the OpenWebif from your fallback tuner"
 msgstr "Aseta etävastaanottimen OpenWebIf käyttäjätunnus"
 
+#
+#, fuzzy
+msgid "Set the default sorting method."
+msgstr "Valitse lajittelutapa"
+
 msgid "Set the delay time between repeated loops, this is used by software renderer in some skins."
 msgstr ""
+
+#
+#, fuzzy
+msgid "Set the global sort method"
+msgstr "Valitse lajittelutapa"
 
 msgid "Set the password of the OpenWebif from your fallback tuner"
 msgstr "Aseta etävastaanottimen OpenWebIf salasana"
@@ -11417,6 +11522,11 @@ msgstr "Määritä etupaneelin näytön kontrasti."
 #, fuzzy
 msgid "Set the scrolling speed of text on the front panel display."
 msgstr "Määritä etupaneelin näytön kontrasti."
+
+#
+#, fuzzy
+msgid "Set the sort method for this directory"
+msgstr "Samaan hakemistoon siirtäminen ei mahdollista"
 
 msgid "Set the time of day to perform the import."
 msgstr ""
@@ -11452,12 +11562,12 @@ msgstr ""
 msgid "Set voltage and 22KHz"
 msgstr "Aseta jännite ja 22KHz"
 
+msgid "Sets the root directory of movie list, to remove the '..' from being shown in that folder."
+msgstr ""
+
 #
 msgid "Settings"
 msgstr "Asetukset"
-
-msgid "Settings can be different for each directory separately (for non removeable devices only)."
-msgstr "Hakemistoille voidaan määritellä yksilölliset asetukset (vain kiinteille laitteille)"
 
 #
 msgid "Setup"
@@ -11714,6 +11824,11 @@ msgstr "Näytä viimeisin päivityslokitiedosto"
 
 #
 #, fuzzy
+msgid "Show live tv when movie stopped"
+msgstr "Toiminto kun toisto pysäytetään"
+
+#
+#, fuzzy
 msgid "Show log"
 msgstr "Näytä tiedot"
 
@@ -11729,6 +11844,10 @@ msgstr "Näytä valikkojen polku"
 
 msgid "Show message when recording starts"
 msgstr "Näytä viesti kun tallennus alkaa"
+
+#, fuzzy
+msgid "Show movie lengths in movie list"
+msgstr "Näytä tallenteiden pituus tallenneluettelossa"
 
 msgid "Show movie lengths in movielist"
 msgstr "Näytä tallenteiden pituus tallenneluettelossa"
@@ -11752,6 +11871,11 @@ msgstr "Näytä ilmoitus kun tuonti epäonnistui"
 msgid "Show notification when import channels was successful"
 msgstr "Näytä ilmoitus kun tuonti onnistui"
 
+#
+#, fuzzy
+msgid "Show or hide the extended description, (skin dependant)."
+msgstr "Näytä laajennettu ohjelmakuvaus"
+
 #, fuzzy
 msgid "Show packages to be updated"
 msgstr "Näytä päivitettävät ohjelmistopaketit"
@@ -11761,6 +11885,10 @@ msgstr "Näytä kanavalogot kanavalistalla"
 
 msgid "Show picons in display"
 msgstr "Näytä kanavalogot"
+
+#, fuzzy
+msgid "Show picons in the movie list."
+msgstr "Näytä tilakuvakkeet tallenneluettelossa"
 
 #
 msgid "Show positioner movement"
@@ -11869,9 +11997,17 @@ msgstr ""
 msgid "Shows live tv or informations on LCD."
 msgstr "Näyttää tv:n tai tiedot etupaneelissa"
 
+msgid "Shows the icons when new/unseen, otherwise it will not show an icon."
+msgstr ""
+
 #
 msgid "Shows the state of your wireless LAN connection.\n"
 msgstr "Näyttää WLAN-yhteyden tilan.\n"
+
+#
+#, fuzzy
+msgid "Shows the watched status of the movie."
+msgstr "Näissä tallenteissa ei ole avainsanoja."
 
 #
 msgid "Shuffle playlist"
@@ -12147,9 +12283,6 @@ msgstr "Seuraavat lisäosat eivät ole saatavilla:\n"
 msgid "Sorry, %s has not been installed!"
 msgstr "%s ei ole asennettu!"
 
-msgid "Sorry, deleting directories can (for now) only be done through the trash can."
-msgstr "Pahoittelen, hakemistojen tuhoaminen voidaan tehdä vain roskakorin kautta (toistaiseksi)."
-
 msgid "Sorry, no backups found!"
 msgstr "Varmuuskopioita ei löydy!"
 
@@ -12174,8 +12307,15 @@ msgstr "Järjestys"
 msgid "Sort A-Z"
 msgstr "Aakkosjärj."
 
+msgid "Sort Trash by deletion time"
+msgstr ""
+
 msgid "Sort by"
 msgstr "Listan järjestystapa:"
+
+#, fuzzy
+msgid "Sort by default"
+msgstr "Oletus"
 
 msgid "Sort list to default and exit?"
 msgstr "Järjestä lista oletusasetuksiin ja poistu?"
@@ -12503,6 +12643,11 @@ msgstr ""
 #
 msgid "Stop playing this movie?"
 msgstr "Lopetetaanko tallenteen toistaminen?"
+
+#
+#, fuzzy
+msgid "Stop previous broadcasted service on return to movie list."
+msgstr "Palaa tallenneluetteloon toiston lopuksi"
 
 msgid "Stop recording"
 msgstr "Pysäytä tallennus"
@@ -12845,6 +12990,9 @@ msgstr ""
 msgid "TUNING"
 msgstr "VIRITYS"
 
+msgid "TV"
+msgstr ""
+
 msgid "TV physical address report"
 msgstr "TV:n fyysisen osoitteen raportti"
 
@@ -12962,6 +13110,9 @@ msgstr "Testikuvat"
 
 msgid "Testscreens that are helpfull to fine-tune your display"
 msgstr "Testikuvat ovat avuksi näytön virityksessä"
+
+msgid "Text"
+msgstr ""
 
 #
 msgid "Text color"
@@ -13224,6 +13375,9 @@ msgstr ""
 #
 msgid "This DVD RW medium is already formatted - reformatting will erase all content on the disc."
 msgstr "Tämä DVD-RW levy on jo alustettu - uudelleenalustus tuhoaa levyn kaiken sisällön."
+
+msgid "This allows you change the font size relative to skin size, so 1 increases by 1 point size, and -1 decreases by 1 point size"
+msgstr ""
 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
@@ -13779,6 +13933,10 @@ msgstr ""
 msgid "Trash can"
 msgstr "Roskakori"
 
+#, fuzzy
+msgid "Trashcan:"
+msgstr "Roskakori"
+
 #
 msgid "Tries left:"
 msgstr "Yrityksiä jäljellä:"
@@ -14216,6 +14374,20 @@ msgstr "Käytä virranmittausta"
 msgid "Use separate picon pack for front panel display"
 msgstr "Määritä etupaneelin näytön kontrasti."
 
+#, fuzzy
+msgid "Use slim screen"
+msgstr "Kokoruutu"
+
+#
+#, fuzzy
+msgid "Use the alternative screen"
+msgstr "Vaihtoehtoisten kanavien lisäys ja poisto"
+
+msgid ""
+"Use the deletion time to sort Trash directories.\n"
+"Most recently deleted at the top."
+msgstr ""
+
 msgid "Use the network wizard to configure selected network adapter"
 msgstr "Muokkaa valitun verkkosovittimen asetuksia verkkoavustajan opastamana"
 
@@ -14247,6 +14419,10 @@ msgstr "Käytetäänkö näitä asetuksia?"
 #
 msgid "Use this video enhancement settings?"
 msgstr "Käytä näitä kuvasäädön asetuksia?"
+
+#, fuzzy
+msgid "Use trash can in movie list"
+msgstr "Käytä roskakoria tallenneluettelossa"
 
 msgid "Use trash can in movielist"
 msgstr "Käytä roskakoria tallenneluettelossa"
@@ -14825,6 +15001,9 @@ msgstr "Kun päällä, on mahdollista poistua tallenteista exit-napilla."
 msgid "When enabled, measure power consumption to detect when the rotor stops turning (when supported by the tuner)."
 msgstr "Kun päällä, mitataan virrankulutusta jotta voidaan havaita kun kääntömoottori pysähtyy (jos viritin tukee tätä)."
 
+msgid "When enabled, network trash cans are probed for cleaning."
+msgstr ""
+
 msgid "When enabled, number markers will be hidden."
 msgstr "Kun päällä, suosikkilistan väliotsikot joilla on kanavanumero piilotetaan."
 
@@ -14867,6 +15046,10 @@ msgstr "Kun päällä, tietopalkki näytetään kun hypitään eteen/taakseppäi
 msgid "When enabled, the lenght of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Kun päällä, tallenteiden pituus näytetään tallenneluettelossa (tämä voi aiheuttaa tallenneluettelon latausajan pitenemisen)."
 
+#, fuzzy
+msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
+msgstr "Kun päällä, tallenteiden pituus näytetään tallenneluettelossa (tämä voi aiheuttaa tallenneluettelon latausajan pitenemisen)."
+
 msgid "When enabled, the receiver will automatically use the audio track which you selected before."
 msgstr "Kun päällä, vastaanotin käyttää kanavalle aiemmin valitsemaasi ääniraitaa automaattisesti."
 
@@ -14906,11 +15089,23 @@ msgstr "Kun arvo ei ole nolla, tallennus päättyy myöhemmin kuin ohjelmaoppaas
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
 msgstr "Kun päällä, sallitaan niidenkin videotilojen valinta jotka eivät näyttäisi olevan tuettuja."
 
+msgid "When set the PIG will return to live after a movie has stopped playing."
+msgstr ""
+
+msgid "When set, each directory will show the previous state used. When off, the default values will be shown."
+msgstr ""
+
+msgid "When set, sort changes via the sort key will be permanent."
+msgstr ""
+
 msgid "When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture."
 msgstr "Kun ohjelman kuvasuhde on 16:9, valitse skaalataanko/venytetäänkö kuvaa."
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Kun ohjelman kuvasuhde on 4:3, valitse skaalataanko/venytetäänkö kuvaa."
+
+msgid "When unset, sort changes will be temporary - just for this view of a directory."
+msgstr ""
 
 #
 msgid "Where to save temporary timeshift recordings?"
@@ -15012,6 +15207,11 @@ msgid "Yellow DVB subtitles"
 msgstr "Keltaiset DVB-tekstit"
 
 #
+#, fuzzy
+msgid "Yellow long"
+msgstr "Keltainen"
+
+#
 msgid "Yemen"
 msgstr "Yemen"
 
@@ -15056,6 +15256,16 @@ msgid "Yes, returning to movie list"
 msgstr "Kyllä, palataan tallenneluetteloon"
 
 #
+#, fuzzy
+msgid "Yes, show delete time"
+msgstr "Kyllä ja poista tämä tallenne"
+
+#
+#, fuzzy
+msgid "Yes, show record time"
+msgstr "Aseta tallennuksen päättymisaika"
+
+#
 msgid "Yes, with backup"
 msgstr "Kyllä, varmuuskopin kanssa"
 
@@ -15096,9 +15306,6 @@ msgstr ""
 msgid "You can display PIP with or without OSD menu"
 msgstr ""
 
-msgid "You can enable if will be displayed extended EPG description for item."
-msgstr "Jos päällä, näytetään laajennettu ohjelmakuvaus"
-
 #
 msgid "You can install this plugin."
 msgstr "Voit asentaa tämän lisäosan."
@@ -15109,15 +15316,6 @@ msgstr "Sinä voit polttaa ainoastaan vastaanottimesi nauhoituksia!"
 #
 msgid "You can remove this plugin."
 msgstr "Voit poistaa tämän lisäosan."
-
-msgid "You can set how will be finished movieplayer with 'Exit' button."
-msgstr "Voit asettaa poistutaanko (ja miten) tallenteen toistosta 'Exit' näppäimellä"
-
-msgid "You can set selected directory as 'root' directory for movie player."
-msgstr "Asettaa määritetyn hakemiston tallenteiden päähakemistoksi."
-
-msgid "You can set sorting type for items in movielist."
-msgstr "Voit asettaa tallenteiden listauksen järjestyksen."
 
 #
 msgid "You cannot delete this!"
@@ -15483,22 +15681,22 @@ msgstr "Kun kulunut "
 msgid "all"
 msgstr "Kaikki"
 
+#, fuzzy
+msgid "alpha then oldest"
+msgstr "Käänteinen aakkosjärjestys"
+
 msgid "alphabetic"
 msgstr "Aakkosjärjestys"
 
 msgid "alphabetic reverse"
 msgstr "Käänteinen aakkosjärjestys"
 
-#, fuzzy
-msgid "alphabetic then newest"
-msgstr "Käänteinen aakkosjärjestys"
-
-#, fuzzy
-msgid "alphabetic then oldest"
-msgstr "Käänteinen aakkosjärjestys"
-
 msgid "alphabetical"
 msgstr "Aakkosjärjestys"
+
+#, fuzzy
+msgid "alpharev then newest"
+msgstr "Käänteinen aakkosjärjestys"
 
 #
 msgid "alternative"
@@ -15722,6 +15920,12 @@ msgstr "Poista leikkausmääritys"
 #, fuzzy
 msgid "delete cut (disabled)"
 msgstr " (ei käytössä)"
+
+msgid "delete time - show delete time (Trash ONLY)"
+msgstr ""
+
+msgid "delete time - show record time (Trash ONLY)"
+msgstr ""
 
 msgid "descramble and record ecm"
 msgstr "Pura ja tallenna ECM"
@@ -16146,22 +16350,6 @@ msgstr "Pituus"
 
 msgid "limit ..., aborting !"
 msgstr "raja ..., keskeytetään !"
-
-#
-msgid "list style compact"
-msgstr "Luettelon tyyli: Tiivistetty"
-
-#
-msgid "list style compact with description"
-msgstr "Luettelon tyyli: Tiivistetty kuvaustekstillä"
-
-#
-msgid "list style default"
-msgstr "Luettelon tyyli: Vakio"
-
-#
-msgid "list style single line"
-msgstr "Luettelon tyyli: Yksi rivi"
 
 #, fuzzy
 msgid "listens to hotplug events"

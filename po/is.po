@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-17 11:04+0330\n"
+"POT-Creation-Date: 2019-10-21 09:17+0330\n"
 "PO-Revision-Date: 2011-05-07 12:23+0200\n"
 "Last-Translator: Baldur <bsveinsson@gmail.com>\n"
 "Language-Team: Polar Team/LT Team <baddi@oreind.is>\n"
@@ -827,6 +827,10 @@ msgid "%d GB"
 msgstr ""
 
 #, python-format
+msgid "%d KB"
+msgstr ""
+
+#, python-format
 msgid "%d MB"
 msgstr ""
 
@@ -864,12 +868,6 @@ msgstr[1] "%d rásir fundnar!"
 #, python-format
 msgid "%d core"
 msgid_plural "%d cores"
-msgstr[0] ""
-msgstr[1] ""
-
-#, python-format
-msgid "%d file"
-msgid_plural "%d files"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -918,6 +916,14 @@ msgid "%d ms"
 msgstr ""
 
 #, python-format
+msgid "%d of %d Bytes"
+msgstr ""
+
+#, python-format
+msgid "%d of %d KB"
+msgstr ""
+
+#, python-format
 msgid "%d pixel wide"
 msgid_plural "%d pixels wide"
 msgstr[0] ""
@@ -932,13 +938,6 @@ msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 msgstr[1] ""
-
-#
-#, fuzzy, python-format
-msgid "%d subdirectory"
-msgid_plural "%d subdirectories"
-msgstr[0] "/var mappa"
-msgstr[1] "/var mappa"
 
 #
 #, fuzzy, python-format
@@ -1005,6 +1004,10 @@ msgstr ""
 msgid "%m/%d/%Y"
 msgstr ""
 
+#, python-format
+msgid "%s"
+msgstr ""
+
 #, fuzzy, python-format
 msgid ""
 "%s\n"
@@ -1043,6 +1046,14 @@ msgstr ""
 msgid "%s is no longer used. Should it be deleted?"
 msgstr ""
 
+#, python-format
+msgid "%s of %s GB"
+msgstr ""
+
+#, python-format
+msgid "%s of %s MB"
+msgstr ""
+
 #
 #, fuzzy, python-format
 msgid "%s updated package available"
@@ -1067,6 +1078,10 @@ msgstr ""
 msgid "%s:%s"
 msgstr ""
 
+#, python-format
+msgid "'%s' contains %d file(s) and %d sub-directories.\n"
+msgstr ""
+
 msgid "( All readers)"
 msgstr ""
 
@@ -1074,6 +1089,9 @@ msgid "(Show only reader:"
 msgstr ""
 
 msgid "(VU+ type)"
+msgstr ""
+
+msgid "(You are currently using a temporary sort method)"
 msgstr ""
 
 msgid "(ZAP as PiP)"
@@ -1602,7 +1620,7 @@ msgstr ""
 msgid "Adapter settings"
 msgstr "Stilling tækis"
 
-msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.  It hides the day of the week for recordings made in previous years."
+msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.\t It hides the day of the week for recordings made in previous years."
 msgstr ""
 
 #
@@ -1824,9 +1842,6 @@ msgstr ""
 msgid "Allow quit movieplayer with exit"
 msgstr ""
 
-msgid "Allow quitting movieplayer with exit"
-msgstr ""
-
 msgid "Allow subtitle language to equal audio language"
 msgstr ""
 
@@ -1849,7 +1864,13 @@ msgstr ""
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr ""
 
+msgid "Allows you to hide the extensions of known file types."
+msgstr ""
+
 msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
+msgid "Allows you to setup the button to do what you choose."
 msgstr ""
 
 msgid "Alpha"
@@ -2087,6 +2108,12 @@ msgstr ""
 msgid "Ask user"
 msgstr "Spyrja notanda"
 
+msgid "Ask user (with default as 'no')"
+msgstr ""
+
+msgid "Ask user (with default as 'yes')"
+msgstr ""
+
 #, fuzzy
 msgid "Aspect ratio"
 msgstr "Stærðarhlutfall"
@@ -2254,10 +2281,6 @@ msgstr "Sjálfvirkt"
 
 msgid "Automatic Scan"
 msgstr ""
-
-#, fuzzy
-msgid "Automatic bookmarks"
-msgstr "Sjálfvirk leit"
 
 #, fuzzy
 msgid "Automatic refresh"
@@ -2486,6 +2509,10 @@ msgstr "Suð deyfing"
 msgid "Blue"
 msgstr ""
 
+#, fuzzy
+msgid "Blue long"
+msgstr "Tæma lista"
+
 msgid "Bolivia (Plurinational State of)"
 msgstr ""
 
@@ -2586,6 +2613,9 @@ msgstr ""
 
 msgid "Bus: "
 msgstr "Rás:"
+
+msgid "Button"
+msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr ""
@@ -2734,6 +2764,11 @@ msgstr ""
 msgid "Cannot delete downloaded image"
 msgstr "Viltu eyða liðnum tímastillingum?"
 
+#
+#, fuzzy
+msgid "Cannot delete file"
+msgstr "eyða skrá"
+
 msgid "Cannot determine"
 msgstr ""
 
@@ -2743,7 +2778,7 @@ msgstr ""
 msgid "Cannot find images - please try later"
 msgstr ""
 
-msgid "Cannot move files on a different disk or system to the trash can"
+msgid "Cannot move to the trash can"
 msgstr ""
 
 msgid "Cannot move to trash can"
@@ -2992,6 +3027,10 @@ msgstr "Hringpólun vinstri"
 
 msgid "Circular right"
 msgstr "Hringpólun hægri"
+
+#, fuzzy
+msgid "Clean network trash cans"
+msgstr "Eyða fyrir leit"
 
 msgid "Cleanup"
 msgstr "Hreinsa"
@@ -3396,6 +3435,11 @@ msgstr "Stilla nafnaþjón"
 msgid "Configure the netmask."
 msgstr "Stilla netkort"
 
+msgid ""
+"Configure the number of days after which items are automatically removed from the trash can.\n"
+"A setting of 0 disables this."
+msgstr ""
+
 msgid "Configure the number of days after which items are automaticaly removed from the trash can."
 msgstr ""
 
@@ -3644,6 +3688,10 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
+#, fuzzy
+msgid "Copying files"
+msgstr "Löng skráarnöfn"
+
 msgid "Costa Rica"
 msgstr ""
 
@@ -3659,6 +3707,9 @@ msgstr ""
 #, fuzzy
 msgid "Could not load medium! No disc inserted?"
 msgstr "Gat ekki lesið disk! Er enginn diskur í drifi?"
+
+msgid "Could not locate epg file on fallback tuner"
+msgstr ""
 
 msgid "Could not open Picture in Picture"
 msgstr "Gat ekki opnað mynd í mynd"
@@ -4241,6 +4292,11 @@ msgstr ""
 msgid "Deleted items"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Deleting files"
+msgstr "eyða skrá"
+
 msgid "Denmark"
 msgstr ""
 
@@ -4300,6 +4356,11 @@ msgstr "Fann NIM:"
 #
 #, fuzzy
 msgid "Device"
+msgstr "Rás"
+
+#
+#, fuzzy
+msgid "Device mounts"
 msgstr "Rás"
 
 msgid "Devicename:"
@@ -4378,11 +4439,6 @@ msgid "Directory browser"
 msgstr "Möppu vafri"
 
 #
-#, fuzzy, python-format
-msgid "Directory contains %s and %s."
-msgstr "Mappa %s ekki til."
-
-#
 msgid "Disable"
 msgstr "Gera óvirkt"
 
@@ -4448,9 +4504,6 @@ msgstr "Skjár og notenda viðmót"
 msgid "Display message before playing next movie"
 msgstr ""
 
-msgid "Display movie length in movielist (except single line style)."
-msgstr ""
-
 #
 #, fuzzy
 msgid "Display setup"
@@ -4504,9 +4557,6 @@ msgstr "ekki breyta"
 msgid "Do not record"
 msgstr "ekki taka upp"
 
-msgid "Do not show file extensions for registered multimedia files."
-msgstr ""
-
 #
 #, fuzzy
 msgid "Do nothing"
@@ -4521,8 +4571,18 @@ msgstr ""
 "Það tekur langan tíma!"
 
 #
+#, fuzzy, python-format
+msgid "Do you really want to delete %s ?"
+msgstr "Viltu virkilega eyða %s?"
+
+#
 #, python-format
 msgid "Do you really want to delete %s?"
+msgstr "Viltu virkilega eyða %s?"
+
+#
+#, fuzzy
+msgid "Do you really want to delete ?"
 msgstr "Viltu virkilega eyða %s?"
 
 #
@@ -4546,6 +4606,22 @@ msgid ""
 "Do you really want to initialize the device?\n"
 "All data on the disk will be lost!"
 msgstr ""
+
+#, fuzzy
+msgid "Do you really want to move to the trash can ?"
+msgstr ""
+"Viltu örugglega hala niður\n"
+"íforritinu \"%s\"?"
+
+#
+#, fuzzy, python-format
+msgid "Do you really want to permamently remove '%s' from the trash can ?"
+msgstr "Viltu örugglega eyða möppunni %s af diskinum?"
+
+#
+#, fuzzy
+msgid "Do you really want to permanently remove from the trash can ?"
+msgstr "Viltu örugglega eyða möppunni %s af diskinum?"
 
 #, fuzzy, python-format
 msgid ""
@@ -4813,10 +4889,6 @@ msgstr ""
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
 msgstr "VILLA - gat ekki leitað (%s)!"
-
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr ""
 
 #
 msgid "East"
@@ -5196,11 +5268,6 @@ msgstr ""
 msgid "Error"
 msgstr "Villa"
 
-#
-#, fuzzy, python-format
-msgid "Error %s"
-msgstr "Villa"
-
 msgid "Error code"
 msgstr ""
 
@@ -5229,19 +5296,10 @@ msgstr "Villa við keyrslu íforrits"
 msgid "Error stop stream!"
 msgstr ""
 
-msgid "Error when writing epg.dat on server"
-msgstr ""
-
-msgid "Error while retreiving epg.dat from server"
-msgstr ""
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr ""
-
-msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #
@@ -5498,8 +5556,23 @@ msgstr ""
 msgid "F"
 msgstr ""
 
+#
+#, fuzzy
+msgid "F1"
+msgstr "1"
+
 msgid "F1/F3/F4/F4-TURBO/TRIPLEX"
 msgstr ""
+
+#
+#, fuzzy
+msgid "F2"
+msgstr "2"
+
+#
+#, fuzzy
+msgid "F3"
+msgstr "3"
 
 msgid "FAILED"
 msgstr ""
@@ -5778,6 +5851,9 @@ msgstr ""
 
 msgid "Following tasks will be done after you press OK!"
 msgstr "Eftirfarandi aðgerðir verða framkvæmdar eftir að þú ýtir á OK!"
+
+msgid "Font size"
+msgstr ""
 
 msgid "Force legacy signal stats"
 msgstr ""
@@ -6103,6 +6179,9 @@ msgid "Greek (Modern)"
 msgstr ""
 
 msgid "Green"
+msgstr ""
+
+msgid "Green long"
 msgstr ""
 
 msgid "Greenland"
@@ -6509,19 +6588,7 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
-msgstr ""
-
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
-msgstr ""
-
-msgid "If enabled, then there will be displayed icons for new/unseen items too."
-msgstr ""
-
-msgid "If is enabled and movie playback is finished, then after return to movielist will not be automaticaly start service playback."
-msgstr ""
-
-msgid "If set as 'Yes', then audiofiles are played in 'list mode' only, instead in full screen player."
 msgstr ""
 
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
@@ -7005,6 +7072,9 @@ msgstr ""
 msgid "Keep service"
 msgstr ""
 
+msgid "Keeps the movie list open whilst playing audio files."
+msgstr ""
+
 msgid "Kenya"
 msgstr ""
 
@@ -7269,9 +7339,6 @@ msgstr ""
 msgid "List of storage devices"
 msgstr "Listi geymslu tækja"
 
-msgid "List type"
-msgstr ""
-
 #, python-format
 msgid "List version %d, found %d channel"
 msgid_plural "List version %d, found %d channels"
@@ -7306,10 +7373,6 @@ msgstr "Hleð"
 #, fuzzy
 msgid "Load EPG"
 msgstr "Hleð"
-
-#, fuzzy
-msgid "Load length of movies in movie list"
-msgstr "Hlaða inn lengd myndar í myndalista"
 
 #
 #, fuzzy
@@ -7860,9 +7923,10 @@ msgstr ""
 msgid "Movie"
 msgstr ""
 
+#
 #, fuzzy
-msgid "Movie list configuration"
-msgstr "Handvirk stilling"
+msgid "Movie List Setup"
+msgstr "Bíómynda valmynd"
 
 msgid "Movie location"
 msgstr "Staðsetning bíómynda"
@@ -7883,6 +7947,10 @@ msgstr ""
 
 msgid "Moving east ..."
 msgstr ""
+
+#, fuzzy
+msgid "Moving files"
+msgstr "Löng skráarnöfn"
 
 msgid "Moving to position"
 msgstr ""
@@ -8108,6 +8176,11 @@ msgstr "Tengingar við netkerfi"
 msgid "Network mount %s"
 msgstr "Tengingar við netkerfi"
 
+#
+#, fuzzy
+msgid "Network mounts"
+msgstr "Tengingar við netkerfi"
+
 #, fuzzy
 msgid "Network name (SSID)"
 msgstr "Netkerfis nafn (SSID)"
@@ -8242,9 +8315,6 @@ msgstr "Engin lýsing tiltæk."
 msgid "No displayable files on this medium found!"
 msgstr "Engar skrár fundust á þessu tæki!"
 
-msgid "No epg.dat file found server"
-msgstr ""
-
 #
 msgid "No event info found, recording indefinitely."
 msgstr "Engar upplýsingar um atriði fundust, tek upp endalaust."
@@ -8294,6 +8364,9 @@ msgstr ""
 #, fuzzy
 msgid "No services/providers selected"
 msgstr "engar rásir/sendar valdir"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 #
 #, fuzzy
@@ -8443,6 +8516,11 @@ msgstr "Ekki tengt"
 
 #
 #, fuzzy
+msgid "Not Defined"
+msgstr "Stillt af notanda"
+
+#
+#, fuzzy
 msgid "Not Installed"
 msgstr "Setja inn"
 
@@ -8454,11 +8532,6 @@ msgstr " uppfærslur tiltækar."
 #, fuzzy
 msgid "Not associated"
 msgstr "Ekki tengt"
-
-#
-#, fuzzy
-msgid "Not defined"
-msgstr "Stillt af notanda"
 
 #
 #, fuzzy, python-format
@@ -8524,6 +8597,12 @@ msgid "Number of channels shown in channel selection list"
 msgstr ""
 
 msgid "Number of repeating text on display."
+msgstr ""
+
+msgid "Number of rows"
+msgstr ""
+
+msgid "Number of rows to display"
 msgstr ""
 
 msgid "Number or SMS style data entry"
@@ -8906,6 +8985,9 @@ msgstr ""
 msgid "Percentage right"
 msgstr "Hringpólun hægri"
 
+msgid "Permanent sort key changes"
+msgstr ""
+
 msgid "Permanently delete all recordings in the trash can?"
 msgstr ""
 
@@ -8927,6 +9009,12 @@ msgid "PiP setup"
 msgstr "Uppsetning Mynd í Mynd"
 
 msgid "Picon"
+msgstr ""
+
+msgid "Picon Size"
+msgstr ""
+
+msgid "Picon Width"
 msgstr ""
 
 msgid "Picon and servicename"
@@ -8965,13 +9053,13 @@ msgstr "Spila DVD"
 msgid "Play DVDs"
 msgstr "Spila DVD"
 
+msgid "Play audio in background"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Play audio-CD..."
 msgstr "Spila hljóð disk..."
-
-msgid "Play audiofiles in list mode"
-msgstr ""
 
 msgid "Play back media files"
 msgstr ""
@@ -9084,6 +9172,11 @@ msgstr ""
 msgid "Please enter the correct pin code"
 msgstr "Sláðu inn réttan kóða"
 
+#
+#, fuzzy
+msgid "Please enter the name of the new directory"
+msgstr "Sláðu inn nafn á nýju möppunni"
+
 msgid "Please enter the new PIN code"
 msgstr ""
 
@@ -9134,10 +9227,6 @@ msgid "Please select medium to use as backup location"
 msgstr "Vinsamlega veljið tæki til að nota sem afritunar stað"
 
 #
-msgid "Please select tag to filter..."
-msgstr "Vinsamlega veldu merki til að sía út..."
-
-#
 msgid "Please select the movie path..."
 msgstr "Veldu slóð að mynd..."
 
@@ -9150,6 +9239,11 @@ msgstr ""
 "Veldu það netkort sem að þú vilt nota fyrir veraldarvefs tengingu.\n"
 "\n"
 "Ýttu á OK til að halda áfram."
+
+#
+#, fuzzy
+msgid "Please select the tag to filter..."
+msgstr "Vinsamlega veldu merki til að sía út..."
 
 #
 msgid ""
@@ -9906,10 +10000,6 @@ msgid "Record time limited due to conflicting timer %s"
 msgstr "Upptöku tími takmarkaður vegna annarar tímastillingar, %s"
 
 #
-msgid "Recorded files..."
-msgstr "Uppteknar skrár..."
-
-#
 msgid "Recording"
 msgstr "Upptaka"
 
@@ -9961,6 +10051,9 @@ msgstr ""
 msgid "Red colored"
 msgstr ""
 
+msgid "Red long"
+msgstr ""
+
 msgid "Reenter PIN"
 msgstr ""
 
@@ -9981,11 +10074,6 @@ msgstr "Hressingar tíðni"
 #
 msgid "Refresh rate selection."
 msgstr "Hressingar tíðni val."
-
-#
-#, fuzzy
-msgid "Refusing to move to the same directory"
-msgstr "Sláðu inn nafn á nýju möppunni"
 
 msgid "Regard deep standby as standby"
 msgstr ""
@@ -11257,6 +11345,11 @@ msgstr ""
 msgid "Service ID"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Service Title mode"
+msgstr "Veldu mynd stillingu"
+
 msgid "Service has been added to the favourites."
 msgstr "Rás hefur verið bætt við eftirlætis lista."
 
@@ -11360,9 +11453,8 @@ msgstr ""
 msgid "Set PIN"
 msgstr ""
 
-#, fuzzy
-msgid "Set action when movie playback is finished."
-msgstr "Aðgerð þegar mynd byrjar"
+msgid "Set a temporary sort method for this directory"
+msgstr ""
 
 msgid "Set all hotkey to default?"
 msgstr ""
@@ -11392,20 +11484,12 @@ msgstr ""
 msgid "Set framerate for MiniTV"
 msgstr ""
 
-msgid "Set if You want see status icons, progress bars or nothing."
-msgstr ""
-
 #
 msgid "Set interface as default Interface"
 msgstr "Gera að sjálfgefnu korti"
 
 msgid "Set limits"
 msgstr ""
-
-#
-#, fuzzy
-msgid "Set movielist type."
-msgstr "loka myndalista"
 
 msgid "Set pin code persistent"
 msgstr ""
@@ -11429,7 +11513,13 @@ msgstr "fara úr nafnaþjóns stillingum"
 msgid "Set the User ID of the OpenWebif from your fallback tuner"
 msgstr ""
 
+msgid "Set the default sorting method."
+msgstr ""
+
 msgid "Set the delay time between repeated loops, this is used by software renderer in some skins."
+msgstr ""
+
+msgid "Set the global sort method"
 msgstr ""
 
 msgid "Set the password of the OpenWebif from your fallback tuner"
@@ -11446,6 +11536,11 @@ msgstr ""
 
 msgid "Set the scrolling speed of text on the front panel display."
 msgstr ""
+
+#
+#, fuzzy
+msgid "Set the sort method for this directory"
+msgstr "Sláðu inn nafn á nýju möppunni"
 
 msgid "Set the time of day to perform the import."
 msgstr ""
@@ -11483,12 +11578,12 @@ msgstr ""
 msgid "Set voltage and 22KHz"
 msgstr "Setja spennu og 22KHz"
 
+msgid "Sets the root directory of movie list, to remove the '..' from being shown in that folder."
+msgstr ""
+
 #
 msgid "Settings"
 msgstr "Stillingar"
-
-msgid "Settings can be different for each directory separately (for non removeable devices only)."
-msgstr ""
 
 #
 msgid "Setup"
@@ -11755,6 +11850,10 @@ msgstr ""
 msgid "Show latest update log"
 msgstr "Veldu upphafs slóð til að breyta."
 
+#, fuzzy
+msgid "Show live tv when movie stopped"
+msgstr "Aðgerð þegar mynd er stoppuð"
+
 #
 #, fuzzy
 msgid "Show log"
@@ -11773,6 +11872,10 @@ msgstr ""
 #, fuzzy
 msgid "Show message when recording starts"
 msgstr "Sýna skilaboð við byrjun upptöku"
+
+#, fuzzy
+msgid "Show movie lengths in movie list"
+msgstr "Hlaða inn lengd myndar í myndalista"
 
 #, fuzzy
 msgid "Show movie lengths in movielist"
@@ -11798,6 +11901,11 @@ msgstr ""
 
 #
 #, fuzzy
+msgid "Show or hide the extended description, (skin dependant)."
+msgstr "sýna auka upplýsingar"
+
+#
+#, fuzzy
 msgid "Show packages to be updated"
 msgstr "Listi uppfærðra pakka"
 
@@ -11806,6 +11914,11 @@ msgstr ""
 
 msgid "Show picons in display"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Show picons in the movie list."
+msgstr "Til baka til mynda lista"
 
 #
 msgid "Show positioner movement"
@@ -11906,9 +12019,17 @@ msgstr ""
 msgid "Shows live tv or informations on LCD."
 msgstr ""
 
+msgid "Shows the icons when new/unseen, otherwise it will not show an icon."
+msgstr ""
+
 #
 msgid "Shows the state of your wireless LAN connection.\n"
 msgstr "Sýnir stöðu þráðlausrar nettenginar.\n"
+
+#
+#, fuzzy
+msgid "Shows the watched status of the movie."
+msgstr "Engin merki sett á þessa mynd."
 
 #
 #, fuzzy
@@ -12195,9 +12316,6 @@ msgstr "Sum íforrit eru ekki til:\n"
 msgid "Sorry, %s has not been installed!"
 msgstr "Þvímiður er Margmiðlunarleitari ekki innsettur!"
 
-msgid "Sorry, deleting directories can (for now) only be done through the trash can."
-msgstr ""
-
 #
 #, fuzzy
 msgid "Sorry, no backups found!"
@@ -12228,8 +12346,16 @@ msgstr ""
 msgid "Sort A-Z"
 msgstr "Raða A-Ö"
 
+msgid "Sort Trash by deletion time"
+msgstr ""
+
 msgid "Sort by"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Sort by default"
+msgstr "stíll lista venjulegur"
 
 msgid "Sort list to default and exit?"
 msgstr ""
@@ -12561,6 +12687,9 @@ msgstr ""
 #
 msgid "Stop playing this movie?"
 msgstr "Stoppa spilun?"
+
+msgid "Stop previous broadcasted service on return to movie list."
+msgstr ""
 
 msgid "Stop recording"
 msgstr ""
@@ -12918,6 +13047,9 @@ msgstr ""
 msgid "TUNING"
 msgstr ""
 
+msgid "TV"
+msgstr ""
+
 msgid "TV physical address report"
 msgstr ""
 
@@ -13036,6 +13168,9 @@ msgid "Testscreens"
 msgstr ""
 
 msgid "Testscreens that are helpfull to fine-tune your display"
+msgstr ""
+
+msgid "Text"
 msgstr ""
 
 #
@@ -13291,6 +13426,9 @@ msgstr ""
 #
 msgid "This DVD RW medium is already formatted - reformatting will erase all content on the disc."
 msgstr "Þessi DVD RW diskur er þegar formaður - endurformun mun eyða öllum gögnum af honum."
+
+msgid "This allows you change the font size relative to skin size, so 1 increases by 1 point size, and -1 decreases by 1 point size"
+msgstr ""
 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
@@ -13842,6 +13980,9 @@ msgstr "Gerð sendis"
 msgid "Trash can"
 msgstr ""
 
+msgid "Trashcan:"
+msgstr ""
+
 #
 msgid "Tries left:"
 msgstr "Tilraunir eftir:"
@@ -14280,6 +14421,19 @@ msgstr "Nota aflmælingu"
 msgid "Use separate picon pack for front panel display"
 msgstr ""
 
+msgid "Use slim screen"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Use the alternative screen"
+msgstr "breyta valkosti"
+
+msgid ""
+"Use the deletion time to sort Trash directories.\n"
+"Most recently deleted at the top."
+msgstr ""
+
 #, fuzzy
 msgid "Use the network wizard to configure selected network adapter"
 msgstr "Nota ráðgjafa til að stilla valið netkort"
@@ -14309,6 +14463,11 @@ msgstr "Nota þessar stillingar?"
 #
 msgid "Use this video enhancement settings?"
 msgstr "Nota mynd endurbóta stillingar?"
+
+#
+#, fuzzy
+msgid "Use trash can in movie list"
+msgstr "Til baka til mynda lista"
 
 #
 #, fuzzy
@@ -14900,6 +15059,9 @@ msgstr ""
 msgid "When enabled, measure power consumption to detect when the rotor stops turning (when supported by the tuner)."
 msgstr ""
 
+msgid "When enabled, network trash cans are probed for cleaning."
+msgstr ""
+
 msgid "When enabled, number markers will be hidden."
 msgstr ""
 
@@ -14940,6 +15102,9 @@ msgid "When enabled, the infobar will be displayed when skipping forwards/backwa
 msgstr ""
 
 msgid "When enabled, the lenght of each recording will be shown in the movielist (this might cause some additional loading time)."
+msgstr ""
+
+msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr ""
 
 msgid "When enabled, the receiver will automatically use the audio track which you selected before."
@@ -14983,10 +15148,22 @@ msgstr ""
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
 msgstr ""
 
+msgid "When set the PIG will return to live after a movie has stopped playing."
+msgstr ""
+
+msgid "When set, each directory will show the previous state used. When off, the default values will be shown."
+msgstr ""
+
+msgid "When set, sort changes via the sort key will be permanent."
+msgstr ""
+
 msgid "When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture."
 msgstr ""
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
+msgstr ""
+
+msgid "When unset, sort changes will be temporary - just for this view of a directory."
 msgstr ""
 
 #
@@ -15089,6 +15266,11 @@ msgstr ""
 msgid "Yellow DVB subtitles"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Yellow long"
+msgstr "Sýna upplýsingar"
+
 msgid "Yemen"
 msgstr ""
 
@@ -15134,6 +15316,15 @@ msgstr "Já, fara til baka á mynda lista"
 
 #
 #, fuzzy
+msgid "Yes, show delete time"
+msgstr "Já, og eyða þessari bíómynd"
+
+#, fuzzy
+msgid "Yes, show record time"
+msgstr "Vinsamlega breytið lokatíma upptöku"
+
+#
+#, fuzzy
 msgid "Yes, with backup"
 msgstr "Setja inn afrit"
 
@@ -15172,9 +15363,6 @@ msgstr ""
 msgid "You can display PIP with or without OSD menu"
 msgstr ""
 
-msgid "You can enable if will be displayed extended EPG description for item."
-msgstr ""
-
 msgid "You can install this plugin."
 msgstr "Þú getur sett inn þetta íforrit."
 
@@ -15183,16 +15371,6 @@ msgstr ""
 
 msgid "You can remove this plugin."
 msgstr "Þú getur tekið út þetta íforrit."
-
-msgid "You can set how will be finished movieplayer with 'Exit' button."
-msgstr ""
-
-msgid "You can set selected directory as 'root' directory for movie player."
-msgstr ""
-
-#, fuzzy
-msgid "You can set sorting type for items in movielist."
-msgstr "Hlaða inn lengd myndar í myndalista"
 
 #
 msgid "You cannot delete this!"
@@ -15536,24 +15714,24 @@ msgstr ""
 
 #
 #, fuzzy
+msgid "alpha then oldest"
+msgstr "raða í stafrófsröð"
+
+#
+#, fuzzy
 msgid "alphabetic"
 msgstr "raða í stafrófsröð"
 
 msgid "alphabetic reverse"
 msgstr ""
 
-#
-#, fuzzy
-msgid "alphabetic then newest"
-msgstr "raða í stafrófsröð"
-
-#
-#, fuzzy
-msgid "alphabetic then oldest"
-msgstr "raða í stafrófsröð"
-
 msgid "alphabetical"
 msgstr ""
+
+#
+#, fuzzy
+msgid "alpharev then newest"
+msgstr "raða í stafrófsröð"
 
 msgid "alternative"
 msgstr ""
@@ -15772,6 +15950,12 @@ msgstr "eyða klippingu"
 #, fuzzy
 msgid "delete cut (disabled)"
 msgstr "eyða klippingu"
+
+msgid "delete time - show delete time (Trash ONLY)"
+msgstr ""
+
+msgid "delete time - show record time (Trash ONLY)"
+msgstr ""
 
 msgid "descramble and record ecm"
 msgstr ""
@@ -16197,22 +16381,6 @@ msgstr "lengd"
 
 msgid "limit ..., aborting !"
 msgstr ""
-
-#
-msgid "list style compact"
-msgstr "stíll lista lítill"
-
-#
-msgid "list style compact with description"
-msgstr "stíll lista lítill með lýsingu"
-
-#
-msgid "list style default"
-msgstr "stíll lista venjulegur"
-
-#
-msgid "list style single line"
-msgstr "stíll lista, ein lína"
 
 msgid "listens to hotplug events"
 msgstr ""

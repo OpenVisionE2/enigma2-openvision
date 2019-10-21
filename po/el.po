@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 08:33+0330\n"
+"POT-Creation-Date: 2019-10-21 09:17+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: MCelliotG <mcelliotg@gmail.com>\n"
@@ -746,7 +746,7 @@ msgstr "%a %e/%m"
 
 #, fuzzy
 msgid "%a %e %b  %-H:%M"
-msgstr "%a %e/%m %-H:%M"
+msgstr "%a %e/%m  %-H:%M"
 
 #, fuzzy
 msgid "%a %m/%-d"
@@ -823,6 +823,10 @@ msgid "%d GB"
 msgstr "%d GB"
 
 #, python-format
+msgid "%d KB"
+msgstr ""
+
+#, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
@@ -861,12 +865,6 @@ msgid "%d core"
 msgid_plural "%d cores"
 msgstr[0] "%d πυρήνας"
 msgstr[1] "%d πυρήνες"
-
-#, python-format
-msgid "%d file"
-msgid_plural "%d files"
-msgstr[0] "%d αρχείο"
-msgstr[1] "%d αρχεία"
 
 #, python-format
 msgid "%d fps"
@@ -911,6 +909,14 @@ msgid "%d ms"
 msgstr "%d ms"
 
 #, python-format
+msgid "%d of %d Bytes"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%d of %d KB"
+msgstr "%A %d %B"
+
+#, python-format
 msgid "%d pixel wide"
 msgid_plural "%d pixels wide"
 msgstr[0] "%d πλάτος σε πίξελ"
@@ -925,12 +931,6 @@ msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d δευτερόλεπτο"
 msgstr[1] "%d δευτερόλεπτα"
-
-#, python-format
-msgid "%d subdirectory"
-msgid_plural "%d subdirectories"
-msgstr[0] "%d υποφάκελος"
-msgstr[1] "%d υποφάκελοι"
 
 #, python-format
 msgid "%d wireless network found!"
@@ -999,6 +999,10 @@ msgstr ""
 msgid "%m/%d/%Y"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "%s"
+msgstr "Κ. %s"
+
 #, python-format
 msgid ""
 "%s\n"
@@ -1041,6 +1045,14 @@ msgid "%s is no longer used. Should it be deleted?"
 msgstr "Ο δορυφόρος %s δεν χρησιμοποιείται πλέον. Να γίνει διαγραφή του;"
 
 #, python-format
+msgid "%s of %s GB"
+msgstr ""
+
+#, python-format
+msgid "%s of %s MB"
+msgstr ""
+
+#, python-format
 msgid "%s updated package available"
 msgid_plural "%s updated packages available"
 msgstr[0] "%s διαθέσιμο πακέτο ενημέρωσης"
@@ -1062,6 +1074,10 @@ msgstr "%s/%s: %s"
 msgid "%s:%s"
 msgstr "%s:%s"
 
+#, python-format
+msgid "'%s' contains %d file(s) and %d sub-directories.\n"
+msgstr ""
+
 #, fuzzy
 msgid "( All readers)"
 msgstr "Όλες οι ηλικίες"
@@ -1071,6 +1087,9 @@ msgstr ""
 
 msgid "(VU+ type)"
 msgstr "(VU + τύπος)"
+
+msgid "(You are currently using a temporary sort method)"
+msgstr ""
 
 msgid "(ZAP as PiP)"
 msgstr "(ΖΑΠ ως PiP)"
@@ -1558,7 +1577,7 @@ msgstr ""
 msgid "Adapter settings"
 msgstr "Ρυθμίσεις προσαρμογέα δικτύου"
 
-msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.  It hides the day of the week for recordings made in previous years."
+msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.\t It hides the day of the week for recordings made in previous years."
 msgstr ""
 
 msgid "Add"
@@ -1748,9 +1767,6 @@ msgstr "Να επιτρέπονται τα 12bit"
 msgid "Allow quit movieplayer with exit"
 msgstr "Να επιτρέπεται η έξοδος από την αναπαραγωγή με το exit"
 
-msgid "Allow quitting movieplayer with exit"
-msgstr "Να επιτρέπεται η έξοδος από την αναπαραγωγή με το exit"
-
 msgid "Allow subtitle language to equal audio language"
 msgstr "Να επιτρέπεται η εξίσωση υποτίτλων και γλώσσας ήχου"
 
@@ -1772,7 +1788,13 @@ msgstr ""
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr ""
 
+msgid "Allows you to hide the extensions of known file types."
+msgstr ""
+
 msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
+msgid "Allows you to setup the button to do what you choose."
 msgstr ""
 
 msgid "Alpha"
@@ -1934,14 +1956,14 @@ msgstr ""
 msgid ""
 "Are you sure you want to delete this:\n"
 " "
-msgstr "Σίγουρα να γίνει έξοδος από αυτό τον οδηγό;"
+msgstr "Σίγουρα να γίνει έξοδος από αυτόν τον οδηγό;"
 
 msgid "Are you sure you want to exit this wizard?"
-msgstr "Σίγουρα να γίνει έξοδος από αυτό τον οδηγό;"
+msgstr "Σίγουρα να γίνει έξοδος από αυτόν τον οδηγό;"
 
 #, fuzzy
 msgid "Are you sure you want to reload the EPG data from:\n"
-msgstr "Σίγουρα να γίνει έξοδος από αυτό τον οδηγό;"
+msgstr "Σίγουρα να γίνει έξοδος από αυτόν τον οδηγό;"
 
 msgid ""
 "Are you sure you want to restart your network interfaces?\n"
@@ -1968,7 +1990,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Are you sure you want to save the EPG Cache to:\n"
-msgstr "Σίγουρα να γίνει έξοδος από αυτό τον οδηγό;"
+msgstr "Σίγουρα να γίνει έξοδος από αυτόν τον οδηγό;"
 
 msgid "Argentina"
 msgstr "Αργεντινή"
@@ -1990,6 +2012,12 @@ msgstr "Όπως ορίζεται από το θέμα"
 
 msgid "Ask user"
 msgstr "Ερώτηση χρήστη"
+
+msgid "Ask user (with default as 'no')"
+msgstr ""
+
+msgid "Ask user (with default as 'yes')"
+msgstr ""
 
 msgid "Aspect ratio"
 msgstr "Λόγος πλευρών"
@@ -2143,9 +2171,6 @@ msgstr "Αυτόματο"
 
 msgid "Automatic Scan"
 msgstr "Αυτόματη ανίχνευση"
-
-msgid "Automatic bookmarks"
-msgstr "Αυτόματοι σελιδοδείκτες"
 
 #, fuzzy
 msgid "Automatic refresh"
@@ -2366,6 +2391,10 @@ msgstr "Φραγή μείωσης θορύβου"
 msgid "Blue"
 msgstr "Μπλε"
 
+#, fuzzy
+msgid "Blue long"
+msgstr "Μπλε"
+
 msgid "Bolivia (Plurinational State of)"
 msgstr "Βολιβία (Πολυεθνική Πολιτεία)"
 
@@ -2458,6 +2487,9 @@ msgstr "Μπουρουντί"
 
 msgid "Bus: "
 msgstr "Bus: "
+
+msgid "Button"
+msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr "Από προεπιλογή, το SNR θα εμφανίζεται σε dB (αν υποστηρίζεται από το tuner). Αυτή η ρύθμιση αναγκάζει το SNR να εμφανίζεται ως ποσοστό."
@@ -2618,6 +2650,10 @@ msgstr "Ακύρωση με εντολή χρήστη"
 msgid "Cannot delete downloaded image"
 msgstr "Αδυναμία διαγραφής του κατεβασμένου image"
 
+#, fuzzy
+msgid "Cannot delete file"
+msgstr "Αδυναμία προσδιορισμού"
+
 msgid "Cannot determine"
 msgstr "Αδυναμία προσδιορισμού"
 
@@ -2627,8 +2663,9 @@ msgstr "Αδυναμία εύρεσης σήματος ..., ματαίωση !"
 msgid "Cannot find images - please try later"
 msgstr "Αδυναμία εύρεσης για images - δοκιμάστε αργότερα"
 
-msgid "Cannot move files on a different disk or system to the trash can"
-msgstr "Αρχεία από άλλο δίσκο ή σύστημα δε μπορούν να μεταφερθούν στον κάδο"
+#, fuzzy
+msgid "Cannot move to the trash can"
+msgstr "Αδυναμία μετακίνησης στον κάδο αχρήστων"
 
 msgid "Cannot move to trash can"
 msgstr "Αδυναμία μετακίνησης στον κάδο αχρήστων"
@@ -2874,6 +2911,10 @@ msgstr "Αριστερόστροφη"
 msgid "Circular right"
 msgstr "Δεξιόστροφη"
 
+#, fuzzy
+msgid "Clean network trash cans"
+msgstr "Αδυναμία μετακίνησης στον κάδο αχρήστων"
+
 msgid "Cleanup"
 msgstr "Εκκαθάριση"
 
@@ -2901,7 +2942,7 @@ msgid "Client Info ( OScam-Version: %s )"
 msgstr ""
 
 msgid "Client is streaming from this box!"
-msgstr "Υπάρχει πελάτης ροής από αυτό τον δέκτη!"
+msgstr "Υπάρχει πελάτης ροής από αυτόν τον δέκτη!"
 
 #, fuzzy
 msgid "Client mode"
@@ -3254,6 +3295,12 @@ msgstr "Ρύθμιση των nameservers (DNS)."
 msgid "Configure the netmask."
 msgstr "Ρύθμιση μάσκας δικτύου."
 
+#, fuzzy
+msgid ""
+"Configure the number of days after which items are automatically removed from the trash can.\n"
+"A setting of 0 disables this."
+msgstr "Ρύθμιση του αριθμού ημερών μετά τις οποίες τα αντικείμενα θα αφαιρούνται αυτόματα από τον κάδο αχρήστων."
+
 msgid "Configure the number of days after which items are automaticaly removed from the trash can."
 msgstr "Ρύθμιση του αριθμού ημερών μετά τις οποίες τα αντικείμενα θα αφαιρούνται αυτόματα από τον κάδο αχρήστων."
 
@@ -3490,6 +3537,10 @@ msgstr "Κουκ Νήσοι"
 msgid "Copy"
 msgstr "Αντιγραφή"
 
+#, fuzzy
+msgid "Copying files"
+msgstr "Μεγάλα ονόματα αρχείων"
+
 msgid "Costa Rica"
 msgstr "Κόστα Ρίκα"
 
@@ -3504,6 +3555,10 @@ msgstr "Δεν βρέθηκε το κατάλληλο μέσο - Παρακαλ�
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Το μέσο δεν φορτώθηκε! Δεν έγινε εισαγωγή δίσκου;"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Ενεργοποίηση εισαγωγής χρονοδιακόπτη από το εφεδρικό tuner"
 
 msgid "Could not open Picture in Picture"
 msgstr "Αδυναμία εκκίνησης PiP"
@@ -4037,6 +4092,10 @@ msgstr "Διεγραμμένα"
 msgid "Deleted items"
 msgstr "Διεγραμμένα αντικείμενα"
 
+#, fuzzy
+msgid "Deleting files"
+msgstr "Διαγραφή αρχείου"
+
 msgid "Denmark"
 msgstr "Δανία"
 
@@ -4090,6 +4149,9 @@ msgstr "Εντοπισμένα NIMs:"
 #, fuzzy
 msgid "Device"
 msgstr "Υπηρεσία"
+
+msgid "Device mounts"
+msgstr ""
 
 msgid "Devicename:"
 msgstr "Όνομα συσκευής:"
@@ -4155,10 +4217,6 @@ msgstr "Ο φάκελος %s δεν υπάρχει."
 msgid "Directory browser"
 msgstr "Πλοηγός φακέλων"
 
-#, python-format
-msgid "Directory contains %s and %s."
-msgstr "Ο φάκελος περιέχει %s αρχείο(α) και %s υποφακέλους."
-
 msgid "Disable"
 msgstr "Απενεργοποίηση"
 
@@ -4215,9 +4273,6 @@ msgstr "Οθόνη και επιφάνεια χρήστη"
 msgid "Display message before playing next movie"
 msgstr "Εμφάνιση μηνύματος πριν από την αναπαραγωγή της επόμενης ταινίας"
 
-msgid "Display movie length in movielist (except single line style)."
-msgstr "Εμφάνιση διάρκειας της ταινίας στη λίστα (εξαιρείται η λίστα μονής γραμμής)."
-
 msgid "Display setup"
 msgstr "Ρυθμίσεις οθόνης πρόσοψης"
 
@@ -4256,9 +4311,6 @@ msgstr "Να μη γίνει αλλαγή"
 msgid "Do not record"
 msgstr "Να μη γίνει εγγραφή"
 
-msgid "Do not show file extensions for registered multimedia files."
-msgstr "Να μην εμφανίζονται οι επεκτάσεις αρχείων για δηλωμένα αρχεία πολυμέσων."
-
 msgid "Do nothing"
 msgstr "Να μη γίνει τίποτα"
 
@@ -4269,8 +4321,16 @@ msgstr ""
 "Είστε σίγουροι ότι θέλετε να ελεγχθεί το σύστημα αρχείων;\n"
 "Ενδέχεται να διαρκέσει αρκετά!"
 
+#, fuzzy, python-format
+msgid "Do you really want to delete %s ?"
+msgstr "Θέλετε πραγματικά να διαγράψετε το %s;"
+
 #, python-format
 msgid "Do you really want to delete %s?"
+msgstr "Θέλετε πραγματικά να διαγράψετε το %s;"
+
+#, fuzzy
+msgid "Do you really want to delete ?"
 msgstr "Θέλετε πραγματικά να διαγράψετε το %s;"
 
 #, fuzzy
@@ -4294,6 +4354,20 @@ msgid ""
 msgstr ""
 "Θέλετε σίγουρα να γίνει αρχικοποίηση της συσκευής;\n"
 "Όλα τα δεδομένα θα χαθούν!"
+
+#, fuzzy
+msgid "Do you really want to move to the trash can ?"
+msgstr ""
+"Θέλετε να αφαιρέσετε\n"
+"το πρόσθετο \"%s\";"
+
+#, fuzzy, python-format
+msgid "Do you really want to permamently remove '%s' from the trash can ?"
+msgstr "Θέλετε πραγματικά να αφαιρέσετε το φάκελο %s από το δίσκο;"
+
+#, fuzzy
+msgid "Do you really want to permanently remove from the trash can ?"
+msgstr "Θέλετε πραγματικά να αφαιρέσετε το φάκελο %s από το δίσκο;"
 
 #, python-format
 msgid ""
@@ -4531,10 +4605,6 @@ msgstr "Ρυθμίσεις EPG"
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ΣΦΑΛΜΑ - Αποτυχία ανίχνευσης (%s)!"
-
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr "Σφάλμα λήψης αρχείου %s"
 
 msgid "East"
 msgstr "Ανατολικά"
@@ -4841,7 +4911,7 @@ msgid "Enter the frequency step size for the tuner to use when searching for cab
 msgstr "Εισάγετε το μέγεθος βήματος της συχνότητας που θα χρησιμοποιεί το tuner κατά την αναζήτηση καλωδιακών πολυπλεξιών. Για περισσότερες πληροφορίες ανατρέξτε στο εγχειρίδιο του καλωδιακού σας παρόχου."
 
 msgid "Enter the number stored in the positioner that corresponds to this satellite."
-msgstr "Εισάγετε τον αποθηκευμένο αριθμό του μοτέρ που αντιστοιχεί σε αυτό τον δορυφόρο."
+msgstr "Εισάγετε τον αποθηκευμένο αριθμό του μοτέρ που αντιστοιχεί σε αυτόν τον δορυφόρο."
 
 msgid "Enter the service pin"
 msgstr "Εισάγετε το pin υπηρεσίας"
@@ -4876,10 +4946,6 @@ msgstr "Ερυθραία"
 
 msgid "Error"
 msgstr "Σφάλμα"
-
-#, python-format
-msgid "Error %s"
-msgstr "Σφάλμα %s"
 
 msgid "Error code"
 msgstr "Κωδικός σφάλματος"
@@ -4916,12 +4982,6 @@ msgstr "Σφάλμα κατά την εκτέλεση προσθέτου"
 msgid "Error stop stream!"
 msgstr "Σφάλμα διακοπής ροής!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Σφάλμα εγγραφής του epg.dat στον διακομιστή"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Σφάλμα ανάκτησης του epg.dat από τον διακομιστή"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -4929,9 +4989,6 @@ msgid ""
 msgstr ""
 "Σφάλμα ανάκτησης πληροφοριών χρονοδιακόπτη από το εφεδρικό tuner\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Σφάλμα ανάκτησης τοποθεσίας του epg.dat στον διακομιστή"
 
 #, python-format
 msgid ""
@@ -5157,8 +5214,20 @@ msgid "F"
 msgstr "F"
 
 #, fuzzy
+msgid "F1"
+msgstr "1"
+
+#, fuzzy
 msgid "F1/F3/F4/F4-TURBO/TRIPLEX"
 msgstr "F1/F3/F4/F4-TURBO"
+
+#, fuzzy
+msgid "F2"
+msgstr "2"
+
+#, fuzzy
+msgid "F3"
+msgstr "3"
 
 msgid "FAILED"
 msgstr "ΑΠΟΤΥΧΙΑ"
@@ -5422,6 +5491,9 @@ msgstr ""
 
 msgid "Following tasks will be done after you press OK!"
 msgstr "Οι ακόλουθες ενέργειες θα εκτελεστούν αφού πιέσετε ΟΚ!"
+
+msgid "Font size"
+msgstr ""
 
 msgid "Force legacy signal stats"
 msgstr "Εξαναγκασμός στατιστικών σήματος παλαιού τύπου"
@@ -5703,6 +5775,10 @@ msgstr "Ελληνικά (Νέα)"
 
 msgid "Green"
 msgstr "Πράσινο"
+
+#, fuzzy
+msgid "Green long"
+msgstr "Γροιλανδία"
 
 msgid "Greenland"
 msgstr "Γροιλανδία"
@@ -6079,20 +6155,8 @@ msgstr "Ισλανδία"
 msgid "Icons"
 msgstr "Εικονίδια"
 
-msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
-msgstr "Όταν είναι ενεργό, οι σελιδοδείκτες θα ενημερώνονται με τη νέα θέση όταν μετακινείτε ή αντιγράφετε μία εγγραφή."
-
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Όταν είναι ενεργό, η οθόνη πρόσοψης δείχνει 12 χαρακτήρες αντί 8, αλλά μόνο σε κωδικοποίηση latin-1."
-
-msgid "If enabled, then there will be displayed icons for new/unseen items too."
-msgstr "Όταν είναι ενεργό, θα εμφανίζονται εικονίδια για τα νέα/μη αναγνωσμένα αντικείμενα επίσης."
-
-msgid "If is enabled and movie playback is finished, then after return to movielist will not be automaticaly start service playback."
-msgstr "Αν είναι ενεργό και έχει τελειώσει η αναπαραγωγή της ταινίας, τότε δεν θα γίνεται αυτόματη αναπαραγωγή της υπηρεσίας μετά την επιστροφή στη λίστα ταινιών."
-
-msgid "If set as 'Yes', then audiofiles are played in 'list mode' only, instead in full screen player."
-msgstr "Αν επιλεγεί το 'Ναι', τότε τα αρχεία ήχου θα αναπαράγονται μόνο σε 'λειτουργία λίστας', αντί της πλήρους οθόνης."
 
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "Αν επιλεγεί το 'ναι' οι τιμές σήματος (SNR, κλπ) θα υπολογίζονται από το API V3. Είναι ένα παλιό API που είναι πλέον παρωχημένης έκδοσης."
@@ -6107,10 +6171,10 @@ msgid "If you are using a Circular polarised LNB select 'yes', otherwise select 
 msgstr "Αν χρησιμοποιείτε ένα LNB Κυκλικής πόλωσης επιλέξτε 'ναι', αλλιώς επιλέξτε 'όχι'."
 
 msgid "If you are using a DiSEqC committed switch enter the port letter required to access the LNB used for this satellite."
-msgstr "Αν χρησιμοποιείτε ένα διακόπτη δεσμευμένης εντολής DiSEqC, εισάγετε το γράμμα της θύρας που απαιτείται για πρόσβαση στο LNB για αυτό τον δορυφόρο."
+msgstr "Αν χρησιμοποιείτε ένα διακόπτη δεσμευμένης εντολής DiSEqC, εισάγετε το γράμμα της θύρας που απαιτείται για πρόσβαση στο LNB για αυτόν τον δορυφόρο."
 
 msgid "If you are using a DiSEqC uncommitted switch enter the port number required to access the LNB used for this satellite."
-msgstr "Αν χρησιμοποιείτε ένα διακόπτη μη δεσμευμένης εντολής DiSEqC, εισάγετε το γράμμα της θύρας που απαιτείται για πρόσβαση στο LNB για αυτό τον δορυφόρο."
+msgstr "Αν χρησιμοποιείτε ένα διακόπτη μη δεσμευμένης εντολής DiSEqC, εισάγετε το γράμμα της θύρας που απαιτείται για πρόσβαση στο LNB για αυτόν τον δορυφόρο."
 
 msgid ""
 "If you see this, something is wrong with\n"
@@ -6520,6 +6584,9 @@ msgstr "Καζακστάν"
 msgid "Keep service"
 msgstr "Διατήρηση υπηρεσίας"
 
+msgid "Keeps the movie list open whilst playing audio files."
+msgstr ""
+
 msgid "Kenya"
 msgstr "Κένυα"
 
@@ -6739,9 +6806,6 @@ msgstr "Λειτουργία λίστας"
 msgid "List of storage devices"
 msgstr "Λίστα μέσων αποθήκευσης"
 
-msgid "List type"
-msgstr "Τύπος λίστας"
-
 #, python-format
 msgid "List version %d, found %d channel"
 msgid_plural "List version %d, found %d channels"
@@ -6769,9 +6833,6 @@ msgstr "Φόρτωση"
 #, fuzzy
 msgid "Load EPG"
 msgstr "Φόρτωση"
-
-msgid "Load length of movies in movie list"
-msgstr "Φόρτωση διάρκειας ταινιών στη λίστα"
 
 msgid "Load playlist"
 msgstr "Φόρτωση λίστας αναπαραγωγής"
@@ -7245,8 +7306,9 @@ msgstr "Κίνηση"
 msgid "Movie"
 msgstr "Μετακίνηση"
 
-msgid "Movie list configuration"
-msgstr "Ρύθμιση λίστας ταινιών"
+#, fuzzy
+msgid "Movie List Setup"
+msgstr "Μένου λίστας ταινιών"
 
 msgid "Movie location"
 msgstr "Τοποθεσία ταινιών"
@@ -7265,6 +7327,10 @@ msgstr "Μετακίνηση"
 
 msgid "Moving east ..."
 msgstr "Κίνηση ανατολικά ..."
+
+#, fuzzy
+msgid "Moving files"
+msgstr "Μεγάλα ονόματα αρχείων"
 
 msgid "Moving to position"
 msgstr "Κίνηση στη θέση"
@@ -7451,6 +7517,10 @@ msgstr "Προσάρτηση δικτύου"
 msgid "Network mount %s"
 msgstr "Προσάρτηση δικτύου %s"
 
+#, fuzzy
+msgid "Network mounts"
+msgstr "Προσάρτηση δικτύου"
+
 msgid "Network name (SSID)"
 msgstr "Όνομα δικτύου (SSID)"
 
@@ -7569,9 +7639,6 @@ msgstr "Μη διαθέσιμη περιγραφή."
 msgid "No displayable files on this medium found!"
 msgstr "Δεν υπάρχουν αρχεία προς εμφάνιση σε αυτό το μέσο!"
 
-msgid "No epg.dat file found server"
-msgstr "Δεν βρέθηκε το αρχείο epg.dat στον διακομιστή"
-
 msgid "No event info found, recording indefinitely."
 msgstr "Δεν βρέθηκαν πληροφορίες προγράμματος, η εγγραφή δεν θα σταματήσει."
 
@@ -7613,6 +7680,9 @@ msgstr "Καμία υπηρεσία"
 
 msgid "No services/providers selected"
 msgstr "Δεν έχουν επιλεγεί υπηρεσίες/πάροχοι"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 msgid "No standby"
 msgstr "Χωρίς αναμονή"
@@ -7734,6 +7804,10 @@ msgstr "Νορβηγικά"
 msgid "Not Classified"
 msgstr "Χωρίς συσχέτιση"
 
+#, fuzzy
+msgid "Not Defined"
+msgstr "Απροσδιόριστο"
+
 msgid "Not Installed"
 msgstr "Μη εγκατεστημένο"
 
@@ -7742,9 +7816,6 @@ msgstr "Δεν απαιτείται"
 
 msgid "Not associated"
 msgstr "Χωρίς συσχέτιση"
-
-msgid "Not defined"
-msgstr "Απροσδιόριστο"
 
 #, python-format
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
@@ -7799,6 +7870,13 @@ msgid "Number of channels shown in channel selection list"
 msgstr "Αριθμός καναλιών που εμφανίζονται στη λίστα επιλογής"
 
 msgid "Number of repeating text on display."
+msgstr "Αριθμός επανάληψης κειμένου στην οθόνη."
+
+msgid "Number of rows"
+msgstr ""
+
+#, fuzzy
+msgid "Number of rows to display"
 msgstr "Αριθμός επανάληψης κειμένου στην οθόνη."
 
 msgid "Number or SMS style data entry"
@@ -8134,6 +8212,9 @@ msgstr "Ποσοστό αριστερά"
 msgid "Percentage right"
 msgstr "Ποσοστό δεξιά"
 
+msgid "Permanent sort key changes"
+msgstr ""
+
 msgid "Permanently delete all recordings in the trash can?"
 msgstr "Οριστική διαγραφή όλων των εγγραφών από τον κάδο;"
 
@@ -8153,6 +8234,14 @@ msgid "PiP setup"
 msgstr "Ρύθμιση PiP"
 
 msgid "Picon"
+msgstr "Λογότυπο (picon)"
+
+#, fuzzy
+msgid "Picon Size"
+msgstr "Λογότυπο (picon)"
+
+#, fuzzy
+msgid "Picon Width"
 msgstr "Λογότυπο (picon)"
 
 msgid "Picon and servicename"
@@ -8183,11 +8272,12 @@ msgstr "Αναπαραγωγή DVD"
 msgid "Play DVDs"
 msgstr "Αναπαραγωγή DVDs"
 
+#, fuzzy
+msgid "Play audio in background"
+msgstr "Αναπαραγωγή αρχείων ήχου σε λειτουργία λίστας"
+
 msgid "Play audio-CD..."
 msgstr "Αναπαραγωγή CD ήχου..."
-
-msgid "Play audiofiles in list mode"
-msgstr "Αναπαραγωγή αρχείων ήχου σε λειτουργία λίστας"
 
 msgid "Play back media files"
 msgstr "Αναπαραγωγή αρχείων πολυμέσων"
@@ -8283,6 +8373,10 @@ msgstr "Παρακαλώ εισάγετε νέο όνομα:"
 msgid "Please enter the correct pin code"
 msgstr "Εισάγετε το σωστό PIN"
 
+#, fuzzy
+msgid "Please enter the name of the new directory"
+msgstr "Παρακαλώ εισάγετε όνομα νέου φάκελου"
+
 msgid "Please enter the new PIN code"
 msgstr "Εισαγωγή νέου κωδικού PIN"
 
@@ -8322,9 +8416,6 @@ msgstr "Παρακαλώ επιλέξτε μέσο για ανίχνευση"
 msgid "Please select medium to use as backup location"
 msgstr "Παρακαλώ επιλέξτε μέσο που θα χρησιμοποιηθεί ως προορισμός των αντιγράφων ασφαλείας"
 
-msgid "Please select tag to filter..."
-msgstr "Παρακαλώ επιλέξτε ετικέτα προς φιλτράρισμα..."
-
 msgid "Please select the movie path..."
 msgstr "Παρακαλώ επιλέξτε διαδρομή ταινιών..."
 
@@ -8336,6 +8427,10 @@ msgstr ""
 "Παρακαλώ επιλέξτε τη διεπαφή δικτύου που θέλετε να χρησιμοποιήσετε για το διαδίκτυο.\n"
 "\n"
 "Πιέστε ΟΚ για συνέχεια."
+
+#, fuzzy
+msgid "Please select the tag to filter..."
+msgstr "Παρακαλώ επιλέξτε ετικέτα προς φιλτράρισμα..."
 
 msgid ""
 "Please select the wireless network that you want to connect to.\n"
@@ -8988,9 +9083,6 @@ msgstr "Εγγραφή"
 msgid "Record time limited due to conflicting timer %s"
 msgstr "Περιορισμένος χρόνος εγγραφής λόγω διένεξης χρονοδιακόπτη %s"
 
-msgid "Recorded files..."
-msgstr "Εγγραφές..."
-
 msgid "Recording"
 msgstr "Εγγραφή"
 
@@ -9036,6 +9128,10 @@ msgstr "Κόκκινο κουμπί..."
 msgid "Red colored"
 msgstr "Με κόκκινο χρώμα"
 
+#, fuzzy
+msgid "Red long"
+msgstr "παρατεταμένο"
+
 msgid "Reenter PIN"
 msgstr "Επανεισαγωγή PIN"
 
@@ -9053,9 +9149,6 @@ msgstr "Συχνότητα ανανέωσης"
 
 msgid "Refresh rate selection."
 msgstr "Επιλογή συχνότητας ανανέωσης."
-
-msgid "Refusing to move to the same directory"
-msgstr "Άρνηση μετακίνησης στον ίδιο φάκελο"
 
 msgid "Regard deep standby as standby"
 msgstr "Να θεωρείται ο τερματισμός ως αναμονή"
@@ -10146,6 +10239,10 @@ msgstr "Υπηρεσία & PIDs"
 msgid "Service ID"
 msgstr "ID υπηρεσίας"
 
+#, fuzzy
+msgid "Service Title mode"
+msgstr "Λειτουργία τίτλου υπηρεσίας"
+
 msgid "Service has been added to the favourites."
 msgstr "Η υπηρεσία προστέθηκε στα αγαπημένα."
 
@@ -10233,8 +10330,8 @@ msgstr ""
 msgid "Set PIN"
 msgstr "Ορισμός PIN"
 
-msgid "Set action when movie playback is finished."
-msgstr "Ρύθμιση ενέργειας όταν η αναπαραγωγή ταινιών τελειώσει."
+msgid "Set a temporary sort method for this directory"
+msgstr ""
 
 msgid "Set all hotkey to default?"
 msgstr "Επαναφορά όλων των hotkey στις προεπιλογές;"
@@ -10263,17 +10360,11 @@ msgstr "Ορισμός fps για τους εξωτερικούς υπότιτλ
 msgid "Set framerate for MiniTV"
 msgstr ""
 
-msgid "Set if You want see status icons, progress bars or nothing."
-msgstr "Ορίστε την επιλογή αυτή αν θέλετε να βλέπετε εικονίδια κατάστασης, μπάρες προόδου ή τίποτα."
-
 msgid "Set interface as default Interface"
 msgstr "Ορισμός διεπαφής ως προεπιλεγμένης"
 
 msgid "Set limits"
 msgstr "Ορισμός ορίων"
-
-msgid "Set movielist type."
-msgstr "Ορισμός τύπου λίστας ταινιών."
 
 msgid "Set pin code persistent"
 msgstr "Ορισμός μόνιμου κωδικού pin"
@@ -10295,8 +10386,16 @@ msgstr "Έλεγχος των ρυθμίσεων δικτύου του δέκτ�
 msgid "Set the User ID of the OpenWebif from your fallback tuner"
 msgstr "Ορισμός του ID χρήστη του OpenWebif από το εφεδρικό σας tuner"
 
+#, fuzzy
+msgid "Set the default sorting method."
+msgstr "Ορισμός προεπιλογών;"
+
 msgid "Set the delay time between repeated loops, this is used by software renderer in some skins."
 msgstr ""
+
+#, fuzzy
+msgid "Set the global sort method"
+msgstr "Επιλογή τρόπου ταξινόμησης:"
 
 msgid "Set the password of the OpenWebif from your fallback tuner"
 msgstr "Ορισμός του κωδικού του OpenWebif από το εφεδρικό σας tuner"
@@ -10314,6 +10413,10 @@ msgstr ""
 #, fuzzy
 msgid "Set the scrolling speed of text on the front panel display."
 msgstr "Ρύθμιση επιπέδου αντίθεσης στην οθόνη πρόσοψης."
+
+#, fuzzy
+msgid "Set the sort method for this directory"
+msgstr "Άρνηση μετακίνησης στον ίδιο φάκελο"
 
 msgid "Set the time of day to perform the import."
 msgstr ""
@@ -10349,11 +10452,11 @@ msgstr ""
 msgid "Set voltage and 22KHz"
 msgstr "Ρύθμιση τάσης και 22KHz"
 
+msgid "Sets the root directory of movie list, to remove the '..' from being shown in that folder."
+msgstr ""
+
 msgid "Settings"
 msgstr "Ρυθμίσεις"
-
-msgid "Settings can be different for each directory separately (for non removeable devices only)."
-msgstr "Οι ρυθμίσεις μπορεί να είναι ξεχωριστές για κάθε φάκελο (για μη αποσπώμενες συσκευές μόνο)."
 
 msgid "Setup"
 msgstr "Εγκατάσταση"
@@ -10583,6 +10686,10 @@ msgid "Show latest update log"
 msgstr "Εμφάνιση καταγραφής τελευταίας ενημέρωσης"
 
 #, fuzzy
+msgid "Show live tv when movie stopped"
+msgstr "Συμπεριφορά όταν μια ταινία έχει σταματήσει"
+
+#, fuzzy
 msgid "Show log"
 msgstr "Εμφάνιση βοήθειας"
 
@@ -10596,7 +10703,11 @@ msgid "Show menu paths"
 msgstr "Εμφάνιση διαδρομών μενού"
 
 msgid "Show message when recording starts"
-msgstr "Εμφάνιση μηνύματος στην έναρξη της εγραφής"
+msgstr "Εμφάνιση μηνύματος στην έναρξη της εγγραφής"
+
+#, fuzzy
+msgid "Show movie lengths in movie list"
+msgstr "Εμφάνιση διάρκειας στη λίστα ταινιών"
 
 msgid "Show movie lengths in movielist"
 msgstr "Εμφάνιση διάρκειας στη λίστα ταινιών"
@@ -10619,6 +10730,10 @@ msgstr "Εμφάνιση ειδοποίησης μετά από αποτυχία
 msgid "Show notification when import channels was successful"
 msgstr "Εμφάνιση ειδοποίησης μετά από επιτυχή εισαγωγή καναλιών"
 
+#, fuzzy
+msgid "Show or hide the extended description, (skin dependant)."
+msgstr "Εμφάνιση εκτεταμένης περιγραφής"
+
 msgid "Show packages to be updated"
 msgstr "Εμφάνιση πακέτων προς ενημέρωση"
 
@@ -10627,6 +10742,10 @@ msgstr "Εμφάνιση λογότυπων (picons) στη λίστα επιλ�
 
 msgid "Show picons in display"
 msgstr "Εμφάνιση λογότυπων (picons) στην οθόνη πρόσοψης"
+
+#, fuzzy
+msgid "Show picons in the movie list."
+msgstr "Εμφάνιση εικονιδίων κατάστασης στη λίστα ταινιών"
 
 msgid "Show positioner movement"
 msgstr "Εμφάνιση κίνησης του μοτέρ"
@@ -10724,8 +10843,15 @@ msgstr "Εμφάνιση/απόκρυψη παραθύρου"
 msgid "Shows live tv or informations on LCD."
 msgstr "Εμφανίζει την εικόνα της TV ή πληροφορίες στο LCD."
 
+msgid "Shows the icons when new/unseen, otherwise it will not show an icon."
+msgstr ""
+
 msgid "Shows the state of your wireless LAN connection.\n"
 msgstr "Εμφάνιση της κατάστασης του ασύρματου δικτύου.\n"
+
+#, fuzzy
+msgid "Shows the watched status of the movie."
+msgstr "Δεν έχουν οριστεί ετικέτες σε αυτές τις ταινίες."
 
 msgid "Shuffle playlist"
 msgstr "Τυχαία αναπαραγωγή"
@@ -10960,9 +11086,6 @@ msgstr "Μερικά πρόσθετα δεν είναι διαθέσιμα:\n"
 msgid "Sorry, %s has not been installed!"
 msgstr "Λυπούμαστε, το %s δεν έχει εγκατασταθεί!"
 
-msgid "Sorry, deleting directories can (for now) only be done through the trash can."
-msgstr "Λυπούμαστε, η διαγραφή φακέλων μπορεί (προς το παρόν) να γίνεται μόνο μέσω του κάδου αχρήστων."
-
 msgid "Sorry, no backups found!"
 msgstr "Λυπούμαστε, δεν βρέθηκαν αντίγραφα ασφαλείας!"
 
@@ -10986,8 +11109,15 @@ msgstr "Ταξινόμηση"
 msgid "Sort A-Z"
 msgstr "Ταξινόμηση A-Ω"
 
+msgid "Sort Trash by deletion time"
+msgstr ""
+
 msgid "Sort by"
 msgstr "Ταξινόμηση ανά"
+
+#, fuzzy
+msgid "Sort by default"
+msgstr "Ορισμός προεπιλογής"
 
 msgid "Sort list to default and exit?"
 msgstr "Ταξινόμηση λίστας στις προεπιλογές και έξοδος;"
@@ -11270,6 +11400,10 @@ msgstr "Διακοπή αναπαραγωγής TV"
 
 msgid "Stop playing this movie?"
 msgstr "Διακοπή αναπαραγωγής της ταινίας;"
+
+#, fuzzy
+msgid "Stop previous broadcasted service on return to movie list."
+msgstr "Σταμάτημα υπηρεσίας κατά την επιστροφή στη λίστα ταινιών"
 
 msgid "Stop recording"
 msgstr "Τερματισμός εγγραφής"
@@ -11574,6 +11708,9 @@ msgstr "TUNER:"
 msgid "TUNING"
 msgstr "ΣΥΝΤΟΝΙΣΜΟΣ"
 
+msgid "TV"
+msgstr ""
+
 msgid "TV physical address report"
 msgstr "Φυσική διεύθυνση τηλεόρασης"
 
@@ -11683,7 +11820,10 @@ msgid "Testscreens"
 msgstr "Οθόνες δοκιμών"
 
 msgid "Testscreens that are helpfull to fine-tune your display"
-msgstr "Οθόνες δοκιμών που βοηθούν στο να μικρορυθμίσετε την οθόνη σας"
+msgstr "Δοκιμαστικές κάρτες που βοηθούν να μικρορυθμίσετε την οθόνη σας"
+
+msgid "Text"
+msgstr ""
 
 msgid "Text color"
 msgstr "Χρώμα κειμένου"
@@ -11932,6 +12072,9 @@ msgstr ""
 
 msgid "This DVD RW medium is already formatted - reformatting will erase all content on the disc."
 msgstr "Αυτό το DVD RW είναι ήδη φορμαρισμένο - η επαναμορφοποίηση θα σβήσει όλα τα περιεχόμενα του δίσκου."
+
+msgid "This allows you change the font size relative to skin size, so 1 increases by 1 point size, and -1 decreases by 1 point size"
+msgstr ""
 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
@@ -12442,6 +12585,10 @@ msgstr "Τύπος ροής αναμεταδότη"
 msgid "Trash can"
 msgstr "Κάδος αχρήστων"
 
+#, fuzzy
+msgid "Trashcan:"
+msgstr "Κάδος αχρήστων"
+
 msgid "Tries left:"
 msgstr "Προσπάθειες που απομένουν:"
 
@@ -12575,7 +12722,7 @@ msgid "USALS"
 msgstr "USALS"
 
 msgid "USALS automatically moves a motorised dish to the correct satellite based on the coordinates entered by the user. Without USALS each satellite will need to be setup and saved individually."
-msgstr "Το USALS μετακινεί αυτόματα το κάτοπτρο στο σωστό δορυφόρο, βασιζόμενο στις συντεταγμένες που δίνει ο χρήστης. Χωρίς το USALS κάθε δορυφόρος απαιτεί ξεχωριστή ρύθμιση και αποθήκευση."
+msgstr "Το USALS μετακινεί αυτόματα το κάτοπτρο στον σωστό δορυφόρο, βασιζόμενο στις συντεταγμένες που δίνει ο χρήστης. Χωρίς το USALS κάθε δορυφόρος απαιτεί ξεχωριστή ρύθμιση και αποθήκευση."
 
 msgid "USALS calibration"
 msgstr "Υπολογισμός USALS"
@@ -12836,6 +12983,19 @@ msgstr "Χρήση μέτρησης ισχύος"
 msgid "Use separate picon pack for front panel display"
 msgstr "Ρύθμιση επιπέδου αντίθεσης στην οθόνη πρόσοψης."
 
+#, fuzzy
+msgid "Use slim screen"
+msgstr "απενεργοποίηση οθόνης έναρξης"
+
+#, fuzzy
+msgid "Use the alternative screen"
+msgstr "επεξεργασία εναλλακτικών"
+
+msgid ""
+"Use the deletion time to sort Trash directories.\n"
+"Most recently deleted at the top."
+msgstr ""
+
 msgid "Use the network wizard to configure selected network adapter"
 msgstr "Χρήση του οδηγού δικτύου για τη ρύθμιση της επιλεγμένης κάρτας δικτύου"
 
@@ -12856,6 +13016,10 @@ msgstr "Χρήση αυτών των ρυθμίσεων;"
 
 msgid "Use this video enhancement settings?"
 msgstr "Χρήση αυτών των ρυθμίσεων βελτίωσης της εικόνας;"
+
+#, fuzzy
+msgid "Use trash can in movie list"
+msgstr "Χρήση του κάδου αχρήστων στη λίστα ταινιών"
 
 msgid "Use trash can in movielist"
 msgstr "Χρήση του κάδου αχρήστων στη λίστα ταινιών"
@@ -13382,6 +13546,9 @@ msgstr "Όταν είναι ενεργό, είναι δυνατή η έξοδο�
 msgid "When enabled, measure power consumption to detect when the rotor stops turning (when supported by the tuner)."
 msgstr "Όταν είναι ενεργό, θα μετράται η κατανάλωση ενέργειας για να εντοπιστεί το σταμάτημα κίνησης του μοτέρ (όταν υποστηρίζεται από το tuner)."
 
+msgid "When enabled, network trash cans are probed for cleaning."
+msgstr ""
+
 msgid "When enabled, number markers will be hidden."
 msgstr "Όταν είναι ενεργό, δεν θα εμφανίζονται οι σημειωτές των αριθμών."
 
@@ -13424,6 +13591,10 @@ msgstr "Όταν είναι ενεργό, η μπάρα πληροφοριών �
 msgid "When enabled, the lenght of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Όταν είναι ενεργό, η διάρκεια κάθε εγγραφής θα εμφανίζεται στη λίστα (μπορεί να αυξηθεί ο χρόνος φόρτωσης)."
 
+#, fuzzy
+msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
+msgstr "Όταν είναι ενεργό, η διάρκεια κάθε εγγραφής θα εμφανίζεται στη λίστα (μπορεί να αυξηθεί ο χρόνος φόρτωσης)."
+
 msgid "When enabled, the receiver will automatically use the audio track which you selected before."
 msgstr "Όταν είναι ενεργό, ο δέκτης θα χρησιμοποιεί αυτόματα τη ροή ήχου που είχατε προεπιλέξει."
 
@@ -13463,11 +13634,23 @@ msgstr "Όταν δεν είναι μηδέν, μία εγγραφή θα στα
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
 msgstr "Όταν επιλεγεί, θα επιτρέπονται ως υποστηριζόμενες οι λειτουργίες εικόνας ακόμα και αν δεν υποστηρίζονται."
 
+msgid "When set the PIG will return to live after a movie has stopped playing."
+msgstr ""
+
+msgid "When set, each directory will show the previous state used. When off, the default values will be shown."
+msgstr ""
+
+msgid "When set, sort changes via the sort key will be permanent."
+msgstr ""
+
 msgid "When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture."
 msgstr "Όταν το περιεχόμενο έχει λόγο πλευρών 16:9, επιλέξτε αν θα γίνεται κλιμάκωση/άπλωμα της εικόνας."
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Όταν το περιεχόμενο έχει λόγο πλευρών 4:3, επιλέξτε αν θα γίνεται κλιμάκωση/άπλωμα της εικόνας."
+
+msgid "When unset, sort changes will be temporary - just for this view of a directory."
+msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Που θέλετε να αποθηκεύονται προσωρινά οι χρονομετατοπισμένες εγγραφές;"
@@ -13560,6 +13743,10 @@ msgstr "Κίτρινο"
 msgid "Yellow DVB subtitles"
 msgstr "Κίτρινοι υπότιτλοι"
 
+#, fuzzy
+msgid "Yellow long"
+msgstr "Κίτρινο"
+
 msgid "Yemen"
 msgstr "Υεμένη"
 
@@ -13599,6 +13786,14 @@ msgstr "Ναι, μόνο από την κατάσταση αναμονής"
 msgid "Yes, returning to movie list"
 msgstr "Ναι, επιστροφή στη λίστα ταινιών"
 
+#, fuzzy
+msgid "Yes, show delete time"
+msgstr "Ναι, και διαγραφή αυτής της ταινίας"
+
+#, fuzzy
+msgid "Yes, show record time"
+msgstr "Παρακαλώ αλλάξτε την ώρα τερματισμού"
+
 msgid "Yes, with backup"
 msgstr "Ναι, με εφεδρεία"
 
@@ -13636,9 +13831,6 @@ msgstr ""
 msgid "You can display PIP with or without OSD menu"
 msgstr ""
 
-msgid "You can enable if will be displayed extended EPG description for item."
-msgstr "Αν είναι ενεργό θα εμφανίζεται το εκτεταμένο EPG για το στοιχείο."
-
 msgid "You can install this plugin."
 msgstr "Μπορείτε να εγκαταστήσετε αυτό το πρόσθετο."
 
@@ -13647,15 +13839,6 @@ msgstr "Μπορείτε μόνο να κάψετε εγγραφές του δέ
 
 msgid "You can remove this plugin."
 msgstr "Μπορείτε να διαγράψετε το πρόσθετο."
-
-msgid "You can set how will be finished movieplayer with 'Exit' button."
-msgstr "Ορισμός του τρόπου τερματισμού του αναπαραγωγού ταινιών με το πλήκτρο 'Exit'."
-
-msgid "You can set selected directory as 'root' directory for movie player."
-msgstr "Μπορείτε να ορίσετε τον επιλεγμένο φάκελο ως φάκελο 'ρίζα' για τον αναπαραγωγό ταινιών."
-
-msgid "You can set sorting type for items in movielist."
-msgstr "Μπορείτε να ορίσετε τον τύπο ταξινόμησης των στοιχείων στη λίστα ταινιών."
 
 msgid "You cannot delete this!"
 msgstr "Δεν μπορείτε να διαγράψετε αυτό!"
@@ -13810,13 +13993,13 @@ msgstr "Ο δέκτης σας ίσως να μη μπορεί να χρησιμ
 msgid ""
 "Your receiver will be restarted after the installation of the service\n"
 "Are you ready to install \"%s\" ?"
-msgstr "Ο δέκτης σας θα επανεκκινηθεί πατώντας το OK στο τηλεχειριστήριο."
+msgstr "Θα γίνει επανεκκίνηση του δέκτη σας αφού πιέσετε το OK στο τηλεχειριστήριο."
 
 #, fuzzy
 msgid ""
 "Your receiver will be restarted after the removal of the service\n"
 "Do you want to remove the service now ?"
-msgstr "Ο δέκτης σας θα επανεκκινηθεί πατώντας το OK στο τηλεχειριστήριο."
+msgstr "Θα γίνει επανεκκίνηση του δέκτη σας αφού πιέσετε το OK στο τηλεχειριστήριο."
 
 msgid "Your receiver will got to stand by due to the sleeptimer."
 msgstr "Ο δέκτης σας θα μεταβεί σε αναμονή εξαιτίας του χρονοδιακόπτη ύπνου."
@@ -13825,7 +14008,7 @@ msgid "Your receiver will got to standby due to inactivity."
 msgstr "Ο δέκτης σας θα μεταβεί σε αναμονή εξαιτίας της αδράνειας."
 
 msgid "Your receiver will restart after pressing OK on your remote control."
-msgstr "Ο δέκτης σας θα επανεκκινηθεί πατώντας το OK στο τηλεχειριστήριο."
+msgstr "Θα γίνει επανεκκίνηση του δέκτη σας αφού πιέσετε το OK στο τηλεχειριστήριο."
 
 #, fuzzy
 msgid "Your timezone in the area."
@@ -13983,7 +14166,7 @@ msgid "add service to favourites"
 msgstr "προσθήκη υπηρεσίας στα αγαπημένα"
 
 msgid "add to parental protection"
-msgstr "προσθήκη στο γονικό έλεγχο"
+msgstr "προσθήκη στον γονικό έλεγχο"
 
 msgid "adult movie/drama"
 msgstr "ταινία ενηλίκων/δράμα"
@@ -14003,22 +14186,20 @@ msgstr "μετά "
 msgid "all"
 msgstr "όλα"
 
+msgid "alpha then oldest"
+msgstr ""
+
 msgid "alphabetic"
 msgstr "αλφαβητικά"
 
 msgid "alphabetic reverse"
 msgstr "αλφαβητική αντιστροφή"
 
-#, fuzzy
-msgid "alphabetic then newest"
-msgstr "αλφαβητική αντιστροφή"
-
-#, fuzzy
-msgid "alphabetic then oldest"
-msgstr "αλφαβητική αντιστροφή"
-
 msgid "alphabetical"
 msgstr "αλφαβητικά"
+
+msgid "alpharev then newest"
+msgstr ""
 
 msgid "alternative"
 msgstr "εναλλασσόμενο"
@@ -14214,6 +14395,12 @@ msgstr "διαγραφή αποκοπής"
 #, fuzzy
 msgid "delete cut (disabled)"
 msgstr " (ανενεργό)"
+
+msgid "delete time - show delete time (Trash ONLY)"
+msgstr ""
+
+msgid "delete time - show record time (Trash ONLY)"
+msgstr ""
 
 msgid "descramble and record ecm"
 msgstr "αποκωδικοποίηση και εγγραφή ecm"
@@ -14592,18 +14779,6 @@ msgstr "διάρκεια"
 
 msgid "limit ..., aborting !"
 msgstr "όριο ..., ματαίωση!"
-
-msgid "list style compact"
-msgstr "συμπτυγμένη μορφή λίστας"
-
-msgid "list style compact with description"
-msgstr "συμπτυγμένη μορφή λίστας με περιγραφή"
-
-msgid "list style default"
-msgstr "προεπιλεγμένη μορφή λίστας"
-
-msgid "list style single line"
-msgstr "λίστα μονής γραμμής"
 
 msgid "listens to hotplug events"
 msgstr "ακρόαση συμβάντων σύνδεσης και άμεσης λειτουργίας"

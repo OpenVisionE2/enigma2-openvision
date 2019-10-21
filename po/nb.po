@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 08:33+0330\n"
+"POT-Creation-Date: 2019-10-21 09:17+0330\n"
 "PO-Revision-Date: 2019-10-19 14:24+0200\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
@@ -838,6 +838,10 @@ msgid "%d GB"
 msgstr "%d GB"
 
 #, python-format
+msgid "%d KB"
+msgstr ""
+
+#, python-format
 msgid "%d MB"
 msgstr "%d MB"
 
@@ -877,12 +881,6 @@ msgid "%d core"
 msgid_plural "%d cores"
 msgstr[0] "%d kjerne"
 msgstr[1] "%d kjerner"
-
-#, python-format
-msgid "%d file"
-msgid_plural "%d files"
-msgstr[0] "%d fil"
-msgstr[1] "%d filer"
 
 #, python-format
 msgid "%d fps"
@@ -929,6 +927,14 @@ msgid "%d ms"
 msgstr "%d ms"
 
 #, python-format
+msgid "%d of %d Bytes"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%d of %d KB"
+msgstr "%A %d %B"
+
+#, python-format
 msgid "%d pixel wide"
 msgid_plural "%d pixels wide"
 msgstr[0] "%d piksel bredde"
@@ -943,12 +949,6 @@ msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d sekund"
 msgstr[1] "%d sekunder"
-
-#, python-format
-msgid "%d subdirectory"
-msgid_plural "%d subdirectories"
-msgstr[0] "%d underkatalog"
-msgstr[1] "%d underkataloger"
 
 #
 #, python-format
@@ -1018,6 +1018,10 @@ msgstr ""
 msgid "%m/%d/%Y"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "%s"
+msgstr "CH%s"
+
 #
 #, python-format
 msgid ""
@@ -1061,6 +1065,14 @@ msgid "%s is no longer used. Should it be deleted?"
 msgstr "%s er ikke lenger i bruk. Skal den slettes?"
 
 #, python-format
+msgid "%s of %s GB"
+msgstr ""
+
+#, python-format
+msgid "%s of %s MB"
+msgstr ""
+
+#, python-format
 msgid "%s updated package available"
 msgid_plural "%s updated packages available"
 msgstr[0] "%s det finnes en ny oppdatering"
@@ -1084,6 +1096,10 @@ msgstr "%s/%s: %s"
 msgid "%s:%s"
 msgstr "%s:%s"
 
+#, python-format
+msgid "'%s' contains %d file(s) and %d sub-directories.\n"
+msgstr ""
+
 #, fuzzy
 msgid "( All readers)"
 msgstr "For alle aldre"
@@ -1093,6 +1109,9 @@ msgstr ""
 
 msgid "(VU+ type)"
 msgstr "(VU+ type)"
+
+msgid "(You are currently using a temporary sort method)"
+msgstr ""
 
 msgid "(ZAP as PiP)"
 msgstr "(ZAP som PiP)"
@@ -1636,7 +1655,7 @@ msgstr "aktiv"
 msgid "Adapter settings"
 msgstr "Nettverks innstillinger"
 
-msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.  It hides the day of the week for recordings made in previous years."
+msgid "Adaptive date display allows recent dates to be displayed as 'Today' or 'Yesterday'.  It hides the year for recordings made this year.\t It hides the day of the week for recordings made in previous years."
 msgstr ""
 
 #
@@ -1850,9 +1869,6 @@ msgstr "Tillat 12bit"
 msgid "Allow quit movieplayer with exit"
 msgstr "Tillat stopp avspiller med exit tast"
 
-msgid "Allow quitting movieplayer with exit"
-msgstr "Tillat å stoppe avspiller med exit tast"
-
 msgid "Allow subtitle language to equal audio language"
 msgstr "Undertekstspråk er samme som lydspråk"
 
@@ -1874,7 +1890,13 @@ msgstr ""
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr ""
 
+msgid "Allows you to hide the extensions of known file types."
+msgstr ""
+
 msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgstr ""
+
+msgid "Allows you to setup the button to do what you choose."
 msgstr ""
 
 #
@@ -2121,6 +2143,12 @@ msgstr "Som definert av utseende"
 msgid "Ask user"
 msgstr "Spør bruker"
 
+msgid "Ask user (with default as 'no')"
+msgstr ""
+
+msgid "Ask user (with default as 'yes')"
+msgstr ""
+
 #
 msgid "Aspect ratio"
 msgstr "Bildeforhold"
@@ -2291,9 +2319,6 @@ msgstr "Automatisk"
 
 msgid "Automatic Scan"
 msgstr "Automatisk søk"
-
-msgid "Automatic bookmarks"
-msgstr "Huskeliste"
 
 #, fuzzy
 msgid "Automatic refresh"
@@ -2537,6 +2562,11 @@ msgstr "Slå av støy reduksjon"
 msgid "Blue"
 msgstr "Blå"
 
+#
+#, fuzzy
+msgid "Blue long"
+msgstr "Slett logg"
+
 msgid "Bolivia (Plurinational State of)"
 msgstr "Bolivia"
 
@@ -2639,6 +2669,9 @@ msgstr "Burundi"
 #
 msgid "Bus: "
 msgstr "Buss: "
+
+msgid "Button"
+msgstr ""
 
 msgid "By default, SNR will be shown in dB (when supported by the tuner). This setting forces SNR to be shown as a percentage instead."
 msgstr "Som standard vil SNR (signalstyrke) vises i dB desibel (hvis tuneren støtter dette). Med denne innstillingen vil SNR vises i prosent."
@@ -2808,6 +2841,10 @@ msgstr "Kansellert av bruker"
 msgid "Cannot delete downloaded image"
 msgstr "Kan ikke slette nedlastingen"
 
+#, fuzzy
+msgid "Cannot delete file"
+msgstr "Kan ikke fastslå"
+
 msgid "Cannot determine"
 msgstr "Kan ikke fastslå"
 
@@ -2817,8 +2854,9 @@ msgstr "Finner ikke signal..., avbryter!"
 msgid "Cannot find images - please try later"
 msgstr "Finner ikke images - vennligst forsøk senere"
 
-msgid "Cannot move files on a different disk or system to the trash can"
-msgstr "Kan ikke slette filer fra denne systemdisk til papirkurven"
+#, fuzzy
+msgid "Cannot move to the trash can"
+msgstr "Kan ikke slette til papirkurv"
 
 msgid "Cannot move to trash can"
 msgstr "Kan ikke slette til papirkurv"
@@ -3094,6 +3132,10 @@ msgstr "Sirkulær venstre"
 #
 msgid "Circular right"
 msgstr "Sirkulær høyre"
+
+#, fuzzy
+msgid "Clean network trash cans"
+msgstr "Kan ikke slette til papirkurv"
 
 msgid "Cleanup"
 msgstr "Tøm"
@@ -3505,6 +3547,12 @@ msgstr "Still inn navnetjener (DNS)."
 msgid "Configure the netmask."
 msgstr "Still inn nettmaske."
 
+#, fuzzy
+msgid ""
+"Configure the number of days after which items are automatically removed from the trash can.\n"
+"A setting of 0 disables this."
+msgstr "Still inn antall dager elementer lagres før de automatisk slettes fra papirkurven."
+
 msgid "Configure the number of days after which items are automaticaly removed from the trash can."
 msgstr "Still inn antall dager elementer lagres før de automatisk slettes fra papirkurven."
 
@@ -3754,6 +3802,10 @@ msgstr "Cookøyene"
 msgid "Copy"
 msgstr "Kopier"
 
+#, fuzzy
+msgid "Copying files"
+msgstr "Lange filnavn"
+
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
@@ -3768,6 +3820,10 @@ msgstr "Finner ikke passende Media - Vennligst frigjør diskplass eller sett inn
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Kunne ikke laste data! Ingen disk er satt inn?"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Aktiver import timer fra reserve tuner"
 
 msgid "Could not open Picture in Picture"
 msgstr "Kunne ikke åpne bilde i bilde"
@@ -4348,6 +4404,11 @@ msgstr "Slettet"
 msgid "Deleted items"
 msgstr "Slettede elementer"
 
+#
+#, fuzzy
+msgid "Deleting files"
+msgstr "Slett fil"
+
 msgid "Denmark"
 msgstr "Danmark"
 
@@ -4408,6 +4469,11 @@ msgstr "Tuner type:"
 #, fuzzy
 msgid "Device"
 msgstr "Kanal"
+
+#
+#, fuzzy
+msgid "Device mounts"
+msgstr "Kanaler"
 
 msgid "Devicename:"
 msgstr "Enhetsnavn:"
@@ -4476,10 +4542,6 @@ msgstr "Mappe %s finnes ikke."
 msgid "Directory browser"
 msgstr "Filutforsker"
 
-#, python-format
-msgid "Directory contains %s and %s."
-msgstr "Mappen inneholder %s og %s."
-
 #
 msgid "Disable"
 msgstr "Deaktiver"
@@ -4546,9 +4608,6 @@ msgstr "Skjerm og oppsett"
 msgid "Display message before playing next movie"
 msgstr "Vis melding før neste avspilling starter"
 
-msgid "Display movie length in movielist (except single line style)."
-msgstr "Vis film lengde i opptaksliste (unntatt en linje stil)."
-
 msgid "Display setup"
 msgstr "Display innstilling"
 
@@ -4591,9 +4650,6 @@ msgstr "Ikke endre"
 msgid "Do not record"
 msgstr "Ikke ta opp"
 
-msgid "Do not show file extensions for registered multimedia files."
-msgstr "Ikke vis filutvidelser for registrerte multimedia filer."
-
 #
 msgid "Do nothing"
 msgstr "Ikke gjør noe"
@@ -4607,8 +4663,18 @@ msgstr ""
 "Dette kan ta veldig lang tid!"
 
 #
+#, fuzzy, python-format
+msgid "Do you really want to delete %s ?"
+msgstr "Er du sikker på at du vil slette %s?"
+
+#
 #, python-format
 msgid "Do you really want to delete %s?"
+msgstr "Er du sikker på at du vil slette %s?"
+
+#
+#, fuzzy
+msgid "Do you really want to delete ?"
 msgstr "Er du sikker på at du vil slette %s?"
 
 #
@@ -4635,6 +4701,21 @@ msgid ""
 msgstr ""
 "Vil du virkelig initialisere enheten?\n"
 "Alle data på disken vil gå tapt!"
+
+#
+#, fuzzy
+msgid "Do you really want to move to the trash can ?"
+msgstr ""
+"Er du sikker på å fjerne\n"
+"tillegget \"%s\"?"
+
+#, fuzzy, python-format
+msgid "Do you really want to permamently remove '%s' from the trash can ?"
+msgstr "Vil du virkelig fjerne katalogen %s fra disken?"
+
+#, fuzzy
+msgid "Do you really want to permanently remove from the trash can ?"
+msgstr "Vil du virkelig fjerne katalogen %s fra disken?"
 
 #
 #, python-format
@@ -4909,10 +4990,6 @@ msgstr "EPG-innstilling"
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
 msgstr "FEIL - kunne ikke søke (%s)!"
-
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr "FEIL under nedlasting av fil %s"
 
 #
 msgid "East"
@@ -5287,11 +5364,6 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Feil"
 
-#
-#, python-format
-msgid "Error %s"
-msgstr "Feil %s"
-
 msgid "Error code"
 msgstr "Feil kode"
 
@@ -5329,12 +5401,6 @@ msgstr "Feil under oppstart av tillegget"
 msgid "Error stop stream!"
 msgstr "Feil stopp stream!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Feil ved skriving av EPG på server"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Feil ved henting av EPG fra server"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -5342,9 +5408,6 @@ msgid ""
 msgstr ""
 "Feil ved henting av reserve timer informasjon\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Feil ved henting av EPG lokasjon på server"
 
 #
 #, python-format
@@ -5605,9 +5668,24 @@ msgstr ""
 msgid "F"
 msgstr "F"
 
+#
+#, fuzzy
+msgid "F1"
+msgstr "1"
+
 #, fuzzy
 msgid "F1/F3/F4/F4-TURBO/TRIPLEX"
 msgstr "F1/F3/F4/F4-TURBO"
+
+#
+#, fuzzy
+msgid "F2"
+msgstr "2"
+
+#
+#, fuzzy
+msgid "F3"
+msgstr "3"
 
 msgid "FAILED"
 msgstr "FEILET"
@@ -5892,6 +5970,9 @@ msgstr ""
 
 msgid "Following tasks will be done after you press OK!"
 msgstr "Følgende oppgaver blir utført etter at OK tastes!"
+
+msgid "Font size"
+msgstr ""
 
 msgid "Force legacy signal stats"
 msgstr "Tvinge eldre signal statistikk"
@@ -6206,6 +6287,11 @@ msgstr "Gresk"
 #
 msgid "Green"
 msgstr "Grønn"
+
+#
+#, fuzzy
+msgid "Green long"
+msgstr "Grønland"
 
 #
 msgid "Greenland"
@@ -6604,20 +6690,8 @@ msgstr "Island"
 msgid "Icons"
 msgstr "Framdriftsirkel"
 
-msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
-msgstr "Hvis aktivert, vil bokmerker bli oppdatert med den nye plasseringen når du flytter eller kopierer et opptak."
-
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Hvis aktivert, display viser 12 tegn istedenfor 8, men bare i latin-1/overs."
-
-msgid "If enabled, then there will be displayed icons for new/unseen items too."
-msgstr "Når dette er på, vil det også vises ikon for nye/usette elementer."
-
-msgid "If is enabled and movie playback is finished, then after return to movielist will not be automaticaly start service playback."
-msgstr "Hvis aktivert og filmavspilling er ferdig, starter ikke avspilling automatisk ved tilbakevending til opptaksliste."
-
-msgid "If set as 'Yes', then audiofiles are played in 'list mode' only, instead in full screen player."
-msgstr "Hvis ja er valgt, vil lydfiler bli spilt i liste modus istedenfor i full skjerm."
 
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "Hvis satt til \"ja\" signalverdier (SNR, etc) beregnes fra API V3. Dette er en gammel API-versjon som nå er erstattet."
@@ -7097,6 +7171,9 @@ msgstr "Kasakhstan"
 msgid "Keep service"
 msgstr "Behold kanal"
 
+msgid "Keeps the movie list open whilst playing audio files."
+msgstr ""
+
 msgid "Kenya"
 msgstr "Kenya"
 
@@ -7345,9 +7422,6 @@ msgstr "Vis liste"
 msgid "List of storage devices"
 msgstr "Liste over lagringsenheter"
 
-msgid "List type"
-msgstr "Vis type"
-
 #, python-format
 msgid "List version %d, found %d channel"
 msgid_plural "List version %d, found %d channels"
@@ -7380,9 +7454,6 @@ msgstr "Last inn"
 #, fuzzy
 msgid "Load EPG"
 msgstr "Last inn"
-
-msgid "Load length of movies in movie list"
-msgstr "Last inn opptakslengden i opptaksliste"
 
 #
 msgid "Load playlist"
@@ -7913,8 +7984,9 @@ msgstr "Bevegelse"
 msgid "Movie"
 msgstr "Kjører"
 
-msgid "Movie list configuration"
-msgstr "Opptakslistevalg"
+#, fuzzy
+msgid "Movie List Setup"
+msgstr "Opptaksliste meny"
 
 msgid "Movie location"
 msgstr "Opptaksmappe"
@@ -7933,6 +8005,10 @@ msgstr "Kjører"
 
 msgid "Moving east ..."
 msgstr "Kjører østover..."
+
+#, fuzzy
+msgid "Moving files"
+msgstr "Lange filnavn"
 
 msgid "Moving to position"
 msgstr "Kjører til posisjon"
@@ -8150,6 +8226,11 @@ msgstr "Nettverks mount"
 msgid "Network mount %s"
 msgstr "Nettverks mount %s"
 
+#
+#, fuzzy
+msgid "Network mounts"
+msgstr "Nettverks mount"
+
 msgid "Network name (SSID)"
 msgstr "Nettverksnavn (SSID)"
 
@@ -8281,9 +8362,6 @@ msgstr "Ingen forklaring er tilgjengelig."
 msgid "No displayable files on this medium found!"
 msgstr "Ingen visbare filer på dette mediet funnet!"
 
-msgid "No epg.dat file found server"
-msgstr "Fant ikke noe EPG på server"
-
 #
 msgid "No event info found, recording indefinitely."
 msgstr "Ingen kanalinfo ble funnet, tar opp på ubestemt tid."
@@ -8335,6 +8413,9 @@ msgstr "Ingen tjeneste"
 
 msgid "No services/providers selected"
 msgstr "Ingen kanaler/distributører er valgt"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 #
 msgid "No standby"
@@ -8469,6 +8550,11 @@ msgid "Not Classified"
 msgstr "Ikke tilknyttet"
 
 #
+#, fuzzy
+msgid "Not Defined"
+msgstr "Ikke definert"
+
+#
 msgid "Not Installed"
 msgstr "Ikke installert"
 
@@ -8478,10 +8564,6 @@ msgstr "Ikke påkrevd"
 
 msgid "Not associated"
 msgstr "Ikke tilknyttet"
-
-#
-msgid "Not defined"
-msgstr "Ikke definert"
 
 #, python-format
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
@@ -8539,6 +8621,13 @@ msgid "Number of channels shown in channel selection list"
 msgstr "Antall kanaler vist i kanallisten"
 
 msgid "Number of repeating text on display."
+msgstr "Repeterende ganger tekst på display."
+
+msgid "Number of rows"
+msgstr ""
+
+#, fuzzy
+msgid "Number of rows to display"
 msgstr "Repeterende ganger tekst på display."
 
 msgid "Number or SMS style data entry"
@@ -8905,6 +8994,9 @@ msgstr "Prosent venstre"
 msgid "Percentage right"
 msgstr "Prosent høyre"
 
+msgid "Permanent sort key changes"
+msgstr ""
+
 msgid "Permanently delete all recordings in the trash can?"
 msgstr "Slette for godt alle opptak som ligger i papirkurven?"
 
@@ -8925,6 +9017,14 @@ msgid "PiP setup"
 msgstr "PiP-bilde i bilde oppsett"
 
 msgid "Picon"
+msgstr "Kanallogo"
+
+#, fuzzy
+msgid "Picon Size"
+msgstr "Kanallogo"
+
+#, fuzzy
+msgid "Picon Width"
 msgstr "Kanallogo"
 
 msgid "Picon and servicename"
@@ -8960,11 +9060,12 @@ msgstr "Spill av DVD"
 msgid "Play DVDs"
 msgstr "Spill av DVDer"
 
+#, fuzzy
+msgid "Play audio in background"
+msgstr "Spill av lyd i liste modus"
+
 msgid "Play audio-CD..."
 msgstr "Spill av lyd CD..."
-
-msgid "Play audiofiles in list mode"
-msgstr "Spill av lyd i liste modus"
 
 msgid "Play back media files"
 msgstr "Spill av mediefiler"
@@ -9075,6 +9176,10 @@ msgstr "Tast inn nytt navn:"
 msgid "Please enter the correct pin code"
 msgstr "Tast inn den riktige PIN kode"
 
+#, fuzzy
+msgid "Please enter the name of the new directory"
+msgstr "Sett navn på den nye mappen"
+
 msgid "Please enter the new PIN code"
 msgstr "Tast inn den nye PIN koden"
 
@@ -9120,10 +9225,6 @@ msgstr "Velg medium som skal skannes"
 msgid "Please select medium to use as backup location"
 msgstr "Velg medium for lagring av sikkerhetskopi"
 
-#
-msgid "Please select tag to filter..."
-msgstr "Velg navn til filter..."
-
 msgid "Please select the movie path..."
 msgstr "Velg sti for lagring av opptak..."
 
@@ -9135,6 +9236,11 @@ msgstr ""
 "Velg nettverket du vil bruke for Internett-tilkoblingen.\n"
 "\n"
 "Klikk OK for å fortsette."
+
+#
+#, fuzzy
+msgid "Please select the tag to filter..."
+msgstr "Velg navn til filter..."
 
 msgid ""
 "Please select the wireless network that you want to connect to.\n"
@@ -9870,9 +9976,6 @@ msgstr "Opptaks innstilling"
 msgid "Record time limited due to conflicting timer %s"
 msgstr "Opptakstid begrenset på grunn av motstridende timer %s"
 
-msgid "Recorded files..."
-msgstr "Opptaks mapper..."
-
 #
 msgid "Recording"
 msgstr "Tar opp"
@@ -9920,6 +10023,11 @@ msgstr "Rød tast..."
 msgid "Red colored"
 msgstr "Rød farget"
 
+#
+#, fuzzy
+msgid "Red long"
+msgstr "lang"
+
 msgid "Reenter PIN"
 msgstr "Tast inn PIN på nytt"
 
@@ -9940,9 +10048,6 @@ msgstr "Oppfriskningsrate"
 #
 msgid "Refresh rate selection."
 msgstr "Valg av oppdateringsfrekvens."
-
-msgid "Refusing to move to the same directory"
-msgstr "Kan ikke flytte til samme katalog"
 
 msgid "Regard deep standby as standby"
 msgstr "Betrakt dvalemodus samme som av/på"
@@ -11151,6 +11256,11 @@ msgstr "Kanaldetaljer"
 msgid "Service ID"
 msgstr "Kanal ID"
 
+#
+#, fuzzy
+msgid "Service Title mode"
+msgstr "Kanalvalg"
+
 msgid "Service has been added to the favourites."
 msgstr "Kanalen har blitt lagt til i favorittliste."
 
@@ -11242,8 +11352,8 @@ msgstr ""
 msgid "Set PIN"
 msgstr "Velg PIN"
 
-msgid "Set action when movie playback is finished."
-msgstr "Velg handling når avspilling er ferdig."
+msgid "Set a temporary sort method for this directory"
+msgstr ""
 
 msgid "Set all hotkey to default?"
 msgstr "Sett alle snarveistaster til standard?"
@@ -11275,17 +11385,11 @@ msgstr "Ekstern undertekst fps nivå"
 msgid "Set framerate for MiniTV"
 msgstr ""
 
-msgid "Set if You want see status icons, progress bars or nothing."
-msgstr "Velg om du vil vise status ikon, framdriftsbar eller ikke vise noe."
-
 msgid "Set interface as default Interface"
 msgstr "Bruk denne som standard grensesnitt"
 
 msgid "Set limits"
 msgstr "Sett grenser"
-
-msgid "Set movielist type."
-msgstr "Velg type opptaksliste."
 
 msgid "Set pin code persistent"
 msgstr "Velg gyldig PIN kode"
@@ -11308,8 +11412,18 @@ msgstr "Test nettverksinnstillingen til mottakeren.\n"
 msgid "Set the User ID of the OpenWebif from your fallback tuner"
 msgstr "Angi bruker-IDen for OpenWebif fra reserve tuneren"
 
+#
+#, fuzzy
+msgid "Set the default sorting method."
+msgstr "Velge standardinnstillinger?"
+
 msgid "Set the delay time between repeated loops, this is used by software renderer in some skins."
 msgstr ""
+
+#
+#, fuzzy
+msgid "Set the global sort method"
+msgstr "Velg sorteringsmetode:"
 
 msgid "Set the password of the OpenWebif from your fallback tuner"
 msgstr "Angi passordet for OpenWebif fra reserve tuneren"
@@ -11327,6 +11441,10 @@ msgstr ""
 #, fuzzy
 msgid "Set the scrolling speed of text on the front panel display."
 msgstr "Still inn lysstyrke på mottakerens frontpanel."
+
+#, fuzzy
+msgid "Set the sort method for this directory"
+msgstr "Kan ikke flytte til samme katalog"
 
 msgid "Set the time of day to perform the import."
 msgstr ""
@@ -11362,11 +11480,11 @@ msgstr ""
 msgid "Set voltage and 22KHz"
 msgstr "Still inn spenning og 22kHz"
 
+msgid "Sets the root directory of movie list, to remove the '..' from being shown in that folder."
+msgstr ""
+
 msgid "Settings"
 msgstr "Innstillinger"
-
-msgid "Settings can be different for each directory separately (for non removeable devices only)."
-msgstr "Innstillingene kan være forskjellig for hver separate mappe (for ikke flyttbare enheter)."
 
 #
 msgid "Setup"
@@ -11627,6 +11745,10 @@ msgid "Show latest update log"
 msgstr "Vis siste oppdateringslogg"
 
 #, fuzzy
+msgid "Show live tv when movie stopped"
+msgstr "Funksjon når en avspilling stoppes"
+
+#, fuzzy
 msgid "Show log"
 msgstr "Vis hjelp"
 
@@ -11643,6 +11765,10 @@ msgstr "Vis meny stier"
 
 msgid "Show message when recording starts"
 msgstr "Vis melding når opptak starter"
+
+#, fuzzy
+msgid "Show movie lengths in movie list"
+msgstr "Vis opptakslengde i opptaksliste"
 
 msgid "Show movie lengths in movielist"
 msgstr "Vis opptakslengde i opptaksliste"
@@ -11666,6 +11792,11 @@ msgstr "Vis et varsel når import av kanaler mislyktes"
 msgid "Show notification when import channels was successful"
 msgstr "Vis et varsel når import av kanaler ble vellykket"
 
+#
+#, fuzzy
+msgid "Show or hide the extended description, (skin dependant)."
+msgstr "Vis tilleggs beskrivelse"
+
 msgid "Show packages to be updated"
 msgstr "Vis pakker som skal oppdateres"
 
@@ -11674,6 +11805,10 @@ msgstr "Vis kanallogo (picon) i kanallisten"
 
 msgid "Show picons in display"
 msgstr "Vis kanallogo (picon) i display"
+
+#, fuzzy
+msgid "Show picons in the movie list."
+msgstr "Vis statusbar i opptaksliste"
 
 #
 msgid "Show positioner movement"
@@ -11783,9 +11918,16 @@ msgstr "Vis/skjul info"
 msgid "Shows live tv or informations on LCD."
 msgstr "Viser direkte TV eller informasjon på LCD."
 
+msgid "Shows the icons when new/unseen, otherwise it will not show an icon."
+msgstr ""
+
 #
 msgid "Shows the state of your wireless LAN connection.\n"
 msgstr "Viser status for trådløs LAN forbindelse.\n"
+
+#, fuzzy
+msgid "Shows the watched status of the movie."
+msgstr "Ingen merker er satt på disse opptakene."
 
 #
 msgid "Shuffle playlist"
@@ -12048,9 +12190,6 @@ msgstr "Noen tillegg er ikke tilgjengelig:\n"
 msgid "Sorry, %s has not been installed!"
 msgstr "Beklager, %s har ikke blitt installert!"
 
-msgid "Sorry, deleting directories can (for now) only be done through the trash can."
-msgstr "Beklager, mapper kan (fra nå av) kun slettes via papirkurven."
-
 msgid "Sorry, no backups found!"
 msgstr "Beklager, fant ingen sikkerhetskopi!"
 
@@ -12076,8 +12215,16 @@ msgstr "Sorter"
 msgid "Sort A-Z"
 msgstr "Sorter A-Å"
 
+msgid "Sort Trash by deletion time"
+msgstr ""
+
 msgid "Sort by"
 msgstr "Sorter etter"
+
+#
+#, fuzzy
+msgid "Sort by default"
+msgstr "Sett standard"
 
 msgid "Sort list to default and exit?"
 msgstr "Sorter listen til standard og avslutte?"
@@ -12394,6 +12541,10 @@ msgstr "Stopp avspille TV"
 
 msgid "Stop playing this movie?"
 msgstr "Stopp avspillingen?"
+
+#, fuzzy
+msgid "Stop previous broadcasted service on return to movie list."
+msgstr "Stopp tjenesten og gå tilbake til opptaksliste"
 
 msgid "Stop recording"
 msgstr "Stopp opptaket"
@@ -12732,6 +12883,9 @@ msgstr "TUNER:"
 msgid "TUNING"
 msgstr "STILLER INN"
 
+msgid "TV"
+msgstr ""
+
 msgid "TV physical address report"
 msgstr "TVs fysiske adresse"
 
@@ -12851,6 +13005,9 @@ msgstr "Prøvebilder"
 
 msgid "Testscreens that are helpfull to fine-tune your display"
 msgstr "Prøvebilder som kan brukes til å finjustere skjermen"
+
+msgid "Text"
+msgstr ""
 
 msgid "Text color"
 msgstr "Tekst farge"
@@ -13117,6 +13274,9 @@ msgstr ""
 #
 msgid "This DVD RW medium is already formatted - reformatting will erase all content on the disc."
 msgstr "Denne DVD RW er allerede formatert - reformatering sletter alt innhold på platen."
+
+msgid "This allows you change the font size relative to skin size, so 1 increases by 1 point size, and -1 decreases by 1 point size"
+msgstr ""
 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
@@ -13680,6 +13840,10 @@ msgstr "Transport stream type"
 msgid "Trash can"
 msgstr "Papirkurv"
 
+#, fuzzy
+msgid "Trashcan:"
+msgstr "Papirkurv"
+
 #
 msgid "Tries left:"
 msgstr "Forsøk igjen:"
@@ -14114,6 +14278,19 @@ msgstr "Bruk strøm-måling"
 msgid "Use separate picon pack for front panel display"
 msgstr "Still inn lysstyrke på mottakerens frontpanel."
 
+#, fuzzy
+msgid "Use slim screen"
+msgstr "Full skjerm"
+
+#, fuzzy
+msgid "Use the alternative screen"
+msgstr "rediger alternativer"
+
+msgid ""
+"Use the deletion time to sort Trash directories.\n"
+"Most recently deleted at the top."
+msgstr ""
+
 #
 msgid "Use the network wizard to configure selected network adapter"
 msgstr "Bruk nettverksveiviseren for oppsett av nettverkskortet"
@@ -14139,6 +14316,10 @@ msgstr "Bruk disse innstillinger?"
 #
 msgid "Use this video enhancement settings?"
 msgstr "Bruke disse innstillingene for bilde?"
+
+#, fuzzy
+msgid "Use trash can in movie list"
+msgstr "Bruk papirkurven i opptaksliste"
 
 msgid "Use trash can in movielist"
 msgstr "Bruk papirkurven i opptaksliste"
@@ -14705,6 +14886,9 @@ msgstr "Når dette er på, vil det være mulighet å slå av mediespiller med ex
 msgid "When enabled, measure power consumption to detect when the rotor stops turning (when supported by the tuner)."
 msgstr "Når dette er på, vil motorens strømforbruk bli målt for å oppdage når motorbevegelsen stopper (hvis det støttes av tuner)."
 
+msgid "When enabled, network trash cans are probed for cleaning."
+msgstr ""
+
 msgid "When enabled, number markers will be hidden."
 msgstr "Når aktivert, vil nummer markører bli skjult."
 
@@ -14747,6 +14931,10 @@ msgstr "Når dette er på, vil infobar vises ved spoling framover/bakover under 
 msgid "When enabled, the lenght of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Når dette er på, vil lengden på hvert opptak i opptakslisten vises (dette kan medføre ekstra laste tid)."
 
+#, fuzzy
+msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
+msgstr "Når dette er på, vil lengden på hvert opptak i opptakslisten vises (dette kan medføre ekstra laste tid)."
+
 msgid "When enabled, the receiver will automatically use the audio track which you selected before."
 msgstr "Når dette er på, vil mottakeren automatisk bruke lydsporet som tidligere ble valgt av bruker."
 
@@ -14786,11 +14974,23 @@ msgstr "Når annet tall enn null er valgt vil et opptak stoppe senere enn slutti
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
 msgstr "Når dette er valgt vil video moduser bli valgt selv om de ikke er støttet."
 
+msgid "When set the PIG will return to live after a movie has stopped playing."
+msgstr ""
+
+msgid "When set, each directory will show the previous state used. When off, the default values will be shown."
+msgstr ""
+
+msgid "When set, sort changes via the sort key will be permanent."
+msgstr ""
+
 msgid "When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture."
 msgstr "Når bildet har et sideforhold på 16:9. Velg om det skal skaleres/strekkes ut."
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Når bildet har et sideforhold på 4:3. Velg om det skal skaleres/strekkes ut."
+
+msgid "When unset, sort changes will be temporary - just for this view of a directory."
+msgstr ""
 
 msgid "Where to save temporary timeshift recordings?"
 msgstr "Hvor skal midlertidige tidsskift opptak lagres?"
@@ -14893,6 +15093,11 @@ msgstr "Gul"
 msgid "Yellow DVB subtitles"
 msgstr "DVB undertekst gulfarge"
 
+#
+#, fuzzy
+msgid "Yellow long"
+msgstr "Gul"
+
 msgid "Yemen"
 msgstr "Yemen"
 
@@ -14936,6 +15141,15 @@ msgstr "Ja, bare fra avslått modus"
 msgid "Yes, returning to movie list"
 msgstr "Ja, returnerer til opptaksliste"
 
+#, fuzzy
+msgid "Yes, show delete time"
+msgstr "Ja, slett denne filmen"
+
+#
+#, fuzzy
+msgid "Yes, show record time"
+msgstr "Endre sluttid for opptaket"
+
 msgid "Yes, with backup"
 msgstr "Ja, med sikkerhetskopi"
 
@@ -14975,9 +15189,6 @@ msgstr ""
 msgid "You can display PIP with or without OSD menu"
 msgstr ""
 
-msgid "You can enable if will be displayed extended EPG description for item."
-msgstr "Du kan velge dette for å vise utvidet EPG valg for elementer."
-
 #
 msgid "You can install this plugin."
 msgstr "Dette tillegget kan installeres."
@@ -14988,15 +15199,6 @@ msgstr "Du kan bare DVD brenne mottakerens innspillinger!"
 #
 msgid "You can remove this plugin."
 msgstr "Dette tillegget kan slettes."
-
-msgid "You can set how will be finished movieplayer with 'Exit' button."
-msgstr "Du kan velge type avslutning for film avspiller med 'exit' tast."
-
-msgid "You can set selected directory as 'root' directory for movie player."
-msgstr "Du kan angi den valgte mappen som hoved katalog for film avspiller."
-
-msgid "You can set sorting type for items in movielist."
-msgstr "Du kan angi sorteringstype for elementer opptaksliste."
 
 #
 msgid "You cannot delete this!"
@@ -15369,6 +15571,10 @@ msgstr "etter "
 msgid "all"
 msgstr "alle"
 
+#, fuzzy
+msgid "alpha then oldest"
+msgstr "alfabetisk bakover"
+
 #
 msgid "alphabetic"
 msgstr "alfabetisk"
@@ -15376,17 +15582,13 @@ msgstr "alfabetisk"
 msgid "alphabetic reverse"
 msgstr "alfabetisk bakover"
 
-#, fuzzy
-msgid "alphabetic then newest"
-msgstr "alfabetisk bakover"
-
-#, fuzzy
-msgid "alphabetic then oldest"
-msgstr "alfabetisk bakover"
-
 #
 msgid "alphabetical"
 msgstr "alfabetisk"
+
+#, fuzzy
+msgid "alpharev then newest"
+msgstr "alfabetisk bakover"
 
 #
 msgid "alternative"
@@ -15607,6 +15809,12 @@ msgstr "slett klipp"
 #, fuzzy
 msgid "delete cut (disabled)"
 msgstr " (deaktivert)"
+
+msgid "delete time - show delete time (Trash ONLY)"
+msgstr ""
+
+msgid "delete time - show record time (Trash ONLY)"
+msgstr ""
 
 msgid "descramble and record ecm"
 msgstr "avkode og spill inn ecm"
@@ -16031,22 +16239,6 @@ msgstr "lengde"
 
 msgid "limit ..., aborting !"
 msgstr "grense ..., avbryter!"
-
-#
-msgid "list style compact"
-msgstr "kompakt liste"
-
-#
-msgid "list style compact with description"
-msgstr "kompakt liste med beskrivelse"
-
-#
-msgid "list style default"
-msgstr "standard listestil"
-
-#
-msgid "list style single line"
-msgstr "enkel liste"
 
 msgid "listens to hotplug events"
 msgstr "lytter til hotplug program"
