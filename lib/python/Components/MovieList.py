@@ -2,17 +2,15 @@ import os
 import struct
 import random
 from time import localtime, strftime
-
 from GUIComponent import GUIComponent
 from Tools.FuzzyDate import FuzzyTime
-from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaTest, MultiContentEntryPixmapAlphaBlend, MultiContentEntryProgress
+from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaBlend, MultiContentEntryProgress
 from Components.config import config
 from Components.Renderer.Picon import getPiconName
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename
 from Screens.LocationBox import defaultInhibitDirs
 from ServiceReference import ServiceReference
-#
 from Tools.Trashcan import getTrashFolder
 import NavigationInstance
 import skin
