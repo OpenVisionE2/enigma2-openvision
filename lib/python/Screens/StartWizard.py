@@ -18,7 +18,7 @@ from enigma import eConsoleAppContainer, eTimer, eActionMap
 import os
 
 config.misc.firstrun = ConfigBoolean(default = True)
-config.misc.languageselected = ConfigBoolean(default = False)
+config.misc.languageselected = ConfigBoolean(default = True)
 config.misc.do_overscanwizard = ConfigBoolean(default = OverscanWizard)
 
 class StartWizard(WizardLanguage, Rc):
