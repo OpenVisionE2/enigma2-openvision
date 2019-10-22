@@ -1210,39 +1210,15 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		else:
 			current = self.getCurrent()
 		playInBackground = self.list.playInBackground
-		playInForeground = self.list.playInForeground
 		if playInBackground:
 			self.list.playInBackground = None
-			from Screens.InfoBar import MoviePlayer
-			MoviePlayerInstance = MoviePlayer.instance
-			if MoviePlayerInstance is not None:
-				from Screens.InfoBarGenerics import setResumePoint
-				setResumePoint(MoviePlayer.instance.session)
 			self.session.nav.stopService()
 			if playInBackground != current:
 				# come back to play the new one
 				self.callLater(self.preview)
-		elif playInForeground:
-			self.playingInForeground = playInForeground
-			self.list.playInForeground = None
-			from Screens.InfoBar import MoviePlayer
-			MoviePlayerInstance = MoviePlayer.instance
-			if MoviePlayerInstance is not None:
-				from Screens.InfoBarGenerics import setResumePoint
-				setResumePoint(MoviePlayer.instance.session)
-			self.session.nav.stopService()
-			if playInForeground != current:
-				self.callLater(self.preview)
 		else:
 			self.list.playInBackground = current
-			# check if MerlinMusicPlayer is installed and merlinmp3player.so is running
-			# so we need the right id to play now the mp3-file
-			if current.type == 4116:
-				path = current.getPath()
-				service = eServiceReference(4097, 0, path)
-				self.session.nav.playService(service)
-			else:
-				self.session.nav.playService(current)
+			self.session.nav.playService(current)
 
 	def previewCheckTimeshiftCallback(self, answer):
 		if answer:
@@ -1258,27 +1234,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 	def playbackStop(self):
 		if self.list.playInBackground:
 			self.list.playInBackground = None
-			from Screens.InfoBar import MoviePlayer
-			MoviePlayerInstance = MoviePlayer.instance
-			if MoviePlayerInstance is not None:
-				from Screens.InfoBarGenerics import setResumePoint
-				setResumePoint(MoviePlayer.instance.session)
 			self.session.nav.stopService()
-			if config.movielist.show_live_tv_in_movielist.getValue():
-				self.LivePlayTimer.start(100)
-			self.filePlayingTimer.start(100)
-			return
-		elif self.list.playInForeground:
-			from Screens.InfoBar import MoviePlayer
-			MoviePlayerInstance = MoviePlayer.instance
-			if MoviePlayerInstance is not None:
-				from Screens.InfoBarGenerics import setResumePoint
-				setResumePoint(MoviePlayer.instance.session)
-				MoviePlayerInstance.close()
-			self.session.nav.stopService()
-			if config.movielist.show_live_tv_in_movielist.getValue():
-				self.LivePlayTimer.start(100)
-			self.filePlayingTimer.start(100)
 
 	def itemSelected(self, answer = True):
 		current = self.getCurrent()
