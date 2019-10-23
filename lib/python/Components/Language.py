@@ -91,24 +91,9 @@ class Language:
 					x()
 		except:
 			print "Error in activating language!"
-
-		# These should always be C.UTF-8 (or POSIX if C.UTF-8 is unavaible) or program code might behave
-		# differently depending on language setting
-		try:
-			locale.setlocale(locale.LC_CTYPE, ('C', 'UTF-8'))
-		except:
-			pass
-		try:
-			locale.setlocale(locale.LC_COLLATE, ('C', 'UTF-8'))
-		except:
-			try:
-				locale.setlocale(locale.LC_COLLATE, ('POSIX', ''))
-			except:
-				pass
-
 		# NOTE: we do not use LC_ALL, because LC_ALL will not set any of the categories, when one of the categories fails.
 		# We'd rather try to set all available categories, and ignore the others
-		for category in [locale.LC_TIME, locale.LC_MONETARY, locale.LC_MESSAGES, locale.LC_NUMERIC]:
+		for category in [locale.LC_CTYPE, locale.LC_COLLATE, locale.LC_TIME, locale.LC_MONETARY, locale.LC_MESSAGES, locale.LC_NUMERIC]:
 			try:
 				locale.setlocale(category, (self.getLanguage(), 'UTF-8'))
 			except:
