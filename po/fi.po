@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 09:17+0330\n"
+"POT-Creation-Date: 2019-10-23 17:10+0330\n"
 "PO-Revision-Date: 2019-02-13 20:52+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -2308,6 +2308,10 @@ msgid "Automatic Scan"
 msgstr "Automaattihaku"
 
 #, fuzzy
+msgid "Automatic bookmarks"
+msgstr "Päivitä kirjanmerkit"
+
+#, fuzzy
 msgid "Automatic refresh"
 msgstr "Automaattihaku"
 
@@ -3791,10 +3795,6 @@ msgstr "Soveltuvaa tallennustilaa ei löytynyt - Varmista vapaa levytila, tai li
 msgid "Could not load medium! No disc inserted?"
 msgstr "Levyä ei voitu ladata! Levy puuttuu?"
 
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Tuo ajastimet etävastaaottimelta"
-
 msgid "Could not open Picture in Picture"
 msgstr "PiP-kuvaa ei voitu avata"
 
@@ -4981,6 +4981,10 @@ msgstr "Ohjelmaoppaan asetukset"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "VIRHE - haku epäonnistui (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 #
 msgid "East"
 msgstr "Itäistä pituutta"
@@ -5358,6 +5362,11 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Virhe"
 
+#
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Virhe"
+
 msgid "Error code"
 msgstr "Virhekoodi"
 
@@ -5387,10 +5396,19 @@ msgstr "Virhe plugin-lisäosan suorittamisessa"
 msgid "Error stop stream!"
 msgstr ""
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #
@@ -6655,6 +6673,9 @@ msgstr "Islanti"
 msgid "Icons"
 msgstr "Kuvake"
 
+msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
+msgstr ""
+
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Jos päällä, näytössä näytetään 12 merkkiä 8 sijaan, mutta vain latin-1-käännöksenä."
 
@@ -6917,10 +6938,6 @@ msgstr "Asenna kanavalista"
 
 #
 msgid "Install extensions"
-msgstr "Asenna laajennukset."
-
-#
-msgid "Install extensions."
 msgstr "Asenna laajennukset."
 
 #, fuzzy
@@ -8348,6 +8365,9 @@ msgstr "Kuvausta ei ole saatavilla."
 msgid "No displayable files on this medium found!"
 msgstr "Tiedostoja ei löytynyt!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 #
 msgid "No event info found, recording indefinitely."
 msgstr ""
@@ -8404,9 +8424,6 @@ msgstr "Ei kanavaa"
 #
 msgid "No services/providers selected"
 msgstr "Kanavia/palveluntarjoajia ei valittu"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 #
 msgid "No standby"
@@ -13272,6 +13289,9 @@ msgstr ""
 
 msgid "The saved PIN was cleared."
 msgstr "PIN-koodi poistettu"
+
+msgid "The selected langugage is unavailable - using en_EN"
+msgstr ""
 
 #
 msgid "The sleep timer has been activated."

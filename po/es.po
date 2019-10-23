@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 09:17+0330\n"
+"POT-Creation-Date: 2019-10-23 17:10+0330\n"
 "PO-Revision-Date: 2019-05-15 22:50+0200\n"
 "Last-Translator: Jose Juan <jzapater@gmail.com>\n"
 "Language-Team: ANGELODOS  angelo2807@hotmail.com\n"
@@ -2346,6 +2346,10 @@ msgstr "Automático"
 msgid "Automatic Scan"
 msgstr "Búsqueda automática"
 
+#, fuzzy
+msgid "Automatic bookmarks"
+msgstr "actualizar marcadores"
+
 #
 #, fuzzy
 msgid "Automatic refresh"
@@ -3846,10 +3850,6 @@ msgstr "No se pudieron encontrar los medios adecuados: elimine algunas imágenes
 msgid "Could not load medium! No disc inserted?"
 msgstr "No puedo cargar el Medio! Hay disco insertado?"
 
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Habilitar el temporizador de importación desde el sintonizador de retroceso"
-
 #
 msgid "Could not open Picture in Picture"
 msgstr "No puedo abrir el PiP"
@@ -5029,6 +5029,10 @@ msgstr "Configuración de EPG"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ERROR - ¡falló la búsqueda (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 #
 msgid "East"
 msgstr "Este"
@@ -5405,6 +5409,11 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Error"
 
+#
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Error"
+
 msgid "Error code"
 msgstr "Codigo error"
 
@@ -5441,10 +5450,25 @@ msgstr "Error ejecutando el plugin"
 msgid "Error stop stream!"
 msgstr "Error stop stream!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Error al recuperar la información del temporizador de reserva\n"
+"% s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Error al recuperar la información del temporizador de reserva\n"
+"% s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Error al recuperar la información del temporizador de reserva\n"
 "% s"
@@ -6720,6 +6744,9 @@ msgstr "Islandia"
 msgid "Icons"
 msgstr "Iconos"
 
+msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
+msgstr ""
+
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Si está habilitado, la pantalla muestra 12 caracteres en lugar de 8, pero solo en latin-1 / translit."
 
@@ -6978,10 +7005,6 @@ msgstr "Instalar lista de canales"
 
 msgid "Install extensions"
 msgstr "instalar extensiones"
-
-#
-msgid "Install extensions."
-msgstr "Instalar extensiones."
 
 #, fuzzy
 msgid "Install lcd picons on"
@@ -8394,6 +8417,9 @@ msgstr "No hay descripción."
 msgid "No displayable files on this medium found!"
 msgstr "¡No hay ficheros visualizables en su medio!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 #
 msgid "No event info found, recording indefinitely."
 msgstr "No hay info del evento, grabando indefinidamente."
@@ -8443,9 +8469,6 @@ msgstr "No servicio"
 #
 msgid "No services/providers selected"
 msgstr "No se seleccionaron servicios / proveedores"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 #
 msgid "No standby"
@@ -13235,6 +13258,9 @@ msgstr "Los resultados se han escrito en% s"
 
 msgid "The saved PIN was cleared."
 msgstr "Se ha borrado el PIN guardado."
+
+msgid "The selected langugage is unavailable - using en_EN"
+msgstr ""
 
 #
 msgid "The sleep timer has been activated."

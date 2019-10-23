@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 09:17+0330\n"
+"POT-Creation-Date: 2019-10-23 17:10+0330\n"
 "PO-Revision-Date: 2019-06-27 16:02+0200\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -2188,6 +2188,10 @@ msgid "Automatic Scan"
 msgstr "Automatické vyhľadávanie"
 
 #, fuzzy
+msgid "Automatic bookmarks"
+msgstr "aktualizovať záložky"
+
+#, fuzzy
 msgid "Automatic refresh"
 msgstr "Automatické vyhľadávanie"
 
@@ -3573,10 +3577,6 @@ msgstr "Nebolo možné nájsť vhodné médium - odstráňte prosím stiahnuté 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nemôžem použiť médium. Je vložený disk?"
 
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Povoliť import časovača zo záložného tuneru"
-
 msgid "Could not open Picture in Picture"
 msgstr "Nedá sa otvoriť obraz v obraze"
 
@@ -4631,6 +4631,10 @@ msgstr "Nastavenie EPG"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "CHYBA - zlyhalo vyhľadávanie (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Východne"
 
@@ -4975,6 +4979,10 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Chyba"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Chyba"
+
 msgid "Error code"
 msgstr "Kód chyby"
 
@@ -5010,10 +5018,25 @@ msgstr "Chyba spúšťania doplnku"
 msgid "Error stop stream!"
 msgstr "Chyba zastavenia streamu!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Chyba počas načítania informácie záložného časovača\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Chyba počas načítania informácie záložného časovača\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Chyba počas načítania informácie záložného časovača\n"
 "%s"
@@ -6188,6 +6211,9 @@ msgstr "Island"
 msgid "Icons"
 msgstr "Ikony"
 
+msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
+msgstr ""
+
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Ak je povolené, displej zobrazí 12 znakov namiesto 8, ale iba v móde latin-1."
 
@@ -6424,9 +6450,6 @@ msgstr "Inštalovať zoznam staníc"
 
 msgid "Install extensions"
 msgstr "Inštalovať rozšírenia"
-
-msgid "Install extensions."
-msgstr "Inštalovať rozšírenia."
 
 #, fuzzy
 msgid "Install lcd picons on"
@@ -7678,6 +7701,9 @@ msgstr "Opis nie je k dispozícii."
 msgid "No displayable files on this medium found!"
 msgstr "Na tomto médiu sa nenašli žiadne zobraziteľné súbory!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Žiadne informácie z EPG, spúšťam nekonečné nahrávanie."
 
@@ -7719,9 +7745,6 @@ msgstr "Žiadna stanica"
 
 msgid "No services/providers selected"
 msgstr "Žiadne služby/poskytovatelia nie sú zvolené"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Neprechádzať do pohotovostného režimu"
@@ -12040,6 +12063,9 @@ msgstr "Výsledky boli zapísané do %s"
 
 msgid "The saved PIN was cleared."
 msgstr "Uložený PIN kód bol vymazaný."
+
+msgid "The selected langugage is unavailable - using en_EN"
+msgstr ""
 
 msgid "The sleep timer has been activated."
 msgstr "Časovač vypnutia bol zapnutý."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 09:17+0330\n"
+"POT-Creation-Date: 2019-10-23 17:10+0330\n"
 "PO-Revision-Date: 2019-10-18 10:40+0200\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -2176,6 +2176,10 @@ msgid "Automatic Scan"
 msgstr "Automatikus keresés"
 
 #, fuzzy
+msgid "Automatic bookmarks"
+msgstr "Könyvjelzők frissítése"
+
+#, fuzzy
 msgid "Automatic refresh"
 msgstr "Automatikus keresés"
 
@@ -3559,10 +3563,6 @@ msgstr "Nem található megfelelő adathordozó. Kérem, töröljön néhány le
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nem lehet betölteni a hordozót! Van bennt lemez?"
 
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Csatornák importálása a tartalék tunerből"
-
 msgid "Could not open Picture in Picture"
 msgstr "A Kép-a-Képben funkció nem indítható el"
 
@@ -4606,6 +4606,10 @@ msgstr "EPG beállítások"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "HIBA - nem sikerült a keresés (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Kelet"
 
@@ -4947,6 +4951,10 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Hiba"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Hiba"
+
 msgid "Error code"
 msgstr "Hibakód"
 
@@ -4978,10 +4986,25 @@ msgstr "Bővítmény indítási hiba"
 msgid "Error stop stream!"
 msgstr "A stream leállítása sikertelen!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Hiba történt a tartalék tuner időzítők letöltésekor\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Hiba történt a tartalék tuner időzítők letöltésekor\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Hiba történt a tartalék tuner időzítők letöltésekor\n"
 "%s"
@@ -6151,6 +6174,9 @@ msgstr "Izland"
 msgid "Icons"
 msgstr "Ikonok"
 
+msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
+msgstr ""
+
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Ha engedélyezi, a kijelző 12 karaktert jelenít meg 8 helyett, de csak latin-1/translit-et."
 
@@ -6387,9 +6413,6 @@ msgstr "Köv. csatorna az előzményekben"
 
 msgid "Install extensions"
 msgstr "Bővítmények telepítése"
-
-msgid "Install extensions."
-msgstr "Bővítmények telepítése."
 
 #, fuzzy
 msgid "Install lcd picons on"
@@ -7635,6 +7658,9 @@ msgstr "Nincs elérhető leírás."
 msgid "No displayable files on this medium found!"
 msgstr "A hordozón nem található lejátszható fájl!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Nincs esemény infó, felvétel korlátlanul."
 
@@ -7676,9 +7702,6 @@ msgstr "Nincs csatorna"
 
 msgid "No services/providers selected"
 msgstr "Nincs szolgáltató kiválasztva"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Nincs kikapcsolás"
@@ -11977,6 +12000,9 @@ msgstr "Az eredmények ide lettek mentve %s"
 
 msgid "The saved PIN was cleared."
 msgstr "Mentett PIN törölve."
+
+msgid "The selected langugage is unavailable - using en_EN"
+msgstr ""
 
 msgid "The sleep timer has been activated."
 msgstr "Az elalvás időzítő aktiválva lett."

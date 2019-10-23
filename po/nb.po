@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 09:17+0330\n"
+"POT-Creation-Date: 2019-10-23 17:10+0330\n"
 "PO-Revision-Date: 2019-10-19 14:24+0200\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
@@ -2321,6 +2321,10 @@ msgid "Automatic Scan"
 msgstr "Automatisk søk"
 
 #, fuzzy
+msgid "Automatic bookmarks"
+msgstr "Oppdatere bokmerker"
+
+#, fuzzy
 msgid "Automatic refresh"
 msgstr "Automatisk søk"
 
@@ -3821,10 +3825,6 @@ msgstr "Finner ikke passende Media - Vennligst frigjør diskplass eller sett inn
 msgid "Could not load medium! No disc inserted?"
 msgstr "Kunne ikke laste data! Ingen disk er satt inn?"
 
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Aktiver import timer fra reserve tuner"
-
 msgid "Could not open Picture in Picture"
 msgstr "Kunne ikke åpne bilde i bilde"
 
@@ -4991,6 +4991,10 @@ msgstr "EPG-innstilling"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "FEIL - kunne ikke søke (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 #
 msgid "East"
 msgstr "Øst"
@@ -5364,6 +5368,11 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Feil"
 
+#
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Feil"
+
 msgid "Error code"
 msgstr "Feil kode"
 
@@ -5401,10 +5410,25 @@ msgstr "Feil under oppstart av tillegget"
 msgid "Error stop stream!"
 msgstr "Feil stopp stream!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Feil ved henting av reserve timer informasjon\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Feil ved henting av reserve timer informasjon\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Feil ved henting av reserve timer informasjon\n"
 "%s"
@@ -6690,6 +6714,9 @@ msgstr "Island"
 msgid "Icons"
 msgstr "Framdriftsirkel"
 
+msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
+msgstr ""
+
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Hvis aktivert, display viser 12 tegn istedenfor 8, men bare i latin-1/overs."
 
@@ -6950,10 +6977,6 @@ msgstr "Installer kanalliste"
 #
 msgid "Install extensions"
 msgstr "Installer utvidelser"
-
-#
-msgid "Install extensions."
-msgstr "Installer utvidelser."
 
 #, fuzzy
 msgid "Install lcd picons on"
@@ -8362,6 +8385,9 @@ msgstr "Ingen forklaring er tilgjengelig."
 msgid "No displayable files on this medium found!"
 msgstr "Ingen visbare filer på dette mediet funnet!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 #
 msgid "No event info found, recording indefinitely."
 msgstr "Ingen kanalinfo ble funnet, tar opp på ubestemt tid."
@@ -8413,9 +8439,6 @@ msgstr "Ingen tjeneste"
 
 msgid "No services/providers selected"
 msgstr "Ingen kanaler/distributører er valgt"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 #
 msgid "No standby"
@@ -13167,6 +13190,9 @@ msgstr "Resultatene har blitt skrevet til %s"
 
 msgid "The saved PIN was cleared."
 msgstr "Den lagrede PIN koden ble godkjent."
+
+msgid "The selected langugage is unavailable - using en_EN"
+msgstr ""
 
 #
 msgid "The sleep timer has been activated."
