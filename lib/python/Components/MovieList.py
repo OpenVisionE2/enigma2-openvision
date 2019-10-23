@@ -586,8 +586,7 @@ class MovieList(GUIComponent):
 		# Don't navigate above the "root"
 		if len(rootPath) > 1 and (os.path.realpath(rootPath) != os.path.realpath(config.movielist.root.value)):
 			parent = os.path.split(os.path.normpath(rootPath))[0]
-			currentfolder = os.path.normpath(rootPath) + '/'
-			if parent and (parent not in defaultInhibitDirs) and not currentfolder.endswith(config.usage.default_path.value):
+			if parent and (parent not in defaultInhibitDirs):
 				# enigma wants an extra '/' appended
 				if not parent.endswith('/'):
 					parent += '/'
