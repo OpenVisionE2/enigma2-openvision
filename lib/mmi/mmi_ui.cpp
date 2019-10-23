@@ -61,7 +61,7 @@ int eMMI_UI::processMMIData(int slot_id, const unsigned char *tag, const void *d
 			eDebug("[eMMI_UI] displeay control failes: expected 1 as first byte, got %d", ((unsigned char*)data)[0]);
 		return 1;
 	case 0x07:		//Tmenu_enq
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 {
 	if (data != NULL)
 	{
@@ -93,7 +93,7 @@ int eMMI_UI::processMMIData(int slot_id, const unsigned char *tag, const void *d
 	}
 #endif
 	case 0x09:		//Tmenu_last
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 {
 	Trid_T_Menu *d=(Trid_T_Menu*)data;
 	int i=0;
@@ -118,7 +118,7 @@ int eMMI_UI::processMMIData(int slot_id, const unsigned char *tag, const void *d
 }
 #endif
 	case 0x0c:		//Tlist_last
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 {
 	Trid_T_List *d=(Trid_T_List*)data;
 	int i=0;
@@ -347,7 +347,7 @@ int eMMI_UI::mmiScreenFinish(int slot)
 
 void eMMI_UI::mmiSessionDestroyed(int slot)
 {
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	if (slot < m_max_slots)
 		mmiScreenClose(slot, 0);
 	else

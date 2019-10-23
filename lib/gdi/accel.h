@@ -49,7 +49,7 @@ private:
 	int m_accel_size; // in blocks
 	MemoryBlockList m_accel_allocation;
 	int m_bcm_accel_state;
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	int m_tridentFB_accel_state;
 #endif
 	static gAccel *instance;

@@ -51,7 +51,7 @@ extern int bcm_accel_accumulate();
 extern int bcm_accel_sync();
 #endif
 
-#ifdef HAVE_TRIDENT_ACCEL
+#ifdef HAVE_TRIDENT_ACCEL_DISABLED
 extern int tridentFB_accel_init(void);
 extern void tridentFB_accel_close(void);
 extern int tridentFB_accel_blit(
@@ -80,7 +80,7 @@ gAccel::gAccel():
 #ifdef HAVE_HISILICON_ACCEL
 	dinobot_accel_init();
 #endif
-#ifdef HAVE_TRIDENT_ACCEL
+#ifdef HAVE_TRIDENT_ACCEL_DISABLED
 	m_tridentFB_accel_state =  tridentFB_accel_init();
 #endif
 }
@@ -93,7 +93,7 @@ gAccel::~gAccel()
 #ifdef HAVE_HISILICON_ACCEL
 	dinobot_accel_close();
 #endif
-#ifdef HAVE_TRIDENT_ACCEL
+#ifdef HAVE_TRIDENT_ACCEL_DISABLED
 	m_tridentFB_accel_state = -1;
 	tridentFB_accel_close();
 #endif
@@ -259,7 +259,7 @@ int gAccel::blit(gUnmanagedSurface *dst, gUnmanagedSurface *src, const eRect &p,
 		}
 		return 0;
 #endif
-#ifdef HAVE_TRIDENT_ACCEL	/* TODO: blitAlphaTest flag is not clear */
+#ifdef HAVE_TRIDENT_ACCEL_DISABLED	/* TODO: blitAlphaTest flag is not clear */
 	/* unsupported flags */
 	if (flags & gPixmap::blitAlphaTest)
 	{
@@ -333,7 +333,7 @@ int gAccel::fill(gUnmanagedSurface *dst, const eRect &area, unsigned long col)
 		col);
 	return 0;
 #endif
-#ifdef HAVE_TRIDENT_ACCEL
+#ifdef HAVE_TRIDENT_ACCEL_DISABLED
 	if (!m_tridentFB_accel_state)
 	{
 		int ret;

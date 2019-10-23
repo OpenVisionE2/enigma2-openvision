@@ -8,7 +8,7 @@
 #include <lib/base/elock.h>
 #include <lib/gdi/grc.h>
 
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 #include <lib/dvb_ci/dvbci.h>
 #endif
 
@@ -178,7 +178,7 @@ void eMainloop::removeSocketNotifier(eSocketNotifier *sn)
 int eMainloop::processOneEvent(long user_timeout, PyObject **res, ePyObject additional)
 {
 	int return_reason = 0;
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	unsigned int uiTridCi = 0;
 #endif
 	if (additional && !PyDict_Check(additional))
@@ -235,13 +235,13 @@ int eMainloop::processOneEvent(long user_timeout, PyObject **res, ePyObject addi
 	std::map<int,eSocketNotifier*>::iterator it = notifiers.begin();
 
 	int i=0;
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	int j;
 	j=fdcount;
 #endif
 	for (; i < nativecount; ++i, ++it)
 	{
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 		if (it->first == 0x12345678)
 		{
 			it->second->state = 1; // running and in poll
@@ -328,7 +328,7 @@ int eMainloop::processOneEvent(long user_timeout, PyObject **res, ePyObject addi
 		else
 			return_reason = 2; /* don't assume the timeout has passed when we got a signal */
 	}
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	if (uiTridCi == 0x12345678)
 	{
 		if (DVBCI_GetCbStatus()!=0)

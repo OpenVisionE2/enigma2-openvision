@@ -1,7 +1,7 @@
 #ifndef __dvbci_dvbci_h
 #define __dvbci_dvbci_h
 
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 #define trid_ci 1
 #endif
 
@@ -13,7 +13,7 @@
 #include <set>
 #include <queue>
 
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 #include <lib/ciplus/driver_dvbci.h>
 #include <lib/ciplus/inc/trid_datatype.h>
 #include <lib/ciplus/inc/trid_errno.h>
@@ -63,7 +63,7 @@ class eDVBCISlot: public iObject, public sigc::trackable
 	ePtr<eSocketNotifier> notifier;
 	int state;
 	std::map<uint16_t, uint8_t> running_services;
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	int application_manager;
 	int ca_manager;
 	int mmi_session;
@@ -82,12 +82,12 @@ class eDVBCISlot: public iObject, public sigc::trackable
 	std::string current_source;
 	int current_tuner;
 	bool user_mapped;
-#ifndef HAVE_HYPERCUBE
+#ifndef HAVE_HYPERCUBE_DISABLED
 	void data(int);
 #endif
 	bool plugged;
 public:
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status);
 	void eDVBCISlot::cdata(int/*Trid_CI_CardStatus_t*/ status);
 #endif
@@ -97,7 +97,7 @@ public:
 	~eDVBCISlot();
 
 	int send(const unsigned char *data, size_t len);
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	void setAppManager(int session );
 	void setMMIManager(int session );
 	void setCAManager(int session );
@@ -133,7 +133,7 @@ public:
 	static std::string getTunerLetter(int tuner_no) { return std::string(1, char(65 + tuner_no)); }
 	static std::string getTunerLetterDM(int);
 	static char* readInputCI(int);
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	trid_sint32 MenuDataNotifyCallbackProcess(Trid_T_Menu* menu);
 	trid_sint32 ListDataNotifyCallbackProcess(Trid_T_List* list);
 	trid_sint32 EnqDataNotifyCallbackProcess(Trid_T_Enq* enq);
@@ -276,7 +276,7 @@ public:
 	PyObject *getDescrambleRules(int slotid);
 	RESULT setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject) );
 	PyObject *readCICaIds(int slotid);
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	int CardStatusChangeNotifyCallback(int slotid, Trid_CI_CardStatus_t status);
 	trid_sint32 MenuDataNotifyCallback(Trid_T_Menu* menu);
 	trid_sint32 ListDataNotifyCallback(Trid_T_List* list);
@@ -287,7 +287,7 @@ public:
 	void sendDataToHelper(int cmd, int slot, int session, unsigned long idtag, unsigned char *tag, unsigned char *data, int len);
 	bool isClientConnected();
 };
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 extern "C" {
 
 int DVBCI_GetCbStatus();

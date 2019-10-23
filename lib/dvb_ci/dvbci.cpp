@@ -36,7 +36,7 @@
 
 eDVBCIInterfaces *eDVBCIInterfaces::instance = 0;
 
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 #define __cplusplus
 
 #include <lib/ciplus/driver_dvbci.h>
@@ -523,7 +523,7 @@ eDVBCIInterfaces::eDVBCIInterfaces()
 	m_stream_finish_mode = finish_none;
 
 	eDebug("[CI] scanning for common interfaces..");
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	ePtr<eDVBCISlot> cislot;
 	cislot = new eDVBCISlot(eApp, num_ci);
 	m_slots.push_back(cislot);
@@ -606,7 +606,7 @@ eDVBCIInterfaces::eDVBCIInterfaces()
 
 eDVBCIInterfaces::~eDVBCIInterfaces()
 {
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	cnxt_kal_terminate();
 #endif
 }
@@ -774,7 +774,7 @@ void eDVBCIInterfaces::ciRemoved(eDVBCISlot *slot)
 	}
 }
 
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 int eDVBCIInterfaces::CardStatusChangeNotifyCallback(int slotid, Trid_CI_CardStatus_t status)
 {
 	eDebugCI("CardStatusChangeNotifyCallback. status %d.", status);
@@ -876,7 +876,7 @@ static bool canDescrambleMultipleServices(int slotid)
 	return false;
 }
 
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 void eDVBCIInterfaces::recheckPMTHandlers()
 {
 	eDebugCI("eDVBCIInterfaces recheckPMTHandlers.");
@@ -1811,7 +1811,7 @@ PyObject *eDVBCIInterfaces::readCICaIds(int slotid)
 	else
 	{
 		int idx=0;
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 		int ca_manager = slot->getCAManager();
 		const std::vector<uint16_t> *ci_caids = ca_manager ? &DVBCI_GetCAIDs() : 0;
 #else
@@ -1845,7 +1845,7 @@ int eDVBCISlot::send(const unsigned char *data, size_t len)
 	//for(i=0;i<len;i++)
 	//	eDebugNoNewLine("%02x ",data[i]);
 	//eDebugNoNewLine("\n");
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	return 0;
 #else
 	if (sendqueue.empty())
@@ -1862,7 +1862,7 @@ int eDVBCISlot::send(const unsigned char *data, size_t len)
 	return res;
 #endif
 }
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 void eDVBCISlot::cdata(int/*Trid_CI_CardStatus_t*/ status)
 {
 	switch (status)
@@ -2171,7 +2171,7 @@ eDVBCISlot::eDVBCISlot(eMainloop *context, int nr)
 	plugged = true;
 
 	slotid = nr;
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	state = stateInvalid;
 #if data_callback
 
@@ -2209,7 +2209,7 @@ eDVBCISlot::eDVBCISlot(eMainloop *context, int nr)
 
 eDVBCISlot::~eDVBCISlot()
 {
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	mmi_session = 0;
 	application_manager = 0;
 	ca_manager = 0;
@@ -2217,7 +2217,7 @@ eDVBCISlot::~eDVBCISlot()
 	eDVBCISession::deleteSessions(this);
 #endif
 }
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 void eDVBCISlot::setAppManager( int session )
 {
 	eDebugCI("eDVBCISlot::setAppManager. %d", session);
@@ -2345,7 +2345,7 @@ int eDVBCISlot::getVersion()
 
 int eDVBCISlot::reset()
 {
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	eDebugCI("doing is trid ci has reset interface?");
 #else
 	eDebug("[CI] Slot %d: reset requested", getSlotID());
@@ -2372,7 +2372,7 @@ int eDVBCISlot::reset()
 int eDVBCISlot::startMMI()
 {
 	eDebug("[CI] Slot %d: startMMI()", getSlotID());
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	if(application_manager)
 		DVBCI_StartMMI();
 #else
@@ -2385,7 +2385,7 @@ int eDVBCISlot::startMMI()
 int eDVBCISlot::stopMMI()
 {
 	eDebug("[CI] Slot %d: stopMMI()", getSlotID());
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	if(mmi_session)
 		DVBCI_StopMMI();
 #else
@@ -2398,7 +2398,7 @@ int eDVBCISlot::stopMMI()
 int eDVBCISlot::answerText(int answer)
 {
 	eDebug("[CI] Slot %d: answerText(%d)", getSlotID(), answer);
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	if(mmi_session)
 		DVBCI_AnswerText(answer);
 #else
@@ -2419,7 +2419,7 @@ int eDVBCISlot::getMMIState()
 int eDVBCISlot::answerEnq(char *value)
 {
 	eDebug("[CI] Slot %d: answerENQ(%s)", getSlotID(), value);
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	if(mmi_session)
 		DVBCI_AnswerEnq(value);
 #else
@@ -2432,7 +2432,7 @@ int eDVBCISlot::answerEnq(char *value)
 int eDVBCISlot::cancelEnq()
 {
 	eDebug("[CI] Slot %d: cancelENQ", getSlotID());
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 	if(mmi_session)
 		DVBCI_CancelEnq();
 #else
@@ -2441,7 +2441,7 @@ int eDVBCISlot::cancelEnq()
 #endif
 	return 0;
 }
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 int PackDesc(unsigned char *pack, unsigned char *Desc)
 {
 	int len, desclen;
@@ -2507,7 +2507,7 @@ int PackPmtDesc(unsigned char *pRaw, int wp, unsigned char *pack_data, int pmt_v
 	return iPackLen;
 }
 #endif
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<uint16_t> &ids)
 {
 	if (!ca_manager)
@@ -2851,7 +2851,7 @@ int eDVBCISlot::setClockRate(int rate)
 	return 0;
 }
 
-#if HAVE_HYPERCUBE
+#if HAVE_HYPERCUBE_DISABLED
 trid_sint32 eDVBCISlot::MenuDataNotifyCallbackProcess(Trid_T_Menu* menu)
 {
 	unsigned char tag[3] = {0x9f, 0x88, 0x09};

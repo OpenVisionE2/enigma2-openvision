@@ -51,7 +51,3 @@ else
 gdi_libenigma_gdi_a_SOURCES += gdi/gfbdc.cpp
 gdiinclude_HEADERS += gdi/gfbdc.h
 endif
-
-if HYPERCUBE
-gdi_libenigma_gdi_a_SOURCES += gdi/tridentFB.cpp
-endif
