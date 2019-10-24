@@ -75,7 +75,7 @@ dist_install_DATA += formuler1.png formuler1.xml
 endif
 
 if GFUTURES
-dist_install_DATA += ax51.png ax51.xml hd1100.png hd1100.xml hd2400.png hd2400.xml hd530c.png hd530c.xml hd60.png hd60.xml
+dist_install_DATA += ax4.png ax4.xml ax51.png ax51.xml hd1100.png hd1100.xml hd2400.png hd2400.xml hd530c.png hd530c.xml hd60.png hd60.xml
 endif
 
 if GIGABLUE
