@@ -11,7 +11,7 @@ class RcModel:
 
 	def __init__(self):
 		self.model = getBoxType()
-		# cfg files has modelname  rcname entries.
+		# cfg files has modelname rcname entries.
 		# modelname is boxname optionally followed by .rctype
 		for line in open((resolveFilename(SCOPE_SKIN, 'rc_models/rc_models.cfg')), 'r'):
 			if line.startswith(self.model):
@@ -23,16 +23,7 @@ class RcModel:
 		return self.model.startswith('dm')
 
 	def getRcFile(self, ext):
-		# check for rc/type every time so rctype changes will be noticed
-		if os.path.exists('/proc/stb/ir/rc/type'):
-			rc = open('/proc/stb/ir/rc/type').read().strip()
-			modeltype = '%s.%s' % (self.model, rc)
-		else:
-			modeltype = None
-		remote = "dmm1"	# default. Assume files for dmm1 exists
-		if modeltype is not None and modeltype in self.RcModels.keys():
-			remote = self.RcModels[modeltype]
-		elif self.model in self.RcModels.keys():
+		if self.model in self.RcModels.keys():
 			remote = self.RcModels[self.model]
 		elif self.model == "azboxhd" and not procmodel in ("elite","ultra"):
 			remote = "azboxhd"
@@ -52,6 +43,8 @@ class RcModel:
 			remote = "ini1"
 		elif self.model == "ventonhdx" or procmodel == "ini-3000" and not fp_version.startswith('1'):
 			remote = "ini2"
+		else:
+			remote = "dmm1"	# default. Assume files for dmm1 exists
 		f = resolveFilename(SCOPE_SKIN, 'rc_models/' + remote + '.' + ext)
 		if not os.path.exists(f):
 			f = resolveFilename(SCOPE_SKIN, 'rc_models/dmm1.' + ext)
