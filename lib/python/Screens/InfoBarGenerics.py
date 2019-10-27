@@ -310,11 +310,11 @@ class InfoBarShowHide(InfoBarScreenSaver):
 			self.actualSecondInfoBarScreen.hide()
 		for x in self.onShowHideNotifiers:
 			x(False)
-	
+
 	def resetAlpha(self):
 		if config.usage.show_infobar_do_dimming.value and self.lastResetAlpha is False:
 			self.unDimmingTimer.start(300, True)
-	
+
 	def doDimming(self):
 		if config.usage.show_infobar_do_dimming.value:
 			self.dimmed = int(int(self.dimmed) - 1)
@@ -392,24 +392,12 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 	def doShow(self):
 		self.show()
-		self.hideTimer.stop()
-		self.DimmingTimer.stop()
-		self.doWriteAlpha(config.av.osd_alpha.value)
 		self.startHideTimer()
 
 	def doTimerHide(self):
 		self.hideTimer.stop()
-		self.DimmingTimer.start(70, True)
-		self.dimmed = config.usage.show_infobar_dimming_speed.value
-
-	def doHide(self):
-		if self.__state != self.STATE_HIDDEN:
-			if self.dimmed > 0:
-				self.doWriteAlpha(int(int(config.av.osd_alpha.value) * int(self.dimmed) / int(config.usage.show_infobar_dimming_speed.value)))
-				self.DimmingTimer.start(5, True)
-			else:
-				self.DimmingTimer.stop()
-				self.hide()
+		if self.__state == self.STATE_SHOWN:
+			self.hide()
 
 	def okButtonCheck(self):
 		if config.usage.ok_is_channelselection.value and hasattr(self, "openServiceList"):
@@ -1484,7 +1472,7 @@ class InfoBarSeek:
 		if not self.isSeekable():
 			SystemInfo["SeekStatePlay"] = False
 			if os.path.exists("/proc/stb/lcd/symbol_hdd"):
-				open("/proc/stb/lcd/symbol_hdd", "w").write("0")   
+				open("/proc/stb/lcd/symbol_hdd", "w").write("0")
 			if os.path.exists("/proc/stb/lcd/symbol_hddprogress"):
 				open("/proc/stb/lcd/symbol_hddprogress", "w").write("0")
 			self["SeekActions"].setEnabled(False)
