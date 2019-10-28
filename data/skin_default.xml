@@ -761,6 +761,8 @@ self.autoResize()
 		<widget name="text" position="65,8" size="520,0" font="Regular;22" transparent="1"/>
 		<widget name="ErrorPixmap" pixmap="icons/input_error.png" position="5,5" size="53,53" alphatest="on"/>
 		<widget name="QuestionPixmap" pixmap="icons/input_question.png" position="5,5" size="53,53" alphatest="on"/>
+		<widget name="WarningPixmap" pixmap="icons/input_question.png" position="5,5" size="53,53" alphatest="on"/>
+		<widget name="autoresize" position="0,0" size="0,0" noWrap="1"/>
 		<widget name="InfoPixmap" pixmap="icons/input_info.png" position="5,5" size="53,53" alphatest="on"/>
 		<widget name="list" position="100,100" size="480,375"/>
 		<applet type="onLayoutFinish">
@@ -943,8 +945,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 			<!-- Network Mounts Menu -->
 	<screen name="NetworkMountsMenu" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -953,10 +953,25 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 		<widget name="menulist" position="10,55" size="540,300" zPosition="10" scrollbarMode="showOnDemand" />
 		<widget source="introduction" render="Label" position="10,360" size="540,300" font="Regular;19" halign="center" valign="center" transparent="1" />
 	</screen>
-	<!-- Network Service Setup Configuracion TELNET -->
+	<!-- Network Afp -->
+	<screen name="NetworkAfp" position="center,center" size="560,460">
+		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget name="lab1" position="20,90" size="150,30" font="Regular;20" valign="center" transparent="0"/>
+		<widget name="labactive" position="180,90" size="250,30" font="Regular;20" valign="center" transparent="0"/>
+		<widget name="lab2" position="20,160" size="150,30" font="Regular;20" valign="center" transparent="0"/>
+		<widget name="labstop" position="180,160" size="100,30" font="Regular;20" valign="center" halign="center" backgroundColor="#ff4A3C"/>
+		<widget name="labrun" position="180,160" size="100,30" zPosition="1" font="Regular;20" valign="center"  halign="center" backgroundColor="#56C856"/>
+		<ePixmap pixmap="buttons/red.png" position="0,0" size="140,40" alphatest="on" />
+		<widget name="key_red" font="Regular;20" halign="center" position="-2,1" size="140,40" transparent="1" valign="center" zPosition="10" />
+		<ePixmap pixmap="buttons/green.png" position="140,0" size="140,40" alphatest="on" />
+		<widget name="key_green" font="Regular;20" halign="center" position="140,0" size="140,40" transparent="1" valign="center" zPosition="10" />
+		<ePixmap pixmap="buttons/yellow.png" position="280,0" size="140,40" alphatest="on" />
+		<widget name="key_yellow" font="Regular;20" halign="center" position="280,1" size="140,40" transparent="1" valign="center" zPosition="10" />
+	</screen>
+	<!-- Network Service Ftp Telnet -->
 	<screen name="NetworkServiceSetup" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -970,27 +985,8 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 		<ePixmap pixmap="buttons/yellow.png" position="280,0" size="140,40" alphatest="on" />
 		<widget name="key_yellow" font="Regular;20" halign="center" position="280,1" size="140,40" transparent="1" valign="center" zPosition="10" />
 	</screen>
-	<!-- Network Ftp -->
-	<screen name="NetworkFtp" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
-		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
-			<convert type="ClockToText">Default</convert>
-		</widget>
-		<widget name="lab1" position="20,30" size="300,80" font="Regular;20" valign="center" transparent="1"/>
-		<widget name="lab2" position="20,150" size="150,30" font="Regular;20" valign="center" transparent="1"/>
-		<widget name="labactive" position="180,90" size="250,30" font="Regular;20" valign="center" transparent="0"/>
-		<widget name="labstop" position="170,150" size="100,30" font="Regular;20" valign="center"  halign="center" backgroundColor="#ff4A3C"/>
-		<widget name="labrun" position="170,150" size="100,30" zPosition="1" font="Regular;20" valign="center"  halign="center" backgroundColor="#56C856"/>
-		<ePixmap pixmap="buttons/red.png" position="0,0" size="140,40" alphatest="on" />
-		<widget name="key_red" font="Regular;20" halign="center" position="-2,1" size="140,40" transparent="1" valign="center" zPosition="10" />
-		<ePixmap pixmap="buttons/green.png" position="140,0" size="140,40" alphatest="on" />
-		<widget name="key_green" font="Regular;20" halign="center" position="140,0" size="140,40" transparent="1" valign="center" zPosition="10" />
-	</screen>
 	<!-- Network Nfs -->
 	<screen name="NetworkNfs" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1008,8 +1004,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- Network Openvpn -->
 	<screen name="NetworkOpenvpn" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1029,8 +1023,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- Network Inadyn -->
 	<screen name="NetworkInadyn" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1063,8 +1055,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- Inadyn Setup -->
 	<screen name="InadynSetup" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1076,8 +1066,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- Inadyn Log -->
 	<screen name="InadynLog" position="center,center" size="590,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1085,8 +1073,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- Network Telnet -->
 	<screen name="NetworkTelnet" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1145,8 +1131,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- uShare Setup -->
 	<screen name="uShareSetup" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1160,8 +1144,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- uShare Selection -->
 	<screen name="uShareSelection" position="center,center" size="560,460" zPosition="3">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1216,8 +1198,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- MiniDLNA Setup -->
 	<screen name="MiniDLNASetup" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1251,8 +1231,6 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- Network Password -->
 	<screen name="NetworkPassword" position="center,center" size="560,460" zPosition="3">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -1270,10 +1248,8 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 		<widget name="description" position="5,380" size="550,55" font="Regular;18" valign="top"/>
 		<widget name="footnote" conditional="footnote" position="750,687" size="350,20" zPosition="1" font="Regular;22" transparent="1" />
 	</screen>
-	<!-- Network CIFS/Samba Ftp -->
+	<!-- Network CIFS/Samba -->
 	<screen name="NetworkSamba" position="center,center" size="560,460">
-		<eLabel backgroundColor="#21090909" position="0,0" size="560,460" zPosition="-1" />
-		<eLabel backgroundColor="#666666" position="0,430" size="560,2" zPosition="1"/>
 		<widget source="global.CurrentTime" render="Label" position="500,435" size="55,22" font="Regular;18" halign="right" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>

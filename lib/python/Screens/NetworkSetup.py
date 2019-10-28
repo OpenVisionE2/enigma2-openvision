@@ -50,7 +50,7 @@ class NSCommon:
 		self.close()
 
 	def installComplete(self, result = None, retval = None, extra_args = None):
-		self.feedscheck.close()	
+		self.feedscheck.close()
 		if self.reboot_at_end:
 			self.session.open(TryQuitMainloop, 2)
 		else:
@@ -532,7 +532,7 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		if self.IPv6ConfigEntry.value == True:
 			sockTypetcp = "tcp6"
 			sockTypeudp = "udp6"
-			
+
 		inetdData  = "# /etc/inetd.conf:  see inetd(8) for further informations.\n"
 		inetdData += "#\n"
 		inetdData += "# Internet server configuration database\n"
@@ -555,7 +555,7 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		inetdData += "#time	dgram	" + sockTypeudp + "	wait	root	internal\n"
 		inetdData += "ftp	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
 		inetdData += "#ftp	stream	" + sockTypetcp + "	nowait	root	ftpd	ftpd -w /\n"
-		inetdData += "telnet	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/telnetd	telnetd\n"			
+		inetdData += "telnet	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/telnetd	telnetd\n"
 		if fileExists("/usr/sbin/smbd"):
 			inetdData += "#microsoft-ds	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/smbd	smbd\n"
 		if fileExists("/usr/sbin/nmbd"):
@@ -592,15 +592,15 @@ class InetdRecovery(Screen, ConfigListScreen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("Inetd recovery"))
-		
+
 		self["key_red"] = Label(_("Cancel"))
 		self["key_blue"] = Label(_("Recover"))
 
 		self.list = []
-		
+
 		self.ipv6 = NoSave(ConfigYesNo(default=False))
 		self.list.append(getConfigListEntry(_("IPv6"), self.ipv6))
-		
+
 		ConfigListScreen.__init__(self, self.list)
 
 		self["OkCancelActions"] = HelpableActionMap(self, "OkCancelActions", {
@@ -610,14 +610,14 @@ class InetdRecovery(Screen, ConfigListScreen):
 			"red": (self.close, _("Exit inetd recovery")),
 			"blue": (self.keyBlue, _("Recover inetd")),
 		})
-		
+
 	def keyBlue(self):
 		sockTypetcp = "tcp"
 		sockTypeudp = "udp"
 		if self.ipv6.value:
 			sockTypetcp = "tcp6"
 			sockTypeudp = "udp6"
-			
+
 		inetdData  = "# /etc/inetd.conf:  see inetd(8) for further informations.\n"
 		inetdData += "#\n"
 		inetdData += "# Internet server configuration database\n"
@@ -650,16 +650,16 @@ class InetdRecovery(Screen, ConfigListScreen):
 
 		if fileExists("/usr/bin/transtreamproxy"):
 			inetdData += "8002	stream	" + sockTypetcp + "	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
-			
+
 		file("/etc/inetd.conf", "w").write(inetdData)
 
 		self.inetdRestart()
-		
+
 		self.session.open(MessageBox, _("Successfully restored /etc/inetd.conf!"), type = MessageBox.TYPE_INFO,timeout = 10)
 		self.close()
-		
+
 	def inetdRestart(self):
-		commands = []	
+		commands = []
 		if fileExists("/etc/init.d/inetd.busybox"):
 			commands.append('/etc/init.d/inetd.busybox restart')
 
@@ -1040,7 +1040,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		self["Statustext"] = StaticText()
 		self["statuspic"] = MultiPixmap()
 		self["statuspic"].hide()
-		self["devicepic"] = MultiPixmap()		
+		self["devicepic"] = MultiPixmap()
 
 		self.oktext = _("Press OK on your remote control to continue.")
 		self.reboottext = _("Your receiver will restart after pressing OK on your remote control.")
@@ -1204,7 +1204,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		self["Statustext"].setText(_("Link:"))
 
 		if iNetwork.isWirelessInterface(self.iface):
-			self["devicepic"].setPixmapNum(1)		
+			self["devicepic"].setPixmapNum(1)
 			try:
 				from Plugins.SystemPlugins.WirelessLan.Wlan import iStatus
 			except:
@@ -1215,7 +1215,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		else:
 			iNetwork.getLinkState(self.iface,self.dataAvail)
 			self["devicepic"].setPixmapNum(0)
-		self["devicepic"].show()			
+		self["devicepic"].show()
 
 	def doNothing(self):
 		pass
@@ -1901,7 +1901,6 @@ class NetworkAfp(NSCommon,Screen):
 		self['key_red'] = Label(_("Remove service"))
 		self['key_green'] = Label(_("Start"))
 		self['key_yellow'] = Label(_("Autostart"))
-		self['key_blue'] = Label()
 		self['status_summary'] = StaticText()
 		self['autostartstatus_summary'] = StaticText()
 		self.Console = Console()
@@ -2045,7 +2044,7 @@ class NetworkFtp(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("FTP setup"))
-		self.skinName = "NetworkSamba"
+		self.skinName = "NetworkServiceSetup"
 		self.onChangedEntry = [ ]
 		self['lab1'] = Label(_("Autostart:"))
 		self['labactive'] = Label(_(_("Disabled")))
@@ -2433,7 +2432,7 @@ class NetworkTelnet(NSCommon,Screen):
 			commands.append('rm -f /usr/sbin/telnetd')
 		else:
 			commands.append('ln -s /bin/busybox.nosuid /usr/sbin/telnetd')
-		self.Console.eBatch(commands, self.StartStopCallback, debug=True)	
+		self.Console.eBatch(commands, self.StartStopCallback, debug=True)
 
 	def updateService(self):
 		import process
@@ -3633,7 +3632,7 @@ class NetworkPassword(ConfigListScreen, Screen):
 	def newRandom(self):
 		self.password.value = self.GeneratePassword()
 		self["config"].invalidateCurrent()
-	
+
 	def updateList(self):
 		self.password = NoSave(ConfigPassword(default=""))
 		instructions = _("You must set a root password in order to be able to use network services,"
@@ -3642,10 +3641,10 @@ class NetworkPassword(ConfigListScreen, Screen):
 		self['config'].list = self.list
 		self['config'].l.setList(self.list)
 
-	def GeneratePassword(self): 
+	def GeneratePassword(self):
 		passwdChars = string.letters + string.digits
 		passwdLength = 10
-		return ''.join(Random().sample(passwdChars, passwdLength)) 
+		return ''.join(Random().sample(passwdChars, passwdLength))
 
 	def SetPasswd(self):
 		password = self.password.value
