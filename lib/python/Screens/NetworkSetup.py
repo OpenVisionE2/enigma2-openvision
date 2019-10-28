@@ -1960,7 +1960,7 @@ class NetworkAfp(NSCommon,Screen):
 			cb(title, status_summary, autostartstatus_summary)
 
 
-class NetworkSABnzbd(Screen):
+class NetworkSABnzbd(NSCommon,Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("SABnzbd setup"))
@@ -1974,7 +1974,6 @@ class NetworkSABnzbd(Screen):
 		self['key_red'] = Label(_("Remove service"))
 		self['key_green'] = Label(_("Start"))
 		self['key_yellow'] = Label(_("Autostart"))
-		self['key_blue'] = Label()
 		self['status_summary'] = StaticText()
 		self['autostartstatus_summary'] = StaticText()
 		self.Console = Console()
