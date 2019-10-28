@@ -256,10 +256,6 @@ class InfoBarShowHide(InfoBarScreenSaver):
 		self.__state = self.STATE_SHOWN
 		self.__locked = 0
 
-		self.DimmingTimer = eTimer()
-		self.DimmingTimer.callback.append(self.doDimming)
-		self.unDimmingTimer = eTimer()
-		self.unDimmingTimer.callback.append(self.unDimming)
 		self.hideTimer = eTimer()
 		self.hideTimer.callback.append(self.doTimerHide)
 		self.hideTimer.start(5000, True)
@@ -305,35 +301,10 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 	def __onHide(self):
 		self.__state = self.STATE_HIDDEN
-		self.resetAlpha()
 		if self.actualSecondInfoBarScreen:
 			self.actualSecondInfoBarScreen.hide()
 		for x in self.onShowHideNotifiers:
 			x(False)
-
-	def resetAlpha(self):
-		if config.usage.show_infobar_do_dimming.value and self.lastResetAlpha is False:
-			self.unDimmingTimer.start(300, True)
-
-	def doDimming(self):
-		if config.usage.show_infobar_do_dimming.value:
-			self.dimmed = int(int(self.dimmed) - 1)
-		else:
-			self.dimmed = 0
-		self.DimmingTimer.stop()
-		self.doHide()
-
-	def unDimming(self):
-		self.unDimmingTimer.stop()
-		self.doWriteAlpha(config.av.osd_alpha.value)
-
-	def doWriteAlpha(self, value):
-		if SystemInfo["CanChangeOsdAlpha"]:
-			open("/proc/stb/video/alpha", "w").write(str(value))
-			if value == config.av.osd_alpha.value:
-				self.lastResetAlpha = True
-			else:
-				self.lastResetAlpha = False
 
 	def toggleShowLong(self):
 		if not config.usage.ok_is_channelselection.value:
@@ -440,14 +411,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 			self.hideTimer.stop()
 
 	def unlockShow(self):
-		if config.usage.show_infobar_do_dimming.value and self.lastResetAlpha is False:
-			self.doWriteAlpha(config.av.osd_alpha.value)
-		try:
-			self.__locked -= 1
-		except:
-			self.__locked = 0
-		if self.__locked  <0:
-			self.__locked = 0
+		self.__locked -= 1
 		if self.execing:
 			self.startHideTimer()
 
@@ -1761,11 +1725,6 @@ class InfoBarPVRState:
 	def _mayShow(self):
 		if self.shown and self.seekstate != self.SEEK_STATE_PLAY:
 			self.pvrStateDialog.show()
-		if self.shown and self.seekstate != self.SEEK_STATE_EOF:
-			self.DimmingTimer.stop()
-			self.doWriteAlpha(config.av.osd_alpha.value)
-			self.pvrStateDialog.show()
-			self.startHideTimer()
 
 	def __playStateChanged(self, state):
 		playstateString = state[3]
