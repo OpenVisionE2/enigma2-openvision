@@ -26,7 +26,7 @@ from Components.FileList import MultiFileSelectList
 from Screens.VirtualKeyBoard import VirtualKeyBoard
 import string
 import glob
-from Screens.InputBox import InputBox
+import fnmatch
 from Components.ScrollLabel import ScrollLabel
 from os import remove, unlink, rename
 
@@ -2195,9 +2195,6 @@ class NetworkOpenvpn(NSCommon,Screen):
 		self['lab2'] = Label(_("Current status:"))
 		self['labstop'] = Label(_("Stopped"))
 		self['labrun'] = Label(_("Running"))
-		self['labconfig'] = Label(_("Config file name (ok to change):"))
-		self['labconfigfilename']=Label(_("default"))
-		self.config_file=""
 		self['key_green'] = Label(_("Start"))
 		self['key_red'] = Label(_("Remove service"))
 		self['key_yellow'] = Label(_("Autostart"))
@@ -2205,7 +2202,7 @@ class NetworkOpenvpn(NSCommon,Screen):
 		self.Console = Console()
 		self.my_vpn_active = False
 		self.my_vpn_run = False
-		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.inputconfig, 'back': self.close, 'red': self.UninstallCheck, 'green': self.VpnStartStop, 'yellow': self.activateVpn, 'blue': self.Vpnshowlog})
+		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'red': self.UninstallCheck, 'green': self.VpnStartStop, 'yellow': self.activateVpn, 'blue': self.Vpnshowlog})
 		self.service_name = 'openvpn'
 		self.onLayoutFinish.append(self.InstallCheck)
 		self.reboot_at_end = False
@@ -2218,9 +2215,26 @@ class NetworkOpenvpn(NSCommon,Screen):
 
 	def VpnStartStop(self):
 		if not self.my_vpn_run:
-			self.Console.ePopen('/etc/init.d/openvpn start ' + self.config_file, self.StartStopCallback)
+			self.Console.ePopen('/etc/init.d/openvpn start', self.StartStopCallback)
 		elif self.my_vpn_run:
 			self.Console.ePopen('/etc/init.d/openvpn stop', self.StartStopCallback)
+
+	def StartStopCallback(self, result = None, retval = None, extra_args = None):
+		openvpnfile = '0'
+		if not os.path.exists('/etc/openvpn'):
+			os.makedirs('/etc/openvpn')
+		for file in os.listdir('/etc/openvpn'):
+ 			if fnmatch.fnmatch(file, '*.conf'):
+ 				print file
+ 				openvpnfile = '1'
+
+ 		if openvpnfile == '0':
+ 			self.message = self.session.open(MessageBox, _("No config to start, please check /etc/openvpn/ and try again."), type=MessageBox.TYPE_INFO, close_on_any_key=True)
+ 		else:
+ 			print "config in etc/openvpn/"
+
+		time.sleep(3)
+		self.updateService()
 
 	def activateVpn(self):
 		if ServiceIsEnabled('openvpn'):
@@ -2256,20 +2270,8 @@ class NetworkOpenvpn(NSCommon,Screen):
 		title = _("OpenVPN setup")
 		autostartstatus_summary = self['lab1'].text + ' ' + self['labactive'].text
 
-		self['labconfig'].show()
-
 		for cb in self.onChangedEntry:
 			cb(title, status_summary, autostartstatus_summary)
-
-	def inputconfig(self):
-		self.session.openWithCallback(self.askForWord, InputBox, title=_("Input config file name:"), text=" " * 20, maxSize=20, type=Input.TEXT)
-
-	def askForWord(self, word):
-		if word is None:
-			pass
-		else:
-			self.config_file=_(word)
-			self['labconfigfilename'].setText(self.config_file)
 
 
 class NetworkVpnLog(Screen):
@@ -2281,7 +2283,7 @@ class NetworkVpnLog(Screen):
 		self.Console = Console()
 		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'up': self['infotext'].pageUp, 'down': self['infotext'].pageDown})
 		strview = ''
-		self.Console.ePopen('tail /etc/openvpn/openvpn.log > /etc/openvpn/tmp.log')
+		self.Console.ePopen('tail /var/log/messages > /etc/openvpn/tmp.log')
 		time.sleep(1)
 		if fileExists('/etc/openvpn/tmp.log'):
 			f = open('/etc/openvpn/tmp.log', 'r')
