@@ -103,7 +103,7 @@ class AutoClientModeTimer:
 		atLeast = 0
 		if wake - now < 60:
 			atLeast = 60
-			print("[ChannelsImporter] ClientModeScheduler ClientModeonTimer onTimer occured at", strftime("%c", localtime(now)))
+			print("[ChannelsImporter] ClientModeScheduler ClientModeonTimer onTimer occurred at", strftime("%c", localtime(now)))
 			self.doClientMode(True)
 		self.clientmodedate(atLeast)
 
