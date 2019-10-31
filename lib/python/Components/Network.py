@@ -647,7 +647,7 @@ class Network:
 			module = os.path.basename(os.path.realpath(moduledir))
 			if module in ('ath_pci','ath5k'):
 				return 'madwifi'
-			if module in ('rt73','rt73'):
+			if module == 'rt73':
 				return 'ralink'
 			if module == 'zd1211b':
 				return 'zydas'
