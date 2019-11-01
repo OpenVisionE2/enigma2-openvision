@@ -1872,6 +1872,8 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 				path = item[0].getPath().rstrip('/')
 				meta = path + '.meta'
 				if os.path.isfile(meta):
+					# if .meta file is present don't rename files. Only set new name in .meta
+					name = "".join((newbasename, self.extension))
 					metafile = open(meta, "r+")
 					sid = metafile.readline()
 					oldtitle = metafile.readline()
@@ -1887,12 +1889,34 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 					else:
 						self.list.invalidateCurrentItem()
 					return
-				pathname,filename = os.path.split(path)
-				newpath = os.path.join(pathname, name)
+				# rename all files
 				msg = None
-				print "[MovieSelection] rename", path, "to", newpath
-				os.rename(path, newpath)
-				self.reloadList(sel = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + newpath))
+				path,filename = os.path.split(oldfilename)
+				if item[0].flags & eServiceReference.mustDescent: # directory
+					newfilename = os.path.join(path, newbasename)
+					print "[ML] rename dir", oldfilename, "to", newfilename
+					os.rename(oldfilename, newfilename)
+				else:
+					if oldfilename.endswith(self.extension):
+						oldbasename = oldfilename[:-len(self.extension)]
+					renamelist = []
+					dont_rename = False
+					for ext in ('.eit', self.extension + '.cuts', self.extension):
+						newfilename = os.path.join(path, newbasename) + ext
+						oldfilename = os.path.join(path, oldbasename) + ext
+						if not os.path.isfile(oldfilename): # .eit and .cuts maybe not present
+							continue
+						if not os.path.isfile(newfilename):
+							renamelist.append((oldfilename, newfilename))
+						else:
+							msg = _("The path %s already exists.") % newname
+							dont_rename = True
+							break
+					if not dont_rename:
+						for r in renamelist:
+							print "[ML] rename", r[0], "to", r[1]
+							os.rename(r[0], r[1])
+				self.reloadList(sel = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + newfilename))
 			except OSError, e:
 				print "[MovieSelection] Error %s:" % e.errno, e
 				if e.errno == 17:

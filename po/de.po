@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 19:04+0330\n"
+"POT-Creation-Date: 2019-11-01 18:35+0330\n"
 "PO-Revision-Date: 2019-07-24 20:23+0200\n"
 "Last-Translator: Pike_Bishop <alfredzngr023@gmail.com>\n"
 "Language-Team: Sfteam  angelo2807@hotmail.com\n"
@@ -42,13 +42,12 @@ msgstr ""
 "\n"
 "Konflikterkennung deaktiviert!"
 
-#, fuzzy
 msgid ""
 "\n"
 "Edit the update source address."
 msgstr ""
 "\n"
-"Upgrade-Quell-Adresse bearbeiten."
+"Update-Quell-Adresse bearbeiten."
 
 msgid ""
 "\n"
@@ -634,7 +633,7 @@ msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %Y %b %-d"
-msgstr "%a %e/%m  %-H:%M"
+msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %Y %b %d"
@@ -672,7 +671,7 @@ msgstr "%a %e/%m"
 
 #, fuzzy
 msgid "%a %b %-d"
-msgstr "%a %e/%m  %-H:%M"
+msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %b %-d %Y"
@@ -1572,8 +1571,9 @@ msgstr "Aktiviere TimeShift-Ende"
 msgid "Activate timeshift end and pause"
 msgstr "Aktiviere TimeShift-Ende und Pause"
 
+#, fuzzy
 msgid "Active"
-msgstr ""
+msgstr "Relativ"
 
 msgid "Adapter settings"
 msgstr "Adapter-Einstellungen"
@@ -1911,11 +1911,11 @@ msgstr "Arabisch"
 
 #, fuzzy, python-format
 msgid "Are you ready to install \"%s\" ?"
-msgstr "Installation zurücksetzen."
+msgstr "Wollen Sie Plugins installieren?"
 
 #, fuzzy, python-format
 msgid "Are you ready to remove \"%s\" ?"
-msgstr "Zurück zur Videoliste"
+msgstr "Soll dieser Eintrag wirklich gelöscht werden?"
 
 msgid "Are you sure to purge all deleted userbouquets?"
 msgstr "Sind Sie sicher, alle gelöschten Userbouquets zu entfernen?"
@@ -1953,7 +1953,9 @@ msgstr ""
 
 #, fuzzy
 msgid "Are you sure you want to delete the EPG data from:\n"
-msgstr "Sind Sie sicher, dass Sie diesen Assistenten verlassen wollen?"
+msgstr ""
+"Sind Sie sicher, dass Sie die folgende Sicherung\n"
+"löschen wollen:\n"
 
 #, fuzzy
 msgid ""
@@ -2177,7 +2179,6 @@ msgstr "Automatisch"
 msgid "Automatic Scan"
 msgstr "Automatische Suche"
 
-#, fuzzy
 msgid "Automatic bookmarks"
 msgstr "Automatische Lesezeichen"
 
@@ -2402,7 +2403,7 @@ msgstr "Blau"
 
 #, fuzzy
 msgid "Blue long"
-msgstr "Log löschen"
+msgstr "Blau"
 
 msgid "Bolivia (Plurinational State of)"
 msgstr "Bolivien (Plurinationaler Staat)"
@@ -2786,9 +2787,6 @@ msgstr "Kanäle"
 msgid "Channels and EPG"
 msgstr "Kanäle und EPG"
 
-msgid "Channels only"
-msgstr "Nur Kanäle"
-
 msgid "Chap."
 msgstr "Kap."
 
@@ -2862,7 +2860,7 @@ msgstr "Favoritenliste auswählen"
 
 #, fuzzy
 msgid "Choose style of main menus"
-msgstr "VCR-SCART im Hauptmenü anzeigen"
+msgstr "Mediaplayer im Hauptmenü anzeigen"
 
 msgid "Choose the CI protocol operation mode for standard CI or CI Plus."
 msgstr ""
@@ -3066,9 +3064,6 @@ msgstr "Konfiguriere"
 
 msgid "Config Scan Details"
 msgstr "Konfiguriere Suchdetails"
-
-msgid "Config file name (ok to change):"
-msgstr ""
 
 msgid "Config resolution of pictures"
 msgstr "Auflösung von Bildern konfigurieren"
@@ -3597,7 +3592,6 @@ msgstr "Gestrichelte Linie für diesen Kanal verdecken"
 msgid "Create DVD-ISO"
 msgstr "DVD-ISO erstellen"
 
-#, fuzzy
 msgid "Create directory"
 msgstr "Verzeichnis erstellen"
 
@@ -4059,9 +4053,8 @@ msgstr "Verzögerung in Millisekunden bevor Text im Display anfängt zu scrollen
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Verzögerung in Millisekunden zwischen Scroll-Zeichen auf dem Display."
 
-#, fuzzy
 msgid "Delay:"
-msgstr "Keine Verzögerung"
+msgstr ""
 
 msgid "Delete"
 msgstr "Löschen"
@@ -4161,16 +4154,15 @@ msgstr "Erkannte Tuner:"
 msgid "Device"
 msgstr "Kanal"
 
-#, fuzzy
 msgid "Device mounts"
-msgstr "Kanal"
+msgstr ""
 
 msgid "Devicename:"
 msgstr "Gerätename:"
 
 #, fuzzy
 msgid "Devices"
-msgstr "Kanal"
+msgstr "Kanäle"
 
 msgid "DiSEqC"
 msgstr "DiSEqC"
@@ -4448,7 +4440,6 @@ msgstr "Wollen Sie die Wiedergabe an der letzten Stelle fortsetzen?"
 msgid "Do you want to select a different skin?"
 msgstr "Wollen Sie einen anderen Skin auswählen?"
 
-#, fuzzy
 msgid "Do you want to update the package:\n"
 msgstr "Wollen Sie das Paket aktualisieren:\n"
 
@@ -4505,7 +4496,7 @@ msgstr "Nicht umschalten und Timer löschen"
 msgid "Done"
 msgstr "ausgeführt"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Done - Installed, updated or removed %d package (%s)"
 msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Abgeschlossen - %d Paket installiert, aktualisiert oder entfernt (%s)"
@@ -4600,9 +4591,6 @@ msgstr "EPG Sprachwahl 2"
 msgid "EPG location"
 msgstr "EPG-Auswahl"
 
-msgid "EPG only"
-msgstr "EPG only"
-
 msgid "EPG selection"
 msgstr "EPG-Auswahl"
 
@@ -4615,7 +4603,7 @@ msgstr "FEHLER - Suche fehlgeschlagen (%s)!"
 
 #, python-format
 msgid "ERROR downloading file %s"
-msgstr ""
+msgstr "Fehler beim Herunterladen der Datei% s"
 
 msgid "East"
 msgstr "Ost"
@@ -4659,7 +4647,6 @@ msgstr "Timer editieren"
 msgid "Edit title"
 msgstr "Titel ändern"
 
-#, fuzzy
 msgid "Edit update source url."
 msgstr "Update Quell-URL bearbeiten."
 
@@ -4963,9 +4950,9 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Fehler"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error %s"
-msgstr "Fehler"
+msgstr "Fehler% s"
 
 msgid "Error code"
 msgstr "Fehler-Code"
@@ -5003,13 +4990,10 @@ msgid "Error stop stream!"
 msgstr "Fehler beim Stoppen des Streams!"
 
 msgid "Error when writing epg.dat on server"
-msgstr ""
+msgstr "Fehler beim Schreiben von epg.dat auf Server"
 
-#, fuzzy
 msgid "Error while retreiving epg.dat from server"
-msgstr ""
-"Fehler beim Wiederherstellen der Reserve-Timer-Informationen\n"
-"% s"
+msgstr "Fehler beim Abrufen von epg.data vom Server"
 
 #, python-format
 msgid ""
@@ -5019,11 +5003,8 @@ msgstr ""
 "Fehler beim Wiederherstellen der Reserve-Timer-Informationen\n"
 "% s"
 
-#, fuzzy
 msgid "Error while retreiving location of epg.dat on server"
-msgstr ""
-"Fehler beim Wiederherstellen der Reserve-Timer-Informationen\n"
-"% s"
+msgstr "Fehler beim Wiederherstellen des Standorts von epg.dat auf dem Server"
 
 #, python-format
 msgid ""
@@ -5893,7 +5874,7 @@ msgstr "HDMI HDR Typ"
 
 #, fuzzy
 msgid "HDMI recording"
-msgstr "Aufnahme"
+msgstr "Aufnahme beenden"
 
 msgid "HDMI-CEC Source Active"
 msgstr "HDMI-CEC-Quelle aktiv"
@@ -6162,9 +6143,8 @@ msgstr "IP-Adresse"
 msgid "IP of fallback remote receiver"
 msgstr "IP des Reserve-Receivers"
 
-#, fuzzy
 msgid "IP:"
-msgstr "I"
+msgstr ""
 
 msgid "IPv6"
 msgstr ""
@@ -6190,7 +6170,7 @@ msgid "Icons"
 msgstr "Symbole"
 
 msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
-msgstr ""
+msgstr "Wenn aktiviert, dann wird das Lesezeichen mit Aufnahmeverzeichniss aktualisiert."
 
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Wenn aktiviert, zeigt das Display 12 Zeichen statt 8, aber nur in Latein-1 / Translit."
@@ -6260,11 +6240,12 @@ msgstr "Image: "
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
 msgstr "Importieren Sie Kanäle und / oder EPG von der Empfänger-URL des Empfängers, auch wenn der Receiver den Standby-Modus verlässt"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Importiert die Kanäle und / oder den EPG der Receiver-URL des Remote-Receivers, beim Booten des Receivers."
-
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "Importiere Kanäle und / oder EPG von Remote-Receiver-URL, wenn Receiver oder Enigma2 neu gestartet wird."
+
+#, fuzzy
+msgid "Import channels from remote receiver URL when receiver is booted"
+msgstr "Importiert die Kanäle und / oder den EPG der Receiver-URL des Remote-Receivers, beim Booten des Receivers."
 
 #, python-format
 msgid "Import from fallback tuner failed, %s"
@@ -6409,10 +6390,6 @@ msgstr "Eingabe"
 
 msgid "Input Stream ID"
 msgstr "Input Stream ID"
-
-#, fuzzy
-msgid "Input config file name:"
-msgstr "Lange Dateinamen"
 
 msgid "Input device setup"
 msgstr "Eingabegeräte Setup"
@@ -6739,7 +6716,6 @@ msgstr "Letzte Konfiguration"
 msgid "Last speed"
 msgstr "Letzte Geschwindigkeit"
 
-#, fuzzy
 msgid "Last update: "
 msgstr "Letztes Update: "
 
@@ -6750,9 +6726,8 @@ msgstr ""
 msgid "Latest Commits"
 msgstr "Letzte Änderungen"
 
-#, fuzzy
 msgid "Latest update log"
-msgstr "Letztes Upgrade-Protokoll"
+msgstr "Letztes Update-Protokoll"
 
 msgid "Latitude"
 msgstr "Breitengrad"
@@ -6948,7 +6923,7 @@ msgstr "Adapter-Einstellungen"
 
 #, fuzzy
 msgid "MAC address setup"
-msgstr "Adapter-Einstellungen"
+msgstr "Festplatten-Einstellungen"
 
 msgid "MAC:"
 msgstr ""
@@ -7434,9 +7409,8 @@ msgstr "NEIN"
 msgid "N/A"
 msgstr "N/V"
 
-#, fuzzy
 msgid "NCam Config info"
-msgstr " ECM Info"
+msgstr ""
 
 #, fuzzy
 msgid "NCam ECM info"
@@ -7469,7 +7443,7 @@ msgstr "Einf."
 
 #, fuzzy
 msgid "NFS setup"
-msgstr "Bild im Bild (PiP) - Einstellung"
+msgstr "Einstellungen"
 
 msgid "NIM & Type"
 msgstr "NIM & Typ"
@@ -7655,6 +7629,9 @@ msgstr "Keine aktiven Subservices verfügbar."
 msgid "No age block"
 msgstr "Keine Altersbeschränkung"
 
+msgid "No config to start, please check /etc/openvpn/ and try again."
+msgstr ""
+
 #, fuzzy
 msgid "No connection"
 msgstr "Keine Verbindung"
@@ -7679,7 +7656,7 @@ msgid "No displayable files on this medium found!"
 msgstr "Keine anzeigbaren Dateien auf diesem Medium gefunden!"
 
 msgid "No epg.dat file found server"
-msgstr ""
+msgstr "Keine epg.dat Datei gefunden Server"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Keine EPG-Daten gefunden. Starte unbegrenzte Aufnahme."
@@ -7952,9 +7929,8 @@ msgstr "OSD-Einstellungen"
 msgid "OSD transparency"
 msgstr "OSD-Transparenz"
 
-#, fuzzy
 msgid "OScam Config info"
-msgstr " ECM Info"
+msgstr ""
 
 #, fuzzy
 msgid "OScam ECM info"
@@ -7967,9 +7943,8 @@ msgstr ""
 msgid "OScam Info - Configuration"
 msgstr "Tuner-Konfiguration"
 
-#, fuzzy
 msgid "OScam Info - Main Menu"
-msgstr "Tuner-Konfiguration"
+msgstr ""
 
 msgid "OScam Info Main Menu"
 msgstr ""
@@ -8040,9 +8015,8 @@ msgstr "Nur beim Start"
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Wählen Sie nur “Ja”, wenn Sie einen Multiswitch verwenden, der ein DiSEqC Port-A-Befehlssignal benötigt. Für alle anderen Setups wählen Sie ‘Nein’."
 
-#, fuzzy
 msgid "Open Vision enigma2 image"
-msgstr "Python Version: "
+msgstr ""
 
 msgid "Open Vision module: "
 msgstr ""
@@ -8106,7 +8080,6 @@ msgstr "Gesamtfortschritt: "
 msgid "Overscan wizard"
 msgstr "Overscan Assistent"
 
-#, fuzzy
 msgid "Overwrite configuration files during software update?"
 msgstr "Konfigurationsdateien beim Software-Update überschreiben?"
 
@@ -8719,7 +8692,7 @@ msgstr "Power Menü"
 
 #, fuzzy
 msgid "PowerTimer list"
-msgstr "Timer bearbeiten"
+msgstr "Senderliste anzeigen"
 
 #, fuzzy
 msgid "Predefined"
@@ -9009,7 +8982,7 @@ msgstr ""
 
 #, fuzzy
 msgid "REC symbol in Standby"
-msgstr "Die LED im Standy-Modus ausschalten."
+msgstr "Auch in Standby"
 
 msgid "REC symbol in use"
 msgstr ""
@@ -9102,11 +9075,9 @@ msgstr "Wirklich bei Index% 2d für die aktuelle Position speichern?"
 msgid "Really update the front panel and reboot now?"
 msgstr "Wollen Sie den Frontprozessor wirklich aktualisieren und anschließend neu starten?"
 
-#, fuzzy
 msgid "Really update the frontprocessor and reboot now?"
 msgstr "Wollen Sie den Frontprozessor wirklich aktualisieren und anschließend neu starten?"
 
-#, fuzzy
 msgid "Really update your settop box and reboot now?"
 msgstr "Wollen Sie Ihren Receiver wirklich aktualisieren und anschließend neu starten?"
 
@@ -9159,11 +9130,11 @@ msgstr "Aufnahme"
 
 #, fuzzy
 msgid "Recover inetd"
-msgstr "Benutzermodus"
+msgstr "Aufnahme Einstellungen"
 
 #, fuzzy
 msgid "Recovery mode"
-msgstr "Benutzermodus"
+msgstr "[Verschiebemodus]"
 
 msgid "Red"
 msgstr "Rot"
@@ -9224,7 +9195,7 @@ msgstr "Bouquets und Sender neu laden…"
 
 #, fuzzy
 msgid "Remaining"
-msgstr "Laufen"
+msgstr "Warnung"
 
 msgid "Remaining & Elapsed"
 msgstr ""
@@ -9272,7 +9243,6 @@ msgstr "Entferne abgeschlossene Timer nach (Tage)"
 msgid "Remove currently selected title"
 msgstr "Entferne aktuell ausgewählten Titel"
 
-#, fuzzy
 msgid "Remove directory"
 msgstr "Verzeichnis entfernen"
 
@@ -9284,7 +9254,7 @@ msgstr "Plugins entfernen"
 
 #, fuzzy
 msgid "Remove service"
-msgstr "Kein Sender"
+msgstr "Aktueller Sender"
 
 msgid "Remove texts for the hearing impaired from external subtitles (instrumental music or environmental sounds, e.g., when a doorbell rings or a gun shot is heard)."
 msgstr ""
@@ -9325,7 +9295,6 @@ msgstr "Wiederholungstyp"
 msgid "Repeat leave standby messages"
 msgstr "Wiederholen Sie die Standby-Nachrichten"
 
-#, fuzzy
 msgid "Repeat playlist"
 msgstr "Wiederholung der Wiedergabeliste"
 
@@ -9454,7 +9423,7 @@ msgstr "Einstellungen wiederherstellen"
 
 #, fuzzy
 msgid "Restore inetd"
-msgstr "Einstellungen wiederherstellen"
+msgstr "Zurückspielen"
 
 #, fuzzy
 msgid "Restore inetd.conf"
@@ -9577,7 +9546,7 @@ msgstr ""
 
 #, fuzzy
 msgid "SABnzbd setup"
-msgstr "Bild im Bild (PiP) - Einstellung"
+msgstr "Einrichtungsassistent"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC-optimierter Suchbereich"
@@ -9722,18 +9691,15 @@ msgstr "Speichern und Timeshift stoppen"
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
-#, fuzzy
 msgid "Save every (in hours)"
-msgstr "Überall"
+msgstr ""
 
-#, fuzzy
 msgid "Save last directory on exit"
 msgstr "Anfangsverzeichnis beim Beenden merken"
 
 msgid "Save playlist"
 msgstr "Wiedergabeliste speichern"
 
-#, fuzzy
 msgid "Save playlist on exit"
 msgstr "Wiedergabeliste beim Beenden speichern"
 
@@ -9917,9 +9883,8 @@ msgstr "Vorwärts spulen (Zeit eingeben)"
 msgid "Seems a background update check is in progress, please try again later."
 msgstr "Keine Aktualisierungen verfügbar. Bitte später nochmal versuchen."
 
-#, fuzzy
 msgid "Seems a background update check is in progress, please wait a few minutes and then try again."
-msgstr "Keine Aktualisierungen verfügbar. Bitte später nochmal versuchen."
+msgstr ""
 
 msgid "Seems internet connection down, Or TMBD Plugin not on feed."
 msgstr ""
@@ -10194,11 +10159,9 @@ msgstr "Wählen Sie den Zeichensatz für die Shift Tastatur aus"
 msgid "Select the virtual keyboard shifted character set for the next character only"
 msgstr "Shift nur für das nächste Zeichen benutzen"
 
-#, fuzzy
 msgid "Select update source"
 msgstr "Wählen Sie eine Update-Quelle"
 
-#, fuzzy
 msgid "Select update source to edit."
 msgstr "Wählen Sie eine Update-Quelle zum Bearbeiten."
 
@@ -10440,7 +10403,7 @@ msgstr "System"
 
 #, fuzzy
 msgid "Set the MAC address of your receiver.\n"
-msgstr "Geben Sie ein, wenn Sie sich in der östlichen oder westlichen Hemisphäre befinden."
+msgstr "Testen der Netzwerkkonfiguration des Receivers.\n"
 
 msgid "Set the User ID of the OpenWebif from your fallback tuner"
 msgstr "Fügen Sie die User ID des OpenWebIf vom Reserve-Tuner ein"
@@ -10466,9 +10429,8 @@ msgstr "Bestimmen Sie den Port vom OpenWebIf des Reserve-Tuners"
 msgid "Set the repeat interval of the schedule."
 msgstr "Aktualisierungsrate des Bildschirms."
 
-#, fuzzy
 msgid "Set the scrolling speed of text on the front panel display, this is used by software renderer in some skins."
-msgstr "Kontrast des Frontdisplays."
+msgstr ""
 
 #, fuzzy
 msgid "Set the scrolling speed of text on the front panel display."
@@ -10626,7 +10588,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Show MiniTV in the front panel display"
-msgstr "Picons im Display anzeigen"
+msgstr "Anpassung der Helligkeit des Frontdisplays."
 
 msgid "Show PIP"
 msgstr "PIP (Bild in Bild) anzeigen"
@@ -10742,7 +10704,6 @@ msgstr "Infoleiste beim Spulen anzeigen"
 msgid "Show latest commits"
 msgstr "Letzte Änderungen anzeigen"
 
-#, fuzzy
 msgid "Show latest update log"
 msgstr "Protokoll der letzten Aktualisierung anzeigen"
 
@@ -10752,9 +10713,8 @@ msgstr "Verhalten beim Stoppen eines Films"
 
 #, fuzzy
 msgid "Show log"
-msgstr "Infos anzeigen"
+msgstr "Hilfe anzeigen"
 
-#, fuzzy
 msgid "Show media player on main menu"
 msgstr "Mediaplayer im Hauptmenü anzeigen"
 
@@ -10796,7 +10756,6 @@ msgstr "Benachrichtigung anzeigen, wenn Importkanäle erfolgreich waren"
 msgid "Show or hide the extended description, (skin dependant)."
 msgstr "Erweiterte Beschreibung anzeigen"
 
-#, fuzzy
 msgid "Show packages to be updated"
 msgstr "Zu aktualisierende Pakete"
 
@@ -11201,7 +11160,6 @@ msgstr "Sortiere Erweiterungsliste nach Standard?"
 msgid "Sort time"
 msgstr "Sortiere nach Zeit"
 
-#, fuzzy
 msgid "Sorting of playlists"
 msgstr "Sortierung der Wiedergabeliste"
 
@@ -11347,7 +11305,6 @@ msgstr "Test starten"
 msgid "Start cut"
 msgstr "Test starten"
 
-#, fuzzy
 msgid "Start directory"
 msgstr "Anfangsverzeichnis"
 
@@ -11663,7 +11620,6 @@ msgstr "Kanal hochschalten"
 msgid "Switch to TV mode"
 msgstr "Wechsel zum TV Modus"
 
-#, fuzzy
 msgid "Switch to bookmarks"
 msgstr "Gehe zu den Lesezeichen"
 
@@ -12191,7 +12147,7 @@ msgstr "Mit dieser Option können Sie die Grüntöne im Bild verstärken."
 
 #, fuzzy
 msgid "This option allows you choose how to display the time or nothing in Standby"
-msgstr "Mit dieser Option können Sie das Display ausschalten."
+msgstr "Mit dieser Option können Sie alle Symbole auf dem Display anzeigen."
 
 msgid "This option allows you enable smoothing filter to control the dithering process."
 msgstr "Mit dieser Option können Sie den Glättungsfilter aktivieren, um den Dithering-Prozess zu steuern."
@@ -12652,7 +12608,7 @@ msgstr "Transponder"
 
 #, fuzzy
 msgid "Transponder time"
-msgstr "Transponder-Info anzeigen"
+msgstr "Transponder"
 
 msgid "Transport Stream Type"
 msgstr "Transportstreamtyp"
@@ -12823,6 +12779,7 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr "Es konnten nicht die benötigten Verzeichnisse auf dem Medium erstellt werden - Bitte überprüfen sie das Medium und versuchen sie es nochmal!"
 
+#, fuzzy
 msgid ""
 "Unattended upgrade in progress\n"
 "Please wait until your receiver reboots\n"
@@ -12916,7 +12873,6 @@ msgstr "Aktualisieren und neu starten"
 msgid "Update and reboot (recommended)"
 msgstr "Aktualisieren und neu starten (empfohlen)"
 
-#, fuzzy
 msgid "Update bookmarks"
 msgstr "Automatische Lesezeichen"
 
@@ -12958,9 +12914,8 @@ msgstr ""
 msgid "Updatefeed not available."
 msgstr "Update-Feed nicht verfügbar."
 
-#, fuzzy
 msgid "Updating"
-msgstr "Aktualisieren"
+msgstr "Aktualisiere"
 
 msgid "Updating software catalog"
 msgstr "Softwarekatalog wird aktualisiert."
@@ -13061,7 +13016,7 @@ msgstr "Kontrast des Frontdisplays."
 
 #, fuzzy
 msgid "Use slim screen"
-msgstr "Vollbild"
+msgstr "deaktiviere Introbild"
 
 #, fuzzy
 msgid "Use the alternative screen"
@@ -13505,7 +13460,6 @@ msgstr ""
 msgid "What type of service scan do you want?"
 msgstr "Welche Art von Service-Scan wollen Sie durchführen?"
 
-#, fuzzy
 msgid "When enabled enigma2 will load unlinked userbouquets. This means that userbouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are updated"
 msgstr "Wenn Sie diese Option aktivieren, werden alle vorhandenen Kanallisten geladen, auch wenn diese nicht in der bouquets.tv oder bouquets.radio verlinkt sind. Dies erlaubt Ihnen z.B. Ihre eigenen Kanallisten zu erhalten, wenn eine Aktualisierung von installierten Kanallisten erfolgt."
 
@@ -13989,7 +13943,6 @@ msgstr ""
 "Bitte warten Sie, bis Ihr Receiver neu startet\n"
 "Das kann einige Minuten dauern"
 
-#, fuzzy
 msgid ""
 "Your frontprocessor will be updated\n"
 "Please wait until your receiver reboots\n"
@@ -14272,9 +14225,8 @@ msgstr "nach"
 msgid "all"
 msgstr "alle"
 
-#, fuzzy
 msgid "alpha then oldest"
-msgstr "Umgekehrtes Alphabet"
+msgstr ""
 
 msgid "alphabetic"
 msgstr "Alphabet"
@@ -14285,9 +14237,8 @@ msgstr "Umgekehrtes Alphabet"
 msgid "alphabetical"
 msgstr "alphabetisch"
 
-#, fuzzy
 msgid "alpharev then newest"
-msgstr "Umgekehrtes Alphabet"
+msgstr ""
 
 msgid "alternative"
 msgstr "alternativ"
@@ -14381,9 +14332,8 @@ msgstr "Unten"
 msgid "broadcasting/press"
 msgstr "Rundsendung/Presse"
 
-#, fuzzy
 msgid "by Open Vision developers"
-msgstr "Python Version: "
+msgstr ""
 
 msgid "by date"
 msgstr "Aufnahmen nach Datum sortieren"
@@ -14476,9 +14426,6 @@ msgstr "Täglich"
 
 msgid "day"
 msgstr "Tag"
-
-msgid "default"
-msgstr "Standard"
 
 msgid "delete cut"
 msgstr "Schnitt löschen"
@@ -15138,7 +15085,7 @@ msgstr "Timeraufnahme-Verzeichnis"
 
 #, fuzzy
 msgid "reboot system"
-msgstr "System"
+msgstr "Dateisystem erstellen"
 
 msgid "receiver software because updates are available."
 msgstr "Receiver Software, weil Updates verfügbar sind."
@@ -15163,7 +15110,7 @@ msgstr "Nach dieser Position entfernen"
 
 #, fuzzy
 msgid "remove all"
-msgstr "Lesezeichen entfernen"
+msgstr "Eintrag entfernen"
 
 msgid "remove all alternatives"
 msgstr "Entferne alle Alternativen"
@@ -15250,7 +15197,7 @@ msgstr "Romanze"
 
 #, fuzzy
 msgid "running..."
-msgstr "Suche…"
+msgstr "Laufen"
 
 msgid "scan state"
 msgstr "Status"

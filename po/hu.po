@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 19:04+0330\n"
+"POT-Creation-Date: 2019-11-01 18:35+0330\n"
 "PO-Revision-Date: 2019-10-18 10:40+0200\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -1569,8 +1569,9 @@ msgstr "Időcsúsztatás végének aktiválása"
 msgid "Activate timeshift end and pause"
 msgstr "Időcsúsztatás végének aktiválása és megállítás"
 
+#, fuzzy
 msgid "Active"
-msgstr ""
+msgstr "Relatív"
 
 msgid "Adapter settings"
 msgstr "Adapter beállításai"
@@ -2175,9 +2176,8 @@ msgstr "Automatikus"
 msgid "Automatic Scan"
 msgstr "Automatikus keresés"
 
-#, fuzzy
 msgid "Automatic bookmarks"
-msgstr "Könyvjelzők frissítése"
+msgstr "Automatikus könyvjelzők"
 
 #, fuzzy
 msgid "Automatic refresh"
@@ -2400,7 +2400,7 @@ msgstr "Kék"
 
 #, fuzzy
 msgid "Blue long"
-msgstr "Napló törlése"
+msgstr "Kék"
 
 msgid "Bolivia (Plurinational State of)"
 msgstr "Bolívia"
@@ -2784,9 +2784,6 @@ msgstr "Csatornák"
 msgid "Channels and EPG"
 msgstr "Csatornák és EPG"
 
-msgid "Channels only"
-msgstr "Csak csatornák"
-
 msgid "Chap."
 msgstr "Fej."
 
@@ -3064,9 +3061,6 @@ msgstr "Konfigurálás"
 
 msgid "Config Scan Details"
 msgstr "Keresési adatok beállítása"
-
-msgid "Config file name (ok to change):"
-msgstr ""
 
 msgid "Config resolution of pictures"
 msgstr "Képek felbontásának beállítása"
@@ -4151,9 +4145,8 @@ msgstr "Csatlakoztatott tunerek:"
 msgid "Device"
 msgstr "Csatorna információ"
 
-#, fuzzy
 msgid "Device mounts"
-msgstr "Csatornák"
+msgstr ""
 
 msgid "Devicename:"
 msgstr "Eszköznév:"
@@ -4593,9 +4586,6 @@ msgstr "EPG nyelvválasztás 2."
 msgid "EPG location"
 msgstr "Elektronikus műsorújság"
 
-msgid "EPG only"
-msgstr "Csak EPG"
-
 msgid "EPG selection"
 msgstr "Elektronikus műsorújság"
 
@@ -4608,7 +4598,7 @@ msgstr "HIBA - nem sikerült a keresés (%s)!"
 
 #, python-format
 msgid "ERROR downloading file %s"
-msgstr ""
+msgstr "Hiba a %s fájl letöltésekor"
 
 msgid "East"
 msgstr "Kelet"
@@ -4951,9 +4941,9 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Hiba"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error %s"
-msgstr "Hiba"
+msgstr "Hiba %s"
 
 msgid "Error code"
 msgstr "Hibakód"
@@ -4987,13 +4977,10 @@ msgid "Error stop stream!"
 msgstr "A stream leállítása sikertelen!"
 
 msgid "Error when writing epg.dat on server"
-msgstr ""
+msgstr "Hiba az epg.dat szerverre írásakor"
 
-#, fuzzy
 msgid "Error while retreiving epg.dat from server"
-msgstr ""
-"Hiba történt a tartalék tuner időzítők letöltésekor\n"
-"%s"
+msgstr "Hiba az epg.dat szerverről történő beolvasásakor"
 
 #, python-format
 msgid ""
@@ -5003,11 +4990,8 @@ msgstr ""
 "Hiba történt a tartalék tuner időzítők letöltésekor\n"
 "%s"
 
-#, fuzzy
 msgid "Error while retreiving location of epg.dat on server"
-msgstr ""
-"Hiba történt a tartalék tuner időzítők letöltésekor\n"
-"%s"
+msgstr "Hiba az epg.dat helyének meghatározásakor a szerveren"
 
 #, python-format
 msgid ""
@@ -6172,7 +6156,7 @@ msgid "Icons"
 msgstr "Ikonok"
 
 msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
-msgstr ""
+msgstr "Ha engedélyezi, a könyvjelzők az új hely szerint lesznek frissítve amennyiben áthelyez vagy átmásol egy felvételt."
 
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr "Ha engedélyezi, a kijelző 12 karaktert jelenít meg 8 helyett, de csak latin-1/translit-et."
@@ -6242,11 +6226,12 @@ msgstr "Image: "
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
 msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címéből a készülék felébredésekor"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címéből a készülék bekapcsolásakor"
-
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
 msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címéből a kezelőfelület újraindításakor"
+
+#, fuzzy
+msgid "Import channels from remote receiver URL when receiver is booted"
+msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címéből a készülék bekapcsolásakor"
 
 #, python-format
 msgid "Import from fallback tuner failed, %s"
@@ -6391,10 +6376,6 @@ msgstr "Bevitel "
 
 msgid "Input Stream ID"
 msgstr "Stream ID bevitel"
-
-#, fuzzy
-msgid "Input config file name:"
-msgstr "Hosszú fájlnevek"
 
 msgid "Input device setup"
 msgstr "Beviteli eszközök beállítása"
@@ -7632,6 +7613,9 @@ msgstr "Nincs elérhető alcsatorna"
 msgid "No age block"
 msgstr "Nincs korhatár"
 
+msgid "No config to start, please check /etc/openvpn/ and try again."
+msgstr ""
+
 #, fuzzy
 msgid "No connection"
 msgstr "Nincs kapcsolat"
@@ -7656,7 +7640,7 @@ msgid "No displayable files on this medium found!"
 msgstr "A hordozón nem található lejátszható fájl!"
 
 msgid "No epg.dat file found server"
-msgstr ""
+msgstr "Nem található epg.dat fájl a szerveren"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Nincs esemény infó, felvétel korlátlanul."
@@ -13008,7 +12992,7 @@ msgstr "Az előlap kijelzőjének kontrasztja."
 
 #, fuzzy
 msgid "Use slim screen"
-msgstr "Teljes képernyő"
+msgstr "bejelentkező képernyő kikapcsolása"
 
 #, fuzzy
 msgid "Use the alternative screen"
@@ -14207,9 +14191,8 @@ msgstr "kikapcsolás: "
 msgid "all"
 msgstr "minden"
 
-#, fuzzy
 msgid "alpha then oldest"
-msgstr "fordított ABC"
+msgstr ""
 
 msgid "alphabetic"
 msgstr "ábécé szerinti rendezés"
@@ -14220,9 +14203,8 @@ msgstr "fordított ABC"
 msgid "alphabetical"
 msgstr "ABC sorrendben"
 
-#, fuzzy
 msgid "alpharev then newest"
-msgstr "fordított ABC"
+msgstr ""
 
 msgid "alternative"
 msgstr "alternatív"
@@ -14408,9 +14390,6 @@ msgstr "naponta"
 
 msgid "day"
 msgstr "nap"
-
-msgid "default"
-msgstr "alapértelmezett"
 
 msgid "delete cut"
 msgstr "vágópont törlése"
@@ -15095,7 +15074,7 @@ msgstr "e pont után mindent töröljön"
 
 #, fuzzy
 msgid "remove all"
-msgstr "könyvjelző eltávolítása"
+msgstr "bejegyzés törlése"
 
 msgid "remove all alternatives"
 msgstr "összes alternatíva törlése"
