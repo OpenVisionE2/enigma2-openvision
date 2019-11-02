@@ -2829,10 +2829,15 @@ class NetworkInadynLog(Screen):
 		 'up': self['infotext'].pageUp,
 		 'down': self['infotext'].pageDown})
 		strview = ''
-		if fileExists('/var/log/inadyn.log'):
-			f = open('/var/log/inadyn.log', 'r')
+		if fileExists('/tmp/inadyn_ip.cache'):
+			f = open('/tmp/inadyn_ip.cache', 'r')
 			for line in f.readlines():
 				strview += line
+			else:
+			    if fileExists('/tmp/inadyn.log'):
+			     f = open('/tmp/inadyn.log', 'r')
+			     for line in f.readlines():
+				 strview += line
 			f.close()
 		self['infotext'].setText(strview)
 
