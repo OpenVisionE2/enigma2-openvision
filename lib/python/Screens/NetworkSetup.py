@@ -2278,7 +2278,7 @@ class NetworkVpnLog(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("OpenVPN log"))
-		self.skinName = "NetworkInadynLog"
+		self.skinName = "NetworkServiceLog"
 		self['infotext'] = ScrollLabel('')
 		self.Console = Console()
 		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'up': self['infotext'].pageUp, 'down': self['infotext'].pageDown})
@@ -2377,7 +2377,7 @@ class NetworkZeroTierLog(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("ZeroTier log"))
-		self.skinName = "NetworkInadynLog"
+		self.skinName = "NetworkServiceLog"
 		self['infotext'] = ScrollLabel('')
 		self.Console = Console()
 		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'up': self['infotext'].pageUp, 'down': self['infotext'].pageDown})
@@ -2479,7 +2479,7 @@ class NetworkSambaLog(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("Samba log"))
-		self.skinName = "NetworkInadynLog"
+		self.skinName = "NetworkServiceLog"
 		self['infotext'] = ScrollLabel('')
 		self.Console = Console()
 		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'up': self['infotext'].pageUp, 'down': self['infotext'].pageDown})
@@ -3248,7 +3248,7 @@ class uShareSelection(Screen):
 class NetworkuShareLog(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.skinName = "NetworkInadynLog"
+		self.skinName = "NetworkServiceLog"
 		Screen.setTitle(self, _("uShare log"))
 		self['infotext'] = ScrollLabel('')
 		self.Console = Console()
@@ -3650,7 +3650,7 @@ class MiniDLNASelection(Screen):
 class NetworkMiniDLNALog(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.skinName = "NetworkInadynLog"
+		self.skinName = "NetworkServiceLog"
 		Screen.setTitle(self, _("MiniDLNA log"))
 		self['infotext'] = ScrollLabel('')
 		self.Console = Console()
