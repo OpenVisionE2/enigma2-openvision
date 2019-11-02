@@ -17,7 +17,7 @@
 			<id val="timermenu"/>
 			<item weight="0" level="0" text="Timer" entryID="timer_edit"><screen module="TimerEdit" screen="TimerEditList"/></item>
 			<item weight="1" level="0" text="Cron timers" entryID="crontimer_edit"><screen module="CronTimer" screen="CronTimers"/></item>
-			<item weight="100" level="0" text="PowerTimer list" entryID="powertimer_edit"><screen module="PowerTimerEdit" screen="PowerTimerEditList"/></item>			
+			<item weight="100" level="0" text="PowerTimer list" entryID="powertimer_edit"><screen module="PowerTimerEdit" screen="PowerTimerEditList"/></item>
 		</menu>
 
 		<item level="1" text="VCR scart" entryID="scart_switch" conditional="config.usage.show_vcr_scart.value" requires="ScartSwitch"><code>self.session.scart.VCRSbChanged(3)</code></item>
@@ -135,6 +135,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 						<item weight="30" level="2" text="MiniDLNA" entryID="minidlna_setup"><screen module="NetworkSetup" screen="NetworkMiniDLNA"/></item>
 						<item weight="35" level="2" text="NFS" entryID="netnfs_setup"><screen module="NetworkSetup" screen="NetworkNfs"/></item>
 						<item weight="40" level="2" text="OpenVPN" entryID="netvpn_setup"><screen module="NetworkSetup" screen="NetworkOpenvpn"/></item>
+						<item weight="45" level="2" text="ZeroTierVPN" entryID="netzerotier_setup"><screen module="NetworkSetup" screen="NetworkZeroTier"/></item>
 						<item weight="50" level="2" text="SABnzbd" entryID="netsabnzbd_setup"><screen module="NetworkSetup" screen="NetworkSABnzbd"/></item>
 						<item weight="55" level="2" text="Telnet" entryID="nettelnet_setup"><screen module="NetworkSetup" screen="NetworkTelnet"/></item>
 						<item weight="60" level="2" text="uShare" entryID="netushare_setup"><screen module="NetworkSetup" screen="NetworkuShare"/></item>
