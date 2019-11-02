@@ -2425,19 +2425,19 @@ class NetworkSamba(NSCommon,Screen):
 	def SambaStartStop(self):
 		commands = []
 		if not self.my_Samba_run:
-			commands.append('/etc/init.d/samba start')
+			commands.append('/etc/init.d/samba.sh start')
 		elif self.my_Samba_run:
-			commands.append('/etc/init.d/samba stop')
+			commands.append('/etc/init.d/samba.sh stop')
 			commands.append('killall nmbd')
 			commands.append('killall smbd')
 		self.Console.eBatch(commands, self.StartStopCallback, debug=True)
 
 	def activateSamba(self):
 		commands = []
-		if ServiceIsEnabled('samba'):
-			commands.append('update-rc.d -f samba remove')
+		if fileExists('/etc/rc2.d/S20samba.sh'):
+			commands.append('update-rc.d -f samba.sh remove')
 		else:
-			commands.append('update-rc.d -f samba defaults')
+			commands.append('update-rc.d -f samba.sh defaults')
 		self.Console.eBatch(commands, self.StartStopCallback, debug=True)
 
 	def updateService(self):
@@ -2448,7 +2448,7 @@ class NetworkSamba(NSCommon,Screen):
 		self['labstop'].hide()
 		self['labactive'].setText(_("Disabled"))
 		self.my_Samba_active = False
-		if ServiceIsEnabled('samba'):
+		if fileExists('/etc/rc2.d/S20samba.sh'):
 			self['labactive'].setText(_("Enabled"))
 			self['labactive'].show()
 			self.my_Samba_active = True
@@ -2484,14 +2484,14 @@ class NetworkSambaLog(Screen):
 		self.Console = Console()
 		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'up': self['infotext'].pageUp, 'down': self['infotext'].pageDown})
 		strview = ''
-		self.Console.ePopen('tail /tmp/smb.log > /tmp/tmp.log')
+		self.Console.ePopen('tail /var/log/samba/*log* > /var/log/samba/samba.log')
 		time.sleep(1)
-		if fileExists('/tmp/tmp.log'):
-			f = open('/tmp/tmp.log', 'r')
+		if fileExists('/var/log/samba/samba.log'):
+			f = open('/var/log/samba/samba.log', 'r')
 			for line in f.readlines():
 				strview += line
 			f.close()
-			remove('/tmp/tmp.log')
+			remove('/var/log/samba/samba.log')
 		self['infotext'].setText(strview)
 
 
