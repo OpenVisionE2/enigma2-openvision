@@ -2128,7 +2128,6 @@ class NetworkNfs(NSCommon,Screen):
 		self['key_green'] = Label(_("Start"))
 		self['key_red'] = Label(_("Remove service"))
 		self['key_yellow'] = Label(_("Autostart"))
-		self['key_blue'] = Label()
 		self.Console = Console()
 		self.my_nfs_active = False
 		self.my_nfs_run = False
