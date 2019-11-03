@@ -3318,15 +3318,15 @@ class NetworkMiniDLNA(NSCommon,Screen):
 
 	def MiniDLNAStartStop(self):
 		if not self.my_minidlna_run:
-			self.Console.ePopen('/etc/init.d/minidlna start', self.StartStopCallback)
+			self.Console.ePopen('/etc/init.d/minidlna.sh start', self.StartStopCallback)
 		elif self.my_minidlna_run:
-			self.Console.ePopen('/etc/init.d/minidlna stop', self.StartStopCallback)
+			self.Console.ePopen('/etc/init.d/minidlna.sh stop', self.StartStopCallback)
 
 	def autostart(self):
-		if ServiceIsEnabled('minidlna'):
-			self.Console.ePopen('update-rc.d -f minidlna remove', self.StartStopCallback)
+		if self.my_minidlna_active:
+			self.Console.ePopen('update-rc.d -f minidlna.sh remove', self.StartStopCallback)
 		else:
-			self.Console.ePopen('update-rc.d -f minidlna defaults', self.StartStopCallback)
+			self.Console.ePopen('update-rc.d -f minidlna.sh remove ; update-rc.d -f minidlna.sh defaults', self.StartStopCallback)
 
 	def updateService(self):
 		import process
@@ -3338,7 +3338,7 @@ class NetworkMiniDLNA(NSCommon,Screen):
 		self['labdisabled'].hide()
 		self.my_minidlna_active = False
 		self.my_minidlna_run = False
-		if ServiceIsEnabled('minidlna'):
+		if fileExists('/etc/rc2.d/S20minidlna.sh'):
 			self['labdisabled'].hide()
 			self['labactive'].show()
 			self.my_minidlna_active = True
@@ -3661,7 +3661,7 @@ class NetworkMiniDLNALog(Screen):
 		self.Console = Console()
 		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'up': self['infotext'].pageUp, 'down': self['infotext'].pageDown})
 		strview = ''
-		self.Console.ePopen('tail /var/volatile/log/minidlna.log > /tmp/tmp.log')
+		self.Console.ePopen('tail /var/volatile/tmp/minidlna.log > /tmp/tmp.log')
 		time.sleep(1)
 		if fileExists('/tmp/tmp.log'):
 			f = open('/tmp/tmp.log', 'r')
