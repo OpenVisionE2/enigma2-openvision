@@ -44,33 +44,33 @@ class IconCheckPoller:
 			pass
 		self.timer.startLongTimer(30)
 
-	def JobTask(self):
-		LinkState = 0
-		if fileExists('/sys/class/net/wlan0/operstate'):
+def JobTask(self):
+	LinkState = 0
+	if fileExists('/sys/class/net/wlan0/operstate'):
+		LinkState = open('/sys/class/net/wlan0/operstate').read()
+		if LinkState != 'down':
 			LinkState = open('/sys/class/net/wlan0/operstate').read()
-			if LinkState != 'down':
-				LinkState = open('/sys/class/net/wlan0/operstate').read()
-		elif fileExists('/sys/class/net/eth0/operstate'):
-			LinkState = open('/sys/class/net/eth0/operstate').read()
-			if LinkState != 'down':
-				LinkState = open('/sys/class/net/eth0/carrier').read()
-		LinkState = LinkState[:1]
-		if fileExists("/proc/stb/lcd/symbol_network") and config.lcd.mode.value == '1':
-			open("/proc/stb/lcd/symbol_network", "w").write(str(LinkState))
-		elif fileExists("/proc/stb/lcd/symbol_network") and config.lcd.mode.value == '0':
-			open("/proc/stb/lcd/symbol_network", "w").write("0")
+	elif fileExists('/sys/class/net/eth0/operstate'):
+		LinkState = open('/sys/class/net/eth0/operstate').read()
+		if LinkState != 'down':
+			LinkState = open('/sys/class/net/eth0/carrier').read()
+	LinkState = LinkState[:1]
+	if fileExists("/proc/stb/lcd/symbol_network") and config.lcd.mode.value == '1':
+		open("/proc/stb/lcd/symbol_network", "w").write(str(LinkState))
+	elif fileExists("/proc/stb/lcd/symbol_network") and config.lcd.mode.value == '0':
+		open("/proc/stb/lcd/symbol_network", "w").write("0")
 
-		USBState = 0
-		busses = usb.busses()
-		for bus in busses:
-			devices = bus.devices
-			for dev in devices:
-				if dev.deviceClass != 9 and dev.deviceClass != 2 and dev.idVendor != 3034 and dev.idVendor > 0:
-					USBState = 1
-		if fileExists("/proc/stb/lcd/symbol_usb"):
-			open("/proc/stb/lcd/symbol_usb", "w").write(str(USBState))
+	USBState = 0
+	busses = usb.busses()
+	for bus in busses:
+		devices = bus.devices
+		for dev in devices:
+			if dev.deviceClass != 9 and dev.deviceClass != 2 and dev.idVendor != 3034 and dev.idVendor > 0:
+				USBState = 1
+	if fileExists("/proc/stb/lcd/symbol_usb"):
+		open("/proc/stb/lcd/symbol_usb", "w").write(str(USBState))
 
-		self.timer.startLongTimer(30)
+	self.timer.startLongTimer(30)
 
 class LCD:
 	def __init__(self):
@@ -169,7 +169,7 @@ class LCD:
 
 	def setFlipped(self, value):
 		eDBoxLCD.getInstance().setFlipped(value)
-		
+
 	def setScreenShot(self, value):
  		eDBoxLCD.getInstance().setDump(value)
 
