@@ -151,7 +151,7 @@ def InitAVSwitch():
 
 	def setColorFormat(configElement):
 		if getBoxType() == "et6x00":
-			map = {"cvbs": 3, "rgb": 3, "svideo": 2, "yuv": 3}	
+			map = {"cvbs": 3, "rgb": 3, "svideo": 2, "yuv": 3}
 		elif SystemInfo["GigaBlueQuad"] or getBoxType().startswith('et'):
 			map = {"cvbs": 0, "rgb": 3, "svideo": 2, "yuv": 3}
 		else:
@@ -277,7 +277,7 @@ def InitAVSwitch():
 
 	if SystemInfo["CanBTAudioDelay"]:
 		def setBTAudioDelay(configElement):
-			open("/proc/stb/audio/btaudio", "w").write(format(configElement.value * 90,"x"))
+			open("/proc/stb/audio/btaudio", "w").write(format(configElement.value * 90))
 		config.av.btaudiodelay = ConfigSelectionNumber(-1000, 1000, 5, default = 0)
 		config.av.btaudiodelay.addNotifier(setBTAudioDelay)
 	else:
@@ -348,7 +348,7 @@ def InitAVSwitch():
 			open(SystemInfo["Has3DSurroundSoftLimiter"], "w").write(configElement.value and "enabled" or "disabled")
 		config.av.surround_softlimiter_3d = ConfigYesNo(default = False)
 		config.av.surround_softlimiter_3d.addNotifier(set3DSurroundSoftLimiter)
-		
+
 	if SystemInfo["HDMIAudioSource"]:
 		def setHDMIAudioSource(configElement):
 			open(SystemInfo["HDMIAudioSource"], "w").write(configElement.value)
