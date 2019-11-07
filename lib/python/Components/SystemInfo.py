@@ -123,7 +123,7 @@ SystemInfo["NCamIsActive"] = SystemInfo["NCamInstalled"] and fileExists("/tmp/.n
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/stb/info/openvision")
 SystemInfo["OLDE2API"] = getBoxType() in ("dm800","su980")
 SystemInfo["7segment"] = getDisplayType() == "7segment"
-SystemInfo["CanFadeOut"] = getImageArch() == "mips32el" or getBoxType() in ("osmio4kplus") or getBoxBrand() == "dreambox"
+SystemInfo["CanFadeOut"] = getBoxBrand() not in ("linkdroid","mecool","minix","wetek","hardkernel") and getBoxType() not in ("gbtrio4k","gbip4k","sf8008","cc1","ustym4kpro","beyonwizv2","viper4k","dreamone") and not pathExists("/proc/hisi") and not fileExists("/usr/bin/hihalt")
 SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and getBoxType() not in ("hd51","h7")
 SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and getBoxType() == "multibox" or getBoxBrand() in ("hypercube","linkdroid","mecool","wetek") or getBoxType() == "dreamone"
