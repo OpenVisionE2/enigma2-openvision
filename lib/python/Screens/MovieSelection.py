@@ -780,6 +780,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 				'sort': _("Sort"),
 				'sortby': _("Sort by"),
 				'sortdefault': _("Sort by default"),
+				'listtype': _("List type"),
 				'preview': _("Preview"),
 				'movieoff': _("On end of movie"),
 				'movieoff_menu': _("On end of movie (as menu)")
@@ -806,7 +807,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			config.movielist.btn_F1 = ConfigSelection(default='movieoff_menu', choices=userDefinedActions)
 			config.movielist.btn_F2 = ConfigSelection(default='preview', choices=userDefinedActions)
 			config.movielist.btn_F3 = ConfigSelection(default='/media', choices=userDefinedActions)
-			userDefinedButtons ={
+		userDefinedButtons = {
 				'red': config.movielist.btn_red,
 				'green': config.movielist.btn_green,
 				'yellow': config.movielist.btn_yellow,
