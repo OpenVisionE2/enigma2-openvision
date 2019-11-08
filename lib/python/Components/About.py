@@ -199,7 +199,7 @@ def getFlashType():
 	elif SystemInfo["MiddleFlash"]:
 		return _("Middle - Lite image")
 	else:
-		return _("Full - Vision image")
+		return _("Enough - Vision image")
 
 def getDVBAPI():
 	if SystemInfo["OLDE2API"]:
