@@ -3,7 +3,7 @@ installdir = $(pkgdatadir)/rc_models
 dist_install_DATA = rc_models.cfg dmm0.png dmm0.xml dmm1.png dmm1.xml dmm2.png dmm2.xml
 
 if AIRDIGITAL
-dist_install_DATA += zgemma1.png zgemma1.xml zgemma3.png zgemma3.xml zgemma5.png zgemma5.xml
+dist_install_DATA += zgemma1.png zgemma1.xml zgemma2.png zgemma2.xml zgemma3.png zgemma3.xml zgemma5.png zgemma5.xml zgemma6.png zgemma6.xml zgemma7.png zgemma7.xml
 endif
 
 if AMIKO
