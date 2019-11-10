@@ -4,6 +4,7 @@ from Tools.CList import CList
 from Tools.HardwareInfo import HardwareInfo
 import os
 from enigma import getBoxType
+from Components.About import about
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -214,17 +215,12 @@ class VideoHardware:
 				mode_24 = mode_50
 
 		try:
-			if SystemInfo["AmlogicFamily"]:
-				open("/proc/stb/video/videomode", "w").write(mode + rate.lower())
 			open("/proc/stb/video/videomode_50hz", "w").write(mode_50)
 			open("/proc/stb/video/videomode_60hz", "w").write(mode_60)
 		except IOError:
 			try:
 				# fallback if no possibility to setup 50/60 hz mode
-				if SystemInfo["AmlogicFamily"]:
-					open("/proc/stb/video/videomode", "w").write(mode + rate.lower())
-				else:
-					open("/proc/stb/video/videomode", "w").write(mode_50)
+				open("/proc/stb/video/videomode", "w").write(mode_50)
 			except IOError:
 				print "[VideoHardware] setting videomode failed."
 
@@ -384,18 +380,13 @@ class VideoHardware:
 			wss = "auto"
 
 		print "[VideoHardware] -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss
-		if SystemInfo["AmlogicFamily"]:
+		if about.getChipSetString().startswith('meson-6'):
 			arw = "0"
-			if config.av.policy_43.value == "pillarbox" : arw = "0"
-			if config.av.policy_43.value == "scale" : arw = "3"
-			if config.av.policy_43.value == "nonlinear" : arw = "4"
-			if config.av.policy_43.value == "panscan" : arw = "12"
+			if config.av.policy_43.value == "bestfit" : arw = "10"
+			if config.av.policy_43.value == "panscan" : arw = "11"
+			if config.av.policy_43.value == "letterbox" : arw = "12"
 			try:
 				open("/sys/class/video/screen_mode", "w").write(arw)
-			except IOError:
-				pass
-			try:
-				open("/proc/stb/video/aspect", "w").write(aspect)
 			except IOError:
 				pass
 		else:
