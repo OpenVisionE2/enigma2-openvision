@@ -83,14 +83,13 @@ class NSCommon:
 	def checkNetworkStateFinished(self, result, retval, extra_args=None):
 		if 'bad address' in result:
 			self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("Your receiver is not connected to the internet, please check your network settings and try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
-		elif ('wget returned 1' or 'wget returned 255' or '404 Not Found') in result:
-			self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("Feeds are not accessible, please try again later."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
+		if self.reboot_at_end:
+			mtext = _('Your receiver will be restarted after the installation of the service\nAre you ready to install "%s" ?') % self.service_name
 		else:
-			if self.reboot_at_end:
-				mtext = _('Your receiver will be restarted after the installation of the service\nAre you ready to install "%s" ?') % self.service_name
-			else:
-				mtext = _('Are you ready to install "%s" ?') % self.service_name
-			self.session.openWithCallback(self.InstallPackage, MessageBox, mtext, MessageBox.TYPE_YESNO)
+			mtext = _('Are you ready to install "%s" ?') % self.service_name
+		self.session.openWithCallback(self.InstallPackage, MessageBox, mtext, MessageBox.TYPE_YESNO)
+		if ('wget returned 1' or 'wget returned 255' or '404 Not Found') in result:
+			self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("If there is a return to the network utilities menu, then feeds have are not avaliables. Checking please wait..."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 
 	def UninstallCheck(self):
 		self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.RemovedataAvail)
