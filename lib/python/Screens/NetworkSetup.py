@@ -89,7 +89,7 @@ class NSCommon:
 			mtext = _('Are you ready to install "%s" ?') % self.service_name
 		self.session.openWithCallback(self.InstallPackage, MessageBox, mtext, MessageBox.TYPE_YESNO)
 		if ('wget returned 1' or 'wget returned 255' or '404 Not Found') in result:
-			self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("If there is a return to the network utilities menu, then feeds have are not avaliables. Checking please wait..."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
+			self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("If there is a return to network utilities menu, then feeds have are not avaliables. Checking please wait..."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 
 	def UninstallCheck(self):
 		self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.RemovedataAvail)
