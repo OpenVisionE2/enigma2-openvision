@@ -577,7 +577,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 		self.nimConfig = self.nim.config
 		self.createSetup()
 		self.setTitle(_("Setup") + " " + self.nim.friendly_full_description)
-		
+
 		if not self.selectionChanged in self["config"].onSelectionChanged:
 			self["config"].onSelectionChanged.append(self.selectionChanged)
 		self.selectionChanged()
@@ -694,12 +694,18 @@ class NimSelection(Screen):
 
 		self.setResultClass()
 
-		self["actions"] = ActionMap(["OkCancelActions", "MenuActions", "ChannelSelectEPGActions"],
+		self["key_red"] = StaticText(_("Close"))
+		self["key_green"] = StaticText(_("Select"))
+		self["key_yellow"] = StaticText(_("Client Mode"))
+
+		self["actions"] = ActionMap(["SetupActions", "ColorActions", "MenuActions", "ChannelSelectEPGActions"],
 		{
 			"ok": self.okbuttonClick,
 			"info": self.extraInfo,
 			"epg": self.extraInfo,
 			"cancel": self.close,
+			"red": self.close,
+			"green": self.okbuttonClick,
 			"menu": self.exit,
 			"yellow": self.clientmode,
 		}, -2)
