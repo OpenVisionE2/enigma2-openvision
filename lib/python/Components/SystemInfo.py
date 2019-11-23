@@ -1,7 +1,7 @@
 from enigma import eDVBResourceManager, Misc_Options, eDVBCIInterfaces, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
 from Tools.Directories import fileExists, fileCheck, pathExists, fileHas
 from Tools.HardwareInfo import HardwareInfo
-import os
+import os, re
 from os import access, R_OK
 from boxbranding import getDisplayType, getImageArch
 
@@ -22,6 +22,11 @@ def countFrontpanelLEDs():
 def hassoftcaminstalled():
 	from Tools.camcontrol import CamControl
 	return len(CamControl('softcam').getList()) > 1
+
+# parse the boot commandline
+cmdline = open("/proc/cmdline", "r").read()
+cmdline = {k:v.strip('"') for k,v in re.findall(r'(\S+)=(".*?"|\S+)', cmdline)}
+model = getBoxType()
 
 SystemInfo["InDebugMode"] = eGetEnigmaDebugLvl() >= 4
 SystemInfo["CommonInterface"] = eDVBCIInterfaces.getInstance().getNumOfSlots()
@@ -79,7 +84,7 @@ SystemInfo["HasBypassEdidChecking"] = fileCheck("/proc/stb/hdmi/bypass_edid_chec
 SystemInfo["HasColorspace"] = fileCheck("/proc/stb/video/hdmi_colorspace")
 SystemInfo["HasColorspaceSimple"] = SystemInfo["HasColorspace"] and getBoxType() in ("vusolo4k","vuuno4k","vuuno4kse","vuultimo4k","vuduo4k")
 SystemInfo["HasMultichannelPCM"] = fileCheck("/proc/stb/audio/multichannel_pcm")
-SystemInfo["HasMMC"] = fileExists("/proc/cmdline") and "root=/dev/mmcblk" in open("/proc/cmdline","r").read()
+SystemInfo["HasMMC"] = "root" in cmdline and cmdline["root"].startswith('/dev/mmcblk')
 SystemInfo["HasTranscoding"] = pathExists("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
 SystemInfo["HasH265Encoder"] = fileHas("/proc/stb/encoder/0/vcodec_choices","h265")
 SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = getBoxType() in ("vusolo4k","gbquad4k")
@@ -103,9 +108,9 @@ SystemInfo["Has3DSurroundSpeaker"] = fileExists("/proc/stb/audio/3dsurround_choi
 SystemInfo["Has3DSurroundSoftLimiter"] = fileExists("/proc/stb/audio/3dsurround_softlimiter_choices") and fileCheck("/proc/stb/audio/3dsurround_softlimiter")
 SystemInfo["hasXcoreVFD"] = getBoxType() in ("osmega","spycat4k","spycat4kmini","spycat4kcombo") and fileCheck("/sys/module/brcmstb_%s/parameters/pt6302_cgram" % getBoxType())
 SystemInfo["HasOfflineDecoding"] = getBoxType() not in ("osmini","osminiplus","et7000mini","et11000","mbmicro","mbtwinplus","mbmicrov2","et7x00","et8500")
-SystemInfo["HasRootSubdir"] = fileHas("/proc/cmdline", "rootsubdir=")
-SystemInfo["canMultiBoot"] = SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or fileHas("/proc/cmdline", "_4.boxmode=") and (1, 4, "mmcblk0", False) or getBoxType() in ("gbue4k","gbquad4k","gbx34k") and (3, 3, "mmcblk0", True) or getBoxType() == "e4hdultra" and (1, 4, "mmcblk0", False) or getBoxType() in ("osmio4k","osmio4kplus","osmini4k") and (1, 4, "mmcblk1", True)
-SystemInfo["canMode12"] = fileHas("/proc/cmdline", "_4.boxmode=1 ") and '192M' or fileHas("/proc/cmdline", "_4.boxmode=12") and '192M'
+SystemInfo["HasRootSubdir"] = "rootsubdir" in cmdline
+SystemInfo["canMultiBoot"] = SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or "%s_4.boxmode" % model in cmdline and (1, 4, "mmcblk0", False) or getBoxType() in ("gbue4k","gbquad4k","gbx34k") and (3, 3, "mmcblk0", True) or getBoxType() == "e4hdultra" and (1, 4, "mmcblk0", False) or getBoxType() in ("osmio4k","osmio4kplus","osmini4k") and (1, 4, "mmcblk1", True)
+SystemInfo["canMode12"] = "%s_4.boxmode" % model in cmdline and cmdline["%s_4.boxmode" % model] in ("1","12") and "192M"
 SystemInfo["canFlashWithOfgwrite"] = getBoxBrand() != "dreambox"
 SystemInfo["HDRSupport"] = fileExists("/proc/stb/hdmi/hlg_support_choices") and fileCheck("/proc/stb/hdmi/hlg_support")
 SystemInfo["CanDownmixAC3"] = fileHas("/proc/stb/audio/ac3_choices","downmix")
@@ -158,3 +163,8 @@ SystemInfo["SeekStatePlay"] = False
 SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False
 SystemInfo["LEDButtons"] = getBoxType() == "vuultimo"
+
+dev = ("root" in cmdline and cmdline['root'].startswith('/dev/')) and cmdline['root'][5:]
+while dev and not fileExists('/sys/block/' + dev):
+    dev = dev[:-1]
+SystemInfo["BootDevice"] = dev

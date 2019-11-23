@@ -84,7 +84,7 @@ class Harddisk:
 		if self.type == DEVTYPE_UDEV:
 			self.dev_path = '/dev/' + self.device
 			self.disk_path = self.dev_path
-			self.card = "sdhci" in self.phys_path
+			self.card = "sdhci" in self.phys_path or "mmc" in self.device
 
 		elif self.type == DEVTYPE_DEVFS:
 			tmp = readFile(self.sysfsPath('dev')).split(':')
@@ -588,7 +588,7 @@ class HarddiskManager:
 			("/media/hdd", _("Hard disk")),
 			("/media/card", _("Card")),
 			("/media/cf", _("Compact flash")),
-			("/media/mmc1", _("MMC card")),
+			("/media/mmc", _("MMC card")),
 			("/media/net", _("Network mount")),
 			("/media/net1", _("Network mount %s") % ("1")),
 			("/media/net2", _("Network mount %s") % ("2")),
@@ -618,17 +618,25 @@ class HarddiskManager:
 		if blockdev.startswith("mmcblk") and (re.search(r"mmcblk\dboot", blockdev) or re.search(r"mmcblk\drpmb", blockdev)):
 			blacklisted = True
 		is_cdrom = False
+		is_mmc = False
 		partitions = []
 		try:
 			if os.path.exists(devpath + "/removable"):
 				removable = bool(int(readFile(devpath + "/removable")))
 			if os.path.exists(devpath + "/dev"):
-				dev = int(readFile(devpath + "/dev").split(':')[0])
+				dev = readFile(devpath + "/dev")
+				subdev = False if int(dev.split(':')[1]) % 32 == 0 else True
+				dev = int(dev.split(':')[0])
 			else:
 				dev = None
-			blacklisted = dev in [1, 7, 31, 253, 254] + (SystemInfo["HasMMC"] and [179] or []) #ram, loop, mtdblock, romblock, ramzswap, mmc
-			if blockdev == "mmcblk1" and "mmcblk1" not in BLACKLIST:
-				blacklisted = False
+				subdev = False
+			# blacklist ram, loop, mtdblock, romblock, ramzswap
+			blacklisted = dev in [1, 7, 31, 253, 254] 
+			# blacklist non-root eMMC devices
+			if not blacklisted and dev == 179:
+				is_mmc = True
+				if (SystemInfo['BootDevice'] and blockdev.startswith(SystemInfo['BootDevice'])) or subdev:
+					blacklisted = True
 			if blockdev[0:2] == 'sr':
 				is_cdrom = True
 			if blockdev[0:2] == 'hd':
@@ -639,7 +647,7 @@ class HarddiskManager:
 				except IOError:
 					error = True
 			# check for partitions
-			if not is_cdrom and os.path.exists(devpath):
+			if not is_cdrom and not is_mmc and os.path.exists(devpath):
 				for partition in os.listdir(devpath):
 					if partition[0:len(blockdev)] != blockdev:
 						continue
@@ -722,7 +730,7 @@ class HarddiskManager:
 				self.on_partition_list_change("add", p)
 			# see if this is a harddrive
 			l = len(device)
-			if l and (not device[l-1].isdigit() or (device.startswith('mmcblk') and not re.search(r"mmcblk\dp\d+", device))):
+			if l and (not device[l-1].isdigit() or device.startswith('mmcblk')):
 				self.hdd.append(Harddisk(device, removable))
 				self.hdd.sort()
 				SystemInfo["Harddisk"] = True
