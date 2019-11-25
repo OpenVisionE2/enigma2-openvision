@@ -34,7 +34,6 @@ class SelectImage(Screen):
 		self["key_green"] = StaticText()
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText()
-		self["description"] = StaticText()
 		self["list"] = ChoiceList(list=[ChoiceEntryComponent('',((_("Retrieving image list - Please wait...")), "Waiter"))])
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions", "KeyboardInputActions", "MenuActions"],
@@ -405,6 +404,7 @@ class MultibootSelection(SelectImage):
 		self.setTitle(_("Select Multiboot"))
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Reboot"))
+		self["description"] = StaticText(_("Use the cursor keys to select an installed image and then press Reboot button."))
 		self["list"] = ChoiceList(list=[ChoiceEntryComponent('',((_("Retrieving image slots - Please wait...")), "Waiter"))])
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions", "KeyboardInputActions", "MenuActions"],
