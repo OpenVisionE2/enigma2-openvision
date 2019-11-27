@@ -149,7 +149,7 @@ class ServiceList(GUIComponent):
 			return None
 		from Components.ServiceEventTracker import InfoBarCount
 		if adjust and config.usage.multibouquet.value and InfoBarCount == 1 and ref and ref.type != 8192:
-			print "[servicelist] search for service in userbouquets"
+			print "[servicelist] search for service in user bouquets"
 			if self.serviceList:
 				revert_mode = config.servicelist.lastmode.value
 				revert_root = self.getRoot()
@@ -173,7 +173,7 @@ class ServiceList(GUIComponent):
 						self.serviceList.saveChannel(ref)
 						return True
 				self.serviceList.enterUserbouquet(revert_radio_root)
-				print "[servicelist] service not found in any userbouquets"
+				print "[servicelist] service not found in any user bouquets"
 				if revert_mode == "tv":
 					self.serviceList.setModeTv()
 				elif revert_mode == "radio":
