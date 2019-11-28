@@ -26,7 +26,7 @@ from traceback import print_exc
 if getImageArch() == "aarch64":
 	import usb.core
 	import usb.backend.libusb1
-	usb.backend.libusb1.get_backend(find_library=lambda x: "/media/mmcblk1p5/lib64/libusb-1.0.so.0")
+	usb.backend.libusb1.get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")
 
 profile("ClientMode")
 import Components.ClientMode
