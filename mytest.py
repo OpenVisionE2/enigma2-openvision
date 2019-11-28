@@ -11,7 +11,7 @@ profile("PYTHON_START")
 # Don't remove this line. It may seem to do nothing, but if removed,
 # it will break output redirection for crash logs.
 import Tools.RedirectOutput
-from boxbranding import getVisionVersion, getVisionRevision, getImageArch
+from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib
 print "Open Vision version = %s" % getVisionVersion()
 print "Open Vision revision = %s" % getVisionRevision()
 import enigma
@@ -23,7 +23,7 @@ enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
 
 from traceback import print_exc
 
-if getImageArch() == "aarch64":
+if getHaveMultiLib() == "True":
 	import usb.core
 	import usb.backend.libusb1
 	usb.backend.libusb1.get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")

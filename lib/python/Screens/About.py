@@ -44,6 +44,12 @@ class About(Screen):
 		AboutText += _("CPU architecture: ") + about.getCPUArch() + "\n"
 		AboutText += _("Image architecture: ") + boxbranding.getImageArch() + "\n"
 
+		if boxbranding.getImageArch() == "aarch64":
+			if boxbranding.getHaveMultiLib() == "True":
+				AboutText += _("MultiLib: ") + _("Yes") + "\n"
+			else:
+				AboutText += _("MultiLib: ") + _("No") + "\n"
+
 		AboutText += _("Flash type: ") + about.getFlashType() + "\n"
 
 		AboutText += "\n" + _("Image: ") + about.getImageTypeString() + "\n"
