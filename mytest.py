@@ -529,7 +529,7 @@ def runScreenTest():
 
 	from Components.SystemInfo import SystemInfo
 	from enigma import getBoxType
-	if SystemInfo in ["FirstCheckModel","SecondCheckModel","HiSilicon","DifferentLCDSettings"] or getBoxType() in ("alphatriplehd","tmtwin4k","osminiplus","sf3038","spycat","et7x00","ebox5000","ebox7358","eboxlumi","maram9","sezam5000hd","mbtwin","sezam1000hd","mbmini","atemio5x00","beyonwizt3","dinoboth265","axashistwin"):
+	if SystemInfo in ["FirstCheckModel","SecondCheckModel","ThirdCheckModel","DifferentLCDSettings"] or getBoxType() in ("alphatriplehd","tmtwin4k","osminiplus","sf3038","spycat","et7x00","ebox5000","ebox7358","eboxlumi","maram9","sezam5000hd","mbtwin","sezam1000hd","mbmini","atemio5x00","beyonwizt3","dinoboth265","axashistwin"):
 		profile("VFDSYMBOLS")
 		import Components.VfdSymbols
 		Components.VfdSymbols.SymbolsCheck(session)

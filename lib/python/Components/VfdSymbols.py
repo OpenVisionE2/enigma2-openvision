@@ -12,7 +12,7 @@ POLLTIME = 5 # seconds
 
 def SymbolsCheck(session, **kwargs):
 		global symbolspoller, POLLTIME
-		if SystemInfo["FirstCheckModel"] or SystemInfo["SecondCheckModel"] or SystemInfo["HiSilicon"]:
+		if SystemInfo["FirstCheckModel"] or SystemInfo["SecondCheckModel"] or SystemInfo["ThirdCheckModel"]:
 			POLLTIME = 1
 		symbolspoller = SymbolsCheckPoller(session)
 		symbolspoller.start()
