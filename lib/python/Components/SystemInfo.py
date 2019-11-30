@@ -130,7 +130,7 @@ SystemInfo["NCamIsActive"] = SystemInfo["NCamInstalled"] and fileExists("/tmp/.n
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/stb/info/openvision")
 SystemInfo["OLDE2API"] = model in ("dm800","su980")
 SystemInfo["7segment"] = getDisplayType() == "7segment"
-SystemInfo["CanFadeOut"] = brand not in ("linkdroid","mecool","minix","wetek","hardkernel") and model not in ("gbtrio4k","gbip4k","sf8008","sf8008m","cc1","ustym4kpro","beyonwizv2","viper4k","dreamone") and not pathExists("/proc/hisi") and not fileExists("/usr/bin/hihalt")
+SystemInfo["CanFadeOut"] = brand not in ("linkdroid","mecool","minix","wetek","hardkernel","dinobot") and model not in ("gbtrio4k","gbip4k","sf8008","sf8008m","cc1","ustym4kpro","beyonwizv2","viper4k","dreamone","hd60","hd61","h9","h9combo","h10","i55plus") and not pathExists("/proc/hisi") and not fileExists("/usr/bin/hihalt")
 SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51","h7")
 SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and model == "multibox" or brand in ("hypercube","linkdroid","mecool","wetek") or model == "dreamone"
@@ -152,14 +152,14 @@ SystemInfo["GigaBlueQuad"] = model in ("gbquad","gbquadplus")
 SystemInfo["AmlogicFamily"] = brand in ("linkdroid","mecool","minix","wetek","hardkernel") or model == "dreamone"
 SystemInfo["VFDDelay"] = model in ("sf4008","beyonwizu4")
 SystemInfo["VFDRepeats"] = brand != "ixuss" and getDisplayType() != "7segment"
-SystemInfo["HiSilicon"] = model in ("gbtrio4k","gbip4k","sf8008","sf8008m","cc1","ustym4kpro","beyonwizv2","viper4k") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt")
+SystemInfo["HiSilicon"] = brand == "dinobot" or model in ("gbtrio4k","gbip4k","sf8008","sf8008m","cc1","ustym4kpro","beyonwizv2","viper4k","hd60","hd61","h9","h9combo","h10","i55plus") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt")
 SystemInfo["FirstCheckModel"] = model in ("tmtwin4k","mbmicrov2","revo4k","force3uhd","mbmicro","e4hd","e4hdhybrid","valalinux","lunix","tmnanom3","purehd","force2nano","purehdse") or brand in ("linkdroid","wetek")
 SystemInfo["SecondCheckModel"] = model in ("osninopro","osnino","osninoplus","dm7020hd","dm7020hdv2","9910lx","9911lx","9920lx","tmnanose","tmnanoseplus","tmnanosem2","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","force2plushv") or brand == "ixuss"
 SystemInfo["DifferentLCDSettings"] = model in ("spycat4kmini","osmega")
 SystemInfo["CanBTAudio"] = fileCheck("/proc/stb/audio/btaudio")
 SystemInfo["CanBTAudioDelay"] = fileCheck("/proc/stb/audio/btaudio_delay")
-SystemInfo["ArchIsARM64"] = brand in ("linkdroid","mecool") or model in ("wetekplay2","wetekhub","osmio4k","osmio4kplus","osmini4k","dreamone")
-SystemInfo["ArchIsARM"] = SystemInfo["HiSilicon"] or brand in ("dinobot","rpi","maxytec","octagon") or model in ("cube","su980","wetekplay","x8hp","odroidc2","beyonwizu4","bre2ze4k","hd51","hd60","hd61","h7","h9","h9combo","h10","i55plus","e4hdultra","protek4k","vs1500","et1x000","et13000","vusolo4k","vuuno4k","vuuno4kse","vuzero4k","vuultimo4k","vuduo4k","revo4k","tmtwin4k","galaxy4k","tm4ksuper","lunix34k","force4","lunix4k") or model.startswith("spycat4") or model.startswith("dm9") or model.startswith("force3u") or SystemInfo["GigaBlueAudio"]
+SystemInfo["ArchIsARM64"] = brand in ("linkdroid","mecool") or model in ("wetekplay2","wetekhub","osmio4k","osmio4kplus","osmini4k","dreamone") or getImageArch() == "aarch64"
+SystemInfo["ArchIsARM"] = SystemInfo["HiSilicon"] or brand in ("rpi","maxytec","octagon") or model in ("cube","su980","wetekplay","x8hp","odroidc2","beyonwizu4","bre2ze4k","hd51","hd60","hd61","h7","h9","h9combo","h10","i55plus","e4hdultra","protek4k","vs1500","et1x000","et13000","vusolo4k","vuuno4k","vuuno4kse","vuzero4k","vuultimo4k","vuduo4k","revo4k","tmtwin4k","galaxy4k","tm4ksuper","lunix34k","force4","lunix4k") or model.startswith("spycat4") or model.startswith("dm9") or model.startswith("force3u") or SystemInfo["GigaBlueAudio"]
 SystemInfo["SeekStatePlay"] = False
 SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False

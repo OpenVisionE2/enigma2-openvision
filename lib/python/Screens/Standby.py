@@ -12,7 +12,7 @@ from Components.ImportChannels import ImportChannels
 from Tools.Directories import mediafilesInUse
 from Components.SystemInfo import SystemInfo
 from GlobalActions import globalActionMap
-from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, getBoxType, getBoxBrand
+from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, getBoxType
 from Components.Sources.StreamService import StreamServiceList
 
 inStandby = None
@@ -39,7 +39,7 @@ class Standby(Screen):
 		if os.path.exists("/usr/script/StandbyLeave.sh"):
 			Console().ePopen("/usr/script/StandbyLeave.sh")
 
-		if SystemInfo["HiSilicon"] or getBoxBrand() == "dinobot":
+		if SystemInfo["HiSilicon"]:
 			try:
 				open("/proc/stb/hdmi/output", "w").write("on")
 			except:
@@ -126,7 +126,7 @@ class Standby(Screen):
 		else:
 			self.avswitch.setInput("AUX")
 
-		if SystemInfo["HiSilicon"] or getBoxBrand() == "dinobot":
+		if SystemInfo["HiSilicon"]:
 			try:
 				open("/proc/stb/hdmi/output", "w").write("off")
 			except:
