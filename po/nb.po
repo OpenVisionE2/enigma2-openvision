@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-30 23:45+0330\n"
-"PO-Revision-Date: 2019-11-17 11:41+0100\n"
+"POT-Creation-Date: 2019-12-07 21:30+0330\n"
+"PO-Revision-Date: 2019-12-06 15:54+0100\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
 "Language: nb\n"
@@ -114,7 +114,7 @@ msgid " packages selected."
 msgstr " valgte pakker."
 
 msgid " updates available."
-msgstr " det finnes nye oppdateringer."
+msgstr " oppdateringer tilgjengelig."
 
 msgid "!! Bootloader Upgrade !!"
 msgstr ""
@@ -168,8 +168,9 @@ msgstr ""
 msgid "%-d-%b"
 msgstr ""
 
+#, fuzzy
 msgid "%-d-%b-%Y"
-msgstr ""
+msgstr "%d-%b-%Y %-H:%M"
 
 msgid "%-d/%-m"
 msgstr ""
@@ -456,17 +457,21 @@ msgstr ""
 msgid "%Y %b %d"
 msgstr ""
 
+#, fuzzy
 msgid "%Y-%B-%-d"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
+#, fuzzy
 msgid "%Y-%B-%d"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
+#, fuzzy
 msgid "%Y-%b-%-d"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
+#, fuzzy
 msgid "%Y-%b-%d"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
 msgid "%Y/%-m/%-d"
 msgstr ""
@@ -892,7 +897,7 @@ msgstr "%d-%m"
 
 #, fuzzy
 msgid "%d-%b-%Y"
-msgstr "%d-%m"
+msgstr "%d-%b-%Y %-H:%M"
 
 msgid "%d-%m"
 msgstr "%d-%m"
@@ -1458,21 +1463,18 @@ msgid "AAC plus downmix"
 msgstr "AAC nedskalering"
 
 #
-#, fuzzy
 msgid "AAC transcoding"
-msgstr "Transkoding: "
+msgstr "AAC omkoding"
 
-#, fuzzy
 msgid "AC3"
-msgstr "DAC"
+msgstr "AC3"
 
 msgid "AC3 downmix"
 msgstr "AC3 nedskalering"
 
 #
-#, fuzzy
 msgid "AC3 plus transcoding"
-msgstr "Transkoding: "
+msgstr "AC3 pluss omkoding"
 
 msgid "ACQUIRING TSID/ONID"
 msgstr "ANSKAFFER TSID/ONID"
@@ -1521,7 +1523,7 @@ msgid "Abort"
 msgstr "Avbryt"
 
 msgid "Abort alternatives edit"
-msgstr "Avbryt alternativ redigering"
+msgstr "Avbryt redigering"
 
 #
 msgid "Abort bouquet edit"
@@ -1625,11 +1627,11 @@ msgstr "Legg til bokmerke"
 
 #
 msgid "Add bouquet"
-msgstr "Legg til kanalliste"
+msgstr "Legg til favorittliste"
 
 #
 msgid "Add bouquet to parental protection"
-msgstr "Legg til kanalliste i foreldrekontrollen"
+msgstr "Legg til kanalliste i foreldrekontroll"
 
 msgid "Add directory to playlist"
 msgstr "Legg til mappe i opptaksliste"
@@ -1643,7 +1645,7 @@ msgid "Add files to playlist"
 msgstr "Legg til filer i opptaksliste"
 
 msgid "Add marker"
-msgstr "Legg til merke"
+msgstr "Legg til markør"
 
 #
 msgid "Add provider"
@@ -1671,11 +1673,10 @@ msgid "Add service to bouquet"
 msgstr "Legg til denne kanal i kanalliste"
 
 msgid "Add service to favourites"
-msgstr "Legg til denne kanal i favorittlisten"
+msgstr "Legg til denne kanal i favorittliste"
 
-#, fuzzy
 msgid "Add services to this bouquet?"
-msgstr "legg til denne kanal i kanalliste"
+msgstr "Legg til kanaler i denne favorittlisten?"
 
 #
 msgid "Add timer"
@@ -1695,7 +1696,7 @@ msgstr "Legg til i favorittliste"
 
 #
 msgid "Add to parental protection"
-msgstr "Legg til i foreldrekontrollen"
+msgstr "Legg til i foreldrekontroll"
 
 msgid "Add/remove change timer for current event"
 msgstr "Legg til/slett timer i dette program"
@@ -2168,8 +2169,9 @@ msgstr "Lyd-PID%s, codec & språk"
 msgid "Audio PID, codec & lang"
 msgstr "Lyd-PID, codec & språk"
 
+#, fuzzy
 msgid "Audio Source"
-msgstr ""
+msgstr "HDMI-lydkilde"
 
 msgid "Audio auto volume level"
 msgstr "Auto lydvolum nivå"
@@ -2542,7 +2544,7 @@ msgstr "Blå"
 #
 #, fuzzy
 msgid "Blue long"
-msgstr "Blå"
+msgstr "Blå boost"
 
 msgid "Bolivia (Plurinational State of)"
 msgstr "Bolivia"
@@ -3075,23 +3077,22 @@ msgstr ""
 
 #, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
-msgstr "Velg dersom digital flerkanals lyd skal nedskaleres til stereolyd."
+msgstr "Konfigurer om AAC-lydspor skal omkodes."
 
 #, fuzzy
 msgid "Choose whether AC3 Plus sound tracks should be transcoded to AC3."
-msgstr "Velg dersom digital flerkanals lyd skal nedskaleres til stereolyd."
+msgstr "Konfigurer om AC3 pluss lydspor skal omkodes til AC3."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Velg dersom digital flerkanals lyd skal nedskaleres til stereolyd."
+msgstr "Konfigurer om DTS-HD kanal lydspor skal være nedskalert eller omkodet."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Velg dersom digital flerkanals lyd skal nedskaleres til stereolyd."
+msgstr "Konfigurer om WMA Pro kanal lydspor skal være nedskalert eller omkodet."
 
-#, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
-msgstr "Velg dersom digital flerkanals lyd skal nedskaleres til stereolyd."
+msgstr "Velg om flerkanals lydspor skal konverteres til PCM eller SPDIF."
 
 msgid "Choose which tuner to configure."
 msgstr "Velg tuner som skal stilles inn."
@@ -3241,7 +3242,7 @@ msgstr "Kommando rekkefølge"
 
 #
 msgid "Commit info"
-msgstr "Commit info"
+msgstr "Informasjon om utføring"
 
 #
 msgid "Common Interface"
@@ -3289,7 +3290,7 @@ msgstr "Still inn oppløsning for bildeframviser"
 
 #
 msgid "Configuration"
-msgstr "Innstilling"
+msgstr "Konfigurasjon"
 
 msgid "Configuration mode"
 msgstr "Aktiveringsvalg"
@@ -3862,12 +3863,15 @@ msgstr "Kroatia"
 msgid "Croatian"
 msgstr "Kroatisk"
 
+#
+#, fuzzy
 msgid "Cron Manager"
-msgstr ""
+msgstr "Filmbehandling"
 
+#
 #, fuzzy
 msgid "Cron manager"
-msgstr "ingen ressursforvalter"
+msgstr "Filmbehandling"
 
 #
 #, fuzzy
@@ -4002,7 +4006,7 @@ msgid ""
 msgstr ""
 
 msgid "DTS"
-msgstr ""
+msgstr "DTS"
 
 msgid "DTS downmix"
 msgstr "DTS nedskalering"
@@ -4321,13 +4325,13 @@ msgid "Delay for external subtitles"
 msgstr "Ekstern undertekst forsinkelse"
 
 msgid "Delay in miliseconds after finish scrolling text on display."
-msgstr "Forsinkelse i millisekunder etter å ha skrollet i tekst på display."
+msgstr "Forsinkelse i millisekunder etter at den rullende teksten er ferdig på skjermen."
 
 msgid "Delay in miliseconds before start of scrolling text on display."
-msgstr "Forsinkelse i millisekunder før skrolling av tekst på display."
+msgstr "Forsinkelse i millisekunder før starten av rullende tekst på skjermen."
 
 msgid "Delay in miliseconds between scrolling characters on display."
-msgstr "Forsinkelse i millisekunder under skrolling av bokstaver på display."
+msgstr "Forsinkelse i millisekunder mellom rullende tegn på skjermen."
 
 msgid "Delay:"
 msgstr ""
@@ -4530,7 +4534,7 @@ msgid "Disable Picture in Picture"
 msgstr "Stopp bilde i bilde funksjon"
 
 msgid "Disable background scanning"
-msgstr "Deaktiver bakgrunnssøk"
+msgstr "Deaktiver bakgrunnsskanning"
 
 #
 msgid "Disable current event but not coming events"
@@ -4876,9 +4880,8 @@ msgstr "Laster ned operativsystem"
 msgid "Downloading plugin information. Please wait..."
 msgstr "Laster ned informasjon om tillegg. Vennligst vent litt..."
 
-#, fuzzy
 msgid "Downmix"
-msgstr "DTS nedskalering"
+msgstr "Nedskalering"
 
 #, fuzzy
 msgid "Drama"
@@ -5237,7 +5240,7 @@ msgstr "Avslutt redigering"
 
 #
 msgid "End bouquet edit"
-msgstr "Avslutt redigering i kanallister"
+msgstr "Avslutt redigering av kanalliste"
 
 #
 #, fuzzy
@@ -5246,7 +5249,7 @@ msgstr "Slutt tid"
 
 #
 msgid "End favourites edit"
-msgstr "Avslutt redigering i favorittlister"
+msgstr "Avslutt redigering av favorittliste"
 
 #
 msgid "End time"
@@ -7591,7 +7594,7 @@ msgstr "MMC kort"
 
 #
 msgid "MORE"
-msgstr "MORE"
+msgstr "MER"
 
 msgid "Macao"
 msgstr "Macao"
@@ -7804,7 +7807,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "MiniDLNA setup"
-msgstr "PiP-bilde i bilde oppsett"
+msgstr "Oppsett utseende"
 
 msgid "MiniTV"
 msgstr ""
@@ -8137,7 +8140,7 @@ msgstr "ECM info"
 #
 #, fuzzy
 msgid "NCam Info - Configuration"
-msgstr "Innstilling"
+msgstr "Konfigurasjon"
 
 msgid "NCam Info - Main Menu"
 msgstr ""
@@ -8165,7 +8168,7 @@ msgstr "INS"
 #
 #, fuzzy
 msgid "NFS setup"
-msgstr "Innstilling"
+msgstr "Oppsett utseende"
 
 msgid "NIM & Type"
 msgstr "Tuner modul - type"
@@ -8901,9 +8904,10 @@ msgstr "PGS fil"
 msgid "PGS file"
 msgstr "PGS fil"
 
+#
 #, fuzzy
 msgid "PID"
-msgstr "PDC"
+msgstr "PIDs"
 
 #
 msgid "PIN code needed"
@@ -8990,7 +8994,7 @@ msgid "Parental control setup"
 msgstr "Foreldrekontroll oppsett"
 
 msgid "Passthrough"
-msgstr ""
+msgstr "Gjennomgang"
 
 msgid "Password"
 msgstr "Passord"
@@ -9104,11 +9108,12 @@ msgid "Play DVDs"
 msgstr "Spill av DVDer"
 
 msgid "Play as Picture in Picture"
-msgstr "Bruk bilde i bilde visning"
+msgstr "Start opp bilde i bilde visning"
 
+#
 #, fuzzy
 msgid "Play audio in background"
-msgstr "Spill av lyd i liste modus"
+msgstr "Fortsett i bakgrunnen"
 
 msgid "Play audio-CD..."
 msgstr "Spill av lyd CD..."
@@ -9129,7 +9134,7 @@ msgid "Play from previous mark or playlist entry"
 msgstr "Spill av fra siste merke i opptaksliste"
 
 msgid "Play in main window"
-msgstr "Start i hovedvinduet"
+msgstr "Spill i hovedvinduet"
 
 msgid "Play music..."
 msgstr "Spill av musikk..."
@@ -9839,7 +9844,7 @@ msgid "Puerto Rico"
 msgstr "Puerto Rico"
 
 msgid "Purge deleted user bouquets"
-msgstr "Fjern slettede kanallister"
+msgstr "Tøm slettede kanallister"
 
 msgid "Put TV in standby"
 msgstr "Slå av TV"
@@ -10170,7 +10175,7 @@ msgid "Remove a nameserver entry"
 msgstr "Fjern en navneserver oppføring"
 
 msgid "Remove all alternatives"
-msgstr "Slett alle alternativer"
+msgstr "Fjern alle alternativer"
 
 msgid "Remove all logfiles"
 msgstr "Fjern alle loggfiler"
@@ -10216,7 +10221,7 @@ msgid "Remove plugins"
 msgstr "Fjern tillegg"
 
 msgid "Remove selected satellite"
-msgstr "Slett den valgte satellitt"
+msgstr "Fjern den valgte satellitt"
 
 #
 #, fuzzy
@@ -10315,7 +10320,7 @@ msgid "Request for vendor report"
 msgstr "Forespørsel etter leverandør rapport"
 
 msgid "Require authentication for http streams"
-msgstr "Krever autentisering for http stream"
+msgstr "Bruk autentisering for http streams"
 
 #
 msgid "Required medium type:"
@@ -10563,7 +10568,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "SABnzbd setup"
-msgstr "Veiviser oppsett"
+msgstr "Oppsett utseende"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC optimalisert søkeområde"
@@ -11366,7 +11371,7 @@ msgid "Service Title mode"
 msgstr "Kanalvalg"
 
 msgid "Service belongs to a parental protected bouquet"
-msgstr "Kanallisten er beskyttet av foreldrekontroll"
+msgstr "Kanalen er beskyttet av foreldrekontroll"
 
 msgid "Service has been added to the favourites."
 msgstr "Kanalen har blitt lagt til i favorittliste."
@@ -12163,9 +12168,8 @@ msgid "Skin Setting"
 msgstr "Innstillinger"
 
 #
-#, fuzzy
 msgid "Skin setup"
-msgstr "PiP-bilde i bilde oppsett"
+msgstr "Oppsett utseende"
 
 #
 msgid "Skins"
@@ -12705,7 +12709,7 @@ msgid "Stop timeshift?"
 msgstr "Stopp timeskift?"
 
 msgid "Stop using as startup service"
-msgstr "Slutte å bruke som oppstartskanal"
+msgstr "Slutt å bruke som oppstartskanal"
 
 msgid "Stopped"
 msgstr "Stoppet"
@@ -12765,10 +12769,10 @@ msgid "Subtitle border width"
 msgstr "Undertekst kontrast"
 
 msgid "Subtitle delay when timing is bad"
-msgstr "Undertekst forsinkelse når tidtakingen er dårlig"
+msgstr "Undertekst synkronisering"
 
 msgid "Subtitle delay when timing lacks"
-msgstr "Undertekst forsinkelse når tidtaking mangler"
+msgstr "Undertekst synkronisering uten tidtaking"
 
 msgid "Subtitle font size"
 msgstr "Undertekst skriftstørrelse"
@@ -12992,7 +12996,7 @@ msgstr "Detaljer for programtillegg: "
 
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
-msgstr "Oversettelse oppdatert: 17.11.2019"
+msgstr "Oversettelse oppdatert: 06.12.2019"
 
 #
 msgid "TS file is too large for ISO9660 level 1!"
@@ -14504,7 +14508,7 @@ msgid "Using tuner %s"
 msgstr "Bruker tuner %s"
 
 msgid "Usually when the subtitle language is the same as the audio language, the subtitles will not be used. Enable this option to allow these subtitles to be used."
-msgstr "Når undertekst språk er samme som lydspråk vil teksting normalt ikke brukes. Aktiver dette for å bruke denne undertekst allikevel."
+msgstr "Vanligvis når undertekstspråket er det samme som lydspråket, vil undertekstene ikke brukes. Aktiver dette alternativet for å tillate at disse undertekstene kan brukes."
 
 #
 #, fuzzy
@@ -14689,10 +14693,9 @@ msgstr "Virtuell tastatur tekst:"
 msgid "Virtual keyboard"
 msgstr "Virtuelt tastatur"
 
-#
 #, fuzzy, python-format
 msgid "Vol: %s"
-msgstr "Video: %s bilder per sekund"
+msgstr ": %s"
 
 #
 msgid "Voltage mode"
@@ -14757,7 +14760,7 @@ msgid "Waiting for partition"
 msgstr "Venter på partisjon"
 
 msgid "Wake On LAN"
-msgstr "Bruk Wake-on-LAN"
+msgstr "Wake On LAN"
 
 #, fuzzy
 msgid "Wake up"
@@ -14909,16 +14912,16 @@ msgstr "Hvilken type kanalsøk vil du bruke?"
 
 #, fuzzy
 msgid "When enabled enigma2 will load unlinked user bouquets. This means that user bouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are updated"
-msgstr "Når dette er på, vil Enigma2 laste kanallister som ikke er tilknyttet mottakeren. Dette betyr at kanallister som er tilgjengelige, men som ikke er tilknyttet radio eller TV filer fortsatt vil bli lastet. Dette gjør at du kan holde egne favorittlister mens installerte innstillinger er oppdatert"
+msgstr "Når dette er på, vil enigma2 laste kanallister som ikke er tilknyttet mottakeren. Dette betyr at kanallister som er tilgjengelige, men som ikke er tilknyttet radio eller TV filer fortsatt vil bli lastet. Dette gjør at du kan holde egne favorittlister mens installerte innstillinger er oppdatert"
 
 msgid "When enabled the PiP can be closed by the exit button."
-msgstr "Når dette er på, vil PiP (bilde i bilde) avsluttes med exit tast."
+msgstr "Når dette er på, kan PiP (bilde i bilde) avsluttes med exit knapp."
 
 msgid "When enabled the arrow buttons around the OK button will follow the 'neutrino' style zap controls instead of the enigma2 style."
 msgstr "Når dette er på, vil piltastene rundt OK, følge 'neutrino stil' zapping istedenfor enigma2 stil på fjernkontrollen."
 
 msgid "When enabled the left, right, CH+/-, B+/-, P+/- buttons will follow the 'neutrino' style zap controls instead of the enigma2 style."
-msgstr "Når dette er på, vil venstre, høyre, opp, ned, + og - tastene følge 'neutrino' kanalvalg istedenfor enigma2 stil på fjernkontrollen."
+msgstr "Når dette er på, vil venstre, høyre, CH +/-, B +/-, P +/-knappene vil følge 'neutrino' stil zap kontroller i stedet for enigma2 stil."
 
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Når dette er på, vil mottakeren slås på ved ved hjelp av Wake-on-LAN funksjonen"
@@ -14945,7 +14948,7 @@ msgid "When enabled you can specify an extra timeframe when the inactivity sleep
 msgstr "Når aktivert, kan du velge et ekstra tidsrom slik at inaktiv timer overstyres. Deteksjonen slår seg ikke av i tidsrommet, men ubrukt timeout fjernes"
 
 msgid "When enabled you can zap channels with the  CH+/-, B+/-, P+/- buttons instead of opening the channel selection list."
-msgstr "Når dette er på, vil kanalbytte foregå med venstre, høyre, opp, ned, + og - tastene istedenfor at kanallisten åpnes."
+msgstr "Når dette er på, kan du zappe kanaler med CH +/-, B +/-, P +/-knapper i stedet for å åpne kanallisten."
 
 msgid "When enabled you get the channel selection list via the OK button, the infobar toggle is then transfered to exit button"
 msgstr "Når dette er på, vil kanallisten vises på OK tast. Infobar skrus av/på ved hjelp av exit tast"
@@ -14960,19 +14963,19 @@ msgid "When enabled, EIT data will be included in http streams. This allows a cl
 msgstr "Når dette er på, vil EIT data inngå i http stream. Dette tillater klient mottakeren å vise EPG."
 
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
-msgstr "Når den er på, er HDMI-CEC aktivert med standard innstilling"
+msgstr "Når dette er på, blir HDMI-CEC aktivert med standard innstilling"
 
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Når dette er på, vil et skjermvarsel vises når en avspilling er ferdig før en ny starter."
 
 msgid "When enabled, a popup message will be shown when a recording starts."
-msgstr "Når dette er på, vil et varsel vises når et opptak starter."
+msgstr "Når dette er på, vises en popup-melding når et opptak starter."
 
 msgid "When enabled, a radio background image will be visible while listening to a radio channel."
-msgstr "Når dette er på, vil et bakgrunnsbilde vises på skjermen ved radiolytting."
+msgstr "Når dette er på, vil et radio bakgrunnsbilde være synlig mens du lytter til en radiokanal."
 
 msgid "When enabled, a recording is allowed to interrupt live tv, when there are no free tuners."
-msgstr "Når dette er på, vil et opptak kunne avbryte direktesendt TV hvis det ikke finnes ledige tunere."
+msgstr "Når dette er på, kan en innspilling avbryte direktesendt TV når det ikke er noen ledige tunere."
 
 msgid "When enabled, a warning will be displayed and the user will get an option to stop or to continue the timeshift."
 msgstr "Når dette er på, vil et varsel vises med valget stopp eller fortsett timeskift."
@@ -14981,7 +14984,7 @@ msgid "When enabled, always descramble receiving http streams. This takes up mor
 msgstr "Når dette er på, vil mottatt http stream dekodes. Dette bruker mere data ressurser (dekode, demuxere bilde) og brukes bare når det er nødvendig. Individuelle streams er alltid dekodet hvis 0x100 er tillagt i service typen, uavhengig av denne innstillingen. Standardinnstilling er av."
 
 msgid "When enabled, authentication is required to watch http streams."
-msgstr "Når dette er på, vil autentisering kreves for å se http streams."
+msgstr "Når dette er på, brukes autentisering for å se http streams."
 
 msgid "When enabled, channel numbering will start at '1' for each bouquet."
 msgstr "Når dette er på, vil kanal nummer starte på '1' i hver enkelt kanalliste."
@@ -15002,7 +15005,7 @@ msgid "When enabled, error messages related to zapping will not be shown."
 msgstr "Når dette er på, vil feilmeldinger knyttet til kanalbytte ikke vises."
 
 msgid "When enabled, external subtitles will be always turned on for playback movie."
-msgstr "Når dette er på, vil ekstern undertekst bli skrudd på i avspilling av opptak."
+msgstr "Når dette er på, vil eksterne undertekster alltid være slått på ved avspilling av film."
 
 msgid "When enabled, graphical DVB subtitles are preferred over teletext subtitles, when both types are available."
 msgstr "Når dette er på, vil det foretrekkes DVB undertekst framfor tekst-TV undertekst når begge typer er tilgjengelig."
@@ -15029,7 +15032,7 @@ msgid "When enabled, network trash cans are probed for cleaning."
 msgstr ""
 
 msgid "When enabled, number markers will be hidden."
-msgstr "Når aktivert, vil nummer markører bli skjult."
+msgstr "Når dette er på, vil nummer markører bli skjult."
 
 msgid "When enabled, reformat subtitles to match the width of the screen."
 msgstr "Når dette er på, vil undertekst tilpasses skjermbredden."
@@ -15558,7 +15561,7 @@ msgid "Zap focus to main screen"
 msgstr "Gå til hovedmeny"
 
 msgid "Zap mode"
-msgstr "Kanalbytte valg"
+msgstr "Zappe modus"
 
 msgid "Zap to"
 msgstr "Gå til"
@@ -15596,7 +15599,7 @@ msgstr "Timer logg"
 #
 #, fuzzy
 msgid "ZeroTier setup"
-msgstr "Navneserver innstilling"
+msgstr "Motorinnstilling"
 
 msgid "ZeroTierVPN"
 msgstr ""
@@ -15875,7 +15878,7 @@ msgid "config menu"
 msgstr "config meny"
 
 msgid "configure in which resolution pictures are displayed with the picture viewer and movieplayer"
-msgstr "still inn bildeoppløsningen som vises med bildeviseren og filmspilleren"
+msgstr "still inn bildeoppløsningen som skal vises med bildeviseren og filmspilleren"
 
 #
 msgid "confirmed"
@@ -15889,14 +15892,13 @@ msgid "controlled by HDMI"
 msgstr "kontrollert av HDMI"
 
 msgid "convert to AC3"
-msgstr ""
+msgstr "konverter til AC3"
 
 msgid "convert to DTS"
-msgstr ""
+msgstr "konverter til DTS"
 
-#, fuzzy
 msgid "convert to multi-channel PCM"
-msgstr "Multikanal PCM lyd"
+msgstr "konverter til flerkanals PCM"
 
 msgid "cooking"
 msgstr "matlaging"
@@ -16142,8 +16144,9 @@ msgstr "folk/tradisjonell musikk"
 msgid "football/soccer"
 msgstr "fotball"
 
+#, fuzzy
 msgid "force AC3plus"
-msgstr ""
+msgstr "bruk AC3 Plus"
 
 #
 msgid "force disabled"
@@ -16640,10 +16643,9 @@ msgstr "bemerkelsesverdige mennesker"
 msgid "remove after this position"
 msgstr "slett etter denne posisjon"
 
-#
 #, fuzzy
 msgid "remove all"
-msgstr "Fjern overskrift"
+msgstr "fjern bokmerke"
 
 msgid "remove before this position"
 msgstr "slett før denne posisjonen"
@@ -16880,8 +16882,9 @@ msgstr "stereo"
 msgid "successful"
 msgstr "vellykket"
 
+#, fuzzy
 msgid "sw"
-msgstr ""
+msgstr "vis"
 
 msgid "switch to the next angle"
 msgstr "gå til neste posisjon"
@@ -16995,7 +16998,7 @@ msgstr "til slår av/starter på nytt"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"
-msgstr "kontrollert av HDMI"
+msgstr "bruk best, kontrollert av HDMI"
 
 msgid "use_hdmi_cacenter"
 msgstr ""
