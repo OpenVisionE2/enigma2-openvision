@@ -83,6 +83,7 @@ class Language:
 				Notifications.AddNotification(MessageBox, _("The selected langugage is unavailable - using en_EN"), MessageBox.TYPE_INFO, timeout=3)
 			lang = self.lang[index]
 			print "Activating language " + lang[0]
+			os.environ["LANGUAGE"] = lang[1] # set languange in order gettext to work properly on external plugins
 			self.catalog = gettext.translation('enigma2', resolveFilename(SCOPE_LANGUAGE, ""), languages=[index], fallback=True)
 			self.catalog.install(names=("ngettext", "pgettext"))
 			self.activeLanguage = index
