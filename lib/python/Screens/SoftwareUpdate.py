@@ -15,7 +15,7 @@ from Tools.BoundFunction import boundFunction
 from Tools.Directories import fileExists
 from enigma import eTimer, getBoxType, eDVBDB
 from urllib2 import urlopen
-import datetime, os
+import datetime, os, json
 
 class UpdatePlugin(Screen, ProtectedScreen):
 	skin = """
@@ -75,32 +75,59 @@ class UpdatePlugin(Screen, ProtectedScreen):
 	def checkTraficLight(self):
 		self.activityTimer.callback.remove(self.checkTraficLight)
 		self.activityTimer.start(100, False)
-		message = ""
-		picon = None
+		status = None
+		message = None
+		abort = False
+		picon = MessageBox.TYPE_ERROR
+		url = "https://openvision.tech/trafficlight"
+
+		# try to fetch the trafficlight json from the website
 		try:
-			# TODO: Use Twisted's URL fetcher, urlopen is evil. And it can
-			# run in parallel to the package update.
-			url = "https://openvision.tech/status/"
-			try:
-				status = urlopen(url, timeout=5).read().split('!', 1)
-			except:
-				# OpenPli 5.0 uses python 2.7.11 and here we need to bypass the certificate check
-				from ssl import _create_unverified_context
-				status = urlopen(url, timeout=5, context=_create_unverified_context()).read().split('!', 1)
-				print status
-			if getBoxType() in status[0].split(','):
-				message = len(status) > 1 and status[1] or _("The current image might not be stable.\nFor more information see %s.") % ("openvision.tech")
-				# strip any HTML that may be in the message, but retain line breaks
-				import re
-				message = message.replace("<br />", "\n\n").replace("<br>", "\n\n")
-				message = re.sub('<[^<]+?>', '', re.sub('&#8209;', '-', message))
-				picon = MessageBox.TYPE_ERROR
+			status = dict(json.load(urlopen(url, timeout=5)))
+			print "[SoftwareUpdate] status is: ", status
 		except:
+			pass
+
+		# process the status fetched
+		if status is not None:
+
+			try:
+				# get image version and machine name
+				machine = getBoxType()
+				version = open("/etc/issue").readlines()[-2].split()[1]
+
+				# do we have an entry for this version
+				if version in status and machine in status[version]['machines']:
+					if 'abort' in status[version]:
+						abort = status[version]['abort']
+					if 'from' in status[version]:
+						starttime = datetime.datetime.strptime(status[version]['from'], '%Y%m%d%H%M%S')
+					else:
+						starttime = datetime.datetime.now()
+					if 'to' in status[version]:
+						endtime = datetime.datetime.strptime(status[version]['to'], '%Y%m%d%H%M%S')
+					else:
+						endtime = datetime.datetime.now()
+					if (starttime <= datetime.datetime.now() and endtime >= datetime.datetime.now()):
+						message = str(status[version]['message'])
+
+			except Exception, e:
+				print "[SoftwareUpdate] status error: ", str(e)
+				message =  _("The current image might not be stable.\nFor more information see %s.") % ("openvision.tech")
+
+		# or display a generic warning if fetching failed
+		else:
 			message = _("The status of the current image could not be checked because %s can not be reached.") % ("openvision.tech")
-			picon = MessageBox.TYPE_ERROR
-		if message != "":
-			message += "\n" + _("Do you want to update your receiver?")
-			self.session.openWithCallback(self.startActualUpdate, MessageBox, message, picon = picon)
+
+		# show the user the message first
+		if message is not None:
+			if abort:
+				self.session.openWithCallback(self.close, MessageBox, message, type=MessageBox.TYPE_ERROR, picon = picon)
+			else:
+				message += "\n\n" + _("Do you want to update your receiver?")
+				self.session.openWithCallback(self.startActualUpdate, MessageBox, message, picon = picon)
+
+		# no message, continue with the update
 		else:
 			self.startActualUpdate(True)
 
