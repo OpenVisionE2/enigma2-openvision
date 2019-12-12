@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys, os, time
 import re
-from Tools.HardwareInfo import HardwareInfo
 from enigma import getBoxType, getBoxBrand
 from Components.SystemInfo import SystemInfo
 import socket, fcntl, struct
@@ -109,10 +108,10 @@ def getKernelVersionString():
 		return _("unknown")
 
 def getHardwareTypeString():
-	return HardwareInfo().get_device_model()
+	return getBoxType()
 
 def getHardwareBrand():
-	return HardwareInfo().get_device_brand()
+	return getBoxBrand()
 
 def getImageTypeString():
 	try:

@@ -1,10 +1,12 @@
 from Components.config import config, ConfigSelection, ConfigSubDict, ConfigYesNo
 from Components.SystemInfo import SystemInfo
 from Tools.CList import CList
-from Tools.HardwareInfo import HardwareInfo
 import os
 from enigma import getBoxType
 from Components.About import about
+
+model = getBoxType()
+has_hdmi = model not in ("dm800","dm8000")
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -54,7 +56,7 @@ class VideoHardware:
 								"multi":	{ 50: "2160p25", 60: "2160p30" },
 								"auto":		{ 50: "2160p25", 60: "2160p30", 24: "2160p24" } }
 
-	if getBoxType().startswith('dm9'):
+	if model.startswith('dm9'):
 		rates["2160p"] =	{ 	"50Hz":		{ 50: "2160p50" },
 								"60Hz":		{ 60: "2160p60" },
 								"multi":	{ 50: "2160p50", 60: "2160p60" },
@@ -276,7 +278,6 @@ class VideoHardware:
 		return res
 
 	def createConfig(self, *args):
-		has_hdmi = HardwareInfo().has_hdmi()
 		lst = []
 
 		config.av.videomode = ConfigSubDict()

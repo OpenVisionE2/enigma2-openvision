@@ -8,7 +8,9 @@ from Components.config import config, ConfigBoolean, configfile
 from Components.SystemInfo import SystemInfo
 from enigma import getBoxType
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
-from Tools.HardwareInfo import HardwareInfo
+
+hw_type = getBoxType()
+has_hdmi = hw_type not in ("dm800","dm8000")
 
 config.misc.showtestcard = ConfigBoolean(default = False)
 
@@ -73,8 +75,6 @@ class VideoWizard(WizardLanguage, Rc):
 		configfile.save()
 
 	def listInputChannels(self):
-		hw_type = getBoxType()
-		has_hdmi = HardwareInfo().has_hdmi()
 		list = []
 
 		for port in self.hw.getPortList():
@@ -94,8 +94,6 @@ class VideoWizard(WizardLanguage, Rc):
 		self.inputSelect(index)
 
 	def inputSelectionMoved(self):
-		hw_type = getBoxType()
-		has_hdmi = HardwareInfo().has_hdmi()
 		print "[VideoWizard] input selection moved:", self.selection
 		self.inputSelect(self.selection)
 		if self["portpic"].instance is not None:
