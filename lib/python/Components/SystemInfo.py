@@ -1,6 +1,5 @@
 from enigma import eDVBResourceManager, Misc_Options, eDVBCIInterfaces, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
 from Tools.Directories import fileExists, fileCheck, pathExists, fileHas
-from Tools.HardwareInfo import HardwareInfo
 import os, re
 from os import access, R_OK
 from boxbranding import getDisplayType, getImageArch
@@ -96,7 +95,7 @@ SystemInfo["Has2160p"] = fileHas("/proc/stb/video/videomode_preferred","2160p50"
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")
-SystemInfo["HasHDMI-CEC"] = HardwareInfo().has_hdmi() and fileExists("/usr/lib/enigma2/python/Plugins/SystemPlugins/HdmiCEC/plugin.pyo") and (fileExists("/dev/cec0") or fileExists("/dev/hdmi_cec") or fileExists("/dev/misc/hdmi_cec0"))
+SystemInfo["HasHDMI-CEC"] = model not in ("dm800","dm8000") and fileExists("/usr/lib/enigma2/python/Plugins/SystemPlugins/HdmiCEC/plugin.pyo") and (fileExists("/dev/cec0") or fileExists("/dev/hdmi_cec") or fileExists("/dev/misc/hdmi_cec0"))
 SystemInfo["HasYPbPr"] = model in ("dm8000","et5x00","et6x00","et9x00","et10000","formuler1","mbtwinplus","spycat","vusolo","vuduo","vuduo2","vuultimo")
 SystemInfo["HasScart"] = model in ("dm8000","et4x00","et6x00","et8000","et9x00","et10000","formuler1","hd1100","hd1200","hd1265","hd2400","vusolo","vusolo2","vuduo","vuduo2","vuultimo","vuuno","xp1000")
 SystemInfo["HasSVideo"] = model == "dm8000"
