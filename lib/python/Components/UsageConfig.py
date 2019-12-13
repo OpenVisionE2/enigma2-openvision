@@ -173,7 +173,7 @@ def InitUsageConfig():
 		("playlistquit", _("Play next (return to previous service)")), ("loop", _("Continues play (loop)")), ("repeatcurrent", _("Repeat"))])
 	config.usage.next_movie_msg = ConfigYesNo(default = True)
 	config.usage.last_movie_played = ConfigText()
-	config.usage.leave_movieplayer_onExit = ConfigSelection(default = "no", choices = [
+	config.usage.leave_movieplayer_onExit = ConfigSelection(default = "popup", choices = [
 		("no", _("No")), ("popup", _("With popup")), ("without popup", _("Without popup")) ])
 
 	config.usage.setup_level = ConfigSelection(default = "expert", choices = [
