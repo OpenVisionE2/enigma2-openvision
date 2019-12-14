@@ -120,7 +120,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 					elif 'en_EN' in message:
 						message = message['en_EN']
 					else:
-						message =  _("The current image might not be stable.\nFor more information see %s.") % ("openpli.org")
+						message =  _("The current image might not be stable.\nFor more information see %s.") % ("openvision.tech")
 
 			except Exception, e:
 				print "[SoftwareUpdate] status error: ", str(e)
