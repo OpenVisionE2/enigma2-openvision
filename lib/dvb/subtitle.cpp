@@ -629,6 +629,8 @@ int eDVBSubtitleParser::subtitle_process_segment(uint8_t *segment)
 		int object_id;
 		int object_coding_method;
 
+		bool swap_map_table = eConfigManager::getConfigBoolValue("config.subtitles.swap_map_table");
+
 		object_id  = *segment++ << 8;
 		object_id |= *segment++;
 		processed_length += 2;
@@ -657,11 +659,22 @@ int eDVBSubtitleParser::subtitle_process_segment(uint8_t *segment)
 						bottom_field_data_blocklength |= *segment++;
 						processed_length += 4;
 
+						if (swap_map_table)
+						{
+						map_2_to_4_bit_table[0] = 0;
+						map_2_to_4_bit_table[1] = 7;
+						map_2_to_4_bit_table[2] = 8;
+						map_2_to_4_bit_table[3] = 15;
+						}
+
+						if (!swap_map_table)
+						{
 						// its working on cyfra channels.. but hmm in EN300743 the default table is 0, 7, 8, 15
 						map_2_to_4_bit_table[0] = 0;
 						map_2_to_4_bit_table[1] = 8;
 						map_2_to_4_bit_table[2] = 7;
 						map_2_to_4_bit_table[3] = 15;
+						}
 
 						// this map is realy untested...
 						map_2_to_8_bit_table[0] = 0;

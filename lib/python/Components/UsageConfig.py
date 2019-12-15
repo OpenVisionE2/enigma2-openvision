@@ -1082,6 +1082,7 @@ def InitUsageConfig():
 		config.av.allow_10bit.addNotifier(setDisable10Bit)
 
 	config.subtitles = ConfigSubsection()
+	config.subtitles.swap_map_table = ConfigYesNo(default = False)
 	config.subtitles.ttx_subtitle_colors = ConfigSelection(default = "1", choices = [
 		("0", _("original")),
 		("1", _("white")),
