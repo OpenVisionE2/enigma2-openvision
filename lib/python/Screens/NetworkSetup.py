@@ -2553,7 +2553,7 @@ class NetworkTelnet(NSCommon,Screen):
 			self['key_green'].setText(_("Stop"))
 			self.my_telnet_run = True
 			status_summary = self['lab2'].text + ' ' + self['labrun'].text
-		if not fileExists('/usr/sbin/telnetd'):
+		else:
 			self['labrun'].hide()
 			self['labstop'].show()
 			self['labactive'].show()
@@ -2821,6 +2821,7 @@ class NetworkInadynLog(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("Inadyn log"))
+		self.skinName = "NetworkServiceLog"
 		self['infotext'] = ScrollLabel('')
 		self['actions'] = ActionMap(['WizardActions', 'DirectionActions', 'ColorActions'], {'ok': self.close,
 		 'back': self.close,
