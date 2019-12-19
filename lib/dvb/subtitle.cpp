@@ -661,19 +661,19 @@ int eDVBSubtitleParser::subtitle_process_segment(uint8_t *segment)
 
 						if (swap_map_table)
 						{
-						map_2_to_4_bit_table[0] = 0;
-						map_2_to_4_bit_table[1] = 7;
-						map_2_to_4_bit_table[2] = 8;
-						map_2_to_4_bit_table[3] = 15;
+							map_2_to_4_bit_table[0] = 0;
+							map_2_to_4_bit_table[1] = 7;
+							map_2_to_4_bit_table[2] = 8;
+							map_2_to_4_bit_table[3] = 15;
 						}
 
 						if (!swap_map_table)
 						{
 						// its working on cyfra channels.. but hmm in EN300743 the default table is 0, 7, 8, 15
-						map_2_to_4_bit_table[0] = 0;
-						map_2_to_4_bit_table[1] = 8;
-						map_2_to_4_bit_table[2] = 7;
-						map_2_to_4_bit_table[3] = 15;
+							map_2_to_4_bit_table[0] = 0;
+							map_2_to_4_bit_table[1] = 8;
+							map_2_to_4_bit_table[2] = 7;
+							map_2_to_4_bit_table[3] = 15;
 						}
 
 						// this map is realy untested...
@@ -878,7 +878,7 @@ void eDVBSubtitleParser::subtitle_reset()
 void eDVBSubtitleParser::subtitle_redraw(int page_id)
 {
 	subtitle_page *page = m_pages;
-
+	bool swap_palette_table = eConfigManager::getConfigBoolValue("config.subtitles.swap_palette_table");
 	while (page)
 	{
 		if (page->page_id == page_id)
@@ -939,7 +939,14 @@ void eDVBSubtitleParser::subtitle_redraw(int page_id)
 					memset(static_cast<void*>(palette), 0, 4 * sizeof(gRGB));
 					// this table is tested on cyfra .. but in EN300743 the table palette[2] and palette[1] is swapped.. i dont understand this ;)
 					palette[0].a = 0xFF;
-					palette[2].r = palette[2].g = palette[2].b = 0xFF;
+					if (swap_palette_table)
+					{
+						palette[1].r = palette[1].g = palette[1].b = 0xFF;
+					}
+					if (!swap_palette_table)
+					{
+						palette[2].r = palette[2].g = palette[2].b = 0xFF;
+					}
 					palette[3].r = palette[3].g = palette[3].b = 0x80;
 					break;
 				case subtitle_region::bpp4: // tested on cyfra... but the map is another in EN300743... dont understand this...

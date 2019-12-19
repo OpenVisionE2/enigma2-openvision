@@ -1083,6 +1083,7 @@ def InitUsageConfig():
 
 	config.subtitles = ConfigSubsection()
 	config.subtitles.swap_map_table = ConfigYesNo(default = False)
+	config.subtitles.swap_palette_table = ConfigYesNo(default = False)
 	config.subtitles.ttx_subtitle_colors = ConfigSelection(default = "1", choices = [
 		("0", _("original")),
 		("1", _("white")),
