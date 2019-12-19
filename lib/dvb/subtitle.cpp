@@ -878,7 +878,7 @@ void eDVBSubtitleParser::subtitle_reset()
 void eDVBSubtitleParser::subtitle_redraw(int page_id)
 {
 	subtitle_page *page = m_pages;
-	bool swap_palette_table = eConfigManager::getConfigBoolValue("config.subtitles.swap_palette_table");
+
 	while (page)
 	{
 		if (page->page_id == page_id)
@@ -929,7 +929,7 @@ void eDVBSubtitleParser::subtitle_redraw(int page_id)
 			reg->buffer->surface->clut.data = new gRGB[clut_size];
 
 			gRGB *palette = reg->buffer->surface->clut.data;
-
+			bool swap_palette_table = eConfigManager::getConfigBoolValue("config.subtitles.swap_palette_table");
 			subtitle_clut_entry *entries=0;
 			switch(reg->depth)
 			{
@@ -937,12 +937,12 @@ void eDVBSubtitleParser::subtitle_redraw(int page_id)
 					if (clut)
 						entries = clut->entries_2bit;
 					memset(static_cast<void*>(palette), 0, 4 * sizeof(gRGB));
-					// this table is tested on cyfra .. but in EN300743 the table palette[2] and palette[1] is swapped.. i dont understand this ;)
 					palette[0].a = 0xFF;
 					if (swap_palette_table)
 					{
 						palette[1].r = palette[1].g = palette[1].b = 0xFF;
 					}
+					// this table is tested on cyfra .. but in EN300743 the table palette[2] and palette[1] is swapped.. i dont understand this ;)
 					if (!swap_palette_table)
 					{
 						palette[2].r = palette[2].g = palette[2].b = 0xFF;
