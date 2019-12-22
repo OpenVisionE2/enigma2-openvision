@@ -10,7 +10,7 @@ from Components.Converter.Converter import Converter
 from Components.RcModel import rc_model
 from Components.Sources.Source import ObsoleteSource
 from Components.SystemInfo import SystemInfo
-from Tools.Directories import SCOPE_CONFIG, SCOPE_CURRENT_SKIN, SCOPE_CURRENT_LCDSKIN, SCOPE_FONTS, SCOPE_SKIN, fileExists, SCOPE_CONFIG
+from Tools.Directories import SCOPE_CONFIG, SCOPE_CURRENT_SKIN, SCOPE_CURRENT_LCDSKIN, SCOPE_FONTS, SCOPE_SKIN, fileExists, resolveFilename
 from Tools.Import import my_import
 from Tools.LoadPixmap import LoadPixmap
 
