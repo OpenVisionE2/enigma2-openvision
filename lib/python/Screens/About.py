@@ -42,6 +42,7 @@ class About(Screen):
 		AboutText += _("CPU: ") + cpu + "\n"
 		AboutText += _("CPU brand: ") + about.getCPUBrand() + "\n"
 		AboutText += _("CPU architecture: ") + about.getCPUArch() + "\n"
+		AboutText += _("FPU: ") + boxbranding.getImageFPU() + "\n"
 		AboutText += _("Image architecture: ") + boxbranding.getImageArch() + "\n"
 
 		if boxbranding.getImageArch() == "aarch64":
