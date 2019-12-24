@@ -249,7 +249,7 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 
 	# returns a string for the user representing a human readable output for index
 	def getTextualIndexRepresentation(self, index):
-		print "getTextualIndexRepresentation:", index
+		print "[DiseqcTester] getTextualIndexRepresentation:", index
 		text = ""
 
 		text += nimmanager.getSatDescription(index[2]) + ", "
@@ -268,13 +268,13 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 	def fillTransponderList(self):
 		self.clearTransponder()
 		print "----------- fillTransponderList"
-		print "index:", self.currentlyTestedIndex
+		print "[DiseqcTester] index:", self.currentlyTestedIndex
 		keys = self.indexlist.keys()
 		if self.getContinueScanning():
-			print "index:", self.getTextualIndexRepresentation(self.currentlyTestedIndex)
+			print "[DiseqcTester] index:", self.getTextualIndexRepresentation(self.currentlyTestedIndex)
 			for transponder in self.indexlist[self.currentlyTestedIndex]:
 				self.addTransponder(transponder)
-			print "transponderList:", self.transponderlist
+			print "[DiseqcTester] transponderList:", self.transponderlist
 			return True
 		else:
 			return False
@@ -304,7 +304,7 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 			return self.randomkeys[0]
 		elif self.test_type == self.TEST_TYPE_COMPLETE:
 			keys = self.indexlist.keys()
-			print "keys:", keys
+			print "[DiseqcTester] keys:", keys
 			successorindex = {}
 			for index in keys:
 				successorindex[index] = []
@@ -328,7 +328,7 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 				else:
 					currindex = successorindex[currindex].pop()
 					self.keylist.append(currindex)
-			print "self.keylist:", self.keylist
+			print "[DiseqcTester] self.keylist:", self.keylist
 			self.myindex = 0
 			self["overall_progress"].setRange(len(self.keylist))
 			self["overall_progress"].setValue(self.myindex)
@@ -419,7 +419,7 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 		self.resultsstatus[status].append(index)
 
 	def finishedChecking(self):
-		print "finishedChecking"
+		print "[DiseqcTester] finishedChecking"
 		TuneTest.finishedChecking(self)
 
 		if self.currentlyTestedIndex not in self.results:
@@ -450,8 +450,8 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 		else:
 			self.running = False
 			self["progress_list"].setIndex(0)
-			print "results:", self.results
-			print "resultsstatus:", self.resultsstatus
+			print "[DiseqcTester] results:", self.results
+			print "[DiseqcTester] resultsstatus:", self.resultsstatus
 			if self.log:
 				try:
 					file = open("/tmp/diseqctester.log", "w")
@@ -489,7 +489,7 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 		self.close()
 
 	def select(self):
-		print "selectedIndex:", self["progress_list"].getCurrent()[0]
+		print "[DiseqcTester] selectedIndex:", self["progress_list"].getCurrent()[0]
 		if not self.running:
 			index = self["progress_list"].getCurrent()[0]
 			self.setResultType(ResultParser.TYPE_BYINDEX)

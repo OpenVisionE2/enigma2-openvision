@@ -71,11 +71,11 @@ class DefaultServicesScannerPlugin(ScanSetup):
 				self.multiscanlist[satindex][1].value = True
 
 	def runScan(self):
-		print "runScan"
+		print "[DefaultServicesScanner] runScan"
 		self.keyGo()
 
 	def startScan(self, tlist, flags, feid, networkid = 0):
-		print "startScan"
+		print "[DefaultServicesScanner] startScan"
 		if len(tlist):
 			# flags |= eComponentScan.scanSearchBAT
 			self.session.openWithCallback(self.scanFinished, DefaultServiceScan, [{"transponders": tlist, "feid": feid, "flags": flags, "networkid": networkid}])
@@ -83,13 +83,13 @@ class DefaultServicesScannerPlugin(ScanSetup):
 			self.session.openWithCallback(self.scanFinished, MessageBox, _("Nothing to scan!\nPlease setup your tuner settings before you start a service scan."), MessageBox.TYPE_ERROR)
 
 	def scanFinished(self, value = None):
-		print "finished"
-		print "self.scanIndex:", self.scanIndex
+		print "[DefaultServicesScanner] finished"
+		print "[DefaultServicesScanner] self.scanIndex:", self.scanIndex
 		db = eDVBDB.getInstance()
-		print "self.multiscanlist:", self.multiscanlist
+		print "[DefaultServicesScanner] self.multiscanlist:", self.multiscanlist
 		if len(self.multiscanlist) - 1 >= self.scanIndex and len(self.multiscanlist[self.scanIndex]) > 0:
 			satint = self.multiscanlist[self.scanIndex][0]
-			print "scanned sat:", satint
+			print "[DefaultServicesScanner] scanned sat:", satint
 			db.saveServicelist("/tmp/lamedb." + str(satint))
 			file = open("/tmp/sat" + str(satint) + ".info", "w")
 			xml = """<default>
@@ -114,7 +114,7 @@ class DefaultServicesScannerPlugin(ScanSetup):
 
 		self.scanIndex += 1
 		if self.scanIndex + 1 >= len(self.multiscanlist):
-			print "no more sats to scan"
+			print "[DefaultServicesScanner] no more sats to scan"
 			confdir = resolveFilename(SCOPE_CONFIG)
 			copyfile(confdir + "/lamedb.backup", confdir + "/lamedb")
 			db.reloadServicelist()

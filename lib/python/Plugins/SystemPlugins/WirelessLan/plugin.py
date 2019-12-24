@@ -316,7 +316,7 @@ class WlanScan(Screen):
 		self.cleanList = []
 		aps = iWlan.getNetworkList()
 		if aps is not None:
-			print "[WirelessLan.py] got Accespoints!"
+			print "[WirelessLan] got Accespoints!"
 			tmpList = []
 			compList = []
 			for ap in aps:
