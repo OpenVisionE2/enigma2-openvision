@@ -32,7 +32,7 @@ class TitleCutter(CutListEditor):
 				pid = str(i.getPID())
 				if description == "MPEG":
 					description = "MP2"
-				print "[audiotrack] pid:", pid, "description:", description, "language:", DVB_lang, "count:", x, "active:", (x < 8)
+				print "[DVDBurn] audiotrack pid:", pid, "description:", description, "language:", DVB_lang, "count:", x, "active:", (x < 8)
 				self.t.properties.audiotracks.append(ConfigSubsection())
 				self.t.properties.audiotracks[-1].active = ConfigYesNo(default = (x < 8))
 				self.t.properties.audiotracks[-1].format = ConfigFixedText(description)

@@ -577,7 +577,7 @@ class Pic_Full_View(Screen):
 			self.index = self.maxentry
 
 	def slidePic(self):
-		print "slide to next Picture index=" + str(self.lastindex)
+		print "[PicturePlayer] slide to next Picture index=" + str(self.lastindex)
 		if config.pic.loop.value==False and self.lastindex == self.maxentry:
 			self.PlayPause()
 		self.shownow = True

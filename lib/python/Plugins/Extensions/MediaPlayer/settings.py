@@ -81,7 +81,7 @@ class MediaPlayerSettings(Screen, ConfigListScreen):
 		self.onLayoutFinish.append(self.createSummary)
 
 	def initConfigList(self, element=None):
-		print "[initConfigList]", element
+		print "[MediaPlayer] initConfigList", element
 		try:
 			self.list = []
 			self.list.append(getConfigListEntry(_("Repeat playlist"), config.mediaplayer.repeat))
@@ -94,7 +94,7 @@ class MediaPlayerSettings(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Show media player on main menu"), config.mediaplayer.onMainMenu))
 			self["config"].setList(self.list)
 		except KeyError:
-			print "keyError"
+			print "[MediaPlayer] keyError"
 
 	def ok(self):
 		if self["config"].getCurrent()[1] == config.mediaplayer.defaultDir:
@@ -103,6 +103,6 @@ class MediaPlayerSettings(Screen, ConfigListScreen):
 			self.keySave()
 
 	def DirectoryBrowserClosed(self, path):
-		print "PathBrowserClosed:" + str(path)
+		print "[MediaPlayer] PathBrowserClosed:" + str(path)
 		if path != False:
 			config.mediaplayer.defaultDir.setValue(path)

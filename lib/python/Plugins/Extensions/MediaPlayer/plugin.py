@@ -86,7 +86,7 @@ class MediaPixmap(Pixmap):
 		self.instance.setPixmap(self.noCoverPixmap)
 
 	def embeddedCoverArt(self):
-		print "[embeddedCoverArt] found"
+		print "[MediaPlayer] embeddedCoverArt found"
 		self.coverArtFileName = "/tmp/.id3coverart"
 		self.picload.startDecode(self.coverArtFileName)
 
@@ -306,7 +306,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 				try:
 					self.playlistIOInternal.save(resolveFilename(SCOPE_CONFIG, "playlist.e2pls"))
 				except IOError:
-					print "couldn't save playlist.e2pls"
+					print "[MediaPlayer] couldn't save playlist.e2pls"
 			if config.mediaplayer.saveDirOnExit.getValue():
 				config.mediaplayer.defaultDir.setValue(self.filelist.getCurrentDirectory())
 				config.mediaplayer.defaultDir.save()
@@ -337,25 +337,25 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 		sTagTrackCount = currPlay.info().getInfo(iServiceInformation.sTagTrackCount)
 		sTagTitle = currPlay.info().getInfoString(iServiceInformation.sTagTitle)
 		if sTagTrackNumber or sTagTrackCount or sTagTitle:
-			print "[__evUpdatedInfo] title %d of %d (%s)" % (sTagTrackNumber, sTagTrackCount, sTagTitle)
+			print "[MediaPlayer] __evUpdatedInfo title %d of %d (%s)" % (sTagTrackNumber, sTagTrackCount, sTagTitle)
 		self.readTitleInformation()
 
 	def __evAudioDecodeError(self):
 		currPlay = self.session.nav.getCurrentService()
 		sTagAudioCodec = currPlay.info().getInfoString(iServiceInformation.sTagAudioCodec)
-		print "[__evAudioDecodeError] audio-codec %s can't be decoded by hardware" % (sTagAudioCodec)
+		print "[MediaPlayer] __evAudioDecodeError audio-codec %s can't be decoded by hardware" % (sTagAudioCodec)
 		self.session.open(MessageBox, _("This receiver cannot decode %s streams!") % sTagAudioCodec, type = MessageBox.TYPE_INFO,timeout = 20 )
 
 	def __evVideoDecodeError(self):
 		currPlay = self.session.nav.getCurrentService()
 		sTagVideoCodec = currPlay.info().getInfoString(iServiceInformation.sTagVideoCodec)
-		print "[__evVideoDecodeError] video-codec %s can't be decoded by hardware" % (sTagVideoCodec)
+		print "[MediaPlayer] __evVideoDecodeError video-codec %s can't be decoded by hardware" % (sTagVideoCodec)
 		self.session.open(MessageBox, _("This receiver cannot decode %s streams!") % sTagVideoCodec, type = MessageBox.TYPE_INFO,timeout = 20 )
 
 	def __evPluginError(self):
 		currPlay = self.session.nav.getCurrentService()
 		message = currPlay.info().getInfoString(iServiceInformation.sUser+12)
-		print "[__evPluginError]" , message
+		print "[MediaPlayer] __evPluginError" , message
 		self.session.open(MessageBox, message, type = MessageBox.TYPE_INFO,timeout = 20 )
 
 	def delMPTimer(self):
@@ -713,7 +713,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			for i in os.listdir(playlistdir):
 				listpath.append((i,playlistdir + i))
 		except IOError,e:
-			print "Error while scanning subdirs ",e
+			print "[MediaPlayer] Error while scanning subdirs ",e
 		if config.mediaplayer.sortPlaylists.value:
 			listpath.sort()
 		return listpath
@@ -754,7 +754,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			try:
 				os.remove(self.delname)
 			except OSError,e:
-				print "delete failed:", e
+				print "[MediaPlayer] delete failed:", e
 				self.session.open(MessageBox, _("Delete failed!"), MessageBox.TYPE_ERROR)
 
 	def clear_playlist(self):
@@ -764,9 +764,9 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 		self.switchToFileList()
 
 	def copyDirectory(self, directory, recursive = True):
-		print "copyDirectory", directory
+		print "[MediaPlayer] copyDirectory", directory
 		if directory == '/':
-			print "refusing to operate on /"
+			print "[MediaPlayer] refusing to operate on /"
 			return
 		filelist = FileList(directory, useServiceRef = True, showMountpoints = False, isTop = True)
 
