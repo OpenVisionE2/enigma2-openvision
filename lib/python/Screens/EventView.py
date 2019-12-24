@@ -178,7 +178,7 @@ class EventViewBase:
 						self.key_green_choice = self.ADD_TIMER
 
 	def finishedAdd(self, answer):
-		print "finished add"
+		print "[EventView] finished add"
 		if answer[0]:
 			entry = answer[1]
 			if entry.external:
@@ -213,7 +213,7 @@ class EventViewBase:
 		else:
 			self["key_green"].setText(_("Add timer"))
 			self.key_green_choice = self.ADD_TIMER
-			print "Timeredit aborted"
+			print "[EventView] Timeredit aborted"
 
 	def finishSanityCorrection(self, answer):
 		self.finishedAdd(answer)

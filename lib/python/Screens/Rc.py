@@ -82,7 +82,7 @@ class Rc:
 					selectPic = x
 					break
 			if selectPic is not None:
-				print "selectPic:", selectPic
+				print "[Rc] selectPic:", selectPic
 				self[selectPic].moveTo(rcpos[0] + pos[0] + selectPics[1][0], rcpos[1] + pos[1] + selectPics[1][1], 1)
 				self[selectPic].startMoving()
 				self[selectPic].show()

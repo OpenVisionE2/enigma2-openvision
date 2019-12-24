@@ -24,7 +24,7 @@ def getBoxProc():
 		else:
 			procmodel = open("/proc/stb/info/model", "r").readline().strip().lower()
 	except IOError:
-		print "getBoxProc failed!"
+		print "[StbHardware] getBoxProc failed!"
 	return procmodel
 
 def getFPVersion():
@@ -45,7 +45,7 @@ def getFPVersion():
 			try:
 				ret = open("/sys/firmware/devicetree/base/bolt/tag", "r").read().rstrip("\0")
 			except:
-				print "getFPVersion failed!"
+				print "[StbHardware] getFPVersion failed!"
 	return ret
 
 def setFPWakeuptime(wutime):
@@ -57,7 +57,7 @@ def setFPWakeuptime(wutime):
 			ioctl(fp.fileno(), 6, pack('L', wutime)) # set wake up
 			fp.close()
 		except IOError:
-			print "setFPWakeupTime failed!"
+			print "[StbHardware] setFPWakeupTime failed!"
 
 def setRTCoffset(forsleep=None):
 	import time
@@ -71,9 +71,9 @@ def setRTCoffset(forsleep=None):
 	# Set RTC OFFSET (diff. between UTC and Local Time)
 	try:
 		open("/proc/stb/fp/rtc_offset", "w").write(str(forsleep))
-		print "[RTC] set RTC offset to %s sec." % (forsleep)
+		print "[StbHardware] set RTC offset to %s sec." % (forsleep)
 	except IOError:
-		print "setRTCoffset failed!"
+		print "[StbHardware] setRTCoffset failed!"
 
 def setRTCtime(wutime):
 	if path.exists("/proc/stb/fp/rtc_offset"):
@@ -86,7 +86,7 @@ def setRTCtime(wutime):
 			ioctl(fp.fileno(), 0x101, pack('L', wutime)) # set wake up
 			fp.close()
 		except IOError:
-			print "setRTCtime failed!"
+			print "[StbHardware] setRTCtime failed!"
 
 def getFPWakeuptime():
 	ret = 0
@@ -98,7 +98,7 @@ def getFPWakeuptime():
 			ret = unpack('L', ioctl(fp.fileno(), 5, '    '))[0] # get wakeuptime
 			fp.close()
 		except IOError:
-			print "getFPWakeupTime failed!"
+			print "[StbHardware] getFPWakeupTime failed!"
 	return ret
 
 wasTimerWakeup = None
@@ -120,7 +120,7 @@ def getFPWasTimerWakeup(check = False):
 			wasTimerWakeup = unpack('B', ioctl(fp.fileno(), 9, ' '))[0] and True or False
 			fp.close()
 		except IOError:
-			print "wasTimerWakeup failed!"
+			print "[StbHardware] wasTimerWakeup failed!"
 			isError = True
 	if wasTimerWakeup:
 		# clear hardware status

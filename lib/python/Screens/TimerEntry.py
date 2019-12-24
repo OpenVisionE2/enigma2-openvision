@@ -257,7 +257,7 @@ class TimerEntry(Screen, ConfigListScreen):
 		self[widget].l.setList(self.list)
 
 	def newConfig(self):
-		print "[TimerEdit] newConfig", self["config"].getCurrent()
+		print "[TimerEntry] newConfig", self["config"].getCurrent()
 		if self["config"].getCurrent() in (self.timerTypeEntry, self.timerJustplayEntry, self.frequencyEntry, self.entryShowEndTime, self.entryFallbackTimer):
 			self.createSetup("config")
 

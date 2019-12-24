@@ -347,7 +347,7 @@ class Devices(Screen):
 				if mount.find('mmc') == -1 and mount.find('boot') == -1:
 					self.list.append(mount + '\t' + sizeline + ' \t' + freeline)
 			else:
-				print "MOUNT:", mount
+				print "[About] MOUNT:", mount
 				if mount.find('mmc') == -1:
 					self.list.append(mount + '\t' + _('Not mounted'))
 

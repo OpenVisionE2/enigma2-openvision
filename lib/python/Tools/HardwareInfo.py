@@ -65,7 +65,7 @@ class HardwareInfo:
 		# only some early DMM boxes do not have HDMI hardware
 		self.device_hdmi =  self.device_model not in ("dm800","dm8000")
 
-		print "Detected: " + self.get_device_string()
+		print "[HardwareInfo] Detected: " + self.get_device_string()
 
 	def get_device_name(self):
 		return hw_info.device_name

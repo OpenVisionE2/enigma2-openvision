@@ -1754,7 +1754,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 							fileSize = size
 							self.playfile = folder + name
 				except:
-					print "[ML] Error calculate size for %s" % (folder + name)
+					print "[MovieSelection] Error calculate size for %s" % (folder + name)
 			if self.playfile:
 				return True
 		return False
@@ -1897,7 +1897,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 				path,filename = os.path.split(oldfilename)
 				if item[0].flags & eServiceReference.mustDescent: # directory
 					newfilename = os.path.join(path, newbasename)
-					print "[ML] rename dir", oldfilename, "to", newfilename
+					print "[MovieSelection] rename dir", oldfilename, "to", newfilename
 					os.rename(oldfilename, newfilename)
 				else:
 					if oldfilename.endswith(self.extension):
@@ -1917,7 +1917,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 							break
 					if not dont_rename:
 						for r in renamelist:
-							print "[ML] rename", r[0], "to", r[1]
+							print "[MovieSelection] rename", r[0], "to", r[1]
 							os.rename(r[0], r[1])
 				self.reloadList(sel = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + newfilename))
 			except OSError, e:

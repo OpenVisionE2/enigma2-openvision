@@ -35,12 +35,12 @@ class CopyFileTask(Components.Task.PythonTask):
 			try:
 				self.end += os.stat(src).st_size
 			except:
-				print "Failed to stat", src
+				print "[CopyFiles] Failed to stat", src
 		if not self.end:
 			self.end = 1
-		print "[CopyFileTask] size:", self.end
+		print "[CopyFiles] size:", self.end
 	def work(self):
-		print "[CopyFileTask] handles ", len(self.handles)
+		print "[CopyFiles] handles ", len(self.handles)
 		try:
 			for src, dst in self.handles:
 				try:
@@ -50,7 +50,7 @@ class CopyFileTask(Components.Task.PythonTask):
 					fds = src.fileno()
 					while 1:
 						if self.aborted:
-							print "[CopyFileTask] aborting"
+							print "[CopyFiles] aborting"
 							raise Exception, "Aborted"
 						try:
 							l = sendfile(fdd, fds, offset, bs)
@@ -62,12 +62,12 @@ class CopyFileTask(Components.Task.PythonTask):
 							break
 						offset += l
 				except GiveupOnSendfile as ex:
-					print "[CopyFileTask]", ex
+					print "[CopyFiles]", ex
 					bs = 65536
 					d = bytearray(bs)
 					while 1:
 						if self.aborted:
-							print "[CopyFileTask] aborting"
+							print "[CopyFiles] aborting"
 							raise Exception, "Aborted"
 						l = src.readinto(d)
 						if l < bs:
@@ -96,7 +96,7 @@ class CopyFileTask(Components.Task.PythonTask):
 class MoveFileTask(CopyFileTask):
 	def work(self):
 		CopyFileTask.work(self)
-		print "[MoveFileTask]: delete source files"
+		print "[CopyFiles] delete source files"
 		errors = []
 		for s,d in self.fileList:
 			try:

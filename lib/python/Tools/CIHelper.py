@@ -49,20 +49,20 @@ class CIHelper:
 						if read_slot is not False and (read_services or read_providers or usingcaid):
 							self.CI_ASSIGNMENT_LIST.append((int(read_slot), (read_services, read_providers, usingcaid)))
 				except:
-					print "[CI_ASSIGNMENT %d] error parsing xml..." % ci
+					print "[CIHelper] CI_ASSIGNMENT %d error parsing xml..." % ci
 					try:
 						os.remove(filename)
 					except:
-						print "[CI_ASSIGNMENT %d] error remove damaged xml..." % ci
+						print "[CIHelper] CI_ASSIGNMENT %d error remove damaged xml..." % ci
 
 			services = []
 			providers = []
 			for item in self.CI_ASSIGNMENT_LIST:
-				print "[CI_Activate] activate CI%d with following settings:" % item[0]
+				print "[CIHelper] CI_Activate activate CI%d with following settings:" % item[0]
 				try:
 					eDVBCIInterfaces.getInstance().setDescrambleRules(item[0],item[1])
 				except:
-					print "[CI_Activate_Config_CI%d] error setting DescrambleRules..." %item[0]
+					print "[CIHelper] CI_Activate_Config_CI%d error setting DescrambleRules..." %item[0]
 				for x in item[1][0]:
 					services.append(x)
 				for x in item[1][1]:

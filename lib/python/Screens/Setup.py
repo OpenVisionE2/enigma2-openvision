@@ -130,7 +130,7 @@ class Setup(ConfigListScreen, Screen):
 								item = eval(requires)
 								SystemInfo[requires] = True if item.value and item.value not in ("0", "False", "false", "off") else False
 							except AttributeError:
-								print 'unknown "requires" config element:', requires
+								print '[Setup] unknown "requires" config element:', requires
 
 						if requires:
 							if not SystemInfo.get(requires, False):

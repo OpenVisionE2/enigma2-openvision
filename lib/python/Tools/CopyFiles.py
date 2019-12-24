@@ -9,7 +9,7 @@ class DeleteFolderTask(PythonTask):
 		self.fileList = fileList
 
 	def work(self):
-		print "[DeleteFolderTask] files ", self.fileList
+		print "[CopyFiles] files ", self.fileList
 		errors = []
 		try:
 			rmtree(self.fileList)
@@ -88,10 +88,10 @@ class DownloadTask(Task):
 		self.download = downloadWithProgress(self.url,self.path)
 		self.download.addProgress(self.download_progress)
 		self.download.start().addCallback(self.download_finished).addErrback(self.download_failed)
-		print "[DownloadTask] downloading", self.url, "to", self.path
+		print "[CopyFiles] downloading", self.url, "to", self.path
 
 	def abort(self):
-		print "[DownloadTask] aborting", self.url
+		print "[CopyFiles] aborting", self.url
 		if self.download:
 			self.download.stop()
 		self.aborted = True

@@ -33,7 +33,7 @@ class ServiceScanSummary(Screen):
 class ServiceScan(Screen):
 
 	def ok(self):
-		print "ok"
+		print "[ServiceScan] ok"
 		if self["scan"].isDone():
 			try:
 				from Plugins.SystemPlugins.LCNScanner.plugin import LCNBuildHelper
@@ -115,5 +115,5 @@ class ServiceScan(Screen):
 		self["scan"] = CScan(self["scan_progress"], self["scan_state"], self["servicelist"], self["pass"], self.scanList, self["network"], self["transponder"], self["FrontendInfo"], self.session.summary)
 
 	def createSummary(self):
-		print "ServiceScanCreateSummary"
+		print "[ServiceScan] CreateSummary"
 		return ServiceScanSummary

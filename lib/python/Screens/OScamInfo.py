@@ -186,7 +186,7 @@ class OscamInfo:
 			elif hasattr(e, "code"):
 				err = str(e.code)
 		if err is not False:
-			print "[openWebIF] error: %s" % err
+			print "[OScamInfo] Open WebIF error: %s" % err
 			return False, err
 		else:
 			return True, data

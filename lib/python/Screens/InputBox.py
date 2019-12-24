@@ -154,7 +154,7 @@ class PinInput(InputBox):
 				self.close(None)
 
 	def closePinWrong(self, *args):
-		print "args:", args
+		print "[InputBox] args:", args
 		self.close(False)
 
 	def closePinCorrect(self, *args):

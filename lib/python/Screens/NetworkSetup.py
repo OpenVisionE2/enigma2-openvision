@@ -320,7 +320,7 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 		HelpableScreen.__init__(self)
 		self.setTitle(_("Configure nameservers"))
 		self.backupNameserverList = iNetwork.getNameserverList()[:]
-		print "backup-list:", self.backupNameserverList
+		print "[NetworkSetup] backup-list:", self.backupNameserverList
 
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Add"))
@@ -378,7 +378,7 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 
 	def cancel(self):
 		iNetwork.clearNameservers()
-		print "backup-list:", self.backupNameserverList
+		print "[NetworkSetup] backup-list:", self.backupNameserverList
 		for nameserver in self.backupNameserverList:
 			iNetwork.addNameserver(nameserver)
 		self.close()
@@ -389,7 +389,7 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.createSetup()
 
 	def remove(self):
-		print "currentIndex:", self["config"].getCurrentIndex()
+		print "[NetworkSetup] currentIndex:", self["config"].getCurrentIndex()
 		index = self["config"].getCurrentIndex()
 		if index < len(self.nameservers):
 			iNetwork.removeNameserver(self.nameservers[index])
@@ -1095,7 +1095,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 				if error_no in (errno.EOPNOTSUPP, errno.ENODEV, errno.EPERM):
 					return False
 				else:
-					print "error: ",error_no,error_str
+					print "[NetworkSetup] error: ",error_no,error_str
 					return True
 			else:
 				return True
@@ -2229,7 +2229,7 @@ class NetworkOpenvpn(NSCommon,Screen):
  		if openvpnfile == '0':
  			self.message = self.session.open(MessageBox, _("No config to start, please check /etc/openvpn/ and try again."), type=MessageBox.TYPE_INFO, close_on_any_key=True)
  		else:
- 			print "config in etc/openvpn/"
+ 			print "[NetworkSetup] config in /etc/openvpn"
 
 		time.sleep(3)
 		self.updateService()

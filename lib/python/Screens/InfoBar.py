@@ -186,8 +186,8 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		else:
 			zoomval = self.zoomrate
 
-		print 'zoomRate:', self.zoomrate
-		print 'zoomval:', zoomval
+		print '[InfoBar] zoomRate:', self.zoomrate
+		print '[InfoBar] zoomval:', zoomval
 		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
 			open("/proc/stb/vmpeg/0/zoomrate", "w").write(int(zoomval))
 
