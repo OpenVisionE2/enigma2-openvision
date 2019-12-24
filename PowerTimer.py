@@ -378,7 +378,7 @@ class PowerTimer(timer.Timer):
 		try:
 			self.loadTimer()
 		except IOError:
-			print "unable to load timers from file!"
+			print "[PowerTimer] unable to load timers from file!"
 
 	def doActivate(self, w):
 		if w.shouldSkip():
@@ -390,7 +390,7 @@ class PowerTimer(timer.Timer):
 		try:
 			self.timer_list.remove(w)
 		except:
-			print '[PowerManager]: Remove list failed'
+			print '[PowerTimer] Remove list failed'
 
 		if w.state < PowerTimerEntry.StateEnded:
 			insort(self.timer_list, w)
@@ -421,14 +421,14 @@ class PowerTimer(timer.Timer):
 
 			AddPopup(_("The timer file (pm_timers.xml) is corrupt and could not be loaded."), type = MessageBox.TYPE_ERROR, timeout = 0, id = "TimerLoadFailed")
 
-			print "pm_timers.xml failed to load!"
+			print "[PowerTimer] pm_timers.xml failed to load!"
 			try:
 				os.rename(self.Filename, self.Filename + "_old")
 			except (IOError, OSError):
-				print "renaming broken timer failed"
+				print "[PowerTimer] renaming broken timer failed"
 			return
 		except IOError:
-			print "pm_timers.xml not found!"
+			print "[PowerTimer] pm_timers.xml not found!"
 			return
 
 		root = doc.getroot()

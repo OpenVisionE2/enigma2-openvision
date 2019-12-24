@@ -39,5 +39,5 @@ while len(f):
 	if os.access(filename, os.F_OK) and not os.access(linkname, os.F_OK):
 		os.symlink(filename, linkname)
 	else:
-		print "could not find %s (%s)" % (filename, name)
+		print "[create_picon_links] could not find %s (%s)" % (filename, name)
 	f =f[3:]

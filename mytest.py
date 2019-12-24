@@ -95,11 +95,11 @@ def setEPGCachePath(configElement):
 
 def useSyncUsingChanged(configelement):
 	if configelement.value == "0":
-		print "[Time By]: Transponder"
+		print "[mytest] Time By: Transponder"
 		enigma.eDVBLocalTimeHandler.getInstance().setUseDVBTime(True)
 		enigma.eEPGCache.getInstance().timeUpdated()
 	else:
-		print "[Time By]: NTP"
+		print "[mytest] Time By: NTP"
 		enigma.eDVBLocalTimeHandler.getInstance().setUseDVBTime(False)
 		enigma.eEPGCache.getInstance().timeUpdated()
 config.misc.SyncTimeUsing.addNotifier(useSyncUsingChanged)
@@ -125,7 +125,7 @@ try:
 	def runReactor():
 		reactor.run(installSignalHandlers=False)
 except ImportError:
-	print "twisted not available"
+	print "[mytest] twisted not available"
 	def runReactor():
 		enigma.runMainloop()
 
@@ -217,7 +217,7 @@ class Session:
 			try:
 				p(reason=0, session=self)
 			except:
-				print "Plugin raised exception at WHERE_SESSIONSTART"
+				print "[mytest] Plugin raised exception at WHERE_SESSIONSTART"
 				import traceback
 				traceback.print_exc()
 
@@ -339,7 +339,7 @@ class Session:
 
 	def close(self, screen, *retval):
 		if not self.in_exec:
-			print "close after exec!"
+			print "[mytest] close after exec!"
 			return
 
 		# be sure that the close is for the right dialog!
@@ -389,7 +389,7 @@ class PowerKey:
 		globalActionMap.actions["discrete_off"] = self.standby
 
 	def shutdown(self):
-		print "PowerOff - Now!"
+		print "[mytest] PowerOff - Now!"
 		if not Screens.Standby.inTryQuitMainloop and self.session.current_dialog and self.session.current_dialog.ALLOW_SUSPEND:
 			self.session.open(Screens.Standby.TryQuitMainloop, 1)
 		else:
@@ -560,9 +560,9 @@ def runScreenTest():
 			else:
 				wptime = startTime[0] - 240
 		if not config.misc.SyncTimeUsing.value == "0" or getBoxBrand() == 'gigablue':
-			print "dvb time sync disabled... so set RTC now to current linux time!", strftime("%Y/%m/%d %H:%M", localtime(nowTime))
+			print "[mytest] dvb time sync disabled... so set RTC now to current linux time!", strftime("%Y/%m/%d %H:%M", localtime(nowTime))
 			setRTCtime(nowTime)
-		print "set wakeup time to", strftime("%Y/%m/%d %H:%M", localtime(wptime))
+		print "[mytest] set wakeup time to", strftime("%Y/%m/%d %H:%M", localtime(wptime))
 		setFPWakeuptime(wptime)
 		config.misc.prev_wakeup_time.value = int(startTime[0])
 		config.misc.prev_wakeup_time_type.value = startTime[1]

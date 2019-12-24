@@ -10,7 +10,7 @@ class satxml(datasource):
 		datasource.__init__(self)
 
 		if not os.path.isfile(filename):
-			print "File %s doesn't exist. Creating it." % filename
+			print "[satxml] File %s doesn't exist. Creating it." % filename
 
 	def getStatus(self):
 		text = datasource.getStatus(self)
@@ -23,13 +23,13 @@ class satxml(datasource):
 		return "satellites.xml"
 
 	def setFilename(self):
-		print "Please give a filename <satellites.xml>:"
+		print "[satxml] Please give a filename <satellites.xml>:"
 		filename = inputText()
 		if filename == "":
 			self.filename = "satellites.xml"
 		else:
 			self.filename = filename
-		print "Filename set to %s" % self.filename
+		print "[satxml] Filename set to %s" % self.filename
 
 	def read(self):
 		basicsatxml = minidom.parse(self.filename)

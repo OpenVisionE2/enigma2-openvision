@@ -38,20 +38,20 @@ def end_log(test_name):
 	try:
 		expected = open(test_name + ".results", "rb").read()
 	except:
-		print "NO TEST RESULT FOUND, creating new"
+		print "[events] NO TEST RESULT FOUND, creating new"
 		open(test_name + ".new_results", "wb").write(results)
 
 	print results
 
 	if expected is not None:
-		print "expected:"
+		print "[events] expected:"
 		if expected != results:
 			open(test_name + ".bogus_results", "wb").write(results)
 			raise tests.TestError("test data does not match")
 		else:
-			print "test compared ok"
+			print "[events] test compared ok"
 	else:
-		print "no test data to compare with."
+		print "[events] no test data to compare with."
 
 def log(fnc, base_time = 0, test_name = "test", *args, **kwargs):
 	import fake_time

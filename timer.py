@@ -228,7 +228,7 @@ class Timer:
 	def calcNextActivation(self):
 		now = time()
 		if self.lastActivation > now:
-			print "[timer.py] timewarp - re-evaluating all processed timers."
+			print "[timer] timewarp - re-evaluating all processed timers."
 			tl = self.processed_timers
 			self.processed_timers = [ ]
 			for x in tl:
