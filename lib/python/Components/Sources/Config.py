@@ -11,9 +11,9 @@ class Config(Source):
 	config = property(getConfig)
 
 	def getHTML(self, id):
-		print "getHTML", self, id
+		print "[Config] getHTML", self, id
 		return self.__config.getHTML(id)
 
 	def handleCommand(self, cmd):
-		print "ASSIGN:", cmd
+		print "[Config] ASSIGN:", cmd
 		self.__config.unsafeAssign(cmd)

@@ -115,7 +115,7 @@ class PicEmu2(Renderer, Poll):
                                                  value = self.getText()
                                                  value = value.lower()#change value to small letters
                                                  if value is None:
-                                                        print "no emu installed"
+                                                        print "[PicEmu2] no emu installed"
                                                         sname=''
                                                  else:
                                                         ## Should write name be small letters

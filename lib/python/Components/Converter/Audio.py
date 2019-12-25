@@ -77,7 +77,7 @@ class Audio(Converter, object):
 				if (levelIndex is not -1):
 					expertString = (((expertString + " ") + "L:") + fileString[(levelIndex + 4)])
 		except:
-			print "Infobar"
+			print "[Audio] Infobar"
 		return expertString
 
 	def isGParameter(self, boxId, caId):

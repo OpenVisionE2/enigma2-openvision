@@ -131,22 +131,22 @@ class YWeather(Poll, Converter, object):
 			response = urlopen(req)
 		except Exception, e:
 			if hasattr(e, 'code') and hasattr(e, 'reason'):
-				print "[YWeather][fetchXML] Failed to retrieve XML file. Error: %s %s" % (str(e.code), str(e.reason))
+				print "[YWeather] fetchXML Failed to retrieve XML file. Error: %s %s" % (str(e.code), str(e.reason))
 			else:
 				if hasattr(e, 'reason'):
-					print '[YWeather][fetchXML] Failed to retrieve XML file. Error: ', str(e.reason)
+					print '[YWeather] fetchXML Failed to retrieve XML file. Error: ', str(e.reason)
 				else:
-					print '[YWeather][fetchXML] Failed to retrieve XML file.'
+					print '[YWeather] fetchXML Failed to retrieve XML file.'
 			return
 
 		try:
 			with open(save_to, "w") as f:
 				f.write(response.read().replace("><", ">\n<"))
 				f.close
-			print '[YWeather][fetchXML] XML file retrieved and saved.'
+			print '[YWeather] fetchXML XML file retrieved and saved.'
 			return True
 		except:
-			print '[YWeather][fetchXML] XML file retrieved and but could not be saved.'
+			print '[YWeather] fetchXML XML file retrieved and but could not be saved.'
 			return
 
 	@cached

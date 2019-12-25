@@ -35,7 +35,7 @@ class StreamService(Source):
 		if self.ref is None:
 			print "[StreamService] has no service ref set"
 			return
-		print "[StreamService]e execBegin", self.ref.toString()
+		print "[StreamService] execBegin", self.ref.toString()
 		if SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"]:
 			from Screens.InfoBar import InfoBar
 			if InfoBar.instance and hasattr(InfoBar.instance.session, 'pipshown') and InfoBar.instance.session.pipshown:
