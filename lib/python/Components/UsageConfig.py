@@ -1302,7 +1302,7 @@ def defaultMoviePath():
 	return defaultRecordingLocation(config.usage.default_path.value)
 
 def patchTuxtxtConfFile(dummyConfigElement):
-	print "[tuxtxt] patching tuxtxt2.conf"
+	print "[UsageConfig] patching tuxtxt2.conf"
 	if config.usage.tuxtxt_font_and_res.value == "X11_SD":
 		tuxtxt2 = [["UseTTF",0],
 				   ["TTFBold",1],
@@ -1377,7 +1377,7 @@ def patchTuxtxtConfFile(dummyConfigElement):
 	try:
 		Console().ePopen(command)
 	except:
-		print "Error: failed to patch %s!" % TUXTXT_CFG_FILE
-	print "[tuxtxt] patched tuxtxt2.conf"
+		print "[UsageConfig] Error: failed to patch %s!" % TUXTXT_CFG_FILE
+	print "[UsageConfig] patched tuxtxt2.conf"
 
 	config.usage.tuxtxt_ConfFileHasBeenPatched.setValue(True)

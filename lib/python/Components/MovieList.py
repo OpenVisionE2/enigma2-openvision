@@ -585,7 +585,7 @@ class MovieList(GUIComponent):
 
 		reflist = root and serviceHandler.list(root)
 		if reflist is None:
-			print "listing of movies failed"
+			print "[MovieList] listing of movies failed"
 			return
 		realtags = set()
 		autotags = {}

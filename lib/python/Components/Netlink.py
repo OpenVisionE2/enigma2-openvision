@@ -27,7 +27,7 @@ class NetlinkSocket(socket.socket):
 # Quick unit test (you can run this on any Linux machine)
 if __name__ == '__main__':
 	nls = NetlinkSocket()
-	print "socket no:", nls.fileno()
+	print "[Netlink] socket no:", nls.fileno()
 	while 1:
 		for item in nls.parse():
 			print repr(item)

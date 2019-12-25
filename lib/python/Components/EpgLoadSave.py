@@ -26,13 +26,13 @@ class EpgCacheLoadCheckPoller:
 		self.timer = eTimer()
 
 	def start(self):
-		print '[EPGC Loads] Poller enabled.'
+		print '[EpgLoadSave] Load Poller enabled.'
 		if self.epgcacheloadcheck not in self.timer.callback:
 			self.timer.callback.append(self.epgcacheloadcheck)
 		self.timer.startLongTimer(0)
 
 	def stop(self):
-		print '[EPGC Load] Poller disabled.'
+		print '[EpgLoadSave] Load Poller disabled.'
 		if self.epgcacheloadcheck in self.timer.callback:
 			self.timer.callback.remove(self.epgcacheloadcheck)
 		self.timer.stop()
@@ -52,7 +52,7 @@ class EpgCacheLoadCheckPoller:
 		return job
 
 	def JobEpgCacheLoad(self):
-		print '[EPGC] Refreshing EPGCache.'
+		print '[EpgLoadSave] Refreshing EPGCache.'
 		from enigma import eEPGCache
 		epgcache = eEPGCache.getInstance()
 		epgcache.load()
@@ -65,13 +65,13 @@ class EpgCacheSaveCheckPoller:
 		self.timer = eTimer()
 
 	def start(self):
-		print '[EPGC Save] Poller enabled.'
+		print '[EpgLoadSave] Save Poller enabled.'
 		if self.epgcachesavecheck not in self.timer.callback:
 			self.timer.callback.append(self.epgcachesavecheck)
 		self.timer.startLongTimer(0)
 
 	def stop(self):
-		print '[EPGC Save] Poller disabled.'
+		print '[EpgLoadSave] Save Poller disabled.'
 		if self.epgcachesavecheck in self.timer.callback:
 			self.timer.callback.remove(self.epgcachesavecheck)
 		self.timer.stop()
@@ -91,7 +91,7 @@ class EpgCacheSaveCheckPoller:
 		return job
 
 	def JobEpgCacheSave(self):
-		print '[EPGC] Saving EPGCache.'
+		print '[EpgLoadSave] Saving EPGCache.'
 		from enigma import eEPGCache
 		epgcache = eEPGCache.getInstance()
 		epgcache.save()

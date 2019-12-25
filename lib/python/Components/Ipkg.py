@@ -73,7 +73,7 @@ class IpkgComponent:
 		self.runCmd("%s %s" % (opkgExtraDestinations(), cmd))
 
 	def runCmd(self, cmd):
-		print "executing", self.ipkg, cmd
+		print "[Ipkg] executing", self.ipkg, cmd
 		self.cmd.appClosed.append(self.cmdFinished)
 		self.cmd.dataAvail.append(self.cmdData)
 		if self.cmd.execute("%s %s" % (self.ipkg, cmd)):
@@ -108,7 +108,7 @@ class IpkgComponent:
 		self.cmd.dataAvail.remove(self.cmdData)
 
 	def cmdData(self, data):
-		print "data:", data
+		print "[Ipkg] data:", data
 		if self.cache is None:
 			self.cache = data
 		else:

@@ -864,7 +864,7 @@ class ConfigMacText(ConfigElement, NumericalTextInput):
 		try:
 			return self.text.encode("utf-8")
 		except UnicodeDecodeError:
-			print "[Config] Broken UTF8!"
+			print "[config] Broken UTF8!"
 			return self.text
 
 	def setValue(self, val):
@@ -872,7 +872,7 @@ class ConfigMacText(ConfigElement, NumericalTextInput):
 			self.text = val.decode("utf-8")
 		except UnicodeDecodeError:
 			self.text = val.decode("utf-8", "ignore")
-			print "[Config] Broken UTF8!"
+			print "[config] Broken UTF8!"
 
 	value = property(getValue, setValue)
 	_value = property(getValue, setValue)
@@ -1232,7 +1232,7 @@ class ConfigText(ConfigElement, NumericalTextInput):
 		try:
 			return self.text.encode("utf-8")
 		except UnicodeDecodeError:
-			print "Broken UTF8!"
+			print "[config] Broken UTF8!"
 			return self.text
 
 	def setValue(self, val):
@@ -1240,7 +1240,7 @@ class ConfigText(ConfigElement, NumericalTextInput):
 			self.text = val.decode("utf-8")
 		except UnicodeDecodeError:
 			self.text = val.decode("utf-8", "ignore")
-			print "Broken UTF8!"
+			print "[config] Broken UTF8!"
 
 	value = property(getValue, setValue)
 	_value = property(getValue, setValue)
@@ -2054,7 +2054,7 @@ class Config(ConfigSubsection):
 			f.close()
 			os.rename(filename + ".writing", filename)
 		except IOError:
-			print "Config: Couldn't write %s" % filename
+			print "[config] Couldn't write %s" % filename
 
 	def loadFromFile(self, filename, base_file=True):
 		self.unpickle(open(filename, "r"), base_file)
@@ -2070,7 +2070,7 @@ class ConfigFile:
 		try:
 			config.loadFromFile(self.CONFIG_FILE, True)
 		except IOError, e:
-			print "unable to load config (%s), assuming defaults..." % str(e)
+			print "[config] unable to load config (%s), assuming defaults..." % str(e)
 
 	def save(self):
 		# config.save()
@@ -2092,7 +2092,7 @@ class ConfigFile:
 				ret = self.__resolveValue(names[1:], config.content.items)
 				if ret and len(ret) or ret == "":
 					return ret
-		print "getResolvedKey", key, "failed !! (Typo??)"
+		print "[config] getResolvedKey", key, "failed !! (Typo??)"
 		return ""
 
 def NoSave(element):

@@ -13,13 +13,13 @@ class StackTracePrinter(Thread):
 	instance = None
 
 	def __init__(self):
-		print "initializing StackTracePrinter"
+		print "[StackTrace] initializing StackTracePrinter"
 		StackTracePrinter.instance = self
 		Thread.__init__(self)
 		self.__running = False
 
 	def activate(self, MainThread_ident):
-		print "activating StackTracePrinter"
+		print "[StackTrace] activating StackTracePrinter"
 		self.MainThread_ident = MainThread_ident
 		if not self.__running:
 			self.__running = True
@@ -30,7 +30,7 @@ class StackTracePrinter(Thread):
 			if (os.path.isfile("/tmp/doPythonStackTrace")):
 				os.remove("/tmp/doPythonStackTrace")
 				if config.crash.pystackonspinner.value:
-					print "StackTrace"
+					print "[StackTrace] StackTrace"
 					code = []
 					code.append("========== Stacktrace of active Python threads ===========")
 					for threadId, stack in _current_frames().items():
@@ -51,5 +51,5 @@ class StackTracePrinter(Thread):
 		Thread.__init__(self)
 
 	def deactivate(self):
-		print "deactivating StackTracePrinter"
+		print "[StackTrace] deactivating StackTracePrinter"
 		self.__running = False

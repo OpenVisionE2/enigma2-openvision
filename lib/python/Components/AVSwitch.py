@@ -297,7 +297,7 @@ def InitAVSwitch():
 				open("/proc/stb/vmpeg/0/pep_scaler_sharpness", "w").write("%0.8X" % myval)
 				open("/proc/stb/vmpeg/0/pep_apply", "w").write("1")
 			except IOError:
-				print "couldn't write pep_scaler_sharpness"
+				print "[AVSwitch] couldn't write pep_scaler_sharpness"
 
 		if SystemInfo["GigaBlueQuad"]:
 			config.av.scaler_sharpness = ConfigSlider(default=5, limits=(0,26))
