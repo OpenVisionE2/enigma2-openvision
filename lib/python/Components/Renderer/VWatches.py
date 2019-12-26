@@ -58,7 +58,7 @@ class VWatches(Renderer):
 		for x in range(x0, x1 + 1):
 			if steep:
 				self.instance.fillRect(eRect(y, x, 1, 3), self.fColor)
-			else:          
+			else:
 				self.instance.fillRect(eRect(x, y, 1, 3), self.fColor)
 			error = error + deltay
 			if error > 0:

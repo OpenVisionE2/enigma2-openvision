@@ -41,12 +41,12 @@ class DVDToolbox(Screen):
 
 		self["toolboxactions"] = ActionMap(["ColorActions", "DVDToolbox", "OkCancelActions"],
 		{
-		    "red": self.exit,
-		    "green": self.update,
-		    "yellow": self.format,
-		    "cancel": self.exit,
-		    "pageUp": self.pageUp,
-		    "pageDown": self.pageDown
+			"red": self.exit,
+			"green": self.update,
+			"yellow": self.format,
+			"cancel": self.exit,
+			"pageUp": self.pageUp,
+			"pageDown": self.pageDown
 		})
 		self.update()
 		hotplugNotifier.append(self.update)

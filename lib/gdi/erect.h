@@ -52,12 +52,12 @@ public:
 	ePoint bottomLeft()	 const;
 
 		/* the sole intention of these functions
-		   is to allow painting frames without
-		   messing around with the coordinates.
-		   they point to the last pixel included
-		   in the rectangle (which means that 1 is
-		   subtracted from the right and bottom
-		   coordinates  */
+			is to allow painting frames without
+			messing around with the coordinates.
+			they point to the last pixel included
+			in the rectangle (which means that 1 is
+			subtracted from the right and bottom
+			coordinates  */
 	ePoint topLeft1()	 const;
 	ePoint bottomRight1() const;
 	ePoint topRight1()	 const;

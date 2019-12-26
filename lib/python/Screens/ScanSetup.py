@@ -13,9 +13,9 @@ from Screens.MessageBox import MessageBox
 from enigma import eTimer, eDVBFrontendParametersSatellite, eComponentScan, eDVBFrontendParametersTerrestrial, eDVBFrontendParametersCable, eConsoleAppContainer, eDVBResourceManager, eDVBFrontendParametersATSC, getBoxType
 
 def buildTerTransponder(frequency,
-		inversion=2, bandwidth = 7000000, fechigh = 6, feclow = 6,
-		modulation = 2, transmission = 2, guard = 4,
-		hierarchy = 4, system = 0, plp_id = 0):
+	inversion=2, bandwidth = 7000000, fechigh = 6, feclow = 6,
+	modulation = 2, transmission = 2, guard = 4,
+	hierarchy = 4, system = 0, plp_id = 0):
 	#print "freq", frequency, "inv", inversion, "bw", bandwidth, "fech", fechigh, "fecl", feclow, "mod", modulation, "tm", transmission, "guard", guard, "hierarchy", hierarchy, "system", system, "plp_id", plp_id
 	parm = eDVBFrontendParametersTerrestrial()
 	parm.frequency = frequency
@@ -1358,21 +1358,21 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 						fec = self.scan_sat.fec_s2.value
 					print "[ScanSetup] add sat transponder"
 					self.addSatTransponder(tlist, self.scan_sat.frequency.value,
-								self.scan_sat.symbolrate.value,
-								self.scan_sat.polarization.value,
-								fec,
-								self.scan_sat.inversion.value,
-								orbpos,
-								self.scan_sat.system.value,
-								self.scan_sat.modulation.value,
-								self.scan_sat.rolloff.value,
-								self.scan_sat.pilot.value,
-								self.scan_sat.is_id.value,
-								self.scan_sat.pls_mode.value,
-								self.scan_sat.pls_code.value,
-								self.scan_sat.t2mi_plp_id.value,
-								self.scan_sat.t2mi_pid.value)
-				removeAll = False
+					self.scan_sat.symbolrate.value,
+					self.scan_sat.polarization.value,
+					fec,
+					self.scan_sat.inversion.value,
+					orbpos,
+					self.scan_sat.system.value,
+					self.scan_sat.modulation.value,
+					self.scan_sat.rolloff.value,
+					self.scan_sat.pilot.value,
+					self.scan_sat.is_id.value,
+					self.scan_sat.pls_mode.value,
+					self.scan_sat.pls_code.value,
+					self.scan_sat.t2mi_plp_id.value,
+					self.scan_sat.t2mi_pid.value)
+					removeAll = False
 			elif self.scan_type.value == "predefined_transponder":
 				nimsats = self.satList[index_to_scan]
 				selsatidx = self.scan_satselection[index_to_scan].index

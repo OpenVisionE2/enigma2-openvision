@@ -343,7 +343,7 @@ class Satfinder(ScanSetup, ServiceScan):
 				self.tuning_type.value = "single_transponder"
 
 	def getSelectedSatIndex(self, v):
-		index    = 0
+		index = 0
 		none_cnt = 0
 		for n in self.satList:
 			if self.satList[index] is None:

@@ -28,13 +28,13 @@ class EmptyEpg(VariableText, Renderer):
 				attribs.append((attrib,value))
 		self.skinAttributes = attribs
 		return Renderer.applySkin(self, desktop, parent)
-		
+
 	GUI_WIDGET = eLabel
 
 	def connect(self, source):
 		Renderer.connect(self, source)
 		self.changed((self.CHANGED_DEFAULT,))
-		
+
 	def changed(self, what):
 		if what[0] == self.CHANGED_CLEAR:
 			self.text = ""
@@ -50,18 +50,18 @@ class EmptyEpg(VariableText, Renderer):
 						text_width = self.instance.calculateSize().width()
 					self.text = self.text[:-3] + "..."
 				if self.backText != self.text:
-					self.backText = self.text					
+					self.backText = self.text
 					ena = True
 					try: ena = config.plugins.setupGlass16.par30.value
 					except: pass
 					if ena:
-						self.text = "_"				
+						self.text = "_"
 						self.endPoint = len(self.backText)
 						self.posIdx = 0                    
 						if self.fillTimer.isActive():
 							self.fillTimer.stop()
-						self.fillTimer.start(1300, True) 					
-					
+						self.fillTimer.start(1300, True)
+
 	def __fillText(self):
 		self.fillTimer.stop()
 		self.posIdx += 1
@@ -69,4 +69,4 @@ class EmptyEpg(VariableText, Renderer):
 			self.text = self.backText[:self.posIdx] + "_"
 			self.fillTimer.start(50, True)
 		else:
-			self.text = self.backText 					
+			self.text = self.backText
