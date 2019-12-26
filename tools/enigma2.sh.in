@@ -4,6 +4,8 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 datarootdir=@datarootdir@
 
+export PATH=$PATH:/usr/script
+
 brandcheck=`cat /etc/brand`
 modelcheck=`cat /etc/model`
 
@@ -36,6 +38,10 @@ fi
 if [ -f /proc/stb/fp/nec_ir ]; then
 	echo 1 > /proc/stb/fp/nec_ir
 	[ -f /sys/class/remote/amremote/protocol ] && echo 2 > /sys/class/remote/amremote/protocol
+fi
+
+if [ ! -e /etc/enigma2/settings ]; then
+	touch /etc/enigma2/settings
 fi
 
 # enigma main loop
