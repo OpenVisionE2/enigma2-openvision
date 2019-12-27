@@ -50,7 +50,7 @@ if DAGS
 if TECHNOMATE
 dist_install_DATA += tm1.png tm1.xml tm2.png tm2.xml tm3.png tm3.xml tm4.png tm4.xml tm5.png tm5.xml tm6.png tm6.xml
 else
-dist_install_DATA += fusionhd.png fusionhd.xml iqon1.png iqon1.xml iqon2.png iqon2.xml iqon3.png iqon3.xml mediabox.png mediabox.xml optimuss1.png optimuss1.xml optimuss2.png optimuss2.xml qviart1.png qviart1.xml qviart3.png qviart3.xml revo.png revo.xml vala.png vala.xml
+dist_install_DATA += fusionhd.png fusionhd.xml iqon1.png iqon1.xml iqon2.png iqon2.xml iqon3.png iqon3.xml mediabox.png mediabox.xml optimuss1.png optimuss1.xml optimuss2.png optimuss2.xml qviart1.png qviart1.xml qviart3.png qviart3.xml qviart4.png qviart4.xml revo.png revo.xml vala.png vala.xml
 endif
 endif
 
