@@ -637,23 +637,14 @@ import Components.Lcd
 Components.Lcd.InitLcd()
 Components.Lcd.IconCheck()
 
-from boxbranding import getBoxType
-boxtype = getBoxType()
-if boxtype in ('dm7080', 'dm820', 'dm900', 'dm920', 'gb7252'):
-	f=open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","r")
-	check=f.read()
-	f.close()
+from enigma import getBoxType
+if getBoxType() in ("dm7080","dm820","dm900","dm920","gbquad4k","gbue4k"):
+	check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","r").read()
 	if check.startswith("on"):
-		f=open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","w")
-		f.write("off")
-		f.close()
-	f=open("/proc/stb/audio/hdmi_rx_monitor","r")
-	check=f.read()
-	f.close()
-	if check.startswith("on"):
-		f=open("/proc/stb/audio/hdmi_rx_monitor","w")
-		f.write("off")
-		f.close()
+		open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","w").write("off")
+	checkaudio = open("/proc/stb/audio/hdmi_rx_monitor","r").read()
+	if checkaudio.startswith("on"):
+		open("/proc/stb/audio/hdmi_rx_monitor","w").write("off")
 
 profile("RFMod")
 import Components.RFmod
