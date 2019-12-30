@@ -6,7 +6,7 @@ from Components.PluginComponent import plugins
 from Plugins.Plugin import PluginDescriptor
 from boxbranding import getVisionVersion
 
-oeversion = boxbranding.getVisionVersion()
+oeversion = getVisionVersion()
 
 class Network:
 	def __init__(self):
