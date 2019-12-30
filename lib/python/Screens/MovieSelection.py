@@ -39,7 +39,7 @@ import cPickle as pickle
 config.movielist = ConfigSubsection()
 config.movielist.curentlyplayingservice = ConfigText()
 config.movielist.show_live_tv_in_movielist = ConfigYesNo(default=True)
-config.movielist.fontsize = ConfigSelectionNumber(default = 1, stepwidth = 1, min = -8, max = 10, wraparound = True)
+config.movielist.fontsize = ConfigSelectionNumber(default = 0, stepwidth = 1, min = -20, max = 20, wraparound = True)
 config.movielist.itemsperpage = ConfigSelectionNumber(default = 20, stepwidth = 1, min = 3, max = 30, wraparound = True)
 config.movielist.useslim = ConfigYesNo(default=False)
 config.movielist.use_fuzzy_dates = ConfigYesNo(default=True)
