@@ -4,9 +4,9 @@ from socket import *
 from Components.Console import Console
 from Components.PluginComponent import plugins
 from Plugins.Plugin import PluginDescriptor
-from Components.About import about
+from boxbranding import getVisionVersion
 
-oeversion = about.getVisionVersion()
+oeversion = boxbranding.getVisionVersion()
 
 class Network:
 	def __init__(self):
