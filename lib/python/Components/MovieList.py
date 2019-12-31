@@ -332,8 +332,8 @@ class MovieList(GUIComponent):
 		self.instance.resize(eSize(self.listWidth, self.listHeight / itemHeight * itemHeight))
 
 	def setFontsize(self):
-		self.l.setFont(0, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue()))
-		self.l.setFont(1, gFont(self.fontName, (self.fontSize - 3) + config.movielist.fontsize.getValue()))
+		self.l.setFont(0, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue() + 10))
+		self.l.setFont(1, gFont(self.fontName, (self.fontSize - 3) + config.movielist.fontsize.getValue() + 10))
 
 	def buildMovieListEntry(self, serviceref, info, begin, data):
 
