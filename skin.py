@@ -77,11 +77,11 @@ config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
 def findUserRelatedSkin():
 	if os.path.isfile(resolveFilename(SCOPE_SKIN, config.skin.primary_skin.value)):
 		name = USER_SKIN_TEMPLATE % os.path.dirname(config.skin.primary_skin.value)
-		if fileExists(resolveFilename(scope, name)):
+		if fileExists(resolveFilename(SCOPE_CURRENT_SKIN, name)):
 			return name
 	return None
 
-def addSkin(name, scope=SCOPE_CURRENT_SKIN):
+def addSkin(name, scope = SCOPE_CURRENT_SKIN):
 	global domSkins
 	filename = resolveFilename(scope, name)
 	if fileExists(filename):
