@@ -17,7 +17,7 @@ from Tools.LoadPixmap import LoadPixmap
 DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "OctEtFHD/skin.xml" or "PLi-HD/skin.xml"  # On SD hardware HD will not be available.
 DEFAULT_SD_SKIN = "skin.xml"
 EMERGENCY_SKIN = "skin_default.xml"
-DEFAULT_DISPLAY_SKIN = SystemInfo["grautec"] and "skin_display_grautec.xml" or "skin_display.xml"
+DEFAULT_DISPLAY_SKIN = SystemInfo["grautec"] and "display/skin_display_grautec.xml" or "display/skin_display.xml"
 USER_SKIN = "skin_user.xml"
 USER_SKIN_TEMPLATE = "skin_user_%s.xml"
 BOX_SKIN = "skin_box.xml"  # DEBUG: Is this actually used?
@@ -81,7 +81,7 @@ def findUserRelatedSkin():
 			return name
 	return None
 
-def addSkin(name, scope = SCOPE_CURRENT_SKIN):
+def addSkin(name, scope=SCOPE_CURRENT_SKIN):
 	global domSkins
 	filename = resolveFilename(scope, name)
 	if fileExists(filename):
