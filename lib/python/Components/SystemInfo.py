@@ -155,7 +155,7 @@ SystemInfo["GigaBlueQuad"] = model in ("gbquad","gbquadplus")
 SystemInfo["AmlogicFamily"] = brand in ("linkdroid","mecool","minix","wetek","hardkernel") or model == "dreamone"
 SystemInfo["VFDDelay"] = model in ("sf4008","beyonwizu4")
 SystemInfo["VFDRepeats"] = brand != "ixuss" and getDisplayType() != "7segment"
-SystemInfo["HiSilicon"] = brand == "dinobot" or model in ("gbtrio4k","gbip4k","sf8008","sf8008m","cc1","ustym4kpro","beyonwizv2","viper4k","hd60","hd61","h9","h9combo","h10","i55plus") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt")
+SystemInfo["HiSilicon"] = brand in ("dinobot","maxytec") or model in ("gbtrio4k","gbip4k","sf8008","sf8008m","cc1","ustym4kpro","beyonwizv2","viper4k","hd60","hd61","h9","h9combo","h10","i55plus") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt")
 SystemInfo["FirstCheckModel"] = model in ("tmtwin4k","mbmicrov2","revo4k","force3uhd","mbmicro","e4hd","e4hdhybrid","valalinux","lunix","tmnanom3","purehd","force2nano","purehdse") or brand in ("linkdroid","wetek")
 SystemInfo["SecondCheckModel"] = model in ("osninopro","osnino","osninoplus","dm7020hd","dm7020hdv2","9910lx","9911lx","9920lx","tmnanose","tmnanoseplus","tmnanosem2","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","force2plushv") or brand == "ixuss"
 SystemInfo["ThirdCheckModel"] = model in ("gbtrio4k","gbip4k","sf8008","sf8008m","cc1","ustym4kpro","beyonwizv2","viper4k")
