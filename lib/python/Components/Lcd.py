@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from config import config, ConfigSubsection, ConfigSelection, ConfigSlider, ConfigYesNo, ConfigNothing
 from enigma import eDBoxLCD, eTimer, eActionMap, getBoxType
 from Components.SystemInfo import SystemInfo
