@@ -14,7 +14,7 @@ from ServiceReference import ServiceReference
 from Tools.Trashcan import getTrashFolder
 import NavigationInstance
 import skin
-from enigma import eListboxPythonMultiContent, eListbox, gFont, iServiceInformation, eSize, loadPNG, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_CENTER, BT_SCALE, BT_KEEP_ASPECT_RATIO, BT_HALIGN_CENTER, BT_VALIGN_CENTER, eServiceReference, eServiceCenter, eTimer
+from enigma import eListboxPythonMultiContent, eListbox, gFont, iServiceInformation, eSize, loadPNG, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_CENTER, BT_SCALE, BT_KEEP_ASPECT_RATIO, BT_HALIGN_CENTER, BT_VALIGN_CENTER, eServiceReference, eServiceCenter, eTimer, getDesktop
 
 AUDIO_EXTENSIONS = frozenset((".dts", ".mp3", ".wav", ".wave", ".wv", ".oga", ".ogg", ".flac", ".m4a", ".mp2", ".m2a", ".wma", ".ac3", ".mka", ".aac", ".ape", ".alac", ".amr", ".au", ".mid"))
 DVD_EXTENSIONS = frozenset((".iso", ".img", ".nrg"))
@@ -23,6 +23,14 @@ MOVIE_EXTENSIONS = frozenset((".mpg", ".vob", ".m4v", ".mkv", ".avi", ".divx", "
 KNOWN_EXTENSIONS = MOVIE_EXTENSIONS.union(IMAGE_EXTENSIONS, DVD_EXTENSIONS, AUDIO_EXTENSIONS)
 
 cutsParser = struct.Struct('>QI') # big-endian, 64-bit PTS and 32-bit type
+
+def getDesktopSize():
+    s = getDesktop(0).size()
+    return (s.width(), s.height())
+
+def isHD():
+    desktopSize = getDesktopSize()
+    return desktopSize[0] == 1280
 
 class MovieListData:
 	pass
@@ -332,8 +340,12 @@ class MovieList(GUIComponent):
 		self.instance.resize(eSize(self.listWidth, self.listHeight / itemHeight * itemHeight))
 
 	def setFontsize(self):
-		self.l.setFont(0, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue() + 10))
-		self.l.setFont(1, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue() + 7))
+		if isHD():
+			self.l.setFont(0, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue()))
+			self.l.setFont(1, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue()))
+		else:
+			self.l.setFont(0, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue() + 10))
+			self.l.setFont(1, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue() + 7))
 
 	def buildMovieListEntry(self, serviceref, info, begin, data):
 
