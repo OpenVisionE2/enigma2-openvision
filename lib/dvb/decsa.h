@@ -21,27 +21,27 @@ extern "C" {
 #define FL_ACTIVITY  4
 
 class cDeCSA {
-private:
-  int cs;
-  unsigned char *lastData;
-  unsigned char pidmap[MAX_CSA_PIDS];
-  unsigned int even_odd[MAX_CSA_IDX], flags[MAX_CSA_IDX], usedPids[MAX_CSA_IDX];
-  cMutex mutex;
-  cCondVar wait;
-  int adapter, demux;
-  struct dvbcsa_bs_key_s* csa_bs_key_even[MAX_CSA_IDX];
-  struct dvbcsa_bs_key_s* csa_bs_key_odd[MAX_CSA_IDX];
-  struct dvbcsa_bs_batch_s *pcks;
+	private:
+		int cs;
+		unsigned char *lastData;
+		unsigned char pidmap[MAX_CSA_PIDS];
+		unsigned int even_odd[MAX_CSA_IDX], flags[MAX_CSA_IDX], usedPids[MAX_CSA_IDX];
+		cMutex mutex;
+		cCondVar wait;
+		int adapter, demux;
+		struct dvbcsa_bs_key_s* csa_bs_key_even[MAX_CSA_IDX];
+		struct dvbcsa_bs_key_s* csa_bs_key_odd[MAX_CSA_IDX];
+		struct dvbcsa_bs_batch_s *pcks;
 
-  bool GetKeyStruct(int idx);
-  void ResetState(void);
-public:
-  cDeCSA(int _adapter, int _demux);
-  ~cDeCSA();
-  bool Decrypt(unsigned char *data, int len, int& packetsCount);
+		bool GetKeyStruct(int idx);
+		void ResetState(void);
+	public:
+		cDeCSA(int _adapter, int _demux);
+		~cDeCSA();
+		bool Decrypt(unsigned char *data, int len, int& packetsCount);
 
-  bool SetDescr(ca_descr_t *ca_descr, bool initial);
-  bool SetCaPid(ca_pid_t *ca_pid);
+		bool SetDescr(ca_descr_t *ca_descr, bool initial);
+		bool SetCaPid(ca_pid_t *ca_pid);
 };
 
 #endif

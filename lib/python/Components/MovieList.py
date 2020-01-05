@@ -25,12 +25,12 @@ KNOWN_EXTENSIONS = MOVIE_EXTENSIONS.union(IMAGE_EXTENSIONS, DVD_EXTENSIONS, AUDI
 cutsParser = struct.Struct('>QI') # big-endian, 64-bit PTS and 32-bit type
 
 def getDesktopSize():
-    s = getDesktop(0).size()
-    return (s.width(), s.height())
+	s = getDesktop(0).size()
+	return (s.width(), s.height())
 
 def isHD():
-    desktopSize = getDesktopSize()
-    return desktopSize[0] == 1280
+	desktopSize = getDesktopSize()
+	return desktopSize[0] == 1280
 
 class MovieListData:
 	pass

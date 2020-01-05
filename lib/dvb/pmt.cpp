@@ -36,9 +36,9 @@
 
 #define PACK_VERSION(major,minor,micro) (((major) << 16) + ((minor) << 8) + (micro))
 #define UNPACK_VERSION(version,major,minor,micro) { \
-        major = (version)&0xff; \
-        minor = (version>>8)&0xff; \
-        micro = (version>>16)&0xff; \
+		major = (version)&0xff; \
+		minor = (version>>8)&0xff; \
+		micro = (version>>16)&0xff; \
 }
 
 eDVBServicePMTHandler::eDVBServicePMTHandler()
@@ -303,7 +303,7 @@ void eDVBServicePMTHandler::AITready(int error)
 	m_aitInfoList.clear();
 	if (!m_AIT.getCurrent(ptr))
 	{
-                short profilecode = 0;
+		short profilecode = 0;
 		int orgid = 0, appid = 0, profileVersion = 0;
 		m_ApplicationName = m_HBBTVUrl = "";
 
@@ -970,7 +970,7 @@ int eDVBServicePMTHandler::getDecodeDemux(ePtr<iDVBDemux> &demux)
 {
 	int ret=0;
 		/* if we're using the decoding demux as data source
-		   (for example in pvr playbacks), return that one. */
+		(for example in pvr playbacks), return that one. */
 	if (m_pvr_channel)
 	{
 		demux = m_demux;

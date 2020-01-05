@@ -213,11 +213,11 @@ class WeatherData:
 			self.WeatherInfo["forecastTomorrow3Text"] =_(str(weather.getAttributeNode('text').nodeValue))
 			
 	def getText(self,nodelist):
-	    rc = []
-	    for node in nodelist:
-	        if node.nodeType == node.TEXT_NODE:
-	            rc.append(node.data)
-	    return ''.join(rc)
+		rc = []
+		for node in nodelist:
+			if node.nodeType == node.TEXT_NODE:
+				rc.append(node.data)
+		return ''.join(rc)
 
 	def ConvertCondition(self, c):
 		c = int(c)

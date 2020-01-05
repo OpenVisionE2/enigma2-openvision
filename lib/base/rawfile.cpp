@@ -299,9 +299,9 @@ ssize_t eDecryptRawFile::read(off_t offset, void *buf, size_t count)
 					break;
 				}
 			}
-          	} else {
-			ret = packetsCount*TS_SIZE;
-			memcpy(buf, data, ret);
+		} else {
+				ret = packetsCount*TS_SIZE;
+				memcpy(buf, data, ret);
 		}
 	}
 

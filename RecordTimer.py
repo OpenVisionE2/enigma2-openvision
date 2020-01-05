@@ -103,7 +103,7 @@ def SetIconDisplay(nrec):
 	sym = nrec
 	if sym > max_states:
 		sym = max_states
-	if sym < 0:		    # Sanity check - just in case...
+	if sym < 0:      # Sanity check - just in case...
 		sym = 0
 	open(wdev, "w").write(str(sym))
 	return

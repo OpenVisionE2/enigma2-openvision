@@ -189,7 +189,7 @@ OpenTvTitle::~OpenTvTitle(void)
 
 std::string OpenTvTitle::getTitle(void) const
 {
-    return title;
+	return title;
 }
 
 uint32_t OpenTvTitle::getCRC32(void) const
@@ -300,7 +300,7 @@ OpenTvSummary::~OpenTvSummary(void)
 
 std::string OpenTvSummary::getSummary(void) const
 {
-    return summary;
+	return summary;
 }
 
 uint16_t OpenTvSummary::getChannelId(void) const

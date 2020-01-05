@@ -84,12 +84,12 @@ void DVBCI_TridInit();
 
 int DVBCI_GetCbStatus()
 {
-    if (Tridci_init == 0)
-    {
-       DVBCI_TridInit();
-       Tridci_init = 1;
-    }
-    return Tridci_cb_status;
+	if (Tridci_init == 0)
+	{
+		DVBCI_TridInit();
+		Tridci_init = 1;
+	}
+	return Tridci_cb_status;
 }
 
 #define ci_ca
@@ -117,10 +117,10 @@ void DVBCI_Packcaids()
 		std::sort(caids.begin(), caids.end());
 	}
 	eDebugCI("DVBCI_Packcaids.ret(%d) num(%d):\n", ret, num);
-    for (ret=0;ret<num;ret++)
-    {
-        eDebugCI("0x%x.", ca_system_id[ret]);
-    }
+	for (ret=0;ret<num;ret++)
+	{
+		eDebugCI("0x%x.", ca_system_id[ret]);
+	}
 }
 
 const std::vector<uint16_t> DVBCI_GetCAIDs(void)
@@ -1008,7 +1008,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 					for (CAID_LIST::iterator ca(caids.begin()); ca != caids.end(); ++ca)
 					{
 						std::vector<uint16_t>::const_iterator z =
-							std::lower_bound(ci_caids.begin(), ci_caids.end(), *ca);
+						std::lower_bound(ci_caids.begin(), ci_caids.end(), *ca);
 						if ( z != ci_caids.end() && *z == *ca )
 						{
 							eDebug("The CI in Slot %d has said it can handle caid %04x... so use it", ci_it->getSlotID(), *z);
@@ -1236,7 +1236,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 							if (it != ci_it->possible_services.end())
 							{
 								eDebug("[CI] parent '%s' of '%s' is in service list of slot %d... so use it",
-									parent_ref.toString().c_str(), ref.toString().c_str(), ci_it->getSlotID());
+								parent_ref.toString().c_str(), ref.toString().c_str(), ci_it->getSlotID());
 								useThis = true;
 							}
 						}
@@ -2557,36 +2557,36 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 		}
 		if (!sendEmpty)
 		{
-		        ProgramMapSection*pmt;
-		        unsigned char *buffer;
-		        unsigned int sectionlen;
-		        unsigned int programInfoLength;
-		        unsigned int esInfoLength=0;
-		        Descriptor *info;
-		        ElementaryStreamInfo *esinfo;
-		        unsigned int crc32;
-		        buffer = pack_data;
-		        pmt=*i;
-		        sectionlen = pmt->getSectionLength();
-		        total = 0;
-		        buffer[total++] = TID_PMT;
-		        buffer[total++] = (pmt->getSectionSyntaxIndicator()<<8) | ((sectionlen&0x0F00)>>8);
-		        buffer[total++] = (sectionlen&0xFF);
-		        buffer[total++] = (pmt->getTableIdExtension()>>8)& 0xff;
-		        buffer[total++] = pmt->getTableIdExtension() & 0xff;
-		        buffer[total++] = (pmt->getVersionNumber() << 1) | pmt->getCurrentNextIndicator();
-		        buffer[total++] = pmt->getSectionNumber();
-		        buffer[total++] = pmt->getLastSectionNumber();
-		        buffer[total++] = (pmt->getPcrPid()>>8)&0x1F;
-		        buffer[total++] = pmt->getPcrPid()&0xFF;
-		        eDebug("start to package program info total(%d) sectionlen is %d.", total, sectionlen);
-		        programInfoLength = 0;
-		        for (DescriptorConstIterator j = pmt->getDescriptors()->begin(); j != pmt->getDescriptors()->end(); ++j)
-		        {
-				info = *j;
-				eDebug("package descriptor .", programInfoLength);
-				programInfoLength+=info->writeToBuffer(buffer+total+2+programInfoLength);
-		        }
+				ProgramMapSection*pmt;
+				unsigned char *buffer;
+				unsigned int sectionlen;
+				unsigned int programInfoLength;
+				unsigned int esInfoLength=0;
+				Descriptor *info;
+				ElementaryStreamInfo *esinfo;
+				unsigned int crc32;
+				buffer = pack_data;
+				pmt=*i;
+				sectionlen = pmt->getSectionLength();
+				total = 0;
+				buffer[total++] = TID_PMT;
+				buffer[total++] = (pmt->getSectionSyntaxIndicator()<<8) | ((sectionlen&0x0F00)>>8);
+				buffer[total++] = (sectionlen&0xFF);
+				buffer[total++] = (pmt->getTableIdExtension()>>8)& 0xff;
+				buffer[total++] = pmt->getTableIdExtension() & 0xff;
+				buffer[total++] = (pmt->getVersionNumber() << 1) | pmt->getCurrentNextIndicator();
+				buffer[total++] = pmt->getSectionNumber();
+				buffer[total++] = pmt->getLastSectionNumber();
+				buffer[total++] = (pmt->getPcrPid()>>8)&0x1F;
+				buffer[total++] = pmt->getPcrPid()&0xFF;
+				eDebug("start to package program info total(%d) sectionlen is %d.", total, sectionlen);
+				programInfoLength = 0;
+				for (DescriptorConstIterator j = pmt->getDescriptors()->begin(); j != pmt->getDescriptors()->end(); ++j)
+				{
+					info = *j;
+					eDebug("package descriptor .", programInfoLength);
+					programInfoLength+=info->writeToBuffer(buffer+total+2+programInfoLength);
+				}
 			eDebug("programInfoLength is %d.total(%d).", programInfoLength, total);
 			buffer[total++] = (programInfoLength>>8)&0xff;
 			buffer[total++] = programInfoLength&0xff;
@@ -2617,18 +2617,18 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 		}
 		else
 		{
-		        unsigned char raw_data[1024];
-		        CaProgramMapSection capmt(*i++,
-				it != running_services.end() ? 0x05/*update*/ : running_services.empty() ? 0x03 /*only*/ : 0x04 /*add*/, 0x01, caids);
-		        while (i != ptr->getSections().end())
-		        {
+			unsigned char raw_data[1024];
+			CaProgramMapSection capmt(*i++,
+			it != running_services.end() ? 0x05/*update*/ : running_services.empty() ? 0x03 /*only*/ : 0x04 /*add*/, 0x01, caids);
+			while (i != ptr->getSections().end())
+			{
 				capmt.append(*i++);
-		        }
-		        capmt.writeToBuffer(raw_data);
-		        int wp=0;
-		        int hlen;
-		        if (raw_data[3] & 0x80)
-		        {
+			}
+			capmt.writeToBuffer(raw_data);
+			int wp=0;
+			int hlen;
+			if (raw_data[3] & 0x80)
+			{
 				int i=0;
 				int lenbytes = raw_data[3] & ~0x80;
 				while(i < lenbytes)
@@ -2636,33 +2636,33 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 				wp+=4;
 				wp+=lenbytes;
 				hlen = 4 + lenbytes;
-		        }
-		        else
-		        {
+			}
+			else
+			{
 				wp = raw_data[3];
 				wp+=4;
 				hlen = 4;
-		        }
-		        if (sendEmpty)
-		        {
+			}
+			if (sendEmpty)
+			{
 				eDebugNoNewLine("SEND EMPTY CAPMT.. old version is %02x", raw_data[hlen+3]);
 				if (sendEmpty && running_services.size() == 1)
-					raw_data[hlen] = 0x03; 
+					raw_data[hlen] = 0x03;
 				raw_data[hlen+3] &= ~0x3E;
 				raw_data[hlen+3] |= ((pmt_version+1) & 0x1F) << 1;
 				eDebug(" new version is %02x", raw_data[hlen+3]);
-		        }
-		        eDebug("ca_manager %p dump capmt:%d.head length %d.", ca_manager, wp, hlen);
-		        for(int i=0;i<wp;i++)
+			}
+			eDebug("ca_manager %p dump capmt:%d.head length %d.", ca_manager, wp, hlen);
+			for(int i=0;i<wp;i++)
 				eDebugNoNewLine("%02x, ", raw_data[i]);
-		        eDebug("");
-		        {
+			eDebug("");
+			{
 				int ipack, iraw;
 				unsigned char *pPack, *pRaw;
 				pRaw = raw_data+hlen;
 				wp -= hlen;
 				total = PackPmtDesc(pRaw, wp, pack_data, pmt_version);
-		        }
+			}
 		}
 		{
 			ePtr<eDVBService> service;
@@ -2685,8 +2685,8 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 			eDebug("DVBCI_SendCAPMT(pack_data, total);");
 			DVBCI_SendCAPMT(pack_data, total);
 		}
-				running_services[program_number] = pmt_version;
-			}
+		running_services[program_number] = pmt_version;
+		}
 	}
 	return 0;
 }
@@ -2738,7 +2738,7 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 				it != running_services.end() ? 0x05 /*update*/ : running_services.empty() ? 0x03 /*only*/ : 0x04 /*add*/, 0x01, caids );
 			while( i != ptr->getSections().end() )
 			{
-		//			eDebug("[CI] append");
+//				eDebug("[CI] append");
 				capmt.append(*i++);
 			}
 			capmt.writeToBuffer(raw_data);

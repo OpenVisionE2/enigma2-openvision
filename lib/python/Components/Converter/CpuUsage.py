@@ -29,8 +29,8 @@ class CpuUsage(Converter, object):
 					pos = self.sfmt.find("$", pos)
 					if pos == -1: break
 					if pos < len(self.sfmt)-1 and \
-					   self.sfmt[pos+1].isdigit() and \
-					   int(self.sfmt[pos+1]) > cpus:
+						self.sfmt[pos+1].isdigit() and \
+						int(self.sfmt[pos+1]) > cpus:
 						self.sfmt = self.sfmt.replace("$" + self.sfmt[pos+1], "n/a")
 					pos += 1
 
