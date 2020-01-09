@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 14:12+0330\n"
-"PO-Revision-Date: 2019-06-27 16:02+0200\n"
+"POT-Creation-Date: 2020-01-10 00:41+0330\n"
+"PO-Revision-Date: 2020-01-09 09:15+0100\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
 "Language: sk\n"
@@ -213,13 +213,13 @@ msgstr "%.0f MB"
 msgid "%.0f kB"
 msgstr "%.0f kB"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%.1f° E"
-msgstr ""
+msgstr "%.1f°E"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%.1f° W"
-msgstr ""
+msgstr "%.1f°W"
 
 #, python-format
 msgid "%.2f GB"
@@ -1052,7 +1052,7 @@ msgid "(unknown)"
 msgstr "(neznáme)"
 
 msgid "* Only available if more than one interface is active."
-msgstr "* Dostupné, len ak je aktívnych viac rozhraní než jedno."
+msgstr "* Dostupné, iba ak je aktívnych viac rozhraní než jedno."
 
 #, fuzzy
 msgid "* current animation"
@@ -1519,7 +1519,7 @@ msgstr "Aktivovať koniec timeshiftu a pauzu"
 
 #, fuzzy
 msgid "Active"
-msgstr "Relatívne"
+msgstr "aktvne"
 
 msgid "Adapter settings"
 msgstr "Nastavenie adaptéra"
@@ -1591,9 +1591,8 @@ msgstr "Pridať stanicu do prehľadu"
 msgid "Add service to favourites"
 msgstr "Pridať stanicu do obľúbených"
 
-#, fuzzy
 msgid "Add services to this bouquet?"
-msgstr "pridať stanicu do prehľadu"
+msgstr "Pridať stanicu do tohto prehľadu?"
 
 msgid "Add timer"
 msgstr "Pridať časovač"
@@ -1721,9 +1720,8 @@ msgstr "Všetky satelity 4 (USALS)"
 msgid "All services provider"
 msgstr "Všetky služby poskytovateľa"
 
-#, fuzzy
 msgid "All slots"
-msgstr "Zvoľte slot"
+msgstr "Všetky sloty"
 
 msgid "Allocate"
 msgstr "Prideliť"
@@ -1798,7 +1796,7 @@ msgid "Alternative URL for images listed on FlashImage"
 msgstr "Alternatívna adresa URL pre image uvedené vo FlashImage"
 
 msgid "Alternative URLs for DVB-T/C or ATSC"
-msgstr ""
+msgstr "Alternatívne URL pre DVB-T/C alebo ATSC"
 
 msgid "Alternative numbering mode"
 msgstr "Režim alternatívneho číslovania"
@@ -1891,9 +1889,8 @@ msgstr "Naozaj chcete odstrániť túto položku?"
 msgid "Are you sure to purge all deleted user bouquets?"
 msgstr "Naozaj chcete natrvalo odstrániť všetky zmazané zoznamy staníc?"
 
-#, fuzzy
 msgid "Are you sure to reboot to"
-msgstr "Naozaj chcete odstrániť túto položku?"
+msgstr "Naozaj chcete reštartovať"
 
 #, python-format
 msgid "Are you sure to remove all %d.%d%s%s services?"
@@ -2396,10 +2393,10 @@ msgid "Boost green"
 msgstr "Zosilniť zelenú"
 
 msgid "Boot to Android image"
-msgstr ""
+msgstr "Štart do Android image"
 
 msgid "Boot to Recovery menu"
-msgstr ""
+msgstr "Štart do Recovery menu"
 
 msgid "Bootloader update required!"
 msgstr ""
@@ -2611,10 +2608,10 @@ msgstr ""
 "žltá\n"
 "\n"
 "Obrazy meníte tlačidlami vľavo/vpravo alebo na prepnutie použite červené, zelené  a modré tlačidlo.\n"
-"Žltým tlačdlom sa vrátite späť na túto obrazovku."
+"Žltým tlačdlom sa vrátite späť na túto obrazovku"
 
 msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternativaly you can mount the network drive after the flash and perform a manufacurer reset to autorestore"
-msgstr "Je možné nájsť len sieťový disk na uloženie zálohy. To znamená, že po dokončení flashovania nebude automatické obnovenie fungovať. Alternatívne môžete pripojiť sieťový disk po naflashovaní a vykonať továrenské nastavenia, aby sa vykonalo automatické obnovenie."
+msgstr "Je možné nájsť iba sieťový disk na uloženie zálohy. To znamená, že po dokončení flashovania nebude automatické obnovenie fungovať. Alternatívne môžete pripojiť sieťový disk po naflashovaní a vykonať továrenské nastavenia, aby sa vykonalo automatické obnovenie. "
 
 msgid "Canada"
 msgstr "Kanada"
@@ -2624,6 +2621,10 @@ msgstr "Zrušiť"
 
 msgid "Cancel any text changes and exit"
 msgstr "Zrušiť všetky textové zmeny a ukončiť"
+
+#, fuzzy
+msgid "Cancel execution?"
+msgstr "Voľba stanice"
 
 #, fuzzy
 msgid "Cancel the selection"
@@ -2756,16 +2757,14 @@ msgstr "Číslo kanálu a názov služby"
 msgid "Channelnumber, picon and servicename"
 msgstr "Číslo kanálu, picona a názov služby"
 
-#, fuzzy
 msgid "Channels"
-msgstr "Kanál"
+msgstr "Kanály"
 
 msgid "Channels and EPG"
 msgstr "Stanice a EPG"
 
-#, fuzzy
 msgid "Channels only"
-msgstr "Kanál"
+msgstr "Iba kanály"
 
 msgid "Chap."
 msgstr "Kap."
@@ -3079,6 +3078,10 @@ msgstr "Nakonfigurovať ďalšie oneskorenie na zlepšenie synchronizácie exter
 
 msgid "Configure an additional delay to improve subtitle synchronisation."
 msgstr "Nakonfigurovať ďalšie oneskorenie na zlepšenie synchronizácie titulkov."
+
+#, fuzzy
+msgid "Configure default type for new timers."
+msgstr "Nakonfigurujte masku siete."
 
 msgid "Configure for how long the infobar will remain visible after activation."
 msgstr "Nastaviť ako dlho sa bude inforbar zobrazovať po aktivácii."
@@ -3979,6 +3982,10 @@ msgstr "Predvolené umiestnenie filmov"
 msgid "Default settings"
 msgstr "Predvolené nastavenia"
 
+#, fuzzy
+msgid "Default timer type"
+msgstr "Zmazať časovač"
+
 msgid "Delay after change voltage before switch command"
 msgstr "Oneskorenie po zmene napätia pred príkazom prepnúť"
 
@@ -4110,17 +4117,14 @@ msgstr "Zrušiť výber"
 msgid "Destination of fallback remote receiver"
 msgstr "URL záložného vzdialeného prijímača"
 
-#, fuzzy
 msgid "Destination of fallback remote receiver for ATSC"
-msgstr "URL záložného vzdialeného prijímača"
+msgstr "Cieľ záložného vzdialeného prijímača pre ATSC"
 
-#, fuzzy
 msgid "Destination of fallback remote receiver for DVB-C"
-msgstr "URL záložného vzdialeného prijímača"
+msgstr "Cieľ záložného vzdialeného prijímača pre DVB-C"
 
-#, fuzzy
 msgid "Destination of fallback remote receiver for DVB-T"
-msgstr "URL záložného vzdialeného prijímača"
+msgstr "Cieľ záložného vzdialeného prijímača pre DVB-T"
 
 msgid "Details for plugin: "
 msgstr "Údaje o doplnku: "
@@ -4594,13 +4598,16 @@ msgid "EPG location"
 msgstr "Výber EPG"
 
 msgid "EPG only"
-msgstr ""
+msgstr "Iba EPG"
 
 msgid "EPG selection"
 msgstr "Výber EPG"
 
 msgid "EPG settings"
 msgstr "Nastavenie EPG"
+
+msgid "EPG:"
+msgstr ""
 
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
@@ -4634,9 +4641,8 @@ msgstr "Upraviť alternatívy"
 msgid "Edit chapters of current title"
 msgstr "Upraviť kapitoly aktuálneho titulu"
 
-#, fuzzy
 msgid "Edit menu"
-msgstr "Úpraviť časovač"
+msgstr "Úpraviť menu"
 
 msgid "Edit selection"
 msgstr "Upraviť výber"
@@ -4732,9 +4738,8 @@ msgstr "Povoliť tlačidlom OK rýchly nahľad v zozname staníc"
 msgid "Enable OK for channel selection"
 msgstr "Povoliť tlačidlom OK výber stanice"
 
-#, fuzzy
 msgid "Enable OpenTV EPG"
-msgstr "Povoliť EIT EPG"
+msgstr "Povoliť OpenTV EPG"
 
 msgid "Enable ViaSat EPG"
 msgstr "Povoliť ViaSat EPG"
@@ -4806,7 +4811,7 @@ msgid "Enable timer conflict detection"
 msgstr "Povoliť detekciu konfliktov časovačov"
 
 msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
-msgstr "Povoliť zobrazenie grafického prepínača namiesto položiek áno/nie, povoliť/zakázať."
+msgstr "Povoliť zobrazenie grafického prepínača namiesto položiek platné/neplatné, áno/nie a povoliť/zakázať."
 
 msgid "Enable volume control with arrow buttons"
 msgstr "Povoliť ovládanie hlasitosti pomocou tlačidiel so šípkami"
@@ -5383,17 +5388,14 @@ msgstr "Port záložného vzdialeného prijímača"
 msgid "Fallback remote receiver URL"
 msgstr "URL záložného vzdialeného prijímača"
 
-#, fuzzy
 msgid "Fallback remote receiver for ATSC"
-msgstr "Port záložného vzdialeného prijímača"
+msgstr "Záložný vzdialený prijímač pre ATSC"
 
-#, fuzzy
 msgid "Fallback remote receiver for DVB-C"
-msgstr "Port záložného vzdialeného prijímača"
+msgstr "Záložný vzdialený prijímač pre DVB-C"
 
-#, fuzzy
 msgid "Fallback remote receiver for DVB-T"
-msgstr "Port záložného vzdialeného prijímača"
+msgstr "Záložný vzdialený prijímač pre DVB-T"
 
 msgid "Fallback remote receiver setup"
 msgstr "Nastavenie záložného vzdialeného prijímača"
@@ -5401,9 +5403,8 @@ msgstr "Nastavenie záložného vzdialeného prijímača"
 msgid "Fallback tuner setup"
 msgstr "Nastavenie záložného tuneru"
 
-#, fuzzy
 msgid "False"
-msgstr "nesprávne"
+msgstr "Neplatné"
 
 #, python-format
 msgid "Fan %d"
@@ -6088,7 +6089,7 @@ msgstr "Údaje neboli zatiaľ načítané"
 
 #, fuzzy
 msgid "Host receiver streaming port"
-msgstr "Prijímač sa reštartuje..."
+msgstr "Prijímač sa reštartuje... "
 
 msgid "Hostname:"
 msgstr ""
@@ -6202,7 +6203,7 @@ msgid "Icons"
 msgstr "Ikony"
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
-msgstr ""
+msgstr "Ak je zakázané, podčiarknuté znaky v zozname súborov a zložiek nie sú zobrazené a sú nahradené medzerami."
 
 msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
 msgstr "Ak je povolené, záložky budú aktualizované v novom umiestnení keď presuniete alebo skopírujete nahrávku."
@@ -6273,14 +6274,13 @@ msgid "Image: "
 msgstr "Image: "
 
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
-msgstr "Importovať stanice a/alebo EPG z URL adresy vzdialeného prijímača aj v prípade, že sa prijímač prebudí z pohotovostného režimu."
+msgstr "Importovať stanice a/alebo EPG z URL adresy vzdialeného prijímača aj v prípade, že sa prijímač prebudí z pohotovostného režimu. "
 
-#, fuzzy
 msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Importovať stanice a/alebo EPG z URL adresy vzdialeného prijímača v prípade štartu prijímača"
+msgstr "Importovať kanály a/alebo EPG zo URL vzdialeného prijímača počas štartu prijímača"
 
 msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
-msgstr "Importovať stanice a/alebo EPG z URL adresy vzdialeného prijímača v prípade, že sa prijímač alebo Enigma2 reštartuje"
+msgstr "Importovať kanály a/alebo EPG zo URL vzdialeného prijímača počas štartu prijímača alebo enigmy2"
 
 #, python-format
 msgid "Import from fallback tuner failed, %s"
@@ -6381,7 +6381,7 @@ msgid "Infotainment"
 msgstr "Doba zobrazenia informačnej lišty"
 
 msgid "Init"
-msgstr "Inic."
+msgstr "Inic. "
 
 msgid "Initial fast forward speed"
 msgstr "Počiatočná rýchlosť prevíjania vpred"
@@ -6619,7 +6619,7 @@ msgstr "Skok na predchádzajúce označené miesto"
 
 #. TRANSLATORS: (aspect ratio policy: scale as close to fullscreen as possible)
 msgid "Just scale"
-msgstr "Len prispôsobiť"
+msgstr "Iba prispôsobiť"
 
 msgid "KA-SAT"
 msgstr "KA-SAT"
@@ -7006,7 +7006,7 @@ msgid "Make this mark an 'out' point"
 msgstr "Urobiť z tejto značky výstupný bod („out“)"
 
 msgid "Make this mark just a mark"
-msgstr "Urobiť z tejto značky len značku"
+msgstr "Urobiť z tejto značky iba značku"
 
 #, fuzzy
 msgid "Make this mark the final 'out' point"
@@ -7532,7 +7532,7 @@ msgid "Nameserver setup"
 msgstr "Nastavenie DNS"
 
 msgid "Namespace & Orbital pos."
-msgstr "Namespace a orbitálna pozícia"
+msgstr "Namespace a orbitálna poz."
 
 msgid "Namibia"
 msgstr "Namíbia"
@@ -7881,7 +7881,7 @@ msgstr "Nepriradené"
 
 #, python-format
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
-msgstr "Nie je dostatok miesta na disku. Uvoľnite miesto na disku a a skúste to znova. (Potrebných je %d MB, ale voľných je len %d MB.)"
+msgstr "Nie je dostatok miesta na disku. Uvoľnite miesto na disku a a skúste to znova. (Potrebných je %d MB, ale voľných je iba %d MB.)"
 
 #, fuzzy
 msgid "Not mounted"
@@ -8047,22 +8047,22 @@ msgid "Only change this setting if you are using a SCR device that has been repr
 msgstr "Toto nastavenie zmeňte iba v prípade, že používate SCR zariadenie, ktoré bolo preprogramované špeciálnym programátorom. Pre ďalšie informácie konzultujte s osobou, ktorá preprogramovala zariadenie."
 
 msgid "Only extensions."
-msgstr "Len rozšírenia."
+msgstr "Iba rozšírenia."
 
 msgid "Only free scan"
-msgstr "Vyhľadať len nekódované (FTA)"
+msgstr "Vyhľadať iba nekódované (FTA)"
 
 msgid "Only move the dish quickly after this hour."
-msgstr "Po tejto hodine len rýchlo presunúť parabolu."
+msgstr "Po tejto hodine iba rýchlo presunúť parabolu."
 
 msgid "Only move the dish quickly before this hour."
-msgstr "Pred touto hodinou len rýchlo presunúť parabolu."
+msgstr "Pred touto hodinou iba rýchlo presunúť parabolu."
 
 msgid "Only on startup"
 msgstr "Iba pri spustení"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
-msgstr "Vyberte 'áno' len v prípade, ak používate multiprepínač ktorý vyžaduje signálny príkaz pre DiSEqC Port-A. Pre všetky ostatné nastavenia vyberte 'nie'."
+msgstr "Vyberte 'áno' iba v prípade, ak používate multiprepínač ktorý vyžaduje signálny príkaz pre DiSEqC Port-A. Pre všetky ostatné nastavenia vyberte 'nie'."
 
 msgid "Open Vision enigma2 image"
 msgstr ""
@@ -9617,7 +9617,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Running"
-msgstr "Prebieha"
+msgstr "prebieha"
 
 msgid "Russian"
 msgstr "Ruština"
@@ -10317,7 +10317,7 @@ msgid "Send DiSEqC"
 msgstr "Poslať DiSEqC"
 
 msgid "Send DiSEqC only on satellite change"
-msgstr "Poslať DiSEqC len pri zmene satelitu"
+msgstr "Poslať DiSEqC iba pri zmene satelitu"
 
 msgid "Senegal"
 msgstr "Senegal"
@@ -10468,7 +10468,7 @@ msgid "Set all hotkey to default?"
 msgstr "Nastaviť všetky klávesové skratky na predvolené?"
 
 msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
-msgstr ""
+msgstr "Nastaviť alternatívne záložné tunery pre DVB-T/C alebo ATSC"
 
 msgid "Set as startup service"
 msgstr "Nastaviť ako stanicu po spustení"
@@ -10553,7 +10553,7 @@ msgid "Set the time of day to perform the import."
 msgstr ""
 
 msgid "Set the type of the progress indication in the channel selection screen."
-msgstr "Zvoliť typ zobrazenia priebehu programu v zozname staníc"
+msgstr "Zvoliť typ zobrazenia priebehu programu v zozname staníc."
 
 #, fuzzy
 msgid "Set the vertical position of subtitles, measured from the bottom of the screen."
@@ -10962,9 +10962,8 @@ msgstr "Zobraziť infor. o transpondéri"
 msgid "Show two lines per entry"
 msgstr ""
 
-#, fuzzy
 msgid "Show underline characters in filenames"
-msgstr "Obmedziť sadu znakov pre názvy súborov nahrávok"
+msgstr "Zobraziť podčiarknuté znaky v názvoch súborov"
 
 msgid "Show vertical timelines"
 msgstr "Zobraziť zvislé časové osi"
@@ -11847,7 +11846,7 @@ msgstr "Údaje o doplnku: "
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr ""
-"Autori: Andrej <andrej.tobola@gmail.com> 2019 - 2017 \n"
+"Autori: Andrej <andrej.tobola@gmail.com> 2020 - 2017 \n"
 "        Nicker <nickersk@gmail.com> 2016 \n"
 "         Janda <jan.vojtek@gmail.com> 2015 "
 
@@ -11882,7 +11881,7 @@ msgid "Tags"
 msgstr "Štítky"
 
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 msgid "Tajikistan"
 msgstr "Tadžikistan"
@@ -12173,7 +12172,7 @@ msgid "The user interface of the receiver will now restart to select the selecte
 msgstr "Užívateľské rozhranie prijímača sa kvôli výberu vzhľadu teraz reštartuje"
 
 msgid "The user interface of your receiver is restarting"
-msgstr "Užívateľské rozhranie prijímača sa reštartuje..."
+msgstr "Užívateľské rozhranie prijímača sa reštartuje... "
 
 msgid ""
 "The user interface of your receiver is restarting\n"
@@ -12183,7 +12182,7 @@ msgstr ""
 "kvôli chybe v mytest.py"
 
 msgid "The user interface of your receiver is restarting in debug mode"
-msgstr "Užívateľské rozhranie prijímača sa reštartuje v debug režime..."
+msgstr "Užívateľské rozhranie prijímača sa reštartuje v debug režime... "
 
 msgid "The width of the picture. The input will be scaled to match this value."
 msgstr ""
@@ -12246,7 +12245,7 @@ msgid ""
 "For normal users it is not relevant.\n"
 "Please don't panic if you see values displayed looking suspicious!"
 msgstr ""
-"Táto informácia je len pre vývojárov.\n"
+"Táto informácia je iba pre vývojárov.\n"
 "Pre bežných užívateľov nie je dôležitá.\n"
 "Neprepadajte panike prosím ak sa Vám zdá, že zobrazované hodnoty vyzerajú podozrivo!"
 
@@ -12359,9 +12358,8 @@ msgstr "Táto voľba umožňuje vynútenie režimov HDR10 pre UltraHD"
 msgid "This option allows you to force the HLG modes for UHD"
 msgstr "Táto voľba umožňuje vynútiť režimy HLG pre UltraHD"
 
-#, fuzzy
 msgid "This option allows you to hide and sort menu entries. When selecting user you can change order and hide menu items via the blue button. With the user defined hidden the blue button is not shown in the menus"
-msgstr "Táto voľba umožnuje skryť a zoradiť položky menu. Ked zvolíte Užívateľsky definované, cez modré tlačidlo môžete zmeniť poradie a skryť položky menu"
+msgstr "Táto voľba umožnuje skryť a zoradiť položky menu. Ak zvolíte \"užívateľ\", môžete zmeniť poradie alebo skryť položky menu cez modré tlačidlo. Pri voľbe \"užívateľsky definované skryté\" nie je modré tlačidlo v menu zobrazené."
 
 msgid "This option allows you to power off the display."
 msgstr "Táto voľba umožňuje vypnutie obrazovky."
@@ -12596,6 +12594,10 @@ msgid "Timer+"
 msgstr "Časovač"
 
 #, fuzzy
+msgid "Timer:"
+msgstr "Časovač"
+
+#, fuzzy
 msgid "Timerlist"
 msgstr "Úpraviť časovač"
 
@@ -12769,7 +12771,7 @@ msgid "Troubleshoot"
 msgstr "Riešenie problémov"
 
 msgid "True"
-msgstr ""
+msgstr "Platné"
 
 msgid "TrueType font (HD)"
 msgstr ""
@@ -13028,7 +13030,7 @@ msgid "Update bookmarks"
 msgstr "Aktualizovať záložky"
 
 msgid "Update channel list only"
-msgstr "Aktualizovať len zoznam kanálov"
+msgstr "Aktualizovať iba zoznam kanálov"
 
 #, python-format
 msgid "Update completed, %d package was installed."
@@ -13618,7 +13620,7 @@ msgstr "Aký typ staníc chcete prehľadať?"
 
 #, fuzzy
 msgid "When enabled enigma2 will load unlinked user bouquets. This means that user bouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are updated"
-msgstr "Ak je povolené, enigma2 načíta neprepojené užívateľské prehľady. To znamená, že užívateľské prehľady, ktoré sú k dispozícii, ale nie sú zahrnuté v bouquets.tv alebo bouquets.radio súboroch sa aj napriek tomu načítajú. To Vám umožňuje napríklad zachovať Vaše vlastné užívateľské prehľady po inštalácii a inovácii nastavení."
+msgstr "Ak je povolené, enigma2 načíta neprepojené užívateľské prehľady. To znamená, že užívateľské prehľady, ktoré sú k dispozícii, ale nie sú zahrnuté v bouquets.tv alebo bouquets.radio súboroch sa aj napriek tomu načítajú. To Vám umožňuje napríklad zachovať Vaše vlastné užívateľské prehľady po inštalácii a inovácii nastavení. "
 
 msgid "When enabled the PiP can be closed by the exit button."
 msgstr "Ak povolené, PiP môže byť ukončený tlačidlom EXIT."
@@ -13636,7 +13638,7 @@ msgid "When enabled the timer from the fallback tuner is imported"
 msgstr "Ak je povolené, bude importovaný časovač zo záložného tuneru"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
-msgstr "Ak povolené, potom keď vyberiete novú stanicu v zozname výberu staníc tento zoznam ostane otvorený. Zatvorí sa iba vtedy, keď zvolíte aktuálne pozeranú stanicu. Ide o určitý typ náhľadu programu."
+msgstr "Ak povolené, potom keď vyberiete novú stanicu v zozname výberu staníc tento zoznam ostane otvorený. Zatvorí sa iba vtedy, keď zvolíte aktuálne pozeranú stanicu. Ide o určitý typ náhľadu programu. "
 
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Ak povolené môžete ovládať hlasitosť pomocou tlačidiel so šípkami namiesto získania zoznamu výberu stanice"
@@ -13648,16 +13650,16 @@ msgid "When enabled you can specify a timeframe to ignore the shutdown timer whe
 msgstr "Ak je povolené, môžete určiť časový rámec ignorovania časovača vypnutia, keď je prijímač v pohotovostnom režime"
 
 msgid "When enabled you can specify a timeframe when the inactivity sleeptimer is ignored. Not the detection is disabled during this timeframe but the inactivity timeout is disabled"
-msgstr "Ak je povolené, môžete zadať časový rámec, v ktorom bude ignorovaná nečinnosť časovača vypnutia. Nie detekcia, ale časový rámec nečinnosti je zakázaný."
+msgstr "Ak je povolené, môžete zadať časový rámec, v ktorom bude ignorovaná nečinnosť časovača vypnutia. Nie detekcia, ale časový rámec nečinnosti je zakázaný. "
 
 msgid "When enabled you can specify an extra timeframe when the inactivity sleeptimer is ignored. Not the detection is disabled during this timeframe but the inactivity timeout is disabled"
-msgstr "Ak je povolené, môžete zadať ďalší časový rámec, v ktorom bude ignorovaná nečinnosť časovača vypnutia. Nie detekcia, ale časový rámec nečinnosti je zakázaný."
+msgstr "Ak je povolené, môžete zadať ďalší časový rámec, v ktorom bude ignorovaná nečinnosť časovača vypnutia. Nie detekcia, ale časový rámec nečinnosti je zakázaný. "
 
 msgid "When enabled you can zap channels with the  CH+/-, B+/-, P+/- buttons instead of opening the channel selection list."
 msgstr "Ak je povolené, môžete prepínať kanály tlačidlami CH +/-,B+/-, P+/- namiesto otvorenia zoznamu staníc."
 
 msgid "When enabled you get the channel selection list via the OK button, the infobar toggle is then transfered to exit button"
-msgstr "Ak je povolené, dostanete sa na zoznam pre výber stanice pomocou tlačidla OK, prepínanie informačného panelu je potom prenesené na tlačidlo exit."
+msgstr "Ak je povolené, dostanete sa na zoznam pre výber stanice pomocou tlačidla OK, prepínanie informačného panelu je potom prenesené na tlačidlo exit. "
 
 msgid "When enabled, AIT data will be included in http streams. This allows a client receiver to use HbbTV."
 msgstr "Ak je povolené, budú dáta AIT zahrnuté do http streamov. To umožní klientskemu prijímaču používať HbbTV."
@@ -13966,10 +13968,10 @@ msgid "Yes, delete this movie and return to movie list"
 msgstr "Áno, zmazať tento film a návrat do zoznamu filmov"
 
 msgid "Yes, only from deep standby"
-msgstr "Áno, len z hlbokého spánku"
+msgstr "Áno, iba z hlbokého spánku"
 
 msgid "Yes, only from standby"
-msgstr "Áno, len z pohotovostného režimu"
+msgstr "Áno, iba z pohotovostného režimu"
 
 msgid "Yes, returning to movie list"
 msgstr "Áno, vrátiť sa do zoznamu filmov"
@@ -14133,7 +14135,7 @@ msgstr "Váš prijímač nemá pripojenie k internetu"
 
 #, fuzzy
 msgid "Your receiver goes to WOL"
-msgstr "Prijímač sa reštartuje..."
+msgstr "Prijímač sa reštartuje... "
 
 msgid "Your receiver is not connected to the internet, please check your network settings and try again."
 msgstr ""
@@ -14163,18 +14165,18 @@ msgstr ""
 "Prosím, stlačte OK pre pokračovanie."
 
 msgid "Your receiver is rebooting"
-msgstr "Prijímač sa reštartuje..."
+msgstr "Prijímač sa reštartuje... "
 
 #, fuzzy
 msgid "Your receiver is rebooting into android mode"
-msgstr "Prijímač sa reštartuje..."
+msgstr "Prijímač sa reštartuje... "
 
 #, fuzzy
 msgid "Your receiver is rebooting into recovery mode"
-msgstr "Prijímač sa reštartuje..."
+msgstr "Prijímač sa reštartuje... "
 
 msgid "Your receiver is shutting down"
-msgstr "Prijímač sa vypína..."
+msgstr "Prijímač sa vypína... "
 
 msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
 msgstr "Váš prijímač môže byť teraz nepoužiteľný. Pred reštartom prijímača nájdite v manuáli ďalšiu pomoc."
@@ -14337,9 +14339,8 @@ msgstr "hneď začne"
 msgid "activate network adapter configuration"
 msgstr "aktivovať konfiguráciu sieťového adaptéra"
 
-#, fuzzy
 msgid "active"
-msgstr "Relatívne"
+msgstr "aktvne"
 
 msgid "actual time only"
 msgstr "iba aktuálny čas"
@@ -14430,7 +14431,7 @@ msgid "auto standby"
 msgstr "Neprechádzať do pohotovostného režimu"
 
 msgid "automatic"
-msgstr "Automatické"
+msgstr "automatické"
 
 msgid "back"
 msgstr "späť"
@@ -14608,7 +14609,7 @@ msgid "don't descramble, record ecm"
 msgstr "nedekódovať, zaznamenávať ecm"
 
 msgid "done!"
-msgstr "Dokončené!"
+msgstr "Hotovo!"
 
 #, fuzzy
 msgid "drama (general)"
@@ -14730,7 +14731,7 @@ msgid "failed"
 msgstr "zlyhalo"
 
 msgid "false"
-msgstr "nesprávne"
+msgstr "neplatné"
 
 msgid "fashion"
 msgstr "móda"
@@ -15114,7 +15115,7 @@ msgid "off"
 msgstr "vyp."
 
 msgid "off or wpa2 on"
-msgstr "vyp. alebo WPA2 zap."
+msgstr "vyp. alebo WPA2 zap. "
 
 msgid "offset is"
 msgstr "rezerva je"
@@ -15190,7 +15191,7 @@ msgid "record"
 msgstr "nahrať"
 
 msgid "recording..."
-msgstr "Nahrávam..."
+msgstr "nahrávanie..."
 
 msgid "red"
 msgstr "červená"
@@ -15260,7 +15261,7 @@ msgstr "romantika"
 
 #, fuzzy
 msgid "running..."
-msgstr "Prebieha"
+msgstr "prebieha"
 
 msgid "scan state"
 msgstr "stav vyhľadávania"
@@ -15537,9 +15538,8 @@ msgstr ""
 msgid "user defined"
 msgstr "užívateľsky definované"
 
-#, fuzzy
 msgid "user defined hidden"
-msgstr "užívateľsky definované"
+msgstr "užívateľsky definované skryté"
 
 msgid "variety show"
 msgstr "varieté"
@@ -15632,7 +15632,7 @@ msgid "yes (keep feeds)"
 msgstr "áno (zachovať feedy)"
 
 msgid "yes, but not in multi selections"
-msgstr ""
+msgstr "áno, ale nie vo viacnásobnom výbere"
 
 msgid "zap"
 msgstr "prepnúť"
