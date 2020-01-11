@@ -3031,7 +3031,7 @@ class InfoBarAspectSelection:
 	def __init__(self): 
 		self["AspectSelectionAction"] = HelpableActionMap(self, "InfobarAspectSelectionActions", 
 			{ 
-				"aspectSelection": (self.ExGreen_toggleGreen, _("Aspect list...")), 
+				"aspectSelection": (self.ExGreen_toggleGreen, _("Aspect ratio list...")), 
 			}) 
 
 		self.__ExGreen_state = self.STATE_HIDDEN
@@ -3064,7 +3064,7 @@ class InfoBarAspectSelection:
 
 	def aspectSelection(self):
 		selection = 0
-		tlist= [(_("Resolution"), "resolution"),("--", ""),(_("4_3_letterbox"), "0"), (_("4_3_panscan"), "1"), (_("16_9"), "2"), (_("16_9_always"), "3"), (_("16_10_letterbox"), "4"), (_("16_10_panscan"), "5"), (_("16_9_letterbox"), "6")]
+		tlist= [(_("Resolution"), "resolution"),("--", ""),(_("4:3 letterbox"), "0"), (_("4:3 panscan"), "1"), (_("16:9"), "2"), (_("16:9 always"), "3"), (_("16:10 letterbox"), "4"), (_("16:10 panscan"), "5"), (_("16:9 letterbox"), "6")]
 		for x in range(len(tlist)):
 			selection = x
 		keys = ["green", "",  "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
@@ -3091,21 +3091,22 @@ class InfoBarResolutionSelection:
 		return
 
 	def resolutionSelection(self):
-		f = open("/proc/stb/vmpeg/0/xres", "r")
-		xresString = f.read()
-		f.close()
-		f = open("/proc/stb/vmpeg/0/yres", "r")
-		yresString = f.read()
-		f.close()
-		if getBoxType().startswith('azbox'):
+		try:
+			xresString = open("/proc/stb/vmpeg/0/xres", "r").read()
+		except:
+			print"[InfoBarGenerics] Error open /proc/stb/vmpeg/0/xres!"
+		try:
+			yresString = open("/proc/stb/vmpeg/0/yres", "r").read()
+		except:
+			print"[InfoBarGenerics] Error open /proc/stb/vmpeg/0/yres!"
+		if getBoxBrand() == "azbox":
 			fpsString = '50000'
 		else:
 			try:
-				f = open("/proc/stb/vmpeg/0/framerate", "r")
-				fpsString = f.read()
-				f.close()
+				fpsString = open("/proc/stb/vmpeg/0/framerate", "r").read()
 			except:
-				print"[InfoBarResolutionSelection] Error open /proc/stb/vmpeg/0/framerate !!"
+				print"[InfoBarGenerics] Error open /proc/stb/vmpeg/0/framerate!"
+				print"[InfoBarGenerics] Set fpsString to 50000 to avoid further problems!"
 				fpsString = '50000'
 
 		xres = int(xresString, 16)
@@ -3114,8 +3115,7 @@ class InfoBarResolutionSelection:
 		fpsFloat = float(fps)
 		fpsFloat = fpsFloat/1000
 
-		# do we need a new sorting with this way here?
-		# or should we disable some choices?
+		# do we need a new sorting with this way here or should we disable some choices?
 		choices = []
 		if os.path.exists("/proc/stb/video/videomode_choices"):
 			f = open("/proc/stb/video/videomode_choices")
@@ -3128,7 +3128,7 @@ class InfoBarResolutionSelection:
 		selection = 0
 		tlist = []
 		tlist.append((_("Exit"), "exit")) 
-		tlist.append((_("Auto(not available)"), "auto"))
+		tlist.append((_("Auto (not available)"), "auto"))
 		tlist.append((_("Video: ") + str(xres) + "x" + str(yres) + "@" + str(fpsFloat) + "hz", ""))
 		tlist.append(("--", ""))
 		if choices != []:
@@ -3137,7 +3137,8 @@ class InfoBarResolutionSelection:
 
 		keys = ["green", "yellow", "blue", "", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
 
-		mode = open("/proc/stb/video/videomode").read()[:-1]
+		if os.path.exists("/proc/stb/video/videomode"):
+			mode = open("/proc/stb/video/videomode").read()[:-1]
 		print mode
 		for x in range(len(tlist)):
 			if tlist[x][1] == mode:
@@ -3151,9 +3152,7 @@ class InfoBarResolutionSelection:
 				if Resolution[1] == "exit" or Resolution[1] == "" or Resolution[1] == "auto":
 					self.ExGreen_toggleGreen()
 				if Resolution[1] != "auto":
-					f = open("/proc/stb/video/videomode", "w")
-					f.write(Resolution[1])
-					f.close()
+					open("/proc/stb/video/videomode", "w").write(Resolution[1])
 					#from enigma import gMainDC
 					#gMainDC.getInstance().setResolution(-1, -1)
 					self.ExGreen_doHide()
