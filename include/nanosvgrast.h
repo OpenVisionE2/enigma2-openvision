@@ -981,7 +981,7 @@ static unsigned int nsvg__applyOpacity(unsigned int c, float u)
 
 static inline int nsvg__div255(int x)
 {
-    return ((x+1) * 257) >> 16;
+	return ((x+1) * 257) >> 16;
 }
 
 static void nsvg__scanlineSolid(unsigned char* dst, int count, unsigned char* cover, int x, int y,
@@ -1363,8 +1363,8 @@ static void dumpEdges(NSVGrasterizer* r, const char* name)
 */
 
 void nsvgRasterize(NSVGrasterizer* r,
-				   NSVGimage* image, float tx, float ty, float scale,
-				   unsigned char* dst, int w, int h, int stride)
+					NSVGimage* image, float tx, float ty, float scale,
+					unsigned char* dst, int w, int h, int stride)
 {
 	NSVGshape *shape = NULL;
 	NSVGedge *e = NULL;
