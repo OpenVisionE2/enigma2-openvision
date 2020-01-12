@@ -17,7 +17,7 @@
 		<color color="#000000" name="WindowTitleBackground"/>
 	</windowstyle>
 	<fonts>
-		<!-- pick a funky name for the font, so we don't conflict  -->     
+		<!-- pick a funky name for the font, so we don't conflict  -->
 		<font filename="nmsbd.ttf" name="FdLcD" scale="90"/>
 		<font filename="verdana.ttf" name="FdLcDLight" scale="90"/>
 	</fonts>
@@ -66,7 +66,7 @@
 			<convert type="ServiceName">Reference</convert>
 		</widget>	
 	</screen>
-        
+
 <!-- normal radiomodus-->
 	<screen name="ChannelSelectionRadio_summary" position="0,0" size="720,576">
 		<widget source="parent.RdsDecoder" render="Label" position="15,20" foregroundColor="#e5b243" size="670,220" font="FdLcD;60" halign="center" valign="top">
@@ -76,7 +76,7 @@
 			<convert type="ServiceName">Reference</convert>
 		</widget>
 	</screen>
-        
+
 <!-- channelselection-->
 	<screen name="ChannelSelection_summary" position="0,0" size="720,576"> 
 		<widget source="parent.ServiceEvent" render="Label" position="15,21" size="675,70" foregroundColor="#e5b243" font="FdLcD; 60" halign="center">
@@ -114,8 +114,8 @@
 			<convert type="ServiceName">Reference</convert>
 		</widget>	
 	</screen>
-    
-<!-- Numberzap -->    
+
+<!-- Numberzap -->
 	<screen name="NumberZap_summary" position="0,0" size="720,576">
 		<widget source="parent.servicename" render="Label" position="15,20" foregroundColor="#e5b243" size="670,120" font="FdLcD;70" halign="center" valign="top" noWrap="1" />
 		<widget source="parent.number" render="Label" position="20,190" size="670,200" font="FdLcD;90" halign="center" valign="center" />
@@ -131,7 +131,7 @@
 		<panel name="SummaryClockPanel" />
 	</screen>
 
-<!-- EtPortal -->       
+<!-- EtPortal -->
 	<screen name="EtPortalScreen_summary" position="0,0" size="720,576">
 		<eLabel text="EtPortal" position="15,20" foregroundColor="#e5b243" size="670,120" font="FdLcD;70" halign="center" valign="top" noWrap="1" />
 		<widget source="parent.label" render="Label" position="20,190" size="670,200" font="FdLcD;60" halign="center" valign="top" />
@@ -226,7 +226,7 @@
 		</widget>
 		<panel name="SummaryClockPanel" />
 	</screen>
-        
+
 <!-- DVD -->	
 	<screen name="DVDSummary" position="0,0" size="720,576"> 
 		<widget source="session.CurrentService" render="Label" position="15,21" size="675,244" foregroundColor="#e5b243" font="FdLcD; 60" valign="center" halign="center" zPosition="14">
@@ -255,7 +255,7 @@
 		<panel name="SummaryClockPanel" />
 	</screen>
 
-<!-- misc-->	
+<!-- misc-->
 	<screen name="SimpleSummary" position="0,0" size="720,576"> 
 		<widget source="parent.Title" render="Label" position="20,190" size="670,200" font="FdLcD;60" halign="center" valign="top" />
 		<panel name="SummaryClockPanel" />
@@ -276,7 +276,7 @@
 		</widget>
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
+
 <!-- standby -->
 	<screen name="StandbySummary" position="0,0" size="720,576"> 
 		<widget source="global.CurrentTime" render="Label" position="20,107" size="670,182" foregroundColor="#e5b243" font="FdLcD;100" valign="center" halign="center" zPosition="14">
@@ -294,7 +294,7 @@
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
-	
+
 <!-- Plugin browser -->
 	<screen name="PluginBrowserSummary" position="0,0" size="720,576"> 
 		<widget source="parent.Title" render="Label" position="15,20" foregroundColor="#e5b243" size="670,150" font="FdLcD;70" halign="center" valign="top" />
@@ -302,7 +302,7 @@
 		<widget source="desc" render="Label" position="22,365" size="670,128" font="FdLcDLight;50" halign="center" valign="top" />
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
+
 <!-- JobView Summary -->
 	<screen name="JobView_summary" position="0,0" size="720,576"> 
 		<widget source="parent.summary_job_name" render="Label" position="15,21" size="675,122" foregroundColor="#e5b243" font="FdLcD; 60" valign="center" halign="center" zPosition="14" />
@@ -313,38 +313,37 @@
 		</widget>
 		<panel name="SummaryClockPanel" />
 	</screen>
-        
+
 	<screen name="ChoiceBox_summary" position="0,0" size="720,576">
 		<widget source="parent.summary_list" render="Label" position="22,22" size="670,445" font="FdLcDLight;57" halign="center" valign="center" />
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
 	<screen name="MessageBox_summary" position="0,0" size="720,576"> 
 		<widget source="parent.Text" render="Label" position="10,20" size="670,376" font="FdLcD;60" halign="center" valign="center" />
 		<widget source="parent.selectedChoice" render="Label" position="22,422" size="670,63" foregroundColor="#e5b243" font="FdLcDLight;60" halign="center" valign="top" />
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
+
 	<screen name="MessageBoxSimple_summary" position="0,0" size="720,576"> 
 		<widget source="parent.Text" render="Label" position="10,20" size="670,376" font="FdLcD;60" halign="center" valign="center" />
 		<widget source="parent.selectedChoice" render="Label" position="22,422" size="670,63" foregroundColor="#e5b243" font="FdLcDLight;60" halign="center" valign="top" />
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
+
 <!-- Infopanel -->
 	<screen name="Infopanel_summary" position="0,0" size="720,576">
 		<widget source="parent.Title" render="Label" position="15,20" foregroundColor="#e5b243" size="670,120" font="FdLcD;70" halign="center" valign="top" />
 		<widget source="parent.summary_description" render="Label" position="10,20" size="670,376" font="FdLcD;70" halign="center" valign="center"  />
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
+
 <!-- Quickmenü -->
 	<screen name="QuickMenu_summary" position="0,0" size="720,576">
 		<widget source="parent.Title" render="Label" position="15,20" foregroundColor="#e5b243" size="670,120" font="FdLcD;70" halign="center" valign="top" />
 		<widget source="parent.summary_description" render="Label" position="10,20" size="670,376" font="FdLcD;70" halign="center" valign="center" foregroundColor="#e5b243" />
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
+
 <!-- Servicescan -->
 	<screen name="ServiceScanSummary" position="0,0" size="720,576">
 		<widget name="Title" position="10,20" size="670,376" font="FdLcD;70" halign="center" valign="center"  />
@@ -438,5 +437,4 @@
 		</widget>
 		<panel name="SummaryClockPanel" />
 	</screen>	
-	
 </skin>

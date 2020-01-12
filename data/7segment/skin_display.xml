@@ -6,7 +6,7 @@
 			<convert type="VfdDisplay"></convert>
 		</widget>
 	</screen>
-	
+
 <!-- MyRecPanel -->
 	<screen name="MyRecPanel">
 		<widget source="session.RecordState" render="FixedLabel" position="0,0" size="1,1" text="REC ">
@@ -69,7 +69,7 @@
 		<panel name="MyRecPanel" />
 	</screen>
 
-<!-- Numberzap -->    
+<!-- Numberzap -->
 	<screen name="NumberZap_summary" position="0,0" size="1,1">
 		<widget source="parent.number_summary" render="Label" position="0,0" size="1,1">
 			<convert type="VfdDisplay">Number;nozero</convert>

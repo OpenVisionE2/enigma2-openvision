@@ -54,8 +54,7 @@
 			</widget>
 		</panel>
 	</screen>
-    
-  
+
 <!-- channelselection-->
 	<screen name="ChannelSelection_summary" position="fill">
 		<widget source="parent.ServiceEvent" render="Label" position="top" size="*,21" font="FdLcD;20" halign="left" noWrap="1" >
@@ -173,6 +172,7 @@
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
+
 <!-- Plugin browser -->
 	<screen name="PluginBrowserSummary" position="fill">
 		<widget source="parent.Title" render="Label" position="top" size="*,16" font="FdLcD;12"  noWrap="1" />
@@ -232,9 +232,10 @@
 		</widget>
 		<!-- Remaining movie time -->
 		<widget source="session.CurrentService" render="Label" position="48,48" size="48,16" font="Regular;16" foregroundColor="#FFFF00" halign="right">
-			  <convert type="ServicePosition">Remaining,Negate,ShowHours,ShowNoSeconds</convert>
+			<convert type="ServicePosition">Remaining,Negate,ShowHours,ShowNoSeconds</convert>
 		</widget>
 	</screen>
+
 <!-- MediaPlayer Summary -->
 	<screen name="MediaPlayerLCDScreen" position="0,0" size="96,64" >
 		<widget name="text1" position="0,0" size="96,35" font="Regular;14"/>

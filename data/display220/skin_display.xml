@@ -100,7 +100,7 @@
 		<widget source="parent.Service" render="Label" position="110,126" size="105,50" font="FdLcD;24" halign="right" transparent="1" foregroundColor="#02c6ff" >
 			<convert type="MovieInfo">FileSize</convert>
 		</widget>
-    </screen>
+	</screen>
 
 <!-- channelselection-->
 	<screen name="ChannelSelection_summary" position="fill">
@@ -173,8 +173,8 @@
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
-	
-<!-- Numberzap -->    
+
+<!-- Numberzap -->
  	<screen name="NumberZap_summary" position="0,0" size="220,176">
 		<widget source="parent.service_summary" render="Label" position="0,0" size="220,65" foregroundColor="#FFFF00" font="FdLcD;30" halign="center" valign="top" />
 		<widget source="parent.number_summary" render="Label" position="0,75" size="220,45" font="FdLcD;40" halign="center" valign="center" />
@@ -185,7 +185,7 @@
 	<screen name="RdsInfoDisplaySummary" position="fill">
 		<widget source="message" render="Label" position="0,0" size="220,176" font="FdLcD;30" halign="center" valign="center" />
 	</screen>
-	
+
 <!-- Plugin browser -->
 	<screen name="PluginBrowserSummary" position="fill">
 		<widget source="parent.Title" render="Label" foregroundColor="#FFFF00" position="0,0" size="220,26" font="FdLcD;25" halign="center" noWrap="1" />
@@ -260,7 +260,6 @@
 		</widget>
 		<panel name="SummaryClockPanel" />
 	</screen>
-
 	<screen name="MessageBox_summary" position="0,0" size="220,176">
 		<widget source="parent.Text" render="Label" position="0,0" size="220,176" font="FdLcD;17" halign="center" />
 		<widget source="parent.selectedChoice" render="Label" position="0,135" size="220,28" font="FdLcD;26" halign="center" noWrap="1" />
@@ -269,12 +268,10 @@
 		<widget source="parent.Text" render="Label" position="0,0" size="220,176" font="FdLcD;17" halign="center" />
 		<widget source="parent.selectedChoice" render="Label" position="0,135" size="220,28" font="FdLcD;26" halign="center" noWrap="1" />
 	</screen>
-
 	<screen name="AboutSummary" position="0,0" size="220,176">
 		<widget source="parent.Title" render="Label" position="top" size="*,100" font="FdLcD;30" halign="center" valign="center" />
 		<panel position="bottom" size="*,24" name="SummaryClockPanel" />
 	</screen>
-
 	<screen name="TimerEditListSummary" position="0,0" size="220,176">
 		<widget source="service" render="Label" position="0,38" size="220,26" font="FdLcD;24" halign="left" noWrap="1" />
 		<widget source="name" render="Label" position="0,66" size="220,20" font="FdLcD;19" halign="left" noWrap="1" />
@@ -284,7 +281,6 @@
 		<panel name="SummaryIconsPanel" />
 		<panel name="SummaryTunerStatusPanel" />
 	</screen>
-
 	<screen name="WizardSummary" position="0,0" size="220,176">
 		<widget source="text" render="Label" position="0,0" size="220,55" font="FdLcD;24" halign="center" />
 		<widget source="parent.list" render="Label" position="0,85" size="220,124" font="FdLcD;24" halign="center" >

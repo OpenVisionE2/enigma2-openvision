@@ -53,8 +53,6 @@
 		</widget>
 		
 	</screen>
--->
-    
   
 <!-- channelselection-->
 	<screen name="ChannelSelection_summary" position="2,0" size="128,64">
@@ -232,7 +230,7 @@
 		</widget>
 		<!-- Remaining movie time -->
 		<widget source="session.CurrentService" render="Label" position="48,48" size="48,16" font="Regular;16" foregroundColor="#FFFF00" halign="right">
-			  <convert type="ServicePosition">Remaining,Negate,ShowHours,ShowNoSeconds</convert>
+			<convert type="ServicePosition">Remaining,Negate,ShowHours,ShowNoSeconds</convert>
 		</widget>
 	</screen>
 	<screen name="MediaPlayerLCDScreen" position="0,0" size="128,64" >

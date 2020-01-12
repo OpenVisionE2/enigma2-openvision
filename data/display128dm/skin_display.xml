@@ -54,8 +54,7 @@
 			</widget>
 		</panel>
 	</screen>
-    
-  
+
 <!-- channelselection-->
 	<screen name="ChannelSelection_summary" position="2,0" size="128,64">
 		<widget source="parent.ServiceEvent" render="Label" position="top" size="*,21" font="FdLcD;20" noWrap="1">
@@ -174,7 +173,7 @@
 		</widget>
 	</screen>
 
-<!-- Numberzap -->    
+<!-- Numberzap -->
  	<screen name="NumberZap_summary" position="2,0" size="128,64">
 		<widget source="parent.number_summary" render="Label" position="top" size="*,25" font="FdLcD;20" halign="center" valign="center" />
 		<widget source="parent.service_summary" render="Label" position="top" size="*,16" foregroundColor="#FFFF00" font="FdLcD;16" halign="center" valign="top" />
@@ -200,7 +199,7 @@
 
 	<screen name="ChoiceBox_summary" position="2,0" size="128,64">
 		<widget source="parent.summary_list" render="Label" position="fill" font="FdLcD;11" />
-	</screen>	
+	</screen>
 
 	<screen name="MessageBox_summary" position="2,0" size="128,64">
 		<widget source="parent.Text" render="Label" position="top" size="*,52" font="FdLcD;11" halign="center" valign="center" />
@@ -233,10 +232,11 @@
 			</widget>
 		</panel>
 	</screen>
+
 	<screen name="EMCSelectionSummary" position="0,0" size="128,64">
 		<panel name="EMCSelection_summary" />
 	</screen>
-    
+
 	<screen name="EMCMoviePlayerSummary" position="3,0" size="128,64">
 		<!-- Movie name -->
 		<widget source="session.CurrentService" render="Label" position="0,0" size="128,37" font="FdLcD;17" foregroundColor="#FFFF00" halign="center" valign="top">
@@ -252,7 +252,7 @@
 		</widget-->
 		<!-- Remaining movie time -->
 		<widget source="session.CurrentService" render="Label" position="0,44" size="54,20" font="FdLcD;17" foregroundColor="#FFFF00" halign="left" valign="center">
-			  <convert type="ServicePosition">Remaining</convert>
+			<convert type="ServicePosition">Remaining</convert>
 		</widget>
 		<!-- Current time -->
 		<widget source="global.CurrentTime" render="Label" position="78,44" size="48,20" font="FdLcD;20" halign="right" valign="center">
@@ -264,10 +264,10 @@
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
 	</screen>
+
 	<screen name="MediaPlayerLCDScreen" position="0,0" size="128,64" >
 		<widget name="text1" position="4,0" size="128,35" font="Regular;16"/>
 		<widget name="text3" position="4,36" size="128,14" font="Regular;10"/>
 		<widget name="text4" position="4,49" size="128,14" font="Regular;10"/>
 	</screen>
-	
 </skin>
