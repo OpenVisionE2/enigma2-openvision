@@ -875,6 +875,22 @@ class ChannelSelectionEPG(InfoBarHotkey):
 			self.startRoot = None
 			self.revertMode = None
 
+	def showEPGList(self):
+		ref=self.getCurrentSelection()
+		if ref:
+			self.savedService = ref
+			self.session.openWithCallback(self.SingleServiceEPGClosed, EPGSelection, ref, serviceChangeCB=self.changeServiceCB)
+
+	def SingleServiceEPGClosed(self, ret=False):
+		if ret:
+			service = self.getCurrentSelection()
+			if service is not None:
+				self.saveChannel(service)
+				self.addToHistory(service)
+				self.close()
+		else:
+			self.setCurrentSelection(self.savedService)
+
 class ChannelSelectionEdit:
 	def __init__(self):
 		self.entry_marked = False
@@ -1754,7 +1770,7 @@ class ChannelSelectionBase(Screen):
 				self.numberSelectionActions(number)
 		else:
 			current_root = self.getRoot()
-			if  current_root and 'FROM BOUQUET "bouquets.' in current_root.getPath():
+			if	current_root and 'FROM BOUQUET "bouquets.' in current_root.getPath():
 				if hasattr(self, "editMode") and self.editMode:
 					if number == 2:
 						self.renameEntry()
@@ -1901,6 +1917,11 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 				"ok": self.channelSelected,
 				"keyRadio": self.doRadioButton,
 				"keyTV": self.doTVButton,
+			})
+
+		self["ChannelSelectEPGActions"] = ActionMap(["ChannelSelectEPGActions"],
+			{
+				"showEPGList": self.showEPGList,
 			})
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
