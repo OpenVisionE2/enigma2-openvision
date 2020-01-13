@@ -91,7 +91,6 @@
 			</widget>
 		</panel>
 	</screen>
-	
 	<screen name="MovieContextMenuSummary" position="2,0" size="128,64">
 		<widget source="parent.Title" render="Label" position="top" size="*,14" font="FdLcD;12" valign="top" noWrap="1" />
 		<widget source="selected" render="Label" position="top" size="*,32" font="FdLcD;16" />
@@ -101,7 +100,6 @@
 			</widget>
 		</panel>
 	</screen>
-
 	<screen name="MovieSelectionSummary" position="2,0" size="128,64">
 		<widget source="parent.Title" render="Label" position="top" size="*,14" font="FdLcD;12" valign="top" noWrap="1" />
 		<widget source="name" render="Label" position="top" size="*,32" font="FdLcD;16" valign="top" />
@@ -143,14 +141,12 @@
 		<widget source="parent.Title" render="Label" position="top" size="*,40" font="FdLcD;16" halign="center" valign="center" />
 		<panel position="bottom" size="*,24" name="SummaryClockPanel" />
 	</screen>
-
 	<screen name="WizardSummary" position="2,0" size="128,64">
 		<widget source="text" render="Label" position="top" size="*,16" font="FdLcD;16"/>
 		<widget source="parent.list" render="Label" position="fill" font="FdLcD;12">
 			<convert type="StringListSelection" />
 		</widget>
 	</screen>
-
 	<screen name="VideoWizardSummary" position="2,0" size="128,64">
 		<widget name="text" position="top" size="*,40" font="FdLcD;12" transparent="1" />
 		<widget source="parent.list" render="Label" position="fill" font="FdLcD;14">
@@ -196,16 +192,13 @@
 			<convert type="ProgressToText" />
 		</widget>
 	</screen>
-
 	<screen name="ChoiceBox_summary" position="2,0" size="128,64">
 		<widget source="parent.summary_list" render="Label" position="fill" font="FdLcD;11" />
 	</screen>
-
 	<screen name="MessageBox_summary" position="2,0" size="128,64">
 		<widget source="parent.Text" render="Label" position="top" size="*,52" font="FdLcD;11" halign="center" valign="center" />
 		<widget source="parent.selectedChoice" render="Label" position="bottom" size="*,14" font="FdLcD;14" halign="center" valign="center" />
 	</screen>
-
 	<screen name="MessageBoxSimple_summary" position="2,0" size="128,64">
 		<widget source="parent.Text" render="Label" position="top" size="*,52" font="FdLcD;11" halign="center" valign="center" />
 		<widget source="parent.selectedChoice" render="Label" position="bottom" size="*,14" font="FdLcD;14" halign="center" valign="center" />
@@ -232,11 +225,9 @@
 			</widget>
 		</panel>
 	</screen>
-
 	<screen name="EMCSelectionSummary" position="0,0" size="128,64">
 		<panel name="EMCSelection_summary" />
 	</screen>
-
 	<screen name="EMCMoviePlayerSummary" position="3,0" size="128,64">
 		<!-- Movie name -->
 		<widget source="session.CurrentService" render="Label" position="0,0" size="128,37" font="FdLcD;17" foregroundColor="#FFFF00" halign="center" valign="top">
@@ -264,7 +255,6 @@
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
 	</screen>
-
 	<screen name="MediaPlayerLCDScreen" position="0,0" size="128,64" >
 		<widget name="text1" position="4,0" size="128,35" font="Regular;16"/>
 		<widget name="text3" position="4,36" size="128,14" font="Regular;10"/>

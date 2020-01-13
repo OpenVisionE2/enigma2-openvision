@@ -124,7 +124,8 @@
 		<widget source="global.CurrentTime" render="Label" position="0,194" size="400,46" font="FdLcD;46" halign="left" transparent="1">
 			<convert type="ClockToText">Format:%H:%M</convert>
 		</widget>
-	</screen>	
+	</screen>
+
 <!-- channelselection-->
 	<screen name="ChannelSelection_summary" position="0,0" size="400,240">
 		<widget source="parent.ServiceEvent" render="Label" position="top" size="*,65" font="FdLcD;50" halign="center" foregroundColor="#FFFF00" >
@@ -213,12 +214,10 @@
 			<convert type="ProgressToText" />
 		</widget>
 	</screen>
-
 	<screen name="EventView_summary" position="0,0" size="400,240">
 		<widget source="parent.Title" render="Label" position="0,0" size="160,22" font="FdLcD;20" halign="left" noWrap="1" />
 		<widget source="parent.summary_description" render="Label" position="0,22" size="400,140" font="FdLcD;24" />
 	</screen>
-
 	<screen name="EventViewSimple_summary" position="0,0" size="400,240">
 		<widget source="parent.Title" render="Label" position="0,0" size="160,22" font="FdLcD;20" halign="left" noWrap="1" />
 		<widget source="parent.summary_description" render="Label" position="0,22" size="400,140" font="FdLcD;24" />
@@ -245,11 +244,9 @@
 		<panel name="SummaryIconsPanel" />
 		<panel name="SummaryTunerStatusPanel" />
 	</screen>
-
 	<screen name="ChoiceBox_summary" position="0,0" size="400,240">
 		<widget source="parent.summary_list" render="Label" position="0,0" size="400,240" font="FdLcD;18" noWrap="1" />
 	</screen>
-
 	<screen name="MessageBox_summary" position="0,0" size="400,240">
 		<widget source="parent.Text" render="Label" position="0,0" size="400,240" font="FdLcD;24" halign="center" />
 		<widget source="parent.selectedChoice" render="Label" position="0,135" size="400,28" font="FdLcD;26" halign="center" noWrap="1" />
@@ -258,11 +255,9 @@
 		<widget source="parent.Text" render="Label" position="0,0" size="400,240" font="FdLcD;24" halign="center" />
 		<widget source="parent.selectedChoice" render="Label" position="0,135" size="400,28" font="FdLcD;26" halign="center" noWrap="1" />
 	</screen>
-
 	<screen name="AboutSummary" position="0,0" size="400,240">
 		<widget source="parent.Title" render="Label" position="0,0" size="400,240" font="FdLcD;34" halign="center" valign="center" />
 	</screen>
-
 	<screen name="TimerEditListSummary" position="0,0" size="400,240">
 		<widget source="parent.Title" render="Label" position="0,0" size="400,26" font="FdLcD;24" halign="center" noWrap="1" />
 		<widget source="service" render="Label" position="0,40" size="400,30" font="FdLcD;28" halign="center" noWrap="1" />
@@ -271,13 +266,11 @@
 		<widget source="duration" render="Label" position="0,214" size="400,28" font="FdLcD;24" halign="left" transparent="1" />
 		<widget source="state" render="Label" position="0,214" size="400,28" font="FdLcD;24" halign="right" transparent="1" />
 	</screen>
-
 	<screen name="AutoTimerOverviewSummary" position="0,0" size="400,240">
 		<widget source="parent.Title" render="Label" position="0,0" size="400,26" font="FdLcD;24" halign="center" noWrap="1" />
 		<widget source="entry" render="Label" position="0,40" size="400,125" font="FdLcD;28" halign="center" valign="center" />
 		<panel name="SummaryClockPanel" />
 	</screen>
-
 	<screen name="WizardSummary" position="0,0" size="400,240">
 		<widget source="text" render="Label" position="0,0" size="400,55" font="FdLcD;24" halign="center" />
 		<widget source="parent.list" render="Label" position="0,85" size="400,124" font="FdLcD;24" halign="center" >
@@ -339,7 +332,7 @@
 		<widget source="parent.text_summary" render="Label" position="0,16" size="400,54" font="FdLcD;12" halign="left" transparent="1" />
 		<panel name="SummaryIconsPanel" />
 	</screen>
-	
+
 	<!-- LCD screen EMC -->
 	<screen name="EMCMoviePlayerSummary" position="0,0" size="400,240" >
 		<!-- Movie name -->		
