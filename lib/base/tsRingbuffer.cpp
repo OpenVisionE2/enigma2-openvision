@@ -46,7 +46,7 @@ void cRingBuffer::UpdatePercentage(int Fill)
 	int percent = Fill * 100 / (Size() - 1) / PERCENTAGEDELTA * PERCENTAGEDELTA; // clamp down to nearest quantum
 	if (percent != lastPercent) {
 
-	if (percent >= PERCENTAGETHRESHOLD && percent > lastPercent || percent < PERCENTAGETHRESHOLD && lastPercent >= PERCENTAGETHRESHOLD) {
+	if (((percent >= PERCENTAGETHRESHOLD) && (percent > lastPercent)) || ((percent < PERCENTAGETHRESHOLD) && (lastPercent >= PERCENTAGETHRESHOLD))) {
 		eLog(3, "[cRingBuffer] buffer usage: %d%%\n", percent);
 		lastPercent = percent;
     }
