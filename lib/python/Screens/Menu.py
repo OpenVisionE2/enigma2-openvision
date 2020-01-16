@@ -267,9 +267,9 @@ class Menu(Screen, ProtectedScreen):
 		# for the skin: first try a menu_<menuID>, then Menu
 		self.skinName = [ ]
 		if self.menuID is not None:
-			if config.usage.menutype.value == 'horzanim' and skin.dom_screens.has_key("Animmain"):
+			if config.usage.menutype.value == 'horzanim' and skin.domScreens.has_key("Animmain"):
 				self.skinName.append('Animmain')
-			elif config.usage.menutype.value == 'horzicon' and skin.dom_screens.has_key("Iconmain"):
+			elif config.usage.menutype.value == 'horzicon' and skin.domScreens.has_key("Iconmain"):
 				self.skinName.append('Iconmain')
 			else:
 				self.skinName.append('menu_' + self.menuID)
@@ -322,14 +322,14 @@ class Menu(Screen, ProtectedScreen):
 			t_history.thistory = str(title) + ' > '
 		else:
 			t_history.thistory = t_history.thistory + str(title) + ' > '
-		if config.usage.menutype.value == 'horzanim' and skin.dom_screens.has_key("Animmain"):
+		if config.usage.menutype.value == 'horzanim' and skin.domScreens.has_key("Animmain"):
 			self['label1'] = StaticText()
 			self['label2'] = StaticText()
 			self['label3'] = StaticText()
 			self['label4'] = StaticText()
 			self['label5'] = StaticText()
 			self.onShown.append(self.openTestA)
-		elif config.usage.menutype.value == 'horzicon' and skin.dom_screens.has_key("Iconmain"):
+		elif config.usage.menutype.value == 'horzicon' and skin.domScreens.has_key("Iconmain"):
 			self['label1'] = StaticText()
 			self['label2'] = StaticText()
 			self['label3'] = StaticText()
