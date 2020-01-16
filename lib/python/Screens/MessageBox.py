@@ -67,8 +67,6 @@ class MessageBox(Screen, HelpableScreen):
 				self["icon"].show()
 			elif self.type == self.TYPE_ERROR:
 				self["icon"].show()
-		if picon != self.TYPE_WARNING:
-			self["icon"].hide()
 		self.skinName = ["MessageBox"]
 		if simple:
 			self.skinName = ["MessageBoxSimple"]
