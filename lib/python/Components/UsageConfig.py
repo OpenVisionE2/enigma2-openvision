@@ -432,6 +432,8 @@ def InitUsageConfig():
 		setPreferredTuner(int(configElement.value))
 	config.usage.frontend_priority.addNotifier(PreferredTunerChanged)
 
+	config.skin.onlyicon = NoSave(ConfigBoolean(default=False))
+
 	try:
 		onlyIcon = skin.parameters.get("AllowUseOnlyIcon", (0))
 	except Exception as error:
