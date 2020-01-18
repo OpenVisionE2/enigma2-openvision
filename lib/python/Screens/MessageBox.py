@@ -56,17 +56,37 @@ class MessageBox(Screen, HelpableScreen):
 			}, prio=-1, description=_("MessageBox Functions"))
 		self.msgBoxID = msgBoxID
 		# These six lines can go with new skins that only use self["icon"]...
+		if config.skin.onlyicon.value == False:
+			self["QuestionPixmap"] = Pixmap()
+			self["QuestionPixmap"].hide()
+			self["InfoPixmap"] = Pixmap()
+			self["InfoPixmap"].hide()
+			self["ErrorPixmap"] = Pixmap()
+			self["ErrorPixmap"].hide()
+			self["WarningPixmap"] = Pixmap()
 		self["icon"] = MultiPixmap()
 		self["icon"].hide()
 		self.picon = picon
 		if picon:
 			# These five lines can go with new skins that only use self["icon"]...
-			if self.type == self.TYPE_YESNO:
+			if config.skin.onlyicon.value == False:
+				if self.type == self.TYPE_YESNO:
+					self["QuestionPixmap"].show()
+				elif self.type == self.TYPE_INFO:
+					self["InfoPixmap"].show()
+				elif self.type == self.TYPE_ERROR:
+					self["ErrorPixmap"].show()
 				self["icon"].show()
-			elif self.type == self.TYPE_INFO:
-				self["icon"].show()
-			elif self.type == self.TYPE_ERROR:
-				self["icon"].show()
+			if config.skin.onlyicon.value == True:
+				if self.type == self.TYPE_YESNO:
+					self["icon"].show()
+				elif self.type == self.TYPE_INFO:
+					self["icon"].show()
+				elif self.type == self.TYPE_ERROR:
+					self["icon"].show()
+		if config.skin.onlyicon.value == False:
+			if picon != self.TYPE_WARNING:
+				self["WarningPixmap"].hide()
 		self.skinName = ["MessageBox"]
 		if simple:
 			self.skinName = ["MessageBoxSimple"]

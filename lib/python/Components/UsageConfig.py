@@ -432,6 +432,16 @@ def InitUsageConfig():
 		setPreferredTuner(int(configElement.value))
 	config.usage.frontend_priority.addNotifier(PreferredTunerChanged)
 
+	try:
+		onlyIcon = skin.parameters.get("AllowUseOnlyIcon", (0))
+	except Exception as error:
+		print "[UsageConfig] Error loading 'AllowUseOnlyIcon' skin parameter! (%s)" % error
+		onlyIcon = (0)
+	if onlyIcon:
+		config.skin.onlyicon.value = True
+	else:
+		config.skin.onlyicon.value = False
+
 	config.usage.show_picon_in_display = ConfigYesNo(default = True)
 	config.usage.hide_zap_errors = ConfigYesNo(default = False)
 	config.usage.show_cryptoinfo = ConfigYesNo(default = True)
