@@ -201,10 +201,10 @@ class RunningText(Renderer):
 			self.txtext = self.txtext.replace("\xe0\x8a"," ").replace(chr(0x8A)," ").replace("\n"," ").replace("\r"," ")
 
 		self.scroll_label.setText(self.txtext)
-	
+
 		if self.txtext == "" or \
-		   self.type == NONE or \
-		   self.scroll_label is None:
+			self.type == NONE or \
+			self.scroll_label is None:
 			return False
 
 		if self.direction in (LEFT,RIGHT) or not (self.txtflags & RT_WRAP):

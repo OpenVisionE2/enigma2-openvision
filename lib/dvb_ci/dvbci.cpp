@@ -779,7 +779,7 @@ int eDVBCIInterfaces::CardStatusChangeNotifyCallback(int slotid, Trid_CI_CardSta
 {
 	eDebugCI("CardStatusChangeNotifyCallback. status %d.", status);
 	switch (status)
-	{				
+	{
 	case _TRID_CARD_REMOVE_:
 		CardStatus=0;
 		break;
@@ -1866,8 +1866,8 @@ int eDVBCISlot::send(const unsigned char *data, size_t len)
 void eDVBCISlot::cdata(int/*Trid_CI_CardStatus_t*/ status)
 {
 	switch (status)
-      {
-      case _TRID_CARD_REMOVE_:
+		{
+	case _TRID_CARD_REMOVE_:
 		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_REMOVE_ set ui state to 0.");
 		if(state != stateRemoved) {
 			state = stateRemoved;
@@ -1933,7 +1933,7 @@ void eDVBCISlot::cdata(int/*Trid_CI_CardStatus_t*/ status)
 	case _TRID_CARD_IO_ERROR_:
 		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_IO_ERROR_<nothing>");			 
 		break;
-      }	
+		}
 }
 
 void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
