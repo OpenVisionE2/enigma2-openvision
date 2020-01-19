@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Screens.ChoiceBox import ChoiceBox
 from Screens.MessageBox import MessageBox
 from Screens.ParentalControlSetup import ProtectedScreen
@@ -85,7 +86,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 		# try to fetch the trafficlight json from the website
 		try:
 			status = dict(json.load(urlopen(url, timeout=5)))
-			print "[SoftwareUpdate] status is: ", status
+			print("[SoftwareUpdate] status is: ", status)
 		except:
 			pass
 
@@ -123,7 +124,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 						message =  _("The current image might not be stable.\nFor more information see %s.") % ("openvision.tech")
 
 			except Exception, e:
-				print "[SoftwareUpdate] status error: ", str(e)
+				print("[SoftwareUpdate] status error: ", str(e))
 				message =  _("The current image might not be stable.\nFor more information see %s.") % ("openvision.tech")
 
 		# or display a generic warning if fetching failed
@@ -262,7 +263,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 			if 'enigma2-plugin-settings-' in param[0] and self.channellist_only > 0:
 				self.channellist_name = param[0]
 				self.channellist_only = 2
-		#print event, "-", param
+		#print(event, "-", param)
 		pass
 
 	def setEndMessage(self, txt):

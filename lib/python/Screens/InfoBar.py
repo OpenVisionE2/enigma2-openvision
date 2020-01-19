@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Tools.Profile import profile
 from enigma import eServiceReference, getBoxType, getBoxBrand
 from Tools.StbHardware import getBoxProc
@@ -186,8 +187,8 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		else:
 			zoomval = self.zoomrate
 
-		print '[InfoBar] zoomRate:', self.zoomrate
-		print '[InfoBar] zoomval:', zoomval
+		print('[InfoBar] zoomRate:', self.zoomrate)
+		print('[InfoBar] zoomval:', zoomval)
 		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
 			open("/proc/stb/vmpeg/0/zoomrate", "w").write(int(zoomval))
 
@@ -343,7 +344,7 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 							self.movielistAgain()
 						return
 					except Exception, e:
-						print "[InfoBar] Failed to move to .Trash folder:", e
+						print("[InfoBar] Failed to move to .Trash folder:", e)
 						msg = _("Cannot move to trash can") + "\n" + str(e) + "\n"
 				info = serviceHandler.info(ref)
 				name = info and info.getName(ref) or _("this recording")

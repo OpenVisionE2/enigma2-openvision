@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
@@ -320,7 +321,7 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 		HelpableScreen.__init__(self)
 		self.setTitle(_("Configure nameservers"))
 		self.backupNameserverList = iNetwork.getNameserverList()[:]
-		print "[NetworkSetup] backup-list:", self.backupNameserverList
+		print("[NetworkSetup] backup-list:", self.backupNameserverList)
 
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Add"))
@@ -378,7 +379,7 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 
 	def cancel(self):
 		iNetwork.clearNameservers()
-		print "[NetworkSetup] backup-list:", self.backupNameserverList
+		print("[NetworkSetup] backup-list:", self.backupNameserverList)
 		for nameserver in self.backupNameserverList:
 			iNetwork.addNameserver(nameserver)
 		self.close()
@@ -389,7 +390,7 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.createSetup()
 
 	def remove(self):
-		print "[NetworkSetup] currentIndex:", self["config"].getCurrentIndex()
+		print("[NetworkSetup] currentIndex:", self["config"].getCurrentIndex())
 		index = self["config"].getCurrentIndex()
 		if index < len(self.nameservers):
 			iNetwork.removeNameserver(self.nameservers[index])
@@ -433,7 +434,7 @@ class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
 
 	def getmac(self, iface):
 		mac = (0,0,0,0,0,0)
-		ifconfig = commands.getoutput("ifconfig " + iface + "| grep HWaddr | awk '{ print $5 }'").strip()
+		ifconfig = commands.getoutput("ifconfig " + iface + "| grep HWaddr | awk '{ print($5) }'").strip()
 		if len(ifconfig) == 0:
 			mac = "00:00:00:00:00:00"
 		else:
@@ -449,7 +450,7 @@ class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
 	def ok(self):
 		MAC = self.getConfigMac.value
 		open("/etc/enigma2/hwmac", "w").write(MAC)
-		route = commands.getoutput("route -n |grep UG | awk '{print $2}'")
+		route = commands.getoutput("route -n |grep UG | awk '{print($2) }'")
 		self.restartLan()
 
 	def run(self):
@@ -1095,7 +1096,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 				if error_no in (errno.EOPNOTSUPP, errno.ENODEV, errno.EPERM):
 					return False
 				else:
-					print "[NetworkSetup] error: ",error_no,error_str
+					print("[NetworkSetup] error: ",error_no,error_str)
 					return True
 			else:
 				return True
@@ -2223,13 +2224,13 @@ class NetworkOpenvpn(NSCommon,Screen):
 			os.makedirs('/etc/openvpn')
 		for file in os.listdir('/etc/openvpn'):
  			if fnmatch.fnmatch(file, '*.conf'):
- 				print file
+ 				print(file)
  				openvpnfile = '1'
 
  		if openvpnfile == '0':
  			self.message = self.session.open(MessageBox, _("No config to start, please check /etc/openvpn/ and try again."), type=MessageBox.TYPE_INFO, close_on_any_key=True)
  		else:
- 			print "[NetworkSetup] config in /etc/openvpn"
+ 			print("[NetworkSetup] config in /etc/openvpn")
 
 		time.sleep(3)
 		self.updateService()

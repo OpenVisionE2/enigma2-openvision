@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from Tools.Directories import fileExists
@@ -131,22 +132,22 @@ class YWeather(Poll, Converter, object):
 			response = urlopen(req)
 		except Exception, e:
 			if hasattr(e, 'code') and hasattr(e, 'reason'):
-				print "[YWeather] fetchXML Failed to retrieve XML file. Error: %s %s" % (str(e.code), str(e.reason))
+				print("[YWeather] fetchXML Failed to retrieve XML file. Error: %s %s" % (str(e.code), str(e.reason)))
 			else:
 				if hasattr(e, 'reason'):
-					print '[YWeather] fetchXML Failed to retrieve XML file. Error: ', str(e.reason)
+					print('[YWeather] fetchXML Failed to retrieve XML file. Error: ', str(e.reason))
 				else:
-					print '[YWeather] fetchXML Failed to retrieve XML file.'
+					print('[YWeather] fetchXML Failed to retrieve XML file.')
 			return
 
 		try:
 			with open(save_to, "w") as f:
 				f.write(response.read().replace("><", ">\n<"))
 				f.close
-			print '[YWeather] fetchXML XML file retrieved and saved.'
+			print('[YWeather] fetchXML XML file retrieved and saved.')
 			return True
 		except:
-			print '[YWeather] fetchXML XML file retrieved and but could not be saved.'
+			print('[YWeather] fetchXML XML file retrieved and but could not be saved.')
 			return
 
 	@cached
@@ -176,7 +177,7 @@ class YWeather(Poll, Converter, object):
 			return 'N/A'
 		wday = 1
 		for line in open(XML_location):
-			#print "[YWeather][gText] line:", line
+			#print("[YWeather][gText] line:", line)
 			if line.find("<yweather:location") > -1:
 				xweather['ycity'] = line.split('city')[1].split('"')[1]
 				xweather['ycountry'] = line.split('country')[1].split('"')[1]
@@ -222,7 +223,7 @@ class YWeather(Poll, Converter, object):
 					xweather['ytemplowday5'] = line.split('low')[1].split('"')[1]
 				wday = wday + 1
 
-		#print "[YWeather][gText] xweather:", xweather
+		#print("[YWeather][gText] xweather:", xweather)
 
 		if self.type == self.city:
 			info = xweather['ycity']
@@ -429,7 +430,7 @@ class YWeather(Poll, Converter, object):
 				info = "N/A"
 		elif self.type == self.date5:
 			info = xweather['ydate5']
-		#print "[YWeather][gText] info:", info
+		#print("[YWeather][gText] info:", info)
 		return info
 
 	text = property(getText)

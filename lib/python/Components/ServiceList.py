@@ -1,3 +1,4 @@
+from __future__ import print_function
 from GUIComponent import GUIComponent
 from skin import parseColor, parseFont
 
@@ -149,7 +150,7 @@ class ServiceList(GUIComponent):
 			return None
 		from Components.ServiceEventTracker import InfoBarCount
 		if adjust and config.usage.multibouquet.value and InfoBarCount == 1 and ref and ref.type != 8192:
-			print "[ServiceList] search for service in user bouquets"
+			print("[ServiceList] search for service in user bouquets")
 			if self.serviceList:
 				revert_mode = config.servicelist.lastmode.value
 				revert_root = self.getRoot()
@@ -173,7 +174,7 @@ class ServiceList(GUIComponent):
 						self.serviceList.saveChannel(ref)
 						return True
 				self.serviceList.enterUserbouquet(revert_radio_root)
-				print "[ServiceList] service not found in any user bouquets"
+				print("[ServiceList] service not found in any user bouquets")
 				if revert_mode == "tv":
 					self.serviceList.setModeTv()
 				elif revert_mode == "radio":
@@ -210,7 +211,7 @@ class ServiceList(GUIComponent):
 
 	def moveToChar(self, char):
 		# TODO fill with life
-		print "[ServiceList] Next char: "
+		print("[ServiceList] Next char: ")
 		index = self.l.getNextBeginningWithChar(char)
 		indexup = self.l.getNextBeginningWithChar(char.upper())
 		if indexup != 0:
@@ -218,7 +219,7 @@ class ServiceList(GUIComponent):
 				index = indexup
 
 		self.instance.moveSelectionTo(index)
-		print "[ServiceList] Moving to character " + str(char)
+		print("[ServiceList] Moving to character " + str(char))
 
 	def moveToNextMarker(self):
 		idx = self.l.getNextMarkerPos()

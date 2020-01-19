@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from Plugins.Plugin import PluginDescriptor
 from Components.Harddisk import harddiskmanager
 from twisted.internet.protocol import Protocol, Factory
@@ -16,7 +17,7 @@ def AudiocdAdded():
 		return False
 
 def processHotplugData(self, v):
-	print "[Hotplug]:", v
+	print("[Hotplug]:", v)
 	action = v.get("ACTION")
 	device = v.get("DEVPATH")
 	physdevpath = v.get("PHYSDEVPATH")
@@ -33,7 +34,7 @@ def processHotplugData(self, v):
 		audiocd = True
 		media_state = "audiocd"
 		error, blacklisted, removable, is_cdrom, partitions, medium_found = harddiskmanager.addHotplugAudiocd(dev, physdevpath)
-		print "[Hotplug] AUDIO CD ADD"
+		print("[Hotplug] AUDIO CD ADD")
 	elif action == "audiocdremove":
 		audiocd = False
 		file = []
@@ -51,7 +52,7 @@ def processHotplugData(self, v):
 				except OSError:
 					pass
 		harddiskmanager.removeHotplugPartition(dev)
-		print "[Hotplug] REMOVING AUDIOCD"
+		print("[Hotplug] REMOVING AUDIOCD")
 	elif media_state is not None:
 		if media_state == '1':
 			harddiskmanager.removeHotplugPartition(dev)
@@ -67,15 +68,15 @@ def processHotplugData(self, v):
 
 class Hotplug(Protocol):
 	def connectionMade(self):
-		print "[Hotplug] connection!"
+		print("[Hotplug] connection!")
 		self.received = ""
 
 	def dataReceived(self, data):
 		self.received += data
-		print "[Hotplug] complete", self.received
+		print("[Hotplug] complete", self.received)
 
 	def connectionLost(self, reason):
-		print "[Hotplug] connection lost!"
+		print("[Hotplug] connection lost!")
 		data = self.received.split('\0')[:-1]
 		v = {}
 		for x in data:

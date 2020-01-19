@@ -1,3 +1,4 @@
+from __future__ import print_function
 from GUIComponent import GUIComponent
 
 from enigma import eEPGCache, eListbox, eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, RT_VALIGN_CENTER
@@ -147,7 +148,7 @@ class EPGList(GUIComponent):
 #				try:
 #					x()
 #				except: # FIXME!!!
-#					print "FIXME in EPGList.selectionChanged"
+#					print("FIXME in EPGList.selectionChanged")
 #					pass
 
 	GUI_WIDGET = eListbox
@@ -322,7 +323,7 @@ class EPGList(GUIComponent):
 		test.insert(0, 'X0RIBDTCn')
 		self.list = self.queryEPG(test)
 		self.l.setList(self.list)
-		#print time() - t
+		#print(time() - t)
 		self.selectionChanged()
 
 	def updateMultiEPG(self, direction):
@@ -338,7 +339,7 @@ class EPGList(GUIComponent):
 					self.list[cnt]=(changecount, x[0], x[1], x[2], x[3], x[4], x[5], x[6])
 			cnt+=1
 		self.l.setList(self.list)
-		#print time() - t
+		#print(time() - t)
 		self.selectionChanged()
 
 	def fillSingleEPG(self, service):
@@ -403,11 +404,11 @@ class EPGList(GUIComponent):
 			l.sort(key=lambda x: x[2])
 		self.l.setList(l)
 		self.selectionChanged()
-		print time() - t
+		print(time() - t)
 
 	def applySkin(self, desktop, parent):
 		def warningWrongSkinParameter(string):
-			print "[EpgList] wrong '%s' skin parameters" % string
+			print("[EpgList] wrong '%s' skin parameters" % string)
 		def setEventItemFont(value):
 			self.eventItemFont = parseFont(value, ((1,1),(1,1)))
 		def setEventTimeFont(value):

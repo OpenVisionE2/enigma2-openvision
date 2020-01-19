@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 InfoBarCount = 0
 
 class InfoBarBase:
@@ -87,7 +89,7 @@ class ServiceEventTracker:
 		assert infobar not in set.InfoBarStack, "FATAL: Infobar '" + str(infobar) + "' is already active!"
 		set.InfoBarStack.append(infobar)
 		set.InfoBarStackSize += 1
-#		print "ServiceEventTracker set active '" + str(infobar) + "'"
+#		print("ServiceEventTracker set active '" + str(infobar) + "'")
 
 	@staticmethod
 	def popActiveInfoBar():
@@ -101,7 +103,7 @@ class ServiceEventTracker:
 			set.oldServiceStr = old_service and old_service.getPtrString()
 			set.oldRef = nav.getCurrentlyPlayingServiceOrGroup()
 #			if set.InfoBarStackSize:
-#				print "ServiceEventTracker reset active '" + str(stack[set.InfoBarStackSize-1]) + "'"
+#				print("ServiceEventTracker reset active '" + str(stack[set.InfoBarStackSize-1]) + "'")
 
 	def __init__(self, screen, eventmap):
 		self.__screen = screen

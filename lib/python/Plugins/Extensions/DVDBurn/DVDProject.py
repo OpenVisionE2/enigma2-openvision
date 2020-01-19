@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Tools.Directories import fileExists
 from Components.config import config, ConfigSubsection, ConfigInteger, ConfigText, ConfigSelection, ConfigSequence, ConfigSubList
 import DVDTitle
@@ -116,7 +117,7 @@ class DVDProject:
 			file.close()
 			projectfiledom = xml.dom.minidom.parseString(data)
 			for node in projectfiledom.childNodes[0].childNodes:
-				print "[DVDBurn] node:", node
+				print("[DVDBurn] node:", node)
 				if node.nodeType == xml.dom.minidom.Element.nodeType:
 					if node.tagName == 'settings':
 						self.xmlAttributesToConfig(node, self.settings)
@@ -136,7 +137,7 @@ class DVDProject:
 							continue
 					self.error += "\n%s '%s' not found" % (key, val)
 		#except AttributeError:
-			#print "loadProject AttributeError", self.error
+			#print("loadProject AttributeError", self.error)
 			#self.error += (" in project '%s'") % (filename)
 			#return False
 			return True
@@ -155,11 +156,11 @@ class DVDProject:
 				except (NameError, SyntaxError):
 					val = item.nodeValue.encode("utf-8")
 				try:
-					print "[DVDBurn] config[%s].setValue(%s)" % (key, val)
+					print("[DVDBurn] config[%s].setValue(%s)" % (key, val))
 					config.dict()[key].setValue(val)
 				except (KeyError):
 					self.error = "unknown attribute '%s'" % (key)
-					print "[DVDBurn] KeyError", self.error
+					print("[DVDBurn] KeyError", self.error)
 					raise AttributeError
 				i += 1
 		except AttributeError:
@@ -167,10 +168,10 @@ class DVDProject:
 			return False
 
 	def xmlGetTitleNodeRecursive(self, node, title_idx = -1):
-		print "[DVDBurn] xmlGetTitleNodeRecursive", title_idx, node
-		print node.childNodes
+		print("[DVDBurn] xmlGetTitleNodeRecursive", title_idx, node)
+		print(node.childNodes)
 		for subnode in node.childNodes:
-			print "[DVDBurn] xmlGetTitleNodeRecursive subnode:", subnode
+			print("[DVDBurn] xmlGetTitleNodeRecursive subnode:", subnode)
 			if subnode.nodeType == xml.dom.minidom.Element.nodeType:
 				if subnode.tagName == 'title':
 					title_idx += 1
@@ -178,7 +179,7 @@ class DVDProject:
 					self.titles.append(title)
 					self.xmlGetTitleNodeRecursive(subnode, title_idx)
 				if subnode.tagName == 'path':
-					print "[DVDBurn] path:", subnode.firstChild.data
+					print("[DVDBurn] path:", subnode.firstChild.data)
 					filename = subnode.firstChild.data
 					self.titles[title_idx].addFile(filename.encode("utf-8"))
 				if subnode.tagName == 'properties':
@@ -186,7 +187,7 @@ class DVDProject:
 				if subnode.tagName == 'audiotracks':
 					self.xmlGetTitleNodeRecursive(subnode, title_idx)
 				if subnode.tagName == 'audiotrack':
-					print "[DVDBurn] audiotrack...", subnode.toxml()
+					print("[DVDBurn] audiotrack...", subnode.toxml())
 
 	def getSize(self):
 		totalsize = 0

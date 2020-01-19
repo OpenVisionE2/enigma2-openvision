@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Components.Converter.Converter import Converter
 from enigma import iServiceInformation, eTimer
 from Components.Element import cached
@@ -77,7 +78,7 @@ class Audio(Converter, object):
 				if (levelIndex is not -1):
 					expertString = (((expertString + " ") + "L:") + fileString[(levelIndex + 4)])
 		except:
-			print "[Audio] Infobar"
+			print("[Audio] Infobar")
 		return expertString
 
 	def isGParameter(self, boxId, caId):

@@ -1,3 +1,4 @@
+from __future__ import print_function
 from enigma import eTimer
 from config import config, ConfigSelection, ConfigSubsection
 from os import environ, unlink, symlink, walk, path
@@ -61,7 +62,7 @@ class Timezones:
 			self.timer.stop()
 		if self.query not in self.timer.callback:
 			self.timer.callback.append(self.query)
-		print "[Timezones] AutoTimer poll will be run in", self.at_poll_delay, "minutes"
+		print("[Timezones] AutoTimer poll will be run in", self.at_poll_delay, "minutes")
 		self.timer.startLongTimer(self.at_poll_delay * 60)
 
 	def stopATupdate(self):
@@ -71,14 +72,14 @@ class Timezones:
 		self.timer.stop()
 
 	def query(self):
-		print "[Timezones] AutoTimer poll running"
+		print("[Timezones] AutoTimer poll running")
 		self.stopATupdate()
 		try:
 			from Plugins.Extensions.AutoTimer.plugin import autotimer, autopoller
 			self.autopoller = autopoller
 			self.autotimer = autotimer
 			if autotimer is not None:
-				print "[Timezones] AutoTimer parseEPG"
+				print("[Timezones] AutoTimer parseEPG")
 				autotimer.parseEPG(autoPoll=True)
 			if autopoller is not None:
 				autopoller.start()
@@ -137,7 +138,7 @@ class Timezones:
 			try:
 				area = config.timezone.area.getValue()
 			except:
-				print "[Timezones] getTimezoneDefault, no area found, using Europe"
+				print("[Timezones] getTimezoneDefault, no area found, using Europe")
 				area = "Europe"
 		if choices == None:
 			choices = self.getTimezoneList(area=area)
@@ -155,7 +156,7 @@ class Timezones:
 			self.autopoller = autopoller
 			self.autotimer = autotimer
 			if config.plugins.autotimer.autopoll.value:
-				print "[Timezones] trying to stop main AutoTimer poller"
+				print("[Timezones] trying to stop main AutoTimer poller")
 				if autopoller is not None:
 					autopoller.stop()
 				self.ATupdate = True
@@ -169,11 +170,11 @@ class Timezones:
 
 		tzneed = "%s/%s" % (Timezones.tzbase, fulltz)
 		if not path.isfile(tzneed):
-			print "[Timezones] Attempt to set timezone", fulltz, "ignored. UTC used"
+			print("[Timezones] Attempt to set timezone", fulltz, "ignored. UTC used")
 			fulltz = "UTC"
 			tzneed = "%s/%s" % (Timezones.tzbase, fulltz)
 
-		print "[Timezones] setting timezone to", fulltz
+		print("[Timezones] setting timezone to", fulltz)
 		environ['TZ'] = fulltz
 		try:
 			unlink("/etc/localtime")

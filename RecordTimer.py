@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 from enigma import eEPGCache, getBestPlayableServiceReference, eStreamServer, eServiceReference, iRecordableService, quitMainloop, eActionMap, setPreferredTuner, getBoxType
 
@@ -64,13 +65,13 @@ def findSafeRecordPath(dirname):
 	dirname = os.path.realpath(dirname)
 	mountpoint = Harddisk.findMountPoint(dirname)
 	if mountpoint in ('/', '/media'):
-		print '[RecordTimer] media is not mounted:', dirname
+		print('[RecordTimer] media is not mounted:', dirname)
 		return None
 	if not os.path.isdir(dirname):
 		try:
 			os.makedirs(dirname)
 		except Exception, ex:
-			print '[RecordTimer] Failed to create dir "%s":' % dirname, ex
+			print('[RecordTimer] Failed to create dir "%s":' % dirname, ex)
 			return None
 	return dirname
 
@@ -182,23 +183,23 @@ class RecordTimerEntry(timer.TimerEntry, object):
 	@staticmethod
 	def staticGotRecordEvent(recservice, event):
 		if event == iRecordableService.evEnd:
-			print "RecordTimer.staticGotRecordEvent(iRecordableService.evEnd)"
+			print("RecordTimer.staticGotRecordEvent(iRecordableService.evEnd)")
 			if not checkForRecordings():
-				print "[RecordTimer] No recordings busy of sceduled within 6 minutes so shutdown"
+				print("[RecordTimer] No recordings busy of sceduled within 6 minutes so shutdown")
 				RecordTimerEntry.shutdown() # immediate shutdown
 		elif event == iRecordableService.evStart:
-			print "RecordTimer.staticGotRecordEvent(iRecordableService.evStart)"
+			print("RecordTimer.staticGotRecordEvent(iRecordableService.evStart)")
 
 	@staticmethod
 	def stopTryQuitMainloop():
-		print "RecordTimer.stopTryQuitMainloop"
+		print("RecordTimer.stopTryQuitMainloop")
 		NavigationInstance.instance.record_event.remove(RecordTimerEntry.staticGotRecordEvent)
 		RecordTimerEntry.receiveRecordEvents = False
 
 	@staticmethod
 	def TryQuitMainloop():
 		if not RecordTimerEntry.receiveRecordEvents and Screens.Standby.inStandby:
-			print "RecordTimer.TryQuitMainloop"
+			print("RecordTimer.TryQuitMainloop")
 			NavigationInstance.instance.record_event.append(RecordTimerEntry.staticGotRecordEvent)
 			RecordTimerEntry.receiveRecordEvents = True
 			# send fake event.. to check if another recordings are running or
@@ -283,7 +284,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 
 	def log(self, code, msg):
 		self.log_entries.append((int(time()), code, msg))
-		print "[RecordTimer]", msg
+		print("[RecordTimer]", msg)
 
 	def calculateFilename(self, name=None):
 		service_name = self.service_ref.getServiceName()
@@ -396,7 +397,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 		if SystemInfo["HasHDMI-CEC"] and config.hdmicec.enabled.value and config.hdmicec.sourceactive_zaptimers.value:
 			import Components.HdmiCec
 			Components.HdmiCec.hdmi_cec.sendMessage(0, "sourceactive")
-			print "[RecordTimer] sourceactive was send"
+			print("[RecordTimer] sourceactive was send")
 
 	def activate(self):
 		next_state = self.state + 1
@@ -442,8 +443,8 @@ class RecordTimerEntry(timer.TimerEntry, object):
 					try:
 						Trashcan.instance.cleanIfIdle(self.Filename)
 					except Exception, e:
-						 print "[RecordTimer] Failed to call Trashcan.instance.cleanIfIdle()"
-						 print "[RecordTimer] Error:", e
+						 print("[RecordTimer] Failed to call Trashcan.instance.cleanIfIdle()")
+						 print("[RecordTimer] Error:", e)
 				# fine. it worked, resources are allocated.
 				self.next_activation = self.begin
 				self.backoff = 0
@@ -726,7 +727,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 			return
 		self.log(16, "record event %d" % event)
 		if event == iRecordableService.evRecordWriteError:
-			print "[RecordTimer] Write error on recording, disk full?"
+			print("[RecordTimer] Write error on recording, disk full?")
 			# show notification. the 'id' will make sure that it will be
 			# displayed only once, even if more timers are failing at the
 			# same time. (which is very likely in case of disk fullness)
@@ -753,13 +754,13 @@ class RecordTimerEntry(timer.TimerEntry, object):
 	# we have record_service as property to automatically subscribe to record service events
 	def setRecordService(self, service):
 		if self.__record_service is not None:
-			print "[RecordTimer] remove callback"
+			print("[RecordTimer] remove callback")
 			NavigationInstance.instance.record_event.remove(self.gotRecordEvent)
 
 		self.__record_service = service
 
 		if self.__record_service is not None:
-			print "[RecordTimer] add callback"
+			print("[RecordTimer] add callback")
 			NavigationInstance.instance.record_event.append(self.gotRecordEvent)
 
 	record_service = property(lambda self: self.__record_service, setRecordService)
@@ -828,7 +829,7 @@ class RecordTimer(timer.Timer):
 		try:
 			self.loadTimer()
 		except IOError:
-			print "[RecordTimer] unable to load timers from file!"
+			print("[RecordTimer] unable to load timers from file!")
 
 	def doActivate(self, w):
 		# when activating a timer which has already passed,
@@ -891,14 +892,14 @@ class RecordTimer(timer.Timer):
 
 			AddPopup(_("The timer file (timers.xml) is corrupt and could not be loaded."), type = MessageBox.TYPE_ERROR, timeout = 0, id = "TimerLoadFailed")
 
-			print "[RecordTimer] timers.xml failed to load!"
+			print("[RecordTimer] timers.xml failed to load!")
 			try:
 				os.rename(self.Filename, self.Filename + "_old")
 			except (IOError, OSError):
-				print "[RecordTimer] renaming broken timer failed"
+				print("[RecordTimer] renaming broken timer failed")
 			return
 		except IOError:
-			print "[RecordTimer] timers.xml not found!"
+			print("[RecordTimer] timers.xml not found!")
 			return
 
 		root = doc.getroot()
@@ -1084,11 +1085,11 @@ class RecordTimer(timer.Timer):
 		answer = None
 		if not timersanitycheck.check():
 			if not ignoreTSC:
-				print "[RecordTimer] timer conflict detected!"
-				print timersanitycheck.getSimulTimerList()
+				print("[RecordTimer] timer conflict detected!")
+				print(timersanitycheck.getSimulTimerList())
 				return timersanitycheck.getSimulTimerList()
 			else:
-				print "[RecordTimer] ignore timer conflict..."
+				print("[RecordTimer] ignore timer conflict...")
 				if not dosave and loadtimer:
 					simulTimerList = timersanitycheck.getSimulTimerList()
 					if entry in simulTimerList:
@@ -1097,14 +1098,14 @@ class RecordTimer(timer.Timer):
 							check_timer_list.remove(entry)
 					answer = simulTimerList
 		elif timersanitycheck.doubleCheck():
-			print "[RecordTimer] ignore double timer..."
+			print("[RecordTimer] ignore double timer...")
 			return None
 		elif not loadtimer and not entry.disabled and not entry.justplay and entry.state == 0 and not (entry.service_ref and '%3a//' in entry.service_ref.ref.toString()):
 			for x in check_timer_list:
 				if x.begin == entry.begin and not x.disabled and not x.justplay and not (x.service_ref and '%3a//' in x.service_ref.ref.toString()):
 					entry.begin += 1
 		entry.timeChanged()
-		print "[RecordTimer] Record " + str(entry)
+		print("[RecordTimer] Record " + str(entry))
 		entry.Timer = self
 		self.addTimerEntry(entry)
 		if dosave:
@@ -1364,7 +1365,7 @@ class RecordTimer(timer.Timer):
 		return returnValue
 
 	def removeEntry(self, entry):
-		print "[RecordTimer] Remove " + str(entry)
+		print("[RecordTimer] Remove " + str(entry))
 
 		# avoid re-enqueuing
 		entry.repeated = False
@@ -1377,9 +1378,9 @@ class RecordTimer(timer.Timer):
 		if entry.state != entry.StateEnded:
 			self.timeChanged(entry)
 
-		print "[RecordTimer] state: ", entry.state
-		print "[RecordTimer] in processed: ", entry in self.processed_timers
-		print "[RecordTimer] in running: ", entry in self.timer_list
+		print("[RecordTimer] state: ", entry.state)
+		print("[RecordTimer] in processed: ", entry in self.processed_timers)
+		print("[RecordTimer] in running: ", entry in self.timer_list)
 		# autoincrease instanttimer if possible
 		if not entry.dontSave:
 			for x in self.timer_list:

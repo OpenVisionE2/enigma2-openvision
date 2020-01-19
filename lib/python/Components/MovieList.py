@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import struct
 import random
@@ -128,7 +129,7 @@ def resetMoviePlayState(cutsFileName, ref=None):
 	except:
 		pass
 		#import sys
-		#print "Exception in resetMoviePlayState: %s: %s" % sys.exc_info()[:2]
+		#print("Exception in resetMoviePlayState: %s: %s" % sys.exc_info()[:2])
 
 
 class MovieList(GUIComponent):
@@ -275,7 +276,7 @@ class MovieList(GUIComponent):
 
 	def applySkin(self, desktop, parent):
 		def warningWrongSkinParameter(string):
-			print "[MovieList] wrong '%s' skin parameters" % string
+			print("[MovieList] wrong '%s' skin parameters" % string)
 		def font(value):
 			font = skin.parseFont(value, ((1,1),(1,1)))
 			self.fontName = font.family
@@ -597,7 +598,7 @@ class MovieList(GUIComponent):
 
 		reflist = root and serviceHandler.list(root)
 		if reflist is None:
-			print "[MovieList] listing of movies failed"
+			print("[MovieList] listing of movies failed")
 			return
 		realtags = set()
 		autotags = {}
@@ -681,7 +682,7 @@ class MovieList(GUIComponent):
 				this_tags_fullname = set(this_tags_fullname)
 				this_tags = set(this_tags)
 				if not this_tags.issuperset(filter_tags) and not this_tags_fullname.issuperset(filter_tags):
-#					print "Skipping", name, "tags=", this_tags, " filter=", filter_tags
+#					print("Skipping", name, "tags=", this_tags, " filter=", filter_tags)
 					continue
 			if begin2 != 0:
 				self.list.append((serviceref, info, begin, -1, begin2))
@@ -845,7 +846,7 @@ class MovieList(GUIComponent):
 				# if path ends in '/', p is blank.
 				p = os.path.split(p[0])
 			name = p[1]
-		# print "Sorting for -%s-" % name
+		# print("Sorting for -%s-" % name)
 
 		return (1, name and name.lower() or "", -x[2])
 

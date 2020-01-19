@@ -5,6 +5,7 @@
 # It will read the servicenames from the lamedb and create symlinks
 # for the servicereference names.
 
+from __future__ import print_function
 import os, sys
 
 f = open(sys.argv[1]).readlines()
@@ -39,5 +40,5 @@ while len(f):
 	if os.access(filename, os.F_OK) and not os.access(linkname, os.F_OK):
 		os.symlink(filename, linkname)
 	else:
-		print "[create_picon_links] could not find %s (%s)" % (filename, name)
+		print("[create_picon_links] could not find %s (%s)" % (filename, name))
 	f =f[3:]

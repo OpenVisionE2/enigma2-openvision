@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Screens.Screen import Screen
 from Screens.LocationBox import MovieLocationBox, TimeshiftLocationBox
 from Screens.MessageBox import MessageBox
@@ -38,7 +39,7 @@ class RecordPathsSettings(Screen,ConfigListScreen):
 
 	def checkReadWriteDir(self, configele):
 		value = configele.value
-		print "[RecordPaths] checkReadWrite: ", value
+		print("[RecordPaths] checkReadWrite: ", value)
 		if not value or value in [x[0] for x in self.styles] or fileExists(value, "w"):
 			configele.last_value = value
 			return True
@@ -59,28 +60,28 @@ class RecordPathsSettings(Screen,ConfigListScreen):
 		if default and default not in tmp:
 			tmp = tmp[:]
 			tmp.append(default)
-		print "[RecordPaths] DefaultPath: ", default, tmp
+		print("[RecordPaths] DefaultPath: ", default, tmp)
 		self.default_dirname = ConfigSelection(default = default, choices = [("", _("<Default movie location>"))] + tmp)
 		tmp = config.movielist.videodirs.value
 		default = config.usage.timer_path.value
 		if default not in tmp and default not in styles_keys:
 			tmp = tmp[:]
 			tmp.append(default)
-		print "[RecordPaths] TimerPath: ", default, tmp
+		print("[RecordPaths] TimerPath: ", default, tmp)
 		self.timer_dirname = ConfigSelection(default = default, choices = self.styles+tmp)
 		tmp = config.movielist.videodirs.value
 		default = config.usage.instantrec_path.value
 		if default not in tmp and default not in styles_keys:
 			tmp = tmp[:]
 			tmp.append(default)
-		print "[RecordPaths] InstantrecPath: ", default, tmp
+		print("[RecordPaths] InstantrecPath: ", default, tmp)
 		self.instantrec_dirname = ConfigSelection(default = default, choices = self.styles+tmp)
 		default = config.usage.timeshift_path.value
 		tmp = config.usage.allowed_timeshift_paths.value
 		if default not in tmp:
 			tmp = tmp[:]
 			tmp.append(default)
-		print "[RecordPaths] TimeshiftPath: ", default, tmp
+		print("[RecordPaths] TimeshiftPath: ", default, tmp)
 		self.timeshift_dirname = ConfigSelection(default = default, choices = tmp)
 		self.default_dirname.addNotifier(self.checkReadWriteDir, initial_call=False, immediate_feedback=False)
 		self.timer_dirname.addNotifier(self.checkReadWriteDir, initial_call=False, immediate_feedback=False)

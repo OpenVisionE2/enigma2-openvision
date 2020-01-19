@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 from time import time, localtime
 
@@ -32,7 +33,7 @@ QUIT_WOL = 45
 
 class Standby(Screen):
 	def Power(self):
-		print "[Standby] leave standby"
+		print("[Standby] leave standby")
 		SystemInfo["StandbyState"] = False
 		self.close(True)
 
@@ -68,7 +69,7 @@ class Standby(Screen):
 		Screen.__init__(self, session)
 		self.avswitch = AVSwitch()
 
-		print "[Standby] enter standby"
+		print("[Standby] enter standby")
 		SystemInfo["StandbyState"] = True
 
 		if os.path.exists("/usr/script/standby_enter.sh"):
@@ -353,7 +354,7 @@ class TryQuitMainloop(MessageBox):
 				config.misc.RestartUI.value = True
 				config.misc.RestartUI.save()
 			if SystemInfo["Display"] and SystemInfo["LCDMiniTV"]:
-				print "[Standby] LCDminiTV off"
+				print("[Standby] LCDminiTV off")
 				try:
 					open("/proc/stb/lcd/mode", "w").write(0)
 				except:

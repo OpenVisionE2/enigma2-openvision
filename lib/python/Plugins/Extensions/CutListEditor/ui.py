@@ -1,3 +1,4 @@
+from __future__ import print_function
 import bisect
 from time import sleep
 from struct import unpack, Struct
@@ -424,12 +425,12 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 		if not self.inhibit_seek:
 			where = self["cutlist"].getCurrent()
 			if where is None:
-				print "[CutListEditor] no selection"
+				print("[CutListEditor] no selection")
 				return
 			pts = where[0][0]
 			seek = self.getSeek()
 			if seek is None:
-				print "[CutListEditor] no seek"
+				print("[CutListEditor] no seek")
 				return
 			# EOF may not be seekable, so go back a bit (2 seems sufficient) and then
 			# forward to the next access point (which will flicker if EOF is
@@ -448,7 +449,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 				seek.seekTo(pts)
 
 	def refillList(self):
-		print "[CutListEditor] cue sheet changed, refilling"
+		print("[CutListEditor] cue sheet changed, refilling")
 		self.getCuesheet()
 
 		# select the first changed entry from the end (not counting EOF)

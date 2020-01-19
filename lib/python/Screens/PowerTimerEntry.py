@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Screens.Screen import Screen
 from Components.config import ConfigSelection, ConfigSubList, ConfigDateTime, ConfigClock, ConfigYesNo, ConfigInteger, getConfigListEntry
 from Components.ActionMap import NumberActionMap
@@ -81,7 +82,7 @@ class TimerEntry(Screen, ConfigListScreen):
 				count = 0
 				for x in (0, 1, 2, 3, 4, 5, 6):
 					if flags == 1:
-						print "[PowerTimerEntry] Set to weekday " + str(x)
+						print("[PowerTimerEntry] Set to weekday " + str(x))
 						weekday = x
 					if flags & 1 == 1:
 						day[x] = 1

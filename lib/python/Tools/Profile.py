@@ -1,4 +1,5 @@
 # the implementation here is a bit crappy.
+from __future__ import print_function
 import time
 from Directories import resolveFilename, SCOPE_CONFIG
 from enigma import getBoxType
@@ -22,12 +23,12 @@ try:
 		total_time = t
 		profile_data[id] = t
 except:
-	print "[Profile] no profile data available"
+	print("[Profile] no profile data available")
 
 try:
 	profile_file = open(resolveFilename(SCOPE_CONFIG, "profile"), "w")
 except IOError:
-	print "[Profile] WARNING: couldn't open profile file!"
+	print("[Profile] WARNING: couldn't open profile file!")
 
 def profile(id):
 	now = time.time() - profile_start

@@ -1,3 +1,4 @@
+from __future__ import print_function
 import threading, urllib2, os, shutil
 from json import loads
 from enigma import eDVBDB, eEPGCache
@@ -33,13 +34,13 @@ class ImportChannels():
 	def threaded_function(self):
 		if "epg" in config.usage.remote_fallback_import.value:
 			config.misc.epgcache_filename = ConfigText(default="/epg.dat")
-			print "[ImportChannels] Writing epg.dat file on sever box"
+			print("[ImportChannels] Writing epg.dat file on sever box")
 			try:
 				self.getUrl("%s/web/saveepg" % self.url, timeout=30).read()
 			except:
 				self.ImportChannelsDone(False, _("Error when writing epg.dat on server"))
 				return
-			print "[ImportChannels] Get EPG Location"
+			print("[ImportChannels] Get EPG Location")
 			try:
 				epgdatfile = [x for x in self.getUrl("%s/file?file=/etc/enigma2/settings" % self.url).readlines() if x.startswith('config.misc.epgcache_filename=')]
 				epgdatfile = epgdatfile and epgdatfile[0].split('=')[1].strip() or "/hdd/epg.dat"
@@ -52,7 +53,7 @@ class ImportChannels():
 				self.ImportChannelsDone(False, _("Error while retreiving location of epg.dat on server"))
 				return
 			if epg_location:
-				print "[ImportChannels] Copy EPG file..."
+				print("[ImportChannels] Copy EPG file...")
 				try:
 					open(config.misc.epgcache_filename.value, "wb").write(self.getUrl("%s/file?file=%s" % (self.url, epg_location)).read())
 				except:
@@ -64,12 +65,12 @@ class ImportChannels():
 				os.mkdir("/tmp/tmp")
 			except:
 				pass
-			print "[ImportChannels] reading dir"
+			print("[ImportChannels] reading dir")
 			try:
 				files = [file for file in loads(self.getUrl("%s/file?dir=/etc/enigma2" % self.url).read())["files"] if os.path.basename(file).startswith(settingfiles)]
 				for file in files:
 					file = file.encode("UTF-8")
-					print "[ImportChannels] Downloading %s" % file
+					print("[ImportChannels] Downloading %s" % file)
 					destination = "/tmp/tmp"
 					try:
 						open("%s/%s" % (destination, os.path.basename(file)), "wb").write(self.getUrl("%s/file?file=%s" % (self.url, file)).read())
@@ -80,11 +81,11 @@ class ImportChannels():
 				self.ImportChannelsDone(False, _("Error %s") % self.url)
 				return
 
-			print "[ImportChannels] Removing files..."
+			print("[ImportChannels] Removing files...")
 			files = [file for file in os.listdir("/etc/enigma2") if file.startswith(settingfiles)]
 			for file in files:
 				os.remove("/etc/enigma2/%s" % file)
-			print "[ImportChannels] copying files..."
+			print("[ImportChannels] copying files...")
 			files = [x for x in os.listdir("/tmp/tmp") if x.startswith(settingfiles)]
 			for file in files:
 				shutil.move("/tmp/tmp/%s" % file, "/etc/enigma2/%s" % file)

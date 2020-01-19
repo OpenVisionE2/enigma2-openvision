@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Components.Pixmap import Pixmap 
 from Renderer import Renderer
 from enigma import iServiceInformation 
@@ -113,7 +114,7 @@ class PicEmu2(Renderer, Poll):
 								value = self.getText()
 								value = value.lower()#change value to small letters
 								if value is None:
-									print "[PicEmu2] no emu installed"
+									print("[PicEmu2] no emu installed")
 									sname=''
 								else:
 									## Should write name be small letters
@@ -141,7 +142,7 @@ class PicEmu2(Renderer, Poll):
 											if ("address" in line):
 												sname = "CCcam"                         
 							except:
-								print ""
+								print("")
 
 						if caids:
 							if (len(caids) > 0):

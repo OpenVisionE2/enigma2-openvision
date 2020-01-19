@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Screen import Screen
 from Components.ActionMap import NumberActionMap
 from Components.config import config, ConfigNothing, ConfigBoolean, ConfigSelection
@@ -130,7 +131,7 @@ class Setup(ConfigListScreen, Screen):
 								item = eval(requires)
 								SystemInfo[requires] = True if item.value and item.value not in ("0", "False", "false", "off") else False
 							except AttributeError:
-								print '[Setup] unknown "requires" config element:', requires
+								print('[Setup] unknown "requires" config element:', requires)
 
 						if requires:
 							if not SystemInfo.get(requires, False):

@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Screen import Screen
 from Screens.MessageBox import MessageBox
 from Screens.ParentalControlSetup import ProtectedScreen
@@ -226,7 +227,7 @@ class Menu(Screen, ProtectedScreen):
 				if screen is None:
 					screen = module
 
-				# print module, screen
+				# print(module, screen)
 				if module:
 					module = "Screens." + module
 				else:

@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Components.Harddisk import harddiskmanager
 from config import ConfigSubsection, ConfigYesNo, config, ConfigSelection, ConfigText, ConfigNumber, ConfigSet, ConfigLocations, ConfigSelectionNumber, ConfigClock, ConfigSlider, ConfigEnableDisable, ConfigSubDict, ConfigDictionarySet, ConfigInteger, ConfigPassword, ConfigIP, NoSave, ConfigBoolean
 from Tools.Directories import defaultRecordingLocation
@@ -437,7 +438,7 @@ def InitUsageConfig():
 	try:
 		onlyIcon = skin.parameters.get("AllowUseOnlyIcon", (0))
 	except Exception as error:
-		print "[UsageConfig] Error loading 'AllowUseOnlyIcon' skin parameter! (%s)" % error
+		print("[UsageConfig] Error loading 'AllowUseOnlyIcon' skin parameter! (%s)" % error)
 		onlyIcon = (0)
 	if onlyIcon:
 		config.skin.onlyicon.value = True
@@ -612,7 +613,7 @@ def InitUsageConfig():
 	try:
 		dateEnabled, timeEnabled = skin.parameters.get("AllowUserDatesAndTimes", (0, 0))
 	except Exception as error:
-		print "[UsageConfig] Error loading 'AllowUserDatesAndTimes' skin parameter! (%s)" % error
+		print("[UsageConfig] Error loading 'AllowUserDatesAndTimes' skin parameter! (%s)" % error)
 		dateEnabled, timeEnabled = (0, 0)
 	if dateEnabled:
 		config.usage.date.enabled.value = True
@@ -735,7 +736,7 @@ def InitUsageConfig():
 	try:
 		dateDisplayEnabled, timeDisplayEnabled = skin.parameters.get("AllowUserDatesAndTimesDisplay", (0, 0))
 	except Exception as error:
-		print "[UsageConfig] Error loading 'AllowUserDatesAndTimesDisplay' display skin parameter! (%s)" % error
+		print("[UsageConfig] Error loading 'AllowUserDatesAndTimesDisplay' display skin parameter! (%s)" % error)
 		dateDisplayEnabled, timeDisplayEnabled = (0, 0)
 	if dateDisplayEnabled:
 		config.usage.date.enabled_display.value = True
@@ -1314,7 +1315,7 @@ def defaultMoviePath():
 	return defaultRecordingLocation(config.usage.default_path.value)
 
 def patchTuxtxtConfFile(dummyConfigElement):
-	print "[UsageConfig] patching tuxtxt2.conf"
+	print("[UsageConfig] patching tuxtxt2.conf")
 	if config.usage.tuxtxt_font_and_res.value == "X11_SD":
 		tuxtxt2 = [ ["UseTTF",0],
 					["TTFBold",1],
@@ -1389,7 +1390,7 @@ def patchTuxtxtConfFile(dummyConfigElement):
 	try:
 		Console().ePopen(command)
 	except:
-		print "[UsageConfig] Error: failed to patch %s!" % TUXTXT_CFG_FILE
-	print "[UsageConfig] patched tuxtxt2.conf"
+		print("[UsageConfig] Error: failed to patch %s!" % TUXTXT_CFG_FILE)
+	print("[UsageConfig] patched tuxtxt2.conf")
 
 	config.usage.tuxtxt_ConfFileHasBeenPatched.setValue(True)

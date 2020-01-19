@@ -1,3 +1,4 @@
+from __future__ import print_function
 from ServiceReference import ServiceReference
 from enigma import eServiceReference
 import os
@@ -57,7 +58,7 @@ class PlaylistIOInternal(PlaylistIO):
 		return self.list
 
 	def save(self, filename = None):
-		print "[Playlist] Writing playlist into file", filename
+		print("[Playlist] Writing playlist into file", filename)
 		file = open(filename, "w")
 		for x in self.list:
 			file.write(str(x) + "\n")

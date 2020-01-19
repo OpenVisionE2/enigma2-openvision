@@ -12,7 +12,7 @@ def getTrashFolder(path=None):
 	# Returns trash folder without symlinks
 	try:
 		if path is None or os.path.realpath(path) == '/media/autofs':
-			print '[Trashcan] path is none'
+			print('[Trashcan] path is none')
 			return ""
 		else:
 			trashcan = Harddisk.findMountPoint(os.path.realpath(path))
@@ -26,7 +26,7 @@ def getTrashFolder(path=None):
 		return None
 
 def createTrashFolder(path=None):
-	print '[Trashcan]] DeBug path', path
+	print('[Trashcan]] DeBug path', path)
 	trash = getTrashFolder(path)
 	print '[Trashcan] DeBug', trash
 	if trash and os.access(os.path.split(trash)[0], os.W_OK):
@@ -230,7 +230,7 @@ class CleanTrashTask(Components.Task.PythonTask):
 				diskstat = os.statvfs(trashfolder)
 				free = diskstat.f_bfree * diskstat.f_bsize
 				bytesToRemove = self.reserveBytes - free
-				print "[Trashcan] " + str(trashfolder) + ": Size:",trashsize
+				print("[Trashcan] " + str(trashfolder) + ": Size:",trashsize)
 				candidates = []
 				size = 0
 				for root, dirs, files in os.walk(trashfolder, topdown=False):
@@ -248,7 +248,7 @@ class CleanTrashTask(Components.Task.PythonTask):
 								candidates.append((st.st_ctime, fn, st.st_size))
 								size += st.st_size
 						except Exception, e:
-							print "[Trashcan] Failed to stat %s:"% name, e
+							print("[Trashcan] Failed to stat %s:"% name, e)
 					# Remove empty directories if possible
 					for name in dirs:
 						try:
@@ -267,7 +267,7 @@ class CleanTrashTask(Components.Task.PythonTask):
 							pass
 						bytesToRemove -= st_size
 						size -= st_size
-					print "[Trashcan] " + str(trashfolder) + ": Size now:",size
+					print("[Trashcan] " + str(trashfolder) + ": Size now:",size)
 
 class TrashInfo(VariableText, GUIComponent):
 	FREE = 0

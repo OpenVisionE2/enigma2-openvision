@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Components.ActionMap import ActionMap
 from Components.Sources.StaticText import StaticText
 from Components.Label import Label
@@ -114,18 +115,18 @@ class TimerEditList(Screen):
 				if t.disabled and t.repeated and stateRunning and not t.justplay:
 					return
 				if t.disabled:
-					print "[TimerEdit] try to ENABLE timer"
+					print("[TimerEdit] try to ENABLE timer")
 					t.enable()
 					timersanitycheck = TimerSanityCheck(self.session.nav.RecordTimer.timer_list, cur)
 					if not timersanitycheck.check():
 						t.disable()
-						print "[TimerEdit] sanity check failed"
+						print("[TimerEdit] sanity check failed")
 						simulTimerList = timersanitycheck.getSimulTimerList()
 						if simulTimerList is not None:
 							self.session.openWithCallback(self.finishedEdit, TimerSanityConflict, simulTimerList)
 							timer_changed = False
 					else:
-						print "[TimerEdit] sanity check passed"
+						print("[TimerEdit] sanity check passed")
 						if timersanitycheck.doubleCheck():
 							t.disable()
 				else:
@@ -342,7 +343,7 @@ class TimerEditList(Screen):
 		self.session.openWithCallback(self.finishedAdd, TimerEntry, timer)
 
 	def finishedEdit(self, answer):
-		print "[TimerEdit] finished edit"
+		print("[TimerEdit] finished edit")
 		if answer[0]:
 			entry = answer[1]
 			if entry.external_prev != entry.external:
@@ -378,12 +379,12 @@ class TimerEditList(Screen):
 				else:
 					success = True
 				if success:
-					print "[TimerEdit] sanity check passed"
+					print("[TimerEdit] sanity check passed")
 					self.session.nav.RecordTimer.timeChanged(entry)
 				self.fillTimerList()
 
 	def finishedAdd(self, answer):
-		print "[TimerEdit] finished add"
+		print("[TimerEdit] finished add")
 		if answer[0]:
 			entry = answer[1]
 			if entry.external:

@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Components.config import config, ConfigSubsection, ConfigSubList, ConfigInteger, ConfigText, ConfigSelection
 import TitleCutter
 
@@ -124,7 +125,7 @@ class DVDTitle:
 			self.cutlist.append(0) # emulate "in" at first
 
 		for (pts, type) in self.cuesheet:
-			#print "pts=", pts, "type=", type, "accumulated_in=", accumulated_in, "accumulated_at=", accumulated_at, "last_in=", last_in
+			#print("pts=", pts, "type=", type, "accumulated_in=", accumulated_in, "accumulated_at=", accumulated_at, "last_in=", last_in)
 			if type == CUT_TYPE_IN and not currently_in:
 				self.cutlist.append(pts)
 				last_in = pts

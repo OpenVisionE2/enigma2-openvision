@@ -1,3 +1,4 @@
+from __future__ import print_function
 from enigma import eTimer, ePoint, eSize, getDesktop
 from Components.ActionMap import HelpableActionMap
 from Components.config import config
@@ -145,7 +146,7 @@ class MessageBox(Screen, HelpableScreen):
 			self.baseTitle = self.baseTitle % prefix
 		self.setTitle(self.baseTitle)
 		if self.timeout > 0:
-			print "[MessageBox] Timeout set to %d seconds." % self.timeout
+			print("[MessageBox] Timeout set to %d seconds." % self.timeout)
 			self.timer.start(25)
 
 	def processTimer(self):
@@ -169,7 +170,7 @@ class MessageBox(Screen, HelpableScreen):
 				self.ok()
 
 	def stopTimer(self, reason):
-		print "[MessageBox] %s" % reason
+		print("[MessageBox] %s" % reason)
 		self.timer.stop()
 		self.timeout = 0
 		if self.baseTitle is not None:
@@ -214,7 +215,7 @@ class MessageBox(Screen, HelpableScreen):
 	def cancel(self):
 		if self["list"].list:
 			for l in self["list"].list:
-				# print "[MessageBox] DEBUG: (cancel) '%s' -> '%s'" % (str(l[0]), str(l[1]))
+				# print("[MessageBox] DEBUG: (cancel) '%s' -> '%s'" % (str(l[0]), str(l[1])))
 				# Should we be looking at the second element to get the boolean value rather than the word?
 				if l[0].lower() == _('no') or l[0].lower() == _('false'):
 					if len(l) > 2:
@@ -246,7 +247,7 @@ class MessageBox(Screen, HelpableScreen):
 	def alwaysOK(self):
 		if self["list"].list:
 			for l in self["list"].list:
-				# print "[MessageBox] DEBUG: (cancel) '%s' -> '%s'" % (str(l[0]), str(l[1]))
+				# print("[MessageBox] DEBUG: (cancel) '%s' -> '%s'" % (str(l[0]), str(l[1])))
 				# Should we be looking at the second element to get the boolean value rather than the word?
 				if l[0].lower() == _('yes') or l[0].lower() == _('true'):
 					if len(l) > 2:
