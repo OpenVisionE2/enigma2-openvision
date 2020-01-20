@@ -1,3 +1,4 @@
+from __future__ import print_function
 import enigma
 import xml.etree.cElementTree
 
@@ -58,7 +59,7 @@ def parseKeys(context, filename, actionmap, device, keys):
 
 			# if a key was unmapped, it can only be assigned a new function in the same keymap file (avoid file parsing sequence dependency)
 			if unmapDict.get((context, id, mapto)) in [filename, None]:
-#				print "[keymapparser] " + context + "::" + mapto + " -> " + device + "." + hex(keyid)
+#				print("[keymapparser] " + context + "::" + mapto + " -> " + device + "." + hex(keyid))
 				actionmap.bindKey(filename, device, keyid, flags, context, mapto)
 				addKeyBinding(filename, keyid, context, mapto, flags)
 
@@ -89,7 +90,7 @@ def readKeymap(filename):
 	try:
 		source = open(filename)
 	except:
-		print "[keymapparser] keymap file " + filename + " not found"
+		print("[keymapparser] keymap file " + filename + " not found")
 		return
 
 	try:

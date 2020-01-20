@@ -2,7 +2,7 @@
 #
 # One can simply use
 # import log
-# print>>log, "Some text"
+# print(_("Some text"))
 # because the log unit looks enough like a file!
 
 import sys

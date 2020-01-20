@@ -16,7 +16,7 @@ Plugins/DemoPlugins/OurSmallTest/plugin.py:
 "from Plugins.Plugin import PluginDescriptor
 
 def main(session, **kwargs):
-	print "Hello world!"
+	print("Hello world!")
 
 def Plugins(**kwargs):
  	return PluginDescriptor(
@@ -108,9 +108,9 @@ like:
 
 def autostartEntry(raeson, **kwargs):
 	if reason == 0: # startup
-		print "startup"
+		print("startup")
 	elif reason == 1:
-		print "shutdown"
+		print("shutdown")
 
 autostart plugins should always be configurable, and should default to an
 OFF state!

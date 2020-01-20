@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Screen import Screen
 import ChannelSelection
 from ServiceReference import ServiceReference
@@ -257,7 +258,7 @@ class TimerEntry(Screen, ConfigListScreen):
 		self[widget].l.setList(self.list)
 
 	def newConfig(self):
-		print "[TimerEntry] newConfig", self["config"].getCurrent()
+		print("[TimerEntry] newConfig", self["config"].getCurrent())
 		if self["config"].getCurrent() in (self.timerTypeEntry, self.timerJustplayEntry, self.frequencyEntry, self.entryShowEndTime, self.entryFallbackTimer):
 			self.createSetup("config")
 

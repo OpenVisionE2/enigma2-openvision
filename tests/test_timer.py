@@ -1,6 +1,6 @@
+from __future__ import print_function
 import enigma
 import time
-
 import tests
 
 #enigma.reset()
@@ -11,8 +11,8 @@ def test_timer(repeat = 0, timer_start = 3600, timer_length = 1000, sim_length =
 	at = time.time()
 
 	t = NavigationInstance.instance.RecordTimer
-	print t
-	print "[test_timer] old mwt:", t.MaxWaitTime
+	print(t)
+	print("[test_timer] old mwt:", t.MaxWaitTime)
 	t.MaxWaitTime = 86400 * 1000
 
 	# hack:
@@ -47,25 +47,25 @@ def test_timer(repeat = 0, timer_start = 3600, timer_length = 1000, sim_length =
 	# run virtual environment
 	enigma.run(sim_length)
 
-	print "[test_timer] done."
+	print("[test_timer] done.")
 
 	timers = t.processed_timers  + t.timer_list
 
-	print "[test_timer] start: %s" % (time.ctime(at + 10))
+	print("[test_timer] start: %s" % (time.ctime(at + 10)))
 
 	assert len(timers) == 1
 
 	for t in timers:
-		print "[test_timer] begin=%d, end=%d, repeated=%d, state=%d" % (t.begin - at, t.end - at, t.repeated, t.state)
-		print "[test_timer] begin: %s" % (time.ctime(t.begin))
-		print "[test_timer] end: %s" % (time.ctime(t.end))
+		print("[test_timer] begin=%d, end=%d, repeated=%d, state=%d" % (t.begin - at, t.end - at, t.repeated, t.state))
+		print("[test_timer] begin: %s" % (time.ctime(t.begin)))
+		print("[test_timer] end: %s" % (time.ctime(t.end)))
 
 	# if repeat, check if the calculated repeated time of day matches the initial time of day
 	if repeat:
 		t_initial = time.localtime(at + timer_start)
 		t_repeated = time.localtime(timers[0].begin)
-		print t_initial
-		print t_repeated
+		print(t_initial)
+		print(t_repeated)
 
 	if t_initial[3:6] != t_repeated[3:6]:
 		raise tests.TestError("repeated timer time of day does not match")

@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sys
 import os
 from time import time
@@ -12,8 +13,8 @@ profile("PYTHON_START")
 # it will break output redirection for crash logs.
 import Tools.RedirectOutput
 from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib
-print "Open Vision version = %s" % getVisionVersion()
-print "Open Vision revision = %s" % getVisionRevision()
+print("Open Vision version = %s" % getVisionVersion())
+print("Open Vision revision = %s" % getVisionRevision())
 import enigma
 import eConsoleImpl
 import eBaseImpl
@@ -23,11 +24,11 @@ enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
 
 from Components.SystemInfo import SystemInfo
 if not SystemInfo["OpenVisionModule"]:
-	print "[mytest] Open Vision in multiboot! Now we have to remove what relies on our kernel module!"
+	print("[mytest] Open Vision in multiboot! Now we have to remove what relies on our kernel module!")
 	from Components.Console import Console
 	Console = Console()
 	Console.ePopen('opkg remove enigma2-plugin-extensions-e2iplayer')
-	print "[mytest] Removed, this is on you not us!"
+	print("[mytest] Removed, this is on you not us!")
 
 from traceback import print_exc
 
@@ -89,10 +90,10 @@ def setEPGCachePath(configElement):
 
 #demo code for use of standby enter leave callbacks
 #def leaveStandby():
-#	print "!!!!!!!!!!!!!!!!!leave standby"
+#	print("!!!!!!!!!!!!!!!!!leave standby")
 
 #def standbyCountChanged(configElement):
-#	print "!!!!!!!!!!!!!!!!!enter standby num", configElement.value
+#	print("!!!!!!!!!!!!!!!!!enter standby num", configElement.value)
 #	from Screens.Standby import inStandby
 #	inStandby.onClose.append(leaveStandby)
 
@@ -101,11 +102,11 @@ def setEPGCachePath(configElement):
 
 def useSyncUsingChanged(configelement):
 	if configelement.value == "0":
-		print "[mytest] Time By: Transponder"
+		print("[mytest] Time By: Transponder")
 		enigma.eDVBLocalTimeHandler.getInstance().setUseDVBTime(True)
 		enigma.eEPGCache.getInstance().timeUpdated()
 	else:
-		print "[mytest] Time By: NTP"
+		print("[mytest] Time By: NTP")
 		enigma.eDVBLocalTimeHandler.getInstance().setUseDVBTime(False)
 		enigma.eEPGCache.getInstance().timeUpdated()
 config.misc.SyncTimeUsing.addNotifier(useSyncUsingChanged)
@@ -131,7 +132,7 @@ try:
 	def runReactor():
 		reactor.run(installSignalHandlers=False)
 except ImportError:
-	print "[mytest] twisted not available"
+	print("[mytest] twisted not available")
 	def runReactor():
 		enigma.runMainloop()
 
@@ -160,9 +161,9 @@ def dump(dir, p = ""):
 				had[str(value)] = 1
 				dump(value, p + "/" + str(name))
 			else:
-				print p + "/" + str(name) + ":" + str(dir.__class__) + "(cycle)"
+				print(p + "/" + str(name) + ":" + str(dir.__class__) + "(cycle)")
 	else:
-		print p + ":" + str(dir)
+		print(p + ":" + str(dir))
 
 # + ":" + str(dir.__class__)
 
@@ -223,7 +224,7 @@ class Session:
 			try:
 				p(reason=0, session=self)
 			except:
-				print "[mytest] Plugin raised exception at WHERE_SESSIONSTART"
+				print("[mytest] Plugin raised exception at WHERE_SESSIONSTART")
 				import traceback
 				traceback.print_exc()
 
@@ -345,7 +346,7 @@ class Session:
 
 	def close(self, screen, *retval):
 		if not self.in_exec:
-			print "[mytest] close after exec!"
+			print("[mytest] close after exec!")
 			return
 
 		# be sure that the close is for the right dialog!
@@ -395,7 +396,7 @@ class PowerKey:
 		globalActionMap.actions["discrete_off"] = self.standby
 
 	def shutdown(self):
-		print "[mytest] PowerOff - Now!"
+		print("[mytest] PowerOff - Now!")
 		if not Screens.Standby.inTryQuitMainloop and self.session.current_dialog and self.session.current_dialog.ALLOW_SUSPEND:
 			self.session.open(Screens.Standby.TryQuitMainloop, 1)
 		else:
@@ -421,7 +422,7 @@ class PowerKey:
 					exec "from " + selected[1] + " import *"
 					exec "self.session.open(" + ",".join(selected[2:]) + ")"
 				except:
-					print "[mytest] error during executing module %s, screen %s" % (selected[1], selected[2])
+					print("[mytest] error during executing module %s, screen %s" % (selected[1], selected[2]))
 			elif selected[0] == "Menu":
 				root = mdom.getroot()
 				for x in root.findall("menu"):
@@ -455,7 +456,7 @@ class AutoScartControl:
 		self.VCRSbChanged(self.current_vcr_sb)
 
 	def VCRSbChanged(self, value):
-		#print "vcr sb changed to", value
+		#print("vcr sb changed to", value)
 		self.current_vcr_sb = value
 		if config.av.vcrswitch.value or value > 2:
 			if value:
@@ -564,9 +565,9 @@ def runScreenTest():
 			else:
 				wptime = startTime[0] - 240
 		if not config.misc.SyncTimeUsing.value == "0" or getBoxBrand() == 'gigablue':
-			print "[mytest] dvb time sync disabled... so set RTC now to current linux time!", strftime("%Y/%m/%d %H:%M", localtime(nowTime))
+			print("[mytest] dvb time sync disabled... so set RTC now to current linux time!", strftime("%Y/%m/%d %H:%M", localtime(nowTime)))
 			setRTCtime(nowTime)
-		print "[mytest] set wakeup time to", strftime("%Y/%m/%d %H:%M", localtime(wptime))
+		print("[mytest] set wakeup time to", strftime("%Y/%m/%d %H:%M", localtime(wptime)))
 		setFPWakeuptime(wptime)
 		config.misc.prev_wakeup_time.value = int(startTime[0])
 		config.misc.prev_wakeup_time_type.value = startTime[1]
@@ -690,8 +691,8 @@ try:
 
 	Components.ParentalControl.parentalControl.save()
 except:
-	print 'EXCEPTION IN PYTHON STARTUP CODE:'
-	print '-'*60
+	print('EXCEPTION IN PYTHON STARTUP CODE:')
+	print('-'*60)
 	print_exc(file=stdout)
 	enigma.quitMainloop(5)
-	print '-'*60
+	print('-'*60)
