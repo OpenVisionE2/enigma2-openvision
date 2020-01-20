@@ -156,7 +156,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 		try:
 			from Plugins.SystemPlugins.Hotplug.plugin import hotplugNotifier
 			hotplugNotifier.append(self.hotplugCB)
-		except Exception, ex:
+		except Exception as ex:
 			print("[MediaPlayer] No hotplug support", ex)
 
 		class MoviePlayerActionMap(NumberActionMap):
@@ -1253,7 +1253,7 @@ def movielist_open(list, session, **kwargs):
 def audiocdscan(menuid, **kwargs):
 	try:
 		from Plugins.SystemPlugins.Hotplug.plugin import AudiocdAdded
-	except Exception, e:
+	except Exception as e:
 		print("[Mediaplayer.plugin] no hotplug support",e)
 		return []
 	if menuid == "mainmenu" and AudiocdAdded() and os.path.isfile('/media/audiocd/cdplaylist.cdpls'):

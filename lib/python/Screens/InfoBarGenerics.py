@@ -110,7 +110,7 @@ def saveResumePoints():
 		f = open('/home/root/resumepoints.pkl', 'wb')
 		cPickle.dump(resumePointCache, f, cPickle.HIGHEST_PROTOCOL)
 		f.close()
-	except Exception, ex:
+	except Exception as ex:
 		print("[InfoBarGenerics]  Failed to write resumepoints:", ex)
 	resumePointCacheLast = int(time())
 
@@ -118,7 +118,7 @@ def loadResumePoints():
 	import cPickle
 	try:
 		return cPickle.load(open('/home/root/resumepoints.pkl', 'rb'))
-	except Exception, ex:
+	except Exception as ex:
 		print("[InfoBarGenerics]  Failed to load resumepoints:", ex)
 		return {}
 
@@ -2992,14 +2992,14 @@ class InfoBarRedButton:
 		for x in self.onReadyForAIT:
 			try:
 				x(orgId)
-			except Exception, ErrMsg:
+			except Exception as ErrMsg:
 				print(ErrMsg)
 
 	def updateInfomation(self):
 		try:
 			self["HbbtvApplication"].setApplicationName("")
 			self.updateAIT()
-		except Exception, ErrMsg:
+		except Exception as ErrMsg:
 			pass
 
 	def detectedHbbtvApplication(self):
@@ -3012,7 +3012,7 @@ class InfoBarRedButton:
 					self.updateAIT(x[3])
 					self["HbbtvApplication"].setApplicationName(x[1])
 					break
-		except Exception, ErrMsg:
+		except Exception as ErrMsg:
 			pass
 
 	def activateRedButton(self):

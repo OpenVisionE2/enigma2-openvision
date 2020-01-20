@@ -130,7 +130,7 @@ class YWeather(Poll, Converter, object):
 		req = Request(URL)
 		try:
 			response = urlopen(req)
-		except Exception, e:
+		except Exception as e:
 			if hasattr(e, 'code') and hasattr(e, 'reason'):
 				print("[YWeather] fetchXML Failed to retrieve XML file. Error: %s %s" % (str(e.code), str(e.reason)))
 			else:

@@ -149,7 +149,7 @@ class ClientModeScreen(ConfigListScreen, Screen):
 				return True
 			print("[ClientMode] checkFTPconnection FTP connection failure:", result)
 			return False
-		except Exception, err:
+		except Exception as err:
 			print("[ClientMode] checkFTPconnection Error:", err)
 			return False
 

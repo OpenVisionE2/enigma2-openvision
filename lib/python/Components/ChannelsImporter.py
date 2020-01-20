@@ -332,7 +332,7 @@ class ChannelsImporter():
 				if result.startswith("226"):
 					return True
 			return False
-		except Exception, err:
+		except Exception as err:
 			print("[ChannelsImporter] FTPdownloadFile Error:", err)
 			return False
 

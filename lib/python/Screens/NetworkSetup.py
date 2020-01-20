@@ -1092,7 +1092,8 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 			try:
 				ifobj = Wireless(iface) # a Wireless NIC Object
 				wlanresponse = ifobj.getAPaddr()
-			except IOError, (error_no, error_str):
+			except IOError as error_no_error_str:
+				(error_no, error_str) = error_no_error_str
 				if error_no in (errno.EOPNOTSUPP, errno.ENODEV, errno.EPERM):
 					return False
 				else:

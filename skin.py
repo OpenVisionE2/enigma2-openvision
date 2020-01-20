@@ -755,7 +755,7 @@ def loadSingleSkinData(desktop, domSkin, pathSkin, scope=SCOPE_CURRENT_SKIN):
 				width = int(alias.attrib.get("width", size))
 				fonts[name] = (font, size, height, width)
 				# print "[Skin] Add font alias: name='%s', font='%s', size=%d, height=%s, width=%d." % (name, font, size, height, width)
-			except Exception, ex:
+			except Exception as ex:
 				print "[skin] Error: Bad font alias -", ex
 	for tag in domSkin.findall("parameters"):
 		for parameter in tag.findall("parameter"):
@@ -763,7 +763,7 @@ def loadSingleSkinData(desktop, domSkin, pathSkin, scope=SCOPE_CURRENT_SKIN):
 				name = parameter.attrib.get("name")
 				value = parameter.attrib.get("value")
 				parameters[name] = "," in value and map(parseParameter, value.split(",")) or parseParameter(value)
-			except Exception, ex:
+			except Exception as ex:
 				print "[skin] Bad parameter:", ex
 	for tag in domSkin.findall("menus"):
 		for setup in tag.findall("menu"):
@@ -1165,7 +1165,7 @@ def readSkin(screen, skin, names, desktop):
 			codeText = widget.text.strip()
 			widgetType = widget.attrib.get("type")
 			code = compile(codeText, "skin applet", "exec")
-		except Exception, ex:
+		except Exception as ex:
 			raise SkinError("Applet failed to compile: '%s'" % str(ex))
 		if widgetType == "onLayoutFinish":
 			screen.onLayoutFinish.append(code)
@@ -1216,7 +1216,7 @@ def readSkin(screen, skin, names, desktop):
 			cc = SkinContext
 		try:
 			c = cc(context, widget.attrib.get("position"), widget.attrib.get("size"), widget.attrib.get("font"))
-		except Exception, ex:
+		except Exception as ex:
 			raise SkinError("Failed to create skin context (position='%s', size='%s', font='%s') in context '%s': %s" % (widget.attrib.get("position"), widget.attrib.get("size"), widget.attrib.get("font"), context, ex))
 		processScreen(widget, c)
 
@@ -1240,7 +1240,7 @@ def readSkin(screen, skin, names, desktop):
 		context.x = 0
 		context.y = 0
 		processScreen(myScreen, context)
-	except Exception, e:
+	except Exception as e:
 		print "[skin] Error in screen '%s':" % name, e
 
 	from Components.GUIComponent import GUIComponent
