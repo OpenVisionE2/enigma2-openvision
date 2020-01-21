@@ -59,7 +59,7 @@ fonts = {  # Dictionary of predefined and skin defined font aliases.
 config.skin = ConfigSubsection()
 skin = resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)
 if not fileExists(skin) or not os.path.isfile(skin):
-	print "[skin] Error: Default skin '%s' is not readable or is not a file!  Using emergency skin." % skin
+	print("[skin] Error: Default skin '%s' is not readable or is not a file!  Using emergency skin." % skin)
 	DEFAULT_SKIN = EMERGENCY_SKIN
 config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
 config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
