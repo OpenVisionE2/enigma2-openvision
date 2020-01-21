@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-10 00:41+0330\n"
-"PO-Revision-Date: 2019-12-23 00:03+0200\n"
+"POT-Creation-Date: 2020-01-21 09:53+0330\n"
+"PO-Revision-Date: 2020-01-14 18:08+0200\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
 "Language: lt_LT\n"
@@ -1021,6 +1021,14 @@ msgstr "16:10 įterpiant juodas juostas"
 msgid "16:10 PanScan"
 msgstr "16:10 nukerpant šonus"
 
+#, fuzzy
+msgid "16:10 letterbox"
+msgstr "16:10 įterpiant juodas juostas"
+
+#, fuzzy
+msgid "16:10 panscan"
+msgstr "16:10 nukerpant šonus"
+
 msgid "16:9"
 msgstr "16:9"
 
@@ -1029,6 +1037,10 @@ msgstr "16:9 įterpiant juodas juostas šonuose"
 
 msgid "16:9 always"
 msgstr "Visada 16:9"
+
+#, fuzzy
+msgid "16:9 letterbox"
+msgstr "16:9 įterpiant juodas juostas šonuose"
 
 msgid "18 V"
 msgstr "18 V"
@@ -1106,6 +1118,14 @@ msgid "4:3 Letterbox"
 msgstr "4:3 Įterpiant juodas juostas šonuose"
 
 msgid "4:3 PanScan"
+msgstr "4:3 nukerpant šonus"
+
+#, fuzzy
+msgid "4:3 letterbox"
+msgstr "4:3 Įterpiant juodas juostas šonuose"
+
+#, fuzzy
+msgid "4:3 panscan"
 msgstr "4:3 nukerpant šonus"
 
 msgid "4X"
@@ -1865,6 +1885,10 @@ msgstr "Klausti vartotojo (numatytasis - 'taip')"
 msgid "Aspect ratio"
 msgstr "Vaizdo kraštinių santykis"
 
+#, fuzzy
+msgid "Aspect ratio list..."
+msgstr "Vaizdo kraštinių santykis"
+
 msgid "Assigned CAIds:"
 msgstr "Priskirti CAId:"
 
@@ -1959,6 +1983,10 @@ msgstr "Kūrimas"
 #. TRANSLATORS: (aspect ratio policy: automatically select the best aspect ratio mode)
 msgid "Auto"
 msgstr "Automatinis"
+
+#, fuzzy
+msgid "Auto (not available)"
+msgstr "Imtuvas neprieinamas."
 
 msgid "Auto Detect"
 msgstr "Automatiškai aptikti"
@@ -2475,9 +2503,8 @@ msgstr "Atšaukti"
 msgid "Cancel any text changes and exit"
 msgstr "Atšaukti bet kokius tekstinius pakeitimus ir užverti"
 
-#, fuzzy
 msgid "Cancel execution?"
-msgstr "Kanalo pasirinkimas"
+msgstr "Ar atšaukti vykdymą?"
 
 msgid "Cancel the selection"
 msgstr "Atšaukti pasirinkimą"
@@ -2910,9 +2937,8 @@ msgstr "Nustatykite papildomą vėlavimą, kad pagerinti išorinį subtitrų sin
 msgid "Configure an additional delay to improve subtitle synchronisation."
 msgstr "Nustatykite papildomą vėlavimą, kad pagerinti subtitrų sinchronizaciją."
 
-#, fuzzy
 msgid "Configure default type for new timers."
-msgstr "Nustatykite tinklo kaukę."
+msgstr "Konfigūruoti numatytąjį tipą naujiems laikmačiams."
 
 msgid "Configure for how long the infobar will remain visible after activation."
 msgstr "Nustatykite, kiek laiko ekrane išliks matoma info juosta."
@@ -3791,9 +3817,8 @@ msgstr "Numatytoji filmų vieta"
 msgid "Default settings"
 msgstr "Numatytosios nuostatos"
 
-#, fuzzy
 msgid "Default timer type"
-msgstr "Ištrinti laikmatį"
+msgstr "Numatytasis laikmačio tipas"
 
 msgid "Delay after change voltage before switch command"
 msgstr "Delsa tarp įtampos pasikeitimo ir perjungimo komandos"
@@ -4391,7 +4416,7 @@ msgid "EPG settings"
 msgstr "EPG nustatymai"
 
 msgid "EPG:"
-msgstr ""
+msgstr "EPG:"
 
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
@@ -4559,7 +4584,7 @@ msgid "Enable import timer from fallback tuner"
 msgstr "Įjungti importo laikmatį iš atsarginio imtuvo"
 
 msgid "Enable infobar fade-out"
-msgstr "Įjungti info uostos tolygų išnykimą"
+msgstr "Įjungti info juostos išnykimą"
 
 msgid "Enable move mode"
 msgstr "Įjungti perkėlimo režimą"
@@ -5072,9 +5097,8 @@ msgstr "FEC:"
 msgid "FFmpeg version: "
 msgstr "FFmpeg versija: "
 
-#, fuzzy
 msgid "FPU: "
-msgstr "Procesorius: "
+msgstr "FPU: "
 
 msgid "FSBL Update Check"
 msgstr "FSBL atnaujinimo tikrinimas"
@@ -6088,16 +6112,16 @@ msgid "Info"
 msgstr "Informacija"
 
 msgid "Info bar"
-msgstr "Infojuosta"
+msgstr "Info juosta"
 
 msgid "Info bar timeout"
-msgstr "Infojuosta išsijungs po"
+msgstr "Info juosta išsijungs po"
 
 msgid "Infobar fade-out speed"
 msgstr "Info juostos išnykimo greitis"
 
 msgid "Infobar frontend data source"
-msgstr "Infojuostos duomenų šaltinis"
+msgstr "Info juostos duomenų šaltinis"
 
 msgid "Information"
 msgstr "Informacija"
@@ -6217,7 +6241,7 @@ msgid "Internal flash"
 msgstr "Vidinė atmintis"
 
 msgid "Internal hdd only"
-msgstr "Tik vidinis hdd"
+msgstr "Tik vidinis kietas diskas"
 
 msgid "Internet"
 msgstr "Internetas"
@@ -6254,7 +6278,7 @@ msgid "Ipkg"
 msgstr "Ipkg"
 
 msgid "Iran (Islamic Republic of)"
-msgstr "Irano Islamo Respublika"
+msgstr "Iranas (Islamo Respublika)"
 
 msgid "Iran, Islamic Republic"
 msgstr "Iranas, Islamo Respublika"
@@ -6374,10 +6398,10 @@ msgid "Kiribati"
 msgstr "Kiribatis"
 
 msgid "Korea (Democratic People's Republic of)"
-msgstr "Korėja, Demokratinė Liaudies Respublika"
+msgstr "Korėjos Liaudies Demokratinė Respublika"
 
 msgid "Korea (Republic of)"
-msgstr "KORĖJOS Respublika"
+msgstr "Korėjos Respublika"
 
 msgid "Kuwait"
 msgstr "Kuveitas"
@@ -6386,10 +6410,10 @@ msgid "Kyrgyzstan"
 msgstr "Kirgistanas"
 
 msgid "LAN adapter"
-msgstr "LAN adapteris"
+msgstr "Tinklo adapteris"
 
 msgid "LAN connection"
-msgstr "LAN ryšys"
+msgstr "Laidinis tinklas"
 
 msgid "LCD scroll speed"
 msgstr "LCD užrašų slinkties greitis"
@@ -6449,7 +6473,7 @@ msgid "Large"
 msgstr "Didelis"
 
 msgid "Last Req."
-msgstr "Paskutinė užkl."
+msgstr "Paskutinė užklausa"
 
 msgid "Last config"
 msgstr "Paskutinė konfigūracija"
@@ -6458,7 +6482,7 @@ msgid "Last speed"
 msgstr "Paskutinis greitis"
 
 msgid "Last update: "
-msgstr "Paskutiniai pakeitimai: "
+msgstr "Paskutinis atnaujinimas: "
 
 msgctxt "third event: 'third' event label"
 msgid "Later"
@@ -6468,7 +6492,7 @@ msgid "Latest Commits"
 msgstr "Rodyti paskutinius veiksmus"
 
 msgid "Latest update log"
-msgstr "Naujausias atnaujinimo žurnalas"
+msgstr "Rodyti naujausią atnaujinimo žurnalą"
 
 msgid "Latitude"
 msgstr "Platuma"
@@ -6505,7 +6529,7 @@ msgid "Letterbox"
 msgstr "Įterpiant juostas viršuje ir apačioje"
 
 msgid "Letterbox zoom"
-msgstr "Įterpiant juostas viršuje ir apačioje"
+msgstr "Didinti, kol tilps"
 
 msgid "Liberia"
 msgstr "Liberija"
@@ -6638,7 +6662,7 @@ msgid "Longitude"
 msgstr "Ilguma"
 
 msgid "Loop through from"
-msgstr "Ciklas per iš"
+msgstr "Kilpą iš"
 
 msgid "Lord Howe Island"
 msgstr "Lordo Hau sala"
@@ -8106,6 +8130,10 @@ msgstr "Prašome pasirinkti grojaraštį, kurį norite ištrinti..."
 msgid "Please select a playlist..."
 msgstr "Prašome išsirinkti grojaraštį..."
 
+#, fuzzy
+msgid "Please select a resolution..."
+msgstr "Prašome išsirinkti subkanalą..."
+
 msgid "Please select a sub service..."
 msgstr "Prašome pasirinkti subkanalus ..."
 
@@ -8113,6 +8141,10 @@ msgid "Please select a subservice to record..."
 msgstr "Prašome išsirinkti subkanalą dėl įrašymo..."
 
 msgid "Please select a subservice..."
+msgstr "Prašome išsirinkti subkanalą..."
+
+#, fuzzy
+msgid "Please select an aspect ratio..."
 msgstr "Prašome išsirinkti subkanalą..."
 
 msgid "Please select medium to be scanned"
@@ -10363,7 +10395,7 @@ msgid "Show info line"
 msgstr "Rodyti informacinę eilutę"
 
 msgid "Show infobar on channel change"
-msgstr "Rodyti infojuostą, perjungiant kanalą"
+msgstr "Rodyti info juostą, perjungiant kanalą"
 
 msgid "Show infobar on event change"
 msgstr "Rodyti info juostą, keičiantis įvykiui"
@@ -10456,7 +10488,7 @@ msgid "Show second InfoBar"
 msgstr "Rodyti antrą info juostą"
 
 msgid "Show second infobar"
-msgstr "Rodyti antrą infojuostą"
+msgstr "Rodyti antrą info juostą"
 
 msgid "Show service list"
 msgstr "Rodyti kanalų sąrašą"
@@ -11265,9 +11297,8 @@ msgstr "Perjungti kanalą žemyn"
 msgid "Switch channel up"
 msgstr "Perjungti kanalą aukštyn"
 
-#, fuzzy
 msgid "Switch to HDMI-IN mode"
-msgstr "Perjungti į TV režimą"
+msgstr "Perjungti į HDMI-IN režimą"
 
 msgid "Switch to TV mode"
 msgstr "Perjungti į TV režimą"
@@ -11369,7 +11400,7 @@ msgstr "TMBD informacija apie įvykį"
 msgid "TRANSLATOR_INFO"
 msgstr ""
 "Adga, Pasvalys, Lietuva\n"
-"2019-12-23 versija"
+"2020-01-14 versija"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "TS failas per didelis 1 lygio ISO9660!"
@@ -12088,9 +12119,8 @@ msgstr "Laikmačio tipas"
 msgid "Timer+"
 msgstr "Laikmatis+"
 
-#, fuzzy
 msgid "Timer:"
-msgstr "Laikmatis"
+msgstr "Laikmatis:"
 
 msgid "Timerlist"
 msgstr "Laikmačių sąrašas"
@@ -12143,13 +12173,11 @@ msgstr "Šiandien"
 msgid "Toggle HDMI In"
 msgstr "Perjungti HDMI įėjimą"
 
-#, fuzzy
 msgid "Toggle HDMI-In PiP"
-msgstr "Perjungti HDMI įėjimą"
+msgstr "Perjungti HDMI-in PiP"
 
-#, fuzzy
 msgid "Toggle HDMI-In full screen"
-msgstr "Perjungti HDMI įėjimą"
+msgstr "Perjungti HDMI-in per visą ekraną"
 
 msgid "Toggle LCD LiveTV"
 msgstr "Perjungti transliaciją į LCD"
@@ -12345,16 +12373,16 @@ msgid "Turks and Caicos Islands"
 msgstr "Terkso ir Kaikoso salos"
 
 msgid "Turn off HDMI-IN Full screen mode"
-msgstr ""
+msgstr "Išjungti HDMI-IN viso ekrano režimą"
 
 msgid "Turn off HDMI-IN PiP mode"
-msgstr ""
+msgstr "Išjungti HDMI-IN PiP režimą"
 
 msgid "Turn on HDMI-IN Full screen mode"
-msgstr ""
+msgstr "Įjungti HDMI-IN viso ekrano režimą"
 
 msgid "Turn on HDMI-IN PiP mode"
-msgstr ""
+msgstr "Įjungti HDMI-IN PiP režimą"
 
 msgid "Turn on the power LED during deep standby."
 msgstr "Įjunkite įtampos LED gilaus budėjimo režime."
@@ -12820,6 +12848,10 @@ msgstr "Vaizdo sąranka"
 
 msgid "Video wizard"
 msgstr "Vaizdo sąrankos vedlys"
+
+#, fuzzy
+msgid "Video: "
+msgstr "Vaizdo PID"
 
 #, python-format
 msgid "Video: %s fps"

@@ -16,14 +16,14 @@ from Tools.Directories import SCOPE_CONFIG, SCOPE_CURRENT_LCDSKIN, SCOPE_CURRENT
 from Tools.Import import my_import
 from Tools.LoadPixmap import LoadPixmap
 
-DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "OctEtFHD/skin.xml" or "PLi-HD/skin.xml"  # On SD hardware HD will not be available.
-DEFAULT_SD_SKIN = "skin.xml"
+DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "OctEtFHD/skin.xml" or "PLi-HD/skin.xml"  # SD hardware is no longer supported by the default skin.
+# DEFAULT_SD_SKIN = "skin.xml"
 EMERGENCY_SKIN = "skin_default.xml"
 DEFAULT_DISPLAY_SKIN = SystemInfo["grautec"] and "display/skin_display_grautec.xml" or "display/skin_display.xml"
 USER_SKIN = "skin_user.xml"
 USER_SKIN_TEMPLATE = "skin_user_%s.xml"
-BOX_SKIN = "skin_box.xml"  # DEBUG: Is this actually used?
-SECOND_INFOBAR_SKIN = "skin_second_infobar.xml"  # DEBUG: Is this actually used?
+# BOX_SKIN = "skin_box.xml"  # DEBUG: Is this actually used?
+# SECOND_INFOBAR_SKIN = "skin_second_infobar.xml"  # DEBUG: Is this actually used?
 SUBTITLE_SKIN = "skin_subtitles.xml"
 
 GUI_SKIN_ID = 0  # Main frame-buffer.
@@ -57,16 +57,10 @@ fonts = {  # Dictionary of predefined and skin defined font aliases.
 # E.g. "MySkin/skin_display.xml"
 #
 config.skin = ConfigSubsection()
-# on SD hardware, HD skin will not be available
 skin = resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)
 if not fileExists(skin) or not os.path.isfile(skin):
-	# In that case, fallback to the DEFAULT_SD_SKIN.
-	DEFAULT_SKIN = DEFAULT_SD_SKIN
-	print("[skin] Error: Default HD skin '%s' is not readable or is not a file!  Using default SD skin." % skin)
-	skin = resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)
-	if not fileExists(skin) or not os.path.isfile(skin):
-		DEFAULT_SKIN = "skin.xml"
-		print("[skin] Error: Default SD skin '%s' is not also readable or is not a file!  Using emergency skin." % skin)
+	print "[skin] Error: Default skin '%s' is not readable or is not a file!  Using emergency skin." % skin
+	DEFAULT_SKIN = EMERGENCY_SKIN
 config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
 config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
 
