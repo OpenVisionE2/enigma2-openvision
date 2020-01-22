@@ -1,5 +1,5 @@
 from enigma import eDVBResourceManager, Misc_Options, eDVBCIInterfaces, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
-from Tools.Directories import fileExists, fileCheck, pathExists, fileHas
+from Tools.Directories import fileExists, fileCheck, pathExists, fileHas, resolveFilename, SCOPE_PLUGINS
 import os, re
 from os import access, R_OK
 from boxbranding import getDisplayType, getImageArch
@@ -95,7 +95,7 @@ SystemInfo["Has2160p"] = fileHas("/proc/stb/video/videomode_preferred","2160p50"
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")
-SystemInfo["HasHDMI-CEC"] = model not in ("dm800","dm8000") and fileExists("/usr/lib/enigma2/python/Plugins/SystemPlugins/HdmiCEC/plugin.pyo") and (fileExists("/dev/cec0") or fileExists("/dev/hdmi_cec") or fileExists("/dev/misc/hdmi_cec0"))
+SystemInfo["HasHDMI-CEC"] = model not in ("dm800","dm8000") and fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/HdmiCEC/plugin.pyo")) and (fileExists("/dev/cec0") or fileExists("/dev/hdmi_cec") or fileExists("/dev/misc/hdmi_cec0"))
 SystemInfo["DreamBoxHDMIin"] = model in ("dm7080","dm820","dm900","dm920")
 SystemInfo["HasHDMIHDin"] = model in ("sezammarvel","xpeedlx3","atemionemesis","mbultra","beyonwizt4","hd2400","dm7080","et10000")
 SystemInfo["HasHDMIFHDin"] = model in ("dm820","dm900","dm920","vuultimo4k","beyonwizu4","et13000","sf5008","vuuno4kse", "vuduo4k","gbquad4k")
