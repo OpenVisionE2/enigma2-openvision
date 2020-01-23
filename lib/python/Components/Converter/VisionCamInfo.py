@@ -1,7 +1,7 @@
 from Components.Converter.Converter import Converter
 from Components.config import config
 from Components.Element import cached
-from Tools.Directories import fileExists
+from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Poll import Poll
 
 
@@ -26,7 +26,7 @@ class VisionCamInfo(Poll, Converter, object):
 		if not info:
 			return ""
 		# Alternative SoftCam Manager 
-		if fileExists("/usr/lib/enigma2/python/Plugins/Extensions/AlternativeSoftCamManager/plugin.pyo"): 
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AlternativeSoftCamManager/plugin.pyo")): 
 			if config.plugins.AltSoftcam.actcam.value != "none": 
 				return config.plugins.AltSoftcam.actcam.value 
 			else: 

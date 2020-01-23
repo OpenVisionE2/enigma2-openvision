@@ -1,7 +1,7 @@
 from __future__ import print_function
 from Components.Converter.Converter import Converter
 from Components.Element import cached
-from Tools.Directories import fileExists
+from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Poll import Poll
 import time
 import os
@@ -163,10 +163,10 @@ class YWeather(Poll, Converter, object):
 		direct = 0
 		info = ""
 		XML_location = "/tmp/yweather.xml"
-		if fileExists("/usr/lib/enigma2/python/Plugins/Extensions/iSkin/Weather/Config/Location_id"):
-			self.weather_city = open("/usr/lib/enigma2/python/Plugins/Extensions/iSkin/Weather/Config/Location_id").read()
-		elif fileExists("/usr/lib/enigma2/python/Plugins/Extensions/YahooWeather/Config/Location_id"):
-			self.weather_city = open("/usr/lib/enigma2/python/Plugins/Extensions/YahooWeather/Config/Location_id").read()
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/iSkin/Weather/Config/Location_id")):
+			self.weather_city = open(resolveFilename(SCOPE_PLUGINS, "Extensions/iSkin/Weather/Config/Location_id")).read()
+		elif fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/YahooWeather/Config/Location_id")):
+			self.weather_city = open(resolveFilename(SCOPE_PLUGINS, "Extensions/YahooWeather/Config/Location_id")).read()
 		if fileExists(XML_location) and (int((time.time() - os.stat(XML_location).st_mtime)/60) >= self.time_update):
 			os.remove(XML_location)
 		XML_URL = "https://query.yahooapis.com/v1/public/yql?q=select%%20*%%20from%%20weather.forecast%%20where%%20woeid=%ss%%20AND%%20u=%%22c%%22" % self.weather_city

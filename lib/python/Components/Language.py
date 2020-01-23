@@ -3,7 +3,7 @@ from __future__ import print_function
 import gettext
 import locale
 import os
-from Tools.Directories import SCOPE_LANGUAGE, resolveFilename
+from Tools.Directories import SCOPE_LANGUAGE, resolveFilename, SCOPE_LIBDIR
 
 LPATH = resolveFilename(SCOPE_LANGUAGE, "")
 
@@ -109,10 +109,10 @@ class Language:
 
 		localeconf = open('/home/root/.config/locale.conf', 'w')
 		for category in ["LC_TIME", "LC_DATE", "LC_MONETARY", "LC_MESSAGES", "LC_NUMERIC", "LC_NAME", "LC_TELEPHONE", "LC_ADDRESS", "LC_PAPER", "LC_IDENTIFICATION", "LC_MEASUREMENT", "LANG" ]:
-			if category == "LANG" or (category == "LC_DATE" and os.path.exists('/usr/lib/locale/' + self.getLanguage() + '/LC_TIME')) or os.path.exists('/usr/lib/locale/' + self.getLanguage() + '/' + category):
+			if category == "LANG" or (category == "LC_DATE" and os.path.exists(resolveFilename(SCOPE_LIBDIR, 'locale/' + self.getLanguage() + '/LC_TIME'))) or os.path.exists(resolveFilename(SCOPE_LIBDIR, 'locale/' + self.getLanguage() + '/' + category)):
 				localeconf.write('export %s="%s.%s"\n' % (category, self.getLanguage(), "UTF-8" ))
 			else:
-				if os.path.exists('/usr/lib/locale/C.UTF-8/' + category):
+				if os.path.exists(resolveFilename(SCOPE_LIBDIR, 'locale/C.UTF-8/' + category)):
 					localeconf.write('export %s="C.UTF-8"\n' % category)
 				else:
 					localeconf.write('export %s="POSIX"\n' % category)
