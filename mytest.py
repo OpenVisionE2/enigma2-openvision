@@ -3,10 +3,12 @@ import sys
 import os
 from time import time
 
-if os.path.isfile("/usr/lib/enigma2/python/enigma.zip"):
-	sys.path.append("/usr/lib/enigma2/python/enigma.zip")
-if os.path.isfile("/usr/lib64/enigma2/python/enigma.zip"):
-	sys.path.append("/usr/lib64/enigma2/python/enigma.zip")
+if os.path.isdir("/usr/lib64"):
+	if os.path.isfile("/usr/lib64/enigma2/python/enigma.zip"):
+		sys.path.append("/usr/lib64/enigma2/python/enigma.zip")
+else:
+	if os.path.isfile("/usr/lib/enigma2/python/enigma.zip"):
+		sys.path.append("/usr/lib/enigma2/python/enigma.zip")
 
 from Tools.Profile import profile, profile_final
 profile("PYTHON_START")
@@ -15,8 +17,8 @@ profile("PYTHON_START")
 # it will break output redirection for crash logs.
 import Tools.RedirectOutput
 from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib
-print("Open Vision version = %s" % getVisionVersion())
-print("Open Vision revision = %s" % getVisionRevision())
+print("[mytest] Open Vision version = %s" % getVisionVersion())
+print("[mytest] Open Vision revision = %s" % getVisionRevision())
 import enigma
 import eConsoleImpl
 import eBaseImpl
