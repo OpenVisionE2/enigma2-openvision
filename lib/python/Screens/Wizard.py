@@ -92,9 +92,9 @@ class Wizard(Screen):
 				self.wizard[self.lastStep]["config"]["type"] = type
 				if type == "ConfigList" or type == "standalone":
 					try:
-						exec "from Screens." + str(attrs.get('module')) + " import *"
+						exec("from Screens." + str(attrs.get('module')) + " import *")
 					except:
-						exec "from " + str(attrs.get('module')) + " import *"
+						exec("from " + str(attrs.get('module')) + " import *")
 
 					self.wizard[self.lastStep]["config"]["screen"] = eval(str(attrs.get('screen')))
 					if 'args' in attrs:
@@ -456,7 +456,7 @@ class Wizard(Screen):
 	def runCode(self, code):
 		if code != "":
 			print("[Wizard] code", code)
-			exec code
+			exec(code)
 			return True
 		return False
 
@@ -491,7 +491,7 @@ class Wizard(Screen):
 			self.configInstance = None
 
 		self.condition = True
-		exec (self.wizard[self.currStep]["condition"])
+		exec(self.wizard[self.currStep]["condition"])
 		if not self.condition:
 			print("keys*******************:", self.wizard[self.currStep].keys())
 			if "laststep" in self.wizard[self.currStep]: # exit wizard, if condition of laststep doesn't hold
