@@ -24,6 +24,7 @@ QUIT_RESTART = 3
 QUIT_UPGRADE_FP = 4
 QUIT_ERROR_RESTART = 5
 QUIT_DEBUG_RESTART = 6
+QUIT_MANUFACTURER_RESET = 7
 QUIT_REBOOT_ANDROID = 12
 QUIT_REBOOT_RECOVERY = 16
 QUIT_UPGRADE_PROGRAM = 42
@@ -260,7 +261,8 @@ class QuitMainloopScreen(Screen):
 			QUIT_DEBUG_RESTART: _("The user interface of your receiver is restarting in debug mode"),
 			QUIT_REBOOT_ANDROID: _("Your receiver is rebooting into android mode"),
 			QUIT_REBOOT_RECOVERY: _("Your receiver is rebooting into recovery mode"),
-			QUIT_UPGRADE_PROGRAM: _("Unattended upgrade in progress\nPlease wait until your receiver reboots\nThis may take a few minutes"),
+			QUIT_UPGRADE_PROGRAM: _("Unattended update in progress\nPlease wait until your receiver reboots\nThis may take a few minutes"),
+			QUIT_MANUFACTURER_RESET: _("Manufacturer reset in progress\nPease wait until enigma2 restarts"),
 			QUIT_UPGRADE_FPANEL: _("Your front panel will be updated\nThis may take a few minutes"),
 			QUIT_WOL: _("Your receiver goes to WOL")
 		}.get(retvalue)
@@ -304,6 +306,7 @@ class TryQuitMainloop(MessageBox):
 				QUIT_REBOOT_ANDROID: _("Really reboot into android mode?"),
 				QUIT_REBOOT_RECOVERY: _("Really reboot into recovery mode?"),
 				QUIT_UPGRADE_PROGRAM: _("Really update your settop box and reboot now?"),
+				QUIT_MANUFACTURER_RESET: _("Really perform a manufacturer reset now?"),
 				QUIT_UPGRADE_FPANEL: _("Really update the front panel and reboot now?"),
 				QUIT_WOL: _("Really WOL now?")
 			}.get(retvalue, None)

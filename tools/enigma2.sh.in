@@ -89,6 +89,7 @@ while : ; do
 	#  4 - front processor upgrade
 	#  5 - install new settings
 	#  6 - restart enigma in debug mode
+	#  7 - manufacturer reset
 	# 12 - Reboot to android
 	# 16 - Reboot to recovery
 	# 42 - offline update
@@ -127,6 +128,9 @@ while : ; do
 			;;
 		6)
 			DEBUG_LVL=4
+			;;
+		7)
+			rm -R /etc/enigma2
 			;;
 		12)
 			if [ -e /dev/block/by-name/bootoptions ]; then
