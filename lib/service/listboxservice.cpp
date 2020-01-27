@@ -928,7 +928,7 @@ void eListboxServiceContent::paint(gPainter &painter, eWindowStyle &style, const
 								int correction = (m_show_two_lines && m_servicetype_icon_mode == 2) ? (((area.height()/2) - pixmap_size.height()) / 2) + 2 : (area.height() - pixmap_size.height()) / 2;
 								area.moveBy(offset);
 								painter.clip(area);
-								painter.blit(pixmap, ePoint(area.left() + offs, offset.y() + correction), area, gPainter::BT_ALPHATEST);
+								painter.blit(pixmap, ePoint(area.left() + offs, offset.y() + correction), area, gPainter::BT_ALPHABLEND);
 								painter.clippop();
 							}
 						}
@@ -957,7 +957,7 @@ void eListboxServiceContent::paint(gPainter &painter, eWindowStyle &style, const
 									m_element_position[celServiceInfo].setWidth(area.width() - pixmap_size.width() - m_items_distances);
 								}
 								painter.clip(area);
-								painter.blit(m_pixmaps[picCrypto], ePoint(area.left() + offs, offset.y() + correction), area, gPainter::BT_ALPHATEST);
+								painter.blit(m_pixmaps[picCrypto], ePoint(area.left() + offs, offset.y() + correction), area, gPainter::BT_ALPHABLEND);
 								painter.clippop();
 							}
 						}
@@ -984,7 +984,7 @@ void eListboxServiceContent::paint(gPainter &painter, eWindowStyle &style, const
 								m_element_position[celServiceInfo].setWidth(area.width() - pixmap_size.width() - m_items_distances);
 							}
 							painter.clip(area);
-							painter.blit(m_pixmaps[picRecord], ePoint(area.left() + offs, offset.y() + correction), area, gPainter::BT_ALPHATEST);
+							painter.blit(m_pixmaps[picRecord], ePoint(area.left() + offs, offset.y() + correction), area, gPainter::BT_ALPHABLEND);
 							painter.clippop();
 						}
 						if (m_show_two_lines)
@@ -1032,14 +1032,14 @@ void eListboxServiceContent::paint(gPainter &painter, eWindowStyle &style, const
 						area = m_element_position[celServiceName];
 						if (m_element_position[celServiceEventProgressbar].left() == 0)
 							area.setLeft(0);
-						xoffset = pixmap_size.width() + m_items_distances;			
+						xoffset = pixmap_size.width() + m_items_distances;
 					}
 					else
 						area = m_element_position[celServiceNumber];
 					int correction = (area.height() - pixmap_size.height()) / 2;
 					area.moveBy(offset);
 					painter.clip(area);
-					painter.blit(pixmap, ePoint(area.left(), offset.y() + correction), area, gPainter::BT_ALPHATEST);
+					painter.blit(pixmap, ePoint(area.left(), offset.y() + correction), area, gPainter::BT_ALPHABLEND);
 					painter.clippop();
 				}
 			}
