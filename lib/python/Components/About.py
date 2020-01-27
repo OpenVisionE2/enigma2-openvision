@@ -4,7 +4,6 @@ import re
 from enigma import getBoxType, getBoxBrand
 from Components.SystemInfo import SystemInfo
 import socket, fcntl, struct
-from Tools.Directories import resolveFilename, SCOPE_LIBDIR
 
 def _ifinfo(sock, addr, ifname):
 	iface = struct.pack('256s', ifname[:15])
@@ -47,8 +46,6 @@ def getImageVersionString():
 	try:
 		if os.path.isfile('/var/lib/opkg/status'):
 			st = os.stat('/var/lib/opkg/status')
-		else:
-			st = os.stat(resolveFilename(SCOPE_LIBDIR, 'ipkg/status'))
 		tm = time.localtime(st.st_mtime)
 		if tm.tm_year >= 2018:
 			return time.strftime("%Y-%m-%d %H:%M:%S", tm)

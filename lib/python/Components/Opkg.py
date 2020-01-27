@@ -15,7 +15,7 @@ def opkgAddDestination(mountpoint):
 	global opkgDestinations
 	if mountpoint not in opkgDestinations:
 		opkgDestinations.append(mountpoint)
-		print("[Ipkg] Added to OPKG destinations:", mountpoint)
+		print("[Opkg] Added to OPKG destinations:", mountpoint)
 
 def onPartitionChange(why, part):
 	global opkgDestinations
@@ -34,7 +34,7 @@ def onPartitionChange(why, part):
 		elif why == 'remove':
 			try:
 				opkgDestinations.remove(mountpoint)
-				print("[Ipkg] Removed from OPKG destinations:", mountpoint)
+				print("[Opkg] Removed from OPKG destinations:", mountpoint)
 			except:
 				pass
 
@@ -42,7 +42,7 @@ harddiskmanager.on_partition_list_change.append(onPartitionChange)
 for part in harddiskmanager.getMountedPartitions():
 	onPartitionChange('add', part)
 
-class IpkgComponent:
+class OpkgComponent:
 	EVENT_INSTALL = 0
 	EVENT_DOWNLOAD = 1
 	EVENT_INFLATING = 2
@@ -61,8 +61,8 @@ class IpkgComponent:
 	CMD_UPGRADE = 4
 	CMD_UPGRADE_LIST = 5
 
-	def __init__(self, ipkg = 'opkg'):
-		self.ipkg = ipkg
+	def __init__(self, opkg = 'opkg'):
+		self.opkg = opkg
 		self.cmd = eConsoleAppContainer()
 		self.cache = None
 		self.callbackList = []
@@ -75,10 +75,10 @@ class IpkgComponent:
 		self.runCmd("%s %s" % (opkgExtraDestinations(), cmd))
 
 	def runCmd(self, cmd):
-		print("[Ipkg] executing", self.ipkg, cmd)
+		print("[Opkg] executing", self.opkg, cmd)
 		self.cmd.appClosed.append(self.cmdFinished)
 		self.cmd.dataAvail.append(self.cmdData)
-		if self.cmd.execute("%s %s" % (self.ipkg, cmd)):
+		if self.cmd.execute("%s %s" % (self.opkg, cmd)):
 			self.cmdFinished(-1)
 
 	def startCmd(self, cmd, args = None):
@@ -88,7 +88,7 @@ class IpkgComponent:
 			append = ""
 			if args["test_only"]:
 				append = " -test"
-			self.runCmdEx("upgrade %s | tee /home/root/ipkgupgrade.log" % append)
+			self.runCmdEx("upgrade %s | tee /home/root/opkgupgrade.log" % append)
 		elif cmd == self.CMD_LIST:
 			self.fetchedList = []
 			if args['installed_only']:
@@ -110,7 +110,7 @@ class IpkgComponent:
 		self.cmd.dataAvail.remove(self.cmdData)
 
 	def cmdData(self, data):
-		print("[Ipkg] data:", data)
+		print("[Opkg] data:", data)
 		if self.cache is None:
 			self.cache = data
 		else:
@@ -151,7 +151,7 @@ class IpkgComponent:
 				self.callCallbacks(self.EVENT_ERROR, None)
 			elif data.startswith('Failed to download'):
 				self.callCallbacks(self.EVENT_ERROR, None)
-			elif data.startswith('ipkg_download: ERROR:'):
+			elif data.startswith('opkg_download: ERROR:'):
 				self.callCallbacks(self.EVENT_ERROR, None)
 			elif data.find('Configuration file \'') >= 0:
 				# Note: the config file update question doesn't end with a newline, so
@@ -159,8 +159,8 @@ class IpkgComponent:
 				# don't necessarily start at the beginning of a line
 				self.callCallbacks(self.EVENT_MODIFIED, data.split(' \'', 3)[1][:-1])
 		except Exception as ex:
-			print("[Ipkg] Failed to parse: '%s'" % data)
-			print("[Ipkg]", ex)
+			print("[Opkg] Failed to parse: '%s'" % data)
+			print("[Opkg]", ex)
 
 	def callCallbacks(self, event, param = None):
 		for callback in self.callbackList:
