@@ -354,7 +354,7 @@ class AttributeParser:
 			getattr(self, attrib)(value)
 		except AttributeError:
 			print("[skin] Attribute '%s' (with value of '%s') not implemented!" % (attrib, value))
-		except SkinError, ex:
+		except SkinError as ex:
 			print("[skin] Error:", ex)
 
 	def applyAll(self, attrs):
