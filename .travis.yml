@@ -1,11 +1,14 @@
 language: cpp
 
 sudo: required
-dist: trusty
+dist: bionic
 
 addons:
   apt:
+    sources:
+    - ubuntu-toolchain-r-test
     packages:
+    - g++-9
     - linux-libc-dev
     - git
     - build-essential
@@ -24,36 +27,12 @@ addons:
     - libavahi-client-dev
     - libjpeg-turbo8-dev
     - libgif-dev
+    - libopenmpi-dev
+    env:
+    - MATRIX_EVAL="CC=gcc-9 && CXX=g++-9"
 
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-9
-            - linux-libc-dev
-            - git
-            - build-essential
-            - automake
-            - libtool
-            - python-dev
-            - zlib1g-dev
-            - gettext
-            - swig
-            - libgstreamer1.0-dev
-            - libgstreamer-plugins-base1.0-dev
-            - libfreetype6-dev
-            - libsigc++-2.0-dev
-            - libfribidi-dev
-            - libssl-dev
-            - libavahi-client-dev
-            - libjpeg-turbo8-dev
-            - libgif-dev
-      env:
-        - MATRIX_EVAL="CC=gcc-9 && CXX=g++-9"
+python:
+  - "2.7"
 
 git:
   depth: 1
@@ -89,8 +68,8 @@ script:
 - popd
 - echo compiling enigma2
 - autoreconf -i
-- ./configure --with-libsdl=no --with-boxtype=nobox --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-gstversion=1.0 --with-nolcd
+- ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --with-oever=9.3 --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
 - make
 - python -m compileall .
+- find . -type f -name "*.po" -exec msgfmt {} -o {}.mo \;
 - echo done!
-

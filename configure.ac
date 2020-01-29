@@ -769,10 +769,11 @@ CXXFLAGS="$CXXFLAGS -Wall -flto $BASE_CFLAGS $ENIGMA2_CFLAGS $PTHREAD_CFLAGS $OP
 AC_CONFIG_FILES([
 Makefile
 data/Makefile
-data/7segment/Makefile
 data/fonts/Makefile
 data/countries/Makefile
 data/display/Makefile
+data/display/7segment/Makefile
+data/display/display/Makefile
 data/display/display96/Makefile
 data/display/display128/Makefile
 data/display/display128dm/Makefile

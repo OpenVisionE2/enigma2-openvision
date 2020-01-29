@@ -1,6 +1,6 @@
+from __future__ import print_function
 import re
 import xml.etree.cElementTree
-from __future__ import print_function
 from enigma import ePicLoad, getDesktop
 from os import listdir
 from os.path import dirname, exists, isdir, join as pathjoin

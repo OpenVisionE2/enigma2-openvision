@@ -1,6 +1,3 @@
-# by 2boom 2011-14
-# last update 18.01.2014
-
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 

@@ -1,4 +1,4 @@
-# Avoid music file
+SUBDIRS = display
 
 if HAVE_BWLCD128
 SUBDIRS += vfd128
