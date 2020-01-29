@@ -57,10 +57,10 @@
 					<item level="0" text="Language" entryID="language_setup"><screen module="LanguageSelection"/></item>
 					<item level="0" entryID="time_setup"><setup id="time"/></item>
 					<item level="0" entryID="user_interface"><setup id="userinterface"/></item>
-					<item level="0" text="Skin" entryID="skin_setup"><screen module="SkinSelector" screen="SkinSelector"/></item>
+					<item level="0" text="Skin" entryID="primary_skin_selector"><screen module="SkinSelector" screen="SkinSelector"/></item>
 					<menu level="0" text="Front panel display" entryID="display_selection" requires="Display">
 						<id val="lcd"/>
-						<item weight="1" level="0" text="Display Skin" entryID="lcd_skin_setup"><screen module="SkinSelector" screen="LcdSkinSelector"/></item>
+						<item weight="1" level="0" text="Display skin" entryID="display_skin_selector"><screen module="SkinSelector" screen="LcdSkinSelector"/></item>
 						<item weight="2" level="1" entryID="lcd_setup" text="LCD setup"><setup id="lcd"/></item>
 						<item weight="3" level="1" entryID="led_setup" text="LED setup"><setup id="ledsetup"/></item>
 					</menu>

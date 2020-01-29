@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-26 11:50+0330\n"
+"POT-Creation-Date: 2020-01-30 00:14+0330\n"
 "PO-Revision-Date: 2019-12-06 15:54+0100\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
@@ -1159,6 +1159,9 @@ msgstr "16:9 alltid"
 msgid "16:9 letterbox"
 msgstr "16:9 Brevsprekkformat"
 
+msgid "16K"
+msgstr ""
+
 #
 msgid "18 V"
 msgstr "18V"
@@ -1265,6 +1268,11 @@ msgstr "4:3 Breddereduksjon"
 
 #
 #, fuzzy
+msgid "4K"
+msgstr "4"
+
+#
+#, fuzzy
 msgid "4X"
 msgstr "4"
 
@@ -1290,6 +1298,11 @@ msgstr "8"
 msgid "8 character"
 msgstr ""
 
+#
+#, fuzzy
+msgid "8K"
+msgstr "8"
+
 msgid "8bit"
 msgstr "8bit"
 
@@ -1300,26 +1313,32 @@ msgstr "9"
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - standard (frakoblet)"
 
-msgid "<Alternate Display Skin>"
+#
+#, fuzzy
+msgid "< Current >"
+msgstr "Nåværende verdi: "
+
+#
+#, fuzzy
+msgid "< Default + Picon >"
+msgstr "<Standard Skin>"
+
+#
+#, fuzzy
+msgid "< Default >"
+msgstr "<Standard Skin>"
+
+msgid "< Emergency >"
+msgstr ""
+
+msgid "< Pending restart >"
 msgstr ""
 
 msgid "<Current movielist location>"
 msgstr "<Gjeldende opptaksmappe>"
 
-#
-msgid "<Default Skin>"
-msgstr "<Standard Skin>"
-
 msgid "<Default movie location>"
 msgstr "<Standard opptaksmappe>"
-
-msgid "<Display Skin with Picon>"
-msgstr ""
-
-#
-#, fuzzy
-msgid "<Display Skin>"
-msgstr "<Standard Skin>"
 
 msgid "<Last timer location>"
 msgstr "<Siste timer mappe>"
@@ -1556,10 +1575,6 @@ msgstr "Avbryt redigering av favorittliste"
 #
 msgid "About"
 msgstr "Om"
-
-#
-msgid "About..."
-msgstr "Om..."
 
 #
 #, fuzzy
@@ -2830,6 +2845,12 @@ msgstr "Canada"
 #
 msgid "Cancel"
 msgstr "Tilbake"
+
+msgid "Cancel any changes to the currently active skin"
+msgstr ""
+
+msgid "Cancel any changes to the currently active skin and exit all menus"
+msgstr ""
 
 msgid "Cancel any text changes and exit"
 msgstr "Avbryt eventuelle tekst endringer og avslutt"
@@ -5319,9 +5340,6 @@ msgstr "Feilsøkingsnivå for Enigma: %d\n"
 msgid "Enigma version: "
 msgstr "Enigma versjon: "
 
-msgid "Enigma2 skin selector"
-msgstr "Velger for Enigma2 utseende"
-
 msgid "Enigmalight"
 msgstr ""
 
@@ -5458,10 +5476,6 @@ msgid ""
 msgstr ""
 "Feil under utpakking av bilde\n"
 "%s"
-
-#
-msgid "Error executing plugin"
-msgstr "Feil under oppstart av tillegget"
 
 #
 msgid "Error stop stream!"
@@ -5806,6 +5820,9 @@ msgstr "FEC:"
 #, fuzzy
 msgid "FFmpeg version: "
 msgstr "Enigma versjon: "
+
+msgid "FHD"
+msgstr ""
 
 #, fuzzy
 msgid "FPU: "
@@ -6182,6 +6199,10 @@ msgstr "Gstreamer versjon: "
 msgid "GUI Settings"
 msgstr "GUI innstilling"
 
+#, fuzzy
+msgid "GUI Skin"
+msgstr "GUI innstilling"
+
 msgid ""
 "GUI needs a restart to apply a new language\n"
 "Do you want to restart the GUI now?"
@@ -6189,20 +6210,13 @@ msgstr ""
 "GUI må startes på nytt for aktivering av et nytt språk\n"
 "Starte GUI på nytt nå?"
 
-msgid ""
-"GUI needs a restart to apply a new skin\n"
-"Do you want to restart the GUI now?"
-msgstr ""
-"GUI må startes på nytt for aktivering av nytt utseende\n"
-"Starte på nytt nå?"
-
 #, fuzzy
 msgid ""
 "GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
-"GUI må startes på nytt for aktivering av nytt utseende\n"
-"Starte på nytt nå?"
+"GUI må startes på nytt for aktivering av et nytt språk\n"
+"Starte GUI på nytt nå?"
 
 msgid "Gabon"
 msgstr "Gabon"
@@ -6415,6 +6429,10 @@ msgstr ""
 
 msgid "H:mm:ss"
 msgstr ""
+
+#, fuzzy
+msgid "HD"
+msgstr "D"
 
 msgid "HD list"
 msgstr "HD liste"
@@ -7135,10 +7153,6 @@ msgstr "Inversjon, Pilot & Roll-off"
 
 msgid "Invert"
 msgstr "Invertere"
-
-#
-msgid "Ipkg"
-msgstr "Ipkg"
 
 msgid "Iran (Islamic Republic of)"
 msgstr "Iran"
@@ -7993,10 +8007,9 @@ msgstr "Flytt bilde i bilde"
 msgid "Move down a line"
 msgstr "Gå nedover listen"
 
-#
 #, fuzzy
 msgid "Move down a page"
-msgstr "gå til til siste oppføring"
+msgstr "gå til neste posisjon"
 
 #
 #, fuzzy
@@ -8040,11 +8053,31 @@ msgid "Move to position X"
 msgstr "Flytt til posisjon X"
 
 #, fuzzy
+msgid "Move to the next page"
+msgstr "gå til neste posisjon"
+
+#
+#, fuzzy
+msgid "Move to the next skin"
+msgstr "gå til til neste oppføring"
+
+#
+#, fuzzy
+msgid "Move to the previous page"
+msgstr "spol tilbake til forrige kapittel"
+
+#
+#, fuzzy
+msgid "Move to the previous skin"
+msgstr "gå til til forrige oppføring"
+
+#, fuzzy
 msgid "Move up a line"
 msgstr "Flyttet til startposisjon"
 
+#, fuzzy
 msgid "Move up a page"
-msgstr ""
+msgstr "gå til neste posisjon"
 
 #
 #, fuzzy
@@ -8899,6 +8932,9 @@ msgstr ""
 msgid "OpenVPN setup"
 msgstr "Åpne oppsetts tuner "
 
+msgid "Opkg"
+msgstr ""
+
 #
 msgid "Options disable timer"
 msgstr "Innstilling for av timer"
@@ -9728,7 +9764,8 @@ msgstr "Trykk på MENU på fjernkontrollen for flere alternativer."
 msgid "Press OK on your remote control to continue."
 msgstr "Trykk OK for å fortsette."
 
-msgid "Press OK to activate the selected skin."
+#, fuzzy, python-format
+msgid "Press OK to activate the selected%s skin."
 msgstr "Trykk OK for å ta i bruk det valgte utseende."
 
 msgid "Press OK to activate the settings."
@@ -9740,6 +9777,10 @@ msgstr "Trykk OK for å endre innstillinger."
 #, python-format
 msgid "Press OK to get further details for %s"
 msgstr "Trykk OK for å få ytterligere detaljer for %s"
+
+#, fuzzy, python-format
+msgid "Press OK to keep the currently selected%s skin."
+msgstr "Trykk OK for å ta i bruk det valgte utseende."
 
 msgid "Press OK to scan"
 msgstr "Trykk OK for søk"
@@ -10498,9 +10539,10 @@ msgstr "Gjenopprett"
 msgid "Restore inetd.conf"
 msgstr "Start nettverket på nytt"
 
+#
 #, fuzzy
 msgid "Restore previous cuts..."
-msgstr "Husk tilbake til forrige kanal"
+msgstr "gå til til forrige oppføring"
 
 #
 msgid "Restore system settings"
@@ -10781,6 +10823,10 @@ msgstr "Lagre/Skriv inn tekst og avslutt"
 #, fuzzy
 msgid "Save EPG"
 msgstr "Kanal EPG"
+
+#, fuzzy
+msgid "Save and activate the currently selected skin"
+msgstr "Trykk OK for å ta i bruk det valgte utseende."
 
 msgid "Save and exit"
 msgstr "Lagre og avslutt"
@@ -11594,7 +11640,7 @@ msgstr "Angi bruker-IDen for OpenWebif fra reserve tuneren"
 #
 #, fuzzy
 msgid "Set the default sorting method."
-msgstr "Velge standardinnstillinger?"
+msgstr "Velg sorteringsmetode:"
 
 msgid "Set the delay time between repeated loops, this is used by software renderer in some skins."
 msgstr ""
@@ -12220,21 +12266,25 @@ msgid "Size: "
 msgstr ""
 
 #
+#, fuzzy
 msgid "Skin"
-msgstr "Utseende"
+msgstr "Utseender"
 
 #, python-format
 msgid "Skin & Resolution: %s (%sx%s)\n"
 msgstr "Utseende & Oppløsning: %s (%sx%s)\n"
 
+#
+#, fuzzy
+msgid "Skin Selection Actions"
+msgstr "Velg handling"
+
 #, fuzzy
 msgid "Skin Setting"
 msgstr "Innstillinger"
 
-#
-#, fuzzy
-msgid "Skin setup"
-msgstr "PiP-bilde i bilde oppsett"
+msgid "SkinSelector: Restart GUI"
+msgstr ""
 
 #
 msgid "Skins"
@@ -13933,8 +13983,16 @@ msgstr "Egenskaper"
 msgid "Titleset mode"
 msgstr "Navnevalg"
 
+#, python-format
+msgid "To apply the selected '%s' skin the GUI needs to restart.  Would you like to restart the GUI now?"
+msgstr ""
+
 msgid "To audio selection"
 msgstr "Lyd valg"
+
+#, python-format
+msgid "To save and apply the selected '%s' skin the GUI needs to restart.  Would you like to save the selection and restart the GUI now?"
+msgstr ""
 
 msgid "To subtitle selection"
 msgstr "Undertekst valg"
@@ -14261,7 +14319,6 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr "Kan ikke opprette de nødvendige katalogene på mediet (for eksempel USB-pinne eller harddisk)-kontroller media og prøv igjen!"
 
-#, fuzzy
 msgid ""
 "Unattended update in progress\n"
 "Please wait until your receiver reboots\n"

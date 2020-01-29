@@ -18,8 +18,8 @@ from Tools.LoadPixmap import LoadPixmap
 
 DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "OctEtFHD/skin.xml" or "PLi-HD/skin.xml"  # SD hardware is no longer supported by the default skin.
 # DEFAULT_SD_SKIN = "skin.xml"
-EMERGENCY_SKIN = "skin_default.xml"
-DEFAULT_DISPLAY_SKIN = SystemInfo["grautec"] and "display/skin_display_grautec.xml" or "display/skin_display.xml"
+EMERGENCY_SKIN = "skin_default/skin.xml"
+DEFAULT_DISPLAY_SKIN = SystemInfo["grautec"] and "skin_default/skin_display_grautec.xml" or "skin_default/skin_display.xml"
 USER_SKIN = "skin_user.xml"
 USER_SKIN_TEMPLATE = "skin_user_%s.xml"
 # BOX_SKIN = "skin_box.xml"  # DEBUG: Is this actually used?
@@ -31,15 +31,22 @@ DISPLAY_SKIN_ID = 1  # Front panel / display / LCD.
 
 domSkins = []  # List of skins to be processed into the domScreens dictionary.
 domScreens = {}  # Dictionary of skin based screens.
-colorNames = {}  # Dictionary of skin color names.
-switchPixmap = {}  # Dictionary of switch images.
-parameters = {}  # Dictionary of skin parameters used to modify code behavior.
-menus = {}  # Dictionary of images associated with menu entries.
-setups = {}  # Dictionary of images associated with setup menus.
+colorNames = {  # Dictionary of skin color names.
+	"key_back": gRGB(0x00313131),
+	"key_blue": gRGB(0x0018188b),
+	"key_green": gRGB(0x001f771f),
+	"key_red": gRGB(0x009f1313),
+	"key_text": gRGB(0x00ffffff),
+	"key_yellow": gRGB(0x00a08500)
+}
 fonts = {  # Dictionary of predefined and skin defined font aliases.
 	"Body": ("Regular", 18, 22, 16),
-	"ChoiceList": ("Regular", 20, 24, 18),
+	"ChoiceList": ("Regular", 20, 24, 18)
 }
+menus = {}  # Dictionary of images associated with menu entries.
+parameters = {}  # Dictionary of skin parameters used to modify code behavior.
+setups = {}  # Dictionary of images associated with setup menus.
+switchPixmap = {}  # Dictionary of switch images.
 
 # Skins are loaded in order of priority.  Skin with highest priority is
 # loaded first.  This is usually the user-specified skin.
@@ -88,23 +95,23 @@ def addSkin(name, scope=SCOPE_CURRENT_SKIN):
 				domSkins.append((scope, "%s/" % os.path.dirname(filename), xml.etree.cElementTree.parse(fd).getroot()))
 				print("[skin] Skin '%s' added successfully." % filename)
 				return True
-			except xml.etree.cElementTree.ParseError as e:
+			except xml.etree.cElementTree.ParseError as err:
 				fd.seek(0)
 				content = fd.readlines()
-				line, column = e.position
-				print("[skin] XML Parse Error: '%s' in '%s'!" % (e, filename))
+				line, column = err.position
+				print("[skin] XML Parse Error: '%s' in '%s'!" % (err, filename))
 				data = content[line - 1].replace("\t", " ").rstrip()
 				print("[skin] XML Parse Error: '%s'" % data)
 				print("[skin] XML Parse Error: '%s^%s'" % ("-" * column, " " * (len(data) - column - 1)))
-			except Exception as e:
-				print("[skin] Error: Unable to parse skin data in '%s' - '%s'!" % (filename, e))
-	except IOError as e:
-		if e.errno == errno.ENOENT:  #  No such file or directory
+			except Exception as err:
+				print("[skin] Error: Unable to parse skin data in '%s' - '%s'!" % (filename, err))
+	except (IOError, OSError) as err:
+		if err.errno == errno.ENOENT:  #  No such file or directory
 			print("[skin] Warning: Skin file '%s' does not exist!" % filename)
 		else:
-			print("[skin] Error %d: Opening skin file '%s'! (%s)" % (e.errno, filename, os.strerror(e.errno)))
-	except Exception as e:
-		print("[skin] Error: Unexpected error opening skin file '%s'! (%s)" % (filename, e))
+			print("[skin] Error %d: Opening skin file '%s'! (%s)" % (err.errno, filename, err.strerror))
+	except Exception as err:
+		print("[skin] Error: Unexpected error opening skin file '%s'! (%s)" % (filename, err))
 	return False
 
 
@@ -120,23 +127,27 @@ if not name or not result:
 	addSkin(USER_SKIN, scope=SCOPE_CURRENT_SKIN)
 
 # Add the main GUI skin.
+currentPrimarySkin = None
 result = []
 for skin, name in [(config.skin.primary_skin.value, "current"), (DEFAULT_SKIN, "default"), (EMERGENCY_SKIN, "emergency")]:
 	if skin in result:  # Don't try to add a skin that has already failed.
 		continue
 	config.skin.primary_skin.value = skin
 	if addSkin(config.skin.primary_skin.value, scope=SCOPE_CURRENT_SKIN):
+		currentPrimarySkin = config.skin.primary_skin.value
 		break
 	print("[Skin] Error: Adding %s GUI skin '%s' has failed!" % (name, config.skin.primary_skin.value))
 	result.append(skin)
 
 # Add the front panel / display / lcd skin.
+currentDisplaySkin = None
 result = []
 for skin, name in [(config.skin.display_skin.value, "current"), (DEFAULT_DISPLAY_SKIN, "default")]:
 	if skin in result:  # Don't try to add a skin that has already failed.
 		continue
 	config.skin.display_skin.value = skin
-	if addSkin(config.skin.display_skin.value, scope=SCOPE_CURRENT_SKIN):
+	if addSkin(config.skin.display_skin.value, scope=SCOPE_CURRENT_LCDSKIN):
+		currentDisplaySkin = config.skin.display_skin.value
 		break
 	print("[skin] Error: Adding %s display skin '%s' has failed!" % (name, config.skin.display_skin.value))
 	result.append(skin)
@@ -354,8 +365,8 @@ class AttributeParser:
 			getattr(self, attrib)(value)
 		except AttributeError:
 			print("[skin] Attribute '%s' (with value of '%s') not implemented!" % (attrib, value))
-		except SkinError as ex:
-			print("[skin] Error:", ex)
+		except SkinError as err:
+			print("[skin] Error:", err)
 
 	def applyAll(self, attrs):
 		for attrib, value in attrs:
@@ -750,16 +761,16 @@ def loadSingleSkinData(desktop, domSkin, pathSkin, scope=SCOPE_CURRENT_SKIN):
 				width = int(alias.attrib.get("width", size))
 				fonts[name] = (font, size, height, width)
 				# print("[Skin] Add font alias: name='%s', font='%s', size=%d, height=%s, width=%d." % (name, font, size, height, width))
-			except Exception as ex:
-				print("[skin] Error: Bad font alias -", ex)
+			except Exception as err:
+				print("[skin] Error: Bad font alias -", err)
 	for tag in domSkin.findall("parameters"):
 		for parameter in tag.findall("parameter"):
 			try:
 				name = parameter.attrib.get("name")
 				value = parameter.attrib.get("value")
 				parameters[name] = "," in value and map(parseParameter, value.split(",")) or parseParameter(value)
-			except Exception as ex:
-				print("[skin] Bad parameter:", ex)
+			except Exception as err:
+				print("[skin] Bad parameter:", err)
 	for tag in domSkin.findall("menus"):
 		for setup in tag.findall("menu"):
 			key = setup.attrib.get("key")
@@ -883,23 +894,23 @@ def loadSkin(filename, desktop=None, scope=SCOPE_SKIN):
 						element.clear()
 					else:
 						domScreens[name] = (element, "%s/" % os.path.dirname(filename))
-			except xml.etree.cElementTree.ParseError as e:
+			except xml.etree.cElementTree.ParseError as err:
 				fd.seek(0)
 				content = fd.readlines()
-				line, column = e.position
-				print("[skin] XML Parse Error: '%s' in '%s'!" % (e, filename))
+				line, column = err.position
+				print("[skin] XML Parse Error: '%s' in '%s'!" % (err, filename))
 				data = content[line - 1].replace("\t", " ").rstrip()
 				print("[skin] XML Parse Error: '%s'" % data)
 				print("[skin] XML Parse Error: '%s^%s'" % ("-" * column, " " * (len(data) - column - 1)))
-			except Exception as e:
-				print("[skin] Error: Unable to parse skin data in '%s' - '%s'!" % (filename, e))
-	except IOError as e:
-		if e.errno == errno.ENOENT:  #  No such file or directory
+			except Exception as err:
+				print("[skin] Error: Unable to parse skin data in '%s' - '%s'!" % (filename, err))
+	except (IOError, OSError) as err:
+		if err.errno == errno.ENOENT:  #  No such file or directory
 			print("[skin] Warning: Skin file '%s' does not exist!" % filename)
 		else:
-			print("[skin] Error %d: Opening skin file '%s'! (%s)" % (e.errno, filename, os.strerror(e.errno)))
-	except Exception as e:
-		print("[skin] Error: Unexpected error opening skin file '%s'! (%s)" % (filename, e))
+			print("[skin] Error %d: Opening skin file '%s'! (%s)" % (err.errno, filename, err.strerror))
+	except Exception as err:
+		print("[skin] Error: Unexpected error opening skin file '%s'! (%s)" % (filename, err))
 
 # Kinda hackish, but this is called once by mytest.py.
 #
@@ -1160,8 +1171,8 @@ def readSkin(screen, skin, names, desktop):
 			codeText = widget.text.strip()
 			widgetType = widget.attrib.get("type")
 			code = compile(codeText, "skin applet", "exec")
-		except Exception as ex:
-			raise SkinError("Applet failed to compile: '%s'" % str(ex))
+		except Exception as err:
+			raise SkinError("Applet failed to compile: '%s'" % str(err))
 		if widgetType == "onLayoutFinish":
 			screen.onLayoutFinish.append(code)
 		else:
@@ -1192,8 +1203,8 @@ def readSkin(screen, skin, names, desktop):
 			p = processors.get(w.tag, processNone)
 			try:
 				p(w, context)
-			except SkinError, e:
-				print("[skin] Error in screen '%s' widget '%s':" % (name, w.tag), e)
+			except SkinError as err:
+				print("[skin] Error in screen '%s' widget '%s':" % (name, w.tag), err)
 
 	def processPanel(widget, context):
 		n = widget.attrib.get("name")
@@ -1211,8 +1222,8 @@ def readSkin(screen, skin, names, desktop):
 			cc = SkinContext
 		try:
 			c = cc(context, widget.attrib.get("position"), widget.attrib.get("size"), widget.attrib.get("font"))
-		except Exception as ex:
-			raise SkinError("Failed to create skin context (position='%s', size='%s', font='%s') in context '%s': %s" % (widget.attrib.get("position"), widget.attrib.get("size"), widget.attrib.get("font"), context, ex))
+		except Exception as err:
+			raise SkinError("Failed to create skin context (position='%s', size='%s', font='%s') in context '%s': %s" % (widget.attrib.get("position"), widget.attrib.get("size"), widget.attrib.get("font"), context, err))
 		processScreen(widget, c)
 
 	processors = {
@@ -1235,8 +1246,8 @@ def readSkin(screen, skin, names, desktop):
 		context.x = 0
 		context.y = 0
 		processScreen(myScreen, context)
-	except Exception as e:
-		print("[skin] Error in screen '%s':" % name, e)
+	except Exception as err:
+		print("[skin] Error in screen '%s':" % name, err)
 
 	from Components.GUIComponent import GUIComponent
 	unusedComponents = [x for x in set(screen.keys()) - usedComponents if isinstance(x, GUIComponent)]

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-26 11:50+0330\n"
+"POT-Creation-Date: 2020-01-30 00:14+0330\n"
 "PO-Revision-Date: 2020-01-09 09:15+0100\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -1137,6 +1137,9 @@ msgstr "vždy 16:9"
 msgid "16:9 letterbox"
 msgstr "16:9 Letterbox"
 
+msgid "16K"
+msgstr ""
+
 msgid "18 V"
 msgstr "18 V"
 
@@ -1229,6 +1232,10 @@ msgid "4:3 panscan"
 msgstr "4:3 PanScan"
 
 #, fuzzy
+msgid "4K"
+msgstr "4"
+
+#, fuzzy
 msgid "4X"
 msgstr "4"
 
@@ -1250,6 +1257,10 @@ msgstr "8"
 msgid "8 character"
 msgstr ""
 
+#, fuzzy
+msgid "8K"
+msgstr "8"
+
 msgid "8bit"
 msgstr "8bit"
 
@@ -1259,24 +1270,29 @@ msgstr "9"
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - predvolené (vypnuté)"
 
-msgid "<Alternate Display Skin>"
+#, fuzzy
+msgid "< Current >"
+msgstr "Aktuálna hodnota: "
+
+#, fuzzy
+msgid "< Default + Picon >"
+msgstr "<Predvolený vzhľad>"
+
+#, fuzzy
+msgid "< Default >"
+msgstr "<Predvolený vzhľad>"
+
+msgid "< Emergency >"
+msgstr ""
+
+msgid "< Pending restart >"
 msgstr ""
 
 msgid "<Current movielist location>"
 msgstr "<Aktuálne umiestnenie zoznamu filmov>"
 
-msgid "<Default Skin>"
-msgstr "<Predvolený vzhľad>"
-
 msgid "<Default movie location>"
 msgstr "<Predvolené umiestnenie filmov>"
-
-msgid "<Display Skin with Picon>"
-msgstr ""
-
-#, fuzzy
-msgid "<Display Skin>"
-msgstr "<Predvolený vzhľad>"
 
 msgid "<Last timer location>"
 msgstr "<Umiestnenie poslednej časovej nahrávky>"
@@ -1497,9 +1513,6 @@ msgstr "Zrušiť úpravu obľúbených"
 
 msgid "About"
 msgstr "O prijímači"
-
-msgid "About..."
-msgstr "Info o ..."
 
 #, fuzzy
 msgid "Accept the current selection"
@@ -2646,6 +2659,12 @@ msgstr "Kanada"
 
 msgid "Cancel"
 msgstr "Zrušiť"
+
+msgid "Cancel any changes to the currently active skin"
+msgstr ""
+
+msgid "Cancel any changes to the currently active skin and exit all menus"
+msgstr ""
 
 msgid "Cancel any text changes and exit"
 msgstr "Zrušiť všetky textové zmeny a ukončiť"
@@ -4911,9 +4930,6 @@ msgstr "Úroveň ladenia Enigmy: %d\n"
 msgid "Enigma version: "
 msgstr "Verzia Enigmy: "
 
-msgid "Enigma2 skin selector"
-msgstr "Voľba vzhľadu Enigma2"
-
 msgid "Enigmalight"
 msgstr ""
 
@@ -5041,9 +5057,6 @@ msgid ""
 msgstr ""
 "Chyba počas rozbalovania image\n"
 "%s"
-
-msgid "Error executing plugin"
-msgstr "Chyba spúšťania doplnku"
 
 msgid "Error stop stream!"
 msgstr "Chyba zastavenia streamu!"
@@ -5344,6 +5357,9 @@ msgstr "Korekcia chybovosti (FEC):"
 #, fuzzy
 msgid "FFmpeg version: "
 msgstr "Verzia Enigmy: "
+
+msgid "FHD"
+msgstr ""
 
 #, fuzzy
 msgid "FPU: "
@@ -5689,6 +5705,10 @@ msgstr "Verzia GStreamer: "
 msgid "GUI Settings"
 msgstr "Nastavenie užívateľského rozhrania"
 
+#, fuzzy
+msgid "GUI Skin"
+msgstr "Nastavenie užívateľského rozhrania"
+
 msgid ""
 "GUI needs a restart to apply a new language\n"
 "Do you want to restart the GUI now?"
@@ -5696,19 +5716,12 @@ msgstr ""
 "Pre zmenu jazyka je potrebný reštart užívateľského rozhrania (GUI)\n"
 "Chcete teraz reštartovať GUI?"
 
-msgid ""
-"GUI needs a restart to apply a new skin\n"
-"Do you want to restart the GUI now?"
-msgstr ""
-"Pre použitie nového vzhľadu sa musí reštartovať GUI\n"
-"Chcete teraz reštartovať GUI?"
-
 #, fuzzy
 msgid ""
 "GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
-"Pre použitie nového vzhľadu sa musí reštartovať GUI\n"
+"Pre zmenu jazyka je potrebný reštart užívateľského rozhrania (GUI)\n"
 "Chcete teraz reštartovať GUI?"
 
 msgid "Gabon"
@@ -5902,6 +5915,10 @@ msgstr ""
 
 msgid "H:mm:ss"
 msgstr ""
+
+#, fuzzy
+msgid "HD"
+msgstr "D"
 
 msgid "HD list"
 msgstr "Zoznam HD"
@@ -6560,9 +6577,6 @@ msgstr "Inverzia, Pilot a Roll-off"
 
 msgid "Invert"
 msgstr "Invertovať"
-
-msgid "Ipkg"
-msgstr "Ipkg"
 
 msgid "Iran (Islamic Republic of)"
 msgstr "Irán (Islámska republika)"
@@ -7326,7 +7340,7 @@ msgstr "Prechádzať v zozname nadol"
 
 #, fuzzy
 msgid "Move down a page"
-msgstr "nadol na poslednú položku"
+msgstr "prepnúť na nasledujúci uhol kamery"
 
 #, fuzzy
 msgid "Move down to last entry"
@@ -7367,11 +7381,28 @@ msgid "Move to position X"
 msgstr "Pootočiť na pozíciu X"
 
 #, fuzzy
+msgid "Move to the next page"
+msgstr "prepnúť na nasledujúci uhol kamery"
+
+#, fuzzy
+msgid "Move to the next skin"
+msgstr "nadol na nasledujúcu položku"
+
+#, fuzzy
+msgid "Move to the previous page"
+msgstr "previnúť na predchádzajúcu kapitolu"
+
+#, fuzzy
+msgid "Move to the previous skin"
+msgstr "nahor na predchádzajúcu položku"
+
+#, fuzzy
 msgid "Move up a line"
 msgstr "Otočené na východziu pozíciu"
 
+#, fuzzy
 msgid "Move up a page"
-msgstr ""
+msgstr "prepnúť na nasledujúci uhol kamery"
 
 #, fuzzy
 msgid "Move up to first entry"
@@ -8135,6 +8166,9 @@ msgstr ""
 msgid "OpenVPN setup"
 msgstr "Otvoriť nastavenia tunera "
 
+msgid "Opkg"
+msgstr ""
+
 msgid "Options disable timer"
 msgstr "Možnosti zakázať časovač"
 
@@ -8874,7 +8908,8 @@ msgstr "Stlačením MENU na DO si zobrazíte ďalšie možnosti."
 msgid "Press OK on your remote control to continue."
 msgstr "Ak chcete pokračovať, stlačte tlačidlo OK na diaľkovom ovládači."
 
-msgid "Press OK to activate the selected skin."
+#, fuzzy, python-format
+msgid "Press OK to activate the selected%s skin."
 msgstr "Stlačením OK zapnete zvolený vzhľad."
 
 msgid "Press OK to activate the settings."
@@ -8886,6 +8921,10 @@ msgstr "Stlačte OK pre zmenu nastavení."
 #, python-format
 msgid "Press OK to get further details for %s"
 msgstr "Pre ďalšie informácie o %s stlačte tlačidlo OK"
+
+#, fuzzy, python-format
+msgid "Press OK to keep the currently selected%s skin."
+msgstr "Stlačením OK zapnete zvolený vzhľad."
 
 msgid "Press OK to scan"
 msgstr "Pre vyhľadávanie stlačte OK"
@@ -9563,7 +9602,7 @@ msgstr "Reštartovať sieť"
 
 #, fuzzy
 msgid "Restore previous cuts..."
-msgstr "Návrat na predchádzajúcu stanicu"
+msgstr "nahor na predchádzajúcu položku"
 
 msgid "Restore system settings"
 msgstr "Obnoviť nastavenia systému"
@@ -9816,6 +9855,10 @@ msgstr "Uložiť / Vložiť text a ukončiť"
 #, fuzzy
 msgid "Save EPG"
 msgstr "Jeden EPG"
+
+#, fuzzy
+msgid "Save and activate the currently selected skin"
+msgstr "Stlačením OK zapnete zvolený vzhľad."
 
 msgid "Save and exit"
 msgstr "Uložiť a skončiť"
@@ -10564,7 +10607,7 @@ msgstr "Nastaviť User ID rozhrania OpenWeb záložného tuneru"
 
 #, fuzzy
 msgid "Set the default sorting method."
-msgstr "Použiť predvolené nastavenia?"
+msgstr "Zvoľte systém usporiadania:"
 
 msgid "Set the delay time between repeated loops, this is used by software renderer in some skins."
 msgstr ""
@@ -11123,20 +11166,24 @@ msgstr "Zemepisná dĺžka"
 msgid "Size: "
 msgstr ""
 
+#, fuzzy
 msgid "Skin"
-msgstr "Vzhľad"
+msgstr "Vzhľady"
 
 #, python-format
 msgid "Skin & Resolution: %s (%sx%s)\n"
 msgstr "Vzhľad a rozlíšenie: %s (%sx%s)\n"
 
 #, fuzzy
+msgid "Skin Selection Actions"
+msgstr "Vyberte akciu"
+
+#, fuzzy
 msgid "Skin Setting"
 msgstr "Nastavenie"
 
-#, fuzzy
-msgid "Skin setup"
-msgstr "Nastavenie PiP"
+msgid "SkinSelector: Restart GUI"
+msgstr ""
 
 msgid "Skins"
 msgstr "Vzhľady"
@@ -12684,8 +12731,16 @@ msgstr "Vlastnosti titulu"
 msgid "Titleset mode"
 msgstr "Režim sady titulov"
 
+#, python-format
+msgid "To apply the selected '%s' skin the GUI needs to restart.  Would you like to restart the GUI now?"
+msgstr ""
+
 msgid "To audio selection"
 msgstr "Výber zvuku"
+
+#, python-format
+msgid "To save and apply the selected '%s' skin the GUI needs to restart.  Would you like to save the selection and restart the GUI now?"
+msgstr ""
 
 msgid "To subtitle selection"
 msgstr "Výber titulkov"
@@ -12977,7 +13032,6 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr "Nebolo možné vytvoriť požadované zložky na disku (napr. USB kľúč alebo pevný disk) - skontrolujte prosím médium a skúste to znovu!"
 
-#, fuzzy
 msgid ""
 "Unattended update in progress\n"
 "Please wait until your receiver reboots\n"

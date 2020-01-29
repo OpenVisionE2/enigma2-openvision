@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-26 11:50+0330\n"
+"POT-Creation-Date: 2020-01-30 00:14+0330\n"
 "PO-Revision-Date: 2007-08-14 10:23+0200\n"
 "Last-Translator: Oriol Pellicer <oriol@elsud.org>\n"
 "Language-Team: \n"
@@ -1157,6 +1157,9 @@ msgstr "16:9 sempre"
 msgid "16:9 letterbox"
 msgstr "16:9 Letterbox"
 
+msgid "16K"
+msgstr ""
+
 #
 msgid "18 V"
 msgstr "18 V"
@@ -1264,6 +1267,11 @@ msgstr "4:3 PanScan"
 
 #
 #, fuzzy
+msgid "4K"
+msgstr "4"
+
+#
+#, fuzzy
 msgid "4X"
 msgstr "4"
 
@@ -1288,6 +1296,11 @@ msgstr "8"
 msgid "8 character"
 msgstr ""
 
+#
+#, fuzzy
+msgid "8K"
+msgstr "8"
+
 msgid "8bit"
 msgstr ""
 
@@ -1298,7 +1311,23 @@ msgstr "9"
 msgid ": 0000 - default (disabled)"
 msgstr ""
 
-msgid "<Alternate Display Skin>"
+msgid "< Current >"
+msgstr ""
+
+#
+#, fuzzy
+msgid "< Default + Picon >"
+msgstr "Config OSD"
+
+#
+#, fuzzy
+msgid "< Default >"
+msgstr "Config OSD"
+
+msgid "< Emergency >"
+msgstr ""
+
+msgid "< Pending restart >"
 msgstr ""
 
 #
@@ -1306,21 +1335,8 @@ msgid "<Current movielist location>"
 msgstr ""
 
 #
-#, fuzzy
-msgid "<Default Skin>"
-msgstr "Config OSD"
-
-#
 msgid "<Default movie location>"
 msgstr ""
-
-msgid "<Display Skin with Picon>"
-msgstr ""
-
-#
-#, fuzzy
-msgid "<Display Skin>"
-msgstr "Config OSD"
 
 #
 msgid "<Last timer location>"
@@ -1533,10 +1549,6 @@ msgstr "Cancel·lar l'edició de preferits"
 #
 msgid "About"
 msgstr "Quant a"
-
-#
-msgid "About..."
-msgstr "Quant a..."
 
 #
 #, fuzzy
@@ -2808,6 +2820,12 @@ msgstr ""
 #
 msgid "Cancel"
 msgstr "Cancel·lar"
+
+msgid "Cancel any changes to the currently active skin"
+msgstr ""
+
+msgid "Cancel any changes to the currently active skin and exit all menus"
+msgstr ""
 
 msgid "Cancel any text changes and exit"
 msgstr ""
@@ -5326,9 +5344,6 @@ msgstr ""
 msgid "Enigma version: "
 msgstr "Nova versió:"
 
-msgid "Enigma2 skin selector"
-msgstr ""
-
 msgid "Enigmalight"
 msgstr ""
 
@@ -5455,10 +5470,6 @@ msgstr ""
 msgid ""
 "Error during unzipping image\n"
 "%s"
-msgstr ""
-
-#
-msgid "Error executing plugin"
 msgstr ""
 
 msgid "Error stop stream!"
@@ -5790,6 +5801,9 @@ msgstr ""
 #, fuzzy
 msgid "FFmpeg version: "
 msgstr "Nova versió:"
+
+msgid "FHD"
+msgstr ""
 
 msgid "FPU: "
 msgstr ""
@@ -6163,27 +6177,20 @@ msgstr "Nova versió:"
 msgid "GUI Settings"
 msgstr "Configuracions"
 
+#
+#, fuzzy
+msgid "GUI Skin"
+msgstr "Configuracions"
+
 msgid ""
 "GUI needs a restart to apply a new language\n"
 "Do you want to restart the GUI now?"
 msgstr ""
 
-#
-msgid ""
-"GUI needs a restart to apply a new skin\n"
-"Do you want to restart the GUI now?"
-msgstr ""
-"Cal reengegar la IGU per activar la nova aparença\n"
-"Vols fer-ho ara?"
-
-#
-#, fuzzy
 msgid ""
 "GUI needs a restart to switch modes\n"
 "Do you want to restart the GUI now?"
 msgstr ""
-"Cal reengegar la IGU per activar la nova aparença\n"
-"Vols fer-ho ara?"
 
 msgid "Gabon"
 msgstr ""
@@ -6394,6 +6401,9 @@ msgid "H:mm"
 msgstr ""
 
 msgid "H:mm:ss"
+msgstr ""
+
+msgid "HD"
 msgstr ""
 
 msgid "HD list"
@@ -7112,10 +7122,6 @@ msgid "Inversion, Pilot & Roll-off"
 msgstr ""
 
 msgid "Invert"
-msgstr ""
-
-#
-msgid "Ipkg"
 msgstr ""
 
 msgid "Iran (Islamic Republic of)"
@@ -8020,6 +8026,22 @@ msgstr ""
 msgid "Move to position X"
 msgstr ""
 
+msgid "Move to the next page"
+msgstr ""
+
+msgid "Move to the next skin"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Move to the previous page"
+msgstr "Canviar al subservei anterior"
+
+#
+#, fuzzy
+msgid "Move to the previous skin"
+msgstr "Canviar al subservei anterior"
+
 msgid "Move up a line"
 msgstr ""
 
@@ -8887,6 +8909,9 @@ msgstr ""
 msgid "OpenVPN setup"
 msgstr "Configuració PiP"
 
+msgid "Opkg"
+msgstr ""
+
 msgid "Options disable timer"
 msgstr ""
 
@@ -9734,8 +9759,9 @@ msgid "Press OK on your remote control to continue."
 msgstr ""
 
 #
-msgid "Press OK to activate the selected skin."
-msgstr ""
+#, fuzzy, python-format
+msgid "Press OK to activate the selected%s skin."
+msgstr "Prem OK per a activar la configuració."
 
 #
 msgid "Press OK to activate the settings."
@@ -9749,6 +9775,11 @@ msgstr ""
 #, python-format
 msgid "Press OK to get further details for %s"
 msgstr ""
+
+#
+#, fuzzy, python-format
+msgid "Press OK to keep the currently selected%s skin."
+msgstr "Esborra el títol seleccionat"
 
 #
 msgid "Press OK to scan"
@@ -10522,8 +10553,10 @@ msgstr "Restaurar"
 msgid "Restore inetd.conf"
 msgstr "gravant..."
 
+#
+#, fuzzy
 msgid "Restore previous cuts..."
-msgstr ""
+msgstr "Canviar al subservei anterior"
 
 #
 msgid "Restore system settings"
@@ -10812,6 +10845,11 @@ msgstr ""
 #, fuzzy
 msgid "Save EPG"
 msgstr "EPG senzill"
+
+#
+#, fuzzy
+msgid "Save and activate the currently selected skin"
+msgstr "Esborra el títol seleccionat"
 
 msgid "Save and exit"
 msgstr ""
@@ -11825,8 +11863,10 @@ msgstr ""
 msgid "Show Clients"
 msgstr "Mostrar alternatives"
 
+#
+#, fuzzy
 msgid "Show Display Icons"
-msgstr ""
+msgstr "Configurar Display"
 
 msgid "Show EIT now/next in infobar"
 msgstr ""
@@ -12275,8 +12315,9 @@ msgid "Size: "
 msgstr ""
 
 #
+#, fuzzy
 msgid "Skin"
-msgstr ""
+msgstr "Configuracions"
 
 #, python-format
 msgid "Skin & Resolution: %s (%sx%s)\n"
@@ -12284,13 +12325,16 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "Skin Setting"
-msgstr "Configuracions"
+msgid "Skin Selection Actions"
+msgstr "Localització del backup"
 
 #
 #, fuzzy
-msgid "Skin setup"
-msgstr "Configuració PiP"
+msgid "Skin Setting"
+msgstr "Configuracions"
+
+msgid "SkinSelector: Restart GUI"
+msgstr ""
 
 #
 msgid "Skins"
@@ -12473,8 +12517,10 @@ msgstr ""
 msgid "Sort by"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Sort by default"
-msgstr ""
+msgstr "Restaurar"
 
 msgid "Sort list to default and exit?"
 msgstr ""
@@ -13922,7 +13968,15 @@ msgstr ""
 msgid "Titleset mode"
 msgstr ""
 
+#, python-format
+msgid "To apply the selected '%s' skin the GUI needs to restart.  Would you like to restart the GUI now?"
+msgstr ""
+
 msgid "To audio selection"
+msgstr ""
+
+#, python-format
+msgid "To save and apply the selected '%s' skin the GUI needs to restart.  Would you like to save the selection and restart the GUI now?"
 msgstr ""
 
 msgid "To subtitle selection"
@@ -16722,8 +16776,10 @@ msgstr "Reengegar la IGU ara?"
 msgid "restore previous cuts"
 msgstr "Canviar al subservei anterior"
 
+#
+#, fuzzy
 msgid "restore previous cuts & exit"
-msgstr ""
+msgstr "Canviar al subservei anterior"
 
 msgid "reverse by date"
 msgstr ""
