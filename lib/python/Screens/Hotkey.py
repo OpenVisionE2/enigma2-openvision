@@ -46,6 +46,7 @@ class hotkey:
 		("Help", "displayHelp", ""),
 		("Help" + " " + _("long"), "displayHelp_long", ""),
 		("Subtitle", "subtitle", ""),
+		("Subtitle Long", "subtitle_long", ""),
 		("Menu", "mainMenu", ""),
 		("Info (EPG)", "info", "Infobar/openEventView"),
 		("Info (EPG)" + " " + _("long"), "info_long", "Infobar/showEventInfoPlugins"),
@@ -79,6 +80,7 @@ class hotkey:
 		("Skip back", "skip_back", ""),
 		("Skip forward", "skip_forward", ""),
 		("activatePiP", "activatePiP", ""),
+		("activatePiP long", "activatePiP_long", ""),
 		("Timer", "timer", ""),
 		("Timer" + " " + _("long"), "timer_long", ""),
 		("Playlist", "playlist", ""),
@@ -185,6 +187,7 @@ def getHotkeyFunctions():
 	hotkey.functions.append((_("Start teletext"), "Infobar/startTeletext", "InfoBar"))
 	hotkey.functions.append((_("Show subservice selection"), "Infobar/subserviceSelection", "InfoBar"))
 	hotkey.functions.append((_("Show subtitle selection"), "Infobar/subtitleSelection", "InfoBar"))
+	hotkey.functions.append((_("Toggle default subtitles"), "Infobar/toggleDefaultSubtitles", "InfoBar"))
 	hotkey.functions.append((_("Show InfoBar"), "Infobar/showFirstInfoBar", "InfoBar"))
 	hotkey.functions.append((_("Show second InfoBar"), "Infobar/showSecondInfoBar", "InfoBar"))
 	hotkey.functions.append((_("Toggle infoBar"), "Infobar/toggleShow", "InfoBar"))
