@@ -714,7 +714,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 		try:
 			for i in os.listdir(playlistdir):
 				listpath.append((i,playlistdir + i))
-		except IOError,e:
+		except IOError as e:
 			print("[MediaPlayer] Error while scanning subdirs ",e)
 		if config.mediaplayer.sortPlaylists.value:
 			listpath.sort()
