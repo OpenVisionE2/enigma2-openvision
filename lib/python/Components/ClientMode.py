@@ -1,5 +1,5 @@
-from config import config, ConfigSubsection, ConfigYesNo, ConfigText, ConfigSelection, ConfigIP, ConfigInteger, ConfigSubList, ConfigClock
-from SystemInfo import SystemInfo
+from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigText, ConfigSelection, ConfigIP, ConfigInteger, ConfigSubList, ConfigClock
+from Components.SystemInfo import SystemInfo
 
 def InitClientMode():
 	config.clientmode = ConfigSubsection()

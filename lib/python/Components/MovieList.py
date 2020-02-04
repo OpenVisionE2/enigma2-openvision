@@ -3,7 +3,7 @@ import os
 import struct
 import random
 from time import localtime, strftime
-from GUIComponent import GUIComponent
+from Components.GUIComponent import GUIComponent
 from Tools.FuzzyDate import FuzzyTime
 from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaBlend, MultiContentEntryProgress
 from Components.config import config

@@ -1,9 +1,9 @@
 from __future__ import print_function
-from GUIComponent import GUIComponent
-from config import config
+from Components.GUIComponent import GUIComponent
+from Components.config import config
 from skin import applyAllAttributes
 from Tools.CList import CList
-from Sources.StaticText import StaticText
+from Components.Sources.StaticText import StaticText
 
 class screenPath():
 	def __init__(self):

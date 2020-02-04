@@ -1,4 +1,4 @@
-from Source import Source
+from Components.Sources.Source import Source
 
 class StaticText(Source):
 	# filter is a function which filters external, untrusted strings

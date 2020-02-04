@@ -4,7 +4,7 @@ from time import time, localtime
 
 import RecordTimer
 import Components.ParentalControl
-from Screen import Screen
+from Screens.Screen import Screen
 from Components.ActionMap import ActionMap
 from Components.config import config
 from Components.AVSwitch import AVSwitch

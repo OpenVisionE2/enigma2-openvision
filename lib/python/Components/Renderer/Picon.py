@@ -1,6 +1,6 @@
 from __future__ import print_function
 import os, re, unicodedata
-from Renderer import Renderer
+from Components.Renderer.Renderer import Renderer
 from enigma import ePixmap, eServiceCenter, eServiceReference, iServiceInformation
 from Tools.Alternatives import GetWithAlternative
 from Tools.Directories import pathExists, SCOPE_CURRENT_SKIN, resolveFilename
