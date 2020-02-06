@@ -190,10 +190,10 @@ def getHotkeyFunctions():
 	hotkey.functions.append((_("Toggle infoBar"), "Infobar/toggleShow", "InfoBar"))
 	hotkey.functions.append((_("Letterbox zoom"), "Infobar/vmodeSelection", "InfoBar"))
 	if SystemInfo["PIPAvailable"]:
-		hotkey.functions.append((_("Show PIP"), "Infobar/showPiP", "InfoBar"))
-		hotkey.functions.append((_("Swap PIP"), "Infobar/swapPiP", "InfoBar"))
-		hotkey.functions.append((_("Move PIP"), "Infobar/movePiP", "InfoBar"))
-		hotkey.functions.append((_("Toggle PIPzap"), "Infobar/togglePipzap", "InfoBar"))
+		hotkey.functions.append((_("Show PiP"), "Infobar/showPiP", "InfoBar"))
+		hotkey.functions.append((_("Swap PiP"), "Infobar/swapPiP", "InfoBar"))
+		hotkey.functions.append((_("Move PiP"), "Infobar/movePiP", "InfoBar"))
+		hotkey.functions.append((_("Toggle PiPzap"), "Infobar/togglePipzap", "InfoBar"))
 	hotkey.functions.append((_("Activate HbbTV (Redbutton)"), "Infobar/activateRedButton", "InfoBar"))
 	hotkey.functions.append((_("Toggle HDMI In"), "Infobar/HDMIIn", "InfoBar"))
 	if SystemInfo["HDMIin"]:
@@ -247,7 +247,7 @@ def getHotkeyFunctions():
 	hotkey.functions.append((_("OScam Info"), "Module/Screens.OScamInfo/OscamInfoMenu", "Plugins"))
 	hotkey.functions.append((_("Memory Info"), "Module/Screens.About/MemoryInfo", "Setup"))
 	if SystemInfo["canMultiBoot"]:
-		hotkey.functions.append((_("Multiboot"), "Module/Screens.FlashImage/MultibootSelection", "Setup"))
+		hotkey.functions.append((_("Multiboot image selector"), "Module/Screens.FlashImage/MultibootSelection", "Setup"))
 	if os.path.isdir("/etc/ppanels"):
 		for x in [x for x in os.listdir("/etc/ppanels") if x.endswith(".xml")]:
 			x = x[:-4]

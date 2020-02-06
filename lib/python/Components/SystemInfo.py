@@ -6,6 +6,8 @@ from boxbranding import getDisplayType, getImageArch
 
 SystemInfo = {}
 
+from Tools.Multiboot import getMultibootStartupDevice, getMultibootslots
+
 def getNumVideoDecoders():
 	number_of_video_decoders = 0
 	while fileExists("/dev/dvb/adapter0/video%d" % (number_of_video_decoders), 'f'):
@@ -21,6 +23,12 @@ def countFrontpanelLEDs():
 def hassoftcaminstalled():
 	from Tools.camcontrol import CamControl
 	return len(CamControl('softcam').getList()) > 1
+
+def getBootdevice():
+	dev = ("root" in cmdline and cmdline['root'].startswith('/dev/')) and cmdline['root'][5:]
+	while dev and not fileExists('/sys/block/' + dev):
+	    dev = dev[:-1]
+	return dev
 
 # parse the boot commandline
 cmdline = open("/proc/cmdline", "r").read()
@@ -112,8 +120,8 @@ SystemInfo["Has3DSurroundSpeaker"] = fileExists("/proc/stb/audio/3dsurround_choi
 SystemInfo["Has3DSurroundSoftLimiter"] = fileExists("/proc/stb/audio/3dsurround_softlimiter_choices") and fileCheck("/proc/stb/audio/3dsurround_softlimiter")
 SystemInfo["hasXcoreVFD"] = model in ("osmega","spycat4k","spycat4kmini","spycat4kcombo") and fileCheck("/sys/module/brcmstb_%s/parameters/pt6302_cgram" % model)
 SystemInfo["HasOfflineDecoding"] = model not in ("osmini","osminiplus","et7000mini","et11000","mbmicro","mbtwinplus","mbmicrov2","et7x00","et8500")
-SystemInfo["HasRootSubdir"] = "rootsubdir" in cmdline
-SystemInfo["canMultiBoot"] = SystemInfo["HasRootSubdir"] and (1, 4, "mmcblk0", False) or "%s_4.boxmode" % model in cmdline and (1, 4, "mmcblk0", False) or model in ("gbue4k","gbquad4k","gbx34k") and (3, 3, "mmcblk0", True) or model == "e4hdultra" and (1, 4, "mmcblk0", False) or model in ("osmio4k","osmio4kplus","osmini4k") and (1, 4, "mmcblk1", True)
+SystemInfo["MultibootStartupDevice"] = getMultibootStartupDevice()
+SystemInfo["canMultiBoot"] = getMultibootslots()
 SystemInfo["canMode12"] = "%s_4.boxmode" % model in cmdline and cmdline["%s_4.boxmode" % model] in ("1","12") and "192M"
 SystemInfo["canFlashWithOfgwrite"] = brand != "dreambox"
 SystemInfo["HDRSupport"] = fileExists("/proc/stb/hdmi/hlg_support_choices") and fileCheck("/proc/stb/hdmi/hlg_support")
@@ -121,6 +129,7 @@ SystemInfo["CanDownmixAC3"] = fileHas("/proc/stb/audio/ac3_choices","downmix")
 SystemInfo["CanDownmixDTS"] = fileHas("/proc/stb/audio/dts_choices","downmix")
 SystemInfo["CanDownmixAAC"] = fileHas("/proc/stb/audio/aac_choices","downmix")
 SystemInfo["HDMIAudioSource"] = fileCheck("/proc/stb/hdmi/audio_source")
+SystemInfo["BootDevice"] = getBootdevice()
 SystemInfo["SmallFlash"] = fileExists("/etc/smallflash")
 SystemInfo["MiddleFlash"] = fileExists("/etc/middleflash")
 SystemInfo["HaveCISSL"] = fileCheck("/etc/ssl/certs/customer.pem") and fileCheck("/etc/ssl/certs/device.pem")
@@ -168,8 +177,3 @@ SystemInfo["SeekStatePlay"] = False
 SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False
 SystemInfo["LEDButtons"] = model == "vuultimo"
-
-dev = ("root" in cmdline and cmdline['root'].startswith('/dev/')) and cmdline['root'][5:]
-while dev and not fileExists('/sys/block/' + dev):
-    dev = dev[:-1]
-SystemInfo["BootDevice"] = dev

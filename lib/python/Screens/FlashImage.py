@@ -30,7 +30,7 @@ class SelectImage(Screen):
 		self.imagesList = {}
 		self.setIndex = 0
 		self.expanded = []
-		self.setTitle(_("Select Image"))
+		self.setTitle(_("Multiboot image selector"))
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText()
 		self["key_yellow"] = StaticText()
@@ -225,9 +225,9 @@ class FlashImage(Screen):
 		self.getImageList = None
 		choices = []
 		currentimageslot = GetCurrentImage()
-		for x in range(1, SystemInfo["canMultiBoot"][1] + 1):
+		for x in range(1, len(SystemInfo["canMultiBoot"]) + 1):
 			choices.append(((_("slot%s - %s (current image) with, backup") if x == currentimageslot else _("slot%s - %s, with backup")) % (x, imagedict[x]['imagename']), (x, "with backup")))
-		for x in range(1, SystemInfo["canMultiBoot"][1] + 1):
+		for x in range(1, len(SystemInfo["canMultiBoot"]) + 1):
 			choices.append(((_("slot%s - %s (current image), without backup") if x == currentimageslot else _("slot%s - %s, without backup")) % (x, imagedict[x]['imagename']), (x, "without backup")))
 		choices.append((_("No, do not flash image"), False))
 		self.session.openWithCallback(self.checkMedia, MessageBox, self.message, list=choices, default=currentimageslot, simple=True)
@@ -403,10 +403,10 @@ class MultibootSelection(SelectImage):
 		self.session = session
 		self.imagesList = None
 		self.expanded = []
-		self.setTitle(_("Select Multiboot"))
+		self.setTitle(_("Multiboot image selector"))
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Reboot"))
-		self["description"] = StaticText(_("Use the cursor keys to select an installed image and then press Reboot button."))
+		self["description"] = StaticText(_("Use the cursor keys to select an installed image then press Reboot button."))
 		self["list"] = ChoiceList(list=[ChoiceEntryComponent('',((_("Retrieving image slots - Please wait...")), "Waiter"))])
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions", "KeyboardInputActions", "MenuActions"],
@@ -443,15 +443,8 @@ class MultibootSelection(SelectImage):
 		if os.path.isdir('/tmp/startupmount'):
 			self.getImagesList()
 		else:
-			if os.path.islink("/dev/block/by-name/bootoptions"):
-				os.mkdir('/tmp/startupmount')
-				self.container.ePopen('mount /dev/block/by-name/bootoptions /tmp/startupmount', self.getImagesList)
-			elif os.path.islink("/dev/block/by-name/boot"):
-				os.mkdir('/tmp/startupmount')
-				self.container.ePopen('mount /dev/block/by-name/boot /tmp/startupmount', self.getImagesList)
-			else:
-				os.mkdir('/tmp/startupmount')
-				self.container.ePopen('mount /dev/%sp1 /tmp/startupmount' % SystemInfo["canMultiBoot"][2], self.getImagesList)
+			os.mkdir('/tmp/startupmount')
+			self.container.ePopen('mount %s /tmp/startupmount' % SystemInfo["MultibootStartupDevice"], self.getImagesList)
 
 	def getImagesList(self, data=None, retval=None, extra_args=None):
 		self.container.killAll()
@@ -490,26 +483,14 @@ class MultibootSelection(SelectImage):
 			elif self.slot == "Android":
 				shutil.copyfile("/tmp/startupmount/STARTUP_ANDROID", "/tmp/startupmount/STARTUP")
 			else:
-				model = getBoxType()
-				if SystemInfo["canMultiBoot"][3]:
-					shutil.copyfile("/tmp/startupmount/STARTUP_%s" % self.slot, "/tmp/startupmount/STARTUP")
-				elif os.path.isfile("/tmp/startupmount/STARTUP_LINUX_4_BOXMODE_12"):
+				if SystemInfo["canMode12"]:
 					if self.slot < 12:
-						shutil.copyfile("/tmp/startupmount/STARTUP_LINUX_%s_BOXMODE_1" % self.slot, "/tmp/startupmount/STARTUP")
+						startupfile = "/tmp/startupmount/%s_BOXMODE_1" % SystemInfo["canMultiBoot"][self.slot]['startupfile']
 					else:
-						self.slot -= 12
-						shutil.copyfile("/tmp/startupmount/STARTUP_LINUX_%s_BOXMODE_12" % self.slot, "/tmp/startupmount/STARTUP")
-				elif os.path.isfile("/tmp/startupmount/STARTUP_LINUX_4"):
-					shutil.copyfile("/tmp/startupmount/STARTUP_LINUX_%s" % self.slot, "/tmp/startupmount/STARTUP")
-				elif os.path.isfile("/tmp/startupmount/STARTUP_4"):
-					shutil.copyfile("/tmp/startupmount/STARTUP_%s" % self.slot, "/tmp/startupmount/STARTUP")
+						startupfile = "/tmp/startupmount/%s_BOXMODE_1" % SystemInfo["canMultiBoot"][self.slot - 12]['startupfile']
 				else:
-					if self.slot < 12:
-						startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (self.slot, self.slot * 2 + 1, model)
-					else:
-						self.slot -= 12
-						startupFileContents = "boot emmcflash0.kernel%s 'brcm_cma=520M@248M brcm_cma=%s@768M root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=12'\n" % (self.slot, SystemInfo["canMode12"], self.slot * 2 + 1, model)
-					open('/tmp/startupmount/STARTUP', 'w').write(startupFileContents)
+					startupfile = "/tmp/startupmount/%s" % SystemInfo["canMultiBoot"][self.slot]['startupfile']
+				shutil.copyfile(startupfile, "/tmp/startupmount/STARTUP")
 			from Screens.Standby import TryQuitMainloop
 			self.session.open(TryQuitMainloop, 2)
 

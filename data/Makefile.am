@@ -14,12 +14,9 @@ dist_pkgdata_DATA = \
 	otv_011a0000_0002_07d4.dict \
 	otv_06180000_1000_0011.dict \
 	otv_06400000_00a9_0003.dict \
-	prev.png \
 	radio.mvi \
 	rcpositions.xml \
 	setup.xml \
-	skin.xml \
-	skin_default.xml \
 	skin_subtitles.xml \
 	startwizard.xml \
 	unicable.xml
