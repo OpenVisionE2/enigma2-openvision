@@ -94,7 +94,7 @@ def resolveFilename(scope, base="", path_prefix=None):
 		return os.path.normpath(base)
 	# If an invalid scope is specified log an error and return None.
 	if scope not in defaultPaths:
-		print("[Directories] Error: Invalid scope=%d provided to resolveFilename!" % scope)
+		print("[Directories] Error: Invalid scope=%str provided to resolveFilename!" % scope)
 		return None
 	# Ensure that the defaultPaths directories that should exist do exist.
 	path, flag = defaultPaths.get(scope)
