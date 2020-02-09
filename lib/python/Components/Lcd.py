@@ -12,6 +12,7 @@ from twisted.internet import threads
 import Screens.Standby
 import usb
 from boxbranding import getMachineBuild
+from os import sys
 
 model = getBoxType()
 platform = getMachineBuild()
