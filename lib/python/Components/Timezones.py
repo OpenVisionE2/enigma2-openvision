@@ -83,7 +83,7 @@ class Timezones:
 				autotimer.parseEPG(autoPoll=True)
 			if autopoller is not None:
 				autopoller.start()
-		except ImportError, KeyError:
+		except ImportError as KeyError:
 			pass
 
 	def readTimezonesFromSystem(self):
@@ -160,7 +160,7 @@ class Timezones:
 				if autopoller is not None:
 					autopoller.stop()
 				self.ATupdate = True
-		except ImportError, KeyError:
+		except ImportError as KeyError:
 			pass
 
 		if tzarea == Timezones.gen_label:
@@ -195,7 +195,7 @@ class Timezones:
 			self.autotimer = autotimer
 			if config.plugins.autotimer.autopoll.value:
 				self.startATupdate()
-		except ImportError, KeyError:
+		except ImportError as KeyError:
 			pass
 
 timezones = Timezones()
