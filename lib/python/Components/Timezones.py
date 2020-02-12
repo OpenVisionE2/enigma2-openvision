@@ -1,6 +1,6 @@
 from __future__ import print_function
 from enigma import eTimer
-from config import config, ConfigSelection, ConfigSubsection
+from Components.config import config, ConfigSelection, ConfigSubsection
 from os import environ, unlink, symlink, walk, path
 import time
 

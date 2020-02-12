@@ -1,4 +1,4 @@
-from config import config, ConfigSelection, ConfigSubsection
+from Components.config import config, ConfigSelection, ConfigSubsection
 
 
 def InitHdmiRecord():

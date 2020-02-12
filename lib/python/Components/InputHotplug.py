@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-import Netlink
+from Components import Netlink
 import enigma
 import os
 

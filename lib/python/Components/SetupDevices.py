@@ -1,4 +1,4 @@
-from config import config, ConfigSelection, ConfigSubsection, ConfigOnOff, ConfigText
+from Components.config import config, ConfigSelection, ConfigSubsection, ConfigOnOff, ConfigText
 from Components.Language import language
 from Components.Keyboard import keyboard
 

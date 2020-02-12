@@ -1,7 +1,7 @@
 # the implementation here is a bit crappy.
 from __future__ import print_function
 import time
-from Directories import resolveFilename, SCOPE_CONFIG
+from Tools.Directories import resolveFilename, SCOPE_CONFIG
 from enigma import getBoxType
 
 PERCENTAGE_START = 0

@@ -51,7 +51,7 @@ import itertools, datetime
 from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 
 # hack alert!
-from Menu import MainMenu, mdom
+from Screens.Menu import MainMenu, mdom
 
 def isStandardInfoBar(self):
 	return self.__class__.__name__ == "InfoBar"
