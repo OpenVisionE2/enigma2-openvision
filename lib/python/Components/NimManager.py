@@ -1,6 +1,6 @@
 from __future__ import print_function
 import os
-
+from Components.SystemInfo import SystemInfo
 from Tools.BoundFunction import boundFunction
 
 from Components.config import config, ConfigSubsection, ConfigSelection, ConfigFloat, ConfigSatlist, ConfigYesNo, ConfigInteger, ConfigSubList, ConfigNothing, ConfigSubDict, ConfigOnOff, ConfigDateTime, ConfigText
