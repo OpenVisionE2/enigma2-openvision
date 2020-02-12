@@ -11,7 +11,7 @@ def getMultibootStartupDevice():
 		if os.path.exists(device):
 			Console().ePopen('mount %s %s' % (device, TMP_MOUNT))
 			if os.path.isfile(os.path.join(TMP_MOUNT, "STARTUP")):
-				print '[Multiboot] Startupdevice found:', device
+				print('[Multiboot] Startupdevice found:', device)
 				return device
 			Console().ePopen('umount %s' % TMP_MOUNT)
 	if not os.path.ismount(TMP_MOUNT):
@@ -41,7 +41,7 @@ def getMultibootslots():
 		Console().ePopen('umount %s' % TMP_MOUNT)
 		if not os.path.ismount(TMP_MOUNT):
 			os.rmdir(TMP_MOUNT)
-	print '[Multiboot] Bootslots found:', bootslots
+	print('[Multiboot] Bootslots found:', bootslots)
 	return bootslots
 
 def GetCurrentImage():

@@ -103,7 +103,7 @@ class SkinSelector(Screen, HelpableScreen):
 		if buildSkin:  # Build the embedded skin and scale it to the current screen resolution.
 			# The skin template is designed for a HD screen so the scaling factor is 720.
 			SkinSelector.skin = SkinSelector.skinTemplate % tuple([x * getDesktop(0).size().height() / 720 for x in SkinSelector.scaleData])
-			# print "[SkinSelector] DEBUG: Height=%d\n" % getDesktop(0).size().height(), SkinSelector.skin
+			# print("[SkinSelector] DEBUG: Height=%d\n" % getDesktop(0).size().height(), SkinSelector.skin)
 		else:
 			SkinSelector.skin = "<screen />"
 

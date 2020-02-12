@@ -334,7 +334,7 @@ class VideoEnhancementPreview(Screen, ConfigListScreen):
 			else:
 				self.isStepSlider = False
 		except AttributeError:
-			print "[VideoEnhancement] no max value"
+			print("[VideoEnhancement] no max value")
 
 	def keyLeft(self):
 		if self.isStepSlider is True:
