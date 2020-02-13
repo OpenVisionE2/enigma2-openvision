@@ -305,7 +305,7 @@ class Devices(Screen):
 			if not parts:
 				continue
 			device = parts[3]
-			if SystemInfo["HasRootSubdir"]:
+			if SystemInfo["MultibootStartupDevice"]:
 				if not search('sd[a-z][1-9]', device):
 					continue
 			else:	
