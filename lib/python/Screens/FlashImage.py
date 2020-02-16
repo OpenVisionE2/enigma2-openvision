@@ -492,7 +492,7 @@ class MultibootSelection(SelectImage):
 					startupfile = "/tmp/startupmount/%s" % SystemInfo["canMultiBoot"][self.slot]['startupfile']
 				shutil.copyfile(startupfile, "/tmp/startupmount/STARTUP")
 			else:
-				model = HardwareInfo().get_machine_name()
+				model = getBoxType()
 				if self.slot < 12:
 					startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (self.slot, self.slot * 2 + 1, model)
 				else:
