@@ -6,43 +6,45 @@ from boxbranding import getDisplayType, getImageArch
 
 SystemInfo = {}
 
-from Tools.Multiboot import getMultibootStartupDevice, getMultibootslots
+from Tools.Multiboot import getMultibootStartupDevice, getMultibootslots  # This import needs to be here to avoid a SystemInfo load loop!
+
+# Parse the boot commandline.
+fd = open("/proc/cmdline", "r")
+cmdline = fd.read()
+fd.close()
+cmdline = {k: v.strip('"') for k, v in re.findall(r'(\S+)=(".*?"|\S+)', cmdline)}
 
 def getNumVideoDecoders():
-	number_of_video_decoders = 0
-	while fileExists("/dev/dvb/adapter0/video%d" % (number_of_video_decoders), 'f'):
-		number_of_video_decoders += 1
-	return number_of_video_decoders
+	numVideoDecoders = 0
+	while fileExists("/dev/dvb/adapter0/video%d" % numVideoDecoders, "f"):
+		numVideoDecoders += 1
+	return numVideoDecoders
 
 def countFrontpanelLEDs():
-	number_of_leds = fileExists("/proc/stb/fp/led_set_pattern") and 1 or 0
-	while fileExists("/proc/stb/fp/led%d_pattern" % number_of_leds):
-		number_of_leds += 1
-	return number_of_leds
+	numLeds = fileExists("/proc/stb/fp/led_set_pattern") and 1 or 0
+	while fileExists("/proc/stb/fp/led%d_pattern" % numLeds):
+		numLeds += 1
+	return numLeds
 
 def hassoftcaminstalled():
 	from Tools.camcontrol import CamControl
-	return len(CamControl('softcam').getList()) > 1
+	return len(CamControl("softcam").getList()) > 1
 
 def getBootdevice():
-	dev = ("root" in cmdline and cmdline['root'].startswith('/dev/')) and cmdline['root'][5:]
-	while dev and not fileExists('/sys/block/' + dev):
-	    dev = dev[:-1]
+	dev = ("root" in cmdline and cmdline["root"].startswith("/dev/")) and cmdline["root"][5:]
+	while dev and not fileExists("/sys/block/%s" % dev):
+		dev = dev[:-1]
 	return dev
 
-# parse the boot commandline
-cmdline = open("/proc/cmdline", "r").read()
-cmdline = {k:v.strip('"') for k,v in re.findall(r'(\S+)=(".*?"|\S+)', cmdline)}
 model = getBoxType()
 brand = getBoxBrand()
 
 SystemInfo["InDebugMode"] = eGetEnigmaDebugLvl() >= 4
 SystemInfo["CommonInterface"] = eDVBCIInterfaces.getInstance().getNumOfSlots()
 SystemInfo["CommonInterfaceCIDelay"] = fileCheck("/proc/stb/tsmux/rmx_delay")
-for cislot in range (0, SystemInfo["CommonInterface"]):
-	SystemInfo["CI%dSupportsHighBitrates" % cislot] = fileCheck("/proc/stb/tsmux/ci%d_tsclk"  % cislot)
-	SystemInfo["CI%dRelevantPidsRoutingSupport" % cislot] = fileCheck("/proc/stb/tsmux/ci%d_relevant_pids_routing"  % cislot)
-
+for cislot in range(0, SystemInfo["CommonInterface"]):
+	SystemInfo["CI%dSupportsHighBitrates" % cislot] = fileCheck("/proc/stb/tsmux/ci%d_tsclk" % cislot)
+	SystemInfo["CI%dRelevantPidsRoutingSupport" % cislot] = fileCheck("/proc/stb/tsmux/ci%d_relevant_pids_routing" % cislot)
 SystemInfo["HasSoftcamInstalled"] = hassoftcaminstalled()
 SystemInfo["NumVideoDecoders"] = getNumVideoDecoders()
 SystemInfo["Udev"] = not fileExists("/dev/.devfsd")
@@ -93,7 +95,7 @@ SystemInfo["HasBypassEdidChecking"] = fileCheck("/proc/stb/hdmi/bypass_edid_chec
 SystemInfo["HasColorspace"] = fileCheck("/proc/stb/video/hdmi_colorspace")
 SystemInfo["HasColorspaceSimple"] = SystemInfo["HasColorspace"] and model in ("vusolo4k","vuuno4k","vuuno4kse","vuultimo4k","vuduo4k")
 SystemInfo["HasMultichannelPCM"] = fileCheck("/proc/stb/audio/multichannel_pcm")
-SystemInfo["HasMMC"] = "root" in cmdline and cmdline["root"].startswith('/dev/mmcblk')
+SystemInfo["HasMMC"] = "root" in cmdline and cmdline["root"].startswith("/dev/mmcblk")
 SystemInfo["HasTranscoding"] = pathExists("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
 SystemInfo["HasH265Encoder"] = fileHas("/proc/stb/encoder/0/vcodec_choices","h265")
 SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model in ("vusolo4k","gbquad4k")
@@ -122,8 +124,8 @@ SystemInfo["Has3DSurroundSoftLimiter"] = fileExists("/proc/stb/audio/3dsurround_
 SystemInfo["hasXcoreVFD"] = model in ("osmega","spycat4k","spycat4kmini","spycat4kcombo") and fileCheck("/sys/module/brcmstb_%s/parameters/pt6302_cgram" % model)
 SystemInfo["HasOfflineDecoding"] = model not in ("osmini","osminiplus","et7000mini","et11000","mbmicro","mbtwinplus","mbmicrov2","et7x00","et8500")
 SystemInfo["MultibootStartupDevice"] = getMultibootStartupDevice()
-SystemInfo["canMultiBoot"] = getMultibootslots()
 SystemInfo["canMode12"] = "%s_4.boxmode" % model in cmdline and cmdline["%s_4.boxmode" % model] in ("1","12") and "192M"
+SystemInfo["canMultiBoot"] = getMultibootslots()
 SystemInfo["canFlashWithOfgwrite"] = brand != "dreambox"
 SystemInfo["HDRSupport"] = fileExists("/proc/stb/hdmi/hlg_support_choices") and fileCheck("/proc/stb/hdmi/hlg_support")
 SystemInfo["CanDownmixAC3"] = fileHas("/proc/stb/audio/ac3_choices","downmix")
