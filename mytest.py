@@ -596,6 +596,10 @@ import Components.InputDevice
 Components.InputDevice.InitInputDevices()
 import Components.InputHotplug
 
+profile("Geolocation")
+import Tools.Geolocation
+Tools.Geolocation.InitGeolocation()
+
 profile("TimeZones")
 import Components.Timezones
 Components.Timezones.InitTimeZones()

@@ -275,7 +275,8 @@ class ConfigListScreen:
 				self.handleKeyFileCallback, ChoiceBox, selection[0],
 				list=zip(selection[1].description, selection[1].choices),
 				selection=selection[1].choices.index(selection[1].value),
-				keys=[]
+				keys=[],
+				text=self.getCurrentDescription()
 			)
 
 	def handleKeyFileCallback(self, answer):
