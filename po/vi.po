@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 20:58+0330\n"
+"POT-Creation-Date: 2020-02-29 02:27+0330\n"
 "PO-Revision-Date: 2019-11-19 08:58+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -3461,6 +3461,10 @@ msgstr "Định cấu hình vị trí cánh quạt có được hiển thị tr�
 msgid "Configure whether or not an icon should be shown when your motorized dish is moving."
 msgstr "Định cấu hình xem có hiển thị biểu tượng hay không khi đĩa cơ giới của bạn đang di chuyển."
 
+#, fuzzy
+msgid "Configure whether service picons will be shown in number zap."
+msgstr "Định cấu hình nếu picons dịch vụ sẽ được hiển thị trong danh sách chọn kênh."
+
 msgid "Configure whether the 'recording' symbol (in the display skin and LCD skin) is visible for real recordings only or also for streaming and pseuso recordings (e.g. EPGrefresh)."
 msgstr ""
 
@@ -3592,6 +3596,10 @@ msgstr "Không thể tìm thấy phương tiện phù hợp - Vui lòng xóa m�
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Không thể tải trung bình! Không có đĩa được đưa vào?"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Kích hoạt tính năng hẹn giờ nhập từ bộ điều chỉnh dự phòng"
 
 msgid "Could not open Picture in Picture"
 msgstr "Không thể mở Ảnh trong Ảnh"
@@ -4649,10 +4657,6 @@ msgstr ""
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ERROR - failed to scan (%s)!"
 
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr "Tải xuống tệp LRI%s"
-
 msgid "East"
 msgstr "Đông"
 
@@ -5014,10 +5018,6 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Lỗi"
 
-#, python-format
-msgid "Error %s"
-msgstr "Lỗi%s"
-
 msgid "Error code"
 msgstr "Mã lỗi"
 
@@ -5050,12 +5050,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Lỗi dừng luồng!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Lỗi khi viết epg.dat trên máy chủ"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Lỗi khi truy xuất epg.data từ máy chủ"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -5063,9 +5057,6 @@ msgid ""
 msgstr ""
 "Lỗi trong khi truy xuất thông tin hẹn giờ dự phòng\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Lỗi trong khi truy xuất vị trí của epg.data trên máy chủ"
 
 #, python-format
 msgid ""
@@ -6330,6 +6321,9 @@ msgstr "Nhập từ URL máy thu từ xa"
 msgid "Import remote receiver URL"
 msgstr "Nhập URL máy thu từ xa"
 
+msgid "In live view wait this many seconds after a numeric key press before assuming the required channel number has been entered. Default: 5 seconds. Setting zero will require confirmation with 'OK'. "
+msgstr ""
+
 msgid "In most cases this should be set to No. Only enable if you have a very specific need."
 msgstr ""
 
@@ -6969,10 +6963,6 @@ msgstr "Kinh độ"
 
 msgid "Loop through from"
 msgstr "Lặp lại từ"
-
-#, fuzzy
-msgid "Lord Howe Island"
-msgstr "Quần đảo Faroe"
 
 msgid "Lower case"
 msgstr "Chữ thường"
@@ -7760,9 +7750,6 @@ msgstr "Không có mô tả."
 msgid "No displayable files on this medium found!"
 msgstr "Không tìm thấy tập tin nào trên phương tiện này!"
 
-msgid "No epg.dat file found server"
-msgstr "Không tìm thấy tập tin epg.dat"
-
 msgid "No event info found, recording indefinitely."
 msgstr "Không tìm thấy thông tin sự kiện, ghi lại vô thời hạn."
 
@@ -7804,6 +7791,9 @@ msgstr "Không dịch vụ"
 
 msgid "No services/providers selected"
 msgstr "Không có dịch vụ / nhà cung cấp nào được chọn"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 msgid "No standby"
 msgstr "Không có chế độ chờ"
@@ -7911,10 +7901,6 @@ msgstr "Bắc"
 
 msgid "Northern Mariana Islands"
 msgstr "Quần đảo Bắc Mariana"
-
-#, fuzzy
-msgid "Northern Territory"
-msgstr "Lãnh thổ phía Nam của Pháp"
 
 msgid "Norway"
 msgstr "Na Uy"
@@ -10952,6 +10938,10 @@ msgstr "Hiển thị mô tả mở rộng"
 msgid "Show packages to be updated"
 msgstr "Hiển thị các gói sẽ được nâng cấp"
 
+#, fuzzy
+msgid "Show picons during channel number input"
+msgstr "Hiển thị picons trong danh sách lựa chọn kênh"
+
 msgid "Show picons in channel selection list"
 msgstr "Hiển thị picons trong danh sách lựa chọn kênh"
 
@@ -11379,10 +11369,6 @@ msgstr "Miền Nam"
 
 msgid "South Africa"
 msgstr "Nam Phi"
-
-#, fuzzy
-msgid "South Australia"
-msgstr "Australia"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Nam Georgia và Quần đảo Nam Sandwich"
@@ -13711,10 +13697,6 @@ msgstr "Hướng Tây"
 msgid "West limit set"
 msgstr "Bộ giới hạn phía tây"
 
-#, fuzzy
-msgid "Western Australia"
-msgstr "Australia"
-
 msgid "Western Sahara"
 msgstr "Phía tây Sahara"
 
@@ -14347,6 +14329,9 @@ msgstr "Tập trung vào hình ảnh trong ảnh"
 
 msgid "Zap focus to main screen"
 msgstr "Tập trung vào màn hình chính"
+
+msgid "Zap key delay for channel number input"
+msgstr ""
 
 msgid "Zap mode"
 msgstr "Chế độ zap"

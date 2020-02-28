@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 20:58+0330\n"
+"POT-Creation-Date: 2020-02-29 02:27+0330\n"
 "PO-Revision-Date: 2020-02-10 12:49+0100\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -3468,6 +3468,10 @@ msgstr "Nastaviť, či sa má zobrazovať pozícia rotora v informačnej lište"
 msgid "Configure whether or not an icon should be shown when your motorized dish is moving."
 msgstr "Konfigurovať, či sa má pri natáčaní paraboly motorom zobrazovať ikona."
 
+#, fuzzy
+msgid "Configure whether service picons will be shown in number zap."
+msgstr "Nastaviť, či sa majú zobrazovať picony v zozname staníc."
+
 msgid "Configure whether the 'recording' symbol (in the display skin and LCD skin) is visible for real recordings only or also for streaming and pseuso recordings (e.g. EPGrefresh)."
 msgstr ""
 
@@ -3599,6 +3603,10 @@ msgstr "Nebolo možné nájsť vhodné médium - odstráňte prosím stiahnuté 
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nemôžem použiť médium. Je vložený disk?"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Povoliť import časovača zo záložného tuneru"
 
 msgid "Could not open Picture in Picture"
 msgstr "Nedá sa otvoriť obraz v obraze"
@@ -4655,10 +4663,6 @@ msgstr "EPG:"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "CHYBA - zlyhalo vyhľadávanie (%s)!"
 
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr "Chyba sťahovania súboru %s"
-
 msgid "East"
 msgstr "Východne"
 
@@ -5020,10 +5024,6 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Chyba"
 
-#, python-format
-msgid "Error %s"
-msgstr "Chyba %s"
-
 msgid "Error code"
 msgstr "Kód chyby"
 
@@ -5056,12 +5056,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Chyba zastavenia streamu!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Chyba počas zápisu epg.dat na server"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Chyba počas čítania epg.dat zo serveru"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -5069,9 +5063,6 @@ msgid ""
 msgstr ""
 "Chyba počas načítania informácie záložného časovača\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Chyba počas získavania umistnenia epg.dat na serveri"
 
 #, python-format
 msgid ""
@@ -6334,6 +6325,9 @@ msgstr "Importovať stanice z URL adresy vzdialeného prijímača"
 msgid "Import remote receiver URL"
 msgstr "Importovať stanice z URL adresy vzdialeného prijímača"
 
+msgid "In live view wait this many seconds after a numeric key press before assuming the required channel number has been entered. Default: 5 seconds. Setting zero will require confirmation with 'OK'. "
+msgstr ""
+
 msgid "In most cases this should be set to No. Only enable if you have a very specific need."
 msgstr ""
 
@@ -6975,10 +6969,6 @@ msgstr "Zem. dĺžka"
 
 msgid "Loop through from"
 msgstr "Slučka z"
-
-#, fuzzy
-msgid "Lord Howe Island"
-msgstr "Faroeské ostrovy"
 
 msgid "Lower case"
 msgstr "Malé písmená"
@@ -7764,9 +7754,6 @@ msgstr "Opis nie je k dispozícii."
 msgid "No displayable files on this medium found!"
 msgstr "Na tomto médiu sa nenašli žiadne zobraziteľné súbory!"
 
-msgid "No epg.dat file found server"
-msgstr "Na serveri nenájdený epg.dat"
-
 msgid "No event info found, recording indefinitely."
 msgstr "Žiadne informácie z EPG, spúšťam nekonečné nahrávanie."
 
@@ -7808,6 +7795,9 @@ msgstr "Žiadna stanica"
 
 msgid "No services/providers selected"
 msgstr "Žiadne služby/poskytovatelia nie sú zvolené"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 msgid "No standby"
 msgstr "Neprechádzať do pohotovostného režimu"
@@ -7915,10 +7905,6 @@ msgstr "Severne"
 
 msgid "Northern Mariana Islands"
 msgstr "Severná Mariana ostrovy"
-
-#, fuzzy
-msgid "Northern Territory"
-msgstr "Francúzske južné teritória"
 
 msgid "Norway"
 msgstr "Nórsko"
@@ -10954,6 +10940,10 @@ msgstr "Zobraziť rozšírený opis"
 msgid "Show packages to be updated"
 msgstr "Zobraziť balíčky dostupnej aktualizácie"
 
+#, fuzzy
+msgid "Show picons during channel number input"
+msgstr "Zobraziť picony v zozname staníc"
+
 msgid "Show picons in channel selection list"
 msgstr "Zobraziť picony v zozname staníc"
 
@@ -11380,10 +11370,6 @@ msgstr "Južne"
 
 msgid "South Africa"
 msgstr "Južná Afrika"
-
-#, fuzzy
-msgid "South Australia"
-msgstr "Austrália"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Južná Georgia a Južné Sendvičské ostovy"
@@ -13713,10 +13699,6 @@ msgstr "Západne"
 msgid "West limit set"
 msgstr "Západný limit nastavený"
 
-#, fuzzy
-msgid "Western Australia"
-msgstr "Austrália"
-
 msgid "Western Sahara"
 msgstr "Západná Sahara"
 
@@ -14351,6 +14333,9 @@ msgstr "Prepnúť fokus do obrazu v obraze"
 
 msgid "Zap focus to main screen"
 msgstr "Prepnúť fokus do hlavnej obrazovky"
+
+msgid "Zap key delay for channel number input"
+msgstr ""
 
 msgid "Zap mode"
 msgstr "Režim prepínania"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 20:58+0330\n"
+"POT-Creation-Date: 2020-02-29 02:27+0330\n"
 "PO-Revision-Date: 2018-11-12 20:51+0200\n"
 "Last-Translator: Мартин Петков <marto74bg@yahoo.co.uk>\n"
 "Language-Team: Bulgarian\n"
@@ -3464,6 +3464,10 @@ msgstr "Настройка за показване позицията на мо�
 msgid "Configure whether or not an icon should be shown when your motorized dish is moving."
 msgstr "Настройка дали да се показва или не икона когато вашата моторизирана антена се върти."
 
+#, fuzzy
+msgid "Configure whether service picons will be shown in number zap."
+msgstr "Настройка дали пиконите да се показват в списъка за избор на канал."
+
 msgid "Configure whether the 'recording' symbol (in the display skin and LCD skin) is visible for real recordings only or also for streaming and pseuso recordings (e.g. EPGrefresh)."
 msgstr ""
 
@@ -3597,6 +3601,9 @@ msgstr ""
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Не може да се зареди съдържанието! Не е вкаран диск?"
+
+msgid "Could not locate epg file on fallback tuner"
+msgstr ""
 
 msgid "Could not open Picture in Picture"
 msgstr "Не може да се отвори Картина в Картината"
@@ -4662,10 +4669,6 @@ msgstr ""
 msgid "ERROR - failed to scan (%s)!"
 msgstr "Грешка при сканиране (%s)!"
 
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr "Грешка при изтегляне на файл %s"
-
 msgid "East"
 msgstr "Изток"
 
@@ -5033,10 +5036,6 @@ msgstr "Еритрея"
 msgid "Error"
 msgstr "Грешка"
 
-#, python-format
-msgid "Error %s"
-msgstr "Грешка %s"
-
 msgid "Error code"
 msgstr "Грешен код"
 
@@ -5069,19 +5068,10 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Грешка при спиране на стрийма!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Грешка при записване epg.dat на сървъра"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Грешка при получаване на epg.dat от сървъра"
-
 #, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr "Грешка при получаване местоположението на файла epg.dat от сървъра"
-
-msgid "Error while retreiving location of epg.dat on server"
 msgstr "Грешка при получаване местоположението на файла epg.dat от сървъра"
 
 #, python-format
@@ -6365,6 +6355,9 @@ msgstr "Импортиране от URL на резервния приемник
 msgid "Import remote receiver URL"
 msgstr "Импорт от URL на резервния приемник"
 
+msgid "In live view wait this many seconds after a numeric key press before assuming the required channel number has been entered. Default: 5 seconds. Setting zero will require confirmation with 'OK'. "
+msgstr ""
+
 msgid "In most cases this should be set to No. Only enable if you have a very specific need."
 msgstr ""
 
@@ -7008,10 +7001,6 @@ msgstr "Дължина"
 
 msgid "Loop through from"
 msgstr "Преминаващ(Loop) вход от"
-
-#, fuzzy
-msgid "Lord Howe Island"
-msgstr "Фарьорски Острови"
 
 msgid "Lower case"
 msgstr ""
@@ -7803,9 +7792,6 @@ msgstr "Няма налично описание."
 msgid "No displayable files on this medium found!"
 msgstr "Няма поддържани файлове на този носител!"
 
-msgid "No epg.dat file found server"
-msgstr "Не е открит сървър с epg.dat"
-
 msgid "No event info found, recording indefinitely."
 msgstr "Няма инфо за предаването, незабавен запис."
 
@@ -7848,6 +7834,9 @@ msgstr "Няма канал"
 
 msgid "No services/providers selected"
 msgstr "Не са избрани канали/провайдери"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 msgid "No standby"
 msgstr "Не преминавай в режим готовност"
@@ -7955,10 +7944,6 @@ msgstr "Север"
 
 msgid "Northern Mariana Islands"
 msgstr "Северни Мариански Острови"
-
-#, fuzzy
-msgid "Northern Territory"
-msgstr "Френски Южни Територии"
 
 msgid "Norway"
 msgstr "Нервегия"
@@ -11018,6 +11003,10 @@ msgstr "Покажи разширено описание"
 msgid "Show packages to be updated"
 msgstr "Покажи пакетите, които ще бъдат обновени"
 
+#, fuzzy
+msgid "Show picons during channel number input"
+msgstr "Покажи пикони в списъка за избор на канали"
+
 msgid "Show picons in channel selection list"
 msgstr "Покажи пикони в списъка за избор на канали"
 
@@ -11446,10 +11435,6 @@ msgstr "Юг"
 
 msgid "South Africa"
 msgstr "Южна Африка"
-
-#, fuzzy
-msgid "South Australia"
-msgstr "Австралия"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Южна Джорджия и Южни Сандвич Острови"
@@ -13794,10 +13779,6 @@ msgstr "Запад"
 msgid "West limit set"
 msgstr "Западен лимит"
 
-#, fuzzy
-msgid "Western Australia"
-msgstr "Австралия"
-
 msgid "Western Sahara"
 msgstr "Западна Сахара"
 
@@ -14418,6 +14399,9 @@ msgstr "Превключване в екран PiP"
 
 msgid "Zap focus to main screen"
 msgstr "Превключване към главен екран"
+
+msgid "Zap key delay for channel number input"
+msgstr ""
 
 msgid "Zap mode"
 msgstr "Режим на екрана при смяна на канали"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 20:58+0330\n"
+"POT-Creation-Date: 2020-02-29 02:27+0330\n"
 "PO-Revision-Date: 2020-02-09 13:30+0200\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -3286,6 +3286,10 @@ msgstr "Nustatykite ar info juostoje rodyti rotoriaus poziciją"
 msgid "Configure whether or not an icon should be shown when your motorized dish is moving."
 msgstr "Nustatykite ar sukant motorizuotą anteną, info juostoje turi būti rodoma piktograma."
 
+#, fuzzy
+msgid "Configure whether service picons will be shown in number zap."
+msgstr "Nustatykite, ar kanalų pasirinkimo sąrašo lange bus rodomi kanalų logotipai."
+
 msgid "Configure whether the 'recording' symbol (in the display skin and LCD skin) is visible for real recordings only or also for streaming and pseuso recordings (e.g. EPGrefresh)."
 msgstr "Konfigūruokite, ar \"įrašymo\" simbolis (monitoriaus temoje ir LCD temoje) matomi tik realiai įrašant ar taip pat transliacijoms ir pseudo įrašams (pvz EPGrefresh)."
 
@@ -3414,6 +3418,10 @@ msgstr "Nepavyko rasti tinkamos laikmenos - Pašalinkite kai kuriuos atsisiųstu
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nepavyko atverti laikmenos! Neįdėtas diskas?"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Įjungti importo laikmatį iš atsarginio imtuvo"
 
 msgid "Could not open Picture in Picture"
 msgstr "Vaizdo vaizde atverti nepavyko"
@@ -4434,10 +4442,6 @@ msgstr "EPG:"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "KLAIDA - paieška nepavyko (%s)!"
 
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr "KLAIDA, parsiunčiant failą %s"
-
 msgid "East"
 msgstr "Rytai"
 
@@ -4789,10 +4793,6 @@ msgstr "Eritrėja"
 msgid "Error"
 msgstr "Klaida"
 
-#, python-format
-msgid "Error %s"
-msgstr "Klaida %s"
-
 msgid "Error code"
 msgstr "Klaidos kodas"
 
@@ -4825,12 +4825,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Srauto stabdymo klaida!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Klaida, įrašant epg.dat serveryje"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Klaida, ieškant epg.data iš serverio"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -4838,9 +4832,6 @@ msgid ""
 msgstr ""
 "Klaida atsisiunčiant atsarginio imtuvo laikmačio informaciją\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Klaida atkūrus epg.dat vietą serveryje"
 
 #, python-format
 msgid ""
@@ -6057,6 +6048,9 @@ msgstr "Importuoti epg iš nuotolinio imtuvo URL"
 msgid "Import remote receiver URL"
 msgstr "Importuoti nuotolinio imtuvo URL"
 
+msgid "In live view wait this many seconds after a numeric key press before assuming the required channel number has been entered. Default: 5 seconds. Setting zero will require confirmation with 'OK'. "
+msgstr ""
+
 msgid "In most cases this should be set to No. Only enable if you have a very specific need."
 msgstr "Daugeliu atvejų tai turėtų būti nustatyta 'Ne'. Įjunkite tik jei turite labai konkretų poreikį."
 
@@ -6672,9 +6666,6 @@ msgstr "Ilguma"
 
 msgid "Loop through from"
 msgstr "Kilpą iš"
-
-msgid "Lord Howe Island"
-msgstr "Lordo Hau sala"
 
 msgid "Lower case"
 msgstr "Mažosios raidės"
@@ -7419,9 +7410,6 @@ msgstr "Joks aprašymas nepasiekiamas."
 msgid "No displayable files on this medium found!"
 msgstr "Jokių failų čia nerasta!"
 
-msgid "No epg.dat file found server"
-msgstr "Failo epg.dat serveryje nerasta"
-
 msgid "No event info found, recording indefinitely."
 msgstr "Informacija apie įvykius nerasta, tęsiamas įrašymas."
 
@@ -7463,6 +7451,9 @@ msgstr "Nėra kanalų"
 
 msgid "No services/providers selected"
 msgstr "Nepasirinkti kanalai/teikėjai"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 msgid "No standby"
 msgstr "Nebudėti"
@@ -7568,9 +7559,6 @@ msgstr "Šiaurė"
 
 msgid "Northern Mariana Islands"
 msgstr "Šiaurinės Marianos Salos"
-
-msgid "Northern Territory"
-msgstr "Šiaurinė teritorija"
 
 msgid "Norway"
 msgstr "Norvegija"
@@ -10498,6 +10486,10 @@ msgstr "Rodyti arba slėpti išplėstą aprašymą, (priklauso nuo temos)."
 msgid "Show packages to be updated"
 msgstr "Rodyti atnaujinamus paketus"
 
+#, fuzzy
+msgid "Show picons during channel number input"
+msgstr "Kanalų sąrašo lange rodyti logotipus"
+
 msgid "Show picons in channel selection list"
 msgstr "Kanalų sąrašo lange rodyti logotipus"
 
@@ -10911,9 +10903,6 @@ msgstr "Pietų"
 
 msgid "South Africa"
 msgstr "Pietų Afrika"
-
-msgid "South Australia"
-msgstr "Pietų Australija"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Pietų Džordžijos ir Pietų Sandvičo Salos"
@@ -13181,9 +13170,6 @@ msgstr "Vakarai"
 msgid "West limit set"
 msgstr "Nustatykite vakarų ribą"
 
-msgid "Western Australia"
-msgstr "Vakarų Australija"
-
 msgid "Western Sahara"
 msgstr "Vakarų Sachara"
 
@@ -13806,6 +13792,9 @@ msgstr "Perjungti vaizdo centrą vaizde"
 
 msgid "Zap focus to main screen"
 msgstr "Perjungti į pagrindinį ekraną"
+
+msgid "Zap key delay for channel number input"
+msgstr ""
 
 msgid "Zap mode"
 msgstr "Perjungimo režimas"

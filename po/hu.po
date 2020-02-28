@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 20:58+0330\n"
+"POT-Creation-Date: 2020-02-29 02:27+0330\n"
 "PO-Revision-Date: 2020-02-19 11:12+0100\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -3456,6 +3456,10 @@ msgstr "Megadja, hogy megjelenjen-e az információs sávon a forgatómotor poz�
 msgid "Configure whether or not an icon should be shown when your motorized dish is moving."
 msgstr "Megadja, hogy megjelenjen-e egy ikon a képernyőn, miközben az antenna forgatómotorja dolgozik."
 
+#, fuzzy
+msgid "Configure whether service picons will be shown in number zap."
+msgstr "A csatornák pikonjainak megjelenítése a csatornalistában."
+
 msgid "Configure whether the 'recording' symbol (in the display skin and LCD skin) is visible for real recordings only or also for streaming and pseuso recordings (e.g. EPGrefresh)."
 msgstr ""
 
@@ -3587,6 +3591,10 @@ msgstr "Nem található megfelelő adathordozó. Kérem, töröljön néhány le
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nem lehet betölteni a hordozót! Van bennt lemez?"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Csatornák importálása a tartalék tunerből"
 
 msgid "Could not open Picture in Picture"
 msgstr "A Kép-a-Képben funkció nem indítható el"
@@ -4638,10 +4646,6 @@ msgstr "EPG:"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "HIBA - nem sikerült a keresés (%s)!"
 
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr "Hiba a %s fájl letöltésekor"
-
 msgid "East"
 msgstr "Kelet"
 
@@ -5003,10 +5007,6 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Hiba"
 
-#, python-format
-msgid "Error %s"
-msgstr "Hiba %s"
-
 msgid "Error code"
 msgstr "Hibakód"
 
@@ -5035,12 +5035,6 @@ msgstr "Hiba az image kicsomagolása során %s"
 msgid "Error stop stream!"
 msgstr "A stream leállítása sikertelen!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Hiba az epg.dat szerverre írásakor"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Hiba az epg.dat szerverről történő beolvasásakor"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -5048,9 +5042,6 @@ msgid ""
 msgstr ""
 "Hiba történt a tartalék tuner időzítők letöltésekor\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Hiba az epg.dat helyének meghatározásakor a szerveren"
 
 #, python-format
 msgid ""
@@ -6312,6 +6303,9 @@ msgstr "Importálás a távoli vevő URL címéből"
 msgid "Import remote receiver URL"
 msgstr "Távoli vevő URL címének importálása"
 
+msgid "In live view wait this many seconds after a numeric key press before assuming the required channel number has been entered. Default: 5 seconds. Setting zero will require confirmation with 'OK'. "
+msgstr ""
+
 msgid "In most cases this should be set to No. Only enable if you have a very specific need."
 msgstr ""
 
@@ -6952,10 +6946,6 @@ msgstr "Földrajzi hosszúsági fok"
 
 msgid "Loop through from"
 msgstr "Felfűzés ebből"
-
-#, fuzzy
-msgid "Lord Howe Island"
-msgstr "Feröer-szigetek"
 
 msgid "Lower case"
 msgstr "Kisbetű"
@@ -7740,9 +7730,6 @@ msgstr "Nincs elérhető leírás."
 msgid "No displayable files on this medium found!"
 msgstr "A hordozón nem található lejátszható fájl!"
 
-msgid "No epg.dat file found server"
-msgstr "Nem található epg.dat fájl a szerveren"
-
 msgid "No event info found, recording indefinitely."
 msgstr "Nincs esemény infó, felvétel korlátlanul."
 
@@ -7784,6 +7771,9 @@ msgstr "Nincs csatorna"
 
 msgid "No services/providers selected"
 msgstr "Nincs szolgáltató kiválasztva"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 msgid "No standby"
 msgstr "Nincs kikapcsolás"
@@ -7891,10 +7881,6 @@ msgstr "Észak"
 
 msgid "Northern Mariana Islands"
 msgstr "Északi-Mariana-szigetek"
-
-#, fuzzy
-msgid "Northern Territory"
-msgstr "Francia déli és antarktiszi területek"
 
 msgid "Norway"
 msgstr "Norvégia"
@@ -10929,6 +10915,10 @@ msgstr "Bővített leírás megjelenítése"
 msgid "Show packages to be updated"
 msgstr "Frissítendő csomagok mutatása"
 
+#, fuzzy
+msgid "Show picons during channel number input"
+msgstr "Piconok mutatása a csatornaválasztó menüben"
+
 msgid "Show picons in channel selection list"
 msgstr "Piconok mutatása a csatornaválasztó menüben"
 
@@ -11355,10 +11345,6 @@ msgstr "Dél"
 
 msgid "South Africa"
 msgstr "Dél-afrikai Köztársaság"
-
-#, fuzzy
-msgid "South Australia"
-msgstr "Ausztrália"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Déli-Georgia és Déli-Sandwich-szigetek"
@@ -13688,10 +13674,6 @@ msgstr "Nyugat"
 msgid "West limit set"
 msgstr "Nyugati limit beállítás"
 
-#, fuzzy
-msgid "Western Australia"
-msgstr "Ausztrália"
-
 msgid "Western Sahara"
 msgstr "Nyugat-Szahara"
 
@@ -14326,6 +14308,9 @@ msgstr "A Kép-a-Képben-ablak kezelése"
 
 msgid "Zap focus to main screen"
 msgstr "A főképernyő kezelése"
+
+msgid "Zap key delay for channel number input"
+msgstr ""
 
 msgid "Zap mode"
 msgstr "Csatornaváltás mód"

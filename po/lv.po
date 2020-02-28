@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 20:58+0330\n"
+"POT-Creation-Date: 2020-02-29 02:27+0330\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -3469,6 +3469,10 @@ msgstr "Uzstāda vai infojoslā tiks attēlota pozicioniera pozīcija"
 msgid "Configure whether or not an icon should be shown when your motorized dish is moving."
 msgstr "Uzstāda vai tiks attēlota ikona kad satelītantena ar motoru pārvietosies."
 
+#, fuzzy
+msgid "Configure whether service picons will be shown in number zap."
+msgstr "Uzstāda vai kanālu pikonas tiks rādītas kanālu sarakstā."
+
 msgid "Configure whether the 'recording' symbol (in the display skin and LCD skin) is visible for real recordings only or also for streaming and pseuso recordings (e.g. EPGrefresh)."
 msgstr ""
 
@@ -3600,6 +3604,10 @@ msgstr "Nav pieejams piemērots datu nesējs - lūdzu izdzēsiet kādu imidžu v
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nevar ielādēt datu nesēju! Disks nav ievietots?"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Importēt taimerus no attālinātā uztvērēja"
 
 msgid "Could not open Picture in Picture"
 msgstr "Nevar atvērt attēlu attēlā"
@@ -4662,10 +4670,6 @@ msgstr ""
 msgid "ERROR - failed to scan (%s)!"
 msgstr "KĻŪDA - meklēšana neizdevās (%s)!"
 
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr "Kļūda lejupielādējot failu %s"
-
 msgid "East"
 msgstr "Austrumi"
 
@@ -5030,10 +5034,6 @@ msgstr "Eritreja"
 msgid "Error"
 msgstr "Kļūda"
 
-#, python-format
-msgid "Error %s"
-msgstr "Kļūda %s"
-
 msgid "Error code"
 msgstr "Kļūdas kods"
 
@@ -5066,12 +5066,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Kļūda apturot straumēšanu!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Kļūda rakstot epg.dat failu uz servera"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Kļūda iegūstot epg.dat failu no servera"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -5079,9 +5073,6 @@ msgid ""
 msgstr ""
 "Kļūda iegūstot taimerus no attālinātā uztvērēja\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Kļūda iegūstot epg.dat faila atrašanās vietu no servera"
 
 #, python-format
 msgid ""
@@ -6351,6 +6342,9 @@ msgstr "Importēt no attālinātā uztvērēja"
 msgid "Import remote receiver URL"
 msgstr "Attālinātais uztvērējs importam"
 
+msgid "In live view wait this many seconds after a numeric key press before assuming the required channel number has been entered. Default: 5 seconds. Setting zero will require confirmation with 'OK'. "
+msgstr ""
+
 msgid "In most cases this should be set to No. Only enable if you have a very specific need."
 msgstr ""
 
@@ -6990,10 +6984,6 @@ msgstr "Garums"
 
 msgid "Loop through from"
 msgstr "Loop cauri no"
-
-#, fuzzy
-msgid "Lord Howe Island"
-msgstr "Farēru salas"
 
 msgid "Lower case"
 msgstr "Mazie burti"
@@ -7783,9 +7773,6 @@ msgstr "Apraksts nav pieejams."
 msgid "No displayable files on this medium found!"
 msgstr "Šinī datu nesējā nav atrasti attēlojami faili!"
 
-msgid "No epg.dat file found server"
-msgstr "Serverī nav atrasts epg.dat fails"
-
 msgid "No event info found, recording indefinitely."
 msgstr "Nav atrasta informācija par pārraidi, ierakstīs nepārtraukti."
 
@@ -7828,6 +7815,9 @@ msgstr "Nav kanāla"
 
 msgid "No services/providers selected"
 msgstr "Kanāli/operatori nav izvēlēti"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 msgid "No standby"
 msgstr "Nav gaidstāves"
@@ -7935,10 +7925,6 @@ msgstr "Ziemeļi"
 
 msgid "Northern Mariana Islands"
 msgstr "Ziemeļu Marianas salas"
-
-#, fuzzy
-msgid "Northern Territory"
-msgstr "Franču dienvidu teritorijas"
 
 msgid "Norway"
 msgstr "Norvēģija"
@@ -10985,6 +10971,10 @@ msgstr "Rādīt paplašināto aprakstu"
 msgid "Show packages to be updated"
 msgstr "Parādīt paketes kuras tiks atjaunotas"
 
+#, fuzzy
+msgid "Show picons during channel number input"
+msgstr "Rādīt pikonas kanālu sarakstā"
+
 msgid "Show picons in channel selection list"
 msgstr "Rādīt pikonas kanālu sarakstā"
 
@@ -11413,10 +11403,6 @@ msgstr "Dienvidi"
 
 msgid "South Africa"
 msgstr "Dienvidāfrika"
-
-#, fuzzy
-msgid "South Australia"
-msgstr "Austrālija"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Dienviddžordžija un Dienvidsendviču salas"
@@ -13748,10 +13734,6 @@ msgstr "Rietumi"
 msgid "West limit set"
 msgstr "Iestatīt rietumu limitu"
 
-#, fuzzy
-msgid "Western Australia"
-msgstr "Austrālija"
-
 msgid "Western Sahara"
 msgstr "Rietumsahāra"
 
@@ -14386,6 +14368,9 @@ msgstr "Pārslēgties uz attēlu attēlā"
 
 msgid "Zap focus to main screen"
 msgstr "Pārslēgties uz pamata ekrānu"
+
+msgid "Zap key delay for channel number input"
+msgstr ""
 
 msgid "Zap mode"
 msgstr "Pārslēgšanās režīms"

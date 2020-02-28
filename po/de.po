@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 20:58+0330\n"
+"POT-Creation-Date: 2020-02-29 02:27+0330\n"
 "PO-Revision-Date: 2019-11-28 17:53+0100\n"
 "Last-Translator: Pike_Bishop <alfredzngr023@gmail.com>\n"
 "Language-Team: Sfteam  angelo2807@hotmail.com\n"
@@ -3469,6 +3469,10 @@ msgstr "Konfigurieren Sie ob die Rotorposition in der Infobar angezeigt werden s
 msgid "Configure whether or not an icon should be shown when your motorized dish is moving."
 msgstr "Anzeige eines Hinweissymbols bei Bewegung der motorisierten Antennenschüssel."
 
+#, fuzzy
+msgid "Configure whether service picons will be shown in number zap."
+msgstr "Falls aktiviert, werden Picons in der Kanalauswahlliste angezeigt."
+
 msgid "Configure whether the 'recording' symbol (in the display skin and LCD skin) is visible for real recordings only or also for streaming and pseuso recordings (e.g. EPGrefresh)."
 msgstr ""
 
@@ -3600,6 +3604,10 @@ msgstr "Es konnte kein geeignetes Medium gefunden werden. Bitte entfernen Sie ei
 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Konnte das Medium nicht laden! Keine DVD eingelegt?"
+
+#, fuzzy
+msgid "Could not locate epg file on fallback tuner"
+msgstr "Aktivieren Sie den Import-Timer vom Reserve-Tuner"
 
 msgid "Could not open Picture in Picture"
 msgstr "Bild im Bild konnte nicht geladen werden."
@@ -4651,10 +4659,6 @@ msgstr ""
 msgid "ERROR - failed to scan (%s)!"
 msgstr "FEHLER - Suche fehlgeschlagen (%s)!"
 
-#, python-format
-msgid "ERROR downloading file %s"
-msgstr "Fehler beim Herunterladen der Datei% s"
-
 msgid "East"
 msgstr "Ost"
 
@@ -5019,10 +5023,6 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Fehler"
 
-#, python-format
-msgid "Error %s"
-msgstr "Fehler% s"
-
 msgid "Error code"
 msgstr "Fehler-Code"
 
@@ -5055,12 +5055,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Fehler beim Stoppen des Streams!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Fehler beim Schreiben von epg.dat auf Server"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Fehler beim Abrufen von epg.data vom Server"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -5068,9 +5062,6 @@ msgid ""
 msgstr ""
 "Fehler beim Wiederherstellen der Reserve-Timer-Informationen\n"
 "% s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Fehler beim Wiederherstellen des Standorts von epg.dat auf dem Server"
 
 #, python-format
 msgid ""
@@ -6335,6 +6326,9 @@ msgstr "Import der Remote-Receiver-URL"
 msgid "Import remote receiver URL"
 msgstr "Remote-Empfänger-URL importieren"
 
+msgid "In live view wait this many seconds after a numeric key press before assuming the required channel number has been entered. Default: 5 seconds. Setting zero will require confirmation with 'OK'. "
+msgstr ""
+
 msgid "In most cases this should be set to No. Only enable if you have a very specific need."
 msgstr ""
 
@@ -6975,10 +6969,6 @@ msgstr "Längengrad"
 
 msgid "Loop through from"
 msgstr "Verbunden mit"
-
-#, fuzzy
-msgid "Lord Howe Island"
-msgstr "Cayman Inseln"
 
 msgid "Lower case"
 msgstr "Kleinbuchstaben"
@@ -7768,9 +7758,6 @@ msgstr "Keine Beschreibung verfügbar."
 msgid "No displayable files on this medium found!"
 msgstr "Keine anzeigbaren Dateien auf diesem Medium gefunden!"
 
-msgid "No epg.dat file found server"
-msgstr "Keine epg.dat Datei gefunden Server"
-
 msgid "No event info found, recording indefinitely."
 msgstr "Keine EPG-Daten gefunden. Starte unbegrenzte Aufnahme."
 
@@ -7812,6 +7799,9 @@ msgstr "Kein Sender"
 
 msgid "No services/providers selected"
 msgstr "Keine Sender/Anbieter ausgewählt"
+
+msgid "No settings files to download on fallback tuner"
+msgstr ""
 
 msgid "No standby"
 msgstr "Kein Standby"
@@ -7919,10 +7909,6 @@ msgstr "Nord"
 
 msgid "Northern Mariana Islands"
 msgstr "Nördliche Mariannen-Inseln"
-
-#, fuzzy
-msgid "Northern Territory"
-msgstr "Französische Süd- und Antarktisgebiete"
 
 msgid "Norway"
 msgstr "Norwegen"
@@ -10966,6 +10952,10 @@ msgstr "Erweiterte Beschreibung anzeigen"
 msgid "Show packages to be updated"
 msgstr "Zu aktualisierende Pakete"
 
+#, fuzzy
+msgid "Show picons during channel number input"
+msgstr "Picons in Kanalauswahlliste anzeigen"
+
 msgid "Show picons in channel selection list"
 msgstr "Picons in Kanalauswahlliste anzeigen"
 
@@ -11393,10 +11383,6 @@ msgstr "Süd"
 
 msgid "South Africa"
 msgstr "South Africa"
-
-#, fuzzy
-msgid "South Australia"
-msgstr "Australia"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "South Georgia and the South Sandwich Islands"
@@ -13733,10 +13719,6 @@ msgstr "West"
 msgid "West limit set"
 msgstr "Westliches Limit"
 
-#, fuzzy
-msgid "Western Australia"
-msgstr "Australia"
-
 msgid "Western Sahara"
 msgstr "Westsahara"
 
@@ -14377,6 +14359,9 @@ msgstr "Fokus auf Bild im Bild legen"
 
 msgid "Zap focus to main screen"
 msgstr "Fokus auf Hauptbild legen"
+
+msgid "Zap key delay for channel number input"
+msgstr ""
 
 msgid "Zap mode"
 msgstr "Zap Modus"
