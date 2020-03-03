@@ -1,6 +1,7 @@
 installdir = $(pkgdatadir)/skin_default/buttons
 
 dist_install_DATA = \
+	blank.png \
 	blue.png \
 	blue_pressed.png \
 	button_blue.png \
@@ -14,6 +15,7 @@ dist_install_DATA = \
 	green-big.png \
 	green.png \
 	grey.png \
+	icon1.png \
 	key_0.png \
 	key_1.png \
 	key_2.png \
