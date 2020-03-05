@@ -37,7 +37,7 @@ class About(Screen):
 			hwserial = open("/proc/stb/info/sn", "r").read().strip()
 			AboutText += _("Hardware serial: ") + hwserial + "\n"
 
-		AboutText += _("Brand: ") + about.getHardwareBrand() + "\n"
+		AboutText += _("Brand/Meta: ") + about.getHardwareBrand() + "\n"
 
 		cpu = about.getCPUInfoString()
 		AboutText += _("CPU: ") + cpu + "\n"
