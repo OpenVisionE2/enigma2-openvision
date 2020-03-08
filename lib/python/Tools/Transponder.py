@@ -1,6 +1,7 @@
 from __future__ import print_function
 from enigma import eDVBFrontendParametersSatellite, eDVBFrontendParametersCable, eDVBFrontendParametersTerrestrial, eDVBFrontendParametersATSC
 from Components.NimManager import nimmanager
+from Components.config import config
 
 def orbpos(pos):
 	return pos > 3600 and "N/A" or "%d.%d\xc2\xb0%s" % (pos > 1800 and ((3600 - pos) / 10, (3600 - pos) % 10, "W") or (pos / 10, pos % 10, "E"))
@@ -10,11 +11,18 @@ def getTunerDescription(nim):
 		return nimmanager.getTerrestrialDescription(nim)
 	except:
 		print("[Transponder] nimmanager.getTerrestrialDescription(nim) failed, nim:", nim)
+		try:
+			print("[Transponder] trying use fallback", config.usage.remote_fallback_dvbt_region.value)
+			return config.usage.remote_fallback_dvbt_region.value
+		except:
+			print("[Transponder] no description")
 	return ""
 
 def getMHz(frequency):
 	return (frequency+50000)/100000/10.
 
+# Note: newly added region add into ImportChannels to getTerrestrialRegion()
+#	due using for fallback tuner too
 def getChannelNumber(frequency, nim):
 	if nim == "DVB-T":
 		for n in nimmanager.nim_slots:
@@ -234,7 +242,7 @@ def ConvertToHumanReadable(tp, tunertype = None):
 			eDVBFrontendParametersTerrestrial.System_DVB_T_T2 : "DVB-T/T2",
 			eDVBFrontendParametersTerrestrial.System_DVB_T : "DVB-T",
 			eDVBFrontendParametersTerrestrial.System_DVB_T2 : "DVB-T2"}.get(tp.get("system"))
-		ret["channel"] = _("CH%s") % getChannelNumber(tp.get("frequency"), "DVB-T")
+		ret["channel"] = _("CH%s") % channel if channel else ""
 	elif tunertype == "ATSC":
 		ret["tuner_type"] = "ATSC"
 		ret["modulation"] = {

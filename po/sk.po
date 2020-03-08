@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-29 02:27+0330\n"
+"POT-Creation-Date: 2020-03-08 23:31+0330\n"
 "PO-Revision-Date: 2020-02-10 12:49+0100\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -2450,7 +2450,7 @@ msgstr "Botswana"
 msgid "Bouvet Island"
 msgstr "Bouvetské ostrovy"
 
-msgid "Brand: "
+msgid "Brand/Meta: "
 msgstr ""
 
 msgid "Brazil"
@@ -3604,10 +3604,6 @@ msgstr "Nebolo možné nájsť vhodné médium - odstráňte prosím stiahnuté 
 msgid "Could not load medium! No disc inserted?"
 msgstr "Nemôžem použiť médium. Je vložený disk?"
 
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Povoliť import časovača zo záložného tuneru"
-
 msgid "Could not open Picture in Picture"
 msgstr "Nedá sa otvoriť obraz v obraze"
 
@@ -4663,6 +4659,10 @@ msgstr "EPG:"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "CHYBA - zlyhalo vyhľadávanie (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 msgid "East"
 msgstr "Východne"
 
@@ -5024,6 +5024,10 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Chyba"
 
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Chyba"
+
 msgid "Error code"
 msgstr "Kód chyby"
 
@@ -5056,10 +5060,25 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Chyba zastavenia streamu!"
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+#, fuzzy
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+"Chyba počas načítania informácie záložného časovača\n"
+"%s"
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+"Chyba počas načítania informácie záložného časovača\n"
+"%s"
+
+#, fuzzy
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Chyba počas načítania informácie záložného časovača\n"
 "%s"
@@ -7754,6 +7773,9 @@ msgstr "Opis nie je k dispozícii."
 msgid "No displayable files on this medium found!"
 msgstr "Na tomto médiu sa nenašli žiadne zobraziteľné súbory!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 msgid "No event info found, recording indefinitely."
 msgstr "Žiadne informácie z EPG, spúšťam nekonečné nahrávanie."
 
@@ -7795,9 +7817,6 @@ msgstr "Žiadna stanica"
 
 msgid "No services/providers selected"
 msgstr "Žiadne služby/poskytovatelia nie sú zvolené"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 msgid "No standby"
 msgstr "Neprechádzať do pohotovostného režimu"

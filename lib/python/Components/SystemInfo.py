@@ -1,5 +1,5 @@
-from enigma import eDVBResourceManager, Misc_Options, eDVBCIInterfaces, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
-from Tools.Directories import fileExists, fileCheck, pathExists, fileHas, resolveFilename, SCOPE_PLUGINS
+from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
+from Tools.Directories import SCOPE_PLUGINS, fileCheck, fileExists, fileHas, pathExists, resolveFilename
 import os, re
 from os import access, R_OK
 from boxbranding import getDisplayType, getImageArch
@@ -9,9 +9,8 @@ SystemInfo = {}
 from Tools.Multiboot import getMultibootStartupDevice, getMultibootslots  # This import needs to be here to avoid a SystemInfo load loop!
 
 # Parse the boot commandline.
-fd = open("/proc/cmdline", "r")
-cmdline = fd.read()
-fd.close()
+with open("/proc/cmdline", "r") as fd:
+	cmdline = fd.read()
 cmdline = {k: v.strip('"') for k, v in re.findall(r'(\S+)=(".*?"|\S+)', cmdline)}
 
 def getNumVideoDecoders():

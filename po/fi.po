@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-29 02:27+0330\n"
+"POT-Creation-Date: 2020-03-08 23:31+0330\n"
 "PO-Revision-Date: 2019-02-13 20:52+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -2613,7 +2613,7 @@ msgstr "Botswana"
 msgid "Bouvet Island"
 msgstr "Bouvet Island"
 
-msgid "Brand: "
+msgid "Brand/Meta: "
 msgstr ""
 
 msgid "Brazil"
@@ -3845,10 +3845,6 @@ msgstr "Soveltuvaa tallennustilaa ei löytynyt - Varmista vapaa levytila, tai li
 msgid "Could not load medium! No disc inserted?"
 msgstr "Levyä ei voitu ladata! Levy puuttuu?"
 
-#, fuzzy
-msgid "Could not locate epg file on fallback tuner"
-msgstr "Tuo ajastimet etävastaaottimelta"
-
 msgid "Could not open Picture in Picture"
 msgstr "PiP-kuvaa ei voitu avata"
 
@@ -5042,6 +5038,10 @@ msgstr ""
 msgid "ERROR - failed to scan (%s)!"
 msgstr "VIRHE - haku epäonnistui (%s)!"
 
+#, python-format
+msgid "ERROR downloading file %s"
+msgstr ""
+
 #
 msgid "East"
 msgstr "Itäistä pituutta"
@@ -5446,6 +5446,11 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Virhe"
 
+#
+#, fuzzy, python-format
+msgid "Error %s"
+msgstr "Virhe"
+
 msgid "Error code"
 msgstr "Virhekoodi"
 
@@ -5471,10 +5476,19 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr ""
 
+msgid "Error when writing epg.dat on server"
+msgstr ""
+
+msgid "Error while retreiving epg.dat from server"
+msgstr ""
+
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
+msgstr ""
+
+msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #
@@ -8474,6 +8488,9 @@ msgstr "Kuvausta ei ole saatavilla."
 msgid "No displayable files on this medium found!"
 msgstr "Tiedostoja ei löytynyt!"
 
+msgid "No epg.dat file found server"
+msgstr ""
+
 #
 msgid "No event info found, recording indefinitely."
 msgstr ""
@@ -8530,9 +8547,6 @@ msgstr "Ei kanavaa"
 #
 msgid "No services/providers selected"
 msgstr "Kanavia/palveluntarjoajia ei valittu"
-
-msgid "No settings files to download on fallback tuner"
-msgstr ""
 
 #
 msgid "No standby"
