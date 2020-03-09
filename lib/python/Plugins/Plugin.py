@@ -3,7 +3,7 @@ import os
 
 config.plugins = ConfigSubsection()
 
-class PluginDescriptor(object):
+class PluginDescriptor:
 	"""An object to describe a plugin."""
 
 	# where to list the plugin. Note that there are different call arguments,
@@ -91,9 +91,6 @@ class PluginDescriptor(object):
 		self.wakeupfnc = wakeupfnc
 
 		self.__call__ = fnc
-
-	def __call__(self, reason=0, session=0):
-		return
 
 	def updateIcon(self, path):
 		self.path = path

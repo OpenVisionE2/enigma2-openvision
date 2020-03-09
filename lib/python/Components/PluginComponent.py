@@ -7,7 +7,7 @@ from Tools.Profile import profile
 from Plugins.Plugin import PluginDescriptor
 import keymapparser
 
-class PluginComponent(object):
+class PluginComponent:
 	firstRun = True
 	restartRequired = False
 
@@ -131,7 +131,7 @@ class PluginComponent(object):
 	def getPluginsForMenu(self, menuid):
 		res = [ ]
 		for p in self.getPlugins(PluginDescriptor.WHERE_MENU):
-			res += p.__call__(menuid)
+			res += p(menuid)
 		return res
 
 	def clearPluginList(self):
