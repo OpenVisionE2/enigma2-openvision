@@ -8,7 +8,7 @@ from Tools.BoundFunction import boundFunction
 from Tools.StbHardware import getFPWasTimerWakeup
 from Tools import Notifications
 from time import time
-import PowerTimer				 
+import PowerTimer
 import RecordTimer
 import Screens.Standby
 import NavigationInstance
