@@ -17,6 +17,12 @@ class Network:
 		self.DnsState = 0
 		self.nameservers = []
 		self.ethtool_bin = "/usr/sbin/ethtool"
+		self.ip_bin = "/sbin/ip"
+		self.ifconfig_bin = "/sbin/ifconfig"
+		self.ifdown_bin = "/sbin/ifdown"
+		self.ifup_bin = "/sbin/ifup"
+		self.ping_bin = "/bin/ping"
+		self.nslookup_bin = "/usr/bin/nslookup"
 		self.console = Console()
 		self.linkConsole = Console()
 		self.restartConsole = Console()
@@ -66,9 +72,9 @@ class Network:
 
 	def getAddrInet(self, iface, callback):
 		if oeversion.startswith('9'):
-			cmd = ("/sbin/ip", "/sbin/ip", "addr", "show", "dev", iface)
+			cmd = (self.ip_bin, self.ip_bin, "addr", "show", "dev", iface)
 		else:
-			cmd = ("/sbin/ip", "/sbin/ip", "-o", "addr", "show", "dev", iface)
+			cmd = (self.ip_bin, self.ip_bin, "-o", "addr", "show", "dev", iface)
 		self.console.ePopen(cmd, self.IPaddrFinished, [iface, callback])
 
 	def IPaddrFinished(self, result, retval, extra_args):
@@ -167,6 +173,12 @@ class Network:
 		fp.write("auto lo\n")
 		fp.write("iface lo inet loopback\n\n")
 		for ifacename, iface in self.ifaces.items():
+			if "dns-nameservers" in iface and iface['dns-nameservers']:
+				dns = []
+				for s in iface['dns-nameservers'].split()[1:]:
+					dns.append((self.convertIP(s)))
+				if dns:
+					self.nameservers = dns
 			if iface['up']:
 				fp.write("auto " + ifacename + "\n")
 				self.configuredInterfaces.append(ifacename)
@@ -193,10 +205,14 @@ class Network:
 		self.writeNameserverConfig()
 
 	def writeNameserverConfig(self):
-		fp = open('/etc/resolv.conf', 'w')
-		for nameserver in self.nameservers:
-			fp.write("nameserver %d.%d.%d.%d\n" % tuple(nameserver))
-		fp.close()
+		try:
+			os.system('rm -f /etc/resolv.conf')
+			fp = file('/etc/resolv.conf', 'w')
+			for nameserver in self.nameservers:
+				fp.write("nameserver %d.%d.%d.%d\n" % tuple(nameserver))
+			fp.close()
+		except:
+			print("[Network] resolv.conf - writing failed")
 
 	def loadNetworkConfig(self,iface,callback = None):
 		interfaces = []
@@ -403,10 +419,10 @@ class Network:
 		self.commands.append("/etc/init.d/avahi-daemon stop")
 		for iface in self.ifaces.keys():
 			if iface != 'eth0' or not self.onRemoteRootFS():
-				self.commands.append("/sbin/ip addr flush dev " + iface + " scope global")
+				self.commands.append(self.ip_bin + " addr flush dev " + iface + " scope global")
 		self.commands.append("/etc/init.d/networking stop")
 		self.commands.append("killall -9 udhcpc")
-		self.commands.append("rm /var/run/udhcpc*")
+		self.commands.append("rm -f /var/run/udhcpc*")
 		self.resetNetworkConsole.eBatch(self.commands, self.resetNetworkFinishedCB, [mode, callback], debug=True)
 
 	def resetNetworkFinishedCB(self, extra_args):
@@ -433,17 +449,17 @@ class Network:
 
 		self.commands = []
 		if mode == 'wlan':
-			self.commands.append("/sbin/ifconfig eth0 down")
-			self.commands.append("/sbin/ifconfig ath0 down")
-			self.commands.append("/sbin/ifconfig wlan0 up")
+			self.commands.append(self.ifconfig_bin + " eth0 down")
+			self.commands.append(self.ifconfig_bin + " ath0 down")
+			self.commands.append(self.ifconfig_bin + " wlan0 up")
 		if mode == 'wlan-mpci':
-			self.commands.append("/sbin/ifconfig eth0 down")
-			self.commands.append("/sbin/ifconfig wlan0 down")
-			self.commands.append("/sbin/ifconfig ath0 up")
+			self.commands.append(self.ifconfig_bin + " eth0 down")
+			self.commands.append(self.ifconfig_bin + " wlan0 down")
+			self.commands.append(self.ifconfig_bin + " ath0 up")
 		if mode == 'lan':
-			self.commands.append("/sbin/ifconfig eth0 up")
-			self.commands.append("/sbin/ifconfig wlan0 down")
-			self.commands.append("/sbin/ifconfig ath0 down")
+			self.commands.append(self.ifconfig_bin + " eth0 up")
+			self.commands.append(self.ifconfig_bin + " wlan0 down")
+			self.commands.append(self.ifconfig_bin + " ath0 down")
 		self.commands.append("/etc/init.d/avahi-daemon start")
 		self.resetNetworkConsole.eBatch(self.commands, self.resetNetworkFinished, [mode,callback], debug=True)
 
@@ -457,7 +473,7 @@ class Network:
 		self.NetworkState = 0
 		self.pingConsole = Console()
 		for server in ("www.google.com", "www.bing.com", "www.microsoft.com"):
-			self.pingConsole.ePopen(("/bin/ping", "/bin/ping", "-c", "1", server), self.checkNetworkStateFinished,statecallback)
+			self.pingConsole.ePopen((self.ping_bin, self.ping_bin, "-c", "1", server), self.checkNetworkStateFinished,statecallback)
 
 	def checkNetworkStateFinished(self, result, retval,extra_args):
 		(statecallback) = extra_args
@@ -477,11 +493,11 @@ class Network:
 		self.commands.append("/etc/init.d/avahi-daemon stop")
 		for iface in self.ifaces.keys():
 			if iface != 'eth0' or not self.onRemoteRootFS():
-				self.commands.append(("/sbin/ifdown", "/sbin/ifdown", iface))
-				self.commands.append("/sbin/ip addr flush dev " + iface + " scope global")
+				self.commands.append((self.ifdown_bin, self.ifdown_bin, iface))
+				self.commands.append(self.ip_bin + " addr flush dev " + iface + " scope global")
 		self.commands.append("/etc/init.d/networking stop")
 		self.commands.append("killall -9 udhcpc")
-		self.commands.append("rm /var/run/udhcpc*")
+		self.commands.append("rm -f /var/run/udhcpc*")
 		self.commands.append("/etc/init.d/networking start")
 		self.commands.append("/etc/init.d/avahi-daemon start")
 		self.restartConsole.eBatch(self.commands, self.restartNetworkFinished, callback, debug=True)
@@ -489,7 +505,10 @@ class Network:
 	def restartNetworkFinished(self,extra_args):
 		( callback ) = extra_args
 		if callback is not None:
-			callback(True)
+			try:
+				callback(True)
+			except:
+				pass
 
 	def getLinkState(self,iface,callback):
 		self.linkConsole.ePopen((self.ethtool_bin, self.ethtool_bin, iface), self.getLinkStateFinished,callback)
@@ -523,13 +542,21 @@ class Network:
 		self.activateInterfaceConsole.killAll()
 
 	def checkforInterface(self, iface):
-		return self.getAdapterAttribute(iface, 'up')
+		if self.getAdapterAttribute(iface, 'up') is True:
+			return True
+		else:
+			ret=os.system(self.ifconfig_bin + " " + iface + " up")
+			os.system(self.ifconfig_bin + " " + iface + " down")
+			if ret == 0:
+				return True
+			else:
+				return False
 
 	def checkDNSLookup(self,statecallback):
 		self.DnsState = 0
 		self.dnsConsole = Console()
 		for server in ("www.google.com", "www.bing.com", "www.microsoft.com"):
-			self.dnsConsole.ePopen(("/usr/bin/nslookup", "/usr/bin/nslookup", server), self.checkDNSLookupFinished, statecallback)
+			self.dnsConsole.ePopen((self.nslookup_bin, self.nslookup_bin, server), self.checkDNSLookupFinished, statecallback)
 
 	def checkDNSLookupFinished(self, result, retval,extra_args):
 		(statecallback) = extra_args
@@ -547,8 +574,8 @@ class Network:
 		self.msgPlugins()
 		commands = []
 		def buildCommands(iface):
-			commands.append(("/sbin/ifdown", "/sbin/ifdown", "-f", iface))
-			commands.append(("/sbin/ip", "/sbin/ip", "addr", "flush", "dev", iface, "scope", "global"))
+			commands.append((self.ifdown_bin, self.ifdown_bin, "-f", iface))
+			commands.append((self.ip_bin, self.ip_bin, "addr", "flush", "dev", iface, "scope", "global"))
 			#wpa_supplicant sometimes doesn't quit properly on SIGTERM
 			if os.path.exists('/var/run/wpa_supplicant/'+ iface):
 				commands.append("wpa_cli -i" + iface + " terminate")
@@ -580,14 +607,17 @@ class Network:
 				callback(True)
 			return
 		commands = []
-		commands.append(("/sbin/ifup", "/sbin/ifup", iface))
+		commands.append((self.ifup_bin, self.ifup_bin, iface))
 		self.activateInterfaceConsole.eBatch(commands, self.activateInterfaceFinished, callback, debug=True)
 
 	def activateInterfaceFinished(self,extra_args):
 		callback = extra_args
 		if not self.activateInterfaceConsole.appContainers:
 			if callback is not None:
-				callback(True)
+				try:
+					callback(True)
+				except:
+					pass
 
 	def sysfsPath(self, iface):
 		return '/sys/class/net/' + iface
@@ -614,7 +644,10 @@ class Network:
 		return False
 
 	def getWlanModuleDir(self, iface = None):
-		devicedir = self.sysfsPath(iface) + '/device'
+		if self.sysfsPath(iface) == "/sys/class/net/wlan3" and os.path.exists("/tmp/bcm/%s"%iface):
+			devicedir = self.sysfsPath("sys0") + '/device'
+		else:
+			devicedir = self.sysfsPath(iface) + '/device'
 		if not os.path.isdir(devicedir):
 			return None
 		moduledir = devicedir + '/driver/module'
@@ -622,17 +655,19 @@ class Network:
 			return moduledir
 
 		# identification is not possible over default moduledir
-		for x in os.listdir(devicedir):
-			# rt3070 on kernel 2.6.18 registers wireless devices as usb_device (e.g. 1-1.3:1.0) and identification is only possible over /sys/class/net/'ifacename'/device/1-xxx
-			if x.startswith("1-"):
-				moduledir = devicedir + '/' + x + '/driver/module'
-				if os.path.isdir(moduledir):
-					return moduledir
-		# rt73, zd1211b, r871x_usb_drv on kernel 2.6.12 can be identified over /sys/class/net/'ifacename'/device/driver, so look also here
-		moduledir = devicedir + '/driver'
-		if os.path.isdir(moduledir):
-			return moduledir
-
+		try:
+			for x in os.listdir(devicedir):
+				# rt3070 on kernel 2.6.18 registers wireless devices as usb_device (e.g. 1-1.3:1.0) and identification is only possible over /sys/class/net/'ifacename'/device/1-xxx
+				if x.startswith("1-"):
+					moduledir = devicedir + '/' + x + '/driver/module'
+					if os.path.isdir(moduledir):
+						return moduledir
+			# rt73, zd1211b, r871x_usb_drv on kernel 2.6.12 can be identified over /sys/class/net/'ifacename'/device/driver, so look also here
+			moduledir = devicedir + '/driver'
+			if os.path.isdir(moduledir):
+				return moduledir
+		except:
+			pass
 		return None
 
 	def detectWlanModule(self, iface = None):

@@ -57,7 +57,7 @@ class ServicePosition(Poll, Converter, object):
 
 		if self.detailed:
 			self.poll_interval = 100
-		elif self.type == self.TYPE_LENGTH or or self.TYPE_START_END_TIME or self.type == self.TYPE_VFD_LENGTH:
+		elif self.type == self.TYPE_LENGTH or self.TYPE_START_END_TIME or self.type == self.TYPE_VFD_LENGTH:
 			self.poll_interval = 2000
 		else:
 			self.poll_interval = 500
@@ -107,15 +107,15 @@ class ServicePosition(Poll, Converter, object):
 		if self.type == self.TYPE_SUMMARY or self.TYPE_START_END_TIME or self.type == self.TYPE_VFD_SUMMARY:
 			s = self.position / 90000
 			e = (self.length / 90000) - s
-				if self.type == self.TYPE_SUMMARY:
-					return "%02d:%02d +%2dm" % (s/60, s%60, e/60)
-				start_time = strftime("%H:%M", localtime(time() - s))
-				end_time = strftime("%H:%M", localtime(time() + e))
-				if self.start_time is None:
-					self.start_time = start_time
-				elif self.start_time != start_time:
-					start_time = self.start_time
-				return start_time + " - " + end_time
+			if self.type == self.TYPE_SUMMARY:
+				return "%02d:%02d +%2dm" % (s/60, s%60, e/60)
+			start_time = strftime("%H:%M", localtime(time() - s))
+			end_time = strftime("%H:%M", localtime(time() + e))
+			if self.start_time is None:
+				self.start_time = start_time
+			elif self.start_time != start_time:
+				start_time = self.start_time
+			return start_time + " - " + end_time
 
 		l = self.length
 		p = self.position
