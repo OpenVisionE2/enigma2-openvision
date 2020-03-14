@@ -837,7 +837,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 				name = name[1:]
 				for p in plugins.getPlugins(PluginDescriptor.WHERE_MOVIELIST):
 					if name == p.name:
-						p(self.session, item[0])
+						p.__call__(self.session, item[0])
 		elif name.startswith('/'):
 			self.gotFilename(name)
 		else:
