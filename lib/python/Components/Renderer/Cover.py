@@ -1,4 +1,4 @@
-from Renderer import Renderer
+from Components.Renderer.Renderer import Renderer
 from enigma import ePixmap, ePicLoad
 from Components.AVSwitch import AVSwitch
 from Components.Pixmap import Pixmap

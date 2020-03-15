@@ -2,7 +2,7 @@ from Components.config import config, ConfigBoolean
 from Screens.ChoiceBox import ChoiceBox
 from Plugins.Plugin import PluginDescriptor
 from enigma import getBoxType
-from FSBLUpdater import FSBLUpdater
+from Plugins.SystemPlugins.FSBLUpdater.FSBLUpdater import FSBLUpdater
 from Tools.Log import Log
 from Tools import Notifications
 

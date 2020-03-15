@@ -1,5 +1,5 @@
 from Components.Pixmap import Pixmap 
-from Renderer import Renderer
+from Components.Renderer.Rendere import Renderer
 from enigma import iServiceInformation 
 from string import upper 
 from enigma import ePixmap 

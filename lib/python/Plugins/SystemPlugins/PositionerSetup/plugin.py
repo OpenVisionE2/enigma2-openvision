@@ -28,8 +28,8 @@ from random import SystemRandom as SystemRandom
 from threading import Thread as Thread
 from threading import Event as Event
 
-import log
-import rotor_calc
+from Plugins.SystemPlugins.PositionerSetup import log
+from Plugins.SystemPlugins.PositionerSetup import rotor_calc
 
 class PositionerSetup(Screen):
 

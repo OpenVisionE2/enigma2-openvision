@@ -8,7 +8,7 @@ from Components.config import config
 from Tools.Transponder import ConvertToHumanReadable
 from Tools.GetEcmInfo import GetEcmInfo
 from Tools.Hex2strColor import Hex2strColor
-from Poll import Poll
+from Components.Converter.Poll import Poll
 from skin import parameters
 import os
 

@@ -2,7 +2,7 @@ from __future__ import print_function
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
-from Poll import Poll
+from Components.Converter.Poll import Poll
 import time
 import os
 from urllib2 import Request, urlopen

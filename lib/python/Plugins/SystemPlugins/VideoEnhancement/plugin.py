@@ -5,7 +5,7 @@ from Components.ActionMap import ActionMap
 from Components.Sources.StaticText import StaticText
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
-import VideoEnhancement
+from Plugins.SystemPlugins.VideoEnhancement import VideoEnhancement
 import os
 import skin
 
