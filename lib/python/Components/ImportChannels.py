@@ -59,7 +59,6 @@ class ImportChannels():
 		settings = self.getFallbackSettings()
 		self.getTerrestrialRegion(settings)
 		if "epg" in config.usage.remote_fallback_import.value:
-			config.misc.epgcache_filename = ConfigText(default="/epg.dat")
 			print("[ImportChannels] Writing epg.dat file on sever box")
 			try:
 				self.getUrl("%s/web/saveepg" % self.url, timeout=30).read()

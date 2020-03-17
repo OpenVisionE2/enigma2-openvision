@@ -57,7 +57,7 @@ class ServicePosition(Poll, Converter, object):
 
 		if self.detailed:
 			self.poll_interval = 100
-		elif self.type == self.TYPE_LENGTH or self.TYPE_START_END_TIME or self.type == self.TYPE_VFD_LENGTH:
+		elif self.type == self.TYPE_LENGTH or self.type == self.TYPE_START_END_TIME or self.type == self.TYPE_VFD_LENGTH:
 			self.poll_interval = 2000
 		else:
 			self.poll_interval = 500
@@ -104,7 +104,7 @@ class ServicePosition(Poll, Converter, object):
 		if seek is None:
 			return ""
 
-		if self.type == self.TYPE_SUMMARY or self.TYPE_START_END_TIME or self.type == self.TYPE_VFD_SUMMARY:
+		if self.type == self.TYPE_SUMMARY or self.type == self.TYPE_START_END_TIME or self.type == self.TYPE_VFD_SUMMARY:
 			s = self.position / 90000
 			e = (self.length / 90000) - s
 			if self.type == self.TYPE_SUMMARY:
