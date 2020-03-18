@@ -2,6 +2,7 @@ from __future__ import print_function
 import boxbranding
 print("getVisionVersion=%s<" %boxbranding.getVisionVersion())
 print("getVisionRevision=%s<" %boxbranding.getVisionRevision())
+print("getDeveloperName=%s<" %boxbranding.getDeveloperName())
 print("getBoxBrand=%s<" %boxbranding.getBoxBrand())
 print("getOEVersion=%s<" %boxbranding.getOEVersion())
 print("getImageDistro=%s<" %boxbranding.getImageDistro())
