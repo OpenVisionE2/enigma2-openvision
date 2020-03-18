@@ -4,15 +4,17 @@ from Components.Renderer.Renderer import Renderer
 from enigma import iServiceInformation 
 from string import upper 
 from enigma import ePixmap 
-from Tools.Directories import fileExists, SCOPE_CURRENT_SKIN, resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import fileExists, SCOPE_CURRENT_SKIN, resolveFilename
 from Components.Element import cached
 from Components.Converter.Poll import Poll
 import os
 
 class PicEmu2(Renderer, Poll):
 	__module__ = __name__
-	searchPaths = ('/data/%s/', '/usr/share/enigma2/%s/', '/media/sde1/%s/', '/media/cf/%s/', '/media/sdd1/%s/', '/media/hdd/%s/', '/media/usb/%s/', '/media/ba/%s/', '/mnt/ba/%s/', '/media/sda/%s/', '/etc/%s/')
-	searchPaths.append(resolveFilename(SCOPE_PLUGINS, 'Extensions/%s/'))
+	if os.path.exists("/usr/lib"):
+		searchPaths = ('/data/%s/', '/usr/share/enigma2/%s/', '/usr/lib/enigma2/python/Plugins/Extensions/%s/', '/media/sde1/%s/', '/media/cf/%s/', '/media/sdd1/%s/', '/media/hdd/%s/', '/media/usb/%s/', '/media/ba/%s/', '/mnt/ba/%s/', '/media/sda/%s/', '/etc/%s/')
+	elif os.path.exists("/usr/lib64"):
+		searchPaths = ('/data/%s/', '/usr/share/enigma2/%s/', '/usr/lib64/enigma2/python/Plugins/Extensions/%s/', '/media/sde1/%s/', '/media/cf/%s/', '/media/sdd1/%s/', '/media/hdd/%s/', '/media/usb/%s/', '/media/ba/%s/', '/mnt/ba/%s/', '/media/sda/%s/', '/etc/%s/')
 
 	def __init__(self):
 		Poll.__init__(self)
