@@ -180,3 +180,6 @@ SystemInfo["SeekStatePlay"] = False
 SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False
 SystemInfo["LEDButtons"] = model == "vuultimo"
+SystemInfo["HasH9SD"] = model in ("h9","i55plus") and pathExists("/dev/mmcblk0p1")
+SystemInfo["HasSDnomount"] = model in ("h9","i55plus") and (False, "none") or model in ("multibox","h9combo") and (True, "mmcblk0")
+SystemInfo["canBackupEMC"] = model in ("hd51","h7") and ("disk.img", "%s" % SystemInfo["MultibootStartupDevice"]) or model in ("osmio4k","osmio4kplus","osmini4k") and ("emmc.img", "%s" % SystemInfo["MultibootStartupDevice"]) or model in ("viper4k","gbtrio4k","gbip4k","sf8008","sf8008m","beyonwizv2") and ("usb_update.bin", "none")
