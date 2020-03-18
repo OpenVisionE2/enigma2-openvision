@@ -11,10 +11,10 @@ import os
 
 class PicEmu2(Renderer, Poll):
 	__module__ = __name__
-	if os.path.exists("/usr/lib"):
-		searchPaths = ('/data/%s/', '/usr/share/enigma2/%s/', '/usr/lib/enigma2/python/Plugins/Extensions/%s/', '/media/sde1/%s/', '/media/cf/%s/', '/media/sdd1/%s/', '/media/hdd/%s/', '/media/usb/%s/', '/media/ba/%s/', '/mnt/ba/%s/', '/media/sda/%s/', '/etc/%s/')
-	elif os.path.exists("/usr/lib64"):
+	if os.path.exists("/usr/lib64"):
 		searchPaths = ('/data/%s/', '/usr/share/enigma2/%s/', '/usr/lib64/enigma2/python/Plugins/Extensions/%s/', '/media/sde1/%s/', '/media/cf/%s/', '/media/sdd1/%s/', '/media/hdd/%s/', '/media/usb/%s/', '/media/ba/%s/', '/mnt/ba/%s/', '/media/sda/%s/', '/etc/%s/')
+	else:
+		searchPaths = ('/data/%s/', '/usr/share/enigma2/%s/', '/usr/lib/enigma2/python/Plugins/Extensions/%s/', '/media/sde1/%s/', '/media/cf/%s/', '/media/sdd1/%s/', '/media/hdd/%s/', '/media/usb/%s/', '/media/ba/%s/', '/mnt/ba/%s/', '/media/sda/%s/', '/etc/%s/')
 
 	def __init__(self):
 		Poll.__init__(self)
