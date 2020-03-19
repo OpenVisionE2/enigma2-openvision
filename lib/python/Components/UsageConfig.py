@@ -1258,6 +1258,8 @@ def InitUsageConfig():
 	config.autolanguage.subtitle_defaultdvb = ConfigYesNo(default = False)
 	config.autolanguage.subtitle_usecache = ConfigYesNo(default = True)
 
+	config.visionsettings = ConfigSubsection()
+
 	config.oscaminfo = ConfigSubsection()
 	if SystemInfo["OScamInstalled"] or SystemInfo["NCamInstalled"]:
 		config.oscaminfo.showInExtensions = ConfigYesNo(default=True)
