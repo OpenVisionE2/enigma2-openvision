@@ -62,7 +62,7 @@ class About(Screen):
 		AboutText += _("Open Vision revision: ") + about.getVisionRevision() + "\n"
 		AboutText += _("Open Vision module: ") + about.getVisionModule() + "\n"
 
-		AboutText += _("Compiled by: ") + boxbranding.getDeveloperName() + "\n"
+		AboutText += "\n" + _("Compiled by: ") + boxbranding.getDeveloperName() + "\n"
 		AboutText += _("Build date: ") + about.getBuildDateString() + "\n"
 		AboutText += _("Last update: ") + about.getUpdateDateString() + "\n"
 
