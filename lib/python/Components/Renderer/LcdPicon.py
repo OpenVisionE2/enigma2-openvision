@@ -1,113 +1,19 @@
-from __future__ import print_function
-import os, re, unicodedata
+import os
 from Components.Renderer.Renderer import Renderer
 from enigma import ePixmap, ePicLoad
-from Tools.Alternatives import GetWithAlternative
 from Tools.Directories import pathExists, SCOPE_CURRENT_SKIN, resolveFilename
-from Components.Harddisk import harddiskmanager
-from ServiceReference import ServiceReference
-from Components.config import config
 from boxbranding import getDisplayType
+from Components.config import config
+from Picon import PiconLocator
 
-searchPaths = []
-lastLcdPiconPath = None
+def useLcdPicons():
+	return getDisplayType() in ('bwlcd255','bwlcd140','bwlcd128') or config.lcd.picon_pack.value
 
-def initLcdPiconPaths():
-	global searchPaths
-	searchPaths = []
-	for mp in ('/usr/share/enigma2/', '/'):
-		onMountpointAdded(mp)
-	for part in harddiskmanager.getMountedPartitions():
-		onMountpointAdded(part.mountpoint)
-
-def onMountpointAdded(mountpoint):
-	global searchPaths
-	try:
-		if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
-			path = os.path.join(mountpoint, 'piconlcd') + '/'
-		else:
-			path = os.path.join(mountpoint, 'picon') + '/'
-		if os.path.isdir(path) and path not in searchPaths:
-			for fn in os.listdir(path):
-				if fn.endswith('.png'):
-					print("[LcdPicon] adding path:", path)
-					searchPaths.append(path)
-					break
-	except Exception as ex:
-		print("[LcdPicon] Failed to investigate %s:" % mountpoint, ex)
-
-def onMountpointRemoved(mountpoint):
-	global searchPaths
-	if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
-		path = os.path.join(mountpoint, 'piconlcd') + '/'
-	else:
-		path = os.path.join(mountpoint, 'picon') + '/'
-	try:
-		searchPaths.remove(path)
-		print("[LcdPicon] removed path:", path)
-	except:
-		pass
-
-def onPartitionChange(why, part):
-	if why == 'add':
-		onMountpointAdded(part.mountpoint)
-	elif why == 'remove':
-		onMountpointRemoved(part.mountpoint)
-
-def findLcdPicon(serviceName):
-	global lastLcdPiconPath
-	if lastLcdPiconPath is not None:
-		pngname = lastLcdPiconPath + serviceName + ".png"
-		if pathExists(pngname):
-			return pngname
-		else:
-			return ""
-	else:
-		global searchPaths
-		pngname = ""
-		for path in searchPaths:
-			if pathExists(path) and not path.startswith('/media/net') and not path.startswith('/media/autofs'):
-				pngname = path + serviceName + ".png"
-				if pathExists(pngname):
-					lastLcdPiconPath = path
-					break
-			elif pathExists(path):
-				pngname = path + serviceName + ".png"
-				if pathExists(pngname):
-					lastLcdPiconPath = path
-					break
-		if pathExists(pngname):
-			return pngname
-		else:
-			return ""
-
-def getLcdPiconName(serviceName):
-	#remove the path and name fields, and replace ':' by '_'
-	fields = GetWithAlternative(serviceName).split(':', 10)[:10]
-	if not fields or len(fields) < 10:
-		return ""
-	pngname = findLcdPicon('_'.join(fields))
-	if not pngname and not fields[6].endswith("0000"):
-		#remove "sub-network" from namespace
-		fields[6] = fields[6][:-4] + "0000"
-		pngname = findLcdPicon('_'.join(fields))
-	if not pngname and fields[0] != '1':
-		#fallback to 1 for IPTV streams
-		fields[0] = '1'
-		pngname = findLcdPicon('_'.join(fields))
-	if not pngname and fields[2] != '2':
-		#fallback to 1 for TV services with non-standard service types
-		fields[2] = '1'
-		pngname = findLcdPicon('_'.join(fields))
-	if not pngname: # picon by channel name
-		name = ServiceReference(serviceName).getServiceName()
-		name = unicodedata.normalize('NFKD', unicode(name, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
-		name = re.sub('[^a-z0-9]', '', name.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
-		if len(name) > 0:
-			pngname = findLcdPicon(name)
-			if not pngname and len(name) > 2 and name.endswith('hd'):
-				pngname = findLcdPicon(name[:-2])
-	return pngname
+lcdPiconLocator = None
+def createLcdPiconLocator(_):
+	global lcdPiconLocator
+	lcdPiconLocator = PiconLocator(['lcd_picon', 'piconlcd']) if useLcdPicons() else PiconLocator()
+config.lcd.picon_pack.addNotifier(createLcdPiconLocator)
 
 class LcdPicon(Renderer):
 	def __init__(self):
@@ -115,36 +21,27 @@ class LcdPicon(Renderer):
 		self.PicLoad = ePicLoad()
 		self.PicLoad.PictureData.get().append(self.updatePicon)
 		self.piconsize = (0,0)
-		self.pngname = ""
-		self.lastPath = None
-		if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
-			pngname = findLcdPicon("lcd_picon_default")
-		else:
-			pngname = findLcdPicon("picon_default")
-		self.defaultpngname = None
-		if not pngname:
-			if getDisplayType() in ("bwlcd255","bwlcd140") or config.lcd.picon_pack.value:
-				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "lcd_picon_default.png")
-			else:
-				tmp = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
-			if pathExists(tmp):
-				pngname = tmp
-		if os.path.getsize(pngname):
-			self.defaultpngname = pngname
+		config.lcd.picon_pack.addNotifier(self.configChanged)
 
-	def addPath(self, value):
-		if pathExists(value):
-			global searchPaths
-			if not value.endswith('/'):
-				value += '/'
-			if value not in searchPaths:
-				searchPaths.append(value)
+	def configChanged(self, _):
+		self.pngname = None
+		serviceName = "lcd_picon_default" if useLcdPicons() else "picon_default"
+		pngname = lcdPiconLocator.findPicon(serviceName)
+		if not pngname:
+			pngname = resolveFilename(SCOPE_CURRENT_SKIN, serviceName + ".png")
+		self.defaultpngname = pngname if os.path.getsize(pngname) else None
+		self.changed((self.CHANGED_DEFAULT,))
+
+	def destroy(self):
+		# remove the notifier before properties get destroyed
+		config.lcd.picon_pack.removeNotifier(self.configChanged)
+		Renderer.destroy(self)
 
 	def applySkin(self, desktop, parent):
 		attribs = self.skinAttributes[:]
 		for (attrib, value) in self.skinAttributes:
 			if attrib == "path":
-				self.addPath(value)
+				lcdPiconLocator.addSearchPath(value)
 				attribs.remove((attrib,value))
 			elif attrib == "size":
 				self.piconsize = value
@@ -163,17 +60,16 @@ class LcdPicon(Renderer):
 
 	def changed(self, what):
 		if self.instance:
-			pngname = ""
 			if what[0] in (self.CHANGED_DEFAULT, self.CHANGED_ALL, self.CHANGED_SPECIFIC):
-				pngname = getLcdPiconName(self.source.text)
+				pngname = lcdPiconLocator.getPiconName(self.source.text)
 				if not pathExists(pngname): # no picon for service found
 					pngname = self.defaultpngname
 				if self.pngname != pngname:
 					if pngname:
 						self.PicLoad.setPara((self.piconsize[0], self.piconsize[1], 0, 0, 1, 1, "#FF000000"))
 						if self.PicLoad.startDecode(pngname):
-							# if this has failed, then another decode is probably already in progress.
-							# throw away the old picload and try again immediately.
+							# if this has failed, then another decode is probably already in progress
+							# throw away the old picload and try again immediately
 							self.PicLoad = ePicLoad()
 							self.PicLoad.PictureData.get().append(self.updatePicon)
 							self.PicLoad.setPara((self.piconsize[0], self.piconsize[1], 0, 0, 1, 1, "#FF000000"))
@@ -184,6 +80,3 @@ class LcdPicon(Renderer):
 			elif what[0] == self.CHANGED_CLEAR:
 				self.pngname = None
 				self.instance.hide()
-
-harddiskmanager.on_partition_list_change.append(onPartitionChange)
-initLcdPiconPaths()
