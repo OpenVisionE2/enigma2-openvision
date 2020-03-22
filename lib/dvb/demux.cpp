@@ -89,6 +89,7 @@ eDVBDemux::~eDVBDemux()
 {
 #ifdef HAVE_RASPBERRYPI
 	delete decsa;
+	eDebug("[RPi eDVBDemux] delete decs");
 #endif
 }
 
@@ -124,7 +125,7 @@ RESULT eDVBDemux::setSourceFrontend(int fenum)
 	if (res)
 	{
  		eDebug("[eDVBDemux] DMX_SET_SOURCE Frontend%d failed: %m", fenum);
-#if HAVE_AMLOGIC
+#if HAVE_AMLOGIC || defined HAVE_RASPBERRYPI
 		/** FIXME: begin dirty hack  */
 		eDebug("[eDVBDemux] Ignoring due to limitation to one frontend for each adapter and missing ioctl ...");
 		source = fenum;
