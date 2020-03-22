@@ -342,7 +342,7 @@ class Audio(Converter, object):
 			return self.getTransponderType(info)
 		elif (self.type == self.SID):
 			sidValue = info.getInfo(iServiceInformation.sSID)
- 			if not sidValue:
+			if not sidValue:
 				return ""
 			return "%0.4X" % int(sidValue)
 

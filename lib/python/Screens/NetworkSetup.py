@@ -2224,14 +2224,14 @@ class NetworkOpenvpn(NSCommon,Screen):
 		if not os.path.exists('/etc/openvpn'):
 			os.makedirs('/etc/openvpn')
 		for file in os.listdir('/etc/openvpn'):
- 			if fnmatch.fnmatch(file, '*.conf'):
- 				print(file)
- 				openvpnfile = '1'
+			if fnmatch.fnmatch(file, '*.conf'):
+				print(file)
+				openvpnfile = '1'
 
- 		if openvpnfile == '0':
- 			self.message = self.session.open(MessageBox, _("No config to start, please check /etc/openvpn/ and try again."), type=MessageBox.TYPE_INFO, close_on_any_key=True)
- 		else:
- 			print("[NetworkSetup] config in /etc/openvpn")
+		if openvpnfile == '0':
+			self.message = self.session.open(MessageBox, _("No config to start, please check /etc/openvpn/ and try again."), type=MessageBox.TYPE_INFO, close_on_any_key=True)
+		else:
+			print("[NetworkSetup] config in /etc/openvpn")
 
 		time.sleep(3)
 		self.updateService()
