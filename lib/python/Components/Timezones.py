@@ -11,31 +11,31 @@ from Tools.StbHardware import setRTCoffset
 
 # The DEFAULT_AREA setting is usable by the image maintainers to select the
 # default UI mode and location settings used by their image.  If the value
-# of "Classic" is used then images that use the "Timezone area" and
-# "Timezone" settings will have the "Timezone area" set to "Classic" and the
-# "Timezone" field will be an expanded version of the classic list of GMT
-# related offsets.  Images that only use the "Timezone" setting should use
-# "Classic" to maintain their chosen UI for timezone selection.  That is,
+# of "Classic" is used then images that use the "Time zone area" and
+# "Time zone" settings will have the "Time zone area" set to "Classic" and the
+# "Time zone" field will be an expanded version of the classic list of GMT
+# related offsets.  Images that only use the "Time zone" setting should use
+# "Classic" to maintain their chosen UI for time zone selection.  That is,
 # users will only be presented with the list of GMT related offsets.
 #
-# The DEFAULT_ZONE is used to select the default timezone if the "Timezone
+# The DEFAULT_ZONE is used to select the default time zone if the "Time zone
 # area" is selected to be "Europe".  Images can select any defaults they deem
 # appropriate.
 #
 # NOTE: Even if the DEFAULT_AREA of "Classic" is selected a DEFAULT_ZONE
 # must still be selected.
 #
-# For images that use both the "Timezone area" and "Timezone" configuration
+# For images that use both the "Time zone area" and "Time zone" configuration
 # options then the DEFAULT_AREA can be set to an area most appropriate for
 # the image.  If the "Europe" option is selected then
-# the DEFAULT_ZONE can be used to select a more appropriate timezone
+# the DEFAULT_ZONE can be used to select a more appropriate time zone
 # selection for the image.
 #
 # Please ensure that any defaults selected are valid, unique and available
 # in the "/usr/share/zoneinfo/" directory tree.
 #
 # This version of Timezones.py now incorporates access to a new Geolocation
-# feature that will try and determine the appropriate timezone for the user
+# feature that will try and determine the appropriate time zone for the user
 # based on their WAN IP address.  If the receiver is not connected to the
 # Internet the defaults described above and listed below will be used.
 #
@@ -72,8 +72,7 @@ def InitTimeZones():
 		msgs = []
 		if config.timezone.area.value == "Classic":
 			if config.timezone.val.value != tzLink:
-				msgs.append("time zone '%s' != '%s'" % (tzLink, config.timezone.val.value))
-				config.timezone.val.value = tzLink
+				msgs.append("time zone '%s' != '%s'" % (config.timezone.val.value, tzLink))
 		else:
 			tzSplit = tzLink.find("/")
 			if tzSplit == -1:
@@ -83,13 +82,11 @@ def InitTimeZones():
 				tzArea = tzLink[:tzSplit]
 				tzVal = tzLink[tzSplit + 1:]
 			if config.timezone.area.value != tzArea:
-				msgs.append("area '%s' != '%s'" % (tzArea, config.timezone.area.value))
-				config.timezone.area.value = tzArea
+				msgs.append("area '%s' != '%s'" % (config.timezone.area.value, tzArea))
 			if config.timezone.val.value != tzVal:
-				msgs.append("zone '%s' != '%s'" % (tzVal, config.timezone.val.value))
-				config.timezone.val.value = tzVal
+				msgs.append("zone '%s' != '%s'" % (config.timezone.val.value, tzVal))
 		if len(msgs):
-			print("[Timezones] Warning: System timezone does not match Enigma2 timezone (%s), setting Enigma2 to system timezone!" % ",".join(msgs))
+			print("[Timezones] Warning: Enigma2 time zone does not match system time zone (%s), setting system to Enigma2 time zone!" % ",".join(msgs))
 	except (IOError, OSError):
 		pass
 
@@ -114,13 +111,13 @@ class Timezones:
 		self.readTimezones()
 		self.callbacks = []
 
-	# Scan the zoneinfo directory tree and all load all timezones found.
+	# Scan the zoneinfo directory tree and all load all time zones found.
 	#
 	def loadTimezones(self):
 		commonTimezoneNames = {
 			"Antarctica/DumontDUrville": "Dumont d'Urville",
 			"Asia/Ho_Chi_Minh": "Ho Chi Minh City",
-			"Australia/LHI": None,  # Exclude
+			"Australia/LHI": None,  # Duplicate entry - Exclude from list.
 			"Australia/Lord_Howe": "Lord Howe Island",
 			"Australia/North": "Northern Territory",
 			"Australia/South": "South Australia",
@@ -139,7 +136,7 @@ class Timezones:
 		}
 		for (root, dirs, files) in walk(TIMEZONE_DATA):
 			base = root[len(TIMEZONE_DATA):]
-			if base.startswith("posix") or base.startswith("right"):  # Skip these alternate copies of the timezone data if they exist.
+			if base.startswith("posix") or base.startswith("right"):  # Skip these alternate copies of the time zone data if they exist.
 				continue
 			if base == "":
 				base = "Generic"
@@ -187,13 +184,12 @@ class Timezones:
 			data[key] = (zone, name)
 		return [data[x] for x in sorted(data.keys())]
 
-	# Read the timezones.xml file and load all timezones found.
+	# Read the timezones.xml file and load all time zones found.
 	#
 	def readTimezones(self, filename=TIMEZONE_FILE):
 		root = None
 		try:
-			# This open gets around a possible file handle leak in Python's XML parser.
-			with open(filename, "r") as fd:
+			with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
 				try:
 					root = xml.etree.cElementTree.parse(fd).getroot()
 				except xml.etree.cElementTree.ParseError as err:
@@ -227,8 +223,7 @@ class Timezones:
 				if path.exists(path.join(TIMEZONE_DATA, zonePath)):
 					zones.append((zonePath, name))
 				else:
-					print("[Timezones] Warning: Classic timezone '%s' (%s) is not available in '%s'!" % (name, zonePath, TIMEZONE_DATA))
-				# print "[Timezones] DEBUG: Count=%2d, Name='%-50s', Zone='%s'%s" % (len(zones), name, zonePath)
+					print("[Timezones] Warning: Classic time zone '%s' (%s) is not available in '%s'!" % (name, zonePath, TIMEZONE_DATA))
 			self.timezones["Classic"] = zones
 		if len(zones) == 0:
 			self.timezones["Classic"] = [("UTC", "UTC")]
@@ -264,25 +259,27 @@ class Timezones:
 		return areaDefaultZone.setdefault(area, choices[0][0])
 
 	def activateTimezone(self, zone, area, runCallbacks=True):
-		# print "[Timezones] activateTimezone DEBUG: Area='%s', Zone='%s'" % (area, zone)
 		tz = zone if area in ("Classic", "Generic") else path.join(area, zone)
 		file = path.join(TIMEZONE_DATA, tz)
 		if not path.isfile(file):
-			print("[Timezones] Error: The timezone '%s' is not available!  Using 'UTC' instead." % tz)
+			print("[Timezones] Error: The time zone '%s' is not available!  Using 'UTC' instead." % tz)
 			tz = "UTC"
 			file = path.join(TIMEZONE_DATA, tz)
-		print("[Timezones] Setting timezone to '%s'." % tz)
+		print("[Timezones] Setting time zone to '%s'." % tz)
 		try:
 			unlink("/etc/localtime")
 		except (IOError, OSError) as err:
 			if err.errno != errno.ENOENT:  # No such file or directory
 				print("[Timezones] Error %d: Unlinking '/etc/localtime'! (%s)" % (err.errno, err.strerror))
-			pass
 		try:
 			symlink(file, "/etc/localtime")
 		except (IOError, OSError) as err:
 			print("[Timezones] Error %d: Linking '%s' to '/etc/localtime'! (%s)" % (err.errno, file, err.strerror))
-			pass
+		try:
+			with open("/etc/timezone", "w") as fd:
+				fd.write("%s\n" % tz)
+		except (IOError, OSError) as err:
+			print("[Timezones] Error %d: Updating '/etc/timezone'! (%s)" % (err.errno, err.strerror))
 		environ["TZ"] = ":%s" % tz
 		try:
 			time.tzset()
