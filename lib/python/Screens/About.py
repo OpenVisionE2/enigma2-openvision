@@ -21,6 +21,7 @@ from Components.Pixmap import MultiPixmap
 from Components.Network import iNetwork
 from Components.SystemInfo import SystemInfo
 from re import search
+from Tools.Geolocation import geolocation
 
 class About(Screen):
 	def __init__(self, session):
@@ -216,6 +217,67 @@ class About(Screen):
 
 	def showTroubleshoot(self):
 		self.session.open(Troubleshoot)
+
+class Geolocation(Screen):
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		self.setTitle(_("Geolocation"))
+
+		GeolocationText = _("Geolocation information") + "\n" + "\n"
+
+		continent = geolocation.get("continent", None)
+		if isinstance(continent, unicode):
+			continent = continent.encode(encoding="UTF-8", errors="ignore")
+		if continent is not None:
+			GeolocationText +=  _("Continent: ") + continent + "\n"
+
+		country = geolocation.get("country", None)
+		if isinstance(country, unicode):
+			country = country.encode(encoding="UTF-8", errors="ignore")
+		if country is not None:
+			GeolocationText +=  _("Country: ") + country + "\n"
+
+		state = geolocation.get("regionName", None)
+		if isinstance(state, unicode):
+			state = state.encode(encoding="UTF-8", errors="ignore")
+		if state is not None:
+			GeolocationText +=  _("State: ") + state + "\n"
+
+		city = geolocation.get("city", None)
+		if isinstance(city, unicode):
+			city = city.encode(encoding="UTF-8", errors="ignore")
+		if city is not None:
+			GeolocationText +=  _("City: ") + city + "\n" + "\n"
+
+		timezone = geolocation.get("timezone", None)
+		if isinstance(timezone, unicode):
+			timezone = timezone.encode(encoding="UTF-8", errors="ignore")
+		if timezone is not None:
+			GeolocationText +=  _("Timezone: ") + timezone + "\n"
+
+		currency = geolocation.get("currency", None)
+		if isinstance(currency, unicode):
+			currency = currency.encode(encoding="UTF-8", errors="ignore")
+		if currency is not None:
+			GeolocationText +=  _("Currency: ") + currency + "\n" + "\n"
+
+		latitude = geolocation.get("lat", None)
+		if str(float(latitude)) is not None:
+			GeolocationText +=  _("Latitude: ") + str(float(latitude)) + "\n"
+
+		longitude = geolocation.get("lon", None)
+		if str(float(longitude)) is not None:
+			GeolocationText +=  _("Longitude: ") + str(float(longitude)) + "\n"
+
+		self["AboutScrollLabel"] = ScrollLabel(GeolocationText)
+
+		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
+			{
+				"cancel": self.close,
+				"ok": self.close,
+				"up": self["AboutScrollLabel"].pageUp,
+				"down": self["AboutScrollLabel"].pageDown
+			})
 		
 class Devices(Screen):
 	def __init__(self, session):
@@ -486,6 +548,34 @@ class SystemNetworkInfo(Screen):
 		rx_bytes, tx_bytes = about.getIfTransferredData(self.iface)
 		self.AboutText += "\n" + _("Bytes received:") + "\t" + rx_bytes + "\n"
 		self.AboutText += _("Bytes sent:") + "\t" + tx_bytes + "\n"
+
+		isp = geolocation.get("isp", None)
+		isporg = geolocation.get("org", None)
+		if isinstance(isp, unicode):
+			isp = isp.encode(encoding="UTF-8", errors="ignore")
+		if isinstance(isporg, unicode):
+			isporg = isporg.encode(encoding="UTF-8", errors="ignore")
+		if isp is not None:
+			if isporg is not None:
+				self.AboutText +=  "\n" + _("ISP: ") + isp + " " + "(" + isporg + ")" + "\n"
+			else:
+				self.AboutText +=  "\n" + _("ISP: ") + isp + "\n"
+
+		mobile = geolocation.get("mobile", False)
+		if mobile is not False:
+			self.AboutText += _("Mobile: ") + _("Yes") + "\n"
+		else:
+			self.AboutText += _("Mobile: ") + _("No") + "\n"
+
+		proxy = geolocation.get("proxy", False)
+		if proxy is not False:
+			self.AboutText += _("Proxy: ") + _("Yes") + "\n"
+		else:
+			self.AboutText += _("Proxy: ") + _("No") + "\n"
+
+		publicip = geolocation.get("query", None)
+		if str(publicip) != "":
+			self.AboutText +=  _("Public IP: ") + str(publicip) + "\n" + "\n"
 
 		self.console = Console()
 		self.console.ePopen('ethtool %s' % self.iface, self.SpeedFinished)
