@@ -629,8 +629,6 @@ int eDVBSubtitleParser::subtitle_process_segment(uint8_t *segment)
 		int object_id;
 		int object_coding_method;
 
-		bool swap_map_table = eConfigManager::getConfigBoolValue("config.subtitles.swap_map_table");
-
 		object_id  = *segment++ << 8;
 		object_id |= *segment++;
 		processed_length += 2;
@@ -659,22 +657,11 @@ int eDVBSubtitleParser::subtitle_process_segment(uint8_t *segment)
 						bottom_field_data_blocklength |= *segment++;
 						processed_length += 4;
 
-						if (swap_map_table)
-						{
-							map_2_to_4_bit_table[0] = 0;
-							map_2_to_4_bit_table[1] = 7;
-							map_2_to_4_bit_table[2] = 8;
-							map_2_to_4_bit_table[3] = 15;
-						}
-
-						if (!swap_map_table)
-						{
 						// its working on cyfra channels.. but hmm in EN300743 the default table is 0, 7, 8, 15
-							map_2_to_4_bit_table[0] = 0;
-							map_2_to_4_bit_table[1] = 8;
-							map_2_to_4_bit_table[2] = 7;
-							map_2_to_4_bit_table[3] = 15;
-						}
+						map_2_to_4_bit_table[0] = 0;
+						map_2_to_4_bit_table[1] = 8;
+						map_2_to_4_bit_table[2] = 7;
+						map_2_to_4_bit_table[3] = 15;
 
 						// this map is realy untested...
 						map_2_to_8_bit_table[0] = 0;
@@ -929,7 +916,7 @@ void eDVBSubtitleParser::subtitle_redraw(int page_id)
 			reg->buffer->surface->clut.data = new gRGB[clut_size];
 
 			gRGB *palette = reg->buffer->surface->clut.data;
-			bool swap_palette_table = eConfigManager::getConfigBoolValue("config.subtitles.swap_palette_table");
+
 			subtitle_clut_entry *entries=0;
 			switch(reg->depth)
 			{
@@ -937,16 +924,9 @@ void eDVBSubtitleParser::subtitle_redraw(int page_id)
 					if (clut)
 						entries = clut->entries_2bit;
 					memset(static_cast<void*>(palette), 0, 4 * sizeof(gRGB));
-					palette[0].a = 0xFF;
-					if (swap_palette_table)
-					{
-						palette[1].r = palette[1].g = palette[1].b = 0xFF;
-					}
 					// this table is tested on cyfra .. but in EN300743 the table palette[2] and palette[1] is swapped.. i dont understand this ;)
-					if (!swap_palette_table)
-					{
-						palette[2].r = palette[2].g = palette[2].b = 0xFF;
-					}
+					palette[0].a = 0xFF;
+					palette[2].r = palette[2].g = palette[2].b = 0xFF;
 					palette[3].r = palette[3].g = palette[3].b = 0x80;
 					break;
 				case subtitle_region::bpp4: // tested on cyfra... but the map is another in EN300743... dont understand this...
