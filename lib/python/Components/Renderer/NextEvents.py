@@ -1,44 +1,54 @@
 # -*- coding: utf-8 -*-
 
 from Components.VariableText import VariableText
-from enigma import eLabel, eEPGCache
 from Components.Renderer.Renderer import Renderer
+from enigma import eLabel, eEPGCache
 from time import localtime
 
-class NextEvents(Renderer, VariableText):
+class NextEvents(VariableText, Renderer):
+
 	def __init__(self):
 		Renderer.__init__(self)
 		VariableText.__init__(self)
 		self.epgcache = eEPGCache.getInstance()
 
+	def applySkin(self, desktop, parent):
+		self.number = 0
+		attribs = []
+		for attrib, value in self.skinAttributes:
+			if attrib == 'number':
+				self.number = int(value)
+			else:
+				attribs.append((attrib, value))
+		self.skinAttributes = attribs
+		return Renderer.applySkin(self, desktop, parent)
+
 	GUI_WIDGET = eLabel
+
+	def connect(self, source):
+		Renderer.connect(self, source)
+		self.changed((self.CHANGED_DEFAULT,))
+
 	def changed(self, what):
-		event = self.source.event
-		if event is None:
-			self.text = "No EPG Data"      # string is " " empty (show nothing)... you can edit like: (self.text = "No EPG Data" ) and this will show when epg/event is empty
-			return None
-		service = self.source.service
-		text = ""
-		SingleEpgList = None
-		if self.epgcache is not None:
-			SingleEpgList = self.epgcache.lookupEvent(['IBDCTSERNX', (service.toString(), 0, -1, -1)])
-		if SingleEpgList:
-			SingleEpgList
-			maximal = 0
-			for x in SingleEpgList:
-				if maximal > 0:
-					if x[4]:
-						x[4]
-						t = localtime(x[1])
-						text = text + "%02d:%02d %s\n" % (t[3], t[4], x[4])
-					else:
-						x[4]
-						text = text + "n/a\n"
-				maximal += 1
-				if maximal > 8:    # maximal "50" = 50 next epg/event entry´s ... you can edit this number to show more or less 
-					break
-					continue
+		if what[0] == self.CHANGED_CLEAR:
+			self.text = ''
 		else:
-			SingleEpgList
-		self.text = text
-		return None
+			list = self.epgcache.lookupEvent(['BDT', (self.source.text, 0, -1, 360)])
+			text = ''
+			if len(list):
+				i = 1
+				for event in list:
+					if len(event) == 3 and i == int(self.number):
+						text = text + self.build_eventstr(event)
+						break
+					elif len(event) == 3 and i > 1 and self.number == 0:
+						text = text + self.build_eventstr(event)
+					i = i + 1
+					if i > 7:
+						break
+			self.text = text
+
+	def build_eventstr(self, event):
+		begin = localtime(event[0])
+		end = localtime(event[0] + event[1])
+		return '%02d:%02d - %02d:%02d %s\n' % (begin[3], begin[4], end[3], end[4], event[2])
