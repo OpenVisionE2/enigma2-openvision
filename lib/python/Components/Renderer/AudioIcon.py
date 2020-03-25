@@ -1,4 +1,4 @@
-from Renderer import Renderer
+from Components.Renderer import Renderer
 from enigma import ePixmap
 from Tools.Directories import fileExists, SCOPE_CURRENT_SKIN, resolveFilename
 
@@ -60,4 +60,3 @@ class AudioIcon(Renderer):
 			if fileExists(pngname):
 				return pngname
 		return ""
-

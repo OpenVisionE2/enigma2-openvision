@@ -1,5 +1,6 @@
 from Components.Converter.Converter import Converter
 from Components.Element import cached
+
 class Textreplace(Converter, object):
 	def __init__(self, type):
 		Converter.__init__(self, type)
@@ -19,4 +20,3 @@ class Textreplace(Converter, object):
 			return ""
 		
 	text = property(getText)
-		
