@@ -6,4 +6,4 @@ install_PYTHON = \
 	FrontpanelLed.py ChannelNumber.py VideoSize.py NextEpgInfo.py GaugeRender.py \
 	LcdPicon.py EtAnalogClockLCD.py RunningText.py AnalogClockLCD.py Cover.py RollerCharLCD.py NextEvents.py \
 	RollerCharLCDLong.py VRunningText.py VWatches.py Bhclock.py VolumeText.py EmptyEpg.py PiconUni.py \
-	PicCript.py PicEmu2.py
+	PicCript.py PicEmu2.py AudioIcon.py
