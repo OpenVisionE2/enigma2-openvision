@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-23 14:47+0430\n"
+"POT-Creation-Date: 2020-03-27 15:42+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -3232,6 +3232,11 @@ msgstr "Kruhová levá"
 msgid "Circular right"
 msgstr "Kruhová pravá"
 
+#
+#, fuzzy
+msgid "City: "
+msgstr "Kapacita: "
+
 #, fuzzy
 msgid "Clean network trash cans"
 msgstr "Nelze přesunout do koše"
@@ -3513,12 +3518,6 @@ msgstr "Nastavuje vynechání kontroly HDMI EDID, které může vyřešit probl�
 
 msgid "Configure if the subtitle should switch between normal, italic, bold and bolditalic"
 msgstr "Nastavuje, zda se mají titulky přepínat mezi normálními, kurzívou, tučnými a tučnou kurzívou."
-
-msgid "Configure if you need to swap the EN300743 mapping table."
-msgstr ""
-
-msgid "Configure if you need to swap the EN300743 palette table."
-msgstr ""
 
 #
 msgid "Configure interface"
@@ -3917,6 +3916,10 @@ msgstr "Tyto informace získáte ve specifikačním listu Vašeho motoru nebo po
 msgid "Content does not fit on DVD!"
 msgstr "Obsah se nevejde na DVD!"
 
+#, fuzzy
+msgid "Continent: "
+msgstr "Pokračovat"
+
 msgid "Continue"
 msgstr "Pokračovat"
 
@@ -3993,6 +3996,10 @@ msgstr "Info správy software"
 msgid "Country for EPG event rating information"
 msgstr "Pro tyto informace se podívejte do specifikace SRC zařízení."
 
+#, fuzzy
+msgid "Country: "
+msgstr "Země"
+
 msgid "Cover dashed flickering line for this service"
 msgstr "Překrývat blikající linku pro tento program"
 
@@ -4048,6 +4055,10 @@ msgstr "Kuba"
 
 msgid "Curacao"
 msgstr "Curaçao"
+
+#, fuzzy
+msgid "Currency: "
+msgstr "Aktuální zařízení: "
 
 #, fuzzy
 msgid "Current Affairs"
@@ -5195,7 +5206,7 @@ msgstr "CHYBA - prohledávání selhalo (%s)!"
 
 #, python-format
 msgid "ERROR downloading file %s"
-msgstr ""
+msgstr "CHYBA stažení souboru %s"
 
 #
 msgid "East"
@@ -5610,9 +5621,9 @@ msgid "Error"
 msgstr "Chyba"
 
 #
-#, fuzzy, python-format
+#, python-format
 msgid "Error %s"
-msgstr "Chyba"
+msgstr "Chyba %s"
 
 #
 msgid "Error code"
@@ -5648,13 +5659,10 @@ msgid "Error stop stream!"
 msgstr "Chyba při zrušení streamu!"
 
 msgid "Error when writing epg.dat on server"
-msgstr ""
+msgstr "Chyba při zapisování epg.dat na serveru"
 
-#, fuzzy
 msgid "Error while retreiving epg.dat from server"
-msgstr ""
-"Chyba při získávání informací ze záložního časovače\n"
-"%s"
+msgstr "Chyba při načítání epg.dat ze serveru"
 
 #, python-format
 msgid ""
@@ -5664,11 +5672,8 @@ msgstr ""
 "Chyba při získávání informací ze záložního časovače\n"
 "%s"
 
-#, fuzzy
 msgid "Error while retreiving location of epg.dat on server"
-msgstr ""
-"Chyba při získávání informací ze záložního časovače\n"
-"%s"
+msgstr "Chyba při načítání umístění epg.dat na serveru"
 
 #
 #, python-format
@@ -6432,6 +6437,15 @@ msgstr ""
 msgid "Genre"
 msgstr "Žánr"
 
+#
+#, fuzzy
+msgid "Geolocation"
+msgstr "Umístění"
+
+#, fuzzy
+msgid "Geolocation information"
+msgstr "Info správy software"
+
 msgid "Georgia"
 msgstr "Gruzie"
 
@@ -6959,6 +6973,9 @@ msgstr "soubor ISO je příliš veliký pro tento systém"
 #
 msgid "ISO path"
 msgstr "umístění ISO souboru"
+
+msgid "ISP: "
+msgstr ""
 
 msgid "Iceland"
 msgstr "Island"
@@ -7612,6 +7629,11 @@ msgid "Latitude"
 msgstr "Zeměpisná šířka"
 
 #
+#, fuzzy
+msgid "Latitude: "
+msgstr "Zeměpisná šířka"
+
+#
 msgid "Latvia"
 msgstr "Lotyšsko"
 
@@ -7805,6 +7827,11 @@ msgstr "Dlouhé stlačení klávesy"
 
 #
 msgid "Longitude"
+msgstr "Zeměpisná délka"
+
+#
+#, fuzzy
+msgid "Longitude: "
 msgstr "Zeměpisná délka"
 
 msgid "Loop through from"
@@ -8108,6 +8135,9 @@ msgstr ""
 
 msgid "Missing "
 msgstr "Chybí "
+
+msgid "Mobile: "
+msgstr ""
 
 #
 msgid "Mode"
@@ -8719,7 +8749,7 @@ msgid "No displayable files on this medium found!"
 msgstr "Žádné zobrazitelné soubory na tomto médiu nebyly nalezeny!"
 
 msgid "No epg.dat file found server"
-msgstr ""
+msgstr "Na serveru nebyl nalezen soubor epg.dat"
 
 #
 msgid "No event info found, recording indefinitely."
@@ -9892,15 +9922,17 @@ msgstr "Zapne LED napájení při hlubokém spánku."
 msgid "Power LED state during standby."
 msgstr "Zapne LED napájení při standby."
 
+#, fuzzy
 msgid "Power LED state in Deep-Standby"
-msgstr ""
+msgstr "Stav provozní LED v hlubokém spánku."
 
 #, fuzzy
 msgid "Power LED state in Standby"
-msgstr "Vypínat přijímač ve Standby"
+msgstr "Stav provozní LED v pohotovostním stavu."
 
+#, fuzzy
 msgid "Power LED state when running."
-msgstr ""
+msgstr "Stav provozní LED při provozu."
 
 #, fuzzy
 msgid "Power On Display"
@@ -10221,6 +10253,12 @@ msgstr "Poskytovatelé"
 #, fuzzy
 msgid "Providers: "
 msgstr "Poskytovatelé"
+
+msgid "Proxy: "
+msgstr ""
+
+msgid "Public IP: "
+msgstr ""
 
 msgid "Puerto Rico"
 msgstr "Portoriko"
@@ -11660,9 +11698,8 @@ msgid "Select the satellite your dish receives from. If you are unsure select 'a
 msgstr "Vyberte satelit na který je natočena Vaše parabola. Pokud si nejste jisti, vyberte možnost 'Automaticky' a přijímač se o to pokusí zjistit sám."
 
 #
-#, fuzzy
 msgid "Select the time zone within the area or region."
-msgstr "Zvolte horizontání rozlišení:"
+msgstr "Vyberte časové pásmo v oblasti nebo regionu."
 
 msgid "Select the tuner that controls the motorised dish."
 msgstr "Vyberte tuner který řídí natáčenou parabolu."
@@ -11736,9 +11773,8 @@ msgid "Select your region. If not available change 'Country' to 'all' and select
 msgstr "Vyberte svůj region. Není-li k dispozici, změňte 'Země' na 'Vše' a vyberte jednu z výchozích alternativ."
 
 #
-#, fuzzy
 msgid "Select your time zone area or region."
-msgstr "Zvolte horizontání rozlišení:"
+msgstr "Vyberte oblast nebo region Vašeho časového pásma."
 
 #
 msgid "Selecting satellites 1 (USALS)"
@@ -13064,6 +13100,11 @@ msgstr "Po startu přepne přijímač do pohotovostního režimu."
 msgid "Startup to Standby"
 msgstr "Po startu přepnout do Standby"
 
+#
+#, fuzzy
+msgid "State: "
+msgstr "Datový tok:"
+
 msgid "Status"
 msgstr ""
 
@@ -13340,12 +13381,6 @@ msgstr "Surinam"
 msgid "Svalbard and Jan Mayen"
 msgstr "Špicberky a Jan Mayen"
 
-msgid "Swap EN300743 mapping table"
-msgstr ""
-
-msgid "Swap EN300743 palette table"
-msgstr ""
-
 msgid "Swap PiP"
 msgstr "Prohodit PiP"
 
@@ -13507,7 +13542,7 @@ msgstr ""
 "Pro případné korekce můžete kontaktovat autora\n"
 "na výše uvedené adrese.\n"
 "\n"
-"®29.2.2020"
+"®23.3.2020"
 
 #
 msgid "TS file is too large for ISO9660 level 1!"
@@ -14245,14 +14280,12 @@ msgid "Time update in minutes:"
 msgstr ""
 
 #
-#, fuzzy
 msgid "Time zone"
 msgstr "Časové pásmo"
 
 #
-#, fuzzy
 msgid "Time zone area"
-msgstr "Časové pásmo"
+msgstr "Zóna časového pásma"
 
 #
 msgid "Timer"
@@ -14349,6 +14382,11 @@ msgstr "Timeshift"
 #
 msgid "Timeshift not possible!"
 msgstr "Timeshift není možný!"
+
+#
+#, fuzzy
+msgid "Timezone: "
+msgstr "Časové pásmo"
 
 msgid "Timor-Leste"
 msgstr "Východní Timor"
