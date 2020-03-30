@@ -1594,11 +1594,11 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
 	</screen>
 	<!-- NumberZapPicon -->
 	<screen name="NumberZapPicon" position="center,center" size="465,116" title="NumberZapPicon">
-  		<widget name="number" position="143,4" size="315,55" halign="center" valign="center" font="Regular;50"/>
-  		<widget source="Service" render="Picon" position="5,16" size="130,85" zPosition="5" alphatest="blend">
-    		<convert type="ServiceName2">Reference</convert>
-  		</widget>
-  		<widget name="servicename" position="143,60" size="315,55" font="Regular;25" halign="center" valign="center"/>
+		<widget name="number" position="143,4" size="315,55" halign="center" valign="center" font="Regular;50"/>
+		<widget source="Service" render="Picon" position="5,16" size="130,85" zPosition="5" alphatest="blend">
+			<convert type="ServiceName2">Reference</convert>
+		</widget>
+		<widget name="servicename" position="143,60" size="315,55" font="Regular;25" halign="center" valign="center"/>
 	</screen>
 	<!-- BufferIndicator -->
 	<screen name="BufferIndicator" title="Channel" position="c-100,45" size="320,35" backgroundColor="transparent" flags="wfNoBorder" zPosition="100">
