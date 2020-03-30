@@ -2835,10 +2835,10 @@ class NetworkInadynLog(Screen):
 			for line in f.readlines():
 				strview += line
 			else:
-			    if fileExists('/tmp/inadyn.log'):
-			     f = open('/tmp/inadyn.log', 'r')
-			     for line in f.readlines():
-				 strview += line
+				if fileExists('/tmp/inadyn.log'):
+					f = open('/tmp/inadyn.log', 'r')
+					for line in f.readlines():
+						strview += line
 			f.close()
 		self['infotext'].setText(strview)
 
