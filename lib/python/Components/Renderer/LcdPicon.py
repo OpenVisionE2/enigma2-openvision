@@ -4,7 +4,7 @@ from enigma import ePixmap, ePicLoad
 from Tools.Directories import pathExists, SCOPE_CURRENT_SKIN, resolveFilename
 from boxbranding import getDisplayType
 from Components.config import config
-from Picon import PiconLocator
+from Components.Renderer.Picon import PiconLocator
 
 def useLcdPicons():
 	return getDisplayType() in ('bwlcd255', 'bwlcd140', 'bwlcd128') or config.lcd.picon_pack.value
