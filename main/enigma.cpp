@@ -246,7 +246,7 @@ int main(int argc, char **argv)
 #ifdef HAVE_RASPBERRYPI
 //	cRpiSetup *m_setup;
 	cOmxDevice *m_device;
-	cRpiSetup::ProcessArgs(0, 0); // videolayer=0, displayout=0 (default values)
+//	m_setup->ProcessArgs(0, 0); // videolayer=0, displayout=0 (default values)
 	if(!cRpiSetup::HwInit())
 		eLog(3, "[cRpiSetup] failed to initialize RPi HD Device");
 	else
