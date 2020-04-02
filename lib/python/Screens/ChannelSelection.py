@@ -1,6 +1,5 @@
 from __future__ import print_function
 from Tools.Profile import profile
-
 from Screens.Screen import Screen
 import Screens.InfoBar
 from Screens.ScreenSaver import InfoBarScreenSaver
@@ -35,12 +34,11 @@ from Screens.Hotkey import InfoBarHotkey, hotkeyActionMap, hotkey
 profile("ChannelSelection.py 4")
 from Screens.PictureInPicture import PictureInPicture
 from Screens.RdsDisplay import RassInteractive
-from ServiceReference import ServiceReference
+from ServiceReference import ServiceReference, service_types_tv_ref, service_types_radio_ref, serviceRefAppendPath
 from Tools.BoundFunction import boundFunction
 from Tools import Notifications
 from Tools.Alternatives import GetWithAlternative
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
-from Tools.ServiceReference import service_types_tv_ref, service_types_radio_ref, serviceRefAppendPath
 from Plugins.Plugin import PluginDescriptor
 from Components.PluginComponent import plugins
 from Screens.ChoiceBox import ChoiceBox
