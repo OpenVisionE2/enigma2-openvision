@@ -238,7 +238,7 @@ uint8_t* eDecryptRawFile::getPackets(int &packetsCount) {
 					break;
 				}
 				ringBuffer->Del(Count);
-				eDebug("ERROR: skipped %d bytes to sync on TS packet", Count);
+				eDebug("[rawfile] ERROR: skipped %d bytes to sync on TS packet", Count);
 				return NULL;
 		}
 		if(!demux->decrypt(p, Count, packetsCount)) {

@@ -1406,7 +1406,7 @@ RESULT eDVBServicePlay::start()
 	eDVBServicePMTHandler::serviceType type = eDVBServicePMTHandler::livetv;
 
 	if(tryFallbackTuner(/*REF*/service, /*REF*/m_is_stream, m_is_pvr, /*simulate*/false))
-		eDebug("ServicePlay: fallback tuner selected");
+		eDebug("[eDVBServicePlay] ServicePlay: fallback tuner selected");
 
 		/* in pvr mode, we only want to use one demux. in tv mode, we're using
 		   two (one for decoding, one for data source), as we must be prepared
@@ -1454,7 +1454,7 @@ RESULT eDVBServicePlay::start()
 #if HAVE_ALIEN5
 	if(m_is_stream || m_is_pvr)
 	{
-			eDebug("[eDVBServicePlay]start m_is_pvr %d", m_is_pvr);
+			eDebug("[eDVBServicePlay] start m_is_pvr %d", m_is_pvr);
 			aml_set_demux2_source();
 	}
 #endif
@@ -2001,9 +2001,9 @@ int eDVBServicePlay::getInfo(int w)
 	{
 #ifdef HAVE_RASPBERRYPI
 	if (m_decoder)
-		eDebug("eDVBServicePlay::getInfo: m_decoder --> you can implement");
+		eDebug("[eDVBServicePlay] eDVBServicePlay::getInfo: m_decoder --> you can implement");
 	else
-		eDebug("eDVBServicePlay::getInfo: !m_decoder --> you can not implement");
+		eDebug("[eDVBServicePlay] eDVBServicePlay::getInfo: !m_decoder --> you can not implement");
 	case sVideoHeight:
 /*		return xineLib->getVideoHeight();*/
 		break;
@@ -2590,7 +2590,7 @@ bool eDVBServiceBase::tryFallbackTuner(eServiceReferenceDVB &service, bool &is_s
 
 	remote_service_ref << remote_service_args;
 
-	eDebug("Fallback tuner: redirected unavailable service to: %s\n", remote_service_ref.str().c_str());
+	eDebug("[eDVBServiceBase] Fallback tuner: redirected unavailable service to: %s\n", remote_service_ref.str().c_str());
 
 	service = eServiceReferenceDVB(remote_service_ref.str());
 

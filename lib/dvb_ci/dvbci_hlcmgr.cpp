@@ -8,7 +8,7 @@ int eDVBCIHostLanguageAndCountrySession::receivedAPDU(const unsigned char *tag,c
 {
 	int ret = 0;
 
-	eDebugNoNewLine("SESSION(%d)/HLC %02x %02x %02x: ", session_nb, tag[0], tag[1], tag[2]);
+	eDebugNoNewLine("[CI HLCM] SESSION(%d)/HLC %02x %02x %02x: ", session_nb, tag[0], tag[1], tag[2]);
 	for (int i=0; i<len; i++)
 		eDebugNoNewLine("%02x ", ((const unsigned char*)data)[i]);
 	eDebug(" ");
@@ -17,17 +17,17 @@ int eDVBCIHostLanguageAndCountrySession::receivedAPDU(const unsigned char *tag,c
 		switch (tag[2])
 		{
 		case 0x00:  // country enquiry
-			eDebug("Host country enquiry:");
+			eDebug("[CI HLCM] Host country enquiry:");
 			state=stateCountryEnquiry;
 			ret = 1;
 			break;
 		case 0x10:  // language enquiry
-			eDebug("Host language enquiry:");
+			eDebug("[CI HLCM] Host language enquiry:");
 			state=stateLanguageEnquiry;
 			ret = 1;
 			break;
 		default:
-			eDebug("unknown APDU tag 9F 80 %02x", tag[2]);
+			eDebug("[CI HLCM] unknown APDU tag 9F 80 %02x", tag[2]);
 			state = stateFinal;
 			break;
 		}
@@ -103,7 +103,7 @@ int eDVBCIHostLanguageAndCountrySession::doAction()
 		break;
 	}
 	default:
-		eDebug("unknown state");
+		eDebug("[CI HLCM] unknown state");
 		break;
 	}
 

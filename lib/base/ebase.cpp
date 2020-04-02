@@ -333,7 +333,7 @@ int eMainloop::processOneEvent(long user_timeout, PyObject **res, ePyObject addi
 	{
 		if (DVBCI_GetCbStatus()!=0)
 		{
-		eDebug("call ci notify here %d.", DVBCI_GetCbStatus());
+		eDebug("[ebase] call ci notify here %d.", DVBCI_GetCbStatus());
 			it = notifiers.find(uiTridCi);
 			if (it != notifiers.end()
 				&& it->second->state == 1) // added and in poll
@@ -347,7 +347,7 @@ int eMainloop::processOneEvent(long user_timeout, PyObject **res, ePyObject addi
 				m_inActivate = 0;
 			}
 			return_reason = 0; /* don't assume the timeout has passed when we got a signal */
-		eDebug("out ci notify here.");
+		eDebug("[ebase] out ci notify here.");
 		}
 	}
 #endif

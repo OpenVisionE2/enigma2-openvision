@@ -44,12 +44,12 @@ namespace {
 
 		fd = open(urnd, O_RDONLY);
 		if (fd <= 0) {
-			eWarning("cannot open %s", urnd);
+			eWarning("[res_content_ctrl] cannot open %s", urnd);
 			return -1;
 		}
 
 		if (read(fd, dest, len) != len) {
-			eWarning("cannot read from %s", urnd);
+			eWarning("[res_content_ctrl] cannot read from %s", urnd);
 			close(fd);
 			return -2;
 		}
@@ -85,7 +85,7 @@ namespace {
 		if ((in >= 'a') && (in <= 'z'))
 			return in - 0x61 + 10;
 
-		eWarning("unsupported chars in device id");
+		eWarning("[res_content_ctrl] unsupported chars in device id");
 
 		return 0;
 	}
@@ -155,13 +155,13 @@ namespace {
 
 		fd = open(filename, O_RDONLY);
 		if (fd <= 0) {
-			eDebug("can not open %s", filename);
+			eDebug("[res_content_ctrl] can not open %s", filename);
 			return false;
 		}
 
 		for (i = 0; i <= index; i++) {
 			if (read(fd, chunk, sizeof(chunk)) != sizeof(chunk)) {
-				eDebug("can not read auth_data");
+				eDebug("[res_content_ctrl] can not read auth_data");
 				close(fd);
 				return false;
 			}
@@ -190,7 +190,7 @@ namespace {
 
 			/* check if we got this pair already */
 			if (!memcmp(&buf[offset + 8 + 256], akh, 32)) {
-				eDebug("data already stored");
+				eDebug("[res_content_ctrl] data already stored");
 				return true;
 			}
 		}
@@ -207,17 +207,17 @@ namespace {
 		memcpy(buf + 8 + 256, akh, 32);
 		entries++;
 
-		eDebug("%d entries for writing", entries);
+		eDebug("[res_content_ctrl] %d entries for writing", entries);
 
 		get_authdata_filename(filename, sizeof(filename), slot);
 		fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
 		if (fd < 0) {
-			eWarning("can not open %s", filename);
+			eWarning("[res_content_ctrl] can not open %s", filename);
 			return false;
 		}
 
 		if (write(fd, buf, PAIR_SIZE * entries) != PAIR_SIZE * entries)
-			eWarning("error in write");
+			eWarning("[res_content_ctrl] error in write");
 
 		close(fd);
 
@@ -233,13 +233,13 @@ namespace {
 
 		fp = fopen(filename, "r");
 		if (!fp) {
-			eWarning("can not open %s", filename);
+			eWarning("[res_content_ctrl] can not open %s", filename);
 			return NULL;
 		}
 
 		PEM_read_RSAPrivateKey(fp, &r, NULL, NULL);
 		if (!r)
-			eWarning("can not read %s", filename);
+			eWarning("[res_content_ctrl] can not read %s", filename);
 
 		fclose(fp);
 
@@ -253,13 +253,13 @@ namespace {
 
 		fp = fopen(filename, "r");
 		if (!fp) {
-			eWarning("can not open %s", filename);
+			eWarning("[res_content_ctrl] can not open %s", filename);
 			return NULL;
 		}
 
 		cert = PEM_read_X509(fp, NULL, NULL, NULL);
 		if (!cert)
-			eWarning("can not read %s", filename);
+			eWarning("[res_content_ctrl] can not read %s", filename);
 
 		fclose(fp);
 
@@ -272,7 +272,7 @@ namespace {
 			time_t now = time(NULL);
 			struct tm *t = localtime(&now);
 			if (t->tm_year < 2015) {
-				eDebug("seems our system clock is wrong - ignore!");
+				eDebug("[res_content_ctrl] seems our system clock is wrong - ignore!");
 				return 1;
 			}
 		}
@@ -314,12 +314,12 @@ namespace {
 
 		cert = certificate_open(filename);
 		if (!cert) {
-			eWarning("can not open %s", filename);
+			eWarning("[res_content_ctrl] can not open %s", filename);
 			return NULL;
 		}
 
 		if (!certificate_validate(store, cert)) {
-			eWarning("can not validate %s", filename);
+			eWarning("[res_content_ctrl] can not validate %s", filename);
 			X509_free(cert);
 			return NULL;
 		}
@@ -335,12 +335,12 @@ namespace {
 
 		cert = d2i_X509(NULL, &data, len);
 		if (!cert) {
-			eWarning("can not read certificate");
+			eWarning("[res_content_ctrl] can not read certificate");
 			return NULL;
 		}
 
 		if (!certificate_validate(store, cert)) {
-			eWarning("can not vaildate certificate\n");
+			eWarning("[res_content_ctrl] can not vaildate certificate\n");
 			X509_free(cert);
 			return NULL;
 		}
@@ -365,7 +365,7 @@ const uint32_t eDVBCICcSessionImpl::datatype_sizes[MAX_ELEMENTS] = {
 struct eDVBCICcSessionImpl::element *eDVBCICcSessionImpl::element_get(unsigned int id)
 {
 	if ((id < 1) || (id >= MAX_ELEMENTS)) {
-		eWarning("invalid id %u", id);
+		eWarning("[res_content_ctrl] invalid id %u", id);
 		return NULL;
 	}
 
@@ -402,7 +402,7 @@ bool eDVBCICcSessionImpl::element_set(unsigned int id, const uint8_t *data, uint
 		return false;
 
 	if ((datatype_sizes[id] != 0) && (datatype_sizes[id] != size)) {
-		eWarning("size %u of id %u doesn't match", size, id);
+		eWarning("[res_content_ctrl] size %u of id %u doesn't match", size, id);
 		return false;
 	}
 
@@ -427,12 +427,12 @@ bool eDVBCICcSessionImpl::element_set_certificate(unsigned int id, X509 *cert)
 
 	cert_len = i2d_X509(cert, &cert_der);
 	if (cert_len <= 0) {
-		eWarning("can not encode certificate");
+		eWarning("[res_content_ctrl] can not encode certificate");
 		return false;
 	}
 
 	if (!element_set(id, cert_der, cert_len)) {
-		eWarning("can not store certificate id %u", id);
+		eWarning("[res_content_ctrl] can not store certificate id %u", id);
 		return false;
 	}
 
@@ -448,7 +448,7 @@ bool eDVBCICcSessionImpl::element_set_hostid_from_certificate(unsigned int id, X
 	uint8_t bin_hostid[8];
 
 	if ((id != 5) && (id != 6)) {
-		eWarning("wrong datatype_id %u for device id", id);
+		eWarning("[res_content_ctrl] wrong datatype_id %u for device id", id);
 		return false;
 	}
 
@@ -456,7 +456,7 @@ bool eDVBCICcSessionImpl::element_set_hostid_from_certificate(unsigned int id, X
 	X509_NAME_get_text_by_NID(subject, NID_commonName, hostid, sizeof(hostid));
 
 	if (strlen(hostid) != 16) {
-		eWarning("bad device id");
+		eWarning("[res_content_ctrl] bad device id");
 		return false;
 	}
 
@@ -465,7 +465,7 @@ bool eDVBCICcSessionImpl::element_set_hostid_from_certificate(unsigned int id, X
 	str2bin(bin_hostid, hostid, 16);
 
 	if (!element_set(id, bin_hostid, sizeof(bin_hostid))) {
-		eWarning("can not store device id %u", id);
+		eWarning("[res_content_ctrl] can not store device id %u", id);
 		return false;
 	}
 
@@ -490,12 +490,12 @@ unsigned int eDVBCICcSessionImpl::element_get_buf(uint8_t *dest, unsigned int id
 		return 0;
 
 	if (!e->valid) {
-		eWarning("%u not valid", id);
+		eWarning("[res_content_ctrl] %u not valid", id);
 		return 0;
 	}
 
 	if (!e->data) {
-		eWarning("%d doesn't exist", id);
+		eWarning("[res_content_ctrl] %d doesn't exist", id);
 		return 0;
 	}
 
@@ -510,7 +510,7 @@ unsigned int eDVBCICcSessionImpl::element_get_req(uint8_t *dest, unsigned int id
 	unsigned int len = element_get_buf(&dest[3], id);
 
 	if (len == 0) {
-		eWarning("can not get %u", id);
+		eWarning("[res_content_ctrl] can not get %u", id);
 		return 0;
 	}
 
@@ -530,12 +530,12 @@ uint8_t *eDVBCICcSessionImpl::element_get_ptr(unsigned int id)
 		return NULL;
 
 	if (!e->valid) {
-		eWarning("%u not valid", id);
+		eWarning("[res_content_ctrl] %u not valid", id);
 		return NULL;
 	}
 
 	if (!e->data) {
-		eWarning("%u doesn't exist", id);
+		eWarning("[res_content_ctrl] %u doesn't exist", id);
 		return NULL;
 	}
 
@@ -551,7 +551,7 @@ bool eDVBCICcSessionImpl::sac_check_auth(const uint8_t *data, unsigned int len)
 	uint8_t calced_signature[16];
 
 	if (len < 16) {
-		eWarning("signature too short");
+		eWarning("[res_content_ctrl] signature too short");
 		return false;
 	}
 
@@ -561,7 +561,7 @@ bool eDVBCICcSessionImpl::sac_check_auth(const uint8_t *data, unsigned int len)
 	aes_xcbc_mac_done(&ctx, calced_signature);
 
 	if (memcmp(&data[len - 16], calced_signature, 16)) {
-		eWarning("signature wrong");
+		eWarning("[res_content_ctrl] signature wrong");
 		return false;
 	}
 
@@ -642,13 +642,13 @@ X509 *eDVBCICcSessionImpl::import_ci_certificates(unsigned int id)
 	X509 *cert;
 
 	if (!element_valid(id)) {
-		eWarning("%u not valid", id);
+		eWarning("[res_content_ctrl] %u not valid", id);
 		return NULL;
 	}
 
 	cert = certificate_import_and_check(store, element_get_ptr(id), element_get_buf(NULL, id));
 	if (!cert) {
-		eWarning("can not verify certificate %u", id);
+		eWarning("[res_content_ctrl] can not verify certificate %u", id);
 		return NULL;
 	}
 
@@ -664,17 +664,17 @@ int eDVBCICcSessionImpl::check_ci_certificates()
 		return -1;
 
 	if ((ci_cust_cert = import_ci_certificates(CICAM_BRAND_CERT)) == NULL) {
-		eWarning("can not import CICAM brand certificate");
+		eWarning("[res_content_ctrl] can not import CICAM brand certificate");
 		return -1;
 	}
 
 	if ((ci_device_cert = import_ci_certificates(CICAM_DEV_CERT)) == NULL) {
-		eWarning("can not import CICAM device certificate");
+		eWarning("[res_content_ctrl] can not import CICAM device certificate");
 		return -1;
 	}
 
 	if (!element_set_hostid_from_certificate(CICAM_ID, ci_device_cert)) {
-		eWarning("can not store CICAM_ID");
+		eWarning("[res_content_ctrl] can not store CICAM_ID");
 		return -1;
 	}
 
@@ -701,7 +701,7 @@ int eDVBCICcSessionImpl::compute_dh_key()
 {
 	int len = DH_size(dh);
 	if (len > 256) {
-		eWarning("too long shared key");
+		eWarning("[res_content_ctrl] too long shared key");
 		return -1;
 	}
 
@@ -730,11 +730,11 @@ int eDVBCICcSessionImpl::compute_dh_key()
 	int codes = 0;
 	int ok = DH_check_pub_key(dh, bn_in, &codes);
 	if (ok == 0)
-		eDebug("check_pub_key failed");
+		eDebug("[res_content_ctrl] check_pub_key failed");
 	if (codes & DH_CHECK_PUBKEY_TOO_SMALL)
-		eDebug("too small public key");
+		eDebug("[res_content_ctrl] too small public key");
 	if (codes & DH_CHECK_PUBKEY_TOO_LARGE)
-		eDebug("too large public key");
+		eDebug("[res_content_ctrl] too large public key");
 
 	int gap = 256 - len;
 	memset(dhsk, 0, gap);
@@ -768,7 +768,7 @@ bool eDVBCICcSessionImpl::check_dh_challenge()
 
 	akh_index = 5;
 
-	eDebug("writing...");
+	eDebug("[res_content_ctrl] writing...");
 	write_authdata(slot_index, element_get_ptr(HOST_ID), dhsk, element_get_ptr(AKH));
 
 	return true;
@@ -802,7 +802,7 @@ int eDVBCICcSessionImpl::generate_dh_key()
 	len = BN_num_bytes(dh->pub_key);
 #endif
 	if (len > 256) {
-		eWarning("too long public key");
+		eWarning("[res_content_ctrl] too long public key");
 		return -1;
 	}
 
@@ -874,7 +874,7 @@ int eDVBCICcSessionImpl::generate_sign_A()
 
 	rsa_device_key = rsa_privatekey_open("/etc/ssl/certs/device.pem");
 	if (!rsa_device_key) {
-		eWarning("can not read private key");
+		eWarning("[res_content_ctrl] can not read private key");
 		return -1;
 	}
 
@@ -895,12 +895,12 @@ int eDVBCICcSessionImpl::restart_dh_challenge()
 
 	store = X509_STORE_new();
 	if (!store) {
-		eWarning("can not create root_ca");
+		eWarning("[res_content_ctrl] can not create root_ca");
 		return -1;
 	}
 
 	if (X509_STORE_load_locations(store, "/etc/ssl/certs/root.pem", NULL) != 1) {
-		eWarning("can not load root_ca");
+		eWarning("[res_content_ctrl] can not load root_ca");
 		return -1;
 	}
 
@@ -908,18 +908,18 @@ int eDVBCICcSessionImpl::restart_dh_challenge()
 	device_cert = certificate_load_and_check(store, "/etc/ssl/certs/device.pem");
 
 	if (!cust_cert || !device_cert) {
-		eWarning("can not check loader certificates");
+		eWarning("[res_content_ctrl] can not check loader certificates");
 		return -1;
 	}
 
 	if (!element_set_certificate(HOST_BRAND_CERT, cust_cert))
-		eWarning("can not store brand certificate");
+		eWarning("[res_content_ctrl] can not store brand certificate");
 
 	if (!element_set_certificate(HOST_DEV_CERT, device_cert))
-		eWarning("can not store device certificate");
+		eWarning("[res_content_ctrl] can not store device certificate");
 
 	if (!element_set_hostid_from_certificate(HOST_ID, device_cert))
-		eWarning("can not store HOST_ID");
+		eWarning("[res_content_ctrl] can not store HOST_ID");
 
 	element_invalidate(CICAM_ID);
 	element_invalidate(DHPM);
@@ -1028,7 +1028,7 @@ int eDVBCICcSessionImpl::data_get_handle_new(unsigned int id)
 		break;
 
 	default:
-		eWarning("unhandled id %u", id);
+		eWarning("[res_content_ctrl] unhandled id %u", id);
 		break;
 	}
 
@@ -1049,10 +1049,10 @@ int eDVBCICcSessionImpl::data_req_handle_new(unsigned int id)
 				akh_index = 5;
 
 			if (!element_set(AKH, akh, 32))
-				eWarning("can not set AKH in elements");
+				eWarning("[res_content_ctrl] can not set AKH in elements");
 
 			if (!element_set(HOST_ID, host_id, 8))
-				eWarning("can not set host_id in elements");
+				eWarning("[res_content_ctrl] can not set host_id in elements");
 		}
 		break;
 	}
@@ -1110,7 +1110,7 @@ int eDVBCICcSessionImpl::data_req_loop(uint8_t *dest, unsigned int dest_len, con
 
 		len = element_get_buf(NULL, dt_id);
 		if ((len + 3) > dest_len) {
-			eWarning("req element %d: not enough space", dt_id);
+			eWarning("[res_content_ctrl] req element %d: not enough space", dt_id);
 			return -1;
 		}
 
@@ -1143,7 +1143,7 @@ void eDVBCICcSessionImpl::cc_data_req(const uint8_t *data, unsigned int len)
 	unsigned int rp = 0;
 
 	if (len < 2) {
-		eWarning("too short data");
+		eWarning("[res_content_ctrl] too short data");
 		return;
 	}
 
@@ -1159,7 +1159,7 @@ void eDVBCICcSessionImpl::cc_data_req(const uint8_t *data, unsigned int len)
 
 	unsigned int dest_len = sizeof(dest);
 	if (dest_len < 2) {
-		eWarning("not enough space");
+		eWarning("[res_content_ctrl] not enough space");
 		return;
 	}
 
@@ -1168,7 +1168,7 @@ void eDVBCICcSessionImpl::cc_data_req(const uint8_t *data, unsigned int len)
 
 	answ_len = data_req_loop(&dest[2], dest_len - 2, &data[rp], len - rp, dt_nr);
 	if (answ_len <= 0) {
-		eWarning("can not get data");
+		eWarning("[res_content_ctrl] can not get data");
 		return;
 	}
 
@@ -1180,7 +1180,7 @@ void eDVBCICcSessionImpl::cc_data_req(const uint8_t *data, unsigned int len)
 void eDVBCICcSessionImpl::cc_sac_send(const uint8_t *tag, uint8_t *data, unsigned int pos)
 {
 	if (pos < 8) {
-		eWarning("too short data");
+		eWarning("[res_content_ctrl] too short data");
 		return;
 	}
 
@@ -1217,7 +1217,7 @@ void eDVBCICcSessionImpl::cc_sac_data_req(const uint8_t *data, unsigned int len)
 	data = tmp;
 
 	if (!sac_check_auth(data, len)) {
-		eWarning("check_auth of message failed");
+		eWarning("[res_content_ctrl] check_auth of message failed");
 		return;
 	}
 
@@ -1234,7 +1234,7 @@ void eDVBCICcSessionImpl::cc_sac_data_req(const uint8_t *data, unsigned int len)
 	rp += data_get_loop(&data[rp], len - rp, dt_nr);
 
 	if (len < rp + 1) {
-		eWarning("check_auth of message too short");
+		eWarning("[res_content_ctrl] check_auth of message too short");
 		return;
 	}
 
@@ -1244,7 +1244,7 @@ void eDVBCICcSessionImpl::cc_sac_data_req(const uint8_t *data, unsigned int len)
 	unsigned int dest_len = sizeof(dest);
 
 	if (dest_len < 10) {
-		eWarning("not enough space");
+		eWarning("[res_content_ctrl] not enough space");
 		return;
 	}
 
@@ -1256,7 +1256,7 @@ void eDVBCICcSessionImpl::cc_sac_data_req(const uint8_t *data, unsigned int len)
 
 	answ_len = data_req_loop(&dest[pos], dest_len - 10, &data[rp], len - rp, dt_nr);
 	if (answ_len <= 0) {
-		eWarning("can not get data");
+		eWarning("[res_content_ctrl] can not get data");
 		return;
 	}
 	pos += answ_len;
@@ -1310,7 +1310,7 @@ eDVBCICcSessionImpl::eDVBCICcSessionImpl(eDVBCICcSession *session_, int slot_ind
 
 	memset(buf, 0, 1);
 	if (!element_set(STATUS_FIELD, buf, 1)) {
-		eWarning("can not set status");
+		eWarning("[res_content_ctrl] can not set status");
 	}
 
 	memset(buf, 0, 32);
@@ -1323,7 +1323,7 @@ eDVBCICcSessionImpl::eDVBCICcSessionImpl(eDVBCICcSession *session_, int slot_ind
 		buf[31] |= CI_CC_URI_PROTOCOL_V2;
 
 	if (!element_set(URI_VERSIONS, buf, 32)) {
-		eWarning("can not set uri_versions");
+		eWarning("[res_content_ctrl] can not set uri_versions");
 	}
 
 	if (!get_authdata(host_id, dhsk, buf, slot_index, akh_index)) {
@@ -1332,11 +1332,11 @@ eDVBCICcSessionImpl::eDVBCICcSessionImpl(eDVBCICcSession *session_, int slot_ind
 	}
 
 	if (!element_set(AKH, buf, 32)) {
-		eWarning("can not set AKH");
+		eWarning("[res_content_ctrl] can not set AKH");
 	}
 
 	if (!element_set(HOST_ID, host_id, 8)) {
-		eWarning("can not set host_id");
+		eWarning("[res_content_ctrl] can not set host_id");
 	}
 
 	desc_fd = descrambler_init();
@@ -1380,7 +1380,7 @@ int eDVBCICcSessionImpl::receiveAPDU(const unsigned char *tag, const void *data,
 		case 0x07: cc_sac_data_req((const uint8_t *)data, len); break;
 		case 0x09: cc_sac_sync_req((const uint8_t *)data, len); break;
 		default:
-			eWarning("unknown APDU tag %02x", tag[2]);
+			eWarning("[res_content_ctrl] unknown APDU tag %02x", tag[2]);
 			break;
 		}
 	}

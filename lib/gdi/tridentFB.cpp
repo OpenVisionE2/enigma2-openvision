@@ -33,7 +33,7 @@ int tridentFB_accel_init(void)
 	fb_fd = open("/dev/fb/0", O_RDWR);
 	if (fb_fd < 0)
 	{
-		eDebug("open fb device fail!\n");
+		eDebug("[eTridentFB] open fb device fail!\n");
 		perror("/dev/fb/0");
 		return 1;
 	}
@@ -73,7 +73,7 @@ int tridentFB_accel_blit(
 	ret = ioctl(fb_fd, FBIO_IMAGE_BLT, &blitData);
 	if(ret<0)
 	{
-		eDebug("[%s] FBIO_IMAGE_BLT error 0x%x \n", __FUNCTION__, fb_fd);
+		eDebug("[eTridentFB] [%s] FBIO_IMAGE_BLT error 0x%x \n", __FUNCTION__, fb_fd);
 	}
 	return ret;
 }

@@ -18,7 +18,7 @@ caConnector::caConnector()
 
 	family = genl_ctrl_resolve(sock, "CA_SEND");
 	if (family<0) {
-		eDebug("Cannot resolve family name of generic netlink socket");
+		eDebug("[caConnector] Cannot resolve family name of generic netlink socket");
 		return;
 	}
 
@@ -69,7 +69,7 @@ int caConnector::parse_cb(struct nl_msg *msg, void *arg) {
 
 	eDVBResourceManager::getInstance(res_mgr);
 	if (!res_mgr) {
-		eDebug("no resource manager !!!!!!!");
+		eDebug("[caConnector] no resource manager !!!!!!!");
 		return -1;
 	}
 
@@ -85,35 +85,35 @@ int caConnector::parse_cb(struct nl_msg *msg, void *arg) {
 	if (attrs[ATTR_CA_NUM] && attrs[ATTR_CA_DESCR]) {
 		unsigned short ca_num = nla_get_u16(attrs[ATTR_CA_NUM]);
 		ca_descr_t *ca = (ca_descr_t*)nla_data(attrs[ATTR_CA_DESCR]);
-		eDebug("CA_SET_DESCR ca_num %04X, idx %d, parity %d, cw %02X...%02X", ca_num, ca->index,
+		eDebug("[caConnector] CA_SET_DESCR ca_num %04X, idx %d, parity %d, cw %02X...%02X", ca_num, ca->index,
 				ca->parity, ca->cw[0], ca->cw[7]);
 
 		ePtr<eDVBDemux> demux;
 		ret = res_mgr->getAdapterDemux(demux, (ca_num>>8)&0xFF, ca_num&0xFF);
 		if (ret) {
-			eDebug("caConnector: DEMUX NOT FOUND !!");
+			eDebug("[caConnector] DEMUX NOT FOUND !!");
 			return -1;
 		}
 
 		if(!demux->setCaDescr(ca,0)) {
-			eDebug("CA_SET_DESCR failed (%s). Expect a black screen.",strerror(errno));
+			eDebug("[caConnector] CA_SET_DESCR failed (%s). Expect a black screen.",strerror(errno));
 		}
 	}
 	if (attrs[ATTR_CA_NUM] && attrs[ATTR_CA_PID]) {
 		unsigned short ca_num = nla_get_u16(attrs[ATTR_CA_NUM]);
 		ca_pid_t *ca_pid = (ca_pid_t*)nla_data(attrs[ATTR_CA_PID]);
 
-		eDebug("CA_PID ca_num %04X, pid %04X, index %d", ca_num, ca_pid->pid, ca_pid->index);
+		eDebug("[caConnector] CA_PID ca_num %04X, pid %04X, index %d", ca_num, ca_pid->pid, ca_pid->index);
 		
 		ePtr<eDVBDemux> demux;
 		ret = res_mgr->getAdapterDemux(demux, (ca_num>>8)&0xFF, ca_num&0xFF);
 		if (ret) {
-			eDebug("caConnector: DEMUX NOT FOUND !!");
+			eDebug("[caConnector] DEMUX NOT FOUND !!");
 			return -1;
 		}
 
 		if(!demux->setCaPid(ca_pid)) {
-			eDebug("CA_SET_PID failed");
+			eDebug("[caConnector] CA_SET_PID failed");
 		}
 	}
 

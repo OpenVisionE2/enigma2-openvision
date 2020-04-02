@@ -2287,7 +2287,7 @@ RESULT eDVBChannel::playSource(ePtr<iTsSource> &source, const char *streaminfo_f
 	m_pvr_fd_dst = ::open("/tmp/ENIGMA_FIFO", O_RDWR);
 	if (m_pvr_fd_dst < 0)
 	{
-		eDebug("can't open DVR device - FIFO file (%m)");
+		eDebug("[RPi eDVBChannel] can't open DVR device - FIFO file (%m)");
 		return -ENODEV;
 #else
 	if (m_pvr_fd_dst < 0)

@@ -116,7 +116,7 @@ void DVBCI_Packcaids()
 		}
 		std::sort(caids.begin(), caids.end());
 	}
-	eDebugCI("DVBCI_Packcaids.ret(%d) num(%d):\n", ret, num);
+	eDebugCI("[CI] DVBCI_Packcaids.ret(%d) num(%d):\n", ret, num);
 	for (ret=0;ret<num;ret++)
 	{
 		eDebugCI("0x%x.", ca_system_id[ret]);
@@ -134,42 +134,42 @@ const std::vector<uint16_t> DVBCI_GetCAIDs(void)
 Trid_CI_CardStatus_t DVBCI_GetCardStatus() 
 {
 	Trid_CI_CardStatus_t CardStatus;
-	eDebugCI("call function Trid_CI_GetCardStatus (%d).", CardStatus);
+	eDebugCI("[CI] call function Trid_CI_GetCardStatus (%d).", CardStatus);
 	Trid_CI_GetCardStatus(&CardStatus); 
 	return CardStatus;
 }
 
 int DVBCI_StartMMI()
 {
-	eDebugCI("Trid_CI_AppInfo_EnterMenu.");
+	eDebugCI("[CI] Trid_CI_AppInfo_EnterMenu.");
 	Trid_CI_AppInfo_EnterMenu(); 
 	return 0;
 }
 
 int DVBCI_StopMMI() 
 {
-	eDebugCI("Trid_CI_MMI_SendCloseMMI.");
+	eDebugCI("[CI] Trid_CI_MMI_SendCloseMMI.");
 	Trid_CI_MMI_SendCloseMMI();
 	return 0;
 }
 
 int DVBCI_AnswerText(int answer)
 {
-	eDebugCI("Trid_CI_MMI_SendMenuAnsw.");
+	eDebugCI("[CI] Trid_CI_MMI_SendMenuAnsw.");
 	Trid_CI_MMI_SendMenuAnsw((trid_uint8)answer);
 	return 0;
 }
 
 int DVBCI_AnswerEnq(unsigned char *answer)
 {
-	eDebugCI("Trid_CI_MMI_SendEnqAnsw.");
+	eDebugCI("[CI] Trid_CI_MMI_SendEnqAnsw.");
 	Trid_CI_MMI_SendEnqAnsw(1, strlen(answer), (trid_uint8*)answer); 
 	return 0;
 }
 
 int DVBCI_CancelEnq()
 {
-	eDebugCI("Trid_CI_MMI_CloseEnqAnsw.");
+	eDebugCI("[CI] Trid_CI_MMI_CloseEnqAnsw.");
 	Trid_CI_MMI_SendEnqAnsw(0, 0, 0); 
 	return 0;
 }
@@ -181,7 +181,7 @@ int DVBCI_SendCAPMT(unsigned char *pmt, int len)
 {
 	trid_sint32 ca_system_id_match;RETURN_TYPE ret;
 	ret = Trid_CI_SendCAPmt((trid_uint8* )pmt, len, &ca_system_id_match);
-	eDebug("ret is %d. ca_system_id_match is %d.\n", ret, ca_system_id_match);
+	eDebug("[CI] ret is %d. ca_system_id_match is %d.\n", ret, ca_system_id_match);
 	return 0;
 }
 
@@ -189,14 +189,14 @@ int DVBCI_SendCAPMT(unsigned char *pmt, int len)
 
 trid_sint32 DVBCI_CardStatusChangeNotifyCallback(Trid_CI_CardStatus_t status)
 {
-	eDebugCI("<DVBCI_CardStatusChangeNotifyCallback>status %d.\n", status);
+	eDebugCI("[CI] <DVBCI_CardStatusChangeNotifyCallback>status %d.\n", status);
 	eDVBCIInterfaces::getInstance()->CardStatusChangeNotifyCallback(0, status);
 	return 0;
 }
 
 trid_sint32 DVBCI_CardGetHostLanguageCountryNotifyCallback(trid_uint8 language_code[], trid_uint8 country_code[])
 {
-	eDebugCI("<DVBCI_CardGetHostLanguageCountryNotifyCallback>language_code %s, country_code %s.  USA, ENG.\n", language_code, country_code);
+	eDebugCI("[CI] <DVBCI_CardGetHostLanguageCountryNotifyCallback>language_code %s, country_code %s.  USA, ENG.\n", language_code, country_code);
 	country_code[0]='U';
 	country_code[1]='S';
 	country_code[2]='A';
@@ -208,7 +208,7 @@ trid_sint32 DVBCI_CardGetHostLanguageCountryNotifyCallback(trid_uint8 language_c
 
 trid_sint32 DVBCI_CardGetHostAVPIDCallback(trid_uint16 *AudioPID, trid_uint16 *VideoPID)
 {
-	eDebugCI("<DVBCI_CardGetHostAVPIDCallback> audio:%d, video:%d. set to audio:%d, video:%d.", *AudioPID, *VideoPID, audioPid, videoPid);
+	eDebugCI("[CI] <DVBCI_CardGetHostAVPIDCallback> audio:%d, video:%d. set to audio:%d, video:%d.", *AudioPID, *VideoPID, audioPid, videoPid);
 	*AudioPID = audioPid;
 	*VideoPID = videoPid;
 	return 0;
@@ -216,19 +216,19 @@ trid_sint32 DVBCI_CardGetHostAVPIDCallback(trid_uint16 *AudioPID, trid_uint16 *V
 
 trid_sint32 DVBCI_CardTuneChannelCallback(trid_uint16 network_id, trid_uint16 orignal_network_id, trid_uint16 ts_id, trid_uint16 service_id)
 {
-	eDebugCI("<DVBCI_CardTuneChannelCallback>      sorry   no   realize   now .\n");
+	eDebugCI("[CI] <DVBCI_CardTuneChannelCallback>      sorry   no   realize   now .\n");
 	return 0;
 }
 
 void DVBCI_CardSetDesKeyCallback(trid_uint8 key[/*8*/],trid_uint8 odd_even)
 {
-	eDebugCI("<DVBCI_CardSetDesKeyCallback>      sorry   no   realize   now .\n");
+	eDebugCI("[CI] <DVBCI_CardSetDesKeyCallback>      sorry   no   realize   now .\n");
 	return ;
 }
 
 void DVBCI_CardSetAesKeyCallback(trid_uint8 key[/*16*/],trid_uint8 iv[/*16*/],trid_uint8 odd_even)
 {
-	eDebugCI("<DVBCI_CardSetAesKeyCallback>      sorry   no   realize   now .\n");
+	eDebugCI("[CI] <DVBCI_CardSetAesKeyCallback>      sorry   no   realize   now .\n");
 	return ;
 }
 
@@ -240,7 +240,7 @@ trid_bool DVBCI_MHEGAppQuerySupportCallback(
 	Trid_CI_MHEG_StartAckCode_e *p_ack_code
 )
 {
-	eDebugCI("<DVBCI_MHEGAppQuerySupportCallback>      sorry   no   realize   now .\n");
+	eDebugCI("[CI] <DVBCI_MHEGAppQuerySupportCallback>      sorry   no   realize   now .\n");
 }
 
 void DVBCI_MHEGFileAckNotifyCallback
@@ -251,7 +251,7 @@ void DVBCI_MHEGFileAckNotifyCallback
 	trid_uint32 file_data_len
 )
 {
-	eDebugCI("<DVBCI_MHEGFileAckNotifyCallback>      sorry   no   realize   now .\n");
+	eDebugCI("[CI] <DVBCI_MHEGFileAckNotifyCallback>      sorry   no   realize   now .\n");
 }
 
 void DVBCI_MHEGDataAckNotifyCallback
@@ -260,12 +260,12 @@ void DVBCI_MHEGDataAckNotifyCallback
 	trid_uint32 data_len
 )
 {
-	eDebugCI("<DVBCI_MHEGDataAckNotifyCallback>      sorry   no   realize   now .\n");
+	eDebugCI("[CI] <DVBCI_MHEGDataAckNotifyCallback>      sorry   no   realize   now .\n");
 }
 
 void DVBCI_MHEGAppAbortNotifyCallback(void)
 {
-	eDebugCI("<DVBCI_MHEGAppAbortNotifyCallback>      sorry   no   realize   now .\n");
+	eDebugCI("[CI] <DVBCI_MHEGAppAbortNotifyCallback>      sorry   no   realize   now .\n");
 }
 
 #define data_callback 0
@@ -312,7 +312,7 @@ RETURN_TYPE DVBCI_Set_Pcmcia_Func(void)
 	phys_funcs.pcmcia_enable_ts = cnxt_dvbci_enable_ts;
 	phys_funcs.pcmcia_disable_ts = cnxt_dvbci_disable_ts;
 	ret = Trid_CI_Set_Pcmcia_Func(&phys_funcs);
-	eDebugCI("Trid_CI_Set_Pcmcia_Func return is %d.", ret);
+	eDebugCI("[CI] Trid_CI_Set_Pcmcia_Func return is %d.", ret);
 	return 0;
 }
 
@@ -777,7 +777,7 @@ void eDVBCIInterfaces::ciRemoved(eDVBCISlot *slot)
 #if HAVE_HYPERCUBE_DISABLED
 int eDVBCIInterfaces::CardStatusChangeNotifyCallback(int slotid, Trid_CI_CardStatus_t status)
 {
-	eDebugCI("CardStatusChangeNotifyCallback. status %d.", status);
+	eDebugCI("[CI] CardStatusChangeNotifyCallback. status %d.", status);
 	switch (status)
 	{
 	case _TRID_CARD_REMOVE_:
@@ -819,7 +819,7 @@ trid_sint32 eDVBCIInterfaces::MenuDataNotifyCallback(Trid_T_Menu* menu)
 {
 	Trid_T_Menu* pmenu;
 	pmenu = &menu_data;
-	eDebugCI("MenuDataNotifyCallback.");
+	eDebugCI("[CI] MenuDataNotifyCallback.");
 	memcpy((char *)pmenu, (char *)menu, sizeof(Trid_T_Menu));
 	Tridci_cb_status |= NOTIFY_MENU_DATA;
 	return 0;
@@ -829,7 +829,7 @@ trid_sint32 eDVBCIInterfaces::ListDataNotifyCallback(Trid_T_List* list)
 {
 	Trid_T_List* plist;
 	plist = &list_data;
-	eDebugCI("ListDataNotifyCallback.");
+	eDebugCI("[CI] ListDataNotifyCallback.");
 	memcpy((char *)plist, (char *)list, sizeof(Trid_T_List));
 	Tridci_cb_status |= NOTIFY_LIST_DATA;
 	return 0;
@@ -838,7 +838,7 @@ trid_sint32 eDVBCIInterfaces::ListDataNotifyCallback(Trid_T_List* list)
 trid_sint32 eDVBCIInterfaces::EnqDataNotifyCallback(Trid_T_Enq* enq)
 {
 	Trid_T_Enq* penq;
-	eDebugCI("EnqDataNotifyCallback.");
+	eDebugCI("[CI] EnqDataNotifyCallback.");
 	penq = &enq_data;
 	memcpy((char *)penq, (char *)enq, sizeof(Trid_T_Enq));
 	Tridci_cb_status |= NOTIFY_ENQ_DATA;
@@ -848,14 +848,14 @@ trid_sint32 eDVBCIInterfaces::EnqDataNotifyCallback(Trid_T_Enq* enq)
 trid_sint32 eDVBCIInterfaces::CloseMMINotifyCallback()
 {
 	Tridci_cb_status |= NOTIFY_CLOSE_MMI;
-	eDebugCI("CloseMMINotifyCallback.");
+	eDebugCI("[CI] CloseMMINotifyCallback.");
 	return 0;
 }
 
 trid_sint32 eDVBCIInterfaces::GetHostAVPIDCallback(trid_uint16 *AudioPID, trid_uint16 *VideoPID)
 {
 	Tridci_cb_status |= NOTIFY_CLOSE_MMI;
-	eDebugCI("CloseMMINotifyCallback.");
+	eDebugCI("[CI] CloseMMINotifyCallback.");
 	return 0;
 }
 #endif
@@ -879,7 +879,7 @@ static bool canDescrambleMultipleServices(int slotid)
 #if HAVE_HYPERCUBE_DISABLED
 void eDVBCIInterfaces::recheckPMTHandlers()
 {
-	eDebugCI("eDVBCIInterfaces recheckPMTHandlers.");
+	eDebugCI("[CI] eDVBCIInterfaces recheckPMTHandlers.");
 	for (PMTHandlerList::iterator it(m_pmt_handlers.begin());
 		it != m_pmt_handlers.end(); ++it)
 	{
@@ -892,11 +892,11 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 		bool plugged_cis_exist = false;
 		pmthandler->getServiceReference(ref);
 		pmthandler->getService(service);
-		eDebugCI("recheck %p %s", pmthandler, ref.toString().c_str());
+		eDebugCI("[CI] recheck %p %s", pmthandler, ref.toString().c_str());
 		for (eSmartPtrList<eDVBCISlot>::iterator ci_it(m_slots.begin()); ci_it != m_slots.end(); ++ci_it)
 			if (ci_it->plugged && ci_it->getCAManager())
 			{
-				eDebug("Slot %d plugged", ci_it->getSlotID());
+				eDebug("[CI] Slot %d plugged", ci_it->getSlotID());
 				ci_it->plugged = false;
 				plugged_cis_exist = true;
 			}
@@ -910,7 +910,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 			}
 			if (tmp)
 			{
-				eDebugCI("already assigned and running CI!");
+				eDebugCI("[CI] already assigned and running CI!");
 				continue;
 			}
 		}
@@ -933,22 +933,22 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 		}
 		for (eSmartPtrList<eDVBCISlot>::iterator ci_it(m_slots.begin()); ci_it != m_slots.end(); ++ci_it)
 		{
-			eDebugCI("check Slot %d", ci_it->getSlotID());
+			eDebugCI("[CI] check Slot %d", ci_it->getSlotID());
 			bool useThis=false;
 			bool user_mapped=true;
 			int ca_manager = ci_it->getCAManager();
-			eDebugCI("if ca_manager %d.", ca_manager);
+			eDebugCI("[CI] if ca_manager %d.", ca_manager);
 			if (ca_manager)
 			{
 				int mask=0;
 				if (!ci_it->possible_services.empty())
 				{
-					eDebugCI("if (!ci_it->possible_services.empty()).");
+					eDebugCI("[CI] if (!ci_it->possible_services.empty()).");
 					mask |= 1;
 					serviceSet::iterator it = ci_it->possible_services.find(ref);
 					if (it != ci_it->possible_services.end())
 					{
-						eDebug("'%s' is in service list of slot %d... so use it", ref.toString().c_str(), ci_it->getSlotID());
+						eDebug("[CI] '%s' is in service list of slot %d... so use it", ref.toString().c_str(), ci_it->getSlotID());
 						useThis = true;
 					}
 					else
@@ -959,7 +959,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 							it = ci_it->possible_services.find(ref);
 							if (it != ci_it->possible_services.end())
 							{
-								eDebug("parent '%s' of '%s' is in service list of slot %d... so use it",
+								eDebug("[CI] parent '%s' of '%s' is in service list of slot %d... so use it",
 									parent_ref.toString().c_str(), ref.toString().c_str(), ci_it->getSlotID());
 								useThis = true;
 							}
@@ -968,7 +968,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 				}
 				if (!useThis && !ci_it->possible_providers.empty())
 				{
-					eDebugCI("if (!useThis && !ci_it->possible_providers.empty())");
+					eDebugCI("[CI] if (!useThis && !ci_it->possible_providers.empty())");
 					eDVBNamespace ns = ref.getDVBNamespace();
 					mask |= 2;
 					if (!service)
@@ -981,21 +981,21 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 						providerSet::iterator it = ci_it->possible_providers.find(providerPair(service->m_provider_name, ns.get()));
 						if (it != ci_it->possible_providers.end())
 						{
-							eDebug("'%s/%08x' is in provider list of slot %d... so use it", service->m_provider_name.c_str(), ns.get(), ci_it->getSlotID());
+							eDebug("[CI] '%s/%08x' is in provider list of slot %d... so use it", service->m_provider_name.c_str(), ns.get(), ci_it->getSlotID());
 							useThis = true;
 						}
 					}
 				}
 				if (!useThis && !ci_it->possible_caids.empty())
 				{
-					eDebugCI("if (!useThis && !ci_it->possible_caids.empty())");
+					eDebugCI("[CI] if (!useThis && !ci_it->possible_caids.empty())");
 					mask |= 4;
 					for (CAID_LIST::iterator ca(caids.begin()); ca != caids.end(); ++ca)
 					{
 						caidSet::iterator it = ci_it->possible_caids.find(*ca);
 						if (it != ci_it->possible_caids.end())
 						{
-							eDebug("caid '%04x' is in caid list of slot %d... so use it", *ca, ci_it->getSlotID());
+							eDebug("[CI] caid '%04x' is in caid list of slot %d... so use it", *ca, ci_it->getSlotID());
 							useThis = true;
 							break;
 						}
@@ -1003,7 +1003,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 				}
 				if (!useThis && !mask)
 				{
-					eDebugCI("if (!useThis && !mask)");
+					eDebugCI("[CI] if (!useThis && !mask)");
 					const std::vector<uint16_t> &ci_caids = DVBCI_GetCAIDs();
 					for (CAID_LIST::iterator ca(caids.begin()); ca != caids.end(); ++ca)
 					{
@@ -1011,7 +1011,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 						std::lower_bound(ci_caids.begin(), ci_caids.end(), *ca);
 						if ( z != ci_caids.end() && *z == *ca )
 						{
-							eDebug("The CI in Slot %d has said it can handle caid %04x... so use it", ci_it->getSlotID(), *z);
+							eDebug("[CI] The CI in Slot %d has said it can handle caid %04x... so use it", ci_it->getSlotID(), *z);
 							useThis = true;
 							user_mapped = false;
 							break;
@@ -1020,7 +1020,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 				}
 			}
 
-			eDebugCI("if (useThis) %d.", useThis);
+			eDebugCI("[CI] if (useThis) %d.", useThis);
 			if (useThis)
 			{
 				eDVBCISlot *tmp = it->cislot;
@@ -1032,10 +1032,10 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 				}
 				if (tmp)
 				{
-					eDebugCI("already assigned!");
+					eDebugCI("[CI] already assigned!");
 					continue;
 				}
-				eDebugCI("current slot %d usecount %d", ci_it->getSlotID(), ci_it->use_count);
+				eDebugCI("[CI] current slot %d usecount %d", ci_it->getSlotID(), ci_it->use_count);
 				if (ci_it->use_count)
 				{
 					bool found = false;
@@ -1043,39 +1043,39 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 					PMTHandlerList::iterator tmp = m_pmt_handlers.begin();
 					while (!found && tmp != m_pmt_handlers.end())
 					{
-						eDebugCI(".");
+						eDebugCI("[CI] .");
 						eDVBCISlot *tmp_cislot = tmp->cislot;
 						while (!found && tmp_cislot)
 						{
-							eDebugCI("..");
+							eDebugCI("[CI] ..");
 							eServiceReferenceDVB ref2;
 							tmp->pmthandler->getServiceReference(ref2);
 							if ( tmp_cislot == ci_it && it->pmthandler != tmp->pmthandler )
 							{
-								eDebugCI("check pmthandler %s for same service/tp", ref2.toString().c_str());
+								eDebugCI("[CI] check pmthandler %s for same service/tp", ref2.toString().c_str());
 								eDVBChannelID s1, s2;
 								if (ref != ref2)
 								{
-									eDebugCI("different services!");
+									eDebugCI("[CI] different services!");
 									ref.getChannelID(s1);
 									ref2.getChannelID(s2);
 								}
 								if (ref == ref2 || (s1 == s2 && canDescrambleMultipleServices(tmp_cislot->getSlotID())))
 								{
 									found = true;
-									eDebugCI("found!");
+									eDebugCI("[CI] found!");
 									eDVBCISlot *tmpci = it->cislot = tmp->cislot;
 									while(tmpci)
 									{
 										++tmpci->use_count;
-										eDebug("(2)CISlot %d, usecount now %d", tmpci->getSlotID(), tmpci->use_count);
+										eDebug("[CI] (2)CISlot %d, usecount now %d", tmpci->getSlotID(), tmpci->use_count);
 										tmpci=tmpci->linked_next;
 									}
 								}
 							}
 							tmp_cislot=tmp_cislot->linked_next;
 						}
-						eDebugCI("...");
+						eDebugCI("[CI] ...");
 						++tmp;
 					}
 				}
@@ -1083,11 +1083,11 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 				{
 					if (ci_it->user_mapped)
 					{
-						eDebugCI("user mapped CI already in use... dont link!");
+						eDebugCI("[CI] user mapped CI already in use... dont link!");
 						continue;
 					}
 					++ci_it->use_count;
-					eDebug("(1)CISlot %d, usecount now %d", ci_it->getSlotID(), ci_it->use_count);
+					eDebug("[CI] (1)CISlot %d, usecount now %d", ci_it->getSlotID(), ci_it->use_count);
 					data_source ci_source=CI_A;
 					switch(ci_it->getSlotID())
 					{
@@ -1096,7 +1096,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 						case 2: ci_source = CI_C; break;
 						case 3: ci_source = CI_D; break;
 						default:
-							eDebug("try to get source for CI %d!!\n", ci_it->getSlotID());
+							eDebug("[CI] try to get source for CI %d!!\n", ci_it->getSlotID());
 							break;
 					}
 					if (!it->cislot)
@@ -1121,7 +1121,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 							case 2: tuner_source = TUNER_C; break;
 							case 3: tuner_source = TUNER_D; break;
 							default:
-								eDebug("try to get source for tuner %d!!\n", tunernum);
+								eDebug("[CI] try to get source for tuner %d!!\n", tunernum);
 								break;
 						}
 						ci_it->current_tuner = tunernum;
@@ -1136,18 +1136,18 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 						ci_it->linked_next->setSource(ci_source);
 					}
 					it->cislot = ci_it;
-					eDebugCI("assigned!");
+					eDebugCI("[CI] assigned!");
 					gotPMT(pmthandler);
 				}
 				if (it->cislot && user_mapped)
 				{
-					eDebugCI("user mapped CI assigned... dont link CIs!");
+					eDebugCI("[CI] user mapped CI assigned... dont link CIs!");
 					break;
 				}
 			}
 		}
 	}
-	eDebugCI("eDVBCIInterfaces recheckPMTHandlers.end");
+	eDebugCI("[CI] eDVBCIInterfaces recheckPMTHandlers.end");
 }
 #else
 void eDVBCIInterfaces::recheckPMTHandlers()
@@ -1571,7 +1571,7 @@ void eDVBCIInterfaces::removePMTHandler(eDVBServicePMTHandler *pmthandler)
 				slot->linked_next = 0;
 				slot->user_mapped = false;
 			}
-			eDebug("[CI] (3) slot %d usecount is now %d", slot->getSlotID(), slot->use_count);
+			eDebug("[CI] (3)slot %d usecount is now %d", slot->getSlotID(), slot->use_count);
 			slot = next;
 		}
 		// check if another service is waiting for the CI
@@ -1868,10 +1868,10 @@ void eDVBCISlot::cdata(int/*Trid_CI_CardStatus_t*/ status)
 	switch (status)
 		{
 	case _TRID_CARD_REMOVE_:
-		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_REMOVE_ set ui state to 0.");
+		eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_REMOVE_ set ui state to 0.");
 		if(state != stateRemoved) {
 			state = stateRemoved;
-			eDebugCI("<eDVBCISlot data> state = stateRemoved");
+			eDebugCI("[CI] <eDVBCISlot data> state = stateRemoved");
 			while(sendqueue.size())
 			{
 				delete [] sendqueue.top().data;
@@ -1885,53 +1885,53 @@ void eDVBCISlot::cdata(int/*Trid_CI_CardStatus_t*/ status)
 		}
 	  	break;
 	case _TRID_CARD_INSERT_:
-		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_INSERT_  set ui state to 1.");			 
+		eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_INSERT_  set ui state to 1.");			 
 		if(state != stateInserted) {
-			eDebug("ci inserted in slot %d", getSlotID());
+			eDebug("[CI] ci inserted in slot %d", getSlotID());
 			state = stateInserted;
-			eDebugCI("<eDVBCISlot data> state == stateInserted  set ui state 1");
+			eDebugCI("[CI] <eDVBCISlot data> state == stateInserted  set ui state 1");
 			eDVBCI_UI::getInstance()->setState(getSlotID(),1);
 		}
 		break;
 	case _TRID_CARD_INVALID_CARD_:
-		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_INVALID_CARD_ <nothing>");			 
+		eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_INVALID_CARD_ <nothing>");			 
 		break;
 	case _TRID_CARD_MMI_READY_:
-		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_MMI_READY_  set ui state to 2.");			 
+		eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_MMI_READY_  set ui state to 2.");			 
 		{
 			RETURN_TYPE ret;
 			trid_uint8 menu_str_len;
 			setAppManager(1);
 			ret = Trid_CI_AppInfo_GetMenuStr(app_info,&menu_str_len);
-			eDebugCI("<eDVBCISlot data> get app info name: %s.", app_info);
+			eDebugCI("[CI] <eDVBCISlot data> get app info name: %s.", app_info);
 			app_info[menu_str_len] = 0;
 			eDVBCI_UI::getInstance()->setAppName(getSlotID(), app_info);
 			eDVBCI_UI::getInstance()->setState(getSlotID(), 2);
 		}
 		break;
 	case _TRID_CARD_CA_READY_:
-		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_CA_READY_  eDVBCICAManagerSession ca info:");
+		eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_CA_READY_  eDVBCICAManagerSession ca info:");
 		setCAManager(1);
 		DVBCI_Packcaids();
 		eDVBCIInterfaces::getInstance()->recheckPMTHandlers();
 		break;
 	case _TRID_CARD_MMI_CA_READY_:
-		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_MMI_CA_READY_ set mmi state to 1.");		
+		eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_MMI_CA_READY_ set mmi state to 1.");		
 		DVBCI_Packcaids();
 		eDVBCIInterfaces::getInstance()->recheckPMTHandlers();
 		setCAManager(1);
 		break;
 	case _TRID_CARD_UPGRADE_START_:
-		eDebugCI("<deDVBCISlot data> CardStatusChange: _TRID_CARD_UPGRADE_START_<nothing>");			 
+		eDebugCI("[CI] <deDVBCISlot data> CardStatusChange: _TRID_CARD_UPGRADE_START_<nothing>");			 
 		break;
 	case _TRID_CARD_UPGRADE_FINISH_:
-		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_UPGRADE_FINISH_<nothing>");			 
+		eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_UPGRADE_FINISH_<nothing>");			 
 		break;
 	case _TRID_CARD_RESET_START_:
-		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_RESET_START_");		
+		eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_RESET_START_");		
 		break;
 	case _TRID_CARD_IO_ERROR_:
-		eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_IO_ERROR_<nothing>");			 
+		eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_IO_ERROR_<nothing>");			 
 		break;
 		}
 }
@@ -1942,11 +1942,11 @@ void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
 	{
 		if (CardStatus == 0)
 		{
-			eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_REMOVE_ set ui state to 0.\n");			   
+			eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_REMOVE_ set ui state to 0.\n");			   
 			if(state != stateRemoved) 
 			{
 				state = stateRemoved;
-				eDebugCI("<eDVBCISlot data> state = stateRemoved\n");
+				eDebugCI("[CI] <eDVBCISlot data> state = stateRemoved\n");
 				while(sendqueue.size())
 				{
 					delete [] sendqueue.top().data;
@@ -1961,13 +1961,13 @@ void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
 		}
 		else if (CardStatus == 1<<_TRID_CARD_IO_ERROR_)
 		{
-			eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_IO_ERROR_<nothing>");
+			eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_IO_ERROR_<nothing>");
 		}
 		else if (CardStatus == 1<<_TRID_CARD_INVALID_CARD_)
 		{
-			eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_INVALID_CARD_");
+			eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_INVALID_CARD_");
 			if(state != stateInvalid) {
-				eDebug("ci inserted in slot %d", getSlotID());
+				eDebug("[CI] ci inserted in slot %d", getSlotID());
 				state = stateInvalid;
 				eDVBCI_UI::getInstance()->setState(getSlotID(),-1);
 			}
@@ -1976,10 +1976,10 @@ void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
 		{
 			if (CardStatus & (1<<_TRID_CARD_INSERT_))
 			{
-				eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_INSERT_  set ui state to 1.");			 
+				eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_INSERT_  set ui state to 1.");			 
 				if(state != stateInserted) 
 				{
-					eDebugCI("<eDVBCISlot data> state == stateInserted	set ui state 1");
+					eDebugCI("[CI] <eDVBCISlot data> state == stateInserted	set ui state 1");
 					state = stateInserted;
 					eDVBCI_UI::getInstance()->setState(getSlotID(),1);
 				}
@@ -1987,7 +1987,7 @@ void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
 			}
 			if (CardStatus & (1<<_TRID_CARD_RESET_START_))
 			{
-				eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_RESET_START_");		
+				eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_RESET_START_");		
 				if(state != stateInserted) {
 					state = stateInserted;
 					eDVBCI_UI::getInstance()->setState(getSlotID(),1);
@@ -1996,9 +1996,9 @@ void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
 			}
 			if (CardStatus & (1<<_TRID_CARD_MMI_READY_))
 			{
-				eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_MMI_READY_  set ui state to 2.");			 
+				eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_MMI_READY_  set ui state to 2.");			 
 				if(state != stateInserted) {
-					eDebugCI("<eDVBCISlot data> state == stateInserted	set ui state 1");
+					eDebugCI("[CI] <eDVBCISlot data> state == stateInserted	set ui state 1");
 					state = stateInserted;
 					eDVBCI_UI::getInstance()->setState(getSlotID(),1);
 				}
@@ -2008,7 +2008,7 @@ void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
 					setAppManager(1);
 					setMMIManager(1);
 					ret = Trid_CI_AppInfo_GetMenuStr(app_info,&menu_str_len);
-					eDebugCI("<eDVBCISlot data> get app info name: %s.", app_info);
+					eDebugCI("[CI] <eDVBCISlot data> get app info name: %s.", app_info);
 					app_info[menu_str_len] = 0;
 					eDVBCI_UI::getInstance()->setAppName(getSlotID(), app_info);
 					eDVBCI_UI::getInstance()->setState(getSlotID(), 2);
@@ -2017,7 +2017,7 @@ void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
 			}
 			if (CardStatus & (1<<_TRID_CARD_CA_READY_))
 			{
-				eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_CA_READY_	eDVBCICAManagerSession ca info:");
+				eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_CA_READY_	eDVBCICAManagerSession ca info:");
 				if(state != stateInserted) 
 				{
 					state = stateInserted;
@@ -2038,7 +2038,7 @@ void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
 			}
 			if (CardStatus & (1<<_TRID_CARD_MMI_CA_READY_))
 			{
-				eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_MMI_CA_READY_ set mmi state to 1."); 	
+				eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_MMI_CA_READY_ set mmi state to 1."); 	
 				if(state != stateInserted) 
 				{
 					state = stateInserted;
@@ -2060,12 +2060,12 @@ void eDVBCISlot::data(int/*Trid_CI_CardStatus_t*/ status)
 			}
 			if (CardStatus & (1<<_TRID_CARD_UPGRADE_START_))
 			{
-				eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_UPGRADE_START_<nothing>");			 
+				eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_UPGRADE_START_<nothing>");			 
 				CardStatus &= ~(1<<_TRID_CARD_UPGRADE_START_);
 			}
 			if (CardStatus & (1<<_TRID_CARD_UPGRADE_FINISH_))
 			{
-				eDebugCI("<eDVBCISlot data> CardStatusChange: _TRID_CARD_UPGRADE_FINISH_<nothing>");			 
+				eDebugCI("[CI] <eDVBCISlot data> CardStatusChange: _TRID_CARD_UPGRADE_FINISH_<nothing>");			 
 				CardStatus &= ~(1<<_TRID_CARD_UPGRADE_FINISH_);
 			}
 		}
@@ -2177,7 +2177,7 @@ eDVBCISlot::eDVBCISlot(eMainloop *context, int nr)
 
 #else
 	fd= 0x12345678;
-	eDebugCI("CI Slot %d has fd %d", getSlotID(), fd);
+	eDebugCI("[CI] CI Slot %d has fd %d", getSlotID(), fd);
 	if (fd >= 0)
 	{
 		notifier = eSocketNotifier::create(context, fd, eSocketNotifier::Read | eSocketNotifier::Priority | eSocketNotifier::Write);
@@ -2220,19 +2220,19 @@ eDVBCISlot::~eDVBCISlot()
 #if HAVE_HYPERCUBE_DISABLED
 void eDVBCISlot::setAppManager( int session )
 {
-	eDebugCI("eDVBCISlot::setAppManager. %d", session);
+	eDebugCI("[CI] eDVBCISlot::setAppManager. %d", session);
 	application_manager=session;
 }
 
 void eDVBCISlot::setMMIManager( int session )
 {
-	eDebugCI("eDVBCISlot::setMMIManager. %d", session);
+	eDebugCI("[CI] eDVBCISlot::setMMIManager. %d", session);
 	mmi_session = session;
 }
 
 void eDVBCISlot::setCAManager( int session )
 {
-	eDebugCI("eDVBCISlot::setCAManager. %d ", session);
+	eDebugCI("[CI] eDVBCISlot::setCAManager. %d ", session);
 	ca_manager = session;
 }
 #else
@@ -2266,32 +2266,32 @@ int eDVBCISlot::getVersion()
 	std::string civersion = eConfigManager::getConfigValue("config.cimisc.civersion");
 	if ( civersion == "legacy" )
 	{
-		eDebug("[DVBCI] getVersion : legacy detected");
+		eDebug("[CI] getVersion : legacy detected");
 		return versionCI;
 	}
 	else if ( civersion == "ciplus1" )
 	{
-		eDebug("[DVBCI] getVersion : ciplus1 detected");
+		eDebug("[CI] getVersion : ciplus1 detected");
 		return versionCIPlus1;
 	}
 	else if ( civersion == "ciplus2" )
 	{
-		eDebug("[DVBCI] getVersion : ciplus2 detected");
+		eDebug("[CI] getVersion : ciplus2 detected");
 		return versionCIPlus2;
 	}
 	else // auto
 	{
-		eDebug("[DVBCI] getVersion : auto detected");
+		eDebug("[CI] getVersion : auto detected");
 
 		char lv1Info[256] = { 0 };
 
 		if (ioctl(fd, 1, lv1Info) < 0) {
-			eDebug("ioctl not supported: assume CI+ version 1");
+			eDebug("[CI] ioctl not supported: assume CI+ version 1");
 			return versionCIPlus1;
 		}
 
 		if (strlen(lv1Info) == 0) {
-			eDebug("no LV1 info: assume CI+ version 1");
+			eDebug("[CI] no LV1 info: assume CI+ version 1");
 			return versionCIPlus1;
 		}
 
@@ -2313,11 +2313,11 @@ int eDVBCISlot::getVersion()
 		}
 
 		if(!compatId) {
-			eDebug("CI CAM detected");
+			eDebug("[CI] CI CAM detected");
 			return versionCI;
 		}
 
-		eDebug("CI+ compatibility ID: %s", compatId);
+		eDebug("[CI] CI+ compatibility ID: %s", compatId);
 
 		char *label, *id, flag = '+';
 		int version = versionCI;
@@ -2334,7 +2334,7 @@ int eDVBCISlot::getVersion()
 						flag = *id++;
 
 					version = strtol(id, 0, 0);
-					eDebug("CI+ %c%d CAM detected", flag, version);
+					eDebug("[CI] CI+ %c%d CAM detected", flag, version);
 					break;
 				}
 			}
@@ -2346,7 +2346,7 @@ int eDVBCISlot::getVersion()
 int eDVBCISlot::reset()
 {
 #if HAVE_HYPERCUBE_DISABLED
-	eDebugCI("doing is trid ci has reset interface?");
+	eDebugCI("[CI] doing is trid ci has reset interface?");
 #else
 	eDebug("[CI] Slot %d: reset requested", getSlotID());
 
@@ -2446,7 +2446,7 @@ int PackDesc(unsigned char *pack, unsigned char *Desc)
 {
 	int len, desclen;
 	len = ((Desc[0]&0xF)<<8) | (Desc[1]);
-	eDebug("Desc len is %d.\n", len);
+	eDebug("[CI] Desc len is %d.\n", len);
 	if (len > 0)
 	{
 		desclen=len-1;
@@ -2478,7 +2478,7 @@ int PackPmtDesc(unsigned char *pRaw, int wp, unsigned char *pack_data, int pmt_v
 	pPack = pack_data+10;
 	pRaw += 4;
 	wp -= 4;
-	eDebug("still %d for parse.", wp);
+	eDebug("[CI] still %d for parse.", wp);
 	length = PackDesc(pPack, pRaw);
 	wp -= length;
 	pRaw += length;
@@ -2512,14 +2512,14 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 {
 	if (!ca_manager)
 	{
-		eDebugCI("eDVBCISlot sendCAPMT no ca_manager (no CI plugged?). then return with nothing done.\n");
+		eDebugCI("[CI] eDVBCISlot sendCAPMT no ca_manager (no CI plugged?). then return with nothing done.\n");
 		return -1;
 	}
 	const std::vector<uint16_t> &caids = ids.empty() ? DVBCI_GetCAIDs() : ids;
 	ePtr<eTable<ProgramMapSection> > ptr;
 	if (pmthandler->getPMT(ptr))
 	{
-		eDebug("eDVBCISlot::sendCAPMT---->get pmt from pmthandler fail.\n");
+		eDebug("[CI] eDVBCISlot::sendCAPMT---->get pmt from pmthandler fail.\n");
 		return -1;
 	}
 	else
@@ -2534,13 +2534,13 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 		bool sendEmpty = caids.size() == 1 && caids[0] == 0xFFFF;
 		if (it != running_services.end() && (pmt_version == it->second) && !sendEmpty)
 		{
-			eDebug("eDVBCISlot::sendCAPMT---->don't send self capmt version twice");
+			eDebug("[CI] eDVBCISlot::sendCAPMT---->don't send self capmt version twice");
 			return -1;
 		}
 		std::vector<ProgramMapSection*>::const_iterator i=ptr->getSections().begin();
 		if (i == ptr->getSections().end())
 		{
-			eDebug("ProgramMapSection maybe none.\n");
+			eDebug("[CI] ProgramMapSection maybe none.\n");
 			return -1;
 		}
 		else
@@ -2549,11 +2549,11 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 		unsigned int total=0;
 		if (sendEmpty)
 		{
-			eDebug("SEND EMPTY CAPMT.. old version is");
+			eDebug("[CI] SEND EMPTY CAPMT.. old version is");
 		}
 		else
 		{
-			eDebug("SEND  CAPMT.. pmt version is 0x%x.", pmt_version);
+			eDebug("[CI] SEND CAPMT.. pmt version is 0x%x.", pmt_version);
 		}
 		if (!sendEmpty)
 		{
@@ -2579,15 +2579,15 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 				buffer[total++] = pmt->getLastSectionNumber();
 				buffer[total++] = (pmt->getPcrPid()>>8)&0x1F;
 				buffer[total++] = pmt->getPcrPid()&0xFF;
-				eDebug("start to package program info total(%d) sectionlen is %d.", total, sectionlen);
+				eDebug("[CI] start to package program info total(%d) sectionlen is %d.", total, sectionlen);
 				programInfoLength = 0;
 				for (DescriptorConstIterator j = pmt->getDescriptors()->begin(); j != pmt->getDescriptors()->end(); ++j)
 				{
 					info = *j;
-					eDebug("package descriptor .", programInfoLength);
+					eDebug("[CI] package descriptor .", programInfoLength);
 					programInfoLength+=info->writeToBuffer(buffer+total+2+programInfoLength);
 				}
-			eDebug("programInfoLength is %d.total(%d).", programInfoLength, total);
+			eDebug("[CI] programInfoLength is %d.total(%d).", programInfoLength, total);
 			buffer[total++] = (programInfoLength>>8)&0xff;
 			buffer[total++] = programInfoLength&0xff;
 			total+=programInfoLength;
@@ -2602,18 +2602,18 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 					info = *k;
 					esInfoLength+=info->writeToBuffer(buffer+total+2+esInfoLength);
 				}
-				eDebug("esInfoLength is %d.total(%d).", esInfoLength, total);
+				eDebug("[CI] esInfoLength is %d.total(%d).", esInfoLength, total);
 				buffer[total++] = (esInfoLength>>8)&0xff;
 				buffer[total++] = esInfoLength&0xff;
 				total+=esInfoLength;
 			}
-			eDebug("esInfoLength is %d.total(%d).", esInfoLength, total);
+			eDebug("[CI] esInfoLength is %d.total(%d).", esInfoLength, total);
 			crc32 = pmt->getCrc32();
 			buffer[total++] = (crc32>>24)&0xFF;
 			buffer[total++] = (crc32>>16)&0xFF;
 			buffer[total++] = (crc32>>8)&0xFF;
 			buffer[total++] = (crc32>>0)&0xFF;
-			eDebug("crc is %x.", crc32);
+			eDebug("[CI] crc is %x.", crc32);
 		}
 		else
 		{
@@ -2645,14 +2645,14 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 			}
 			if (sendEmpty)
 			{
-				eDebugNoNewLine("SEND EMPTY CAPMT.. old version is %02x", raw_data[hlen+3]);
+				eDebugNoNewLine("[CI] SEND EMPTY CAPMT.. old version is %02x", raw_data[hlen+3]);
 				if (sendEmpty && running_services.size() == 1)
 					raw_data[hlen] = 0x03;
 				raw_data[hlen+3] &= ~0x3E;
 				raw_data[hlen+3] |= ((pmt_version+1) & 0x1F) << 1;
 				eDebug(" new version is %02x", raw_data[hlen+3]);
 			}
-			eDebug("ca_manager %p dump capmt:%d.head length %d.", ca_manager, wp, hlen);
+			eDebug("[CI] ca_manager %p dump capmt:%d.head length %d.", ca_manager, wp, hlen);
 			for(int i=0;i<wp;i++)
 				eDebugNoNewLine("%02x, ", raw_data[i]);
 			eDebug("");
@@ -2669,9 +2669,9 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 			pmthandler->getService(service);
 			videoPid = service->getCacheEntry(eDVBService::cVPID);
 			audioPid = service->getCacheEntry(eDVBService::cAPID);
-			eDebug("current video pid: 0x%x. audio pid: 0x%x.\n", videoPid, audioPid);
+			eDebug("[CI] current video pid: 0x%x. audio pid: 0x%x.\n", videoPid, audioPid);
 		}
-		eDebug("total is %d", total);
+		eDebug("[CI] total is %d", total);
 		for (int f=0;f<total;f++)
 		{
 			eDebugNoNewLine("%02x ", pack_data[f]);
@@ -2682,7 +2682,7 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 		}
 		eDebug("");
 		{
-			eDebug("DVBCI_SendCAPMT(pack_data, total);");
+			eDebug("[CI] DVBCI_SendCAPMT(pack_data, total);");
 			DVBCI_SendCAPMT(pack_data, total);
 		}
 		running_services[program_number] = pmt_version;

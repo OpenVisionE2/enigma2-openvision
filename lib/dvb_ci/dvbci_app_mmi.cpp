@@ -5,7 +5,7 @@
 
 int eDVBCIApplicationMMISession::receivedAPDU(const unsigned char *tag,const void *data, int len)
 {
-	eDebugNoNewLine("SESSION(%d)/AMMI %02x %02x %02x: ", session_nb, tag[0], tag[1], tag[2]);
+	eDebugNoNewLine("[CI App MMI] SESSION(%d)/AMMI %02x %02x %02x: ", session_nb, tag[0], tag[1], tag[2]);
 	for (int i=0; i<len; i++)
 		eDebugNoNewLine("%02x ", ((const unsigned char*)data)[i]);
 	eDebug("");
@@ -14,7 +14,7 @@ int eDVBCIApplicationMMISession::receivedAPDU(const unsigned char *tag,const voi
 		switch (tag[2])
 		{
 		default:
-			eDebug("unknown APDU tag 9F 80 %02x", tag[2]);
+			eDebug("[CI App MMI] unknown APDU tag 9F 80 %02x", tag[2]);
 			break;
 		}
 	}
@@ -27,7 +27,7 @@ int eDVBCIApplicationMMISession::doAction()
 	switch (state)
 	{
 	default:
-		eDebug("unknown state");
+		eDebug("[CI App MMI] unknown state");
 		break;
 	}
 

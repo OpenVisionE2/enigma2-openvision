@@ -141,7 +141,7 @@ void eDVBVolumecontrol::setVolume(int left, int right)
 #ifdef HAVE_RASPBERRYPI
 /*	cXineLib *xineLib = cXineLib::getInstance();	*/
 //	m_omx->Init(0,0);
-	eDebug("[cOmxDevice] SetVolume(L:%d)(R:%d)", left, right);
+	eDebug("[RPi eDVBVolumecontrol] SetVolume(L:%d)(R:%d)", left, right);
 #endif
 	leftVol = checkVolume(left);
 	rightVol = checkVolume(right);

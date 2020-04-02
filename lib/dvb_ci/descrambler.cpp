@@ -57,7 +57,7 @@ int descrambler_set_key(int desc_fd, int index, int parity, unsigned char *data)
 	d.parity = parity;
 	memcpy(d.cw, data + (parity * 8), 8);
 	if (ioctl(desc_fd, CA_SET_DESCR, &d)) {
-		eWarning("CA_SET_DESCR");
+		eWarning("[Descrambler] CA_SET_DESCR");
 		return -1;
 	}
 #else
@@ -70,7 +70,7 @@ int descrambler_set_key(int desc_fd, int index, int parity, unsigned char *data)
 	d.data = data;
 
 	if (ioctl(desc_fd, CA_SET_DESCR_DATA, &d) == -1) {
-		eWarning("CA_SET_DESCR_DATA");
+		eWarning("[Descrambler] CA_SET_DESCR_DATA");
 		return -1;
 	}
 
@@ -81,7 +81,7 @@ int descrambler_set_key(int desc_fd, int index, int parity, unsigned char *data)
 	d.data = data + 16;
 
 	if (ioctl(desc_fd, CA_SET_DESCR_DATA, &d) == -1) {
-		eWarning("CA_SET_DESCR_DATA");
+		eWarning("[Descrambler] CA_SET_DESCR_DATA");
 		return -1;
 	}
 #endif
@@ -104,7 +104,7 @@ int descrambler_set_pid(int desc_fd, int index, int enable, int pid)
 	p.index = flags;
 
 	if (ioctl(desc_fd, CA_SET_PID, &p) == -1) {
-		eWarning("CA_SET_PID");
+		eWarning("[Descrambler] CA_SET_PID");
 		return -1;
 	}
 
@@ -118,7 +118,7 @@ int descrambler_init(void)
 
 	desc_fd = open(filename, O_RDWR);
 	if (desc_fd == -1) {
-		eWarning("can not open %s", filename);
+		eWarning("[Descrambler] can not open %s", filename);
 	}
 
 	return desc_fd;

@@ -378,11 +378,11 @@ void eLircInputDevice::handleCode(long arg)
 
 	code = translateKey(event->name);
 
-	eDebug("LIRC name=%s code=%d flags=%d", event->name, code, flags);
+	eDebug("[ercLIRC] LIRC name=%s code=%d flags=%d", event->name, code, flags);
 	input->keyPressed(eRCKey(this, code, flags));
 	if (flags == eRCKey::flagMake) {
 		flags = eRCKey::flagBreak;
-		eDebug("LIRC name=%s code=%d flags=%d", event->name, code, flags);
+		eDebug("[ercLIRC] LIRC name=%s code=%d flags=%d", event->name, code, flags);
 		input->keyPressed(eRCKey(this, code, flags));
 		flags = eRCKey::flagMake;
 	}
@@ -398,7 +398,7 @@ int eLircInputDevice::translateKey(const char* name)
 {
 	if (name==NULL)
 	{
-		eDebug("LIRC: translateKey ERROR");
+		eDebug("[ercLIRC] LIRC: translateKey ERROR");
 		return KEY_RESERVED;
 	}
 
@@ -414,7 +414,7 @@ int eLircInputDevice::translateKey(const char* name)
 		}
 	}
 
-	eDebug("LIRC: unhandled key name: %s", name);
+	eDebug("[ercLIRC] LIRC: unhandled key name: %s", name);
 	return KEY_RESERVED;
 }
 
@@ -467,12 +467,12 @@ bool eLircInputDriver::Connect(void)
 	if ((f = socket(AF_UNIX, SOCK_STREAM, 0)) >= 0) {
 		if (connect(f, (struct sockaddr *)&addr, sizeof(addr)) >= 0)
  			return true;
-		eDebug("Lirc: Connect to %s error !!!", addr.sun_path);
+		eDebug("[ercLIRC] Lirc: Connect to %s error !!!", addr.sun_path);
 		close(f);
 		f = -1;
 	}
 	else
-		eDebug("Lirc: Connect to %s error !!!", addr.sun_path);
+		eDebug("[ercLIRC] Lirc: Connect to %s error !!!", addr.sun_path);
 
 	return false;
 }
@@ -531,13 +531,13 @@ void eLircInputDriver::thread()
 		int ret = ready ? safe_read(f, buf, sizeof(buf)) : -1;
 
 		if (ready && ret <= 0 ) {
-			eDebug("ERROR: lircd connection broken, trying to reconnect every %.1f seconds", float(RECONNECTDELAY) / 1000);
+			eDebug("[ercLIRC] ERROR: lircd connection broken, trying to reconnect every %.1f seconds", float(RECONNECTDELAY) / 1000);
 			close(f);
 			f = -1;
 			while (!thread_stop && f < 0) {
 				cCondWait::SleepMs(RECONNECTDELAY);
 				if (Connect()) {
-					eDebug("reconnected to lircd");
+					eDebug("[ercLIRC] reconnected to lircd");
 					break;
 				}
 			}
@@ -547,7 +547,7 @@ void eLircInputDriver::thread()
 			int count;
 			char KeyName[LIRC_KEY_BUF];
 			if (sscanf(buf, "%*x %x %29s", &count, KeyName) != 2) { // '29' in '%29s' is LIRC_KEY_BUF-1!
-				eDebug("ERROR: unparseable lirc command: %s", buf);
+				eDebug("[ercLIRC] ERROR: unparseable lirc command: %s", buf);
 				continue;
 			}
 			if (count == 0) {

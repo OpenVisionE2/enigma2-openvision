@@ -16,7 +16,7 @@ eDVBRdsDecoder::eDVBRdsDecoder(iDVBDemux *demux, int type)
 	memset(rtp_item, 0, sizeof(rtp_item));
 
 	if (demux->createPESReader(eApp, m_pes_reader))
-		eDebug("failed to create PES reader!");
+		eDebug("[RDS/Rass] failed to create PES reader!");
 	else if (type == 0)
 		m_pes_reader->connectRead(sigc::mem_fun(*this, &eDVBRdsDecoder::processData), m_read_connection);
 	else
@@ -269,7 +269,7 @@ void eDVBRdsDecoder::process_qdar(unsigned char *buf)
 								addToPictureMask(id);
 							}
 							else
-								eDebug("ignore recv interactive picture id %lu", id);
+								eDebug("[RDS/Rass] ignore recv interactive picture id %lu", id);
 						}
 						if (ctrl&0x04) // display slide if nothing had been displayed yet
 						{
@@ -286,16 +286,16 @@ void eDVBRdsDecoder::process_qdar(unsigned char *buf)
 						}
 						if (ctrl&0x08) // delete slide
 						{
-							eDebug("delete slide id %lu, item_no %lu", id, item_no);
+							eDebug("[RDS/Rass] delete slide id %lu, item_no %lu", id, item_no);
 							if (id == 0 || id >= 1000)
 							{
-								eDebug("delete %lu", id);
+								eDebug("[RDS/Rass] delete %lu", id);
 								removeFromPictureMask(id);
 								sprintf(fname,"/tmp/Rass%04d.mvi",(int)id); // was item_no ? ! ?
 								remove(fname);
 							}
 							else
-								eDebug("ignore del interactive picture id %lu", id);
+								eDebug("[RDS/Rass] ignore del interactive picture id %lu", id);
 						}
 						break;
 					default: //nothing more yet defined
@@ -437,12 +437,12 @@ void eDVBRdsDecoder::gotAncillaryData(const uint8_t *buf, int len)
 						message[msgPtr--] = 0;
 					if ( crc16 == (crc^0xFFFF) )
 					{
-						eDebug("radiotext: (%s)", message);
+						eDebug("[RDS/Rass] radiotext: (%s)", message);
 						/*emit*/ m_event(RadioTextChanged);
 						memcpy(lastmessage,message,66);
 					}
 					else
-						eDebug("invalid radiotext crc (%s)", message);
+						eDebug("[RDS/Rass] invalid radiotext crc (%s)", message);
 					state=0;
 					break;
 
@@ -613,7 +613,7 @@ void eDVBRdsDecoder::gotAncillaryData(const uint8_t *buf, int len)
 					if ( rtplus_osd[0] != 0 )
 					{
 						/*emit*/ m_event(RtpTextChanged);
-						eDebug("RTPlus: %s",rtplus_osd);
+						eDebug("[RDS/Rass] RTPlus: %s",rtplus_osd);
 					}
 
 					state=0;
@@ -658,7 +658,7 @@ int eDVBRdsDecoder::start(int pid)
 
 void eDVBRdsDecoder::abortNonAvail()
 {
-	eDebug("no ancillary data in audio stream... abort radiotext pes parser");
+	eDebug("[RDS/Rass] no ancillary data in audio stream... abort radiotext pes parser");
 	if (m_pes_reader)
 		m_pes_reader->stop();
 }

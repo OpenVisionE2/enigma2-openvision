@@ -115,7 +115,7 @@ void gAccel::dumpDebug()
 					it->size, it->size >> (10 - ACCEL_ALIGNMENT_SHIFT),
 					surface, surface->stride, surface->y, surface->bpp);
 		else
-			eDebug("[gAccel]    free: (%d (%dk), %d (%dk))",
+			eDebug("[gAccel] free: (%d (%dk), %d (%dk))",
 					it->index, it->index >> (10 - ACCEL_ALIGNMENT_SHIFT),
 					it->size, it->size >> (10 - ACCEL_ALIGNMENT_SHIFT));
 	 }
@@ -233,7 +233,7 @@ int gAccel::blit(gUnmanagedSurface *dst, gUnmanagedSurface *src, const eRect &p,
 				for (int i = 0; i < src->clut.colors; ++i)
 				    *pal++ = src->clut.data[i].argb() ^ 0xFF000000;
 				src->clut.data_phys = pal_addr;
-				eDebug("!!!!!!!!!![gAccel] pal_addr1 %x clors=%d!!!!!!!!!!",pal_addr,src->clut.colors);
+				eDebug("[gAccel] HiSilicon pal_addr1 %x clors=%d!",pal_addr,src->clut.colors);
 			}
 			else
 			{
@@ -241,7 +241,7 @@ int gAccel::blit(gUnmanagedSurface *dst, gUnmanagedSurface *src, const eRect &p,
 				unsigned long *pal = (unsigned long*)pal_addr;
 				for (int i = 0; i < src->clut.colors; ++i)
 				    *pal++ = src->clut.data[i].argb() ^ 0xFF000000;
-				eDebug("!!!!!!!!!![gAccel] pal_addr2 %x clors=%d!!!!!!!!!!",pal_addr,src->clut.colors);
+				eDebug("[gAccel] HiSilicon pal_addr2 %x clors=%d!",pal_addr,src->clut.colors);
 			}
 		} else
 			return -1; /* unsupported source format */
@@ -263,7 +263,7 @@ int gAccel::blit(gUnmanagedSurface *dst, gUnmanagedSurface *src, const eRect &p,
 	/* unsupported flags */
 	if (flags & gPixmap::blitAlphaTest)
 	{
-		eDebug("gAccel::blit error\n");
+		eDebug("[gAccel] Trident gAccel::blit error\n");
 		return -1;
 	}
 	if (!m_tridentFB_accel_state)

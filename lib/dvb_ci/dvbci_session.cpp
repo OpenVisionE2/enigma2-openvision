@@ -195,23 +195,23 @@ void eDVBCISession::createSession(eDVBCISlot *slot, const unsigned char *resourc
 		break;
 	case 0x008C1001:
 		session = new eDVBCICcSession(slot);
-		eDebug("Content Control");
+		eDebug("[CI SESS] Content Control");
 		break;
 	case 0x008D1001:
 		session = new eDVBCIHostLanguageAndCountrySession;
-		eDebug("Host Language & Country");
+		eDebug("[CI SESS] Host Language & Country");
 		break;
 	case 0x008E1001:
 		session = new eDVBCICAMUpgradeSession;
-		eDebug("CAM Upgrade");
+		eDebug("[CI SESS] CAM Upgrade");
 		break;
 	case 0x00200041:
 		session = new eDVBCIHostControlSession;
-		eDebug("Host Control");
+		eDebug("[CI SESS] Host Control");
 		break;
 	case 0x00410041:
 		session = new eDVBCIApplicationMMISession;
-		eDebug("Application MMI");
+		eDebug("[CI SESS] Application MMI");
 		break;
 	case 0x00100041:
 //		session=new eDVBCIAuthSession;
@@ -231,7 +231,7 @@ void eDVBCISession::createSession(eDVBCISlot *slot, const unsigned char *resourc
 		status=0xF0;
 		break;
 	case 0x00700041://ca card data 00700041       112        *           1
-		eDebug("unknown resource type %02x %02x %02x %02x", resource_identifier[0], resource_identifier[1], resource_identifier[2],resource_identifier[3]);
+		eDebug("[CI SESS] unknown resource type %02x %02x %02x %02x", resource_identifier[0], resource_identifier[1], resource_identifier[2],resource_identifier[3]);
 		printf("create read ca card data session, but no support now .\n");
 		session=0;
 		status=0xF0;

@@ -275,7 +275,7 @@ eDVBLocalTimeHandler::~eDVBLocalTimeHandler()
 	{
 		eDebug("[eDVBLocalTimeHandler] set RTC to previous valid time");
 		if (strncmp(mybox,"gb800solo", sizeof(mybox)) == 0 || strncmp(mybox,"gb800se", sizeof(mybox)) == 0 || strncmp(mybox,"gb800ue", sizeof(mybox)) == 0)
-				eDebug("Dont set RTC to previous valid time, gigablue STB");
+				eDebug("[eDVBLocalTimeHandler] Dont set RTC to previous valid time, gigablue STB");
 			else
 				setRTC(::time(0));
 	}

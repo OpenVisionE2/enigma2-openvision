@@ -244,7 +244,7 @@ static unsigned char *bmp_load(const char *file,  int *x, int *y)
 			{
 				if (read(fd, wr_buffer, (*x) * 3) != ((*x) * 3))
 				{
-					eDebug("[picload] failed to read %d bytes...", ((*x) * 3));
+					eDebug("[ePicLoad] failed to read %d bytes...", ((*x) * 3));
 				}
 				for (int j = 0; j < (*x) * 3 ; j = j + 3)
 				{
@@ -1458,7 +1458,7 @@ SWIG_VOID(int) loadPic(ePtr<gPixmap> &result, std::string filename, int x, int y
 {
 	long asp1, asp2;
 	result = 0;
-	eDebug("[loadPic] deprecated loadPic function used!!! please use the non blocking version! you can see demo code in Pictureplayer plugin... this function is removed in the near future!");
+	eDebug("[ePicLoad] deprecated loadPic function used! please use the non blocking version! you can see demo code in Pictureplayer plugin... this function is removed in the near future!");
 	ePicLoad mPL;
 
 	switch(aspect)

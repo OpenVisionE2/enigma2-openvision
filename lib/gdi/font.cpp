@@ -180,7 +180,7 @@ std::string fontRenderClass::AddFont(const std::string &filename, const std::str
 	FT_Done_Face(face);
 
 	n->next=font;
-	eDebugNoNewLine("OK (%s)", n->face.c_str());
+	eDebugNoNewLine("[Font] OK (%s)", n->face.c_str());
 	font=n;
 
 	return n->face;
