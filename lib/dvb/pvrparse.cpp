@@ -936,7 +936,7 @@ int eMPEGStreamParserTS::processPacket(const unsigned char *pkt, off_t offset)
 				if (m_diff_time>30)  // when diff more 2 min counter broken stream is now zero out
 				{
 					m_broken_count=0;
-					eWarning("[eMPEGStreamParserTS] Broken stream counter is now ZERO out");
+					eWarning("[RPi eMPEGStreamParserTS] Broken stream counter is now ZERO out");
 				}
 				time(&m_last_time);
 			}
@@ -948,7 +948,7 @@ int eMPEGStreamParserTS::processPacket(const unsigned char *pkt, off_t offset)
 					m_broken=true;
 				}
 			}
-			eWarning("[eMPEGStreamParserTS] broken startcode -- %d", m_broken_count);
+			eWarning("[RPi eMPEGStreamParserTS] broken startcode -- %d", m_broken_count);
 #endif
 			return 0;
 		}

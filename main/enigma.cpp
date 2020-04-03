@@ -252,7 +252,7 @@ int main(int argc, char **argv)
 	else
 	{
 		if (!cRpiSetup::IsVideoCodecSupported(cVideoCodec::eMPEG2))
-			eLog(3, "[cRpiHdDevice] MPEG2 video decoder not enabled!");
+			eLog(3, "[cRpiSetup] MPEG2 video decoder not enabled!");
 		m_device = new cOmxDevice(cRpiDisplay::GetId(), cRpiSetup::VideoLayer());
 		if (m_device)
 			m_device->Init();
@@ -370,7 +370,9 @@ int main(int argc, char **argv)
 	}
 #ifdef HAVE_RASPBERRYPI
 	cRpiSetup::DropInstance();
+	eDebug("[cRpiSetup] DropInstance");
 	cRpiDisplay::DropInstance();
+	eDebug("[cRpiDisplay] DropInstance");
 #endif
 	return exit_code;
 }

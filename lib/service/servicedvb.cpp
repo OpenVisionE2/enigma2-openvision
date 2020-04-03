@@ -2001,9 +2001,9 @@ int eDVBServicePlay::getInfo(int w)
 	{
 #ifdef HAVE_RASPBERRYPI
 	if (m_decoder)
-		eDebug("[eDVBServicePlay] eDVBServicePlay::getInfo: m_decoder --> you can implement");
+		eDebug("[RPi eDVBServicePlay] eDVBServicePlay::getInfo: m_decoder --> you can implement");
 	else
-		eDebug("[eDVBServicePlay] eDVBServicePlay::getInfo: !m_decoder --> you can not implement");
+		eDebug("[RPi eDVBServicePlay] eDVBServicePlay::getInfo: !m_decoder --> you can not implement");
 	case sVideoHeight:
 /*		return xineLib->getVideoHeight();*/
 		break;

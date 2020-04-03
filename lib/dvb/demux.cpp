@@ -767,7 +767,7 @@ eDVBTSRecorder::~eDVBTSRecorder()
 RESULT eDVBTSRecorder::start()
 {
 #ifdef HAVE_RASPBERRYPI
-	eDebug("[eDVBTSRecorder] try to start");
+	eDebug("[RPi eDVBTSRecorder] try to start");
 #endif
 	std::map<int,int>::iterator i(m_pids.begin());
 
@@ -794,7 +794,7 @@ RESULT eDVBTSRecorder::start()
 		return -3;
 	}
 #ifdef HAVE_RASPBERRYPI
-	eDebug("[eDVBTSRecorder] OPENED demux %s and started", filename);
+	eDebug("[RPi eDVBTSRecorder] OPENED demux %s and started", filename);
 #endif
 
 	setBufferSize(1024*1024);

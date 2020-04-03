@@ -171,7 +171,7 @@ int eDVBAudio::startPid(int pid, int type)
 //		xineLib->setAudioType(pid, xine_type);
 //		Radio mode	omxdecoder.cpp -> PlayMode == pmAudioOnly		 ? "Audio only"
 		if (mode) {
-			eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_PLAY ", m_dev);
+			eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_PLAY ", m_dev);
 //			cOmxDevice::PlayAudio(,,); // Replace xineLib->playVideo() noted to see how it get the needed parameters
 		}
 #else
@@ -203,7 +203,7 @@ void eDVBAudio::stop()
 			eDebugNoNewLine("ok\n");
 	}
 #else
-	eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_STOP ", m_dev);
+	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_STOP ", m_dev);
 //	To be tested if is it enough DEMUX_STOP to stop Audio
 #endif
 	if (m_fd_demux >= 0)
@@ -228,7 +228,7 @@ void eDVBAudio::flush()
 			eDebugNoNewLine("ok\n");
 	}
 #else
-	eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_CLEAR_BUFFER ", m_dev);
+	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_CLEAR_BUFFER ", m_dev);
 //	cOmxDevice::Clear();
 #endif
 }
@@ -245,7 +245,7 @@ void eDVBAudio::freeze()
 			eDebugNoNewLine("ok\n");
 	}
 #else
-	eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_PAUSE ", m_dev);
+	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_PAUSE ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	cOmxDevice::Freeze();
 #endif
@@ -263,7 +263,7 @@ void eDVBAudio::unfreeze()
 			eDebugNoNewLine("ok\n");
 	}
 #else
-	eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_CONTINUE ", m_dev);
+	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_CONTINUE ", m_dev);
 //	cOmxDevice::Play();
 #endif
 }
@@ -302,11 +302,11 @@ int eDVBAudio::getPTS(pts_t &now)
 			eDebug("[eDVBAudio%d] AUDIO_GET_PTS failed: %m", m_dev);
 	}
 #else
-	eDebug("[eDVBAudio%d] getPTS",m_dev);
+	eDebug("[RPi eDVBAudio%d] getPTS",m_dev);
 	int ret = 0;
 //	int ret = PesGetPts(now); // Replace xineLib->getPTS(now) noted to see how it work
 	if (ret < 0)
-		eDebug("[eDVBAudio%d] AUDIO_GET_PTS failed: %m", m_dev);
+		eDebug("[RPi eDVBAudio%d] AUDIO_GET_PTS failed: %m", m_dev);
 #endif
 	return 0;
 }
@@ -341,7 +341,7 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 	{
 		eDebug("[eDVBVideo] Video Device: %s", filename);
 #else
-		eDebug("[eDVBVideo] before create eSocketNotifier  m_fd = %d ", m_fd); // Only to see thr m_fd value to be removed
+		eDebug("[RPi eDVBVideo] before create eSocketNotifier  m_fd = %d ", m_fd); // Only to see thr m_fd value to be removed
 #endif
 		m_sn = eSocketNotifier::create(eApp, m_fd, eSocketNotifier::Priority);
 		CONNECT(m_sn->activated, eDVBVideo::video_event);
@@ -389,7 +389,7 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 		 * we can rely on VIDEO_EVENTs.
 		 */
 #ifdef HAVE_RASPBERRY
-		eDebug("[eDVBVideo] readApiSize (m_fd=%d, m_width=%d, m_height=%d, m_aspect=%d", m_fd, m_width, m_height, m_aspect); // only for debug purpose to be removed
+		eDebug("[RPi eDVBVideo] readApiSize (m_fd=%d, m_width=%d, m_height=%d, m_aspect=%d", m_fd, m_width, m_height, m_aspect); // only for debug purpose to be removed
 #endif
 		readApiSize(m_fd, m_width, m_height, m_aspect);
 		m_close_invalidates_attributes = (m_width == -1) ? 1 : 0;
@@ -541,7 +541,7 @@ void eDVBVideo::stop()
 			eDebugNoNewLine("ok\n");
 	}
 #else
-	eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_STOP ", m_dev);
+	eDebugNoNewLineStart("[RPi eDVBVideo%d] VIDEO_STOP ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	xineLib->stopVideo();
 #endif
@@ -559,7 +559,7 @@ void eDVBVideo::flush()
 			eDebugNoNewLine("ok\n");
 	}
 #else
-	eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_CLEAR_BUFFER ", m_dev);
+	eDebugNoNewLineStart("[RPi eDVBVideo%d] VIDEO_CLEAR_BUFFER ", m_dev);
 //	cOmxDevice::Clear();
 #endif
 }
@@ -576,7 +576,7 @@ void eDVBVideo::freeze()
 			eDebugNoNewLine("ok\n");
 	}
 #else
-	eDebugNoNewLineStart("[eDVBAudio%d] VIDEO_FREEZE ", m_dev);
+	eDebugNoNewLineStart("[RPi eDVBAudio%d] VIDEO_FREEZE ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	cOmxDevice::Freeze(); // Replace xineLib->VideoPause() noted to see how it works
 #endif
@@ -613,7 +613,7 @@ int eDVBVideo::setSlowMotion(int repeat)
 		return ret;
 	}
 #else
-	eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_SLOWMOTION %d ", m_dev, repeat);
+	eDebugNoNewLineStart("[RPi eDVBVideo%d] VIDEO_SLOWMOTION %d ", m_dev, repeat);
 //	looking for right function
 #endif
 	return 0;
@@ -633,7 +633,7 @@ int eDVBVideo::setFastForward(int skip)
 		return ret;
 	}
 #else
-	eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_FAST_FORWARD %d ", m_dev, skip);
+	eDebugNoNewLineStart("[RPi eDVBVideo%d] VIDEO_FAST_FORWARD %d ", m_dev, skip);
 //	looking for right function
 #endif
 	return 0;
@@ -646,7 +646,7 @@ int eDVBVideo::getPTS(pts_t &now)
 	{
 		int ret = ::ioctl(m_fd, VIDEO_GET_PTS, &now);
 #else
-		eDebug("[eDVBVideo%d] getPTS",m_dev);
+		eDebug("[RPi eDVBVideo%d] getPTS",m_dev);
 		int ret = 0;
 //		cXineLib *xineLib = cXineLib::getInstance();
 //		int ret = PesGetPts(now); // Replace xineLib->getPTS(now) noted to see how it works
