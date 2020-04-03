@@ -1230,7 +1230,7 @@ RESULT eTSMPEGDecoder::setVideoPID(int vpid, int type)
 #ifdef HAVE_RASPBERRYPI
 RESULT eTSMPEGDecoder::setAudioPID(int apid, int type, bool amode)
 {
-	eDebug("[RPi eTSMPEGDecoder] setAudioPID %d type=%d amode=%s\n", apid, type, x ? "true" : "false");
+	eDebug("[RPi eTSMPEGDecoder] setAudioPID %d type=%d amode=%s\n", apid, type, amode ? "true" : "false");
 #else
 RESULT eTSMPEGDecoder::setAudioPID(int apid, int type)
 {
