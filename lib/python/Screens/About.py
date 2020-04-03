@@ -178,9 +178,9 @@ class About(Screen):
 					hddinfo += "\n"
 				hdd = hddlist[count][1]
 				if int(hdd.free()) > 1024:
-					hddinfo += formatstring % (hdd.model(), hdd.capacity(), hdd.free()/1024.0, "G", _("free"))
+					hddinfo += formatstring % (hdd.model(), hdd.capacity(), hdd.Totalfree()/1024.0, "G", _("free"))
 				else:
-					hddinfo += formatstring % (hdd.model(), hdd.capacity(), hdd.free(), "M", _("free"))
+					hddinfo += formatstring % (hdd.model(), hdd.capacity(), hdd.Totalfree(), "M", _("free"))
 		else:
 			hddinfo = _("none")
 		self["hddA"] = StaticText(hddinfo)
@@ -361,63 +361,28 @@ class Devices(Screen):
 
 				self["Tuner" + str(count)].setText(text)
 
+		self.hddlist = harddiskmanager.HDDList()
 		self.list = []
-		list2 = []
-		f = open('/proc/partitions', 'r')
-		for line in f.readlines():
-			parts = line.strip().split()
-			if not parts:
-				continue
-			device = parts[3]
-			if SystemInfo["MultibootStartupDevice"]:
-				if not search('sd[a-z][1-9]', device):
-					continue
-			else:
-				if not search('sd[a-z][1-9]', device) and not search('mmcblk[0-9]p[1-9]', device):
-					continue
-			if SystemInfo["HasMMC"] and pathExists("/dev/sda4") and search('sd[a][1-4]', device):
-				continue
-			if device in list2:
-				continue
-
-			mount = '/dev/' + device
-			f = open('/proc/mounts', 'r')
-			for line in f.readlines():
-				if device in line:
-					parts = line.strip().split()
-					mount = str(parts[1])
-					break
-			f.close()
-
-			if not mount.startswith('/dev/'):
-				size = Harddisk(device).diskSize()
-				free = Harddisk(device).free()
-
-				if ((float(size) / 1024) / 1024) >= 1:
-					sizeline = _("Size: ") + str(round(((float(size) / 1024) / 1024), 2)) + _("TB")
-				elif (size / 1024) >= 1:
-					sizeline = _("Size: ") + str(round((float(size) / 1024), 2)) + _("GB")
-				elif size >= 1:
-					sizeline = _("Size: ") + str(size) + _("MB")
-				else:
-					sizeline = _("Size: ") + _("unavailable")
-
+		if self.hddlist:
+			for count in range(len(self.hddlist)):
+				hdd = self.hddlist[count][1]
+				hddp = self.hddlist[count][0]
+				if "ATA" in hddp:
+					hddp = hddp.replace('ATA', '')
+					hddp = hddp.replace('Internal', 'ATA Bus ')
+				free = hdd.Totalfree()
 				if ((float(free) / 1024) / 1024) >= 1:
 					freeline = _("Free: ") + str(round(((float(free) / 1024) / 1024), 2)) + _("TB")
 				elif (free / 1024) >= 1:
 					freeline = _("Free: ") + str(round((float(free) / 1024), 2)) + _("GB")
 				elif free >= 1:
 					freeline = _("Free: ") + str(free) + _("MB")
+				elif "Generic(STORAGE" in hddp:
+					continue
 				else:
 					freeline = _("Free: ") + _("full")
-				if mount.find('mmc') == -1 and mount.find('boot') == -1:
-					self.list.append(mount + '\t' + sizeline + ' \t' + freeline)
-			else:
-				print("[About] MOUNT:", mount)
-				if mount.find('mmc') == -1:
-					self.list.append(mount + '\t' + _('Not mounted'))
-
-			list2.append(device)
+				line = "%s      %s" %(hddp, freeline)
+				self.list.append(line)
 		self.list = '\n'.join(self.list)
 		self["hdd"].setText(self.list)
 
@@ -436,6 +401,10 @@ class Devices(Screen):
 				if self.mountinfo:
 					self.mountinfo += "\n"
 				self.mountinfo += "%s (%sB, %sB %s)" % (ipaddress, mounttotal, mountfree, _("free"))
+		if pathExists("/media/autofs"):
+			for entry in sorted(listdir("/media/autofs")):
+				mountEntry = path.join("/media/autofs", entry)
+				self.mountinfo += _("\n %s " % (mountEntry))
 
 		if self.mountinfo:
 			self["mounts"].setText(self.mountinfo)

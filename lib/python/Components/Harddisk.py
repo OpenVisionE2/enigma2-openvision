@@ -189,6 +189,20 @@ class Harddisk:
 				pass
 		return -1
 
+	def Totalfree(self):
+		mediapath = [ ]
+		freetot = 0
+		for parts in getProcMounts():
+			if os.path.realpath(parts[0]).startswith(self.dev_path):
+				mediapath.append(parts[1])
+		for mpath in mediapath:
+			try:
+				stat = os.statvfs(mpath)
+				freetot += (stat.f_bfree/1000) * (stat.f_bsize/1000)
+			except:
+				pass
+		return	freetot
+
 	def numPartitions(self):
 		numPart = -1
 		if SystemInfo["Udev"]:
@@ -623,7 +637,7 @@ class HarddiskManager:
 				dev = None
 				subdev = False
 			# blacklist ram, loop, mtdblock, romblock, ramzswap
-			blacklisted = dev in [1, 7, 31, 253, 254] 
+			blacklisted = dev in [1, 7, 31, 253, 254]
 			# blacklist non-root eMMC devices
 			if not blacklisted and dev == 179:
 				is_mmc = True
