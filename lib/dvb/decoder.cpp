@@ -223,7 +223,7 @@ void eDVBAudio::flush()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-##ifdef HAVE_RASPBERRYPI
+#ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_CLEAR_BUFFER ", m_dev);
 //	cOmxDevice::Clear();
 #endif
@@ -239,7 +239,7 @@ void eDVBAudio::freeze()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-##ifdef HAVE_RASPBERRYPI
+#ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_PAUSE ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	cOmxDevice::Freeze();
@@ -256,7 +256,7 @@ void eDVBAudio::unfreeze()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-##ifdef HAVE_RASPBERRYPI
+#ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_CONTINUE ", m_dev);
 //	cOmxDevice::Play();
 #endif
@@ -524,7 +524,7 @@ void eDVBVideo::stop()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-##ifdef HAVE_RASPBERRYPI
+#ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBVideo%d] VIDEO_STOP ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	xineLib->stopVideo();

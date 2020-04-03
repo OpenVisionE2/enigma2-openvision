@@ -2284,7 +2284,6 @@ RESULT eDVBChannel::playSource(ePtr<iTsSource> &source, const char *streaminfo_f
 	m_streaminfo_file = std::string(streaminfo_file);
 	m_tstools.setSource(m_source, streaminfo_file);
 #ifdef HAVE_RASPBERRYPI
-//	mknod("/tmp/ENIGMA_FIFO", S_IFIFO|0666, 0);
 	m_pvr_fd_dst = ::open("/tmp/ENIGMA_FIFO", O_RDWR);
 	if (m_pvr_fd_dst < 0)
 	{
