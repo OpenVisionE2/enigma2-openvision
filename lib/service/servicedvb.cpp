@@ -1266,7 +1266,7 @@ void eDVBServicePlay::serviceEvent(int event)
 		ePtr<iDVBDemux> demux;
 		if ((!m_is_pvr && !m_service_handler.getDataDemux(demux)) &  !m_timeshift_enabled)
 		{
-			printf("Start live TV!\n");
+			eDebug("[eDVBServicePlay] Start live TV!\n");
 			demux->createTSRecorder(m_enigma2RPi_record);
 			if (!m_enigma2RPi_record)
 				return;
@@ -1280,7 +1280,7 @@ void eDVBServicePlay::serviceEvent(int event)
 			m_enigma2RPi_record->enableAccessPoints(false);
 			updateTimeshiftPids(); // workaround to set PIDs
 			m_enigma2RPi_record->start();
-			printf("Start live TV END\n");
+			eDebug("[eDVBServicePlay] Start live TV END\n");
 		}
 #else
 		m_event((iPlayableService*)this, evNewProgramInfo);
@@ -1537,7 +1537,7 @@ RESULT eDVBServicePlay::stop()
 		m_enigma2RPi_record = 0;
 	}
 	if (m_enigma2RPi_fd > 0) {
-		printf("close(m_enigma2RPi_fd) %d\n", m_enigma2RPi_fd);
+		eDebug("[RPi eDVBServicePlay] close(m_enigma2RPi_fd) %d\n", m_enigma2RPi_fd);
 		close(m_enigma2RPi_fd);
 		m_enigma2RPi_fd = -1;
 	}
@@ -2001,9 +2001,9 @@ int eDVBServicePlay::getInfo(int w)
 	{
 #ifdef HAVE_RASPBERRYPI
 	if (m_decoder)
-		eDebug("[RPi eDVBServicePlay] eDVBServicePlay::getInfo: m_decoder --> you can implement");
+		eDebug("[RPi eDVBServicePlay] getInfo: m_decoder --> you can implement");
 	else
-		eDebug("[RPi eDVBServicePlay] eDVBServicePlay::getInfo: !m_decoder --> you can not implement");
+		eDebug("[RPi eDVBServicePlay] getInfo: !m_decoder --> you can not implement");
 	case sVideoHeight:
 /*		return xineLib->getVideoHeight();*/
 		break;
@@ -3033,7 +3033,7 @@ void eDVBServicePlay::switchToLive()
 	ePtr<iDVBDemux> demux;
 	if (!m_is_pvr && !m_service_handler.getDataDemux(demux))
 	{
-		printf("Start live TV, end Timeshift!\n");
+		eDebug("[eDVBServicePlay] Start live TV, end Timeshift!\n");
 		demux->createTSRecorder(m_enigma2RPi_record);
 		if (!m_enigma2RPi_record)
 			return;
@@ -3047,7 +3047,7 @@ void eDVBServicePlay::switchToLive()
 		m_enigma2RPi_record->enableAccessPoints(false);
 		updateTimeshiftPids(); // workaround to set PIDs
 		m_enigma2RPi_record->start();
-		printf("Start live TV END\n");
+		eDebug("[eDVBServicePlay] Start live TV END\n");
 	}
 #endif
 	updateDecoder(true);
@@ -3132,7 +3132,7 @@ void eDVBServicePlay::switchToTimeshift()
 		m_enigma2RPi_record = 0;
 	}
 	if (m_enigma2RPi_fd > 0) {
-		printf("Switch from Live TV to Timeshift, close(m_enigma2RPi_fd) %d\n", m_enigma2RPi_fd);
+		eDebug("[eDVBServicePlay] Switch from Live TV to Timeshift, close(m_enigma2RPi_fd) %d\n", m_enigma2RPi_fd);
 		close(m_enigma2RPi_fd);
 		m_enigma2RPi_fd = -1;
 	}

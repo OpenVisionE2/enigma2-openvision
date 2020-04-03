@@ -244,9 +244,9 @@ int main(int argc, char **argv)
 	if (getenv("ENIGMA_DEBUG_TIME"))
 		setDebugTime(atoi(getenv("ENIGMA_DEBUG_TIME")) != 0);
 #ifdef HAVE_RASPBERRYPI
-//	cRpiSetup *m_setup;
+	mknod("/tmp/ENIGMA_FIFO", S_IFIFO|0666, 0);
 	cOmxDevice *m_device;
-//	m_setup->ProcessArgs(0, 0); // videolayer=0, displayout=0 (default values)
+//	cRpiSetup::GetInstance()->ProcessArgs(/* videolayer */ 0, /* outdisplay */ 0); // (default values)
 	if(!cRpiSetup::HwInit())
 		eLog(3, "[cRpiSetup] failed to initialize RPi HD Device");
 	else

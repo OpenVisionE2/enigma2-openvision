@@ -289,7 +289,7 @@ ssize_t eDecryptRawFile::read(off_t offset, void *buf, size_t count)
 						&& ((wsk[3]>=VIDEO_STREAM_S && wsk[3]<=VIDEO_STREAM_E)
 						|| (wsk[3]>=AUDIO_STREAM_S && wsk[3]<=AUDIO_STREAM_E)) ) {
 					stream_correct = true;
-					printf("-------------------- I have PES ---------------------- %02X\n", wsk[3]);
+					eDebug("[RPi eDecryptRawFile] I have PES (%02X)\n", wsk[3]);
 					ret = (packetsCount-i)*TS_SIZE;
 					memcpy(buf, packet, (packetsCount-i)*TS_SIZE);
 /* When channel descramble, then start m_device-playVideo()			---------> To recode for rpi with omx

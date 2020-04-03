@@ -106,7 +106,7 @@ int eDVBDemux::openDVR(int flags)
 	char filename[32];
 	snprintf(filename, sizeof(filename), "/dev/dvb/adapter%d/dvr%d", adapter, demux);
 	eDebug("[eDVBDemux] open dvr %s", filename);
-#if HAVE_AMLOGIC
+#ifdef HAVE_AMLOGIC
 	m_pvr_fd =  ::open(filename, flags);
 	return m_pvr_fd;
 #else
@@ -125,7 +125,7 @@ RESULT eDVBDemux::setSourceFrontend(int fenum)
 	if (res)
 	{
  		eDebug("[eDVBDemux] DMX_SET_SOURCE Frontend%d failed: %m", fenum);
-#if defined(HAVE_AMLOGIC) || defined(HAVE_RASPBERRYPI)
+#ifdef HAVE_AMLOGIC
 		/** FIXME: begin dirty hack  */
 		eDebug("[eDVBDemux] Ignoring due to limitation to one frontend for each adapter and missing ioctl ...");
 		source = fenum;

@@ -31,12 +31,10 @@ eDVBAudio::eDVBAudio(eDVBDemux *demux, int dev)
 	:m_demux(demux), m_dev(dev)
 {
 	char filename[128];
-#ifndef HAVE_RASPBERRY
 	sprintf(filename, "/dev/dvb/adapter%d/audio%d", demux ? demux->adapter : 0, dev);
 	m_fd = ::open(filename, O_RDWR | O_CLOEXEC);
 	if (m_fd < 0)
 		eWarning("[eDVBAudio] %s: %m", filename);
-#endif
 	if (demux)
 	{
 		sprintf(filename, "/dev/dvb/adapter%d/demux%d", demux->adapter, demux->demux);
@@ -49,7 +47,7 @@ eDVBAudio::eDVBAudio(eDVBDemux *demux, int dev)
 		m_fd_demux = -1;
 	}
 
-#if !defined(DREAMBOX) && !defined(AZBOX) && !defined(HAVE_RASPBERRY)
+#if !defined(DREAMBOX) && !defined(AZBOX)
 	if (m_fd >= 0)
 	{
 		::ioctl(m_fd, AUDIO_SELECT_SOURCE, demux ? AUDIO_SOURCE_DEMUX : AUDIO_SOURCE_HDMI);
@@ -193,7 +191,6 @@ int eDVBAudio::startPid(int pid, int type)
 
 void eDVBAudio::stop()
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_STOP ", m_dev);
@@ -202,7 +199,7 @@ void eDVBAudio::stop()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-#else
+#ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_STOP ", m_dev);
 //	To be tested if is it enough DEMUX_STOP to stop Audio
 #endif
@@ -218,7 +215,6 @@ void eDVBAudio::stop()
 
 void eDVBAudio::flush()
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_CLEAR_BUFFER ", m_dev);
@@ -227,7 +223,7 @@ void eDVBAudio::flush()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-#else
+##ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_CLEAR_BUFFER ", m_dev);
 //	cOmxDevice::Clear();
 #endif
@@ -235,7 +231,6 @@ void eDVBAudio::flush()
 
 void eDVBAudio::freeze()
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_PAUSE ", m_dev);
@@ -244,7 +239,7 @@ void eDVBAudio::freeze()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-#else
+##ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_PAUSE ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	cOmxDevice::Freeze();
@@ -253,7 +248,6 @@ void eDVBAudio::freeze()
 
 void eDVBAudio::unfreeze()
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_CONTINUE ", m_dev);
@@ -262,7 +256,7 @@ void eDVBAudio::unfreeze()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-#else
+##ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBAudio%d] AUDIO_CONTINUE ", m_dev);
 //	cOmxDevice::Play();
 #endif
@@ -295,13 +289,12 @@ void eDVBAudio::setChannel(int channel)
 
 int eDVBAudio::getPTS(pts_t &now)
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		if (::ioctl(m_fd, AUDIO_GET_PTS, &now) < 0)
 			eDebug("[eDVBAudio%d] AUDIO_GET_PTS failed: %m", m_dev);
 	}
-#else
+#ifdef HAVE_RASPBERRYPI
 	eDebug("[RPi eDVBAudio%d] getPTS",m_dev);
 	int ret = 0;
 //	int ret = PesGetPts(now); // Replace xineLib->getPTS(now) noted to see how it work
@@ -314,10 +307,8 @@ int eDVBAudio::getPTS(pts_t &now)
 eDVBAudio::~eDVBAudio()
 {
 	unfreeze();  // why unfreeze here... but not unfreeze video in ~eDVBVideo ?!?
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 		::close(m_fd);
-#endif
 	if (m_fd_demux >= 0)
 		::close(m_fd_demux);
 	eDebug("[eDVBAudio%d] destroy", m_dev);
@@ -332,7 +323,6 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 	m_width(-1), m_height(-1), m_framerate(-1), m_aspect(-1), m_progressive(-1), m_gamma(-1)
 {
 	char filename[128];
-#ifndef HAVE_RASPBERRYPI
 	sprintf(filename, "/dev/dvb/adapter%d/video%d", demux ? demux->adapter : 0, dev);
 	m_fd = ::open(filename, O_RDWR | O_CLOEXEC);
 	if (m_fd < 0)
@@ -340,18 +330,13 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 	else
 	{
 		eDebug("[eDVBVideo] Video Device: %s", filename);
-#else
-		eDebug("[RPi eDVBVideo] before create eSocketNotifier  m_fd = %d ", m_fd); // Only to see thr m_fd value to be removed
-#endif
 		m_sn = eSocketNotifier::create(eApp, m_fd, eSocketNotifier::Priority);
 		CONNECT(m_sn->activated, eDVBVideo::video_event);
 #ifdef AZBOX
 		if (ioctl(m_fd, VIDEO_SELECT_SOURCE, VIDEO_SOURCE_DEMUX) < 0)
 			eDebug("[eTSMPEGDecoder] VIDEO_SELECT_SOURCE DEMUX failed: %m");
 #endif
-#ifndef HAVE_RASPBERRYPI
 	}
-#endif
 	if (demux)
 	{
 		sprintf(filename, "/dev/dvb/adapter%d/demux%d", demux->adapter, demux->demux);
@@ -366,7 +351,7 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 		m_fd_demux = -1;
 	}
 
-#if !defined(DREAMBOX) && !defined(HAVE_RASPBERRY)
+#ifdef DREAMBOX
 	if (m_fd >= 0)
 	{
 		::ioctl(m_fd, VIDEO_SELECT_SOURCE, demux ? VIDEO_SOURCE_DEMUX : VIDEO_SOURCE_HDMI);
@@ -500,23 +485,22 @@ int eDVBVideo::startPid(int pid, int type)
 		}
 		eDebugNoNewLine("ok\n");
 	}
-#ifndef HAVE_RASPBERRYPI
+
 	if (m_fd >= 0)
 	{
-#endif
 //		// this is a hack which only matters for dm drivers
 //		freeze();  // why freeze here?!? this is a problem when only a pid change is requested... because of the unfreeze logic in Decoder::setState
 		eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_PLAY ", m_dev);
-#ifdef HAVE_RASPBERRYPI
-//		cXineLib *xineLib = cXineLib::getInstance();
-//		xineLib->setVideoType(pid, type);
-//		cOmxDevice::PlayVideo(,,); // Replace xineLib->playVideo() noted to see how it get the needed parameters
-#else
 		if (::ioctl(m_fd, VIDEO_PLAY) < 0)
 			eDebugNoNewLine("failed: %m\n");
 		else
 			eDebugNoNewLine("ok\n");
 	}
+#ifdef HAVE_RASPBERRYPI
+	eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_PLAY ", m_dev);
+//	cXineLib *xineLib = cXineLib::getInstance();
+//	xineLib->setVideoType(pid, type);
+//	cOmxDevice::PlayVideo(,,); // Replace xineLib->playVideo() noted to see how it get the needed parameters
 #endif
 	return 0;
 }
@@ -531,7 +515,7 @@ void eDVBVideo::stop()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-#ifndef HAVE_RASPBERRYPI
+
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_STOP ", m_dev);
@@ -540,7 +524,7 @@ void eDVBVideo::stop()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-#else
+##ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBVideo%d] VIDEO_STOP ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	xineLib->stopVideo();
@@ -549,7 +533,6 @@ void eDVBVideo::stop()
 
 void eDVBVideo::flush()
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_CLEAR_BUFFER ", m_dev);
@@ -558,7 +541,7 @@ void eDVBVideo::flush()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-#else
+#ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBVideo%d] VIDEO_CLEAR_BUFFER ", m_dev);
 //	cOmxDevice::Clear();
 #endif
@@ -566,7 +549,6 @@ void eDVBVideo::flush()
 
 void eDVBVideo::freeze()
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_FREEZE ", m_dev);
@@ -575,7 +557,7 @@ void eDVBVideo::freeze()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-#else
+#ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBAudio%d] VIDEO_FREEZE ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	cOmxDevice::Freeze(); // Replace xineLib->VideoPause() noted to see how it works
@@ -584,7 +566,6 @@ void eDVBVideo::freeze()
 
 void eDVBVideo::unfreeze()
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_CONTINUE ", m_dev);
@@ -593,7 +574,8 @@ void eDVBVideo::unfreeze()
 		else
 			eDebugNoNewLine("ok\n");
 	}
-#else
+#ifdef HAVE_RASPBERRYPI
+	eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_CONTINUE ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	cOmxDevice::Play(); // Replace xineLib->VideoResume() noted to see how it works
 #endif
@@ -601,7 +583,6 @@ void eDVBVideo::unfreeze()
 
 int eDVBVideo::setSlowMotion(int repeat)
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_SLOWMOTION %d ", m_dev, repeat);
@@ -612,7 +593,7 @@ int eDVBVideo::setSlowMotion(int repeat)
 			eDebugNoNewLine("ok\n");
 		return ret;
 	}
-#else
+#ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBVideo%d] VIDEO_SLOWMOTION %d ", m_dev, repeat);
 //	looking for right function
 #endif
@@ -621,7 +602,6 @@ int eDVBVideo::setSlowMotion(int repeat)
 
 int eDVBVideo::setFastForward(int skip)
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 	{
 		eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_FAST_FORWARD %d ", m_dev, skip);
@@ -632,7 +612,7 @@ int eDVBVideo::setFastForward(int skip)
 			eDebugNoNewLine("ok\n");
 		return ret;
 	}
-#else
+#ifdef HAVE_RASPBERRYPI
 	eDebugNoNewLineStart("[RPi eDVBVideo%d] VIDEO_FAST_FORWARD %d ", m_dev, skip);
 //	looking for right function
 #endif
@@ -663,10 +643,8 @@ int eDVBVideo::getPTS(pts_t &now)
 
 eDVBVideo::~eDVBVideo()
 {
-#ifndef HAVE_RASPBERRYPI
 	if (m_fd >= 0)
 		::close(m_fd);
-#endif
 	if (m_fd_demux >= 0)
 		::close(m_fd_demux);
 	eDebug("[eDVBVideo%d] destroy", m_dev);
@@ -1228,7 +1206,7 @@ eTSMPEGDecoder::~eTSMPEGDecoder()
 #ifdef HAVE_RASPBERRYPI
 RESULT eTSMPEGDecoder::setVideoPID(int vpid, int type, int streamtype)
 {
-	printf("eTSMPEGDecoder setVideoPID %d\n", vpid);
+	eDebug("[RPi eTSMPEGDecoder] setVideoPID %d type=d% streamtype=d%\n", vpid, type, streamtype);
 	if ((m_vpid != vpid) || (m_vtype != type) || (m_vstreamtype != streamtype))
 #else
 RESULT eTSMPEGDecoder::setVideoPID(int vpid, int type)
@@ -1252,7 +1230,7 @@ RESULT eTSMPEGDecoder::setVideoPID(int vpid, int type)
 #ifdef HAVE_RASPBERRYPI
 RESULT eTSMPEGDecoder::setAudioPID(int apid, int type, bool amode)
 {
-	printf("eTSMPEGDecoder setAudioPID %d\n", apid);
+	eDebug("[RPi eTSMPEGDecoder] setAudioPID %d type=%d amode=%s\n", apid, type, x ? "true" : "false");
 #else
 RESULT eTSMPEGDecoder::setAudioPID(int apid, int type)
 {
@@ -1331,7 +1309,7 @@ RESULT eTSMPEGDecoder::set()
 RESULT eTSMPEGDecoder::play()
 {
 #ifdef HAVE_RASPBERRYPI
-	printf("eTSMPEGDecoder play\n");
+	eDebug("[RPi eTSMPEGDecoder] play\n");
 #endif
 	if (m_state == statePlay)
 	{
@@ -1348,7 +1326,7 @@ RESULT eTSMPEGDecoder::play()
 RESULT eTSMPEGDecoder::pause()
 {
 #ifdef HAVE_RASPBERRYPI
-	printf("eTSMPEGDecoder pause\n");
+	eDebug("[RPi eTSMPEGDecoder] pause\n");
 #endif
 	if (m_state == statePause)
 		return 0;
