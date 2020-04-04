@@ -499,7 +499,7 @@ int eDVBVideo::startPid(int pid, int type)
 			eDebugNoNewLine("ok\n");
 	}
 #ifdef HAVE_RASPBERRYPI
-	eDebug("[eDVBVideo%d] VIDEO_PLAY ", m_dev);
+	eDebug("[RPi eDVBVideo%d] VIDEO_PLAY ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	xineLib->setVideoType(pid, type);
 //	cOmxDevice::PlayVideo(,,); // Replace xineLib->playVideo() noted to see how it get the needed parameters
@@ -577,7 +577,7 @@ void eDVBVideo::unfreeze()
 			eDebugNoNewLine("ok\n");
 	}
 #ifdef HAVE_RASPBERRYPI
-	eDebug("[eDVBVideo%d] VIDEO_CONTINUE ", m_dev);
+	eDebug("[RPi eDVBVideo%d] VIDEO_CONTINUE ", m_dev);
 //	cXineLib *xineLib = cXineLib::getInstance();
 //	cOmxDevice::Play(); // Replace xineLib->VideoResume() noted to see how it works
 #endif

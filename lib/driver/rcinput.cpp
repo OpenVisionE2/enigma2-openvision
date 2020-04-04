@@ -500,16 +500,16 @@ void eRCDeviceInputDev::handleCode(long rccode)
 #endif
 
 #if HAVE_RASPBERRYPI
-	if (ev->code == KEY_F9) {
+	if (ev->code == KEY_F1) {
 		ev->code = KEY_RED;
 	}
-	if (ev->code == KEY_F10) {
+	if (ev->code == KEY_F2) {
 		ev->code = KEY_GREEN;
 	}
-	if (ev->code == KEY_F11) {
+	if (ev->code == KEY_F3) {
 		ev->code = KEY_YELLOW;
 	}
-	if (ev->code == KEY_F12) {
+	if (ev->code == KEY_F4) {
 		ev->code = KEY_BLUE;
 	}
 #endif

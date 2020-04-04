@@ -3047,7 +3047,7 @@ void eDVBServicePlay::switchToLive()
 		m_enigma2RPi_record->enableAccessPoints(false);
 		updateTimeshiftPids(); // workaround to set PIDs
 		m_enigma2RPi_record->start();
-		eDebug("[eDVBServicePlay] Start live TV END\n");
+		eDebug("[RPi eDVBServicePlay] Start live TV END\n");
 	}
 #endif
 	updateDecoder(true);
