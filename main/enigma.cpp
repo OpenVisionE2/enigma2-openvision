@@ -244,7 +244,7 @@ int main(int argc, char **argv)
 	if (getenv("ENIGMA_DEBUG_TIME"))
 		setDebugTime(atoi(getenv("ENIGMA_DEBUG_TIME")) != 0);
 #ifdef HAVE_RASPBERRYPI
-	mknod("/tmp/ENIGMA_FIFO", S_IFIFO|0666, 0);
+//	mknod("/tmp/ENIGMA_FIFO", S_IFIFO|0666, 0);
 	cOmxDevice *m_device;
 //	cRpiSetup::GetInstance()->ProcessArgs(/* videolayer */ 0, /* outdisplay */ 0); // (default values)
 	if(!cRpiSetup::HwInit())

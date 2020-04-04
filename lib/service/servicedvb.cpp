@@ -1266,7 +1266,7 @@ void eDVBServicePlay::serviceEvent(int event)
 		ePtr<iDVBDemux> demux;
 		if ((!m_is_pvr && !m_service_handler.getDataDemux(demux)) &  !m_timeshift_enabled)
 		{
-			eDebug("[eDVBServicePlay] Start live TV!\n");
+			eDebug("[RPi eDVBServicePlay] Start live TV!");
 			demux->createTSRecorder(m_enigma2RPi_record);
 			if (!m_enigma2RPi_record)
 				return;
@@ -1280,7 +1280,7 @@ void eDVBServicePlay::serviceEvent(int event)
 			m_enigma2RPi_record->enableAccessPoints(false);
 			updateTimeshiftPids(); // workaround to set PIDs
 			m_enigma2RPi_record->start();
-			eDebug("[eDVBServicePlay] Start live TV END\n");
+			eDebug("[RPi eDVBServicePlay] Start live TV END");
 		}
 #else
 		m_event((iPlayableService*)this, evNewProgramInfo);
@@ -1537,7 +1537,7 @@ RESULT eDVBServicePlay::stop()
 		m_enigma2RPi_record = 0;
 	}
 	if (m_enigma2RPi_fd > 0) {
-		eDebug("[RPi eDVBServicePlay] close(m_enigma2RPi_fd) %d\n", m_enigma2RPi_fd);
+		eDebug("[RPi eDVBServicePlay] close(m_enigma2RPi_fd) %d", m_enigma2RPi_fd);
 		close(m_enigma2RPi_fd);
 		m_enigma2RPi_fd = -1;
 	}
@@ -3033,7 +3033,7 @@ void eDVBServicePlay::switchToLive()
 	ePtr<iDVBDemux> demux;
 	if (!m_is_pvr && !m_service_handler.getDataDemux(demux))
 	{
-		eDebug("[eDVBServicePlay] Start live TV, end Timeshift!\n");
+		eDebug("[RPi eDVBServicePlay] Start live TV, end Timeshift!");
 		demux->createTSRecorder(m_enigma2RPi_record);
 		if (!m_enigma2RPi_record)
 			return;
@@ -3132,7 +3132,7 @@ void eDVBServicePlay::switchToTimeshift()
 		m_enigma2RPi_record = 0;
 	}
 	if (m_enigma2RPi_fd > 0) {
-		eDebug("[eDVBServicePlay] Switch from Live TV to Timeshift, close(m_enigma2RPi_fd) %d\n", m_enigma2RPi_fd);
+		eDebug("[RPi eDVBServicePlay] Switch from Live TV to Timeshift, close(m_enigma2RPi_fd) %d", m_enigma2RPi_fd);
 		close(m_enigma2RPi_fd);
 		m_enigma2RPi_fd = -1;
 	}
