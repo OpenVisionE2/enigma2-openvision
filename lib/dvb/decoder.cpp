@@ -328,16 +328,20 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 	m_fd = ::open(filename, O_RDWR | O_CLOEXEC);
 	if (m_fd < 0)
 		eWarning("[eDVBVideo] %s: %m", filename);
+#ifndef HAVE_RASPBERRYPI
 	else
 	{
 		eDebug("[eDVBVideo] Video Device: %s", filename);
+#endif
 		m_sn = eSocketNotifier::create(eApp, m_fd, eSocketNotifier::Priority);
 		CONNECT(m_sn->activated, eDVBVideo::video_event);
 #ifdef AZBOX
 		if (ioctl(m_fd, VIDEO_SELECT_SOURCE, VIDEO_SOURCE_DEMUX) < 0)
 			eDebug("[eTSMPEGDecoder] VIDEO_SELECT_SOURCE DEMUX failed: %m");
 #endif
+#ifndef HAVE_RASPBERRYPI
 	}
+#endif
 	if (demux)
 	{
 		sprintf(filename, "/dev/dvb/adapter%d/demux%d", demux->adapter, demux->demux);
