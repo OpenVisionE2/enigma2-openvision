@@ -320,7 +320,7 @@ def getReasons(session, retvalue=QUIT_SHUTDOWN):
 		reasons.append(_("You seem to be in timeshift!"))
 	if eStreamServer.getInstance().getConnectedClients() or StreamServiceList:
 		reasons.append(_("Client is streaming from this box!"))
-	if not reasons and mediafilesInUse(session) and retvalue in (QUIT_SHUTDOWN, QUIT_REBOOT, QUIT_UPGRADE_FP, QUIT_UPGRADE_PROGRAM):
+	if not reasons and mediafilesInUse(session) and retvalue in (QUIT_SHUTDOWN, QUIT_REBOOT, QUIT_UPGRADE_FP, QUIT_UPGRADE_PROGRAM, QUIT_UPGRADE_FPANEL):
 		reasons.append(_("A file from media is in use!"))
 	return "\n".join(reasons)
 
