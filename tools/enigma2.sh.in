@@ -44,6 +44,10 @@ if [ ! -e /etc/enigma2/settings ]; then
 	touch /etc/enigma2/settings
 fi
 
+if [ ! -d /tmp/multibootcheck ]; then
+	mkdir -p /tmp/multibootcheck
+fi
+
 # enigma main loop
 while : ; do
 	# show bootlogo on enigma2 start
