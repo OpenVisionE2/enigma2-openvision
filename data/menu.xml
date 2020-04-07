@@ -155,7 +155,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 			</menu>
 			<item weight="15" level="0" text="Parental control" entryID="parental_setup"><screen module="ParentalControlSetup" screen="ParentalControlSetup"/></item>
 			<item weight="15" level="0" text="Factory reset" entryID="factory_reset"><screen module="FactoryReset" screen="FactoryReset"/></item>
-			<item weight="15" level="0" text="Flash image" entryID="flash_image" requires="canFlashWithOfgwrite" ><screen module="FlashImage" screen="SelectImage"/></item>
+<!--			<item weight="15" level="0" text="Flash image" entryID="flash_image" requires="canFlashWithOfgwrite" ><screen module="FlashImage" screen="SelectImage"/></item> -->
 			<item weight="15" level="0" text="Software update" entryID="software_update"><screen module="SoftwareUpdate" screen="UpdatePlugin"/></item>
 			</menu>
 		<menu text="Standby / restart" entryID="standby_restart_list">
@@ -163,7 +163,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 			<item text="Sleep timer" entryID="sleep"><screen module="SleepTimerEdit" screen="SleepTimerEdit"/></item>
 			<item text="Standby" entryID="standby"><screen module="Standby" screen="Standby"/></item>
 			<item text="Restart" entryID="restart"><screen module="Standby" screen="TryQuitMainloop">2</screen></item>
-			<item text="Multiboot image selector" entryID="multiboot" requires="canMultiBoot"><screen module="FlashImage" screen="MultibootSelection">1</screen></item>
+<!--			<item text="Multiboot image selector" entryID="multiboot" requires="canMultiBoot"><screen module="FlashImage" screen="MultibootSelection">1</screen></item> -->
 			<item text="Restart enigma" requires="InDebugMode" entryID="restart_enigma_debug"><screen module="Standby" screen="TryQuitMainloop">6</screen></item>
 			<item text="Restart enigma" requires="!InDebugMode" entryID="restart_enigma"><screen module="Standby" screen="TryQuitMainloop">3</screen></item>
 			<item text="Restart enigma in standard mode" requires="InDebugMode" entryID="restart_enigma"><screen module="Standby" screen="TryQuitMainloop">3</screen></item>
