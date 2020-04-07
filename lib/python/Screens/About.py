@@ -34,8 +34,11 @@ class About(Screen):
 		AboutText = _("Hardware: ") + about.getHardwareTypeString() + "\n"
 		if procmodel != about.getHardwareTypeString():
 			AboutText += _("Proc model: ") + procmodel + "\n"
-		if fileExists("/proc/stb/info/sn"):
+		if fileExists("/proc/stb/info/sn") and not fileExists("/proc/stb/info/serial"):
 			hwserial = open("/proc/stb/info/sn", "r").read().strip()
+			AboutText += _("Hardware serial: ") + hwserial + "\n"
+		if fileExists("/proc/stb/info/serial") and not fileExists("/proc/stb/info/sn"):
+			hwserial = open("/proc/stb/info/serial", "r").read().strip()
 			AboutText += _("Hardware serial: ") + hwserial + "\n"
 
 		AboutText += _("Brand/Meta: ") + about.getHardwareBrand() + "\n"
