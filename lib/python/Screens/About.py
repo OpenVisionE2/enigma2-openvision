@@ -92,46 +92,6 @@ class About(Screen):
 
 		AboutText += "\n" + _("Kernel version: ") + about.getKernelVersionString() + "\n"
 
-		AboutText += _("DVB driver version: ") + about.getDriverInstalledDate() + "\n"
-		AboutText += _("DVB API: ") + about.getDVBAPI() + "\n"
-		if fileExists("/usr/bin/dvb-fe-tool"):
-			import time
-			try:
-				cmd = 'dvb-fe-tool > /tmp/dvbfetool.txt'
-				res = Console().ePopen(cmd)
-				time.sleep(0.1)
-			except:
-				pass
-		if fileExists("/tmp/dvbfetool.txt"):
-			if fileHas("/tmp/dvbfetool.txt","DVBC") or fileHas("/tmp/dvbfetool.txt","DVB-C"):
-				AboutText += _("DVB-C: ") + _("Yes") + "\n"
-			else:
-				AboutText += _("DVB-C: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","DVBS") or fileHas("/tmp/dvbfetool.txt","DVB-S"):
-				AboutText += _("DVB-S: ") + _("Yes") + "\n"
-			else:
-				AboutText += _("DVB-S: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","DVBT") or fileHas("/tmp/dvbfetool.txt","DVB-T"):
-				AboutText += _("DVB-T: ") + _("Yes") + "\n"
-			else:
-				AboutText += _("DVB-T: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","MULTISTREAM"):
-				AboutText += _("Multistream: ") + _("Yes") + "\n"
-			else:
-				AboutText += _("Multistream: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","ANNEX_A") or fileHas("/tmp/dvbfetool.txt","ANNEX-A"):
-				AboutText += _("ANNEX-A: ") + _("Yes") + "\n"
-			else:
-				AboutText += _("ANNEX-A: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","ANNEX_B") or fileHas("/tmp/dvbfetool.txt","ANNEX-B"):
-				AboutText += _("ANNEX-B: ") + _("Yes") + "\n"
-			else:
-				AboutText += _("ANNEX-B: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","ANNEX_C") or fileHas("/tmp/dvbfetool.txt","ANNEX-C"):
-				AboutText += _("ANNEX-C: ") + _("Yes") + "\n"
-			else:
-				AboutText += _("ANNEX-C: ") + _("No") + "\n"
-
 		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer","")
 		self["GStreamerVersion"] = StaticText(GStreamerVersion)
 		AboutText += "\n" + GStreamerVersion + "\n"
@@ -150,16 +110,6 @@ class About(Screen):
 			AboutText += fp_version + "\n"
 
 		self["FPVersion"] = StaticText(fp_version)
-
-		if boxbranding.getHaveTranscoding() != "":
-			AboutText += _("Transcoding: ") + _("Yes") + "\n"
-		else:
-			AboutText += _("Transcoding: ") + _("No") + "\n"
-
-		if boxbranding.getHaveMultiTranscoding() != "":
-			AboutText += _("MultiTranscoding: ") + _("Yes") + "\n"
-		else:
-			AboutText += _("MultiTranscoding: ") + _("No") + "\n"
 
 		AboutText += _('Skin & Resolution: %s (%sx%s)\n') % (config.skin.primary_skin.value.split('/')[0], getDesktop(0).size().width(), getDesktop(0).size().height())
 
@@ -225,6 +175,75 @@ class About(Screen):
 
 	def showTroubleshoot(self):
 		self.session.open(Troubleshoot)
+
+class DVBInformation(Screen):
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		self.setTitle(_("DVB information"))
+
+		DVBInformationText = _("DVB information") + "\n" + "\n"
+
+		DVBInformationText += _("DVB driver version: ") + about.getDriverInstalledDate() + "\n"
+		DVBInformationText += _("DVB API: ") + about.getDVBAPI() + "\n" + "\n"
+
+		if boxbranding.getHaveTranscoding() != "":
+			DVBInformationText += _("Transcoding: ") + _("Yes") + "\n"
+		else:
+			DVBInformationText += _("Transcoding: ") + _("No") + "\n"
+
+		if boxbranding.getHaveMultiTranscoding() != "":
+			DVBInformationText += _("MultiTranscoding: ") + _("Yes") + "\n" + "\n"
+		else:
+			DVBInformationText += _("MultiTranscoding: ") + _("No") + "\n" + "\n"
+
+		if fileExists("/usr/bin/dvb-fe-tool"):
+			import time
+			try:
+				cmd = 'dvb-fe-tool > /tmp/dvbfetool.txt'
+				res = Console().ePopen(cmd)
+				time.sleep(0.1)
+			except:
+				pass
+		if fileExists("/tmp/dvbfetool.txt"):
+			if fileHas("/tmp/dvbfetool.txt","DVBC") or fileHas("/tmp/dvbfetool.txt","DVB-C"):
+				DVBInformationText += _("DVB-C: ") + _("Yes") + "\n"
+			else:
+				DVBInformationText += _("DVB-C: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","DVBS") or fileHas("/tmp/dvbfetool.txt","DVB-S"):
+				DVBInformationText += _("DVB-S: ") + _("Yes") + "\n"
+			else:
+				DVBInformationText += _("DVB-S: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","DVBT") or fileHas("/tmp/dvbfetool.txt","DVB-T"):
+				DVBInformationText += _("DVB-T: ") + _("Yes") + "\n" + "\n"
+			else:
+				DVBInformationText += _("DVB-T: ") + _("No") + "\n" + "\n"
+			if fileHas("/tmp/dvbfetool.txt","MULTISTREAM"):
+				DVBInformationText += _("Multistream: ") + _("Yes") + "\n" + "\n"
+			else:
+				DVBInformationText += _("Multistream: ") + _("No") + "\n" + "\n"
+			if fileHas("/tmp/dvbfetool.txt","ANNEX_A") or fileHas("/tmp/dvbfetool.txt","ANNEX-A"):
+				DVBInformationText += _("ANNEX-A: ") + _("Yes") + "\n"
+			else:
+				DVBInformationText += _("ANNEX-A: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","ANNEX_B") or fileHas("/tmp/dvbfetool.txt","ANNEX-B"):
+				DVBInformationText += _("ANNEX-B: ") + _("Yes") + "\n"
+			else:
+				DVBInformationText += _("ANNEX-B: ") + _("No") + "\n"
+			if fileHas("/tmp/dvbfetool.txt","ANNEX_C") or fileHas("/tmp/dvbfetool.txt","ANNEX-C"):
+				DVBInformationText += _("ANNEX-C: ") + _("Yes") + "\n"
+			else:
+				DVBInformationText += _("ANNEX-C: ") + _("No") + "\n"
+
+		self["AboutScrollLabel"] = ScrollLabel(DVBInformationText)
+		self["key_red"] = Button(_("Close"))
+
+		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
+			{
+				"cancel": self.close,
+				"ok": self.close,
+				"up": self["AboutScrollLabel"].pageUp,
+				"down": self["AboutScrollLabel"].pageDown
+			})
 
 class Geolocation(Screen):
 	def __init__(self, session):
