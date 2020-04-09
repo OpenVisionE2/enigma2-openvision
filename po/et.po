@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Openpli\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-03 12:39+0430\n"
+"POT-Creation-Date: 2020-04-09 21:03+0430\n"
 "PO-Revision-Date: 2019-04-03 06:49+0300\n"
 "Last-Translator: \n"
 "Language-Team: Raivo, Henkka, eesatfan, rimas, zeros\\n faas, sateks, valgekotkas, tigekala, rootsikunn\\n kain, i70, mustkass, pelmeen, Scott\\n <digi-tv.ee>\n"
@@ -13,6 +13,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+
+#, python-format
+msgid ""
+"\n"
+" %s "
+msgstr ""
 
 msgid ""
 "\n"
@@ -3574,6 +3580,9 @@ msgstr "Lõputu esitus (loop)"
 msgid "Contrast"
 msgstr "Kontrast"
 
+msgid "Control LED can be turned on or off here."
+msgstr ""
+
 msgid "Cook Islands"
 msgstr "Cooki saared"
 
@@ -3592,6 +3601,10 @@ msgstr "Costa Rica"
 
 msgid "Cote d'Ivoire"
 msgstr "Elevandiluurannik"
+
+#, fuzzy
+msgid "Could not connect to server"
+msgstr "Kehtetu kanal %s. Salvestamine nurjus."
 
 msgid "Could not find installed channel list."
 msgstr "Paigaldatud kanalinimekirja ei leitud."
@@ -3800,6 +3813,14 @@ msgstr ""
 msgid "DUAL LAYER DVD"
 msgstr "Kahekihiline DVD"
 
+#, fuzzy
+msgid "DVB"
+msgstr "DVB-C"
+
+#, fuzzy
+msgid "DVB API version: "
+msgstr "DVB draiveri versioon: "
+
 msgid "DVB API: "
 msgstr ""
 
@@ -3813,8 +3834,9 @@ msgstr ""
 msgid "DVB and Pango subtitle position"
 msgstr "Subtiitrite asukoht"
 
-msgid "DVB driver version: "
-msgstr "DVB draiveri versioon: "
+#, fuzzy
+msgid "DVB information"
+msgstr "Info"
 
 msgid "DVB subtitle black transparency"
 msgstr "DVB subtiitrite tausta läbipaistvus"
@@ -4349,6 +4371,10 @@ msgstr "Esipaneeli seaded"
 msgid "Display the EIT now/next eventdata in infobar."
 msgstr "Näita nüüd/järgmine inforibal"
 
+#, fuzzy
+msgid "Display type: "
+msgstr "Esipaneeli seaded"
+
 msgid "Djibouti"
 msgstr "Djibouti"
 
@@ -4594,6 +4620,10 @@ msgstr "DTS > stereo"
 #, fuzzy
 msgid "Drama"
 msgstr "Film/Draama"
+
+#, fuzzy
+msgid "Driver version: "
+msgstr "DVB draiveri versioon: "
 
 msgid "Drop unconfigured satellites"
 msgstr "Kaota konfigureerimata satelliidid"
@@ -5581,9 +5611,6 @@ msgstr "Paigalda süsteemitõmmis"
 msgid "Flash Image"
 msgstr "Paigalda süsteemitõmmis"
 
-msgid "Flash image"
-msgstr "Paigalda süsteemitõmmis"
-
 #, fuzzy
 msgid "Flash type: "
 msgstr "Paigalda süsteemitõmmis"
@@ -6340,6 +6367,14 @@ msgstr "Ignoreeri konflikti"
 msgid "Image architecture: "
 msgstr ""
 
+#, fuzzy
+msgid "Image file system: "
+msgstr "Failisüsteemi loomine"
+
+#, fuzzy
+msgid "Image folder: "
+msgstr "Vali sihtkataloog"
+
 #, python-format
 msgid ""
 "Image to install is invalid\n"
@@ -6713,6 +6748,10 @@ msgstr ""
 msgid "Kenya"
 msgstr "Keenia"
 
+#, fuzzy
+msgid "Kernel file: "
+msgstr "Kernel: "
+
 msgid "Kernel version: "
 msgstr "Kernel: "
 
@@ -7055,11 +7094,23 @@ msgstr "B"
 msgid "MIRACLEBOX_TWINPLUS"
 msgstr ""
 
+msgid "MKUBIFS: "
+msgstr ""
+
 msgid "MMC card"
 msgstr "MMC kaart"
 
 msgid "MORE"
 msgstr "VEEL"
+
+msgid "MTD boot: "
+msgstr ""
+
+msgid "MTD kernel: "
+msgstr ""
+
+msgid "MTD root: "
+msgstr ""
 
 msgid "Macao"
 msgstr "Macau"
@@ -7832,6 +7883,10 @@ msgstr "Pole vaba tuunerit!"
 msgid "No images found"
 msgstr "Võrke ei leidnud"
 
+#, fuzzy
+msgid "No matching place names found"
+msgstr "Võrke ei leidnud"
+
 msgid "No network connection available."
 msgstr "Võrgu ühendust pole saadaval."
 
@@ -7996,10 +8051,6 @@ msgid "Not enough disk space. Please free up some disk space and try again. (%d 
 msgstr "Kõvakettal pole piisavalt ruumi. Kustuta ebavajalik ja proovi uuesti. (%d MB vaja, %d MB saadaval)"
 
 #, fuzzy
-msgid "Not mounted"
-msgstr "Võrgu haakepunkt"
-
-#, fuzzy
 msgid "Not running"
 msgstr "ei tööta"
 
@@ -8066,6 +8117,9 @@ msgid "OCTAGON_SF4008"
 msgstr ""
 
 msgid "ODIN_M7"
+msgstr ""
+
+msgid "OE: "
 msgstr ""
 
 msgid "OK"
@@ -8180,8 +8234,16 @@ msgstr "Ainult alustamisel"
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Vali 'jah' ainult juhul, kui kasutatav multiswich lüliti nõuab DiSEqC Port-A käsu signaali. Kõigil teistel juhtudel vali 'ei'."
 
+#, fuzzy
+msgid "Open Vision"
+msgstr "Pythoni versioon: "
+
 msgid "Open Vision enigma2 image"
 msgstr ""
+
+#, fuzzy
+msgid "Open Vision information"
+msgstr "Pythoni versioon: "
 
 msgid "Open Vision module: "
 msgstr ""
@@ -9171,6 +9233,10 @@ msgstr "Kiire kanalivalik"
 msgid "RAM"
 msgstr ""
 
+#, fuzzy
+msgid "RC type: "
+msgstr "Paigalda süsteemitõmmis"
+
 msgid "REC"
 msgstr "REC"
 
@@ -9750,6 +9816,10 @@ msgstr "Juur"
 
 msgid "Root directory"
 msgstr "Juurkataloog"
+
+#, fuzzy
+msgid "Root file: "
+msgstr "SRT fail"
 
 msgid "Rotor step position:"
 msgstr "Mootori astme positsioon:"
@@ -11246,9 +11316,6 @@ msgstr "Koha laiuskraad"
 
 msgid "Site longitude"
 msgstr "Koha pikkuskraad"
-
-msgid "Size: "
-msgstr ""
 
 #, fuzzy
 msgid "Skin"
@@ -13088,6 +13155,10 @@ msgid "Turn on HDMI-IN PiP mode"
 msgstr ""
 
 #, fuzzy
+msgid "Turn on the control LED."
+msgstr "Lülita ooteseisundi ajal sisse toite LED."
+
+#, fuzzy
 msgid "Turn on the power LED during deep standby."
 msgstr "Lülita ooteseisundi ajal sisse toite LED."
 
@@ -13115,6 +13186,9 @@ msgstr ""
 
 msgid "Type of scan"
 msgstr "Otsingu tüüp"
+
+msgid "UBINIZE: "
+msgstr ""
 
 msgid "UNKNOWN"
 msgstr "TUNDMATU"
@@ -14320,6 +14394,9 @@ msgstr ""
 msgid "You must switch to the service %s (%s - '%s')!\n"
 msgstr "Pead lülitama teenusele %s (%s - '%s')!\n"
 
+msgid "You seem to be in timeshift!"
+msgstr ""
+
 msgid "Your collection exceeds the size of a single layer medium, you will need a blank dual layer DVD!"
 msgstr "Kogu valik ei mahu ühekihilisele plaadile, vaja on tühja kahekihilist DVD plaati!"
 
@@ -15194,6 +15271,10 @@ msgstr "juhend"
 msgid "martial sports"
 msgstr "käsitsivõitlus"
 
+#, fuzzy
+msgid "master"
+msgstr "stereo"
+
 msgid "medicine/physiology/psychology"
 msgstr "meditsiin/füsioloogia/psühholoogia"
 
@@ -15405,6 +15486,9 @@ msgid "pre-school children's program"
 msgstr "koolieelikute saade"
 
 msgid "punch cuts"
+msgstr ""
+
+msgid "pyro"
 msgstr ""
 
 msgid "quick execute"

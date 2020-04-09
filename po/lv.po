@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-03 12:39+0430\n"
+"POT-Creation-Date: 2020-04-09 21:03+0430\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -14,6 +14,12 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.5.4\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#, python-format
+msgid ""
+"\n"
+" %s "
+msgstr ""
 
 msgid ""
 "\n"
@@ -3582,6 +3588,9 @@ msgstr "Nepārtraukta atskaņošana (loop)"
 msgid "Contrast"
 msgstr "Kontrasts"
 
+msgid "Control LED can be turned on or off here."
+msgstr ""
+
 msgid "Cook Islands"
 msgstr "Kuka salas"
 
@@ -3600,6 +3609,10 @@ msgstr "Kostarika"
 
 msgid "Cote d'Ivoire"
 msgstr "Kotdivuāra"
+
+#, fuzzy
+msgid "Could not connect to server"
+msgstr "Nevar ierakstīt dēļ kļūdaina kanāla %s"
 
 msgid "Could not find installed channel list."
 msgstr "Nevar atrast instalēto kanālu sarakstu."
@@ -3807,6 +3820,14 @@ msgstr ""
 msgid "DUAL LAYER DVD"
 msgstr "Dubultslāņu DVD"
 
+#, fuzzy
+msgid "DVB"
+msgstr "DVB-C"
+
+#, fuzzy
+msgid "DVB API version: "
+msgstr "DVB draivera versija: "
+
 msgid "DVB API: "
 msgstr ""
 
@@ -3820,8 +3841,9 @@ msgstr "DVB subtitri un valoda"
 msgid "DVB and Pango subtitle position"
 msgstr "Subtitru pozīcija"
 
-msgid "DVB driver version: "
-msgstr "DVB draivera versija: "
+#, fuzzy
+msgid "DVB information"
+msgstr "Informācija"
 
 msgid "DVB subtitle black transparency"
 msgstr "DVB subtitru melnā caurspīdīgums"
@@ -4353,6 +4375,10 @@ msgstr "Displeja iestatījumi"
 msgid "Display the EIT now/next eventdata in infobar."
 msgstr "Rādīt EIT pašreiz/nākamais infojoslā"
 
+#, fuzzy
+msgid "Display type: "
+msgstr "Displeja iestatījumi"
+
 msgid "Djibouti"
 msgstr "Džibuti"
 
@@ -4599,6 +4625,10 @@ msgstr "DTS dekodēšana"
 #, fuzzy
 msgid "Drama"
 msgstr "Filma/Drāma"
+
+#, fuzzy
+msgid "Driver version: "
+msgstr "DVB draivera versija: "
 
 msgid "Drop unconfigured satellites"
 msgstr "Izlaist nekonfigurētos pavadoņus"
@@ -5595,9 +5625,6 @@ msgstr "Uzstādīt"
 msgid "Flash Image"
 msgstr "Uzstādīt"
 
-msgid "Flash image"
-msgstr "Uzstādīt imidžu"
-
 #, fuzzy
 msgid "Flash type: "
 msgstr "Uzstādīt"
@@ -6354,6 +6381,14 @@ msgstr "Ignorēt"
 msgid "Image architecture: "
 msgstr ""
 
+#, fuzzy
+msgid "Image file system: "
+msgstr "Izveido failu sistēmu"
+
+#, fuzzy
+msgid "Image folder: "
+msgstr "Izvēlieties mērķa mapi"
+
 #, python-format
 msgid ""
 "Image to install is invalid\n"
@@ -6727,6 +6762,10 @@ msgstr ""
 msgid "Kenya"
 msgstr "Kenija"
 
+#, fuzzy
+msgid "Kernel file: "
+msgstr "Kerneļa versija: "
+
 msgid "Kernel version: "
 msgstr "Kerneļa versija: "
 
@@ -7070,11 +7109,23 @@ msgstr "B"
 msgid "MIRACLEBOX_TWINPLUS"
 msgstr ""
 
+msgid "MKUBIFS: "
+msgstr ""
+
 msgid "MMC card"
 msgstr "MMC karte"
 
 msgid "MORE"
 msgstr "VAIRĀK"
+
+msgid "MTD boot: "
+msgstr ""
+
+msgid "MTD kernel: "
+msgstr ""
+
+msgid "MTD root: "
+msgstr ""
 
 msgid "Macao"
 msgstr "Makao"
@@ -7846,6 +7897,10 @@ msgstr "Nav brīva uztvērēja!"
 msgid "No images found"
 msgstr "Tīkli nav atrasti"
 
+#, fuzzy
+msgid "No matching place names found"
+msgstr "Tīkli nav atrasti"
+
 msgid "No network connection available."
 msgstr "Tīkla savienojums nav pieejams."
 
@@ -8010,10 +8065,6 @@ msgid "Not enough disk space. Please free up some disk space and try again. (%d 
 msgstr "Nav pietiekami vietas uz diska. Lūdzu atbrīvot vietu uz diska un mēģināt vēlreiz. (%d MB ir nepieciešami, bet %d MB pieejami)"
 
 #, fuzzy
-msgid "Not mounted"
-msgstr "Tīkla montējumi"
-
-#, fuzzy
 msgid "Not running"
 msgstr "nenotiek"
 
@@ -8080,6 +8131,9 @@ msgid "OCTAGON_SF4008"
 msgstr ""
 
 msgid "ODIN_M7"
+msgstr ""
+
+msgid "OE: "
 msgstr ""
 
 msgid "OK"
@@ -8193,8 +8247,16 @@ msgstr "Tikai startējot"
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Izvēlieties 'jā', ja izmantojat multiswitch, kuram nepieciešams DiSEqC Port-A komanda. Visiem citiem iestatījumiem izvēlieties 'nē'."
 
+#, fuzzy
+msgid "Open Vision"
+msgstr "Python versija: "
+
 msgid "Open Vision enigma2 image"
 msgstr ""
+
+#, fuzzy
+msgid "Open Vision information"
+msgstr "Python versija: "
 
 msgid "Open Vision module: "
 msgstr ""
@@ -9181,6 +9243,10 @@ msgstr "Ātrā pārslēgšana"
 msgid "RAM"
 msgstr ""
 
+#, fuzzy
+msgid "RC type: "
+msgstr "Uzstādīt"
+
 msgid "REC"
 msgstr "IER"
 
@@ -9758,6 +9824,10 @@ msgstr "Root"
 
 msgid "Root directory"
 msgstr "Noklusētā mape"
+
+#, fuzzy
+msgid "Root file: "
+msgstr "SRT fails"
 
 msgid "Rotor step position:"
 msgstr "Pozicioniera soļa pozīcija:"
@@ -11245,9 +11315,6 @@ msgstr "Vietas platums"
 
 msgid "Site longitude"
 msgstr "Vietas garums"
-
-msgid "Size: "
-msgstr ""
 
 #, fuzzy
 msgid "Skin"
@@ -13063,6 +13130,10 @@ msgstr ""
 msgid "Turn on HDMI-IN PiP mode"
 msgstr ""
 
+#, fuzzy
+msgid "Turn on the control LED."
+msgstr "Ieslēgt LED darbības laikā."
+
 msgid "Turn on the power LED during deep standby."
 msgstr "Ieslēgt LED dziļās gaidstāves režīmā."
 
@@ -13089,6 +13160,9 @@ msgstr "LNB/ierīces veids"
 
 msgid "Type of scan"
 msgstr "Meklēšanas veids"
+
+msgid "UBINIZE: "
+msgstr ""
 
 msgid "UNKNOWN"
 msgstr "NEZINĀMS"
@@ -14281,6 +14355,9 @@ msgstr ""
 msgid "You must switch to the service %s (%s - '%s')!\n"
 msgstr "Pārslēgsies uz kanālu %s (%s - '%s')!\n"
 
+msgid "You seem to be in timeshift!"
+msgstr ""
+
 msgid "Your collection exceeds the size of a single layer medium, you will need a blank dual layer DVD!"
 msgstr "Jūsu kolekcija pārsniedz diska lielumu, jums ir nepieciešams tukšs dubultslāņa DVD!"
 
@@ -15153,6 +15230,10 @@ msgstr "manuāls"
 msgid "martial sports"
 msgstr "cīņas sports"
 
+#, fuzzy
+msgid "master"
+msgstr "stereo"
+
 msgid "medicine/physiology/psychology"
 msgstr "medicīna/fizioloģija/psiholoģija"
 
@@ -15364,6 +15445,9 @@ msgid "pre-school children's program"
 msgstr "pirmsskolas bērnu programma"
 
 msgid "punch cuts"
+msgstr ""
+
+msgid "pyro"
 msgstr ""
 
 msgid "quick execute"

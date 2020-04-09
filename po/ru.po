@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-03 12:39+0430\n"
+"POT-Creation-Date: 2020-04-09 21:03+0430\n"
 "PO-Revision-Date: 2019-07-25 17:52+0300\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: openPLi Dimitrij\n"
@@ -12,6 +12,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.0.4\n"
+
+#, python-format
+msgid ""
+"\n"
+" %s "
+msgstr ""
 
 msgid ""
 "\n"
@@ -3580,6 +3586,9 @@ msgstr "Продолжает воспроизведение(петля)"
 msgid "Contrast"
 msgstr "Контрастность"
 
+msgid "Control LED can be turned on or off here."
+msgstr ""
+
 msgid "Cook Islands"
 msgstr "Cook Islands"
 
@@ -3598,6 +3607,10 @@ msgstr "Costa Rica"
 
 msgid "Cote d'Ivoire"
 msgstr "Cote d'Ivoire"
+
+#, fuzzy
+msgid "Could not connect to server"
+msgstr "Запись невозможна - недействительный сервис %s"
 
 msgid "Could not find installed channel list."
 msgstr "Нет найден инсталлированный список каналов."
@@ -3805,6 +3818,14 @@ msgstr ""
 msgid "DUAL LAYER DVD"
 msgstr "DUAL LAYER (двойной слой) DVD"
 
+#, fuzzy
+msgid "DVB"
+msgstr "DVB-C"
+
+#, fuzzy
+msgid "DVB API version: "
+msgstr "Версия DVB драйверов: "
+
 msgid "DVB API: "
 msgstr ""
 
@@ -3818,8 +3839,9 @@ msgstr "DVB субтитры PID & язык"
 msgid "DVB and Pango subtitle position"
 msgstr "Позиция субтитров"
 
-msgid "DVB driver version: "
-msgstr "Версия DVB драйверов: "
+#, fuzzy
+msgid "DVB information"
+msgstr "Информация"
 
 msgid "DVB subtitle black transparency"
 msgstr "Прозрачность черных DVB субтитров"
@@ -4345,6 +4367,10 @@ msgstr "Скин дисплея"
 msgid "Display the EIT now/next eventdata in infobar."
 msgstr "Показать EIT сейчас/далее в инфобаре"
 
+#, fuzzy
+msgid "Display type: "
+msgstr "Настройка дисплея"
+
 msgid "Djibouti"
 msgstr "Djibouti"
 
@@ -4591,6 +4617,10 @@ msgstr "DTS микширование"
 #, fuzzy
 msgid "Drama"
 msgstr "Фильмы/Драма"
+
+#, fuzzy
+msgid "Driver version: "
+msgstr "Версия DVB драйверов: "
 
 msgid "Drop unconfigured satellites"
 msgstr "Отбросить ненастроенные спутники"
@@ -5580,9 +5610,6 @@ msgstr "Прошивка имиджа"
 msgid "Flash Image"
 msgstr "Прошивка имиджа"
 
-msgid "Flash image"
-msgstr "Прошивка имиджа"
-
 #, fuzzy
 msgid "Flash type: "
 msgstr "Прошивка имиджа"
@@ -6337,6 +6364,14 @@ msgstr "Игнорировать конфликт"
 msgid "Image architecture: "
 msgstr ""
 
+#, fuzzy
+msgid "Image file system: "
+msgstr "Создание файловой системы"
+
+#, fuzzy
+msgid "Image folder: "
+msgstr "Выбрать целевую папку"
+
 #, python-format
 msgid ""
 "Image to install is invalid\n"
@@ -6711,6 +6746,10 @@ msgstr ""
 msgid "Kenya"
 msgstr "Kenya"
 
+#, fuzzy
+msgid "Kernel file: "
+msgstr "Версия ядра: "
+
 msgid "Kernel version: "
 msgstr "Версия ядра: "
 
@@ -7054,11 +7093,23 @@ msgstr "B"
 msgid "MIRACLEBOX_TWINPLUS"
 msgstr ""
 
+msgid "MKUBIFS: "
+msgstr ""
+
 msgid "MMC card"
 msgstr "MMC карта"
 
 msgid "MORE"
 msgstr "ЗАТЕМ"
+
+msgid "MTD boot: "
+msgstr ""
+
+msgid "MTD kernel: "
+msgstr ""
+
+msgid "MTD root: "
+msgstr ""
 
 msgid "Macao"
 msgstr "Macao"
@@ -7824,6 +7875,10 @@ msgstr "Нет свободного тюнера!"
 msgid "No images found"
 msgstr "Имиджы не найдены"
 
+#, fuzzy
+msgid "No matching place names found"
+msgstr "Имиджы не найдены"
+
 msgid "No network connection available."
 msgstr "Нет доступного сетевого подключения."
 
@@ -7986,10 +8041,6 @@ msgid "Not enough disk space. Please free up some disk space and try again. (%d 
 msgstr "Нет места на диске. Пожалуйста, освободите немного места на диске и попробуйте снова. (%d MB требуется, %d MB доступно)"
 
 #, fuzzy
-msgid "Not mounted"
-msgstr "Сетевое монтирование"
-
-#, fuzzy
 msgid "Not running"
 msgstr "не запущенно"
 
@@ -8058,6 +8109,9 @@ msgid "OCTAGON_SF4008"
 msgstr ""
 
 msgid "ODIN_M7"
+msgstr ""
+
+msgid "OE: "
 msgstr ""
 
 msgid "OK"
@@ -8171,8 +8225,16 @@ msgstr "Только при старте"
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Выберите 'да', тоьлко если вы используете мультисвич, для которого требуется командный сигнал DiSEqC Port-A. Для всех других установок выберите 'нет'."
 
+#, fuzzy
+msgid "Open Vision"
+msgstr "Версия пайтон: "
+
 msgid "Open Vision enigma2 image"
 msgstr ""
+
+#, fuzzy
+msgid "Open Vision information"
+msgstr "Версия пайтон: "
 
 msgid "Open Vision module: "
 msgstr ""
@@ -9157,6 +9219,10 @@ msgstr "Быстрое переключение"
 msgid "RAM"
 msgstr ""
 
+#, fuzzy
+msgid "RC type: "
+msgstr "Прошивка имиджа"
+
 msgid "REC"
 msgstr "REC"
 
@@ -9736,6 +9802,10 @@ msgstr "Root"
 
 msgid "Root directory"
 msgstr "Корневой каталог"
+
+#, fuzzy
+msgid "Root file: "
+msgstr "SRT файл"
 
 msgid "Rotor step position:"
 msgstr "Шаг позиции ротора:"
@@ -11219,9 +11289,6 @@ msgstr "Широта по сайту"
 
 msgid "Site longitude"
 msgstr "Долгота по сайту"
-
-msgid "Size: "
-msgstr ""
 
 #, fuzzy
 msgid "Skin"
@@ -13031,6 +13098,10 @@ msgstr ""
 msgid "Turn on HDMI-IN PiP mode"
 msgstr ""
 
+#, fuzzy
+msgid "Turn on the control LED."
+msgstr "Включить питание на кнопке LED"
+
 msgid "Turn on the power LED during deep standby."
 msgstr "Включить питание на кнопке LED в режиме глубокого ожидания."
 
@@ -13057,6 +13128,9 @@ msgstr "Тип LNB/устройства"
 
 msgid "Type of scan"
 msgstr "Тип сканирования"
+
+msgid "UBINIZE: "
+msgstr ""
 
 msgid "UNKNOWN"
 msgstr "НЕИЗВЕСТНО"
@@ -14249,6 +14323,9 @@ msgstr ""
 msgid "You must switch to the service %s (%s - '%s')!\n"
 msgstr "Вам необходимо переключить на сервис %s (%s - '%s')!\n"
 
+msgid "You seem to be in timeshift!"
+msgstr ""
+
 msgid "Your collection exceeds the size of a single layer medium, you will need a blank dual layer DVD!"
 msgstr "Ваша коллекция превышает размер однослойного диска. Вам необходим чистый двух слойный DVD!"
 
@@ -15118,6 +15195,10 @@ msgstr "в ручную"
 msgid "martial sports"
 msgstr "единоборство"
 
+#, fuzzy
+msgid "master"
+msgstr "стерео"
+
 msgid "medicine/physiology/psychology"
 msgstr "медицина/физиология/психология"
 
@@ -15329,6 +15410,9 @@ msgid "pre-school children's program"
 msgstr "дошкольные детские программы"
 
 msgid "punch cuts"
+msgstr ""
+
+msgid "pyro"
 msgstr ""
 
 msgid "quick execute"
