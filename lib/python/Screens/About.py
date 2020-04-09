@@ -52,28 +52,9 @@ class About(Screen):
 		AboutText += _("CPU: ") + cpu + "\n"
 		AboutText += _("CPU brand: ") + about.getCPUBrand() + "\n"
 		AboutText += _("CPU architecture: ") + about.getCPUArch() + "\n"
-		if boxbranding.getImageFPU() != "":
-			AboutText += _("FPU: ") + boxbranding.getImageFPU() + "\n"
-		AboutText += _("Image architecture: ") + boxbranding.getImageArch() + "\n"
 
-		if boxbranding.getImageArch() == "aarch64":
-			if boxbranding.getHaveMultiLib() == "True":
-				AboutText += _("MultiLib: ") + _("Yes") + "\n"
-			else:
-				AboutText += _("MultiLib: ") + _("No") + "\n"
-
-		AboutText += _("Flash type: ") + about.getFlashType() + "\n"
-
-		AboutText += "\n" + _("Image: ") + about.getImageTypeString() + "\n"
-		AboutText += _("Feed URL: ") + boxbranding.getFeedsUrl() + "\n"
-
-		AboutText += _("Open Vision version: ") + about.getVisionVersion() + "\n"
-		AboutText += _("Open Vision revision: ") + about.getVisionRevision() + "\n"
-		AboutText += _("Open Vision module: ") + about.getVisionModule() + "\n"
-
-		AboutText += "\n" + _("Compiled by: ") + boxbranding.getDeveloperName() + "\n"
-		AboutText += _("Build date: ") + about.getBuildDateString() + "\n"
-		AboutText += _("Last update: ") + about.getUpdateDateString() + "\n"
+		if not boxbranding.getDisplayType().startswith(' '):
+			AboutText += "\n" + _("Display type: ") + boxbranding.getDisplayType() + "\n"
 
 		# [WanWizard] Removed until we find a reliable way to determine the installation date
 		# AboutText += _("Installed: ") + about.getFlashDateString() + "\n"
@@ -175,6 +156,79 @@ class About(Screen):
 
 	def showTroubleshoot(self):
 		self.session.open(Troubleshoot)
+
+class OpenVisionInformation(Screen):
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		self.setTitle(_("Open Vision information"))
+
+		OpenVisionInformationText = _("Open Vision information") + "\n" + "\n"
+
+		if boxbranding.getImageFPU() != "":
+			OpenVisionInformationText += _("FPU: ") + boxbranding.getImageFPU() + "\n"
+		OpenVisionInformationText += _("Image architecture: ") + boxbranding.getImageArch() + "\n"
+
+		if boxbranding.getImageArch() == "aarch64":
+			if boxbranding.getHaveMultiLib() == "True":
+				OpenVisionInformationText += _("MultiLib: ") + _("Yes") + "\n"
+			else:
+				OpenVisionInformationText += _("MultiLib: ") + _("No") + "\n"
+
+		OpenVisionInformationText += _("Flash type: ") + about.getFlashType() + "\n"
+
+		OpenVisionInformationText += "\n" + _("Image: ") + about.getImageTypeString() + "\n"
+		OpenVisionInformationText += _("Feed URL: ") + boxbranding.getFeedsUrl() + "\n"
+
+		OpenVisionInformationText += _("Open Vision version: ") + about.getVisionVersion() + "\n"
+		OpenVisionInformationText += _("Open Vision revision: ") + about.getVisionRevision() + "\n"
+		OpenVisionInformationText += _("Open Vision module: ") + about.getVisionModule() + "\n"
+
+		OpenVisionInformationText += "\n" + _("Compiled by: ") + boxbranding.getDeveloperName() + "\n"
+		OpenVisionInformationText += _("Build date: ") + about.getBuildDateString() + "\n"
+		OpenVisionInformationText += _("Last update: ") + about.getUpdateDateString() + "\n" + "\n"
+
+		if boxbranding.getOEVersion().startswith('9'):
+			OpenVisionInformationText += _("OE: ") + _("master") + "\n"
+		else:
+			OpenVisionInformationText += _("OE: ") + _("pyro") + "\n"
+
+		if boxbranding.getImageFolder() != "":
+			OpenVisionInformationText += _("Image folder: ") + boxbranding.getImageFolder() + "\n"
+
+		if boxbranding.getImageFileSystem() != "":
+			OpenVisionInformationText += _("Image file system: ") + boxbranding.getImageFileSystem() + "\n" + "\n"
+
+		if boxbranding.getMachineMtdBoot() != "":
+			OpenVisionInformationText += _("MTD Boot: ") + boxbranding.getMachineMtdBoot() + "\n"
+
+		if boxbranding.getMachineMtdRoot() != "":
+			OpenVisionInformationText += _("MTD Root: ") + boxbranding.getMachineMtdRoot() + "\n"
+
+		if boxbranding.getMachineMtdKernel() != "":
+			OpenVisionInformationText += _("MTD Kernel: ") + boxbranding.getMachineMtdKernel() + "\n"
+
+		if boxbranding.getMachineRootFile() != "":
+			OpenVisionInformationText += _("Root file: ") + boxbranding.getMachineRootFile() + "\n"
+
+		if boxbranding.getMachineKernelFile() != "":
+			OpenVisionInformationText += _("Kernel file: ") + boxbranding.getMachineKernelFile() + "\n"
+
+		if boxbranding.getMachineMKUBIFS() != "":
+			OpenVisionInformationText += _("MKUBIFS: ") + boxbranding.getMachineMKUBIFS() + "\n"
+
+		if boxbranding.getMachineUBINIZE() != "":
+			OpenVisionInformationText += _("UBINIZE: ") + boxbranding.getMachineUBINIZE() + "\n"
+
+		self["AboutScrollLabel"] = ScrollLabel(OpenVisionInformationText)
+		self["key_red"] = Button(_("Close"))
+
+		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
+			{
+				"cancel": self.close,
+				"ok": self.close,
+				"up": self["AboutScrollLabel"].pageUp,
+				"down": self["AboutScrollLabel"].pageDown
+			})
 
 class DVBInformation(Screen):
 	def __init__(self, session):
