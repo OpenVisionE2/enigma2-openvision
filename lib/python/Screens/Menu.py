@@ -28,6 +28,11 @@ mdom = xml.etree.cElementTree.parse(resolveFilename(SCOPE_SKIN, 'menu.xml'))
 
 lastMenuID = None
 
+def default_skin():
+	for line in open("/etc/enigma2/settings"):
+		if not "config.skin.primary_skin" in line:
+			return default_skin
+
 def MenuEntryPixmap(entryID, png_cache, lastMenuID):
 	png = png_cache.get(entryID, None)
 	if png is None:
@@ -872,9 +877,15 @@ class IconMain(Screen):
 			j = j + 1
 			itot = (self.ipage - 1) * 6 + j
 			if itot > self.picnum:
-				icon = '/usr/share/enigma2/' + dskin[0] + '/blank.png'
+				if not default_skin():
+					icon = '/usr/share/enigma2/' + dskin[0] + '/blank.png'
+				else:
+					icon = '/usr/share/enigma2/skin_default/buttons/blank.png'
 			else:
-				icon = '/usr/share/enigma2/' + dskin[0] + '/buttons/icon1.png'
+				if not default_skin():
+					icon = '/usr/share/enigma2/' + dskin[0] + '/buttons/icon1.png'
+				else:
+					icon = '/usr/share/enigma2/skin_default/buttons/icon1.png'
 			pic = icon
 			self['pixmap' + str(j)].instance.setPixmapFromFile(pic)
 			i = i + 1

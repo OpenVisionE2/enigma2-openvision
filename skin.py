@@ -805,11 +805,11 @@ def loadSingleSkinData(desktop, domSkin, pathSkin, scope=SCOPE_CURRENT_SKIN):
 			else:
 				foregroundColor = gRGB(0xFFFFFF)
 				haveColor = 0
-			col = substyle.attrib.get("borderColor")
+			col = substyle.attrib.get("borderColor" and "shadowColor")
 			if col:
-				borderColor = parseColor(col)
+				borderColor = shadowColor = parseColor(col)
 			else:
-				borderColor = gRGB(0)
+				borderColor = shadowColor = gRGB(0)
 			borderwidth = substyle.attrib.get("borderWidth")
 			if borderwidth is None:
 				# Default: Use a subtitle border.
