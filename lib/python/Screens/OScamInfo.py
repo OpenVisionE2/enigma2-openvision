@@ -357,7 +357,7 @@ class OscamInfo:
 				if "caid" in i:
 					result.append( (_("CAID"), i.split(":")[1].strip()) )
 				elif "pid" in i:
-					result.append( (_("PID"), i.split(":")[1].strip()) )
+					result.append( (_("PID"), i.split(" ")[1].strip()) )
 				elif "prov" in i:
 					result.append( (_("Provider"), i.split(":")[1].strip()) )
 				elif "reader" in i:
@@ -505,7 +505,7 @@ class OscamInfoMenu(Screen):
 			if SystemInfo["NCamIsActive"]:
 				screentitle = _("NCam Config info")
 			else:
-				screentitle = _("OScam Config info")		
+				screentitle = _("OScam Config info")
 			self.session.open(OscamInfoConfigScreen)
 
 	def chooseReaderCallback(self, retval):
