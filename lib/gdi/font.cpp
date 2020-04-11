@@ -162,26 +162,27 @@ inline FT_Error fontRenderClass::getGlyphImage(FTC_Image_Desc *font, FT_ULong gl
 
 std::string fontRenderClass::AddFont(const std::string &filename, const std::string &name, int scale, int renderflags)
 {
-	eDebugNoNewLineStart("[Font] Adding font %s", filename.c_str());
-	fflush(stdout);
+	eDebugNoNewLineStart("[Font] Adding font '%s'", filename.c_str());
 	int error;
-	fontListEntry *n=new fontListEntry;
-
-	n->scale=scale;
 	FT_Face face;
+
 	singleLock s(ftlock);
-
 	if ((error=FT_New_Face(library, filename.c_str(), 0, &face)))
-		eDebugNoNewLine("[Font] Failed: %s", strerror(error));
-
-	n->filename=filename;
-	n->face=name;
-	n->renderflags=renderflags;
+	{
+		eWarning("[Font] Failed: %m");
+		return std::string();
+	}
 	FT_Done_Face(face);
 
+	fontListEntry *n = new fontListEntry;
+	n->filename = filename;
+	n->face = name;
+	n->scale = scale;
+	n->renderflags = renderflags;
 	n->next=font;
-	eDebugNoNewLine("[Font] OK (%s)", n->face.c_str());
 	font=n;
+
+	eDebug(" -> '%s'.", n->face.c_str());
 
 	return n->face;
 }
