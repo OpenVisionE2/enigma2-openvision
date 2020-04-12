@@ -926,6 +926,14 @@ def InitUsageConfig():
 	config.crash.pystackonspinner = ConfigYesNo(default = False)
 	config.crash.pystackonspinner.addNotifier(updateStackTracePrinter, immediate_feedback = False, initial_call = True)
 
+	# config.crash.logtimeformat sets ENIGMA_DEBUG_TIME environmental variable on enigma2 start from enigma2.sh
+	config.crash.logtimeformat = ConfigSelection(default = "1", choices = [
+		("0", _("none")),
+		("1", _("boot time")),
+		("2", _("local time")),
+		("3", _("boot time and local time")) ])
+	config.crash.logtimeformat.save_forced = True
+
 	config.seek = ConfigSubsection()
 	config.seek.selfdefined_13 = ConfigNumber(default=15)
 	config.seek.selfdefined_46 = ConfigNumber(default=60)

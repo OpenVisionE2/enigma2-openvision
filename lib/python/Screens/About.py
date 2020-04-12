@@ -1213,7 +1213,7 @@ class Troubleshoot(Screen):
 
 	def getDebugFilesList(self):
 		import glob
-		return [x for x in sorted(glob.glob("/home/root/enigma.*.debuglog"), key=lambda x: os.path.isfile(x) and os.path.getmtime(x))]
+		return [x for x in sorted(glob.glob("/home/root/enigma2_debug_*.log"), key=lambda x: os.path.isfile(x) and os.path.getmtime(x))]
 
 	def getLogFilesList(self):
 		import glob

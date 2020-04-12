@@ -163,8 +163,13 @@ void bsodFatal(const char *component)
 	FILE *f;
 	std::string crashlog_name;
 	std::ostringstream os;
+	time_t t = time(0);
+	struct tm tm;
+	char tm_str[32];
+	localtime_r(&t, &tm);
+	strftime(tm_str, sizeof(tm_str), "%Y-%m-%d_%H-%M-%S", &tm);
 	os << "/media/hdd/enigma2_crash_";
-	os << time(0);
+	os << tm_str;
 	os << ".log";
 	crashlog_name = os.str();
 	f = fopen(crashlog_name.c_str(), "wb");
@@ -379,7 +384,7 @@ void handleFatalSignal(int signum, siginfo_t *si, void *ctx)
 	oops(uc->uc_mcontext);
 #endif
 	print_backtrace();
-	eLog(lvlFatal, "-------FATAL SIGNAL");
+	eLog(lvlFatal, "-------FATAL SIGNAL (%d)", signum);
 	bsodFatal("enigma2, signal");
 }
 
