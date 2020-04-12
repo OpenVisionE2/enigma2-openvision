@@ -5,6 +5,7 @@
 #include <lib/dvb/demux.h>
 #ifdef HAVE_RASPBERRYPI
 #include <omx.h>
+#include <lib/dvb/omxdecoder.h>
 #endif
 
 class eSocketNotifier;
@@ -116,6 +117,7 @@ private:
 #ifdef HAVE_RASPBERRYPI
 	int m_vpid, m_vtype, m_apid, m_atype, m_pcrpid, m_textpid, m_vstreamtype;
 	bool m_is_pvr, m_is_radio;
+	ePlayMode m_playmode;
 #else
 	int m_vpid, m_vtype, m_apid, m_atype, m_pcrpid, m_textpid;
 #endif

@@ -36,7 +36,7 @@ cRingBuffer::cRingBuffer(int Size, bool Statistics)
 cRingBuffer::~cRingBuffer()
 {
 	if (statistics)
-		eLog(3, "[tsRingBuffer] buffer stats: %d (%d%%) used\n", maxFill, maxFill * 100 / (size - 1));
+		eLog(3, "[cRingBuffer] buffer stats: %d (%d%%) used", maxFill, maxFill * 100 / (size - 1));
 }
 
 void cRingBuffer::UpdatePercentage(int Fill)
@@ -47,7 +47,7 @@ void cRingBuffer::UpdatePercentage(int Fill)
 	if (percent != lastPercent) {
 
 	if (((percent >= PERCENTAGETHRESHOLD) && (percent > lastPercent)) || ((percent < PERCENTAGETHRESHOLD) && (lastPercent >= PERCENTAGETHRESHOLD))) {
-		eLog(3, "[tsRingBuffer] buffer usage: %d%%\n", percent);
+		eLog(3, "[cRingBuffer] buffer usage: %d%%", percent);
 		lastPercent = percent;
     }
   }
@@ -88,7 +88,7 @@ void cRingBuffer::ReportOverflow(int Bytes)
 	overflowCount++;
 	overflowBytes += Bytes;
 	if (time(NULL) - lastOverflowReport > OVERFLOWREPORTDELTA) {
-		eLog(1, "[tsRingBuffer] ERROR: %d ring buffer overflow%s (%d bytes dropped)\n", overflowCount, overflowCount > 1 ? "s" : "", overflowBytes);
+		eLog(1, "[cRingBuffer] ERROR: %d ring buffer overflow%s (%d bytes dropped)", overflowCount, overflowCount > 1 ? "s" : "", overflowBytes);
 		overflowCount = overflowBytes = 0;
 		lastOverflowReport = time(NULL);
      }
@@ -144,11 +144,11 @@ void cRingBufferLinear::PrintDebugRBL(void)
 		buf[t] = '<';
 		buf[h] = '>';
 		buf[DEBUGRBLWIDTH] = 0;
-		eDebug("[tsRingBuffer] %2d %s %8d %8d %s\n", i, buf, p->lastPut, p->lastGet, p->description);
+		eDebug("[cRingBufferLinear] %2d %s %8d %8d %s", i, buf, p->lastPut, p->lastGet, p->description);
 		}
 	}
 	if (printed)
-		eDebug("[tsRingBuffer] printed\n");
+		eDebug("[cRingBufferLinear] printed");
   }
 #endif
 
@@ -163,14 +163,14 @@ cRingBufferLinear::cRingBufferLinear(int Size, int Margin, bool Statistics, cons
 		if (Margin <= Size / 2) {
 			buffer = (uint8_t*)malloc(sizeof(uint8_t) * Size);
 		if (!buffer)
-			eLog(1, "[tsRingBuffer] ERROR: can't allocate ring buffer (size=%d)\n", Size);
+			eLog(1, "[cRingBufferLinear] ERROR: can't allocate ring buffer (size=%d)", Size);
 		Clear();
 		}
 		else
-			eLog(1, "[tsRingBuffer] ERROR: invalid margin for ring buffer (%d > %d)\n", Margin, Size / 2);
+			eLog(1, "[cRingBufferLinear] ERROR: invalid margin for ring buffer (%d > %d)", Margin, Size / 2);
 	}
 	else
-		eLog(1, "[tsRingBuffer] ERROR: invalid size for ring buffer (%d)\n", Size);
+		eLog(1, "[cRingBufferLinear] ERROR: invalid size for ring buffer (%d)", Size);
 #ifdef DEBUGRINGBUFFERS
 	lastHead = head;
 	lastTail = tail;
@@ -317,7 +317,7 @@ uint8_t *cRingBufferLinear::Get(int &Count)
 void cRingBufferLinear::Del(int Count)
 {
 	if (Count > gotten) {
-		eLog(1, "[tsRingBuffer] ERROR: invalid Count in cRingBufferLinear::Del: %d (limited to %d)\n", Count, gotten);
+		eLog(1, "[cRingBufferLinear] ERROR: invalid Count in cRingBufferLinear::Del: %d (limited to %d)", Count, gotten);
 		Count = gotten;
 	}
 	if (Count > 0) {

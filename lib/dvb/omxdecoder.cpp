@@ -181,7 +181,7 @@ bool cOmxDevice::SetPlayMode(ePlayMode PlayMode)
 		m_hasAudio = false;
 		m_hasVideo = false;
 		m_videoCodec = cVideoCodec::eInvalid;
-		m_playMode = pmNone;	//PTS on Enigma2 ???
+		m_playMode = pmNone;
 		break;
 
 	case pmAudioVideo:
