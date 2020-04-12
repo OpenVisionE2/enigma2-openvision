@@ -500,7 +500,7 @@ if test "$BOXTYPE" == "bwidowx" -o "$BOXTYPE" == "bwidowx2"; then
 fi
 
 if test "$BOXTYPE" == "cc1" -o "$BOXTYPE" == "sf8008" -o "$BOXTYPE" == "sf8008m" -o "$BOXTYPE" == "ustym4kpro" -o "$BOXTYPE" == "gbtrio4k" -o "$BOXTYPE" == "gbip4k" -o "$BOXTYPE" == "beyonwizv2" -o "$BOXTYPE" == "viper4k"; then
-	AC_DEFINE(HAVE_HISILICON, 1,[define it's a HISILICON chip])
+	AC_DEFINE(HAVE_HISILICON, 1,[define it is a HISILICON chip])
 	AC_DEFINE(CONFIG_HISILICON_FB, 1,[define add HISILICON framebuffer blit])
 	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
 	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
