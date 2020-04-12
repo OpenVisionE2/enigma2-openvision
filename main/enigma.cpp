@@ -101,7 +101,7 @@ void keyEvent(const eRCKey &key)
 #endif
 
 /* Defined in eerror.cpp */
-void setDebugTime(bool enable);
+void setDebugTime(int level);
 
 class eMain: public eApplication, public sigc::trackable
 {
@@ -242,7 +242,7 @@ int main(int argc, char **argv)
 		debugLvl = 0;
 	printf("ENIGMA_DEBUG_LVL=%d\n", debugLvl);
 	if (getenv("ENIGMA_DEBUG_TIME"))
-		setDebugTime(atoi(getenv("ENIGMA_DEBUG_TIME")) != 0);
+		setDebugTime(atoi(getenv("ENIGMA_DEBUG_TIME")));
 #ifdef HAVE_RASPBERRYPI
 //	mknod("/tmp/ENIGMA_FIFO", S_IFIFO|0666, 0);
 	cOmxDevice *m_device;
