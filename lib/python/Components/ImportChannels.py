@@ -58,6 +58,10 @@ class ImportChannels():
 	def threaded_function(self):
 		settings = self.getFallbackSettings()
 		self.getTerrestrialRegion(settings)
+		try:
+			os.mkdir("/tmp/tmp")
+		except:
+			pass
 		if "epg" in config.usage.remote_fallback_import.value:
 			print("[ImportChannels] Writing epg.dat file on sever box")
 			try:
@@ -79,16 +83,14 @@ class ImportChannels():
 			if epg_location:
 				print("[ImportChannels] Copy EPG file...")
 				try:
-					open(config.misc.epgcache_filename.value, "wb").write(self.getUrl("%s/file?file=%s" % (self.url, epg_location)).read())
+					open("/tmp/tmp/epg.dat", "wb").write(self.getUrl("%s/file?file=%s" % (self.url, epg_location)).read())
+					shutil.move("/tmp/tmp/epg.dat", config.misc.epgcache_filename.value)
 				except:
 					self.ImportChannelsDone(False, _("Error while retreiving epg.dat from server"))
+					return
 			else:
 				self.ImportChannelsDone(False, _("No epg.dat file found server"))
 		if "channels" in config.usage.remote_fallback_import.value:
-			try:
-				os.mkdir("/tmp/tmp")
-			except:
-				pass
 			print("[ImportChannels] reading dir")
 			try:
 				files = [file for file in loads(self.getUrl("%s/file?dir=/etc/enigma2" % self.url).read())["files"] if os.path.basename(file).startswith(settingfiles)]
@@ -104,7 +106,6 @@ class ImportChannels():
 			except:
 				self.ImportChannelsDone(False, _("Error %s") % self.url)
 				return
-
 			print("[ImportChannels] Removing files...")
 			files = [file for file in os.listdir("/etc/enigma2") if file.startswith(settingfiles)]
 			for file in files:
@@ -113,10 +114,10 @@ class ImportChannels():
 			files = [x for x in os.listdir("/tmp/tmp") if x.startswith(settingfiles)]
 			for file in files:
 				shutil.move("/tmp/tmp/%s" % file, "/etc/enigma2/%s" % file)
-			os.rmdir("/tmp/tmp")
 		self.ImportChannelsDone(True, {"channels": _("Channels"), "epg": _("EPG"), "channels_epg": _("Channels and EPG")}[config.usage.remote_fallback_import.value])
 
 	def ImportChannelsDone(self, flag, message=None):
+		os.rmdir("/tmp/tmp")
 		if flag:
 			Notifications.AddNotificationWithID("ChannelsImportOK", MessageBox, _("%s imported from fallback tuner") % message, type=MessageBox.TYPE_INFO, timeout=5)
 		else:
