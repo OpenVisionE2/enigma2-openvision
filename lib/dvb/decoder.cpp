@@ -139,14 +139,15 @@ int eDVBAudio::startPid(int pid, int type)
 		break;
 		}
 
-		eDebug("[eDVBAudio%d] AUDIO_SET_BYPASS bypass=%d ", m_dev, bypass);
+		eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_SET_BYPASS bypass=%d ", m_dev, bypass);
 #ifdef HAVE_RASPBERRYPI
+		eDebugNoNewLine("\n");
 //		xineLib->setAudioType(pid, xine_type);
 //		Radio mode	omxdecoder.cpp -> PlayMode == pmAudioOnly		 ? "Audio only"
 //		if (mode) {
-			eDebug("[RPi eDVBAudio%d] AUDIO_PLAY m_playmode=%d amode=%s", m_dev, m_playmode, mode ? "true" : "false" );
+			eDebug("[RPi eDVBAudio%d] AUDIO_PLAY amode=%s", m_dev, mode ? "true" : "false" );
 //			cOmxDevice::PlayAudio(,,); // Replace xineLib->playVideo() noted to see how it get the needed parameters
-		}
+//		}
 #else
 		if (::ioctl(m_fd, AUDIO_SET_BYPASS_MODE, bypass) < 0)
 			eDebugNoNewLine("failed: %m\n");
@@ -1154,7 +1155,7 @@ RESULT eTSMPEGDecoder::setAC3Delay(int delay)
 eTSMPEGDecoder::eTSMPEGDecoder(eDVBDemux *demux, int decoder)
 	: m_demux(demux),
 #ifdef HAVE_RASPBERRYPI
-		m_vpid(-1), m_vtype(-1), m_apid(-1), m_atype(-1), m_pcrpid(-1), m_textpid(-1), m_vstreamtype(-1), m_is_pvr(false), m_is_radio(false), m_playmode(pmNone)
+		m_vpid(-1), m_vtype(-1), m_apid(-1), m_atype(-1), m_pcrpid(-1), m_textpid(-1), m_vstreamtype(-1), m_is_pvr(false), m_is_radio(false), m_playmode(pmNone),
 #else
 		m_vpid(-1), m_vtype(-1), m_apid(-1), m_atype(-1), m_pcrpid(-1), m_textpid(-1),
 #endif
