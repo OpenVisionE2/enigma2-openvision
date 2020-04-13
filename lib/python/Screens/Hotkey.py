@@ -54,7 +54,7 @@ class hotkey:
 		("List/Fav/PVR", "list", ""),
 		("List/Fav/PVR" + " " + _("long"), "list_long", "Plugins/Extensions/Kodi/1"),
 		("List/File", "file", ""),
-	    ("List/File" + " " + _("long"), "file_long", ""),
+		("List/File" + " " + _("long"), "file_long", ""),
 		("Back/Recall", "back", ""),
 		("Back/Recall" + " " + _("long"), "back_long", ""),
 		("End", "end", ""),
@@ -68,7 +68,7 @@ class hotkey:
 		("Channel up", "channelup", ""),
 		("Channel down", "channeldown", ""),
 		("Page up", "pageUp", ""),
-		("Page up"  + " " + _("long"), "pageUp_long", ""),
+		("Page up"	+ " " + _("long"), "pageUp_long", ""),
 		("Page down", "pageDown", ""),
 		("Page down" + " " + _("long"), "pageDown_long", ""),
 		("Next", "next", ""),
@@ -204,8 +204,8 @@ def getHotkeyFunctions():
 	hotkey.functions.append((_("Activate HbbTV (Redbutton)"), "Infobar/activateRedButton", "InfoBar"))
 	hotkey.functions.append((_("Toggle HDMI In"), "Infobar/HDMIIn", "InfoBar"))
 	if SystemInfo["HDMIin"]:
-                hotkey.functions.append((_("Toggle HDMI-In full screen"), "Infobar/HDMIInFull", "InfoBar"))
-                hotkey.functions.append((_("Toggle HDMI-In PiP"), "Infobar/HDMIInPiP", "InfoBar"))
+				hotkey.functions.append((_("Toggle HDMI-In full screen"), "Infobar/HDMIInFull", "InfoBar"))
+				hotkey.functions.append((_("Toggle HDMI-In PiP"), "Infobar/HDMIInPiP", "InfoBar"))
 	if SystemInfo["LcdLiveTV"]:
 		hotkey.functions.append((_("Toggle LCD LiveTV"), "Infobar/ToggleLCDLiveTV", "InfoBar"))
 	hotkey.functions.append((_("Toggle dashed flickering line for this service"), "Infobar/ToggleHideVBI", "InfoBar"))
@@ -669,7 +669,7 @@ class InfoBarHotkey():
 			elif selected[0] == "Module":
 				try:
 					exec("from %s import %s" % (selected[1], selected[2]))
-					exec("self.session.open(%s)" %  ",".join(selected[2:]))
+					exec("self.session.open(%s)" %	",".join(selected[2:]))
 				except Exception as e:
 					print("[Hotkey] error during executing module %s, screen %s, %s" % (selected[1], selected[2], e))
 					import traceback
