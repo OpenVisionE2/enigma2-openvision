@@ -3192,7 +3192,7 @@ void eDVBServicePlay::updateDecoder(bool sendSeekableStateChanged)
 			playmode=pmVideoOnly;
 		else if (!program.audioStreams.empty() && program.videoStreams.empty())
 			playmode=pmAudioOnly;
-		eDebug("[RPi eDVBServicePlay] playmode=%d", playmode");
+		eDebug("[RPi eDVBServicePlay] playmode=%d", playmode);
 //		cOmxDevice::SetPlayMode(playmode);
 #endif
 	m_have_video_pid = 0;
