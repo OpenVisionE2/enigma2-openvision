@@ -53,6 +53,8 @@ class hotkey:
 		("Info (EPG)" + " " + _("long"), "info_long", "Infobar/showEventInfoPlugins"),
 		("List/Fav/PVR", "list", ""),
 		("List/Fav/PVR" + " " + _("long"), "list_long", "Plugins/Extensions/Kodi/1"),
+		("List/File", "file", ""),
+	    ("List/File" + " " + _("long"), "file_long", ""),
 		("Back/Recall", "back", ""),
 		("Back/Recall" + " " + _("long"), "back_long", ""),
 		("End", "end", ""),
@@ -166,6 +168,7 @@ def getHotkeyFunctions():
 	hotkey.functions.append((_("Switch channel down"), "Infobar/switchChannelDown", "InfoBar"))
 	hotkey.functions.append((_("Show service list"), "Infobar/openServiceList", "InfoBar"))
 	hotkey.functions.append((_("Show movies"), "Infobar/showMovies", "InfoBar"))
+	hotkey.functions.append((_("Play last movie"), "Infobar/restartLastMovie", "InfoBar"))
 	hotkey.functions.append((_("Show servicelist or movies"), "Infobar/showServiceListOrMovies", "InfoBar"))
 	hotkey.functions.append((_("Show favourites list"), "Infobar/openFavouritesList", "InfoBar"))
 	hotkey.functions.append((_("History back"), "Infobar/historyBack", "InfoBar"))
