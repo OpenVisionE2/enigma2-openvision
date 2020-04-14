@@ -15,6 +15,7 @@ from Components.TuneTest import Tuner
 from Tools.Transponder import getChannelNumber, channel2frequency
 from Tools.BoundFunction import boundFunction
 from Screens.Screen import Screen # for services found class
+import skin
 
 try: # for reading the current transport stream (SatfinderExtra)
 	from Plugins.SystemPlugins.AutoBouquetsMaker.scanner import dvbreader
@@ -626,7 +627,7 @@ class SatfinderExtra(Satfinder):
 		if from_retune: # give the tuner a chance to retune or we will be reading the old stream
 			time.sleep(1.0)
 
-		if not self.tunerLock() and not self.waitTunerLock(currentProcess): # dont even try to read the transport stream if tuner is not locked
+		if not self.waitTunerLock(currentProcess): # dont even try to read the transport stream if tuner is not locked
 			return
 
 		thread.start_new_thread(self.monitorTunerLock, (currentProcess,)) # if tuner loses lock we start again from scratch
@@ -660,7 +661,7 @@ class SatfinderExtra(Satfinder):
 				print("[Satfinder][getCurrentTsidOnid] Timed out")
 				break
 
-			if self.currentProcess != currentProcess or not self.tunerLock():
+			if self.currentProcess != currentProcess:
 				dvbreader.close(fd)
 				return
 
@@ -744,7 +745,7 @@ class SatfinderExtra(Satfinder):
 				print("[Satfinder][getOrbPosFromNit] Timed out reading NIT")
 				break
 
-			if self.currentProcess != currentProcess or not self.tunerLock():
+			if self.currentProcess != currentProcess:
 				dvbreader.close(fd)
 				return
 
@@ -802,11 +803,6 @@ class SatfinderExtra(Satfinder):
 			op *= -1
 		return "%0.1f%s" % (abs(op)/10., "W" if op < 0 else "E")
 
-	def tunerLock(self):
-		frontendStatus = {}
-		self.frontend.getFrontendStatus(frontendStatus)
-		return frontendStatus["tuner_state"] == "LOCKED"
-
 	def waitTunerLock(self, currentProcess):
 		lock_timeout = 120
 
@@ -835,11 +831,10 @@ class SatfinderExtra(Satfinder):
 
 	def monitorTunerLock(self, currentProcess):
 		while True:
-			if self.currentProcess != currentProcess:
+			if self.currentProcess:
 				return
 			frontendStatus = {}
-			self.frontend.getFrontendStatus(frontendStatus)
-			if frontendStatus["tuner_state"] != "LOCKED":
+			if frontendStatus:
 				print("[monitorTunerLock] starting again from scratch")
 				self.getCurrentTsidOnid(False) # if tuner lock fails start again from beginning
 				return
@@ -854,9 +849,9 @@ class SatfinderExtra(Satfinder):
 		red = "\c00??8888" # encrypted tv
 		yellow = "\c00????00" # data/interactive/catch-all/etc
 		blue = "\c007799??" # radio
-		no_colour = ""
+		no_colour = skin.parameters.get("ServiceInfoAltColor", (" "))
 		out = []
-		legend = "%s%s%s:  %s%s%s  %s%s%s  %s%s%s  %s%s%s\n" % (no_colour, _("Services"), no_colour, green, _("FTA TV"), no_colour, red, _("Encrypted TV"), no_colour, blue, _("Radio"), no_colour, yellow, _("Other"), no_colour)
+		legend = "%s%s%s:  %s%s%s  %s%s%s  %s%s%s  %s%s%s\n\n%s%s%s\n" % (no_colour, _("Services"), no_colour, green, _("FTA TV"), no_colour, red, _("Encrypted TV"), no_colour, blue, _("Radio"), no_colour, yellow, _("Other"), no_colour, no_colour, _(" "), no_colour)
 		for service in self.serviceList:
 			fta = "free_ca" in service and service["free_ca"] == 0
 			if service["service_type"] in radio:
