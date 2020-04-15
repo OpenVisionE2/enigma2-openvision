@@ -54,7 +54,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self["actions"] = HelpableActionMap(self, "InfobarActions",
+		self["actions"] = HelpableActionMap(self, ["InfobarActions"],
 			{
 				"showMovies": (self.showMovies, _("Play recorded movies...")),
 				"showRadio": (self.showRadioButton, _("Show the radio player...")),
