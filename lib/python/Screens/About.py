@@ -11,7 +11,7 @@ from Components.ScrollLabel import ScrollLabel
 from Components.Button import Button
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
-from Tools.StbHardware import getFPVersion, getBoxProc
+from Tools.StbHardware import getFPVersion, getBoxProc, getHWSerial, getBoxRCType
 from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
 from Tools.Directories import fileExists, fileHas, pathExists
 from Components.GUIComponent import GUIComponent
@@ -35,18 +35,11 @@ class About(Screen):
 		if procmodel != getBoxType():
 			AboutText += _("Proc model: ") + procmodel + "\n"
 
-		if fileExists("/proc/stb/info/sn") and not fileExists("/proc/stb/info/serial"):
-			hwserial = open("/proc/stb/info/sn", "r").read().strip()
-			AboutText += _("Hardware serial: ") + hwserial + "\n"
-		if fileExists("/proc/stb/info/serial") and not fileExists("/proc/stb/info/sn"):
-			hwserial = open("/proc/stb/info/serial", "r").read().strip()
-			AboutText += _("Hardware serial: ") + hwserial + "\n"
+		AboutText += _("Hardware serial: ") + getHWSerial() + "\n"
 
 		AboutText += _("Brand/Meta: ") + getBoxBrand() + "\n"
 
-		if fileExists("/proc/stb/ir/rc/type"):
-			rctype = open("/proc/stb/ir/rc/type", "r").read().strip()
-			AboutText += _("RC type: ") + rctype + "\n"
+		AboutText += _("RC type: ") + getBoxRCType() + "\n"
 
 		AboutText += "\n"
 		cpu = about.getCPUInfoString()

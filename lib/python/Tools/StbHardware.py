@@ -28,6 +28,26 @@ def getBoxProc():
 		print("[StbHardware] getBoxProc failed!")
 	return procmodel
 
+def getHWSerial():
+	hwserial = "unknown"
+	try:
+		if fileExists("/proc/stb/info/sn"):
+			hwserial = open("/proc/stb/info/sn", "r").read().strip()
+		else:
+			hwserial = open("/proc/stb/info/serial", "r").read().strip()
+	except IOError:
+		print("[StbHardware] getHWSerial failed!")
+	return hwserial
+
+def getBoxRCType():
+	boxrctype = "unknown"
+	try:
+		if fileExists("/proc/stb/ir/rc/type"):
+			boxrctype = open("/proc/stb/ir/rc/type", "r").read().strip()
+	except IOError:
+		print("[StbHardware] getBoxRCType failed!")
+	return boxrctype
+
 def getFPVersion():
 	ret = None
 	try:
