@@ -60,16 +60,16 @@ class About(Screen):
 			EnigmaVersion = EnigmaVersion[0] + " (" + EnigmaVersion[2] + "-" + EnigmaVersion[1] + ")"
 		else:
 			EnigmaVersion = EnigmaVersion[0] + " (" + EnigmaVersion[1] + ")"
-		EnigmaVersion = _("Enigma version: ") + EnigmaVersion
+		EnigmaVersion = _("Enigma2 version: ") + EnigmaVersion
 		self["EnigmaVersion"] = StaticText(EnigmaVersion)
 		AboutText += "\n" + EnigmaVersion + "\n"
 		AboutText += _("Last update: ") + about.getUpdateDateString() + "\n"
-		AboutText += _("Enigma (re)starts: %d\n") % config.misc.startCounter.value
-		AboutText += _("Enigma debug level: %d\n") % eGetEnigmaDebugLvl()
+		AboutText += _("Enigma2 (re)starts: %d\n") % config.misc.startCounter.value
+		AboutText += _("Enigma2 debug level: %d\n") % eGetEnigmaDebugLvl()
 
 		AboutText += "\n"
 
-		AboutText += _("Driver version: ") + about.getDriverInstalledDate() + "\n"
+		AboutText += _("Drivers version: ") + about.getDriverInstalledDate() + "\n"
 		AboutText += _("Kernel version: ") + about.getKernelVersionString() + "\n"
 
 		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer","")
