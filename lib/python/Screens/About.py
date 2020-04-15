@@ -12,7 +12,7 @@ from Components.Button import Button
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 from Tools.StbHardware import getFPVersion, getBoxProc
-from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl
+from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
 from Tools.Directories import fileExists, fileHas, pathExists
 from Components.GUIComponent import GUIComponent
 import skin, os, boxbranding
@@ -31,8 +31,8 @@ class About(Screen):
 
 		procmodel = getBoxProc()
 
-		AboutText = _("Hardware: ") + about.getHardwareTypeString() + "\n"
-		if procmodel != about.getHardwareTypeString():
+		AboutText = _("Hardware: ") + getBoxType() + "\n"
+		if procmodel != getBoxType():
 			AboutText += _("Proc model: ") + procmodel + "\n"
 
 		if fileExists("/proc/stb/info/sn") and not fileExists("/proc/stb/info/serial"):
@@ -42,7 +42,7 @@ class About(Screen):
 			hwserial = open("/proc/stb/info/serial", "r").read().strip()
 			AboutText += _("Hardware serial: ") + hwserial + "\n"
 
-		AboutText += _("Brand/Meta: ") + about.getHardwareBrand() + "\n"
+		AboutText += _("Brand/Meta: ") + getBoxBrand() + "\n"
 
 		if fileExists("/proc/stb/ir/rc/type"):
 			rctype = open("/proc/stb/ir/rc/type", "r").read().strip()
@@ -177,8 +177,8 @@ class OpenVisionInformation(Screen):
 
 		OpenVisionInformationText += "\n"
 
-		OpenVisionInformationText += _("Open Vision version: ") + about.getVisionVersion() + "\n"
-		OpenVisionInformationText += _("Open Vision revision: ") + about.getVisionRevision() + "\n"
+		OpenVisionInformationText += _("Open Vision version: ") + boxbranding.getVisionVersion() + "\n"
+		OpenVisionInformationText += _("Open Vision revision: ") + boxbranding.getVisionRevision() + "\n"
 		OpenVisionInformationText += _("Open Vision module: ") + about.getVisionModule() + "\n"
 		OpenVisionInformationText += _("Flash type: ") + about.getFlashType() + "\n"
 
@@ -189,7 +189,7 @@ class OpenVisionInformation(Screen):
 			OpenVisionInformationText += _("Image folder: ") + boxbranding.getImageFolder() + "\n"
 		if boxbranding.getImageFileSystem() != "":
 			OpenVisionInformationText += _("Image file system: ") + boxbranding.getImageFileSystem() + "\n"
-		OpenVisionInformationText += _("Image: ") + about.getImageTypeString() + "\n"
+		OpenVisionInformationText += _("Image: ") + boxbranding.getImageDistro() + "\n"
 		OpenVisionInformationText += _("Feed URL: ") + boxbranding.getFeedsUrl() + "\n"
 
 		OpenVisionInformationText += _("Compiled by: ") + boxbranding.getDeveloperName() + "\n"
