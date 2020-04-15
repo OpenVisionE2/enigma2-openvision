@@ -195,10 +195,7 @@ class OpenVisionInformation(Screen):
 		OpenVisionInformationText += _("Compiled by: ") + boxbranding.getDeveloperName() + "\n"
 		OpenVisionInformationText += _("Build date: ") + about.getBuildDateString() + "\n"
 
-		if boxbranding.getOEVersion().startswith('9'):
-			OpenVisionInformationText += _("OE: ") + _("master") + "\n"
-		else:
-			OpenVisionInformationText += _("OE: ") + _("pyro") + "\n"
+		OpenVisionInformationText += _("OE: ") + boxbranding.getImageBuild() + "\n"
 
 		OpenVisionInformationText += "\n"
 
