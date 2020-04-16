@@ -22,6 +22,10 @@ def getBoxProc():
 			procmodel = open("/proc/stb/info/boxtype", "r").readline().strip().lower()
 		elif fileExists("/proc/boxtype"):
 			procmodel = open("/proc/boxtype", "r").readline().strip().lower()
+		elif fileExists("/proc/device-tree/model"):
+			procmodel = open("/proc/device-tree/model", "r").readline().strip()
+		elif fileExists("/sys/firmware/devicetree/base/model"):
+			procmodel = open("/sys/firmware/devicetree/base/model", "r").readline().strip()
 		else:
 			procmodel = open("/proc/stb/info/model", "r").readline().strip().lower()
 	except IOError:
@@ -33,8 +37,10 @@ def getHWSerial():
 	try:
 		if fileExists("/proc/stb/info/sn"):
 			hwserial = open("/proc/stb/info/sn", "r").read().strip()
-		else:
+		elif fileExists("/proc/stb/info/serial"):
 			hwserial = open("/proc/stb/info/serial", "r").read().strip()
+		else:
+			hwserial = open("/sys/class/dmi/id/product_serial", "r").read().strip()
 	except IOError:
 		print("[StbHardware] getHWSerial failed!")
 	return hwserial
