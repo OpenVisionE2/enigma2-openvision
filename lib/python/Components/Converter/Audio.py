@@ -170,7 +170,7 @@ class Audio(Converter, object):
 	def getCryptInfo(self):
 		isCrypted = info.getInfo(iServiceInformation.sIsCrypted)
 		if isCrypted == 1:
-			id_ecm = "" 
+			id_ecm = ""
 			caID = ""
 			syID = ""
 			try:
@@ -234,7 +234,7 @@ class Audio(Converter, object):
 			elif (ltype == self.CAID_ID):
 				return self.norm_hex(caid)
 		return ""
-	
+
 	def getSourceInfo(self, ltype):
 		try:
 			file = open ( "/tmp/ecm.info", "r" )
@@ -294,7 +294,7 @@ class Audio(Converter, object):
 
 		if(ee == 1):
 			emuExpertString = ((((((" ") + using)  + " " + address)  + " " + network) + reader + " " + hops + "  ") + ecmtime + " s ")
-		else: 
+		else:
 			emuExpertString = (((((((" ") + using) + " " + address)  + " " + network) + reader + " " + ecmtime + " ") + (self.getExpertInfo(boxidString)) + " ") + self.isGParameter(boxidString, caIdString))
 		return emuExpertString
 
@@ -312,26 +312,26 @@ class Audio(Converter, object):
 		self.DynamicTimer.start(500)
 		service = self.source.service
 		info = service and service.info()
-		
+
 		if not info:
 			return ""
-		
+
 		nazwaemu = "CI"
 		if (self.type == self.PROV_CA_ID or self.type == self.PROV_ID or self.type == self.CAID_ID) and (info.getInfo(iServiceInformation.sIsCrypted)==1):
 			return self.getStreamInfo(self.type)
-			
+
 		elif (self.type == self.NETCARD_INFO) and (info.getInfo(iServiceInformation.sIsCrypted)==1):
 			return self.getSourceInfo(self.type)
-			
+
 		elif (self.type == self.PROV_CA_SOURCE) and (info.getInfo(iServiceInformation.sIsCrypted)==1):
 			first = self.getStreamInfo(self.PROV_CA_ID)
-			second = self.getSourceInfo(self.NETCARD_INFO)	
+			second = self.getSourceInfo(self.NETCARD_INFO)
 			if ( len(second.strip())>0 ):
 				first = first+"  From:"+second
 			return first
 		elif (self.type == self.SOURCE) and (info.getInfo(iServiceInformation.sIsCrypted)==1):
 			return self.getSourceInfo(self.NETCARD_INFO)
-			
+
 		elif (self.type == self.CRYPT_INFO):
 			return self.getCryptInfo()
 		elif (self.type == self.TEMPERATURE):

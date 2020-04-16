@@ -1,7 +1,7 @@
 from __future__ import print_function
 from xml.etree.cElementTree import parse
 from enigma import eDVBCIInterfaces, eDVBCI_UI, eEnv, eServiceCenter, eServiceReference, getBestPlayableServiceReference
-import NavigationInstance 
+import NavigationInstance
 from Components.SystemInfo import SystemInfo
 from Tools.Alternatives import GetWithAlternative
 import os

@@ -46,7 +46,7 @@ class EmptyEpg(VariableText, Renderer):
 				text_width = self.instance.calculateSize().width()
 				if text_width > self.sizeX:
 					while (text_width > self.sizeX):
-						self.text = self.text[:-1] 
+						self.text = self.text[:-1]
 						text_width = self.instance.calculateSize().width()
 					self.text = self.text[:-3] + "..."
 				if self.backText != self.text:
@@ -57,7 +57,7 @@ class EmptyEpg(VariableText, Renderer):
 					if ena:
 						self.text = "_"
 						self.endPoint = len(self.backText)
-						self.posIdx = 0                    
+						self.posIdx = 0
 						if self.fillTimer.isActive():
 							self.fillTimer.stop()
 						self.fillTimer.start(1300, True)

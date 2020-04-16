@@ -5,9 +5,9 @@ class TextAddAfter(Converter, object):
 	def __init__(self, type):
 		Converter.__init__(self, type)
 		self.type = type
-	
+
 	@cached
 	def getText(self):
 		return  str(str(self.source.text) + str(self.type))
-		
+
 	text = property(getText)

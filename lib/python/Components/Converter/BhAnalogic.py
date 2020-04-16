@@ -20,9 +20,9 @@ class BhAnalogic(Converter, object):
 		time = self.source.time
 		if time is None:
 			return 0
-		
-		t = localtime(time)	
-		
+
+		t = localtime(time)
+
 		if self.type == 1:
 			return int((t.tm_sec *100) /60)
 		elif self.type == 2:

@@ -1,9 +1,9 @@
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from enigma import iServiceInformation, eServiceReference, iPlayableServicePtr
- 
+
 class MovieReference(Converter, object):
- 
+
 	def __init__(self, type):
 		Converter.__init__(self, type)
 

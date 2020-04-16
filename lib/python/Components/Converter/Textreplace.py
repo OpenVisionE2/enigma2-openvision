@@ -5,7 +5,7 @@ class Textreplace(Converter, object):
 	def __init__(self, type):
 		Converter.__init__(self, type)
 		self.type = type
-	
+
 	@cached
 	def getText(self):
 		if self.type is not None:
@@ -18,5 +18,5 @@ class Textreplace(Converter, object):
 				return ""
 		else:
 			return ""
-		
+
 	text = property(getText)

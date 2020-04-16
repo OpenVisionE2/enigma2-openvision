@@ -29,9 +29,9 @@ class RouteInfo(Converter, object):
 			elif self.type == self.Modem and line.split()[0] == "ppp0" and line.split()[3] == "0003":
 				info = True
 		return info
-		
+
 	boolean = property(getBoolean)
-	
+
 	@cached
 	def getText(self):
 		info = ""

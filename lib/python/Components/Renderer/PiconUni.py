@@ -1,5 +1,5 @@
 from __future__ import print_function
-from Components.Renderer.Renderer import Renderer 
+from Components.Renderer.Renderer import Renderer
 from enigma import ePixmap
 from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename, SCOPE_PLUGINS
 import os

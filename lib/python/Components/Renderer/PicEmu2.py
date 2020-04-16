@@ -1,9 +1,9 @@
 from __future__ import print_function
-from Components.Pixmap import Pixmap 
+from Components.Pixmap import Pixmap
 from Components.Renderer.Renderer import Renderer
-from enigma import iServiceInformation 
-from string import upper 
-from enigma import ePixmap 
+from enigma import iServiceInformation
+from string import upper
+from enigma import ePixmap
 from Tools.Directories import fileExists, SCOPE_CURRENT_SKIN, resolveFilename
 from Components.Element import cached
 from Components.Converter.Poll import Poll
@@ -32,7 +32,7 @@ class PicEmu2(Renderer, Poll):
 			elif (attrib == 'picon_default'):
 				self.picon_default = value
 			else:
-				attribs.append((attrib, value))              
+				attribs.append((attrib, value))
 		self.skinAttributes = attribs
 		return Renderer.applySkin(self, desktop, parent)
 
@@ -143,7 +143,7 @@ class PicEmu2(Renderer, Poll):
 										contentInfo = content.split("\n")
 										for line in contentInfo:
 											if ("address" in line):
-												sname = "CCcam"                         
+												sname = "CCcam"
 							except:
 								print("")
 

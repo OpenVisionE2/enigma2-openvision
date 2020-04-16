@@ -96,21 +96,21 @@ class VWeather(Converter, object):
 		elif self.type == "title":
 			return self.getCF() + " | " + WeatherInfo[self.type]
 		elif self.type == "CF":
-			return self.getCF() 
+			return self.getCF()
 		else:
 			return ""
 
 	def getCF(self):
 		if config.plugins.AtileHD.tempUnit.value == "Fahrenheit":
 			return "°F"
-		else: 
+		else:
 			return "°C"
 
 	text = property(getText)
 
 class WeatherData:
 	def __init__(self):
-		self.WeatherInfo = WeatherInfo = { 
+		self.WeatherInfo = WeatherInfo = {
 			"currentLocation": "N/A",
 			"currentWeatherCode": "(",
 			"currentWeatherText": "N/A",
@@ -172,7 +172,7 @@ class WeatherData:
 			self.WeatherInfo["currentWeatherCode"] = self.ConvertCondition(weather.getAttributeNode('code').nodeValue)
 			self.WeatherInfo["currentWeatherTemp"] = self.getTemp(weather.getAttributeNode('temp').nodeValue)
 			self.WeatherInfo["currentWeatherText"] = _(str(weather.getAttributeNode('text').nodeValue))
-			
+
 			weather = dom.getElementsByTagName('yweather:forecast')[0]
 			self.WeatherInfo["forecastTodayCode"] = self.ConvertCondition(weather.getAttributeNode('code').nodeValue)
 			self.WeatherInfo["forecastTodayDay"] = _(weather.getAttributeNode('day').nodeValue)
@@ -180,7 +180,7 @@ class WeatherData:
 			self.WeatherInfo["forecastTodayTempMax"] = self.getTemp(weather.getAttributeNode('high').nodeValue)
 			self.WeatherInfo["forecastTodayTempMin"] = self.getTemp(weather.getAttributeNode('low').nodeValue)
 			self.WeatherInfo["forecastTodayText"] = _(str(weather.getAttributeNode('text').nodeValue))
-		
+
 			weather = dom.getElementsByTagName('yweather:forecast')[1]
 			self.WeatherInfo["forecastTomorrowCode"] = self.ConvertCondition(weather.getAttributeNode('code').nodeValue)
 			self.WeatherInfo["forecastTomorrowDay"] = _(weather.getAttributeNode('day').nodeValue)
@@ -212,7 +212,7 @@ class WeatherData:
 			self.WeatherInfo["forecastTomorrow3TempMax"] = self.getTemp(weather.getAttributeNode('high').nodeValue)
 			self.WeatherInfo["forecastTomorrow3TempMin"] = self.getTemp(weather.getAttributeNode('low').nodeValue)
 			self.WeatherInfo["forecastTomorrow3Text"] =_(str(weather.getAttributeNode('text').nodeValue))
-			
+
 	def getText(self,nodelist):
 		rc = []
 		for node in nodelist:

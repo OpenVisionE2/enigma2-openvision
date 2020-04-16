@@ -106,7 +106,7 @@ class AutoDiseqc(Screen, ConfigListScreen):
  			24100,
  			366,
  			"Eutelsat 16A 16.0e"),
- 
+
 		# Astra 19.2E ZDF
 		(
 			11953,

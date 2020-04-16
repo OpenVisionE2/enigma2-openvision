@@ -362,7 +362,7 @@ class Menu(Screen, ProtectedScreen):
 		self.nextNumberTimer.callback.append(self.okbuttonClick)
 		if len(self.list) == 1:
 			self.onExecBegin.append(self.__onExecBegin)
-			
+
 	def openTestA(self):
 		self.session.open(AnimMain, self.list, self.menu_title)
 		self.close()

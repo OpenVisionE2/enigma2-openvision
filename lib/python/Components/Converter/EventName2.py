@@ -19,7 +19,7 @@ class EventName2(Converter, object):
 	NEXT_EVENT_LIST2 = 12
 	NEXT_EVENT_LISTWT2 = 13
 	NEXT_TIME_DURATION = 14
-	
+
 	def __init__(self, type):
 		Converter.__init__(self, type)
 		self.epgcache = eEPGCache.getInstance()

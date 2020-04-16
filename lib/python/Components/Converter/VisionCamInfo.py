@@ -25,13 +25,13 @@ class VisionCamInfo(Poll, Converter, object):
 		nameser = []
 		if not info:
 			return ""
-		# Alternative SoftCam Manager 
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AlternativeSoftCamManager/plugin.pyo")): 
-			if config.plugins.AltSoftcam.actcam.value != "none": 
-				return config.plugins.AltSoftcam.actcam.value 
-			else: 
+		# Alternative SoftCam Manager
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AlternativeSoftCamManager/plugin.pyo")):
+			if config.plugins.AltSoftcam.actcam.value != "none":
+				return config.plugins.AltSoftcam.actcam.value
+			else:
 				return None
-		#  GlassSysUtil 
+		#  GlassSysUtil
 		elif fileExists("/tmp/ucm_cam.info"):
 			return open("/tmp/ucm_cam.info").read()
 		# Pli
@@ -59,7 +59,7 @@ class VisionCamInfo(Poll, Converter, object):
 			return ""
 		else:
 			return None
-  
+
 		if serlist is not None:
 			try:
 				cardserver = ""

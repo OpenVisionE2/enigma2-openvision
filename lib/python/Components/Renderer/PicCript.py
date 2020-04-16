@@ -1,8 +1,8 @@
-from Components.Pixmap import Pixmap 
+from Components.Pixmap import Pixmap
 from Components.Renderer.Renderer import Renderer
-from enigma import iServiceInformation 
-from string import upper 
-from enigma import ePixmap 
+from enigma import iServiceInformation
+from string import upper
+from enigma import ePixmap
 from Tools.Directories import fileExists, SCOPE_CURRENT_SKIN, resolveFilename
 
 class PicCript(Renderer):
