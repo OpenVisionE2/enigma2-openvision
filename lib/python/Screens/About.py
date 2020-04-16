@@ -35,11 +35,15 @@ class About(Screen):
 		if procmodel != getBoxType():
 			AboutText += _("Proc model: ") + procmodel + "\n"
 
-		AboutText += _("Hardware serial: ") + getHWSerial() + "\n"
+		hwserial = getHWSerial()
+		if hwserial is not None:
+			AboutText += _("Hardware serial: ") + hwserial + "\n"
 
 		AboutText += _("Brand/Meta: ") + getBoxBrand() + "\n"
 
-		AboutText += _("RC type: ") + getBoxRCType() + "\n"
+		boxrctype = getBoxRCType()
+		if boxrctype is not None:
+			AboutText += _("RC type: ") + boxrctype + "\n"
 
 		AboutText += "\n"
 		cpu = about.getCPUInfoString()
