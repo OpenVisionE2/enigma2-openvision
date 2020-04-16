@@ -332,7 +332,7 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 		m_fd_demux = -1;
 	}
 
-#ifdef DREAMBOX
+#ifndef DREAMBOX
 	if (m_fd >= 0)
 	{
 		::ioctl(m_fd, VIDEO_SELECT_SOURCE, demux ? VIDEO_SOURCE_DEMUX : VIDEO_SOURCE_HDMI);
