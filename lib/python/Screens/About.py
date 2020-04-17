@@ -49,6 +49,8 @@ class About(Screen):
 		if boxrctype is not None and boxrctype == "unknown":
 			if fileExists("/usr/bin/remotecfg"):
 				AboutText += _("RC type: ") + _("Amlogic remote") + "\n"
+			elif fileExists("/usr/sbin/lircd"):
+				AboutText += _("RC type: ") + _("LIRC remote") + "\n"
 
 		AboutText += "\n"
 		cpu = about.getCPUInfoString()
