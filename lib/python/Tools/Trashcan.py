@@ -27,7 +27,7 @@ def getTrashFolder(path=None):
 		return None
 
 def createTrashFolder(path=None):
-	print('[Trashcan]] DeBug path', path)
+	print('[Trashcan] DeBug path', path)
 	trash = getTrashFolder(path)
 	print('[Trashcan] DeBug', trash)
 	if trash and os.access(os.path.split(trash)[0], os.W_OK):

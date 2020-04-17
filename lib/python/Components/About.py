@@ -106,6 +106,13 @@ def getKernelVersionString():
 	except:
 		return _("unknown")
 
+def getCPUSerial():
+    with open('/proc/cpuinfo','r') as f:
+        for line in f:
+            if line[0:6] == 'Serial':
+                return line[10:26]
+        return "0000000000000000"
+
 def getCPUInfoString():
 	try:
 		cpu_count = 0

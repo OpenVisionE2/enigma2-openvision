@@ -36,14 +36,19 @@ class About(Screen):
 			AboutText += _("Proc model: ") + procmodel + "\n"
 
 		hwserial = getHWSerial()
-		if hwserial is not None:
+		if hwserial is not None and hwserial != "unknown":
 			AboutText += _("Hardware serial: ") + hwserial + "\n"
+		if hwserial is not None and hwserial == "unknown":
+			AboutText += _("Hardware serial: ") + about.getCPUSerial() + "\n"
 
 		AboutText += _("Brand/Meta: ") + getBoxBrand() + "\n"
 
 		boxrctype = getBoxRCType()
-		if boxrctype is not None:
+		if boxrctype is not None and boxrctype != "unknown":
 			AboutText += _("RC type: ") + boxrctype + "\n"
+		if boxrctype is not None and boxrctype == "unknown":
+			if fileExists("/usr/bin/remotecfg"):
+				AboutText += _("RC type: ") + _("Amlogic remote") + "\n"
 
 		AboutText += "\n"
 		cpu = about.getCPUInfoString()
@@ -223,6 +228,16 @@ class OpenVisionInformation(Screen):
 			OpenVisionInformationText += _("MKUBIFS: ") + boxbranding.getMachineMKUBIFS() + "\n"
 		if boxbranding.getMachineUBINIZE() != "":
 			OpenVisionInformationText += _("UBINIZE: ") + boxbranding.getMachineUBINIZE() + "\n"
+
+		OpenVisionInformationText += "\n"
+
+		if fileExists("/proc/device-tree/amlogic-dt-id"):
+			devicetid = open("/proc/device-tree/amlogic-dt-id", "r").read().strip()
+			OpenVisionInformationText += _("Device id: ") + devicetid + "\n"
+
+		if fileExists("/proc/device-tree/le-dt-id"):
+			giventid = open("/proc/device-tree/le-dt-id", "r").read().strip()
+			OpenVisionInformationText += _("Given device id: ") + giventid + "\n"
 
 		self["AboutScrollLabel"] = ScrollLabel(OpenVisionInformationText)
 		self["key_red"] = Button(_("Close"))
