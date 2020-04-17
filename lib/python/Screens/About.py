@@ -280,12 +280,12 @@ class DVBInformation(Screen):
 
 		DVBInformationText += "\n"
 
-		if boxbranding.getHaveTranscoding() != "":
+		if boxbranding.getHaveTranscoding() == "True":
 			DVBInformationText += _("Transcoding: ") + _("Yes") + "\n"
 		else:
 			DVBInformationText += _("Transcoding: ") + _("No") + "\n"
 
-		if boxbranding.getHaveMultiTranscoding() != "":
+		if boxbranding.getHaveMultiTranscoding() == "True":
 			DVBInformationText += _("MultiTranscoding: ") + _("Yes") + "\n"
 		else:
 			DVBInformationText += _("MultiTranscoding: ") + _("No") + "\n"
