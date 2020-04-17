@@ -39,6 +39,8 @@ def getHWSerial():
 			hwserial = open("/proc/stb/info/sn", "r").read().strip()
 		elif fileExists("/proc/stb/info/serial"):
 			hwserial = open("/proc/stb/info/serial", "r").read().strip()
+		elif fileExists("/proc/stb/info/serial_number"):
+			hwserial = open("/proc/stb/info/serial_number", "r").read().strip()
 		else:
 			hwserial = open("/sys/class/dmi/id/product_serial", "r").read().strip()
 	except IOError:
