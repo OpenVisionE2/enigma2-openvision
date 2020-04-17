@@ -10,7 +10,7 @@ from enigma import setAnimation_current, setAnimation_speed, getBoxBrand
 
 if not getBoxBrand() == 'gigablue':
 	from enigma import setAnimation_current_listbox
-	
+
 # default = disabled
 if getBoxBrand() == 'gigablue':
 	g_default = {
