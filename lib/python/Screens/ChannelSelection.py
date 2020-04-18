@@ -1003,6 +1003,16 @@ class ChannelSelectionEdit:
 				break
 			cnt+=1
 
+	def buildBouquetID(self, str):
+		tmp = str.lower()
+		name = ''
+		for c in tmp:
+			if ('a' <= c <= 'z') or ('0' <= c <= '9'):
+				name += c
+			else:
+				name += '_'
+		return name
+
 	def addAlternativeServices(self):
 		cur_service = ServiceReference(self.getCurrentSelection())
 		end = self.atEnd()
