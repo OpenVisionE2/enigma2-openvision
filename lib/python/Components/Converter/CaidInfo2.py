@@ -581,7 +581,7 @@ class CaidInfo2(Poll, Converter, object):
 									item[1] = item[1][tt+1:]
 							info[item[0].strip().lower()] = item[1].strip()
 						else:
-							if not info.has_key("caid"):
+							if not info.has_key("caid") or not info.has_key("CaID"):
 								x = line.lower().find("caid")
 								if x != -1:
 									y = line.find(",")
