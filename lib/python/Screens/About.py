@@ -398,7 +398,7 @@ class Geolocation(Screen):
 				GeolocationText +=  _("Longitude: ") + str(float(longitude)) + "\n"
 			self["AboutScrollLabel"] = ScrollLabel(GeolocationText)
 		except Exception as e:
-			self["AboutScrollLabel"] = ScrollLabel("Need Internet Connection")
+			self["AboutScrollLabel"] = ScrollLabel(_("Requires internet connection."))
 
 		self["key_red"] = Button(_("Close"))
 
