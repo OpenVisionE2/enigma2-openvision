@@ -216,9 +216,6 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 			folder = self["filelist"].getSelection()[0]
 			if folder is not None and not folder in self.bookmarks:
 				self.bookmarks.append(folder)
-				if self.bookmarks != self.realBookmarks.value:
-					self.realBookmarks.value = self.bookmarks
-					self.realBookmarks.save()
 				self.bookmarks.sort()
 				self["booklist"].setList(self.bookmarks)
 		else:
