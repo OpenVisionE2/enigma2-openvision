@@ -767,13 +767,13 @@ def loadSingleSkinData(desktop, screenID, domSkin, pathSkin, scope=SCOPE_CURRENT
 			else:
 				render = 0
 			filename = resolveFilename(SCOPE_FONTS, filename, path_prefix=pathSkin)
-			addFont(filename, name, scale, isReplacement, render)
 			# Log provided by C++ addFont code.
 			# print "[Skin] Add font: Font path='%s', name='%s', scale=%d, isReplacement=%s, render=%d." % (filename, name, scale, isReplacement, render)
 			if not fileExists(filename): # When font is not available look at current skin path
 				filename = resolveFilename(SCOPE_CURRENT_SKIN, filename)
 				if not fileExists(filename) and fileExists(resolveFilename(SCOPE_CURRENT_LCDSKIN, filename)):
 					filename = resolveFilename(SCOPE_CURRENT_LCDSKIN, filename)
+			addFont(filename, name, scale, isReplacement, render)
 		fallbackFont = resolveFilename(SCOPE_FONTS, "fallback.font", path_prefix=pathSkin)
 		if isfile(fallbackFont):
 			addFont(fallbackFont, "Fallback", 100, -1, 0)
