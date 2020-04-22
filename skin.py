@@ -775,8 +775,7 @@ def loadSingleSkinData(desktop, screenID, domSkin, pathSkin, scope=SCOPE_CURRENT
 				filename = resolveFilename(SCOPE_CURRENT_SKIN, filename)
 				if not fileExists(filename) and fileExists(resolveFilename(SCOPE_CURRENT_LCDSKIN, filename)):
 					filename = resolveFilename(SCOPE_CURRENT_LCDSKIN, filename)
-			else:
-				raise SkinError("Font file '%s' not found" % filename)
+			addFont(filename, name, scale, isReplacement, render)
 		fallbackFont = resolveFilename(SCOPE_FONTS, "fallback.font", path_prefix=pathSkin)
 		if isfile(fallbackFont):
 			addFont(fallbackFont, "Fallback", 100, -1, 0)
