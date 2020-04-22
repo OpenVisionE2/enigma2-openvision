@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-15 18:09+0430\n"
-"PO-Revision-Date: 2019-07-25 17:52+0300\n"
+"POT-Creation-Date: 2020-04-22 13:16+0430\n"
+"PO-Revision-Date: 2020-04-20 21:51+0300\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: openPLi Dimitrij\n"
 "Language: ru\n"
@@ -62,9 +62,8 @@ msgstr ""
 "\n"
 "Таймер '%s' отключен!"
 
-#, fuzzy
 msgid " "
-msgstr "E"
+msgstr ""
 
 msgid "  REC  "
 msgstr ""
@@ -1021,9 +1020,9 @@ msgstr "%s/%s: %s"
 msgid "%s:%s"
 msgstr "%s:%s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%s?"
-msgstr "CH%s"
+msgstr ""
 
 #, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
@@ -1868,6 +1867,9 @@ msgstr "American Samoa"
 msgid "Amlogic"
 msgstr ""
 
+msgid "Amlogic remote"
+msgstr ""
+
 msgid "An empty filename is illegal."
 msgstr "Пустое имя недопустимо."
 
@@ -2450,9 +2452,8 @@ msgstr "Загрузить меню Recovery"
 msgid "Bootloader update required!"
 msgstr ""
 
-#, fuzzy
 msgid "Bootup time"
-msgstr "По времени"
+msgstr "Время загрузки"
 
 msgid "Bosnia and Herzegovina"
 msgstr "Bosnia and Herzegovina"
@@ -4239,6 +4240,10 @@ msgstr "Обнаружены NIMs (тюнера):"
 msgid "Device"
 msgstr "Сервис"
 
+#, fuzzy
+msgid "Device id: "
+msgstr "Имя устройства:"
+
 msgid "Device mounts"
 msgstr ""
 
@@ -4711,7 +4716,7 @@ msgstr "ОШИБКА - сканирование не удалось (%s)!"
 
 #, python-format
 msgid "ERROR downloading file %s"
-msgstr ""
+msgstr "ОШИБКА при загрузке файла %s"
 
 msgid "East"
 msgstr "Восток"
@@ -5079,9 +5084,9 @@ msgstr "Eritrea"
 msgid "Error"
 msgstr "Ошибка"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Error %s"
-msgstr "Ошибка"
+msgstr "Ошибка %s"
 
 msgid "Error code"
 msgstr "Код ошибки"
@@ -5116,13 +5121,10 @@ msgid "Error stop stream!"
 msgstr "Ошибка при остановке стрима!"
 
 msgid "Error when writing epg.dat on server"
-msgstr ""
+msgstr "Ошибка при записи epg.dat с сервера."
 
-#, fuzzy
 msgid "Error while retreiving epg.dat from server"
-msgstr ""
-"Ошибка получения информации о резервных таймерах\n"
-"%s"
+msgstr "Ошибка при получении epg.dat с сервера."
 
 #, python-format
 msgid ""
@@ -5132,11 +5134,8 @@ msgstr ""
 "Ошибка получения информации о резервных таймерах\n"
 "%s"
 
-#, fuzzy
 msgid "Error while retreiving location of epg.dat on server"
-msgstr ""
-"Ошибка получения информации о резервных таймерах\n"
-"%s"
+msgstr "Ошибка при получении местоположения epg.dat с сервера."
 
 #, python-format
 msgid ""
@@ -5343,9 +5342,8 @@ msgstr "Диалоговое расцвечивание внешних субт�
 msgid "External subtitle switch fonts"
 msgstr "Смена шрифта для внешних субтитров"
 
-#, fuzzy
 msgid "Externally powered"
-msgstr "Внешний накопитель %s"
+msgstr "Внешнее питание"
 
 msgid "Extra end time to ignore inactivity sleeptimer"
 msgstr "Окончание экстра периода времени игнорирования"
@@ -5626,7 +5624,6 @@ msgstr "Прошивка имиджа"
 msgid "Flash Image"
 msgstr "Прошивка имиджа"
 
-#, fuzzy
 msgid "Flash image"
 msgstr "Прошивка имиджа"
 
@@ -5848,6 +5845,10 @@ msgstr "Ghana"
 
 msgid "Gibraltar"
 msgstr "Gibraltar"
+
+#, fuzzy
+msgid "Given device id: "
+msgstr "Текущее устройство:"
 
 msgid "Go down the list"
 msgstr "Перейти вниз списка"
@@ -6394,7 +6395,7 @@ msgstr "Создание файловой системы"
 
 #, fuzzy
 msgid "Image folder: "
-msgstr "Выбрать целевую папку"
+msgstr "Имидж: "
 
 #, python-format
 msgid ""
@@ -6857,6 +6858,9 @@ msgstr "Включить питание на кнопке LED, на передн
 #, fuzzy
 msgid "LED setup"
 msgstr "Настройки экранного меню (OSD) 3D"
+
+msgid "LIRC remote"
+msgstr ""
 
 msgid "LNB"
 msgstr "Номер LNB"
@@ -7879,7 +7883,7 @@ msgid "No displayable files on this medium found!"
 msgstr "Нет отображаемых файлов на этом носителе!"
 
 msgid "No epg.dat file found server"
-msgstr ""
+msgstr "Файл epg.dat не найден на сервере."
 
 msgid "No event info found, recording indefinitely."
 msgstr "Информация о событии не найдена, запись на неопределенное время."
@@ -8246,16 +8250,15 @@ msgstr "Только при старте"
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Выберите 'да', тоьлко если вы используете мультисвич, для которого требуется командный сигнал DiSEqC Port-A. Для всех других установок выберите 'нет'."
 
-#, fuzzy
 msgid "Open Vision"
-msgstr "Версия пайтон: "
+msgstr ""
 
 msgid "Open Vision enigma2 image"
 msgstr ""
 
 #, fuzzy
 msgid "Open Vision information"
-msgstr "Версия пайтон: "
+msgstr "Открыть выбор расположения"
 
 msgid "Open Vision module: "
 msgstr ""
@@ -8265,7 +8268,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision version: "
-msgstr "Версия пайтон: "
+msgstr "Версия python: "
 
 msgid "Open select location"
 msgstr "Открыть выбор расположения"
@@ -9214,10 +9217,10 @@ msgid "Put receiver in standby"
 msgstr "Перевод аудио/видео системы в режим ожидания"
 
 msgid "Python frontend for /tmp/mmi.socket"
-msgstr "Пайтон интерфейс для /tmp/mmi.socket"
+msgstr "Python интерфейс для /tmp/mmi.socket"
 
 msgid "Python version: "
-msgstr "Версия пайтон: "
+msgstr "Версия python: "
 
 msgid "Qatar"
 msgstr "Qatar"
@@ -9246,7 +9249,7 @@ msgstr ""
 
 #, fuzzy
 msgid "RC type: "
-msgstr "Прошивка имиджа"
+msgstr "тип"
 
 msgid "REC"
 msgstr "REC"
@@ -9645,6 +9648,10 @@ msgstr "Требовать аутентификацию для http потоко
 
 msgid "Required medium type:"
 msgstr "Требуемый тип носителя:"
+
+#, fuzzy
+msgid "Requires internet connection."
+msgstr "Проверьте подключение к интернету"
 
 msgid "Rereading partition table"
 msgstr "Пересмотр таблицы разделов"
@@ -10463,9 +10470,8 @@ msgstr "Выберите спутник, который Вы хотите нас
 msgid "Select the satellite your dish receives from. If you are unsure select 'automatic' and the receiver will attempt to determine this for you."
 msgstr "Выберите спутник, к которому подключена Ваша тарелка. Если вы не уверены, выберите 'автоматически', и ресивер попытается определить это для Вас."
 
-#, fuzzy
 msgid "Select the time zone within the area or region."
-msgstr "Выбор горизонтального разрешения:"
+msgstr "Выберите часовой пояс в пределах области или региона."
 
 msgid "Select the tuner that controls the motorised dish."
 msgstr "Выберите тюнер для контроля над мотоподвесом."
@@ -10531,9 +10537,8 @@ msgstr "Выберите Вашего провайдера и нажмите О�
 msgid "Select your region. If not available change 'Country' to 'all' and select one of the default alternatives."
 msgstr "Выбор Вашего региона. Если Ваша страна не доступна, то измените на 'все' и выберите одну из альтернатив по умолчанию."
 
-#, fuzzy
 msgid "Select your time zone area or region."
-msgstr "Выбор горизонтального разрешения:"
+msgstr "Выбор Вашего часового пояса области или региона."
 
 msgid "Selecting satellites 1 (USALS)"
 msgstr "Выбор спутников 1 (USALS)"
@@ -12782,11 +12787,9 @@ msgstr ""
 msgid "Time update in minutes:"
 msgstr ""
 
-#, fuzzy
 msgid "Time zone"
 msgstr "Часовой пояс"
 
-#, fuzzy
 msgid "Time zone area"
 msgstr "Часовой пояс"
 
@@ -15820,7 +15823,7 @@ msgid "vertical"
 msgstr "вертикальная"
 
 msgid "violet"
-msgstr ""
+msgstr "фиолетовый"
 
 msgid "wait for ci..."
 msgstr "ожидание для ci..."
