@@ -213,12 +213,12 @@ void bsodFatal(const char *component)
 			enigma2_rev,
 			component);
 
-		stringFromFile(f, "stbmodel", "/etc/model");
-		stringFromFile(f, "stbbrand", "/etc/brand");
+		stringFromFile(f, "stbmodel", "/etc/openvision/model");
+		stringFromFile(f, "stbbrand", "/etc/openvision/brand");
 		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
-		stringFromFile(f, "visionversion", "/etc/visionversion");
-		stringFromFile(f, "visionrevision", "/etc/visionrevision");
+		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
+		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");
 
 		/* dump the log ringbuffer */
 		fprintf(f, "\n\n");

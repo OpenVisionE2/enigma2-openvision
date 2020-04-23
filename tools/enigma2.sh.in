@@ -6,8 +6,8 @@ datarootdir=@datarootdir@
 
 export PATH=$PATH:/usr/script
 
-brandcheck=`cat /etc/brand`
-modelcheck=`cat /etc/model`
+brandcheck=`cat /etc/openvision/brand`
+modelcheck=`cat /etc/openvision/model`
 
 if [ $modelcheck == "sf8008" ] || [ $modelcheck == "sf8008m" ] || [ $modelcheck == "ustym4kpro" ] || [ $modelcheck == "cc1" ] || [ $modelcheck == "gbtrio4k" ] || [ $modelcheck == "gbip4k" ] || [ $modelcheck == "beyonwizv2" ] || [ $modelcheck == "viper4k" ]; then
 	count=`ps -ef |grep libreader |grep -v "grep" |wc -l`
