@@ -78,6 +78,12 @@ class About(Screen):
 		AboutText += _("Enigma2 (re)starts: %d\n") % config.misc.startCounter.value
 		AboutText += _("Enigma2 debug level: %d\n") % eGetEnigmaDebugLvl()
 
+		AboutText += _("Uptime: ") + about.getSTBUptime() + "\n"
+
+		if fileExists("/etc/openvision/mediaservice"):
+			mediaservice = open("/etc/openvision/mediaservice", "r").read().strip()
+			AboutText += _("Media service: ") + mediaservice.replace("enigma2-plugin-systemplugins-","") + "\n"
+
 		AboutText += "\n"
 
 		AboutText += _("Drivers version: ") + about.getDriverInstalledDate() + "\n"
@@ -183,6 +189,11 @@ class OpenVisionInformation(Screen):
 
 		OpenVisionInformationText += _("Open Vision version: ") + boxbranding.getVisionVersion() + "\n"
 		OpenVisionInformationText += _("Open Vision revision: ") + boxbranding.getVisionRevision() + "\n"
+
+		if fileExists("/etc/openvision/visionlanguage"):
+			visionlanguage = open("/etc/openvision/visionlanguage", "r").read().strip()
+			OpenVisionInformationText += _("Open Vision language: ") + visionlanguage + "\n"
+
 		OpenVisionInformationText += _("Open Vision module: ") + about.getVisionModule() + "\n"
 		OpenVisionInformationText += _("Flash type: ") + about.getFlashType() + "\n"
 

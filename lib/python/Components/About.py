@@ -27,7 +27,6 @@ def getIfConfig(ifname):
 			ifreq[k] = _ifinfo(sock, v, ifname)
 	except:
 		pass
-	sock.close()
 	return ifreq
 
 def getIfTransferredData(ifname):
@@ -36,7 +35,6 @@ def getIfTransferredData(ifname):
 		if ifname in line:
 			data = line.split('%s:' % ifname)[1].split()
 			rx_bytes, tx_bytes = (data[0], data[8])
-			f.close()
 			return rx_bytes, tx_bytes
 
 def getVersionString():
@@ -103,6 +101,20 @@ def getFFmpegVersionString():
 def getKernelVersionString():
 	try:
 		return open("/proc/version","r").read().split(' ', 4)[2].split('-',2)[0]
+	except:
+		return _("unknown")
+
+def getSTBUptime():
+	try:
+		f = open("/proc/uptime", "rb")
+		uptime = int(float(f.readline().split(' ', 2)[0].strip()))
+		uptimetext = ''
+		if uptime > 86400:
+			d = uptime / 86400
+			uptime = uptime % 86400
+			uptimetext += '%dd ' % d
+		uptimetext += "%d:%.2d" % (uptime / 3600, (uptime % 3600) / 60)
+		return uptimetext
 	except:
 		return _("unknown")
 
