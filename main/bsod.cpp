@@ -197,7 +197,7 @@ void bsodFatal(const char *component)
 		strftime(tm_str, sizeof(tm_str), "%a %b %_d %T %Y", &tm);
 
 		fprintf(f,
-			"Open Vision Enigma2 crash log\n\n"
+			"Open Vision enigma2 crash log\n\n"
 			"crashdate=%s\n"
 			"compiledate=%s\n"
 			"skin=%s\n"
@@ -217,8 +217,17 @@ void bsodFatal(const char *component)
 		stringFromFile(f, "stbbrand", "/etc/openvision/brand");
 		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
+		stringFromFile(f, "distro", "/etc/openvision/distro");
+		stringFromFile(f, "oe", "/etc/openvision/oe");
+		stringFromFile(f, "python", "/etc/openvision/python");
+		stringFromFile(f, "mediaservice", "/etc/openvision/mediaservice");
+		stringFromFile(f, "multilib", "/etc/openvision/multilib");
+		stringFromFile(f, "architecture", "/etc/openvision/architecture");
 		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
 		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");
+		stringFromFile(f, "visionlanguage", "/etc/openvision/visionlanguage");
+		stringFromFile(f, "compiledby", "/etc/openvision/developername");
+		stringFromFile(f, "feedsurl", "/etc/openvision/feedsurl");
 
 		/* dump the log ringbuffer */
 		fprintf(f, "\n\n");
