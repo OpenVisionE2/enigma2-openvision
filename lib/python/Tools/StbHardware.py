@@ -23,7 +23,7 @@ def getBoxProc():
 		elif fileExists("/proc/boxtype"):
 			procmodel = open("/proc/boxtype", "r").readline().strip().lower()
 		elif fileExists("/proc/device-tree/model"):
-			procmodel = open("/proc/device-tree/model", "r").readline().strip()
+			procmodel = open("/proc/device-tree/model", "r").readline().strip()[0:12]
 		elif fileExists("/sys/firmware/devicetree/base/model"):
 			procmodel = open("/sys/firmware/devicetree/base/model", "r").readline().strip()
 		else:
