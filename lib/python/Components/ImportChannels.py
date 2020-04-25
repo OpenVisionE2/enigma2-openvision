@@ -1,5 +1,5 @@
 from __future__ import print_function
-import threading, urllib2, os, shutil
+import threading, urllib2, os, shutil, tempfile
 from json import loads
 from enigma import eDVBDB, eEPGCache
 from Screens.MessageBox import MessageBox
@@ -58,10 +58,7 @@ class ImportChannels():
 	def threaded_function(self):
 		settings = self.getFallbackSettings()
 		self.getTerrestrialRegion(settings)
-		try:
-			os.mkdir("/tmp/tmp")
-		except:
-			pass
+		self.tmp_dir = tempfile.mkdtemp(prefix="ImportChannels")
 		if "epg" in config.usage.remote_fallback_import.value:
 			print("[ImportChannels] Writing epg.dat file on sever box")
 			try:
@@ -83,8 +80,8 @@ class ImportChannels():
 			if epg_location:
 				print("[ImportChannels] Copy EPG file...")
 				try:
-					open("/tmp/tmp/epg.dat", "wb").write(self.getUrl("%s/file?file=%s" % (self.url, epg_location)).read())
-					shutil.move("/tmp/tmp/epg.dat", config.misc.epgcache_filename.value)
+					open(os.path.join(self.tmp_dir, "epg.dat"), "wb").write(self.getUrl("%s/file?file=%s" % (self.url, epg_location)).read())
+					shutil.move(os.path.join(self.tmp_dir, "epg.dat"), config.misc.epgcache_filename.value)
 				except:
 					self.ImportChannelsDone(False, _("Error while retreiving epg.dat from server"))
 					return
@@ -97,9 +94,8 @@ class ImportChannels():
 				for file in files:
 					file = file.encode("UTF-8")
 					print("[ImportChannels] Downloading %s" % file)
-					destination = "/tmp/tmp"
 					try:
-						open("%s/%s" % (destination, os.path.basename(file)), "wb").write(self.getUrl("%s/file?file=%s" % (self.url, file)).read())
+						open(os.path.join(self.tmp_dir, os.path.basename(file)), "wb").write(self.getUrl("%s/file?file=%s" % (self.url, file)).read())
 					except:
 						self.ImportChannelsDone(False, _("ERROR downloading file %s") % file)
 						return
@@ -109,15 +105,15 @@ class ImportChannels():
 			print("[ImportChannels] Removing files...")
 			files = [file for file in os.listdir("/etc/enigma2") if file.startswith(settingfiles)]
 			for file in files:
-				os.remove("/etc/enigma2/%s" % file)
+				os.remove(os.path.join("/etc/enigma2", file))
 			print("[ImportChannels] copying files...")
-			files = [x for x in os.listdir("/tmp/tmp") if x.startswith(settingfiles)]
+			files = [x for x in os.listdir(self.tmp_dir) if x.startswith(settingfiles)]
 			for file in files:
-				shutil.move("/tmp/tmp/%s" % file, "/etc/enigma2/%s" % file)
+				shutil.move(os.path.join(self.tmp_dir, file), os.path.join("/etc/enigma2", file))
 		self.ImportChannelsDone(True, {"channels": _("Channels"), "epg": _("EPG"), "channels_epg": _("Channels and EPG")}[config.usage.remote_fallback_import.value])
 
 	def ImportChannelsDone(self, flag, message=None):
-		shutil.rmtree("/tmp/tmp", True)
+		shutil.rmtree(self.tmp_dir, True)
 		if flag:
 			Notifications.AddNotificationWithID("ChannelsImportOK", MessageBox, _("%s imported from fallback tuner") % message, type=MessageBox.TYPE_INFO, timeout=5)
 		else:
