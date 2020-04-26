@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Plugins.Plugin import PluginDescriptor
-from SocketMMI import SocketMMIMessageHandler
+from Plugins.Extensions.SocketMMI.SocketMMI import SocketMMIMessageHandler
 
 socketHandler = None
 
