@@ -7,7 +7,12 @@ from enigma import eHdmiCEC, eActionMap
 from Tools.StbHardware import getFPWasTimerWakeup
 import NavigationInstance
 from enigma import eTimer
+<<<<<<< HEAD
 from sys import maxint
+=======
+from os import sys
+from sys import maxsize
+>>>>>>> 39b620a5a7... HdmiCec.py: Import sys
 
 LOGPATH="/hdd/"
 LOGFILE="hdmicec.log"
