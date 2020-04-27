@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Pixmap import PixmapConditional
 from ConditionalWidget import BlinkingWidgetConditional, BlinkingWidget
 

@@ -1,5 +1,7 @@
-# fake-enigma
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
+# fake-enigma
 class slot:
 	def __init__(self):
 		self.list = [ ]

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 class CList(list):
 	def __getattr__(self, attr):
 		return CList([getattr(a, attr) for a in self])

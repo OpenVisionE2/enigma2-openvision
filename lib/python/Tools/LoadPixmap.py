@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from enigma import loadPNG, loadJPG, loadSVG
 
 # If cached is not supplied, LoadPixmap defaults to caching PNGs and not caching JPGs

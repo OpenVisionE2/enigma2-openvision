@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.Task import Task, Job, DiskspacePrecondition, Condition, ToolExistsPrecondition
 from Components.Harddisk import harddiskmanager

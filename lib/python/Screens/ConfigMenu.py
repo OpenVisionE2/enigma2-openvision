@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Screen import Screen
 from Components.ConfigList import ConfigList
 from Components.config import config

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 class boundFunction:
 	def __init__(self, fnc, *args, **kwargs):
 		self.fnc = fnc

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Components.PerServiceDisplay import PerServiceBase
 from enigma import iPlayableService
 from Components.Sources.Source import Source

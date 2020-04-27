@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import math
 
 f = 1.00 / 298.257 # Earth flattning factor

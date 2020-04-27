@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Components.config import config, ConfigBoolean
 from Screens.ChoiceBox import ChoiceBox
 from Plugins.Plugin import PluginDescriptor

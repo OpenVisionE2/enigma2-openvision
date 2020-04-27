@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Screens.Screen import Screen
 from Components.MovieList import AUDIO_EXTENSIONS
 from Components.ServiceEventTracker import ServiceEventTracker

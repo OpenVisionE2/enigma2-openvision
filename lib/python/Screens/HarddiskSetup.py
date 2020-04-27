@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Screen import Screen
 from Components.ActionMap import ActionMap
 from Components.Harddisk import harddiskmanager

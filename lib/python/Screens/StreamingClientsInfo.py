@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Screen import Screen
 from Screens.MessageBox import MessageBox
 from Components.MenuList import MenuList

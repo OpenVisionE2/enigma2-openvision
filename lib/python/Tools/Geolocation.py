@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from json import loads
 from urllib2 import URLError, urlopen
@@ -45,7 +47,7 @@ def InitGeolocation():
 	if len(geolocation) == 0:
 		try:
 			response = urlopen("http://ip-api.com/json/?fields=33288191", data=None, timeout=10).read()
-			# print "[Geolocation] DEBUG:", response
+			# print("[Geolocation] DEBUG:", response)
 			if response:
 				geolocation = loads(response)
 			status = geolocation.get("status", None)

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from datasource import datasource
 
@@ -13,7 +15,7 @@ class lamedb(datasource):
 		return "lamedb"
 
 	def getCapabilities(self):
-		return [("read file", self.read), ("print all", self.printAll)]
+		return [("read file", self.read), ("print(all", self.printAll)])
 
 	def read(self):
 		inputfile = open(self.filename, "r")

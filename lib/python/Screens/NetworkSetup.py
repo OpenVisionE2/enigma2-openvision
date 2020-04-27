@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 import os
 from Screens.Screen import Screen
@@ -434,7 +436,7 @@ class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
 
 	def getmac(self, iface):
 		mac = (0,0,0,0,0,0)
-		ifconfig = commands.getoutput("ifconfig " + iface + "| grep HWaddr | awk '{ print($5) }'").strip()
+		ifconfig = commands.getoutput("ifconfig " + iface + "| grep HWaddr | awk '{ print $5) }'").strip(
 		if len(ifconfig) == 0:
 			mac = "00:00:00:00:00:00"
 		else:
@@ -450,7 +452,7 @@ class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
 	def ok(self):
 		MAC = self.getConfigMac.value
 		open("/etc/enigma2/hwmac", "w").write(MAC)
-		route = commands.getoutput("route -n |grep UG | awk '{print($2) }'")
+		route = commands.getoutput("route -n |grep UG | awk '{print $2) }'"
 		self.restartLan()
 
 	def run(self):

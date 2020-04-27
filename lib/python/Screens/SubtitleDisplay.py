@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Screens.Screen import Screen
 from Components.Label import Label
 from enigma import eTimer, getDesktop, eActionMap, gFont

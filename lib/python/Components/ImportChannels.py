@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 import threading, urllib2, os, shutil, tempfile
 from json import loads

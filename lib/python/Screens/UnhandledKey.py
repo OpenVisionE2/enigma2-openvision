@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Screens.Screen import Screen
 from Components.Pixmap import Pixmap
 

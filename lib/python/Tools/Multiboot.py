@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.SystemInfo import SystemInfo
 from Components.Console import Console

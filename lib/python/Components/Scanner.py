@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from Plugins.Plugin import PluginDescriptor
 from Components.PluginComponent import plugins

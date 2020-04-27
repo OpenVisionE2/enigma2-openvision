@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Components.FanControl import fancontrol
 
 class Sensors:

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import os
 from enigma import getBoxType
 from Tools.Directories import SCOPE_SKIN, resolveFilename

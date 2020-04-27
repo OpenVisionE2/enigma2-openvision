@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Screens.Screen import Screen
 from Components.ConfigList import ConfigListScreen
 from Components.ActionMap import ActionMap

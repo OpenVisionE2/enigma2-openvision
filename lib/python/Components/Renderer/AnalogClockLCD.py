@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import math
 from Components.Renderer.Renderer import Renderer
 from skin import parseColor

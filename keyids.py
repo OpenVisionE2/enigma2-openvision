@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 KEYIDS = {
 "KEY_RESERVED": 0,
 "KEY_ESC": 1,

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from enigma import eServiceCenter, eServiceReference, pNavigation, getBestPlayableServiceReference, iPlayableService, setPreferredTuner, eStreamServer, iRecordableServicePtr
 from Components.ImportChannels import ImportChannels
@@ -104,7 +106,7 @@ class Navigation:
 			self.currentlyPlayingService = None
 
 	def dispatchRecordEvent(self, rec_service, event):
-#		print "[Navigation] record_event", rec_service, event
+#		print("[Navigation] record_event", rec_service, event)
 		for x in self.record_event:
 			x(rec_service, event)
 

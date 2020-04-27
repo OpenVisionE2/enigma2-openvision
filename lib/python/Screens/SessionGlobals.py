@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Screens.Screen import Screen
 from Components.Sources.CurrentService import CurrentService
 from Components.Sources.EventInfo import EventInfo

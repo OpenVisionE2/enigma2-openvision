@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from input import inputChoices
 
@@ -82,7 +84,7 @@ class genericdatasource(datasource):
 			if action == "copy":
 				print("[datasource] copying ",)
 			elif action == "merge":
-				print ("[datasource] merging ",)
+				print(("[datasource] merging ",))
 			print("[datasource] from %s to %s" % (self.source.getName(), self.destination.getName()))
 			countsat = 0
 			counttransponder = 0

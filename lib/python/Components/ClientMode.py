@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigText, ConfigSelection, ConfigIP, ConfigInteger, ConfigSubList, ConfigClock
 from Components.SystemInfo import SystemInfo

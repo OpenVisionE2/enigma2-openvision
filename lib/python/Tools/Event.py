@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 class Event:
 	def __init__(self, start = None, stop = None):
