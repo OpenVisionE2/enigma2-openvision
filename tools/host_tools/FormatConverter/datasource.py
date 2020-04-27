@@ -82,9 +82,9 @@ class genericdatasource(datasource):
 			print("[datasource] select a destination first!")
 		else:
 			if action == "copy":
-				print("[datasource] copying ",)
+				print("[datasource] copying ")
 			elif action == "merge":
-				print(("[datasource] merging ",))
+				print("[datasource] merging ")
 			print("[datasource] from %s to %s" % (self.source.getName(), self.destination.getName()))
 			countsat = 0
 			counttransponder = 0

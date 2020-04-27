@@ -20,7 +20,7 @@ class satxml(datasource):
 		return text
 
 	def getCapabilities(self):
-		return [("set filename", self.setFilename), ("read file", self.read), ("write file", self.write), ("print(all", self.printAll)])
+		return [("set filename", self.setFilename), ("read file", self.read), ("write file", self.write), ("print all", self.printAll)]
 
 	def getName(self):
 		return "satellites.xml"
