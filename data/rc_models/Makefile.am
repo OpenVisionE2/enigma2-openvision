@@ -38,10 +38,6 @@ if CERYON
 dist_install_DATA += ax1.png ax1.xml e4hd.png e4hd.xml e4hdcombo.png e4hdcombo.xml miraclebox.png miraclebox.xml protek1.png protek1.xml protek2.png protek2.xml red1.png red1.xml red2.png red2.xml
 endif
 
-if CLAP
-dist_install_DATA += cc1.png cc1.xml
-endif
-
 if CUBE
 dist_install_DATA += cube.png cube.xml
 endif
@@ -143,7 +139,7 @@ dist_install_DATA += wetek.png wetek.xml wetek2.png wetek2.xml wetek3.png wetek3
 endif
 
 if XCORE
-dist_install_DATA += xcore1.png xcore1.xml xcore2.png xcore2.xml
+dist_install_DATA += xcore1.png xcore1.xml
 endif
 
 if XP
