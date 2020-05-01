@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Tools.CList import CList
+from functools import reduce
 
 # down                       up
 # Render Converter Converter Source
