@@ -6,6 +6,7 @@ from enigma import eTimer, getDesktop, eActionMap, gFont
 from Components.ActionMap import ActionMap
 from sys import maxint
 import skin
+from os import sys
 
 class SubtitleDisplay(Screen):
 	def __init__(self, session):
