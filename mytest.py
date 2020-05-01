@@ -647,8 +647,7 @@ import Components.Lcd
 Components.Lcd.InitLcd()
 Components.Lcd.IconCheck()
 
-from enigma import getBoxType
-if getBoxType() in ("dm7080","dm820","dm900","dm920","gbquad4k","gbue4k"):
+if SystemInfo["DreamBoxHDMIin"]:
 	check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","r").read()
 	if check.startswith("on"):
 		open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","w").write("off")
