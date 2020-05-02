@@ -114,11 +114,14 @@ while : ; do
 	case $ret in
 		1)
 			/sbin/halt
+			if [ $brandcheck == "wetek" ]; then
+				echo "0" > /sys/class/leds/wetek\:blue\:wifiled/brightness
+				echo "0" > /sys/class/leds/wetek\:blue\:ethled/brightness
+				echo "mem" > /sys/power/state
+			fi
 			;;
 		2)
-			if [ -f /proc/stb/fp/force_restart ]; then
-				echo 1 > /proc/stb/fp/force_restart
-			fi
+			[ -f /proc/stb/fp/force_restart ] && echo 1 > /proc/stb/fp/force_restart
 			/sbin/reboot
 			;;
 		3)
@@ -126,7 +129,7 @@ while : ; do
 			;;
 		4)
 			/sbin/rmmod lcd
-			/usr/sbin/fpupgrade --upgrade 2>&1 | tee /home/root/fpupgrade.log
+			@sbindir@/fpupgrade --upgrade 2>&1 | tee /home/root/fpupgrade.log
 			sleep 1;
 			/sbin/rmmod fp
 			/sbin/modprobe fp
@@ -155,12 +158,8 @@ while : ; do
 					echo "rescue" > /proc/stb/fp/boot_mode
 				fi
 			fi
-			if [ -e /usr/bin/setenv ]; then
-				/usr/bin/setenv  default_sys  1
-			fi
-			if [ -e /usr/sbin/fw_setenv ]; then
-				/usr/sbin/fw_setenv bootfromnand 1
-			fi
+			[ -e @bindir@/setenv ] && @bindir@/setenv  default_sys  1
+			[ -e @sbindir@/fw_setenv ] && @sbindir@/fw_setenv bootfromnand 1
 			/sbin/reboot
 			;;
 		16)
@@ -225,7 +224,7 @@ while : ; do
 			;;
 		45)
 			echo "    " > /dev/lcd0
-			/usr/bin/gigablue_wol
+			@bindir@/gigablue_wol
 			;;
 		*)
 			break
