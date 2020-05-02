@@ -158,7 +158,7 @@ while : ; do
 					echo "rescue" > /proc/stb/fp/boot_mode
 				fi
 			fi
-			[ -e @bindir@/setenv ] && @bindir@/setenv  default_sys  1
+			[ -e @bindir@/setenv ] && @bindir@/setenv default_sys 1
 			[ -e @sbindir@/fw_setenv ] && @sbindir@/fw_setenv bootfromnand 1
 			/sbin/reboot
 			;;
