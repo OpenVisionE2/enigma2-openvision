@@ -117,7 +117,7 @@ class EPGSelection(Screen):
 				"preview": self.eventPreview,
 			})
 
-		self['colouractions'] = HelpableActionMap(self, 'ColorActions',
+		self['colouractions'] = HelpableActionMap(self, ["ColorActions"],
 			{
 				"red": (self.GoToTmbd, _("Search event in TMBD"))
 			})

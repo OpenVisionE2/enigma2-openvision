@@ -216,7 +216,7 @@ class DVDPlayer(Screen, InfoBarBase, InfoBarNotifications, InfoBarSeek, InfoBarP
 				"cancel": self.keyCancel,
 			}, -2)
 
-		self["DVDPlayerPlaybackActions"] = HelpableActionMap(self, "DVDPlayerActions",
+		self["DVDPlayerPlaybackActions"] = HelpableActionMap(self, ["DVDPlayerActions"],
 			{
 				#PLAYER ACTIONS
 				"dvdMenu": (self.enterDVDMenu, _("show DVD main menu")),
@@ -234,7 +234,7 @@ class DVDPlayer(Screen, InfoBarBase, InfoBarNotifications, InfoBarSeek, InfoBarP
 				"seekBeginning": self.seekBeginning,
 			}, -2)
 
-		self["DVDPlayerColorActions"] = HelpableActionMap(self, "ColorActions",
+		self["DVDPlayerColorActions"] = HelpableActionMap(self, ["ColorActions"],
 			{
 				"blue": (self.chapterZap, _("jump to chapter by number")),
 			}, -2)

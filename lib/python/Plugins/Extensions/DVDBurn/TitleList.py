@@ -59,7 +59,7 @@ class TitleList(Screen, HelpableScreen):
 		Screen.__init__(self, session)
 		HelpableScreen.__init__(self)
 
-		self["titleactions"] = HelpableActionMap(self, "DVDTitleList",
+		self["titleactions"] = HelpableActionMap(self, ["DVDTitleList"],
 			{
 				"addTitle": (self.addTitle, _("Add a new title"), _("Add title")),
 				"titleProperties": (self.titleProperties, _("Properties of current title"), _("Title properties")),
@@ -68,7 +68,7 @@ class TitleList(Screen, HelpableScreen):
 				"burnProject": (self.askBurnProject, _("Burn DVD"), _("Burn DVD")),
 			})
 
-		self["MovieSelectionActions"] = HelpableActionMap(self, "MovieSelectionActions",
+		self["MovieSelectionActions"] = HelpableActionMap(self, ["MovieSelectionActions"],
 			{
 				"contextMenu": (self.showMenu, _("menu")),
 			})
@@ -188,7 +188,7 @@ class TitleList(Screen, HelpableScreen):
 				self["key_red"] = StaticText(_("Close"))
 				self["key_green"] = StaticText(_("Add"))
 				self["key_yellow"] = StaticText(_("Edit title"))
-				self["ColorActions"] = HelpableActionMap(self, "ColorActions",
+				self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
 				{
 					"red": (self.close, _("Close title selection")),
 					"green": (self.insertWithoutEdit, ("insert without cutlist editor")),
