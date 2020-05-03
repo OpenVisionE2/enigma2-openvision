@@ -445,8 +445,8 @@ class RecordTimerEntry(timer.TimerEntry, object):
 					try:
 						Trashcan.instance.cleanIfIdle(self.Filename)
 					except Exception as e:
-						 print("[RecordTimer] Failed to call Trashcan.instance.cleanIfIdle()")
-						 print("[RecordTimer] Error:", e)
+						print("[RecordTimer] Failed to call Trashcan.instance.cleanIfIdle()")
+						print("[RecordTimer] Error:", e)
 				# fine. it worked, resources are allocated.
 				self.next_activation = self.begin
 				self.backoff = 0

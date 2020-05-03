@@ -56,8 +56,7 @@ def resolveAlternate(ref):
 	if ref.flags & eServiceReference.isGroup:
 		nref = getBestPlayableServiceReference(ref, getPlayingref(ref))
 		if not nref:
-			nref = getBestPlayableServiceReference(ref,
-			 eServiceReference(), True)
+			nref = getBestPlayableServiceReference(ref, eServiceReference(), True)
 	return nref
 
 # type 1 = digital television service

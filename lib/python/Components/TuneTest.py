@@ -230,7 +230,7 @@ class TuneTest:
 			print("[TuneTest] index:", index)
 			print("[TuneTest] len(self.transponderlist):", len(self.transponderlist))
 			while (index < len(self.transponderlist) and (self.transponderlist[index][15] == -1 or self.transponderlist[index][16] == -1)):
-			 	index += 1
+				index += 1
 		print("[TuneTest] FirstTransponder final index:", index)
 		return index
 
@@ -243,7 +243,7 @@ class TuneTest:
 			print("[TuneTest] index:", index)
 			print("[TuneTest] len(self.transponderlist):", len(self.transponderlist))
 			while (index < len(self.transponderlist) and (self.transponderlist[index][15] == -1 or self.transponderlist[index][16] == -1)):
-			 	index += 1
+				index += 1
 
 		print("[TuneTest] next transponder index:", index)
 		return index

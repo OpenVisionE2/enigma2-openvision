@@ -153,16 +153,16 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 		<eLabel position="51,87" size="378,518" backgroundColor="black" zPosition="2"/>
 		<widget position="60,96" size="360,450" render="Listbox" scrollbarMode="showOnDemand" source="cutlist" transparent="1" zPosition="3">
 			<convert type="TemplatedMultiContent">
-						{"template": [
+				{
+					"template": [
 						MultiContentEntryText(pos=(10,2), size=(160, 20), text = 1, backcolor = MultiContentTemplateColor(4)),
 						MultiContentEntryText(pos=(180,2), size=(80, 20), text = 2, flags = RT_HALIGN_CENTER, backcolor = MultiContentTemplateColor(4)),
 						MultiContentEntryText(pos=(270,2), size=(70, 20), text = 3, flags = RT_HALIGN_RIGHT, backcolor = MultiContentTemplateColor(4))
-						],
-
-						"fonts": [gFont("Regular", 20)],
-						"itemHeight": 25
-						}
-					</convert>
+					],
+					"fonts": [gFont("Regular", 18)],
+					"itemHeight": 20
+				}
+			</convert>
 		</widget>
 		<eLabel position="240,548" size=" 80,20" text="IN" zPosition="3" halign="center" font="Regular;20" backgroundColor="#004000"/>
 		<widget position="330,548" size=" 70,20" name="InLen" zPosition="3" halign="right" font="Regular;20" backgroundColor="#004000"/>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 14:08+0430\n"
+"POT-Creation-Date: 2020-05-03 16:22+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -62,9 +62,8 @@ msgstr ""
 "\n"
 "Timer '%s' uitgeschakeld!"
 
-#, fuzzy
 msgid " "
-msgstr "O"
+msgstr ""
 
 msgid "  REC  "
 msgstr ""
@@ -178,9 +177,8 @@ msgstr "%d-%m-%Y"
 msgid "%-d. %b"
 msgstr ""
 
-#, fuzzy
 msgid "%-d. %b %Y"
-msgstr "%A %d %B"
+msgstr ""
 
 msgid "%-d.%-m"
 msgstr ""
@@ -299,9 +297,8 @@ msgstr "%A %e %B %Y"
 msgid "%A %-d.%-m"
 msgstr "%A %d %B"
 
-#, fuzzy
 msgid "%A %-d.%-m.%Y"
-msgstr "%A %d %B"
+msgstr ""
 
 #, fuzzy
 msgid "%A %-d.%m"
@@ -588,9 +585,8 @@ msgstr "%a %e %B %Y"
 msgid "%a %-d. %B %Y"
 msgstr "%a %e %B %Y"
 
-#, fuzzy
 msgid "%a %-d. %b"
-msgstr "%a %e %B %Y"
+msgstr ""
 
 #, fuzzy
 msgid "%a %-d. %b %Y"
@@ -600,9 +596,8 @@ msgstr "%a %e %B %Y"
 msgid "%a %-d.%-m"
 msgstr "%a %e/%m"
 
-#, fuzzy
 msgid "%a %-d.%-m.%Y"
-msgstr "%a %e/%m"
+msgstr ""
 
 #, fuzzy
 msgid "%a %-d.%m"
@@ -610,7 +605,7 @@ msgstr "%a %e/%m"
 
 #, fuzzy
 msgid "%a %-d.%m.%Y"
-msgstr "%a %e/%m"
+msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %-d/%-m"
@@ -770,7 +765,7 @@ msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %d. %b"
-msgstr "%A %d %B"
+msgstr "%s %d.%d"
 
 #, fuzzy
 msgid "%a %d. %b %Y"
@@ -778,19 +773,19 @@ msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %d.%-m"
-msgstr "%a %e/%m"
+msgstr "%s %d.%d"
 
 #, fuzzy
 msgid "%a %d.%-m.%Y"
-msgstr "%a %e/%m"
+msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %d.%m"
-msgstr "%a %e/%m"
+msgstr "%s %d.%d"
 
 #, fuzzy
 msgid "%a %d.%m.%Y"
-msgstr "%a %e/%m"
+msgstr "%a %e %B %Y"
 
 #, fuzzy
 msgid "%a %d/%-m"
@@ -1027,25 +1022,28 @@ msgstr "%d-%m-%Y"
 msgid "%d. %b"
 msgstr ""
 
-#, fuzzy
 msgid "%d. %b %Y"
-msgstr "%A %d %B"
+msgstr ""
 
+#, fuzzy
 msgid "%d.%-m"
-msgstr ""
+msgstr "%d.%d"
 
+#, fuzzy
 msgid "%d.%-m.%Y"
-msgstr ""
+msgstr "%d-%m-%Y"
 
 #, python-format
 msgid "%d.%03d GB"
 msgstr "%d.%03d GB"
 
+#, fuzzy
 msgid "%d.%m"
-msgstr ""
+msgstr "%d.%d"
 
+#, fuzzy
 msgid "%d.%m.%Y"
-msgstr ""
+msgstr "%d-%m-%Y"
 
 msgid "%d/%-m"
 msgstr ""
@@ -1161,9 +1159,9 @@ msgstr "%s/%s: %s"
 msgid "%s:%s"
 msgstr "%s:%s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%s?"
-msgstr "CH%s"
+msgstr ""
 
 #, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
@@ -2188,6 +2186,10 @@ msgid "Ask user (with default as 'yes')"
 msgstr ""
 
 msgid "Aspect ratio"
+msgstr "Beeldverhouding"
+
+#, fuzzy, python-format
+msgid "Aspect ratio changed to %s"
 msgstr "Beeldverhouding"
 
 #, fuzzy
@@ -4544,10 +4546,15 @@ msgstr "Verwijder een item uit de afspeellijst"
 msgid "Delete saved playlist"
 msgstr "Verwijder een opgeslagen afspeellijst"
 
-msgid "Delete the character to the left of text buffer cursor"
+msgid "Delete the all the text"
+msgstr ""
+
+#, fuzzy
+msgid "Delete the character to the left of text cursor"
 msgstr "Verwijder het teken links van de cursor"
 
-msgid "Delete the character under the text buffer cursor"
+#, fuzzy
+msgid "Delete the character under the text cursor"
 msgstr "Verwijder het teken onder de cursor"
 
 msgid "Delete timer"
@@ -4619,7 +4626,7 @@ msgstr "Zender"
 
 #, fuzzy
 msgid "Device id: "
-msgstr "Zender"
+msgstr "Apparaatnaam:"
 
 msgid "Device mounts"
 msgstr ""
@@ -6025,9 +6032,8 @@ msgstr "Flash de image"
 msgid "Flash Image"
 msgstr "Flash de image"
 
-#, fuzzy
 msgid "Flash image"
-msgstr "Flash de image"
+msgstr "Image flashen"
 
 #, fuzzy
 msgid "Flash type: "
@@ -6801,7 +6807,7 @@ msgstr "Maakt bestandssysteem"
 
 #, fuzzy
 msgid "Image folder: "
-msgstr "Kies de doelmap"
+msgstr "Image: "
 
 #, python-format
 msgid ""
@@ -7893,29 +7899,37 @@ msgstr "verplaats omlaag naar volgende ingave"
 msgid "Move east"
 msgstr "Draai oost"
 
-msgid "Move the text buffer cursor left"
-msgstr "Verplaatst de cursor naar links"
-
-msgid "Move the text buffer cursor right"
-msgstr "Verplaatst de cursor naar rechts"
-
-msgid "Move the text buffer cursor to the first character"
-msgstr "Verplaatst de cursor naar het eerste teken"
-
-msgid "Move the text buffer cursor to the last character"
-msgstr "Verplaats de cursor naar het laatste teken"
-
-msgid "Move the virtual keyboard cursor down"
+#, fuzzy
+msgid "Move the keyboard cursor down"
 msgstr "Verplaats de cursor van het virtuale toetsenbord naar onder"
 
-msgid "Move the virtual keyboard cursor left"
+#, fuzzy
+msgid "Move the keyboard cursor left"
 msgstr "Verplaats de cursor van het virtuale toetsenbord naar kinks"
 
-msgid "Move the virtual keyboard cursor right"
+#, fuzzy
+msgid "Move the keyboard cursor right"
 msgstr "Verplaats de cursor van het virtuale toetsenbord naar rechts"
 
-msgid "Move the virtual keyboard cursor up"
+#, fuzzy
+msgid "Move the keyboard cursor up"
 msgstr "Verplaats de cursor van het virtuale toetsenbord naar boven"
+
+#, fuzzy
+msgid "Move the text cursor left"
+msgstr "Verplaatst de cursor naar links"
+
+#, fuzzy
+msgid "Move the text cursor right"
+msgstr "Verplaatst de cursor naar rechts"
+
+#, fuzzy
+msgid "Move the text cursor to the first character"
+msgstr "Verplaatst de cursor naar het eerste teken"
+
+#, fuzzy
+msgid "Move the text cursor to the last character"
+msgstr "Verplaats de cursor naar het laatste teken"
 
 msgid "Move to position X"
 msgstr "Ga naar positie X"
@@ -8681,20 +8695,19 @@ msgstr "Enkel na het opstarten"
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Kies enkel 'ja' indien u een multiswitch gebruikt die een diseqc poort-A signaal commando vereist. Voor elke andere opstelling kiest u voor 'nee'."
 
-#, fuzzy
 msgid "Open Vision"
-msgstr "Pythonversie:"
+msgstr ""
 
 msgid "Open Vision enigma2 image"
 msgstr ""
 
 #, fuzzy
 msgid "Open Vision information"
-msgstr "Pythonversie:"
+msgstr "Open selectie locatie"
 
 #, fuzzy
 msgid "Open Vision language: "
-msgstr "Pythonversie:"
+msgstr "originele taal"
 
 msgid "Open Vision module: "
 msgstr ""
@@ -9363,17 +9376,14 @@ msgstr "Positioner instellingen log"
 msgid "Power LED can be turned on or off here."
 msgstr ""
 
-#, fuzzy
 msgid "Power LED colour state in Deep-Standby"
-msgstr "Sluit volledig af indien in stand-by"
+msgstr ""
 
-#, fuzzy
 msgid "Power LED colour state in Standby"
-msgstr "Sluit volledig af indien in stand-by"
+msgstr ""
 
-#, fuzzy
 msgid "Power LED colour state when running."
-msgstr "Met deze optie bepaalt u of de power led brandt als de ontvanger stand-by staat."
+msgstr ""
 
 #, fuzzy
 msgid "Power LED state during deep-standby."
@@ -9723,7 +9733,7 @@ msgstr ""
 
 #, fuzzy
 msgid "RC type: "
-msgstr "Flash de image"
+msgstr "type"
 
 msgid "REC"
 msgstr "REC"
@@ -10905,8 +10915,13 @@ msgstr "Selecteer het User Band frequentie dat aan deze tuner wordt toegewezen. 
 msgid "Select the User Band to be assigned to this tuner. This is an index into the table of frequencies the SCR switch or SCR LNB uses to pass the requested transponder to the tuner."
 msgstr "Selecteer het User Band die aan deze tuner wordt toegewezen. Dit is een index voor de frequentietabel die de SCR switch of SCR LNB gebruikt om de gevraagde transponder toe te kennen aan de tuner."
 
-msgid "Select the character or action under the virtual keyboard cursor"
+#, fuzzy
+msgid "Select the character or action under the keyboard cursor"
 msgstr "Selecteer het teken of de actie onder de cursor van het virtuele toetsenbord"
+
+#, fuzzy
+msgid "Select the locale from a menu"
+msgstr "Kies de landinstelling van het virtuele toetsenbord vanuit het menu"
 
 msgid "Select the manufacturer of your SCR device. If the manufacturer is not listed, set 'SCR' to 'user defined' and enter the device parameters manually according to its spec sheet."
 msgstr "Kies de fabrikant van uw Unicable device. Indien de naam niet wordt vermeld, zet 'SCR' op 'gebruiker-gedefinieerd' en voer de juiste details handmatig in conform de specificaties van het apparaat."
@@ -10942,6 +10957,14 @@ msgid "Select the satellite your dish receives from. If you are unsure select 'a
 msgstr "Kies de satelliet die door uw schotel ontvangen wordt. Bij twijfel kies dan voor 'automatisch' en de ontvanger zal proberen om deze automatisch te bepalen."
 
 #, fuzzy
+msgid "Select the shifted character set"
+msgstr "Kies de variabele tekenset op het virtuele toetsenbord"
+
+#, fuzzy
+msgid "Select the shifted character set for the next character only"
+msgstr "Kies enkel voor het volgende teken de variabele tekenset op het virtuele toetsenbord"
+
+#, fuzzy
 msgid "Select the time zone within the area or region."
 msgstr "Kies de horizontale resolutie:"
 
@@ -10959,15 +10982,6 @@ msgstr "Kies het type LNB die u gebruikt. (normaal is dit universeel). Indien uw
 
 msgid "Select the type of Single Cable Reception device you are using."
 msgstr "Kies het type Unicable device welke u gebruikt."
-
-msgid "Select the virtual keyboard locale from a menu"
-msgstr "Kies de landinstelling van het virtuele toetsenbord vanuit het menu"
-
-msgid "Select the virtual keyboard shifted character set"
-msgstr "Kies de variabele tekenset op het virtuele toetsenbord"
-
-msgid "Select the virtual keyboard shifted character set for the next character only"
-msgstr "Kies enkel voor het volgende teken de variabele tekenset op het virtuele toetsenbord"
 
 msgid "Select update source"
 msgstr "Kies de bron om te updaten"
@@ -12572,6 +12586,9 @@ msgstr "T2MI RAW Modus"
 msgid "TB"
 msgstr "B"
 
+msgid "TEXT"
+msgstr ""
+
 msgid "TMBD Details"
 msgstr ""
 
@@ -13450,6 +13467,10 @@ msgstr "Schakel tussen TV/RADIO"
 
 msgid "Toggle a cut mark at the current position"
 msgstr "Op de huidige positie een snijmarkering aanbrengen"
+
+#, fuzzy
+msgid "Toggle aspect ratio..."
+msgstr "Beeldverhouding"
 
 msgid "Toggle dashed flickering line for this service"
 msgstr "Activeer de optie 'verberg de stippellijn' voor dit kanaal"
