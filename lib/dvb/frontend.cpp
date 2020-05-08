@@ -570,7 +570,7 @@ eDVBFrontend::eDVBFrontend(const char *devicenodename, int fe, int &ok, bool sim
 	:m_simulate(simulate), m_enabled(false), m_fbc(false), m_simulate_fe(simulate_fe), m_type(-1), m_dvbid(fe), m_slotid(fe)
 	,m_fd(-1), m_dvbversion(0), m_rotor_mode(false), m_need_rotor_workaround(false), m_multitype(false)
 	,m_state(stateClosed), m_timeout(0), m_tuneTimer(0)
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 	,m_looptimeout(100)
 #endif
 {
@@ -845,9 +845,8 @@ void eDVBFrontend::feEvent(int w)
 	eDVBFrontend *sec_fe = this;
 	long tmp = m_data[LINKED_PREV_PTR];
 #if HAVE_AMLOGIC
-#if HAVE_ALIEN5
 	static int timeoutNum = 0;
-#endif
+
 	if (w < 0)
 		return;
 #endif
@@ -863,9 +862,7 @@ void eDVBFrontend::feEvent(int w)
 		int res;
 		int state;
 #if HAVE_AMLOGIC
-#if HAVE_ALIEN5
 		usleep(20000);
-#endif
 		if((res = ::ioctl(m_fd, FE_READ_STATUS, &event.status)) != 0)
 		{
 			break;
@@ -902,7 +899,7 @@ void eDVBFrontend::feEvent(int w)
 #endif
 		else
 		{
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 			if (m_tuning) {
 				state = stateTuning;
 				if (event.status & FE_TIMEDOUT) {
@@ -940,7 +937,7 @@ void eDVBFrontend::feEvent(int w)
 				state = stateLostLock;
 				if (!m_rotor_mode)
 					sec_fe->m_data[CSW] = sec_fe->m_data[UCSW] = sec_fe->m_data[TONEBURST] = -1; // reset diseqc
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 				if(m_state == state)
 					break; /* I do not see any other way out */
 #endif
@@ -1587,7 +1584,7 @@ int eDVBFrontend::readFrontendData(int type)
 			fe_status_t status;
 			if (!m_simulate)
 			{
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 				//static int timeoutNum =0 ;
 				usleep(20000);
 				if ( ioctl(m_fd, FE_READ_STATUS, &status) < 0 && errno != ERANGE )
@@ -2011,7 +2008,7 @@ int eDVBFrontend::tuneLoopInt()  // called by m_tuneTimer
 					{
 						dvb_frontend_event event;
 						int res;
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 						usleep(20000);
 						if((res = ::ioctl(m_fd, FE_READ_STATUS, &event.status)) != 0)
 						{
@@ -2251,7 +2248,7 @@ void eDVBFrontend::setFrontend(bool recvEvents)
 		cmdseq.props = p;
 		cmdseq.num = 0;
 		p[cmdseq.num].cmd = DTV_CLEAR, cmdseq.num++;
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 		m_looptimeout = 100;
 #endif
 		if (type == iDVBFrontend::feSatellite)
@@ -2262,7 +2259,7 @@ void eDVBFrontend::setFrontend(bool recvEvents)
 			fe_modulation_t modulation = QPSK;
 			fe_delivery_system_t system = SYS_DVBS;
 			oparm.getDVBS(parm);
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 			if (parm.symbol_rate < 5000000)
 				m_looptimeout = 250;
 			else if (parm.symbol_rate < 10000000)
@@ -2357,7 +2354,7 @@ void eDVBFrontend::setFrontend(bool recvEvents)
 		{
 			eDVBFrontendParametersCable parm = {0};
 			oparm.getDVBC(parm);
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 			m_looptimeout = 300;
 #endif
 			p[cmdseq.num].cmd = DTV_DELIVERY_SYSTEM;
@@ -2448,7 +2445,7 @@ void eDVBFrontend::setFrontend(bool recvEvents)
 			eDVBFrontendParametersTerrestrial parm = {0};
 			fe_delivery_system_t system = SYS_DVBT;
 			oparm.getDVBT(parm);
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 			m_looptimeout = 100;
 #endif
 			switch (parm.system)

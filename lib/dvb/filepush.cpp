@@ -123,7 +123,7 @@ void eFilePushThread::thread()
 
 		if (buf_end == 0 || m_sof == 1)
 		{
-#ifndef HAVE_ALIEN5
+#ifndef HAVE_AMLOGIC
 				/* on EOF, try COMMITting once. */
 			if (m_send_pvr_commit)
 			{
@@ -164,7 +164,7 @@ void eFilePushThread::thread()
 			if (m_stream_mode && ++eofcount < 5)
 			{
 				eDebug("[eFilePushThread] reached EOF, but we are in stream mode. delaying 1 second.");
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 				usleep(50000);
 #else
 				sleep(1);
@@ -174,7 +174,7 @@ void eFilePushThread::thread()
 			else if (++eofcount < 10)
 			{
 				eDebug("[eFilePushThread] reached EOF, but the file may grow. delaying 1 second.");
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 				usleep(50000);
 #else
 				sleep(1);
@@ -213,12 +213,12 @@ void eFilePushThread::thread()
 #if HAVE_HISILICON
 						usleep(100000);
 #endif
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 						usleep(100000);
 #endif
 						continue;
 					}
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 					usleep(50000);
 #endif
 					eDebug("[eFilePushThread] write: %m");
@@ -234,7 +234,7 @@ void eFilePushThread::thread()
 			if (m_sg)
 				current_span_remaining -= buf_end;
 		}
-#if HAVE_ALIEN5
+#if HAVE_AMLOGIC
 		usleep(10);
 #endif
 	}
