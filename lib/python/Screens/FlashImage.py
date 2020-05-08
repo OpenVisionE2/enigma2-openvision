@@ -9,17 +9,17 @@ from Components.config import config, configfile
 from Components.ActionMap import ActionMap
 from Components.Console import Console
 from Components.Label import Label
-from Components.Pixmap import Pixmap
 from Components.ProgressBar import ProgressBar
 from Components.SystemInfo import SystemInfo
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Tools.Downloader import downloadWithProgress
-from enigma import getBoxType
 from Tools.Multiboot import GetImagelist, GetCurrentImage, GetCurrentImageMode
 import os, urllib2, json, time, zipfile, shutil, tempfile
 
-from enigma import eEPGCache
+from enigma import eEPGCache, getBoxType
+
+model = getBoxType()
 
 def checkimagefiles(files):
 	return len([x for x in files if 'kernel' in x and '.bin' in x or x in ('uImage', 'rootfs.bin', 'root_cfe_auto.bin', 'root_cfe_auto.jffs2', 'oe_rootfs.bin', 'e2jffs2.img', 'rootfs.tar.bz2', 'rootfs.ubi')]) == 2
@@ -72,12 +72,10 @@ class SelectImage(Screen):
 				except:
 					pass
 
-		model = getBoxType()
-
 		if not self.imagesList:
 			if not self.jsonlist:
 				try:
-					self.jsonlist = dict(json.load(urllib2.urlopen('https://openvision.tech/download/json/%s' % model)))
+					self.jsonlist = dict(json.load(urllib2.urlopen('http://downloads.openpli.org/json/%s' % model)))
 					if config.usage.alternative_imagefeed.value:
 						self.jsonlist.update(dict(json.load(urllib2.urlopen('%s%s' % (config.usage.alternative_imagefeed.value, model)))))
 				except:
@@ -410,7 +408,7 @@ class MultibootSelection(SelectImage):
 		self.setTitle(_("Multiboot image selector"))
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Reboot"))
-		self["description"] = StaticText(_("Use the cursor keys to select an installed image then press Reboot button."))
+		self["description"] = StaticText(_("Use the cursor keys to select an installed image then reboot."))
 		self["list"] = ChoiceList(list=[ChoiceEntryComponent('',((_("Retrieving image slots - Please wait...")), "Waiter"))])
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions", "KeyboardInputActions", "MenuActions"],
@@ -466,10 +464,10 @@ class MultibootSelection(SelectImage):
 			for index, x in enumerate(sorted(imagesdict.keys())):
 				if imagesdict[x]["imagename"] != _("Empty slot"):
 					if SystemInfo["canMode12"]:
-						list.insert(index, ChoiceEntryComponent('',((_("slot%s - %s mode 1 (current image)") if x == currentimageslot and mode != 12 else _("slot%s - %s mode 1")) % (x, imagesdict[x]['imagename']), x)))
-						list.append(ChoiceEntryComponent('',((_("slot%s - %s mode 12 (current image)") if x == currentimageslot and mode == 12 else _("slot%s - %s mode 12")) % (x, imagesdict[x]['imagename']), x + 12)))
+						list.insert(index, ChoiceEntryComponent('',((_("slot%s - %s mode 1 (current image)") if x == currentimageslot and mode != 12 else _("slot%s - %s mode 1")) % (x, imagesdict[x]['imagename']), (x, 1))))
+						list.append(ChoiceEntryComponent('',((_("slot%s - %s mode 12 (current image)") if x == currentimageslot and mode == 12 else _("slot%s - %s mode 12")) % (x, imagesdict[x]['imagename']), (x, 12))))
 					else:
-						list.append(ChoiceEntryComponent('',((_("slot%s - %s (current image)") if x == currentimageslot and mode != 12 else _("slot%s - %s")) % (x, imagesdict[x]['imagename']), x)))
+						list.append(ChoiceEntryComponent('',((_("slot%s - %s (current image)") if x == currentimageslot and mode != 12 else _("slot%s - %s")) % (x, imagesdict[x]['imagename']), (x, 1))))
 		if os.path.isfile(os.path.join(self.tmp_dir, "STARTUP_RECOVERY")):
 			list.append(ChoiceEntryComponent('',((_("Boot to Recovery menu")), "Recovery")))
 		if os.path.isfile(os.path.join(self.tmp_dir, "STARTUP_ANDROID")):
@@ -490,22 +488,17 @@ class MultibootSelection(SelectImage):
 				shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_RECOVERY"), os.path.join(self.tmp_dir, "STARTUP"))
 			elif self.slot == "Android":
 				shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_ANDROID"), os.path.join(self.tmp_dir, "STARTUP"))
-			elif SystemInfo["canMultiBoot"][self.slot % 12]['startupfile']:
+			elif SystemInfo["canMultiBoot"][self.slot[0]]['startupfile']:
 				if SystemInfo["canMode12"]:
-					if self.slot < 12:
-						startupfile = os.path.join(self.tmp_dir, "%s_1" % SystemInfo["canMultiBoot"][self.slot]['startupfile'].rsplit('_', 1)[0])
-					else:
-						startupfile = os.path.join(self.tmp_dir, "%s_12" % SystemInfo["canMultiBoot"][self.slot - 12]['startupfile'].rsplit('_', 1)[0])
+					startupfile = os.path.join(self.tmp_dir, "%s_%s" % (SystemInfo["canMultiBoot"][self.slot[0]]['startupfile'].rsplit('_', 1)[0], self.slot[1]))
 				else:
-					startupfile = os.path.join(self.tmp_dir, "%s" % SystemInfo["canMultiBoot"][self.slot]['startupfile'])
+					startupfile = os.path.join(self.tmp_dir, "%s" % SystemInfo["canMultiBoot"][self.slot[0]]['startupfile'])
 				shutil.copyfile(startupfile, os.path.join(self.tmp_dir, "STARTUP"))
 			else:
-				model = getBoxType()
-				if self.slot < 12:
-					startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (self.slot, self.slot * 2 + 1, model)
+				if self.slot[1] == 1:
+					startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (self.slot[0], self.slot[0] * 2 + 1, model)
 				else:
-					self.slot -= 12
-					startupFileContents = "boot emmcflash0.kernel%s 'brcm_cma=520M@248M brcm_cma=%s@768M root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=12'\n" % (self.slot, SystemInfo["canMode12"], self.slot * 2 + 1, model)
+					startupFileContents = "boot emmcflash0.kernel%s 'brcm_cma=520M@248M brcm_cma=%s@768M root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=12'\n" % (self.slot[0], SystemInfo["canMode12"], self.slot[0] * 2 + 1, model)
 				open(os.path.join(self.tmp_dir, "STARTUP"), 'w').write(startupFileContents)
 			self.cancel(2)
 
