@@ -224,8 +224,12 @@ int eDVBSatelliteEquipmentControl::canTune(const eDVBFrontendParametersSatellite
 					int lof = sat.frequency > lnb_param.m_lof_threshold ?
 						lnb_param.m_lof_hi : lnb_param.m_lof_lo;
 					unsigned int tuner_freq = absdiff(sat.frequency, lof);
+#ifndef HAVE_AMLOGIC
 					if (tuner_freq < (fe_info.type ? fe_info.frequency_min/1000 : fe_info.frequency_min)
 						|| tuner_freq > (fe_info.type ? fe_info.frequency_max/1000 : fe_info.frequency_max))
+#else
+					if (tuner_freq < fe_info.frequency_min || tuner_freq > fe_info.frequency_max)
+#endif
 						ret = 0;
 				}
 
