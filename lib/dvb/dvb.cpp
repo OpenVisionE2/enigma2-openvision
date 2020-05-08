@@ -1581,7 +1581,7 @@ class eDVBChannelFilePush: public eFilePushThread
 {
 public:
 	eDVBChannelFilePush(int packetsize = 188):
-#if HAVE_AMLOGIC
+#if HAVE_ALIEN5
 		eFilePushThread(packetsize, packetsize * 64),
 #else
 		eFilePushThread(packetsize, packetsize * 512),

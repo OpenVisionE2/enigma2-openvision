@@ -90,7 +90,7 @@ private:
 	bool m_fbc;
 	eDVBFrontend *m_simulate_fe; // only used to set frontend type in dvb.cpp
 	int m_type;
-#if HAVE_AMLOGIC
+#if HAVE_ALIEN5
 	int m_looptimeout;
 #endif
 	int m_dvbid;
