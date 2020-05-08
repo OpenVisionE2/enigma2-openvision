@@ -245,7 +245,7 @@ void eDVBServicePMTHandler::PATready(int)
 		}
 		if (pmtpid == -1) {
 			eDebug("[eDVBServicePMTHandler] no PAT entry found.. start delay");
-#ifdef AZBOX
+#if defined(HAVE_AMLOGIC) || defined(AZBOX)
 			m_no_pat_entry_delay->start(10000, true);
 #else
 			m_no_pat_entry_delay->start(1000, true);
