@@ -9,6 +9,15 @@ from enigma import getBoxType, getBoxBrand
 from Components.SystemInfo import SystemInfo
 from Tools.Directories import fileExists
 
+def getBoxProcType():
+	procmodeltype = "unknown"
+	try:
+		if fileExists("/proc/stb/info/type"):
+			procmodeltype = open("/proc/stb/info/type", "r").readline().strip().lower()
+	except IOError:
+		print("[StbHardware] getBoxProcType failed!")
+	return procmodeltype
+
 def getBoxProc():
 	procmodel = "unknown"
 	try:

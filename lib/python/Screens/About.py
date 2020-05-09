@@ -13,7 +13,7 @@ from Components.ScrollLabel import ScrollLabel
 from Components.Button import Button
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
-from Tools.StbHardware import getFPVersion, getBoxProc, getHWSerial, getBoxRCType
+from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
 from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
 from Tools.Directories import fileExists, fileHas, pathExists
 from Components.GUIComponent import GUIComponent
@@ -36,6 +36,10 @@ class About(Screen):
 		AboutText = _("Hardware: ") + getBoxType() + "\n"
 		if procmodel != getBoxType():
 			AboutText += _("Proc model: ") + procmodel + "\n"
+
+		procmodeltype = getBoxProcType()
+		if procmodeltype is not None and procmodeltype != "unknown":
+			AboutText += _("Hardware type: ") + procmodeltype + "\n"
 
 		hwserial = getHWSerial()
 		if hwserial is not None and hwserial != "unknown":
