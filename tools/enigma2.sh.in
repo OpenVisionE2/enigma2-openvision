@@ -9,6 +9,10 @@ export PATH=$PATH:/usr/script
 brandcheck=`cat /etc/openvision/brand`
 modelcheck=`cat /etc/openvision/model`
 
+if [ $brandcheck == "mecool" ]; then
+	export media_arm_audio_decoder=ape,flac,dts,ac3,eac3,wma,wmapro,mp3,aac,vorbis,raac,cook,amr,pcm,adpcm
+fi
+
 if [ $modelcheck == "sf8008" ] || [ $modelcheck == "sf8008m" ] || [ $modelcheck == "ustym4kpro" ] || [ $modelcheck == "gbtrio4k" ] || [ $modelcheck == "gbip4k" ] || [ $modelcheck == "beyonwizv2" ] || [ $modelcheck == "viper4k" ]; then
 	count=`ps -ef |grep libreader |grep -v "grep" |wc -l`
 	if [ 0 == $count ];then
