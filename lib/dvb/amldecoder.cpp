@@ -68,7 +68,7 @@ eAMLTSMPEGDecoder::eAMLTSMPEGDecoder(eDVBDemux *demux, int decoder)
 		m_changed(0), m_decoder(decoder), m_radio_pic_on(0), m_video_clip_fd(-1),
 		aml_fd(-1), cntl_fd(-1), m_showSinglePicTimer(eTimer::create(eApp)), m_VideoRead(eTimer::create(eApp))
 {
-	eDebug("[eAMLTSMPEGDecoder] SETTING UP DECODER                   ------------ WETEK");
+	eDebug("[eAMLTSMPEGDecoder] Setting up decoder!");
 	if (m_demux)
 		m_demux->connectEvent(sigc::mem_fun(*this, &eAMLTSMPEGDecoder::demux_event), m_demux_event_conn);
 	memset(&m_codec, 0, sizeof(codec_para_t ));
@@ -91,7 +91,7 @@ eAMLTSMPEGDecoder::eAMLTSMPEGDecoder(eDVBDemux *demux, int decoder)
 
 eAMLTSMPEGDecoder::~eAMLTSMPEGDecoder()
 {
-	eDebug("[eAMLTSMPEGDecoder] CLOSING DONW DECODER                   ------------ WETEK");
+	eDebug("[eAMLTSMPEGDecoder] Closing down decoder!");
 	if (m_radio_pic_on)
 		finishShowSinglePic();
 	if (m_state == statePause) {
@@ -119,7 +119,7 @@ eAMLTSMPEGDecoder::~eAMLTSMPEGDecoder()
 	}
 	adec_handle = NULL;
 	if (aml_fd >= 0) {
-		eDebug("[eAMLTSMPEGDecoder::destructor] closing aml_fd=%d   --------- WETEK !!!!!", aml_fd);
+		eDebug("[eAMLTSMPEGDecoder::destructor] closing aml_fd=%d!", aml_fd);
 		close(aml_fd);
 	}
 
@@ -413,14 +413,14 @@ RESULT eAMLTSMPEGDecoder::play()
 				osdBlank(1);
 			if (aml_fd >= 0) {
 				close(aml_fd);
-				eDebug("[eAMLTSMPEGDecoder::play] WARNING  amstream_mpts already open, closed   --------- WETEK !!!!!");
+				eDebug("[eAMLTSMPEGDecoder::play] WARNING amstream_mpts already open, closed!");
 			}
 			aml_fd = ::open("/dev/amstream_mpts",  O_RDWR);
 			if (aml_fd < 0)
-				eDebug("[eAMLTSMPEGDecoder::play] Amlogic CODEC open failed  !!!!!");
+				eDebug("[eAMLTSMPEGDecoder::play] Amlogic codec open failed!");
 			else
 			{
-				eDebug("[eAMLTSMPEGDecoder::play] Amlogic CODEC open success apid=%d vpid=%d!!!!!", m_apid, m_vpid);
+				eDebug("[eAMLTSMPEGDecoder::play] Amlogic codec open success apid=%d vpid=%d!", m_apid, m_vpid);
 				setAvsyncEnable(m_demux ? (m_demux->getSource() == -1 ? 1 : 0) : 0);
 
 				if (m_vpid >= 0 && m_vpid < 0x1FFF)
@@ -478,12 +478,12 @@ RESULT eAMLTSMPEGDecoder::play()
 				if (::ioctl(aml_fd, AMSTREAM_IOC_PORT_INIT, 0) < 0)
 					eDebug("[eAMLTSMPEGDecoder::play] amport init failed");
 				if (::ioctl(aml_fd, AMSTREAM_IOC_TS_SKIPBYTE, 0) < 0)
-					eDebug("[eAMLTSMPEGDecoder::play] set ts skipbyte failed");
+					eDebug("[eAMLTSMPEGDecoder::play] set ts skip byte failed");
 				m_state = statePlay;
 			}
 		}
 		else
-			eDebug("[eAMLTSMPEGDecoder::play] Invalid PIDs given, not started !!!!!");
+			eDebug("[eAMLTSMPEGDecoder::play] Invalid PIDs given, not started!");
 	}
 	else if (m_state == statePause) {
 		eDebug("[eAMLTSMPEGDecoder::play] resume from pause");
@@ -506,7 +506,7 @@ RESULT eAMLTSMPEGDecoder::pause()
 	if (m_state == statePause)
 		return 0;
 
-	eDebug("[eAMLTSMPEGDecoder::pause] goto pause");
+	eDebug("[eAMLTSMPEGDecoder::pause] go to pause");
 
 	if (m_demux && m_demux->m_pvr_fd >= 0)
 		::ioctl(m_demux->m_pvr_fd, PVR_P0);
@@ -623,9 +623,7 @@ RESULT eAMLTSMPEGDecoder::showSinglePic(const char *filename)
 				if (!seq_end_avail)
 					write(m_codec.handle, seq_end, sizeof(seq_end));
 				writeAll(m_codec.handle, stuffing, 8192);
-#if not defined(__sh__)
 				m_showSinglePicTimer->start(150, true);
-#endif
 			}
 			close(f);
 		}
