@@ -8,7 +8,7 @@ addons:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - g++-9
+    - g++-10
     - linux-libc-dev
     - git
     - build-essential
@@ -29,7 +29,7 @@ addons:
     - libgif-dev
     - libopenmpi-dev
     env:
-    - MATRIX_EVAL="CC=gcc-9 && CXX=g++-9"
+    - MATRIX_EVAL="CC=gcc-10 && CXX=g++-10"
 
 python:
   - "2.7"
@@ -68,7 +68,7 @@ script:
 - popd
 - echo compiling enigma2
 - autoreconf -i
-- ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --with-oever=9.3 --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
+- ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --with-oever=10.1 --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
 - make
 - python -m compileall .
 - find . -type f -name "*.po" -exec msgfmt {} -o {}.mo \;

@@ -1,4 +1,4 @@
-AC_INIT([enigma2],[9],[openvision.tech])
+AC_INIT([enigma2],[10],[openvision.tech])
 AM_INIT_AUTOMAKE([dist-bzip2 no-define tar-pax -Wno-portability])
 AC_CONFIG_HEADERS([enigma2_config.h])
 
@@ -386,7 +386,7 @@ AC_ARG_WITH(oever,
 	[OE_VER="$withval"],[OE_VER=""])
 AC_SUBST(OE_VER)
 AC_DEFINE_UNQUOTED(OE_VER,"$OE_VER",[oe name])
-if test `echo "$OE_VER" | cut -b 1-2` == "9."; then
+if test `echo "$OE_VER" | cut -b 1-3` == "10."; then
 	AC_DEFINE(HAVE_NEWOE, 1,[enable new OpenEmbedded specific stuff])
 fi
 
