@@ -448,23 +448,23 @@ def InitLcd():
 		config.usage.lcd_deepstandbypowerled = ConfigSelection(default = "on", choices = [("off", _("Off")), ("on", _("On"))])
 		config.usage.lcd_deepstandbypowerled.addNotifier(setPowerLEDdeepstanbystate)
 
-		config.usage.lcd_ledpowercolor = ConfigSelection(default = "1", choices = [("0", _("off")),("1", _("blue")), ("2", _("red")), ("3", _("violet"))])
-		config.usage.lcd_ledpowercolor.addNotifier(setLedPowerColor)
+		config.lcd.ledpowercolor = ConfigSelection(default = "1", choices = [("0", _("off")),("1", _("blue")), ("2", _("red")), ("3", _("violet"))])
+		config.lcd.ledpowercolor.addNotifier(setLedPowerColor)
 
-		config.usage.lcd_ledstandbycolor = ConfigSelection(default = "3", choices = [("0", _("off")),("1", _("blue")), ("2", _("red")), ("3", _("violet"))])
-		config.usage.lcd_ledstandbycolor.addNotifier(setLedStandbyColor)
+		config.lcd.ledstandbycolor = ConfigSelection(default = "3", choices = [("0", _("off")),("1", _("blue")), ("2", _("red")), ("3", _("violet"))])
+		config.lcd.ledstandbycolor.addNotifier(setLedStandbyColor)
 
-		config.usage.lcd_ledsuspendcolor = ConfigSelection(default = "2", choices = [("0", _("off")),("1", _("blue")), ("2", _("red")), ("3", _("violet"))])
-		config.usage.lcd_ledsuspendcolor.addNotifier(setLedSuspendColor)
+		config.lcd.ledsuspendcolor = ConfigSelection(default = "2", choices = [("0", _("off")),("1", _("blue")), ("2", _("red")), ("3", _("violet"))])
+		config.lcd.ledsuspendcolor.addNotifier(setLedSuspendColor)
 
-		config.usage.lcd_power4x7on = ConfigSelection(default = "on", choices = [("off", _("Off")), ("on", _("On"))])
-		config.usage.lcd_power4x7on.addNotifier(setPower4x7On)
+		config.lcd.power4x7on = ConfigSelection(default = "on", choices = [("off", _("Off")), ("on", _("On"))])
+		config.lcd.power4x7on.addNotifier(setPower4x7On)
 
-		config.usage.lcd_power4x7standby = ConfigSelection(default = "on", choices = [("off", _("Off")), ("on", _("On"))])
-		config.usage.lcd_power4x7standby.addNotifier(setPower4x7Standby)
+		config.lcd.power4x7standby = ConfigSelection(default = "on", choices = [("off", _("Off")), ("on", _("On"))])
+		config.lcd.power4x7standby.addNotifier(setPower4x7Standby)
 
-		config.usage.lcd_power4x7suspend = ConfigSelection(default = "on", choices = [("off", _("Off")), ("on", _("On"))])
-		config.usage.lcd_power4x7suspend.addNotifier(setPower4x7Suspend)
+		config.lcd.power4x7suspend = ConfigSelection(default = "on", choices = [("off", _("Off")), ("on", _("On"))])
+		config.lcd.power4x7suspend.addNotifier(setPower4x7Suspend)
 
 		if getBoxType() in ("dm900","dm920","e4hdultra","protek4k"):
 			standby_default = 4

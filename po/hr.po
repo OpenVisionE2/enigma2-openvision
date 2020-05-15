@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-10 19:35+0430\n"
-"PO-Revision-Date: 2020-05-04 19:55+0200\n"
+"POT-Creation-Date: 2020-05-15 15:13+0430\n"
+"PO-Revision-Date: 2020-05-10 20:16+0200\n"
 "Last-Translator: Željko <zeljko2@hi.ht.hr>\n"
 "Language-Team: Željko\n"
 "Language: hr_HR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #, python-format
 msgid ""
@@ -2081,7 +2081,7 @@ msgstr "Želite li zaista ukloniti odabrano?"
 
 #, fuzzy
 msgid "Are you sure to delete image:"
-msgstr "Jeste li sigurni da želite izaći iz vodiča?"
+msgstr "Želite li ponovno pokrenuti sustav?"
 
 msgid "Are you sure to purge all deleted user bouquets?"
 msgstr "Želite li zaista očistiti sve izbrisane korisničke pakete?"
@@ -3216,9 +3216,8 @@ msgstr "Postavke zbirke"
 msgid "Colombia"
 msgstr "Kolumbija"
 
-#, fuzzy
 msgid "Color"
-msgstr "Kolumbija"
+msgstr "Boja"
 
 msgid "Color format"
 msgstr "Format boja"
@@ -4732,7 +4731,7 @@ msgstr "Želite li izaći iz vodiča za skeniranje?"
 msgid "Do you want to reboot your receiver?"
 msgstr "Želite li ponovno pokrenuti prijemnik?"
 
-msgid "Do you want to remove all the crahs logfiles"
+msgid "Do you want to remove all the crash logfiles"
 msgstr "Želite li ukloniti sve datoteke dnevnika rušenja?"
 
 msgid "Do you want to remove the package:\n"
@@ -8529,6 +8528,15 @@ msgstr ""
 msgid "OpenVPN setup"
 msgstr "Otvorite postavke tjunera "
 
+msgid "Operating LED status in deep standby mode"
+msgstr "Radni LED status u dubokom stanju čekanja"
+
+msgid "Operating LED status in standby mode"
+msgstr "Radni LED status u stanju čekanja"
+
+msgid "Operating LED status while running."
+msgstr "Operativni LED status dok se izvodi."
+
 msgid "Opkg"
 msgstr "Opkg"
 
@@ -9137,18 +9145,6 @@ msgid "Power LED can be turned on or off here."
 msgstr ""
 
 #, fuzzy
-msgid "Power LED colour state in Deep-Standby"
-msgstr "Radni LED status u dubokom stanju čekanja"
-
-#, fuzzy
-msgid "Power LED colour state in Standby"
-msgstr "Radni LED status u stanju čekanja"
-
-#, fuzzy
-msgid "Power LED colour state when running."
-msgstr "Operativni LED status dok se izvodi."
-
-#, fuzzy
 msgid "Power LED state during deep-standby."
 msgstr "Uključite napajanje za LED tijekom dubokog stanja čekanja."
 
@@ -9179,15 +9175,6 @@ msgstr "Prag snage u mA"
 
 msgid "Power threshold. Consult your receiver's manual for more information."
 msgstr "Prag snage. Dodatne informacije potražite u priručniku prijemnika."
-
-msgid "PowerControl front display normal mode"
-msgstr ""
-
-msgid "PowerControl front display standby mode"
-msgstr ""
-
-msgid "PowerControl front display suspend mode"
-msgstr ""
 
 #, fuzzy
 msgid "PowerManager entry"
@@ -10937,17 +10924,6 @@ msgstr "Usluge"
 msgid "Set CI assignment for detection of available services."
 msgstr "Postavite CI zadatak za otkrivanje dostupnih usluga. Mnogi CI + moduli mogu dekodirati samo jedan kanal u isto vrijeme."
 
-#, fuzzy
-msgid "Set LED color or disable the LED during deep-standby."
-msgstr "Uključite napajanje za LED tijekom dubokog stanja čekanja."
-
-#, fuzzy
-msgid "Set LED color or disable the LED during standby."
-msgstr "Uključite napajanje za LED tijekom stanja čekanja."
-
-msgid "Set LED color or disable the LED."
-msgstr ""
-
 msgid "Set PIN"
 msgstr "Postavite PIN"
 
@@ -12233,6 +12209,18 @@ msgid "Switch channel up"
 msgstr "Promijenite kanal prema gore"
 
 #, fuzzy
+msgid "Switch on the display during Standby Mode"
+msgstr "Isključite zaslon tijekom stanja čekanja"
+
+#, fuzzy
+msgid "Switch on the display during Suspend Mode"
+msgstr "Isključite zaslon tijekom obustave"
+
+#, fuzzy
+msgid "Switch on the display during operation."
+msgstr "Isključite zaslon tijekom rada."
+
+#, fuzzy
 msgid "Switch to HDMI-IN mode"
 msgstr "Prebacite se na TV način"
 
@@ -12340,7 +12328,7 @@ msgstr "Detalji dodatka: "
 
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
-msgstr "INFORMACIJE O PREVODITELJU"
+msgstr "Translator: zeljko2"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "TS datoteka je prevelika za ISO9660 razinu 1!"
@@ -13202,9 +13190,8 @@ msgstr "Konfigurirajte veličinu fonta titla."
 msgid "Toggle the tv and the radio player..."
 msgstr "Prebacivanje između televizora i radio playera..."
 
-#, fuzzy
 msgid "Toggle videomode"
-msgstr "Odaberite video način rada"
+msgstr "Prebacite u video način"
 
 msgid "Togo"
 msgstr "Togo"
@@ -14406,6 +14393,21 @@ msgstr "S pogreškama:"
 
 msgid "With popup"
 msgstr "S porukom"
+
+#, fuzzy
+msgid "With this option you can switch on the display during operation."
+msgstr "S ovom opcijom možete isključiti zaslon tijekom rada."
+
+#, fuzzy
+msgid "With this option you can switch on the display in Deep Standby Mode."
+msgstr "S ovom opcijom možete isključiti zaslon u načinu dubokog stanja čekanja."
+
+#, fuzzy
+msgid "With this option you can switch on the display in Standby Mode."
+msgstr "S ovom opcijom možete isključiti zaslon u stanje čekanja."
+
+msgid "With this option you can switch the LED color or deactivate the LED."
+msgstr "Pomoću ove opcije možete promjeniti LED boju ili deaktivirati LED."
 
 msgid "Without popup"
 msgstr "Bez poruke"

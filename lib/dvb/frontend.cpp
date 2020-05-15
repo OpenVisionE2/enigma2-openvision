@@ -2901,6 +2901,7 @@ RESULT eDVBFrontend::setVoltage(int voltage)
 	if (m_simulate)
 		return 0;
 #ifndef HAVE_RASPBERRYPI
+	eDebug("[eDVBFrontend%d] setVoltage FE_ENABLE_HIGH_LNB_VOLTAGE %d FE_SET_VOLTAGE %d", m_dvbid, increased, vlt);
 	::ioctl(m_fd, FE_ENABLE_HIGH_LNB_VOLTAGE, increased);
 #endif
 	return ::ioctl(m_fd, FE_SET_VOLTAGE, vlt);
