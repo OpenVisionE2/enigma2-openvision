@@ -3254,7 +3254,7 @@ class VideoMode(Screen):
 
 class InfoBarVmodeButton:
 	def __init__(self):
-		self["VmodeButtonActions"] = HelpableActionMap(self, "InfobarVmodeButtonActions",
+		self["VmodeButtonActions"] = HelpableActionMap(self, ["InfobarVmodeButtonActions"],
 			{
 				"vmodeSelection": (self.ToggleVideoMode, _("Letterbox zoom")),
 			})
