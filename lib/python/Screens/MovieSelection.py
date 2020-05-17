@@ -1641,11 +1641,14 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 					)
 				mbox.setTitle(self.getTitle())
 
-	def pinEntered(self, res, selItem, result):
-		if result:
+	def pinEntered(self, answer):
+		if answer:
 			from Components.ParentalControl import parentalControl
 			parentalControl.setSessionPinCached()
-			self.gotFilename(res, selItem, False)
+			parentalControl.hideBlacklist()
+			self.reloadList()
+		elif answer is not None:
+			self.session.openWithCallback(self.close, MessageBox, _("The pin code you entered is wrong."), MessageBox.TYPE_ERROR)
 
 	def showAll(self):
 		self.selected_tags_ele = None
