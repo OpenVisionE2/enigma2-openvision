@@ -10,15 +10,24 @@ profile("PYTHON_START")
 # Don't remove this line. It may seem to do nothing, but if removed,
 # it will break output redirection for crash logs.
 import Tools.RedirectOutput
+
 from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib
 print("[mytest] Open Vision version = %s" % getVisionVersion())
 print("[mytest] Open Vision revision = %s" % getVisionRevision())
-import enigma
+
+import enigma 
 import eConsoleImpl
 import eBaseImpl
 enigma.eTimer = eBaseImpl.eTimer
 enigma.eSocketNotifier = eBaseImpl.eSocketNotifier
 enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
+
+if getVisionVersion().startswith("10"):
+	from Components.Console import Console
+	print("[mytest] Try load all network interfaces.")
+	Console = Console()
+	Console.ePopen('/sbin/ifup -a')
+	print("[mytest] All network interfaces loaded.")
 
 from Components.SystemInfo import SystemInfo
 if not SystemInfo["OpenVisionModule"]:
