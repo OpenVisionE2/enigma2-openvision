@@ -1121,7 +1121,8 @@ class MemoryInfoSkinParams(GUIComponent):
 				if attrib == "rowsincolumn":
 					self.rows_in_column = int(value)
 			self.skinAttributes = attribs
-		return GUIComponent.applySkin(self, desktop, screen)
+			applySkin = GUIComponent
+		return applySkin()
 
 	GUI_WIDGET = eLabel
 
