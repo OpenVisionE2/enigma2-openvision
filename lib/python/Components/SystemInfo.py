@@ -116,7 +116,7 @@ SystemInfo["HDMIin"] = SystemInfo["HasHDMIHDin"] or SystemInfo["HasHDMIFHDin"]
 SystemInfo["HasYPbPr"] = model in ("dm8000","et5x00","et6x00","et9x00","et10000","formuler1","mbtwinplus","spycat","vusolo","vuduo","vuduo2","vuultimo")
 SystemInfo["HasScart"] = model in ("dm8000","et4x00","et6x00","et8000","et9x00","et10000","formuler1","hd1100","hd1200","hd1265","hd2400","vusolo","vusolo2","vuduo","vuduo2","vuultimo","vuuno","xp1000")
 SystemInfo["HasSVideo"] = model == "dm8000"
-SystemInfo["HasComposite"] = model not in ("dm900","dm920","dreamone","i55","gbquad4k","gbue4k","hd1500","osnino","osninoplus","purehd","purehdse","revo4k","vusolo4k","vuzero4k")
+SystemInfo["HasComposite"] = model not in ("dm900","dm920","i55","gbquad4k","gbue4k","hd1500","osnino","osninoplus","purehd","purehdse","revo4k","vusolo4k","vuzero4k")
 SystemInfo["HasAutoVolume"] = fileExists("/proc/stb/audio/avl_choices") and fileCheck("/proc/stb/audio/avl")
 SystemInfo["HasAutoVolumeLevel"] = fileExists("/proc/stb/audio/autovolumelevel_choices") and fileCheck("/proc/stb/audio/autovolumelevel")
 SystemInfo["Has3DSurround"] = fileExists("/proc/stb/audio/3d_surround_choices") and fileCheck("/proc/stb/audio/3d_surround")
@@ -148,10 +148,10 @@ SystemInfo["NCamIsActive"] = SystemInfo["NCamInstalled"] and fileExists("/tmp/.n
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/stb/info/openvision")
 SystemInfo["OLDE2API"] = model in ("dm800","su980")
 SystemInfo["7segment"] = getDisplayType() == "7segment"
-SystemInfo["CanFadeOut"] = brand not in ("linkdroid","mecool","minix","wetek","hardkernel","dinobot","maxytec","azbox") and model not in ("gbtrio4k","gbip4k","sf8008","sf8008m","ustym4kpro","beyonwizv2","viper4k","dreamone","hd60","hd61","h9","h9combo","h10","i55plus") and not pathExists("/proc/hisi") and not fileExists("/usr/bin/hihalt")
+SystemInfo["CanFadeOut"] = brand not in ("linkdroid","mecool","minix","wetek","hardkernel","dinobot","maxytec","azbox") and model not in ("gbtrio4k","gbip4k","sf8008","sf8008m","ustym4kpro","beyonwizv2","viper4k","hd60","hd61","h9","h9combo","h10","i55plus") and not pathExists("/proc/hisi") and not fileExists("/usr/bin/hihalt")
 SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51","h7")
-SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and model == "multibox" or brand in ("hypercube","linkdroid","mecool","wetek") or model == "dreamone"
+SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and model == "multibox" or brand in ("hypercube","linkdroid","mecool","wetek")
 SystemInfo["grautec"] = fileExists("/tmp/usbtft")
 SystemInfo["CanAC3plusTranscode"] = fileExists("/proc/stb/audio/ac3plus_choices")
 SystemInfo["CanDTSHD"] = fileExists("/proc/stb/audio/dtshd_choices")
@@ -167,7 +167,7 @@ SystemInfo["DreamBoxAudio"] = model in ("dm900","dm920","dm7080","dm800")
 SystemInfo["DreamBoxDTSAudio"] = model in ("dm7080","dm820")
 SystemInfo["GigaBlueAudio"] = model in ("gbquad4k","gbue4k","gbx34k")
 SystemInfo["GigaBlueQuad"] = model in ("gbquad","gbquadplus")
-SystemInfo["AmlogicFamily"] = brand in ("linkdroid","mecool","minix","wetek","hardkernel") or model == "dreamone"
+SystemInfo["AmlogicFamily"] = brand in ("linkdroid","mecool","minix","wetek","hardkernel")
 SystemInfo["VFDDelay"] = model in ("sf4008","beyonwizu4")
 SystemInfo["VFDRepeats"] = brand != "ixuss" and getDisplayType() != "7segment"
 SystemInfo["HiSilicon"] = brand in ("dinobot","maxytec") or model in ("gbtrio4k","gbip4k","sf8008","sf8008m","ustym4kpro","beyonwizv2","viper4k","hd60","hd61","h9","h9combo","h10","i55plus") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt")
@@ -177,7 +177,7 @@ SystemInfo["ThirdCheckModel"] = model in ("gbtrio4k","gbip4k","sf8008","sf8008m"
 SystemInfo["DifferentLCDSettings"] = model in ("spycat4kmini","osmega")
 SystemInfo["CanBTAudio"] = fileCheck("/proc/stb/audio/btaudio")
 SystemInfo["CanBTAudioDelay"] = fileCheck("/proc/stb/audio/btaudio_delay")
-SystemInfo["ArchIsARM64"] = brand in ("linkdroid","mecool") or model in ("wetekplay2","wetekhub","osmio4k","osmio4kplus","osmini4k","dreamone") or getImageArch() == "aarch64"
+SystemInfo["ArchIsARM64"] = brand in ("linkdroid","mecool") or model in ("wetekplay2","wetekhub","osmio4k","osmio4kplus","osmini4k") or getImageArch() == "aarch64"
 SystemInfo["ArchIsARM"] = SystemInfo["HiSilicon"] or brand in ("rpi","maxytec","octagon") or model in ("cube","su980","wetekplay","x8hp","odroidc2","beyonwizu4","bre2ze4k","hd51","hd60","hd61","h7","h9","h9combo","h10","i55plus","e4hdultra","protek4k","vs1500","et1x000","et13000","vusolo4k","vuuno4k","vuuno4kse","vuzero4k","vuultimo4k","vuduo4k","revo4k","tmtwin4k","galaxy4k","tm4ksuper","lunix34k","force4","lunix4k") or model.startswith("spycat4") or model.startswith("dm9") or model.startswith("force3u") or SystemInfo["GigaBlueAudio"]
 SystemInfo["SeekStatePlay"] = False
 SystemInfo["StatePlayPause"] = False
