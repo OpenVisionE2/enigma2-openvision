@@ -3678,19 +3678,6 @@ class InfoBarSubtitleSupport(object):
 				self.enableSubtitle(cachedsubtitle)
 				self.doCenterDVBSubs()
 
-	def toggleDefaultSubtitles(self):
-		subtitle = self.getCurrentServiceSubtitle()
-		subtitlelist = subtitle and subtitle.getSubtitleList()
-		if subtitlelist is None or len(subtitlelist) == 0:
-			self.subtitle_window.showMessage(_("No subtitles available"), True)
-		elif self.selected_subtitle:
-			self.enableSubtitle(None)
-			self.subtitle_window.showMessage(_("Subtitles off"), True)
-			self.selected_subtitle = None
-		else:
-			self.enableSubtitle(subtitlelist[0])
-			self.subtitle_window.showMessage(_("Subtitles on"), False)
-
 	def enableSubtitle(self, newSubtitle):
 		if self.selected_subtitle != newSubtitle:
 			subtitle = self.getCurrentServiceSubtitle()
