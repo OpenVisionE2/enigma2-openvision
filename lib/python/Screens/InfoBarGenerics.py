@@ -3207,6 +3207,13 @@ class VideoMode(Screen):
 	def __init__(self,session):
 		Screen.__init__(self, session)
 		self["videomode"] = Label()
+		self.timer = eTimer()
+		self.timer.callback.append(self.hide)
+
+	def setText(self, text=""):
+		self["videomode"].setText(text)
+		self.show()
+		self.timer.startLongTimer(3)
 
 class InfoBarVmodeButton:
 	def __init__(self):
@@ -3215,15 +3222,11 @@ class InfoBarVmodeButton:
 				"vmodeSelection": (self.ToggleVideoMode, _("Letterbox zoom")),
 			})
 		self.VideoMode_window = self.session.instantiateDialog(VideoMode)
-		self.__timer = eTimer()
-		self.__timer.callback.append(self.VideoMode_window.hide)
 
 	def ToggleVideoMode(self):
 		policy = config.av.policy_169 if self.isWideScreen() else config.av.policy_43
 		policy.value = policy.choices[(policy.choices.index(policy.value) + 1) % len(policy.choices)]
-		self.VideoMode_window["videomode"].setText(policy.value)
-		self.VideoMode_window.show()
-		self.__timer.startLongTimer(3)
+		self.VideoMode_window.setText(policy.value)
 
 	def isWideScreen(self):
 		from Components.Converter.ServiceInfo import WIDESCREEN
@@ -3615,7 +3618,7 @@ class InfoBarSubtitleSupport(object):
 		self["SubtitleSelectionAction"] = HelpableActionMap(self, "InfobarSubtitleSelectionActions",
 			{
 				"subtitleSelection": (self.subtitleSelection, _("Subtitle selection...")),
-				"toggleDefaultSubtitles": (self.toggleDefaultSubtitles, _("Toggle the default subtitles"))
+				"subtitleShowHide": (self.toggleSubtitleShown, _("Subtitle show/hide..."))
 			})
 
 		self.selected_subtitle = None
@@ -3629,7 +3632,6 @@ class InfoBarSubtitleSupport(object):
 			self.subtitle_window = InfoBar.instance.subtitle_window
 
 		self.subtitle_window.hide()
-
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
 			{
 				iPlayableService.evStart: self.__serviceChanged,
@@ -3695,7 +3697,7 @@ class InfoBarSubtitleSupport(object):
 			self.selected_subtitle = newSubtitle
 			if subtitle and newSubtitle:
 				subtitle.enableSubtitles(self.subtitle_window.instance, newSubtitle)
-				self.subtitle_window.show()
+				self.showSubtitles()
 				self.doCenterDVBSubs()
 			else:
 				if subtitle:
@@ -3705,6 +3707,17 @@ class InfoBarSubtitleSupport(object):
 	def restartSubtitle(self):
 		if self.selected_subtitle:
 			self.enableSubtitle(self.selected_subtitle)
+
+	def toggleSubtitleShown(self):
+		config.subtitles.show.value = not config.subtitles.show.value
+		self.VideoMode_window.setText(_("Subtitles enabled") if config.subtitles.show.value else _("Subtitles disabled"))
+		self.showSubtitles()
+
+	def showSubtitles(self):
+		if config.subtitles.show.value:
+			self.subtitle_window.show()
+		else:
+			self.subtitle_window.hide()
 
 class InfoBarServiceErrorPopupSupport:
 	def __init__(self):
