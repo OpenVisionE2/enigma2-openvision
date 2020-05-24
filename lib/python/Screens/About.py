@@ -63,6 +63,7 @@ class About(Screen):
 		AboutText += _("CPU: ") + cpu + "\n"
 		AboutText += _("CPU brand: ") + about.getCPUBrand() + "\n"
 		AboutText += _("CPU architecture: ") + about.getCPUArch() + "\n"
+		AboutText += _("CPU benchmark: ") + about.getCPUBenchmark() + _(" DMIPS") + "\n"
 
 		if not boxbranding.getDisplayType().startswith(' '):
 			AboutText += "\n"
@@ -284,9 +285,9 @@ class DVBInformation(Screen):
 			import time
 			try:
 				cmd = 'dvb-fe-tool > /tmp/dvbfetool.txt'
-				res = Console().ePopen(cmd)
+				Console().ePopen(cmd)
 				cmdv = "dvb-fe-tool | grep -o 'DVB API Version [0-9].[0-9]*' | sed 's|[^0-9]*||' > /tmp/dvbapiversion.txt"
-				resv = Console().ePopen(cmdv)
+				Console().ePopen(cmdv)
 				time.sleep(0.1)
 			except:
 				pass
