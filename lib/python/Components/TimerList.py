@@ -60,7 +60,10 @@ class TimerList(GUIComponent, object):
 		if not processed and (not timer.disabled or (timer.repeated and timer.isRunning() and not timer.justplay)):
 			if timer.state == TimerEntry.StateWaiting:
 				state = _("waiting")
-				icon = self.iconWait
+				if timer.isAutoTimer:
+					icon = self.iconAutoTimer
+				else:
+					icon = self.iconWait
 			elif timer.state == TimerEntry.StatePrepared:
 				state = _("about to start")
 				icon = self.iconPrepared
