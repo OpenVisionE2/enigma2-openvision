@@ -485,12 +485,12 @@ class CiSelection(Screen):
 
 	def okbuttonClick(self):
 		cur = self["entries"].getCurrent()
-		if cur and len(cur) > 2:
-			action = cur[2]
-			slot = cur[3]
-			if action == 3:
-				pass
-			elif action == 0: #reset
+		if cur and hasattr(self, "entryData"):
+			idx = self["entries"].getCurrentIndex()
+			entryData = self.entryData[idx]
+			action = entryData[0]
+			slot = entryData[1]
+			if action == 0: #reset
 				eDVBCI_UI.getInstance().setReset(slot)
 			elif action == 1: #init
 				eDVBCI_UI.getInstance().setInit(slot)
@@ -500,7 +500,7 @@ class CiSelection(Screen):
 				config.ci[slot].static_pin.value = 0
 				config.ci[slot].static_pin.save()
 				self.session.openWithCallback(self.cancelCB, MessageBox, _("The saved PIN was cleared."), MessageBox.TYPE_INFO)
-			elif self.state[slot] == 2:
+			elif action == 2 and self.state[slot] == 2:
 				self.dlg = self.session.openWithCallback(self.dlgClosed, MMIDialog, slot, action)
 
 	def cancelCB(self, value):
