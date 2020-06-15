@@ -194,8 +194,17 @@ class OpenVisionInformation(Screen):
 
 		OpenVisionInformationText += "\n"
 
-		OpenVisionInformationText += _("Open Vision version: ") + boxbranding.getVisionVersion() + "\n"
-		OpenVisionInformationText += _("Open Vision revision: ") + boxbranding.getVisionRevision() + "\n"
+		if fileExists("/etc/openvision/visionversion"):
+			visionversion = open("/etc/openvision/visionversion", "r").read().strip()
+			OpenVisionInformationText += _("Open Vision version: ") + visionversion + "\n"
+		else:
+			OpenVisionInformationText += _("Open Vision version: ") + boxbranding.getVisionVersion() + "\n"
+
+		if fileExists("/etc/openvision/visionrevision"):
+			visionrevision = open("/etc/openvision/visionrevision", "r").read().strip()
+			OpenVisionInformationText += _("Open Vision revision: ") + visionrevision + "\n"
+		else:
+			OpenVisionInformationText += _("Open Vision revision: ") + boxbranding.getVisionRevision() + "\n"
 
 		if fileExists("/etc/openvision/visionlanguage"):
 			visionlanguage = open("/etc/openvision/visionlanguage", "r").read().strip()
