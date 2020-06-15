@@ -120,6 +120,7 @@ def setEPGCachePath(configElement):
 profile("Twisted")
 try:
 	import twisted.python.runtime
+	twisted.python.runtime.platform.supportsThreads = lambda: True
 
 	import e2reactor
 	e2reactor.install()
