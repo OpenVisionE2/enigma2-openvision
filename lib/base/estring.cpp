@@ -761,7 +761,6 @@ int isUTF8(const std::string &string)
 }
 
 
-
 unsigned int truncateUTF8(std::string &s, unsigned int newsize)
 {
 	unsigned int len = s.size();
