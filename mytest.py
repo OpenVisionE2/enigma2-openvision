@@ -26,7 +26,7 @@ if fileHas ("/var/log/samba/log.nmbd","ERROR: Could not determine network interf
 	from Components.Console import Console
 	print("[mytest] Try load all network interfaces.")
 	Console = Console()
-	Console.ePopen('/etc/init.d/networking restart ; /etc/init.d/samba.sh restart')
+	Console.ePopen('/etc/init.d/networking restart ; /etc/init.d/samba.sh restart ; mount -a -t nfs,smbfs,cifs,ncpfs')
 	print("[mytest] All network interfaces loaded.")
 
 from Components.SystemInfo import SystemInfo
