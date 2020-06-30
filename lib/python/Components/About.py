@@ -107,20 +107,6 @@ def getKernelVersionString():
 	except:
 		return _("unknown")
 
-def getSTBUptime():
-	try:
-		f = open("/proc/uptime", "rb")
-		uptime = int(float(f.readline().split(' ', 2)[0].strip()))
-		uptimetext = ''
-		if uptime > 86400:
-			d = uptime / 86400
-			uptime = uptime % 86400
-			uptimetext += '%dd ' % d
-		uptimetext += "%d:%.2d" % (uptime / 3600, (uptime % 3600) / 60)
-		return uptimetext
-	except:
-		return _("unknown")
-
 def getCPUBenchmark():
 	try:
 		if not fileExists("/tmp/dhry.txt"):

@@ -85,8 +85,6 @@ class About(Screen):
 		AboutText += _("Enigma2 (re)starts: %d\n") % config.misc.startCounter.value
 		AboutText += _("Enigma2 debug level: %d\n") % eGetEnigmaDebugLvl()
 
-		AboutText += _("Uptime: ") + about.getSTBUptime() + "\n"
-
 		if fileExists("/etc/openvision/mediaservice"):
 			mediaservice = open("/etc/openvision/mediaservice", "r").read().strip()
 			AboutText += _("Media service: ") + mediaservice.replace("enigma2-plugin-systemplugins-","") + "\n"
