@@ -28,7 +28,7 @@ try: # for reading the current transport stream (SatfinderExtra)
 	import datetime
 	import thread
 	dvbreader_available = True
-except ImportError:
+except ImportError as e:
 	print("[Satfinder] import dvbreader not available")
 	dvbreader_available = False
 

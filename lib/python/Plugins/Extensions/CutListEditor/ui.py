@@ -591,7 +591,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 				from Plugins.Extensions.MovieCut.plugin import MovieCut
 				self.session.nav.stopService()	# need to stop to save the cuts file
 				self.session.openWithCallback(self.executeCallback, MovieCut, self.service)
-			except ImportError:
+			except ImportError as e:
 				self.session.open(MessageBox, _("The MovieCut plugin is not installed."), type=MessageBox.TYPE_INFO, timeout=10)
 		elif result == CutListContextMenu.RET_GRABFRAME:
 			self.grabFrame()

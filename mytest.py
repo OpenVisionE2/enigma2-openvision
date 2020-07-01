@@ -141,7 +141,7 @@ try:
 
 	def runReactor():
 		reactor.run(installSignalHandlers=False)
-except ImportError:
+except ImportError as e:
 	print("[mytest] twisted not available")
 	def runReactor():
 		enigma.runMainloop()

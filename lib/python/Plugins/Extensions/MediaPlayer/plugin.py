@@ -653,7 +653,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 				from Plugins.Extensions.CDInfo.plugin import Query
 				cdinfo = Query(self)
 				cdinfo.scan()
-			except ImportError:
+			except ImportError as e:
 				pass # we can live without CDInfo
 			self.changeEntry(0)
 			self.switchToPlayList()

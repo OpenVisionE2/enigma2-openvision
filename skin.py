@@ -1108,7 +1108,7 @@ def readSkin(screen, skin, names, desktop):
 				# print("[Skin] DEBUG: Params='%s'." % parms)
 				try:
 					converterClass = my_import(".".join(("Components", "Converter", ctype))).__dict__.get(ctype)
-				except ImportError:
+				except ImportError as e:
 					raise SkinError("Converter '%s' not found" % ctype)
 				c = None
 				for i in source.downstream_elements:
@@ -1120,7 +1120,7 @@ def readSkin(screen, skin, names, desktop):
 				source = c
 			try:
 				rendererClass = my_import(".".join(("Components", "Renderer", wrender))).__dict__.get(wrender)
-			except ImportError:
+			except ImportError as e:
 				raise SkinError("Renderer '%s' not found" % wrender)
 			renderer = rendererClass()  # Instantiate renderer.
 			renderer.connect(source)  # Connect to source.

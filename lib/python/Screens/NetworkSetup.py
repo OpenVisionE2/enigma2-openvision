@@ -309,7 +309,7 @@ class NetworkAdapterSelection(Screen,HelpableScreen):
 		if os.path.exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/NetworkWizard/networkwizard.xml")):
 			try:
 				from Plugins.SystemPlugins.NetworkWizard.NetworkWizard import NetworkWizard
-			except ImportError:
+			except ImportError as e:
 				self.session.open(MessageBox, _("The network wizard extension is not installed!\nPlease install it."), type = MessageBox.TYPE_INFO,timeout = 10 )
 			else:
 				selection = self["list"].getCurrent()
@@ -1088,7 +1088,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		try:
 			from pythonwifi.iwlibs import Wireless
 			import errno
-		except ImportError:
+		except ImportError as e:
 			return False
 		else:
 			try:
@@ -1110,7 +1110,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 			if iNetwork.isWirelessInterface(self.iface):
 				try:
 					from Plugins.SystemPlugins.WirelessLan.plugin import WlanScan
-				except ImportError:
+				except ImportError as e:
 					self.session.open(MessageBox, self.missingwlanplugintxt, type = MessageBox.TYPE_INFO,timeout = 10 )
 				else:
 					if self.queryWirelessDevice(self.iface):
@@ -1130,7 +1130,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		if self["menulist"].getCurrent()[1] == 'scanwlan':
 			try:
 				from Plugins.SystemPlugins.WirelessLan.plugin import WlanScan
-			except ImportError:
+			except ImportError as e:
 				self.session.open(MessageBox, self.missingwlanplugintxt, type = MessageBox.TYPE_INFO,timeout = 10 )
 			else:
 				if self.queryWirelessDevice(self.iface):
@@ -1140,7 +1140,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		if self["menulist"].getCurrent()[1] == 'wlanstatus':
 			try:
 				from Plugins.SystemPlugins.WirelessLan.plugin import WlanStatus
-			except ImportError:
+			except ImportError as e:
 				self.session.open(MessageBox, self.missingwlanplugintxt, type = MessageBox.TYPE_INFO,timeout = 10 )
 			else:
 				if self.queryWirelessDevice(self.iface):
@@ -1265,7 +1265,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 			if ret[0] == 'ok' and (iNetwork.isWirelessInterface(self.iface) and iNetwork.getAdapterAttribute(self.iface, "up") is True):
 				try:
 					from Plugins.SystemPlugins.WirelessLan.plugin import WlanStatus
-				except ImportError:
+				except ImportError as e:
 					self.session.open(MessageBox, self.missingwlanplugintxt, type = MessageBox.TYPE_INFO,timeout = 10 )
 				else:
 					if self.queryWirelessDevice(self.iface):
@@ -1334,7 +1334,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		iNetwork.stopPingConsole()
 		try:
 			from Plugins.SystemPlugins.WirelessLan.Wlan import iStatus
-		except ImportError:
+		except ImportError as e:
 			pass
 		else:
 			iStatus.stopWlanConsole()
@@ -1783,7 +1783,7 @@ class NetworkAdapterTest(Screen):
 		iNetwork.stopDNSConsole()
 		try:
 			from Plugins.SystemPlugins.WirelessLan.Wlan import iStatus
-		except ImportError:
+		except ImportError as e:
 			pass
 		else:
 			iStatus.stopWlanConsole()
