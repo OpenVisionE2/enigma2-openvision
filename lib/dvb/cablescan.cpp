@@ -14,6 +14,8 @@
 #include <lib/base/estring.h>
 #include <lib/base/nconfig.h>
 
+#define BRASIL_NET_LOGICAL_CHANNEL_DESCRIPTOR 0x82
+
 DEFINE_REF(eCableScan);
 
 eCableScan::eCableScan(int networkid, unsigned int frequency, unsigned int symbolrate, int modulation, bool originalnumbering, bool hdlist, bool networkname)
@@ -223,6 +225,21 @@ void eCableScan::parseNIT()
 					for (LogicalChannelListConstIterator c(channels.begin()); c != channels.end(); ++c)
 					{
 						serviceIdToHDChannelId[(*c)->getServiceId()] = (*c)->getLogicalChannelNumber();
+					}
+					break;
+				}
+				case BRASIL_NET_LOGICAL_CHANNEL_DESCRIPTOR:
+				{
+					unsigned char buf[(*desc)->getLength() + 2];
+					(*desc)->writeToBuffer(buf);
+					LogicalChannelDescriptor d(buf);
+					const LogicalChannelList &channels = *d.getChannelList();
+					for (LogicalChannelListConstIterator c(channels.begin()); c != channels.end(); ++c)
+					{
+						if ((*c)->getLogicalChannelNumber() < 500) /* SD */
+							serviceIdToChannelId[(*c)->getServiceId()] = (*c)->getLogicalChannelNumber();
+						else /* HD */
+							serviceIdToHDChannelId[(*c)->getServiceId()] = (*c)->getLogicalChannelNumber();
 					}
 					break;
 				}

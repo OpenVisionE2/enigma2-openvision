@@ -31,6 +31,8 @@
 #define SCAN_eDebugNoNewLineStart(x...) do { if (m_scan_debug) eDebugNoNewLineStart(x); } while(0)
 #define SCAN_eDebugNoNewLine(x...) do { if (m_scan_debug) eDebugNoNewLine(x); } while(0)
 
+#define BRASIL_NET_LOGICAL_CHANNEL_DESCRIPTOR 0x82
+
 DEFINE_REF(eDVBScan);
 
 eDVBScan::eDVBScan(iDVBChannel *channel, bool usePAT, bool debug)
@@ -866,6 +868,7 @@ void eDVBScan::channelDone()
 						[[fallthrough]];
 					}
 					case LOGICAL_CHANNEL_DESCRIPTOR:
+					case BRASIL_NET_LOGICAL_CHANNEL_DESCRIPTOR:
 					{
 						// we handle it later
 						break;
@@ -966,6 +969,7 @@ void eDVBScan::channelDone()
 					switch ((*desc)->getTag())
 					{
 						case LOGICAL_CHANNEL_DESCRIPTOR:
+						case BRASIL_NET_LOGICAL_CHANNEL_DESCRIPTOR:
 						{
 							//SCAN_eDebug("[eDVBScan] [LCN] Test 2");
 							if (system != iDVBFrontend::feTerrestrial)

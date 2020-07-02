@@ -11,6 +11,8 @@
 #include <lib/base/estring.h>
 #include <lib/base/nconfig.h>
 
+#define BRASIL_NET_LOGICAL_CHANNEL_DESCRIPTOR 0x82
+
 #ifdef HAVE_OLDE2_API
 #ifndef NO_STREAM_ID_FILTER
 #define NO_STREAM_ID_FILTER    (~0U)
@@ -174,6 +176,7 @@ FastScanTransportStream::FastScanTransportStream(const uint8_t *const buffer)
 		switch (buffer[pos])
 		{
 		case LOGICAL_CHANNEL_DESCRIPTOR:
+		case BRASIL_NET_LOGICAL_CHANNEL_DESCRIPTOR:
 			logicalChannels = new FastScanLogicalChannelDescriptor(&buffer[pos]);
 			break;
 		case SATELLITE_DELIVERY_SYSTEM_DESCRIPTOR:
