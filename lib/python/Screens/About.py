@@ -717,7 +717,7 @@ class SystemNetworkInfo(Screen):
 				speed = line.split(': ')[1][:-4]
 				self.AboutText += _("Speed:") + "\t" + speed + _('Mb/s')
 
-		hostname = file('/proc/sys/kernel/hostname').read()
+		hostname = open('/proc/sys/kernel/hostname').read()
 		self.AboutText += "\n"
 		self.AboutText += _("Hostname:") + "\t" + hostname + "\n"
 		self["AboutScrollLabel"].setText(self.AboutText)
@@ -881,7 +881,7 @@ class SystemMemoryInfo(Screen):
 										"red": self.close,
 									})
 
-		out_lines = file("/proc/meminfo").readlines()
+		out_lines = open("/proc/meminfo").readlines()
 		self.AboutText = _("RAM") + '\n\n'
 		RamTotal = "-"
 		RamFree = "-"

@@ -234,7 +234,7 @@ class NetworkAdapterSelection(Screen,HelpableScreen):
 			os.unlink("/etc/default_gw")
 
 		if os.path.exists("/etc/default_gw"):
-			fp = file('/etc/default_gw', 'r')
+			fp = open('/etc/default_gw', 'r')
 			result = fp.read()
 			fp.close()
 			default_gw = result
@@ -653,7 +653,7 @@ class InetdRecovery(Screen, ConfigListScreen):
 		if fileExists("/usr/bin/transtreamproxy"):
 			inetdData += "8002	stream	" + sockTypetcp + "	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
 
-		file("/etc/inetd.conf", "w").write(inetdData)
+		open("/etc/inetd.conf", "w").write(inetdData)
 
 		self.inetdRestart()
 
