@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from MenuList import MenuList
+from Components.MenuList import MenuList
 
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN
 from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaTest
