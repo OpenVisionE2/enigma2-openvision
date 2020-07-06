@@ -10,7 +10,7 @@ profile("PYTHON_START")
 # Don't remove this line. It may seem to do nothing, but if removed,
 # it will break output redirection for crash logs.
 import Tools.RedirectOutput
-from Tools.Directories import resolveFilename, fileHas
+from Tools.Directories import resolveFilename, fileExists
 from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib
 print("[mytest] Open Vision version = %s" % getVisionVersion())
 print("[mytest] Open Vision revision = %s" % getVisionRevision())
@@ -22,7 +22,7 @@ enigma.eTimer = eBaseImpl.eTimer
 enigma.eSocketNotifier = eBaseImpl.eSocketNotifier
 enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
 
-if fileHas ("/var/log/samba/log.nmbd","ERROR: Could not determine network interfaces") and not fileHas ("/var/log/samba/log.nmbd","daemon_ready"):
+if getVisionVersion().startswith("10") and not fileExists ("/var/tmp/ntpv4.local"):
 	from Components.Console import Console
 	print("[mytest] Try load all network interfaces.")
 	Console = Console()
