@@ -309,7 +309,6 @@ class Menu(Screen, ProtectedScreen):
 		else:
 			t_history.reset()
 		self["title"] = StaticText(title)
-		self.setScreenPathMode(True)
 		self.setTitle(title)
 		self.menu_title = title
 		self['thistory'] = StaticText(t_history.thistory)

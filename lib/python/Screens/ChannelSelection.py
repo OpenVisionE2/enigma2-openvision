@@ -1366,7 +1366,6 @@ singlebouquet_radio_ref = serviceRefAppendPath(service_types_radio_ref, ' FROM B
 class ChannelSelectionBase(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.setScreenPathMode(None)
 		self["key_red"] = Button(_("All"))
 		self["key_green"] = Button(_("Satellites"))
 		self["key_yellow"] = Button(_("Provider"))
