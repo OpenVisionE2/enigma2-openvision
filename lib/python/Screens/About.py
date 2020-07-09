@@ -22,7 +22,6 @@ from Components.Console import Console
 from Components.Pixmap import MultiPixmap
 from Components.Network import iNetwork
 from Components.SystemInfo import SystemInfo
-from re import search
 from Tools.Geolocation import geolocation
 
 class About(Screen):
@@ -213,6 +212,35 @@ class OpenVisionInformation(Screen):
 		OpenVisionInformationText += _("Flash type: ") + about.getFlashType() + "\n"
 
 		OpenVisionInformationText += "\n"
+
+		if SystemInfo["HiSilicon"]:
+			OpenVisionInformationText += _("HiSilicon dedicated information") + "\n"
+
+			grab = os.popen("opkg list-installed | grep -- -grab | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			if grab != "":
+				OpenVisionInformationText += _("Grab: ") + grab + "\n"
+
+			hihalt = os.popen("opkg list-installed | grep -- -hihalt | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			if hihalt != "":
+				OpenVisionInformationText += _("Halt: ") + hihalt + "\n"
+
+			libs = os.popen("opkg list-installed | grep -- -libs | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			if libs != "":
+				OpenVisionInformationText += _("Libs: ") + libs + "\n"
+
+			partitions = os.popen("opkg list-installed | grep -- -partitions | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			if partitions != "":
+				OpenVisionInformationText += _("Partitions: ") + partitions + "\n"
+
+			reader = os.popen("opkg list-installed | grep -- -reader | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			if reader != "":
+				OpenVisionInformationText += _("Reader: ") + reader + "\n"
+
+			showiframe = os.popen("opkg list-installed | grep -- -showiframe | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			if showiframe != "":
+				OpenVisionInformationText += _("Showiframe: ") + showiframe + "\n"
+
+			OpenVisionInformationText += "\n"
 
 		OpenVisionInformationText += _("Image architecture: ") + boxbranding.getImageArch() + "\n"
 		if boxbranding.getImageFolder() != "":
