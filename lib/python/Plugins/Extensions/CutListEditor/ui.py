@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 import bisect
 from time import sleep
 from struct import unpack, Struct
@@ -26,14 +26,14 @@ apscParser = Struct(">qq")    # big-endian, 64-bit offset and 64-bit PTS/data
 config.usage.cutlisteditor_tutorial_seen = ConfigYesNo(default=False)
 
 def SecToMSS(sec):
-	return "%d:%02d" % (sec / 60, sec % 60)
+	return "%d:%02d" % (sec // 60, sec % 60)
 
 def CutListEntry(where, what, where_next=None):
-	w = where / 90
+	w = where // 90
 	ms = w % 1000
-	s = (w / 1000) % 60
-	m = (w / 60000) % 60
-	h = w / 3600000
+	s = (w // 1000) % 60
+	m = (w // 60000) % 60
+	h = w // 3600000
 	type, type_col = (
 		("IN",   0x004000),
 		("OUT",  0x400000),
@@ -43,7 +43,7 @@ def CutListEntry(where, what, where_next=None):
 		("",     0x000000)
 	)[what if what < 5 else 5]
 
-	d = SecToMSS((where_next / 90 - w) / 1000) if where_next else ""
+	d = SecToMSS((where_next // 90 - w) // 1000) if where_next else ""
 
 	return (where, what), "%dh:%02dm:%02ds:%03d" % (h, m, s, ms), type, d, type_col
 
@@ -404,8 +404,8 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 				out_len += length - last_pts
 			else:
 				in_len += length - last_pts
-		self["InLen"].setText(SecToMSS(in_len / 90000))
-		self["OutLen"].setText(SecToMSS(out_len / 90000))
+		self["InLen"].setText(SecToMSS(in_len // 90000))
+		self["OutLen"].setText(SecToMSS(out_len // 90000))
 
 		if first_cut is None:
 			first_cut = self.CUT_TYPE_IN
@@ -704,7 +704,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 						break
 					ofs = apscParser.unpack_from(data, len(data) - apscParser.size)[0]
 					if ofs >= offset:
-						apsc = unpack(">%dq" % (len(data) / 8), data)
+						apsc = unpack(">%dq" % (len(data) // 8), data)
 						for i, ofs in enumerate(apsc[::2]):
 							if ofs >= offset:
 								f.truncate(f.tell() - len(data) + i * apscParser.size)
@@ -754,7 +754,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 		if len(data) < 2 * apscParser.size:
 			return False
 
-		data = unpack(">%dq" % (len(data) / 8), data)
+		data = unpack(">%dq" % (len(data) // 8), data)
 
 		ofs1, currentDelta = data[0], data[1]
 		if ofs1 != 0:

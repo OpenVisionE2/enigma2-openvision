@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 import errno
 import xml.etree.cElementTree
 
@@ -235,7 +235,7 @@ class SkinError(Exception):
 def parseCoordinate(s, e, size=0, font=None):
 	s = s.strip()
 	if s == "center":  # For speed as this can be common case.
-		val = 0 if not size else (e - size) / 2
+		val = 0 if not size else (e - size) // 2
 	elif s == "*":
 		return None
 	else:
@@ -243,17 +243,17 @@ def parseCoordinate(s, e, size=0, font=None):
 			val = int(s)  # For speed try a simple number first.
 		except ValueError:
 			if "t" in s:
-				s = s.replace("center", str((e - size) / 2.0))
+				s = s.replace("center", str((e - size) // 2.0))
 			if "e" in s:
 				s = s.replace("e", str(e))
 			if "c" in s:
-				s = s.replace("c", str(e / 2.0))
+				s = s.replace("c", str(e // 2.0))
 			if "w" in s:
 				s = s.replace("w", "*%s" % str(fonts[font][3]))
 			if "h" in s:
 				s = s.replace("h", "*%s" % str(fonts[font][2]))
 			if "%" in s:
-				s = s.replace("%", "*%s" % str(e / 100.0))
+				s = s.replace("%", "*%s" % str(e // 100.0))
 			try:
 				val = int(s)  # For speed try a simple number first.
 			except ValueError:
@@ -288,7 +288,7 @@ def parseValuePair(s, scale, object=None, desktop=None, size=None):
 		parentsize = getParentSize(object, desktop)
 	xval = parseCoordinate(x, parentsize.width(), size and size.width() or 0)
 	yval = parseCoordinate(y, parentsize.height(), size and size.height() or 0)
-	return (xval * scale[0][0] / scale[0][1], yval * scale[1][0] / scale[1][1])
+	return (xval * scale[0][0] // scale[0][1], yval * scale[1][0] // scale[1][1])
 
 def parsePosition(s, scale, object=None, desktop=None, size=None):
 	return ePoint(*parseValuePair(s, scale, object, desktop, size))
@@ -312,7 +312,7 @@ def parseFont(s, scale=((1, 1), (1, 1))):
 			print("[skin] Error: Font '%s' (in '%s') is not defined!  Using 'Body' font ('%s') instead." % (name, s, f[0]))
 			name = f[0]
 			size = f[1] if size is None else size
-	return gFont(name, int(size) * scale[0][0] / scale[0][1])
+	return gFont(name, int(size) * scale[0][0] // scale[0][1])
 
 def parseColor(s):
 	if s[0] != "#":
@@ -525,7 +525,7 @@ class AttributeParser:
 
 	def textOffset(self, value):
 		x, y = value.split(",")
-		self.guiObject.setTextOffset(ePoint(int(x) * self.scaleTuple[0][0] / self.scaleTuple[0][1], int(y) * self.scaleTuple[1][0] / self.scaleTuple[1][1]))
+		self.guiObject.setTextOffset(ePoint(int(x) * self.scaleTuple[0][0] // self.scaleTuple[0][1], int(y) * self.scaleTuple[1][0] // self.scaleTuple[1][1]))
 
 	def flags(self, value):
 		flags = value.split(",")
@@ -1225,7 +1225,7 @@ def readSkin(screen, skin, names, desktop):
 # screen will be 1.
 #
 def getSkinFactor():
-	skinfactor = getDesktop(GUI_SKIN_ID).size().height() / 720.0
+	skinfactor = getDesktop(GUI_SKIN_ID).size().height() // 720.0
 	# if skinfactor not in [0.8, 1, 1.5, 3, 6]:
 	# 	print("[Skin] Warning: Unexpected result for getSkinFactor '%0.4f'!" % skinfactor)
 	return skinfactor

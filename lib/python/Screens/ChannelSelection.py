@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from Tools.Profile import profile
 from Screens.Screen import Screen
 import Screens.InfoBar
@@ -1657,7 +1657,7 @@ class ChannelSelectionBase(Screen):
 											h = _("W")
 										else:
 											h = _("E")
-										service_name = ("%d.%d" + h) % (orbpos / 10, orbpos % 10)
+										service_name = ("%d.%d" + h) % (orbpos // 10, orbpos % 10)
 									service.setName("%s - %s" % (service_name, service_type))
 									self.servicelist.addService(service)
 						cur_ref = self.session.nav.getCurrentlyPlayingServiceReference()

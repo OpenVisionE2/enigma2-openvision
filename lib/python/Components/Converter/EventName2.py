@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from enigma import eEPGCache
@@ -86,7 +87,7 @@ class EventName2(Converter, object):
 				if eventNext:
 					if self.type is self.NEXT_NAME or self.type is self.NEXT_NAMEWT or self.type is self.NEXT_TIME_DURATION:
 						t = localtime(eventNext[0][1])
-						duration = _("%d min") % (int(0 if eventNext[0][2] is None else eventNext[0][2]) / 60)
+						duration = _("%d min") % (int(0 if eventNext[0][2] is None else eventNext[0][2]) // 60)
 						if len(eventNext[0]) > 4 and eventNext[0][4]:
 							if self.type is self.NEXT_NAME:
 								return "%02d:%02d  (%s)  %s" % (t[3], t[4], duration, eventNext[0][4])
@@ -121,7 +122,7 @@ class EventName2(Converter, object):
 							if x[4]:
 								t = localtime(x[1])
 								if self.type is self.NEXT_EVENT_LIST or self.type is self.NEXT_EVENT_LIST2 or self.type is self.NEXT_NAME_NEXT:
-									duration = _("%d min") % (int(0 if eventNext[i][2] is None else eventNext[i][2]) / 60)
+									duration = _("%d min") % (int(0 if eventNext[i][2] is None else eventNext[i][2]) // 60)
 									listEpg.append("%02d:%02d (%s) %s" % (t[3], t[4], duration, x[4]))
 								else:
 									listEpg.append("%02d:%02d %s" % (t[3], t[4], x[4]))

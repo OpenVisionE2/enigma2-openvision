@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from Components.Converter.Converter import Converter
 from enigma import iServiceInformation, iPlayableService, iPlayableServicePtr, eServiceReference, eServiceCenter, eTimer, getBestPlayableServiceReference
 from Components.Element import cached
@@ -224,10 +225,10 @@ class ServiceName2(Converter, object):
 					result += type
 			elif f == 'F':	# %F - frequency (dvb-s/s2/c/t) in KHz
 				if type in ('DVB-S','DVB-C') and self.tpdata.get('frequency', 0) >0 :
-					result += '%d MHz'%(self.tpdata.get('frequency', 0) / 1000)
+					result += '%d MHz'%(self.tpdata.get('frequency', 0) // 1000)
 				if type in ('DVB-T'):
-					result += '%.3f MHz'%(((self.tpdata.get('frequency', 0) +500) / 1000) / 1000.0)
-#					result += '%.3f'%(((self.tpdata.get('frequency', 0) / 1000) +1) / 1000.0) + " MHz "
+					result += '%.3f MHz'%(((self.tpdata.get('frequency', 0) +500) // 1000) // 1000.0)
+#					result += '%.3f'%(((self.tpdata.get('frequency', 0) // 1000) +1) // 1000.0) + " MHz "
 			elif f == 'f':	# %f - fec_inner (dvb-s/s2/c/t)
 				if type in ('DVB-S','DVB-C'):
 					x = self.tpdata.get('fec_inner', 15)
@@ -261,7 +262,7 @@ class ServiceName2(Converter, object):
 					result += x in range(4) and {0:'H',1:'V',2:'LHC',3:'RHC'}[x] or '?'
 			elif f == 'Y':	# %Y - symbol_rate (dvb-s/s2/c)
 				if type in ('DVB-S','DVB-C'):
-					result += '%d'%(self.tpdata.get('symbol_rate', 0) / 1000)
+					result += '%d'%(self.tpdata.get('symbol_rate', 0) // 1000)
 			elif f == 'r':	# %r - rolloff (dvb-s2)
 				if not self.isStream:
 					x = self.tpdata.get('rolloff')

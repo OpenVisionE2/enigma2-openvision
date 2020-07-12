@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from Screens.ChannelSelection import ChannelSelection, BouquetSelector, SilentBouquetSelector
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.ActionMap import NumberActionMap
@@ -245,7 +245,7 @@ class InfoBarUnhandledKey:
 
 class HideVBILine(Screen):
 	def __init__(self, session):
-		self.skin = """<screen position="0,0" size="%s,%s" flags="wfNoBorder" zPosition="1"/>""" % (getDesktop(0).size().width(), getDesktop(0).size().height() / 180 + 1)
+		self.skin = """<screen position="0,0" size="%s,%s" flags="wfNoBorder" zPosition="1"/>""" % (getDesktop(0).size().width(), getDesktop(0).size().height() // 180 + 1)
 		Screen.__init__(self, session)
 
 class SecondInfoBar(Screen):
@@ -435,7 +435,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 	def doHide(self):
 		if self.__state != self.STATE_HIDDEN:
 			if self.dimmed > 0:
-				self.doWriteAlpha(int(int(config.av.osd_alpha.value) * int(self.dimmed) / int(config.usage.show_infobar_dimming_speed.value)))
+				self.doWriteAlpha(int(int(config.av.osd_alpha.value) * int(self.dimmed) // int(config.usage.show_infobar_dimming_speed.value)))
 				self.DimmingTimer.start(5, True)
 			else:
 				self.DimmingTimer.stop()
@@ -1761,7 +1761,7 @@ class InfoBarSeek:
 			if not len[0] and not pos[0]:
 				if len[1] <= pos[1]:
 					return 0
-				time = (len[1] - pos[1])*speedden/(90*speednom)
+				time = (len[1] - pos[1])*speedden // (90*speednom)
 				return time
 		return False
 
@@ -2152,7 +2152,7 @@ class InfoBarTimeshift():
 				if self.save_timeshift_only_current_event:
 					remaining = self.currentEventTime()
 					if remaining > 0:
-						message += "\n" + _("The %d min remaining before the end of the event.") % abs(remaining / 60)
+						message += "\n" + _("The %d min remaining before the end of the event.") % abs(remaining // 60)
 			self.session.openWithCallback(boundFunction(self.checkTimeshiftRunningCallback, returnFunction), MessageBox, message, timeout=timeout, simple=True, list=choice)
 		else:
 			returnFunction(True)
@@ -3379,7 +3379,7 @@ class InfoBarCueSheetSupport:
 			print("[InfoBarGenerics] seekable.getLength() returns:", length)
 			if (last > 900000) and (not length[1] or last < length[1] - 900000):
 				self.resume_point = last
-				l = last / 90000
+				l = last // 90000
 				if "ask" in config.usage.on_movie_start.value:
 					Notifications.AddNotificationWithCallback(self.playLastCB, MessageBox, _("Do you want to resume this playback?") + "\n" + (_("Resume position at %s") % ("%d:%02d:%02d" % (l/3600, l%3600/60, l%60))), timeout=10, default="yes" in config.usage.on_movie_start.value)
 				elif config.usage.on_movie_start.value == "resume":
@@ -3818,13 +3818,13 @@ class InfoBarPowersaver:
 
 	def sleepTimerState(self):
 		if self.sleepTimer.isActive():
-			return (self.sleepStartTime - time()) / 60
+			return (self.sleepStartTime - time()) // 60
 		return 0
 
 	def setSleepTimer(self, sleepTime):
 		print("[InfoBarGenerics] Powersaver set sleeptimer", sleepTime)
 		if sleepTime:
-			m = abs(sleepTime / 60)
+			m = abs(sleepTime // 60)
 			message = _("The sleep timer has been activated.") + "\n" + _("And will put your receiver in standby over ") + ngettext("%d minute", "%d minutes", m) % m
 			self.sleepTimer.startLongTimer(sleepTime)
 			self.sleepStartTime = time() + sleepTime

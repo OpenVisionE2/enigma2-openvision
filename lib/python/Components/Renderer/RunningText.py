@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from enigma import eWidget, eLabel, eTimer, ePoint, eSize, gFont, RT_HALIGN_LEFT, RT_HALIGN_CENTER, RT_HALIGN_RIGHT, RT_HALIGN_BLOCK, RT_VALIGN_TOP, RT_VALIGN_CENTER, RT_VALIGN_BOTTOM, RT_WRAP
 from Components.Renderer.Renderer import Renderer
 from skin import parseColor, parseFont
@@ -222,7 +223,7 @@ class RunningText(Renderer):
 		self.mStop = None
 		# text height correction if necessary:
 		if self.lineHeight and self.direction in (TOP,BOTTOM):
-			text_height = max(text_height, (text_height + self.lineHeight - 1) / self.lineHeight * self.lineHeight)
+			text_height = max(text_height, (text_height + self.lineHeight - 1) // self.lineHeight * self.lineHeight)
 
 
 #		self.type =		0 - NONE; 1 - RUNNING; 2 - SWIMMING; 3 - AUTO(???)
@@ -259,7 +260,7 @@ class RunningText(Renderer):
 						self.P = self.B
 						self.mStep = -abs(self.mStep)
 					else: # if self.halign in (CENTER, BLOCK):
-						self.P = int(self.B / 2)
+						self.P = int(self.B // 2)
 						self.mStep = (self.direction == RIGHT) and abs(self.mStep) or -abs(self.mStep)
 				else:
 					if text_width == self.W:
@@ -273,7 +274,7 @@ class RunningText(Renderer):
 						self.P = self.A
 						self.mStep = abs(self.mStep)
 					else: # if self.halign in (CENTER, BLOCK):
-						self.P = int(self.A / 2)
+						self.P = int(self.A // 2)
 						self.mStep = (self.direction == RIGHT) and abs(self.mStep) or -abs(self.mStep)
 			else:
 				return False

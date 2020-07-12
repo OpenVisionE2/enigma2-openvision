@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from Components.PerServiceDisplay import PerServiceDisplay, PerServiceBase
 from Components.GUIComponent import GUIComponent
 from enigma import eTimer, iPlayableService, ePositionGauge
@@ -46,7 +46,7 @@ class ServicePosition(PerServiceDisplay, object):
 			elif what == self.TYPE_POSITION:
 				r = seek.getPlayPosition()
 			if not r[0]:
-				return r[1] / 90000
+				return r[1] // 90000
 
 		return -1
 

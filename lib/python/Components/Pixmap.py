@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from Components.ConditionalWidget import ConditionalWidget
 from Components.GUIComponent import GUIComponent
 
@@ -56,8 +56,8 @@ class MovingPixmap(Pixmap):
 	def startMoving(self):
 		if not self.moving:
 			self.time = self.path[self.currDest][2]
-			self.stepX = (self.path[self.currDest][0] - self.x) / float(self.time)
-			self.stepY = (self.path[self.currDest][1] - self.y) / float(self.time)
+			self.stepX = (self.path[self.currDest][0] - self.x) // float(self.time)
+			self.stepY = (self.path[self.currDest][1] - self.y) // float(self.time)
 
 			self.moving = True
 			self.moveTimer.start(100)

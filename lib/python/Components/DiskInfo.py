@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from Components.GUIComponent import GUIComponent
 from Components.VariableText import VariableText
 from os import statvfs

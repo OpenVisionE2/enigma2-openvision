@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 
 class UnitMultipliers:
 	Si = (
@@ -66,10 +66,10 @@ class UnitScaler:
 			num = -num
 
 		i = self.firstScaleIndex
-		scaledNum = round(float(num) / self.scaleTable[i][1], self.decimals)
+		scaledNum = round(float(num) // self.scaleTable[i][1], self.decimals)
 		while scaledNum >= self.maxVal and i < len(self.scaleTable) - 1:
 			i += 1
-			scaledNum = round(float(num) / self.scaleTable[i][1], self.decimals)
+			scaledNum = round(float(num) // self.scaleTable[i][1], self.decimals)
 
 		if negative:
 			scaledNum = -scaledNum

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 import skin
 from Components.GUIComponent import GUIComponent
 from enigma import eLabel, eWidget, eSlider, fontRenderClass, ePoint, eSize
@@ -59,12 +60,12 @@ class ScrollLabel(GUIComponent):
 			ret = True
 		self.pageWidth = self.long_text.size().width()
 		lineheight = fontRenderClass.getInstance().getLineHeight(self.long_text.getFont()) or 30 # assume a random lineheight if nothing is visible
-		lines = int(self.long_text.size().height() / lineheight)
+		lines = int(self.long_text.size().height() // lineheight)
 		self.pageHeight = int(lines * lineheight)
 		self.instance.move(self.long_text.position())
 		self.instance.resize(eSize(self.pageWidth, self.pageHeight + int(lineheight/6)))
 		self.scrollbar.move(ePoint(self.pageWidth - scrollbarWidth, 0))
-		self.scrollbar.resize(eSize(scrollbarWidth, self.pageHeight + int(lineheight / 6)))
+		self.scrollbar.resize(eSize(scrollbarWidth, self.pageHeight + int(lineheight // 6)))
 		self.scrollbar.setOrientation(eSlider.orVertical)
 		self.scrollbar.setRange(0, 100)
 		self.scrollbar.setBorderWidth(scrollbarBorderWidth)
@@ -132,8 +133,8 @@ class ScrollLabel(GUIComponent):
 		return self.TotalTextHeight <= self.pageHeight or self.curPos == self.TotalTextHeight - self.pageHeight
 
 	def updateScrollbar(self):
-		vis = max(100 * self.pageHeight / self.TotalTextHeight, 3)
-		start = (100 - vis) * self.curPos / (self.TotalTextHeight - self.pageHeight)
+		vis = max(100 * self.pageHeight // self.TotalTextHeight, 3)
+		start = (100 - vis) * self.curPos // (self.TotalTextHeight - self.pageHeight)
 		self.scrollbar.setStartEnd(start, start + vis)
 
 	def GUIcreate(self, parent):

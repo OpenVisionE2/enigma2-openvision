@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from enigma import eComponentScan, iDVBFrontend, eTimer
 from Components.NimManager import nimmanager as nimmgr
 from Tools.Transponder import getChannelNumber
@@ -67,7 +67,7 @@ class ServiceScan:
 						if ("%d.%d" % (orb_pos/10, orb_pos%10)) in sat_name:
 							network = sat_name
 						else:
-							network = ("%s %d.%d %s") % (sat_name, orb_pos / 10, orb_pos % 10, h)
+							network = ("%s %d.%d %s") % (sat_name, orb_pos // 10, orb_pos % 10, h)
 						tp_text = { tp.System_DVB_S : "DVB-S", tp.System_DVB_S2 : "DVB-S2" }.get(tp.system, "")
 						if tp_text == "DVB-S2":
 							tp_text = ("%s %s") % ( tp_text,

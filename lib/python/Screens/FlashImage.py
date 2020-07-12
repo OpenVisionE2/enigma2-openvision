@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Screens.Standby import getReasons
@@ -243,7 +244,7 @@ class FlashImage(Screen):
 					if not path.startswith('/mmc') and os.path.isdir(path) and os.access(path, os.W_OK):
 						try:
 							statvfs = os.statvfs(path)
-							return (statvfs.f_bavail * statvfs.f_frsize) / (1 << 20)
+							return (statvfs.f_bavail * statvfs.f_frsize) // (1 << 20)
 						except:
 							pass
 
@@ -331,7 +332,7 @@ class FlashImage(Screen):
 			self.abort()
 
 	def downloadProgress(self, current, total):
-		self["progress"].setValue(int(100 * current / total))
+		self["progress"].setValue(int(100 * current // total))
 
 	def downloadError(self, reason, status):
 		self.downloader.stop()

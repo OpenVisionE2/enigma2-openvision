@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from enigma import eTimer, eDVBSatelliteEquipmentControl, eDVBResourceManager, eDVBDiseqcCommand, eDVBFrontendParametersSatellite, eDVBFrontendParameters, iDVBFrontend
 
 from Screens.Screen import Screen
@@ -156,8 +156,8 @@ class PositionerSetup(Screen):
 		# True means we dont like that the normal sec stuff sends commands to the rotor!
 		self.tuner = Tuner(self.frontend, ignore_rotor = True)
 
-		tp = ( cur.get("frequency", 0) / 1000,
-			cur.get("symbol_rate", 0) / 1000,
+		tp = ( cur.get("frequency", 0) // 1000,
+			cur.get("symbol_rate", 0) // 1000,
 			cur.get("polarization", eDVBFrontendParametersSatellite.Polarisation_Horizontal),
 			cur.get("fec_inner", eDVBFrontendParametersSatellite.FEC_Auto),
 			cur.get("inversion", eDVBFrontendParametersSatellite.Inversion_Unknown),
@@ -223,7 +223,7 @@ class PositionerSetup(Screen):
 		self.statusMsgTimeoutTicks = 0
 		self.statusMsgBlinking = False
 		self.statusMsgBlinkCount = 0
-		self.statusMsgBlinkRate = 500 / self.UPDATE_INTERVAL	# milliseconds
+		self.statusMsgBlinkRate = 500 // self.UPDATE_INTERVAL	# milliseconds
 		self.tuningChangedTo(tp)
 
 		self["actions"] = NumberActionMap(["DirectionActions", "OkCancelActions", "ColorActions", "TimerEditActions", "InputActions", "InfobarMenuActions"],
@@ -395,7 +395,7 @@ class PositionerSetup(Screen):
 		self.positioner_storage = ConfigInteger(default = rotorposition, limits = (1, self.rotorPositions))
 		self.allocatedIndices = []
 		m = PositionerSetup.satposition2metric(orb_pos)
-		self.orbitalposition = ConfigFloat(default = [int(m[0] / 10), m[0] % 10], limits = [(0,180),(0,9)])
+		self.orbitalposition = ConfigFloat(default = [int(m[0] // 10), m[0] % 10], limits = [(0,180),(0,9)])
 		self.orientation = ConfigSelection([("east", _("East")), ("west", _("West"))], default = m[1])
 		for x in (self.positioner_tune, self.positioner_storage, self.orbitalposition):
 			x.addNotifier(self.retune, initial_call = False)
@@ -764,7 +764,7 @@ class PositionerSetup(Screen):
 		feparm = self.tuner.lastparm.getDVBS()
 		orb_pos = feparm.orbital_position
 		m = PositionerSetup.satposition2metric(orb_pos)
-		self.orbitalposition.value = [int(m[0] / 10), m[0] % 10]
+		self.orbitalposition.value = [int(m[0] // 10), m[0] % 10]
 		self.orientation.value = m[1]
 		if self.advanced:
 			if orb_pos in self.availablesats:
@@ -797,7 +797,7 @@ class PositionerSetup(Screen):
 		if not blinking:
 			self["status_bar"].visible = True
 		self["status_bar"].setText(msg)
-		self.statusMsgTimeoutTicks = (timeout * 1000 + self.UPDATE_INTERVAL / 2) / self.UPDATE_INTERVAL
+		self.statusMsgTimeoutTicks = (timeout * 1000 + self.UPDATE_INTERVAL // 2) // self.UPDATE_INTERVAL
 
 	def updateStatus(self):
 		self.statusTimer.start(self.UPDATE_INTERVAL, True)
@@ -841,7 +841,7 @@ class PositionerSetup(Screen):
 					self.collectingStatistics = False
 					count = float(self.stat_count)
 					self.lock_count /= count
-					self.snr_percentage *= 100.0 / 0x10000 / count
+					self.snr_percentage *= 100.0 // 0x10000 // count
 					self.dataAvailable.set()
 
 	def tuningChangedTo(self, tp):
@@ -852,7 +852,7 @@ class PositionerSetup(Screen):
 			# It is an heuristic determination without any pretence. For symbol rates
 			# of 5000 the interval is multiplied by 3 until 15000 which is seen
 			# as a high symbol rate. Linear interpolation elsewhere.
-			return max(int(round((3 - 1) * (symbolrate - 15000) / (5000 - 15000) + 1)), 1)
+			return max(int(round((3 - 1) * (symbolrate - 15000) // (5000 - 15000) + 1)), 1)
 
 		self.symbolrate = tp[1]
 		self.polarisation = tp[2]
@@ -876,12 +876,12 @@ class PositionerSetup(Screen):
 		frequency_text = ""
 		frequency = transponderdata.get("frequency")
 		if frequency:
-			frequency_text = str(frequency / 1000) + polarization_text
+			frequency_text = str(frequency // 1000) + polarization_text
 		self["frequency_value"].setText(frequency_text)
 		symbolrate_text = ""
 		symbolrate = transponderdata.get("symbol_rate")
 		if symbolrate:
-			symbolrate_text = str(symbolrate / 1000)
+			symbolrate_text = str(symbolrate // 1000)
 		self["symbolrate_value"].setText(symbolrate_text)
 		fec_text = ""
 		fec_inner = transponderdata.get("fec_inner")
@@ -893,14 +893,14 @@ class PositionerSetup(Screen):
 
 	@staticmethod
 	def rotorCmd2Step(rotorCmd, stepsize):
-		return round(float(rotorCmd & 0xFFF) / 0x10 / stepsize) * (1 - ((rotorCmd & 0x1000) >> 11))
+		return round(float(rotorCmd & 0xFFF) // 0x10 // stepsize) * (1 - ((rotorCmd & 0x1000) >> 11))
 
 	@staticmethod
 	def gotoXcalc(satlon, sitelat, sitelon):
 		def azimuth2Rotorcode(angle):
 			gotoXtable = (0x00, 0x02, 0x03, 0x05, 0x06, 0x08, 0x0A, 0x0B, 0x0D, 0x0E)
 			a = int(round(abs(angle) * 10.0))
-			return ((a / 10) << 4) + gotoXtable[a % 10]
+			return ((a // 10) << 4) + gotoXtable[a % 10]
 
 		satHourAngle = rotor_calc.calcSatHourangle(satlon, sitelat, sitelon)
 		if sitelat >= 0: # Northern Hemisphere
@@ -941,7 +941,7 @@ class PositionerSetup(Screen):
 		self.lock_count = 0.0
 		self.stat_count = 0
 		self.low_rate_adapter_count = 0
-		self.max_count = max(int((time * 1000 + self.UPDATE_INTERVAL / 2)/ self.UPDATE_INTERVAL), 1)
+		self.max_count = max(int((time * 1000 + self.UPDATE_INTERVAL // 2)/ self.UPDATE_INTERVAL), 1)
 		self.collectingStatistics = True
 		self.dataAvailable.clear()
 		self.dataAvailable.wait()
@@ -970,7 +970,7 @@ class PositionerSetup(Screen):
 
 		def move(x):
 			z = self.gotoX(x + satlon)
-			time = int(abs(x - prev_pos) / turningspeed + 2 * self.TURNING_START_STOP_DELAY)
+			time = int(abs(x - prev_pos) // turningspeed + 2 * self.TURNING_START_STOP_DELAY)
 			sleep(time * self.MAX_LOW_RATE_ADAPTER_COUNT)
 			return z
 
@@ -981,7 +981,7 @@ class PositionerSetup(Screen):
 		def optimise(readings):
 			xi = readings.keys()
 			yi = map(lambda (x, y) : x, readings.values())
-			x0 = sum(map(mul, xi, yi)) / sum(yi)
+			x0 = sum(map(mul, xi, yi)) // sum(yi)
 			xm = xi[yi.index(max(yi))]
 			return (x0, xm)
 
@@ -1031,7 +1031,7 @@ class PositionerSetup(Screen):
 				self.statusMsg("")
 				self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, timeout = 5)
 				return
-		x = round(x / self.tuningstepsize) * self.tuningstepsize
+		x = round(x // self.tuningstepsize) * self.tuningstepsize
 		move(x)
 		prev_pos = x
 		measurements = {}
@@ -1096,7 +1096,7 @@ class PositionerSetup(Screen):
 		xm += satlon
 		print((_("Weighted position") + "     : %5.1f" + chr(176) + " %s") % (abs(x0), toGeopos(x0)), file=log)
 		print((_("Strongest position") + "    : %5.1f" + chr(176) + " %s") % (abs(xm), toGeopos(xm)), file=log)
-		self.logMsg((_("Final position at") + " %5.1f" + chr(176) + " %s / %d; " + _("offset is") + " %4.1f" + chr(176)) % (abs(x0), toGeopos(x0), x, x0 - satlon), timeout = 10)
+		self.logMsg((_("Final position at") + " %5.1f" + chr(176) + " %s // %d; " + _("offset is") + " %4.1f" + chr(176)) % (abs(x0), toGeopos(x0), x, x0 - satlon), timeout = 10)
 
 	def autofocus(self):
 
@@ -1106,7 +1106,7 @@ class PositionerSetup(Screen):
 			elif x < 0:
 				self.diseqccommand("moveWest", x & 0xFF)
 			if x != 0:
-				time = int(abs(x) * self.tuningstepsize / turningspeed + 2 * self.TURNING_START_STOP_DELAY)
+				time = int(abs(x) * self.tuningstepsize // turningspeed + 2 * self.TURNING_START_STOP_DELAY)
 				sleep(time * self.MAX_LOW_RATE_ADAPTER_COUNT)
 
 		def reportlevels(pos, level, lock):
@@ -1116,7 +1116,7 @@ class PositionerSetup(Screen):
 		def optimise(readings):
 			xi = readings.keys()
 			yi = map(lambda (x, y) : x, readings.values())
-			x0 = int(round(sum(map(mul, xi, yi)) / sum(yi)))
+			x0 = int(round(sum(map(mul, xi, yi)) // sum(yi)))
 			xm = xi[yi.index(max(yi))]
 			return (x0, xm)
 
@@ -1129,7 +1129,7 @@ class PositionerSetup(Screen):
 		self.logMsg(_("Auto focus commencing ..."))
 		turningspeed = self.getTurningspeed()
 		measurements = {}
-		maxsteps = max(min(round(self.MAX_FOCUS_ANGLE / self.tuningstepsize), 0x1F), 3)
+		maxsteps = max(min(round(self.MAX_FOCUS_ANGLE // self.tuningstepsize), 0x1F), 3)
 		self.measure()
 		print((_("Initial signal quality:") + " %6.2f") % self.snr_percentage, file=log)
 		print((_("Initial lock ratio") + "    : %6.2f") % self.lock_count, file=log)
@@ -1362,9 +1362,9 @@ class TunerScreen(ConfigListScreen, Screen):
 		if frontendData is not None:
 			ttype = frontendData.get("tuner_type", "UNKNOWN")
 			defaultSat["system"] = frontendData.get("system", eDVBFrontendParametersSatellite.System_DVB_S)
-			defaultSat["frequency"] = frontendData.get("frequency", 0) / 1000
+			defaultSat["frequency"] = frontendData.get("frequency", 0) // 1000
 			defaultSat["inversion"] = frontendData.get("inversion", eDVBFrontendParametersSatellite.Inversion_Unknown)
-			defaultSat["symbolrate"] = frontendData.get("symbol_rate", 0) / 1000
+			defaultSat["symbolrate"] = frontendData.get("symbol_rate", 0) // 1000
 			defaultSat["polarization"] = frontendData.get("polarization", eDVBFrontendParametersSatellite.Polarisation_Horizontal)
 			if defaultSat["system"] == eDVBFrontendParametersSatellite.System_DVB_S2:
 				defaultSat["fec_s2"] = frontendData.get("fec_inner", eDVBFrontendParametersSatellite.FEC_Auto)
@@ -1502,7 +1502,7 @@ class TunerScreen(ConfigListScreen, Screen):
 			pol = "CR"
 		else:
 			pol = "??"
-		return str(tr[1] / scale) + "," + pol + "," + str(tr[2] / scale)
+		return str(tr[1] // scale) + "," + pol + "," + str(tr[2] // scale)
 
 	def updateTransponders(self):
 		if len(self.tuning.sat.choices):
@@ -1544,7 +1544,7 @@ class TunerScreen(ConfigListScreen, Screen):
 				self.scan_sat.t2mi_pid.value)
 		elif self.tuning.type.value == "predefined_transponder":
 			transponder = nimmanager.getTransponders(satpos)[self.tuning.transponder.index]
-			returnvalue = (transponder[1] / 1000, transponder[2] / 1000,
+			returnvalue = (transponder[1] // 1000, transponder[2] // 1000,
 				transponder[3], transponder[4], 2, satpos, transponder[5], transponder[6], transponder[8], transponder[9], transponder[10], transponder[11], transponder[12], transponder[13], transponder[14])
 		self.close(returnvalue)
 

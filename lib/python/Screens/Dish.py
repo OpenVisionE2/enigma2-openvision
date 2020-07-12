@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from Screens.Screen import Screen
 from Components.Pixmap import Pixmap
 from Components.config import config, ConfigInteger
@@ -190,7 +190,7 @@ class Dish(Screen):
 				mrt = 3600 - mrt
 			if mrt % 10:
 				mrt += 10
-			mrt = round((mrt * 1000 / self.getTurningSpeed(pol) ) / 10000) + 3
+			mrt = round((mrt * 1000 // self.getTurningSpeed(pol) ) // 10000) + 3
 		return mrt
 
 	def isSatRotorMode(self):
@@ -248,8 +248,8 @@ class Dish(Screen):
 			return _("N/A")
 		if orbpos > 1800:
 			orbpos = 3600 - orbpos
-			return _("%.1f° W") % (orbpos / 10.0)
-		return _("%.1f° E") % (orbpos / 10.0)
+			return _("%.1f° W") % (orbpos // 10.0)
+		return _("%.1f° E") % (orbpos // 10.0)
 
 	def FormatTurnTime(self, time):
 		t = abs(time)

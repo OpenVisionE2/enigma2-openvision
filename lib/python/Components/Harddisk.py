@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 import os
 import time
 from Tools.CList import CList
@@ -145,14 +145,14 @@ class Harddisk:
 		try:
 			line = readFile(self.sysfsPath('size'))
 			cap = int(line)
-			return cap / 1000 * 512 / 1000
+			return cap // 1000 * 512 // 1000
 		except:
 			dev = self.findMount()
 			if dev:
 				try:
 					stat = os.statvfs(dev)
 					cap = int(stat.f_blocks * stat.f_bsize)
-					return cap / 1000 / 1000
+					return cap // 1000 // 1000
 				except:
 					pass
 		return cap

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from Components.Task import Task, Job, DiskspacePrecondition, Condition, ToolExistsPrecondition
 from Components.Harddisk import harddiskmanager
 from Screens.MessageBox import MessageBox
@@ -164,9 +164,9 @@ class DemuxTask(Task):
 		f = open(self.cutfile, "w")
 		f.write("CollectionPanel.CutMode=4\n")
 		for p in self.cutlist:
-			s = p / 90000
-			m = s / 60
-			h = m / 60
+			s = p // 90000
+			m = s // 60
+			h = m // 60
 
 			m %= 60
 			s %= 60
@@ -396,7 +396,7 @@ class CheckDiskspaceTask(Task):
 			if titlesize > maxsize: maxsize = titlesize
 			totalsize += titlesize
 		diskSpaceNeeded = totalsize + maxsize
-		job.estimateddvdsize = totalsize / 1024 / 1024
+		job.estimateddvdsize = totalsize // 1024 // 1024
 		totalsize += 50*1024*1024 # require an extra safety 50 MB
 		self.global_preconditions.append(DiskspacePrecondition(diskSpaceNeeded))
 		self.weighting = 5
@@ -560,8 +560,8 @@ class MenuImageTask(Task):
 		row = 1
 		for title_no in range( menu_start_title , menu_end_title ):
 			title = self.job.project.titles[title_no-1]
-			col_width  = ( s_width  - s_left - s_right  ) / nr_cols
-			row_height = ( s_height - s_top  - s_bottom ) / nr_rows
+			col_width  = ( s_width  - s_left - s_right  ) // nr_cols
+			row_height = ( s_height - s_top  - s_bottom ) // nr_rows
 			left =   s_left + ( (col-1) * col_width ) + s_cols/2
 			right =    left + col_width - s_cols
 			top =     s_top + ( (row-1) * row_height) + s_rows/2
@@ -654,11 +654,11 @@ class MenuImageTask(Task):
 		if offset[0] != -1:
 			pos[0] += offset[0]
 		else:
-			pos[0] += ( (right-left) - size[0] ) / 2
+			pos[0] += ( (right-left) - size[0] ) // 2
 		if offset[1] != -1:
 			pos[1] += offset[1]
 		else:
-			pos[1] += ( (bottom-top) - size[1] ) / 2
+			pos[1] += ( (bottom-top) - size[1] ) // 2
 		return tuple(pos)
 
 class Menus:
@@ -912,7 +912,7 @@ class DVDJob(Job):
 				self.name = _("Burn DVD")
 				tool = "growisofs"
 				burnargs = [ "-Z", "/dev/" + harddiskmanager.getCD(), "-dvd-compat" ]
-				if self.project.size/(1024*1024) > self.project.MAX_SL:
+				if self.project.size // (1024*1024) > self.project.MAX_SL:
 					burnargs += [ "-use-the-force-luke=4gms", "-speed=1", "-R" ]
 			elif output == "iso":
 				self.name = _("Create DVD-ISO")
@@ -952,7 +952,7 @@ class DVDdataJob(Job):
 		if output == "dvd":
 			self.name = _("Burn DVD")
 			burnargs = [ "-Z", "/dev/" + harddiskmanager.getCD(), "-dvd-compat" ]
-			if self.project.size/(1024*1024) > self.project.MAX_SL:
+			if self.project.size // (1024*1024) > self.project.MAX_SL:
 				burnargs += [ "-use-the-force-luke=4gms", "-speed=1", "-R" ]
 		elif output == "iso":
 			tool = "genisoimage"
@@ -978,13 +978,13 @@ class DVDisoJob(Job):
 		if imagepath.endswith(".iso"):
 			PreviewTask(self, imagepath)
 			burnargs = [ "-Z", "/dev/" + harddiskmanager.getCD() + '='+imagepath, "-dvd-compat" ]
-			if getSize(imagepath)/(1024*1024) > self.project.MAX_SL:
+			if getSize(imagepath) // (1024*1024) > self.project.MAX_SL:
 				burnargs += [ "-use-the-force-luke=4gms", "-speed=1", "-R" ]
 		else:
 			PreviewTask(self, imagepath + "/VIDEO_TS/")
 			volName = self.project.settings.name.getValue()
 			burnargs = [ "-Z", "/dev/" + harddiskmanager.getCD(), "-dvd-compat" ]
-			if getSize(imagepath)/(1024*1024) > self.project.MAX_SL:
+			if getSize(imagepath) // (1024*1024) > self.project.MAX_SL:
 				burnargs += [ "-use-the-force-luke=4gms", "-speed=1", "-R" ]
 			burnargs += [ "-dvd-video", "-publisher", "enigma2", "-V", volName, imagepath ]
 		tool = "growisofs"

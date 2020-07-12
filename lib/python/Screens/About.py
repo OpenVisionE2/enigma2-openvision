@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Components.config import config
@@ -555,10 +555,10 @@ class Devices(Screen):
 					hddp = hddp.replace('ATA', '')
 					hddp = hddp.replace('Internal', 'ATA Bus ')
 				free = hdd.Totalfree()
-				if ((float(free) / 1024) / 1024) >= 1:
-					freeline = _("Free: ") + str(round(((float(free) / 1024) / 1024), 2)) + _("TB")
-				elif (free / 1024) >= 1:
-					freeline = _("Free: ") + str(round((float(free) / 1024), 2)) + _("GB")
+				if ((float(free) // 1024) // 1024) >= 1:
+					freeline = _("Free: ") + str(round(((float(free) // 1024) // 1024), 2)) + _("TB")
+				elif (free // 1024) >= 1:
+					freeline = _("Free: ") + str(round((float(free) // 1024), 2)) + _("GB")
 				elif free >= 1:
 					freeline = _("Free: ") + str(free) + _("MB")
 				elif "Generic(STORAGE" in hddp:

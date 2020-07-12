@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 import sys, os, time
 import re
 from enigma import getBoxType, getBoxBrand
@@ -113,7 +114,7 @@ def getCPUBenchmark():
 			cmdbenchmark = "echo '100000000' | dhry | grep 'Dhrystones per Second' | sed 's|[^0-9]*||' > /tmp/dhry.txt"
 			Console().ePopen(cmdbenchmark)
 		if fileExists("/tmp/dhry.txt"):
-			cpubench = int(float(open("/tmp/dhry.txt").read().strip()))/1757
+			cpubench = int(float(open("/tmp/dhry.txt").read().strip())) // 1757
 		return str(cpubench)
 	except:
 		return _("unknown")
@@ -144,11 +145,11 @@ def getCPUInfoString():
 
 		if not cpu_speed:
 			try:
-				cpu_speed = int(open("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq").read()) / 1000
+				cpu_speed = int(open("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq").read()) // 1000
 			except:
 				try:
 					import binascii
-					cpu_speed = int(int(binascii.hexlify(open('/sys/firmware/devicetree/base/cpus/cpu@0/clock-frequency', 'rb').read()), 16) / 100000000) * 100
+					cpu_speed = int(int(binascii.hexlify(open('/sys/firmware/devicetree/base/cpus/cpu@0/clock-frequency', 'rb').read()), 16) // 100000000) * 100
 				except:
 					cpu_speed = "-"
 
@@ -288,11 +289,11 @@ def getBoxUptime():
 		secs = int(f.readline().split('.')[0])
 		f.close()
 		if secs > 86400:
-			days = secs / 86400
+			days = secs // 86400
 			secs = secs % 86400
 			time = ngettext("%d day","%d days", days) % days + " "
-		h = secs / 3600
-		m = (secs % 3600) / 60
+		h = secs // 3600
+		m = (secs % 3600) // 60
 		time += ngettext("%d hour", "%d hours", h) % h + " "
 		time += ngettext("%d minute", "%d minutes", m) % m
 		return  "%s" % time

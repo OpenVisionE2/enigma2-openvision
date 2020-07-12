@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 import mmap
 import re
 
@@ -65,7 +65,7 @@ class SkinSelector(Screen, HelpableScreen):
 			del domScreens["SkinSelector"]
 		if SkinSelector.skin is None or "SkinSelector" not in domScreens:
 			# The skin template is designed for a HD screen so the scaling factor is 720.
-			SkinSelector.skin = SkinSelector.skinTemplate % tuple([x * getDesktop(0).size().height() / 720 for x in SkinSelector.scaleData])
+			SkinSelector.skin = SkinSelector.skinTemplate % tuple([x * getDesktop(0).size().height() // 720 for x in SkinSelector.scaleData])
 		Screen.setTitle(self, screenTitle)
 		self.rootDir = resolveFilename(SCOPE_SKIN)
 		self.config = config.skin.primary_skin
