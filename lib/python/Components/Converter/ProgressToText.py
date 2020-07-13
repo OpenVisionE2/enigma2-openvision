@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 
@@ -16,7 +15,7 @@ class ProgressToText(Converter, object):
 
 		if self.in_percent:
 			if r:
-				return "%d %%" % (v * 100 // r)
+				return "%d %%" % (v * 100 / r)
 			else:
 				return None
 		else:

@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Components.config import config
 from Components.Converter.Converter import Converter
 from Components.Element import cached
@@ -141,8 +140,8 @@ class ExtendedServiceInfo(Converter, object):
 					orbital = transponderData['orbital_position']
 					orbital = int(orbital)
 					if orbital > 1800:
-						orbital = str(float(3600 - orbital) // 10.0) + 'W'
+						orbital = str(float(3600 - orbital) / 10.0) + 'W'
 					else:
-						orbital = str(float(orbital) // 10.0) + 'E'
+						orbital = str(float(orbital) / 10.0) + 'E'
 					return orbital
 		return ''

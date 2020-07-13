@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Components.Converter.Converter import Converter
 from Components.Element import cached, ElementError
 from enigma import iServiceInformation, eServiceReference
@@ -51,13 +50,13 @@ class MovieInfo(Converter):
 				filesize = info.getFileSize(service)
 				if filesize is not None:
 					if filesize >= 104857600000: #100000*1024*1024
-						return _("%.0f GB") % (filesize // 1073741824.0)
+						return _("%.0f GB") % (filesize / 1073741824.0)
 					elif filesize >= 1073741824: #1024*1024*1024
-						return _("%.2f GB") % (filesize // 1073741824.0)
+						return _("%.2f GB") % (filesize / 1073741824.0)
 					elif filesize >= 1048576:
-						return _("%.0f MB") % (filesize // 1048576.0)
+						return _("%.0f MB") % (filesize / 1048576.0)
 					elif filesize >= 1024:
-						return _("%.0f kB") % (filesize // 1024.0)
+						return _("%.0f kB") % (filesize / 1024.0)
 					return _("%d B") % filesize
 		return ""
 

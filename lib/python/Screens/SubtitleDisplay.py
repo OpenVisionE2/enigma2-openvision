@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Screens.Screen import Screen
 from Components.Label import Label
 from enigma import eTimer, getDesktop, eActionMap, gFont

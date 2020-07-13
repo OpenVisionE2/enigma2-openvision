@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Components.Converter.Converter import Converter
 from Components.Converter.Poll import Poll
 from enigma import iPlayableService
@@ -108,8 +107,8 @@ class ServicePosition(Poll, Converter, object):
 			return ""
 
 		if self.type == self.TYPE_SUMMARY or self.type == self.TYPE_START_END_TIME or self.type == self.TYPE_VFD_SUMMARY:
-			s = self.position // 90000
-			e = (self.length // 90000) - s
+			s = self.position / 90000
+			e = (self.length / 90000) - s
 			if self.type == self.TYPE_SUMMARY:
 				return "%02d:%02d +%2dm" % (s/60, s%60, e/60)
 			start_time = strftime("%H:%M", localtime(time() - s))
@@ -246,36 +245,36 @@ class ServicePosition(Poll, Converter, object):
 				elif self.type == self.TYPE_POSITION:
 					if config.usage.swap_time_remaining_on_osd.value == "1":  # Elapsed
 						try:
-							return sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_osd.value == "2": # Elapsed & Remaining
 						try:
-							return sign_p + "%d%%  " % ((float(p + 0.0) // float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) // float(l + 0.0)) * 100 + 1)
+							return sign_p + "%d%%  " % ((float(p + 0.0) / float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) / float(l + 0.0)) * 100 + 1)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_osd.value == "3": # Remaining & Elapsed
 						try:
-							return sign_r + "%d%%  " % ((float(r + 0.0) // float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%  " % ((float(r + 0.0) / float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					else:
 						try:
-							return sign_r + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 				elif self.type == self.TYPE_REMAINING:
 					test = 0
 					if config.usage.swap_time_remaining_on_osd.value == "1":  # Elapsed
 						try:
-							return sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_osd.value == "2" or config.usage.swap_time_remaining_on_osd.value == "3": # Elapsed & Remaining
 						return ""
 					else:
 						try:
-							return sign_r + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 
@@ -416,36 +415,36 @@ class ServicePosition(Poll, Converter, object):
 				elif self.type == self.TYPE_VFD_POSITION:
 					if config.usage.swap_time_remaining_on_vfd.value == "1":  # Elapsed
 						try:
-							return sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_vfd.value == "2": # Elapsed & Remaining
 						try:
-							return sign_p + "%d%%  " % ((float(p + 0.0) // float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) // float(l + 0.0)) * 100 + 1)
+							return sign_p + "%d%%  " % ((float(p + 0.0) / float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) / float(l + 0.0)) * 100 + 1)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_vfd.value == "3": # Remaining & Elapsed
 						try:
-							return sign_r + "%d%%  " % ((float(r + 0.0) // float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%  " % ((float(r + 0.0) / float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					else:
 						try:
-							return sign_r + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 				elif self.type == self.TYPE_VFD_REMAINING:
 					test = 0
 					if config.usage.swap_time_remaining_on_vfd.value == "1":  # Elapsed
 						try:
-							return sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_vfd.value == "2" or config.usage.swap_time_remaining_on_vfd.value == "3": # Elapsed & Remaining
 						return ""
 					else:
 						try:
-							return sign_r + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 
@@ -506,7 +505,7 @@ class ServicePosition(Poll, Converter, object):
 		len = self.length
 		if pos is None or len is None or len <= 0:
 			return None
-		return pos * 10000 // len
+		return pos * 10000 / len
 
 	position = property(getPosition)
 	length = property(getLength)

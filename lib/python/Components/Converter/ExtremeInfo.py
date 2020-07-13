@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from ServiceReference import ServiceReference
@@ -1212,8 +1211,8 @@ class ExtremeInfo(Poll, Converter, object):
 			frontendData = feinfo and feinfo.getAll(True)
 			if frontendData is not None:
 				if frontendData.get('tuner_type') == 'DVB-S' or frontendData.get('tuner_type') == 'DVB-C':
-					frequency = str(frontendData.get('frequency') // 1000) + ' MHz'
-					symbolrate = str(int(frontendData.get('symbol_rate', 0) // 1000))
+					frequency = str(frontendData.get('frequency') / 1000) + ' MHz'
+					symbolrate = str(int(frontendData.get('symbol_rate', 0) / 1000))
 					if frontendData.get('tuner_type') == 'DVB-S':
 						try:
 							orb = {3590: 'Thor/Intelsat (1.0W)',

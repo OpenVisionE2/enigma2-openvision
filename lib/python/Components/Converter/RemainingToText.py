@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Components.Converter.Converter import Converter
 from Components.Converter.Poll import Poll
 from Components.Element import cached
@@ -163,22 +162,22 @@ class RemainingToText(Poll, Converter, object):
 				if remaining is not None:
 					if config.usage.swap_time_remaining_on_osd.value == "1":  # Elapsed
 						try:
-							return sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_osd.value == "2": # Elapsed & Remaining
 						try:
-							return sign_p + "%d%%  " % ((float(p + 0.0) // float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) // float(l + 0.0)) * 100 + 1)
+							return sign_p + "%d%%  " % ((float(p + 0.0) / float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) / float(l + 0.0)) * 100 + 1)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_osd.value == "3": # Remaining & Elapsed
 						try:
-							return sign_r + "%d%%  " % ((float(r + 0.0) // float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%  " % ((float(r + 0.0) / float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					else:
 						try:
-							return sign_r + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 				else:
@@ -235,22 +234,22 @@ class RemainingToText(Poll, Converter, object):
 				elif self.type == self.PERCENTAGE:
 					if config.usage.swap_time_remaining_on_osd.value == "1":  # Elapsed
 						try:
-							return sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_osd.value == "2": # Elapsed & Remaining
 						try:
-							return sign_p + "%d%%  " % ((float(p + 0.0) // float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) // float(l + 0.0)) * 100 + 1)
+							return sign_p + "%d%%  " % ((float(p + 0.0) / float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) / float(l + 0.0)) * 100 + 1)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_osd.value == "3": # Remaining & Elapsed
 						try:
-							return sign_r + "%d%%  " % ((float(r + 0.0) // float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%  " % ((float(r + 0.0) / float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					else:
 						try:
-							return sign_r + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 				else:
@@ -316,22 +315,22 @@ class RemainingToText(Poll, Converter, object):
 				if remaining is not None:
 					if config.usage.swap_time_remaining_on_vfd.value == "1":  # Elapsed
 						try:
-							return sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_vfd.value == "2": # Elapsed & Remaining
 						try:
-							return sign_p + "%d%%  " % ((float(p + 0.0) // float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) // float(l + 0.0)) * 100 + 1)
+							return sign_p + "%d%%  " % ((float(p + 0.0) / float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) / float(l + 0.0)) * 100 + 1)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_vfd.value == "3": # Remaining & Elapsed
 						try:
-							return sign_r + "%d%%  " % ((float(r + 0.0) // float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%  " % ((float(r + 0.0) / float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					else:
 						try:
-							return sign_r + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 				else:
@@ -388,22 +387,22 @@ class RemainingToText(Poll, Converter, object):
 				elif self.type == self.VFD_PERCENTAGE:
 					if config.usage.swap_time_remaining_on_vfd.value == "1":  # Elapsed
 						try:
-							return sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_vfd.value == "2": # Elapsed & Remaining
 						try:
-							return sign_p + "%d%%  " % ((float(p + 0.0) // float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) // float(l + 0.0)) * 100 + 1)
+							return sign_p + "%d%%  " % ((float(p + 0.0) / float(l + 0.0)) * 100) + sign_r + "%d%%" % ((float(r + 0.0) / float(l + 0.0)) * 100 + 1)
 						except:
 							return ""
 					elif config.usage.swap_time_remaining_on_vfd.value == "3": # Remaining & Elapsed
 						try:
-							return sign_r + "%d%%  " % ((float(r + 0.0) // float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%  " % ((float(r + 0.0) / float(l + 0.0)) * 100 +1 ) + sign_p + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 					else:
 						try:
-							return sign_r + "%d%%" % ((float(p + 0.0) // float(l + 0.0)) * 100)
+							return sign_r + "%d%%" % ((float(p + 0.0) / float(l + 0.0)) * 100)
 						except:
 							return ""
 				else:

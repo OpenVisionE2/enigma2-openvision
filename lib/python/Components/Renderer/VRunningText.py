@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Components.Renderer.Renderer import Renderer
 from enigma import eCanvas, eRect, gRGB, eLabel, eTimer, ePoint, eSize, gFont
 from enigma import RT_WRAP, RT_HALIGN_LEFT, RT_HALIGN_CENTER, RT_HALIGN_RIGHT, RT_HALIGN_BLOCK, RT_VALIGN_TOP, RT_VALIGN_CENTER, RT_VALIGN_BOTTOM
@@ -256,7 +255,7 @@ class VRunningText(Renderer):
 					else: # self.halign == CENTER or self.halign == BLOCK:
 						self.A = self.X + 1
 						self.B = self.W - text_width - 1
-						self.P = int(self.B // 2)
+						self.P = int(self.B / 2)
 						self.mStep = (self.direction == RIGHT) and abs(self.mStep) or -abs(self.mStep)
 				elif text_width > self.W:
 					if self.halign == LEFT:
@@ -272,7 +271,7 @@ class VRunningText(Renderer):
 					else: # self.halign == CENTER or self.halign == BLOCK:
 						self.A = self.W - text_width
 						self.B = self.X
-						self.P = int(self.A // 2)
+						self.P = int(self.A / 2)
 						self.mStep = (self.direction == RIGHT) and abs(self.mStep) or -abs(self.mStep)
 				else:	# if text_width == self.W
 					return False

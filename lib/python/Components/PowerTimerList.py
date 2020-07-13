@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from enigma import eListboxPythonMultiContent, eListbox, gFont, getDesktop, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_BOTTOM
 from GUIComponent import GUIComponent
 from skin import parseFont
@@ -35,11 +34,11 @@ class PowerTimerList(GUIComponent, object):
 		height = self.l.getItemSize().height()
 		width = self.l.getItemSize().width()
 		res = [ None ]
-		x = width // 2
+		x = width / 2
 		res.append((eListboxPythonMultiContent.TYPE_TEXT, self.iconWidth + self.iconMargin, 2, width, self.rowSplit, 0, RT_HALIGN_LEFT|RT_VALIGN_BOTTOM, timertype))
 		if timer.timerType == TIMERTYPE.AUTOSTANDBY or timer.timerType == TIMERTYPE.AUTODEEPSTANDBY:
 			if self.iconRepeat and timer.autosleeprepeat != "once":
-				res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, self.iconMargin // 2, self.rowSplit + (self.itemHeight - self.rowSplit - self.iconHeight) // 2, self.iconWidth, self.iconHeight, self.iconRepeat))
+				res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, self.iconMargin / 2, self.rowSplit + (self.itemHeight - self.rowSplit - self.iconHeight) / 2, self.iconWidth, self.iconHeight, self.iconRepeat))
 			icon = None
 			if not processed:
 				if timer.state == TimerEntry.StateWaiting:
@@ -81,7 +80,7 @@ class PowerTimerList(GUIComponent, object):
 					res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, 2, self.rowSplit, 20, 20, self.iconRepeat))
 			else:
 				repeatedtext = begin[0]
-			text = repeatedtext + ((" %s ... %s (%d " + _("mins") + ")") % (begin[1], FuzzyTime(timer.end)[1], (timer.end - timer.begin) // 60))
+			text = repeatedtext + ((" %s ... %s (%d " + _("mins") + ")") % (begin[1], FuzzyTime(timer.end)[1], (timer.end - timer.begin) / 60))
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, 148, self.itemHeight - self.rowSplit, width-150, self.rowSplit, 2, RT_HALIGN_RIGHT|RT_VALIGN_BOTTOM, text))
 			icon = None
 			if not processed:
@@ -111,7 +110,7 @@ class PowerTimerList(GUIComponent, object):
 		if timer.failed:
 			state = _("failed")
 			icon = self.iconFailed
-		icon and res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, self.iconMargin // 2, (self.rowSplit - self.iconHeight) // 2, self.iconWidth, self.iconHeight, icon))
+		icon and res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, self.iconMargin / 2, (self.rowSplit - self.iconHeight) / 2, self.iconWidth, self.iconHeight, icon))
 
 		res.append((eListboxPythonMultiContent.TYPE_TEXT, self.iconMargin + self.iconWidth, self.rowSplit, 150, height - self.rowSplit, 2, RT_HALIGN_LEFT|RT_VALIGN_BOTTOM, state))
 

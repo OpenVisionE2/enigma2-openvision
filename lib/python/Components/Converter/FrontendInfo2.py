@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 
@@ -52,15 +51,15 @@ class FrontendInfo2(Converter, object):
 			percent = self.source.snr
 		elif self.type == self.SNRdB:
 			#if self.source.snr_db is not None:
-				#return "%3.01f dB" % (self.source.snr_db // 100.0)
+				#return "%3.01f dB" % (self.source.snr_db / 100.0)
 			if self.source.snr is not None: #fallback to normal SNR
-				return "%3.01f dB" % (0.32 *((self.source.snr * 100) // 65536.0) // 2)
+				return "%3.01f dB" % (0.32 *((self.source.snr * 100) /65536.0) / 2)
 			return "N/A"
 		elif self.type == self.TUNER_TYPE:
 			return self.source.frontend_type and self.frontend_type or "Unknown"
 		if percent is None:
 			return "N/A"
-		return "%d %%" % (percent * 100 // 65536.0)
+		return "%d %%" % (percent * 100 / 65536.0)
 
 	@cached
 	def getBool(self):
@@ -89,7 +88,7 @@ class FrontendInfo2(Converter, object):
 		elif self.type == self.AGC_ANALOG:
 			if self.source.agc is None:
 				return 50
-			_local = int(((self.source.agc * 60) // 65536.0) // 3)
+			_local = int(((self.source.agc * 60) / 65536.0) / 3)
 			if _local < 10:
 				return _local + 50
 			elif _local >= 10:
@@ -99,7 +98,7 @@ class FrontendInfo2(Converter, object):
 		elif self.type == self.SNR_ANALOG:
 			if self.source.snr is None:
 				return 50
-			_local = int(((self.source.snr * 60) // 65536.0) // 3)
+			_local = int(((self.source.snr * 60) / 65536.0) / 3)
 			if _local < 10:
 				return _local + 50
 			elif _local >= 10:

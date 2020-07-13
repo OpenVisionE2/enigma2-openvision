@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from Components.Converter.Poll import Poll
@@ -163,7 +162,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 				if check > 1:
 					if result[0] > 0:
 						result[1] = result[0] - result[2]
-						result[3] = result[1] * 100 // result[0]
+						result[3] = result[1] * 100 / result[0]
 					break
 
 			fd.close()
@@ -202,7 +201,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 				result[0] = st.f_bsize * st.f_blocks
 				result[2] = st.f_bsize * st.f_bavail
 				result[1] = result[0] - result[2]
-				result[3] = result[1] * 100 // result[0]
+				result[3] = result[1] * 100 / result[0]
 		return result
 
 	def getSizeStr(self, value, u = 0):
@@ -211,7 +210,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 			fmt = '%(size)u.%(frac)d %(unit)s'
 			while value >= 1024 and u < len(SIZE_UNITS):
 				value, mod = divmod(value, 1024)
-				fractal = mod * 10 // 1024
+				fractal = mod * 10 / 1024
 				u += 1
 		else:
 			fmt = '%(size)u %(unit)s'
