@@ -28,60 +28,60 @@
 	</screen>
 
 	<screen name="SummaryIconsPanel">
-		<widget source="session.CurrentService" render="Pixmap" pixmap="hdklein.png" position="0,0" size="13,7">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/hdklein.png" position="0,0" size="13,7">
 			<convert type="ServiceInfo">IsHD</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Pixmap" pixmap="dolbyklein.png" position="15,0" size="10,7">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/dolbyklein.png" position="15,0" size="10,7">
 			<convert type="ServiceInfo">IsMultichannel</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.RecordState" render="Pixmap" pixmap="recklein.png" position="29,0" size="13,7" >
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/recklein.png" position="29,0" size="13,7" >
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
-		<widget source="session.RecordState" render="Pixmap" pixmap="recklein.png" position="29,0" size="13,7" >
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/recklein.png" position="29,0" size="13,7" >
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,False,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
 	<screen name="SummaryTunerStatusPanel">
-		<widget source="session.TunerInfo" render="Pixmap" pixmap="tuner-a.png" position="68,19" size="9,14">
+		<widget source="session.TunerInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-a.png" position="68,19" size="9,14">
 			<convert type="TunerInfo">TunerUseMask</convert>
 			<convert type="ValueBitTest">1</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.TunerInfo" render="Pixmap" pixmap="tuner-b.png" position="77,19" size="9,14">
+		<widget source="session.TunerInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-b.png" position="77,19" size="9,14">
 			<convert type="TunerInfo">TunerUseMask</convert>
 			<convert type="ValueBitTest">2</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.TunerInfo" render="Pixmap" pixmap="tuner-c.png" position="86,19" size="9,14">
+		<widget source="session.TunerInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-c.png" position="86,19" size="9,14">
 			<convert type="TunerInfo">TunerUseMask</convert>
 			<convert type="ValueBitTest">4</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.TunerInfo" render="Pixmap" pixmap="tuner-d.png" position="95,19" size="9,14">
+		<widget source="session.TunerInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-d.png" position="95,19" size="9,14">
 			<convert type="TunerInfo">TunerUseMask</convert>
 			<convert type="ValueBitTest">8</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="Pixmap" pixmap="tuner-a-act.png" position="68,19" size="9,14">
+		<widget source="session.FrontendInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-a-act.png" position="68,19" size="9,14">
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">0,0</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="Pixmap" pixmap="tuner-b-act.png" position="77,19" size="9,14">
+		<widget source="session.FrontendInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-b-act.png" position="77,19" size="9,14">
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">1,1</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="Pixmap" pixmap="tuner-c-act.png" position="86,19" size="9,14">
+		<widget source="session.FrontendInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-c-act.png" position="86,19" size="9,14">
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">2,2</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="Pixmap" pixmap="tuner-d-act.png" position="95,19" size="9,14">
+		<widget source="session.FrontendInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-d-act.png" position="95,19" size="9,14">
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">3,3</convert>
 			<convert type="ConditionalShowHide" />
@@ -183,7 +183,7 @@
 		</widget>
 		<panel name="SummaryIconsPanel" />
 		<panel name="SummaryClockPanel" />
-	</screen>	
+	</screen>
 
 <!-- channelselection-->
 	<screen name="ChannelSelection_summary" position="0,0" size="128,32">
@@ -224,50 +224,50 @@
 		<widget source="global.CurrentTime" render="Label" position="0,15" size="120,22" font="FdLcD;20" halign="left" noWrap="1">
 			<convert type="ClockToText">Format:%H:%M</convert>
 		</widget>
-		<widget source="session.RecordState" render="Pixmap" pixmap="recklein.png"  position="100,22" size="19,10">
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/recklein.png"  position="100,22" size="19,10">
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
-		<widget source="session.RecordState" render="Pixmap" pixmap="recklein.png"  position="100,22" size="19,10">
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/recklein.png"  position="100,22" size="19,10">
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,False,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.TunerInfo" render="Pixmap" pixmap="tuner-a.png" position="68,19" size="9,14">
+		<widget source="session.TunerInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-a.png" position="68,19" size="9,14">
 			<convert type="TunerInfo">TunerUseMask</convert>
 			<convert type="ValueBitTest">1</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.TunerInfo" render="Pixmap" pixmap="tuner-b.png" position="77,19" size="9,14">
+		<widget source="session.TunerInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-b.png" position="77,19" size="9,14">
 			<convert type="TunerInfo">TunerUseMask</convert>
 			<convert type="ValueBitTest">2</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.TunerInfo" render="Pixmap" pixmap="tuner-c.png" position="86,19" size="9,14">
+		<widget source="session.TunerInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-c.png" position="86,19" size="9,14">
 			<convert type="TunerInfo">TunerUseMask</convert>
 			<convert type="ValueBitTest">4</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.TunerInfo" render="Pixmap" pixmap="tuner-d.png" position="95,19" size="9,14">
+		<widget source="session.TunerInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-d.png" position="95,19" size="9,14">
 			<convert type="TunerInfo">TunerUseMask</convert>
 			<convert type="ValueBitTest">8</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="Pixmap" pixmap="tuner-a-act.png" position="68,19" size="9,15">
+		<widget source="session.FrontendInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-a-act.png" position="68,19" size="9,15">
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">0,0</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="Pixmap" pixmap="tuner-b-act.png" position="77,19" size="9,15">
+		<widget source="session.FrontendInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-b-act.png" position="77,19" size="9,15">
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">1,1</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="Pixmap" pixmap="tuner-c-act.png" position="86,19" size="9,15">
+		<widget source="session.FrontendInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-c-act.png" position="86,19" size="9,15">
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">2,2</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="Pixmap" pixmap="tuner-d-act.png" position="95,19" size="9,15">
+		<widget source="session.FrontendInfo" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/tuner-d-act.png" position="95,19" size="9,15">
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">3,3</convert>
 			<convert type="ConditionalShowHide" />
@@ -393,7 +393,7 @@
 		<panel name="SummaryIconsPanel" />
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
+
 	<screen name="UpdatePlugin_summary" position="0,0" size="128,32">
 		<widget source="parent.Title" render="Label" position="0,0" size="128,16" font="FdLcD;16" halign="center" valign="top" noWrap="1" />
 		<widget source="parent.package" render="Label" position="0,16" size="128,16" font="FdLcD;14" halign="center" valign="bottom" noWrap="1" />
@@ -474,7 +474,7 @@
 		<widget source="parent.Title" render="Label" position="0,0" size="128,14" font="FdLcD;12" halign="center" valign="center" noWrap="1" />
 		<widget source="parent.summary_description" render="Label" position="0,15" size="128,17" zPosition="1" font="FdLcD;16" halign="center" valign="center" noWrap="1" />
 	</screen>
-	
+
 	<!-- Infopanel -->
 	<screen name="Infopanel_summary" position="0,0" size="128,32">
 		<widget source="parent.Title" render="Label" position="0,0" size="128,14" font="FdLcD;12" halign="center" valign="center" noWrap="1" />

@@ -28,19 +28,19 @@
 	</screen>
 
 	<screen name="SummaryIconsPanel">
-		<widget source="session.RecordState" render="Pixmap" pixmap="rec.png" position="180,0"  size="32,12">
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/rec.png" position="180,0"  size="32,12">
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
-		<widget source="session.RecordState" render="Pixmap" pixmap="rec.png" position="180,0"  size="32,12">
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/rec.png" position="180,0"  size="32,12">
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,False,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Pixmap" pixmap="hd.png" position="215,0" size="21,12">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/hd.png" position="215,0" size="21,12">
 			<convert type="ServiceInfo">IsHD</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Pixmap" pixmap="dolby.png" position="239,0" size="16,12">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/dolby.png" position="239,0" size="16,12">
 			<convert type="ServiceInfo">IsMultichannel</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
@@ -213,14 +213,14 @@
 		<widget source="global.CurrentTime" render="Label" position="0,22" size="120,45" font="FdLcD;46" halign="left" noWrap="1">
 			<convert type="ClockToText">Format:%H:%M</convert>
 		</widget>
-		<widget source="session.OnlineCheckState" render="Pixmap" pixmap="update.png" position="241,0" size="14,12">
+		<widget source="session.OnlineCheckState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/update.png" position="241,0" size="14,12">
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
-		<widget source="session.RecordState" render="Pixmap" pixmap="rec.png" position="223,52"  size="32,12">
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/rec.png" position="223,52"  size="32,12">
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
-		<widget source="session.RecordState" render="Pixmap" pixmap="rec.png" position="223,52"  size="32,12">
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/rec.png" position="223,52"  size="32,12">
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,False,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>

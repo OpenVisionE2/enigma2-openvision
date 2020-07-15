@@ -2,7 +2,7 @@
 <skin>
 	<!-- ## ANALOGUE CLOCK ## -->
 	<screen name="AnalogueClock">
-		<ePixmap pixmap="analogclock.png" position="186,32" size="800,480" transparent="1" alphatest="on" />
+		<ePixmap pixmap="/usr/share/enigma2/display/skin_default/analogclock.png" position="186,32" size="800,480" transparent="1" alphatest="on" />
 		<widget source="global.CurrentTime" render="AnalogClockLCD" position="center,center" size="425,420" hColor="black" positionwidth="425" positionheight="420" linewidth="10" linesize="120" zPosition="3" alphatest="on">
 			<convert type="AnalogClock">Hours</convert>
 		</widget>
@@ -42,7 +42,7 @@
 			<convert type="RemainingToText">InMinutes</convert>
 		</widget>
 	</screen>
-	<!-- 
+	<!--
 	<screen name="LCDInfoBarStartEndTime">
 		<widget source="session.Event_Now" render="Label" position="360,390" size="380,70" font="FdLcD;60" foregroundColor="white" halign="right" valign="center">
 			<convert type="EventTime">Times</convert>
@@ -62,7 +62,7 @@
 			<convert type="ClockToText">Default</convert>
 		</widget>
 	</screen>
-	<!-- 
+	<!--
 	<screen name="LCDChannelSelectionStartEndTime">
 		<widget source="parent.ServiceEvent" render="Label" position="360,390" size="380,70" font="FdLcD;60" foregroundColor="white" halign="right" valign="center">
 			<convert type="EventTime">Times</convert>
@@ -82,7 +82,7 @@
 			<convert type="ClockToText">Default</convert>
 		</widget>
 	</screen>
-	<!-- 
+	<!--
 	<screen name="LCDEPGStartEndTime">
 		<widget source="parent.Event" render="Label" position="360,390" size="380,70" font="FdLcD;60" foregroundColor="white" halign="right" valign="center">
 			<convert type="EventTime">Times</convert>
@@ -104,8 +104,8 @@
 	</screen>
 
 	<screen name="LCDRecordIcon">
-		<!-- ><ePixmap pixmap="recording.png" position="420,395" size="218,60" alphatest="blend" zPosition="3" /> -->
-		<widget source="session.RecordState" render="Pixmap" pixmap="recording.png" position="590,190" size="163,70" zPosition="1" alphatest="blend">
+		<!-- ><ePixmap pixmap="/usr/share/enigma2/display/skin_default/recording.png" position="420,395" size="218,60" alphatest="blend" zPosition="3" /> -->
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/recording.png" position="590,190" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
@@ -175,7 +175,7 @@
 	<screen name="LCDPiconChannelSelectionProgramName">
 		<widget source="parent.ServiceEvent" render="Label" position="40,260" size="720,80" foregroundColor="white" font="FdLcDLight;65" halign="center" valign="center" zPosition="2">
 			<convert type="EventName">Name</convert>
-		</widget>	
+		</widget>
 	</screen>
 	<screen name="LCDPiconEPGProgramName">
 		<widget source="parent.Event" render="Label" position="40,260" size="720,80" foregroundColor="white" font="FdLcDLight;65" halign="center" valign="center" zPosition="2">
@@ -215,7 +215,7 @@
 			<convert type="RemainingToText">InMinutes</convert>
 		</widget>
 	</screen>
-	<!-- 
+	<!--
 	<screen name="LCDPiconInfoBarStartEndTime">
 		<widget source="session.Event_Now" render="Label" position="360,390" size="380,70" font="FdLcD;60" foregroundColor="white" halign="right" valign="center">
 			<convert type="EventTime">Times</convert>
@@ -235,7 +235,7 @@
 			<convert type="ClockToText">Default</convert>
 		</widget>
 	</screen>
-	<!-- 
+	<!--
 	<screen name="LCDPiconChannelSelectionStartEndTime">
 		<widget source="parent.ServiceEvent" render="Label" position="360,390" size="380,70" font="FdLcD;60" foregroundColor="white" halign="right" valign="center">
 			<convert type="EventTime">Times</convert>
@@ -255,7 +255,7 @@
 			<convert type="ClockToText">Default</convert>
 		</widget>
 	</screen>
-	<!-- 
+	<!--
 	<screen name="LCDPiconEPGStartEndTime">
 		<widget source="parent.Event" render="Label" position="360,390" size="380,70" font="FdLcD;60" foregroundColor="white" halign="right" valign="center">
 			<convert type="EventTime">Times</convert>
@@ -276,15 +276,15 @@
 		</widget>
 	</screen>
 	<screen name="LCDPicon">
-		<widget source="session.CurrentService" render="LcdPicon" position="40,40" size="350,210" transparent="1" alphatest="blend" zPosition="2">	
+		<widget source="session.CurrentService" render="LcdPicon" position="40,40" size="350,210" transparent="1" alphatest="blend" zPosition="2">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="540,10" size="220,84" font="FdLcD;84" halign="left" backgroundColor="LCDBackground">
 			<convert type="ClockToText">Default</convert>
-		</widget>			
+		</widget>
 	</screen>
 	<screen name="LCDChannelSelectionPicon">
-		<widget source="parent.ServiceEvent" render="LcdPicon" position="40,40" size="350,210" transparent="1" alphatest="blend" zPosition="2">	
+		<widget source="parent.ServiceEvent" render="LcdPicon" position="40,40" size="350,210" transparent="1" alphatest="blend" zPosition="2">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="540,10" size="220,84" font="FdLcD;84" halign="left" backgroundColor="LCDBackground">
@@ -292,7 +292,7 @@
 		</widget>
 	</screen>
 	<screen name="LCDEPGPicon">
-		<widget source="parent.Service" render="LcdPicon" position="40,40" size="350,210" transparent="1" alphatest="blend" zPosition="2">	
+		<widget source="parent.Service" render="LcdPicon" position="40,40" size="350,210" transparent="1" alphatest="blend" zPosition="2">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="540,10" size="220,84" font="FdLcD;84" halign="left" backgroundColor="LCDBackground">
@@ -300,39 +300,39 @@
 		</widget>
 	</screen>
 	<screen name="LCDPiconStatusIcons">
-		<widget source="session.CurrentService" render="Pixmap" pixmap="dolbyprologic.png" position="410,110" size="163,70" zPosition="1" alphatest="blend">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/dolbyprologic.png" position="410,110" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ServiceInfo">IsStereo</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Pixmap" pixmap="dolbydigital.png" position="410,110" size="163,70" zPosition="1" alphatest="blend">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/dolbydigital.png" position="410,110" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ServiceInfo">IsMultichannel</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Pixmap" pixmap="169.png" position="410,190" size="163,70" zPosition="1" alphatest="blend">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/169.png" position="410,190" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ServiceInfo">IsWidescreen</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Pixmap" pixmap="4.3.png" position="410,190" size="163,70" zPosition="1" alphatest="blend">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/4.3.png" position="410,190" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ServiceInfo">IsNotWidescreen</convert>
 			<convert type="ConditionalShowHide" />
-		</widget>	
-		<widget source="session.CurrentService" render="Pixmap" pixmap="2160.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/2160.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ServiceInfo">Is4K</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Pixmap" pixmap="1080.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/1080.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ServiceInfo">Is1080</convert>
 			<convert type="ConditionalShowHide" />
-		</widget>		
-		<widget source="session.CurrentService" render="Pixmap" pixmap="720.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
+		</widget>
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/720.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ServiceInfo">Is720</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Pixmap" pixmap="576.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/576.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ServiceInfo">Is576</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Pixmap" pixmap="480.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
+		<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/480.png" position="590,110" size="163,70" zPosition="1" alphatest="blend">
 			<convert type="ServiceInfo">Is480</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
@@ -367,7 +367,7 @@
 	</screen>
 
 	<!-- JOBVIEW SUMMARY -->
-	<screen name="JobView_summary" position="0,0" size="800,480"> 
+	<screen name="JobView_summary" position="0,0" size="800,480">
 		<widget source="parent.summary_job_name" render="Label" position="40,50" size="720,110" foregroundColor="white" font="FdLcD;85" halign="center" valign="center" zPosition="2" />
 		<widget source="parent.summary_job_task" render="Label" position="40,200" size="720,160" foregroundColor="white" font="FdLcDLight;65" halign="center" valign="top" zPosition="2" />
 		<widget source="parent.summary_job_progress" render="Label" position="40,410" size="720,60" foregroundColor="white" font="FdLcDLight;60" halign="left" valign="center" zPosition="3">
@@ -376,7 +376,7 @@
 	</screen>
 
 	<!-- MENU-->
-	<screen name="MenuSummary" position="0,0" size="800,480"> 
+	<screen name="MenuSummary" position="0,0" size="800,480">
 		<panel name="LCDTitle" />
 		<widget source="parent.menu" render="Label" position="40,200" size="720,160" foregroundColor="white" font="FdLcDLight;65" halign="center" valign="top" zPosition="2">
 			<convert type="StringListSelection" />
@@ -384,16 +384,16 @@
 	</screen>
 
 	<!-- MESSAGEBOX -->
-	<screen name="MessageBox_summary" position="0,0" size="800,480"> 
+	<screen name="MessageBox_summary" position="0,0" size="800,480">
 		<widget source="parent.Text" render="Label" position="40,50" size="720,310" foregroundColor="white" font="FdLcD;70" halign="center" valign="center" zPosition="2" />
 		<widget source="parent.selectedChoice" render="Label" position="40,380" size="720,70" foregroundColor="white" font="FdLcDLight;60" halign="center" valign="top" zPosition="2" />
 	</screen>
-	<screen name="MessageBoxSimple_summary" position="0,0" size="800,480"> 
+	<screen name="MessageBoxSimple_summary" position="0,0" size="800,480">
 		<panel name="MessageBox_summary" />
 	</screen>
 
 	<!-- MOVIE SELECTION-->
-	<screen name="MovieSelectionSummary" position="0,0" size="800,480"> 
+	<screen name="MovieSelectionSummary" position="0,0" size="800,480">
 		<widget source="parent.Title" render="Label" position="40,40" size="720,90" font="FdLcD;75" foregroundColor="white" halign="center" valign="center" zPosition="2" />
 		<widget source="name" render="Label" position="40,150" size="720,150" font="FdLcDLight;60" foregroundColor="white" halign="center" valign="top" zPosition="2" />
 		<widget source="parent.Service" render="Label" position="40,400" size="320,70" font="FdLcD;60" foregroundColor="white" halign="left" valign="center">
@@ -410,7 +410,7 @@
 	</screen>
 
 	<!-- MOVIE PLAYER-->
-	<screen name="InfoBarMoviePlayerSummary" position="0,0" size="800,480"> 
+	<screen name="InfoBarMoviePlayerSummary" position="0,0" size="800,480">
 		<widget source="session.CurrentService" render="Label" position="40,90" size="720,260" font="FdLcD;75" foregroundColor="white" halign="center" valign="center" zPosition="2">
 			<convert type="ServiceName">Name</convert>
 		</widget>
@@ -430,7 +430,7 @@
 		</widget>
 	</screen>
 	<!-- EMC Player -->
-	<screen name="EMCSelection_summary" position="0,0" size="800,480"> 
+	<screen name="EMCSelection_summary" position="0,0" size="800,480">
 		<widget source="parent.Title" render="Label" position="40,40" size="720,90" font="FdLcD;75" foregroundColor="white" halign="center" valign="center" zPosition="2" />
 		<widget source="parent.Service" render="Label" position="40,150" size="720,150" font="FdLcDLight;60" foregroundColor="white" halign="center" valign="top" zPosition="2">
 			<convert type="ServiceName">Name</convert>
@@ -446,13 +446,13 @@
 	<screen name="EMCSelectionSummary" position="0,0" size="800,480">
 		<panel name="EMCSelection_summary" />
 	</screen>
-	<screen name="EMCMoviePlayerSummary" position="0,0" size="800,480"> 
+	<screen name="EMCMoviePlayerSummary" position="0,0" size="800,480">
 		<widget source="session.CurrentService" render="Label" position="40,90" size="720,260" font="FdLcD;75" foregroundColor="white" halign="center" valign="center" zPosition="2">
 			<convert type="ServiceName">Name</convert>
 		</widget>
 		<widget source="Service" render="Progress" position="40,350" size="720,25" foregroundColor="white" borderWidth="2" zPosition="2">
 			<convert type="EMCServicePosition">Position</convert>
-		</widget>		
+		</widget>
 		<widget source="session.CurrentService" render="Label" position="40,480" size="320,70" font="FdLcD;60" foregroundColor="white" halign="left" valign="center">
 			<convert type="ServicePosition">Remaining,Negate</convert>
 		</widget>
@@ -467,13 +467,13 @@
 	</screen>
 
 	<!-- PLUGIN BROWSER -->
-	<screen name="PluginBrowserSummary" position="0,0" size="800,480"> 
+	<screen name="PluginBrowserSummary" position="0,0" size="800,480">
 		<panel name="LCDTitle2" />
 		<widget source="entry" render="Label" position="40,200" size="720,160" foregroundColor="white" font="FdLcDLight;65" halign="center" valign="top" zPosition="2" />
 	</screen>
 
 	<!-- SETUP -->
-	<screen name="SetupSummary" position="0,0" size="800,480"> 
+	<screen name="SetupSummary" position="0,0" size="800,480">
 		<widget source="SetupTitle" render="Label" position="40,50" size="720,110" foregroundColor="white" font="FdLcD;85" halign="center" valign="center" zPosition="2" />
 		<widget source="SetupEntry" render="Label" position="40,200" size="720,160" foregroundColor="white" font="FdLcDLight;65" halign="center" valign="top" zPosition="2" />
 		<widget source="SetupValue" render="Label" position="40,380" size="720,70" foregroundColor="white" font="FdLcDLight;60" halign="center" valign="top" zPosition="2" />
@@ -486,7 +486,7 @@
 	</screen>
 
 	<!-- misc-->
-	<screen name="SimpleSummary" position="0,0" size="800,480"> 
+	<screen name="SimpleSummary" position="0,0" size="800,480">
 		<widget source="parent.Title" render="Label" position="40,190" size="720,200" font="FdLcD;60" halign="center" valign="top" />
 	</screen>
 
@@ -502,10 +502,10 @@
 	<!-- ExtensionsList -->
 	<screen name="ExtensionsList_summary" position="0,0" size="800,480">
 		<widget source="parent.Title" render="Label" position="40,20" size="720,376" font="FdLcD;70" halign="center" valign="center" />
-	</screen> 
+	</screen>
 
 	<!-- EPG -->
 	<screen name="EPGExtensionsList_summary" position="0,0" size="800,480">
 		<widget source="parent.Title" render="Label" position="40,20" size="720,250" font="FdLcD;80" halign="center" valign="center" foregroundColor="white" />
-	</screen> 
+	</screen>
 </skin>

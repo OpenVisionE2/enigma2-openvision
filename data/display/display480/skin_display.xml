@@ -116,13 +116,13 @@
 			<convert type="ValueRange">9,9</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<!-- <ePixmap pixmap="record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend" /> -->
-		<widget source="session.RecordState" render="Pixmap" pixmap="record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend">
+		<!-- <ePixmap pixmap="/usr/share/enigma2/display/skin_default/record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend" /> -->
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend">
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
+
 <!-- channelselection-->
 	<screen name="ChannelSelection_summary" position="0,0" size="480,320">
 		<widget source="parent.ServiceEvent" render="Label" position="0,5" size="480,70" font="FdLcD;55" halign="center" valign="center" foregroundColor="#FFFF00" >
@@ -198,13 +198,13 @@
 			<convert type="ValueRange">9,9</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<!-- <ePixmap pixmap="record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend" /> -->
-		<widget source="session.RecordState" render="Pixmap" pixmap="record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend">
+		<!-- <ePixmap pixmap="/usr/share/enigma2/display/skin_default/record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend" /> -->
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend">
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
 		<panel name="SummaryClockPanel" />
 	</screen>
-	
+
 <!-- EPG Screens -->
 	<screen name="EPGSelection_summary" position="0,0" size="480,320">
 		<widget source="parent.Service" render="Label" position="0,5" size="480,70" font="FdLcD;55" halign="center" valign="center" foregroundColor="#FFFF00" >
@@ -279,8 +279,8 @@
 			<convert type="ValueRange">9,9</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<!-- <ePixmap pixmap="record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend" /> -->
-		<widget source="session.RecordState" render="Pixmap" pixmap="record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend">
+		<!-- <ePixmap pixmap="/usr/share/enigma2/display/skin_default/record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend" /> -->
+		<widget source="session.RecordState" render="Pixmap" pixmap="/usr/share/enigma2/display/skin_default/record.png" position="285,270" size="30,30" zPosition="3" alphatest="blend">
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
 		<panel name="SummaryClockPanel" />
@@ -487,7 +487,7 @@
 	</screen>
 
 	<!-- LCD screen EMC -->
-	<screen name="EMCSelection_summary" position="5,0" size="471,320"> 
+	<screen name="EMCSelection_summary" position="5,0" size="471,320">
 		<widget source="parent.Title" render="Label" position="0,0" size="471,96" font="FdLcD;32" foregroundColor="#87CEFA" halign="center" valign="center" />
 		<eLabel position="0,99" size="471,1" backgroundColor="white" />
 		<widget source="parent.Service" render="Label" position="0,99" size="471,175" font="FdLcD;34" halign="center" valign="center">
@@ -505,7 +505,7 @@
 		<panel name="EMCSelection_summary" />
 	</screen>
 	<screen name="EMCMoviePlayerSummary" position="0,0" size="480,320" >
-		<!-- Movie name -->		
+		<!-- Movie name -->
 		<widget source="session.CurrentService" render="Label" position="0,10" size="400,148" font="FdLcD;40" halign="center" valign="center" transparent="1" >
 			<convert type="ServiceName">Name</convert>
 		</widget>
@@ -535,7 +535,7 @@
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,False,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-	</screen>	
+	</screen>
 	<screen name="CrossEPG_Downloader_summary" position="0,0" size="480,320">
 		<widget source="parent.Title" render="Label" position="0,38" size="400,26" font="FdLcD;24" halign="left" noWrap="1" />
 		<widget source="parent.summary_action" render="Label" position="0,66" size="400,20" font="FdLcD;19" halign="left" noWrap="1" />

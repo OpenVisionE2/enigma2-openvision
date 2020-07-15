@@ -38,7 +38,7 @@
 		</widget>
 	</screen>
 
-<!-- Tuner Panel -->	
+<!-- Tuner Panel -->
 	<screen name="MeinTunerInfoPanel">
 		<widget source="session.FrontendInfo" render="FixedLabel" position="5,285" size="28,32" text="A" foregroundColor="#04B404" font="FdLcD;24" zPosition="1" transparent="1" halign="center" >
 			<convert type="FrontendInfo">NUMBER</convert>
@@ -86,7 +86,7 @@
 	<screen name="MyEPGPanel" position="5,0" size="471,320">
 		<widget source="parent.Service" render="LcdPicon" position="147,0" size="177,120" zPosition="1" alphatest="on">
 			<convert type="ServiceName">Reference</convert>
-		</widget> 
+		</widget>
 		<eLabel position="0,123" size="471,1" backgroundColor="#BDBDBD" />
 		<widget source="parent.Event" render="Progress" position="0,127" size="471,20">
 			<convert type="EventTime">Progress</convert>
@@ -99,7 +99,7 @@
 		<widget source="parent.Event" render="Label" position="0,67" size="471,51" font="FdLcD;38" foregroundColor="#87CEFA" transparent="1" valign="center" halign="right">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText"></convert>
-		</widget>		
+		</widget>
 		<widget source="parent.Event" render="Label" position="0,153" size="471,167" font="FdLcD;34" halign="center" valign="center" >
 			<convert type="EventName">Name</convert>
 		</widget>
@@ -117,7 +117,7 @@
 		<widget source="session.Event_Now" render="Label" position="357,111" size="115,51" font="FdLcD;38" foregroundColor="#87CEFA" valign="center" halign="center">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText"></convert>
-		</widget>	
+		</widget>
 		<eLabel position="0,175" size="471,3" backgroundColor="#BDBDBD" zPosition="3" />
 		<widget source="session.Event_Now" render="Progress" position="0,184" size="471,33" transparent="1">
 			<convert type="EventTime">Progress</convert>
@@ -203,11 +203,11 @@
 		<widget source="parent.ServiceEvent" render="Label" position="0,67" size="471,51" font="FdLcD;38" foregroundColor="#87CEFA" transparent="1" valign="center" halign="right">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText"></convert>
-		</widget>		
+		</widget>
 		<widget source="parent.ServiceEvent" render="Label" position="0,153" size="471,167" font="FdLcD;34" halign="center" valign="center" >
 			<convert type="EventName">Name</convert>
 		</widget>
-		<panel name="MeinRecordingPanel" /> 
+		<panel name="MeinRecordingPanel" />
 	</screen>
 
 <!-- RadioChannelselection  -->
@@ -304,7 +304,7 @@
 		</widget>
 	</screen>
 
-<!-- DevicesPanelSummary -->	
+<!-- DevicesPanelSummary -->
 	<screen name="DevicesPanelSummary" position="5,0" size="471,320">
 		<widget source="parent.Title" render="Label" position="0,0" size="471,49" font="FdLcD;34" foregroundColor="#87CEFA" noWrap="1" halign="center" valign="top" />
 		<eLabel position="0,51" size="471,1" backgroundColor="white" />
@@ -383,7 +383,7 @@
 		<widget source="parent.Event" render="Label" position="0,269" size="471,51" font="FdLcD;38" foregroundColor="#87CEFA" transparent="1" valign="center" halign="right">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText"></convert>
-		</widget>		
+		</widget>
 	</screen>
 
 <!-- IMDbLCDScreen -->
@@ -492,32 +492,32 @@
 	<screen name="BackupSelection_summary" position="5,0" size="471,320">
 		<widget source="parent.Title" render="Label" position="0,0" size="471,140" font="FdLcD;38" foregroundColor="#87CEFA" halign="center" valign="center" />
 		<eLabel position="0,141" size="471,1" backgroundColor="white" />
-		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" /> 
+		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" />
 	</screen>
 	<screen name="RestoreScreen_summary" position="5,0" size="471,320">
 		<widget source="parent.Title" render="Label" position="0,0" size="471,140" font="FdLcD;38" foregroundColor="#87CEFA" halign="center" valign="center" />
 		<eLabel position="0,141" size="471,1" backgroundColor="white" />
-		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" /> 	
+		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" />
 	</screen>
 	<screen name="installedPlugins_summary" position="5,0" size="471,320">
 		<widget source="parent.Title" render="Label" position="0,0" size="471,140" font="FdLcD;38" foregroundColor="#87CEFA" halign="center" valign="center" />
 		<eLabel position="0,141" size="471,1" backgroundColor="white" />
-		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" /> 
+		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" />
 	</screen>
 	<screen name="RestartNetwork_summary" position="5,0" size="471,320">
 		<widget source="parent.Title" render="Label" position="0,0" size="471,140" font="FdLcD;38" foregroundColor="#87CEFA" halign="center" valign="center" />
 		<eLabel position="0,141" size="471,1" backgroundColor="white" />
-		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" /> 
+		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" />
 	</screen>
 	<screen name="RestorePlugins_summary" position="5,0" size="471,320">
 		<widget source="parent.Title" render="Label" position="0,0" size="471,140" font="FdLcD;38" foregroundColor="#87CEFA" halign="center" valign="center" />
 		<eLabel position="0,141" size="471,1" backgroundColor="white" />
-		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" /> 
+		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" />
 	</screen>
 	<screen name="RestoreMenu_summary" position="5,0" size="471,320">
 		<widget source="parent.Title" render="Label" position="0,0" size="471,140" font="FdLcD;38" foregroundColor="#87CEFA" halign="center" valign="center" />
 		<eLabel position="0,141" size="471,1" backgroundColor="white" />
-		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" /> 
+		<widget source="parent.summary_description" render="Label" position="0,143" size="471,177" zPosition="1" font="FdLcD;35" halign="center" valign="center" />
 	</screen>
 
 <!-- DVD -->
@@ -544,7 +544,7 @@
 	</screen>
 
 <!-- EMC Screen -->
-	<screen name="EMCSelection_summary" position="5,0" size="471,320"> 
+	<screen name="EMCSelection_summary" position="5,0" size="471,320">
 		<widget source="parent.Title" render="Label" position="0,0" size="471,96" font="FdLcD;32" foregroundColor="#87CEFA" halign="center" valign="center" />
 		<eLabel position="0,99" size="471,1" backgroundColor="white" />
 		<widget source="parent.Service" render="Label" position="0,99" size="471,175" font="FdLcD;34" halign="center" valign="center">
@@ -570,7 +570,7 @@
 		<widget source="Service" render="Progress" position="0,184" size="471,33" transparent="1" >
 			<convert type="EMCServicePosition">Position</convert>
 		</widget>
-		<eLabel position="0,224" size="471,3" backgroundColor="#BDBDBD" zPosition="3" />		
+		<eLabel position="0,224" size="471,3" backgroundColor="#BDBDBD" zPosition="3" />
 		<widget source="session.CurrentService" render="Label" position="353,231" size="118,53" font="FdLcD;40" zPosition="0" foregroundColor="#A9E2F3" halign="right" transparent="1">
 			<convert type="ServicePosition">Remaining,ShowNoSeconds,OnlyMinute</convert>
 		</widget>
