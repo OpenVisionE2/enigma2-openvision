@@ -154,7 +154,7 @@ try:
 	else:
 		log.startLogging(sys.stdout)
 except ImportError:
-	print "twisted not available"
+	print("twisted not available")
 	pass
 
 profile("LOAD:Plugin")
