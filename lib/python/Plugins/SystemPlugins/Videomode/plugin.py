@@ -284,7 +284,7 @@ def startSetup(menuid):
 	return [(_("A/V settings"), videoSetupMain, "av_setup", 40)]
 
 def VideoWizard(*args, **kwargs):
-	from VideoWizard import VideoWizard
+	from Plugins.SystemPlugins.Videomode.VideoWizard import VideoWizard
 	return VideoWizard(*args, **kwargs)
 
 def Plugins(**kwargs):
