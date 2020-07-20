@@ -148,7 +148,7 @@ class Screen(dict):
 		return self.screenPath
 
 	def setTitle(self, title):
-		try:
+		try:  # This protects against calls to setTitle() before being fully initialised like self.session is accessed *before* being defined.
 			if self.session and len(self.session.dialog_stack) > 2:
 				self.screenPath = " > ".join(ds[0].getTitle() for ds in self.session.dialog_stack[2:])
 			if self.instance:
@@ -157,10 +157,11 @@ class Screen(dict):
 		except AttributeError:
 			pass
 		self.screenTitle = title
-		if config.usage.menu_path.value == "large":
+		dont_use_menu_path = "ChannelSelection" in self.__class__.__name__
+		if config.usage.menu_path.value == "large" and not dont_use_menu_path:
 			screenPath = ""
 			screenTitle = "%s > %s" % (self.screenPath, title) if self.screenPath else title
-		elif config.usage.menu_path.value == "small":
+		elif config.usage.menu_path.value == "small" and not dont_use_menu_path:
 			screenPath = "%s >" % self.screenPath if self.screenPath else ""
 			screenTitle = title
 		else:
@@ -231,8 +232,8 @@ class Screen(dict):
 				if title:
 					self.skinAttributes[skinTitleIndex] = ("title", title)
 				else:
-					self["Title"].text = value
-					self.summaries.setTitle(value)
+					self["Title"].text = _(value)
+					self.summaries.setTitle(_(value))
 			elif key == "baseResolution":
 				baseRes = tuple([int(x) for x in value.split(",")])
 			idx += 1
@@ -270,10 +271,9 @@ class Screen(dict):
 				# w.instance.thisown = 0
 			applyAllAttributes(w.instance, desktop, w.skinAttributes, self.scale)
 		for f in self.onLayoutFinish:
-			# DEBUG: if type(f) is not type(self.close):  # Is this the best way to do this?
-			# DEBUG: Is the following an acceptable fix?
 			if not isinstance(f, type(self.close)):
-				exec f in globals(), locals()
+				exec f in globals(), locals()  # Python 2
+				# exec(f, globals(), locals())  # Python 3
 			else:
 				f()
 
