@@ -118,7 +118,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self.onShown.remove(self.__checkServiceStarted)
 
 	def showTvButton(self):
-		if getBoxBrand() == "gigablue" or getBoxType() in ("classm","genius","evo","galaxym6"):
+		if getBoxBrand() == "gigablue":
 			self.toggleTvRadio()
 		elif getBoxType() in ("sezam5000hd","mbtwin") or getBoxProc() in ("ini-3000","ini-5000","ini-7000","ini-7012"):
 			self.showMovies()
@@ -129,7 +129,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self.showTvChannelList(True)
 
 	def showRadioButton(self):
-		if getBoxBrand()in ("gigablue","azbox") or getBoxType() in ("classm","genius","evo","galaxym6","sezam5000hd","mbtwin","beyonwizt3") or getBoxProc() in ("ini-3000","ini-5000","ini-7000","ini-7012"):
+		if getBoxBrand()in ("gigablue","azbox") or getBoxType() in ("sezam5000hd","mbtwin","beyonwizt3") or getBoxProc() in ("ini-3000","ini-5000","ini-7000","ini-7012"):
 			self.toggleTvRadio()
 		else:
 			self.showRadio()

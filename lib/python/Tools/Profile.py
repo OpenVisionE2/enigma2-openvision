@@ -35,7 +35,7 @@ except IOError:
 def profile(id):
 	now = time.time() - profile_start
 
-	if getBoxType() in ("classm","axodin","axodinc","starsatlx","genius","evo","galaxym6"):
+	if getBoxType() == "axodin":
 		dev_fmt = ("/dev/dbox/oled0", "%d")
 	elif getBoxType() in ("gb800solo","gb800se","gb800seplus","gbultrase"):
 		dev_fmt = ("/dev/mcu", "%d  \n")
