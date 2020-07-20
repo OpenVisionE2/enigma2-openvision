@@ -7,9 +7,10 @@ from Tools.CList import CList
 import os
 from enigma import getBoxType
 from Components.About import about
+from boxbranding import getHaveRCA, getHaveYUV, getHaveSCART, getHaveAVJACK, getHaveHDMI
 
 model = getBoxType()
-has_hdmi = model not in ("dm800","dm8000")
+has_hdmi = getHaveHDMI() == "True"
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -141,6 +142,13 @@ class VideoHardware:
 			del self.modes["DVI-PC"]
 		if "Scart" in self.modes and not self.getModeList("Scart"):
 			print("[Videomode] VideoHardware remove Scart because of not existing modes")
+			del self.modes["Scart"]
+		if "YPbPr" in self.modes and not getHaveYUV():
+			del self.modes["YPbPr"]
+		if "Scart" in self.modes and not getHaveSCART() and (getHaveRCA() == "True" or getHaveAVJACK() == "True"):
+			modes["RCA"] = modes["Scart"]
+			del self.modes["Scart"]
+		if "Scart" in self.modes and not getHaveRCA() and (not getHaveSCART() and not getHaveAVJACK()):
 			del self.modes["Scart"]
 
 		self.createConfig()

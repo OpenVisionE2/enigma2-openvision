@@ -216,29 +216,29 @@ class OpenVisionInformation(Screen):
 		if SystemInfo["HiSilicon"]:
 			OpenVisionInformationText += _("HiSilicon dedicated information") + "\n"
 
-			grab = os.popen("opkg list-installed | grep -- -grab | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			grab = os.popen("opkg list-installed | grep -- -grab | cut -f4 -d'-'").read().strip()
 			if grab != "":
-				OpenVisionInformationText += _("Grab: ") + grab + "\n"
+				OpenVisionInformationText += _("Grab:") + grab + "\n"
 
-			hihalt = os.popen("opkg list-installed | grep -- -hihalt | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			hihalt = os.popen("opkg list-installed | grep -- -hihalt | cut -f4 -d'-'").read().strip()
 			if hihalt != "":
-				OpenVisionInformationText += _("Halt: ") + hihalt + "\n"
+				OpenVisionInformationText += _("Halt:") + hihalt + "\n"
 
-			libs = os.popen("opkg list-installed | grep -- -libs | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			libs = os.popen("opkg list-installed | grep -- -libs | cut -f4 -d'-'").read().strip()
 			if libs != "":
-				OpenVisionInformationText += _("Libs: ") + libs + "\n"
+				OpenVisionInformationText += _("Libs:") + libs + "\n"
 
-			partitions = os.popen("opkg list-installed | grep -- -partitions | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			partitions = os.popen("opkg list-installed | grep -- -partitions | cut -f4 -d'-'").read().strip()
 			if partitions != "":
-				OpenVisionInformationText += _("Partitions: ") + partitions + "\n"
+				OpenVisionInformationText += _("Partitions:") + partitions + "\n"
 
-			reader = os.popen("opkg list-installed | grep -- -reader | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			reader = os.popen("opkg list-installed | grep -- -reader | cut -f4 -d'-'").read().strip()
 			if reader != "":
-				OpenVisionInformationText += _("Reader: ") + reader + "\n"
+				OpenVisionInformationText += _("Reader:") + reader + "\n"
 
-			showiframe = os.popen("opkg list-installed | grep -- -showiframe | cut -f4 -d'-' | sed 's/ //g'").read().strip()
+			showiframe = os.popen("opkg list-installed | grep -- -showiframe | cut -f4 -d'-'").read().strip()
 			if showiframe != "":
-				OpenVisionInformationText += _("Showiframe: ") + showiframe + "\n"
+				OpenVisionInformationText += _("Showiframe:") + showiframe + "\n"
 
 			OpenVisionInformationText += "\n"
 

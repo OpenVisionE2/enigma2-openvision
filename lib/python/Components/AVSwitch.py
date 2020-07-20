@@ -6,6 +6,8 @@ from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop, getBoxType, getBoxB
 from Components.SystemInfo import SystemInfo
 import os
 
+model = getBoxType()
+
 class AVSwitch:
 	def setInput(self, input):
 		INPUT = { "ENCODER": 0, "SCART": 1, "AUX": 2 }
@@ -68,7 +70,7 @@ class AVSwitch:
 
 def InitAVSwitch():
 	config.av = ConfigSubsection()
-	if getBoxType() == "vuduo" or getBoxBrand() == "ixuss":
+	if model == "vuduo" or getBoxBrand() == "ixuss":
 		config.av.yuvenabled = ConfigBoolean(default=False)
 	else:
 		config.av.yuvenabled = ConfigBoolean(default=True)
@@ -153,9 +155,9 @@ def InitAVSwitch():
 	iAVSwitch = AVSwitch()
 
 	def setColorFormat(configElement):
-		if getBoxType() == "et6x00":
+		if model == "et6x00":
 			map = {"cvbs": 3, "rgb": 3, "svideo": 2, "yuv": 3}
-		elif SystemInfo["GigaBlueQuad"] or getBoxType().startswith('et'):
+		elif SystemInfo["GigaBlueQuad"] or model.startswith('et'):
 			map = {"cvbs": 0, "rgb": 3, "svideo": 2, "yuv": 3}
 		else:
 			map = {"cvbs": 0, "rgb": 1, "svideo": 2, "yuv": 3}
@@ -179,7 +181,7 @@ def InitAVSwitch():
 	config.av.wss.addNotifier(setWSS)
 
 	iAVSwitch.setInput("ENCODER") # init on startup
-	if SystemInfo["GigaBlueQuad"] or getBoxType() in ("et5x00","et6x00","ixussone","ixusszero","axodin","axase3","optimussos1","optimussos2","gb800seplus","gb800ueplus","gbultrase","gbultraue","gbultraueh","twinboxlcd"):
+	if SystemInfo["GigaBlueQuad"] or model in ("et5x00","et6x00","ixussone","ixusszero","axodin","axase3","optimussos1","optimussos2","gb800seplus","gb800ueplus","gbultrase","gbultraue","gbultraueh","twinboxlcd"):
 		detected = False
 	else:
 		detected = eAVSwitch.getInstance().haveScartSwitch()

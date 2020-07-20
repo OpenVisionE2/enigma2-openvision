@@ -4,7 +4,7 @@ from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnig
 from Tools.Directories import SCOPE_PLUGINS, fileCheck, fileExists, fileHas, pathExists, resolveFilename
 import os, re
 from os import access, R_OK
-from boxbranding import getDisplayType, getImageArch
+from boxbranding import getDisplayType, getImageArch, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveSCART, getHaveYUV, getHaveRCA, getHaveWOL, getHaveTranscoding, getHaveMultiTranscoding, getSoCFamily
 
 SystemInfo = {}
 
@@ -75,7 +75,7 @@ SystemInfo["Power4x7On"] = fileCheck("/proc/stb/fp/power4x7on")
 SystemInfo["Power4x7Standby"] = fileCheck("/proc/stb/fp/power4x7standby")
 SystemInfo["Power4x7Suspend"] = fileCheck("/proc/stb/fp/power4x7suspend")
 SystemInfo["PowerOffDisplay"] = model != "formuler1" and fileCheck("/proc/stb/power/vfd") or fileCheck("/proc/stb/lcd/vfd")
-SystemInfo["WakeOnLAN"] = model not in ("et8000","et10000") and fileCheck("/proc/stb/power/wol") or fileCheck("/proc/stb/fp/wol")
+SystemInfo["WakeOnLAN"] = getHaveWOL() == "True" or fileCheck("/proc/stb/power/wol") or fileCheck("/proc/stb/fp/wol")
 SystemInfo["HasExternalPIP"] = not (model.startswith("et9") or model.startswith("et5") or model.startswith("et6")) and fileCheck("/proc/stb/vmpeg/1/external")
 SystemInfo["VideoDestinationConfigurable"] = fileExists("/proc/stb/vmpeg/0/dst_left")
 SystemInfo["hasPIPVisibleProc"] = fileCheck("/proc/stb/vmpeg/1/visible")
@@ -90,7 +90,7 @@ SystemInfo["LcdLiveDecoder"] = fileCheck("/proc/stb/lcd/live_decoder")
 SystemInfo["FastChannelChange"] = False
 SystemInfo["3DMode"] = fileCheck("/proc/stb/fb/3dmode") or fileCheck("/proc/stb/fb/primary/3d")
 SystemInfo["3DZNorm"] = fileCheck("/proc/stb/fb/znorm") or fileCheck("/proc/stb/fb/primary/zoffset")
-SystemInfo["Blindscan_t2_available"] = fileCheck("/proc/stb/info/vumodel")
+SystemInfo["Blindscan_t2_available"] = brand == "vuplus"
 SystemInfo["RcTypeChangable"] = not(model.startswith("et85") or model.startswith("et7")) and pathExists("/proc/stb/ir/rc/type")
 SystemInfo["HasFullHDSkinSupport"] = model not in ("et4x00","et5x00","sh1","hd500c","hd1100","xp1000","lc") and brand not in ("minix","hardkernel")
 SystemInfo["HasBypassEdidChecking"] = fileCheck("/proc/stb/hdmi/bypass_edid_checking")
@@ -98,7 +98,7 @@ SystemInfo["HasColorspace"] = fileCheck("/proc/stb/video/hdmi_colorspace")
 SystemInfo["HasColorspaceSimple"] = SystemInfo["HasColorspace"] and model in ("vusolo4k","vuuno4k","vuuno4kse","vuultimo4k","vuduo4k")
 SystemInfo["HasMultichannelPCM"] = fileCheck("/proc/stb/audio/multichannel_pcm")
 SystemInfo["HasMMC"] = "root" in cmdline and cmdline["root"].startswith("/dev/mmcblk")
-SystemInfo["HasTranscoding"] = pathExists("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
+SystemInfo["HasTranscoding"] = getHaveTranscoding() == "True" or getHaveMultiTranscoding() == "True" or pathExists("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
 SystemInfo["HasH265Encoder"] = fileHas("/proc/stb/encoder/0/vcodec_choices","h265")
 SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model in ("vusolo4k","gbquad4k")
 SystemInfo["HasColordepth"] = fileCheck("/proc/stb/video/hdmi_colordepth")
@@ -110,13 +110,13 @@ SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")
 SystemInfo["HasHDMI-CEC"] = model not in ("dm800","dm8000") and fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/HdmiCEC/plugin.pyo")) and (fileExists("/dev/cec0") or fileExists("/dev/hdmi_cec") or fileExists("/dev/misc/hdmi_cec0"))
 SystemInfo["DreamBoxHDMIin"] = model in ("dm7080","dm820","dm900","dm920")
-SystemInfo["HasHDMIHDin"] = model in ("sezammarvel","xpeedlx3","atemionemesis","mbultra","beyonwizt4","hd2400","dm7080","et10000")
-SystemInfo["HasHDMIFHDin"] = model in ("dm820","dm900","dm920","vuultimo4k","beyonwizu4","et13000","sf5008","vuuno4kse", "vuduo4k","gbquad4k")
+SystemInfo["HasHDMIHDin"] = getHaveHDMIinHD() == "True"
+SystemInfo["HasHDMIFHDin"] = getHaveHDMIinFHD() == "True"
 SystemInfo["HDMIin"] = SystemInfo["HasHDMIHDin"] or SystemInfo["HasHDMIFHDin"]
-SystemInfo["HasYPbPr"] = model in ("dm8000","et5x00","et6x00","et9x00","et10000","formuler1","mbtwinplus","spycat","vusolo","vuduo","vuduo2","vuultimo")
-SystemInfo["HasScart"] = model in ("dm8000","et4x00","et6x00","et8000","et9x00","et10000","formuler1","hd1100","hd1200","hd1265","hd2400","vusolo","vusolo2","vuduo","vuduo2","vuultimo","vuuno","xp1000")
+SystemInfo["HasYPbPr"] = getHaveYUV() == "True"
+SystemInfo["HasScart"] = getHaveSCART() == "True"
 SystemInfo["HasSVideo"] = model == "dm8000"
-SystemInfo["HasComposite"] = model not in ("dm900","dm920","i55","gbquad4k","gbue4k","hd1500","osnino","osninoplus","purehd","purehdse","revo4k","vusolo4k","vuzero4k")
+SystemInfo["HasComposite"] = getHaveRCA() == "True"
 SystemInfo["HasAutoVolume"] = fileExists("/proc/stb/audio/avl_choices") and fileCheck("/proc/stb/audio/avl")
 SystemInfo["HasAutoVolumeLevel"] = fileExists("/proc/stb/audio/autovolumelevel_choices") and fileCheck("/proc/stb/audio/autovolumelevel")
 SystemInfo["Has3DSurround"] = fileExists("/proc/stb/audio/3d_surround_choices") and fileCheck("/proc/stb/audio/3d_surround")
@@ -167,18 +167,18 @@ SystemInfo["DreamBoxAudio"] = model in ("dm900","dm920","dm7080","dm800")
 SystemInfo["DreamBoxDTSAudio"] = model in ("dm7080","dm820")
 SystemInfo["GigaBlueAudio"] = model in ("gbquad4k","gbue4k","gbx34k")
 SystemInfo["GigaBlueQuad"] = model in ("gbquad","gbquadplus")
-SystemInfo["AmlogicFamily"] = brand in ("linkdroid","mecool","minix","wetek","hardkernel")
+SystemInfo["AmlogicFamily"] = getSoCFamily().startswith("aml") or fileExists("/proc/device-tree/amlogic-dt-id") or fileExists("/usr/bin/amlhalt") or pathExists("/sys/module/amports")
 SystemInfo["VFDDelay"] = model in ("sf4008","beyonwizu4")
 SystemInfo["VFDRepeats"] = brand != "ixuss" and getDisplayType() != "7segment"
-SystemInfo["HiSilicon"] = brand in ("dinobot","maxytec") or model in ("gbtrio4k","gbip4k","sf8008","sf8008m","ustym4kpro","beyonwizv2","viper4k","hd60","hd61","h9","h9combo","h10","i55plus") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt")
+SystemInfo["HiSilicon"] = getSoCFamily().startswith("hisi") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt")
 SystemInfo["FirstCheckModel"] = model in ("tmtwin4k","mbmicrov2","revo4k","force3uhd","mbmicro","e4hd","e4hdhybrid","valalinux","lunix","tmnanom3","purehd","force2nano","purehdse") or brand in ("linkdroid","wetek")
 SystemInfo["SecondCheckModel"] = model in ("osninopro","osnino","osninoplus","dm7020hd","dm7020hdv2","9910lx","9911lx","9920lx","tmnanose","tmnanoseplus","tmnanosem2","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","force2plushv") or brand == "ixuss"
 SystemInfo["ThirdCheckModel"] = model in ("gbtrio4k","gbip4k","sf8008","sf8008m","ustym4kpro","beyonwizv2","viper4k")
 SystemInfo["DifferentLCDSettings"] = model in ("spycat4kmini","osmega")
 SystemInfo["CanBTAudio"] = fileCheck("/proc/stb/audio/btaudio")
 SystemInfo["CanBTAudioDelay"] = fileCheck("/proc/stb/audio/btaudio_delay")
-SystemInfo["ArchIsARM64"] = brand in ("linkdroid","mecool") or model in ("wetekplay2","wetekhub","osmio4k","osmio4kplus","osmini4k") or getImageArch() == "aarch64"
-SystemInfo["ArchIsARM"] = SystemInfo["HiSilicon"] or brand in ("rpi","maxytec","octagon") or model in ("cube","su980","wetekplay","x8hp","odroidc2","beyonwizu4","bre2ze4k","hd51","hd60","hd61","h7","h9","h9combo","h10","i55plus","e4hdultra","protek4k","vs1500","et1x000","et13000","vusolo4k","vuuno4k","vuuno4kse","vuzero4k","vuultimo4k","vuduo4k","revo4k","tmtwin4k","galaxy4k","tm4ksuper","lunix34k","force4","lunix4k") or model.startswith("spycat4") or model.startswith("dm9") or model.startswith("force3u") or SystemInfo["GigaBlueAudio"]
+SystemInfo["ArchIsARM64"] = getImageArch() == "aarch64" or "64" in getImageArch()
+SystemInfo["ArchIsARM"] = getImageArch.startswith("arm") or getImageArch.startswith("cortex")
 SystemInfo["SeekStatePlay"] = False
 SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False

@@ -113,7 +113,7 @@ def getCPUBenchmark():
 			cmdbenchmark = "echo '100000000' | dhry | grep 'Dhrystones per Second' | sed 's|[^0-9]*||' > /tmp/dhry.txt"
 			Console().ePopen(cmdbenchmark)
 		if fileExists("/tmp/dhry.txt"):
-			cpubench = int(float(open("/tmp/dhry.txt").read().strip()))/1757
+			cpubench = int(float(open("/tmp/dhry.txt").read().strip())) / 1757
 		return str(cpubench)
 	except:
 		return _("unknown")
@@ -165,7 +165,7 @@ def getCPUInfoString():
 			temperature = open("/proc/stb/sensors/temp/value").readline().replace('\n','')
 		elif os.path.isfile("/sys/devices/virtual/thermal/thermal_zone0/temp"):
 			try:
-				temperature = int(open("/sys/devices/virtual/thermal/thermal_zone0/temp").read().strip())/1000
+				temperature = int(open("/sys/devices/virtual/thermal/thermal_zone0/temp").read().strip()) / 1000
 			except:
 				pass
 		elif os.path.isfile("/proc/hisi/msp/pm_cpu"):
