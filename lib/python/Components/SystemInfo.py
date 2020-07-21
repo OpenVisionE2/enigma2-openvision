@@ -4,7 +4,7 @@ from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnig
 from Tools.Directories import SCOPE_PLUGINS, fileCheck, fileExists, fileHas, pathExists, resolveFilename
 import os, re
 from os import access, R_OK
-from boxbranding import getDisplayType, getImageArch, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveSCART, getHaveYUV, getHaveRCA, getHaveWOL, getHaveTranscoding, getHaveMultiTranscoding, getSoCFamily
+from boxbranding import getDisplayType, getImageArch, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveSCART, getHaveYUV, getHaveRCA, getHaveWOL, getHaveTranscoding, getHaveMultiTranscoding, getSoCFamily, getHaveHDMI
 
 SystemInfo = {}
 
@@ -108,7 +108,7 @@ SystemInfo["Has2160p"] = fileHas("/proc/stb/video/videomode_preferred","2160p50"
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")
-SystemInfo["HasHDMI-CEC"] = model not in ("dm800","dm8000") and fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/HdmiCEC/plugin.pyo")) and (fileExists("/dev/cec0") or fileExists("/dev/hdmi_cec") or fileExists("/dev/misc/hdmi_cec0"))
+SystemInfo["HasHDMI-CEC"] = getHaveHDMI() == "True" and fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/HdmiCEC/plugin.pyo")) and (fileExists("/dev/cec0") or fileExists("/dev/hdmi_cec") or fileExists("/dev/misc/hdmi_cec0"))
 SystemInfo["DreamBoxHDMIin"] = model in ("dm7080","dm820","dm900","dm920")
 SystemInfo["HasHDMIHDin"] = getHaveHDMIinHD() == "True"
 SystemInfo["HasHDMIFHDin"] = getHaveHDMIinFHD() == "True"
