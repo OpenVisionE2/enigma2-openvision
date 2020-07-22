@@ -257,7 +257,7 @@ class LCD:
 
 def leaveStandby():
 	config.lcd.bright.apply()
-	if SystemInfo["LEDButtons"]:
+	if model == "vuultimo":
 		config.lcd.ledbrightness.apply()
 		config.lcd.ledbrightnessdeepstandby.apply()
 
