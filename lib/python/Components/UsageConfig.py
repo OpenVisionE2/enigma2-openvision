@@ -3,7 +3,7 @@
 from __future__ import print_function
 from Components.Harddisk import harddiskmanager
 from Components.config import ConfigSubsection, ConfigYesNo, config, ConfigSelection, ConfigText, ConfigNumber, ConfigSet, ConfigLocations, ConfigSelectionNumber, ConfigClock, ConfigSlider, ConfigEnableDisable, ConfigSubDict, ConfigDictionarySet, ConfigInteger, ConfigPassword, ConfigIP, NoSave, ConfigBoolean
-from Tools.Directories import defaultRecordingLocation, fileCheck
+from Tools.Directories import defaultRecordingLocation
 from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff, setEnableTtCachingOnOff, eEnv, eDVBDB, Misc_Options, eBackgroundFileEraser, eServiceEvent, getBoxType, eEPGCache
 from Components.NimManager import nimmanager
 from Components.ServiceList import refreshServiceList
@@ -13,7 +13,7 @@ import os
 import time
 import locale
 import skin
-from boxbranding import getDisplayType, getMachineBuild
+from boxbranding import getDisplayType, getMachineBuild, getHaveWOL
 
 displaytype = getDisplayType()
 
@@ -808,12 +808,12 @@ def InitUsageConfig():
 		config.usage.lcd_show_symbols = ConfigYesNo(default = True)
 		config.usage.lcd_show_symbols.addNotifier(lcdShowSymbols)
 
-	if SystemInfo["WakeOnLAN"]:
+	if SystemInfo["WakeOnLAN"] or getHaveWOL() == "True":
 		def wakeOnLANChanged(configElement):
-			if fileCheck("/proc/stb/fp/wol"):
-				open("/proc/stb/fp/wol", "w").write(configElement.value and "enable" or "disable")
+			if "fp" in SystemInfo["WakeOnLAN"]:
+				open(SystemInfo["WakeOnLAN"], "w").write(configElement.value and "enable" or "disable")
 			else:
-				open("/proc/stb/power/wol", "w").write(configElement.value and "on" or "off")
+				open(SystemInfo["WakeOnLAN"], "w").write(configElement.value and "on" or "off")
 		config.usage.wakeOnLAN = ConfigYesNo(default = False)
 		config.usage.wakeOnLAN.addNotifier(wakeOnLANChanged)
 
