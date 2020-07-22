@@ -55,6 +55,9 @@ model = getBoxType()
 brand = getBoxBrand()
 platform = getMachineBuild()
 
+if not SystemInfo["HiSilicon"] and not SystemInfo["AmlogicFamily"] and brand != "azbox":
+	SystemInfo["CanFadeOut"] = True
+
 def isStandardInfoBar(self):
 	return self.__class__.__name__ == "InfoBar"
 
