@@ -1072,7 +1072,7 @@ def InitUsageConfig():
 		if SystemInfo["HasColorspaceSimple"]:
 			config.av.hdmicolorspace = ConfigSelection(default = "Edid(Auto)", choices={"Edid(Auto)": _("Auto"), "Hdmi_Rgb": _("RGB"), "444": _("YCbCr444"), "422": _("YCbCr422"), "420": _("YCbCr420")})
 		else:
-			if getBoxType() == "vuzero4k" or getMachineBuild == "dm4kgen":
+			if getBoxType() == "vuzero4k" or getMachineBuild() == "dm4kgen":
 				config.av.hdmicolorspace = ConfigSelection(choices={
 						"Edid(Auto)": _("Auto"),
 						"Hdmi_Rgb": _("RGB"),

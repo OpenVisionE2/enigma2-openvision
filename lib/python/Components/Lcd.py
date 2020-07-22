@@ -268,7 +268,7 @@ def standbyCounterChanged(configElement):
 	config.lcd.ledbrightnessdeepstandby.apply()
 
 def InitLcd():
-	if SystemInfo["FirstCheckModel"] or model in ("force4","viperslim","lunix4k","vipert2c","evoslimse","evoslimt2c","tmtwin4k","evoslim","ultrabox","i55","dm520","hd11","sf98","et7000mini","xpeedc","beyonwizt2","gb800se","gb800solo","gb800seplus","gbultrase","gbipbox","tmsingle","tmnano2super","iqonios300hd","iqonios300hdv2","optimussos1plus","optimussos1","vusolo","et4x00","et5x00","et6x00","et7x00","ebox7358","eboxlumi","gbx1","gbx2","gbx3","gbx34k","gbx3h"):
+	if SystemInfo["VFDSymbol"] or model in ("force4","viperslim","lunix4k","vipert2c","evoslimse","evoslimt2c","evoslim","ultrabox","i55","dm520","hd11","sf98","et7000mini","xpeedc","beyonwizt2","gb800se","gb800solo","gb800seplus","gbultrase","gbipbox","tmsingle","tmnano2super","iqonios300hd","iqonios300hdv2","optimussos1plus","optimussos1","vusolo","et4x00","et5x00","et6x00","gbx1","gbx2","gbx3","gbx34k","gbx3h"):
 		detected = False
 	else:
 		detected = eDBoxLCD.getInstance().detected()
@@ -472,7 +472,7 @@ def InitLcd():
 
 		if platform in ("dm4kgen","8100s"):
 			standby_default = 4
-		elif SystemInfo["DifferentLCDSettings"]:
+		elif model in ("spycat4kmini","osmega"):
 			standby_default = 10
 		else:
 			standby_default = 1
@@ -487,7 +487,7 @@ def InitLcd():
 			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 4))
 			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 4))
 			config.lcd.bright = ConfigSlider(default=4, limits=(0, 4))
-		elif SystemInfo["DifferentLCDSettings"]:
+		elif model in ("spycat4kmini","osmega"):
 			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 10))
 			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 10))
 			config.lcd.bright = ConfigSlider(default=10, limits=(0, 10))
@@ -539,7 +539,7 @@ def InitLcd():
 			config.lcd.showTv = ConfigYesNo(default = False)
 			config.lcd.showTv.addNotifier(lcdLiveTvChanged)
 
-		if SystemInfo["LCDMiniTV"] and not platform in ("gb7356","gb7252","gb72604"):
+		if SystemInfo["LCDMiniTV"] and platform not in ("gb7356","gb7252","gb72604"):
 			config.lcd.minitvmode = ConfigSelection([("0", _("normal")), ("1", _("MiniTV")), ("2", _("OSD")), ("3", _("MiniTV with OSD"))], "0")
 			config.lcd.minitvmode.addNotifier(setLCDminitvmode)
 			config.lcd.minitvpipmode = ConfigSelection([("0", _("off")), ("5", _("PIP")), ("7", _("PIP with OSD"))], "0")

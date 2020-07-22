@@ -552,7 +552,7 @@ def runScreenTest():
 	profile("Init:PowerKey")
 	power = PowerKey(session)
 
-	if SystemInfo in ["FirstCheckModel","SecondCheckModel","DefineSat","DifferentLCDSettings"] or model in ("alphatriplehd","tmtwin4k","osminiplus","sf3038","spycat","et7x00","ebox5000","ebox7358","eboxlumi","maram9","sezam5000hd","mbtwin","sezam1000hd","mbmini","atemio5x00","beyonwizt3","dinoboth265","axashistwin"):
+	if SystemInfo["VFDSymbol"]:
 		profile("VFDSYMBOLS")
 		import Components.VfdSymbols
 		Components.VfdSymbols.SymbolsCheck(session)
