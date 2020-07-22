@@ -40,7 +40,7 @@ from ServiceReference import ServiceReference, isPlayableForCur, hdmiInServiceRe
 from Tools import Notifications, ASCIItranslit
 from Tools.Directories import fileExists, getRecordingFilename, moveFiles
 from Tools.KeyBindings import getKeyDescription
-from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB, getBoxType, getBoxBrand
+from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB, getBoxBrand, getBoxType
 from time import time, localtime, strftime
 import os
 from bisect import insort
@@ -49,6 +49,11 @@ import itertools, datetime
 from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 # hack alert!
 from Screens.Menu import MainMenu, mdom
+from boxbranding import getMachineBuild
+
+model = getBoxType()
+brand = getBoxBrand()
+platform = getMachineBuild()
 
 def isStandardInfoBar(self):
 	return self.__class__.__name__ == "InfoBar"
@@ -1253,7 +1258,7 @@ class InfoBarEPG:
 		plugin.__call__(session = self.session, servicelist = self.servicelist)
 
 	def showEventInfoPlugins(self):
-		if getBoxBrand() not in ("xtrend","odin","ini","dags","gigablue","xp"):
+		if brand not in ("xtrend","odin","ini","dags","gigablue","xp"):
 			pluginlist = self.getEPGPluginList()
 			if pluginlist:
 				self.session.openWithCallback(self.EventInfoPluginChosen, ChoiceBox, title=_("Please choose an extension..."), list=pluginlist, skin_name="EPGExtensionsList", reorderConfig="eventinfo_order", windowTitle=_("Events info menu"))
@@ -3130,7 +3135,7 @@ class InfoBarResolutionSelection:
 			yresString = open("/proc/stb/vmpeg/0/yres", "r").read()
 		except:
 			print("[InfoBarGenerics] Error open /proc/stb/vmpeg/0/yres!")
-		if getBoxBrand() == "azbox":
+		if brand == "azbox":
 			fpsString = '50000'
 		else:
 			try:
@@ -3968,7 +3973,7 @@ class InfoBarHdmi2:
 			return _("Turn off HDMI-IN PiP mode")
 
 	def HDMIInPiP(self):
-		if SystemInfo["DreamBoxHDMIin"]:
+		if platform == "dm4kgen" or model in ("dm7080","dm820"):
 			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","r").read()
 			if check.startswith("off"):
 				open("/proc/stb/audio/hdmi_rx_monitor","w").write("on")
@@ -3996,13 +4001,13 @@ class InfoBarHdmi2:
 					del self.session.pip
 
 	def HDMIInFull(self):
-		if SystemInfo["DreamBoxHDMIin"]:
+		if platform == "dm4kgen" or model in ("dm7080","dm820"):
 			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","r").read()
 			if check.startswith("off"):
 				self.oldvideomode = open("/proc/stb/video/videomode","r").read()
 				self.oldvideomode_50hz = open("/proc/stb/video/videomode_50hz","r").read()
 				self.oldvideomode_60hz = open("/proc/stb/video/videomode_60hz","r").read()
-				if getBoxType() in ("dm900","dm920"):
+				if platform == "dm4kgen":
 					open("/proc/stb/video/videomode","w").write("1080p")
 				else:
 					open("/proc/stb/video/videomode","w").write("720p")

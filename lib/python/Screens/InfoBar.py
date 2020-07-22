@@ -35,6 +35,10 @@ from Components.ServiceEventTracker import ServiceEventTracker, InfoBarBase
 profile("LOAD:HelpableScreen")
 from Screens.HelpMenu import HelpableScreen
 
+brand = getBoxBrand()
+model = getBoxType()
+procmodel = getBoxProc()
+
 class InfoBar(InfoBarBase, InfoBarShowHide,
 	InfoBarNumberZap, InfoBarChannelSelection, InfoBarMenu, InfoBarEPG, InfoBarRdsDecoder, InfoBarResolutionSelection, InfoBarAspectSelection,
 	InfoBarInstantRecord, InfoBarAudioSelection, InfoBarRedButton, InfoBarTimerButton, InfoBarVmodeButton,
@@ -118,9 +122,9 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self.onShown.remove(self.__checkServiceStarted)
 
 	def showTvButton(self):
-		if getBoxBrand() == "gigablue":
+		if brand == "gigablue":
 			self.toggleTvRadio()
-		elif getBoxType() in ("sezam5000hd","mbtwin") or getBoxProc() in ("ini-3000","ini-5000","ini-7000","ini-7012"):
+		elif model in ("sezam5000hd","mbtwin") or procmodel in ("ini-3000","ini-5000","ini-7000","ini-7012"):
 			self.showMovies()
 		else:
 			self.showTv()
@@ -129,7 +133,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self.showTvChannelList(True)
 
 	def showRadioButton(self):
-		if getBoxBrand()in ("gigablue","azbox") or getBoxType() in ("sezam5000hd","mbtwin","beyonwizt3") or getBoxProc() in ("ini-3000","ini-5000","ini-7000","ini-7012"):
+		if brand in ("gigablue","azbox") or model in ("sezam5000hd","mbtwin","beyonwizt3") or procmodel in ("ini-3000","ini-5000","ini-7000","ini-7012"):
 			self.toggleTvRadio()
 		else:
 			self.showRadio()

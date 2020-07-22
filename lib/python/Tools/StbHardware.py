@@ -6,8 +6,8 @@ from fcntl import ioctl
 from struct import pack, unpack
 from time import time, localtime
 from enigma import getBoxType, getBoxBrand
-from Components.SystemInfo import SystemInfo
 from Tools.Directories import fileExists
+from boxbranding import getMachineBuild
 
 def getBoxProcType():
 	procmodeltype = "unknown"
@@ -73,7 +73,7 @@ def getFPVersion():
 		if getBoxBrand() == "blackbox" and fileExists("/proc/stb/info/micomver"):
 			ret = open("/proc/stb/info/micomver", "r").read()
 		elif fileExists("/proc/stb/fp/version"):
-			if SystemInfo["DreamBoxDTSAudio"] or getBoxType().startswith("dm9") or getBoxType().startswith("dm52"):
+			if getMachineBuild() == "dm4kgen" or getBoxType() in ("dm520","dm7080","dm820"):
 				ret = open("/proc/stb/fp/version", "r").read()
 			else:
 				ret = long(open("/proc/stb/fp/version", "r").read())

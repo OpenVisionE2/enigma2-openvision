@@ -14,8 +14,8 @@ from Components.Sources.List import List
 from Components.Sources.Boolean import Boolean
 from Components.SystemInfo import SystemInfo
 from Components.VolumeControl import VolumeControl
-
-from enigma import iPlayableService, eTimer, eSize, eDVBDB, eServiceReference, eServiceCenter, iServiceInformation, getBoxType
+from enigma import iPlayableService, eTimer, eSize, eDVBDB, eServiceReference, eServiceCenter, iServiceInformation
+from boxbranding import getMachineBuild
 
 FOCUS_CONFIG, FOCUS_STREAMS = range(2)
 [PAGE_AUDIO, PAGE_SUBTITLES] = ["audio", "subtitles"]
@@ -313,7 +313,7 @@ class AudioSelection(Screen, ConfigListScreen):
 		self.fillList()
 
 	def changeAACDownmix(self, downmix):
-		if SystemInfo["DreamBoxAudio"] or SystemInfo["GigaBlueAudio"]:
+		if SystemInfo["DreamBoxAudio"] or getMachineBuild() in ("gb7252","gb72604"):
 			config.av.downmix_aac.setValue(downmix.value)
 		else:
 			if downmix.value:

@@ -7,7 +7,7 @@ from Tools.CList import CList
 import os
 from enigma import getBoxType
 from Components.About import about
-from boxbranding import getHaveRCA, getHaveYUV, getHaveSCART, getHaveAVJACK, getHaveHDMI
+from boxbranding import getHaveRCA, getHaveYUV, getHaveSCART, getHaveAVJACK, getHaveHDMI, getMachineBuild
 
 model = getBoxType()
 has_hdmi = getHaveHDMI() == "True"
@@ -60,7 +60,7 @@ class VideoHardware:
 								"multi":	{ 50: "2160p25", 60: "2160p30" },
 								"auto":		{ 50: "2160p25", 60: "2160p30", 24: "2160p24" } }
 
-	if model.startswith('dm9'):
+	if getMachineBuild() == "dm4kgen":
 		rates["2160p"] =	{ 	"50Hz":		{ 50: "2160p50" },
 								"60Hz":		{ 60: "2160p60" },
 								"multi":	{ 50: "2160p50", 60: "2160p60" },

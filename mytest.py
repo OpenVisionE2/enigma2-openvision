@@ -11,9 +11,18 @@ profile("PYTHON_START")
 # it will break output redirection for crash logs.
 import Tools.RedirectOutput
 from Tools.Directories import resolveFilename, fileExists
-from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib
+from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib, getMachineBuild
+from enigma import getBoxType, getBoxBrand
+
+model = getBoxType()
+brand = getBoxBrand()
+platform = getMachineBuild()
+
 print("[mytest] Open Vision version = %s" % getVisionVersion())
 print("[mytest] Open Vision revision = %s" % getVisionRevision())
+print("[mytest] Brand/Meta = %s" % brand)
+print("[mytest] Model = %s" % model)
+print("[mytest] Platform = %s" % platform)
 
 import enigma
 import eConsoleImpl
@@ -543,8 +552,7 @@ def runScreenTest():
 	profile("Init:PowerKey")
 	power = PowerKey(session)
 
-	from enigma import getBoxType
-	if SystemInfo in ["FirstCheckModel","SecondCheckModel","ThirdCheckModel","DifferentLCDSettings"] or getBoxType() in ("alphatriplehd","tmtwin4k","osminiplus","sf3038","spycat","et7x00","ebox5000","ebox7358","eboxlumi","maram9","sezam5000hd","mbtwin","sezam1000hd","mbmini","atemio5x00","beyonwizt3","dinoboth265","axashistwin"):
+	if SystemInfo in ["FirstCheckModel","SecondCheckModel","DefineSat","DifferentLCDSettings"] or model in ("alphatriplehd","tmtwin4k","osminiplus","sf3038","spycat","et7x00","ebox5000","ebox7358","eboxlumi","maram9","sezam5000hd","mbtwin","sezam1000hd","mbmini","atemio5x00","beyonwizt3","dinoboth265","axashistwin"):
 		profile("VFDSYMBOLS")
 		import Components.VfdSymbols
 		Components.VfdSymbols.SymbolsCheck(session)
@@ -576,16 +584,15 @@ def runScreenTest():
 	wakeupList.sort()
 	if wakeupList:
 		from time import strftime
-		from enigma import getBoxBrand
 		startTime = wakeupList[0]
 		if (startTime[0] - nowTime) < 270: # no time to switch box back on
 			wptime = nowTime + 30  # so switch back on in 30 seconds
 		else:
-			if getBoxBrand() == 'gigablue':
+			if brand == "gigablue":
 				wptime = startTime[0] - 120 # GigaBlue already starts 2 min. before wakeup time
 			else:
 				wptime = startTime[0] - 240
-		if not config.misc.SyncTimeUsing.value == "0" or getBoxBrand() == 'gigablue':
+		if not config.misc.SyncTimeUsing.value == "0" or brand == "gigablue":
 			print("[mytest] dvb time sync disabled... so set RTC now to current linux time!", strftime("%Y/%m/%d %H:%M", localtime(nowTime)))
 			setRTCtime(nowTime)
 		print("[mytest] set wakeup time to", strftime("%Y/%m/%d %H:%M", localtime(wptime)))
@@ -667,7 +674,7 @@ import Components.Lcd
 Components.Lcd.InitLcd()
 Components.Lcd.IconCheck()
 
-if SystemInfo["DreamBoxHDMIin"]:
+if platform == "dm4kgen" or model in ("dm7080","dm820"):
 	check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","r").read()
 	if check.startswith("on"):
 		open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","w").write("off")

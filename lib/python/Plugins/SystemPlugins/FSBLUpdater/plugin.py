@@ -8,19 +8,19 @@ from Plugins.SystemPlugins.FSBLUpdater.FSBLUpdater import FSBLUpdater
 from Tools.Log import Log
 from Tools import Notifications
 
+model = getBoxType()
 
 config.misc.fsbl_update_never = ConfigBoolean(default=False)
 
 class FSBLUpdateHandler(object):
 	def __init__(self):
-		self._boxtype = getBoxType()
 		self._session = None
 
 	def check(self, session):
 		if config.misc.fsbl_update_never.value:
 			return
 		self._session = session
-		if FSBLUpdater.isUpdateRequired(self._boxtype):
+		if FSBLUpdater.isUpdateRequired(model):
 			Log.w("FSBL Update required!")
 			choices = [
 				(_("Yes"), "yes"),
@@ -38,7 +38,7 @@ class FSBLUpdateHandler(object):
 		Log.i(answer)
 		answer = answer[1]
 		if answer == "yes":
-			self._session.open(FSBLUpdater, getBoxType())
+			self._session.open(FSBLUpdater, model)
 		elif answer == "never":
 			config.misc.fsbl_update_never.value = True
 			config.misc.fsbl_update_never.save()

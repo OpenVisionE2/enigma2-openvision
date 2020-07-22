@@ -9,12 +9,17 @@ from Components.ParentalControl import parentalControl
 from Components.ServiceEventTracker import ServiceEventTracker
 from Components.SystemInfo import SystemInfo
 from time import time
+from boxbranding import getMachineBuild
+
+brand = getBoxBrand()
+model = getBoxType()
+platform = getMachineBuild()
 
 POLLTIME = 5 # seconds
 
 def SymbolsCheck(session, **kwargs):
 		global symbolspoller, POLLTIME
-		if SystemInfo["FirstCheckModel"] or SystemInfo["SecondCheckModel"] or SystemInfo["ThirdCheckModel"]:
+		if SystemInfo["FirstCheckModel"] or SystemInfo["SecondCheckModel"] or SystemInfo["DefineSat"]:
 			POLLTIME = 1
 		symbolspoller = SymbolsCheckPoller(session)
 		symbolspoller.start()
@@ -55,7 +60,7 @@ class SymbolsCheckPoller:
 
 	def __evUpdatedInfo(self):
 		self.service = self.session.nav.getCurrentService()
-		if getBoxType() in ("dinoboth265","axashistwin"):
+		if platform == "u41":
 			self.Resolution()
 			self.Audio()
 			self.Crypted()
@@ -76,19 +81,19 @@ class SymbolsCheckPoller:
 				open("/proc/stb/lcd/symbol_circle", "w").write("3")
 			else:
 				open("/proc/stb/lcd/symbol_circle", "w").write("0")
-		elif getBoxType() in ("alphatriplehd","sf3038") or getBoxBrand() in ("ebox"):
+		elif model in ("alphatriplehd","sf3038") or brand == "ebox" and fileExists("/proc/stb/lcd/symbol_recording"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			if recordings > 0:
 				open("/proc/stb/lcd/symbol_recording", "w").write("1")
 			else:
 				open("/proc/stb/lcd/symbol_recording", "w").write("0")
-		elif getBoxType() in ("dinoboth265","axashistwin") and fileExists("/proc/stb/lcd/symbol_pvr2"):
+		elif platform == "u41" and fileExists("/proc/stb/lcd/symbol_pvr2"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			if recordings > 0:
 				open("/proc/stb/lcd/symbol_pvr2", "w").write("1")
 			else:
 				open("/proc/stb/lcd/symbol_pvr2", "w").write("0")
-		elif getBoxType() in ("osninopro","9910lx","9911lx","osnino","osninoplus","9920lx") or getBoxBrand() in ("linkdroid","wetek","ixuss"):
+		elif model in ("osninopro","9910lx","9911lx","osnino","osninoplus","9920lx") or brand in ("linkdroid","wetek","ixuss") and fileExists("/proc/stb/lcd/powerled"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
@@ -100,7 +105,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			elif self.led == "1":
 				open("/proc/stb/lcd/powerled", "w").write("0")
-		elif getBoxType() in ("mbmicrov2","mbmicro","e4hd","e4hdhybrid"):
+		elif model in ("mbmicrov2","mbmicro","e4hd","e4hdhybrid") and fileExists("/proc/stb/lcd/powerled"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
@@ -112,7 +117,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			elif self.led == "1":
 				open("/proc/stb/lcd/powerled", "w").write("1")
-		elif getBoxType() in ("dm7020hd","dm7020hdv2"):
+		elif model in ("dm7020hd","dm7020hdv2") and fileExists("/proc/stb/fp/led_set"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
@@ -124,7 +129,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			else:
 				open("/proc/stb/fp/led_set", "w").write("0xffffffff")
-		elif getBoxType() in ("valalinux","lunix","tmnanose","tmnanoseplus","tmnanosem2","tmnanom3","tmnanosem2plus","tmnanosecombo","force2plus","force2","force2se","optimussos","fusionhd","fusionhdse","purehd","force2nano","force2plushv","purehdse","tmtwin4k","revo4k","force3uhd"):
+		elif platform in ("dags7362","dags73625") or model in ("tmtwin4k","revo4k","force3uhd") and fileExists("/proc/stb/lcd/symbol_rec"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:

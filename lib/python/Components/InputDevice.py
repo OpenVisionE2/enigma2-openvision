@@ -10,6 +10,8 @@ import struct
 import platform
 from Tools.Directories import pathExists
 
+model = getBoxType()
+
 # include/uapi/asm-generic/ioctl.h
 # asm-generic/ioctl.h for HAVE_OLDE2_API
 IOC_NRBITS = 8L
@@ -56,7 +58,7 @@ class inputDevices:
 
 			if self.name:
 				self.Devices[evdev] = {'name': self.name, 'type': self.getInputDeviceType(self.name),'enabled': False, 'configuredName': None }
-				if getBoxType().startswith("et"):
+				if model.startswith("et"):
 					self.setDefaults(evdev)
 
 
@@ -184,7 +186,7 @@ class InitInputDevices:
 	def setupConfigEntries(self,device):
 		cmd = "config.inputDevices." + device + " = ConfigSubsection()"
 		exec(cmd)
-		if getBoxType() in ("dm800","azboxhd"):
+		if model in ("dm800","azboxhd"):
 			cmd = "config.inputDevices." + device + ".enabled = ConfigYesNo(default = True)"
 		else:
 			cmd = "config.inputDevices." + device + ".enabled = ConfigYesNo(default = False)"

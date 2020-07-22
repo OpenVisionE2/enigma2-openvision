@@ -14,6 +14,7 @@ from Components.Converter.Combine import Combine
 from Components.Renderer.FrontpanelLed import FrontpanelLed
 from Components.config import config
 from enigma import getBoxType
+from boxbranding import getMachineBuild
 
 class SessionGlobals(Screen):
 	def __init__(self, session):
@@ -96,10 +97,10 @@ class SessionGlobals(Screen):
 		if nr_leds == 1:
 			FrontpanelLed(which = 0, boolean = False, patterns = [PATTERN_OFF, PATTERN_BLINK, PATTERN_OFF, PATTERN_BLINK]).connect(combine)
 		elif nr_leds == 2:
-			if getBoxType() in ("dm520"):
+			if getBoxType() == "dm520":
 				FrontpanelLed(which = 0, boolean = False, patterns = [PATTERN_ON, PATTERN_BLINK, PATTERN_OFF, PATTERN_BLINK]).connect(combine)
 				FrontpanelLed(which = 1, boolean = False, patterns = [PATTERN_OFF, PATTERN_OFF, PATTERN_OFF, PATTERN_OFF]).connect(combine)
-			elif getBoxType() in ("dm900","dm920"):
+			elif getMachineBuild() == "dm4kgen":
 				FrontpanelLed(which = 0, boolean = False, patterns = [NormalLed0, RecLed0, StandbyLed0, RecstdbyLed0]).connect(combine)
 				FrontpanelLed(which = 1, boolean = False, patterns = [NormalLed1, RecLed1, StandbyLed1, RecstdbyLed1]).connect(combine)
 			else:

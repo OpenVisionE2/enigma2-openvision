@@ -6,6 +6,8 @@ import time
 from Tools.Directories import resolveFilename, SCOPE_CONFIG
 from enigma import getBoxType
 
+model = getBoxType()
+
 PERCENTAGE_START = 0
 PERCENTAGE_END = 100
 
@@ -35,15 +37,15 @@ except IOError:
 def profile(id):
 	now = time.time() - profile_start
 
-	if getBoxType() == "axodin":
+	if model == "axodin":
 		dev_fmt = ("/dev/dbox/oled0", "%d")
-	elif getBoxType() in ("gb800solo","gb800se","gb800seplus","gbultrase"):
+	elif model in ("gb800solo","gb800se","gb800seplus","gbultrase"):
 		dev_fmt = ("/dev/mcu", "%d  \n")
-	elif getBoxType() in ("ebox5000","osmini","spycatmini","osminiplus","spycatminiplus"):
+	elif model in ("ebox5000","osmini","spycatmini","osminiplus","spycatminiplus"):
 		dev_fmt = ("/proc/progress", "%d"),
-	elif getBoxType() in ("sezammarvel","xpeedlx3","atemionemesis"):
+	elif model in ("sezammarvel","xpeedlx3","atemionemesis"):
 		dev_fmt = ("/proc/vfd", "Loading %d%%\n")
-	elif getBoxType() == "beyonwizu4":
+	elif model == "beyonwizu4":
 		dev_fmt = ("/dev/dbox/oled0", "Loading %d%%\n")
 	else:
 		dev_fmt = ("/proc/progress", "%d \n")

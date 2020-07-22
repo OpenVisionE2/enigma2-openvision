@@ -5,8 +5,10 @@ from Components.config import config, ConfigSlider, ConfigSelection, ConfigYesNo
 from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop, getBoxType, getBoxBrand
 from Components.SystemInfo import SystemInfo
 import os
+from boxbranding import getMachineBuild
 
 model = getBoxType()
+platform = getMachineBuild()
 
 class AVSwitch:
 	def setInput(self, input):
@@ -157,7 +159,7 @@ def InitAVSwitch():
 	def setColorFormat(configElement):
 		if model == "et6x00":
 			map = {"cvbs": 3, "rgb": 3, "svideo": 2, "yuv": 3}
-		elif SystemInfo["GigaBlueQuad"] or model.startswith('et'):
+		elif platform == "gb7356" or model.startswith('et'):
 			map = {"cvbs": 0, "rgb": 3, "svideo": 2, "yuv": 3}
 		else:
 			map = {"cvbs": 0, "rgb": 1, "svideo": 2, "yuv": 3}
@@ -181,7 +183,7 @@ def InitAVSwitch():
 	config.av.wss.addNotifier(setWSS)
 
 	iAVSwitch.setInput("ENCODER") # init on startup
-	if SystemInfo["GigaBlueQuad"] or model in ("et5x00","et6x00","ixussone","ixusszero","axodin","axase3","optimussos1","optimussos2","gb800seplus","gb800ueplus","gbultrase","gbultraue","gbultraueh","twinboxlcd"):
+	if platform == "gb7356" or model in ("et5x00","et6x00","ixussone","ixusszero","axodin","axase3","optimussos1","optimussos2","gb800seplus","gb800ueplus","gbultrase","gbultraue","gbultraueh","twinboxlcd"):
 		detected = False
 	else:
 		detected = eAVSwitch.getInstance().haveScartSwitch()
@@ -207,7 +209,7 @@ def InitAVSwitch():
 		if SystemInfo["DreamBoxAudio"]:
 			choice_list = [("use_hdmi_caps", _("controlled by HDMI")), ("force_ac3", _("convert to AC3")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI")), ("force_ddp",  _("force AC3plus"))]
 			config.av.transcodeac3plus = ConfigSelection(choices = choice_list, default = "force_ac3")
-		elif SystemInfo["GigaBlueAudio"]:
+		elif platform in ("gb7252","gb72604"):
 			choice_list = [("downmix", _("Downmix")), ("passthrough", _("Passthrough")), ("force_ac3", _("convert to AC3")), ("multichannel",  _("convert to multi-channel PCM")), ("force_dts",  _("convert to DTS"))]
 			config.av.transcodeac3plus = ConfigSelection(choices = choice_list, default = "force_ac3")
 		else:
@@ -224,7 +226,7 @@ def InitAVSwitch():
 	if SystemInfo["CanDTSHD"]:
 		def setDTSHD(configElement):
 			open("/proc/stb/audio/dtshd", "w").write(configElement.value)
-		if SystemInfo["DreamBoxDTSAudio"]:
+		if model in ("dm7080","dm820"):
 			choice_list = [("use_hdmi_caps",  _("controlled by HDMI")), ("force_dts", _("convert to DTS"))]
 			config.av.dtshd = ConfigSelection(choices = choice_list, default = "use_hdmi_caps")
 		else:
@@ -241,14 +243,14 @@ def InitAVSwitch():
 
 	if SystemInfo["CanDownmixAAC"]:
 		def setAACDownmix(configElement):
-			if SystemInfo["DreamBoxAudio"] or SystemInfo["GigaBlueAudio"]:
+			if SystemInfo["DreamBoxAudio"] or platform in ("gb7252","gb72604"):
 				open("/proc/stb/audio/aac", "w").write(configElement.value)
 			else:
 				open("/proc/stb/audio/aac", "w").write(configElement.value and "downmix" or "passthrough")
 		if SystemInfo["DreamBoxAudio"]:
 			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI"))]
 			config.av.downmix_aac = ConfigSelection(choices = choice_list, default = "downmix")
-		elif SystemInfo["GigaBlueAudio"]:
+		elif platform in ("gb7252","gb72604"):
 			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("force_ac3", _("convert to AC3")), ("force_dts",  _("convert to DTS")), ("use_hdmi_cacenter",  _("use_hdmi_cacenter")), ("wide",  _("wide")), ("extrawide",  _("extrawide"))]
 			config.av.downmix_aac = ConfigSelection(choices = choice_list, default = "downmix")
 		else:
@@ -304,7 +306,7 @@ def InitAVSwitch():
 			except IOError:
 				print("[AVSwitch] couldn't write pep_scaler_sharpness")
 
-		if SystemInfo["GigaBlueQuad"]:
+		if platform == "gb7356":
 			config.av.scaler_sharpness = ConfigSlider(default=5, limits=(0,26))
 		else:
 			config.av.scaler_sharpness = ConfigSlider(default=13, limits=(0,26))
