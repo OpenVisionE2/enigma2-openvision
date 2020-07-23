@@ -7,6 +7,9 @@ from Components.SystemInfo import SystemInfo
 import socket, fcntl, struct
 from Components.Console import Console
 from Tools.Directories import fileExists
+from boxbranding import getSoCFamily
+
+socfamily = getSoCFamily()
 
 def _ifinfo(sock, addr, ifname):
 	iface = struct.pack('256s', ifname[:15])
@@ -191,10 +194,12 @@ def getCPUBrand():
 		return _("Amlogic")
 	elif SystemInfo["HiSilicon"]:
 		return _("HiSilicon")
-	elif getBoxBrand() == "azbox":
+	elif getBoxBrand() == "azbox" or socfamily.startswith("smp"):
 		return _("Sigma Designs")
-	else:
+	elif socfamily.startswith("bcm"):
 		return _("Broadcom")
+	else:
+		return _("undefined")
 
 def getCPUArch():
 	if SystemInfo["ArchIsARM64"]:
@@ -284,7 +289,7 @@ def GetIPsFromNetworkInterfaces():
 def getBoxUptime():
 	try:
 		time = ''
-		f = open("/proc/uptime", "rb")
+		f = open("/proc/uptime", "r")
 		secs = int(f.readline().split('.')[0])
 		f.close()
 		if secs > 86400:

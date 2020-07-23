@@ -13,6 +13,9 @@ from time import localtime, mktime
 from datetime import datetime
 
 import xml.etree.cElementTree
+from boxbranding import getSoCFamily
+
+socfamily = getSoCFamily()
 
 config.unicable = ConfigSubsection()
 
@@ -110,7 +113,9 @@ class SecConfigure:
 
 	def linkNIMs(self, sec, nim1, nim2):
 		print("[NimManager] link tuner", nim1, "to tuner", nim2)
-		if nim2 == (nim1 - 1):
+		if "7356" not in socfamily and nim2 == (nim1 - 1):
+			self.linkInternally(nim1)
+		elif "7356" in socfamily:
 			self.linkInternally(nim1)
 		sec.setTunerLinked(nim1, nim2)
 

@@ -5,12 +5,18 @@ from Components.config import config, ConfigSelection, ConfigSubDict, ConfigYesN
 from Components.SystemInfo import SystemInfo
 from Tools.CList import CList
 import os
-from enigma import getBoxType
+from enigma import getBoxType, getBoxBrand
 from Components.About import about
-from boxbranding import getHaveRCA, getHaveYUV, getHaveSCART, getHaveAVJACK, getHaveHDMI, getMachineBuild
+from boxbranding import getHaveAVJACK, getHaveHDMI, getMachineBuild, getSoCFamily
 
-model = getBoxType()
+brand = getBoxBrand()
+socfamily = getSoCFamily().replace('bcm','').replace('hisi','')
+chipsetstring = about.getChipSetString()
 has_hdmi = getHaveHDMI() == "True"
+has_scart = SystemInfo["HasScart"]
+has_yuv = SystemInfo["HasYPbPr"]
+has_rca = SystemInfo["HasComposite"]
+has_avjack = getHaveAVJACK() == "True"
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -87,17 +93,51 @@ class VideoHardware:
 		"640x480" : { 60: "640x480" }
 	}
 
-	if SystemInfo["HasScart"]:
+	if has_scart:
 		modes["Scart"] = ["PAL", "NTSC", "Multi"]
-	elif SystemInfo["HasComposite"]:
+	elif has_rca:
 		modes["RCA"] = ["576i", "PAL", "NTSC", "Multi"]
-	if SystemInfo["HasYPbPr"]:
-		modes["YPbPr"] = ["720p", "1080i", "576p", "480p", "576i", "480i"]
-	if SystemInfo["Has2160p"]:
-		modes["DVI"] = ["720p", "1080p", "2160p", "1080i", "576p", "480p", "576i", "480i"]
+
+	if socfamily in ("7376","7444"):
+		modes["DVI"] = ["720p", "1080p", "2160p", "1080i", "576p", "576i", "480p", "480i"]
+		widescreen_modes = {"720p", "1080p", "1080i", "2160p"}
+	elif socfamily in ("7252","7251","7251s","7252s","72604","7278","3798mv200","3798cv200"):
+		modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i", "576p", "576i", "480p", "480i"]
+		widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
+	elif socfamily in ("7241","7358","7362","73625","7356","73565","7424","7425","7435","7581","3716mv410") or brand == "azbox":
+		modes["DVI"] = ["720p", "1080p", "1080i", "576p", "576i", "480p", "480i"]
+		widescreen_modes = {"720p", "1080p", "1080i"}
+	elif chipsetstring == "meson-6":
+		modes["DVI"] = ["720p", "1080p", "1080i"]
+		widescreen_modes = {"720p", "1080p", "1080i"}
+	elif chipsetstring in ("meson-64","S905D") or socfamily == "AML905D":
+		modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i"]
+		widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
 	else:
-		modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i", "576p", "480p", "576i", "480i"]
+		modes["DVI"] = ["720p", "1080i", "576p", "576i", "480p", "480i"]
+		widescreen_modes = {"720p", "1080i"}
+
+# For raspberrypi feel free to check https://pimylifeup.com/raspberry-pi-screen-resolution/ and adapt the code.
+
 	modes["DVI-PC"] = ["PC"]
+
+	if has_yuv:
+		modes["YPbPr"] = modes["DVI"]
+
+	if "YPbPr" in modes and not has_yuv:
+		del modes["YPbPr"]
+
+	if "Scart" in modes and not has_scart and (has_rca or has_avjack):
+		modes["RCA"] = modes["Scart"]
+		del modes["Scart"]
+
+	if "Scart" in modes and not has_rca and not has_scart and not has_avjack:
+		del modes["Scart"]
+
+	if getBoxType() == "hd2400":
+		rev = open("/proc/stb/info/board_revision", "r").read()
+		if rev >= "2":
+			del modes["YPbPr"]
 
 	def getOutputAspect(self):
 		ret = (16,9)
@@ -135,7 +175,6 @@ class VideoHardware:
 
 		self.readAvailableModes()
 		self.readPreferredModes()
-		self.widescreen_modes = set(["720p", "1080i", "1080p", "2160p", "2160p30"]).intersection(*[self.modes_available])
 
 		if "DVI-PC" in self.modes and not self.getModeList("DVI-PC"):
 			print("[Videomode] VideoHardware remove DVI-PC because of not existing modes")
@@ -143,12 +182,12 @@ class VideoHardware:
 		if "Scart" in self.modes and not self.getModeList("Scart"):
 			print("[Videomode] VideoHardware remove Scart because of not existing modes")
 			del self.modes["Scart"]
-		if "YPbPr" in self.modes and not getHaveYUV():
+		if "YPbPr" in self.modes and not has_yuv:
 			del self.modes["YPbPr"]
-		if "Scart" in self.modes and not getHaveSCART() and (getHaveRCA() == "True" or getHaveAVJACK() == "True"):
+		if "Scart" in self.modes and not has_scart and (has_rca or has_avjack):
 			modes["RCA"] = modes["Scart"]
 			del self.modes["Scart"]
-		if "Scart" in self.modes and not getHaveRCA() and (not getHaveSCART() and not getHaveAVJACK()):
+		if "Scart" in self.modes and not has_rca and not has_scart and not has_avjack:
 			del self.modes["Scart"]
 
 		self.createConfig()
@@ -237,16 +276,18 @@ class VideoHardware:
 			except IOError:
 				print("[Videomode] VideoHardware setting videomode failed.")
 
-		try:
-			open("/etc/videomode", "w").write(mode_50) # use 50Hz mode (if available) for booting
-		except IOError:
-			print("[Videomode] VideoHardware writing initial videomode to /etc/videomode failed.")
-
 		if SystemInfo["Has24hz"]:
 			try:
 				open("/proc/stb/video/videomode_24hz", "w").write(mode_24)
 			except IOError:
 				print("[Videomode] VideoHardware cannot open /proc/stb/video/videomode_24hz")
+
+		if brand == "gigablue":
+			try:
+				# use 50Hz mode (if available) for booting
+				open("/etc/videomode", "w").write(mode_50)
+			except IOError:
+				print("[Videomode] VideoHardware writing initial videomode to /etc/videomode failed!")
 
 		self.updateAspect(None)
 
@@ -392,7 +433,7 @@ class VideoHardware:
 			wss = "auto"
 
 		print("[Videomode] VideoHardware -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss)
-		if about.getChipSetString().startswith('meson-6'):
+		if chipsetstring.startswith("meson-6"):
 			arw = "0"
 			if config.av.policy_43.value == "bestfit" : arw = "10"
 			if config.av.policy_43.value == "panscan" : arw = "11"

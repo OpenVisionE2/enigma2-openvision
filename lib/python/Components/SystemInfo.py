@@ -107,7 +107,6 @@ SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model in ("vusolo4k","gbquad
 SystemInfo["HasColordepth"] = fileCheck("/proc/stb/video/hdmi_colordepth")
 SystemInfo["HasFrontDisplayPicon"] = model in ("vusolo4k","et8500")
 SystemInfo["Has24hz"] = fileCheck("/proc/stb/video/videomode_24hz")
-SystemInfo["Has2160p"] = fileHas("/proc/stb/video/videomode_preferred","2160p50")
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")

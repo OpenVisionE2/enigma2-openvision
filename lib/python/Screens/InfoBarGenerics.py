@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Screens.ChannelSelection import ChannelSelection, BouquetSelector, SilentBouquetSelector
-from Components.ActionMap import ActionMap, HelpableActionMap
-from Components.ActionMap import NumberActionMap
+from Components.ActionMap import ActionMap, HelpableActionMap, NumberActionMap
 from Components.Harddisk import harddiskmanager
 from Components.Input import Input
 from Components.Label import Label
@@ -2744,6 +2743,10 @@ class InfoBarInstantRecord:
 			self.deleteRecording = True
 			self.stopAllCurrentRecordings(list)
 		elif answer[1] in ( "indefinitely" , "manualduration", "manualendtime", "event"):
+			from Components.About import about
+			if len(list) >= 2 and about.getChipSetString().startswith("meson-6"):
+				Notifications.AddNotification(MessageBox,_("Sorry only possible to record 2 channels at once!"), MessageBox.TYPE_ERROR, timeout=5)
+				return
 			self.startInstantRecording(limitEvent = answer[1] in ("event", "manualendtime") or False)
 			if answer[1] == "manualduration":
 				self.changeDuration(len(self.recording)-1)
