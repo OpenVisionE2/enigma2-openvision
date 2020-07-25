@@ -113,11 +113,12 @@ def getKernelVersionString():
 def getCPUBenchmark():
 	try:
 		if not fileExists("/tmp/dhry.txt"):
-			cmdbenchmark = "echo '100000000' | dhry | grep 'Dhrystones per Second' | sed 's|[^0-9]*||' > /tmp/dhry.txt"
+			cmdbenchmark = "dhry > /tmp/dhry.txt"
 			Console().ePopen(cmdbenchmark)
 		if fileExists("/tmp/dhry.txt"):
-			cpubench = int(float(open("/tmp/dhry.txt").read().strip())) / 1757
-		return str(cpubench)
+			cpubench = os.popen("cat /tmp/dhry.txt | grep 'Open Vision DMIPS' | sed 's|[^0-9]*||'").read().strip()
+			benchmarkstatus = os.popen("cat /tmp/dhry.txt | grep 'Open Vision CPU status' | cut -f2 -d':'").read().strip()
+		return "%s DMIPS (%s)" % (cpubench, benchmarkstatus)
 	except:
 		return _("unknown")
 

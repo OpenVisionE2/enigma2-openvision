@@ -73,7 +73,6 @@ class About(Screen):
 			AboutText += _("SoC family: ") + socfamily + "\n"
 
 		AboutText += _("CPU architecture: ") + about.getCPUArch() + "\n"
-		AboutText += _("CPU benchmark: ") + about.getCPUBenchmark() + _(" DMIPS") + "\n"
 
 		if not boxbranding.getDisplayType().startswith(' '):
 			AboutText += "\n"
@@ -465,6 +464,28 @@ class Geolocation(Screen):
 		except Exception as e:
 			self["AboutScrollLabel"] = ScrollLabel(_("Requires internet connection."))
 
+		self["key_red"] = Button(_("Close"))
+
+		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
+			{
+				"cancel": self.close,
+				"ok": self.close,
+				"up": self["AboutScrollLabel"].pageUp,
+				"down": self["AboutScrollLabel"].pageDown
+			})
+
+class BenchmarkInformation(Screen):
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		self.setTitle(_("Benchmark information"))
+
+		BenchmarkInformationText = _("Benchmark information") + "\n"
+
+		BenchmarkInformationText += "\n"
+
+		BenchmarkInformationText += _("CPU benchmark: ") + about.getCPUBenchmark() + "\n"
+
+		self["AboutScrollLabel"] = ScrollLabel(BenchmarkInformationText)
 		self["key_red"] = Button(_("Close"))
 
 		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
