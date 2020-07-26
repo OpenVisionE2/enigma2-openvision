@@ -160,7 +160,7 @@ void eStreamClient::notifier(int what)
 				set_tcp_option(streamFd, TCP_USER_TIMEOUT, 10 * 1000);
 
 				if (serviceref.substr(0, 10) == "file?file=") /* convert openwebif stream reqeust back to serviceref */
-					serviceref = "1:0:1:0:0:0:0:0:0:0:" + serviceref.substr(10);
+					serviceref = std::string("1:0:1:0:0:0:0:0:0:0:") + serviceref.substr(10);
 				/* Strip session ID from URL if it exists, PLi streaming can not handle it */
 				pos = serviceref.find("&sessionid=");
 				if (pos != std::string::npos) {
@@ -258,19 +258,24 @@ void eStreamClient::notifier(int what)
 							}
 						}
 						encoderFd = -1;
+
 						if (eEncoder::getInstance())
-							encoderFd = eEncoder::getInstance()->allocateEncoder(serviceref, bitrate, width, height, framerate, !!interlaced, aspectratio, buffersize, vcodec, acodec);
+							encoderFd = eEncoder::getInstance()->allocateEncoder(serviceref, buffersize, bitrate, width, height, framerate, !!interlaced, aspectratio,
+									vcodec, acodec);
+
 						if (encoderFd >= 0)
 						{
-							running = true;
+							m_serviceref = serviceref;
+							m_useencoder = true;
+
 							streamThread = new eDVBRecordStreamThread(188, buffersize);
+
 							if (streamThread)
 							{
 								streamThread->setTargetFD(streamFd);
 								streamThread->start(encoderFd);
+								running = true;
 							}
-							m_serviceref = serviceref;
-							m_useencoder = true;
 						}
 					}
 				}
