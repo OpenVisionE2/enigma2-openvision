@@ -195,9 +195,9 @@ def getCPUBrand():
 		return _("Amlogic")
 	elif SystemInfo["HiSilicon"]:
 		return _("HiSilicon")
-	elif getBoxBrand() == "azbox" or socfamily.startswith("smp"):
+	elif socfamily.startswith("smp"):
 		return _("Sigma Designs")
-	elif socfamily.startswith("bcm"):
+	elif socfamily.startswith("bcm") or getBoxBrand() == "rpi":
 		return _("Broadcom")
 	else:
 		return _("undefined")
