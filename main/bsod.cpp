@@ -221,6 +221,7 @@ void bsodFatal(const char *component)
 
 		stringFromFile(f, "stbmodel", "/etc/openvision/model");
 		stringFromFile(f, "stbbrand", "/etc/openvision/brand");
+		stringFromFile(f, "stbplatform", "/etc/openvision/platform");
 		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
 		stringFromFile(f, "distro", "/etc/openvision/distro");
@@ -229,6 +230,7 @@ void bsodFatal(const char *component)
 		stringFromFile(f, "mediaservice", "/etc/openvision/mediaservice");
 		stringFromFile(f, "multilib", "/etc/openvision/multilib");
 		stringFromFile(f, "architecture", "/etc/openvision/architecture");
+		stringFromFile(f, "socfamily", "/etc/openvision/socfamily");
 		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
 		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");
 		stringFromFile(f, "visionlanguage", "/etc/openvision/visionlanguage");
