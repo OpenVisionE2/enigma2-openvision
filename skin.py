@@ -636,7 +636,7 @@ def applyAllAttributes(guiObject, desktop, attributes, scale):
 
 def reloadWindowStyles():
 	for screenID in windowStyles:
-		desktop, screenID, domSkin, pathSkin, scope = windowStyles[id]
+		desktop, screenID, domSkin, pathSkin, scope = windowStyles[screenID]
 		loadSingleSkinData(desktop, screenID, domSkin, pathSkin, scope)
 
 def loadSingleSkinData(desktop, screenID, domSkin, pathSkin, scope=SCOPE_CURRENT_SKIN):
