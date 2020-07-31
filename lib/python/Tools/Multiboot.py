@@ -70,6 +70,51 @@ def getCurrentImage():
 def getCurrentImageMode():
 	return bool(SystemInfo["canMultiBoot"]) and SystemInfo["canMode12"] and int(open('/sys/firmware/devicetree/base/chosen/bootargs', 'r').read().replace('\0', '').split('=')[-1])
 
+def GetImagelist():
+	Imagelist = {}
+	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
+	for slot in sorted(SystemInfo["canMultiBoot"].keys()):
+		Console().ePopen("mount %s %s" % (SystemInfo["canMultiBoot"][slot]["root"], tmp.dir))
+		BuildVersion = "  "
+		Creator = " "
+		Imagelist[slot] = {"imagename": _("Empty slot")}
+		imagedir = os.sep.join(filter(None, [tmp.dir, SystemInfo["canMultiBoot"][slot].get("rootsubdir", "")]))
+		if os.path.isfile(os.path.join(imagedir, "usr/bin/enigma2")):
+			Creator = open("%s/etc/issue" % imagedir).readlines()[-2].capitalize().strip()[:-6]
+			try:
+				from datetime import datetime
+				date = datetime.fromtimestamp(os.stat(os.path.join(imagedir, "var/lib/opkg/status")).st_mtime).strftime("%Y-%m-%d")
+				if date.startswith("1970"):
+					date = datetime.fromtimestamp(os.stat(os.path.join(imagedir, "usr/share/bootlogo.mvi")).st_mtime).strftime("%Y-%m-%d")
+				date = max(date, datetime.fromtimestamp(os.stat(ospath.join(imagedir, "usr/bin/enigma2")).st_mtime).strftime("%Y-%m-%d"))
+			except Exception:
+				date = _("Unknown")
+			Creator = Creator.replace("-release", " ")
+			BuildVersion = "%s Image Date: %s" % (Creator, date)
+			Imagelist[slot] = {"imagename": "%s" % BuildVersion}
+		elif os.path.isfile(os.path.join(imagedir, "usr/bin/enigmax")):
+			Imagelist[slot] = { "imagename": _("Deleted image") }
+		Console().ePopen("umount %s" % tmp.dir)
+	if not os.path.ismount(tmp.dir):
+		os.rmdir(tmp.dir)
+	return Imagelist
+
+
+def emptySlot(slot):
+	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
+	Console().ePopen("mount %s %s" % (SystemInfo["canMultiBoot"][slot]["root"], tmp.dir))
+	imagedir = os.sep.join(filter(None, [tmp.dir, SystemInfo["canMultiBoot"][slot].get("rootsubdir", "")]))
+	if os.path.isfile(os.path.join(imagedir, "usr/bin/enigma2")):
+		os.rename((os.path.join(imagedir, "usr/bin/enigma2")), (os.path.join(imagedir, "usr/bin/enigmax")))
+		ret = 0
+	else:
+		print("[multiboot] No enigma2 found to rename.")
+		ret = 4
+	Console().ePopen("umount %s" % tmp.dir)
+	if not os.path.ismount(tmp.dir):
+		os.rmdir(tmp.dir)
+	return ret
+
 def deleteImage(slot):
 	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
 	Console().ePopen('mount %s %s' % (SystemInfo["canMultiBoot"][slot]['device'], tmp.dir))
