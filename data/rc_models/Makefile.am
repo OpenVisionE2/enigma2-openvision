@@ -75,7 +75,7 @@ dist_install_DATA += ax4.png ax4.xml ax51.png ax51.xml hd1100.png hd1100.xml hd2
 endif
 
 if GIGABLUE
-dist_install_DATA += gb0.png gb0.xml gb1.png gb1.xml gb2.png gb2.xml gb3.png gb3.xml
+dist_install_DATA += gb0.png gb0.xml gb1.png gb1.xml gb2.png gb2.xml gb3.png gb3.xml gb4.png gb4.xml
 endif
 
 if HARDKERNEL
