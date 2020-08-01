@@ -37,12 +37,19 @@ def getMultibootslots():
 				slot = {}
 				for line in open(file).readlines():
 					if 'root=' in line:
+						line = line.rstrip("\n")
 						device = getparam(line, 'root')
 						if os.path.exists(device):
 							slot['device'] = device
 							slot['startupfile'] = os.path.basename(file)
 							if 'rootsubdir' in line:
 								slot['rootsubdir'] = getparam(line, 'rootsubdir')
+								slot['kernel'] = getparam(line, 'kernel')
+							elif 'sda' in line:
+								slot['kernel'] = getparam(line, 'kernel')
+								slot['rootsubdir'] = None
+							else:
+								slot['kernel'] = '%sp%s' % (device.split('p')[0], int(device.split('p')[1]) - 1)
 						break
 				if slot:
 					bootslots[int(slotnumber)] = slot
@@ -108,7 +115,7 @@ def emptySlot(slot):
 		os.rename((os.path.join(imagedir, "usr/bin/enigma2")), (os.path.join(imagedir, "usr/bin/enigmax")))
 		ret = 0
 	else:
-		print("[multiboot] No enigma2 found to rename.")
+		print("[Multiboot] No enigma2 found to rename.")
 		ret = 4
 	Console().ePopen("umount %s" % tmp.dir)
 	if not os.path.ismount(tmp.dir):
