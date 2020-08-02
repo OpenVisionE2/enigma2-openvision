@@ -103,7 +103,6 @@ class Navigation:
 
 	def gotostandby(self):
 		print('[Navigation] TIMER: now entering standby')
-		from Tools import Notifications
 		Notifications.AddNotification(Screens.Standby.Standby)
 
 	def isRestartUI(self):
