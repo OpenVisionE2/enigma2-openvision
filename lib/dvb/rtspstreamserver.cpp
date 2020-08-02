@@ -1177,7 +1177,7 @@ void eRTSPStreamClient::notifier(int what)
 		ss << "<manufacturer>" << modelinformation.MachineBrand() << "</manufacturer>";
 		ss << "<manufacturerURL>" << modelinformation.Url() << "</manufacturerURL>";
 		ss << "<modelDescription>" << modelinformation.Creator() << "</modelDescription>";
-		ss << "<modelName>" << modelinformation.MachineName() << "</modelName>";
+		ss << "<modelName>" << modelinformation.BoxType() << "</modelName>";
 		ss << "<modelNumber>1.1</modelNumber>";
 		ss << "<modelURL>" << modelinformation.Url() << "</modelURL>";
 		ss << "<serialNumber>1</serialNumber>";
