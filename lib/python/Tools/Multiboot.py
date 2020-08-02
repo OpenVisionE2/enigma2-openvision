@@ -43,6 +43,7 @@ def getMultibootslots():
 							slot['device'] = device
 							slot['startupfile'] = os.path.basename(file)
 							if 'rootsubdir' in line:
+								SystemInfo["HasRootSubdir"] = True
 								slot['rootsubdir'] = getparam(line, 'rootsubdir')
 								slot['kernel'] = getparam(line, 'kernel')
 							elif 'sda' in line:
@@ -109,7 +110,7 @@ def GetImagelist():
 
 def emptySlot(slot):
 	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
-	Console().ePopen("mount %s %s" % (SystemInfo["canMultiBoot"][slot]["root"], tmp.dir))
+	Console().ePopen("mount %s %s" % (SystemInfo["canMultiBoot"][slot]["device"], tmp.dir))
 	imagedir = os.sep.join(filter(None, [tmp.dir, SystemInfo["canMultiBoot"][slot].get("rootsubdir", "")]))
 	if os.path.isfile(os.path.join(imagedir, "usr/bin/enigma2")):
 		os.rename((os.path.join(imagedir, "usr/bin/enigma2")), (os.path.join(imagedir, "usr/bin/enigmax")))
