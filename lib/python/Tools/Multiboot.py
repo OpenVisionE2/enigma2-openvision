@@ -81,7 +81,7 @@ def GetImagelist():
 	Imagelist = {}
 	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
 	for slot in sorted(SystemInfo["canMultiBoot"].keys()):
-		Console().ePopen("mount %s %s" % (SystemInfo["canMultiBoot"][slot]["root"], tmp.dir))
+		Console().ePopen("mount %s %s" % (SystemInfo["canMultiBoot"][slot]["device"], tmp.dir))
 		BuildVersion = "  "
 		Creator = " "
 		Imagelist[slot] = {"imagename": _("Empty slot")}
