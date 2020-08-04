@@ -337,7 +337,7 @@ class Timezones:
 			print("[Timezones] Trying to stop main AutoTimer poller.")
 			if self.autotimerPoller is not None:
 				self.autotimerPoller.stop()
-			prin("[Timezones] AutoTimer poller will be run in %d minutes." % self.pollDelay)
+			print("[Timezones] AutoTimer poller will be run in %d minutes." % self.pollDelay)
 			self.timer.startLongTimer(self.pollDelay * 60)
 
 	def autotimeQuery(self):
