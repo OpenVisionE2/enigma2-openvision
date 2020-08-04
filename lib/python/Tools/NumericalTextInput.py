@@ -221,7 +221,6 @@ class NumericalTextInput:
 					mode = "Search"
 				if isinstance(mapping, str):  # NOTE: Legacy interface for previous and deprecated versions of NumericalTextInput.
 					mode = mapping
-			self.mapping = []
 			index = MODES.get(str(mode).upper(), 0)
 			self.mapping = []
 			for num in range(0, 10):
