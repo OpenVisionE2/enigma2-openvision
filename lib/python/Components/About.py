@@ -112,13 +112,24 @@ def getKernelVersionString():
 
 def getCPUBenchmark():
 	try:
+		cpucount = 0
+		for line in open("/proc/cpuinfo").readlines():
+			line = [x.strip() for x in line.strip().split(":")]
+			if line[0] == "processor":
+				cpucount += 1
+
 		if not fileExists("/tmp/dhry.txt"):
 			cmdbenchmark = "dhry > /tmp/dhry.txt"
 			Console().ePopen(cmdbenchmark)
 		if fileExists("/tmp/dhry.txt"):
 			cpubench = os.popen("cat /tmp/dhry.txt | grep 'Open Vision DMIPS' | sed 's|[^0-9]*||'").read().strip()
 			benchmarkstatus = os.popen("cat /tmp/dhry.txt | grep 'Open Vision CPU status' | cut -f2 -d':'").read().strip()
-		return "%s DMIPS (%s)" % (cpubench, benchmarkstatus)
+
+		if cpucount > 1:
+			cpumaxbench = int(cpubench)*int(cpucount)
+			return "%s DMIPS per core\n%s DMIPS for all (%s) cores (%s)" % (cpubench, cpumaxbench, cpucount, benchmarkstatus)
+		else:
+			return "%s DMIPS (%s)" % (cpubench, benchmarkstatus)
 	except:
 		return _("unknown")
 
