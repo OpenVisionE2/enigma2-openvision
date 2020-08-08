@@ -1,3 +1,6 @@
 SUBDIRS = buttonsFHD buttonsHD
 
-dist_pkgdata_DATA = vkskin.xml
+installdir = $(pkgdatadir)/VirtualKeyBoard_Icons
+
+dist_install_DATA = \
+	vkskin.xml
