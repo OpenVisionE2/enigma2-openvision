@@ -49,6 +49,7 @@ EXTRA_OECONF = "\
 	--enable-dependency-tracking \
 	${@bb.utils.contains("MACHINE_FEATURES", "textlcd", "--with-textlcd" , "", d)} \
 	--with-boxbrand="${BOX_BRAND}" \
+	--with-stbplatform=${STB_PLATFORM} \
 	--with-oever="${VISIONVERSION}" \
 	${@bb.utils.contains_any("MACHINE_FEATURES", "7segment 7seg", "--with-7segment" , "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "uianimation", "--with-libvugles2" , "", d)} \
