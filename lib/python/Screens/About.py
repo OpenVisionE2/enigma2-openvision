@@ -101,7 +101,7 @@ class About(Screen):
 		AboutText += "\n"
 
 		AboutText += _("Drivers version: ") + about.getDriverInstalledDate() + "\n"
-		AboutText += _("Kernel version: ") + about.getKernelVersionString() + "\n"
+		AboutText += _("Kernel version: ") + boxbranding.getKernelVersion() + "\n"
 
 		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer","")
 		self["GStreamerVersion"] = StaticText(GStreamerVersion)
