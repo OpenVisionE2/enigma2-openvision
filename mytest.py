@@ -33,7 +33,7 @@ enigma.eTimer = eBaseImpl.eTimer
 enigma.eSocketNotifier = eBaseImpl.eSocketNotifier
 enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
 
-if getVisionVersion().startswith("10") and not fileExists ("/var/tmp/ntpv4.local"):
+if getVisionVersion().startswith("10") and not fileExists ("/var/tmp/ntpv4.local") and platform != "dm4kgen":
 	from Components.Console import Console
 	print("[mytest] Try load all network interfaces.")
 	Console = Console()
