@@ -303,7 +303,7 @@ class SecConfigure:
 			rotor_sat_list = self.NimManager.getRotorSatListForNim(root_id)
 			if rotor_sat_list:
 				for x in rotor_sat_list:
-					print "[SecConfigure] add", x[0], "to", lnb
+					print("[SecConfigure] add", x[0], "to", lnb)
 					lnbSat[lnb].append(x[0])
 			else:
 				config.Nims[slotid].advanced.sat[3607].lnb.value = "0"

@@ -98,424 +98,435 @@ void eRCDeviceInputDev::handleCode(long rccode)
 		}
 	}
 
+	if (!remaps.empty())
+	{
+		std::unordered_map<unsigned int, unsigned int>::iterator i = remaps.find(ev->code);
+		if (i != remaps.end())
+		{
+			eDebug("[eRCDeviceInputDev] map: %u->%u", i->first, i->second);
+			ev->code = i->second;
+		}
+	}
+	else
+	{
+#if KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE
+		if (ev->code == KEY_PLAY)
+		{
+			if ((id == "dreambox advanced remote control (native)")  || (id == "bcm7325 remote control"))
+			{
+				ev->code = KEY_PLAYPAUSE;
+			}
+		}
+#endif
+
 #if TIVIARRC
-	if (ev->code == KEY_EPG) {
-		ev->code = KEY_INFO;
-	}
-	else if (ev->code == KEY_MEDIA) {
-		ev->code = KEY_EPG;
-	}
-	else if (ev->code == KEY_INFO) {
-		ev->code = KEY_BACK;
-	}
-	else if (ev->code == KEY_PREVIOUS) {
-		ev->code = KEY_SUBTITLE;
-	}
-	else if (ev->code == KEY_NEXT) {
-		ev->code = KEY_TEXT;
-	}
-	else if (ev->code == KEY_BACK) {
-		ev->code = KEY_MEDIA;
-	}
-	else if (ev->code == KEY_PLAYPAUSE) {
-		ev->code = KEY_PLAY;
-	}
-	else if (ev->code == KEY_RECORD) {
-		ev->code = KEY_PREVIOUS;
-	}
-	else if (ev->code == KEY_STOP) {
-		ev->code = KEY_PAUSE;
-	}
-	else if (ev->code == KEY_PROGRAM) {
-		ev->code = KEY_STOP;
-	}
-	else if (ev->code == KEY_BOOKMARKS) {
-		ev->code = KEY_RECORD;
-	}
-	else if (ev->code == KEY_SLEEP) {
-		ev->code = KEY_NEXT;
-	}
-	else if (ev->code == KEY_TEXT) {
-		ev->code = KEY_PAGEUP;
-	}
-	else if (ev->code == KEY_SUBTITLE) {
-		ev->code = KEY_PAGEDOWN;
-	}
-	else if (ev->code == KEY_LIST) {
-		ev->code = KEY_F3;
-	}
-	else if (ev->code ==  KEY_RADIO) {
-		ev->code =  KEY_MODE;
-	}
-	else if (ev->code == KEY_AUDIO) {
-		ev->code = KEY_TV;
-	}
-	else if (ev->code == KEY_HELP) {
-		ev->code = KEY_SLEEP;
-	}
-	else if (ev->code == KEY_TV) {
-		ev->code = KEY_VMODE;
-	}
+		if (ev->code == KEY_EPG) {
+			ev->code = KEY_INFO;
+		}
+		else if (ev->code == KEY_MEDIA) {
+			ev->code = KEY_EPG;
+		}
+		else if (ev->code == KEY_INFO) {
+			ev->code = KEY_BACK;
+		}
+		else if (ev->code == KEY_PREVIOUS) {
+			ev->code = KEY_SUBTITLE;
+		}
+		else if (ev->code == KEY_NEXT) {
+			ev->code = KEY_TEXT;
+		}
+		else if (ev->code == KEY_BACK) {
+			ev->code = KEY_MEDIA;
+		}
+		else if (ev->code == KEY_PLAYPAUSE) {
+			ev->code = KEY_PLAY;
+		}
+		else if (ev->code == KEY_RECORD) {
+			ev->code = KEY_PREVIOUS;
+		}
+		else if (ev->code == KEY_STOP) {
+			ev->code = KEY_PAUSE;
+		}
+		else if (ev->code == KEY_PROGRAM) {
+			ev->code = KEY_STOP;
+		}
+		else if (ev->code == KEY_BOOKMARKS) {
+			ev->code = KEY_RECORD;
+		}
+		else if (ev->code == KEY_SLEEP) {
+			ev->code = KEY_NEXT;
+		}
+		else if (ev->code == KEY_TEXT) {
+			ev->code = KEY_PAGEUP;
+		}
+		else if (ev->code == KEY_SUBTITLE) {
+			ev->code = KEY_PAGEDOWN;
+		}
+		else if (ev->code == KEY_LIST) {
+			ev->code = KEY_F3;
+		}
+		else if (ev->code ==  KEY_RADIO) {
+			ev->code =  KEY_MODE;
+		}
+		else if (ev->code == KEY_AUDIO) {
+			ev->code = KEY_TV;
+		}
+		else if (ev->code == KEY_HELP) {
+			ev->code = KEY_SLEEP;
+		}
+		else if (ev->code == KEY_TV) {
+			ev->code = KEY_VMODE;
+		}
 #endif
 
 #if WETEKRC
-	if (bflag) {
-		if (ev->code == KEY_1) {
-			ev->code = KEY_RED;
+		if (bflag) {
+			if (ev->code == KEY_1) {
+				ev->code = KEY_RED;
+			}
+			if (ev->code == KEY_2) {
+				ev->code = KEY_GREEN;
+			}
+			if (ev->code == KEY_3) {
+				ev->code = KEY_YELLOW;
+			}
+			if (ev->code == KEY_4) {
+				ev->code = KEY_BLUE;
+			}
+			if (ev->code == KEY_5) {
+				ev->code = KEY_PREVIOUS;
+			}
+			if (ev->code == KEY_6) {
+				ev->code = KEY_NEXT;
+			}
+			if (ev->code == KEY_7) {
+				ev->code = KEY_REWIND;
+			}
+			if (ev->code == KEY_8) {
+				ev->code = KEY_STOP;
+			}
+			if (ev->code == KEY_9) {
+				ev->code = KEY_FASTFORWARD;
+			}
+			if (ev->code == KEY_0) {
+				ev->code = KEY_PLAYPAUSE;
+			}
 		}
-		if (ev->code == KEY_2) {
-			ev->code = KEY_GREEN;
-		}
-		if (ev->code == KEY_3) {
-			ev->code = KEY_YELLOW;
-		}
-		if (ev->code == KEY_4) {
-			ev->code = KEY_BLUE;
-		}
-		if (ev->code == KEY_5) {
-			ev->code = KEY_PREVIOUS;
-		}
-		if (ev->code == KEY_6) {
-			ev->code = KEY_NEXT;
-		}
-		if (ev->code == KEY_7) {
-			ev->code = KEY_REWIND;
-		}
-		if (ev->code == KEY_8) {
-			ev->code = KEY_STOP;
-		}
-		if (ev->code == KEY_9) {
-			ev->code = KEY_FASTFORWARD;
-		}
-		if (ev->code == KEY_0) {
-			ev->code = KEY_PLAYPAUSE;
-		}
-	}
-#endif
-
-#if KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE
-	if (ev->code == KEY_PLAY)
-	{
-		if (id == "dreambox advanced remote control (native)")
-		{
-			/* 8k rc has a KEY_PLAYPAUSE key, which sends KEY_PLAY events. Correct this, so we do not have to place hacks in the keymaps. */
-			ev->code = KEY_PLAYPAUSE;
-		}
-	}
 #endif
 
 #if KEY_F6_TO_KEY_FAVORITES
-	if (ev->code == KEY_F6) {
-		ev->code = KEY_FAVORITES;
-	}
+		if (ev->code == KEY_F6) {
+			ev->code = KEY_FAVORITES;
+		}
 #endif
 
 #if KEY_CONTEXT_MENU_TO_KEY_BACK
-	if (ev->code == KEY_CONTEXT_MENU) {
-		ev->code = KEY_BACK;
-	}
+		if (ev->code == KEY_CONTEXT_MENU) {
+			ev->code = KEY_BACK;
+		}
 #endif
 
 #if KEY_WWW_TO_KEY_FILE
-	if (ev->code == KEY_WWW) {
-		ev->code = KEY_FILE;
-	}
+		if (ev->code == KEY_WWW) {
+			ev->code = KEY_FILE;
+		}
 #endif
 
 #if KEY_HELP_TO_KEY_AUDIO
-	if (ev->code == KEY_HELP) {
-		ev->code = KEY_AUDIO;
-	}
+		if (ev->code == KEY_HELP) {
+			ev->code = KEY_AUDIO;
+		}
 #endif
 
 #if KEY_F7_TO_KEY_MENU
-	if (ev->code == KEY_F7) {
-		ev->code = KEY_MENU;
-	}
+		if (ev->code == KEY_F7) {
+			ev->code = KEY_MENU;
+		}
 #endif
 
 #if KEY_F1_TO_KEY_MEDIA
-	if (ev->code == KEY_F1) {
-		ev->code = KEY_MEDIA;
-	}
+		if (ev->code == KEY_F1) {
+			ev->code = KEY_MEDIA;
+		}
 #endif
 
 #if KEY_HOME_TO_KEY_INFO
-	if (ev->code == KEY_HOME) {
-		ev->code = KEY_INFO;
-	}
+		if (ev->code == KEY_HOME) {
+			ev->code = KEY_INFO;
+		}
 #endif
 
 #if KEY_BACK_TO_KEY_EXIT
-	if (ev->code == KEY_BACK) {
-		ev->code = KEY_EXIT;
-	}
+		if (ev->code == KEY_BACK) {
+			ev->code = KEY_EXIT;
+		}
 #endif
 
 #if KEY_F2_TO_KEY_EPG
-	if (ev->code == KEY_F2) {
-		ev->code = KEY_EPG;
-	}
+		if (ev->code == KEY_F2) {
+			ev->code = KEY_EPG;
+		}
 #endif
 
 #if KEY_ENTER_TO_KEY_OK
-	if (ev->code == KEY_ENTER) {
-		ev->code = KEY_OK;
-	}
+		if (ev->code == KEY_ENTER) {
+			ev->code = KEY_OK;
+		}
 #endif
 
 #if KEY_TV_TO_KEY_STOP
-	if (ev->code == KEY_TV) {
-		ev->code = KEY_STOP;
-	}
+		if (ev->code == KEY_TV) {
+			ev->code = KEY_STOP;
+		}
 #endif
 
 #if KEY_VIDEO_TO_KEY_SUBTITLE
-	if (ev->code == KEY_VIDEO) {
-		ev->code = KEY_SUBTITLE;
-	}
+		if (ev->code == KEY_VIDEO) {
+			ev->code = KEY_SUBTITLE;
+		}
 #endif
 
 #if KEY_RADIO_TO_KEY_RECORD
-	if (ev->code == KEY_RADIO) {
-		ev->code = KEY_RECORD;
-	}
+		if (ev->code == KEY_RADIO) {
+			ev->code = KEY_RECORD;
+		}
 #endif
 
 #if KEY_HOME_TO_KEY_OPEN
-	if (ev->code == KEY_HOME) {
-		ev->code = KEY_OPEN;
-	}
+		if (ev->code == KEY_HOME) {
+			ev->code = KEY_OPEN;
+		}
 #endif
 
 #if KEY_VIDEO_TO_KEY_EPG
-	if (ev->code == KEY_VIDEO) {
-		ev->code = KEY_EPG;
-	}
+		if (ev->code == KEY_VIDEO) {
+			ev->code = KEY_EPG;
+		}
 #endif
 
 #if KEY_TV_TO_KEY_MODE
-	if (ev->code == KEY_TV) {
-		ev->code = KEY_MODE;
-	}
+		if (ev->code == KEY_TV) {
+			ev->code = KEY_MODE;
+		}
 #endif
 
 #if KEY_TEXT_TO_KEY_AUDIO
-	if (ev->code == KEY_AUDIO) {
-		ev->code = KEY_TEXT;
-	}
-	else if (ev->code == KEY_AUDIO) {
-		ev->code = KEY_TEXT;
-	}
+		if (ev->code == KEY_AUDIO) {
+			ev->code = KEY_TEXT;
+		}
+		else if (ev->code == KEY_AUDIO) {
+			ev->code = KEY_TEXT;
+		}
 #endif
 
 #if KEY_SCREEN_TO_KEY_ANGLE
-	if (ev->code == KEY_SCREEN) {
-		ev->code = KEY_ANGLE;
-	}
+		if (ev->code == KEY_SCREEN) {
+			ev->code = KEY_ANGLE;
+		}
 #endif
 
 #if KEY_TIME_TO_KEY_SLEEP
-	if (ev->code == KEY_SLEEP) {
-		ev->code = KEY_PROGRAM;
-	}
+		if (ev->code == KEY_SLEEP) {
+			ev->code = KEY_PROGRAM;
+		}
 #endif
 
 #if KEY_MODE_TO_KEY_AUDIO
-	if (ev->code == KEY_MODE) {
-		ev->code = KEY_AUDIO;
-	}
+		if (ev->code == KEY_MODE) {
+			ev->code = KEY_AUDIO;
+		}
 #endif
 
 #if KEY_F3_TO_KEY_LIST
-	if (ev->code == KEY_F3) {
-		ev->code = KEY_LIST;
-	}
+		if (ev->code == KEY_F3) {
+			ev->code = KEY_LIST;
+		}
 #endif
 
 #if KEY_F1_TO_KEY_F2
-	if (ev->code == KEY_F1) {
-		ev->code = KEY_F2;
-	}
+		if (ev->code == KEY_F1) {
+			ev->code = KEY_F2;
+		}
 #endif
 
 #if KEY_BOOKMARKS_IS_KEY_DIRECTORY
-	if (ev->code == KEY_BOOKMARKS) {
-		ev->code = KEY_DIRECTORY;
-	}
+		if (ev->code == KEY_BOOKMARKS) {
+			ev->code = KEY_DIRECTORY;
+		}
 #endif
 
 #if KEY_LIST_TO_KEY_PVR
-	if (ev->code == KEY_LIST) {
-		ev->code = KEY_PVR;
-	}
+		if (ev->code == KEY_LIST) {
+			ev->code = KEY_PVR;
+		}
 #endif
 
 #if KEY_MEDIA_TO_KEY_LIST
-	if (ev->code == KEY_MEDIA) {
-		ev->code = KEY_LIST;
-	}
+		if (ev->code == KEY_MEDIA) {
+			ev->code = KEY_LIST;
+		}
 #endif
 
 #if KEY_VIDEO_TO_KEY_ANGLE
-	if (ev->code == KEY_VIDEO) {
-		ev->code = KEY_ANGLE;
-	}
+		if (ev->code == KEY_VIDEO) {
+			ev->code = KEY_ANGLE;
+		}
 #endif
 
 #if KEY_LAST_TO_KEY_BACK
-	if (ev->code == KEY_LAST) {
-		ev->code = KEY_BACK;
-	}
+		if (ev->code == KEY_LAST) {
+			ev->code = KEY_BACK;
+		}
 #endif
 
 #if KEY_BOOKMARKS_TO_KEY_MEDIA
-	if (ev->code == KEY_BOOKMARKS) {
-		ev->code = KEY_MEDIA;
-	}
+		if (ev->code == KEY_BOOKMARKS) {
+			ev->code = KEY_MEDIA;
+		}
 #endif
 
 #if KEY_VIDEO_TO_KEY_FAVORITES
-	if (ev->code == KEY_VIDEO) {
-		ev->code = KEY_FAVORITES;
-	}
+		if (ev->code == KEY_VIDEO) {
+			ev->code = KEY_FAVORITES;
+		}
 #endif
 
 #if KEY_VIDEO_TO_KEY_BOOKMARKS
-	if (ev->code == KEY_VIDEO) {
-		ev->code = KEY_BOOKMARKS;
-	}
+		if (ev->code == KEY_VIDEO) {
+			ev->code = KEY_BOOKMARKS;
+		}
 #endif
 
 #if KEY_POWER2_TO_KEY_WWW
-	if (ev->code == KEY_POWER2) {
-		ev->code = KEY_WWW;
-	}
+		if (ev->code == KEY_POWER2) {
+			ev->code = KEY_WWW;
+		}
 #endif
 
 #if KEY_DIRECTORY_TO_KEY_FILE
-	if (ev->code == KEY_DIRECTORY) {
-		ev->code = KEY_FILE;
-	}
+		if (ev->code == KEY_DIRECTORY) {
+			ev->code = KEY_FILE;
+		}
 #endif
 
 #if KEY_HELP_TO_KEY_INFO
-	if (ev->code == KEY_HELP) {
-		ev->code = KEY_INFO;
-	}
+		if (ev->code == KEY_HELP) {
+			ev->code = KEY_INFO;
+		}
 #endif
 
 #if KEY_INFO_TO_KEY_EPG
-	if (ev->code == KEY_INFO) {
-		ev->code = KEY_EPG;
-	}
+		if (ev->code == KEY_INFO) {
+			ev->code = KEY_EPG;
+		}
 #endif
 
 #if KEY_GUIDE_TO_KEY_EPG
-	if (ev->code == KEY_HELP) {
-		ev->code = KEY_EPG;
-	}
+		if (ev->code == KEY_HELP) {
+			ev->code = KEY_EPG;
+		}
 #endif
 
 #if KEY_F2_TO_KEY_F6
-	if (ev->code == KEY_F2) {
-		ev->code = KEY_F6;
-	}
+		if (ev->code == KEY_F2) {
+			ev->code = KEY_F6;
+		}
 #endif
 
 #if KEY_SCREEN_TO_KEY_MODE
-	if (ev->code == KEY_SCREEN) {
-		ev->code = KEY_MODE;
-	}
+		if (ev->code == KEY_SCREEN) {
+			ev->code = KEY_MODE;
+		}
 #endif
 
 #if KEY_CONTEXT_MENU_TO_KEY_AUX
-	if (ev->code == KEY_CONTEXT_MENU) {
-		ev->code = KEY_AUX;
-	}
+		if (ev->code == KEY_CONTEXT_MENU) {
+			ev->code = KEY_AUX;
+		}
 #endif
 
 #if KEY_MEDIA_TO_KEY_OPEN
-	if (ev->code == KEY_MEDIA) {
-		ev->code = KEY_OPEN;
-	}
+		if (ev->code == KEY_MEDIA) {
+			ev->code = KEY_OPEN;
+		}
 #endif
 
 #if KEY_SEARCH_TO_KEY_WWW
-	if (ev->code == KEY_SEARCH) {
-		ev->code = KEY_WWW;
-	}
+		if (ev->code == KEY_SEARCH) {
+			ev->code = KEY_WWW;
+		}
 #endif
 
 #if KEY_OPTION_TO_KEY_PC
-	if (ev->code == KEY_OPTION) {
-		ev->code = KEY_PC;
-	}
+		if (ev->code == KEY_OPTION) {
+			ev->code = KEY_PC;
+		}
 #endif
 
 #if KEY_ZOOM_TO_KEY_SCREEN
-	if (ev->code == KEY_ZOOM) {
-		ev->code = KEY_SCREEN;
-	}
+		if (ev->code == KEY_ZOOM) {
+			ev->code = KEY_SCREEN;
+		}
 #endif
 
 #if KEY_VIDEO_TO_KEY_MODE
-	if (ev->code == KEY_VIDEO) {
-		ev->code = KEY_MODE;
-	}
+		if (ev->code == KEY_VIDEO) {
+			ev->code = KEY_MODE;
+		}
 #endif
 
 #if KEY_BOOKMARKS_TO_KEY_DIRECTORY
-	if (ev->code == KEY_BOOKMARKS) {
-		ev->code = KEY_DIRECTORY;
-	}
+		if (ev->code == KEY_BOOKMARKS) {
+			ev->code = KEY_DIRECTORY;
+		}
 #endif
 
 #if KEY_LAST_TO_KEY_PVR
-	if (ev->code == KEY_LAST) {
-		ev->code = KEY_PVR;
-	}
+		if (ev->code == KEY_LAST) {
+			ev->code = KEY_PVR;
+		}
 #endif
 
 #if KEY_MEDIA_TO_KEY_BOOKMARKS
-	if (ev->code == KEY_MEDIA) {
-		ev->code = KEY_BOOKMARKS;
-	}
+		if (ev->code == KEY_MEDIA) {
+			ev->code = KEY_BOOKMARKS;
+		}
 #endif
 
 #if KEY_VIDEO_IS_KEY_SCREEN
-	if (ev->code == KEY_VIDEO) {
-		ev->code = KEY_SCREEN;
-	}
+		if (ev->code == KEY_VIDEO) {
+			ev->code = KEY_SCREEN;
+		}
 #endif
 
 #if KEY_ARCHIVE_TO_KEY_DIRECTORY
-	if (ev->code == KEY_ARCHIVE) {
-		ev->code = KEY_DIRECTORY;
-	}
+		if (ev->code == KEY_ARCHIVE) {
+			ev->code = KEY_DIRECTORY;
+		}
 #endif
 
 #if KEY_TIME_TO_KEY_SLOW
-	if (ev->code == KEY_TIME) {
-		ev->code = KEY_SLOW;
-	}
+		if (ev->code == KEY_TIME) {
+			ev->code = KEY_SLOW;
+		}
 #endif
 
 #if HAVE_RASPBERRYPI
-	if (ev->code == KEY_F1) {
-		ev->code = KEY_RED;
-	}
-	if (ev->code == KEY_F2) {
-		ev->code = KEY_GREEN;
-	}
-	if (ev->code == KEY_F3) {
-		ev->code = KEY_YELLOW;
-	}
-	if (ev->code == KEY_F4) {
-		ev->code = KEY_BLUE;
-	}
+		if (ev->code == KEY_F1) {
+			ev->code = KEY_RED;
+		}
+		if (ev->code == KEY_F2) {
+			ev->code = KEY_GREEN;
+		}
+		if (ev->code == KEY_F3) {
+			ev->code = KEY_YELLOW;
+		}
+		if (ev->code == KEY_F4) {
+			ev->code = KEY_BLUE;
+		}
 #endif
-
+	}
+	eDebug("[eRCDeviceInputDev] emit: %u", ev->value); // ZZ
 	switch (ev->value)
 	{
 		case 0:
@@ -528,6 +539,12 @@ void eRCDeviceInputDev::handleCode(long rccode)
 			input->keyPressed(eRCKey(this, ev->code, eRCKey::flagRepeat)); /*emit*/
 			break;
 	}
+}
+
+int eRCDeviceInputDev::setKeyMapping(const std::unordered_map<unsigned int, unsigned int>& remaps_p)
+{
+	remaps = remaps_p;
+	return eRCInput::remapOk;
 }
 
 eRCDeviceInputDev::eRCDeviceInputDev(eRCInputEventDriver *driver, int consolefd)
