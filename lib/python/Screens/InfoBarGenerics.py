@@ -54,9 +54,6 @@ model = getBoxType()
 brand = getBoxBrand()
 platform = getMachineBuild()
 
-if not SystemInfo["HiSilicon"] and not SystemInfo["AmlogicFamily"] and brand != "azbox":
-	SystemInfo["CanFadeOut"] = True
-
 def isStandardInfoBar(self):
 	return self.__class__.__name__ == "InfoBar"
 
@@ -427,7 +424,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 		if SystemInfo["CanFadeOut"]:
 			self.hideTimer.stop()
 			self.DimmingTimer.stop()
-			self.doWriteAlpha(config.av.osd_alpha.value)
+#			self.doWriteAlpha(config.av.osd_alpha.value)
 		self.startHideTimer()
 
 	def doTimerHide(self):
