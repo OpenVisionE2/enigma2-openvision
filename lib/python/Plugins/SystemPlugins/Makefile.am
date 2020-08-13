@@ -14,7 +14,7 @@ if HAVE_OSDANIMATION
 SUBDIRS += AnimationSetup
 endif
 
-if DM9X0
+if DM4KGEN
 SUBDIRS += FSBLUpdater
 endif
 
