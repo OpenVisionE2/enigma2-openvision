@@ -8,7 +8,7 @@ from fcntl import ioctl
 import os
 import struct
 import platform
-from Tools.Directories import pathExists
+from boxbranding import getRCType
 
 model = getBoxType()
 
@@ -211,13 +211,12 @@ iInputDevices = inputDevices()
 
 
 config.plugins.remotecontroltype = ConfigSubsection()
-config.plugins.remotecontroltype.rctype = ConfigInteger(default = 0)
+config.plugins.remotecontroltype.rctype = ConfigInteger(default = getRCType())
 
 class RcTypeControl():
 	def __init__(self):
-		if SystemInfo["RcTypeChangable"] and pathExists('/proc/stb/info/boxtype') and getBoxBrand() not in ("gigablue","odin","ini","entwopia","tripledot"):
+		if SystemInfo["RcTypeChangable"] and getBoxBrand() not in ("gigablue","odin","ini","entwopia","tripledot"):
 			self.isSupported = True
-			self.boxType = open('/proc/stb/info/boxtype', 'r').read().strip()
 			if config.plugins.remotecontroltype.rctype.value != 0:
 				self.writeRcType(config.plugins.remotecontroltype.rctype.value)
 		else:
@@ -225,9 +224,6 @@ class RcTypeControl():
 
 	def multipleRcSupported(self):
 		return self.isSupported
-
-	def getBoxType(self):
-		return self.boxType
 
 	def writeRcType(self, rctype):
 		if self.isSupported and rctype > 0:
