@@ -555,6 +555,10 @@ if test "$BOXBRAND" == "formuler" -o "$BOXBRAND" == "ax" -o "$BOXTYPE" == "sf108
 	AC_DEFINE(KEY_VIDEO_TO_KEY_FAVORITES, 1,[define when rc FAV key sends a KEY_VIDEO event for its KEY_FAVORITES key])
 fi
 
+if test "$BOXTYPE" == "gb800solo" -o "$BOXTYPE" == "gb800se" -o "$BOXTYPE" == "gb800ue"; then
+	AC_DEFINE(HAVE_NO_RTC, 1,[enable no RTC stuff])
+fi
+
 if test "$STBPLATFORM" == "gb7325" -o "$STBPLATFORM" == "gb7356" -o "$STBPLATFORM" == "gb7358" -o "$STBPLATFORM" == "gb7362" -o "$STBPLATFORM" == "gb73625"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 	AC_DEFINE(KEY_GUIDE_TO_KEY_EPG, 1,[define when rc sends a KEY_HELP event for its KEY_EPG key])
