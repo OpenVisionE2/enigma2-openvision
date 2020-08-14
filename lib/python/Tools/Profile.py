@@ -36,21 +36,6 @@ except IOError:
 
 def profile(id):
 	now = time.time() - profile_start
-
-	if model == "axodin":
-		dev_fmt = ("/dev/dbox/oled0", "%d")
-	elif model in ("gb800solo","gb800se","gb800seplus","gbultrase"):
-		dev_fmt = ("/dev/mcu", "%d  \n")
-	elif model in ("ebox5000","osmini","spycatmini","osminiplus","spycatminiplus"):
-		dev_fmt = ("/proc/progress", "%d"),
-	elif model in ("sezammarvel","xpeedlx3","atemionemesis"):
-		dev_fmt = ("/proc/vfd", "Loading %d%%\n")
-	elif model == "beyonwizu4":
-		dev_fmt = ("/dev/dbox/oled0", "Loading %d%%\n")
-	else:
-		dev_fmt = ("/proc/progress", "%d \n")
-	(dev, fmt) = dev_fmt
-
 	if profile_file:
 		profile_file.write("%7.3f\t%s\n" % (now, id))
 
@@ -61,7 +46,18 @@ def profile(id):
 			else:
 				perc = PERCENTAGE_START
 			try:
-				open(dev, "w").write(fmt % perc)
+				if model == "axodin":
+					open("/dev/dbox/oled0", "w").write("%d" % perc)
+				elif model in ("gb800solo","gb800se","gb800seplus","gbultrase"):
+					open("/dev/mcu", "w").write("%d  \n" % perc)
+				elif model in ("ebox5000","osmini","spycatmini","osminiplus","spycatminiplus"):
+					open("/proc/progress", "w").write("%d" % perc)
+				elif model in ("sezammarvel","xpeedlx3","atemionemesis"):
+					open("/proc/vfd", "w").write("Loading %d %%" % perc)
+				elif model == "beyonwizu4":
+					open("/dev/dbox/oled0", "w").write("Loading %d%%\n" % perc)
+				else:
+					open("/proc/progress", "w").write("%d \n" % perc)
 			except IOError:
 				pass
 
