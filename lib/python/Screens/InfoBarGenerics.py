@@ -48,7 +48,7 @@ import itertools, datetime
 from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 # hack alert!
 from Screens.Menu import MainMenu, mdom
-from boxbranding import getMachineBuild
+from boxbranding import getMachineBuild, getSoCFamily
 
 model = getBoxType()
 brand = getBoxBrand()
@@ -283,7 +283,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 		InfoBarScreenSaver.__init__(self)
 		self.__state = self.STATE_SHOWN
 		self.__locked = 0
-		if SystemInfo["CanFadeOut"]:
+		if config.usage.fadeout.value is True:
 			self.DimmingTimer = eTimer()
 			self.DimmingTimer.callback.append(self.doDimming)
 			self.unDimmingTimer = eTimer()
@@ -311,7 +311,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 			InfoBarInstance.hideVBILineScreen.hide()
 		self.hideVBILineScreen = self.session.instantiateDialog(HideVBILine)
 		self.hideVBILineScreen.show()
-		if SystemInfo["CanFadeOut"]:
+		if config.usage.fadeout.value is True:
 			self.lastResetAlpha = True
 		self.onLayoutFinish.append(self.__layoutFinished)
 		self.onExecBegin.append(self.__onExecBegin)
@@ -333,7 +333,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 	def __onHide(self):
 		self.__state = self.STATE_HIDDEN
-		if SystemInfo["CanFadeOut"]:
+		if config.usage.fadeout.value is True:
 			self.resetAlpha()
 		if self.actualSecondInfoBarScreen:
 			self.actualSecondInfoBarScreen.hide()
@@ -421,15 +421,16 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 	def doShow(self):
 		self.show()
-		if SystemInfo["CanFadeOut"]:
+		if config.usage.fadeout.value is True:
 			self.hideTimer.stop()
 			self.DimmingTimer.stop()
-#			self.doWriteAlpha(config.av.osd_alpha.value)
+			if getSoCFamily().startswith("bcm"):
+				self.doWriteAlpha(config.av.osd_alpha.value)
 		self.startHideTimer()
 
 	def doTimerHide(self):
 		self.hideTimer.stop()
-		if SystemInfo["CanFadeOut"]:
+		if config.usage.fadeout.value is True:
 			self.DimmingTimer.start(70, True)
 			self.dimmed = config.usage.show_infobar_dimming_speed.value
 		else:
@@ -489,7 +490,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 			self.hideTimer.stop()
 
 	def unlockShow(self):
-		if SystemInfo["CanFadeOut"]:
+		if config.usage.fadeout.value is True:
 			if config.usage.show_infobar_do_dimming.value and self.lastResetAlpha is False:
 				self.doWriteAlpha(config.av.osd_alpha.value)
 			try:
@@ -1818,7 +1819,7 @@ class InfoBarPVRState:
 	def _mayShow(self):
 		if self.shown and self.seekstate != self.SEEK_STATE_PLAY:
 			self.pvrStateDialog.show()
-		if SystemInfo["CanFadeOut"]:
+		if config.usage.fadeout.value is True:
 			if self.shown and self.seekstate != self.SEEK_STATE_EOF:
 				self.DimmingTimer.stop()
 				self.doWriteAlpha(config.av.osd_alpha.value)

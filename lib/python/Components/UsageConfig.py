@@ -13,7 +13,7 @@ import os
 import time
 import locale
 import skin
-from boxbranding import getDisplayType, getMachineBuild, getHaveWOL
+from boxbranding import getDisplayType, getMachineBuild, getHaveWOL, getSoCFamily
 
 displaytype = getDisplayType()
 
@@ -77,6 +77,10 @@ def InitUsageConfig():
 	for i in range(1, 12):
 		choicelist.append((str(i), ngettext("%d second", "%d seconds", i) % i))
 	config.usage.infobar_timeout = ConfigSelection(default = "5", choices = choicelist)
+	if getSoCFamily().startswith("bcm"):
+		config.usage.fadeout = ConfigYesNo(default = True)
+	else:
+		config.usage.fadeout = ConfigYesNo(default = False)	
 	config.usage.show_infobar_do_dimming = ConfigYesNo(default = False)
 	config.usage.show_infobar_dimming_speed = ConfigSelectionNumber(min = 1, max = 40, stepwidth = 1, default = 40, wraparound = True)
 	config.usage.show_infobar_on_zap = ConfigYesNo(default = True)
