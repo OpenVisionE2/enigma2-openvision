@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.config import config, ConfigSlider, ConfigSubsection, ConfigYesNo, ConfigText, ConfigInteger
-from enigma import getBoxType, getBoxBrand
+from enigma import getBoxType
 from Components.SystemInfo import SystemInfo
 from fcntl import ioctl
 import os
@@ -197,11 +197,19 @@ class InitInputDevices:
 		exec(cmd)
 		cmd = "config.inputDevices." + device + ".name.addNotifier(self.inputDevicesNameChanged,config.inputDevices." + device + ".name)"
 		exec(cmd)
-		cmd = "config.inputDevices." + device + ".repeat = ConfigSlider(default=100, increment = 10, limits=(0, 500))"
+		if model in ("maram9","axodin"):
+			cmd = "config.inputDevices." + device + ".repeat = ConfigSlider(default=400, increment = 10, limits=(0, 500))"
+		elif model == "azboxhd":
+			cmd = "config.inputDevices." + device + ".repeat = ConfigSlider(default=150, increment = 10, limits=(0, 500))"
+		else:		
+			cmd = "config.inputDevices." + device + ".repeat = ConfigSlider(default=100, increment = 10, limits=(0, 500))"	
 		exec(cmd)
 		cmd = "config.inputDevices." + device + ".repeat.addNotifier(self.inputDevicesRepeatChanged,config.inputDevices." + device + ".repeat)"
 		exec(cmd)
-		cmd = "config.inputDevices." + device + ".delay = ConfigSlider(default=700, increment = 100, limits=(0, 5000))"
+		if model in ("maram9","axodin"):
+			cmd = "config.inputDevices." + device + ".delay = ConfigSlider(default=200, increment = 100, limits=(0, 5000))"
+		else:
+			cmd = "config.inputDevices." + device + ".delay = ConfigSlider(default=700, increment = 100, limits=(0, 5000))"
 		exec(cmd)
 		cmd = "config.inputDevices." + device + ".delay.addNotifier(self.inputDevicesDelayChanged,config.inputDevices." + device + ".delay)"
 		exec(cmd)
@@ -212,10 +220,11 @@ iInputDevices = inputDevices()
 
 config.plugins.remotecontroltype = ConfigSubsection()
 config.plugins.remotecontroltype.rctype = ConfigInteger(default = int(getRCType()))
+config.plugins.remotecontroltype.multirc = ConfigYesNo(default = False)
 
 class RcTypeControl():
 	def __init__(self):
-		if SystemInfo["RcTypeChangable"] and getBoxBrand() not in ("gigablue","odin","ini","entwopia","tripledot"):
+		if SystemInfo["RcTypeChangable"] and config.plugins.remotecontroltype.multirc is True:
 			self.isSupported = True
 			if config.plugins.remotecontroltype.rctype.value != 0:
 				self.writeRcType(config.plugins.remotecontroltype.rctype.value)
