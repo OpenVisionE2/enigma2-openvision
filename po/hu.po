@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-26 19:03+0430\n"
+"POT-Creation-Date: 2020-08-16 18:11+0430\n"
 "PO-Revision-Date: 2020-05-13 21:36+0200\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -1176,8 +1176,16 @@ msgstr ""
 msgid "( All readers)"
 msgstr "Minden korosztály"
 
+#, fuzzy
+msgid "(Radio)"
+msgstr " (Rádió)"
+
 msgid "(Show only reader:"
 msgstr ""
+
+#, fuzzy
+msgid "(TV)"
+msgstr " (TV)"
 
 msgid "(VU+ type)"
 msgstr "(VU+ típus)"
@@ -1223,6 +1231,11 @@ msgstr "-NINCS CSATORNA\n"
 #, python-format
 msgid "-SERVICE ERROR:%d\n"
 msgstr "-CSATORNA HIBA:%d\n"
+
+#, fuzzy
+msgctxt "Hotkey help separator"
+msgid "/"
+msgstr "/s"
 
 msgid "/s"
 msgstr "/s"
@@ -2284,6 +2297,10 @@ msgstr "Automatikus DiSEqC"
 
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Automatikus EXIF elrendezés forgatása/tükrözése"
+
+#, fuzzy
+msgid "Auto Timers"
+msgstr "Időzítő"
 
 #, fuzzy
 msgid "Auto Volume Level"
@@ -5061,6 +5078,9 @@ msgstr "Lista választás lehetősége a Multi-EPG-ben"
 msgid "Enable client mode"
 msgstr "Mozgatási mód engedélyezése"
 
+msgid "Enable fade-out functionality"
+msgstr ""
+
 msgid "Enable fallback remote receiver"
 msgstr "Tartalék távoli vevő engedélyezése"
 
@@ -6206,9 +6226,6 @@ msgstr "HD csatornák"
 msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500"
 msgstr ""
 
-msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/et7x00/et8500/VS1000/VS1500"
-msgstr ""
-
 msgid "HD2400"
 msgstr "HD2400"
 
@@ -6680,6 +6697,12 @@ msgstr "Legyen ECM a HTTP jelfolyamban"
 
 msgid "Include EIT in http streams"
 msgstr "Legyen EIT a HTTP jelfolyamban"
+
+#, python-format
+msgid ""
+"Incorrect format for skip value: '%s'\n"
+"Skip cancelled."
+msgstr ""
 
 msgid "Incorrect service type for Picture in Picture!"
 msgstr "Nem megfelelő csatorna a Kép-a-Képben módhoz!"
@@ -7339,7 +7362,7 @@ msgstr ""
 msgid "MB"
 msgstr "B"
 
-msgid "MIRACLEBOX_TWINPLUS"
+msgid "MIRACLEBOX TWINPLUS"
 msgstr ""
 
 msgid "MKUBIFS: "
@@ -7447,7 +7470,7 @@ msgstr ""
 "Gyári beállítások visszaállítása folyamatban\n"
 "Várjon, amíg az enigma2 újraindul"
 
-msgid "MaraM9"
+msgid "Mara M9"
 msgstr ""
 
 msgid "Margin after recording (minutes)"
@@ -8269,6 +8292,9 @@ msgstr "Nem-csatlakozott"
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "Nincs elég tárhely. Kérem, szabadítson fel némi helyet és próbálja meg újra. (%d MB területre lenne szükség, %d MB hely szabad jelenleg)"
 
+msgid "Not recommended for HiSilicon and Amlogic"
+msgstr ""
+
 #, fuzzy
 msgid "Not running"
 msgstr "nem fut"
@@ -8335,13 +8361,13 @@ msgstr "SMS vagy szám stílusú adatbevitel"
 msgid "NumberZapPicon"
 msgstr ""
 
+msgid "OCTAGON SF4008"
+msgstr ""
+
 msgid "OCTAGON SF5008"
 msgstr ""
 
-msgid "OCTAGON_SF4008"
-msgstr ""
-
-msgid "ODIN_M7"
+msgid "ODIN M7"
 msgstr ""
 
 msgid "OE: "
@@ -10267,9 +10293,6 @@ msgstr "Időcsúsztatás felvételének megtartása"
 
 msgid "Save timeshift file in movie directory"
 msgstr "Időcsúsztatás felvételének megtartása a felvételek mappájában"
-
-msgid "Save timeshift in movie dir and zap"
-msgstr "Időcsúsztatás felvételének megtartása a felvételek mappájában és ugrás"
 
 msgid "Save timeshift only for current event"
 msgstr "Csak ezen időcsúsztatás felvételének megtartása"
@@ -12499,6 +12522,14 @@ msgstr ""
 msgid "The %s %s stores the EPG data every (hours)."
 msgstr ""
 
+#, fuzzy
+msgid ""
+"The AutoTimer plugin is not installed!\n"
+"Please install it."
+msgstr ""
+"A vezeték nélküli bővítmény nincs telepítve!\n"
+"Kérem, telepítse."
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "A DVD szabvány nem támogatja a H.264 (HDTV) videó streamet. Szeretne ehelyett létrehozni egy speciális formátumú adat DVD-t (mely azonban nem játszható le a hagyományos lejátszókban)?"
 
@@ -13941,6 +13972,10 @@ msgstr "Virtuális Billentyűzet Szöveg:"
 msgid "Virtual keyboard"
 msgstr "Virtuális Billentyűzet"
 
+#, fuzzy
+msgid "Virtual keyboard skin"
+msgstr "Virtuális Billentyűzet"
+
 #, fuzzy, python-format
 msgid "Vol: %s"
 msgstr "Videó: %s fps"
@@ -14559,6 +14594,9 @@ msgstr "Csak ezzel a készüléktípussal felvett anyagokat lehet kiírni!"
 msgid "You can remove this plugin."
 msgstr "A bővítmény eltávolítható."
 
+msgid "You can select the skin of virtual keyboard."
+msgstr ""
+
 msgid "You cannot delete this!"
 msgstr "Ez nem törölheti le!"
 
@@ -14815,10 +14853,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Zgemma H.S/H.2S/H.2H/H5/H7"
-msgstr "Zgemma H.S/H.2S/H.2H/H5/H7(old model)"
-
-#, fuzzy
-msgid "Zgemma H.S/H.2S/H.2H/H5/H7 old model"
 msgstr "Zgemma H.S/H.2S/H.2H/H5/H7(old model)"
 
 #, fuzzy
@@ -15190,6 +15224,10 @@ msgstr "vágás kilépő pontja"
 msgid "ene"
 msgstr "Műfaj"
 
+#, fuzzy
+msgid "enigma2 default"
+msgstr "Alapértelmezett"
+
 msgid "entertainment (10-16 year old)"
 msgstr "szórakoztató (10-16 éves korosztály"
 
@@ -15220,22 +15258,18 @@ msgid "et4000"
 msgstr "et4000"
 
 #, fuzzy
-msgid "et5000/6000"
+msgid "et5000/et6000"
 msgstr "et5000/et6000"
 
 #, fuzzy
 msgid "et8000/et10000/et13000"
 msgstr "et8000/et10000"
 
-#, fuzzy
-msgid "et8000/et10000/et13000/SF5008"
-msgstr "et8000/et10000"
-
 msgid "et9000/et9100"
 msgstr "et9000/et9100"
 
 #, fuzzy
-msgid "et9200/9500/6500"
+msgid "et9200/et9500/et6500"
 msgstr "et9200/et9500/et6500"
 
 msgid "execute cuts and exit"

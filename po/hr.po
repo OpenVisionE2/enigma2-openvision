@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-26 19:03+0430\n"
+"POT-Creation-Date: 2020-08-16 18:11+0430\n"
 "PO-Revision-Date: 2020-07-25 13:40+0200\n"
 "Last-Translator: Željko <zeljko2@hi.ht.hr>\n"
 "Language-Team: Željko\n"
@@ -1188,8 +1188,16 @@ msgstr ""
 msgid "( All readers)"
 msgstr "Svi uzrasti"
 
+#, fuzzy
+msgid "(Radio)"
+msgstr " (Radio)"
+
 msgid "(Show only reader:"
 msgstr ""
+
+#, fuzzy
+msgid "(TV)"
+msgstr " (ТV)"
 
 msgid "(VU+ type)"
 msgstr "(VU+ tip)"
@@ -1235,6 +1243,11 @@ msgstr "-NEMA USLUGE\n"
 #, python-format
 msgid "-SERVICE ERROR:%d\n"
 msgstr "-GREŠKA USLUGE:%d\n"
+
+#, fuzzy
+msgctxt "Hotkey help separator"
+msgid "/"
+msgstr "/s"
 
 msgid "/s"
 msgstr "/s"
@@ -2296,6 +2309,10 @@ msgstr "Аuto Diseqc"
 
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Аuto EXIF orijentacija rotacije"
+
+#, fuzzy
+msgid "Auto Timers"
+msgstr "Tajmer"
 
 #, fuzzy
 msgid "Auto Volume Level"
@@ -5078,6 +5095,9 @@ msgstr "Omogućite odabir paketa u multi EPG-u."
 msgid "Enable client mode"
 msgstr "Omogući sortiranje kanala"
 
+msgid "Enable fade-out functionality"
+msgstr ""
+
 msgid "Enable fallback remote receiver"
 msgstr "Omogućite rezervni daljinski prijemnik"
 
@@ -6225,9 +6245,6 @@ msgstr "HD list"
 msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500"
 msgstr ""
 
-msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/et7x00/et8500/VS1000/VS1500"
-msgstr ""
-
 msgid "HD2400"
 msgstr "HD2400"
 
@@ -6698,6 +6715,12 @@ msgstr "Uključite ECM u web prijenos"
 
 msgid "Include EIT in http streams"
 msgstr "Uključite EIT u web prijenos"
+
+#, python-format
+msgid ""
+"Incorrect format for skip value: '%s'\n"
+"Skip cancelled."
+msgstr ""
 
 msgid "Incorrect service type for Picture in Picture!"
 msgstr "Pogrešan tip servisa za PiP!"
@@ -7359,7 +7382,7 @@ msgstr ""
 msgid "MB"
 msgstr "B"
 
-msgid "MIRACLEBOX_TWINPLUS"
+msgid "MIRACLEBOX TWINPLUS"
 msgstr ""
 
 msgid "MKUBIFS: "
@@ -7467,7 +7490,7 @@ msgstr ""
 "Resetiranje proizvođača u tijeku.\n"
 "Pričekajte dok se enigma2 ne restarta"
 
-msgid "MaraM9"
+msgid "Mara M9"
 msgstr ""
 
 msgid "Margin after recording (minutes)"
@@ -8289,6 +8312,9 @@ msgstr "Nije povezano"
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "Nedovoljno prostora na disku. Oslobodite prostor na disku i pokušajte ponovno. (%d MB potrebno, %d MB dostupno)"
 
+msgid "Not recommended for HiSilicon and Amlogic"
+msgstr ""
+
 #, fuzzy
 msgid "Not running"
 msgstr "nije pokrenut"
@@ -8353,13 +8379,13 @@ msgstr "Snimanje podataka u obliku broja ili SMS-a"
 msgid "NumberZapPicon"
 msgstr ""
 
+msgid "OCTAGON SF4008"
+msgstr ""
+
 msgid "OCTAGON SF5008"
 msgstr ""
 
-msgid "OCTAGON_SF4008"
-msgstr ""
-
-msgid "ODIN_M7"
+msgid "ODIN M7"
 msgstr ""
 
 msgid "OE: "
@@ -10286,9 +10312,6 @@ msgstr "Spremite vremenski pomak fajl"
 
 msgid "Save timeshift file in movie directory"
 msgstr "Spremite datoteku vremenskog pomaka u direktoriju filma"
-
-msgid "Save timeshift in movie dir and zap"
-msgstr "Spremite vremenski pomak i prebacite"
 
 msgid "Save timeshift only for current event"
 msgstr "Spremite vremenski pomak samo za trenutni događaj"
@@ -12508,6 +12531,14 @@ msgstr ""
 msgid "The %s %s stores the EPG data every (hours)."
 msgstr ""
 
+#, fuzzy
+msgid ""
+"The AutoTimer plugin is not installed!\n"
+"Please install it."
+msgstr ""
+"WLAN dodatak nije instaliran!\n"
+"Molimo instalirajte ga."
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standard ne podržava H.264 (HDTV) video web prijenos. Želite li stvoriti DVD s posebnim formatom podataka (koji se neće reproducirati u samostalnim DVD playerima)?"
 
@@ -13950,6 +13981,10 @@ msgstr "Tekst virtualne tipkovnice:"
 msgid "Virtual keyboard"
 msgstr "Virtualna tipkovnica"
 
+#, fuzzy
+msgid "Virtual keyboard skin"
+msgstr "Virtualna tipkovnica"
+
 #, fuzzy, python-format
 msgid "Vol: %s"
 msgstr "Video: %s fps"
@@ -14568,6 +14603,9 @@ msgstr "Možete snimiti samo zapise o prijemniku!"
 msgid "You can remove this plugin."
 msgstr "Možete ukloniti ovaj dodatak."
 
+msgid "You can select the skin of virtual keyboard."
+msgstr ""
+
 msgid "You cannot delete this!"
 msgstr "Ne možete to izbrisati!"
 
@@ -14823,10 +14861,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Zgemma H.S/H.2S/H.2H/H5/H7"
-msgstr "Zgemma H.S/H.2S/H.2H/H5/H7 (stari model)"
-
-#, fuzzy
-msgid "Zgemma H.S/H.2S/H.2H/H5/H7 old model"
 msgstr "Zgemma H.S/H.2S/H.2H/H5/H7 (stari model)"
 
 #, fuzzy
@@ -15198,6 +15232,10 @@ msgstr "završite izrezivanje"
 msgid "ene"
 msgstr "Žanr"
 
+#, fuzzy
+msgid "enigma2 default"
+msgstr "Postavite zadano"
+
 msgid "entertainment (10-16 year old)"
 msgstr "zabava (10-16 godina starosti)"
 
@@ -15228,22 +15266,18 @@ msgid "et4000"
 msgstr "et4000"
 
 #, fuzzy
-msgid "et5000/6000"
+msgid "et5000/et6000"
 msgstr "et5000/et6000"
 
 #, fuzzy
 msgid "et8000/et10000/et13000"
 msgstr "et8000/et10000"
 
-#, fuzzy
-msgid "et8000/et10000/et13000/SF5008"
-msgstr "et8000/et10000"
-
 msgid "et9000/et9100"
 msgstr "et9000/et9100"
 
 #, fuzzy
-msgid "et9200/9500/6500"
+msgid "et9200/et9500/et6500"
 msgstr "et9200/et9500/et6500"
 
 msgid "execute cuts and exit"

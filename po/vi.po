@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-26 19:03+0430\n"
+"POT-Creation-Date: 2020-08-16 18:11+0430\n"
 "PO-Revision-Date: 2019-11-19 08:58+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -1177,8 +1177,16 @@ msgstr ""
 msgid "( All readers)"
 msgstr "Mọi lứa tuổi"
 
+#, fuzzy
+msgid "(Radio)"
+msgstr " (Radio)"
+
 msgid "(Show only reader:"
 msgstr ""
+
+#, fuzzy
+msgid "(TV)"
+msgstr " (TV)"
 
 msgid "(VU+ type)"
 msgstr "(VU + loại)"
@@ -1224,6 +1232,11 @@ msgstr "-KHÔNG DỊCH VỤ\n"
 #, python-format
 msgid "-SERVICE ERROR:%d\n"
 msgstr "-DỊCH VỤ KHÔNG CÓ: %d\n"
+
+#, fuzzy
+msgctxt "Hotkey help separator"
+msgid "/"
+msgstr "/s"
 
 msgid "/s"
 msgstr "/s"
@@ -2285,6 +2298,10 @@ msgstr "Tự động Diseqc"
 
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Tự động xoay / lật định hướng"
+
+#, fuzzy
+msgid "Auto Timers"
+msgstr "Hẹn giờ"
 
 #, fuzzy
 msgid "Auto Volume Level"
@@ -5075,6 +5092,9 @@ msgstr "Cho phép lựa chọn gói kênh trong đa EPG"
 msgid "Enable client mode"
 msgstr "Cho phép chế độ di chuyển"
 
+msgid "Enable fade-out functionality"
+msgstr ""
+
 msgid "Enable fallback remote receiver"
 msgstr "Cho phép thu từ xa dự phòng"
 
@@ -6233,9 +6253,6 @@ msgstr "Danh sách HD"
 msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500"
 msgstr ""
 
-msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/et7x00/et8500/VS1000/VS1500"
-msgstr ""
-
 msgid "HD2400"
 msgstr "HD2400"
 
@@ -6707,6 +6724,12 @@ msgstr "Bao gồm ECM trong luồng http"
 
 msgid "Include EIT in http streams"
 msgstr "Bao gồm thuế TNDN trong các luồng http"
+
+#, python-format
+msgid ""
+"Incorrect format for skip value: '%s'\n"
+"Skip cancelled."
+msgstr ""
 
 msgid "Incorrect service type for Picture in Picture!"
 msgstr "Loại dịch vụ không chính xác cho PiP!"
@@ -7365,7 +7388,7 @@ msgstr ""
 msgid "MB"
 msgstr "B"
 
-msgid "MIRACLEBOX_TWINPLUS"
+msgid "MIRACLEBOX TWINPLUS"
 msgstr ""
 
 msgid "MKUBIFS: "
@@ -7471,7 +7494,7 @@ msgid ""
 "Please wait until enigma2 restarts"
 msgstr ""
 
-msgid "MaraM9"
+msgid "Mara M9"
 msgstr ""
 
 msgid "Margin after recording (minutes)"
@@ -8306,6 +8329,9 @@ msgstr "Không liên quan"
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "Không đủ dung lượng đĩa. Vui lòng giải phóng không gian đĩa và thử lại. (Yêu cầu%d MB,%d MB khả dụng)"
 
+msgid "Not recommended for HiSilicon and Amlogic"
+msgstr ""
+
 #, fuzzy
 msgid "Not running"
 msgstr "không chạy"
@@ -8370,13 +8396,13 @@ msgstr "Nhập dữ liệu kiểu số hoặc SMS"
 msgid "NumberZapPicon"
 msgstr ""
 
+msgid "OCTAGON SF4008"
+msgstr ""
+
 msgid "OCTAGON SF5008"
 msgstr ""
 
-msgid "OCTAGON_SF4008"
-msgstr ""
-
-msgid "ODIN_M7"
+msgid "ODIN M7"
 msgstr ""
 
 msgid "OE: "
@@ -10307,9 +10333,6 @@ msgstr "Lưu tập tin timeshift"
 
 msgid "Save timeshift file in movie directory"
 msgstr "Lưu tập tin timeshift trong thư mục phim"
-
-msgid "Save timeshift in movie dir and zap"
-msgstr "Lưu timeshift trong thư mục phim và zap"
 
 msgid "Save timeshift only for current event"
 msgstr "Chỉ lưu thời gian cho sự kiện hiện tại"
@@ -12540,6 +12563,14 @@ msgstr ""
 msgid "The %s %s stores the EPG data every (hours)."
 msgstr ""
 
+#, fuzzy
+msgid ""
+"The AutoTimer plugin is not installed!\n"
+"Please install it."
+msgstr ""
+"Plugin LAN không dây chưa được cài đặt!\n"
+"Vui lòng cài đặt nó."
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "Chuẩn DVD không hỗ trợ luồng video H.264 (HDTV). Bạn có muốn tạo một DVD dữ liệu định dạng đặc biệt (thay vào đó sẽ không phát trong các đầu DVD độc lập) không?"
 
@@ -13987,6 +14018,10 @@ msgstr "Văn bản KeyBoard ảo:"
 msgid "Virtual keyboard"
 msgstr "Bàn phím ảo"
 
+#, fuzzy
+msgid "Virtual keyboard skin"
+msgstr "Bàn phím ảo"
+
 #, fuzzy, python-format
 msgid "Vol: %s"
 msgstr "Video:%s khung hình / giây"
@@ -14608,6 +14643,9 @@ msgstr "Bạn chỉ có thể ghi bản ghi nhận!"
 msgid "You can remove this plugin."
 msgstr "Bạn có thể loại bỏ plugin này."
 
+msgid "You can select the skin of virtual keyboard."
+msgstr ""
+
 msgid "You cannot delete this!"
 msgstr "Bạn không thể xóa cái này!"
 
@@ -14862,10 +14900,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Zgemma H.S/H.2S/H.2H/H5/H7"
-msgstr "Zgemma H.S/H.2S/H.2H/H5/H7"
-
-#, fuzzy
-msgid "Zgemma H.S/H.2S/H.2H/H5/H7 old model"
 msgstr "Zgemma H.S/H.2S/H.2H/H5/H7"
 
 #, fuzzy
@@ -15237,6 +15271,10 @@ msgstr "kết thúc cắt ở đây"
 msgid "ene"
 msgstr "Thể loại"
 
+#, fuzzy
+msgid "enigma2 default"
+msgstr "Đặt mặc định"
+
 msgid "entertainment (10-16 year old)"
 msgstr "giải trí (10-16 tuổi)"
 
@@ -15267,22 +15305,18 @@ msgid "et4000"
 msgstr "et4000"
 
 #, fuzzy
-msgid "et5000/6000"
+msgid "et5000/et6000"
 msgstr "et5000/6000"
 
 #, fuzzy
 msgid "et8000/et10000/et13000"
 msgstr "et8000/et10000"
 
-#, fuzzy
-msgid "et8000/et10000/et13000/SF5008"
-msgstr "et8000/et10000"
-
 msgid "et9000/et9100"
 msgstr "et9000/et9100"
 
 #, fuzzy
-msgid "et9200/9500/6500"
+msgid "et9200/et9500/et6500"
 msgstr "et9200/9500/6500"
 
 msgid "execute cuts and exit"

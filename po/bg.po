@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-26 19:03+0430\n"
+"POT-Creation-Date: 2020-08-16 18:11+0430\n"
 "PO-Revision-Date: 2020-06-13 10:10+0300\n"
 "Last-Translator: Мартин Петков <marto74bg@yahoo.co.uk>\n"
 "Language-Team: Bulgarian\n"
@@ -1177,8 +1177,16 @@ msgstr ""
 msgid "( All readers)"
 msgstr "Всички възрасти"
 
+#, fuzzy
+msgid "(Radio)"
+msgstr " (Радио)"
+
 msgid "(Show only reader:"
 msgstr ""
+
+#, fuzzy
+msgid "(TV)"
+msgstr " (ТВ)"
 
 msgid "(VU+ type)"
 msgstr "(VU+ тип)"
@@ -1224,6 +1232,11 @@ msgstr "-НЯМА КАНАЛ\n"
 #, python-format
 msgid "-SERVICE ERROR:%d\n"
 msgstr "-ГРЕШКА ПРИ КАНАЛ:%d\n"
+
+#, fuzzy
+msgctxt "Hotkey help separator"
+msgid "/"
+msgstr "/с"
 
 msgid "/s"
 msgstr "/с"
@@ -2286,6 +2299,10 @@ msgstr "Авто Diseqc"
 
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Авто EXIF Ориентация завъртане/обръщане"
+
+#, fuzzy
+msgid "Auto Timers"
+msgstr "Таймер"
 
 #, fuzzy
 msgid "Auto Volume Level"
@@ -5069,6 +5086,9 @@ msgstr "Разреши избор на букет в multi-EPG"
 msgid "Enable client mode"
 msgstr "Включи режим преместване на канал"
 
+msgid "Enable fade-out functionality"
+msgstr ""
+
 msgid "Enable fallback remote receiver"
 msgstr "Активиране на резервен приемник"
 
@@ -6219,9 +6239,6 @@ msgstr "HD списък"
 msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500"
 msgstr ""
 
-msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/et7x00/et8500/VS1000/VS1500"
-msgstr ""
-
 msgid "HD2400"
 msgstr "HD2400"
 
@@ -6693,6 +6710,12 @@ msgstr "Включи ECM в http стриймове"
 
 msgid "Include EIT in http streams"
 msgstr "Включи EIT в http стриймове"
+
+#, python-format
+msgid ""
+"Incorrect format for skip value: '%s'\n"
+"Skip cancelled."
+msgstr ""
 
 msgid "Incorrect service type for Picture in Picture!"
 msgstr "Некоректен тип канал за PiP!"
@@ -7350,7 +7373,7 @@ msgstr ""
 msgid "MB"
 msgstr "B"
 
-msgid "MIRACLEBOX_TWINPLUS"
+msgid "MIRACLEBOX TWINPLUS"
 msgstr ""
 
 msgid "MKUBIFS: "
@@ -7458,7 +7481,7 @@ msgstr ""
 "Връщане към заводски настройки...\n"
 "Моля изчакайте докато enigma2 се рестартира"
 
-msgid "MaraM9"
+msgid "Mara M9"
 msgstr ""
 
 msgid "Margin after recording (minutes)"
@@ -8279,6 +8302,9 @@ msgstr "Не асоцииран"
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "Няма достатъчно място на диска. Моля освободете място на диска и опитайте отново. (%d MB трябват, %d MB налични)"
 
+msgid "Not recommended for HiSilicon and Amlogic"
+msgstr ""
+
 #, fuzzy
 msgid "Not running"
 msgstr "не се извършва"
@@ -8343,13 +8369,13 @@ msgstr "Въвеждане на данни в стил или номер на SM
 msgid "NumberZapPicon"
 msgstr ""
 
+msgid "OCTAGON SF4008"
+msgstr ""
+
 msgid "OCTAGON SF5008"
 msgstr ""
 
-msgid "OCTAGON_SF4008"
-msgstr ""
-
-msgid "ODIN_M7"
+msgid "ODIN M7"
 msgstr ""
 
 msgid "OE: "
@@ -10277,9 +10303,6 @@ msgstr "Запази таймшифт файла"
 
 msgid "Save timeshift file in movie directory"
 msgstr "Запази таймшифт файла във филмовата директория"
-
-msgid "Save timeshift in movie dir and zap"
-msgstr "Запази таймшифт във филмовата директория и превключи"
 
 msgid "Save timeshift only for current event"
 msgstr "Запази таймшифт само за текущото събитие"
@@ -12500,6 +12523,14 @@ msgstr ""
 msgid "The %s %s stores the EPG data every (hours)."
 msgstr ""
 
+#, fuzzy
+msgid ""
+"The AutoTimer plugin is not installed!\n"
+"Please install it."
+msgstr ""
+"Плъгинът за безжична LAN не е инсталиран!\n"
+"Моля инсталирайте го."
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD стандарта не поддържа H.264 (HDTV) видео стриймове. Искате ли да създадете специален формат DVD (който няма да може да се възпроизвежда в стандартни DVD плейъри)?"
 
@@ -13936,6 +13967,10 @@ msgstr "Виртуална клавиатура Текст:"
 msgid "Virtual keyboard"
 msgstr "Виртуална клавиатура"
 
+#, fuzzy
+msgid "Virtual keyboard skin"
+msgstr "Виртуална клавиатура"
+
 #, fuzzy, python-format
 msgid "Vol: %s"
 msgstr "Видео: %s fps"
@@ -14554,6 +14589,9 @@ msgstr "Можете да записвате(на диск) само запис�
 msgid "You can remove this plugin."
 msgstr "Можете да премахнете този плъгин."
 
+msgid "You can select the skin of virtual keyboard."
+msgstr ""
+
 msgid "You cannot delete this!"
 msgstr "Не може да го изтриете!"
 
@@ -14809,10 +14847,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Zgemma H.S/H.2S/H.2H/H5/H7"
-msgstr "Zgemma H.S/H.2S/H.2H/H5/H7(стар модел)"
-
-#, fuzzy
-msgid "Zgemma H.S/H.2S/H.2H/H5/H7 old model"
 msgstr "Zgemma H.S/H.2S/H.2H/H5/H7(стар модел)"
 
 #, fuzzy
@@ -15184,6 +15218,10 @@ msgstr "край на изрязването тук"
 msgid "ene"
 msgstr "Жанр"
 
+#, fuzzy
+msgid "enigma2 default"
+msgstr "Задаване по подразбиране"
+
 msgid "entertainment (10-16 year old)"
 msgstr "развлечение (10-16 год)"
 
@@ -15214,22 +15252,18 @@ msgid "et4000"
 msgstr "et4000"
 
 #, fuzzy
-msgid "et5000/6000"
+msgid "et5000/et6000"
 msgstr "et5000/et6000"
 
 #, fuzzy
 msgid "et8000/et10000/et13000"
 msgstr "et8000/et10000"
 
-#, fuzzy
-msgid "et8000/et10000/et13000/SF5008"
-msgstr "et8000/et10000"
-
 msgid "et9000/et9100"
 msgstr "et9000/et9100"
 
 #, fuzzy
-msgid "et9200/9500/6500"
+msgid "et9200/et9500/et6500"
 msgstr "et9200/et9500/et6500"
 
 msgid "execute cuts and exit"

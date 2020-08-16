@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-26 19:03+0430\n"
+"POT-Creation-Date: 2020-08-16 18:11+0430\n"
 "PO-Revision-Date: 2020-07-06 20:46+0200\n"
 "Last-Translator: Jose Juan <jzapater@gmail.com>\n"
 "Language-Team: ANGELODOS  angelo2807@hotmail.com\n"
@@ -1204,8 +1204,16 @@ msgstr ""
 msgid "( All readers)"
 msgstr "Todas las edades"
 
+#, fuzzy
+msgid "(Radio)"
+msgstr " (Radio)"
+
 msgid "(Show only reader:"
 msgstr ""
+
+#, fuzzy
+msgid "(TV)"
+msgstr " (TV)"
 
 msgid "(VU+ type)"
 msgstr "(tipo VU+)"
@@ -1256,6 +1264,11 @@ msgstr "-NO SERVICIO\n"
 #, python-format
 msgid "-SERVICE ERROR:%d\n"
 msgstr "-SERVICIO ERROR:% d\n"
+
+#, fuzzy
+msgctxt "Hotkey help separator"
+msgid "/"
+msgstr "/s"
 
 msgid "/s"
 msgstr "/s"
@@ -2458,6 +2471,11 @@ msgstr "Diseqc automatico"
 
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "EXIF automatico del la orientacion de la reotacion/flipping"
+
+#
+#, fuzzy
+msgid "Auto Timers"
+msgstr "Grabación"
 
 #, fuzzy
 msgid "Auto Volume Level"
@@ -5523,6 +5541,9 @@ msgstr "Habilitar selección de ramo en multi-EPG"
 msgid "Enable client mode"
 msgstr "Habilitar modo movimiento"
 
+msgid "Enable fade-out functionality"
+msgstr ""
+
 msgid "Enable fallback remote receiver"
 msgstr "Habilitar receptor remoto de fallback"
 
@@ -6782,9 +6803,6 @@ msgstr "Lista de alta definición"
 msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500"
 msgstr ""
 
-msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/et7x00/et8500/VS1000/VS1500"
-msgstr ""
-
 msgid "HD2400"
 msgstr "HD2400"
 
@@ -7281,6 +7299,12 @@ msgstr "Incluir ECM en los flujos http"
 
 msgid "Include EIT in http streams"
 msgstr "Incluir EIT en los flujos http"
+
+#, python-format
+msgid ""
+"Incorrect format for skip value: '%s'\n"
+"Skip cancelled."
+msgstr ""
 
 msgid "Incorrect service type for Picture in Picture!"
 msgstr "¡Tipo de servicio incorrecto para Picture in Picture!"
@@ -8030,7 +8054,7 @@ msgstr ""
 msgid "MB"
 msgstr "B"
 
-msgid "MIRACLEBOX_TWINPLUS"
+msgid "MIRACLEBOX TWINPLUS"
 msgstr ""
 
 msgid "MKUBIFS: "
@@ -8152,7 +8176,7 @@ msgstr ""
 "Reinicio del fabricante en progreso\n"
 "Por favor espere hasta que se reinicie enigma2"
 
-msgid "MaraM9"
+msgid "Mara M9"
 msgstr ""
 
 #
@@ -9083,6 +9107,9 @@ msgstr "No asociado"
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "No hay suficiente espacio en el disco. Libere espacio en disco e inténtelo de nuevo. (% d MB requerido,% d MB disponible)"
 
+msgid "Not recommended for HiSilicon and Amlogic"
+msgstr ""
+
 #, fuzzy
 msgid "Not running"
 msgstr "no corras"
@@ -9152,13 +9179,13 @@ msgstr "Ingreso de datos de número o estilo SMS"
 msgid "NumberZapPicon"
 msgstr ""
 
+msgid "OCTAGON SF4008"
+msgstr ""
+
 msgid "OCTAGON SF5008"
 msgstr ""
 
-msgid "OCTAGON_SF4008"
-msgstr ""
-
-msgid "ODIN_M7"
+msgid "ODIN M7"
 msgstr ""
 
 msgid "OE: "
@@ -11322,9 +11349,6 @@ msgstr "Guardar archivo timeshift"
 
 msgid "Save timeshift file in movie directory"
 msgstr "Guardar archivo timeshift en el directorio de la película"
-
-msgid "Save timeshift in movie dir and zap"
-msgstr "Ahorro de tiempo en películas dir y zap"
 
 msgid "Save timeshift only for current event"
 msgstr "Ahorro de tiempo sólo para el evento actual"
@@ -13767,6 +13791,15 @@ msgstr ""
 msgid "The %s %s stores the EPG data every (hours)."
 msgstr ""
 
+#
+#, fuzzy
+msgid ""
+"The AutoTimer plugin is not installed!\n"
+"Please install it."
+msgstr ""
+"El plugin de la red inalámbrica no ha sido instalado!\n"
+"Por favor, instálelo."
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "El estándar de DVD no admite flujos de vídeo H.264 (HDTV). ¿Desea crear un DVD de datos de formato especial (que no se reproducirá en los reproductores de DVD independientes)?"
 
@@ -15366,6 +15399,11 @@ msgstr "Funciones del teclado virtual"
 msgid "Virtual keyboard"
 msgstr "Teclado virtual"
 
+#
+#, fuzzy
+msgid "Virtual keyboard skin"
+msgstr "Teclado virtual"
+
 #, fuzzy, python-format
 msgid "Vol: %s"
 msgstr "Vídeo:% s fps"
@@ -16025,6 +16063,9 @@ msgstr "Sólo puede grabar grabaciones de receptor!"
 msgid "You can remove this plugin."
 msgstr "Usted puede desinstalar el plugin."
 
+msgid "You can select the skin of virtual keyboard."
+msgstr ""
+
 #
 msgid "You cannot delete this!"
 msgstr "¡No puede borrar esto!"
@@ -16287,10 +16328,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Zgemma H.S/H.2S/H.2H/H5/H7"
-msgstr "Zgemma H.S/H.2S/H.2H/H5/H7(old model)"
-
-#, fuzzy
-msgid "Zgemma H.S/H.2S/H.2H/H5/H7 old model"
 msgstr "Zgemma H.S/H.2S/H.2H/H5/H7(old model)"
 
 #, fuzzy
@@ -16708,6 +16745,10 @@ msgstr "terminar corte aquí"
 msgid "ene"
 msgstr "Género"
 
+#, fuzzy
+msgid "enigma2 default"
+msgstr "Establecer predeterminado"
+
 msgid "entertainment (10-16 year old)"
 msgstr "Entretenimiento (10-16 años)"
 
@@ -16739,22 +16780,18 @@ msgid "et4000"
 msgstr "et4000"
 
 #, fuzzy
-msgid "et5000/6000"
+msgid "et5000/et6000"
 msgstr "et5000/et6000"
 
 #, fuzzy
 msgid "et8000/et10000/et13000"
 msgstr "et8000/et10000"
 
-#, fuzzy
-msgid "et8000/et10000/et13000/SF5008"
-msgstr "et8000/et10000"
-
 msgid "et9000/et9100"
 msgstr "et9000/et9100"
 
 #, fuzzy
-msgid "et9200/9500/6500"
+msgid "et9200/et9500/et6500"
 msgstr "et9200/et9500/et6500"
 
 msgid "execute cuts and exit"

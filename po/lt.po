@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-26 19:03+0430\n"
+"POT-Creation-Date: 2020-08-16 18:11+0430\n"
 "PO-Revision-Date: 2020-06-30 23:30+0300\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -1068,8 +1068,16 @@ msgstr ""
 msgid "( All readers)"
 msgstr "( Visi skaitytojai)"
 
+#, fuzzy
+msgid "(Radio)"
+msgstr " (Radijas)"
+
 msgid "(Show only reader:"
 msgstr "(rodyti tik skaitytoją:"
+
+#, fuzzy
+msgid "(TV)"
+msgstr " (TV)"
 
 msgid "(VU+ type)"
 msgstr "(VU+ tipas)"
@@ -1114,6 +1122,11 @@ msgstr "-KANALO NĖRA\n"
 #, python-format
 msgid "-SERVICE ERROR:%d\n"
 msgstr "-KANALO KLAIDA:%d\n"
+
+#, fuzzy
+msgctxt "Hotkey help separator"
+msgid "/"
+msgstr "/s"
 
 msgid "/s"
 msgstr "/s"
@@ -2131,6 +2144,10 @@ msgstr "Automatinis Diseqc"
 
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Automatinis EXIF ​​orientacijos pasukimas/keitimas"
+
+#, fuzzy
+msgid "Auto Timers"
+msgstr "Laikmačiai"
 
 msgid "Auto Volume Level"
 msgstr "Automatinis garso lygis"
@@ -4810,6 +4827,9 @@ msgstr "Įjungti paketų pasirinkimą multi-EPG režime"
 msgid "Enable client mode"
 msgstr "Įjungti kliento režimą"
 
+msgid "Enable fade-out functionality"
+msgstr ""
+
 msgid "Enable fallback remote receiver"
 msgstr "Įjungti atsarginį nuotolinį imtuvą"
 
@@ -5916,9 +5936,6 @@ msgstr "HD sąrašas"
 msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500"
 msgstr "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500"
 
-msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/et7x00/et8500/VS1000/VS1500"
-msgstr "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/et7x00/et8500/VS1000/VS1500"
-
 msgid "HD2400"
 msgstr "HD2400"
 
@@ -6373,6 +6390,12 @@ msgstr "Į http transliaciją įtraukti ECM"
 
 msgid "Include EIT in http streams"
 msgstr "Į http transliaciją įtraukti EIT"
+
+#, python-format
+msgid ""
+"Incorrect format for skip value: '%s'\n"
+"Skip cancelled."
+msgstr ""
 
 msgid "Incorrect service type for Picture in Picture!"
 msgstr "Nesuderinamas su PiP kanalas!"
@@ -6999,7 +7022,8 @@ msgstr "MAC:"
 msgid "MB"
 msgstr "MB"
 
-msgid "MIRACLEBOX_TWINPLUS"
+#, fuzzy
+msgid "MIRACLEBOX TWINPLUS"
 msgstr "MIRACLEBOX_TWINPLUS"
 
 msgid "MKUBIFS: "
@@ -7105,7 +7129,8 @@ msgstr ""
 "Vykdomi gamintojo nustatymai iš naujo\n"
 "Prašome laukti, kol enigma2 pasileis iš naujo"
 
-msgid "MaraM9"
+#, fuzzy
+msgid "Mara M9"
 msgstr "MaraM9"
 
 msgid "Margin after recording (minutes)"
@@ -7892,6 +7917,9 @@ msgstr "Nesusieta"
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "Diske nepakanka vietos. Atlaisvinkite vietos diske ir bandykite dar kartą (reikia %d MB, laisva %d MB)"
 
+msgid "Not recommended for HiSilicon and Amlogic"
+msgstr ""
+
 msgid "Not running"
 msgstr "Neveikia"
 
@@ -7951,13 +7979,15 @@ msgstr "Skaičių ar SMS stiliaus duomenų įvedimas"
 msgid "NumberZapPicon"
 msgstr "NumberZapPicon"
 
+#, fuzzy
+msgid "OCTAGON SF4008"
+msgstr "OCTAGON SF5008"
+
 msgid "OCTAGON SF5008"
 msgstr "OCTAGON SF5008"
 
-msgid "OCTAGON_SF4008"
-msgstr "OCTAGON_SF4008"
-
-msgid "ODIN_M7"
+#, fuzzy
+msgid "ODIN M7"
 msgstr "ODIN_M7"
 
 msgid "OE: "
@@ -9815,9 +9845,6 @@ msgstr "Išsaugoti laiko poslinkį į failą"
 
 msgid "Save timeshift file in movie directory"
 msgstr "Išsaugoti laiko poslinkio failą filmų kataloge"
-
-msgid "Save timeshift in movie dir and zap"
-msgstr "Išsaugoti laiko poslinkį filmų kataloge ir perjungti"
 
 msgid "Save timeshift only for current event"
 msgstr "Išsaugoti laiko poslinkį tik šiam įvykiui"
@@ -11963,6 +11990,14 @@ msgstr "%s %s skaito saugomus EPG duomenis kas (val)."
 msgid "The %s %s stores the EPG data every (hours)."
 msgstr "%s %s išsaugo EPG duomenis kas (val.)."
 
+#, fuzzy
+msgid ""
+"The AutoTimer plugin is not installed!\n"
+"Please install it."
+msgstr ""
+"Bevielio tinklo programa neįdiegta!\n"
+"Prašome įdiegti tai."
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standartas nesupranta H.264 (HDTV) vaizdo srauto. Todėl vietoje to gal geriau sukurti STB formato duomenų DVD (bet šis pasileis NE visuose DVD grotuvuose)?"
 
@@ -13371,6 +13406,10 @@ msgstr "Virtualus klaviatūros tekstas:"
 msgid "Virtual keyboard"
 msgstr "Virtuali klaviatūra"
 
+#, fuzzy
+msgid "Virtual keyboard skin"
+msgstr "Virtuali klaviatūra"
+
 #, python-format
 msgid "Vol: %s"
 msgstr "Gars: %s"
@@ -13975,6 +14014,9 @@ msgstr "Jūs galite įrašyti tik imtuvo įrašus!"
 msgid "You can remove this plugin."
 msgstr "Jūs galite pašalinti šį priedą."
 
+msgid "You can select the skin of virtual keyboard."
+msgstr ""
+
 msgid "You cannot delete this!"
 msgstr "Jūs negalite to ištrinti!"
 
@@ -14225,9 +14267,6 @@ msgstr "ZeroTierVPN"
 
 msgid "Zgemma H.S/H.2S/H.2H/H5/H7"
 msgstr "Zgemma H.S/H.2S/H.2H/H5/H7"
-
-msgid "Zgemma H.S/H.2S/H.2H/H5/H7 old model"
-msgstr "Zgemma H.S/H.2S/H.2H/H5/H7 senas modelis"
 
 msgid "Zgemma H9/I55Plus old model"
 msgstr "Zgemma H9/I55Plus senas modelis"
@@ -14578,6 +14617,10 @@ msgstr "čia iškirpti (atstatyti)"
 msgid "ene"
 msgstr "ršr"
 
+#, fuzzy
+msgid "enigma2 default"
+msgstr "Nustatykite numatytuoju"
+
 msgid "entertainment (10-16 year old)"
 msgstr "pramogos (10-16 metų vaikams)"
 
@@ -14605,19 +14648,18 @@ msgstr "rpr"
 msgid "et4000"
 msgstr "et4000"
 
-msgid "et5000/6000"
+#, fuzzy
+msgid "et5000/et6000"
 msgstr "et5000/6000"
 
 msgid "et8000/et10000/et13000"
 msgstr "et8000/et10000/et13000"
 
-msgid "et8000/et10000/et13000/SF5008"
-msgstr "et8000/et10000/et13000/SF5008"
-
 msgid "et9000/et9100"
 msgstr "et9000/et9100"
 
-msgid "et9200/9500/6500"
+#, fuzzy
+msgid "et9200/et9500/et6500"
 msgstr "et9200/9500/6500"
 
 msgid "execute cuts and exit"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-26 19:03+0430\n"
+"POT-Creation-Date: 2020-08-16 18:11+0430\n"
 "PO-Revision-Date: 2020-05-12 14:02+0200\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -1189,8 +1189,16 @@ msgstr ""
 msgid "( All readers)"
 msgstr "Všetky vekové kategórie"
 
+#, fuzzy
+msgid "(Radio)"
+msgstr " (Rádio)"
+
 msgid "(Show only reader:"
 msgstr ""
+
+#, fuzzy
+msgid "(TV)"
+msgstr " (TV)"
 
 msgid "(VU+ type)"
 msgstr "(Typ VU+)"
@@ -1236,6 +1244,11 @@ msgstr "-ŽIADNA STANICA\n"
 #, python-format
 msgid "-SERVICE ERROR:%d\n"
 msgstr "-CHYBA PRENOSU:%d\n"
+
+#, fuzzy
+msgctxt "Hotkey help separator"
+msgid "/"
+msgstr "/s"
 
 msgid "/s"
 msgstr "/s"
@@ -2296,6 +2309,10 @@ msgstr "Auto DiSEqC"
 
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Automatická EXIF rotácia orientácie /preklopenie"
+
+#, fuzzy
+msgid "Auto Timers"
+msgstr "Časovač"
 
 #, fuzzy
 msgid "Auto Volume Level"
@@ -5078,6 +5095,9 @@ msgstr "Povoliť výber prehľadu v multi EPG"
 msgid "Enable client mode"
 msgstr "Zapnúť presun"
 
+msgid "Enable fade-out functionality"
+msgstr ""
+
 msgid "Enable fallback remote receiver"
 msgstr "Povoliť záložný vzdialený prijímač"
 
@@ -6227,9 +6247,6 @@ msgstr "Zoznam HD"
 msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/VS1000/VS1500"
 msgstr ""
 
-msgid "HD11/HD51/HD1100/HD1200/HD1265/HD1500/HD500C/HD530C/et7x00/et8500/VS1000/VS1500"
-msgstr ""
-
 msgid "HD2400"
 msgstr "HD2400"
 
@@ -6701,6 +6718,12 @@ msgstr "Zahrnúť ECM do http streamov"
 
 msgid "Include EIT in http streams"
 msgstr "Zahrnúť EIT (EPG) do http streamov"
+
+#, python-format
+msgid ""
+"Incorrect format for skip value: '%s'\n"
+"Skip cancelled."
+msgstr ""
 
 msgid "Incorrect service type for Picture in Picture!"
 msgstr "Nesprávny typ služby pre PiP!"
@@ -7361,7 +7384,7 @@ msgstr ""
 msgid "MB"
 msgstr "B"
 
-msgid "MIRACLEBOX_TWINPLUS"
+msgid "MIRACLEBOX TWINPLUS"
 msgstr ""
 
 msgid "MKUBIFS: "
@@ -7469,7 +7492,7 @@ msgstr ""
 "Prebieha resetovanie výrobných nastavení\n"
 "Prosím čakajte do reštartu systému (enigma2)"
 
-msgid "MaraM9"
+msgid "Mara M9"
 msgstr ""
 
 msgid "Margin after recording (minutes)"
@@ -8291,6 +8314,9 @@ msgstr "Nepriradené"
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "Nie je dostatok miesta na disku. Uvoľnite miesto na disku a a skúste to znova. (Potrebných je %d MB, ale voľných je iba %d MB.)"
 
+msgid "Not recommended for HiSilicon and Amlogic"
+msgstr ""
+
 #, fuzzy
 msgid "Not running"
 msgstr "nebeží"
@@ -8355,13 +8381,13 @@ msgstr "Vstupné údaje číslo alebo štýl SMS"
 msgid "NumberZapPicon"
 msgstr ""
 
+msgid "OCTAGON SF4008"
+msgstr ""
+
 msgid "OCTAGON SF5008"
 msgstr ""
 
-msgid "OCTAGON_SF4008"
-msgstr ""
-
-msgid "ODIN_M7"
+msgid "ODIN M7"
 msgstr ""
 
 msgid "OE: "
@@ -10287,9 +10313,6 @@ msgstr "Uloženie súboru časového posunu"
 
 msgid "Save timeshift file in movie directory"
 msgstr "Uložiť súbor časového posunu do priečinka filmov"
-
-msgid "Save timeshift in movie dir and zap"
-msgstr "Uložiť súbor časového posunu do priečinka filmov a prepnúť"
 
 msgid "Save timeshift only for current event"
 msgstr "Uložiť súbor časového posunu iba pre aktuálnu reláciu"
@@ -12519,6 +12542,14 @@ msgstr ""
 msgid "The %s %s stores the EPG data every (hours)."
 msgstr ""
 
+#, fuzzy
+msgid ""
+"The AutoTimer plugin is not installed!\n"
+"Please install it."
+msgstr ""
+"Doplnok bezdrôtovej LAN nie je nainštalovaný!\n"
+"Prosím, nainštalujte ho."
+
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "Štandard DVD nepodporuje H.264 (HDTV) video streamy. Chcete vytvoriť špeciálny formát dátového disku DVD (ktorý sa nebude dať prehrať v klasických DVD prehrávačoch)?"
 
@@ -13961,6 +13992,10 @@ msgstr "Text virtuálnej klávesnice:"
 msgid "Virtual keyboard"
 msgstr "Virtuálna klávesnica"
 
+#, fuzzy
+msgid "Virtual keyboard skin"
+msgstr "Virtuálna klávesnica"
+
 #, fuzzy, python-format
 msgid "Vol: %s"
 msgstr "Video: %s fps"
@@ -14582,6 +14617,9 @@ msgstr "Môžete napáliť iba nahrávky z prijímača!"
 msgid "You can remove this plugin."
 msgstr "Tento doplnok môžete odstrániť."
 
+msgid "You can select the skin of virtual keyboard."
+msgstr ""
+
 msgid "You cannot delete this!"
 msgstr "Toto nemôžete zmazať!"
 
@@ -14838,10 +14876,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Zgemma H.S/H.2S/H.2H/H5/H7"
-msgstr "Zgemma H.S/H.2S/H.2H/H5/H7(starý model)"
-
-#, fuzzy
-msgid "Zgemma H.S/H.2S/H.2H/H5/H7 old model"
 msgstr "Zgemma H.S/H.2S/H.2H/H5/H7(starý model)"
 
 #, fuzzy
@@ -15213,6 +15247,10 @@ msgstr "strih končí tu"
 msgid "ene"
 msgstr "Žáner"
 
+#, fuzzy
+msgid "enigma2 default"
+msgstr "Nastaviť predvolené"
+
 msgid "entertainment (10-16 year old)"
 msgstr "zábavný (10 až 16 rokov)"
 
@@ -15243,22 +15281,18 @@ msgid "et4000"
 msgstr "et4000"
 
 #, fuzzy
-msgid "et5000/6000"
+msgid "et5000/et6000"
 msgstr "et5000/et6000"
 
 #, fuzzy
 msgid "et8000/et10000/et13000"
 msgstr "et8000/et10000"
 
-#, fuzzy
-msgid "et8000/et10000/et13000/SF5008"
-msgstr "et8000/et10000"
-
 msgid "et9000/et9100"
 msgstr "et9000/et9100"
 
 #, fuzzy
-msgid "et9200/9500/6500"
+msgid "et9200/et9500/et6500"
 msgstr "et9200/et9500/et6500"
 
 msgid "execute cuts and exit"
