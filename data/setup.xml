@@ -259,6 +259,7 @@
 	</setup>
 	<setup key="keyboard" title="Keyboard setup">
 		<item level="0" text="Keyboard map">config.keyboard.keymap</item>
+		<item level="0" text="Multi remote control support" description="Let you change RC type but use it with care." requires="RcTypeChangable">config.plugins.remotecontroltype.multirc</item>
 	</setup>
 	<setup key="osd" title="OSD settings">
 		<item text="Alpha">config.osd.alpha</item>
@@ -344,6 +345,5 @@
 	<setup key="wizardsetup" title="Wizard setup">
 		<item level="0" text="Setup mode" description="Configure which access level to use for the configuration menu. Expert level gives access to all items.">config.usage.setup_level</item>
 		<item level="0" text="Enable HDMI-CEC" description="When enabled, HDMI-CEC is enabled with standard configuration" requires="HasHDMI-CEC">config.hdmicec.enabled</item>
-		<item level="0" text="Multi remote control support" description="Let you change RC type but use it with care." requires="RcTypeChangable">config.plugins.remotecontroltype.multirc</item>
 	</setup>
 </setupxml>
