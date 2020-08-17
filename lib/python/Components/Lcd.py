@@ -268,7 +268,7 @@ def standbyCounterChanged(configElement):
 	config.lcd.ledbrightnessdeepstandby.apply()
 
 def InitLcd():
-	if SystemInfo["VFDSymbol"] or model in ("force4","viperslim","lunix4k","vipert2c","evoslimse","evoslimt2c","evoslim","ultrabox","i55","dm520","hd11","sf98","et7000mini","xpeedc","beyonwizt2","gb800se","gb800solo","gb800seplus","gbultrase","gbipbox","tmsingle","tmnano2super","iqonios300hd","iqonios300hdv2","optimussos1plus","optimussos1","vusolo","et4x00","et5x00","et6x00","gbx1","gbx2","gbx3","gbx34k","gbx3h"):
+	if SystemInfo["VFDSymbol"] or model in ("force4","viperslim","lunix4k","vipert2c","evoslimse","evoslimt2c","evoslim","ultrabox","i55","dm520","hd11","sf98","et7000mini","xpeedc","beyonwizt2","gb800se","gb800solo","gb800seplus","gbultrase","gbipbox","tmsingle","tmnano2super","iqonios300hd","iqonios300hdv2","optimussos1plus","optimussos1","vusolo","et4x00","et5x00","et6x00","gbx1","gbx2","gbx3","gbx34k","gbx3h","novaip"):
 		detected = False
 	else:
 		detected = eDBoxLCD.getInstance().detected()
@@ -483,7 +483,7 @@ def InitLcd():
 		else:
 			config.lcd.contrast = ConfigNothing()
 
-		if model in ("h3","ebox5000","ebox5100","sh1","spycat"):
+		if model in ("h3","ebox5000","ebox5100","sh1","spycat","novacombo","novatwin"):
 			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 4))
 			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 4))
 			config.lcd.bright = ConfigSlider(default=4, limits=(0, 4))
