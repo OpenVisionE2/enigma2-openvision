@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from keyids import KEYIDS
-from Components.config import config
-from Components.RcModel import rc_model
+from boxbranding import getRCType
 
 keyBindings = {}
 
@@ -366,17 +366,14 @@ def queryKeyBinding(context, action):
 		return []
 
 def getKeyDescription(key):
-	if rc_model.rcIsDefault():
-		idx = config.misc.rcused.value
+	rcType = getRCType()
+	print("[KeyBindings] RC type is:", rcType)
+	if rcType == 14:  # XP1000
+		idx = 3
+	elif rcType == 18:  # F1
+		idx = 4
 	else:
-		rcType = config.plugins.remotecontroltype.rctype.value
-		# rcType = config.misc.inputdevices.rcType.value
-		if rcType == 14:  # XP1000
-			idx = 3
-		elif rcType == 18:  # F1
-			idx = 4
-		else:
-			idx = 2
+		idx = 2
 	return keyDescriptions[idx].get(key)
 
 def getKeyBindingKeys(filterfn=lambda key: True):

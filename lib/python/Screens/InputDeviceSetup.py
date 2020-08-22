@@ -90,16 +90,10 @@ class InputDeviceSelection(Screen,HelpableScreen):
 		enabled = iInputDevices.getDeviceAttribute(device, 'enabled')
 
 		if type == 'remote':
-			if config.misc.rcused.value == 0:
-				if enabled:
-					devicepng = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/input_rcnew-configured.png"))
-				else:
-					devicepng = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/input_rcnew.png"))
+			if enabled:
+				devicepng = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/input_rcnew-configured.png"))
 			else:
-				if enabled:
-					devicepng = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/input_rcold-configured.png"))
-				else:
-					devicepng = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/input_rcold.png"))
+				devicepng = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/input_rcnew.png"))
 		elif type == 'keyboard':
 			if enabled:
 				devicepng = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/input_keyboard-configured.png"))

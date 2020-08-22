@@ -5,7 +5,6 @@ from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Screens.WizardLanguage import WizardLanguage
 from Screens.Rc import Rc
-from enigma import getBoxType
 try:
 	from Plugins.SystemPlugins.OSDPositionSetup.overscanwizard import OverscanWizard
 except:
@@ -31,13 +30,6 @@ class StartWizard(WizardLanguage, Rc):
 		self["wizard"] = Pixmap()
 
 	def markDone(self):
-		# setup remote control, all stb have same settings except dm8000 which uses a different settings
-		if getBoxType() == "dm8000":
-			config.misc.rcused.value = 0
-		else:
-			config.misc.rcused.value = 1
-		config.misc.rcused.save()
-
 		config.misc.firstrun.value = 0
 		config.misc.firstrun.save()
 		configfile.save()

@@ -618,9 +618,9 @@ class PowerTimer(timer.Timer):
 		if entry.state != entry.StateEnded:
 			self.timeChanged(entry)
 
-# 		print "state: ", entry.state
-# 		print "in processed: ", entry in self.processed_timers
-# 		print "in running: ", entry in self.timer_list
+# 		print("state: ", entry.state)
+# 		print("in processed: ", entry in self.processed_timers)
+# 		print("in running: ", entry in self.timer_list)
 		# disable timer first
 		if entry.state != 3:
 			entry.disable()
