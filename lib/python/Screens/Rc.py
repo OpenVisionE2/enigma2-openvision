@@ -55,7 +55,13 @@ class Rc:
 		self["rc"].show()
 
 	def selectKey(self, key):
-		rc = self.rcs[2]
+		try:
+			rc = self.rcs[2]
+		except:
+			try:
+				rc = self.rcs[1]
+			except:
+				rc = self.rcs[0]
 		if key in rc:
 			rcpos = self["rc"].getPosition()
 			pos = rc[key]
