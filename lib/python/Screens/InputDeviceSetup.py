@@ -355,7 +355,7 @@ class RemoteControlType(Screen, ConfigListScreen):
 		self.getDefaultRcType()
 
 	def getDefaultRcType(self):
-		self.defaultRcType = getRCType()
+		self.defaultRcType = int(getRCType())
 		if self.defaultRcType == 0:
 			self.defaultRcType = iRcTypeControl.readRcType()
 
