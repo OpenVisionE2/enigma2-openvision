@@ -5,6 +5,7 @@ from Components.Pixmap import MovingPixmap, MultiPixmap
 from Tools.Directories import resolveFilename, SCOPE_SKIN
 from xml.etree.ElementTree import ElementTree
 from Components.RcModel import rc_model
+from boxbranding import getRCIDNum
 
 class Rc:
 	def __init__(self):
@@ -55,13 +56,8 @@ class Rc:
 		self["rc"].show()
 
 	def selectKey(self, key):
-		try:
-			rc = self.rcs[2]
-		except:
-			try:
-				rc = self.rcs[1]
-			except:
-				rc = self.rcs[0]
+		rcidnunber = int(getRCIDNum())
+		rc = self.rcs[rcidnunber]
 		if key in rc:
 			rcpos = self["rc"].getPosition()
 			pos = rc[key]
