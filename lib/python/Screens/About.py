@@ -57,15 +57,6 @@ class About(Screen):
 
 		AboutText += _("Brand/Meta: ") + getBoxBrand() + "\n"
 
-		boxrctype = getBoxRCType()
-		if boxrctype is not None and boxrctype != "unknown":
-			AboutText += _("RC type: ") + boxrctype + "\n"
-		if boxrctype is not None and boxrctype == "unknown":
-			if fileExists("/usr/bin/remotecfg"):
-				AboutText += _("RC type: ") + _("Amlogic remote") + "\n"
-			elif fileExists("/usr/sbin/lircd"):
-				AboutText += _("RC type: ") + _("LIRC remote") + "\n"
-
 		AboutText += "\n"
 		cpu = about.getCPUInfoString()
 		AboutText += _("CPU: ") + cpu + "\n"
@@ -237,6 +228,21 @@ class OpenVisionInformation(Screen):
 
 		OpenVisionInformationText += _("Open Vision module: ") + about.getVisionModule() + "\n"
 		OpenVisionInformationText += _("Flash type: ") + about.getFlashType() + "\n"
+
+		OpenVisionInformationText += "\n"
+
+		boxrctype = getBoxRCType()
+		if boxrctype is not None and boxrctype != "unknown":
+			OpenVisionInformationText += _("Factory RC type: ") + boxrctype + "\n"
+		if boxrctype is not None and boxrctype == "unknown":
+			if fileExists("/usr/bin/remotecfg"):
+				OpenVisionInformationText += _("RC type: ") + _("Amlogic remote") + "\n"
+			elif fileExists("/usr/sbin/lircd"):
+				OpenVisionInformationText += _("RC type: ") + _("LIRC remote") + "\n"
+
+		OpenVisionInformationText += _("Open Vision RC type: ") + boxbranding.getRCType() + "\n"
+		OpenVisionInformationText += _("Open Vision RC name: ") + boxbranding.getRCName() + "\n"
+		OpenVisionInformationText += _("Open Vision RC ID number: ") + boxbranding.getRCIDNum() + "\n"
 
 		OpenVisionInformationText += "\n"
 

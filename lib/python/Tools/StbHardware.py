@@ -7,15 +7,13 @@ from struct import pack, unpack
 from time import time, localtime
 from enigma import getBoxType, getBoxBrand
 from Tools.Directories import fileExists
-from boxbranding import getMachineBuild, getRCType
+from boxbranding import getMachineBuild
 
 def getBoxProcType():
 	procmodeltype = "unknown"
 	try:
 		if fileExists("/proc/stb/info/type"):
 			procmodeltype = open("/proc/stb/info/type", "r").readline().strip().lower()
-		else:
-			procmodeltype = getRCType()
 	except IOError:
 		print("[StbHardware] getBoxProcType failed!")
 	return procmodeltype
@@ -26,7 +24,7 @@ def getBoxProc():
 		if fileExists("/proc/stb/info/hwmodel"):
 			procmodel = open("/proc/stb/info/hwmodel", "r").readline().strip().lower()
 		elif fileExists("/proc/stb/info/azmodel"):
-			procmodel = open("/proc/stb/info/azmodel", "r").readline().strip().lower()
+			procmodel = open("/proc/stb/info/model", "r").readline().strip().lower()
 		elif fileExists("/proc/stb/info/gbmodel"):
 			procmodel = open("/proc/stb/info/gbmodel", "r").readline().strip().lower()
 		elif fileExists("/proc/stb/info/vumodel") and not fileExists("/proc/stb/info/boxtype"):
