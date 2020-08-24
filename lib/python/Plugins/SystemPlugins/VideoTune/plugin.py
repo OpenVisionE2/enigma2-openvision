@@ -4,7 +4,7 @@ from Plugins.Plugin import PluginDescriptor
 from Components.config import config
 
 def videoFinetuneMain(session, **kwargs):
-	from VideoFinetune import VideoFinetune
+	from Plugins.SystemPlugins.VideoTune.VideoFinetune import VideoFinetune
 	session.open(VideoFinetune)
 
 def startSetup(menuid):
