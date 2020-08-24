@@ -26,7 +26,7 @@ def setConfiguredPosition():
 	setPosition(int(config.plugins.OSDPositionSetup.dst_left.value), int(config.plugins.OSDPositionSetup.dst_width.value), int(config.plugins.OSDPositionSetup.dst_top.value), int(config.plugins.OSDPositionSetup.dst_height.value))
 
 def main(session, **kwargs):
-	from overscanwizard import OverscanWizard
+	from Plugins.SystemPlugins.OSDPositionSetup.overscanwizard import OverscanWizard
 	session.open(OverscanWizard, timeOut=False)
 
 def startSetup(menuid):
