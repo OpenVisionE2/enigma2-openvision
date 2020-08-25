@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from keyids import KEYIDS
-from boxbranding import getRCType
+from Components.config import config
 
 keyBindings = {}
 
@@ -366,7 +366,7 @@ def queryKeyBinding(context, action):
 		return []
 
 def getKeyDescription(key):
-	rcType = int(getRCType())
+	rcType = config.plugins.remotecontroltype.rctype.value
 	print("[KeyBindings] RC type is:", rcType)
 	if rcType == 14:  # XP1000
 		idx = 3

@@ -56,8 +56,8 @@ class Rc:
 		self["rc"].show()
 
 	def selectKey(self, key):
-		rcidnunber = int(getRCIDNum())
-		rc = self.rcs[rcidnunber]
+		rcidnumber = int(getRCIDNum())
+		rc = self.rcs[rcidnumber]
 		if key in rc:
 			rcpos = self["rc"].getPosition()
 			pos = rc[key]
