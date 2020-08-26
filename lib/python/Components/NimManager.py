@@ -20,6 +20,8 @@ socfamily = getSoCFamily()
 config.unicable = ConfigSubsection()
 
 def getConfigSatlist(orbpos, satlist):
+	if not satlist:
+		return None
 	default_orbpos = None
 	for x in satlist:
 		if x[0] == orbpos:

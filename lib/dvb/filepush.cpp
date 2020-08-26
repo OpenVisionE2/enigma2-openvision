@@ -28,7 +28,9 @@ eFilePushThread::eFilePushThread(int blocksize, size_t buffersize):
 eFilePushThread::~eFilePushThread()
 {
 	stop(); /* eThread is borked, always call stop() from d'tor */
-	free(m_buffer);
+	if (m_buffer) {
+		free(m_buffer);
+	}
 }
 
 static void signal_handler(int x)

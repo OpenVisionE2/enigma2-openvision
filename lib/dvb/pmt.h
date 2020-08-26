@@ -32,7 +32,10 @@ class OCSection : public LongCrcSection
 		: LongCrcSection(buffer)
 		{
 			data = malloc(getSectionLength());
-			memcpy(data, buffer, getSectionLength());
+			if (data != NULL)
+			{
+				memcpy(data, buffer, getSectionLength());
+			}
 		}
 		~OCSection()
 		{
