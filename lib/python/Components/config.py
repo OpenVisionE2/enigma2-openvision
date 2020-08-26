@@ -262,7 +262,7 @@ class choicesList(object):  # XXX: we might want a better name for this
 
 	def index(self, value):
 		try:
-			return self.__list__().index(value)
+			return map(str, self.__list__()).index(str(value))
 		except (ValueError, IndexError):
 			# occurs e.g. when default is not in list
 			return 0
@@ -360,8 +360,8 @@ class ConfigSelection(ConfigElement):
 			self.changed()
 
 	def setValue(self, value):
-		if value in self.choices:
-			self._value = value
+		if str(value) in map(str, self.choices):
+			self._value = self.choices[self.choices.index(value)]
 		else:
 			self._value = self.default
 		self._descr = None
@@ -372,6 +372,14 @@ class ConfigSelection(ConfigElement):
 
 	def getValue(self):
 		return self._value
+
+
+	def load(self):
+		sv = self.saved_value
+		if sv is None:
+			self.value = self.default
+		else:
+			self.value = self.choices[self.choices.index(sv)]
 
 	def setCurrentText(self, text):
 		i = self.choices.index(self.value)
