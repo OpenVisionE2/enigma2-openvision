@@ -8,7 +8,7 @@ import errno
 import xml.etree.cElementTree
 from enigma import eRCInput
 from keyids import KEYIDS
-from RcModel import rc_model
+from Components.RcModel import rc_model
 from fcntl import ioctl
 import os
 import struct
