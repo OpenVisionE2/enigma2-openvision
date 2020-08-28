@@ -199,9 +199,9 @@ class OpenVisionInformation(Screen):
 		if config.misc.OVupdatecheck.value is True:
 			try:
 				if boxbranding.getVisionVersion().startswith("10"):
-					ovurl = ("https://raw.githubusercontent.com/OpenVisionE2/openvision-development-platform/develop/meta-openvision/conf/distro/revision.conf")
+					ovurl = "https://raw.githubusercontent.com/OpenVisionE2/openvision-development-platform/develop/meta-openvision/conf/distro/revision.conf"
 				else:
-					ovurl = ("https://raw.githubusercontent.com/OpenVisionE2/openvision-oe/develop/meta-openvision/conf/distro/revision.conf")
+					ovurl = "https://raw.githubusercontent.com/OpenVisionE2/openvision-oe/develop/meta-openvision/conf/distro/revision.conf"
 				ovresponse = urllib2.urlopen(ovurl)
 				ovrevision = ovresponse.read()
 				ovrevisionupdate = int(filter(str.isdigit, ovrevision))
@@ -1068,17 +1068,21 @@ class CommitInfo(Screen):
 		except:
 			branch = ""
 
+		if boxbranding.getVisionVersion().startswith("10"):
+			oegiturl = "https://api.github.com/repos/OpenVisionE2/openvision-development-platform/commits"
+		else:
+			oegiturl = "https://api.github.com/repos/OpenVisionE2/openvision-oe/commits"
+
 		self.project = 0
 		self.projects = [
 			("https://api.github.com/repos/OpenVisionE2/enigma2-openvision/commits" + branch, "Enigma2 - Vision"),
-			("https://api.github.com/repos/OpenVisionE2/openvision-oe/commits", "OE - Vision 7.x"),
-			("https://api.github.com/repos/OpenVisionE2/openvision-development-platform/commits", "OE - Vision 9.x"),
-			("https://api.github.com/repos/openpli/servicemp3/commits", "Service MP3"),
-			("https://api.github.com/repos/OpenVisionE2/gstreamer1.0-plugin-multibox-dvbmediasink/commits", "DVB MediaSink"),
-			("https://api.github.com/repos/OpenVisionE2/enigma2-plugins/commits", "Enigma2 Plugins"),
-			("https://api.github.com/repos/OpenVisionE2/alliance-plugins/commits", "Alliance Plugins"),
+			(oegiturl, "OE - Vision"),
+			("https://api.github.com/repos/OpenVisionE2/enigma2-plugins/commits", "Enigma2 plugins"),
+			("https://api.github.com/repos/OpenVisionE2/alliance-plugins/commits", "Alliance plugins"),
 			("https://api.github.com/repos/OpenVisionE2/OpenWebif/commits", "Open WebIF"),
-			("https://api.github.com/repos/OpenVisionE2/BackupSuite/commits", "Backup Suite")
+			("https://api.github.com/repos/OpenVisionE2/openvision-core-plugin/commits", "Vision core plugin"),
+			("https://api.github.com/repos/OpenVisionE2/BackupSuite/commits", "Backup Suite plugin"),
+			("https://api.github.com/repos/OpenVisionE2/OctEtFHD-skin/commits", "OctEtFHD skin")
 		]
 		self.cachedProjects = {}
 		self.Timer = eTimer()
