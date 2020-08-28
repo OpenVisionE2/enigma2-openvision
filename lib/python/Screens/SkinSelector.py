@@ -22,7 +22,7 @@ from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN, SCOPE_LCDSKIN
 
 
 class SkinSelector(Screen, HelpableScreen):
-	skinTemplate = """
+	skin = ["""
 	<screen name="SkinSelector" position="center,center" size="%d,%d">
 		<widget name="preview" position="center,%d" size="%d,%d" alphatest="blend" />
 		<widget source="skins" render="Listbox" position="center,%d" size="%d,%d" enableWrapAround="1" scrollbarMode="showOnDemand">
@@ -40,8 +40,7 @@ class SkinSelector(Screen, HelpableScreen):
 		<widget source="description" render="Label" position="center,e-%d" size="%d,%d" font="Regular;%d" valign="center" />
 		<widget source="key_red" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_red" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center" />
 		<widget source="key_green" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_green" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center" />
-	</screen>"""
-	scaleData = [
+	</screen>""",
 		670, 570,
 		10, 356, 200,
 		230, 650, 240,
@@ -53,19 +52,12 @@ class SkinSelector(Screen, HelpableScreen):
 		10, 50, 140, 40, 20,
 		160, 50, 140, 40, 20
 	]
-	skin = None
 
 	def __init__(self, session, screenTitle=_("GUI Skin")):
-		Screen.__init__(self, session)
+		Screen.__init__(self, session, mandatoryWidgets=["description", "skins"])
 		HelpableScreen.__init__(self)
 
 		element = domScreens.get("SkinSelector", (None, None))[0]
-		if element and 'introduction' in [widget.get('source', None) for widget in element.findall("widget")]:
-			#screen from loaded skin is  not compatible so remove the screen
-			del domScreens["SkinSelector"]
-		if SkinSelector.skin is None or "SkinSelector" not in domScreens:
-			# The skin template is designed for a HD screen so the scaling factor is 720.
-			SkinSelector.skin = SkinSelector.skinTemplate % tuple([x * getDesktop(0).size().height() / 720 for x in SkinSelector.scaleData])
 		Screen.setTitle(self, screenTitle)
 		self.rootDir = resolveFilename(SCOPE_SKIN)
 		self.config = config.skin.primary_skin

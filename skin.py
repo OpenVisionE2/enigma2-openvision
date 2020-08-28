@@ -990,14 +990,22 @@ def readSkin(screen, skin, names, desktop):
 	for n in names:  # Try all skins, first existing one has priority.
 		myScreen, path = domScreens.get(n, (None, None))
 		if myScreen is not None:
-			name = n  # Use this name for debug output.
-			break
+			if not screen.mandatoryWidgets or all(elem in [widget.get('source', widget.get('name', None)) for widget in myScreen.findall("widget")] for elem in screen.mandatoryWidgets):
+				name = n  # Use this name for debug output.
+				break
+			else:
+				myScreen = None
+				print("[skin] skin '%s' refused as it did not had all mandatory widgets!" % n)
 	else:
 		name = "<embedded-in-%s>" % screen.__class__.__name__
 	if myScreen is None:  # Otherwise try embedded skin.
 		myScreen = getattr(screen, "parsedSkin", None)
 	if myScreen is None and getattr(screen, "skin", None):  # Try uncompiled embedded skin.
-		skin = screen.skin
+		if isinstance(screen.skin, list):
+			print("[skin] Resizable embedded skin %s template found!" % name)
+			skin = screen.skin[0] % tuple([x * getDesktop(0).size().height() / 720 for x in screen.skin[1:]])
+		else:
+			skin = screen.skin
 		print("[skin] Parsing embedded skin '%s'." % name)
 		if isinstance(skin, tuple):
 			for s in skin:
