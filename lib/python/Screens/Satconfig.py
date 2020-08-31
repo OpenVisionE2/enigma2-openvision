@@ -149,7 +149,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 				elif self.nimConfig.configMode.value == "nothing":
 					pass
 				elif self.nimConfig.configMode.value == "advanced":
-					advanced_satposdepends_satlist_choices = (3607, _('Additional cable of motorized LNB'), 1)
+					advanced_satposdepends_satlist_choices = ("3607", _("Additional cable of motorized LNB"), 1)
 					advanced_satlist_choices = self.nimConfig.advanced.sats.choices.choices
 					advanced_setchoices = False
 					if nimmanager.canDependOn(self.slotid, True):
@@ -163,7 +163,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 						default_orbpos = None
 						for x in self.nimConfig.advanced.sat.keys():
 							if x == 192:
-								default_orbpos = "192"
+								default_orbpos = str(x)
 								break
 						self.nimConfig.advanced.sats.setChoices(advanced_satlist_choices, default=default_orbpos)
 					self.advancedSatsEntry = getConfigListEntry(self.indent % _("Satellite"), self.nimConfig.advanced.sats, _("Select the satellite you want to configure. Once that satellite is configured you can select and configure other satellites that will be accessed using this same tuner."))
@@ -405,7 +405,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 					self.list.append(getConfigListEntry(self.indent % "LOF/L", currLnb.lofl, _("Consult your SCR device spec sheet for this information.")))
 					self.list.append(getConfigListEntry(self.indent % "LOF/H", currLnb.lofh, _("Consult your SCR device spec sheet for this information.")))
 					self.list.append(getConfigListEntry(self.indent % _("Threshold"), currLnb.threshold, _("Consult your SCR device spec sheet for this information.")))
-					if not SystemInfo["LnbPowerAlwaysOn"] or not self.nim.isFBCTuner():
+					if not SystemInfo["FbcTunerPowerAlwaysOn"] or not self.nim.isFBCTuner():
 						self.list.append(self.externallyPowered)
 					if not currLnb.powerinserter.value:
 						self.list.append(getConfigListEntry(self.indent % _("Bootup time"), currLnb.bootuptime, _("Consult your SCR device spec sheet for this information.")))
@@ -419,7 +419,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 					if currLnb.positions.value > 1:
 						self.list.append(self.advancedPosition)
 					self.list.append(self.advancedSCR)
-					if not SystemInfo["LnbPowerAlwaysOn"] or not self.nim.isFBCTuner():
+					if not SystemInfo["FbcTunerPowerAlwaysOn"] or not self.nim.isFBCTuner():
 						self.list.append(self.externallyPowered)
 				choices = []
 				connectable = nimmanager.canConnectTo(self.slotid)
