@@ -69,7 +69,7 @@ class NSCommon:
 	def doInstall(self, callback, pkgname):
 		self.message = self.session.open(MessageBox,_("Please wait..."), MessageBox.TYPE_INFO, enable_input = False)
 		self.message.setTitle(_('Installing service'))
-		self.Console.ePopen('/usr/bin/opkg install ' + pkgname, callback)
+		self.Console.ePopen('/usr/bin/opkg install ' + pkgname + "&&" + "/sbin/init 6")
 
 	def checkNetworkState(self, str, retval, extra_args):
 		if 'Collected errors' in str:
@@ -2486,14 +2486,14 @@ class NetworkSambaLog(Screen):
 		self.Console = Console()
 		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'up': self['infotext'].pageUp, 'down': self['infotext'].pageDown})
 		strview = ''
-		self.Console.ePopen('tail /var/log/samba/*log* > /var/log/samba/samba.log')
+		self.Console.ePopen('tail /var/lib/samba/browse.dat* > /var/lib/samba/samba.log')
 		time.sleep(1)
-		if fileExists('/var/log/samba/samba.log'):
-			f = open('/var/log/samba/samba.log', 'r')
+		if fileExists('/var/lib/samba/samba.log'):
+			f = open('/var/lib/samba/samba.log', 'r')
 			for line in f.readlines():
 				strview += line
 			f.close()
-			remove('/var/log/samba/samba.log')
+			remove('/var/lib/samba/samba.log')
 		self['infotext'].setText(strview)
 
 
