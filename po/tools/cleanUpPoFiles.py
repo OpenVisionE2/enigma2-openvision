@@ -1,6 +1,7 @@
-#!/usr/local/bin/python
-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
+
 
 """Cleans up PO translation files
 
@@ -17,7 +18,7 @@ from __future__ import print_function
      are currently appended for ease of diffing
    - comments in source code files should probably be ignored
    - FIXED: colour hex values (eg. "#25062748") should be ignored
-   - printed strings (print "we should never come here!") 
+   - printed strings (print("we should never come here!") )
      should probably be ignored
    - entries not found in source code aren't marked obsolete/removed
      (these may be from plugin code outside of the enigma2 sources)
