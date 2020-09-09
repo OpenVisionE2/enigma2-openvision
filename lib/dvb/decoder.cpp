@@ -22,6 +22,14 @@
 #define AUDIO_SOURCE_HDMI 2
 #endif
 
+#ifndef AUDIO_GET_PTS
+#define AUDIO_GET_PTS              _IOR('o', 19, __u64)
+#endif
+
+#ifndef VIDEO_GET_FRAME_RATE
+#define VIDEO_GET_FRAME_RATE       _IOR('o', 56, unsigned int)
+#endif
+
 DEFINE_REF(eDVBAudio);
 
 eDVBAudio::eDVBAudio(eDVBDemux *demux, int dev)
