@@ -34,9 +34,12 @@ from sys import maxint
 # description        (description)
 # event data         (ONLY for time adjustments etc.)
 
-# We need to handle concurrency when updating timers.xml
+# We need to handle concurrency when updating timers.xml and
+# when checking was_rectimer_wakeup
+#
 import threading
 write_lock = threading.Lock()
+wasrec_lock = threading.Lock()
 
 # parses an event, and gives out a (begin, end, name, duration, eit)-tuple.
 # begin and end will be corrected
@@ -139,6 +142,8 @@ def RecordingsState(alter):
 	return
 
 RecordingsState(0)       # Initialize
+
+wasRecTimerWakeup = False
 
 def checkForRecordings():
 	if NavigationInstance.instance.getRecordings():
@@ -525,6 +530,19 @@ class RecordTimerEntry(timer.TimerEntry, object):
 			return False
 
 		elif next_state == self.StateRunning:
+			global wasRecTimerWakeup
+
+# Run this under a lock.
+# We've seen two threads arrive here "together".
+# Both see the file as existing, but only one can delete it...
+#
+			with wasrec_lock:
+				if os.path.exists("/tmp/was_rectimer_wakeup") and not wasRecTimerWakeup:
+					wasRecTimerWakeup = int(open("/tmp/was_rectimer_wakeup", "r").read()) and True or False
+					os.remove("/tmp/was_rectimer_wakeup")
+
+			self.autostate = Screens.Standby.inStandby
+
 			# if this timer has been cancelled, just go to "end" state.
 			if self.cancelled:
 				return True
@@ -637,13 +655,13 @@ class RecordTimerEntry(timer.TimerEntry, object):
 				self.record_service = None
 				self.rec_ref = None
 			if not checkForRecordings():
-				if self.afterEvent == AFTEREVENT.DEEPSTANDBY or self.afterEvent == AFTEREVENT.AUTO and (Screens.Standby.inStandby or RecordTimerEntry.wasInStandby) and not config.misc.standbyCounter.value:
+				if self.afterEvent == AFTEREVENT.DEEPSTANDBY or (wasRecTimerWakeup and self.afterEvent == AFTEREVENT.AUTO and Screens.Standby.inStandby or RecordTimerEntry.wasInStandby) and not config.misc.standbyCounter.value:
 					if not Screens.Standby.inTryQuitMainloop:
 						if Screens.Standby.inStandby:
 							RecordTimerEntry.TryQuitMainloop()
 						else:
 							Notifications.AddNotificationWithCallback(self.sendTryQuitMainloopNotification, MessageBox, _("A finished record timer wants to shut down\nyour receiver. Shutdown now?"), timeout=20, default=True)
-				elif self.afterEvent == AFTEREVENT.STANDBY or self.afterEvent == AFTEREVENT.AUTO and RecordTimerEntry.wasInStandby:
+				elif self.afterEvent == AFTEREVENT.STANDBY or (not wasRecTimerWakeup and self.autostate and self.afterEvent == AFTEREVENT.AUTO) or RecordTimerEntry.wasInStandby:
 					if not Screens.Standby.inStandby:
 						Notifications.AddNotificationWithCallback(self.sendStandbyNotification, MessageBox, _("A finished record timer wants to set your\nreceiver to standby. Do that now?"), timeout=20, default=True)
 				else:
@@ -750,6 +768,9 @@ class RecordTimerEntry(timer.TimerEntry, object):
 		RecordTimerEntry.keypress()
 		if answer:
 			Notifications.AddNotification(Screens.Standby.TryQuitMainloop, 1)
+		else:
+			global wasRecTimerWakeup
+			wasRecTimerWakeup = False
 
 	def getNextActivation(self):
 		if self.state == self.StateEnded:
@@ -942,6 +963,9 @@ class RecordTimer(timer.Timer):
 					insort(self.processed_timers, w)
 
 		self.stateChanged(w)
+
+	def isRecTimerWakeup(self):
+		return wasRecTimerWakeup
 
 	def checkWrongRunningTimers(self):
 		now = time() + 100
