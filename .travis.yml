@@ -6,9 +6,10 @@ dist: focal
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+    - sourceline: 'ppa:ubuntu-toolchain-r/test'
     packages:
     - g++-10
+    - gcc-10
     - linux-libc-dev
     - git
     - build-essential
@@ -41,6 +42,7 @@ before_install:
     - eval "${MATRIX_EVAL}"
 
 script:
+- sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
 - echo installing libdvbsi++
 - pushd .
 - cd /tmp
@@ -68,7 +70,7 @@ script:
 - popd
 - echo compiling enigma2
 - autoreconf -i
-- ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --with-oever=10.1 --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
+- ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --with-oever=10.2 --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
 - make
 - python -m compileall .
 - find . -type f -name "*.po" -exec msgfmt {} -o {}.mo \;
