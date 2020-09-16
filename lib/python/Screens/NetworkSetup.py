@@ -69,7 +69,7 @@ class NSCommon:
 	def doInstall(self, callback, pkgname):
 		self.message = self.session.open(MessageBox,_("Please wait..."), MessageBox.TYPE_INFO, enable_input = False)
 		self.message.setTitle(_('Installing service'))
-		self.Console.ePopen('/usr/bin/opkg install ' + pkgname + "&&" + "/sbin/init 6")
+		self.Console.ePopen('/usr/bin/opkg install ' + pkgname + ' >/dev/null 2>&1', callback)
 
 	def checkNetworkState(self, str, retval, extra_args):
 		if 'Collected errors' in str:
