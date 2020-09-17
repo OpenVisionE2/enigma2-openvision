@@ -611,12 +611,12 @@ class NIM(object):
 		return self.internally_connectable
 
 	def setInternalLink(self):
-		if self.internally_connectable is not None:
+		if self.internally_connectable >= 0:
 			print("[NimManager] setting internal link on frontend id", self.frontend_id)
 			open("/proc/stb/frontend/%d/rf_switch" % self.frontend_id, "w").write("internal")
 
 	def removeInternalLink(self):
-		if self.internally_connectable is not None:
+		if self.internally_connectable >= 0:
 			print("[NimManager] removing internal link on frontend id", self.frontend_id)
 			open("/proc/stb/frontend/%d/rf_switch" % self.frontend_id, "w").write("external")
 
