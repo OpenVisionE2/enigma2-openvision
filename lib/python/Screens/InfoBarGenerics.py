@@ -787,6 +787,7 @@ class InfoBarChannelSelection:
 			self.servicelist.zap()
 
 	def firstRun(self):
+		self.servicelist.setMode()
 		self.onShown.remove(self.firstRun)
 		config.misc.initialchannelselection.value = False
 		config.misc.initialchannelselection.save()
@@ -3312,7 +3313,7 @@ class InfoBarNotifications:
 					reload_whitelist_vbi()
 				if "epg" in config.usage.remote_fallback_import.value:
 					eEPGCache.getInstance().load()
-				if not(n[4].endswith("NOK") and config.usage.remote_fallback_nok.value or config.usage.remote_fallback_ok.value):
+				if config.misc.initialchannelselection.value or not(config.usage.remote_fallback_import.value and (n[4].endswith("NOK") and config.usage.remote_fallback_nok.value or config.usage.remote_fallback_ok.value)):
 					return
 			if cb:
 				dlg = self.session.openWithCallback(cb, n[1], *n[2], **n[3])
