@@ -76,7 +76,7 @@ def getFPVersion():
 			if getMachineBuild() == "dm4kgen" or getBoxType() in ("dm520","dm7080","dm820"):
 				ret = open("/proc/stb/fp/version", "r").read()
 			else:
-				ret = long(open("/proc/stb/fp/version", "r").read())
+				ret = int(open("/proc/stb/fp/version", "r").read())
 		elif fileExists("/sys/firmware/devicetree/base/bolt/tag"):
 			ret = open("/sys/firmware/devicetree/base/bolt/tag", "r").read().rstrip("\0")
 		else:
@@ -127,7 +127,7 @@ def setRTCtime(wutime):
 def getFPWakeuptime():
 	ret = 0
 	try:
-		ret = long(open("/proc/stb/fp/wakeup_time", "r").read())
+		ret = int(open("/proc/stb/fp/wakeup_time", "r").read())
 	except IOError:
 		try:
 			fp = open("/dev/dbox/fp0")
