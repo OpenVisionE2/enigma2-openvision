@@ -2117,6 +2117,7 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 					self.startRoot = None
 					self.correctChannelNumber()
 					self.movemode and self.toggleMoveMode()
+					self.bouquet_mark_edit != OFF and self.endMarkedEdit(True)
 					self.editMode = False
 					self.protectContextMenu = True
 					self.close(ref)
@@ -2393,6 +2394,8 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 		self.asciiOff()
 		self.zapBack()
 		self.correctChannelNumber()
+		self.movemode and self.toggleMoveMode()
+		self.bouquet_mark_edit != OFF and self.endMarkedEdit(True)
 		self.editMode = False
 		self.protectContextMenu = True
 		self.close(None)
