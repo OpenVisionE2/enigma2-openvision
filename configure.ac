@@ -682,15 +682,13 @@ fi
 
 if test "$BOXTYPE" == "vusolo4k" -o "$BOXTYPE" == "vuduo4k" -o "$BOXTYPE" == "vuduo4kse"; then
 	AC_DEFINE(HAVE_COLORLCD480, 1,[define when using a 480x320 color display device])
-	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi
 
 if test "$BOXTYPE" == "vuultimo4k"; then
 	AC_DEFINE(HAVE_COLORLCD800, 1,[define when using a 800x480 color display device])
-	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi
 
-if test "$BOXTYPE" == "vuuno4k" -o "$BOXTYPE" == "vuuno4kse" -o "$BOXTYPE" == "vuzero4k" -o "$BOXTYPE" == "sf4008"; then
+if test "$STBPLATFORM" == "vu4kgen" -o "$BOXTYPE" == "sf4008"; then
 	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi
 
