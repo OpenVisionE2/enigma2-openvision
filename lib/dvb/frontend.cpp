@@ -299,7 +299,7 @@ RESULT eDVBFrontendParameters::getSystem(int &t) const
 RESULT eDVBFrontendParameters::getDVBS(eDVBFrontendParametersSatellite &p) const
 {
 	if (m_type != iDVBFrontend::feSatellite)
-		return -1;
+		return p = {0}, -1;
 	p = sat;
 	return 0;
 }
@@ -307,7 +307,7 @@ RESULT eDVBFrontendParameters::getDVBS(eDVBFrontendParametersSatellite &p) const
 RESULT eDVBFrontendParameters::getDVBC(eDVBFrontendParametersCable &p) const
 {
 	if (m_type != iDVBFrontend::feCable)
-		return -1;
+		return p = {0}, -1;
 	p = cable;
 	return 0;
 }
@@ -315,7 +315,7 @@ RESULT eDVBFrontendParameters::getDVBC(eDVBFrontendParametersCable &p) const
 RESULT eDVBFrontendParameters::getDVBT(eDVBFrontendParametersTerrestrial &p) const
 {
 	if (m_type != iDVBFrontend::feTerrestrial)
-		return -1;
+		return p = {0}, -1;
 	p = terrestrial;
 	return 0;
 }
@@ -323,7 +323,7 @@ RESULT eDVBFrontendParameters::getDVBT(eDVBFrontendParametersTerrestrial &p) con
 RESULT eDVBFrontendParameters::getATSC(eDVBFrontendParametersATSC &p) const
 {
 	if (m_type != iDVBFrontend::feATSC)
-		return -1;
+		return p = {0}, -1;
 	p = atsc;
 	return 0;
 }
@@ -653,7 +653,7 @@ int eDVBFrontend::openFrontend()
 				m_fd = -1;
 				return -1;
 			}
-			strncpy(m_description, fe_info.name, sizeof(m_description));
+			strncpy(m_description, fe_info.name, sizeof(m_description)-1);
 #if defined DTV_ENUM_DELSYS
 			struct dtv_property p[1];
 			memset(p, 0, sizeof(p));
@@ -1044,7 +1044,7 @@ void eDVBFrontend::calculateSignalQuality(int snr, int &signalquality, int &sign
 		ret = (int)(snr / 40.5);
 		sat_max = 1618;
 	}
-	if (!strcmp(m_description, "AVL6211")) // ET10000
+	else if (!strcmp(m_description, "AVL6211")) // ET10000
 	{
 		ret = (int)(snr / 37.5);
 		sat_max = 1700;
@@ -3340,7 +3340,7 @@ bool eDVBFrontend::setSlotInfo(int id, const char *descr, bool enabled, bool isD
 	}
 	m_slotid = id;
 	m_enabled = enabled;
-	strncpy(m_description, descr, sizeof(m_description));
+	strncpy(m_description, descr, sizeof(m_description)-1);
 
 	// HACK.. the rotor workaround is neede for all NIMs with LNBP21 voltage regulator...
 	m_need_rotor_workaround = !!strstr(m_description, "Alps BSBE1") ||
