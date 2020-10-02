@@ -193,7 +193,12 @@ class Network:
 			# load ns only once
 			self.loadNameserverConfig()
 			print("[Network] read configured interface:", ifaces)
-			print("[Network] self.ifaces after loading:", self.ifaces)
+			# remove any password before info is printed to the debug log
+			safe_ifaces = self.ifaces.copy()
+			for intf in safe_ifaces:
+				if 'preup' in safe_ifaces[intf] and safe_ifaces[intf]['preup'] is not False:
+					safe_ifaces[intf]['preup'] = re.sub(' -k \S* ', ' -k ********* ', safe_ifaces[intf]['preup'])
+			print("self.ifaces after loading:", safe_ifaces)
 			self.config_ready = True
 			self.msgPlugins()
 			if callback is not None:
