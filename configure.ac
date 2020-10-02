@@ -676,7 +676,7 @@ if test "$BOXTYPE" == "vuduo2"; then
 	AC_DEFINE(FORCE_AUTO_INV, 1,[force Inversion auto for vuplus mipsel boxes])
 fi
 
-if test "$BOXTYPE" == "vusolo4k" -o "$BOXTYPE" == "vuduo4k"; then
+if test "$BOXTYPE" == "vusolo4k" -o "$BOXTYPE" == "vuduo4k" -o "$BOXTYPE" == "vuduo4kse"; then
 	AC_DEFINE(HAVE_COLORLCD480, 1,[define when using a 480x320 color display device])
 	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi

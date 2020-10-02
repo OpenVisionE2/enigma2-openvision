@@ -98,7 +98,7 @@ SystemInfo["Blindscan_t2_available"] = brand == "vuplus"
 SystemInfo["HasFullHDSkinSupport"] = model not in ("et4x00","et5x00","sh1","hd500c","hd1100","xp1000","lc") and brand not in ("minix","hardkernel")
 SystemInfo["HasBypassEdidChecking"] = fileCheck("/proc/stb/hdmi/bypass_edid_checking")
 SystemInfo["HasColorspace"] = fileCheck("/proc/stb/video/hdmi_colorspace")
-SystemInfo["HasColorspaceSimple"] = SystemInfo["HasColorspace"] and model in ("vusolo4k","vuuno4k","vuuno4kse","vuultimo4k","vuduo4k")
+SystemInfo["HasColorspaceSimple"] = SystemInfo["HasColorspace"] and model in ("vusolo4k","vuuno4k","vuuno4kse","vuultimo4k","vuduo4k","vuduo4kse")
 SystemInfo["HasMultichannelPCM"] = fileCheck("/proc/stb/audio/multichannel_pcm")
 SystemInfo["HasMMC"] = "root" in cmdline and cmdline["root"].startswith("/dev/mmcblk")
 SystemInfo["HasTranscoding"] = getHaveTranscoding() == "True" or getHaveMultiTranscoding() == "True" or pathExists("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
@@ -136,7 +136,7 @@ SystemInfo["CanDownmixDTS"] = fileHas("/proc/stb/audio/dts_choices","downmix")
 SystemInfo["CanDownmixAAC"] = fileHas("/proc/stb/audio/aac_choices","downmix")
 SystemInfo["HDMIAudioSource"] = fileCheck("/proc/stb/hdmi/audio_source")
 SystemInfo["BootDevice"] = getBootdevice()
-SystemInfo["FbcTunerPowerAlwaysOn"] = model in ("vusolo4k","vuduo4k","vuultimo4k","vuuno4k","vuuno4kse") or platform == "gb7252"
+SystemInfo["FbcTunerPowerAlwaysOn"] = model in ("vusolo4k","vuduo4k","vuduo4kse","vuultimo4k","vuuno4k","vuuno4kse") or platform == "gb7252"
 SystemInfo["SmallFlash"] = fileExists("/etc/openvision/smallflash")
 SystemInfo["MiddleFlash"] = fileExists("/etc/openvision/middleflash") and not fileExists("/etc/openvision/smallflash")
 SystemInfo["HaveCISSL"] = fileCheck("/etc/ssl/certs/customer.pem") and fileCheck("/etc/ssl/certs/device.pem")
