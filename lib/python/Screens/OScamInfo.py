@@ -542,7 +542,7 @@ class OscamInfoMenu(Screen):
 						png2 = LoadPixmap(png2)
 					if png2 is not None:
 						x, y, w, h = skin.parameters.get("ChoicelistIcon",(5*f, 0, 35*f, 25*f))
-						res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, x, y, w, h, png2))
+						res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, x, y, w, h, png2))
 			else:
 				x, y, w, h = skin.parameters.get("ChoicelistName",(45*f, 2*f, 800*f, 25*f))
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, x, y, w, h, 0, RT_HALIGN_LEFT, t))
@@ -551,7 +551,7 @@ class OscamInfoMenu(Screen):
 					png2 = LoadPixmap(png2)
 				if png2 is not None:
 					x, y, w, h = skin.parameters.get("ChoicelistIcon",(5*f, 0, 35*f, 25*f))
-					res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, x, y, w, h, png2))
+					res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, x, y, w, h, png2))
 			menuentries.append(res)
 			if k < len(keys) - 1:
 				k += 1
@@ -641,10 +641,10 @@ class oscInfo(Screen, OscamInfo):
 		button_width = int(sizeH / 4)
 		for k, v in enumerate(["red", "green", "yellow", "blue"]):
 			xpos = k * button_width
-			self.skin += """<ePixmap name="%s" position="%d,%d" size="35,25" pixmap="buttons/key_%s.png" zPosition="1" transparent="1" alphatest="on" />""" % (v, xpos, ypos, v)
-			self.skin += """<widget source="key_%s" render="Label" position="%d,%d" size="%d,%d" font="Regular;18" zPosition="1" valign="center" transparent="1" />""" % (v, xpos + 40, ypos, button_width, 22)
-		self.skin +="""<ePixmap name="divh" position="0,37" size="%d,2" pixmap="div-h.png" transparent="1" alphatest="on" />""" % sizeH
-		self.skin +="""<widget name="output" position="10,45" size="%d,%d" zPosition="1" scrollbarMode="showOnDemand" />""" % ( self.sizeLH, ysize - 50)
+			self.skin += """<ePixmap name="%s" position="%d,%d" size="40,40" pixmap="buttons/key_%s.png" zPosition="1" transparent="1" alphatest="blend" />""" % (v, xpos, ypos, v)
+			self.skin += """<widget source="key_%s" render="Label" position="%d,%d" size="%d,%d" font="Regular;22" zPosition="1" valign="center" transparent="1" />""" % (v, xpos + 50, ypos, button_width, 40)
+		self.skin +="""<ePixmap name="divh" position="10,70" size="%d,2" pixmap="div-h.png" transparent="1" alphatest="blend" />""" % sizeH
+		self.skin +="""<widget name="output" position="10,90" size="%d,%d" zPosition="1" scrollbarMode="showOnDemand" />""" % ( self.sizeLH, ysize - 50)
 		self.skin += """</screen>"""
 		Screen.__init__(self, session)
 		self.mlist = oscMenuList([])
