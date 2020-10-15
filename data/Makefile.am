@@ -6,7 +6,6 @@ dist_pkgdata_DATA = \
 	freesat.t1 \
 	freesat.t2 \
 	groupedservices \
-	iso-639-3.pck \
 	keymap.xml \
 	keytranslation.xml \
 	menu.xml \
@@ -17,8 +16,4 @@ dist_pkgdata_DATA = \
 	radio.mvi \
 	setup.xml \
 	skin_subtitles.xml \
-	startwizard.xml \
-	unicable.xml
-
-iso-639-3.pck: $(srcdir)/iso-639-3.tab
-	python $(srcdir)/convert-iso-639-3.py $< $@
+	startwizard.xml
