@@ -37,7 +37,10 @@ import RecordTimer
 from enigma import eServiceReference, eServiceCenter, eTimer, eSize, iPlayableService, iServiceInformation, getPrevAsciiCode, eRCInput
 import os
 import time
-import cPickle as pickle
+try:
+	import cPickle as pickle
+except:
+	import pickle
 
 config.movielist = ConfigSubsection()
 config.movielist.curentlyplayingservice = ConfigText()
