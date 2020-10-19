@@ -6028,13 +6028,13 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 	int channels_count, events_count = 0, aliases_groups_count;
 	unsigned char revision;
 
-	eDebug("[EPGC] start crossepg import");
+	eDebug("[eEPGCache] start crossepg import");
 
 	sprintf(headers_file, "%s/crossepg.headers.db", dbroot.c_str());
 	headers = fopen(headers_file, "r");
 	if (!headers)
 	{
-		eDebug("[EPGC] cannot open crossepg headers db");
+		eDebug("[eEPGCache] cannot open crossepg headers db");
 		return;
 	}
 
@@ -6042,7 +6042,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 	descriptors = fopen (descriptors_file, "r");
 	if (!descriptors)
 	{
-		eDebug("[EPGC] cannot open crossepg descriptors db");
+		eDebug("[eEPGCache] cannot open crossepg descriptors db");
 		fclose(headers);
 		return;
 	}
@@ -6051,7 +6051,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 	aliases = fopen(aliases_file, "r");
 	if (!aliases)
 	{
-	eDebug("[EPGC] cannot open crossepg aliases db");
+	eDebug("[eEPGCache] cannot open crossepg aliases db");
 		fclose(headers);
 		fclose(descriptors);
 		return;
@@ -6061,7 +6061,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 	fread (tmp, 13, 1, headers);
 	if (memcmp (tmp, "_xEPG_HEADERS", 13) != 0)
 	{
-		eDebug("[EPGC] crossepg db invalid magic");
+		eDebug("[eEPGCache] crossepg db invalid magic");
 		fclose(headers);
 		fclose(descriptors);
 		fclose(aliases);
@@ -6071,7 +6071,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 	fread (&revision, sizeof (unsigned char), 1, headers);
 	if (revision != 0x07)
 	{
-		eDebug("[EPGC] crossepg db invalid revision");
+		eDebug("[eEPGCache] crossepg db invalid revision");
 		fclose(headers);
 		fclose(descriptors);
 		fclose(aliases);
@@ -6082,7 +6082,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 	fread (tmp, 13, 1, aliases);
 	if (memcmp (tmp, "_xEPG_ALIASES", 13) != 0)
 	{
-	eDebug("[EPGC] crossepg aliases db invalid magic");
+	eDebug("[eEPGCache] crossepg aliases db invalid magic");
 		fclose(headers);
 		fclose(descriptors);
 		fclose(aliases);
@@ -6091,7 +6091,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 	fread (&revision, sizeof (unsigned char), 1, aliases);
 	if (revision != 0x07)
 	{
-		eDebug("[EPGC] crossepg aliases db invalid revision");
+		eDebug("[eEPGCache] crossepg aliases db invalid revision");
 		fclose(headers);
 		fclose(descriptors);
 	fclose(aliases);
@@ -6133,7 +6133,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 		}
 	}
 
-	eDebug("[EPGC] %d aliases groups in crossepg db", aliases_groups_count);
+	eDebug("[eEPGCache] %d aliases groups in crossepg db", aliases_groups_count);
 
 	/* import data */
 	fseek(headers, sizeof(time_t)*2, SEEK_CUR);
@@ -6149,7 +6149,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 		for (int j=0; j<titles_count; j++)
 		{
 			epgdb_title_t title;
-			__u8 data[EIT_LENGTH];
+			uint8_t data[EIT_LENGTH];
 
 			fread(&title, sizeof(epgdb_title_t), 1, headers);
 
@@ -6181,7 +6181,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 			data_eit_event->running_status = 0;
 			data_eit_event->free_CA_mode = 0;
 
-			__u8 *data_tmp = (__u8*)data_eit_event;
+			uint8_t *data_tmp = (uint8_t*)data_eit_event;
 			data_tmp += EIT_LOOP_SIZE;
 
 			if (title.description_length > 245)
@@ -6195,7 +6195,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 			data_eit_short_event->language_code_2 = title.iso_639_2;
 			data_eit_short_event->language_code_3 = title.iso_639_3;
 			data_eit_short_event->event_name_length = title.description_length;// ? title.description_length + 1 : 0;
-			data_tmp = (__u8*)data_eit_short_event;
+			data_tmp = (uint8_t*)data_eit_short_event;
 			data_tmp += EIT_SHORT_EVENT_DESCRIPTOR_SIZE;
 			if (IS_UTF8(title.flags))
 			{
@@ -6218,7 +6218,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 
 			fread(data_tmp, title.description_length, 1, descriptors);
 
-			int current_loop_length = data_tmp - (__u8*)data_eit_short_event;
+			int current_loop_length = data_tmp - (uint8_t*)data_eit_short_event;
 			static const int overhead_per_descriptor = 9;
 			static const int MAX_LEN = 256 - overhead_per_descriptor;
 
@@ -6268,7 +6268,7 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 
 			delete ldescription;
 
-			int descriptors_length = data_tmp - ((__u8*)data_eit_event + EIT_LOOP_SIZE);
+			int descriptors_length = data_tmp - ((uint8_t*)data_eit_event + EIT_LOOP_SIZE);
 			data_eit_event->descriptors_loop_length_hi = descriptors_length >> 8;
 			data_eit_event->descriptors_loop_length_lo = descriptors_length & 0xff;
 
@@ -6317,6 +6317,6 @@ void eEPGCache::crossepgImportEPGv21(std::string dbroot)
 	fclose(descriptors);
 	fclose(aliases);
 
-	eDebug("[EPGC] imported %d events from crossepg db", events_count);
-	eDebug("[EPGC] %i bytes for cache used", eventData::CacheSize);
+	eDebug("[eEPGCache] imported %d events from crossepg db", events_count);
+	eDebug("[eEPGCache] %i bytes for cache used", eventData::CacheSize);
 }
