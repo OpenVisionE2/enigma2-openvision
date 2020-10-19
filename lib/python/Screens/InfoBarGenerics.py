@@ -3241,16 +3241,6 @@ class InfoBarTimerButton:
 		from Screens.TimerEdit import TimerEditList
 		self.session.open(TimerEditList)
 
-class InfoBarVmodeButton:
-	def __init__(self):
-		self["VmodeButtonActions"] = HelpableActionMap(self, ["InfobarVmodeButtonActions"],
-			{
-				"vmodeSelection": (self.vmodeSelection, _("Letterbox zoom")),
-			})
-
-	def vmodeSelection(self):
-		self.session.open(VideoMode)
-
 class VideoMode(Screen):
 	def __init__(self,session):
 		Screen.__init__(self, session)

@@ -30,7 +30,7 @@ addons:
     - libgif-dev
     - libopenmpi-dev
     env:
-    - MATRIX_EVAL="CC=gcc-10 && CXX=g++-10"
+    - MATRIX_EVAL="CC=gcc-10 && CXX=g++-10 && PYTHON=2.7"
 
 python:
   - "2.7"
@@ -39,6 +39,8 @@ git:
   depth: 1
 
 before_install:
+    - pip install --upgrade pip tox six
+    - pip3 install --upgrade pip tox six
     - eval "${MATRIX_EVAL}"
 
 script:
