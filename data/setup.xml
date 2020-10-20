@@ -126,13 +126,13 @@
 		<item level="2" text="Show True/False as graphical switch" description="Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch.">config.usage.boolean_graphic</item>
 	</setup>
 	<setup key="epgsettings" title="EPG settings">
-		<item level="2" text="EPG location" description="Choose the location where the EPG data will be stored when the %s %s is shut down. The location must be available at boot time.">config.misc.epgcachepath</item>
-		<item level="2" text="EPG filename" description="Choose the name of the file that holds the EPG data when the %s %s is shut down. This can be handy to differentiate between several boxes.">config.misc.epgcachefilename</item>
-		<item level="2" text="Automatic refresh" description="Allows the %s %s to read the stored EPG data regularly.">config.epg.cacheloadsched</item>
-		<item level="2" text="Refresh every (in hours)" requires="config.epg.cacheloadsched" description="The %s %s reads the stored EPG data every (hours).">config.epg.cacheloadtimer</item>
+		<item level="2" text="EPG location" description="Choose the location where the EPG data will be stored when receiver is shut down. The location must be available at boot time.">config.misc.epgcachepath</item>
+		<item level="2" text="EPG filename" description="Choose the name of the file that holds the EPG data when receiver is shut down. This can be handy to differentiate between several boxes.">config.misc.epgcachefilename</item>
+		<item level="2" text="Automatic refresh" description="Allows receiver to read the stored EPG data regularly.">config.epg.cacheloadsched</item>
+		<item level="2" text="Refresh every (in hours)" requires="config.epg.cacheloadsched" description="Receiver reads the stored EPG data every (hours).">config.epg.cacheloadtimer</item>
 		<item level="2" text="Save EPG data" description="Configure if epg.dat should be saved at all.">config.epg.saveepg</item>
-		<item level="2" text="Automatic save" description="Allows the %s %s to store the EPG data regularly.">config.epg.cachesavesched</item>
-		<item level="2" text="Save every (in hours)" requires="config.epg.cachesavesched" description="The %s %s stores the EPG data every (hours).">config.epg.cachesavetimer</item>
+		<item level="2" text="Automatic save" description="Allows receiver to store the EPG data regularly.">config.epg.cachesavesched</item>
+		<item level="2" text="Save every (in hours)" requires="config.epg.cachesavesched" description="Receiver stores the EPG data every (hours).">config.epg.cachesavetimer</item>
 		<item level="2" text="Show EIT now/next in infobar" description="Display the EIT now/next eventdata in infobar.">config.usage.show_eit_nownext</item>
 		<item level="2" text="Enable EIT EPG" description="Use EIT EPG information when it is available.">config.epg.eit</item>
 		<item level="2" text="Enable MHW EPG" description="Use MHW EPG information when it is available.">config.epg.mhw</item>
@@ -235,8 +235,8 @@
 		<item level="1" text="Aspect ratio" description="The aspect ratio of the recording.">config.hdmirecord.aspectratio</item>
 	</setup>
 	<setup key="fanspeed" title="Fan speed control" requires="FanPWM">
-		<item level="0" text="Normal speed" description="The speed of the fan when the %s %s is in normal use.">config.fans[0].pwm</item>
-		<item level="0" text="Standby speed" description="The speed of the fan when the %s %s is in standby mode.">config.fans[0].pwm_standby</item>
+		<item level="0" text="Normal speed" description="The speed of the fan when receiver is in normal use.">config.fans[0].pwm</item>
+		<item level="0" text="Standby speed" description="The speed of the fan when receiver is in standby mode.">config.fans[0].pwm_standby</item>
 	</setup>
 	<setup key="accesslevel" title="User Mode">
 		<item level="0" text="Setup mode" description="Configure which access level to use for the configuration menu. Expert level gives access to all items.">config.usage.setup_level</item>
