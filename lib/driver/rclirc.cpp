@@ -477,7 +477,7 @@ bool eLircInputDriver::Connect(void)
 	return false;
 }
 
-eLircInputDriver::eLircInputDriver() : eRCDriver(eRCInput::getInstance()), m_pump(eApp, 1)
+eLircInputDriver::eLircInputDriver() : eRCDriver(eRCInput::getInstance()), m_pump(eApp, 1, "ercLIRC")
 {
 	ASSERT(instance == 0);
 	instance = this;

@@ -10,7 +10,7 @@ DEFINE_REF(eErrorOutput)
 extern char *printtime(char buffer[], int size);
 
 eErrorOutput::eErrorOutput():
-	messages(this,1)
+	messages(this,1, "eErrorOutput")
 {
 	printout_timer = eTimer::create(this);
 //	fprintf(stderr, "[eErrorOutput] Constructor\n");
