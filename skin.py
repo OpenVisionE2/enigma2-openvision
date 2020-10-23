@@ -244,7 +244,7 @@ def parseCoordinate(s, e, size=0, font=None):
 			val = int(s)  # For speed try a simple number first.
 		except ValueError:
 			if font is None and ("w" in s or "h" in s):
-				print("[Skin] Error: 'w' or 'h' is being used in a field where neither is valid. Input string: '%s'" % orig)
+				print("[skin] Error: 'w' or 'h' is being used in a field where neither is valid. Input string: '%s'" % orig)
 				return 0
 			if "center" in s:
 				s = s.replace("center", str((e - size) / 2.0))
@@ -266,7 +266,7 @@ def parseCoordinate(s, e, size=0, font=None):
 				try:
 					val = int(eval(s))
 				except Exception as err:
-					print("[Skin] %s '%s': Coordinate '%s', processed to '%s', cannot be evaluated!" % (type(err).__name__, err, orig, s))
+					print("[skin] %s '%s': Coordinate '%s', processed to '%s', cannot be evaluated!" % (type(err).__name__, err, orig, s))
 					val = 0
 	# print("[Skin] DEBUG: parseCoordinate s='%s', e='%s', size=%s, font='%s', val='%s'." % (s, e, size, font, val))
 	if val < 0:
@@ -317,7 +317,7 @@ def parseFont(s, scale=((1, 1), (1, 1))):
 				size = size.replace("f", str(getSkinFactor()))
 				size = int(eval(size))
 			except Exception as err:
-				print("[Skin] %s '%s': font size formula '%s', processed to '%s', cannot be evaluated!" % (type(err).__name__, err, orig, s))
+				print("[skin] %s '%s': font size formula '%s', processed to '%s', cannot be evaluated!" % (type(err).__name__, err, orig, s))
 				size = None
 	else:
 		name = s
