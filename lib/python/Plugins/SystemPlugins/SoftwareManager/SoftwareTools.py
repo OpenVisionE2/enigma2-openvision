@@ -36,7 +36,7 @@ class SoftwareTools(PackageInfoHandler):
 		self.Console = Console()
 		self.UpdateConsole = Console()
 		self.cmdList = []
-		self.unwanted_extensions = ('-dbg', '-dev', '-doc', '-staticdev', '-src')
+		self.unwanted_extensions = ('-dev', '-staticdev', '-dbg', '-doc', '-src', '-po', '--pycache--')
 		self.opkg = OpkgComponent()
 		self.opkg.addCallback(self.opkgCallback)
 
