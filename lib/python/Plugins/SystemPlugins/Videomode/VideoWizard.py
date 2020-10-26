@@ -5,7 +5,8 @@ from Screens.Wizard import WizardSummary
 from Screens.WizardLanguage import WizardLanguage
 from Screens.Rc import Rc
 from Plugins.SystemPlugins.Videomode.VideoHardware import video_hw
-
+from Components.Sources.StaticText import StaticText
+from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.config import config, ConfigBoolean, configfile
 from Components.SystemInfo import SystemInfo
@@ -59,7 +60,12 @@ class VideoWizard(WizardLanguage, Rc):
 		Rc.__init__(self)
 		self["wizard"] = Pixmap()
 		self["portpic"] = Pixmap()
-
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 		self.port = None
 		self.mode = None
 		self.rate = None

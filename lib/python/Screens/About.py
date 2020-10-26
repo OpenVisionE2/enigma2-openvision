@@ -31,6 +31,12 @@ class About(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.setTitle(_("About"))
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 		hddsplit = skin.parameters.get("AboutHddSplit", 0)
 
 		model = getBoxType()
@@ -191,6 +197,12 @@ class OpenVisionInformation(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.setTitle(_("Open Vision information"))
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
 		OpenVisionInformationText = _("Open Vision information") + "\n"
 
@@ -343,6 +355,13 @@ class DVBInformation(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.setTitle(_("DVB information"))
+		self.setTitle(_("Open Vision information"))
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
 		DVBInformationText = _("DVB information") + "\n"
 
@@ -430,6 +449,13 @@ class Geolocation(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.setTitle(_("Geolocation"))
+		self.setTitle(_("Open Vision information"))
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
 		GeolocationText = _("Geolocation information") + "\n"
 
@@ -501,6 +527,12 @@ class BenchmarkInformation(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.setTitle(_("Benchmark information"))
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
 		BenchmarkInformationText = _("Benchmark information") + "\n"
 
@@ -529,6 +561,12 @@ class Devices(Screen):
 		self["HDDHeader"] = StaticText(_("Detected devices:"))
 		self["MountsHeader"] = StaticText(_("Network servers:"))
 		self["nims"] = StaticText()
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 		for count in (0, 1, 2, 3):
 			self["Tuner" + str(count)] = StaticText("")
 		self["hdd"] = StaticText()
@@ -670,6 +708,12 @@ class SystemNetworkInfo(Screen):
 		self["signal"] = StaticText()
 		self["bitrate"] = StaticText()
 		self["enc"] = StaticText()
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
 		self["IFtext"] = StaticText()
 		self["IF"] = StaticText()
@@ -951,9 +995,12 @@ class SystemMemoryInfo(Screen):
 		title = screentitle
 		Screen.setTitle(self, title)
 		self.skinName = ["SystemMemoryInfo", "About"]
-		self["lab1"] = StaticText(_("Open Vision enigma2 image"))
-		self["lab2"] = StaticText(_("by Open Vision developers"))
-		self["lab3"] = StaticText(_("Support at %s") % "https://openvision.tech")
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 		self["AboutScrollLabel"] = ScrollLabel()
 
 		self["key_red"] = Button(_("Close"))
@@ -1030,6 +1077,12 @@ class TranslationInfo(Screen):
 
 		self["key_red"] = Button(_("Cancel"))
 		self["TranslationInfo"] = StaticText(info)
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
 		translator_name = infomap.get("Language-Team", "none")
 		if translator_name == "none":
@@ -1048,6 +1101,12 @@ class CommitInfo(Screen):
 		Screen.__init__(self, session)
 		self.setTitle(_("Latest Commits"))
 		self.skinName = ["CommitInfo", "About"]
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 		self["AboutScrollLabel"] = ScrollLabel(_("Please wait"))
 
 		self["actions"] = ActionMap(["SetupActions", "DirectionActions"],
@@ -1156,6 +1215,13 @@ class MemoryInfo(Screen):
 		self["slide"] = ProgressBar()
 		self["slide"].setValue(100)
 
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
+
 		self["params"] = MemoryInfoSkinParams()
 
 		self['info'] = Label(_("This info is for developers only.\nFor normal users it is not relevant.\nPlease don't panic if you see values displayed looking suspicious!"))
@@ -1228,6 +1294,12 @@ class Troubleshoot(Screen):
 		self["AboutScrollLabel"] = ScrollLabel(_("Please wait"))
 		self["key_red"] = Button()
 		self["key_green"] = Button()
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
 		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ColorActions"],
 			{

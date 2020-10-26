@@ -11,6 +11,7 @@ except:
 	OverscanWizard = None
 from Components.Pixmap import Pixmap
 from Components.ProgressBar import ProgressBar
+from Components.Sources.StaticText import StaticText
 from Components.Label import Label
 from Components.ScrollLabel import ScrollLabel
 from Components.config import config, ConfigBoolean, configfile
@@ -28,6 +29,12 @@ class StartWizard(WizardLanguage, Rc):
 		WizardLanguage.__init__(self, session, showSteps = False)
 		Rc.__init__(self)
 		self["wizard"] = Pixmap()
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
 	def markDone(self):
 		config.misc.firstrun.value = 0
