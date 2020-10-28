@@ -7,7 +7,10 @@ from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Components.Converter.Poll import Poll
 import time
 import os
-from urllib2 import Request, urlopen
+try:
+	import urllib2
+except:
+	import urllib
 import socket
 import six
 
@@ -135,9 +138,15 @@ class YWeather(Poll, Converter, object):
 	def fetchXML(self, URL, save_to):
 		socket_timeout = 10
 		socket.setdefaulttimeout(socket_timeout)
-		req = Request(URL)
+		if six.PY2:
+			req = urllib2.Request(URL)
+		else:
+			req = urllib.request.Request(URL)
 		try:
-			response = urlopen(req)
+			if six.PY2:
+				response = urllib2.urlopen(req)
+			else:
+				response = urllib.request.urlopen(req)
 		except Exception as e:
 			if hasattr(e, 'code') and hasattr(e, 'reason'):
 				print("[YWeather] fetchXML Failed to retrieve XML file. Error: %s %s" % (str(e.code), str(e.reason)))
