@@ -9,6 +9,12 @@ import time
 import os
 from urllib2 import Request, urlopen
 import socket
+import six
+
+if six.PY2:
+	pyunichr = unichr
+else:
+	pyunichr = chr
 
 class YWeather(Poll, Converter, object):
 	weather_city = '2251945'
@@ -287,7 +293,7 @@ class YWeather(Poll, Converter, object):
 			info = xweather['ytext']
 		elif self.type == self.temp:
 			if info != "N/A":
-				info = xweather['ytemp'] + '%s' % unichr(176).encode("latin-1")
+				info = xweather['ytemp'] + '%s' % pyunichr(176).encode("latin-1")
 			else:
 				info = xweather['ytemp']
 		elif self.type == self.picon:
@@ -296,12 +302,12 @@ class YWeather(Poll, Converter, object):
 			info = xweather['ytextday2']
 		elif self.type == self.templow2:
 			if info != "N/A":
-				info = xweather['ytemplowday2'] + '%s' % unichr(176).encode("latin-1")
+				info = xweather['ytemplowday2'] + '%s' % pyunichr(176).encode("latin-1")
 			else:
 				info = xweather['ytemplowday2']
 		elif self.type == self.temphigh2:
 			if info != "N/A":
-				info = xweather['ytemphighday2'] + '%s' % unichr(176).encode("latin-1")
+				info = xweather['ytemphighday2'] + '%s' % pyunichr(176).encode("latin-1")
 			else:
 				info = xweather['ytemphighday2']
 		elif self.type == self.picon2:
@@ -331,12 +337,12 @@ class YWeather(Poll, Converter, object):
 			info = xweather['ytextday3']
 		elif self.type == self.templow3:
 			if info != "N/A":
-				info = xweather['ytemplowday3'] + '%s' % unichr(176).encode("latin-1")
+				info = xweather['ytemplowday3'] + '%s' % pyunichr(176).encode("latin-1")
 			else:
 				info = xweather['ytemplowday3']
 		elif self.type == self.temphigh3:
 			if info != "N/A":
-				info = xweather['ytemphighday3'] + '%s' % unichr(176).encode("latin-1")
+				info = xweather['ytemphighday3'] + '%s' % pyunichr(176).encode("latin-1")
 			else:
 				info = xweather['ytemphighday3']
 		elif self.type == self.picon3:
@@ -366,12 +372,12 @@ class YWeather(Poll, Converter, object):
 			info = xweather['ytextday4']
 		elif self.type == self.templow4:
 			if info != "N/A":
-				info = xweather['ytemplowday4'] + '%s' % unichr(176).encode("latin-1")
+				info = xweather['ytemplowday4'] + '%s' % pyunichr(176).encode("latin-1")
 			else:
 				info = xweather['ytemplowday4']
 		elif self.type == self.temphigh4:
 			if info != "N/A":
-				info = xweather['ytemphighday4'] + '%s' % unichr(176).encode("latin-1")
+				info = xweather['ytemphighday4'] + '%s' % pyunichr(176).encode("latin-1")
 			else:
 				info = xweather['ytemphighday4']
 		elif self.type == self.picon4:
@@ -401,12 +407,12 @@ class YWeather(Poll, Converter, object):
 			info = xweather['ytextday5']
 		elif self.type == self.templow5:
 			if info != "N/A":
-				info = xweather['ytemplowday5'] + '%s' % unichr(176).encode("latin-1")
+				info = xweather['ytemplowday5'] + '%s' % pyunichr(176).encode("latin-1")
 			else:
 				info = xweather['ytemplowday5']
 		elif self.type == self.temphigh5:
 			if info != "N/A":
-				info = xweather['ytemphighday5'] + '%s' % unichr(176).encode("latin-1")
+				info = xweather['ytemphighday5'] + '%s' % pyunichr(176).encode("latin-1")
 			else:
 				info = xweather['ytemphighday5']
 		elif self.type == self.picon5:

@@ -14,6 +14,7 @@ from Tools.Transponder import getChannelNumber, supportedChannels, channel2frequ
 from Screens.InfoBar import InfoBar
 from Screens.MessageBox import MessageBox
 from enigma import eTimer, eDVBFrontendParametersSatellite, eComponentScan, eDVBFrontendParametersTerrestrial, eDVBFrontendParametersCable, eConsoleAppContainer, eDVBResourceManager, eDVBFrontendParametersATSC, getBoxType
+import six
 
 def buildTerTransponder(frequency,
 	inversion=2, bandwidth = 7000000, fechigh = 6, feclow = 6,
@@ -192,7 +193,10 @@ class CableTransponderSearchSupport:
 
 	def getCableTransponderData(self, str):
 		#prepend any remaining data from the previous call
-		str = self.remainingdata + str
+		if six.PY2:
+			str = self.remainingdata + str
+		else:
+			str = self.remainingdata + str.decode()
 		#split in lines
 		lines = str.split('\n')
 		#'str' should end with '\n', so when splitting, the last line should be empty. If this is not the case, we received an incomplete line

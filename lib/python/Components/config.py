@@ -10,6 +10,12 @@ import copy
 import os
 from time import localtime, strftime
 from Components.SystemInfo import SystemInfo
+import six
+
+if six.PY2:
+	pyunichr = unichr
+else:
+	pyunichr = chr
 
 # ConfigElement, the base class of all ConfigElements.
 
@@ -146,7 +152,7 @@ class ConfigElement(object):
 		#     the entry could just be new.)
 		if initial_call:
 			if extra_args:
-				notifier(self,extra_args)
+				notifier(self, extra_args)
 			else:
 				notifier(self)
 
@@ -239,7 +245,7 @@ class choicesList(object):  # XXX: we might want a better name for this
 		if self.type == choicesList.LIST_TYPE_LIST:
 			ret = [not isinstance(x, tuple) and x or x[0] for x in self.choices]
 		else:
-			ret = self.choices.keys()
+			list(self.choices.keys())
 		return ret or [""]
 
 	def __iter__(self):
@@ -260,14 +266,17 @@ class choicesList(object):  # XXX: we might want a better name for this
 			if isinstance(ret, tuple):
 				ret = ret[0]
 			return ret
-		return self.choices.keys()[index]
+		return list(self.choices.keys())[index]
 
 	def index(self, value):
-		try:
-			return list(map(str, self.__list__())).index(str(value))
-		except (ValueError, IndexError):
-			# occurs e.g. when default is not in list
-			return 0
+		if six.PY2:
+			try:
+				return list(map(str, self.__list__())).index(str(value))
+			except (ValueError, IndexError):
+				# occurs e.g. when default is not in list
+				return 0
+		else:
+			return self.__list__().index(value)
 
 	def __setitem__(self, index, value):
 		if index == 0 and not self.choices:
@@ -279,7 +288,7 @@ class choicesList(object):  # XXX: we might want a better name for this
 			else:
 				self.choices[index] = value
 		else:
-			key = self.choices.keys()[index]
+			key = list(self.choices.keys())[index]
 			orig = self.choices[key]
 			del self.choices[key]
 			self.choices[value] = orig
@@ -293,7 +302,7 @@ class choicesList(object):  # XXX: we might want a better name for this
 			if isinstance(default, tuple):
 				default = default[0]
 		else:
-			default = choices.keys()[0]
+			default = list(choices.keys())[0]
 		return default
 
 class descriptionList(choicesList):  # XXX: we might want a better name for this
@@ -1236,7 +1245,7 @@ class ConfigText(ConfigElement, NumericalTextInput):
 			self.overwrite = not self.overwrite
 		elif key == KEY_ASCII:
 			self.timeout()
-			newChar = unichr(getPrevAsciiCode())
+			newChar = pyunichr(getPrevAsciiCode())
 			if not self.useableChars or newChar in self.useableChars:
 				if self.allmarked:
 					self.deleteAllChars()
@@ -1432,7 +1441,7 @@ class ConfigNumber(ConfigText):
 					return
 			else:
 				ascii = getKeyNumber(key) + 48
-			newChar = unichr(ascii)
+			newChar = pyunichr(ascii)
 			if self.allmarked:
 				self.deleteAllChars()
 				self.allmarked = False
@@ -2032,7 +2041,7 @@ class Config(ConfigSubsection):
 		ConfigSubsection.__init__(self)
 
 	def pickle_this(self, prefix, topickle, result):
-		for (key, val) in sorted(topickle.items(), key=lambda x: int(x[0]) if x[0].isdigit() else x[0].lower()):
+		for (key, val) in sorted(topickle.items(), key=lambda x: str(x[0]) if x[0].isdigit() else x[0].lower()):
 			name = '.'.join((prefix, key))
 			if isinstance(val, dict):
 				self.pickle_this(name, val, result)
@@ -2091,7 +2100,7 @@ class Config(ConfigSubsection):
 			os.fsync(f.fileno())
 			f.close()
 			os.rename(filename + ".writing", filename)
-		except IOError:
+		except IOError as e:
 			print("[config] Couldn't write %s" % filename)
 
 	def loadFromFile(self, filename, base_file=True):
