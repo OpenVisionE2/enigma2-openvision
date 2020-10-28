@@ -22,6 +22,12 @@ from Tools.BoundFunction import boundFunction
 from Tools.FallbackTimer import FallbackTimerList
 from time import localtime, strftime
 from Components.config import config
+import six
+
+if six.PY2:
+	pycode = func_code
+else:
+	pycode = __code__
 
 class EventViewBase:
 	ADD_TIMER = 0
@@ -235,13 +241,14 @@ class EventViewBase:
 			else:
 				self["channel"].setText(_("unknown service"))
 
-	def sort_func(self,x,y):
-		if x[1] < y[1]:
-			return -1
-		elif x[1] == y[1]:
-			return 0
-		else:
-			return 1
+	if six.PY2:
+		def sort_func(self,x,y):
+			if x[1] < y[1]:
+				return -1
+			elif x[1] == y[1]:
+				return 0
+			else:
+				return 1
 
 	def setEvent(self, event):
 		self.event = event
@@ -321,8 +328,12 @@ class EventViewBase:
 		ret = epgcache.search(('NB', 100, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, refstr, id))
 		if ret is not None:
 			text = '\n\n' + _('Similar broadcasts:')
-			ret.sort(self.sort_func)
-			for x in ret:
+			if six.PY2:
+				ret.sort(self.sort_func)
+				sortcommand = ret
+			else:
+				sortcommand = sorted(ret, key=lambda x: x[1])
+			for x in sortcommand:
 				text += "\n%s  -  %s" % (strftime(config.usage.date.long.value + ", " + config.usage.time.short.value, localtime(x[1])), x[0])
 
 			descr = self["epg_description"]
@@ -342,8 +353,8 @@ class EventViewBase:
 		if self.event:
 			text = _("Select action")
 			menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
-				if 'servicelist' not in p.__call__.func_code.co_varnames \
-					if 'selectedevent' not in p.__call__.func_code.co_varnames ]
+				if 'servicelist' not in p.__call__.pycode.co_varnames \
+					if 'selectedevent' not in p.__call__.pycode.co_varnames ]
 			if len(menu) == 1:
 				menu and menu[0][1]()
 			elif len(menu) > 1:

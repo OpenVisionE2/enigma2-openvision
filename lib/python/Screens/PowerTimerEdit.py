@@ -16,6 +16,9 @@ from Tools.BoundFunction import boundFunction
 from Tools.FuzzyDate import FuzzyTime
 from time import time
 from timer import TimerEntry as RealTimerEntry
+import six
+if six.PY3:
+	import functools
 
 class PowerTimerEditList(Screen):
 	EMPTY = 0
@@ -207,7 +210,10 @@ class PowerTimerEditList(Screen):
 		list.extend([(timer, False) for timer in self.session.nav.PowerTimer.timer_list])
 		list.extend([(timer, True) for timer in self.session.nav.PowerTimer.processed_timers])
 		if config.usage.timerlist_finished_timer_position.index: #end of list
-			list.sort(cmp = eol_compare)
+			if six.PY2:
+				list.sort(cmp = eol_compare)
+			else:
+				list.sort(key=functools.cmp_to_key(eol_compare))
 		else:
 			list.sort(key = lambda x: x[0].begin)
 

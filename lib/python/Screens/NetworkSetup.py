@@ -20,7 +20,10 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_CURRENT_SKIN
 from Tools.LoadPixmap import LoadPixmap
 from Plugins.Plugin import PluginDescriptor
 from enigma import eTimer, eConsoleAppContainer, getBoxType
-import commands
+try:
+	import commands
+except:
+	import subprocess as commands
 from Components.Console import Console
 from Screens.Standby import TryQuitMainloop
 from random import Random
@@ -32,7 +35,7 @@ import glob
 import fnmatch
 from Components.ScrollLabel import ScrollLabel
 from os import remove, unlink, rename
-
+import six
 
 # Define a function to determine whether a service is configured to start at boot time.
 # This checks for a start file in rc2.d (rc4.d might be more appropriate, but historically it's been rc2.d, so...).
@@ -1312,7 +1315,10 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 	def dataAvail(self,data):
 		self.LinkState = None
 		for line in data.splitlines():
-			line = line.strip()
+			if six.PY2:
+				line = line.strip()
+			else:
+				line = line.strip().decode()
 			if 'Link detected:' in line:
 				if "yes" in line:
 					self.LinkState = True

@@ -18,6 +18,7 @@ from Tools.Trashcan import getTrashFolder
 import NavigationInstance
 import skin
 from enigma import eListboxPythonMultiContent, eListbox, gFont, iServiceInformation, eSize, loadPNG, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_CENTER, BT_SCALE, BT_KEEP_ASPECT_RATIO, BT_HALIGN_CENTER, BT_VALIGN_CENTER, eServiceReference, eServiceCenter, eTimer, getDesktop
+import six
 
 AUDIO_EXTENSIONS = frozenset((".dts", ".mp3", ".wav", ".wave", ".wv", ".oga", ".ogg", ".flac", ".m4a", ".mp2", ".m2a", ".wma", ".ac3", ".mka", ".aac", ".ape", ".alac", ".amr", ".au", ".mid"))
 DVD_EXTENSIONS = frozenset((".iso", ".img", ".nrg"))
@@ -859,7 +860,10 @@ class MovieList(GUIComponent):
 		ref = x[0]
 		if ref.flags & eServiceReference.mustDescent:
 			return (0, x[1] and x[1].getName(ref).lower() or "")
-		return (1, -x[2])
+		if six.PY2:
+			return (1, -x[2])
+		else:
+			return (1, "", -x[2])
 
 	def buildGroupwiseSortkey(self, x):
 		# Sort recordings by date, sort MP3 and stuff by name

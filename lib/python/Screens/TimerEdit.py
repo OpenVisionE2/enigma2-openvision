@@ -24,6 +24,9 @@ from time import time
 from timer import TimerEntry as RealTimerEntry
 from ServiceReference import ServiceReference
 from enigma import eServiceReference, eEPGCache
+import six
+if six.PY3:
+	import functools
 
 class TimerEditList(Screen, ProtectedScreen):
 	EMPTY = 0
@@ -255,7 +258,10 @@ class TimerEditList(Screen, ProtectedScreen):
 		self.list.extend([(timer, True) for timer in self.session.nav.RecordTimer.processed_timers])
 
 		if config.usage.timerlist_finished_timer_position.index: #end of list
-			self.list.sort(cmp = eol_compare)
+			if six.PY2:
+				self.list.sort(cmp = eol_compare)
+			else:
+				self.list.sort(key=functools.cmp_to_key(eol_compare))
 		else:
 			self.list.sort(key = lambda x: x[0].begin)
 		self["timerlist"].l.setList(self.list)

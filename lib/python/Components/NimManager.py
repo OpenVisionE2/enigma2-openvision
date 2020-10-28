@@ -901,9 +901,9 @@ class NimManager:
 				if os.path.exists("/proc/stb/frontend/%d/rf_switch" % entry["frontend_device"]) and (not id or entries[id]["name"] == entries[id - 1]["name"]):
 					entry["internally_connectable"] = entry["frontend_device"] - 1
 				else:
-					entry["internally_connectable"] = None
+					entry["internally_connectable"] = -1
 			else:
-				entry["frontend_device"] = entry["internally_connectable"] = None
+				entry["frontend_device"] = entry["internally_connectable"] = -1
 			if "multi_type" not in entry:
 				entry["multi_type"] = {}
 			if "supports_blind_scan" not in entry:

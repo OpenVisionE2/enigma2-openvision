@@ -20,6 +20,12 @@ from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 from Tools.NumericalTextInput import NumericalTextInput
 from Components.config import config
+import six
+
+if six.PY2:
+	pyunichr = unichr
+else:
+	pyunichr = chr
 
 loadSkin('/usr/share/enigma2/VirtualKeyBoard_Icons/vkskin.xml')
 
@@ -1280,7 +1286,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 
 	def keyGotAscii(self):
 		self.smsChar = None
-		if self.selectAsciiKey(str(unichr(getPrevAsciiCode()).encode("utf-8"))):
+		if self.selectAsciiKey(str(pyunichr(getPrevAsciiCode()).encode("utf-8"))):
 			self.processSelect()
 
 	def selectAsciiKey(self, char):

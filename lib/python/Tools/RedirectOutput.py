@@ -1,9 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
-
 from enigma import ePythonOutput
-
+import six
 
 class EnigmaLog:
 	def __init__(self, level):
@@ -11,8 +10,12 @@ class EnigmaLog:
 		self.line = ""
 
 	def write(self, data):
-		if isinstance(data, unicode):
-			data = data.encode(encoding="UTF-8", errors="ignore")
+		if six.PY2:
+			if isinstance(data, unicode):
+				data = data.encode(encoding="UTF-8", errors="ignore")
+		else:
+			if isinstance(data, bytes):
+				data = data.decode(decoding="UTF-8", errors="ignore")
 		self.line += data
 		if "\n" in data:
 			ePythonOutput(self.line, self.level)

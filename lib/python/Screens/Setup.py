@@ -11,8 +11,8 @@ from Components.Pixmap import Pixmap
 from Components.Sources.StaticText import StaticText
 from Components.Sources.Boolean import Boolean
 from enigma import eEnv
-
 import xml.etree.cElementTree
+import six
 
 # FIXME: use resolveFile!
 # read the setupmenu
@@ -82,7 +82,10 @@ class Setup(ConfigListScreen, Screen):
 				self.setup = x
 				break
 
-		self.setup_title = self.setup.get("title", "").encode("UTF-8")
+		if six.PY2:
+			self.setup_title = self.setup.get("title", "").encode("UTF-8")
+		else:
+			self.setup_title = self.setup.get("title", "")
 		self.seperation = int(self.setup.get('separation', '0'))
 
 		#check for list.entries > 0 else self.close
@@ -147,8 +150,12 @@ class Setup(ConfigListScreen, Screen):
 					if not meets:
 						continue
 
-				item_text = _(x.get("text", "??").encode("UTF-8"))
-				item_description = _(x.get("description", " ").encode("UTF-8")) # don't change
+				if six.PY2:
+					item_text = _(x.get("text", "??").encode("UTF-8"))
+					item_description = _(x.get("description", " ").encode("UTF-8"))
+				else:
+					item_text = _(x.get("text", "??"))
+					item_description = _(x.get("description", " "))
 				b = eval(x.text or "")
 				if b == "":
 					continue
@@ -190,5 +197,8 @@ def getSetupTitle(id):
 	xmldata = setupdom.getroot()
 	for x in xmldata.findall("setup"):
 		if x.get("key") == id:
-			return x.get("title", "").encode("UTF-8")
+			if six.PY2:
+				return x.get("title", "").encode("UTF-8")
+			else:
+				return x.get("title", "")
 	raise SetupError("unknown setup id '%s'!" % repr(id))

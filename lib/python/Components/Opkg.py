@@ -5,6 +5,7 @@ import os
 from enigma import eConsoleAppContainer
 from Components.Harddisk import harddiskmanager
 from Tools.Directories import resolveFilename, SCOPE_LIBDIR
+import six
 
 opkgDestinations = []
 opkgStatusPath = ''
@@ -172,6 +173,8 @@ class OpkgComponent:
 		self.cmd.dataAvail.remove(self.cmdData)
 
 	def cmdData(self, data):
+		if six.PY3:
+			data = data.decode()
 		print("[Opkg] data:", data)
 		if self.cache is None:
 			self.cache = data

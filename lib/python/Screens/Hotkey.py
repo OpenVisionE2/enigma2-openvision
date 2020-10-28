@@ -18,6 +18,12 @@ from enigma import eServiceReference
 from Components.Pixmap import Pixmap
 from Components.Label import Label
 import os
+import six
+
+if six.PY2:
+	pycode = func_code
+else:
+	pycode = __code__
 
 class hotkey:
 	functions = None
@@ -144,7 +150,7 @@ def getHotkeyFunctions():
 	pluginlist = plugins.getPlugins(PluginDescriptor.WHERE_EVENTINFO)
 	pluginlist.sort(key=lambda p: p.name)
 	for plugin in pluginlist:
-		if plugin.name not in twinPlugins and plugin.path and 'selectedevent' not in plugin.__call__.func_code.co_varnames:
+		if plugin.name not in twinPlugins and plugin.path and 'selectedevent' not in plugin.__call__.pycode.co_varnames:
 			if plugin.path[24:] in twinPaths:
 				twinPaths[plugin.path[24:]] += 1
 			else:
@@ -636,7 +642,7 @@ class InfoBarHotkey():
 				pluginlist = plugins.getPlugins(PluginDescriptor.WHERE_EVENTINFO)
 				pluginlist.sort(key=lambda p: p.name)
 				for plugin in pluginlist:
-					if plugin.name not in twinPlugins and plugin.path and 'selectedevent' not in plugin.__call__.func_code.co_varnames:
+					if plugin.name not in twinPlugins and plugin.path and 'selectedevent' not in plugin.__call__.pycode.co_varnames:
 						if plugin.path[24:] in twinPaths:
 							twinPaths[plugin.path[24:]] += 1
 						else:

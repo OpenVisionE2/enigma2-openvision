@@ -5,6 +5,7 @@ from __future__ import print_function
 # similar things, like network connections being (un)plugged.
 import os
 import socket
+import six
 
 class NetlinkSocket(socket.socket):
 	def __init__(self):
@@ -15,7 +16,11 @@ class NetlinkSocket(socket.socket):
 	def parse(self):
 		data = self.recv(512)
 		event = {}
-		for item in data.split('\x00'):
+		if six.PY2:
+			splitdata = data.split('\x00')
+		else:
+			splitdata = data.split(b'\x00')
+		for item in splitdata:
 			if not item:
 				# terminator
 				yield event
