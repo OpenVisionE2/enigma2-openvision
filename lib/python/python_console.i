@@ -379,6 +379,21 @@ static PyMethodDef console_module_methods[] = {
 	{NULL}  /* Sentinel */
 };
 
+#if PY_MAJOR_VERSION >= 3
+	static struct PyModuleDef eConsole_moduledef = {
+	PyModuleDef_HEAD_INIT,
+	"eConsoleImpl",																			/* m_name */
+	"Module that implements eConsoleAppContainer with working cyclic garbage collection.",	/* m_doc */
+	-1,																						/* m_siz
+	console_module_methods,																	/* m_methods */
+	NULL,																					/* m_reload */
+	NULL,																					/* m_traverse */
+	NULL,																					/* m_clear */
+	NULL,																					/* m_free */
+	};
+#endif
+
+#if PY_MAJOR_VERSION < 3
 void eConsoleInit(void)
 {
 	PyObject* m = Py_InitModule3("eConsoleImpl", console_module_methods,
@@ -393,5 +408,23 @@ void eConsoleInit(void)
 		PyModule_AddObject(m, "eConsoleAppContainer", (PyObject*)&eConsolePyType);
 	}
 }
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+PyObject* PyInit_eConsoleImpl(void)
+{
+	PyObject* m = PyModule_Create(&eConsole_moduledef);
+
+	if (m == NULL)
+		return NULL;
+
+	if (!PyType_Ready(&eConsolePyType))
+	{
+		Org_Py_INCREF((PyObject*)&eConsolePyType);
+		PyModule_AddObject(m, "eConsoleAppContainer", (PyObject*)&eConsolePyType);
+	}
+	return m;
+}
+#endif
 }
 %}

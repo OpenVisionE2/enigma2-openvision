@@ -26,6 +26,8 @@
 
 #include <dvbsi++/ca_program_map_section.h>
 
+#include <Python.h>
+
 //#define CIDEBUG 1
 
 #ifdef CIDEBUG
@@ -1731,7 +1733,11 @@ RESULT eDVBCIInterfaces::setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject)
 			PyErr_SetString(PyExc_StandardError, buf);
 			return -1;
 		}
+#if PY_MAJOR_VERSION >= 3
+		const char *tmpstr = PyString_AS_STRING(refstr);
+#else
 		char *tmpstr = PyString_AS_STRING(refstr);
+#endif
 		eServiceReference ref(tmpstr);
 		if (ref.valid())
 			slot->possible_services.insert(ref);
@@ -1771,7 +1777,11 @@ RESULT eDVBCIInterfaces::setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject)
 			PyErr_SetString(PyExc_StandardError, buf);
 			return -1;
 		}
+#if PY_MAJOR_VERSION >= 3
+		const char *tmpstr = PyString_AS_STRING(PyTuple_GET_ITEM(tuple, 0));
+#else
 		char *tmpstr = PyString_AS_STRING(PyTuple_GET_ITEM(tuple, 0));
+#endif
 		uint32_t orbpos = PyLong_AsUnsignedLong(PyTuple_GET_ITEM(tuple, 1));
 		if (strlen(tmpstr))
 			slot->possible_providers.insert(std::pair<std::string, uint32_t>(tmpstr, orbpos));

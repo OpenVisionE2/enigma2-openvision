@@ -27,6 +27,8 @@
 #include <lib/base/nconfig.h>
 #include <dvbsi++/descriptor_tag.h>
 
+#include <Python.h>
+
 /* Interval between "garbage collect" cycles */
 #define CLEAN_INTERVAL 60000    //  1 min
 /* Restart EPG data capture */
@@ -3215,7 +3217,11 @@ int handleEvent(eServiceEvent *ptr, ePyObject dest_list, const char* argstring, 
 PyObject *eEPGCache::lookupEvent(ePyObject list, ePyObject convertFunc)
 {
 	ePyObject convertFuncArgs;
+#if PY_MAJOR_VERSION < 3
 	int argcount=0;
+#else
+	ssize_t argcount=0;
+#endif
 	const char *argstring=NULL;
 	if (!PyList_Check(list))
 	{
@@ -3664,7 +3670,11 @@ unsigned int eEPGCache::getEpgmaxdays()
 
 static const char* getStringFromPython(ePyObject obj)
 {
+#if PY_MAJOR_VERSION < 3
 	char *result = 0;
+#else
+	const char *result = 0;
+#endif
 	if (PyString_Check(obj))
 	{
 		result = PyString_AS_STRING(obj);
@@ -3691,7 +3701,11 @@ void eEPGCache::importEvents(ePyObject serviceReferences, ePyObject list)
 
 	if (PyString_Check(serviceReferences))
 	{
+#if PY_MAJOR_VERSION < 3
 		char *refstr;
+#else
+		const char *refstr;
+#endif
 		refstr = PyString_AS_STRING(serviceReferences);
 		if (!refstr)
 		{
@@ -3706,7 +3720,11 @@ void eEPGCache::importEvents(ePyObject serviceReferences, ePyObject list)
 		for (int i = 0; i < nRefs; ++i)
 		{
 			PyObject* item = PyList_GET_ITEM(serviceReferences, i);
+#if PY_MAJOR_VERSION < 3
 			char *refstr;
+#else
+			const char *refstr;
+#endif
 			refstr = PyString_AS_STRING(item);
 			if (!refstr)
 			{
@@ -3799,8 +3817,13 @@ PyObject *eEPGCache::search(ePyObject arg)
 	std::deque<uint32_t> descr;
 	int eventid = -1;
 	const char *argstring=0;
+#if PY_MAJOR_VERSION < 3
 	char *refstr=0;
 	int argcount=0;
+#else
+	const char *refstr=0;
+	ssize_t argcount=0;
+#endif
 	int querytype=-1;
 	bool needServiceEvent=false;
 	int maxmatches=0;
@@ -3815,8 +3838,12 @@ PyObject *eEPGCache::search(ePyObject arg)
 			ePyObject obj = PyTuple_GET_ITEM(arg,0);
 			if (PyString_Check(obj))
 			{
+#if PY_MAJOR_VERSION < 3
 				argcount = PyString_Size(obj);
 				argstring = PyString_AS_STRING(obj);
+#else
+				argstring = PyUnicode_AsUTF8AndSize(obj, &argcount);
+#endif
 				for (int i=0; i < argcount; ++i)
 					switch(argstring[i])
 					{
@@ -3858,7 +3885,11 @@ PyObject *eEPGCache::search(ePyObject arg)
 				ePyObject obj = PyTuple_GET_ITEM(arg, 3);
 				if (PyString_Check(obj))
 				{
+#if PY_MAJOR_VERSION < 3
 					refstr = PyString_AS_STRING(obj);
+#else
+					const char *refstr = PyString_AS_STRING(obj);
+#endif
 					eServiceReferenceDVB ref(refstr);
 					if (ref.valid())
 					{
@@ -3938,7 +3969,11 @@ PyObject *eEPGCache::search(ePyObject arg)
 						it != eventData::descriptors.end(); ++it)
 					{
 						uint8_t *data = it->second.data;
+#if PY_MAJOR_VERSION < 3
 						int textlen = 0;
+#else
+						ssize_t textlen = 0;
+#endif
 						const char *textptr = NULL;
 						if ( data[0] == 0x4D && querytype > 0 && querytype < 5 ) // short event descriptor
 						{

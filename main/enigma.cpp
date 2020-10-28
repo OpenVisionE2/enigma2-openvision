@@ -35,6 +35,8 @@
 #include "bsod.h"
 #include "version_info.h"
 
+#include <Python.h>
+
 #ifdef OBJECT_DEBUG
 int object_total_remaining;
 
@@ -237,7 +239,11 @@ int main(int argc, char **argv)
 	printf("DVB_API_VERSION %d DVB_API_VERSION_MINOR %d\n", DVB_API_VERSION, DVB_API_VERSION_MINOR);
 
 	// get enigma2 debug level settings
+#if PY_MAJOR_VERSION >= 3
+	debugLvl = getenv("ENIGMA_DEBUG_LVL") ? atoi(getenv("ENIGMA_DEBUG_LVL")) : 4;
+#else
 	debugLvl = getenv("ENIGMA_DEBUG_LVL") ? atoi(getenv("ENIGMA_DEBUG_LVL")) : 3;
+#endif
 	if (debugLvl < 0)
 		debugLvl = 0;
 	printf("ENIGMA_DEBUG_LVL=%d\n", debugLvl);
