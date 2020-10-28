@@ -3,6 +3,7 @@
 from __future__ import print_function
 import os
 from enigma import eConsoleAppContainer
+from Components.config import config
 from Components.Harddisk import harddiskmanager
 from Tools.Directories import resolveFilename, SCOPE_LIBDIR
 import six
@@ -62,8 +63,12 @@ def enumPlugins(filter_start=''):
 					package = line.split(":",1)[1].strip()
 					version = ''
 					description = ''
-					if package.startswith(filter_start) and not package.endswith('-dev') and not package.endswith('-staticdev') and not package.endswith('-dbg') and not package.endswith('-doc') and not package.endswith('-src') and not package.endswith('-po') and not package.endswith('--pycache--'):
-						continue
+					if config.misc.extraopkgpackages.value is True:
+						if package.startswith(filter_start) and not package.endswith('--pycache--'):
+							continue
+					else:
+						if package.startswith(filter_start) and not package.endswith('-dev') and not package.endswith('-staticdev') and not package.endswith('-dbg') and not package.endswith('-doc') and not package.endswith('-src') and not package.endswith('-po') and not package.endswith('--pycache--'):
+							continue
 					package = None
 				if package is None:
 					continue

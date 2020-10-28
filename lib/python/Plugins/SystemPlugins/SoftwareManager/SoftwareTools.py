@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from Components.config import config
 from Components.Console import Console
 from Components.About import about
 from Components.PackageInfo import PackageInfoHandler
@@ -10,7 +11,6 @@ from Components.Network import iNetwork
 from Tools.Directories import resolveFilename, SCOPE_METADIR
 from enigma import getBoxType
 from time import time
-
 
 class SoftwareTools(PackageInfoHandler):
 	lastDownloadDate = None
@@ -36,7 +36,10 @@ class SoftwareTools(PackageInfoHandler):
 		self.Console = Console()
 		self.UpdateConsole = Console()
 		self.cmdList = []
-		self.unwanted_extensions = ('-dev', '-staticdev', '-dbg', '-doc', '-src', '-po', '--pycache--')
+		if config.misc.extraopkgpackages.value is True:
+			self.unwanted_extensions = ('--pycache--')
+		else:
+			self.unwanted_extensions = ('-dev', '-staticdev', '-dbg', '-doc', '-src', '-po', '--pycache--')
 		self.opkg = OpkgComponent()
 		self.opkg.addCallback(self.opkgCallback)
 
