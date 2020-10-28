@@ -25,6 +25,7 @@ from Tools.LoadPixmap import LoadPixmap
 
 from time import time
 import os
+import six
 
 language.addCallback(plugins.reloadPlugins)
 
@@ -240,7 +241,7 @@ class PluginBrowser(Screen, ProtectedScreen):
 		self.checkWarnings()
 
 	def openExtensionmanager(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/SoftwareManager/plugin.pyo")):
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/SoftwareManager/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/SoftwareManager/plugin.py")):
 			try:
 				from Plugins.SystemPlugins.SoftwareManager.plugin import PluginManager
 			except ImportError as e:
@@ -481,6 +482,8 @@ class PluginDownloadBrowser(Screen):
 
 	def dataAvail(self, str):
 		#prepend any remaining data from the previous call
+		if six.PY3:
+			str = str.decode()
 		str = self.remainingdata + str
 		#split in lines
 		lines = str.split('\n')

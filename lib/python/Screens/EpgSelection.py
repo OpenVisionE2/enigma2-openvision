@@ -30,6 +30,12 @@ from Components.Button import Button
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN, fileExists, SCOPE_PLUGINS
 from Screens.MessageBox import MessageBox
 from Components.Console import Console
+import six
+
+if six.PY2:
+	pycode = func_code
+else:
+	pycode = __code__
 
 mepg_config_initialized = False
 
@@ -117,12 +123,12 @@ class EPGSelection(Screen):
 				"preview": self.eventPreview,
 			})
 
-		self['colouractions'] = HelpableActionMap(self, ["ColorActions"],
+		self['colouractions'] = HelpableActionMap(self, ['ColorActions'],
 			{
 				"red": (self.GoToTmbd, _("Search event in TMBD"))
 			})
 
-		self.isTMBD = fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo"))
+		self.isTMBD = fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py"))
 		if self.isTMBD:
 			self["key_red"] = Button(_("Search TMBD"))
 			self.select = True
@@ -150,13 +156,13 @@ class EPGSelection(Screen):
 			self.fallbackTimer = FallbackTimerList(self, self.onCreate)
 
 	def GoToTmbd(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")):
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py")):
 			self.runTMBD()
-		if not fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")):
+		if not fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) and not fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py")):
 			self.session.openWithCallback(self.doInstall, MessageBox, _('The TMBD plugin is not installed!\nDo you want to install it?'), MessageBox.TYPE_YESNO)
 
 	def runTMBD(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")):
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py")):
 			from Plugins.Extensions.TMBD.plugin import TMBD
 			description=_("TMBD Details")
 			description=_("TMBD details for event")
@@ -233,7 +239,7 @@ class EPGSelection(Screen):
 		event = self["list"].getCurrent()[0]
 		if event:
 			menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
-				if 'selectedevent' in p.__call__.func_code.co_varnames]
+				if 'selectedevent' in p.__call__.pycode.co_varnames]
 			if menu:
 				text += ": %s" % event.getEventName()
 		if self.type == EPG_TYPE_MULTI:
