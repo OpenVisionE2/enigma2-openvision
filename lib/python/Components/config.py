@@ -245,7 +245,10 @@ class choicesList(object):  # XXX: we might want a better name for this
 		if self.type == choicesList.LIST_TYPE_LIST:
 			ret = [not isinstance(x, tuple) and x or x[0] for x in self.choices]
 		else:
-			list(self.choices.keys())
+			if six.PY2:
+				ret = self.choices.keys()
+			else:
+				list(self.choices.keys())
 		return ret or [""]
 
 	def __iter__(self):
