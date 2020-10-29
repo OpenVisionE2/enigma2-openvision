@@ -49,11 +49,6 @@ import os, unicodedata
 from time import time
 import six
 
-if six.PY2:
-	pycode = func_code
-else:
-	pycode = __code__
-
 profile("ChannelSelection.py after imports")
 
 FLAG_SERVICE_NEW_FOUND = 64
@@ -754,8 +749,12 @@ class ChannelSelectionEPG(InfoBarHotkey):
 		Screens.InfoBar.InfoBar.instance.runPlugin(plugin)
 
 	def getEPGPluginList(self, getAll=False):
-		pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
-				if 'selectedevent' not in p.__call__.pycode.co_varnames] or []
+		if six.PY2:
+			pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
+					if 'selectedevent' not in p.__call__.func_code.co_varnames] or []
+		else:
+			pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
+					if 'selectedevent' not in p.__call__.__code__.co_varnames] or []
 		from Components.ServiceEventTracker import InfoBarCount
 		if getAll or InfoBarCount == 1:
 			pluginlist.append((_("Show EPG for current channel..."), self.openSingleServiceEPG, _("Display EPG list for current channel")))

@@ -24,11 +24,6 @@ from time import localtime, strftime
 from Components.config import config
 import six
 
-if six.PY2:
-	pycode = func_code
-else:
-	pycode = __code__
-
 class EventViewBase:
 	ADD_TIMER = 0
 	REMOVE_TIMER = 1
@@ -352,9 +347,14 @@ class EventViewBase:
 	def doContext(self):
 		if self.event:
 			text = _("Select action")
-			menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
-				if 'servicelist' not in p.__call__.pycode.co_varnames \
-					if 'selectedevent' not in p.__call__.pycode.co_varnames ]
+			if six.PY2:
+				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
+					if 'servicelist' not in p.__call__.func_code.co_varnames \
+						if 'selectedevent' not in p.__call__.func_code.co_varnames ]
+			else:
+				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
+					if 'servicelist' not in p.__call__.__code__.co_varnames \
+						if 'selectedevent' not in p.__call__.__code__.co_varnames ]
 			if len(menu) == 1:
 				menu and menu[0][1]()
 			elif len(menu) > 1:

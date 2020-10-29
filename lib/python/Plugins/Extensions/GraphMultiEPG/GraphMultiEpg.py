@@ -40,11 +40,6 @@ from Plugins.Plugin import PluginDescriptor
 from Tools.BoundFunction import boundFunction
 import six
 
-if six.PY2:
-	pycode = func_code
-else:
-	pycode = __code__
-
 MAX_TIMELINES = 6
 
 config.misc.graph_mepg = ConfigSubsection()
@@ -1150,8 +1145,12 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		text = _("Select action")
 		event = self["list"].getCurrent()[0]
 		if event:
-			menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
-				if 'selectedevent' in p.__call__.pycode.co_varnames]
+			if six.PY2:
+				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
+					if 'selectedevent' in p.__call__.func_code.co_varnames]
+			else:
+				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO) \
+					if 'selectedevent' in p.__call__.__code__.co_varnames]
 			if menu:
 				text += ": %s" % event.getEventName()
 			keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "red", "green", "yellow"][:len(menu)] + (len(menu) - 13) * [""] + keys
