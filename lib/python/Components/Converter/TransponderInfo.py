@@ -29,7 +29,7 @@ class TransponderInfo(Converter, object):
 				ref = nref
 				info = eServiceCenter.getInstance().info(ref)
 			transponderraw = info.getInfoObject(ref, iServiceInformation.sTransponderData)
-			ref = ref.toString().replace("%3a",":")
+			ref = ref.toString().replace("%3a", ":")
 		else:
 			transponderraw = info.getInfoObject(iServiceInformation.sTransponderData)
 			ref = info.getInfoString(iServiceInformation.sServiceref)
@@ -41,7 +41,7 @@ class TransponderInfo(Converter, object):
 				transponderdata["system"] = transponderraw.get("tuner_type", "None")
 			try:
 				if "DVB-T" in transponderdata["system"]:
-					return "%s %s-%s %s %d MHz %s" % (transponderdata["system"], tsid, onid, transponderdata["channel"], transponderdata["frequency"]/1000000 + 0.5 , transponderdata["bandwidth"])
+					return "%s %s-%s %s %d MHz %s" % (transponderdata["system"], tsid, onid, transponderdata["channel"], transponderdata["frequency"]/1000000 + 0.5, transponderdata["bandwidth"])
 				elif "DVB-C" in transponderdata["system"]:
 					return "%s %s-%s %d MHz %d %s %s" % (transponderdata["system"], tsid, onid, transponderdata["frequency"]/1000 + 0.5, transponderdata["symbol_rate"]/1000 + 0.5, transponderdata["fec_inner"], \
 						transponderdata["modulation"])

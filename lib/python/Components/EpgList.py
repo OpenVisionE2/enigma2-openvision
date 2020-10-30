@@ -375,7 +375,7 @@ class EPGList(GUIComponent):
 		x = self.l.getCurrentSelection()
 		return x and x[1]
 
-	def moveToService(self,serviceref):
+	def moveToService(self, serviceref):
 		if not serviceref:
 			return
 		index = 0
@@ -412,9 +412,9 @@ class EPGList(GUIComponent):
 		def warningWrongSkinParameter(string):
 			print("[EpgList] wrong '%s' skin parameters" % string)
 		def setEventItemFont(value):
-			self.eventItemFont = parseFont(value, ((1,1),(1,1)))
+			self.eventItemFont = parseFont(value, ((1, 1), (1, 1)))
 		def setEventTimeFont(value):
-			self.eventTimeFont = parseFont(value, ((1,1),(1,1)))
+			self.eventTimeFont = parseFont(value, ((1, 1), (1, 1)))
 		def setIconDistance(value):
 			self.iconDistance = int(value)
 		def setIconShift(value):

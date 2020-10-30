@@ -31,7 +31,7 @@ class SymbolsCheckPoller:
 		self.led = "0"
 		self.timer = eTimer()
 		self.onClose = []
-		self.__event_tracker = ServiceEventTracker(screen=self,eventmap=
+		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
 			{
 				iPlayableService.evUpdatedInfo: self.__evUpdatedInfo,
 			})
@@ -81,7 +81,7 @@ class SymbolsCheckPoller:
 				open("/proc/stb/lcd/symbol_circle", "w").write("3")
 			else:
 				open("/proc/stb/lcd/symbol_circle", "w").write("0")
-		elif model in ("alphatriplehd","sf3038") or brand == "ebox" and fileExists("/proc/stb/lcd/symbol_recording"):
+		elif model in ("alphatriplehd", "sf3038") or brand == "ebox" and fileExists("/proc/stb/lcd/symbol_recording"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			if recordings > 0:
 				open("/proc/stb/lcd/symbol_recording", "w").write("1")
@@ -93,7 +93,7 @@ class SymbolsCheckPoller:
 				open("/proc/stb/lcd/symbol_pvr2", "w").write("1")
 			else:
 				open("/proc/stb/lcd/symbol_pvr2", "w").write("0")
-		elif model in ("osninopro","9910lx","9911lx","osnino","osninoplus","9920lx") or brand in ("linkdroid","wetek","ixuss") and fileExists("/proc/stb/lcd/powerled"):
+		elif model in ("osninopro", "9910lx", "9911lx", "osnino", "osninoplus", "9920lx") or brand in ("linkdroid", "wetek", "ixuss") and fileExists("/proc/stb/lcd/powerled"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
@@ -105,7 +105,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			elif self.led == "1":
 				open("/proc/stb/lcd/powerled", "w").write("0")
-		elif model in ("mbmicrov2","mbmicro","e4hd","e4hdhybrid") and fileExists("/proc/stb/lcd/powerled"):
+		elif model in ("mbmicrov2", "mbmicro", "e4hd", "e4hdhybrid") and fileExists("/proc/stb/lcd/powerled"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
@@ -117,7 +117,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			elif self.led == "1":
 				open("/proc/stb/lcd/powerled", "w").write("1")
-		elif model in ("dm7020hd","dm7020hdv2") and fileExists("/proc/stb/fp/led_set"):
+		elif model in ("dm7020hd", "dm7020hdv2") and fileExists("/proc/stb/fp/led_set"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:
@@ -129,7 +129,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			else:
 				open("/proc/stb/fp/led_set", "w").write("0xffffffff")
-		elif platform in ("dags7362","dags73625") or model in ("tmtwin4k","revo4k","force3uhd") and fileExists("/proc/stb/lcd/symbol_rec"):
+		elif platform in ("dags7362", "dags73625") or model in ("tmtwin4k", "revo4k", "force3uhd") and fileExists("/proc/stb/lcd/symbol_rec"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			if recordings > 0:

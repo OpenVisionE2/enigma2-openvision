@@ -90,7 +90,7 @@ class Network:
 			data['netmask'] = [0, 0, 0, 0]
 			data['gateway'] = [0, 0, 0, 0]
 		self.ifaces[iface] = data
-		self.loadNetworkConfig(iface,callback)
+		self.loadNetworkConfig(iface, callback)
 
 	def writeNetworkConfig(self):
 		self.configuredInterfaces = []
@@ -180,7 +180,7 @@ class Network:
 				if split[0] == "pre-up":
 					if "preup" in self.ifaces[currif]:
 						self.ifaces[currif]["preup"] = i
-				if split[0] in ("pre-down","post-down"):
+				if split[0] in ("pre-down", "post-down"):
 					if "predown" in self.ifaces[currif]:
 						self.ifaces[currif]["predown"] = i
 
@@ -392,7 +392,7 @@ class Network:
 			self.commands.append(self.ifconfig_bin + " wlan0 down")
 			self.commands.append(self.ifconfig_bin + " ath0 down")
 		self.commands.append(self.avahi_daemon + " start")
-		self.resetNetworkConsole.eBatch(self.commands, self.resetNetworkFinished, [mode,callback], debug=True)
+		self.resetNetworkConsole.eBatch(self.commands, self.resetNetworkFinished, [mode, callback], debug=True)
 
 	def resetNetworkFinished(self, extra_args):
 		(mode, callback) = extra_args
@@ -400,13 +400,13 @@ class Network:
 			if callback is not None:
 				callback(True, mode)
 
-	def checkNetworkState(self,statecallback):
+	def checkNetworkState(self, statecallback):
 		self.NetworkState = 0
 		self.pingConsole = Console()
 		for server in ("www.google.com", "www.bing.com", "www.microsoft.com"):
-			self.pingConsole.ePopen((self.ping_bin, self.ping_bin, "-c", "1", server), self.checkNetworkStateFinished,statecallback)
+			self.pingConsole.ePopen((self.ping_bin, self.ping_bin, "-c", "1", server), self.checkNetworkStateFinished, statecallback)
 
-	def checkNetworkStateFinished(self, result, retval,extra_args):
+	def checkNetworkStateFinished(self, result, retval, extra_args):
 		(statecallback) = extra_args
 		if self.pingConsole is not None:
 			if retval == 0:
@@ -433,7 +433,7 @@ class Network:
 		self.commands.append(self.avahi_daemon + " start")
 		self.restartConsole.eBatch(self.commands, self.restartNetworkFinished, callback, debug=True)
 
-	def restartNetworkFinished(self,extra_args):
+	def restartNetworkFinished(self, extra_args):
 		( callback ) = extra_args
 		if callback is not None:
 			try:
@@ -441,8 +441,8 @@ class Network:
 			except:
 				pass
 
-	def getLinkState(self,iface,callback):
-		self.linkConsole.ePopen((self.ethtool_bin, self.ethtool_bin, iface), self.getLinkStateFinished,callback)
+	def getLinkState(self, iface, callback):
+		self.linkConsole.ePopen((self.ethtool_bin, self.ethtool_bin, iface), self.getLinkStateFinished, callback)
 
 	def getLinkStateFinished(self, result, retval, extra_args):
 		(callback) = extra_args
@@ -483,13 +483,13 @@ class Network:
 			else:
 				return False
 
-	def checkDNSLookup(self,statecallback):
+	def checkDNSLookup(self, statecallback):
 		self.DnsState = 0
 		self.dnsConsole = Console()
 		for server in ("www.google.com", "www.bing.com", "www.microsoft.com"):
 			self.dnsConsole.ePopen((self.nslookup_bin, self.nslookup_bin, server), self.checkDNSLookupFinished, statecallback)
 
-	def checkDNSLookupFinished(self, result, retval,extra_args):
+	def checkDNSLookupFinished(self, result, retval, extra_args):
 		(statecallback) = extra_args
 		if self.dnsConsole is not None:
 			if retval == 0:
@@ -521,9 +521,9 @@ class Network:
 					callback(True)
 				return
 			buildCommands(ifaces)
-		self.deactivateInterfaceConsole.eBatch(commands, self.deactivateInterfaceFinished, (ifaces,callback), debug=True)
+		self.deactivateInterfaceConsole.eBatch(commands, self.deactivateInterfaceFinished, (ifaces, callback), debug=True)
 
-	def deactivateInterfaceFinished(self,extra_args):
+	def deactivateInterfaceFinished(self, extra_args):
 		(ifaces, callback) = extra_args
 		if not self.deactivateInterfaceConsole.appContainers:
 			if callback is not None:
@@ -541,7 +541,7 @@ class Network:
 		commands.append((self.ifup_bin, self.ifup_bin, iface))
 		self.activateInterfaceConsole.eBatch(commands, self.activateInterfaceFinished, callback, debug=True)
 
-	def activateInterfaceFinished(self,extra_args):
+	def activateInterfaceFinished(self, extra_args):
 		callback = extra_args
 		if not self.activateInterfaceConsole.appContainers:
 			if callback is not None:
@@ -612,7 +612,7 @@ class Network:
 		moduledir = self.getWlanModuleDir(iface)
 		if moduledir:
 			module = os.path.basename(os.path.realpath(moduledir))
-			if module in ('ath_pci','ath5k'):
+			if module in ('ath_pci', 'ath5k'):
 				return 'madwifi'
 			if module == 'rt73':
 				return 'ralink'
@@ -622,7 +622,7 @@ class Network:
 				return 'brcm-wl'
 		return 'wext'
 
-	def calc_netmask(self,nmask):
+	def calc_netmask(self, nmask):
 		from struct import pack
 		from socket import inet_ntoa
 		mask = 1L<<31

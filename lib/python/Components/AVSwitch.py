@@ -27,18 +27,18 @@ class AVSwitch:
 	def getOutputAspect(self):
 		valstr = config.av.aspectratio.value
 		if valstr in ("4_3_letterbox", "4_3_panscan"): # 4:3
-			return (4,3)
+			return (4, 3)
 		elif valstr == "16_9": # auto ... 4:3 or 16:9
 			try:
 				if "1" in open("/proc/stb/vmpeg/0/aspect", "r").read(): # 4:3
-					return (4,3)
+					return (4, 3)
 			except IOError:
 				pass
 		elif valstr in ("16_9_always", "16_9_letterbox"): # 16:9
 			pass
 		elif valstr in ("16_10_letterbox", "16_10_panscan"): # 16:10
-			return (16,10)
-		return (16,9)
+			return (16, 10)
+		return (16, 9)
 
 	def getFramebufferScale(self):
 		aspect = self.getOutputAspect()
@@ -183,7 +183,7 @@ def InitAVSwitch():
 	config.av.wss.addNotifier(setWSS)
 
 	iAVSwitch.setInput("ENCODER") # init on startup
-	if platform == "gb7356" or model in ("et5x00","et6x00","ixussone","ixusszero","axodin","axase3","optimussos1","optimussos2","gb800seplus","gb800ueplus","gbultrase","gbultraue","gbultraueh","twinboxlcd"):
+	if platform == "gb7356" or model in ("et5x00", "et6x00", "ixussone", "ixusszero", "axodin", "axase3", "optimussos1", "optimussos2", "gb800seplus", "gb800ueplus", "gbultrase", "gbultraue", "gbultraueh", "twinboxlcd"):
 		detected = False
 	else:
 		detected = eAVSwitch.getInstance().haveScartSwitch()
@@ -209,7 +209,7 @@ def InitAVSwitch():
 		if SystemInfo["DreamBoxAudio"]:
 			choice_list = [("use_hdmi_caps", _("controlled by HDMI")), ("force_ac3", _("convert to AC3")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI")), ("force_ddp",  _("force AC3plus"))]
 			config.av.transcodeac3plus = ConfigSelection(choices = choice_list, default = "force_ac3")
-		elif platform in ("gb7252","gb72604"):
+		elif platform in ("gb7252", "gb72604"):
 			choice_list = [("downmix", _("Downmix")), ("passthrough", _("Passthrough")), ("force_ac3", _("convert to AC3")), ("multichannel",  _("convert to multi-channel PCM")), ("force_dts",  _("convert to DTS"))]
 			config.av.transcodeac3plus = ConfigSelection(choices = choice_list, default = "force_ac3")
 		else:
@@ -226,7 +226,7 @@ def InitAVSwitch():
 	if SystemInfo["CanDTSHD"]:
 		def setDTSHD(configElement):
 			open("/proc/stb/audio/dtshd", "w").write(configElement.value)
-		if model in ("dm7080","dm820"):
+		if model in ("dm7080", "dm820"):
 			choice_list = [("use_hdmi_caps",  _("controlled by HDMI")), ("force_dts", _("convert to DTS"))]
 			config.av.dtshd = ConfigSelection(choices = choice_list, default = "use_hdmi_caps")
 		else:
@@ -243,14 +243,14 @@ def InitAVSwitch():
 
 	if SystemInfo["CanDownmixAAC"]:
 		def setAACDownmix(configElement):
-			if SystemInfo["DreamBoxAudio"] or platform in ("gb7252","gb72604"):
+			if SystemInfo["DreamBoxAudio"] or platform in ("gb7252", "gb72604"):
 				open("/proc/stb/audio/aac", "w").write(configElement.value)
 			else:
 				open("/proc/stb/audio/aac", "w").write(configElement.value and "downmix" or "passthrough")
 		if SystemInfo["DreamBoxAudio"]:
 			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI"))]
 			config.av.downmix_aac = ConfigSelection(choices = choice_list, default = "downmix")
-		elif platform in ("gb7252","gb72604"):
+		elif platform in ("gb7252", "gb72604"):
 			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("force_ac3", _("convert to AC3")), ("force_dts",  _("convert to DTS")), ("use_hdmi_cacenter",  _("use_hdmi_cacenter")), ("wide",  _("wide")), ("extrawide",  _("extrawide"))]
 			config.av.downmix_aac = ConfigSelection(choices = choice_list, default = "downmix")
 		else:
@@ -293,7 +293,7 @@ def InitAVSwitch():
 	if SystemInfo["CanChangeOsdAlpha"]:
 		def setAlpha(config):
 			open("/proc/stb/video/alpha", "w").write(str(config.value))
-		config.av.osd_alpha = ConfigSlider(default=255, limits=(0,255))
+		config.av.osd_alpha = ConfigSlider(default=255, limits=(0, 255))
 		config.av.osd_alpha.addNotifier(setAlpha)
 
 	if SystemInfo["ScalerSharpness"]:
@@ -307,9 +307,9 @@ def InitAVSwitch():
 				print("[AVSwitch] couldn't write pep_scaler_sharpness")
 
 		if platform == "gb7356":
-			config.av.scaler_sharpness = ConfigSlider(default=5, limits=(0,26))
+			config.av.scaler_sharpness = ConfigSlider(default=5, limits=(0, 26))
 		else:
-			config.av.scaler_sharpness = ConfigSlider(default=13, limits=(0,26))
+			config.av.scaler_sharpness = ConfigSlider(default=13, limits=(0, 26))
 		config.av.scaler_sharpness.addNotifier(setScaler_sharpness)
 	else:
 		config.av.scaler_sharpness = NoSave(ConfigNothing())

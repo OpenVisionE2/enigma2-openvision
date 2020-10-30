@@ -61,7 +61,7 @@ class ChoiceBox(Screen):
 				self.list.append(ChoiceEntryComponent(key = strpos, text = x))
 				if self.__keys[pos] != "":
 					self.keymap[self.__keys[pos]] = list[pos]
-				self.summarylist.append((self.__keys[pos],x[0]))
+				self.summarylist.append((self.__keys[pos], x[0]))
 				pos += 1
 
 		self["list"] = ChoiceList(list = self.list, selection = selection)
@@ -134,8 +134,8 @@ class ChoiceBox(Screen):
 		# resize list
 		self["list"].instance.resize(enigma.eSize(*(wsizex, offset)))
 		# center window
-		width,height = enigma.getDesktop(0).size().width(), enigma.getDesktop(0).size().height()
-		self.instance.move(enigma.ePoint((width - wsizex)/2,(height - wsizey)/2))
+		width, height = enigma.getDesktop(0).size().width(), enigma.getDesktop(0).size().height()
+		self.instance.move(enigma.ePoint((width - wsizex)/2, (height - wsizey)/2))
 
 	def keyLeft(self):
 		pass

@@ -59,21 +59,21 @@ def MenuEntryPixmap(entryID, png_cache, lastMenuID):
 
 def MenuEntryName(name):
 	def splitUpperCase(name, maxlen):
-		for c in range(len(name),0,-1):
+		for c in range(len(name), 0, -1):
 			if name[c-1].isupper() and c-1 and c-1 <= maxlen:
 				return name[:c-1] + "-:-" + name[c-1:]
 		return name
 	def splitLowerCase(name, maxlen):
-		for c in range(len(name),0,-1):
+		for c in range(len(name), 0, -1):
 			if name[c-1].islower() and c-1 and c-1 <= maxlen:
 				return name[:c-1] + "-:-" + name[c-1:]
 		return name
 	def splitName(name, maxlen):
 		for s in (" ", "-", "/"):
-			pos = name.rfind(s,0,maxlen+1)
+			pos = name.rfind(s, 0, maxlen+1)
 			if pos > 1:
 				return [name[:pos+1] if pos+1 <= maxlen and s != " " else name[:pos], name[pos+1:]]
-		return splitUpperCase(name, maxlen).split("-:-",1)
+		return splitUpperCase(name, maxlen).split("-:-", 1)
 
 	maxrow = 3
 	maxlen = 18
@@ -81,14 +81,14 @@ def MenuEntryName(name):
 	if len(name) > maxlen and maxrow > 1:
 		namesplit = splitName(name, maxlen)
 		if len(namesplit) == 1 or (len(namesplit) == 2 and len(namesplit[1]) > maxlen * (maxrow-1)):
-			tmp = splitLowerCase(name, maxlen).split("-:-",1)
+			tmp = splitLowerCase(name, maxlen).split("-:-", 1)
 			if len(tmp[0]) > len(namesplit[0]) or len(namesplit) < 2:
 				namesplit = tmp
-		for x in range(1,maxrow):
+		for x in range(1, maxrow):
 			if len(namesplit) > x and len(namesplit) < maxrow and len(namesplit[x]) > maxlen:
 				tmp = splitName(namesplit[x], maxlen)
 				if len(tmp) == 1 or (len(tmp) == 2 and len(tmp[1]) > maxlen * (maxrow-x)):
-					tmp = splitLowerCase(namesplit[x], maxlen).split("-:-",1)
+					tmp = splitLowerCase(namesplit[x], maxlen).split("-:-", 1)
 				if len(tmp) == 2:
 					namesplit.pop(x)
 					namesplit.extend(tmp)
@@ -427,8 +427,8 @@ class Menu(Screen, ProtectedScreen):
 		if "user" in config.usage.menu_sort_mode.value and self.menuID == "mainmenu":
 			plugin_list = []
 			id_list = []
-			for l in plugins.getPlugins([PluginDescriptor.WHERE_PLUGINMENU ,PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_EVENTINFO]):
-				l.id = (l.name.lower()).replace(' ','_')
+			for l in plugins.getPlugins([PluginDescriptor.WHERE_PLUGINMENU, PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_EVENTINFO]):
+				l.id = (l.name.lower()).replace(' ', '_')
 				if l.id not in id_list:
 					id_list.append(l.id)
 					plugin_list.append((l.name, boundFunction(l.__call__, self.session), l.id, 200))
@@ -515,7 +515,7 @@ class Menu(Screen, ProtectedScreen):
 			if not self.sub_menu_sort.getConfigValue(entry[2], "hidden"):
 				self.list.append(entry)
 		if not self.list:
-			self.list.append(('',None,'dummy','10',10))
+			self.list.append(('', None, 'dummy', '10', 10))
 		self.list.sort(key=lambda listweight : int(listweight[4]))
 
 class MenuSort(Menu):
@@ -555,7 +555,7 @@ class MenuSort(Menu):
 	def hide_show_entries(self):
 		self.list = list(self.full_list)
 		if not self.list:
-			self.list.append(('',None,'dummy','10',10))
+			self.list.append(('', None, 'dummy', '10', 10))
 		self.list.sort(key=lambda listweight : int(listweight[4]))
 
 	def selectionChanged(self):

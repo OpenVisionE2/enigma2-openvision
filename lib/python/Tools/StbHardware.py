@@ -73,7 +73,7 @@ def getFPVersion():
 		if getBoxBrand() == "blackbox" and fileExists("/proc/stb/info/micomver"):
 			ret = open("/proc/stb/info/micomver", "r").read()
 		elif fileExists("/proc/stb/fp/version"):
-			if getMachineBuild() == "dm4kgen" or getBoxType() in ("dm520","dm7080","dm820"):
+			if getMachineBuild() == "dm4kgen" or getBoxType() in ("dm520", "dm7080", "dm820"):
 				ret = open("/proc/stb/fp/version", "r").read()
 			else:
 				ret = int(open("/proc/stb/fp/version", "r").read())
@@ -81,7 +81,7 @@ def getFPVersion():
 			ret = open("/sys/firmware/devicetree/base/bolt/tag", "r").read().rstrip("\0")
 		else:
 			fp = open("/dev/dbox/fp0")
-			ret = ioctl(fp.fileno(),0)
+			ret = ioctl(fp.fileno(), 0)
 	except IOError:
 		print("[StbHardware] getFPVersion failed!")
 	return ret

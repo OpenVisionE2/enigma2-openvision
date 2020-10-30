@@ -23,11 +23,11 @@ class EmptyEpg(VariableText, Renderer):
 		for (attrib, value) in self.skinAttributes:
 			if attrib == "size":
 				self.sizeX = int(value.strip().split(",")[0])
-				attribs.append((attrib,value))
+				attribs.append((attrib, value))
 			elif attrib == "emptyText":
 				self.EmptyText = value
 			else:
-				attribs.append((attrib,value))
+				attribs.append((attrib, value))
 		self.skinAttributes = attribs
 		return Renderer.applySkin(self, desktop, parent)
 

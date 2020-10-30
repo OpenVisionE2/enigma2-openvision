@@ -10,7 +10,7 @@ from Components.About import about
 from boxbranding import getHaveAVJACK, getHaveHDMI, getMachineBuild, getSoCFamily
 
 brand = getBoxBrand()
-socfamily = getSoCFamily().replace('bcm','').replace('hisi','')
+socfamily = getSoCFamily().replace('bcm', '').replace('hisi', '')
 chipsetstring = about.getChipSetString()
 has_hdmi = getHaveHDMI() == "True"
 has_scart = SystemInfo["HasScart"]
@@ -98,19 +98,19 @@ class VideoHardware:
 	elif has_rca:
 		modes["RCA"] = ["576i", "PAL", "NTSC", "Multi"]
 
-	if socfamily in ("7376","7444"):
+	if socfamily in ("7376", "7444"):
 		modes["DVI"] = ["720p", "1080p", "2160p", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080p", "1080i", "2160p"}
-	elif socfamily in ("7252","7251","7251s","7252s","72604","7278","3798mv200","3798cv200"):
+	elif socfamily in ("7252", "7251", "7251s", "7252s", "72604", "7278", "3798mv200", "3798cv200"):
 		modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
-	elif socfamily in ("7241","7358","7362","73625","7356","73565","7424","7425","7435","7581","3716mv410") or brand == "azbox":
+	elif socfamily in ("7241", "7358", "7362", "73625", "7356", "73565", "7424", "7425", "7435", "7581", "3716mv410") or brand == "azbox":
 		modes["DVI"] = ["720p", "1080p", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080p", "1080i"}
 	elif chipsetstring == "meson-6":
 		modes["DVI"] = ["720p", "1080p", "1080i"]
 		widescreen_modes = {"720p", "1080p", "1080i"}
-	elif chipsetstring in ("meson-64","S905D") or socfamily == "AML905D":
+	elif chipsetstring in ("meson-64", "S905D") or socfamily == "AML905D":
 		modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i"]
 		widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
 	else:
@@ -140,7 +140,7 @@ class VideoHardware:
 			del modes["YPbPr"]
 
 	def getOutputAspect(self):
-		ret = (16,9)
+		ret = (16, 9)
 		port = config.av.videoport.value
 		if port not in config.av.videomode:
 			print("[Videomode] VideoHardware current port not available in getOutputAspect!!! force 16:9")
@@ -155,16 +155,16 @@ class VideoHardware:
 				else:
 					aspect = {"16_9": "16:9", "16_10": "16:10"}[config.av.aspect.value]
 					if aspect == "16:10":
-						ret = (16,10)
+						ret = (16, 10)
 			elif is_auto:
 				try:
 					aspect_str = open("/proc/stb/vmpeg/0/aspect", "r").read()
 					if aspect_str == "1": # 4:3
-						ret = (4,3)
+						ret = (4, 3)
 				except IOError:
 					pass
 			else:  # 4:3
-				ret = (4,3)
+				ret = (4, 3)
 		return ret
 
 	def __init__(self):

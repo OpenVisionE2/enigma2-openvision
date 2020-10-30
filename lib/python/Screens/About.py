@@ -98,14 +98,14 @@ class About(Screen):
 
 		if fileExists("/etc/openvision/mediaservice"):
 			mediaservice = open("/etc/openvision/mediaservice", "r").read().strip()
-			AboutText += _("Media service: ") + mediaservice.replace("enigma2-plugin-systemplugins-","") + "\n"
+			AboutText += _("Media service: ") + mediaservice.replace("enigma2-plugin-systemplugins-", "") + "\n"
 
 		AboutText += "\n"
 
 		AboutText += _("Drivers version: ") + about.getDriverInstalledDate() + "\n"
 		AboutText += _("Kernel version: ") + boxbranding.getKernelVersion() + "\n"
 
-		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer","")
+		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer", "")
 		self["GStreamerVersion"] = StaticText(GStreamerVersion)
 		AboutText += "\n" + GStreamerVersion + "\n"
 
@@ -406,37 +406,37 @@ class DVBInformation(Screen):
 		DVBInformationText += "\n"
 
 		if fileExists("/tmp/dvbfetool.txt"):
-			if fileHas("/tmp/dvbfetool.txt","DVBC") or fileHas("/tmp/dvbfetool.txt","DVB-C"):
+			if fileHas("/tmp/dvbfetool.txt", "DVBC") or fileHas("/tmp/dvbfetool.txt", "DVB-C"):
 				DVBInformationText += _("DVB-C: ") + _("Yes") + "\n"
 			else:
 				DVBInformationText += _("DVB-C: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","DVBS") or fileHas("/tmp/dvbfetool.txt","DVB-S"):
+			if fileHas("/tmp/dvbfetool.txt", "DVBS") or fileHas("/tmp/dvbfetool.txt", "DVB-S"):
 				DVBInformationText += _("DVB-S: ") + _("Yes") + "\n"
 			else:
 				DVBInformationText += _("DVB-S: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","DVBT") or fileHas("/tmp/dvbfetool.txt","DVB-T"):
+			if fileHas("/tmp/dvbfetool.txt", "DVBT") or fileHas("/tmp/dvbfetool.txt", "DVB-T"):
 				DVBInformationText += _("DVB-T: ") + _("Yes") + "\n"
 			else:
 				DVBInformationText += _("DVB-T: ") + _("No") + "\n"
 
 			DVBInformationText += "\n"
 
-			if fileHas("/tmp/dvbfetool.txt","MULTISTREAM"):
+			if fileHas("/tmp/dvbfetool.txt", "MULTISTREAM"):
 				DVBInformationText += _("Multistream: ") + _("Yes") + "\n"
 			else:
 				DVBInformationText += _("Multistream: ") + _("No") + "\n"
 
 			DVBInformationText += "\n"
 
-			if fileHas("/tmp/dvbfetool.txt","ANNEX_A") or fileHas("/tmp/dvbfetool.txt","ANNEX-A"):
+			if fileHas("/tmp/dvbfetool.txt", "ANNEX_A") or fileHas("/tmp/dvbfetool.txt", "ANNEX-A"):
 				DVBInformationText += _("ANNEX-A: ") + _("Yes") + "\n"
 			else:
 				DVBInformationText += _("ANNEX-A: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","ANNEX_B") or fileHas("/tmp/dvbfetool.txt","ANNEX-B"):
+			if fileHas("/tmp/dvbfetool.txt", "ANNEX_B") or fileHas("/tmp/dvbfetool.txt", "ANNEX-B"):
 				DVBInformationText += _("ANNEX-B: ") + _("Yes") + "\n"
 			else:
 				DVBInformationText += _("ANNEX-B: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt","ANNEX_C") or fileHas("/tmp/dvbfetool.txt","ANNEX-C"):
+			if fileHas("/tmp/dvbfetool.txt", "ANNEX_C") or fileHas("/tmp/dvbfetool.txt", "ANNEX-C"):
 				DVBInformationText += _("ANNEX-C: ") + _("Yes") + "\n"
 			else:
 				DVBInformationText += _("ANNEX-C: ") + _("No") + "\n"
@@ -1264,7 +1264,7 @@ class MemoryInfo(Screen):
 			mem = 1
 			free = 0
 			rows_in_column = self["params"].rows_in_column
-			for i, line in enumerate(open('/proc/meminfo','r')):
+			for i, line in enumerate(open('/proc/meminfo', 'r')):
 				s = line.strip().split(None, 2)
 				if len(s) == 3:
 					name, size, units = s
@@ -1278,18 +1278,18 @@ class MemoryInfo(Screen):
 				if name.startswith("MemFree") or name.startswith("Buffers") or name.startswith("Cached"):
 					free += int(size)
 				if i < rows_in_column:
-					ltext += "".join((name,"\n"))
-					lvalue += "".join((size," ",units,"\n"))
+					ltext += "".join((name, "\n"))
+					lvalue += "".join((size, " ", units, "\n"))
 				else:
-					rtext += "".join((name,"\n"))
-					rvalue += "".join((size," ",units,"\n"))
+					rtext += "".join((name, "\n"))
+					rvalue += "".join((size, " ", units, "\n"))
 			self['lmemtext'].setText(ltext)
 			self['lmemvalue'].setText(lvalue)
 			self['rmemtext'].setText(rtext)
 			self['rmemvalue'].setText(rvalue)
 			self["slide"].setValue(int(100.0*(mem-free)/mem+0.25))
-			self['pfree'].setText("%.1f %s" % (100.*free/mem,'%'))
-			self['pused'].setText("%.1f %s" % (100.*(mem-free)/mem,'%'))
+			self['pfree'].setText("%.1f %s" % (100.*free/mem, '%'))
+			self['pused'].setText("%.1f %s" % (100.*(mem-free)/mem, '%'))
 		except Exception as e:
 			print("[About] getMemoryInfo FAIL:", e)
 

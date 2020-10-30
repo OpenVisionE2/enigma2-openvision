@@ -228,7 +228,7 @@ class CaidInfo2(Poll, Converter, object):
 			self.poll_enabled = True
 			ecm_info = self.ecmfile()
 			if ecm_info:
-				caid = ("%0.4X" % int(ecm_info.get("caid", ""),16))[:2]
+				caid = ("%0.4X" % int(ecm_info.get("caid", ""), 16))[:2]
 				if self.type == self.SECA_C:
 					if caid == "01":
 						return True
@@ -318,7 +318,7 @@ class CaidInfo2(Poll, Converter, object):
 				ecm_info = self.ecmfile()
 				if fileExists("/tmp/ecm.info"):
 					try:
-						caid = "%0.4X" % int(ecm_info.get("caid", ""),16)
+						caid = "%0.4X" % int(ecm_info.get("caid", ""), 16)
 						return "%s" % self.systemTxtCaids.get(caid[:2])
 					except:
 						return 'nondecode'
@@ -334,7 +334,7 @@ class CaidInfo2(Poll, Converter, object):
 					# crypt2
 					if ecm_info:
 						# caid
-						caid = "%0.4X" % int(ecm_info.get("caid", ""),16)
+						caid = "%0.4X" % int(ecm_info.get("caid", ""), 16)
 						if self.type == self.CAID:
 							return caid
 						# crypt
@@ -342,14 +342,14 @@ class CaidInfo2(Poll, Converter, object):
 							return "%s" % self.systemTxtCaids.get(caid[:2].upper())
 						#pid
 						try:
-							pid = "%0.4X" % int(ecm_info.get("pid", ""),16)
+							pid = "%0.4X" % int(ecm_info.get("pid", ""), 16)
 						except:
 							pid = ""
 						if self.type == self.PID:
 							return pid
 						# oscam
 						try:
-							prov = "%0.6X" % int(ecm_info.get("prov", ""),16)
+							prov = "%0.6X" % int(ecm_info.get("prov", ""), 16)
 						except:
 							prov = ecm_info.get("prov", "")
 						if self.type == self.PROV:
@@ -357,7 +357,7 @@ class CaidInfo2(Poll, Converter, object):
 						if ecm_info.get("ecm time", "").find("msec") > -1:
 							ecm_time = ecm_info.get("ecm time", "")
 						else:
-							ecm_time = ecm_info.get("ecm time", "").replace(".","").lstrip("0") + " msec"
+							ecm_time = ecm_info.get("ecm time", "").replace(".", "").lstrip("0") + " msec"
 						if self.type == self.DELAY:
 							return ecm_time
 						#protocol
@@ -445,28 +445,28 @@ class CaidInfo2(Poll, Converter, object):
 								textvalue = "%s - %s (Prov: %s, Caid: %s)" % (source, self.systemTxtCaids.get(caid[:2]), prov, caid)
 							#new oscam ecm.info with port parametr
 							elif reader != "" and source == "net" and port != "":
-								textvalue = "%s - Prov: %s, Caid: %s, Reader: %s, %s (%s:%s) - %s" % (source, prov, caid, reader, protocol, server, port, ecm_time.replace('msec','ms'))
+								textvalue = "%s - Prov: %s, Caid: %s, Reader: %s, %s (%s:%s) - %s" % (source, prov, caid, reader, protocol, server, port, ecm_time.replace('msec', 'ms'))
 							elif reader != "" and source == "net":
-								textvalue = "%s - Prov: %s, Caid: %s, Reader: %s, %s (%s) - %s" % (source, prov, caid, reader, protocol, server, ecm_time.replace('msec','ms'))
+								textvalue = "%s - Prov: %s, Caid: %s, Reader: %s, %s (%s) - %s" % (source, prov, caid, reader, protocol, server, ecm_time.replace('msec', 'ms'))
 							elif reader != "" and source != "net":
-								textvalue = "%s - Prov: %s, Caid: %s, Reader: %s, %s (local) - %s" % (source, prov, caid, reader, protocol, ecm_time.replace('msec','ms'))
+								textvalue = "%s - Prov: %s, Caid: %s, Reader: %s, %s (local) - %s" % (source, prov, caid, reader, protocol, ecm_time.replace('msec', 'ms'))
 							elif server == "" and port == "" and protocol != "":
-								textvalue = "%s - Prov: %s, Caid: %s, %s - %s" % (source, prov, caid, protocol, ecm_time.replace('msec','ms'))
+								textvalue = "%s - Prov: %s, Caid: %s, %s - %s" % (source, prov, caid, protocol, ecm_time.replace('msec', 'ms'))
 							elif server == "" and port == "" and protocol == "":
-								textvalue = "%s - Prov: %s, Caid: %s - %s" % (source, prov, caid, ecm_time.replace('msec','ms'))
+								textvalue = "%s - Prov: %s, Caid: %s - %s" % (source, prov, caid, ecm_time.replace('msec', 'ms'))
 							else:
 								try:
-									textvalue = "%s - Prov: %s, Caid: %s, %s (%s:%s) - %s" % (source, prov, caid, protocol, server, port, ecm_time.replace('msec','ms'))
+									textvalue = "%s - Prov: %s, Caid: %s, %s (%s:%s) - %s" % (source, prov, caid, protocol, server, port, ecm_time.replace('msec', 'ms'))
 								except:
 									pass
 						if self.type == self.SHORT:
 							if source == "emu":
 								textvalue = "%s - %s (Prov: %s, Caid: %s)" % (source, self.systemTxtCaids.get(caid[:2]), prov, caid)
 							elif server == "" and port == "":
-								textvalue = "%s - Prov: %s, Caid: %s - %s" % (source, prov, caid, ecm_time.replace('msec','ms'))
+								textvalue = "%s - Prov: %s, Caid: %s - %s" % (source, prov, caid, ecm_time.replace('msec', 'ms'))
 							else:
 								try:
-									textvalue = "%s - Prov: %s, Caid: %s, %s:%s - %s" % (source, prov, caid, server, port, ecm_time.replace('msec','ms'))
+									textvalue = "%s - Prov: %s, Caid: %s, %s:%s - %s" % (source, prov, caid, server, port, ecm_time.replace('msec', 'ms'))
 								except:
 									pass
 					else:
@@ -548,8 +548,8 @@ class CaidInfo2(Poll, Converter, object):
 								if item[1].strip()[:3] == "net":
 									it_tmp = item[1].strip().split(" ")
 									info["protocol"] = it_tmp[1][1:]
-									info["server"] = it_tmp[-1].split(":",1)[0]
-									info["port"] = it_tmp[-1].split(':',1)[1][:-1]
+									info["server"] = it_tmp[-1].split(":", 1)[0]
+									info["port"] = it_tmp[-1].split(':', 1)[1][:-1]
 									item[1] = "net"
 							elif item[0] == "prov":
 								y = item[1].find(",")

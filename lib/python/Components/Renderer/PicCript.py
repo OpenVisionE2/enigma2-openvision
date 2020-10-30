@@ -9,7 +9,7 @@ from Tools.Directories import fileExists, SCOPE_CURRENT_SKIN, resolveFilename
 
 class PicCript(Renderer):
 	__module__ = __name__
-	searchPaths = ('/usr/share/enigma2/%s/','/media/hdd/%s/','/media/usb/%s/','/media/ba/%s/')
+	searchPaths = ('/usr/share/enigma2/%s/', '/media/hdd/%s/', '/media/usb/%s/', '/media/ba/%s/')
 
 	def __init__(self):
 		Renderer.__init__(self)

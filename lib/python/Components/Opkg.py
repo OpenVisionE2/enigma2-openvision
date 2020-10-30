@@ -13,7 +13,7 @@ opkgStatusPath = ''
 
 def opkgExtraDestinations():
 	global opkgDestinations
-	return ''.join([" --add-dest %s:%s" % (i,i) for i in opkgDestinations])
+	return ''.join([" --add-dest %s:%s" % (i, i) for i in opkgDestinations])
 
 def opkgAddDestination(mountpoint):
 	global opkgDestinations
@@ -60,7 +60,7 @@ def enumPlugins(filter_start=''):
 		try:
 			for line in open(os.path.join(list_dir, feed), 'r'):
 				if line.startswith('Package:'):
-					package = line.split(":",1)[1].strip()
+					package = line.split(":", 1)[1].strip()
 					version = ''
 					description = ''
 					if config.misc.extraopkgpackages.value is True:
@@ -73,19 +73,19 @@ def enumPlugins(filter_start=''):
 				if package is None:
 					continue
 				if line.startswith('Version:'):
-					version = line.split(":",1)[1].strip()
+					version = line.split(":", 1)[1].strip()
 				elif line.startswith('Description:'):
-					description = line.split(":",1)[1].strip()
+					description = line.split(":", 1)[1].strip()
 				elif description and line.startswith(' '):
 					description += line[:-1]
 				elif len(line) <= 1:
-					d = description.split(' ',3)
+					d = description.split(' ', 3)
 					if len(d) > 3:
 						# Get rid of annoying "version" and package repeating strings
 						if d[1] == 'version':
 							description = d[3]
 						if description.startswith('gitAUTOINC'):
-							description = description.split(' ',1)[1]
+							description = description.split(' ', 1)[1]
 					yield package, version, description.strip()
 					package = None
 		except IOError:

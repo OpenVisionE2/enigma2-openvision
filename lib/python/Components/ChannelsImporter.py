@@ -261,7 +261,7 @@ class ChannelsImporter():
 		file.close()
 		self.remoteEPGpath = self.DIR_ENIGMA2
 		self.remoteEPGfile = "epg"
-		self.remoteEPGfile = "%s.dat" % self.remoteEPGfile.replace('.dat','')
+		self.remoteEPGfile = "%s.dat" % self.remoteEPGfile.replace('.dat', '')
 		print("[ChannelsImporter] Remote EPG filename. '%s%s'" % (self.remoteEPGpath, self.remoteEPGfile))
 		self.removeFiles(self.DIR_TMP, "settings")
 		result = self.FTPdownloadFile(self.remoteEPGpath, self.remoteEPGfile, "epg.dat")
@@ -344,12 +344,12 @@ class ChannelsImporter():
 		try:
 			req = urllib2.Request(url)
 			response = urllib2.urlopen(req)
-			print('[ChannelsImporter] saveEPGonRemoteReceiver Response: %d, %s' % (response.getcode(), response.read().strip().replace("\r","").replace("\n","")))
+			print('[ChannelsImporter] saveEPGonRemoteReceiver Response: %d, %s' % (response.getcode(), response.read().strip().replace("\r", "").replace("\n", "")))
 		except urllib2.HTTPError as err:
-			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR:',err)
+			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR:', err)
 		except urllib2.URLError as err:
-			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR:',err.reason[0])
+			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR:', err.reason[0])
 		except urllib2 as err:
-			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR:',err)
+			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR:', err)
 		except:
 			print('[ChannelsImporter] saveEPGonRemoteReceiver undefined error')

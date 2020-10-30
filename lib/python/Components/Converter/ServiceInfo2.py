@@ -40,7 +40,7 @@ class ServiceInfo2(Poll, Converter, object):
 				"xALLTYPE": (self.xALLTYPE, (iPlayableService.evUpdatedInfo,)),
 				"VideoHeight": (self.VideoHeight, (iPlayableService.evUpdatedInfo,)),
 				"VideoWidth": (self.VideoWidth, (iPlayableService.evUpdatedInfo,)),
-				"Framerate": (self.Framerate, (iPlayableService.evVideoSizeChanged,iPlayableService.evUpdatedInfo,)),
+				"Framerate": (self.Framerate, (iPlayableService.evVideoSizeChanged, iPlayableService.evUpdatedInfo,)),
 				"Provider": (self.Provider, (iPlayableService.evUpdatedInfo,)),
 			}[type]
 		self.poll_interval = 1000

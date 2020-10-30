@@ -48,11 +48,11 @@ def profile(id):
 			try:
 				if model == "axodin":
 					open("/dev/dbox/oled0", "w").write("%d" % perc)
-				elif model in ("gb800solo","gb800se","gb800seplus","gbultrase"):
+				elif model in ("gb800solo", "gb800se", "gb800seplus", "gbultrase"):
 					open("/dev/mcu", "w").write("%d  \n" % perc)
-				elif model in ("ebox5000","osmini","spycatmini","osminiplus","spycatminiplus"):
+				elif model in ("ebox5000", "osmini", "spycatmini", "osminiplus", "spycatminiplus"):
 					open("/proc/progress", "w").write("%d" % perc)
-				elif model in ("sezammarvel","xpeedlx3","atemionemesis"):
+				elif model in ("sezammarvel", "xpeedlx3", "atemionemesis"):
 					open("/proc/vfd", "w").write("Loading %d %%" % perc)
 				elif model == "beyonwizu4":
 					open("/dev/dbox/oled0", "w").write("Loading %d%%\n" % perc)

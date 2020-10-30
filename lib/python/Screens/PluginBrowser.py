@@ -65,7 +65,7 @@ class PluginBrowser(Screen, ProtectedScreen):
 		self.list = []
 		self["list"] = PluginList(self.list)
 
-		self["actions"] = ActionMap(["WizardActions","MenuActions"],
+		self["actions"] = ActionMap(["WizardActions", "MenuActions"],
 		{
 			"ok": self.save,
 			"back": self.close,
@@ -245,7 +245,7 @@ class PluginBrowser(Screen, ProtectedScreen):
 			try:
 				from Plugins.SystemPlugins.SoftwareManager.plugin import PluginManager
 			except ImportError as e:
-				self.session.open(MessageBox, _("The software management extension is not installed!\nPlease install it."), type = MessageBox.TYPE_INFO,timeout = 10 )
+				self.session.open(MessageBox, _("The software management extension is not installed!\nPlease install it."), type = MessageBox.TYPE_INFO, timeout = 10 )
 			else:
 				self.session.openWithCallback(self.PluginDownloadBrowserClosed, PluginManager)
 
@@ -342,7 +342,7 @@ class PluginDownloadBrowser(Screen):
 			if dest.startswith('/'):
 				# Custom install path, add it to the list too
 				dest = os.path.normpath(dest)
-				extra = '--add-dest %s:%s -d %s' % (dest,dest,dest)
+				extra = '--add-dest %s:%s -d %s' % (dest, dest, dest)
 				Opkg.opkgAddDestination(dest)
 			else:
 				extra = '-d ' + dest

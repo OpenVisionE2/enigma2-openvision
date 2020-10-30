@@ -125,7 +125,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 	def showTvButton(self):
 		if brand == "gigablue":
 			self.toggleTvRadio()
-		elif model in ("sezam5000hd","mbtwin") or procmodel in ("ini-3000","ini-5000","ini-7000","ini-7012"):
+		elif model in ("sezam5000hd", "mbtwin") or procmodel in ("ini-3000", "ini-5000", "ini-7000", "ini-7012"):
 			self.showMovies()
 		else:
 			self.showTv()
@@ -134,7 +134,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self.showTvChannelList(True)
 
 	def showRadioButton(self):
-		if brand in ("gigablue","azbox") or model in ("sezam5000hd","mbtwin","beyonwizt3") or procmodel in ("ini-3000","ini-5000","ini-7000","ini-7012"):
+		if brand in ("gigablue", "azbox") or model in ("sezam5000hd", "mbtwin", "beyonwizt3") or procmodel in ("ini-3000", "ini-5000", "ini-7000", "ini-7012"):
 			self.toggleTvRadio()
 		else:
 			self.showRadio()
@@ -394,8 +394,8 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 		elif answer == "restart":
 			self.doSeek(0)
 			self.setSeekState(self.SEEK_STATE_PLAY)
-		elif answer in ("playlist","playlistquit","loop"):
-			( next_service, item , lenght ) = self.getPlaylistServiceInfo(self.cur_service)
+		elif answer in ("playlist", "playlistquit", "loop"):
+			( next_service, item, lenght ) = self.getPlaylistServiceInfo(self.cur_service)
 			if next_service is not None:
 				if config.usage.next_movie_msg.value:
 					self.displayPlayedName(next_service, item, lenght)
@@ -403,11 +403,11 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 				self.cur_service = next_service
 			else:
 				if answer == "playlist":
-					self.leavePlayerConfirmed([True,"movielist"])
+					self.leavePlayerConfirmed([True, "movielist"])
 				elif answer == "loop" and lenght > 0:
-					self.leavePlayerConfirmed([True,"loop"])
+					self.leavePlayerConfirmed([True, "loop"])
 				else:
-					self.leavePlayerConfirmed([True,"quit"])
+					self.leavePlayerConfirmed([True, "quit"])
 		elif answer in ("repeatcurrent"):
 			if config.usage.next_movie_msg.value:
 				(item, lenght) = self.getPlaylistServiceInfo(self.cur_service)

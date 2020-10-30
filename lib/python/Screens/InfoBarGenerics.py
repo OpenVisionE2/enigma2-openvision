@@ -79,7 +79,7 @@ def setResumePoint(session):
 				resumePointCache[key] = [lru, pos[1], l]
 				if len(resumePointCache) > 50:
 					candidate = key
-					for k,v in resumePointCache.items():
+					for k, v in resumePointCache.items():
 						if v[0] < lru:
 							candidate = k
 					del resumePointCache[candidate]
@@ -150,7 +150,7 @@ def reload_subservice_groupslist(force=False):
 			groupedservices = "/etc/enigma2/groupedservices"
 			if not os.path.isfile(groupedservices):
 				groupedservices = "/usr/share/enigma2/groupedservices"
-			subservice.groupslist = [list(g) for k,g in itertools.groupby([line.split('#')[0].strip() for line in open(groupedservices).readlines()], lambda x:not x) if not k]
+			subservice.groupslist = [list(g) for k, g in itertools.groupby([line.split('#')[0].strip() for line in open(groupedservices).readlines()], lambda x:not x) if not k]
 		except:
 			subservice.groupslist = []
 reload_subservice_groupslist()
@@ -225,7 +225,7 @@ class InfoBarUnhandledKey:
 	#this function is called on every keypress!
 	def actionA(self, key, flag):
 		try:
-			print('[InfoBarGenerics] KEY: %s %s' % (key,getKeyDescription(key)[0]))
+			print('[InfoBarGenerics] KEY: %s %s' % (key, getKeyDescription(key)[0]))
 		except:
 			print('[InfoBarGenerics] KEY: %s' % key)
 		self.unhandledKeyDialog.hide()
@@ -275,12 +275,12 @@ class InfoBarShowHide(InfoBarScreenSaver):
 	FLAG_CENTER_DVB_SUBS = 2048
 
 	def __init__(self):
-		self["ShowHideActions"] = ActionMap( ["InfobarShowHideActions"] ,
+		self["ShowHideActions"] = ActionMap( ["InfobarShowHideActions"],
 			{
 				"toggleShow": self.okButtonCheck,
 				"hide": self.keyHide,
-				"toggleShowLong" : self.toggleShowLong,
-				"hideLong" : self.hideLong,
+				"toggleShowLong": self.toggleShowLong,
+				"hideLong": self.hideLong,
 			}, 1) # lower prio to make it possible to override ok and cancel..
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
@@ -1271,7 +1271,7 @@ class InfoBarEPG:
 		plugin.__call__(session = self.session, servicelist = self.servicelist)
 
 	def showEventInfoPlugins(self):
-		if brand not in ("xtrend","odin","ini","dags","gigablue","xp"):
+		if brand not in ("xtrend", "odin", "ini", "dags", "gigablue", "xp"):
 			pluginlist = self.getEPGPluginList()
 			if pluginlist:
 				self.session.openWithCallback(self.EventInfoPluginChosen, ChoiceBox, title=_("Please choose an extension..."), list=pluginlist, skin_name="EPGExtensionsList", reorderConfig="eventinfo_order", windowTitle=_("Events info menu"))
@@ -1378,7 +1378,7 @@ class InfoBarRdsDecoder:
 		self["RdsActions"] = ActionMap(["InfobarRdsActions"],
 		{
 			"startRassInteractive": self.startRassInteractive
-		},-1)
+		}, -1)
 
 		self["RdsActions"].setEnabled(False)
 
@@ -1938,12 +1938,12 @@ class InfoBarTimeshift():
 				"timeshiftStop": (self.stopTimeshift, _("Stop timeshift")),      # currently undefined :), probably 'TV'
 				"seekFwdManual": (self.seekFwdManual, _("Seek forward (enter time)")),
 				"seekBackManual": (self.seekBackManual, _("Seek backward (enter time)")),
-				"seekdef:1": (boundFunction(self.seekdef,1), _("Seek")),
-				"seekdef:3": (boundFunction(self.seekdef,3), _("Seek")),
-				"seekdef:4": (boundFunction(self.seekdef,4), _("Seek")),
-				"seekdef:6": (boundFunction(self.seekdef,6), _("Seek")),
-				"seekdef:7": (boundFunction(self.seekdef,7), _("Seek")),
-				"seekdef:9": (boundFunction(self.seekdef,9), _("Seek")),
+				"seekdef:1": (boundFunction(self.seekdef, 1), _("Seek")),
+				"seekdef:3": (boundFunction(self.seekdef, 3), _("Seek")),
+				"seekdef:4": (boundFunction(self.seekdef, 4), _("Seek")),
+				"seekdef:6": (boundFunction(self.seekdef, 6), _("Seek")),
+				"seekdef:7": (boundFunction(self.seekdef, 7), _("Seek")),
+				"seekdef:9": (boundFunction(self.seekdef, 9), _("Seek")),
 			}, prio=0)
 		self["TimeshiftActivateActions"] = ActionMap(["InfobarTimeshiftActivateActions"],
 			{
@@ -2116,7 +2116,7 @@ class InfoBarTimeshift():
 		filename = begin_date + " - " + service_name
 
 		if config.recording.filename_composition.value == "event":
-			filename = "%s - %s_%s" % (info["name"], strftime("%Y%m%d %H%M",localtime(time())), service_name)
+			filename = "%s - %s_%s" % (info["name"], strftime("%Y%m%d %H%M", localtime(time())), service_name)
 		elif config.recording.filename_composition.value == "short":
 			filename = strftime("%Y%m%d", localtime(time())) + " - " + info["name"]
 		elif config.recording.filename_composition.value == "long":
@@ -2364,7 +2364,7 @@ class InfoBarExtensions:
 		if autotimerFunc is not None:
 			autotimerFunc(self.session)
 		else:
-			self.session.open(MessageBox, _("The AutoTimer plugin is not installed!\nPlease install it."), type = MessageBox.TYPE_INFO,timeout = 10 )
+			self.session.open(MessageBox, _("The AutoTimer plugin is not installed!\nPlease install it."), type = MessageBox.TYPE_INFO, timeout = 10 )
 
 from Tools.BoundFunction import boundFunction
 import inspect
@@ -2775,10 +2775,10 @@ class InfoBarInstantRecord:
 		elif answer[1] == "stopdeleteall":
 			self.deleteRecording = True
 			self.stopAllCurrentRecordings(list)
-		elif answer[1] in ( "indefinitely" , "manualduration", "manualendtime", "event"):
+		elif answer[1] in ( "indefinitely", "manualduration", "manualendtime", "event"):
 			from Components.About import about
 			if len(list) >= 2 and about.getChipSetString().startswith("meson-6"):
-				Notifications.AddNotification(MessageBox,_("Sorry only possible to record 2 channels at once!"), MessageBox.TYPE_ERROR, timeout=5)
+				Notifications.AddNotification(MessageBox, _("Sorry only possible to record 2 channels at once!"), MessageBox.TYPE_ERROR, timeout=5)
 				return
 			self.startInstantRecording(limitEvent = answer[1] in ("event", "manualendtime") or False)
 			if answer[1] == "manualduration":
@@ -3139,7 +3139,7 @@ class InfoBarAspectSelection:
 
 	def aspectSelection(self):
 		selection = 0
-		tlist= [(_("Resolution"), "resolution"),("--", ""),(_("4:3 letterbox"), "0"), (_("4:3 panscan"), "1"), (_("16:9"), "2"), (_("16:9 always"), "3"), (_("16:10 letterbox"), "4"), (_("16:10 panscan"), "5"), (_("16:9 letterbox"), "6")]
+		tlist= [(_("Resolution"), "resolution"), ("--", ""), (_("4:3 letterbox"), "0"), (_("4:3 panscan"), "1"), (_("16:9"), "2"), (_("16:9 always"), "3"), (_("16:10 letterbox"), "4"), (_("16:10 panscan"), "5"), (_("16:9 letterbox"), "6")]
 		for x in range(len(tlist)):
 			selection = x
 		keys = ["green", "",  "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
@@ -3247,7 +3247,7 @@ class InfoBarTimerButton:
 		self.session.open(TimerEditList)
 
 class VideoMode(Screen):
-	def __init__(self,session):
+	def __init__(self, session):
 		Screen.__init__(self, session)
 		self["videomode"] = Label()
 		self.timer = eTimer()
@@ -3969,8 +3969,8 @@ class InfoBarHdmi2:
 				self.addExtension((self.getHDMIInPiPScreen, self.HDMIInPiP, lambda: True), "green")
 		self["HDMIActions"] = HelpableActionMap(self, ["InfobarHDMIActions"],
 			{
-				"HDMIin":(self.HDMIIn, _("Switch to HDMI-IN mode")),
-				"HDMIinLong":(self.HDMIInLong, _("Switch to HDMI-IN mode")),
+				"HDMIin": (self.HDMIIn, _("Switch to HDMI-IN mode")),
+				"HDMIinLong": (self.HDMIInLong, _("Switch to HDMI-IN mode")),
 			}, prio=2)
 
 	def HDMIInLong(self):
@@ -4012,14 +4012,14 @@ class InfoBarHdmi2:
 			return _("Turn off HDMI-IN PiP mode")
 
 	def HDMIInPiP(self):
-		if platform == "dm4kgen" or model in ("dm7080","dm820"):
-			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","r").read()
+		if platform == "dm4kgen" or model in ("dm7080", "dm820"):
+			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "r").read()
 			if check.startswith("off"):
-				open("/proc/stb/audio/hdmi_rx_monitor","w").write("on")
-				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","w").write("on")
+				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("on")
+				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("on")
 			else:
-				open("/proc/stb/audio/hdmi_rx_monitor","w").write("off")
-				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","w").write("off")
+				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("off")
+				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("off")
 		else:
 			if not hasattr(self.session, 'pip') and not self.session.pipshown:
 				self.hdmi_enabled_pip = True
@@ -4040,24 +4040,24 @@ class InfoBarHdmi2:
 					del self.session.pip
 
 	def HDMIInFull(self):
-		if platform == "dm4kgen" or model in ("dm7080","dm820"):
-			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","r").read()
+		if platform == "dm4kgen" or model in ("dm7080", "dm820"):
+			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "r").read()
 			if check.startswith("off"):
-				self.oldvideomode = open("/proc/stb/video/videomode","r").read()
-				self.oldvideomode_50hz = open("/proc/stb/video/videomode_50hz","r").read()
-				self.oldvideomode_60hz = open("/proc/stb/video/videomode_60hz","r").read()
+				self.oldvideomode = open("/proc/stb/video/videomode", "r").read()
+				self.oldvideomode_50hz = open("/proc/stb/video/videomode_50hz", "r").read()
+				self.oldvideomode_60hz = open("/proc/stb/video/videomode_60hz", "r").read()
 				if platform == "dm4kgen":
-					open("/proc/stb/video/videomode","w").write("1080p")
+					open("/proc/stb/video/videomode", "w").write("1080p")
 				else:
-					open("/proc/stb/video/videomode","w").write("720p")
-				open("/proc/stb/audio/hdmi_rx_monitor","w").write("on")
-				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","w").write("on")
+					open("/proc/stb/video/videomode", "w").write("720p")
+				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("on")
+				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("on")
 			else:
-				open("/proc/stb/audio/hdmi_rx_monitor","w").write("off")
-				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","w").write("off")
-				open("/proc/stb/video/videomode","w").write(self.oldvideomode)
-				open("/proc/stb/video/videomode_50hz","w").write(self.oldvideomode_50hz)
-				open("/proc/stb/video/videomode_60hz","w").write(self.oldvideomode_60hz)
+				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("off")
+				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("off")
+				open("/proc/stb/video/videomode", "w").write(self.oldvideomode)
+				open("/proc/stb/video/videomode_50hz", "w").write(self.oldvideomode_50hz)
+				open("/proc/stb/video/videomode_60hz", "w").write(self.oldvideomode_60hz)
 		else:
 			slist = self.servicelist
 			curref = self.session.nav.getCurrentlyPlayingServiceOrGroup()

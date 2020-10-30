@@ -58,7 +58,7 @@ class inputDevices:
 				self.name = ioctl(self.fd, EVIOCGNAME(256), buffer)
 				self.name = self.name[:self.name.find("\0")]
 				os.close(self.fd)
-			except (IOError,OSError) as err:
+			except (IOError, OSError) as err:
 				print("[InputDevice] getInputDevices " + evdev + " <ERROR: ioctl(EVIOCGNAME): " + str(err) + " >")
 				self.name = None
 
@@ -68,7 +68,7 @@ class inputDevices:
 					self.setDefaults(evdev)
 
 
-	def getInputDeviceType(self,name):
+	def getInputDeviceType(self, name):
 		if "remote control" in str(name).lower():
 			return "remote"
 		elif "keyboard" in str(name).lower():
@@ -76,7 +76,7 @@ class inputDevices:
 		elif "mouse" in str(name).lower():
 			return "mouse"
 		else:
-			print("[InputDevice] Unknown device type:",name)
+			print("[InputDevice] Unknown device type:", name)
 			return None
 
 	def getDeviceName(self, x):
@@ -129,7 +129,7 @@ class inputDevices:
 
 	def setRepeat(self, device, value): #REP_PERIOD
 		if self.getDeviceAttribute(device, 'enabled'):
-			print("[InputDevice] setRepeat for device %s to %d ms" % (device,value))
+			print("[InputDevice] setRepeat for device %s to %d ms" % (device, value))
 			event = struct.pack('LLHHi', 0, 0, 0x14, 0x01, int(value))
 			fd = os.open("/dev/input/" + device, os.O_RDWR)
 			os.write(fd, event)
@@ -137,7 +137,7 @@ class inputDevices:
 
 	def setDelay(self, device, value): #REP_DELAY
 		if self.getDeviceAttribute(device, 'enabled'):
-			print("[InputDevice] setDelay for device %s to %d ms" % (device,value))
+			print("[InputDevice] setDelay for device %s to %d ms" % (device, value))
 			event = struct.pack('LLHHi', 0, 0, 0x14, 0x00, int(value))
 			fd = os.open("/dev/input/" + device, os.O_RDWR)
 			os.write(fd, event)
@@ -159,13 +159,13 @@ class InitInputDevices:
 			self.remapRemoteControl(self.currentDevice)
 			self.currentDevice = ""
 
-	def inputDevicesEnabledChanged(self,configElement):
+	def inputDevicesEnabledChanged(self, configElement):
 		if self.currentDevice != "" and iInputDevices.currentDevice == "":
 			iInputDevices.setEnabled(self.currentDevice, configElement.value)
 		elif iInputDevices.currentDevice != "":
 			iInputDevices.setEnabled(iInputDevices.currentDevice, configElement.value)
 
-	def inputDevicesNameChanged(self,configElement):
+	def inputDevicesNameChanged(self, configElement):
 		if self.currentDevice != "" and iInputDevices.currentDevice == "":
 			iInputDevices.setName(self.currentDevice, configElement.value)
 			if configElement.value != "":
@@ -178,22 +178,22 @@ class InitInputDevices:
 		elif iInputDevices.currentDevice != "":
 			iInputDevices.setName(iInputDevices.currentDevice, configElement.value)
 
-	def inputDevicesRepeatChanged(self,configElement):
+	def inputDevicesRepeatChanged(self, configElement):
 		if self.currentDevice != "" and iInputDevices.currentDevice == "":
 			iInputDevices.setRepeat(self.currentDevice, configElement.value)
 		elif iInputDevices.currentDevice != "":
 			iInputDevices.setRepeat(iInputDevices.currentDevice, configElement.value)
 
-	def inputDevicesDelayChanged(self,configElement):
+	def inputDevicesDelayChanged(self, configElement):
 		if self.currentDevice != "" and iInputDevices.currentDevice == "":
 			iInputDevices.setDelay(self.currentDevice, configElement.value)
 		elif iInputDevices.currentDevice != "":
 			iInputDevices.setDelay(iInputDevices.currentDevice, configElement.value)
 
-	def setupConfigEntries(self,device):
+	def setupConfigEntries(self, device):
 		cmd = "config.inputDevices." + device + " = ConfigSubsection()"
 		exec(cmd)
-		if model in ("dm800","azboxhd"):
+		if model in ("dm800", "azboxhd"):
 			cmd = "config.inputDevices." + device + ".enabled = ConfigYesNo(default = True)"
 		else:
 			cmd = "config.inputDevices." + device + ".enabled = ConfigYesNo(default = False)"
@@ -204,7 +204,7 @@ class InitInputDevices:
 		exec(cmd)
 		cmd = "config.inputDevices." + device + ".name.addNotifier(self.inputDevicesNameChanged,config.inputDevices." + device + ".name)"
 		exec(cmd)
-		if model in ("maram9","axodin"):
+		if model in ("maram9", "axodin"):
 			cmd = "config.inputDevices." + device + ".repeat = ConfigSlider(default=400, increment = 10, limits=(0, 500))"
 		elif model == "azboxhd":
 			cmd = "config.inputDevices." + device + ".repeat = ConfigSlider(default=150, increment = 10, limits=(0, 500))"
@@ -213,7 +213,7 @@ class InitInputDevices:
 		exec(cmd)
 		cmd = "config.inputDevices." + device + ".repeat.addNotifier(self.inputDevicesRepeatChanged,config.inputDevices." + device + ".repeat)"
 		exec(cmd)
-		if model in ("maram9","axodin"):
+		if model in ("maram9", "axodin"):
 			cmd = "config.inputDevices." + device + ".delay = ConfigSlider(default=200, increment = 100, limits=(0, 5000))"
 		else:
 			cmd = "config.inputDevices." + device + ".delay = ConfigSlider(default=700, increment = 100, limits=(0, 5000))"

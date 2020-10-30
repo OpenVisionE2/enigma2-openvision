@@ -676,13 +676,13 @@ import Components.Lcd
 Components.Lcd.InitLcd()
 Components.Lcd.IconCheck()
 
-if platform == "dm4kgen" or model in ("dm7080","dm820"):
-	check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","r").read()
+if platform == "dm4kgen" or model in ("dm7080", "dm820"):
+	check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "r").read()
 	if check.startswith("on"):
-		open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor","w").write("off")
-	checkaudio = open("/proc/stb/audio/hdmi_rx_monitor","r").read()
+		open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("off")
+	checkaudio = open("/proc/stb/audio/hdmi_rx_monitor", "r").read()
 	if checkaudio.startswith("on"):
-		open("/proc/stb/audio/hdmi_rx_monitor","w").write("off")
+		open("/proc/stb/audio/hdmi_rx_monitor", "w").write("off")
 
 profile("RFMod")
 import Components.RFmod
