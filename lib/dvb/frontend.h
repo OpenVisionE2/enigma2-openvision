@@ -90,6 +90,7 @@ private:
 	bool m_simulate;
 	bool m_enabled;
 	bool m_fbc;
+	bool m_is_usbtuner;
 	eDVBFrontend *m_simulate_fe; // only used to set frontend type in dvb.cpp
 	int m_type;
 #if HAVE_ALIEN5
@@ -187,6 +188,7 @@ public:
 	void set_FBCTuner(bool yesno) { m_fbc = yesno; }
 	bool getEnabled() { return m_enabled; }
 	void setEnabled(bool enable) { m_enabled = enable; }
+	void setUSBTuner(bool yesno) { m_is_usbtuner = yesno; }
 	bool is_multistream();
 	std::string getCapabilities();
 };

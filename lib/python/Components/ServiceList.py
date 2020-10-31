@@ -211,6 +211,9 @@ class ServiceList(GUIComponent):
 		self.l.getNext(r)
 		return r
 
+	def getList(self):
+		return self.l.getList()
+
 	def atBegin(self):
 		return self.instance.atBegin()
 

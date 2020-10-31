@@ -69,8 +69,9 @@ class PluginDescriptor(object):
 	# or return a function which is called with session and the interface name for extended setup of this interface
 	WHERE_NETWORKMOUNTS = 17
 
-
 	WHERE_VISIONMENU = 18
+
+	WHERE_EXTENSIONSINGLE = 19
 
 
 	def __init__(self, name = "Plugin", where = [ ], description = "", icon = None, fnc = None, wakeupfnc = None, needsRestart = None, internal = False, weight = 0):
