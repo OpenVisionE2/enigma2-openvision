@@ -454,7 +454,7 @@ PyObject *getFontFaces()
 
 /************** temp *****************/
 
-	/* need a better place for this, i agree. */
+/* need a better place for this, i agree. */
 %{
 extern void runMainloop();
 extern void quitMainloop(int exit_code);

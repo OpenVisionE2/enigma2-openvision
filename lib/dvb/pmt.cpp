@@ -482,6 +482,7 @@ void eDVBServicePMTHandler::OCready(int error)
 {
 	eDebug("[eDVBServicePMTHandler] OCready");
 	ePtr<eTable<OCSection> > ptr;
+/*
 	if (!m_OC.getCurrent(ptr))
 	{
 		for (std::vector<OCSection*>::const_iterator it = ptr->getSections().begin(); it != ptr->getSections().end(); ++it)
@@ -489,6 +490,7 @@ void eDVBServicePMTHandler::OCready(int error)
 			unsigned char* sectionData = (unsigned char*)(*it)->getData();
 		}
 	}
+*/
 	/* for now, do not keep listening for table updates */
 	m_OC.stop();
 }

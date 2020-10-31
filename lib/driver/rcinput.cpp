@@ -13,7 +13,9 @@
 #include <lib/base/init_num.h>
 #include <lib/driver/input_fake.h>
 
+#if WETEKRC
 static bool bflag;
+#endif
 
 void eRCDeviceInputDev::handleCode(long rccode)
 {
