@@ -441,7 +441,7 @@ public:
 	virtual ePtr<iServiceInfoContainer> getInfoObject(int w);
 	virtual ePtr<iDVBTransponderData> getTransponderData();
 	virtual void getAITApplications(std::map<int, std::string> &aitlist) {};
-	virtual PyObject *getHbbTVApplications() {}; // FIXME: Travis shows warning here
+	virtual PyObject *getHbbTVApplications() { return 0; };
 	virtual void getCaIds(std::vector<int> &caids, std::vector<int> &ecmpids, std::vector<std::string> &ecmdatabytes);
 	virtual long long getFileSize();
 
