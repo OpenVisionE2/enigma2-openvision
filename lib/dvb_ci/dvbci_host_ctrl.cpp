@@ -8,7 +8,6 @@ int eDVBCIHostControlSession::receivedAPDU(const unsigned char *tag,const void *
 	eDebugNoNewLine("[CI Host Control] SESSION(%d)/HCTRL %02x %02x %02x: ", session_nb, tag[0], tag[1], tag[2]);
 	for (int i=0; i<len; i++)
 		eDebugNoNewLine("%02x ", ((const unsigned char*)data)[i]);
-	eDebug("");
 	if ((tag[0]==0x9f) && (tag[1]==0x84))
 	{
 		switch (tag[2])

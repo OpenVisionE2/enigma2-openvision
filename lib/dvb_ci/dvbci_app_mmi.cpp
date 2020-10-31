@@ -8,7 +8,6 @@ int eDVBCIApplicationMMISession::receivedAPDU(const unsigned char *tag,const voi
 	eDebugNoNewLine("[CI App MMI] SESSION(%d)/AMMI %02x %02x %02x: ", session_nb, tag[0], tag[1], tag[2]);
 	for (int i=0; i<len; i++)
 		eDebugNoNewLine("%02x ", ((const unsigned char*)data)[i]);
-	eDebug("");
 	if ((tag[0]==0x9f) && (tag[1]==0x80))
 	{
 		switch (tag[2])
