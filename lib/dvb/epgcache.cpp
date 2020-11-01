@@ -1033,18 +1033,18 @@ next:
 		if ( servicemap.byEvent.size() != servicemap.byTime.size() )
 		{
 			{
-				CFile f("/hdd/event_map.txt", "w+");
+				CFile f("/media/hdd/event_map.txt", "w+");
 				int i = 0;
-				for (eventMap::iterator it(servicemap.first.begin()); it != servicemap.first.end(); ++it )
+				for (eventMap::iterator it(servicemap.byEvent.begin()); it != servicemap.byEvent.end(); ++it )
 				{
 					fprintf(f, "%d(key %d) -> time %d, event_id %d, data %p\n",
 					i++, (int)it->first, (int)it->second->getStartTime(), (int)it->second->getEventID(), it->second );
 				}
 			}
 			{
-				CFile f("/hdd/time_map.txt", "w+");
+				CFile f("/media/hdd/time_map", "w+");
 				int i = 0;
-				for (timeMap::iterator it(servicemap.second.begin()); it != servicemap.second.end(); ++it )
+				for (timeMap::iterator it(servicemap.byTime.begin()); it != servicemap.byTime.end(); ++it )
 				{
 					fprintf(f, "%d(key %d) -> time %d, event_id %d, data %p\n",
 						i++, (int)it->first, (int)it->second->getStartTime(), (int)it->second->getEventID(), it->second );
@@ -1052,7 +1052,7 @@ next:
 			}
 			eFatal("[eEPGCache] (1)map sizes not equal :( sid %04x tsid %04x onid %04x size %zu size2 %zu",
 				service.sid, service.tsid, service.onid,
-				servicemap.first.size(), servicemap.second.size() );
+				servicemap.byEvent.size(), servicemap.byTime.size() );
 		}
 #endif
 		ptr += eit_event_size;
@@ -1367,7 +1367,7 @@ const static unsigned int EPG_MAGIC = 0x98765432;
 void eEPGCache::load()
 {
 	if (m_filename.empty())
-		m_filename = "/hdd/epg.dat";
+		m_filename = "/media/hdd/epg.dat";
 	std::vector<char> vEPGDAT(m_filename.begin(), m_filename.end());
 	vEPGDAT.push_back('\0');
 	const char* EPGDAT = &vEPGDAT[0];
