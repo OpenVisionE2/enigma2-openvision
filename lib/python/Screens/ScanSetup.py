@@ -122,7 +122,8 @@ cable_autoscan_nimtype = {
 'TT3L10' : 'tt3l10',
 'TURBO' : 'vuplus_turbo_c',
 'TT2L08' : 'tt2l08',
-'BCM3148' : 'bcm3148'
+'BCM3148' : 'bcm3148',
+'BCM3158': 'bcm3148'
 }
 
 terrestrial_autoscan_nimtype = {
@@ -133,8 +134,9 @@ terrestrial_autoscan_nimtype = {
 'BCM3466' : 'bcm3466'
 }
 
+dual_tuner_list = ('TT3L10', 'BCM3466')
+
 def GetDeviceId(filter, nim_idx):
-	tuners={}
 	device_id = 0
 	socket_id = 0
 	for nim in nimmanager.nim_slots:
@@ -253,7 +255,7 @@ class CableTransponderSearchSupport:
 				if nim_name is not None and nim_name != "":
 					device_id = ""
 					nim_name = nim_name.split(' ')[-1][4:-1]
-					if nim_name in ("TT3L10", "BCM3466"):
+					if nim_name == "TT3L10":
 						try:
 							device_id = GetDeviceId(nim_name, nim_idx)
 							device_id = "--device=%s" % (device_id)
@@ -534,9 +536,9 @@ class TerrestrialTransponderSearchSupport:
 			if self.terrestrial_tunerName is not None and self.terrestrial_tunerName != "":
 				device_id = ""
 				tunerName = self.terrestrial_tunerName.split(' ')[-1][4:-1]
-				if tunerName == 'TT3L10':
+				if tunerName in dual_tuner_list:
 					try:
-						device_id = GetDeviceId('TT3L10', nim_idx)
+						device_id = GetDeviceId(tunerName, nim_idx)
 						device_id = "--device %s" % (device_id)
 					except Exception as err:
 						print("[ScanSetup] terrestrialTransponderGetCmd ->", err)
