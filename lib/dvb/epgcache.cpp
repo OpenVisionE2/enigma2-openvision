@@ -1054,7 +1054,7 @@ next:
 				}
 			}
 			{
-				CFile f("/media/hdd/time_map", "w+");
+				CFile f("/media/hdd/time_map.txt", "w+");
 				int i = 0;
 				for (timeMap::iterator it(servicemap.byTime.begin()); it != servicemap.byTime.end(); ++it )
 				{
