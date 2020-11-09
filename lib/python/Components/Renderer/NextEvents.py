@@ -45,7 +45,7 @@ class NextEvents(VariableText, Renderer):
 					elif len(event) == 3 and i > 1 and self.number == 0:
 						text = text + self.build_eventstr(event)
 					i = i + 1
-					if i > 7:
+					if i > 12:
 						break
 			self.text = text
 
