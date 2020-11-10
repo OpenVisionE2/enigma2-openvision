@@ -63,6 +63,10 @@ class About(Screen):
 		if hwserial is not None and hwserial == "unknown":
 			AboutText += _("Hardware serial: ") + about.getCPUSerial() + "\n"
 
+		if fileExists("/proc/stb/info/release"):
+			hwrelease = open("/proc/stb/info/release", "r").read().strip()
+			AboutText += _("Factory release: ") + hwrelease + "\n"
+
 		AboutText += _("Brand/Meta: ") + getBoxBrand() + "\n"
 
 		AboutText += "\n"
