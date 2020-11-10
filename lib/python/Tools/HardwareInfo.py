@@ -7,6 +7,7 @@ hw_info = None
 
 class HardwareInfo:
 	device_name = _("unavailable")
+	device_brandname = None
 	device_model = None
 	device_version = ""
 	device_revision = ""
@@ -37,6 +38,12 @@ class HardwareInfo:
 		except:
 			pass
 
+		# Brandname ... bit odd, but history prevails
+		try:
+			self.device_brandname = open("/etc/openvision/brand").read().strip()
+		except:
+			pass
+
 		# Model
 		try:
 			self.device_model = open("/etc/openvision/model").read().strip()
@@ -44,15 +51,15 @@ class HardwareInfo:
 			pass
 
 		self.device_model = self.device_model or self.device_name
-
+		self.device_hw = self.device_model
 		self.machine_name = self.device_model
 
 		if self.device_revision:
-			self.device_string = "%s (%s-%s)" % (self.device_model, self.device_revision, self.device_version)
+			self.device_string = "%s (%s-%s)" % (self.device_hw, self.device_revision, self.device_version)
 		elif self.device_version:
-			self.device_string = "%s (%s)" % (self.device_model, self.device_version)
+			self.device_string = "%s (%s)" % (self.device_hw, self.device_version)
 		else:
-			self.device_string = self.device_model
+			self.device_string = self.device_hw
 
 		# only some early DMM boxes do not have HDMI hardware
 		self.device_hdmi =  getHaveHDMI() == "True"
