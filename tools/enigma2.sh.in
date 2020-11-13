@@ -52,12 +52,11 @@ fi
 # enigma main loop
 while : ; do
 	# show bootlogo on enigma2 start
-	if [ -x @bindir@/showiframe ]; then
-		if [ -f @sysconfdir@/enigma2/backdrop.mvi ]; then
-			@bindir@/showiframe @sysconfdir@/enigma2/backdrop.mvi
-		elif [ -f @sysconfdir@/enigma2/bootlogo.mvi ]; then
-			@bindir@/showiframe @sysconfdir@/enigma2/bootlogo.mvi
-		elif [ -f @datadir@/bootlogo.mvi ]; then
+	if [ -x @bindir@/exteplayer3 ] && [ -f @datadir@/bootlogo.mp4 ]; then
+		@bindir@/exteplayer3 @datadir@/bootlogo.mp4
+	else
+		if [ -x @bindir@/showiframe ] && [ -f @datadir@/bootlogo.mvi ]; then
+			killall -9 showiframe; sleep 1
 			@bindir@/showiframe @datadir@/bootlogo.mvi
 		fi
 	fi
