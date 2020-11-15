@@ -371,7 +371,11 @@ void eDVBServiceFCCPlay::updateFCCDecoder(bool sendSeekableStateChanged)
 		setAC3Delay(ac3_delay == -1 ? 0 : ac3_delay);
 		setPCMDelay(pcm_delay == -1 ? 0 : pcm_delay);
 
+#ifdef HAVE_RASPBERRYPI
+		m_decoder->setVideoPID(vpid, vpidtype, m_is_pvr);
+#else
 		m_decoder->setVideoPID(vpid, vpidtype);
+#endif
 		selectAudioStream();
 
 		if (!(m_is_pvr || m_is_stream || m_timeshift_active))
