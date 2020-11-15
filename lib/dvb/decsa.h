@@ -4,6 +4,17 @@
 #include <linux/dvb/ca.h>	// to be checked compatibility with dvbsoftwareca -> ca.h  
 #include <condVar.h>
 
+#ifdef HAVE_RASPBERRYPI
+#include <linux/version.h>
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,13,0)
+struct ca_pid {
+	unsigned int pid;
+	int index;		/* -1 == disable*/
+};
+typedef struct ca_pid ca_pid_t;
+#endif
+#endif
+
 extern "C" {
 #include <dvbcsa/dvbcsa.h>
 }
