@@ -399,7 +399,7 @@ fi
 if test "$BOXBRAND" == "rpi"; then
 	PKG_CHECK_MODULES(DVBCSA, libdvbcsa)
 	PKG_CHECK_MODULES(LIBNL, libnl-1 >= 1.0-pre8, has_libnl=yes, dummy=no)
-	PKG_CHECK_MODULES(LIBNL, libnl-3.0, has_libnl=yes, dummy=no)
+	PKG_CHECK_MODULES(LIBNL, [libnl-3.0 libnl-genl-3.0], has_libnl=yes, dummy=no)
 	if (test "${has_libnl}" = "no"); then
 		AC_MSG_ERROR(Netlink library is required)
 	fi
@@ -407,6 +407,7 @@ if test "$BOXBRAND" == "rpi"; then
 #	AC_SUBST(LIBRPIHDDEVICE_LIBS)
 #	PKG_CHECK_MODULES(LIBRPIHDDEVICE, e2-rpihddevice)
 	BASE_LIBS+=" -lrpihddevice"
+	BASE_LIBS+=" $LIBNL_LIBS"
 	AC_DEFINE(OMX_SKIP64BIT, 1, [Required by the RPi implementation])
 	RPI_CFLAGS=" $LIBNL_CFLAGS"
 	CXXFLAGS+="$RPI_CFLAGS"
