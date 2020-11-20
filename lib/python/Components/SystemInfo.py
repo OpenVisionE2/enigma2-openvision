@@ -4,7 +4,7 @@ from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnig
 from Tools.Directories import SCOPE_PLUGINS, fileCheck, fileExists, fileHas, pathExists, resolveFilename
 import os, re
 from os import access, R_OK
-from boxbranding import getDisplayType, getImageArch, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveSCART, getHaveYUV, getHaveRCA, getHaveTranscoding, getHaveMultiTranscoding, getSoCFamily, getHaveHDMI, getMachineBuild, getHaveVFDSymbol, getHaveSVIDEO
+from boxbranding import getDisplayType, getImageArch, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveSCART, getHaveYUV, getHaveRCA, getHaveTranscoding, getHaveMultiTranscoding, getSoCFamily, getHaveHDMI, getMachineBuild, getHaveVFDSymbol, getHaveSVIDEO, getFHDSkin
 
 SystemInfo = {}
 SystemInfo["HasRootSubdir"] = False
@@ -95,7 +95,7 @@ SystemInfo["LcdLiveDecoder"] = fileCheck("/proc/stb/lcd/live_decoder")
 SystemInfo["3DMode"] = fileCheck("/proc/stb/fb/3dmode") or fileCheck("/proc/stb/fb/primary/3d")
 SystemInfo["3DZNorm"] = fileCheck("/proc/stb/fb/znorm") or fileCheck("/proc/stb/fb/primary/zoffset")
 SystemInfo["Blindscan_t2_available"] = brand == "vuplus"
-SystemInfo["HasFullHDSkinSupport"] = model not in ("et4x00", "et5x00", "sh1", "hd500c", "hd1100", "xp1000", "lc") and brand not in ("minix", "hardkernel")
+SystemInfo["HasFullHDSkinSupport"] = getFHDSkin() == "True"
 SystemInfo["HasBypassEdidChecking"] = fileCheck("/proc/stb/hdmi/bypass_edid_checking")
 SystemInfo["HasColorspace"] = fileCheck("/proc/stb/video/hdmi_colorspace")
 SystemInfo["HasColorspaceSimple"] = SystemInfo["HasColorspace"] and model in ("vusolo4k", "vuuno4k", "vuuno4kse", "vuultimo4k", "vuduo4k", "vuduo4kse")
