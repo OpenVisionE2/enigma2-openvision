@@ -70,6 +70,12 @@ config.hdmicec.tv_wakeup_detection = ConfigSelection(
 	"activity": _("Any activity"),
 	},
 	default = "streamrequest")
+config.hdmicec.tv_wakeup_command = ConfigSelection(
+	choices = {
+	"imageview": _("Image View On"),
+	"textview": _("Text View On"),
+	},
+	default = "imageview")
 config.hdmicec.fixed_physical_address = ConfigText(default = "0.0.0.0")
 config.hdmicec.volume_forwarding = ConfigYesNo(default = False)
 config.hdmicec.control_receiver_wakeup = ConfigYesNo(default = False)
@@ -109,6 +115,8 @@ class HdmiCec:
 		self.delay.timeout.get().append(self.sendStandbyMessages)
 		self.useStandby = True
 
+		self.handlingStandbyFromTV = False
+
 		eHdmiCEC.getInstance().messageReceived.get().append(self.messageReceived)
 		config.misc.standbyCounter.addNotifier(self.onEnterStandby, initial_call = False)
 		config.misc.DeepStandby.addNotifier(self.onEnterDeepStandby, initial_call = False)
@@ -144,7 +152,10 @@ class HdmiCec:
 		cmd = 0
 		data = ''
 		if message == "wakeup":
-			cmd = 0x04
+			if config.hdmicec.tv_wakeup_command.value == 'textview':
+				cmd = 0x0d
+			else:
+				cmd = 0x04
 		elif message == "sourceactive":
 			address = 0x0f # use broadcast for active source command
 			cmd = 0x82
@@ -257,7 +268,7 @@ class HdmiCec:
 	def sendStandbyMessages(self):
 			messages = []
 			if config.hdmicec.control_tv_standby.value:
-				if self.useStandby:
+				if self.useStandby and not self.handlingStandbyFromTV:
 					messages.append("standby")
 				else:
 					messages.append("sourceinactive")
@@ -371,7 +382,12 @@ class HdmiCec:
 
 			# handle standby request from the tv
 			if cmd == 0x36 and config.hdmicec.handle_tv_standby.value:
+				# avoid echoing the 'System Standby' command back to the tv
+				self.handlingStandbyFromTV = True
+				# handle standby
 				self.standby()
+				# after handling the standby command, we are free to send 'standby' ourselves again
+				self.handlingStandbyFromTV = False
 
 			# handle wakeup requests from the tv
 			if inStandby and config.hdmicec.handle_tv_wakeup.value:
