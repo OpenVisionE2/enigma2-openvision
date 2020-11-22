@@ -35,10 +35,14 @@ from Components.ServiceEventTracker import ServiceEventTracker, InfoBarBase
 
 profile("LOAD:HelpableScreen")
 from Screens.HelpMenu import HelpableScreen
+from boxbranding import getMachineProcModel
 
 brand = getBoxBrand()
 model = getBoxType()
-procmodel = getBoxProc()
+try:
+	procmodel = getBoxProc()
+except:
+	procmodel = getMachineProcModel()
 
 class InfoBar(InfoBarBase, InfoBarShowHide,
 	InfoBarNumberZap, InfoBarChannelSelection, InfoBarMenu, InfoBarEPG, InfoBarRdsDecoder, InfoBarResolutionSelection, InfoBarAspectSelection,

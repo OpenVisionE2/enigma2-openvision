@@ -8,10 +8,13 @@ from Components.SystemInfo import SystemInfo
 from Components.Console import Console
 from Components import Task
 from Tools.StbHardware import getBoxProc
-from boxbranding import getMachineMtdRoot
+from boxbranding import getMachineMtdRoot, getMachineProcModel
 import re
 
-hw_type = getBoxProc()
+try:
+	hw_type = getBoxProc()
+except:
+	hw_type = getMachineProcModel()
 
 def readFile(filename):
 	file = open(filename)
