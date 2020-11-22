@@ -5,7 +5,7 @@ from Components.Renderer.Renderer import Renderer
 from enigma import iServiceInformation
 from string import upper
 from enigma import ePixmap
-from Tools.Directories import fileExists, SCOPE_CURRENT_SKIN, resolveFilename
+from Tools.Directories import fileExists, fileHas, SCOPE_CURRENT_SKIN, resolveFilename
 
 class PicCript(Renderer):
 	__module__ = __name__
@@ -36,8 +36,8 @@ class PicCript(Renderer):
 	def changed(self, what):
 		if self.instance:
 			pngname = ''
-			if (what[0] != self.CHANGED_CLEAR):
-				sname = "none"
+			if (what[0] != self.CHANGED_CLEAR) and fileExists("/tmp/ecm.info"):
+				sname = "NAG"
 				service = self.source.service
 				if service:
 					info = (service and service.info())
@@ -51,35 +51,33 @@ class PicCript(Renderer):
 										caid = ("0%s" % caid)
 										caid = caid[:2]
 										caid = caid.upper()
-										if (caid == "26"):
+										if fileHas("/tmp/ecm.info","caid: 0x26"):
 											sname = "BiSS"
-										elif (caid == "01"):
+										elif fileHas("/tmp/ecm.info","caid: 0x01"):
 											sname = "SEC"
-										elif (caid == "06"):
+										elif fileHas("/tmp/ecm.info","caid: 0x06"):
 											sname = "IRD"
-										elif (caid == "17"):
+										elif fileHas("/tmp/ecm.info","caid: 0x17"):
 											sname = "BET"
-										elif (caid == "05"):
+										elif fileHas("/tmp/ecm.info","caid: 0x05"):
 											sname = "VIA"
-										elif (caid == "18"):
-											sname = "NAG"
-										elif (caid == "09"):
+										elif fileHas("/tmp/ecm.info","caid: 0x09"):
 											sname = "NDS"
-										elif (caid == "0B"):
+										elif fileHas("/tmp/ecm.info","caid: 0x0B"):
 											sname = "CONN"
-										elif (caid == "0D"):
+										elif fileHas("/tmp/ecm.info","caid: 0x0D"):
 											sname = "CRW"
-										elif (caid == "4A"):
+										elif fileHas("/tmp/ecm.info","caid: 0x4A"):
 											sname = "DRE"
-										elif (caid == "0E"):
+										elif fileHas("/tmp/ecm.info","caid: 0x0E"):
 											sname = "PowerVU"
-										elif (caid == "22"):
+										elif fileHas("/tmp/ecm.info","caid: 0x22"):
 											sname = "Codicrypt"
-										elif (caid == "07"):
+										elif fileHas("/tmp/ecm.info","caid: 0x07"):
 											sname = "DigiCipher"
-										elif (caid == "A1"):
+										elif fileHas("/tmp/ecm.info","caid: 0xA1"):
 											sname = "Rosscrypt"
-										elif (caid == "56"):
+										elif fileHas("/tmp/ecm.info","caid: 0x56"):
 											sname = "Verimatrix"
 
 				pngname = self.nameCache.get(sname, '')
