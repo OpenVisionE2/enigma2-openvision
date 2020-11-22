@@ -8,6 +8,7 @@ from socket import *
 from Components.Console import Console
 from Components.PluginComponent import plugins
 from Plugins.Plugin import PluginDescriptor
+from Components.config import config
 
 class Network:
 	def __init__(self):
@@ -132,13 +133,17 @@ class Network:
 
 	def writeNameserverConfig(self):
 		try:
-			Console().ePopen('rm -f /etc/resolv.conf')
-			fp = open('/etc/resolv.conf', 'w')
+			if config.usage.dhcpdns.value:
+				Console().ePopen('rm -f /etc/resolv.conf')
+				fp = open('/etc/resolv.conf', 'w')
+			else:
+				Console().ePopen('rm -f /etc/enigma2/nameserversdns.conf')
+				fp = open('/etc/enigma2/nameserversdns.conf', 'w')
 			for nameserver in self.nameservers:
 				fp.write("nameserver %d.%d.%d.%d\n" % tuple(nameserver))
 			fp.close()
 		except:
-			print("[Network] resolv.conf - writing failed")
+			print("[Network] resolv.conf or nameserversdns.conf - writing failed")
 
 	def loadNetworkConfig(self,iface,callback = None):
 		interfaces = []
@@ -192,6 +197,8 @@ class Network:
 			self.configuredNetworkAdapters = self.configuredInterfaces
 			# load ns only once
 			self.loadNameserverConfig()
+			if not config.usage.dhcpdns.value:
+				self.writeNameserverConfig()
 			print("[Network] read configured interface:", ifaces)
 			# remove any password before info is printed to the debug log
 			safe_ifaces = self.ifaces.copy()
@@ -211,12 +218,15 @@ class Network:
 
 		resolv = []
 		try:
-			fp = open('/etc/resolv.conf', 'r')
+			if config.usage.dhcpdns.value:
+				fp = open('/etc/resolv.conf', 'r')
+			else:
+				fp = open('/etc/enigma2/nameserversdns.conf', 'r')
 			resolv = fp.readlines()
 			fp.close()
 			self.nameservers = []
 		except:
-			print("[Network] resolv.conf - opening failed")
+			print("[Network] resolv.conf or nameserversdns.conf - opening failed")
 
 		for line in resolv:
 			if self.regExpMatch(nameserverPattern, line) is not None:

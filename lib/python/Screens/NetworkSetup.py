@@ -363,6 +363,8 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 
 	def createSetup(self):
 		self.list = []
+		self.dhcpDNSEntry = getConfigListEntry(_("Use DHCP for DNS"), config.usage.dhcpdns)
+		self.list.append(self.dhcpDNSEntry)
 
 		i = 1
 		for x in self.nameserverEntries:

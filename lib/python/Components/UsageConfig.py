@@ -22,6 +22,8 @@ displaytype = getDisplayType()
 def InitUsageConfig():
 	config.misc.useNTPminutes = ConfigSelection(default = "30", choices = [("30", "30" + " " +_("minutes")), ("60", _("Hour")), ("1440", _("Once per day"))])
 	config.usage = ConfigSubsection()
+	config.usage.dhcpdns = ConfigYesNo(default = True)
+	config.usage.dhcpdns.save()
 	config.usage.subnetwork = ConfigYesNo(default = True)
 	config.usage.subnetwork_cable = ConfigYesNo(default = True)
 	config.usage.subnetwork_terrestrial = ConfigYesNo(default = True)
