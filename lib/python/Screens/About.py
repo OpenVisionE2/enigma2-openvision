@@ -130,10 +130,10 @@ class About(Screen):
 		AboutText += "\n"
 
 		fp_version = getFPVersion()
-		if fp_version is None:
+		if fp_version is None or fp_version == "unknown":
 			fp_version = ""
 		else:
-			fp_version = _("Frontprocessor version: %s") % fp_version
+			fp_version = _("Front processor version: %s") % fp_version
 
 			AboutText += fp_version + "\n"
 
