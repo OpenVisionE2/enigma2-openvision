@@ -40,14 +40,6 @@ if getVisionVersion().startswith("10") and not fileExists ("/var/tmp/ntpv4.local
 	Console.ePopen('/etc/init.d/networking restart ; /etc/init.d/samba.sh restart ; mount -a -t nfs,smbfs,cifs,ncpfs')
 	print("[mytest] All network interfaces loaded.")
 
-from Components.SystemInfo import SystemInfo
-if not SystemInfo["OpenVisionModule"]:
-	print("[mytest] Open Vision in multiboot! Now we have to remove what relies on our kernel module!")
-	from Components.Console import Console
-	Console = Console()
-	Console.ePopen('opkg remove enigma2-plugin-extensions-e2iplayer')
-	print("[mytest] Removed, this is on you not us!")
-
 from traceback import print_exc
 
 if getHaveMultiLib() == "True":
@@ -554,6 +546,7 @@ def runScreenTest():
 	profile("Init:PowerKey")
 	power = PowerKey(session)
 
+	from Components.SystemInfo import SystemInfo
 	if SystemInfo["VFDSymbol"]:
 		profile("VFDSYMBOLS")
 		import Components.VfdSymbols
