@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 17:30+0330\n"
+"POT-Creation-Date: 2020-11-23 13:42+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -1515,6 +1515,10 @@ msgstr "??"
 msgid "A"
 msgstr "A"
 
+#, fuzzy
+msgid "A command sent from TV will wake up the receiver from standby."
+msgstr "Väck mottagare från viloläge"
+
 #
 #, python-format
 msgid ""
@@ -2712,6 +2716,9 @@ msgstr ""
 
 msgid "Basque"
 msgstr "Baskiska"
+
+msgid "Before sending command for switch TV to standby receiver tests if all other receivers pluged to TV are in standby. If are not, 'sourceactive' instead 'stanby' is sent to the TV."
+msgstr ""
 
 #
 msgid "Begin time"
@@ -4744,6 +4751,9 @@ msgstr "Fördröjning i millisekunder före start av rullande text på display."
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Fördröjning i millisekunder mellan rullande tecken på display."
 
+msgid "Delay in queue between sending CEC commands. For working HDMI-CEC protocol must be for some receivers used delay. Usualy between 50-150ms."
+msgstr ""
+
 msgid "Delay:"
 msgstr ""
 
@@ -5661,6 +5671,10 @@ msgstr "Aktivera flera favoritlistor"
 #, fuzzy
 msgid "Enable or disable IPv6"
 msgstr "Aktivera auto kabelskanning"
+
+#, fuzzy
+msgid "Enable or disable using HDMI-CEC."
+msgstr "Aktivera EIT EPG"
 
 msgid "Enable parental protection"
 msgstr "Aktivera föräldrakontroll"
@@ -6918,9 +6932,6 @@ msgstr ""
 msgid "H"
 msgstr ""
 
-msgid "H7/H9/H9COMBO/H10 new model"
-msgstr ""
-
 msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
 msgstr ""
 
@@ -7247,6 +7258,9 @@ msgstr ""
 msgid "I do not want to perform any service scans"
 msgstr "Vill du söka efter kanaler?"
 
+msgid "I55SE/H7/H9/H9SE/H9COMBO/H9COMBOSE/H10 new Model"
+msgstr ""
+
 msgid "IDLE"
 msgstr ""
 
@@ -7307,6 +7321,9 @@ msgid "Icons"
 msgstr "Ikoner"
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
+msgstr ""
+
+msgid "If enabled, CEC protocol traffic can be saved to a logfile 'hdmicec.log'."
 msgstr ""
 
 msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
@@ -10467,6 +10484,11 @@ msgid "Press MENU on your remote control for additional options."
 msgstr "Tryck MENU på din fjärrkontroll för ytterligare valmöjligheter."
 
 #
+#, fuzzy
+msgid "Press OK and select directory as path for logfile."
+msgstr "Skapande av katalog %s misslyckades."
+
+#
 msgid "Press OK on your remote control to continue."
 msgstr "Tryck OK på din fjärrkontroll för att fortsätta."
 
@@ -10668,8 +10690,15 @@ msgstr ""
 msgid "Purge deleted user bouquets"
 msgstr "Rensa borttagna favoritlistor"
 
+#, fuzzy
+msgid "Put A/V receiver to standby."
+msgstr "Sätt mottagaren i viloläge"
+
 msgid "Put TV in standby"
 msgstr "Sätt TV:n i viloläge"
+
+msgid "Put TV to standby when receiver goes to standby or to deep standby."
+msgstr ""
 
 msgid "Put receiver in standby"
 msgstr "Sätt mottagaren i viloläge"
@@ -10955,6 +10984,9 @@ msgstr "Val av uppdateringsfrekvens."
 
 msgid "Regard deep standby as standby"
 msgstr "Stäng av anses vara samma som viloläge"
+
+msgid "Regard deep standby as standby. It will be sending same commands when box goest to deep standby."
+msgstr ""
 
 msgid "Region"
 msgstr "Område"
@@ -13244,6 +13276,9 @@ msgstr ""
 msgid "Some plugins are not available:\n"
 msgstr "Några plugins är inte tillgängliga :\n"
 
+msgid "Some tv's do not handle command 'Image View On' for wakingup correctly, so you can try sending 'Text View On' as alternative."
+msgstr ""
+
 msgid "Sorry only possible to record 2 channels at once!"
 msgstr ""
 
@@ -14361,6 +14396,9 @@ msgstr ""
 #, fuzzy
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Användargränssnittet för din mottagare startas om"
+
+msgid "The wake up command can be sent multiple times."
+msgstr ""
 
 msgid "The width of the picture. The input will be scaled to match this value."
 msgstr ""
@@ -15482,6 +15520,10 @@ msgstr ""
 msgid "Use TV remote control"
 msgstr "Använd TV:ns fjärrkontroll"
 
+#, fuzzy
+msgid "Use TV remote control for your receiver."
+msgstr "Använd TV:ns fjärrkontroll"
+
 msgid "Use USALS for this sat"
 msgstr "Använd USALS för denna satellit"
 
@@ -15932,6 +15974,10 @@ msgstr "Väck TV från viloläge"
 msgid "Wakeup"
 msgstr "Väck"
 
+#, fuzzy
+msgid "Wakeup A/V receiver from standby."
+msgstr "Väck mottagare från viloläge"
+
 msgid "Wakeup TV from standby"
 msgstr "Väck TV från viloläge"
 
@@ -16070,6 +16116,12 @@ msgid "What day of week ?"
 msgstr ""
 
 msgid "What type of service scan do you want?"
+msgstr ""
+
+msgid "When TV is turned off, the receiver will switch to standby by a command received from the TV."
+msgstr ""
+
+msgid "When TV is turned on, the receiver will be awakened by a command received from the TV."
 msgstr ""
 
 #, fuzzy
@@ -16290,6 +16342,12 @@ msgstr "Vid icke noll kommer en inspelning starta tidigare än starttiden som an
 
 msgid "When nonzero, a recording will stop later than the ending time indicated by the EPG."
 msgstr "Vid icke noll kommer en inspelning stanna senare än sluttiden som anges av EPG."
+
+msgid "When receiver wakes up/starts, it will send command for switch TV to correct input to which the receiver is pluged."
+msgstr ""
+
+msgid "When receiver wakes up/starts, it will try wake up TV by sending the appropriate command."
+msgstr ""
 
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
 msgstr ""
@@ -16737,6 +16795,9 @@ msgstr ""
 "Har du anslutit ditt USB WLAN sticka?\n"
 "\n"
 "Vänligen välj vad du vill göra härnäst."
+
+msgid "ZAP timers can send command 'sourceactive' before zap for set TV to correct input."
+msgstr ""
 
 msgid "Zambia"
 msgstr ""

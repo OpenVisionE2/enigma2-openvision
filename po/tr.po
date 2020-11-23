@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OPENPLi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 17:30+0330\n"
+"POT-Creation-Date: 2020-11-23 13:42+0330\n"
 "PO-Revision-Date: 2015-12-18 21:05+0200\n"
 "Last-Translator: Yetkin AYDIN <yetkina@gmail.com>\n"
 "Language-Team: http://www.hurforum.com <yetkina@gmail.com>\n"
@@ -1450,6 +1450,10 @@ msgstr "??"
 msgid "A"
 msgstr "A"
 
+#, fuzzy
+msgid "A command sent from TV will wake up the receiver from standby."
+msgstr "Bekleme Modunda açılış saati"
+
 #, python-format
 msgid ""
 "A configuration file (%s) has been modified since it was installed.\n"
@@ -2513,6 +2517,9 @@ msgstr ""
 
 msgid "Basque"
 msgstr "Basque"
+
+msgid "Before sending command for switch TV to standby receiver tests if all other receivers pluged to TV are in standby. If are not, 'sourceactive' instead 'stanby' is sent to the TV."
+msgstr ""
 
 msgid "Begin time"
 msgstr "Başlama zamanı"
@@ -4379,6 +4386,9 @@ msgstr "Ekranda yazı kaydırken, geçiş/bekleme zamanını milisaniye..."
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Ekranda yazı kaydırken, geçiş/bekleme zamanını milisaniye..."
 
+msgid "Delay in queue between sending CEC commands. For working HDMI-CEC protocol must be for some receivers used delay. Usualy between 50-150ms."
+msgstr ""
+
 msgid "Delay:"
 msgstr ""
 
@@ -5183,6 +5193,10 @@ msgstr "Çoklu buket kullanımını etkin"
 #, fuzzy
 msgid "Enable or disable IPv6"
 msgstr "Otomatik kablo taramayı etkinleştir"
+
+#, fuzzy
+msgid "Enable or disable using HDMI-CEC."
+msgstr "EIT EPG Aktif"
 
 msgid "Enable parental protection"
 msgstr "Aile koruması etkin"
@@ -6320,9 +6334,6 @@ msgstr ""
 msgid "H"
 msgstr ""
 
-msgid "H7/H9/H9COMBO/H10 new model"
-msgstr ""
-
 msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
 msgstr ""
 
@@ -6632,6 +6643,9 @@ msgstr ""
 msgid "I do not want to perform any service scans"
 msgstr "Servis taraması yapmak ister misiniz?"
 
+msgid "I55SE/H7/H9/H9SE/H9COMBO/H9COMBOSE/H10 new Model"
+msgstr ""
+
 msgid "IDLE"
 msgstr ""
 
@@ -6688,6 +6702,9 @@ msgid "Icons"
 msgstr "Simgeler"
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
+msgstr ""
+
+msgid "If enabled, CEC protocol traffic can be saved to a logfile 'hdmicec.log'."
 msgstr ""
 
 msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
@@ -9501,6 +9518,10 @@ msgstr "Ek bilgi için uzaktan kumanda üzerindeki INFO (EPG)  tuşuna basın."
 msgid "Press MENU on your remote control for additional options."
 msgstr "Ek seçenekler için uzaktan kumanda üzerindeki MENU düğmesine basın."
 
+#, fuzzy
+msgid "Press OK and select directory as path for logfile."
+msgstr "%s klasörü oluşturulamadı."
+
 msgid "Press OK on your remote control to continue."
 msgstr "Devam etmek için kumandanızın OK tuşuna basın."
 
@@ -9679,8 +9700,15 @@ msgstr ""
 msgid "Purge deleted user bouquets"
 msgstr "Buketleri Sil"
 
+#, fuzzy
+msgid "Put A/V receiver to standby."
+msgstr "Alıcıyı bekleme konumuna al"
+
 msgid "Put TV in standby"
 msgstr "TV yi bekleme konumuna al"
+
+msgid "Put TV to standby when receiver goes to standby or to deep standby."
+msgstr ""
 
 msgid "Put receiver in standby"
 msgstr "Alıcıyı bekleme konumuna al"
@@ -9934,6 +9962,9 @@ msgstr "Yenileme hızı seçimi."
 
 msgid "Regard deep standby as standby"
 msgstr "Derin bekleme modu, bekleme modu olsun"
+
+msgid "Regard deep standby as standby. It will be sending same commands when box goest to deep standby."
+msgstr ""
 
 msgid "Region"
 msgstr "Bölge"
@@ -11985,6 +12016,9 @@ msgstr ""
 msgid "Some plugins are not available:\n"
 msgstr "Bazı eklentiler kullanılabilir değil:\n"
 
+msgid "Some tv's do not handle command 'Image View On' for wakingup correctly, so you can try sending 'Text View On' as alternative."
+msgstr ""
+
 msgid "Sorry only possible to record 2 channels at once!"
 msgstr ""
 
@@ -12990,6 +13024,9 @@ msgstr ""
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Alıcınızın kullanıcı arayüzü yeniden başlatılıyor..."
 
+msgid "The wake up command can be sent multiple times."
+msgstr ""
+
 msgid "The width of the picture. The input will be scaled to match this value."
 msgstr ""
 
@@ -13992,6 +14029,10 @@ msgstr ""
 msgid "Use TV remote control"
 msgstr "TV uzaktan kumandasını kullan"
 
+#, fuzzy
+msgid "Use TV remote control for your receiver."
+msgstr "TV uzaktan kumandasını kullan"
+
 msgid "Use USALS for this sat"
 msgstr "Bu Uydu için DiSEqC 1.3 (USALS) kullan"
 
@@ -14384,6 +14425,10 @@ msgstr "TV'nin bekleme modundan çıkmasını bekle"
 msgid "Wakeup"
 msgstr "Wake Up"
 
+#, fuzzy
+msgid "Wakeup A/V receiver from standby."
+msgstr "Bekleme Modunda açılış saati"
+
 msgid "Wakeup TV from standby"
 msgstr "TV'nin bekleme modundan çıkmasını bekle"
 
@@ -14508,6 +14553,12 @@ msgid "What day of week ?"
 msgstr ""
 
 msgid "What type of service scan do you want?"
+msgstr ""
+
+msgid "When TV is turned off, the receiver will switch to standby by a command received from the TV."
+msgstr ""
+
+msgid "When TV is turned on, the receiver will be awakened by a command received from the TV."
 msgstr ""
 
 #, fuzzy
@@ -14726,6 +14777,12 @@ msgstr "Boş değilse, kayıt başlangıç ​​zamanı EPG ile gösterilenden 
 
 msgid "When nonzero, a recording will stop later than the ending time indicated by the EPG."
 msgstr "Boş değilse, kayıt EPG zamanından önce tamamlanır."
+
+msgid "When receiver wakes up/starts, it will send command for switch TV to correct input to which the receiver is pluged."
+msgstr ""
+
+msgid "When receiver wakes up/starts, it will try wake up TV by sending the appropriate command."
+msgstr ""
 
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
 msgstr ""
@@ -15128,6 +15185,9 @@ msgstr ""
 "USB WLAN Çubuk ile mi bağlanacaksınız?\n"
 "\n"
 "Bir sonraki adımda ne yapmak istediğinizi seçin."
+
+msgid "ZAP timers can send command 'sourceactive' before zap for set TV to correct input."
+msgstr ""
 
 msgid "Zambia"
 msgstr ""

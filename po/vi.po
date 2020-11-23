@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 17:30+0330\n"
+"POT-Creation-Date: 2020-11-23 13:42+0330\n"
 "PO-Revision-Date: 2019-11-19 08:58+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -1464,6 +1464,10 @@ msgstr "??"
 msgid "A"
 msgstr "A"
 
+#, fuzzy
+msgid "A command sent from TV will wake up the receiver from standby."
+msgstr "Nhận thức dậy từ chế độ chờ"
+
 #, python-format
 msgid ""
 "A configuration file (%s) has been modified since it was installed.\n"
@@ -2513,6 +2517,9 @@ msgstr "Thông tin cơ bản về PID"
 
 msgid "Basque"
 msgstr "Basque"
+
+msgid "Before sending command for switch TV to standby receiver tests if all other receivers pluged to TV are in standby. If are not, 'sourceactive' instead 'stanby' is sent to the TV."
+msgstr ""
 
 msgid "Begin time"
 msgstr "Thời gian bắt đầu"
@@ -4368,6 +4375,9 @@ msgstr "Trì hoãn tính bằng mili giây trước khi bắt đầu cuộn văn
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Độ trễ tính bằng mili giây giữa các ký tự cuộn trên màn hình."
 
+msgid "Delay in queue between sending CEC commands. For working HDMI-CEC protocol must be for some receivers used delay. Usualy between 50-150ms."
+msgstr ""
+
 msgid "Delay:"
 msgstr ""
 
@@ -5157,6 +5167,10 @@ msgstr "Cho phép nhiều gói kênh"
 #, fuzzy
 msgid "Enable or disable IPv6"
 msgstr "Cho phép quét cáp tự động"
+
+#, fuzzy
+msgid "Enable or disable using HDMI-CEC."
+msgstr "Kích hoạt HDMI-CEC"
 
 msgid "Enable parental protection"
 msgstr "Cho phép bảo vệ cha mẹ"
@@ -6302,9 +6316,6 @@ msgstr "Guyana"
 msgid "H"
 msgstr "H"
 
-msgid "H7/H9/H9COMBO/H10 new model"
-msgstr ""
-
 msgid "H: = Hourly / D: = Daily / W: = Weekly / M: = Monthly"
 msgstr ""
 
@@ -6607,6 +6618,9 @@ msgstr "I"
 msgid "I do not want to perform any service scans"
 msgstr "Tôi không muốn thực hiện bất kỳ quét dịch vụ nào"
 
+msgid "I55SE/H7/H9/H9SE/H9COMBO/H9COMBOSE/H10 new Model"
+msgstr ""
+
 msgid "IDLE"
 msgstr "IDLE"
 
@@ -6664,6 +6678,9 @@ msgstr "Biểu tượng"
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
 msgstr "Nếu bị tắt, các ký tự gạch chân trong tên tệp và thư mục sẽ không được hiển thị và được thay thế bằng dấu cách."
+
+msgid "If enabled, CEC protocol traffic can be saved to a logfile 'hdmicec.log'."
+msgstr ""
 
 msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
 msgstr "Nếu được bật, dấu trang sẽ được cập nhật với vị trí mới khi bạn di chuyển hoặc sao chép bản ghi."
@@ -9446,6 +9463,10 @@ msgstr "Nhấn INFO trên điều khiển từ xa để biết thêm thông tin.
 msgid "Press MENU on your remote control for additional options."
 msgstr "Nhấn MENU trên điều khiển từ xa của bạn để có thêm tùy chọn."
 
+#, fuzzy
+msgid "Press OK and select directory as path for logfile."
+msgstr "Chọn thư mục cho logfile"
+
 msgid "Press OK on your remote control to continue."
 msgstr "Nhấn OK trên điều khiển từ xa của bạn để tiếp tục."
 
@@ -9622,8 +9643,15 @@ msgstr "Puerto Rico"
 msgid "Purge deleted user bouquets"
 msgstr "Thanh lọc người dùng đã xóa"
 
+#, fuzzy
+msgid "Put A/V receiver to standby."
+msgstr "Đặt máy thu ở chế độ chờ"
+
 msgid "Put TV in standby"
 msgstr "Đặt TV ở chế độ chờ"
+
+msgid "Put TV to standby when receiver goes to standby or to deep standby."
+msgstr ""
 
 msgid "Put receiver in standby"
 msgstr "Đặt máy thu ở chế độ chờ"
@@ -9877,6 +9905,9 @@ msgstr "Làm mới lựa chọn tỷ lệ."
 
 msgid "Regard deep standby as standby"
 msgstr "Coi chế độ chờ sâu như chế độ chờ"
+
+msgid "Regard deep standby as standby. It will be sending same commands when box goest to deep standby."
+msgstr ""
 
 msgid "Region"
 msgstr "Khu vực"
@@ -11904,6 +11935,9 @@ msgstr "Somalia"
 msgid "Some plugins are not available:\n"
 msgstr "Một số plugin không có sẵn:\n"
 
+msgid "Some tv's do not handle command 'Image View On' for wakingup correctly, so you can try sending 'Text View On' as alternative."
+msgstr ""
+
 msgid "Sorry only possible to record 2 channels at once!"
 msgstr ""
 
@@ -12906,6 +12940,9 @@ msgstr ""
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Giao diện người dùng của máy thu của bạn đang khởi động lại ở chế độ gỡ lỗi"
 
+msgid "The wake up command can be sent multiple times."
+msgstr ""
+
 msgid "The width of the picture. The input will be scaled to match this value."
 msgstr ""
 
@@ -13884,6 +13921,10 @@ msgstr ""
 msgid "Use TV remote control"
 msgstr "Sử dụng điều khiển từ xa"
 
+#, fuzzy
+msgid "Use TV remote control for your receiver."
+msgstr "Sử dụng điều khiển từ xa"
+
 msgid "Use USALS for this sat"
 msgstr "Sử dụng USALS cho sat này"
 
@@ -14270,6 +14311,10 @@ msgstr "Wake Up TV từ chế độ chờ"
 msgid "Wakeup"
 msgstr "Thức dậy"
 
+#, fuzzy
+msgid "Wakeup A/V receiver from standby."
+msgstr "Nhận thức dậy từ chế độ chờ"
+
 msgid "Wakeup TV from standby"
 msgstr "Wake Up TV từ chế độ chờ"
 
@@ -14398,6 +14443,12 @@ msgstr ""
 
 msgid "What type of service scan do you want?"
 msgstr "Bạn muốn loại dịch vụ quét nào?"
+
+msgid "When TV is turned off, the receiver will switch to standby by a command received from the TV."
+msgstr ""
+
+msgid "When TV is turned on, the receiver will be awakened by a command received from the TV."
+msgstr ""
 
 #, fuzzy
 msgid "When enabled enigma2 will load unlinked user bouquets. This means that user bouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are updated"
@@ -14611,6 +14662,12 @@ msgstr "Khi khác, một bản ghi sẽ bắt đầu sớm hơn thời gian bắ
 
 msgid "When nonzero, a recording will stop later than the ending time indicated by the EPG."
 msgstr "Khi khác 0, bản ghi sẽ dừng muộn hơn thời gian kết thúc được chỉ định bởi EPG."
+
+msgid "When receiver wakes up/starts, it will send command for switch TV to correct input to which the receiver is pluged."
+msgstr ""
+
+msgid "When receiver wakes up/starts, it will try wake up TV by sending the appropriate command."
+msgstr ""
 
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
 msgstr "Khi được chọn, điều này cho phép các chế độ video được chọn ngay cả khi chúng không được báo cáo là được hỗ trợ."
@@ -15024,6 +15081,9 @@ msgstr ""
 "Bạn đã gắn USB WLAN Stick chưa?\n"
 "\n"
 "Vui lòng chọn những gì bạn muốn làm tiếp theo."
+
+msgid "ZAP timers can send command 'sourceactive' before zap for set TV to correct input."
+msgstr ""
 
 msgid "Zambia"
 msgstr "Zambia"
