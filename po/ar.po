@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OBH enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 13:42+0330\n"
+"POT-Creation-Date: 2020-11-25 11:53+0330\n"
 "PO-Revision-Date: 2019-04-12 12:36+0300\n"
 "Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
 "Language-Team: mosad - مساعد الجعيد\n"
@@ -1515,10 +1515,6 @@ msgstr "??"
 msgid "A"
 msgstr "A"
 
-#, fuzzy
-msgid "A command sent from TV will wake up the receiver from standby."
-msgstr "تنبيه التلفزيون من وضع الإستعداد"
-
 #, python-format
 msgid ""
 "A configuration file (%s) has been modified since it was installed.\n"
@@ -2024,6 +2020,10 @@ msgstr ""
 msgid "Allows receiver to store the EPG data regularly."
 msgstr ""
 
+#, fuzzy
+msgid "Allows the TV remote to be used to control the receiver."
+msgstr "إستخدم وحدة التحكم عن بعد للتلفزيون"
+
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
 
@@ -2480,6 +2480,9 @@ msgstr "بحث آلـى"
 msgid "Automatic scan"
 msgstr "بحث آلـى"
 
+msgid "Automatically put the TV in standby whenever the receiver goes into standby or deep standby."
+msgstr ""
+
 msgid "Automatically start timeshift after"
 msgstr "التشغيل التلقائي لخاصية التايم شفت"
 
@@ -2621,7 +2624,7 @@ msgstr ""
 msgid "Basque"
 msgstr "الباسكي"
 
-msgid "Before sending command for switch TV to standby receiver tests if all other receivers pluged to TV are in standby. If are not, 'sourceactive' instead 'stanby' is sent to the TV."
+msgid "Before sending the command to switch the TV to standby, the receiver tests if all the other devices plugged to TV are in standby. If they are not, the 'sourceinactive' command will be sent to the TV instead of the 'standby' command."
 msgstr ""
 
 msgid "Begin time"
@@ -2729,6 +2732,9 @@ msgstr "تعزيز الأزرق"
 
 msgid "Boost green"
 msgstr "تعزيز الأخضر"
+
+msgid "Boot ID: "
+msgstr ""
 
 #, fuzzy
 msgid "Boot time"
@@ -3375,6 +3381,9 @@ msgstr "تشغيل الأمر"
 
 msgid "Command order"
 msgstr "ترتيب الأوامر"
+
+msgid "Command the TV to switch to the correct HDMI input when zap timers activate."
+msgstr ""
 
 #, fuzzy
 msgid "Command to run"
@@ -4535,6 +4544,9 @@ msgstr "التاخير قبل بدء تكرار المفتاح:"
 msgid "Delay before sequence repeat"
 msgstr "تأخير قبل تكرار التسلسل"
 
+msgid "Delay between CEC commands when sending a series of commands. Some devices require this delay for correct functioning, usually between 50-150ms."
+msgstr ""
+
 msgid "Delay between diseqc commands"
 msgstr "التأخير بين أوامر الدايزك"
 
@@ -4551,9 +4563,6 @@ msgid "Delay in miliseconds before start of scrolling text on display."
 msgstr ""
 
 msgid "Delay in miliseconds between scrolling characters on display."
-msgstr ""
-
-msgid "Delay in queue between sending CEC commands. For working HDMI-CEC protocol must be for some receivers used delay. Usualy between 50-150ms."
 msgstr ""
 
 msgid "Delay:"
@@ -5394,7 +5403,7 @@ msgstr "تفعيل باقات متعدده"
 
 #, fuzzy
 msgid "Enable or disable IPv6"
-msgstr "تفعيل البحث التلقائي لقنوات الكيبل"
+msgstr "تمكين جدول معلومات الحدث في دليل البرامج الإلكتروني"
 
 #, fuzzy
 msgid "Enable or disable using HDMI-CEC."
@@ -6295,7 +6304,7 @@ msgid "Front panel display"
 msgstr "إغلاق شاشة العرض الصغيرة"
 
 #, fuzzy, python-format
-msgid "Frontprocessor version: %s"
+msgid "Front processor version: %s"
 msgstr "الإصدار:\t%s"
 
 msgid "Full Range RGB"
@@ -6959,7 +6968,7 @@ msgstr "الأيقونات"
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
 msgstr ""
 
-msgid "If enabled, CEC protocol traffic can be saved to a logfile 'hdmicec.log'."
+msgid "If enabled, a log will be kept of CEC protocol traffic ('hdmicec.log')"
 msgstr ""
 
 msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
@@ -6970,6 +6979,9 @@ msgstr "في حالة التمكين ، تعرض الشاشة 12 حرفًا بد
 
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "إذا تم تعيينها على قيم إشارة 'نعم' (معدل الإشارة ، الخ) فسيتم حسابها من API V3. هذا إصدار API قديم تم استبداله الآن."
+
+msgid "If set to 'yes' the same commands will be sent to the TV for deep standby events, as are sent during regular standby events."
+msgstr ""
 
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
@@ -9016,9 +9028,6 @@ msgstr "اللغة الاصلية"
 msgid "Open Vision module: "
 msgstr ""
 
-msgid "Open Vision random UUID: "
-msgstr ""
-
 msgid "Open Vision revision check"
 msgstr ""
 
@@ -9842,10 +9851,6 @@ msgstr "اضغط مفتاح المعلومات من ريموت التحكم عن
 msgid "Press MENU on your remote control for additional options."
 msgstr "اضغط مفتاح القائمة من ريموت التحكم عن بعد للخيارات الإضافية."
 
-#, fuzzy
-msgid "Press OK and select directory as path for logfile."
-msgstr "فشل إنشاء %s المجلد."
-
 msgid "Press OK on your remote control to continue."
 msgstr "أضغط موافق من ريموت التحكم عن بعد للإستمرار."
 
@@ -9882,6 +9887,10 @@ msgstr "أضغط موافق وأختار مزود الخدمة."
 
 msgid "Press OK to select satellites"
 msgstr "أضغط على مفتاح موافق لتحديد الاقمار الصناعية"
+
+#, fuzzy
+msgid "Press OK to select the save location of the log file."
+msgstr "فشل إنشاء %s المجلد."
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "إضغط موافق تحديد/إلغاء الكايد."
@@ -10031,14 +10040,11 @@ msgid "Purge deleted user bouquets"
 msgstr "أزاله باقات المستخدم المحذوفة"
 
 #, fuzzy
-msgid "Put A/V receiver to standby."
+msgid "Put A/V receiver to standby too."
 msgstr "وضع التلفزيون في وضع الاستعداد"
 
 msgid "Put TV in standby"
 msgstr "وضع التلفزيون في وضع الاستعداد"
-
-msgid "Put TV to standby when receiver goes to standby or to deep standby."
-msgstr ""
 
 #, fuzzy
 msgid "Put receiver in standby"
@@ -10196,7 +10202,7 @@ msgid "Really update the front panel and reboot now?"
 msgstr "حقا تريد ترقية الجهاز من مدخل المعالج الأمامي وإعادة التشغيل الأن؟"
 
 #, fuzzy
-msgid "Really update the frontprocessor and reboot now?"
+msgid "Really update the front processor and reboot now?"
 msgstr "حقا تريد ترقية الجهاز من مدخل المعالج الأمامي وإعادة التشغيل الأن؟"
 
 #, fuzzy
@@ -10306,9 +10312,6 @@ msgstr "إختيار معدل التحديث."
 
 msgid "Regard deep standby as standby"
 msgstr "يعتبر الاستعداد العميق مثل وضع الاستعداد"
-
-msgid "Regard deep standby as standby. It will be sending same commands when box goest to deep standby."
-msgstr ""
 
 msgid "Region"
 msgstr "المنطقة"
@@ -12468,11 +12471,11 @@ msgstr "جزر سليمان"
 msgid "Somalia"
 msgstr "الصومال"
 
+msgid "Some TVs do not wake from standby when they receive the 'Image View On' command. If this is the case try the 'Text View On' command instead."
+msgstr ""
+
 msgid "Some plugins are not available:\n"
 msgstr "بعض البلج إنز غير متوفر:\n"
-
-msgid "Some tv's do not handle command 'Image View On' for wakingup correctly, so you can try sending 'Text View On' as alternative."
-msgstr ""
 
 msgid "Sorry only possible to record 2 channels at once!"
 msgstr ""
@@ -13375,6 +13378,9 @@ msgstr "تكوين حجم خط الترجمة ."
 msgid "The bitrate of the video encoder. Larger value improves quality and increases file size."
 msgstr ""
 
+msgid "The command to wake from standby will be sent multiple times."
+msgstr ""
+
 #, python-format
 msgid ""
 "The current image might not be stable.\n"
@@ -13498,9 +13504,6 @@ msgstr ""
 #, fuzzy
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "جاري إعادة تشغيل واجهة المستخدم على %s %s الخاص بك"
-
-msgid "The wake up command can be sent multiple times."
-msgstr ""
 
 msgid "The width of the picture. The input will be scaled to match this value."
 msgstr ""
@@ -14320,6 +14323,9 @@ msgstr "معايرة نظام مواقع الاقمار الصناعية الع�
 msgid "USB stick"
 msgstr ""
 
+msgid "UUID: "
+msgstr ""
+
 msgid "Uganda"
 msgstr "أوغندا"
 
@@ -14542,10 +14548,6 @@ msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG d
 msgstr ""
 
 msgid "Use TV remote control"
-msgstr "إستخدم وحدة التحكم عن بعد للتلفزيون"
-
-#, fuzzy
-msgid "Use TV remote control for your receiver."
 msgstr "إستخدم وحدة التحكم عن بعد للتلفزيون"
 
 msgid "Use USALS for this sat"
@@ -14891,6 +14893,9 @@ msgstr ""
 msgid "Volume down"
 msgstr "يسار الصفحة"
 
+msgid "Volume keys on the receiver remote will control the TV volume."
+msgstr ""
+
 msgid "Volume up"
 msgstr ""
 
@@ -14936,6 +14941,9 @@ msgstr "في انتظار التقسيم"
 msgid "Wake On LAN"
 msgstr "تفعيل شبكة الانترنت عبر الكيبل"
 
+msgid "Wake the receiver from standby when selected wake command is sent from the TV."
+msgstr ""
+
 #, fuzzy
 msgid "Wake up"
 msgstr "تنبيه"
@@ -14948,7 +14956,7 @@ msgid "Wakeup"
 msgstr "تنبيه"
 
 #, fuzzy
-msgid "Wakeup A/V receiver from standby."
+msgid "Wakeup A/V receiver from standby too."
 msgstr "تنبيه التلفزيون من وضع الإستعداد"
 
 msgid "Wakeup TV from standby"
@@ -15082,12 +15090,6 @@ msgstr ""
 msgid "What type of service scan do you want?"
 msgstr ""
 
-msgid "When TV is turned off, the receiver will switch to standby by a command received from the TV."
-msgstr ""
-
-msgid "When TV is turned on, the receiver will be awakened by a command received from the TV."
-msgstr ""
-
 #, fuzzy
 msgid "When enabled enigma2 will load unlinked user bouquets. This means that user bouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are updated"
 msgstr ""
@@ -15103,6 +15105,14 @@ msgstr ""
 
 msgid "When enabled the left, right, CH+/-, B+/-, P+/- buttons will follow the 'neutrino' style zap controls instead of the enigma2 style."
 msgstr ""
+
+#, fuzzy
+msgid "When enabled the receiver will automatically return to standby when the TV is turned off."
+msgstr "عند التمكين سيقوم جهاز الإستقبال تلقائيا بإستخدام المسار الصوتي الذي قمت باختياره من قبل."
+
+#, fuzzy
+msgid "When enabled the receiver will automatically wake from standby when the TV is turned on."
+msgstr "عند التمكين سيقوم جهاز الإستقبال تلقائيا بإستخدام المسار الصوتي الذي قمت باختياره من قبل."
 
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr ""
@@ -15323,10 +15333,7 @@ msgstr "عندما يتم التصفير، سيبدأ تسجيل في وقت س�
 msgid "When nonzero, a recording will stop later than the ending time indicated by the EPG."
 msgstr "عندما يتم التصفير، سيتوقف التسجيل في وقت سابق من وقت النهاية المشار إليه من قبل دليل البرامج الإلكترونية."
 
-msgid "When receiver wakes up/starts, it will send command for switch TV to correct input to which the receiver is pluged."
-msgstr ""
-
-msgid "When receiver wakes up/starts, it will try wake up TV by sending the appropriate command."
+msgid "When receiver wakes from standby, it will command the TV to switch to the HDMI input the receiver is connected to."
 msgstr ""
 
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
@@ -15346,6 +15353,9 @@ msgstr "عندما يكون المحتوى على نسبة العرض إلى ا�
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "عندما يكون المحتوى على نسبة العرض إلى الارتفاع 4: 3، واختيار ما إذا كان مقياس / تمتد الصورة."
+
+msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
+msgstr ""
 
 msgid "When unset, sort changes will be temporary - just for this view of a directory."
 msgstr ""
@@ -15622,7 +15632,7 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"Your frontprocessor will be updated\n"
+"Your front processor will be updated\n"
 "Please wait until your receiver reboots\n"
 "This may take a few minutes"
 msgstr ""
@@ -15741,9 +15751,6 @@ msgstr ""
 "هل مرفق فلاش إتصال الشبكة اللاسلكية الخاص بك?\n"
 "\n"
 "الرجاء اختيار ما تريد القيام به بعد ذلك."
-
-msgid "ZAP timers can send command 'sourceactive' before zap for set TV to correct input."
-msgstr ""
 
 msgid "Zambia"
 msgstr "زامبيا"

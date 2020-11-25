@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 13:42+0330\n"
+"POT-Creation-Date: 2020-11-25 11:53+0330\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -1477,10 +1477,6 @@ msgstr "??"
 msgid "A"
 msgstr "A"
 
-#, fuzzy
-msgid "A command sent from TV will wake up the receiver from standby."
-msgstr "Pamodināt uztvērēju no gidstāves"
-
 #, python-format
 msgid ""
 "A configuration file (%s) has been modified since it was installed.\n"
@@ -1964,6 +1960,10 @@ msgstr ""
 msgid "Allows receiver to store the EPG data regularly."
 msgstr ""
 
+#, fuzzy
+msgid "Allows the TV remote to be used to control the receiver."
+msgstr "Lietot TV tālvadības pulti."
+
 msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
 msgstr ""
 
@@ -2405,6 +2405,9 @@ msgstr "Automātiskā meklēšana"
 msgid "Automatic scan"
 msgstr "Automātiskā meklēšana"
 
+msgid "Automatically put the TV in standby whenever the receiver goes into standby or deep standby."
+msgstr ""
+
 msgid "Automatically start timeshift after"
 msgstr "Automātiski sākt laika aizturi pēc"
 
@@ -2540,7 +2543,7 @@ msgstr "Pamata info"
 msgid "Basque"
 msgstr "Basku"
 
-msgid "Before sending command for switch TV to standby receiver tests if all other receivers pluged to TV are in standby. If are not, 'sourceactive' instead 'stanby' is sent to the TV."
+msgid "Before sending the command to switch the TV to standby, the receiver tests if all the other devices plugged to TV are in standby. If they are not, the 'sourceinactive' command will be sent to the TV instead of the 'standby' command."
 msgstr ""
 
 msgid "Begin time"
@@ -2645,6 +2648,9 @@ msgstr "Zilā piesātinājums"
 
 msgid "Boost green"
 msgstr "Zaļā piesātinājums"
+
+msgid "Boot ID: "
+msgstr ""
 
 #, fuzzy
 msgid "Boot time"
@@ -3270,6 +3276,9 @@ msgstr "Izpilda komandu..."
 
 msgid "Command order"
 msgstr "Komandu secība"
+
+msgid "Command the TV to switch to the correct HDMI input when zap timers activate."
+msgstr ""
 
 #, fuzzy
 msgid "Command to run"
@@ -4366,6 +4375,9 @@ msgstr "Aizture pirms taustiņu atkārtošanas:"
 msgid "Delay before sequence repeat"
 msgstr "Aizture pirms secības atkārtojuma"
 
+msgid "Delay between CEC commands when sending a series of commands. Some devices require this delay for correct functioning, usually between 50-150ms."
+msgstr ""
+
 msgid "Delay between diseqc commands"
 msgstr "Aizture starp DiSEqC komandām"
 
@@ -4383,9 +4395,6 @@ msgstr "Aizture milisekundēs pirms teksta ritināšanas displejā."
 
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Aizture milisekundēs simbolu ritināšanas ātrumam displejā."
-
-msgid "Delay in queue between sending CEC commands. For working HDMI-CEC protocol must be for some receivers used delay. Usualy between 50-150ms."
-msgstr ""
 
 msgid "Delay:"
 msgstr ""
@@ -5181,7 +5190,7 @@ msgstr "Aktivizēt vairāk-buķešu režīmu"
 
 #, fuzzy
 msgid "Enable or disable IPv6"
-msgstr "Aktivizēt kabeļu tīkla auto skenēšanu"
+msgstr "Izmantot HDMI-CEC iestatījumus"
 
 #, fuzzy
 msgid "Enable or disable using HDMI-CEC."
@@ -6072,8 +6081,8 @@ msgstr "No:"
 msgid "Front panel display"
 msgstr "Ieslēgt displeju"
 
-#, python-format
-msgid "Frontprocessor version: %s"
+#, fuzzy, python-format
+msgid "Front processor version: %s"
 msgstr "Frontprocesora versija: %s"
 
 msgid "Full Range RGB"
@@ -6699,7 +6708,7 @@ msgstr "Ikona"
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
 msgstr ""
 
-msgid "If enabled, CEC protocol traffic can be saved to a logfile 'hdmicec.log'."
+msgid "If enabled, a log will be kept of CEC protocol traffic ('hdmicec.log')"
 msgstr ""
 
 msgid "If enabled, bookmarks will be updated with the new location when you move or copy a recording."
@@ -6710,6 +6719,9 @@ msgstr "Ja iespējots, attēlo 12 rindas nevis 8. Izmantojams tikai priekš lati
 
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "Ja iestatīts 'jā', signāla vērtības (SNR utt.) tiks aprēķinātas no API V3. Šī ir vecā API versija, kas tagad ir aizstāta."
+
+msgid "If set to 'yes' the same commands will be sent to the TV for deep standby events, as are sent during regular standby events."
+msgstr ""
 
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
@@ -8693,9 +8705,6 @@ msgstr "oriģinālā valoda"
 msgid "Open Vision module: "
 msgstr ""
 
-msgid "Open Vision random UUID: "
-msgstr ""
-
 msgid "Open Vision revision check"
 msgstr ""
 
@@ -9491,10 +9500,6 @@ msgstr "Papildus informācijai spiediet INFO uz tālvadības pults."
 msgid "Press MENU on your remote control for additional options."
 msgstr "Papildus iespējām spiediet MENU uz tālvadības pults."
 
-#, fuzzy
-msgid "Press OK and select directory as path for logfile."
-msgstr "Izvēlieties mapi žurnāla failam"
-
 msgid "Press OK on your remote control to continue."
 msgstr "Spiediet OK uz tālvadības pults, lai turpinātu."
 
@@ -9530,6 +9535,10 @@ msgstr "Spiediet OK, lai izvēlētos kanālu."
 
 msgid "Press OK to select satellites"
 msgstr "Spiediet OK, lai izvēlētos pavadoņus"
+
+#, fuzzy
+msgid "Press OK to select the save location of the log file."
+msgstr "Izvēlieties mapi žurnāla failam"
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "Spiediet OK, lai izvēlētos/neizvēlētos CAId."
@@ -9672,14 +9681,11 @@ msgid "Purge deleted user bouquets"
 msgstr "Iztīrīt dzēstās buķetes"
 
 #, fuzzy
-msgid "Put A/V receiver to standby."
+msgid "Put A/V receiver to standby too."
 msgstr "Iestatīt uztvērēju gaidstāvē"
 
 msgid "Put TV in standby"
 msgstr "Iestatīt TV gaidstāvē"
-
-msgid "Put TV to standby when receiver goes to standby or to deep standby."
-msgstr ""
 
 msgid "Put receiver in standby"
 msgstr "Iestatīt uztvērēju gaidstāvē"
@@ -9830,7 +9836,8 @@ msgstr "Vai tiešām saglabāt numuru %2d pašreizējai pozīcijai?"
 msgid "Really update the front panel and reboot now?"
 msgstr "Vai tiešām atjaunot frontprocesoru un pārstartēt tagad?"
 
-msgid "Really update the frontprocessor and reboot now?"
+#, fuzzy
+msgid "Really update the front processor and reboot now?"
 msgstr "Vai tiešām atjaunot frontprocesoru un pārstartēt tagad?"
 
 msgid "Really update your settop box and reboot now?"
@@ -9933,9 +9940,6 @@ msgstr "Atjaunināšanas ātruma izvēle."
 
 msgid "Regard deep standby as standby"
 msgstr "Pieņemt dziļo gaidīšanu kā gaidīšanu"
-
-msgid "Regard deep standby as standby. It will be sending same commands when box goest to deep standby."
-msgstr ""
 
 msgid "Region"
 msgstr "Reģions"
@@ -11965,11 +11969,11 @@ msgstr "Zālamana salas"
 msgid "Somalia"
 msgstr "Somālija"
 
+msgid "Some TVs do not wake from standby when they receive the 'Image View On' command. If this is the case try the 'Text View On' command instead."
+msgstr ""
+
 msgid "Some plugins are not available:\n"
 msgstr "Daži spraudņi nav pieejami:\n"
-
-msgid "Some tv's do not handle command 'Image View On' for wakingup correctly, so you can try sending 'Text View On' as alternative."
-msgstr ""
 
 msgid "Sorry only possible to record 2 channels at once!"
 msgstr ""
@@ -12836,6 +12840,9 @@ msgstr "Konfigurēt ekrāna proporcijas."
 msgid "The bitrate of the video encoder. Larger value improves quality and increases file size."
 msgstr ""
 
+msgid "The command to wake from standby will be sent multiple times."
+msgstr ""
+
 #, python-format
 msgid ""
 "The current image might not be stable.\n"
@@ -12972,9 +12979,6 @@ msgstr ""
 
 msgid "The user interface of your receiver is restarting in debug mode"
 msgstr "Uztvērēja lietotāja interfeiss tiek pārstartēts testa režīmā"
-
-msgid "The wake up command can be sent multiple times."
-msgstr ""
 
 msgid "The width of the picture. The input will be scaled to match this value."
 msgstr ""
@@ -13751,6 +13755,9 @@ msgstr "USALS kalibrēšana"
 msgid "USB stick"
 msgstr "USB zibatmiņa"
 
+msgid "UUID: "
+msgstr ""
+
 msgid "Uganda"
 msgstr "Uganda"
 
@@ -13955,10 +13962,6 @@ msgid "Use OpenTV EPG information when it is available. For reading OpenTV EPG d
 msgstr ""
 
 msgid "Use TV remote control"
-msgstr "Lietot TV tālvadības pulti."
-
-#, fuzzy
-msgid "Use TV remote control for your receiver."
 msgstr "Lietot TV tālvadības pulti."
 
 msgid "Use USALS for this sat"
@@ -14291,6 +14294,9 @@ msgstr "Skaļums"
 msgid "Volume down"
 msgstr "Klusāk"
 
+msgid "Volume keys on the receiver remote will control the TV volume."
+msgstr ""
+
 msgid "Volume up"
 msgstr "Skaļāk"
 
@@ -14336,6 +14342,9 @@ msgstr "Gaida partīciju dalīšanu"
 msgid "Wake On LAN"
 msgstr "Pamošanās no LAN"
 
+msgid "Wake the receiver from standby when selected wake command is sent from the TV."
+msgstr ""
+
 #, fuzzy
 msgid "Wake up"
 msgstr "Pamodināt"
@@ -14348,7 +14357,7 @@ msgid "Wakeup"
 msgstr "Pamodināt"
 
 #, fuzzy
-msgid "Wakeup A/V receiver from standby."
+msgid "Wakeup A/V receiver from standby too."
 msgstr "Pamodināt uztvērēju no gidstāves"
 
 msgid "Wakeup TV from standby"
@@ -14480,12 +14489,6 @@ msgstr ""
 msgid "What type of service scan do you want?"
 msgstr "Kāda veida kanālu meklēšanu vēlaties veikt?"
 
-msgid "When TV is turned off, the receiver will switch to standby by a command received from the TV."
-msgstr ""
-
-msgid "When TV is turned on, the receiver will be awakened by a command received from the TV."
-msgstr ""
-
 #, fuzzy
 msgid "When enabled enigma2 will load unlinked user bouquets. This means that user bouquets that are available, but not included in the bouquets.tv or bouquets.radio files, will still be loaded. This allows you for example to keep your own user bouquet while installed settings are updated"
 msgstr "Ja ieslēgts, enigma ielādēs neiekļautās buķetes. Tas nozīmē ka buķetes tiek izmantotas, bet nav iekļautas bouquets.tv vai bouquets.radio failos. Tas atļauj saglabāt jūsu individuālās buķetes ja tiek atjaunoti uzstādījumi."
@@ -14498,6 +14501,14 @@ msgstr "Ja ieslēgts, virziena pogas ap OK kanālu pārslēgšanai izmantos 'neu
 
 msgid "When enabled the left, right, CH+/-, B+/-, P+/- buttons will follow the 'neutrino' style zap controls instead of the enigma2 style."
 msgstr "Ja ieslēgts, pogas pa kreisi, pa labi, CH+/-, B+/-, P+/- pārslēgšanai izmantos 'neutrino' stilu nevis enigma2."
+
+#, fuzzy
+msgid "When enabled the receiver will automatically return to standby when the TV is turned off."
+msgstr "Ja ieslēgts, uztvērējs automātiski lietos audio celiņu, kuru iepriekš norādījāt."
+
+#, fuzzy
+msgid "When enabled the receiver will automatically wake from standby when the TV is turned on."
+msgstr "Ja ieslēgts, uztvērējs automātiski lietos audio celiņu, kuru iepriekš norādījāt."
 
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Ja ieslēgts, tad uztvērēju var pamodināt no tīkla"
@@ -14699,10 +14710,7 @@ msgstr "Ja nav nulle, ieraksts sāksies ātrāk, nevis laikā kas parādīts EPG
 msgid "When nonzero, a recording will stop later than the ending time indicated by the EPG."
 msgstr "Ja nav nulle, ieraksts sāksies vēlāk, nevis laikā kas parādīts EPG."
 
-msgid "When receiver wakes up/starts, it will send command for switch TV to correct input to which the receiver is pluged."
-msgstr ""
-
-msgid "When receiver wakes up/starts, it will try wake up TV by sending the appropriate command."
+msgid "When receiver wakes from standby, it will command the TV to switch to the HDMI input the receiver is connected to."
 msgstr ""
 
 msgid "When selected this allows video modes to be selected even if they are not reported as supported."
@@ -14722,6 +14730,9 @@ msgstr "Ja attēla malu attiecība ir 16:9 izvēlieties, kā palielināt/stiept 
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Ja attēla malu attiecība ir 4:3 izvēlieties, kā palielināt/stiept attēlu."
+
+msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
+msgstr ""
 
 msgid "When unset, sort changes will be temporary - just for this view of a directory."
 msgstr ""
@@ -15005,8 +15016,9 @@ msgstr ""
 "Lūdzu uzgaidiet kamēr jūsu uztvērējs pārstartēsies\n"
 "Tas var prasīt kādu laiku"
 
+#, fuzzy
 msgid ""
-"Your frontprocessor will be updated\n"
+"Your front processor will be updated\n"
 "Please wait until your receiver reboots\n"
 "This may take a few minutes"
 msgstr ""
@@ -15119,9 +15131,6 @@ msgstr ""
 "Vai esat pievienots USB WLAN adapteri?\n"
 "\n"
 "Lūdzu izvēlieties, ko jūs vēlaties darīt tālāk."
-
-msgid "ZAP timers can send command 'sourceactive' before zap for set TV to correct input."
-msgstr ""
 
 msgid "Zambia"
 msgstr "Zambija"
