@@ -1,13 +1,13 @@
 <wizard>
 		<step id="start" nextstep="introduction">
-			<text value="Welcome.\n\nThis start wizard will guide you through the basic setup of your receiver.\nPress the OK button on your remote control to move to the next step."/>
+			<text value="Welcome to Open Vision %s-%s\nThis start wizard will guide you through the basic setup of your %s %s (kernel %s).\nPress the OK button on your remote control to move to the next step."/>
 			<code>
 self.clearSelectedKeys()
 self.selectKey("OK")
 			</code>
 		</step>
 		<step id="introduction" >
-			<text value="Use the up/down keys on your remote control to select an option. After that, press OK."/>
+			<text value="Use the up/down keys on your remote control to select an option. After that, press OK.\nWe detected your RC as %s (type %s id %s)"/>
 			<list>
 				<listentry caption="Use the wizard to set up basic features" step="network"/>
 				<listentry caption="Exit the wizard" step="end"/>
@@ -26,7 +26,7 @@ self.session.open(PESpeedUp)
 			</code>
 		</step>
 		<step id="network" >
-			<text value="Please connect your receiver to the internet"/>
+			<text value="Please connect your %s %s (kernel %s) to the internet"/>
 			<list>
 				<listentry caption="Check the internet connection" step="update"/>
 				<listentry caption="Skip internet connection check (disables automatic package installation)" step="time"/>
@@ -49,7 +49,7 @@ self.selectKey("OK")
 			<condition>
 self.condition = not config.misc.installwizard.opkgloaded.value
 			</condition>
-			<text value="Your receiver does not have an internet connection"/>
+			<text value="Your %s %s (kernel %s) does not have an internet connection"/>
 			<list>
 				<listentry caption="Check the internet connection again" step="update"/>
 				<listentry caption="Skip internet connection check (disables automatic package installation)" step="time"/>
@@ -284,7 +284,7 @@ self.selectKey("OK")
 			</code>
 		</step>
 		<step id="end" laststep="true">
-			<text value="Thank you for using the wizard. Your receiver is now ready for use.\nPress OK to start using your receiver."/>
+			<text value="Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\nPress OK to start using Open Vision %s-%s"/>
 			<code>
 self.clearSelectedKeys()
 self.selectKey("OK")

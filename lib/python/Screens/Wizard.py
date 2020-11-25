@@ -12,8 +12,8 @@ from Components.ActionMap import NumberActionMap
 from Components.MenuList import MenuList
 from Components.ConfigList import ConfigList
 from Components.Sources.List import List
-from enigma import eTimer, eEnv
-
+from enigma import eTimer, eEnv, getBoxBrand, getBoxType
+import boxbranding
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
@@ -463,7 +463,7 @@ class Wizard(Screen):
 		return False
 
 	def getTranslation(self, text):
-		return _(text)
+		return _(text).replace("%s %s (kernel %s)","%s %s (kernel %s)" % (getBoxBrand(), getBoxType(), boxbranding.getKernelVersion())).replace("%s-%s","%s-%s" % (boxbranding.getVisionVersion(), boxbranding.getVisionRevision())).replace("%s (type %s id %s)","%s (type %s id %s)" % (boxbranding.getRCName(), boxbranding.getRCType(), boxbranding.getRCIDNum()))
 
 	def updateText(self, firstset = False):
 		text = self.getTranslation(self.wizard[self.currStep]["text"])
