@@ -114,7 +114,9 @@ is usually caused by not marking PSignals as immutable.
 #include <lib/python/python.h>
 #include <lib/python/python_helpers.h>
 #include <lib/gdi/picload.h>
+#if defined(HAVE_FCC_ABILITY)
 #include <lib/dvb/fcc.h>
+#endif
 %}
 
 %feature("ref")   iObject "$this->AddRef(); /* eDebug(\"AddRef (%s:%d)!\", __FILE__, __LINE__); */ "
@@ -191,7 +193,9 @@ typedef long time_t;
 %immutable eHdmiCEC::addressChanged;
 %immutable ePythonMessagePump::recv_msg;
 %immutable eDVBLocalTimeHandler::m_timeUpdated;
+#if defined(HAVE_FCC_ABILITY)
 %immutable eFCCServiceManager::m_fcc_event;
+#endif
 %immutable iCryptoInfo::clientname;
 %immutable iCryptoInfo::clientinfo;
 %immutable iCryptoInfo::verboseinfo;
@@ -264,7 +268,9 @@ typedef long time_t;
 %include <lib/python/python.h>
 %include <lib/python/pythonconfig.h>
 %include <lib/gdi/picload.h>
+#if defined(HAVE_FCC_ABILITY)
 %include <lib/dvb/fcc.h>
+#endif
 %include <lib/dvb/streamserver.h>
 /**************  eptr  **************/
 
@@ -430,7 +436,7 @@ int getLinkedSlotID(int fe)
         return -1;
 }
 %}
-
+#if defined(HAVE_FCC_ABILITY)
 void setFCCEnable(int);
 %{
 void setFCCEnable(int enable)
@@ -439,7 +445,7 @@ void setFCCEnable(int enable)
         if (fcc_mng) setFCCEnable(enable);
 }
 %}
-
+#endif
 PyObject *getFontFaces();
 %{
 PyObject *getFontFaces()

@@ -19,7 +19,9 @@
 #include <lib/base/nconfig.h> // access to python config
 #include <lib/base/httpsstream.h>
 #include <lib/base/httpstream.h>
+#if defined(HAVE_FCC_ABILITY)
 #include <lib/service/servicedvbfcc.h>
+#endif
 #include "servicepeer.h"
 
 		/* for subtitles */
@@ -30,9 +32,9 @@
 
 #include <byteswap.h>
 #include <netinet/in.h>
-
+#if defined(HAVE_FCC_ABILITY)
 #include <lib/dvb/fcc.h>
-
+#endif
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -972,10 +974,14 @@ RESULT eServiceFactoryDVB::play(const eServiceReference &ref, ePtr<iPlayableServ
 	if (r)
 		service = 0;
 		// check resources...
+#if defined(HAVE_FCC_ABILITY)
 	if (eFCCServiceManager::checkAvailable(ref))
 		ptr = new eDVBServiceFCCPlay(ref, service);
 	else
 		ptr = new eDVBServicePlay(ref, service);
+#else
+	ptr = new eDVBServicePlay(ref, service);
+#endif
 	return 0;
 }
 

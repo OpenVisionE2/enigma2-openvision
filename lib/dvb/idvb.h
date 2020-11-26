@@ -806,7 +806,7 @@ public:
 
 		/** Display any complete data as fast as possible */
 	virtual RESULT setTrickmode()=0;
-
+#if defined(HAVE_FCC_ABILITY)
 	virtual RESULT prepareFCC(int fe_id, int vpid, int vtype, int pcrpid)=0;
 
 	virtual RESULT fccDecoderStart()=0;
@@ -814,7 +814,7 @@ public:
 	virtual RESULT fccDecoderStop()=0;
 
 	virtual RESULT fccUpdatePids(int fe_id, int vpid, int vtype, int pcrpid)=0;
-
+#endif
 	virtual RESULT getPTS(int what, pts_t &pts) = 0;
 
 	virtual RESULT showSinglePic(const char *filename) = 0;

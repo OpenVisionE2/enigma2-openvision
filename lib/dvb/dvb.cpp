@@ -12,7 +12,9 @@
 #include <lib/dvb/dvb.h>
 #include <lib/dvb/sec.h>
 #include <lib/dvb/fbc.h>
+#if defined(HAVE_FCC_ABILITY)
 #include <lib/dvb/fcc.h>
+#endif
 #include <lib/dvb/specs.h>
 #include "filepush.h"
 
@@ -1553,7 +1555,7 @@ int eDVBResourceManager::canAllocateChannel(const eDVBChannelID &channelid, cons
 
 	int *decremented_cached_channel_fe_usecount=NULL,
 		*decremented_fe_usecount=NULL;
-
+#if defined(HAVE_FCC_ABILITY)
 	/* check FCC channels */
 	std::vector<int*> fcc_decremented_fe_usecounts;
 	std::map<eDVBChannelID, int> fcc_chids;
@@ -1603,7 +1605,7 @@ int eDVBResourceManager::canAllocateChannel(const eDVBChannelID &channelid, cons
 			}
 		}
 	}
-
+#endif
 	for (std::list<active_channel>::iterator i(active_channels.begin()); i != active_channels.end(); ++i)
 	{
 		eSmartPtrList<eDVBRegisteredFrontend> &frontends = simulate ? m_simulate_frontend : m_frontend;
@@ -1615,10 +1617,14 @@ int eDVBResourceManager::canAllocateChannel(const eDVBChannelID &channelid, cons
 			// another on eUsePtr<iDVBChannel> is used in the eDVBScan instance used in eDVBServicePMTHandler (for SDT scan)
 			// so we must check here if usecount is 3 (when the channel is equal to the cached channel)
 			// or 2 when the cached channel is not equal to the compared channel
+#if defined(HAVE_FCC_ABILITY)
 			int check_usecount = channel == &(*m_cached_channel) ? 1 : 0;
 			check_usecount += (apply_to_ignore+1) * 2; // one is used in eDVBServicePMTHandler and another is used in eDVBScan.
 			//eDebug("[eDVBResourceManager] canAllocateChannel channel->getUseCount() : %d , check_usecount : %d (cached : %d)", channel->getUseCount(), check_usecount, channel == &(*m_cached_channel));
 			if (channel->getUseCount() == check_usecount)  // channel only used once..(except fcc)
+#else
+			if (channel == &(*m_cached_channel) ? channel->getUseCount() == 3 : channel->getUseCount() == 2)  // channel only used once..
+#endif
 			{
 				ePtr<iDVBFrontend> fe;
 				if (!i->m_channel->getFrontend(fe))
@@ -1690,6 +1696,7 @@ error:
 		++(*decremented_fe_usecount);
 	if (decremented_cached_channel_fe_usecount)
 		++(*decremented_cached_channel_fe_usecount);
+#if defined(HAVE_FCC_ABILITY)
 	if (fcc_decremented_fe_usecounts.size())
 	{
 		for (std::vector<int*>::iterator i(fcc_decremented_fe_usecounts.begin()); i != fcc_decremented_fe_usecounts.end(); ++i)
@@ -1698,7 +1705,7 @@ error:
 			++(**i);
 		}
 	}
-
+#endif
 	return ret;
 }
 

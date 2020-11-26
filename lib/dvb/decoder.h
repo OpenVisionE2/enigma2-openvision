@@ -43,7 +43,9 @@ private:
 #endif
 	ePtr<eDVBDemux> m_demux;
 	int m_fd, m_fd_demux, m_dev;
+#if defined(HAVE_FCC_ABILITY)
 	bool m_fcc_enable;
+#endif
 	static int m_close_invalidates_attributes;
 	int m_is_slow_motion, m_is_fast_forward, m_is_freezed;
 	ePtr<eSocketNotifier> m_sn;
@@ -53,7 +55,11 @@ private:
 	static int readApiSize(int fd, int &xres, int &yres, int &aspect);
 public:
 	enum { UNKNOWN = -1, MPEG2, MPEG4_H264, VC1 = 3, MPEG4_Part2, VC1_SM, MPEG1, H265_HEVC, AVS = 16 };
+#if defined(HAVE_FCC_ABILITY)
 	eDVBVideo(eDVBDemux *demux, int dev, bool fcc_enable=false);
+#else
+	eDVBVideo(eDVBDemux *demux, int dev);
+#endif
 	void stop();
 #ifdef HAVE_RASPBERRYPI
 	int startPid(int pid, int type=MPEG2, bool is_pvr=false);
@@ -122,15 +128,15 @@ private:
 #else
 	int m_vpid, m_vtype, m_apid, m_atype, m_pcrpid, m_textpid;
 #endif
+#if defined(HAVE_FCC_ABILITY)
 	int m_fcc_fd;
 	bool m_fcc_enable;
 	int m_fcc_state;
-
 	int m_fcc_feid;
 	int m_fcc_vpid;
 	int m_fcc_vtype;
 	int m_fcc_pcrpid;
-
+#endif
 	enum
 	{
 		changeVideo = 1,
@@ -213,7 +219,7 @@ public:
 	int getVideoGamma();
 	static RESULT setHwPCMDelay(int delay);
 	static RESULT setHwAC3Delay(int delay);
-
+#if defined(HAVE_FCC_ABILITY)
 	enum 
 	{
 		fcc_state_stop,
@@ -230,6 +236,7 @@ public:
 	RESULT fccSetPids(int fe_id, int vpid, int vtype, int pcrpid);
 	RESULT fccGetFD();
 	RESULT fccFreeFD();
+#endif
 };
 
 #endif

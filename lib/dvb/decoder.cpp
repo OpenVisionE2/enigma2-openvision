@@ -15,7 +15,9 @@
 #include <sys/stat.h>
 #include <errno.h>
 
+#if defined(HAVE_FCC_ABILITY)
 #include <lib/dvb/fccdecoder.h>
+#endif
 
 #ifndef VIDEO_SOURCE_HDMI
 #define VIDEO_SOURCE_HDMI 2
@@ -293,9 +295,13 @@ eDVBAudio::~eDVBAudio()
 DEFINE_REF(eDVBVideo);
 
 int eDVBVideo::m_close_invalidates_attributes = -1;
-
+#if defined(HAVE_FCC_ABILITY)
 eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev, bool fcc_enable)
 	: m_demux(demux), m_dev(dev), m_fcc_enable(fcc_enable),
+#else
+eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
+	: m_demux(demux), m_dev(dev),
+#endif
 	m_width(-1), m_height(-1), m_framerate(-1), m_aspect(-1), m_progressive(-1), m_gamma(-1)
 {
 	char filename[128];
@@ -385,9 +391,10 @@ int eDVBVideo::startPid(int pid, int type, bool is_pvr)
 #else
 int eDVBVideo::startPid(int pid, int type)
 {
+#if defined(HAVE_FCC_ABILITY)
 	if (m_fcc_enable)
 		return 0;
-
+#endif
 	if (m_fd >= 0)
 	{
 		int streamtype = VIDEO_STREAMTYPE_MPEG2;
@@ -489,9 +496,10 @@ int eDVBVideo::startPid(int pid, int type)
 
 void eDVBVideo::stop()
 {
+#if defined(HAVE_FCC_ABILITY)
 	if (m_fcc_enable)
 		return;
-
+#endif
 #ifdef HAVE_RASPBERRYPI
 	eDebug("[RPi eDVBVideo%d] VIDEO_STOP m_fd=%d", m_dev, m_fd);
 //	cXineLib *xineLib = cXineLib::getInstance();
@@ -1047,7 +1055,11 @@ int eTSMPEGDecoder::setState()
 	{
 		if ((m_vpid >= 0) && (m_vpid < 0x1FFF))
 		{
+#if defined(HAVE_FCC_ABILITY)
 			m_video = new eDVBVideo(m_demux, m_decoder, m_fcc_enable);
+#else
+			m_video = new eDVBVideo(m_demux, m_decoder);
+#endif
 			m_video->connectEvent(sigc::mem_fun(*this, &eTSMPEGDecoder::video_event), m_video_event_conn);
 #ifdef HAVE_RASPBERRYPI
 			eDebug("[RPi eTSMPEGDecoder] setState m_vstreamtype=%d m_vtype=%d m_is_pvr=%s", m_vstreamtype, m_vtype, m_is_pvr ? "true" : "false");
@@ -1174,8 +1186,12 @@ eTSMPEGDecoder::eTSMPEGDecoder(eDVBDemux *demux, int decoder)
 #else
 		m_vpid(-1), m_vtype(-1), m_apid(-1), m_atype(-1), m_pcrpid(-1), m_textpid(-1),
 #endif
+#if defined(HAVE_FCC_ABILITY)
 		m_changed(0), m_decoder(decoder), m_video_clip_fd(-1), m_showSinglePicTimer(eTimer::create(eApp)),
 		m_fcc_fd(-1), m_fcc_enable(false), m_fcc_state(fcc_state_stop), m_fcc_feid(-1), m_fcc_vpid(-1), m_fcc_vtype(-1), m_fcc_pcrpid(-1)
+#else
+		m_changed(0), m_decoder(decoder), m_video_clip_fd(-1), m_showSinglePicTimer(eTimer::create(eApp))
+#endif
 {
 	if (m_demux)
 	{
@@ -1200,9 +1216,10 @@ eTSMPEGDecoder::~eTSMPEGDecoder()
 	m_vpid = m_apid = m_pcrpid = m_textpid = pidNone;
 	m_changed = -1;
 	setState();
+#if defined(HAVE_FCC_ABILITY)
 	fccStop();
 	fccFreeFD();
-
+#endif
 	if (m_demux && m_decoder == 0)	// Tuxtxt caching actions only on primary decoder
 		eTuxtxtApp::getInstance()->freeCache();
 }
@@ -1584,7 +1601,7 @@ int eTSMPEGDecoder::getVideoGamma()
 		return m_video->getGamma();
 	return -1;
 }
-
+#if defined(HAVE_FCC_ABILITY)
 #define FCC_SET_VPID 100
 #define FCC_SET_APID 101
 #define FCC_SET_PCRPID 102
@@ -1821,3 +1838,4 @@ RESULT eTSMPEGDecoder::fccFreeFD()
 
 	return 0;
 }
+#endif
