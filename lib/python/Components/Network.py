@@ -133,17 +133,17 @@ class Network:
 
 	def writeNameserverConfig(self):
 		try:
-			if config.usage.dhcpdns.value:
-				Console().ePopen('rm -f /etc/resolv.conf')
-				fp = open('/etc/resolv.conf', 'w')
-				config.usage.dhcpdns.value = True
-			else:
-				Console().ePopen('rm -f /etc/enigma2/nameserversdns.conf')
-				fp = open('/etc/enigma2/nameserversdns.conf', 'w')
-				config.usage.dhcpdns.value = False
+			Console().ePopen('rm -f /etc/resolv.conf')
+			fp = open('/etc/resolv.conf', 'w')
 			for nameserver in self.nameservers:
 				fp.write("nameserver %d.%d.%d.%d\n" % tuple(nameserver))
 			fp.close()
+			if not config.usage.dhcpdns.value:
+				Console().ePopen('rm -f /etc/enigma2/nameserversdns.conf')
+				fp = open('/etc/enigma2/nameserversdns.conf', 'w')
+				for nameserver in self.nameservers:
+					fp.write("nameserver %d.%d.%d.%d\n" % tuple(nameserver))
+				fp.close()
 			config.usage.dhcpdns.save()
 			#self.restartNetwork()
 		except:
