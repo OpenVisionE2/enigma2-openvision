@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -3470,6 +3470,9 @@ msgstr "Tuner opsætning"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Klon TV skærm til LCD"
 
@@ -4375,6 +4378,9 @@ msgstr "PDC"
 #
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5648,11 +5654,12 @@ msgstr "Aktiver Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Aktiver auto kabel skan"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Aktiver auto hurtig scan"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Aktiver auto hurtig skan for %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -6455,9 +6462,6 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Hurtig DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Hurtig søgning"
-
 #
 msgid "Fast epoch"
 msgstr "Hurtig epoch"
@@ -6465,6 +6469,14 @@ msgstr "Hurtig epoch"
 #
 msgid "Fast forward speeds"
 msgstr "Hurtig fremad spolnings hastigheder"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Hurtig søgning"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Hurtig søgning"
 
 #
 #, fuzzy
@@ -6837,6 +6849,9 @@ msgid "Go up the list"
 msgstr "Gå op af listen"
 
 msgid "Gold"
+msgstr ""
+
+msgid "Google DNS"
 msgstr ""
 
 msgid "Goto"
@@ -8977,6 +8992,11 @@ msgid "Nameserver %d"
 msgstr "Navneserver %d"
 
 #
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Luk navneserver opsætning"
+
+#
 msgid "Nameserver settings"
 msgstr "Navneserver indstillinger"
 
@@ -9649,6 +9669,12 @@ msgstr "Åben setup tuner"
 msgid "Open the movie list"
 msgstr "Åben filmlisten"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -10050,7 +10076,8 @@ msgstr ""
 "Opsæt venligst din internetforbindelse ved at udfylde de ønskede værdier.\n"
 "Tryk på OK når du er færdig, for at fortsætte."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Forbind venligst receiveren til internettet"
 
 #
@@ -14257,9 +14284,10 @@ msgstr ""
 "Tryk venligst OK for at fortsætte."
 
 #
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Tak for brug af hjælperen. Din receiver er nu klar til brug\n"
 "Tryk venligst OK for at starte med at bruge din receiver."
@@ -15549,11 +15577,6 @@ msgstr ""
 msgid "Use DHCP"
 msgstr "Brug (DHCP)"
 
-#
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Brug (DHCP)"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Brug EIT EPG information når det er tilgængeligt."
 
@@ -15660,7 +15683,10 @@ msgid "Use the network wizard to configure your network\n"
 msgstr "Brug netværksassistenten til at konfigurere dit Netværk\n"
 
 #
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Brug pil op/ned for at vælge på din fjernbetjening. Derefter tryk på OK."
 
 #
@@ -16116,6 +16142,17 @@ msgstr "ugentlig"
 msgid "Weighted position"
 msgstr "Vægtet position"
 
+#, fuzzy
+msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Velkommen.\n"
+"\n"
+"Denne start assistent vil guide dig igennem den grundlæggende indstilling af din receiver.\n"
+"Tryk på OK knappen på din fjernbetjening for at tage næste skridt."
+
 #
 #, fuzzy
 msgid ""
@@ -16143,17 +16180,6 @@ msgstr ""
 "hvis du vil forbinde din receiver til internettet, så vil denne assisten guide dig igennem en grundlæggende opsætning af din receiver.\n"
 "\n"
 "Tryk OK for at starte en konfiguration af dit netværk"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Velkommen.\n"
-"\n"
-"Denne start assistent vil guide dig igennem den grundlæggende indstilling af din receiver.\n"
-"Tryk på OK knappen på din fjernbetjening for at tage næste skridt."
 
 #
 msgid "Welcome..."
@@ -16703,6 +16729,10 @@ msgstr "Du må skifte til servicen %s (%s - '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Din receiver har ikke en internetforbindelse"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

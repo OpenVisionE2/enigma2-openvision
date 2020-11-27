@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2020-11-24 18:47+0100\n"
 "Last-Translator: Željko <zeljko2@hi.ht.hr>\n"
 "Language-Team: Željko\n"
@@ -3219,6 +3219,9 @@ msgstr "Konfiguracija tjunera"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Kloniranje TV zaslona na LCD"
 
@@ -4020,6 +4023,9 @@ msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5135,11 +5141,12 @@ msgstr "Omogućite Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Omogućite automatsko skeniranje kabela"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Omogućite automatsko brzo skeniranje"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Omogućite automatsko brzo skeniranje za %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5866,14 +5873,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Brzi DiSEqC (bez odgode naredbe)"
 
-msgid "Fast Scan"
-msgstr "Brzo pretraživanje"
-
 msgid "Fast epoch"
 msgstr "Brzo razdoblje"
 
 msgid "Fast forward speeds"
 msgstr "Brzina prema naprijed"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Brzo pretraživanje"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Brzo pretraživanje"
 
 #, fuzzy
 msgid "Favorites"
@@ -6206,6 +6218,9 @@ msgstr "Idite na vrh liste"
 
 msgid "Gold"
 msgstr "Zlato"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Idi na"
@@ -8093,6 +8108,10 @@ msgstr "Naziv poslužitelja (DNS)"
 msgid "Nameserver %d"
 msgstr "Poslužitelj (DNS) %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Izlaz iz konfiguracije poslužitelja"
+
 msgid "Nameserver settings"
 msgstr "Postavke poslužitelja (DNS)"
 
@@ -8686,6 +8705,12 @@ msgstr "Otvorite postavke tjunera "
 msgid "Open the movie list"
 msgstr "Otvorite popis filmova"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9041,7 +9066,8 @@ msgstr ""
 "Konfigurirajte internetsku vezu ispunjavanjem traženih vrijednosti.\n"
 "Kada ste spremni, pritisnite OK za nastavak."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Povežite prijemnik s internetom"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12723,9 +12749,10 @@ msgstr ""
 "Hvala vam što koristite vodiča.\n"
 "Pritisnite OK za nastavak."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Hvala vam što koristite vodiča.\n"
 "Vaš je prijemnik sada spreman za uporabu."
@@ -13864,10 +13891,6 @@ msgstr "Koristite način prikaza od 12 znakova"
 msgid "Use DHCP"
 msgstr "Koristite DHCP"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Koristite DHCP"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Koristite EIT EPG informacije kada su dostupne."
 
@@ -13966,7 +13989,10 @@ msgstr "Pomoću vodiča za mrežu konfigurirajte odabrani mrežni prilagodnik"
 msgid "Use the network wizard to configure your network\n"
 msgstr "Pomoću vodiča za mrežu konfigurirajte svoju mrežu\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Koristite tipke gore/dolje na daljinskom upravljaču za odabir opcije. Nakon toga pritisnite OK."
 
 msgid "Use the wizard to set up basic features"
@@ -14357,6 +14383,17 @@ msgstr "Analizirajući položaj"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Dobrodošli.\n"
+"\n"
+"Ovaj vodič za pokretanje vodit će vas kroz osnovno podešavanje vašeg prijemnika.\n"
+"Pritisnite OK na daljinskom upravljaču da biste prešli na sljedeći korak."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14381,17 +14418,6 @@ msgstr ""
 "Ako želite povezati prijemnik s internetom, ovaj vodič će vas voditi kroz osnovno postavljanje vašeg prijemnika.\n"
 "\n"
 "Pritisnite OK za početak konfiguriranja mreže."
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Dobrodošli.\n"
-"\n"
-"Ovaj vodič za pokretanje vodit će vas kroz osnovno podešavanje vašeg prijemnika.\n"
-"Pritisnite OK na daljinskom upravljaču da biste prešli na sljedeći korak."
 
 msgid "Welcome..."
 msgstr "Dobrodošli..."
@@ -14919,6 +14945,10 @@ msgstr "Morate se prebaciti na uslugu %s (%s - '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr "Čini se da ste u pomicanju vremena!"
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Vaš prijemnik nema internetsku vezu"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

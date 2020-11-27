@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2020-10-26 12:33+0100\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -3203,6 +3203,9 @@ msgstr "Tuner beállítások"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "TV kijelző klónozása LCD kijelzőre"
 
@@ -4002,6 +4005,9 @@ msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5110,11 +5116,12 @@ msgstr "Virgin EPG engedélyezése"
 msgid "Enable auto cable scan"
 msgstr "Automatikus kábel keresés engedélyezése"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Automatikus gyorskeresés engedélyezése"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Automatikus gyorskeresés engedélyezése ehhez: %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5838,14 +5845,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Gyors DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Szolgáltatói keresés"
-
 msgid "Fast epoch"
 msgstr "Gyors korszak"
 
 msgid "Fast forward speeds"
 msgstr "Előretekerési sebességek"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Szolgáltatói keresés"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Szolgáltatói keresés"
 
 #, fuzzy
 msgid "Favorites"
@@ -6178,6 +6190,9 @@ msgstr "A listán felfelé"
 
 msgid "Gold"
 msgstr "Arany"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Goto"
@@ -8064,6 +8079,10 @@ msgstr "Névszerver"
 msgid "Nameserver %d"
 msgstr "Névszerver %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Kilépés a névszerver beállításaiból"
+
 msgid "Nameserver settings"
 msgstr "Névszerver beállítások"
 
@@ -8659,6 +8678,12 @@ msgstr "Tuner beállító megnyitása "
 msgid "Open the movie list"
 msgstr "Filmlista megnyitása"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9014,7 +9039,8 @@ msgstr ""
 "Kérem, állítsa be az interket kapcsolatát a kért adatok kitöltésével.\n"
 "Befejezés után, nyomja le az OK gombot a folytatáshoz."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Kérem, csatlakoztassa a készüléket az internethez"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12697,9 +12723,10 @@ msgstr ""
 "Köszönöm, hogy használta a Varázslót.\n"
 "Kérem, nyomja le az OK gombot a folytatáshoz."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Köszönjük hogy használta a Varázslót. A készüléke most már be van állítva.\n"
 "Az OK gomb megnyomása után máris használatba veheti a készülékét."
@@ -13836,10 +13863,6 @@ msgstr "12 karakteres kijelzés"
 msgid "Use DHCP"
 msgstr "DHCP használata"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "DHCP használata"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "EPG információk beolvasása a DVB jelfolyamból (EIT)."
 
@@ -13938,7 +13961,10 @@ msgstr "A hálózati Varázsló használata a kijelölt hálózati interfész ko
 msgid "Use the network wizard to configure your network\n"
 msgstr "A hálózat beállításához használja a hálózati Varázslót\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "A fel/le nyílgombokkal változtathatja az opciót. Ez után nyomja meg az OK-t."
 
 msgid "Use the wizard to set up basic features"
@@ -14325,6 +14351,17 @@ msgstr "Kiegyensúlyzozott pozíció"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Üdvözlöm.\n"
+"\n"
+"Ez az Indítási Varázsló végig fogja Önt vezetni a készülék alapbeállításain.\n"
+"Nyomja meg az OK gombot a távirányítón a következő lépéshez."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14349,17 +14386,6 @@ msgstr ""
 "Ha szeretné a készülékét az Internetre csatlakoztatni, ez a Varázsló segíthet Önnek, hogy az alap-konfigurációt létrehozhassa.\n"
 "\n"
 "Kérem, nyomja le az OK gombot a hákózat konfigurálásához"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Üdvözlöm.\n"
-"\n"
-"Ez az Indítási Varázsló végig fogja Önt vezetni a készülék alapbeállításain.\n"
-"Nyomja meg az OK gombot a távirányítón a következő lépéshez."
 
 msgid "Welcome..."
 msgstr "Üdvözöljük..."
@@ -14885,6 +14911,10 @@ msgstr "Váltson át a csatornára %s (%s - '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr "Úgy tűnik, folyamatban van időcsúsztatás!"
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "A készüléknek nincs kapcsolata az internettel."
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

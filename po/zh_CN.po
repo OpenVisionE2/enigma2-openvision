@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 344784320@qq.com\n"
 "Language-Team: Openpli Team\n"
@@ -3066,6 +3066,9 @@ msgstr "调谐器配置"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "克隆电视屏幕到LCD"
 
@@ -3868,6 +3871,9 @@ msgstr ""
 
 msgid "DHCP"
 msgstr "自动分配地址(DHCP)"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -4968,11 +4974,12 @@ msgstr "启用未开发 EPG"
 msgid "Enable auto cable scan"
 msgstr "启用自动扫描"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "启用快速扫描"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "为 %s 启用快速自动扫描"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5696,14 +5703,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "快速DiSEqC"
 
-msgid "Fast Scan"
-msgstr "快速扫描"
-
 msgid "Fast epoch"
 msgstr "快速时期"
 
 msgid "Fast forward speeds"
 msgstr "快进速度"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "快速扫描"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "快速扫描"
 
 #, fuzzy
 msgid "Favorites"
@@ -6033,6 +6045,9 @@ msgid "Go up the list"
 msgstr "添加到泪飙上去"
 
 msgid "Gold"
+msgstr ""
+
+msgid "Google DNS"
 msgstr ""
 
 msgid "Goto"
@@ -7914,6 +7929,10 @@ msgstr "DNS服务器"
 msgid "Nameserver %d"
 msgstr "DNS %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "退出DNS配置"
+
 msgid "Nameserver settings"
 msgstr "DNS设置"
 
@@ -8505,6 +8524,12 @@ msgstr "打开调谐器设置"
 msgid "Open the movie list"
 msgstr "打开电影列表"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -8859,7 +8884,8 @@ msgstr ""
 "下列数值必须设置正确才能连接到Internet。\n"
 "当您准备好后按OK键确认。"
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "请设置接收机互联网连接"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12540,9 +12566,10 @@ msgstr ""
 "感谢您使用设置向导。\n"
 "按OK键确认。"
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "感谢您使用该向导。机顶盒已经可以使用了。\n"
 "按OK开始使用您的机顶盒。"
@@ -13684,10 +13711,6 @@ msgstr "使用12字符显示模式"
 msgid "Use DHCP"
 msgstr "自动分配地址(DHCP)"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "自动分配地址(DHCP)"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "当EIT EPG信息可用是启用此EPG。"
 
@@ -13786,7 +13809,10 @@ msgstr "使用网络向导配置所选网络适配器"
 msgid "Use the network wizard to configure your network\n"
 msgstr "使用网络向导配置网络\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "使用遥控 上/下 键选择一个选项。在此之后按下 OK 。"
 
 msgid "Use the wizard to set up basic features"
@@ -14177,6 +14203,17 @@ msgstr "轨道位置"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"基本设置向导\n"
+"\n"
+"这个启动向导将引导您完成机顶盒的基本设置。\n"
+"按遥控器上OK键进入下一步"
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14201,17 +14238,6 @@ msgstr ""
 "如果你想你的机顶盒连接到Internet，该向导将引导您完成机顶盒的基本网络设置。\n"
 "\n"
 "按OK键开始配置您的网络"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"基本设置向导\n"
-"\n"
-"这个启动向导将引导您完成机顶盒的基本设置。\n"
-"按遥控器上OK键进入下一步"
 
 msgid "Welcome..."
 msgstr "欢迎。。。"
@@ -14738,6 +14764,10 @@ msgstr "必须切换频道到 %s（%s - '%s'）!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "接收机没有连接到互联网。"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

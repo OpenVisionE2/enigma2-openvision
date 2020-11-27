@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -3465,6 +3465,9 @@ msgstr "Tunerkonfiguration"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Klona TV skärm till LCD"
 
@@ -4363,6 +4366,9 @@ msgstr ""
 #
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5631,11 +5637,12 @@ msgstr "Aktivera Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Aktivera auto kabelskanning"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Aktivera auto snabbskanning"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Aktivera auto snabbskanning för %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -6433,9 +6440,6 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Snabb DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Snabbskanning"
-
 #
 msgid "Fast epoch"
 msgstr "Snabb epoch"
@@ -6443,6 +6447,14 @@ msgstr "Snabb epoch"
 #
 msgid "Fast forward speeds"
 msgstr "Hastigheter för snabbspolning framåt"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Snabbskanning"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Snabbskanning"
 
 #
 #, fuzzy
@@ -6819,6 +6831,9 @@ msgid "Go up the list"
 msgstr "Gå upp i listan"
 
 msgid "Gold"
+msgstr ""
+
+msgid "Google DNS"
 msgstr ""
 
 msgid "Goto"
@@ -8943,6 +8958,11 @@ msgid "Nameserver %d"
 msgstr "Namnserver %d"
 
 #
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Avsluta namnserverkonfiguration"
+
+#
 msgid "Nameserver settings"
 msgstr "Namnserverinställningar"
 
@@ -9610,6 +9630,12 @@ msgstr "Öppna inställning för tuner"
 msgid "Open the movie list"
 msgstr "Öppna filmlistan"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -10006,7 +10032,8 @@ msgstr ""
 "Vänligen konfigurera din Internetanslutning med att fylla i begärda fält.\n"
 "När du är klar tryck OK för att forsätta."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Vänligen anslut din mottagare till Internet"
 
 #
@@ -14197,9 +14224,10 @@ msgstr ""
 "Tack för att du använde guiden.\n"
 "Vänligen tryck OK för att forsätta."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Tack för att du använde guiden. Din mottagare är nu konfigurerad.\n"
 "Tryck OK för att börja använda din mottagare."
@@ -15501,11 +15529,6 @@ msgstr ""
 msgid "Use DHCP"
 msgstr "Använd DHCP"
 
-#
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Använd DHCP"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Använd EIT EPG information när den är tillgänglig."
 
@@ -15611,7 +15634,10 @@ msgid "Use the network wizard to configure your network\n"
 msgstr "Använd nätverksguiden för att konfigurera ditt nätverk\n"
 
 #
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Använd upp / ner pilarna på din fjärrkontroll för att välja. Tryck sedan OK."
 
 #
@@ -16065,6 +16091,17 @@ msgstr "veckovis"
 msgid "Weighted position"
 msgstr "Uppskattad position"
 
+#, fuzzy
+msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Välkommen.\n"
+"\n"
+"Den här guiden hjälper dig med grundinställningarna av din mottagare.\n"
+"Tryck OK på din fjärrkontroll för att komma till nästa steg."
+
 #
 #, fuzzy
 msgid ""
@@ -16092,17 +16129,6 @@ msgstr ""
 "Om du vill ansluta din mottagare till Internet, då kommer den här guiden hjälpa dig genom grundläggande konfiguration av din mottagare.\n"
 "\n"
 "Tryck OK för att starta konfigurationen av ditt nätverk"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Välkommen.\n"
-"\n"
-"Den här guiden hjälper dig med grundinställningarna av din mottagare.\n"
-"Tryck OK på din fjärrkontroll för att komma till nästa steg."
 
 #
 msgid "Welcome..."
@@ -16666,6 +16692,10 @@ msgstr "Du måste växla till denna kanal %s (%s- '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Din mottagare har inte någon internetanslutning"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2019-11-19 08:58+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -3210,6 +3210,9 @@ msgstr "Cấu hình bộ chỉnh"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Sao chép màn hình TV sang LCD"
 
@@ -4014,6 +4017,9 @@ msgstr "Bộ giải mã"
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5132,11 +5138,12 @@ msgstr "Kích hoạt Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Cho phép quét cáp tự động"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Cho phép tự động quét nhanh"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Cho phép tự động quét nhanh cho%s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5871,14 +5878,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "DiSEqC nhanh"
 
-msgid "Fast Scan"
-msgstr "Quét nhanh"
-
 msgid "Fast epoch"
 msgstr "Kỷ nguyên nhanh"
 
 msgid "Fast forward speeds"
 msgstr "Tốc độ chuyển tiếp nhanh"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Quét nhanh"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Quét nhanh"
 
 #, fuzzy
 msgid "Favorites"
@@ -6212,6 +6224,9 @@ msgstr "Lên danh sách"
 
 msgid "Gold"
 msgstr "Vàng"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Đi đến"
@@ -8111,6 +8126,10 @@ msgstr "Tên máy chủ"
 msgid "Nameserver %d"
 msgstr "Máy chủ tên %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Thoát cấu hình máy chủ tên"
+
 msgid "Nameserver settings"
 msgstr "Cài đặt máy chủ tên"
 
@@ -8704,6 +8723,12 @@ msgstr "Mở bộ chỉnh cài đặt "
 msgid "Open the movie list"
 msgstr "Mở danh sách phim"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9060,7 +9085,8 @@ msgstr ""
 "Vui lòng định cấu hình kết nối internet của bạn bằng cách điền vào các giá trị cần thiết.\n"
 "Khi bạn đã sẵn sàng nhấn OK để tiếp tục."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Vui lòng kết nối máy thu của bạn với internet"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12755,9 +12781,10 @@ msgstr ""
 "Cảm ơn bạn đã sử dụng thuật sĩ.\n"
 "Vui lòng nhấn OK để tiếp tục."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Cảm ơn bạn đã sử dụng thuật sĩ. Máy thu của bạn đã sẵn sàng để sử dụng.\n"
 "Nhấn OK để bắt đầu sử dụng máy thu của bạn."
@@ -13903,10 +13930,6 @@ msgstr "Sử dụng mod hiển thị 12 ký tự"
 msgid "Use DHCP"
 msgstr "Sử dụng DHCP"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Sử dụng DHCP"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Sử dụng thông tin EIT EPG khi có sẵn."
 
@@ -14005,7 +14028,10 @@ msgstr "Sử dụng trình hướng dẫn mạng để định cấu hình bộ 
 msgid "Use the network wizard to configure your network\n"
 msgstr "Sử dụng trình hướng dẫn mạng để định cấu hình mạng của bạn\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Sử dụng các phím lên / xuống trên điều khiển từ xa của bạn để chọn một tùy chọn. Sau đó, nhấn OK."
 
 msgid "Use the wizard to set up basic features"
@@ -14396,6 +14422,17 @@ msgstr "Vị trí trọng số"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Chào mừng bạn\n"
+"\n"
+"Trình hướng dẫn bắt đầu này sẽ hướng dẫn bạn thông qua thiết lập cơ bản của máy thu.\n"
+"Nhấn nút OK trên điều khiển từ xa của bạn để chuyển sang bước tiếp theo."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14420,17 +14457,6 @@ msgstr ""
 "Nếu bạn muốn kết nối máy thu với Internet, trình hướng dẫn này sẽ hướng dẫn bạn cách thiết lập mạng cơ bản của máy thu.\n"
 "\n"
 "Nhấn OK để bắt đầu cấu hình mạng của bạn"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Chào mừng bạn\n"
-"\n"
-"Trình hướng dẫn bắt đầu này sẽ hướng dẫn bạn thông qua thiết lập cơ bản của máy thu.\n"
-"Nhấn nút OK trên điều khiển từ xa của bạn để chuyển sang bước tiếp theo."
 
 msgid "Welcome..."
 msgstr "Chào mừng ..."
@@ -14959,6 +14985,10 @@ msgstr "Bạn phải chuyển sang dịch vụ%s (%s - '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Máy thu của bạn không có kết nối internet"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

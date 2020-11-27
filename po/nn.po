@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2013-10-23 19:15+0100\n"
 "Last-Translator: andy1 <dmmm8000pvr@gmail.com>\n"
 "Language-Team: none\n"
@@ -3260,6 +3260,9 @@ msgstr "Tuneroppsett"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr ""
 
@@ -4133,6 +4136,9 @@ msgstr ""
 
 #
 msgid "DHCP"
+msgstr ""
+
+msgid "DHCP router"
 msgstr ""
 
 #, fuzzy
@@ -5366,11 +5372,11 @@ msgstr ""
 msgid "Enable auto cable scan"
 msgstr ""
 
-msgid "Enable auto fast scan"
+msgid "Enable auto fastscan"
 msgstr ""
 
 #, python-format
-msgid "Enable auto fast scan for %s"
+msgid "Enable auto fastscan for %s"
 msgstr ""
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -6150,15 +6156,20 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Hurtig DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Hurtigsøk"
-
 msgid "Fast epoch"
 msgstr "Hurtig epoch"
 
 #
 msgid "Fast forward speeds"
 msgstr "Framoverspolings hastigheter"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Hurtigsøk"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Hurtigsøk"
 
 #
 #, fuzzy
@@ -6522,6 +6533,9 @@ msgid "Go up the list"
 msgstr "Gå oppover listen"
 
 msgid "Gold"
+msgstr ""
+
+msgid "Google DNS"
 msgstr ""
 
 msgid "Goto"
@@ -8614,6 +8628,11 @@ msgid "Nameserver %d"
 msgstr "Navneserver %d"
 
 #
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Avslutte innstilling for navnetjener"
+
+#
 msgid "Nameserver settings"
 msgstr "Navneserver innstillinger"
 
@@ -9272,6 +9291,12 @@ msgstr ""
 msgid "Open the movie list"
 msgstr "Åpne spillisten"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9654,7 +9679,8 @@ msgstr ""
 "Vennligst skriv inn nødvendig informasjon for internett-oppkoblingen.\n"
 "Når du er klar, trykk OK for å fortsette."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Vennligst, koble mottakeren til internett"
 
 #
@@ -13686,9 +13712,10 @@ msgstr ""
 "Takk for at du bruker veiviseren.\n"
 "Vennligst trykk OK for å fortsette."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Takk for at du bruker veiviseren. Mottakeren er nå klar til bruk.\n"
 "Trykk OK for å starte bruk av mottakeren."
@@ -14914,11 +14941,6 @@ msgstr ""
 msgid "Use DHCP"
 msgstr "Motta IP-adresse (DHCP)"
 
-#
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Motta IP-adresse (DHCP)"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Bruk EIT (Event Information Table) EPG informasjon når den er tilgjengelig."
 
@@ -15020,7 +15042,10 @@ msgstr "Bruk nettverksveiviseren for oppsett av nettverkskortet"
 msgid "Use the network wizard to configure your network\n"
 msgstr "Bruk nettverksveiviseren for oppsett av nettverket\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Bruk pil opp/ned på fjernkontrollen for å velge. Trykk deretter OK."
 
 #
@@ -15452,6 +15477,17 @@ msgstr "Hovedposisjon"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Velkommen.\n"
+"\n"
+"Denne veiviseren vil hjelpe deg gjennom det grunnleggende oppsettet av mottakeren.\n"
+"Trykk OK for å komme igang."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -15475,17 +15511,6 @@ msgstr ""
 "\n"
 "Hvis du vil koble mottakeren til internett, vil veiviseren hjelpe deg med å sette opp de vanligste innstillingene av mottakerens nettverk.\n"
 "\n"
-"Trykk OK for å komme igang."
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Velkommen.\n"
-"\n"
-"Denne veiviseren vil hjelpe deg gjennom det grunnleggende oppsettet av mottakeren.\n"
 "Trykk OK for å komme igang."
 
 msgid "Welcome..."
@@ -16025,6 +16050,10 @@ msgstr ""
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Mottakeren mangler internettforbindelse"
 
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr ""

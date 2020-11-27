@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2020-11-23 21:02+0100\n"
 "Last-Translator: Pr2\n"
 "Language-Team: french\n"
@@ -3208,6 +3208,9 @@ msgstr "Configuration tuner"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Dupliquer l'écran TV sur le LCD"
 
@@ -4009,6 +4012,9 @@ msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5119,11 +5125,12 @@ msgstr "Activer EPG Virgin"
 msgid "Enable auto cable scan"
 msgstr "Activer la recherche automatique pour le câble"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Activer la recherche rapide automatique"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Activer la recherche rapide automatique pour %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5850,14 +5857,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "DiSEqC rapide"
 
-msgid "Fast Scan"
-msgstr "Recherche rapide"
-
 msgid "Fast epoch"
 msgstr "Époque rapide"
 
 msgid "Fast forward speeds"
 msgstr "Vitesses avance rapide"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Recherche rapide"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Recherche rapide"
 
 #, fuzzy
 msgid "Favorites"
@@ -6191,6 +6203,9 @@ msgstr "Remonter la liste"
 
 msgid "Gold"
 msgstr "Gold"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Aller vers"
@@ -8074,6 +8089,10 @@ msgstr "Serveur de nom"
 msgid "Nameserver %d"
 msgstr "Serveur de nom %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Quitter la configuration du serveur de nom"
+
 msgid "Nameserver settings"
 msgstr "Paramètres du serveur de nom"
 
@@ -8667,6 +8686,12 @@ msgstr "Ouvrir la configuration du tuner "
 msgid "Open the movie list"
 msgstr "Ouvrir la liste de films"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9022,7 +9047,8 @@ msgstr ""
 "Veuillez configurer votre connexion Internet en renseignant les valeurs nécessaires.\n"
 "Quand vous serez prêt, appuyez sur OK pour continuer."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Veuillez connecter votre récepteur à Internet"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12710,9 +12736,10 @@ msgstr ""
 "Merci d'utiliser l'assistant.\n"
 "Veuillez appuyer sur OK pour continuer."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Merci d'avoir utilisé l'assistant. Votre récepteur est maintenant prêt à être utilisé.\n"
 "Appuyez sur OK pour commencer à utiliser votre récepteur."
@@ -13854,10 +13881,6 @@ msgstr "Utiliser le mode d’affichage 12 caractères"
 msgid "Use DHCP"
 msgstr "Utiliser DHCP"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Utiliser DHCP"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Utiliser l'information EIT EPG quand elle est disponible."
 
@@ -13956,7 +13979,10 @@ msgstr "Utiliser l'assistant réseau pour configurer l'adaptateur réseau"
 msgid "Use the network wizard to configure your network\n"
 msgstr "Utiliser l'assistant réseau pour configurer votre réseau\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Utiliser les boutons HAUT et BAS de votre télécommande pour sélectionner une option. Après cela, appuyez sur OK."
 
 msgid "Use the wizard to set up basic features"
@@ -14347,6 +14373,17 @@ msgstr "Position pondérée"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Bienvenue.\n"
+"\n"
+"Cet assistant de démarrage vous guidera à travers la configuration de base de votre récepteur.\n"
+"Appuyez sur le bouton OK de votre télécommande pour passer à l'étape suivante."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14371,17 +14408,6 @@ msgstr ""
 "Si vous souhaitez connecter votre récepteur à Internet, cet assistant vous guidera à travers la configuration réseau de base de votre récepteur.\n"
 "\n"
 "Appuyez sur OK pour commencer à configurer votre réseau"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Bienvenue.\n"
-"\n"
-"Cet assistant de démarrage vous guidera à travers la configuration de base de votre récepteur.\n"
-"Appuyez sur le bouton OK de votre télécommande pour passer à l'étape suivante."
 
 msgid "Welcome..."
 msgstr "Bienvenue..."
@@ -14909,6 +14935,10 @@ msgstr "Vous devez basculer vers le service %s (%s - '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr "Vous semblez être en PauseDirect!"
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Votre récepteur ne dispose pas d'une connexion Internet"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

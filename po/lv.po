@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -3218,6 +3218,9 @@ msgstr "Uztvērēja konfigurācija"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Kopēt TV ekrānu uz LCD"
 
@@ -4022,6 +4025,9 @@ msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5147,11 +5153,12 @@ msgstr "Aktivizēt Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Aktivizēt kabeļu tīkla auto skenēšanu"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Aktivizēt ātro auto skenēšanu"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Aktivizēt ātro auto skenēšanu priekš %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5891,14 +5898,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Ātrais DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Ātrā meklēšana"
-
 msgid "Fast epoch"
 msgstr "Ātrā epoha"
 
 msgid "Fast forward speeds"
 msgstr "Pārtīšanas ātrumi"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Ātrā meklēšana"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Ātrā meklēšana"
 
 #, fuzzy
 msgid "Favorites"
@@ -6232,6 +6244,9 @@ msgstr "Iet uz saraksta augšu"
 
 msgid "Gold"
 msgstr "Gold"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Iet uz"
@@ -8133,6 +8148,10 @@ msgstr "Domēna vārdu serveris"
 msgid "Nameserver %d"
 msgstr "Domēna vārdu serveris %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Iziet no DNS konfigurācijas"
+
 msgid "Nameserver settings"
 msgstr "DNS iestatījumi"
 
@@ -8730,6 +8749,12 @@ msgstr "Atvērt iestatījumus uztvērējam "
 msgid "Open the movie list"
 msgstr "Atvērt mediju sarakstu"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9087,7 +9112,8 @@ msgstr ""
 "Lūdzu konfigurējiet interneta pieslēgumu aizpildot nepieciešamās vērtības.\n"
 "Kad esat gatavs nospiediet OK, lai turpinātu."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Lūdzu pieslēdziet uztvērēju internetam"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12790,9 +12816,10 @@ msgstr ""
 "Paldies ka izmantojāt vedni.\n"
 "Lūdzu nospiediet OK, lai turpinātu."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Paldies ka izmantojāt vedni. Jūsu uztvērējs ir gatavs lietošanai.\n"
 "Nospiediet OK, lai sāktu lietot savu uztvērēju."
@@ -13939,10 +13966,6 @@ msgstr "Lietot 12 rindu attēlošanas režīmu"
 msgid "Use DHCP"
 msgstr "Lietot DHCP"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Lietot DHCP"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Lietot EIT EPG informāciju kad pieejama."
 
@@ -14041,7 +14064,10 @@ msgstr "Lietot tīkla vedni adaptera uzstādīšanai"
 msgid "Use the network wizard to configure your network\n"
 msgstr "Lietot vedni tīkla uzstādīšanai\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Lietojiet tālvadības pults augšup/lejup taustiņus, lai izdarītu izvēli. Pēc tam spiediet OK."
 
 msgid "Use the wizard to set up basic features"
@@ -14432,6 +14458,17 @@ msgstr "Pozīcijas nozīmīgums"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Laipni lūdzam.\n"
+"\n"
+"Šis starta vednis veiks uztvērēja pamata iestatījumus.\n"
+"Nospiediet pogu OK uz tālvadības pults, lai pārietu uz nākamo soli."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14456,17 +14493,6 @@ msgstr ""
 "Ja jūs vēlaties, savienot jūsu uztvērēju ar internetu šis vednis veiks pamata tīkla iestatīšanu.\n"
 "\n"
 "Nospiediet OK, lai sāktu sava tīkla konfigurēšanu"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Laipni lūdzam.\n"
-"\n"
-"Šis starta vednis veiks uztvērēja pamata iestatījumus.\n"
-"Nospiediet pogu OK uz tālvadības pults, lai pārietu uz nākamo soli."
 
 msgid "Welcome..."
 msgstr "Sveicināti..."
@@ -14996,6 +15022,10 @@ msgstr "Pārslēgsies uz kanālu %s (%s - '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Jūsu uztvērējam nav interneta savienojuma"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

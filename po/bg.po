@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2020-06-13 10:10+0300\n"
 "Last-Translator: Мартин Петков <marto74bg@yahoo.co.uk>\n"
 "Language-Team: Bulgarian\n"
@@ -3210,6 +3210,9 @@ msgstr "Тунер конфигурация"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Клониране ТВ екрана на LCD"
 
@@ -4013,6 +4016,9 @@ msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5126,11 +5132,12 @@ msgstr "Активиране на Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Активиране на кабелно автосканиране"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Активиране на бързо автосканиране"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Вкл. на бързо автосканиране за %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5859,14 +5866,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Бърз DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Бързо Сканиране"
-
 msgid "Fast epoch"
 msgstr "Бърза епоха"
 
 msgid "Fast forward speeds"
 msgstr "Скорости за превъртане напред"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Бързо Сканиране"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Бързо Сканиране"
 
 #, fuzzy
 msgid "Favorites"
@@ -6199,6 +6211,9 @@ msgstr "Отидете в началото на списъка"
 
 msgid "Gold"
 msgstr "Злато"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Към"
@@ -8084,6 +8099,10 @@ msgstr "DNS"
 msgid "Nameserver %d"
 msgstr "DNS %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Изход от конфигурацията на DNS"
+
 msgid "Nameserver settings"
 msgstr "DNS Настройки"
 
@@ -8677,6 +8696,12 @@ msgstr "Отвори настройки на тунера "
 msgid "Open the movie list"
 msgstr "Отвори списъка с филми"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9033,7 +9058,8 @@ msgstr ""
 "Конфигурирайте вашата интернет връзка като попълните нужните данни.\n"
 "Когато сте готови натиснете ОК за да продължа."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Моля, свържете вашия приемник с интернет"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12715,9 +12741,10 @@ msgstr ""
 "Благодаря Ви,че използвахте помощника.\n"
 "Моля натиснете ОК за да продължите."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Благодаря Ви,че използвахте помощника. Вашият приемник е вече готов за използване.\n"
 "Моля натиснете OK за да започнете да използвате Вашия приемник."
@@ -13851,10 +13878,6 @@ msgstr "Използвай режим на дисплея с 12 символа"
 msgid "Use DHCP"
 msgstr "Използвай DHCP"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Използвай DHCP"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Използвай EIT EPG информация (сега/следва), ако е налична."
 
@@ -13953,7 +13976,10 @@ msgstr "Използвайте помощника за настройка на �
 msgid "Use the network wizard to configure your network\n"
 msgstr "Използвайте помощника за настройка на мрежа за конфигурация на Вашата мрежа.\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Използвайте бутони нагоре/надолу на вашето дистанционно за избор на опция. След това натиснете ОК."
 
 msgid "Use the wizard to set up basic features"
@@ -14345,6 +14371,17 @@ msgstr "Анализиране на позицията"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Добре дошли.\n"
+"\n"
+"Този помощник ще ви помогне с основните настройки на вашия приемник.\n"
+"Натиснете бутон ОК на дистанционното за преминаване напред."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14369,17 +14406,6 @@ msgstr ""
 "Ако искате да свържете приемника към интернет, този помощник ще Ви насочва през основните мрежови настройки за Вашия приемник.\n"
 "\n"
 "Натиснете ОК за стартиране на настройките за мрежа"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Добре дошли.\n"
-"\n"
-"Този помощник ще ви помогне с основните настройки на вашия приемник.\n"
-"Натиснете бутон ОК на дистанционното за преминаване напред."
 
 msgid "Welcome..."
 msgstr "Добре дошли..."
@@ -14905,6 +14931,10 @@ msgstr "Трябва да превключите на канал %s (%s - '%s')!
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Вашия приемник не е свързан интернет"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

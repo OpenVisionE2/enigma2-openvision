@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OBH enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2019-04-12 12:36+0300\n"
 "Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
 "Language-Team: mosad - مساعد الجعيد\n"
@@ -3319,6 +3319,9 @@ msgstr "التفعيل اليدوي"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "إستنساخ شاشة التلفزيون على شاشة العرض المصغرة"
 
@@ -4185,6 +4188,9 @@ msgstr "المحول الرقمي التناظري"
 
 msgid "DHCP"
 msgstr "برتوكول تكوين المضيف آليا"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5358,11 +5364,12 @@ msgstr "تمكين دليل البرامج الإلكترونية لقنوات �
 msgid "Enable auto cable scan"
 msgstr "تفعيل البحث التلقائي لقنوات الكيبل"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "تمكين البحث السريع الآلي"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "تفعيل البحث التلقائي السريع %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -6109,14 +6116,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "دايزك سريع"
 
-msgid "Fast Scan"
-msgstr "البحث السريع"
-
 msgid "Fast epoch"
 msgstr "عصر السرعة"
 
 msgid "Fast forward speeds"
 msgstr "سرعة التسريع للامام"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "البحث السريع"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "البحث السريع"
 
 #, fuzzy
 msgid "Favorites"
@@ -6465,6 +6477,9 @@ msgstr "الانتقال إلى اعلي القائمة"
 
 msgid "Gold"
 msgstr "ذهبي"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "الذهاب الى"
@@ -8426,6 +8441,10 @@ msgstr "اسم الخادم"
 msgid "Nameserver %d"
 msgstr "اسم الخادم %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "الخروج من إعدادات أسم الخادم"
+
 msgid "Nameserver settings"
 msgstr "إعدادات اسم الخادم"
 
@@ -9055,6 +9074,12 @@ msgstr "فتح ضبط المؤالف "
 msgid "Open the movie list"
 msgstr "فتح قائمة الأفلام"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9428,7 +9453,8 @@ msgstr ""
 "من فضلك قم بتكوين الإتصال بالانترنت بملأ القيم المطلوبه \n"
 "عندما تكون مستعد أضغط موافق للاستمرار."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "الرجاء توصيل جهاز الاستقبال الخاص بك على شبكة الإنترنت"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -13328,8 +13354,8 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "شكرا لك على استخدام هذه النافذة. %s %s جاهزة الآن للاستخدام.\n"
 "يرجى الضغط على موافق لبدء إستخدامها %s %s."
@@ -14525,10 +14551,6 @@ msgstr "استخدام 12 حرفا على شاشة العرض"
 msgid "Use DHCP"
 msgstr "إستخدام بروتوكول العناوين الآلي"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "إستخدام بروتوكول العناوين الآلي"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "إستخدام جداول معلومات الأحداث لمعلومات دليل البرامج الإلكترونية عندما تكون متوفرة."
 
@@ -14630,7 +14652,10 @@ msgstr ""
 "إستخدام نافذة إعدادات الشبكة لتكوين شبكة الأتصال\n"
 "\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "اضغط المفتاح العلوى أو السفلى من الريموت وحدد اختيارك ثم بعدها, أضغط موافق."
 
 msgid "Use the wizard to set up basic features"
@@ -15031,6 +15056,17 @@ msgstr "الموقع الموزون"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"أهلا وسهلا \n"
+"\n"
+"هذا المعالج بداية توجه لكم من خلال الإعداد الأساسي الخاصة بك ليالي الصورة %s %s.\n"
+"اضغط على زر موافق على جهاز التحكم عن بعد للانتقال إلى الخطوة التالية."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -15056,18 +15092,6 @@ msgstr ""
 " إذا كنت ترغب في الاتصال %s %s على شبكة الإنترنت، وهذا المعالج سوف يذلك من خلال إعداد شبكة إتصال أساسية من الضبط الخاص بك %s %s.\n"
 "\n"
 "اضغط على زر موافق لبدء تكوين الشبكة"
-
-#, fuzzy
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"أهلا وسهلا \n"
-"\n"
-"هذا المعالج بداية توجه لكم من خلال الإعداد الأساسي الخاصة بك ليالي الصورة %s %s.\n"
-"اضغط على زر موافق على جهاز التحكم عن بعد للانتقال إلى الخطوة التالية."
 
 msgid "Welcome..."
 msgstr ""
@@ -15611,6 +15635,10 @@ msgstr "يجب التبديل إلى القناة %s (%s - '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr "يبدو أنك في التحكم الزمني في البث المباشر!"
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "جهاز الاستقبال الخاص بك غير متصل بالانترنت"
 
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: MCelliotG <mcelliotg@gmail.com>\n"
@@ -3202,6 +3202,9 @@ msgstr "Ρύθμιση tuner"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Κλωνοποίηση TV σε οθόνη LCD"
 
@@ -4003,6 +4006,9 @@ msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5113,11 +5119,12 @@ msgstr "Ενεργοποίηση Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Ενεργοποίηση αυτόματης καλωδιακής ανίχνευσης"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Ενεργοποίηση της αυτόματης γρήγορης ανίχνευσης"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Ενεργοποίηση αυτόματης γρήγορης ανίχνευσης για το %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5845,14 +5852,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Γρήγορο DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Γρήγορη ανίχνευση"
-
 msgid "Fast epoch"
 msgstr "Γρήγορη εποχή"
 
 msgid "Fast forward speeds"
 msgstr "Ταχύτητες προώθησης εμπρός"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Γρήγορη ανίχνευση"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Γρήγορη ανίχνευση"
 
 #, fuzzy
 msgid "Favorites"
@@ -6185,6 +6197,9 @@ msgstr "Μετάβαση προς τα πάνω"
 
 msgid "Gold"
 msgstr "Gold"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Μετάβαση"
@@ -8071,6 +8086,10 @@ msgstr "Διακομιστής ονομάτων"
 msgid "Nameserver %d"
 msgstr "Διακομιστής ονομάτων %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Έξοδος από τη ρύθμιση των διακομιστών ονομάτων"
+
 msgid "Nameserver settings"
 msgstr "Ρυθμίσεις διακομιστών ονομάτων"
 
@@ -8664,6 +8683,12 @@ msgstr "Άνοιγμα ρυθμίσεων tuner "
 msgid "Open the movie list"
 msgstr "Επιστροφή στη λίστα ταινίων"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9019,7 +9044,8 @@ msgstr ""
 "Ρυθμίστε τη σύνδεση στο διαδίκτυο συμπληρώνοντας τις απαιτούμενες τιμές.\n"
 "Όταν είστε έτοιμοι, πιέστε ΟΚ για να συνεχίσετε."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Συνδέστε τον δέκτη σας στο διαδίκτυο"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12700,9 +12726,10 @@ msgstr ""
 "Σας ευχαριστούμε που χρησιμοποιήσατε τον οδηγό.\n"
 "Πιέστε ΟΚ για να συνεχίσετε."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Σας ευχαριστούμε που χρησιμοποιήσατε τον οδηγό. Ο δέκτης σας είναι πλέον έτοιμος για χρήση.\n"
 "Πιέστε ΟΚ για να ξεκινήσετε."
@@ -13839,10 +13866,6 @@ msgstr "Χρήση λειτουργίας απεικόνισης 12 χαρακτ
 msgid "Use DHCP"
 msgstr "Χρήση DHCP"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Χρήση DHCP"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Χρήση πληροφοριών EIT EPG όταν είναι διαθέσιμες."
 
@@ -13941,7 +13964,10 @@ msgstr "Χρήση του οδηγού δικτύου για τη ρύθμιση
 msgid "Use the network wizard to configure your network\n"
 msgstr "Χρήση οδηγού δικτύου για τη ρύθμιση του δικτύου\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Πιέστε τα πλήκτρα πάνω/κάτω του τηλεχειριστηρίου για επιλογή. Μετά, πιέστε ΟΚ."
 
 msgid "Use the wizard to set up basic features"
@@ -14332,6 +14358,17 @@ msgstr "Σταθμισμένη θέση"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Καλώς ήρθατε. \n"
+"\n"
+"Αυτός ο οδηγός εκκίνησης θα σας καθοδηγήσει στις βασικές ρυθμίσεις του δέκτη σας.\n"
+"Πιέστε το πλήκτρο OK στο τηλεχειριστήριο για να προχωρήσετε στο επόμενο βήμα."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14356,17 +14393,6 @@ msgstr ""
 "Αν θέλετε να συνδέσετε τον δέκτη σας στο διαδίκτυο, αυτός ο οδηγός θα σας καθοδηγήσει στις βασικές ρυθμίσεις του δικτύου του δέκτη σας.\n"
 "\n"
 "Πιέστε OK για να ξεκινήσετε τη ρύθμιση του δικτύου σας."
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Καλώς ήρθατε. \n"
-"\n"
-"Αυτός ο οδηγός εκκίνησης θα σας καθοδηγήσει στις βασικές ρυθμίσεις του δέκτη σας.\n"
-"Πιέστε το πλήκτρο OK στο τηλεχειριστήριο για να προχωρήσετε στο επόμενο βήμα."
 
 msgid "Welcome..."
 msgstr "Καλώς ορίσατε..."
@@ -14892,6 +14918,10 @@ msgstr "Πρέπει να γίνει αλλαγή στην υπηρεσία %s (
 
 msgid "You seem to be in timeshift!"
 msgstr "Φαίνεται ότι εκτελείται χρονομετατόπιση!"
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Ο δέκτης σας δεν διαθέτει σύνδεση στο διαδίκτυο"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

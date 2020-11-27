@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OPENPLi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2015-12-18 21:05+0200\n"
 "Last-Translator: Yetkin AYDIN <yetkina@gmail.com>\n"
 "Language-Team: http://www.hurforum.com <yetkina@gmail.com>\n"
@@ -3201,6 +3201,9 @@ msgstr "Tuner ayarları"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "TV ekranını LCD ye yansıt"
 
@@ -4022,6 +4025,9 @@ msgstr "PDC"
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5158,12 +5164,13 @@ msgstr "Virgin EPG Aktif"
 msgid "Enable auto cable scan"
 msgstr "Otomatik kablo taramayı etkinleştir"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Otomatik hızlı taramayı etkinleştir"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
-msgstr ""
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
+msgstr "Otomatik hızlı taramayı etkinleştir"
 
 msgid "Enable blinking REC symbol on the LCD display"
 msgstr ""
@@ -5886,14 +5893,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Hızlı DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Hızlı Tarama"
-
 msgid "Fast epoch"
 msgstr "Hızlı tur"
 
 msgid "Fast forward speeds"
 msgstr "Hızlı ileri sarma hızı"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Hızlı Tarama"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Hızlı Tarama"
 
 #, fuzzy
 msgid "Favorites"
@@ -6227,6 +6239,9 @@ msgid "Go up the list"
 msgstr "Listenin başına git"
 
 msgid "Gold"
+msgstr ""
+
+msgid "Google DNS"
 msgstr ""
 
 msgid "Goto"
@@ -8143,6 +8158,10 @@ msgstr "İsim sunucusu (DNS)"
 msgid "Nameserver %d"
 msgstr "İsim sunucusu (DNS) %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "İsim sunucusu ayarlarından Çık"
+
 msgid "Nameserver settings"
 msgstr "İsim sunucusu (DNS) ayarları"
 
@@ -8746,6 +8765,12 @@ msgstr "Tuner Kurulumu"
 msgid "Open the movie list"
 msgstr "Film listesinden aç"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9106,7 +9131,8 @@ msgstr ""
 "Gerekli değerleri doldurarak internet bağlantınızı yapılandırın.\n"
 "Devam etmek için OK tuşuna basın."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Lütfen alıcınızı internete bağlayın."
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12855,9 +12881,10 @@ msgstr ""
 "Sihirbazını kullandığınız için teşekkür ederiz.\n"
 "Devam etmek için OK tuşuna basın."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Sihirbazını kullandığınız için teşekkür ederiz. Alıcınız artık kullanıma hazırdır.\n"
 "Alıcınızı kullanmaya başlamak için OK tuşuna basın."
@@ -14011,10 +14038,6 @@ msgstr ""
 msgid "Use DHCP"
 msgstr "DHCP Kullan"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "DHCP Kullan"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Uygun olduğunda EPG EIT bilgilerini kullan."
 
@@ -14113,7 +14136,10 @@ msgstr "Seçilen ağ bağdaştırıcısını yapılandırmak için ağ sihirbaz�
 msgid "Use the network wizard to configure your network\n"
 msgstr "Ağ yapılandırmak için ağ sihirbazını kullan\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Bir seçeneği seçmek için uzaktan kumanda üzerindeki Aşağı/Yukarı tuşlarını kullanın. Bundan sonra, OK düğmesine basın."
 
 msgid "Use the wizard to set up basic features"
@@ -14507,6 +14533,17 @@ msgstr "Ağırlıklı pozisyon"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Hoşgeldiniz.\n"
+"\n"
+"Bu başlangıç sihirbazı alıcınızın temel kurulumu boyunca size rehberlik edecek.\n"
+"Bir sonraki adıma geçmek için uzaktan kumanda üzerindeki OK düğmesine basın."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14531,17 +14568,6 @@ msgstr ""
 "Eğer internete alıcınızı bağlamak istiyorsanız, bu sihirbaz alıcınızın temel ağ kurulumu boyunca size rehberlik edecek.\n"
 "\n"
 "Ağ yapılandırmasını başlatmak için OK tuşuna basın."
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Hoşgeldiniz.\n"
-"\n"
-"Bu başlangıç sihirbazı alıcınızın temel kurulumu boyunca size rehberlik edecek.\n"
-"Bir sonraki adıma geçmek için uzaktan kumanda üzerindeki OK düğmesine basın."
 
 msgid "Welcome..."
 msgstr "Hoşgeldiniz..."
@@ -15063,6 +15089,10 @@ msgstr " %s (%s - '%s') servisine geçmen gerekir!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Alıcıda kurulu bir internet bağlantısı yok."
 
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr ""

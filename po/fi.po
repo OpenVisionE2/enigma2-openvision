@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2020-05-16 18:41+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -3430,6 +3430,9 @@ msgstr "Virittimien asetukset"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Kopioi TV kuva etupaneeliin"
 
@@ -4291,6 +4294,9 @@ msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DCHP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5549,11 +5555,12 @@ msgstr "Ota käyttöön Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Ota käyttöön autom. kaapelihaku"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Ota käyttöön autom. pikahaku"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Ota käyttöön automaattinen pikahaku -> %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -6334,15 +6341,20 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Nopea DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Nopea haku"
-
 #
 msgid "Fast epoch"
 msgstr "Nopea päivällä"
 
 msgid "Fast forward speeds"
 msgstr "Eteenpäin kelausnopeudet"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Nopea haku"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Nopea haku"
 
 #
 #, fuzzy
@@ -6706,6 +6718,9 @@ msgstr "Mene luettelossa ylöspäin"
 
 msgid "Gold"
 msgstr "Kulta"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Mene"
@@ -8824,6 +8839,11 @@ msgid "Nameserver %d"
 msgstr "Nimipalvelin %d"
 
 #
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Lopeta nimipalvelimen määritys"
+
+#
 msgid "Nameserver settings"
 msgstr "Nimipalvelimen asetukset"
 
@@ -9490,6 +9510,12 @@ msgstr "Avaa viritinasetukset"
 msgid "Open the movie list"
 msgstr "Avaa tallenneluettelo"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9884,7 +9910,8 @@ msgstr ""
 "Määritä lähiverkkoyhteys syöttämällä tarvittavat arvot.\n"
 "Paina OK-näppäintä kun olet valmis."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Yhdistä vastaanotin internettiin"
 
 #
@@ -14071,9 +14098,10 @@ msgstr ""
 "Ohjattu verkkoasennus on päättynyt.\n"
 "Jatka painamalla OK-näppäintä."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Kiitos että käytit avustajaa. Vastaanottimesi on nyt valmis käyttöön.\n"
 "Paina OK aloittaaksesi käytön."
@@ -15319,11 +15347,6 @@ msgstr "Käytä 12 merkin näyttöä"
 msgid "Use DHCP"
 msgstr "Käytä DHCP:tä"
 
-#
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Käytä DHCP:tä"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Käytä ohjelmaoppaan EIT-tietoja, jos saatavilla."
 
@@ -15431,7 +15454,10 @@ msgstr "Muokkaa lähiverkon asetuksia verkkoavustajan opastamana\n"
 #
 #  Ohjatun asennuksen (Start Wizard) toinen ruutu. Teksti on rivitetty
 #  tilaansa käsin. Hyödyksi käytetään Unicode-nuolisymboleja.
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr ""
 "Valitse haluamasi vaihtoehto\n"
 "kaukosäätimen nuolinäppäimillä\n"
@@ -15876,6 +15902,17 @@ msgstr "Viikoittain"
 msgid "Weighted position"
 msgstr "Painotettu sijainti"
 
+#, fuzzy
+msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Tervetuloa.\n"
+"\n"
+"Tämä avustaja ohjaa sinua perus asetusten teossa vastaanottimeesi.\n"
+"Paina OK nappia kaukosäätimessäsi siirtyäksesi seuraavaan vaiheeseen."
+
 #
 #, fuzzy
 msgid ""
@@ -15903,17 +15940,6 @@ msgstr ""
 "Jos haluat kytkeä vastaanottimesi Internettiin tämä avustaja ohjaa sinua perus verkkoasetusten teossa vastaanottimeesi.\n"
 "\n"
 "Paina OK näppäintä aloittaaksesi verkkomäärityksien teon."
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Tervetuloa.\n"
-"\n"
-"Tämä avustaja ohjaa sinua perus asetusten teossa vastaanottimeesi.\n"
-"Paina OK nappia kaukosäätimessäsi siirtyäksesi seuraavaan vaiheeseen."
 
 #
 msgid "Welcome..."
@@ -16461,6 +16487,10 @@ msgstr "Sinun täytyy vaihtaa kanavalle %s (%s - '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Vastaanottimessa ei ole internet-yhteyttä"
 
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr ""

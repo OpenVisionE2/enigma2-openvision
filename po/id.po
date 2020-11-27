@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Budiarno Pedode\n"
 "Language-Team: \n"
@@ -3220,6 +3220,9 @@ msgstr "Pengaturan penala"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Gandakan layar TV ke LCD"
 
@@ -4041,6 +4044,9 @@ msgstr ""
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5179,11 +5185,12 @@ msgstr "Aktifkan EPG Virgin"
 msgid "Enable auto cable scan"
 msgstr "Aktifkan pelacakan kabel otomatis"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Aktifkan pelacakan cepat otomatis"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Aktifkan pelacakan cepat otomatis pada %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5932,14 +5939,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "DiSEqC Cepat"
 
-msgid "Fast Scan"
-msgstr "Pelacakan Cepat"
-
 msgid "Fast epoch"
 msgstr "Fast epoch"
 
 msgid "Fast forward speeds"
 msgstr "Kecepatan maju cepat"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Pelacakan Cepat"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Pelacakan Cepat"
 
 #, fuzzy
 msgid "Favorites"
@@ -6282,6 +6294,9 @@ msgstr "Menuju ke atas daftar"
 
 msgid "Gold"
 msgstr "Emas"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Menuju"
@@ -8213,6 +8228,10 @@ msgstr "Nameserver"
 msgid "Nameserver %d"
 msgstr "Nameserver %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Keluar dari konfigurasi nameserver"
+
 msgid "Nameserver settings"
 msgstr "Pengaturan nameserver"
 
@@ -8817,6 +8836,12 @@ msgstr "Buka pengaturan penala"
 msgid "Open the movie list"
 msgstr "Buka daftar film"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9177,7 +9202,8 @@ msgstr ""
 "Mohon atur koneksi internet anda dengan mengisi nilai yang diperlukan.\n"
 "Jika anda sudah siap tekan OK untuk lanjut."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Mohon hubungkan Rx anda ke internet"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12934,9 +12960,10 @@ msgstr ""
 "Terima kasih telah menggunakan wizard.\n"
 "Tekan OK untuk lanjut."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Terima kasih telah menggunakan wizard. Rx anda telah siap digunakan.\n"
 "Tekan OK untuk mulai menggunakan Rx anda."
@@ -14102,10 +14129,6 @@ msgstr "Gunakan mode tampilan 12 karakter"
 msgid "Use DHCP"
 msgstr "Gunakan DHCP"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Gunakan DHCP"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Gunakan info EPG EIT ketika tersedia."
 
@@ -14204,7 +14227,10 @@ msgstr "Gunakan wizard jaringan untuk menyetel adapter jaringan yg dipilih"
 msgid "Use the network wizard to configure your network\n"
 msgstr "Gunakna wizard jaringan untuk menyetel jaringan anda\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Gunakan tombol atas/bawah pada remote kontrol untuk memilih pilihan. Setelah itu, tekan OK."
 
 msgid "Use the wizard to set up basic features"
@@ -14602,6 +14628,17 @@ msgstr "Posisi berat"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Selamat Datang.\n"
+"\n"
+"Wizard awal ini akan memandu anda melalui pengaturan dasar Rx anda.\n"
+"Tekan tombol OK pada remote kontrol anda untuk maju ke langkah berikutnya."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14626,17 +14663,6 @@ msgstr ""
 "Jika anda ingin menghubungkan Rx anda ke internet, wizard ini akan memandu anda melalui pengaturan jaringan dasar Rx anda.\n"
 "\n"
 "Tekan OK untuk mulai penyetelan jaringan anda"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Selamat Datang.\n"
-"\n"
-"Wizard awal ini akan memandu anda melalui pengaturan dasar Rx anda.\n"
-"Tekan tombol OK pada remote kontrol anda untuk maju ke langkah berikutnya."
 
 msgid "Welcome..."
 msgstr "Selamat datang..."
@@ -15173,6 +15199,10 @@ msgstr "Anda harus beralih ke layanan %s (%s - '%s')!\n"
 
 msgid "You seem to be in timeshift!"
 msgstr ""
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Receiver anda tidak ada koneksi internet"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"

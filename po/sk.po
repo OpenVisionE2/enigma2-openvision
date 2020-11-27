@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 11:53+0330\n"
+"POT-Creation-Date: 2020-11-27 19:44+0330\n"
 "PO-Revision-Date: 2020-05-12 14:02+0200\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -3219,6 +3219,9 @@ msgstr "Konfigurácia tunera"
 msgid "Clients"
 msgstr ""
 
+msgid "Cloadfare"
+msgstr ""
+
 msgid "Clone TV screen to LCD"
 msgstr "Duplikovať obrazovku TV na LCD"
 
@@ -4021,6 +4024,9 @@ msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
+
+msgid "DHCP router"
+msgstr ""
 
 #, fuzzy
 msgid "DLNA support"
@@ -5135,11 +5141,12 @@ msgstr "Povoliť Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Povoliť automatické prehľadávanie káblového rozvodu"
 
-msgid "Enable auto fast scan"
+#, fuzzy
+msgid "Enable auto fastscan"
 msgstr "Povoliť automatický FastScan"
 
-#, python-format
-msgid "Enable auto fast scan for %s"
+#, fuzzy, python-format
+msgid "Enable auto fastscan for %s"
 msgstr "Povoliť automatický FastScan pre %s"
 
 msgid "Enable blinking REC symbol on the LCD display"
@@ -5867,14 +5874,19 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Rýchly DiSEqC"
 
-msgid "Fast Scan"
-msgstr "Rýchle vyhľadávanie (FastScan)"
-
 msgid "Fast epoch"
 msgstr "Rýchla doba"
 
 msgid "Fast forward speeds"
 msgstr "Rýchlosti prevíjania vpred"
+
+#, fuzzy
+msgid "FastScan"
+msgstr "Rýchle vyhľadávanie (FastScan)"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Rýchle vyhľadávanie (FastScan)"
 
 #, fuzzy
 msgid "Favorites"
@@ -6207,6 +6219,9 @@ msgstr "Prechádzať v zozname nahor"
 
 msgid "Gold"
 msgstr "Zlatá"
+
+msgid "Google DNS"
+msgstr ""
 
 msgid "Goto"
 msgstr "Otočiť na"
@@ -8096,6 +8111,10 @@ msgstr "Nameserver"
 msgid "Nameserver %d"
 msgstr "DNS (nameserver) %d"
 
+#, fuzzy
+msgid "Nameserver configuration"
+msgstr "Ukončiť konfiguráciu DNS"
+
 msgid "Nameserver settings"
 msgstr "Nastavenie DNS"
 
@@ -8689,6 +8708,12 @@ msgstr "Otvoriť nastavenia tunera "
 msgid "Open the movie list"
 msgstr "Otvoriť zoznam filmov"
 
+msgid "OpenDNS FamilyShield"
+msgstr ""
+
+msgid "OpenDNS Home"
+msgstr ""
+
 msgid "OpenVPN"
 msgstr ""
 
@@ -9045,7 +9070,8 @@ msgstr ""
 "Nakonfigurujte si internetové pripojenie vyplnením požadovaných hodnôt.\n"
 "Po skončení stlačte OK a pokračujte."
 
-msgid "Please connect your receiver to the internet"
+#, fuzzy
+msgid "Please connect your %s %s (kernel %s) to the internet"
 msgstr "Prosím, pripojte prijímač k internetu"
 
 msgid "Please do not change any values unless you know what you are doing!"
@@ -12734,9 +12760,10 @@ msgstr ""
 "Ďakujeme, že ste použili sprievodcu.\n"
 "Pokračujte stlačením OK."
 
+#, fuzzy
 msgid ""
-"Thank you for using the wizard. Your receiver is now ready for use.\n"
-"Press OK to start using your receiver."
+"Thank you for using the wizard. Your %s %s (kernel %s) is now ready for use.\n"
+"Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Ďakujeme, že ste použili sprievodcu. Prijímač je teraz pripravený na použitie.\n"
 "Stlačte tlačidlo OK a začnite používať prijímač."
@@ -13879,10 +13906,6 @@ msgstr "Použiť 12 znakový režim displeja"
 msgid "Use DHCP"
 msgstr "Použiť DHCP"
 
-#, fuzzy
-msgid "Use DHCP for DNS"
-msgstr "Použiť DHCP"
-
 msgid "Use EIT EPG information when it is available."
 msgstr "Ak sú dostupné, použiť EIT EPG informácie."
 
@@ -13981,7 +14004,10 @@ msgstr "Použiť Sprievodcu nastavením siete na nastavenie zvoleného sieťové
 msgid "Use the network wizard to configure your network\n"
 msgstr "Na nastavenie siete použiť sprievodcu sieťou\n"
 
-msgid "Use the up/down keys on your remote control to select an option. After that, press OK."
+#, fuzzy
+msgid ""
+"Use the up/down keys on your remote control to select an option. After that, press OK.\n"
+"We detected your RC as %s (type %s id %s)"
 msgstr "Šípkami nahor alebo nadol na diaľkovom ovládači zvoľte možnosť. Potom stlačte tlačidlo OK."
 
 msgid "Use the wizard to set up basic features"
@@ -14370,6 +14396,17 @@ msgstr "Vážená pozícia"
 
 #, fuzzy
 msgid ""
+"Welcome to Open Vision %s-%s\n"
+"This start wizard will guide you through the basic setup of your %s %s (kernel %s).\n"
+"Press the OK button on your remote control to move to the next step."
+msgstr ""
+"Vitajte.\n"
+"\n"
+"Tento úvodný sprievodca vám pomôže so základnými nastaveniami Vášho prijímača.\n"
+"Stlačením tlačidla OK na diaľkovom ovládači prejdite do ďalšieho kroku."
+
+#, fuzzy
+msgid ""
 "Welcome to the cutlist editor.\n"
 "\n"
 "Seek to the start of the stuff you want to cut away, press RED.\n"
@@ -14394,17 +14431,6 @@ msgstr ""
 "Ak chcete pripojiť Váš prijímač k internetu, tento sprievodca vás povedie základnými nastaveniami siete.\n"
 "\n"
 "Stlačením tlačidla OK spustite konfiguráciu siete"
-
-msgid ""
-"Welcome.\n"
-"\n"
-"This start wizard will guide you through the basic setup of your receiver.\n"
-"Press the OK button on your remote control to move to the next step."
-msgstr ""
-"Vitajte.\n"
-"\n"
-"Tento úvodný sprievodca vám pomôže so základnými nastaveniami Vášho prijímača.\n"
-"Stlačením tlačidla OK na diaľkovom ovládači prejdite do ďalšieho kroku."
 
 msgid "Welcome..."
 msgstr "Vitajte..."
@@ -14934,6 +14960,10 @@ msgstr "Prepnite na stanicu %s (%s - '%s')\n"
 
 msgid "You seem to be in timeshift!"
 msgstr "Práve prebieha časový posun!"
+
+#, fuzzy
+msgid "Your %s %s (kernel %s) does not have an internet connection"
+msgstr "Váš prijímač nemá pripojenie k internetu"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
