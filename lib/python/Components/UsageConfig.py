@@ -30,7 +30,7 @@ def InitUsageConfig():
 	config.misc.showrotorposition = ConfigSelection(default = "no", choices = [("no", _("no")), ("yes", _("yes")), ("withtext", _("with text")), ("tunername", _("with tuner name"))])
 	config.usage.multibouquet = ConfigYesNo(default = True)
 	config.usage.maxchannelnumlen = ConfigSelection(default = "4", choices = [("3", _("3")), ("4", _("4")), ("5", _("5")), ("6", _("6"))])
-	config.misc.OVupdatecheck = ConfigYesNo(default=True)
+	config.misc.OVupdatecheck = ConfigYesNo(default=False)
 	config.misc.extraopkgpackages = ConfigYesNo(default=False)
 
 	config.usage.alternative_number_mode = ConfigYesNo(default = False)
