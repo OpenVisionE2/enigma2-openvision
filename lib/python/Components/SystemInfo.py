@@ -146,7 +146,7 @@ SystemInfo["OScamInstalled"] = fileExists("/usr/bin/oscam") or fileExists("/usr/
 SystemInfo["OScamIsActive"] = SystemInfo["OScamInstalled"] and fileExists("/tmp/.oscam/oscam.version")
 SystemInfo["NCamInstalled"] = fileExists("/usr/bin/ncam")
 SystemInfo["NCamIsActive"] = SystemInfo["NCamInstalled"] and fileExists("/tmp/.ncam/ncam.version")
-SystemInfo["OpenVisionModule"] = fileCheck("/proc/stb/info/openvision")
+SystemInfo["OpenVisionModule"] = fileCheck("/proc/openvision/distro")
 SystemInfo["OLDE2API"] = model in ("dm800", "su980")
 SystemInfo["7segment"] = displaytype == "7segment" or "7seg" in displaytype
 SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt") or pathExists("/usr/lib/hisilicon")
