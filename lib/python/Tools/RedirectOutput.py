@@ -10,12 +10,8 @@ class EnigmaLog:
 		self.line = ""
 
 	def write(self, data):
-		if six.PY2:
-			if isinstance(data, unicode):
-				data = data.encode(encoding="UTF-8", errors="ignore")
-		else:
-			if isinstance(data, bytes):
-				data = data.decode(decoding="UTF-8", errors="ignore")
+		if isinstance(data, six.text_type):
+			data = six.ensure_str(data.encode(encoding="UTF-8", errors="ignore"))
 		self.line += data
 		if "\n" in data:
 			ePythonOutput(self.line, self.level)
