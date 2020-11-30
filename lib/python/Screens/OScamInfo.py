@@ -290,7 +290,7 @@ class OscamInfo:
 					tmp = result[1].replace("<log>", "<log><![CDATA[").replace("</log>", "]]></log>")
 				else:
 					tmp = result[1]
-				data = ElementTree.XML(tmp)
+				data = ElementTree.XML(result[1])
 				log = data.find("log")
 				logtext = log.text
 			if typ == "s":
@@ -1017,7 +1017,7 @@ class oscEntitlements(Screen, OscamInfo):
 			csystem = i.attrib["system"]
 			creshare = i.attrib["reshare"]
 			if not host_ok:
-				hostadr = i.find("hostaddress").text
+				hostadr = i.find("hostaddress")
 			chop = int(i.attrib["hop"])
 			if chop > 5:
 				chop = 5
@@ -1052,7 +1052,7 @@ class oscEntitlements(Screen, OscamInfo):
 		else:
 			self["output"].setStyle("default")
 		self["output"].setList(result)
-		title = [ _("Reader"), self.cccamreader, _("Cards:"), cardTotal, _("Server:"), hostadr ]
+		title = [ _("Reader"), self.cccamreader, _("Cards:"), cardTotal, _("Server:") ]
 		self.setTitle( " ".join(title))
 
 class oscReaderStats(Screen, OscamInfo):
