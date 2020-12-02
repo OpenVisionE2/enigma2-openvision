@@ -101,9 +101,10 @@ public:
 		char byte = 0;
 		writeAll(m_pipe[1], &byte, sizeof(byte));
 	}
-	eFixedMessagePump(eMainloop *context, int mt)
+	eFixedMessagePump(eMainloop *context, int mt, const char *name)
 	{
 		pipe(m_pipe);
+		name(name);
 		sn = eSocketNotifier::create(context, m_pipe[0], eSocketNotifier::Read, false);
 		CONNECT(sn->activated, eFixedMessagePump<T>::do_recv);
 		sn->start();
