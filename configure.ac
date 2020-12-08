@@ -666,6 +666,11 @@ if test "$BOXBRAND" == "dinobot"; then
 	AC_DEFINE(HAVE_HISILICON, 1,[define it's a HISILICON chip])
 fi
 
+if test "$STBPLATFORM" == "u42"; then
+	AC_DEFINE(HAVE_DINOBOT_PLAYER, 1,[use the specific dinobot player])
+fi
+AM_CONDITIONAL(HAVE_DINOBOT_PLAYER, test "$STBPLATFORM" == "u42")
+
 if test "$STBPLATFORM" == "u53" -o "$STBPLATFORM" == "u532" -o "$STBPLATFORM" == "u533"; then
 	AC_DEFINE(KEY_F6_TO_KEY_FAVORITES, 1,[define when rc FAV key sends a KEY_F6 event for its KEY_FAVORITES key])
 	AC_DEFINE(KEY_CONTEXT_MENU_TO_KEY_BACK, 1,[define when rc MOUSE key sends a KEY_CONTEXT_MENU event for its KEY_BACK key])

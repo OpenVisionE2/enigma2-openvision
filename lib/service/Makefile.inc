@@ -47,3 +47,8 @@ if HAVE_FCC_ABILITY
 service_libenigma_service_a_SOURCES += service/servicedvbfcc.cpp
 serviceinclude_HEADERS += service/servicedvbfcc.h
 endif
+
+if HAVE_DINOBOT_PLAYER
+service_libenigma_service_a_SOURCES += service/cJSON.cpp
+serviceinclude_HEADERS += service/cJSON.h
+endif
