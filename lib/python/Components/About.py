@@ -239,7 +239,7 @@ def getVisionModule():
 	if SystemInfo["OpenVisionModule"]:
 		return _("Loaded")
 	else:
-		return _("Unknown, multiboot situation!")
+		return _("Unknown!")
 
 def getDriverInstalledDate():
 	try:

@@ -261,6 +261,16 @@ class OpenVisionInformation(Screen):
 			OpenVisionInformationText += _("Open Vision language: ") + visionlanguage + "\n"
 
 		OpenVisionInformationText += _("Open Vision module: ") + about.getVisionModule() + "\n"
+
+		if fileExists("/proc/openvision/multiboot"):
+			multibootflag = open("/proc/openvision/multiboot", "r").read().strip()
+			if multibootflag == "1":
+				OpenVisionInformationText += _("Multiboot: ") + _("Yes") + "\n"
+			else:
+				OpenVisionInformationText += _("Multiboot: ") + _("No") + "\n"
+		else:
+			OpenVisionInformationText += _("Multiboot: ") + _("Yes") + "\n"
+
 		OpenVisionInformationText += _("Flash type: ") + about.getFlashType() + "\n"
 
 		OpenVisionInformationText += "\n"
