@@ -262,8 +262,8 @@ class OpenVisionInformation(Screen):
 
 		OpenVisionInformationText += _("Open Vision module: ") + about.getVisionModule() + "\n"
 
-		if fileExists("/proc/openvision/multiboot"):
-			multibootflag = open("/proc/openvision/multiboot", "r").read().strip()
+		if fileExists("/etc/openvision/multiboot"):
+			multibootflag = open("/etc/openvision/multiboot", "r").read().strip()
 			if multibootflag == "1":
 				OpenVisionInformationText += _("Multiboot: ") + _("Yes") + "\n"
 			else:
