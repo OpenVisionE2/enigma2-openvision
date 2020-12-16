@@ -297,11 +297,7 @@ namespace {
 		ret = X509_verify_cert(store_ctx);
 
 		if (ret != 1)
-#ifdef HAVE_NEWOE
 			eWarning(X509_verify_cert_error_string(X509_STORE_CTX_get_error(store_ctx)));
-#else
-			eWarning(X509_verify_cert_error_string(store_ctx->error));
-#endif
 
 		X509_STORE_CTX_free(store_ctx);
 
@@ -779,7 +775,6 @@ int eDVBCICcSessionImpl::generate_dh_key()
 	uint8_t dhph[256];
 	int len;
 	unsigned int gap;
-#ifdef HAVE_NEWOE
 	dh = DH_new();
 	BIGNUM *p, *g, *q;
 	const BIGNUM *pub_key;
@@ -788,19 +783,9 @@ int eDVBCICcSessionImpl::generate_dh_key()
 	q = BN_bin2bn(dh_q, sizeof(dh_q), 0);
 	// Deprecated!   dh->flags |= DH_FLAG_NO_EXP_CONSTTIME;
 	DH_set0_pqg(dh, p, q, g);
-#else
-	dh->p = BN_bin2bn(dh_p, sizeof(dh_p), 0);
-	dh->g = BN_bin2bn(dh_g, sizeof(dh_g), 0);
-	dh->q = BN_bin2bn(dh_q, sizeof(dh_q), 0);
-	dh->flags |= DH_FLAG_NO_EXP_CONSTTIME;
-#endif
 	DH_generate_key(dh);
-#ifdef HAVE_NEWOE
 	DH_get0_key(dh, &pub_key, NULL);
 	len = BN_num_bytes(pub_key);
-#else
-	len = BN_num_bytes(dh->pub_key);
-#endif
 	if (len > 256) {
 		eWarning("[res_content_ctrl] too long public key");
 		return -1;
@@ -828,11 +813,7 @@ int eDVBCICcSessionImpl::generate_dh_key()
 
 	gap = 256 - len;
 	memset(dhph, 0, gap);
-#ifdef HAVE_NEWOE
 	BN_bn2bin(pub_key, &dhph[gap]);
-#else
-	BN_bn2bin(dh->pub_key, &dhph[gap]);
-#endif
 	element_set(DHPH, dhph, sizeof(dhph));
 	return 0;
 }
