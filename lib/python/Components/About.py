@@ -72,8 +72,8 @@ def getBuildDateString():
 
 def getUpdateDateString():
 	try:
-		from glob import glob
-		build = [x.split("-")[-2:-1][0][-8:] for x in open(glob("/var/lib/opkg/info/openvision-bootlogo.control")[0], "r") if x.startswith("Version:")][0]
+		if fileExists("/proc/openvision/compiledate"):
+			build = open("/proc/openvision/compiledate", "r").read().strip()
 		if build.isdigit():
 			return  "%s-%s-%s" % (build[:4], build[4:6], build[6:])
 	except:
