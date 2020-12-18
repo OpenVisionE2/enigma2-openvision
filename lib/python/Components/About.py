@@ -74,6 +74,8 @@ def getUpdateDateString():
 	try:
 		if fileExists("/proc/openvision/compiledate"):
 			build = open("/proc/openvision/compiledate", "r").read().strip()
+		elif fileExists("/etc/openvision/compiledate"):
+			build = open("/etc/openvision/compiledate", "r").read().strip()
 		if build.isdigit():
 			return  "%s-%s-%s" % (build[:4], build[4:6], build[6:])
 	except:
