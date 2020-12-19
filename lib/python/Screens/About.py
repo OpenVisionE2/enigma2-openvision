@@ -265,11 +265,11 @@ class OpenVisionInformation(Screen):
 		if fileExists("/etc/openvision/multiboot"):
 			multibootflag = open("/etc/openvision/multiboot", "r").read().strip()
 			if multibootflag == "1":
-				OpenVisionInformationText += _("Multiboot: ") + _("Yes") + "\n"
+				OpenVisionInformationText += _("Soft multiboot: ") + _("Yes") + "\n"
 			else:
-				OpenVisionInformationText += _("Multiboot: ") + _("No") + "\n"
+				OpenVisionInformationText += _("Soft multiboot: ") + _("No") + "\n"
 		else:
-			OpenVisionInformationText += _("Multiboot: ") + _("Yes") + "\n"
+			OpenVisionInformationText += _("Soft multiboot: ") + _("Yes") + "\n"
 
 		OpenVisionInformationText += _("Flash type: ") + about.getFlashType() + "\n"
 
