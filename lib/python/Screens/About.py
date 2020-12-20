@@ -404,7 +404,7 @@ class DVBInformation(Screen):
 		if fileExists("/usr/bin/dvb-fe-tool"):
 			import time
 			try:
-				cmd = 'dvb-fe-tool > /tmp/dvbfetool.txt'
+				cmd = 'dvb-fe-tool > /tmp/dvbfetool.txt ; dvb-fe-tool -f 1 >> /tmp/dvbfetool.txt ; cat /proc/bus/nim_sockets >> /tmp/dvbfetool.txt'
 				Console().ePopen(cmd)
 				cmdv = "dvb-fe-tool | grep -o 'DVB API Version [0-9].[0-9]*' | sed 's|[^0-9]*||' > /tmp/dvbapiversion.txt"
 				Console().ePopen(cmdv)
