@@ -225,6 +225,10 @@ class OpenVisionInformation(Screen):
 
 		OpenVisionInformationText += "\n"
 
+		OpenVisionInformationText += _("Donate: ") + "https://forum.openvision.tech/app.php/donate" + "\n"
+
+		OpenVisionInformationText += "\n"
+
 		if config.misc.OVupdatecheck.value is True:
 			try:
 				if boxbranding.getVisionVersion().startswith("10"):
