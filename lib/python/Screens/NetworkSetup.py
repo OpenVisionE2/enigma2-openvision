@@ -3816,3 +3816,75 @@ class NetworkPassword(ConfigListScreen, Screen):
 		del self.container.appClosed[:]
 		del self.container
 		self.close()
+
+class NetworkSatPI(NSCommon, Screen):
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		Screen.setTitle(self, _("SatPI setup"))
+		self.skinName = "NetworkSatPI"
+		self.onChangedEntry = [ ]
+		self['lab1'] = Label(_("Autostart:"))
+		self['labactive'] = Label(_(_("Disabled")))
+		self['lab2'] = Label(_("Current status:"))
+		self['labstop'] = Label(_("Stopped"))
+		self['labrun'] = Label(_("Running"))
+		self['key_red'] = Label(_("Remove service"))
+		self['key_green'] = Label(_("Start"))
+		self['key_yellow'] = Label(_("Autostart"))
+		self['status_summary'] = StaticText()
+		self['autostartstatus_summary'] = StaticText()
+		self.Console = Console()
+		self.my_satpi_active = False
+		self.my_satpi_run = False
+		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'red': self.UninstallCheck, 'green': self.SatPIStartStop, 'yellow': self.activateSatPI})
+		self.service_name = 'satpi'
+		self.onLayoutFinish.append(self.InstallCheck)
+		self.reboot_at_end = True
+
+	def createSummary(self):
+		return NetworkServicesSummary
+
+	def SatPIStartStop(self):
+		if not self.my_satpi_run:
+			self.Console.ePopen('/etc/init.d/satpi start', self.StartStopCallback)
+		elif self.my_satpi_run:
+			self.Console.ePopen('/etc/init.d/satpi stop', self.StartStopCallback)
+
+	def activateSatPI(self):
+		if ServiceIsEnabled('satpi'):
+			self.Console.ePopen('update-rc.d -f satpi remove', self.StartStopCallback)
+		else:
+			self.Console.ePopen('update-rc.d -f satpi defaults', self.StartStopCallback)
+
+	def updateService(self,result = None, retval = None, extra_args = None):
+		import process
+		p = process.ProcessList()
+		satpi_process = str(p.named('satpi')).strip('[]')
+		self['labrun'].hide()
+		self['labstop'].hide()
+		self['labactive'].setText(_("Disabled"))
+		self.my_satpi_active = False
+		self.my_satpi_run = False
+		if ServiceIsEnabled('satpi'):
+			self['labactive'].setText(_("Enabled"))
+			self['labactive'].show()
+			self.my_satpi_active = True
+		if satpi_process:
+			self.my_satpi_run = True
+		if self.my_satpi_run:
+			self['labstop'].hide()
+			self['labactive'].show()
+			self['labrun'].show()
+			self['key_green'].setText(_("Stop"))
+			status_summary= self['lab2'].text + ' ' + self['labrun'].text
+		else:
+			self['labrun'].hide()
+			self['labstop'].show()
+			self['labactive'].show()
+			self['key_green'].setText(_("Start"))
+			status_summary= self['lab2'].text + ' ' + self['labstop'].text
+		title = _("SatPI setup")
+		autostartstatus_summary = self['lab1'].text + ' ' + self['labactive'].text
+
+		for cb in self.onChangedEntry:
+			cb(title, status_summary, autostartstatus_summary)
