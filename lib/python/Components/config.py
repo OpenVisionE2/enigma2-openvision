@@ -403,19 +403,28 @@ class ConfigAction(ConfigElement):
 # Several customized versions exist for different descriptions.
 #
 class ConfigBoolean(ConfigElement):
-	def __init__(self, default=False, descriptions={False: _("false"), True: _("true")}, graphic=True):
+	def __init__(self, default=False, descriptions={False: _("False"), True: _("True")}, graphic=True):
 		ConfigElement.__init__(self)
-		self.descriptions = descriptions
 		self.value = self.last_value = self.default = default
+		self.descriptions = descriptions
 		self.graphic = graphic
+		self.trueValues = ("1", "enable", "on", "true", "yes")
 
 	def handleKey(self, key):
-		if key in (ACTIONKEY_LEFT, ACTIONKEY_RIGHT):
+		if key in (ACTIONKEY_TOGGLE, ACTIONKEY_SELECT, ACTIONKEY_LEFT, ACTIONKEY_RIGHT):
 			self.value = not self.value
 		elif key == ACTIONKEY_FIRST:
 			self.value = False
 		elif key == ACTIONKEY_LAST:
 			self.value = True
+
+	def fromstring(self, val):
+		return str(val).lower() in self.trueValues
+
+	def tostring(self, value):
+		return "True" if value and str(value).lower() in self.trueValues else "False"
+		# Use the following if settings should be saved using the same values as displayed to the user.
+		# self.descriptions[True] if value or str(value).lower() in self.trueValues else self.descriptions[False]
 
 	def getText(self):
 		return self.descriptions[self.value]
@@ -427,51 +436,33 @@ class ConfigBoolean(ConfigElement):
 			return ("pixmap", switchPixmap["menu_on" if self.value else "menu_off"])
 		return ("text", self.descriptions[self.value])
 
-	def tostring(self, value):
-		if not value or str(value).lower() == "false":
-			return "false"
-		else:
-			return "true"
-
-	def fromstring(self, val):
-		if str(val).lower() == "true":
-			return True
-		else:
-			return False
-
-	def getHTML(self, id):
-		if self.value:
-			checked = " checked=\"checked\""
-		else:
-			checked = ""
-		return "<input type=\"checkbox\" name=\"" + id + "\" value=\"1\" " + checked + " />"
-
-	# This is FLAWED. and must be fixed!
-	def unsafeAssign(self, value):
-		if value == "1":
-			self.value = True
-		else:
-			self.value = False
-
 	def onDeselect(self, session):
-		if not self.last_value == self.value:
+		if self.last_value != self.value:
 			self.changedFinal()
 			self.last_value = self.value
+
+	# For HTML Interface - Is this still used?
+	def getHTML(self, id):  # DEBUG: Is this still used?
+		return "<input type=\"checkbox\" name=\"%s\" value=\"1\"%s />" % (id, " checked=\"checked\"" if self.value else "")
+
+	# This is FLAWED. and must be fixed!
+	def unsafeAssign(self, value):  # DEBUG: Is this still used?
+		self.value = value.lower() in self.trueValues
 
 
 class ConfigEnableDisable(ConfigBoolean):
 	def __init__(self, default=False, graphic=True):
-		ConfigBoolean.__init__(self, default=default, descriptions={False: _("disable"), True: _("enable")}, graphic=graphic)
+		ConfigBoolean.__init__(self, default=default, descriptions={False: _("Disable"), True: _("Enable")}, graphic=graphic)
 
 
 class ConfigOnOff(ConfigBoolean):
 	def __init__(self, default=False, graphic=True):
-		ConfigBoolean.__init__(self, default=default, descriptions={False: _("off"), True: _("on")}, graphic=graphic)
+		ConfigBoolean.__init__(self, default=default, descriptions={False: _("Off"), True: _("On")}, graphic=graphic)
 
 
 class ConfigYesNo(ConfigBoolean):
 	def __init__(self, default=False, graphic=True):
-		ConfigBoolean.__init__(self, default=default, descriptions={False: _("no"), True: _("yes")}, graphic=graphic)
+		ConfigBoolean.__init__(self, default=default, descriptions={False: _("No"), True: _("Yes")}, graphic=graphic)
 
 
 # This is the control, and base class, for date and time settings.
