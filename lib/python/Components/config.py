@@ -1652,72 +1652,11 @@ class ConfigText(ConfigElement, NumericalTextInput):
 		self.help_window = None
 		self.value = self.last_value = self.default = default
 
-	def validateMarker(self):
-		textlen = len(self.text)
-		if self.fixed_size:
-			if self.marked_pos > textlen - 1:
-				self.marked_pos = textlen - 1
-		else:
-			if self.marked_pos > textlen:
-				self.marked_pos = textlen
-		if self.marked_pos < 0:
+	def handleKey(self, key):  # This will not change anything on the value itself so we can handle it here in GUI element.
+		if key == ACTIONKEY_FIRST:
+			self.timeout()
+			self.allmarked = False
 			self.marked_pos = 0
-		if self.visible_width:
-			if self.marked_pos < self.offset:
-				self.offset = self.marked_pos
-			if self.marked_pos >= self.offset + self.visible_width:
-				if self.marked_pos == textlen:
-					self.offset = self.marked_pos - self.visible_width
-				else:
-					self.offset = self.marked_pos - self.visible_width + 1
-			if self.offset > 0 and self.offset + self.visible_width > textlen:
-				self.offset = max(0, len - self.visible_width)
-
-	def insertChar(self, ch, pos, owr):
-		if owr or self.overwrite:
-			self.text = self.text[0:pos] + ch + self.text[pos + 1:]
-		elif self.fixed_size:
-			self.text = self.text[0:pos] + ch + self.text[pos:-1]
-		else:
-			self.text = self.text[0:pos] + ch + self.text[pos:]
-
-	def deleteChar(self, pos):
-		if not self.fixed_size:
-			self.text = self.text[0:pos] + self.text[pos + 1:]
-		elif self.overwrite:
-			self.text = self.text[0:pos] + " " + self.text[pos + 1:]
-		else:
-			self.text = self.text[0:pos] + self.text[pos + 1:] + " "
-
-	def deleteAllChars(self):
-		if self.fixed_size:
-			self.text = " " * len(self.text)
-		else:
-			self.text = ""
-		self.marked_pos = 0
-
-	def handleKey(self, key):
-		# This will not change anything on the value itself
-		# so we can handle it here in GUI element.
-		if key == ACTIONKEY_DELETE:
-			self.timeout()
-			if self.allmarked:
-				self.deleteAllChars()
-				self.allmarked = False
-			else:
-				self.deleteChar(self.marked_pos)
-				if self.fixed_size and self.overwrite:
-					self.marked_pos += 1
-		elif key == ACTIONKEY_BACKSPACE:
-			self.timeout()
-			if self.allmarked:
-				self.deleteAllChars()
-				self.allmarked = False
-			elif self.marked_pos > 0:
-				self.deleteChar(self.marked_pos - 1)
-				if not self.fixed_size and self.offset > 0:
-					self.offset -= 1
-				self.marked_pos -= 1
 		elif key == ACTIONKEY_LEFT:
 			self.timeout()
 			if self.allmarked:
@@ -1732,14 +1671,32 @@ class ConfigText(ConfigElement, NumericalTextInput):
 				self.allmarked = False
 			else:
 				self.marked_pos += 1
-		elif key == ACTIONKEY_FIRST:
-			self.timeout()
-			self.allmarked = False
-			self.marked_pos = 0
 		elif key == ACTIONKEY_LAST:
 			self.timeout()
 			self.allmarked = False
 			self.marked_pos = len(self.text)
+		elif key == ACTIONKEY_BACKSPACE:
+			self.timeout()
+			if self.allmarked:
+				self.deleteAllChars()
+				self.allmarked = False
+			elif self.marked_pos > 0:
+				self.deleteChar(self.marked_pos - 1)
+				if not self.fixed_size and self.offset > 0:
+					self.offset -= 1
+				self.marked_pos -= 1
+		elif key == ACTIONKEY_DELETE:
+			self.timeout()
+			if self.allmarked:
+				self.deleteAllChars()
+				self.allmarked = False
+			else:
+				self.deleteChar(self.marked_pos)
+				if self.fixed_size and self.overwrite:
+					self.marked_pos += 1
+		elif key == ACTIONKEY_ERASE:
+			self.timeout()
+			self.deleteAllChars()
 		elif key == ACTIONKEY_TOGGLE:
 			self.timeout()
 			self.overwrite = not self.overwrite
@@ -1769,27 +1726,54 @@ class ConfigText(ConfigElement, NumericalTextInput):
 		self.validateMarker()
 		self.changed()
 
+	def insertChar(self, ch, pos, owr):
+		if owr or self.overwrite:
+			self.text = self.text[0:pos] + ch + self.text[pos + 1:]
+		elif self.fixed_size:
+			self.text = self.text[0:pos] + ch + self.text[pos:-1]
+		else:
+			self.text = self.text[0:pos] + ch + self.text[pos:]
+
+	def deleteChar(self, pos):
+		if not self.fixed_size:
+			self.text = self.text[0:pos] + self.text[pos + 1:]
+		elif self.overwrite:
+			self.text = self.text[0:pos] + " " + self.text[pos + 1:]
+		else:
+			self.text = self.text[0:pos] + self.text[pos + 1:] + " "
+
+	def deleteAllChars(self):
+		if self.fixed_size:
+			self.text = " " * len(self.text)
+		else:
+			self.text = ""
+		self.marked_pos = 0
+
+	def validateMarker(self):
+		textlen = len(self.text)
+		if self.fixed_size:
+			if self.marked_pos > textlen - 1:
+				self.marked_pos = textlen - 1
+		else:
+			if self.marked_pos > textlen:
+				self.marked_pos = textlen
+		if self.marked_pos < 0:
+			self.marked_pos = 0
+		if self.visible_width:
+			if self.marked_pos < self.offset:
+				self.offset = self.marked_pos
+			if self.marked_pos >= self.offset + self.visible_width:
+				if self.marked_pos == textlen:
+					self.offset = self.marked_pos - self.visible_width
+				else:
+					self.offset = self.marked_pos - self.visible_width + 1
+			if self.offset > 0 and self.offset + self.visible_width > textlen:
+				self.offset = max(0, len - self.visible_width)
+
 	def nextFunc(self):
 		self.marked_pos += 1
 		self.validateMarker()
 		self.changed()
-
-	def getValue(self):
-		try:
-			return self.text.encode("utf-8")
-		except UnicodeDecodeError:
-			print("[config] Broken UTF8!")
-			return self.text
-
-	def setValue(self, val):
-		try:
-			self.text = val.decode("utf-8")
-		except UnicodeDecodeError:
-			self.text = val.decode("utf-8", "ignore")
-			print("[config] Broken UTF8!")
-
-	value = property(getValue, setValue)
-	_value = property(getValue, setValue)
 
 	def getText(self):
 		return self.text.encode("utf-8")
@@ -1807,6 +1791,23 @@ class ConfigText(ConfigElement, NumericalTextInput):
 			else:
 				mark = [self.marked_pos]
 			return ("mtext"[1 - selected:], self.text.encode("utf-8") + " ", mark)
+
+	def getValue(self):
+		try:
+			return self.text.encode("utf-8")
+		except UnicodeDecodeError:
+			print("[config] Broken UTF8!")
+			return self.text
+
+	def setValue(self, val):
+		try:
+			self.text = val.decode("utf-8")
+		except UnicodeDecodeError:
+			self.text = val.decode("utf-8", "ignore")
+			print("[config] Broken UTF8!")
+
+	value = property(getValue, setValue)
+	_value = property(getValue, setValue)
 
 	def onSelect(self, session):
 		self.allmarked = (self.value != "")
@@ -1827,18 +1828,18 @@ class ConfigText(ConfigElement, NumericalTextInput):
 			self.changedFinal()
 			self.last_value = self.value
 
-	def hideHelp(self, session):
-		if session is not None and self.help_window is not None:
-			self.help_window.hide()
-
 	def showHelp(self, session):
 		if session is not None and self.help_window is not None:
 			self.help_window.show()
 
-	def getHTML(self, id):
+	def hideHelp(self, session):
+		if session is not None and self.help_window is not None:
+			self.help_window.hide()
+
+	def getHTML(self, id):  # DEBUG: Is this still used?
 		return "<input type=\"text\" name=\"" + id + "\" value=\"" + self.value + "\" /><br>\n"
 
-	def unsafeAssign(self, value):
+	def unsafeAssign(self, value):  # DEBUG: Is this still used?
 		self.value = str(value)
 
 
@@ -1848,6 +1849,12 @@ class ConfigDirectory(ConfigText):
 
 	def handleKey(self, key):
 		pass
+
+	def getMulti(self, selected):
+		if self.text == "":
+			return ("mtext"[1 - selected:], _("List of storage devices"), range(0))
+		else:
+			return ConfigText.getMulti(self, selected)
 
 	def getValue(self):
 		if self.text == "":
@@ -1860,12 +1867,6 @@ class ConfigDirectory(ConfigText):
 			val = ""
 		ConfigText.setValue(self, val)
 
-	def getMulti(self, selected):
-		if self.text == "":
-			return ("mtext"[1 - selected:], _("List of storage devices"), range(0))
-		else:
-			return ConfigText.getMulti(self, selected)
-
 	def onSelect(self, session):
 		self.allmarked = (self.value != "")
 
@@ -1873,6 +1874,35 @@ class ConfigDirectory(ConfigText):
 class ConfigNumber(ConfigText):
 	def __init__(self, default=0):
 		ConfigText.__init__(self, str(default), fixed_size=False)
+
+	def handleKey(self, key):
+		if key in ACTIONKEY_NUMBERS or key == ACTIONKEY_ASCII:
+			if key == ACTIONKEY_ASCII:
+				ascii = getPrevAsciiCode()
+				if not (48 <= ascii <= 57):
+					return
+			else:
+				ascii = getKeyNumber(key) + 48
+			newChar = pyunichr(ascii)
+			if self.allmarked:
+				self.deleteAllChars()
+				self.allmarked = False
+			self.insertChar(newChar, self.marked_pos, False)
+			self.marked_pos += 1
+			self.changed()
+		else:
+			ConfigText.handleKey(self, key)
+		self.conform()
+
+	def conform(self):
+		pos = len(self.text) - self.marked_pos
+		self.text = self.text.lstrip("0")
+		if self.text == "":
+			self.text = "0"
+		if pos > len(self.text):
+			self.marked_pos = 0
+		else:
+			self.marked_pos = len(self.text) - pos
 
 	def getValue(self):
 		try:
@@ -1896,35 +1926,6 @@ class ConfigNumber(ConfigText):
 		if sv is None and strv == str(self.default):
 			return False
 		return strv != self.tostring(sv)
-
-	def conform(self):
-		pos = len(self.text) - self.marked_pos
-		self.text = self.text.lstrip("0")
-		if self.text == "":
-			self.text = "0"
-		if pos > len(self.text):
-			self.marked_pos = 0
-		else:
-			self.marked_pos = len(self.text) - pos
-
-	def handleKey(self, key):
-		if key in ACTIONKEY_NUMBERS or key == ACTIONKEY_ASCII:
-			if key == ACTIONKEY_ASCII:
-				ascii = getPrevAsciiCode()
-				if not (48 <= ascii <= 57):
-					return
-			else:
-				ascii = getKeyNumber(key) + 48
-			newChar = pyunichr(ascii)
-			if self.allmarked:
-				self.deleteAllChars()
-				self.allmarked = False
-			self.insertChar(newChar, self.marked_pos, False)
-			self.marked_pos += 1
-			self.changed()
-		else:
-			ConfigText.handleKey(self, key)
-		self.conform()
 
 	def onSelect(self, session):
 		self.allmarked = (self.value != "")
