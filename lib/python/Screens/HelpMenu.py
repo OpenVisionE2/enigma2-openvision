@@ -1,28 +1,24 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from Screens.Screen import Screen
-from Components.Label import Label
 from Components.ActionMap import ActionMap
 from Components.HelpMenuList import HelpMenuList
+from Components.Label import Label
+from Components.Sources.StaticText import StaticText
 from Screens.Rc import Rc
+from Screens.Screen import Screen
+
 
 class HelpMenu(Screen, Rc):
 	def __init__(self, session, list):
 		Screen.__init__(self, session)
-		self.setTitle(_("help..."))
-		self.onSelChanged = [ ]
+		self.setTitle(_("Help"))
+		self.onSelChanged = []
 		self["list"] = HelpMenuList(list, self.close)
 		self["list"].onSelChanged.append(self.SelectionChanged)
 		Rc.__init__(self)
 		self["long_key"] = Label("")
-
-		self["actions"] = ActionMap(["WizardActions"],
-		{
+		self["actions"] = ActionMap(["WizardActions"], {
 			"ok": self["list"].ok,
 			"back": self.close,
-		}, -1)
-
+		}, prio=-1)
 		self.onLayoutFinish.append(self.SelectionChanged)
 
 	def SelectionChanged(self):
@@ -30,9 +26,8 @@ class HelpMenu(Screen, Rc):
 		selection = self["list"].getCurrent()
 		if selection:
 			selection = selection[3]
-		#arrow = self["arrowup"]
-		print("[HelpMenu] selection:", selection)
-
+		# arrow = self["arrowup"]
+		print("[HelpMenu] Selection %s." % str(selection))
 		longText = ""
 		if selection and len(selection) > 1:
 			if selection[1] == "SHIFT":
@@ -40,20 +35,19 @@ class HelpMenu(Screen, Rc):
 			elif selection[1] == "long":
 				longText = _("Long key press")
 		self["long_key"].setText(longText)
-
 		self.selectKey(selection[0])
-		#if selection is None:
-		print("[HelpMenu] select arrow")
-		#	arrow.moveTo(selection[1], selection[2], 1)
-		#	arrow.startMoving()
-		#	arrow.show()
+		# if selection is None:
+		print("[HelpMenu] Select arrow.")
+		# 	arrow.moveTo(selection[1], selection[2], 1)
+		# 	arrow.startMoving()
+		# 	arrow.show()
 
 class HelpableScreen:
 	def __init__(self):
-		self["helpActions"] = ActionMap( [ "HelpActions" ],
-			{
-				"displayHelp": self.showHelp,
-			})
+		self["helpActions"] = ActionMap(["HelpActions"], {
+			"displayHelp": self.showHelp,
+		}, prio=0)
+		self["key_help"] = StaticText(_("HELP"))
 
 	def showHelp(self):
 		self.session.openWithCallback(self.callHelpAction, HelpMenu, self.helpList)
