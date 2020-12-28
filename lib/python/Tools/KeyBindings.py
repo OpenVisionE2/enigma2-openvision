@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 from keyids import KEYIDS
 from Components.config import config
 
@@ -365,8 +363,9 @@ def queryKeyBinding(context, action):
 		return []
 
 def getKeyDescription(key):
+	# rcType = config.misc.inputdevices.rcType.value  # This is a proposed new config location.
 	rcType = config.plugins.remotecontroltype.rctype.value
-#	print("[KeyBindings] RC type is:", rcType)
+	# print("[KeyBindings] RC type is '%s'." % rcType)
 	if rcType == 14:  # XP1000
 		idx = 3
 	elif rcType == 18:  # F1
