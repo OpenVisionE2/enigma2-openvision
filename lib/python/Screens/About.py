@@ -14,7 +14,7 @@ from Components.Button import Button
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
-from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
+from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl, getBoxType, getBoxBrand, eDVBResourceManager
 from Tools.Directories import fileExists, fileHas, pathExists
 from Components.GUIComponent import GUIComponent
 import skin, os, boxbranding
@@ -405,20 +405,15 @@ class DVBInformation(Screen):
 
 		DVBInformationText += _("DVB API: ") + about.getDVBAPI() + "\n"
 
-		if fileExists("/usr/bin/dvb-fe-tool"):
-			import time
-			try:
-				cmd = 'dvb-fe-tool > /tmp/dvbfetool.txt ; dvb-fe-tool -f 1 >> /tmp/dvbfetool.txt ; cat /proc/bus/nim_sockets >> /tmp/dvbfetool.txt'
-				Console().ePopen(cmd)
-				cmdv = "dvb-fe-tool | grep -o 'DVB API Version [0-9].[0-9]*' | sed 's|[^0-9]*||' > /tmp/dvbapiversion.txt"
-				Console().ePopen(cmdv)
-				time.sleep(0.1)
-			except:
-				pass
+		numSlots = 0
+		dvbfetooltxt = ""
+		nimSlots = nimmanager.getSlotCount()
+		for nim in range(nimSlots):
+			dvbfetooltxt += eDVBResourceManager.getInstance().getFrontendCapabilities(nim)
 
-		if fileExists("/tmp/dvbapiversion.txt"):
-			dvbapiversion = open("/tmp/dvbapiversion.txt", "r").read().strip()
-			DVBInformationText += _("DVB API version: ") + dvbapiversion + "\n"
+		dvbapiversion = ""
+		dvbapiversion = dvbfetooltxt.splitlines()[0].replace("DVB API version: ", "").strip()
+		DVBInformationText += _("DVB API version: ") + dvbapiversion + "\n"
 
 		DVBInformationText += "\n"
 
@@ -434,41 +429,40 @@ class DVBInformation(Screen):
 
 		DVBInformationText += "\n"
 
-		if fileExists("/tmp/dvbfetool.txt"):
-			if fileHas("/tmp/dvbfetool.txt", "DVBC") or fileHas("/tmp/dvbfetool.txt", "DVB-C"):
-				DVBInformationText += _("DVB-C: ") + _("Yes") + "\n"
-			else:
-				DVBInformationText += _("DVB-C: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt", "DVBS") or fileHas("/tmp/dvbfetool.txt", "DVB-S"):
-				DVBInformationText += _("DVB-S: ") + _("Yes") + "\n"
-			else:
-				DVBInformationText += _("DVB-S: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt", "DVBT") or fileHas("/tmp/dvbfetool.txt", "DVB-T"):
-				DVBInformationText += _("DVB-T: ") + _("Yes") + "\n"
-			else:
-				DVBInformationText += _("DVB-T: ") + _("No") + "\n"
+		if "DVBC" in dvbfetooltxt or "DVB-C" in dvbfetooltxt:
+			DVBInformationText += _("DVB-C: ") + _("Yes") + "\n"
+		else:
+			DVBInformationText += _("DVB-C: ") + _("No") + "\n"
+		if "DVBS" in dvbfetooltxt or "DVB-S" in dvbfetooltxt:
+			DVBInformationText += _("DVB-S: ") + _("Yes") + "\n"
+		else:
+			DVBInformationText += _("DVB-S: ") + _("No") + "\n"
+		if "DVBT" in dvbfetooltxt or "DVB-T" in dvbfetooltxt:
+			DVBInformationText += _("DVB-T: ") + _("Yes") + "\n"
+		else:
+			DVBInformationText += _("DVB-T: ") + _("No") + "\n"
 
-			DVBInformationText += "\n"
+		DVBInformationText += "\n"
 
-			if fileHas("/tmp/dvbfetool.txt", "MULTISTREAM"):
-				DVBInformationText += _("Multistream: ") + _("Yes") + "\n"
-			else:
-				DVBInformationText += _("Multistream: ") + _("No") + "\n"
+		if "MULTISTREAM" in dvbfetooltxt:
+			DVBInformationText += _("Multistream: ") + _("Yes") + "\n"
+		else:
+			DVBInformationText += _("Multistream: ") + _("No") + "\n"
 
-			DVBInformationText += "\n"
+		DVBInformationText += "\n"
 
-			if fileHas("/tmp/dvbfetool.txt", "ANNEX_A") or fileHas("/tmp/dvbfetool.txt", "ANNEX-A"):
-				DVBInformationText += _("ANNEX-A: ") + _("Yes") + "\n"
-			else:
-				DVBInformationText += _("ANNEX-A: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt", "ANNEX_B") or fileHas("/tmp/dvbfetool.txt", "ANNEX-B"):
-				DVBInformationText += _("ANNEX-B: ") + _("Yes") + "\n"
-			else:
-				DVBInformationText += _("ANNEX-B: ") + _("No") + "\n"
-			if fileHas("/tmp/dvbfetool.txt", "ANNEX_C") or fileHas("/tmp/dvbfetool.txt", "ANNEX-C"):
-				DVBInformationText += _("ANNEX-C: ") + _("Yes") + "\n"
-			else:
-				DVBInformationText += _("ANNEX-C: ") + _("No") + "\n"
+		if "ANNEX_A" in dvbfetooltxt or "ANNEX-A" in dvbfetooltxt:
+			DVBInformationText += _("ANNEX-A: ") + _("Yes") + "\n"
+		else:
+			DVBInformationText += _("ANNEX-A: ") + _("No") + "\n"
+		if "ANNEX_B" in dvbfetooltxt or "ANNEX-B" in dvbfetooltxt:
+			DVBInformationText += _("ANNEX-B: ") + _("Yes") + "\n"
+		else:
+			DVBInformationText += _("ANNEX-B: ") + _("No") + "\n"
+		if "ANNEX_C" in dvbfetooltxt or "ANNEX-C" in dvbfetooltxt:
+			DVBInformationText += _("ANNEX-C: ") + _("Yes") + "\n"
+		else:
+			DVBInformationText += _("ANNEX-C: ") + _("No") + "\n"
 
 		self["AboutScrollLabel"] = ScrollLabel(DVBInformationText)
 		self["key_red"] = Button(_("Close"))
