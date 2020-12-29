@@ -38,7 +38,8 @@ from Screens.UnhandledKey import UnhandledKey
 from ServiceReference import ServiceReference, isPlayableForCur, hdmiInServiceRef
 from Tools import Notifications, ASCIItranslit
 from Tools.Directories import fileExists, getRecordingFilename, moveFiles
-from Tools.KeyBindings import getKeyDescription
+from Tools.KeyBindings import getKeyBindingKeys, getKeyDescription
+from keyids import KEYFLAGS, KEYIDS, invertKeyIds
 from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB, getBoxBrand, getBoxType
 from time import time, localtime, strftime
 import os
@@ -217,38 +218,40 @@ class InfoBarUnhandledKey:
 		self.checkUnusedTimer = eTimer()
 		self.checkUnusedTimer.callback.append(self.checkUnused)
 		self.onLayoutFinish.append(self.unhandledKeyDialog.hide)
-		eActionMap.getInstance().bindAction('', -maxint -1, self.actionA) #highest prio
-		eActionMap.getInstance().bindAction('', maxint, self.actionB) #lowest prio
-		self.flags = (1<<1)
+		eActionMap.getInstance().bindAction("", -maxint -1, self.actionA)  # Highest priority.
+		eActionMap.getInstance().bindAction("", maxint, self.actionB)  # Lowest priority.
+		self.flags = (1 << 1)
 		self.uflags = 0
+		self.invKeyIds = invertKeyIds()
+		self.sibIgnoreKeys = (
+			KEYIDS["KEY_VOLUMEDOWN"], KEYIDS["KEY_VOLUMEUP"],
+			KEYIDS["KEY_EXIT"], KEYIDS["KEY_OK"],
+			KEYIDS["KEY_UP"], KEYIDS["KEY_DOWN"],
+			KEYIDS["KEY_CHANNELUP"], KEYIDS["KEY_CHANNELDOWN"],
+			KEYIDS["KEY_NEXT"], KEYIDS["KEY_PREVIOUS"]
+		)
 
 	#this function is called on every keypress!
 	def actionA(self, key, flag):
-		try:
-			print('[InfoBarGenerics] KEY: %s %s' % (key, getKeyDescription(key)[0]))
-		except:
-			print('[InfoBarGenerics] KEY: %s' % key)
+		print("[InfoBarGenerics] Key: %s (%s) KeyID='%s' Binding='%s'." % (key, KEYFLAGS[flag], self.invKeyIds.get(key, ""), ", ".join(getKeyDescription(key))))
 		self.unhandledKeyDialog.hide()
 		if self.closeSIB(key) and self.secondInfoBarScreen and self.secondInfoBarScreen.shown:
 			self.secondInfoBarScreen.hide()
 		if flag != 4:
-			if self.flags & (1<<1):
+			if self.flags & (1 << 1):
 				self.flags = self.uflags = 0
-			self.flags |= (1<<flag)
-			if flag == 1: # break
+			self.flags |= (1 << flag)
+			if flag == 1:  # Break.
 				self.checkUnusedTimer.start(0, True)
 		return 0
 
 	def closeSIB(self, key):
-		if key >= 12 and key not in (114, 115, 174, 352, 103, 108, 402, 403, 407, 412):
-			return True
-		else:
-			return False
+		return True if key >= 12 and key not in self.sibIgnoreKeys else False  # (114, 115, 174, 352, 103, 108, 402, 403, 407, 412)
 
 	#this function is only called when no other action has handled this key
 	def actionB(self, key, flag):
 		if flag != 4:
-			self.uflags |= (1<<flag)
+			self.uflags |= (1 << flag)
 
 	def checkUnused(self):
 		if self.flags == self.uflags:
