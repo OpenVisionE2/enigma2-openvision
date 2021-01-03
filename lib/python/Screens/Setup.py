@@ -3,6 +3,7 @@ from os.path import getmtime, join as pathJoin
 from six import PY2
 from xml.etree.cElementTree import ParseError, fromstring, parse
 
+from skin import setups
 from Components.config import ConfigBoolean, ConfigNothing, ConfigSelection, config
 from Components.ConfigList import ConfigListScreen
 from Components.Label import Label
@@ -11,7 +12,8 @@ from Components.SystemInfo import SystemInfo
 from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.Screen import Screen, ScreenSummary
-from Tools.Directories import SCOPE_PLUGINS, SCOPE_SKIN, resolveFilename
+from Tools.Directories import SCOPE_CURRENT_SKIN, SCOPE_PLUGINS, SCOPE_SKIN, resolveFilename
+from Tools.LoadPixmap import LoadPixmap
 
 domSetups = {}
 setupModTimes = {}
@@ -40,6 +42,18 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 		self["footnote"].hide()
 		self["description"] = Label()
 		self.createSetup()
+		defaultSetupImage = setups.get("default", "")
+		setupImage = setups.get(setup, defaultSetupImage)
+		if setupImage:
+			print("[Setup] %s image '%s'." % ("Default" if setupImage is defaultSetupImage else "Setup", setupImage))
+			setupImage = resolveFilename(SCOPE_CURRENT_SKIN, setupImage)
+			self.setupImage = LoadPixmap(setupImage)
+			if self.setupImage:
+				self["setupimage"] = Pixmap()
+			else:
+				print("[Setup] Error: Unable to load menu image '%s'!" % setupImage)
+		else:
+			self.setupImage = None
 		if self.layoutFinished not in self.onLayoutFinish:
 			self.onLayoutFinish.append(self.layoutFinished)
 		if self.selectionChanged not in self["config"].onSelectionChanged:
@@ -143,6 +157,8 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 		return not conditional or eval(conditional)
 
 	def layoutFinished(self):
+		if self.setupImage:
+			self["setupimage"].instance.setPixmap(self.setupImage)
 		if not self["config"]:
 			print("[Setup] No setup items available!")
 
