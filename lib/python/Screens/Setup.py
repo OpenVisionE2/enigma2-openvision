@@ -1,6 +1,7 @@
 from enigma import eEnv
+from os.path import getmtime, join as pathJoin
 from six import PY2
-from xml.etree.cElementTree import parse
+from xml.etree.cElementTree import ParseError, fromstring, parse
 
 from Components.ActionMap import NumberActionMap
 from Components.config import ConfigBoolean, ConfigNothing, ConfigSelection, config
@@ -11,17 +12,10 @@ from Components.SystemInfo import SystemInfo
 from Components.Sources.Boolean import Boolean
 from Components.Sources.StaticText import StaticText
 from Screens.Screen import Screen
+from Tools.Directories import SCOPE_PLUGINS, SCOPE_SKIN, resolveFilename
 
-# FIXME: use resolveFile!
-# Read the setupmenu.
-try:
-	# First we search in the current path.
-	setupFile = open("data/setup.xml", "r")
-except (IOError, OSError) as err:
-	# If not found in the current path, we use the global datadir-path.
-	setupFile = open(eEnv.resolve("${datadir}/enigma2/setup.xml"), "r")
-setupdom = parse(setupFile)
-setupFile.close()
+domSetups = {}
+setupModTimes = {}
 
 
 class Setup(ConfigListScreen, Screen):
@@ -33,7 +27,7 @@ class Setup(ConfigListScreen, Screen):
 		self.skinName = ["setup_" + setup, "Setup"]
 		self.list = []
 		self.forceUpdateList = False
-		xmldata = setupdom.getroot()
+		xmldata = setupDom(setup)
 		for x in xmldata.findall("setup"):
 			if x.get("key") == setup:
 				self.setup = x
@@ -170,14 +164,127 @@ class SetupSummary(Screen):
 		if hasattr(self.parent, "getCurrentDescription") and "description" in self.parent:
 			self.parent["description"].text = self.parent.getCurrentDescription()
 
+
+# Read the setup XML file.
+#
+def setupDom(setup=None, plugin=None):
+	# Constants for checkItems()
+	ROOT_ALLOWED = ("setup", )  # Tags allowed in top level of setupxml entry.
+	ELEMENT_ALLOWED = ("item", "if")  # Tags allowed in top level of setup entry.
+	IF_ALLOWED = ("item", "if", "elif", "else")  # Tags allowed inside <if />.
+	AFTER_ELSE_ALLOWED = ("item", "if")  # Tags allowed after <elif /> or <else />.
+	CHILDREN_ALLOWED = ("setup", "if", )  # Tags that may have children.
+	TEXT_ALLOWED = ("item", )  # Tags that may have non-whitespace text (or tail).
+	KEY_ATTRIBUTES = {  # Tags that have a reference key mandatory attribute.
+		"setup": "key",
+		"item": "text"
+	}
+	MANDATORY_ATTRIBUTES = {  # Tags that have a list of mandatory attributes.
+		"setup": ("key", "title"),
+		"item": ("text", )
+	}
+
+	def checkItems(parentNode, key, allowed=ROOT_ALLOWED, mandatory=MANDATORY_ATTRIBUTES, reference=KEY_ATTRIBUTES):
+		keyText = " in '%s'" % key if key else ""
+		for element in parentNode:
+			if element.tag not in allowed:
+				print("[Setup] Error: Tag '%s' not permitted%s!  (Permitted: '%s')" % (element.tag, keyText, ", ".join(allowed)))
+				continue
+			if mandatory and element.tag in mandatory:
+				valid = True
+				for attrib in mandatory[element.tag]:
+					if element.get(attrib) is None:
+						print("[Setup] Error: Tag '%s'%s does not contain the mandatory '%s' attribute!" % (element.tag, keyText, attrib))
+						valid = False
+				if not valid:
+					continue
+			if element.tag not in TEXT_ALLOWED:
+				if element.text and not element.text.isspace():
+					print("[Setup] Tag '%s'%s contains text '%s'." % (element.tag, keyText, element.text.strip()))
+				if element.tail and not element.tail.isspace():
+					print("[Setup] Tag '%s'%s has trailing text '%s'." % (element.tag, keyText, element.text.strip()))
+			if element.tag not in CHILDREN_ALLOWED and len(element):
+				itemKey = ""
+				if element.tag in reference:
+					itemKey = " (%s)" % element.get(reference[element.tag])
+				print("[Setup] Tag '%s'%s%s contains children where none expected." % (element.tag, itemKey, keyText))
+			if element.tag in CHILDREN_ALLOWED:
+				if element.tag in reference:
+					key = element.get(reference[element.tag])
+				checkItems(element, key, allowed=IF_ALLOWED)
+			elif element.tag == "else":
+				allowed = AFTER_ELSE_ALLOWED  # Another else and elif not permitted after else.
+			elif element.tag == "elif":
+				pass
+
+	setupFileDom = fromstring("<setupxml></setupxml>")
+	setupFile = resolveFilename(SCOPE_PLUGINS, pathJoin(plugin, "setup.xml")) if plugin else resolveFilename(SCOPE_SKIN, "setup.xml")
+	global domSetups, setupModTimes
+	try:
+		modTime = getmtime(setupFile)
+	except (IOError, OSError) as err:
+		print("[Setup] Error: Unable to get '%s' modified time - Error (%d): %s!" % (setupFile, err.errno, err.strerror))
+		if setupFile in domSetups:
+			del domSetups[setupFile]
+		if setupFile in setupModTimes:
+			del setupModTimes[setupFile]
+		return setupFileDom
+	cached = setupFile in domSetups and setupFile in setupModTimes and setupModTimes[setupFile] == modTime
+	print("[Setup] XML%s setup file '%s', using element '%s'%s." % (" cached" if cached else "", setupFile, setup, " from plugin '%s'" % plugin if plugin else ""))
+	if cached:
+		return domSetups[setupFile]
+	try:
+		if setupFile in domSetups:
+			del domSetups[setupFile]
+		if setupFile in setupModTimes:
+			del setupModTimes[setupFile]
+		with open(setupFile, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
+			try:
+				fileDom = parse(fd).getroot()
+				checkItems(fileDom, None)
+				setupFileDom = fileDom
+				domSetups[setupFile] = setupFileDom
+				setupModTimes[setupFile] = modTime
+				for setup in setupFileDom.findall("setup"):
+					key = setup.get("key")
+					if key:  # If there is no key then this element is useless and can be skipped!
+						title = setup.get("title", "").encode("UTF-8", errors="ignore") if PY2 else setup.get("title", "")
+						if title == "":
+							print("[Setup] Error: Setup key '%s' title is missing or blank!" % key)
+							title = "** Setup error: '%s' title is missing or blank!" % key
+						# print("[Setup] DEBUG: XML setup load: key='%s', title='%s'." % (key, setup.get("title", "").encode("UTF-8", errors="ignore")))
+			except ParseError as err:
+				fd.seek(0)
+				content = fd.readlines()
+				line, column = err.position
+				print("[Setup] XML Parse Error: '%s' in '%s'!" % (err, setupFile))
+				data = content[line - 1].replace("\t", " ").rstrip()
+				print("[Setup] XML Parse Error: '%s'" % data)
+				print("[Setup] XML Parse Error: '%s^%s'" % ("-" * column, " " * (len(data) - column - 1)))
+			except Exception as err:
+				print("[Setup] Error: Unable to parse setup data in '%s' - '%s'!" % (setupFile, err))
+	except (IOError, OSError) as err:
+		if err.errno == errno.ENOENT:  # No such file or directory.
+			print("[Setup] Warning: Setup file '%s' does not exist!" % setupFile)
+		else:
+			print("[Setup] Error %d: Opening setup file '%s'! (%s)" % (err.errno, setupFile, err.strerror))
+	except Exception as err:
+		print("[Setup] Error %d: Unexpected error opening setup file '%s'! (%s)" % (err.errno, setupFile, err.strerror))
+	return setupFileDom
+
+# Temporary legacy interface.  Known to be used by the Heinz plugin and possibly others.
+#
+def setupdom(setup=None, plugin=None):
+	return setupDom(setup, plugin)
+
 def getConfigMenuItem(configElement):
-	for item in setupdom.getroot().findall("./setup/item/."):
+	for item in setupDom.findall("./setup/item/."):
 		if item.text == configElement:
 			return _(item.attrib["text"]), eval(configElement)
 	return "", None
 
 def getSetupTitle(id):
-	xmlData = setupdom.getroot()
+	xmlData = setupDom()
 	for x in xmlData.findall("setup"):
 		if x.get("key") == id:
 			if PY2:
