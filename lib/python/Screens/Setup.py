@@ -1,16 +1,15 @@
-from enigma import eEnv
+from gettext import dgettext
 from os.path import getmtime, join as pathJoin
 from six import PY2
 from xml.etree.cElementTree import ParseError, fromstring, parse
 
-from Components.ActionMap import NumberActionMap
 from Components.config import ConfigBoolean, ConfigNothing, ConfigSelection, config
 from Components.ConfigList import ConfigListScreen
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.SystemInfo import SystemInfo
-from Components.Sources.Boolean import Boolean
 from Components.Sources.StaticText import StaticText
+from Screens.HelpMenu import HelpableScreen
 from Screens.Screen import Screen, ScreenSummary
 from Tools.Directories import SCOPE_PLUGINS, SCOPE_SKIN, resolveFilename
 
@@ -18,111 +17,134 @@ domSetups = {}
 setupModTimes = {}
 
 
-class Setup(ConfigListScreen, Screen):
-	def __init__(self, session, setup):
+class Setup(ConfigListScreen, Screen, HelpableScreen):
+	def __init__(self, session, setup, plugin=None, PluginLanguageDomain=None):
 		Screen.__init__(self, session)
-		# For the skin: first try a setup_<setupID>, then Setup.
-		self.skinName = ["setup_" + setup, "Setup"]
+		HelpableScreen.__init__(self)
+		self.setup = setup
+		self.plugin = plugin
+		self.pluginLanguageDomain = PluginLanguageDomain
+		if hasattr(self, "skinName"):
+			if not isinstance(self.skinName, list):
+				self.skinName = [self.skinName]
+		else:
+			self.skinName = []
+		if setup:
+			self.skinName.append("Setup%s" % setup)  # DEBUG: Proposed for new setup screens.
+			self.skinName.append("setup_%s" % setup)
+		self.skinName.append("Setup")
 		self.onChangedEntry = []
 		self.list = []
-		self.forceUpdateList = False
-		xmldata = setupDom(setup)
-		for x in xmldata.findall("setup"):
-			if x.get("key") == setup:
-				self.setup = x
-				break
-		if PY2:
-			self.setupTitle = self.setup.get("title", "").encode("UTF-8")
-		else:
-			self.setupTitle = self.setup.get("title", "")
-		self.seperation = int(self.setup.get("separation", "0"))
-		# Check for list.entries > 0 else self.close.
-		self["key_red"] = StaticText(_("Cancel"))
-		self["key_green"] = StaticText(_("OK"))
+		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry, fullUI=True)
 		self["footnote"] = Label()
 		self["footnote"].hide()
-		self["description"] = Label("")
-		self["HelpWindow"] = Pixmap()
-		self["HelpWindow"].hide()
-		self["VKeyIcon"] = Boolean(False)
-		self["actions"] = NumberActionMap(["SetupActions", "MenuActions"], {
-			"cancel": self.keyCancel,
-			"save": self.keySave,
-			"menu": self.closeRecursive,
-		}, -2)
-		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry)
-		self.createSetupList()
+		self["description"] = Label()
+		self.createSetup()
+		if self.layoutFinished not in self.onLayoutFinish:
+			self.onLayoutFinish.append(self.layoutFinished)
 		if self.selectionChanged not in self["config"].onSelectionChanged:
 			self["config"].onSelectionChanged.append(self.selectionChanged)
-		self.setTitle(_(self.setupTitle))
-
-	def createSetupList(self):
-		currentItem = self["config"].getCurrent()
-		self.list = []
-		for x in self.setup:
-			if not x.tag:
-				continue
-			if x.tag == "item":
-				itemLevel = int(x.get("level", 0))
-				itemTuxTxtLevel = int(x.get("tt_level", 0))
-				if itemLevel > config.usage.setup_level.index:
-					continue
-				if (itemTuxTxtLevel == 1) and (config.usage.tuxtxt_font_and_res.value != "expert_mode"):
-					continue
-				requires = x.get("requires")
-				if requires:
-					meets = True
-					for requires in requires.split(";"):
-						negate = requires.startswith("!")
-						if negate:
-							requires = requires[1:]
-						if requires.startswith("config."):
-							try:
-								item = eval(requires)
-								SystemInfo[requires] = True if item.value and item.value not in ("0", "False", "false", "off") else False
-							except AttributeError:
-								print("[Setup] Unknown 'requires' config element: '%s'." % requires)
-						if requires:
-							if not SystemInfo.get(requires, False):
-								if not negate:
-									meets = False
-									break
-							else:
-								if negate:
-									meets = False
-									break
-					if not meets:
-						continue
-				if PY2:
-					itemText = _(x.get("text", "??").encode("UTF-8"))
-					itemDescription = _(x.get("description", " ").encode("UTF-8"))
-				else:
-					itemText = _(x.get("text", "??"))
-					itemDescription = _(x.get("description", " "))
-				b = eval(x.text or "")
-				if b == "":
-					continue
-				# Add to configlist.
-				item = b
-				# The first b is the item itself, ignored by the configList.
-				# The second one is converted to string.
-				if not isinstance(item, ConfigNothing):
-					self.list.append((itemText, item, itemDescription))
-		self["config"].setList(self.list)
-		if config.usage.sort_settings.value:
-			self["config"].list.sort()
-		self.moveToItem(currentItem)
-
-	def moveToItem(self, item):
-		if item != self["config"].getCurrent():
-			self["config"].setCurrentIndex(self.getIndexFromItem(item))
-
-	def getIndexFromItem(self, item):
-		return self["config"].list.index(item) if item in self["config"].list else 0
 
 	def changedEntry(self):
-		if isinstance(self["config"].getCurrent()[1], ConfigBoolean) or isinstance(self["config"].getCurrent()[1], ConfigSelection):
-			self.createSetupList()
+		if isinstance(self["config"].getCurrent()[1], (ConfigBoolean, ConfigSelection)):
+			self.createSetup()
+
+	def createSetup(self):
+		oldList = self.list
+		self.switch = False
+		self.list = []
+		title = None
+		xmlData = setupDom(self.setup, self.plugin)
+		for setup in xmlData.findall("setup"):
+			if setup.get("key") == self.setup:
+				self.addItems(setup)
+				skin = setup.get("skin", None)
+				if skin and skin != "":
+					self.skinName.insert(0, skin)
+				title = setup.get("title", None).encode("UTF-8", errors="ignore") if PY2 else setup.get("title", None)
+				# If this break is executed then there can only be one setup tag with this key.
+				# This may not be appropriate if conditional setup blocks become available.
+				break
+		self.setTitle(_(title) if title and title != "" else _("Setup"))
+		if self.list != oldList or self.switch:
+			print("[Setup] DEBUG: Config list has changed!")
+			currentItem = self["config"].getCurrent()
+			self["config"].setList(self.list)
+			if config.usage.sort_settings.value:
+				self["config"].list.sort()
+			self.moveToItem(currentItem)
+		else:
+			print("[Setup] DEBUG: Config list is unchanged!")
+
+	def addItems(self, parentNode, including=True):
+		for element in parentNode:
+			if not element.tag:
+				continue
+			if element.tag in ("elif", "else") and including:
+				break  # End of succesful if/elif branch - short-circuit rest of children.
+			include = self.includeElement(element)
+			if element.tag == "item":
+				if including and include:
+					self.addItem(element)
+			elif element.tag == "if":
+				if including:
+					self.addItems(element, including=include)
+			elif element.tag == "elif":
+				including = include
+			elif element.tag == "else":
+				including = True
+
+	def addItem(self, element):
+		if PY2:
+			if self.pluginLanguageDomain:
+				itemText = dgettext(self.pluginLanguageDomain, element.get("text", "??").encode("UTF-8", errors="ignore"))
+				itemDescription = dgettext(self.pluginLanguageDomain, element.get("description", " ").encode("UTF-8", errors="ignore"))
+			else:
+				itemText = _(element.get("text", "??").encode("UTF-8", errors="ignore"))
+				itemDescription = _(element.get("description", " ").encode("UTF-8", errors="ignore"))
+		else:
+			if self.pluginLanguageDomain:
+				itemText = dgettext(self.pluginLanguageDomain, element.get("text", "??"))
+				itemDescription = dgettext(self.pluginLanguageDomain, element.get("description", " "))
+			else:
+				itemText = _(element.get("text", "??"))
+				itemDescription = _(element.get("description", " "))
+		itemText = itemText.replace("%s %s", "%s %s" % (SystemInfo["MachineBrand"], SystemInfo["MachineName"]))
+		itemDescription = itemDescription.replace("%s %s", "%s %s" % (SystemInfo["MachineBrand"], SystemInfo["MachineName"]))
+		item = eval(element.text or "")
+		if item != "" and not isinstance(item, ConfigNothing):
+			itemDefault = item.toDisplayString(item.default)
+			itemDescription = _("%s  (Default: %s)") % (itemDescription, itemDefault) if itemDescription and itemDescription != " " else _("Default: '%s'.") % itemDefault
+			self.list.append((itemText, item, itemDescription))  # Add the item to the config list.
+		if item is config.usage.boolean_graphic:
+			self.switch = True
+
+	def includeElement(self, element):
+		itemLevel = int(element.get("level", 0))
+		if itemLevel > config.usage.setup_level.index:  # The item is higher than the current setup level.
+			return False
+		itemTuxTxtLevel = int(element.get("tt_level", 0))  # DEBUG: This is an OpenVision only item!!!
+		if (itemTuxTxtLevel == 1) and (config.usage.tuxtxt_font_and_res.value != "expert_mode"):
+			return False
+		requires = element.get("requires")
+		if requires:
+			for require in requires.split(";"):
+				negate = require.startswith("!")
+				if negate:
+					require = require[1:]
+				if require.startswith("config."):
+					item = eval(require)
+					result = bool(item.value and item.value.lower() not in ("0", "disable", "false", "no", "off"))
+				else:
+					result = bool(SystemInfo.get(require, False))
+				if require and negate == result:  # The item requirements are not met.
+					return False
+		conditional = element.get("conditional")
+		return not conditional or eval(conditional)
+
+	def layoutFinished(self):
+		if not self["config"]:
+			print("[Setup] No setup items available!")
 
 	def selectionChanged(self):
 		if self["config"]:
@@ -145,6 +167,13 @@ class Setup(ConfigListScreen, Screen):
 
 	def getFootnote(self):
 		return self["footnote"].text
+
+	def moveToItem(self, item):
+		if item != self["config"].getCurrent():
+			self["config"].setCurrentIndex(self.getIndexFromItem(item))
+
+	def getIndexFromItem(self, item):
+		return self["config"].list.index(item) if item in self["config"].list else 0
 
 	def createSummary(self):
 		return SetupSummary
