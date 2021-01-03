@@ -11,7 +11,7 @@ from Components.Pixmap import Pixmap
 from Components.SystemInfo import SystemInfo
 from Components.Sources.Boolean import Boolean
 from Components.Sources.StaticText import StaticText
-from Screens.Screen import Screen
+from Screens.Screen import Screen, ScreenSummary
 from Tools.Directories import SCOPE_PLUGINS, SCOPE_SKIN, resolveFilename
 
 domSetups = {}
@@ -23,6 +23,7 @@ class Setup(ConfigListScreen, Screen):
 		Screen.__init__(self, session)
 		# For the skin: first try a setup_<setupID>, then Setup.
 		self.skinName = ["setup_" + setup, "Setup"]
+		self.onChangedEntry = []
 		self.list = []
 		self.forceUpdateList = False
 		xmldata = setupDom(setup)
@@ -38,6 +39,8 @@ class Setup(ConfigListScreen, Screen):
 		# Check for list.entries > 0 else self.close.
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("OK"))
+		self["footnote"] = Label()
+		self["footnote"].hide()
 		self["description"] = Label("")
 		self["HelpWindow"] = Pixmap()
 		self["HelpWindow"].hide()
@@ -49,7 +52,8 @@ class Setup(ConfigListScreen, Screen):
 		}, -2)
 		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry)
 		self.createSetupList()
-		self["config"].onSelectionChanged.append(self.__onSelectionChanged)
+		if self.selectionChanged not in self["config"].onSelectionChanged:
+			self["config"].onSelectionChanged.append(self.selectionChanged)
 		self.setTitle(_(self.setupTitle))
 
 	def createSetupList(self):
@@ -120,44 +124,63 @@ class Setup(ConfigListScreen, Screen):
 		if isinstance(self["config"].getCurrent()[1], ConfigBoolean) or isinstance(self["config"].getCurrent()[1], ConfigSelection):
 			self.createSetupList()
 
-	def __onSelectionChanged(self):
-		if self.forceUpdateList:
-			self["config"].onSelectionChanged.remove(self.__onSelectionChanged)
-			self.createSetupList()
-			self["config"].onSelectionChanged.append(self.__onSelectionChanged)
-			self.forceUpdateList = False
-		if not (isinstance(self["config"].getCurrent()[1], ConfigBoolean) or isinstance(self["config"].getCurrent()[1], ConfigSelection)):
-			self.forceUpdateList = True
+	def selectionChanged(self):
+		if self["config"]:
+			self.setFootnote(None)
+			self["description"].text = self.getCurrentDescription()
+		else:
+			self["description"].text = _("There are no items currently available for this screen.")
+
+	def setFootnote(self, footnote):
+		if footnote is None:
+			if self.getCurrentEntry().endswith("*"):
+				self["footnote"].text = _("* = Restart Required")
+				self["footnote"].show()
+			else:
+				self["footnote"].text = ""
+				self["footnote"].hide()
+		else:
+			self["footnote"].text = footnote
+			self["footnote"].show()
+
+	def getFootnote(self):
+		return self["footnote"].text
 
 	def createSummary(self):
 		return SetupSummary
 
 
-class SetupSummary(Screen):
+class SetupSummary(ScreenSummary):
 	def __init__(self, session, parent):
-		Screen.__init__(self, session, parent=parent)
+		ScreenSummary.__init__(self, session, parent=parent)
+		self["entry"] = StaticText("")  # DEBUG: Proposed for new summary screens.
+		self["value"] = StaticText("")  # DEBUG: Proposed for new summary screens.
 		self["SetupTitle"] = StaticText(parent.getTitle())
 		self["SetupEntry"] = StaticText("")
 		self["SetupValue"] = StaticText("")
-		self.onShow.append(self.addWatcher)
-		self.onHide.append(self.removeWatcher)
+		if self.addWatcher not in self.onShow:
+			self.onShow.append(self.addWatcher)
+		if self.removeWatcher not in self.onHide:
+			self.onHide.append(self.removeWatcher)
 
 	def addWatcher(self):
-		if hasattr(self.parent, "onChangedEntry"):
+		if self.selectionChanged not in self.parent.onChangedEntry:
 			self.parent.onChangedEntry.append(self.selectionChanged)
+		if self.selectionChanged not in self.parent["config"].onSelectionChanged:
 			self.parent["config"].onSelectionChanged.append(self.selectionChanged)
-			self.selectionChanged()
+		self.selectionChanged()
 
 	def removeWatcher(self):
-		if hasattr(self.parent, "onChangedEntry"):
+		if self.selectionChanged in self.parent.onChangedEntry:
 			self.parent.onChangedEntry.remove(self.selectionChanged)
+		if self.selectionChanged in self.parent["config"].onSelectionChanged:
 			self.parent["config"].onSelectionChanged.remove(self.selectionChanged)
 
 	def selectionChanged(self):
+		self["entry"].text = self.parent.getCurrentEntry()  # DEBUG: Proposed for new summary screens.
+		self["value"].text = self.parent.getCurrentValue()  # DEBUG: Proposed for new summary screens.
 		self["SetupEntry"].text = self.parent.getCurrentEntry()
 		self["SetupValue"].text = self.parent.getCurrentValue()
-		if hasattr(self.parent, "getCurrentDescription") and "description" in self.parent:
-			self.parent["description"].text = self.parent.getCurrentDescription()
 
 
 # Read the setup XML file.
