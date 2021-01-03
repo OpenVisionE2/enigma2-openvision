@@ -73,7 +73,6 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 			self.skinName.append("Setup%s" % setup)  # DEBUG: Proposed for new setup screens.
 			self.skinName.append("setup_%s" % setup)
 		self.skinName.append("Setup")
-		self.onChangedEntry = []
 		self.list = []
 		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry, fullUI=True)
 		self["footnote"] = Label()
@@ -378,19 +377,20 @@ def setupDom(setup=None, plugin=None):
 def setupdom(setup=None, plugin=None):
 	return setupDom(setup, plugin)
 
+# Only used in AudioSelection screen...
+#
 def getConfigMenuItem(configElement):
 	for item in setupDom.findall("./setup/item/."):
 		if item.text == configElement:
 			return _(item.attrib["text"]), eval(configElement)
 	return "", None
 
+# Temporary legacy interface.  Only used in Menu screen.
+#
 def getSetupTitle(id):
 	xmlData = setupDom()
 	for x in xmlData.findall("setup"):
 		if x.get("key") == id:
-			if PY2:
-				return x.get("title", "").encode("UTF-8")
-			else:
-				return x.get("title", "")
+			return x.get("title", "").encode("UTF-8") if PY2 else x.get("title", "")
 	print("[Setup] Error: Unknown setup id '%s'!" % repr(id))
 	return "Unknown setup id '%s'!" % repr(id)
