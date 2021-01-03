@@ -132,9 +132,6 @@ class Setup(ConfigListScreen, Screen):
 	def createSummary(self):
 		return SetupSummary
 
-	def run(self):
-		self.keySave()
-
 
 class SetupSummary(Screen):
 	def __init__(self, session, parent):
