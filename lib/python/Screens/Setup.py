@@ -19,8 +19,6 @@ setupModTimes = {}
 
 
 class Setup(ConfigListScreen, Screen):
-	ALLOW_SUSPEND = True
-
 	def __init__(self, session, setup):
 		Screen.__init__(self, session)
 		# For the skin: first try a setup_<setupID>, then Setup.
