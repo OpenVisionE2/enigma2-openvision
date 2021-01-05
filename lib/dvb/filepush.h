@@ -102,6 +102,7 @@ protected:
 	unsigned int m_overflow_count;
 private:
 	int m_stop;
+	bool m_stopped;
 	eFixedMessagePump<int> m_messagepump;
 #ifdef HAVE_RASPBERRYPI
 	ePtr<iTsSource> m_source;

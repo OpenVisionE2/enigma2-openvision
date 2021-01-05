@@ -379,7 +379,7 @@ RESULT eStaticServiceDVBPVRInformation::getName(const eServiceReference &ref, st
 						: name.find(" - ", dash2+1);
 			std::size_t dashlast = name.rfind(" - ");
 
-			struct tm stm = {0};
+			struct tm stm{};
 			std::string descr = "";
 
 			name.erase(name.size()-3);

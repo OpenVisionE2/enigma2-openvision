@@ -33,7 +33,7 @@ static time_t getmtime(const std::string &basename)
 static off_t fileSize(const std::string &basename)
 {
 	off_t filesize = 0;
-	char buf[8];
+	char buf[16];
 	std::string splitname;
 	struct stat64 s;
 

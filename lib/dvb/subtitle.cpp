@@ -58,10 +58,7 @@ void eDVBSubtitleParser::subtitle_process_line(subtitle_region *region, subtitle
 		len = region->width - x;
 	if (len < 0 || y >= region->height)
 		return;
-	if(subcentered && region->region_id && line < 3)
-		for (int i = 0; i < len; i++ )
-			if( data[i] <= 8)
-				data[i] = 0;
+
 	memcpy((uint8_t*)region->buffer->surface->data + region->buffer->surface->stride * y + x, data, len);
 }
 
@@ -976,7 +973,7 @@ void eDVBSubtitleParser::subtitle_redraw(int page_id)
 								}
 								break;
 							}
-							// fallthrough !!
+							[[fallthrough]];
 						case 16: // b1 == 0 && b5 == 1
 							if (i & 128) // R = 33% x b8
 								palette[i].r = 0x55;
@@ -997,7 +994,7 @@ void eDVBSubtitleParser::subtitle_redraw(int page_id)
 							palette[i].r =
 							palette[i].g =
 							palette[i].b = 0x80; // 50%
-							// fall through!!
+							[[fallthrough]];
 						case 17: // b1 == 1 && b5 == 1
 							if (i & 128) // R += 16.7% x b8
 								palette[i].r += 0x2A;

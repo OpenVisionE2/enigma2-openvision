@@ -435,7 +435,7 @@ eEPGCache::eEPGCache()
 				op += 3600;
 			if (eitpid != 0)
 			{
-				sprintf (optsidonid, "%x%04x%04x", op, tsid, onid);
+				snprintf(optsidonid, sizeof(optsidonid) - 1, "%x%04x%04x", op, tsid, onid);
 				customeitpids[std::string(optsidonid)] = eitpid;
 				eDebug("[eEPGCache] %s --> %#x", optsidonid, eitpid);
 			}
@@ -1578,7 +1578,7 @@ void eEPGCache::save()
 		tmp*=st.f_bsize;
 		if ( tmp < (eventData::CacheSize*12)/10 ) // 20% overhead
 		{
-			eDebug("[eEPGCache] not enough free space at '%s' %zu bytes available but %u needed", buf, tmp, (eventData::CacheSize*12)/10);
+			eDebug("[eEPGCache] not enough free space at '%s' %jd bytes available but %u needed", buf, (intmax_t)tmp, (eventData::CacheSize*12)/10);
 			fclose(f);
 			free(buf);
 			return;
@@ -4438,6 +4438,7 @@ void eEPGCache::PMTready(eDVBServicePMTHandler *pmthandler)
 								break;
 						}
 					}
+					break;
 				case 0x05: // private
 					for (DescriptorConstIterator desc = (*es)->getDescriptors()->begin();
 						desc != (*es)->getDescriptors()->end(); ++desc)
