@@ -211,6 +211,32 @@ class SkinError(Exception):
 	def __str__(self):
 		return "[Skin] {%s}: %s!  Please contact the skin's author!" % (config.skin.primary_skin.value, self.msg)
 
+def getParentSize(object, desktop):
+	if object:
+		parent = object.getParent()
+		# For some widgets (e.g. ScrollLabel) the skin attributes are applied to a
+		# child widget, instead of to the widget itself.  In that case, the parent
+		# we have here is not the real parent, but it is the main widget.  We have
+		# to go one level higher to get the actual parent.  We can detect this
+		# because the 'parent' will not have a size yet.  (The main widget's size
+		# will be calculated internally, as soon as the child widget has parsed the
+		# skin attributes.)
+		if parent and parent.size().isEmpty():
+			parent = parent.getParent()
+		if parent:
+			return parent.size()
+		elif desktop:
+			return desktop.size()  # Widget has no parent, use desktop size instead for relative coordinates.
+	return eSize()
+
+def parseColor(s):
+	if s[0] != "#":
+		try:
+			return colors[s]
+		except KeyError:
+			raise SkinError("Color '%s' must be #aarrggbb or valid named color" % s)
+	return gRGB(int(s[1:], 0x10))
+
 # Convert a coordinate string into a number.  Used to convert object position and
 # size attributes into a number.
 #    s is the input string.
@@ -271,39 +297,6 @@ def parseCoordinate(s, e, size=0, font=None):
 	# print("[Skin] DEBUG: parseCoordinate s='%s', e='%s', size=%s, font='%s', val='%s'." % (s, e, size, font, val))
 	return val
 
-def getParentSize(object, desktop):
-	if object:
-		parent = object.getParent()
-		# For some widgets (e.g. ScrollLabel) the skin attributes are applied to a
-		# child widget, instead of to the widget itself.  In that case, the parent
-		# we have here is not the real parent, but it is the main widget.  We have
-		# to go one level higher to get the actual parent.  We can detect this
-		# because the 'parent' will not have a size yet.  (The main widget's size
-		# will be calculated internally, as soon as the child widget has parsed the
-		# skin attributes.)
-		if parent and parent.size().isEmpty():
-			parent = parent.getParent()
-		if parent:
-			return parent.size()
-		elif desktop:
-			return desktop.size()  # Widget has no parent, use desktop size instead for relative coordinates.
-	return eSize()
-
-def parseValuePair(s, scale, object=None, desktop=None, size=None):
-	x, y = s.split(",")
-	parentsize = eSize()
-	if object and ("c" in x or "c" in y or "e" in x or "e" in y or "%" in x or "%" in y):  # Need parent size for ce%
-		parentsize = getParentSize(object, desktop)
-	xval = parseCoordinate(x, parentsize.width(), size and size.width() or 0)
-	yval = parseCoordinate(y, parentsize.height(), size and size.height() or 0)
-	return (xval * scale[0][0] / scale[0][1], yval * scale[1][0] / scale[1][1])
-
-def parsePosition(s, scale, object=None, desktop=None, size=None):
-	return ePoint(*parseValuePair(s, scale, object, desktop, size))
-
-def parseSize(s, scale, object=None, desktop=None):
-	return eSize(*[max(0,x) for x in parseValuePair(s, scale, object, desktop)])
-
 def parseFont(s, scale=((1, 1), (1, 1))):
 	if ";" in s:
 		name, size = s.split(";")
@@ -332,14 +325,6 @@ def parseFont(s, scale=((1, 1), (1, 1))):
 			size = f[1] if size is None else size
 	return gFont(name, int(size) * scale[0][0] / scale[0][1])
 
-def parseColor(s):
-	if s[0] != "#":
-		try:
-			return colors[s]
-		except KeyError:
-			raise SkinError("Color '%s' must be #aarrggbb or valid named color" % s)
-	return gRGB(int(s[1:], 0x10))
-
 def parseParameter(s):
 	"""This function is responsible for parsing parameters in the skin, it can parse integers, floats, hex colors, hex integers, named colors, fonts and strings."""
 	if s[0] == "*":  # String.
@@ -357,6 +342,21 @@ def parseParameter(s):
 		return [font, int(size)]
 	else:  # Integer.
 		return int(s)
+
+def parsePosition(s, scale, object=None, desktop=None, size=None):
+	return ePoint(*parseValuePair(s, scale, object, desktop, size))
+
+def parseSize(s, scale, object=None, desktop=None):
+	return eSize(*[max(0,x) for x in parseValuePair(s, scale, object, desktop)])
+
+def parseValuePair(s, scale, object=None, desktop=None, size=None):
+	x, y = s.split(",")
+	parentsize = eSize()
+	if object and ("c" in x or "c" in y or "e" in x or "e" in y or "%" in x or "%" in y):  # Need parent size for ce%
+		parentsize = getParentSize(object, desktop)
+	xval = parseCoordinate(x, parentsize.width(), size and size.width() or 0)
+	yval = parseCoordinate(y, parentsize.height(), size and size.height() or 0)
+	return (xval * scale[0][0] / scale[0][1], yval * scale[1][0] / scale[1][1])
 
 def loadPixmap(path, desktop):
 	option = path.find("#")
@@ -420,20 +420,15 @@ class AttributeParser:
 		for attrib, value in attrs:
 			self.applyOne(attrib, value)
 
-	def conditional(self, value):
-		pass
-
-	def objectTypes(self, value):
-		pass
-
-	def position(self, value):
-		self.guiObject.move(ePoint(*value) if isinstance(value, tuple) else parsePosition(value, self.scaleTuple, self.guiObject, self.desktop, self.guiObject.csize()))
-
-	def size(self, value):
-		self.guiObject.resize(eSize(*value) if isinstance(value, tuple) else parseSize(value, self.scaleTuple, self.guiObject, self.desktop))
-
-	def animationPaused(self, value):
-		pass
+	def alphatest(self, value):
+		try:
+			self.guiObject.setAlphatest({
+				"on": 1,
+				"off": 0,
+				"blend": 2
+			}[value])
+		except KeyError:
+			print("[skin] Error: Invalid alphatest '%s'!  Must be one of 'on', 'off' or 'blend'." % value)
 
 	def animationMode(self, value):
 		try:
@@ -448,58 +443,93 @@ class AttributeParser:
 		except KeyError:
  			print("[skin] Error: Invalid animationMode '%s'!  Must be one of 'disable', 'off', 'offshow', 'offhide', 'onshow' or 'onhide'." % value)
 
-	def title(self, value):
-		self.guiObject.setTitle(_(value))
+	def animationPaused(self, value):
+		pass
 
-	def text(self, value):
-		self.guiObject.setText(_(value))
+	def backgroundColor(self, value):
+		self.guiObject.setBackgroundColor(parseColor(value))
 
-	def font(self, value):
-		self.guiObject.setFont(parseFont(value, self.scaleTuple))
+	def backgroundColorSelected(self, value):
+		self.guiObject.setBackgroundColorSelected(parseColor(value))
 
-	def secondfont(self, value):
-		self.guiObject.setSecondFont(parseFont(value, self.scaleTuple))
+	def backgroundCrypted(self, value):
+		self.guiObject.setBackgroundColor(parseColor(value))
 
-	def zPosition(self, value):
-		self.guiObject.setZPosition(int(value))
+	def backgroundEncrypted(self, value):
+		self.guiObject.setBackgroundColor(parseColor(value))
 
-	def itemHeight(self, value):
-		self.guiObject.setItemHeight(int(value))
-
-	def pixmap(self, value):
-		self.guiObject.setPixmap(loadPixmap(value, self.desktop))
+	def backgroundNotCrypted(self, value):
+		self.guiObject.setBackgroundColor(parseColor(value))
 
 	def backgroundPixmap(self, value):
 		self.guiObject.setBackgroundPicture(loadPixmap(value, self.desktop))
 
-	def selectionPixmap(self, value):
-		self.guiObject.setSelectionPicture(loadPixmap(value, self.desktop))
+	def borderColor(self, value):
+		self.guiObject.setBorderColor(parseColor(value))
 
-	def sliderPixmap(self, value):
-		self.guiObject.setSliderPicture(loadPixmap(value, self.desktop))
+	def borderWidth(self, value):
+		self.guiObject.setBorderWidth(int(value))
 
-	def scrollbarbackgroundPixmap(self, value):
-		self.guiObject.setScrollbarBackgroundPicture(loadPixmap(value, self.desktop))
+	def colposition(self, value):
+		pass
 
-	def scrollbarSliderPicture(self, value):  # For compatibility same as sliderPixmap.
-		self.guiObject.setSliderPicture(loadPixmap(value, self.desktop))
+	def conditional(self, value):
+		pass
 
-	def scrollbarBackgroundPicture(self, value):  # For compatibility same as scrollbarbackgroundPixmap.
-		self.guiObject.setScrollbarBackgroundPicture(loadPixmap(value, self.desktop))
+	def dividechar(self, value):
+		pass
 
-	def alphatest(self, value):
+	def enableWrapAround(self, value):
+		value = True if value.lower() in ("1", "enabled", "enablewraparound", "on", "true", "yes") else False
+		self.guiObject.setWrapAround(value)
+
+	def flags(self, value):
+		flags = value.split(",")
+		for f in flags:
+			try:
+				fv = eWindow.__dict__[f]
+				self.guiObject.setFlag(fv)
+			except KeyError:
+				print("[skin] Error: Invalid flag '%s'!" % f)
+
+	def font(self, value):
+		self.guiObject.setFont(parseFont(value, self.scaleTuple))
+
+	def foregroundColor(self, value):
+		self.guiObject.setForegroundColor(parseColor(value))
+
+	def foregroundColorSelected(self, value):
+		self.guiObject.setForegroundColorSelected(parseColor(value))
+
+	def foregroundCrypted(self, value):
+		self.guiObject.setForegroundColor(parseColor(value))
+
+	def foregroundEncrypted(self, value):
+		self.guiObject.setForegroundColor(parseColor(value))
+
+	def foregroundNotCrypted(self, value):
+		self.guiObject.setForegroundColor(parseColor(value))
+
+	def halign(self, value):
 		try:
-			self.guiObject.setAlphatest({
-				"on": 1,
-				"off": 0,
-				"blend": 2
+			self.guiObject.setHAlign({
+				"left": self.guiObject.alignLeft,
+				"center": self.guiObject.alignCenter,
+				"right": self.guiObject.alignRight,
+				"block": self.guiObject.alignBlock
 			}[value])
 		except KeyError:
-			print("[skin] Error: Invalid alphatest '%s'!  Must be one of 'on', 'off' or 'blend'." % value)
+			print("[skin] Error: Invalid halign '%s'!  Must be one of 'left', 'center', 'right' or 'block'." % value)
 
-	def scale(self, value):
-		value = 1 if value.lower() in ("1", "enabled", "on", "scale", "true", "yes") else 0
-		self.guiObject.setScale(value)
+	def itemHeight(self, value):
+		self.guiObject.setItemHeight(int(value))
+
+	def noWrap(self, value):
+		value = 1 if value.lower() in ("1", "enabled", "nowrap", "on", "true", "yes") else 0
+		self.guiObject.setNoWrap(value)
+
+	def objectTypes(self, value):
+		pass
 
 	def orientation(self, value):  # Used by eSlider.
 		try:
@@ -514,96 +544,30 @@ class AttributeParser:
 		except KeyError:
 			print("[skin] Error: Invalid orientation '%s'!  Must be one of 'orVertical', 'orTopToBottom', 'orBottomToTop', 'orHorizontal', 'orLeftToRight' or 'orRightToLeft'." % value)
 
-	def valign(self, value):
-		try:
-			self.guiObject.setVAlign({
-				"top": self.guiObject.alignTop,
-				"center": self.guiObject.alignCenter,
-				"bottom": self.guiObject.alignBottom
-			}[value])
-		except KeyError:
-			print("[skin] Error: Invalid valign '%s'!  Must be one of 'top', 'center' or 'bottom'." % value)
+	def OverScan(self, value):
+		self.guiObject.setOverscan(value)
 
-	def halign(self, value):
-		try:
-			self.guiObject.setHAlign({
-				"left": self.guiObject.alignLeft,
-				"center": self.guiObject.alignCenter,
-				"right": self.guiObject.alignRight,
-				"block": self.guiObject.alignBlock
-			}[value])
-		except KeyError:
-			print("[skin] Error: Invalid halign '%s'!  Must be one of 'left', 'center', 'right' or 'block'." % value)
+	def pixmap(self, value):
+		self.guiObject.setPixmap(loadPixmap(value, self.desktop))
 
-	def textOffset(self, value):
-		x, y = value.split(",")
-		self.guiObject.setTextOffset(ePoint(int(x) * self.scaleTuple[0][0] / self.scaleTuple[0][1], int(y) * self.scaleTuple[1][0] / self.scaleTuple[1][1]))
+	def pointer(self, value):
+		(name, pos) = value.split(":")
+		pos = parsePosition(pos, self.scaleTuple)
+		ptr = loadPixmap(name, self.desktop)
+		self.guiObject.setPointer(0, ptr, pos)
 
-	def flags(self, value):
-		flags = value.split(",")
-		for f in flags:
-			try:
-				fv = eWindow.__dict__[f]
-				self.guiObject.setFlag(fv)
-			except KeyError:
-				print("[skin] Error: Invalid flag '%s'!" % f)
+	def position(self, value):
+		self.guiObject.move(ePoint(*value) if isinstance(value, tuple) else parsePosition(value, self.scaleTuple, self.guiObject, self.desktop, self.guiObject.csize()))
 
-	def backgroundColor(self, value):
-		self.guiObject.setBackgroundColor(parseColor(value))
+	def scale(self, value):
+		value = 1 if value.lower() in ("1", "enabled", "on", "scale", "true", "yes") else 0
+		self.guiObject.setScale(value)
 
-	def backgroundColorSelected(self, value):
-		self.guiObject.setBackgroundColorSelected(parseColor(value))
+	def scrollbarbackgroundPixmap(self, value):
+		self.guiObject.setScrollbarBackgroundPicture(loadPixmap(value, self.desktop))
 
-	def foregroundColor(self, value):
-		self.guiObject.setForegroundColor(parseColor(value))
-
-	def foregroundColorSelected(self, value):
-		self.guiObject.setForegroundColorSelected(parseColor(value))
-
-	def foregroundNotCrypted(self, value):
-		self.guiObject.setForegroundColor(parseColor(value))
-
-	def backgroundNotCrypted(self, value):
-		self.guiObject.setBackgroundColor(parseColor(value))
-
-	def foregroundCrypted(self, value):
-		self.guiObject.setForegroundColor(parseColor(value))
-
-	def backgroundCrypted(self, value):
-		self.guiObject.setBackgroundColor(parseColor(value))
-
-	def foregroundEncrypted(self, value):
-		self.guiObject.setForegroundColor(parseColor(value))
-
-	def backgroundEncrypted(self, value):
-		self.guiObject.setBackgroundColor(parseColor(value))
-
-	def shadowColor(self, value):
-		self.guiObject.setShadowColor(parseColor(value))
-
-	def selectionDisabled(self, value):
-		self.guiObject.setSelectionEnable(0)
-
-	def transparent(self, value):
-		self.guiObject.setTransparent(int(value))
-
-	def borderColor(self, value):
-		self.guiObject.setBorderColor(parseColor(value))
-
-	def borderWidth(self, value):
-		self.guiObject.setBorderWidth(int(value))
-
-	def scrollbarSliderBorderWidth(self, value):
-		self.guiObject.setScrollbarSliderBorderWidth(int(value))
-
-	def scrollbarWidth(self, value):
-		self.guiObject.setScrollbarWidth(int(value))
-
-	def scrollbarSliderBorderColor(self, value):
-		self.guiObject.setSliderBorderColor(parseColor(value))
-
-	def scrollbarSliderForegroundColor(self, value):
-		self.guiObject.setSliderForegroundColor(parseColor(value))
+	def scrollbarBackgroundPicture(self, value):  # For compatibility same as scrollbarbackgroundPixmap.
+		self.guiObject.setScrollbarBackgroundPicture(loadPixmap(value, self.desktop))
 
 	def scrollbarMode(self, value):
 		try:
@@ -616,18 +580,23 @@ class AttributeParser:
 		except KeyError:
 			print("[skin] Error: Invalid scrollbarMode '%s'!  Must be one of 'showOnDemand', 'showAlways', 'showNever' or 'showLeft'." % value)
 
-	def enableWrapAround(self, value):
-		value = True if value.lower() in ("1", "enabled", "enablewraparound", "on", "true", "yes") else False
-		self.guiObject.setWrapAround(value)
+	def scrollbarSliderBorderColor(self, value):
+		self.guiObject.setSliderBorderColor(parseColor(value))
 
-	def itemHeight(self, value):
-		self.guiObject.setItemHeight(int(value))
+	def scrollbarSliderBorderWidth(self, value):
+		self.guiObject.setScrollbarSliderBorderWidth(int(value))
 
-	def pointer(self, value):
-		(name, pos) = value.split(":")
-		pos = parsePosition(pos, self.scaleTuple)
-		ptr = loadPixmap(name, self.desktop)
-		self.guiObject.setPointer(0, ptr, pos)
+	def scrollbarSliderForegroundColor(self, value):
+		self.guiObject.setSliderForegroundColor(parseColor(value))
+
+	def scrollbarSliderPicture(self, value):  # For compatibility same as sliderPixmap.
+		self.guiObject.setSliderPicture(loadPixmap(value, self.desktop))
+
+	def scrollbarWidth(self, value):
+		self.guiObject.setScrollbarWidth(int(value))
+
+	def secondfont(self, value):
+		self.guiObject.setSecondFont(parseFont(value, self.scaleTuple))
 
 	def seek_pointer(self, value):
 		(name, pos) = value.split(":")
@@ -635,24 +604,52 @@ class AttributeParser:
 		ptr = loadPixmap(name, self.desktop)
 		self.guiObject.setPointer(1, ptr, pos)
 
+	def selectionDisabled(self, value):
+		self.guiObject.setSelectionEnable(0)
+
+	def selectionPixmap(self, value):
+		self.guiObject.setSelectionPicture(loadPixmap(value, self.desktop))
+
+	def shadowColor(self, value):
+		self.guiObject.setShadowColor(parseColor(value))
+
 	def shadowOffset(self, value):
 		self.guiObject.setShadowOffset(parsePosition(value, self.scaleTuple))
 
-	def noWrap(self, value):
-		value = 1 if value.lower() in ("1", "enabled", "nowrap", "on", "true", "yes") else 0
-		self.guiObject.setNoWrap(value)
+	def size(self, value):
+		self.guiObject.resize(eSize(*value) if isinstance(value, tuple) else parseSize(value, self.scaleTuple, self.guiObject, self.desktop))
 
-	def OverScan(self, value):
-		self.guiObject.setOverscan(value)
+	def sliderPixmap(self, value):
+		self.guiObject.setSliderPicture(loadPixmap(value, self.desktop))
 
 	def split(self, value):
 		pass
 
-	def colposition(self, value):
-		pass
+	def text(self, value):
+		self.guiObject.setText(_(value))
 
-	def dividechar(self, value):
-		pass
+	def textOffset(self, value):
+		x, y = value.split(",")
+		self.guiObject.setTextOffset(ePoint(int(x) * self.scaleTuple[0][0] / self.scaleTuple[0][1], int(y) * self.scaleTuple[1][0] / self.scaleTuple[1][1]))
+
+	def title(self, value):
+		self.guiObject.setTitle(_(value))
+
+	def transparent(self, value):
+		self.guiObject.setTransparent(int(value))
+
+	def valign(self, value):
+		try:
+			self.guiObject.setVAlign({
+				"top": self.guiObject.alignTop,
+				"center": self.guiObject.alignCenter,
+				"bottom": self.guiObject.alignBottom
+			}[value])
+		except KeyError:
+			print("[skin] Error: Invalid valign '%s'!  Must be one of 'top', 'center' or 'bottom'." % value)
+
+	def zPosition(self, value):
+		self.guiObject.setZPosition(int(value))
 
 def applySingleAttribute(guiObject, desktop, attrib, value, scale=((1, 1), (1, 1))):
 	# Is anyone still using applySingleAttribute?
