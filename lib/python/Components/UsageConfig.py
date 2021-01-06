@@ -3,7 +3,7 @@
 from __future__ import print_function
 from Components.Harddisk import harddiskmanager
 from Components.config import ConfigSubsection, ConfigYesNo, config, ConfigSelection, ConfigText, ConfigNumber, ConfigSet, ConfigLocations, ConfigSelectionNumber, ConfigClock, ConfigSlider, ConfigEnableDisable, ConfigSubDict, ConfigDictionarySet, ConfigInteger, ConfigPassword, ConfigIP, NoSave, ConfigBoolean
-from Tools.Directories import defaultRecordingLocation
+from Tools.Directories import defaultRecordingLocation, fileHas
 from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff, setEnableTtCachingOnOff, eEnv, eDVBDB, Misc_Options, eBackgroundFileEraser, eServiceEvent, getBoxType, eEPGCache
 from Components.NimManager import nimmanager
 from Components.ServiceList import refreshServiceList
@@ -22,7 +22,10 @@ displaytype = getDisplayType()
 def InitUsageConfig():
 	config.misc.useNTPminutes = ConfigSelection(default = "30", choices = [("30", "30" + " " +_("minutes")), ("60", _("Hour")), ("1440", _("Once per day"))])
 	config.usage = ConfigSubsection()
-	config.usage.dns = ConfigSelection(default = "dhcp-router", choices = [("dhcp-router", _("DHCP router")), ("custom", _("Custom")), ("google", _("Google DNS")), ("cloadflare", _("Cloadfare")), ("opendns-familyshield", _("OpenDNS FamilyShield")), ("opendns-home", _("OpenDNS Home"))])
+	if fileHas("/etc/network/interfaces","iface eth0 inet static") and not fileHas("/etc/network/interfaces","iface wlan0 inet dhcp") or fileHas("/etc/network/interfaces","iface wlan0 inet static") and fileHas("/run/ifstate","wlan0=wlan0"):
+		config.usage.dns = ConfigSelection(default = "custom", choices = [("custom", _("Static IP or Custom")), ("google", _("Google DNS")), ("cloadflare", _("Cloadfare")), ("opendns-familyshield", _("OpenDNS FamilyShield")), ("opendns-home", _("OpenDNS Home"))])
+	else:
+		config.usage.dns = ConfigSelection(default = "dhcp-router", choices = [("dhcp-router", _("DHCP router")), ("custom", _("Static IP or Custom")), ("google", _("Google DNS")), ("cloadflare", _("Cloadfare")), ("opendns-familyshield", _("OpenDNS FamilyShield")), ("opendns-home", _("OpenDNS Home"))])
 	config.usage.subnetwork = ConfigYesNo(default = True)
 	config.usage.subnetwork_cable = ConfigYesNo(default = True)
 	config.usage.subnetwork_terrestrial = ConfigYesNo(default = True)
@@ -86,7 +89,7 @@ def InitUsageConfig():
 	if getSoCFamily().startswith("bcm"):
 		config.usage.fadeout = ConfigYesNo(default = True)
 	else:
-		config.usage.fadeout = ConfigYesNo(default = False)	
+		config.usage.fadeout = ConfigYesNo(default = False)
 	config.usage.show_infobar_do_dimming = ConfigYesNo(default = False)
 	config.usage.show_infobar_dimming_speed = ConfigSelectionNumber(min = 1, max = 40, stepwidth = 1, default = 40, wraparound = True)
 	config.usage.show_infobar_on_zap = ConfigYesNo(default = True)
@@ -107,7 +110,7 @@ def InitUsageConfig():
 	if model.startswith("bey"):
 		config.usage.show_genre_info = ConfigYesNo(default=True)
 	else:
-		config.usage.show_genre_info = ConfigYesNo(default=False)	
+		config.usage.show_genre_info = ConfigYesNo(default=False)
 	config.usage.menu_show_numbers = ConfigSelection(default = "no", choices = [("no", _("no")), ("menu&plugins", _("in menu and plugins")), ("menu", _("in menu only")), ("plugins", _("in plugins only"))])
 	config.usage.showScreenPath = ConfigSelection(default="small", choices=[("off", _("Disabled")), ("small", _("Small")), ("large", _("Large"))])
 	config.usage.enable_tt_caching = ConfigYesNo(default = True)

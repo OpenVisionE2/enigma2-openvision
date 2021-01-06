@@ -367,9 +367,10 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 			self.nameserverEntries = [ NoSave(ConfigIP(default= [208,67,222,123])), NoSave(ConfigIP(default = [208,67,220,123])) ]
 		elif config.usage.dns.value == 'opendns-home':
 			self.nameserverEntries = [ NoSave(ConfigIP(default= [208,67,222,222])), NoSave(ConfigIP(default = [208,67,220,220])) ]
-		else:
-			self.nameserverEntries = [ NoSave(ConfigIP(default=nameserver)) for nameserver in self.nameservers]
 		config.usage.dns.save()
+
+		if config.usage.dns.value == 'custom' or config.usage.dns.value == 'dhcp-router':
+			self.nameserverEntries = [ NoSave(ConfigIP(default=nameserver)) for nameserver in self.nameservers ]
 
 	def createSetup(self):
 		self.list = []
@@ -385,6 +386,7 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 		self["config"].l.setList(self.list)
 
 	def ok(self):
+		self.RefreshNameServerUsed()
 		iNetwork.clearNameservers()
 		for nameserver in self.nameserverEntries:
 			iNetwork.addNameserver(nameserver.value)
@@ -414,6 +416,12 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 			self.createConfig()
 			self.createSetup()
 
+	def RefreshNameServerUsed(self):
+		print("[NetworkSetup] currentIndex:", self["config"].getCurrentIndex())
+		index = self["config"].getCurrentIndex()
+		if index < len(self.nameservers):
+			self.createConfig()
+			self.createSetup()
 
 class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
 	def __init__(self, session):
