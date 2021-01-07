@@ -366,7 +366,7 @@ def loadPixmap(path, desktop):
 		raise SkinError("Pixmap file '%s' not found" % path)
 	return pixmap
 
-def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), filenames=frozenset(("pixmap", "pointer", "seek_pointer", "backgroundPixmap", "selectionPixmap", "sliderPixmap", "scrollbarSliderPicture", "scrollbarbackgroundPixmap", "scrollbarBackgroundPicture"))):
+def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), filenames=frozenset(("pixmap", "pointer", "seekPointer", "seek_pointer", "backgroundPixmap", "selectionPixmap", "sliderPixmap", "scrollbarSliderPicture", "scrollbarBackgroundPixmap", "scrollbarbackgroundPixmap", "scrollbarBackgroundPicture"))):
 	size = None
 	pos = None
 	font = None
@@ -397,27 +397,56 @@ def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), f
 		skinAttributes.append(("size", size))
 
 
+class AttribError(Exception):
+	def __init__(self, message):
+		self.msg = message
+
+	def __str__(self):
+		return self.msg
+
+
+class AttribElementError(AttribError):
+	pass
+
+
+class AttribValueError(AttribError):
+	pass
+
+
 class AttributeParser:
 	def __init__(self, guiObject, desktop, scale=((1, 1), (1, 1))):
 		self.guiObject = guiObject
 		self.desktop = desktop
 		self.scaleTuple = scale
 
-	def applyOne(self, attrib, value):
-		try:
-			getattr(self, attrib)(value)
-		except AttributeError:
-			print("[Skin] Attribute '%s' (with value of '%s') in object of type '%s' is not implemented!" % (attrib, value, self.guiObject.__class__.__name__))
-		except SkinError as err:
-			print("[Skin] Error: %s" % str(err))
-		except Exception:
-			print("[Skin] Attribute '%s' with wrong (or unknown) value '%s' in object of type '%s'!" % (attrib, value, self.guiObject.__class__.__name__))
-
 	def applyAll(self, attrs):
 		for attrib, value in attrs:
 			self.applyOne(attrib, value)
 
-	def alphatest(self, value):
+	def applyOne(self, attrib, value):
+		try:
+			getattr(self, attrib)(value)
+		except AttribElementError as err:
+			print("[Skin] Error: Attribute '%s' with value '%s' has invalid element(s) '%s'!" % (attrib, value, err))
+		except AttribValueError as err:
+			print("[Skin] Error: Attribute '%s' with value '%s' is invalid! (Valid values: %s.)" % (attrib, value, err))
+		except AttributeError:
+			print("[Skin] Error: Attribute '%s' with value '%s' in object of type '%s' is not implemented!" % (attrib, value, self.guiObject.__class__.__name__))
+		except SkinError as err:
+			print("[Skin] Error: %s" % err)
+		except Exception as err:
+			print("[Skin] Error: Attribute '%s' with value '%s' in object of type '%s' (Error: '%s')!" % (attrib, value, self.guiObject.__class__.__name__, err))
+
+	def applyHorizontalScale(self, value):
+		return int(int(value) * self.scaleTuple[0][0] / self.scaleTuple[0][1])
+
+	def applyVerticalScale(self, value):
+		return int(int(value) * self.scaleTuple[1][0] / self.scaleTuple[1][1])
+
+	def alphatest(self, value):  # This legacy definition uses an inconsistent name!
+		self.alphaTest(value)
+
+	def alphaTest(self, value):
 		try:
 			self.guiObject.setAlphatest({
 				"on": 1,
@@ -425,7 +454,7 @@ class AttributeParser:
 				"blend": 2
 			}[value])
 		except KeyError:
-			print("[Skin] Error: Invalid alphatest '%s'!  Must be one of 'on', 'off' or 'blend'." % value)
+			raise AttribValueError("'on', 'off' or 'blend'")
 
 	def animationMode(self, value):
 		try:
@@ -436,9 +465,11 @@ class AttributeParser:
 				"offhide": 0x01,
 				"onshow": 0x01,
 				"onhide": 0x10,
+				"disable_onshow": 0x10,
+				"disable_onhide": 0x01
 			}[value])
 		except KeyError:
- 			print("[Skin] Error: Invalid animationMode '%s'!  Must be one of 'disable', 'off', 'offshow', 'offhide', 'onshow' or 'onhide'." % value)
+			raise AttribValueError("'disable', 'off', 'offshow', 'offhide', 'onshow' or 'onhide'")
 
 	def animationPaused(self, value):
 		pass
@@ -470,10 +501,16 @@ class AttributeParser:
 	def colposition(self, value):
 		pass
 
+	def colPosition(self, value):
+		pass
+
 	def conditional(self, value):
 		pass
 
 	def dividechar(self, value):
+		pass
+
+	def divideChar(self, value):
 		pass
 
 	def enableWrapAround(self, value):
@@ -481,13 +518,15 @@ class AttributeParser:
 		self.guiObject.setWrapAround(value)
 
 	def flags(self, value):
-		flags = value.split(",")
-		for f in flags:
+		errors = []
+		flags = [x.strip() for x in value.split(",")]
+		for flag in flags:
 			try:
-				fv = eWindow.__dict__[f]
-				self.guiObject.setFlag(fv)
+				self.guiObject.setFlag(eWindow.__dict__[flag])
 			except KeyError:
-				print("[Skin] Error: Invalid flag '%s'!" % f)
+				errors.append(flag)
+		if errors:
+			raise AttribElementError("'%s' % "', '.join(errors))
 
 	def font(self, value):
 		self.guiObject.setFont(parseFont(value, self.scaleTuple))
@@ -507,16 +546,20 @@ class AttributeParser:
 	def foregroundNotCrypted(self, value):
 		self.guiObject.setForegroundColor(parseColor(value))
 
-	def halign(self, value):
+	def halign(self, value):  # This legacy definition uses an inconsistent name!
+		self.horizontalAlignment(value)
+
+	def horizontalAlignment(self, value):
 		try:
 			self.guiObject.setHAlign({
 				"left": self.guiObject.alignLeft,
 				"center": self.guiObject.alignCenter,
+				"centre": self.guiObject.alignCenter,
 				"right": self.guiObject.alignRight,
 				"block": self.guiObject.alignBlock
 			}[value])
 		except KeyError:
-			print("[Skin] Error: Invalid halign '%s'!  Must be one of 'left', 'center', 'right' or 'block'." % value)
+			raise AttribValueError("'left', 'center'/'centre', 'right' or 'block'")
 
 	def itemHeight(self, value):
 		self.guiObject.setItemHeight(int(value))
@@ -539,18 +582,21 @@ class AttributeParser:
 				"orRightToLeft": (self.guiObject.orHorizontal, True)
 			}[value])
 		except KeyError:
-			print("[Skin] Error: Invalid orientation '%s'!  Must be one of 'orVertical', 'orTopToBottom', 'orBottomToTop', 'orHorizontal', 'orLeftToRight' or 'orRightToLeft'." % value)
+			raise AttribValueError("'orVertical', 'orTopToBottom', 'orBottomToTop', 'orHorizontal', 'orLeftToRight' or 'orRightToLeft'")
 
-	def OverScan(self, value):
+	def overScan(self, value):
 		self.guiObject.setOverscan(value)
+
+	def OverScan(self, value):  # This legacy definition uses an inconsistent name!
+		self.overScan(value)
 
 	def pixmap(self, value):
 		self.guiObject.setPixmap(loadPixmap(value, self.desktop))
 
 	def pointer(self, value):
-		(name, pos) = value.split(":")
-		pos = parsePosition(pos, self.scaleTuple)
+		(name, pos) = [x.strip() for x in value.split(":", 1)]
 		ptr = loadPixmap(name, self.desktop)
+		pos = parsePosition(pos, self.scaleTuple)
 		self.guiObject.setPointer(0, ptr, pos)
 
 	def position(self, value):
@@ -560,11 +606,14 @@ class AttributeParser:
 		value = 1 if value.lower() in ("1", "enabled", "on", "scale", "true", "yes") else 0
 		self.guiObject.setScale(value)
 
-	def scrollbarbackgroundPixmap(self, value):
+	def scrollbarBackgroundPicture(self, value):  # For compatibility same as scrollbarBackgroundPixmap.
+		self.scrollbarBackgroundPixmap(value)
+
+	def scrollbarBackgroundPixmap(self, value):
 		self.guiObject.setScrollbarBackgroundPicture(loadPixmap(value, self.desktop))
 
-	def scrollbarBackgroundPicture(self, value):  # For compatibility same as scrollbarbackgroundPixmap.
-		self.guiObject.setScrollbarBackgroundPicture(loadPixmap(value, self.desktop))
+	def scrollbarbackgroundPixmap(self, value):  # This legacy definition uses an inconsistent name!
+		self.scrollbarBackgroundPixmap(value)
 
 	def scrollbarMode(self, value):
 		try:
@@ -575,7 +624,7 @@ class AttributeParser:
 				"showLeft": self.guiObject.showLeft
 			}[value])
 		except KeyError:
-			print("[Skin] Error: Invalid scrollbarMode '%s'!  Must be one of 'showOnDemand', 'showAlways', 'showNever' or 'showLeft'." % value)
+			raise AttribValueError("'showOnDemand', 'showAlways', 'showNever' or 'showLeft'")
 
 	def scrollbarSliderBorderColor(self, value):
 		self.guiObject.setSliderBorderColor(parseColor(value))
@@ -587,19 +636,25 @@ class AttributeParser:
 		self.guiObject.setSliderForegroundColor(parseColor(value))
 
 	def scrollbarSliderPicture(self, value):  # For compatibility same as sliderPixmap.
-		self.guiObject.setSliderPicture(loadPixmap(value, self.desktop))
+		self.sliderPixmap(value)
 
 	def scrollbarWidth(self, value):
 		self.guiObject.setScrollbarWidth(int(value))
 
-	def secondfont(self, value):
+	def secondFont(self, value):
 		self.guiObject.setSecondFont(parseFont(value, self.scaleTuple))
 
-	def seek_pointer(self, value):
-		(name, pos) = value.split(":")
-		pos = parsePosition(pos, self.scaleTuple)
+	def secondfont(self, value):  # This legacy definition uses an inconsistent name!
+		self.secondFont(value)
+
+	def seekPointer(self, value):
+		(name, pos) = [x.strip() for x in value.split(":", 1)]
 		ptr = loadPixmap(name, self.desktop)
+		pos = parsePosition(pos, self.scaleTuple)
 		self.guiObject.setPointer(1, ptr, pos)
+
+	def seek_pointer(self, value):  # This legacy definition uses an inconsistent name!
+		self.seekPointer(value)
 
 	def selectionDisabled(self, value):
 		self.guiObject.setSelectionEnable(0)
@@ -614,6 +669,7 @@ class AttributeParser:
 		self.guiObject.setShadowOffset(parsePosition(value, self.scaleTuple))
 
 	def size(self, value):
+		# print("[Skin] DEBUG: Size '%s'." % str(value))
 		self.guiObject.resize(eSize(*value) if isinstance(value, tuple) else parseSize(value, self.scaleTuple, self.guiObject, self.desktop))
 
 	def sliderPixmap(self, value):
@@ -626,24 +682,30 @@ class AttributeParser:
 		self.guiObject.setText(_(value))
 
 	def textOffset(self, value):
-		x, y = value.split(",")
-		self.guiObject.setTextOffset(ePoint(int(x) * self.scaleTuple[0][0] / self.scaleTuple[0][1], int(y) * self.scaleTuple[1][0] / self.scaleTuple[1][1]))
+		xOffset, yOffset = [x.strip() for x in value.split(",")]
+		self.guiObject.setTextOffset(ePoint(self.applyHorizontalScale(xOffset), self.applyVerticalScale(yOffset)))
 
 	def title(self, value):
 		self.guiObject.setTitle(_(value))
 
 	def transparent(self, value):
-		self.guiObject.setTransparent(int(value))
+		value = 1 if value.lower() in ("1", "enabled", "on", "transparent", "true", "yes") else 0
+		self.guiObject.setTransparent(value)
 
-	def valign(self, value):
+	def valign(self, value):  # This legacy definition uses an inconsistent name!
+		self.verticalAlignment(value)
+
+	def verticalAlignment(self, value):
 		try:
 			self.guiObject.setVAlign({
 				"top": self.guiObject.alignTop,
+				"middle": self.guiObject.alignCenter,
 				"center": self.guiObject.alignCenter,
+				"centre": self.guiObject.alignCenter,
 				"bottom": self.guiObject.alignBottom
 			}[value])
 		except KeyError:
-			print("[Skin] Error: Invalid valign '%s'!  Must be one of 'top', 'center' or 'bottom'." % value)
+			raise AttribValueError("'top', 'middle'/'center'/'centre' or 'bottom'")
 
 	def zPosition(self, value):
 		self.guiObject.setZPosition(int(value))
@@ -1123,7 +1185,7 @@ def readSkin(screen, skin, names, desktop):
 				# print("[Skin] DEBUG: Params='%s'." % parms)
 				try:
 					converterClass = my_import(".".join(("Components", "Converter", ctype))).__dict__.get(ctype)
-				except ImportError as e:
+				except ImportError as err:
 					raise SkinError("Converter '%s' not found" % ctype)
 				c = None
 				for i in source.downstream_elements:
@@ -1135,7 +1197,7 @@ def readSkin(screen, skin, names, desktop):
 				source = c
 			try:
 				rendererClass = my_import(".".join(("Components", "Renderer", wrender))).__dict__.get(wrender)
-			except ImportError as e:
+			except ImportError as err:
 				raise SkinError("Renderer '%s' not found" % wrender)
 			renderer = rendererClass()  # Instantiate renderer.
 			renderer.connect(source)  # Connect to source.
