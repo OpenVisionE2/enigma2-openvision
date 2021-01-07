@@ -160,8 +160,8 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 			else:
 				itemText = _(element.get("text", "??"))
 				itemDescription = _(element.get("description", " "))
-		itemText = itemText.replace("%s %s", "%s %s" % ("brand", "model"))
-		itemDescription = itemDescription.replace("%s %s", "%s %s" % ("brand", "model"))
+		itemText = itemText.replace("%s %s", "%s %s" % (SystemInfo["MachineBrand"], SystemInfo["MachineModel"]))
+		itemDescription = itemDescription.replace("%s %s", "%s %s" % (SystemInfo["MachineBrand"], SystemInfo["MachineModel"]))
 		item = eval(element.text or "")
 		if item != "" and not isinstance(item, ConfigNothing):
 			itemDefault = item.toDisplayString(item.default)

@@ -45,6 +45,9 @@ displaytype = getDisplayType()
 architecture = getImageArch()
 socfamily = getSoCFamily()
 
+SystemInfo["MachineBrand"] = brand
+SystemInfo["MachineModel"] = model
+
 SystemInfo["InDebugMode"] = eGetEnigmaDebugLvl() >= 4
 SystemInfo["CommonInterface"] = eDVBCIInterfaces.getInstance().getNumOfSlots()
 SystemInfo["CommonInterfaceCIDelay"] = fileCheck("/proc/stb/tsmux/rmx_delay")
