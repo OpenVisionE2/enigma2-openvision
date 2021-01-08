@@ -160,7 +160,9 @@ def loadSkin(filename, scope=SCOPE_SKIN, desktop=getDesktop(GUI_SKIN_ID), screen
 				print("[Skin] XML Parse Error: '%s'" % data)
 				print("[Skin] XML Parse Error: '%s^%s'" % ("-" * column, " " * (len(data) - column - 1)))
 			except Exception as err:
-				print("[Skin] Error: Unable to parse skin data in '%s' - '%s'!" % (filename, err))
+				print("[Skin] Error: Unable to parse skin data in '%s' (%s) - '%s'!" % (filename, type(err).__name__, err))
+				# import traceback
+				# traceback.print_exc()
 	except (IOError, OSError) as err:
 		if err.errno == errno.ENOENT:  # No such file or directory
 			print("[Skin] Warning: Skin file '%s' does not exist!" % filename)
@@ -226,13 +228,13 @@ def getParentSize(object, desktop):
 			return desktop.size()  # Widget has no parent, use desktop size instead for relative coordinates.
 	return eSize()
 
-def parseColor(s):
-	if s[0] != "#":
+def parseColor(value):
+	if value[0] != "#":
 		try:
-			return colors[s]
+			return colors[value]
 		except KeyError:
-			raise SkinError("Color '%s' must be #aarrggbb or valid named color" % s)
-	return gRGB(int(s[1:], 0x10))
+			raise SkinError("Color '%s' must be #aarrggbb or valid named color" % value)
+	return gRGB(int(value[1:], 0x10))
 
 # Convert a coordinate string into a number.  Used to convert object position and
 # size attributes into a number.
@@ -256,104 +258,122 @@ def parseColor(s):
 #         h      : Multiply by current font height. (Only to be used in elements where the font attribute is available, i.e. not "None")
 #         f      : Replace with getSkinFactor().
 #
-def parseCoordinate(s, e, size=0, font=None):
-	orig = s = s.strip()
-	if s == "center":  # For speed as this can be common case.
-		val = 0 if not size else (e - size) // 2
-	elif s == "*":
+def parseCoordinate(value, parent, size=0, font=None):
+	value = value.strip()
+	if value == "center":  # For speed as this can be common case.
+		result = 0 if not size else int((parent - size) // 2)
+	elif value == "*":
 		return None
 	else:
 		try:
-			val = int(s)  # For speed try a simple number first.
+			result = int(value)  # For speed try a simple number first.
 		except ValueError:
-			if font is None and ("w" in s or "h" in s):
-				print("[Skin] Error: 'w' or 'h' is being used in a field where neither is valid. Input string: '%s'" % orig)
-				return 0
-			if "center" in s:
-				s = s.replace("center", str((e - size) / 2.0))
-			if "e" in s:
-				s = s.replace("e", str(e))
-			if "c" in s:
-				s = s.replace("c", str(e / 2.0))
-			if "w" in s:
-				s = s.replace("w", "*%s" % str(fonts[font][3]))
-			if "h" in s:
-				s = s.replace("h", "*%s" % str(fonts[font][2]))
-			if "%" in s:
-				s = s.replace("%", "*%s" % str(e / 100.0))
-			if "f" in s:
-				s = s.replace("f", str(getSkinFactor()))
+			if font is None:
+				font = "Body"
+				if "w" in value or "h" in value:
+					print("[Skin] Warning: Coordinate 'w' and/or 'h' used but font is None, '%s' font ('%s', width=%d, height=%d) assumed!" % (font, fonts[font][0], fonts[font][3], fonts[font][2]))
+			val = value
+			if "center" in val:
+				val = val.replace("center", str((parent - size) / 2.0))
+			if "e" in val:
+				val = val.replace("e", str(parent))
+			if "c" in val:
+				val = val.replace("c", str(parent / 2.0))
+			if "%" in val:
+				val = val.replace("%", "*%s" % (parent / 100.0))
+			if "w" in val:
+				val = val.replace("w", "*%s" % fonts[font][3])
+			if "h" in val:
+				val = val.replace("h", "*%s" % fonts[font][2])
+			if "f" in val:
+				# val = val.replace("f", "*%s" % getSkinFactor())
+				val = val.replace("f", str(getSkinFactor()))
 			try:
-				val = int(s)  # For speed try a simple number first.
+				result = int(val)  # For speed try a simple number first.
 			except ValueError:
 				try:
-					val = int(eval(s))
+					result = int(eval(val))
 				except Exception as err:
-					print("[Skin] %s '%s': Coordinate '%s', processed to '%s', cannot be evaluated!" % (type(err).__name__, err, orig, s))
-					val = 0
-	# print("[Skin] DEBUG: parseCoordinate s='%s', e='%s', size=%s, font='%s', val='%s'." % (s, e, size, font, val))
-	return val
+					print("[Skin] %s Error (%s): Coordinate '%s', calculated to '%s', can't be evaluated!" % (type(err).__name__, err, value, val))
+					result = 0
+	# print("[Skin] DEBUG: parseCoordinate value='%s', parent='%s', size=%s, font='%s', val='%s'." % (value, parent, size, font, val))
+	if result < 0:
+		result = 0
+	return result
 
-def parseFont(s, scale=((1, 1), (1, 1))):
-	if ";" in s:
-		name, size = s.split(";")
-		orig = size
+def parseFont(value, scale=((1, 1), (1, 1))):
+	if ";" in value:
+		(name, size) = value.split(";")
 		try:
 			size = int(size)
 		except ValueError:
 			try:
-				size = size.replace("f", str(getSkinFactor()))
-				size = int(eval(size))
+				# val = size.replace("f", "*%s" % getSkinFactor())
+				val = size.replace("f", str(getSkinFactor()))
+				size = int(eval(val))
 			except Exception as err:
-				print("[Skin] %s '%s': font size formula '%s', processed to '%s', cannot be evaluated!" % (type(err).__name__, err, orig, s))
+				print("[Skin] %s Error (%s): Font size in '%s', evaluated to '%s', can't be processed!" % (type(err).__name__, err, value, val))
 				size = None
 	else:
-		name = s
+		name = value
 		size = None
 	try:
-		f = fonts[name]
-		name = f[0]
-		size = f[1] if size is None else size
+		font = fonts[name]
+		name = font[0]
+		size = font[1] if size is None else size
 	except KeyError:
 		if name not in getFontFaces():
-			f = fonts["Body"]
-			print("[Skin] Error: Font '%s' (in '%s') is not defined!  Using 'Body' font ('%s') instead." % (name, s, f[0]))
-			name = f[0]
-			size = f[1] if size is None else size
+			font = fonts["Body"]
+			print("[Skin] Error: Font '%s' (in '%s') is not defined!  Using 'Body' font ('%s') instead." % (name, value, font[0]))
+			name = font[0]
+			size = font[1] if size is None else size
+	# print("[Skin] DEBUG: Scale font %d -> %d." % (size, int(size) * scale[1][0] / scale[1][1]))
 	return gFont(name, int(size) * scale[0][0] / scale[0][1])
 
-def parseParameter(s):
+# Convert a parameter string into a value based on string triggers.  The type
+# and value returned is based on the trigger.
+# 
+# Usage:  *string   : The paramater is a string with the "*" is removed (Type: String).
+#         #aarrggbb : The parameter is a HEX colour string (Type: Integer).
+#         0xABCD    : The parameter is a HEX integer (Type: Integer).
+#         5.3       : The parameter is a floating point number (Type: Float).
+#         red       : The parameter is a named color (Type: Integer).
+#         font;zize : The parameter is a font name with a font size (Type: List[Font, Size]).
+#         123       : The parameter is an integer (Type: Integer).
+#
+def parseParameter(value):
 	"""This function is responsible for parsing parameters in the skin, it can parse integers, floats, hex colors, hex integers, named colors, fonts and strings."""
-	if s[0] == "*":  # String.
-		return s[1:]
-	elif s[0] == "#":  # HEX Color.
-		return int(s[1:], 16)
-	elif s[:2] == "0x":  # HEX Integer.
-		return int(s, 16)
-	elif "." in s:  # Float number.
-		return float(s)
-	elif s in colors:  # Named color.
-		return colors[s].argb()
-	elif s.find(";") != -1:  # Font.
-		font, size = [x.strip() for x in s.split(";", 1)]
+	if value[0] == "*":  # String.
+		return value[1:]
+	elif value[0] == "#":  # HEX Color.
+		return int(value[1:], 16)
+	elif value[:2] == "0x":  # HEX Integer.
+		return int(value, 16)
+	elif "." in value:  # Float number.
+		return float(value)
+	elif value in colors:  # Named color.
+		return colors[value].argb()
+	elif value.find(";") != -1:  # Font.
+		(font, size) = [x.strip() for x in value.split(";", 1)]
 		return [font, int(size)]
 	else:  # Integer.
-		return int(s)
+		return int(value)
 
-def parsePosition(s, scale, object=None, desktop=None, size=None):
-	return ePoint(*parseValuePair(s, scale, object, desktop, size))
+def parsePosition(value, scale, object=None, desktop=None, size=None):
+	return ePoint(*parseValuePair(value, scale, object, desktop, size))
 
-def parseSize(s, scale, object=None, desktop=None):
-	return eSize(*[max(0,x) for x in parseValuePair(s, scale, object, desktop)])
+def parseSize(value, scale, object=None, desktop=None):
+	return eSize(*parseValuePair(value, scale, object, desktop))
 
-def parseValuePair(s, scale, object=None, desktop=None, size=None):
-	x, y = s.split(",")
+def parseValuePair(value, scale, object=None, desktop=None, size=None):
+	(xValue, yValue) = value.split(",")  # These values will be stripped in parseCoordinate().
 	parentsize = eSize()
-	if object and ("c" in x or "c" in y or "e" in x or "e" in y or "%" in x or "%" in y):  # Need parent size for ce%
+	if object and ("c" in xValue or "c" in yValue or "e" in xValue or "e" in yValue or "%" in xValue or "%" in yValue):  # Need parent size for 'c', 'e' and '%'.
 		parentsize = getParentSize(object, desktop)
-	xval = parseCoordinate(x, parentsize.width(), size and size.width() or 0)
-	yval = parseCoordinate(y, parentsize.height(), size and size.height() or 0)
-	return (xval * scale[0][0] / scale[0][1], yval * scale[1][0] / scale[1][1])
+	xValue = parseCoordinate(xValue, parentsize.width(), size and size.width() or 0)
+	yValue = parseCoordinate(yValue, parentsize.height(), size and size.height() or 0)
+	# print("[Skin] DEBUG: Scale pair X %d -> %d, Y %d -> %d." % (xValue, int(xValue * scale[0][0] / scale[0][1]), yValue, int(yValue * scale[1][0] / scale[1][1])))
+	return (int(xValue * scale[0][0] / scale[0][1]), int(yValue * scale[1][0] / scale[1][1]))
 
 def loadPixmap(path, desktop):
 	option = path.find("#")
@@ -600,7 +620,9 @@ class AttributeParser:
 		self.guiObject.setPointer(0, ptr, pos)
 
 	def position(self, value):
+		# print("[Skin] DEBUG: Position '%s'." % str(value))
 		self.guiObject.move(ePoint(*value) if isinstance(value, tuple) else parsePosition(value, self.scaleTuple, self.guiObject, self.desktop, self.guiObject.csize()))
+		# self.guiObject.move(parsePosition(value, self.scaleTuple, self.guiObject, self.desktop, self.guiObject.csize()))
 
 	def scale(self, value):
 		value = 1 if value.lower() in ("1", "enabled", "on", "scale", "true", "yes") else 0
@@ -656,6 +678,10 @@ class AttributeParser:
 	def seek_pointer(self, value):  # This legacy definition uses an inconsistent name!
 		self.seekPointer(value)
 
+	def selection(self, value):
+		value = 1 if value.lower() in ("1", "enabled", "on", "selection", "true", "yes") else 0
+		self.guiObject.setSelectionEnable(value)
+
 	def selectionDisabled(self, value):
 		self.guiObject.setSelectionEnable(0)
 
@@ -671,6 +697,7 @@ class AttributeParser:
 	def size(self, value):
 		# print("[Skin] DEBUG: Size '%s'." % str(value))
 		self.guiObject.resize(eSize(*value) if isinstance(value, tuple) else parseSize(value, self.scaleTuple, self.guiObject, self.desktop))
+		# self.guiObject.resize(parseSize(value, self.scaleTuple, self.guiObject, self.desktop))
 
 	def sliderPixmap(self, value):
 		self.guiObject.setSliderPicture(loadPixmap(value, self.desktop))
@@ -682,7 +709,7 @@ class AttributeParser:
 		self.guiObject.setText(_(value))
 
 	def textOffset(self, value):
-		xOffset, yOffset = [x.strip() for x in value.split(",")]
+		(xOffset, yOffset) = [x.strip() for x in value.split(",")]
 		self.guiObject.setTextOffset(ePoint(self.applyHorizontalScale(xOffset), self.applyVerticalScale(yOffset)))
 
 	def title(self, value):
@@ -1010,7 +1037,7 @@ class SkinContext:
 			self.w = 0
 			self.h = 0
 		else:
-			w, h = size.split(",")
+			(w, h) = size.split(",")
 			w = parseCoordinate(w, self.w, 0, font)
 			h = parseCoordinate(h, self.h, 0, font)
 			if pos == "bottom":
@@ -1046,7 +1073,7 @@ class SkinContextStack(SkinContext):
 			pos = (self.x, self.y)
 			size = (self.w, self.h)
 		else:
-			w, h = size.split(",")
+			(w, h) = size.split(",")
 			w = parseCoordinate(w, self.w, 0, font)
 			h = parseCoordinate(h, self.h, 0, font)
 			if pos == "bottom":
