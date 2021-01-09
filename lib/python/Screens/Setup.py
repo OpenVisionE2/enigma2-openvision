@@ -174,9 +174,6 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 		itemLevel = int(element.get("level", 0))
 		if itemLevel > config.usage.setup_level.index:  # The item is higher than the current setup level.
 			return False
-		itemTuxTxtLevel = int(element.get("tt_level", 0))  # DEBUG: This is an OpenVision only item!!!
-		if (itemTuxTxtLevel == 1) and (config.usage.tuxtxt_font_and_res.value != "expert_mode"):
-			return False
 		requires = element.get("requires")
 		if requires:
 			for require in requires.split(";"):
