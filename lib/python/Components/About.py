@@ -90,12 +90,16 @@ def getEnigmaVersionString():
 	return enigma_version
 
 def getGStreamerVersionString(cpu):
+	from glob import glob
 	try:
-		from glob import glob
 		gst = [x.split("Version: ") for x in open(glob("/var/lib/opkg/info/gstreamer[0-9].[0-9].control")[0], "r") if x.startswith("Version:")][0]
 		return "%s" % gst[1].split("+")[0].replace("\n", "")
 	except:
-		return _("Not Required") if cpu.upper().startswith('HI') else _("Not Installed")
+		try:
+			gst = [x.split("Version: ") for x in open(glob("/var/lib/opkg/info/gstreamer.[0-9].control")[0], "r") if x.startswith("Version:")][0]
+			return "%s" % gst[1].split("+")[0].replace("\n", "")
+		except:
+			return _("Not Required") if cpu.upper().startswith('HI') else _("Not Installed")
 
 def getFFmpegVersionString():
 	try:
@@ -183,6 +187,11 @@ def getCPUInfoString():
 		elif os.path.isfile("/sys/devices/virtual/thermal/thermal_zone0/temp"):
 			try:
 				temperature = int(open("/sys/devices/virtual/thermal/thermal_zone0/temp").read().strip()) / 1000
+			except:
+				pass
+		elif os.path.isfile("/sys/class/thermal/thermal_zone0/temp"):
+			try:
+				temperature = int(open("/sys/class/thermal/thermal_zone0/temp").read().strip()) / 1000
 			except:
 				pass
 		elif os.path.isfile("/proc/hisi/msp/pm_cpu"):
