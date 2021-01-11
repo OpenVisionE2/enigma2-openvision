@@ -408,8 +408,8 @@ class ConfigListScreen:
 		self.closeConfigList((True,))
 
 	def closeConfigList(self, closeParameters=()):
+		self.closeParameters = closeParameters
 		if self["config"].isChanged():
-			self.closeParameters = closeParameters
 			self.session.openWithCallback(self.cancelConfirm, MessageBox, self.cancelMsg, default=False, type=MessageBox.TYPE_YESNO)
 		else:
 			self.close(*closeParameters)
