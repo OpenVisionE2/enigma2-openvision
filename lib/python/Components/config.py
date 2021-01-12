@@ -397,11 +397,11 @@ class ConfigAction(ConfigElement):
 		if (key == ACTIONKEY_SELECT):
 			self.action(*self.actionargs)
 
-	def getMulti(self, dummy):
-		pass
+	def getMulti(self, selected):
+		return ("text", _("<Press OK to perform action>") if selected else "")
 
 
-# This is the control, and base class, for a binary decision settings.
+# This is the control, and base class, for binary decision settings.
 #
 # Several customized versions exist for different descriptions.
 #
