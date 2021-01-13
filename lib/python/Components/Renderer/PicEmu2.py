@@ -117,35 +117,20 @@ class PicEmu2(Renderer, Poll):
 						if fileExists("/tmp/ecm.info"):
 							try:
 								value = self.getText()
-								value = value.lower()#change value to small letters
+								value = value.lower()
 								if value is None:
-									print("[PicEmu2] no emu installed")
-									sname=''
+									print("[PicEmu2] No emu installed or FTA?")
+									sname = "fta"
 								else:
-									## Should write name be small letters
-									if ("ncam" in value):
-										sname = "ncam"
-									elif ("oscam" in value):
-										sname = "oscam"
-									elif ("mgcamd" in value):
-										sname = "Mgcamd"
-									elif ("wicard" in value or "wicardd" in value):
-										sname = "Wicardd"
-									elif ("gbox" in value):
-										sname = "Gbox"
-									elif ("camd3" in value):
-										sname = "Camd3"
-									elif fileExists("/tmp/ecm.info"):
+									if fileExists("/tmp/ecm.info"):
 										try:
-											f = open("/tmp/ecm.info", "r")
-											content = f.read()
-											f.close()
+											content = open("/tmp/ecm.info", "r").read()
 										except:
 											content = ""
 										contentInfo = content.split("\n")
 										for line in contentInfo:
 											if ("address" in line):
-												sname = "CCcam"
+												sname = "cccam"
 							except:
 								print("")
 
@@ -158,7 +143,8 @@ class PicEmu2(Renderer, Poll):
 									caid = caid[:2]
 									caid = caid.upper()
 									if (caid != "") and (sname == ""):
-										sname = "Unknown"
+										print("[PicEmu2] Unknown emu or FTA?")
+										sname = "fta"
 
 				pngname = self.nameCache.get(sname, '')
 				if (pngname == ''):
@@ -167,9 +153,9 @@ class PicEmu2(Renderer, Poll):
 						self.nameCache[sname] = pngname
 
 			if (pngname == ''):
-				pngname = self.nameCache.get('Fta', '')
+				pngname = self.nameCache.get('fta', '')
 				if (pngname == ''):
-					pngname = self.findPicon('Fta')
+					pngname = self.findPicon('fta')
 					if (pngname == ''):
 						tmp = resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png')
 						if fileExists(tmp):
