@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from boxbranding import getBoxBrand
 from Screens.ChoiceBox import ChoiceBox
 from Screens.MessageBox import MessageBox
 from Screens.ParentalControlSetup import ProtectedScreen
@@ -18,7 +17,7 @@ from Components.Sources.StaticText import StaticText
 from Components.Slider import Slider
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import fileExists
-from enigma import eTimer, getBoxType, eDVBDB
+from enigma import eTimer, eDVBDB, getBoxType, getBoxBrand
 from urllib2 import urlopen
 import datetime, os, json
 import time

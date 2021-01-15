@@ -4,7 +4,6 @@ from __future__ import print_function
 import os
 import RecordTimer
 import Components.ParentalControl
-from boxbranding import getBoxBrand
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Components.ActionMap import ActionMap
@@ -19,7 +18,7 @@ from Tools.Directories import mediafilesInUse
 from Tools import Notifications
 from time import time, localtime
 from GlobalActions import globalActionMap
-from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, quitMainloop, iRecordableService, getBoxType
+from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, quitMainloop, iRecordableService, getBoxType, getBoxBrand
 
 inStandby = None
 infoBarInstance = None
