@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 23:06+0330\n"
+"POT-Creation-Date: 2021-01-15 14:16+0330\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -1511,6 +1511,11 @@ msgid "<Last timer location>"
 msgstr "<Seneste timer placering>"
 
 #
+#, fuzzy
+msgid "<Press OK to perform action>"
+msgstr "Tryk på OK for at slå valget til eller fra."
+
+#
 msgid "<unknown>"
 msgstr "<ukendt>"
 
@@ -2074,12 +2079,6 @@ msgstr "Tillad tekst for hørehæmmede"
 msgid "Allow unsupported modes"
 msgstr "ikke supporteret"
 
-msgid "Allows receiver to read the stored EPG data regularly."
-msgstr ""
-
-msgid "Allows receiver to store the EPG data regularly."
-msgstr ""
-
 #, fuzzy
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr "Brug TV fjernbetjening"
@@ -2102,6 +2101,12 @@ msgstr ""
 #, fuzzy
 msgid "Allows you to show images."
 msgstr "Vil du downloade imaget til %s ?"
+
+msgid "Allows your %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows your %s %s to store the EPG data regularly."
+msgstr ""
 
 #
 msgid "Alpha"
@@ -2157,7 +2162,8 @@ msgstr "Gem altid infobaren"
 msgid "Always include ECM in recordings"
 msgstr "Inkluder altid ECM i optagelser"
 
-msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your receiver. Default: off."
+#, fuzzy
+msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your %s %s. Default: off."
 msgstr "Inkluder altid ECM meddelelser i optagelser. Dette overskrider de individuelle timer indstillinger globalt. Dette tillader at optagelser altid er dekrypteret bagefter (nogen gange kaldt offline  decoding), hvis understøttet af din receiver. Standardindstilling: fra."
 
 msgid "American Samoa"
@@ -3406,10 +3412,10 @@ msgstr ""
 msgid "Choose the location for crash and debug logs folder."
 msgstr ""
 
-msgid "Choose the location where the EPG data will be stored when receiver is shut down. The location must be available at boot time."
+msgid "Choose the location where the EPG data will be stored when your %s %s is shut down. The location must be available at boot time."
 msgstr ""
 
-msgid "Choose the name of the file that holds the EPG data when receiver is shut down. This can be handy to differentiate between several boxes."
+msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -4021,7 +4027,8 @@ msgstr "Konfigurer typen af status indikations ikoner der er vist i filmlisten."
 msgid "Configure the video output mode (or resolution)."
 msgstr "Konfigurer video udgangen (eller opløsningen)."
 
-msgid "Configure the way in which the receiver changes channels."
+#, fuzzy
+msgid "Configure the way in which your %s %s changes channels."
 msgstr "Konfigurer den måde receiveren skifter kanaler på."
 
 msgid "Configure the width of the TrueType font letters used for teletext."
@@ -5364,12 +5371,13 @@ msgstr "Vil du vælge et andet skin?"
 msgid "Do you want to update the package:\n"
 msgstr "Vil du opgradere pakken:\n"
 
-#, python-format
-msgid "Do you want to update your receiver to %s?"
+#, fuzzy, python-format
+msgid "Do you want to update to %s"
 msgstr "Vil du hente opdateringer til din receiver %s ?"
 
-msgid "Do you want to update your receiver?"
-msgstr "Vil du opdatere din receiver?"
+#, fuzzy, python-format
+msgid "Do you want to update your %s %s?"
+msgstr "Vil du hente opdateringer til din receiver %s ?"
 
 #, fuzzy
 msgid "Documentary"
@@ -6768,6 +6776,15 @@ msgstr "Fra"
 
 msgid "Front Panel Display"
 msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Front panel your %s %s will be updated\n"
+"This may take a few minutes"
+msgstr ""
+"din frontprocessor bliver opdateret\n"
+"Vent venligst til din modtager genstarter\n"
+"Dette kan tage nogle minutter"
 
 #, fuzzy, python-format
 msgid "Front processor version: %s"
@@ -8537,10 +8554,14 @@ msgstr ""
 msgid "Manufacturer"
 msgstr "Fabrikant"
 
+#, fuzzy, python-format
 msgid ""
 "Manufacturer reset in progress\n"
-"Please wait until enigma2 restarts"
+"Please wait until your %s %s restarts"
 msgstr ""
+"Uovervåget opgradering i gang\n"
+"Vent venligst til din modtager genstarter\n"
+"Dette kan vare flere minutter"
 
 msgid "Mara M9"
 msgstr ""
@@ -11146,12 +11167,6 @@ msgid "Recall to previous service"
 msgstr ""
 
 msgid "Receiver or driver does not support FCC"
-msgstr ""
-
-msgid "Receiver reads the stored EPG data every (hours)."
-msgstr ""
-
-msgid "Receiver stores the EPG data every (hours)."
 msgstr ""
 
 #
@@ -14703,11 +14718,12 @@ msgstr ""
 "Udvidelsen softwareredigering er ikke installeret!\n"
 "installer den venligst."
 
-msgid "The speed of the fan when receiver is in normal use."
-msgstr ""
+#, fuzzy
+msgid "The speed of the fan when your %s %s is in normal use."
+msgstr "Angiv sluttiden hvor nedluknings timeren skal ignoreres når receiveren er i standby."
 
 #, fuzzy
-msgid "The speed of the fan when receiver is in standby mode."
+msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr "Angiv sluttiden hvor nedluknings timeren skal ignoreres når receiveren er i standby."
 
 #, fuzzy, python-format
@@ -14726,18 +14742,20 @@ msgstr "Timer filen (timers.xml) er korrupt og kan ikke bruges."
 msgid "The user interface of the receiver will now restart to select the selected skin"
 msgstr "Receiverens brugerinterface vil nu genstarte for at vælge det valgte skin"
 
-msgid "The user interface of your receiver is restarting"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting"
 msgstr "Brugerinterfacet på din modtager genstarter"
 
+#, fuzzy, python-format
 msgid ""
-"The user interface of your receiver is restarting\n"
+"The user interface of your %s %s is restarting\n"
 "due to an error in mytest.py"
 msgstr ""
 "Brugerinterfacet på din modtager genstarter\n"
 "på grund af en fejl i mytest.py"
 
-#, fuzzy
-msgid "The user interface of your receiver is restarting in debug mode"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting in debug mode"
 msgstr "Brugerinterfacet på din modtager genstarter"
 
 msgid "The width of the picture. The input will be scaled to match this value."
@@ -14831,7 +14849,7 @@ msgstr ""
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr ""
 
-msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since the receiver was last booted."
+msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since your %s %s was last booted."
 msgstr ""
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
@@ -15652,9 +15670,10 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr ""
 
+#, fuzzy, python-format
 msgid ""
 "Unattended update in progress\n"
-"Please wait until your receiver reboots\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Uovervåget opgradering i gang\n"
@@ -15777,7 +15796,8 @@ msgid_plural "Update completed, %d packages were installed."
 msgstr[0] "Opdatering færdig, %d pakke blev installeret."
 msgstr[1] "Opdatering færdig, %d pakker blev installeret."
 
-msgid "Update completed. Do you want to reboot your receiver?"
+#, fuzzy, python-format
+msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Opdatering færdig. Vil du genstarte din receiver?"
 
 #
@@ -16681,21 +16701,6 @@ msgstr "Ved aktivering vil længden af hver optagelse blive vist i filmlisten (d
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Ved aktivering vil længden af hver optagelse blive vist i filmlisten (dette kan forårsage ekstra indlæsningstid)."
 
-msgid "When enabled, the receiver will automatically use the audio track which you selected before."
-msgstr "Ved aktivering vil receiveren automatisk bruge det lydspor som du har valgt før."
-
-msgid "When enabled, the receiver will automatically use the subtitles which you selected before."
-msgstr "Ved aktivering vil receiveren automatisk bruge den undertekst som du har valgt før."
-
-msgid "When enabled, the receiver will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
-msgstr "Ved aktivering vil receiveren ikke længere monitorere den nuværende transponder for mulige ændringer. Brug ikke denne funktion medmindre du ved hvad du gør."
-
-msgid "When enabled, the receiver will select an AC3 track (when available)."
-msgstr "Ved aktivering vil receiveren væge et AC3 lydspor (hvis det er tilgængeligt)"
-
-msgid "When enabled, the receiver will select an AC3+ track (when available)."
-msgstr "Ved aktivering vil receiveren væge et AC3+ lydspor (hvis det er tilgængeligt)"
-
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr "Når aktiveret, vil denne indstilling have mere vægt end 'Foretrukken tuner for optagelser'."
 
@@ -16714,6 +16719,26 @@ msgstr ""
 
 msgid "When enabled, you will see the available revision on github"
 msgstr ""
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the audio track which you selected before."
+msgstr "Ved aktivering vil receiveren automatisk bruge det lydspor som du har valgt før."
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the subtitles which you selected before."
+msgstr "Ved aktivering vil receiveren automatisk bruge den undertekst som du har valgt før."
+
+#, fuzzy
+msgid "When enabled, your %s %s will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
+msgstr "Ved aktivering vil receiveren ikke længere monitorere den nuværende transponder for mulige ændringer. Brug ikke denne funktion medmindre du ved hvad du gør."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3 track (when available)."
+msgstr "Ved aktivering vil receiveren væge et AC3 lydspor (hvis det er tilgængeligt)"
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3+ track (when available)."
+msgstr "Ved aktivering vil receiveren væge et AC3+ lydspor (hvis det er tilgængeligt)"
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Ved aktivering vil din receiver automatisk opdage aktivitet på VCR SCART indgangen."
@@ -17027,6 +17052,36 @@ msgstr ""
 msgid "Your %s %s (kernel %s) does not have an internet connection"
 msgstr "Din receiver har ikke en internetforbindelse"
 
+#, fuzzy, python-format
+msgid "Your %s %s goes to WOL"
+msgstr "Din modtager genstarter"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting"
+msgstr "Din modtager genstarter"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into android mode"
+msgstr "Din modtager genstarter"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into recovery mode"
+msgstr "Din modtager genstarter"
+
+#, fuzzy, python-format
+msgid "Your %s %s is shutting down"
+msgstr "Din modtager lukker ned"
+
+msgid "Your %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "Your %s %s stores the EPG data every (hours)."
+msgstr ""
+
+#, python-format
+msgid "Your %s %s?"
+msgstr ""
+
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr "Din PIN kode er 0000. Dette er en standard PIN kode og den deaktivere forældrekontrol!\n"
@@ -17039,19 +17094,10 @@ msgstr "Din kollektion overstiger størrelsen af et enkeltlags medium, du har br
 msgid "Your current collection will get lost!"
 msgstr "Din nuværende samling vil forsvinde!"
 
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
-"Your front panel will be updated\n"
-"This may take a few minutes"
-msgstr ""
-"din frontprocessor bliver opdateret\n"
-"Vent venligst til din modtager genstarter\n"
-"Dette kan tage nogle minutter"
-
-#, fuzzy
-msgid ""
-"Your front processor will be updated\n"
-"Please wait until your receiver reboots\n"
+"Your frontprocessor will be updated\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "din frontprocessor bliver opdateret\n"
@@ -17086,10 +17132,6 @@ msgstr ""
 msgid "Your receiver does not have an internet connection"
 msgstr "Din receiver har ikke en internetforbindelse"
 
-#, fuzzy
-msgid "Your receiver goes to WOL"
-msgstr "Din modtager genstarter"
-
 msgid "Your receiver is not connected to the internet, please check your network settings and try again."
 msgstr ""
 
@@ -17118,21 +17160,8 @@ msgstr ""
 "\n"
 "Tryk på OK for at fortsætte."
 
-msgid "Your receiver is rebooting"
-msgstr "Din modtager genstarter"
-
-#, fuzzy
-msgid "Your receiver is rebooting into android mode"
-msgstr "Din modtager genstarter"
-
-#, fuzzy
-msgid "Your receiver is rebooting into recovery mode"
-msgstr "Din modtager genstarter"
-
-msgid "Your receiver is shutting down"
-msgstr "Din modtager lukker ned"
-
-msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
+#, fuzzy, python-format
+msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your %s %s."
 msgstr "Din receiver er måske ubrugelig nu. Referer venligst til manualen for yderligere assistance før du genstarter receiveren."
 
 #, fuzzy, python-format

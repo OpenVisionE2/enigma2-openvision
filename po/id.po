@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 23:06+0330\n"
+"POT-Creation-Date: 2021-01-15 14:16+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Budiarno Pedode\n"
 "Language-Team: \n"
@@ -1459,6 +1459,10 @@ msgstr "<Lokasi film bawaan>"
 msgid "<Last timer location>"
 msgstr "<Lokasi pewaktu terakhir>"
 
+#, fuzzy
+msgid "<Press OK to perform action>"
+msgstr "Tekan OK untuk alihkan pilihan."
+
 msgid "<unknown>"
 msgstr "<tak dikenal>"
 
@@ -1955,12 +1959,6 @@ msgstr "Izinkan terjemahan untuk tuna rungu"
 msgid "Allow unsupported modes"
 msgstr "tidak didukung"
 
-msgid "Allows receiver to read the stored EPG data regularly."
-msgstr ""
-
-msgid "Allows receiver to store the EPG data regularly."
-msgstr ""
-
 #, fuzzy
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr "Gunakan remote kontrol TV"
@@ -1983,6 +1981,12 @@ msgstr ""
 #, fuzzy
 msgid "Allows you to show images."
 msgstr "Anda ingin memasang image ke %s ?"
+
+msgid "Allows your %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows your %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Alpha"
 msgstr "Alfa"
@@ -2032,7 +2036,8 @@ msgstr "Selalu sembunyikan infobar"
 msgid "Always include ECM in recordings"
 msgstr "Selalu sertakan ECM dalam merekam"
 
-msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your receiver. Default: off."
+#, fuzzy
+msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your %s %s. Default: off."
 msgstr "Selalu sertakan pesan-pesan ECM dalam merekam. Hal ini akan mengabaikan penyetelan pewaktu masing-masing secara global. Memungkinkan hasil rekaman selalu di-dekripsi setelah itu (kadang disebut dekoding offline), jika didukung oleh Rx anda. Bawaan: tidak."
 
 msgid "American Samoa"
@@ -3163,10 +3168,10 @@ msgstr ""
 msgid "Choose the location for crash and debug logs folder."
 msgstr ""
 
-msgid "Choose the location where the EPG data will be stored when receiver is shut down. The location must be available at boot time."
+msgid "Choose the location where the EPG data will be stored when your %s %s is shut down. The location must be available at boot time."
 msgstr ""
 
-msgid "Choose the name of the file that holds the EPG data when receiver is shut down. This can be handy to differentiate between several boxes."
+msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -3726,7 +3731,8 @@ msgstr "Atur jenis penunjuk status yg ditampilkan pada daftar film."
 msgid "Configure the video output mode (or resolution)."
 msgstr "Atur mode keluaran video (atau resolusi)."
 
-msgid "Configure the way in which the receiver changes channels."
+#, fuzzy
+msgid "Configure the way in which your %s %s changes channels."
 msgstr "Configure the way in which the receiver changes channels."
 
 msgid "Configure the width of the TrueType font letters used for teletext."
@@ -4931,12 +4937,13 @@ msgstr "Anda ingin memilih tampilan lain?"
 msgid "Do you want to update the package:\n"
 msgstr "Anda ingin menaiktingkatkan paket:\n"
 
-#, python-format
-msgid "Do you want to update your receiver to %s?"
+#, fuzzy, python-format
+msgid "Do you want to update to %s"
 msgstr "Anda ingin memperbarui rx anda ke %s?"
 
-msgid "Do you want to update your receiver?"
-msgstr "Anda ingin memperbarui rx anda?"
+#, fuzzy, python-format
+msgid "Do you want to update your %s %s?"
+msgstr "Anda ingin memperbarui rx anda ke %s?"
 
 #, fuzzy
 msgid "Documentary"
@@ -6216,6 +6223,15 @@ msgstr "Dari:"
 #, fuzzy
 msgid "Front Panel Display"
 msgstr "Tampilan daya"
+
+#, fuzzy, python-format
+msgid ""
+"Front panel your %s %s will be updated\n"
+"This may take a few minutes"
+msgstr ""
+"Prosesor depan anda akan ditingkatkan\n"
+"Mohon tunggu sampai Rx anda reboot\n"
+"Ini bisa memakan waktu beberapa menit"
 
 #, fuzzy, python-format
 msgid "Front processor version: %s"
@@ -7833,10 +7849,14 @@ msgstr "Impor kanal dari penala digunakan"
 msgid "Manufacturer"
 msgstr "Pabrikan"
 
+#, fuzzy, python-format
 msgid ""
 "Manufacturer reset in progress\n"
-"Please wait until enigma2 restarts"
+"Please wait until your %s %s restarts"
 msgstr ""
+"Peningkatan tanpa pengawasan sedang berlangsung\n"
+"Mohon tunggu sampai Rx anda reboot\n"
+"Ini butuh beberapa menit"
 
 msgid "Mara M9"
 msgstr ""
@@ -10147,12 +10167,6 @@ msgid "Recall to previous service"
 msgstr "Kembali ke layanan sebelumnya"
 
 msgid "Receiver or driver does not support FCC"
-msgstr ""
-
-msgid "Receiver reads the stored EPG data every (hours)."
-msgstr ""
-
-msgid "Receiver stores the EPG data every (hours)."
 msgstr ""
 
 msgid "Reception settings"
@@ -13357,11 +13371,12 @@ msgstr ""
 "Ekstensi pengelolaan perangkat lunak tidak terpasang!\n"
 "Mohon pasang dulu."
 
-msgid "The speed of the fan when receiver is in normal use."
-msgstr ""
+#, fuzzy
+msgid "The speed of the fan when your %s %s is in normal use."
+msgstr "Tentukan waktu berakhir untuk mengabaikan pewaktu shutdown ketika Rx pada mode standby"
 
 #, fuzzy
-msgid "The speed of the fan when receiver is in standby mode."
+msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr "Tentukan waktu berakhir untuk mengabaikan pewaktu shutdown ketika Rx pada mode standby"
 
 #, fuzzy, python-format
@@ -13378,18 +13393,20 @@ msgstr "Berkas pewaktu (timers.xml) korup dan tidak bisa dimuat."
 msgid "The user interface of the receiver will now restart to select the selected skin"
 msgstr "Antarmuka pengguna Rx akan memulai ulang untuk menggunakan tampilan yg dipilih"
 
-msgid "The user interface of your receiver is restarting"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting"
 msgstr "Antarmuka pengguna rx anda sedang memulai ulang"
 
+#, fuzzy, python-format
 msgid ""
-"The user interface of your receiver is restarting\n"
+"The user interface of your %s %s is restarting\n"
 "due to an error in mytest.py"
 msgstr ""
 "Antarmuka pengguna rx anda sedang memulai ulang\n"
 "disebabkan kesalahan pada berkas mytest.py"
 
-#, fuzzy
-msgid "The user interface of your receiver is restarting in debug mode"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting in debug mode"
 msgstr "Antarmuka pengguna rx anda sedang memulai ulang"
 
 msgid "The width of the picture. The input will be scaled to match this value."
@@ -13472,7 +13489,7 @@ msgstr ""
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Ini urutan dimana perintah DiSEqC dikirim ke system antena. Urutannya harus sesuai secara tepat dengan urutan peralatan fisik yg disusun sepanjang kabel sinyal (mulai dari ujung Rx)."
 
-msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since the receiver was last booted."
+msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since your %s %s was last booted."
 msgstr ""
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
@@ -14199,9 +14216,10 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr "Tidak bisa menyetel direktori yang diperlukan pada media (misalnya USB flashdisk) - Mohon periksa media lau coba lagi!"
 
+#, fuzzy, python-format
 msgid ""
 "Unattended update in progress\n"
-"Please wait until your receiver reboots\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Peningkatan tanpa pengawasan sedang berlangsung\n"
@@ -14315,7 +14333,8 @@ msgid_plural "Update completed, %d packages were installed."
 msgstr[0] "Pembaruan selesai, %d paket terpasang."
 msgstr[1] "Pembaruan selesai, %d paket terpasang."
 
-msgid "Update completed. Do you want to reboot your receiver?"
+#, fuzzy, python-format
+msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Pembaruan selesai. Apakah anda ingin reboot Rx anda?"
 
 #, fuzzy
@@ -15134,21 +15153,6 @@ msgstr "Ketika diaktifkan, panjang setiap file rekaman akan ditampilkan pada daf
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Ketika diaktifkan, panjang setiap file rekaman akan ditampilkan pada daftar film (ini bisa menyebabkan tambahan waktu untuk memuat daftar)."
 
-msgid "When enabled, the receiver will automatically use the audio track which you selected before."
-msgstr "Ketika diaktifkan, rx akan secara otomatis menggunakan jalur audio yang anda pilih sebelumnya."
-
-msgid "When enabled, the receiver will automatically use the subtitles which you selected before."
-msgstr "Ketika diaktifkan, rx akan secara otomatis menggunakan terjemahan yang anda pilih sebelumnya."
-
-msgid "When enabled, the receiver will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
-msgstr "Ketika diaktifkan, rx tidak akan memonitor lagi transponder yg ditala terhadap perubahan yg mungkin. Jangan gunakan pilihan ini kecuali anda tau apa yang anda lakukan."
-
-msgid "When enabled, the receiver will select an AC3 track (when available)."
-msgstr "Ketika diaktifkan, rx akan memilih jalur AC3 (saat tersedia)."
-
-msgid "When enabled, the receiver will select an AC3+ track (when available)."
-msgstr "Ketika diaktifkan, rx akan memilih jalur AC3+ (saat tersedia)."
-
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr "Ketika diaktifkan, setelan ini punya bobot lebih daripada 'Penala pilihan untuk merekam'."
 
@@ -15166,6 +15170,26 @@ msgstr ""
 
 msgid "When enabled, you will see the available revision on github"
 msgstr ""
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the audio track which you selected before."
+msgstr "Ketika diaktifkan, rx akan secara otomatis menggunakan jalur audio yang anda pilih sebelumnya."
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the subtitles which you selected before."
+msgstr "Ketika diaktifkan, rx akan secara otomatis menggunakan terjemahan yang anda pilih sebelumnya."
+
+#, fuzzy
+msgid "When enabled, your %s %s will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
+msgstr "Ketika diaktifkan, rx tidak akan memonitor lagi transponder yg ditala terhadap perubahan yg mungkin. Jangan gunakan pilihan ini kecuali anda tau apa yang anda lakukan."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3 track (when available)."
+msgstr "Ketika diaktifkan, rx akan memilih jalur AC3 (saat tersedia)."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3+ track (when available)."
+msgstr "Ketika diaktifkan, rx akan memilih jalur AC3+ (saat tersedia)."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Ketika diaktifkan, Rx anda akan mendeteksi aktifitas pada input SCART VCR"
@@ -15472,6 +15496,36 @@ msgstr ""
 msgid "Your %s %s (kernel %s) does not have an internet connection"
 msgstr "Receiver anda tidak ada koneksi internet"
 
+#, fuzzy, python-format
+msgid "Your %s %s goes to WOL"
+msgstr "Receiver anda sedang reboot"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting"
+msgstr "Receiver anda sedang reboot"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into android mode"
+msgstr "Receiver anda sedang reboot"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into recovery mode"
+msgstr "Receiver anda sedang reboot"
+
+#, fuzzy, python-format
+msgid "Your %s %s is shutting down"
+msgstr "Receiver anda sedang dimatikan"
+
+msgid "Your %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "Your %s %s stores the EPG data every (hours)."
+msgstr ""
+
+#, python-format
+msgid "Your %s %s?"
+msgstr ""
+
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr "Kode PIN anda adalah 0000. Ini adalah kode PIN bawaan pabrik dan ia mematikan kontrol orang tua!\n"
@@ -15482,19 +15536,10 @@ msgstr "Koleksi anda melebihi ukuran media satu lapis, anda memerlukan sebuah DV
 msgid "Your current collection will get lost!"
 msgstr "Koleksi anda saat ini akan hilang!"
 
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
-"Your front panel will be updated\n"
-"This may take a few minutes"
-msgstr ""
-"Prosesor depan anda akan ditingkatkan\n"
-"Mohon tunggu sampai Rx anda reboot\n"
-"Ini bisa memakan waktu beberapa menit"
-
-#, fuzzy
-msgid ""
-"Your front processor will be updated\n"
-"Please wait until your receiver reboots\n"
+"Your frontprocessor will be updated\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Prosesor depan anda akan ditingkatkan\n"
@@ -15527,10 +15572,6 @@ msgstr "Rx anda bisa menggunakan amplitude tone. Periksa manual Rx anda untuk in
 msgid "Your receiver does not have an internet connection"
 msgstr "Receiver anda tidak ada koneksi internet"
 
-#, fuzzy
-msgid "Your receiver goes to WOL"
-msgstr "Receiver anda sedang reboot"
-
 msgid "Your receiver is not connected to the internet, please check your network settings and try again."
 msgstr ""
 
@@ -15558,21 +15599,8 @@ msgstr ""
 "\n"
 "Mohon tekan OK untuk lanjut."
 
-msgid "Your receiver is rebooting"
-msgstr "Receiver anda sedang reboot"
-
-#, fuzzy
-msgid "Your receiver is rebooting into android mode"
-msgstr "Receiver anda sedang reboot"
-
-#, fuzzy
-msgid "Your receiver is rebooting into recovery mode"
-msgstr "Receiver anda sedang reboot"
-
-msgid "Your receiver is shutting down"
-msgstr "Receiver anda sedang dimatikan"
-
-msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
+#, fuzzy, python-format
+msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your %s %s."
 msgstr "Rx anda mungkin tidak bisa digunakan sekarang. Mohon periksa manual untuk pertolongan lanjut sebelum mereboot Rx anda."
 
 #, fuzzy, python-format

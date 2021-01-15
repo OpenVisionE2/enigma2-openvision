@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 23:06+0330\n"
+"POT-Creation-Date: 2021-01-15 14:16+0330\n"
 "PO-Revision-Date: 2021-01-09 00:32+0200\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -1334,6 +1334,10 @@ msgstr "<Numatytoji filmų vieta>"
 msgid "<Last timer location>"
 msgstr "<Paskutinio laikmačio vieta>"
 
+#, fuzzy
+msgid "<Press OK to perform action>"
+msgstr "Spauskite OK, kad pridėtumėte funkciją."
+
 msgid "<unknown>"
 msgstr "<nežinomas>"
 
@@ -1802,12 +1806,6 @@ msgstr "Leisti subtitrus turintiems klausos sutrikimų"
 msgid "Allow unsupported modes"
 msgstr "Leisti nepalaikomus režimus"
 
-msgid "Allows receiver to read the stored EPG data regularly."
-msgstr "Leidžia imtuvui reguliariai skaityti išsaugotus EPG duomenis."
-
-msgid "Allows receiver to store the EPG data regularly."
-msgstr "Leidžia imtuvui reguliariai saugoti EPG duomenis."
-
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr "Leidžia naudoti televizoriaus nuotolinio valdymo pultą imtuvui valdyti."
 
@@ -1828,6 +1826,14 @@ msgstr "Leidžia valdyti mygtuką pasirinktiems veiksmams atlikti."
 
 msgid "Allows you to show images."
 msgstr "Leidžia rodyti atvaizdus."
+
+#, fuzzy
+msgid "Allows your %s %s to read the stored EPG data regularly."
+msgstr "Leidžia imtuvui reguliariai skaityti išsaugotus EPG duomenis."
+
+#, fuzzy
+msgid "Allows your %s %s to store the EPG data regularly."
+msgstr "Leidžia imtuvui reguliariai saugoti EPG duomenis."
 
 msgid "Alpha"
 msgstr "Alfa"
@@ -1874,7 +1880,8 @@ msgstr "Visada slėpti info juostą"
 msgid "Always include ECM in recordings"
 msgstr "Į įrašus visada įtraukti ECM"
 
-msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your receiver. Default: off."
+#, fuzzy
+msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your %s %s. Default: off."
 msgstr "Į įrašus visada įtraukti ECM pranešimus. Tai atšaukia bendruosius visų laikmačių nustatymus. Tai leidžia įrašus visada vėliau iššifruoti (tai kartais vadinama iškodavimu atsijungus), jei tą palaiko jūsų imtuvas. Numatytasis: 'Ne'."
 
 msgid "American Samoa"
@@ -2964,10 +2971,12 @@ msgstr "Pasirinkite priekinio ekranėlio rodomą laiko formavimo stilių. 'H' / 
 msgid "Choose the location for crash and debug logs folder."
 msgstr "Pasirinkite vietą gedimo ir derinimo žurnalų aplankui."
 
-msgid "Choose the location where the EPG data will be stored when receiver is shut down. The location must be available at boot time."
+#, fuzzy
+msgid "Choose the location where the EPG data will be stored when your %s %s is shut down. The location must be available at boot time."
 msgstr "Pasirinkite vietą, kurioje bus saugomi EPG duomenys, kai imtuvas bus išjungtas. Vieta turi būti prieinama įkrovos metu."
 
-msgid "Choose the name of the file that holds the EPG data when receiver is shut down. This can be handy to differentiate between several boxes."
+#, fuzzy
+msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr "Pasirinkite failo, kuriame yra EPG duomenys, kai imtuvas yra išjungtas, pavadinimą. Tai gali būti patogu atskirti kelis langelius."
 
 msgid "Choose whether AAC sound tracks should be transcoded."
@@ -3495,7 +3504,8 @@ msgstr "Konfigūruoti būsenos rodymo piktogramas, kurios bus rodomos filmų są
 msgid "Configure the video output mode (or resolution)."
 msgstr "Nustatykite vaizdo išvesties režimą (ar rezoliuciją)."
 
-msgid "Configure the way in which the receiver changes channels."
+#, fuzzy
+msgid "Configure the way in which your %s %s changes channels."
 msgstr "Nustatykite būdą, kaip imtuvas rodys vaizdą, perjungiant kanalus."
 
 msgid "Configure the width of the TrueType font letters used for teletext."
@@ -4627,12 +4637,13 @@ msgstr "Ar norite pasirinkti kitą temą?"
 msgid "Do you want to update the package:\n"
 msgstr "Ar norite atnaujinti paketą:\n"
 
-#, python-format
-msgid "Do you want to update your receiver to %s?"
+#, fuzzy, python-format
+msgid "Do you want to update to %s"
 msgstr "Ar norite atnaujinti įrangą į %s?"
 
-msgid "Do you want to update your receiver?"
-msgstr "Ar norite atnaujinti imtuvo įrangą?"
+#, fuzzy, python-format
+msgid "Do you want to update your %s %s?"
+msgstr "Ar norite atnaujinti įrangą į %s?"
 
 msgid "Documentary"
 msgstr "Dokumentika"
@@ -5822,6 +5833,14 @@ msgstr "Nuo:"
 #, fuzzy
 msgid "Front Panel Display"
 msgstr "Priekinio skydelio ekranas"
+
+#, fuzzy, python-format
+msgid ""
+"Front panel your %s %s will be updated\n"
+"This may take a few minutes"
+msgstr ""
+"Jūsų priekinis skydelis bus atnaujintas\n"
+"Tai gali užtrukti kelias minutes"
 
 #, python-format
 msgid "Front processor version: %s"
@@ -7348,9 +7367,10 @@ msgstr "Rankiniu būdu importuoti iš nuotolinio imtuvo"
 msgid "Manufacturer"
 msgstr "Gamintojas"
 
+#, fuzzy, python-format
 msgid ""
 "Manufacturer reset in progress\n"
-"Please wait until enigma2 restarts"
+"Please wait until your %s %s restarts"
 msgstr ""
 "Vykdomi gamintojo nustatymai iš naujo\n"
 "Prašome laukti, kol enigma2 pasileis iš naujo"
@@ -9519,12 +9539,6 @@ msgstr "Grįžti į ankstesnį kanalą"
 
 msgid "Receiver or driver does not support FCC"
 msgstr "Imtuvas arba tvarkyklė nepalaiko FCC"
-
-msgid "Receiver reads the stored EPG data every (hours)."
-msgstr "Imtuvas kas (valandomis) skaito saugomus EPG duomenis."
-
-msgid "Receiver stores the EPG data every (hours)."
-msgstr "Imtuvas EPG duomenis saugo kas (valandomis)."
 
 msgid "Reception settings"
 msgstr "Priėmimo nustatymai"
@@ -12560,10 +12574,12 @@ msgstr ""
 "Programinės įrangos tvarkyklės priedas neįdiegtas!\n"
 "Įdiekite jį."
 
-msgid "The speed of the fan when receiver is in normal use."
+#, fuzzy
+msgid "The speed of the fan when your %s %s is in normal use."
 msgstr "Ventiliatoriaus greitis, kai imtuvas naudojamas įprastai."
 
-msgid "The speed of the fan when receiver is in standby mode."
+#, fuzzy
+msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr "Ventiliatoriaus greitis, kai imtuvas įjungtas budėjimo režimu."
 
 #, python-format
@@ -12579,17 +12595,20 @@ msgstr "Laikmačio failas (timers.xml) yra sugadintas ir nebuvo užkrautas."
 msgid "The user interface of the receiver will now restart to select the selected skin"
 msgstr "Kad atverti pasirinktą vartotojo aplinkos temą, grafinė aplinka bus paleista iš naujo"
 
-msgid "The user interface of your receiver is restarting"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting"
 msgstr "Vartotojo grafinė aplinka paleidžiama iš naujo"
 
+#, fuzzy, python-format
 msgid ""
-"The user interface of your receiver is restarting\n"
+"The user interface of your %s %s is restarting\n"
 "due to an error in mytest.py"
 msgstr ""
 "Vartotojo grafinė aplinka bus paleista iš naujo\n"
 "dėl klaidos mytest.py"
 
-msgid "The user interface of your receiver is restarting in debug mode"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting in debug mode"
 msgstr "Jūsų imtuvo vartotojo sąsaja paleidžiama iš naujo derinimo režimu"
 
 msgid "The width of the picture. The input will be scaled to match this value."
@@ -12670,7 +12689,8 @@ msgstr "Tai kelių tipų imtuvas. Galimos parinktys priklauso nuo aparatūros."
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Tai yra tvarka, kuria DiSEqC komandos siunčiamos į antenos sistemą. Užsakymas turi tiksliai atitikti tvarką, pagal kurią fiziniai įrenginiai išdėstomi palei signalo kabelį (pradedant imtuvo pabaigos)."
 
-msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since the receiver was last booted."
+#, fuzzy
+msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since your %s %s was last booted."
 msgstr "Tai yra kiekvieno derinimo žurnalo įrašo priešdėlis. 'įkrovos laikas' yra sekundžių skaičius nuo tada, kai imtuvas buvo paskutinį kartą paleistas."
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
@@ -13356,9 +13376,10 @@ msgstr "Neįmanoma pakeisti slaptažodžio!"
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr "Nepavyko sukurti reikiamų katalogų laikmenose (pvz., USB atmintinėje arba kietame diske) - patikrinkite laikmeną ir bandykite dar kartą!"
 
+#, fuzzy, python-format
 msgid ""
 "Unattended update in progress\n"
-"Please wait until your receiver reboots\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Vyksta atnaujinimas\n"
@@ -13465,7 +13486,8 @@ msgstr[0] "Atnaujinta, įdiegtas %d paketas."
 msgstr[1] "Atnaujinta, įdiegti %d paketai."
 msgstr[2] "Atnaujinta, įdiegta %d paketų."
 
-msgid "Update completed. Do you want to reboot your receiver?"
+#, fuzzy, python-format
+msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Atnaujinta. Ar norite paleisti imtuvą iš naujo?"
 
 msgid "Update failed!"
@@ -14253,21 +14275,6 @@ msgstr "Kai čia įjungta, filmų sąraše bus rodoma kiekvieno įrašo trukmė 
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Įjungus kiekvieno įrašo ilgį, jis bus rodomas sąraše (tai gali sukelti papildomą įkėlimo laiką)."
 
-msgid "When enabled, the receiver will automatically use the audio track which you selected before."
-msgstr "Kai čia įjungta, imtuvas automatiškai naudos anksčiau pasirinktą garso takelį."
-
-msgid "When enabled, the receiver will automatically use the subtitles which you selected before."
-msgstr "Kai čia įjungta, imtuvas automatiškai pasirinks subtitrus, kurie buvo naudoti anksčiau."
-
-msgid "When enabled, the receiver will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
-msgstr "Kai čia įjungta, imtuvas daugiau nestebės pasikeitimų esamame transponderyje. Nenaudokite šios nuostatos, jei tikslai nežinote, ką darote."
-
-msgid "When enabled, the receiver will select an AC3 track (when available)."
-msgstr "Kai čia įjungta, esant galimybei, imtuvas pasirinks AC3 takelį."
-
-msgid "When enabled, the receiver will select an AC3+ track (when available)."
-msgstr "Kai čia įjungta, esant galimybei, imtuvas pasirinks AC3+ takelį."
-
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr "Kai įjungta, šis pasirinkimas turi daugiau svorio, nei 'Pageidautinas imtuvas įrašams'."
 
@@ -14285,6 +14292,26 @@ msgstr "Kai įjungta, opkg sąraše pamatysite dev, staticdev, dbg, doc, src ir 
 
 msgid "When enabled, you will see the available revision on github"
 msgstr "Kai įjungta, pamatysite galimą github pakeitimą"
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the audio track which you selected before."
+msgstr "Kai čia įjungta, imtuvas automatiškai naudos anksčiau pasirinktą garso takelį."
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the subtitles which you selected before."
+msgstr "Kai čia įjungta, imtuvas automatiškai pasirinks subtitrus, kurie buvo naudoti anksčiau."
+
+#, fuzzy
+msgid "When enabled, your %s %s will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
+msgstr "Kai čia įjungta, imtuvas daugiau nestebės pasikeitimų esamame transponderyje. Nenaudokite šios nuostatos, jei tikslai nežinote, ką darote."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3 track (when available)."
+msgstr "Kai čia įjungta, esant galimybei, imtuvas pasirinks AC3 takelį."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3+ track (when available)."
+msgstr "Kai čia įjungta, esant galimybei, imtuvas pasirinks AC3+ takelį."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Kai įjungta, imtuvas aptiks veikiančias įvestis VCR SCART."
@@ -14574,6 +14601,38 @@ msgstr "Panašu, kad naudojamas laiko poslinkis!"
 msgid "Your %s %s (kernel %s) does not have an internet connection"
 msgstr "Jūsų %s %s (branduolio %s) neturi interneto ryšio"
 
+#, fuzzy, python-format
+msgid "Your %s %s goes to WOL"
+msgstr "Jūsų imtuvas eina į pabudimą per tinklą"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting"
+msgstr "Jūsų imtuvas paleidžiamas iš naujo"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into android mode"
+msgstr "Jūsų imtuvas paleidžiamas į android režimą"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into recovery mode"
+msgstr "Jūsų imtuvas paleidžiamas į atkūrimo režimą"
+
+#, fuzzy, python-format
+msgid "Your %s %s is shutting down"
+msgstr "Jūsų Imtuvas išjungiamas"
+
+#, fuzzy
+msgid "Your %s %s reads the stored EPG data every (hours)."
+msgstr "Imtuvas kas (valandomis) skaito saugomus EPG duomenis."
+
+#, fuzzy
+msgid "Your %s %s stores the EPG data every (hours)."
+msgstr "Imtuvas EPG duomenis saugo kas (valandomis)."
+
+#, python-format
+msgid "Your %s %s?"
+msgstr ""
+
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr "JŪSŲ PIN kodas yra 0000. Tai yra numatytasis PIN kodas ir jis išjungia tėvų kontrolę!\n"
 
@@ -14583,16 +14642,10 @@ msgstr "Jūsų kolekcija viršyja vieno sluoksnio DVD disko dydį, jums reikės 
 msgid "Your current collection will get lost!"
 msgstr "Jūsų dabartinė kolekcija bus prarasta!"
 
+#, fuzzy, python-format
 msgid ""
-"Your front panel will be updated\n"
-"This may take a few minutes"
-msgstr ""
-"Jūsų priekinis skydelis bus atnaujintas\n"
-"Tai gali užtrukti kelias minutes"
-
-msgid ""
-"Your front processor will be updated\n"
-"Please wait until your receiver reboots\n"
+"Your frontprocessor will be updated\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Jūsų priekinis procesorius bus atnaujintas\n"
@@ -14625,9 +14678,6 @@ msgstr "Jūsų imtuvas gali naudoti tono amplitudę. Jei reikia daugiau informac
 msgid "Your receiver does not have an internet connection"
 msgstr "Jūsų imtuvas neturi interneto ryšio"
 
-msgid "Your receiver goes to WOL"
-msgstr "Jūsų imtuvas eina į pabudimą per tinklą"
-
 msgid "Your receiver is not connected to the internet, please check your network settings and try again."
 msgstr "Imtuvas neprijungtas prie interneto, patikrinkite tinklo nustatymus ir bandykite dar kartą."
 
@@ -14655,19 +14705,8 @@ msgstr ""
 "\n"
 "Spauskite 'OK', kad tęsti."
 
-msgid "Your receiver is rebooting"
-msgstr "Jūsų imtuvas paleidžiamas iš naujo"
-
-msgid "Your receiver is rebooting into android mode"
-msgstr "Jūsų imtuvas paleidžiamas į android režimą"
-
-msgid "Your receiver is rebooting into recovery mode"
-msgstr "Jūsų imtuvas paleidžiamas į atkūrimo režimą"
-
-msgid "Your receiver is shutting down"
-msgstr "Jūsų Imtuvas išjungiamas"
-
-msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
+#, fuzzy, python-format
+msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your %s %s."
 msgstr "Jūsų imtuvas gali tapti netinkamu naudoti. Vadovaukitės vartotojo vadovu, prieš paleisdami imtuvą iš naujo."
 
 #, python-format

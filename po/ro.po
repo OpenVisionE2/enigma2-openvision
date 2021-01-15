@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 23:06+0330\n"
+"POT-Creation-Date: 2021-01-15 14:16+0330\n"
 "PO-Revision-Date: 2010-03-09 21:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: HDTV ROMANIA(superonic,costel_mbc,neutrin,otheitis,cipy_1982,neutrin,runcanion)\n"
@@ -1316,6 +1316,10 @@ msgstr ""
 msgid "<Last timer location>"
 msgstr ""
 
+#, fuzzy
+msgid "<Press OK to perform action>"
+msgstr "Apasati OK pentru a edita setarile."
+
 msgid "<unknown>"
 msgstr "<necunoscut>"
 
@@ -1799,12 +1803,6 @@ msgstr ""
 msgid "Allow unsupported modes"
 msgstr ""
 
-msgid "Allows receiver to read the stored EPG data regularly."
-msgstr ""
-
-msgid "Allows receiver to store the EPG data regularly."
-msgstr ""
-
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr ""
 
@@ -1826,6 +1824,12 @@ msgstr ""
 #, fuzzy
 msgid "Allows you to show images."
 msgstr "Doriti sa instalati pachetul:\n"
+
+msgid "Allows your %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows your %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Alpha"
 msgstr "Alpha"
@@ -1876,7 +1880,7 @@ msgstr ""
 msgid "Always include ECM in recordings"
 msgstr ""
 
-msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your receiver. Default: off."
+msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your %s %s. Default: off."
 msgstr ""
 
 msgid "American Samoa"
@@ -3010,10 +3014,10 @@ msgstr ""
 msgid "Choose the location for crash and debug logs folder."
 msgstr ""
 
-msgid "Choose the location where the EPG data will be stored when receiver is shut down. The location must be available at boot time."
+msgid "Choose the location where the EPG data will be stored when your %s %s is shut down. The location must be available at boot time."
 msgstr ""
 
-msgid "Choose the name of the file that holds the EPG data when receiver is shut down. This can be handy to differentiate between several boxes."
+msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 msgid "Choose whether AAC sound tracks should be transcoded."
@@ -3570,7 +3574,7 @@ msgstr ""
 msgid "Configure the video output mode (or resolution)."
 msgstr ""
 
-msgid "Configure the way in which the receiver changes channels."
+msgid "Configure the way in which your %s %s changes channels."
 msgstr ""
 
 msgid "Configure the width of the TrueType font letters used for teletext."
@@ -4771,11 +4775,12 @@ msgid "Do you want to update the package:\n"
 msgstr "Doriti actualizarea pachetului:\n"
 
 #, fuzzy, python-format
-msgid "Do you want to update your receiver to %s?"
+msgid "Do you want to update to %s"
 msgstr "Doriti restaurarea setarilor dvs?"
 
-msgid "Do you want to update your receiver?"
-msgstr ""
+#, fuzzy, python-format
+msgid "Do you want to update your %s %s?"
+msgstr "Doriti restaurarea setarilor dvs?"
 
 msgid "Documentary"
 msgstr ""
@@ -6004,6 +6009,12 @@ msgid "From:"
 msgstr ""
 
 msgid "Front Panel Display"
+msgstr ""
+
+#, python-format
+msgid ""
+"Front panel your %s %s will be updated\n"
+"This may take a few minutes"
 msgstr ""
 
 #, fuzzy, python-format
@@ -7617,9 +7628,10 @@ msgstr ""
 msgid "Manufacturer"
 msgstr "Fabricant"
 
+#, python-format
 msgid ""
 "Manufacturer reset in progress\n"
-"Please wait until enigma2 restarts"
+"Please wait until your %s %s restarts"
 msgstr ""
 
 msgid "Mara M9"
@@ -9919,12 +9931,6 @@ msgid "Recall to previous service"
 msgstr ""
 
 msgid "Receiver or driver does not support FCC"
-msgstr ""
-
-msgid "Receiver reads the stored EPG data every (hours)."
-msgstr ""
-
-msgid "Receiver stores the EPG data every (hours)."
 msgstr ""
 
 #, fuzzy
@@ -13129,11 +13135,12 @@ msgstr ""
 "Plugin-ul LAN wireless nu este instalat!\n"
 "Va rugam sa-l instalati."
 
-msgid "The speed of the fan when receiver is in normal use."
-msgstr ""
+#, fuzzy
+msgid "The speed of the fan when your %s %s is in normal use."
+msgstr "Va rugam asteptati pana cand reteaua se va restarta..."
 
 #, fuzzy
-msgid "The speed of the fan when receiver is in standby mode."
+msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr "Va rugam asteptati pana cand reteaua se va restarta..."
 
 #, python-format
@@ -13150,17 +13157,18 @@ msgstr "Fisierul timer (timer.xml) este corupt si nu a putut fi incarcat."
 msgid "The user interface of the receiver will now restart to select the selected skin"
 msgstr ""
 
-#, fuzzy
-msgid "The user interface of your receiver is restarting"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting"
 msgstr "Va rugam asteptati pana cand reteaua se va restarta..."
 
+#, fuzzy, python-format
 msgid ""
-"The user interface of your receiver is restarting\n"
+"The user interface of your %s %s is restarting\n"
 "due to an error in mytest.py"
-msgstr ""
+msgstr "Va rugam asteptati pana cand reteaua se va restarta..."
 
-#, fuzzy
-msgid "The user interface of your receiver is restarting in debug mode"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting in debug mode"
 msgstr "Va rugam asteptati pana cand reteaua se va restarta..."
 
 msgid "The width of the picture. The input will be scaled to match this value."
@@ -13237,7 +13245,7 @@ msgstr ""
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr ""
 
-msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since the receiver was last booted."
+msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since your %s %s was last booted."
 msgstr ""
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
@@ -13951,9 +13959,10 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr ""
 
+#, python-format
 msgid ""
 "Unattended update in progress\n"
-"Please wait until your receiver reboots\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 
@@ -14061,8 +14070,9 @@ msgid_plural "Update completed, %d packages were installed."
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Update completed. Do you want to reboot your receiver?"
-msgstr ""
+#, fuzzy, python-format
+msgid "Update completed. Do you want to reboot your %s %s?"
+msgstr "Doriti restaurarea setarilor dvs?"
 
 #, fuzzy
 msgid "Update failed!"
@@ -14872,21 +14882,6 @@ msgstr ""
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr ""
 
-msgid "When enabled, the receiver will automatically use the audio track which you selected before."
-msgstr ""
-
-msgid "When enabled, the receiver will automatically use the subtitles which you selected before."
-msgstr ""
-
-msgid "When enabled, the receiver will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
-msgstr ""
-
-msgid "When enabled, the receiver will select an AC3 track (when available)."
-msgstr ""
-
-msgid "When enabled, the receiver will select an AC3+ track (when available)."
-msgstr ""
-
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr ""
 
@@ -14904,6 +14899,21 @@ msgid "When enabled, you will see dev, staticdev, dbg, doc, src and po packages 
 msgstr ""
 
 msgid "When enabled, you will see the available revision on github"
+msgstr ""
+
+msgid "When enabled, your %s %s will automatically use the audio track which you selected before."
+msgstr ""
+
+msgid "When enabled, your %s %s will automatically use the subtitles which you selected before."
+msgstr ""
+
+msgid "When enabled, your %s %s will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
+msgstr ""
+
+msgid "When enabled, your %s %s will select an AC3 track (when available)."
+msgstr ""
+
+msgid "When enabled, your %s %s will select an AC3+ track (when available)."
 msgstr ""
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
@@ -15185,6 +15195,36 @@ msgstr ""
 msgid "Your %s %s (kernel %s) does not have an internet connection"
 msgstr ""
 
+#, python-format
+msgid "Your %s %s goes to WOL"
+msgstr ""
+
+#, python-format
+msgid "Your %s %s is rebooting"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into android mode"
+msgstr "Reporniti sistemul acum?"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into recovery mode"
+msgstr "Reporniti sistemul acum?"
+
+#, python-format
+msgid "Your %s %s is shutting down"
+msgstr ""
+
+msgid "Your %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "Your %s %s stores the EPG data every (hours)."
+msgstr ""
+
+#, python-format
+msgid "Your %s %s?"
+msgstr ""
+
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr ""
 
@@ -15194,14 +15234,10 @@ msgstr "Colectia ta excede marimea unui sigle layer medium, vei avea nevoie de u
 msgid "Your current collection will get lost!"
 msgstr ""
 
+#, python-format
 msgid ""
-"Your front panel will be updated\n"
-"This may take a few minutes"
-msgstr ""
-
-msgid ""
-"Your front processor will be updated\n"
-"Please wait until your receiver reboots\n"
+"Your frontprocessor will be updated\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 
@@ -15229,9 +15265,6 @@ msgstr ""
 msgid "Your receiver does not have an internet connection"
 msgstr ""
 
-msgid "Your receiver goes to WOL"
-msgstr ""
-
 msgid "Your receiver is not connected to the internet, please check your network settings and try again."
 msgstr ""
 
@@ -15250,19 +15283,8 @@ msgid ""
 "Please press OK to continue."
 msgstr ""
 
-msgid "Your receiver is rebooting"
-msgstr ""
-
-msgid "Your receiver is rebooting into android mode"
-msgstr ""
-
-msgid "Your receiver is rebooting into recovery mode"
-msgstr ""
-
-msgid "Your receiver is shutting down"
-msgstr ""
-
-msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
+#, python-format
+msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your %s %s."
 msgstr ""
 
 #, python-format

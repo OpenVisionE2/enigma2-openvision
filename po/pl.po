@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 23:06+0330\n"
+"POT-Creation-Date: 2021-01-15 14:16+0330\n"
 "PO-Revision-Date: 2020-12-02 19:26+0100\n"
 "Last-Translator: blzr <blzr@o2.pl>\n"
 "Language-Team: \n"
@@ -1371,6 +1371,10 @@ msgstr "<Domyślna lokalizacja nagrań>"
 msgid "<Last timer location>"
 msgstr "<Ostatnia lokalizacja timera>"
 
+#, fuzzy
+msgid "<Press OK to perform action>"
+msgstr "Wciśnij OK, aby przypisać funkcję"
+
 msgid "<unknown>"
 msgstr "<nieznany>"
 
@@ -1859,12 +1863,6 @@ msgstr "Zezwalaj na napisy dla niesłyszących"
 msgid "Allow unsupported modes"
 msgstr "Pozwól na tryby nieobsługiwane"
 
-msgid "Allows receiver to read the stored EPG data regularly."
-msgstr ""
-
-msgid "Allows receiver to store the EPG data regularly."
-msgstr ""
-
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr "Pozwala używać pilota od TV do sterowania odbiornikiem."
 
@@ -1888,6 +1886,12 @@ msgid "Allows you to show images."
 msgstr ""
 "Czy chcesz zainstalować image\n"
 "%s"
+
+msgid "Allows your %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows your %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Alpha"
 msgstr "Przezroczystość"
@@ -1934,7 +1938,8 @@ msgstr "Zawsze ukrywaj infobar"
 msgid "Always include ECM in recordings"
 msgstr "Zawsze zawieraj ECMy w nagraniach"
 
-msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your receiver. Default: off."
+#, fuzzy
+msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your %s %s. Default: off."
 msgstr "Gdy włączone, w nagraniach zawsze będą zawarte ECMy. Globalnie nadpisuje ustawienia dla poszczególnych timerów. Pozwala na późniejsze odkodowanie ('dekodowanie offline'), jeżeli wspierane przez odbiornik. Domyślnie: wyłączone."
 
 msgid "American Samoa"
@@ -3057,10 +3062,10 @@ msgstr ""
 msgid "Choose the location for crash and debug logs folder."
 msgstr ""
 
-msgid "Choose the location where the EPG data will be stored when receiver is shut down. The location must be available at boot time."
+msgid "Choose the location where the EPG data will be stored when your %s %s is shut down. The location must be available at boot time."
 msgstr ""
 
-msgid "Choose the name of the file that holds the EPG data when receiver is shut down. This can be handy to differentiate between several boxes."
+msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -3609,7 +3614,8 @@ msgstr "Skonfiguruj rodzaj ikon statusu wyświetlanych w liscie nagrań."
 msgid "Configure the video output mode (or resolution)."
 msgstr "Skonfiguruj tryb wyjścia video (lub rozdzielczość)."
 
-msgid "Configure the way in which the receiver changes channels."
+#, fuzzy
+msgid "Configure the way in which your %s %s changes channels."
 msgstr "Skonfiguruj tryb zmiany kanałów."
 
 msgid "Configure the width of the TrueType font letters used for teletext."
@@ -4784,12 +4790,13 @@ msgstr "Czy chcesz wybrać inną skórkę?"
 msgid "Do you want to update the package:\n"
 msgstr "Chcesz zaktualizować pakiet:\n"
 
-#, python-format
-msgid "Do you want to update your receiver to %s?"
+#, fuzzy, python-format
+msgid "Do you want to update to %s"
 msgstr "Chcesz zaktualizować oprogramowanie odbiornika do %s?"
 
-msgid "Do you want to update your receiver?"
-msgstr "Chcesz zaktualizować oprogramowanie odbiornika?"
+#, fuzzy, python-format
+msgid "Do you want to update your %s %s?"
+msgstr "Chcesz zaktualizować oprogramowanie odbiornika do %s?"
 
 #, fuzzy
 msgid "Documentary"
@@ -6031,6 +6038,15 @@ msgstr "Z:"
 #, fuzzy
 msgid "Front Panel Display"
 msgstr "Włącz wyświetlacz"
+
+#, fuzzy, python-format
+msgid ""
+"Front panel your %s %s will be updated\n"
+"This may take a few minutes"
+msgstr ""
+"Nastąpi update frontprocesora\n"
+"Czekaj aż odbiornik zrestartuje się\n"
+"To może potrwać kilka minut"
 
 #, fuzzy, python-format
 msgid "Front processor version: %s"
@@ -7614,9 +7630,10 @@ msgstr "Ręczny import z tunera rezerwowego"
 msgid "Manufacturer"
 msgstr "Producent"
 
+#, fuzzy, python-format
 msgid ""
 "Manufacturer reset in progress\n"
-"Please wait until enigma2 restarts"
+"Please wait until your %s %s restarts"
 msgstr ""
 "Trwa reset do ustawień producenta\n"
 "Poczekaj aż enigma zrestartuje się"
@@ -9874,12 +9891,6 @@ msgid "Recall to previous service"
 msgstr "Powróć do poprzedniego kanału"
 
 msgid "Receiver or driver does not support FCC"
-msgstr ""
-
-msgid "Receiver reads the stored EPG data every (hours)."
-msgstr ""
-
-msgid "Receiver stores the EPG data every (hours)."
 msgstr ""
 
 msgid "Reception settings"
@@ -13024,11 +13035,12 @@ msgstr ""
 "Rozszerzenie 'Zarządzanie oprogramowaniem' nie jest zainstalowane!\n"
 "Zainstaluj je najpierw."
 
-msgid "The speed of the fan when receiver is in normal use."
-msgstr ""
+#, fuzzy
+msgid "The speed of the fan when your %s %s is in normal use."
+msgstr "Ustaw koniec czasu ignorowania 'timera wyłączania' gdy odbiornik jest w trybie czuwania."
 
 #, fuzzy
-msgid "The speed of the fan when receiver is in standby mode."
+msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr "Ustaw koniec czasu ignorowania 'timera wyłączania' gdy odbiornik jest w trybie czuwania."
 
 #, python-format
@@ -13045,17 +13057,20 @@ msgstr "Plik Timera (timers.xml) jest uszkodzony i nie może być załadowany."
 msgid "The user interface of the receiver will now restart to select the selected skin"
 msgstr "GUI odbiornika zostanie zrestartowane aby zastosować wybraną skórkę"
 
-msgid "The user interface of your receiver is restarting"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting"
 msgstr "Trwa restart GUI odbiornika"
 
+#, fuzzy, python-format
 msgid ""
-"The user interface of your receiver is restarting\n"
+"The user interface of your %s %s is restarting\n"
 "due to an error in mytest.py"
 msgstr ""
 "Trwa restart GUI odbiornika\n"
 "z powodu błędu w mytest.py"
 
-msgid "The user interface of your receiver is restarting in debug mode"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting in debug mode"
 msgstr "GUI odbiornika jest restartowane do trybu debugowania"
 
 msgid "The width of the picture. The input will be scaled to match this value."
@@ -13136,7 +13151,7 @@ msgstr "Ta głowica jest wielosystemowa, dostępne opcje zależą od sprzętu."
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "To jest kolejność w jakiej komendy DiSEqC są wysyłane do systemu. Kolejność musi dokładnie odpowiadać kolejności w jakiej urządzenia są podłączone kablem sygnałowym (zaczynając od odbiornika)."
 
-msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since the receiver was last booted."
+msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since your %s %s was last booted."
 msgstr ""
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
@@ -13846,9 +13861,10 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr "Nie można utworzyć wymaganych katalogów na nośniku (np. pamięć USB lub dysk twardy) - sprawdź nośnik i spróbuj ponownie!"
 
+#, fuzzy, python-format
 msgid ""
 "Unattended update in progress\n"
-"Please wait until your receiver reboots\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Trwa aktualizacja\n"
@@ -13956,7 +13972,8 @@ msgstr[0] "Aktualizacja zakończona, zainstalowano %d pakiet."
 msgstr[1] "Aktualizacja zakończona, zainstalowano %d pakiety."
 msgstr[2] "Aktualizacja zakończona, zainstalowano %d pakietów."
 
-msgid "Update completed. Do you want to reboot your receiver?"
+#, fuzzy, python-format
+msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Aktualizacja zakończona. Czy chcesz zrestartować odbiornik?"
 
 #, fuzzy
@@ -14759,21 +14776,6 @@ msgstr "Gdy włączone, długość każdego nagrania będzie pokazywana w liści
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Gdy włączone, długość każdego nagrania będzie pokazywana w liście filmów (może to wydłużyć czas ładowania listy)."
 
-msgid "When enabled, the receiver will automatically use the audio track which you selected before."
-msgstr "Gdy włączone, automatycznie zostanie włączona ścieżka audio ostatnio wybrana na danym kanale."
-
-msgid "When enabled, the receiver will automatically use the subtitles which you selected before."
-msgstr "Gdy włączone, automatycznie zostaną włączone  napisy ostatnio wybrane na danym kanale."
-
-msgid "When enabled, the receiver will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
-msgstr "Gdy włączone, odbiornik nie będzie automatycznie przeszukiwał bieżącego transpondera w poszukiwaniu zmian. Użyj tej opcji TYLKO jeżeli wiesz co robisz ;-)..."
-
-msgid "When enabled, the receiver will select an AC3 track (when available)."
-msgstr "Gdy włączone, automatycznie zostanie wybrana ścieżka audio AC3 (gdy dostępna)."
-
-msgid "When enabled, the receiver will select an AC3+ track (when available)."
-msgstr "Gdy włączone, automatycznie zostanie wybrana ścieżka audio AC3+ (gdy dostępna)."
-
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr "Gdy włączone, to ustawienie ma pierwszeństwo przed opcją 'Tuner preferowany dla nagrywania'."
 
@@ -14791,6 +14793,26 @@ msgstr ""
 
 msgid "When enabled, you will see the available revision on github"
 msgstr ""
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the audio track which you selected before."
+msgstr "Gdy włączone, automatycznie zostanie włączona ścieżka audio ostatnio wybrana na danym kanale."
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the subtitles which you selected before."
+msgstr "Gdy włączone, automatycznie zostaną włączone  napisy ostatnio wybrane na danym kanale."
+
+#, fuzzy
+msgid "When enabled, your %s %s will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
+msgstr "Gdy włączone, odbiornik nie będzie automatycznie przeszukiwał bieżącego transpondera w poszukiwaniu zmian. Użyj tej opcji TYLKO jeżeli wiesz co robisz ;-)..."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3 track (when available)."
+msgstr "Gdy włączone, automatycznie zostanie wybrana ścieżka audio AC3 (gdy dostępna)."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3+ track (when available)."
+msgstr "Gdy włączone, automatycznie zostanie wybrana ścieżka audio AC3+ (gdy dostępna)."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Gdy włączone, odbiornik automatycznie wykryje urządzenia na wejściu VCR SCART."
@@ -15088,6 +15110,36 @@ msgstr "Wygląda na to, że jesteś w trybie timeshift!"
 msgid "Your %s %s (kernel %s) does not have an internet connection"
 msgstr "Brak połączenia internetowego"
 
+#, fuzzy, python-format
+msgid "Your %s %s goes to WOL"
+msgstr "Trwa restart odbiornika"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting"
+msgstr "Trwa restart odbiornika"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into android mode"
+msgstr "Trwa restart odbiornika"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into recovery mode"
+msgstr "Trwa restart odbiornika"
+
+#, fuzzy, python-format
+msgid "Your %s %s is shutting down"
+msgstr "Trwa wyłączanie odbiornika"
+
+msgid "Your %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "Your %s %s stores the EPG data every (hours)."
+msgstr ""
+
+#, python-format
+msgid "Your %s %s?"
+msgstr ""
+
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr "Twó kod PIN to 0000. Takie ustawienie powoduje, że  kontrola rodzicielska jest wyłączona!\n"
@@ -15098,19 +15150,10 @@ msgstr "Twoja kolekcja przekracza rozmiar zwykłego nośnika DVD, będziesz potr
 msgid "Your current collection will get lost!"
 msgstr "Twoja obecna kolekcja zostanie utracona!"
 
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
-"Your front panel will be updated\n"
-"This may take a few minutes"
-msgstr ""
-"Nastąpi update frontprocesora\n"
-"Czekaj aż odbiornik zrestartuje się\n"
-"To może potrwać kilka minut"
-
-#, fuzzy
-msgid ""
-"Your front processor will be updated\n"
-"Please wait until your receiver reboots\n"
+"Your frontprocessor will be updated\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Nastąpi update frontprocesora\n"
@@ -15143,10 +15186,6 @@ msgstr "Twój odbiornik może używać amplitudy tonowej. Więcej informacji zna
 msgid "Your receiver does not have an internet connection"
 msgstr "Brak połączenia internetowego"
 
-#, fuzzy
-msgid "Your receiver goes to WOL"
-msgstr "Trwa restart odbiornika"
-
 msgid "Your receiver is not connected to the internet, please check your network settings and try again."
 msgstr ""
 
@@ -15174,21 +15213,8 @@ msgstr ""
 "\n"
 "Wciśnij OK aby kontynuować."
 
-msgid "Your receiver is rebooting"
-msgstr "Trwa restart odbiornika"
-
-#, fuzzy
-msgid "Your receiver is rebooting into android mode"
-msgstr "Trwa restart odbiornika"
-
-#, fuzzy
-msgid "Your receiver is rebooting into recovery mode"
-msgstr "Trwa restart odbiornika"
-
-msgid "Your receiver is shutting down"
-msgstr "Trwa wyłączanie odbiornika"
-
-msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
+#, fuzzy, python-format
+msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your %s %s."
 msgstr "Odbiornik może być teraz niezdatny do użytku. Zajrzyj do instrukcji użytkownika przed ponownym uruchomieniem."
 
 #, fuzzy, python-format

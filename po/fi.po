@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 23:06+0330\n"
+"POT-Creation-Date: 2021-01-15 14:16+0330\n"
 "PO-Revision-Date: 2020-05-16 18:41+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -1506,6 +1506,11 @@ msgid "<Last timer location>"
 msgstr "<Viimeisin ajastushakemisto>"
 
 #
+#, fuzzy
+msgid "<Press OK to perform action>"
+msgstr "Muuta valintaa OK-näppäimellä."
+
+#
 msgid "<unknown>"
 msgstr "<tuntematon>"
 
@@ -2066,12 +2071,6 @@ msgstr "Salli kuulovammaisten tekstitys"
 msgid "Allow unsupported modes"
 msgstr "Salli kaikki videotilat"
 
-msgid "Allows receiver to read the stored EPG data regularly."
-msgstr ""
-
-msgid "Allows receiver to store the EPG data regularly."
-msgstr ""
-
 #, fuzzy
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr "Käytä TV:n kaukosäädintä"
@@ -2096,6 +2095,12 @@ msgid "Allows you to show images."
 msgstr ""
 "Haluatko asentaa ohjelmistokuvan\n"
 "%s"
+
+msgid "Allows your %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows your %s %s to store the EPG data regularly."
+msgstr ""
 
 #
 msgid "Alpha"
@@ -2146,7 +2151,8 @@ msgstr "Piilota tietopalkki aina"
 msgid "Always include ECM in recordings"
 msgstr "Sisällytä aina ECM tallennuksiin"
 
-msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your receiver. Default: off."
+#, fuzzy
+msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your %s %s. Default: off."
 msgstr "Sisällytä aina ECM tallennuksiin. Tämä mahdollistaa tallennusten purun myöhemmin (offline decoding), mikäli vastaanottimesi tukee sitä. Jos päällä, tämä asetus ohittaa aina ajastusten erilliset asetukset."
 
 msgid "American Samoa"
@@ -3361,10 +3367,10 @@ msgstr ""
 msgid "Choose the location for crash and debug logs folder."
 msgstr ""
 
-msgid "Choose the location where the EPG data will be stored when receiver is shut down. The location must be available at boot time."
+msgid "Choose the location where the EPG data will be stored when your %s %s is shut down. The location must be available at boot time."
 msgstr ""
 
-msgid "Choose the name of the file that holds the EPG data when receiver is shut down. This can be handy to differentiate between several boxes."
+msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -3951,7 +3957,8 @@ msgstr "Määrittää näytettävien tilaikonien tyyppin tallenneluettelossa."
 msgid "Configure the video output mode (or resolution)."
 msgstr "Määrittää video ulostulon tyypin (tai resoluution)."
 
-msgid "Configure the way in which the receiver changes channels."
+#, fuzzy
+msgid "Configure the way in which your %s %s changes channels."
 msgstr "Määrittää kuinka vastaanotin vaihtaa kanavia."
 
 msgid "Configure the width of the TrueType font letters used for teletext."
@@ -5271,12 +5278,13 @@ msgstr ""
 msgid "Do you want to update the package:\n"
 msgstr "Haluatko päivittää ohjelmapaketin:\n"
 
-#, python-format
-msgid "Do you want to update your receiver to %s?"
+#, fuzzy, python-format
+msgid "Do you want to update to %s"
 msgstr "Haluatko päivittää vastaanottimeesi %s?"
 
-msgid "Do you want to update your receiver?"
-msgstr "Haluatko päivittää vastaanottimesi?"
+#, fuzzy, python-format
+msgid "Do you want to update your %s %s?"
+msgstr "Haluatko päivittää vastaanottimeesi %s?"
 
 #, fuzzy
 msgid "Documentary"
@@ -6643,6 +6651,15 @@ msgstr "Mistä:"
 
 msgid "Front Panel Display"
 msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Front panel your %s %s will be updated\n"
+"This may take a few minutes"
+msgstr ""
+"Etuprosessorin ohjelmisto päivitetään.\n"
+"Odota kunnes viritin käynnistyy uudellee\n"
+"Tämä saattaa kestää muutaman minuutin"
 
 #, fuzzy, python-format
 msgid "Front processor version: %s"
@@ -8392,10 +8409,14 @@ msgstr "Tuo ajastimet etävastaaottimelta"
 msgid "Manufacturer"
 msgstr "Valmistaja"
 
+#, fuzzy, python-format
 msgid ""
 "Manufacturer reset in progress\n"
-"Please wait until enigma2 restarts"
+"Please wait until your %s %s restarts"
 msgstr ""
+"Automaattinen päivitys käynnissä\n"
+"Odota kunnes vastaanotin käynnistyy uudelleen\n"
+"Tämä voi kestää muutaman minuutin"
 
 msgid "Mara M9"
 msgstr ""
@@ -10991,12 +11012,6 @@ msgid "Recall to previous service"
 msgstr "Palaa edelliselle kanavalle"
 
 msgid "Receiver or driver does not support FCC"
-msgstr ""
-
-msgid "Receiver reads the stored EPG data every (hours)."
-msgstr ""
-
-msgid "Receiver stores the EPG data every (hours)."
 msgstr ""
 
 #
@@ -14535,11 +14550,12 @@ msgstr ""
 "Ohjelmistohallinnan lisäosaa ei ole asennettu!\n"
 "Asenna se."
 
-msgid "The speed of the fan when receiver is in normal use."
-msgstr ""
+#, fuzzy
+msgid "The speed of the fan when your %s %s is in normal use."
+msgstr "Aseta lopetusaika mihin saakka virransäästötilaan siirtymisen ajastin on pois käytöstä"
 
 #, fuzzy
-msgid "The speed of the fan when receiver is in standby mode."
+msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr "Aseta lopetusaika mihin saakka virransäästötilaan siirtymisen ajastin on pois käytöstä"
 
 #, python-format
@@ -14558,17 +14574,20 @@ msgstr "Ajastusluettelo (timers.xml) on korruptoitunut eikä sitä voida ladata"
 msgid "The user interface of the receiver will now restart to select the selected skin"
 msgstr ""
 
-msgid "The user interface of your receiver is restarting"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting"
 msgstr "Vastaanottimesi käyttöliittymä käynnistyy uudelleen"
 
+#, fuzzy, python-format
 msgid ""
-"The user interface of your receiver is restarting\n"
+"The user interface of your %s %s is restarting\n"
 "due to an error in mytest.py"
 msgstr ""
 "Vastaanottimesi käyttöliittymä käynnistyy uudelleen\n"
 "johtuen virheestä mytest.py tiedostossa"
 
-msgid "The user interface of your receiver is restarting in debug mode"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting in debug mode"
 msgstr "Vastaanottimesi käyttöliittymä käynnistyy uudelleen debug tilaan"
 
 msgid "The width of the picture. The input will be scaled to match this value."
@@ -14650,7 +14669,7 @@ msgstr "Tämä viritin soveltuu erityyppisiin verkkoihin. Käytettävissä oleva
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr ""
 
-msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since the receiver was last booted."
+msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since your %s %s was last booted."
 msgstr ""
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
@@ -15439,9 +15458,10 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr "Hakemistojen luonti epäonnistui. Varmista tallennusmedian toimivuus ja kokeile uudestaan!"
 
+#, fuzzy, python-format
 msgid ""
 "Unattended update in progress\n"
-"Please wait until your receiver reboots\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Automaattinen päivitys käynnissä\n"
@@ -15557,7 +15577,8 @@ msgid_plural "Update completed, %d packages were installed."
 msgstr[0] "Päivitys valmis, %d paketti asennettiin."
 msgstr[1] "Päivitys valmis, %d pakettia asennettiin."
 
-msgid "Update completed. Do you want to reboot your receiver?"
+#, fuzzy, python-format
+msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Päivitys asennettu. Haluatko uudelleenkäynnistää vastaanottimesi?"
 
 #
@@ -16443,21 +16464,6 @@ msgstr "Kun päällä, tallenteiden pituus näytetään tallenneluettelossa (tä
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Kun päällä, tallenteiden pituus näytetään tallenneluettelossa (tämä voi aiheuttaa tallenneluettelon latausajan pitenemisen)."
 
-msgid "When enabled, the receiver will automatically use the audio track which you selected before."
-msgstr "Kun päällä, vastaanotin käyttää kanavalle aiemmin valitsemaasi ääniraitaa automaattisesti."
-
-msgid "When enabled, the receiver will automatically use the subtitles which you selected before."
-msgstr "Kun päällä, vastaanotin käyttää kanavalle aiemmin valitsemaasi tekstitystä automaattisesti."
-
-msgid "When enabled, the receiver will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
-msgstr "Kun päällä, vastaanotin ei enää monitoroi viritettyä lähetintä mahdollisten muutosten varalta. Älä käytä tätä optiota ellet tiedä mitä olet tekemässä."
-
-msgid "When enabled, the receiver will select an AC3 track (when available)."
-msgstr "Kun päällä, vastaanotin valitsee AC3-ääniraidan (kun saatavilla)."
-
-msgid "When enabled, the receiver will select an AC3+ track (when available)."
-msgstr "Kun päällä, vastaanotin valitsee AC3+ ääniraidan (kun saatavilla)."
-
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr "Kun päällä, tämä ohittaa tallennusten ensisijainen viritin valinnan"
 
@@ -16475,6 +16481,26 @@ msgstr ""
 
 msgid "When enabled, you will see the available revision on github"
 msgstr ""
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the audio track which you selected before."
+msgstr "Kun päällä, vastaanotin käyttää kanavalle aiemmin valitsemaasi ääniraitaa automaattisesti."
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the subtitles which you selected before."
+msgstr "Kun päällä, vastaanotin käyttää kanavalle aiemmin valitsemaasi tekstitystä automaattisesti."
+
+#, fuzzy
+msgid "When enabled, your %s %s will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
+msgstr "Kun päällä, vastaanotin ei enää monitoroi viritettyä lähetintä mahdollisten muutosten varalta. Älä käytä tätä optiota ellet tiedä mitä olet tekemässä."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3 track (when available)."
+msgstr "Kun päällä, vastaanotin valitsee AC3-ääniraidan (kun saatavilla)."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3+ track (when available)."
+msgstr "Kun päällä, vastaanotin valitsee AC3+ ääniraidan (kun saatavilla)."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Kun päällä, vastaanotin tunnistaa aktiviteetin VCR SCART-sisäänmenossa."
@@ -16792,6 +16818,36 @@ msgstr ""
 msgid "Your %s %s (kernel %s) does not have an internet connection"
 msgstr "Vastaanottimessa ei ole internet-yhteyttä"
 
+#, fuzzy, python-format
+msgid "Your %s %s goes to WOL"
+msgstr "Vastaanotin käynnistyy uudelleen"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting"
+msgstr "Vastaanotin käynnistyy uudelleen"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into android mode"
+msgstr "Vastaanotin käynnistyy uudelleen"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into recovery mode"
+msgstr "Vastaanotin käynnistyy uudelleen"
+
+#, fuzzy, python-format
+msgid "Your %s %s is shutting down"
+msgstr "Vastaanotin sammutetaan"
+
+msgid "Your %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "Your %s %s stores the EPG data every (hours)."
+msgstr ""
+
+#, python-format
+msgid "Your %s %s?"
+msgstr ""
+
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr ""
 
@@ -16801,19 +16857,10 @@ msgstr "Tallenteet eivät mahdu yksipuoliselle DVD:lle, tarvitset tyhjän dual l
 msgid "Your current collection will get lost!"
 msgstr "Nykyinen kokoelma häviää!"
 
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
-"Your front panel will be updated\n"
-"This may take a few minutes"
-msgstr ""
-"Etuprosessorin ohjelmisto päivitetään.\n"
-"Odota kunnes viritin käynnistyy uudellee\n"
-"Tämä saattaa kestää muutaman minuutin"
-
-#, fuzzy
-msgid ""
-"Your front processor will be updated\n"
-"Please wait until your receiver reboots\n"
+"Your frontprocessor will be updated\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Etuprosessorin ohjelmisto päivitetään.\n"
@@ -16848,10 +16895,6 @@ msgstr ""
 msgid "Your receiver does not have an internet connection"
 msgstr "Vastaanottimessa ei ole internet-yhteyttä"
 
-#, fuzzy
-msgid "Your receiver goes to WOL"
-msgstr "Vastaanotin käynnistyy uudelleen"
-
 msgid "Your receiver is not connected to the internet, please check your network settings and try again."
 msgstr ""
 
@@ -16879,21 +16922,8 @@ msgstr ""
 "\n"
 "Paina OK jatkaaksesi."
 
-msgid "Your receiver is rebooting"
-msgstr "Vastaanotin käynnistyy uudelleen"
-
-#, fuzzy
-msgid "Your receiver is rebooting into android mode"
-msgstr "Vastaanotin käynnistyy uudelleen"
-
-#, fuzzy
-msgid "Your receiver is rebooting into recovery mode"
-msgstr "Vastaanotin käynnistyy uudelleen"
-
-msgid "Your receiver is shutting down"
-msgstr "Vastaanotin sammutetaan"
-
-msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
+#, fuzzy, python-format
+msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your %s %s."
 msgstr "Vastaanottimesi saattaa olla nyt poissa käytöstä. Lue käsikirjasta lisäohjeita ennenkuin uudelleenkäynnistät vastaanottimesi."
 
 #, fuzzy, python-format

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 23:06+0330\n"
+"POT-Creation-Date: 2021-01-15 14:16+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 344784320@qq.com\n"
 "Language-Team: Openpli Team\n"
@@ -1319,6 +1319,10 @@ msgstr "<影片默认位置>"
 msgid "<Last timer location>"
 msgstr "<最后一个计时器位置>"
 
+#, fuzzy
+msgid "<Press OK to perform action>"
+msgstr "按OK键可执行附加功能"
+
 msgid "<unknown>"
 msgstr "<未知>"
 
@@ -1810,12 +1814,6 @@ msgstr "允许为听障者提供辅助字幕"
 msgid "Allow unsupported modes"
 msgstr "允许不支持的模式"
 
-msgid "Allows receiver to read the stored EPG data regularly."
-msgstr ""
-
-msgid "Allows receiver to store the EPG data regularly."
-msgstr ""
-
 #, fuzzy
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr "用电视遥控"
@@ -1840,6 +1838,12 @@ msgid "Allows you to show images."
 msgstr ""
 "是否要刷新固件\n"
 "%s"
+
+msgid "Allows your %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows your %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Alpha"
 msgstr "阿尔法"
@@ -1886,7 +1890,8 @@ msgstr "总是隐藏信息条"
 msgid "Always include ECM in recordings"
 msgstr "媒体流里总是包含ECM"
 
-msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your receiver. Default: off."
+#, fuzzy
+msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your %s %s. Default: off."
 msgstr "录制时总是包含ECM信息。将在全部范围内覆盖个人定时器设置。这允许录制之后解密（有时称作离线解密），如果接收机支持此选项的话可以使用。默认为关。"
 
 msgid "American Samoa"
@@ -3010,10 +3015,10 @@ msgstr ""
 msgid "Choose the location for crash and debug logs folder."
 msgstr ""
 
-msgid "Choose the location where the EPG data will be stored when receiver is shut down. The location must be available at boot time."
+msgid "Choose the location where the EPG data will be stored when your %s %s is shut down. The location must be available at boot time."
 msgstr ""
 
-msgid "Choose the name of the file that holds the EPG data when receiver is shut down. This can be handy to differentiate between several boxes."
+msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -3562,7 +3567,8 @@ msgstr "配置电影列表里状态指示图标类型。"
 msgid "Configure the video output mode (or resolution)."
 msgstr "配置视频输出模式。"
 
-msgid "Configure the way in which the receiver changes channels."
+#, fuzzy
+msgid "Configure the way in which your %s %s changes channels."
 msgstr "配置接收机更改频道的方式。"
 
 msgid "Configure the width of the TrueType font letters used for teletext."
@@ -4730,12 +4736,13 @@ msgstr "你想选择不同的皮肤吗？"
 msgid "Do you want to update the package:\n"
 msgstr "是否要升级软件包:\n"
 
-#, python-format
-msgid "Do you want to update your receiver to %s?"
+#, fuzzy, python-format
+msgid "Do you want to update to %s"
 msgstr "是否想升级机顶盒到 %s ?"
 
-msgid "Do you want to update your receiver?"
-msgstr "是否想升级机顶盒?"
+#, fuzzy, python-format
+msgid "Do you want to update your %s %s?"
+msgstr "是否想升级机顶盒到 %s ?"
 
 #, fuzzy
 msgid "Documentary"
@@ -5977,6 +5984,15 @@ msgstr "来自:"
 #, fuzzy
 msgid "Front Panel Display"
 msgstr "开机显示"
+
+#, fuzzy, python-format
+msgid ""
+"Front panel your %s %s will be updated\n"
+"This may take a few minutes"
+msgstr ""
+"前端处理器即将升级\n"
+"请等待接收机重启\n"
+"此过程需要消耗几分钟时间"
 
 #, fuzzy, python-format
 msgid "Front processor version: %s"
@@ -7557,9 +7573,10 @@ msgstr ""
 msgid "Manufacturer"
 msgstr "制造商"
 
+#, fuzzy, python-format
 msgid ""
 "Manufacturer reset in progress\n"
-"Please wait until enigma2 restarts"
+"Please wait until your %s %s restarts"
 msgstr ""
 "正在重置出厂设置\n"
 "请等待enigma2重新启动"
@@ -9820,12 +9837,6 @@ msgid "Recall to previous service"
 msgstr "返回之前的频道"
 
 msgid "Receiver or driver does not support FCC"
-msgstr ""
-
-msgid "Receiver reads the stored EPG data every (hours)."
-msgstr ""
-
-msgid "Receiver stores the EPG data every (hours)."
 msgstr ""
 
 msgid "Reception settings"
@@ -12971,11 +12982,12 @@ msgstr ""
 "未安装的软件管理扩展!\n"
 "请安装它。"
 
-msgid "The speed of the fan when receiver is in normal use."
-msgstr ""
+#, fuzzy
+msgid "The speed of the fan when your %s %s is in normal use."
+msgstr "指定当接收机处于待机模式下忽略关机定时器的结束时间。"
 
 #, fuzzy
-msgid "The speed of the fan when receiver is in standby mode."
+msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr "指定当接收机处于待机模式下忽略关机定时器的结束时间。"
 
 #, python-format
@@ -12992,17 +13004,20 @@ msgstr "计时器文件（timers。xml）已损坏，无法加载。"
 msgid "The user interface of the receiver will now restart to select the selected skin"
 msgstr "接收机用户界面将会重启以使皮肤所做的更改生效。"
 
-msgid "The user interface of your receiver is restarting"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting"
 msgstr "接收机用户界面正在重启中!"
 
+#, fuzzy, python-format
 msgid ""
-"The user interface of your receiver is restarting\n"
+"The user interface of your %s %s is restarting\n"
 "due to an error in mytest.py"
 msgstr ""
 "接收机用户界面重启中\n"
 "在mytest.py文件中存在一处错误"
 
-msgid "The user interface of your receiver is restarting in debug mode"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting in debug mode"
 msgstr "接收器的用户界面正在调试模式下重新启动"
 
 msgid "The width of the picture. The input will be scaled to match this value."
@@ -13083,7 +13098,7 @@ msgstr "这是一个多类型调谐器。可用选项取决于硬件。"
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "这是向天线系统发送DISEQC命令的顺序。顺序必须与物理设备沿信号电缆（从接收器端开始）的排列顺序完全一致。"
 
-msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since the receiver was last booted."
+msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since your %s %s was last booted."
 msgstr ""
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
@@ -13797,9 +13812,10 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr "无法在媒体（如U盘或硬盘）上创建所需的目录-请验证媒体并重试！"
 
+#, fuzzy, python-format
 msgid ""
 "Unattended update in progress\n"
-"Please wait until your receiver reboots\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "自动升级正在进行中\n"
@@ -13905,7 +13921,8 @@ msgid "Update completed, %d package was installed."
 msgid_plural "Update completed, %d packages were installed."
 msgstr[0] "升级已完成, %d 个安装包已安装。"
 
-msgid "Update completed. Do you want to reboot your receiver?"
+#, fuzzy, python-format
+msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "更新完成。你想重启接收机吗？"
 
 #, fuzzy
@@ -14715,21 +14732,6 @@ msgstr "一旦启用，电影列表里将会显示每一个录制节目的时间
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "一旦启用，电影列表里将会显示每一个录制节目的时间长度。"
 
-msgid "When enabled, the receiver will automatically use the audio track which you selected before."
-msgstr "一旦启用，接收机将会自动使用你之前所选择的音轨。"
-
-msgid "When enabled, the receiver will automatically use the subtitles which you selected before."
-msgstr "一旦启用，接收机将会自动使用你之前所选择的字幕。"
-
-msgid "When enabled, the receiver will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
-msgstr "一旦启用，接收机将不会长时间显示调谐器的可能更改，尽量不要使用此设置，除非你知道你在做什么。"
-
-msgid "When enabled, the receiver will select an AC3 track (when available)."
-msgstr "一旦启用，接收机将选择AC3音轨（如果可用的话）"
-
-msgid "When enabled, the receiver will select an AC3+ track (when available)."
-msgstr "一旦启用，接收机将选择AC3+音轨（如果可用的话）"
-
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr "一旦启用，此设置将有比录制首选调谐器更大的适用范围。"
 
@@ -14747,6 +14749,26 @@ msgstr ""
 
 msgid "When enabled, you will see the available revision on github"
 msgstr ""
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the audio track which you selected before."
+msgstr "一旦启用，接收机将会自动使用你之前所选择的音轨。"
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the subtitles which you selected before."
+msgstr "一旦启用，接收机将会自动使用你之前所选择的字幕。"
+
+#, fuzzy
+msgid "When enabled, your %s %s will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
+msgstr "一旦启用，接收机将不会长时间显示调谐器的可能更改，尽量不要使用此设置，除非你知道你在做什么。"
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3 track (when available)."
+msgstr "一旦启用，接收机将选择AC3音轨（如果可用的话）"
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3+ track (when available)."
+msgstr "一旦启用，接收机将选择AC3+音轨（如果可用的话）"
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "一旦启用，接受机将检测VCR SCART输入接口上的活动。"
@@ -15045,6 +15067,36 @@ msgstr ""
 msgid "Your %s %s (kernel %s) does not have an internet connection"
 msgstr "接收机没有连接到互联网。"
 
+#, fuzzy, python-format
+msgid "Your %s %s goes to WOL"
+msgstr "接收机正在重启中。"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting"
+msgstr "接收机正在重启中。"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into android mode"
+msgstr "接收机正在重启中。"
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into recovery mode"
+msgstr "接收机正在重启中。"
+
+#, fuzzy, python-format
+msgid "Your %s %s is shutting down"
+msgstr "您的机顶盒正在关闭。请稍等。。。"
+
+msgid "Your %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "Your %s %s stores the EPG data every (hours)."
+msgstr ""
+
+#, python-format
+msgid "Your %s %s?"
+msgstr ""
+
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr "你的PIN码是0000。这是默认PIN且不能用于家长保护。\n"
@@ -15055,19 +15107,10 @@ msgstr "您的收藏超过单层介质的大小，您将需要一个空白的双
 msgid "Your current collection will get lost!"
 msgstr "您当前的收集将丢失！"
 
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
-"Your front panel will be updated\n"
-"This may take a few minutes"
-msgstr ""
-"前端处理器即将升级\n"
-"请等待接收机重启\n"
-"此过程需要消耗几分钟时间"
-
-#, fuzzy
-msgid ""
-"Your front processor will be updated\n"
-"Please wait until your receiver reboots\n"
+"Your frontprocessor will be updated\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "前端处理器即将升级\n"
@@ -15100,10 +15143,6 @@ msgstr "你的接收器可以使用音调幅度。有关详细信息，请参阅
 msgid "Your receiver does not have an internet connection"
 msgstr "接收机没有连接到互联网。"
 
-#, fuzzy
-msgid "Your receiver goes to WOL"
-msgstr "接收机正在重启中。"
-
 msgid "Your receiver is not connected to the internet, please check your network settings and try again."
 msgstr ""
 
@@ -15131,21 +15170,8 @@ msgstr ""
 "按OK键继续\n"
 "按Ok键继续。"
 
-msgid "Your receiver is rebooting"
-msgstr "接收机正在重启中。"
-
-#, fuzzy
-msgid "Your receiver is rebooting into android mode"
-msgstr "接收机正在重启中。"
-
-#, fuzzy
-msgid "Your receiver is rebooting into recovery mode"
-msgstr "接收机正在重启中。"
-
-msgid "Your receiver is shutting down"
-msgstr "您的机顶盒正在关闭。请稍等。。。"
-
-msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
+#, fuzzy, python-format
+msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your %s %s."
 msgstr "现在你机顶盒可能无法使用。重启机顶盒之前请参阅手册以获得进一步帮助。"
 
 #, fuzzy, python-format

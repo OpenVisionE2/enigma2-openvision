@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi-enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 23:06+0330\n"
+"POT-Creation-Date: 2021-01-15 14:16+0330\n"
 "PO-Revision-Date: 2020-05-16 18:46+0200\n"
 "Last-Translator: Gringo <openpli@tiscali.it>\n"
 "Language-Team: www.linsat.net <spaeleus@croci.org>\n"
@@ -1467,6 +1467,10 @@ msgstr "<Percorso predefinito delle registrazioni>"
 msgid "<Last timer location>"
 msgstr "<Percorso dell'ultimo timer>"
 
+#, fuzzy
+msgid "<Press OK to perform action>"
+msgstr "Premere 'OK' per attivare la funzione."
+
 msgid "<unknown>"
 msgstr "<sconosciuto>"
 
@@ -1958,12 +1962,6 @@ msgstr "Abilitare i sottotitoli per non udenti"
 msgid "Allow unsupported modes"
 msgstr "Consenti modalità non supportate"
 
-msgid "Allows receiver to read the stored EPG data regularly."
-msgstr ""
-
-msgid "Allows receiver to store the EPG data regularly."
-msgstr ""
-
 #, fuzzy
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr "Utilizzare il telecomando TV"
@@ -1988,6 +1986,12 @@ msgid "Allows you to show images."
 msgstr ""
 "Vuoi fare il flash dell'immagine\n"
 "%s"
+
+msgid "Allows your %s %s to read the stored EPG data regularly."
+msgstr ""
+
+msgid "Allows your %s %s to store the EPG data regularly."
+msgstr ""
 
 msgid "Alpha"
 msgstr "Trasparenza"
@@ -2034,7 +2038,8 @@ msgstr "Nascondere sempre l'infobar"
 msgid "Always include ECM in recordings"
 msgstr "Includere sempre i dati ECM nelle registrazioni"
 
-msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your receiver. Default: off."
+#, fuzzy
+msgid "Always include ECM messages in recordings. This overrides the individual timer settings globally. It allows recordings to be always decrypted afterwards (sometimes called offline decoding), if supported by your %s %s. Default: off."
 msgstr "Se questa impostazione è attivata, i dati ECM saranno sempre inclusi nelle registrazioni e le impostazioni dei singoli timer saranno ignorate dappertutto. Se supportato dal ricevitore, ciò consente di poter decodificare sempre le registrazioni a posteriori (operazione talvolta denominata 'decodifica offline'). L'impostazione predefinita è 'No'."
 
 msgid "American Samoa"
@@ -3148,10 +3153,10 @@ msgstr ""
 msgid "Choose the location for crash and debug logs folder."
 msgstr ""
 
-msgid "Choose the location where the EPG data will be stored when receiver is shut down. The location must be available at boot time."
+msgid "Choose the location where the EPG data will be stored when your %s %s is shut down. The location must be available at boot time."
 msgstr ""
 
-msgid "Choose the name of the file that holds the EPG data when receiver is shut down. This can be handy to differentiate between several boxes."
+msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
 #, fuzzy
@@ -3702,7 +3707,8 @@ msgstr "Impostare il tipo di simboli visualizzati nell'elenco per indicare lo st
 msgid "Configure the video output mode (or resolution)."
 msgstr "Impostare la modalità di uscita video (risoluzione)."
 
-msgid "Configure the way in which the receiver changes channels."
+#, fuzzy
+msgid "Configure the way in which your %s %s changes channels."
 msgstr "Impostare la modalità del cambio canali del ricevitore."
 
 msgid "Configure the width of the TrueType font letters used for teletext."
@@ -4882,12 +4888,13 @@ msgstr "Selezionare un'altra skin?"
 msgid "Do you want to update the package:\n"
 msgstr "Aggiornare il pacchetto:\n"
 
-#, python-format
-msgid "Do you want to update your receiver to %s?"
+#, fuzzy, python-format
+msgid "Do you want to update to %s"
 msgstr "Aggiornare il ricevitore a %s?"
 
-msgid "Do you want to update your receiver?"
-msgstr "Aggiornare il ricevitore?"
+#, fuzzy, python-format
+msgid "Do you want to update your %s %s?"
+msgstr "Aggiornare il ricevitore a %s?"
 
 #, fuzzy
 msgid "Documentary"
@@ -6143,6 +6150,15 @@ msgstr "Da:"
 #, fuzzy
 msgid "Front Panel Display"
 msgstr "Schermata di accensione"
+
+#, fuzzy, python-format
+msgid ""
+"Front panel your %s %s will be updated\n"
+"This may take a few minutes"
+msgstr ""
+"Il frontprocessor sarà aggiornato.\n"
+"Attendere il riavvio del ricevitore.\n"
+"Potrebbero essere necessari alcuni minuti."
 
 #, fuzzy, python-format
 msgid "Front processor version: %s"
@@ -7733,10 +7749,14 @@ msgstr "Importazione manuale dal sintonizzatore di fallback"
 msgid "Manufacturer"
 msgstr "Produttore"
 
+#, fuzzy, python-format
 msgid ""
 "Manufacturer reset in progress\n"
-"Please wait until enigma2 restarts"
+"Please wait until your %s %s restarts"
 msgstr ""
+"Aggiornamento automatico in corso.\n"
+"Attendere il riavvio del ricevitore\n"
+"che potrebbe richiedere alcuni minuti."
 
 msgid "Mara M9"
 msgstr ""
@@ -10009,12 +10029,6 @@ msgid "Recall to previous service"
 msgstr "Ritorno al canale precedente"
 
 msgid "Receiver or driver does not support FCC"
-msgstr ""
-
-msgid "Receiver reads the stored EPG data every (hours)."
-msgstr ""
-
-msgid "Receiver stores the EPG data every (hours)."
 msgstr ""
 
 msgid "Reception settings"
@@ -13172,11 +13186,12 @@ msgstr ""
 "L'estensione Gestione del Software non è installata.\n"
 "E' necessario installarla."
 
-msgid "The speed of the fan when receiver is in normal use."
-msgstr ""
+#, fuzzy
+msgid "The speed of the fan when your %s %s is in normal use."
+msgstr "Specificare l'orario finale per ignorare il timer di spegnimento quando il ricevitore è in stato di sospensione."
 
 #, fuzzy
-msgid "The speed of the fan when receiver is in standby mode."
+msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr "Specificare l'orario finale per ignorare il timer di spegnimento quando il ricevitore è in stato di sospensione."
 
 #, python-format
@@ -13193,17 +13208,20 @@ msgstr "Il file dei timer (timers.xml) è danneggiato e non può essere caricato
 msgid "The user interface of the receiver will now restart to select the selected skin"
 msgstr "L'interfaccia utente del ricevitore adesso verrà riavviata per attivare la skin selezionata"
 
-msgid "The user interface of your receiver is restarting"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting"
 msgstr "Riavvio dell'interfaccia utente del ricevitore in corso..."
 
+#, fuzzy, python-format
 msgid ""
-"The user interface of your receiver is restarting\n"
+"The user interface of your %s %s is restarting\n"
 "due to an error in mytest.py"
 msgstr ""
 "L'interfaccia utente del ricevitore si sta riavviando\n"
 "a causa di un errore in mytest.py"
 
-msgid "The user interface of your receiver is restarting in debug mode"
+#, fuzzy, python-format
+msgid "The user interface of your %s %s is restarting in debug mode"
 msgstr "L'interfaccia utente del ricevitore si riavvia in modalità debug"
 
 msgid "The width of the picture. The input will be scaled to match this value."
@@ -13284,7 +13302,7 @@ msgstr ""
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Questo è l'ordine secondo il quale i comandi DiSEqC vengono inviati nell'impianto. L'ordine deve corrispondere esattamente all'ordine in cui i dispositivi fisici sono installati lungo il cavo di segnale (a partire dal lato ricevitore)."
 
-msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since the receiver was last booted."
+msgid "This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since your %s %s was last booted."
 msgstr ""
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
@@ -14006,9 +14024,10 @@ msgstr ""
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr ""
 
+#, fuzzy, python-format
 msgid ""
 "Unattended update in progress\n"
-"Please wait until your receiver reboots\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Aggiornamento automatico in corso.\n"
@@ -14115,7 +14134,8 @@ msgid_plural "Update completed, %d packages were installed."
 msgstr[0] "Aggiornamento completato. Installato %d pacchetto."
 msgstr[1] "Aggiornamento completato. Installati %d pacchetti."
 
-msgid "Update completed. Do you want to reboot your receiver?"
+#, fuzzy, python-format
+msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Aggiornamento completato. Riavviare il ricevitore?"
 
 #, fuzzy
@@ -14925,21 +14945,6 @@ msgstr "Se questa impostazione è attivata, la durata di ogni registrazione sar�
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Se questa impostazione è attivata, la durata di ogni registrazione sarà visualizzata nell'elenco (questo potrebbe rallentare l'operazione di caricamento)."
 
-msgid "When enabled, the receiver will automatically use the audio track which you selected before."
-msgstr "Se questa impostazione è attivata, il ricevitore utilizzerà automaticamente l'ultima traccia audio precedentemente selezionata per quel determinato canale."
-
-msgid "When enabled, the receiver will automatically use the subtitles which you selected before."
-msgstr "Se questa impostazione è attivata, il ricevitore utilizzerà automaticamente gli ultimi sottotitoli precedentemente selezionati."
-
-msgid "When enabled, the receiver will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
-msgstr "Se questa impostazione è attivata, il ricevitore non effettuerà il monitoraggio continuo del transponder sintonizzato per individuarne i possibili cambiamenti. Non utilizzare questa opzione se non si è a conoscenza dei suoi effetti."
-
-msgid "When enabled, the receiver will select an AC3 track (when available)."
-msgstr "Se questa impostazione è attivata, il ricevitore selezionerà la traccia audio AC3 (se disponibile)."
-
-msgid "When enabled, the receiver will select an AC3+ track (when available)."
-msgstr "Se questa impostazione è attivata, il ricevitore selezionerà la traccia audio AC3+ (se disponibile)."
-
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr "Impostare il sintonizzatore preferenziale per le registrazioni da usare tra quelli dello stesso tipo. Questa impostazione è prevalente rispetto all'impostazione 'Sintonizzatore preferenziale per le registrazioni'."
 
@@ -14957,6 +14962,26 @@ msgstr ""
 
 msgid "When enabled, you will see the available revision on github"
 msgstr ""
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the audio track which you selected before."
+msgstr "Se questa impostazione è attivata, il ricevitore utilizzerà automaticamente l'ultima traccia audio precedentemente selezionata per quel determinato canale."
+
+#, fuzzy
+msgid "When enabled, your %s %s will automatically use the subtitles which you selected before."
+msgstr "Se questa impostazione è attivata, il ricevitore utilizzerà automaticamente gli ultimi sottotitoli precedentemente selezionati."
+
+#, fuzzy
+msgid "When enabled, your %s %s will no longer monitor the tuned transponder for possible changes. Do not use this option unless you know what you are doing."
+msgstr "Se questa impostazione è attivata, il ricevitore non effettuerà il monitoraggio continuo del transponder sintonizzato per individuarne i possibili cambiamenti. Non utilizzare questa opzione se non si è a conoscenza dei suoi effetti."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3 track (when available)."
+msgstr "Se questa impostazione è attivata, il ricevitore selezionerà la traccia audio AC3 (se disponibile)."
+
+#, fuzzy
+msgid "When enabled, your %s %s will select an AC3+ track (when available)."
+msgstr "Se questa impostazione è attivata, il ricevitore selezionerà la traccia audio AC3+ (se disponibile)."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Se questa impostazione è attivata, il ricevitore potrà rilevare un segnale di attività sull'ingresso SCART VCR."
@@ -15258,6 +15283,36 @@ msgstr ""
 msgid "Your %s %s (kernel %s) does not have an internet connection"
 msgstr "Il ricevitore non dispone di una connessione a Internet"
 
+#, fuzzy, python-format
+msgid "Your %s %s goes to WOL"
+msgstr "Il ricevitore è in fase di riavvio..."
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting"
+msgstr "Il ricevitore è in fase di riavvio..."
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into android mode"
+msgstr "Il ricevitore è in fase di riavvio..."
+
+#, fuzzy, python-format
+msgid "Your %s %s is rebooting into recovery mode"
+msgstr "Il ricevitore è in fase di riavvio..."
+
+#, fuzzy, python-format
+msgid "Your %s %s is shutting down"
+msgstr "Il ricevitore è in fase di spegnimento..."
+
+msgid "Your %s %s reads the stored EPG data every (hours)."
+msgstr ""
+
+msgid "Your %s %s stores the EPG data every (hours)."
+msgstr ""
+
+#, python-format
+msgid "Your %s %s?"
+msgstr ""
+
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr "Il codice PIN è 0000. Questo è il codice PIN predefinito e disabilita il Controllo genitori!\n"
@@ -15268,19 +15323,10 @@ msgstr "La collezione supera la capacità di un disco a singolo strato. Sarà ne
 msgid "Your current collection will get lost!"
 msgstr "La collezione attuale andrà perduta!"
 
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
-"Your front panel will be updated\n"
-"This may take a few minutes"
-msgstr ""
-"Il frontprocessor sarà aggiornato.\n"
-"Attendere il riavvio del ricevitore.\n"
-"Potrebbero essere necessari alcuni minuti."
-
-#, fuzzy
-msgid ""
-"Your front processor will be updated\n"
-"Please wait until your receiver reboots\n"
+"Your frontprocessor will be updated\n"
+"Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Il frontprocessor sarà aggiornato.\n"
@@ -15313,10 +15359,6 @@ msgstr "Il ricevitore può utilizzare l'ampiezza del tono. Per ulteriori informa
 msgid "Your receiver does not have an internet connection"
 msgstr "Il ricevitore non dispone di una connessione a Internet"
 
-#, fuzzy
-msgid "Your receiver goes to WOL"
-msgstr "Il ricevitore è in fase di riavvio..."
-
 msgid "Your receiver is not connected to the internet, please check your network settings and try again."
 msgstr ""
 
@@ -15344,21 +15386,8 @@ msgstr ""
 "\n"
 "Premere OK per continuare."
 
-msgid "Your receiver is rebooting"
-msgstr "Il ricevitore è in fase di riavvio..."
-
-#, fuzzy
-msgid "Your receiver is rebooting into android mode"
-msgstr "Il ricevitore è in fase di riavvio..."
-
-#, fuzzy
-msgid "Your receiver is rebooting into recovery mode"
-msgstr "Il ricevitore è in fase di riavvio..."
-
-msgid "Your receiver is shutting down"
-msgstr "Il ricevitore è in fase di spegnimento..."
-
-msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your receiver."
+#, fuzzy, python-format
+msgid "Your receiver might be unusable now. Please consult the manual for further assistance before rebooting your %s %s."
 msgstr "Il ricevitore ora potrebbe risultare inutilizzabile. Prima di riavviarlo consultare il manuale per ottenete ulteriori istruzioni."
 
 #, fuzzy, python-format
