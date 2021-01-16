@@ -1178,6 +1178,12 @@ def InitUsageConfig():
 		config.av.allow_10bit = ConfigYesNo(default=False)
 		config.av.allow_10bit.addNotifier(setDisable10Bit)
 
+	if SystemInfo["CanSyncMode"]:
+		def setSyncMode(configElement):
+			open("/proc/stb/video/sync_mode", "w").write(configElement.value)
+		config.av.sync_mode = ConfigSelection(default = "slow", choices={"slow": _("Slow Motion"), "hold": _("Hold First Frame"), "black": _("Black Screen")})
+		config.av.sync_mode.addNotifier(setSyncMode)
+
 	config.subtitles = ConfigSubsection()
 	config.subtitles.show = ConfigYesNo(default = True)
 	config.subtitles.ttx_subtitle_colors = ConfigSelection(default = "1", choices = [
