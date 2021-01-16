@@ -110,7 +110,7 @@ class VideoHardware:
 	elif chipsetstring == "meson-6":
 		modes["DVI"] = ["720p", "1080p", "1080i"]
 		widescreen_modes = {"720p", "1080p", "1080i"}
-	elif chipsetstring in ("meson-64", "s905d") or socfamily == "aml905d":
+	elif chipsetstring in ("meson-64", "s905d") or socfamily in ("aml905d", "meson64"):
 		modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i"]
 		widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
 	else:
@@ -442,11 +442,11 @@ class VideoHardware:
 				open("/sys/class/video/screen_mode", "w").write(arw)
 			except IOError:
 				pass
-		else:
-			try:
-				open("/proc/stb/video/aspect", "w").write(aspect)
-			except IOError:
-				pass
+
+		try:
+			open("/proc/stb/video/aspect", "w").write(aspect)
+		except IOError:
+			pass
 		try:
 			open("/proc/stb/video/policy", "w").write(policy)
 		except IOError:
