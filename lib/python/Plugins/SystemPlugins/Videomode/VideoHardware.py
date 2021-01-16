@@ -216,11 +216,16 @@ class VideoHardware:
 	def readPreferredModes(self):
 		if config.av.edid_override.value == False:
 			try:
-				modes = open("/proc/stb/video/videomode_preferred").read()[:-1]
+				modes = open("/proc/stb/video/videomode_edid").read()[:-1]
 				self.modes_preferred = modes.split(' ')
+				print("[Videomode] VideoHardware reading edid modes: ", self.modes_preferred)
 			except IOError:
-				print("[Videomode] VideoHardware reading preferred modes failed, using all video modes")
-				self.modes_preferred = self.modes_available
+				try:
+					modes = open("/proc/stb/video/videomode_preferred").read()[:-1]
+					self.modes_preferred = modes.split(' ')
+				except IOError:
+					print("[Videomode] VideoHardware reading preferred modes failed, using all video modes")
+					self.modes_preferred = self.modes_available
 
 			if len(self.modes_preferred) <= 1:
 				self.modes_preferred = self.modes_available
