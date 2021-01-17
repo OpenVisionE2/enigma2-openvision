@@ -353,4 +353,9 @@
 		<item level="0" text="Open Vision revision check" description="When enabled, you will see the available revision on github">config.misc.OVupdatecheck</item>
 		<item level="0" text="Enable HDMI-CEC" description="When enabled, HDMI-CEC is enabled with standard configuration" requires="HasHDMI-CEC">config.hdmicec.enabled</item>
 	</setup>
+	<setup key="softcamsettings" title="Softcam Setup">
+		<item level="0" text="Select softcam" description="Select a softcam from the available list.">config.misc.softcams</item>
+		<item level="0" text="Select cardserver" description="Select a cardserver from the available list." conditional="config.misc.cardservers.value != ''">config.misc.cardservers</item>
+		<item level="0" text="Restart" description="Reset the selected devices when the GREEN button is pressed.">config.misc.restarts</item>
+	</setup>
 </setupxml>
