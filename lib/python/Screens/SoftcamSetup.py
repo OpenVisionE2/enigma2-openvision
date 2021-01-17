@@ -26,7 +26,7 @@ class SoftcamSetup(Setup):
 		cardservers = self.cardserver.getList()
 		if cardservers:
 			default = self.cardserver.current()
-			restartOptions.extend([("c", _("Restart cardserver")), ("sc", _(" Restart both"))])
+			restartOptions.extend([("c", _("Restart cardserver")), ("sc", _("Restart both"))])
 		else:
 			cardservers = [("", _("None"))]
 			default = ""
