@@ -408,8 +408,8 @@ class ConfigListScreen:
 		self.closeConfigList((True,))
 
 	def closeConfigList(self, closeParameters=()):
-		self.closeParameters = closeParameters
 		if self["config"].isChanged():
+			self.closeParameters = closeParameters
 			self.session.openWithCallback(self.cancelConfirm, MessageBox, self.cancelMsg, default=False, type=MessageBox.TYPE_YESNO)
 		else:
 			self.close(*closeParameters)
@@ -419,6 +419,8 @@ class ConfigListScreen:
 			return
 		for x in self["config"].list:
 			x[1].cancel()
+		if not hasattr(self, "closeParameters"):
+			self.closeParameters = ()
 		self.close(*self.closeParameters)
 
 	def createSummary(self):  # This should not be required if ConfigList is invoked via Setup (as it should).
