@@ -63,6 +63,8 @@ class inputDevices:
 				self.name = None
 
 			if self.name:
+				if "front panel" or "cec_input" in self.name:
+					continue
 				self.Devices[evdev] = {'name': self.name, 'type': self.getInputDeviceType(self.name),'enabled': False, 'configuredName': None }
 				if model.startswith("et"):
 					self.setDefaults(evdev)
