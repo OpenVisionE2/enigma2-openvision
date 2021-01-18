@@ -33,8 +33,8 @@
 			<id val="scan" />
 			<item entryID="tuner_setup" level="0" text="Tuner Configuration" weight="5" conditional="nimmanager.nim_slots" requires="ClientModeDisabled"><screen module="Satconfig" screen="NimSelection" /></item>
 			<item entryID="client_mode" level="0" text="Client Tuner Configuration" weight="10" requires="ClientModeEnabled"><screen module="ClientMode" screen="ClientModeScreen" /></item>
-			<item entryID="auto_scan" level="0" text="Automatic Scan" weight="15" conditional="nimmanager.somethingConnected()" requires="ClientModeDisabled"><screen module="ScanSetup" screen="ScanSimple" /></item>
-			<item entryID="manual_scan" level="0" text="Manual Scan" weight="20" conditional="nimmanager.somethingConnected()" requires="ClientModeDisabled"><screen module="ScanSetup" /></item>
+			<item entryID="auto_scan" level="2" text="Automatic Scan" weight="15" conditional="nimmanager.somethingConnected()" requires="ClientModeDisabled"><screen module="ScanSetup" screen="ScanSimple" /></item>
+			<item entryID="manual_scan" level="2" text="Manual Scan" weight="20" conditional="nimmanager.somethingConnected()" requires="ClientModeDisabled"><screen module="ScanSetup" /></item>
 			<item entryID="fallbacktuner_settings" level="0" text="Fallback Remote Receiver Setup" weight="25" requires="ClientModeDisabled"><screen module="SetupFallbacktuner" /></item>
 		</menu>
 
