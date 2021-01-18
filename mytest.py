@@ -33,13 +33,6 @@ enigma.eTimer = eBaseImpl.eTimer
 enigma.eSocketNotifier = eBaseImpl.eSocketNotifier
 enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
 
-if getVisionVersion().startswith("10") and not fileExists ("/var/tmp/ntpv4.local") and platform != "dm4kgen":
-	from Components.Console import Console
-	print("[mytest] Try load all network interfaces.")
-	Console = Console()
-	Console.ePopen('/etc/init.d/networking restart ; /etc/init.d/samba.sh restart ; mount -a -t nfs,smbfs,cifs,ncpfs')
-	print("[mytest] All network interfaces loaded.")
-
 from traceback import print_exc
 
 if getHaveMultiLib() == "True":
