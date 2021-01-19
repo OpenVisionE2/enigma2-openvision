@@ -208,6 +208,7 @@ class InfoBarLongKeyDetection:
 		elif flag == 0:
 			self.LongButtonPressed = False
 
+
 class InfoBarUnhandledKey:
 	def __init__(self):
 		self.unhandledKeyDialog = self.session.instantiateDialog(UnhandledKey)
@@ -231,25 +232,26 @@ class InfoBarUnhandledKey:
 			KEYIDS["KEY_NEXT"], KEYIDS["KEY_PREVIOUS"]
 		)
 
-	#this function is called on every keypress!
-	def actionA(self, key, flag):
+	def actionA(self, key, flag):  # This function is called on every keypress!
 		print("[InfoBarGenerics] Key: %s (%s) KeyID='%s' Binding='%s'." % (key, KEYFLAGS[flag], self.invKeyIds.get(key, ""), ", ".join(getKeyDescription(key))))
-		self.unhandledKeyDialog.hide()
-		if self.closeSIB(key) and self.secondInfoBarScreen and self.secondInfoBarScreen.shown:
-			self.secondInfoBarScreen.hide()
+		if flag != 2: # Don't hide on repeat.
+			self.unhandledKeyDialog.hide()
+			if self.closeSIB(key) and self.secondInfoBarScreen and self.secondInfoBarScreen.shown:
+				self.secondInfoBarScreen.hide()
+				self.secondInfoBarWasShown = False
 		if flag != 4:
-			if self.flags & (1 << 1):
+			if self.flags == 0:
 				self.flags = self.uflags = 0
 			self.flags |= (1 << flag)
-			if flag == 1:  # Break.
+			if flag == 1 or flag == 3:  # Break and Long.
 				self.checkUnusedTimer.start(0, True)
 		return 0
 
 	def closeSIB(self, key):
 		return True if key >= 12 and key not in self.sibIgnoreKeys else False  # (114, 115, 174, 352, 103, 108, 402, 403, 407, 412)
 
-	#this function is only called when no other action has handled this key
-	def actionB(self, key, flag):
+	
+	def actionB(self, key, flag):  # This function is only called when no other action has handled this key.
 		if flag != 4:
 			self.uflags |= (1 << flag)
 
@@ -257,6 +259,7 @@ class InfoBarUnhandledKey:
 		if self.flags == self.uflags:
 			self.unhandledKeyDialog.show()
 			self.hideUnhandledKeySymbolTimer.start(2000, True)
+
 
 class HideVBILine(Screen):
 	def __init__(self, session):
