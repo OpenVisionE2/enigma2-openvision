@@ -2229,7 +2229,7 @@ class ConfigFile:
 		try:
 			config.loadFromFile(self.CONFIG_FILE, True)
 		except (IOError, OSError) as err:
-			print("[config] Error %d: Unable to load config '%s', assuming defaults.  (%s)" % (err.errno, CONFIG_FILE, err.strerror))
+			print("[config] Error %d: Unable to load config '%s', assuming defaults.  (%s)" % (err.errno, self.CONFIG_FILE, err.strerror))
 
 	def save(self):
 		# config.save()
