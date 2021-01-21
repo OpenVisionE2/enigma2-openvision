@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.Harddisk import harddiskmanager
+from Components.Console import Console
 from Components.config import ConfigSubsection, ConfigYesNo, config, ConfigSelection, ConfigText, ConfigNumber, ConfigSet, ConfigLocations, ConfigSelectionNumber, ConfigClock, ConfigSlider, ConfigEnableDisable, ConfigSubDict, ConfigDictionarySet, ConfigInteger, ConfigPassword, ConfigIP, NoSave, ConfigBoolean
 from Tools.Directories import defaultRecordingLocation, fileHas
-from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff, setEnableTtCachingOnOff, eEnv, eDVBDB, Misc_Options, eBackgroundFileEraser, eServiceEvent, getBoxType, eEPGCache
+from enigma import setTunerTypePriorityOrder, setPreferredTuner, setSpinnerOnOff, setEnableTtCachingOnOff, eEnv, eDVBDB, Misc_Options, eBackgroundFileEraser, eServiceEvent, eDVBLocalTimeHandler, eEPGCache, getBoxType
+from Components.About import GetIPsFromNetworkInterfaces
 from Components.NimManager import nimmanager
 from Components.ServiceList import refreshServiceList
 from Components.SystemInfo import SystemInfo
-from Components.Console import Console
 import os
 import time
 import locale
@@ -20,7 +21,6 @@ model = getBoxType()
 displaytype = getDisplayType()
 
 def InitUsageConfig():
-	config.misc.useNTPminutes = ConfigSelection(default = "30", choices = [("30", "30" + " " +_("minutes")), ("60", _("Hour")), ("1440", _("Once per day"))])
 	config.usage = ConfigSubsection()
 	if fileHas("/etc/network/interfaces","iface eth0 inet static") and not fileHas("/etc/network/interfaces","iface wlan0 inet dhcp") or fileHas("/etc/network/interfaces","iface wlan0 inet static") and fileHas("/run/ifstate","wlan0=wlan0"):
 		config.usage.dns = ConfigSelection(default = "custom", choices = [("custom", _("Static IP or Custom")), ("google", _("Google DNS")), ("cloadflare", _("Cloadfare")), ("opendns-familyshield", _("OpenDNS FamilyShield")), ("opendns-home", _("OpenDNS Home"))])
@@ -1372,6 +1372,22 @@ def InitUsageConfig():
 
 	config.misc.softcam_setup = ConfigSubsection()
 	config.misc.softcam_setup.extension_menu = ConfigYesNo(default = True)
+
+	config.ntp = ConfigSubsection()
+	def timesyncChanged(configElement):
+		if configElement.value == "dvb" or not GetIPsFromNetworkInterfaces():
+			eDVBLocalTimeHandler.getInstance().setUseDVBTime(True)
+			eEPGCache.getInstance().timeUpdated()
+			if configElement.value == "dvb" and os.path.islink('/etc/network/if-up.d/ntpdate-sync'):
+				Console().ePopen("sed -i '/ntpdate-sync/d' /etc/cron/crontabs/root;unlink /etc/network/if-up.d/ntpdate-sync")
+		else:
+			eDVBLocalTimeHandler.getInstance().setUseDVBTime(False)
+			eEPGCache.getInstance().timeUpdated()
+			if not os.path.islink('/etc/network/if-up.d/ntpdate-sync'):
+				Console().ePopen("echo '30 * * * *    /usr/bin/ntpdate-sync silent' >>/etc/cron/crontabs/root;ln -s /usr/bin/ntpdate-sync /etc/network/if-up.d/ntpdate-sync")
+	config.ntp.timesync = ConfigSelection(default="auto", choices=[("auto", _("auto")), ("dvb", _("Transponder Time")), ("ntp", _("Internet (ntp)"))])
+	config.ntp.timesync.addNotifier(timesyncChanged)
+	config.ntp.server = ConfigText("pool.ntp.org",  fixed_size=False)
 
 def updateChoices(sel, choices):
 	if choices:

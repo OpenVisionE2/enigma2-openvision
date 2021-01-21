@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-15 14:16+0330\n"
+"POT-Creation-Date: 2021-01-20 16:44+0330\n"
 "PO-Revision-Date: 2021-01-09 00:32+0200\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -2440,11 +2440,19 @@ msgstr "Sparta bitais"
 msgid "Bitrate:"
 msgstr "Bitų sparta:"
 
+#, fuzzy
+msgid "Black Screen"
+msgstr "Juodas ekranas"
+
 msgid "Black screen"
 msgstr "Juodas ekranas"
 
 msgid "Black screen till locked"
 msgstr "Juodas ekranas blokuojamas iki"
+
+#, fuzzy
+msgid "Blacklist"
+msgstr "juodasis sąrašas"
 
 msgid "Blinking REC"
 msgstr "Mirksintis REC"
@@ -3559,9 +3567,6 @@ msgstr "Nustatykite, kuris imtuvo tipas bus pasirinktas, kai tas pats kanalas pr
 msgid "Configure which tuner will be preferred, when more than one tuner is available. If set to 'auto' the system will give priority to the tuner having the lowest number of channels/satellites."
 msgstr "Pasirinkite, kuris imtuvas bus naudojamas, kai yra daugiau, nei vienas imtuvas. Jei pasirinksite 'auto', sistema naudos tą, kuriame bus mažiau kanalų/palydovų."
 
-msgid "Configure your NTP server."
-msgstr "Konfigūruokite savo NTP serverį."
-
 msgid "Configure your internal LAN"
 msgstr "Konfigūruokite savo vidinį tinklą"
 
@@ -4464,6 +4469,10 @@ msgstr "Ekranas ir vartotojo sąsaja"
 msgid "Display message before playing next movie"
 msgstr "Prieš rodant sekantį filmą, rodyti žinutę"
 
+#, fuzzy
+msgid "Display oscam information."
+msgstr "Geografinės vietos informacija"
+
 msgid "Display selection list as a selection menu"
 msgstr ""
 
@@ -4662,6 +4671,10 @@ msgstr "Dominikos Respublika"
 
 msgid "Don't ask again!"
 msgstr "Daugiau neklausti!"
+
+#, fuzzy
+msgid "Don't restart"
+msgstr "Laukiama paleidimo iš naujo"
 
 msgid "Don't save and stop timeshift"
 msgstr "Stabdyti laiko poslinkį, neišsaugant"
@@ -5542,15 +5555,6 @@ msgstr "Atkurti gamyklines nuostatas"
 msgid "Factory release: "
 msgstr "Gamyklos išleidimas: "
 
-msgid ""
-"Factory reset will restore your receiver to its default configuration. All user data including system settings, tuner configuration, bouquets, services and plugins will be DELETED. Recordings and other files stored on HDD and USB media will remain intact. After completion, the system will restart automatically!\n"
-"\n"
-"Do you really want to proceed?"
-msgstr ""
-"Gamyklinių nuostatų atkūrimas atkurs imtuvą į numatytąją konfigūraciją. Visi naudotojo duomenys, įskaitant sistemos nustatymus, imtuvo konfigūraciją, paketus, kanalus ir priedus, bus ištrinti. Įrašai ir kiti failai, saugomi HDD ir USB laikmenose, išliks nepakitę. Pabaigus, sistema automatiškai pasileis iš naujo!\n"
-"\n"
-"Ar tikrai norite tęsti?"
-
 msgid "Fade the infobar when hiding"
 msgstr "Paslėpti info juostą"
 
@@ -5848,6 +5852,10 @@ msgstr "Priekinio procesoriaus versija: %s"
 
 msgid "Full Range RGB"
 msgstr "Visas RGB diapazonas"
+
+#, fuzzy
+msgid "Full factory reset"
+msgstr "Atkurti gamyklines nuostatas"
 
 #. TRANSLATORS: (aspect ratio policy: display as fullscreen, even if the content aspect ratio does not match the screen ratio)
 msgid "Full screen"
@@ -6269,6 +6277,9 @@ msgstr "Istorija atgal"
 msgid "History next"
 msgstr "Istorija pirmyn"
 
+msgid "Hold First Frame"
+msgstr ""
+
 msgid "Hold screen"
 msgstr "Užlaikytas vaizdas"
 
@@ -6343,9 +6354,6 @@ msgstr "Spartusis perjungimas"
 
 msgid "Hotplug"
 msgstr "Greitas įjungimas"
-
-msgid "Hour"
-msgstr "Valanda"
 
 msgid "Hourly"
 msgstr "Valandinė"
@@ -6523,6 +6531,9 @@ msgstr ""
 
 msgid "Image: "
 msgstr "Atvaizdas: "
+
+msgid "Immediately restart selected devices."
+msgstr ""
 
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
 msgstr "Importuoti kanalus ir/arba EPG iš nuotolinio imtuvo URL taip pat, kai imtuvas išeina iš budėjimo režimo"
@@ -6761,6 +6772,10 @@ msgid "Internal hdd only"
 msgstr "Tik vidinis kietas diskas"
 
 msgid "Internet"
+msgstr "Internetas"
+
+#, fuzzy
+msgid "Internet (ntp)"
 msgstr "Internetas"
 
 msgid "Interval between keys when repeating:"
@@ -7835,11 +7850,9 @@ msgstr "NE"
 msgid "NOW"
 msgstr "DABAR"
 
-msgid "NTP"
-msgstr "NTP"
-
-msgid "NTP server"
-msgstr "NTP serveris"
+#, fuzzy
+msgid "NTP Hostname"
+msgstr "Pavadinimas tinkle:"
 
 msgid "NTSC"
 msgstr "NTSC"
@@ -7938,6 +7951,10 @@ msgstr "Tinklo vedlys"
 
 msgid "Network:"
 msgstr "Tinklas:"
+
+#, fuzzy
+msgid "Never"
+msgstr "niekada"
 
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Niekada neiškoduoti įrašomo turinio. Tai atšaukia bendruosius visų laikmačių nustatymus. Jei įjungta, įrašai saugomi šifruoti ir vėliau turi būti iškoduojami (tai kartais vadimama iškodavimu atsijungus). Numatytasis: 'Ne'."
@@ -8351,9 +8368,6 @@ msgstr "Filmo pabaigoje (kaip meniu)"
 msgid "On valid ONIDs, ignore frequency sub network part"
 msgstr "Esant galiojantiems ONID, ignoruokite dažnio sub tinklo dalį"
 
-msgid "Once per day"
-msgstr "Kartą per dieną"
-
 msgid "One"
 msgstr "Vienas"
 
@@ -8581,14 +8595,15 @@ msgid "Parent directory"
 msgstr "Pagrindinis katalogas"
 
 #, fuzzy
+msgid "Parental Control"
+msgstr "Tėvų kontrolė"
+
+#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Tėvų kontrolės sąranka"
 
 msgid "Parental Guidance Recommended"
 msgstr "Rekomenduota tėvų priežiūra"
-
-msgid "Parental control"
-msgstr "Tėvų kontrolė"
 
 msgid "Parental control services editor"
 msgstr "Redaguoti tėvų kontrolės kanalus"
@@ -8972,13 +8987,8 @@ msgstr "Prašome laukti kol testuojamas jūsų tinklas..."
 msgid "Please wait while your network is restarting..."
 msgstr "Prašome laukti kol paleidžiamas iš naujo jūsų tinklas..."
 
-msgid "Please wait, restarting cardserver."
-msgstr "Prašome laukti, kortelių serveris paleidžiamas iš naujo."
-
-msgid "Please wait, restarting softcam and cardserver."
-msgstr "Prašome laukti, emuliatorius ir kortelių serveris paleidžiami iš naujo."
-
-msgid "Please wait, restarting softcam."
+#, fuzzy, python-format
+msgid "Please wait, restarting %s."
 msgstr "Prašome laukti, emuliatorius paleidžiamas iš naujo."
 
 msgid "Please wait..."
@@ -9686,11 +9696,46 @@ msgstr "Pašalinti serverio pavadinimo įrašą"
 msgid "Remove all alternatives"
 msgstr "Pašalinti visas alternatyvas"
 
+msgid "Remove all bouquet/tuning data"
+msgstr ""
+
+#, fuzzy
+msgid "Remove all keymap data"
+msgstr "Pašalinti žymeklį"
+
 msgid "Remove all logfiles"
 msgstr "Pašalinti visus žurnalų failus"
 
+#, fuzzy
+msgid "Remove all network data"
+msgstr "Pašalinti visus 'naujas'"
+
 msgid "Remove all new found flags"
 msgstr "Pašalinti visus 'naujas'"
+
+#, fuzzy
+msgid "Remove all other data"
+msgstr "Pašalinti visas alternatyvas"
+
+#, fuzzy
+msgid "Remove all plugin setting data"
+msgstr "Pašalinti priedus"
+
+#, fuzzy
+msgid "Remove all resume point data"
+msgstr "Pašalinti visus 'naujas'"
+
+#, fuzzy
+msgid "Remove all settings data"
+msgstr "Išsaugokite parametrus ir EPG duomenis"
+
+#, fuzzy
+msgid "Remove all skin data"
+msgstr "Pašalinti visus 'naujas'"
+
+#, fuzzy
+msgid "Remove all timer data"
+msgstr "Pašalinti visas alternatyvas"
 
 msgid "Remove bookmark"
 msgstr "Pašalinti žymę"
@@ -9840,6 +9885,9 @@ msgstr "Atkurti gamyklinį pastovų PIN kodą"
 
 msgid "Reset playback position"
 msgstr "Iš naujo nustatyti atkūrimo poziciją"
+
+msgid "Reset the selected devices when the GREEN button is pressed."
+msgstr ""
 
 msgid "Reset video enhancement settings to system defaults?"
 msgstr "Perjungti vaizdo stiprinimo nustatymus į sistemos numatytus?"
@@ -10408,6 +10456,36 @@ msgstr "Pasirinkite 'A' arba 'B', jei jūsų antenos sistema reikalauja to, kita
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Pasirinkite 'FBC SCR' jei šis imtuvas prisijungtas prie SCR (Unicable/JESS) įrenginio. Visiems kitiems nustatymams pasirinkite 'FBC automatinis'."
 
+msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
+msgstr ""
+
+msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.  This will also cause Enigma2 to run the Welcome Wizard on restart."
+msgstr ""
+
+msgid "Select 'Yes' to remove all media player resume data. Selecting this option will remove the data used to allow playback of media files to resume from the position where playback was last stopped. Playback position of recordings is not affected."
+msgstr ""
+
+msgid "Select 'Yes' to remove all network data. Selecting this option will remove all network data including automounts and network connection data including connection accounts and passwords. This could cause some Enigma2 functions to fail if they are configured to use these network resources."
+msgstr ""
+
+msgid "Select 'Yes' to remove all other files and directories not covered by the options above."
+msgstr ""
+
+msgid "Select 'Yes' to remove all plugin configuration data. Selecting this option will remove all plugin configuration data that is stored in the Enigma2 configuration folder. This will cause all affected plugins to return to their default settings. This could cause some plugins to not function until configured."
+msgstr ""
+
+msgid "Select 'Yes' to remove all settings, tuning data, timers, resume pointers etc. Selecting this option will restore the configuration to the initial settings before any configuration settings were applied. This is the most reliable form of Factory Reset."
+msgstr ""
+
+msgid "Select 'Yes' to remove all timer configuration data. Selecting this option will clear all timers, autotimers and power timers."
+msgstr ""
+
+msgid "Select 'Yes' to remove all tuning data. Selecting this option will remove all tuning and bouquet data and will make timers non functional until the receiver is retuned."
+msgstr ""
+
+msgid "Select 'Yes' to remove all user customisations of skin data. Selecting this option will remove all user based skin customisations. All affected skins will return to their standard settings. This will also clear any customied boot logos and backdrops."
+msgstr ""
+
 msgid "Select 'Yes' when you want to configure this tuner for ATSC"
 msgstr "Pasirinkite 'Taip', jei norite konfigūruoti šį imtuvą ATSC"
 
@@ -10456,9 +10534,6 @@ msgstr "Pasirinkite 'taip', jei tik siunčiate DiSEqC komandą, kad pakeisti iš
 msgid "Select CAId"
 msgstr "Pasirinkite CAId"
 
-msgid "Select Card Server"
-msgstr "Pasirinkite kortelių serverį"
-
 msgid "Select Channel"
 msgstr "Pasirinkite kanalą"
 
@@ -10468,17 +10543,21 @@ msgstr "Pasirinkite greitą DiSEqC, jei jūsų sistema palaiko tai. Jei jūs ne�
 msgid "Select HDD"
 msgstr "Pasirinkite kietąjį diską"
 
-msgid "Select Softcam"
-msgstr "Pasirinkite emuliatorių"
-
 msgid "Select a bouquet"
 msgstr "Pasirinkite paketą"
+
+msgid "Select a cardserver from the available list."
+msgstr ""
 
 msgid "Select a movie"
 msgstr "Pasirinkite filmą"
 
 msgid "Select a network adapter"
 msgstr "Pasirinkite tinklo modulį"
+
+#, fuzzy
+msgid "Select a softcam from the available list."
+msgstr "Pasirinkite savo šalį. Jei nėra pasirinkti 'visos'."
 
 msgid "Select a tuner"
 msgstr "Pasirinkite imtuvą"
@@ -10507,6 +10586,10 @@ msgstr "Pasirinkite atsarginės kopijos vietą"
 
 msgid "Select between entering an IP address or a domain."
 msgstr "Pasirinkite, įvesti IP adresą ar domeną."
+
+#, fuzzy
+msgid "Select cardserver"
+msgstr "Pasirinkite kortelių serverį"
 
 msgid "Select channel"
 msgstr "Pasirinkite kanalą"
@@ -10544,6 +10627,9 @@ msgstr "Pasirinkite, kaip greitai lėkštė turėtų judėti tarp palydovų."
 msgid "Select how the satellite dish is set up. i.e. fixed dish, single LNB, DiSEqC switch, positioner, etc."
 msgstr "Pasirinkite, kaip nustatyti palydovinę anteną. t.y. fiksuota antena, viena LNB, DiSEqC jungiklis, pozicionierius ir t.t."
 
+msgid "Select how you want your receiver to keep the correct time, either from the DVB transponder, or from the internet using NTP. Or use Auto, which will favour using NTP, but will fall back to transponder time when no internet connection is available."
+msgstr ""
+
 msgid "Select input device"
 msgstr "Pasirinkite įvesties įrenginį"
 
@@ -10579,6 +10665,10 @@ msgstr "Pasirinkite kanalą, kurį norite pridėti..."
 
 msgid "Select slot"
 msgstr "Pasirinkite lizdą"
+
+#, fuzzy
+msgid "Select softcam"
+msgstr "Pasirinkite emuliatorių"
 
 msgid "Select sort method:"
 msgstr "Pasirinkite rūšiavimo būdą:"
@@ -10997,9 +11087,6 @@ msgstr "Valdymo meniu"
 
 msgid "Setup mode"
 msgstr "Valdymo būdas"
-
-msgid "Setup network time synchronization interval."
-msgstr "Tinklo nustatymo laiko sinchronizavimo intervalas."
 
 msgid "Setup your positioner"
 msgstr "Sukonfigūruokite pozicionierių"
@@ -11546,6 +11633,10 @@ msgstr "Slovėnų"
 msgid "Slow"
 msgstr "Lėtas"
 
+#, fuzzy
+msgid "Slow Motion"
+msgstr "Sulėtinimo greičiai"
+
 msgid "Slow motion speeds"
 msgstr "Sulėtinimo greičiai"
 
@@ -11586,10 +11677,11 @@ msgstr "Švelni daugiafunkcinė įkrova: "
 msgid "Softcam"
 msgstr "Emuliatoriaus tvarkyklė"
 
-msgid "Softcam Setup"
-msgstr "Emuliatoriaus tvarkyklė"
+#, fuzzy
+msgid "Softcam Actions"
+msgstr "Paieškos parinktys"
 
-msgid "Softcam setup"
+msgid "Softcam Setup"
 msgstr "Emuliatoriaus tvarkyklė"
 
 msgid "Software"
@@ -12218,17 +12310,8 @@ msgstr "Simbolių sparta ir FEC"
 msgid "Symbol rate:"
 msgstr "Simbolių sparta:"
 
-msgid "Sync NTP every (minutes)"
-msgstr "Sinchronizuoti NTP kas (min.)"
-
 msgid "Sync failure moving back to origin !"
 msgstr "Sinchronizavimo klaida, grįžtame prie originalo!"
-
-msgid "Sync time using"
-msgstr "Sinchronizavimui naudoti"
-
-msgid "Synchronize system time using transponder or internet."
-msgstr "Sinchronizuokite sistemos laiką, naudodami transponderį, arba internetinį laiko serverį."
 
 msgid "Syrian Arab Republic"
 msgstr "Sirijos Arabų Respublika"
@@ -12444,6 +12527,10 @@ msgstr "DVD standartas nesupranta H.264 (HDTV) vaizdo srauto. Todėl vietoje to 
 msgid "The MovieCut plugin is not installed."
 msgstr "MovieCut priedas neįdiegtas."
 
+#, fuzzy
+msgid "The PIN code entered is incorrect."
+msgstr "Jūsų įrašyti PIN kodai yra skirtingi."
+
 msgid "The PIN code has been changed successfully."
 msgstr "PIN kodas sėkmingai pakeistas."
 
@@ -12493,6 +12580,9 @@ msgstr "Kadrų įrašymo dažnis. Geriausia, kad tai atitiktų pradinio kadravim
 
 msgid "The height of the picture. The input will be scaled to match this value."
 msgstr "Vaizdo aukštis. Įvestis bus mažinama, kad atitiktų šią reikšmę."
+
+msgid "The hostname or the IP address of the NTP server to synchronise the time with."
+msgstr ""
 
 msgid ""
 "The network wizard extension is not installed!\n"
@@ -12675,6 +12765,12 @@ msgid "This field allows you to search an additional symbol rate up to %s."
 msgstr "Šis laukas leidžia jums ieškoti papildomų simbolių spartos iki %s."
 
 msgid ""
+"This image is intended for developers and testers.\n"
+"No support will be provided!\n"
+"Do you understand this?"
+msgstr ""
+
+msgid ""
 "This info is for developers only.\n"
 "For normal users it is not relevant.\n"
 "Please don't panic if you see values displayed looking suspicious!"
@@ -12803,6 +12899,10 @@ msgstr "Ši parinktis leidžia rodyti viso ekrano kelią, vedantį į dabartinį
 
 msgid "This option allows you to switch audio to BT speakers."
 msgstr "Ši parinktis leidžia perjungti garsą į BT garsiakalbius."
+
+#, fuzzy
+msgid "This option allows you to use video sync mode."
+msgstr "Ši parinktis leidžia įjungti 3D erdvinį garsą."
 
 msgid "This option allows you to view the old and new settings side by side."
 msgstr "Ši parinktis leidžia jums peržiūrėti senus ir naujus nustatymus vienu metu."
@@ -12955,6 +13055,9 @@ msgstr "Laiko skalė"
 
 msgid "Time style"
 msgstr "Laiko stilius"
+
+msgid "Time synchronization method"
+msgstr ""
 
 msgid "Time to execute command or script"
 msgstr "Laikas vykdyti komandą, arba scenarijų"
@@ -13180,7 +13283,8 @@ msgstr "Perdavimo būdas"
 msgid "Transponder"
 msgstr "Transponderis"
 
-msgid "Transponder time"
+#, fuzzy
+msgid "Transponder Time"
 msgstr "Transponderio laikas"
 
 msgid "Transport Stream Type"
@@ -13454,6 +13558,10 @@ msgstr "Atjungti"
 
 msgid "Unsupported"
 msgstr "Nepalaikoma"
+
+#, fuzzy
+msgid "Until standby/restart"
+msgstr "iki budėjimo/paleidimo iš naujo"
 
 msgid "Unzipping Image"
 msgstr "Išarchyvuojamas atvaizdas"
@@ -13800,6 +13908,10 @@ msgstr "Vaizdo išvestis"
 
 msgid "Video setup"
 msgstr "Vaizdo sąranka"
+
+#, fuzzy
+msgid "Video sync mode"
+msgstr "Vaizdo režimas"
 
 msgid "Video wizard"
 msgstr "Vaizdo sąrankos vedlys"
@@ -14911,6 +15023,10 @@ msgstr "alternatyva"
 msgid "always"
 msgstr "visada"
 
+#, fuzzy
+msgid "and"
+msgstr "Diapazonas"
+
 msgid "and never ask in this session again"
 msgstr "ir daugiau šioje sesijoje neklausti"
 
@@ -14978,9 +15094,6 @@ msgstr "juoda"
 msgid "black & white"
 msgstr "juodai balta"
 
-msgid "blacklist"
-msgstr "juodasis sąrašas"
-
 msgid "blue"
 msgstr "mėlyna"
 
@@ -15001,6 +15114,10 @@ msgstr "pagal hmmmdada"
 
 msgid "cancel"
 msgstr "atšaukti"
+
+#, fuzzy
+msgid "cardserver"
+msgstr "Paleisti kortelių serverį iš naujo"
 
 msgid "cartoon/puppets"
 msgstr "animacija, lėliniai"
@@ -15864,6 +15981,10 @@ msgstr "socialiniai/politiniai klausimai/ekonomika (bendra)"
 msgid "social/spiritual science"
 msgstr "socialinis/dvasinis mokslas"
 
+#, fuzzy
+msgid "softcam"
+msgstr "Emuliatoriaus tvarkyklė"
+
 msgid "special (general)"
 msgstr "specialusis (bendrai)"
 
@@ -16001,9 +16122,6 @@ msgstr "nepublikuotas"
 
 msgid "untestable"
 msgstr "netikrintinas"
-
-msgid "until standby/restart"
-msgstr "iki budėjimo/paleidimo iš naujo"
 
 msgid "use best / controlled by HDMI"
 msgstr "naudoti geriausią / valdoma HDMI"

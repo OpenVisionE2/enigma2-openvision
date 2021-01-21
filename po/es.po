@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-15 14:16+0330\n"
+"POT-Creation-Date: 2021-01-20 16:44+0330\n"
 "PO-Revision-Date: 2019-10-16 22:14+0200\n"
 "Last-Translator: Kuatto\n"
 "Language-Team: Álvaro <mi casa>\n"
@@ -2611,11 +2611,19 @@ msgstr "Bitrate:"
 msgid "Bitrate:"
 msgstr "Bitrate:"
 
+#, fuzzy
+msgid "Black Screen"
+msgstr "Pantalla negra"
+
 msgid "Black screen"
 msgstr "Pantalla negra"
 
 msgid "Black screen till locked"
 msgstr "Pantalla negra hasta bloqueada"
+
+#, fuzzy
+msgid "Blacklist"
+msgstr "lista negra"
 
 #, fuzzy
 msgid "Blinking REC"
@@ -3750,9 +3758,6 @@ msgstr "Configure qué tipo de sintonizador será preferido cuando el mismo cana
 msgid "Configure which tuner will be preferred, when more than one tuner is available. If set to 'auto' the system will give priority to the tuner having the lowest number of channels/satellites."
 msgstr "Configure qué sintonizador será preferido, cuando haya más de un sintonizador disponible. Si se establece en ‘auto’, el sistema dará prioridad al sintonizador que tenga la menor cantidad de canales/satélites."
 
-msgid "Configure your NTP server."
-msgstr "Configurar el servidor NTP."
-
 msgid "Configure your internal LAN"
 msgstr "Configura su red interna"
 
@@ -4681,6 +4686,9 @@ msgstr "Pantalla e interfaz de usuario"
 msgid "Display message before playing next movie"
 msgstr "Mostrar mensaje antes de reproducir la próxima película"
 
+msgid "Display oscam information."
+msgstr "Mostrar información oscam."
+
 msgid "Display selection list as a selection menu"
 msgstr ""
 
@@ -4857,13 +4865,13 @@ msgstr "¿Quieres seleccionar un skin diferente?"
 msgid "Do you want to update the package:\n"
 msgstr "Quieres actualizar el paquete?:\n"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Do you want to update to %s"
-msgstr "¿Quieres actualizar su receptor a %s?"
+msgstr "Quieres actualizar a %s"
 
 #, fuzzy, python-format
 msgid "Do you want to update your %s %s?"
-msgstr "¿Quieres actualizar su receptor a %s?"
+msgstr "Quieres actualizar a %s"
 
 #, fuzzy
 msgid "Documentary"
@@ -4884,6 +4892,9 @@ msgstr "República Dominicana"
 #, fuzzy
 msgid "Don't ask again!"
 msgstr "Montar de nuevo"
+
+msgid "Don't restart"
+msgstr "No reiniciar"
 
 msgid "Don't save and stop timeshift"
 msgstr "No guardar y parar timeshift"
@@ -5792,24 +5803,14 @@ msgstr "Configurar FTP"
 
 #, fuzzy
 msgid "Factory RC type: "
-msgstr "Valores de fábrica"
+msgstr "Restablecimiento de Fábrica"
 
-#, fuzzy
 msgid "Factory Reset"
-msgstr "Valores de fábrica"
+msgstr "Restablecimiento de Fábrica"
 
 #, fuzzy
 msgid "Factory release: "
 msgstr "Valores de fábrica"
-
-msgid ""
-"Factory reset will restore your receiver to its default configuration. All user data including system settings, tuner configuration, bouquets, services and plugins will be DELETED. Recordings and other files stored on HDD and USB media will remain intact. After completion, the system will restart automatically!\n"
-"\n"
-"Do you really want to proceed?"
-msgstr ""
-"El restablecimiento de fábrica restaurará su receptor a su configuración predeterminada. Se ELIMINARÁN todos los datos del usuario, incluida la configuración del sistema, la configuración del sintonizador, los bouquets, los servicios y los plugins. Las grabaciones y otros archivos almacenados en el HDD y el dispositivo USB permanecerán intactos. ¡Después de la finalización, el sistema se reiniciará automáticamente!\n"
-"\n"
-"¿De verdad quiere continuar?"
 
 msgid "Fade the infobar when hiding"
 msgstr "Desvanece la infobar al esconderse"
@@ -6107,12 +6108,12 @@ msgstr "Desde:"
 msgid "Front Panel Display"
 msgstr "Panel Frontal Display"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Front panel your %s %s will be updated\n"
 "This may take a few minutes"
 msgstr ""
-"Su display se actualizará\n"
+"Panel Display de su %s %s se actualizará\n"
 "Esto puede tomar unos pocos minutos"
 
 #, fuzzy, python-format
@@ -6121,6 +6122,9 @@ msgstr "Versión del procesador frontal: %s"
 
 msgid "Full Range RGB"
 msgstr ""
+
+msgid "Full factory reset"
+msgstr "Restablecimiento completo de fábrica"
 
 #. TRANSLATORS: (aspect ratio policy: display as fullscreen, even if the content aspect ratio does not match the screen ratio)
 msgid "Full screen"
@@ -6560,6 +6564,9 @@ msgstr "Historia atrás"
 msgid "History next"
 msgstr "Historia adelante"
 
+msgid "Hold First Frame"
+msgstr ""
+
 msgid "Hold screen"
 msgstr "Pantalla de espera"
 
@@ -6615,9 +6622,8 @@ msgstr "Introduzca dirección IP"
 msgid "Host receiver address type"
 msgstr "No se recibieron datos"
 
-#, fuzzy
 msgid "Host receiver streaming port"
-msgstr "Su receptor se está reiniciando"
+msgstr ""
 
 #, fuzzy
 msgid "Hostname:"
@@ -6641,9 +6647,6 @@ msgstr "Tecla para zapeo"
 
 msgid "Hotplug"
 msgstr "Conexión caliente"
-
-msgid "Hour"
-msgstr ""
 
 msgid "Hourly"
 msgstr ""
@@ -6828,6 +6831,9 @@ msgstr ""
 
 msgid "Image: "
 msgstr "Imagen: "
+
+msgid "Immediately restart selected devices."
+msgstr "Reinicie inmediatamente los seleccionados."
 
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
 msgstr "Importar canales y/o EPG desde la URL del receptor reserva también cuando el receptor salga del modo de reposo"
@@ -7071,6 +7077,9 @@ msgstr "Solo Disco Duro interno"
 #, fuzzy
 msgid "Internet"
 msgstr "Interno"
+
+msgid "Internet (ntp)"
+msgstr ""
 
 msgid "Interval between keys when repeating:"
 msgstr "Intervalo entre teclas al repetir:"
@@ -7691,14 +7700,13 @@ msgstr "Habilitar el temporizador de importación desde el sintonizador de reser
 msgid "Manufacturer"
 msgstr "Fabricante"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Manufacturer reset in progress\n"
 "Please wait until your %s %s restarts"
 msgstr ""
-"Actualización en progreso\n"
-"Espere hasta que su receptor se reinicie\n"
-"Tomará poco tiempo tenga paciencia"
+"Reset de fábrica en progreso\n"
+"Espere hasta que su %s %s se reinicie"
 
 msgid "Mara M9"
 msgstr ""
@@ -8187,11 +8195,8 @@ msgid "NOW"
 msgstr "Ahora"
 
 #, fuzzy
-msgid "NTP"
-msgstr "FTP"
-
-msgid "NTP server"
-msgstr "Servidor NTP"
+msgid "NTP Hostname"
+msgstr "Nombre del dispositivo montado"
 
 msgid "NTSC"
 msgstr "NTSC"
@@ -8290,6 +8295,10 @@ msgstr "Asistente de red"
 
 msgid "Network:"
 msgstr "Red:"
+
+#, fuzzy
+msgid "Never"
+msgstr "nunca"
 
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Nunca descifre el contenido mientras graba. Esto anula las configuraciones de temporizador individuales a nivel general. Si está habilitado, las grabaciones se almacenan en una presentación encriptada y se deben descifrar posteriormente (a veces llamadas decodificación sin conexión). Predeterminado: apagado."
@@ -8719,9 +8728,6 @@ msgstr "En final de película (como menú)"
 msgid "On valid ONIDs, ignore frequency sub network part"
 msgstr "En ONID válidos, ignore la parte de la frecuencia de subred"
 
-msgid "Once per day"
-msgstr ""
-
 msgid "One"
 msgstr "Uno"
 
@@ -8960,14 +8966,15 @@ msgid "Parent directory"
 msgstr "Directorio anterior"
 
 #, fuzzy
+msgid "Parental Control"
+msgstr "Control parental"
+
+#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Configuración de control parental"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
-
-msgid "Parental control"
-msgstr "Control parental"
 
 msgid "Parental control services editor"
 msgstr "Editor de servicios de control parental"
@@ -9358,13 +9365,8 @@ msgstr "Espere mientras se testea su red…"
 msgid "Please wait while your network is restarting..."
 msgstr "Espere mientras se reinicia su red…"
 
-msgid "Please wait, restarting cardserver."
-msgstr "Espere, reiniciando cardserver."
-
-msgid "Please wait, restarting softcam and cardserver."
-msgstr "Espere, reiniciando softcam y cardserver."
-
-msgid "Please wait, restarting softcam."
+#, fuzzy, python-format
+msgid "Please wait, restarting %s."
 msgstr "Espere, reiniciando softcam."
 
 msgid "Please wait..."
@@ -10089,12 +10091,39 @@ msgstr "Eliminar una entrada del servidor de nombres"
 msgid "Remove all alternatives"
 msgstr "eliminar todos los alternativos"
 
+msgid "Remove all bouquet/tuning data"
+msgstr "Eliminar completo datos de bouquets/sintonizados"
+
+msgid "Remove all keymap data"
+msgstr "Eliminar completo teclas asignadas"
+
 msgid "Remove all logfiles"
 msgstr "Eliminar todos los registros"
+
+msgid "Remove all network data"
+msgstr "Eliminar completo datos de red"
 
 #, fuzzy
 msgid "Remove all new found flags"
 msgstr "eliminar todas los indicadores nuevos encontrados"
+
+msgid "Remove all other data"
+msgstr "Eliminar completo otros datos"
+
+msgid "Remove all plugin setting data"
+msgstr "Eliminar completo datos de plugins"
+
+msgid "Remove all resume point data"
+msgstr "Eliminar puntos de reanudación de reprodución del multimedia"
+
+msgid "Remove all settings data"
+msgstr "Eliminar completo datos de configuración"
+
+msgid "Remove all skin data"
+msgstr "Eliminar completo datos del skin"
+
+msgid "Remove all timer data"
+msgstr "Eliminar completo datos de temporizadores"
 
 msgid "Remove bookmark"
 msgstr "Eliminar marcador"
@@ -10255,6 +10284,9 @@ msgstr "Restablecer el código PIN persistente"
 msgid "Reset playback position"
 msgstr "Restablecer posición de reproducción"
 
+msgid "Reset the selected devices when the GREEN button is pressed."
+msgstr "Puede elegir también su softcam y pulsar VERDE para reiniciarla."
+
 msgid "Reset video enhancement settings to system defaults?"
 msgstr "¿Restablecer la configuración de mejora de video a los valores por defecto?"
 
@@ -10289,7 +10321,7 @@ msgid "Restart both"
 msgstr "Reiniciar ambos"
 
 msgid "Restart cardserver"
-msgstr "Reiniciar servidor de tarjeta"
+msgstr "Reiniciar cardserver"
 
 msgid "Restart enigma"
 msgstr "Reiniciar Enigma2"
@@ -10827,6 +10859,36 @@ msgstr "Seleccione ‘A’ o ‘B’ si su sistema aéreo lo requiere, de lo con
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Seleccione 'FBC SCR' si este sintonizador se conectará a un dispositivo SCR (Unicable/JESS). Para todas las demás configuraciones, seleccione 'FBC automático'."
 
+msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
+msgstr "Seleccione 'Sí' para eliminar todos los datos de configuración de teclas. Al seleccionar esta opción, se eliminarán todos los datos de teclas y se restaurarán las definiciones predeterminadas del mapa de teclas."
+
+msgid "Select 'Yes' to remove all main settings configuration data. Selecting this option will set all Enigma2 settings back to their default values.  This will also cause Enigma2 to run the Welcome Wizard on restart."
+msgstr "Seleccione 'Sí' para eliminar todos los datos de configuración de los ajustes principales. Al seleccionar esta opción, todos los ajustes de Enigma2 volverán a sus valores de fábrica. Esto también hace que Enigma2 ejecute el Asistente wizard al reiniciar."
+
+msgid "Select 'Yes' to remove all media player resume data. Selecting this option will remove the data used to allow playback of media files to resume from the position where playback was last stopped. Playback position of recordings is not affected."
+msgstr "Seleccione 'Sí' para eliminar todos los datos de reanudación del reproductor multimedia. Al seleccionar esta opción, se eliminarán los datos utilizados para permitir que la reproducción de archivos multimedia se reanude desde la posición donde se detuvo por última vez. La posición de reproducción de las grabaciones no se ve afectada."
+
+msgid "Select 'Yes' to remove all network data. Selecting this option will remove all network data including automounts and network connection data including connection accounts and passwords. This could cause some Enigma2 functions to fail if they are configured to use these network resources."
+msgstr "Seleccione 'Sí' para eliminar todos los datos de la red. Al seleccionar esta opción, se eliminarán todos los datos de red, incluidos los montajes automáticos y los datos de conexión de red, incluidas las cuentas de conexión y las contraseñas. Esto podría hacer que algunas funciones de Enigma2 fallen si están configuradas para usar estos recursos de red."
+
+msgid "Select 'Yes' to remove all other files and directories not covered by the options above."
+msgstr "Seleccione 'Sí' para eliminar todos los demás archivos y directorios no cubiertos por las opciones anteriores."
+
+msgid "Select 'Yes' to remove all plugin configuration data. Selecting this option will remove all plugin configuration data that is stored in the Enigma2 configuration folder. This will cause all affected plugins to return to their default settings. This could cause some plugins to not function until configured."
+msgstr "Seleccione 'Sí' para eliminar todos los datos de configuración de plugins. Al seleccionar esta opción, se eliminarán todos los datos de configuración de plugins que están almacenados en la carpeta de configuración de Enigma2. Esto hará que todos los plugins afectados vuelvan a su configuración predeterminada. Esto podría hacer que algunos plugins no funcionen hasta que se configuren."
+
+msgid "Select 'Yes' to remove all settings, tuning data, timers, resume pointers etc. Selecting this option will restore the configuration to the initial settings before any configuration settings were applied. This is the most reliable form of Factory Reset."
+msgstr "Seleccione 'Sí' para eliminar todos los ajustes, datos de ajuste, temporizadores, punteros de reanudación, etc. Al seleccionar esta opción, se restaurará la configuración a los ajustes iniciales antes de que se aplicaran los ajustes de configuración. Esta es la forma más confiable de restablecimiento de fábrica."
+
+msgid "Select 'Yes' to remove all timer configuration data. Selecting this option will clear all timers, autotimers and power timers."
+msgstr "Seleccione 'Sí' para eliminar todos los datos de configuración del temporizador. Al seleccionar esta opción, se borrarán todos los temporizadores, temporizadores automáticos y temporizadores de alimentación."
+
+msgid "Select 'Yes' to remove all tuning data. Selecting this option will remove all tuning and bouquet data and will make timers non functional until the receiver is retuned."
+msgstr "Seleccione 'Sí' para eliminar todos los datos de sintonización. Al seleccionar esta opción, se eliminarán todos los datos de sintonización y ramificación y los temporizadores no funcionarán hasta que se vuelva a sintonizar el receptor."
+
+msgid "Select 'Yes' to remove all user customisations of skin data. Selecting this option will remove all user based skin customisations. All affected skins will return to their standard settings. This will also clear any customied boot logos and backdrops."
+msgstr "Seleccione 'Sí' para eliminar todas las personalizaciones de usuario de los datos del skin. Al seleccionar esta opción, se eliminarán todas las personalizaciones de skin basadas en el usuario. Todos los aspectos afectados volverán a su configuración estándar. Esto también borrará los logotipos y fondos de arranque personalizados."
+
 #, fuzzy
 msgid "Select 'Yes' when you want to configure this tuner for ATSC"
 msgstr "Seleccione 'Sí' cuando desee configurar este sintonizador para DVB-ATSC"
@@ -10876,9 +10938,6 @@ msgstr "Seleccione ‘sí’ para enviar solamente el comando DiSEqC cuando camb
 msgid "Select CAId"
 msgstr "Seleccionar CAId"
 
-msgid "Select Card Server"
-msgstr "Seleccionar servidor de tarjeta"
-
 msgid "Select Channel"
 msgstr "Seleccionar Canal"
 
@@ -10888,17 +10947,20 @@ msgstr "Seleccione Fast DiSEqC si su sistema aéreo lo admite. Si no está segur
 msgid "Select HDD"
 msgstr "Selecciona HDD"
 
-msgid "Select Softcam"
-msgstr "Seleccionar Softcam"
-
 msgid "Select a bouquet"
 msgstr "Selecciona bouquet"
+
+msgid "Select a cardserver from the available list."
+msgstr "Seleccione un cardserver de la lista disponible."
 
 msgid "Select a movie"
 msgstr "Selecciona una película"
 
 msgid "Select a network adapter"
 msgstr "Seleccionar adaptador de red"
+
+msgid "Select a softcam from the available list."
+msgstr "Seleccione una softcam de la lista disponible."
 
 msgid "Select a tuner"
 msgstr "Selecciona sintonizador"
@@ -10927,6 +10989,9 @@ msgstr "Seleccionar lugar para copias de seguridad"
 
 msgid "Select between entering an IP address or a domain."
 msgstr ""
+
+msgid "Select cardserver"
+msgstr "Seleccione cardserver"
 
 msgid "Select channel"
 msgstr "Seleccionar Canal"
@@ -10964,6 +11029,9 @@ msgstr "Seleccione qué tan rápido debe moverse el plato entre los satélites."
 msgid "Select how the satellite dish is set up. i.e. fixed dish, single LNB, DiSEqC switch, positioner, etc."
 msgstr "Seleccione cómo se configura la antena parabólica. es decir, plato fijo, LNB único, interruptor DiSEqC, motor, etc."
 
+msgid "Select how you want your receiver to keep the correct time, either from the DVB transponder, or from the internet using NTP. Or use Auto, which will favour using NTP, but will fall back to transponder time when no internet connection is available."
+msgstr ""
+
 msgid "Select input device"
 msgstr "Seleccionar dispositivo de entrada"
 
@@ -10999,6 +11067,9 @@ msgstr "Seleccionar canal a añadir…"
 
 msgid "Select slot"
 msgstr "Seleccionar slot"
+
+msgid "Select softcam"
+msgstr "Seleccione softcam"
 
 msgid "Select sort method:"
 msgstr "Seleccione el método de clasificación:"
@@ -11429,9 +11500,6 @@ msgstr "Menú de configuración"
 
 msgid "Setup mode"
 msgstr "Modo de configuración"
-
-msgid "Setup network time synchronization interval."
-msgstr "Configurar el intervalo de sincronización horaria de internet."
 
 msgid "Setup your positioner"
 msgstr "Configure su motor"
@@ -11991,6 +12059,10 @@ msgstr "Eslovenio"
 msgid "Slow"
 msgstr "Lento"
 
+#, fuzzy
+msgid "Slow Motion"
+msgstr "Velocidad de cámara lenta"
+
 msgid "Slow motion speeds"
 msgstr "Velocidad de cámara lenta"
 
@@ -12032,10 +12104,11 @@ msgstr "Seleccionar Multiboot"
 msgid "Softcam"
 msgstr "Configuración de Softcam"
 
-msgid "Softcam Setup"
-msgstr "Configuración de Softcam"
+#, fuzzy
+msgid "Softcam Actions"
+msgstr "Opciones de Escaneo"
 
-msgid "Softcam setup"
+msgid "Softcam Setup"
 msgstr "Configuración de Softcam"
 
 msgid "Software"
@@ -12681,17 +12754,8 @@ msgstr "Symbol rate & FEC"
 msgid "Symbol rate:"
 msgstr "Symbol rate:"
 
-msgid "Sync NTP every (minutes)"
-msgstr "Sincronizar NTP cada (minutos)"
-
 msgid "Sync failure moving back to origin !"
 msgstr "¡Fallo de sincronización, regresando al origen!"
-
-msgid "Sync time using"
-msgstr "Sincronizar hora usando"
-
-msgid "Synchronize system time using transponder or internet."
-msgstr "Sincronice la hora del sistema utilizando un transpondedor o internet."
 
 msgid "Syrian Arab Republic"
 msgstr "Siria"
@@ -12911,6 +12975,10 @@ msgstr "El estándar de DVD no admite transmisiones de video H.264 (HDTV). ¿Des
 msgid "The MovieCut plugin is not installed."
 msgstr "Este plugin no está instalado."
 
+#, fuzzy
+msgid "The PIN code entered is incorrect."
+msgstr "Los códigos PIN que ingresó son diferentes."
+
 msgid "The PIN code has been changed successfully."
 msgstr "El código PIN ha sido cambiado con éxito."
 
@@ -12960,6 +13028,9 @@ msgid "The frame rate of the recording. Ideally, this will match the frame rate 
 msgstr ""
 
 msgid "The height of the picture. The input will be scaled to match this value."
+msgstr ""
+
+msgid "The hostname or the IP address of the NTP server to synchronise the time with."
 msgstr ""
 
 msgid ""
@@ -13062,21 +13133,21 @@ msgstr "El archivo de temporizador (timers.xml) está dañado y no se pudo carga
 msgid "The user interface of the receiver will now restart to select the selected skin"
 msgstr "La interfaz de usuario del receptor ahora se reiniciará para mostrar su skin seleccionado"
 
-#, fuzzy, python-format
+#, python-format
 msgid "The user interface of your %s %s is restarting"
-msgstr "La interfaz de usuario de su receptor se está reiniciando"
+msgstr "La interfaz de usuario de su %s %s se está reiniciando"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The user interface of your %s %s is restarting\n"
 "due to an error in mytest.py"
 msgstr ""
-"La interfaz de usuario de su receptor se está reiniciando\n"
+"La interfaz de usuario de su %s %s se está reiniciando\n"
 "debido a un error en mytest.py"
 
-#, fuzzy, python-format
+#, python-format
 msgid "The user interface of your %s %s is restarting in debug mode"
-msgstr "La interfaz de usuario de su receptor está reiniciando en modo debug"
+msgstr "La interfaz de usuario de su %s %s está reiniciando en modo debug"
 
 msgid "The width of the picture. The input will be scaled to match this value."
 msgstr ""
@@ -13140,6 +13211,12 @@ msgstr "Esto le permite establecer el número de dígitos que puede ingresar al 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
 msgstr "Este campo le permite buscar un symbol rate adicional hasta %s."
+
+msgid ""
+"This image is intended for developers and testers.\n"
+"No support will be provided!\n"
+"Do you understand this?"
+msgstr ""
 
 msgid ""
 "This info is for developers only.\n"
@@ -13272,6 +13349,10 @@ msgstr "Esta opción le permite mostrar la ruta de pantalla completa que conduce
 #, fuzzy
 msgid "This option allows you to switch audio to BT speakers."
 msgstr "Esta opción le permite configurar el nivel de volumen automático."
+
+#, fuzzy
+msgid "This option allows you to use video sync mode."
+msgstr "Esta opción le permite habilitar el sonido envolvente 3D."
 
 msgid "This option allows you to view the old and new settings side by side."
 msgstr "Esta opción le permite ver las configuraciones antiguas y nuevas una al lado de la otra."
@@ -13427,6 +13508,9 @@ msgstr "Escala de tiempo"
 #, fuzzy
 msgid "Time style"
 msgstr "Escala de tiempo"
+
+msgid "Time synchronization method"
+msgstr ""
 
 msgid "Time to execute command or script"
 msgstr "Hora de ejecutar el comando o script"
@@ -13666,7 +13750,7 @@ msgid "Transponder"
 msgstr "Transpondedor"
 
 #, fuzzy
-msgid "Transponder time"
+msgid "Transponder Time"
 msgstr "Transpondedor"
 
 msgid "Transport Stream Type"
@@ -13867,14 +13951,14 @@ msgstr "No se puede cambiar la contraseña!"
 msgid "Unable to create the required directories on the media (e.g. USB stick or Harddisk) - Please verify media and try again!"
 msgstr "No se pueden crear los directorios requeridos en el medio (ejemplo, una memoria USB o un disco duro). Verifique los medios y vuelva a intentarlo!"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Unattended update in progress\n"
 "Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Actualización en progreso\n"
-"Espere hasta que su receptor se reinicie\n"
+"Espere hasta que su %s %s se reinicie\n"
 "Tomará poco tiempo tenga paciencia"
 
 msgid "Uncover dashed flickering line for this service"
@@ -13947,6 +14031,10 @@ msgstr "Desmontar"
 msgid "Unsupported"
 msgstr "No soportado"
 
+#, fuzzy
+msgid "Until standby/restart"
+msgstr "hasta reposo/reinicio"
+
 msgid "Unzipping Image"
 msgstr "Descomprimiendo imagen"
 
@@ -13978,9 +14066,9 @@ msgid_plural "Update completed, %d packages were installed."
 msgstr[0] "Actualización completa, paquete %d se instaló."
 msgstr[1] "Actualización completa, paquetes %d se instalaron."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Update completed. Do you want to reboot your %s %s?"
-msgstr "Actualización completa. ¿Quieres reiniciar su receptor?"
+msgstr "Actualización completa. ¿Quieres reiniciar su %s %s?"
 
 #, fuzzy
 msgid "Update failed!"
@@ -14290,6 +14378,10 @@ msgstr "Salida de video"
 
 msgid "Video setup"
 msgstr "Configuración de video"
+
+#, fuzzy
+msgid "Video sync mode"
+msgstr "Modo de video"
 
 msgid "Video wizard"
 msgstr "Asistente de video"
@@ -15105,23 +15197,23 @@ msgstr "Su receptor no tiene conexión a internet"
 
 #, python-format
 msgid "Your %s %s goes to WOL"
-msgstr ""
+msgstr "Su %s %s va a WOL"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Your %s %s is rebooting"
-msgstr "Su receptor se está reiniciando"
+msgstr "Su %s %s se está reiniciando"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Your %s %s is rebooting into android mode"
-msgstr "Su receptor se reinicia en modo Android"
+msgstr "Su %s %s se reinicia en modo Android"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Your %s %s is rebooting into recovery mode"
-msgstr "Su receptor se reinicia en modo de recuperación"
+msgstr "Su %s %s se reinicia en modo de recuperación"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Your %s %s is shutting down"
-msgstr "Su receptor se está apagando"
+msgstr "Su %s %s se está apagando"
 
 msgid "Your %s %s reads the stored EPG data every (hours)."
 msgstr "Su %s %s lee los datos guardados en EPG cada (horas)."
@@ -15131,7 +15223,7 @@ msgstr "Su %s %s almacena los datos guardados en EPG cada (horas)."
 
 #, python-format
 msgid "Your %s %s?"
-msgstr ""
+msgstr "Su %s %s?"
 
 #, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
@@ -15143,14 +15235,14 @@ msgstr "Su colección excede el tamaño de un medio de una capa, ¡necesitará u
 msgid "Your current collection will get lost!"
 msgstr "Su colección actual se perderá!"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Your frontprocessor will be updated\n"
 "Please wait until your %s %s reboots\n"
 "This may take a few minutes"
 msgstr ""
 "Su procesador se actualizará\n"
-"Espere hasta que su receptor se reinicie\n"
+"Espere hasta que su %s %s se reinicie\n"
 "Esto puede tardar unos pocos minutos"
 
 msgid "Your hardware can detect CI mode itself or works only in legacy mode."
@@ -15417,6 +15509,10 @@ msgstr "alternativa"
 msgid "always"
 msgstr "siempre"
 
+#, fuzzy
+msgid "and"
+msgstr "Banda"
+
 msgid "and never ask in this session again"
 msgstr "y nunca preguntes en esta sesión otra vez"
 
@@ -15485,9 +15581,6 @@ msgstr "negro"
 msgid "black & white"
 msgstr "blanco & negro"
 
-msgid "blacklist"
-msgstr "lista negra"
-
 msgid "blue"
 msgstr "azul"
 
@@ -15509,6 +15602,10 @@ msgstr ""
 #, fuzzy
 msgid "cancel"
 msgstr "Cancelar"
+
+#, fuzzy
+msgid "cardserver"
+msgstr "Seleccione cardserver"
 
 msgid "cartoon/puppets"
 msgstr "dibujos/marionetas"
@@ -16414,6 +16511,10 @@ msgid "social/spiritual science"
 msgstr "social/ciencia espiritual"
 
 #, fuzzy
+msgid "softcam"
+msgstr "Seleccione softcam"
+
+#, fuzzy
 msgid "special (general)"
 msgstr "deportes (general)"
 
@@ -16555,9 +16656,6 @@ msgstr "sin publicar"
 
 msgid "untestable"
 msgstr "improbable"
-
-msgid "until standby/restart"
-msgstr "hasta reposo/reinicio"
 
 msgid "use best / controlled by HDMI"
 msgstr ""
