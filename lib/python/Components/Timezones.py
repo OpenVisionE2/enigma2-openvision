@@ -1,17 +1,12 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-import errno
-import xml.etree.cElementTree
-
+from errno import ENOENT
 from os import environ, path, symlink, unlink, walk
+from six import ensure_str as ensurestr, text_type as texttype
 from time import gmtime, localtime, strftime, time
+from xml.etree.cElementTree import ParseError, parse
 
 from Components.config import ConfigSelection, ConfigSubsection, config
 from Tools.Geolocation import geolocation
 from Tools.StbHardware import setRTCoffset
-
-import six
 
 # The DEFAULT_AREA setting is usable by the image maintainers to select the
 # default UI mode and location settings used by their image.  If the value
@@ -53,8 +48,9 @@ def InitTimeZones():
 	config.timezone.area = ConfigSelection(default=DEFAULT_AREA, choices=timezones.getTimezoneAreaList())
 	config.timezone.val = ConfigSelection(default=DEFAULT_ZONE, choices=timezones.getTimezoneList())
 	if config.misc.firstrun.value:
-		proxy = geolocation.get("proxy", False)
-		tz = geolocation.get("timezone", None)
+		geolocationData = geolocation.getGeolocationData(fields="proxy,timezone", useCache=True)
+		proxy = geolocationData.get("proxy", False)
+		tz = geolocationData.get("timezone", None)
 		if proxy is True or tz is None:
 			msg = " - proxy in use" if proxy else ""
 			print("[Timezones] Warning: Geolocation not available%s!  (area='%s', zone='%s')" % (msg, config.timezone.area.value, config.timezone.val.value))
@@ -159,12 +155,12 @@ class Timezones:
 				name = commonTimezoneNames.get(tz, zone)  # Use the more common name if one is defined.
 				if name is None:
 					continue
-				if isinstance(name, six.text_type):
-					name = six.ensure_str(name.encode(encoding="UTF-8", errors="ignore"))
-				if isinstance(area, six.text_type):
-					area = six.ensure_str(area.encode(encoding="UTF-8", errors="ignore"))
-				if isinstance(zone, six.text_type):
-					zone = six.ensure_str(zone.encode(encoding="UTF-8", errors="ignore"))
+				if isinstance(name, texttype):
+					name = ensurestr(name.encode(encoding="UTF-8", errors="ignore"))
+				if isinstance(area, texttype):
+					area = ensurestr(area.encode(encoding="UTF-8", errors="ignore"))
+				if isinstance(zone, texttype):
+					zone = ensurestr(zone.encode(encoding="UTF-8", errors="ignore"))
 				zones.append((zone, name.replace("_", " ")))
 			if area:
 				if area in self.timezones:
@@ -200,8 +196,8 @@ class Timezones:
 		try:
 			with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
 				try:
-					root = xml.etree.cElementTree.parse(fd).getroot()
-				except xml.etree.cElementTree.ParseError as err:
+					root = parse(fd).getroot()
+				except ParseError as err:
 					root = None
 					fd.seek(0)
 					content = fd.readlines()
@@ -214,7 +210,7 @@ class Timezones:
 					root = None
 					print("[Timezones] Error: Unable to parse time zone data in '%s' - '%s'!" % (filename, err))
 		except (IOError, OSError) as err:
-			if err.errno == errno.ENOENT:  # No such file or directory
+			if err.errno == ENOENT:  # No such file or directory.
 				print("[Timezones] Note: Classic time zones in '%s' are not available." % filename)
 			else:
 				print("[Timezones] Error %d: Opening time zone file '%s'! (%s)" % (err.errno, filename, err.strerror))
@@ -224,11 +220,11 @@ class Timezones:
 		if root is not None:
 			for zone in root.findall("zone"):
 				name = zone.get("name", "")
-				if isinstance(name, six.text_type):
-					name = six.ensure_str(name.encode(encoding="UTF-8", errors="ignore"))
+				if isinstance(name, texttype):
+					name = ensurestr(name.encode(encoding="UTF-8", errors="ignore"))
 				zonePath = zone.get("zone", "")
-				if isinstance(zonePath, six.text_type):
-					zonePath = six.ensure_str(zonePath.encode(encoding="UTF-8", errors="ignore"))
+				if isinstance(zonePath, texttype):
+					zonePath = ensurestr(zonePath.encode(encoding="UTF-8", errors="ignore"))
 				if path.exists(path.join(TIMEZONE_DATA, zonePath)):
 					zones.append((zonePath, name))
 				else:
@@ -278,7 +274,7 @@ class Timezones:
 		try:
 			unlink("/etc/localtime")
 		except (IOError, OSError) as err:
-			if err.errno != errno.ENOENT:  # No such file or directory
+			if err.errno != ENOENT:  # No such file or directory.
 				print("[Timezones] Error %d: Unlinking '/etc/localtime'! (%s)" % (err.errno, err.strerror))
 		try:
 			symlink(file, "/etc/localtime")
