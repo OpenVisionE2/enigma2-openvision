@@ -1,51 +1,54 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from Screens.Screen import Screen
-from Screens.MessageBox import MessageBox
-from Components.config import config
-from Components.ActionMap import ActionMap
-from Components.Sources.StaticText import StaticText
-from Components.Harddisk import harddiskmanager, Harddisk
-from Components.NimManager import nimmanager
-from Components.About import about
-from Components.ScrollLabel import ScrollLabel
-from Components.Button import Button
-from Components.Label import Label
-from Components.ProgressBar import ProgressBar
-from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
-from enigma import eTimer, eLabel, eConsoleAppContainer, getDesktop, eGetEnigmaDebugLvl, getBoxType, getBoxBrand, eDVBResourceManager
-from Tools.Directories import fileExists, fileHas, pathExists
-from Components.GUIComponent import GUIComponent
-import skin, os, boxbranding
-from Components.Console import Console
-from Components.Pixmap import MultiPixmap
-from Components.Network import iNetwork
-from Components.SystemInfo import SystemInfo
-from Tools.Geolocation import geolocation
+import boxbranding
 try:
 	import urllib2
-except:
+except ImportError:
 	import urllib
-import six
+
+from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, eLabel, eTimer, getBoxBrand, getBoxType, getDesktop
+from os import listdir, popen, remove
+from os.path import getmtime, isfile, join as pathjoin
+from six import PY2, PY3, ensure_str as ensurestr, text_type as texttype
+
+from skin import parameters
+from Components.About import about
+from Components.ActionMap import ActionMap
+from Components.Button import Button
+from Components.config import config
+from Components.Console import Console
+from Components.GUIComponent import GUIComponent
+from Components.Harddisk import Harddisk, harddiskmanager
+from Components.Label import Label
+from Components.Network import iNetwork
+from Components.NimManager import nimmanager
+from Components.Pixmap import MultiPixmap
+from Components.ProgressBar import ProgressBar
+from Components.ScrollLabel import ScrollLabel
+from Components.SystemInfo import SystemInfo
+from Components.Sources.StaticText import StaticText
+from Screens.MessageBox import MessageBox
+from Screens.Screen import Screen
+from Tools.Directories import fileExists, pathExists
+from Tools.Geolocation import geolocation
+from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
+
 
 class About(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.setTitle(_("About"))
+		self.setTitle(_("About Information"))
 		self["lab1"] = StaticText(_("OpenVision"))
 		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
 		self["lab3"] = StaticText(_("Report problems to:"))
 		self["lab4"] = StaticText(_("https://openvision.tech"))
 		self["lab5"] = StaticText(_("Sources are available at:"))
 		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
-		hddsplit = skin.parameters.get("AboutHddSplit", 0)
+		hddsplit = parameters.get("AboutHddSplit", 0)
 
 		model = getBoxType()
 
 		try:
 			procmodel = getBoxProc()
-		except:
+		except Exception as err:
 			procmodel = boxbranding.getMachineProcModel()
 
 		stbplatform = boxbranding.getMachineBuild()
@@ -169,7 +172,7 @@ class About(Screen):
 					hddinfo += "\n"
 				hdd = hddlist[count][1]
 				if int(hdd.free()) > 1024:
-					hddinfo += formatstring % (hdd.model(), hdd.capacity(), hdd.Totalfree()/1024.0, "G", _("free"))
+					hddinfo += formatstring % (hdd.model(), hdd.capacity(), hdd.Totalfree() / 1024.0, "G", _("free"))
 				else:
 					hddinfo += formatstring % (hdd.model(), hdd.capacity(), hdd.Totalfree(), "M", _("free"))
 		else:
@@ -186,17 +189,16 @@ class About(Screen):
 		self["key_yellow"] = Button(_("Troubleshoot"))
 		self["key_blue"] = Button(_("Memory Info"))
 
-		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
-			{
-				"cancel": self.close,
-				"ok": self.close,
-				"red": self.showCommits,
-				"green": self.showTranslationInfo,
-				"blue": self.showMemoryInfo,
-				"yellow": self.showTroubleshoot,
-				"up": self["AboutScrollLabel"].pageUp,
-				"down": self["AboutScrollLabel"].pageDown
-			})
+		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"], {
+			"cancel": self.close,
+			"ok": self.close,
+			"red": self.showCommits,
+			"green": self.showTranslationInfo,
+			"blue": self.showMemoryInfo,
+			"yellow": self.showTroubleshoot,
+			"up": self["AboutScrollLabel"].pageUp,
+			"down": self["AboutScrollLabel"].pageDown
+		})
 
 	def showTranslationInfo(self):
 		self.session.open(TranslationInfo)
@@ -213,7 +215,7 @@ class About(Screen):
 class OpenVisionInformation(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.setTitle(_("Open Vision information"))
+		self.setTitle(_("Open Vision Information"))
 		self["lab1"] = StaticText(_("OpenVision"))
 		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
 		self["lab3"] = StaticText(_("Report problems to:"))
@@ -235,7 +237,7 @@ class OpenVisionInformation(Screen):
 					ovurl = "https://raw.githubusercontent.com/OpenVisionE2/openvision-development-platform/develop/meta-openvision/conf/distro/revision.conf"
 				else:
 					ovurl = "https://raw.githubusercontent.com/OpenVisionE2/openvision-oe/develop/meta-openvision/conf/distro/revision.conf"
-				if six.PY2:
+				if PY2:
 					ovresponse = urllib2.urlopen(ovurl)
 					ovrevision = ovresponse.read()
 					ovrevisionupdate = int(filter(str.isdigit, ovrevision))
@@ -243,7 +245,7 @@ class OpenVisionInformation(Screen):
 					ovresponse = urllib.request.urlopen(ovurl)
 					ovrevision = ovresponse.read().decode()
 					ovrevisionupdate = ovrevision.split('r')[1][:3]
-			except Exception as e:
+			except Exception as err:
 				ovrevisionupdate = _("Requires internet connection")
 		else:
 			ovrevisionupdate = _("Disabled in configuration")
@@ -297,27 +299,27 @@ class OpenVisionInformation(Screen):
 		if SystemInfo["HiSilicon"]:
 			OpenVisionInformationText += _("HiSilicon dedicated information") + "\n"
 
-			grab = os.popen("opkg list-installed | grep -- -grab | cut -f4 -d'-'").read().strip()
+			grab = popen("opkg list-installed | grep -- -grab | cut -f4 -d'-'").read().strip()
 			if grab != "" and grab != "r0":
 				OpenVisionInformationText += _("Grab: ") + grab + "\n"
 
-			hihalt = os.popen("opkg list-installed | grep -- -hihalt | cut -f4 -d'-'").read().strip()
+			hihalt = popen("opkg list-installed | grep -- -hihalt | cut -f4 -d'-'").read().strip()
 			if hihalt != "":
 				OpenVisionInformationText += _("Halt: ") + hihalt + "\n"
 
-			libs = os.popen("opkg list-installed | grep -- -libs | cut -f4 -d'-'").read().strip()
+			libs = popen("opkg list-installed | grep -- -libs | cut -f4 -d'-'").read().strip()
 			if libs != "":
 				OpenVisionInformationText += _("Libs: ") + libs + "\n"
 
-			partitions = os.popen("opkg list-installed | grep -- -partitions | cut -f4 -d'-'").read().strip()
+			partitions = popen("opkg list-installed | grep -- -partitions | cut -f4 -d'-'").read().strip()
 			if partitions != "":
 				OpenVisionInformationText += _("Partitions: ") + partitions + "\n"
 
-			reader = os.popen("opkg list-installed | grep -- -reader | cut -f4 -d'-'").read().strip()
+			reader = popen("opkg list-installed | grep -- -reader | cut -f4 -d'-'").read().strip()
 			if reader != "":
 				OpenVisionInformationText += _("Reader: ") + reader + "\n"
 
-			showiframe = os.popen("opkg list-installed | grep -- -showiframe | cut -f4 -d'-'").read().strip()
+			showiframe = popen("opkg list-installed | grep -- -showiframe | cut -f4 -d'-'").read().strip()
 			if showiframe != "":
 				OpenVisionInformationText += _("Showiframe: ") + showiframe + "\n"
 
@@ -379,19 +381,17 @@ class OpenVisionInformation(Screen):
 		self["AboutScrollLabel"] = ScrollLabel(OpenVisionInformationText)
 		self["key_red"] = Button(_("Close"))
 
-		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
-			{
-				"cancel": self.close,
-				"ok": self.close,
-				"up": self["AboutScrollLabel"].pageUp,
-				"down": self["AboutScrollLabel"].pageDown
-			})
+		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"], {
+			"cancel": self.close,
+			"ok": self.close,
+			"up": self["AboutScrollLabel"].pageUp,
+			"down": self["AboutScrollLabel"].pageDown
+		})
 
 class DVBInformation(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.setTitle(_("DVB information"))
-		self.setTitle(_("Open Vision information"))
+		self.setTitle(_("DVB Information"))
 		self["lab1"] = StaticText(_("OpenVision"))
 		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
 		self["lab3"] = StaticText(_("Report problems to:"))
@@ -467,19 +467,17 @@ class DVBInformation(Screen):
 		self["AboutScrollLabel"] = ScrollLabel(DVBInformationText)
 		self["key_red"] = Button(_("Close"))
 
-		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
-			{
-				"cancel": self.close,
-				"ok": self.close,
-				"up": self["AboutScrollLabel"].pageUp,
-				"down": self["AboutScrollLabel"].pageDown
-			})
+		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"], {
+			"cancel": self.close,
+			"ok": self.close,
+			"up": self["AboutScrollLabel"].pageUp,
+			"down": self["AboutScrollLabel"].pageDown
+		})
 
 class Geolocation(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.setTitle(_("Geolocation"))
-		self.setTitle(_("Open Vision information"))
+		self.setTitle(_("Geolocation Information"))
 		self["lab1"] = StaticText(_("OpenVision"))
 		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
 		self["lab3"] = StaticText(_("Report problems to:"))
@@ -493,70 +491,69 @@ class Geolocation(Screen):
 
 		try:
 			continent = geolocation.get("continent", None)
-			if isinstance(continent, six.text_type):
-				continent = six.ensure_str(continent.encode(encoding="UTF-8", errors="ignore"))
+			if isinstance(continent, texttype):
+				continent = ensurestr(continent.encode(encoding="UTF-8", errors="ignore"))
 			if continent is not None:
-				GeolocationText +=  _("Continent: ") + continent + "\n"
+				GeolocationText += _("Continent: ") + continent + "\n"
 
 			country = geolocation.get("country", None)
-			if isinstance(country, six.text_type):
-				country = six.ensure_str(country.encode(encoding="UTF-8", errors="ignore"))
+			if isinstance(country, texttype):
+				country = ensurestr(country.encode(encoding="UTF-8", errors="ignore"))
 			if country is not None:
-				GeolocationText +=  _("Country: ") + country + "\n"
+				GeolocationText += _("Country: ") + country + "\n"
 
 			state = geolocation.get("regionName", None)
-			if isinstance(state, six.text_type):
-				state = six.ensure_str(state.encode(encoding="UTF-8", errors="ignore"))
+			if isinstance(state, texttype):
+				state = ensurestr(state.encode(encoding="UTF-8", errors="ignore"))
 			if state is not None:
-				GeolocationText +=  _("State: ") + state + "\n"
+				GeolocationText += _("State: ") + state + "\n"
 
 			city = geolocation.get("city", None)
-			if isinstance(city, six.text_type):
-				city = six.ensure_str(city.encode(encoding="UTF-8", errors="ignore"))
+			if isinstance(city, texttype):
+				city = ensurestr(city.encode(encoding="UTF-8", errors="ignore"))
 			if city is not None:
-				GeolocationText +=  _("City: ") + city + "\n"
+				GeolocationText += _("City: ") + city + "\n"
 
 			GeolocationText += "\n"
 
 			timezone = geolocation.get("timezone", None)
-			if isinstance(timezone, six.text_type):
-				timezone = six.ensure_str(timezone.encode(encoding="UTF-8", errors="ignore"))
+			if isinstance(timezone, texttype):
+				timezone = ensurestr(timezone.encode(encoding="UTF-8", errors="ignore"))
 			if timezone is not None:
-				GeolocationText +=  _("Timezone: ") + timezone + "\n"
+				GeolocationText += _("Timezone: ") + timezone + "\n"
 
 			currency = geolocation.get("currency", None)
-			if isinstance(currency, six.text_type):
-				currency = six.ensure_str(currency.encode(encoding="UTF-8", errors="ignore"))
+			if isinstance(currency, texttype):
+				currency = ensurestr(currency.encode(encoding="UTF-8", errors="ignore"))
 			if currency is not None:
-				GeolocationText +=  _("Currency: ") + currency + "\n"
+				GeolocationText += _("Currency: ") + currency + "\n"
 
 			GeolocationText += "\n"
 
 			latitude = geolocation.get("lat", None)
 			if str(float(latitude)) is not None:
-				GeolocationText +=  _("Latitude: ") + str(float(latitude)) + "\n"
+				GeolocationText += _("Latitude: ") + str(float(latitude)) + "\n"
 
 			longitude = geolocation.get("lon", None)
 			if str(float(longitude)) is not None:
-				GeolocationText +=  _("Longitude: ") + str(float(longitude)) + "\n"
+				GeolocationText += _("Longitude: ") + str(float(longitude)) + "\n"
 			self["AboutScrollLabel"] = ScrollLabel(GeolocationText)
-		except Exception as e:
+		except Exception as err:
 			self["AboutScrollLabel"] = ScrollLabel(_("Requires internet connection"))
 
 		self["key_red"] = Button(_("Close"))
 
-		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
-			{
-				"cancel": self.close,
-				"ok": self.close,
-				"up": self["AboutScrollLabel"].pageUp,
-				"down": self["AboutScrollLabel"].pageDown
-			})
+		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"], {
+			"cancel": self.close,
+			"ok": self.close,
+			"up": self["AboutScrollLabel"].pageUp,
+			"down": self["AboutScrollLabel"].pageDown
+		})
 
 class BenchmarkInformation(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.setTitle(_("Benchmark information"))
+		self.setTitle(_("Benchmark Information"))
 		self["lab1"] = StaticText(_("OpenVision"))
 		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
 		self["lab3"] = StaticText(_("Report problems to:"))
@@ -573,20 +570,17 @@ class BenchmarkInformation(Screen):
 		self["AboutScrollLabel"] = ScrollLabel(BenchmarkInformationText)
 		self["key_red"] = Button(_("Close"))
 
-		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
-			{
-				"cancel": self.close,
-				"ok": self.close,
-				"up": self["AboutScrollLabel"].pageUp,
-				"down": self["AboutScrollLabel"].pageDown
-			})
+		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"], {
+			"cancel": self.close,
+			"ok": self.close,
+			"up": self["AboutScrollLabel"].pageUp,
+			"down": self["AboutScrollLabel"].pageDown
+		})
 
 class Devices(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		screentitle = _("Devices")
-		title = screentitle
-		Screen.setTitle(self, title)
+		self.setTitle(_("Device Information"))
 		self["TunerHeader"] = StaticText(_("Detected tuners:"))
 		self["HDDHeader"] = StaticText(_("Detected devices:"))
 		self["MountsHeader"] = StaticText(_("Network servers:"))
@@ -605,12 +599,11 @@ class Devices(Screen):
 		self.activityTimer = eTimer()
 		self.activityTimer.timeout.get().append(self.populate2)
 		self["key_red"] = Button(_("Close"))
-		self["actions"] = ActionMap(["SetupActions", "ColorActions", "TimerEditActions"],
-									{
-										"cancel": self.close,
-										"ok": self.close,
-										"red": self.close,
-									})
+		self["actions"] = ActionMap(["SetupActions", "ColorActions", "TimerEditActions"], {
+			"cancel": self.close,
+			"ok": self.close,
+			"red": self.close
+		})
 		self.onLayoutFinish.append(self.populate)
 
 	def populate(self):
@@ -636,7 +629,7 @@ class Devices(Screen):
 		self["nims"].setText(niminfo)
 
 		nims = nimmanager.nimList()
-		if len(nims) <= 4 :
+		if len(nims) <= 4:
 			for count in (0, 1, 2, 3):
 				if count < len(nims):
 					self["Tuner" + str(count)].setText(nims[count])
@@ -653,7 +646,11 @@ class Devices(Screen):
 				if desc_list and desc_list[cur_idx]['desc'] == desc:
 					desc_list[cur_idx]['end'] = idx
 				else:
-					desc_list.append({'desc' : desc, 'start' : idx, 'end' : idx})
+					desc_list.append({
+						'desc': desc,
+						'start': idx,
+						'end': idx
+					})
 					cur_idx += 1
 				count += 1
 
@@ -688,7 +685,7 @@ class Devices(Screen):
 					continue
 				else:
 					freeline = _("Free: ") + _("full")
-				line = "%s      %s" %(hddp, freeline)
+				line = "%s      %s" % (hddp, freeline)
 				self.list.append(line)
 		self.list = '\n'.join(self.list)
 		self["hdd"].setText(self.list)
@@ -696,7 +693,7 @@ class Devices(Screen):
 		self.Console.ePopen("df -mh | grep -v '^Filesystem'", self.Stage1Complete)
 
 	def Stage1Complete(self, result, retval, extra_args=None):
-		if six.PY2:
+		if PY2:
 			result = result.replace('\n                        ', ' ').split('\n')
 		else:
 			result = result.decode().replace('\n                        ', ' ').split('\n')
@@ -713,7 +710,7 @@ class Devices(Screen):
 				self.mountinfo += "%s (%sB, %sB %s)" % (ipaddress, mounttotal, mountfree, _("free"))
 		if pathExists("/media/autofs"):
 			for entry in sorted(listdir("/media/autofs")):
-				mountEntry = path.join("/media/autofs", entry)
+				mountEntry = pathjoin("/media/autofs", entry)
 				self.mountinfo += _("\n %s " % (mountEntry))
 
 		if self.mountinfo:
@@ -725,9 +722,7 @@ class Devices(Screen):
 class SystemNetworkInfo(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		screentitle = _("Network")
-		title = screentitle
-		Screen.setTitle(self, title)
+		self.setTitle(_("Network Information"))
 		self.skinName = ["SystemNetworkInfo", "WlanStatus"]
 		self["LabelBSSID"] = StaticText()
 		self["LabelESSID"] = StaticText()
@@ -767,20 +762,19 @@ class SystemNetworkInfo(Screen):
 				from Plugins.SystemPlugins.WirelessLan.Wlan import iStatus
 
 				self.iStatus = iStatus
-			except:
+			except ImportError as err:
 				pass
 			self.resetList()
 			self.onClose.append(self.cleanup)
 
 		self["key_red"] = StaticText(_("Close"))
 
-		self["actions"] = ActionMap(["SetupActions", "ColorActions", "DirectionActions"],
-									{
-										"cancel": self.close,
-										"ok": self.close,
-										"up": self["AboutScrollLabel"].pageUp,
-										"down": self["AboutScrollLabel"].pageDown
-									})
+		self["actions"] = ActionMap(["SetupActions", "ColorActions", "DirectionActions"], {
+			"cancel": self.close,
+			"ok": self.close,
+			"up": self["AboutScrollLabel"].pageUp,
+			"down": self["AboutScrollLabel"].pageDown
+		})
 		self.onLayoutFinish.append(self.updateStatusbar)
 
 	def createscreen(self):
@@ -838,10 +832,10 @@ class SystemNetworkInfo(Screen):
 
 		isp = geolocation.get("isp", None)
 		isporg = geolocation.get("org", None)
-		if isinstance(isp, six.text_type):
-			isp = six.ensure_str(isp.encode(encoding="UTF-8", errors="ignore"))
-		if isinstance(isporg, six.text_type):
-			isporg = six.ensure_str(isporg.encode(encoding="UTF-8", errors="ignore"))
+		if isinstance(isp, texttype):
+			isp = ensurestr(isp.encode(encoding="UTF-8", errors="ignore"))
+		if isinstance(isporg, texttype):
+			isporg = ensurestr(isporg.encode(encoding="UTF-8", errors="ignore"))
 		self.AboutText += "\n"
 		if isp is not None:
 			if isporg is not None:
@@ -863,7 +857,7 @@ class SystemNetworkInfo(Screen):
 
 		publicip = geolocation.get("query", None)
 		if str(publicip) != "":
-			self.AboutText +=  _("Public IP: ") + str(publicip) + "\n"
+			self.AboutText += _("Public IP: ") + str(publicip) + "\n"
 
 		self.AboutText += "\n"
 
@@ -871,7 +865,7 @@ class SystemNetworkInfo(Screen):
 		self.console.ePopen('ethtool %s' % self.iface, self.SpeedFinished)
 
 	def SpeedFinished(self, result, retval, extra_args):
-		if six.PY2:
+		if PY2:
 			result_tmp = result.split('\n')
 		else:
 			result_tmp = result.decode().split('\n')
@@ -897,14 +891,12 @@ class SystemNetworkInfo(Screen):
 		self.LinkState = None
 		if data is not None and data:
 			if status is not None:
-# getDataForInterface()->iwconfigFinished() in
-# Plugins/SystemPlugins/WirelessLan/Wlan.py sets fields to boolean False
-# if there is no info for them, so we need to check that possibility
-# for each status[self.iface] field...
-#
+				# getDataForInterface()->iwconfigFinished() in
+				# Plugins/SystemPlugins/WirelessLan/Wlan.py sets fields to boolean False
+				# if there is no info for them, so we need to check that possibility
+				# for each status[self.iface] field...
 				if self.iface == 'wlan0' or self.iface == 'wlan3' or self.iface == 'ra0':
-# accesspoint is used in the "enc" code too, so we get it regardless
-#
+					# accesspoint is used in the "enc" code too, so we get it regardless
 					if not status[self.iface]["accesspoint"]:
 						accesspoint = _("Unknown")
 					else:
@@ -963,9 +955,7 @@ class SystemNetworkInfo(Screen):
 								encryption = _("Enabled")
 						self.AboutText += _('Encryption:') + '\t' + encryption + '\n'
 
-					if ((status[self.iface]["essid"] and status[self.iface]["essid"] == "off") or
-					    not status[self.iface]["accesspoint"] or
-					    status[self.iface]["accesspoint"] == "Not-Associated"):
+					if ((status[self.iface]["essid"] and status[self.iface]["essid"] == "off") or not status[self.iface]["accesspoint"] or status[self.iface]["accesspoint"] == "Not-Associated"):
 						self.LinkState = False
 						self["statuspic"].setPixmapNum(1)
 						self["statuspic"].show()
@@ -985,7 +975,7 @@ class SystemNetworkInfo(Screen):
 			self["devicepic"].setPixmapNum(1)
 			try:
 				self.iStatus.getDataForInterface(self.iface, self.getInfoCB)
-			except:
+			except Exception as err:
 				self["statuspic"].setPixmapNum(1)
 				self["statuspic"].show()
 		else:
@@ -994,7 +984,7 @@ class SystemNetworkInfo(Screen):
 		self["devicepic"].show()
 
 	def dataAvail(self, data):
-		if six.PY3:
+		if PY3:
 			data = data.decode()
 		self.LinkState = None
 		for line in data.splitlines():
@@ -1023,15 +1013,13 @@ class SystemNetworkInfo(Screen):
 			else:
 				self["statuspic"].setPixmapNum(1)
 			self["statuspic"].show()
-		except:
+		except Exception as err:
 			pass
 
 class SystemMemoryInfo(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		screentitle = _("Memory")
-		title = screentitle
-		Screen.setTitle(self, title)
+		self.setTitle(_("Memory Information"))
 		self.skinName = ["SystemMemoryInfo", "About"]
 		self["lab1"] = StaticText(_("OpenVision"))
 		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
@@ -1042,12 +1030,11 @@ class SystemMemoryInfo(Screen):
 		self["AboutScrollLabel"] = ScrollLabel()
 
 		self["key_red"] = Button(_("Close"))
-		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
-									{
-										"cancel": self.close,
-										"ok": self.close,
-										"red": self.close,
-									})
+		self["actions"] = ActionMap(["SetupActions", "ColorActions"], {
+			"cancel": self.close,
+			"ok": self.close,
+			"red": self.close
+		})
 
 		out_lines = open("/proc/meminfo").readlines()
 		self.AboutText = _("RAM") + '\n\n'
@@ -1094,7 +1081,7 @@ class SystemMemoryInfo(Screen):
 class TranslationInfo(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.setTitle(_("Translation"))
+		self.setTitle(_("Translations"))
 		# don't remove the string out of the _(), or it can't be "translated" anymore.
 
 		# TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
@@ -1106,12 +1093,12 @@ class TranslationInfo(Screen):
 		infolines = _("").split("\n")
 		infomap = {}
 		for x in infolines:
-			l = x.split(': ')
-			if len(l) != 2:
+			data = x.split(': ')
+			if len(data) != 2:
 				continue
-			(type, value) = l
+			(type, value) = data
 			infomap[type] = value
-		print(infomap)
+		print("[About] DEBUG: infomap=%s" % str(infomap))
 
 		self["key_red"] = Button(_("Cancel"))
 		self["TranslationInfo"] = StaticText(info)
@@ -1128,11 +1115,10 @@ class TranslationInfo(Screen):
 
 		self["TranslatorName"] = StaticText(translator_name)
 
-		self["actions"] = ActionMap(["SetupActions"],
-			{
-				"cancel": self.close,
-				"ok": self.close,
-			})
+		self["actions"] = ActionMap(["SetupActions"], {
+			"cancel": self.close,
+			"ok": self.close
+		})
 
 class CommitInfo(Screen):
 	def __init__(self, session):
@@ -1147,22 +1133,21 @@ class CommitInfo(Screen):
 		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 		self["AboutScrollLabel"] = ScrollLabel(_("Please wait"))
 
-		self["actions"] = ActionMap(["SetupActions", "DirectionActions"],
-			{
-				"cancel": self.close,
-				"ok": self.close,
-				"up": self["AboutScrollLabel"].pageUp,
-				"down": self["AboutScrollLabel"].pageDown,
-				"left": self.left,
-				"right": self.right
-			})
+		self["actions"] = ActionMap(["SetupActions", "DirectionActions"], {
+			"cancel": self.close,
+			"ok": self.close,
+			"up": self["AboutScrollLabel"].pageUp,
+			"down": self["AboutScrollLabel"].pageDown,
+			"left": self.left,
+			"right": self.right
+		})
 
 		self["key_red"] = Button(_("Cancel"))
 
 		# get the branch to display from the Enigma version
 		try:
 			branch = "?sha=" + "-".join(about.getEnigmaVersionString().split("-")[3:])
-		except:
+		except Exception as err:
 			branch = ""
 
 		if boxbranding.getVisionVersion().startswith("10"):
@@ -1198,12 +1183,12 @@ class CommitInfo(Screen):
 			try:
 				# For python 2.7.11 we need to bypass the certificate check
 				from ssl import _create_unverified_context
-				if six.PY2:
+				if PY2:
 					log = loads(urllib2.urlopen(url, timeout=5, context=_create_unverified_context()).read())
 				else:
 					log = loads(urllib.request.urlopen(url, timeout=5, context=_create_unverified_context()).read())
-			except:
-				if six.PY2:
+			except Exception as err:
+				if PY2:
 					log = loads(urllib2.urlopen(url, timeout=5).read())
 				else:
 					log = loads(urllib.request.urlopen(url, timeout=5).read())
@@ -1214,7 +1199,7 @@ class CommitInfo(Screen):
 				commitlog += date + ' ' + creator + '\n' + title + 2 * '\n'
 			commitlog = commitlog.encode('utf-8')
 			self.cachedProjects[self.projects[self.project][1]] = commitlog
-		except:
+		except Exception as err:
 			commitlog += _("Currently the commit log cannot be retrieved - please try later again")
 		self["AboutScrollLabel"].setText(commitlog)
 
@@ -1237,13 +1222,12 @@ class MemoryInfo(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 
-		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
-			{
-				"cancel": self.close,
-				"ok": self.getMemoryInfo,
-				"green": self.getMemoryInfo,
-				"blue": self.clearMemory,
-			})
+		self["actions"] = ActionMap(["SetupActions", "ColorActions"], {
+			"cancel": self.close,
+			"ok": self.getMemoryInfo,
+			"green": self.getMemoryInfo,
+			"blue": self.clearMemory
+		})
 
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Refresh"))
@@ -1303,11 +1287,11 @@ class MemoryInfo(Screen):
 			self['lmemvalue'].setText(lvalue)
 			self['rmemtext'].setText(rtext)
 			self['rmemvalue'].setText(rvalue)
-			self["slide"].setValue(int(100.0*(mem-free)/mem+0.25))
-			self['pfree'].setText("%.1f %s" % (100.*free/mem, '%'))
-			self['pused'].setText("%.1f %s" % (100.*(mem-free)/mem, '%'))
-		except Exception as e:
-			print("[About] getMemoryInfo FAIL:", e)
+			self["slide"].setValue(int(100.0 * (mem - free) / mem + 0.25))
+			self['pfree'].setText("%.1f %s" % (100.0 * free / mem, '%'))
+			self['pused'].setText("%.1f %s" % (100.0 * (mem - free) / mem, '%'))
+		except Exception as err:
+			print("[About] getMemoryInfo FAIL: '%s'." % str(err))
 
 	def clearMemory(self):
 		eConsoleAppContainer().execute("sync")
@@ -1321,7 +1305,7 @@ class MemoryInfoSkinParams(GUIComponent):
 
 	def applySkin(self, desktop, screen):
 		if self.skinAttributes is not None:
-			attribs = [ ]
+			attribs = []
 			for (attrib, value) in self.skinAttributes:
 				if attrib == "rowsincolumn":
 					self.rows_in_column = int(value)
@@ -1345,18 +1329,17 @@ class Troubleshoot(Screen):
 		self["lab5"] = StaticText(_("Sources are available at:"))
 		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
-		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ColorActions"],
-			{
-				"cancel": self.close,
-				"up": self["AboutScrollLabel"].pageUp,
-				"down": self["AboutScrollLabel"].pageDown,
-				"moveUp": self["AboutScrollLabel"].homePage,
-				"moveDown": self["AboutScrollLabel"].endPage,
-				"left": self.left,
-				"right": self.right,
-				"red": self.red,
-				"green": self.green,
-			})
+		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ColorActions"], {
+			"cancel": self.close,
+			"up": self["AboutScrollLabel"].pageUp,
+			"down": self["AboutScrollLabel"].pageDown,
+			"moveUp": self["AboutScrollLabel"].homePage,
+			"moveDown": self["AboutScrollLabel"].endPage,
+			"left": self.left,
+			"right": self.right,
+			"red": self.red,
+			"green": self.green
+		})
 
 		self.container = eConsoleAppContainer()
 		self.container.appClosed.append(self.appClosed)
@@ -1384,8 +1367,8 @@ class Troubleshoot(Screen):
 	def green(self):
 		if self.commandIndex >= self.numberOfCommands:
 			try:
-				os.remove(self.commands[self.commandIndex][4:])
-			except:
+				remove(self.commands[self.commandIndex][4:])
+			except (IOError, OSError) as err:
 				pass
 			self.updateOptions()
 		self.run_console()
@@ -1394,8 +1377,8 @@ class Troubleshoot(Screen):
 		if answer:
 			for fileName in self.getLogFilesList():
 				try:
-					os.remove(fileName)
-				except:
+					remove(fileName)
+				except (IOError, OSError) as err:
 					pass
 			self.updateOptions()
 			self.run_console()
@@ -1414,14 +1397,14 @@ class Troubleshoot(Screen):
 		if command.startswith("cat "):
 			try:
 				self["AboutScrollLabel"].setText(open(command[4:], "r").read())
-			except:
+			except (IOError, OSError) as err:
 				self["AboutScrollLabel"].setText(_("Logfile does not exist anymore"))
 		else:
 			try:
 				if self.container.execute(command):
 					raise Exception("failed to execute: ", command)
-			except Exception as e:
-				self["AboutScrollLabel"].setText("%s\n%s" % (_("An error occurred - Please try again later"), e))
+			except Exception as err:
+				self["AboutScrollLabel"].setText("%s\n%s" % (_("An error occurred - Please try again later"), err))
 
 	def cancel(self):
 		self.container.appClosed.remove(self.appClosed)
@@ -1431,21 +1414,21 @@ class Troubleshoot(Screen):
 
 	def getDebugFilesList(self):
 		import glob
-		return [x for x in sorted(glob.glob("/home/root/logs/enigma2_debug_*.log"), key=lambda x: os.path.isfile(x) and os.path.getmtime(x))]
+		return [x for x in sorted(glob.glob("/home/root/logs/enigma2_debug_*.log"), key=lambda x: isfile(x) and getmtime(x))]
 
 	def getLogFilesList(self):
 		import glob
 		home_root = "/home/root/logs/enigma2_crash.log"
 		tmp = "/tmp/enigma2_crash.log"
-		return [x for x in sorted(glob.glob("/mnt/hdd/*.log"), key=lambda x: os.path.isfile(x) and os.path.getmtime(x))] + (os.path.isfile(home_root) and [home_root] or []) + (os.path.isfile(tmp) and [tmp] or [])
+		return [x for x in sorted(glob.glob("/mnt/hdd/*.log"), key=lambda x: isfile(x) and getmtime(x))] + (isfile(home_root) and [home_root] or []) + (isfile(tmp) and [tmp] or [])
 
 	def updateOptions(self):
 		self.titles = ["dmesg", "ifconfig", "df", "top", "ps", "messages"]
 		self.commands = ["dmesg", "ifconfig", "df -h", "top -n 1", "ps -l", "cat /var/volatile/log/messages"]
 		install_log = "/home/root/autoinstall.log"
-		if os.path.isfile(install_log):
-				self.titles.append("%s" % install_log)
-				self.commands.append("cat %s" % install_log)
+		if isfile(install_log):
+			self.titles.append("%s" % install_log)
+			self.commands.append("cat %s" % install_log)
 		self.numberOfCommands = len(self.commands)
 		fileNames = self.getLogFilesList()
 		if fileNames:
