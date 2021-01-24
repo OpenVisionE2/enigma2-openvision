@@ -51,9 +51,9 @@ class ScrollLabel(GUIComponent):
 					if self.split:
 						self.right_text = eLabel(self.instance)
 					self.skinAttributes.remove((attrib, value))
-				elif "colposition" in attrib:
+				elif "colposition" in attrib or "colPosition" in attrib:
 					self.column = int(value)
-				elif "dividechar" in attrib:
+				elif "dividechar" in attrib or "divideChar" in attrib:
 					self.splitchar = value
 			if self.split:
 				skin.applyAllAttributes(self.long_text, desktop, self.skinAttributes + [("halign", "left")], parent.scale)
@@ -113,6 +113,10 @@ class ScrollLabel(GUIComponent):
 	def appendText(self, text, showBottom=True):
 		self.setText(self.message + text, showBottom)
 
+	def moveTop(self):
+		self.setPos(0)
+		self.updateScrollbar()
+
 	def pageUp(self):
 		if self.TotalTextHeight > self.pageHeight:
 			self.setPos(self.curPos - self.pageHeight)
@@ -122,6 +126,10 @@ class ScrollLabel(GUIComponent):
 		if self.TotalTextHeight > self.pageHeight:
 			self.setPos(self.curPos + self.pageHeight)
 			self.updateScrollbar()
+
+	def moveBottom(self):
+		self.lastPage()
+		self.updateScrollbar()
 
 	def homePage(self):
 		self.setPos(0)
