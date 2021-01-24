@@ -5,6 +5,7 @@ from shutil import rmtree
 
 from Components.config import ConfigYesNo, config
 from Components.Sources.StaticText import StaticText
+from Screens.MessageBox import MessageBox
 from Screens.ParentalControlSetup import ProtectedScreen
 from Screens.Setup import Setup
 from Tools.Directories import SCOPE_CONFIG, SCOPE_SKIN, resolveFilename
@@ -98,6 +99,11 @@ class FactoryReset(Setup, ProtectedScreen):
 		self.moveToItem(currentItem)
 
 	def keySave(self):
+		self.session.openWithCallback(self.keySaveCallback, MessageBox, _("Selecting 'Yes' will delete the currently selected user data. This action can't be undone. You may want to create a backup before continuing.\n\nAre you sure you want to continue with the factory reset?"), default=False, title=_("Factory Reset"))
+
+	def keySaveCallback(self, answer):
+		if not answer:
+			return
 		configDir = resolveFilename(SCOPE_CONFIG)
 		if self.resetFull.value:
 			print("[FactoryReset] Performing a full factory reset.")
@@ -143,9 +149,6 @@ class FactoryReset(Setup, ProtectedScreen):
 		_exit(0)
 		self.close()  # We should never get to here!
 
-	def closeConfigList(self, closeParameters=()):
-		self.close(*closeParameters)
-
 	def wipeFiles(self, path, fileList):
 		for file in fileList:
 			target = pathjoin(path, file)
@@ -159,3 +162,6 @@ class FactoryReset(Setup, ProtectedScreen):
 			except (IOError, OSError) as err:
 				if err.errno != ENOENT:
 					print("[FactoryReset] Error: Unable to delete '%s'!  (%s)" % (target, str(err)))
+
+	def closeConfigList(self, closeParameters=()):  # Suppress the save settings pop up on exit.
+		self.close(*closeParameters)
