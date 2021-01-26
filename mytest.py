@@ -12,7 +12,7 @@ profile("PYTHON_START")
 import Tools.RedirectOutput
 from Tools.Directories import resolveFilename, fileExists
 from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib, getMachineBuild, getSoCFamily
-from enigma import getBoxType, getBoxBrand
+from enigma import getBoxType, getBoxBrand, getE2Rev
 
 model = getBoxType()
 brand = getBoxBrand()
@@ -25,6 +25,7 @@ print("[mytest] Brand/Meta = %s" % brand)
 print("[mytest] Model = %s" % model)
 print("[mytest] Platform = %s" % platform)
 print("[mytest] SoC family = %s" % socfamily)
+print("[mytest] Enigma2 revision = %s" % getE2Rev())
 
 import enigma
 import eConsoleImpl

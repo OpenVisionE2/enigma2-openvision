@@ -438,6 +438,11 @@ const char *getBoxBrand()
 	return BOXBRAND;
 }
 
+const char *getE2Rev()
+{
+	return E2REV;
+}
+
 #include <malloc.h>
 
 void dump_malloc_stats(void)
