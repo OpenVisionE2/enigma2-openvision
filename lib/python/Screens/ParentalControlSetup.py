@@ -45,6 +45,7 @@ class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 		{
 			"cancel": self.keyCancel,
 			"save": self.keySave,
+			"ok": self.keyOK,
 			"menu": self.closeRecursive,
 		}, -2)
 		self["key_red"] = StaticText(_("Cancel"))
@@ -65,9 +66,9 @@ class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 		self.list = []
 		if config.ParentalControl.servicepin[0].value or config.ParentalControl.servicepinactive.value or config.ParentalControl.setuppinactive.value or not initial:
 			if config.ParentalControl.servicepin[0].value:
-				pin_entry_text = _("Change PIN") + _(": 0000 - default (disabled)")
+				pin_entry_text = _("Change PIN Pressing [OK]") + _("  Default: 0000 (disabled)")
 			else:
-				pin_entry_text = _("Set PIN")
+				pin_entry_text = _("Set PIN Pressing [OK]")
 			self.changePin = getConfigListEntry(pin_entry_text, NoSave(ConfigNothing()))
 			self.list.append(self.changePin)
 			self.list.append(getConfigListEntry(_("Protect services"), config.ParentalControl.servicepinactive))
@@ -92,7 +93,7 @@ class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 				if config.usage.menu_sort_mode.value == "user":
 						self.list.append(getConfigListEntry(_("Protect menu sort"), config.ParentalControl.config_sections.menu_sort))
 		else:
-			self.changePin = getConfigListEntry(_("Enable parental protection"), NoSave(ConfigNothing()))
+			self.changePin = getConfigListEntry(_("Enable parental protection"), config.ParentalControl.servicepinactive)
 			self.list.append(self.changePin)
 		self["config"].list = self.list
 		self["config"].setList(self.list)
