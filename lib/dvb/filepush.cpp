@@ -677,7 +677,7 @@ void eFilePushThreadRecorder::start(int fd, ePtr<eDVBDemux> &demux)
 	 * that not (yet) has signal handler or is not
 	 * (yet) blocking signals. NB this is still in
 	 * parent context. */
-	action.sa_handler = global_signal_SIGUSR1_handler;
+	action.sa_handler = signal_handler;
 	action.sa_flags = 0;
 	sigaction(SIGUSR1, &action, 0);
 
