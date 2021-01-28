@@ -1,11 +1,10 @@
 from errno import ENOENT
 from os import environ, path, symlink, unlink, walk
-from six import ensure_str as ensurestr, text_type as texttype
+from six import PY2
 from time import gmtime, localtime, strftime, time
 from xml.etree.cElementTree import ParseError, parse
 
 from Components.config import ConfigSelection, ConfigSubsection, config
-from Tools.Geolocation import geolocation
 from Tools.StbHardware import setRTCoffset
 
 # The DEFAULT_AREA setting is usable by the image maintainers to select the
@@ -17,26 +16,22 @@ from Tools.StbHardware import setRTCoffset
 # "Classic" to maintain their chosen UI for time zone selection.  That is,
 # users will only be presented with the list of GMT related offsets.
 #
-# The DEFAULT_ZONE is used to select the default time zone if the "Time zone
-# area" is selected to be "Europe".  Images can select any defaults they deem
-# appropriate.
+# The DEFAULT_ZONE is used to select the default time zone within the time
+# zone area.  For example, if the "Time zone area" is selected to be
+# "Europe" then the image maintainers can select an appropriate country or
+# city within Europe as the default location in that time zone area.  Images
+# can select any defaults they deem appropriate.
 #
 # NOTE: Even if the DEFAULT_AREA of "Classic" is selected a DEFAULT_ZONE
 # must still be selected.
 #
 # For images that use both the "Time zone area" and "Time zone" configuration
-# options then the DEFAULT_AREA can be set to an area most appropriate for
-# the image.  If the "Europe" option is selected then
-# the DEFAULT_ZONE can be used to select a more appropriate time zone
-# selection for the image.
+# options then the DEFAULT_AREA should be set to an area most appropriate for
+# the image.  For example, if "Europe" is selected then the DEFAULT_ZONE can
+# be used to select a more appropriate time zone selection for the image.
 #
 # Please ensure that any defaults selected are valid, unique and available
 # in the "/usr/share/zoneinfo/" directory tree.
-#
-# This version of Timezones.py now incorporates access to a new Geolocation
-# feature that will try and determine the appropriate time zone for the user
-# based on their WAN IP address.  If the receiver is not connected to the
-# Internet the defaults described above and listed below will be used.
 #
 DEFAULT_AREA = "Europe"
 DEFAULT_ZONE = "London"
@@ -46,48 +41,31 @@ TIMEZONE_DATA = "/usr/share/zoneinfo/"  # This should be SCOPE_TIMEZONES_DATA!
 def InitTimeZones():
 	config.timezone = ConfigSubsection()
 	config.timezone.area = ConfigSelection(default=DEFAULT_AREA, choices=timezones.getTimezoneAreaList())
-	config.timezone.val = ConfigSelection(default=DEFAULT_ZONE, choices=timezones.getTimezoneList())
-	if config.misc.firstrun.value:
-		geolocationData = geolocation.getGeolocationData(fields="proxy,timezone", useCache=True)
-		proxy = geolocationData.get("proxy", False)
-		tz = geolocationData.get("timezone", None)
-		if proxy is True or tz is None:
-			msg = " - proxy in use" if proxy else ""
-			print("[Timezones] Warning: Geolocation not available%s!  (area='%s', zone='%s')" % (msg, config.timezone.area.value, config.timezone.val.value))
+	config.timezone.val = ConfigSelection(default=timezones.getTimezoneDefault(), choices=timezones.getTimezoneList())
+	if not config.timezone.area.value and config.timezone.val.value.find("/") == -1:
+		config.timezone.area.value = "Generic"
+	try:
+		tzLink = path.realpath("/etc/localtime")[20:]
+		msgs = []
+		if config.timezone.area.value == "Classic":
+			if config.timezone.val.value != tzLink:
+				msgs.append("time zone '%s' != '%s'" % (config.timezone.val.value, tzLink))
 		else:
-			area, zone = tz.split("/", 1)
-			if area != DEFAULT_AREA:
-				config.timezone.area.value = area
-				choices = timezones.getTimezoneList(area=area)
-				config.timezone.val.setChoices(choices, default=timezones.getTimezoneDefault(area, choices))
-			config.timezone.val.value = zone
-			config.timezone.save()
-			print("[Timezones] Initial time zone set by geolocation tz='%s'.  (area='%s', zone='%s')" % (tz, area, zone))
-	else:
-		if not config.timezone.area.value and config.timezone.val.value.find("/") == -1:
-			config.timezone.area.value = "Generic"
-		try:
-			tzLink = path.realpath("/etc/localtime")[20:]
-			msgs = []
-			if config.timezone.area.value == "Classic":
-				if config.timezone.val.value != tzLink:
-					msgs.append("time zone '%s' != '%s'" % (config.timezone.val.value, tzLink))
+			tzSplit = tzLink.find("/")
+			if tzSplit == -1:
+				tzArea = "Generic"
+				tzVal = tzLink
 			else:
-				tzSplit = tzLink.find("/")
-				if tzSplit == -1:
-					tzArea = "Generic"
-					tzVal = tzLink
-				else:
-					tzArea = tzLink[:tzSplit]
-					tzVal = tzLink[tzSplit + 1:]
-				if config.timezone.area.value != tzArea:
-					msgs.append("area '%s' != '%s'" % (config.timezone.area.value, tzArea))
-				if config.timezone.val.value != tzVal:
-					msgs.append("zone '%s' != '%s'" % (config.timezone.val.value, tzVal))
-			if len(msgs):
-				print("[Timezones] Warning: Enigma2 time zone does not match system time zone (%s), setting system to Enigma2 time zone!" % ",".join(msgs))
-		except (IOError, OSError):
-			pass
+				tzArea = tzLink[:tzSplit]
+				tzVal = tzLink[tzSplit + 1:]
+			if config.timezone.area.value != tzArea:
+				msgs.append("area '%s' != '%s'" % (config.timezone.area.value, tzArea))
+			if config.timezone.val.value != tzVal:
+				msgs.append("zone '%s' != '%s'" % (config.timezone.val.value, tzVal))
+		if len(msgs):
+			print("[Timezones] Warning: Enigma2 time zone does not match system time zone (%s), setting system to Enigma2 time zone!" % ",".join(msgs))
+	except (IOError, OSError) as err:
+		pass
 
 	def timezoneAreaChoices(configElement):
 		choices = timezones.getTimezoneList(area=configElement.value)
@@ -98,9 +76,11 @@ def InitTimeZones():
 	def timezoneNotifier(configElement):
 		timezones.activateTimezone(configElement.value, config.timezone.area.value)
 
-	config.timezone.area.addNotifier(timezoneAreaChoices, initial_call=False, immediate_feedback=True)
-	config.timezone.val.addNotifier(timezoneNotifier, initial_call=True, immediate_feedback=True)
-	config.timezone.val.callNotifiersOnSaveAndCancel = True
+	# config.timezone.area.addNotifier(timezoneAreaChoices, initial_call=False, immediate_feedback=True)
+	# config.timezone.val.addNotifier(timezoneNotifier, initial_call=True, immediate_feedback=True)
+	# config.timezone.val.callNotifiersOnSaveAndCancel = True
+	config.timezone.area.addNotifier(timezoneAreaChoices, initial_call=False)
+	config.timezone.val.addNotifier(timezoneNotifier)
 
 
 class Timezones:
@@ -109,11 +89,6 @@ class Timezones:
 		self.loadTimezones()
 		self.readTimezones()
 		self.callbacks = []
-		# This is a work around to maintain support of AutoTimers
-		# until AutoTimers are updated to use the Timezones
-		# callbacks.  Once AutoTimers are updated *all* AutoTimer
-		# code should be removed from the Timezones.py code!
-		self.autotimerInit()
 
 	# Scan the zoneinfo directory tree and all load all time zones found.
 	#
@@ -155,12 +130,9 @@ class Timezones:
 				name = commonTimezoneNames.get(tz, zone)  # Use the more common name if one is defined.
 				if name is None:
 					continue
-				if isinstance(name, texttype):
-					name = ensurestr(name.encode(encoding="UTF-8", errors="ignore"))
-				if isinstance(area, texttype):
-					area = ensurestr(area.encode(encoding="UTF-8", errors="ignore"))
-				if isinstance(zone, texttype):
-					zone = ensurestr(zone.encode(encoding="UTF-8", errors="ignore"))
+				name = name.encode(encoding="UTF-8", errors="ignore") if PY2 else name
+				area = area.encode(encoding="UTF-8", errors="ignore") if PY2 else area
+				zone = zone.encode(encoding="UTF-8", errors="ignore") if PY2 else zone
 				zones.append((zone, name.replace("_", " ")))
 			if area:
 				if area in self.timezones:
@@ -220,11 +192,9 @@ class Timezones:
 		if root is not None:
 			for zone in root.findall("zone"):
 				name = zone.get("name", "")
-				if isinstance(name, texttype):
-					name = ensurestr(name.encode(encoding="UTF-8", errors="ignore"))
+				name = name.encode(encoding="UTF-8", errors="ignore") if PY2 else name
 				zonePath = zone.get("zone", "")
-				if isinstance(zonePath, texttype):
-					zonePath = ensurestr(zonePath.encode(encoding="UTF-8", errors="ignore"))
+				zonePath = zonePath.encode(encoding="UTF-8", errors="ignore") if PY2 else zonePath
 				if path.exists(path.join(TIMEZONE_DATA, zonePath)):
 					zones.append((zonePath, name))
 				else:
@@ -308,43 +278,6 @@ class Timezones:
 	def removeCallback(self, callback):
 		if callback in self.callbacks:
 			self.callbacks.remove(callback)
-
-	def autotimerInit(self):  # This code should be moved into the AutoTimer plugin!
-		try:
-			# Create attributes autotimer & autopoller for backwards compatibility.
-			# Their use is deprecated.
-			from enigma import eTimer
-			from Plugins.Extensions.AutoTimer.plugin import autotimer, autopoller
-			self.autotimerPoller = autopoller
-			self.autotimerTimer = autotimer
-			self.pollDelay = 3  # Poll delay in minutes.
-			try:
-				self.autotimerPollDelay = config.plugins.autotimer.delay.value
-			except AttributeError:
-				self.autotimerPollDelay = self.pollDelay
-			self.timer = eTimer()
-			self.timer.callback.append(self.autotimeQuery)
-			self.addCallback(self.autotimerCallback)
-		except ImportError:
-			self.autotimerPoller = None
-			self.autotimerTimer = None
-
-	def autotimerCallback(self):
-		if config.plugins.autotimer.autopoll.value:
-			self.timer.stop()
-			print("[Timezones] Trying to stop main AutoTimer poller.")
-			if self.autotimerPoller is not None:
-				self.autotimerPoller.stop()
-			print("[Timezones] AutoTimer poller will be run in %d minutes." % self.pollDelay)
-			self.timer.startLongTimer(self.pollDelay * 60)
-
-	def autotimeQuery(self):
-		print("[Timezones] AutoTimer poll is running.")
-		if self.autotimerTimer is not None:
-			print("[Timezones] AutoTimer is parsing the EPG.")
-			self.autotimerTimer.parseEPG(autoPoll=True)
-		if self.autotimerPoller is not None:
-			self.autotimerPoller.start()
 
 
 timezones = Timezones()

@@ -244,19 +244,23 @@ class Wizard(Screen):
 
 	def red(self):
 		print("[Wizard] red")
-		pass
+		if self.wizard[self.currStep]["config"]["screen"] is not None and hasattr(self.configInstance, "red") and callable(self.configInstance.red):
+			self.configInstance.red()
 
 	def green(self):
 		print("[Wizard] green")
-		pass
+		if self.wizard[self.currStep]["config"]["screen"] is not None and hasattr(self.configInstance, "green") and callable(self.configInstance.green):
+			self.configInstance.green()
 
 	def yellow(self):
 		print("[Wizard] yellow")
-		pass
+		if self.wizard[self.currStep]["config"]["screen"] is not None and hasattr(self.configInstance, "yellow") and callable(self.configInstance.yellow):
+			self.configInstance.yellow()
 
 	def blue(self):
 		print("[Wizard] blue")
-		pass
+		if self.wizard[self.currStep]["config"]["screen"] is not None and hasattr(self.configInstance, "blue") and callable(self.configInstance.blue):
+			self.configInstance.blue()
 
 	def deleteForward(self):
 		self.resetCounter()
