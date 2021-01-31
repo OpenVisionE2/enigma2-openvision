@@ -63,6 +63,8 @@ class inputDevices:
 				self.name = None
 
 			if self.name:
+				if self.name == "aml_keypad":
+					self.name = "dreambox advanced remote control (native)"
 				self.Devices[evdev] = {'name': self.name, 'type': self.getInputDeviceType(self.name),'enabled': False, 'configuredName': None }
 				if model.startswith("et"):
 					self.setDefaults(evdev)

@@ -8,7 +8,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.config import getConfigListEntry, config, ConfigBoolean, ConfigNothing
 from Components.Label import Label
 from Components.Sources.StaticText import StaticText
-
+from boxbranding import getMachineBuild
 from Plugins.SystemPlugins.Videomode.VideoHardware import video_hw
 
 config.misc.videowizardenabled = ConfigBoolean(default = True)
@@ -44,7 +44,8 @@ class VideoSetup(Screen, ConfigListScreen):
 		self["description"] = Label("")
 
 		self.createSetup()
-		self.grabLastGoodMode()
+		if getMachineBuild() != "dmamlogic":
+			self.grabLastGoodMode()
 		self.onLayoutFinish.append(self.layoutFinished)
 
 	def layoutFinished(self):

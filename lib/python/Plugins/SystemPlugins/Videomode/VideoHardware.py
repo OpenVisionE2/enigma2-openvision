@@ -5,11 +5,14 @@ from Components.config import config, ConfigSelection, ConfigSubDict, ConfigYesN
 from Components.SystemInfo import SystemInfo
 from Tools.CList import CList
 import os
-from enigma import getBoxType, getBoxBrand
+from enigma import getBoxType, getBoxBrand, getDesktop
 from Components.About import about
+from Tools.Directories import fileExists
+from Components.Console import Console
 from boxbranding import getHaveAVJACK, getHaveHDMI, getMachineBuild, getSoCFamily
 
 brand = getBoxBrand()
+platform = getMachineBuild()
 socfamily = getSoCFamily().replace('bcm', '').replace('hisi', '')
 chipsetstring = about.getChipSetString()
 has_hdmi = getHaveHDMI() == "True"
@@ -66,7 +69,7 @@ class VideoHardware:
 								"multi":	{ 50: "2160p25", 60: "2160p30" },
 								"auto":		{ 50: "2160p25", 60: "2160p30", 24: "2160p24" } }
 
-	if getMachineBuild() == "dm4kgen":
+	if platform in ("dm4kgen", "dmamlogic"):
 		rates["2160p"] =	{ 	"50Hz":		{ 50: "2160p50" },
 								"60Hz":		{ 60: "2160p60" },
 								"multi":	{ 50: "2160p50", 60: "2160p60" },
@@ -98,7 +101,7 @@ class VideoHardware:
 	elif has_rca:
 		modes["RCA"] = ["576i", "PAL", "NTSC", "Multi"]
 
-	if socfamily in ("7376", "7444"):
+	if socfamily in ("7376", "7444") or platform == "dmamlogic":
 		modes["DVI"] = ["720p", "1080p", "2160p", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080p", "1080i", "2160p"}
 	elif socfamily in ("7252", "7251", "7251s", "7252s", "72604", "7278", "3798mv200", "3798cv200"):
@@ -110,7 +113,7 @@ class VideoHardware:
 	elif chipsetstring == "meson-6":
 		modes["DVI"] = ["720p", "1080p", "1080i"]
 		widescreen_modes = {"720p", "1080p", "1080i"}
-	elif chipsetstring in ("meson-64", "s905d") or socfamily in ("aml905d", "meson64"):
+	elif chipsetstring in ("meson-64", "s905d") or socfamily in ("aml905d", "meson64") and platform != "dmamlogic":
 		modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i"]
 		widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
 	else:
@@ -215,17 +218,22 @@ class VideoHardware:
 
 	def readPreferredModes(self):
 		if config.av.edid_override.value == False:
-			try:
-				modes = open("/proc/stb/video/videomode_edid").read()[:-1]
-				self.modes_preferred = modes.split(' ')
-				print("[Videomode] VideoHardware reading edid modes: ", self.modes_preferred)
-			except IOError:
+			if platform == "dmamlogic" and fileExists("/sys/class/amhdmitx/amhdmitx0/disp_cap"):
+				modes = open("/sys/class/amhdmitx/amhdmitx0/disp_cap").read()[:-1]
+				self.modes_preferred = modes.splitlines()
+				print("[Videomode] VideoHardware reading disp_cap modes: ", self.modes_preferred)
+			else:
 				try:
-					modes = open("/proc/stb/video/videomode_preferred").read()[:-1]
+					modes = open("/proc/stb/video/videomode_edid").read()[:-1]
 					self.modes_preferred = modes.split(' ')
+					print("[Videomode] VideoHardware reading edid modes: ", self.modes_preferred)
 				except IOError:
-					print("[Videomode] VideoHardware reading preferred modes failed, using all video modes")
-					self.modes_preferred = self.modes_available
+					try:
+						modes = open("/proc/stb/video/videomode_preferred").read()[:-1]
+						self.modes_preferred = modes.split(' ')
+					except IOError:
+						print("[Videomode] VideoHardware reading preferred modes failed, using all video modes")
+						self.modes_preferred = self.modes_available
 
 			if len(self.modes_preferred) <= 1:
 				self.modes_preferred = self.modes_available
@@ -271,6 +279,17 @@ class VideoHardware:
 			if force == 50:
 				mode_24 = mode_50
 
+		if platform == "dmamlogic":
+			amlmode = mode + rate.lower()
+			open('/sys/class/display/mode', 'w').write(amlmode)
+			open('/sys/class/ppmgr/ppscaler', 'w').write('1')
+			open('/sys/class/ppmgr/ppscaler', 'w').write('0')
+			size_width = getDesktop(0).size().width()
+			if size_width >= 1920:
+				Console().ePopen('fbset -fb /dev/fb0  -g 1920 1080 1920 3240  32')
+			else:
+				Console().ePopen('fbset -fb /dev/fb0  -g 1280 720 1280 2160  32')
+			return
 		try:
 			open("/proc/stb/video/videomode_50hz", "w").write(mode_50)
 			open("/proc/stb/video/videomode_60hz", "w").write(mode_60)
@@ -438,11 +457,20 @@ class VideoHardware:
 			wss = "auto"
 
 		print("[Videomode] VideoHardware -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss)
-		if chipsetstring.startswith("meson-6"):
+		if chipsetstring.startswith("meson-6") and platform != "dmamlogic":
 			arw = "0"
 			if config.av.policy_43.value == "bestfit" : arw = "10"
 			if config.av.policy_43.value == "panscan" : arw = "11"
 			if config.av.policy_43.value == "letterbox" : arw = "12"
+			try:
+				open("/sys/class/video/screen_mode", "w").write(arw)
+			except IOError:
+				pass
+		elif platform == "dmamlogic":
+			arw = "0"
+			if config.av.policy_43.value == "bestfit" : arw = "10"
+			if config.av.policy_43.value == "panscan" : arw = "12"
+			if config.av.policy_43.value == "letterbox" : arw = "11"
 			try:
 				open("/sys/class/video/screen_mode", "w").write(arw)
 			except IOError:

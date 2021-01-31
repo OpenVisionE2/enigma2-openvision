@@ -10,7 +10,7 @@ brandcheck=`cat /etc/openvision/brand`
 modelcheck=`cat /etc/openvision/model`
 platformcheck=`cat /etc/openvision/platform`
 
-if [ $brandcheck == "mecool" ]; then
+if [ $brandcheck == "mecool" ] || [ $platformcheck == "dmamlogic" ]; then
 	export media_arm_audio_decoder=ape,flac,dts,ac3,eac3,wma,wmapro,mp3,aac,vorbis,raac,cook,amr,pcm,adpcm
 fi
 
@@ -19,6 +19,16 @@ if [ $platformcheck == "octagonhisil" ] || [ $modelcheck == "ustym4kpro" ] || [ 
 	if [ 0 == $count ];then
 		libreader 720P_50
 	fi
+fi
+
+if [ $platformcheck == "dmamlogic" ]; then
+	echo 1 > /sys/class/graphics/fb0/osd_clear
+	echo 1 > /sys/class/graphics/fb1/osd_clear
+	if [ ! "$(grep config.misc.firstrun /etc/enigma2/settings)" == "config.misc.firstrun=false" ]; then
+		echo 1080p50hz > /sys/class/display/mode
+	fi
+	echo 00ffffff > /proc/stb/fp/led_color
+	echo 000000ff > /proc/stb/fp/led_brightness
 fi
 
 if [ -d /home/root ]; then
@@ -134,6 +144,10 @@ while : ; do
 				echo "0" > /sys/class/leds/wetek\:blue\:wifiled/brightness
 				echo "0" > /sys/class/leds/wetek\:blue\:ethled/brightness
 				echo "mem" > /sys/power/state
+			fi
+			if [ $platformcheck == "dmamlogic" ]; then
+				echo 00ffffff > /proc/stb/fp/led_color
+				echo 00000008 > /proc/stb/fp/led_brightness
 			fi
 			;;
 		2)
