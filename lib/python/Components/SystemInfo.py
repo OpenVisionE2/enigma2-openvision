@@ -157,7 +157,7 @@ SystemInfo["DefineSat"] = platform in ("octagonhisil", "gbmv200") or model in ("
 SystemInfo["AmlogicFamily"] = socfamily.startswith("aml") or socfamily.startswith("meson") or fileExists("/proc/device-tree/amlogic-dt-id") or fileExists("/usr/bin/amlhalt") or pathExists("/sys/module/amports")
 SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7")
-SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and model == "multibox" or brand in ("hypercube", "linkdroid", "mecool", "wetek")
+SystemInfo["AndroidMode"] =  SystemInfo["RecoveryMode"] and model == "multibox" or brand in ("hypercube", "linkdroid", "mecool", "wetek") or platform == "dmamlogic"
 SystemInfo["grautec"] = fileExists("/tmp/usbtft")
 SystemInfo["CanAC3plusTranscode"] = fileExists("/proc/stb/audio/ac3plus_choices")
 SystemInfo["CanDTSHD"] = fileExists("/proc/stb/audio/dtshd_choices")
