@@ -24,7 +24,7 @@
 		<item level="2" text="Number of digits in channel number" description="This allows you to set the number of digits you can input when selecting channels using number input.">config.usage.maxchannelnumlen</item>
 		<item level="2" text="Enable teletext caching" description="When enabled, teletext pages will be cached, allowing faster access.">config.usage.enable_tt_caching</item>
 		<item level="1" text="Teletext font and resolution" description="Configure the display resolution and the font used for teletext.">config.usage.tuxtxt_font_and_res</item>
-		<if conditiona="config.usage.tuxtxt_font_and_res.value == 'expert_mode'">
+		<if conditional="config.usage.tuxtxt_font_and_res.value == 'expert_mode'">
 			<item level="1" text="Teletext UseTTF (0=fixed font, 1=TrueType)" description="Configure whether a fixed font or a scalable TrueType font is used for teletext.">config.usage.tuxtxt_UseTTF</item>
 			<item level="1" text="Teletext TTFBold (0=normal, 1=bold)" description="Configure whether a bold TrueType font is used for teletext.">config.usage.tuxtxt_TTFBold</item>
 			<item level="1" text="Teletext TTFScreenResX (screen X resolution)" description="Configure the screen resolution for teletext (Not all skins support full-HD teletext).">config.usage.tuxtxt_TTFScreenResX</item>

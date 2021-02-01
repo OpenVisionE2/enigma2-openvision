@@ -3817,11 +3817,11 @@ class NetworkPassword(ConfigListScreen, Screen):
 		del self.container
 		self.close()
 
-class NetworkSatPI(NSCommon, Screen):
+class NetworkSATPI(NSCommon, Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		Screen.setTitle(self, _("SatPI setup"))
-		self.skinName = "NetworkSatPI"
+		Screen.setTitle(self, _("SATPI Setup"))
+		self.skinName = "NetworkSATPI"
 		self.onChangedEntry = [ ]
 		self['lab1'] = Label(_("Autostart:"))
 		self['labactive'] = Label(_(_("Disabled")))
@@ -3830,13 +3830,14 @@ class NetworkSatPI(NSCommon, Screen):
 		self['labrun'] = Label(_("Running"))
 		self['key_red'] = Label(_("Remove service"))
 		self['key_green'] = Label(_("Start"))
-		self['key_yellow'] = Label(_("Autostart"))
+		self['key_yellow'] = Label(_("Enable Autostart"))
+		self['key_blue'] = Label(_("Stop|Disable Autostart"))
 		self['status_summary'] = StaticText()
 		self['autostartstatus_summary'] = StaticText()
 		self.Console = Console()
 		self.my_satpi_active = False
 		self.my_satpi_run = False
-		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'red': self.UninstallCheck, 'green': self.SatPIStartStop, 'yellow': self.activateSatPI})
+		self['actions'] = ActionMap(['WizardActions', 'ColorActions'], {'ok': self.close, 'back': self.close, 'red': self.UninstallCheck, 'green': self.SatPIStart, 'yellow': self.activateSatPI, 'blue': self.SatPIStop})
 		self.service_name = 'satpi'
 		self.onLayoutFinish.append(self.InstallCheck)
 		self.reboot_at_end = True
@@ -3844,16 +3845,16 @@ class NetworkSatPI(NSCommon, Screen):
 	def createSummary(self):
 		return NetworkServicesSummary
 
-	def SatPIStartStop(self):
+	def SatPIStart(self):
 		if not self.my_satpi_run:
 			self.Console.ePopen('/etc/init.d/satpi start', self.StartStopCallback)
-		elif self.my_satpi_run:
-			self.Console.ePopen('/etc/init.d/satpi stop', self.StartStopCallback)
+
+	def SatPIStop(self):
+		if self.my_satpi_run or ServiceIsEnabled('satpi'):
+			self.Console.ePopen('/etc/init.d/satpi stop ; update-rc.d -f satpi remove', self.StartStopCallback)
 
 	def activateSatPI(self):
-		if ServiceIsEnabled('satpi'):
-			self.Console.ePopen('update-rc.d -f satpi remove', self.StartStopCallback)
-		else:
+		if not ServiceIsEnabled('satpi'):
 			self.Console.ePopen('update-rc.d -f satpi defaults', self.StartStopCallback)
 
 	def updateService(self,result = None, retval = None, extra_args = None):
@@ -3875,13 +3876,13 @@ class NetworkSatPI(NSCommon, Screen):
 			self['labstop'].hide()
 			self['labactive'].show()
 			self['labrun'].show()
-			self['key_green'].setText(_("Stop"))
+			self['key_green'].setText(_("Start"))
 			status_summary= self['lab2'].text + ' ' + self['labrun'].text
 		else:
 			self['labrun'].hide()
 			self['labstop'].show()
 			self['labactive'].show()
-			self['key_green'].setText(_("Start"))
+			self['key_blue'].setText(_("Stop|Disable Autostart"))
 			status_summary= self['lab2'].text + ' ' + self['labstop'].text
 		title = _("SatPI setup")
 		autostartstatus_summary = self['lab1'].text + ' ' + self['labactive'].text
