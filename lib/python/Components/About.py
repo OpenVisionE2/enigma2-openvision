@@ -200,7 +200,10 @@ def getCPUInfoString():
 			except:
 				pass
 		if temperature:
-			return "%s %s MHz (%s) %s\xb0C" % (processor, cpu_speed, ngettext("%d core", "%d cores", cpu_count) % cpu_count, temperature)
+			degree = u"\u00B0"
+			if not isinstance(degree, str):
+				degree = degree.encode("UTF-8", errors="ignore")
+			return "%s %s MHz (%s) %s%sC" % (processor, cpu_speed, ngettext("%d core", "%d cores", cpu_count) % cpu_count, temperature, degree)
 		return "%s %s MHz (%s)" % (processor, cpu_speed, ngettext("%d core", "%d cores", cpu_count) % cpu_count)
 	except:
 		return _("undefined")
