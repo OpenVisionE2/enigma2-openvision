@@ -113,7 +113,7 @@ def InitUsageConfig():
 		config.usage.show_genre_info = ConfigYesNo(default=False)
 	config.usage.menu_show_numbers = ConfigSelection(default = "no", choices = [("no", _("no")), ("menu&plugins", _("in menu and plugins")), ("menu", _("in menu only")), ("plugins", _("in plugins only"))])
 	config.usage.showScreenPath = ConfigSelection(default="small", choices=[("off", _("Disabled")), ("small", _("Small")), ("large", _("Large"))])
-	config.usage.enable_tt_caching = ConfigYesNo(default = True)
+	config.usage.enable_tt_caching = ConfigYesNo(default = False)
 
 	config.usage.tuxtxt_font_and_res = ConfigSelection(default = "TTF_SD", choices = [("X11_SD", _("Fixed X11 font (SD)")), ("TTF_SD", _("TrueType font (SD)")), ("TTF_HD", _("TrueType font (HD)")), ("TTF_FHD", _("TrueType font (full-HD)")), ("expert_mode", _("Expert mode"))])
 	config.usage.tuxtxt_UseTTF = ConfigSelection(default = "1", choices = [("0", "0"), ("1", "1")])
