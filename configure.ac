@@ -362,13 +362,6 @@ if test x"$with_olde2api" != xno ; then
 	AC_DEFINE(HAVE_OLDE2_API, 1,[define add old api of enigma2])
 fi
 
-AC_ARG_WITH(hisiltuner,
-	AS_HELP_STRING([--with-hisiltuner],[use hisiltuner, yes or no]),
-	[with_hisiltuner=$withval],[with_hisiltuner=no])
-if test x"$with_hisiltuner" != xno ; then
-	AC_DEFINE(HAVE_HISILICON_TUNER, 1,[define add HISILICON TUNER])
-fi
-
 AC_ARG_WITH(osdanimation,
 	AC_HELP_STRING([--with-osdanimation], [use osd animation, yes or no]),
 	[[withosdanimation=$withval]],

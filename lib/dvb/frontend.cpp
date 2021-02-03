@@ -2846,7 +2846,7 @@ RESULT eDVBFrontend::tune(const iDVBFrontendParameters &where, bool blindscan)
 		res=prepare_cable(feparm);
 		if (res)
 			goto tune_error;
-#if HAVE_HISILICON_TUNER
+#if HAVE_HISILICON
 		m_sec_sequence.push_back( eSecCommand(eSecCommand::SET_VOLTAGE, iDVBFrontend::voltageOff) );
 #endif
 		m_sec_sequence.push_back( eSecCommand(eSecCommand::START_TUNE_TIMEOUT, timeout) );
@@ -2869,7 +2869,7 @@ RESULT eDVBFrontend::tune(const iDVBFrontendParameters &where, bool blindscan)
 		char configStr[255];
 		snprintf(configStr, 255, "config.Nims.%d.terrestrial_5V", m_slotid);
 		m_sec_sequence.push_back( eSecCommand(eSecCommand::START_TUNE_TIMEOUT, timeout) );
-#if HAVE_HISILICON_TUNER
+#if HAVE_HISILICON
 		if (eConfigManager::getConfigBoolValue(configStr))
 			m_sec_sequence.push_back( eSecCommand(eSecCommand::SET_VOLTAGE, iDVBFrontend::voltage5_terrestrial) );
 #else
@@ -2938,7 +2938,7 @@ RESULT eDVBFrontend::connectStateChange(const sigc::slot1<void,iDVBFrontend*> &s
 RESULT eDVBFrontend::setVoltage(int voltage)
 {
 	bool increased=false;
-#if HAVE_HISILICON_TUNER
+#if HAVE_HISILICON
 	int active_antenna_power = -1;
 #endif
 	fe_sec_voltage_t vlt;
@@ -2948,7 +2948,7 @@ RESULT eDVBFrontend::setVoltage(int voltage)
 		case voltageOff:
 			m_data[CSW]=m_data[UCSW]=m_data[TONEBURST]=-1; // reset diseqc
 			vlt = SEC_VOLTAGE_OFF;
-#if HAVE_HISILICON_TUNER
+#if HAVE_HISILICON
 			active_antenna_power = 0;
 #endif
 			char filename[256];
@@ -2958,7 +2958,7 @@ RESULT eDVBFrontend::setVoltage(int voltage)
 		case voltage13_5:
 			increased = true;
 			[[fallthrough]];
-#if HAVE_HISILICON_TUNER
+#if HAVE_HISILICON
 		case voltage5_terrestrial:
 			vlt = SEC_VOLTAGE_13;
 			active_antenna_power = 1;
@@ -2984,7 +2984,7 @@ RESULT eDVBFrontend::setVoltage(int voltage)
 	}
 	if (m_simulate)
 		return 0;
-#if HAVE_HISILICON_TUNER
+#if HAVE_HISILICON
 	if (active_antenna_power != -1 && (m_type == feTerrestrial || m_type == feCable))
 	{
 		char filename[256];

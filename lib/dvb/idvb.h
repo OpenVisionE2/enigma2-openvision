@@ -517,7 +517,7 @@ public:
 	enum { feSatellite, feCable, feTerrestrial, feATSC };
 	enum { stateIdle, stateTuning, stateFailed, stateLock, stateLostLock, stateClosed };
 	enum { toneOff, toneOn };
-#if HAVE_HISILICON_TUNER
+#if HAVE_HISILICON
 	enum { voltageOff, voltage13, voltage18, voltage13_5, voltage18_5, voltage5_terrestrial };
 #else
 	enum { voltageOff, voltage13, voltage18, voltage13_5, voltage18_5 };
