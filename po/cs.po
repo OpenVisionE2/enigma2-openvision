@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -2841,9 +2841,10 @@ msgstr "Belize"
 msgid "Benchmark"
 msgstr "Dánsko"
 
+#
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Info správy software"
+msgstr "Informace"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2882,11 +2883,6 @@ msgstr "Černá obrazovka"
 
 msgid "Black screen till locked"
 msgstr "Černá obrazovka do uzamčení"
-
-#
-#, fuzzy
-msgid "Blacklist"
-msgstr "blacklist"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5766,6 +5762,10 @@ msgstr "Povolit 'neutrino' styl přepínání"
 msgid "Enable 5V for active antenna"
 msgstr "Povolit 5V pro aktivní anténu"
 
+#, fuzzy
+msgid "Enable Autostart"
+msgstr "Povolit automatický fastscan"
+
 #
 #, fuzzy
 msgid "Enable BT audio"
@@ -6972,13 +6972,24 @@ msgstr "Žánr"
 msgid "Geolocation"
 msgstr "Umístění"
 
+#
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Info správy software"
+msgstr "Informace"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Info správy software"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Tuner není dostupný."
 
 msgid "Georgia"
 msgstr "Gruzie"
@@ -8087,9 +8098,8 @@ msgstr "Keňa"
 msgid "Kernel file: "
 msgstr "Verze jádra: "
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Verze jádra: "
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Verze jádra: "
@@ -9361,11 +9371,6 @@ msgstr "Pomocník sítě"
 msgid "Network:"
 msgstr "Síť:"
 
-#
-#, fuzzy
-msgid "Never"
-msgstr "Nikdy"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Nedekóduje obsah při nahrávání. Přepisuje globálně individuální nastavení časovače. Jestliže je povoleno, nahrávky se ukládají v kódované podobě a musí být později dekódovány (tzv. offline dekódování). Standardně vypnuto."
 
@@ -9780,10 +9785,9 @@ msgstr "SDR"
 msgid "OSD 3D setup"
 msgstr "OSD 3D nastavení"
 
-#
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Nastavení"
+msgstr "OSD 3D nastavení"
 
 msgid "OSD name request"
 msgstr "Požadavek OSD názvu"
@@ -9894,9 +9898,10 @@ msgstr "Zvolte pouze 'Ano', pokud používáte multiswitch, který vyžaduje DiS
 msgid "Open Vision"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Otevřít zvolené umístění"
+msgstr "Informace"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -10115,16 +10120,15 @@ msgstr "Rodičovský adresář"
 
 #
 #, fuzzy
-msgid "Parental Control"
-msgstr "Rodičovský zámek"
-
-#
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Nastavení rodičovského zámku"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+#
+msgid "Parental control"
+msgstr "Rodičovský zámek"
 
 #
 msgid "Parental control services editor"
@@ -10542,8 +10546,15 @@ msgid "Please set up tuner R"
 msgstr "Prosím, nastavte tuner R"
 
 #
-msgid "Please set your time zone"
+#, fuzzy
+msgid "Please set your time options"
 msgstr "Prosím, nastavte časové pásmo"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Prosím, nastavte následující základní nastavení!"
@@ -11929,6 +11940,14 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Pomocník nastavení"
+
+msgid "SATPI"
+msgstr ""
+
+#
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Nastavení"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC optimalizovaný rozsah vyhledávání"
@@ -14256,6 +14275,9 @@ msgstr "Zrušit nastavení po spuštění"
 msgid "Stopped"
 msgstr "Zastaveno"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -14575,7 +14597,7 @@ msgstr ""
 "Pro případné korekce můžete kontaktovat autora\n"
 "na výše uvedené adrese.\n"
 "\n"
-"®15.1.2021"
+"®27.1.2021"
 
 #
 msgid "TS file is too large for ISO9660 level 1!"
@@ -14772,10 +14794,6 @@ msgstr "DVD standard nepodporuje H.264 (HDTV) video streamy. Chcete místo toho 
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Plugin není nainstalován."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "PIN kód, který jste zadali, je odlišný."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN kód byl úspěšně změněn."
@@ -15031,6 +15049,9 @@ msgid ""
 "No support will be provided!\n"
 "Do you understand this?"
 msgstr ""
+"Tento obraz je určen pro vývojáře a testery.\n"
+"Je bez jakékoliv podpory!\n"
+"Rozumíte tomu?"
 
 msgid ""
 "This info is for developers only.\n"
@@ -15333,9 +15354,15 @@ msgstr "nepodporováno"
 msgid "Time"
 msgstr "Čas"
 
+#
 #, fuzzy
 msgid "Time Setup"
-msgstr "Nastavení nahrávání"
+msgstr "Upravit časovač"
+
+#
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Výběr časovače"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -15937,11 +15964,6 @@ msgstr "Odpojit"
 msgid "Unsupported"
 msgstr "Nepodporováno"
 
-#
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "do standby/restartu"
-
 msgid "Unzipping Image"
 msgstr "Rozbalování image"
 
@@ -16048,6 +16070,11 @@ msgstr "Používat EIT EPG informace, jestliže jsou dostupné."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Používat FreeSat EPG informace, jestliže jsou dostupné."
 
+#
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Umístění souboru"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "Použít HDMI pre-emfázi"
 
@@ -16096,6 +16123,9 @@ msgstr "Použít fastscan číslování kanálů"
 #
 msgid "Use frequency or channel"
 msgstr "Použít frekvenci nebo kanál"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Používat vlastní nastavení pro každý adresář"
@@ -17659,6 +17689,10 @@ msgid "black & white"
 msgstr "černobílé"
 
 #
+msgid "blacklist"
+msgstr "blacklist"
+
+#
 msgid "blue"
 msgstr "Modré"
 
@@ -18898,6 +18932,10 @@ msgstr "nepublikováno"
 #
 msgid "untestable"
 msgstr "netestovatelné"
+
+#
+msgid "until standby/restart"
+msgstr "do standby/restartu"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"

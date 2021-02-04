@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -2612,7 +2612,7 @@ msgstr "Dānija"
 
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Programmatūras pārvaldnieka informācija"
+msgstr "Informācija"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2649,10 +2649,6 @@ msgstr "Melns ekrāns"
 
 msgid "Black screen till locked"
 msgstr "Melns ekrāns līdz noenkurojies"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "melnais saraksts"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5213,6 +5209,10 @@ msgid "Enable 5V for active antenna"
 msgstr "Aktivizēt 5V aktīvai antenai"
 
 #, fuzzy
+msgid "Enable Autostart"
+msgstr "Aktivizēt ātro auto skenēšanu"
+
+#, fuzzy
 msgid "Enable BT audio"
 msgstr "Aktivizēts"
 
@@ -6301,11 +6301,21 @@ msgstr "Atrašanās vieta"
 
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Programmatūras pārvaldnieka informācija"
+msgstr "Informācija"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Programmatūras pārvaldnieka informācija"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Uztvērējs nav pieejams."
 
 msgid "Georgia"
 msgstr "Gruzija"
@@ -7315,9 +7325,8 @@ msgstr "Kenija"
 msgid "Kernel file: "
 msgstr "Kerneļa versija: "
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Kerneļa versija: "
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Kerneļa versija: "
@@ -8431,10 +8440,6 @@ msgstr "Tīkla vednis"
 msgid "Network:"
 msgstr "Tīkls:"
 
-#, fuzzy
-msgid "Never"
-msgstr "nekad"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Neveikt satura atšifrēšanu kad ieraksta. Globāli ignorē individuālus taimeru iestatījumus. Ja iespējots, tad ieraksti tiks saglabāti šifrēti un tos vajadzēs pēc tam atšifrēt (veikt bezsaistes dekodēšanu). Pēc noklusējuma izslēgts."
 
@@ -8806,7 +8811,7 @@ msgstr "3D iestatījumi"
 
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Iestatījumi"
+msgstr "3D iestatījumi"
 
 msgid "OSD name request"
 msgstr "OSD nosaukuma pieprasījums"
@@ -8908,7 +8913,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Atvērt izvēlēto mapi"
+msgstr "Informācija"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9110,15 +9115,14 @@ msgid "Parent directory"
 msgstr "Iepriekšējā mape"
 
 #, fuzzy
-msgid "Parental Control"
-msgstr "Vecāku kontrole"
-
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Vecāku kontroles iestatījumi"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+msgid "Parental control"
+msgstr "Vecāku kontrole"
 
 msgid "Parental control services editor"
 msgstr "Vecāku kontroles kanālu redaktors"
@@ -9471,8 +9475,14 @@ msgid "Please set up tuner R"
 msgstr "Lūdzu iestatiet uztvērēju R"
 
 #, fuzzy
-msgid "Please set your time zone"
+msgid "Please set your time options"
 msgstr "Lūdzu iestatiet uztvērēju A"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Lūdzu iestatiet pamata iestatījumus!"
@@ -10666,6 +10676,13 @@ msgstr ""
 
 #, fuzzy
 msgid "SABnzbd setup"
+msgstr "Iestatījumi"
+
+msgid "SATPI"
+msgstr ""
+
+#, fuzzy
+msgid "SATPI Setup"
 msgstr "Iestatījumi"
 
 msgid "SCPC optimized search range"
@@ -12740,6 +12757,9 @@ msgstr "Pārtraukt lietot kā ieslēgšanas kanālu"
 msgid "Stopped"
 msgstr "Apturēt"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -13211,10 +13231,6 @@ msgstr "DVD standarts neatbalsta H.264 (HDTV) video. Vai jūs vēlaties izveidot
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Šis spraudnis nav instalēts."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "Ievadītie PIN kodi atšķiras."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN kods nomainīts veiksmīgi."
@@ -13744,7 +13760,11 @@ msgstr "Laiks"
 
 #, fuzzy
 msgid "Time Setup"
-msgstr "Ieraksta iestatījumi"
+msgstr "Rediģēt taimeri"
+
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Taimeru izvēle"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -14279,10 +14299,6 @@ msgstr "Atmontēt"
 msgid "Unsupported"
 msgstr "Neatbalstāms"
 
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "līdz gaidstāvei/pārstartēšanai"
-
 msgid "Unzipping Image"
 msgstr "Atarhivē imidžu"
 
@@ -14378,6 +14394,10 @@ msgstr "Lietot EIT EPG informāciju kad pieejama."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Lietot FreeSat EPG informāciju kad pieejama."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Mediju atrašanās vieta"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "Lietot HDMI pre-emphasis"
 
@@ -14422,6 +14442,9 @@ msgstr "Lietot ātrās meklēšanas kanālu numurus"
 
 msgid "Use frequency or channel"
 msgstr "Lietot frekvenci vai kanālu"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Lietot individuālus uzstādījumus katrai mapei"
@@ -15853,6 +15876,9 @@ msgstr "melns"
 msgid "black & white"
 msgstr "melns un balts"
 
+msgid "blacklist"
+msgstr "melnais saraksts"
+
 msgid "blue"
 msgstr "zilā"
 
@@ -16941,6 +16967,9 @@ msgstr "nepublicēts"
 
 msgid "untestable"
 msgstr "netestēts"
+
+msgid "until standby/restart"
+msgstr "līdz gaidstāvei/pārstartēšanai"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"

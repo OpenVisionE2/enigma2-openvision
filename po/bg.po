@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: 2020-11-29 22:07+0200\n"
 "Last-Translator: Мартин Петков <marto74bg@yahoo.co.uk>\n"
 "Language-Team: Bulgarian\n"
@@ -2587,7 +2587,7 @@ msgstr "Дания"
 
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Информация за софтуер мениджъра"
+msgstr "Информация"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2624,10 +2624,6 @@ msgstr "Черен екран"
 
 msgid "Black screen till locked"
 msgstr "Черен екран до получаване на сигнал"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "черен лист"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5183,6 +5179,10 @@ msgid "Enable 5V for active antenna"
 msgstr "Включи 5V за активната антена"
 
 #, fuzzy
+msgid "Enable Autostart"
+msgstr "Активиране на бързо автосканиране"
+
+#, fuzzy
 msgid "Enable BT audio"
 msgstr "Активиран"
 
@@ -6254,11 +6254,21 @@ msgstr "Местоположение"
 
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Информация за софтуер мениджъра"
+msgstr "Информация"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Информация за софтуер мениджъра"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Тунера не е достъпен."
 
 msgid "Georgia"
 msgstr "Грузия"
@@ -7263,9 +7273,8 @@ msgstr "Кения"
 msgid "Kernel file: "
 msgstr "Версия на ядрото: "
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Версия на ядрото: "
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Версия на ядрото: "
@@ -8362,10 +8371,6 @@ msgstr "Мрежов Помощник"
 msgid "Network:"
 msgstr "Мрежа:"
 
-#, fuzzy
-msgid "Never"
-msgstr "никога"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Никога не декодирай съдържанието по време на запис. Това отменя индивидуалните настройки на таймера на глобално ниво. Ако е включено, записите няма да бъдат декодирани по време на записа, и ще трябва да изпълните декодирането по-късно. По подразбиране: изкл."
 
@@ -8733,7 +8738,7 @@ msgstr "OSD 3D настройки"
 
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Настройки"
+msgstr "OSD 3D настройки"
 
 msgid "OSD name request"
 msgstr "OSD заявка за име"
@@ -8835,7 +8840,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Отвори избор на местоположение"
+msgstr "Информация"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9037,15 +9042,14 @@ msgid "Parent directory"
 msgstr "Главна Директория"
 
 #, fuzzy
-msgid "Parental Control"
-msgstr "Родителски контрол"
-
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Настройка на Родителски контрол"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+msgid "Parental control"
+msgstr "Родителски контрол"
 
 msgid "Parental control services editor"
 msgstr "Редактор на каналите в родителския контрол"
@@ -9395,8 +9399,15 @@ msgstr "Моля настройте тунер Q"
 msgid "Please set up tuner R"
 msgstr "Моля настройте тунер R"
 
-msgid "Please set your time zone"
+#, fuzzy
+msgid "Please set your time options"
 msgstr "Моля изберете вашата часова зона"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Моля настройте следните основни конфигурации!"
@@ -10587,6 +10598,13 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Настройка на помощника"
+
+msgid "SATPI"
+msgstr ""
+
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Настройки"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC оптимизиран диапазон на търсене"
@@ -12645,6 +12663,9 @@ msgstr "Отмяна на канала като стартиращ при зар
 msgid "Stopped"
 msgstr "Спрян"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -13109,10 +13130,6 @@ msgstr "DVD стандарта не поддържа H.264 (HDTV) видео с�
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Този плъгин не е инсталиран."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "Въведените PIN-кодове са различни."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN-кода беше успешно променен."
@@ -13634,7 +13651,11 @@ msgstr "Час"
 
 #, fuzzy
 msgid "Time Setup"
-msgstr "Настройка за записи"
+msgstr "Редактирай Таймер"
+
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Избор на таймер"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -14162,10 +14183,6 @@ msgstr "Демонтиране"
 msgid "Unsupported"
 msgstr "Не се поддържа"
 
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "до режим готовност/рестарт"
-
 msgid "Unzipping Image"
 msgstr "Разархивиране на Имиджа"
 
@@ -14259,6 +14276,10 @@ msgstr "Използвай EIT EPG информация (сега/следва),
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Използвай FreeSat EPG(UK 28.2E) информация, ако е налична."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Местоположение на филмите"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "Използвай HDMI предварителна корекция"
 
@@ -14303,6 +14324,9 @@ msgstr "Номериране на каналите от бързо търсен�
 
 msgid "Use frequency or channel"
 msgstr "Използвай честота или канал"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Индивидуални настройки за всяка директория"
@@ -15724,6 +15748,9 @@ msgstr "черен"
 msgid "black & white"
 msgstr "черно & бяло"
 
+msgid "blacklist"
+msgstr "черен лист"
+
 msgid "blue"
 msgstr "син"
 
@@ -16808,6 +16835,9 @@ msgstr "непубликувано"
 
 msgid "untestable"
 msgstr "непроверено"
+
+msgid "until standby/restart"
+msgstr "до режим готовност/рестарт"
 
 msgid "use best / controlled by HDMI"
 msgstr ""

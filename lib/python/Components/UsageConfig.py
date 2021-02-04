@@ -300,7 +300,7 @@ def InitUsageConfig():
 		("3", "DVB-C/-T/-S"),
 		("4", "DVB-T/-C/-S"),
 		("5", "DVB-T/-S/-C"),
-		("127", _("No priority")) ])
+		("127", _("No priority"))])
 
 	def remote_fallback_changed(configElement):
 		if configElement.value:
@@ -1192,11 +1192,11 @@ def InitUsageConfig():
 		("2", _("yellow")) ])
 	config.subtitles.ttx_subtitle_original_position = ConfigYesNo(default = False)
 	config.subtitles.ttx_subtitle_position = ConfigSelection( choices = ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100", "150", "200", "250", "300", "350", "400", "450"], default = "50")
-	config.subtitles.subtitle_alignment = ConfigSelection(choices = [("left", _("left")), ("center", _("center")), ("right", _("right"))], default = "center")
+	config.subtitles.subtitle_alignment = ConfigSelection(default = "center", choices = [("left", _("left")), ("center", _("center")), ("right", _("right"))])
 	config.subtitles.subtitle_rewrap = ConfigYesNo(default = False)
 	config.subtitles.colourise_dialogs = ConfigYesNo(default = False)
-	config.subtitles.subtitle_borderwidth = ConfigSelection(choices = ["1", "2", "3", "4", "5"], default = "3")
-	config.subtitles.subtitle_fontsize = ConfigSelection(choices = ["%d" % x for x in range(16, 101) if not x % 2], default = "40")
+	config.subtitles.subtitle_borderwidth = ConfigSelection(default = "3", choices = ["1", "2", "3", "4", "5"])
+	config.subtitles.subtitle_fontsize = ConfigSelection(default = "40", choices = ["%d" % x for x in range(16, 101) if not x % 2])
 	config.subtitles.showbackground = ConfigYesNo(default = False)
 
 	subtitle_delay_choicelist = []

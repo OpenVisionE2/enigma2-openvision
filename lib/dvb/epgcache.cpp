@@ -1946,7 +1946,7 @@ void eEPGCache::channel_data::ATSC_checkCompletion()
 			int sourceid = (it->first >> 16) & 0xffff;
 			sids.push_back(m_ATSC_VCT_map[sourceid]);
 			chids.push_back(channel->getChannelID());
-			cache->submitEventData(sids, chids, it->second.startTime, it->second.lengthInSeconds, it->second.title.c_str(), "", m_ATSC_ETT_map[it->first].c_str(), 0, eEPGCache::ATSC_EIT);
+			cache->submitEventData(sids, chids, it->second.startTime, it->second.lengthInSeconds, it->second.title.c_str(), "", m_ATSC_ETT_map[it->first].c_str(), 0, 0, eEPGCache::ATSC_EIT);
 		}
 		m_ATSC_EIT_map.clear();
 		m_ATSC_ETT_map.clear();
@@ -2158,7 +2158,7 @@ void eEPGCache::channel_data::OPENTV_checkCompletion(uint32_t data_crc)
 				chid.original_network_id = m_OPENTV_channels_map[channelid].originalNetworkId;
 				chids.push_back(chid);
 				sids.push_back(m_OPENTV_channels_map[channelid].serviceId);
-				cache->submitEventData(sids, chids, it->second.startTime, it->second.duration, m_OPENTV_descriptors_map[it->second.title_crc].c_str(), "", "", 0, eEPGCache::OPENTV);
+				cache->submitEventData(sids, chids, it->second.startTime, it->second.duration, m_OPENTV_descriptors_map[it->second.title_crc].c_str(), "", "", 0, it->second.eventId, eEPGCache::OPENTV);
 			}
 		}
 		m_OPENTV_descriptors_map.clear();
@@ -2322,7 +2322,7 @@ void eEPGCache::channel_data::OPENTV_SummariesSection(const uint8_t *d)
 							}
 						}
 					}
-					cache->submitEventData(sids, chids, ote.startTime, ote.duration, sTitle.c_str(), "", sSummary.c_str(), 0, eEPGCache::OPENTV);
+					cache->submitEventData(sids, chids, ote.startTime, ote.duration, sTitle.c_str(), "", sSummary.c_str(), 0, ote.eventId, eEPGCache::OPENTV);
 				}
 				m_OPENTV_EIT_map.erase(otce);
 			}
@@ -3604,12 +3604,12 @@ void eEPGCache::submitEventData(const std::vector<eServiceReferenceDVB>& service
 			service->m_flags |= eDVBService::dxNoEIT;
 		}
 	}
-	submitEventData(sids, chids, start, duration, title, short_summary, long_description, event_type, EPG_IMPORT);
+	submitEventData(sids, chids, start, duration, title, short_summary, long_description, event_type, 0, EPG_IMPORT);
 }
 
 void eEPGCache::submitEventData(const std::vector<int>& sids, const std::vector<eDVBChannelID>& chids, long start,
 	long duration, const char* title, const char* short_summary,
-	const char* long_description, char event_type, int source)
+	const char* long_description, char event_type, int event_id, int source)
 {
 	if (!title)
 		return;
@@ -3633,7 +3633,7 @@ void eEPGCache::submitEventData(const std::vector<int>& sids, const std::vector<
 
 	eit_event_t *evt_struct = (eit_event_t*) (data + EIT_SIZE);
 
-	uint16_t eventId = start & 0xFFFF;
+	uint16_t eventId = (event_id == 0) ? start & 0xFFFF : event_id;
 	evt_struct->setEventId(eventId);
 
 	//6 bytes start time, 3 bytes duration

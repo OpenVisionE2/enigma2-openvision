@@ -568,7 +568,7 @@ int eDVBFrontend::PreferredFrontendIndex = -1;
 
 eDVBFrontend::eDVBFrontend(const char *devicenodename, int fe, int &ok, bool simulate, eDVBFrontend *simulate_fe)
 	:m_simulate(simulate), m_enabled(false), m_fbc(false), m_is_usbtuner(false), m_simulate_fe(simulate_fe), m_type(-1), m_dvbid(fe), m_slotid(fe)
-	,m_fd(-1), m_dvbversion(0), m_rotor_mode(false), m_need_rotor_workaround(false), m_multitype(false)
+	,m_fd(-1), m_dvbversion(0), m_rotor_mode(false), m_need_rotor_workaround(false), m_multitype(false), m_voltage5_terrestrial(-1)
 	,m_state(stateClosed), m_timeout(0), m_tuneTimer(0)
 #if HAVE_ALIEN5
 	,m_looptimeout(100)
@@ -760,6 +760,7 @@ int eDVBFrontend::openFrontend()
 
 	setTone(iDVBFrontend::toneOff);
 	setVoltage(iDVBFrontend::voltageOff);
+	m_voltage5_terrestrial = -1;
 
 	return 0;
 }
@@ -839,6 +840,7 @@ int eDVBFrontend::closeFrontend(bool force, bool no_delayed)
 
 	m_sn=0;
 	m_state = stateClosed;
+	m_voltage5_terrestrial = -1;
 
 	return 0;
 }
@@ -2847,6 +2849,11 @@ RESULT eDVBFrontend::tune(const iDVBFrontendParameters &where, bool blindscan)
 		if (res)
 			goto tune_error;
 
+		if (m_voltage5_terrestrial == 1)
+		{
+			m_sec_sequence.push_back( eSecCommand(eSecCommand::SET_VOLTAGE, iDVBFrontend::voltageOff) );
+			m_voltage5_terrestrial = -1;
+		}
 		m_sec_sequence.push_back( eSecCommand(eSecCommand::START_TUNE_TIMEOUT, timeout) );
 		m_sec_sequence.push_back( eSecCommand(eSecCommand::SET_FRONTEND, 1) );
 		break;
@@ -2864,13 +2871,19 @@ RESULT eDVBFrontend::tune(const iDVBFrontendParameters &where, bool blindscan)
 		if (res)
 			goto tune_error;
 
-		char configStr[255];
-		snprintf(configStr, 255, "config.Nims.%d.terrestrial_5V", m_slotid);
+		if (m_voltage5_terrestrial == -1)
+		{
+			char configStr[255];
+			snprintf(configStr, 255, "config.Nims.%d.terrestrial_5V", m_slotid);
+			if (eConfigManager::getConfigBoolValue(configStr))
+			{
+				m_sec_sequence.push_back( eSecCommand(eSecCommand::SET_VOLTAGE, iDVBFrontend::voltage5_terrestrial) );
+				m_voltage5_terrestrial = 1;
+			}
+			else
+				m_voltage5_terrestrial = 0;
+		}
 		m_sec_sequence.push_back( eSecCommand(eSecCommand::START_TUNE_TIMEOUT, timeout) );
-		if (eConfigManager::getConfigBoolValue(configStr))
-			m_sec_sequence.push_back( eSecCommand(eSecCommand::SET_VOLTAGE, iDVBFrontend::voltage13) );
-		else
-			m_sec_sequence.push_back( eSecCommand(eSecCommand::SET_VOLTAGE, iDVBFrontend::voltageOff) );
 		m_sec_sequence.push_back( eSecCommand(eSecCommand::SET_FRONTEND, 1) );
 		break;
 	}
@@ -2931,13 +2944,16 @@ RESULT eDVBFrontend::connectStateChange(const sigc::slot1<void,iDVBFrontend*> &s
 RESULT eDVBFrontend::setVoltage(int voltage)
 {
 	bool increased=false;
+	int active_antenna_power = -1;
 	fe_sec_voltage_t vlt;
 	m_data[CUR_VOLTAGE]=voltage;
+
 	switch (voltage)
 	{
 		case voltageOff:
 			m_data[CSW]=m_data[UCSW]=m_data[TONEBURST]=-1; // reset diseqc
 			vlt = SEC_VOLTAGE_OFF;
+			active_antenna_power = 0;
 			char filename[256];
 			snprintf(filename, sizeof(filename), "/proc/stb/frontend/%d/active_antenna_power", m_slotid);
 			CFile::writeStr(filename, "off");
@@ -2945,6 +2961,10 @@ RESULT eDVBFrontend::setVoltage(int voltage)
 		case voltage13_5:
 			increased = true;
 			[[fallthrough]];
+		case voltage5_terrestrial:
+			vlt = SEC_VOLTAGE_13;
+			active_antenna_power = 1;
+			break;
 		case voltage13:
 			vlt = SEC_VOLTAGE_13;
 			if(m_type == feTerrestrial)
@@ -2963,8 +2983,22 @@ RESULT eDVBFrontend::setVoltage(int voltage)
 		default:
 			return -ENODEV;
 	}
+
 	if (m_simulate)
 		return 0;
+
+	if (active_antenna_power != -1 && (m_type == feTerrestrial || m_type == feCable))
+	{
+		char filename[256];
+		snprintf(filename, sizeof(filename), "/proc/stb/frontend/%d/active_antenna_power", m_slotid);
+		CFile proc_name(filename, "w");
+		if(proc_name && fprintf(proc_name, "%s", active_antenna_power == 1 ? "on" : "off") > 0)
+		{
+			eDebug("[eDVBFrontend%d] set Voltage via proc %s", m_dvbid, active_antenna_power == 1 ? "on" : "off");
+			return 1;
+		}
+	}
+
 #ifndef HAVE_RASPBERRYPI
 	eDebug("[eDVBFrontend%d] setVoltage FE_ENABLE_HIGH_LNB_VOLTAGE %d FE_SET_VOLTAGE %d", m_dvbid, increased, vlt);
 	::ioctl(m_fd, FE_ENABLE_HIGH_LNB_VOLTAGE, increased);

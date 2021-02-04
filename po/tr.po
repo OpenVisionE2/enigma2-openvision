@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OPENPLi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: 2015-12-18 21:05+0200\n"
 "Last-Translator: Yetkin AYDIN <yetkina@gmail.com>\n"
 "Language-Team: http://www.hurforum.com <yetkina@gmail.com>\n"
@@ -68,9 +68,8 @@ msgstr ""
 msgid " "
 msgstr ""
 
-#, fuzzy
 msgid "  Default: 0000 (disabled)"
-msgstr " (Devre Dışı)"
+msgstr ""
 
 msgid "  REC  "
 msgstr ""
@@ -2589,7 +2588,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Yazılım Yöneticisi bilgileri"
+msgstr "Bilgi"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2626,10 +2625,6 @@ msgstr "Siyah ekran"
 
 msgid "Black screen till locked"
 msgstr "Siyah ekrana kadar kilitli"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "Kara Liste"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5218,6 +5213,10 @@ msgid "Enable 5V for active antenna"
 msgstr "5V etkinleştir"
 
 #, fuzzy
+msgid "Enable Autostart"
+msgstr "Otomatik hızlı taramayı etkinleştir"
+
+#, fuzzy
 msgid "Enable BT audio"
 msgstr "Etkin"
 
@@ -6291,11 +6290,21 @@ msgstr "Konum"
 
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Yazılım Yöneticisi bilgileri"
+msgstr "Bilgi"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Yazılım Yöneticisi bilgileri"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Tuner mevcut değil."
 
 msgid "Georgia"
 msgstr ""
@@ -7316,9 +7325,8 @@ msgstr ""
 msgid "Kernel file: "
 msgstr "Çekirdek sürümü:"
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Çekirdek sürümü:"
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Çekirdek sürümü:"
@@ -8435,10 +8443,6 @@ msgstr "Ağ kurulum sihirbazı"
 msgid "Network:"
 msgstr "Ağ:"
 
-#, fuzzy
-msgid "Never"
-msgstr "Hiç"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Kayıt sırasında asla içeriğin şifresini eklemez. Bu global bireysel zamanlayıcı ayarları geçersiz kılar. Etkinse, kayıtlar şifrelenmiş sunum saklanır ve daha sonra (bazen çevrimdışı çözme) deşifre edilmelidir. Varsayılan: Kapalı."
 
@@ -8816,7 +8820,7 @@ msgstr "3D OSD Ayarı"
 
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Kurulum"
+msgstr "3D OSD Ayarı"
 
 msgid "OSD name request"
 msgstr "OSD adı isteği"
@@ -8918,7 +8922,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Seçili konumu aç"
+msgstr "Bilgi"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9123,15 +9127,14 @@ msgid "Parent directory"
 msgstr "Üst Dizin"
 
 #, fuzzy
-msgid "Parental Control"
-msgstr "Aile Koruması"
-
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Aile Koruması Kurulumu"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+msgid "Parental control"
+msgstr "Aile Koruması"
 
 msgid "Parental control services editor"
 msgstr "Aile koruma servislerini düzenle"
@@ -9486,8 +9489,14 @@ msgid "Please set up tuner R"
 msgstr "Tuner A'yı yapılandırın."
 
 #, fuzzy
-msgid "Please set your time zone"
+msgid "Please set your time options"
 msgstr "Tuner A'yı yapılandırın."
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr ""
@@ -10691,6 +10700,13 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Video ayarları"
+
+msgid "SATPI"
+msgstr ""
+
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Kurulum"
 
 msgid "SCPC optimized search range"
 msgstr ""
@@ -12779,6 +12795,9 @@ msgstr "Başlangıç servislerini durdurun"
 msgid "Stopped"
 msgstr "Durduruldu"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -13260,10 +13279,6 @@ msgstr "DVD standardı H.264 (HDTV) video akışını desteklemiyor. Bunun yerin
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Bu eklenti yüklü değil."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "Girdiğiniz PIN kodları farklı."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN kodu başarıyla değiştirildi."
@@ -13787,7 +13802,11 @@ msgstr "Zaman"
 
 #, fuzzy
 msgid "Time Setup"
-msgstr "Kayıt Ayarları"
+msgstr "Zamanlayıcı ayarı"
+
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Zamanlayıcı seçimi"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -14334,10 +14353,6 @@ msgid "Unsupported"
 msgstr "Desteklenmiyor"
 
 #, fuzzy
-msgid "Until standby/restart"
-msgstr "H.Bekle/Y.Başlatana Kadar"
-
-#, fuzzy
 msgid "Unzipping Image"
 msgstr "İndiriliyor..."
 
@@ -14433,6 +14448,10 @@ msgstr "Uygun olduğunda EPG EIT bilgilerini kullan."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Uygun olduğunda FreeSat EPG bilgilerini kullan."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Film konumu"
+
 msgid "Use HDMI pre-emphasis"
 msgstr ""
 
@@ -14477,6 +14496,9 @@ msgstr "Hızlı Tarama kanal numaralarını kullanın"
 
 msgid "Use frequency or channel"
 msgstr "Frekans veya kanalı kullan"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Her bir dizin için ayrı ayarları kullan"
@@ -15900,6 +15922,9 @@ msgstr "Siyah"
 msgid "black & white"
 msgstr "Kara & Beyaz"
 
+msgid "blacklist"
+msgstr "Kara Liste"
+
 msgid "blue"
 msgstr "Mavi"
 
@@ -16992,6 +17017,9 @@ msgstr "Ayınlanmamış"
 
 msgid "untestable"
 msgstr ""
+
+msgid "until standby/restart"
+msgstr "H.Bekle/Y.Başlatana Kadar"
 
 msgid "use best / controlled by HDMI"
 msgstr ""

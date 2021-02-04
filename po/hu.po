@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: 2020-12-05 15:11+0100\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -2584,7 +2584,7 @@ msgstr "Dánia"
 
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Szoftverkezeló információ"
+msgstr "Információk"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2621,10 +2621,6 @@ msgstr "Fekete képernyő"
 
 msgid "Black screen till locked"
 msgstr "Fekete képernyő hangolásig"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "feketelista"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5176,6 +5172,10 @@ msgid "Enable 5V for active antenna"
 msgstr "5V kimenet az akítv antennához engedélyezve"
 
 #, fuzzy
+msgid "Enable Autostart"
+msgstr "Automatikus gyorskeresés engedélyezése"
+
+#, fuzzy
 msgid "Enable BT audio"
 msgstr "Engedélyezve"
 
@@ -6242,11 +6242,21 @@ msgstr "Tárhely"
 
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Szoftverkezeló információ"
+msgstr "Információk"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Szoftverkezeló információ"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Tuner nem elérhető."
 
 msgid "Georgia"
 msgstr "Grúzia"
@@ -7253,9 +7263,8 @@ msgstr "Kenya"
 msgid "Kernel file: "
 msgstr "Kernel verzió: "
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Kernel verzió: "
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Kernel verzió: "
@@ -8353,10 +8362,6 @@ msgstr "Hálózati Varázsló"
 msgid "Network:"
 msgstr "Hálózat:"
 
-#, fuzzy
-msgid "Never"
-msgstr "soha"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Felvétel közben sosem végez dekódolást. Ez általánosan felülírja az egyes időzítő beállításokat. Ha bekapcsolja ezt, a felvételek kódolt formában kerülnek tárolásra, és később kell dekódolni (ezt általában offline dekódolásnak hívják). Alapértelmezett: 'ki'."
 
@@ -8726,7 +8731,7 @@ msgstr "OSD 3D beállítások"
 
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Beállítások"
+msgstr "OSD 3D beállítások"
 
 msgid "OSD name request"
 msgstr "OSD név kérés"
@@ -8828,7 +8833,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Helyválasztó megnyitása"
+msgstr "Információk"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9030,15 +9035,14 @@ msgid "Parent directory"
 msgstr "Szülő mappa"
 
 #, fuzzy
-msgid "Parental Control"
-msgstr "Gyermekzár"
-
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Gyermekzár beállítások"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+msgid "Parental control"
+msgstr "Gyermekzár"
 
 msgid "Parental control services editor"
 msgstr "Gyermekzárral védett csatornák szerkesztése"
@@ -9388,8 +9392,15 @@ msgstr "Állítsa be a Q tunert"
 msgid "Please set up tuner R"
 msgstr "Állítsa be az R tunert"
 
-msgid "Please set your time zone"
+#, fuzzy
+msgid "Please set your time options"
 msgstr "Állítsa be az időzónát"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Kérjük, állítsa be a következő alapvető paramétereket!"
@@ -10578,6 +10589,13 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Varázsló beállítása"
+
+msgid "SATPI"
+msgstr ""
+
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Beállítások"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC optimizált keresési tartomány"
@@ -12635,6 +12653,9 @@ msgstr "Beállítás indítási csatornának"
 msgid "Stopped"
 msgstr "Leállítva"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -13106,10 +13127,6 @@ msgstr "A DVD szabvány nem támogatja a H.264 (HDTV) videó streamet. Szeretne 
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "A bővítmény nincs telepítve."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "A megadott PIN-kódok eltérnek egymástól."
 
 msgid "The PIN code has been changed successfully."
 msgstr "A PIN-kódot sikeresen megváltoztatta."
@@ -13639,7 +13656,11 @@ msgstr "Idő"
 
 #, fuzzy
 msgid "Time Setup"
-msgstr "Felvétel beállítások"
+msgstr "Időzítő módosítása"
+
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Időzítés kiválasztása"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -14167,10 +14188,6 @@ msgstr "Leválasztás"
 msgid "Unsupported"
 msgstr "Nem támogatott"
 
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "kikapcsolásig/újraindításig"
-
 msgid "Unzipping Image"
 msgstr "Image kicsomagolása"
 
@@ -14264,6 +14281,10 @@ msgstr "EPG információk beolvasása a DVB jelfolyamból (EIT)."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "FreeSat EPG információk beolvasása a jelforrásból."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Fájlok tárhelye"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "HDMI előerősítés használata"
 
@@ -14308,6 +14329,9 @@ msgstr "Szolgáltató által megadott csatorna számozás"
 
 msgid "Use frequency or channel"
 msgstr "Frekvencia vagy csatorna használata"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Beállítások mentése egyedileg mappánként"
@@ -15726,6 +15750,9 @@ msgstr "fekete"
 msgid "black & white"
 msgstr "fekete-fehér"
 
+msgid "blacklist"
+msgstr "feketelista"
+
 msgid "blue"
 msgstr "kék"
 
@@ -16810,6 +16837,9 @@ msgstr "kiadatlan"
 
 msgid "untestable"
 msgstr "nem tesztelhető"
+
+msgid "until standby/restart"
+msgstr "kikapcsolásig/újraindításig"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: 2021-01-09 00:32+0200\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -2455,10 +2455,6 @@ msgstr "Juodas ekranas"
 
 msgid "Black screen till locked"
 msgstr "Juodas ekranas blokuojamas iki"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "juodasis sąrašas"
 
 msgid "Blinking REC"
 msgstr "Mirksintis REC"
@@ -4931,6 +4927,10 @@ msgstr "Įjungti 'neutrino' stiliaus perjungimo valdymą"
 msgid "Enable 5V for active antenna"
 msgstr "Įjungti 5V aktyviai antenai"
 
+#, fuzzy
+msgid "Enable Autostart"
+msgstr "Įjungti automatinę greitą paiešką"
+
 msgid "Enable BT audio"
 msgstr "Įjungti BT garsą"
 
@@ -5956,7 +5956,18 @@ msgstr "Geografinė vieta"
 msgid "Geolocation Information"
 msgstr "Geografinės vietos informacija"
 
+#, fuzzy
+msgid "Geolocation does not contain time zone information."
+msgstr "Geografinės vietos informacija"
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
+
 msgid "Geolocation information"
+msgstr "Geografinės vietos informacija"
+
+#, fuzzy
+msgid "Geolocation is not available."
 msgstr "Geografinės vietos informacija"
 
 msgid "Georgia"
@@ -7986,10 +7997,6 @@ msgstr "Tinklo vedlys"
 msgid "Network:"
 msgstr "Tinklas:"
 
-#, fuzzy
-msgid "Never"
-msgstr "niekada"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Niekada neiškoduoti įrašomo turinio. Tai atšaukia bendruosius visų laikmačių nustatymus. Jei įjungta, įrašai saugomi šifruoti ir vėliau turi būti iškoduojami (tai kartais vadimama iškodavimu atsijungus). Numatytasis: 'Ne'."
 
@@ -8637,15 +8644,15 @@ msgid "Parent directory"
 msgstr "Pagrindinis katalogas"
 
 #, fuzzy
-msgid "Parental Control"
-msgstr "Tėvų kontrolė"
-
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Tėvų kontrolės sąranka"
 
 msgid "Parental Guidance Recommended"
 msgstr "Rekomenduota tėvų priežiūra"
+
+#, fuzzy
+msgid "Parental control"
+msgstr "Tėvų kontrolė"
 
 msgid "Parental control services editor"
 msgstr "Redaguoti tėvų kontrolės kanalus"
@@ -8978,8 +8985,15 @@ msgstr "Sukonfigūruokite Q imtuvą"
 msgid "Please set up tuner R"
 msgstr "Sukonfigūruokite R imtuvą"
 
-msgid "Please set your time zone"
+#, fuzzy
+msgid "Please set your time options"
 msgstr "Nustatykite savo laiko juostą"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Nustatykite šias pagrindines konfigūracijas!"
@@ -10127,6 +10141,13 @@ msgstr "SABnzbd"
 
 msgid "SABnzbd setup"
 msgstr "SABnzbd nustatymas"
+
+msgid "SATPI"
+msgstr ""
+
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Samba valdymas"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC optimizuotas paieškos diapazonas"
@@ -12119,6 +12140,10 @@ msgstr "Nebenaudoti paleisties kanalu"
 msgid "Stopped"
 msgstr "Sustabdyta"
 
+#, fuzzy
+msgid "Stop|Disable Autostart"
+msgstr "Išjungti animacijas"
+
 msgid "Storage"
 msgstr ""
 
@@ -12569,10 +12594,6 @@ msgstr "DVD standartas nesupranta H.264 (HDTV) vaizdo srauto. Todėl vietoje to 
 
 msgid "The MovieCut plugin is not installed."
 msgstr "MovieCut priedas neįdiegtas."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "Jūsų įrašyti PIN kodai yra skirtingi."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN kodas sėkmingai pakeistas."
@@ -13091,6 +13112,10 @@ msgstr "Laikas"
 msgid "Time Setup"
 msgstr "ZeroTier sąranka"
 
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Temos pasirinkimo veiksmai"
+
 msgid "Time for next LCD scrolling"
 msgstr "Laikas kito LCD slinkimui"
 
@@ -13606,10 +13631,6 @@ msgstr "Atjungti"
 msgid "Unsupported"
 msgstr "Nepalaikoma"
 
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "iki budėjimo/paleidimo iš naujo"
-
 msgid "Unzipping Image"
 msgstr "Išarchyvuojamas atvaizdas"
 
@@ -13703,6 +13724,10 @@ msgstr "Naudokite EIT EPG informaciją, jei ji yra prieinama."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Naudokite Freesat EPG informaciją, jei ji yra prieinama."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Geografinė vieta"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "Naudoti HDMI išankstinę korekciją"
 
@@ -13747,6 +13772,9 @@ msgstr "Naudokite greitos paieškos kanalų numeravimą"
 
 msgid "Use frequency or channel"
 msgstr "Naudokite dažnį arba kanalą"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Naudokite atskirus nustatymus kiekvienam katalogui"
@@ -15139,6 +15167,10 @@ msgstr "juoda"
 msgid "black & white"
 msgstr "juodai balta"
 
+#, fuzzy
+msgid "blacklist"
+msgstr "juodasis sąrašas"
+
 msgid "blue"
 msgstr "mėlyna"
 
@@ -16167,6 +16199,10 @@ msgstr "nepublikuotas"
 
 msgid "untestable"
 msgstr "netikrintinas"
+
+#, fuzzy
+msgid "until standby/restart"
+msgstr "iki budėjimo/paleidimo iš naujo"
 
 msgid "use best / controlled by HDMI"
 msgstr "naudoti geriausią / valdoma HDMI"

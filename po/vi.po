@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: 2019-11-19 08:58+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -2590,7 +2590,7 @@ msgstr "Đan mạch"
 
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Thông tin về phần mềm"
+msgstr "Thông tin"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2627,10 +2627,6 @@ msgstr "Màn hình đen"
 
 msgid "Black screen till locked"
 msgstr "Màn hình đen cho đến khi bị khóa"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "danh sách đen"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5199,6 +5195,10 @@ msgid "Enable 5V for active antenna"
 msgstr "Kích hoạt 5V cho ăng ten hoạt động"
 
 #, fuzzy
+msgid "Enable Autostart"
+msgstr "Cho phép tự động quét nhanh"
+
+#, fuzzy
 msgid "Enable BT audio"
 msgstr "Đã bật"
 
@@ -6281,11 +6281,21 @@ msgstr "Vị trí"
 
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Thông tin về phần mềm"
+msgstr "Thông tin"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Thông tin về phần mềm"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Bộ chỉnh không có sẵn."
 
 msgid "Georgia"
 msgstr "Georgia"
@@ -7295,9 +7305,8 @@ msgstr "Nước Kenya"
 msgid "Kernel file: "
 msgstr "Phiên bản hạt nhân: "
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Phiên bản hạt nhân: "
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Phiên bản hạt nhân: "
@@ -8409,10 +8418,6 @@ msgstr "Số dách mạng"
 msgid "Network:"
 msgstr "Mạng:"
 
-#, fuzzy
-msgid "Never"
-msgstr "không bao giờ"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Không bao giờ giải mã nội dung trong khi ghi. Điều này ghi đè cài đặt hẹn giờ riêng trên toàn cầu. Nếu được bật, các bản ghi được lưu trữ trong bản trình bày được mã hóa và phải được giải mã sau đó (đôi khi được gọi là giải mã ngoại tuyến). Mặc định: tắt."
 
@@ -8780,7 +8785,7 @@ msgstr "Thiết lập OSD 3D"
 
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Thiết lập"
+msgstr "Thiết lập OSD 3D"
 
 msgid "OSD name request"
 msgstr "Yêu cầu tên OSD"
@@ -8882,7 +8887,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Mở chọn địa điểm"
+msgstr "Thông tin"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9084,15 +9089,14 @@ msgid "Parent directory"
 msgstr "Thư mục phụ huynh"
 
 #, fuzzy
-msgid "Parental Control"
-msgstr "Kiểm soát của cha mẹ"
-
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Thiết lập kiểm soát của cha mẹ"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+msgid "Parental control"
+msgstr "Kiểm soát của cha mẹ"
 
 msgid "Parental control services editor"
 msgstr "Biên tập dịch vụ kiểm soát của phụ huynh"
@@ -9443,8 +9447,15 @@ msgstr "Vui lòng thiết lập bộ chỉnh tần số Q"
 msgid "Please set up tuner R"
 msgstr "Vui lòng thiết lập bộ chỉnh tần số R"
 
-msgid "Please set your time zone"
+#, fuzzy
+msgid "Please set your time options"
 msgstr "Vui lòng đặt múi giờ của bạn"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Vui lòng thiết lập các cấu hình cơ bản sau đây!"
@@ -10639,6 +10650,13 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Thiết lập số dách"
+
+msgid "SATPI"
+msgstr ""
+
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Thiết lập"
 
 msgid "SCPC optimized search range"
 msgstr "Phạm vi tìm kiếm được tối ưu hóa SCPC"
@@ -12707,6 +12725,9 @@ msgstr "Ngừng sử dụng làm dịch vụ khởi động"
 msgid "Stopped"
 msgstr "Ngừng"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -13176,10 +13197,6 @@ msgstr "Chuẩn DVD không hỗ trợ luồng video H.264 (HDTV). Bạn có mu�
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Plugin này chưa được cài đặt."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "Mã PIN bạn đã nhập là khác nhau."
 
 msgid "The PIN code has been changed successfully."
 msgstr "Mã PIN đã được thay đổi thành công."
@@ -13710,7 +13727,11 @@ msgstr "Thời gian"
 
 #, fuzzy
 msgid "Time Setup"
-msgstr "Thiết lập ghi âm"
+msgstr "Chỉnh sửa hẹn giờ"
+
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Lựa chọn hẹn giờ"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -14245,10 +14266,6 @@ msgstr "Vô song"
 msgid "Unsupported"
 msgstr "Không được hỗ trợ"
 
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "cho đến khi chờ / khởi động lại"
-
 msgid "Unzipping Image"
 msgstr "Giải nén hình ảnh"
 
@@ -14343,6 +14360,10 @@ msgstr "Sử dụng thông tin EIT EPG khi có sẵn."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Sử dụng thông tin FreeSat EPG khi có sẵn."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Địa điểm chiếu phim"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "Sử dụng ưu tiên HDMI"
 
@@ -14387,6 +14408,9 @@ msgstr "Sử dụng đánh số kênh fastscan"
 
 msgid "Use frequency or channel"
 msgstr "Sử dụng tần số hoặc kênh"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Sử dụng các cài đặt riêng cho từng thư mục"
@@ -15815,6 +15839,9 @@ msgstr "đen"
 msgid "black & white"
 msgstr "đen trắng"
 
+msgid "blacklist"
+msgstr "danh sách đen"
+
 msgid "blue"
 msgstr "màu xanh da trời"
 
@@ -16902,6 +16929,9 @@ msgstr "chưa được công bố"
 
 msgid "untestable"
 msgstr "không thể kiểm chứng"
+
+msgid "until standby/restart"
+msgstr "cho đến khi chờ / khởi động lại"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -2796,9 +2796,10 @@ msgstr ""
 msgid "Benchmark"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Information"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2837,11 +2838,6 @@ msgstr "Svart skärm"
 
 msgid "Black screen till locked"
 msgstr "Svart skärm tills låsning"
-
-#
-#, fuzzy
-msgid "Blacklist"
-msgstr "svartlista"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5699,6 +5695,10 @@ msgstr "Aktivera 'neutrino' zapp kontroll"
 msgid "Enable 5V for active antenna"
 msgstr "Aktivera 5V för aktiv antenn"
 
+#, fuzzy
+msgid "Enable Autostart"
+msgstr "Aktivera auto snabbskanning"
+
 #
 #, fuzzy
 msgid "Enable BT audio"
@@ -6887,13 +6887,24 @@ msgstr "Genre"
 msgid "Geolocation"
 msgstr "Sökväg"
 
+#
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Information"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Information om mjukvaruhanterare"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Tuner inte tillgänglig."
 
 msgid "Georgia"
 msgstr ""
@@ -7993,9 +8004,8 @@ msgstr ""
 msgid "Kernel file: "
 msgstr "Kernel Version : "
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Kernel Version : "
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Kernel Version : "
@@ -9266,11 +9276,6 @@ msgstr "Nätverksguide"
 msgid "Network:"
 msgstr "Nätverk :"
 
-#
-#, fuzzy
-msgid "Never"
-msgstr "aldrig"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Avkoda aldrig innehållet vid inspelning. Detta åsidosätter de individuella timerinställningarna globalt. Vid aktiverad sparas inspelningar krypterat och måste dekrypteras efteråt (ibland kallat offline avkodning). Standard : av."
 
@@ -9685,10 +9690,9 @@ msgstr "SNR"
 msgid "OSD 3D setup"
 msgstr "OSD 3D inställning"
 
-#
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Inställningar"
+msgstr "OSD 3D inställning"
 
 msgid "OSD name request"
 msgstr "OSD namnförfrågan"
@@ -9796,9 +9800,10 @@ msgstr ""
 msgid "Open Vision"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Öppna sökvägsplats"
+msgstr "Information"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -10014,16 +10019,15 @@ msgstr "Föräldrabibliotek"
 
 #
 #, fuzzy
-msgid "Parental Control"
-msgstr "Föräldrakontroll"
-
-#
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Inställningar för föräldrakontroll"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+#
+msgid "Parental control"
+msgstr "Föräldrakontroll"
 
 #
 msgid "Parental control services editor"
@@ -10435,8 +10439,14 @@ msgstr "Vänligen installera tuner A"
 
 #
 #, fuzzy
-msgid "Please set your time zone"
+msgid "Please set your time options"
 msgstr "Vänligen installera tuner A"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr ""
@@ -11803,6 +11813,14 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Videoinställning"
+
+msgid "SATPI"
+msgstr ""
+
+#
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Inställningar"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC optimerat sökområde"
@@ -14117,6 +14135,9 @@ msgstr "Sluta använd som startkanal"
 msgid "Stopped"
 msgstr "Stoppad"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -14635,10 +14656,6 @@ msgstr "DVD standarden stödjer inte H.264 (HDTV) videoströmmar. Vill du skapa 
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Detta plugin är inte installerat."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "PIN-koden matchar inte."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN-koden har ändrats!"
@@ -15230,9 +15247,15 @@ msgstr "stöds ej"
 msgid "Time"
 msgstr "Tid"
 
+#
 #, fuzzy
 msgid "Time Setup"
-msgstr "Inspellningsinställningar"
+msgstr "Ändra Timer"
+
+#
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Timerval"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -15845,11 +15868,6 @@ msgstr "Stöds ej"
 
 #
 #, fuzzy
-msgid "Until standby/restart"
-msgstr "tills viloläge / omstart"
-
-#
-#, fuzzy
 msgid "Unzipping Image"
 msgstr "Laddar ner"
 
@@ -15955,6 +15973,11 @@ msgstr "Använd EIT EPG information när den är tillgänglig."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Använd FreeSat EPG information när den är tillgänglig."
 
+#
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Filmplats"
+
 msgid "Use HDMI pre-emphasis"
 msgstr ""
 
@@ -16000,6 +16023,9 @@ msgstr "Använd snabbskanningens kanalnumrering"
 
 msgid "Use frequency or channel"
 msgstr "Använd frekvens eller kanal"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Använd individuella inställningar för varje katalog"
@@ -17566,6 +17592,10 @@ msgid "black & white"
 msgstr "svart & vit"
 
 #
+msgid "blacklist"
+msgstr "svartlista"
+
+#
 msgid "blue"
 msgstr "blå"
 
@@ -18793,6 +18823,10 @@ msgstr "opublicerad"
 
 msgid "untestable"
 msgstr "omöjlig att testa"
+
+#
+msgid "until standby/restart"
+msgstr "tills viloläge / omstart"
 
 msgid "use best / controlled by HDMI"
 msgstr ""

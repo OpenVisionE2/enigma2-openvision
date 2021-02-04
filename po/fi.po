@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: 2020-05-16 18:41+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -67,10 +67,8 @@ msgstr ""
 msgid " "
 msgstr ""
 
-#
-#, fuzzy
 msgid "  Default: 0000 (disabled)"
-msgstr " (ei käytössä)"
+msgstr ""
 
 msgid "  REC  "
 msgstr ""
@@ -2765,9 +2763,10 @@ msgstr "Belize"
 msgid "Benchmark"
 msgstr "Tanska"
 
+#
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Ohjelmiston hallinnan tiedot"
+msgstr "Tietoja"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2806,11 +2805,6 @@ msgstr "Musta ruutu"
 
 msgid "Black screen till locked"
 msgstr "Musta ruutu kunnes lukittu"
-
-#
-#, fuzzy
-msgid "Blacklist"
-msgstr "Kielletyt"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5619,6 +5613,10 @@ msgstr "Käytä 'neutrino' -tyylistä kanavanvaihtoa"
 msgid "Enable 5V for active antenna"
 msgstr "Syötä 5 voltin käyttöjännite aktiiviantennille"
 
+#, fuzzy
+msgid "Enable Autostart"
+msgstr "Ota käyttöön autom. pikahaku"
+
 #
 #, fuzzy
 msgid "Enable BT audio"
@@ -6421,10 +6419,8 @@ msgstr "Tuuletin %d PWM"
 msgid "Fan %d voltage"
 msgstr "Tuulettimen %d jännite"
 
-#
-#, fuzzy
 msgid "Fan Speed Setup"
-msgstr "Lapsilukko"
+msgstr ""
 
 msgid "Fan operation"
 msgstr ""
@@ -6780,13 +6776,24 @@ msgstr "Laji"
 msgid "Geolocation"
 msgstr "Hakemisto"
 
+#
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Ohjelmiston hallinnan tiedot"
+msgstr "Tietoja"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Ohjelmiston hallinnan tiedot"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Viritin ei saatavilla"
 
 msgid "Georgia"
 msgstr "Georgia"
@@ -7016,7 +7023,7 @@ msgstr "HDMI HDR Tyyppi"
 
 #, fuzzy
 msgid "HDMI Recording Setup"
-msgstr "Pysäytä tallennus"
+msgstr "Tallennuksen tyyppi"
 
 msgid "HDMI-CEC Source Active"
 msgstr ""
@@ -7884,9 +7891,8 @@ msgstr "Kenia"
 msgid "Kernel file: "
 msgstr "Kernelin versio:"
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Kernelin versio:"
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Kernelin versio:"
@@ -9158,11 +9164,6 @@ msgstr "Ohjattu verkkoasennus"
 msgid "Network:"
 msgstr "Sovitin:"
 
-#
-#, fuzzy
-msgid "Never"
-msgstr "Ei koskaan"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Älä pura salausta tallennettaessa. Tallennukset tallentuvat suojatussa tilassa ja ne pitää purkaa myöhemmin (offline decoding). Jos päällä, tämä asetus ohittaa aina ajastusten erilliset asetukset."
 
@@ -9582,10 +9583,9 @@ msgstr "SDR"
 msgid "OSD 3D setup"
 msgstr "3D kuva-asetukset"
 
-#
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Asetukset"
+msgstr "3D kuva-asetukset"
 
 msgid "OSD name request"
 msgstr "Kuvaruutunäytön nimipyyntö"
@@ -9690,9 +9690,10 @@ msgstr ""
 msgid "Open Vision"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Pythonin versio: "
+msgstr "Tietoja"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9901,16 +9902,15 @@ msgstr "Päähakemisto"
 
 #
 #, fuzzy
-msgid "Parental Control"
-msgstr "Lapsilukko"
-
-#
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Lapsilukon asetukset"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+#
+msgid "Parental control"
+msgstr "Lapsilukko"
 
 #
 msgid "Parental control services editor"
@@ -10322,8 +10322,14 @@ msgid "Please set up tuner R"
 msgstr "Määritä viritin-R"
 
 #, fuzzy
-msgid "Please set your time zone"
+msgid "Please set your time options"
 msgstr "Määritä viritin-A"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr ""
@@ -11700,6 +11706,14 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Avustettu asennus"
+
+msgid "SATPI"
+msgstr ""
+
+#
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Asetukset"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC optimoitu hakualue"
@@ -14013,6 +14027,9 @@ msgstr "Lopeta käyttämästä käynnistyskanavana"
 msgid "Stopped"
 msgstr "Pysäytetty"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -14531,10 +14548,6 @@ msgstr "DVD standardi ei tue H.264 (HDTV) videota. Haluatko luoda erikoisformaat
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Tätä lisäosaa ei ole asennettu."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "Syöttämäsi PIN-koodit olivat erilaiset."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN-koodin vaihto onnistui."
@@ -15088,9 +15101,15 @@ msgstr "Ei tuettu"
 msgid "Time"
 msgstr "Aika-asetukset"
 
+#
 #, fuzzy
 msgid "Time Setup"
-msgstr "Pikanäppäinasetukset"
+msgstr "Ajastuksen muokkaus"
+
+#
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Ajastinvalinta"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -15688,11 +15707,6 @@ msgid "Unsupported"
 msgstr "Ei tuettu"
 
 #
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "valmiustilaan/uudelleenkäynnistykseen asti"
-
-#
 msgid "Unzipping Image"
 msgstr "Puretaan ohjelmistokuvaa"
 
@@ -15795,6 +15809,10 @@ msgstr "Käytä ohjelmaoppaan EIT-tietoja, jos saatavilla."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Käytä Freesat-ohjelmaoppaan tietoja, jos saatavilla."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Tallennushakemisto"
+
 msgid "Use HDMI pre-emphasis"
 msgstr ""
 
@@ -15841,6 +15859,9 @@ msgstr "Käytä pikahaun kanavanumeroita"
 
 msgid "Use frequency or channel"
 msgstr "Käytä taajuutta tai kanavaa"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Käytä joka hakemistolle yksilöllisiä asetuksia"
@@ -17378,6 +17399,10 @@ msgid "black & white"
 msgstr "Mustavalkoinen"
 
 #
+msgid "blacklist"
+msgstr "Kielletyt"
+
+#
 msgid "blue"
 msgstr "Sininen"
 
@@ -18601,6 +18626,10 @@ msgstr "julkaisematon"
 
 msgid "untestable"
 msgstr ""
+
+#
+msgid "until standby/restart"
+msgstr "valmiustilaan/uudelleenkäynnistykseen asti"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Budiarno Pedode\n"
 "Language-Team: \n"
@@ -2605,7 +2605,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Info pengelola perangkat lunak"
+msgstr "Informasi"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2642,10 +2642,6 @@ msgstr "Layar hitam"
 
 msgid "Black screen till locked"
 msgstr "Layar hitam sampai terkunci"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "daftar hitam"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5243,6 +5239,10 @@ msgid "Enable 5V for active antenna"
 msgstr "Aktifkan 5V pada antena aktif"
 
 #, fuzzy
+msgid "Enable Autostart"
+msgstr "Aktifkan pelacakan cepat otomatis"
+
+#, fuzzy
 msgid "Enable BT audio"
 msgstr "Diaktifkan"
 
@@ -6345,11 +6345,21 @@ msgstr "Lokasi"
 
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Info pengelola perangkat lunak"
+msgstr "Informasi"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Info pengelola perangkat lunak"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Penala tidak tersedia."
 
 msgid "Georgia"
 msgstr ""
@@ -7376,9 +7386,8 @@ msgstr ""
 msgid "Kernel file: "
 msgstr "Versi kernel: "
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Versi kernel: "
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Versi kernel: "
@@ -8506,10 +8515,6 @@ msgstr "Wizard jaringan"
 msgid "Network:"
 msgstr "Jaringan:"
 
-#, fuzzy
-msgid "Never"
-msgstr "takpernah"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Jangan di-dekrip kontennya saat merekam. Hal ini akan mengabaikan pengaturan pewaktu masing-masing secara global. Jika diaktifkan, hasil rekaman disimpan dalam bentuk di-kripsi dan musti di-dekripsi setelah itu (kadang disebut dekoding offline). Bawaan: tidak."
 
@@ -8888,7 +8893,7 @@ msgstr "Atur 3D OSD"
 
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Pengaturan"
+msgstr "Atur 3D OSD"
 
 msgid "OSD name request"
 msgstr "meminta nama OSD"
@@ -8990,7 +8995,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Buka lokasi yg dipilih"
+msgstr "Informasi"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9193,15 +9198,14 @@ msgid "Parent directory"
 msgstr "Direktori induk"
 
 #, fuzzy
-msgid "Parental Control"
-msgstr "Pengawasan Orangtua"
-
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Atur pengawasan orangtua"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+msgid "Parental control"
+msgstr "Pengawasan Orangtua"
 
 msgid "Parental control services editor"
 msgstr "Perobah kanal dalam pengawasan orangtua"
@@ -9558,8 +9562,14 @@ msgid "Please set up tuner R"
 msgstr "Mohon atur penala R"
 
 #, fuzzy
-msgid "Please set your time zone"
+msgid "Please set your time options"
 msgstr "Mohon atur penala A"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Mohon atur setelan dasar berikut"
@@ -10767,6 +10777,13 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Atur video"
+
+msgid "SATPI"
+msgstr ""
+
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Pengaturan"
 
 msgid "SCPC optimized search range"
 msgstr "Rentang pencarian dioptimalkan SCPC"
@@ -12865,6 +12882,9 @@ msgstr "Berhenti gunakan sbg layanan mulai"
 msgid "Stopped"
 msgstr "Terhenti"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -13342,10 +13362,6 @@ msgstr "Standar DVB tidak mendukung stream video H.264 (HDTV). Anda ingin membua
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Plugin ini tidak terpasang."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "Kode PIN yg anda masukkan berbeda."
 
 msgid "The PIN code has been changed successfully."
 msgstr "Kode PIN telah berhasil diganti."
@@ -13880,7 +13896,11 @@ msgstr "Waktu"
 
 #, fuzzy
 msgid "Time Setup"
-msgstr "Pengaturan Rekam"
+msgstr "Ubah pewaktu"
+
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Pilihan pewaktu"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -14427,10 +14447,6 @@ msgid "Unsupported"
 msgstr "Takdidukung"
 
 #, fuzzy
-msgid "Until standby/restart"
-msgstr "sampai standby/mulai ulang"
-
-#, fuzzy
 msgid "Unzipping Image"
 msgstr "Meng-Unzip Image"
 
@@ -14527,6 +14543,10 @@ msgstr "Gunakan info EPG EIT ketika tersedia."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Gunakan info EPG FreeSat ketika tersedia."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Lokasi film"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "Gunakan pra-penekanan HDMI"
 
@@ -14571,6 +14591,9 @@ msgstr "Gunakan nomor kanal lacakcepat"
 
 msgid "Use frequency or channel"
 msgstr "Gunakan frekuensi atau kanal"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Gunakan setelan individu untuk setiap direktori"
@@ -16014,6 +16037,9 @@ msgstr "hitam"
 msgid "black & white"
 msgstr "hitam & putih"
 
+msgid "blacklist"
+msgstr "daftar hitam"
+
 msgid "blue"
 msgstr "biru"
 
@@ -17105,6 +17131,9 @@ msgstr "takdipulikasikan"
 
 msgid "untestable"
 msgstr "takbisa dites"
+
+msgid "until standby/restart"
+msgstr "sampai standby/mulai ulang"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"

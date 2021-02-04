@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 344784320@qq.com\n"
 "Language-Team: Openpli Team\n"
@@ -2448,7 +2448,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "软件管理"
+msgstr "信息"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2485,10 +2485,6 @@ msgstr "黑屏"
 
 msgid "Black screen till locked"
 msgstr "锁定前黑屏"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "黑名单"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5035,6 +5031,10 @@ msgid "Enable 5V for active antenna"
 msgstr "为有源天线启用5V供电"
 
 #, fuzzy
+msgid "Enable Autostart"
+msgstr "启用快速扫描"
+
+#, fuzzy
 msgid "Enable BT audio"
 msgstr "启用"
 
@@ -6103,11 +6103,21 @@ msgstr "位置"
 
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "软件管理"
+msgstr "信息"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "软件管理"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "调谐器不可用"
 
 msgid "Georgia"
 msgstr ""
@@ -7112,9 +7122,8 @@ msgstr ""
 msgid "Kernel file: "
 msgstr "内核版本: "
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "内核版本: "
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "内核版本: "
@@ -8209,10 +8218,6 @@ msgstr "网络向导"
 msgid "Network:"
 msgstr "网络:"
 
-#, fuzzy
-msgid "Never"
-msgstr "从不"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "当记录时从不解密内容,这将会覆盖全部范围内的定时器设置.如果启用,录制的节目将处于加扰状态，且需要事后解码。(有时称离线解码). 此项设置默认为：关闭"
 
@@ -8578,7 +8583,7 @@ msgstr "OSD 3D 设置"
 
 #, fuzzy
 msgid "OSD Setup"
-msgstr "设置"
+msgstr "OSD 3D 设置"
 
 msgid "OSD name request"
 msgstr "OSD名称请求"
@@ -8680,7 +8685,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "打开位置选择"
+msgstr "信息"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -8882,15 +8887,14 @@ msgid "Parent directory"
 msgstr "一级目录"
 
 #, fuzzy
-msgid "Parental Control"
-msgstr "家长控制"
-
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "家长控制设置"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+msgid "Parental control"
+msgstr "家长控制"
 
 msgid "Parental control services editor"
 msgstr "家长控制服务编辑"
@@ -9239,8 +9243,15 @@ msgstr "请设置调谐器 Q"
 msgid "Please set up tuner R"
 msgstr "请设置调谐器 R"
 
-msgid "Please set your time zone"
+#, fuzzy
+msgid "Please set your time options"
 msgstr "请设置您的时区"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "请设置以下基本配置！"
@@ -10435,6 +10446,13 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "向导安装程序"
+
+msgid "SATPI"
+msgstr ""
+
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "设置"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC优化搜索范围"
@@ -12490,6 +12508,9 @@ msgstr "停止用作启动频道"
 msgid "Stopped"
 msgstr "停止"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -12958,10 +12979,6 @@ msgstr "DVD 标准不支持 H。264 (HDTV) 的视频流。你想创建一个机�
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "此插件未安装。"
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "密码输入不相同。"
 
 msgid "The PIN code has been changed successfully."
 msgstr "服务密码 已被成功修改。"
@@ -13493,7 +13510,11 @@ msgstr "时间"
 
 #, fuzzy
 msgid "Time Setup"
-msgstr "录制设置"
+msgstr "定时器编辑"
+
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "定时器选择"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -14024,10 +14045,6 @@ msgstr "卸载"
 msgid "Unsupported"
 msgstr "不支持"
 
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "直到待机/重启"
-
 msgid "Unzipping Image"
 msgstr "解压固件中"
 
@@ -14121,6 +14138,10 @@ msgstr "当EIT EPG信息可用是启用此EPG。"
 msgid "Use FreeSat EPG information when it is available."
 msgstr "当免费卫星EPG信息可用时启用此EPG。"
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "影片位置"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "使用 HDMI 预加重"
 
@@ -14165,6 +14186,9 @@ msgstr "使用快速扫描频道编号"
 
 msgid "Use frequency or channel"
 msgstr "使用频率或频道"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "为每一个目录使用单独设置"
@@ -15590,6 +15614,9 @@ msgstr "黑色"
 msgid "black & white"
 msgstr "黑&白"
 
+msgid "blacklist"
+msgstr "黑名单"
+
 msgid "blue"
 msgstr "蓝色"
 
@@ -16674,6 +16701,9 @@ msgstr "未发表"
 
 msgid "untestable"
 msgstr "不可以测试"
+
+msgid "until standby/restart"
+msgstr "直到待机/重启"
 
 msgid "use best / controlled by HDMI"
 msgstr ""

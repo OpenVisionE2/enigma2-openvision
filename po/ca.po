@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: 2020-11-30 18:56+0100\n"
 "Last-Translator: Oriol Pellicer <oriol@elsud.org>\n"
 "Language-Team: angelodos angelo2807@hotmail.com\n"
@@ -2822,9 +2822,10 @@ msgstr "Belize"
 msgid "Benchmark"
 msgstr "Dinamarca"
 
+#
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Informació del gestor de programari"
+msgstr "Informació"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2863,11 +2864,6 @@ msgstr "Pantalla negra"
 
 msgid "Black screen till locked"
 msgstr "Pantalla negra bloquejada"
-
-#
-#, fuzzy
-msgid "Blacklist"
-msgstr "llista negra"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5686,6 +5682,10 @@ msgstr "Habilita el control de zap estil “neutrino”"
 msgid "Enable 5V for active antenna"
 msgstr "Activar 5V per a antena activa"
 
+#, fuzzy
+msgid "Enable Autostart"
+msgstr "Activa l’exploració ràpida automàtica"
+
 #
 #, fuzzy
 msgid "Enable BT audio"
@@ -6860,13 +6860,24 @@ msgstr "Gènere"
 msgid "Geolocation"
 msgstr "Localitzar"
 
+#
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Informació del gestor de programari"
+msgstr "Informació"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Informació del gestor de programari"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Sintonitzador no disponible."
 
 msgid "Georgia"
 msgstr "Geòrgia"
@@ -7953,10 +7964,8 @@ msgstr "Kenya"
 msgid "Kernel file: "
 msgstr "Nova versió"
 
-#
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Nova versió"
+msgstr ""
 
 #
 msgid "Kernel version: "
@@ -9204,11 +9213,6 @@ msgstr "Assistent de xarxa"
 msgid "Network:"
 msgstr "Xarxa:"
 
-#
-#, fuzzy
-msgid "Never"
-msgstr "mai"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "No desxifreu el contingut mentre enregistreu. Això substitueix les configuracions del temporitzador individual a nivell mundial. Si està habilitat, les gravacions s’emmagatzemen en presentació encriptada i s’han de desxifrar després (de vegades es denomina descodificació fora de línia). Per defecte: desactivat."
 
@@ -9613,10 +9617,9 @@ msgstr "SDR"
 msgid "OSD 3D setup"
 msgstr "OSD configuració 3D"
 
-#
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Configuració"
+msgstr "OSD configuració 3D"
 
 msgid "OSD name request"
 msgstr "Sol·licitud de nom OSD"
@@ -9723,9 +9726,10 @@ msgstr "Seleccioneu només “sí” si utilitzeu un interruptor multiswitch que
 msgid "Open Vision"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Obre la ubicació seleccionada"
+msgstr "Informació"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9939,16 +9943,15 @@ msgstr "Directori /var"
 
 #
 #, fuzzy
-msgid "Parental Control"
-msgstr "Control parental"
-
-#
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Configuració control parental"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+#
+msgid "Parental control"
+msgstr "Control parental"
 
 #
 msgid "Parental control services editor"
@@ -10354,8 +10357,15 @@ msgid "Please set up tuner R"
 msgstr "Configura el sintonitzador R"
 
 #
-msgid "Please set your time zone"
+#, fuzzy
+msgid "Please set your time options"
 msgstr "Definiu el vostre fus horari"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Configureu les configuracions bàsiques següents."
@@ -11710,6 +11720,14 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Configuració de l’assistent"
+
+msgid "SATPI"
+msgstr ""
+
+#
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Configuració"
 
 msgid "SCPC optimized search range"
 msgstr "Interval de cerca optimitzat per SCPC"
@@ -13974,6 +13992,9 @@ msgstr "Deixeu d’utilitzar com a servei d’inici"
 msgid "Stopped"
 msgstr "Aturat"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -14483,10 +14504,6 @@ msgstr "L’estàndard de DVD no admet els fluxos de vídeo H.264 (HDTV). Voleu 
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Aquest complement no està instal·lat."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "Els codis PIN que heu introduït són diferents."
 
 msgid "The PIN code has been changed successfully."
 msgstr "El codi PIN s’ha canviat correctament"
@@ -15041,9 +15058,15 @@ msgstr "no suport"
 msgid "Time"
 msgstr "Hora"
 
+#
 #, fuzzy
 msgid "Time Setup"
-msgstr "Configuració de l’enregistrament"
+msgstr "Edició del temporitzador"
+
+#
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Selecció de gravació"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -15640,11 +15663,6 @@ msgid "Unsupported"
 msgstr "No és compatible"
 
 #
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "fins que s’iniciï el mode d’espera / reinici"
-
-#
 msgid "Unzipping Image"
 msgstr "Com descomprimir la imatge"
 
@@ -15749,6 +15767,11 @@ msgstr "Utilitzeu la informació d’EIT EPG quan estigui disponible."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Utilitzeu la informació EPS de FreeSat quan estigui disponible."
 
+#
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Ubicació de la pel·lícula"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "Utilitzeu l’èmfasi previ de HDMI"
 
@@ -15795,6 +15818,9 @@ msgstr "Utilitzeu la numeració de canals de fastscan"
 
 msgid "Use frequency or channel"
 msgstr "Utilitzeu freqüència o canal"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Utilitzeu la configuració individual per a cada directori"
@@ -17331,6 +17357,10 @@ msgid "black & white"
 msgstr "negre & blanc"
 
 #
+msgid "blacklist"
+msgstr "llista negra"
+
+#
 msgid "blue"
 msgstr "blau"
 
@@ -18551,6 +18581,10 @@ msgstr "inèdit"
 
 msgid "untestable"
 msgstr "indestable"
+
+#
+msgid "until standby/restart"
+msgstr "fins que s’iniciï el mode d’espera / reinici"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: MCelliotG <mcelliotg@gmail.com>\n"
@@ -2584,7 +2584,7 @@ msgstr "Δανία"
 
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Πληροφορίες διαχείρισης λογισμικού"
+msgstr "Πληροφορίες"
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2621,10 +2621,6 @@ msgstr "Μαύρη οθόνη"
 
 msgid "Black screen till locked"
 msgstr "Μαύρη οθόνη ως το κλείδωμα"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "μαύρη λίστα"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5180,6 +5176,10 @@ msgid "Enable 5V for active antenna"
 msgstr "Ενεργοποίηση των 5V για την ενεργή κεραία"
 
 #, fuzzy
+msgid "Enable Autostart"
+msgstr "Ενεργοποίηση της αυτόματης γρήγορης ανίχνευσης"
+
+#, fuzzy
 msgid "Enable BT audio"
 msgstr "Ενεργό"
 
@@ -6254,11 +6254,21 @@ msgstr "Τοποθεσία"
 
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Πληροφορίες διαχείρισης λογισμικού"
+msgstr "Πληροφορίες"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Πληροφορίες διαχείρισης λογισμικού"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Μη διαθέσιμο tuner."
 
 msgid "Georgia"
 msgstr "Γεωργία"
@@ -7266,9 +7276,8 @@ msgstr "Κένυα"
 msgid "Kernel file: "
 msgstr "Έκδοση kernel: "
 
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Έκδοση kernel: "
+msgstr ""
 
 msgid "Kernel version: "
 msgstr "Έκδοση kernel: "
@@ -8366,10 +8375,6 @@ msgstr "Οδηγός δικτύου"
 msgid "Network:"
 msgstr "Δίκτυο:"
 
-#, fuzzy
-msgid "Never"
-msgstr "ποτέ"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Να μη γίνεται ποτέ αποκωδικοποίηση του περιεχομένου κατά την εγγραφή. Αυτό παρακάμπτει όλες τις ιδιαίτερες ρυθμίσεις χρονοδιακοπτών γενικά. Όταν είναι ενεργό, οι εγγραφές αποθηκεύονται ως κωδικοποιημένες και πρέπει να αποκωδικοποιηθούν μετέπειτα (ενίοτε ονομάζεται κωδικοποίηση εκτός σύνδεσης). Προεπιλογή: ανενεργό."
 
@@ -8737,7 +8742,7 @@ msgstr "Ρυθμίσεις OSD 3D"
 
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Ρυθμίσεις"
+msgstr "Ρυθμίσεις OSD 3D"
 
 msgid "OSD name request"
 msgstr "Απαίτηση ονόματος OSD"
@@ -8839,7 +8844,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Άνοιγμα επιλεγμένης θέσης"
+msgstr "Πληροφορίες"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9041,15 +9046,14 @@ msgid "Parent directory"
 msgstr "Γονικός φάκελος"
 
 #, fuzzy
-msgid "Parental Control"
-msgstr "Γονικός έλεγχος"
-
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Παραμετροποίηση γονικού ελέγχου"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+msgid "Parental control"
+msgstr "Γονικός έλεγχος"
 
 msgid "Parental control services editor"
 msgstr "Επεξεργασία υπηρεσιών γονικού έλεγχου"
@@ -9399,8 +9403,15 @@ msgstr "Ρυθμίστε το tuner Q"
 msgid "Please set up tuner R"
 msgstr "Ρυθμίστε το tuner R"
 
-msgid "Please set your time zone"
+#, fuzzy
+msgid "Please set your time options"
 msgstr "Ρυθμίστε τη ζώνη ώρας"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Ρυθμίστε τις ακόλουθες βασικές παραμετροποιήσεις!"
@@ -10593,6 +10604,13 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Ρύθμιση οδηγού"
+
+msgid "SATPI"
+msgstr ""
+
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Ρυθμίσεις"
 
 msgid "SCPC optimized search range"
 msgstr "Βελτιστοποιημένο εύρος αναζήτησης για ένα κανάλι ανά φέρουσα (SCPC)"
@@ -12651,6 +12669,9 @@ msgstr "Τέλος χρήσης ως υπηρεσία εκκίνησης"
 msgid "Stopped"
 msgstr "Σταματημένο"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -13118,10 +13139,6 @@ msgstr "Το πρότυπο DVD δεν υποστηρίζει ροές βίντ�
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Αυτό το πρόσθετο δεν είναι εγκατεστημένο."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "Οι κωδικοί PIN που εισάγατε είναι διαφορετικοί."
 
 msgid "The PIN code has been changed successfully."
 msgstr "Ο κωδικός PIN άλλαξε με επιτυχία."
@@ -13651,7 +13668,11 @@ msgstr "Ώρα"
 
 #, fuzzy
 msgid "Time Setup"
-msgstr "Ρυθμίσεις εγγραφών"
+msgstr "Επεξεργασία χρονοδιακόπτη"
+
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Επιλογή χρονοδιακόπτη"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -14179,10 +14200,6 @@ msgstr "Αποπροσάρτηση"
 msgid "Unsupported"
 msgstr "Δεν υποστηρίζεται"
 
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "μέχρι την αναμονή/επανεκκίνηση"
-
 msgid "Unzipping Image"
 msgstr "Αποσυμπίεση Image"
 
@@ -14276,6 +14293,10 @@ msgstr "Χρήση πληροφοριών EIT EPG όταν είναι διαθέ
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Χρήση πληροφοριών FreeSat EPG όταν είναι διαθέσιμες."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Τοποθεσία ταινιών"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "Χρήση προέμφασης HDMI"
 
@@ -14320,6 +14341,9 @@ msgstr "Χρήση αριθμοδότησης γρήγορης ανίχνευσ�
 
 msgid "Use frequency or channel"
 msgstr "Χρήση συχνότητας ή καναλιού"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Χρήση ξεχωριστών ρυθμίσεων για κάθε φάκελο"
@@ -15744,6 +15768,9 @@ msgstr "μαύρο"
 msgid "black & white"
 msgstr "άσπρο & μαύρο"
 
+msgid "blacklist"
+msgstr "μαύρη λίστα"
+
 msgid "blue"
 msgstr "μπλε"
 
@@ -16828,6 +16855,9 @@ msgstr "ανέκδοτο"
 
 msgid "untestable"
 msgstr "μη εφικτός έλεγχος"
+
+msgid "until standby/restart"
+msgstr "μέχρι την αναμονή/επανεκκίνηση"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"

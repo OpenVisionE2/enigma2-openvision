@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 05:55+0330\n"
-"PO-Revision-Date: 2021-01-16 09:46+0100\n"
+"POT-Creation-Date: 2021-02-04 12:03+0330\n"
+"PO-Revision-Date: 2021-01-31 11:41+0100\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
 "Language: nb\n"
@@ -2770,7 +2770,7 @@ msgstr "Danmark"
 #
 #, fuzzy
 msgid "Benchmark Information"
-msgstr "Hierarki informasjon"
+msgstr "Informasjon"
 
 #
 #, fuzzy
@@ -2810,10 +2810,6 @@ msgstr "Sort skjerm"
 
 msgid "Black screen till locked"
 msgstr "Sort skjerm låst"
-
-#, fuzzy
-msgid "Blacklist"
-msgstr "svarteliste"
 
 msgid "Blinking REC"
 msgstr ""
@@ -5620,6 +5616,10 @@ msgstr "Aktiver 'neutrino' stil på fjernkontrollen for kanalskifte"
 msgid "Enable 5V for active antenna"
 msgstr "Slå på 5V for aktiv DVB-T antenne"
 
+#, fuzzy
+msgid "Enable Autostart"
+msgstr "Aktiver auto fastscan"
+
 #
 #, fuzzy
 msgid "Enable BT audio"
@@ -6808,12 +6808,22 @@ msgstr "Opptaksmappe"
 #
 #, fuzzy
 msgid "Geolocation Information"
-msgstr "Hierarki informasjon"
+msgstr "Informasjon"
+
+msgid "Geolocation does not contain time zone information."
+msgstr ""
+
+msgid "Geolocation has been used to set the time zone."
+msgstr ""
 
 #
 #, fuzzy
 msgid "Geolocation information"
 msgstr "Hierarki informasjon"
+
+#, fuzzy
+msgid "Geolocation is not available."
+msgstr "Tuner er ikke tilgjengelig."
 
 msgid "Georgia"
 msgstr "Georgia"
@@ -7916,10 +7926,8 @@ msgstr "Kenya"
 msgid "Kernel file: "
 msgstr "Linuxkjerne versjon: "
 
-#
-#, fuzzy
 msgid "Kernel module layout: "
-msgstr "Linuxkjerne versjon: "
+msgstr ""
 
 #
 msgid "Kernel version: "
@@ -9165,11 +9173,6 @@ msgstr "Nettverksveiviser"
 msgid "Network:"
 msgstr "Nettverk:"
 
-#
-#, fuzzy
-msgid "Never"
-msgstr "aldri"
-
 msgid "Never decrypt the content while recording. This overrides the individual timer settings globally. If enabled, recordings are stored in crypted presentation and must be decrypted afterwards (sometimes called offline decoding). Default: off."
 msgstr "Aldri dekode innholdet under opptak. Dette overstyrer egne globale timer innstillinger. Når dette er på, vil opptak lagres kryptert og må dekodes i ettertid (offline dekoding). Standardinnstilling: av."
 
@@ -9571,10 +9574,9 @@ msgstr "SDR"
 msgid "OSD 3D setup"
 msgstr "OSD 3D innstilling"
 
-#
 #, fuzzy
 msgid "OSD Setup"
-msgstr "Innstilling"
+msgstr "OSD 3D innstilling"
 
 msgid "OSD name request"
 msgstr "Forespørsel om OSD-navn"
@@ -9684,7 +9686,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "Open Vision Information"
-msgstr "Åpne valg mappe"
+msgstr "Informasjon"
 
 msgid "Open Vision RC ID number: "
 msgstr ""
@@ -9905,16 +9907,15 @@ msgstr "Overordnet katalog"
 
 #
 #, fuzzy
-msgid "Parental Control"
-msgstr "Foreldrekontroll"
-
-#
-#, fuzzy
 msgid "Parental Control Setup"
 msgstr "Foreldrekontroll oppsett"
 
 msgid "Parental Guidance Recommended"
 msgstr ""
+
+#
+msgid "Parental control"
+msgstr "Foreldrekontroll"
 
 #
 msgid "Parental control services editor"
@@ -10315,8 +10316,15 @@ msgid "Please set up tuner R"
 msgstr "Vennligst still inn tuner R"
 
 #
-msgid "Please set your time zone"
+#, fuzzy
+msgid "Please set your time options"
 msgstr "Angi tidssonen"
+
+msgid ""
+"Please set your time options.\n"
+"\n"
+"Press YELLOW to set the time zone via geolocation."
+msgstr ""
 
 msgid "Please setup the following basic configs!"
 msgstr "Vennligst sett opp følgende grunnleggende innstillinger!"
@@ -11635,6 +11643,14 @@ msgstr ""
 #, fuzzy
 msgid "SABnzbd setup"
 msgstr "Oppsett utseende"
+
+msgid "SATPI"
+msgstr ""
+
+#
+#, fuzzy
+msgid "SATPI Setup"
+msgstr "Innstilling"
 
 msgid "SCPC optimized search range"
 msgstr "SCPC optimalisert søkeområde"
@@ -13899,6 +13915,9 @@ msgstr "Slutt å bruke som oppstartskanal"
 msgid "Stopped"
 msgstr "Stoppet"
 
+msgid "Stop|Disable Autostart"
+msgstr ""
+
 msgid "Storage"
 msgstr ""
 
@@ -14213,7 +14232,7 @@ msgstr "Detaljer for utvidelser: "
 
 #. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
-msgstr "Oversettelse til norsk bokmål oppdatert: 16.01.2021"
+msgstr "Oversettelse til norsk bokmål oppdatert: 31.01.2021"
 
 #
 msgid "TS file is too large for ISO9660 level 1!"
@@ -14410,10 +14429,6 @@ msgstr "DVD standarden støtter ikke videoprotokollen H.264 (HDTV). Vil du helle
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
 msgstr "Denne utvidelse er ikke installert."
-
-#, fuzzy
-msgid "The PIN code entered is incorrect."
-msgstr "PIN-kodene du har angitt, er forskjellige."
 
 msgid "The PIN code has been changed successfully."
 msgstr "PIN-koden har blitt endret."
@@ -14671,6 +14686,9 @@ msgid ""
 "No support will be provided!\n"
 "Do you understand this?"
 msgstr ""
+"Dette operativsystemet er ment for utviklere og testere.\n"
+"Ingen støtte vil bli gitt!\n"
+"Forstår du dette?"
 
 msgid ""
 "This info is for developers only.\n"
@@ -14972,9 +14990,15 @@ msgstr "ikke støttet"
 msgid "Time"
 msgstr "Tid"
 
+#
 #, fuzzy
 msgid "Time Setup"
-msgstr "Opptaks innstilling"
+msgstr "Timer type"
+
+#
+#, fuzzy
+msgid "Time Setup Actions"
+msgstr "Timer valg"
 
 msgid "Time for next LCD scrolling"
 msgstr ""
@@ -15572,10 +15596,6 @@ msgstr "Demonter"
 msgid "Unsupported"
 msgstr "Ikke støttet"
 
-#, fuzzy
-msgid "Until standby/restart"
-msgstr "til slår av/starter på nytt"
-
 #
 msgid "Unzipping Image"
 msgstr "Pakker ut operativsystem"
@@ -15678,6 +15698,10 @@ msgstr "Bruk EIT EPG-informasjon når den er tilgjengelig."
 msgid "Use FreeSat EPG information when it is available."
 msgstr "Bruk FreeSat EPG-informasjon når den er tilgjengelig."
 
+#, fuzzy
+msgid "Use Geolocation"
+msgstr "Opptaksmappe"
+
 msgid "Use HDMI pre-emphasis"
 msgstr "Bruk HDMI forhåndsvalg"
 
@@ -15723,6 +15747,9 @@ msgstr "Bruk 'fastscan' kanalnummer"
 
 msgid "Use frequency or channel"
 msgstr "Bruk frekvens eller kanal"
+
+msgid "Use geolocation to set the current time zone location"
+msgstr ""
 
 msgid "Use individual settings for each directory"
 msgstr "Bruk egne innstillinger for hver mappe"
@@ -17247,6 +17274,9 @@ msgstr "svart"
 msgid "black & white"
 msgstr "svart & hvit"
 
+msgid "blacklist"
+msgstr "svarteliste"
+
 #
 msgid "blue"
 msgstr "blå"
@@ -18461,6 +18491,9 @@ msgstr "ikke publisert"
 #
 msgid "untestable"
 msgstr "lar seg ikke teste"
+
+msgid "until standby/restart"
+msgstr "til slår av/starter på nytt"
 
 #, fuzzy
 msgid "use best / controlled by HDMI"
