@@ -343,6 +343,9 @@ class VideoHardware:
 	# get a list with all modes, with all rates, for a given port.
 	def getModeList(self, port):
 		print("[Videomode] VideoHardware getModeList for port", port)
+		if platform == "dmamlogic":
+			res = [('720p', ['50Hz', '60Hz']), ('1080p', ['50Hz', '60Hz', '30hz', '24hz', '25hz']), ('1080i', ['50Hz', '60Hz']), ('2160p', ['50Hz', '60hz', '30hz', '24hz', '25hz']), ('576p', ['50Hz']), ('576i', ['50Hz']), ('480p', ['60Hz']), ('480i', ['60Hz'])]
+			return res
 		res = [ ]
 		for mode in self.modes[port]:
 			# list all rates which are completely valid
