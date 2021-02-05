@@ -29,7 +29,7 @@ class FactoryReset(Setup, ProtectedScreen):
 		self.setTitle(_("Factory Reset"))
 
 	def isProtected(self):
-		return config.ParentalControl.enabled.value and config.ParentalControl.setuppinactive.value and config.ParentalControl.config_sections.manufacturer_reset.value
+		return config.ParentalControl.configured.value and config.ParentalControl.setuppinactive.value and config.ParentalControl.config_sections.manufacturer_reset.value
 
 	def createSetup(self):
 		self.bouquets = []
