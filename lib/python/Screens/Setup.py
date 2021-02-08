@@ -165,7 +165,7 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 		item = eval(element.text or "")
 		if item != "" and not isinstance(item, ConfigNothing):
 			itemDefault = item.toDisplayString(item.default)
-			itemDescription = _("%s  (Default: %s)") % (itemDescription, itemDefault) if itemDescription and itemDescription != " " else _("Default: '%s'.") % itemDefault
+			itemDescription = _("%s  \n(Default: %s)") % (itemDescription, itemDefault) if itemDescription and itemDescription != " " else _("Default: '%s'.") % itemDefault
 			self.list.append((itemText, item, itemDescription))  # Add the item to the config list.
 		if item is config.usage.boolean_graphic:
 			self.switch = True
