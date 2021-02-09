@@ -1,5 +1,5 @@
 from gettext import dgettext
-from os.path import getmtime, join as pathJoin
+from os.path import getmtime, join as pathjoin
 from six import PY2
 from xml.etree.cElementTree import ParseError, fromstring, parse
 
@@ -315,7 +315,7 @@ def setupDom(setup=None, plugin=None):
 				pass
 
 	setupFileDom = fromstring("<setupxml></setupxml>")
-	setupFile = resolveFilename(SCOPE_PLUGINS, pathJoin(plugin, "setup.xml")) if plugin else resolveFilename(SCOPE_SKIN, "setup.xml")
+	setupFile = resolveFilename(SCOPE_PLUGINS, pathjoin(plugin, "setup.xml")) if plugin else resolveFilename(SCOPE_SKIN, "setup.xml")
 	global domSetups, setupModTimes
 	try:
 		modTime = getmtime(setupFile)
@@ -377,7 +377,7 @@ def setupdom(setup=None, plugin=None):
 # Only used in AudioSelection screen...
 #
 def getConfigMenuItem(configElement):
-	for item in setupDom.findall("./setup/item/."):
+	for item in setupDom().findall("./setup/item/."):
 		if item.text == configElement:
 			return _(item.attrib["text"]), eval(configElement)
 	return "", None
@@ -388,6 +388,6 @@ def getSetupTitle(id):
 	xmlData = setupDom()
 	for x in xmlData.findall("setup"):
 		if x.get("key") == id:
-			return x.get("title", "").encode("UTF-8") if PY2 else x.get("title", "")
+			return x.get("title", "").encode("UTF-8", errors="ignore") if PY2 else x.get("title", "")
 	print("[Setup] Error: Unknown setup id '%s'!" % repr(id))
 	return "Unknown setup id '%s'!" % repr(id)
