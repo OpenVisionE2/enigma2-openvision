@@ -55,7 +55,7 @@ class Audio(Converter, object):
 		fileString = ""
 		try:
 			fp = open("/tmp/share.info", "r")
-			while 1:
+			while True:
 				currentLine = fp.readline()
 				if (currentLine == ""):
 					break
@@ -88,7 +88,7 @@ class Audio(Converter, object):
 		try:
 			caId = caId[2:]
 			fp = open("/usr/keys/cwshare.cfg", "r")
-			while 1:
+			while True:
 				currentLine = fp.readline()
 				if (currentLine == ""):
 					break
