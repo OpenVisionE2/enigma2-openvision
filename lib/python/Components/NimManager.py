@@ -403,7 +403,7 @@ class SecConfigure:
 					if cdc in c:
 						sec.setCommittedCommand(c[cdc])
 					else:
-						sec.setCommittedCommand(long(cdc))
+						sec.setCommittedCommand(int(cdc))
 
 					sec.setFastDiSEqC(currLnb.fastDiseqc.value)
 

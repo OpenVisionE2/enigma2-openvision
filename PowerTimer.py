@@ -372,7 +372,7 @@ def createTimer(xml):
 	begin = int(xml.get("begin"))
 	end = int(xml.get("end"))
 	repeated = xml.get("repeated").encode("utf-8")
-	disabled = long(xml.get("disabled") or "0")
+	disabled = int(xml.get("disabled") or "0")
 	afterevent = str(xml.get("afterevent") or "nothing")
 	afterevent = {
 		"nothing": AFTEREVENT.NONE,
