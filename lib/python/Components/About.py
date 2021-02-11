@@ -277,7 +277,10 @@ def getDriverInstalledDate():
 
 def getPythonVersionString():
 	try:
-		import commands
+		try:
+			import commands
+		except:
+			import subprocess as commands
 		status, output = commands.getstatusoutput("python -V")
 		return output.split(' ')[1]
 	except:

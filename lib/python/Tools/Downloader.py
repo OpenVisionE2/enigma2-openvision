@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 from twisted.web import client
 from twisted.internet import reactor, defer
-from urlparse import urlparse
+try:
+	from urlparse import urlparse
+except:
+	from urllib.parse import urlparse
 from enigma import getBoxType, getBoxBrand
 
 class HTTPProgressDownloader(client.HTTPDownloader):

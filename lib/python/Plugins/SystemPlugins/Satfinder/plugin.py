@@ -26,7 +26,10 @@ try: # for reading the current transport stream (SatfinderExtra)
 	from Components.Label import Label
 	import time
 	import datetime
-	import thread
+	try:
+		import thread
+	except:
+		import _thread as thread
 	dvbreader_available = True
 except ImportError as e:
 	print("[Satfinder] import dvbreader not available")
