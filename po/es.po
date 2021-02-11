@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 12:03+0330\n"
-"PO-Revision-Date: 2019-10-16 22:14+0200\n"
+"POT-Creation-Date: 2021-02-11 22:02+0330\n"
+"PO-Revision-Date: 2021-02-09 02:00+0100\n"
 "Last-Translator: Kuatto\n"
 "Language-Team: Álvaro <mi casa>\n"
 "Language: es_ES\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #, python-format
 msgid ""
@@ -1124,9 +1124,11 @@ msgstr ""
 "Presiona OK para la selección de arranque múltiple\n"
 "Pulsa exit para cerrar"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%s  (Default: %s)"
-msgstr "%s  (Por Defecto: %s)"
+msgstr ""
+"%s\n"
+"(Por Defecto: %s)"
 
 #, python-format
 msgid "%s %s free disk space"
@@ -1504,26 +1506,26 @@ msgstr "Un archivo desde los medios está en uso!"
 #, fuzzy
 msgid "A finished powertimer wants to reboot your receiver. Do that now?"
 msgstr ""
-"Un Powertimer ha terminado quiere reiniciar su %s %s.\n"
+"Un Powertimer ha terminado y quiere reiniciar su %s %s.\n"
 "Hacerlo Ahora?"
 
 msgid ""
 "A finished powertimer wants to restart the user interface.\n"
 "Do that now?"
 msgstr ""
-"Un Powertimer ha terminado quiere reiniciar la interfaz de usuario.\n"
+"Un Powertimer ha terminado y quiere reiniciar enigma2.\n"
 "Hacerlo Ahora?"
 
 #, fuzzy
 msgid "A finished powertimer wants to set your receiver to standby. Do that now?"
 msgstr ""
-"Un temporizador acabado quiere poner tu\n"
-"receptor en reposo. Hacerlo ahora?"
+"Un Powertimer ha terminado y quiere poner su receptor en standby.\n"
+"Hacerlo Ahora?"
 
 #, fuzzy
 msgid "A finished powertimer wants to shutdown your receiver. Do that now?"
 msgstr ""
-"Un Powertimer ha terminado quiere apagar su %s %s.\n"
+"Un Powertimer ha terminado y quiere apagar profundo su %s %s.\n"
 "Hacerlo Ahora?"
 
 msgid ""
@@ -2220,10 +2222,10 @@ msgid "Ask user"
 msgstr "Preguntar al usuario"
 
 msgid "Ask user (with default as 'no')"
-msgstr "Preguntar al usuario (con valor predeterminado 'no')"
+msgstr "Preguntar al usuario (por defecto 'no')"
 
 msgid "Ask user (with default as 'yes')"
-msgstr "Preguntar al usuario (con valor predeterminado 'si')"
+msgstr "Preguntar al usuario (por defecto 'si')"
 
 msgid "Aspect ratio"
 msgstr "Relación de aspecto"
@@ -2356,9 +2358,8 @@ msgstr "Nivel de volumen de audio automático"
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Auto separación de capítulos cada ? Minutos (0=nunca)"
 
-#, fuzzy
 msgid "Auto deep standby"
-msgstr "modo reposo profundo automático"
+msgstr "Modo espera profundo automático"
 
 msgid "Auto flesh"
 msgstr "Auto flesh"
@@ -2372,9 +2373,8 @@ msgstr "Auto focus comenzando …"
 msgid "Auto play blu-ray file"
 msgstr "Auto reproducir fichero Blu-ray"
 
-#, fuzzy
 msgid "Auto play last service in radio mode"
-msgstr "Búsqueda rápida de canales"
+msgstr "Reproducción automática del último canal en modo radio"
 
 msgid "Auto scart switching"
 msgstr "Cambio de scart automático"
@@ -3398,9 +3398,8 @@ msgstr "Configure un retraso adicional para mejorar la sincronización de subtí
 msgid "Configure an additional delay to improve subtitle synchronisation."
 msgstr "Configure un retraso adicional para mejorar la sincronización de subtítulos."
 
-#, fuzzy
 msgid "Configure default type for new timers."
-msgstr "Configure la máscara de red."
+msgstr "Configure por defecto para nuevos temporizadores."
 
 msgid "Configure for how long the infobar will remain visible after activation."
 msgstr "Configure durante cuánto tiempo la barra de información permanecerá visible."
@@ -4349,9 +4348,8 @@ msgstr "Ajustes por defecto"
 msgid "Default task"
 msgstr "Por defecto"
 
-#, fuzzy
 msgid "Default timer type"
-msgstr "Borrar temporizador"
+msgstr "Tipo temporizador por defecto"
 
 #, fuzzy
 msgid "Default+Picon"
@@ -4427,9 +4425,8 @@ msgstr "Retardo en milisegundos antes de comenzar el desplazamiento del texto en
 msgid "Delay in miliseconds between scrolling characters on display."
 msgstr "Retardo en milisegundos entre el desplazamiento del caracteres en pantalla."
 
-#, fuzzy
 msgid "Delay:"
-msgstr "Retraso débil"
+msgstr "Retraso:"
 
 msgid "Delete"
 msgstr "Borrar"
@@ -5144,9 +5141,8 @@ msgstr "Activar el estilo de zapeo neutrino"
 msgid "Enable 5V for active antenna"
 msgstr "Activar 5V para antena activa"
 
-#, fuzzy
 msgid "Enable Autostart"
-msgstr "Autoinicio"
+msgstr "Activar Inicio Automático"
 
 #, fuzzy
 msgid "Enable BT audio"
@@ -8114,7 +8110,6 @@ msgstr "MultiTipo"
 msgid "Multiboot Image Selector"
 msgstr "Seleccionar Imagen Multiboot"
 
-#, fuzzy
 msgid "Multiboot image selector"
 msgstr "Seleccionar Imagen Multiboot"
 
@@ -8846,17 +8841,14 @@ msgstr "Configurar OpenVPN"
 msgid "OpenVision"
 msgstr "Extensiones"
 
-#, fuzzy
 msgid "Operating LED status in deep standby mode"
-msgstr "Estado del LED de encendido durante modo de espera profundo."
+msgstr "Estado del LED en reposo profundo"
 
-#, fuzzy
 msgid "Operating LED status in standby mode"
-msgstr "Estado del LED de encendido en modo Reposo"
+msgstr "Estado del LED en standby"
 
-#, fuzzy
 msgid "Operating LED status while running."
-msgstr "Estado del LED de encendido cuando está en marcha."
+msgstr "Estado del LED en funcionamiento."
 
 msgid "Opkg"
 msgstr ""
@@ -9340,6 +9332,9 @@ msgid ""
 "\n"
 "Press YELLOW to set the time zone via geolocation."
 msgstr ""
+"Configura tus opciones de horario.\n"
+"\n"
+"Pulsa Amarillo para usar horario con Geolocalización."
 
 msgid "Please setup the following basic configs!"
 msgstr "Por favor, configure las siguientes configuraciones básicas!"
@@ -10508,12 +10503,12 @@ msgstr "SABnzbd"
 msgid "SABnzbd setup"
 msgstr "Configurar SABnzbd"
 
-msgid "SATPI"
-msgstr ""
-
 #, fuzzy
+msgid "SATPI"
+msgstr "Ajustes SATPI"
+
 msgid "SATPI Setup"
-msgstr "Configurar AFP"
+msgstr "Ajustes SATPI"
 
 msgid "SCPC optimized search range"
 msgstr "Rango de búsqueda optimizada SCPC"
@@ -11459,13 +11454,11 @@ msgstr "Configure el puerto de OpenWebif desde su sintonizador de reserva"
 msgid "Set the repeat interval of the schedule."
 msgstr "Configura el ratio de refresco de la pantalla."
 
-#, fuzzy
 msgid "Set the scrolling speed of text on the front panel display, this is used by software renderer in some skins."
-msgstr "Establezca la velocidad de desplazamiento del texto en display, esto es usado por el procesador de software en algunos skins."
+msgstr "Establezca la velocidad de desplazamiento del texto en display, esto lo usa el renderizador de software en algunas skins."
 
-#, fuzzy
 msgid "Set the scrolling speed of text on the front panel display."
-msgstr "Configure el nivel de contraste de la pantalla del display."
+msgstr "Configure la velocidad de desplazamiento del texto en display."
 
 msgid "Set the sort method for this directory"
 msgstr "Establecer el método de clasificación para este directorio"
@@ -11973,9 +11966,8 @@ msgstr "Único"
 msgid "Single EPG"
 msgstr "EPG simple"
 
-#, fuzzy
 msgid "Single line mode"
-msgstr "Habilitar modo cliente"
+msgstr "Linea simple"
 
 msgid "Single satellite"
 msgstr "Satélite único"
@@ -12531,9 +12523,8 @@ msgstr "Dejar de usar como canal de inicio"
 msgid "Stopped"
 msgstr "Detenido"
 
-#, fuzzy
 msgid "Stop|Disable Autostart"
-msgstr "Deshabilitar el guardado automático?"
+msgstr "Detener|Desactivado Autoinicio"
 
 msgid "Storage"
 msgstr "Almacenamiento"
@@ -12709,16 +12700,14 @@ msgstr "Cambiar de canal hacia abajo"
 msgid "Switch channel up"
 msgstr "Cambiar de canal hacia arriba"
 
-#, fuzzy
 msgid "Switch on the display during Standby Mode"
-msgstr "Control Encendido display en modo reposo"
+msgstr "Encender la pantalla en standby"
 
-#, fuzzy
 msgid "Switch on the display during Suspend Mode"
-msgstr "Control Encendido display en modo reposo profundo"
+msgstr "Encender la pantalla durante reposo profundo"
 
 msgid "Switch on the display during operation."
-msgstr ""
+msgstr "Encender la pantalla durante el funcionamiento."
 
 #, fuzzy
 msgid "Switch to HDMI-IN mode"
@@ -13303,9 +13292,8 @@ msgstr "Esta opción te permite cambiar la posición del altavoz."
 msgid "This option allows you to choose how to display elapsed time. As + or -"
 msgstr "Esta opción le permite elegir cómo mostrar el tiempo transcurrido. Como + o -"
 
-#, fuzzy
 msgid "This option allows you to choose how to display the remaining/elapsed time for Media playback."
-msgstr "Esta opción le permite elegir cómo mostrar el tiempo restante/transcurrido para la reproducción de medios."
+msgstr "Esta opción le permite elegir cómo mostrar el tiempo restante/transcurrido para la reproducción de Medios."
 
 msgid "This option allows you to choose how to display the remaining/elapsed time for live TV."
 msgstr "Esta opción le permite elegir cómo mostrar el tiempo restante/transcurrido para la televisión en vivo."
@@ -14726,10 +14714,11 @@ msgstr "Cuando está habilitado los botones izquierdo, derecho, CH +/-, B +/-, P
 
 #, fuzzy
 msgid "When enabled the receiver will automatically return to standby when the TV is turned off."
-msgstr "Cuando está habilitado, su %s %s utilizará automáticamente la pista de audio que seleccionó anteriormente."
+msgstr "Cuando está habilitado, se reproducirá automáticamente el último canal de radio guardado al cambiar al modo de radio."
 
+#, fuzzy
 msgid "When enabled the receiver will automatically wake from standby when the TV is turned on."
-msgstr ""
+msgstr "Cuando está habilitado, se reproducirá automáticamente el último canal de radio guardado al cambiar al modo de radio."
 
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Cuando está habilitado, el receptor se puede activar desde su LAN"
@@ -14833,9 +14822,8 @@ msgstr "Cuando está habilitado, los stremas http se descodifican en el lado del
 msgid "When enabled, it is possible to leave the movieplayer with exit."
 msgstr "Cuando está habilitado, es posible abandonar el reproductor de películas con exit."
 
-#, fuzzy
 msgid "When enabled, it will automatically play to the last saved radio service when switching to radio mode."
-msgstr "Cuando está habilitado, su %s %s utilizará automáticamente la pista de audio que seleccionó anteriormente."
+msgstr "Cuando está habilitado, se reproducirá automáticamente el último canal de radio guardado al cambiar al modo de radio."
 
 msgid "When enabled, measure power consumption to detect when the rotor stops turning (when supported by the tuner)."
 msgstr "Cuando esté habilitado, mida el consumo de energía para detectar cuándo el motor deja de girar (cuando es compatible con el sintonizador)."
@@ -14993,16 +14981,16 @@ msgid "With popup"
 msgstr "Con ventana emergente"
 
 msgid "With this option you can switch on the display during operation."
-msgstr ""
+msgstr "Con esta opción puede encender la pantalla durante el funcionamiento."
 
 msgid "With this option you can switch on the display in Deep Standby Mode."
-msgstr ""
+msgstr "Con esta opción puede encender la pantalla en reposo profundo."
 
 msgid "With this option you can switch on the display in Standby Mode."
-msgstr ""
+msgstr "Con esta opción puede encender la pantalla en standby."
 
 msgid "With this option you can switch the LED color or deactivate the LED."
-msgstr ""
+msgstr "Con esta opción puede cambiar el color del LED o desactivar el LED."
 
 msgid "Without popup"
 msgstr "Sin ventana emergente"
@@ -16378,9 +16366,8 @@ msgstr "eliminar esta marca"
 msgid "repeated"
 msgstr "repetido"
 
-#, fuzzy
 msgid "restart GUI"
-msgstr "Reiniciar Enigma2"
+msgstr "reiniciar enigma2"
 
 #, fuzzy
 msgid "restore previous cuts"
@@ -16701,7 +16688,7 @@ msgid "vertical"
 msgstr "vertical"
 
 msgid "violet"
-msgstr ""
+msgstr "violeta"
 
 msgid "wait for ci..."
 msgstr "espera por ci…"
@@ -16733,8 +16720,9 @@ msgstr "cuando esté activo PiPzap cambia canal abajo…"
 msgid "when PiPzap enabled zap channel up..."
 msgstr "cuando esté activo PiPzap cambia canal arriba…"
 
+#, fuzzy
 msgid "white"
-msgstr "blanco"
+msgstr "Blanco"
 
 msgid "wide"
 msgstr "altura"
