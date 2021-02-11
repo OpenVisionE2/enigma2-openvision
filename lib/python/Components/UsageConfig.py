@@ -716,7 +716,7 @@ def InitUsageConfig():
 	config.skin.onlyicon = NoSave(ConfigBoolean(default=False))
 
 	try:
-		onlyIcon = skin.parameters.get("AllowUseOnlyIcon", (0))
+		onlyIcon = parameters.get("AllowUseOnlyIcon", (0))
 	except Exception as error:
 		print("[UsageConfig] Error loading 'AllowUseOnlyIcon' skin parameter! (%s)" % error)
 		onlyIcon = (0)
@@ -908,7 +908,7 @@ def InitUsageConfig():
 	config.usage.time.long.addNotifier(setTimeStyles)
 
 	try:
-		dateEnabled, timeEnabled = skin.parameters.get("AllowUserDatesAndTimes", (0, 0))
+		dateEnabled, timeEnabled = parameters.get("AllowUserDatesAndTimes", (0, 0))
 	except Exception as error:
 		print("[UsageConfig] Error loading 'AllowUserDatesAndTimes' skin parameter! (%s)" % error)
 		dateEnabled, timeEnabled = (0, 0)
@@ -1031,7 +1031,7 @@ def InitUsageConfig():
 	config.usage.time.display.addNotifier(setTimeDisplayStyles)
 
 	try:
-		dateDisplayEnabled, timeDisplayEnabled = skin.parameters.get("AllowUserDatesAndTimesDisplay", (0, 0))
+		dateDisplayEnabled, timeDisplayEnabled = parameters.get("AllowUserDatesAndTimesDisplay", (0, 0))
 	except Exception as error:
 		print("[UsageConfig] Error loading 'AllowUserDatesAndTimesDisplay' display skin parameter! (%s)" % error)
 		dateDisplayEnabled, timeDisplayEnabled = (0, 0)
@@ -1661,8 +1661,8 @@ def InitUsageConfig():
 		("swe", _("Swedish")),
 		("tha", _("Thai")),
 		("tur Audio_TUR", _("Turkish")),
-		("ukr Ukr", _("Ukrainian")
-	)]
+		("ukr Ukr", _("Ukrainian"))
+	]
 
 	epg_language_choices = audio_language_choices[:1] + audio_language_choices[2:]
 
@@ -1774,7 +1774,7 @@ def InitUsageConfig():
 			eDVBLocalTimeHandler.getInstance().setUseDVBTime(False)
 			eEPGCache.getInstance().timeUpdated()
 			if not islink("/etc/network/if-up.d/ntpdate-sync"):
-				Console().ePopen("echo '30 * * * * /usr/bin/ntpdate-sync silent' >>/etc/cron/crontabs/root;ln -s /usr/bin/ntpdate-sync /etc/network/if-up.d/ntpdate-sync")
+				Console().ePopen("echo '30 * * * *    /usr/bin/ntpdate-sync silent' >>/etc/cron/crontabs/root;ln -s /usr/bin/ntpdate-sync /etc/network/if-up.d/ntpdate-sync")
 	config.ntp.timesync = ConfigSelection(default="auto", choices=[
 		("auto", _("Auto")),
 		("dvb", _("Transponder time")),
