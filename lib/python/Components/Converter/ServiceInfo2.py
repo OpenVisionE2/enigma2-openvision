@@ -46,7 +46,7 @@ class ServiceInfo2(Poll, Converter, object):
 		self.poll_interval = 1000
 		self.poll_enabled = True
 
-	def getServiceInfoString(self, info, what, convert = lambda x: "%d" % x):
+	def getServiceInfoString(self, info, what, convert=lambda x: "%d" % x):
 		v = info.getInfo(what)
 		if v == -1:
 			return "N/A"

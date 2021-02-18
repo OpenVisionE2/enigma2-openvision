@@ -13,7 +13,7 @@ class Sensors:
 		self.sensors_list = []
 		self.addSensors()
 
-	def getSensorsCount(self, type = None):
+	def getSensorsCount(self, type=None):
 		if type is None:
 			return len(self.sensors_list)
 		count = 0
@@ -23,7 +23,7 @@ class Sensors:
 		return count
 
 	# returns a list of sensorids of type "type"
-	def getSensorsList(self, type = None):
+	def getSensorsList(self, type=None):
 		if type is None:
 			return range(len(self.sensors_list))
 		list = []

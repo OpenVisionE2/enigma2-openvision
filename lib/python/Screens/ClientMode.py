@@ -27,7 +27,7 @@ class ClientModeScreen(ConfigListScreen, Screen):
 		self.initial_state = config.clientmode.enabled.value
 		self.onChangedEntry = []
 		self.session = session
-		ConfigListScreen.__init__(self, [], session = session, on_change = self.changedEntry)
+		ConfigListScreen.__init__(self, [], session=session, on_change=self.changedEntry)
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions", "ColorActions"],
 		{

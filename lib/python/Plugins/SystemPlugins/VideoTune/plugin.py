@@ -14,4 +14,4 @@ def startSetup(menuid):
 	return [ ]
 
 def Plugins(**kwargs):
-	return PluginDescriptor(name=_("Testscreens"), description=_("Testscreens that are helpfull to fine-tune your display"), where = PluginDescriptor.WHERE_MENU, needsRestart = False, fnc=startSetup)
+	return PluginDescriptor(name=_("Testscreens"), description=_("Testscreens that are helpfull to fine-tune your display"), where=PluginDescriptor.WHERE_MENU, needsRestart=False, fnc=startSetup)

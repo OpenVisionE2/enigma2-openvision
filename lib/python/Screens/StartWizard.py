@@ -20,15 +20,15 @@ from Screens.LanguageSelection import LanguageWizard
 from enigma import eConsoleAppContainer, eTimer, eActionMap
 import os
 
-config.misc.firstrun = ConfigBoolean(default = True)
-config.misc.languageselected = ConfigBoolean(default = True)
-config.misc.do_overscanwizard = ConfigBoolean(default = OverscanWizard)
-config.misc.check_developimage = ConfigBoolean(default = False)
+config.misc.firstrun = ConfigBoolean(default=True)
+config.misc.languageselected = ConfigBoolean(default=True)
+config.misc.do_overscanwizard = ConfigBoolean(default=OverscanWizard)
+config.misc.check_developimage = ConfigBoolean(default=False)
 
 class StartWizard(WizardLanguage, Rc):
-	def __init__(self, session, silent = True, showSteps = False, neededTag = None):
+	def __init__(self, session, silent=True, showSteps=False, neededTag=None):
 		self.xmlfile = ["startwizard.xml"]
-		WizardLanguage.__init__(self, session, showSteps = False)
+		WizardLanguage.__init__(self, session, showSteps=False)
 		Rc.__init__(self)
 		self["wizard"] = Pixmap()
 		self["lab1"] = StaticText(_("OpenVision"))

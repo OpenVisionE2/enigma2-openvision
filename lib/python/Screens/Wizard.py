@@ -149,7 +149,7 @@ class Wizard(Screen):
 			elif self.currContent == "condition":
 				self.wizard[self.lastStep]["condition"] = self.wizard[self.lastStep]["condition"] + ch
 
-	def __init__(self, session, showSteps = True, showStepSlider = True, showList = True, showConfig = True):
+	def __init__(self, session, showSteps=True, showStepSlider=True, showList=True, showConfig=True):
 		Screen.__init__(self, session)
 
 		self.isLastWizard = False # can be used to skip a "goodbye"-screen in a wizard
@@ -183,7 +183,7 @@ class Wizard(Screen):
 		self["text"] = Label()
 
 		if showConfig:
-			self["config"] = ConfigList([], session = session)
+			self["config"] = ConfigList([], session=session)
 
 		if self.showSteps:
 			self["step"] = Label()
@@ -193,7 +193,7 @@ class Wizard(Screen):
 
 		if self.showList:
 			self.list = []
-			self["list"] = List(self.list, enableWrapAround = True)
+			self["list"] = List(self.list, enableWrapAround=True)
 			self["list"].onSelectionChanged.append(self.selChanged)
 			#self["list"] = MenuList(self.list, enableWrapAround = True)
 
@@ -298,7 +298,7 @@ class Wizard(Screen):
 		self.updateValues()
 		print("[Wizard] after updateValues stepHistory:", self.stepHistory)
 
-	def exitWizardQuestion(self, ret = False):
+	def exitWizardQuestion(self, ret=False):
 		if ret:
 			self.markDone()
 			self.exit()
@@ -321,7 +321,7 @@ class Wizard(Screen):
 		print("[Wizard] result: nothing")
 		return 0
 
-	def finished(self, gotoStep = None, *args, **kwargs):
+	def finished(self, gotoStep=None, *args, **kwargs):
 		print("[Wizard] finished")
 		currStep = self.currStep
 
@@ -469,7 +469,7 @@ class Wizard(Screen):
 	def getTranslation(self, text):
 		return _(text).replace("%s %s (kernel %s)", "%s %s (kernel %s)" % (getBoxBrand(), getBoxType(), boxbranding.getKernelVersion())).replace("%s-%s", "%s-%s" % (boxbranding.getVisionVersion(), boxbranding.getVisionRevision())).replace("%s (type %s id %s)", "%s (type %s id %s)" % (boxbranding.getRCName(), boxbranding.getRCType(), boxbranding.getRCIDNum()))
 
-	def updateText(self, firstset = False):
+	def updateText(self, firstset=False):
 		text = self.getTranslation(self.wizard[self.currStep]["text"])
 		if "[timeout]" in text:
 			text = text.replace("[timeout]", str(self.timeoutCounter))
@@ -527,7 +527,7 @@ class Wizard(Screen):
 				self.timeoutTimer.start(1000)
 
 			print("[Wizard] wizard text", self.getTranslation(self.wizard[self.currStep]["text"]))
-			self.updateText(firstset = True)
+			self.updateText(firstset=True)
 			if "displaytext" in self.wizard[self.currStep]:
 				displaytext = self.wizard[self.currStep]["displaytext"]
 				print("[Wizard] set LCD text")
@@ -633,7 +633,7 @@ class Wizard(Screen):
 				self.down()
 			else:
 				if self.wizard[self.currStep]["timeoutaction"] == "changestep":
-					self.finished(gotoStep = self.wizard[self.currStep]["timeoutstep"])
+					self.finished(gotoStep=self.wizard[self.currStep]["timeoutstep"])
 		self.updateText()
 
 	def handleInputHelpers(self):
@@ -659,9 +659,9 @@ class Wizard(Screen):
 	def KeyText(self):
 		from Screens.VirtualKeyBoard import VirtualKeyBoard
 		self.currentConfigIndex = self["config"].getCurrentIndex()
-		self.session.openWithCallback(self.VirtualKeyBoardCallback, VirtualKeyBoard, title = self["config"].getCurrent()[0], text = self["config"].getCurrent()[1].getValue())
+		self.session.openWithCallback(self.VirtualKeyBoardCallback, VirtualKeyBoard, title=self["config"].getCurrent()[0], text=self["config"].getCurrent()[1].getValue())
 
-	def VirtualKeyBoardCallback(self, callback = None):
+	def VirtualKeyBoardCallback(self, callback=None):
 		if callback is not None and len(callback):
 			if isinstance(self["config"].getCurrent()[1], ConfigText) or isinstance(self["config"].getCurrent()[1], ConfigPassword):
 				if "HelpWindow" in self:
@@ -679,7 +679,7 @@ class WizardManager:
 	def __init__(self):
 		self.wizards = []
 
-	def registerWizard(self, wizard, precondition, priority = 0):
+	def registerWizard(self, wizard, precondition, priority=0):
 		self.wizards.append((wizard, precondition, priority))
 
 	def getWizards(self):

@@ -547,7 +547,7 @@ class MenuSort(Menu):
 	def isProtected(self):
 		return config.ParentalControl.setuppinactive.value and config.ParentalControl.config_sections.menu_sort.value
 
-	def resetSortOrder(self, key = None):
+	def resetSortOrder(self, key=None):
 		config.usage.menu_sort_weight.value = { "mainmenu" : {"submenu" : {} }}
 		config.usage.menu_sort_weight.save()
 		self.createMenuList()
@@ -925,7 +925,7 @@ class IconMain(Screen):
 		else:
 			self.openTest()
 
-	def key_up(self, focusLastPic = False):
+	def key_up(self, focusLastPic=False):
 		self.ipage = self.ipage - 1
 		if self.ipage < 1 and 7 > self.picnum > 0:
 			self.ipage = 1
@@ -945,7 +945,7 @@ class IconMain(Screen):
 			self.index = 0
 		self.openTest()
 
-	def key_down(self, focusLastPic = False):
+	def key_down(self, focusLastPic=False):
 		self.ipage = self.ipage + 1
 		if self.ipage == 2 and 7 > self.picnum > 0:
 			self.ipage = 1

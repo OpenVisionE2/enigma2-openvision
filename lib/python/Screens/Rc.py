@@ -31,7 +31,7 @@ class Rc:
 
 	def readPositions(self):
 		target = rc_model.getRcPositions()
-		tree = ElementTree(file = target)
+		tree = ElementTree(file=target)
 		rcs = tree.getroot()
 		self.rcs = {}
 		for rc in rcs:

@@ -37,7 +37,7 @@ g_orig_doClose = None
 config.misc.window_animation_default = ConfigNumber(default=g_default["current"])
 config.misc.window_animation_speed = ConfigSelectionNumber(15, g_max_speed, 1, default=g_default["speed"])
 if brand != 'gigablue':
-	config.misc.listbox_animation_default = ConfigSelection(default = g_default["listbox"], choices = [ ("0", _("Disable")), ("1", _("Enable")), ("2", _("Same behavior as current animation")) ])
+	config.misc.listbox_animation_default = ConfigSelection(default=g_default["listbox"], choices=[ ("0", _("Disable")), ("1", _("Enable")), ("2", _("Same behavior as current animation")) ])
 
 class AnimationSetupConfig(ConfigListScreen, Screen):
 	skin="""
@@ -282,14 +282,14 @@ def sessionAnimationSetup(session, reason, **kwargs):
 def Plugins(**kwargs):
 	plugin_list = [
 		PluginDescriptor(
-			name = _("Animations"),
-			description = _("Setup UI animations"),
-			where = PluginDescriptor.WHERE_MENU,
-			needsRestart = False,
-			fnc = startAnimationSetup),
+			name=_("Animations"),
+			description=_("Setup UI animations"),
+			where=PluginDescriptor.WHERE_MENU,
+			needsRestart=False,
+			fnc=startAnimationSetup),
 		PluginDescriptor(
-			where = PluginDescriptor.WHERE_SESSIONSTART,
-			needsRestart = False,
-			fnc = sessionAnimationSetup),
+			where=PluginDescriptor.WHERE_SESSIONSTART,
+			needsRestart=False,
+			fnc=sessionAnimationSetup),
 	]
 	return plugin_list

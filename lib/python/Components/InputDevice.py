@@ -283,8 +283,8 @@ iInputDevices = inputDevices()
 
 
 config.plugins.remotecontroltype = ConfigSubsection()
-config.plugins.remotecontroltype.rctype = ConfigInteger(default = int(getRCType()))
-config.plugins.remotecontroltype.multirc = ConfigYesNo(default = False)
+config.plugins.remotecontroltype.rctype = ConfigInteger(default=int(getRCType()))
+config.plugins.remotecontroltype.multirc = ConfigYesNo(default=False)
 
 class RcTypeControl():
 	def __init__(self):

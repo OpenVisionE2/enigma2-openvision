@@ -100,7 +100,7 @@ class EPGSelection(Screen):
 			self["key_green"] = Button(_("Add timer"))
 		self.key_green_choice = self.ADD_TIMER
 		self.key_red_choice = self.EMPTY
-		self["list"] = EPGList(type = self.type, selChangedCB = self.onSelectionChanged, timer = session.nav.RecordTimer)
+		self["list"] = EPGList(type=self.type, selChangedCB=self.onSelectionChanged, timer=session.nav.RecordTimer)
 
 		self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"],
 			{
@@ -186,7 +186,7 @@ class EPGSelection(Screen):
 
 	def doInstall(self, val):
 		if val:
-			self.message = self.session.open(MessageBox, _("Please wait..."), MessageBox.TYPE_INFO, enable_input = False)
+			self.message = self.session.open(MessageBox, _("Please wait..."), MessageBox.TYPE_INFO, enable_input=False)
 			self.message.setTitle(_('Installing TMBD'))
 			self.Console.ePopen('opkg update && opkg install enigma2-plugin-extensions-tmbd', self.installComplete)
 		else:
@@ -224,7 +224,7 @@ class EPGSelection(Screen):
 		if self.type == EPG_TYPE_MULTI:
 			global mepg_config_initialized
 			if not mepg_config_initialized:
-				config.misc.prev_mepg_time=ConfigClock(default = time())
+				config.misc.prev_mepg_time=ConfigClock(default=time())
 				mepg_config_initialized = True
 			self.session.openWithCallback(self.onDateTimeInputClosed, TimeDateInput, config.misc.prev_mepg_time )
 
@@ -234,10 +234,10 @@ class EPGSelection(Screen):
 		event = self["list"].getCurrent()[0]
 		if event:
 			if six.PY2:
-				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO)
+				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
 					if 'selectedevent' in p.__call__.func_code.co_varnames]
 			else:
-				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where = PluginDescriptor.WHERE_EVENTINFO)
+				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
 					if 'selectedevent' in p.__call__.__code__.co_varnames]
 			if menu:
 				text += ": %s" % event.getEventName()
@@ -267,7 +267,7 @@ class EPGSelection(Screen):
 
 	def closeScreen(self):
 		if self.zapFunc:
-			self.zapFunc(None, zapback = True)
+			self.zapFunc(None, zapback=True)
 		self.close(self.closeRecursive)
 
 	def infoKeyPressed(self):
@@ -338,7 +338,7 @@ class EPGSelection(Screen):
 		if count == 0:
 			ref = lst.getCurrent()[1]
 			if ref is not None:
-				self.zapFunc(ref.ref, preview = prev)
+				self.zapFunc(ref.ref, preview=prev)
 
 	def eventPreview(self):
 		if self.zapFunc:
@@ -495,7 +495,7 @@ class EPGSelection(Screen):
 						self.disableTimer(timer, prev_state, repeat=True)
 			self.session.openWithCallback(timerAction, ChoiceBox, title=title_text + _("Select action for timer '%s'.") % timer.name, list=menu, keys=buttons)
 		else:
-			newEntry = RecordTimerEntry(serviceref, checkOldTimers = True, dirname = preferredTimerPath(), *parseEvent(event))
+			newEntry = RecordTimerEntry(serviceref, checkOldTimers=True, dirname=preferredTimerPath(), *parseEvent(event))
 			newEntry.justplay = config.recording.timer_default_type.value == "zap"
 			newEntry.always_zap = config.recording.timer_default_type.value == "zap+record"
 			self.session.openWithCallback(self.finishedAdd, TimerEntry, newEntry)

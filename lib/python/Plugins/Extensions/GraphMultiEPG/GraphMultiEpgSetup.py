@@ -22,7 +22,7 @@ class GraphMultiEpgSetup(Screen, ConfigListScreen):
 			<widget name="config" position="10,50" size="550,430" />
 		</screen>"""
 
-	def __init__(self, session, args = None):
+	def __init__(self, session, args=None):
 		Screen.__init__(self, session)
 		self.setTitle(_("GraphMultiEpg Settings"))
 
@@ -42,7 +42,7 @@ class GraphMultiEpgSetup(Screen, ConfigListScreen):
 		self.onChangedEntry = [ ]
 		self.session = session
 		self.list = []
-		ConfigListScreen.__init__(self, self.list, session = self.session)
+		ConfigListScreen.__init__(self, self.list, session=self.session)
 		self.createSetup()
 
 	def createSetup(self):

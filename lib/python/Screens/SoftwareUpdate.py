@@ -143,10 +143,10 @@ class UpdatePlugin(Screen, ProtectedScreen):
 		# show the user the message first
 		if message is not None:
 			if abort:
-				self.session.openWithCallback(self.close, MessageBox, message, type=MessageBox.TYPE_ERROR, picon = picon)
+				self.session.openWithCallback(self.close, MessageBox, message, type=MessageBox.TYPE_ERROR, picon=picon)
 			else:
 				message += "\n\n" + _("Do you want to update your %s %s?") % (brand, model)
-				self.session.openWithCallback(self.startActualUpdate, MessageBox, message, picon = picon)
+				self.session.openWithCallback(self.startActualUpdate, MessageBox, message, picon=picon)
 
 		# no message, continue with the update
 		else:
@@ -293,7 +293,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 		elif answer[1] == "channels":
 			self.channellist_only = 1
 			self.slider.setValue(1)
-			self.opkg.startCmd(OpkgComponent.CMD_LIST, args = {'installed_only': True})
+			self.opkg.startCmd(OpkgComponent.CMD_LIST, args={'installed_only': True})
 		elif answer[1] == "commits":
 			self.session.openWithCallback(boundFunction(self.opkgCallback, OpkgComponent.EVENT_DONE, None), CommitInfo)
 		elif answer[1] == "showlist":
@@ -303,7 +303,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 			text = open("/home/root/opkgupgrade.log", "r").read()
 			self.session.openWithCallback(boundFunction(self.opkgCallback, OpkgComponent.EVENT_DONE, None), TextBox, text, _("Latest update log"), True)
 		else:
-			self.opkg.startCmd(OpkgComponent.CMD_UPGRADE, args = {'test_only': False})
+			self.opkg.startCmd(OpkgComponent.CMD_UPGRADE, args={'test_only': False})
 
 	def modificationCallback(self, res):
 		self.opkg.write(res and "N" or "Y")
