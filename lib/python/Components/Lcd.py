@@ -82,7 +82,7 @@ class IconCheckPoller:
 
 class LCD:
 	def __init__(self):
-		eActionMap.getInstance().bindAction('', -maxint -1, self.DimUpEvent)
+		eActionMap.getInstance().bindAction('', -maxint - 1, self.DimUpEvent)
 		self.autoDimDownLCDTimer = eTimer()
 		self.autoDimDownLCDTimer.callback.append(self.autoDimDownLCD)
 		self.autoDimUpLCDTimer = eTimer()
@@ -98,7 +98,7 @@ class LCD:
 		eActionMap.getInstance().unbindAction('', self.DimUpEvent)
 
 	def leaveStandby(self):
-		eActionMap.getInstance().bindAction('', -maxint -1, self.DimUpEvent)
+		eActionMap.getInstance().bindAction('', -maxint - 1, self.DimUpEvent)
 
 	def DimUpEvent(self, key, flag):
 		self.autoDimDownLCDTimer.stop()
@@ -108,7 +108,7 @@ class LCD:
 
 	def autoDimDownLCD(self):
 		if not Screens.Standby.inTryQuitMainloop:
-			if self.dimBrightness is not None and  self.currBrightness > self.dimBrightness:
+			if self.dimBrightness is not None and self.currBrightness > self.dimBrightness:
 				self.currBrightness = self.currBrightness - 1
 				eDBoxLCD.getInstance().setLCDBrightness(self.currBrightness)
 				self.autoDimDownLCDTimer.start(10, True)
@@ -135,7 +135,7 @@ class LCD:
 		self.autoDimUpLCDTimer.stop()
 		self.currBrightness = self.Brightness = value
 		eDBoxLCD.getInstance().setLCDBrightness(self.currBrightness)
-		if self.dimBrightness is not None and  self.currBrightness > self.dimBrightness:
+		if self.dimBrightness is not None and self.currBrightness > self.dimBrightness:
 			if self.dimDelay is not None and self.dimDelay > 0:
 				self.autoDimDownLCDTimer.startLongTimer(self.dimDelay)
 

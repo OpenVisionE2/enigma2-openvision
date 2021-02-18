@@ -51,7 +51,7 @@ def test_timer(repeat=0, timer_start=3600, timer_length=1000, sim_length=86400 *
 
 	print("[test_timer] done.")
 
-	timers = t.processed_timers  + t.timer_list
+	timers = t.processed_timers + t.timer_list
 
 	print("[test_timer] start: %s" % (time.ctime(at + 10)))
 

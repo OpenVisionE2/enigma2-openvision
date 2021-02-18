@@ -53,7 +53,7 @@ class FrontendInfo2(Converter, object):
 			#if self.source.snr_db is not None:
 				#return "%3.01f dB" % (self.source.snr_db / 100.0)
 			if self.source.snr is not None: #fallback to normal SNR
-				return "%3.01f dB" % (0.32 *((self.source.snr * 100) /65536.0) / 2)
+				return "%3.01f dB" % (0.32 * ((self.source.snr * 100) / 65536.0) / 2)
 			return "N/A"
 		elif self.type == self.TUNER_TYPE:
 			return self.source.frontend_type and self.frontend_type or "Unknown"

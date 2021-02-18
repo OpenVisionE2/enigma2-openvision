@@ -162,7 +162,7 @@ class ServiceInfoEX(Poll, Converter, object):
 		if v == -3:
 			t_objs = info.getInfoObject(what)
 			if t_objs and (len(t_objs) > 0):
-				ret_val=""
+				ret_val = ""
 				for t_obj in t_objs:
 					ret_val += "%.4X " % t_obj
 				return ret_val[:-1]
@@ -221,10 +221,10 @@ class ServiceInfoEX(Poll, Converter, object):
 				self.stream['atype'] = str(audio.getTrackInfo(audio.getCurrentTrack()).getDescription()).replace(",", "")
 		self.stream['vtype'] = codec_data[info.getInfo(iServiceInformation.sVideoType)]
 		self.stream['avtype'] = self.stream['vtype'] + '/' + self.stream['atype']
-		if self.getServiceInfoString(info, iServiceInformation.sFrameRate, lambda x: "%d" % ((x+500)/1000)) != "N/A":
-			self.stream['fps'] = self.getServiceInfoString(info, iServiceInformation.sFrameRate, lambda x: "%d" % ((x+500)/1000))
-		if self.getServiceInfoString(info, iServiceInformation.sTransferBPS, lambda x: "%d kB/s" % (x/1024)) != "N/A":
-			self.stream['tbps'] = self.getServiceInfoString(info, iServiceInformation.sTransferBPS, lambda x: "%d kB/s" % (x/1024))
+		if self.getServiceInfoString(info, iServiceInformation.sFrameRate, lambda x: "%d" % ((x + 500) / 1000)) != "N/A":
+			self.stream['fps'] = self.getServiceInfoString(info, iServiceInformation.sFrameRate, lambda x: "%d" % ((x + 500) / 1000))
+		if self.getServiceInfoString(info, iServiceInformation.sTransferBPS, lambda x: "%d kB/s" % (x / 1024)) != "N/A":
+			self.stream['tbps'] = self.getServiceInfoString(info, iServiceInformation.sTransferBPS, lambda x: "%d kB/s" % (x / 1024))
 		self.tpdata = info.getInfoObject(iServiceInformation.sTransponderData)
 		if self.tpdata:
 			self.stream['ttype'] = self.tpdata.get('tuner_type', '')

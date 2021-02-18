@@ -19,7 +19,7 @@ class MessageBox(Screen):
 		self.type = type
 		Screen.__init__(self, session)
 		if simple:
-			self.skinName="MessageBoxSimple"
+			self.skinName = "MessageBoxSimple"
 
 		self.msgBoxID = msgBoxID
 

@@ -10,6 +10,6 @@ class TextAddAfter(Converter, object):
 
 	@cached
 	def getText(self):
-		return  str(str(self.source.text) + str(self.type))
+		return str(str(self.source.text) + str(self.type))
 
 	text = property(getText)

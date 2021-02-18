@@ -10,6 +10,6 @@ class TextToUpper(Converter, object):
 
 	@cached
 	def getText(self):
-		return  self.source.text.upper()
+		return self.source.text.upper()
 
 	text = property(getText)

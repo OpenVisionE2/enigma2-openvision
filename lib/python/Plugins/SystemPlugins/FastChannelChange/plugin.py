@@ -19,7 +19,7 @@ g_default_fcc = (g_max_fcc) > 5 and 5 or g_max_fcc
 
 config.plugins.fccsetup = ConfigSubsection()
 config.plugins.fccsetup.activate = ConfigYesNo(default=False)
-config.plugins.fccsetup.maxfcc = ConfigSelection(default=str(g_default_fcc), choices=list((str(n), str(n)) for n in range(2, g_max_fcc+1)))
+config.plugins.fccsetup.maxfcc = ConfigSelection(default=str(g_default_fcc), choices=list((str(n), str(n)) for n in range(2, g_max_fcc + 1)))
 config.plugins.fccsetup.zapupdown = ConfigYesNo(default=True)
 config.plugins.fccsetup.history = ConfigYesNo(default=False)
 config.plugins.fccsetup.priority = ConfigSelection(default="zapupdown", choices={"zapupdown": _("Zap Up/Down"), "historynextback": _("History Prev/Next")})
@@ -262,14 +262,14 @@ class FCCSupport:
 			serviceRefListSize = len(serviceRefList)
 			curServiceIndex = serviceRefList.index(curServiceRef)
 
-			for x in range(self.maxFCC-1):
-				if x > (serviceRefListSize-2): # if not ((x+1) <= (serviceRefListSize-1))
+			for x in range(self.maxFCC - 1):
+				if x > (serviceRefListSize - 2): # if not ((x+1) <= (serviceRefListSize-1))
 					break
 
 				idx = (x / 2) + 1
 				if x % 2:
 					idx *= -1 # idx : [ 1, -1, 2, -2, 3, -3, 4, -4 ....]
-				idx = (curServiceIndex+idx) % serviceRefListSize # calc wraparound
+				idx = (curServiceIndex + idx) % serviceRefListSize # calc wraparound
 				try:
 					fccZapUpDownList.append(serviceRefList[idx])
 				except:
@@ -285,12 +285,12 @@ class FCCSupport:
 		history_len = len(history)
 
 		if history_len > 1 and history_pos > 0:
-			historyPrev = history[history_pos-1][:][-1].toString()
+			historyPrev = history[history_pos - 1][:][-1].toString()
 			if self.isPlayableFCC(historyPrev):
 				historyList.append(historyPrev)
 
-		if history_len > 1 and history_pos < (history_len-1):
-			historyNext = history[history_pos+1][:][-1].toString()
+		if history_len > 1 and history_pos < (history_len - 1):
+			historyNext = history[history_pos + 1][:][-1].toString()
 			if self.isPlayableFCC(historyNext):
 				historyList.append(historyNext)
 
@@ -327,7 +327,7 @@ class FCCSupport:
 			self.FCCReconfigureFccList()
 
 	def addFCCList(self, newlist):
-		fccListMaxLen = self.maxFCC-1
+		fccListMaxLen = self.maxFCC - 1
 		for sref in newlist:
 			if len(self.fccList) >= fccListMaxLen:
 				break
@@ -447,7 +447,7 @@ class FCCSupport:
 		self.fccTimeoutTimer.stop()
 
 class FCCSetup(Screen, ConfigListScreen):
-	skin = 	"""
+	skin = """
 		<screen position="center,center" size="590,320" >
 			<ePixmap pixmap="buttons/red.png" position="90,15" size="140,40" alphatest="on" />
 			<ePixmap pixmap="buttons/green.png" position="360,15" size="140,40" alphatest="on" />

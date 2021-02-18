@@ -59,7 +59,7 @@ class EPGSelection(Screen):
 			self["key_yellow"] = StaticText()
 			self["key_blue"] = StaticText()
 			self["key_red"] = StaticText()
-			self.currentService=service
+			self.currentService = service
 			self.eventid = eventid
 			self.zapFunc = None
 		elif isinstance(service, eServiceReference) or isinstance(service, str):
@@ -67,7 +67,7 @@ class EPGSelection(Screen):
 			self.type = EPG_TYPE_SINGLE
 			self["key_yellow"] = StaticText()
 			self["key_blue"] = StaticText(_("Select Channel"))
-			self.currentService=ServiceReference(service)
+			self.currentService = ServiceReference(service)
 			self.zapFunc = zapFunc
 			self.sort_type = 0
 			self.setSortDescription()
@@ -132,7 +132,7 @@ class EPGSelection(Screen):
 			self.select = False
 		try:
 			from Plugins.Extensions.YTTrailer.plugin import baseEPGSelection__init__
-			description=_("Search yt-trailer for event")
+			description = _("Search yt-trailer for event")
 		except ImportError as ie:
 			pass
 		else:
@@ -159,9 +159,9 @@ class EPGSelection(Screen):
 	def runTMBD(self):
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py")):
 			from Plugins.Extensions.TMBD.plugin import TMBD
-			description=_("TMBD Details")
-			description=_("TMBD details for event")
-			description=_("Query details from the Internet Movie Database")
+			description = _("TMBD Details")
+			description = _("TMBD details for event")
+			description = _("Query details from the Internet Movie Database")
 			cur = self["list"].getCurrent()
 			if cur[0] is not None:
 				name2 = cur[0].getEventName() or ''
@@ -224,7 +224,7 @@ class EPGSelection(Screen):
 		if self.type == EPG_TYPE_MULTI:
 			global mepg_config_initialized
 			if not mepg_config_initialized:
-				config.misc.prev_mepg_time=ConfigClock(default=time())
+				config.misc.prev_mepg_time = ConfigClock(default=time())
 				mepg_config_initialized = True
 			self.session.openWithCallback(self.onDateTimeInputClosed, TimeDateInput, config.misc.prev_mepg_time)
 
@@ -262,7 +262,7 @@ class EPGSelection(Screen):
 	def onDateTimeInputClosed(self, ret):
 		if len(ret) > 1:
 			if ret[0]:
-				self.ask_time=ret[1]
+				self.ask_time = ret[1]
 				self["list"].fillMultiEPG(self.services, ret[1])
 
 	def closeScreen(self):

@@ -31,7 +31,7 @@ class EventViewBase:
 	def __init__(self, event, Ref, callback=None, similarEPGCB=None, parent=None):
 		self.similarEPGCB = similarEPGCB
 		self.cbFunc = callback
-		self.currentService=Ref
+		self.currentService = Ref
 		self.isRecording = (not Ref.ref.flags & eServiceReference.isGroup) and Ref.ref.getPath()
 		self.event = event
 		self["Service"] = ServiceEvent()
@@ -225,7 +225,7 @@ class EventViewBase:
 		self.finishedAdd(answer)
 
 	def setService(self, service):
-		self.currentService=service
+		self.currentService = service
 		self["Service"].newService(service.ref)
 		if self.isRecording:
 			self["channel"].setText(_("Recording"))
@@ -260,7 +260,7 @@ class EventViewBase:
 				short = ""
 		if short and ext:
 			if short.find(ext):
-				short =""
+				short = ""
 			else:
 				ext = short + "\n\n" + ext
 		elif short:
@@ -278,7 +278,7 @@ class EventViewBase:
 		begintime = localtime(begint)
 		endtime = localtime(begint + event.getDuration())
 		self["datetime"].setText("%s - %s" % (strftime("%s, %s" % (config.usage.date.short.value, config.usage.time.short.value), begintime), strftime(config.usage.time.short.value, endtime)))
-		self["duration"].setText(_("%d min")%(event.getDuration()/60))
+		self["duration"].setText(_("%d min") % (event.getDuration() / 60))
 		self["key_red"].setText("")
 		if self.SimilarBroadcastTimer is not None:
 			self.SimilarBroadcastTimer.start(400, True)
@@ -332,9 +332,9 @@ class EventViewBase:
 				text += "\n%s  -  %s" % (strftime(config.usage.date.long.value + ", " + config.usage.time.short.value, localtime(x[1])), x[0])
 
 			descr = self["epg_description"]
-			descr.setText(descr.getText()+text)
+			descr.setText(descr.getText() + text)
 			descr = self["FullDescription"]
-			descr.setText(descr.getText()+text)
+			descr.setText(descr.getText() + text)
 			self["key_red"].setText(_("Similar"))
 
 	def openSimilarList(self):

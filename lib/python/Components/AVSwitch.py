@@ -197,7 +197,7 @@ def InitAVSwitch():
 			else:
 				open("/proc/stb/audio/ac3", "w").write(configElement.value and "downmix" or "passthrough")
 		if SystemInfo["DreamBoxAudio"]:
-			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI"))]
+			choice_list = [("downmix", _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel", _("convert to multi-channel PCM")), ("hdmi_best", _("use best / controlled by HDMI"))]
 			config.av.downmix_ac3 = ConfigSelection(choices=choice_list, default="downmix")
 		else:
 			config.av.downmix_ac3 = ConfigYesNo(default=True)
@@ -207,10 +207,10 @@ def InitAVSwitch():
 		def setAC3plusTranscode(configElement):
 			open("/proc/stb/audio/ac3plus", "w").write(configElement.value)
 		if SystemInfo["DreamBoxAudio"]:
-			choice_list = [("use_hdmi_caps", _("controlled by HDMI")), ("force_ac3", _("convert to AC3")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI")), ("force_ddp",  _("force AC3plus"))]
+			choice_list = [("use_hdmi_caps", _("controlled by HDMI")), ("force_ac3", _("convert to AC3")), ("multichannel", _("convert to multi-channel PCM")), ("hdmi_best", _("use best / controlled by HDMI")), ("force_ddp", _("force AC3plus"))]
 			config.av.transcodeac3plus = ConfigSelection(choices=choice_list, default="force_ac3")
 		elif platform in ("gb7252", "gb72604"):
-			choice_list = [("downmix", _("Downmix")), ("passthrough", _("Passthrough")), ("force_ac3", _("convert to AC3")), ("multichannel",  _("convert to multi-channel PCM")), ("force_dts",  _("convert to DTS"))]
+			choice_list = [("downmix", _("Downmix")), ("passthrough", _("Passthrough")), ("force_ac3", _("convert to AC3")), ("multichannel", _("convert to multi-channel PCM")), ("force_dts", _("convert to DTS"))]
 			config.av.transcodeac3plus = ConfigSelection(choices=choice_list, default="force_ac3")
 		else:
 			choice_list = [("use_hdmi_caps", _("controlled by HDMI")), ("force_ac3", _("convert to AC3"))]
@@ -227,17 +227,17 @@ def InitAVSwitch():
 		def setDTSHD(configElement):
 			open("/proc/stb/audio/dtshd", "w").write(configElement.value)
 		if model in ("dm7080", "dm820"):
-			choice_list = [("use_hdmi_caps",  _("controlled by HDMI")), ("force_dts", _("convert to DTS"))]
+			choice_list = [("use_hdmi_caps", _("controlled by HDMI")), ("force_dts", _("convert to DTS"))]
 			config.av.dtshd = ConfigSelection(choices=choice_list, default="use_hdmi_caps")
 		else:
-			choice_list = [("downmix",  _("Downmix")), ("force_dts", _("convert to DTS")), ("use_hdmi_caps",  _("controlled by HDMI")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI"))]
+			choice_list = [("downmix", _("Downmix")), ("force_dts", _("convert to DTS")), ("use_hdmi_caps", _("controlled by HDMI")), ("multichannel", _("convert to multi-channel PCM")), ("hdmi_best", _("use best / controlled by HDMI"))]
 			config.av.dtshd = ConfigSelection(choices=choice_list, default="downmix")
 		config.av.dtshd.addNotifier(setDTSHD)
 
 	if SystemInfo["CanWMAPRO"]:
 		def setWMAPRO(configElement):
 			open("/proc/stb/audio/wmapro", "w").write(configElement.value)
-		choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI"))]
+		choice_list = [("downmix", _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel", _("convert to multi-channel PCM")), ("hdmi_best", _("use best / controlled by HDMI"))]
 		config.av.wmapro = ConfigSelection(choices=choice_list, default="downmix")
 		config.av.wmapro.addNotifier(setWMAPRO)
 
@@ -248,10 +248,10 @@ def InitAVSwitch():
 			else:
 				open("/proc/stb/audio/aac", "w").write(configElement.value and "downmix" or "passthrough")
 		if SystemInfo["DreamBoxAudio"]:
-			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("hdmi_best",  _("use best / controlled by HDMI"))]
+			choice_list = [("downmix", _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel", _("convert to multi-channel PCM")), ("hdmi_best", _("use best / controlled by HDMI"))]
 			config.av.downmix_aac = ConfigSelection(choices=choice_list, default="downmix")
 		elif platform in ("gb7252", "gb72604"):
-			choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("force_ac3", _("convert to AC3")), ("force_dts",  _("convert to DTS")), ("use_hdmi_cacenter",  _("use_hdmi_cacenter")), ("wide",  _("wide")), ("extrawide",  _("extrawide"))]
+			choice_list = [("downmix", _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel", _("convert to multi-channel PCM")), ("force_ac3", _("convert to AC3")), ("force_dts", _("convert to DTS")), ("use_hdmi_cacenter", _("use_hdmi_cacenter")), ("wide", _("wide")), ("extrawide", _("extrawide"))]
 			config.av.downmix_aac = ConfigSelection(choices=choice_list, default="downmix")
 		else:
 			config.av.downmix_aac = ConfigYesNo(default=True)
@@ -260,7 +260,7 @@ def InitAVSwitch():
 	if SystemInfo["CanDownmixAACPlus"]:
 		def setAACDownmixPlus(configElement):
 			open("/proc/stb/audio/aacplus", "w").write(configElement.value)
-		choice_list = [("downmix",  _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel",  _("convert to multi-channel PCM")), ("force_ac3", _("convert to AC3")), ("force_dts",  _("convert to DTS")), ("use_hdmi_cacenter",  _("use_hdmi_cacenter")), ("wide",  _("wide")), ("extrawide",  _("extrawide"))]
+		choice_list = [("downmix", _("Downmix")), ("passthrough", _("Passthrough")), ("multichannel", _("convert to multi-channel PCM")), ("force_ac3", _("convert to AC3")), ("force_dts", _("convert to DTS")), ("use_hdmi_cacenter", _("use_hdmi_cacenter")), ("wide", _("wide")), ("extrawide", _("extrawide"))]
 		config.av.downmix_aacplus = ConfigSelection(choices=choice_list, default="downmix")
 		config.av.downmix_aacplus.addNotifier(setAACDownmixPlus)
 

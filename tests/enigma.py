@@ -140,15 +140,15 @@ getPrevAsciiCode = None
 
 class eServiceReference:
 
-	isDirectory=1
-	mustDescent=2
-	canDescent=4
-	flagDirectory=isDirectory|mustDescent|canDescent
-	shouldSort=8
-	hasSortKey=16
-	sort1=32
-	isMarker=64
-	isGroup=128
+	isDirectory = 1
+	mustDescent = 2
+	canDescent = 4
+	flagDirectory = isDirectory | mustDescent | canDescent
+	shouldSort = 8
+	hasSortKey = 16
+	sort1 = 32
+	isMarker = 64
+	isGroup = 128
 
 	def __init__(self, ref):
 		self.ref = ref
@@ -291,7 +291,7 @@ print("[enigma] import directories")
 import Tools.Directories
 print("[enigma] done")
 
-chroot="."
+chroot = "."
 
 for (x, (y, z)) in Tools.Directories.defaultPaths.items():
 	Tools.Directories.defaultPaths[x] = (chroot + y, z)

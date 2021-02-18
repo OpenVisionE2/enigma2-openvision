@@ -40,7 +40,7 @@ class RouteInfo(Converter, object):
 		for line in open("/proc/net/route"):
 			if self.type == self.Info and line.split()[0] == "eth0" and line.split()[3] == "0003":
 				info = "lan"
-			elif self.type == self.Info and  (line.split()[0] == "wlan0" or line.split()[0] == "ra0") and line.split()[3] == "0003":
+			elif self.type == self.Info and (line.split()[0] == "wlan0" or line.split()[0] == "ra0") and line.split()[3] == "0003":
 				info = "wifi"
 			elif self.type == self.Info and line.split()[0] == "ppp0" and line.split()[3] == "0003":
 				info = "3g"

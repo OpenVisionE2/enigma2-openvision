@@ -289,7 +289,7 @@ class FastScanAutoScreen(FastScanScreen):
 	def __init__(self, session, lastConfiguration):
 		print("[FastScan] start %s" % lastConfiguration[1])
 		Screen.__init__(self, session)
-		self.skinName="Standby"
+		self.skinName = "Standby"
 
 		self["actions"] = ActionMap(["StandbyActions"],
 		{

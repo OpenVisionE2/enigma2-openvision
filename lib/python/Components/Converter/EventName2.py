@@ -93,13 +93,13 @@ class EventName2(Converter, object):
 							elif self.type is self.NEXT_TIME_DURATION:
 								return "%02d:%02d  (%s)" % (t[3], t[4], duration)
 							else:
-								return "%s" %  eventNext[0][4]
+								return "%s" % eventNext[0][4]
 						else:
 							return ''
 					elif self.type is self.NEXT_DESCRIPTION:
 						for i in (6, 5, 4):
 							if len(eventNext[0]) > i and eventNext[0][i]:
-								return "%s" %  eventNext[0][i]
+								return "%s" % eventNext[0][i]
 				else:
 					return ''
 			else:
@@ -110,7 +110,7 @@ class EventName2(Converter, object):
 			info = reference and self.source.info
 			countitem = 10
 			if info is not None:
-				eventNext =  self.epgcache.lookupEvent(["IBDCT", (reference.toString(), 0, -1, -1)])
+				eventNext = self.epgcache.lookupEvent(["IBDCT", (reference.toString(), 0, -1, -1)])
 				if self.type is self.NEXT_NAME_NEXT or self.type is self.NEXT_NAME_NEXTWT:
 					countitem = 4
 				if eventNext:

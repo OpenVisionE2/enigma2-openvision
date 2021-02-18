@@ -97,14 +97,14 @@ class PowerTimerEntry(timer.TimerEntry, object):
 # back-off an auto-repeat timer by its autosleepdelay, not 5, 10, 20, 30 mins
 
 		if self.autosleeprepeat == "repeated" and self.timerType in (TIMERTYPE.AUTOSTANDBY, TIMERTYPE.AUTODEEPSTANDBY):
-			self.backoff = int(self.autosleepdelay)*60
+			self.backoff = int(self.autosleepdelay) * 60
 		elif self.backoff == 0:
-			self.backoff = 5*60
+			self.backoff = 5 * 60
 		else:
 			self.backoff *= 2
 			if self.backoff > 1800:
 				self.backoff = 1800
-		self.log(10, "backoff: retry in %d minutes" % (int(self.backoff)/60))
+		self.log(10, "backoff: retry in %d minutes" % (int(self.backoff) / 60))
 
 # If this is the first backoff of a repeat timer remember the original
 # begin/end times, so that we can use *these* when setting up the repeat.
@@ -130,7 +130,7 @@ class PowerTimerEntry(timer.TimerEntry, object):
 # and sets the initial delay.
 
 			eActionMap.getInstance().bindAction('', -0x7FFFFFFF, self.keyPressed)
-			self.begin = time() + int(self.autosleepdelay)*60
+			self.begin = time() + int(self.autosleepdelay) * 60
 			if self.end <= self.begin:
 				self.end = self.begin
 
@@ -176,11 +176,11 @@ class PowerTimerEntry(timer.TimerEntry, object):
 						eActionMap.getInstance().unbindAction('', self.keyPressed)
 						return True
 					else:
-						self.begin = time() + int(self.autosleepdelay)*60
+						self.begin = time() + int(self.autosleepdelay) * 60
 						if self.end <= self.begin:
 							self.end = self.begin
 				else:
-					self.begin = time() + int(self.autosleepdelay)*60
+					self.begin = time() + int(self.autosleepdelay) * 60
 					if self.end <= self.begin:
 						self.end = self.begin
 
@@ -223,7 +223,7 @@ class PowerTimerEntry(timer.TimerEntry, object):
 							eActionMap.getInstance().unbindAction('', self.keyPressed)
 							return True
 						else:
-							self.begin = time() + int(self.autosleepdelay)*60
+							self.begin = time() + int(self.autosleepdelay) * 60
 							if self.end <= self.begin:
 								self.end = self.begin
 
@@ -288,9 +288,9 @@ class PowerTimerEntry(timer.TimerEntry, object):
 		if not self.autoincrease:
 			return False
 		if entry is None:
-			new_end =  int(time()) + self.autoincreasetime
+			new_end = int(time()) + self.autoincreasetime
 		else:
-			new_end = entry.begin -30
+			new_end = entry.begin - 30
 
 		dummyentry = PowerTimerEntry(self.begin, new_end, disabled=True, afterEvent=self.afterEvent, timerType=self.timerType)
 		dummyentry.disabled = self.disabled
@@ -322,7 +322,7 @@ class PowerTimerEntry(timer.TimerEntry, object):
 			Notifications.AddNotification(Screens.Standby.TryQuitMainloop, 3)
 
 	def keyPressed(self, key, tag):
-		self.begin = time() + int(self.autosleepdelay)*60
+		self.begin = time() + int(self.autosleepdelay) * 60
 		if self.end <= self.begin:
 			self.end = self.begin
 
@@ -533,7 +533,7 @@ class PowerTimer(timer.Timer):
 			ignore_before = 0
 			if config.recording.keep_timers.value > 0:
 				if str(timer.autosleeprepeat) == "repeated" or int(timer.repeated) > 0:
-					ignore_before = time() - config.recording.keep_timers.value*86400
+					ignore_before = time() - config.recording.keep_timers.value * 86400
 
 			for log_time, code, msg in timer.log_entries:
 				if log_time < ignore_before:
@@ -578,7 +578,7 @@ class PowerTimer(timer.Timer):
 
 	def getNextPowerManagerTime(self):
 		nextrectime = self.getNextPowerManagerTimeOld()
-		faketime = time()+300
+		faketime = time() + 300
 		if config.timeshift.isRecording.value:
 			if 0 < nextrectime < faketime:
 				return nextrectime

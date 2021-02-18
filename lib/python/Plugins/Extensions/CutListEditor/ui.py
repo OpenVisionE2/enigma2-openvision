@@ -35,12 +35,12 @@ def CutListEntry(where, what, where_next=None):
 	m = (w / 60000) % 60
 	h = w / 3600000
 	type, type_col = (
-		("IN",   0x004000),
-		("OUT",  0x400000),
+		("IN", 0x004000),
+		("OUT", 0x400000),
 		("MARK", 0x000040),
 		("LAST", 0x000000),
-		("EOF",  0x000000),
-		("",     0x000000)
+		("EOF", 0x000000),
+		("", 0x000000)
 	)[what if what < 5 else 5]
 
 	d = SecToMSS((where_next / 90 - w) / 1000) if where_next else ""
@@ -228,10 +228,10 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 		self.onPlayStateChanged.append(self.updateStateLabel)
 		self.updateStateLabel(self.seekstate)
 
-		self["key_red"]    = Label(_("Start cut"))
-		self["key_green"]  = Label(_("End cut"))
+		self["key_red"] = Label(_("Start cut"))
+		self["key_green"] = Label(_("End cut"))
 		self["key_yellow"] = Label(_("Step back"))
-		self["key_blue"]   = Label(_("Step forward"))
+		self["key_blue"] = Label(_("Step forward"))
 
 		self["SeekActions"].actions.update({"stepFwd": self.stepFwd})
 		self.helpList.append((self["SeekActions"], "CutlistSeekActions", [("stepFwd", _("Step forward"))]))
@@ -281,7 +281,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 			if not [x for x in self.cut_list if x[1] != self.CUT_TYPE_MARK]:
 				# Assume the start mark has been missed if it's not less than
 				# 16 minutes.
-				if self.cut_list[0][0] < 16*60*90000:
+				if self.cut_list[0][0] < 16 * 60 * 90000:
 					cl.index = 1
 			else:
 				# Playback will start at the initial IN cut, so point the list
@@ -422,7 +422,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 			if i == len(cl) - 1:
 				n = length
 			else:
-				n = cl[i+1][0]
+				n = cl[i + 1][0]
 			r.append(CutListEntry(*e, where_next=n))
 		if length:
 			r.append(CutListEntry(length, self.CUT_TYPE_EOF))
@@ -444,7 +444,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 			# seekable, but better than waiting for a timeout when it's not).
 			if where[0][1] == self.CUT_TYPE_EOF:
 				curpos = seek.getPlayPosition()
-				seek.seekTo(pts-2)
+				seek.seekTo(pts - 2)
 				i = 0
 				while i < 15:
 					i += 1
@@ -470,8 +470,8 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 		if self.last_cuts[l2][0][1] != self.CUT_TYPE_EOF:
 			l2 += 1
 		for i in range(min(l1, l2)):
-			if new_list[l1-i-1][0] != self.last_cuts[l2-i-1][0]:
-				self["cutlist"].setIndex(l1-i-1)
+			if new_list[l1 - i - 1][0] != self.last_cuts[l2 - i - 1][0]:
+				self["cutlist"].setIndex(l1 - i - 1)
 				break
 		self.last_cuts = new_list
 
@@ -545,7 +545,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 			for (i, (where, what)) in enumerate(self.cut_list[:]):
 				if what == self.CUT_TYPE_IN:
 					if not first:
-						self.cut_list.insert(i+added, (where, self.CUT_TYPE_MARK))
+						self.cut_list.insert(i + added, (where, self.CUT_TYPE_MARK))
 						added += 1
 					first = False
 			self.putCuesheet(inhibit_seek=True)
@@ -707,7 +707,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 
 	def punch(self, movie):
 		outpts = [x[0] for x in self.cut_list if x[1] == self.CUT_TYPE_OUT]
-		inpts  = [x[0] for x in self.cut_list if x[1] == self.CUT_TYPE_IN]
+		inpts = [x[0] for x in self.cut_list if x[1] == self.CUT_TYPE_IN]
 		if not outpts and not inpts:
 			return
 		if not outpts or inpts[0] < outpts[0]:
@@ -762,8 +762,8 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 		for i in zip(data[0::2], data[1::2]):
 			current = i[1] - currentDelta
 			diff = current - lastpts_t
-			if diff <= 0 or diff > 90000*10:
-				currentDelta = i[1] - lastpts_t - 90000/25
+			if diff <= 0 or diff > 90000 * 10:
+				currentDelta = i[1] - lastpts_t - 90000 / 25
 			lastpts_t = i[1] - currentDelta
 			append((lastpts_t, i[0]))
 

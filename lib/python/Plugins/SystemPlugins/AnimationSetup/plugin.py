@@ -40,7 +40,7 @@ if brand != 'gigablue':
 	config.misc.listbox_animation_default = ConfigSelection(default=g_default["listbox"], choices=[("0", _("Disable")), ("1", _("Enable")), ("2", _("Same behavior as current animation"))])
 
 class AnimationSetupConfig(ConfigListScreen, Screen):
-	skin="""
+	skin = """
 		<screen position="center,center" size="600,140" title="Animation Setup">
 			<widget name="config" position="0,0" size="600,100" scrollbarMode="showOnDemand" />
 			<ePixmap pixmap="buttons/red.png" position="0,100" size="140,40" alphatest="on" />
@@ -66,7 +66,7 @@ class AnimationSetupConfig(ConfigListScreen, Screen):
 			"red": self.keyRed,
 			"cancel": self.keyRed,
 		}, -2)
-		self["key_red"]   = StaticText(_("Cancel"))
+		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Save"))
 		self["key_yellow"] = StaticText(_("Default"))
 

@@ -117,7 +117,7 @@ class Trashcan:
 			return
 		self.isCleaning = True
 		ctimeLimit = time.time() - (config.usage.movielist_trashcan_days.value * 3600 * 24)
-		reserveBytes = 1024*1024*1024 * int(config.usage.movielist_trashcan_reserve.value)
+		reserveBytes = 1024 * 1024 * 1024 * int(config.usage.movielist_trashcan_reserve.value)
 		cleanset = self.dirty
 		self.dirty = set()
 		threads.deferToThread(purge, cleanset, ctimeLimit, reserveBytes).addCallbacks(self.cleanReady, self.cleanFail)
@@ -157,7 +157,7 @@ def purge(cleanset, ctimeLimit, reserveBytes):
 						candidates.append((st.st_ctime, fn, st.st_size))
 						size += st.st_size
 				except Exception as e:
-					print("[Trashcan] Failed to stat %s:"% name, e)
+					print("[Trashcan] Failed to stat %s:" % name, e)
 			# Remove empty directories if possible
 			for name in dirs:
 				try:
@@ -185,7 +185,7 @@ def cleanAll(trash):
 			try:
 				enigma.eBackgroundFileEraser.getInstance().erase(fn)
 			except Exception as e:
-				print("[Trashcan] Failed to erase %s:"% name, e)
+				print("[Trashcan] Failed to erase %s:" % name, e)
 		# Remove empty directories if possible
 		for name in dirs:
 			try:
@@ -203,7 +203,7 @@ class CleanTrashTask(Components.Task.PythonTask):
 		self.reserveBytes = reserveBytes
 
 	def work(self):
-		mounts=[]
+		mounts = []
 		matches = []
 		print("[Trashcan] probing folders")
 		f = open('/proc/mounts', 'r')
@@ -251,7 +251,7 @@ class CleanTrashTask(Components.Task.PythonTask):
 								candidates.append((st.st_ctime, fn, st.st_size))
 								size += st.st_size
 						except Exception as e:
-							print("[Trashcan] Failed to stat %s:"% name, e)
+							print("[Trashcan] Failed to stat %s:" % name, e)
 					# Remove empty directories if possible
 					for name in dirs:
 						try:

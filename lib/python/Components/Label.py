@@ -88,11 +88,11 @@ class MultiColorLabel(Label):
 			if len(self.foreColors) > x:
 				self.instance.setForegroundColor(self.foreColors[x])
 			else:
-				print("[Label] setForegroundColorNum(%d) failed! defined colors:" %(x), self.foreColors)
+				print("[Label] setForegroundColorNum(%d) failed! defined colors:" % (x), self.foreColors)
 
 	def setBackgroundColorNum(self, x):
 		if self.instance:
 			if len(self.backColors) > x:
 				self.instance.setBackgroundColor(self.backColors[x])
 			else:
-				print("[Label] setBackgroundColorNum(%d) failed! defined colors:" %(x), self.backColors)
+				print("[Label] setBackgroundColorNum(%d) failed! defined colors:" % (x), self.backColors)
