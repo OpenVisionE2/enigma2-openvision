@@ -55,6 +55,7 @@ currentDisplaySkin = None
 callbacks = []
 runCallbacks = False
 
+
 # Skins are loaded in order of priority.  Skin with highest priority is
 # loaded last.  This is usually the user-specified skin.  In this way
 # any duplicated screens will be replaced by a screen of the same name
@@ -67,8 +68,6 @@ runCallbacks = False
 # SCOPE_CURRENT_LCDSKIN.  The full path is NOT saved.
 # E.g. "MySkin/skin_display.xml"
 #
-
-
 def InitSkins():
 	global currentPrimarySkin, currentDisplaySkin
 	runCallbacks = False
@@ -110,17 +109,15 @@ def InitSkins():
 		loadSkin(USER_SKIN, scope=SCOPE_CURRENT_SKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID)
 	runCallbacks = True
 
+	
 # Temporary entry point for older versions of mytest.py.
 #
-
-
 def loadSkinData(desktop):
 	InitSkins()
 
+	
 # Method to load a skin XML file into the skin data structures.
 #
-
-
 def loadSkin(filename, scope=SCOPE_SKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID):
 	global windowStyles
 	filename = resolveFilename(scope, filename)
@@ -247,6 +244,7 @@ def parseColor(value):
 			raise SkinError("Color '%s' must be #aarrggbb or valid named color" % value)
 	return gRGB(int(value[1:], 0x10))
 
+
 # Convert a coordinate string into a number.  Used to convert object position and
 # size attributes into a number.
 #    s is the input string.
@@ -269,8 +267,6 @@ def parseColor(value):
 #         h      : Multiply by current font height. (Only to be used in elements where the font attribute is available, i.e. not "None")
 #         f      : Replace with getSkinFactor().
 #
-
-
 def parseCoordinate(value, parent, size=0, font=None):
 	value = value.strip()
 	if value == "center":  # For speed as this can be common case.
@@ -344,6 +340,7 @@ def parseFont(value, scale=((1, 1), (1, 1))):
 	# print("[Skin] DEBUG: Scale font %d -> %d." % (size, int(size) * scale[1][0] / scale[1][1]))
 	return gFont(name, int(size) * scale[0][0] / scale[0][1])
 
+
 # Convert a parameter string into a value based on string triggers.  The type
 # and value returned is based on the trigger.
 #
@@ -355,8 +352,6 @@ def parseFont(value, scale=((1, 1), (1, 1))):
 #         font;zize : The parameter is a font name with a font size (Type: List[Font, Size]).
 #         123       : The parameter is an integer (Type: Integer).
 #
-
-
 def parseParameter(value):
 	"""This function is responsible for parsing parameters in the skin, it can parse integers, floats, hex colors, hex integers, named colors, fonts and strings."""
 	if value[0] == "*":  # String.
@@ -1021,6 +1016,7 @@ class additionalWidget:
 
 # Class that makes a tuple look like something else. Some plugins just assume
 # that size is a string and try to parse it. This class makes that work.
+#
 class SizeTuple(tuple):
 	def split(self, *args):
 		return str(self[0]), str(self[1])
@@ -1342,12 +1338,11 @@ def readSkin(screen, skin, names, desktop):
 	screen = None
 	usedComponents = None
 
+	
 # Return a set of all the widgets found in a screen. Panels will be expanded
 # recursively until all referenced widgets are captured. This code only performs
 # a simple scan of the XML and no skin processing is performed.
 #
-
-
 def findWidgets(name):
 	widgetSet = set()
 	element, path = domScreens.get(name, (None, None))
@@ -1369,26 +1364,24 @@ def findWidgets(name):
 					widgetSet.update(findWidgets(name))
 	return widgetSet
 
+
 # Return a scaling factor (float) that can be used to rescale screen displays
 # to suit the current resolution of the screen.  The scales are based on a
 # default screen resolution of HD (720p).  That is the scale factor for a HD
 # screen will be 1.
 #
-
-
 def getSkinFactor():
 	skinfactor = getDesktop(GUI_SKIN_ID).size().height() / 720.0
 	# if skinfactor not in [0.8, 1, 1.5, 3, 6]:
 	# 	print("[Skin] Warning: Unexpected result for getSkinFactor '%0.4f'!" % skinfactor)
 	return skinfactor
 
+
 # Search the domScreens dictionary to see if any of the screen names provided
 # have a skin based screen.  This will allow coders to know if the named
 # screen will be skinned by the skin code.  A return of None implies that the
 # code must provide its own skin for the screen to be displayed to the user.
 #
-
-
 def findSkinScreen(names):
 	if not isinstance(names, list):
 		names = [names]
