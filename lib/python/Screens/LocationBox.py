@@ -114,7 +114,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 
 		# Custom Action Handler
 		class LocationBoxActionMap(HelpableActionMap):
-			def __init__(self, parent, context, actions={ }, prio=0):
+			def __init__(self, parent, context, actions={}, prio=0):
 				HelpableActionMap.__init__(self, parent, context, actions, prio)
 				self.box = parent
 

@@ -19,7 +19,7 @@ class EmptyEpg(VariableText, Renderer):
 		self.backText = ""
 
 	def applySkin(self, desktop, parent):
-		attribs = [ ]
+		attribs = []
 		for (attrib, value) in self.skinAttributes:
 			if attrib == "size":
 				self.sizeX = int(value.strip().split(",")[0])

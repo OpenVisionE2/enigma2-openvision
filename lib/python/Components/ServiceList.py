@@ -60,7 +60,7 @@ class ServiceList(GUIComponent):
 		self.progressPercentWidth = 0
 		self.fieldMargins = 10
 
-		self.onSelectionChanged = [ ]
+		self.onSelectionChanged = []
 
 	def applySkin(self, desktop, parent):
 		def foregroundColorMarked(value):
@@ -270,7 +270,7 @@ class ServiceList(GUIComponent):
 	def getRootServices(self):
 		serviceHandler = eServiceCenter.getInstance()
 		list = serviceHandler.list(self.root)
-		dest = [ ]
+		dest = []
 		if list is not None:
 			while True:
 				s = list.getNext()
@@ -323,7 +323,7 @@ class ServiceList(GUIComponent):
 		i = self.l
 		i.markedQueryStart()
 		ref = eServiceReference()
-		marked = [ ]
+		marked = []
 		while i.markedQueryNext(ref) == 0:
 			marked.append(ref.toString())
 			ref = eServiceReference()

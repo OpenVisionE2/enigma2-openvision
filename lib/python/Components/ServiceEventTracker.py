@@ -6,8 +6,8 @@ InfoBarCount = 0
 
 class InfoBarBase:
 
-	onInfoBarOpened = [ ]
-	onInfoBarClosed = [ ]
+	onInfoBarOpened = []
+	onInfoBarClosed = []
 
 	@staticmethod
 	def connectInfoBarOpened(fnc):
@@ -58,10 +58,10 @@ class InfoBarBase:
 
 class ServiceEventTracker:
 	"""Tracks service events into a screen"""
-	InfoBarStack = [ ]
+	InfoBarStack = []
 	InfoBarStackSize = 0
 	oldServiceStr = None
-	EventMap = { }
+	EventMap = {}
 	navcore = None
 
 	@staticmethod

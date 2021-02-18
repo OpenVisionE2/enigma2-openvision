@@ -42,7 +42,7 @@ class EPGList(GUIComponent):
 	def __init__(self, type=EPG_TYPE_SINGLE, selChangedCB=None, timer=None):
 		self.days = (_("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun"))
 		self.timer = timer
-		self.onSelChanged = [ ]
+		self.onSelChanged = []
 		if selChangedCB is not None:
 			self.onSelChanged.append(selChangedCB)
 		GUIComponent.__init__(self)
@@ -65,7 +65,7 @@ class EPGList(GUIComponent):
 			assert(type is EPG_TYPE_SIMILAR)
 			self.l.setBuildFunc(self.buildSimilarEntry)
 		self.epgcache = eEPGCache.getInstance()
-		self.clocks = [ LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_add.png')),
+		self.clocks = [LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_add.png')),
 				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_pre.png')),
 				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock.png')),
 				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/epgclock_prepost.png')),
@@ -105,7 +105,7 @@ class EPGList(GUIComponent):
 				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_pre.png')),
 				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock.png')),
 				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_post.png')) ]
+				LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, 'icons/pipclock_post.png'))]
 
 	def getEventFromId(self, service, eventid):
 		event = None
@@ -124,11 +124,11 @@ class EPGList(GUIComponent):
 			idx += 1
 		tmp = self.l.getCurrentSelection()
 		if tmp is None:
-			return ( None, None )
+			return (None, None)
 		eventid = tmp[idx+1]
 		service = ServiceReference(tmp[idx])
 		event = self.getEventFromId(service, eventid)
-		return ( event, service )
+		return (event, service)
 
 	def moveUp(self):
 		self.instance.moveSelection(self.instance.moveUp)
@@ -281,7 +281,7 @@ class EPGList(GUIComponent):
 		r1=self.service_rect
 		r2=self.progress_rect
 		r3=self.descr_rect
-		res = [ None ]
+		res = [None]
 		if clock_types:
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, r1.x, r1.y, r1.w - self.space * len(clock_types), r1.h, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, service_name))
 			for i in range(len(clock_types)):
@@ -317,11 +317,11 @@ class EPGList(GUIComponent):
 				return self.epgcache.lookupEvent(list, buildFunc)
 			else:
 				return self.epgcache.lookupEvent(list)
-		return [ ]
+		return []
 
 	def fillMultiEPG(self, services, stime=-1):
 		#t = time()
-		test = [ (service.ref.toString(), 0, stime) for service in services ]
+		test = [(service.ref.toString(), 0, stime) for service in services]
 		test.insert(0, 'X0RIBDTCn')
 		self.list = self.queryEPG(test)
 		self.l.setList(self.list)
@@ -330,7 +330,7 @@ class EPGList(GUIComponent):
 
 	def updateMultiEPG(self, direction):
 		#t = time()
-		test = [ x[3] and (x[1], direction, x[3]) or (x[1], direction, 0) for x in self.list ]
+		test = [x[3] and (x[1], direction, x[3]) or (x[1], direction, 0) for x in self.list]
 		test.insert(0, 'XRIBDTCn')
 		tmp = self.queryEPG(test)
 		cnt=0
@@ -347,7 +347,7 @@ class EPGList(GUIComponent):
 	def fillSingleEPG(self, service):
 		t = time()
 		epg_time = t - config.epg.histminutes.getValue()*60
-		test = [ 'RIBDT', (service.ref.toString(), 0, epg_time, -1) ]
+		test = ['RIBDT', (service.ref.toString(), 0, epg_time, -1)]
 		self.list = self.queryEPG(test)
 		self.l.setList(self.list)
 		if t != epg_time:

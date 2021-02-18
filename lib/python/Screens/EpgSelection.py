@@ -226,7 +226,7 @@ class EPGSelection(Screen):
 			if not mepg_config_initialized:
 				config.misc.prev_mepg_time=ConfigClock(default=time())
 				mepg_config_initialized = True
-			self.session.openWithCallback(self.onDateTimeInputClosed, TimeDateInput, config.misc.prev_mepg_time )
+			self.session.openWithCallback(self.onDateTimeInputClosed, TimeDateInput, config.misc.prev_mepg_time)
 
 	def furtherOptions(self):
 		menu = []
@@ -639,7 +639,7 @@ class EPGSelection(Screen):
 				self.applyButtonState(2)
 			else:
 				self.applyButtonState(1)
-			days = [ _("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun") ]
+			days = [_("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun")]
 			datestr = ""
 			if event is not None:
 				now = time()

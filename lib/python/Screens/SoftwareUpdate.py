@@ -41,7 +41,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 		Screen.__init__(self, session)
 		ProtectedScreen.__init__(self)
 
-		self.sliderPackages = { "enigma2": 1, "openvision": 2 }
+		self.sliderPackages = {"enigma2": 1, "openvision": 2}
 
 		self.setTitle(_("Software update"))
 		self.slider = Slider(0, 4)

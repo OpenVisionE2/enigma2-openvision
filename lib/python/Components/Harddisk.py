@@ -195,7 +195,7 @@ class Harddisk:
 		return -1
 
 	def Totalfree(self):
-		mediapath = [ ]
+		mediapath = []
 		freetot = 0
 		for parts in getProcMounts():
 			if os.path.realpath(parts[0]).startswith(self.dev_path):
@@ -588,10 +588,10 @@ def addInstallTask(job, package):
 
 class HarddiskManager:
 	def __init__(self):
-		self.hdd = [ ]
+		self.hdd = []
 		self.cd = ""
-		self.partitions = [ ]
-		self.devices_scanned_on_init = [ ]
+		self.partitions = []
+		self.devices_scanned_on_init = []
 		self.on_partition_list_change = CList()
 		self.enumerateBlockDevices()
 		self.enumerateNetworkMounts()
@@ -785,7 +785,7 @@ class HarddiskManager:
 		return len(self.hdd)
 
 	def HDDList(self):
-		list = [ ]
+		list = []
 		for hd in self.hdd:
 			hdd = hd.model() + " - " + hd.bus()
 			cap = hd.capacity()

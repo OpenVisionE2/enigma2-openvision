@@ -203,7 +203,7 @@ class MovieList(GUIComponent):
 		if root is not None:
 			self.reload(root)
 
-		self.onSelectionChanged = [ ]
+		self.onSelectionChanged = []
 		self.iconPart = []
 		for part in range(5):
 			self.iconPart.append(LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/part_%d_4.png" % part)))
@@ -374,7 +374,7 @@ class MovieList(GUIComponent):
 		space = self.spaceIconeText
 		r = self.spaceRight
 		pathName = serviceref.getPath()
-		res = [ None ]
+		res = [None]
 
 		if serviceref.flags & eServiceReference.mustDescent:
 			# Directory

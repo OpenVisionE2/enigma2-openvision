@@ -4,7 +4,7 @@ from __future__ import print_function
 import time
 import tests
 
-recorded_events = [ ]
+recorded_events = []
 
 def event(self, name, args, kwargs):
 	global recorded_events
@@ -21,7 +21,7 @@ def eventfnc(f):
 def get_events():
 	global recorded_events
 	r = recorded_events
-	recorded_events = [ ]
+	recorded_events = []
 	return r
 
 def start_log():

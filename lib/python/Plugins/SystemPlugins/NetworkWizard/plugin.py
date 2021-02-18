@@ -11,7 +11,7 @@ def NetworkWizardMain(session, **kwargs):
 
 def startSetup(menuid):
 	if menuid != "system":
-		return [ ]
+		return []
 
 	return [(_("Network wizard"), NetworkWizardMain, "nw_wizard", 40)]
 

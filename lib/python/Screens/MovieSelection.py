@@ -248,7 +248,7 @@ class MovieBrowserConfiguration(ConfigListScreen, Screen):
 
 		self["description"] = Label("")
 
-		self.onChangedEntry = [ ]
+		self.onChangedEntry = []
 		cfg = ConfigSubsection()
 		cfg.moviesort = ConfigSelection(default=str(config.movielist.moviesort.value), choices=l_moviesort)
 		cfg.description = ConfigYesNo(default=(config.movielist.description.value != MovieList.HIDE_DESCRIPTION))
@@ -448,7 +448,7 @@ class MovieContextMenu(Screen, ProtectedScreen):
 				# Plugins expect a valid selection, so only include them if we selected a non-dir
 				if not(service.flags & eServiceReference.mustDescent):
 					for p in plugins.getPlugins(PluginDescriptor.WHERE_MOVIELIST):
-						append_to_menu( menu, (p.description, boundFunction(p, session, service)), key="bullet")
+						append_to_menu(menu, (p.description, boundFunction(p, session, service)), key="bullet")
 
 		self["config"] = ChoiceList(menu)
 
@@ -1991,7 +1991,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 						if os.path.isdir(d) and (d not in inlist):
 							bookmarks.append((fn, d))
 							inlist.append(d)
-			except Exception as e :
+			except Exception as e:
 				print("[MovieSelection]", e)
 			# Last favourites
 			for d in last_selected_dest:

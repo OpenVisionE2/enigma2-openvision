@@ -39,7 +39,7 @@ class TimerEditList(Screen, ProtectedScreen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		ProtectedScreen.__init__(self)
-		list = [ ]
+		list = []
 		self.list = list
 		self.url = None
 		self["timerlist"] = TimerList(list)

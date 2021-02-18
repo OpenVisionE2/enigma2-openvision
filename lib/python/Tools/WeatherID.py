@@ -45,10 +45,10 @@ def get_woeid_from_yahoo(search_string):
 		except KeyError:
 			place_data = result
 
-		name_lines = [ place_data[tag] for tag in ['line1',
+		name_lines = [place_data[tag] for tag in ['line1',
 			'line2',
 			'line3',
-			'line4'] if place_data[tag] is not None ]
+			'line4'] if place_data[tag] is not None]
 		place_name = ', '.join(name_lines)
 		woeid_data[i] = (place_data['woeid'], place_name)
 

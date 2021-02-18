@@ -334,7 +334,7 @@ class PowerTimerEntry(timer.TimerEntry, object):
 
 		return {self.StatePrepared: self.start_prepare,
 				self.StateRunning: self.begin,
-				self.StateEnded: self.end }[next_state]
+				self.StateEnded: self.end}[next_state]
 
 	def getNextWakeup(self):
 		if self.state == self.StateEnded or self.state == self.StateFailed:
@@ -347,7 +347,7 @@ class PowerTimerEntry(timer.TimerEntry, object):
 		next_state = self.state + 1
 		return {self.StatePrepared: self.start_prepare,
 				self.StateRunning: self.begin,
-				self.StateEnded: self.end }[next_state]
+				self.StateEnded: self.end}[next_state]
 
 	def timeChanged(self):
 		old_prepare = self.start_prepare

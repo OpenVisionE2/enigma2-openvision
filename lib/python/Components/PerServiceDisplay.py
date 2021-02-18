@@ -9,7 +9,7 @@ from enigma import eLabel, eSlider, eTimer
 
 
 class PerServiceBase(object):
-	EventMap = { }
+	EventMap = {}
 
 	@staticmethod
 	def event(ev):

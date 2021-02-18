@@ -128,37 +128,37 @@ class CaidInfo2(Poll, Converter, object):
 			self.sfmt = type[:]
 
 		self.systemTxtCaids = {
-			"26" : "BiSS",
-			"01" : "Seca Mediaguard",
-			"06" : "Irdeto",
-			"17" : "BetaCrypt",
-			"05" : "Viacces",
-			"18" : "Nagravision",
-			"09" : "NDS-Videoguard",
-			"0B" : "Conax",
-			"0D" : "Cryptoworks",
-			"4A" : "DRE-Crypt",
-			"27" : "ExSet",
-			"0E" : "PowerVu",
-			"22" : "Codicrypt",
-			"07" : "DigiCipher",
-			"56" : "Verimatrix",
-			"7B" : "DRE-Crypt",
-			"A1" : "Rosscrypt"}
+			"26": "BiSS",
+			"01": "Seca Mediaguard",
+			"06": "Irdeto",
+			"17": "BetaCrypt",
+			"05": "Viacces",
+			"18": "Nagravision",
+			"09": "NDS-Videoguard",
+			"0B": "Conax",
+			"0D": "Cryptoworks",
+			"4A": "DRE-Crypt",
+			"27": "ExSet",
+			"0E": "PowerVu",
+			"22": "Codicrypt",
+			"07": "DigiCipher",
+			"56": "Verimatrix",
+			"7B": "DRE-Crypt",
+			"A1": "Rosscrypt"}
 
 		self.systemCaids = {
-			"26" : "BiSS",
-			"01" : "SEC",
-			"06" : "IRD",
-			"17" : "BET",
-			"05" : "VIA",
-			"18" : "NAG",
-			"09" : "NDS",
-			"0B" : "CON",
-			"0D" : "CRW",
-			"27" : "EXS",
-			"7B" : "DRE",
-			"4A" : "DRE" }
+			"26": "BiSS",
+			"01": "SEC",
+			"06": "IRD",
+			"17": "BET",
+			"05": "VIA",
+			"18": "NAG",
+			"09": "NDS",
+			"0B": "CON",
+			"0D": "CRW",
+			"27": "EXS",
+			"7B": "DRE",
+			"4A": "DRE"}
 
 	@cached
 	def getBoolean(self):
@@ -192,7 +192,7 @@ class CaidInfo2(Poll, Converter, object):
 				return False
 			if self.type == self.DRE:
 				for caid in caids:
-					if ("%0.4X" % int(caid))[:2] == "7B" or ("%0.4X" % int(caid))[:2] == "4A" :
+					if ("%0.4X" % int(caid))[:2] == "7B" or ("%0.4X" % int(caid))[:2] == "4A":
 						return True
 				return False
 			if self.type == self.EXS:
@@ -470,10 +470,10 @@ class CaidInfo2(Poll, Converter, object):
 								except:
 									pass
 					else:
-						if self.type == self.ALL or self.type == self.SHORT or (self.type == self.FORMAT and (self.sfmt.count("%") > 3 )):
+						if self.type == self.ALL or self.type == self.SHORT or (self.type == self.FORMAT and (self.sfmt.count("%") > 3)):
 							textvalue = "No parse cannot emu"
 				else:
-					if self.type == self.ALL or self.type == self.SHORT or (self.type == self.FORMAT and (self.sfmt.count("%") > 3 )):
+					if self.type == self.ALL or self.type == self.SHORT or (self.type == self.FORMAT and (self.sfmt.count("%") > 3)):
 						textvalue = "Free-to-air"
 		return textvalue
 
