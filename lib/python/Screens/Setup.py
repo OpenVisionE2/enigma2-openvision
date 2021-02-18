@@ -369,27 +369,24 @@ def setupDom(setup=None, plugin=None):
 		print("[Setup] Error %d: Unexpected error opening setup file '%s'! (%s)" % (err.errno, setupFile, err.strerror))
 	return setupFileDom
 
+
 # Temporary legacy interface.  Known to be used by the Heinz plugin and possibly others.
 #
-
-
 def setupdom(setup=None, plugin=None):
 	return setupDom(setup, plugin)
 
+
 # Only used in AudioSelection screen...
 #
-
-
 def getConfigMenuItem(configElement):
 	for item in setupDom().findall("./setup/item/."):
 		if item.text == configElement:
 			return _(item.attrib["text"]), eval(configElement)
 	return "", None
 
+
 # Temporary legacy interface.  Only used in Menu screen.
 #
-
-
 def getSetupTitle(id):
 	xmlData = setupDom()
 	for x in xmlData.findall("setup"):
