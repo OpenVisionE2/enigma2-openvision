@@ -1,103 +1,228 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from Components.GUIComponent import GUIComponent
+from collections import defaultdict
 
-from enigma import eListboxPythonMultiContent, eListbox, gFont
+from Components.config import config
+from Components.Sources.List import List
 from Tools.KeyBindings import queryKeyBinding, getKeyDescription
-import skin
-#getKeyPositions
 
+
+# Helplist structure:
 # [ ( actionmap, context, [(action, help), (action, help), ...] ), (actionmap, ... ), ... ]
+#
+# The helplist is ordered by the order that the Helpable[Number]ActionMaps
+# are initialised.
+#
+# The lookup of actions is by searching the HelpableActionMaps by priority,
+# then my order of initialisation.
+#
+# The lookup of actions for a key press also stops at the first valid action
+# encountered.
+#
+# The search for key press help is on a list sorted in priority order,
+# and the search finishes when the first action/help matching matching
+# the key is found.
+#
+# The code recognises that more than one button can map to an action and
+# places a button name list instead of a single button in the help entry.
+#
+# In the template for HelpMenuList:
+#
+# Template "default" for simple string help items
+# For headings use data[1:] = [heading, None, None]
+# For the help entries:
+# Use data[1:] = [None, helpText, None] for non-indented text
+# and data[1:] = [None, None, helpText] for indented text (indent distance set in template)
+#
+# Template "extended" for list/tuple help items
+# For headings use data[1:] = [heading, None, None, None, None]
+# For the help entries:
+# Use data[1] = None
+# and data[2:] = [helpText, None, extText, None] for non-indented text
+# and data[2:] = [None, helpText, None, extText] for indented text
+#
+class HelpMenuList(List):
+	HEADINGS = 1
+	EXTENDED = 2
 
-
-class HelpMenuList(GUIComponent):
-	def __init__(self, helplist, callback):
-		GUIComponent.__init__(self)
-		self.onSelChanged = []
-		self.l = eListboxPythonMultiContent()
+	def __init__(self, helplist, callback, rcPos=None):
+		List.__init__(self)
 		self.callback = callback
-		self.extendedHelp = False
+		formatFlags = 0
+		self.rcPos = rcPos
+		self.rcKeyIndex = None
+		self.buttonMap = {}
+		self.longSeen = False
 
-		l = []
-		for (actionmap, context, actions) in helplist:
+		def actMapId():
+			return getattr(actionmap, "description", None) or id(actionmap)
+
+		headings, sortCmp, sortKey = {
+			"headings+alphabetic": (True, None, self._sortKeyAlpha),
+			"flat+alphabetic": (False, None, self._sortKeyAlpha),
+			"flat+remotepos": (False, self._sortCmpPos, None),
+			"flat+remotegroups": (False, self._sortCmpInd, None)
+		}.get(config.usage.help_sortorder.value, (False, None, None))
+		if rcPos is None:
+			if sortCmp in (self._sortCmpPos, self._sortCmpInd):
+				sortCmp = None
+		else:
+			if sortCmp == self._sortCmpInd:
+				self.rcKeyIndex = dict((x[1], x[0]) for x in enumerate(rcPos.getRcKeyList()))
+		buttonsProcessed = set()
+		helpSeen = defaultdict(list)
+		sortedHelplist = sorted(helplist, key=lambda hle: hle[0].prio)
+		actionMapHelp = defaultdict(list)
+		for (actionmap, context, actions) in sortedHelplist:
+			if not actionmap.enabled:
+				continue
+			amId = actMapId()
+			if headings and actionmap.description and not (formatFlags & self.HEADINGS):
+				print "[HelpMenuList] headings found"
+				formatFlags |= self.HEADINGS
 			for (action, help) in actions:
-				if hasattr(help, '__call__'):
+				helpTags = []
+				if callable(help):
 					help = help()
-				if not help:
+					helpTags.append(pgettext('Abbreviation of "Configurable"', 'C'))
+				if help is None:
 					continue
 				buttons = queryKeyBinding(context, action)
-
-				# do not display entries which are not accessible from keys
-				if not len(buttons):
+				if not buttons:  # Do not display entries which are not accessible from keys.
 					continue
-
-				name = None
-				flags = 0
-
+				buttonNames = []
 				for n in buttons:
-					(name, flags) = (getKeyDescription(n[0]), n[1])
+					name = getKeyDescription(n[0])
+					if name is not None:
+						if len(name) > 0 and not rcPos.getRcKeyPos(name[0]):  # Ignore buttons that don't have a button location.
+							continue
+						if (len(name) < 2 or name[1] not in ("fp", "kbd")):
+							if n[1] & 8:  # For long keypresses, make the second tuple item "long".
+								name = (name[0], "long")
+							if name not in buttonsProcessed:
+								buttonNames.append(name)
+								buttonsProcessed.add(name)
+				if not buttonNames:  # Only show entries with keys that are available on the used rc.
+					continue
+				isExtended = isinstance(help, (tuple, list))
+				if isExtended and not (formatFlags & self.EXTENDED):
+					print "[HelpMenuList] extendedHelp entry found"
+					formatFlags |= self.EXTENDED
+				if helpTags:
+					helpStr = help[0] if isExtended else help
+					tagsStr = pgettext("Text list separator", ', ').join(helpTags)
+					helpStr = _("%s (%s)") % (helpStr, tagsStr)
+					help = [helpStr, help[1]] if isExtended else helpStr
+				entry = [(actionmap, context, action, buttonNames, help), help]
+				if self._filterHelpList(entry, helpSeen):
+					actionMapHelp[actMapId()].append(entry)
+		lst = []
+		extendedPadding = (None, ) if formatFlags & self.EXTENDED else ()
+		for (actionmap, context, actions) in helplist:
+			amId = actMapId()
+			if headings and amId in actionMapHelp and getattr(actionmap, "description", None):
+				if sortCmp or sortKey:
+					actionMapHelp[amId].sort(cmp=sortCmp, key=sortKey)
+				self.addListBoxContext(actionMapHelp[amId], formatFlags)
+				lst.append((None, actionmap.description, None) + extendedPadding)
+				lst.extend(actionMapHelp[amId])
+				del actionMapHelp[amId]
+		if actionMapHelp:
+			if formatFlags & self.HEADINGS:  # Add a header if other actionmaps have descriptions.
+				lst.append((None, _("Other functions"), None) + extendedPadding)
+			otherHelp = []
+			for (actionmap, context, actions) in helplist:
+				amId = actMapId()
+				if amId in actionMapHelp:
+					otherHelp.extend(actionMapHelp[amId])
+					del actionMapHelp[amId]
+			if sortCmp or sortKey:
+				otherHelp.sort(cmp=sortCmp, key=sortKey)
+			self.addListBoxContext(otherHelp, formatFlags)
+			lst.extend(otherHelp)
+		for i, ent in enumerate(lst):
+			if ent[0] is not None:
+				for b in ent[0][3]:  # Ignore "break" events from OK and EXIT on return from help popup.
+					if b[0] not in ('OK', 'EXIT'):
+						self.buttonMap[b] = i
+		self.style = (
+			"default",
+			"default+headings",
+			"extended",
+			"extended+headings",
+		)[formatFlags]
+		self.list = lst
 
-					# only show entries with keys that are available on the used rc
-					if name is None:
-						continue
+	def _mergeButLists(self, bl1, bl2):
+		bl1.extend([b for b in bl2 if b not in bl1])
 
-					if flags & 8: # for long keypresses, prepend l_ into the key name.
-						name = (name[0], "long")
-
-					entry = [(actionmap, context, action, name)]
-
-					if isinstance(help, list):
-						self.extendedHelp = True
-						print("[HelpMenuList] extendedHelpEntry found")
-						x, y, w, h = skin.parameters.get("HelpMenuListExtHlp0", (0, 0, 600, 26))
-						x1, y1, w1, h1 = skin.parameters.get("HelpMenuListExtHlp1", (0, 28, 600, 20))
-						entry.extend((
-							(eListboxPythonMultiContent.TYPE_TEXT, x, y, w, h, 0, 0, help[0]),
-							(eListboxPythonMultiContent.TYPE_TEXT, x1, y1, w1, h1, 1, 0, help[1])
-						))
-					else:
-						x, y, w, h = skin.parameters.get("HelpMenuListHlp", (0, 0, 600, 28))
-						entry.append((eListboxPythonMultiContent.TYPE_TEXT, x, y, w, h, 0, 0, help))
-
-					l.append(entry)
-
-		self.l.setList(l)
-		if self.extendedHelp is True:
-			font = skin.fonts.get("HelpMenuListExt0", ("Regular", 24, 50))
-			self.l.setFont(0, gFont(font[0], font[1]))
-			self.l.setItemHeight(font[2])
-			font = skin.fonts.get("HelpMenuListExt1", ("Regular", 18))
-			self.l.setFont(1, gFont(font[0], font[1]))
+	def _filterHelpList(self, ent, seen):
+		hlp = tuple(ent[1]) if isinstance(ent[1], (tuple, list)) else (ent[1],)
+		if hlp in seen:
+			self._mergeButLists(seen[hlp], ent[0][3])
+			return False
 		else:
-			font = skin.fonts.get("HelpMenuList", ("Regular", 24, 38))
-			self.l.setFont(0, gFont(font[0], font[1]))
-			self.l.setItemHeight(font[2])
+			seen[hlp] = ent[0][3]
+			return True
+
+	def addListBoxContext(self, actionMapHelp, formatFlags):
+		extended = (formatFlags & self.EXTENDED) >> 1
+		headings = formatFlags & self.HEADINGS
+		for i, ent in enumerate(actionMapHelp):
+			help = ent[1]
+			ent[1:] = [None] * (1 + headings + extended)
+			if isinstance(help, (tuple, list)):
+				ent[1 + headings] = help[0]
+				ent[2 + headings] = help[1]
+			else:
+				ent[1 + headings] = help
+			actionMapHelp[i] = tuple(ent)
+
+	# Reverse the coordinate tuple, too, to (y, x) to get ordering by y then x.
+	#
+	def _getMinPos(self, a):
+		return min(map(lambda x: tuple(reversed(self.rcPos.getRcKeyPos(x[0]))), a))
+
+	def _sortCmpPos(self, a, b):
+		return cmp(self._getMinPos(a[0][3]), self._getMinPos(b[0][3]))
+
+	# Sort order "Flat by key group on remote" is really
+	# "Sort in order of buttons in rcpositions.xml", and so
+	# the buttons need to be grouped sensibly in that file for
+	# this to work properly.
+	#
+	def _getMinInd(self, a):
+		return min(map(lambda x: self.rcKeyIndex[x[0]], a))
+
+	def _sortCmpInd(self, a, b):
+		return cmp(self._getMinInd(a[0][3]), self._getMinInd(b[0][3]))
+
+	# Convert normal help to extended help form for comparison and ignore case.
+	#
+	def _sortKeyAlpha(self, hlp):
+		return map(str.lower, hlp[1] if isinstance(hlp[1], (tuple, list)) else [hlp[1], ''])
 
 	def ok(self):
-		# a list entry has a "private" tuple as first entry...
-		l = self.getCurrent()
-		if l is None:
+		# A list entry has a "private" tuple as first entry...
+		item = self.getCurrent()
+		if item is None:
 			return
 		# ...containing (Actionmap, Context, Action, keydata).
-		# we returns this tuple to the callback.
-		self.callback(l[0], l[1], l[2])
+		# We returns this tuple to the callback.
+		self.callback(item[0], item[1], item[2])
+
+	def handleButton(self, key, flag):
+		name = getKeyDescription(key)
+		if name is not None and (len(name) < 2 or name[1] not in ("fp", "kbd")):
+			if flag == 3:  # For Long keypresses, make the second tuple item "long".
+				name = (name[0], "long")
+			if name in self.buttonMap:
+				if flag == 3 or flag == 1 and not self.longSeen:  # Show help for pressed button for long press, or for Break if it's not a Long press.
+					self.longSeen = flag == 3
+					self.setIndex(self.buttonMap[name])
+					return 1  # Report key handled.
+				if flag == 0:  # Reset the long press flag on Make.
+					self.longSeen = False
+		return 0  # Report key not handled.
 
 	def getCurrent(self):
-		sel = self.l.getCurrentSelection()
+		sel = super(HelpMenuList, self).getCurrent()
 		return sel and sel[0]
-
-	GUI_WIDGET = eListbox
-
-	def postWidgetCreate(self, instance):
-		instance.setContent(self.l)
-		instance.selectionChanged.get().append(self.selectionChanged)
-		self.instance.setWrapAround(True)
-
-	def preWidgetRemove(self, instance):
-		instance.setContent(None)
-		instance.selectionChanged.get().remove(self.selectionChanged)
-
-	def selectionChanged(self):
-		for x in self.onSelChanged:
-			x()
