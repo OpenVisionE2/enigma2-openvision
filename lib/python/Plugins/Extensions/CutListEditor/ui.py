@@ -466,8 +466,10 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 
 		l1 = len(new_list) - 1
 		l2 = len(self.last_cuts) - 1
-		if new_list[l1][0][1] != self.CUT_TYPE_EOF: l1 += 1
-		if self.last_cuts[l2][0][1] != self.CUT_TYPE_EOF: l2 += 1
+		if new_list[l1][0][1] != self.CUT_TYPE_EOF:
+			l1 += 1
+		if self.last_cuts[l2][0][1] != self.CUT_TYPE_EOF:
+			l2 += 1
 		for i in range(min(l1, l2)):
 			if new_list[l1-i-1][0] != self.last_cuts[l2-i-1][0]:
 				self["cutlist"].setIndex(l1-i-1)

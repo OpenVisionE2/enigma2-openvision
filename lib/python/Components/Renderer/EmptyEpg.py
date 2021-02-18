@@ -54,8 +54,10 @@ class EmptyEpg(VariableText, Renderer):
 				if self.backText != self.text:
 					self.backText = self.text
 					ena = True
-					try: ena = config.plugins.setupGlass16.par30.value
-					except: pass
+					try:
+						ena = config.plugins.setupGlass16.par30.value
+					except:
+						pass
 					if ena:
 						self.text = "_"
 						self.endPoint = len(self.backText)

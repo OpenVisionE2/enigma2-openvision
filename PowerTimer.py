@@ -196,7 +196,7 @@ class PowerTimerEntry(timer.TimerEntry, object):
 # Also added () around the test and split them across lines
 # to make it clearer what each test is.
 
-				from Components.Converter.ClientsStreaming import ClientsStreaming;
+				from Components.Converter.ClientsStreaming import ClientsStreaming
 				if ((not Screens.Standby.inStandby and NavigationInstance.instance.getCurrentlyPlayingServiceReference() and
 					('0:0:0:0:0:0:0:0:0' in NavigationInstance.instance.getCurrentlyPlayingServiceReference().toString() or
 					 '4097:' in NavigationInstance.instance.getCurrentlyPlayingServiceReference().toString()

@@ -314,7 +314,7 @@ class SymbolsCheckPoller:
 			idx = 0
 			while idx < n:
 				i = audio.getTrackInfo(idx)
-				description = i.getDescription();
+				description = i.getDescription()
 				if "AC3" in description or "AC-3" in description or "DTS" in description:
 					open("/proc/stb/lcd/symbol_dolby_audio", "w").write("1")
 					return

@@ -731,7 +731,8 @@ class HarddiskManager:
 				print("[Harddisk] couldn't determine blockdev physdev for device", device)
 		error, blacklisted, removable, is_cdrom, partitions, medium_found = self.getBlockDevInfo(device)
 		if hw_type in ("elite", "premium", "premium+", "ultra"):
-			if device[0:3] == "hda": blacklisted = True
+			if device[0:3] == "hda":
+				blacklisted = True
 		if not blacklisted and medium_found:
 			description = self.getUserfriendlyDeviceName(device, physdev)
 			p = Partition(mountpoint = self.getMountpoint(device), description = description, force_mounted = True, device = device)

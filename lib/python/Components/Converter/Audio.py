@@ -153,7 +153,7 @@ class Audio(Converter, object):
 					languages = "Polski"
 				elif "org" in languages:
 					languages = "Oryginalny"
-				description = i.getDescription();
+				description = i.getDescription()
 				return description + " " + languages
 			except:
 				return "nieznany"

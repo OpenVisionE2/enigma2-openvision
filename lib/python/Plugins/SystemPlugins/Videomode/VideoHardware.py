@@ -462,18 +462,24 @@ class VideoHardware:
 		print("[Videomode] VideoHardware -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss)
 		if chipsetstring.startswith("meson-6") and platform != "dmamlogic":
 			arw = "0"
-			if config.av.policy_43.value == "bestfit" : arw = "10"
-			if config.av.policy_43.value == "panscan" : arw = "11"
-			if config.av.policy_43.value == "letterbox" : arw = "12"
+			if config.av.policy_43.value == "bestfit" :
+				arw = "10"
+			if config.av.policy_43.value == "panscan" :
+				arw = "11"
+			if config.av.policy_43.value == "letterbox" :
+				arw = "12"
 			try:
 				open("/sys/class/video/screen_mode", "w").write(arw)
 			except IOError:
 				pass
 		elif platform == "dmamlogic":
 			arw = "0"
-			if config.av.policy_43.value == "bestfit" : arw = "10"
-			if config.av.policy_43.value == "panscan" : arw = "12"
-			if config.av.policy_43.value == "letterbox" : arw = "11"
+			if config.av.policy_43.value == "bestfit" :
+				arw = "10"
+			if config.av.policy_43.value == "panscan" :
+				arw = "12"
+			if config.av.policy_43.value == "letterbox" :
+				arw = "11"
 			try:
 				open("/sys/class/video/screen_mode", "w").write(arw)
 			except IOError:
