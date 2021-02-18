@@ -8,6 +8,7 @@ from enigma import eStreamServer
 from ServiceReference import ServiceReference
 import socket
 
+
 class ClientsStreaming(Converter, Poll, object):
 	UNKNOWN = -1
 	REF = 0

@@ -3,6 +3,7 @@
 from __future__ import print_function
 from Components.Sources.Source import Source
 
+
 class Config(Source):
 	def __init__(self, config):
 		Source.__init__(self)

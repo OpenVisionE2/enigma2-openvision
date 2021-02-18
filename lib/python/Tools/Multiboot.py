@@ -7,8 +7,10 @@ import os
 import glob
 import tempfile
 
+
 class tmp:
 	dir = None
+
 
 def getMultibootStartupDevice():
 	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
@@ -22,8 +24,10 @@ def getMultibootStartupDevice():
 	if not os.path.ismount(tmp.dir):
 		os.rmdir(tmp.dir)
 
+
 def getparam(line, param):
 	return line.replace("userdataroot", "rootuserdata").rsplit('%s=' % param, 1)[1].split(' ', 1)[0]
+
 
 def getMultibootslots():
 	bootslots = {}
@@ -66,6 +70,7 @@ def getMultibootslots():
 	print('[Multiboot] Bootslots found:', bootslots)
 	return bootslots
 
+
 def getCurrentImage():
 	if SystemInfo["canMultiBoot"]:
 		slot = [x[-1] for x in open('/sys/firmware/devicetree/base/chosen/bootargs', 'r').read().split() if x.startswith('rootsubdir')]
@@ -77,8 +82,10 @@ def getCurrentImage():
 				if SystemInfo["canMultiBoot"][slot]['device'] == device:
 					return slot
 
+
 def getCurrentImageMode():
 	return bool(SystemInfo["canMultiBoot"]) and SystemInfo["canMode12"] and int(open('/sys/firmware/devicetree/base/chosen/bootargs', 'r').read().replace('\0', '').split('=')[-1])
+
 
 def GetImagelist():
 	Imagelist = {}
@@ -125,6 +132,7 @@ def emptySlot(slot):
 		os.rmdir(tmp.dir)
 	return ret
 
+
 def deleteImage(slot):
 	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
 	Console().ePopen('mount %s %s' % (SystemInfo["canMultiBoot"][slot]['device'], tmp.dir))
@@ -134,6 +142,7 @@ def deleteImage(slot):
 	Console().ePopen('umount %s' % tmp.dir)
 	if not os.path.ismount(tmp.dir):
 		os.rmdir(tmp.dir)
+
 
 def restoreImages():
 	for slot in SystemInfo["canMultiBoot"]:
@@ -145,6 +154,7 @@ def restoreImages():
 		Console().ePopen('umount %s' % tmp.dir)
 		if not os.path.ismount(tmp.dir):
 			os.rmdir(tmp.dir)
+
 
 def getImagelist():
 	imagelist = {}

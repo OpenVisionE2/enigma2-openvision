@@ -27,13 +27,16 @@ config.plugins.fccsetup.disableforrec = ConfigYesNo(default=True)
 
 FccInstance = None
 
+
 def FCCChanged():
 	if FccInstance:
 		FccInstance.FCCSetupChanged()
 
+
 def checkSupportFCC():
 	global g_max_fcc
 	return bool(g_max_fcc)
+
 
 class FCCSupport:
 	def __init__(self, session):
@@ -446,6 +449,7 @@ class FCCSupport:
 		self.fccTimeoutWait = None
 		self.fccTimeoutTimer.stop()
 
+
 class FCCSetup(Screen, ConfigListScreen):
 	skin = """
 		<screen position="center,center" size="590,320" >
@@ -538,11 +542,13 @@ class FCCSetup(Screen, ConfigListScreen):
 		ConfigListScreen.keySave(self)
 		FCCChanged()
 
+
 def getExtensionName():
 	if config.plugins.fccsetup.activate.value:
 		return _("Disable FCC")
 
 	return _("Enable FCC")
+
 
 def ToggleUpdate():
 	if config.plugins.fccsetup.activate.value:
@@ -552,10 +558,12 @@ def ToggleUpdate():
 	config.plugins.fccsetup.activate.save()
 	FCCChanged()
 
+
 def FCCSupportInit(reason, **kwargs):
 	if "session" in kwargs:
 		global FccInstance
 		FccInstance = FCCSupport(kwargs["session"])
+
 
 def showFCCExtentionMenu():
 	currentScreenName = None
@@ -563,11 +571,14 @@ def showFCCExtentionMenu():
 		currentScreenName = FccInstance.session.current_dialog.__class__.__name__
 	return (currentScreenName == "InfoBar")
 
+
 def addExtentions(infobarExtensions):
 	infobarExtensions.addExtension((getExtensionName, ToggleUpdate, showFCCExtentionMenu), None)
 
+
 def main(session, **kwargs):
 	session.open(FCCSetup)
+
 
 def Plugins(**kwargs):
 	list = []

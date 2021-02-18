@@ -42,6 +42,7 @@ class HelpMenu(Screen, Rc):
 		# 	arrow.startMoving()
 		# 	arrow.show()
 
+
 class HelpableScreen:
 	def __init__(self):
 		self["helpActions"] = ActionMap(["HelpActions"], {

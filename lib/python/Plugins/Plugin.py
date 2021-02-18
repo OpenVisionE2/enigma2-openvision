@@ -5,6 +5,7 @@ import os
 
 config.plugins = ConfigSubsection()
 
+
 class PluginDescriptor(object):
 	"""An object to describe a plugin."""
 
@@ -72,7 +73,6 @@ class PluginDescriptor(object):
 	WHERE_VISIONMENU = 18
 
 	WHERE_EXTENSIONSINGLE = 19
-
 
 	def __init__(self, name="Plugin", where=[], description="", icon=None, fnc=None, wakeupfnc=None, needsRestart=None, internal=False, weight=0):
 		self.name = name

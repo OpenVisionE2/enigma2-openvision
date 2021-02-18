@@ -66,6 +66,7 @@ EXTENSIONS = {
 		"wtv": "movie",
 	}
 
+
 def FileEntryComponent(name, absolute=None, isDir=False):
 	res = [(absolute, isDir)]
 	x, y, w, h = skin.parameters.get("FileListName", (35, 1, 600, 20))
@@ -84,6 +85,7 @@ def FileEntryComponent(name, absolute=None, isDir=False):
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, x, y, w, h, png))
 
 	return res
+
 
 class FileList(MenuList):
 	def __init__(self, directory, showDirectories=True, showFiles=True, showMountpoints=True, matchingPattern=None, useServiceRef=False, inhibitDirs=False, inhibitMounts=False, isTop=False, enableWrapAround=False, additionalExtensions=None):

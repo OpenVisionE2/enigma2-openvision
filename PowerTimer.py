@@ -18,10 +18,13 @@ import NavigationInstance
 
 # parses an event, and gives out a (begin, end, name, duration, eit)-tuple.
 # begin and end will be corrected
+
+
 def parseEvent(ev):
 	begin = ev.getBeginTime()
 	end = begin + ev.getDuration()
 	return begin, end
+
 
 class AFTEREVENT:
 	def __init__(self):
@@ -31,6 +34,7 @@ class AFTEREVENT:
 	WAKEUPTOSTANDBY = 1
 	STANDBY = 2
 	DEEPSTANDBY = 3
+
 
 class TIMERTYPE:
 	def __init__(self):
@@ -47,6 +51,8 @@ class TIMERTYPE:
 	RESTART = 8
 
 # please do not translate log messages
+
+
 class PowerTimerEntry(timer.TimerEntry, object):
 	def __init__(self, begin, end, disabled=False, afterEvent=AFTEREVENT.NONE, timerType=TIMERTYPE.WAKEUP, checkOldTimers=False):
 		timer.TimerEntry.__init__(self, int(begin), int(end))
@@ -357,6 +363,7 @@ class PowerTimerEntry(timer.TimerEntry, object):
 		if int(old_prepare) > 60 and int(old_prepare) != int(self.start_prepare):
 			self.log(15, "tiempo cambiado, empezar a preparar es ahora: %s" % ctime(self.start_prepare))
 
+
 def createTimer(xml):
 	timertype = str(xml.get("timertype") or "wakeup")
 	timertype = {
@@ -409,6 +416,7 @@ def createTimer(xml):
 		entry.log_entries.append((ltime, lcode, msg))
 
 	return entry
+
 
 class PowerTimer(timer.Timer):
 	def __init__(self):

@@ -5,6 +5,7 @@ from Components.Element import cached
 from enigma import eEPGCache
 from time import localtime
 
+
 class EventName2(Converter, object):
 	NAME = 0
 	SHORT_DESCRIPTION = 1

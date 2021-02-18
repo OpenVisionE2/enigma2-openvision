@@ -24,6 +24,7 @@ from time import localtime, strftime
 from Components.config import config
 import six
 
+
 class EventViewBase:
 	ADD_TIMER = 0
 	REMOVE_TIMER = 1
@@ -131,6 +132,7 @@ class EventViewBase:
 			title_text = timer.repeated and _("Attention, this is repeated timer!\n") or ""
 			menu = [(_("Delete timer"), "delete"), (_("Edit timer"), "edit")]
 			buttons = ["red", "green"]
+
 			def timerAction(choice):
 				if choice is not None:
 					if choice[1] == "delete":
@@ -151,6 +153,7 @@ class EventViewBase:
 				def removeEditTimer():
 					entry.service_ref, entry.begin, entry.end, entry.external = entry.service_ref_prev, entry.begin_prev, entry.end_prev, entry.external_prev
 					self.removeTimer(entry)
+
 				def moveEditTimerError():
 					entry.external = entry.external_prev
 					self.onSelectionChanged()
@@ -367,11 +370,13 @@ class EventViewBase:
 	def runPlugin(self, plugin):
 		plugin.__call__(session=self.session, service=self.currentService, event=self.event, eventName=self.event.getEventName())
 
+
 class EventViewSimple(Screen, EventViewBase):
 	def __init__(self, session, Event, Ref, callback=None, similarEPGCB=None, parent=None):
 		Screen.__init__(self, session)
 		self.skinName = "EventView"
 		EventViewBase.__init__(self, Event, Ref, callback, similarEPGCB, parent)
+
 
 class EventViewEPGSelect(Screen, EventViewBase):
 	def __init__(self, session, Event, Ref, callback=None, singleEPGCB=None, multiEPGCB=None, similarEPGCB=None, parent=None):

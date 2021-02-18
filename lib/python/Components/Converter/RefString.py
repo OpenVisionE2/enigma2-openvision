@@ -5,9 +5,11 @@ from Components.Element import cached
 from Screens.InfoBar import InfoBar
 from enigma import eServiceReference
 
+
 class RefString(Converter, object):
 	CURRENT = 0
 	EVENT = 1
+
 	def __init__(self, type):
 		Converter.__init__(self, type)
 		self.CHANSEL = None

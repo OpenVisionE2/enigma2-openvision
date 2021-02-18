@@ -6,6 +6,7 @@ from Components.Renderer.Renderer import Renderer
 from enigma import eLabel, eEPGCache
 from time import localtime
 
+
 class NextEvents(VariableText, Renderer):
 
 	def __init__(self):

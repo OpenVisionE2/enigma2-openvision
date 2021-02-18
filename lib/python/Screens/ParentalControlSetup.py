@@ -10,6 +10,7 @@ from Screens.MessageBox import MessageBox
 from Screens.InputBox import PinInput
 from Tools.BoundFunction import boundFunction
 
+
 class ProtectedScreen:
 	def __init__(self):
 		if self.isProtected() and config.ParentalControl.servicepin[0].value:
@@ -26,6 +27,7 @@ class ProtectedScreen:
 
 	def closeProtectedScreen(self, result=None):
 		self.close(None)
+
 
 class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 	def __init__(self, session):

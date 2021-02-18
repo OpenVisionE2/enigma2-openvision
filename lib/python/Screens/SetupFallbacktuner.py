@@ -12,6 +12,7 @@ from Components.ImportChannels import ImportChannels
 
 from enigma import getPeerStreamingBoxes
 
+
 class SetupFallbacktuner(ConfigListScreen, Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)

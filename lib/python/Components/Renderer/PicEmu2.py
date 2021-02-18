@@ -11,6 +11,7 @@ from Components.Element import cached
 from Components.Converter.Poll import Poll
 import os
 
+
 class PicEmu2(Renderer, Poll):
 	__module__ = __name__
 	if os.path.exists("/usr/lib64"):

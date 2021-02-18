@@ -5,6 +5,7 @@ from Components.Renderer.Renderer import Renderer
 from skin import parseColor
 from enigma import eCanvas, eSize, gRGB, eRect
 
+
 class AnalogClockLCD(Renderer):
 	def __init__(self):
 		Renderer.__init__(self)

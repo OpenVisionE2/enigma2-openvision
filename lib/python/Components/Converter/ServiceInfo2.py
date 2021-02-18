@@ -5,6 +5,7 @@ from Components.Converter.Converter import Converter
 from enigma import iServiceInformation, iPlayableService
 from Components.Element import cached
 
+
 class ServiceInfo2(Poll, Converter, object):
 
 	xAPID = 0
@@ -66,7 +67,6 @@ class ServiceInfo2(Poll, Converter, object):
 			else:
 				return ""
 		return convert(v)
-
 
 	@cached
 	def getText(self):

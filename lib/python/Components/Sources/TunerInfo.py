@@ -4,6 +4,7 @@ from __future__ import print_function
 from Components.Sources.Source import Source
 from enigma import eDVBResourceManager
 
+
 class TunerInfo(Source):
 	FE_USE_MASK = 0
 

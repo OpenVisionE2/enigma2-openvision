@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from Components.MenuList import MenuList
 
+
 class FIFOList(MenuList):
 	def __init__(self, list=[], len=10):
 		self.list = list

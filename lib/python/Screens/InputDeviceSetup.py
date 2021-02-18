@@ -14,6 +14,7 @@ from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN
 from Tools.LoadPixmap import LoadPixmap
 from boxbranding import getRCType
 
+
 class InputDeviceSelection(Screen, HelpableScreen):
 	skin = """
 	<screen name="InputDeviceSelection" position="center,center" size="560,400">
@@ -40,7 +41,6 @@ class InputDeviceSelection(Screen, HelpableScreen):
 		<ePixmap pixmap="div-h.png" position="0,340" zPosition="1" size="560,2"/>
 		<widget source="introduction" render="Label" position="0,350" size="560,50" zPosition="10" font="Regular;21" halign="center" valign="center" backgroundColor="#25062748" transparent="1"/>
 	</screen>"""
-
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
@@ -277,6 +277,7 @@ class InputDeviceSetup(Screen, ConfigListScreen):
 		else:
 			self.close()
 	# for summary:
+
 	def changedEntry(self):
 		for x in self.onChangedEntry:
 			x()

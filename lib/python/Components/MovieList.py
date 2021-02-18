@@ -28,45 +28,60 @@ KNOWN_EXTENSIONS = MOVIE_EXTENSIONS.union(IMAGE_EXTENSIONS, DVD_EXTENSIONS, AUDI
 
 cutsParser = struct.Struct('>QI') # big-endian, 64-bit PTS and 32-bit type
 
+
 def getDesktopSize():
 	s = getDesktop(0).size()
 	return (s.width(), s.height())
+
 
 def isHD():
 	desktopSize = getDesktopSize()
 	return desktopSize[0] == 1280
 
+
 class MovieListData:
 	pass
 
 # iStaticServiceInformation
+
+
 class StubInfo:
 	def getName(self, serviceref):
 		return os.path.split(serviceref.getPath())[1]
+
 	def getLength(self, serviceref):
 		return -1
+
 	def getFileSize(self, serviceref):
 		try:
 			return os.stat(serviceref.getPath()).st_size
 		except:
 			return -1
+
 	def getEvent(self, serviceref, *args):
 		return None
+
 	def isPlayable(self):
 		return True
+
 	def getInfo(self, serviceref, w):
 		if w == iServiceInformation.sTimeCreate:
 			return os.stat(serviceref.getPath()).st_ctime
 		if w == iServiceInformation.sDescription:
 			return serviceref.getPath()
 		return 0
+
 	def getInfoString(self, serviceref, w):
 		return ''
+
+
 justStubInfo = StubInfo()
+
 
 def lastPlayPosFromCache(ref):
 	from Screens.InfoBarGenerics import resumePointCache
 	return resumePointCache.get(ref.toString(), None)
+
 
 def moviePlayState(cutsFileName, ref, length):
 	'''Returns None, 0..100 for percentage'''
@@ -115,6 +130,7 @@ def moviePlayState(cutsFileName, ref, length):
 				if lastPosition:
 					return 50
 		return None
+
 
 def resetMoviePlayState(cutsFileName, ref=None):
 	try:
@@ -281,36 +297,51 @@ class MovieList(GUIComponent):
 	def applySkin(self, desktop, parent):
 		def warningWrongSkinParameter(string):
 			print("[MovieList] wrong '%s' skin parameters" % string)
+
 		def font(value):
 			font = skin.parseFont(value, ((1, 1), (1, 1)))
 			self.fontName = font.family
 			self.fontSize = font.pointSize
+
 		def partIconeShift(value):
 			self.partIconeShift = int(value)
+
 		def pbarShift(value):
 			self.pbarShift = int(value)
+
 		def pbarHeight(value):
 			self.pbarHeight = int(value)
+
 		def pbarLargeWidth(value):
 			self.pbarLargeWidth = int(value)
+
 		def pbarColour(value):
 			self.pbarColour = skin.parseColor(value).argb()
+
 		def pbarColourSeen(value):
 			self.pbarColourSeen = skin.parseColor(value).argb()
+
 		def pbarColourRec(value):
 			self.pbarColourRec = skin.parseColor(value).argb()
+
 		def spaceIconeText(value):
 			self.spaceIconeText = int(value)
+
 		def iconsWidth(value):
 			self.iconsWidth = int(value)
+
 		def trashShift(value):
 			self.trashShift = int(value)
+
 		def dirShift(value):
 			self.dirShift = int(value)
+
 		def spaceRight(value):
 			self.spaceRight = int(value)
+
 		def durationWidth(value):
 			self.durationWidth = int(value)
+
 		def dateWidth(value):
 			self.dateWidth = int(value)
 			if config.usage.time.wide.value:
@@ -940,6 +971,7 @@ class MovieList(GUIComponent):
 		self._char = ''
 		if self._lbl:
 			self._lbl.visible = False
+
 
 def getShortName(name, serviceref):
 	if serviceref.flags & eServiceReference.mustDescent: #Directory

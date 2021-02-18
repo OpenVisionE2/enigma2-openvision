@@ -29,13 +29,16 @@ else:
 
 loadSkin('/usr/share/enigma2/VirtualKeyBoard_Icons/vkskin.xml')
 
+
 def getDesktopSize():
     s = getDesktop(0).size()
     return (s.width(), s.height())
 
+
 def isHD():
     desktopSize = getDesktopSize()
     return desktopSize[0] == 1280
+
 
 VKB_DONE_ICON = 0
 VKB_ENTER_ICON = 1

@@ -5,6 +5,7 @@ from Components.Converter.Poll import Poll
 from Components.Element import cached
 from Components.config import config
 
+
 class RemainingToText(Poll, Converter, object):
 	DEFAULT = 0
 	WITH_SECONDS = 1

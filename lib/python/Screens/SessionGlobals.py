@@ -16,6 +16,7 @@ from Components.config import config
 from enigma import getBoxType
 from boxbranding import getMachineBuild
 
+
 class SessionGlobals(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)

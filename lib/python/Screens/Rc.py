@@ -7,6 +7,7 @@ from xml.etree.ElementTree import ElementTree
 from Components.RcModel import rc_model
 from boxbranding import getRCIDNum
 
+
 class Rc:
 	def __init__(self):
 		self["rc"] = MultiPixmap()

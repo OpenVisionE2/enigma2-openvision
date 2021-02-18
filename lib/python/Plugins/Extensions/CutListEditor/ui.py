@@ -25,8 +25,10 @@ apscParser = Struct(">qq")    # big-endian, 64-bit offset and 64-bit PTS/data
 
 config.usage.cutlisteditor_tutorial_seen = ConfigYesNo(default=False)
 
+
 def SecToMSS(sec):
 	return "%d:%02d" % (sec / 60, sec % 60)
+
 
 def CutListEntry(where, what, where_next=None):
 	w = where / 90
@@ -46,6 +48,7 @@ def CutListEntry(where, what, where_next=None):
 	d = SecToMSS((where_next / 90 - w) / 1000) if where_next else ""
 
 	return (where, what), "%dh:%02dm:%02ds:%03d" % (h, m, s, ms), type, d, type_col
+
 
 class CutListContextMenu(FixedMenu):
 	RET_STARTCUT = 0
@@ -144,6 +147,7 @@ class CutListContextMenu(FixedMenu):
 
 	def grabFrame(self):
 		self.close(self.RET_GRABFRAME)
+
 
 class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, HelpableScreen):
 	skin = """

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from Components.Converter.Converter import Converter
 
+
 class SensorToText(Converter, object):
 	def __init__(self, arguments):
 		Converter.__init__(self, arguments)

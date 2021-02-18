@@ -7,6 +7,7 @@ from Tools.Transponder import orbpos
 from Components.NimManager import nimmanager
 from enigma import eDVBSatelliteEquipmentControl
 
+
 class RotorPosition(Converter, object):
 	DEFAULT = 0
 	WITH_TEXT = 1

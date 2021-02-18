@@ -17,6 +17,7 @@ from Components.Sources.Boolean import Boolean
 from Components.Pixmap import Pixmap
 from enigma import ePoint
 
+
 class ClientModeScreen(ConfigListScreen, Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)

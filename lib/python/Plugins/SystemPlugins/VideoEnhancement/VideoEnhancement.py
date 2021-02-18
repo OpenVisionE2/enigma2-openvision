@@ -7,6 +7,7 @@ from Components.SystemInfo import SystemInfo
 
 # The "VideoEnhancement" is the interface to /proc/stb/vmpeg/0.
 
+
 class VideoEnhancement:
 	firstRun = True
 
@@ -306,5 +307,6 @@ class VideoEnhancement:
 			open("/proc/stb/vmpeg/0/pep_apply", "w").write("1")
 		except IOError:
 			print("[VideoEnhancement] couldn't apply pep values.")
+
 
 VideoEnhancement()

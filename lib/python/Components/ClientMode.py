@@ -4,9 +4,11 @@ from __future__ import print_function
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigText, ConfigSelection, ConfigIP, ConfigInteger, ConfigSubList, ConfigClock
 from Components.SystemInfo import SystemInfo
 
+
 def InitClientMode():
 	config.clientmode = ConfigSubsection()
 	config.clientmode.enabled = ConfigYesNo(default=False)
+
 	def clientModeChanged(configElement):
 		SystemInfo["ClientModeEnabled"] = configElement.value == True
 		SystemInfo["ClientModeDisabled"] = configElement.value != True

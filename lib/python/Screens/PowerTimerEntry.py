@@ -15,6 +15,7 @@ from PowerTimer import AFTEREVENT, TIMERTYPE
 from time import localtime, mktime, time, strftime
 from datetime import datetime
 
+
 class TimerEntry(Screen, ConfigListScreen):
 	def __init__(self, session, timer):
 		Screen.__init__(self, session)
@@ -135,7 +136,6 @@ class TimerEntry(Screen, ConfigListScreen):
 		self.list = []
 		self.timerType = getConfigListEntry(_("Timer type"), self.timerentry_timertype)
 		self.list.append(self.timerType)
-
 
 		if self.timerentry_timertype.value == "autostandby" or self.timerentry_timertype.value == "autodeepstandby":
 			if self.timerentry_timertype.value == "autodeepstandby":
@@ -332,6 +332,7 @@ class TimerEntry(Screen, ConfigListScreen):
 
 	def keyCancel(self):
 		self.close((False,))
+
 
 class TimerLog(Screen):
 	def __init__(self, session, timer):

@@ -39,6 +39,7 @@ config.misc.window_animation_speed = ConfigSelectionNumber(15, g_max_speed, 1, d
 if brand != 'gigablue':
 	config.misc.listbox_animation_default = ConfigSelection(default=g_default["listbox"], choices=[("0", _("Disable")), ("1", _("Enable")), ("2", _("Same behavior as current animation"))])
 
+
 class AnimationSetupConfig(ConfigListScreen, Screen):
 	skin = """
 		<screen position="center,center" size="600,140" title="Animation Setup">
@@ -231,6 +232,7 @@ class AnimationSetupScreen(Screen):
 			self.session.open(MessageBox, current[0], MessageBox.TYPE_INFO, timeout=3)
 			g_animation_paused = tmp
 
+
 def checkAttrib(self, paused):
 	global g_animation_paused
 	if g_animation_paused is paused and hasattr(self, "skinAttributes") and self.skinAttributes:
@@ -238,6 +240,7 @@ def checkAttrib(self, paused):
 			if attr == "animationPaused" and value in ("1", "on"):
 				return True
 	return False
+
 
 def screen_show(self):
 	global g_animation_paused
@@ -249,6 +252,7 @@ def screen_show(self):
 	if checkAttrib(self, False):
 		g_animation_paused = True
 
+
 def screen_doClose(self):
 	global g_animation_paused
 	if checkAttrib(self, True):
@@ -256,14 +260,17 @@ def screen_doClose(self):
 		setAnimation_current(config.misc.window_animation_default.value)
 	g_orig_doClose(self)
 
+
 def animationSetupMain(session, **kwargs):
 	session.open(AnimationSetupScreen)
+
 
 def startAnimationSetup(menuid):
 	if menuid != "osd_menu":
 		return []
 
 	return [(_("Animations"), animationSetupMain, "animation_setup", 3)]
+
 
 def sessionAnimationSetup(session, reason, **kwargs):
 	setAnimation_current(config.misc.window_animation_default.value)
@@ -278,6 +285,7 @@ def sessionAnimationSetup(session, reason, **kwargs):
 		g_orig_doClose = Screen.doClose
 	Screen.show = screen_show
 	Screen.doClose = screen_doClose
+
 
 def Plugins(**kwargs):
 	plugin_list = [

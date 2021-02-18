@@ -19,6 +19,7 @@ if six.PY2:
 else:
 	pyunichr = chr
 
+
 class YWeather(Poll, Converter, object):
 	weather_city = '2251945'
 	time_update = 20

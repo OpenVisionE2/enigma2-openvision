@@ -3,6 +3,7 @@
 from Components.Sources.Source import Source
 from Components.Element import cached
 
+
 class HbbtvApplication(Source):
 	def __init__(self):
 		Source.__init__(self)

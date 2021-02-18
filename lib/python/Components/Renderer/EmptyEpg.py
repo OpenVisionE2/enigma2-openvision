@@ -5,6 +5,7 @@ from enigma import eLabel, eTimer
 from Components.VariableText import VariableText
 from Components.config import config
 
+
 class EmptyEpg(VariableText, Renderer):
 
 	def __init__(self):

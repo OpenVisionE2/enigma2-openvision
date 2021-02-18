@@ -11,6 +11,7 @@ from Tools.Directories import pathExists, SCOPE_CURRENT_SKIN, resolveFilename
 from Components.Harddisk import harddiskmanager
 from ServiceReference import ServiceReference
 
+
 class PiconLocator:
 	def __init__(self, piconDirectories=['picon']):
 		harddiskmanager.on_partition_list_change.append(self.__onPartitionChange)
@@ -111,15 +112,21 @@ class PiconLocator:
 					pngname = resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png')
 		return pngname
 
+
 piconLocator = None
+
 
 def initPiconPaths():
 	global piconLocator
 	piconLocator = PiconLocator()
+
+
 initPiconPaths()
+
 
 def getPiconName(serviceName):
 	return piconLocator.getPiconName(serviceName)
+
 
 class Picon(Renderer):
 	def __init__(self):

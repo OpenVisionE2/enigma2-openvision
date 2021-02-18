@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from Components.FanControl import fancontrol
 
+
 class Sensors:
 	# (type, name, unit, directory)
 	TYPE_TEMPERATURE = 0
@@ -32,7 +33,6 @@ class Sensors:
 				list.append(sensorid)
 		return list
 
-
 	def getSensorType(self, sensorid):
 		return self.sensors_list[sensorid][0]
 
@@ -62,5 +62,6 @@ class Sensors:
 		for fanid in range(fancontrol.getFanCount()):
 			if fancontrol.hasRPMSensor(fanid):
 				self.sensors_list.append((self.TYPE_FAN_RPM, _("Fan %d") % (fanid + 1), "rpm", fanid))
+
 
 sensors = Sensors()

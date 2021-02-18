@@ -4,6 +4,7 @@ import sys
 from enigma import ePythonOutput
 import six
 
+
 class EnigmaLog:
 	def __init__(self, level):
 		self.level = level

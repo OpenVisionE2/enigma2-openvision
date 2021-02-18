@@ -6,6 +6,8 @@ import time
 import tests
 
 #enigma.reset()
+
+
 def test_timer(repeat=0, timer_start=3600, timer_length=1000, sim_length=86400 * 7):
 
 	import NavigationInstance
@@ -22,7 +24,6 @@ def test_timer(repeat=0, timer_start=3600, timer_length=1000, sim_length=86400 *
 
 	t.processed_timers = []
 	t.timer_list = []
-
 
 	# generate a timer to test
 	import xml.etree.cElementTree
@@ -71,6 +72,7 @@ def test_timer(repeat=0, timer_start=3600, timer_length=1000, sim_length=86400 *
 
 	if t_initial[3:6] != t_repeated[3:6]:
 		raise tests.TestError("repeated timer time of day does not match")
+
 
 # required stuff for timer (we try to keep this minimal)
 enigma.init_nav()

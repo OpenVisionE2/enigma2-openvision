@@ -8,6 +8,7 @@ from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Screens.MessageBox import MessageBox
 
+
 class HarddiskSetup(Screen):
 	def __init__(self, session, hdd, action, text, question):
 		Screen.__init__(self, session)
@@ -47,6 +48,7 @@ class HarddiskSetup(Screen):
 			self.session.open(MessageBox, str(ex), type=MessageBox.TYPE_ERROR, timeout=10)
 		self.close()
 
+
 class HarddiskSelection(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
@@ -83,6 +85,8 @@ class HarddiskSelection(Screen):
 			self.doIt(selection[1])
 
 # This is actually just HarddiskSelection but with correct type
+
+
 class HarddiskFsckSelection(HarddiskSelection):
 	def doIt(self, selection):
 		self.session.openWithCallback(self.close, HarddiskSetup, selection,

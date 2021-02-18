@@ -44,6 +44,8 @@ wasrec_lock = threading.Lock()
 
 # parses an event, and gives out a (begin, end, name, duration, eit)-tuple.
 # begin and end will be corrected
+
+
 def parseEvent(ev, description=True):
 	if description:
 		name = ev.getEventName()
@@ -60,11 +62,13 @@ def parseEvent(ev, description=True):
 	end += config.recording.margin_after.value * 60
 	return (begin, end, name, description, eit)
 
+
 class AFTEREVENT:
 	NONE = 0
 	STANDBY = 1
 	DEEPSTANDBY = 2
 	AUTO = 3
+
 
 def findSafeRecordPath(dirname):
 	if not dirname:
@@ -82,6 +86,7 @@ def findSafeRecordPath(dirname):
 			print('[RecordTimer] Failed to create dir "%s":' % dirname, ex)
 			return None
 	return dirname
+
 
 # This code is for use by hardware with a stb device file which, when
 # non-zero, can display a visual indication on the front-panel that
@@ -101,6 +106,8 @@ SID_symbol_states = {
 SID_code_states = SID_symbol_states.setdefault(getBoxType(), (None, 0))
 
 n_recordings = 0  # Must be when we start running...
+
+
 def SetIconDisplay(nrec):
 	if SID_code_states[0] == None:  # Not the code for us
 		return
@@ -142,15 +149,18 @@ def RecordingsState(alter):
 	SetIconDisplay(n_recordings)
 	return
 
+
 RecordingsState(0)       # Initialize
 
 wasRecTimerWakeup = False
+
 
 def checkForRecordings():
 	if NavigationInstance.instance.getRecordings():
 		return True
 	rec_time = NavigationInstance.instance.RecordTimer.getNextTimerTime(isWakeup=True)
 	return rec_time > 0 and (rec_time - time()) < 360
+
 
 def createRecordTimerEntry(timer):
 	return RecordTimerEntry(timer.service_ref, timer.begin, timer.end, timer.name, timer.description,
@@ -725,6 +735,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 			#if self.justplay or self.always_zap:
 			#	choice.insert(2, (_("Don't zap"), "continue"))
 			choice.insert(2, (_("Don't zap"), "continue"))
+
 			def zapAction(choice):
 				start_zap = True
 				if choice:
@@ -860,6 +871,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 
 	record_service = property(lambda self: self.__record_service, setRecordService)
 
+
 def createTimer(xml):
 	begin = int(xml.get("begin"))
 	end = int(xml.get("end"))
@@ -914,6 +926,7 @@ def createTimer(xml):
 		entry.log_entries.append((time, code, msg))
 
 	return entry
+
 
 class RecordTimer(timer.Timer):
 	def __init__(self):
@@ -1018,7 +1031,6 @@ class RecordTimer(timer.Timer):
 			from Tools.Notifications import AddPopup
 			from Screens.MessageBox import MessageBox
 			AddPopup(_("Timer overlap in timers.xml detected!\nPlease recheck it!") + timer_text, type=MessageBox.TYPE_ERROR, timeout=0, id="TimerLoadFailed")
-
 
 	def saveTimer(self):
 		#root_element = xml.etree.cElementTree.Element('timers')

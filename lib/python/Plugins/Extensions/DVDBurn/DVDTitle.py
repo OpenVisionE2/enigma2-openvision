@@ -4,11 +4,14 @@ from __future__ import print_function
 from Components.config import config, ConfigSubsection, ConfigSubList, ConfigInteger, ConfigText, ConfigSelection
 import TitleCutter
 
+
 class ConfigFixedText(ConfigText):
 	def __init__(self, text, visible_width=60):
 		ConfigText.__init__(self, default=text, fixed_size=True, visible_width=visible_width)
+
 	def handleKey(self, key):
 		pass
+
 
 class DVDTitle:
 	def __init__(self, project):

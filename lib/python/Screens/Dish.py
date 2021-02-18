@@ -14,6 +14,7 @@ from Components.Sources.FrontendStatus import FrontendStatus
 INVALID_POSITION = 9999
 config.misc.lastrotorposition = ConfigInteger(INVALID_POSITION)
 
+
 class Dish(Screen):
 	STATE_HIDDEN = 0
 	STATE_SHOWN = 1
@@ -255,6 +256,7 @@ class Dish(Screen):
 		t = abs(time)
 		return "%s%02d:%02d" % (time < 0 and "- " or "", t / 60 % 60, t % 60)
 
+
 class Dishpip(Dish, Screen):
 	STATE_HIDDEN = 0
 	STATE_SHOWN = 1
@@ -274,6 +276,7 @@ class Dishpip(Dish, Screen):
 				<convert type="FrontendInfo">SNR</convert>
 			</widget>
 		</screen>"""
+
 	def __init__(self, session):
 		self.skin = Dishpip.skin
 		Screen.__init__(self, session)

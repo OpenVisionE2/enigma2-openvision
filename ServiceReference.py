@@ -3,6 +3,7 @@
 from enigma import eServiceReference, eServiceReferenceDVB, eServiceCenter, getBestPlayableServiceReference
 import NavigationInstance
 
+
 class ServiceReference(eServiceReference):
 	def __init__(self, ref, reftype=eServiceReference.idInvalid, flags=0, path=''):
 		if reftype != eServiceReference.idInvalid:
@@ -39,6 +40,7 @@ class ServiceReference(eServiceReference):
 		ref = self.ref
 		return ref.flags & eServiceReference.isGroup or (ref.type in (eServiceReference.idDVB, eServiceReference.idDVB + eServiceReference.idServiceIsScrambled, eServiceReference.idServiceHDMIIn, eServiceReference.idServiceMP3))
 
+
 def getPlayingref(ref):
 	playingref = None
 	if NavigationInstance.instance:
@@ -47,9 +49,11 @@ def getPlayingref(ref):
 		playingref = eServiceReference()
 	return playingref
 
+
 def isPlayableForCur(ref):
 	info = eServiceCenter.getInstance().info(ref)
 	return info and info.isPlayable(ref, getPlayingref(ref))
+
 
 def resolveAlternate(ref):
 	nref = None
@@ -73,13 +77,16 @@ def resolveAlternate(ref):
 # Generate an eServiceRef query path containing
 # '(type == serviceTypes[0]) || (type == serviceTypes[1]) || ...'
 
+
 def makeServiceQueryStr(serviceTypes):
 	return ' || '.join(map(lambda x: '(type == %d)' % x, serviceTypes))
+
 
 def serviceRefAppendPath(sref, path):
 	nsref = eServiceReference(sref)
 	nsref.setPath(nsref.getPath() + path)
 	return nsref
+
 
 service_types_tv_ref = eServiceReference(eServiceReference.idDVB, eServiceReference.flagDirectory, eServiceReferenceDVB.dTv)
 
@@ -98,6 +105,7 @@ service_types_radio_ref.setPath(makeServiceQueryStr((
 	eServiceReferenceDVB.dRadio,
 	eServiceReferenceDVB.dRadioAvc,
 )))
+
 
 def hdmiInServiceRef():
 	return eServiceReference(eServiceReference.idServiceHDMIIn, eServiceReference.noFlags, eServiceReferenceDVB.dTv)

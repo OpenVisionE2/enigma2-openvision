@@ -8,6 +8,7 @@ from string import upper
 import gettext
 from Components.Converter.Poll import Poll
 
+
 class ExtremeInfo(Poll, Converter, object):
 	TUNERINFO = 0
 	CAMNAME = 1

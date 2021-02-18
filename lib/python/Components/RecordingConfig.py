@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from Components.config import ConfigInteger, ConfigNumber, ConfigYesNo, ConfigSubsection, ConfigSelection, config
 
+
 def InitRecordingConfig():
 	config.recording = ConfigSubsection()
 	# actually this is "recordings always have priority". "Yes" does mean: don't ask. The RecordTimer will ask when value is 0.

@@ -34,6 +34,7 @@ try:
 except IOError:
 	print("[Profile] WARNING: couldn't open profile file!")
 
+
 def profile(id):
 	now = time.time() - profile_start
 	if profile_file:
@@ -60,6 +61,7 @@ def profile(id):
 					open("/proc/progress", "w").write("%d \n" % perc)
 			except IOError:
 				pass
+
 
 def profile_final():
 	global profile_file

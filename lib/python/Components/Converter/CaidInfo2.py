@@ -10,6 +10,7 @@ import os
 info = {}
 old_ecm_mtime = None
 
+
 class CaidInfo2(Poll, Converter, object):
 	CAID = 0
 	PID = 1
@@ -48,7 +49,6 @@ class CaidInfo2(Poll, Converter, object):
 	CRDTXT = 34
 	SHORT = 35
 	my_interval = 1000
-
 
 	def __init__(self, type):
 		Poll.__init__(self)

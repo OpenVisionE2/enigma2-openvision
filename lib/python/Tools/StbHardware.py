@@ -9,6 +9,7 @@ from enigma import getBoxType, getBoxBrand
 from Tools.Directories import fileExists
 from boxbranding import getMachineBuild
 
+
 def getBoxProcType():
 	procmodeltype = "unknown"
 	try:
@@ -17,6 +18,7 @@ def getBoxProcType():
 	except IOError:
 		print("[StbHardware] getBoxProcType failed!")
 	return procmodeltype
+
 
 def getBoxProc():
 	procmodel = "unknown"
@@ -43,6 +45,7 @@ def getBoxProc():
 		print("[StbHardware] getBoxProc failed!")
 	return procmodel
 
+
 def getHWSerial():
 	hwserial = "unknown"
 	try:
@@ -58,6 +61,7 @@ def getHWSerial():
 		print("[StbHardware] getHWSerial failed!")
 	return hwserial
 
+
 def getBoxRCType():
 	boxrctype = "unknown"
 	try:
@@ -66,6 +70,7 @@ def getBoxRCType():
 	except IOError:
 		print("[StbHardware] getBoxRCType failed!")
 	return boxrctype
+
 
 def getFPVersion():
 	ret = "unknown"
@@ -86,6 +91,7 @@ def getFPVersion():
 		print("[StbHardware] getFPVersion failed!")
 	return ret
 
+
 def setFPWakeuptime(wutime):
 	try:
 		open("/proc/stb/fp/wakeup_time", "w").write(str(wutime))
@@ -95,6 +101,7 @@ def setFPWakeuptime(wutime):
 			ioctl(fp.fileno(), 6, pack('L', wutime)) # set wake up
 		except IOError:
 			print("[StbHardware] setFPWakeupTime failed!")
+
 
 def setRTCoffset(forsleep=None):
 	import time
@@ -112,6 +119,7 @@ def setRTCoffset(forsleep=None):
 	except IOError:
 		print("[StbHardware] setRTCoffset failed!")
 
+
 def setRTCtime(wutime):
 	if path.exists("/proc/stb/fp/rtc_offset"):
 		setRTCoffset()
@@ -123,6 +131,7 @@ def setRTCtime(wutime):
 			ioctl(fp.fileno(), 0x101, pack('L', wutime)) # set wake up
 		except IOError:
 			print("[StbHardware] setRTCtime failed!")
+
 
 def getFPWakeuptime():
 	ret = 0
@@ -136,7 +145,9 @@ def getFPWakeuptime():
 			print("[StbHardware] getFPWakeupTime failed!")
 	return ret
 
+
 wasTimerWakeup = None
+
 
 def getFPWasTimerWakeup(check=False):
 	global wasTimerWakeup
@@ -162,6 +173,7 @@ def getFPWasTimerWakeup(check=False):
 	if check:
 		return wasTimerWakeup, isError
 	return wasTimerWakeup
+
 
 def clearFPWasTimerWakeup():
 	try:

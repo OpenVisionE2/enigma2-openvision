@@ -37,12 +37,14 @@ IOC_DIRSHIFT = IOC_SIZESHIFT + IOC_SIZEBITS
 
 IOC_READ = 2L
 
+
 def EVIOCGNAME(length):
 	return (IOC_READ << IOC_DIRSHIFT) | (length << IOC_SIZESHIFT) | (0x45 << IOC_TYPESHIFT) | (0x06 << IOC_NRSHIFT)
 
 
 class inputDevices:
 	BLACKLIST = ("dreambox front panel", "cec_input")
+
 	def __init__(self):
 		self.Devices = {}
 		self.currentDevice = ""
@@ -70,7 +72,6 @@ class inputDevices:
 				self.Devices[evdev] = {'name': self.name, 'type': self.getInputDeviceType(self.name), 'enabled': False, 'configuredName': None}
 				if model.startswith("et"):
 					self.setDefaults(evdev)
-
 
 	def getInputDeviceType(self, name):
 		if "remote control" in str(name).lower():
@@ -279,12 +280,14 @@ class InitInputDevices:
 			print("[InputDevice] RC remap error: Unexpected error opening remote control file '%s'! (%s)" % (filename, err))
 		return domRemote
 
+
 iInputDevices = inputDevices()
 
 
 config.plugins.remotecontroltype = ConfigSubsection()
 config.plugins.remotecontroltype.rctype = ConfigInteger(default=int(getRCType()))
 config.plugins.remotecontroltype.multirc = ConfigYesNo(default=False)
+
 
 class RcTypeControl():
 	def __init__(self):
@@ -307,5 +310,6 @@ class RcTypeControl():
 		if self.isSupported:
 			rc = open('/proc/stb/ir/rc/type', 'r').read().strip()
 		return int(rc)
+
 
 iRcTypeControl = RcTypeControl()

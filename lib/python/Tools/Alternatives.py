@@ -5,6 +5,7 @@ from Components.config import config
 from ServiceReference import isPlayableForCur
 from Tools.CIHelper import cihelper
 
+
 def getServiceRef(service):
 	if isinstance(service, eServiceReference):
 		return service.ref if hasattr(service, "ref") else service
@@ -13,12 +14,14 @@ def getServiceRef(service):
 	else:
 		return eServiceReference()
 
+
 def getAlternativeChannels(service):
 	alternativeServices = eServiceCenter.getInstance().list(getServiceRef(service))
 	return alternativeServices and alternativeServices.getContent("S", True)
 
 # Get alternatives in a form useful for equality comparison: in
 # eServiceReference.toCompareString() form
+
 
 def getAlternativeChannelsCompare(service):
 	alternativeServices = eServiceCenter.getInstance().list(getServiceRef(service))
@@ -27,12 +30,14 @@ def getAlternativeChannelsCompare(service):
 # Get alternatives in a form useful for equality comparison:
 # as eServiceReference instances
 
+
 def getAlternativeChannelsSRef(service):
 	alternativeServices = eServiceCenter.getInstance().list(getServiceRef(service))
 	return alternativeServices and alternativeServices.getContent("R", True)
 
 # Compare service using alternatices, ensuring the serviceref strings
 # are compared in eServiceReference.toCompareString() form
+
 
 def CompareWithAlternatives(serviceA, serviceB):
 	serviceA = getServiceRef(serviceA)
@@ -45,6 +50,7 @@ def CompareWithAlternatives(serviceA, serviceB):
 
 # Get a service's first alternative
 
+
 def GetWithAlternative(service):
 	service = getServiceRef(service)
 	if service.type == 0 and service.flags == 134:
@@ -52,6 +58,7 @@ def GetWithAlternative(service):
 		if channels:
 			return channels[0]
 	return service.toString()
+
 
 def ResolveCiAlternative(ref, ignore_ref=None, record_mode=False):
 	if ref and isinstance(ref, eServiceReference):
@@ -63,6 +70,7 @@ def ResolveCiAlternative(ref, ignore_ref=None, record_mode=False):
 				for service in serviceList.getContent("R"):
 					if not ignore_ref or service != ignore_ref:
 						refstr = service.toString()
+
 						def resolveRecordLiveMode():
 							if record_mode:
 								is_assignment = cihelper.ServiceIsAssigned(refstr)

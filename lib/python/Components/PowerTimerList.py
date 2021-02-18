@@ -118,7 +118,6 @@ class PowerTimerList(GUIComponent, object):
 
 		res.append((eListboxPythonMultiContent.TYPE_TEXT, self.iconMargin + self.iconWidth, self.rowSplit, 400, height - self.rowSplit, 2, RT_HALIGN_LEFT | RT_VALIGN_BOTTOM, state))
 
-
 		line = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "div-h.png"))
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, 0, height - 2, width, 2, line))
 
@@ -150,16 +149,22 @@ class PowerTimerList(GUIComponent, object):
 	def applySkin(self, desktop, parent):
 		def itemHeight(value):
 			self.itemHeight = int(value)
+
 		def setServiceNameFont(value):
 			self.serviceNameFont = parseFont(value, ((1, 1), (1, 1)))
+
 		def setEventNameFont(value):
 			self.eventNameFont = parseFont(value, ((1, 1), (1, 1)))
+
 		def setFont(value):
 			self.font = parseFont(value, ((1, 1), (1, 1)))
+
 		def rowSplit(value):
 			self.rowSplit = int(value)
+
 		def iconMargin(value):
 			self.iconMargin = int(value)
+
 		def satPosLeft(value):
 			self.satPosLeft = int(value)
 		for (attrib, value) in list(self.skinAttributes):

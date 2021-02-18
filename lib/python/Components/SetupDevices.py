@@ -4,6 +4,7 @@ from Components.config import ConfigOnOff, ConfigSelection, ConfigSubsection, Co
 from Components.Language import language
 from Components.Keyboard import keyboard
 
+
 def InitSetupDevices():
 	def keyboardNotifier(configElement):
 		keyboard.activateKeyboardMap(configElement.index)

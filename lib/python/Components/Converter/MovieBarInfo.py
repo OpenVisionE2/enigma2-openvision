@@ -6,6 +6,7 @@ from enigma import iServiceInformation
 from ServiceReference import ServiceReference
 from os import path
 
+
 class MovieBarInfo(Converter, object):
 	MOVIE_REFERENCE = 0
 	MOVIE_DESC = 1

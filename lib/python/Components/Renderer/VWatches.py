@@ -5,6 +5,7 @@ from Components.Renderer.Renderer import Renderer
 from skin import parseColor
 from enigma import eCanvas, eSize, gRGB, eRect
 
+
 class VWatches(Renderer):
 
 	def __init__(self):

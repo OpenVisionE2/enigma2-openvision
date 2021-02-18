@@ -8,6 +8,7 @@ from ServiceReference import ServiceReference
 from enigma import iServiceInformation, iPlayableService
 from Tools.Transponder import ConvertToHumanReadable
 
+
 class BhStreamInfo(Poll, Converter, object):
 	DUMMY = 0
 	STREAMURL = 1

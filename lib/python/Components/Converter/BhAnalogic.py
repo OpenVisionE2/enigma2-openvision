@@ -4,6 +4,7 @@ from Components.Converter.Converter import Converter
 from Components.Element import cached
 from time import localtime
 
+
 class BhAnalogic(Converter, object):
 
 	def __init__(self, type):

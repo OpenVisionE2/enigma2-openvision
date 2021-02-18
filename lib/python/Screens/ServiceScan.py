@@ -12,6 +12,7 @@ from Components.Sources.FrontendInfo import FrontendInfo
 from Components.config import config
 from enigma import eServiceReference
 
+
 class ServiceScanSummary(Screen):
 	skin = """
 	<screen position="0,0" size="132,64">
@@ -32,6 +33,7 @@ class ServiceScanSummary(Screen):
 
 	def updateService(self, name):
 		self["Service"].setText(name)
+
 
 class ServiceScan(Screen):
 

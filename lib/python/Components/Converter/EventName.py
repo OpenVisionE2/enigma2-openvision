@@ -9,6 +9,7 @@ from Components.config import config
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN
 from time import localtime, mktime, strftime
 
+
 class ETSIClassifications(dict):
 	def shortRating(self, age):
 		if age == 0:

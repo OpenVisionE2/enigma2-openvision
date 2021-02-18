@@ -5,6 +5,7 @@ from Components.ConfigList import ConfigList
 from Components.config import config
 from Components.ActionMap import ActionMap
 
+
 class ConfigMenu(Screen):
 	#create a generic class for view/edit settings
 	#all stuff come from xml file
@@ -19,11 +20,11 @@ class ConfigMenu(Screen):
 				"cancel": self.close
 			})
 
+
 class configTest(Screen):
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
-
 
 		self["config"] = ConfigList(
 			[
