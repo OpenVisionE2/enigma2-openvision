@@ -9,7 +9,8 @@
 #
 # by pieterg, 2008
 
-import os, sys
+import os
+import sys
 
 f = open(sys.argv[1]).readlines()
 

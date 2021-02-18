@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-import enigma, os
+import enigma
+import os
 import six
 
 class ConsoleItem:

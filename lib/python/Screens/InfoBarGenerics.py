@@ -46,7 +46,8 @@ import os
 from os import sys
 from bisect import insort
 from sys import maxint
-import itertools, datetime
+import itertools
+import datetime
 from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 # hack alert!
 from Screens.Menu import MainMenu, mdom

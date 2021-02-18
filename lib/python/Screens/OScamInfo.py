@@ -16,7 +16,8 @@ from enigma import eTimer, RT_HALIGN_LEFT, eListboxPythonMultiContent, gFont, ge
 from xml.etree import ElementTree
 from operator import itemgetter
 from Components.SystemInfo import SystemInfo
-import os, time
+import os
+import time
 try:
 	import urllib2
 except:

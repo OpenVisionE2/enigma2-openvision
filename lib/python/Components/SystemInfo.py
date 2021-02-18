@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
 from Tools.Directories import SCOPE_PLUGINS, fileCheck, fileExists, fileHas, pathExists, resolveFilename
-import os, re
+import os
+import re
 from os import access, R_OK
 from boxbranding import getDisplayType, getImageArch, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveSCART, getHaveYUV, getHaveRCA, getHaveTranscoding, getHaveMultiTranscoding, getSoCFamily, getHaveHDMI, getMachineBuild, getHaveVFDSymbol, getHaveSVIDEO, getFHDSkin
 

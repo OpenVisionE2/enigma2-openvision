@@ -3,7 +3,9 @@
 from __future__ import print_function
 from Components.SystemInfo import SystemInfo
 from Components.Console import Console
-import os, glob, tempfile
+import os
+import glob
+import tempfile
 
 class tmp:
 	dir = None

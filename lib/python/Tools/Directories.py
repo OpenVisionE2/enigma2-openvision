@@ -3,7 +3,8 @@
 from __future__ import print_function
 import errno
 import inspect
-import os, sys
+import os
+import sys
 
 from enigma import eEnv, getDesktop
 from re import compile
