@@ -583,7 +583,7 @@ def runScreenTest():
 		config.misc.prev_wakeup_time_type.save()
 	else:
 		config.misc.prev_wakeup_time.value = 0
-#		if not model.startswith('azboxm'): # skip for AZBox (mini)me - setting wakeup time to past reboots box 
+#		if not model.startswith('azboxm'): # skip for AZBox (mini)me - setting wakeup time to past reboots box
 #			setFPWakeuptime(int(nowTime) - 3600) # minus one hour -> overwrite old wakeup time
 	config.misc.prev_wakeup_time.save()
 

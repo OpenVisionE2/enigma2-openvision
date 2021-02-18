@@ -43,7 +43,7 @@ class Navigation:
 		self.currentlyPlayingServiceOrGroup = None
 		self.currentlyPlayingService = None
 		self.RecordTimer = RecordTimer.RecordTimer()
-		self.PowerTimer = PowerTimer.PowerTimer()		
+		self.PowerTimer = PowerTimer.PowerTimer()
 		self.__wasTimerWakeup = False
 		self.__nextRecordTimerAfterEventActionAuto = nextRecordTimerAfterEventActionAuto
 		self.__nextPowerManagerAfterEventActionAuto = nextPowerManagerAfterEventActionAuto
@@ -101,7 +101,7 @@ class Navigation:
 			# as a PowerTimer WakeToStandby was actiond to it.
 			self.standbytimer = eTimer()
 			self.standbytimer.callback.append(self.gotostandby)
-			self.standbytimer.start(15000, True)			
+			self.standbytimer.start(15000, True)
 
 	def wasTimerWakeup(self):
 		return self.__wasTimerWakeup

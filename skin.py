@@ -346,7 +346,7 @@ def parseFont(value, scale=((1, 1), (1, 1))):
 
 # Convert a parameter string into a value based on string triggers.  The type
 # and value returned is based on the trigger.
-# 
+#
 # Usage:  *string   : The paramater is a string with the "*" is removed (Type: String).
 #         #aarrggbb : The parameter is a HEX colour string (Type: Integer).
 #         0xABCD    : The parameter is a HEX integer (Type: Integer).

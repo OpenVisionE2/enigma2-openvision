@@ -88,4 +88,3 @@ class RollerCharLCDLong(VariableText, Renderer):
 	def delayTimergo(self):
 		self.delayTimer.stop()
 		self.changed((self.CHANGED_DEFAULT,))
-

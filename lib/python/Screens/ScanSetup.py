@@ -426,7 +426,7 @@ class TerrestrialTransponderSearchSupport:
 						tmpstr += data[3] + " kHz"
 					else:
 						title = _("Sundtek - hardware blind scan in progress.\nPlease wait(3-20 min) for the scan to finish.")
-						if "Succeeded this device supports Hardware Blindscan" in line: 
+						if "Succeeded this device supports Hardware Blindscan" in line:
 							tmpstr += title
 					self.terrestrial_search_session["text"].setText(tmpstr)
 		else:

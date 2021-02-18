@@ -52,7 +52,7 @@ def parseKeys(context, filename, actionmap, device, keys):
 			keyid = getKeyId(id)
 			actionmap.unbindPythonKey(context, keyid, unmap)
 			unmapDict.update({(context, id, unmap): filename})
-		else:	
+		else:
 			assert mapto, "[keymapparser] %s: must specify mapto (or unmap) in context %s, id '%s'" % (filename, context, id)
 			assert id, "[keymapparser] %s: must specify id in context %s, mapto '%s'" % (filename, context, mapto)
 			keyid = getKeyId(id)
