@@ -356,10 +356,9 @@ def removeKeyBinding(key, context, action, wild=True):
 		else:
 			del keyBindings[contextAction]
 
+			
 # Returns a list of (key, flags) for a specified action.
 #
-
-
 def queryKeyBinding(context, action):
 	if (context, action) in keyBindings:
 		return [(x[0], x[2]) for x in keyBindings[(context, action)]]
@@ -383,10 +382,9 @@ def getKeyDescription(key):
 def getKeyBindingKeys(filterfn=lambda key: True):
 	return filter(filterfn, keyBindings)
 
+
 # Remove all entries of domain "domain".
 #
-
-
 def removeKeyBindings(domain):
 	for x in keyBindings:
 		keyBindings[x] = filter(lambda e: e[1] != domain, keyBindings[x])
