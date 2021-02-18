@@ -569,7 +569,7 @@ class TerrestrialTransponderSearchSupport:
 		cmd = "%s --freq %d --bw %d --bus %d --ds 2" % (self.terrestrial_search_binName, freq, bandWidth, self.terrestrial_search_bus)
 		if self.terrestrial_search_enable_5v:
 			cmd += " --feid %d --5v %d" % (self.terrestrial_search_feid, int(self.terrestrial_search_enable_5v))
-		print("SCAN CMD : ",cmd)
+		print("SCAN CMD : ", cmd)
 		self.terrestrial_search_container.execute(cmd)
 
 class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, TerrestrialTransponderSearchSupport):

@@ -51,33 +51,33 @@ class PicCript(Renderer):
 										caid = ("0%s" % caid)
 										caid = caid[:2]
 										caid = caid.upper()
-										if fileHas("/tmp/ecm.info","caid: 0x26"):
+										if fileHas("/tmp/ecm.info", "caid: 0x26"):
 											sname = "BiSS"
-										elif fileHas("/tmp/ecm.info","caid: 0x01"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x01"):
 											sname = "SEC"
-										elif fileHas("/tmp/ecm.info","caid: 0x06"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x06"):
 											sname = "IRD"
-										elif fileHas("/tmp/ecm.info","caid: 0x17"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x17"):
 											sname = "BET"
-										elif fileHas("/tmp/ecm.info","caid: 0x05"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x05"):
 											sname = "VIA"
-										elif fileHas("/tmp/ecm.info","caid: 0x09"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x09"):
 											sname = "NDS"
-										elif fileHas("/tmp/ecm.info","caid: 0x0B"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x0B"):
 											sname = "CONN"
-										elif fileHas("/tmp/ecm.info","caid: 0x0D"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x0D"):
 											sname = "CRW"
-										elif fileHas("/tmp/ecm.info","caid: 0x4A"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x4A"):
 											sname = "DRE"
-										elif fileHas("/tmp/ecm.info","caid: 0x0E"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x0E"):
 											sname = "PowerVU"
-										elif fileHas("/tmp/ecm.info","caid: 0x22"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x22"):
 											sname = "Codicrypt"
-										elif fileHas("/tmp/ecm.info","caid: 0x07"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x07"):
 											sname = "DigiCipher"
-										elif fileHas("/tmp/ecm.info","caid: 0xA1"):
+										elif fileHas("/tmp/ecm.info", "caid: 0xA1"):
 											sname = "Rosscrypt"
-										elif fileHas("/tmp/ecm.info","caid: 0x56"):
+										elif fileHas("/tmp/ecm.info", "caid: 0x56"):
 											sname = "Verimatrix"
 
 				pngname = self.nameCache.get(sname, '')

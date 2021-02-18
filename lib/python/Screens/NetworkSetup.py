@@ -360,13 +360,13 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 	def createConfig(self):
 		self.nameservers = iNetwork.getNameserverList()
 		if config.usage.dns.value == 'google':
-			self.nameserverEntries = [ NoSave(ConfigIP(default= [8,8,8,8])), NoSave(ConfigIP(default = [8,8,4,4])) ]
+			self.nameserverEntries = [ NoSave(ConfigIP(default= [8, 8, 8, 8])), NoSave(ConfigIP(default = [8, 8, 4, 4])) ]
 		elif config.usage.dns.value == 'cloadflare':
-			self.nameserverEntries = [ NoSave(ConfigIP(default= [1,1,1,1])), NoSave(ConfigIP(default = [1,0,0,1])) ]
+			self.nameserverEntries = [ NoSave(ConfigIP(default= [1, 1, 1, 1])), NoSave(ConfigIP(default = [1, 0, 0, 1])) ]
 		elif config.usage.dns.value == 'opendns-familyshield':
-			self.nameserverEntries = [ NoSave(ConfigIP(default= [208,67,222,123])), NoSave(ConfigIP(default = [208,67,220,123])) ]
+			self.nameserverEntries = [ NoSave(ConfigIP(default= [208, 67, 222, 123])), NoSave(ConfigIP(default = [208, 67, 220, 123])) ]
 		elif config.usage.dns.value == 'opendns-home':
-			self.nameserverEntries = [ NoSave(ConfigIP(default= [208,67,222,222])), NoSave(ConfigIP(default = [208,67,220,220])) ]
+			self.nameserverEntries = [ NoSave(ConfigIP(default= [208, 67, 222, 222])), NoSave(ConfigIP(default = [208, 67, 220, 220])) ]
 		config.usage.dns.save()
 
 		if config.usage.dns.value == 'custom' or config.usage.dns.value == 'dhcp-router':
