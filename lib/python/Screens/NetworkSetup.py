@@ -1306,7 +1306,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 			iStatus.stopWlanConsole()
 			self.updateStatusbar()
 
-	def WlanScanClosed(self,*ret):
+	def WlanScanClosed(self, *ret):
 		if ret[0] is not None:
 			self.session.openWithCallback(self.AdapterSetupClosed, AdapterSetup, self.iface, ret[0])
 		else:
@@ -1955,7 +1955,7 @@ class NetworkAfp(NSCommon, Screen):
 		else:
 			self.Console.ePopen('update-rc.d -f atalk defaults', self.StartStopCallback)
 
-	def updateService(self,result=None, retval=None, extra_args=None):
+	def updateService(self, result=None, retval=None, extra_args=None):
 		import process
 		p = process.ProcessList()
 		afp_process = str(p.named('afpd')).strip('[]')
@@ -2034,7 +2034,7 @@ class NetworkSABnzbd(NSCommon, Screen):
 		time.sleep(3)
 		self.updateService()
 
-	def updateService(self,result=None, retval=None, extra_args=None):
+	def updateService(self, result=None, retval=None, extra_args=None):
 		import process
 		p = process.ProcessList()
 		sabnzbd_process = str(p.named('SABnzbd.py')).strip('[]')
@@ -3857,7 +3857,7 @@ class NetworkSATPI(NSCommon, Screen):
 		if not ServiceIsEnabled('satpi'):
 			self.Console.ePopen('update-rc.d -f satpi defaults', self.StartStopCallback)
 
-	def updateService(self,result=None, retval=None, extra_args=None):
+	def updateService(self, result=None, retval=None, extra_args=None):
 		import process
 		p = process.ProcessList()
 		satpi_process = str(p.named('satpi')).strip('[]')

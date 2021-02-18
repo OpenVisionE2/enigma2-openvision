@@ -67,7 +67,7 @@ class inputDevices:
 					self.name = "dreambox advanced remote control (native)"
 				if self.name in self.BLACKLIST:
 					continue
-				self.Devices[evdev] = {'name': self.name, 'type': self.getInputDeviceType(self.name),'enabled': False, 'configuredName': None}
+				self.Devices[evdev] = {'name': self.name, 'type': self.getInputDeviceType(self.name), 'enabled': False, 'configuredName': None}
 				if model.startswith("et"):
 					self.setDefaults(evdev)
 

@@ -667,7 +667,7 @@ class NIM(object):
 
 	def getFriendlyType(self):
 		if self.multi_type.values():
-			returnValue = "/".join([x[1].replace("DVB-", "") for x in sorted([({"DVB-S":1, "DVB-C": 2, "DVB-T": 3, "ATSC": 4}[x[:5]], x) for x in self.multi_type.values()])])
+			returnValue = "/".join([x[1].replace("DVB-", "") for x in sorted([({"DVB-S": 1, "DVB-C": 2, "DVB-T": 3, "ATSC": 4}[x[:5]], x) for x in self.multi_type.values()])])
 			return "%s %s" % (_("Combined") if self.combined else _("MultiType"), returnValue if returnValue == 'ATSC' else "DVB-%s" % returnValue)
 		return self.getType() or _("empty")
 

@@ -80,7 +80,7 @@ class CronTimers(Screen):
 		self.message.setTitle(_('Installing service'))
 		self.Console.ePopen('/usr/bin/opkg install ' + pkgname, callback)
 
-	def installComplete(self,result=None, retval=None, extra_args=None):
+	def installComplete(self, result=None, retval=None, extra_args=None):
 		self.message.close()
 		self.updateList()
 

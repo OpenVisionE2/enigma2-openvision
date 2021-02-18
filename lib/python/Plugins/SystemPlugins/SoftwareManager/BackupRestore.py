@@ -88,10 +88,10 @@ class BackupScreen(Screen, ConfigListScreen):
 			else:
 				self.session.openWithCallback(self.backupErrorCB, MessageBox, _("Sorry, your backup destination is not writeable.\nPlease select a different one."), MessageBox.TYPE_INFO, timeout=10)
 
-	def backupFinishedCB(self,retval=None):
+	def backupFinishedCB(self, retval=None):
 		self.close(True)
 
-	def backupErrorCB(self,retval=None):
+	def backupErrorCB(self, retval=None):
 		self.close(False)
 
 	def runAsync(self, finished_cb):
@@ -324,10 +324,10 @@ class RestoreScreen(Screen, ConfigListScreen):
 		else:
 			self.session.open(Console, title=_("Restoring..."), cmdlist=restorecmdlist)
 
-	def backupFinishedCB(self,retval=None):
+	def backupFinishedCB(self, retval=None):
 		self.close(True)
 
-	def backupErrorCB(self,retval=None):
+	def backupErrorCB(self, retval=None):
 		self.close(False)
 
 	def runAsync(self, finished_cb):

@@ -180,7 +180,7 @@ class ServiceInfoEX(Poll, Converter, object):
 
 	@cached
 	def getText(self):
-		self.stream = {'apid': "N/A", 'vpid': "N/A", 'sid': "N/A", 'onid': "N/A", 'tsid': "N/A", 'prcpid': "N/A", 'caids': "FTA", 'pmtpid': "N/A", 'txtpid': "N/A", 'xres': " ", 'yres': " ", 'gamma': " ", 'atype': " ", 'vtype': " ", 'avtype': " ", 'fps': " ", 'tbps': " ", 'vsize': " ",}
+		self.stream = {'apid': "N/A", 'vpid': "N/A", 'sid': "N/A", 'onid': "N/A", 'tsid': "N/A", 'prcpid': "N/A", 'caids': "FTA", 'pmtpid': "N/A", 'txtpid': "N/A", 'xres': " ", 'yres': " ", 'gamma': " ", 'atype': " ", 'vtype': " ", 'avtype': " ", 'fps': " ", 'tbps': " ", 'vsize': " ", }
 		streaminfo = ""
 		array_caids = []
 		service = self.source.service
