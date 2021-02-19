@@ -129,7 +129,7 @@ except ImportError as e:
 
 try:
 	from twisted.python import log
-	config.misc.enabletwistedlog = ConfigYesNo(default=False)
+	config.misc.enabletwistedlog = ConfigYesNo(default=True)
 	if config.misc.enabletwistedlog.value == True:
 		log.startLogging(open('/tmp/twisted.log', 'w'))
 	else:
