@@ -356,7 +356,7 @@ def removeKeyBinding(key, context, action, wild=True):
 		else:
 			del keyBindings[contextAction]
 
-			
+
 # Returns a list of (key, flags) for a specified action.
 #
 def queryKeyBinding(context, action):
