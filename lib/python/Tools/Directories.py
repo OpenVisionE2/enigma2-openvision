@@ -356,7 +356,7 @@ def getRecordingFilename(basename, dirname=None):
 		path += "_%03d" % i
 		i += 1
 
-		
+
 # This is clearly a hack:
 #
 def InitFallbackFiles():
@@ -365,7 +365,7 @@ def InitFallbackFiles():
 	resolveFilename(SCOPE_CONFIG, "userbouquet.favourites.radio")
 	resolveFilename(SCOPE_CONFIG, "bouquets.radio")
 
-	
+
 # Returns a list of tuples containing pathname and filename matching the given pattern
 # Example-pattern: match all txt-files: ".*\.txt$"
 #
@@ -450,7 +450,7 @@ def copytree(src, dst, symlinks=False):
 	except (IOError, OSError) as err:
 		print("[Directories] Error %d: Obtaining stats from '%s' to '%s'! (%s)" % (err.errno, src, dst, err.strerror))
 
-		
+
 # Renames files or if source and destination are on different devices moves them in background
 # input list of (source, destination)
 #
