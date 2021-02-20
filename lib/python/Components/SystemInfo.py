@@ -1,10 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
-from Tools.Directories import SCOPE_PLUGINS, fileCheck, fileExists, fileHas, pathExists, resolveFilename
+from Tools.Directories import SCOPE_PLUGINS, SCOPE_SKIN, fileCheck, fileExists, fileHas, pathExists, resolveFilename
 import os
 import re
 from os import access, R_OK
+from os.path import isfile, join as pathjoin
 from boxbranding import getDisplayType, getImageArch, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveSCART, getHaveYUV, getHaveRCA, getHaveTranscoding, getHaveMultiTranscoding, getSoCFamily, getHaveHDMI, getMachineBuild, getHaveVFDSymbol, getHaveSVIDEO, getFHDSkin, getRCIDNum, getRCName, getRCType
 
 SystemInfo = {}
