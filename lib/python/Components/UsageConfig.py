@@ -350,6 +350,12 @@ def InitUsageConfig():
 		("expert", _("Expert"))
 	])
 
+	config.usage.setupShowDefault = ConfigSelection(default="newline", choices=[
+		("", _("Don't show default")),
+		("spaces", _("Show default after description")),
+		("newline", _("Show default on new line"))
+	])
+
 	config.usage.help_sortorder = ConfigSelection(default="headings+alphabetic", choices=[
 		("headings+alphabetic", _("Alphabetical under headings")),
 		("flat+alphabetic", _("Flat alphabetical")),
