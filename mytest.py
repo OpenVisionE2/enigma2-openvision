@@ -75,7 +75,7 @@ profile("LOAD:skin")
 from skin import readSkin
 
 profile("LOAD:Tools")
-from Tools.Directories import InitFallbackFiles, resolveFilename, SCOPE_PLUGINS, SCOPE_CURRENT_SKIN
+from Tools.Directories import InitFallbackFiles, SCOPE_PLUGINS, SCOPE_CURRENT_SKIN
 InitFallbackFiles()
 
 profile("config.misc")
