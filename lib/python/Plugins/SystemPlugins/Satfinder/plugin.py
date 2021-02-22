@@ -864,10 +864,10 @@ class SatfinderExtra(Satfinder):
 			return
 		tv = [1, 17, 22, 25]
 		radio = [2, 10]
-		green = "\c0088??88" # FTA tv
-		red = "\c00??8888" # encrypted tv
-		yellow = "\c00????00" # data/interactive/catch-all/etc
-		blue = "\c007799??" # radio
+		green = "\c0088ff88" # FTA tv
+		red = "\c00ff8888" # encrypted tv
+		yellow = "\c00ffff00" # data/interactive/catch-all/etc
+		blue = "\c007799ff" # radio
 		no_colour = skin.parameters.get("ServiceInfoAltColor", (" "))
 		out = []
 		legend = "%s%s%s:  %s%s%s  %s%s%s  %s%s%s  %s%s%s\n\n%s%s%s\n" % (no_colour, _("Services"), no_colour, green, _("FTA TV"), no_colour, red, _("Encrypted TV"), no_colour, blue, _("Radio"), no_colour, yellow, _("Other"), no_colour, no_colour, _(" "), no_colour)
