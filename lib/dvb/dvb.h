@@ -248,6 +248,10 @@ public:
 #ifdef HAVE_RASPBERRYPI
 	RESULT getAdapterDemux(ePtr<eDVBDemux> &demux, int adapter_nr, int demux_nr);
 #endif
+#ifdef HAVE_INIT_DEMUX
+protected:
+	void initDemux(int num_demux);
+#endif
 };
 SWIG_TEMPLATE_TYPEDEF(ePtr<eDVBResourceManager>, eDVBResourceManager);
 SWIG_EXTEND(ePtr<eDVBResourceManager>,

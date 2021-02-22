@@ -9,9 +9,7 @@
 #ifdef HAVE_AMLOGIC
 #include <lib/dvb/amldecoder.h>
 #endif
-
 #include <linux/dvb/dmx.h>
-
 #include <lib/base/eerror.h>
 #include <lib/base/cfile.h>
 #include <lib/dvb/idvb.h>
@@ -425,6 +423,7 @@ RESULT eDVBPESReader::start(int pid)
 
 	dmx_pes_filter_params flt;
 	memset(&flt, 0, sizeof(flt));
+
 	flt.pes_type = DMX_PES_OTHER;
 	flt.pid     = pid;
 	flt.input   = DMX_IN_FRONTEND;
@@ -872,6 +871,7 @@ RESULT eDVBTSRecorder::start()
 
 	dmx_pes_filter_params flt;
 	memset(&flt, 0, sizeof(flt));
+
 	flt.pes_type = DMX_PES_OTHER;
 	flt.output  = DMX_OUT_TSDEMUX_TAP;
 	flt.pid     = i->first;

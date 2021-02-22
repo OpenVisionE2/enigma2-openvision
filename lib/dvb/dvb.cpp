@@ -132,10 +132,41 @@ eDVBResourceManager::eDVBResourceManager()
 		m_adapter.size(), m_frontend.size(), m_simulate_frontend.size(), m_demux.size());
 
 	m_fbcmng = new eFBCTunerManager(instance);
-
+#ifdef HAVE_INIT_DEMUX
+	/*
+	 * this is a strange hack: the drivers seem to only work correctly after
+	 * demux0 has been used once. After that, we can use demux1,2,...
+	 */
+	initDemux(0);
+		/* for pip demux1 also be used once */
+	initDemux(1);
+#endif
 	CONNECT(m_releaseCachedChannelTimer->timeout, eDVBResourceManager::releaseCachedChannel);
 }
-
+#ifdef HAVE_INIT_DEMUX
+void eDVBResourceManager::initDemux(int num_demux)
+{
+	char filename[32];
+	sprintf(filename, "/dev/dvb/adapter0/demux%d", num_demux);
+	int dmx = open(filename, O_RDWR | O_CLOEXEC);
+	if (dmx < 0)
+	{
+		eDebug("can't open %s (%m)", filename);
+	}
+	else
+	{
+		struct dmx_pes_filter_params filter;
+		memset(&filter, 0, sizeof(filter));
+		filter.output = DMX_OUT_DECODER;
+		filter.input  = DMX_IN_FRONTEND;
+		filter.flags  = DMX_IMMEDIATE_START;
+		filter.pes_type = DMX_PES_VIDEO;
+		ioctl(dmx, DMX_SET_PES_FILTER, &filter);
+		ioctl(dmx, DMX_STOP);
+		close(dmx);
+	}
+}
+#endif
 void eDVBResourceManager::feStateChanged()
 {
 	int mask=0;
@@ -2456,6 +2487,12 @@ RESULT eDVBChannel::playSource(ePtr<iTsSource> &source, const char *streaminfo_f
 #else
 	if (m_pvr_fd_dst < 0)
 	{
+/*
+		char dvrDev[128];
+		int dvrIndex = m_mgr->m_adapter.begin()->getNumDemux() - 1;
+		sprintf(dvrDev, "/dev/dvb/adapter0/dvr%d", dvrIndex);
+		m_pvr_fd_dst = open(dvrDev, O_WRONLY);
+*/
 		ePtr<eDVBAllocatedDemux> &demux = m_demux ? m_demux : m_decoder_demux;
 		if (demux)
 		{

@@ -118,11 +118,10 @@ class StandbyScreen(Screen):
 		else:
 			self.avswitch.setInput("AUX")
 
-		if SystemInfo["HiSilicon"]:
-			try:
-				open("/proc/stb/hdmi/output", "w").write("off")
-			except:
-				pass
+		try:
+			open("/proc/stb/hdmi/output", "w").write("off")
+		except:
+			pass
 
 		if SystemInfo["AmlogicFamily"]:
 			try:
@@ -192,11 +191,10 @@ class StandbyScreen(Screen):
 		if os.path.exists("/usr/script/StandbyLeave.sh"):
 			Console().ePopen("/usr/script/StandbyLeave.sh")
 
-		if SystemInfo["HiSilicon"]:
-			try:
-				open("/proc/stb/hdmi/output", "w").write("on")
-			except:
-				pass
+		try:
+			open("/proc/stb/hdmi/output", "w").write("on")
+		except:
+			pass
 
 		if SystemInfo["AmlogicFamily"]:
 			try:

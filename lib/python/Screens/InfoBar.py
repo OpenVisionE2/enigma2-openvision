@@ -387,11 +387,17 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 					return
 
 		if answer in ("quit", "quitanddeleteconfirmed"):
+			# make sure that playback is unpaused otherwise the
+			# player driver might stop working
+			self.setSeekState(self.SEEK_STATE_PLAY)
 			self.close()
 		elif answer in ("movielist", "deleteandmovielistconfirmed"):
 			ref = self.session.nav.getCurrentlyPlayingServiceOrGroup()
 			self.returning = True
 			self.session.openWithCallback(self.movieSelected, Screens.MovieSelection.MovieSelection, ref)
+			# make sure that playback is unpaused otherwise the
+			# player driver might stop working
+			self.setSeekState(self.SEEK_STATE_PLAY)
 			self.session.nav.stopService()
 			if not config.movielist.stop_service.value:
 				self.session.nav.playService(self.lastservice)

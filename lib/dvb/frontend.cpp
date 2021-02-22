@@ -753,7 +753,11 @@ int eDVBFrontend::openFrontend()
 		}
 	}
 
+#if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 6
 	m_multitype = m_delsys[SYS_DVBS] && (m_delsys[SYS_DVBT] || m_delsys[SYS_DVBC_ANNEX_A]);
+#else
+	m_multitype = m_delsys[SYS_DVBS] && (m_delsys[SYS_DVBT] || m_delsys[SYS_DVBC_ANNEX_AC]);
+#endif
 
 	if (!m_multitype)
 		m_type = feSatellite;
@@ -2954,9 +2958,6 @@ RESULT eDVBFrontend::setVoltage(int voltage)
 			m_data[CSW]=m_data[UCSW]=m_data[TONEBURST]=-1; // reset diseqc
 			vlt = SEC_VOLTAGE_OFF;
 			active_antenna_power = 0;
-			char filename[256];
-			snprintf(filename, sizeof(filename), "/proc/stb/frontend/%d/active_antenna_power", m_slotid);
-			CFile::writeStr(filename, "off");
 			break;
 		case voltage13_5:
 			increased = true;
@@ -2967,12 +2968,6 @@ RESULT eDVBFrontend::setVoltage(int voltage)
 			break;
 		case voltage13:
 			vlt = SEC_VOLTAGE_13;
-			if(m_type == feTerrestrial)
-			{
-				char filename[256];
-				snprintf(filename, sizeof(filename), "/proc/stb/frontend/%d/active_antenna_power", m_slotid);
-				CFile::writeStr(filename, "on");
-			}
 			break;
 		case voltage18_5:
 			increased = true;
@@ -3347,7 +3342,11 @@ bool eDVBFrontend::setDeliverySystem(const char *type)
 	}
 	else if (!strcmp(type, "DVB-C"))
 	{
+#if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 6
 		p[0].u.data = SYS_DVBC_ANNEX_A;
+#else
+		p[0].u.data = SYS_DVBC_ANNEX_AC;
+#endif
 		fetype = feCable;
 	}
 	else if (!strcmp(type, "ATSC"))

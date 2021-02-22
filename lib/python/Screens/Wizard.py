@@ -359,6 +359,11 @@ class Wizard(Screen):
 				if self.updateValues in self.onShown:
 					self.onShown.remove(self.updateValues)
 
+		try:
+			open("/proc/progress", "w").write("100")
+		except:
+			pass
+
 		if print_now:
 			print("[Wizard] Now: " + str(self.currStep))
 

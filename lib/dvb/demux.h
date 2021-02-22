@@ -59,7 +59,6 @@ private:
 	friend class eAMLTSMPEGDecoder;
 #endif
 	sigc::signal1<void, int> m_event;
-
 	int openDemux(void);
 };
 #endif

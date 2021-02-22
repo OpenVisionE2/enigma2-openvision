@@ -1092,8 +1092,10 @@ class ChannelSelectionEdit:
 				if mutableBouquet:
 					mutableBouquet.setListName(bName)
 					if services is not None:
+						# optimize function lookup
+						l_bouquetAdd = mutableBouquet.addService
 						for service in services:
-							if mutableBouquet.addService(service):
+							if l_bouquetAdd(service):
 								print("[ChannelSelection] add", service.toString(), "to new bouquet failed")
 					mutableBouquet.flushChanges()
 				else:
