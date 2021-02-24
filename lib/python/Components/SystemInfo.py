@@ -170,11 +170,12 @@ SystemInfo["OpenVisionModule"] = fileCheck("/proc/openvision/distro")
 SystemInfo["OLDE2API"] = model in ("dm800", "su980")
 SystemInfo["7segment"] = displaytype == "7segment" or "7seg" in displaytype
 SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or pathExists("/proc/hisi") or fileExists("/usr/bin/hihalt") or pathExists("/usr/lib/hisilicon")
-SystemInfo["DefineSat"] = platform in ("octagonhisil", "gbmv200") or model in ("ustym4kpro", "beyonwizv2", "viper4k")
+SystemInfo["DefineSat"] = platform in ("octagonhisil", "gbmv200", "dagsmv200") or model in ("ustym4kpro", "beyonwizv2", "viper4k")
 SystemInfo["AmlogicFamily"] = socfamily.startswith("aml") or socfamily.startswith("meson") or fileExists("/proc/device-tree/amlogic-dt-id") or fileExists("/usr/bin/amlhalt") or pathExists("/sys/module/amports")
 SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7")
 SystemInfo["AndroidMode"] = SystemInfo["RecoveryMode"] and model == "multibox" or brand in ("hypercube", "linkdroid", "mecool", "wetek") or platform == "dmamlogic"
+SystemInfo["canDualBoot"] = fileExists("/dev/block/by-name/flag")
 SystemInfo["grautec"] = fileExists("/tmp/usbtft")
 SystemInfo["CanAC3plusTranscode"] = fileExists("/proc/stb/audio/ac3plus_choices")
 SystemInfo["CanDTSHD"] = fileExists("/proc/stb/audio/dtshd_choices")
