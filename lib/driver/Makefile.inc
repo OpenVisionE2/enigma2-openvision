@@ -35,3 +35,7 @@ if RASPBERRYPI
 driver_libenigma_driver_a_SOURCES += driver/rclirc.cpp
 driverinclude_HEADERS += driver/rclirc.h
 endif
+
+if DMAMLOGIC
+driverinclude_HEADERS += driver/alsa.h
+endif
