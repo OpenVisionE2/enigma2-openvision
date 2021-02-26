@@ -1623,8 +1623,9 @@ class InfoBarSeek:
 
 		if pauseable is not None:
 			if self.seekstate[0]:
-				print("[InfoBarGenerics] resolved to PAUSE")
-				pauseable.pause()
+				if self.seekstate[3] == "||":
+					print("[InfoBarGenerics] resolved to PAUSE")
+					pauseable.pause()
 			elif self.seekstate[1]:
 				if not pauseable.setFastForward(self.seekstate[1]):
 					print("[InfoBarGenerics] resolved to FAST FORWARD")
