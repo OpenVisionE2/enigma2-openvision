@@ -130,7 +130,7 @@ class About(Screen):
 		else:
 			AboutText += _("Kernel module layout: ") + _("N/A") + "\n"
 
-		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString(cpu).replace("GStreamer", "")
+		GStreamerVersion = _("GStreamer version: ") + about.getGStreamerVersionString().replace("GStreamer", "")
 		self["GStreamerVersion"] = StaticText(GStreamerVersion)
 		AboutText += "\n" + GStreamerVersion + "\n"
 
