@@ -10,6 +10,7 @@ from Components.About import about
 from Tools.Directories import fileExists
 from Components.Console import Console
 from boxbranding import getHaveAVJACK, getHaveHDMI, getMachineBuild, getSoCFamily
+import re
 
 brand = getBoxBrand()
 platform = getMachineBuild()
@@ -344,9 +345,6 @@ class VideoHardware:
 	# get a list with all modes, with all rates, for a given port.
 	def getModeList(self, port):
 		print("[Videomode] VideoHardware getModeList for port", port)
-		if platform == "dmamlogic":
-			res = [('720p', ['50Hz', '60Hz']), ('1080p', ['50Hz', '60Hz', '30hz', '24hz', '25hz']), ('1080i', ['50Hz', '60Hz']), ('2160p', ['50Hz', '60hz', '30hz', '24hz', '25hz']), ('576p', ['50Hz']), ('576i', ['50Hz']), ('480p', ['60Hz']), ('480i', ['60Hz'])]
-			return res
 		res = []
 		for mode in self.modes[port]:
 			# list all rates which are completely valid
@@ -400,7 +398,12 @@ class VideoHardware:
 			print("[Videomode] VideoHardware current mode not available, not setting videomode")
 			return
 
-		rate = config.av.videorate[mode].value
+		if platform == "dmamlogic" and (mode.find("0p30") != -1 or mode.find("0p24") != -1 or mode.find("0p25") != -1):
+			match = re.search(r"(\d*?[ip])(\d*?)$", mode)
+			mode = match.group(1)
+			rate = match.group(2) + "Hz"
+		else:
+			rate = config.av.videorate[mode].value
 		self.setMode(port, mode, rate)
 
 	def updateAspect(self, cfgelement):
