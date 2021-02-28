@@ -999,7 +999,9 @@ class RecordTimer(timer.Timer):
 # justLoad is passed on to record()
 	def loadTimer(self, justLoad=False):
 		try:
-			doc = xml.etree.cElementTree.parse(self.Filename)
+			file = open(self.Filename, 'r')
+			doc = xml.etree.cElementTree.parse(file)
+			file.close()
 		except SyntaxError:
 			from Tools.Notifications import AddPopup
 			from Screens.MessageBox import MessageBox
