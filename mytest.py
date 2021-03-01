@@ -34,6 +34,13 @@ enigma.eTimer = eBaseImpl.eTimer
 enigma.eSocketNotifier = eBaseImpl.eSocketNotifier
 enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
 
+if fileExists("/etc/init.d/inetd.busybox"):
+	from Components.Console import Console
+	print("[mytest] Try start busybox to help FTP access.")
+	Console = Console()
+	Console.ePopen('/etc/init.d/inetd.busybox start')
+	print("[mytest] Finished starting busybox inetd.")
+
 from traceback import print_exc
 
 if getHaveMultiLib() == "True":
