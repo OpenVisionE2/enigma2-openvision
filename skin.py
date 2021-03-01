@@ -110,7 +110,7 @@ def InitSkins():
 	runCallbacks = True
 
 	
-# Temporary entry point for older versions of mytest.py.
+# Temporary entry point for older versions of StartEnigma.py.
 #
 def loadSkinData(desktop):
 	InitSkins()
