@@ -156,6 +156,7 @@ def GetDeviceId(filter, nim_idx):
 		socket_id += 1
 	return device_id
 
+
 def getVtunerId(filter, nim_idx):
 	idx_count = 1
 	for slot in nimmanager.nim_slots:
