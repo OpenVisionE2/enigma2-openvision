@@ -58,7 +58,10 @@ def profile(id):
 				elif model == "beyonwizu4":
 					open("/dev/dbox/oled0", "w").write("Loading %d%%\n" % perc)
 				else:
-					open("/proc/progress", "w").write("%d \n" % perc)
+					try:
+						open("/proc/progress", "w").write("%d \n" % perc)
+					except:
+						pass
 			except IOError:
 				pass
 
