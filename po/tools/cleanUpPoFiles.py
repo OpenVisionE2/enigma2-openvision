@@ -5,16 +5,16 @@ from __future__ import print_function
 
 """Cleans up PO translation files
 
-   This script will iterate through all .po files and unset ( "" ) msgstr 
-   translation entries which match exactly their msgid value. 
-   The 'fuzzy' flag for each (if it exists) will be removed in such cases. 
+   This script will iterate through all .po files and unset ( "" ) msgstr
+   translation entries which match exactly their msgid value.
+   The 'fuzzy' flag for each (if it exists) will be removed in such cases.
    Polib will be required, see the docs at
    https://polib.readthedocs.io/en/latest/installation.html#installation
 
    This script is functional over efficient!
 
    Known issues / notes:
-   - normalised entries (those found in other translation files) 
+   - normalised entries (those found in other translation files)
      are currently appended for ease of diffing
    - comments in source code files should probably be ignored
    - FIXED: colour hex values (eg. "#25062748") should be ignored

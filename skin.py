@@ -109,13 +109,13 @@ def InitSkins():
 		loadSkin(USER_SKIN, scope=SCOPE_CURRENT_SKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID)
 	runCallbacks = True
 
-	
+
 # Temporary entry point for older versions of StartEnigma.py.
 #
 def loadSkinData(desktop):
 	InitSkins()
 
-	
+
 # Method to load a skin XML file into the skin data structures.
 #
 def loadSkin(filename, scope=SCOPE_SKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID):
@@ -1338,7 +1338,7 @@ def readSkin(screen, skin, names, desktop):
 	screen = None
 	usedComponents = None
 
-	
+
 # Return a set of all the widgets found in a screen. Panels will be expanded
 # recursively until all referenced widgets are captured. This code only performs
 # a simple scan of the XML and no skin processing is performed.
