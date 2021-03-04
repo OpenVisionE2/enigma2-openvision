@@ -360,9 +360,10 @@ class Wizard(Screen):
 					self.onShown.remove(self.updateValues)
 
 		try:
+			print("[Wizard] Write to /proc/progress")
 			open("/proc/progress", "w").write("100")
 		except:
-			pass
+			print("[Wizard] Write to /proc/progress failed.")
 
 		if print_now:
 			print("[Wizard] Now: " + str(self.currStep))

@@ -138,10 +138,13 @@ class Navigation:
 					signal = 1
 				else:
 					signal = 0
+				print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
 				open("/proc/stb/lcd/symbol_signal", "w").write(str(signal))
 			except:
+				print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
 				open("/proc/stb/lcd/symbol_signal", "w").write("0")
 		elif path.exists("/proc/stb/lcd/symbol_signal") and config.lcd.mode.value == '0':
+			print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
 			open("/proc/stb/lcd/symbol_signal", "w").write("0")
 		if ref is None:
 			self.stopService()
@@ -267,6 +270,7 @@ class Navigation:
 		self.currentlyPlayingServiceReference = None
 		self.currentlyPlayingServiceOrGroup = None
 		if path.exists("/proc/stb/lcd/symbol_signal"):
+			print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
 			open("/proc/stb/lcd/symbol_signal", "w").write("0")
 
 	def pause(self, p):

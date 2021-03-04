@@ -119,19 +119,22 @@ class StandbyScreen(Screen):
 			self.avswitch.setInput("AUX")
 
 		try:
+			print("[Standby] Write to /proc/stb/hdmi/output")
 			open("/proc/stb/hdmi/output", "w").write("off")
 		except:
-			pass
+			print("[Standby] Write to /proc/stb/hdmi/output failed.")
 
 		if SystemInfo["AmlogicFamily"]:
 			try:
+				print("[Standby] Write to /sys/class/leds/led-sys/brightness")
 				open("/sys/class/leds/led-sys/brightness", "w").write("0")
 			except:
-				pass
+				print("[Standby] Write to /sys/class/leds/led-sys/brightness failed.")
 			try:
+				print("[Standby] Write to /sys/class/cec/cmd")
 				open("/sys/class/cec/cmd", "w").write("0f 36")
 			except:
-				pass
+				print("[Standby] Write to /sys/class/cec/cmd failed.")
 
 		gotoShutdownTime = int(config.usage.standby_to_shutdown_timer.value)
 		if gotoShutdownTime:
@@ -192,19 +195,22 @@ class StandbyScreen(Screen):
 			Console().ePopen("/usr/script/StandbyLeave.sh")
 
 		try:
+			print("[Standby] Write to /proc/stb/hdmi/output")
 			open("/proc/stb/hdmi/output", "w").write("on")
 		except:
-			pass
+			print("[Standby] Write to /proc/stb/hdmi/output failed.")
 
 		if SystemInfo["AmlogicFamily"]:
 			try:
+				print("[Standby] Write to /sys/class/leds/led-sys/brightness")
 				open("/sys/class/leds/led-sys/brightness", "w").write("1")
 			except:
-				pass
+				print("[Standby] Write to /sys/class/leds/led-sys/brightness failed")
 			try:
+				print("[Standby] Write to /sys/class/cec/cmd")
 				open("/sys/class/cec/cmd", "w").write("10 04")
 			except:
-				pass
+				print("[Standby] Write to /sys/class/cec/cmd failed.")
 
 	def setMute(self):
 		self.wasMuted = eDVBVolumecontrol.getInstance().isMuted()
@@ -403,14 +409,16 @@ class TryQuitMainloop(MessageBox):
 			if SystemInfo["Display"] and SystemInfo["LCDMiniTV"]:
 				print("[Standby] LCDminiTV off")
 				try:
+					print("[Standby] Write to /proc/stb/lcd/mode")
 					open("/proc/stb/lcd/mode", "w").write(0)
 				except:
-					pass
+					print("[Standby] Write to /proc/stb/lcd/mode failed.")
 			if getBoxType() == "vusolo4k":
 				try:
+					print("[Standby] Write to /proc/stb/fp/oled_brightness")
 					open("/proc/stb/fp/oled_brightness", "w").write("0")
 				except:
-					pass
+					print("[Standby] Write to /proc/stb/fp/oled_brightness failed.")
 			self.quitMainloop()
 		else:
 			MessageBox.close(self, True)

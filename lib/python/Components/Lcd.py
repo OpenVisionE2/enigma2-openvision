@@ -59,17 +59,23 @@ class IconCheckPoller:
 	def JobTask(self):
 		LinkState = 0
 		if fileExists('/sys/class/net/wlan0/operstate'):
+			print("[Lcd] Read /sys/class/net/wlan0/operstate")
 			LinkState = open('/sys/class/net/wlan0/operstate').read()
 			if LinkState != 'down':
+				print("[Lcd] Read /sys/class/net/wlan0/operstate")
 				LinkState = open('/sys/class/net/wlan0/operstate').read()
 		elif fileExists('/sys/class/net/eth0/operstate'):
+			print("[Lcd] Read /sys/class/net/eth0/operstate")
 			LinkState = open('/sys/class/net/eth0/operstate').read()
 			if LinkState != 'down':
+				print("[Lcd] Read /sys/class/net/eth0/carrier")
 				LinkState = open('/sys/class/net/eth0/carrier').read()
 		LinkState = LinkState[:1]
 		if fileExists("/proc/stb/lcd/symbol_network") and config.lcd.mode.value == '1':
+			print("[Lcd] Write to /proc/stb/lcd/symbol_network")
 			open("/proc/stb/lcd/symbol_network", "w").write(str(LinkState))
 		elif fileExists("/proc/stb/lcd/symbol_network") and config.lcd.mode.value == '0':
+			print("[Lcd] Write to /proc/stb/lcd/symbol_network")
 			open("/proc/stb/lcd/symbol_network", "w").write("0")
 
 		USBState = 0
@@ -80,6 +86,7 @@ class IconCheckPoller:
 				if dev.deviceClass != 9 and dev.deviceClass != 2 and dev.idVendor != 3034 and dev.idVendor > 0:
 					USBState = 1
 		if fileExists("/proc/stb/lcd/symbol_usb"):
+			print("[Lcd] Write to /proc/stb/lcd/symbol_usb")
 			open("/proc/stb/lcd/symbol_usb", "w").write(str(USBState))
 
 		self.timer.startLongTimer(30)
@@ -192,51 +199,65 @@ class LCD:
 	def setMode(self, value):
 		if fileExists("/proc/stb/lcd/show_symbols"):
 			print('[Lcd] setLCDMode', value)
+			print("[Lcd] Write to /proc/stb/lcd/show_symbols")
 			open("/proc/stb/lcd/show_symbols", "w").write(value)
 		if config.lcd.mode.value == "0":
 			SystemInfo["SeekStatePlay"] = False
 			SystemInfo["StatePlayPause"] = False
 			if fileExists("/proc/stb/lcd/symbol_hdd"):
+				print("[Lcd] Write to /proc/stb/lcd/symbol_hdd")
 				open("/proc/stb/lcd/symbol_hdd", "w").write("0")
 			if fileExists("/proc/stb/lcd/symbol_hddprogress"):
+				print("[Lcd] Write to /proc/stb/lcd/symbol_hddprogress")
 				open("/proc/stb/lcd/symbol_hddprogress", "w").write("0")
 			if fileExists("/proc/stb/lcd/symbol_network"):
+				print("[Lcd] Write to /proc/stb/lcd/symbol_network")
 				open("/proc/stb/lcd/symbol_network", "w").write("0")
 			if fileExists("/proc/stb/lcd/symbol_signal"):
+				print("[Lcd] Write to /proc/stb/lcd/symbol_signal")
 				open("/proc/stb/lcd/symbol_signal", "w").write("0")
 			if fileExists("/proc/stb/lcd/symbol_timeshift"):
+				print("[Lcd] Write to /proc/stb/lcd/symbol_timeshift")
 				open("/proc/stb/lcd/symbol_timeshift", "w").write("0")
 			if fileExists("/proc/stb/lcd/symbol_tv"):
+				print("[Lcd] Write to /proc/stb/lcd/symbol_tv")
 				open("/proc/stb/lcd/symbol_tv", "w").write("0")
 			if fileExists("/proc/stb/lcd/symbol_usb"):
+				print("[Lcd] Write to /proc/stb/lcd/symbol_usb")
 				open("/proc/stb/lcd/symbol_usb", "w").write("0")
 
 	def setPower(self, value):
 		if fileExists("/proc/stb/power/vfd"):
 			print('[Lcd] setLCDPower', value)
+			print("[Lcd] Write to /proc/stb/power/vfd")
 			open("/proc/stb/power/vfd", "w").write(value)
 		elif fileExists("/proc/stb/lcd/vfd"):
 			print('[Lcd] setLCDPower', value)
+			print("[Lcd] Write to /proc/stb/lcd/vfd")
 			open("/proc/stb/lcd/vfd", "w").write(value)
 
 	def setShowoutputresolution(self, value):
 		if fileExists("/proc/stb/lcd/show_outputresolution"):
 			print('[Lcd] setLCDShowoutputresolution', value)
+			print("[Lcd] Write to /proc/stb/lcd/show_outputresolution")
 			open("/proc/stb/lcd/show_outputresolution", "w").write(value)
 
 	def setfblcddisplay(self, value):
 		if fileExists("/proc/stb/fb/sd_detach"):
 			print('[Lcd] setfblcddisplay', value)
+			print("[Lcd] Write to /proc/stb/fb/sd_detach")
 			open("/proc/stb/fb/sd_detach", "w").write(value)
 
 	def setRepeat(self, value):
 		if fileExists("/proc/stb/lcd/scroll_repeats"):
 			print('[Lcd] setLCDRepeat', value)
+			print("[Lcd] Write to /proc/stb/lcd/scroll_repeats")
 			open("/proc/stb/lcd/scroll_repeats", "w").write(value)
 
 	def setScrollspeed(self, value):
 		if fileExists("/proc/stb/lcd/scroll_delay"):
 			print('[Lcd] setLCDScrollspeed', value)
+			print("[Lcd] Write to /proc/stb/lcd/scroll_delay")
 			open("/proc/stb/lcd/scroll_delay", "w").write(value)
 
 	def setLEDNormalState(self, value):
@@ -251,6 +272,7 @@ class LCD:
 	def setLCDMiniTVMode(self, value):
 		if fileExists("/proc/stb/lcd/mode"):
 			print('[Lcd] setLCDMiniTVMode', value)
+			print("[Lcd] Write to /proc/stb/lcd/mode")
 			open("/proc/stb/lcd/mode", "w").write(value)
 
 	def setLCDMiniTVPIPMode(self, value):
@@ -259,6 +281,7 @@ class LCD:
 	def setLCDMiniTVFPS(self, value):
 		if fileExists("/proc/stb/lcd/fps"):
 			print('[Lcd] setLCDMiniTVFPS', value)
+			print("[Lcd] Write to /proc/stb/lcd/fps")
 			open("/proc/stb/lcd/fps", "w").write(value)
 
 
@@ -285,6 +308,7 @@ def InitLcd():
 	config.lcd = ConfigSubsection()
 
 	if fileExists("/proc/stb/lcd/mode"):
+		print("[Lcd] Read /proc/stb/lcd/mode")
 		can_lcdmodechecking = open("/proc/stb/lcd/mode", "r").read()
 	else:
 		can_lcdmodechecking = False
@@ -296,16 +320,18 @@ def InitLcd():
 			def setLCDModeMinitTV(configElement):
 				try:
 					print('[Lcd] setLCDModeMinitTV', configElement.value)
+					print("[Lcd] Write to /proc/stb/lcd/mode")
 					open("/proc/stb/lcd/mode", "w").write(configElement.value)
 				except:
-					pass
+					print("[Lcd] Write to /proc/stb/lcd/mode failed.")
 
 			def setMiniTVFPS(configElement):
 				try:
 					print('[Lcd] setMiniTVFPS', configElement.value)
+					print("[Lcd] Write to /proc/stb/lcd/fps")
 					open("/proc/stb/lcd/fps", "w").write(configElement.value)
 				except:
-					pass
+					print("[Lcd] Write to /proc/stb/lcd/fps failed.")
 
 			def setLCDModePiP(configElement):
 				pass
@@ -401,52 +427,66 @@ def InitLcd():
 
 		def setPowerLEDstate(configElement):
 			if fileExists("/proc/stb/power/powerled"):
+				print("[Lcd] Write to /proc/stb/power/powerled")
 				open("/proc/stb/power/powerled", "w").write(configElement.value)
 
 		def setPowerLEDstate2(configElement):
 			if fileExists("/proc/stb/power/powerled2"):
+				print("[Lcd] Write to /proc/stb/power/powerled2")
 				open("/proc/stb/power/powerled2", "w").write(configElement.value)
 
 		def setPowerLEDstanbystate(configElement):
 			if fileExists("/proc/stb/power/standbyled"):
+				print("[Lcd] Write to /proc/stb/power/standbyled")
 				open("/proc/stb/power/standbyled", "w").write(configElement.value)
 
 		def setPowerLEDdeepstanbystate(configElement):
 			if fileExists("/proc/stb/power/suspendled"):
+				print("[Lcd] Write to /proc/stb/power/suspendled")
 				open("/proc/stb/power/suspendled", "w").write(configElement.value)
 
 		def setLedPowerColor(configElement):
 			if fileExists("/proc/stb/fp/ledpowercolor"):
+				print("[Lcd] Write to /proc/stb/fp/ledpowercolor")
 				open("/proc/stb/fp/ledpowercolor", "w").write(configElement.value)
 
 		def setLedStandbyColor(configElement):
 			if fileExists("/proc/stb/fp/ledstandbycolor"):
+				print("[Lcd] Write to /proc/stb/fp/ledstandbycolor")
 				open("/proc/stb/fp/ledstandbycolor", "w").write(configElement.value)
 
 		def setLedSuspendColor(configElement):
 			if fileExists("/proc/stb/fp/ledsuspendledcolor"):
+				print("[Lcd] Write to /proc/stb/fp/ledsuspendledcolor")
 				open("/proc/stb/fp/ledsuspendledcolor", "w").write(configElement.value)
 
 		def setPower4x7On(configElement):
 			if fileExists("/proc/stb/fp/power4x7on"):
+				print("[Lcd] Write to /proc/stb/fp/power4x7on")
 				open("/proc/stb/fp/power4x7on", "w").write(configElement.value)
 
 		def setPower4x7Standby(configElement):
 			if fileExists("/proc/stb/fp/power4x7standby"):
+				print("[Lcd] Write to /proc/stb/fp/power4x7standby")
 				open("/proc/stb/fp/power4x7standby", "w").write(configElement.value)
 
 		def setPower4x7Suspend(configElement):
 			if fileExists("/proc/stb/fp/power4x7suspend"):
+				print("[Lcd] Write to /proc/stb/fp/power4x7suspend")
 				open("/proc/stb/fp/power4x7suspend", "w").write(configElement.value)
 
 		def setXcoreVFD(configElement):
 			if fileExists("/sys/module/brcmstb_osmega/parameters/pt6302_cgram"):
+				print("[Lcd] Write to /sys/module/brcmstb_osmega/parameters/pt6302_cgram")
 				open("/sys/module/brcmstb_osmega/parameters/pt6302_cgram", "w").write(configElement.value)
 			if fileExists("/sys/module/brcmstb_spycat4k/parameters/pt6302_cgram"):
+				print("[Lcd] Write to /sys/module/brcmstb_spycat4k/parameters/pt6302_cgram")
 				open("/sys/module/brcmstb_spycat4k/parameters/pt6302_cgram", "w").write(configElement.value)
 			if fileExists("/sys/module/brcmstb_spycat4kmini/parameters/pt6302_cgram"):
+				print("[Lcd] Write to /sys/module/brcmstb_spycat4kmini/parameters/pt6302_cgram")
 				open("/sys/module/brcmstb_spycat4kmini/parameters/pt6302_cgram", "w").write(configElement.value)
 			if fileExists("/sys/module/brcmstb_spycat4kcombo/parameters/pt6302_cgram"):
+				print("[Lcd] Write to /sys/module/brcmstb_spycat4kcombo/parameters/pt6302_cgram")
 				open("/sys/module/brcmstb_spycat4kcombo/parameters/pt6302_cgram", "w").write(configElement.value)
 
 		config.usage.vfd_xcorevfd = ConfigSelection(default="0", choices=[("0", _("12 character")), ("1", _("8 character"))])
@@ -540,8 +580,10 @@ def InitLcd():
 		if SystemInfo["LcdLiveTV"]:
 			def lcdLiveTvChanged(configElement):
 				if "live_enable" in SystemInfo["LcdLiveTV"]:
+					print("[Lcd] Write to /proc/stb/lcd/live_enable")
 					open(SystemInfo["LcdLiveTV"], "w").write(configElement.value and "enable" or "disable")
 				else:
+					print("[Lcd] Write to /proc/stb/fb/sd_detach")
 					open(SystemInfo["LcdLiveTV"], "w").write(configElement.value and "0" or "1")
 				try:
 					InfoBarInstance = InfoBar.instance
@@ -561,6 +603,7 @@ def InitLcd():
 
 		if SystemInfo["VFD_scroll_repeats"] and SystemInfo["VFDRepeats"]:
 			def scroll_repeats(el):
+				print("[Lcd] Write to /proc/stb/lcd/scroll_repeats")
 				open(SystemInfo["VFD_scroll_repeats"], "w").write(el.value)
 			choicelist = [("0", _("None")), ("1", _("1X")), ("2", _("2X")), ("3", _("3X")), ("4", _("4X")), ("500", _("Continues"))]
 			config.usage.vfd_scroll_repeats = ConfigSelection(default="3", choices=choicelist)
@@ -570,6 +613,7 @@ def InitLcd():
 
 		if SystemInfo["VFD_scroll_delay"] and SystemInfo["VFDRepeats"]:
 			def scroll_delay(el):
+				print("[Lcd] Write to /proc/stb/lcd/scroll_delay")
 				# add workaround for Boxes who need hex code
 				if SystemInfo["VFDDelay"]:
 					open(SystemInfo["VFD_scroll_delay"], "w").write(hex(int(el.value)))
@@ -584,6 +628,7 @@ def InitLcd():
 
 		if SystemInfo["VFD_initial_scroll_delay"] and SystemInfo["VFDRepeats"]:
 			def initial_scroll_delay(el):
+				print("[Lcd] Write to /proc/stb/lcd/initial_scroll_delay")
 				if SystemInfo["VFDDelay"]:
 					# add workaround for Boxes who need hex code
 					open(SystemInfo["VFD_initial_scroll_delay"], "w").write(hex(int(el.value)))
@@ -604,6 +649,7 @@ def InitLcd():
 
 		if SystemInfo["VFD_final_scroll_delay"] and SystemInfo["VFDRepeats"]:
 			def final_scroll_delay(el):
+				print("[Lcd] Write to /proc/stb/lcd/final_scroll_delay")
 				if SystemInfo["VFDDelay"]:
 					# add workaround for Boxes who need hex code
 					open(SystemInfo["VFD_final_scroll_delay"], "w").write(hex(int(el.value)))

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from Components.Converter.Poll import Poll
@@ -38,21 +39,25 @@ class VtiTempFan(Poll, Converter, object):
 		temp = ''
 		unit = ''
 		try:
+			print("[VtiTempFan] Read /proc/stb/sensors/temp0/value")
 			temp = open("/proc/stb/sensors/temp0/value", "rb").readline().strip()
+			print("[VtiTempFan] Read /proc/stb/sensors/temp0/unit")
 			unit = open("/proc/stb/sensors/temp0/unit", "rb").readline().strip()
 			tempinfo = 'TEMP: ' + str(temp) + ' \xc2\xb0' + str(unit)
 			return tempinfo
 		except:
-			pass
+			print("[VtiTempFan] Read /proc/stb/sensors/temp0/value failed.")
+			print("[VtiTempFan] Read /proc/stb/sensors/temp0/unit failed.")
 
 	def fanfile(self):
 		fan = ''
 		try:
+			print("[VtiTempFan] Read /proc/stb/fp/fan_speed")
 			fan = open("/proc/stb/fp/fan_speed", "rb").readline().strip()
 			faninfo = 'FAN: ' + str(fan)
 			return faninfo
 		except:
-			pass
+			print("[VtiTempFan] Read /proc/stb/fp/fan_speed failed.")
 
 	def changed(self, what):
 		if what[0] == self.CHANGED_POLL:

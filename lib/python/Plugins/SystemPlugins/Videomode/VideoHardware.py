@@ -140,6 +140,7 @@ class VideoHardware:
 		del modes["Scart"]
 
 	if getBoxType() == "hd2400":
+		print("[Videomode] Read /proc/stb/info/board_revision")
 		rev = open("/proc/stb/info/board_revision", "r").read()
 		if rev >= "2":
 			del modes["YPbPr"]
@@ -163,6 +164,7 @@ class VideoHardware:
 						ret = (16, 10)
 			elif is_auto:
 				try:
+					print("[Videomode] Read /proc/stb/vmpeg/0/aspect")
 					aspect_str = open("/proc/stb/vmpeg/0/aspect", "r").read()
 					if aspect_str == "1": # 4:3
 						ret = (4, 3)
@@ -211,9 +213,10 @@ class VideoHardware:
 
 	def readAvailableModes(self):
 		try:
+			print("[Videomode] Read /proc/stb/video/videomode_choices")
 			modes = open("/proc/stb/video/videomode_choices").read()[:-1]
 		except IOError:
-			print("[Videomode] VideoHardware couldn't read available videomodes.")
+			print("[Videomode] Read /proc/stb/video/videomode_choices failed.")
 			self.modes_available = []
 			return
 		self.modes_available = modes.split(' ')
@@ -221,20 +224,24 @@ class VideoHardware:
 	def readPreferredModes(self):
 		if config.av.edid_override.value == False:
 			if platform == "dmamlogic" and fileExists("/sys/class/amhdmitx/amhdmitx0/disp_cap"):
+				print("[Videomode] Read /sys/class/amhdmitx/amhdmitx0/disp_cap")
 				modes = open("/sys/class/amhdmitx/amhdmitx0/disp_cap").read()[:-1]
 				self.modes_preferred = modes.splitlines()
 				print("[Videomode] VideoHardware reading disp_cap modes: ", self.modes_preferred)
 			else:
 				try:
+					print("[Videomode] Read /proc/stb/video/videomode_edid")
 					modes = open("/proc/stb/video/videomode_edid").read()[:-1]
 					self.modes_preferred = modes.split(' ')
 					print("[Videomode] VideoHardware reading edid modes: ", self.modes_preferred)
 				except IOError:
+					print("[Videomode] Read /proc/stb/video/videomode_edid failed.")
 					try:
+						print("[Videomode] Read /proc/stb/video/videomode_preferred")
 						modes = open("/proc/stb/video/videomode_preferred").read()[:-1]
 						self.modes_preferred = modes.split(' ')
 					except IOError:
-						print("[Videomode] VideoHardware reading preferred modes failed, using all video modes")
+						print("[Videomode] Read /proc/stb/video/videomode_preferred failed.")
 						self.modes_preferred = self.modes_available
 
 			if len(self.modes_preferred) <= 1:
@@ -283,8 +290,11 @@ class VideoHardware:
 
 		if platform == "dmamlogic":
 			amlmode = mode + rate.lower()
+			print("[Videomode] Write to /sys/class/display/mode")
 			open('/sys/class/display/mode', 'w').write(amlmode)
+			print("[Videomode] Write to /sys/class/ppmgr/ppscaler")
 			open('/sys/class/ppmgr/ppscaler', 'w').write('1')
+			print("[Videomode] Write to /sys/class/ppmgr/ppscaler")
 			open('/sys/class/ppmgr/ppscaler', 'w').write('0')
 			size_width = getDesktop(0).size().width()
 			if size_width >= 1920:
@@ -293,27 +303,34 @@ class VideoHardware:
 				Console().ePopen('fbset -fb /dev/fb0  -g 1280 720 1280 2160  32')
 			return
 		try:
+			print("[Videomode] Write to /proc/stb/video/videomode_50hz")
 			open("/proc/stb/video/videomode_50hz", "w").write(mode_50)
+			print("[Videomode] Write to /proc/stb/video/videomode_60hz")
 			open("/proc/stb/video/videomode_60hz", "w").write(mode_60)
 		except IOError:
+			print("[Videomode] Write to /proc/stb/video/videomode_50hz failed.")
+			print("[Videomode] Write to /proc/stb/video/videomode_60hz failed.")
 			try:
 				# fallback if no possibility to setup 50/60 hz mode
+				print("[Videomode] Write to /proc/stb/video/videomode")
 				open("/proc/stb/video/videomode", "w").write(mode_50)
 			except IOError:
-				print("[Videomode] VideoHardware setting videomode failed.")
+				print("[Videomode] Write to /proc/stb/video/videomode failed.")
 
 		if SystemInfo["Has24hz"]:
 			try:
+				print("[Videomode] Write to /proc/stb/video/videomode_24hz")
 				open("/proc/stb/video/videomode_24hz", "w").write(mode_24)
 			except IOError:
-				print("[Videomode] VideoHardware cannot open /proc/stb/video/videomode_24hz")
+				print("[Videomode] Write to /proc/stb/video/videomode_24hz failed.")
 
 		if brand == "gigablue":
 			try:
 				# use 50Hz mode (if available) for booting
+				print("[Videomode] Write to /etc/videomode")
 				open("/etc/videomode", "w").write(mode_50)
 			except IOError:
-				print("[Videomode] VideoHardware writing initial videomode to /etc/videomode failed!")
+				print("[Videomode] Write to /etc/videomode failed.")
 
 		self.updateAspect(None)
 
@@ -473,9 +490,10 @@ class VideoHardware:
 			if config.av.policy_43.value == "letterbox":
 				arw = "12"
 			try:
+				print("[Videomode] Write to /sys/class/video/screen_mode")
 				open("/sys/class/video/screen_mode", "w").write(arw)
 			except IOError:
-				pass
+				print("[Videomode] Write to /sys/class/video/screen_mode failed.")
 		elif platform == "dmamlogic":
 			arw = "0"
 			if config.av.policy_43.value == "bestfit":
@@ -485,26 +503,31 @@ class VideoHardware:
 			if config.av.policy_43.value == "letterbox":
 				arw = "11"
 			try:
+				print("[Videomode] Write to /sys/class/video/screen_mode")
 				open("/sys/class/video/screen_mode", "w").write(arw)
 			except IOError:
-				pass
+				print("[Videomode] Write to /sys/class/video/screen_mode failed.")
 
 		try:
+			print("[Videomode] Write to /proc/stb/video/aspect")
 			open("/proc/stb/video/aspect", "w").write(aspect)
 		except IOError:
-			pass
+			print("[Videomode] Write to /proc/stb/video/aspect failed.")
 		try:
+			print("[Videomode] Write to /proc/stb/video/policy")
 			open("/proc/stb/video/policy", "w").write(policy)
 		except IOError:
-			pass
+			print("[Videomode] Write to /proc/stb/video/policy failed.")
 		try:
+			print("[Videomode] Write to /proc/stb/denc/0/wss")
 			open("/proc/stb/denc/0/wss", "w").write(wss)
 		except IOError:
-			pass
+			print("[Videomode] Write to /proc/stb/denc/0/wss failed.")
 		try:
+			print("[Videomode] Write to /proc/stb/video/policy2")
 			open("/proc/stb/video/policy2", "w").write(policy2)
 		except IOError:
-			pass
+			print("[Videomode] Write to /proc/stb/video/policy2 failed.")
 
 
 video_hw = VideoHardware()

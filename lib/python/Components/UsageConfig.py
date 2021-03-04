@@ -1059,6 +1059,7 @@ def InitUsageConfig():
 			("auto", _("Auto"))
 		]
 		if exists("/proc/stb/fp/fan_choices"):
+			print("[UsageConfig] Read /proc/stb/fp/fan_choices")
 			choicelist = [x for x in choicelist if x[0] in open("/proc/stb/fp/fan_choices", "r").read().strip().split(" ")]
 		config.usage.fan = ConfigSelection(choicelist)
 
@@ -1413,6 +1414,7 @@ def InitUsageConfig():
 
 	if SystemInfo["HDRSupport"]:
 		def setHlgSupport(configElement):
+			print("[UsageConfig] Read /proc/stb/hdmi/hlg_support")
 			open("/proc/stb/hdmi/hlg_support", "w").write(configElement.value)
 		config.av.hlg_support = ConfigSelection(default="auto(EDID)", choices=[
 			("auto(EDID)", _("Controlled by HDMI")),
@@ -1422,6 +1424,7 @@ def InitUsageConfig():
 		config.av.hlg_support.addNotifier(setHlgSupport)
 
 		def setHdr10Support(configElement):
+			print("[UsageConfig] Read /proc/stb/hdmi/hdr10_support")
 			open("/proc/stb/hdmi/hdr10_support", "w").write(configElement.value)
 		config.av.hdr10_support = ConfigSelection(default="auto(EDID)", choices=[
 			("auto(EDID)", _("Controlled by HDMI")),
@@ -1431,17 +1434,20 @@ def InitUsageConfig():
 		config.av.hdr10_support.addNotifier(setHdr10Support)
 
 		def setDisable12Bit(configElement):
+			print("[UsageConfig] Read /proc/stb/video/disable_12bit")
 			open("/proc/stb/video/disable_12bit", "w").write("on" if configElement.value else "off")
 		config.av.allow_12bit = ConfigYesNo(default=False)
 		config.av.allow_12bit.addNotifier(setDisable12Bit)
 
 		def setDisable10Bit(configElement):
+			print("[UsageConfig] Read /proc/stb/video/disable_10bit")
 			open("/proc/stb/video/disable_10bit", "w").write("on" if configElement.value else "off")
 		config.av.allow_10bit = ConfigYesNo(default=False)
 		config.av.allow_10bit.addNotifier(setDisable10Bit)
 
 	if SystemInfo["CanSyncMode"]:
 		def setSyncMode(configElement):
+			print("[UsageConfig] Read /proc/stb/video/sync_mode")
 			open("/proc/stb/video/sync_mode", "w").write(configElement.value)
 		config.av.sync_mode = ConfigSelection(default="slow", choices={
 			"slow": _("Slow motion"),

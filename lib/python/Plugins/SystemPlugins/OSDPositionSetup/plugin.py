@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from Screens.Screen import Screen
 from Components.config import config, ConfigSubsection, ConfigInteger
 
@@ -16,9 +17,13 @@ def setPosition(dst_left, dst_width, dst_top, dst_height):
 	if dst_top + dst_height > 576:
 		dst_height = 576 - dst_top
 	try:
+		print("[OSDPositionSetup] Write to /proc/stb/fb/dst_left")
 		open("/proc/stb/fb/dst_left", "w").write('%08x' % dst_left)
+		print("[OSDPositionSetup] Write to /proc/stb/fb/dst_width")
 		open("/proc/stb/fb/dst_width", "w").write('%08x' % dst_width)
+		print("[OSDPositionSetup] Write to /proc/stb/fb/dst_top")
 		open("/proc/stb/fb/dst_top", "w").write('%08x' % dst_top)
+		print("[OSDPositionSetup] Write to /proc/stb/fb/dst_height")
 		open("/proc/stb/fb/dst_height", "w").write('%08x' % dst_height)
 	except:
 		return

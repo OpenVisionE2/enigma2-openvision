@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from Screens.Screen import Screen
 from Components.config import config
 from Components.Sources.CanvasSource import CanvasSource
@@ -135,14 +136,22 @@ class VideoFinetune(Screen):
 		self.fontsize = getDesktop(0).size().height() == 1080 and 30 or 20
 
 		if fileExists("/proc/stb/fb/dst_left"):
+			print("[VideoFinetune] Read /proc/stb/fb/dst_left")
 			self.left = open("/proc/stb/fb/dst_left", "r").read()
+			print("[VideoFinetune] Read /proc/stb/fb/dst_width")
 			self.width = open("/proc/stb/fb/dst_width", "r").read()
+			print("[VideoFinetune] Read /proc/stb/fb/dst_top")
 			self.top = open("/proc/stb/fb/dst_top", "r").read()
+			print("[VideoFinetune] Read /proc/stb/fb/dst_height")
 			self.height = open("/proc/stb/fb/dst_height", "r").read()
 			if self.left != "00000000" or self.top != "00000000" or self.width != "000002d0" or self.height != "0000000240":
+				print("[VideoFinetune] Write to /proc/stb/fb/dst_left")
 				open("/proc/stb/fb/dst_left", "w").write("00000000")
+				print("[VideoFinetune] Write to /proc/stb/fb/dst_width")
 				open("/proc/stb/fb/dst_width", "w").write("000002d0")
+				print("[VideoFinetune] Write to /proc/stb/fb/dst_top")
 				open("/proc/stb/fb/dst_top", "w").write("00000000")
+				print("[VideoFinetune] Write to /proc/stb/fb/dst_height")
 				open("/proc/stb/fb/dst_height", "w").write("0000000240")
 				self.onClose.append(self.__close)
 
@@ -163,9 +172,13 @@ class VideoFinetune(Screen):
 		self.testpic_brightness()
 
 	def __close(self):
+		print("[VideoFinetune] Write to /proc/stb/fb/dst_left")
 		open("/proc/stb/fb/dst_left", "w").write(self.left)
+		print("[VideoFinetune] Write to /proc/stb/fb/dst_width")
 		open("/proc/stb/fb/dst_width", "w").write(self.width)
+		print("[VideoFinetune] Write to /proc/stb/fb/dst_top")
 		open("/proc/stb/fb/dst_top", "w").write(self.top)
+		print("[VideoFinetune] Write to /proc/stb/fb/dst_height")
 		open("/proc/stb/fb/dst_height", "w").write(self.height)
 
 	def keyNumber(self, key):

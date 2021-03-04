@@ -77,6 +77,7 @@ class Network:
 	def getAddrInet(self, iface, callback):
 		data = {'up': False, 'dhcp': False, 'preup': False, 'predown': False}
 		try:
+			print("[Network] Read /sys/class/net/%s/flags" % iface)
 			data['up'] = int(open('/sys/class/net/%s/flags' % iface).read().strip(), 16) & 1 == 1
 			if data['up']:
 				self.configuredInterfaces.append(iface)
@@ -578,6 +579,7 @@ class Network:
 		# r871x_usb_drv on kernel 2.6.12 is not identifiable over /sys/class/net/'ifacename'/wireless so look also inside /proc/net/wireless
 		device = re.compile('[a-z]{2,}[0-9]*:')
 		ifnames = []
+		print("[Network] Read /proc/net/wireless")
 		fp = open('/proc/net/wireless', 'r')
 		for line in fp:
 			try:

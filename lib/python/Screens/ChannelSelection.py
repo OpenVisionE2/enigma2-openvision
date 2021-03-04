@@ -543,6 +543,7 @@ class ChannelContextMenu(Screen):
 				del self.session.pip
 				if SystemInfo["LCDMiniTVPiP"] and int(config.lcd.modepip.value) >= 1:
 					print('[ChannelSelection] LCDMiniTV disable PIP')
+					print("[ChannelSelection] Write to /proc/stb/lcd/mode")
 					open("/proc/stb/lcd/mode", "w").write(config.lcd.modeminitv.value)
 			self.session.pip = self.session.instantiateDialog(PictureInPicture)
 			if SystemInfo["OSDAnimation"]:
@@ -554,9 +555,13 @@ class ChannelContextMenu(Screen):
 				self.session.pip.servicePath[1] = currentBouquet
 				if SystemInfo["LCDMiniTVPiP"] and int(config.lcd.modepip.value) >= 1:
 					print('[ChannelSelection] LCDMiniTV enable PIP')
+					print("[ChannelSelection] Write to /proc/stb/lcd/mode")
 					open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)
+					print("[ChannelSelection] Write to /proc/stb/vmpeg/1/dst_width")
 					open("/proc/stb/vmpeg/1/dst_width", "w").write("0")
+					print("[ChannelSelection] Write to /proc/stb/vmpeg/1/dst_height")
 					open("/proc/stb/vmpeg/1/dst_height", "w").write("0")
+					print("[ChannelSelection] Write to /proc/stb/vmpeg/1/dst_apply")
 					open("/proc/stb/vmpeg/1/dst_apply", "w").write("1")
 				self.close(True)
 			else:
@@ -564,6 +569,7 @@ class ChannelContextMenu(Screen):
 				del self.session.pip
 				if SystemInfo["LCDMiniTV"] and int(config.lcd.modepip.value) >= 1:
 					print('[ChannelSelection] LCDMiniTV disable PIP')
+					print("[ChannelSelection] Write to /proc/stb/lcd/mode")
 					open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)
 				self.session.openWithCallback(self.close, MessageBox, _("Could not open Picture in Picture"), MessageBox.TYPE_ERROR)
 		else:

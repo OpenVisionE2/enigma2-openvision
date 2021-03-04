@@ -303,11 +303,13 @@ class RcTypeControl():
 
 	def writeRcType(self, rctype):
 		if self.isSupported and rctype > 0:
+			print("[InputDevice] Write to /proc/stb/ir/rc/type")
 			open('/proc/stb/ir/rc/type', 'w').write('%d' % rctype)
 
 	def readRcType(self):
 		rc = 0
 		if self.isSupported:
+			print("[InputDevice] Read /proc/stb/ir/rc/type")
 			rc = open('/proc/stb/ir/rc/type', 'r').read().strip()
 		return int(rc)
 

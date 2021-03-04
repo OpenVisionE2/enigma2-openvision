@@ -23,7 +23,7 @@ struct AvahiTimeout: public sigc::trackable
 
 	void timeout()
 	{
-		eDebug("[Avahi] timeout elapsed");
+//		eDebug("[Avahi] timeout elapsed");
 		callback(this, userdata);
 	}
 
@@ -365,7 +365,7 @@ callback function will be called and the timeout is disabled. You
 can reenable it by calling timeout_update()  */
 AvahiTimeout* avahi_timeout_new(const AvahiPoll *api, const struct timeval *tv, AvahiTimeoutCallback callback, void *userdata)
 {
-	eDebug("[Avahi] %s", __func__);
+//	eDebug("[Avahi] %s", __func__);
 
 	AvahiTimeout* result = new AvahiTimeout((eMainloop*)api->userdata, callback, userdata);
 	avahi_set_timer(result, tv);
@@ -377,7 +377,7 @@ AvahiTimeout* avahi_timeout_new(const AvahiPoll *api, const struct timeval *tv, 
  * NULL, the timeout is disabled. It is safe to call this function from an AvahiTimeoutCallback */
 void avahi_timeout_update(AvahiTimeout *t, const struct timeval *tv)
 {
-	eDebug("[Avahi] %s", __func__);
+//	eDebug("[Avahi] %s", __func__);
 	t->timer->stop();
 	avahi_set_timer(t, tv);
 }
@@ -385,7 +385,7 @@ void avahi_timeout_update(AvahiTimeout *t, const struct timeval *tv)
 /** Free a timeout. It is safe to call this function from an AvahiTimeoutCallback */
 void avahi_timeout_free(AvahiTimeout *t)
 {
-	eDebug("[Avahi] %s", __func__);
+//	eDebug("[Avahi] %s", __func__);
 	t->timer->stop();
 	delete t;
 }

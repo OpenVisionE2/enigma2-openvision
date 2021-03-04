@@ -23,33 +23,38 @@ class HardwareInfo:
 		print("[HardwareInfo] Scanning hardware info")
 		# Version
 		try:
+			print("[HardwareInfo] Read /proc/stb/info/version")
 			self.device_version = open("/proc/stb/info/version").read().strip()
 		except:
-			pass
+			print("[HardwareInfo] Read /proc/stb/info/version failed.")
 
 		# Revision
 		try:
+			print("[HardwareInfo] Read /proc/stb/info/board_revision")
 			self.device_revision = open("/proc/stb/info/board_revision").read().strip()
 		except:
-			pass
+			print("[HardwareInfo] Read /proc/stb/info/board_revision failed.")
 
 		# Name ... bit odd, but history prevails
 		try:
+			print("[HardwareInfo] Read /etc/openvision/model")
 			self.device_name = open("/etc/openvision/model").read().strip()
 		except:
-			pass
+			print("[HardwareInfo] Read /etc/openvision/model failed.")
 
 		# Brandname ... bit odd, but history prevails
 		try:
+			print("[HardwareInfo] Read /etc/openvision/brand")
 			self.device_brandname = open("/etc/openvision/brand").read().strip()
 		except:
-			pass
+			print("[HardwareInfo] Read /etc/openvision/brand failed.")
 
 		# Model
 		try:
+			print("[HardwareInfo] Read /etc/openvision/model")
 			self.device_model = open("/etc/openvision/model").read().strip()
 		except:
-			pass
+			print("[HardwareInfo] Read /etc/openvision/model failed.")
 
 		self.device_model = self.device_model or self.device_name
 		self.device_hw = self.device_model

@@ -91,8 +91,10 @@ class FCCSupport:
 	def setProcFCC(self, value):
 		procPath = "/proc/stb/frontend/fbc/fcc"
 		if os.access(procPath, os.W_OK):
+			print("[FastChannelChange] Write to /proc/stb/frontend/fbc/fcc")
 			open(procPath, 'w').write(value and "enable" or "disable")
 		else:
+			print("[FastChannelChange] Write to /proc/stb/frontend/fbc/fcc failed.")
 			print("[FCCSupport] write fail! : ", procPath)
 
 	def gotRecordEvent(self, service, event):

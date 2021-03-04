@@ -393,6 +393,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 
 	def doWriteAlpha(self, value):
 		if SystemInfo["CanChangeOsdAlpha"]:
+			print("[InfoBarGenerics] Write to /proc/stb/video/alpha")
 			open("/proc/stb/video/alpha", "w").write(str(value))
 			if value == config.av.osd_alpha.value:
 				self.lastResetAlpha = True
@@ -1588,8 +1589,10 @@ class InfoBarSeek:
 		if not self.isSeekable():
 			SystemInfo["SeekStatePlay"] = False
 			if os.path.exists("/proc/stb/lcd/symbol_hdd"):
+				print("[InfoBarGenerics] Write to /proc/stb/lcd/symbol_hdd")
 				open("/proc/stb/lcd/symbol_hdd", "w").write("0")
 			if os.path.exists("/proc/stb/lcd/symbol_hddprogress"):
+				print("[InfoBarGenerics] Write to /proc/stb/lcd/symbol_hddprogress")
 				open("/proc/stb/lcd/symbol_hddprogress", "w").write("0")
 			self["SeekActions"].setEnabled(False)
 #			print("not seekable, return to play")
@@ -2552,6 +2555,7 @@ class InfoBarPiP:
 				if SystemInfo["LCDMiniTV"]:
 					if config.lcd.modepip.value >= "1":
 						print('[InfoBarGenerics] LCDMiniTV disable PIP')
+						print("[InfoBarGenerics] Write to /proc/stb/lcd/mode")
 						open("/proc/stb/lcd/mode", "w").write(config.lcd.modeminitv.value)
 				self.session.pipshown = False
 			if hasattr(self, "ScreenSaverTimerStart"):
@@ -2567,9 +2571,13 @@ class InfoBarPiP:
 				self.session.pip.servicePath = slist and slist.getCurrentServicePath()
 				if SystemInfo["LCDMiniTVPiP"] and int(config.lcd.modepip.value) >= 1:
 					print('[InfoBarGenerics] LCDMiniTV enable PIP')
+					print("[InfoBarGenerics] Write to /proc/stb/lcd/mode")
 					open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)
+					print("[InfoBarGenerics] Write to /proc/stb/vmpeg/1/dst_width")
 					open("/proc/stb/vmpeg/1/dst_width", "w").write("0")
+					print("[InfoBarGenerics] Write to /proc/stb/vmpeg/1/dst_height")
 					open("/proc/stb/vmpeg/1/dst_height", "w").write("0")
+					print("[InfoBarGenerics] Write to /proc/stb/vmpeg/1/dst_apply")
 					open("/proc/stb/vmpeg/1/dst_apply", "w").write("1")
 			else:
 				newservice = self.session.nav.getCurrentlyPlayingServiceOrGroup() or (slist and slist.servicelist.getCurrent())
@@ -2578,9 +2586,13 @@ class InfoBarPiP:
 					self.session.pip.servicePath = slist and slist.getCurrentServicePath()
 					if SystemInfo["LCDMiniTVPiP"] and int(config.lcd.modepip.value) >= 1:
 						print('[InfoBarGenerics] LCDMiniTV enable PIP')
+						print("[InfoBarGenerics] Write to /proc/stb/lcd/mode")
 						open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)
+						print("[InfoBarGenerics] Write to /proc/stb/vmpeg/1/dst_width")
 						open("/proc/stb/vmpeg/1/dst_width", "w").write("0")
+						print("[InfoBarGenerics] Write to /proc/stb/vmpeg/1/dst_height")
 						open("/proc/stb/vmpeg/1/dst_height", "w").write("0")
+						print("[InfoBarGenerics] Write to /proc/stb/vmpeg/1/dst_apply")
 						open("/proc/stb/vmpeg/1/dst_apply", "w").write("1")
 				else:
 					self.session.pipshown = False
@@ -3235,21 +3247,25 @@ class InfoBarResolutionSelection:
 
 	def resolutionSelection(self):
 		try:
+			print("[InfoBarGenerics] Read /proc/stb/vmpeg/0/xres")
 			xresString = open("/proc/stb/vmpeg/0/xres", "r").read()
 		except:
 			print("[InfoBarGenerics] Error open /proc/stb/vmpeg/0/xres!")
 		try:
+			print("[InfoBarGenerics] Read /proc/stb/vmpeg/0/yres")
 			yresString = open("/proc/stb/vmpeg/0/yres", "r").read()
 		except:
 			print("[InfoBarGenerics] Error open /proc/stb/vmpeg/0/yres!")
 		if brand == "azbox":
+			print("[InfoBarGenerics] Set fpsString to 50000 for azbox to avoid further problems!")
 			fpsString = '50000'
 		else:
 			try:
+				print("[InfoBarGenerics] Read /proc/stb/vmpeg/0/framerate")
 				fpsString = open("/proc/stb/vmpeg/0/framerate", "r").read()
 			except:
 				print("[InfoBarGenerics] Error open /proc/stb/vmpeg/0/framerate!")
-				print("[InfoBarGenerics] Set fpsString to 50000 to avoid further problems!")
+				print("[InfoBarGenerics] Set fpsString to 50000 like azbox to avoid further problems!")
 				fpsString = '50000'
 
 		xres = int(xresString, 16)
@@ -3261,6 +3277,7 @@ class InfoBarResolutionSelection:
 		# do we need a new sorting with this way here or should we disable some choices?
 		choices = []
 		if os.path.exists("/proc/stb/video/videomode_choices"):
+			print("[InfoBarGenerics] Read /proc/stb/video/videomode_choices")
 			f = open("/proc/stb/video/videomode_choices")
 			values = f.readline().replace("\n", "").replace("pal ", "").replace("ntsc ", "").split(" ", -1)
 			for x in values:
@@ -3281,6 +3298,7 @@ class InfoBarResolutionSelection:
 		keys = ["green", "yellow", "blue", "", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 		if os.path.exists("/proc/stb/video/videomode"):
+			print("[InfoBarGenerics] Read /proc/stb/video/videomode")
 			mode = open("/proc/stb/video/videomode").read()[:-1]
 		print(mode)
 		for x in range(len(tlist)):
@@ -3295,6 +3313,7 @@ class InfoBarResolutionSelection:
 				if Resolution[1] == "exit" or Resolution[1] == "" or Resolution[1] == "auto":
 					self.ExGreen_toggleGreen()
 				if Resolution[1] != "auto":
+					print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
 					open("/proc/stb/video/videomode", "w").write(Resolution[1])
 					#from enigma import gMainDC
 					#gMainDC.getInstance().setResolution(-1, -1)
@@ -4008,12 +4027,14 @@ class InfoBarZoom:
 			zoomval = self.zoomrate
 
 		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
+			print("[InfoBarGenerics] Write to /proc/stb/vmpeg/0/zoomrate")
 			open("/proc/stb/vmpeg/0/zoomrate", "w").write(int(zoomval))
 
 	def ZoomOff(self):
 		self.zoomrate = 0
 		self.zoomin = 1
 		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
+			print("[InfoBarGenerics] Write to /proc/stb/vmpeg/0/zoomrate")
 			open("/proc/stb/vmpeg/0/zoomrate", "w").write(str(0))
 
 
@@ -4095,12 +4116,17 @@ class InfoBarHdmi2:
 
 	def HDMIInPiP(self):
 		if platform == "dm4kgen" or model in ("dm7080", "dm820"):
+			print("[InfoBarGenerics] Read /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
 			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "r").read()
 			if check.startswith("off"):
+				print("[InfoBarGenerics] Write to /proc/stb/audio/hdmi_rx_monitor")
 				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("on")
+				print("[InfoBarGenerics] Write to /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
 				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("on")
 			else:
+				print("[InfoBarGenerics] Write to /proc/stb/audio/hdmi_rx_monitor")
 				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("off")
+				print("[InfoBarGenerics] Write to /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
 				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("off")
 		else:
 			if not hasattr(self.session, 'pip') and not self.session.pipshown:
@@ -4123,22 +4149,35 @@ class InfoBarHdmi2:
 
 	def HDMIInFull(self):
 		if platform == "dm4kgen" or model in ("dm7080", "dm820"):
+			print("[InfoBarGenerics] Read /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
 			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "r").read()
 			if check.startswith("off"):
+				print("[InfoBarGenerics] Read /proc/stb/video/videomode")
 				self.oldvideomode = open("/proc/stb/video/videomode", "r").read()
+				print("[InfoBarGenerics] Read /proc/stb/video/videomode_50hz")
 				self.oldvideomode_50hz = open("/proc/stb/video/videomode_50hz", "r").read()
+				print("[InfoBarGenerics] Read /proc/stb/video/videomode_60hz")
 				self.oldvideomode_60hz = open("/proc/stb/video/videomode_60hz", "r").read()
 				if platform == "dm4kgen":
+					print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
 					open("/proc/stb/video/videomode", "w").write("1080p")
 				else:
+					print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
 					open("/proc/stb/video/videomode", "w").write("720p")
+				print("[InfoBarGenerics] Write to /proc/stb/audio/hdmi_rx_monitor")
 				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("on")
+				print("[InfoBarGenerics] Write to /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
 				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("on")
 			else:
+				print("[InfoBarGenerics] Write to /proc/stb/audio/hdmi_rx_monitor")
 				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("off")
+				print("[InfoBarGenerics] Write to /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
 				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("off")
+				print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
 				open("/proc/stb/video/videomode", "w").write(self.oldvideomode)
+				print("[InfoBarGenerics] Write to /proc/stb/video/videomode_50hz")
 				open("/proc/stb/video/videomode_50hz", "w").write(self.oldvideomode_50hz)
+				print("[InfoBarGenerics] Write to /proc/stb/video/videomode_60hz")
 				open("/proc/stb/video/videomode_60hz", "w").write(self.oldvideomode_60hz)
 		else:
 			slist = self.servicelist

@@ -26,6 +26,7 @@ def readFile(filename):
 
 def getProcMounts():
 	try:
+#		print("[Harddisk] Read /proc/mounts")
 		mounts = open("/proc/mounts", 'r')
 	except IOError as ex:
 		print("[Harddisk] Failed to open /proc/mounts", ex)
@@ -39,6 +40,7 @@ def getProcMounts():
 
 def isFileSystemSupported(filesystem):
 	try:
+		print("[Harddisk] Read /proc/filesystems")
 		for fs in open('/proc/filesystems', 'r'):
 			if fs.strip().endswith(filesystem):
 				return True
@@ -76,6 +78,7 @@ class Harddisk:
 		self.removable = removable
 		self.internal = "ide" in self.phys_path or "pci" in self.phys_path or "ahci" in self.phys_path or "sata" in self.phys_path
 		try:
+			print("[Harddisk] Read /sys/block/%s/queue/rotational" % blockdev)
 			data = open("/sys/block/%s/queue/rotational" % device, "r").read().strip()
 			self.rotational = int(data)
 		except:
@@ -87,6 +90,7 @@ class Harddisk:
 			self.card = "sdhci" in self.phys_path or "mmc" in self.device
 
 		else:
+			print("[Harddisk] Read dev")
 			tmp = readFile(self.sysfsPath('dev')).split(':')
 			s_major = int(tmp[0])
 			s_minor = int(tmp[1])
@@ -151,6 +155,7 @@ class Harddisk:
 	def diskSize(self):
 		cap = 0
 		try:
+			print("[Harddisk] Read size")
 			line = readFile(self.sysfsPath('size'))
 			cap = int(line)
 			return cap / 1000 * 512 / 1000
@@ -176,12 +181,16 @@ class Harddisk:
 	def model(self):
 		try:
 			if self.device[:2] == "hd":
+				print("[Harddisk] Read device/model")
 				return readFile('/proc/ide/' + self.device + '/model')
 			elif self.device[:2] == "sd":
+				print("[Harddisk] Read device/vendor")
 				vendor = readFile(self.sysfsPath('device/vendor'))
+				print("[Harddisk] Read device/model")
 				model = readFile(self.sysfsPath('device/model'))
 				return vendor + '(' + model + ')'
 			elif self.device.startswith('mmcblk'):
+				print("[Harddisk] Read device/name")
 				return readFile(self.sysfsPath('device/name'))
 			else:
 				raise Exception("[Harddisk] no hdX or sdX or mmcX")
@@ -392,6 +401,7 @@ class Harddisk:
 			task.setTool("mkfs.ext4")
 			if size > 20000:
 				try:
+					print("[Harddisk] Read /proc/version")
 					version = map(int, open("/proc/version", "r").read().split(' ', 4)[2].split('.', 2)[:2])
 					if (version[0] > 3) or (version[0] > 2 and version[1] >= 2):
 						# Linux version 3.2 supports bigalloc and -C option, use 256k blocks
@@ -463,6 +473,7 @@ class Harddisk:
 	# we set the hdd into standby.
 	def readStats(self):
 		try:
+			print("[Harddisk] Read /sys/block/%s/stat" % self.device)
 			l = open("/sys/block/%s/stat" % self.device).read()
 		except IOError:
 			return -1, -1
@@ -631,6 +642,7 @@ class HarddiskManager:
 		if SystemInfo["HasMMC"]:
 			BLACKLIST = ["%s" % (getMachineMtdRoot()[0:7])]
 		if SystemInfo["HasMMC"] and "root=/dev/mmcblk0p1" in open('/proc/cmdline', 'r').read():
+			print("[Harddisk] Read /proc/cmdline")
 			BLACKLIST = ["mmcblk0p1"]
 		blacklisted = False
 		if blockdev[:7] in BLACKLIST:
@@ -642,8 +654,10 @@ class HarddiskManager:
 		partitions = []
 		try:
 			if os.path.exists(devpath + "/removable"):
+#				print("[Harddisk] Read removable")
 				removable = bool(int(readFile(devpath + "/removable")))
 			if os.path.exists(devpath + "/dev"):
+#				print("[Harddisk] Read dev")
 				dev = readFile(devpath + "/dev")
 				subdev = False if int(dev.split(':')[1]) % 32 == 0 else True
 				dev = int(dev.split(':')[0])
@@ -661,6 +675,7 @@ class HarddiskManager:
 				is_cdrom = True
 			if blockdev[0:2] == 'hd':
 				try:
+					print("[Harddisk] Read /proc/ide/%s/media" % blockdev)
 					if "cdrom" in readFile("/proc/ide/%s/media" % blockdev):
 						is_cdrom = True
 				except IOError:
@@ -842,8 +857,10 @@ class HarddiskManager:
 		description = _("External Storage %s") % dev
 		try:
 			if os.path.exists('/sys' + phys + '/model'):
+				print("[Harddisk] Read model")
 				description = readFile("/sys" + phys + "/model")
 			elif os.path.exists('/sys' + phys + '/name'):
+#				print("[Harddisk] Read name")
 				description = readFile("/sys" + phys + "/name")
 			else:
 				print("[Harddisk] couldn't read model: ")

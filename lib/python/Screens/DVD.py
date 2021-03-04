@@ -262,14 +262,22 @@ class DVDPlayer(Screen, InfoBarBase, InfoBarNotifications, InfoBarSeek, InfoBarP
 		self.service = None
 		self.in_menu = False
 		if fileExists("/proc/stb/fb/dst_left"):
+			print("[DVD] Read /proc/stb/fb/dst_left")
 			self.left = open("/proc/stb/fb/dst_left", "r").read()
+			print("[DVD] Read /proc/stb/fb/dst_width")
 			self.width = open("/proc/stb/fb/dst_width", "r").read()
+			print("[DVD] Read /proc/stb/fb/dst_top")
 			self.top = open("/proc/stb/fb/dst_top", "r").read()
+			print("[DVD] Read /proc/stb/fb/dst_height")
 			self.height = open("/proc/stb/fb/dst_height", "r").read()
 			if self.left != "00000000" or self.top != "00000000" or self.width != "000002d0" or self.height != "0000000240":
+				print("[DVD] Write to /proc/stb/fb/dst_left")
 				open("/proc/stb/fb/dst_left", "w").write("00000000")
+				print("[DVD] Write to /proc/stb/fb/dst_width")
 				open("/proc/stb/fb/dst_width", "w").write("000002d0")
+				print("[DVD] Write to /proc/stb/fb/dst_top")
 				open("/proc/stb/fb/dst_top", "w").write("00000000")
+				print("[DVD] Write to /proc/stb/fb/dst_height")
 				open("/proc/stb/fb/dst_height", "w").write("0000000240")
 				self.onClose.append(self.__restoreOSDSize)
 
@@ -298,9 +306,13 @@ class DVDPlayer(Screen, InfoBarBase, InfoBarNotifications, InfoBarSeek, InfoBarP
 		config.seek.on_pause.value = self.saved_config_seek_on_pause
 
 	def __restoreOSDSize(self):
+		print("[DVD] Write to /proc/stb/fb/dst_left")
 		open("/proc/stb/fb/dst_left", "w").write(self.left)
+		print("[DVD] Write to /proc/stb/fb/dst_width")
 		open("/proc/stb/fb/dst_width", "w").write(self.width)
+		print("[DVD] Write to /proc/stb/fb/dst_top")
 		open("/proc/stb/fb/dst_top", "w").write(self.top)
+		print("[DVD] Write to /proc/stb/fb/dst_height")
 		open("/proc/stb/fb/dst_height", "w").write(self.height)
 
 	def chapterZap(self):

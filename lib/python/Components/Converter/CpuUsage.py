@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from Components.Converter.Converter import Converter
 from Components.Converter.Poll import Poll
 from Components.Element import cached
@@ -88,6 +89,7 @@ class CpuUsageMonitor(Poll, object):
 	def getCpusInfo(self):
 		res = []
 		try:
+			print("[CpuUsage] Read /proc/stat")
 			fd = open("/proc/stat", "r")
 			for l in fd:
 				if l.find("cpu") == 0:
@@ -103,7 +105,7 @@ class CpuUsageMonitor(Poll, object):
 					res.append([tmp[0], total, busy])
 			fd.close()
 		except:
-			pass
+			print("[CpuUsage] Read /proc/stat failed.")
 		return res
 
 	def poll(self):

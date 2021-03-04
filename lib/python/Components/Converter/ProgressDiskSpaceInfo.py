@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from Components.Converter.Poll import Poll
@@ -137,11 +138,12 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 		textvalue = 'No info'
 		info = '0'
 		try:
+			print("[ProgressDiskSpaceInfo] Read /proc/loadavg")
 			out_line = popen('cat /proc/loadavg').readline()
 			info = 'loadavg:' + out_line[:15]
 			textvalue = info
 		except:
-			pass
+			print("[ProgressDiskSpaceInfo] Read /proc/loadavg failed.")
 
 		return textvalue
 
@@ -152,6 +154,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 		0]
 		try:
 			check = 0
+			print("[ProgressDiskSpaceInfo] Read /proc/meminfo")
 			fd = open('/proc/meminfo')
 			for line in fd:
 				if value + 'Total' in line:
@@ -168,7 +171,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 
 			fd.close()
 		except:
-			pass
+			print("[ProgressDiskSpaceInfo] Read /proc/meminfo failed.")
 
 		return result
 
@@ -176,6 +179,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 
 		def isMountPoint():
 			try:
+				print("[ProgressDiskSpaceInfo] Read /proc/mounts")
 				fd = open('/proc/mounts', 'r')
 				for line in fd:
 					l = line.split()
@@ -184,6 +188,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 
 				fd.close()
 			except:
+				print("[ProgressDiskSpaceInfo] Read /proc/mounts failed.")
 				return None
 
 			return False

@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# shamelessly copied from pliExpertInfo (Vali, Mirakels, Littlesat)
-
+from __future__ import print_function
 from enigma import iServiceInformation, iPlayableService
 from Components.Converter.Converter import Converter
 from Components.Element import cached
@@ -169,20 +168,23 @@ class PliExtraInfo(Poll, Converter):
 		if not fps:
 			try:
 				if os.path.exists("/proc/stb/vmpeg/0/framerate"):
+					print("[PliExtraInfo] Read /proc/stb/vmpeg/0/framerate")
 					fps = (int(open("/proc/stb/vmpeg/0/framerate", "r").read()) + 500) / 1000
 				elif os.path.exists("/proc/stb/vmpeg/0/fallback_framerate"):
+					print("[PliExtraInfo] Read /proc/stb/vmpeg/0/fallback_framerate")
 					fps = (int(open("/proc/stb/vmpeg/0/fallback_framerate", "r").read()) + 0) / 1000
 			except:
-				pass
+				print("[PliExtraInfo] Read framerate failed.")
 		if not mode:
 			try:
+				print("[PliExtraInfo] Read /proc/stb/vmpeg/0/progressive")
 				mod = int(open("/proc/stb/vmpeg/0/progressive", "r").read())
 				if mod == 1:
 					mode = "p"
 				else:
 					mode = "i"
 			except:
-				pass
+				print("[PliExtraInfo] Read /proc/stb/vmpeg/0/progressive failed.")
 		return "%sx%s%s%s" % (xres, yres, mode, fps)
 
 	def createGamma(self, info):

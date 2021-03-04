@@ -318,6 +318,7 @@ class RestoreScreen(Screen, ConfigListScreen):
 
 	def doRestore(self):
 		if path.exists("/proc/stb/vmpeg/0/dst_width"):
+			print("[BackupRestore] Add /proc/stb/vmpeg/0 entries to backup command.")
 			restorecmdlist = ["tar -xzvf " + self.fullbackupfilename + " -C /", "echo 0 > /proc/stb/vmpeg/0/dst_height", "echo 0 > /proc/stb/vmpeg/0/dst_left", "echo 0 > /proc/stb/vmpeg/0/dst_top", "echo 0 > /proc/stb/vmpeg/0/dst_width", "killall -9 enigma2"]
 		else:
 			restorecmdlist = ["tar -xzvf " + self.fullbackupfilename + " -C /", "killall -9 enigma2"]

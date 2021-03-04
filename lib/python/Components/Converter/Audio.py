@@ -55,6 +55,7 @@ class Audio(Converter, object):
 		expertString = ("  ")
 		fileString = ""
 		try:
+			print("[Audio] Read /tmp/share.info")
 			fp = open("/tmp/share.info", "r")
 			while True:
 				currentLine = fp.readline()
@@ -88,6 +89,7 @@ class Audio(Converter, object):
 		isInGParameter = ""
 		try:
 			caId = caId[2:]
+			print("[Audio] Read /usr/keys/cwshare.cfg")
 			fp = open("/usr/keys/cwshare.cfg", "r")
 			while True:
 				currentLine = fp.readline()
@@ -163,12 +165,15 @@ class Audio(Converter, object):
 		temp = ''
 		unit = ''
 		try:
+			print("[Audio] Read /proc/stb/sensors/temp0/value")
 			temp = open("/proc/stb/sensors/temp0/value", "rb").readline().strip()
+			print("[Audio] Read /proc/stb/sensors/temp0/unit")
 			unit = open("/proc/stb/sensors/temp0/unit", "rb").readline().strip()
 			tempinfo = str(temp) + ' \xc2\xb0' + str(unit)
 			return tempinfo
 		except:
-			pass
+			print("[Audio] Read /proc/stb/sensors/temp0/value failed.")
+			print("[Audio] Read /proc/stb/sensors/temp0/unit failed.")
 
 	def getCryptInfo(self):
 		isCrypted = info.getInfo(iServiceInformation.sIsCrypted)
@@ -177,8 +182,10 @@ class Audio(Converter, object):
 			caID = ""
 			syID = ""
 			try:
+				print("[Audio] Read /tmp/ecm.info")
 				file = open("/tmp/ecm.info", "r")
 			except:
+				print("[Audio] Read /tmp/ecm.info failed.")
 				return ""
 			while True:
 				line = file.readline().strip()
@@ -203,8 +210,10 @@ class Audio(Converter, object):
 
 	def getStreamInfo(self, ltype):
 		try:
+			print("[Audio] Read /tmp/ecm.info")
 			file = open("/tmp/ecm.info", "r")
 		except:
+			print("[Audio] Read /tmp/ecm.info failed.")
 			return ""
 		ee = 0
 		caid = "0000"
@@ -239,8 +248,10 @@ class Audio(Converter, object):
 
 	def getSourceInfo(self, ltype):
 		try:
+			print("[Audio] Read /tmp/ecm.info")
 			file = open("/tmp/ecm.info", "r")
 		except:
+			print("[Audio] Read /tmp/ecm.info failed.")
 			return ""
 		boxidString = ""
 		caIdString = ""
@@ -261,8 +272,6 @@ class Audio(Converter, object):
 				ee = 2
 			if x[0] == "using":
 				using = x[1].strip()
-				if using == "CCcam-s2s":
-					using = "CCcam"
 				ee = 1
 			if x[0] == "ecm time":
 				ecmtime = x[1].strip()

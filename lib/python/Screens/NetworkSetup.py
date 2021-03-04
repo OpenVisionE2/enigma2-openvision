@@ -541,6 +541,7 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
 
+		print("[NetworkSetup] Read /proc/sys/net/ipv6/conf/all/disable_ipv6")
 		old_ipv6 = open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "r").read()
 		if int(old_ipv6) == 1:
 			self.ipv6 = False
@@ -602,8 +603,10 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 
 	def ok(self):
 		ipv6 = '/etc/enigma2/ipv6'
+		print("[NetworkSetup] Write to /proc/sys/net/ipv6/conf/all/disable_ipv6")
 		if self.IPv6ConfigEntry.value == False:
 			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("1")
+			print("[NetworkSetup] Write to /etc/enigma2/ipv6")
 			open("/etc/enigma2/ipv6", "w").write("1")
 		else:
 			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("0")

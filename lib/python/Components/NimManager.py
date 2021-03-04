@@ -616,11 +616,13 @@ class NIM(object):
 	def setInternalLink(self):
 		if self.internally_connectable >= 0:
 			print("[NimManager] setting internal link on frontend id", self.frontend_id)
+			print("[NimManager] Write to /proc/stb/frontend/%d/rf_switch" % self.frontend_id)
 			open("/proc/stb/frontend/%d/rf_switch" % self.frontend_id, "w").write("internal")
 
 	def removeInternalLink(self):
 		if self.internally_connectable >= 0:
 			print("[NimManager] removing internal link on frontend id", self.frontend_id)
+			print("[NimManager] Write to /proc/stb/frontend/%d/rf_switch" % self.frontend_id)
 			open("/proc/stb/frontend/%d/rf_switch" % self.frontend_id, "w").write("external")
 
 	def isMultiType(self):
@@ -845,8 +847,10 @@ class NimManager:
 			return
 
 		try:
+			print("[NimManager] Read /proc/bus/nim_sockets")
 			nimfile = open("/proc/bus/nim_sockets")
 		except IOError:
+			print("[NimManager] Read /proc/bus/nim_sockets failed.")
 			return
 
 		current_slot = None
@@ -1459,17 +1463,20 @@ def InitNimManager(nimmgr, update_slots=[]):
 		fe_id = configElement.fe_id
 		slot_id = configElement.slot_id
 		if os.path.exists("/proc/stb/frontend/%d/use_scpc_optimized_search_range" % fe_id):
+			print("[NimManager] Write to /proc/stb/frontend/%d/use_scpc_optimized_search_range" % fe_id)
 			open("/proc/stb/frontend/%d/use_scpc_optimized_search_range" % (fe_id), "w").write(configElement.value)
 
 	def toneAmplitudeChanged(configElement):
 		fe_id = configElement.fe_id
 		slot_id = configElement.slot_id
 		if os.path.exists("/proc/stb/frontend/%d/tone_amplitude" % fe_id):
+			print("[NimManager] Write to /proc/stb/frontend/%d/tone_amplitude" % fe_id)
 			open("/proc/stb/frontend/%d/tone_amplitude" % (fe_id), "w").write(configElement.value)
 
 	def t2miRawModeChanged(configElement):
 		slot = configElement.slot
 		if os.path.exists("/proc/stb/frontend/%d/t2mirawmode" % slot):
+			print("[NimManager] Write to /proc/stb/frontend/%d/t2mirawmode" % slot)
 			open("/proc/stb/frontend/%d/t2mirawmode" % slot, "w").write(configElement.value)
 
 	def createSatConfig(nim, slot_id):
@@ -1612,6 +1619,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 					if not hasattr(config.misc, 'firstrun') or not config.misc.firstrun.value:
 						configElement.save()
 				elif is_changed_mode:
+					print("[NimManager] Read /proc/stb/frontend/%d/mode" % fe_id)
 					cur_type = int(open("/proc/stb/frontend/%d/mode" % (fe_id), "r").read())
 					if cur_type != int(configElement.value):
 						print("[NimManager] tunerTypeChanged feid %d from %d to mode %d" % (fe_id, cur_type, int(configElement.value)))
@@ -1619,17 +1627,21 @@ def InitNimManager(nimmgr, update_slots=[]):
 						is_dvb_shutdown_timeout = os.path.exists("/sys/module/dvb_core/parameters/dvb_shutdown_timeout")
 						if is_dvb_shutdown_timeout:
 							try:
+								print("[NimManager] Read /sys/module/dvb_core/parameters/dvb_shutdown_timeout")
 								oldvalue = open("/sys/module/dvb_core/parameters/dvb_shutdown_timeout", "r").readline()
+								print("[NimManager] Write to /sys/module/dvb_core/parameters/dvb_shutdown_timeout")
 								open("/sys/module/dvb_core/parameters/dvb_shutdown_timeout", "w").write("0")
 							except:
 								print("[NimManager] tunerTypeChanged read /sys/module/dvb_core/parameters/dvb_shutdown_timeout failed")
 
 						frontend.closeFrontend()
+						print("[NimManager] Read /proc/stb/frontend/%d/mode" % fe_id)
 						open("/proc/stb/frontend/%d/mode" % (fe_id), "w").write(configElement.value)
 						frontend.reopenFrontend()
 
 						if is_dvb_shutdown_timeout:
 							try:
+								print("[NimManager] Write to /sys/module/dvb_core/parameters/dvb_shutdown_timeout")
 								open("/sys/module/dvb_core/parameters/dvb_shutdown_timeout", "w").write(oldvalue)
 							except:
 								print("[NimManager] tunerTypeChanged write to /sys/module/dvb_core/parameters/dvb_shutdown_timeout failed")

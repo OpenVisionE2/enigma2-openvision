@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from Components.Label import Label
 from Components.Converter.Converter import Converter
 from Components.Element import cached
@@ -138,6 +139,7 @@ class VNetSpeedInfo(Poll, Converter, object):
 	def updateNetSpeedInfoStatus(self):
 		flaglan = 0
 		flagwlan = 0
+		print("[VNetSpeedInfo] Read /proc/net/dev")
 		bwm = open('/proc/net/dev')
 		bw = bwm.readline()
 		bw = bwm.readline()

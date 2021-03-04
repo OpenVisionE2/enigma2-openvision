@@ -1,9 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-# the implementation here is a bit crappy.
 import time
-from Tools.Directories import resolveFilename, SCOPE_CONFIG
+from Tools.Directories import resolveFilename, SCOPE_CONFIG, fileExists
 from enigma import getBoxType
 
 model = getBoxType()
@@ -48,19 +47,26 @@ def profile(id):
 				perc = PERCENTAGE_START
 			try:
 				if model == "axodin":
+#					print("[Profile] Write to /dev/dbox/oled0")
 					open("/dev/dbox/oled0", "w").write("%d" % perc)
-				elif model in ("gb800solo", "gb800se", "gb800seplus", "gbultrase"):
-					open("/dev/mcu", "w").write("%d  \n" % perc)
-				elif model in ("ebox5000", "osmini", "spycatmini", "osminiplus", "spycatminiplus"):
-					open("/proc/progress", "w").write("%d" % perc)
-				elif model in ("sezammarvel", "xpeedlx3", "atemionemesis"):
-					open("/proc/vfd", "w").write("Loading %d %%" % perc)
 				elif model == "beyonwizu4":
+#					print("[Profile] Write to /dev/dbox/oled0")
 					open("/dev/dbox/oled0", "w").write("Loading %d%%\n" % perc)
-				else:
+				elif model in ("gb800solo", "gb800se", "gb800seplus", "gbultrase"):
+#					print("[Profile] Write to /dev/mcu")
+					open("/dev/mcu", "w").write("%d  \n" % perc)
+				elif model in ("sezammarvel", "xpeedlx3", "atemionemesis"):
+#					print("[Profile] Write to /proc/vfd")
+					open("/proc/vfd", "w").write("Loading %d %%" % perc)
+				elif model in ("ebox5000", "osmini", "spycatmini", "osminiplus", "spycatminiplus"):
+#					print("[Profile] Write to /proc/progress")
+					open("/proc/progress", "w").write("%d" % perc)
+				elif fileExists("/proc/progress"):
 					try:
+#						print("[Profile] Write to /proc/progress")
 						open("/proc/progress", "w").write("%d \n" % perc)
 					except:
+#						print("[Profile] Write to /proc/progress failed.")
 						pass
 			except IOError:
 				pass

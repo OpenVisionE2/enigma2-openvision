@@ -215,6 +215,7 @@ class CleanTrashTask(Components.Task.PythonTask):
 		mounts = []
 		matches = []
 		print("[Trashcan] probing folders")
+		print("[Trashcan] Read /proc/mounts")
 		f = open('/proc/mounts', 'r')
 		for line in f.readlines():
 			parts = line.strip().split()
