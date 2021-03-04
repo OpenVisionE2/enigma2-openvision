@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.config import config, ConfigSlider, ConfigSubsection, ConfigYesNo, ConfigText, ConfigInteger
-from enigma import getBoxType
+from enigma import getBoxType, getBoxBrand
 from Components.SystemInfo import SystemInfo
 import errno
 import xml.etree.cElementTree
@@ -17,6 +17,7 @@ from Tools.Directories import pathExists
 from boxbranding import getRCType
 
 model = getBoxType()
+brand = getBoxBrand()
 
 # include/uapi/asm-generic/ioctl.h
 # asm-generic/ioctl.h for HAVE_OLDE2_API
@@ -86,7 +87,7 @@ class inputDevices:
 
 	def getDeviceName(self, x):
 		if x in self.Devices.keys():
-			return self.Devices[x].get("name", x)
+			return self.Devices[x].get("name", x).replace('dreambox', brand)
 		else:
 			return "Unknown device name"
 
