@@ -27,7 +27,11 @@ if [ $platformcheck == "dmamlogic" ]; then
 	if [ ! "$(grep config.misc.firstrun /etc/enigma2/settings)" == "config.misc.firstrun=false" ]; then
 		echo 1080p50hz > /sys/class/display/mode
 	fi
+fi
+
+if [ -f /proc/stb/fp/led_color ]; then
 	echo 00ffffff > /proc/stb/fp/led_color
+elif [ -f /proc/stb/fp/led_brightness ]; then
 	echo 000000ff > /proc/stb/fp/led_brightness
 fi
 
@@ -145,8 +149,9 @@ while : ; do
 				echo "0" > /sys/class/leds/wetek\:blue\:ethled/brightness
 				echo "mem" > /sys/power/state
 			fi
-			if [ $platformcheck == "dmamlogic" ]; then
+			if [ -f /proc/stb/fp/led_color ]; then
 				echo 00ffffff > /proc/stb/fp/led_color
+			elif [ -f /proc/stb/fp/led_brightness ]; then
 				echo 00000008 > /proc/stb/fp/led_brightness
 			fi
 			;;

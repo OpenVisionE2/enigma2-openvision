@@ -77,7 +77,19 @@ class SymbolsCheckPoller:
 		del self.service
 
 	def Recording(self):
-		if fileExists("/proc/stb/lcd/symbol_circle"):
+		if SystemInfo["FrontpanelLEDBrightnessControl"]:
+			BRIGHTNESS_DEFAULT = 0xff
+			if config.lcd.ledbrightnesscontrol.value > 0xff or config.lcd.ledbrightnesscontrol.value < 0:
+				print("[VfdSymbols] LED brightness has to be between 0x0 and 0xff! Using default value (%x)" % (BRIGHTNESS_DEFAULT))
+				config.lcd.ledbrightnesscontrol.value = BRIGHTNESS_DEFAULT
+			open(SystemInfo["FrontpanelLEDBrightnessControl"], "w").write(config.lcd.ledbrightnesscontrol.value)
+		elif SystemInfo["FrontpanelLEDColorControl"]:
+			COLOR_DEFAULT = 0xffffff
+			if config.lcd.ledcolorcontrolcolor.value > 0xffffff or config.lcd.ledcolorcontrolcolor.value < 0:
+				print("[VfdSymbols] LED color has to be between 0x0 and 0xffffff (r, g b)! Using default value (%x)" % (COLOR_DEFAULT))
+				config.lcd.ledcolorcontrolcolor.value = COLOR_DEFAULT
+			open(SystemInfo["FrontpanelLEDColorControl"], "w").write(config.lcd.ledcolorcontrolcolor.value)
+		elif fileExists("/proc/stb/lcd/symbol_circle"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			print("[VfdSymbols] Write to /proc/stb/lcd/symbol_circle")
 			if recordings > 0:
@@ -124,7 +136,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			elif self.led == "1":
 				open("/proc/stb/lcd/powerled", "w").write("1")
-		elif model in ("dm7020hd", "dm7020hdv2") and fileExists("/proc/stb/fp/led_set"):
+		elif model == "dm7020hd" and fileExists("/proc/stb/fp/led_set"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			print("[VfdSymbols] Write to /proc/stb/fp/led_set")
@@ -161,15 +173,27 @@ class SymbolsCheckPoller:
 					self.led = "1"
 				else:
 					if Screens.Standby.inStandby:
-						open("/proc/stb/fp/ledpowercolor", "w").write(config.usage.lcd_ledstandbycolor.value)
+						open("/proc/stb/fp/ledpowercolor", "w").write(config.lcd.ledstandbycolor.value)
 					else:
-						open("/proc/stb/fp/ledpowercolor", "w").write(config.usage.lcd_ledpowercolor.value)
+						open("/proc/stb/fp/ledpowercolor", "w").write(config.lcd.ledpowercolor.value)
 					self.led = "0"
 			elif self.led == "1":
 				if Screens.Standby.inStandby:
-					open("/proc/stb/fp/ledpowercolor", "w").write(config.usage.lcd_ledstandbycolor.value)
+					open("/proc/stb/fp/ledpowercolor", "w").write(config.lcd.ledstandbycolor.value)
 				else:
-					open("/proc/stb/fp/ledpowercolor", "w").write(config.usage.lcd_ledpowercolor.value)
+					open("/proc/stb/fp/ledpowercolor", "w").write(config.lcd.ledpowercolor.value)
+		elif SystemInfo["FrontpanelLEDFadeControl"]:
+			FADE_DEFAULT = 0x7
+			if config.lcd.ledfadecontrolcolor.value > 0xff or config.lcd.ledfadecontrolcolor.value < 0:
+				print("[VfdSymbols] LED fade has to be between 0x0 and 0xff! Using default value (%x)" % (FADE_DEFAULT))
+				config.lcd.ledfadecontrolcolor.value = FADE_DEFAULT
+			open(SystemInfo["FrontpanelLEDFadeControl"], "w").write(config.lcd.ledfadecontrolcolor.value)
+		elif SystemInfo["FrontpanelLEDBlinkControl"]:
+			BLINK_DEFAULT = 0x0710ff
+			if config.lcd.ledblinkcontrolcolor.value > 0xffffff or config.lcd.ledblinkcontrolcolor.value < 0:
+				print("[VfdSymbols] LED blink has to be between 0x0 and 0xffffff (on, total, repeats)! Using default value (%x)" % (BLINK_DEFAULT))
+				config.lcd.ledblinkcontrolcolor.value = BLINK_DEFAULT
+			open(SystemInfo["FrontpanelLEDBlinkControl"], "w").write(config.lcd.ledblinkcontrolcolor.value)
 		else:
 			if not fileExists("/proc/stb/lcd/symbol_recording") or not fileExists("/proc/stb/lcd/symbol_record_1") or not fileExists("/proc/stb/lcd/symbol_record_2"):
 				return
