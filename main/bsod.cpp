@@ -264,6 +264,7 @@ void bsodFatal(const char *component)
 	os << "We are really sorry. Your STB encountered "
 		"a software problem, and needs to be restarted.\n"
 		"Please send the logfile " << crashlog_name << " to " << crash_emailaddr << ".\n"
+		"Better to enable Twisted log after and send us the twisted.log also.\n"
 		"Your STB restarts in 10 seconds!\n"
 		"Component: " << component;
 
