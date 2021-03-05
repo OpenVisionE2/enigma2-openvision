@@ -376,7 +376,7 @@ def getKeyDescription(key):
 		idx = 4
 	else:
 		idx = 2
-	return keyDescriptions[idx].get(key)
+	return keyDescriptions[idx].get(key, ("None",))
 
 
 def getKeyBindingKeys(filterfn=lambda key: True):
