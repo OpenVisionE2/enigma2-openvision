@@ -311,6 +311,11 @@ class OpenVisionInformation(Screen):
 				print("[About] /usr/sbin/lircd detected.")
 				OpenVisionInformationText += _("RC type: ") + _("LIRC remote") + "\n"
 
+		if fileExists("/proc/stb/ir/rc/customcode"):
+			print("[About] Read /proc/stb/ir/rc/customcode")
+			rccustomcode = open("/proc/stb/ir/rc/customcode", "r").read().strip()
+			OpenVisionInformationText += _("RC custom code: ") + rccustomcode + "\n"
+
 		OpenVisionInformationText += _("Open Vision RC type: ") + boxbranding.getRCType() + "\n"
 		OpenVisionInformationText += _("Open Vision RC name: ") + boxbranding.getRCName() + "\n"
 		OpenVisionInformationText += _("Open Vision RC ID number: ") + boxbranding.getRCIDNum() + "\n"
