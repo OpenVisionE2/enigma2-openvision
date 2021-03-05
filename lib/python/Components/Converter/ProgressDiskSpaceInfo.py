@@ -154,7 +154,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 		0]
 		try:
 			check = 0
-			print("[ProgressDiskSpaceInfo] Read /proc/meminfo")
+#			print("[ProgressDiskSpaceInfo] Read /proc/meminfo")
 			fd = open('/proc/meminfo')
 			for line in fd:
 				if value + 'Total' in line:
@@ -179,7 +179,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 
 		def isMountPoint():
 			try:
-				print("[ProgressDiskSpaceInfo] Read /proc/mounts")
+#				print("[ProgressDiskSpaceInfo] Read /proc/mounts")
 				fd = open('/proc/mounts', 'r')
 				for line in fd:
 					l = line.split()

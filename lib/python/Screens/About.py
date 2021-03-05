@@ -1074,7 +1074,7 @@ class SystemMemoryInfo(Screen):
 			"red": self.close
 		})
 
-		print("[About] Read /proc/meminfo")
+#		print("[About] Read /proc/meminfo")
 		out_lines = open("/proc/meminfo").readlines()
 		self.AboutText = _("RAM") + '\n\n'
 		RamTotal = "-"
@@ -1297,7 +1297,7 @@ class MemoryInfo(Screen):
 			mem = 1
 			free = 0
 			rows_in_column = self["params"].rows_in_column
-			print("[About] Read /proc/meminfo")
+#			print("[About] Read /proc/meminfo")
 			for i, line in enumerate(open('/proc/meminfo', 'r')):
 				s = line.strip().split(None, 2)
 				if len(s) == 3:

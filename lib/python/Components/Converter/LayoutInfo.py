@@ -154,7 +154,7 @@ class LayoutInfo(Poll, Converter):
 		0]
 		try:
 			check = 0
-			print("[LayoutInfo] Read /proc/meminfo")
+#			print("[LayoutInfo] Read /proc/meminfo")
 			fd = open('/proc/meminfo')
 			for line in fd:
 				if value + 'Total' in line:
@@ -179,7 +179,7 @@ class LayoutInfo(Poll, Converter):
 
 		def isMountPoint():
 			try:
-				print("[LayoutInfo] Read /proc/mounts")
+#				print("[LayoutInfo] Read /proc/mounts")
 				fd = open('/proc/mounts', 'r')
 				for line in fd:
 					l = line.split()
