@@ -1,33 +1,30 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from Screens.Screen import Screen
+from xml.etree.cElementTree import parse
+
+from enigma import eTimer
+
+from skin import findSkinScreen
+from Components.ActionMap import HelpableNumberActionMap, HelpableActionMap
+from Components.Button import Button
+from Components.config import ConfigDictionarySet, NoSave, config, configfile
+from Components.NimManager import nimmanager
+from Components.Pixmap import Pixmap
+from Components.PluginComponent import plugins
+from Components.SystemInfo import SystemInfo
+from Components.Sources.List import List
+from Components.Sources.StaticText import StaticText
+from Plugins.Plugin import PluginDescriptor
+from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.ParentalControlSetup import ProtectedScreen
-from Components.Sources.List import List
-from Components.ActionMap import NumberActionMap, ActionMap
-from Components.Sources.StaticText import StaticText
-from Components.config import configfile
-from Components.PluginComponent import plugins
-from Components.NimManager import nimmanager
-from Components.config import config, ConfigDictionarySet, NoSave
-from Components.SystemInfo import SystemInfo
-from Tools.BoundFunction import boundFunction
-from Plugins.Plugin import PluginDescriptor
-from Tools.Directories import resolveFilename, SCOPE_SKIN, SCOPE_CURRENT_SKIN
-from enigma import eTimer
-from Components.Button import Button
-from Tools.LoadPixmap import LoadPixmap
-from Components.Pixmap import Pixmap
-from skin import findSkinScreen
-
-import xml.etree.cElementTree
-
+from Screens.Screen import Screen
 from Screens.Setup import Setup, getSetupTitle
+from Tools.BoundFunction import boundFunction
+from Tools.Directories import SCOPE_CURRENT_SKIN, SCOPE_SKIN, resolveFilename
+from Tools.LoadPixmap import LoadPixmap
 
-# read the menu
+# Read the menu
 file = open(resolveFilename(SCOPE_SKIN, "menu.xml"), "r")
-mdom = xml.etree.cElementTree.parse(file)
+mdom = parse(file)
 file.close()
 
 lastMenuID = None
@@ -105,7 +102,6 @@ def MenuEntryName(name):
 
 
 class title_History():
-
 	def __init__(self):
 		self.thistory = ""
 
@@ -184,10 +180,10 @@ class Menu(Screen, ProtectedScreen):
 			exec("from %s import %s" % (arg[0], arg[1].split(",")[0]))
 			self.openDialog(*eval(arg[1]))
 
-	def nothing(self): #dummy
+	def nothing(self):  # dummy
 		pass
 
-	def openDialog(self, *dialog): # in every layer needed
+	def openDialog(self, *dialog):  # in every layer needed
 		self.session.openWithCallback(self.menuClosed, *dialog)
 
 	def openSetup(self, dialog):
@@ -209,7 +205,7 @@ class Menu(Screen, ProtectedScreen):
 			a = boundFunction(self.session.openWithCallback, self.menuClosedWithConfigFlush, Menu, node)
 		else:
 			a = boundFunction(self.session.openWithCallback, self.menuClosed, Menu, node)
-		#TODO add check if !empty(node.childNodes)
+		# TODO add check if !empty(node.childNodes)
 		destList.append((MenuTitle, a, entryID, weight))
 
 	def menuClosedWithConfigFlush(self, *res):
@@ -297,24 +293,23 @@ class Menu(Screen, ProtectedScreen):
 				self.skinName.append("menu_" + self.menuID)
 		self.skinName.append("Menu")
 		ProtectedScreen.__init__(self)
-		self["actions"] = NumberActionMap(["OkCancelActions", "MenuActions", "NumberActions", "HelpActions", "ColorActions"],
-			{
-				"ok": self.okbuttonClick,
-				"cancel": self.closeNonRecursive,
-				"menu": self.closeRecursive,
-				"0": self.keyNumberGlobal,
-				"1": self.keyNumberGlobal,
-				"2": self.keyNumberGlobal,
-				"3": self.keyNumberGlobal,
-				"4": self.keyNumberGlobal,
-				"5": self.keyNumberGlobal,
-				"6": self.keyNumberGlobal,
-				"7": self.keyNumberGlobal,
-				"8": self.keyNumberGlobal,
-				"9": self.keyNumberGlobal,
-				"displayHelp": self.showHelp,
-				"blue": self.keyBlue,
-			})
+		self["actions"] = NumberActionMap(["OkCancelActions", "MenuActions", "NumberActions", "HelpActions", "ColorActions"], {
+			"ok": self.okbuttonClick,
+			"cancel": self.closeNonRecursive,
+			"menu": self.closeRecursive,
+			"0": self.keyNumberGlobal,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal,
+			"displayHelp": self.showHelp,
+			"blue": self.keyBlue,
+		})
 		title = parent.get("title", "").encode("UTF-8") or None
 		title = title and _(title) or _(parent.get("text", "").encode("UTF-8"))
 		title = self.__class__.__name__ == "MenuSort" and _("Menusort (%s)") % title or title
@@ -371,7 +366,6 @@ class Menu(Screen, ProtectedScreen):
 			self["pixmap5"] = Pixmap()
 			self["pixmap6"] = Pixmap()
 			self.onShown.append(self.openTestB)
-
 		self.number = 0
 		self.nextNumberTimer = eTimer()
 		self.nextNumberTimer.callback.append(self.okbuttonClick)
@@ -399,7 +393,7 @@ class Menu(Screen, ProtectedScreen):
 		self["key_blue"].text = _("Edit menu") if config.usage.menu_sort_mode.value == "user" else ""
 		self.list = []
 		self.menuID = None
-		for x in self.parentmenu: #walk through the actual nodelist
+		for x in self.parentmenu:  # walk through the actual nodelist
 			if not x.tag:
 				continue
 			if x.tag == "item":
@@ -540,14 +534,11 @@ class MenuSort(Menu):
 		self["key_blue"] = StaticText(_("Reset order (All)"))
 		self["menu"].onSelectionChanged.append(self.selectionChanged)
 
-		self["MoveActions"] = ActionMap(["WizardActions", "DirectionActions"],
-		{
+		self["MoveActions"] = ActionMap(["WizardActions", "DirectionActions"], {
 			"moveUp": boundFunction(self.moveChoosen, -1),
 			"moveDown": boundFunction(self.moveChoosen, +1),
-			}, -1
-		)
-		self["EditActions"] = ActionMap(["ColorActions"],
-		{
+		}, -1)
+		self["EditActions"] = ActionMap(["ColorActions"], {
 			"red": self.closeMenuSort,
 			"green": self.keySave,
 			"yellow": self.keyToggleShowHide,
@@ -637,7 +628,6 @@ class MenuSort(Menu):
 
 
 class AnimMain(Screen):
-
 	def __init__(self, session, tlist, menuTitle):
 		Screen.__init__(self, session)
 		self.skinName = "Animmain"
@@ -659,29 +649,27 @@ class AnimMain(Screen):
 		self["red"] = Button(_("Exit"))
 		self["green"] = Button(_("Select"))
 		self["yellow"] = Button(_("Config"))
-		self["actions"] = NumberActionMap(["OkCancelActions",
-		 "MenuActions",
-		 "DirectionActions",
-		 "NumberActions",
-		 "ColorActions"], {"ok": self.okbuttonClick,
-		 "cancel": self.closeNonRecursive,
-		 "left": self.key_left,
-		 "right": self.key_right,
-		 "up": self.key_up,
-		 "down": self.key_down,
-		 "red": self.cancel,
-		 "green": self.okbuttonClick,
-		 "yellow": self.key_menu,
-		 "menu": self.closeRecursive,
-		 "1": self.keyNumberGlobal,
-		 "2": self.keyNumberGlobal,
-		 "3": self.keyNumberGlobal,
-		 "4": self.keyNumberGlobal,
-		 "5": self.keyNumberGlobal,
-		 "6": self.keyNumberGlobal,
-		 "7": self.keyNumberGlobal,
-		 "8": self.keyNumberGlobal,
-		 "9": self.keyNumberGlobal})
+		self["actions"] = NumberActionMap(["OkCancelActions", "MenuActions", "DirectionActions", "NumberActions", "ColorActions"], {
+			"ok": self.okbuttonClick,
+			"cancel": self.closeNonRecursive,
+			"left": self.key_left,
+			"right": self.key_right,
+			"up": self.key_up,
+			"down": self.key_down,
+			"red": self.cancel,
+			"green": self.okbuttonClick,
+			"yellow": self.key_menu,
+			"menu": self.closeRecursive,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal
+		})
 		nop = len(self.tlist)
 		self.nop = nop
 		nh = 1
@@ -778,7 +766,6 @@ class AnimMain(Screen):
 
 
 class IconMain(Screen):
-
 	def __init__(self, session, tlist, menuTitle):
 		Screen.__init__(self, session)
 		self.skinName = "Iconmain"
@@ -819,29 +806,27 @@ class IconMain(Screen):
 		self["red"] = Button(_("Exit"))
 		self["green"] = Button(_("Select"))
 		self["yellow"] = Button(_("Config"))
-		self["actions"] = NumberActionMap(["OkCancelActions",
-		 "MenuActions",
-		 "DirectionActions",
-		 "NumberActions",
-		 "ColorActions"], {"ok": self.okbuttonClick,
-		 "cancel": self.closeNonRecursive,
-		 "left": self.key_left,
-		 "right": self.key_right,
-		 "up": self.key_up,
-		 "down": self.key_down,
-		 "red": self.cancel,
-		 "green": self.okbuttonClick,
-		 "yellow": self.key_menu,
-		 "menu": self.closeRecursive,
-		 "1": self.keyNumberGlobal,
-		 "2": self.keyNumberGlobal,
-		 "3": self.keyNumberGlobal,
-		 "4": self.keyNumberGlobal,
-		 "5": self.keyNumberGlobal,
-		 "6": self.keyNumberGlobal,
-		 "7": self.keyNumberGlobal,
-		 "8": self.keyNumberGlobal,
-		 "9": self.keyNumberGlobal})
+		self["actions"] = NumberActionMap(["OkCancelActions", "MenuActions", "DirectionActions", "NumberActions", "ColorActions"], {
+			"ok": self.okbuttonClick,
+			"cancel": self.closeNonRecursive,
+			"left": self.key_left,
+			"right": self.key_right,
+			"up": self.key_up,
+			"down": self.key_down,
+			"red": self.cancel,
+			"green": self.okbuttonClick,
+			"yellow": self.key_menu,
+			"menu": self.closeRecursive,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal
+		})
 		self.index = 0
 		i = 0
 		self.maxentry = 29
@@ -888,7 +873,6 @@ class IconMain(Screen):
 				self["label" + str(j)].setText(name)
 				self["label" + str(j) + "s"].setText(" ")
 			i = i + 1
-
 		j = 0
 		i = ii
 		while j < 6:
@@ -907,7 +891,6 @@ class IconMain(Screen):
 			pic = icon
 			self["pixmap" + str(j)].instance.setPixmapFromFile(pic)
 			i = i + 1
-
 		if self.picnum > 6:
 			try:
 				dpointer = "/usr/share/enigma2/" + dskin[0] + "/pointer.png"
@@ -1022,8 +1005,7 @@ class IconMain(Screen):
 
 
 class MainMenu(Menu):
-	#add file load functions for the xml-file
-
+	# add file load functions for the xml-file
 	def __init__(self, *x):
 		self.skinName = "Menu"
 		Menu.__init__(self, *x)
