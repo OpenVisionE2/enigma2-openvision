@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 13:48+0330\n"
+"POT-Creation-Date: 2021-03-06 16:21+0330\n"
 "PO-Revision-Date: 2021-02-09 02:00+0100\n"
 "Last-Translator: Kuatto\n"
 "Language-Team: Álvaro <mi casa>\n"
@@ -2119,12 +2119,6 @@ msgstr "También en reposo"
 
 msgid "Alternative"
 msgstr "Alternativo"
-
-msgid "Alternative 1"
-msgstr "Alternativa 1"
-
-msgid "Alternative 2"
-msgstr "Alternativa 2"
 
 msgid "Alternative URL for images listed on FlashImage"
 msgstr "URL alternativa para las imágenes listadas en FlashImage"
@@ -4457,10 +4451,6 @@ msgstr "Debug a archivo"
 msgid "Deep Standby"
 msgstr "Reposo Profundo"
 
-#, fuzzy
-msgid "Deep Standby LED"
-msgstr "Reposo Profundo"
-
 msgid "Deep standby"
 msgstr "Reposo profundo"
 
@@ -5433,7 +5423,7 @@ msgstr "Encriptación:"
 
 #, fuzzy
 msgid "End"
-msgstr "Expandir"
+msgstr "y"
 
 #, fuzzy
 msgid "End alternatives edit"
@@ -8969,6 +8959,22 @@ msgstr "Configurar OpenVPN"
 msgid "OpenVision"
 msgstr "Extensiones"
 
+#, fuzzy
+msgid "Operating LED brightness."
+msgstr "Estado del LED en funcionamiento."
+
+#, fuzzy
+msgid "Operating LED color while blinking."
+msgstr "Estado del LED en funcionamiento."
+
+#, fuzzy
+msgid "Operating LED color."
+msgstr "Estado del LED en funcionamiento."
+
+#, fuzzy
+msgid "Operating LED fade."
+msgstr "Estado del LED en funcionamiento."
+
 msgid "Operating LED status in deep standby mode"
 msgstr "Estado del LED en reposo profundo"
 
@@ -9516,9 +9522,9 @@ msgstr "Espere mientras se testea su red…"
 msgid "Please wait while your network is restarting..."
 msgstr "Espere mientras se reinicia su red…"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Please wait, restarting %s."
-msgstr "Espere, reiniciando softcam."
+msgstr "Espere, reiniciando %s."
 
 msgid "Please wait..."
 msgstr "Espera por favor…"
@@ -9938,6 +9944,10 @@ msgstr "Zapeo rápido"
 
 msgid "RAM"
 msgstr ""
+
+#, fuzzy
+msgid "RC custom code: "
+msgstr "Desplazamiento personalizado"
 
 #, fuzzy
 msgid "RC type: "
@@ -12437,9 +12447,6 @@ msgstr "Reposo"
 msgid "Standby & Restart"
 msgstr "Reposo & Reinicios"
 
-msgid "Standby LED"
-msgstr "LED en Standby o Reposo Profundo"
-
 msgid "Standby after current event"
 msgstr "Reposo tras el evento actual"
 
@@ -13258,10 +13265,10 @@ msgstr "La interfaz de usuario del receptor ahora se reiniciará para mostrar su
 msgid "The user interface of your %s %s is restarting"
 msgstr "La interfaz de usuario de su %s %s se está reiniciando"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "The user interface of your %s %s is restarting\n"
-"due to an error in mytest.py"
+"due to an error in StartEnigma.py"
 msgstr ""
 "La interfaz de usuario de su %s %s se está reiniciando\n"
 "debido a un error en mytest.py"
@@ -13990,13 +13997,6 @@ msgid "Turn on the control LED."
 msgstr "Encienda el LED de encendido durante standby o reposo profundo."
 
 #, fuzzy
-msgid "Turn on the power LED during deep standby."
-msgstr "Encienda el LED de encendido durante standby o reposo profundo."
-
-msgid "Turn on the power LED during standby."
-msgstr "Encienda el LED de encendido durante standby o reposo profundo."
-
-#, fuzzy
 msgid "Turn on the power LED."
 msgstr "Encienda el LED de encendido durante standby o reposo profundo."
 
@@ -14594,6 +14594,10 @@ msgstr "Teclado virtual en skin"
 msgid "Virtual KeyBoard Text:"
 msgstr "Teclado virtual"
 
+#, fuzzy
+msgid "Virtual Keyboard"
+msgstr "Teclado virtual"
+
 msgid "Virtual keyboard"
 msgstr "Teclado virtual"
 
@@ -15095,7 +15099,23 @@ msgstr "Con esta opción puede encender la pantalla en reposo profundo."
 msgid "With this option you can switch on the display in Standby Mode."
 msgstr "Con esta opción puede encender la pantalla en standby."
 
+#, fuzzy
+msgid "With this option you can switch the LED brightness."
+msgstr "Con esta opción puede cambiar el color del LED o desactivar el LED."
+
 msgid "With this option you can switch the LED color or deactivate the LED."
+msgstr "Con esta opción puede cambiar el color del LED o desactivar el LED."
+
+#, fuzzy
+msgid "With this option you can switch the LED color while blinking."
+msgstr "Con esta opción puede cambiar el color del LED o desactivar el LED."
+
+#, fuzzy
+msgid "With this option you can switch the LED color."
+msgstr "Con esta opción puede cambiar el color del LED o desactivar el LED."
+
+#, fuzzy
+msgid "With this option you can switch the LED fade."
 msgstr "Con esta opción puede cambiar el color del LED o desactivar el LED."
 
 #, fuzzy
@@ -15603,9 +15623,8 @@ msgstr "alfabético-inverso fecha más reciente"
 msgid "always"
 msgstr "siempre"
 
-#, fuzzy
 msgid "and"
-msgstr "Banda"
+msgstr "y"
 
 msgid "and never ask in this session again"
 msgstr "y nunca preguntes en esta sesión otra vez"
@@ -15621,6 +15640,9 @@ msgstr "y seleccione el canal anterior"
 
 msgid "any recordings"
 msgstr "cualquier grabación"
+
+msgid "aqua"
+msgstr ""
 
 msgid "are you sure to cancel all changes"
 msgstr "estás seguro de cancelar todos los cambios"
@@ -15657,6 +15679,9 @@ msgid "axase3/xpeedlx"
 msgstr ""
 
 msgid "axodin"
+msgstr ""
+
+msgid "azure"
 msgstr ""
 
 msgid "back"
@@ -16177,6 +16202,9 @@ msgstr "hobbies (general)"
 msgid "length"
 msgstr "longitud"
 
+msgid "lime"
+msgstr ""
+
 msgid "limit ..., aborting !"
 msgstr "límite …, abortando !"
 
@@ -16380,6 +16408,9 @@ msgstr "apagado o wpa2 encendido"
 msgid "offset is"
 msgstr "offset es"
 
+msgid "olympic blue"
+msgstr ""
+
 msgid "on"
 msgstr "encendido"
 
@@ -16398,6 +16429,10 @@ msgstr "solo desde el modo de reposo"
 msgid "open nameserver configuration"
 msgstr "abrir la configuración del servidor de nombres"
 
+#, fuzzy
+msgid "orange"
+msgstr "Búsqueda Rango"
+
 msgid "original language"
 msgstr "idioma original"
 
@@ -16406,6 +16441,9 @@ msgstr "pasar"
 
 msgid "performing arts"
 msgstr "artes escénicas"
+
+msgid "pink"
+msgstr ""
 
 msgid "please press OK when ready"
 msgstr "pulse OK cuando esté listo"
@@ -16424,6 +16462,9 @@ msgid "priority"
 msgstr "Prioridad"
 
 msgid "punch cuts"
+msgstr ""
+
+msgid "purple"
 msgstr ""
 
 msgid "quick execute"
@@ -16511,6 +16552,9 @@ msgstr "rock/pop"
 
 msgid "romance"
 msgstr "romance"
+
+msgid "rose"
+msgstr ""
 
 #, fuzzy
 msgid "rotor"
@@ -16840,6 +16884,10 @@ msgstr "cuando esté activo PiPzap cambia canal abajo…"
 
 msgid "when PiPzap enabled zap channel up..."
 msgstr "cuando esté activo PiPzap cambia canal arriba…"
+
+#, fuzzy
+msgid "white"
+msgstr "Blanco"
 
 msgid "wide"
 msgstr "altura"
