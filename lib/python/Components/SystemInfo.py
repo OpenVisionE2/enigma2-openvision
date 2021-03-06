@@ -1,12 +1,11 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, getBoxType, getBoxBrand
-from Tools.Directories import SCOPE_SKIN, fileCheck, fileExists, fileHas, pathExists, resolveFilename
-import os
-import re
-from os import access, R_OK
+from os import R_OK, access
 from os.path import isfile, join as pathjoin
-from boxbranding import getDisplayType, getImageArch, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveSCART, getHaveYUV, getHaveRCA, getHaveTranscoding, getHaveMultiTranscoding, getSoCFamily, getHaveHDMI, getMachineBuild, getHaveVFDSymbol, getHaveSVIDEO, getFHDSkin, getRCIDNum, getRCName, getRCType
+from re import findall
+
+from boxbranding import getDisplayType, getFHDSkin, getHaveHDMI, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveMultiTranscoding, getHaveRCA, getHaveSCART, getHaveSVIDEO, getHaveTranscoding, getHaveVFDSymbol, getHaveYUV, getImageArch, getMachineBuild, getRCIDNum, getRCName, getRCTypegetSoCFamily
+from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, getBoxBrand, getBoxType
+
+from Tools.Directories import SCOPE_PLUGINS, SCOPE_SKIN, fileCheck, fileExists, fileHas, pathExists, resolveFilename
 
 SystemInfo = {}
 SystemInfo["HasRootSubdir"] = False
@@ -17,7 +16,7 @@ from Tools.Multiboot import getMultibootStartupDevice, getMultibootslots  # This
 print("[SystemInfo] Read /proc/cmdline")
 with open("/proc/cmdline", "r") as fd:
 	cmdline = fd.read()
-cmdline = {k: v.strip('"') for k, v in re.findall(r'(\S+)=(".*?"|\S+)', cmdline)}
+cmdline = {k: v.strip('"') for k, v in findall(r'(\S+)=(".*?"|\S+)', cmdline)}
 
 
 def getNumVideoDecoders():
