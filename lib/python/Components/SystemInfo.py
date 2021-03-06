@@ -2,10 +2,10 @@ from os import R_OK, access
 from os.path import isfile, join as pathjoin
 from re import findall
 
-from boxbranding import getDisplayType, getFHDSkin, getHaveHDMI, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveMultiTranscoding, getHaveRCA, getHaveSCART, getHaveSVIDEO, getHaveTranscoding, getHaveVFDSymbol, getHaveYUV, getImageArch, getMachineBuild, getRCIDNum, getRCName, getRCTypegetSoCFamily
+from boxbranding import getDisplayType, getFHDSkin, getHaveHDMI, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveMultiTranscoding, getHaveRCA, getHaveSCART, getHaveSVIDEO, getHaveTranscoding, getHaveVFDSymbol, getHaveYUV, getImageArch, getMachineBuild, getRCIDNum, getRCName, getRCType, getSoCFamily
 from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, getBoxBrand, getBoxType
 
-from Tools.Directories import SCOPE_PLUGINS, SCOPE_SKIN, fileCheck, fileExists, fileHas, pathExists, resolveFilename
+from Tools.Directories import SCOPE_SKIN, fileCheck, fileExists, fileHas, pathExists, resolveFilename
 
 SystemInfo = {}
 SystemInfo["HasRootSubdir"] = False
