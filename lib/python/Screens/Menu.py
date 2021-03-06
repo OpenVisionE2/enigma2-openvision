@@ -3,7 +3,7 @@ from xml.etree.cElementTree import parse
 from enigma import eTimer
 
 from skin import findSkinScreen
-from Components.ActionMap import HelpableNumberActionMap, HelpableActionMap
+from Components.ActionMap import NumberActionMap, ActionMap
 from Components.Button import Button
 from Components.config import ConfigDictionarySet, NoSave, config, configfile
 from Components.NimManager import nimmanager
