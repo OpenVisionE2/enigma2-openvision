@@ -26,7 +26,7 @@ def readFile(filename):
 
 def getProcMounts():
 	try:
-#		print("[Harddisk] Read /proc/mounts")
+		# print("[Harddisk] Read /proc/mounts")
 		mounts = open("/proc/mounts", 'r')
 	except IOError as ex:
 		print("[Harddisk] Failed to open /proc/mounts", ex)
@@ -654,10 +654,10 @@ class HarddiskManager:
 		partitions = []
 		try:
 			if os.path.exists(devpath + "/removable"):
-#				print("[Harddisk] Read removable")
+				# print("[Harddisk] Read removable")
 				removable = bool(int(readFile(devpath + "/removable")))
 			if os.path.exists(devpath + "/dev"):
-#				print("[Harddisk] Read dev")
+				# print("[Harddisk] Read dev")
 				dev = readFile(devpath + "/dev")
 				subdev = False if int(dev.split(':')[1]) % 32 == 0 else True
 				dev = int(dev.split(':')[0])
@@ -860,7 +860,7 @@ class HarddiskManager:
 				print("[Harddisk] Read model")
 				description = readFile("/sys" + phys + "/model")
 			elif os.path.exists('/sys' + phys + '/name'):
-#				print("[Harddisk] Read name")
+				# print("[Harddisk] Read name")
 				description = readFile("/sys" + phys + "/name")
 			else:
 				print("[Harddisk] couldn't read model: ")
