@@ -1070,7 +1070,7 @@ void eDVBDB::loadBouquet(const char *path)
 	list.clear();
 
 	int entries = 0;
-	std::string enigma_conf = eEnv::resolve("${sysconfdir}/enigma2/");
+	std::string enigma_conf = eEnv::resolve("${sysconfdir}/enigma2");
 	std::string file_path;
 	bool found = false;
 
