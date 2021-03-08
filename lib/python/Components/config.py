@@ -273,7 +273,6 @@ class choicesList(object):
 	LIST_TYPE_DICT = 2
 
 	def __init__(self, choices, type=None):
-		self.choices = choices
 		if type is None:
 			if isinstance(choices, list):
 				self.type = choicesList.LIST_TYPE_LIST
@@ -283,6 +282,7 @@ class choicesList(object):
 				assert False, "choices must be dict or list!"
 		else:
 			self.type = type
+		self.choices = choices
 
 	def __list__(self):
 		if self.type == choicesList.LIST_TYPE_LIST:
@@ -365,12 +365,9 @@ class descriptionList(choicesList):
 	def __getitem__(self, index):
 		if self.type == choicesList.LIST_TYPE_LIST:
 			for x in self.choices:
-				if isinstance(x, tuple):
-					if str(x[0]) == str(index):
-						return str(x[1])
-				elif str(x) == str(index):
-					return str(x)
-			return str(index)  # Fallback!
+				if isinstance(x, tuple) and str(x[0]) == str(index):
+					return str(x[1])
+			return _(str(index))  # If there is no display / translation string then translate the value!
 		else:
 			return str(self.choices.get(index, ""))
 
