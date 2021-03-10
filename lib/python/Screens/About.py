@@ -1195,8 +1195,12 @@ class CommitInfo(Screen):
 		self.projects = [
 			("https://api.github.com/repos/OpenVisionE2/revision/commits", "Revision history"),
 			("https://api.github.com/repos/OpenVisionE2/enigma2-openvision/commits" + branch, "Enigma2 - Vision"),
+			("https://api.github.com/repos/OpenVisionE2/enigma2-plugins/commits", "Enigma2 plugins"),
+			("https://api.github.com/repos/OpenVisionE2/alliance-plugins/commits", "Alliance plugins"),
+			("https://api.github.com/repos/OpenVisionE2/OpenWebif/commits", "Open WebIF"),
 			("https://api.github.com/repos/OpenVisionE2/openvision-core-plugin/commits", "Vision core plugin"),
-			("https://api.github.com/repos/OpenVisionE2/BackupSuite/commits", "Backup Suite plugin")
+			("https://api.github.com/repos/OpenVisionE2/BackupSuite/commits", "Backup Suite plugin"),
+			("https://api.github.com/repos/OpenVisionE2/OctEtFHD-skin/commits", "OctEtFHD skin")
 		]
 		self.cachedProjects = {}
 		self.Timer = eTimer()
