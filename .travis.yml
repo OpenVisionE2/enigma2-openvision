@@ -1,0 +1,82 @@
+language: cpp
+
+sudo: required
+dist: focal
+
+addons:
+  apt:
+    sources:
+    - sourceline: 'ppa:ubuntu-toolchain-r/test'
+    packages:
+    - g++-10
+    - gcc-10
+    - linux-libc-dev
+    - git
+    - build-essential
+    - automake
+    - libtool
+    - python-dev
+    - zlib1g-dev
+    - gettext
+    - swig
+    - libgstreamer1.0-dev
+    - libgstreamer-plugins-base1.0-dev
+    - libfreetype6-dev
+    - libsigc++-2.0-dev
+    - libfribidi-dev
+    - libssl-dev
+    - libavahi-client-dev
+    - libjpeg-turbo8-dev
+    - libgif-dev
+    - libopenmpi-dev
+    env:
+    - MATRIX_EVAL="CC=gcc-10 && CXX=g++-10 && PYTHON=2.7"
+
+python:
+  - "2.7"
+
+git:
+  depth: 1
+
+before_install:
+    - pip install --upgrade pip tox six
+    - pip3 install --upgrade pip tox six
+    - eval "${MATRIX_EVAL}"
+
+script:
+- sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+- gcc --version
+- g++ --version
+- python --version
+- echo installing libdvbsi++
+- pushd .
+- cd /tmp
+- git clone --depth 1 https://github.com/OpenVisionE2/libdvbsi.git
+- cd libdvbsi
+- autoreconf -i
+- ./configure
+- make
+- sudo make install
+- popd
+- echo installing tuxbox
+- pushd .
+- cd /tmp
+- git clone --depth 1 https://github.com/OpenVisionE2/tuxtxt.git
+- cd tuxtxt/libtuxtxt
+- autoreconf -i
+- ./configure
+- make
+- sudo make install
+- cd ../tuxtxt
+- autoreconf -i
+- ./configure
+- make
+- sudo make install
+- popd
+- echo compiling enigma2
+- autoreconf -i
+- ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --with-oever=10.2 --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
+- make
+- python -m compileall .
+- find . -type f -name "*.po" -exec msgfmt {} -o {}.mo \;
+- echo done!
