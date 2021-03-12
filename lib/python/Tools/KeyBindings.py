@@ -141,7 +141,6 @@ keyDescriptions = [{  # id=0 - dmm0 remote directory, DM8000.
 	KEYIDS["KEY_7"]: ("7",),
 	KEYIDS["KEY_8"]: ("8",),
 	KEYIDS["KEY_9"]: ("9",),
-	KEYIDS["KEY_ANGLE"]: ("VMODE",),
 	KEYIDS["KEY_ARCHIVE"]: ("HISTORY",),
 	KEYIDS["KEY_AUDIO"]: ("AUDIO",),
 	KEYIDS["KEY_AUX"]: ("WIZTV",),
