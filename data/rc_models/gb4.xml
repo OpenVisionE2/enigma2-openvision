@@ -1,53 +1,57 @@
 <rcs>
-	<rc id="2">
-		<button name="TV" pos="23,21" />
-		<button name="POWER" pos="57,19" />
-		<button name="MUTE" pos="91,21" />
-		<button name="1" pos="26,64" />
-		<button name="2" pos="57,64" />
-		<button name="3" pos="88,64" />
-		<button name="4" pos="26,84" />
-		<button name="5" pos="57,84" />
-		<button name="6" pos="88,84" />
-		<button name="7" pos="26,103" />
-		<button name="8" pos="57,103" />
-		<button name="9" pos="88,103" />
-		<button name="ARROWLEFT" pos="26,122" />
-		<button name="0" pos="57,122" />
-		<button name="ARROWRIGHT" pos="88,122" />
-		<button name="RED" pos="21,142" />
-		<button name="GREEN" pos="45,142" />
-		<button name="YELLOW" pos="69,142" />
-		<button name="BLUE" pos="93,142" />
-		<button name="INFO" pos="24,163" />
-		<button name="UP" pos="57,176" />
-		<button name="MENU" pos="90,163" />
-		<button name="LEFT" pos="27,204" />
-		<button name="OK" pos="57,204" />
-		<button name="RIGHT" pos="87,204" />
-		<button name="AUDIO" pos="24,246" />
-		<button name="DOWN" pos="57,232" />
-		<button name="VIDEO" pos="90,246" />
-		<button name="VOL+" pos="26,275" />
-		<button name="EXIT" pos="57,273" />
-		<button name="BOUQUET+" pos="88,275" />
-		<button name="VOL-" pos="26,301" />
-		<button name="EPG" pos="57,299" />
-		<button name="BOUQUET-" pos="88,301" />
-		<button name="HISTORY" pos="26,328" />
-		<button name="OPTION" pos="57,328" />
-		<button name="FAV" pos="88,328" />
-		<button name="SUBTITLE" pos="26,347" />
-		<button name="SCREEN" pos="57,347" />
-		<button name="TEXT" pos="88,347" />
-		<button name="TIMER" pos="26,368" />
-		<button name="STOP" pos="57,368" />
-		<button name="RECORD" pos="88,368" />
-		<button name="REWIND" pos="26,388" />
-		<button name="PLAYPAUSE" pos="57,388" />
-		<button name="FASTFORWARD" pos="88,388" />
-		<button name="HELP" pos="26,409" />
-		<button name="PLAYLIST" pos="57,409" />
-		<button name="SCREEN" pos="88,409" />
+	<rc id="2" image="/images/remotes/gb4.png">
+		<button keyid="KEY_TV" name="TV" title="TV / Radio" pos="23,21" shape="rect" size="22,10" />
+		<button keyid="KEY_POWER" name="POWER" title="Power" pos="57,19" shape="rect" size="40,14" />
+		<button keyid="KEY_MUTE" name="MUTE" title="Mute" pos="91,21" shape="rect" size="22,10" />
+		<button keyid="KEY_RESERVED" name="" title="GIGA" pos="21,44" shape="rect" size="20,12" />
+		<button keyid="KEY_RESERVED" name="" title="TV" pos="45,44" shape="rect" size="20,12" />
+		<button keyid="KEY_RESERVED" name="" title="DVD" pos="69,44" shape="rect" size="20,12" />
+		<button keyid="KEY_RESERVED" name="" title="AUX" pos="93,44" shape="rect" size="20,12" />
+		<button keyid="KEY_1" name="1" title="1" pos="26,64" shape="rect" size="28,10" />
+		<button keyid="KEY_2" name="2" title="2 (ABC)" pos="57,64" shape="rect" size="28,10" />
+		<button keyid="KEY_3" name="3" title="3 (DEF)" pos="88,64" shape="rect" size="28,10" />
+		<button keyid="KEY_4" name="4" title="4 (GHI)" pos="26,84" shape="rect" size="28,10" />
+		<button keyid="KEY_5" name="5" title="5 (JKL)" pos="57,84" shape="rect" size="28,10" />
+		<button keyid="KEY_6" name="6" title="6 (MNO)" pos="88,84" shape="rect" size="28,10" />
+		<button keyid="KEY_7" name="7" title="7 (PQRS)" pos="26,103" shape="rect" size="28,10" />
+		<button keyid="KEY_8" name="8" title="8 (TUV)" pos="57,103" shape="rect" size="28,10" />
+		<button keyid="KEY_9" name="9" title="9 (WXYZ)" pos="88,103" shape="rect" size="28,10" />
+		<button keyid="KEY_PREVIOUS" name="ARROWLEFT" title="Previous / Arrow Left" pos="26,122" shape="rect" size="28,10" />
+		<button keyid="KEY_0" name="0" title="0" pos="57,122" shape="rect" size="28,10" />
+		<button keyid="KEY_NEXT" name="ARROWRIGHT" title="Next / Arrow Right" pos="88,122" shape="rect" size="28,10" />
+		<button keyid="KEY_RED" name="RED" title="Red" pos="21,142" shape="rect" size="20,12" />
+		<button keyid="KEY_GREEN" name="GREEN" title="Green" pos="47,142" shape="rect" size="20,12" />
+		<button keyid="KEY_YELLOW" name="YELLOW" title="Yellow" pos="67,142" shape="rect" size="20,12" />
+		<button keyid="KEY_BLUE" name="BLUE" title="Blue" pos="93,142" shape="rect" size="20,12" />
+		<button keyid="KEY_INFO" name="INFO" title="Info" pos="24,163" shape="rect" size="28,12" />
+		<button keyid="KEY_MENU" name="MENU" title="Menu" pos="90,163" shape="rect" size="28,12" />
+		<button keyid="KEY_UP" name="UP" title="Up" pos="57,176" shape="circle" radius="9" />
+		<button keyid="KEY_LEFT" name="LEFT" title="Left" pos="27,204" shape="circle" radius="9" />
+		<button keyid="KEY_OK" name="OK" title="OK" pos="57,204" shape="circle" radius="17" />
+		<button keyid="KEY_RIGHT" name="RIGHT" title="Right" pos="87,204" shape="circle" radius="9" />
+		<button keyid="KEY_DOWN" name="DOWN" title="Down" pos="57,232" shape="circle" radius="9" />
+		<button keyid="KEY_AUDIO" name="AUDIO" title="Audio" pos="24,246" shape="rect" size="28,12" />
+		<button keyid="KEY_VIDEO" name="VIDEO" title="Video" pos="90,246" shape="rect" size="28,12" />
+		<button keyid="KEY_VOLUMEUP" name="VOL+" title="Volume +" pos="26,275" shape="rect" size="26,24" />
+		<button keyid="KEY_EXIT" name="EXIT" title="Exit" pos="57,273" shape="rect" size="22,16" />
+		<button keyid="KEY_CHANNELUP" name="BOUQUET+" title="Channel +" pos="88,275" shape="rect" size="26,24" />
+		<button keyid="KEY_VOLUMEDOWN" name="VOL-" title="Volume -" pos="26,301" shape="rect" size="26,24" />
+		<button keyid="KEY_EPG" name="EPG" title="Guide / EPG" pos="57,299" shape="rect" size="22,16" />
+		<button keyid="KEY_CHANNELDOWN" name="BOUQUET-" title="Channel -" pos="88,301" shape="rect" size="26,24" />
+		<button keyid="KEY_ARCHIVE" name="HISTORY" title="History" pos="26,328" shape="rect" size="28,8" />
+		<button keyid="KEY_OPTION" name="OPTION" title="Option" pos="57,328" shape="rect" size="28,8" />
+		<button keyid="KEY_FAVORITES" name="FAV" title="Context / Favourites" pos="88,328" shape="rect" size="28,8" />
+		<button keyid="KEY_SUBTITLE" name="SUBTITLE" title="Subtitle" pos="26,347" shape="rect" size="28,12" />
+		<button keyid="KEY_SCREEN" remap="KEY_SWITCHVIDEOMODE" name="VMODE" title="Aspect" pos="57,347" shape="rect" size="28,12" />
+		<button keyid="KEY_TEXT" name="TEXT" title="Text" pos="88,347" shape="rect" size="28,12" />
+		<button keyid="KEY_PROGRAM" name="TIMER" title="Timer" pos="26,368" shape="rect" size="28,12" />
+		<button keyid="KEY_STOP" name="STOP" title="Stop" pos="57,368" shape="rect" size="28,12" />
+		<button keyid="KEY_RECORD" name="RECORD" title="Record" pos="88,368" shape="rect" size="28,12" />
+		<button keyid="KEY_REWIND" name="REWIND" title="Rewind" pos="26,388" shape="rect" size="28,12" />
+		<button keyid="KEY_PLAYPAUSE" name="PLAYPAUSE" title="Play / Pause" pos="57,388" shape="rect" size="28,12" />
+		<button keyid="KEY_FASTFORWARD" name="FASTFORWARD" title="Fast Forward" pos="88,388" shape="rect" size="28,12" />
+		<button keyid="KEY_F1" remap="KEY_HELP" name="HELP" title="F1 / Help" pos="26,409" shape="rect" size="28,12" />
+		<button keyid="KEY_LIST" name="PLAYLIST" title="Play List" pos="57,409" shape="rect" size="28,12" />
+		<button keyid="KEY_F2" remap="KEY_SCREEN" name="SCREEN" title="PIP" pos="88,409" shape="rect" size="28,12" />
 	</rc>
 </rcs>
