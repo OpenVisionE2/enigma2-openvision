@@ -1,47 +1,49 @@
 <rcs>
-	<rc id="2">
-		<button name="POWER" pos="110,22" />
-		<button name="TEXT" pos="28,47" />
-		<button name="SUBTITLE" pos="55,47" />
-		<button name="MUTE" pos="109,47" />
-		<button name="1" pos="32,74" />
-		<button name="2" pos="69,74" />
-		<button name="3" pos="106,74" />
-		<button name="4" pos="32,103" />
-		<button name="5" pos="69,103" />
-		<button name="6" pos="106,103" />
-		<button name="7" pos="32,132" />
-		<button name="8" pos="69,132" />
-		<button name="9" pos="106,132" />
-		<button name="ARROWLEFT" pos="32,161" />
-		<button name="0" pos="69,161" />
-		<button name="ARROWRIGHT" pos="106,161" />
-		<button name="RED" pos="28,187" />
-		<button name="GREEN" pos="56,187" />
-		<button name="YELLOW" pos="84,187" />
-		<button name="BLUE" pos="112,187" />
-		<button name="UP" pos="70,222" />
-		<button name="LEFT" pos="37,255" />
-		<button name="OK" pos="70,255" />
-		<button name="RIGHT" pos="103,255" />
-		<button name="DOWN" pos="70,288" />
-		<button name="VOL+" pos="36,316" />
-		<button name="BOUQUET+" pos="105,316" />
-		<button name="EXIT" pos="70,318" />
-		<button name="INFO" pos="70,344" />
-		<button name="VOL-" pos="36,349" />
-		<button name="BOUQUET-" pos="105,349" />
-		<button name="MENU" pos="31,375" />
-		<button name="VIDEO" pos="57,375" />
-		<button name="AUDIO" pos="84,375" />
-		<button name="HELP" pos="110,375" />
-		<button name="REWIND" pos="31,399" />
-		<button name="PLAY" pos="57,399" />
-		<button name="PAUSE" pos="84,399" />
-		<button name="FASTFORWARD" pos="110,399" />
-		<button name="TV" pos="31,422" />
-		<button name="RECORD" pos="57,422" />
-		<button name="STOP" pos="84,422" />
-		<button name="RADIO" pos="110,422" />
+	<rc id="2" image="/images/remotes/vu.png">
+		<button keyid="KEY_MUTE" name="MUTE" title="Mute" pos="26,30" shape="circle" radius="9" />
+		<button keyid="KEY_POWER" name="POWER" title="Power" pos="102,30" shape="circle" radius="9" />
+		<button keyid="KEY_TEXT" name="TEXT" title="Text" pos="26,56" shape="circle" radius="9" />
+		<button keyid="KEY_SUBTITLE" name="SUBTITLE" title="Subtitle" pos="52,56" shape="circle" radius="9" />
+		<button keyid="KEY_HOME" name="HOME" title="Home" pos="77,56" shape="circle" radius="9" />
+		<button keyid="KEY_END" name="END" title="End" pos="102,56" shape="circle" radius="9" />
+		<button keyid="KEY_1" name="1" title="1" pos="31,84" shape="circle" radius="12" />
+		<button keyid="KEY_2" name="2" title="2 (ABC)" pos="64,84" shape="circle" radius="12" />
+		<button keyid="KEY_3" name="3" title="3 (DEF)" pos="98,84" shape="circle" radius="12" />
+		<button keyid="KEY_4" name="4" title="4 (GHI)" pos="31,113" shape="circle" radius="12" />
+		<button keyid="KEY_5" name="5" title="5 (JKL)" pos="64,113" shape="circle" radius="12" />
+		<button keyid="KEY_6" name="6" title="6 (MNO)" pos="98,113" shape="circle" radius="12" />
+		<button keyid="KEY_7" name="7" title="7 (PQRS)" pos="31,142" shape="circle" radius="12" />
+		<button keyid="KEY_8" name="8" title="8 (TUV)" pos="64,142" shape="circle" radius="12" />
+		<button keyid="KEY_9" name="9" title="9 (WXYZ)" pos="98,142" shape="circle" radius="12" />
+		<button keyid="KEY_PREVIOUS" name="ARROWLEFT" title="Previous" pos="31,171" shape="circle" radius="12" />
+		<button keyid="KEY_0" name="0" title="0" pos="64,171" shape="circle" radius="12" />
+		<button keyid="KEY_NEXT" name="ARROWRIGHT" title="Next" pos="98,171" shape="circle" radius="12" />
+		<button keyid="KEY_RED" name="RED" title="Red" pos="26,198" shape="circle" radius="9" />
+		<button keyid="KEY_GREEN" name="GREEN" title="Green" pos="52,198" shape="circle" radius="9" />
+		<button keyid="KEY_YELLOW" name="YELLOW" title="Yellow" pos="77,198" shape="circle" radius="9" />
+		<button keyid="KEY_BLUE" name="BLUE" title="Blue" pos="102,198" shape="circle" radius="9" />
+		<button keyid="KEY_UP" name="UP" title="Up" pos="65,233" shape="rect" size="40,14" />
+		<button keyid="KEY_LEFT" name="LEFT" title="Left" pos="33,264" shape="rect" size="14,40" />
+		<button keyid="KEY_OK" name="OK" title="OK" pos="65,264" shape="circle" radius="22" />
+		<button keyid="KEY_RIGHT" name="RIGHT" title="Right" pos="96,264" shape="rect" size="14,40" />
+		<button keyid="KEY_DOWN" name="DOWN" title="Down" pos="65,295" shape="rect" size="40,14" />
+		<button keyid="KEY_VOLUMEUP" name="VOL+" title="Vol +" pos="33,322" shape="circle" radius="13" />
+		<button keyid="KEY_CHANNELUP" name="BOUQUET+" title="Ch +" pos="95,322" shape="circle" radius="13" />
+		<button keyid="KEY_EXIT" name="EXIT" title="Exit" pos="64,326" shape="circle" radius="8" />
+		<button keyid="KEY_INFO" remap="KEY_EPG" name="EPG" title="EPG" pos="64,349" shape="circle" radius="8" />
+		<button keyid="KEY_VOLUMEDOWN" name="VOL-" title="Vol -" pos="33,355" shape="circle" radius="11" />
+		<button keyid="KEY_CHANNELDOWN" name="BOUQUET-" title="Ch -" pos="95,355" shape="circle" radius="11" />
+		<button keyid="KEY_MENU" name="MENU" title="Menu" pos="29,380" shape="circle" radius="9" />
+		<button keyid="KEY_VIDEO" name="VIDEO" title="Video" pos="52,380" shape="circle" radius="9" />
+		<button keyid="KEY_AUDIO" name="AUDIO" title="Audio" pos="76,380" shape="circle" radius="9" />
+		<button keyid="KEY_HELP" name="HELP" title="Help" pos="99,380" shape="circle" radius="9" />
+		<button keyid="KEY_REWIND" name="REWIND" title="Rewind" pos="29,403" shape="circle" radius="9" />
+		<button keyid="KEY_PLAY" name="PLAY" title="Play" pos="52,403" shape="circle" radius="9" />
+		<button keyid="KEY_PAUSE" name="PAUSE" title="Pause" pos="76,403" shape="circle" radius="9" />
+		<button keyid="KEY_FASTFORWARD" name="FASTFORWARD" title="Fast Forward" pos="99,403" shape="circle" radius="9" />
+		<button keyid="KEY_TV" name="TV" title="TV" pos="29,425" shape="circle" radius="9" />
+		<button keyid="KEY_RECORD" name="RECORD" title="Record" pos="52,425" shape="circle" radius="9" />
+		<button keyid="KEY_STOP" name="STOP" title="Stop" pos="76,425" shape="circle" radius="9" />
+		<button keyid="KEY_RADIO" name="RADIO" title="Radio" pos="99,425" shape="circle" radius="9" />
 	</rc>
 </rcs>
