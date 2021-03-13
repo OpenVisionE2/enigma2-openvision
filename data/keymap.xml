@@ -22,7 +22,7 @@
 		<key id="KEY_POWER" mapto="power_down" flags="m" />
 		<key id="KEY_POWER" mapto="power_up" flags="b" />
 		<key id="KEY_KP0" mapto="discrete_off" flags="m" />
-		<key id="KEY_GOTO" mapto="power" flags="m"/>
+		<key id="KEY_GOTO" mapto="power" flags="m" />
 		<device name="dreambox front panel">
 			<key id="KEY_POWER" mapto="deepstandby" flags="l" />
 		</device>
@@ -78,9 +78,7 @@
 	</map>
 
 	<map context="NavigationActions">
-		<!--
-		<key id="KEY_REWIND" mapto="top" flags="m" />
-		-->
+		<!-- <key id="KEY_REWIND" mapto="top" flags="m" /> -->
 		<key id="KEY_CHANNELUP" mapto="pageUp" flags="mr" />
 		<key id="KEY_UP" mapto="up" flags="mr" />
 		<key id="KEY_REWIND" mapto="first" flags="m" />
@@ -89,9 +87,7 @@
 		<key id="KEY_FASTFORWARD" mapto="last" flags="m" />
 		<key id="KEY_DOWN" mapto="down" flags="mr" />
 		<key id="KEY_CHANNELDOWN" mapto="pageDown" flags="mr" />
-		<!--
-		<key id="KEY_FASTFORWARD" mapto="bottom" flags="m" />
-		-->
+		<!-- <key id="KEY_FASTFORWARD" mapto="bottom" flags="m" /> -->
 		<!-- Keyboard specific buttons -->
 		<key id="KEY_HOME" mapto="top" flags="m" />
 		<key id="KEY_PAGEUP" mapto="pageUp" flags="mr" />
@@ -227,13 +223,13 @@
 		<key id="KEY_UP" mapto="moveUp" flags="mr" />
 		<key id="KEY_DOWN" mapto="moveDown" flags="mr" />
 		<key id="KEY_HOME" mapto="moveTop" flags="mr" />
-		<key id="KEY_PREVIOUS" mapto="moveTop" flags="mr"/>
+		<key id="KEY_PREVIOUS" mapto="moveTop" flags="mr" />
 		<key id="KEY_END" mapto="moveEnd" flags="mr" />
-		<key id="KEY_NEXT" mapto="moveEnd" flags="mr"/>
+		<key id="KEY_NEXT" mapto="moveEnd" flags="mr" />
 		<key id="KEY_PAGEUP" mapto="pageUp" flags="mr" />
-		<key id="KEY_CHANNELUP" mapto="pageUp" flags="mr"/>
+		<key id="KEY_CHANNELUP" mapto="pageUp" flags="mr" />
 		<key id="KEY_PAGEDOWN" mapto="pageDown" flags="mr" />
-		<key id="KEY_CHANNELDOWN" mapto="pageDown" flags="mr"/>
+		<key id="KEY_CHANNELDOWN" mapto="pageDown" flags="mr" />
 		<key id="KEY_LEFT" mapto="pageUp" flags="mr" />
 		<key id="KEY_RIGHT" mapto="pageDown" flags="mr" />
 		<key id="1" mapto="moveUp" flags="mr" />
@@ -266,10 +262,10 @@
 		<key id="KEY_GREEN" mapto="save" flags="m" />
 		<key id="KEY_MUTE" mapto="deleteForward" flags="mr" />
 		<key id="KEY_NEXT" mapto="deleteForward" flags="mr" />
-		<key id="KEY_FASTFORWARD" mapto="deleteForward" flags="mr"/>
+		<key id="KEY_FASTFORWARD" mapto="deleteForward" flags="mr" />
 		<key id="KEY_PREVIOUS" mapto="deleteBackward" flags="mr" />
-		<key id="KEY_REWIND" mapto="deleteBackward" flags="mr"/>
-		<key id="KEY_MENU" mapto="menu" flags="mr"/>
+		<key id="KEY_REWIND" mapto="deleteBackward" flags="mr" />
+		<key id="KEY_MENU" mapto="menu" flags="mr" />
 		<key id="KEY_1" mapto="1" flags="m" />
 		<key id="KEY_2" mapto="2" flags="m" />
 		<key id="KEY_3" mapto="3" flags="m" />
@@ -283,7 +279,7 @@
 		<key id="KEY_FILE" mapto="file" flags="m" />
 		<key id="KEY_VIDEO" mapto="file" flags="m" />
 		<key id="KEY_PVR" mapto="file" flags="m" />
-		<key id="KEY_MEDIA" mapto="file" flags="m"/>
+		<key id="KEY_MEDIA" mapto="file" flags="m" />
 	</map>
 
 	<map context="InputActions">
@@ -306,7 +302,7 @@
 		<key id="KEY_INFO" mapto="showEventInfoPlugin" flags="l" />
 		<key id="KEY_EPG" mapto="showEventInfoSingleEPG" flags="b" />
 		<key id="KEY_EPG" mapto="showEventGuidePlugin" flags="l" />
-		<key id="KEY_OK" mapto="showEventInfoMultiEPG" flags="l"/>
+		<key id="KEY_OK" mapto="showEventInfoMultiEPG" flags="l" />
 	</map>
 
 	<map context="InfobarInstantRecord">
@@ -315,7 +311,7 @@
 
 	<map context="InfobarExtensions">
 		<key id="KEY_BLUE" mapto="extensions" flags="b" />
-		<key id="KEY_F4" mapto="extensions" flags="b"/>
+		<key id="KEY_F4" mapto="extensions" flags="b" />
 	</map>
 
 	<map context="SatlistShortcutAction">
@@ -329,7 +325,7 @@
 		<key id="KEY_UP" mapto="keyUp" flags="mr" />
 		<key id="KEY_DOWN" mapto="keyDown" flags="mr" />
 		<key id="KEY_PREVIOUS" mapto="historyBack" flags="mr" />
-		<key id="KEY_ARCHIVE" mapto="historyBack" flags="b"/>
+		<key id="KEY_ARCHIVE" mapto="historyBack" flags="b" />
 		<key id="KEY_NEXT" mapto="historyNext" flags="mr" />
 		<key id="KEY_CHANNELUP" mapto="keyChannelUp" flags="m" />
 		<key id="KEY_CHANNELDOWN" mapto="keyChannelDown" flags="m" />
@@ -366,9 +362,9 @@
 		<key id="KEY_ESC" mapto="back" flags="m" />
 		<key id="KEY_MUTE" mapto="deleteForward" flags="mr" />
 		<key id="KEY_NEXT" mapto="deleteForward" flags="mr" />
-		<key id="KEY_FASTFORWARD" mapto="deleteForward" flags="mr"/>
+		<key id="KEY_FASTFORWARD" mapto="deleteForward" flags="mr" />
 		<key id="KEY_PREVIOUS" mapto="deleteBackward" flags="mr" />
-		<key id="KEY_REWIND" mapto="deleteBackward" flags="mr"/>
+		<key id="KEY_REWIND" mapto="deleteBackward" flags="mr" />
 		<key id="KEY_1" mapto="1" flags="m" />
 		<key id="KEY_2" mapto="2" flags="m" />
 		<key id="KEY_3" mapto="3" flags="m" />
@@ -411,32 +407,32 @@
 		<key id="KEY_ENTER" mapto="toggleShowLong" flags="l" />
 		<key id="KEY_EXIT" mapto="hideLong" flags="l" />
 		<key id="KEY_ESC" mapto="hideLong" flags="l" />
-		<key id="KEY_INFO" mapto="toggleSecondInfoBar" flags="l"/>
+		<key id="KEY_INFO" mapto="toggleSecondInfoBar" flags="l" />
 	</map>
 
 	<map context="InfobarActions">
 		<key id="KEY_VIDEO" mapto="showMovies" flags="b" />
-		<key id="KEY_PLAY" mapto="showMovies" flags="b"/>
-		<key id="KEY_FIND" mapto="showMovies" flags="b"/>
+		<key id="KEY_PLAY" mapto="showMovies" flags="b" />
+		<key id="KEY_FIND" mapto="showMovies" flags="b" />
 		<key id="KEY_RADIO" mapto="showRadio" flags="b" />
 		<key id="KEY_TV" mapto="showTv" flags="b" />
 		<key id="KEY_TV2" mapto="toggleTvRadio" flags="b" />
 		<key id="KEY_FILE" mapto="showMovies" flags="m" />
 		<key id="KEY_TEXT" mapto="showText" flags="m" />
 		<key id="KEY_MEDIA" mapto="showMovies" flags="b" />
-		<key id="KEY_LIST" mapto="showMovies" flags="b"/>
-		<key id="KEY_HOMEPAGE" mapto="showMovies" flags="b"/>
+		<key id="KEY_LIST" mapto="showMovies" flags="b" />
+		<key id="KEY_HOMEPAGE" mapto="showMovies" flags="b" />
 		<key id="KEY_PVR" mapto="showMovies" flags="b" />
-		<key id="KEY_OPEN" mapto="showMovies" flags="b"/>
-		<key id="KEY_ZOOM" mapto="ZoomInOut" flags="b"/>
-		<key id="KEY_ZOOM" mapto="ZoomOff" flags="l"/>
+		<key id="KEY_OPEN" mapto="showMovies" flags="b" />
+		<key id="KEY_ZOOM" mapto="ZoomInOut" flags="b" />
+		<key id="KEY_ZOOM" mapto="ZoomOff" flags="l" />
 	</map>
 
 	<map context="InfobarAudioSelectionActions">
 		<key id="KEY_AUDIO" mapto="audioSelection" flags="m" />
 		<key id="KEY_YELLOW" mapto="audioSelection" flags="b" />
-		<key id="KEY_OPTION" mapto="audioSelection" flags="b"/>
-		<key id="KEY_LANGUAGE" mapto="audioSelection" flags="m"/>
+		<key id="KEY_OPTION" mapto="audioSelection" flags="b" />
+		<key id="KEY_LANGUAGE" mapto="audioSelection" flags="m" />
 	</map>
 
 	<map context="InfobarAspectSelectionActions">
@@ -461,32 +457,32 @@
 	<map context="InfobarTimerButtonActions">
 		<key id="KEY_PROGRAM" mapto="timerSelection" flags="b" />
 		<key id="KEY_EDIT" mapto="timerSelection" flags="b" />
-		<key id="KEY_SLEEP" mapto="timerSelection" flags="b"/>
+		<key id="KEY_SLEEP" mapto="timerSelection" flags="b" />
 	</map>
 
 	<map context="InfobarVmodeButtonActions">
 		<key id="KEY_VMODE" mapto="vmodeSelection" flags="b" />
-		<!--key id="KEY_GREEN" mapto="vmodeSelection" flags="l" /-->
-		<key id="KEY_ANGLE" mapto="vmodeSelection" flags="m"/>
+		<!-- <key id="KEY_GREEN" mapto="vmodeSelection" flags="l" /> -->
+		<key id="KEY_ANGLE" mapto="vmodeSelection" flags="m" />
 	</map>
 
 	<map context="InfobarPiPActions">
 		<key id="KEY_SCREEN" mapto="activatePiP" flags="b" />
-		<key id="KEY_F6" mapto="activatePiP" flags="b"/>
+		<key id="KEY_F6" mapto="activatePiP" flags="b" />
 	</map>
 
 	<map context="InfobarSubserviceQuickzapActions">
 		<key id="KEY_PREVIOUS" mapto="prevSubservice" flags="m" />
-		<key id="KEY_CHANNELUP" mapto="prevSubservice" flags="m"/>
-		<key id="KEY_REWIND" mapto="prevSubservice" flags="m"/>
+		<key id="KEY_CHANNELUP" mapto="prevSubservice" flags="m" />
+		<key id="KEY_REWIND" mapto="prevSubservice" flags="m" />
 		<key id="KEY_NEXT" mapto="nextSubservice" flags="m" />
-		<key id="KEY_CHANNELDOWN" mapto="nextSubservice" flags="m"/>
-		<key id="KEY_FASTFORWARD" mapto="nextSubservice" flags="m"/>
+		<key id="KEY_CHANNELDOWN" mapto="nextSubservice" flags="m" />
+		<key id="KEY_FASTFORWARD" mapto="nextSubservice" flags="m" />
 		<key id="KEY_EXIT" mapto="exit" flags="m" />
 		<key id="KEY_ESC" mapto="exit" flags="m" />
 		<key id="KEY_TV" mapto="exit" flags="b" />
 		<device name="Lirc">
-			<key id="KEY_TV" mapto="exit" flags="m"/>
+			<key id="KEY_TV" mapto="exit" flags="m" />
 		</device>
 	</map>
 
@@ -498,9 +494,9 @@
 	<map context="TextEntryActions">
 		<key id="KEY_MUTE" mapto="deleteForward" flags="mr" />
 		<key id="KEY_NEXT" mapto="deleteForward" flags="mr" />
-		<key id="KEY_FASTFORWARD" mapto="deleteForward" flags="mr"/>
+		<key id="KEY_FASTFORWARD" mapto="deleteForward" flags="mr" />
 		<key id="KEY_PREVIOUS" mapto="deleteBackward" flags="mr" />
-		<key id="KEY_REWIND" mapto="deleteBackward" flags="mr"/>
+		<key id="KEY_REWIND" mapto="deleteBackward" flags="mr" />
 	</map>
 
 	<map context="InfobarSeekActions">
@@ -527,35 +523,35 @@
 		<key id="KEY_7" mapto="seekdef:7" flags="m" />
 		<key id="KEY_9" mapto="seekdef:9" flags="m" />
 		<device name="Lirc">
-			<key id="KEY_PLAY" mapto="playpauseService" flags="m"/>
-			<key id="KEY_RED" mapto="seekBack" flags="b"/>
-			<key id="KEY_BLUE" mapto="seekFwd" flags="b"/>
+			<key id="KEY_PLAY" mapto="playpauseService" flags="m" />
+			<key id="KEY_RED" mapto="seekBack" flags="b" />
+			<key id="KEY_BLUE" mapto="seekFwd" flags="b" />
 		</device>
 	</map>
 
 	<map context="MovielistSeekActions">
-		<key id="KEY_YELLOW" mapto="pauseService" flags="b"/>
-		<key id="KEY_GREEN" mapto="playpauseService" flags="b"/>
-		<key id="KEY_RED" mapto="seekBack" flags="b"/>
-		<key id="KEY_BLUE" mapto="seekFwd" flags="b"/>
-		<key id="KEY_RED" mapto="SeekbarBack" flags="l"/>
-		<key id="KEY_BLUE" mapto="SeekbarFwd" flags="l"/>
-		<key id="KEY_PLAYPAUSE" mapto="playpauseService" flags="m"/>
-		<key id="KEY_PAUSE" mapto="pauseService" flags="m"/>
-		<key id="KEY_PLAY" mapto="playpauseService" flags="m"/>
-		<key id="KEY_REWIND" mapto="seekBack" flags="b"/>
-		<key id="KEY_FASTFORWARD" mapto="seekFwd" flags="b"/>
-		<key id="KEY_REWIND" mapto="SeekbarBack" flags="l"/>
-		<key id="KEY_FASTFORWARD" mapto="SeekbarFwd" flags="l"/>
-		<key id="KEY_PREVIOUSSONG" mapto="seekBackManual" flags="l"/>
-		<key id="KEY_NEXTSONG" mapto="seekFwdManual" flags="l"/>
-		<key id="KEY_OK" mapto="unPauseService" flags="m"/>
-		<key id="KEY_1" mapto="seekdef:1" flags="m"/>
-		<key id="KEY_3" mapto="seekdef:3" flags="m"/>
-		<key id="KEY_4" mapto="seekdef:4" flags="m"/>
-		<key id="KEY_6" mapto="seekdef:6" flags="m"/>
-		<key id="KEY_7" mapto="seekdef:7" flags="m"/>
-		<key id="KEY_9" mapto="seekdef:9" flags="m"/>
+		<key id="KEY_YELLOW" mapto="pauseService" flags="b" />
+		<key id="KEY_GREEN" mapto="playpauseService" flags="b" />
+		<key id="KEY_RED" mapto="seekBack" flags="b" />
+		<key id="KEY_BLUE" mapto="seekFwd" flags="b" />
+		<key id="KEY_RED" mapto="SeekbarBack" flags="l" />
+		<key id="KEY_BLUE" mapto="SeekbarFwd" flags="l" />
+		<key id="KEY_PLAYPAUSE" mapto="playpauseService" flags="m" />
+		<key id="KEY_PAUSE" mapto="pauseService" flags="m" />
+		<key id="KEY_PLAY" mapto="playpauseService" flags="m" />
+		<key id="KEY_REWIND" mapto="seekBack" flags="b" />
+		<key id="KEY_FASTFORWARD" mapto="seekFwd" flags="b" />
+		<key id="KEY_REWIND" mapto="SeekbarBack" flags="l" />
+		<key id="KEY_FASTFORWARD" mapto="SeekbarFwd" flags="l" />
+		<key id="KEY_PREVIOUSSONG" mapto="seekBackManual" flags="l" />
+		<key id="KEY_NEXTSONG" mapto="seekFwdManual" flags="l" />
+		<key id="KEY_OK" mapto="unPauseService" flags="m" />
+		<key id="KEY_1" mapto="seekdef:1" flags="m" />
+		<key id="KEY_3" mapto="seekdef:3" flags="m" />
+		<key id="KEY_4" mapto="seekdef:4" flags="m" />
+		<key id="KEY_6" mapto="seekdef:6" flags="m" />
+		<key id="KEY_7" mapto="seekdef:7" flags="m" />
+		<key id="KEY_9" mapto="seekdef:9" flags="m" />
 	</map>
 
 	<map context="MediaPlayerSeekActions">
@@ -574,8 +570,8 @@
 		<key id="KEY_7" mapto="seekdef:7" flags="m" />
 		<key id="KEY_9" mapto="seekdef:9" flags="m" />
 		<device name="Lirc">
-			<key id="KEY_RED" mapto="seekBack" flags="b"/>
-			<key id="KEY_BLUE" mapto="seekFwd" flags="b"/>
+			<key id="KEY_RED" mapto="seekBack" flags="b" />
+			<key id="KEY_BLUE" mapto="seekFwd" flags="b" />
 		</device>
 	</map>
 
@@ -593,8 +589,8 @@
 		<key id="KEY_7" mapto="seekdef:7" flags="m" />
 		<key id="KEY_9" mapto="seekdef:9" flags="m" />
 		<device name="Lirc">
-			<key id="KEY_TV" mapto="timeshiftStop" flags="m"/>
-			<key id="KEY_PLAYPAUSE" mapto="timeshiftStart" flags="b"/>
+			<key id="KEY_TV" mapto="timeshiftStop" flags="m" />
+			<key id="KEY_PLAYPAUSE" mapto="timeshiftStart" flags="b" />
 		</device>
 	</map>
 
@@ -617,7 +613,7 @@
 		<key id="KEY_VIDEO" mapto="movieList" flags="b" />
 		<key id="KEY_PVR" mapto="movieList" flags="b" />
 		<key id="KEY_FILE" mapto="movieList" flags="m" />
-		<!--key id="KEY_OK" mapto="movieList" flags="b"/-->
+		<!-- <key id="KEY_OK" mapto="movieList" flags="b" /> -->
 	</map>
 
 	<map context="MoviePlayerActions">
@@ -630,21 +626,21 @@
 		<key id="KEY_PREVIOUS" mapto="movePrev" flags="b" />
 		<key id="KEY_NEXT" mapto="moveNext" flags="b" />
 		<key id="KEY_AUDIO" mapto="AudioSelection" flags="m" />
-		<key id="KEY_INFO" mapto="InfoButtonPressedLong" flags="l"/>
+		<key id="KEY_INFO" mapto="InfoButtonPressedLong" flags="l" />
 		<device name="Lirc">
-			<key id="KEY_TV" mapto="leavePlayer" flags="m"/>
-			<key id="KEY_INFO" mapto="InfoButtonPressed" flags="b"/>
-			<key id="KEY_EPG" mapto="EPGButtonPressed" flags="b"/>
-			<key id="KEY_EPG" mapto="EPGButtonPressedLong" flags="l"/>
+			<key id="KEY_TV" mapto="leavePlayer" flags="m" />
+			<key id="KEY_INFO" mapto="InfoButtonPressed" flags="b" />
+			<key id="KEY_EPG" mapto="EPGButtonPressed" flags="b" />
+			<key id="KEY_EPG" mapto="EPGButtonPressedLong" flags="l" />
 		</device>
 	</map>
 
 	<map context="InfobarCueSheetActions">
 		<key id="KEY_PREVIOUS" mapto="jumpPreviousMark" flags="m" />
-		<key id="KEY_LEFT" mapto="jumpPreviousMark" flags="m"/>
+		<key id="KEY_LEFT" mapto="jumpPreviousMark" flags="m" />
 		<key id="KEY_0" mapto="toggleMark" flags="m" />
 		<key id="KEY_NEXT" mapto="jumpNextMark" flags="m" />
-		<key id="KEY_RIGHT" mapto="jumpNextMark" flags="m"/>
+		<key id="KEY_RIGHT" mapto="jumpNextMark" flags="m" />
 	</map>
 
 	<map context="MediaPlayerCueSheetActions">
@@ -662,8 +658,8 @@
 		<key id="KEY_DOWN" mapto="prevPage" flags="m" />
 		<key id="KEY_OK" mapto="ok" flags="m" />
 		<key id="KEY_FILE" mapto="transparent" flags="m" />
-		<key id="KEY_VIDEO" mapto="transparent" flags="m"/>
-		<key id="KEY_PVR" mapto="transparent" flags="m"/>
+		<key id="KEY_VIDEO" mapto="transparent" flags="m" />
+		<key id="KEY_PVR" mapto="transparent" flags="m" />
 		<key id="KEY_GREEN" mapto="green" flags="m" />
 		<key id="KEY_YELLOW" mapto="yellow" flags="m" />
 		<key id="KEY_RED" mapto="red" flags="m" />
@@ -671,7 +667,7 @@
 		<key id="KEY_CHANNELUP" mapto="zoomMode" flags="m" />
 		<key id="KEY_CHANNELDOWN" mapto="screenMode" flags="m" />
 		<key id="KEY_HELP" mapto="hint" flags="m" />
-		<key id="KEY_F1" mapto="hint" flags="m"/>
+		<key id="KEY_F1" mapto="hint" flags="m" />
 		<key id="KEY_MENU" mapto="menu" flags="m" />
 		<key id="KEY_TEXT" mapto="exit" flags="m" />
 		<key id="KEY_EXIT" mapto="exit" flags="m" />
@@ -694,13 +690,13 @@
 	<map context="ChannelSelectBaseActions">
 		<key id="KEY_RED" mapto="showAllServices" flags="m" />
 		<key id="KEY_GREEN" mapto="showSatellites" flags="m" />
-		<key id="KEY_SAT" mapto="showSatellites" flags="m"/>
+		<key id="KEY_SAT" mapto="showSatellites" flags="m" />
 		<key id="KEY_YELLOW" mapto="showProviders" flags="m" />
 		<key id="KEY_BLUE" mapto="showFavourites" flags="m" />
 		<key id="KEY_CHANNELUP" mapto="nextBouquet" flags="m" />
-		<key id="KEY_FASTFORWARD" mapto="nextBouquet" flags="m"/>
+		<key id="KEY_FASTFORWARD" mapto="nextBouquet" flags="m" />
 		<key id="KEY_CHANNELDOWN" mapto="prevBouquet" flags="m" />
-		<key id="KEY_REWIND" mapto="prevBouquet" flags="m"/>
+		<key id="KEY_REWIND" mapto="prevBouquet" flags="m" />
 		<key id="KEY_PREVIOUS" mapto="prevMarker" flags="m" />
 		<key id="KEY_NEXT" mapto="nextMarker" flags="m" />
 		<key id="KEY_LEFT" mapto="keyLeft" flags="m" />
@@ -737,7 +733,7 @@
 
 	<map context="EPGSelectActions">
 		<key id="KEY_GREEN" mapto="timerAdd" flags="m" />
-		<key id="KEY_SLEEP" mapto="timerAdd" flags="m"/>
+		<key id="KEY_SLEEP" mapto="timerAdd" flags="m" />
 		<key id="KEY_YELLOW" mapto="yellow" flags="mr" />
 		<key id="KEY_BLUE" mapto="blue" flags="mr" />
 		<key id="KEY_RED" mapto="red" flags="m" />
@@ -758,7 +754,7 @@
 
 	<map context="GMEPGSelectActions">
 		<key id="KEY_GREEN" mapto="timerAdd" flags="m" />
-		<key id="KEY_SLEEP" mapto="timerAdd" flags="m"/>
+		<key id="KEY_SLEEP" mapto="timerAdd" flags="m" />
 		<key id="KEY_YELLOW" mapto="yellow" flags="mr" />
 		<key id="KEY_BLUE" mapto="blue" flags="b" />
 		<key id="KEY_BLUE" mapto="blue_long" flags="l" />
@@ -792,8 +788,8 @@
 		<key id="KEY_MENU" mapto="contextMenu" flags="m" />
 		<key id="KEY_PROGRAM" mapto="timerAdd" flags="m" />
 		<key id="KEY_EDIT" mapto="timerAdd" flags="m" />
-		<key id="KEY_SLEEP" mapto="timerAdd" flags="m"/>
-		<key id="KEY_EXIT" mapto="cancel" flags="m"/>
+		<key id="KEY_SLEEP" mapto="timerAdd" flags="m" />
+		<key id="KEY_EXIT" mapto="cancel" flags="m" />
 	</map>
 
 	<map context="EventViewEPGActions">
@@ -936,7 +932,7 @@
 		<key id="KEY_TV" mapto="shift_stop" flags="l" />
 		<key id="KEY_TV2" mapto="stop" flags="b" />
 		<key id="KEY_TV2" mapto="shift_stop" flags="l" />
-		<key id="KEY_EXIT" mapto="stop" flags="b"/>
+		<key id="KEY_EXIT" mapto="stop" flags="b" />
 		<key id="KEY_MENU" mapto="menu" flags="m" />
 		<key id="KEY_SPACE" mapto="menu" flags="m" />
 		<key id="KEY_2" mapto="skipListbegin" flags="m" />
@@ -1014,7 +1010,7 @@
 		<key id="KEY_PREVIOUSSONG" mapto="skip_back" flags="m" />
 		<key id="KEY_NEXTSONG" mapto="skip_forward" flags="m" />
 		<key id="KEY_SCREEN" mapto="activatePiP" flags="m" />
-		<key id="KEY_SCREEN" mapto="activatePiP_long" flags="l"/>
+		<key id="KEY_SCREEN" mapto="activatePiP_long" flags="l" />
 		<key id="KEY_PROGRAM" mapto="timer" flags="b" />
 		<key id="KEY_PROGRAM" mapto="timer_long" flags="l" />
 		<key id="KEY_EDIT" mapto="timer" flags="b" />
@@ -1044,8 +1040,8 @@
 		<key id="KEY_F2" mapto="f2_long" flags="l" />
 		<key id="KEY_F3" mapto="f3" flags="b" />
 		<key id="KEY_F3" mapto="f3_long" flags="l" />
-		<key id="KEY_F6" mapto="f6" flags="b"/>
-		<key id="KEY_F6" mapto="f6_long" flags="l"/>
+		<key id="KEY_F6" mapto="f6" flags="b" />
+		<key id="KEY_F6" mapto="f6_long" flags="l" />
 		<key id="KEY_AUX" mapto="HDMIin" flags="b" />
 		<key id="KEY_AUX" mapto="HDMIin_long" flags="l" />
 		<key id="KEY_PAGEUP" mapto="pageUp" flags="b" />
@@ -1072,24 +1068,24 @@
 		<key id="KEY_EJECTCD" mapto="ejectcd_long" flags="l" />
 		<key id="KEY_VOD" mapto="vod" flags="b" />
 		<key id="KEY_VOD" mapto="vod_long" flags="l" />
-		<key id="KEY_OPEN" mapto="open" flags="b"/>
-		<key id="KEY_OPEN" mapto="open_long" flags="l"/>
-		<key id="KEY_OPTION" mapto="option" flags="b"/>
-		<key id="KEY_OPTION" mapto="option_long" flags="l"/>
-		<key id="KEY_PC" mapto="pc" flags="b"/>
-		<key id="KEY_PC" mapto="pc_long" flags="l"/>
-		<key id="KEY_LAN" mapto="lan" flags="b"/>
-		<key id="KEY_LAN" mapto="lan_long" flags="l"/>
-		<key id="KEY_AB" mapto="prov" flags="b"/>
-		<key id="KEY_AB" mapto="prov_long" flags="l"/>
-		<key id="KEY_DIRECTORY" mapto="directory" flags="b"/>
-		<key id="KEY_DIRECTORY" mapto="directory_long" flags="l"/>
-		<key id="KEY_ZOOM" mapto="zoom" flags="b"/>
-		<key id="KEY_ZOOM" mapto="zoom_long" flags="l"/>
-		<key id="KEY_FILE" mapto="file" flags="b"/>
-		<key id="KEY_FILE" mapto="file_long" flags="l"/>
-		<key id="KEY_FILE" mapto="file" flags="m"/>
-		<key id="KEY_FIND" mapto="find" flags="m"/>
-		<key id="KEY_SLOW" mapto="slow" flags="m"/>
+		<key id="KEY_OPEN" mapto="open" flags="b" />
+		<key id="KEY_OPEN" mapto="open_long" flags="l" />
+		<key id="KEY_OPTION" mapto="option" flags="b" />
+		<key id="KEY_OPTION" mapto="option_long" flags="l" />
+		<key id="KEY_PC" mapto="pc" flags="b" />
+		<key id="KEY_PC" mapto="pc_long" flags="l" />
+		<key id="KEY_LAN" mapto="lan" flags="b" />
+		<key id="KEY_LAN" mapto="lan_long" flags="l" />
+		<key id="KEY_AB" mapto="prov" flags="b" />
+		<key id="KEY_AB" mapto="prov_long" flags="l" />
+		<key id="KEY_DIRECTORY" mapto="directory" flags="b" />
+		<key id="KEY_DIRECTORY" mapto="directory_long" flags="l" />
+		<key id="KEY_ZOOM" mapto="zoom" flags="b" />
+		<key id="KEY_ZOOM" mapto="zoom_long" flags="l" />
+		<key id="KEY_FILE" mapto="file" flags="b" />
+		<key id="KEY_FILE" mapto="file_long" flags="l" />
+		<key id="KEY_FILE" mapto="file" flags="m" />
+		<key id="KEY_FIND" mapto="find" flags="m" />
+		<key id="KEY_SLOW" mapto="slow" flags="m" />
 	</map>
 </keymap>
