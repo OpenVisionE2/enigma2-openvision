@@ -192,16 +192,17 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 	<!-- Menu / Information -->
 	<menu entryID="info_screen" level="0" text="Information" weight="20">
 		<id val="information" />
-		<item entryID="about_screen" level="0" text="About" weight="5"><screen module="About" /></item>
-		<item entryID="openvision_screen" level="0" text="Open Vision" weight="10"><screen module="About" screen="OpenVisionInformation" /></item>
-		<item entryID="device_screen" level="0" text="Devices" weight="15"><screen module="About" screen="Devices" /></item>
-		<item entryID="memory_screen" level="0" text="Memory" weight="20"><screen module="About" screen="SystemMemoryInfo" /></item>
-		<item entryID="network_screen" level="0" text="Network" weight="25"><screen module="About" screen="SystemNetworkInfo" /></item>
-		<item entryID="service_info_screen" level="1" text="Service" weight="30"><screen module="ServiceInfo" screen="ServiceInfo" /></item>
-		<item entryID="dvb_screen" level="0" text="DVB" weight="35"><screen module="About" screen="DVBInformation" /></item>
-		<item entryID="geolocation_screen" level="0" text="Geolocation" weight="40"><screen module="About" screen="Geolocation" /></item>
-		<item entryID="benchmark_screen" level="0" text="Benchmark" weight="45"><screen module="About" screen="BenchmarkInformation" /></item>
-		<item entryID="streaming_clients_info_screen" level="2" text="Streaming Clients" weight="50"><screen module="StreamingClientsInfo" /></item>
+		<item entryID="receiver_info_screen" level="0" text="Receiver" weight="5"><screen module="Information" screen="ReceiverInformation" /></item>
+		<item entryID="openvision_info_screen" level="0" text="OpenVision" weight="10"><screen module="Information" screen="ImageInformation" /></item>
+		<item entryID="tuner_info_screen" level="0" text="Tuners" weight="15"><screen module="Information" screen="TunerInformation" /></item>
+		<item entryID="device_info_screen" level="0" text="Storage" weight="20"><screen module="Information" screen="StorageInformation" /></item>
+		<item entryID="memory_info_screen" level="0" text="Memory" weight="25"><screen module="Information" screen="MemoryInformation" /></item>
+		<item entryID="network_info_screen" level="0" text="Network" weight="30"><screen module="Information" screen="NetworkInformation" /></item>
+		<item entryID="multiboot_info_screen" level="0" text="MultiBoot" weight="35"><screen module="Information" screen="MultiBootInformation" /></item>
+		<item entryID="geolocation_info_screen" level="0" text="Geolocation" weight="40"><screen module="Information" screen="GeolocationInformation" /></item>
+		<item entryID="boxbranding_info_screen" level="2" text="BoxBranding" weight="45"><screen module="Information" screen="BoxBrandingInformation" /></item>
+		<item entryID="service_info_screen" level="1" text="Service" weight="50"><screen module="ServiceInfo" screen="ServiceInfo" /></item>
+		<item entryID="streaming_clients_info_screen" level="2" text="Streaming Clients" weight="55"><screen module="StreamingClientsInfo" /></item>
 	</menu>
 
 	<!-- Menu / VCR Scart -->
