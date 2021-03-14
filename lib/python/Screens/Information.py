@@ -431,8 +431,10 @@ class ImageInformation(InformationBase):
 		if config.misc.OVupdatecheck.value:
 			try:
 				if boxbranding.getVisionVersion().startswith("10"):
+					print("[Information] Set OV URL to new OE for reading the changes.")
 					ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/openvision-development-platform/develop/meta-openvision/conf/distro/revision.conf"
 				else:
+					print("[Information] Set OV URL to old OE for reading the changes.")
 					ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/openvision-oe/develop/meta-openvision/conf/distro/revision.conf"
 				ovResponse = urlopen(ovUrl)
 				if PY2:
@@ -452,10 +454,12 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("OpenVision revision"), visionRevision))
 		info.append(formatLine("P1", _("Latest revision on github"), str(ovRevisionUpdate)))
 		if isfile("/etc/openvision/visionlanguage"):
+			print("[Information] Read /etc/openvision/visionlanguage")
 			visionLanguage = open("/etc/openvision/visionlanguage", "r").read().strip()
 			info.append(formatLine("P1", _("OpenVision language"), visionLanguage))
 		info.append(formatLine("P1", _("OpenVision module"), about.getVisionModule()))
 		if isfile("/etc/openvision/multiboot"):
+			print("[Information] Read /etc/openvision/multiboot")
 			multibootFlag = open("/etc/openvision/multiboot", "r").read().strip()
 			multibootFlag = _("Yes") if multibootFlag == "1" else _("No")
 		else:
@@ -482,9 +486,8 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Last update"), about.getUpdateDateString()))
 		info.append(formatLine("P1", _("Enigma2 (re)starts"), config.misc.startCounter.value))
 		info.append(formatLine("P1", _("Enigma2 debug level"), eGetEnigmaDebugLvl()))
-		if isfile("/etc/openvision/mediaservice"):
-			mediaService = open("/etc/openvision/mediaservice", "r").read().strip()
-			info.append(formatLine("P1", _("Media service"), mediaService.replace("enigma2-plugin-systemplugins-", "")))
+		mediaService = open("/etc/openvision/mediaservice", "r").read().strip() if isfile("/etc/openvision/mediaservice") else boxbranding.getE2Service()
+		info.append(formatLine("P1", _("Media service"), mediaService.replace("enigma2-plugin-systemplugins-", "")))
 		info.append("")
 		info.append(formatLine("H", _("Build information")))
 		info.append("")
@@ -505,9 +508,11 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("FFmpeg version"), about.getFFmpegVersionString()))
 		info.append(formatLine("P1", _("Python version"), about.getPythonVersionString()))
 		if isfile("/proc/sys/kernel/random/boot_id"):
+			print("[Information] Read /proc/sys/kernel/random/boot_id")
 			bootId = open("/proc/sys/kernel/random/boot_id", "r").read().strip()
 			info.append(formatLine("P1", _("Boot ID"), bootId))
 		if isfile("/proc/sys/kernel/random/uuid"):
+			print("[Information] Read /proc/sys/kernel/random/uuid")
 			uuId = open("/proc/sys/kernel/random/uuid", "r").read().strip()
 			info.append(formatLine("P1", _("UUID"), uuId))
 		info.append("")
@@ -528,6 +533,7 @@ class ImageInformation(InformationBase):
 		if boxbranding.getMachineUBINIZE():
 			info.append(formatLine("P1", _("UBINIZE"), boxbranding.getMachineUBINIZE()))
 		if SystemInfo["HiSilicon"]:
+			print("[Information] Read HiSilicon specific information.")
 			info.append("")
 			info.append(formatLine("H", _("HiSilicon specific information")))
 			info.append("")
@@ -635,6 +641,7 @@ class MemoryInformation(InformationBase):
 
 	def clearMemoryInformation(self):
 		eConsoleAppContainer().execute(*["/bin/sync", "/bin/sync"])
+		print("[Information] Write to /proc/sys/vm/drop_caches")
 		open("/proc/sys/vm/drop_caches", "w").write("3")
 		self.informationTimer.start(25)
 		for callback in self.onInformationUpdated:
@@ -885,6 +892,7 @@ class NetworkInformation(InformationBase):
 
 	def displayInformation(self):
 		info = []
+		print("[Information] Read /proc/sys/kernel/hostname")
 		hostname = open("/proc/sys/kernel/hostname").read().strip()
 		info.append(formatLine("H0H", _("Hostname"), hostname))
 		for interface in sorted(list(self.interfaceData.keys())):
@@ -978,6 +986,7 @@ class ReceiverInformation(InformationBase):
 		if hwSerial:
 			info.append(formatLine("P1", _("Hardware serial"), (hwSerial if hwSerial != "unknown" else about.getCPUSerial())))
 		if isfile("/proc/stb/info/release"):
+			print("[Information] Read /proc/stb/info/release")
 			hwRelease = open("/proc/stb/info/release", "r").read().strip()
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
 		info.append(formatLine("P1", _("Brand/Meta"), SystemInfo["MachineBrand"]))
@@ -1006,11 +1015,17 @@ class ReceiverInformation(InformationBase):
 		if boxRcType:
 			if boxRcType == "unknown":
 				if isfile("/usr/bin/remotecfg"):
+					print("[Information] /usr/bin/remotecfg detected.")
 					info.append(_("RC type:|%s") % _("Amlogic remote"))
 				elif isfile("/usr/sbin/lircd"):
+					print("[Information] /usr/sbin/lircd detected.")
 					info.append(_("RC type:|%s") % _("LIRC remote"))
 			else:
 				info.append(formatLine("P1", _("RC type"), boxRcType))
+		if isfile("/proc/stb/ir/rc/customcode"):
+			print("[Information] Read /proc/stb/ir/rc/customcode")
+			customCode = open("/proc/stb/ir/rc/customcode", "r").read().strip()
+			info.append(formatLine("P1", _("RC custom code"), customCode))
 		info.append(formatLine("P1", _("RC code"), boxbranding.getRCType()))
 		info.append(formatLine("P1", _("RC name"), boxbranding.getRCName()))
 		info.append(formatLine("P1", _("RC ID number"), boxbranding.getRCIDNum()))
@@ -1019,12 +1034,15 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("P1", _("Drivers version"), about.getDriverInstalledDate()))
 		info.append(formatLine("P1", _("Kernel version"), boxbranding.getKernelVersion()))
+		print("[Information] Read kernel module layout from openvision.ko")
 		moduleLayout = popen("find /lib/modules/ -type f -name 'openvision.ko' -exec modprobe --dump-modversions {} \; | grep 'module_layout' | cut -c-11").read().strip()
 		info.append(formatLine("P1", _("Kernel module layout"), (moduleLayout if moduleLayout else _("N/A"))))
 		if isfile("/proc/device-tree/amlogic-dt-id"):
+			print("[Information] Read /proc/device-tree/amlogic-dt-id")
 			deviceId = open("/proc/device-tree/amlogic-dt-id", "r").read().strip()
 			info.append(formatLine("P1", _("Device id"), deviceId))
 		if isfile("/proc/device-tree/le-dt-id"):
+			print("[Information] Read /proc/device-tree/le-dt-id")
 			givenId = open("/proc/device-tree/le-dt-id", "r").read().strip()
 			info.append(formatLine("P1", _("Given device id"), givenId))
 		info.append("")
