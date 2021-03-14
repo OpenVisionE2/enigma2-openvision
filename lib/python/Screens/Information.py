@@ -245,12 +245,12 @@ class CommitLogInformation(InformationBase):
 			branch = "?sha=" + "-".join(about.getEnigmaVersionString().split("-")[3:])
 		except Exception as err:
 			branch = ""
-		oeGitUrl = "https://api.github.com/repos/OpenVisionE2/openvision-%s/commits" % ("development-platform" if boxbranding.getVisionVersion().startswith("10") else "oe")
+		oeGitUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if boxbranding.getVisionVersion().startswith("10") else "old")
 		self.projects = [
 			("OpenVision Enigma2", "https://api.github.com/repos/OpenVisionE2/enigma2-openvision/commits%s" % branch),
-			("OpenVision OE-Alliance", oeGitUrl),
+			("OpenVision OE", oeGitUrl),
 			("Enigma2 Plugins", "https://api.github.com/repos/OpenVisionE2/enigma2-plugins/commits"),
-			("OE-Alliance Plugins", "https://api.github.com/repos/OpenVisionE2/alliance-plugins/commits"),
+			("Alliance Plugins", "https://api.github.com/repos/OpenVisionE2/alliance-plugins/commits"),
 			("OpenWebIF", "https://api.github.com/repos/OpenVisionE2/OpenWebif/commits"),
 			("OpenVision Core Plugin", "https://api.github.com/repos/OpenVisionE2/openvision-core-plugin/commits"),
 			("Backup Suite Plugin", "https://api.github.com/repos/OpenVisionE2/BackupSuite/commits"),
@@ -432,10 +432,10 @@ class ImageInformation(InformationBase):
 			try:
 				if boxbranding.getVisionVersion().startswith("10"):
 					print("[Information] Set OV URL to new OE for reading the changes.")
-					ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/openvision-development-platform/develop/meta-openvision/conf/distro/revision.conf"
+					ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/new.conf"
 				else:
 					print("[Information] Set OV URL to old OE for reading the changes.")
-					ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/openvision-oe/develop/meta-openvision/conf/distro/revision.conf"
+					ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/old.conf"
 				ovResponse = urlopen(ovUrl)
 				if PY2:
 					ovRevision = ovResponse.read()
