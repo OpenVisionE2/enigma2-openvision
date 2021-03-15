@@ -762,7 +762,7 @@ class NetworkInformation(InformationBase):
 			info.append(_("Geolocation information cannot be retrieved, please try again later."))
 			info.append("")
 			info.append(_("Access to geolocation information requires an internet connection."))
-		self.geolocationData =  info
+		self.geolocationData = info
 		for callback in self.onInformationUpdated:
 			callback()
 
