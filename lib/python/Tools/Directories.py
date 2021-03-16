@@ -1,6 +1,6 @@
 from enigma import eEnv, getDesktop
-from errno import EXDEV
-from inspect import stack
+from errno import ENOENT, EXDEV
+from inspect import getframeinfo, stack
 from os import F_OK, R_OK, W_OK, access, chmod, listdir, makedirs, mkdir, readlink, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
 from os.path import basename, dirname, exists, getsize, isdir, isfile, islink, join as pathjoin, normpath, splitext
 from re import compile
@@ -337,6 +337,40 @@ def fileContains(file, content, mode="r"):
 
 def fileHas(file, content, mode="r"):
 	return fileContains(file, content, mode)
+
+
+def fileReadLine(filename, default=None, debug=False):
+	line = None
+	try:
+		with open(filename, "r") as fd:
+			line = fd.read().strip()
+		msg = "Read"
+	except (IOError, OSError) as err:
+		if err.errno != ENOENT:  # ENOENT - No such file or directory.
+			print("[Directories] Error %d: Unable to read a line from file '%s'! (%s)" % (err.errno, filename, err.strerror))
+		line = default
+		msg = "Default"
+	if debug:  # or forceDebug:
+		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+		print("[%s] Line %d: %s '%s' from file '%s'." % (source, stack()[1][0].f_lineno, msg, line, filename))
+	return line
+
+
+def fileReadLines(filename, default=None, debug=False):
+	lines = None
+	try:
+		with open(filename, "r") as fd:
+			lines = fd.read().splitlines()
+		msg = "Read"
+	except (IOError, OSError) as err:
+		if err.errno != ENOENT:  # ENOENT - No such file or directory.
+			print("[Directories] Error %d: Unable to read lines from file '%s'! (%s)" % (err.errno, filename, err.strerror))
+		lines = default
+		msg = "Default"
+	if debug:  # or forceDebug:
+		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+		print("[%s] Line %d: %s %d lines from file '%s'." % (source, stack()[1][0].f_lineno, msg, len(lines), filename))
+	return lines
 
 
 def getRecordingFilename(basename, dirname=None):
