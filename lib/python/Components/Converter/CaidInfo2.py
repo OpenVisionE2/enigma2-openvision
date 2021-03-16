@@ -541,7 +541,7 @@ class CaidInfo2(Poll, Converter, object):
 								item[1] = item[1].strip("\n")
 							elif item[0] == "provider":
 								item[1] = item[1].strip("\n")
-							elif item[0][:2] == 'cw'or item[0] == 'ChID' or item[0] == "Service":
+							elif item[0][:2] == 'cw' or item[0] == 'ChID' or item[0] == "Service":
 								pass
 							#mgcamd new_oscam block
 							elif item[0] == "source":

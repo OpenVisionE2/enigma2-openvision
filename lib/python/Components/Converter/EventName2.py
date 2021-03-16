@@ -68,7 +68,7 @@ class EventName2(Converter, object):
 			return event.getShortDescription()
 		elif self.type is self.EXTENDED_DESCRIPTION:
 			text = event.getShortDescription()
-			if text and not text[-1] is'\n' and not text[-1] is ' ':
+			if text and not text[-1] is '\n' and not text[-1] is ' ':
 				text += ' '
 			return text + event.getExtendedDescription() or event.getEventName()
 		elif self.type is self.FULL_DESCRIPTION:
