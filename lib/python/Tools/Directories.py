@@ -2,13 +2,12 @@ from enigma import eEnv, getDesktop
 from errno import EXDEV
 from inspect import stack
 from os import F_OK, R_OK, W_OK, access, chmod, listdir, makedirs, mkdir, readlink, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
-from os.path import basename, dirname, exists, getsize, isdir, isfile, islink, ismount, join as pathjoin, normpath, splitext
+from os.path import basename, dirname, exists, getsize, isdir, isfile, islink, join as pathjoin, normpath, splitext
 from re import compile
 from six import PY2
 from stat import S_IMODE
 
 pathExists = exists
-isMount = ismount  # Only used in OpenATV /lib/python/Plugins/SystemPlugins/NFIFlash/downloader.py.
 
 SCOPE_TRANSPONDERDATA = 0
 SCOPE_SYSETC = 1

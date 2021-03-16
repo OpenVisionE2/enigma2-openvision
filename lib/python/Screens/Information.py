@@ -250,7 +250,7 @@ class CommitLogInformation(InformationBase):
 			("OpenVision Enigma2", "https://api.github.com/repos/OpenVisionE2/enigma2-openvision/commits%s" % branch),
 			("OpenVision OE", oeGitUrl),
 			("Enigma2 Plugins", "https://api.github.com/repos/OpenVisionE2/enigma2-plugins/commits"),
-			("Alliance Plugins", "https://api.github.com/repos/OpenVisionE2/alliance-plugins/commits"),
+			("Extra Plugins", "https://api.github.com/repos/OpenVisionE2/extra-plugins/commits"),
 			("OpenWebIF", "https://api.github.com/repos/OpenVisionE2/OpenWebif/commits"),
 			("OpenVision Core Plugin", "https://api.github.com/repos/OpenVisionE2/openvision-core-plugin/commits"),
 			("Backup Suite Plugin", "https://api.github.com/repos/OpenVisionE2/BackupSuite/commits"),
