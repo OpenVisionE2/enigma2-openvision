@@ -36,11 +36,11 @@ python:
   - "2.7"
 
 git:
-  depth: 1
+  depth: 10
 
 before_install:
-    - pip install --upgrade pip tox six
-    - pip3 install --upgrade pip tox six
+    - pip install --upgrade pip tox six autopep8
+    - pip3 install --upgrade pip tox six autopep8
     - eval "${MATRIX_EVAL}"
 
 script:
@@ -80,3 +80,6 @@ script:
 - python -m compileall .
 - find . -type f -name "*.po" -exec msgfmt {} -o {}.mo \;
 - echo done!
+
+after_success:
+- ./build.sh
