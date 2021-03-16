@@ -356,6 +356,17 @@ def fileReadLine(filename, default=None, debug=False):
 	return line
 
 
+def fileWriteLine(filename, line, debug=False):
+	try:
+		with open(filename, "w") as fd:
+			fd.write(line)
+	except (IOError, OSError) as err:
+		print("[Directories] Error %d: Unable to write a line to file '%s'! (%s)" % (err.errno, filename, err.strerror))
+	if debug:  # or forceDebug:
+		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+		print("[%s] Line %d: Wrote '%s' to file '%s'." % (source, stack()[1][0].f_lineno, line, filename))
+
+
 def fileReadLines(filename, default=None, debug=False):
 	lines = None
 	try:
@@ -371,6 +382,20 @@ def fileReadLines(filename, default=None, debug=False):
 		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
 		print("[%s] Line %d: %s %d lines from file '%s'." % (source, stack()[1][0].f_lineno, msg, len(lines), filename))
 	return lines
+
+
+def fileWriteLines(filename, lines, debug=False):
+	try:
+		with open(filename, "w") as fd:
+			if isinstance(lines, list):
+				lines.append("")
+				lines = "\n".join(lines)
+			fd.write(lines)
+	except (IOError, OSError) as err:
+		print("[Directories] Error %d: Unable to write lines to file '%s'! (%s)" % (err.errno, filename, err.strerror))
+	if debug:  # or forceDebug:
+		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+		print("[%s] Line %d: Wrote '%s' to file '%s'." % (source, stack()[1][0].f_lineno, len(lines.split()), filename))
 
 
 def getRecordingFilename(basename, dirname=None):
