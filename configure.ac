@@ -428,6 +428,7 @@ if test "$BOXBRAND" == "rpi"; then
 	RPI_CFLAGS=" $LIBNL_CFLAGS"
 	CXXFLAGS+="$RPI_CFLAGS"
 	AC_DEFINE(HAVE_RASPBERRYPI, 1,[enable rpi specific stuff])
+	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi
 
 AM_CONDITIONAL(DM4KGEN, test "$STBPLATFORM" == "dm4kgen")
