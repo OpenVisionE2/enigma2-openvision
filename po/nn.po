@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 16:21+0330\n"
+"POT-Creation-Date: 2021-03-19 14:49+0330\n"
 "PO-Revision-Date: 2013-10-23 19:15+0100\n"
 "Last-Translator: andy1 <dmmm8000pvr@gmail.com>\n"
 "Language-Team: none\n"
@@ -16,12 +16,6 @@ msgstr ""
 "X-Poedit-SourceCharset: iso-8859-15\n"
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,-1,31,1959,-1,-1,-1\n"
-
-#, python-format
-msgid ""
-"\n"
-" %s "
-msgstr ""
 
 #
 msgid ""
@@ -995,6 +989,10 @@ msgid ""
 msgstr ""
 
 #, python-format
+msgid "%s  -  Scope: %s"
+msgstr ""
+
+#, python-format
 msgid "%s %s free disk space"
 msgstr "%s %s ledig diskplass"
 
@@ -1066,9 +1064,6 @@ msgstr ""
 #, fuzzy
 msgid "( All readers)"
 msgstr "Alle aldre"
-
-msgid "(Latest revision on github: "
-msgstr ""
 
 #
 #, fuzzy
@@ -1176,8 +1171,14 @@ msgstr ""
 msgid "0"
 msgstr ""
 
+msgid "0 (,?!)"
+msgstr ""
+
 #
 msgid "1"
+msgstr ""
+
+msgid "1 ( .:)"
 msgstr ""
 
 #
@@ -1277,6 +1278,12 @@ msgstr ""
 msgid "2"
 msgstr ""
 
+msgid "2 (ABC)"
+msgstr ""
+
+msgid "2 (abc)"
+msgstr ""
+
 msgid "20 MB/s"
 msgstr ""
 
@@ -1305,6 +1312,12 @@ msgstr ""
 
 #
 msgid "3"
+msgstr ""
+
+msgid "3 (DEF)"
+msgstr ""
+
+msgid "3 (def)"
 msgstr ""
 
 #
@@ -1339,6 +1352,12 @@ msgstr "3d valg"
 
 #
 msgid "4"
+msgstr ""
+
+msgid "4 (GHI)"
+msgstr ""
+
+msgid "4 (ghi)"
 msgstr ""
 
 msgid "40%"
@@ -1381,6 +1400,12 @@ msgstr ""
 msgid "5"
 msgstr ""
 
+msgid "5 (JKL)"
+msgstr ""
+
+msgid "5 (jkl)"
+msgstr ""
+
 msgid "50 MB/s"
 msgstr ""
 
@@ -1391,11 +1416,23 @@ msgstr ""
 msgid "6"
 msgstr ""
 
+msgid "6 (MNO)"
+msgstr ""
+
+msgid "6 (mno)"
+msgstr ""
+
 msgid "60%"
 msgstr ""
 
 #
 msgid "7"
+msgstr ""
+
+msgid "7 (PQRS)"
+msgstr ""
+
+msgid "7 (pqrs)"
 msgstr ""
 
 msgid "70%"
@@ -1409,6 +1446,12 @@ msgstr ""
 
 #
 msgid "8"
+msgstr ""
+
+msgid "8 (TUV)"
+msgstr ""
+
+msgid "8 (tuv)"
 msgstr ""
 
 msgid "8 bit"
@@ -1425,6 +1468,12 @@ msgstr ""
 
 #
 msgid "9"
+msgstr ""
+
+msgid "9 (WXYZ)"
+msgstr ""
+
+msgid "9 (wxyz)"
 msgstr ""
 
 msgid "90%"
@@ -1633,14 +1682,15 @@ msgstr "PiP-bilde i bilde oppsett"
 msgid "AGC:"
 msgstr ""
 
-msgid "ANNEX-A: "
+msgid "ANNEX-A"
 msgstr ""
 
-msgid "ANNEX-B: "
+msgid "ANNEX-B"
 msgstr ""
 
-msgid "ANNEX-C: "
-msgstr ""
+#, fuzzy
+msgid "ANNEX-C"
+msgstr "DVB-C VEDLEGG C"
 
 msgid "ARM"
 msgstr ""
@@ -1658,6 +1708,9 @@ msgid "ATSC"
 msgstr ""
 
 msgid "ATSC provider"
+msgstr ""
+
+msgid "AUX"
 msgstr ""
 
 #
@@ -1681,8 +1734,16 @@ msgstr "Om"
 
 #
 #, fuzzy
-msgid "About Information"
-msgstr "Informasjon"
+msgid "Access point"
+msgstr "Tilgangspunkt:"
+
+#, fuzzy
+msgid "Access to geolocation information requires an internet connection."
+msgstr "Mottakeren mangler internettforbindelse"
+
+#, fuzzy, python-format
+msgid "Access to the %s commit logs requires an internet connection."
+msgstr "Mottakeren mangler internettforbindelse"
 
 #
 msgid "Accesspoint:"
@@ -2088,12 +2149,12 @@ msgstr ""
 msgid "An empty filename is illegal."
 msgstr "Et tomt filnavn er ikke tillatt"
 
-#, fuzzy
-msgid "An error occurred - Please try again later"
-msgstr "Det finnes ingen nye oppdateringer. Vennligst prøv igjen senere."
-
 msgid "An error occurred while downloading the packetlist. Please try again."
 msgstr "En feil oppstod under nedlasting av programvare. Vennligst prøv igjen."
+
+#, fuzzy, python-format
+msgid "An error occurred, error code %d, please try again later."
+msgstr "Det finnes ingen nye oppdateringer. Vennligst prøv igjen senere."
 
 #
 msgid "An unknown error occurred!"
@@ -2283,6 +2344,11 @@ msgid "Ask user (with default as 'Yes')"
 msgstr ""
 
 #
+#, fuzzy
+msgid "Aspect"
+msgstr "Sideforhold"
+
+#
 msgid "Aspect ratio"
 msgstr "Sideforhold"
 
@@ -2439,6 +2505,10 @@ msgstr "Auto fokus"
 
 msgid "Auto focus commencing ..."
 msgstr "Auto fokus begynner ..."
+
+#, fuzzy
+msgid "Auto install log"
+msgstr "Installasjonen er ferdig"
 
 msgid "Auto play blu-ray file"
 msgstr ""
@@ -2681,6 +2751,11 @@ msgstr ""
 msgid "Benchmark Information"
 msgstr "Informasjon"
 
+#
+#, fuzzy
+msgid "Benchmark for"
+msgstr "Informasjon"
+
 #, fuzzy
 msgid "Benchmark information"
 msgstr "Programvareadministrasjon"
@@ -2696,6 +2771,11 @@ msgstr ""
 
 msgid "Big PiP"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Bit rate"
+msgstr "Bithastighet:"
 
 #
 #, fuzzy
@@ -2752,8 +2832,15 @@ msgstr ""
 msgid "Boost green"
 msgstr "grønn"
 
-msgid "Boot ID: "
-msgstr ""
+#
+#, fuzzy
+msgid "Boot ID"
+msgstr "Sortere tid"
+
+#
+#, fuzzy
+msgid "Boot information"
+msgstr "Informasjon"
 
 #
 #, fuzzy
@@ -2786,7 +2873,21 @@ msgstr ""
 msgid "Bouvet Island"
 msgstr ""
 
-msgid "Brand/Meta: "
+#
+#, fuzzy
+msgid "BoxBranding"
+msgstr "Tar opp"
+
+#
+#, fuzzy
+msgid "BoxBranding Information"
+msgstr "Informasjon"
+
+#, fuzzy
+msgid "BoxBranding information for"
+msgstr "Programvareadministrasjon"
+
+msgid "Brand/Meta"
 msgstr ""
 
 msgid "Brazil"
@@ -2807,6 +2908,10 @@ msgstr "Lysstyrke"
 msgid "British Indian Ocean Territory"
 msgstr ""
 
+#, fuzzy
+msgid "Broadcast address"
+msgstr "kringkasting/presse"
+
 msgid "Broadcom"
 msgstr ""
 
@@ -2817,13 +2922,13 @@ msgstr ""
 msgid "Buffering %d%%"
 msgstr ""
 
-msgid "Buffers:"
+msgid "Buffers"
 msgstr ""
 
 #
 #, fuzzy
-msgid "Build date: "
-msgstr "Bithastighet:"
+msgid "Build information"
+msgstr "Informasjon"
 
 #, fuzzy
 msgid "Bulgaria"
@@ -2868,10 +2973,10 @@ msgstr "Som standard vil SNR (signalstyrke) vises i dB (desibel) hvis tuneren st
 msgid "Bypass HDMI EDID checking"
 msgstr ""
 
-msgid "Bytes received:"
+msgid "Bytes received"
 msgstr ""
 
-msgid "Bytes sent:"
+msgid "Bytes sent"
 msgstr ""
 
 #
@@ -2925,16 +3030,16 @@ msgstr ""
 msgid "CIFS/Samba"
 msgstr ""
 
-msgid "CPU architecture: "
+msgid "CPU"
 msgstr ""
 
-msgid "CPU benchmark: "
+msgid "CPU architecture"
 msgstr ""
 
-msgid "CPU brand: "
+msgid "CPU benchmark"
 msgstr ""
 
-msgid "CPU: "
+msgid "CPU brand"
 msgstr ""
 
 #
@@ -2955,7 +3060,7 @@ msgstr ""
 msgid "Cache thumbnails"
 msgstr "Mellomlagre miniatyrbilder"
 
-msgid "Cached:"
+msgid "Cached"
 msgstr ""
 
 msgid "Calculate"
@@ -2963,6 +3068,9 @@ msgstr "Kalkulere"
 
 msgid "Calculate all positions"
 msgstr "Kalkulere alle posisjoner"
+
+msgid "Calculating benchmark..."
+msgstr ""
 
 msgid "Calculation complete"
 msgstr "Kalkulasjonen er ferdig"
@@ -3058,6 +3166,11 @@ msgid "Capabilities: "
 msgstr ""
 
 #
+#, fuzzy
+msgid "Capacity"
+msgstr "Kapasitet: "
+
+#
 msgid "Capacity: "
 msgstr "Kapasitet: "
 
@@ -3133,6 +3246,16 @@ msgstr ""
 
 #
 msgid "Channel"
+msgstr "Kanal"
+
+#
+#, fuzzy
+msgid "Channel +"
+msgstr "Kanal"
+
+#
+#, fuzzy
+msgid "Channel -"
 msgstr "Kanal"
 
 msgid "Channel Info"
@@ -3336,7 +3459,7 @@ msgstr "Sirkulær høyre"
 
 #
 #, fuzzy
-msgid "City: "
+msgid "City"
 msgstr "Kapasitet: "
 
 #, fuzzy
@@ -3362,6 +3485,9 @@ msgstr "Tøm logg"
 #
 msgid "Clear playlist"
 msgstr "Tøm spilliste"
+
+msgid "Clear the virtual memory caches"
+msgstr ""
 
 #, python-format
 msgid "Client Info ( NCam-Version: %s )"
@@ -3402,6 +3528,14 @@ msgstr "Lukke"
 
 msgid "Close PiP with 'exit' button"
 msgstr "Slå av PiP (bilde i bilde) med exit knapp"
+
+#
+#, fuzzy
+msgid "Close the screen"
+msgstr "Lukke navnevalg"
+
+msgid "Close the screen and exit all menus"
+msgstr ""
 
 #
 msgid "Close title selection"
@@ -3477,8 +3611,25 @@ msgstr "Kommando rekkefølge"
 msgid "Command type"
 msgstr "Kommando rekkefølge"
 
+#
+#, fuzzy
+msgid "Commit Information"
+msgstr "Informasjon"
+
+#
+#, fuzzy
+msgid "Commit Information Actions"
+msgstr "Informasjon"
+
+msgid "Commit Logs"
+msgstr ""
+
 msgid "Commit info"
 msgstr ""
+
+#, fuzzy
+msgid "Common Information Actions"
+msgstr "Velg sikkerhetskopi"
 
 #
 msgid "Common Interface"
@@ -3502,8 +3653,10 @@ msgstr ""
 msgid "Compact flash"
 msgstr "Kompakt flash minne"
 
-msgid "Compiled by: "
-msgstr ""
+#
+#, fuzzy
+msgid "Compiled by"
+msgstr "Komplett"
 
 #
 msgid "Complete"
@@ -3994,6 +4147,10 @@ msgstr "Koblet til"
 msgid "Connected transcoding, limit - no PiP!"
 msgstr ""
 
+#, fuzzy
+msgid "Connection information"
+msgstr "Programvareadministrasjon"
+
 msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
 
@@ -4013,8 +4170,20 @@ msgstr ""
 msgid "Content does not fit on DVD!"
 msgstr "Innholdet passer ikke på DVD!"
 
+#
 #, fuzzy
-msgid "Continent: "
+msgid "Context / Favourites"
+msgstr "Favorittliste"
+
+msgid "Context / Plugins"
+msgstr ""
+
+#, fuzzy
+msgid "Context / Video Mode"
+msgstr "Bildevisning"
+
+#, fuzzy
+msgid "Continent"
 msgstr "Fortsett"
 
 msgid "Continue"
@@ -4062,6 +4231,10 @@ msgstr "Kopiere til kanallister"
 msgid "Copying files"
 msgstr "Lange filnavn"
 
+#, python-format
+msgid "Copyright %s 2018-%s Team OpenVision"
+msgstr ""
+
 msgid "Costa Rica"
 msgstr ""
 
@@ -4103,11 +4276,11 @@ msgstr "Programvareadministrasjon"
 msgid "Country for EPG event rating information"
 msgstr ""
 
-#, fuzzy
-msgid "Country: "
-msgstr "Montere"
-
 msgid "Cover dashed flickering line for this service"
+msgstr ""
+
+#, python-format
+msgid "Crash log '%s' (%d/%d)"
 msgstr ""
 
 #
@@ -4163,7 +4336,7 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "Currency: "
+msgid "Currency"
 msgstr "Gjeldende verdi:"
 
 #
@@ -4177,6 +4350,11 @@ msgstr "Nyheter aktuelle saker"
 
 msgid "Current CEC address"
 msgstr "Gjeldende CEC adresse"
+
+#
+#, fuzzy
+msgid "Current crash log"
+msgstr "Gjeldende transponder"
 
 msgid "Current device: "
 msgstr "Gjeldende enhet:"
@@ -4212,9 +4390,6 @@ msgstr "Gjeldende transponder"
 #
 msgid "Current value: "
 msgstr "Gjeldende verdi:"
-
-msgid "Currently the commit log cannot be retrieved - please try later again"
-msgstr ""
 
 #
 #, fuzzy
@@ -4306,24 +4481,16 @@ msgstr ""
 msgid "DUAL LAYER DVD"
 msgstr "To lags DVD"
 
-msgid "DVB"
+msgid "DVB API"
 msgstr ""
 
 #
 #, fuzzy
-msgid "DVB API version: "
+msgid "DVB API version"
 msgstr "Linuxkjerne versjon: "
-
-msgid "DVB API: "
-msgstr ""
 
 msgid "DVB CI Delay"
 msgstr ""
-
-#
-#, fuzzy
-msgid "DVB Information"
-msgstr "Informasjon"
 
 msgid "DVB Subtitles PID & lang"
 msgstr ""
@@ -4358,10 +4525,6 @@ msgstr ""
 msgid "DVB-C/-T/-S"
 msgstr ""
 
-#, fuzzy
-msgid "DVB-C: "
-msgstr "DVB-C VEDLEGG C"
-
 #
 msgid "DVB-S"
 msgstr ""
@@ -4376,9 +4539,6 @@ msgstr ""
 msgid "DVB-S2"
 msgstr ""
 
-msgid "DVB-S: "
-msgstr ""
-
 msgid "DVB-T"
 msgstr ""
 
@@ -4391,7 +4551,7 @@ msgstr ""
 msgid "DVB-T2"
 msgstr ""
 
-msgid "DVB-T: "
+msgid "DVD"
 msgstr ""
 
 msgid "DVD Burn"
@@ -4583,6 +4743,10 @@ msgstr ""
 msgid "Dayname Year/MM/DD"
 msgstr ""
 
+#, python-format
+msgid "Debug log '%s' (%d/%d)"
+msgstr ""
+
 msgid "Debug log time format *"
 msgstr ""
 
@@ -4717,6 +4881,16 @@ msgstr "Slette fil"
 
 #
 #, fuzzy
+msgid "Delete all log files"
+msgstr "Slette fil"
+
+#
+#, fuzzy
+msgid "Delete all logfiles"
+msgstr "Slette fil"
+
+#
+#, fuzzy
 msgid "Delete all the text"
 msgstr "Slette oppføring i spilliste"
 
@@ -4744,6 +4918,11 @@ msgid "Delete image"
 msgstr "Slette fil"
 
 #
+#, fuzzy
+msgid "Delete logfile"
+msgstr "Slette fil"
+
+#
 msgid "Delete playlist entry"
 msgstr "Slette oppføring i spilliste"
 
@@ -4756,6 +4935,11 @@ msgstr ""
 
 msgid "Delete the character under the text cursor"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Delete the currently displayed log file"
+msgstr "Slette den valgte tittelen"
 
 msgid "Delete timer"
 msgstr ""
@@ -4815,21 +4999,27 @@ msgid "Detect next boxes before standby"
 msgstr ""
 
 #
-msgid "Detected HDD:"
+#, fuzzy
+msgid "Detected HDDs"
 msgstr "Gjenkjent lagring:"
 
 #
-msgid "Detected NIMs:"
+#, fuzzy
+msgid "Detected NIMs"
+msgstr "Gjenkjent modul:"
+
+#, fuzzy
+msgid "Detected network servers"
+msgstr "Nettverkstest:"
+
+#
+#, fuzzy
+msgid "Detected storage devices"
 msgstr "Gjenkjent modul:"
 
 #
 #, fuzzy
-msgid "Detected devices:"
-msgstr "Gjenkjent modul:"
-
-#
-#, fuzzy
-msgid "Detected tuners:"
+msgid "Detected tuners"
 msgstr "Gjenkjent modul:"
 
 #
@@ -4837,13 +5027,8 @@ msgstr "Gjenkjent modul:"
 msgid "Device"
 msgstr "Kanal"
 
-#
 #, fuzzy
-msgid "Device Information"
-msgstr "Informasjon"
-
-#, fuzzy
-msgid "Device id: "
+msgid "Device id"
 msgstr "Enhetsnavn:"
 
 msgid "Device mounts"
@@ -4851,11 +5036,6 @@ msgstr ""
 
 msgid "Devicename:"
 msgstr "Enhetsnavn:"
-
-#
-#, fuzzy
-msgid "Devices"
-msgstr "Kanaler"
 
 msgid "DiSEqC"
 msgstr "DiSEqC (Digital Satellite Equipment Control)"
@@ -4957,6 +5137,9 @@ msgstr "Deaktivert"
 msgid "Disabled in configuration"
 msgstr "Innstilling for opptaksliste"
 
+msgid "Disabled or WPA/WPA2"
+msgstr ""
+
 msgid "Disk space to reserve for recordings (in GB)"
 msgstr "Diskplass avsatt til opptak (i GB)"
 
@@ -4999,7 +5182,20 @@ msgstr "Skjerm og oppsett"
 msgid "Display message before playing next movie"
 msgstr "Vis melding før neste avspilling starter"
 
+msgid "Display next commit log"
+msgstr ""
+
+msgid "Display next system information screen"
+msgstr ""
+
 msgid "Display oscam information."
+msgstr ""
+
+#, fuzzy
+msgid "Display previous commit log"
+msgstr "Spille siste"
+
+msgid "Display previous system information screen"
 msgstr ""
 
 msgid "Display selection list as a selection menu"
@@ -5015,10 +5211,6 @@ msgstr "Vis EIT nå/neste på informasjonslinjen"
 
 msgid "Display the virtual keyboard for data entry"
 msgstr ""
-
-#, fuzzy
-msgid "Display type: "
-msgstr "Frontpanel"
 
 #
 #, fuzzy
@@ -5156,6 +5348,16 @@ msgstr ""
 msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Vil du brenne denne samlingen pål DVD?"
 
+#
+#, fuzzy
+msgid "Do you want to delete all log files?"
+msgstr "Vil du legge til en kanalliste?"
+
+#
+#, fuzzy
+msgid "Do you want to delete this log file?"
+msgstr "Er du sikker på at du vil slette %s"
+
 #, fuzzy, python-format
 msgid ""
 "Do you want to flash image\n"
@@ -5188,9 +5390,6 @@ msgstr ""
 
 msgid "Do you want to reboot your receiver?"
 msgstr "Vil du starte mottakeren på nytt?"
-
-msgid "Do you want to remove all the crash logfiles"
-msgstr ""
 
 #
 msgid "Do you want to remove the package:\n"
@@ -5273,7 +5472,8 @@ msgstr ""
 msgid "Don't zap and remove timer"
 msgstr ""
 
-msgid "Donate: "
+#, python-format
+msgid "Donate at %s"
 msgstr ""
 
 msgid "Done"
@@ -5285,6 +5485,10 @@ msgid "Done - Installed, updated or removed %d package (%s)"
 msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Ferdig - Installert, oppdatert eller fjernet %d pakke (%s)"
 msgstr[1] "Ferdig - Installert, oppdatert eller fjernet %d pakker (%s)"
+
+#, fuzzy
+msgid "Down"
+msgstr "AC3 blanding"
 
 #
 msgid "Download plugins"
@@ -5319,9 +5523,13 @@ msgstr "AC3 blanding"
 msgid "Drama"
 msgstr "film/drama"
 
+#, fuzzy
+msgid "Driver and kernel information"
+msgstr "Programvareadministrasjon"
+
 #
 #, fuzzy
-msgid "Drivers version: "
+msgid "Drivers version"
 msgstr "Linuxkjerne versjon: "
 
 #, fuzzy
@@ -5332,6 +5540,9 @@ msgstr "slett valgt satellitt"
 #, fuzzy
 msgid "Dual Mode"
 msgstr "Type"
+
+msgid "Duplex"
+msgstr ""
 
 msgid "Dutch"
 msgstr "Nederlandsk"
@@ -5742,27 +5953,32 @@ msgid "English"
 msgstr "Engelsk"
 
 #
-#, fuzzy, python-format
-msgid "Enigma2 (re)starts: %d\n"
+#, fuzzy
+msgid "Enigma2 (re)starts"
 msgstr "Linuxkjerne versjon: "
 
-#, python-format
-msgid "Enigma2 debug level: %d\n"
-msgstr ""
+#
+#, fuzzy
+msgid "Enigma2 debug level"
+msgstr "standard"
 
 #
 #, fuzzy
 msgid "Enigma2 default"
 msgstr "standard"
 
+#, fuzzy
+msgid "Enigma2 information"
+msgstr "Programvareadministrasjon"
+
 #
 #, fuzzy
-msgid "Enigma2 revision: "
+msgid "Enigma2 revision"
 msgstr "Linuxkjerne versjon: "
 
 #
 #, fuzzy
-msgid "Enigma2 version: "
+msgid "Enigma2 version"
 msgstr "Linuxkjerne versjon: "
 
 msgid "Enigmalight"
@@ -5868,10 +6084,22 @@ msgstr "Datastrøm"
 msgid "Error"
 msgstr "Feil"
 
+#, python-format
+msgid "Error %d: Log file '%s' wasn't deleted!  (%s)"
+msgstr ""
+
+#, python-format
+msgid "Error %d: The logfile '%s' could not be opened.  (%s)"
+msgstr ""
+
 #
 #, fuzzy, python-format
 msgid "Error %s"
 msgstr "Feil"
+
+#, python-format
+msgid "Error '%s' encountered retrieving the %s commit logs!"
+msgstr ""
 
 msgid "Error code"
 msgstr "Feil kode"
@@ -6167,6 +6395,9 @@ msgstr ""
 msgid "F1"
 msgstr ""
 
+msgid "F1 / Help"
+msgstr ""
+
 msgid "F2"
 msgstr ""
 
@@ -6220,13 +6451,16 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "FFmpeg version: "
+msgid "FFmpeg version"
 msgstr "Linuxkjerne versjon: "
 
 msgid "FHD"
 msgstr ""
 
-msgid "FPU: "
+msgid "FLASH"
+msgstr ""
+
+msgid "FPU"
 msgstr ""
 
 msgid "FSBL Update Check"
@@ -6256,15 +6490,11 @@ msgid "FTP setup"
 msgstr "PiP-bilde i bilde oppsett"
 
 #, fuzzy
-msgid "Factory RC type: "
-msgstr "Gjenopprette mottaker"
-
-#, fuzzy
 msgid "Factory Reset"
 msgstr "Gjenopprette mottaker"
 
 #, fuzzy
-msgid "Factory release: "
+msgid "Factory release"
 msgstr "Gjenopprette mottaker"
 
 msgid "Fade the infobar when hiding"
@@ -6360,6 +6590,11 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Hurtig DiSEqC"
 
+#
+#, fuzzy
+msgid "Fast Forward"
+msgstr "Framoverspolings hastigheter"
+
 msgid "Fast epoch"
 msgstr "Hurtig epoch"
 
@@ -6384,10 +6619,13 @@ msgstr "Favorittliste"
 msgid "Favourites"
 msgstr "Favorittliste"
 
-msgid "Feed URL: "
+msgid "Feed URL"
 msgstr ""
 
 msgid "Fiji"
+msgstr ""
+
+msgid "File List"
 msgstr ""
 
 msgid "File appears to be busy.\n"
@@ -6447,15 +6685,11 @@ msgid "Fixed X11 font (SD)"
 msgstr ""
 
 #, fuzzy
-msgid "Flash"
-msgstr "Flash"
-
-#, fuzzy
 msgid "Flash Image"
 msgstr "Flash"
 
 #, fuzzy
-msgid "Flash type: "
+msgid "Flash type"
 msgstr "Flash"
 
 #, fuzzy
@@ -6522,16 +6756,17 @@ msgstr "Rammestørrelse i fullvisning"
 msgid "France"
 msgstr "romantikk"
 
-msgid "Free memory:"
+msgid "Free"
 msgstr ""
 
-msgid "Free swap:"
+#, fuzzy
+msgid "Free flash"
+msgstr "Flash"
+
+msgid "Free memory"
 msgstr ""
 
-msgid "Free:"
-msgstr ""
-
-msgid "Free: "
+msgid "Free swap"
 msgstr ""
 
 #
@@ -6593,6 +6828,9 @@ msgstr "Fra:"
 msgid "Front Panel Display"
 msgstr ""
 
+msgid "Front panel type"
+msgstr ""
+
 #, fuzzy, python-format
 msgid ""
 "Front panel your %s %s will be updated\n"
@@ -6603,8 +6841,8 @@ msgstr ""
 "Dette kan ta flere minutter"
 
 #
-#, fuzzy, python-format
-msgid "Front processor version: %s"
+#, fuzzy
+msgid "Front processor version"
 msgstr "Linuxkjerne versjon: "
 
 msgid "Full Range RGB"
@@ -6625,6 +6863,26 @@ msgstr "Maksimal gjennomsiktighet"
 msgid "Full view resolution"
 msgstr "Fullskjermsoppløsning"
 
+#
+#, fuzzy
+msgid "Function 1"
+msgstr "Kommunikasjon"
+
+#
+#, fuzzy
+msgid "Function 2"
+msgstr "Kommunikasjon"
+
+#
+#, fuzzy
+msgid "Function 3"
+msgstr "Kommunikasjon"
+
+#
+#, fuzzy
+msgid "Function 4"
+msgstr "Kommunikasjon"
+
 msgid "Function of OK button"
 msgstr "Funksjon for OK knapp"
 
@@ -6637,14 +6895,12 @@ msgstr ""
 msgid "G"
 msgstr ""
 
-#
-#, fuzzy
-msgid "GB"
-msgstr "RGB"
+msgid "GIGA"
+msgstr ""
 
 #
 #, fuzzy
-msgid "GStreamer version: "
+msgid "GStreamer version"
 msgstr "Linuxkjerne versjon: "
 
 #, fuzzy
@@ -6707,9 +6963,8 @@ msgstr ""
 msgid "Geolocation has been used to set the time zone."
 msgstr ""
 
-#, fuzzy
-msgid "Geolocation information"
-msgstr "Programvareadministrasjon"
+msgid "Geolocation information cannot be retrieved, please try again later."
+msgstr ""
 
 #, fuzzy
 msgid "Geolocation is not available."
@@ -6740,8 +6995,11 @@ msgstr ""
 msgid "GigaBlue Black"
 msgstr ""
 
+msgid "GitHub commit"
+msgstr ""
+
 #, fuzzy
-msgid "Given device id: "
+msgid "Given device id"
 msgstr "Gjeldende enhet:"
 
 msgid "Go down the list"
@@ -6836,7 +7094,7 @@ msgstr "Gå til:"
 msgid "GotoX calibration"
 msgstr "Gå til X kalibrering"
 
-msgid "Grab: "
+msgid "Grab"
 msgstr ""
 
 msgid "GraphMultiEpg Settings"
@@ -6892,6 +7150,11 @@ msgstr ""
 
 msgid "Guernsey"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Guide / EPG"
+msgstr "Fullstendig EPG"
 
 msgid "Guinea"
 msgstr ""
@@ -6980,7 +7243,7 @@ msgstr "ikke støttet"
 msgid "Haiti"
 msgstr "Venter"
 
-msgid "Halt: "
+msgid "Halt"
 msgstr ""
 
 msgid "Handle standby from TV"
@@ -7006,14 +7269,20 @@ msgid "Harddisk Setup"
 msgstr ""
 
 #, fuzzy
-msgid "Hardware serial: "
+msgid "Hardware"
+msgstr "Maskinvare:"
+
+#
+#, fuzzy
+msgid "Hardware information"
+msgstr "Informasjon"
+
+#, fuzzy
+msgid "Hardware serial"
 msgstr "Maskinvare:"
 
 #, fuzzy
-msgid "Hardware type: "
-msgstr "Maskinvare:"
-
-msgid "Hardware: "
+msgid "Hardware type"
 msgstr "Maskinvare:"
 
 msgid "Heard Island and McDonald Islands"
@@ -7039,8 +7308,9 @@ msgstr ""
 msgid "HiSilicon"
 msgstr ""
 
-msgid "HiSilicon dedicated information"
-msgstr ""
+#, fuzzy
+msgid "HiSilicon specific information"
+msgstr "Aktivitets informasjon for programtillegg"
 
 #, fuzzy
 msgid "Hidden / Blank"
@@ -7078,6 +7348,10 @@ msgstr "Hierarki info"
 #
 msgid "High bitrate support"
 msgstr "Høy bitrate støtte"
+
+#, fuzzy
+msgid "History"
+msgstr "katalog"
 
 #, fuzzy
 msgid "History Prev/Next"
@@ -7155,8 +7429,10 @@ msgstr ""
 msgid "Host receiver streaming port"
 msgstr "Mottakeren starter på nytt"
 
-msgid "Hostname:"
-msgstr ""
+#
+#, fuzzy
+msgid "Hostname"
+msgstr "Gi nytt navn"
 
 msgid "HotKey Setup"
 msgstr ""
@@ -7245,11 +7521,13 @@ msgstr "IP adresse"
 msgid "IP of fallback remote receiver"
 msgstr ""
 
-msgid "IP:"
-msgstr ""
-
 msgid "IPv6"
 msgstr ""
+
+#
+#, fuzzy
+msgid "IPv6 address"
+msgstr "IP adresse"
 
 #
 #, fuzzy
@@ -7268,7 +7546,7 @@ msgstr "ISO-fil er for stor til dette filsystemet!"
 msgid "ISO path"
 msgstr "ISO bane"
 
-msgid "ISP: "
+msgid "ISP"
 msgstr ""
 
 msgid "Iceland"
@@ -7320,6 +7598,9 @@ msgstr ""
 "Hvis du ser dette, er det noe galt med\n"
 "din scart forbindelse. Trykk OK for å gå tilbake."
 
+msgid "If you would like to support us then please consider donating."
+msgstr ""
+
 msgid ""
 "If your TV has a brightness or contrast enhancement, disable it. If there is something called \"dynamic\", set it to standard. Adjust the backlight level to a value suiting your taste. Turn down contrast on your TV as much as possible.\n"
 "Then turn the brightness setting as low as possible, but make sure that the two lowermost shades of gray stay distinguishable.\n"
@@ -7344,19 +7625,31 @@ msgid "Ignore conflict"
 msgstr ""
 
 #, fuzzy
+msgid "Image"
+msgstr "Image:"
+
+#, fuzzy
 msgid "Image View On"
 msgstr "Image:"
 
-msgid "Image architecture: "
+msgid "Image architecture"
 msgstr ""
 
 #
 #, fuzzy
-msgid "Image file system: "
+msgid "Image build date"
+msgstr "Bithastighet:"
+
+msgid "Image build/branch"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Image file system"
 msgstr "Oppretter filsystem"
 
 #, fuzzy
-msgid "Image folder: "
+msgid "Image folder"
 msgstr "Image:"
 
 #, python-format
@@ -7364,9 +7657,6 @@ msgid ""
 "Image to install is invalid\n"
 "%s"
 msgstr ""
-
-msgid "Image: "
-msgstr "Image:"
 
 msgid "Immediately restart selected devices."
 msgstr ""
@@ -7645,6 +7935,11 @@ msgid "Interface"
 msgstr "Grensesnitt:"
 
 #
+#, fuzzy, python-format
+msgid "Interface '%s'"
+msgstr "Grensesnitt:"
+
+#
 msgid "Interface: "
 msgstr "Grensesnitt:"
 
@@ -7811,14 +8106,17 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "Kernel file: "
+msgid "Kernel file"
 msgstr "Linuxkjerne versjon: "
 
-msgid "Kernel module layout: "
-msgstr ""
+#
+#, fuzzy
+msgid "Kernel module layout"
+msgstr "Ingen modul er funnet"
 
 #
-msgid "Kernel version: "
+#, fuzzy
+msgid "Kernel version"
 msgstr "Linuxkjerne versjon: "
 
 msgid "Key Events"
@@ -7958,7 +8256,8 @@ msgstr "Siste innstilling"
 msgid "Last speed"
 msgstr "Siste hastighet"
 
-msgid "Last update: "
+#, fuzzy
+msgid "Last update"
 msgstr "Siste oppdatering:"
 
 msgctxt "third event: 'third' event label"
@@ -7968,17 +8267,15 @@ msgstr ""
 msgid "Latest Commits"
 msgstr ""
 
+msgid "Latest revision on github"
+msgstr ""
+
 #, fuzzy
 msgid "Latest update log"
 msgstr "Siste oppdatering:"
 
 #
 msgid "Latitude"
-msgstr "Breddegrad"
-
-#
-#, fuzzy
-msgid "Latitude: "
 msgstr "Breddegrad"
 
 #
@@ -8017,6 +8314,9 @@ msgstr ""
 msgid "Let you change RC type but use it with care."
 msgstr ""
 
+msgid "Let's define enigma2 once more"
+msgstr ""
+
 msgid "Lets define enigma2 once more"
 msgstr ""
 
@@ -8030,7 +8330,7 @@ msgstr "Letterbox forstørrelse"
 msgid "Liberia"
 msgstr ""
 
-msgid "Libs: "
+msgid "Libs"
 msgstr ""
 
 msgid "Libya"
@@ -8066,6 +8366,11 @@ msgstr "Grenser av"
 #
 msgid "Limits on"
 msgstr "Grenser på"
+
+#
+#, fuzzy
+msgid "Link detected"
+msgstr "ingen CAId er valgt"
 
 msgid "Link quality:"
 msgstr "Signalstyrke:"
@@ -8139,6 +8444,16 @@ msgid "Loaded"
 msgstr "Last inn"
 
 #
+#, fuzzy
+msgid "Loading information, please wait..."
+msgstr "Henter informasjon om programtillegg. Vennligst vent..."
+
+#
+#, fuzzy
+msgid "Local information"
+msgstr "Informasjon"
+
+#
 msgid "Local network"
 msgstr "Lokalt nettverk"
 
@@ -8160,6 +8475,10 @@ msgstr "Plassering"
 msgid "Location for instant recordings"
 msgstr "Plassering for direkte opptak"
 
+#, fuzzy
+msgid "Location information"
+msgstr "Programvareadministrasjon"
+
 msgid "Lock ratio"
 msgstr "Låsforhold"
 
@@ -8170,13 +8489,18 @@ msgstr "Lås:"
 msgid "Log"
 msgstr ""
 
+#, python-format
+msgid "Log file '%s' deleted."
+msgstr ""
+
 msgid "Log python stack trace on spinner"
 msgstr ""
 
 msgid "Log results to /tmp"
 msgstr ""
 
-msgid "Logfile does not exist anymore"
+#, python-format
+msgid "Logfile '%s' (%d/%d)"
 msgstr ""
 
 #
@@ -8205,11 +8529,6 @@ msgstr "Langt tastetrykk"
 
 #
 msgid "Longitude"
-msgstr "Lengdegrad"
-
-#
-#, fuzzy
-msgid "Longitude: "
 msgstr "Lengdegrad"
 
 msgid "Loop through from"
@@ -8242,16 +8561,10 @@ msgstr "Nettverksinstillinger"
 msgid "MAC address setup"
 msgstr "Disk oppsett"
 
-msgid "MAC:"
-msgstr ""
-
-msgid "MB"
-msgstr ""
-
 msgid "MENU"
 msgstr ""
 
-msgid "MKUBIFS: "
+msgid "MKUBIFS"
 msgstr ""
 
 #
@@ -8262,13 +8575,16 @@ msgstr "MMC kort"
 msgid "MORE"
 msgstr ""
 
-msgid "MTD boot: "
+msgid "MTD boot"
 msgstr ""
 
-msgid "MTD kernel: "
+msgid "MTD kernel"
 msgstr ""
 
-msgid "MTD root: "
+msgid "MTD root"
+msgstr ""
+
+msgid "MTU"
 msgstr ""
 
 msgid "Macao"
@@ -8431,9 +8747,6 @@ msgstr ""
 msgid "Mayotte"
 msgstr ""
 
-msgid "Mb/s"
-msgstr ""
-
 msgid "Media playback Remaining/Elapsed as"
 msgstr ""
 
@@ -8446,7 +8759,7 @@ msgstr "Mediesøker"
 
 #
 #, fuzzy
-msgid "Media service: "
+msgid "Media service"
 msgstr "Legge til kanal"
 
 #
@@ -8466,6 +8779,11 @@ msgstr ""
 #
 #, fuzzy
 msgid "Memory Information"
+msgstr "Informasjon"
+
+#
+#, fuzzy
+msgid "Memory Information Actions"
 msgstr "Informasjon"
 
 msgid "Memory index"
@@ -8538,8 +8856,10 @@ msgstr ""
 msgid "Missing "
 msgstr "Savnet"
 
-msgid "Mobile: "
-msgstr ""
+#
+#, fuzzy
+msgid "Mobile connection"
+msgstr "Ingen forbindelse"
 
 #
 #, fuzzy
@@ -8813,11 +9133,22 @@ msgstr "Fullstendig EPG kanallisteutvalg"
 
 #
 #, fuzzy
-msgid "MultiLib: "
+msgid "MultiBoot"
+msgstr "Multisat"
+
+#
+#, fuzzy
+msgid "MultiBoot Information"
+msgstr "Informasjon"
+
+#
+#, fuzzy
+msgid "MultiLib"
 msgstr "Fullstendig EPG"
 
-msgid "MultiTranscoding: "
-msgstr ""
+#, fuzzy
+msgid "MultiTranscoding"
+msgstr "dette opptaket"
 
 #
 #, fuzzy
@@ -8853,11 +9184,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Multistream"
-msgstr "Multisat"
-
-#
-#, fuzzy
-msgid "Multistream: "
 msgstr "Multisat"
 
 msgid "Music"
@@ -8987,23 +9313,20 @@ msgid "Netmask"
 msgstr "Nettverksmaske"
 
 #
-#, fuzzy
-msgid "Netmask:"
-msgstr "Nettverksmaske"
-
-#
 msgid "Network"
 msgstr "Nettverk"
 
 msgid "Network ID"
 msgstr "Nettverks ID"
 
-msgid "Network Info:"
-msgstr ""
-
 #
 #, fuzzy
 msgid "Network Information"
+msgstr "Nettverksinnstilling..."
+
+#
+#, fuzzy
+msgid "Network Information Actions"
 msgstr "Nettverksinnstilling..."
 
 #
@@ -9016,11 +9339,21 @@ msgstr "Aktivere nettverksinnstillinger"
 msgid "Network Setup"
 msgstr "Nettverksinstillinger"
 
+#
+#, fuzzy
+msgid "Network address"
+msgstr "Nettverkstest"
+
 msgid "Network configuration"
 msgstr ""
 
 #
 msgid "Network configuration..."
+msgstr "Nettverksinnstilling..."
+
+#
+#, fuzzy
+msgid "Network information"
 msgstr "Nettverksinnstilling..."
 
 #
@@ -9042,10 +9375,6 @@ msgstr "Nettverksnavn (SSID)"
 
 msgid "Network scan"
 msgstr "Nettverkssøk"
-
-#, fuzzy
-msgid "Network servers:"
-msgstr "Nettverkstest:"
 
 #
 msgid "Network setup"
@@ -9104,6 +9433,13 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Neste"
 
+msgid "Next / Arrow Right"
+msgstr ""
+
+#, fuzzy
+msgid "Next Song"
+msgstr "Neste"
+
 msgid "Nicaragua"
 msgstr ""
 
@@ -9150,11 +9486,6 @@ msgid "No config to start, please check /etc/openvpn/ and try again."
 msgstr ""
 
 #
-#, fuzzy
-msgid "No connection"
-msgstr "Ingen forbindelse"
-
-#
 msgid ""
 "No data on transponder!\n"
 "(Timeout reading PAT)"
@@ -9193,6 +9524,9 @@ msgstr "Ingen innholdsfortegnelse er tilgjengelig"
 msgid "No free tuner!"
 msgstr "Ingen ledig tuner!"
 
+msgid "No hard disks detected."
+msgstr ""
+
 #
 #, fuzzy
 msgid "No images found"
@@ -9206,6 +9540,10 @@ msgstr "Ingen nettverk ble funnet"
 #
 msgid "No network connection available."
 msgstr "Ingen nettverksforbindelse er tilgjengelig."
+
+#, fuzzy
+msgid "No network servers detected."
+msgstr "Nettverkstest:"
 
 #
 msgid "No networks found"
@@ -9369,6 +9707,9 @@ msgstr "Installere"
 msgid "Not associated"
 msgstr "Ikke tilknyttet"
 
+msgid "Not currently mounted."
+msgstr ""
+
 #, python-format
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "Ikke nok diskplass. Vennligst frigjør litt diskplass og prøv på nytt. (%d MB nødvendig, %d MB tilgjengelig)"
@@ -9383,10 +9724,6 @@ msgstr "Ved begynnelsen"
 
 msgid "Not tested:"
 msgstr ""
-
-#, fuzzy
-msgid "Not-Associated"
-msgstr "Ikke tilknyttet"
 
 msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
 msgstr ""
@@ -9443,9 +9780,6 @@ msgid "Number or SMS style data entry"
 msgstr ""
 
 msgid "NumberZapPicon"
-msgstr ""
-
-msgid "OE: "
 msgstr ""
 
 #
@@ -9572,40 +9906,11 @@ msgstr ""
 msgid "Open Vision"
 msgstr ""
 
-#
-#, fuzzy
-msgid "Open Vision Information"
-msgstr "Informasjon"
-
-msgid "Open Vision RC ID number: "
-msgstr ""
-
-msgid "Open Vision RC name: "
-msgstr ""
-
-msgid "Open Vision RC type: "
-msgstr ""
-
 msgid "Open Vision information"
-msgstr ""
-
-#, fuzzy
-msgid "Open Vision language: "
-msgstr "opprinnelig språk"
-
-msgid "Open Vision module: "
 msgstr ""
 
 msgid "Open Vision revision check"
 msgstr ""
-
-msgid "Open Vision revision: "
-msgstr ""
-
-#
-#, fuzzy
-msgid "Open Vision version: "
-msgstr "Linuxkjerne versjon: "
 
 msgid "Open select location"
 msgstr ""
@@ -9645,6 +9950,38 @@ msgstr "PiP-bilde i bilde oppsett"
 msgid "OpenVision"
 msgstr "Utvidelser"
 
+#
+#, fuzzy
+msgid "OpenVision Information"
+msgstr "Informasjon"
+
+#
+#, fuzzy
+msgid "OpenVision Information Actions"
+msgstr "Informasjon"
+
+msgid "OpenVision is an open source project with no commercial funding."
+msgstr ""
+
+#, fuzzy
+msgid "OpenVision language"
+msgstr "opprinnelig språk"
+
+#
+#, fuzzy
+msgid "OpenVision module"
+msgstr "Utvidelser"
+
+#
+#, fuzzy
+msgid "OpenVision revision"
+msgstr "Linuxkjerne versjon: "
+
+#
+#, fuzzy
+msgid "OpenVision version"
+msgstr "Linuxkjerne versjon: "
+
 msgid "Operating LED brightness."
 msgstr ""
 
@@ -9668,6 +10005,11 @@ msgstr ""
 
 msgid "Opkg"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Option"
+msgstr "Kryptering"
 
 msgid "Options disable timer"
 msgstr ""
@@ -9824,7 +10166,11 @@ msgid "Parental control setup"
 msgstr "Foreldrekontroll oppsett"
 
 #, fuzzy
-msgid "Partitions: "
+msgid "Partition"
+msgstr "Polarisasjon"
+
+#, fuzzy
+msgid "Partitions"
 msgstr "Polarisasjon"
 
 msgid "Passthrough"
@@ -9930,12 +10276,15 @@ msgstr ""
 msgid "Pixels\n"
 msgstr ""
 
-msgid "Platform: "
+msgid "Platform"
 msgstr ""
 
 #
 msgid "Play"
 msgstr "Spille av"
+
+msgid "Play / Pause"
+msgstr ""
 
 #
 msgid "Play DVD"
@@ -9944,6 +10293,11 @@ msgstr "Spille DVD"
 #
 #, fuzzy
 msgid "Play DVDs"
+msgstr "Spille DVD"
+
+#
+#, fuzzy
+msgid "Play List"
 msgstr "Spille DVD"
 
 msgid "Play as Picture in Picture"
@@ -9996,6 +10350,10 @@ msgstr "Spille siste"
 msgid "Play recorded movies..."
 msgstr "Spille av opptak..."
 
+#, fuzzy
+msgid "Playlist"
+msgstr "svarteliste"
+
 #
 msgid "Please add titles to the compilation."
 msgstr "Vennligst legg til navn i samlingen."
@@ -10042,6 +10400,9 @@ msgstr "Vennligst, koble mottakeren til internett"
 #
 msgid "Please do not change any values unless you know what you are doing!"
 msgstr "Vennligst ikke endre verdier, hvis du ikke vet hva du gjør!"
+
+msgid "Please don't panic if you see values that look suspicious."
+msgstr ""
 
 #
 msgid "Please enter a name for the new bouquet"
@@ -10239,10 +10600,6 @@ msgstr "Vennligst vent til nettverksaktivering er klar..."
 msgid "Please wait while feeds state is being checked."
 msgstr "Vennligst vent mens søking pågår..."
 
-#, fuzzy
-msgid "Please wait while scanning for devices..."
-msgstr "Vennligst vent mens søking pågår..."
-
 msgid "Please wait while scanning is in progress..."
 msgstr "Vennligst vent mens søking pågår..."
 
@@ -10334,6 +10691,11 @@ msgstr ""
 
 #
 #, fuzzy
+msgid "Portal / Plugins"
+msgstr "Programtillegg"
+
+#
+#, fuzzy
 msgid "Portugal"
 msgstr "Portugisisk"
 
@@ -10362,6 +10724,9 @@ msgid "Positioner setup"
 msgstr "Motoroppsett"
 
 msgid "Positioner setup log"
+msgstr ""
+
+msgid "Power"
 msgstr ""
 
 msgid "Power LED can be turned on or off here."
@@ -10576,6 +10941,13 @@ msgstr "Forhåndsvisning meny"
 msgid "Preview selected channel"
 msgstr "Forhåndsvis valgte kanal"
 
+msgid "Previous / Arrow Left"
+msgstr ""
+
+#, fuzzy
+msgid "Previous Song"
+msgstr "Spille siste"
+
 #
 msgid "Primary DNS"
 msgstr "Primær DNS"
@@ -10589,12 +10961,17 @@ msgstr "Prioritet"
 
 #
 #, fuzzy
-msgid "Proc model: "
+msgid "Proc model"
 msgstr "Modell:"
 
 #
 msgid "Process"
 msgstr "Prosess"
+
+#
+#, fuzzy
+msgid "Processor information"
+msgstr "Informasjon"
 
 msgid "Progress"
 msgstr "Framdrift"
@@ -10669,10 +11046,12 @@ msgstr "Leverandører"
 msgid "Providers: "
 msgstr "Leverandører"
 
-msgid "Proxy: "
-msgstr ""
+#
+#, fuzzy
+msgid "Proxy detected"
+msgstr "Automatisk"
 
-msgid "Public IP: "
+msgid "Public IP"
 msgstr ""
 
 msgid "Puerto Rico"
@@ -10694,8 +11073,9 @@ msgstr "Slå av mottaker"
 msgid "Python frontend for /tmp/mmi.socket"
 msgstr ""
 
-msgid "Python version: "
-msgstr ""
+#, fuzzy
+msgid "Python version"
+msgstr "Krenging"
 
 msgid "Qatar"
 msgstr ""
@@ -10722,14 +11102,34 @@ msgstr ""
 msgid "Quick zap"
 msgstr "Hurtig bytte"
 
-msgid "RAM"
+msgid "RAM (Details)"
 msgstr ""
 
-msgid "RC custom code: "
+msgid "RAM (Summary)"
 msgstr ""
+
+msgid "RC ID number"
+msgstr ""
+
+msgid "RC code"
+msgstr ""
+
+#
+#, fuzzy
+msgid "RC custom code"
+msgstr "Tilpasse"
+
+#
+#, fuzzy
+msgid "RC name"
+msgstr "Gi nytt navn"
 
 #, fuzzy
-msgid "RC type: "
+msgid "RC type"
+msgstr "Vis type"
+
+#, fuzzy, python-format
+msgid "RC type:|%s"
 msgstr "Vis type"
 
 msgid "REC"
@@ -10785,9 +11185,6 @@ msgid "Reader"
 msgstr ""
 
 msgid "Reader Statistics"
-msgstr ""
-
-msgid "Reader: "
 msgstr ""
 
 #, python-format
@@ -10870,6 +11267,19 @@ msgstr "Opptak"
 
 msgid "Recall to previous service"
 msgstr ""
+
+msgid "Receiver"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Receiver Information"
+msgstr "Informasjon"
+
+#
+#, fuzzy
+msgid "Receiver Information Actions"
+msgstr "Informasjon"
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -10969,6 +11379,11 @@ msgstr "Oppfriskningsrate"
 msgid "Refresh rate selection."
 msgstr "Valg av oppfriskningsrate"
 
+#
+#, fuzzy
+msgid "Refresh the screen"
+msgstr "Valg av oppfriskningsrate"
+
 msgid "Regard deep standby as standby"
 msgstr "Betrakt 'helt slått av' samme som 'avslått'"
 
@@ -11007,6 +11422,11 @@ msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Påminnelse, du har valgt å lagre en timeshift fil"
 
 #
+#, fuzzy
+msgid "Remote control information"
+msgstr "Fjernkontroll type"
+
+#
 msgid "Remote control type"
 msgstr "Fjernkontroll type"
 
@@ -11043,9 +11463,6 @@ msgstr ""
 #, fuzzy
 msgid "Remove all keymap data"
 msgstr "Slette en markør"
-
-msgid "Remove all logfiles"
-msgstr ""
 
 #, fuzzy
 msgid "Remove all network data"
@@ -11127,9 +11544,6 @@ msgid "Remove terrestrial services"
 msgstr ""
 
 msgid "Remove texts for the hearing impaired from external subtitles (instrumental music or environmental sounds, e.g., when a doorbell rings or a gun shot is heard)."
-msgstr ""
-
-msgid "Remove this logfile"
 msgstr ""
 
 #
@@ -11389,8 +11803,23 @@ msgid "Resuming playback"
 msgstr "Fortsetter avspilling"
 
 #
+#, fuzzy, python-format
+msgid "Retrieving %s commit log, please wait..."
+msgstr "Henter informasjon om programtillegg. Vennligst vent..."
+
+#
 #, fuzzy
 msgid "Retrieving image list - Please wait..."
+msgstr "Henter informasjon om programtillegg. Vennligst vent..."
+
+#
+#, fuzzy
+msgid "Retrieving network server information, please wait..."
+msgstr "Henter informasjon om programtillegg. Vennligst vent..."
+
+#
+#, fuzzy
+msgid "Retrieving system information, please wait..."
 msgstr "Henter informasjon om programtillegg. Vennligst vent..."
 
 msgid "Return to movie list"
@@ -11407,6 +11836,11 @@ msgstr ""
 
 msgid "Reverse list"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Rewind"
+msgstr "Tilbakespolings hastigheter"
 
 #
 msgid "Rewind speeds"
@@ -11438,8 +11872,10 @@ msgstr ""
 msgid "Root directory"
 msgstr "Rotkatalog"
 
-msgid "Root file: "
-msgstr ""
+#
+#, fuzzy
+msgid "Root file"
+msgstr "Sortere tid"
 
 msgid "Rotor step position:"
 msgstr "Motorposisjon:"
@@ -11537,6 +11973,9 @@ msgid "SSA File"
 msgstr ""
 
 msgid "SSA file"
+msgstr ""
+
+msgid "SSID"
 msgstr ""
 
 #
@@ -12728,6 +13167,10 @@ msgstr ""
 msgid "Show background in radio mode"
 msgstr "Vis bakgrunn ved radiolytting"
 
+#, fuzzy
+msgid "Show benchmark information"
+msgstr "Programvareadministrasjon"
+
 msgid "Show bouquet selection menu"
 msgstr "Vis kanalliste menyen"
 
@@ -12826,6 +13269,10 @@ msgstr "Vis informasjonslinje ved programbytte"
 
 msgid "Show infobar on skip forward/backward"
 msgstr "Vis informasjonslinje ved kanalhopp framover/bakover"
+
+#, fuzzy
+msgid "Show latest commit log information"
+msgstr "Programvareadministrasjon"
 
 msgid "Show latest commits"
 msgstr ""
@@ -12967,6 +13414,10 @@ msgstr ""
 msgid "Show subtitle selection"
 msgstr ""
 
+#, fuzzy
+msgid "Show system information"
+msgstr "Programvareadministrasjon"
+
 #
 msgid "Show the radio player..."
 msgstr "Vis radiospilleren"
@@ -12983,6 +13434,10 @@ msgstr ""
 
 msgid "Show time remaining/elapsed"
 msgstr ""
+
+#, fuzzy
+msgid "Show translation information"
+msgstr "Programvareadministrasjon"
 
 #
 msgid "Show transponder info"
@@ -13016,8 +13471,10 @@ msgstr "Vis Games show"
 msgid "Show/hide window"
 msgstr ""
 
-msgid "Showiframe: "
-msgstr ""
+#
+#, fuzzy
+msgid "Showiframe"
+msgstr "Vis info"
 
 msgid "Shows live tv or informations on LCD."
 msgstr ""
@@ -13063,6 +13520,10 @@ msgstr "Satellittsøker"
 
 msgid "Signal quality"
 msgstr "Signalkvalitet"
+
+#, fuzzy
+msgid "Signal strength"
+msgstr "Signalstyrke:"
 
 msgid "Signal strength:"
 msgstr "Signalstyrke:"
@@ -13138,9 +13599,10 @@ msgstr "Din lengdegrad"
 msgid "Skin"
 msgstr "Innstillinger"
 
-#, python-format
-msgid "Skin & Resolution: %s (%sx%s)\n"
-msgstr ""
+#
+#, fuzzy
+msgid "Skin & Resolution"
+msgstr "Oppløsning"
 
 #, fuzzy
 msgid "Skin Selection Actions"
@@ -13171,6 +13633,10 @@ msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Hopp over internett tilkobling (automatisk pakke installasjon deaktiveres)"
 
 #, fuzzy
+msgid "Sleep"
+msgstr "Tidtaker"
+
+#, fuzzy
 msgid "Sleep Timer"
 msgstr "Slå av med hjelp av tidtaker"
 
@@ -13180,6 +13646,10 @@ msgstr "Slå av med hjelp av tidtaker"
 
 msgid "SleepTimer Configuration"
 msgstr "Tidtaker innstilling"
+
+#, fuzzy
+msgid "Sleeping"
+msgstr "Tidtaker"
 
 msgid "Sleeptimer"
 msgstr "Tidtaker"
@@ -13264,7 +13734,7 @@ msgstr ""
 msgid "Smpte 240M"
 msgstr ""
 
-msgid "SoC family: "
+msgid "SoC family"
 msgstr ""
 
 msgid "Social/Political/Economics"
@@ -13273,7 +13743,7 @@ msgstr "sosial/politisk/økonomisk"
 msgid "SocketMMI"
 msgstr ""
 
-msgid "Soft multiboot: "
+msgid "Soft multiboot"
 msgstr ""
 
 #, fuzzy
@@ -13295,6 +13765,10 @@ msgstr "Programvare"
 #, fuzzy
 msgid "Software Update"
 msgstr "Programvareoppdatering"
+
+#, fuzzy
+msgid "Software information"
+msgstr "Programvareadministrasjon"
 
 #
 msgid "Software management"
@@ -13472,10 +13946,10 @@ msgstr "Sett tidsrommet når inaktiv tidtaker skal oversees"
 msgid "Specify timeframe to ignore the shutdown in standby"
 msgstr ""
 
-msgid "Speed up the performance"
+msgid "Speed"
 msgstr ""
 
-msgid "Speed:"
+msgid "Speed up the performance"
 msgstr ""
 
 #
@@ -13600,7 +14074,7 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "State: "
+msgid "State"
 msgstr "Bithastighet:"
 
 msgid "Static IP or Custom"
@@ -13744,6 +14218,11 @@ msgstr ""
 
 msgid "Storage"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Storage Information"
+msgstr "Nettverksinnstilling..."
 
 msgid "Store at index"
 msgstr "Lagre i meny"
@@ -14016,6 +14495,16 @@ msgstr "System"
 msgid "System & Modulation"
 msgstr ""
 
+#
+#, fuzzy
+msgid "System Information"
+msgstr "Informasjon"
+
+#
+#, fuzzy
+msgid "System Information Actions"
+msgstr "Informasjon"
+
 msgid "T2MI PID"
 msgstr ""
 
@@ -14026,9 +14515,6 @@ msgid "T2MI PLP ID"
 msgstr ""
 
 msgid "T2MI RAW Mode"
-msgstr ""
-
-msgid "TB"
 msgstr ""
 
 msgid "TEXT"
@@ -14046,7 +14532,6 @@ msgstr "Installere"
 msgid "TMBD details for event"
 msgstr "Programtillegg detaljer:"
 
-#. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr "Norsk bokmålsoversettelse. 24.10.2013"
 
@@ -14065,6 +14550,11 @@ msgstr ""
 
 msgid "TV"
 msgstr ""
+
+#
+#, fuzzy
+msgid "TV / Radio"
+msgstr "Radio"
 
 msgid "TV physical address report"
 msgstr "TV fysiske adresse"
@@ -14228,6 +14718,18 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr ""
 
+#, fuzzy, python-format
+msgid "The %s commit log contains no information."
+msgstr "Programvareadministrasjon"
+
+#, python-format
+msgid "The %s commit logs can't be retrieved, please try again later."
+msgstr ""
+
+#, python-format
+msgid "The '%s' log file contains no information."
+msgstr ""
+
 #
 #, fuzzy
 msgid ""
@@ -14280,6 +14782,9 @@ msgid ""
 msgstr ""
 "Den nyeste beta programvaren kan være ustabilt.\n"
 "For mer informasjon se %s."
+
+msgid "The detailed information is intended for developers only."
+msgstr ""
 
 #, python-format
 msgid ""
@@ -14381,6 +14886,9 @@ msgstr ""
 #, fuzzy, python-format
 msgid "The status of the current image could not be checked because %s can not be reached."
 msgstr "Status for dagens beta programvare kan ikke kontrolleres fordi %s kan ikke nåes."
+
+msgid "The team relies on donations to fund OpenVision development."
+msgstr ""
 
 #
 #, fuzzy
@@ -14487,12 +14995,6 @@ msgid ""
 "This image is intended for developers and testers.\n"
 "No support will be provided!\n"
 "Do you understand this?"
-msgstr ""
-
-msgid ""
-"This info is for developers only.\n"
-"For normal users it is not relevant.\n"
-"Please don't panic if you see values displayed looking suspicious!"
 msgstr ""
 
 msgid "This is a multitype tuner. Available options depend on the hardware."
@@ -14671,6 +15173,10 @@ msgstr "Dette programtillegget vil bli fjernet."
 #, python-format
 msgid "This receiver cannot decode %s streams!"
 msgstr "Denne mottakeren kan ikke dekode %s datastrømmer!"
+
+#, fuzzy
+msgid "This screen is not yet available."
+msgstr "Det er ingen oppdateringer tilgjengelig."
 
 msgid "This setting allows the tuner configuration to be a duplication of how another tuner is already configured."
 msgstr ""
@@ -14918,7 +15424,7 @@ msgstr "Timeshift er ikke mulig!"
 
 #
 #, fuzzy
-msgid "Timezone: "
+msgid "Timezone"
 msgstr "Tidssone"
 
 msgid "Timor-Leste"
@@ -15031,18 +15537,24 @@ msgstr ""
 msgid "Total clients streaming: %d (%s)"
 msgstr ""
 
-msgid "Total memory:"
+#
+#, fuzzy
+msgid "Total flash"
+msgstr "Internt flash"
+
+msgid "Total memory"
 msgstr ""
 
-msgid "Total swap:"
-msgstr ""
-
-msgid "Total:"
+msgid "Total swap"
 msgstr ""
 
 #
 msgid "Track"
 msgstr "Spor"
+
+#, fuzzy
+msgid "Transcoding"
+msgstr "Opptak innstilling"
 
 msgid "Transcoding: "
 msgstr ""
@@ -15052,12 +15564,17 @@ msgid "Translation"
 msgstr "Oversetting"
 
 #
-msgid "Translation:"
-msgstr "Oversetting:"
+#, fuzzy
+msgid "Translation Information"
+msgstr "Informasjon"
+
+#, fuzzy
+msgid "Translation information"
+msgstr "Programvareadministrasjon"
 
 #
-msgid "Translations"
-msgstr "Oversettinger"
+msgid "Translation:"
+msgstr "Oversetting:"
 
 #
 msgid "Transmission mode"
@@ -15142,6 +15659,11 @@ msgstr "Tuner"
 msgid "Tuner Configuration"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Tuner Information"
+msgstr "Informasjon"
+
 msgid "Tuner is not supported"
 msgstr ""
 
@@ -15166,6 +15688,11 @@ msgstr "Tuner status"
 #
 msgid "Tuner type"
 msgstr "Tuner type"
+
+#
+#, fuzzy
+msgid "Tuners"
+msgstr "Tuner"
 
 msgid "Tuners & Scanning"
 msgstr ""
@@ -15238,7 +15765,7 @@ msgstr "Søketype"
 msgid "Type of scan"
 msgstr "Søketype"
 
-msgid "UBINIZE: "
+msgid "UBINIZE"
 msgstr ""
 
 msgid "UNKNOWN"
@@ -15263,9 +15790,6 @@ msgstr "USALS kalibrering"
 #
 msgid "USB stick"
 msgstr "USB minnepinne"
-
-msgid "UUID: "
-msgstr ""
 
 msgid "Uganda"
 msgstr ""
@@ -15376,6 +15900,9 @@ msgstr "Ikke støttet"
 #, fuzzy
 msgid "Unzipping Image"
 msgstr "Laster ned"
+
+msgid "Up"
+msgstr ""
 
 msgid "Update"
 msgstr "Oppdater"
@@ -15524,6 +16051,10 @@ msgstr "Bruk kanalnummerering beregnet for 'fastscan'"
 msgid "Use frequency or channel"
 msgstr ""
 
+#, fuzzy
+msgid "Use geolocation to get WAN information"
+msgstr "Programvareadministrasjon"
+
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
 
@@ -15605,6 +16136,9 @@ msgstr "Bruk papirkurven i opptaksliste"
 
 msgid "Use trash can in movielist"
 msgstr "Bruk papirkurven i opptaksliste"
+
+msgid "Used"
+msgstr ""
 
 msgid "Used service scan type"
 msgstr "Kanalsøksvalg"
@@ -15725,6 +16259,14 @@ msgstr ""
 #, fuzzy
 msgid "Very slow"
 msgstr "Tuner spalte"
+
+#, fuzzy
+msgid "Video"
+msgstr "Bilde PID"
+
+#, fuzzy
+msgid "Video Mode"
+msgstr "Bildevisning"
 
 msgid "Video PID"
 msgstr "Bilde PID"
@@ -15892,6 +16434,16 @@ msgstr "Volt modus"
 msgid "Volume"
 msgstr "Volum"
 
+#
+#, fuzzy
+msgid "Volume +"
+msgstr "Volum"
+
+#
+#, fuzzy
+msgid "Volume -"
+msgstr "Volum"
+
 msgid "Volume down"
 msgstr ""
 
@@ -15904,6 +16456,15 @@ msgstr ""
 #
 msgid "W"
 msgstr ""
+
+#
+#, fuzzy
+msgid "WAN Geolocation"
+msgstr "Plassering"
+
+#, fuzzy
+msgid "WAN connection information"
+msgstr "Programvareadministrasjon"
 
 #
 msgid "WEP"
@@ -17423,9 +17984,6 @@ msgstr "ledig"
 msgid "from"
 msgstr ""
 
-msgid "full"
-msgstr ""
-
 msgid "further education"
 msgstr "videreutdanning"
 
@@ -17486,7 +18044,7 @@ msgstr ""
 msgid "hd2400"
 msgstr ""
 
-msgid "hd60"
+msgid "hd60/multibox/se"
 msgstr ""
 
 msgid "hd61"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 16:21+0330\n"
+"POT-Creation-Date: 2021-03-19 14:49+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tech <tech@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -12,12 +12,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
-
-#, python-format
-msgid ""
-"\n"
-" %s "
-msgstr ""
 
 msgid ""
 "\n"
@@ -1123,6 +1117,10 @@ msgstr ""
 "Druk exit om af te sluiten"
 
 #, python-format
+msgid "%s  -  Scope: %s"
+msgstr ""
+
+#, python-format
 msgid "%s %s free disk space"
 msgstr "%s %s beschikbare schijfruimte"
 
@@ -1192,9 +1190,6 @@ msgstr ""
 #, fuzzy
 msgid "( All readers)"
 msgstr "Alle leeftijden"
-
-msgid "(Latest revision on github: "
-msgstr ""
 
 #, fuzzy
 msgid "(Radio)"
@@ -1306,8 +1301,14 @@ msgstr "/s"
 msgid "0"
 msgstr "0"
 
+msgid "0 (,?!)"
+msgstr ""
+
 msgid "1"
 msgstr "1"
+
+msgid "1 ( .:)"
+msgstr ""
 
 msgid "1.0"
 msgstr "1.0"
@@ -1398,6 +1399,12 @@ msgstr "1"
 msgid "2"
 msgstr "2"
 
+msgid "2 (ABC)"
+msgstr ""
+
+msgid "2 (abc)"
+msgstr ""
+
 msgid "20 MB/s"
 msgstr "20 MB/s"
 
@@ -1426,6 +1433,12 @@ msgstr "2"
 
 msgid "3"
 msgstr "3"
+
+msgid "3 (DEF)"
+msgstr ""
+
+msgid "3 (def)"
+msgstr ""
 
 msgid "30"
 msgstr "30"
@@ -1460,6 +1473,12 @@ msgstr "3d modus"
 
 msgid "4"
 msgstr "4"
+
+msgid "4 (GHI)"
+msgstr ""
+
+msgid "4 (ghi)"
+msgstr ""
 
 #, fuzzy
 msgid "40%"
@@ -1501,6 +1520,12 @@ msgstr "4"
 msgid "5"
 msgstr "5"
 
+msgid "5 (JKL)"
+msgstr ""
+
+msgid "5 (jkl)"
+msgstr ""
+
 msgid "50 MB/s"
 msgstr "50 MB/s"
 
@@ -1510,11 +1535,23 @@ msgstr ""
 msgid "6"
 msgstr "6"
 
+msgid "6 (MNO)"
+msgstr ""
+
+msgid "6 (mno)"
+msgstr ""
+
 msgid "60%"
 msgstr ""
 
 msgid "7"
 msgstr "7"
+
+msgid "7 (PQRS)"
+msgstr ""
+
+msgid "7 (pqrs)"
+msgstr ""
 
 msgid "70%"
 msgstr ""
@@ -1528,6 +1565,12 @@ msgstr ""
 
 msgid "8"
 msgstr "8"
+
+msgid "8 (TUV)"
+msgstr ""
+
+msgid "8 (tuv)"
+msgstr ""
 
 msgid "8 bit"
 msgstr ""
@@ -1543,6 +1586,12 @@ msgstr "8K"
 
 msgid "9"
 msgstr "9"
+
+msgid "9 (WXYZ)"
+msgstr ""
+
+msgid "9 (wxyz)"
+msgstr ""
 
 msgid "90%"
 msgstr ""
@@ -1743,14 +1792,16 @@ msgstr "PIP instellingen"
 msgid "AGC:"
 msgstr "AGC:"
 
-msgid "ANNEX-A: "
+msgid "ANNEX-A"
 msgstr ""
 
-msgid "ANNEX-B: "
-msgstr ""
+#, fuzzy
+msgid "ANNEX-B"
+msgstr "DVB-C ANNEX B"
 
-msgid "ANNEX-C: "
-msgstr ""
+#, fuzzy
+msgid "ANNEX-C"
+msgstr "DVB-C ANNEX C"
 
 msgid "ARM"
 msgstr ""
@@ -1770,6 +1821,9 @@ msgstr "ATSC"
 msgid "ATSC provider"
 msgstr "ATSC aanbieder"
 
+msgid "AUX"
+msgstr ""
+
 msgid "Abort"
 msgstr "Afbreken"
 
@@ -1786,8 +1840,16 @@ msgid "About"
 msgstr "Uw ontvanger"
 
 #, fuzzy
-msgid "About Information"
-msgstr "Informatie"
+msgid "Access point"
+msgstr "Accesspoint:"
+
+#, fuzzy
+msgid "Access to geolocation information requires an internet connection."
+msgstr "Uw ontvanger heeft geen (actieve) internetverbinding."
+
+#, fuzzy, python-format
+msgid "Access to the %s commit logs requires an internet connection."
+msgstr "Uw ontvanger heeft geen (actieve) internetverbinding."
 
 msgid "Accesspoint:"
 msgstr "Accesspoint:"
@@ -2156,11 +2218,12 @@ msgstr ""
 msgid "An empty filename is illegal."
 msgstr "Een lege bestandsnaam is ongeldig."
 
-msgid "An error occurred - Please try again later"
-msgstr "Fout geconstateerd - probeer het later opnieuw"
-
 msgid "An error occurred while downloading the packetlist. Please try again."
 msgstr "Er is een fout opgetreden bij het downloaden van de pakketlijst. Probeer het aub opnieuw."
+
+#, fuzzy, python-format
+msgid "An error occurred, error code %d, please try again later."
+msgstr "Fout geconstateerd - probeer het later opnieuw"
 
 msgid "An unknown error occurred!"
 msgstr "Er heeft zich een onbekende fout voorgedaan!"
@@ -2334,6 +2397,10 @@ msgstr ""
 msgid "Ask user (with default as 'Yes')"
 msgstr ""
 
+#, fuzzy
+msgid "Aspect"
+msgstr "Beeldverhouding"
+
 msgid "Aspect ratio"
 msgstr "Beeldverhouding"
 
@@ -2478,6 +2545,10 @@ msgstr "Auto focus"
 
 msgid "Auto focus commencing ..."
 msgstr "Starten van de auto focus..."
+
+#, fuzzy
+msgid "Auto install log"
+msgstr "(Auto)installatie is afgerond"
 
 msgid "Auto play blu-ray file"
 msgstr "Speel blu-ray bestand automatisch af"
@@ -2695,6 +2766,10 @@ msgid "Benchmark Information"
 msgstr "Informatie"
 
 #, fuzzy
+msgid "Benchmark for"
+msgstr "Denemarken"
+
+#, fuzzy
 msgid "Benchmark information"
 msgstr "Softwarebeheerinformatie"
 
@@ -2709,6 +2784,10 @@ msgstr "Bhoetan"
 
 msgid "Big PiP"
 msgstr "Grote PIP"
+
+#, fuzzy
+msgid "Bit rate"
+msgstr "Bitrate:"
 
 #, fuzzy
 msgid "Bitrate"
@@ -2760,8 +2839,13 @@ msgstr "Blauw"
 msgid "Boost green"
 msgstr "Groen"
 
-msgid "Boot ID: "
-msgstr ""
+#, fuzzy
+msgid "Boot ID"
+msgstr "Opstarttijd"
+
+#, fuzzy
+msgid "Boot information"
+msgstr "Informatie"
 
 #, fuzzy
 msgid "Boot time"
@@ -2792,7 +2876,19 @@ msgstr "Botswana"
 msgid "Bouvet Island"
 msgstr "Bouvet eilanden"
 
-msgid "Brand/Meta: "
+#, fuzzy
+msgid "BoxBranding"
+msgstr "Opname"
+
+#, fuzzy
+msgid "BoxBranding Information"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "BoxBranding information for"
+msgstr "Softwarebeheerinformatie"
+
+msgid "Brand/Meta"
 msgstr ""
 
 msgid "Brazil"
@@ -2811,6 +2907,10 @@ msgstr "Helderheid display indien actief"
 msgid "British Indian Ocean Territory"
 msgstr "Brits deel Indische oceaan"
 
+#, fuzzy
+msgid "Broadcast address"
+msgstr "feeds/pers"
+
 msgid "Broadcom"
 msgstr ""
 
@@ -2821,11 +2921,12 @@ msgstr "Brunei Darussalam"
 msgid "Buffering %d%%"
 msgstr "Buffer %d%%"
 
-msgid "Buffers:"
+msgid "Buffers"
 msgstr ""
 
-msgid "Build date: "
-msgstr "Datum van deze build: "
+#, fuzzy
+msgid "Build information"
+msgstr "Informatie"
 
 msgid "Bulgaria"
 msgstr "Bulgarije"
@@ -2867,10 +2968,10 @@ msgstr ""
 msgid "Bypass HDMI EDID checking"
 msgstr "Sla de HDMI EDID controle over"
 
-msgid "Bytes received:"
+msgid "Bytes received"
 msgstr ""
 
-msgid "Bytes sent:"
+msgid "Bytes sent"
 msgstr ""
 
 msgid "C"
@@ -2922,17 +3023,19 @@ msgstr "CI slot: "
 msgid "CIFS/Samba"
 msgstr ""
 
-msgid "CPU architecture: "
-msgstr ""
-
-msgid "CPU benchmark: "
-msgstr ""
-
-msgid "CPU brand: "
-msgstr ""
-
-msgid "CPU: "
+#, fuzzy
+msgid "CPU"
 msgstr "CPU: "
+
+msgid "CPU architecture"
+msgstr ""
+
+#, fuzzy
+msgid "CPU benchmark"
+msgstr "Denemarken"
+
+msgid "CPU brand"
+msgstr ""
 
 msgid "CVBS"
 msgstr "CVBS"
@@ -2949,7 +3052,7 @@ msgstr "Kaapverdië"
 msgid "Cache thumbnails"
 msgstr "Cachen van miniatuurafbeeldingen"
 
-msgid "Cached:"
+msgid "Cached"
 msgstr ""
 
 msgid "Calculate"
@@ -2957,6 +3060,9 @@ msgstr "Berekenen"
 
 msgid "Calculate all positions"
 msgstr "Bereken alle posities"
+
+msgid "Calculating benchmark..."
+msgstr ""
 
 msgid "Calculation complete"
 msgstr "Berekening gereed"
@@ -3067,6 +3173,10 @@ msgstr "Kan geen bestanden naar de prullenbak verplaatsen"
 msgid "Capabilities: "
 msgstr "Mogelijkheden: "
 
+#, fuzzy
+msgid "Capacity"
+msgstr "Capaciteit: "
+
 msgid "Capacity: "
 msgstr "Capaciteit: "
 
@@ -3133,6 +3243,14 @@ msgid "Change timer"
 msgstr "Wijzig timer"
 
 msgid "Channel"
+msgstr "Kanaal"
+
+#, fuzzy
+msgid "Channel +"
+msgstr "Kanaal"
+
+#, fuzzy
+msgid "Channel -"
 msgstr "Kanaal"
 
 msgid "Channel Info"
@@ -3321,7 +3439,7 @@ msgid "Circular right"
 msgstr "Circulaire rechts"
 
 #, fuzzy
-msgid "City: "
+msgid "City"
 msgstr "Capaciteit: "
 
 #, fuzzy
@@ -3345,6 +3463,9 @@ msgstr "Log wissen"
 
 msgid "Clear playlist"
 msgstr "Afspeellijst leeg maken"
+
+msgid "Clear the virtual memory caches"
+msgstr ""
 
 #, python-format
 msgid "Client Info ( NCam-Version: %s )"
@@ -3383,6 +3504,14 @@ msgstr "Sluiten"
 
 msgid "Close PiP with 'exit' button"
 msgstr "Sluit de PIP met de toets 'exit'"
+
+#, fuzzy
+msgid "Close the screen"
+msgstr "Sluit titelselectie"
+
+#, fuzzy
+msgid "Close the screen and exit all menus"
+msgstr "Annuleer alle wijzigingen in de huidig ​​actieve skin en verlaat het menu"
 
 msgid "Close title selection"
 msgstr "Sluit titelselectie"
@@ -3444,8 +3573,24 @@ msgstr "Commando volgorde"
 msgid "Command type"
 msgstr "Commando volgorde"
 
+#, fuzzy
+msgid "Commit Information"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "Commit Information Actions"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "Commit Logs"
+msgstr "Commit informatie"
+
 msgid "Commit info"
 msgstr "Commit informatie"
+
+#, fuzzy
+msgid "Common Information Actions"
+msgstr "Skin selectie actie(s)"
 
 msgid "Common Interface"
 msgstr "Common Interface"
@@ -3466,8 +3611,9 @@ msgstr "Comoren"
 msgid "Compact flash"
 msgstr "Compact flash"
 
-msgid "Compiled by: "
-msgstr ""
+#, fuzzy
+msgid "Compiled by"
+msgstr "Compleet"
 
 msgid "Complete"
 msgstr "Compleet"
@@ -4117,6 +4263,10 @@ msgstr "Verbonden met"
 msgid "Connected transcoding, limit - no PiP!"
 msgstr "Verbonden transcoding, beperking - geen PIP!"
 
+#, fuzzy
+msgid "Connection information"
+msgstr "Softwarebeheerinformatie"
+
 msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
 
@@ -4136,7 +4286,18 @@ msgid "Content does not fit on DVD!"
 msgstr "De inhoud past niet op deze DVD!"
 
 #, fuzzy
-msgid "Continent: "
+msgid "Context / Favourites"
+msgstr "Favorieten"
+
+msgid "Context / Plugins"
+msgstr ""
+
+#, fuzzy
+msgid "Context / Video Mode"
+msgstr "VideoModus"
+
+#, fuzzy
+msgid "Continent"
 msgstr "Doorgaan"
 
 msgid "Continue"
@@ -4181,6 +4342,10 @@ msgstr "Kopieer naar bouquetten"
 msgid "Copying files"
 msgstr "Lange bestandsnamen"
 
+#, python-format
+msgid "Copyright %s 2018-%s Team OpenVision"
+msgstr ""
+
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
@@ -4222,12 +4387,12 @@ msgstr "Softwarebeheerinformatie"
 msgid "Country for EPG event rating information"
 msgstr "Raadpleeg de Unicable specificaties voor de gewenste informatie."
 
-#, fuzzy
-msgid "Country: "
-msgstr "Land"
-
 msgid "Cover dashed flickering line for this service"
 msgstr "Verberg voor deze zender de flikkerende lijn bovenin het beeld"
+
+#, python-format
+msgid "Crash log '%s' (%d/%d)"
+msgstr ""
 
 msgid "Create DVD-ISO"
 msgstr "DVD-ISO maken"
@@ -4275,7 +4440,7 @@ msgid "Curacao"
 msgstr "Curacao"
 
 #, fuzzy
-msgid "Currency: "
+msgid "Currency"
 msgstr "Huidige"
 
 msgid "Current"
@@ -4287,6 +4452,10 @@ msgstr "Nieuws/Actualiteiten"
 
 msgid "Current CEC address"
 msgstr "Huidig CEC adres"
+
+#, fuzzy
+msgid "Current crash log"
+msgstr "Huidige transponder"
 
 msgid "Current device: "
 msgstr "Huidig apparaat: "
@@ -4320,9 +4489,6 @@ msgstr "Huidige transponder"
 
 msgid "Current value: "
 msgstr "Huidige waarde:"
-
-msgid "Currently the commit log cannot be retrieved - please try later again"
-msgstr "Op dit moment kan het commitlog niet bereikt worden - probeer het later opnieuw"
 
 #, fuzzy
 msgid "Custom"
@@ -4403,23 +4569,15 @@ msgstr ""
 msgid "DUAL LAYER DVD"
 msgstr "DUAL LAYER DVD"
 
-#, fuzzy
-msgid "DVB"
-msgstr "DVB-C"
-
-#, fuzzy
-msgid "DVB API version: "
-msgstr "DVB driver versie: "
-
-msgid "DVB API: "
+msgid "DVB API"
 msgstr ""
+
+#, fuzzy
+msgid "DVB API version"
+msgstr "DVB driver versie: "
 
 msgid "DVB CI Delay"
 msgstr "DVB CI vertraging"
-
-#, fuzzy
-msgid "DVB Information"
-msgstr "Informatie"
 
 msgid "DVB Subtitles PID & lang"
 msgstr "DVD ondertitels PID & lang"
@@ -4455,10 +4613,6 @@ msgstr "DVB-C"
 msgid "DVB-C/-T/-S"
 msgstr "DVB-C"
 
-#, fuzzy
-msgid "DVB-C: "
-msgstr "DVB-C"
-
 msgid "DVB-S"
 msgstr "DVB-S"
 
@@ -4472,10 +4626,6 @@ msgstr "DVB-S"
 
 msgid "DVB-S2"
 msgstr "DVB-S2"
-
-#, fuzzy
-msgid "DVB-S: "
-msgstr "DVB-S"
 
 msgid "DVB-T"
 msgstr "DVB-T"
@@ -4492,8 +4642,8 @@ msgid "DVB-T2"
 msgstr "DVB-T2"
 
 #, fuzzy
-msgid "DVB-T: "
-msgstr "DVB-T"
+msgid "DVD"
+msgstr "DVB-C"
 
 msgid "DVD Burn"
 msgstr "DVD branden"
@@ -4674,6 +4824,10 @@ msgstr ""
 msgid "Dayname Year/MM/DD"
 msgstr ""
 
+#, python-format
+msgid "Debug log '%s' (%d/%d)"
+msgstr ""
+
 msgid "Debug log time format *"
 msgstr ""
 
@@ -4792,6 +4946,14 @@ msgstr "Verwijderen de image"
 msgid "Delete Image"
 msgstr "Verwijderen de image"
 
+#, fuzzy
+msgid "Delete all log files"
+msgstr "Verwijder alle logbestanden"
+
+#, fuzzy
+msgid "Delete all logfiles"
+msgstr "Verwijder alle logbestanden"
+
 msgid "Delete all the text"
 msgstr "Verwijder alle tekst"
 
@@ -4815,6 +4977,10 @@ msgstr "Verwijder bestand"
 msgid "Delete image"
 msgstr "Image verwijderen"
 
+#, fuzzy
+msgid "Delete logfile"
+msgstr "Verwijder bestand"
+
 msgid "Delete playlist entry"
 msgstr "Verwijder een item uit de afspeellijst"
 
@@ -4826,6 +4992,10 @@ msgstr "Verwijder het teken links van de tekst-cursor"
 
 msgid "Delete the character under the text cursor"
 msgstr "Verwijder het teken onder de tekst-cursor"
+
+#, fuzzy
+msgid "Delete the currently displayed log file"
+msgstr "Verwijder de huidig geselecteerde titel"
 
 msgid "Delete timer"
 msgstr "Verwijder timer"
@@ -4879,18 +5049,24 @@ msgstr "Plugin details:"
 msgid "Detect next boxes before standby"
 msgstr "Detecteer andere hardware voordat de box naar stand-by gaat"
 
-msgid "Detected HDD:"
+#, fuzzy
+msgid "Detected HDDs"
 msgstr "Gedetecteerde harde schijf:"
 
-msgid "Detected NIMs:"
+#, fuzzy
+msgid "Detected NIMs"
 msgstr "Gedetecteerde tuners:"
 
 #, fuzzy
-msgid "Detected devices:"
+msgid "Detected network servers"
+msgstr "Netwerktest: "
+
+#, fuzzy
+msgid "Detected storage devices"
 msgstr "Gedetecteerde tuners:"
 
 #, fuzzy
-msgid "Detected tuners:"
+msgid "Detected tuners"
 msgstr "Gedetecteerde tuners:"
 
 #, fuzzy
@@ -4898,11 +5074,7 @@ msgid "Device"
 msgstr "Zender"
 
 #, fuzzy
-msgid "Device Information"
-msgstr "Informatie"
-
-#, fuzzy
-msgid "Device id: "
+msgid "Device id"
 msgstr "Apparaatnaam:"
 
 msgid "Device mounts"
@@ -4910,10 +5082,6 @@ msgstr ""
 
 msgid "Devicename:"
 msgstr "Apparaatnaam:"
-
-#, fuzzy
-msgid "Devices"
-msgstr "Zenders"
 
 msgid "DiSEqC"
 msgstr "DiSEqC"
@@ -5012,6 +5180,9 @@ msgstr "Gedéactiveerd"
 msgid "Disabled in configuration"
 msgstr "Configuratie van de opnamelijst"
 
+msgid "Disabled or WPA/WPA2"
+msgstr ""
+
 msgid "Disk space to reserve for recordings (in GB)"
 msgstr "Te reserveren schijfruimte voor opnames (in GB)"
 
@@ -5046,7 +5217,20 @@ msgstr "Display en gebruikersinterface"
 msgid "Display message before playing next movie"
 msgstr "Een melding geven voordat de volgende film start"
 
+msgid "Display next commit log"
+msgstr ""
+
+msgid "Display next system information screen"
+msgstr ""
+
 msgid "Display oscam information."
+msgstr ""
+
+#, fuzzy
+msgid "Display previous commit log"
+msgstr "Vorige afspelen"
+
+msgid "Display previous system information screen"
 msgstr ""
 
 msgid "Display selection list as a selection menu"
@@ -5062,10 +5246,6 @@ msgstr "Toon EIT nu/straks in de informatiebalk"
 
 msgid "Display the virtual keyboard for data entry"
 msgstr ""
-
-#, fuzzy
-msgid "Display type: "
-msgstr "Instellingen voor het display"
 
 msgid "Djibouti"
 msgstr "Djibouti"
@@ -5181,6 +5361,14 @@ msgstr "Wilt u alle instellingen automatisch herstellen?"
 msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Wilt u de gekozen bestanden op een DVD branden?"
 
+#, fuzzy
+msgid "Do you want to delete all log files?"
+msgstr "Wilt u alle crashlogs verwijderen?"
+
+#, fuzzy
+msgid "Do you want to delete this log file?"
+msgstr "Wilt u %s echt verwijderen?"
+
 #, python-format
 msgid ""
 "Do you want to flash image\n"
@@ -5219,9 +5407,6 @@ msgstr "Wilt u de overscan wizard sluiten?"
 
 msgid "Do you want to reboot your receiver?"
 msgstr "Wilt u de ontvanger opnieuw opstarten?"
-
-msgid "Do you want to remove all the crash logfiles"
-msgstr "Wilt u alle crashlogs verwijderen?"
 
 msgid "Do you want to remove the package:\n"
 msgstr "Wilt u dit pakket verwijderen:\n"
@@ -5297,7 +5482,8 @@ msgstr "Niet omschakelen en schakel timer uit"
 msgid "Don't zap and remove timer"
 msgstr "Niet omschakelen en verwijder de timer"
 
-msgid "Donate: "
+#, python-format
+msgid "Donate at %s"
 msgstr ""
 
 msgid "Done"
@@ -5308,6 +5494,10 @@ msgid "Done - Installed, updated or removed %d package (%s)"
 msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Gereed - %d pakket geïnstalleerd, vervangen of verwijderd (%s)"
 msgstr[1] "Gereed - %d pakketten geïnstalleerd, vervangen of verwijderd (%s)"
+
+#, fuzzy
+msgid "Down"
+msgstr "DTS downmix"
 
 msgid "Download plugins"
 msgstr "Downloaden plugins"
@@ -5336,7 +5526,11 @@ msgid "Drama"
 msgstr "Film/Drama"
 
 #, fuzzy
-msgid "Drivers version: "
+msgid "Driver and kernel information"
+msgstr "Softwarebeheerinformatie"
+
+#, fuzzy
+msgid "Drivers version"
 msgstr "DVB driver versie: "
 
 msgid "Drop unconfigured satellites"
@@ -5345,6 +5539,9 @@ msgstr "Verwijder niet geconfigureerde satellieten"
 #, fuzzy
 msgid "Dual Mode"
 msgstr "Modus"
+
+msgid "Duplex"
+msgstr ""
 
 msgid "Dutch"
 msgstr "Nederlands"
@@ -5717,12 +5914,12 @@ msgstr "Eind tijd om in stand-by gaan te negeren"
 msgid "English"
 msgstr "Engels"
 
-#, fuzzy, python-format
-msgid "Enigma2 (re)starts: %d\n"
+#, fuzzy
+msgid "Enigma2 (re)starts"
 msgstr "Enigma (her)starts: %d\n"
 
-#, fuzzy, python-format
-msgid "Enigma2 debug level: %d\n"
+#, fuzzy
+msgid "Enigma2 debug level"
 msgstr "Enigma debug niveau: %d\n"
 
 #, fuzzy
@@ -5730,11 +5927,15 @@ msgid "Enigma2 default"
 msgstr "standaard"
 
 #, fuzzy
-msgid "Enigma2 revision: "
+msgid "Enigma2 information"
+msgstr "Softwarebeheerinformatie"
+
+#, fuzzy
+msgid "Enigma2 revision"
 msgstr "Enigma versie: "
 
 #, fuzzy
-msgid "Enigma2 version: "
+msgid "Enigma2 version"
 msgstr "Enigma versie: "
 
 msgid "Enigmalight"
@@ -5833,8 +6034,20 @@ msgid "Error"
 msgstr "Fout"
 
 #, python-format
+msgid "Error %d: Log file '%s' wasn't deleted!  (%s)"
+msgstr ""
+
+#, python-format
+msgid "Error %d: The logfile '%s' could not be opened.  (%s)"
+msgstr ""
+
+#, python-format
 msgid "Error %s"
 msgstr "Fout %s"
+
+#, python-format
+msgid "Error '%s' encountered retrieving the %s commit logs!"
+msgstr ""
 
 msgid "Error code"
 msgstr "Foutcode"
@@ -6109,6 +6322,9 @@ msgstr "F"
 msgid "F1"
 msgstr "1"
 
+msgid "F1 / Help"
+msgstr ""
+
 #, fuzzy
 msgid "F2"
 msgstr "2"
@@ -6166,14 +6382,17 @@ msgid "FEC:"
 msgstr "FEC:"
 
 #, fuzzy
-msgid "FFmpeg version: "
+msgid "FFmpeg version"
 msgstr "Enigma versie: "
 
 msgid "FHD"
 msgstr "FHD"
 
+msgid "FLASH"
+msgstr ""
+
 #, fuzzy
-msgid "FPU: "
+msgid "FPU"
 msgstr "CPU: "
 
 msgid "FSBL Update Check"
@@ -6202,15 +6421,11 @@ msgid "FTP setup"
 msgstr "PIP instellingen"
 
 #, fuzzy
-msgid "Factory RC type: "
-msgstr "Fabrieksinstellingen"
-
-#, fuzzy
 msgid "Factory Reset"
 msgstr "Fabrieksinstellingen"
 
 #, fuzzy
-msgid "Factory release: "
+msgid "Factory release"
 msgstr "Fabrieksinstellingen"
 
 msgid "Fade the infobar when hiding"
@@ -6302,6 +6517,10 @@ msgstr ""
 msgid "Fast DiSEqC"
 msgstr "Snelle DiSEqC"
 
+#, fuzzy
+msgid "Fast Forward"
+msgstr "Vooruitspoelsnelheden"
+
 msgid "Fast epoch"
 msgstr "Snel spoelen"
 
@@ -6322,11 +6541,14 @@ msgstr "Favorieten"
 msgid "Favourites"
 msgstr "Favorieten"
 
-msgid "Feed URL: "
+msgid "Feed URL"
 msgstr ""
 
 msgid "Fiji"
 msgstr "Fiji"
+
+msgid "File List"
+msgstr ""
 
 msgid "File appears to be busy.\n"
 msgstr "Bestand mogelijk in gebruik door ander proces.\n"
@@ -6382,15 +6604,11 @@ msgstr "Vast"
 msgid "Fixed X11 font (SD)"
 msgstr ""
 
-#, fuzzy
-msgid "Flash"
-msgstr "Flash de image"
-
 msgid "Flash Image"
 msgstr "Flash de image"
 
 #, fuzzy
-msgid "Flash type: "
+msgid "Flash type"
 msgstr "Flash de image"
 
 msgid "Flashing Image"
@@ -6451,16 +6669,17 @@ msgstr "Framegrootte in vol beeld"
 msgid "France"
 msgstr "Frankrijk"
 
-msgid "Free memory:"
+msgid "Free"
 msgstr ""
 
-msgid "Free swap:"
+#, fuzzy
+msgid "Free flash"
+msgstr "Flash de image"
+
+msgid "Free memory"
 msgstr ""
 
-msgid "Free:"
-msgstr ""
-
-msgid "Free: "
+msgid "Free swap"
 msgstr ""
 
 msgid "French"
@@ -6512,6 +6731,9 @@ msgstr "Van:"
 msgid "Front Panel Display"
 msgstr ""
 
+msgid "Front panel type"
+msgstr ""
+
 #, fuzzy, python-format
 msgid ""
 "Front panel your %s %s will be updated\n"
@@ -6521,8 +6743,8 @@ msgstr ""
 "Wacht aub totdat de ontvanger herstart.\n"
 "Dit kan enige minuten duren."
 
-#, fuzzy, python-format
-msgid "Front processor version: %s"
+#, fuzzy
+msgid "Front processor version"
 msgstr "Frontprocessor versie: %s"
 
 msgid "Full Range RGB"
@@ -6542,6 +6764,22 @@ msgstr "Volledige transparantie"
 msgid "Full view resolution"
 msgstr "Resolutie van de volledige beeldgrootte"
 
+#, fuzzy
+msgid "Function 1"
+msgstr "Mededeling"
+
+#, fuzzy
+msgid "Function 2"
+msgstr "Mededeling"
+
+#, fuzzy
+msgid "Function 3"
+msgstr "Mededeling"
+
+#, fuzzy
+msgid "Function 4"
+msgstr "Mededeling"
+
 msgid "Function of OK button"
 msgstr "De functie van de Ok toets"
 
@@ -6554,12 +6792,11 @@ msgstr "Verdere opties"
 msgid "G"
 msgstr "G"
 
-#, fuzzy
-msgid "GB"
-msgstr "RGB"
+msgid "GIGA"
+msgstr ""
 
 #, fuzzy
-msgid "GStreamer version: "
+msgid "GStreamer version"
 msgstr "GStreamer versie: "
 
 msgid "GUI Skin"
@@ -6623,8 +6860,8 @@ msgid "Geolocation has been used to set the time zone."
 msgstr ""
 
 #, fuzzy
-msgid "Geolocation information"
-msgstr "Softwarebeheerinformatie"
+msgid "Geolocation information cannot be retrieved, please try again later."
+msgstr "Op dit moment kan het commitlog niet bereikt worden - probeer het later opnieuw"
 
 #, fuzzy
 msgid "Geolocation is not available."
@@ -6651,8 +6888,11 @@ msgstr "Gibraltar"
 msgid "GigaBlue Black"
 msgstr ""
 
+msgid "GitHub commit"
+msgstr ""
+
 #, fuzzy
-msgid "Given device id: "
+msgid "Given device id"
 msgstr "Huidig apparaat: "
 
 msgid "Go down the list"
@@ -6736,7 +6976,7 @@ msgstr "Ga naar:"
 msgid "GotoX calibration"
 msgstr "GotoX calibratie"
 
-msgid "Grab: "
+msgid "Grab"
 msgstr ""
 
 msgid "GraphMultiEpg Settings"
@@ -6788,6 +7028,10 @@ msgstr "Guatemala"
 
 msgid "Guernsey"
 msgstr "Guernsey"
+
+#, fuzzy
+msgid "Guide / EPG"
+msgstr "Multi EPG"
 
 msgid "Guinea"
 msgstr "Guinea"
@@ -6872,7 +7116,7 @@ msgstr "HLG ondersteuning"
 msgid "Haiti"
 msgstr "Haiti"
 
-msgid "Halt: "
+msgid "Halt"
 msgstr ""
 
 msgid "Handle standby from TV"
@@ -6898,14 +7142,19 @@ msgid "Harddisk Setup"
 msgstr "Instellen harde schijf"
 
 #, fuzzy
-msgid "Hardware serial: "
+msgid "Hardware"
 msgstr "Hardware: "
 
 #, fuzzy
-msgid "Hardware type: "
+msgid "Hardware information"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "Hardware serial"
 msgstr "Hardware: "
 
-msgid "Hardware: "
+#, fuzzy
+msgid "Hardware type"
 msgstr "Hardware: "
 
 msgid "Heard Island and McDonald Islands"
@@ -6931,8 +7180,9 @@ msgstr "Hulp om de schotel in te stellen"
 msgid "HiSilicon"
 msgstr ""
 
-msgid "HiSilicon dedicated information"
-msgstr ""
+#, fuzzy
+msgid "HiSilicon specific information"
+msgstr "Pluginmanager achtergrondinformatie"
 
 #, fuzzy
 msgid "Hidden / Blank"
@@ -6967,6 +7217,10 @@ msgstr "Hiërarchie-info"
 
 msgid "High bitrate support"
 msgstr "Hoge bitrate-ondersteuning"
+
+#, fuzzy
+msgid "History"
+msgstr "Historiek vorige"
 
 #, fuzzy
 msgid "History Prev/Next"
@@ -7043,7 +7297,7 @@ msgid "Host receiver streaming port"
 msgstr "Uw ontvanger wordt herstart."
 
 #, fuzzy
-msgid "Hostname:"
+msgid "Hostname"
 msgstr "NTP Hostnaam"
 
 msgid "HotKey Setup"
@@ -7125,11 +7379,12 @@ msgstr "IP-adres:"
 msgid "IP of fallback remote receiver"
 msgstr "Indien u bij de voorgaande optie heeft gekozen voor 'IPadres', dan kunt u nu een specifiek IPadres ingeven waarop de Fallback tuner in het netwerk te vinden is."
 
-msgid "IP:"
-msgstr ""
-
 msgid "IPv6"
 msgstr ""
+
+#, fuzzy
+msgid "IPv6 address"
+msgstr "IP-adres:"
 
 #, fuzzy
 msgid "IPv6 setup"
@@ -7145,8 +7400,9 @@ msgstr "ISO bestand is te groot voor dit bestandsysteem!"
 msgid "ISO path"
 msgstr "ISO pad"
 
-msgid "ISP: "
-msgstr ""
+#, fuzzy
+msgid "ISP"
+msgstr "I"
 
 msgid "Iceland"
 msgstr "Ijsland"
@@ -7200,6 +7456,9 @@ msgstr ""
 "Wanneer u dit ziet, is er iets mis met uw\n"
 "Scart aansluiting. Druk op Ok om terug te keren."
 
+msgid "If you would like to support us then please consider donating."
+msgstr ""
+
 msgid ""
 "If your TV has a brightness or contrast enhancement, disable it. If there is something called \"dynamic\", set it to standard. Adjust the backlight level to a value suiting your taste. Turn down contrast on your TV as much as possible.\n"
 "Then turn the brightness setting as low as possible, but make sure that the two lowermost shades of gray stay distinguishable.\n"
@@ -7227,18 +7486,29 @@ msgstr "Negeer DVB-T namespace sub-netwerk"
 msgid "Ignore conflict"
 msgstr "Conflict negeren"
 
+#, fuzzy
+msgid "Image"
+msgstr "Image: "
+
 msgid "Image View On"
 msgstr "‘Image View On’"
 
-msgid "Image architecture: "
+msgid "Image architecture"
 msgstr ""
 
 #, fuzzy
-msgid "Image file system: "
+msgid "Image build date"
+msgstr "Datum van deze build: "
+
+msgid "Image build/branch"
+msgstr ""
+
+#, fuzzy
+msgid "Image file system"
 msgstr "Maakt bestandssysteem"
 
 #, fuzzy
-msgid "Image folder: "
+msgid "Image folder"
 msgstr "Image: "
 
 #, python-format
@@ -7248,9 +7518,6 @@ msgid ""
 msgstr ""
 "De te installeren image is niet in orde\n"
 "%s"
-
-msgid "Image: "
-msgstr "Image: "
 
 msgid "Immediately restart selected devices."
 msgstr ""
@@ -7497,6 +7764,10 @@ msgstr "Directe opname..."
 msgid "Interface"
 msgstr "Interface: "
 
+#, fuzzy, python-format
+msgid "Interface '%s'"
+msgstr "Interface: "
+
 msgid "Interface: "
 msgstr "Interface: "
 
@@ -7653,13 +7924,15 @@ msgid "Kenya"
 msgstr "Kenia"
 
 #, fuzzy
-msgid "Kernel file: "
+msgid "Kernel file"
 msgstr "Kernel versie: "
 
-msgid "Kernel module layout: "
-msgstr ""
+#, fuzzy
+msgid "Kernel module layout"
+msgstr "Geen module gevonden"
 
-msgid "Kernel version: "
+#, fuzzy
+msgid "Kernel version"
 msgstr "Kernel versie: "
 
 msgid "Key Events"
@@ -7782,7 +8055,8 @@ msgstr "Laatste configuratie"
 msgid "Last speed"
 msgstr "Laatste snelheid"
 
-msgid "Last update: "
+#, fuzzy
+msgid "Last update"
 msgstr "Laatste update: "
 
 msgctxt "third event: 'third' event label"
@@ -7792,14 +8066,13 @@ msgstr ""
 msgid "Latest Commits"
 msgstr "Laatste commits"
 
+msgid "Latest revision on github"
+msgstr ""
+
 msgid "Latest update log"
 msgstr "Laatste update log"
 
 msgid "Latitude"
-msgstr "Breedtegraad"
-
-#, fuzzy
-msgid "Latitude: "
 msgstr "Breedtegraad"
 
 msgid "Latvia"
@@ -7832,6 +8105,9 @@ msgstr "Lesotho"
 msgid "Let you change RC type but use it with care."
 msgstr ""
 
+msgid "Let's define enigma2 once more"
+msgstr ""
+
 msgid "Lets define enigma2 once more"
 msgstr ""
 
@@ -7845,7 +8121,7 @@ msgstr "Letterbox zoom"
 msgid "Liberia"
 msgstr "Liberië"
 
-msgid "Libs: "
+msgid "Libs"
 msgstr ""
 
 msgid "Libya"
@@ -7877,6 +8153,10 @@ msgstr "Limieten uit"
 
 msgid "Limits on"
 msgstr "Limieten aan"
+
+#, fuzzy
+msgid "Link detected"
+msgstr "Geen CAId geselecteerd"
 
 msgid "Link quality:"
 msgstr "Kwaliteit van de verbinding:"
@@ -7941,6 +8221,14 @@ msgstr "Niet gekoppelde gebruikersboeketten laden"
 msgid "Loaded"
 msgstr "Laden"
 
+#, fuzzy
+msgid "Loading information, please wait..."
+msgstr "Applicatie informatie ophalen. Een ogenblik aub..."
+
+#, fuzzy
+msgid "Local information"
+msgstr "Informatie"
+
 msgid "Local network"
 msgstr "Lokaal netwerk"
 
@@ -7957,6 +8245,10 @@ msgstr "Locatie"
 msgid "Location for instant recordings"
 msgstr "Opname-locatie directe opnames"
 
+#, fuzzy
+msgid "Location information"
+msgstr "Softwarebeheerinformatie"
+
 msgid "Lock ratio"
 msgstr "Lock verhouding"
 
@@ -7966,14 +8258,19 @@ msgstr "Lock:"
 msgid "Log"
 msgstr ""
 
+#, python-format
+msgid "Log file '%s' deleted."
+msgstr ""
+
 msgid "Log python stack trace on spinner"
 msgstr ""
 
 msgid "Log results to /tmp"
 msgstr "Log resultaat naar /tmp"
 
-msgid "Logfile does not exist anymore"
-msgstr "Logbestand bestaat niet meer"
+#, python-format
+msgid "Logfile '%s' (%d/%d)"
+msgstr ""
 
 #, fuzzy
 msgid "Logs Setup"
@@ -7997,10 +8294,6 @@ msgid "Long press: %s"
 msgstr "Lange toetsdruk"
 
 msgid "Longitude"
-msgstr "Lengtegraad"
-
-#, fuzzy
-msgid "Longitude: "
 msgstr "Lengtegraad"
 
 msgid "Loop through from"
@@ -8030,17 +8323,10 @@ msgstr "Adapterinstellingen"
 msgid "MAC address setup"
 msgstr "Instellingen m.b.t. de harde schijf."
 
-msgid "MAC:"
-msgstr ""
-
-#, fuzzy
-msgid "MB"
-msgstr "B"
-
 msgid "MENU"
 msgstr ""
 
-msgid "MKUBIFS: "
+msgid "MKUBIFS"
 msgstr ""
 
 msgid "MMC card"
@@ -8049,13 +8335,16 @@ msgstr "MMC kaart"
 msgid "MORE"
 msgstr "MEER"
 
-msgid "MTD boot: "
+msgid "MTD boot"
 msgstr ""
 
-msgid "MTD kernel: "
+msgid "MTD kernel"
 msgstr ""
 
-msgid "MTD root: "
+msgid "MTD root"
+msgstr ""
+
+msgid "MTU"
 msgstr ""
 
 msgid "Macao"
@@ -8199,9 +8488,6 @@ msgstr ""
 msgid "Mayotte"
 msgstr "Mayotte"
 
-msgid "Mb/s"
-msgstr ""
-
 msgid "Media playback Remaining/Elapsed as"
 msgstr ""
 
@@ -8212,7 +8498,7 @@ msgid "Media scanner"
 msgstr "Mediascanner"
 
 #, fuzzy
-msgid "Media service: "
+msgid "Media service"
 msgstr "Voeg een zender toe"
 
 msgid "Medium is not a writeable DVD!"
@@ -8229,6 +8515,10 @@ msgstr "Geheugeninfo"
 
 #, fuzzy
 msgid "Memory Information"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "Memory Information Actions"
 msgstr "Informatie"
 
 msgid "Memory index"
@@ -8298,8 +8588,9 @@ msgstr ""
 msgid "Missing "
 msgstr "Ontbrekend "
 
-msgid "Mobile: "
-msgstr ""
+#, fuzzy
+msgid "Mobile connection"
+msgstr "Geen verbinding"
 
 msgid "Mode"
 msgstr "Modus"
@@ -8533,11 +8824,19 @@ msgid "Multi-EPG bouquet selection"
 msgstr "Multi-EPG bouquet selectie"
 
 #, fuzzy
-msgid "MultiLib: "
+msgid "MultiBoot"
+msgstr "Multisat. (Kies de satellieten)"
+
+#, fuzzy
+msgid "MultiBoot Information"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "MultiLib"
 msgstr "Multi EPG"
 
 #, fuzzy
-msgid "MultiTranscoding: "
+msgid "MultiTranscoding"
 msgstr "Transcoderen:"
 
 msgid "MultiType"
@@ -8566,10 +8865,6 @@ msgid "Multisat all select"
 msgstr "Multisat. (Alle satellieten)"
 
 msgid "Multistream"
-msgstr "Multistream"
-
-#, fuzzy
-msgid "Multistream: "
 msgstr "Multistream"
 
 msgid "Music"
@@ -8683,21 +8978,18 @@ msgstr "Nederland"
 msgid "Netmask"
 msgstr "Netmask:"
 
-#, fuzzy
-msgid "Netmask:"
-msgstr "Netmask:"
-
 msgid "Network"
 msgstr "Netwerk"
 
 msgid "Network ID"
 msgstr "Netwerk ID"
 
-msgid "Network Info:"
-msgstr "Netwerk informatie:"
-
 #, fuzzy
 msgid "Network Information"
+msgstr "Netwerk configuratie"
+
+#, fuzzy
+msgid "Network Information Actions"
 msgstr "Netwerk configuratie"
 
 #, fuzzy
@@ -8708,11 +9000,19 @@ msgstr "Activeer de netwerkinstellingen"
 msgid "Network Setup"
 msgstr "Netwerkinstellingen"
 
+#, fuzzy
+msgid "Network address"
+msgstr "Netwerktest"
+
 msgid "Network configuration"
 msgstr "Netwerk configuratie"
 
 msgid "Network configuration..."
 msgstr "Netwerkconfiguratie..."
+
+#, fuzzy
+msgid "Network information"
+msgstr "Netwerk configuratie"
 
 msgid "Network mount"
 msgstr "Netwerkmount"
@@ -8730,10 +9030,6 @@ msgstr "Netwerknaam (SSID)"
 
 msgid "Network scan"
 msgstr "Netwerk doorzoeken"
-
-#, fuzzy
-msgid "Network servers:"
-msgstr "Netwerktest: "
 
 msgid "Network setup"
 msgstr "Netwerkinstellingen"
@@ -8789,6 +9085,13 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Straks"
 
+msgid "Next / Arrow Right"
+msgstr ""
+
+#, fuzzy
+msgid "Next Song"
+msgstr "Volgende"
+
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
@@ -8828,10 +9131,6 @@ msgstr "Geen leeftijdsbeperking"
 msgid "No config to start, please check /etc/openvpn/ and try again."
 msgstr ""
 
-#, fuzzy
-msgid "No connection"
-msgstr "Geen verbinding"
-
 msgid ""
 "No data on transponder!\n"
 "(Timeout reading PAT)"
@@ -8866,6 +9165,9 @@ msgstr "Geen vrije index beschikbaar"
 msgid "No free tuner!"
 msgstr "Geen vrije tuner!"
 
+msgid "No hard disks detected."
+msgstr ""
+
 msgid "No images found"
 msgstr "Er zijn geen images gevonden"
 
@@ -8875,6 +9177,10 @@ msgstr "Er zijn geen images gevonden"
 
 msgid "No network connection available."
 msgstr "Geen netwerkverbinding beschikbaar"
+
+#, fuzzy
+msgid "No network servers detected."
+msgstr "Netwerktest: "
 
 msgid "No networks found"
 msgstr "Geen netwerken gevonden"
@@ -9017,6 +9323,9 @@ msgstr "Niet geïnstalleerd"
 msgid "Not associated"
 msgstr "Geen verband"
 
+msgid "Not currently mounted."
+msgstr ""
+
 #, python-format
 msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
 msgstr "Onvoldoende schijfruimte. Maak ruimte vrij en probeer het opnieuw (%d MB noodzakelijk, %d MB beschikbaar)"
@@ -9030,10 +9339,6 @@ msgstr "niet actief"
 
 msgid "Not tested:"
 msgstr "Niet getest:"
-
-#, fuzzy
-msgid "Not-Associated"
-msgstr "Geen verband"
 
 msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
 msgstr "Let op: Indien u deze optie activeert en u wilt de ontvanger vanuit 'ontwaken' in stand-by zetten, stelt u dan de optie 'opstarten naar stand-by' in op 'nee, uitgezonderd wakeup timer'."
@@ -9091,9 +9396,6 @@ msgid "Number or SMS style data entry"
 msgstr "Cijfer of SMS-stijl invoer"
 
 msgid "NumberZapPicon"
-msgstr ""
-
-msgid "OE: "
 msgstr ""
 
 msgid "OK"
@@ -9212,38 +9514,11 @@ msgid "Open Vision"
 msgstr ""
 
 #, fuzzy
-msgid "Open Vision Information"
-msgstr "Informatie"
-
-msgid "Open Vision RC ID number: "
-msgstr ""
-
-msgid "Open Vision RC name: "
-msgstr ""
-
-msgid "Open Vision RC type: "
-msgstr ""
-
-#, fuzzy
 msgid "Open Vision information"
 msgstr "Open selectie locatie"
 
-#, fuzzy
-msgid "Open Vision language: "
-msgstr "originele taal"
-
-msgid "Open Vision module: "
-msgstr ""
-
 msgid "Open Vision revision check"
 msgstr ""
-
-msgid "Open Vision revision: "
-msgstr ""
-
-#, fuzzy
-msgid "Open Vision version: "
-msgstr "Pythonversie:"
 
 msgid "Open select location"
 msgstr "Open selectie locatie"
@@ -9281,6 +9556,33 @@ msgid "OpenVision"
 msgstr "Applicaties"
 
 #, fuzzy
+msgid "OpenVision Information"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "OpenVision Information Actions"
+msgstr "Informatie"
+
+msgid "OpenVision is an open source project with no commercial funding."
+msgstr ""
+
+#, fuzzy
+msgid "OpenVision language"
+msgstr "originele taal"
+
+#, fuzzy
+msgid "OpenVision module"
+msgstr "Applicaties"
+
+#, fuzzy
+msgid "OpenVision revision"
+msgstr "Pythonversie:"
+
+#, fuzzy
+msgid "OpenVision version"
+msgstr "Pythonversie:"
+
+#, fuzzy
 msgid "Operating LED brightness."
 msgstr "Kleur van de LED tijdens bedrijf"
 
@@ -9307,6 +9609,10 @@ msgstr "Kleur van de LED tijdens bedrijf"
 
 msgid "Opkg"
 msgstr "Opkg"
+
+#, fuzzy
+msgid "Option"
+msgstr "Codering"
 
 msgid "Options disable timer"
 msgstr "Opties m.b.t. déactiveren timer"
@@ -9454,7 +9760,11 @@ msgid "Parental control setup"
 msgstr "Kinderslotinstellingen"
 
 #, fuzzy
-msgid "Partitions: "
+msgid "Partition"
+msgstr " (Partitie %d)"
+
+#, fuzzy
+msgid "Partitions"
 msgstr " (Partitie %d)"
 
 msgid "Passthrough"
@@ -9555,16 +9865,23 @@ msgstr "Pitcairn"
 msgid "Pixels\n"
 msgstr "Pixels\n"
 
-msgid "Platform: "
+msgid "Platform"
 msgstr ""
 
 msgid "Play"
 msgstr "Afspelen"
 
+msgid "Play / Pause"
+msgstr ""
+
 msgid "Play DVD"
 msgstr "DVD afspelen"
 
 msgid "Play DVDs"
+msgstr "DVD's afspelen"
+
+#, fuzzy
+msgid "Play List"
 msgstr "DVD's afspelen"
 
 msgid "Play as Picture in Picture"
@@ -9614,6 +9931,10 @@ msgstr "Vorige afspelen"
 msgid "Play recorded movies..."
 msgstr "Opname afspelen..."
 
+#, fuzzy
+msgid "Playlist"
+msgstr "zwarte lijst"
+
 msgid "Please add titles to the compilation."
 msgstr "Voeg aub titels toe aan de compilatie"
 
@@ -9659,6 +9980,9 @@ msgstr ""
 
 msgid "Please do not change any values unless you know what you are doing!"
 msgstr "Wijzig hier geen instellingen tenzij u precies weet wat u doet"
+
+msgid "Please don't panic if you see values that look suspicious."
+msgstr ""
 
 msgid "Please enter a name for the new bouquet"
 msgstr "Voer de naam voor uw nieuwe bouquet in"
@@ -9857,10 +10181,6 @@ msgstr "Een ogenblik geduld terwijl we uw netwerk activeren..."
 msgid "Please wait while feeds state is being checked."
 msgstr "Een ogenblik geduld, het zoeken is bezig..."
 
-#, fuzzy
-msgid "Please wait while scanning for devices..."
-msgstr "Een ogenblik geduld, het zoeken is bezig..."
-
 msgid "Please wait while scanning is in progress..."
 msgstr "Een ogenblik geduld, het zoeken is bezig..."
 
@@ -9934,6 +10254,10 @@ msgstr "Poort D"
 msgid "Port of fallback remote receiver"
 msgstr "Indien bij 'Fallback tuner' (optie 3) gekozen is voor een separaat IPadres, dan kunt u hier de gebruikte poort van de Fallback tuner ingeven."
 
+#, fuzzy
+msgid "Portal / Plugins"
+msgstr "Applicaties"
+
 msgid "Portugal"
 msgstr "Portugal"
 
@@ -9960,6 +10284,10 @@ msgstr "Rotorinstellingen"
 
 msgid "Positioner setup log"
 msgstr "Positioner instellingen log"
+
+#, fuzzy
+msgid "Power"
+msgstr "Powermenu"
 
 msgid "Power LED can be turned on or off here."
 msgstr ""
@@ -10172,6 +10500,13 @@ msgstr "Voorbeeld menu"
 msgid "Preview selected channel"
 msgstr "Preview geselecteerd kanaal"
 
+msgid "Previous / Arrow Left"
+msgstr ""
+
+#, fuzzy
+msgid "Previous Song"
+msgstr "Vorige afspelen"
+
 msgid "Primary DNS"
 msgstr "Primaire DNS:"
 
@@ -10182,11 +10517,15 @@ msgid "Priority"
 msgstr "Prioriteit"
 
 #, fuzzy
-msgid "Proc model: "
+msgid "Proc model"
 msgstr "Model: "
 
 msgid "Process"
 msgstr "Proces"
+
+#, fuzzy
+msgid "Processor information"
+msgstr "Informatie"
 
 msgid "Progress"
 msgstr "Voortgang"
@@ -10256,10 +10595,11 @@ msgstr "Providers"
 msgid "Providers: "
 msgstr "Providers"
 
-msgid "Proxy: "
-msgstr ""
+#, fuzzy
+msgid "Proxy detected"
+msgstr "Auto DiSEqC"
 
-msgid "Public IP: "
+msgid "Public IP"
 msgstr ""
 
 msgid "Puerto Rico"
@@ -10280,7 +10620,8 @@ msgstr "Schakel ook de A/V versterker naar stand-by"
 msgid "Python frontend for /tmp/mmi.socket"
 msgstr "Python frontend voor /tmp/mmi.socket"
 
-msgid "Python version: "
+#, fuzzy
+msgid "Python version"
 msgstr "Pythonversie:"
 
 msgid "Qatar"
@@ -10305,14 +10646,32 @@ msgstr ""
 msgid "Quick zap"
 msgstr "Snelzap"
 
-msgid "RAM"
+msgid "RAM (Details)"
 msgstr ""
 
-msgid "RC custom code: "
+msgid "RAM (Summary)"
+msgstr ""
+
+msgid "RC ID number"
+msgstr ""
+
+msgid "RC code"
 msgstr ""
 
 #, fuzzy
-msgid "RC type: "
+msgid "RC custom code"
+msgstr "Diverse instellingen"
+
+#, fuzzy
+msgid "RC name"
+msgstr "Wijzigen"
+
+#, fuzzy
+msgid "RC type"
+msgstr "type"
+
+#, fuzzy, python-format
+msgid "RC type:|%s"
 msgstr "type"
 
 msgid "REC"
@@ -10365,9 +10724,6 @@ msgid "Reader"
 msgstr ""
 
 msgid "Reader Statistics"
-msgstr ""
-
-msgid "Reader: "
 msgstr ""
 
 #, python-format
@@ -10441,6 +10797,17 @@ msgstr "Rec"
 
 msgid "Recall to previous service"
 msgstr "Herinner aan het eerdere programma"
+
+msgid "Receiver"
+msgstr ""
+
+#, fuzzy
+msgid "Receiver Information"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "Receiver Information Actions"
+msgstr "Informatie"
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -10534,6 +10901,10 @@ msgstr "Herhaalfrequentie"
 msgid "Refresh rate selection."
 msgstr "Herhalingsfrequentie"
 
+#, fuzzy
+msgid "Refresh the screen"
+msgstr "Herhalingsfrequentie"
+
 msgid "Regard deep standby as standby"
 msgstr "Beschouw de diepe stand-by als normale stand-by"
 
@@ -10572,6 +10943,10 @@ msgstr "Onthoud zender pincode"
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Herinnering, u heeft ervoor gekozen om de timeshiftopname op te slaan."
 
+#, fuzzy
+msgid "Remote control information"
+msgstr "Type afstandsbediening"
+
 msgid "Remote control type"
 msgstr "Type afstandsbediening"
 
@@ -10603,9 +10978,6 @@ msgstr ""
 #, fuzzy
 msgid "Remove all keymap data"
 msgstr "Wis markeerpunt"
-
-msgid "Remove all logfiles"
-msgstr "Verwijder alle logbestanden"
 
 #, fuzzy
 msgid "Remove all network data"
@@ -10683,9 +11055,6 @@ msgstr "Verwijder DVB-T kanalen"
 
 msgid "Remove texts for the hearing impaired from external subtitles (instrumental music or environmental sounds, e.g., when a doorbell rings or a gun shot is heard)."
 msgstr ""
-
-msgid "Remove this logfile"
-msgstr "Verwijder dit logbestand"
 
 msgid "Remove title"
 msgstr "Titel verwijderen"
@@ -10914,8 +11283,20 @@ msgstr "Hervat positie op %s"
 msgid "Resuming playback"
 msgstr "Afspelen wordt hervat"
 
+#, fuzzy, python-format
+msgid "Retrieving %s commit log, please wait..."
+msgstr "De gegevens worden opgehaald. Een ogenblik geduld aub..."
+
 msgid "Retrieving image list - Please wait..."
 msgstr "De gegevens worden opgehaald. Een ogenblik geduld aub..."
+
+#, fuzzy
+msgid "Retrieving network server information, please wait..."
+msgstr "Gegevens worden opgehaald. Een ogenblik geduld aub..."
+
+#, fuzzy
+msgid "Retrieving system information, please wait..."
+msgstr "Gegevens worden opgehaald. Een ogenblik geduld aub..."
 
 msgid "Return to movie list"
 msgstr "Terug naar de opnamelijst"
@@ -10931,6 +11312,10 @@ msgstr "Wijzig het bouquet +/- gedrag"
 
 msgid "Reverse list"
 msgstr "Omgekeerde volgorde"
+
+#, fuzzy
+msgid "Rewind"
+msgstr "Terugspoelsnelheden"
 
 msgid "Rewind speeds"
 msgstr "Terugspoelsnelheden"
@@ -10960,7 +11345,7 @@ msgid "Root directory"
 msgstr "Hoofddirectory"
 
 #, fuzzy
-msgid "Root file: "
+msgid "Root file"
 msgstr "SRT bestand"
 
 msgid "Rotor step position:"
@@ -11053,6 +11438,10 @@ msgstr "SSA bestand"
 
 msgid "SSA file"
 msgstr "SSA bestand"
+
+#, fuzzy
+msgid "SSID"
+msgstr "SSID:"
 
 msgid "SSID:"
 msgstr "SSID:"
@@ -12174,6 +12563,10 @@ msgstr "Toon een achtergrond achter de ondertitels"
 msgid "Show background in radio mode"
 msgstr "Wilt u de radioachtergrond weergeven"
 
+#, fuzzy
+msgid "Show benchmark information"
+msgstr "Softwarebeheerinformatie"
+
 msgid "Show bouquet selection menu"
 msgstr "Bouquet selectiemenu weergeven"
 
@@ -12262,6 +12655,10 @@ msgstr "Informatiebalk weergeven zodra een programma begint"
 
 msgid "Show infobar on skip forward/backward"
 msgstr "Informatiebalk zichtbaar na overslaan, vooruit/achteruit"
+
+#, fuzzy
+msgid "Show latest commit log information"
+msgstr "Toon de laatste commits"
 
 msgid "Show latest commits"
 msgstr "Toon de laatste commits"
@@ -12395,6 +12792,10 @@ msgstr "Toon de onderliggende zenders"
 msgid "Show subtitle selection"
 msgstr "Toon de selectie van de ondertitels"
 
+#, fuzzy
+msgid "Show system information"
+msgstr "Softwarebeheerinformatie"
+
 msgid "Show the radio player..."
 msgstr "Radio weergave modus..."
 
@@ -12415,6 +12816,10 @@ msgstr ""
 
 msgid "Show time remaining/elapsed"
 msgstr ""
+
+#, fuzzy
+msgid "Show translation information"
+msgstr "Softwarebeheerinformatie"
 
 msgid "Show transponder info"
 msgstr "Geef de transponderinfo weer"
@@ -12445,8 +12850,9 @@ msgstr "Show/Quiz"
 msgid "Show/hide window"
 msgstr "Toon/verberg het scherm"
 
-msgid "Showiframe: "
-msgstr ""
+#, fuzzy
+msgid "Showiframe"
+msgstr "Toon de informatie"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Indien geactiveerd, dan wordt er Live TV getoond op het LCD display indien PIP actief is."
@@ -12488,6 +12894,10 @@ msgstr "Signaal zoeker"
 
 msgid "Signal quality"
 msgstr "Signaalkwaliteit"
+
+#, fuzzy
+msgid "Signal strength"
+msgstr "Signaalsterkte:"
 
 msgid "Signal strength:"
 msgstr "Signaalsterkte:"
@@ -12549,9 +12959,9 @@ msgstr "Lengtegraad van de locatie"
 msgid "Skin"
 msgstr "Skins"
 
-#, python-format
-msgid "Skin & Resolution: %s (%sx%s)\n"
-msgstr "Skin & Resolutie: %s (%sx%s)\n"
+#, fuzzy
+msgid "Skin & Resolution"
+msgstr "Resolutie"
 
 msgid "Skin Selection Actions"
 msgstr "Skin selectie actie(s)"
@@ -12577,6 +12987,10 @@ msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Sla deze over. (De automatische installatie van pakketten vervalt)"
 
 #, fuzzy
+msgid "Sleep"
+msgstr "Sleeptimer"
+
+#, fuzzy
 msgid "Sleep Timer"
 msgstr "Sleeptimer"
 
@@ -12586,6 +13000,10 @@ msgstr "Scroll vertraging"
 
 msgid "SleepTimer Configuration"
 msgstr "Configuratie van de sleeptimer"
+
+#, fuzzy
+msgid "Sleeping"
+msgstr "Sleeptimer"
 
 msgid "Sleeptimer"
 msgstr "Sleeptimer"
@@ -12662,7 +13080,7 @@ msgstr ""
 msgid "Smpte 240M"
 msgstr ""
 
-msgid "SoC family: "
+msgid "SoC family"
 msgstr ""
 
 msgid "Social/Political/Economics"
@@ -12671,7 +13089,7 @@ msgstr "Sociaal/Politiek/Economisch"
 msgid "SocketMMI"
 msgstr "SocketMMI"
 
-msgid "Soft multiboot: "
+msgid "Soft multiboot"
 msgstr ""
 
 #, fuzzy
@@ -12691,6 +13109,10 @@ msgstr "Software"
 #, fuzzy
 msgid "Software Update"
 msgstr "Software updaten"
+
+#, fuzzy
+msgid "Software information"
+msgstr "Softwarebeheerinformatie"
 
 msgid "Software management"
 msgstr "Softwarebeheer"
@@ -12853,10 +13275,10 @@ msgstr "Bepaal de periode waar de inactiviteitsleeptimer genegeerd wordt"
 msgid "Specify timeframe to ignore the shutdown in standby"
 msgstr "Bepaal de periode om 'naar ' te gaan te negeren"
 
-msgid "Speed up the performance"
+msgid "Speed"
 msgstr ""
 
-msgid "Speed:"
+msgid "Speed up the performance"
 msgstr ""
 
 msgid "Split preview mode"
@@ -12972,7 +13394,7 @@ msgid "Startup to Standby"
 msgstr "Opstarten en ga naar direct naar stand-by"
 
 #, fuzzy
-msgid "State: "
+msgid "State"
 msgstr "Bitrate:"
 
 msgid "Static IP or Custom"
@@ -13099,6 +13521,10 @@ msgstr ""
 
 msgid "Storage"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Information"
+msgstr "Netwerk configuratie"
 
 msgid "Store at index"
 msgstr "Opslaan op index"
@@ -13347,6 +13773,14 @@ msgstr "Systeem"
 msgid "System & Modulation"
 msgstr "Systeem & Modulatie"
 
+#, fuzzy
+msgid "System Information"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "System Information Actions"
+msgstr "Informatie"
+
 msgid "T2MI PID"
 msgstr "T2MI PID"
 
@@ -13358,10 +13792,6 @@ msgstr "T2MI PLP ID"
 
 msgid "T2MI RAW Mode"
 msgstr "T2MI RAW Modus"
-
-#, fuzzy
-msgid "TB"
-msgstr "B"
 
 msgid "TEXT"
 msgstr "Tekst"
@@ -13377,7 +13807,6 @@ msgstr "Niet geïnstalleerd"
 msgid "TMBD details for event"
 msgstr "Plugin details:"
 
-#. TRANSLATORS: Add here whatever should be shown in the "translator" about screen, up to 6 lines (use \n for newline)
 msgid "TRANSLATOR_INFO"
 msgstr ""
 "Deze Nederlandse vertaling wordt u aangeboden door het OpenPLi team.\n"
@@ -13398,6 +13827,10 @@ msgstr "AFSTEMMEN"
 
 msgid "TV"
 msgstr ""
+
+#, fuzzy
+msgid "TV / Radio"
+msgstr " (Radio)"
 
 msgid "TV physical address report"
 msgstr "TV fysiek adres overzicht"
@@ -13555,6 +13988,18 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "Nog %d min tot het einde van het programma."
 
+#, fuzzy, python-format
+msgid "The %s commit log contains no information."
+msgstr "Softwarebeheerinformatie"
+
+#, fuzzy, python-format
+msgid "The %s commit logs can't be retrieved, please try again later."
+msgstr "Op dit moment kan het commitlog niet bereikt worden - probeer het later opnieuw"
+
+#, python-format
+msgid "The '%s' log file contains no information."
+msgstr ""
+
 #, fuzzy
 msgid ""
 "The AutoTimer plugin is not installed!\n"
@@ -13603,6 +14048,9 @@ msgid ""
 msgstr ""
 "De huidige image kan onstabiel zijn.\n"
 "Voor aanvullende informatie kijk op %s"
+
+msgid "The detailed information is intended for developers only."
+msgstr ""
 
 #, python-format
 msgid ""
@@ -13718,6 +14166,9 @@ msgstr ""
 msgid "The status of the current image could not be checked because %s can not be reached."
 msgstr "De status van de huidige image kan niet worden bepaald omdat %s niet te bereiken is."
 
+msgid "The team relies on donations to fund OpenVision development."
+msgstr ""
+
 #, fuzzy
 msgid "The timer file (pm_timers.xml) is corrupt and could not be loaded."
 msgstr "Het timer bestand (timer.xml) is beschadigd en kan niet worden geladen."
@@ -13810,15 +14261,6 @@ msgid ""
 "No support will be provided!\n"
 "Do you understand this?"
 msgstr ""
-
-msgid ""
-"This info is for developers only.\n"
-"For normal users it is not relevant.\n"
-"Please don't panic if you see values displayed looking suspicious!"
-msgstr ""
-"U hoeft niet te schrikken indien u vreemde zaken ziet in dit overzicht.\n"
-"\n"
-"De hier weergegeven informatie is enkel van belang voor ontwikkelaars. Voor de gewone eindgebruiker is deze informatie niet van belang."
 
 msgid "This is a multitype tuner. Available options depend on the hardware."
 msgstr "Dit is een multitype tuner. Beschikbare opties zijn afhankelijk van de hardware. Kabel en Terrestrial kunnen niet gelijktijdig ingesteld worden. Als u het wilt gebruiken als kabel + satelliet of terrestrial + satellite, configureer dan eerst kabel/terrestrial en sla dit vervolgens op. Open de opties opnieuw en configureer vervolgens de satelliet instellingen."
@@ -14022,6 +14464,10 @@ msgstr "Deze plugin wordt verwijderd."
 #, python-format
 msgid "This receiver cannot decode %s streams!"
 msgstr "Deze ontvanger kan geen %s streams decoderen!"
+
+#, fuzzy
+msgid "This screen is not yet available."
+msgstr "Er zijn momenteel geen updates beschikbaar."
 
 msgid "This setting allows the tuner configuration to be a duplication of how another tuner is already configured."
 msgstr "Deze optie staat toe dat een tunerconfiguratie gedupliceerd wordt zoals een andere tuner eerder geconfigureerd is."
@@ -14230,7 +14676,7 @@ msgid "Timeshift not possible!"
 msgstr "Timeshift is niet mogelijk!"
 
 #, fuzzy
-msgid "Timezone: "
+msgid "Timezone"
 msgstr "Tijdzone"
 
 msgid "Timor-Leste"
@@ -14337,17 +14783,22 @@ msgstr ""
 msgid "Total clients streaming: %d (%s)"
 msgstr "Totaal aantal streamende clients: %d (%s)"
 
-msgid "Total memory:"
+#, fuzzy
+msgid "Total flash"
+msgstr "Intern geheugen"
+
+msgid "Total memory"
 msgstr ""
 
-msgid "Total swap:"
-msgstr ""
-
-msgid "Total:"
+msgid "Total swap"
 msgstr ""
 
 msgid "Track"
 msgstr "Spoor"
+
+#, fuzzy
+msgid "Transcoding"
+msgstr "Transcoderen:"
 
 msgid "Transcoding: "
 msgstr "Transcoderen:"
@@ -14355,11 +14806,16 @@ msgstr "Transcoderen:"
 msgid "Translation"
 msgstr "Vertaling"
 
+#, fuzzy
+msgid "Translation Information"
+msgstr "Informatie"
+
+#, fuzzy
+msgid "Translation information"
+msgstr "Softwarebeheerinformatie"
+
 msgid "Translation:"
 msgstr "Vertaling:"
-
-msgid "Translations"
-msgstr "Vertalingen"
 
 msgid "Transmission mode"
 msgstr "Transmissiemodus"
@@ -14432,6 +14888,10 @@ msgstr "Tuner"
 msgid "Tuner Configuration"
 msgstr "Tunerconfiguratie"
 
+#, fuzzy
+msgid "Tuner Information"
+msgstr "Informatie"
+
 msgid "Tuner is not supported"
 msgstr "De tuner wordt niet ondersteund"
 
@@ -14452,6 +14912,10 @@ msgstr "Tunerstatus:"
 
 msgid "Tuner type"
 msgstr "Tunertype"
+
+#, fuzzy
+msgid "Tuners"
+msgstr "Tuner"
 
 #, fuzzy
 msgid "Tuners & Scanning"
@@ -14515,7 +14979,7 @@ msgstr "LNB/apparaat type"
 msgid "Type of scan"
 msgstr "Zoekmodus"
 
-msgid "UBINIZE: "
+msgid "UBINIZE"
 msgstr ""
 
 msgid "UNKNOWN"
@@ -14538,9 +15002,6 @@ msgstr "USALS calibratie"
 
 msgid "USB stick"
 msgstr "USB stick"
-
-msgid "UUID: "
-msgstr ""
 
 msgid "Uganda"
 msgstr "Oeganda"
@@ -14642,6 +15103,9 @@ msgstr "Niet ondersteund"
 
 msgid "Unzipping Image"
 msgstr "Het image wordt uitgepakt"
+
+msgid "Up"
+msgstr ""
 
 msgid "Update"
 msgstr "Update"
@@ -14780,6 +15244,10 @@ msgstr "Wilt u de Fastscan zendervolgorde gebruiken"
 msgid "Use frequency or channel"
 msgstr "Gebruik frequentie of kanaal"
 
+#, fuzzy
+msgid "Use geolocation to get WAN information"
+msgstr "Softwarebeheerinformatie"
+
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
 
@@ -14859,6 +15327,9 @@ msgstr "Gebruik de prullenbak in de opnamelijst"
 
 msgid "Use trash can in movielist"
 msgstr "Gebruik de prullenbak in de opnamelijst"
+
+msgid "Used"
+msgstr ""
 
 msgid "Used service scan type"
 msgstr "Gebruikte zoekmethode"
@@ -14965,6 +15436,14 @@ msgstr ""
 #, fuzzy
 msgid "Very slow"
 msgstr "Tunerslot"
+
+#, fuzzy
+msgid "Video"
+msgstr "S-Video"
+
+#, fuzzy
+msgid "Video Mode"
+msgstr "VideoModus"
 
 msgid "Video PID"
 msgstr "Video PID"
@@ -15122,6 +15601,14 @@ msgstr "Spanningsmodus"
 msgid "Volume"
 msgstr "Volume"
 
+#, fuzzy
+msgid "Volume +"
+msgstr "Volume"
+
+#, fuzzy
+msgid "Volume -"
+msgstr "Volume"
+
 msgid "Volume down"
 msgstr "Volume -"
 
@@ -15133,6 +15620,14 @@ msgstr "Volume +"
 
 msgid "W"
 msgstr "W"
+
+#, fuzzy
+msgid "WAN Geolocation"
+msgstr "Locatie"
+
+#, fuzzy
+msgid "WAN connection information"
+msgstr "Softwarebeheerinformatie"
 
 msgid "WEP"
 msgstr "WEP"
@@ -16610,9 +17105,6 @@ msgstr "vrij"
 msgid "from"
 msgstr "van"
 
-msgid "full"
-msgstr ""
-
 msgid "further education"
 msgstr "Meer educatie"
 
@@ -16671,7 +17163,7 @@ msgstr ""
 msgid "hd2400"
 msgstr "HD2400"
 
-msgid "hd60"
+msgid "hd60/multibox/se"
 msgstr ""
 
 msgid "hd61"

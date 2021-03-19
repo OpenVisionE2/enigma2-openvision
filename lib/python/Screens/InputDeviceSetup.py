@@ -318,7 +318,7 @@ class RemoteControlType(Screen, ConfigListScreen):
 			("24", _("e4hdultra")),
 			("25", _("h0/8/i55plus")),
 			("26", _("hd61")),
-			("27", _("hd60")),
+			("27", _("hd60/multibox/se")),
 			("28", _("h7/9/9se/9combo/9combose/10/i55plusse")),
 			("500", _("bre2zet2c")),
 			("501", _("sf4008")),
