@@ -4,9 +4,9 @@ from datetime import datetime
 from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, eLabel, eTimer, getBoxBrand, getBoxType, getDesktop, getE2Rev
 from glob import glob
 from json import loads
-from os import listdir, popen, remove
+from os import listdir, popen, remove, statvfs
 from os.path import basename, getmtime, isdir, isfile, join as pathjoin
-from six import PY2, PY3
+from six import PY2
 from ssl import _create_unverified_context  # For python 2.7.11 we need to bypass the certificate check
 from subprocess import check_output
 from time import localtime
@@ -46,7 +46,7 @@ INFO_COLOR = {
 }
 
 
-def scaleNumber(number, suffix="B", style="Si"):  # This temporary code is borrowed from the new Storage.py!
+def scaleNumber(number, style="Si", suffix="B"):  # This temporary code is borrowed from the new Storage.py!
 	units = ["", "K", "M", "G", "T", "P", "E", "Z", "Y"]
 	style = style.capitalize()
 	if style not in ("Si", "Iec", "Jedec"):
@@ -61,7 +61,7 @@ def scaleNumber(number, suffix="B", style="Si"):  # This temporary code is borro
 	result = float(number) / (10 ** (scale * 3)) if style == "Si" else float(number) / (1024 ** scale)
 	if negative:
 		result = -result
-	print("[Information] DEBUG: Number=%d, Digits=%d, Scale=%d, Factor=%d, Result=%f." % (number, digits, scale, 10 ** (scale * 3), result))
+	# print("[Information] DEBUG: Number=%d, Digits=%d, Scale=%d, Factor=%d, Result=%f." % (number, digits, scale, 10 ** (scale * 3), result))
 	return "%.3f %s%s%s" % (result, units[scale], ("i" if style == "Iec" and scale else ""), suffix)
 
 
@@ -428,29 +428,21 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("M", _("Donate at %s") % "https://forum.openvision.tech/app.php/donate"))
 		info.append("")
-		if config.misc.OVupdatecheck.value:
-			try:
-				if boxbranding.getVisionVersion().startswith("10"):
-					ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/new.conf"
-				else:
-					ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/old.conf"
-				ovResponse = urlopen(ovUrl)
-				if PY2:
-					ovRevision = ovResponse.read()
-					ovRevisionUpdate = int(filter(str.isdigit, ovRevision))
-				else:
-					ovResponse = urlopen(ovUrl)
-					ovRevision = ovResponse.read().decode()
-					ovRevisionUpdate = ovRevision.split("r")[1][:3]
-			except Exception as err:
-				ovRevisionUpdate = _("Requires internet connection")
-		else:
-			ovRevisionUpdate = _("Disabled in configuration")
 		visionVersion = fileReadLine("/etc/openvision/visionversion", boxbranding.getVisionVersion())
 		info.append(formatLine("P1", _("OpenVision version"), visionVersion))
 		visionRevision = fileReadLine("/etc/openvision/visionrevision", boxbranding.getVisionRevision())
 		info.append(formatLine("P1", _("OpenVision revision"), visionRevision))
-		info.append(formatLine("P1", _("Latest revision on github"), str(ovRevisionUpdate)))
+		if config.misc.OVupdatecheck.value:
+			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if boxbranding.getVisionVersion().startswith("10") else "old")
+			try:
+				ovResponse = urlopen(ovUrl)
+				ovRevision = ovResponse.read().decode() if PY2 else ovResponse.read()
+				ovRevisionUpdate = ovRevision[1:]
+			except Exception as err:
+				ovRevisionUpdate = _("Requires internet connection")
+		else:
+			ovRevisionUpdate = _("Disabled in configuration")
+		info.append(formatLine("P1", _("Latest revision on github"), ovRevisionUpdate))
 		visionLanguage = fileReadLine("/etc/openvision/visionlanguage")
 		if visionLanguage:
 			info.append(formatLine("P1", _("OpenVision language"), visionLanguage))
@@ -571,28 +563,6 @@ class MemoryInformation(InformationBase):
 			"yellow": (self.clearMemoryInformation, _("Clear the virtual memory caches"))
 		}, prio=0, description=_("Memory Information Actions"))
 		self["key_yellow"] = StaticText(_("Clear"))
-		self.storageUnits = {
-			"k": "kB",
-			"M": "MB",
-			"G": "GB",
-			"T": "TB"
-		}
-		self.console = Console()
-		self.flashTotal = ["-", ""]
-		self.flashFree = ["-", ""]
-
-	def fetchInformation(self):
-		self.informationTimer.stop()
-		self.console.ePopen("df -mh / | grep -v '^Filesystem'", self.flashInformationFinished)
-		for callback in self.onInformationUpdated:
-			callback()
-
-	def flashInformationFinished(self, result, retVal, extraArgs=None):
-		flash = result.strip().split()
-		self.flashTotal = [flash[1][:-1], self.storageUnits.get(flash[1][-1:], "")]
-		self.flashFree = [flash[3][:-1], self.storageUnits.get(flash[3][-1:], "")]
-		for callback in self.onInformationUpdated:
-			callback()
 
 	def displayInformation(self):
 		info = []
@@ -616,8 +586,13 @@ class MemoryInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("FLASH")))
 		info.append("")
-		info.append(formatLine("P1", _("Total flash"), "%s %s" % (self.flashTotal[0], self.flashTotal[1])))
-		info.append(formatLine("P1", _("Free flash"), "%s %s" % (self.flashFree[0], self.flashFree[1])))
+		stat = statvfs("/")
+		diskSize = stat.f_blocks * stat.f_frsize
+		diskFree = stat.f_bfree * stat.f_frsize
+		diskUsed = diskSize - diskFree
+		info.append(formatLine("P1", _("Total flash"), "%s  (%s)" % (scaleNumber(diskSize), scaleNumber(diskSize, "Iec"))))
+		info.append(formatLine("P1", _("Used flash"), "%s  (%s)" % (scaleNumber(diskUsed), scaleNumber(diskUsed, "Iec"))))
+		info.append(formatLine("P1", _("Free flash"), "%s  (%s)" % (scaleNumber(diskFree), scaleNumber(diskFree, "Iec"))))
 		info.append("")
 		info.append(formatLine("H", _("RAM (Details)")))
 		info.append("")
@@ -973,8 +948,8 @@ class ReceiverInformation(InformationBase):
 		hwSerial = getHWSerial()
 		if hwSerial:
 			info.append(formatLine("P1", _("Hardware serial"), (hwSerial if hwSerial != "unknown" else about.getCPUSerial())))
-		if isfile("/proc/stb/info/release"):
-			hwRelease = fileReadLine("/proc/stb/info/release")
+		hwRelease = fileReadLine("/proc/stb/info/release")
+		if hwRelease:
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
 		info.append(formatLine("P1", _("Brand/Meta"), SystemInfo["MachineBrand"]))
 		if not boxbranding.getDisplayType().startswith(" "):
@@ -1020,30 +995,32 @@ class ReceiverInformation(InformationBase):
 		info.append(formatLine("P1", _("Kernel version"), boxbranding.getKernelVersion()))
 		moduleLayout = popen("find /lib/modules/ -type f -name 'openvision.ko' -exec modprobe --dump-modversions {} \; | grep 'module_layout' | cut -c-11").read().strip()
 		info.append(formatLine("P1", _("Kernel module layout"), (moduleLayout if moduleLayout else _("N/A"))))
-		if isfile("/proc/device-tree/amlogic-dt-id"):
-			deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id")
+		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id")
+		if deviceId:
 			info.append(formatLine("P1", _("Device id"), deviceId))
-		if isfile("/proc/device-tree/le-dt-id"):
-			givenId = fileReadLine("/proc/device-tree/le-dt-id")
+		givenId = fileReadLine("/proc/device-tree/le-dt-id")
+		if givenId:
 			info.append(formatLine("P1", _("Given device id"), givenId))
 		info.append("")
-		info.append(formatLine("H", _("Detected NIMs")))
+		info.append(formatLine("H", _("Tuner information")))
 		info.append("")
 		nims = nimmanager.nimListCompressed()
 		for count in range(len(nims)):
 			tuner, type = [x.strip() for x in nims[count].split(":", 1)]
 			info.append(formatLine("P1", tuner, type))
 		info.append("")
-		info.append(formatLine("H", _("Detected HDDs")))
+		info.append(formatLine("H", _("Storage information")))
 		info.append("")
+		stat = statvfs("/")
+		diskSize = stat.f_blocks * stat.f_frsize
+		info.append(formatLine("P1", _("Internal flash"), "%s  (%s)" % (scaleNumber(diskSize), scaleNumber(diskSize, "Iec"))))
 		# hddList = storageManager.HDDList()
 		hddList = harddiskmanager.HDDList()
 		if hddList:
-			for count in range(len(hddList)):
-				hdd = hddList[count][1]
-				# free = "%.3f GB" % (hdd.totalFree() / 1024.0) if int(hdd.free()) > 1024 else "%.3f MB" % hdd.totalFree()
-				free = "%.3f GB" % (hdd.Totalfree() / 1024.0) if int(hdd.free()) > 1024 else "%.3f MB" % hdd.Totalfree()
-				info.append(formatLine("P1", hdd.model(), "%s, %s %s" % (hdd.capacity(), free, _("free"))))
+			for hdd in hddList:
+				hdd = hdd[1]
+				capacity = hdd.diskSize() * 1000000
+				info.append(formatLine("P1", hdd.model(), "%s  (%s)" % (scaleNumber(capacity), scaleNumber(capacity, "Iec"))))
 		else:
 			info.append(formatLine("H", _("No hard disks detected.")))
 		info.append("")
@@ -1101,21 +1078,42 @@ class StorageInformation(InformationBase):
 	def displayInformation(self):
 		info = []
 		info.append(formatLine("H", _("Detected storage devices")))
+		info.append("")
+		partitions = sorted(harddiskmanager.getMountedPartitions(), key=lambda partitions: partitions.device)
+		for partition in partitions:
+			if partition.mountpoint == "/":
+				info.append(formatLine("H1", "/dev/root", partition.description))
+				stat = statvfs("/")
+				diskSize = stat.f_blocks * stat.f_frsize
+				diskFree = stat.f_bfree * stat.f_frsize
+				diskUsed = diskSize - diskFree
+				info.append(formatLine("P2", _("Mountpoint"), partition.mountpoint))
+				info.append(formatLine("P2", _("Capacity"), "%s  (%s)" % (scaleNumber(diskSize), scaleNumber(diskSize, "Iec"))))
+				info.append(formatLine("P2", _("Used"), "%s  (%s)" % (scaleNumber(diskUsed), scaleNumber(diskUsed, "Iec"))))
+				info.append(formatLine("P2", _("Free"), "%s  (%s)" % (scaleNumber(diskFree), scaleNumber(diskFree, "Iec"))))
+				break
 		# hddList = storageManager.HDDList()
 		hddList = harddiskmanager.HDDList()
 		if hddList:
-			for drive in range(len(hddList)):
-				hdd = hddList[drive][1]
+			for hdd in hddList:
+				hdd = hdd[1]
 				info.append("")
 				info.append(formatLine("H1", hdd.getDeviceName(), hdd.bus()))
 				info.append(formatLine("P2", _("Model"), hdd.model()))
-				info.append(formatLine("P2", _("Capacity"), hdd.capacity()))
+				diskSize = hdd.diskSize() * 1000000
+				info.append(formatLine("P2", _("Capacity"), "%s  (%s)" % (scaleNumber(diskSize), scaleNumber(diskSize, "Iec"))))
 				info.append(formatLine("P2", _("Sleeping"), (_("Yes") if hdd.isSleeping() else _("No"))))
-				for partition in range(hdd.numPartitions()):
-					info.append(formatLine("P2", _("Partition"), partition + 1))
-					info.append(formatLine("P3", _("Capacity"), hdd.capacity()))
-					# info.append(formatLine("P3", _("Free"), hdd.space()))
-					info.append(formatLine("P3", _("Free"), scaleNumber(hdd.free() * 1000000)))
+				for partition in partitions:
+					if partition.device and pathjoin("/dev", partition.device).startswith(hdd.getDeviceName()):
+						info.append(formatLine("P2", _("Partition"), partition.device))
+						stat = statvfs(partition.mountpoint)
+						diskSize = stat.f_blocks * stat.f_frsize
+						diskFree = stat.f_bfree * stat.f_frsize
+						diskUsed = diskSize - diskFree
+						info.append(formatLine("P3", _("Mountpoint"), partition.mountpoint))
+						info.append(formatLine("P3", _("Capacity"), "%s  (%s)" % (scaleNumber(diskSize), scaleNumber(diskSize, "Iec"))))
+						info.append(formatLine("P3", _("Used"), "%s  (%s)" % (scaleNumber(diskUsed), scaleNumber(diskUsed, "Iec"))))
+						info.append(formatLine("P3", _("Free"), "%s  (%s)" % (scaleNumber(diskFree), scaleNumber(diskFree, "Iec"))))
 		else:
 			info.append("")
 			info.append(formatLine("H1", _("No hard disks detected.")))
@@ -1287,8 +1285,6 @@ class SystemInformation(InformationBase):
 			except (IOError, OSError) as err:
 				self.log = _("Error %d: The logfile '%s' could not be opened.  (%s)") % (err.errno, args[1], err.strerror)
 		else:
-			# print("[Information] DEBUG: System logs command='%s'." % command)
-			# print("[Information] DEBUG: System logs args=%s." % args)
 			self.commandData = ""
 			args.insert(0, args[0])
 			retVal = self.container.execute(*args)
@@ -1310,7 +1306,6 @@ class SystemInformation(InformationBase):
 			callback()
 
 	def dataAvail(self, data):
-		# print("[Information] Command data='%s'." % data)
 		self.commandData += data
 
 	def appClosed(self, retVal):
