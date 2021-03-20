@@ -1253,7 +1253,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 
 	prio_list = [("-1", _("Auto"))]
 	if PY3:
-		rangemode = chain(range(65), range(14000,14065), (19000,19065))
+		rangemode = chain(range(65), range(14000, 14065), (19000, 19065))
 	else:
 		rangemode = range(65) + range(14000, 14065) + range(19000, 19065)
 	for prio in rangemode:
