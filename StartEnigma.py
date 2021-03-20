@@ -19,19 +19,13 @@ brand = getBoxBrand()
 platform = getMachineBuild()
 socfamily = getSoCFamily()
 
-REDCOLOR = '\033[31m'
-NOCOLOR = '\033[m'
-GREENCOLOR = '\033[32m'
-BLUECOLOR = '\033[34m'
-YELLOWCOLOR = '\033[33m'
-
-print(REDCOLOR + "[StartEnigma] Open Vision version = %s" % getVisionVersion() + NOCOLOR)
-print(BLUECOLOR + "[StartEnigma] Open Vision revision = %s" % getVisionRevision() + NOCOLOR)
-print(GREENCOLOR + "[StartEnigma] Brand/Meta = %s" % brand + NOCOLOR)
-print(GREENCOLOR + "[StartEnigma] Model = %s" % model + NOCOLOR)
-print(GREENCOLOR + "[StartEnigma] Platform = %s" % platform + NOCOLOR)
-print(GREENCOLOR + "[StartEnigma] SoC family = %s" % socfamily + NOCOLOR)
-print(YELLOWCOLOR + "[StartEnigma] Enigma2 revision = %s" % getE2Rev() + NOCOLOR)
+print("[StartEnigma] Open Vision version = %s" % getVisionVersion())
+print("[StartEnigma] Open Vision revision = %s" % getVisionRevision())
+print("[StartEnigma] Brand/Meta = %s" % brand)
+print("[StartEnigma] Model = %s" % model)
+print("[StartEnigma] Platform = %s" % platform)
+print("[StartEnigma] SoC family = %s" % socfamily)
+print("[StartEnigma] Enigma2 revision = %s" % getE2Rev())
 
 import enigma
 import eConsoleImpl
