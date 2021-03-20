@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Screens.Screen import Screen
-import ChannelSelection
+try:
+	import ChannelSelection
+except ImportError:
+	from Screens import ChannelSelection
 import Screens.InfoBar
 from Components.config import config, ConfigClock
 from Components.Pixmap import Pixmap
@@ -30,7 +33,7 @@ from Components.Button import Button
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN, fileExists, SCOPE_PLUGINS
 from Screens.MessageBox import MessageBox
 from Components.Console import Console
-import six
+from six import PY2
 
 mepg_config_initialized = False
 
@@ -234,7 +237,7 @@ class EPGSelection(Screen):
 		text = _("Select action")
 		event = self["list"].getCurrent()[0]
 		if event:
-			if six.PY2:
+			if PY2:
 				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
 					if 'selectedevent' in p.__call__.func_code.co_varnames]
 			else:

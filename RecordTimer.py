@@ -27,7 +27,13 @@ from ServiceReference import ServiceReference, isPlayableForCur
 
 from time import localtime, strftime, ctime, time
 from bisect import insort
-from sys import maxint
+from six import PY2
+if PY2:
+	from sys import maxint
+	maximport = maxint
+else:
+	from sys import maxsize
+	maximport = maxsize
 
 # ok, for descriptions etc we have:
 # service reference  (to get the service name)
@@ -188,13 +194,13 @@ class RecordTimerEntry(timer.TimerEntry, object):
 	@staticmethod
 	def setWasInDeepStandby():
 		RecordTimerEntry.wasInDeepStandby = True
-		eActionMap.getInstance().bindAction('', -maxint - 1, RecordTimerEntry.keypress)
+		eActionMap.getInstance().bindAction('', -maximport - 1, RecordTimerEntry.keypress)
 
 	@staticmethod
 	def setWasInStandby():
 		if not RecordTimerEntry.wasInStandby:
 			if not RecordTimerEntry.wasInDeepStandby:
-				eActionMap.getInstance().bindAction('', -maxint - 1, RecordTimerEntry.keypress)
+				eActionMap.getInstance().bindAction('', -maximport - 1, RecordTimerEntry.keypress)
 			RecordTimerEntry.wasInDeepStandby = False
 			RecordTimerEntry.wasInStandby = True
 

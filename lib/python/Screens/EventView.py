@@ -22,7 +22,7 @@ from Tools.BoundFunction import boundFunction
 from Tools.FallbackTimer import FallbackTimerList
 from time import localtime, strftime
 from Components.config import config
-import six
+from six import PY2
 
 
 class EventViewBase:
@@ -239,7 +239,7 @@ class EventViewBase:
 			else:
 				self["channel"].setText(_("unknown service"))
 
-	if six.PY2:
+	if PY2:
 		def sort_func(self, x, y):
 			if x[1] < y[1]:
 				return -1
@@ -326,7 +326,7 @@ class EventViewBase:
 		ret = epgcache.search(('NB', 100, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, refstr, id))
 		if ret is not None:
 			text = '\n\n' + _('Similar broadcasts:')
-			if six.PY2:
+			if PY2:
 				ret.sort(self.sort_func)
 				sortcommand = ret
 			else:
@@ -350,7 +350,7 @@ class EventViewBase:
 	def doContext(self):
 		if self.event:
 			text = _("Select action")
-			if six.PY2:
+			if PY2:
 				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
 					if 'servicelist' not in p.__call__.func_code.co_varnames
 						if 'selectedevent' not in p.__call__.func_code.co_varnames]

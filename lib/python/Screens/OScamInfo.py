@@ -24,7 +24,7 @@ except:
 	import urllib
 	from urllib.request import HTTPHandler, HTTPDigestAuthHandler
 import skin
-import six
+from six import PY2
 
 ###global
 f = 1
@@ -178,7 +178,7 @@ class OscamInfo:
 		if part is not None and reader is not None:
 			self.url = "%s://%s:%s/%s.html?part=%s&label=%s" % (self.proto, self.ip, self.port, self.api, part, reader)
 
-		if six.PY2:
+		if PY2:
 			opener = urllib2.build_opener(urllib2.HTTPHandler)
 			if not self.username == "":
 				pwman = urllib2.HTTPPasswordMgrWithDefaultRealm()
@@ -284,10 +284,7 @@ class OscamInfo:
 							tmp[cl.attrib["type"]] = []
 							tmp[cl.attrib["type"]].append((name, proto, "%s:%s" % (caid, srvid), srvname_short, ecmtime, ip, connstatus))
 			else:
-				if six.PY2:
-					cdata = '"<![CDATA"'
-				else:
-					cdata = 'b"<![CDATA"'
+				cdata = 'b"<![CDATA"'
 				if cdata not in result[1]:
 					tmp = result[1].replace("<log>", "<log><![CDATA[").replace("</log>", "]]></log>")
 				else:

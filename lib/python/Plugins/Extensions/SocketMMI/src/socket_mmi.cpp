@@ -11,6 +11,8 @@
 #include <lib/base/estring.h>
 #include <lib/dvb_ci/dvbci_session.h>
 
+#include <Python.h>
+
 #define MAX_LENGTH_BYTES 4
 #define MIN_LENGTH_BYTES 1
 //#define MMIDEBUG
@@ -469,11 +471,30 @@ static PyMethodDef module_methods[] = {
 	},
 	{NULL, NULL, 0, NULL}   /* Sentinel */
 };
-
+#if PY_MAJOR_VERSION < 3
 PyMODINIT_FUNC
 initsocketmmi(void)
 {
 	Py_InitModule3("socketmmi", module_methods,
 		"Module that implements mmi via unix domain socket.");
 }
+#else
+static struct PyModuleDef socketmmi_moduledef = {
+	PyModuleDef_HEAD_INIT,
+	"socketmmi",											/* m_name */
+	"Module that implements mmi via unix domain socket.",	/* m_doc */
+	-1,														/* m_size */
+	module_methods,											/* m_methods */
+	NULL,													/* m_reload */
+	NULL,													/* m_traverse */
+	NULL,													/* m_clear */
+	NULL,													/* m_free */
+};
+
+
+PyMODINIT_FUNC PyInit_socketmmi(void)
+{
+	return PyModule_Create(&socketmmi_moduledef);
+}
+#endif
 };

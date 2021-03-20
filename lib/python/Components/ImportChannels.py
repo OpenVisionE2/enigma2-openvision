@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import threading
-import urllib2
+try:
+	import urllib2
+except:
+	import urllib
 import os
 import shutil
 import tempfile
@@ -11,7 +14,12 @@ from enigma import eDVBDB, eEPGCache
 from Screens.MessageBox import MessageBox
 from Components.config import config, ConfigText
 from Tools import Notifications
-from base64 import encodestring
+try:
+	from base64 import encodestring
+	encodecommand = encodestring
+except ImportError:
+	from base64 import encodebytes
+	encodecommand = encodebytes
 import xml.etree.ElementTree as et
 
 settingfiles = ('lamedb', 'bouquets.', 'userbouquet.', 'blacklist', 'whitelist', 'alternatives.')
@@ -29,15 +37,21 @@ class ImportChannels():
 			if config.usage.remote_fallback_openwebif_customize.value:
 				self.url = "%s:%s" % (self.url, config.usage.remote_fallback_openwebif_port.value)
 				if config.usage.remote_fallback_openwebif_userid.value and config.usage.remote_fallback_openwebif_password.value:
-					self.header = "Basic %s" % encodestring("%s:%s" % (config.usage.remote_fallback_openwebif_userid.value, config.usage.remote_fallback_openwebif_password.value)).strip()
+					self.header = "Basic %s" % encodecommand("%s:%s" % (config.usage.remote_fallback_openwebif_userid.value, config.usage.remote_fallback_openwebif_password.value)).strip()
 			self.thread = threading.Thread(target=self.threaded_function, name="ChannelsImport")
 			self.thread.start()
 
 	def getUrl(self, url, timeout=5):
-		request = urllib2.Request(url)
-		if self.header:
-			request.add_header("Authorization", self.header)
-		return urllib2.urlopen(request, timeout=timeout)
+		if PY2:
+			request = urllib2.Request(url)
+			if self.header:
+				request.add_header("Authorization", self.header)
+			return urllib2.urlopen(request, timeout=timeout)
+		else:
+			request = urllib.request.Request(url)
+			if self.header:
+				request.add_header("Authorization", self.header)
+			return urllib.urlopen(request, timeout=timeout)
 
 	def getTerrestrialUrl(self):
 		url = config.usage.remote_fallback_dvb_t.value

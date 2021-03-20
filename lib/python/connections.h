@@ -6,6 +6,8 @@
 #include <lib/python/python.h>
 #include <utility>
 
+#include <Python.h>
+
 class PSignal
 {
 protected:
@@ -32,7 +34,11 @@ inline PyObject *PyFrom(const char *c)
 
 inline PyObject *PyFrom(std::pair<const char*, int>& p)
 {
+#if PY_MAJOR_VERSION < 3
 	return PyString_FromStringAndSize(p.first, p.second);
+#else
+	return PyBytes_FromStringAndSize(p.first, p.second);
+#endif
 }
 
 template <class R>

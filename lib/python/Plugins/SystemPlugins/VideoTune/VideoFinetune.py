@@ -9,9 +9,9 @@ from Components.Console import Console
 from Components.SystemInfo import SystemInfo
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from enigma import gFont, getDesktop, gMainDC, eSize, RT_HALIGN_RIGHT, RT_WRAP
-import six
+from six import PY2
 
-if six.PY2:
+if PY2:
 	pyxrange = xrange
 else:
 	pyxrange = range

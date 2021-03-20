@@ -9,7 +9,7 @@ from Components.GUIComponent import GUIComponent
 from Components.Sources.Source import Source
 from Components.Sources.StaticText import StaticText
 from Tools.CList import CList
-import six
+from six import PY2
 
 # The lines marked DEBUG: are proposals for further fixes or improvements.
 # Other commented out code is historic and should probably be deleted if it is not going to be used.
@@ -269,7 +269,7 @@ class Screen(dict):
 			applyAllAttributes(w.instance, desktop, w.skinAttributes, self.scale)
 		for f in self.onLayoutFinish:
 			if not isinstance(f, type(self.close)):
-				if six.PY2:
+				if PY2:
 					exec f in globals(), locals()
 				else:
 					exec(f, globals(), locals())

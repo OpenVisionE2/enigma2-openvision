@@ -35,7 +35,7 @@ import glob
 import fnmatch
 from Components.ScrollLabel import ScrollLabel
 from os import remove, unlink, rename
-import six
+from six import PY2
 
 # Define a function to determine whether a service is configured to start at boot time.
 # This checks for a start file in rc2.d (rc4.d might be more appropriate, but historically it's been rc2.d, so...).
@@ -1343,7 +1343,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 	def dataAvail(self, data):
 		self.LinkState = None
 		for line in data.splitlines():
-			if six.PY2:
+			if PY2:
 				line = line.strip()
 			else:
 				line = line.strip().decode()

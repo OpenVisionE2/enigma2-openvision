@@ -18,7 +18,7 @@ from enigma import eServiceReference
 from Components.Pixmap import Pixmap
 from Components.Label import Label
 import os
-import six
+from six import PY2
 
 
 class hotkey:
@@ -147,7 +147,7 @@ def getHotkeyFunctions():
 	pluginlist = plugins.getPlugins(PluginDescriptor.WHERE_EVENTINFO)
 	pluginlist.sort(key=lambda p: p.name)
 	for plugin in pluginlist:
-		if six.PY2:
+		if PY2:
 			pycode = plugin.__call__.func_code.co_varnames
 		else:
 			pycode = plugin.__call__.__code__.co_varnames
@@ -651,7 +651,7 @@ class InfoBarHotkey():
 				pluginlist = plugins.getPlugins(PluginDescriptor.WHERE_EVENTINFO)
 				pluginlist.sort(key=lambda p: p.name)
 				for plugin in pluginlist:
-					if six.PY2:
+					if PY2:
 						pycode = plugin.__call__.func_code.co_varnames
 					else:
 						pycode = plugin.__call__.__code__.co_varnames

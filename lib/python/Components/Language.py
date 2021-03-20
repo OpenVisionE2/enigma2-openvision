@@ -5,13 +5,17 @@ import gettext
 import locale
 import os
 from Tools.Directories import SCOPE_LANGUAGE, resolveFilename, SCOPE_LIBDIR
+from six import PY2
 
 LPATH = resolveFilename(SCOPE_LANGUAGE, "")
 
 
 class Language:
 	def __init__(self):
-		gettext.install('enigma2', resolveFilename(SCOPE_LANGUAGE, ""), unicode=0, codeset="utf-8")
+		if PY2:
+			gettext.install('enigma2', resolveFilename(SCOPE_LANGUAGE, ""), unicode=0, codeset="utf-8")
+		else:
+			gettext.install('enigma2', resolveFilename(SCOPE_LANGUAGE, ""), codeset="utf-8")
 		gettext.bindtextdomain("enigma2", resolveFilename(SCOPE_LANGUAGE))
 		gettext.textdomain("enigma2")
 		self.activeLanguage = 0

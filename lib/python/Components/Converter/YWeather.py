@@ -9,12 +9,12 @@ import time
 import os
 try:
 	import urllib2
-except:
+except ImportError:
 	import urllib
 import socket
-import six
+from six import PY2
 
-if six.PY2:
+if PY2:
 	pyunichr = unichr
 else:
 	pyunichr = chr
@@ -139,12 +139,12 @@ class YWeather(Poll, Converter, object):
 	def fetchXML(self, URL, save_to):
 		socket_timeout = 10
 		socket.setdefaulttimeout(socket_timeout)
-		if six.PY2:
+		if PY2:
 			req = urllib2.Request(URL)
 		else:
 			req = urllib.request.Request(URL)
 		try:
-			if six.PY2:
+			if PY2:
 				response = urllib2.urlopen(req)
 			else:
 				response = urllib.request.urlopen(req)

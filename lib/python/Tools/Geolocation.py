@@ -1,5 +1,8 @@
 from json import loads
-from urllib2 import URLError, urlopen
+try:
+	from urllib2 import URLError, urlopen
+except:
+	from urllib.request import URLError, urlopen
 
 # Data available from http://ip-api.com/json/:
 #

@@ -13,6 +13,7 @@ import struct
 from Components.Console import Console
 from Tools.Directories import fileExists
 from boxbranding import getSoCFamily
+from six import PY2
 
 socfamily = getSoCFamily()
 
@@ -381,10 +382,13 @@ def GetIPsFromNetworkInterfaces():
 			max_possible *= 2
 		else:
 			break
-	namestr = names.tostring()
+	namestr = names.tostring() if PY2 else names
 	ifaces = []
 	for i in range(0, outbytes, struct_size):
-		iface_name = bytes.decode(namestr[i:i + 16]).split('\0', 1)[0].encode('ascii')
+		if PY2:
+			iface_name = bytes.decode(namestr[i:i + 16]).split('\0', 1)[0].encode('ascii')
+		else:
+			iface_name = str(namestr[i:i + 16]).split('\0', 1)[0]
 		if iface_name != 'lo':
 			iface_addr = socket.inet_ntoa(namestr[i + 20:i + 24])
 			ifaces.append((iface_name, iface_addr))

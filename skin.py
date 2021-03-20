@@ -11,6 +11,7 @@ from Components.Sources.Source import ObsoleteSource
 from Tools.Directories import SCOPE_CONFIG, SCOPE_CURRENT_LCDSKIN, SCOPE_CURRENT_SKIN, SCOPE_FONTS, SCOPE_SKIN, resolveFilename, fileExists
 from Tools.Import import my_import
 from Tools.LoadPixmap import LoadPixmap
+from six import PY2
 
 DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "OctEtFHD/skin.xml" or "PLi-HD/skin.xml"
 EMERGENCY_SKIN = "skin_default/skin.xml"
@@ -418,14 +419,17 @@ def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), f
 			# listbox; when the scrollbar setting is applied after the size, a scrollbar
 			# will not be shown until the selection moves for the first time.
 			if attrib == "size":
-				size = value.encode("utf-8")
+				size = value.encode("utf-8") if PY2 else value
 			elif attrib == "position":
-				pos = value.encode("utf-8")
+				pos = value.encode("utf-8") if PY2 else value
 			elif attrib == "font":
-				font = value.encode("utf-8")
+				font = value.encode("utf-8") if PY2 else value
 				skinAttributes.append((attrib, font))
 			else:
-				skinAttributes.append((attrib, value.encode("utf-8")))
+				if PY2:
+					skinAttributes.append((attrib, value.encode("utf-8")))
+				else:
+					skinAttributes.append((attrib, value))
 	if pos is not None:
 		pos, size = context.parse(pos, size, font)
 		skinAttributes.append(("position", pos))
@@ -1281,7 +1285,11 @@ def readSkin(screen, skin, names, desktop):
 		screen.additionalWidgets.append(w)
 
 	def processScreen(widget, context):
-		for w in widget.getchildren():
+		if PY2:
+			widgetmode = widget.getchildren()
+		else:
+			widgetmode = widget
+		for w in widgetmode:
 			conditional = w.attrib.get("conditional")
 			if conditional and not [i for i in conditional.split(",") if i in screen.keys()]:
 				continue

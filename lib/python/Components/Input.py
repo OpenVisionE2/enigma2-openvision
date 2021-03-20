@@ -6,7 +6,7 @@ from Components.VariableText import VariableText
 from enigma import eLabel
 
 from Tools.NumericalTextInput import NumericalTextInput
-import six
+from six import PY2
 
 
 class Input(VariableText, GUIComponent, NumericalTextInput):
@@ -245,7 +245,7 @@ class Input(VariableText, GUIComponent, NumericalTextInput):
 		if self.allmarked:
 			self.deleteAllChars()
 			self.allmarked = False
-		if six.PY2:
+		if PY2:
 			self.insertChar(unichr(code), self.currPos, False, False)
 		else:
 			self.insertChar(chr(code), self.currPos, False, False)

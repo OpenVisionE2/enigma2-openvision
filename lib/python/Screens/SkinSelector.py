@@ -19,7 +19,6 @@ from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Standby import TryQuitMainloop, QUIT_RESTART
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN, SCOPE_LCDSKIN, SCOPE_SKIN
-import six
 
 
 class SkinSelector(Screen, HelpableScreen):
@@ -123,10 +122,7 @@ class SkinSelector(Screen, HelpableScreen):
 									"8640": _("16K")
 								}
 								mm = mmap.mmap(fd.fileno(), 0, prot=mmap.PROT_READ)
-								if six.PY2:
-									skinheight = re.search("\<?resolution.*?\syres\s*=\s*\"(\d+)\"", mm).group(1)
-								else:
-									skinheight = re.search(b"\<?resolution.*?\syres\s*=\s*\"(\d+)\"", mm).group(1)
+								skinheight = re.search(b"\<?resolution.*?\syres\s*=\s*\"(\d+)\"", mm).group(1)
 								resolution = skinheight and resolutions.get(skinheight, None)
 								mm.close()
 						except:

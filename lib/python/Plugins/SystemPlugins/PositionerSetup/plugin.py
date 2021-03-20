@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from enigma import eTimer, eDVBSatelliteEquipmentControl, eDVBResourceManager, eDVBDiseqcCommand, eDVBFrontendParametersSatellite, iDVBFrontend
-
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Screens.ChoiceBox import ChoiceBox
@@ -23,15 +22,14 @@ from Components.config import config, ConfigSatlist, ConfigNothing, ConfigSelect
 from Components.TuneTest import Tuner
 from Components.Pixmap import Pixmap
 from Tools.Transponder import ConvertToHumanReadable
-
 from time import sleep
 from operator import mul as mul
 from random import SystemRandom as SystemRandom
 from threading import Thread as Thread
 from threading import Event as Event
-
 from Plugins.SystemPlugins.PositionerSetup import log
 from Plugins.SystemPlugins.PositionerSetup import rotor_calc
+from six import PY2
 
 
 class PositionerSetup(Screen):
@@ -986,7 +984,10 @@ class PositionerSetup(Screen):
 
 		def optimise(readings):
 			xi = readings.keys()
-			yi = map(lambda (x, y): x, readings.values())
+			if PY2:
+				yi = map(lambda (x, y): x, readings.values())
+			else:
+				yi = map(lambda x_y: x_y[0], readings.values())
 			x0 = sum(map(mul, xi, yi)) / sum(yi)
 			xm = xi[yi.index(max(yi))]
 			return (x0, xm)
@@ -1121,7 +1122,10 @@ class PositionerSetup(Screen):
 
 		def optimise(readings):
 			xi = readings.keys()
-			yi = map(lambda (x, y): x, readings.values())
+			if PY2:
+				yi = map(lambda (x, y): x, readings.values())
+			else:
+				yi = map(lambda x_y: x_y[0], readings.values())
 			x0 = int(round(sum(map(mul, xi, yi)) / sum(yi)))
 			xm = xi[yi.index(max(yi))]
 			return (x0, xm)

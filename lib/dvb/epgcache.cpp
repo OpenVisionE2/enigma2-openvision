@@ -2448,7 +2448,11 @@ PyObject *eEPGCache::search(ePyObject arg)
 				{
 					int casetype = PyLong_AsLong(PyTuple_GET_ITEM(arg, 4));
 					const char *str = PyString_AS_STRING(obj);
+#if PY_MAJOR_VERSION < 3
 					int strlen = PyString_Size(obj);
+#else
+					int strlen = PyBytes_Size(obj);
+#endif
 					switch (querytype)
 					{
 						case 1:

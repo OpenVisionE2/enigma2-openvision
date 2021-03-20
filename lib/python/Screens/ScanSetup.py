@@ -14,7 +14,7 @@ from Tools.Transponder import getChannelNumber, supportedChannels, channel2frequ
 from Screens.InfoBar import InfoBar
 from Screens.MessageBox import MessageBox
 from enigma import eTimer, eDVBFrontendParametersSatellite, eComponentScan, eDVBFrontendParametersTerrestrial, eDVBFrontendParametersCable, eConsoleAppContainer, eDVBResourceManager, eDVBFrontendParametersATSC, getBoxType
-import six
+from six import PY2
 
 
 def buildTerTransponder(frequency,
@@ -205,7 +205,7 @@ class CableTransponderSearchSupport:
 	def getCableTransponderData(self, str):
 		print("[getCableTransponderData] ", str)
 		#prepend any remaining data from the previous call
-		if six.PY2:
+		if PY2:
 			str = self.remainingdata + str
 		else:
 			str = self.remainingdata + str.decode()

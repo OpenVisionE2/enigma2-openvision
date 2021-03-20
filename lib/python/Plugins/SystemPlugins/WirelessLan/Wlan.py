@@ -4,13 +4,15 @@ from __future__ import print_function
 from Components.config import config, ConfigYesNo, NoSave, ConfigSubsection, ConfigText, ConfigSelection, ConfigPassword
 from Components.Console import Console
 from Components.Network import iNetwork
-
 import enigma
-
 import os
-from string import maketrans, strip
+try:
+	from string import maketrans, strip
+except:
+	pass
 from pythonwifi.iwlibs import Wireless, getWNICnames
 from pythonwifi import flags as wififlags
+from six import PY2
 
 list = ["WPA/WPA2", "WPA2", "WPA", "WEP", "Unencrypted"]
 
@@ -50,7 +52,10 @@ class Wlan:
 			else:
 				b = b + chr(i)
 
-		self.asciitrans = maketrans(a, b)
+		if PY2:
+			self.asciitrans = maketrans(a, b)
+		else:
+			self.asciitrans = str.maketrans(a, b)
 
 	def asciify(self, str):
 		return str.translate(self.asciitrans)
@@ -105,7 +110,10 @@ class Wlan:
 				extra = []
 				for element in result.custom:
 					element = element.encode()
-					extra.append(strip(self.asciify(element)))
+					if PY2:
+						extra.append(strip(self.asciify(element)))
+					else:
+						extra.append(str.strip(self.asciify(element)))
 				for element in extra:
 					if 'SignalStrength' in element:
 						signal = element[element.index('SignalStrength') + 15:element.index(',L')]
@@ -118,12 +126,17 @@ class Wlan:
 				except:
 					channel = "Unknown"
 
+				if PY2:
+					stripessid = strip(self.asciify(result.essid))
+				else:
+					stripessid = str.strip(self.asciify(result.essid))
+
 				aps[bssid] = {
 					'active': True,
 					'bssid': result.bssid,
 					'channel': channel,
 					'encrypted': encryption,
-					'essid': strip(self.asciify(result.essid)),
+					'essid': stripessid,
 					'iface': self.iface,
 					'maxrate': ifobj._formatBitrate(result.rate[-1][-1]),
 					'noise': '',#result.quality.nlevel-0x100,

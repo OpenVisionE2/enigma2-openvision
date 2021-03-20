@@ -48,7 +48,7 @@ from Screens.EventView import EventViewEPGSelect
 import os
 import unicodedata
 from time import time
-import six
+from six import PY2
 
 profile("ChannelSelection.py after imports")
 
@@ -765,7 +765,7 @@ class ChannelSelectionEPG(InfoBarHotkey):
 		Screens.InfoBar.InfoBar.instance.runPlugin(plugin)
 
 	def getEPGPluginList(self, getAll=False):
-		if six.PY2:
+		if PY2:
 			pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
 					if 'selectedevent' not in p.__call__.func_code.co_varnames] or []
 		else:
@@ -1881,7 +1881,7 @@ class ChannelSelectionBase(Screen):
 		self.selectionNumber = ""
 
 	def keyAsciiCode(self):
-		if six.PY2:
+		if PY2:
 			unichar = unichr(getPrevAsciiCode())
 		else:
 			unichar = chr(getPrevAsciiCode())

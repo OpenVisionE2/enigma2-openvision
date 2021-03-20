@@ -14,6 +14,9 @@ from datetime import datetime
 
 import xml.etree.cElementTree
 from boxbranding import getSoCFamily
+from six import PY3
+if PY3:
+	from itertools import chain
 
 socfamily = getSoCFamily()
 
@@ -1249,7 +1252,11 @@ def InitNimManager(nimmgr, update_slots=[]):
 	lnb_choices_default = "universal_lnb"
 
 	prio_list = [("-1", _("Auto"))]
-	for prio in range(65) + range(14000, 14065) + range(19000, 19065):
+	if PY3:
+		rangemode = chain(range(65), range(14000,14065), (19000,19065))
+	else:
+		rangemode = range(65) + range(14000, 14065) + range(19000, 19065)
+	for prio in rangemode:
 		description = ""
 		if prio == 0:
 			description = _(" (disabled)")

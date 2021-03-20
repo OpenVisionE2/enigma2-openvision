@@ -1,7 +1,5 @@
 from xml.etree.cElementTree import parse
-
 from enigma import eTimer
-
 from skin import findSkinScreen
 from Components.ActionMap import NumberActionMap, ActionMap
 from Components.Button import Button
@@ -21,6 +19,7 @@ from Screens.Setup import Setup, getSetupTitle
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import SCOPE_CURRENT_SKIN, SCOPE_SKIN, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
+from six import PY2
 
 # Read the menu
 file = open(resolveFilename(SCOPE_SKIN, "menu.xml"), "r")
@@ -197,7 +196,8 @@ class Menu(Screen, ProtectedScreen):
 					return
 			elif not SystemInfo.get(requires, False):
 				return
-		MenuTitle = _(node.get("text", "??").encode("UTF-8"))
+
+		MenuTitle = _(node.get("text", "??").encode("UTF-8")) if PY2 else _(node.get("text", "??"))
 		entryID = node.get("entryID", "undefined")
 		weight = node.get("weight", 50)
 		x = node.get("flushConfigOnClose")
@@ -233,7 +233,7 @@ class Menu(Screen, ProtectedScreen):
 		conditional = node.get("conditional")
 		if conditional and not eval(conditional):
 			return
-		item_text = node.get("text", "").encode("UTF-8")
+		item_text = node.get("text", "").encode("UTF-8") if PY2 else node.get("text", "")
 		entryID = node.get("entryID", "undefined")
 		weight = node.get("weight", 50)
 		for x in node:
@@ -310,11 +310,11 @@ class Menu(Screen, ProtectedScreen):
 			"displayHelp": self.showHelp,
 			"blue": self.keyBlue,
 		})
-		title = parent.get("title", "").encode("UTF-8") or None
-		title = title and _(title) or _(parent.get("text", "").encode("UTF-8"))
+		title = parent.get("title", "").encode("UTF-8") if PY2 else parent.get("title", "") or None
+		title = title and _(title) or _(parent.get("text", "").encode("UTF-8")) if PY2 else _(parent.get("text", ""))
 		title = self.__class__.__name__ == "MenuSort" and _("Menusort (%s)") % title or title
 		if title is None:
-			title = _(parent.get("text", "").encode("UTF-8"))
+			title = _(parent.get("text", "").encode("UTF-8")) if PY2 else _(parent.get("text", ""))
 		else:
 			t_history.reset()
 		self["title"] = StaticText(title)
