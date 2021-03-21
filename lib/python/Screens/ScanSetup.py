@@ -1268,7 +1268,7 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 		self.scan_clearallservices = ConfigSelection(default="no", choices=[("no", _("no")), ("yes", _("yes")), ("yes_hold_feeds", _("yes (keep feeds)"))])
 		self.scan_onlyfree = ConfigYesNo(default=False)
 		self.scan_networkScan = ConfigYesNo(default=False)
-		self.scan_terrestrial_binary_scan = ConfigYesNo(default = False)
+		self.scan_terrestrial_binary_scan = ConfigYesNo(default=False)
 
 		return True
 
@@ -1772,7 +1772,7 @@ class ScanSimple(ConfigListScreen, Screen, CableTransponderSearchSupport, Terres
 				self.nim_enable.append(nimconfig)
 				self.list.append(getConfigListEntry(_("Scan ") + nim.slot_name + " (" + nim.friendly_type + ")", nimconfig))
 
-			self.scan_terrestrial_binary_scan = ConfigYesNo(default = False)
+			self.scan_terrestrial_binary_scan = ConfigYesNo(default=False)
 			if self.t2_nim_found:
 				self.list.append(getConfigListEntry(_("Blindscan terrestrial (if possible)"), self.scan_terrestrial_binary_scan))
 
