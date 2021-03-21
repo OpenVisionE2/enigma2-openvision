@@ -1329,12 +1329,6 @@ def InitUsageConfig():
 		])
 		config.misc.zapmode.addNotifier(setZapmode, immediate_feedback=False)
 
-	if not SystemInfo["ZapMode"]:
-		def setzapmodeTT(el):
-			print('[UsageConfig] >>> zapmode type 2')
-		config.misc.zapmodeTT = ConfigSelection(default="black", choices=[("black", _("Black screen")), ("hold", _("Hold screen"))])
-		config.misc.zapmodeTT.addNotifier(setzapmodeTT, immediate_feedback=False)
-
 	if SystemInfo["HasBypassEdidChecking"]:
 		def setHasBypassEdidChecking(configElement):
 			open(SystemInfo["HasBypassEdidChecking"], "w").write("00000001" if configElement.value else "00000000")
