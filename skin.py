@@ -391,13 +391,13 @@ def parseValuePair(value, scale, object=None, desktop=None, size=None):
 	return (int(xValue * scale[0][0] / scale[0][1]), int(yValue * scale[1][0] / scale[1][1]))
 
 
-def loadPixmap(path, desktop, size=None):
+def loadPixmap(path, desktop, width=0, height=0):
 	option = path.find("#")
 	if option != -1:
 		path = path[:option]
 	if basename(path) in ("rc.png", "rc0.png", "rc1.png", "rc2.png", "oldrc.png"):
 		path = rc_model.getRcImg()
-	pixmap = LoadPixmap(path, desktop, None, size)
+	pixmap = LoadPixmap(path, desktop, None, width, height)
 	if pixmap is None:
 		raise SkinError("Pixmap file '%s' not found" % path)
 	return pixmap
@@ -460,15 +460,9 @@ class AttributeParser:
 		self.scaleTuple = scale
 
 	def applyAll(self, attrs):
-		pixmap_value = None
+		attrs.sort(key=lambda a: {"pixmap": 1}.get(a[0], 0))  # For svg pixmap scale required the size, so sort pixmap last
 		for attrib, value in attrs:
-			# For pixmap scale required the size of the widget, so apply pixmap last
-			if attrib == 'pixmap':
-				pixmap_value = value
-			else:
-				self.applyOne(attrib, value)
-		if pixmap_value:
-			self.applyOne('pixmap', pixmap_value)
+			self.applyOne(attrib, value)
 
 	def applyOne(self, attrib, value):
 		try:
@@ -638,7 +632,7 @@ class AttributeParser:
 		self.overScan(value)
 
 	def pixmap(self, value):
-		self.guiObject.setPixmap(loadPixmap(value, self.desktop, self.guiObject.size()))
+		self.guiObject.setPixmap(loadPixmap(value, self.desktop, self.guiObject.size().width(), self.guiObject.size().height()))
 
 	def pointer(self, value):
 		(name, pos) = [x.strip() for x in value.split(":", 1)]

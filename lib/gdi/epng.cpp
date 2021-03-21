@@ -417,7 +417,7 @@ static int savePNGto(FILE *fp, gPixmap *pixmap)
 	return 0;
 }
 
-int loadSVG(ePtr<gPixmap> &result, const char *filename, int cached, int height, int width)
+int loadSVG(ePtr<gPixmap> &result, const char *filename, int cached, int width, int height)
 {
 	result = nullptr;
 
@@ -432,9 +432,7 @@ int loadSVG(ePtr<gPixmap> &result, const char *filename, int cached, int height,
 
 	image = nsvgParseFromFile(filename, "px", 96.0);
 	if (image == nullptr)
-	{
 		return 0;
-	}
 
 	rast = nsvgCreateRasterizer();
 	if (rast == nullptr)
@@ -443,10 +441,22 @@ int loadSVG(ePtr<gPixmap> &result, const char *filename, int cached, int height,
 		return 0;
 	}
 
-	if (height > 0 && width > 0)
+	if (height > 0)
+		yscale = ((double) height) / image->height;
+
+	if (width > 0)
 	{
 		xscale = ((double) width) / image->width;
-		yscale = ((double) height) / image->height;
+		if (height <= 0)
+		{
+			yscale = xscale;
+			height = (int)(image->height * yscale);
+		}
+	}
+	else if (height > 0)
+	{
+		xscale = yscale;
+		width = (int)(image->width * xscale);
 	}
 	else
 	{

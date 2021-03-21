@@ -2120,12 +2120,14 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 			self.zap()
 
 	def channelSelected(self, doClose=True):
+		ref = self.getCurrentSelection()
+		if ref.type == -1:
+			return
 		playingref = self.session.nav.getCurrentlyPlayingServiceOrGroup()
-		if config.usage.channelselection_preview.value and (playingref is None or self.getCurrentSelection() and self.getCurrentSelection() != playingref):
+		if config.usage.channelselection_preview.value and (playingref is None or self.getCurrentSelection() != playingref):
 			doClose = False
 		if not self.startServiceRef and not doClose:
 			self.startServiceRef = playingref
-		ref = self.getCurrentSelection()
 		if self.movemode and (self.isBasePathEqual(self.bouquet_root) or "userbouquet." in ref.toString()):
 			self.toggleMoveMarked()
 		elif (ref.flags & eServiceReference.flagDirectory) == eServiceReference.flagDirectory:
@@ -2136,7 +2138,7 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 		elif self.bouquet_mark_edit != OFF:
 			if not (self.bouquet_mark_edit == EDIT_ALTERNATIVES and ref.flags & eServiceReference.isGroup):
 				self.doMark()
-		elif not (ref.flags & eServiceReference.isMarker or ref.type == -1):
+		elif not ref.flags & eServiceReference.isMarker:
 			root = self.getRoot()
 			if not root or not (root.flags & eServiceReference.isGroup):
 				self.zap(enable_pipzap=doClose, preview_zap=not doClose)
@@ -2148,7 +2150,6 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 					self.startRoot = None
 					self.correctChannelNumber()
 					self.movemode and self.toggleMoveMode()
-					self.bouquet_mark_edit != OFF and self.endMarkedEdit(True)
 					self.editMode = False
 					self.protectContextMenu = True
 					self.close(ref)
@@ -2243,7 +2244,7 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 	def zapCheckTimeshiftCallback(self, preview_zap, nref, answer):
 		if answer:
 			self.new_service_played = True
-			self.session.nav.playService(nref)
+			self.session.nav.playService(nref, adjust = preview_zap and [0, self.session] or True)
 			if not preview_zap:
 				self.saveRoot()
 				self.saveChannel(nref)
