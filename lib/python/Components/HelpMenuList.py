@@ -76,7 +76,7 @@ class HelpMenuList(List):
 				continue
 			amId = actMapId()
 			if headings and actionmap.description and not (formatFlags & self.HEADINGS):
-				print("[HelpMenuList] headings found")
+				# print("[HelpMenuList] DEBUG: Headings found.")
 				formatFlags |= self.HEADINGS
 			for (action, help) in actions:
 				helpTags = []
@@ -104,7 +104,7 @@ class HelpMenuList(List):
 					continue
 				isExtended = isinstance(help, (tuple, list))
 				if isExtended and not (formatFlags & self.EXTENDED):
-					print("[HelpMenuList] extendedHelp entry found")
+					# print("[HelpMenuList] DEBUG: Extended help entry found.")
 					formatFlags |= self.EXTENDED
 				if helpTags:
 					helpStr = help[0] if isExtended else help
