@@ -1,6 +1,5 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
+from six import PY2
+
 from enigma import eRCInput, eTimer, eWindow  # , getDesktop
 
 from skin import GUI_SKIN_ID, applyAllAttributes
@@ -9,7 +8,6 @@ from Components.GUIComponent import GUIComponent
 from Components.Sources.Source import Source
 from Components.Sources.StaticText import StaticText
 from Tools.CList import CList
-from six import PY2
 
 # The lines marked DEBUG: are proposals for further fixes or improvements.
 # Other commented out code is historic and should probably be deleted if it is not going to be used.
