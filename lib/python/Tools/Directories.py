@@ -252,9 +252,9 @@ def bestRecordingLocation(candidates):
 	biggest = 0
 	for candidate in candidates:
 		try:
-			stat = statvfs(candidate[1])  # Must have some free space (i.e. not read-only).
-			if stat.f_bavail:
-				size = (stat.f_blocks + stat.f_bavail) * stat.f_bsize  # Free space counts double.
+			status = statvfs(candidate[1])  # Must have some free space (i.e. not read-only).
+			if status.f_bavail:
+				size = (status.f_blocks + status.f_bavail) * status.f_bsize  # Free space counts double.
 				if size > biggest:
 					biggest = size
 					path = candidate[1]
