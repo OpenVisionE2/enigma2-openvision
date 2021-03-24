@@ -75,7 +75,7 @@ script:
 - popd
 - echo compiling enigma2
 - autoreconf -i
-- ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --with-oever=10.2 --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
+- ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
 - make
 - python -m compileall .
 - find . -type f -name "*.po" -exec msgfmt {} -o {}.mo \;

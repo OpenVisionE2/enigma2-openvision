@@ -403,15 +403,6 @@ if test x"$with_fcc" = xyes ; then
 	AC_DEFINE(HAVE_FCC_ABILITY, 1,[use FCC specific codes for fast channel change])
 fi
 
-AC_ARG_WITH(oever,
-	[  --with-oever=NAME oe name [[7.2,...]]],
-	[OE_VER="$withval"],[OE_VER=""])
-AC_SUBST(OE_VER)
-AC_DEFINE_UNQUOTED(OE_VER,"$OE_VER",[oe name])
-if test `echo "$OE_VER" | cut -b 1-3` == "10."; then
-	AC_DEFINE(HAVE_NEWOE, 1,[enable new OpenEmbedded specific stuff])
-fi
-
 if test "$BOXBRAND" == "rpi"; then
 	PKG_CHECK_MODULES(DVBCSA, libdvbcsa)
 	PKG_CHECK_MODULES(LIBNL, libnl-1 >= 1.0-pre8, has_libnl=yes, dummy=no)

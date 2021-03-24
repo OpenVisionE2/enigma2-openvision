@@ -26,11 +26,6 @@
 #include <lib/base/init.h>
 #include <lib/base/init_num.h>
 
-#ifndef HAVE_NEWOE
-// undefine macro to fix build
-// against fribidi 0.19.7+
-#undef HAVE_CONFIG_H
-#endif
 #include <fribidi/fribidi.h>
 
 #include <map>
