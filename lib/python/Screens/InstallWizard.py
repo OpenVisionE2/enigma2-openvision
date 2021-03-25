@@ -2,12 +2,10 @@
 # -*- coding: utf-8 -*-
 from Screens.Screen import Screen
 from Components.ConfigList import ConfigListScreen, ConfigList
-from Components.ActionMap import ActionMap
 from Components.Sources.StaticText import StaticText
-from Components.config import config, ConfigSubsection, ConfigBoolean, getConfigListEntry, ConfigSelection, ConfigYesNo, ConfigIP, ConfigNothing
+from Components.config import config, ConfigSubsection, ConfigBoolean, getConfigListEntry, ConfigSelection, ConfigNothing
 from Components.Network import iNetwork
 from Components.Opkg import OpkgComponent
-from enigma import eDVBDB
 
 config.misc.installwizard = ConfigSubsection()
 config.misc.installwizard.hasnetwork = ConfigBoolean(default=False)
@@ -37,11 +35,6 @@ class InstallWizard(Screen, ConfigListScreen):
 			self.enabled = ConfigSelection(choices=modes, default=0)
 			self.adapters = [adapter for adapter in iNetwork.getAdapterList() if adapter in ('eth0', 'eth1')]
 			self.checkNetwork()
-		elif self.index == self.STATE_CHOISE_CHANNELLIST:
-			self.enabled = ConfigYesNo(default=True, graphic=False)
-			modes = {"19e-23e-basis": "Astra1 Astra3 basis", "19e-23e": "Astra 1 Astra 3", "19e-23e-28e": "Astra 1 Astra 2 Astra 3", "13e-19e-23e-28e": "Astra 1 Astra 2 Astra 3 Hotbird", "9e-13e-19e-23e-28e-rotating": "Rotating", "kabelnl": "Kabel-NL"}
-			self.channellist_type = ConfigSelection(choices=modes, default="19e-23e-basis")
-			self.createMenu()
 		elif self.index == self.INSTALL_PLUGINS:
 			self.noplugins = ConfigNothing()
 			self.doplugins = ConfigNothing()
@@ -89,10 +82,6 @@ class InstallWizard(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(_("Your internet connection is working (ip: %s)") % ip, self.enabled))
 			else:
 				self.list.append(getConfigListEntry(_("Your receiver does not have an internet connection"), self.enabled))
-		elif self.index == self.STATE_CHOISE_CHANNELLIST:
-			self.list.append(getConfigListEntry(_("Install channel list"), self.enabled))
-			if self.enabled.value:
-				self.list.append(getConfigListEntry(_("Channel list type"), self.channellist_type))
 		elif self.index == self.INSTALL_PLUGINS:
 			self.list.append(getConfigListEntry(_("No, I do not want to install plugins"), self.noplugins))
 			self.list.append(getConfigListEntry(_("Yes, I do want to install plugins"), self.doplugins))
@@ -124,10 +113,6 @@ class InstallWizard(Screen, ConfigListScreen):
 	def run(self):
 		if self.index == self.STATE_UPDATE and config.misc.installwizard.hasnetwork.value:
 			self.session.open(InstallWizardOpkgUpdater, self.index, _('Please wait (updating packages)'), OpkgComponent.CMD_UPDATE)
-			self.doNextStep = True
-		elif self.index == self.STATE_CHOISE_CHANNELLIST:
-			if self.enabled.value:
-				self.session.open(InstallWizardOpkgUpdater, self.index, _('Please wait (downloading channel list)'), OpkgComponent.CMD_REMOVE, {'package': 'enigma2-plugin-settings-hans-' + self.channellist_type.value})
 			self.doNextStep = True
 		elif self.index == self.INSTALL_PLUGINS:
 			if self["config"].getCurrent()[1] == self.doplugins:
@@ -170,22 +155,10 @@ class InstallWizardOpkgUpdater(Screen):
 		self.opkg = OpkgComponent()
 		self.opkg.addCallback(self.opkgCallback)
 
-		if self.index == InstallWizard.STATE_CHOISE_CHANNELLIST:
-			self.opkg.startCmd(cmd, {'package': 'enigma2-plugin-settings-*'})
-		else:
-			self.opkg.startCmd(cmd, pkg)
+		self.opkg.startCmd(cmd, pkg)
 
 	def opkgCallback(self, event, param):
 		if event == OpkgComponent.EVENT_DONE:
 			if self.index == InstallWizard.STATE_UPDATE:
 				config.misc.installwizard.opkgloaded.value = True
-			elif self.index == InstallWizard.STATE_CHOISE_CHANNELLIST:
-				if self.state == 0:
-					self.opkg.startCmd(OpkgComponent.CMD_INSTALL, self.pkg)
-					self.state = 1
-					return
-				else:
-					config.misc.installwizard.channellistdownloaded.value = True
-					eDVBDB.getInstance().reloadBouquets()
-					eDVBDB.getInstance().reloadServicelist()
 			self.close()
