@@ -78,7 +78,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 
 		self.activity = 0
 		self.activityTimer = eTimer()
-		self.activityTimer.callback.append(self.checkTraficLight)
+#		self.activityTimer.callback.append(self.checkTraficLight)
 		self.activityTimer.callback.append(self.doActivityTimer)
 		self.activityTimer.start(100, True)
 
@@ -162,7 +162,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 				return time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(calendar.timegm(urlopen("%s/Packages.gz" % url).info().getdate('Last-Modified')) - time.altzone))
 			except:
 				return ""
-		return sorted([gettime(open("/etc/opkg/%s" % file, "r").readlines()[0].split()[2]) for file in os.listdir("/etc/opkg") if not file.startswith("3rd-party") and file not in ("arch.conf", "opkg.conf", "picons-feed.conf")], reverse=True)[0]
+		return sorted([gettime(open("/etc/opkg/%s" % file, "r").readlines()[0].split()[2]) for file in os.listdir("/etc/opkg") if not file.startswith("3rd-party") and not file.startswith("openvision") and file not in ("arch.conf", "opkg.conf", "picons-feed.conf")], reverse=True)[0]
 
 	def startActualUpdate(self, answer):
 		if answer:
