@@ -227,19 +227,6 @@ self.selectKey("LEFT")
 self.selectKey("RIGHT")
 			</code>
 		</step>
-		<step id="channels">
-			<condition>
-from Components.NimManager import nimmanager
-self.condition = nimmanager.somethingConnected() and config.misc.installwizard.hasnetwork.value and config.misc.installwizard.opkgloaded.value
-			</condition>
-			<text value="Do you want to install a channel list?"/>
-			<config screen="InstallWizard" module="InstallWizard" args="1" type="ConfigList"/>
-			<code>
-self.clearSelectedKeys()
-self.selectKey("LEFT")
-self.selectKey("RIGHT")
-			</code>
-		</step>
 		<step id="fallbacktuner">
 			<condition>
 from Components.NimManager import nimmanager
