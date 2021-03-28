@@ -4,9 +4,8 @@ from __future__ import print_function
 from Screens.Screen import Screen
 from Screens.ParentalControlSetup import ProtectedScreen
 from enigma import eConsoleAppContainer, eDVBDB, eTimer
-
 from Components.ActionMap import ActionMap, NumberActionMap
-from Components.config import config, ConfigSubsection, ConfigText
+from Components.config import config, ConfigSubsection, ConfigText, ConfigYesNo
 from Components.PluginComponent import plugins
 from Components.PluginList import *
 from Components.Label import Label
@@ -30,6 +29,26 @@ from six import PY3
 language.addCallback(plugins.reloadPlugins)
 
 config.misc.pluginbrowser = ConfigSubsection()
+
+config.misc.pluginbrowser.alsautils = ConfigYesNo(default=True)
+config.misc.pluginbrowser.bluez = ConfigYesNo(default=False)
+config.misc.pluginbrowser.busybox = ConfigYesNo(default=False)
+config.misc.pluginbrowser.e2fsprogs = ConfigYesNo(default=True)
+config.misc.pluginbrowser.enigma2locale = ConfigYesNo(default=True)
+config.misc.pluginbrowser.firmware = ConfigYesNo(default=True)
+config.misc.pluginbrowser.frequency = ConfigYesNo(default=True)
+config.misc.pluginbrowser.glibccharmap = ConfigYesNo(default=False)
+config.misc.pluginbrowser.glibcgconv = ConfigYesNo(default=False)
+config.misc.pluginbrowser.gstplugins = ConfigYesNo(default=True)
+config.misc.pluginbrowser.kernelmodule = ConfigYesNo(default=True)
+config.misc.pluginbrowser.mtdutils = ConfigYesNo(default=True)
+config.misc.pluginbrowser.packagegroupbase = ConfigYesNo(default=False)
+config.misc.pluginbrowser.pamplugin = ConfigYesNo(default=False)
+config.misc.pluginbrowser.perlmodule = ConfigYesNo(default=False)
+config.misc.pluginbrowser.python = ConfigYesNo(default=True)
+config.misc.pluginbrowser.tzdata = ConfigYesNo(default=True)
+config.misc.pluginbrowser.utillinux = ConfigYesNo(default=True)
+
 config.misc.pluginbrowser.plugin_order = ConfigText(default="")
 
 
@@ -255,6 +274,25 @@ class PluginDownloadBrowser(Screen):
 	DOWNLOAD = 0
 	REMOVE = 1
 	PLUGIN_PREFIX = 'enigma2-plugin-'
+	ALSAUTILS_PREFIX = 'alsa-utils-'
+	BLUEZ_PREFIX = 'bluez5-'
+	BUSYBOX_PREFIX = 'busybox-'
+	E2FSPROGS_PREFIX = 'e2fsprogs-'
+	ENIGMA2LOCALE_PREFIX = 'enigma2-locale-'
+	FIRMWARE_PREFIX = 'firmware-'
+	FREQUENCY_PREFIX = 'frequency-xml-list-'
+	GLIBCCHARMAP_PREFIX = 'glibc-charmap-'
+	GLIBCGCONC_PREFIX = 'glibc-gconv-'
+	GSTPLUGINS_PREFIX = 'gstreamer1.0-plugins-'
+	GSTOLDPLUGINS_PREFIX = 'gst-plugins-'
+	KERNELMODULE_PREFIX = 'kernel-module-'
+	MTDUTILS_PREFIX = 'mtd-utils-'
+	PACKAGEGROUPBASE_PREFIX = 'packagegroup-base-'
+	PAMPLUGIN_PREFIX = 'pam-plugin-'
+	PERLMODULE_PREFIX = 'perl-module-'
+	PYTHON_PREFIX = 'python-'
+	TZDATA_PREFIX = 'tzdata-'
+	UTILLINUX_PREFIX = 'util-linux-'
 	lastDownloadDate = None
 
 	def __init__(self, session, type=0, needupdate=True):
@@ -379,7 +417,7 @@ class PluginDownloadBrowser(Screen):
 					if candidates:
 						from Components.Renderer import LcdPicon
 						self.postInstallCall = LcdPicon.initLcdPiconPaths
-						self.session.openWithCallback(self.installDestinationCallback, ChoiceBox, title=_("Install lcd picons on"), list=candidates)
+						self.session.openWithCallback(self.installDestinationCallback, ChoiceBox, title=_("Install display picons on"), list=candidates)
 					return
 				self.install_settings_name = self["list"].l.getCurrentSelection()[0].name
 				if self["list"].l.getCurrentSelection()[0].name.startswith('settings-'):
@@ -391,12 +429,16 @@ class PluginDownloadBrowser(Screen):
 				self.doRemove(self.installFinished, self["list"].l.getCurrentSelection()[0].name)
 
 	def doRemove(self, callback, pkgname):
-		pkgname = self.PLUGIN_PREFIX + pkgname
-		self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_remove + Opkg.opkgExtraDestinations() + " " + pkgname, "sync"], skin="Console_Pig")
+		if pkgname.startswith((self.ALSAUTILS_PREFIX, self.BLUEZ_PREFIX, self.BUSYBOX_PREFIX, self.E2FSPROGS_PREFIX, self.ENIGMA2LOCALE_PREFIX, self.FIRMWARE_PREFIX, self.FREQUENCY_PREFIX, self.GLIBCCHARMAP_PREFIX, self.GLIBCGCONC_PREFIX, self.GSTPLUGINS_PREFIX, self.GSTOLDPLUGINS_PREFIX, self.KERNELMODULE_PREFIX, self.MTDUTILS_PREFIX, self.PACKAGEGROUPBASE_PREFIX, self.PAMPLUGIN_PREFIX, self.PERLMODULE_PREFIX, self.PYTHON_PREFIX, self.TZDATA_PREFIX, self.UTILLINUX_PREFIX)):
+			self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_remove + Opkg.opkgExtraDestinations() + " " + pkgname, "sync"], skin="Console_Pig")
+		else:
+			self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_remove + Opkg.opkgExtraDestinations() + " " + self.PLUGIN_PREFIX + pkgname, "sync"], skin="Console_Pig")
 
 	def doInstall(self, callback, pkgname):
-		pkgname = self.PLUGIN_PREFIX + pkgname
-		self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_install + " " + pkgname, "sync"], skin="Console_Pig")
+		if pkgname.startswith((self.ALSAUTILS_PREFIX, self.BLUEZ_PREFIX, self.BUSYBOX_PREFIX, self.E2FSPROGS_PREFIX, self.ENIGMA2LOCALE_PREFIX, self.FIRMWARE_PREFIX, self.FREQUENCY_PREFIX, self.GLIBCCHARMAP_PREFIX, self.GLIBCGCONC_PREFIX, self.GSTPLUGINS_PREFIX, self.GSTOLDPLUGINS_PREFIX, self.KERNELMODULE_PREFIX, self.MTDUTILS_PREFIX, self.PACKAGEGROUPBASE_PREFIX, self.PAMPLUGIN_PREFIX, self.PERLMODULE_PREFIX, self.PYTHON_PREFIX, self.TZDATA_PREFIX, self.UTILLINUX_PREFIX)):
+			self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_install + " " + pkgname, "sync"], skin="Console_Pig")
+		else:
+			self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_install + " " + self.PLUGIN_PREFIX + pkgname, "sync"], skin="Console_Pig")
 
 	def runSettingsRemove(self, val):
 		if val:
@@ -406,10 +448,10 @@ class PluginDownloadBrowser(Screen):
 		self.doInstall(self.installFinished, self.install_settings_name)
 
 	def startOpkgListInstalled(self, pkgname=PLUGIN_PREFIX + '*'):
-		self.container.execute(self.opkg + Opkg.opkgExtraDestinations() + " list_installed '%s'" % pkgname)
+		self.container.execute(self.opkg + Opkg.opkgExtraDestinations() + " list_installed")
 
 	def startOpkgListAvailable(self):
-		self.container.execute(self.opkg + Opkg.opkgExtraDestinations() + " list '" + self.PLUGIN_PREFIX + "*'")
+		self.container.execute(self.opkg + Opkg.opkgExtraDestinations() + " list")
 
 	def startRun(self):
 		listsize = self["list"].instance.size()
@@ -469,6 +511,81 @@ class PluginDownloadBrowser(Screen):
 			for plugin in Opkg.enumPlugins(self.PLUGIN_PREFIX):
 				if plugin[0] not in self.installedplugins:
 					pluginlist.append(plugin + (plugin[0][15:],))
+			if config.misc.pluginbrowser.alsautils.value:
+				for plugin in Opkg.enumPlugins(self.ALSAUTILS_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.bluez.value:
+				for plugin in Opkg.enumPlugins(self.BLUEZ_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.busybox.value:
+				for plugin in Opkg.enumPlugins(self.BUSYBOX_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.e2fsprogs.value:
+				for plugin in Opkg.enumPlugins(self.E2FSPROGS_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.enigma2locale.value:
+				for plugin in Opkg.enumPlugins(self.ENIGMA2LOCALE_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.firmware.value:
+				for plugin in Opkg.enumPlugins(self.FIRMWARE_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.frequency.value:
+				for plugin in Opkg.enumPlugins(self.FREQUENCY_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.glibccharmap.value:
+				for plugin in Opkg.enumPlugins(self.GLIBCCHARMAP_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.glibcgconv.value:
+				for plugin in Opkg.enumPlugins(self.GLIBCGCONC_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.gstplugins.value:
+				for plugin in Opkg.enumPlugins(self.GSTPLUGINS_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+				for plugin in Opkg.enumPlugins(self.GSTOLDPLUGINS_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.kernelmodule.value:
+				for plugin in Opkg.enumPlugins(self.KERNELMODULE_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.mtdutils.value:
+				for plugin in Opkg.enumPlugins(self.MTDUTILS_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.packagegroupbase.value:
+				for plugin in Opkg.enumPlugins(self.PACKAGEGROUPBASE_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.pamplugin.value:
+				for plugin in Opkg.enumPlugins(self.PAMPLUGIN_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.perlmodule.value:
+				for plugin in Opkg.enumPlugins(self.PERLMODULE_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.python.value:
+				for plugin in Opkg.enumPlugins(self.PYTHON_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.tzdata.value:
+				for plugin in Opkg.enumPlugins(self.TZDATA_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.utillinux.value:
+				for plugin in Opkg.enumPlugins(self.UTILLINUX_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
 			if pluginlist:
 				pluginlist.sort()
 				self.updateList()
