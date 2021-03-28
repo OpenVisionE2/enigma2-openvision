@@ -1114,10 +1114,10 @@ class StorageInformation(InformationBase):
 						diskSize = stat.f_blocks * stat.f_frsize
 						diskFree = stat.f_bfree * stat.f_frsize
 						diskUsed = diskSize - diskFree
-						info.append(formatLine("P3", _("Mountpoint"), partition.mountpoint))
-						info.append(formatLine("P3", _("Capacity"), "%s  (%s)" % (scaleNumber(diskSize), scaleNumber(diskSize, "Iec"))))
-						info.append(formatLine("P3", _("Used"), "%s  (%s)" % (scaleNumber(diskUsed), scaleNumber(diskUsed, "Iec"))))
-						info.append(formatLine("P3", _("Free"), "%s  (%s)" % (scaleNumber(diskFree), scaleNumber(diskFree, "Iec"))))
+						info.append(formatLine("P2", _("Mountpoint"), partition.mountpoint))
+						info.append(formatLine("P2", _("Capacity"), "%s  (%s)" % (scaleNumber(diskSize), scaleNumber(diskSize, "Iec"))))
+						info.append(formatLine("P2", _("Used"), "%s  (%s)" % (scaleNumber(diskUsed), scaleNumber(diskUsed, "Iec"))))
+						info.append(formatLine("P2", _("Free"), "%s  (%s)" % (scaleNumber(diskFree), scaleNumber(diskFree, "Iec"))))
 		else:
 			info.append("")
 			info.append(formatLine("H1", _("No hard disks detected.")))
