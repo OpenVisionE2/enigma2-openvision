@@ -189,15 +189,18 @@ class BenchmarkInformation(InformationBase):
 		self.setTitle(_("Benchmark Information"))
 		self.skinName.insert(0, "BenchmarkInformation")
 		self.benchmark = _("Calculating benchmark...")
+		self.benchmarkram = _("Calculating benchmark...")
 
 	def fetchInformation(self):
 		self.informationTimer.stop()
 		self.benchmark = about.getCPUBenchmark().replace("\n", "\n|")
+		self.benchmarkram = about.getRAMBenchmark()
 		for callback in self.onInformationUpdated:
 			callback()
 
 	def refreshInformation(self):
 		self.benchmark = _("Calculating benchmark...")
+		self.benchmarkram = _("Calculating benchmark...")
 		self.informationTimer.start(25)
 		for callback in self.onInformationUpdated:
 			callback()
@@ -207,6 +210,7 @@ class BenchmarkInformation(InformationBase):
 		info.append(formatLine("H", "%s %s %s" % (_("Benchmark for"), SystemInfo["MachineBrand"], SystemInfo["MachineModel"])))
 		info.append("")
 		info.append(formatLine("P1", _("CPU benchmark"), self.benchmark))
+		info.append(formatLine("P1", _("RAM benchmark"), self.benchmarkram))
 		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
 
 	def getSummaryInformation(self):

@@ -173,6 +173,21 @@ def getCPUBenchmark():
 		return _("unknown")
 
 
+def getRAMBenchmark():
+	try:
+		if not fileExists("/tmp/streambench.txt"):
+			streambenchmark = "streambench > /tmp/streambench.txt"
+			Console().ePopen(streambenchmark)
+		if fileExists("/tmp/streambench.txt"):
+			print("[About] Read /tmp/streambench.txt")
+			streambench = os.popen("cat /tmp/streambench.txt | grep 'Open Vision copy rate' | sed 's|[^0-9]*||'").read().strip()
+
+		return "%s MB/s copy rate" % (streambench)
+	except:
+		print("[About] Read /tmp/streambench.txt failed.")
+		return _("unknown")
+
+
 def getCPUSerial():
 	print("[About] Read /proc/cpuinfo")
 	with open('/proc/cpuinfo', 'r') as f:
