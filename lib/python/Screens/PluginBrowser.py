@@ -294,7 +294,10 @@ class PluginDownloadBrowser(Screen):
 	PACKAGEGROUPBASE_PREFIX = 'packagegroup-base-'
 	PAMPLUGIN_PREFIX = 'pam-plugin-'
 	PERLMODULE_PREFIX = 'perl-module-'
-	PYTHON_PREFIX = 'python-'
+	if PY3:
+		PYTHON_PREFIX = 'python3-'
+	else:
+		PYTHON_PREFIX = 'python-'
 	TZDATA_PREFIX = 'tzdata-'
 	UTILLINUX_PREFIX = 'util-linux-'
 	lastDownloadDate = None
