@@ -67,9 +67,10 @@ SystemInfo["MachineBuild"] = platform
 #
 SystemInfo["RCCode"] = int(getRCType())
 SystemInfo["RCTypeIndex"] = int(getRCIDNum())
+SystemInfo["RCName"] = getRCName()
 SystemInfo["RCImage"] = getRCFile("png")
 SystemInfo["RCMapping"] = getRCFile("xml")
-SystemInfo["RemoteEnable"] = True if model in ("dm800", "azboxhd") else False
+SystemInfo["RemoteEnable"] = model in ("dm800", "azboxhd")
 if model in ("maram9", "axodin"):
 	repeat = 400
 elif model == "azboxhd":
