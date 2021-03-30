@@ -78,7 +78,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 
 		self.activity = 0
 		self.activityTimer = eTimer()
-#		self.activityTimer.callback.append(self.checkTraficLight)
+		self.activityTimer.callback.append(self.checkTraficLight)
 		self.activityTimer.callback.append(self.doActivityTimer)
 		self.activityTimer.start(100, True)
 
