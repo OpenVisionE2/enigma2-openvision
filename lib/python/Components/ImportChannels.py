@@ -21,6 +21,7 @@ except ImportError:
 	from base64 import encodebytes
 	encodecommand = encodebytes
 import xml.etree.ElementTree as et
+from six import PY2
 
 settingfiles = ('lamedb', 'bouquets.', 'userbouquet.', 'blacklist', 'whitelist', 'alternatives.')
 
