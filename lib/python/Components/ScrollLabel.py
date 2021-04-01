@@ -84,7 +84,7 @@ class ScrollLabel(GUIComponent):
 
 	def setText(self, text, showBottom=False):
 		self.message = text
-		text = text.rstrip()
+		# text = text.rstrip()
 		if self.pageHeight:
 			if self.split:
 				left = []
@@ -92,7 +92,7 @@ class ScrollLabel(GUIComponent):
 				for line in text.split("\n"):
 					line = line.split(self.splitchar, 1)
 					left.append(line[0])
-					right.append("" if len(line) < 2 else line[1].lstrip())
+					right.append("" if len(line) < 2 else line[1])  # line[1].lstrip()
 				self.long_text.setText("\n".join(left))
 				self.right_text.setText("\n".join(right))
 			else:
