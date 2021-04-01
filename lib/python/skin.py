@@ -111,7 +111,7 @@ def InitSkins():
 	runCallbacks = True
 
 
-# Temporary entry point for older versions of Bootstrap.py.
+# Temporary entry point for older versions of StartEnigma.py.
 #
 def loadSkinData(desktop):
 	InitSkins()

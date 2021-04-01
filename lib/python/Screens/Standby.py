@@ -302,7 +302,7 @@ class QuitMainloopScreen(Screen):
 			QUIT_REBOOT: _("Your %s %s is rebooting") % (brand, model),
 			QUIT_RESTART: _("The user interface of your %s %s is restarting") % (brand, model),
 			QUIT_UPGRADE_FP: _("Your frontprocessor will be updated\nPlease wait until your %s %s reboots\nThis may take a few minutes") % (brand, model),
-			QUIT_ERROR_RESTART: _("The user interface of your %s %s is restarting\ndue to an error in Bootstrap.py") % (brand, model),
+			QUIT_ERROR_RESTART: _("The user interface of your %s %s is restarting\ndue to an error in StartEnigma.py") % (brand, model),
 			QUIT_DEBUG_RESTART: _("The user interface of your %s %s is restarting in debug mode") % (brand, model),
 			QUIT_REBOOT_ANDROID: _("Your %s %s is rebooting into android mode") % (brand, model),
 			QUIT_REBOOT_RECOVERY: _("Your %s %s is rebooting into recovery mode") % (brand, model),
