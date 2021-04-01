@@ -1,8 +1,7 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-import skin
+from enigma import eLabel, ePoint, eSize, eSlider, eWidget, fontRenderClass
+
+from skin import applyAllAttributes, loadPixmap
 from Components.GUIComponent import GUIComponent
-from enigma import eLabel, eWidget, eSlider, fontRenderClass, ePoint, eSize
 
 
 class ScrollLabel(GUIComponent):
@@ -34,10 +33,10 @@ class ScrollLabel(GUIComponent):
 					scrollbar_attribs.append((attrib, value))
 					self.skinAttributes.remove((attrib, value))
 				elif attrib in ("scrollbarSliderPicture", "sliderPixmap"):
-					self.scrollbar.setPixmap(skin.loadPixmap(value, desktop))
+					self.scrollbar.setPixmap(loadPixmap(value, desktop))
 					self.skinAttributes.remove((attrib, value))
 				elif attrib in ("scrollbarBackgroundPicture", "scrollbarbackgroundPixmap"):
-					self.scrollbar.setBackgroundPixmap(skin.loadPixmap(value, desktop))
+					self.scrollbar.setBackgroundPixmap(loadPixmap(value, desktop))
 					self.skinAttributes.remove((attrib, value))
 				elif "transparent" in attrib or "backgroundColor" in attrib:
 					widget_attribs.append((attrib, value))
@@ -57,12 +56,12 @@ class ScrollLabel(GUIComponent):
 				elif "dividechar" in attrib or "divideChar" in attrib:
 					self.splitchar = value
 			if self.split:
-				skin.applyAllAttributes(self.long_text, desktop, self.skinAttributes + [("halign", "left")], parent.scale)
-				skin.applyAllAttributes(self.right_text, desktop, self.skinAttributes + [("transparent", "1"), ("halign", "left" if self.column else "right")], parent.scale)
+				applyAllAttributes(self.long_text, desktop, self.skinAttributes + [("halign", "left")], parent.scale)
+				applyAllAttributes(self.right_text, desktop, self.skinAttributes + [("transparent", "1"), ("halign", "left" if self.column else "right")], parent.scale)
 			else:
-				skin.applyAllAttributes(self.long_text, desktop, self.skinAttributes, parent.scale)
-			skin.applyAllAttributes(self.instance, desktop, widget_attribs, parent.scale)
-			skin.applyAllAttributes(self.scrollbar, desktop, scrollbar_attribs + widget_attribs, parent.scale)
+				applyAllAttributes(self.long_text, desktop, self.skinAttributes, parent.scale)
+			applyAllAttributes(self.instance, desktop, widget_attribs, parent.scale)
+			applyAllAttributes(self.scrollbar, desktop, scrollbar_attribs + widget_attribs, parent.scale)
 			ret = True
 		self.pageWidth = self.long_text.size().width()
 		lineheight = fontRenderClass.getInstance().getLineHeight(self.long_text.getFont()) or 30 # assume a random lineheight if nothing is visible
