@@ -188,19 +188,52 @@ class BenchmarkInformation(InformationBase):
 		InformationBase.__init__(self, session)
 		self.setTitle(_("Benchmark Information"))
 		self.skinName.insert(0, "BenchmarkInformation")
-		self.benchmark = _("Calculating benchmark...")
-		self.benchmarkram = _("Calculating benchmark...")
+		self.console = Console()
+		self.cpuTypes = []
+		self.cpuDhrystones = _("Calculating benchmark...")
+		self.cpuBenchmark = _("Calculating benchmark...")
+		self.cpuRating = _("Calculating rating...")
+		self.ramBenchmark = _("Calculating benchmark...")
 
 	def fetchInformation(self):
 		self.informationTimer.stop()
-		self.benchmark = about.getCPUBenchmark().replace("\n", "\n|")
-		self.benchmarkram = about.getRAMBenchmark()
+		self.cpuTypes = []
+		lines = []
+		lines = fileReadLines("/proc/cpuinfo", lines)
+		for line in lines:
+			if line.startswith("model name"):
+				self.cpuTypes.append([x.strip() for x in line.split(":")][1])
+		self.console.ePopen(("/usr/bin/dhry", "/usr/bin/dhry"), self.cpuBenchmarkFinished)
+		# Serialise the tests for better accuracy.
+		# self.console.ePopen(("/usr/bin/streambench", "/usr/bin/streambench"), self.ramBenchmarkFinished)
+		for callback in self.onInformationUpdated:
+			callback()
+
+	def cpuBenchmarkFinished(self, result, retVal, extraArgs):
+		for line in result.split("\n"):
+			if line.startswith("Dhrystones per Second"):
+				self.cpuDhrystones = "%s Dhrystones per second" % [x.strip() for x in line.split(":")][1]
+			if line.startswith("Open Vision DMIPS"):
+				self.cpuBenchmark = "%s DMIPS per core" % [x.strip() for x in line.split(":")][1]
+			if line.startswith("Open Vision CPU status"):
+				self.cpuRating = [x.strip() for x in line.split(":")][1]
+		# Serialise the tests for better accuracy.
+		self.console.ePopen(("/usr/bin/streambench", "/usr/bin/streambench"), self.ramBenchmarkFinished)
+		for callback in self.onInformationUpdated:
+			callback()
+
+	def ramBenchmarkFinished(self, result, retVal, extraArgs):
+		for line in result.split("\n"):
+			if line.startswith("Open Vision copy rate"):
+				self.ramBenchmark = "%s MB/s copy rate" % [x.strip() for x in line.split(":")][1]
 		for callback in self.onInformationUpdated:
 			callback()
 
 	def refreshInformation(self):
-		self.benchmark = _("Calculating benchmark...")
-		self.benchmarkram = _("Calculating benchmark...")
+		self.cpuDhrystones = _("Calculating benchmark...")
+		self.cpuBenchmark = _("Calculating benchmark...")
+		self.cpuRating = _("Calculating rating...")
+		self.ramBenchmark = _("Calculating benchmark...")
 		self.informationTimer.start(25)
 		for callback in self.onInformationUpdated:
 			callback()
@@ -209,8 +242,14 @@ class BenchmarkInformation(InformationBase):
 		info = []
 		info.append(formatLine("H", "%s %s %s" % (_("Benchmark for"), SystemInfo["MachineBrand"], SystemInfo["MachineModel"])))
 		info.append("")
-		info.append(formatLine("P1", _("CPU benchmark"), self.benchmark))
-		info.append(formatLine("P1", _("RAM benchmark"), self.benchmarkram))
+		for index, cpu in enumerate(self.cpuTypes):
+			info.append(formatLine("P1", _("CPU / Core %d type") % index, cpu))
+		info.append("")
+		info.append(formatLine("P1", _("CPU Dhrystones"), self.cpuDhrystones))
+		info.append(formatLine("P1", _("CPU benchmark"), self.cpuBenchmark))
+		info.append(formatLine("P1", _("CPU rating"), self.cpuRating))
+		info.append("")
+		info.append(formatLine("P1", _("RAM benchmark"), self.ramBenchmark))
 		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
 
 	def getSummaryInformation(self):
