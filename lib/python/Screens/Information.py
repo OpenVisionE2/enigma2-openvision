@@ -495,7 +495,7 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Flash type"), about.getFlashType()))
 		xResolution = getDesktop(0).size().width()
 		yResolution = getDesktop(0).size().height()
-		info.append(formatLine("P1", _("Skin & Resolution"), "%s  [%s  (%s x %s)]") % (config.skin.primary_skin.value.split('/')[0], self.resolutions.get(yResolution, "Unknown"), xResolution, yResolution))
+		info.append(formatLine("P1", _("Skin & Resolution"), "%s  (%s  -  %s x %s)" % (config.skin.primary_skin.value.split('/')[0], self.resolutions.get(yResolution, "Unknown"), xResolution, yResolution)))
 		info.append("")
 		info.append(formatLine("H", _("Enigma2 information")))
 		info.append("")
