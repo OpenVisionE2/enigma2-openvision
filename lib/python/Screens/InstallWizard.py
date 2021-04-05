@@ -81,6 +81,7 @@ class InstallWizard(Screen, ConfigListScreen):
 				ip = ".".join([str(x) for x in iNetwork.getAdapterAttribute(self.adapter, "ip")])
 				self.list.append(getConfigListEntry(_("Your internet connection is working (ip: %s)") % ip, self.enabled))
 			else:
+				self.doNextStep = True
 				self.list.append(getConfigListEntry(_("Your receiver does not have an internet connection"), self.enabled))
 		elif self.index == self.INSTALL_PLUGINS:
 			self.list.append(getConfigListEntry(_("No, I do not want to install plugins"), self.noplugins))
