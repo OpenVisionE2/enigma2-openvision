@@ -600,7 +600,7 @@ class Wizard(Screen):
 				if self.wizard[self.currStep]["config"]["type"] == "dynamic":
 					print("[Wizard] config type is dynamic")
 					self["config"].instance.setZPosition(2)
-					self["config"].l.setList(eval("self." + self.wizard[self.currStep]["config"]["source"])())
+					self["config"].setList(eval("self." + self.wizard[self.currStep]["config"]["source"])())
 				elif self.wizard[self.currStep]["config"]["screen"] is not None:
 					if self.wizard[self.currStep]["config"]["type"] == "standalone":
 						print("[Wizard] Type is standalone")
@@ -617,7 +617,7 @@ class Wizard(Screen):
 								self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"], self.wizard[self.currStep]["config"]["args"])
 						if SystemInfo["OSDAnimation"]:
 							self.configInstance.setAnimationMode(0)
-						self["config"].l.setList(self.configInstance["config"].list)
+						self["config"].setList(self.configInstance["config"].list)
 						callbacks = self.configInstance["config"].onSelectionChanged
 						self.configInstance["config"].destroy()
 						print("[Wizard] clearConfigList", self.configInstance["config"], self["config"])
@@ -626,7 +626,7 @@ class Wizard(Screen):
 						print("[Wizard] clearConfigList", self.configInstance["config"], self["config"])
 						self["config"].setCurrentIndex(0)
 				else:
-					self["config"].l.setList([])
+					self["config"].setList([])
 					self.handleInputHelpers()
 			else:
 				if "config" in self:
