@@ -200,7 +200,7 @@ class BenchmarkInformation(InformationBase):
 		lines = []
 		lines = fileReadLines("/proc/cpuinfo", lines)
 		for line in lines:
-			if line.startswith("model name"):
+			if line.startswith("model name") or line.startswith("Processor"):  # HiSilicon use the label "Processor"!
 				self.cpuTypes.append([x.strip() for x in line.split(":")][1])
 		self.console.ePopen(("/usr/bin/dhry", "/usr/bin/dhry"), self.cpuBenchmarkFinished)
 		# Serialise the tests for better accuracy.
@@ -244,7 +244,7 @@ class BenchmarkInformation(InformationBase):
 		info.append(formatLine("P1", _("CPU benchmark"), _("%d DMIPS per core") % self.cpuBenchmark if self.cpuBenchmark else _("Calculating benchmark...")))
 		count = len(self.cpuTypes)
 		if count > 1:
-			info.append(formatLine("P1", _("Total CPU benchmark"), _("%d DMIPS - %d cores") % (self.cpuBenchmark * count, count) if self.cpuBenchmark else _("Calculating benchmark...")))
+			info.append(formatLine("P1", _("Total CPU benchmark"), _("%d DMIPS with %d cores") % (self.cpuBenchmark * count, count) if self.cpuBenchmark else _("Calculating benchmark...")))
 		info.append(formatLine("P1", _("CPU rating"), self.cpuRating if self.cpuRating else _("Calculating rating...")))
 		info.append("")
 		info.append(formatLine("P1", _("RAM benchmark"), "%.2f MB/s copy rate" % self.ramBenchmark if self.ramBenchmark else _("Calculating benchmark...")))
