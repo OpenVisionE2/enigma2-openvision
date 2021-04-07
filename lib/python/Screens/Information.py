@@ -190,10 +190,9 @@ class BenchmarkInformation(InformationBase):
 		self.skinName.insert(0, "BenchmarkInformation")
 		self.console = Console()
 		self.cpuTypes = []
-		self.cpuDhrystones = _("Calculating benchmark...")
-		self.cpuBenchmark = _("Calculating benchmark...")
-		self.cpuRating = _("Calculating rating...")
-		self.ramBenchmark = _("Calculating benchmark...")
+		self.cpuBenchmark = None
+		self.cpuRating = None
+		self.ramBenchmark = None
 
 	def fetchInformation(self):
 		self.informationTimer.stop()
@@ -211,10 +210,8 @@ class BenchmarkInformation(InformationBase):
 
 	def cpuBenchmarkFinished(self, result, retVal, extraArgs):
 		for line in result.split("\n"):
-			if line.startswith("Dhrystones per Second"):
-				self.cpuDhrystones = "%s Dhrystones per second" % [x.strip() for x in line.split(":")][1]
 			if line.startswith("Open Vision DMIPS"):
-				self.cpuBenchmark = "%s DMIPS per core" % [x.strip() for x in line.split(":")][1]
+				self.cpuBenchmark = int([x.strip() for x in line.split(":")][1])
 			if line.startswith("Open Vision CPU status"):
 				self.cpuRating = [x.strip() for x in line.split(":")][1]
 		# Serialise the tests for better accuracy.
@@ -225,15 +222,14 @@ class BenchmarkInformation(InformationBase):
 	def ramBenchmarkFinished(self, result, retVal, extraArgs):
 		for line in result.split("\n"):
 			if line.startswith("Open Vision copy rate"):
-				self.ramBenchmark = "%s MB/s copy rate" % [x.strip() for x in line.split(":")][1]
+				self.ramBenchmark = float([x.strip() for x in line.split(":")][1])
 		for callback in self.onInformationUpdated:
 			callback()
 
 	def refreshInformation(self):
-		self.cpuDhrystones = _("Calculating benchmark...")
-		self.cpuBenchmark = _("Calculating benchmark...")
-		self.cpuRating = _("Calculating rating...")
-		self.ramBenchmark = _("Calculating benchmark...")
+		self.cpuBenchmark = None
+		self.cpuRating = None
+		self.ramBenchmark = None
 		self.informationTimer.start(25)
 		for callback in self.onInformationUpdated:
 			callback()
@@ -245,11 +241,13 @@ class BenchmarkInformation(InformationBase):
 		for index, cpu in enumerate(self.cpuTypes):
 			info.append(formatLine("P1", _("CPU / Core %d type") % index, cpu))
 		info.append("")
-		info.append(formatLine("P1", _("CPU Dhrystones"), self.cpuDhrystones))
-		info.append(formatLine("P1", _("CPU benchmark"), self.cpuBenchmark))
-		info.append(formatLine("P1", _("CPU rating"), self.cpuRating))
+		info.append(formatLine("P1", _("CPU benchmark"), _("%d DMIPS per core") % self.cpuBenchmark if self.cpuBenchmark else _("Calculating benchmark...")))
+		count = len(self.cpuTypes)
+		if count > 1:
+			info.append(formatLine("P1", _("Total CPU benchmark"), _("%d DMIPS - %d cores") % (self.cpuBenchmark * count, count) if self.cpuBenchmark else _("Calculating benchmark...")))
+		info.append(formatLine("P1", _("CPU rating"), self.cpuRating if self.cpuRating else _("Calculating rating...")))
 		info.append("")
-		info.append(formatLine("P1", _("RAM benchmark"), self.ramBenchmark))
+		info.append(formatLine("P1", _("RAM benchmark"), "%.2f MB/s copy rate" % self.ramBenchmark if self.ramBenchmark else _("Calculating benchmark...")))
 		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
 
 	def getSummaryInformation(self):
