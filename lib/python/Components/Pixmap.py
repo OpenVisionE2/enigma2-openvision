@@ -67,6 +67,7 @@ class MovingPixmap(Pixmap):
 		self.clearPath()
 		self.moveTimer = eTimer()
 		self.moveTimer.callback.append(self.doMove)
+		self.callback = None
 
 	def applySkin(self, desktop, screen):
 		ret = Pixmap.applySkin(self, desktop, screen)
@@ -88,7 +89,9 @@ class MovingPixmap(Pixmap):
 		self.clearPath()
 		self.addMovePoint(x, y, time)
 
-	def startMoving(self):
+	def startMoving(self, callback=None):
+		if callable(callback):
+			self.callback = callback
 		if not self.moving:
 			try:
 				self.time = self.path[self.currDest][2]
@@ -103,6 +106,8 @@ class MovingPixmap(Pixmap):
 	def stopMoving(self):
 		self.moving = False
 		self.moveTimer.stop()
+		if self.callback:
+			self.callback()
 
 	def doMove(self):
 		self.time -= 1
@@ -124,6 +129,8 @@ class MovingPixmap(Pixmap):
 					self.currDest = 0
 					self.moving = False
 					self.startMoving()
+				elif self.callback:
+					self.callback()
 			else:
 				self.moving = False
 				self.startMoving()
