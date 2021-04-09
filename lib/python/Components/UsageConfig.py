@@ -356,14 +356,14 @@ def InitUsageConfig():
 		("newline", _("Show default on new line"))
 	])
 
-	config.usage.help_sortorder = ConfigSelection(default="headings+alphabetic", choices=[
+	config.usage.helpSortOrder = ConfigSelection(default="headings+alphabetic", choices=[
 		("headings+alphabetic", _("Alphabetical under headings")),
 		("flat+alphabetic", _("Flat alphabetical")),
 		("flat+remotepos", _("Flat by position on remote")),
 		("flat+remotegroups", _("Flat by key group on remote"))
 	])
 
-	config.usage.help_animspeed = ConfigSelection(default="10", choices=[
+	config.usage.helpAnimationSpeed = ConfigSelection(default="10", choices=[
 		("1", _("Very fast")),
 		("5", _("Fast")),
 		("10", _("Default")),

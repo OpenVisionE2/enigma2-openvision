@@ -1,15 +1,15 @@
 from xml.etree.cElementTree import ParseError, parse
 
-from Components.config import ConfigInteger, config
-from Components.Pixmap import MovingPixmap, MultiPixmap
+from Components.config import config
+from Components.Pixmap import MovingPixmap, Pixmap
 from Components.SystemInfo import SystemInfo
-
-config.misc.rcused = ConfigInteger(default=1)
+from Tools.LoadPixmap import LoadPixmap
 
 
 class Rc:
 	def __init__(self):
-		self["rc"] = MultiPixmap()
+		self["rc"] = Pixmap()
+		self.rcPosition = None
 		nSelectPics = 16
 		rcHeights = (500,) * 2
 		self.selectPics = []
@@ -19,7 +19,6 @@ class Rc:
 		self.oldNSelectedKeys = self.nSelectedKeys = 0
 		self.clearSelectedKeys()
 		self.onLayoutFinish.append(self.initRc)
-		# self.onExecBegin.append(self.testIndicators)  # Test code to visit every button in turn.
 
 	class KeyIndicator:
 
@@ -67,11 +66,11 @@ class Rc:
 				pixmap.hide()
 
 	def initRc(self):
-		# if self.isDefaultRc:
-		# 	self["rc"].setPixmapNum(config.misc.rcused.value)
-		# else:
-		# 	self["rc"].setPixmapNum(0)
-		self["rc"].setPixmapNum(0)
+		rc = LoadPixmap(SystemInfo["RCImage"])
+		if rc:
+			self["rc"].instance.setPixmap(rc)
+			self.rcPosition = self["rc"].getPosition()
+			rcHeight = self["rc"].getSize()[1]
 		rcHeight = self["rc"].getSize()[1]
 		for selectPic in self.selectPics:
 			nBreaks = len(selectPic.pixmaps)
@@ -94,15 +93,15 @@ class Rc:
 		self["rc"].show()
 
 	def selectKey(self, key):
-		pos = self.rcPositions.getRcKeyPos(key)
-		if pos and self.nSelectedKeys < len(self.selectPics):
-			rcPos = self["rc"].getPosition()
-			selectPic = self.selectPics[self.nSelectedKeys]
-			self.nSelectedKeys += 1
-			if self.oldNSelectedKeys > 0 and self.nSelectedKeys > self.oldNSelectedKeys:
-				selectPic.moveTo(pos, rcPos, moveFrom=self.selectPics[self.oldNSelectedKeys - 1], time=int(config.usage.help_animspeed.value))
-			else:
-				selectPic.moveTo(pos, rcPos, time=int(config.usage.help_animspeed.value))
+		if self.rcPosition:
+			pos = self.rcPositions.getRcKeyPos(key)
+			if pos and self.nSelectedKeys < len(self.selectPics):
+				selectPic = self.selectPics[self.nSelectedKeys]
+				self.nSelectedKeys += 1
+				if self.oldNSelectedKeys > 0 and self.nSelectedKeys > self.oldNSelectedKeys:
+					selectPic.moveTo(pos, self.rcPosition, moveFrom=self.selectPics[self.oldNSelectedKeys - 1], time=int(config.usage.helpAnimationSpeed.value))
+				else:
+					selectPic.moveTo(pos, self.rcPosition, time=int(config.usage.helpAnimationSpeed.value))
 
 	def clearSelectedKeys(self):
 		self.showRc()
@@ -114,23 +113,25 @@ class Rc:
 		for selectPic in self.selectPics:
 			selectPic.hide()
 
-	# Visits all the buttons in turn, sliding between them.  Leaves the
-	# indicator at the incorrect position at the end of the test run.
-	# Change to another entry in the help list to get the indicator in
-	# the correct position.
+	# Visits all the buttons in turn, sliding between them.  Starts with
+	# the top left button and finishes on the bottom right button.
+	# Leaves the highlight on the bottom right button at the end of
+	# the test run.  The callback method can be used to restore the
+	# highlight(s) to their correct position(s) when the animation
+	# completes.
 	#
-	# def testIndicators(self):
-	# 	if not self.selectPics or not self.selectPics[0].pixmaps:
-	# 		return
-	# 	self.hideSelectPics()
-	# 	pixmap = self.selectPics[0].pixmaps[0]
-	# 	pixmap.show()
-	# 	rcPos = self["rc"].getPosition()
-	# 	for key in self.rcPositions.getRcKeyList():
-	# 		pos = self.rcPositions.getRcKeyPos(key)
-	# 		pixmap.addMovePoint(rcPos[0] + pos[0], rcPos[1] + pos[1], time=5)
-	# 		pixmap.addMovePoint(rcPos[0] + pos[0], rcPos[1] + pos[1], time=10)
-	# 	pixmap.startMoving()
+	def testHighlights(self, callback=None):
+		if not self.selectPics or not self.selectPics[0].pixmaps:
+			return
+		self.hideSelectPics()
+		pixmap = self.selectPics[0].pixmaps[0]
+		pixmap.show()
+		pixmap.clearPath()
+		for name in self.rcPositions.getRcKeyList():
+			pos = self.rcPositions.getRcKeyPos(name)
+			pixmap.addMovePoint(self.rcPosition[0] + pos[0], self.rcPosition[1] + pos[1], time=5)
+			pixmap.addMovePoint(self.rcPosition[0] + pos[0], self.rcPosition[1] + pos[1], time=10)
+		pixmap.startMoving(callback)
 
 
 class RcPositions:

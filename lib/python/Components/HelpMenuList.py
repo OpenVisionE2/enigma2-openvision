@@ -60,7 +60,7 @@ class HelpMenuList(List):
 			"flat+alphabetic": (False, None, self._sortKeyAlpha),
 			"flat+remotepos": (False, self._sortCmpPos, None),
 			"flat+remotegroups": (False, self._sortCmpInd, None)
-		}.get(config.usage.help_sortorder.value, (False, None, None))
+		}.get(config.usage.helpSortOrder.value, (False, None, None))
 		if rcPos is None:
 			if sortCmp in (self._sortCmpPos, self._sortCmpInd):
 				sortCmp = None
