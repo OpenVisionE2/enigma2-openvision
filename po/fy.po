@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2008-12-29 16:22+0100\n"
 "Last-Translator: gerrit <gerrit@nedlinux.nl>\n"
 "Language-Team: gerrit <fy@li.org>\n"
@@ -890,6 +890,14 @@ msgid "%d B"
 msgstr ""
 
 #, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
+msgstr ""
+
+#, python-format
 msgid "%d GB"
 msgstr ""
 
@@ -1748,7 +1756,7 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "In grafyske EPG foar alle kanalen fan in spesifyk bouquet"
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
 #
@@ -2973,10 +2981,8 @@ msgstr ""
 msgid "Benchmark Information"
 msgstr "Ynformaasje"
 
-#
-#, fuzzy
 msgid "Benchmark for"
-msgstr "Ynformaasje"
+msgstr ""
 
 #
 #, fuzzy
@@ -3057,10 +3063,8 @@ msgstr ""
 msgid "Boost green"
 msgstr "grien"
 
-#
-#, fuzzy
 msgid "Boot ID"
-msgstr "Sorteer op Tiid"
+msgstr ""
 
 #
 #, fuzzy
@@ -3108,18 +3112,13 @@ msgstr "An it opnimmen"
 msgid "BoxBranding Information"
 msgstr "Ynformaasje"
 
-#
-#, fuzzy
 msgid "BoxBranding information for"
-msgstr "Ynformaasje"
+msgstr ""
 
 msgid "Brand/Meta"
 msgstr ""
 
 msgid "Brazil"
-msgstr ""
-
-msgid "Brief help information for buttons in your current context."
 msgstr ""
 
 #
@@ -3263,6 +3262,10 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 msgid "CPU architecture"
 msgstr ""
 
@@ -3271,6 +3274,11 @@ msgstr ""
 
 msgid "CPU brand"
 msgstr ""
+
+#
+#, fuzzy
+msgid "CPU rating"
+msgstr "An it bywurkjen"
 
 #
 msgid "CVBS"
@@ -3301,6 +3309,9 @@ msgid "Calculate all positions"
 msgstr ""
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3681,10 +3692,8 @@ msgstr ""
 msgid "Circular right"
 msgstr ""
 
-#
-#, fuzzy
 msgid "City"
-msgstr "Skiif-grutte:"
+msgstr ""
 
 #
 #, fuzzy
@@ -3759,10 +3768,8 @@ msgstr "Slúte"
 msgid "Close PiP with 'exit' button"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Close the screen"
-msgstr "Bewurkje alternatief"
+msgstr ""
 
 msgid "Close the screen and exit all menus"
 msgstr ""
@@ -3846,10 +3853,8 @@ msgstr "Kommando folgoarde"
 msgid "Commit Information"
 msgstr "Ynformaasje"
 
-#
-#, fuzzy
 msgid "Commit Information Actions"
-msgstr "Ynformaasje"
+msgstr ""
 
 msgid "Commit Logs"
 msgstr ""
@@ -3857,10 +3862,8 @@ msgstr ""
 msgid "Commit info"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Common Information Actions"
-msgstr "Kies Lokaasje"
+msgstr ""
 
 #
 msgid "Common Interface"
@@ -3934,6 +3937,9 @@ msgstr "Ynstellingen modus"
 #, fuzzy, python-format
 msgid "Configuration mode: %s"
 msgstr "Ynstellingen modus"
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 #
 #, fuzzy
@@ -4418,7 +4424,7 @@ msgstr "Ynhald past net op in DVD !"
 #
 #, fuzzy
 msgid "Context"
-msgstr "Kontinu spielje"
+msgstr "Kontrast"
 
 #
 #, fuzzy
@@ -4820,10 +4826,8 @@ msgstr "DVB-S"
 msgid "DVB-T2"
 msgstr ""
 
-#
-#, fuzzy
 msgid "DVD"
-msgstr "DVB-S"
+msgstr ""
 
 msgid "DVD Burn"
 msgstr ""
@@ -5283,12 +5287,12 @@ msgstr ""
 #
 #, fuzzy
 msgid "Detected network servers"
-msgstr "Netwurk test"
+msgstr "Kies Netwurk Adapter"
 
 #
 #, fuzzy
 msgid "Detected storage devices"
-msgstr "Fûne Tuners:"
+msgstr "Lyst Opslach Apparatuur"
 
 #
 #, fuzzy
@@ -5803,10 +5807,8 @@ msgstr ""
 msgid "Drama"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Driver and kernel information"
-msgstr "EPG details sjen litte"
+msgstr ""
 
 #
 #, fuzzy
@@ -6246,7 +6248,7 @@ msgstr "Engelsk"
 #
 #, fuzzy
 msgid "Enigma2 (re)starts"
-msgstr "Nije ferzje:"
+msgstr "Paraatmode / Nijstart"
 
 msgid "Enigma2 debug level"
 msgstr ""
@@ -6755,7 +6757,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "FFmpeg version"
-msgstr "Nije ferzje:"
+msgstr "Infertearring"
 
 msgid "FHD"
 msgstr ""
@@ -7073,10 +7075,8 @@ msgstr "Ôfbrekke"
 msgid "Free"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Free flash"
-msgstr "Flash"
+msgstr ""
 
 msgid "Free memory"
 msgstr ""
@@ -7152,10 +7152,8 @@ msgid ""
 "This may take a few minutes"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Front processor version"
-msgstr "Nije ferzje:"
+msgstr ""
 
 msgid "Full Range RGB"
 msgstr ""
@@ -7524,6 +7522,9 @@ msgstr ""
 msgid "HELP"
 msgstr ""
 
+msgid "HELP provides brief information for buttons in your current context."
+msgstr ""
+
 msgid "HH:mm"
 msgstr ""
 
@@ -7605,8 +7606,10 @@ msgstr "Rjochts"
 msgid "Help"
 msgstr ""
 
-msgid "Help Screen"
-msgstr ""
+#
+#, fuzzy
+msgid "Help Screen Information"
+msgstr "Ynformaasje"
 
 msgid "Helps setting up your antenna"
 msgstr ""
@@ -7731,10 +7734,8 @@ msgstr ""
 msgid "Host receiver streaming port"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Hostname"
-msgstr "Omneame"
+msgstr ""
 
 msgid "HotKey Setup"
 msgstr ""
@@ -7859,7 +7860,7 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -7941,10 +7942,8 @@ msgstr ""
 msgid "Image architecture"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Image build date"
-msgstr "Bestânsysteem neisjen"
+msgstr ""
 
 msgid "Image build/branch"
 msgstr ""
@@ -8248,7 +8247,7 @@ msgstr "Brûk ynterface"
 #
 #, fuzzy, python-format
 msgid "Interface '%s'"
-msgstr "Brûk ynterface"
+msgstr "Common Interface"
 
 #
 msgid "Interface: "
@@ -8428,7 +8427,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "Kernel file"
-msgstr "Nije ferzje:"
+msgstr "triem ferwiderje"
 
 #
 #, fuzzy
@@ -8844,11 +8843,6 @@ msgstr "Plak net tastien"
 msgid "Long filenames"
 msgstr ""
 
-#
-#, fuzzy
-msgid "Long key press"
-msgstr "Lang taste yndrukken"
-
 msgid "Long press emulation with button"
 msgstr ""
 
@@ -9119,10 +9113,8 @@ msgstr ""
 msgid "Memory Information"
 msgstr "Ynformaasje"
 
-#
-#, fuzzy
 msgid "Memory Information Actions"
-msgstr "Ynformaasje"
+msgstr ""
 
 msgid "Memory index"
 msgstr ""
@@ -9497,7 +9489,7 @@ msgstr "Ynformaasje"
 #
 #, fuzzy
 msgid "MultiLib"
-msgstr "Multi EPG"
+msgstr "Multisat"
 
 #
 #, fuzzy
@@ -9655,7 +9647,7 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
 
 msgid "Nepal"
@@ -9901,10 +9893,8 @@ msgstr "gjin CI-Module fûn"
 msgid "No network connection available."
 msgstr ""
 
-#
-#, fuzzy
 msgid "No network servers detected."
-msgstr "Netwurk test"
+msgstr ""
 
 #
 msgid "No networks found"
@@ -10330,33 +10320,25 @@ msgstr "Utwreidingen"
 msgid "OpenVision Information"
 msgstr "Ynformaasje"
 
-#
-#, fuzzy
 msgid "OpenVision Information Actions"
-msgstr "Ynformaasje"
+msgstr ""
 
 msgid "OpenVision is an open source project with no commercial funding."
 msgstr ""
 
-#
-#, fuzzy
 msgid "OpenVision language"
-msgstr "Utwreidingen"
+msgstr ""
 
 #
 #, fuzzy
 msgid "OpenVision module"
-msgstr "Utwreidingen"
+msgstr "Oerstjoeren type"
 
-#
-#, fuzzy
 msgid "OpenVision revision"
-msgstr "Nije ferzje:"
+msgstr ""
 
-#
-#, fuzzy
 msgid "OpenVision version"
-msgstr "Nije ferzje:"
+msgstr ""
 
 msgid "Operating LED brightness."
 msgstr ""
@@ -10405,7 +10387,7 @@ msgstr ""
 msgid "Other Subtitles & lang"
 msgstr ""
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
 
 #
@@ -11057,6 +11039,11 @@ msgid "Plugin Browser"
 msgstr ""
 
 #
+#, fuzzy
+msgid "Plugin Browser Setup"
+msgstr "Ynstekker browser"
+
+#
 msgid "Plugin browser"
 msgstr "Ynstekker browser"
 
@@ -11067,11 +11054,6 @@ msgstr ""
 #
 msgid "Plugin manager help"
 msgstr ""
-
-#
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "Ynstekker browser"
 
 #
 msgid "Plugins"
@@ -11283,6 +11265,11 @@ msgstr ""
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr ""
 
+#
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "Druk OK om dizze ynstellingen te bewurkjen"
+
 msgid "Press INFO on your remote control for additional information."
 msgstr ""
 
@@ -11411,7 +11398,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "Proc model"
-msgstr "Model: "
+msgstr "Toan moadus"
 
 #
 msgid "Process"
@@ -11494,10 +11481,8 @@ msgstr "Providers"
 msgid "Providers: "
 msgstr "Providers"
 
-#
-#, fuzzy
 msgid "Proxy detected"
-msgstr "Automatysk"
+msgstr ""
 
 msgid "Public IP"
 msgstr ""
@@ -11558,10 +11543,8 @@ msgstr ""
 msgid "RAM (Summary)"
 msgstr ""
 
-#
-#, fuzzy
 msgid "RAM benchmark"
-msgstr "Ynformaasje"
+msgstr ""
 
 msgid "RC ID number"
 msgstr ""
@@ -11584,10 +11567,9 @@ msgstr "Omneame"
 msgid "RC type"
 msgstr "Test moadus"
 
-#
-#, fuzzy, python-format
+#, python-format
 msgid "RC type:|%s"
-msgstr "Test moadus"
+msgstr ""
 
 msgid "REC"
 msgstr ""
@@ -11739,10 +11721,8 @@ msgstr ""
 msgid "Receiver Information"
 msgstr "Ynformaasje"
 
-#
-#, fuzzy
 msgid "Receiver Information Actions"
-msgstr "Ynformaasje"
+msgstr ""
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -12382,7 +12362,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "Root file"
-msgstr "Sorteer op Tiid"
+msgstr "triem ferwiderje"
 
 msgid "Rotor step position:"
 msgstr ""
@@ -12454,10 +12434,6 @@ msgstr ""
 #, fuzzy
 msgid "SDR"
 msgstr "SNR"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 #
 msgid "SINGLE LAYER DVD"
@@ -13639,6 +13615,10 @@ msgstr ""
 msgid "Shift"
 msgstr ""
 
+#, python-format
+msgid "Shift: %s"
+msgstr ""
+
 msgid "Short filenames"
 msgstr ""
 
@@ -13758,10 +13738,8 @@ msgstr ""
 msgid "Show background in radio mode"
 msgstr "Eftergrûn ôfbylding"
 
-#
-#, fuzzy
 msgid "Show benchmark information"
-msgstr "Ynformaasje"
+msgstr ""
 
 #
 #, fuzzy
@@ -13905,10 +13883,8 @@ msgstr "Ynfobalke sjen by rap foarút / efterút"
 msgid "Show kernel-module in plugin browser"
 msgstr "Binnen te heljen nije ynstekkers"
 
-#
-#, fuzzy
 msgid "Show latest commit log information"
-msgstr "EPG details sjen litte"
+msgstr ""
 
 msgid "Show latest commits"
 msgstr ""
@@ -14069,10 +14045,8 @@ msgstr ""
 msgid "Show subtitle selection"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Show system information"
-msgstr "EPG details sjen litte"
+msgstr ""
 
 #
 msgid "Show the radio player..."
@@ -14094,7 +14068,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "Show translation information"
-msgstr "EPG details sjen litte"
+msgstr "Transponder ynfo sjen litte"
 
 #
 msgid "Show transponder info"
@@ -14447,7 +14421,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "Software information"
-msgstr "Netwurk configuraasje"
+msgstr "Ynformaasje"
 
 #
 msgid "Software management"
@@ -14915,12 +14889,12 @@ msgstr ""
 #
 #, fuzzy
 msgid "Storage Information"
-msgstr "Netwurk configuraasje"
+msgstr "Ynformaasje"
 
 #
 #, fuzzy
 msgid "Storage information"
-msgstr "Netwurk configuraasje"
+msgstr "Ynformaasje"
 
 msgid "Store at index"
 msgstr ""
@@ -15215,10 +15189,8 @@ msgstr ""
 msgid "System Information"
 msgstr "Ynformaasje"
 
-#
-#, fuzzy
 msgid "System Information Actions"
-msgstr "Ynformaasje"
+msgstr ""
 
 msgid "T2MI PID"
 msgstr ""
@@ -15552,9 +15524,6 @@ msgstr ""
 "De WLAN ynstekker is net ynstallearre!\n"
 "Ynstallearje dizze earst."
 
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr ""
-
 msgid ""
 "The overscan wizard has been completed.\n"
 "\n"
@@ -15645,13 +15614,6 @@ msgstr ""
 #
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting"
-msgstr "Wachtsje oant it netwurk opnei start is..."
-
-#
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
 msgstr "Wachtsje oant it netwurk opnei start is..."
 
 #
@@ -15912,10 +15874,8 @@ msgstr ""
 msgid "This receiver cannot decode %s streams!"
 msgstr ""
 
-#
-#, fuzzy
 msgid "This screen is not yet available."
-msgstr "Inkele ynstekkers binne net anwêzig:\n"
+msgstr ""
 
 msgid "This setting allows the tuner configuration to be a duplication of how another tuner is already configured."
 msgstr ""
@@ -16169,7 +16129,6 @@ msgid "Timeshift not possible!"
 msgstr "Tiidsskowen is net mooglik !"
 
 #
-#, fuzzy
 msgid "Timezone"
 msgstr "Tiidszone"
 
@@ -16284,6 +16243,9 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
+msgid "Total CPU benchmark"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr ""
@@ -16306,7 +16268,7 @@ msgstr "Nummer"
 #
 #, fuzzy
 msgid "Transcoding"
-msgstr "Start opnimmen?"
+msgstr "Oersetting"
 
 msgid "Transcoding: "
 msgstr ""
@@ -16323,7 +16285,7 @@ msgstr "Ynformaasje"
 #
 #, fuzzy
 msgid "Translation information"
-msgstr "Ynformaasje"
+msgstr "Oersetting"
 
 #
 msgid "Translation:"
@@ -16422,7 +16384,7 @@ msgstr "Ynformaasje"
 #
 #, fuzzy
 msgid "Tuner information"
-msgstr "Ynformaasje"
+msgstr "Tuner ynstellingen"
 
 msgid "Tuner is not supported"
 msgstr ""
@@ -16822,10 +16784,8 @@ msgstr ""
 msgid "Use frequency or channel"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Use geolocation to get WAN information"
-msgstr "Ynformaasje"
+msgstr ""
 
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
@@ -16922,10 +16882,8 @@ msgstr "Werom nei de film lyst"
 msgid "Used"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Used flash"
-msgstr "Flash"
+msgstr ""
 
 #
 msgid "Used service scan type"
@@ -17285,7 +17243,7 @@ msgstr "Doel"
 #
 #, fuzzy
 msgid "WAN connection information"
-msgstr "Ynformaasje"
+msgstr "Doel"
 
 #
 msgid "WEP"
@@ -18845,7 +18803,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2021-03-07 03:11+0100\n"
 "Last-Translator: Kuatto\n"
 "Language-Team: Álvaro <mi casa>\n"
@@ -883,6 +883,14 @@ msgid "%d B"
 msgstr "%d B"
 
 #, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
+msgstr ""
+
+#, python-format
 msgid "%d GB"
 msgstr "%d GB"
 
@@ -1690,7 +1698,8 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "Un EPG gráfico para todos los servicios de un bouquet específico"
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+#, fuzzy
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr "Un resaltado en la imagen del control remoto muestra a qué botón se refiere la ayuda. Si más de un botón realiza la función indicada, se mostrará más de un resaltado. El texto debajo de la lista indica si la función es para una pulsación larga de los botones."
 
 #, python-format
@@ -2890,9 +2899,6 @@ msgstr ""
 msgid "Brazil"
 msgstr "Brasil"
 
-msgid "Brief help information for buttons in your current context."
-msgstr "Breve información de ayuda para los botones en su contexto actual."
-
 msgid "Brightness"
 msgstr "Brillo"
 
@@ -3021,6 +3027,10 @@ msgstr "CIFS/Samba"
 msgid "CPU"
 msgstr "CPU: "
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 #, fuzzy
 msgid "CPU architecture"
 msgstr "Arquitectura CPU: "
@@ -3031,6 +3041,10 @@ msgstr "Dinamarca"
 
 msgid "CPU brand"
 msgstr ""
+
+#, fuzzy
+msgid "CPU rating"
+msgstr "Actualizando"
 
 msgid "CVBS"
 msgstr "CVBS"
@@ -3058,6 +3072,9 @@ msgid "Calculate all positions"
 msgstr "Calcular todas las posiciones"
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3623,6 +3640,9 @@ msgstr "Modo de configuración"
 #, python-format
 msgid "Configuration mode: %s"
 msgstr "Modo de configuración: %s"
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 #, fuzzy
 msgid "Configure ATSC"
@@ -6803,6 +6823,10 @@ msgstr "HDR10 soportado"
 msgid "HELP"
 msgstr ""
 
+#, fuzzy
+msgid "HELP provides brief information for buttons in your current context."
+msgstr "Breve información de ayuda para los botones en su contexto actual."
+
 msgid "HH:mm"
 msgstr ""
 
@@ -6874,8 +6898,9 @@ msgstr "anchura"
 msgid "Help"
 msgstr "Ayuda"
 
-msgid "Help Screen"
-msgstr "Pantalla Ayuda"
+#, fuzzy
+msgid "Help Screen Information"
+msgstr "Información Geolocalización"
 
 msgid "Helps setting up your antenna"
 msgstr "Ayuda a configurar su antena"
@@ -7108,7 +7133,8 @@ msgstr "Islandia"
 msgid "Icons"
 msgstr "Iconos"
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+#, fuzzy
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr "Si una acción es configurable por el usuario, su entrada de ayuda se marcará con una (C)."
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -7960,9 +7986,6 @@ msgstr "Carpeta localización Logs"
 msgid "Long filenames"
 msgstr "Nombres largos de archivo"
 
-msgid "Long key press"
-msgstr "Pulsación larga"
-
 msgid "Long press emulation with button"
 msgstr ""
 
@@ -8642,7 +8665,8 @@ msgstr "Namibia"
 msgid "Nauru"
 msgstr "Nauru"
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+#, fuzzy
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr "Navegue hacia arriba / abajo con los botones ARRIBA/ABAJO y página arriba/abajo con IZQUIERDA/DERECHA. SALIR para volver a la pantalla de ayuda. Aceptar para realizar la acción descrita en la ayuda resaltada actualmente."
 
 msgid "Nepal"
@@ -9298,7 +9322,8 @@ msgstr "Otros"
 msgid "Other Subtitles & lang"
 msgstr "Otros Subtítulos lenguaje"
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+#, fuzzy
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr "Otros botones saltarán a la ayuda de ese botón, si hay ayuda."
 
 msgid "Other functions"
@@ -9841,18 +9866,17 @@ msgstr "Espera por favor… Cargando lista…"
 msgid "Plugin Browser"
 msgstr "Navegador de Plugins"
 
+msgid "Plugin Browser Setup"
+msgstr "Ajustes Navegador de Plugins"
+
 msgid "Plugin browser"
-msgstr "Navegador de plugins"
+msgstr "Navegador de Plugins"
 
 msgid "Plugin manager activity information"
 msgstr "Información de actividad del administrador de plugins"
 
 msgid "Plugin manager help"
 msgstr "Ayuda del administrador de plugins"
-
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "Navegador de Plugins"
 
 msgid "Plugins"
 msgstr "Complementos"
@@ -10040,6 +10064,10 @@ msgstr "Presione 'Aceptar' para eliminar el elemento o 'CH +/-' para alternar a 
 
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr "Presione 'Aceptar' para eliminar el elemento o <> para cambiar el orden o 'CH +/-' para alternar a la lista de características."
+
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "Orden de clasificación para pantalla ayuda"
 
 msgid "Press INFO on your remote control for additional information."
 msgstr "Presione INFO en su mando para obtener información adicional."
@@ -11026,10 +11054,6 @@ msgstr "SCR Unicable"
 
 msgid "SDR"
 msgstr "SDR"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 msgid "SINGLE LAYER DVD"
 msgstr "DVD de una capa"
@@ -12046,6 +12070,10 @@ msgstr "Shellscript"
 msgid "Shift"
 msgstr ""
 
+#, python-format
+msgid "Shift: %s"
+msgstr ""
+
 msgid "Short filenames"
 msgstr "Nombres cortos de archivo"
 
@@ -12129,9 +12157,8 @@ msgstr "Mostrar VCR scart en menú principal"
 msgid "Show WLAN status"
 msgstr "Mostrar status de WLAN"
 
-#, fuzzy
 msgid "Show alsa-utils in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar alsa-utils en el navegador de plugins"
 
 #, fuzzy
 msgid "Show alternatives"
@@ -12150,9 +12177,8 @@ msgstr "Mostrar fondo en modo radio"
 msgid "Show benchmark information"
 msgstr "Mostrar información de género en evento"
 
-#, fuzzy
 msgid "Show bluez5 in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar bluez5 en el navegador de plugins"
 
 msgid "Show bouquet selection menu"
 msgstr "Mostrar menú de selección de bouquet"
@@ -12160,9 +12186,8 @@ msgstr "Mostrar menú de selección de bouquet"
 msgid "Show busy indicator when the system is busy."
 msgstr "Mostrar indicador de ocupado cuando el sistema esté ocupado."
 
-#, fuzzy
 msgid "Show busybox in plugin browser"
-msgstr "Mostrar números de menú o plugin"
+msgstr "Mostrar busybox en el navegador de plugins"
 
 msgid "Show channel numbers in channel selection"
 msgstr "Mostrar números de canal en la lista de canales"
@@ -12186,15 +12211,13 @@ msgid "Show detailed event info"
 msgstr "Mostrar info detallada del evento"
 
 msgid "Show development packages in opkg"
-msgstr ""
+msgstr "Mostrar paquetes de desarrollo en opkg"
 
-#, fuzzy
 msgid "Show e2fsprogs in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar e2fsprogs en el navegador de plugins"
 
-#, fuzzy
 msgid "Show enigma2-locale in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar enigma2-locale en el navegador de plugins"
 
 msgid "Show event details"
 msgstr "Mostrar detalles del evento"
@@ -12220,23 +12243,20 @@ msgstr "Mostrar extensiones…"
 msgid "Show favourites list"
 msgstr "Mostrar lista de favoritos"
 
-#, fuzzy
 msgid "Show firmware in plugin browser"
-msgstr "Mostrar números de menú o plugin"
+msgstr "Mostrar firmware en el navegador de plugins"
 
-#, fuzzy
 msgid "Show frequency-xml-list in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar la lista de frecuencia xml en el navegador de plugins"
 
 msgid "Show glibc-charmap in plugin browser"
-msgstr ""
+msgstr "Mostrar glibc-charmap en el navegador de plugins"
 
-#, fuzzy
 msgid "Show glibc-gconv in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar glibc-gconv en el navegador de plugins"
 
 msgid "Show gstreamer1.0-plugins in plugin browser"
-msgstr ""
+msgstr "Mostrar complementos de gstreamer1.0 en el navegador de plugins"
 
 msgid "Show help"
 msgstr "Mostrar ayuda"
@@ -12269,9 +12289,8 @@ msgstr "Mostrar Infobar en cambio de evento"
 msgid "Show infobar on skip forward/backward"
 msgstr "Mostrar Infobar en saltos adelante/atrás"
 
-#, fuzzy
 msgid "Show kernel-module in plugin browser"
-msgstr "Mostrar números de menú o plugin"
+msgstr "Mostrar el módulo del kernel en el navegador de plugins"
 
 #, fuzzy
 msgid "Show latest commit log information"
@@ -12307,9 +12326,8 @@ msgstr "Mostrar duración de las películas en la lista"
 msgid "Show movies"
 msgstr "Mostrar Películas"
 
-#, fuzzy
 msgid "Show mtd-utils in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar mtd-utils en el navegador de plugins"
 
 msgid "Show multi channel EPG"
 msgstr "Mostrar EPG multicanal"
@@ -12330,18 +12348,16 @@ msgid "Show or hide the extended description, (skin dependant)."
 msgstr "Mostrar u ocultar la descripción extendida."
 
 msgid "Show packagegroup-base in plugin browser"
-msgstr ""
+msgstr "Mostrar packagegroup-base en el navegador de plugins"
 
 msgid "Show packages to be updated"
 msgstr "Mostrar paquetes para actualizar"
 
-#, fuzzy
 msgid "Show pam-plugin in plugin browser"
-msgstr "Mostrar números de menú o plugin"
+msgstr "Mostrar pam-plugin en el navegador de plugins"
 
-#, fuzzy
 msgid "Show perl-module in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar módulo perl en el navegador de plugins"
 
 msgid "Show picons during channel number input"
 msgstr "Mostrar picons durante la entrada del número de canal"
@@ -12361,9 +12377,8 @@ msgstr "Mostrar movimiento del motor"
 msgid "Show positioner position"
 msgstr "Mostrar posición del motor"
 
-#, fuzzy
 msgid "Show python in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar python en el navegador de plugins"
 
 msgid "Show record clock icons"
 msgstr "Mostrar iconos de reloj de grabación"
@@ -12451,16 +12466,14 @@ msgstr "Mostrar transpondedor restante/transcurrido como"
 msgid "Show two lines per entry"
 msgstr "Mostrar dos líneas por entrada"
 
-#, fuzzy
 msgid "Show tzdata in plugin browser"
-msgstr "Proteger el navegador de plugins"
+msgstr "Mostrar tzdata en el navegador de plugins"
 
 msgid "Show underline characters in filenames"
 msgstr "Mostrar caracteres subrayados en nombres de archivo"
 
-#, fuzzy
 msgid "Show util-linux in plugin browser"
-msgstr "Mostrar números de menú o plugin"
+msgstr "Mostrar util-linux en el navegador de plugins"
 
 msgid "Show vertical timelines"
 msgstr "Mostrar líneas de tiempo vertical"
@@ -13703,9 +13716,6 @@ msgstr ""
 "¡La extensión del asistente de red no está instalada!\n"
 "Por favor instálela."
 
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr "El orden y la agrupación de la lista de información de ayuda se puede controlar mediante MENÚ> Configuración> Interfaz de usuario> Configuración> Orden de clasificación para la pantalla de ayuda."
-
 #, fuzzy
 msgid ""
 "The overscan wizard has been completed.\n"
@@ -13805,14 +13815,6 @@ msgstr "La interfaz de usuario del receptor ahora se reiniciará para mostrar su
 #, python-format
 msgid "The user interface of your %s %s is restarting"
 msgstr "La interfaz de usuario de su %s %s se está reiniciando"
-
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
-msgstr ""
-"La interfaz de usuario de su %s %s se está reiniciando\n"
-"debido a un error en mytest.py"
 
 #, python-format
 msgid "The user interface of your %s %s is restarting in debug mode"
@@ -14375,6 +14377,9 @@ msgstr "Arriba y abajo"
 #, fuzzy
 msgid "Total"
 msgstr "Swap Total:"
+
+msgid "Total CPU benchmark"
+msgstr ""
 
 #, python-format
 msgid "Total clients streaming: %d (%s)"
@@ -15579,65 +15584,65 @@ msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Cuando esté habilitado, use DHCP para la configuración de IP."
 
 msgid "When enabled, you will see alsa-utils packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes alsa-utils en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see bluez5 packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes bluez5 en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see busybox packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes de busybox en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see dev, staticdev, dbg, doc, src and po packages in opkg list."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes dev, staticdev, dbg, doc, src y po en la lista de opkg."
 
 msgid "When enabled, you will see e2fsprogs packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes e2fsprogs en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see enigma2-locale packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes enigma2-locale en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see firmware packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá paquetes de firmware en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see frequency-xml-list packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes de listas de frecuencia xml en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see glibc-charmap packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes glibc-charmap en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see glibc-gconv packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes glibc-gconv en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see gstreamer1.0-plugins packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes de complementos de gstreamer1.0 en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see kernel-module packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes del módulo del kernel en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see mtd-utils packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes mtd-utils en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see packagegroup-base packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá paquetes basados en grupos de paquetes en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see pam-plugin packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes pam-plugin en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see perl-module packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes del módulo perl en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see python packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes de python en la sección de descarga del navegador de plugins."
 
 #, fuzzy
 msgid "When enabled, you will see the available revision on github"
 msgstr "Cuando está habilitado, su %s %s seleccionará una pista AC3 (cuando esté disponible)."
 
 msgid "When enabled, you will see tzdata packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes tzdata en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, you will see util-linux packages in plugin browser download section."
-msgstr ""
+msgstr "Cuando esté habilitado, verá los paquetes util-linux en la sección de descarga del navegador de plugins."
 
 msgid "When enabled, your %s %s will automatically use the audio track which you selected before."
 msgstr "Cuando está habilitado, su %s %s utilizará automáticamente la pista de audio que seleccionó anteriormente."
@@ -16713,7 +16718,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"

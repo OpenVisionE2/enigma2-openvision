@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1-En-Th\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2010-04-08 18:13+0700\n"
 "Last-Translator: Tony - Thaidreambox\n"
 "Language-Team: Tony @ Thai Dreambox <tonyboyth@gmail.com>\n"
@@ -822,6 +822,14 @@ msgid "%d B"
 msgstr ""
 
 #, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
+msgstr ""
+
+#, python-format
 msgid "%d GB"
 msgstr ""
 
@@ -1600,7 +1608,7 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "แสดงผังรายการแบบกราฟิกของกลุ่มรายการที่เลือก"
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
 #, python-format
@@ -2696,9 +2704,8 @@ msgstr ""
 msgid "Benchmark Information"
 msgstr "ข้อมูล"
 
-#, fuzzy
 msgid "Benchmark for"
-msgstr "ข้อมูล"
+msgstr ""
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2776,9 +2783,8 @@ msgstr ""
 msgid "Boost green"
 msgstr "เขียว"
 
-#, fuzzy
 msgid "Boot ID"
-msgstr "จัดเรียงเวลา"
+msgstr ""
 
 #, fuzzy
 msgid "Boot information"
@@ -2821,17 +2827,13 @@ msgstr "กำลังบันทึกรายการ"
 msgid "BoxBranding Information"
 msgstr "ข้อมูล"
 
-#, fuzzy
 msgid "BoxBranding information for"
-msgstr "ข้อมูล"
+msgstr ""
 
 msgid "Brand/Meta"
 msgstr ""
 
 msgid "Brazil"
-msgstr ""
-
-msgid "Brief help information for buttons in your current context."
 msgstr ""
 
 msgid "Brightness"
@@ -2960,6 +2962,10 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 msgid "CPU architecture"
 msgstr ""
 
@@ -2968,6 +2974,10 @@ msgstr ""
 
 msgid "CPU brand"
 msgstr ""
+
+#, fuzzy
+msgid "CPU rating"
+msgstr "กำลังอัพเกรด"
 
 msgid "CVBS"
 msgstr "CVBS"
@@ -2995,6 +3005,9 @@ msgid "Calculate all positions"
 msgstr ""
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3342,9 +3355,8 @@ msgstr "วนซ้าย"
 msgid "Circular right"
 msgstr "วนขวา"
 
-#, fuzzy
 msgid "City"
-msgstr "ความจุ:"
+msgstr ""
 
 #, fuzzy
 msgid "Clean network trash cans"
@@ -3484,9 +3496,8 @@ msgstr "เรียงลำดับคำสั่ง"
 msgid "Commit Information"
 msgstr "ข้อมูล"
 
-#, fuzzy
 msgid "Commit Information Actions"
-msgstr "ข้อมูล"
+msgstr ""
 
 msgid "Commit Logs"
 msgstr ""
@@ -3494,9 +3505,8 @@ msgstr ""
 msgid "Commit info"
 msgstr ""
 
-#, fuzzy
 msgid "Common Information Actions"
-msgstr "เลือกที่ที่จะสำรอง"
+msgstr ""
 
 msgid "Common Interface"
 msgstr "อินเตอร์เฟซพื้นฐาน"
@@ -3557,6 +3567,9 @@ msgstr "โหมดการตั้งค่า"
 #, fuzzy, python-format
 msgid "Configuration mode: %s"
 msgstr "โหมดการตั้งค่า"
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 #, fuzzy
 msgid "Configure ATSC"
@@ -3997,7 +4010,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Connection information"
-msgstr "ข้อมูล"
+msgstr "ข้อมูลการทำงานของตัวจัดการปลั๊กอิน"
 
 msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
@@ -4379,9 +4392,8 @@ msgstr "DVB-S"
 msgid "DVB-T2"
 msgstr ""
 
-#, fuzzy
 msgid "DVD"
-msgstr "DVB-S"
+msgstr ""
 
 msgid "DVD Burn"
 msgstr ""
@@ -4804,11 +4816,11 @@ msgstr ""
 
 #, fuzzy
 msgid "Detected network servers"
-msgstr "ทดสอบเครือข่าย"
+msgstr "เลือกการ์ดเครือข่าย"
 
 #, fuzzy
 msgid "Detected storage devices"
-msgstr "NIMs ที่พบ:"
+msgstr "อุปกรณ์สำหรับบันทึก"
 
 #, fuzzy
 msgid "Detected tuners"
@@ -5259,9 +5271,8 @@ msgstr ""
 msgid "Drama"
 msgstr ""
 
-#, fuzzy
 msgid "Driver and kernel information"
-msgstr "แสดงรายละเอียดรายการ"
+msgstr ""
 
 #, fuzzy
 msgid "Drivers version"
@@ -5646,11 +5657,10 @@ msgstr "ภาษาอังกฤษ"
 
 #, fuzzy
 msgid "Enigma2 (re)starts"
-msgstr "เวอร์ชั่นใหม่:"
+msgstr "ปิดเครื่อง"
 
-#, fuzzy
 msgid "Enigma2 debug level"
-msgstr "ค่าเริ่มต้น"
+msgstr ""
 
 #, fuzzy
 msgid "Enigma2 default"
@@ -6109,7 +6119,7 @@ msgstr ""
 
 #, fuzzy
 msgid "FFmpeg version"
-msgstr "เวอร์ชั่นใหม่:"
+msgstr "Inversion"
 
 msgid "FHD"
 msgstr ""
@@ -6394,9 +6404,8 @@ msgstr "ยกเลิก"
 msgid "Free"
 msgstr ""
 
-#, fuzzy
 msgid "Free flash"
-msgstr "แฟรช"
+msgstr ""
 
 msgid "Free memory"
 msgstr ""
@@ -6463,9 +6472,8 @@ msgid ""
 "This may take a few minutes"
 msgstr ""
 
-#, fuzzy
 msgid "Front processor version"
-msgstr "เวอร์ชั่นใหม่:"
+msgstr ""
 
 msgid "Full Range RGB"
 msgstr ""
@@ -6808,6 +6816,9 @@ msgstr ""
 msgid "HELP"
 msgstr ""
 
+msgid "HELP provides brief information for buttons in your current context."
+msgstr ""
+
 msgid "HH:mm"
 msgstr ""
 
@@ -6882,8 +6893,9 @@ msgstr "ขวา"
 msgid "Help"
 msgstr ""
 
-msgid "Help Screen"
-msgstr ""
+#, fuzzy
+msgid "Help Screen Information"
+msgstr "ข้อมูล"
 
 msgid "Helps setting up your antenna"
 msgstr ""
@@ -7002,9 +7014,8 @@ msgstr ""
 msgid "Host receiver streaming port"
 msgstr ""
 
-#, fuzzy
 msgid "Hostname"
-msgstr "เปลี่ยนชื่อ"
+msgstr ""
 
 msgid "HotKey Setup"
 msgstr ""
@@ -7118,7 +7129,7 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -7472,7 +7483,7 @@ msgstr "เลือกใช้อินเตอร์เฟซนี้"
 
 #, fuzzy, python-format
 msgid "Interface '%s'"
-msgstr "เลือกใช้อินเตอร์เฟซนี้"
+msgstr "อินเตอร์เฟซพื้นฐาน"
 
 msgid "Interface: "
 msgstr ""
@@ -7636,7 +7647,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Kernel file"
-msgstr "เวอร์ชั่นใหม่:"
+msgstr "ลบไฟล์"
 
 #, fuzzy
 msgid "Kernel module layout"
@@ -8004,10 +8015,6 @@ msgstr "ปลายทางไม่ถูกต้อง"
 msgid "Long filenames"
 msgstr ""
 
-#, fuzzy
-msgid "Long key press"
-msgstr "กดปุ่มนานนาน"
-
 msgid "Long press emulation with button"
 msgstr ""
 
@@ -8248,9 +8255,8 @@ msgstr ""
 msgid "Memory Information"
 msgstr "ข้อมูล"
 
-#, fuzzy
 msgid "Memory Information Actions"
-msgstr "ข้อมูล"
+msgstr ""
 
 msgid "Memory index"
 msgstr ""
@@ -8577,7 +8583,7 @@ msgstr "ข้อมูล"
 
 #, fuzzy
 msgid "MultiLib"
-msgstr "ผังรายการแบบหลากหลาย"
+msgstr "มัลติมีเดีย"
 
 #, fuzzy
 msgid "MultiTranscoding"
@@ -8713,7 +8719,7 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
 
 msgid "Nepal"
@@ -8930,7 +8936,7 @@ msgstr ""
 
 #, fuzzy
 msgid "No network servers detected."
-msgstr "ทดสอบเครือข่าย"
+msgstr "ยังไม่ได้เลือกบริการหรือผู้ให้บริการ"
 
 msgid "No networks found"
 msgstr "ไม่พบเครือข่าย"
@@ -9316,28 +9322,24 @@ msgstr "ส่วนเพิ่มเติม"
 msgid "OpenVision Information"
 msgstr "ข้อมูล"
 
-#, fuzzy
 msgid "OpenVision Information Actions"
-msgstr "ข้อมูล"
+msgstr ""
 
 msgid "OpenVision is an open source project with no commercial funding."
 msgstr ""
 
-#, fuzzy
 msgid "OpenVision language"
-msgstr "ส่วนเพิ่มเติม"
+msgstr ""
 
 #, fuzzy
 msgid "OpenVision module"
-msgstr "ส่วนเพิ่มเติม"
+msgstr "โหมดการถ่ายทอด"
 
-#, fuzzy
 msgid "OpenVision revision"
-msgstr "เวอร์ชั่นใหม่:"
+msgstr ""
 
-#, fuzzy
 msgid "OpenVision version"
-msgstr "เวอร์ชั่นใหม่:"
+msgstr ""
 
 msgid "Operating LED brightness."
 msgstr ""
@@ -9385,7 +9387,7 @@ msgstr ""
 msgid "Other Subtitles & lang"
 msgstr ""
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
 
 #, fuzzy
@@ -9955,6 +9957,10 @@ msgstr "กำลังโหลด... รอสักครู่..."
 msgid "Plugin Browser"
 msgstr ""
 
+#, fuzzy
+msgid "Plugin Browser Setup"
+msgstr "แสดงปลั๊กอิน"
+
 msgid "Plugin browser"
 msgstr "แสดงปลั๊กอิน"
 
@@ -9963,10 +9969,6 @@ msgstr "ข้อมูลการทำงานของตัวจัดก
 
 msgid "Plugin manager help"
 msgstr "ช่วยเหลือตัวจัดการปลั๊กอิน"
-
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "แสดงปลั๊กอิน"
 
 msgid "Plugins"
 msgstr "ปลั๊กอิน"
@@ -10158,6 +10160,10 @@ msgstr ""
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr ""
 
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "กดปุ่ม OK เพื่อเปลี่ยน"
+
 msgid "Press INFO on your remote control for additional information."
 msgstr ""
 
@@ -10267,7 +10273,7 @@ msgstr "สำคัญ"
 
 #, fuzzy
 msgid "Proc model"
-msgstr "รุ่น:"
+msgstr "Tone mode"
 
 msgid "Process"
 msgstr "โพรเซส"
@@ -10345,7 +10351,7 @@ msgstr "ผู้ให้บริการ"
 
 #, fuzzy
 msgid "Proxy detected"
-msgstr "อัตโนมัติ"
+msgstr "ไม่มี CAId ใดๆ ถูกเลือก"
 
 msgid "Public IP"
 msgstr ""
@@ -10401,9 +10407,8 @@ msgstr ""
 msgid "RAM (Summary)"
 msgstr ""
 
-#, fuzzy
 msgid "RAM benchmark"
-msgstr "ข้อมูล"
+msgstr ""
 
 msgid "RC ID number"
 msgstr ""
@@ -10423,9 +10428,9 @@ msgstr "เปลี่ยนชื่อ"
 msgid "RC type"
 msgstr "ประเภทการทดสอบ"
 
-#, fuzzy, python-format
+#, python-format
 msgid "RC type:|%s"
-msgstr "ประเภทการทดสอบ"
+msgstr ""
 
 msgid "REC"
 msgstr ""
@@ -10559,9 +10564,8 @@ msgstr ""
 msgid "Receiver Information"
 msgstr "ข้อมูล"
 
-#, fuzzy
 msgid "Receiver Information Actions"
-msgstr "ข้อมูล"
+msgstr ""
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -11105,7 +11109,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Root file"
-msgstr "จัดเรียงเวลา"
+msgstr "ลบไฟล์"
 
 msgid "Rotor step position:"
 msgstr ""
@@ -11170,10 +11174,6 @@ msgstr ""
 #, fuzzy
 msgid "SDR"
 msgstr "SNR"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 msgid "SINGLE LAYER DVD"
 msgstr ""
@@ -12240,6 +12240,10 @@ msgstr ""
 msgid "Shift"
 msgstr ""
 
+#, python-format
+msgid "Shift: %s"
+msgstr ""
+
 msgid "Short filenames"
 msgstr ""
 
@@ -12347,9 +12351,8 @@ msgstr ""
 msgid "Show background in radio mode"
 msgstr "รูปพื้นหลัง"
 
-#, fuzzy
 msgid "Show benchmark information"
-msgstr "ข้อมูล"
+msgstr ""
 
 #, fuzzy
 msgid "Show bluez5 in plugin browser"
@@ -12477,9 +12480,8 @@ msgstr "แสดงแถบรายการเมื่อเลือกเ
 msgid "Show kernel-module in plugin browser"
 msgstr "Plugin ใหม่ที่ดาวน์โหลดได้"
 
-#, fuzzy
 msgid "Show latest commit log information"
-msgstr "แสดงรายละเอียดรายการ"
+msgstr ""
 
 msgid "Show latest commits"
 msgstr ""
@@ -12630,9 +12632,8 @@ msgstr ""
 msgid "Show subtitle selection"
 msgstr ""
 
-#, fuzzy
 msgid "Show system information"
-msgstr "แสดงรายละเอียดรายการ"
+msgstr ""
 
 msgid "Show the radio player..."
 msgstr "แสดงเครื่องเล่นวิทยุ..."
@@ -12651,7 +12652,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Show translation information"
-msgstr "แสดงรายละเอียดรายการ"
+msgstr "แสดงข้อมูล Transponder"
 
 msgid "Show transponder info"
 msgstr "แสดงข้อมูล Transponder"
@@ -12965,7 +12966,7 @@ msgstr "ปรับปรุงซอพท์แวร์"
 
 #, fuzzy
 msgid "Software information"
-msgstr "ตั้งค่าเครือข่าย..."
+msgstr "ข้อมูล"
 
 msgid "Software management"
 msgstr ""
@@ -13250,7 +13251,7 @@ msgstr ""
 
 #, fuzzy
 msgid "State"
-msgstr "บิทเรท:"
+msgstr "สถานะการค้นหา"
 
 msgid "Static IP or Custom"
 msgstr ""
@@ -13384,11 +13385,11 @@ msgstr ""
 
 #, fuzzy
 msgid "Storage Information"
-msgstr "ตั้งค่าเครือข่าย..."
+msgstr "ข้อมูล"
 
 #, fuzzy
 msgid "Storage information"
-msgstr "ตั้งค่าเครือข่าย..."
+msgstr "ข้อมูล"
 
 msgid "Store at index"
 msgstr ""
@@ -13655,9 +13656,8 @@ msgstr ""
 msgid "System Information"
 msgstr "ข้อมูล"
 
-#, fuzzy
 msgid "System Information Actions"
-msgstr "ข้อมูล"
+msgstr ""
 
 msgid "T2MI PID"
 msgstr ""
@@ -13962,9 +13962,6 @@ msgid ""
 "Please install it."
 msgstr "ยังไม่ได้ติดตั้งปลั๊กอินสำหรับเครือข่ายไร้สาย กรุณาติดตั้งก่อน"
 
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr ""
-
 msgid ""
 "The overscan wizard has been completed.\n"
 "\n"
@@ -14045,12 +14042,6 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting"
-msgstr "กรุณารอสักครู่... กำลังเริ่มระบบเครือข่าย..."
-
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
 msgstr "กรุณารอสักครู่... กำลังเริ่มระบบเครือข่าย..."
 
 #, fuzzy, python-format
@@ -14299,7 +14290,7 @@ msgstr ""
 
 #, fuzzy
 msgid "This screen is not yet available."
-msgstr "ไม่มีรายละเอียดเพิ่มเติม"
+msgstr "ปลั๊กอินตัวนี้ยังไม่ได้ติดตั้ง"
 
 msgid "This setting allows the tuner configuration to be a duplication of how another tuner is already configured."
 msgstr ""
@@ -14518,7 +14509,6 @@ msgstr ""
 msgid "Timeshift not possible!"
 msgstr "ไม่สามารถใช้งานควบคุมรายการสดได้!"
 
-#, fuzzy
 msgid "Timezone"
 msgstr "เส้นแบ่งเวลา"
 
@@ -14623,6 +14613,9 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
+msgid "Total CPU benchmark"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr ""
@@ -14642,7 +14635,7 @@ msgstr "ร่องเสียง"
 
 #, fuzzy
 msgid "Transcoding"
-msgstr "กำลังบันทึกรายการ"
+msgstr "การแปล"
 
 msgid "Transcoding: "
 msgstr ""
@@ -14656,7 +14649,7 @@ msgstr "ข้อมูล"
 
 #, fuzzy
 msgid "Translation information"
-msgstr "ข้อมูล"
+msgstr "การแปล"
 
 msgid "Translation:"
 msgstr "การแปล:"
@@ -14739,7 +14732,7 @@ msgstr "ข้อมูล"
 
 #, fuzzy
 msgid "Tuner information"
-msgstr "ข้อมูล"
+msgstr "ตั้งค่า Tuner"
 
 msgid "Tuner is not supported"
 msgstr ""
@@ -15100,9 +15093,8 @@ msgstr ""
 msgid "Use frequency or channel"
 msgstr ""
 
-#, fuzzy
 msgid "Use geolocation to get WAN information"
-msgstr "ข้อมูล"
+msgstr ""
 
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
@@ -15187,9 +15179,8 @@ msgstr "กลับไปยังสารบัญภาพยนต์"
 msgid "Used"
 msgstr ""
 
-#, fuzzy
 msgid "Used flash"
-msgstr "แฟรช"
+msgstr ""
 
 msgid "Used service scan type"
 msgstr "ประเภทของการค้นหา"
@@ -15495,7 +15486,7 @@ msgstr "สถานที่"
 
 #, fuzzy
 msgid "WAN connection information"
-msgstr "ข้อมูล"
+msgstr "ไม่พบการเชื่อมต่อ"
 
 msgid "WEP"
 msgstr "WEP"
@@ -16952,7 +16943,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"

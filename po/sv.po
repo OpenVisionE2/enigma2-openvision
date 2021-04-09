@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -885,6 +885,14 @@ msgid "%d B"
 msgstr ""
 
 #, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
+msgstr ""
+
+#, python-format
 msgid "%d GB"
 msgstr ""
 
@@ -1748,7 +1756,7 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "En grafisk EPG för alla kanaler i en specifik favoritlista."
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
 #
@@ -2974,10 +2982,8 @@ msgstr ""
 msgid "Benchmark Information"
 msgstr "Information"
 
-#
-#, fuzzy
 msgid "Benchmark for"
-msgstr "Information"
+msgstr ""
 
 #, fuzzy
 msgid "Benchmark information"
@@ -3062,10 +3068,8 @@ msgstr ""
 msgid "Boost green"
 msgstr "grön"
 
-#
-#, fuzzy
 msgid "Boot ID"
-msgstr "Sortera tid"
+msgstr ""
 
 #
 #, fuzzy
@@ -3122,9 +3126,6 @@ msgid "Brand/Meta"
 msgstr ""
 
 msgid "Brazil"
-msgstr ""
-
-msgid "Brief help information for buttons in your current context."
 msgstr ""
 
 #
@@ -3264,6 +3265,10 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 msgid "CPU architecture"
 msgstr ""
 
@@ -3272,6 +3277,11 @@ msgstr ""
 
 msgid "CPU brand"
 msgstr ""
+
+#
+#, fuzzy
+msgid "CPU rating"
+msgstr "uppdatering"
 
 #
 msgid "CVBS"
@@ -3301,6 +3311,9 @@ msgid "Calculate all positions"
 msgstr "Beräkna alla positioner"
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3686,10 +3699,8 @@ msgstr "Cirkulär vänster"
 msgid "Circular right"
 msgstr "Cirkulär höger"
 
-#
-#, fuzzy
 msgid "City"
-msgstr "Kapacitet : "
+msgstr ""
 
 #, fuzzy
 msgid "Clean network trash cans"
@@ -3848,10 +3859,8 @@ msgstr "Kommandoordning"
 msgid "Commit Information"
 msgstr "Information"
 
-#
-#, fuzzy
 msgid "Commit Information Actions"
-msgstr "Information"
+msgstr ""
 
 msgid "Commit Logs"
 msgstr ""
@@ -3859,9 +3868,8 @@ msgstr ""
 msgid "Commit info"
 msgstr ""
 
-#, fuzzy
 msgid "Common Information Actions"
-msgstr "Välj åtgärd"
+msgstr ""
 
 #
 msgid "Common Interface"
@@ -3928,6 +3936,9 @@ msgstr "Konfigurationsläge"
 #, python-format
 msgid "Configuration mode: %s"
 msgstr "Konfigurationsläge : %s"
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 #
 #, fuzzy
@@ -4393,9 +4404,10 @@ msgstr "Ansluten till"
 msgid "Connected transcoding, limit - no PiP!"
 msgstr "Ansluten omkodning, gräns - ingen BiB!"
 
+#
 #, fuzzy
 msgid "Connection information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Pluginhanterare aktivitetsinformation"
 
 msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
@@ -4815,9 +4827,8 @@ msgstr "DVB-T"
 msgid "DVB-T2"
 msgstr "DVB-T2"
 
-#, fuzzy
 msgid "DVD"
-msgstr "DVB-C"
+msgstr ""
 
 msgid "DVD Burn"
 msgstr "DVD Brännare"
@@ -5263,28 +5274,29 @@ msgstr "Detaljer för plugin : "
 msgid "Detect next boxes before standby"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Detected network servers"
-msgstr "Nätverkstest : "
+msgstr "Välj en nätverksadapter"
 
 #
 #, fuzzy
 msgid "Detected storage devices"
-msgstr "Hittade tuners :"
+msgstr "Lista på lagringsenheter"
 
-#
 #, fuzzy
 msgid "Detected tuners"
-msgstr "Hittade tuners :"
+msgstr "Raderade objekt"
 
 #
 #, fuzzy
 msgid "Device"
 msgstr "Kanal"
 
+#
 #, fuzzy
 msgid "Device id"
-msgstr "Enhetens namn :"
+msgstr "Kanalinfo"
 
 msgid "Device mounts"
 msgstr ""
@@ -5627,10 +5639,9 @@ msgstr "Vill du bränna denna samling till DVD media?"
 msgid "Do you want to delete all log files?"
 msgstr "Vill du ta bort alla crashloggsfiler"
 
-#
 #, fuzzy
 msgid "Do you want to delete this log file?"
-msgstr "Vill du verkligen ta bort %s?"
+msgstr "Vill du ta bort alla crashloggsfiler"
 
 #, fuzzy, python-format
 msgid ""
@@ -5756,9 +5767,8 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Klar - installerat, uppdaterat eller avinstallerat %d paket (%s)"
 msgstr[1] "Klar - installerat, uppdaterat eller avinstallerat %d paket (%s)"
 
-#, fuzzy
 msgid "Down"
-msgstr "DTS nedmixning"
+msgstr ""
 
 #
 msgid "Download plugins"
@@ -6233,19 +6243,18 @@ msgstr "Engelska"
 msgid "Enigma2 (re)starts"
 msgstr "Enigma (om)start : %d\n"
 
-#
-#, fuzzy
 msgid "Enigma2 debug level"
-msgstr "grund"
+msgstr ""
 
 #
 #, fuzzy
 msgid "Enigma2 default"
 msgstr "grund"
 
+#
 #, fuzzy
 msgid "Enigma2 information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Information"
 
 #, fuzzy
 msgid "Enigma2 revision"
@@ -6737,9 +6746,10 @@ msgstr "FEC"
 msgid "FEC:"
 msgstr "FEC :"
 
+#
 #, fuzzy
 msgid "FFmpeg version"
-msgstr "Kernel Version : "
+msgstr "Inversion"
 
 msgid "FHD"
 msgstr ""
@@ -6747,9 +6757,8 @@ msgstr ""
 msgid "FLASH"
 msgstr ""
 
-#, fuzzy
 msgid "FPU"
-msgstr "FTA"
+msgstr ""
 
 msgid "FSBL Update Check"
 msgstr ""
@@ -7068,10 +7077,8 @@ msgstr "romantik"
 msgid "Free"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Free flash"
-msgstr "Flash"
+msgstr ""
 
 msgid "Free memory"
 msgstr ""
@@ -7150,9 +7157,8 @@ msgstr ""
 "Vänta tills din mottagare startat om\n"
 "Detta kan ta några minuter!"
 
-#, fuzzy
 msgid "Front processor version"
-msgstr "Kernel Version : "
+msgstr ""
 
 msgid "Full Range RGB"
 msgstr ""
@@ -7520,6 +7526,9 @@ msgstr "stöds ej"
 msgid "HELP"
 msgstr ""
 
+msgid "HELP provides brief information for buttons in your current context."
+msgstr ""
+
 msgid "HH:mm"
 msgstr ""
 
@@ -7574,10 +7583,9 @@ msgstr "Hårddiskinställningar"
 msgid "Hardware"
 msgstr "Hårdvara :"
 
-#
 #, fuzzy
 msgid "Hardware information"
-msgstr "Information"
+msgstr "Information om mjukvaruhanterare"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -7600,9 +7608,10 @@ msgstr "höjd"
 msgid "Help"
 msgstr ""
 
+#
 #, fuzzy
-msgid "Help Screen"
-msgstr "Stoppa bild"
+msgid "Help Screen Information"
+msgstr "Information"
 
 msgid "Helps setting up your antenna"
 msgstr "Hjälper dig att ställa in parabolen"
@@ -7731,10 +7740,8 @@ msgstr ""
 msgid "Host receiver streaming port"
 msgstr "Din mottagare startar om"
 
-#
-#, fuzzy
 msgid "Hostname"
-msgstr "Byt namn"
+msgstr ""
 
 msgid "HotKey Setup"
 msgstr "HotKey inställning"
@@ -7858,7 +7865,7 @@ msgstr ""
 msgid "Icons"
 msgstr "Ikoner"
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -8415,9 +8422,10 @@ msgstr ""
 msgid "Kenya"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Kernel file"
-msgstr "Kernel Version : "
+msgstr "Ta bort fil"
 
 #
 #, fuzzy
@@ -8791,9 +8799,10 @@ msgstr "Sökväg"
 msgid "Location for instant recordings"
 msgstr "Plats för direktinspelningar"
 
+#
 #, fuzzy
 msgid "Location information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Information"
 
 msgid "Lock ratio"
 msgstr "Lås ratio"
@@ -8830,10 +8839,6 @@ msgstr "<Timerns senaste plats>"
 
 msgid "Long filenames"
 msgstr "Långa filnamn"
-
-#
-msgid "Long key press"
-msgstr "Lång knapptryckning"
 
 msgid "Long press emulation with button"
 msgstr ""
@@ -9100,10 +9105,9 @@ msgstr "Minnesinfo"
 msgid "Memory Information"
 msgstr "Information"
 
-#
 #, fuzzy
 msgid "Memory Information Actions"
-msgstr "Information"
+msgstr "Max antal minnespositioner"
 
 msgid "Memory index"
 msgstr "Minnesindex"
@@ -9476,7 +9480,7 @@ msgstr "Information"
 #
 #, fuzzy
 msgid "MultiLib"
-msgstr "Multi EPG"
+msgstr "Multimedia"
 
 #, fuzzy
 msgid "MultiTranscoding"
@@ -9628,7 +9632,7 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
 
 msgid "Nepal"
@@ -9869,9 +9873,10 @@ msgstr "Inget nätverk hittat"
 msgid "No network connection available."
 msgstr "Ingen nätverksanslutning tillgänglig."
 
+#
 #, fuzzy
 msgid "No network servers detected."
-msgstr "Nätverkstest : "
+msgstr "Ingen kanal / operatör vald"
 
 #
 msgid "No networks found"
@@ -10291,10 +10296,8 @@ msgstr "Utökningar"
 msgid "OpenVision Information"
 msgstr "Information"
 
-#
-#, fuzzy
 msgid "OpenVision Information Actions"
-msgstr "Information"
+msgstr ""
 
 msgid "OpenVision is an open source project with no commercial funding."
 msgstr ""
@@ -10306,15 +10309,13 @@ msgstr "originalspråk"
 #
 #, fuzzy
 msgid "OpenVision module"
-msgstr "Utökningar"
+msgstr "Sändningstyp"
 
-#, fuzzy
 msgid "OpenVision revision"
-msgstr "Pythonversion :"
+msgstr ""
 
-#, fuzzy
 msgid "OpenVision version"
-msgstr "Pythonversion :"
+msgstr ""
 
 msgid "Operating LED brightness."
 msgstr ""
@@ -10364,7 +10365,7 @@ msgstr "Annan"
 msgid "Other Subtitles & lang"
 msgstr "Undertextinställningar"
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
 
 #, fuzzy
@@ -11001,6 +11002,10 @@ msgstr "Vänligen vänta... Laddar lista..."
 msgid "Plugin Browser"
 msgstr "Pluginhanterare"
 
+#, fuzzy
+msgid "Plugin Browser Setup"
+msgstr "Pluginhanterare"
+
 #
 msgid "Plugin browser"
 msgstr "Pluginhanterare"
@@ -11012,10 +11017,6 @@ msgstr "Pluginhanterare aktivitetsinformation"
 #
 msgid "Plugin manager help"
 msgstr "Pluginhanterare hjälp"
-
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "Pluginhanterare"
 
 #
 msgid "Plugins"
@@ -11230,6 +11231,11 @@ msgstr ""
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr ""
 
+#
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "Tryck OK för att växla val."
+
 msgid "Press INFO on your remote control for additional information."
 msgstr "Tryck INFO på din fjärrkontroll för ytterligare information."
 
@@ -11359,16 +11365,15 @@ msgstr "Prioritet"
 #
 #, fuzzy
 msgid "Proc model"
-msgstr "Modell : "
+msgstr "Tonläge"
 
 #
 msgid "Process"
 msgstr "Process"
 
-#
 #, fuzzy
 msgid "Processor information"
-msgstr "Information"
+msgstr "Information om mjukvaruhanterare"
 
 msgid "Progress"
 msgstr "Stor tidslinje"
@@ -11446,7 +11451,7 @@ msgstr "Operatörer"
 #
 #, fuzzy
 msgid "Proxy detected"
-msgstr "Automatisk"
+msgstr "ingen CAId vald"
 
 msgid "Public IP"
 msgstr ""
@@ -11506,10 +11511,8 @@ msgstr ""
 msgid "RAM (Summary)"
 msgstr ""
 
-#
-#, fuzzy
 msgid "RAM benchmark"
-msgstr "Information"
+msgstr ""
 
 msgid "RC ID number"
 msgstr ""
@@ -11531,9 +11534,9 @@ msgstr "Byt namn"
 msgid "RC type"
 msgstr "DVB Typ"
 
-#, fuzzy, python-format
+#, python-format
 msgid "RC type:|%s"
-msgstr "DVB Typ"
+msgstr ""
 
 msgid "REC"
 msgstr ""
@@ -11688,10 +11691,8 @@ msgstr ""
 msgid "Receiver Information"
 msgstr "Information"
 
-#
-#, fuzzy
 msgid "Receiver Information Actions"
-msgstr "Information"
+msgstr ""
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -12386,10 +12387,6 @@ msgstr ""
 #, fuzzy
 msgid "SDR"
 msgstr "SNR"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 #
 msgid "SINGLE LAYER DVD"
@@ -13549,6 +13546,10 @@ msgstr "Shellskript"
 msgid "Shift"
 msgstr ""
 
+#, python-format
+msgid "Shift: %s"
+msgstr ""
+
 msgid "Short filenames"
 msgstr "Korta filnamn"
 
@@ -13988,9 +13989,10 @@ msgstr ""
 msgid "Show time remaining/elapsed"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Show translation information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Visa transponderinformation"
 
 #
 msgid "Show transponder info"
@@ -14657,7 +14659,7 @@ msgstr "Uppstart till viloläge"
 #
 #, fuzzy
 msgid "State"
-msgstr "Bitrate :"
+msgstr "sökningsstatus"
 
 msgid "Static IP or Custom"
 msgstr ""
@@ -14806,11 +14808,11 @@ msgstr ""
 
 #, fuzzy
 msgid "Storage Information"
-msgstr "Nätverkskonfiguration"
+msgstr "Information om mjukvaruhanterare"
 
 #, fuzzy
 msgid "Storage information"
-msgstr "Nätverkskonfiguration"
+msgstr "Information om mjukvaruhanterare"
 
 msgid "Store at index"
 msgstr "Spara vid index"
@@ -15096,10 +15098,8 @@ msgstr "System & Modulation"
 msgid "System Information"
 msgstr "Information"
 
-#
-#, fuzzy
 msgid "System Information Actions"
-msgstr "Information"
+msgstr ""
 
 #, fuzzy
 msgid "T2MI PID"
@@ -15156,9 +15156,8 @@ msgstr " (Radio)"
 msgid "TV A/V"
 msgstr ""
 
-#, fuzzy
 msgid "TV Power"
-msgstr "PowerMeny"
+msgstr ""
 
 msgid "TV Set / IR Learning"
 msgstr ""
@@ -15176,9 +15175,10 @@ msgstr "Volym"
 msgid "TV physical address report"
 msgstr "TV - fysisk adress rapport"
 
+#
 #, fuzzy
 msgid "TV/Radio"
-msgstr " (Radio)"
+msgstr "Radio"
 
 msgid "TXT PID"
 msgstr "TXT PID"
@@ -15343,9 +15343,9 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "Det återstår %d min före slutet av programmet."
 
-#, fuzzy, python-format
+#, python-format
 msgid "The %s commit log contains no information."
-msgstr "Information om mjukvaruhanterare"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "The %s commit logs can't be retrieved, please try again later."
@@ -15440,9 +15440,6 @@ msgid ""
 msgstr ""
 "Nätverksguidens utökningsläge är inte installerad!\n"
 "Vänligen installera den."
-
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr ""
 
 #, fuzzy
 msgid ""
@@ -15551,14 +15548,6 @@ msgstr "Användargränssnittet på din mottagare kommer att starta om för att a
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting"
 msgstr "Användargränssnittet för din mottagare startas om"
-
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
-msgstr ""
-"Användargränssnittet för din mottagare startas om\n"
-"på grund av ett fel i mytest.py"
 
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting in debug mode"
@@ -16105,7 +16094,6 @@ msgid "Timeshift not possible!"
 msgstr "Timeshift inte möjligt!"
 
 #
-#, fuzzy
 msgid "Timezone"
 msgstr "Tidszon"
 
@@ -16221,6 +16209,9 @@ msgstr "Längst upp och längst ner"
 msgid "Total"
 msgstr ""
 
+msgid "Total CPU benchmark"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr "Klienter som strömmar : %d (%s)"
@@ -16256,9 +16247,10 @@ msgstr "Översättning"
 msgid "Translation Information"
 msgstr "Information"
 
+#
 #, fuzzy
 msgid "Translation information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Översättning"
 
 #
 msgid "Translation:"
@@ -16353,10 +16345,9 @@ msgstr "Tunerkonfiguration"
 msgid "Tuner Information"
 msgstr "Information"
 
-#
 #, fuzzy
 msgid "Tuner information"
-msgstr "Information"
+msgstr "Tunerkonfiguration"
 
 msgid "Tuner is not supported"
 msgstr "Tuner stöds ej"
@@ -16757,9 +16748,8 @@ msgstr "Använd snabbskanningens kanalnumrering"
 msgid "Use frequency or channel"
 msgstr "Använd frekvens eller kanal"
 
-#, fuzzy
 msgid "Use geolocation to get WAN information"
-msgstr "Information om mjukvaruhanterare"
+msgstr ""
 
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
@@ -16847,10 +16837,8 @@ msgstr "Använd papperskorgen i filmlistan"
 msgid "Used"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Used flash"
-msgstr "Flash"
+msgstr ""
 
 #
 msgid "Used service scan type"
@@ -17191,14 +17179,13 @@ msgstr "Volym upp"
 msgid "W"
 msgstr "V"
 
-#
 #, fuzzy
 msgid "WAN Geolocation"
-msgstr "Sökväg"
+msgstr "WLAN anslutning"
 
 #, fuzzy
 msgid "WAN connection information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "WLAN anslutning"
 
 #
 msgid "WEP"
@@ -18839,7 +18826,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"

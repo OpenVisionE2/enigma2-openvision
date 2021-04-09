@@ -14,6 +14,58 @@
 class freesatEITSubtableStatus;
 #endif
 
+#define MjdToEpochTime(x) (((x##_hi << 8 | x##_lo)-40587)*86400)
+#define BcdTimeToSeconds(x) ((3600 * ((10*((x##_h & 0xF0)>>4)) + (x##_h & 0xF))) + (60 * ((10*((x##_m & 0xF0)>>4)) + (x##_m & 0xF))) + ((10*((x##_s & 0xF0)>>4)) + (x##_s & 0xF)))
+
+#ifdef ENABLE_MHW_EPG
+
+#define FILE_EQUIV "/etc/mhw_Equiv.epg"
+#define FILE_CHANNELS "/etc/mhw_Chann.epg"
+#define FILE_LOG "/tmp/mhw_Log.epg"
+
+#define EPG_REPLAY_LEN 8
+
+typedef struct epg_replay {
+	u_char channel_id							:8;
+	u_char replay_mjd_hi						:8;
+	u_char replay_mjd_lo						:8;
+	u_char replay_time_h						:8;
+	u_char replay_time_m						:8;
+	u_char replay_time_s						:8;
+	u_char reserv1								:8;
+#if BYTE_ORDER == BIG_ENDIAN
+	u_char last									:1;
+	u_char										:1;
+	u_char vo									:1;
+	u_char vm									:1;
+	u_char										:3;
+	u_char subtitles							:1;
+#else
+	u_char subtitles							:1;
+	u_char										:3;
+	u_char vm									:1;
+	u_char vo									:1;
+	u_char										:1;
+	u_char last									:1;
+#endif
+} epg_replay_t;
+
+typedef struct {
+	u_char original_nid_hi;
+	u_char original_nid_lo;
+	u_char original_tid_hi;
+	u_char original_tid_lo;
+	u_char original_sid_hi;
+	u_char original_sid_lo;
+	u_char equiv_nid_hi;
+	u_char equiv_nid_lo;
+	u_char equiv_tid_hi;
+	u_char equiv_tid_lo;
+	u_char equiv_sid_hi;
+	u_char equiv_sid_lo;
+} mhw_channel_equiv_t;
+#endif
+
 typedef std::set<uint32_t> tidMap;
 
 class eEPGTransponderDataReader;

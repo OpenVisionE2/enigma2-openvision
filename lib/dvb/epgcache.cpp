@@ -505,6 +505,14 @@ bool eEPGCache::FixOverlapping(EventCacheItem &servicemap, time_t TM, int durati
 	return ret;
 }
 
+/**
+ * @brief Parse EIT section data and update the EPG cache timeMap and eventMap
+ *
+ * @param data EIT section data
+ * @param source The type of EIT source
+ * @param channel The channel for which the EPG is being updated
+ * @return void
+ */
 void eEPGCache::sectionRead(const uint8_t *data, int source, eEPGChannelData *channel)
 {
 	const eit_t *eit = (const eit_t*) data;
@@ -844,6 +852,12 @@ void eEPGCache::flushEPG(const uniqueEPGKey & s, bool lock) // lock only affects
 	}
 }
 
+/**
+ * @brief Remove old events from the cache. An event is considered old
+ * if it's end time is earlier than @p eEPGCache::historySeconds ago.
+ *
+ * @return void
+ */
 void eEPGCache::cleanLoop()
 {
 	{ /* scope for cache lock */
@@ -996,7 +1010,7 @@ void eEPGCache::load()
 		unsigned int magic=0;
 		unlink(EPGDAT_IN_FLASH);/* Don't keep it around when in flash */
 		ret = fread( &magic, sizeof(int), 1, f);
-		if (magic != 0x98765432)
+		if (magic != EPG_MAGIC)
 		{
 			eDebug("[eEPGCache] epg file has incorrect byte order.. do not read it");
 			fclose(f);
@@ -1304,6 +1318,8 @@ RESULT eEPGCache::lookupEventTime(const eServiceReference &service, time_t t, Ev
 	return ret;
 }
 
+/** @copydoc eEPGCache::lookupEventTime
+ */
 RESULT eEPGCache::lookupEventTime(const eServiceReference &service, time_t t, ePtr<eServiceEvent> &result, int direction)
 {
 	singleLock s(cache_lock);
@@ -1599,10 +1615,8 @@ void fillTuple(ePyObject tuple, const char *argstring, int argcount, ePyObject s
 			case 'X':
 				++argcount;
 				continue;
-/*
 			case 'M': // GN return 10 items only
 				continue;
-*/
 			default:  // ignore unknown
 				tmp = ePyObject();
 				eDebug("[eEPGCache] fillTuple unknown '%c'... insert 'None' in result", c);
@@ -1668,7 +1682,7 @@ int handleEvent(eServiceEvent *ptr, ePyObject dest_list, const char* argstring, 
 //   X = Return a minimum of one tuple per service in the result list... even when no event was found.
 //       The returned tuple is filled with all available infos... non avail is filled as None
 //       The position and existence of 'X' in the format string has no influence on the result tuple... its completely ignored..
-//   M = see X just 10 events are returned
+//   M = see X just 10 items are returned
 // then for each service follows a tuple
 //   first tuple entry is the servicereference (as string... use the ref.toString() function)
 //   the second is the type of query
@@ -1723,10 +1737,10 @@ PyObject *eEPGCache::lookupEvent(ePyObject list, ePyObject convertFunc)
 	bool forceReturnOne = strchr(argstring, 'X') ? true : false;
 	if (forceReturnOne)
 		--argcount;
-/*
+
 	bool forceReturnTen = strchr(argstring, 'M') ? true : false;
 	int returnTenItemsCount=1;
-*/
+
 	if (convertFunc)
 	{
 		if (!PyCallable_Check(convertFunc))
@@ -1856,6 +1870,15 @@ PyObject *eEPGCache::lookupEvent(ePyObject list, ePyObject convertFunc)
 					ePtr<eServiceEvent> evt;
 					while ( getNextTimeEntry(evt) != -1 )
 					{
+						if (forceReturnTen)  // GN return only 10 items
+						{
+							if (returnTenItemsCount > 10)
+							{
+								//eDebug("[eEPGCache] tuple entry no 10 is reached");
+								break;
+							}
+							returnTenItemsCount++;
+						}
 						if (handleEvent(evt, dest_list, argstring, argcount, service, nowTime, service_name, convertFunc, convertFuncArgs))
 							return 0;  // error
 					}
@@ -1935,6 +1958,20 @@ static inline uint8_t HI(int x) { return (uint8_t) ((x >> 8) & 0xFF); }
 static inline uint8_t LO(int x) { return (uint8_t) (x & 0xFF); }
 
 // convert from set of strings to DVB format (EIT)
+/**
+ * @brief Import EPG events into the EPG database.
+ *
+ * @param serviceRefs list of services that will receive this event
+ * @param start start time of the event
+ * @param duration duration of the event
+ * @param title title of the event. Must not be NULL.
+ * @param short_summary summary of the event
+ * @param long_description full description of the event
+ * @param event_types vector of event type/genre classification
+ * @param parental_ratings vector of parental rating country/rating pairs
+ * @param eventId optional EIT event id, defaults to 0 = auto-generated hash based on start time
+ * @return void
+ */
 void eEPGCache::submitEventData(const std::vector<eServiceReferenceDVB>& serviceRefs, long start,
 	long duration, const char* title, const char* short_summary,
 	const char* long_description, char event_type)
@@ -2137,6 +2174,8 @@ static const char* getStringFromPython(ePyObject obj)
 	return result;
 }
 
+/** @copydoc eEPGCache::importEvents
+ */
 void eEPGCache::importEvent(ePyObject serviceReference, ePyObject list)
 {
 	importEvents(serviceReference, list);
@@ -2156,6 +2195,11 @@ void eEPGCache::importEvent(ePyObject serviceReference, ePyObject list)
  * 4. short description (string)
  * 5. extended description (string)
  * 6. event type (byte) or list or tuple of event types
+ * 7. optional event ID (int), if not supplied, it will default to 0, which implies an
+ *    an auto-generated ID based on the start time.
+ * 8. optional list or tuple of tuples
+ *    (country[string 3 bytes], parental_rating [byte]).
+ *
  * @return void
  */
 void eEPGCache::importEvents(ePyObject serviceReferences, ePyObject list)

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2018-02-14 16:51+0330\n"
 "Last-Translator: Persian Prince <persianprince@pe4k.com>\n"
 "Language-Team: Persian Professionals <persianpros@yahoo.com>\n"
@@ -873,6 +873,14 @@ msgid "%d B"
 msgstr "%d بایت"
 
 #, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
+msgstr ""
+
+#, python-format
 msgid "%d GB"
 msgstr "%d گیگابایت"
 
@@ -1650,7 +1658,7 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "رابط گرافیکی EPG برای همه کانال های یک لیست خاص"
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
 #, python-format
@@ -2758,9 +2766,8 @@ msgstr ""
 msgid "Benchmark Information"
 msgstr "اطلاعات"
 
-#, fuzzy
 msgid "Benchmark for"
-msgstr "اطلاعات"
+msgstr ""
 
 #, fuzzy
 msgid "Benchmark information"
@@ -2838,9 +2845,8 @@ msgstr ""
 msgid "Boost green"
 msgstr ""
 
-#, fuzzy
 msgid "Boot ID"
-msgstr "چیدمان بر اساس زمان"
+msgstr ""
 
 #, fuzzy
 msgid "Boot information"
@@ -2891,9 +2897,6 @@ msgid "Brand/Meta"
 msgstr ""
 
 msgid "Brazil"
-msgstr ""
-
-msgid "Brief help information for buttons in your current context."
 msgstr ""
 
 msgid "Brightness"
@@ -3024,6 +3027,10 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 msgid "CPU architecture"
 msgstr ""
 
@@ -3031,6 +3038,9 @@ msgid "CPU benchmark"
 msgstr ""
 
 msgid "CPU brand"
+msgstr ""
+
+msgid "CPU rating"
 msgstr ""
 
 msgid "CVBS"
@@ -3059,6 +3069,9 @@ msgid "Calculate all positions"
 msgstr "محاسبه همه موقعیت ها"
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3410,9 +3423,8 @@ msgstr "چرخش چپ"
 msgid "Circular right"
 msgstr "چرخش راست"
 
-#, fuzzy
 msgid "City"
-msgstr "ظرفیت:"
+msgstr ""
 
 #, fuzzy
 msgid "Clean network trash cans"
@@ -3552,9 +3564,8 @@ msgstr "ترتیب فرمان"
 msgid "Commit Information"
 msgstr "اطلاعات"
 
-#, fuzzy
 msgid "Commit Information Actions"
-msgstr "اطلاعات"
+msgstr ""
 
 #, fuzzy
 msgid "Commit Logs"
@@ -3563,9 +3574,8 @@ msgstr "اطلاعات Commit"
 msgid "Commit info"
 msgstr "اطلاعات Commit"
 
-#, fuzzy
 msgid "Common Information Actions"
-msgstr "انتخاب محل نسخه پشتیبان"
+msgstr ""
 
 msgid "Common Interface"
 msgstr "رابط مشترک"
@@ -3626,6 +3636,9 @@ msgstr "حالت پیکربندی: "
 #, fuzzy, python-format
 msgid "Configuration mode: %s"
 msgstr "حالت پیکربندی: "
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 #, fuzzy
 msgid "Configure ATSC"
@@ -4057,9 +4070,10 @@ msgstr "وصل شده به"
 msgid "Connected transcoding, limit - no PiP!"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Connection information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr "اطلاعات فعالیت مدیریت پلاگین"
 
 msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
@@ -4439,9 +4453,8 @@ msgstr "DVB-T"
 msgid "DVB-T2"
 msgstr "DVB-T2"
 
-#, fuzzy
 msgid "DVD"
-msgstr "DVB-C"
+msgstr ""
 
 msgid "DVD Burn"
 msgstr ""
@@ -4864,15 +4877,15 @@ msgstr ""
 
 #, fuzzy
 msgid "Detected network servers"
-msgstr "تست شبکه:"
+msgstr "انتخاب آداپتور شبکه"
 
 #, fuzzy
 msgid "Detected storage devices"
-msgstr "NIM های شناسایی شده:"
+msgstr "لیست وسیله های ذخیره سازی"
 
 #, fuzzy
 msgid "Detected tuners"
-msgstr "NIM های شناسایی شده:"
+msgstr "موارد حذف شده"
 
 #, fuzzy
 msgid "Device"
@@ -4880,7 +4893,7 @@ msgstr "کانال"
 
 #, fuzzy
 msgid "Device id"
-msgstr "نام وسیله:"
+msgstr "اطلاعات کانال"
 
 msgid "Device mounts"
 msgstr ""
@@ -5704,11 +5717,10 @@ msgstr "انگلیسی"
 
 #, fuzzy
 msgid "Enigma2 (re)starts"
-msgstr "نسخه انیگما: "
+msgstr "خاموشی موقت / راه اندازی مجدد"
 
-#, fuzzy
 msgid "Enigma2 debug level"
-msgstr "پیش فرض"
+msgstr ""
 
 #, fuzzy
 msgid "Enigma2 default"
@@ -5716,7 +5728,7 @@ msgstr "پیش فرض"
 
 #, fuzzy
 msgid "Enigma2 information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr "اطلاعات"
 
 #, fuzzy
 msgid "Enigma2 revision"
@@ -6171,7 +6183,7 @@ msgstr ""
 
 #, fuzzy
 msgid "FFmpeg version"
-msgstr "نسخه انیگما: "
+msgstr "وارونگی"
 
 msgid "FHD"
 msgstr ""
@@ -6179,9 +6191,8 @@ msgstr ""
 msgid "FLASH"
 msgstr ""
 
-#, fuzzy
 msgid "FPU"
-msgstr "FTA"
+msgstr ""
 
 msgid "FSBL Update Check"
 msgstr ""
@@ -6462,9 +6473,8 @@ msgstr "فرانسه"
 msgid "Free"
 msgstr ""
 
-#, fuzzy
 msgid "Free flash"
-msgstr "فلش"
+msgstr ""
 
 msgid "Free memory"
 msgstr ""
@@ -6531,9 +6541,8 @@ msgid ""
 "This may take a few minutes"
 msgstr ""
 
-#, fuzzy
 msgid "Front processor version"
-msgstr "نسخه کرنل: "
+msgstr ""
 
 msgid "Full Range RGB"
 msgstr ""
@@ -6881,6 +6890,9 @@ msgstr ""
 msgid "HELP"
 msgstr ""
 
+msgid "HELP provides brief information for buttons in your current context."
+msgstr ""
+
 msgid "HH:mm"
 msgstr ""
 
@@ -6931,7 +6943,7 @@ msgstr "سخت افزار: "
 
 #, fuzzy
 msgid "Hardware information"
-msgstr "اطلاعات"
+msgstr "اطلاعات مدیریت نرم افزار"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -6955,8 +6967,8 @@ msgid "Help"
 msgstr ""
 
 #, fuzzy
-msgid "Help Screen"
-msgstr "نگه داشتن صفحه نمایش"
+msgid "Help Screen Information"
+msgstr "اطلاعات"
 
 msgid "Helps setting up your antenna"
 msgstr ""
@@ -7080,9 +7092,8 @@ msgstr ""
 msgid "Host receiver streaming port"
 msgstr ""
 
-#, fuzzy
 msgid "Hostname"
-msgstr "تغییر نام"
+msgstr ""
 
 msgid "HotKey Setup"
 msgstr ""
@@ -7189,9 +7200,8 @@ msgstr "فایل ISO برای این سیستم فایل بسیار بزرگ ا�
 msgid "ISO path"
 msgstr "ISO مسیر"
 
-#, fuzzy
 msgid "ISP"
-msgstr "I"
+msgstr ""
 
 msgid "Iceland"
 msgstr ""
@@ -7199,7 +7209,7 @@ msgstr ""
 msgid "Icons"
 msgstr "آیکون"
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -7714,11 +7724,10 @@ msgstr ""
 
 #, fuzzy
 msgid "Kernel file"
-msgstr "نسخه کرنل: "
+msgstr "حذف ناموفق"
 
-#, fuzzy
 msgid "Kernel module layout"
-msgstr "نسخه کرنل: "
+msgstr ""
 
 #, fuzzy
 msgid "Kernel version"
@@ -8037,7 +8046,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Location information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr "اطلاعات"
 
 msgid "Lock ratio"
 msgstr "نسبت قفل"
@@ -8072,10 +8081,6 @@ msgstr "<آخرین مکان زمان>"
 
 msgid "Long filenames"
 msgstr "نام های طولانی فایل"
-
-#, fuzzy
-msgid "Long key press"
-msgstr "فشار دادن طولانی دکمه"
 
 msgid "Long press emulation with button"
 msgstr ""
@@ -8313,9 +8318,8 @@ msgstr ""
 msgid "Memory Information"
 msgstr "اطلاعات"
 
-#, fuzzy
 msgid "Memory Information Actions"
-msgstr "اطلاعات"
+msgstr ""
 
 msgid "Memory index"
 msgstr "فهرست حافظه"
@@ -8642,7 +8646,7 @@ msgstr "اطلاعات"
 
 #, fuzzy
 msgid "MultiLib"
-msgstr "EPG چندگانه"
+msgstr "چند رسانه ای"
 
 msgid "MultiTranscoding"
 msgstr ""
@@ -8776,7 +8780,7 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
 
 msgid "Nepal"
@@ -8995,9 +8999,8 @@ msgstr "هیچ شبکه ای یافت نشد"
 msgid "No network connection available."
 msgstr "هیچ ارتباط شبکه ای در دسترس نیست"
 
-#, fuzzy
 msgid "No network servers detected."
-msgstr "تست شبکه:"
+msgstr ""
 
 msgid "No networks found"
 msgstr "هیچ شبکه ای یافت نشد"
@@ -9376,28 +9379,24 @@ msgstr "بسته ها"
 msgid "OpenVision Information"
 msgstr "اطلاعات"
 
-#, fuzzy
 msgid "OpenVision Information Actions"
-msgstr "اطلاعات"
+msgstr ""
 
 msgid "OpenVision is an open source project with no commercial funding."
 msgstr ""
 
 #, fuzzy
 msgid "OpenVision language"
-msgstr "بسته ها"
+msgstr "مدیریت بسته های نرم افزاری"
 
-#, fuzzy
 msgid "OpenVision module"
-msgstr "بسته ها"
+msgstr ""
 
-#, fuzzy
 msgid "OpenVision revision"
-msgstr "نسخه انیگما: "
+msgstr ""
 
-#, fuzzy
 msgid "OpenVision version"
-msgstr "نسخه انیگما: "
+msgstr ""
 
 msgid "Operating LED brightness."
 msgstr ""
@@ -9445,7 +9444,7 @@ msgstr "دیگر"
 msgid "Other Subtitles & lang"
 msgstr ""
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
 
 #, fuzzy
@@ -9581,11 +9580,11 @@ msgstr "تنظیمات کنترل والدین"
 
 #, fuzzy
 msgid "Partition"
-msgstr " (پارتیشن %d)"
+msgstr "Polarisation"
 
 #, fuzzy
 msgid "Partitions"
-msgstr " (پارتیشن %d)"
+msgstr "Polarisation"
 
 msgid "Passthrough"
 msgstr ""
@@ -10001,6 +10000,10 @@ msgstr "لطفا صبر کنید - در حال آماده سازی لیست"
 msgid "Plugin Browser"
 msgstr ""
 
+#, fuzzy
+msgid "Plugin Browser Setup"
+msgstr "مرورگر پلاگین"
+
 msgid "Plugin browser"
 msgstr "مرورگر پلاگین"
 
@@ -10011,10 +10014,6 @@ msgstr "اطلاعات فعالیت مدیریت پلاگین"
 #
 msgid "Plugin manager help"
 msgstr "راهنمای مدیریت پلاگین"
-
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "مرورگر پلاگین"
 
 msgid "Plugins"
 msgstr "پلاگین ها"
@@ -10205,6 +10204,10 @@ msgstr ""
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr ""
 
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "دکمه OK را برای toggle انتخاب فشار دهید"
+
 msgid "Press INFO on your remote control for additional information."
 msgstr "دکمه INFO روی ریموت کنترل را برای مشاهده اطلاعات اضافی فشار دهید"
 
@@ -10315,16 +10318,15 @@ msgstr ""
 msgid "Priority"
 msgstr "اولویت"
 
-#, fuzzy
 msgid "Proc model"
-msgstr "مدل:"
+msgstr ""
 
 msgid "Process"
 msgstr "پردازش"
 
 #, fuzzy
 msgid "Processor information"
-msgstr "اطلاعات"
+msgstr "اطلاعات مدیریت نرم افزار"
 
 msgid "Progress"
 msgstr "پیشرفت"
@@ -10395,9 +10397,8 @@ msgstr "ارائه کنندگان"
 msgid "Providers: "
 msgstr "ارائه کنندگان"
 
-#, fuzzy
 msgid "Proxy detected"
-msgstr "خودکار"
+msgstr ""
 
 msgid "Public IP"
 msgstr ""
@@ -10454,9 +10455,8 @@ msgstr ""
 msgid "RAM (Summary)"
 msgstr ""
 
-#, fuzzy
 msgid "RAM benchmark"
-msgstr "اطلاعات"
+msgstr ""
 
 msgid "RC ID number"
 msgstr ""
@@ -10476,9 +10476,9 @@ msgstr "تغییر نام"
 msgid "RC type"
 msgstr "نوع"
 
-#, fuzzy, python-format
+#, python-format
 msgid "RC type:|%s"
-msgstr "نوع"
+msgstr ""
 
 msgid "REC"
 msgstr ""
@@ -10614,9 +10614,8 @@ msgstr ""
 msgid "Receiver Information"
 msgstr "اطلاعات"
 
-#, fuzzy
 msgid "Receiver Information Actions"
-msgstr "اطلاعات"
+msgstr ""
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -11169,7 +11168,7 @@ msgstr "پوشه root"
 
 #, fuzzy
 msgid "Root file"
-msgstr "چیدمان بر اساس زمان"
+msgstr "%d فایل"
 
 msgid "Rotor step position:"
 msgstr ""
@@ -11234,10 +11233,6 @@ msgstr ""
 #, fuzzy
 msgid "SDR"
 msgstr "کیفیت سیگنال"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 #
 msgid "SINGLE LAYER DVD"
@@ -12306,6 +12301,10 @@ msgstr ""
 msgid "Shift"
 msgstr ""
 
+#, python-format
+msgid "Shift: %s"
+msgstr ""
+
 msgid "Short filenames"
 msgstr "نام های کوتاه فایل"
 
@@ -13325,7 +13324,7 @@ msgstr ""
 
 #, fuzzy
 msgid "State"
-msgstr "میزان ارسال"
+msgstr "اسکن"
 
 msgid "Static IP or Custom"
 msgstr ""
@@ -13460,11 +13459,11 @@ msgstr ""
 
 #, fuzzy
 msgid "Storage Information"
-msgstr "پیکربندی شبکه..."
+msgstr "اطلاعات مدیریت نرم افزار"
 
 #, fuzzy
 msgid "Storage information"
-msgstr "پیکربندی شبکه..."
+msgstr "اطلاعات مدیریت نرم افزار"
 
 msgid "Store at index"
 msgstr ""
@@ -13724,9 +13723,8 @@ msgstr ""
 msgid "System Information"
 msgstr "اطلاعات"
 
-#, fuzzy
 msgid "System Information Actions"
-msgstr "اطلاعات"
+msgstr ""
 
 #, fuzzy
 msgid "T2MI PID"
@@ -13800,7 +13798,7 @@ msgstr ""
 
 #, fuzzy
 msgid "TV/Radio"
-msgstr " (رادیو)"
+msgstr "رادیو"
 
 msgid "TXT PID"
 msgstr "TXT PID"
@@ -13955,9 +13953,9 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgid "The %s commit log contains no information."
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr ""
 
 #, python-format
 msgid "The %s commit logs can't be retrieved, please try again later."
@@ -14045,9 +14043,6 @@ msgstr ""
 "بسته هدایتگر شبکه نصب نشده است\n"
 "لطفا آن را نصب کنید"
 
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr ""
-
 msgid ""
 "The overscan wizard has been completed.\n"
 "\n"
@@ -14130,12 +14125,6 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting"
-msgstr "رابط کاربری دستگاه شما در حال راه اندازی مجدد است"
-
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
 msgstr "رابط کاربری دستگاه شما در حال راه اندازی مجدد است"
 
 #, fuzzy, python-format
@@ -14382,7 +14371,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "This screen is not yet available."
-msgstr "هیچ توضیحی در دسترس نیست"
+msgstr "به روز رسانی های در دسترس"
 
 msgid "This setting allows the tuner configuration to be a duplication of how another tuner is already configured."
 msgstr ""
@@ -14569,7 +14558,6 @@ msgstr ""
 msgid "Timeshift not possible!"
 msgstr ""
 
-#, fuzzy
 msgid "Timezone"
 msgstr "منطقه زمانی"
 
@@ -14672,6 +14660,9 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
+msgid "Total CPU benchmark"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr ""
@@ -14691,7 +14682,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Transcoding"
-msgstr "ضبط شده ها"
+msgstr "ترجمه"
 
 msgid "Transcoding: "
 msgstr ""
@@ -14705,7 +14696,7 @@ msgstr "اطلاعات"
 
 #, fuzzy
 msgid "Translation information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr "ترجمه"
 
 msgid "Translation:"
 msgstr "ترجمه:"
@@ -14785,7 +14776,7 @@ msgstr "اطلاعات"
 
 #, fuzzy
 msgid "Tuner information"
-msgstr "اطلاعات"
+msgstr "پیکربندی تیونر"
 
 msgid "Tuner is not supported"
 msgstr ""
@@ -15135,9 +15126,8 @@ msgstr ""
 msgid "Use frequency or channel"
 msgstr ""
 
-#, fuzzy
 msgid "Use geolocation to get WAN information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr ""
 
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
@@ -15214,9 +15204,8 @@ msgstr ""
 msgid "Used"
 msgstr ""
 
-#, fuzzy
 msgid "Used flash"
-msgstr "فلش"
+msgstr ""
 
 msgid "Used service scan type"
 msgstr ""
@@ -15498,11 +15487,11 @@ msgstr "W"
 
 #, fuzzy
 msgid "WAN Geolocation"
-msgstr "محل"
+msgstr "محل فیلم"
 
 #, fuzzy
 msgid "WAN connection information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr "ارتباط LAN"
 
 msgid "WEP"
 msgstr "WEP"
@@ -16928,7 +16917,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"

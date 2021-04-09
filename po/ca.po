@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2020-11-30 18:56+0100\n"
 "Last-Translator: Oriol Pellicer <oriol@elsud.org>\n"
 "Language-Team: angelodos angelo2807@hotmail.com\n"
@@ -927,6 +927,14 @@ msgid "%d B"
 msgstr "%d B"
 
 #, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
+msgstr ""
+
+#, python-format
 msgid "%d GB"
 msgstr "%d GB"
 
@@ -1805,7 +1813,7 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "Un EPG gràfic per a tots els serveis d’un ram específic"
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
 #
@@ -3092,10 +3100,8 @@ msgstr "Boost blau"
 msgid "Boost green"
 msgstr "Boost verd"
 
-#
-#, fuzzy
 msgid "Boot ID"
-msgstr "Sense timeout"
+msgstr ""
 
 #
 #, fuzzy
@@ -3152,9 +3158,6 @@ msgstr ""
 
 msgid "Brazil"
 msgstr "Brasil"
-
-msgid "Brief help information for buttons in your current context."
-msgstr ""
 
 #
 msgid "Brightness"
@@ -3297,6 +3300,10 @@ msgstr ""
 msgid "CPU"
 msgstr "CPU: "
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 msgid "CPU architecture"
 msgstr ""
 
@@ -3306,6 +3313,11 @@ msgstr "Dinamarca"
 
 msgid "CPU brand"
 msgstr ""
+
+#
+#, fuzzy
+msgid "CPU rating"
+msgstr "Actualitzant"
 
 #
 msgid "CVBS"
@@ -3335,6 +3347,9 @@ msgid "Calculate all positions"
 msgstr "Calcula les posicions"
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3729,10 +3744,8 @@ msgstr "Circular a l’esquerra"
 msgid "Circular right"
 msgstr "Circular dreta"
 
-#
-#, fuzzy
 msgid "City"
-msgstr "Capacitat: "
+msgstr ""
 
 #, fuzzy
 msgid "Clean network trash cans"
@@ -3889,10 +3902,8 @@ msgstr "Ordre de comanda"
 msgid "Commit Information"
 msgstr "Informació"
 
-#
-#, fuzzy
 msgid "Commit Information Actions"
-msgstr "Informació"
+msgstr ""
 
 #, fuzzy
 msgid "Commit Logs"
@@ -3901,10 +3912,8 @@ msgstr "Informació de publicació"
 msgid "Commit info"
 msgstr "Informació de publicació"
 
-#
-#, fuzzy
 msgid "Common Information Actions"
-msgstr "Accions de selecció de la pell"
+msgstr ""
 
 #
 msgid "Common Interface"
@@ -3973,6 +3982,9 @@ msgstr "Configuració mode"
 #, python-format
 msgid "Configuration mode: %s"
 msgstr "Configuració mode: %s"
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 #
 msgid "Configure ATSC"
@@ -4418,9 +4430,10 @@ msgstr "Connectat a"
 msgid "Connected transcoding, limit - no PiP!"
 msgstr "Transcodificació connectada, límit - no PiP!"
 
+#
 #, fuzzy
 msgid "Connection information"
-msgstr "Informació del gestor de programari"
+msgstr "Informació sobre l’activitat del gestor de connectors"
 
 msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
@@ -4830,9 +4843,8 @@ msgstr "DVB-T"
 msgid "DVB-T2"
 msgstr "DVB-T2"
 
-#, fuzzy
 msgid "DVD"
-msgstr "DVB-C"
+msgstr ""
 
 msgid "DVD Burn"
 msgstr "DVD Burn"
@@ -5274,28 +5286,29 @@ msgstr "Detalls del complement:"
 msgid "Detect next boxes before standby"
 msgstr "Detecteu les caselles següents abans del mode d’espera"
 
+#
 #, fuzzy
 msgid "Detected network servers"
-msgstr "Prova de xarxa:"
+msgstr "Selecciona interfície de xarxaSeleccioneu un adaptador de xarxa"
 
 #
 #, fuzzy
 msgid "Detected storage devices"
-msgstr "NIMs detectats:"
+msgstr "Llista de dispositius d’emmagatzematge"
 
-#
 #, fuzzy
 msgid "Detected tuners"
-msgstr "NIMs detectats:"
+msgstr "Elements eliminats"
 
 #
 #, fuzzy
 msgid "Device"
 msgstr "Canal"
 
+#
 #, fuzzy
 msgid "Device id"
-msgstr "Nom del dispositiu:"
+msgstr "Informació del servei"
 
 msgid "Device mounts"
 msgstr ""
@@ -5629,10 +5642,9 @@ msgstr "Voleu gravar aquesta col·lecció al suport DVD?"
 msgid "Do you want to delete all log files?"
 msgstr "Voleu eliminar tots els fitxers del registre de el logs"
 
-#
 #, fuzzy
 msgid "Do you want to delete this log file?"
-msgstr "Segur que vols esborrar %s?"
+msgstr "Voleu eliminar tots els fitxers del registre de el logs"
 
 #
 #, python-format
@@ -5761,9 +5773,8 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Fet: s’ha instal·lat, actualitzat o eliminat el paquet% d (% s)"
 msgstr[1] "Fet: s’ha instal·lat, actualitzat o eliminat% d paquets (% s)"
 
-#, fuzzy
 msgid "Down"
-msgstr "DTS downmix"
+msgstr ""
 
 #
 msgid "Download plugins"
@@ -6237,9 +6248,10 @@ msgstr "Nivell de depuració d’enigma:% d\n"
 msgid "Enigma2 default"
 msgstr "per defecte"
 
+#
 #, fuzzy
 msgid "Enigma2 information"
-msgstr "Informació del gestor de programari"
+msgstr "Informació"
 
 #
 #, fuzzy
@@ -6745,7 +6757,7 @@ msgstr "FEC:"
 #
 #, fuzzy
 msgid "FFmpeg version"
-msgstr "Enigma versió:"
+msgstr "Inversió"
 
 msgid "FHD"
 msgstr "FHD"
@@ -6753,9 +6765,8 @@ msgstr "FHD"
 msgid "FLASH"
 msgstr ""
 
-#, fuzzy
 msgid "FPU"
-msgstr "CPU: "
+msgstr ""
 
 msgid "FSBL Update Check"
 msgstr ""
@@ -7058,9 +7069,8 @@ msgstr "França"
 msgid "Free"
 msgstr ""
 
-#, fuzzy
 msgid "Free flash"
-msgstr "Imatge de flaix"
+msgstr ""
 
 msgid "Free memory"
 msgstr ""
@@ -7500,6 +7510,9 @@ msgstr "HDR10 support"
 msgid "HELP"
 msgstr "AJUDA"
 
+msgid "HELP provides brief information for buttons in your current context."
+msgstr ""
+
 msgid "HH:mm"
 msgstr ""
 
@@ -7552,10 +7565,9 @@ msgstr "Configuració del disc dur"
 msgid "Hardware"
 msgstr "Maquinari:"
 
-#
 #, fuzzy
 msgid "Hardware information"
-msgstr "Informació"
+msgstr "Informació del gestor de programari"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -7578,9 +7590,10 @@ msgstr "alçada"
 msgid "Help"
 msgstr ""
 
+#
 #, fuzzy
-msgid "Help Screen"
-msgstr "Mantenir la pantalla en pantalla"
+msgid "Help Screen Information"
+msgstr "Informació"
 
 msgid "Helps setting up your antenna"
 msgstr "Ajuda a configurar l’antena"
@@ -7712,10 +7725,8 @@ msgstr "Encara no s’han rebut dades"
 msgid "Host receiver streaming port"
 msgstr "El vostre receptor s’inicia"
 
-#
-#, fuzzy
 msgid "Hostname"
-msgstr "Canviar el nom"
+msgstr ""
 
 msgid "HotKey Setup"
 msgstr "Configuració de HotKey"
@@ -7831,7 +7842,7 @@ msgstr "Crea  iso"
 
 #, fuzzy
 msgid "ISP"
-msgstr "I"
+msgstr "INS"
 
 msgid "Iceland"
 msgstr "Iceland"
@@ -7839,7 +7850,7 @@ msgstr "Iceland"
 msgid "Icons"
 msgstr "Icones"
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -8388,7 +8399,7 @@ msgstr "Kenya"
 #
 #, fuzzy
 msgid "Kernel file"
-msgstr "Nova versió"
+msgstr "Ha fallat l'eliminació"
 
 #
 #, fuzzy
@@ -8752,9 +8763,10 @@ msgstr "Localitzar"
 msgid "Location for instant recordings"
 msgstr "Ubicació per a enregistraments instantanis"
 
+#
 #, fuzzy
 msgid "Location information"
-msgstr "Informació del gestor de programari"
+msgstr "Informació"
 
 msgid "Lock ratio"
 msgstr "Relació de bloqueig"
@@ -8791,10 +8803,6 @@ msgstr "<Ubicació del darrer temporitzador>"
 
 msgid "Long filenames"
 msgstr "Els noms de fitxers llargs"
-
-#
-msgid "Long key press"
-msgstr "Premeu la tecla llarga"
 
 msgid "Long press emulation with button"
 msgstr ""
@@ -9061,10 +9069,9 @@ msgstr "Informació de la memòria"
 msgid "Memory Information"
 msgstr "Informació"
 
-#
 #, fuzzy
 msgid "Memory Information Actions"
-msgstr "Informació"
+msgstr "Posicions de memòria màx"
 
 msgid "Memory index"
 msgstr "Índex de memòria"
@@ -9422,7 +9429,7 @@ msgstr "Informació"
 #
 #, fuzzy
 msgid "MultiLib"
-msgstr "Multi EPG"
+msgstr "Multimedia"
 
 #, fuzzy
 msgid "MultiTranscoding"
@@ -9576,7 +9583,7 @@ msgstr "Namibia"
 msgid "Nauru"
 msgstr "Nauru"
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
 
 msgid "Nepal"
@@ -9820,7 +9827,7 @@ msgstr "No hi ha connexió de xarxa disponible."
 
 #, fuzzy
 msgid "No network servers detected."
-msgstr "Prova de xarxa:"
+msgstr "No s’han seleccionat serveis / proveïdors"
 
 #
 msgid "No networks found"
@@ -10229,10 +10236,8 @@ msgstr "Extensions"
 msgid "OpenVision Information"
 msgstr "Informació"
 
-#
-#, fuzzy
 msgid "OpenVision Information Actions"
-msgstr "Informació"
+msgstr ""
 
 msgid "OpenVision is an open source project with no commercial funding."
 msgstr ""
@@ -10244,15 +10249,13 @@ msgstr "original llengua"
 #
 #, fuzzy
 msgid "OpenVision module"
-msgstr "Extensions"
+msgstr "Mode transmissió"
 
-#, fuzzy
 msgid "OpenVision revision"
-msgstr "Python versio:"
+msgstr ""
 
-#, fuzzy
 msgid "OpenVision version"
-msgstr "Python versio:"
+msgstr ""
 
 #, fuzzy
 msgid "Operating LED brightness."
@@ -10305,7 +10308,7 @@ msgstr "Altres"
 msgid "Other Subtitles & lang"
 msgstr "Altres subtítols & lang"
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
 
 #, fuzzy
@@ -10449,11 +10452,11 @@ msgstr "Configuració control parental"
 
 #, fuzzy
 msgid "Partition"
-msgstr " (Partició% d)"
+msgstr "Polarització"
 
 #, fuzzy
 msgid "Partitions"
-msgstr " (Partició% d)"
+msgstr "Polarització"
 
 msgid "Passthrough"
 msgstr ""
@@ -10936,6 +10939,10 @@ msgstr "Carregant la llista... espera..."
 msgid "Plugin Browser"
 msgstr "Plugin navegador"
 
+#, fuzzy
+msgid "Plugin Browser Setup"
+msgstr "Plugin navegador"
+
 #
 msgid "Plugin browser"
 msgstr "Plugin navegador"
@@ -10947,10 +10954,6 @@ msgstr "Informació sobre l’activitat del gestor de connectors"
 #
 msgid "Plugin manager help"
 msgstr "Ajuda del gestor de connectors"
-
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "Plugin navegador"
 
 #
 msgid "Plugins"
@@ -11034,7 +11037,7 @@ msgstr "Posicionador (selecció de satèl·lits)"
 
 #, fuzzy
 msgid "Power"
-msgstr "PowerMenu"
+msgstr "Alimentació LED"
 
 msgid "Power LED can be turned on or off here."
 msgstr ""
@@ -11163,6 +11166,11 @@ msgstr "Premeu “D’acord” per eliminar l’element o “CH +/-“ per canvi
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr "Premeu “D’acord” per eliminar l’element o <> per canviar l’ordre o “CH +/-“ per canviar a la llista de funcions."
 
+#
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "Premeu OK per canviar la selecció."
+
 msgid "Press INFO on your remote control for additional information."
 msgstr "Per obtenir més informació, premeu INFO al comandament remot."
 
@@ -11289,16 +11297,15 @@ msgstr "Prioritat"
 #
 #, fuzzy
 msgid "Proc model"
-msgstr "Model: "
+msgstr "Mode del to"
 
 #
 msgid "Process"
 msgstr "Procés"
 
-#
 #, fuzzy
 msgid "Processor information"
-msgstr "Informació"
+msgstr "Informació del gestor de programari"
 
 msgid "Progress"
 msgstr "Progrés "
@@ -11373,9 +11380,10 @@ msgstr "Proveïdors"
 msgid "Providers: "
 msgstr "Proveïdors"
 
+#
 #, fuzzy
 msgid "Proxy detected"
-msgstr "Auto Diseqc"
+msgstr "no s’ha seleccionat cap CAI"
 
 msgid "Public IP"
 msgstr ""
@@ -11459,10 +11467,9 @@ msgstr "Canviar el nom"
 msgid "RC type"
 msgstr "tipus"
 
-#
-#, fuzzy, python-format
+#, python-format
 msgid "RC type:|%s"
-msgstr "tipus"
+msgstr ""
 
 msgid "REC"
 msgstr "REC"
@@ -11614,10 +11621,8 @@ msgstr ""
 msgid "Receiver Information"
 msgstr "Informació"
 
-#
-#, fuzzy
 msgid "Receiver Information Actions"
-msgstr "Informació"
+msgstr ""
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -12306,10 +12311,6 @@ msgstr "SCR Unicable"
 
 msgid "SDR"
 msgstr "SDR"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 #
 msgid "SINGLE LAYER DVD"
@@ -13457,6 +13458,10 @@ msgstr "Shellscript"
 msgid "Shift"
 msgstr "Shift"
 
+#, fuzzy, python-format
+msgid "Shift: %s"
+msgstr "Shift"
+
 msgid "Short filenames"
 msgstr "Nom de fitxers breus"
 
@@ -13883,9 +13888,10 @@ msgstr ""
 msgid "Show time remaining/elapsed"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Show translation information"
-msgstr "Informació del gestor de programari"
+msgstr "Mostrar info del transponedor"
 
 #
 msgid "Show transponder info"
@@ -14528,7 +14534,7 @@ msgstr "Inici al mode d’espera"
 #
 #, fuzzy
 msgid "State"
-msgstr "Bitrate:"
+msgstr "Estat d’escaneig"
 
 msgid "Static IP or Custom"
 msgstr ""
@@ -14675,11 +14681,11 @@ msgstr ""
 
 #, fuzzy
 msgid "Storage Information"
-msgstr "Xarxa configuracio"
+msgstr "Informació del gestor de programari"
 
 #, fuzzy
 msgid "Storage information"
-msgstr "Xarxa configuracio"
+msgstr "Informació del gestor de programari"
 
 msgid "Store at index"
 msgstr "Emmagatzemar-los a l’índex"
@@ -14958,10 +14964,8 @@ msgstr "Sistema & Modulacio"
 msgid "System Information"
 msgstr "Informació"
 
-#
-#, fuzzy
 msgid "System Information Actions"
-msgstr "Informació"
+msgstr ""
 
 msgid "T2MI PID"
 msgstr "T2MI PID"
@@ -15019,9 +15023,8 @@ msgstr " (Radio)"
 msgid "TV A/V"
 msgstr ""
 
-#, fuzzy
 msgid "TV Power"
-msgstr "PowerMenu"
+msgstr ""
 
 msgid "TV Set / IR Learning"
 msgstr ""
@@ -15039,9 +15042,10 @@ msgstr "Volum"
 msgid "TV physical address report"
 msgstr "Informe d’adreça física de TV"
 
+#
 #, fuzzy
 msgid "TV/Radio"
-msgstr " (Radio)"
+msgstr "Radio"
 
 msgid "TXT PID"
 msgstr "TXT PID"
@@ -15203,9 +15207,9 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "El% d min restant abans de la finalització de l’esdeveniment."
 
-#, fuzzy, python-format
+#, python-format
 msgid "The %s commit log contains no information."
-msgstr "Informació del gestor de programari"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "The %s commit logs can't be retrieved, please try again later."
@@ -15299,9 +15303,6 @@ msgid ""
 msgstr ""
 "L’extensió de l’assistent de xarxa no està instal·lada.\n"
 "Instal·leu-lo."
-
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr ""
 
 msgid ""
 "The overscan wizard has been completed.\n"
@@ -15408,14 +15409,6 @@ msgstr "La interfície d’usuari del receptor ara es reiniciarà per selecciona
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting"
 msgstr "S’inicia la interfície d’usuari del receptor"
-
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
-msgstr ""
-"S’inicia la interfície d’usuari del receptor\n"
-"a causa d’un error a mytest.py"
 
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting in debug mode"
@@ -15929,9 +15922,8 @@ msgid "Timeshift not possible!"
 msgstr "No és possible la pausa!"
 
 #
-#, fuzzy
 msgid "Timezone"
-msgstr "Fus horari"
+msgstr "Zona horària"
 
 msgid "Timor-Leste"
 msgstr "Timeshift s’està executant. Seleccioneu una acció."
@@ -16043,6 +16035,9 @@ msgstr "Superior i inferior"
 msgid "Total"
 msgstr ""
 
+msgid "Total CPU benchmark"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr "Total de clients en streaming:% d (% s)"
@@ -16078,9 +16073,10 @@ msgstr "Traducció"
 msgid "Translation Information"
 msgstr "Informació"
 
+#
 #, fuzzy
 msgid "Translation information"
-msgstr "Informació del gestor de programari"
+msgstr "Traducció"
 
 #
 msgid "Translation:"
@@ -16175,10 +16171,9 @@ msgstr "Sintonitzador configuracio"
 msgid "Tuner Information"
 msgstr "Informació"
 
-#
 #, fuzzy
 msgid "Tuner information"
-msgstr "Informació"
+msgstr "Sintonitzador configuracio"
 
 msgid "Tuner is not supported"
 msgstr "Sintonitzador no suportat"
@@ -16566,9 +16561,8 @@ msgstr "Utilitzeu la numeració de canals de fastscan"
 msgid "Use frequency or channel"
 msgstr "Utilitzeu freqüència o canal"
 
-#, fuzzy
 msgid "Use geolocation to get WAN information"
-msgstr "Informació del gestor de programari"
+msgstr ""
 
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
@@ -16656,9 +16650,8 @@ msgstr "Utilitzeu les papareres a la llista de moviments"
 msgid "Used"
 msgstr ""
 
-#, fuzzy
 msgid "Used flash"
-msgstr "Imatge de flaix"
+msgstr ""
 
 #
 msgid "Used service scan type"
@@ -16989,14 +16982,13 @@ msgstr "Volum a dalt"
 msgid "W"
 msgstr "O"
 
-#
 #, fuzzy
 msgid "WAN Geolocation"
-msgstr "Localitzar"
+msgstr "Connexió WLAN"
 
 #, fuzzy
 msgid "WAN connection information"
-msgstr "Informació del gestor de programari"
+msgstr "Connexió WLAN"
 
 #
 msgid "WEP"
@@ -18615,7 +18607,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"

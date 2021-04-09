@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2021-02-19 14:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: Muzoss-VELEBRDO\n"
@@ -757,6 +757,14 @@ msgstr ""
 
 #, python-format
 msgid "%d B"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
 msgstr ""
 
 #, python-format
@@ -1559,7 +1567,7 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "Графички EPG за сите услуги на специфичен букет"
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
 #, python-format
@@ -2717,9 +2725,8 @@ msgstr "Зголемете ја сината боја"
 msgid "Boost green"
 msgstr "Зголемете ја зелената боја"
 
-#, fuzzy
 msgid "Boot ID"
-msgstr "Време за подигнување"
+msgstr ""
 
 #, fuzzy
 msgid "Boot information"
@@ -2771,9 +2778,6 @@ msgstr ""
 
 msgid "Brazil"
 msgstr "Бразил"
-
-msgid "Brief help information for buttons in your current context."
-msgstr ""
 
 msgid "Brightness"
 msgstr "Светлост"
@@ -2902,6 +2906,10 @@ msgstr ""
 msgid "CPU"
 msgstr "Процесор: "
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 msgid "CPU architecture"
 msgstr ""
 
@@ -2911,6 +2919,10 @@ msgstr "Данска"
 
 msgid "CPU brand"
 msgstr ""
+
+#, fuzzy
+msgid "CPU rating"
+msgstr "Ажурирање"
 
 msgid "CVBS"
 msgstr "CVBS"
@@ -2937,6 +2949,9 @@ msgid "Calculate all positions"
 msgstr "Пресметајте ги сите позиции"
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3302,9 +3317,8 @@ msgstr "Кружно лево"
 msgid "Circular right"
 msgstr "Кружни десно"
 
-#, fuzzy
 msgid "City"
-msgstr "Капацитет: "
+msgstr ""
 
 #, fuzzy
 msgid "Clean network trash cans"
@@ -3441,9 +3455,8 @@ msgstr "Командна наредба"
 msgid "Commit Information"
 msgstr "Информации"
 
-#, fuzzy
 msgid "Commit Information Actions"
-msgstr "Информации"
+msgstr ""
 
 #, fuzzy
 msgid "Commit Logs"
@@ -3452,9 +3465,8 @@ msgstr "Информации за промените"
 msgid "Commit info"
 msgstr "Информации за промените"
 
-#, fuzzy
 msgid "Common Information Actions"
-msgstr "Акции за избор на Скин"
+msgstr ""
 
 msgid "Common Interface"
 msgstr "Common Interface"
@@ -3510,6 +3522,9 @@ msgstr "Режим на конфигурација"
 #, python-format
 msgid "Configuration mode: %s"
 msgstr "Режим на конфигурација: %s"
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 msgid "Configure ATSC"
 msgstr "Конфигурирај ATSC"
@@ -3941,7 +3956,7 @@ msgstr "Поврзано транскодирање, ограничување - 
 
 #, fuzzy
 msgid "Connection information"
-msgstr "Информации за управувач на софтвер"
+msgstr "Управување со Плагини: планирани активности"
 
 msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
@@ -4317,9 +4332,8 @@ msgstr "DVB-T"
 msgid "DVB-T2"
 msgstr "DVB-T2"
 
-#, fuzzy
 msgid "DVD"
-msgstr "DVB-C"
+msgstr ""
 
 msgid "DVD Burn"
 msgstr "Снимање ДВД"
@@ -4727,15 +4741,15 @@ msgstr "Пребарај следни приемници пред премину
 
 #, fuzzy
 msgid "Detected network servers"
-msgstr "Тест на мрежата: "
+msgstr "Изберете мрежен адаптер"
 
 #, fuzzy
 msgid "Detected storage devices"
-msgstr "Откриен NIMs:"
+msgstr "Список на уреди за меморија"
 
 #, fuzzy
 msgid "Detected tuners"
-msgstr "Откриен NIMs:"
+msgstr "Избришани предмети"
 
 #, fuzzy
 msgid "Device"
@@ -4743,7 +4757,7 @@ msgstr "Канал"
 
 #, fuzzy
 msgid "Device id"
-msgstr "Име на уред:"
+msgstr "Информации за каналот"
 
 msgid "Device mounts"
 msgstr ""
@@ -5035,7 +5049,7 @@ msgstr "Дали сакате да ги отстраните сите запис
 
 #, fuzzy
 msgid "Do you want to delete this log file?"
-msgstr "Дали навистина сакате да избришете% s?"
+msgstr "Дали сакате да ги отстраните сите записници за падови на системот"
 
 #, python-format
 msgid ""
@@ -5150,9 +5164,8 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Gotovo - Instaliran, ažuriran ili отстранет %d paket (%s)"
 msgstr[1] "Gotovo - Instaliran, ažuriran ili отстранет %d paket (%s)"
 
-#, fuzzy
 msgid "Down"
-msgstr "DTS downmix"
+msgstr ""
 
 msgid "Download plugins"
 msgstr "Преземи плагин"
@@ -5574,7 +5587,7 @@ msgstr "стандардно"
 
 #, fuzzy
 msgid "Enigma2 information"
-msgstr "Информации за управувач на софтвер"
+msgstr "Информации"
 
 #, fuzzy
 msgid "Enigma2 revision"
@@ -6033,7 +6046,7 @@ msgstr "FEC:"
 
 #, fuzzy
 msgid "FFmpeg version"
-msgstr "Верзија на енигма: "
+msgstr "Инверзија"
 
 msgid "FHD"
 msgstr "FHD"
@@ -6041,9 +6054,8 @@ msgstr "FHD"
 msgid "FLASH"
 msgstr ""
 
-#, fuzzy
 msgid "FPU"
-msgstr "Процесор: "
+msgstr ""
 
 msgid "FSBL Update Check"
 msgstr ""
@@ -6321,9 +6333,8 @@ msgstr "Франција"
 msgid "Free"
 msgstr ""
 
-#, fuzzy
 msgid "Free flash"
-msgstr "Флеш Имиџ"
+msgstr ""
 
 msgid "Free memory"
 msgstr ""
@@ -6730,6 +6741,9 @@ msgstr "Поддршка за HDR10"
 msgid "HELP"
 msgstr "ПОМОШ"
 
+msgid "HELP provides brief information for buttons in your current context."
+msgstr ""
+
 msgid "HH:mm"
 msgstr ""
 
@@ -6780,7 +6794,7 @@ msgstr "Хардвер: "
 
 #, fuzzy
 msgid "Hardware information"
-msgstr "Информации"
+msgstr "Информации за управувач на софтвер"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -6804,8 +6818,8 @@ msgid "Help"
 msgstr ""
 
 #, fuzzy
-msgid "Help Screen"
-msgstr "Држете слика"
+msgid "Help Screen Information"
+msgstr "Информации"
 
 msgid "Helps setting up your antenna"
 msgstr "Помага при поставување на вашата антена"
@@ -7035,7 +7049,7 @@ msgstr "ISO патека"
 
 #, fuzzy
 msgid "ISP"
-msgstr "И"
+msgstr "INS"
 
 msgid "Iceland"
 msgstr "Исланд"
@@ -7043,7 +7057,7 @@ msgstr "Исланд"
 msgid "Icons"
 msgstr "Икони"
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -7548,7 +7562,7 @@ msgstr "Кениа"
 
 #, fuzzy
 msgid "Kernel file"
-msgstr "Верзија на Kernel: "
+msgstr "Избриши  датотека"
 
 #, fuzzy
 msgid "Kernel module layout"
@@ -7870,7 +7884,7 @@ msgstr "Локација за инстант снимки"
 
 #, fuzzy
 msgid "Location information"
-msgstr "Информации за управувач на софтвер"
+msgstr "Информации"
 
 msgid "Lock ratio"
 msgstr "Однос на сигнал"
@@ -7905,9 +7919,6 @@ msgstr "Локација на филмот"
 
 msgid "Long filenames"
 msgstr "Долги имиња на датотеки"
-
-msgid "Long key press"
-msgstr "Долго притискање на копчето"
 
 msgid "Long press emulation with button"
 msgstr ""
@@ -8145,7 +8156,7 @@ msgstr "Информации"
 
 #, fuzzy
 msgid "Memory Information Actions"
-msgstr "Информации"
+msgstr "Максимални позиции на меморија"
 
 msgid "Memory index"
 msgstr "Индекс на меморија"
@@ -8463,7 +8474,7 @@ msgstr "Информации"
 
 #, fuzzy
 msgid "MultiLib"
-msgstr "Мулти EPG"
+msgstr "Мултимедија"
 
 #, fuzzy
 msgid "MultiTranscoding"
@@ -8596,7 +8607,7 @@ msgstr "Намибија"
 msgid "Nauru"
 msgstr "Науру"
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
 
 msgid "Nepal"
@@ -8811,7 +8822,7 @@ msgstr "Не е достапна мрежна врска."
 
 #, fuzzy
 msgid "No network servers detected."
-msgstr "Тест на мрежата: "
+msgstr "Нема избран канал / провајдер"
 
 msgid "No networks found"
 msgstr "Не се пронајдени мрежи"
@@ -9185,9 +9196,8 @@ msgstr "Екстензии"
 msgid "OpenVision Information"
 msgstr "Информации"
 
-#, fuzzy
 msgid "OpenVision Information Actions"
-msgstr "Информации"
+msgstr ""
 
 msgid "OpenVision is an open source project with no commercial funding."
 msgstr ""
@@ -9198,15 +9208,13 @@ msgstr "оригинален јазик"
 
 #, fuzzy
 msgid "OpenVision module"
-msgstr "Екстензии"
+msgstr "Режим на пренос"
 
-#, fuzzy
 msgid "OpenVision revision"
-msgstr "Верзија на Python: "
+msgstr ""
 
-#, fuzzy
 msgid "OpenVision version"
-msgstr "Верзија на Python: "
+msgstr ""
 
 #, fuzzy
 msgid "Operating LED brightness."
@@ -9258,7 +9266,7 @@ msgstr "Други"
 msgid "Other Subtitles & lang"
 msgstr "Други преводи & јазик"
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
 
 #, fuzzy
@@ -9390,11 +9398,11 @@ msgstr "Поставки за родителска контрола"
 
 #, fuzzy
 msgid "Partition"
-msgstr " (Партиција %d)"
+msgstr "Поларизација"
 
 #, fuzzy
 msgid "Partitions"
-msgstr " (Партиција %d)"
+msgstr "Поларизација"
 
 msgid "Passthrough"
 msgstr ""
@@ -9810,6 +9818,10 @@ msgstr "Ве молиме почекајте ... Се вчитува списо�
 msgid "Plugin Browser"
 msgstr "Прелистувач на Плагини"
 
+#, fuzzy
+msgid "Plugin Browser Setup"
+msgstr "Прелистувач на Плагини"
+
 msgid "Plugin browser"
 msgstr "Прелистувач на Плагини"
 
@@ -9818,10 +9830,6 @@ msgstr "Управување со Плагини: планирани актив�
 
 msgid "Plugin manager help"
 msgstr "Управување со Плагин: Помош"
-
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "Прелистувач на Плагини"
 
 msgid "Plugins"
 msgstr "Плагини"
@@ -9892,7 +9900,7 @@ msgstr "Протокол за поставување позиционер"
 
 #, fuzzy
 msgid "Power"
-msgstr "PowerМени"
+msgstr "ЛЕД-напојување"
 
 msgid "Power LED can be turned on or off here."
 msgstr ""
@@ -10016,6 +10024,10 @@ msgstr "Притиснете 'ОК' за да го избришете запис
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr "Притиснете „ОК“ за да го избришете записот, или „<>“ за да го смените редоследот или „Канал + / -“ за да се префрлите на списокот со функции."
 
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "Притиснете OK за да го вклучите изборот."
+
 msgid "Press INFO on your remote control for additional information."
 msgstr "Притиснете ИНФО за дополнителни информации."
 
@@ -10123,14 +10135,14 @@ msgstr "Приоритет"
 
 #, fuzzy
 msgid "Proc model"
-msgstr "Модел: "
+msgstr "Режим на тон"
 
 msgid "Process"
 msgstr "Процес"
 
 #, fuzzy
 msgid "Processor information"
-msgstr "Информации"
+msgstr "Информации за управувач на софтвер"
 
 msgid "Progress"
 msgstr "Напредок"
@@ -10202,7 +10214,7 @@ msgstr "Провајдери"
 
 #, fuzzy
 msgid "Proxy detected"
-msgstr "Автоматски Diseqc"
+msgstr "не е избран CAId"
 
 msgid "Public IP"
 msgstr ""
@@ -10279,9 +10291,9 @@ msgstr "Преименувај"
 msgid "RC type"
 msgstr "тип"
 
-#, fuzzy, python-format
+#, python-format
 msgid "RC type:|%s"
-msgstr "тип"
+msgstr ""
 
 msgid "REC"
 msgstr "REC"
@@ -10417,9 +10429,8 @@ msgstr ""
 msgid "Receiver Information"
 msgstr "Информации"
 
-#, fuzzy
 msgid "Receiver Information Actions"
-msgstr "Информации"
+msgstr ""
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -11018,10 +11029,6 @@ msgstr "SCR уникатен"
 
 msgid "SDR"
 msgstr "SDR"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 msgid "SINGLE LAYER DVD"
 msgstr "ДВД со еден слој"
@@ -12057,6 +12064,10 @@ msgstr "Шелскрипт"
 msgid "Shift"
 msgstr "Смена"
 
+#, fuzzy, python-format
+msgid "Shift: %s"
+msgstr "Смена"
+
 msgid "Short filenames"
 msgstr "Кратки имиња на датотеки"
 
@@ -12469,7 +12480,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Show translation information"
-msgstr "Информации за управувач на софтвер"
+msgstr "Прокажи информации за транспондер"
 
 msgid "Show transponder info"
 msgstr "Прокажи информации за транспондер"
@@ -13048,7 +13059,7 @@ msgstr "Стартувај во режим на подготвеност"
 
 #, fuzzy
 msgid "State"
-msgstr "Бит-стапка:"
+msgstr "Состојба на пребарувања"
 
 msgid "Static IP or Custom"
 msgstr ""
@@ -13177,11 +13188,11 @@ msgstr ""
 
 #, fuzzy
 msgid "Storage Information"
-msgstr "Конфигурација на мрежата"
+msgstr "Информации за управувач на софтвер"
 
 #, fuzzy
 msgid "Storage information"
-msgstr "Конфигурација на мрежата"
+msgstr "Информации за управувач на софтвер"
 
 msgid "Store at index"
 msgstr "Задржи на индекс"
@@ -13432,9 +13443,8 @@ msgstr "Систем и модулација"
 msgid "System Information"
 msgstr "Информации"
 
-#, fuzzy
 msgid "System Information Actions"
-msgstr "Информации"
+msgstr ""
 
 msgid "T2MI PID"
 msgstr "T2MI PID"
@@ -13487,9 +13497,8 @@ msgstr " (Радио)"
 msgid "TV A/V"
 msgstr ""
 
-#, fuzzy
 msgid "TV Power"
-msgstr "PowerМени"
+msgstr ""
 
 msgid "TV Set / IR Learning"
 msgstr ""
@@ -13507,7 +13516,7 @@ msgstr "Извештај за физичката адреса на ТВ"
 
 #, fuzzy
 msgid "TV/Radio"
-msgstr " (Радио)"
+msgstr "Радио"
 
 msgid "TXT PID"
 msgstr "TXT PID"
@@ -13659,9 +13668,9 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "Преостануваат уште %d мин. Пред крајот на настанот."
 
-#, fuzzy, python-format
+#, python-format
 msgid "The %s commit log contains no information."
-msgstr "Информации за управувач на софтвер"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "The %s commit logs can't be retrieved, please try again later."
@@ -13750,9 +13759,6 @@ msgid ""
 msgstr ""
 "Волшебникот за поставување мрежа не е инсталиран!\n"
 "Ве молам инсталирајте го."
-
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr ""
 
 msgid ""
 "The overscan wizard has been completed.\n"
@@ -13846,14 +13852,6 @@ msgstr "Корисничкиот интерфејс на приемникот ќ
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting"
 msgstr "Корисничкиот интерфејс на вашиот приемник се рестартира"
-
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
-msgstr ""
-"Корисничкиот интерфејс на вашиот приемник се рестартира\n"
-"поради грешка во mytest.py"
 
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting in debug mode"
@@ -14323,7 +14321,6 @@ msgstr "Локација за Timeshift"
 msgid "Timeshift not possible!"
 msgstr "Timeshift  не е можно!"
 
-#, fuzzy
 msgid "Timezone"
 msgstr "Временска зона"
 
@@ -14427,6 +14424,9 @@ msgstr "Горе и долу"
 msgid "Total"
 msgstr ""
 
+msgid "Total CPU benchmark"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr "Вкупен број на емитувани клиенти:% d (% s)"
@@ -14460,7 +14460,7 @@ msgstr "Информации"
 
 #, fuzzy
 msgid "Translation information"
-msgstr "Информации за управувач на софтвер"
+msgstr "Превод"
 
 msgid "Translation:"
 msgstr "Превод:"
@@ -14542,7 +14542,7 @@ msgstr "Информации"
 
 #, fuzzy
 msgid "Tuner information"
-msgstr "Информации"
+msgstr "Конфигурација на тјунер"
 
 msgid "Tuner is not supported"
 msgstr "Тјунерот не е поддржан"
@@ -14895,9 +14895,8 @@ msgstr "Користете броеви на каналот за брзо пре
 msgid "Use frequency or channel"
 msgstr "Користете фреквенција или канал"
 
-#, fuzzy
 msgid "Use geolocation to get WAN information"
-msgstr "Информации за управувач на софтвер"
+msgstr ""
 
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
@@ -14977,9 +14976,8 @@ msgstr "Користете корпа за отпадоци во списоко�
 msgid "Used"
 msgstr ""
 
-#, fuzzy
 msgid "Used flash"
-msgstr "Флеш Имиџ"
+msgstr ""
 
 msgid "Used service scan type"
 msgstr "Користен тип на пребарување на канали"
@@ -15268,11 +15266,11 @@ msgstr "W"
 
 #, fuzzy
 msgid "WAN Geolocation"
-msgstr "Локациjа"
+msgstr "WLAN врска"
 
 #, fuzzy
 msgid "WAN connection information"
-msgstr "Информации за управувач на софтвер"
+msgstr "WLAN врска"
 
 msgid "WEP"
 msgstr "WEP"
@@ -16783,7 +16781,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"

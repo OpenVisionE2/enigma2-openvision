@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2012-03-08 10:40+0330\n"
 "Last-Translator: \n"
 "Language-Team: Arabic <moustafagamal@hotmail.com>\n"
@@ -828,6 +828,14 @@ msgid "%d B"
 msgstr ""
 
 #, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
+msgstr ""
+
+#, python-format
 msgid "%d GB"
 msgstr ""
 
@@ -1630,7 +1638,7 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "תצוגה גראפית לאי.פי.גי לכל התחנות בתיקייה ספציפית"
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
 #, python-format
@@ -2791,10 +2799,8 @@ msgstr ""
 msgid "Benchmark Information"
 msgstr "מידע"
 
-#
-#, fuzzy
 msgid "Benchmark for"
-msgstr "מידע"
+msgstr ""
 
 #
 #, fuzzy
@@ -2873,10 +2879,8 @@ msgstr ""
 msgid "Boost green"
 msgstr "ירוק"
 
-#
-#, fuzzy
 msgid "Boot ID"
-msgstr "Sort Time"
+msgstr ""
 
 #
 #, fuzzy
@@ -2924,18 +2928,13 @@ msgstr "מקליט"
 msgid "BoxBranding Information"
 msgstr "מידע"
 
-#
-#, fuzzy
 msgid "BoxBranding information for"
-msgstr "מידע"
+msgstr ""
 
 msgid "Brand/Meta"
 msgstr ""
 
 msgid "Brazil"
-msgstr ""
-
-msgid "Brief help information for buttons in your current context."
 msgstr ""
 
 #
@@ -3073,6 +3072,10 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 msgid "CPU architecture"
 msgstr ""
 
@@ -3081,6 +3084,11 @@ msgstr ""
 
 msgid "CPU brand"
 msgstr ""
+
+#
+#, fuzzy
+msgid "CPU rating"
+msgstr "משדרג"
 
 #
 msgid "CVBS"
@@ -3108,6 +3116,9 @@ msgid "Calculate all positions"
 msgstr ""
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3471,10 +3482,8 @@ msgstr "Circular left"
 msgid "Circular right"
 msgstr "Circular right"
 
-#
-#, fuzzy
 msgid "City"
-msgstr ":נפח"
+msgstr ""
 
 #, fuzzy
 msgid "Clean network trash cans"
@@ -3618,10 +3627,8 @@ msgstr "סדר פקודה"
 msgid "Commit Information"
 msgstr "מידע"
 
-#
-#, fuzzy
 msgid "Commit Information Actions"
-msgstr "מידע"
+msgstr ""
 
 msgid "Commit Logs"
 msgstr ""
@@ -3629,9 +3636,8 @@ msgstr ""
 msgid "Commit info"
 msgstr ""
 
-#, fuzzy
 msgid "Common Information Actions"
-msgstr "בחר מקום גיבוי"
+msgstr ""
 
 #
 msgid "Common Interface"
@@ -3693,6 +3699,9 @@ msgstr "תצורת הגדרה"
 #, fuzzy, python-format
 msgid "Configuration mode: %s"
 msgstr "תצורת הגדרה"
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 #, fuzzy
 msgid "Configure ATSC"
@@ -4134,10 +4143,9 @@ msgstr "מחובר אל"
 msgid "Connected transcoding, limit - no PiP!"
 msgstr ""
 
-#
 #, fuzzy
 msgid "Connection information"
-msgstr "מידע"
+msgstr "Plugin manager activity information"
 
 msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
@@ -4159,7 +4167,7 @@ msgstr "!תכולה לא מתאימה לדי.וי.די"
 
 #, fuzzy
 msgid "Context"
-msgstr "המשך לנגן"
+msgstr "ניגודיות"
 
 #
 #, fuzzy
@@ -4528,9 +4536,8 @@ msgstr "DVB-S"
 msgid "DVB-T2"
 msgstr ""
 
-#, fuzzy
 msgid "DVD"
-msgstr "DVB-S"
+msgstr ""
 
 msgid "DVD Burn"
 msgstr ""
@@ -4960,12 +4967,12 @@ msgstr ""
 
 #, fuzzy
 msgid "Detected network servers"
-msgstr "Network test: "
+msgstr "Select Network Adapter"
 
 #
 #, fuzzy
 msgid "Detected storage devices"
-msgstr "Detected NIMs:"
+msgstr "רשימת התקני אחסון"
 
 #
 #, fuzzy
@@ -5432,9 +5439,8 @@ msgstr ""
 msgid "Drama"
 msgstr ""
 
-#, fuzzy
 msgid "Driver and kernel information"
-msgstr "הצג מידע על האירוע"
+msgstr ""
 
 #
 #, fuzzy
@@ -5852,14 +5858,12 @@ msgstr ""
 msgid "English"
 msgstr "אנגלית"
 
-#
 #, fuzzy
 msgid "Enigma2 (re)starts"
-msgstr ":גרסה חדשה"
+msgstr " איתחול / המתנה"
 
-#, fuzzy
 msgid "Enigma2 debug level"
-msgstr "ברירת מחדל"
+msgstr ""
 
 #, fuzzy
 msgid "Enigma2 default"
@@ -6327,7 +6331,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "FFmpeg version"
-msgstr ":גרסה חדשה"
+msgstr "Inversion"
 
 msgid "FHD"
 msgstr ""
@@ -6627,9 +6631,8 @@ msgstr "בטל"
 msgid "Free"
 msgstr ""
 
-#, fuzzy
 msgid "Free flash"
-msgstr "Flash"
+msgstr ""
 
 msgid "Free memory"
 msgstr ""
@@ -6704,10 +6707,8 @@ msgid ""
 "This may take a few minutes"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Front processor version"
-msgstr ":גרסה חדשה"
+msgstr ""
 
 msgid "Full Range RGB"
 msgstr ""
@@ -7060,6 +7061,9 @@ msgstr ""
 msgid "HELP"
 msgstr ""
 
+msgid "HELP provides brief information for buttons in your current context."
+msgstr ""
+
 msgid "HH:mm"
 msgstr ""
 
@@ -7137,8 +7141,10 @@ msgstr "ימין"
 msgid "Help"
 msgstr ""
 
-msgid "Help Screen"
-msgstr ""
+#
+#, fuzzy
+msgid "Help Screen Information"
+msgstr "מידע"
 
 msgid "Helps setting up your antenna"
 msgstr ""
@@ -7259,9 +7265,8 @@ msgstr ""
 msgid "Host receiver streaming port"
 msgstr ""
 
-#, fuzzy
 msgid "Hostname"
-msgstr "שנה שם"
+msgstr ""
 
 msgid "HotKey Setup"
 msgstr ""
@@ -7380,7 +7385,7 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -7459,9 +7464,8 @@ msgstr ""
 msgid "Image architecture"
 msgstr ""
 
-#, fuzzy
 msgid "Image build date"
-msgstr "...בודק קבצי מערכת"
+msgstr ""
 
 msgid "Image build/branch"
 msgstr ""
@@ -7915,10 +7919,9 @@ msgstr ""
 msgid "Kenya"
 msgstr ""
 
-#
 #, fuzzy
 msgid "Kernel file"
-msgstr ":גרסה חדשה"
+msgstr "מחק קובץ"
 
 #
 #, fuzzy
@@ -8322,11 +8325,6 @@ msgstr "<מיקום אחרון לטיימר>"
 msgid "Long filenames"
 msgstr ""
 
-#
-#, fuzzy
-msgid "Long key press"
-msgstr "לחיצת מקש ארוכה"
-
 msgid "Long press emulation with button"
 msgstr ""
 
@@ -8587,10 +8585,8 @@ msgstr ""
 msgid "Memory Information"
 msgstr "מידע"
 
-#
-#, fuzzy
 msgid "Memory Information Actions"
-msgstr "מידע"
+msgstr ""
 
 msgid "Memory index"
 msgstr ""
@@ -8934,10 +8930,9 @@ msgstr "Multisat"
 msgid "MultiBoot Information"
 msgstr "מידע"
 
-#
 #, fuzzy
 msgid "MultiLib"
-msgstr "Multi EPG"
+msgstr "מולטימדיה"
 
 #, fuzzy
 msgid "MultiTranscoding"
@@ -9084,7 +9079,7 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
 
 msgid "Nepal"
@@ -9315,9 +9310,8 @@ msgstr "לא נמצאו רשתות"
 msgid "No network connection available."
 msgstr ".אין חיבור רשת זמין"
 
-#, fuzzy
 msgid "No network servers detected."
-msgstr "Network test: "
+msgstr ""
 
 #
 msgid "No networks found"
@@ -9726,31 +9720,26 @@ msgstr "תוספות"
 msgid "OpenVision Information"
 msgstr "מידע"
 
-#
-#, fuzzy
 msgid "OpenVision Information Actions"
-msgstr "מידע"
+msgstr ""
 
 msgid "OpenVision is an open source project with no commercial funding."
 msgstr ""
 
 #, fuzzy
 msgid "OpenVision language"
-msgstr "תוספות"
+msgstr "ניהול תוספות"
 
+#
 #, fuzzy
 msgid "OpenVision module"
-msgstr "תוספות"
+msgstr "Transmission mode"
 
-#
-#, fuzzy
 msgid "OpenVision revision"
-msgstr ":גרסה חדשה"
+msgstr ""
 
-#
-#, fuzzy
 msgid "OpenVision version"
-msgstr ":גרסה חדשה"
+msgstr ""
 
 msgid "Operating LED brightness."
 msgstr ""
@@ -9798,7 +9787,7 @@ msgstr ""
 msgid "Other Subtitles & lang"
 msgstr ""
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
 
 #, fuzzy
@@ -10394,6 +10383,11 @@ msgid "Plugin Browser"
 msgstr ""
 
 #
+#, fuzzy
+msgid "Plugin Browser Setup"
+msgstr "סייר הפלאגינים"
+
+#
 msgid "Plugin browser"
 msgstr "סייר הפלאגינים"
 
@@ -10403,11 +10397,6 @@ msgstr "Plugin manager activity information"
 #
 msgid "Plugin manager help"
 msgstr "Plugin manager help"
-
-#
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "סייר הפלאגינים"
 
 #
 msgid "Plugins"
@@ -10617,6 +10606,10 @@ msgstr ""
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr ""
 
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "Press OK to toggle the selection."
+
 msgid "Press INFO on your remote control for additional information."
 msgstr ""
 
@@ -10730,7 +10723,7 @@ msgstr "עדיפות"
 #
 #, fuzzy
 msgid "Proc model"
-msgstr ":דגם"
+msgstr "Tone mode"
 
 msgid "Process"
 msgstr "Process"
@@ -10809,9 +10802,8 @@ msgstr "Providers"
 msgid "Providers: "
 msgstr "Providers"
 
-#, fuzzy
 msgid "Proxy detected"
-msgstr "אוטומטי"
+msgstr ""
 
 msgid "Public IP"
 msgstr ""
@@ -10869,10 +10861,8 @@ msgstr ""
 msgid "RAM (Summary)"
 msgstr ""
 
-#
-#, fuzzy
 msgid "RAM benchmark"
-msgstr "מידע"
+msgstr ""
 
 msgid "RC ID number"
 msgstr ""
@@ -10893,10 +10883,9 @@ msgstr "שנה שם"
 msgid "RC type"
 msgstr "Test Type"
 
-#
-#, fuzzy, python-format
+#, python-format
 msgid "RC type:|%s"
-msgstr "Test Type"
+msgstr ""
 
 msgid "REC"
 msgstr ""
@@ -11033,10 +11022,8 @@ msgstr ""
 msgid "Receiver Information"
 msgstr "מידע"
 
-#
-#, fuzzy
 msgid "Receiver Information Actions"
-msgstr "מידע"
+msgstr ""
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -11605,10 +11592,9 @@ msgstr ""
 msgid "Root directory"
 msgstr ""
 
-#
 #, fuzzy
 msgid "Root file"
-msgstr "Sort Time"
+msgstr "מחק קובץ"
 
 msgid "Rotor step position:"
 msgstr ""
@@ -11679,10 +11665,6 @@ msgstr ""
 #, fuzzy
 msgid "SDR"
 msgstr "SNR"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 #
 msgid "SINGLE LAYER DVD"
@@ -12805,6 +12787,10 @@ msgstr ""
 msgid "Shift"
 msgstr ""
 
+#, python-format
+msgid "Shift: %s"
+msgstr ""
+
 msgid "Short filenames"
 msgstr ""
 
@@ -12918,10 +12904,8 @@ msgstr ""
 msgid "Show background in radio mode"
 msgstr "תמונת רקע"
 
-#
-#, fuzzy
 msgid "Show benchmark information"
-msgstr "מידע"
+msgstr ""
 
 #
 #, fuzzy
@@ -13053,9 +13037,8 @@ msgstr "Show infobar on skip forward/backward"
 msgid "Show kernel-module in plugin browser"
 msgstr "פלאגינים חדשים להורדה"
 
-#, fuzzy
 msgid "Show latest commit log information"
-msgstr "הצג מידע על האירוע"
+msgstr ""
 
 msgid "Show latest commits"
 msgstr ""
@@ -13213,9 +13196,8 @@ msgstr ""
 msgid "Show subtitle selection"
 msgstr ""
 
-#, fuzzy
 msgid "Show system information"
-msgstr "הצג מידע על האירוע"
+msgstr ""
 
 #
 msgid "Show the radio player..."
@@ -13236,7 +13218,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Show translation information"
-msgstr "הצג מידע על האירוע"
+msgstr "Transponder הראה מידע על ה"
 
 msgid "Show transponder info"
 msgstr "Transponder הראה מידע על ה"
@@ -13406,10 +13388,8 @@ msgstr ""
 msgid "Skin"
 msgstr "Skins"
 
-#
-#, fuzzy
 msgid "Skin & Resolution"
-msgstr " הגדרות OSD"
+msgstr ""
 
 #, fuzzy
 msgid "Skin Selection Actions"
@@ -13577,9 +13557,10 @@ msgstr "תוכנה"
 msgid "Software Update"
 msgstr "עדכון תוכנה"
 
+#
 #, fuzzy
 msgid "Software information"
-msgstr "...הגדרת רשת"
+msgstr "מידע"
 
 msgid "Software management"
 msgstr "ניהול תוכנה"
@@ -14027,13 +14008,15 @@ msgstr ""
 msgid "Storage"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Storage Information"
-msgstr "...הגדרת רשת"
+msgstr "מידע"
 
+#
 #, fuzzy
 msgid "Storage information"
-msgstr "...הגדרת רשת"
+msgstr "מידע"
 
 msgid "Store at index"
 msgstr ""
@@ -14326,10 +14309,8 @@ msgstr ""
 msgid "System Information"
 msgstr "מידע"
 
-#
-#, fuzzy
 msgid "System Information Actions"
-msgstr "מידע"
+msgstr ""
 
 msgid "T2MI PID"
 msgstr ""
@@ -14653,9 +14634,6 @@ msgstr ""
 "The NetworkWizard extension is not installed!\n"
 "Please install it."
 
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr ""
-
 msgid ""
 "The overscan wizard has been completed.\n"
 "\n"
@@ -14741,12 +14719,6 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting"
-msgstr "...נא המתן בעת איתחול הרשת"
-
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
 msgstr "...נא המתן בעת איתחול הרשת"
 
 #, fuzzy, python-format
@@ -15237,7 +15209,6 @@ msgid "Timeshift not possible!"
 msgstr "Timeshift not possible!"
 
 #
-#, fuzzy
 msgid "Timezone"
 msgstr "איזור זמן"
 
@@ -15349,6 +15320,9 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
+msgid "Total CPU benchmark"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr ""
@@ -15368,9 +15342,10 @@ msgstr ""
 msgid "Track"
 msgstr "Track"
 
+#
 #, fuzzy
 msgid "Transcoding"
-msgstr "הקלטות"
+msgstr "תרגום"
 
 msgid "Transcoding: "
 msgstr ""
@@ -15387,7 +15362,7 @@ msgstr "מידע"
 #
 #, fuzzy
 msgid "Translation information"
-msgstr "מידע"
+msgstr "תרגום"
 
 #
 msgid "Translation:"
@@ -15479,10 +15454,9 @@ msgstr ""
 msgid "Tuner Information"
 msgstr "מידע"
 
-#
 #, fuzzy
 msgid "Tuner information"
-msgstr "מידע"
+msgstr "Tuner הגדרת"
 
 msgid "Tuner is not supported"
 msgstr ""
@@ -15860,10 +15834,8 @@ msgstr ""
 msgid "Use frequency or channel"
 msgstr ""
 
-#
-#, fuzzy
 msgid "Use geolocation to get WAN information"
-msgstr "מידע"
+msgstr ""
 
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
@@ -15948,9 +15920,8 @@ msgstr "חזור לרשימת הסרטים"
 msgid "Used"
 msgstr ""
 
-#, fuzzy
 msgid "Used flash"
-msgstr "Flash"
+msgstr ""
 
 #
 msgid "Used service scan type"
@@ -16277,12 +16248,11 @@ msgstr ""
 
 #, fuzzy
 msgid "WAN Geolocation"
-msgstr "מיקום"
+msgstr "WLAN connection"
 
-#
 #, fuzzy
 msgid "WAN connection information"
-msgstr "מידע"
+msgstr "WLAN connection"
 
 #
 msgid "WEP"
@@ -17775,7 +17745,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"

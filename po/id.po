@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2021-03-06\n"
 "Last-Translator: LinuxSTV\n"
 "Language-Team: \n"
@@ -877,6 +877,14 @@ msgid "%d B"
 msgstr ""
 
 #, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
+msgstr ""
+
+#, python-format
 msgid "%d GB"
 msgstr "%d B"
 
@@ -1686,7 +1694,7 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "EPG grafis untuk seluruh layanan pada buket tertentu"
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
 #, python-format
@@ -2865,9 +2873,8 @@ msgstr "Tingkatkan biru"
 msgid "Boost green"
 msgstr "Tingkatkan hijau"
 
-#, fuzzy
 msgid "Boot ID"
-msgstr "Pilah waktu"
+msgstr ""
 
 #, fuzzy
 msgid "Boot information"
@@ -2920,9 +2927,6 @@ msgstr ""
 
 msgid "Brazil"
 msgstr "Brazil"
-
-msgid "Brief help information for buttons in your current context."
-msgstr ""
 
 msgid "Brightness"
 msgstr "Kecerahan"
@@ -3052,6 +3056,10 @@ msgstr ""
 msgid "CPU"
 msgstr "CPU: "
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 msgid "CPU architecture"
 msgstr ""
 
@@ -3061,6 +3069,10 @@ msgstr "Denmark"
 
 msgid "CPU brand"
 msgstr ""
+
+#, fuzzy
+msgid "CPU rating"
+msgstr "Meningkatkan"
 
 msgid "CVBS"
 msgstr "CVBS"
@@ -3087,6 +3099,9 @@ msgid "Calculate all positions"
 msgstr "Hitung semua posisi"
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3460,9 +3475,8 @@ msgstr "Kiri sirkular"
 msgid "Circular right"
 msgstr "Kanan sirkular"
 
-#, fuzzy
 msgid "City"
-msgstr "Kapasitas: "
+msgstr ""
 
 #, fuzzy
 msgid "Clean network trash cans"
@@ -3531,9 +3545,8 @@ msgstr "Tutup PiP saat keluar"
 msgid "Close the screen"
 msgstr "Tutup pemilihan judul"
 
-#, fuzzy
 msgid "Close the screen and exit all menus"
-msgstr "Batalkan semua perubahan teks lalu keluar"
+msgstr ""
 
 msgid "Close title selection"
 msgstr "Tutup pemilihan judul"
@@ -3602,9 +3615,8 @@ msgstr "Urutan perintah"
 msgid "Commit Information"
 msgstr "Informasi"
 
-#, fuzzy
 msgid "Commit Information Actions"
-msgstr "Informasi"
+msgstr ""
 
 #, fuzzy
 msgid "Commit Logs"
@@ -3613,9 +3625,8 @@ msgstr "Info pengerjaan"
 msgid "Commit info"
 msgstr "Info pengerjaan"
 
-#, fuzzy
 msgid "Common Information Actions"
-msgstr "Pilih tindakan"
+msgstr ""
 
 msgid "Common Interface"
 msgstr "Antarmuka Umum"
@@ -3672,6 +3683,9 @@ msgstr "Mode penyetelan"
 #, python-format
 msgid "Configuration mode: %s"
 msgstr "Mode penyetelan: %s"
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 #, fuzzy
 msgid "Configure ATSC"
@@ -4113,7 +4127,7 @@ msgstr "Transcoding terhubung, batasan - tak ada PiP!"
 
 #, fuzzy
 msgid "Connection information"
-msgstr "Info pengelola perangkat lunak"
+msgstr "Informasi aktifitas pengelola plugin"
 
 msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
 msgstr ""
@@ -4494,9 +4508,8 @@ msgstr "DVB-T"
 msgid "DVB-T2"
 msgstr "DVB-T2"
 
-#, fuzzy
 msgid "DVD"
-msgstr "DVB-C"
+msgstr ""
 
 msgid "DVD Burn"
 msgstr "Bakar DVD"
@@ -4918,15 +4931,15 @@ msgstr "Temukan Rx berikutnya sebelum standby"
 
 #, fuzzy
 msgid "Detected network servers"
-msgstr "Periksa jaringan: "
+msgstr "Pilih adapter jaringan"
 
 #, fuzzy
 msgid "Detected storage devices"
-msgstr "NIMs terdeteksi:"
+msgstr "Daftar perangat penyimpanan"
 
 #, fuzzy
 msgid "Detected tuners"
-msgstr "NIMs terdeteksi:"
+msgstr "Item dihapus"
 
 #, fuzzy
 msgid "Device"
@@ -4934,7 +4947,7 @@ msgstr "Kanal"
 
 #, fuzzy
 msgid "Device id"
-msgstr "Nama perangkat:"
+msgstr "Informasi layanan"
 
 msgid "Device mounts"
 msgstr ""
@@ -5233,7 +5246,7 @@ msgstr "Anda ingin menghapus semua berkas log crash"
 
 #, fuzzy
 msgid "Do you want to delete this log file?"
-msgstr "Anda yakin ingin menghapus %s?"
+msgstr "Anda ingin menghapus semua berkas log crash"
 
 #, fuzzy, python-format
 msgid ""
@@ -5347,9 +5360,8 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Selesai - Terpasang, dinaiktingkatkan atau dihapus %d paket (%s)"
 msgstr[1] "Selesai - Terpasang, dinaiktingkatkan atau dihapus %d paket (%s)"
 
-#, fuzzy
 msgid "Down"
-msgstr "downmix DTS"
+msgstr ""
 
 msgid "Download plugins"
 msgstr "Unduh plugin"
@@ -5770,9 +5782,8 @@ msgstr "Inggris"
 msgid "Enigma2 (re)starts"
 msgstr "Enigma (re)starts: %d\n"
 
-#, fuzzy
 msgid "Enigma2 debug level"
-msgstr "bawaan"
+msgstr ""
 
 #, fuzzy
 msgid "Enigma2 default"
@@ -5780,7 +5791,7 @@ msgstr "bawaan"
 
 #, fuzzy
 msgid "Enigma2 information"
-msgstr "Info pengelola perangkat lunak"
+msgstr "Informasi"
 
 #, fuzzy
 msgid "Enigma2 revision"
@@ -6251,7 +6262,7 @@ msgstr "FEC:"
 
 #, fuzzy
 msgid "FFmpeg version"
-msgstr "Kernel version: "
+msgstr "Inversi"
 
 msgid "FHD"
 msgstr "FHD"
@@ -6259,9 +6270,8 @@ msgstr "FHD"
 msgid "FLASH"
 msgstr ""
 
-#, fuzzy
 msgid "FPU"
-msgstr "CPU: "
+msgstr ""
 
 msgid "FSBL Update Check"
 msgstr ""
@@ -6552,9 +6562,8 @@ msgstr "Perancis"
 msgid "Free"
 msgstr ""
 
-#, fuzzy
 msgid "Free flash"
-msgstr "Pasang Image"
+msgstr ""
 
 msgid "Free memory"
 msgstr ""
@@ -6971,6 +6980,9 @@ msgstr "mendukung HDR10"
 msgid "HELP"
 msgstr "TOLONG"
 
+msgid "HELP provides brief information for buttons in your current context."
+msgstr ""
+
 msgid "HH:mm"
 msgstr ""
 
@@ -7023,7 +7035,7 @@ msgstr "Perangkat keras: "
 
 #, fuzzy
 msgid "Hardware information"
-msgstr "Informasi"
+msgstr "Info pengelola perangkat lunak"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -7047,8 +7059,8 @@ msgid "Help"
 msgstr ""
 
 #, fuzzy
-msgid "Help Screen"
-msgstr "Tahan layar"
+msgid "Help Screen Information"
+msgstr "Informasi"
 
 msgid "Helps setting up your antenna"
 msgstr "Membantu pengaturan antena anda"
@@ -7280,9 +7292,8 @@ msgstr "Berkas ISO terlalu besar untuk filesystem ini!"
 msgid "ISO path"
 msgstr "Arah tuju ISO"
 
-#, fuzzy
 msgid "ISP"
-msgstr "I"
+msgstr ""
 
 msgid "Iceland"
 msgstr "Islandia"
@@ -7290,7 +7301,7 @@ msgstr "Islandia"
 msgid "Icons"
 msgstr "Ikon"
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -7804,7 +7815,7 @@ msgstr "Kenya"
 
 #, fuzzy
 msgid "Kernel file"
-msgstr "Versi kernel: "
+msgstr "Hapus file"
 
 #, fuzzy
 msgid "Kernel module layout"
@@ -8132,7 +8143,7 @@ msgstr "Lokasi perekaman segera"
 
 #, fuzzy
 msgid "Location information"
-msgstr "Info pengelola perangkat lunak"
+msgstr "Informasi"
 
 msgid "Lock ratio"
 msgstr "Ratio penguncian"
@@ -8167,9 +8178,6 @@ msgstr "<Lokasi pewaktu terakhir>"
 
 msgid "Long filenames"
 msgstr "Nama berkas panjang"
-
-msgid "Long key press"
-msgstr "Tekan tombol lama"
 
 msgid "Long press emulation with button"
 msgstr ""
@@ -8414,7 +8422,7 @@ msgstr "Informasi"
 
 #, fuzzy
 msgid "Memory Information Actions"
-msgstr "Informasi"
+msgstr "Posisi memori maksimal"
 
 msgid "Memory index"
 msgstr "Indeks memori"
@@ -8748,7 +8756,7 @@ msgstr "Informasi"
 
 #, fuzzy
 msgid "MultiLib"
-msgstr "EPG Multi"
+msgstr "Multimedia"
 
 #, fuzzy
 msgid "MultiTranscoding"
@@ -8883,7 +8891,7 @@ msgstr "Namibia"
 msgid "Nauru"
 msgstr "Nauru"
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
 
 msgid "Nepal"
@@ -9100,7 +9108,7 @@ msgstr "Koneksi jaringan tidak tersedia."
 
 #, fuzzy
 msgid "No network servers detected."
-msgstr "Periksa jaringan: "
+msgstr "Tidak ada layanan/penyedia yang dipilih"
 
 msgid "No networks found"
 msgstr "Jaringan tidak ditemukan"
@@ -9482,9 +9490,8 @@ msgstr "Ekstensi"
 msgid "OpenVision Information"
 msgstr "Informasi"
 
-#, fuzzy
 msgid "OpenVision Information Actions"
-msgstr "Informasi"
+msgstr ""
 
 msgid "OpenVision is an open source project with no commercial funding."
 msgstr ""
@@ -9495,15 +9502,13 @@ msgstr "bahasa aslinya"
 
 #, fuzzy
 msgid "OpenVision module"
-msgstr "Ekstensi"
+msgstr "Mode transmisi"
 
-#, fuzzy
 msgid "OpenVision revision"
-msgstr "Versi Python:"
+msgstr ""
 
-#, fuzzy
 msgid "OpenVision version"
-msgstr "Versi Python:"
+msgstr ""
 
 #, fuzzy
 msgid "Operating LED brightness."
@@ -9555,7 +9560,7 @@ msgstr "Lainnya"
 msgid "Other Subtitles & lang"
 msgstr "Terjemahan & bhs lain"
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
 
 #, fuzzy
@@ -9688,11 +9693,11 @@ msgstr "Atur pengawasan orangtua"
 
 #, fuzzy
 msgid "Partition"
-msgstr " (Partisi %d)"
+msgstr "Polarisasi"
 
 #, fuzzy
 msgid "Partitions"
-msgstr " (Partisi %d)"
+msgstr "Polarisasi"
 
 msgid "Passthrough"
 msgstr ""
@@ -10114,6 +10119,10 @@ msgstr "Mohon tunggu... Memuat daftar..."
 msgid "Plugin Browser"
 msgstr "Perambah Plugin"
 
+#, fuzzy
+msgid "Plugin Browser Setup"
+msgstr "Perambah Plugin"
+
 msgid "Plugin browser"
 msgstr "Perambah plugin"
 
@@ -10122,10 +10131,6 @@ msgstr "Informasi aktifitas pengelola plugin"
 
 msgid "Plugin manager help"
 msgstr "Bantuan pengelola plugin"
-
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "Perambah Plugin"
 
 msgid "Plugins"
 msgstr "Plugin"
@@ -10199,7 +10204,7 @@ msgstr "Log pengaturan posisioner"
 
 #, fuzzy
 msgid "Power"
-msgstr "Menu Daya"
+msgstr "LED Power"
 
 msgid "Power LED can be turned on or off here."
 msgstr ""
@@ -10324,6 +10329,10 @@ msgstr "Tekan 'OK' untuk menghapus item atau 'CH+/-' untuk memilih fitur ke daft
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr "Tekan 'OK' untuk menghapus item atau < > untuk mengubah urutan atau 'CH+/-' untuk memilih fitur ke daftar"
 
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "Tekan OK untuk alihkan pilihan."
+
 msgid "Press INFO on your remote control for additional information."
 msgstr "Tekan INFO pada remote kontrol anda untuk info tambahan."
 
@@ -10433,14 +10442,14 @@ msgstr "Prioritas"
 
 #, fuzzy
 msgid "Proc model"
-msgstr "Model: "
+msgstr "Mode tone"
 
 msgid "Process"
 msgstr "Proses"
 
 #, fuzzy
 msgid "Processor information"
-msgstr "Informasi"
+msgstr "Info pengelola perangkat lunak"
 
 msgid "Progress"
 msgstr "Progres"
@@ -10512,7 +10521,7 @@ msgstr "Penyedia"
 
 #, fuzzy
 msgid "Proxy detected"
-msgstr "DiSEqC otomatis"
+msgstr "Tidak ada CAId dipilih"
 
 msgid "Public IP"
 msgstr ""
@@ -10590,9 +10599,9 @@ msgstr "Ganti nama"
 msgid "RC type"
 msgstr "Jenis DVB"
 
-#, fuzzy, python-format
+#, python-format
 msgid "RC type:|%s"
-msgstr "Jenis DVB"
+msgstr ""
 
 msgid "REC"
 msgstr "REK"
@@ -10730,9 +10739,8 @@ msgstr ""
 msgid "Receiver Information"
 msgstr "Informasi"
 
-#, fuzzy
 msgid "Receiver Information Actions"
-msgstr "Informasi"
+msgstr ""
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -11341,10 +11349,6 @@ msgstr "Unikabel SCR"
 #, fuzzy
 msgid "SDR"
 msgstr "SNR"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 msgid "SINGLE LAYER DVD"
 msgstr "DVD LAPIS TUNGGAL"
@@ -12402,6 +12406,10 @@ msgstr "Skrip shell"
 msgid "Shift"
 msgstr "Perubahan"
 
+#, fuzzy, python-format
+msgid "Shift: %s"
+msgstr "Perubahan"
+
 msgid "Short filenames"
 msgstr "Nama file pendek"
 
@@ -12818,7 +12826,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Show translation information"
-msgstr "Info pengelola perangkat lunak"
+msgstr "Tampilkan info transponder"
 
 msgid "Show transponder info"
 msgstr "Tampilkan info transponder"
@@ -13410,7 +13418,7 @@ msgstr "Mulai ke Standby"
 
 #, fuzzy
 msgid "State"
-msgstr "Bitrate:"
+msgstr "Kondisi pelacakan"
 
 msgid "Static IP or Custom"
 msgstr ""
@@ -13541,11 +13549,11 @@ msgstr ""
 
 #, fuzzy
 msgid "Storage Information"
-msgstr "Pengaturan jaringan"
+msgstr "Info pengelola perangkat lunak"
 
 #, fuzzy
 msgid "Storage information"
-msgstr "Pengaturan jaringan"
+msgstr "Info pengelola perangkat lunak"
 
 msgid "Store at index"
 msgstr "Simpan di indeks"
@@ -13806,9 +13814,8 @@ msgstr "Sistem & Modulasi"
 msgid "System Information"
 msgstr "Informasi"
 
-#, fuzzy
 msgid "System Information Actions"
-msgstr "Informasi"
+msgstr ""
 
 #, fuzzy
 msgid "T2MI PID"
@@ -13865,9 +13872,8 @@ msgstr " (Radio)"
 msgid "TV A/V"
 msgstr ""
 
-#, fuzzy
 msgid "TV Power"
-msgstr "Menu Daya"
+msgstr ""
 
 msgid "TV Set / IR Learning"
 msgstr ""
@@ -13885,7 +13891,7 @@ msgstr "Laporan alamat fisik TV"
 
 #, fuzzy
 msgid "TV/Radio"
-msgstr " (Radio)"
+msgstr "Radio"
 
 msgid "TXT PID"
 msgstr "PID TXT"
@@ -14038,9 +14044,9 @@ msgstr ""
 msgid "The %d min remaining before the end of the event."
 msgstr "Tersisa %d mnt sebelum akhir acara."
 
-#, fuzzy, python-format
+#, python-format
 msgid "The %s commit log contains no information."
-msgstr "Info pengelola perangkat lunak"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "The %s commit logs can't be retrieved, please try again later."
@@ -14129,9 +14135,6 @@ msgid ""
 msgstr ""
 "Ekstensi wizard jaringan tidak terpasang!\n"
 "Mohon pasang dulu."
-
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr ""
 
 msgid ""
 "The overscan wizard has been completed.\n"
@@ -14232,14 +14235,6 @@ msgstr "Antarmuka pengguna Rx akan memulai ulang untuk menggunakan tampilan yg d
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting"
 msgstr "Antarmuka pengguna rx anda sedang memulai ulang"
-
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
-msgstr ""
-"Antarmuka pengguna rx anda sedang memulai ulang\n"
-"disebabkan kesalahan pada berkas mytest.py"
 
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting in debug mode"
@@ -14717,7 +14712,6 @@ msgstr "Lokasi pergeseran waktu"
 msgid "Timeshift not possible!"
 msgstr "Pergeseran waktu tidak memungkinkan!"
 
-#, fuzzy
 msgid "Timezone"
 msgstr "Zona Waktu"
 
@@ -14823,6 +14817,9 @@ msgstr "Atas dan bawah"
 msgid "Total"
 msgstr ""
 
+msgid "Total CPU benchmark"
+msgstr ""
+
 #, python-format
 msgid "Total clients streaming: %d (%s)"
 msgstr "Total klien streaming: %d (%s)"
@@ -14856,7 +14853,7 @@ msgstr "Informasi"
 
 #, fuzzy
 msgid "Translation information"
-msgstr "Info pengelola perangkat lunak"
+msgstr "Penerjemahan"
 
 msgid "Translation:"
 msgstr "Penerjemahan:"
@@ -14939,7 +14936,7 @@ msgstr "Informasi"
 
 #, fuzzy
 msgid "Tuner information"
-msgstr "Informasi"
+msgstr "Pengaturan Penala"
 
 msgid "Tuner is not supported"
 msgstr "Penala tidak didukung"
@@ -15308,9 +15305,8 @@ msgstr "Gunakan nomor kanal lacakcepat"
 msgid "Use frequency or channel"
 msgstr "Gunakan frekuensi atau kanal"
 
-#, fuzzy
 msgid "Use geolocation to get WAN information"
-msgstr "Info pengelola perangkat lunak"
+msgstr ""
 
 msgid "Use geolocation to set the current time zone location"
 msgstr ""
@@ -15390,9 +15386,8 @@ msgstr "Gunakan tong sampah di daftar film"
 msgid "Used"
 msgstr ""
 
-#, fuzzy
 msgid "Used flash"
-msgstr "Pasang Image"
+msgstr ""
 
 msgid "Used service scan type"
 msgstr "Jenis pelacakan layanan yg digunakan"
@@ -15687,11 +15682,11 @@ msgstr "W"
 
 #, fuzzy
 msgid "WAN Geolocation"
-msgstr "Lokasi"
+msgstr "Koneksi WLAN"
 
 #, fuzzy
 msgid "WAN connection information"
-msgstr "Info pengelola perangkat lunak"
+msgstr "Koneksi WLAN"
 
 msgid "WEP"
 msgstr "WEP"
@@ -17224,7 +17219,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"

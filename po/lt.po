@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 17:58+0430\n"
+"POT-Creation-Date: 2021-04-09 12:02+0430\n"
 "PO-Revision-Date: 2021-01-09 00:32+0200\n"
 "Last-Translator: Audronis Grincevicius <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -759,6 +759,14 @@ msgstr "%d %b %Y"
 #, python-format
 msgid "%d B"
 msgstr "%d B"
+
+#, python-format
+msgid "%d DMIPS per core"
+msgstr ""
+
+#, python-format
+msgid "%d DMIPS with %d cores"
+msgstr ""
 
 #, python-format
 msgid "%d GB"
@@ -1549,7 +1557,7 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "Konkretaus paketo visų kanalų grafinis EPG"
 
-msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list indicates whether the function is for a long press of the button(s)."
+msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
 #, python-format
@@ -2730,9 +2738,6 @@ msgstr "Gamintojas: "
 msgid "Brazil"
 msgstr "Brazilų"
 
-msgid "Brief help information for buttons in your current context."
-msgstr ""
-
 msgid "Brightness"
 msgstr "Šviesumas"
 
@@ -2861,6 +2866,10 @@ msgstr "CIFS / Samba"
 msgid "CPU"
 msgstr "Procesorius: "
 
+#, python-format
+msgid "CPU / Core %d type"
+msgstr ""
+
 #, fuzzy
 msgid "CPU architecture"
 msgstr "CPU architektūra: "
@@ -2871,6 +2880,10 @@ msgstr "Procesoriaus gamintojas: "
 
 #, fuzzy
 msgid "CPU brand"
+msgstr "Procesoriaus gamintojas: "
+
+#, fuzzy
+msgid "CPU rating"
 msgstr "Procesoriaus gamintojas: "
 
 msgid "CVBS"
@@ -2899,6 +2912,9 @@ msgid "Calculate all positions"
 msgstr "Suskaičiuoti visas pozicijas"
 
 msgid "Calculating benchmark..."
+msgstr ""
+
+msgid "Calculating rating..."
 msgstr ""
 
 msgid "Calculation complete"
@@ -3455,6 +3471,9 @@ msgstr "Konfigūravimo būdas"
 #, python-format
 msgid "Configuration mode: %s"
 msgstr "Konfigūravimo būdas: %s"
+
+msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
+msgstr ""
 
 msgid "Configure ATSC"
 msgstr "ATSC konfigūravimas"
@@ -6601,6 +6620,9 @@ msgstr "HDR10 palaikymas"
 msgid "HELP"
 msgstr "PAGALBA"
 
+msgid "HELP provides brief information for buttons in your current context."
+msgstr ""
+
 msgid "HH:mm"
 msgstr "HH:mm"
 
@@ -6674,8 +6696,8 @@ msgid "Help"
 msgstr "Pagalba"
 
 #, fuzzy
-msgid "Help Screen"
-msgstr "Užlaikytas vaizdas"
+msgid "Help Screen Information"
+msgstr "Informacija"
 
 msgid "Helps setting up your antenna"
 msgstr "Padės jums suderinti anteną"
@@ -6902,7 +6924,7 @@ msgstr "Islandija"
 msgid "Icons"
 msgstr "Piktogramos"
 
-msgid "If an action is user-configurable, its help entry will be flagged with a (C)."
+msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
@@ -7751,9 +7773,6 @@ msgstr "Žurnalų katalogo vieta"
 msgid "Long filenames"
 msgstr "Ilgi failų pavadinimai"
 
-msgid "Long key press"
-msgstr "Ilgas mygtuko paspaudimas"
-
 msgid "Long press emulation with button"
 msgstr "Ilgas paspaudimas, emuliacija su mygtuku"
 
@@ -8419,7 +8438,7 @@ msgstr "Namibija"
 msgid "Nauru"
 msgstr "Nauriečių"
 
-msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. EXIT to return to the help screen. OK to perform the action described in the currently highlighted help."
+msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
 
 msgid "Nepal"
@@ -9060,7 +9079,7 @@ msgstr "Kiti"
 msgid "Other Subtitles & lang"
 msgstr "Kiti subtitrai ir kalba"
 
-msgid "Other buttons will jump to the help for that button, if there is help."
+msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
 
 #, fuzzy
@@ -9596,6 +9615,10 @@ msgstr "Prašome laukti... Įkeliamas sąrašas..."
 msgid "Plugin Browser"
 msgstr "Priedų naršyklė"
 
+#, fuzzy
+msgid "Plugin Browser Setup"
+msgstr "Priedų naršyklė"
+
 msgid "Plugin browser"
 msgstr "Priedų naršyklė"
 
@@ -9604,10 +9627,6 @@ msgstr "Priedų tvarkyklės aktyvumo informacija"
 
 msgid "Plugin manager help"
 msgstr "Priedų tvarkyklės pagalba"
-
-#, fuzzy
-msgid "PluginBrowser Setup"
-msgstr "Priedų naršyklė"
 
 msgid "Plugins"
 msgstr "Priedai"
@@ -9794,6 +9813,10 @@ msgstr "Spauskite 'OK', jei norite pašalinti elementą, arba 'CH+/-', jei norit
 
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
 msgstr "Spauskite 'OK', jei norite pašalinti elementą, arba < >, kad keisti tvarką arba 'CH+/-', jei norite perjungti į funkcijų sąrašą."
+
+#, fuzzy
+msgid "Press EXIT to return to the help screen."
+msgstr "Meniu rūšiavimo tvarka"
 
 msgid "Press INFO on your remote control for additional information."
 msgstr "Spauskite INFO ant savo distancinio valdymo pulto dėl papildomos informacijos."
@@ -10770,10 +10793,6 @@ msgstr "SCR Unicable"
 
 msgid "SDR"
 msgstr "SDR"
-
-#, python-format
-msgid "SHIFT: %s"
-msgstr ""
 
 msgid "SINGLE LAYER DVD"
 msgstr "VIENO SLUOKSNIO DVD"
@@ -11786,6 +11805,10 @@ msgid "Shellscript"
 msgstr "Grafinės aplinkos scenarijus"
 
 msgid "Shift"
+msgstr "Shift"
+
+#, fuzzy, python-format
+msgid "Shift: %s"
 msgstr "Shift"
 
 msgid "Short filenames"
@@ -13431,9 +13454,6 @@ msgstr ""
 "Tinklo vedlio plėtinys neįdiegtas!\n"
 "Prašome įdiegti."
 
-msgid "The order and grouping of the help information list can be controlled using MENU>Setup>User Interface>Settings>Sort order for help screen."
-msgstr ""
-
 msgid ""
 "The overscan wizard has been completed.\n"
 "\n"
@@ -13534,14 +13554,6 @@ msgstr "Kad atverti pasirinktą vartotojo aplinkos temą, grafinė aplinka bus p
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting"
 msgstr "Vartotojo grafinė aplinka paleidžiama iš naujo"
-
-#, fuzzy, python-format
-msgid ""
-"The user interface of your %s %s is restarting\n"
-"due to an error in Bootstrap.py"
-msgstr ""
-"Vartotojo grafinė aplinka bus paleista iš naujo\n"
-"dėl klaidos mytest.py"
 
 #, fuzzy, python-format
 msgid "The user interface of your %s %s is restarting in debug mode"
@@ -14095,6 +14107,10 @@ msgstr "Viršuje ir apačioje"
 
 msgid "Total"
 msgstr "Iš viso"
+
+#, fuzzy
+msgid "Total CPU benchmark"
+msgstr "Procesoriaus gamintojas: "
 
 #, python-format
 msgid "Total clients streaming: %d (%s)"
@@ -16426,7 +16442,7 @@ msgstr ""
 msgid "h3/4/5/6"
 msgstr ""
 
-msgid "h7/9/9se/9combo/9combose/10/i55plusse"
+msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
 msgstr ""
 
 msgid "h:mm"
