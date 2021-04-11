@@ -974,7 +974,7 @@ class ReceiverInformation(InformationBase):
 		info.append(formatLine("H", _("Hardware information")))
 		info.append("")
 		stbPlatform = boxbranding.getMachineBuild()
-		info.append(formatLine("P1", _("Hardware"), "%s %s" % (SystemInfo["MachineBrand"], SystemInfo["MachineModel"])))
+		info.append(formatLine("P1", _("Hardware"), SystemInfo["MachineModel"]))
 		if stbPlatform != model:
 			info.append(formatLine("P1", _("Platform"), stbPlatform))
 		try:
