@@ -194,11 +194,11 @@ class ServiceInfo(Converter):
 						elif self.type == self.IS_1080:
 							return self.videoHeight > 1000 and self.videoHeight <= 1080
 						elif self.type == self.IS_720:
-							return video_height > 700 and video_height <= 720
+							return self.videoHeight > 700 and self.videoHeight <= 720
 						elif self.type == self.IS_576:
-							return video_height > 500 and video_height <= 576
+							return self.videoHeight > 500 and self.videoHeight <= 576
 						elif self.type == self.IS_480:
-							return video_height > 0 and video_height <= 480
+							return self.videoHeight > 0 and self.videoHeight <= 480
 						elif self.type == self.IS_HDHDR:
 							return self.videoHeight > 721 and self.videoHeight <= 1980
 						else:
