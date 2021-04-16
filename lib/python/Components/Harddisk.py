@@ -1,5 +1,5 @@
 from fcntl import ioctl
-from os import listdir, major, minor, popen, rmdir, stat, statvfs, system, unlink
+from os import listdir, major, minor, popen, rmdir, sep, stat, statvfs, system, unlink
 from os.path import abspath, dirname, exists, ismount, join as pathjoin, normpath, realpath
 from re import search
 from time import sleep, time
@@ -36,7 +36,7 @@ def isFileSystemSupported(filesystem):
 
 
 def findMountPoint(path):
-	'Example: findMountPoint("/media/hdd/some/file") returns "/media/hdd"'
+	# Example: findMountPoint("/media/hdd/some/file") returns "/media/hdd"
 	path = abspath(path)
 	while not ismount(path):
 		path = dirname(path)
@@ -92,11 +92,11 @@ class Harddisk:
 	def partitionPath(self, n):
 		if SystemInfo["Udev"]:
 			if self.dev_path.startswith("/dev/mmcblk"):
-				return self.dev_path + "p" + n
+				return "%sp%s" % (self.dev_path, n)
 			else:
-				return self.dev_path + n
+				return "%s%s" % (self.dev_path, n)
 		else:
-			return self.dev_path + "/part" + n
+			return pathjoin(self.dev_path, "part%s" % n)
 
 	def sysfsPath(self, filename):
 		return pathjoin("/sys/block", self.device, filename)
@@ -170,7 +170,7 @@ class Harddisk:
 				pass
 		return -1
 
-	def Totalfree(self):
+	def totalFree(self):
 		mediapath = []
 		freetot = 0
 		for parts in getProcMounts():
@@ -183,6 +183,9 @@ class Harddisk:
 			except (IOError, OSError):
 				pass
 		return freetot
+
+	def Totalfree(self):
+		return self.totalFree()
 
 	def numPartitions(self):
 		numPart = -1
@@ -242,8 +245,7 @@ class Harddisk:
 		return 1  # No longer supported, use createInitializeJob instead.
 
 	def mount(self):
-		# try mounting through fstab first
-		if self.mount_device is None:
+		if self.mount_device is None:  # Try mounting through fstab first.
 			dev = self.partitionPath("1")
 		else:
 			# if previously mounted, use the same spot
@@ -288,19 +290,20 @@ class Harddisk:
 		h.close()
 
 	def createInitializeJob(self):
+		print("[Harddisk] Initializing storage device...")
 		job = Task.Job(_("Initializing storage device..."))
 		size = self.diskSize()
-		print("[Harddisk] Size: %s MB." % size)
+		print("[Harddisk] Disk size: %s MB." % size)
 		task = UnmountTask(job, self)
-		task = Task.PythonTask(job, _("Removing partition table"))
+		task = Task.PythonTask(job, _("Removing partition table."))
 		task.work = self.killPartitionTable
 		task.weighting = 1
-		task = Task.LoggingTask(job, _("Rereading partition table"))
+		task = Task.LoggingTask(job, _("Rereading partition table."))
 		task.weighting = 1
 		task.setTool("hdparm")
 		task.args.append("-z")
 		task.args.append(self.disk_path)
-		task = Task.ConditionTask(job, _("Waiting for partition"), timeoutCount=20)
+		task = Task.ConditionTask(job, _("Waiting for partition."), timeoutCount=20)
 		task.check = lambda: not exists(self.partitionPath("1"))
 		task.weighting = 1
 		if exists("/usr/sbin/parted"):
@@ -311,16 +314,15 @@ class Harddisk:
 				use_parted = True
 			else:
 				use_parted = False
-		task = Task.LoggingTask(job, _("Creating partition"))
+		print("[Harddisk] Creating partition.")
+		task = Task.LoggingTask(job, _("Creating partition."))
 		task.weighting = 5
 		if use_parted:
 			task.setTool("parted")
 			if size < 1024:
-				# On very small devices, align to block only
-				alignment = "min"
+				alignment = "min"  # On very small devices, align to block only.
 			else:
-				# Prefer optimal alignment for performance
-				alignment = "opt"
+				alignment = "opt"  # Prefer optimal alignment for performance.
 			if size > 2097151:
 				parttype = "gpt"
 			else:
@@ -739,10 +741,10 @@ class HarddiskManager:
 	def HDDList(self):
 		list = []
 		for hd in self.hdd:
-			hdd = hd.model() + " - " + hd.bus()
+			hdd = "%s - %s" % (hd.model(), hd.bus())
 			cap = hd.capacity()
 			if cap != "":
-				hdd += " (" + cap + ")"
+				hdd += " (%s)" % cap
 			list.append((hdd, hd))
 		return list
 
@@ -758,7 +760,7 @@ class HarddiskManager:
 			if not devname:
 				continue
 			dev, part = self.splitDeviceName(devname)
-			if part and dev in devs:  # if this is a partition and we still have the wholedisk, remove wholedisk
+			if part and dev in devs:  # If this is a partition and we still have the wholedisk, remove wholedisk.
 				devs.remove(dev)
 		# return all devices which are not removed due to being a wholedisk when a partition exists
 		return [x for x in parts if not x.device or x.device in devs]
@@ -826,10 +828,10 @@ class UnmountTask(Task.LoggingTask):
 
 	def prepare(self):
 		try:
-			dev = self.hdd.disk_path.split("/")[-1]
+			dev = self.hdd.disk_path.split(sep)[-1]
 			open("/dev/nomount.%s" % dev, "wb").close()
 		except (IOError, OSError) as err:
-			print("[Harddisk] Error %d: Failed to create '/dev/nomount' file!  (%s)" % (err.errno, err.strerror))
+			print("[Harddisk] Error %d: UnmountTask failed to create '/dev/nomount' file!  (%s)" % (err.errno, err.strerror))
 		self.setTool("umount")
 		self.args.append("-f")
 		for dev in self.hdd.enumMountDevices():
@@ -846,26 +848,24 @@ class UnmountTask(Task.LoggingTask):
 			try:
 				rmdir(path)
 			except (IOError, OSError) as err:
-				print("[Harddisk] Error %d: Failed to remove path '%s'!  (%s)" % (err.errno, path, err.strerror))
+				print("[Harddisk] Error %d: UnmountTask failed to remove path '%s'!  (%s)" % (err.errno, path, err.strerror))
 
 
 class MountTask(Task.LoggingTask):
 	def __init__(self, job, hdd):
-		Task.LoggingTask.__init__(self, job, _("Mount"))
+		Task.LoggingTask.__init__(self, job, _("Mount."))
 		self.hdd = hdd
 
 	def prepare(self):
 		try:
-			dev = self.hdd.disk_path.split("/")[-1]
+			dev = self.hdd.disk_path.split(sep)[-1]
 			unlink("/dev/nomount.%s" % dev)
 		except (IOError, OSError) as err:
-			print("[Harddisk] Error %d: Failed to remove '/dev/nomount' file!  (%s)" % (err.errno, err.strerror))
-		# try mounting through fstab first
+			print("[Harddisk] Error %d: MountTask failed to remove '/dev/nomount' file!  (%s)" % (err.errno, err.strerror))
 		if self.hdd.mount_device is None:
-			dev = self.hdd.partitionPath("1")
+			dev = self.hdd.partitionPath("1")  # Try mounting through fstab first.
 		else:
-			# if previously mounted, use the same spot
-			dev = self.hdd.mount_device
+			dev = self.hdd.mount_device  # If previously mounted, use the same spot.
 		lines = fileReadLines("/etc/fstab", [])
 		for line in lines:
 			parts = line.strip().split(" ")
@@ -887,7 +887,7 @@ class MkfsTask(Task.LoggingTask):
 		self.fsck_state = None
 
 	def processOutput(self, data):
-		print("[Harddisk] Mkfs: %s" % str(data))
+		print("[Harddisk] MkfsTask - [Mkfs] %s" % data)
 		if "Writing inode tables:" in data:
 			self.fsck_state = "inode"
 		elif "Creating journal" in data:
@@ -903,8 +903,8 @@ class MkfsTask(Task.LoggingTask):
 						d[1] = d[1].split("\x08", 1)[0]
 					self.setProgress(80 * int(d[0]) / int(d[1]))
 				except Exception as err:
-					print("[Harddisk] Mkfs E: %s" % str(err))
-				return  # don't log the progess
+					print("[Harddisk] MkfsTask - [Mkfs] Error: %s" % err)
+				return  # Don't log the progess.
 		self.log.append(data)
 
 
