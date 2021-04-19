@@ -20,7 +20,7 @@ import os
 
 config.misc.fastscan = ConfigSubsection()
 config.misc.fastscan.last_configuration = ConfigText(default="()")
-config.misc.fastscan.auto = ConfigSelection(default="true", choices=[("true", _("yes")), ("false", _("no")), ("multi", _("multi"))])
+config.misc.fastscan.auto = ConfigSelection(default="false", choices=[("true", _("yes")), ("false", _("no")), ("multi", _("multi"))])
 config.misc.fastscan.autoproviders = ConfigText(default="()")
 config.misc.fastscan.drop = ConfigYesNo(default=True)
 
