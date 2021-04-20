@@ -4,8 +4,10 @@ from __future__ import print_function
 import threading
 try:
 	import urllib2
+	from urllib2 import quote
 except:
 	import urllib
+	from urllib import quote
 import os
 import shutil
 import tempfile
@@ -117,8 +119,9 @@ class ImportChannels():
 					file = file.encode("UTF-8")
 					print("[ImportChannels] Downloading %s" % file)
 					try:
-						open(os.path.join(self.tmp_dir, os.path.basename(file)), "wb").write(self.getUrl("%s/file?file=%s" % (self.url, file)).read())
-					except:
+						open(os.path.join(self.tmp_dir, os.path.basename(file)), "wb").write(self.getUrl("%s/file?file=%s" % (self.url, quote(file))).read())
+					except Exception as e:
+						print("[Import Channels] Exception: %s" % str(e))
 						self.ImportChannelsDone(False, _("ERROR downloading file %s") % file)
 						return
 			except:
