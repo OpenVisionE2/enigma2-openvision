@@ -4,7 +4,7 @@ from sys import maxsize
 from twisted.internet import threads
 from usb import busses
 
-from boxbranding import getMachineBuild
+from boxbranding import getMachineBuild, getDBoxLCD
 from enigma import eActionMap, eDBoxLCD, eTimer, getBoxType
 
 from Components.config import ConfigNothing, ConfigSelection, ConfigSlider, ConfigSubsection, ConfigYesNo, config
@@ -278,7 +278,7 @@ def standbyCounterChanged(configElement):
 
 
 def InitLcd():
-	if model in ("force4", "viperslim", "lunix4k", "vipert2c", "evoslimse", "evoslimt2c", "evoslim", "ultrabox", "i55", "dm520", "hd11", "sf98", "et7000mini", "xpeedc", "beyonwizt2", "gb800se", "gb800solo", "gb800seplus", "gbultrase", "gbipbox", "tmsingle", "tmnano2super", "iqonios300hd", "iqonios300hdv2", "optimussos1plus", "optimussos1", "vusolo", "et4x00", "et5x00", "et6x00", "gbx1", "gbx2", "gbx3", "gbx34k", "gbx3h", "novaip"):
+	if getDBoxLCD() == "False":
 		detected = False
 	else:
 		detected = eDBoxLCD.getInstance().detected()

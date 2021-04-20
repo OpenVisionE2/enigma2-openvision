@@ -84,7 +84,6 @@ while : ; do
 			for DIR in "${SEARCHDIRS}"
 			do
 				if [ -d "${DIR}" ] && [ -f "${DIR}/bootlogo.mvi" ]; then
-					killall -9 showiframe; sleep 1
 					"@bindir@/showiframe" "${DIR}/bootlogo.mvi"
 					break
 				fi
