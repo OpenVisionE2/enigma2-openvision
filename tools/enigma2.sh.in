@@ -62,12 +62,33 @@ fi
 # Enigma main loop.
 while : ; do
 	# Show bootlogo on enigma2 start.
-	if [ -x @bindir@/exteplayer3 ] && [ -f @datadir@/bootlogo.mp4 ]; then
-		@bindir@/exteplayer3 @datadir@/bootlogo.mp4
+	SKIN=`sed -En 's|^config\.skin\.primary_skin=(.+)/skin\.xml$|\1|p' "@sysconfdir@/enigma2/settings"`
+	if [ -z "${SKIN}" ]; then
+		SKIN=`strings -n 10 "@prefix@/lib/enigma2/python/skin.pyo" | egrep -o -m 1 ".+/skin.xml" | sed 's|/skin.xml.*||'`
+	fi
+	if [ -n "${SKIN}" ]; then
+		SEARCHDIRS="@sysconfdir@/enigma2/$skin @sysconfdir@/enigma2/skin_common @sysconfdir@/enigma2 @datadir@/enigma2/$skin @datadir@/enigma2/skin_default @datadir@/enigma2"
 	else
-		if [ -x @bindir@/showiframe ] && [ -f @datadir@/bootlogo.mvi ]; then
-			killall -9 showiframe; sleep 1
-			@bindir@/showiframe @datadir@/bootlogo.mvi
+		SEARCHDIRS="@sysconfdir@/enigma2/skin_common @sysconfdir@/enigma2 @datadir@/enigma2/skin_default @datadir@/enigma2"
+	fi
+	if [ -x "@bindir@/exteplayer3" ]; then
+		for DIR in "$SEARCHDIRS"
+		do
+			if [ -d "${DIR}" ] && [ -f "${DIR}/bootlogo.mp4" ]; then
+				"@bindir@/exteplayer3" "${DIR}/bootlogo.mp4"
+				break
+			fi
+		done
+	else
+		if [ -x "@bindir@/showiframe" ]; then
+			for DIR in "${SEARCHDIRS}"
+			do
+				if [ -d "${DIR}" ] && [ -f "${DIR}/bootlogo.mvi" ]; then
+					killall -9 showiframe; sleep 1
+					"@bindir@/showiframe" "${DIR}/bootlogo.mvi"
+					break
+				fi
+			done
 		fi
 	fi
 
