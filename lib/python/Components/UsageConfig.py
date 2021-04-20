@@ -1238,29 +1238,40 @@ def InitUsageConfig():
 		else:
 			StackTracePrinter.getInstance().deactivate()
 
-	config.crash.pystackonspinner = ConfigYesNo(default=False)
-	config.crash.pystackonspinner.addNotifier(updateStackTracePrinter, immediate_feedback=False, initial_call=True)
-
-	# config.crash.logtimeformat sets ENIGMA_DEBUG_TIME environmental variable on enigma2 start from enigma2.sh
-	config.crash.logtimeformat = ConfigSelection(default="1", choices=[
+	config.crash.pythonStackOnSpinner = ConfigYesNo(default=False)
+	config.crash.pythonStackOnSpinner.addNotifier(updateStackTracePrinter, immediate_feedback=False, initial_call=True)
+	config.crash.debugLevel = ConfigSelection(choices=[
+		("3", _("No")),
+		("4", _("Yes"))
+	], default="3")
+	config.crash.debugLevel.save_forced = True
+	# The config.crash.debugTimeFormat item is used to set ENIGMA_DEBUG_TIME environmental variable on enigma2 start from enigma2.sh.
+	config.crash.debugTimeFormat = ConfigSelection(choices=[
 		("0", _("None")),
 		("1", _("Boot time")),
 		("2", _("Local time")),
-		("3", _("Boot time and local time"))])
-	config.crash.logtimeformat.save_forced = True
+		("3", _("Boot time and local time")),
+		("6", _("Local date/time")),
+		("7", _("Boot time and local data/time"))
+	], default="1")
+	config.crash.debugTimeFormat.save_forced = True
+	debugPath = [
+		("/home/root/logs/", "/home/root/")
+	]
+	for partition in harddiskmanager.getMountedPartitions():
+		if exists(partition.mountpoint):
+			path = normpath(partition.mountpoint)
+			if partition.mountpoint != "/":
+				debugPath.append((pathjoin(partition.mountpoint, "logs", ""), path))
+	config.crash.debugPath = ConfigSelection(default="/home/root/logs/", choices=debugPath)
 
-	debugpath = [("/home/root/logs/", "/home/root/")]
-	for p in harddiskmanager.getMountedPartitions():
-		if exists(p.mountpoint):
-			d = normpath(p.mountpoint)
-			if p.mountpoint != "/":
-				debugpath.append((pathjoin(p.mountpoint, "logs", ""), d))
-	config.crash.debug_path = ConfigSelection(default="/home/root/logs/", choices=debugpath)
+	def updateDebugPath(configElement):
+		if not exists(config.crash.debugPath.value):
+			mkdir(config.crash.debugPath.value, 0o755)
 
-	def updatedebug_path(configElement):
-		if not exists(config.crash.debug_path.value):
-			mkdir(config.crash.debug_path.value, 0o755)
-	config.crash.debug_path.addNotifier(updatedebug_path, immediate_feedback=False)
+	config.crash.debugPath.addNotifier(updateDebugPath, immediate_feedback=False)
+	config.crash.debugFileCount = ConfigSelectionNumber(min=2, max=20, stepwidth=1, default=5, wraparound=True)
+	config.crash.debugFileCount.save_forced = True
 
 	config.seek = ConfigSubsection()
 	config.seek.selfdefined_13 = ConfigNumber(default=15)

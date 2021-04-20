@@ -33,7 +33,7 @@ class StackTracePrinter(Thread):
 		while (self.__running == True):
 			if (os.path.isfile("/tmp/doPythonStackTrace")):
 				os.remove("/tmp/doPythonStackTrace")
-				if config.crash.pystackonspinner.value:
+				if config.crash.pythonStackOnSpinner.value:
 					print("[StackTrace] StackTrace")
 					code = []
 					code.append("========== Stacktrace of active Python threads ===========")

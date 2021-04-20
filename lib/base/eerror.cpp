@@ -77,7 +77,7 @@ void DumpUnfreed()
 #endif
 
 int debugLvl = lvlDebug;
-static int debugTime = 3; // 0 = none, 1 = secs since boot, 2 = local time
+static int debugTime = 2; // Bitmap: 0 = none, 1 = secs since boot, 2 = local time, 3 = boot and local, 6 = local date/time, 7 = boot and date/time
 
 static pthread_mutex_t DebugLock = PTHREAD_ADAPTIVE_MUTEX_INITIALIZER_NP;
 #define RINGBUFFER_SIZE 16384
@@ -140,23 +140,27 @@ int formatTime(char *buf, int bufferSize, int flags)
 {
 	int pos = 0;
 	struct timespec tp;
+	struct tm loctime;
+	struct timeval tim;
 
 	if (!(flags & _DBGFLG_NOTIME)) {
+		if (debugTime & 6) {
+			gettimeofday(&tim, NULL);
+			localtime_r(&tim.tv_sec, &loctime);
+			if (debugTime & 4) {
+				pos += snprintf(buf + pos, bufferSize - pos, "%04d-%02d-%02d ", 
+					loctime.tm_year + 1900, loctime.tm_mon + 1, loctime.tm_mday);
+			}
+			if (debugTime & 2) {
+				pos += snprintf(buf + pos, bufferSize - pos, "%02d:%02d:%02d.%04lu ", 
+					loctime.tm_hour, loctime.tm_min, loctime.tm_sec, tim.tv_usec / 100L);
+			}
+		}
 		if (debugTime & 1) {
 			clock_gettime(CLOCK_MONOTONIC, &tp);
 			pos += snprintf(buf, bufferSize, "<%6lu.%04lu> ", tp.tv_sec, tp.tv_nsec/100000);
 		}
-
-		if (debugTime & 2) {
-			struct tm loctime;
-			struct timeval tim;
-			gettimeofday(&tim, NULL);
-			localtime_r(&tim.tv_sec, &loctime);
-			pos += snprintf(buf + pos, bufferSize - pos, "%02d:%02d:%02d.%04lu ", 
-				loctime.tm_hour, loctime.tm_min, loctime.tm_sec, tim.tv_usec / 100L);
-		}
 	}
-
 	return pos;
 }
 

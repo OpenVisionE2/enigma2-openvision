@@ -1,71 +1,67 @@
 #!/bin/sh
 
-prefix=@prefix@
-exec_prefix=@exec_prefix@
-datarootdir=@datarootdir@
+prefix="@prefix@"
+exec_prefix="@exec_prefix@"
+datarootdir="@datarootdir@"
 
-export PATH=$PATH:/usr/script
+export PATH="${PATH}:/usr/script"
 
-brandcheck=`cat /etc/openvision/brand`
-modelcheck=`cat /etc/openvision/model`
-platformcheck=`cat /etc/openvision/platform`
-
-if [ $brandcheck == "mecool" ] || [ $platformcheck == "dmamlogic" ]; then
-	export media_arm_audio_decoder=ape,flac,dts,ac3,eac3,wma,wmapro,mp3,aac,vorbis,raac,cook,amr,pcm,adpcm
+if [ -d /home/root ]; then
+	export HOME="/home/root"
+	cd
 fi
 
-if [ $platformcheck == "octagonhisil" ] || [ $modelcheck == "ustym4kpro" ] || [ $platformcheck == "gbmv200" ] || [ $modelcheck == "beyonwizv2" ] || [ $modelcheck == "viper4k" ]; then
-	count=`ps -ef |grep libreader |grep -v "grep" |wc -l`
-	if [ 0 == $count ];then
+BRANDCHECK=`cat /etc/openvision/brand`
+MODELCHECK=`cat /etc/openvision/model`
+PLATFORMCHECK=`cat /etc/openvision/platform`
+
+if [ "${BRANDCHECK}" == "mecool" ] || [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
+	export media_arm_audio_decoder="ape,flac,dts,ac3,eac3,wma,wmapro,mp3,aac,vorbis,raac,cook,amr,pcm,adpcm"
+fi
+
+if [ "${PLATFORMCHECK}" == "octagonhisil" ] || [ "${MODELCHECK}" == "ustym4kpro" ] || [ "${PLATFORMCHECK}" == "gbmv200" ] || [ "${MODELCHECK}" == "beyonwizv2" ] || [ "${MODELCHECK}" == "viper4k" ]; then
+	COUNT=`ps -ef | grep libreader | grep -v "grep" | wc -l`
+	if [ "${COUNT}" -eq "0" ];then
 		libreader 720P_50
 	fi
 fi
 
-if [ $platformcheck == "dmamlogic" ]; then
-	echo 1 > /sys/class/graphics/fb0/osd_clear
-	echo 1 > /sys/class/graphics/fb1/osd_clear
-	if [ ! "$(grep config.misc.firstrun /etc/enigma2/settings)" == "config.misc.firstrun=false" ]; then
-		echo 1080p50hz > /sys/class/display/mode
+if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
+	echo "1" > /sys/class/graphics/fb0/osd_clear
+	echo "1" > /sys/class/graphics/fb1/osd_clear
+	FIRSTRUN=`sed -En 's|^config\.misc\.firstrun=(.+)$|\1|p' /etc/enigma2/settings | tr [A-Z] [a-z]`
+	if [ "$FIRSTRUN" == "true" ]; then
+		echo "1080p50hz" > /sys/class/display/mode
 	fi
 fi
 
 if [ -f /proc/stb/fp/led_color ]; then
-	echo 00ffffff > /proc/stb/fp/led_color
+	echo "00ffffff" > /proc/stb/fp/led_color
 elif [ -f /proc/stb/fp/led_brightness ]; then
-	echo 000000ff > /proc/stb/fp/led_brightness
+	echo "000000ff" > /proc/stb/fp/led_brightness
 fi
 
-if [ -d /home/root ]; then
-	export HOME=/home/root
-	cd
+if [ -f /proc/stb/fp/nec_ir ]; then
+	echo "1" > /proc/stb/fp/nec_ir
+	[ -f /sys/class/remote/amremote/protocol ] && echo "2" > /sys/class/remote/amremote/protocol
 fi
 
-# any debuglevel passed?
-if [ -z $ENIGMA_DEBUG_LVL ]; then
-	DEBUG_LVL=3
-else
-	DEBUG_LVL=$ENIGMA_DEBUG_LVL
-fi
-
-#check for sundtek tuner helper lib
+# Check for sundtek tuner helper lib.
 if [ -e /opt/lib/libmediaclient.so ]; then
 	LIBS="/opt/lib/libmediaclient.so @libdir@/libopen.so.0.0.0"
 else
 	LIBS="@libdir@/libopen.so.0.0.0"
 fi
 
-if [ -f /proc/stb/fp/nec_ir ]; then
-	echo 1 > /proc/stb/fp/nec_ir
-	[ -f /sys/class/remote/amremote/protocol ] && echo 2 > /sys/class/remote/amremote/protocol
-fi
+# This should not be done as it will suppress the appropriate diagnostic message from within Enigma2.
+#
+# if [ ! -e /etc/enigma2/settings ]; then
+# 	touch /etc/enigma2/settings
+# fi
 
-if [ ! -e /etc/enigma2/settings ]; then
-	touch /etc/enigma2/settings
-fi
-
-# enigma main loop
+# Enigma main loop.
 while : ; do
-	# show bootlogo on enigma2 start
+	# Show bootlogo on enigma2 start.
 	if [ -x @bindir@/exteplayer3 ] && [ -f @datadir@/bootlogo.mp4 ]; then
 		@bindir@/exteplayer3 @datadir@/bootlogo.mp4
 	else
@@ -75,54 +71,69 @@ while : ; do
 		fi
 	fi
 
-	# hook to execute scripts always before enigma2 start
-	if [ -x @bindir@/enigma2_pre_start.sh ]; then
-		@bindir@/enigma2_pre_start.sh
+	# Hook to execute scripts always before enigma2 start.
+	if [ -x "@bindir@/enigma2_pre_start.sh" ]; then
+		"@bindir@/enigma2_pre_start.sh"
 	fi
 
-	if [ $brandcheck == "dreambox" ]; then
+	if [ "${BRANDCHECK}" == "dreambox" ]; then
 		DISK=$(grep "/media/ba" /proc/mounts | awk '{gsub("/media/ba",""); print $1}' | head -n 1)
 		umount -f /media/ba
 		sleep 1
-		umount -f ${DISK}
+		umount -f "${DISK}"
 		sleep 1
 		mkdir -p /media/ba
 		sleep 1
-		mount ${DISK} /media/ba
+		mount "${DISK}" /media/ba
 		sleep 1
 	fi
 
-	# dreamci
-	if [ -x @bindir@/enigma2_pre_start_ciplus.sh ]; then
-		@bindir@/enigma2_pre_start_ciplus.sh
+	# Dreamci.
+	if [ -x "@bindir@/enigma2_pre_start_ciplus.sh" ]; then
+		"@bindir@/enigma2_pre_start_ciplus.sh"
 	fi
 
-	# start enigma
+	# Start enigma.
 	sync
 
-	(sleep 1; echo "enigma2 is the main application so adjust oom score!"; PID=$(pidof enigma2); \
-		[ -e /proc/$PID/oom_score_adj ] && echo "-999" > /proc/$PID/oom_score_adj || echo "-17" > /proc/$PID/oom_adj;) &
+	(sleep 1; echo "Enigma2 is the main application so adjust oom score!"; PID=$(pidof enigma2); \
+		[ -e "/proc/${PID}/oom_score_adj" ] && echo "-999" > "/proc/${PID}/oom_score_adj" || echo "-17" > "/proc/${PID}/oom_adj";) &
 
-	# set time format used to prefix each line in the debug logs
-	if grep -q 'config\.crash\.logtimeformat' @sysconfdir@/enigma2/settings; then
-		export ENIGMA_DEBUG_TIME=`grep "config\.crash\.logtimeformat" @sysconfdir@/enigma2/settings | sed -E "s/^.*=(.*)$/\1/" -`
-	fi
-
-	if [ $DEBUG_LVL -lt 4 ]; then
-		LD_PRELOAD=$LIBS ENIGMA_DEBUG_LVL=$DEBUG_LVL @bindir@/enigma2
+	# Set the debug level to be used for enigma2 logging.
+	if [ -z "${ENIGMA_DEBUG_LVL}" ]; then
+		DEBUGLEVEL=`sed -En 's|^config\.crash\.debugLevel=(.+)$|\1|p' "@sysconfdir@/enigma2/settings"`
+		[ -n "${DEBUGLEVEL}" ] || DEBUGLEVEL="3"
+		DEBUG_LVL="${DEBUGLEVEL}"
 	else
-		debug_dir=$(sed -n 's/config.crash.debug_path=//p' @sysconfdir@/enigma2/settings)
-		[ -n "${debug_dir}" -a -d "${debug_dir}" ] || debug_dir=/home/root/logs/
-		# remove old logfiles
-		keep=5;
-		for file in `ls -t ${debug_dir}enigma2_debug_*.log`; do let "keep--"; if [ "$keep" -lt "0" ]; then rm $file; fi; done
-		# todays log file
-		file="${debug_dir}enigma2_debug_$(date +%Y-%m-%d_%H-%M-%S).log"
-		LD_PRELOAD=$LIBS ENIGMA_DEBUG_LVL=$DEBUG_LVL @bindir@/enigma2 >> $file 2>&1
+		DEBUG_LVL="${ENIGMA_DEBUG_LVL}"
+	fi
+
+	# Set time format used to prefix each line in the debug logs.
+	DEBUGTIME=`sed -En 's|^config\.crash\.debugTimeFormat=(.+)$|\1|p' "@sysconfdir@/enigma2/settings"`
+	[ -n "${DEBUGTIME}" ] || DEBUGTIME="2"
+	ENIGMA_DEBUG_TIME="${DEBUGTIME}"
+
+	if [ "${DEBUG_LVL}" -lt "4" ]; then
+		LD_PRELOAD="${LIBS}" ENIGMA_DEBUG_LVL="${DEBUG_LVL}" "@bindir@/enigma2"
+	else
+		DEBUGDIR=`sed -En 's|^config\.crash\.debugPath=(.+)$|\1|p' "@sysconfdir@/enigma2/settings"`
+		[ -n "${DEBUGDIR}" ] && [ -d "${DEBUGDIR}" ] || DEBUGDIR="/home/root/logs/"
+		# Remove old logfiles.
+		KEEP=`sed -En 's|^config\.crash\.debugFileCount=(.+)$|\1|p' "@sysconfdir@/enigma2/settings"`
+		[ -n "${KEEP}" ] || KEEP="5"
+		for FILE in `ls -t "${DEBUGDIR}enigma2_debug_*.log"`; do
+			let "KEEP--"
+			if [ "${KEEP}" -lt "1" ]; then
+				rm "${FILE}"
+			fi
+		done
+		# Today's log file.
+		FILE="${DEBUGDIR}enigma2_debug_$(date +%Y-%m-%d_%H-%M-%S).log"
+		LD_PRELOAD="${LIBS}" ENIGMA_DEBUG_LVL="${DEBUG_LVL}" "@bindir@/enigma2" >> "${FILE}" 2>&1
 	fi
 
 
-	# enigma2 exit codes:
+	# Enigma2 exit codes:
 	#
 	#  1 - halt
 	#  2 - reboot
@@ -140,31 +151,31 @@ while : ; do
 	#
 	# >128 signal
 
-	ret=$?
-	case $ret in
+	RET=$?
+	case ${RET} in
 		1)
 			/sbin/halt
-			if [ $brandcheck == "wetek" ]; then
+			if [ "${BRANDCHECK}" == "wetek" ]; then
 				echo "0" > /sys/class/leds/wetek\:blue\:wifiled/brightness
 				echo "0" > /sys/class/leds/wetek\:blue\:ethled/brightness
 				echo "mem" > /sys/power/state
 			fi
 			if [ -f /proc/stb/fp/led_color ]; then
-				echo 00ffffff > /proc/stb/fp/led_color
+				echo "00ffffff" > /proc/stb/fp/led_color
 			elif [ -f /proc/stb/fp/led_brightness ]; then
-				echo 00000008 > /proc/stb/fp/led_brightness
+				echo "00000008" > /proc/stb/fp/led_brightness
 			fi
 			;;
 		2)
-			[ -f /proc/stb/fp/force_restart ] && echo 1 > /proc/stb/fp/force_restart
+			[ -f /proc/stb/fp/force_restart ] && echo "1" > /proc/stb/fp/force_restart
 			/sbin/reboot
 			;;
 		3)
-			DEBUG_LVL=3
+			ENIGMA_DEBUG_LVL="3"
 			;;
 		4)
 			/sbin/rmmod lcd
-			@sbindir@/fpupgrade --upgrade 2>&1 | tee /home/root/fpupgrade.log
+			"@sbindir@/fpupgrade" --upgrade 2>&1 | tee /home/root/fpupgrade.log
 			sleep 1;
 			/sbin/rmmod fp
 			/sbin/modprobe fp
@@ -176,7 +187,7 @@ while : ; do
 			fi
 			;;
 		6)
-			DEBUG_LVL=4
+			ENIGMA_DEBUG_LVL="4"
 			;;
 		7)
 			rm -R /etc/enigma2
@@ -187,14 +198,14 @@ while : ; do
 				mount /dev/block/by-name/bootoptions /tmp/bootoptions
 				cp -f /tmp/bootoptions/STARTUP_ANDROID /tmp/bootoptions/STARTUP_ONCE
 			else
-				if [ $modelcheck == "su980" ] || [ $brandcheck == "mecool" ]; then
-					echo "rescue not needed!"
+				if [ "${MODELCHECK}" == "su980" ] || [ "${BRANDCHECK}" == "mecool" ]; then
+					echo "Rescue not needed!"
 				else
 					echo "rescue" > /proc/stb/fp/boot_mode
 				fi
 			fi
-			[ -e @bindir@/setenv ] && @bindir@/setenv default_sys 1
-			[ -e @sbindir@/fw_setenv ] && @sbindir@/fw_setenv bootfromnand 1
+			[ -e "@bindir@/setenv" ] && "@bindir@/setenv" default_sys 1
+			[ -e "@sbindir@/fw_setenv" ] && "@sbindir@/fw_setenv" bootfromnand 1
 			/sbin/reboot
 			;;
 		16)
@@ -211,27 +222,27 @@ while : ; do
 			;;
 		42)
 			df -P | grep -v "tmpfs " | awk '{print $6}' | tail -n +3 > /tmp/upgrade_mountpoints.txt
-			while read line; do
-				if [  -f $line/var/lib/opkg/status ]; then
-				DESTS=$DESTS" --add-dest "$line":"$line
+			while read LINE; do
+				if [ -f "${LINE}/var/lib/opkg/status" ]; then
+				DESTS="${DESTS}" --add-dest "${LINE}":"${LINE}"
 			fi
 			done < /tmp/upgrade_mountpoints.txt
-			# bind the console (when available)
-			[ -f /sys/class/vtconsole/vtcon1/bind ] && echo 1 > /sys/class/vtconsole/vtcon1/bind
-			prevupd=0
-			currupd=999
+			# Bind the console (when available).
+			[ -f /sys/class/vtconsole/vtcon1/bind ] && echo "1" > /sys/class/vtconsole/vtcon1/bind
+			PREVUPD="0"
+			CURRUPD="999"
 			opkg update 2>&1 | tee /home/root/opkgupgrade.log
-			while [ $currupd -gt 0 -a $currupd -ne $prevupd ]; do
-				opkg upgrade $DESTS 2>&1 | tee -a /home/root/opkgupgrade.log
-				prevupd=$currupd
-				currupd=`opkg list-upgradable | wc -l`
-				echo "===> $currupd PACKAGE(S) REMAINING" >> /home/root/ipkupgrade.log
+			while [ "${CURRUPD}" -gt "0" ] && [ "${CURRUPD}" -ne "${PREVUPD}" ]; do
+				opkg upgrade "${DESTS}" 2>&1 | tee -a /home/root/opkgupgrade.log
+				PREVUPD="${CURRUPD}"
+				CURRUPD=`opkg list-upgradable | wc -l`
+				echo "===> ${CURRUPD} PACKAGE(S) REMAINING" >> /home/root/ipkupgrade.log
 			done
 			/sbin/reboot
 			;;
 		43)
-			#auto install and autobackup
-			[ -f /sys/class/vtconsole/vtcon1/bind ] && echo 1 > /sys/class/vtconsole/vtcon1/bind
+			# Auto install and autobackup.
+			[ -f /sys/class/vtconsole/vtcon1/bind ] && echo "1" > /sys/class/vtconsole/vtcon1/bind
 			/etc/init.d/settings-restore.sh
 			/etc/init.d/avahi-daemon stop
 			ifdown eth1
@@ -252,20 +263,19 @@ while : ; do
 			break
 			;;
 		44)
-			@libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/bin/fbclear
-			@bindir@/showiframe @libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/wait.mvi
-			echo fpupload >/proc/vfd && sleep 3 && dd bs=256k if=/tmp/micom.bin of=/dev/mcu
-			@bindir@/showiframe @libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/reboot.mvi
-			# Wait forever for the user to power off
+			"@libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/bin/fbclear"
+			"@bindir@/showiframe" "@libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/wait.mvi"
+			echo "fpupload" >/proc/vfd && sleep 3 && dd bs=256k if=/tmp/micom.bin of=/dev/mcu
+			"@bindir@/showiframe" "@libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/reboot.mvi"
+			# Wait forever for the user to power off.
 			while(true) ; do sleep 60 ; done
 			;;
 		45)
 			echo "    " > /dev/lcd0
-			@bindir@/gigablue_wol
+			"@bindir@/gigablue_wol"
 			;;
 		*)
 			break
 			;;
 	esac
-
 done

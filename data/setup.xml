@@ -130,10 +130,11 @@
 		<item level="0" requires="7segment" text="Show in Standby" description="This option allows you choose how to display the time or nothing in Standby">config.usage.show_in_standby</item>
 	</setup>
 	<setup key="logs" title="Logs Setup">
-		<item level="2" text="Log python stack trace on spinner" description="Set to yes for debugging the root cause of a spinner.">config.crash.pystackonspinner</item>
-		<item level="2" text="Debug log time format *" description="This is the prefix of each entry in the debug log. 'boot time' is the number of seconds since your %s %s was last booted.">config.crash.logtimeformat</item>
-		<item level="2" text="Enable twisted log" description="Allows you to enable the twisted log. It contains very detailed information of everything the twisted does.">config.misc.enabletwistedlog</item>
-		<item level="2" text="Logs folder location" description="Choose the location for crash and debug logs folder.">config.crash.debug_path</item>
+		<item level="2" text="Enable debug logs *" description="Use this option to select if debug logs of internal enigma2 activities are created.  These logs can be helpful for developers in finding and fixing problems.">config.crash.debugLevel</item>
+		<item level="2" text="Logs folder location *" description="Choose the location for crash and debug logs folder.">config.crash.debugPath</item>
+		<item level="2" text="Debug log time format *" description="This sets the prefix for each line in the debug log. The 'Boot time' is the number of seconds since your %s %s was last booted.">config.crash.debugTimeFormat</item>
+		<item level="2" text="Number of debug logs to keep *" description="This sets the maximum number of log files that will be retained.  Files in excess of this number will be deleted.">config.crash.debugFileCount</item>
+		<item level="2" text="Log python stack trace on spinner" description="Set to yes for debugging the root cause of a spinner.">config.crash.pythonStackOnSpinner</item>
 	</setup>
 	<setup key="network" title="Network Setup">
 		<item text="Use DHCP" description="When enabled, use DHCP for the IP configuration.">config.network.dhcp</item>
