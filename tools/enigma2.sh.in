@@ -145,7 +145,7 @@ while : ; do
 		# Remove old logfiles.
 		KEEP=`sed -En 's|^config\.crash\.debugFileCount=(.+)$|\1|p' "@sysconfdir@/enigma2/settings"`
 		[ -n "${KEEP}" ] || KEEP="5"
-		for FILE in `ls -t "${DEBUGDIR}enigma2_debug_*.log"`; do
+		for FILE in `ls -t "${DEBUGDIR}"enigma2_debug_*.log`; do
 			let "KEEP--"
 			if [ "${KEEP}" -lt "1" ]; then
 				rm "${FILE}"
