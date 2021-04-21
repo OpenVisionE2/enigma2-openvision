@@ -158,7 +158,7 @@ int formatTime(char *buf, int bufferSize, int flags)
 		}
 		if (debugTime & 1) {
 			clock_gettime(CLOCK_MONOTONIC, &tp);
-			pos += snprintf(buf, bufferSize, "<%6lu.%04lu> ", tp.tv_sec, tp.tv_nsec/100000);
+			pos += snprintf(buf + pos, bufferSize - pos, "<%6lu.%04lu> ", tp.tv_sec, tp.tv_nsec/100000);
 		}
 	}
 	return pos;
