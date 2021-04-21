@@ -68,6 +68,10 @@ def isStandardInfoBar(self):
 	return self.__class__.__name__ == "InfoBar"
 
 
+def isMoviePlayerInfoBar(self):
+	return self.__class__.__name__ == "MoviePlayer"
+
+
 def setResumePoint(session):
 	global resumePointCache, resumePointCacheLast
 	service = session.nav.getCurrentService()
