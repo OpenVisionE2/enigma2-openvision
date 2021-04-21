@@ -135,10 +135,10 @@ while : ; do
 	# Set time format used to prefix each line in the debug logs.
 	DEBUGTIME=`sed -En 's|^config\.crash\.debugTimeFormat=(.+)$|\1|p' "@sysconfdir@/enigma2/settings"`
 	[ -n "${DEBUGTIME}" ] || DEBUGTIME="2"
-	ENIGMA_DEBUG_TIME="${DEBUGTIME}"
+	DEBUG_TIME="${DEBUGTIME}"
 
 	if [ "${DEBUG_LVL}" -lt "4" ]; then
-		LD_PRELOAD="${LIBS}" ENIGMA_DEBUG_LVL="${DEBUG_LVL}" "@bindir@/enigma2"
+		LD_PRELOAD="${LIBS}" ENIGMA_DEBUG_LVL="${DEBUG_LVL}" ENIGMA_DEBUG_TIME="${DEBUG_TIME}" "@bindir@/enigma2"
 	else
 		DEBUGDIR=`sed -En 's|^config\.crash\.debugPath=(.+)$|\1|p' "@sysconfdir@/enigma2/settings"`
 		[ -n "${DEBUGDIR}" ] && [ -d "${DEBUGDIR}" ] || DEBUGDIR="/home/root/logs/"
@@ -153,7 +153,7 @@ while : ; do
 		done
 		# Today's log file.
 		FILE="${DEBUGDIR}enigma2_debug_$(date +%Y-%m-%d_%H-%M-%S).log"
-		LD_PRELOAD="${LIBS}" ENIGMA_DEBUG_LVL="${DEBUG_LVL}" "@bindir@/enigma2" >> "${FILE}" 2>&1
+		LD_PRELOAD="${LIBS}" ENIGMA_DEBUG_LVL="${DEBUG_LVL}" ENIGMA_DEBUG_TIME="${DEBUG_TIME}" "@bindir@/enigma2" >> "${FILE}" 2>&1
 	fi
 
 
