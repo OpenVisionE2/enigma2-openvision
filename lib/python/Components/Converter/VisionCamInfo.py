@@ -5,6 +5,7 @@ from Components.config import config
 from Components.Element import cached
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Components.Converter.Poll import Poll
+from enigma import getPyExt
 
 
 class VisionCamInfo(Poll, Converter, object):
@@ -28,7 +29,7 @@ class VisionCamInfo(Poll, Converter, object):
 		if not info:
 			return ""
 		# Alternative SoftCam Manager
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AlternativeSoftCamManager/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AlternativeSoftCamManager/plugin.py")):
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AlternativeSoftCamManager/plugin.", getPyExt())):
 			if config.plugins.AltSoftcam.actcam.value != "none":
 				return config.plugins.AltSoftcam.actcam.value
 			else:

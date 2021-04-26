@@ -20,7 +20,7 @@ from Screens.ChoiceBox import ChoiceBox
 from Screens.TimerEdit import TimerSanityConflict, TimerEditList
 from Screens.EventView import EventViewSimple
 from Screens.TimeDateInput import TimeDateInput
-from enigma import eServiceReference
+from enigma import eServiceReference, getPyExt
 from RecordTimer import RecordTimerEntry, parseEvent, AFTEREVENT, createRecordTimerEntry
 from Screens.TimerEntry import TimerEntry
 from ServiceReference import ServiceReference
@@ -127,7 +127,7 @@ class EPGSelection(Screen):
 				"red": (self.GoToTmbd, _("Search event in TMBD"))
 			})
 
-		self.isTMBD = fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py"))
+		self.isTMBD = fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.", getPyExt()))
 		if self.isTMBD:
 			self["key_red"] = Button(_("Search TMBD"))
 			self.select = True
@@ -155,13 +155,13 @@ class EPGSelection(Screen):
 			self.fallbackTimer = FallbackTimerList(self, self.onCreate)
 
 	def GoToTmbd(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py")):
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.", getPyExt())):
 			self.runTMBD()
-		if not fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) and not fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py")):
+		if not fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.", getPyExt())):
 			self.session.openWithCallback(self.doInstall, MessageBox, _('The TMBD plugin is not installed!\nDo you want to install it?'), MessageBox.TYPE_YESNO)
 
 	def runTMBD(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.py")):
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.", getPyExt())):
 			from Plugins.Extensions.TMBD.plugin import TMBD
 			description = _("TMBD Details")
 			description = _("TMBD details for event")
