@@ -74,6 +74,12 @@ AC_ARG_WITH(e2rev,
 AC_SUBST(E2REV)
 AC_DEFINE_UNQUOTED(E2REV,"$E2REV",[enigma2 revision])
 
+AC_ARG_WITH(pyext,
+	AS_HELP_STRING([--with-pyext],[build for PYEXT, $withval]),
+	[PYEXT="$withval"],[PYEXT=""])
+AC_SUBST(PYEXT)
+AC_DEFINE_UNQUOTED(PYEXT,"$PYEXT",[python extension])
+
 AC_ARG_WITH(nolcd,
 	AC_HELP_STRING([--with-nolcd], [disable ascii based lcd, yes or no]),
 	[[withnolcd=$withval]],

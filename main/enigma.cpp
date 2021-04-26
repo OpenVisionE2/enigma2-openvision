@@ -445,6 +445,11 @@ const char *getE2Rev()
 	return E2REV;
 }
 
+const char *getPyExt()
+{
+	return PYEXT;
+}
+
 #include <malloc.h>
 
 void dump_malloc_stats(void)

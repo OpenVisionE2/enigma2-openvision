@@ -215,18 +215,22 @@ void bsodFatal(const char *component)
 		stringFromFile(f, "stbmodel", "/etc/openvision/model");
 		stringFromFile(f, "stbbrand", "/etc/openvision/brand");
 		stringFromFile(f, "stbplatform", "/etc/openvision/platform");
+		stringFromFile(f, "socfamily", "/etc/openvision/socfamily");
+		stringFromFile(f, "kernel", "/etc/openvision/kernel");
 		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
 		stringFromFile(f, "distro", "/etc/openvision/distro");
 		stringFromFile(f, "oe", "/etc/openvision/oe");
 		stringFromFile(f, "python", "/etc/openvision/python");
 		stringFromFile(f, "mediaservice", "/etc/openvision/mediaservice");
-		stringFromFile(f, "multilib", "/etc/openvision/multilib");
 		stringFromFile(f, "architecture", "/etc/openvision/architecture");
-		stringFromFile(f, "socfamily", "/etc/openvision/socfamily");
+		stringFromFile(f, "multilib", "/etc/openvision/multilib");
 		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
 		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");
 		stringFromFile(f, "visionlanguage", "/etc/openvision/visionlanguage");
+		stringFromFile(f, "rctype", "/etc/openvision/rctype");
+		stringFromFile(f, "rcname", "/etc/openvision/rcname");
+		stringFromFile(f, "rcidnum", "/etc/openvision/rcidnum");
 		stringFromFile(f, "compiledby", "/etc/openvision/developername");
 		stringFromFile(f, "feedsurl", "/etc/openvision/feedsurl");
 
