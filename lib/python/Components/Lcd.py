@@ -293,12 +293,18 @@ def InitLcd():
 		ilcd = LCD()
 		if can_lcdmodechecking:
 			def setLCDModeMinitTV(configElement):
-				print("[Lcd] setLCDModeMinitTV='%s'." % configElement.value)
-				fileWriteLine("/proc/stb/lcd/mode", configElement.value)
+				try:
+					print("[Lcd] setLCDModeMinitTV='%s'." % configElement.value)
+					fileWriteLine("/proc/stb/lcd/mode", configElement.value)
+				except:
+					pass
 
 			def setMiniTVFPS(configElement):
-				print("[Lcd] setMiniTVFPS='%s'." % configElement.value)
-				fileWriteLine("/proc/stb/lcd/fps", configElement.value)
+				try:
+					print("[Lcd] setMiniTVFPS='%s'." % configElement.value)
+					fileWriteLine("/proc/stb/lcd/fps", configElement.value)
+				except:
+					pass
 
 			def setLCDModePiP(configElement):
 				pass  # DEBUG: Should this be doing something?
