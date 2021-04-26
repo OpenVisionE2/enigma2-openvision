@@ -265,7 +265,7 @@ class PluginBrowser(Screen, ProtectedScreen):
 		self.checkWarnings()
 
 	def openExtensionmanager(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/SoftwareManager/plugin.", getPyExt())):
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/SoftwareManager/plugin." + getPyExt())):
 			try:
 				from Plugins.SystemPlugins.SoftwareManager.plugin import PluginManager
 			except ImportError as e:
