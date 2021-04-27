@@ -194,13 +194,13 @@ class MovieList(GUIComponent):
 		self.fontSize = 20
 		self.listHeight = None
 		self.listWidth = None
-		self.pbarShift = 5
+		self.pbarShift = 0
 		self.pbarHeight = 16
 		self.pbarLargeWidth = 48
 		self.pbarColour = 0x206333
 		self.pbarColourSeen = 0xffc71d
 		self.pbarColourRec = 0xff001d
-		self.partIconeShift = 5
+		self.partIconeShift = 0
 		self.spaceRight = 2
 		self.spaceIconeText = 2
 		self.iconsWidth = 22
@@ -370,7 +370,7 @@ class MovieList(GUIComponent):
 		if self.listHeight > 0:
 			itemHeight = self.listHeight / config.movielist.itemsperpage.getValue()
 		else:
-			itemHeight = 25 # some default (270/5)
+			itemHeight = 15 # some default (270/5)
 		self.itemHeight = itemHeight
 		self.l.setItemHeight(itemHeight)
 		self.instance.resize(eSize(self.listWidth, self.listHeight / itemHeight * itemHeight))
@@ -527,7 +527,7 @@ class MovieList(GUIComponent):
 				len = data.len
 				if len > 0:
 					len = ngettext("%d Min", "%d Mins", (len / 60)) % (len / 60)
-					res.append(MultiContentEntryText(pos=(colX + 425, 0), size=(durationWidth, ih), font=1, flags=RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text=len))
+					res.append(MultiContentEntryText(pos=(colX + 880, 0), size=(durationWidth, ih), font=1, flags=RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text=len))
 
 		# Date
 		begin_string = ""
@@ -537,7 +537,7 @@ class MovieList(GUIComponent):
 			else:
 				begin_string = strftime("%s, %s" % (config.usage.date.daylong.value, config.usage.time.short.value), localtime(begin))
 
-		res.append(MultiContentEntryText(pos=(width - dateWidth - r - 130, 0), size=(dateWidth + 130, ih), font=1, flags=RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text=begin_string))
+		res.append(MultiContentEntryText(pos=(width - dateWidth - r - 130, 2), size=(dateWidth + 130, ih), font=1, flags=RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text=begin_string))
 		return res
 
 	def moveToFirstMovie(self):
