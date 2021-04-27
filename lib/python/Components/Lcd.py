@@ -69,7 +69,7 @@ class IconCheckPoller:
 				linkState = fileReadLine("/sys/class/net/eth0/carrier")
 		linkState = linkState[:1]
 		if exists("/proc/stb/lcd/symbol_network") and config.lcd.mode.value == "1":
-			fileWriteLine("/proc/stb/lcd/symbol_network", str(linkState))
+			fileWriteLine("/proc/stb/lcd/symbol_network", linkState)
 		elif exists("/proc/stb/lcd/symbol_network") and config.lcd.mode.value == "0":
 			fileWriteLine("/proc/stb/lcd/symbol_network", "0")
 		USBState = 0
@@ -79,7 +79,7 @@ class IconCheckPoller:
 				if dev.deviceClass != 9 and dev.deviceClass != 2 and dev.idVendor != 3034 and dev.idVendor > 0:
 					USBState = 1
 		if exists("/proc/stb/lcd/symbol_usb"):
-			fileWriteLine("/proc/stb/lcd/symbol_usb", str(USBState))
+			fileWriteLine("/proc/stb/lcd/symbol_usb", USBState)
 		self.timer.startLongTimer(30)
 
 
@@ -293,18 +293,12 @@ def InitLcd():
 		ilcd = LCD()
 		if can_lcdmodechecking:
 			def setLCDModeMinitTV(configElement):
-				try:
-					print("[Lcd] setLCDModeMinitTV='%s'." % configElement.value)
-					fileWriteLine("/proc/stb/lcd/mode", configElement.value)
-				except:
-					pass
+				print("[Lcd] setLCDModeMinitTV='%s'." % configElement.value)
+				fileWriteLine("/proc/stb/lcd/mode", configElement.value)
 
 			def setMiniTVFPS(configElement):
-				try:
-					print("[Lcd] setMiniTVFPS='%s'." % configElement.value)
-					fileWriteLine("/proc/stb/lcd/fps", configElement.value)
-				except:
-					pass
+				print("[Lcd] setMiniTVFPS='%s'." % configElement.value)
+				fileWriteLine("/proc/stb/lcd/fps", configElement.value)
 
 			def setLCDModePiP(configElement):
 				pass  # DEBUG: Should this be doing something?
@@ -652,7 +646,7 @@ def InitLcd():
 				if SystemInfo["VFDDelay"]:
 					fileWriteLine(SystemInfo["VFD_scroll_delay"], hex(int(configElement.value)))
 				else:
-					fileWriteLine(SystemInfo["VFD_scroll_delay"], str(configElement.value))
+					fileWriteLine(SystemInfo["VFD_scroll_delay"], configElement.value)
 
 			config.usage.vfd_scroll_delay = ConfigSlider(default=150, increment=10, limits=(0, 500))
 			config.usage.vfd_scroll_delay.addNotifier(scroll_delay, immediate_feedback=False)
