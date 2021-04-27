@@ -59,6 +59,7 @@ def InitUsageConfig():
 	])
 	config.misc.OVupdatecheck = ConfigYesNo(default=False)
 	config.misc.extraopkgpackages = ConfigYesNo(default=False)
+	config.misc.opkgcleanmode = ConfigYesNo(default=False)
 
 	config.usage.alternative_number_mode = ConfigYesNo(default=False)
 

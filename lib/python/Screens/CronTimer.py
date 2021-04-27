@@ -55,7 +55,7 @@ class CronTimers(Screen):
 		self.onLayoutFinish.append(self.InstallCheck)
 
 	def InstallCheck(self):
-		self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.checkNetworkState)
+		self.Console.ePopen('opkg list_installed ' + self.service_name, self.checkNetworkState)
 
 	def checkNetworkState(self, str, retval, extra_args):
 		if PY3:
@@ -79,7 +79,7 @@ class CronTimers(Screen):
 	def doInstall(self, callback, pkgname):
 		self.message = self.session.open(MessageBox, _("Please wait..."), MessageBox.TYPE_INFO, enable_input=False)
 		self.message.setTitle(_('Installing service'))
-		self.Console.ePopen('/usr/bin/opkg install ' + pkgname, callback)
+		self.Console.ePopen('opkg install ' + pkgname, callback)
 
 	def installComplete(self, result=None, retval=None, extra_args=None):
 		self.message.close()
@@ -87,7 +87,7 @@ class CronTimers(Screen):
 
 	def UninstallCheck(self):
 		if not self.my_crond_run:
-			self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.RemovedataAvail)
+			self.Console.ePopen('opkg list_installed ' + self.service_name, self.RemovedataAvail)
 		else:
 			self.close()
 
@@ -106,7 +106,7 @@ class CronTimers(Screen):
 	def doRemove(self, callback, pkgname):
 		self.message = self.session.open(MessageBox, _("Please wait..."), MessageBox.TYPE_INFO, enable_input=False)
 		self.message.setTitle(_('Removing service'))
-		self.Console.ePopen('/usr/bin/opkg remove ' + pkgname + ' --force-remove --autoremove', callback)
+		self.Console.ePopen('opkg remove ' + pkgname + ' --force-remove --autoremove', callback)
 
 	def removeComplete(self, result=None, retval=None, extra_args=None):
 		self.message.close()

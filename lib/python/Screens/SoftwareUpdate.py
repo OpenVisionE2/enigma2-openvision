@@ -108,11 +108,10 @@ class UpdatePlugin(Screen, ProtectedScreen):
 
 			try:
 				# get image version and machine name
-				machine = getBoxType()
 				version = open("/etc/issue").readlines()[-2].split()[1]
 
 				# do we have an entry for this version
-				if version in status and machine in status[version]['machines']:
+				if version in status and model in status[version]['machines']:
 					if 'abort' in status[version]:
 						abort = status[version]['abort']
 					if 'from' in status[version]:
@@ -139,10 +138,6 @@ class UpdatePlugin(Screen, ProtectedScreen):
 			except Exception as e:
 				print("[SoftwareUpdate] status error: ", str(e))
 				message = _("The current image might not be stable.\nFor more information see %s.") % ("openvision.tech")
-
-		# or display a generic warning if fetching failed
-		else:
-			message = _("The status of the current image could not be checked because %s can not be reached.") % ("openvision.tech") + "\n" + _("Maybe you're using a test image without any feeds or an unofficial one with a private feed server.")
 
 		# show the user the message first
 		if message is not None:

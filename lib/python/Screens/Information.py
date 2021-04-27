@@ -560,7 +560,7 @@ class ImageInformation(InformationBase):
 			info.append("")
 			info.append(formatLine("H", _("HiSilicon specific information")))
 			info.append("")
-			packageList = check_output(["/usr/bin/opkg", "list-installed"])
+			packageList = check_output(["opkg", "list-installed"])
 			packageList = packageList.split("\n")
 			revision = self.findPackageRevision("grab", packageList)
 			if revision and revision != "r0":

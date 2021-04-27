@@ -332,14 +332,9 @@ class PluginDownloadBrowser(Screen):
 			"ok": self.go,
 			"back": self.requestClose,
 		})
-		if os.path.isfile('/usr/bin/opkg'):
-			self.opkg = '/usr/bin/opkg'
-			self.opkg_install = self.opkg + ' install'
-			self.opkg_remove = self.opkg + ' remove --autoremove'
-		else:
-			self.opkg = 'opkg'
-			self.opkg_install = 'opkg install -force-defaults'
-			self.opkg_remove = self.opkg + ' remove'
+		self.opkg = 'opkg'
+		self.opkg_install = self.opkg + ' install'
+		self.opkg_remove = self.opkg + ' remove --autoremove'
 
 	def go(self):
 		sel = self["list"].l.getCurrentSelection()

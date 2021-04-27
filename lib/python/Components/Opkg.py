@@ -159,7 +159,10 @@ class OpkgComponent:
 
 	def startCmd(self, cmd, args=None):
 		if cmd == self.CMD_UPDATE:
-			self.runCmdEx("update")
+			if config.misc.opkgcleanmode.value is True:
+				self.runCmdEx("clean && opkg update")
+			else:
+				self.runCmdEx("update")
 		elif cmd == self.CMD_UPGRADE:
 			append = ""
 			if args["test_only"]:

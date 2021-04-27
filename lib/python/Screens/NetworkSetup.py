@@ -71,12 +71,12 @@ class NSCommon:
 	def doRemove(self, callback, pkgname):
 		self.message = self.session.open(MessageBox, _("Please wait..."), MessageBox.TYPE_INFO, enable_input=False)
 		self.message.setTitle(_('Removing service'))
-		self.Console.ePopen('/usr/bin/opkg remove ' + pkgname + ' --force-remove --autoremove', callback)
+		self.Console.ePopen('opkg remove ' + pkgname + ' --force-remove --autoremove', callback)
 
 	def doInstall(self, callback, pkgname):
 		self.message = self.session.open(MessageBox, _("Please wait..."), MessageBox.TYPE_INFO, enable_input=False)
 		self.message.setTitle(_('Installing service'))
-		self.Console.ePopen('/usr/bin/opkg install ' + pkgname + ' >/dev/null 2>&1', callback)
+		self.Console.ePopen('opkg install ' + pkgname + ' >/dev/null 2>&1', callback)
 
 	def checkNetworkState(self, str, retval, extra_args):
 		if 'Collected errors' in str:
@@ -102,7 +102,7 @@ class NSCommon:
 			self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("Please wait while feeds state is being checked."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 
 	def UninstallCheck(self):
-		self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.RemovedataAvail)
+		self.Console.ePopen('opkg list_installed ' + self.service_name, self.RemovedataAvail)
 
 	def RemovedataAvail(self, str, retval, extra_args):
 		if str:
@@ -130,7 +130,7 @@ class NSCommon:
 		self.close()
 
 	def InstallCheck(self):
-		self.Console.ePopen('/usr/bin/opkg list_installed ' + self.service_name, self.checkNetworkState)
+		self.Console.ePopen('opkg list_installed ' + self.service_name, self.checkNetworkState)
 # Now global functions will help us to reduce code
 
 
