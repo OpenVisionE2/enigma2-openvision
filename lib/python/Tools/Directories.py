@@ -368,7 +368,7 @@ def fileReadLine(filename, default=None, debug=False):
 def fileWriteLine(filename, line, debug=False):
 	try:
 		with open(filename, "w") as fd:
-			fd.write(line)
+			fd.write(str(line))
 	except (IOError, OSError) as err:
 		print("[Directories] Error %d: Unable to write a line to file '%s'! (%s)" % (err.errno, filename, err.strerror))
 	if debug:  # or forceDebug:
