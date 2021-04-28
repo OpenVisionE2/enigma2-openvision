@@ -527,7 +527,7 @@ class MovieList(GUIComponent):
 				len = data.len
 				if len > 0:
 					len = ngettext("%d Min", "%d Mins", (len / 60)) % (len / 60)
-					res.append(MultiContentEntryText(pos=(colX + 880, 0), size=(durationWidth, ih), font=1, flags=RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text=len))
+					res.append(MultiContentEntryText(pos=(colX + 880, 2), size=(durationWidth, ih), font=1, flags=RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text=len))
 
 		# Date
 		begin_string = ""
