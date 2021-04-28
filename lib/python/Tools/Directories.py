@@ -1,4 +1,4 @@
-from enigma import eEnv, getDesktop
+from enigma import eEnv, eGetEnigmaDebugLvl, getDesktop
 from errno import ENOENT, EXDEV
 from inspect import getframeinfo, stack
 from os import F_OK, R_OK, W_OK, access, chmod, listdir, makedirs, mkdir, readlink, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
@@ -6,7 +6,9 @@ from os.path import basename, dirname, exists, getsize, isdir, isfile, islink, j
 from re import compile
 from six import PY2
 from stat import S_IMODE
+from xml.etree.cElementTree import ParseError, fromstring, parse
 
+forceDebug = eGetEnigmaDebugLvl() > 4
 pathExists = exists
 
 SCOPE_TRANSPONDERDATA = 0
@@ -349,6 +351,7 @@ def fileHas(file, content, mode="r"):
 
 
 def fileReadLine(filename, default=None, debug=False):
+	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
 	line = None
 	try:
 		with open(filename, "r") as fd:
@@ -356,27 +359,30 @@ def fileReadLine(filename, default=None, debug=False):
 		msg = "Read"
 	except (IOError, OSError) as err:
 		if err.errno != ENOENT:  # ENOENT - No such file or directory.
-			print("[Directories] Error %d: Unable to read a line from file '%s'! (%s)" % (err.errno, filename, err.strerror))
+			print("[%s] Error %d: Unable to read a line from file '%s'! (%s)" % (source, err.errno, filename, err.strerror))
 		line = default
 		msg = "Default"
-	if debug:  # or forceDebug:
-		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+	if debug or forceDebug:
 		print("[%s] Line %d: %s '%s' from file '%s'." % (source, stack()[1][0].f_lineno, msg, line, filename))
 	return line
 
 
 def fileWriteLine(filename, line, debug=False):
+	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
 	try:
 		with open(filename, "w") as fd:
 			fd.write(str(line))
+		msg = "Wrote"
 	except (IOError, OSError) as err:
-		print("[Directories] Error %d: Unable to write a line to file '%s'! (%s)" % (err.errno, filename, err.strerror))
-	if debug:  # or forceDebug:
+		print("[%s] Error %d: Unable to write a line to file '%s'! (%s)" % (source, err.errno, filename, err.strerror))
+		msg = "Failed to write"
+	if debug or forceDebug:
 		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
-		print("[%s] Line %d: Wrote '%s' to file '%s'." % (source, stack()[1][0].f_lineno, line, filename))
+		print("[%s] Line %d: %s '%s' to file '%s'." % (source, stack()[1][0].f_lineno, msg, line, filename))
 
 
 def fileReadLines(filename, default=None, debug=False):
+	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
 	lines = None
 	try:
 		with open(filename, "r") as fd:
@@ -384,27 +390,64 @@ def fileReadLines(filename, default=None, debug=False):
 		msg = "Read"
 	except (IOError, OSError) as err:
 		if err.errno != ENOENT:  # ENOENT - No such file or directory.
-			print("[Directories] Error %d: Unable to read lines from file '%s'! (%s)" % (err.errno, filename, err.strerror))
+			print("[%s] Error %d: Unable to read lines from file '%s'! (%s)" % (source, err.errno, filename, err.strerror))
 		lines = default
 		msg = "Default"
-	if debug:  # or forceDebug:
-		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+	if debug or forceDebug:
 		print("[%s] Line %d: %s %d lines from file '%s'." % (source, stack()[1][0].f_lineno, msg, len(lines), filename))
 	return lines
 
 
 def fileWriteLines(filename, lines, debug=False):
+	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
 	try:
 		with open(filename, "w") as fd:
 			if isinstance(lines, list):
 				lines.append("")
 				lines = "\n".join(lines)
 			fd.write(lines)
+		msg = "Wrote"
 	except (IOError, OSError) as err:
-		print("[Directories] Error %d: Unable to write lines to file '%s'! (%s)" % (err.errno, filename, err.strerror))
-	if debug:  # or forceDebug:
-		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
-		print("[%s] Line %d: Wrote '%s' to file '%s'." % (source, stack()[1][0].f_lineno, len(lines.split()), filename))
+		print("[%s] Error %d: Unable to write %d lines to file '%s'! (%s)" % (source, err.errno, len(lines), filename, err.strerror))
+		msg = "Failed to write"
+	if debug or forceDebug:
+		print("[%s] Line %d: %s %d lines to file '%s'." % (source, stack()[1][0].f_lineno, msg, len(lines), filename))
+
+
+def fileReadXML(filename, default=None, debug=False):
+	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+	dom = None
+	try:
+		with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
+			try:
+				dom = parse(fd).getroot()
+				msg = "Read"
+			except ParseError as err:
+				fd.seek(0)
+				content = fd.readlines()
+				line, column = err.position
+				print("[%s] XML Parse Error: '%s' in '%s'!" % (source, err, filename))
+				data = content[line - 1].replace("\t", " ").rstrip()
+				print("[%s] XML Parse Error: '%s'" % (source, data))
+				print("[%s] XML Parse Error: '%s^%s'" % (source, "-" * column, " " * (len(data) - column - 1)))
+			except Exception as err:
+				print("[%s] Error: Unable to parse data in '%s' - '%s'!" % (source, filename, err))
+	except (IOError, OSError) as err:
+		if err.errno == ENOENT:  # ENOENT - No such file or directory.
+			print("[%s] Warning: File '%s' does not exist!" % (source, filename))
+		else:
+			print("[%s] Error %d: Opening file '%s'! (%s)" % (source, err.errno, filename, err.strerror))
+	except Exception as err:
+		print("[%s] Error: Unexpected error opening file '%s'! (%s)" % (source, filename, err))
+	if dom is None:
+		if default:
+			dom = fromstring(default)
+			msg = "Default"
+		else:
+			msg = "Failed to read"
+	if debug or forceDebug:
+		print("[%s] Line %d: %s from XML file '%s'." % (source, stack()[1][0].f_lineno, msg, filename))
+	return dom
 
 
 def getRecordingFilename(basename, dirname=None):
