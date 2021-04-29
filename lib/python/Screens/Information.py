@@ -8,7 +8,7 @@ from os import listdir, popen, remove, statvfs
 from os.path import basename, getmtime, isdir, isfile, join as pathjoin
 from six import PY2
 from ssl import _create_unverified_context  # For python 2.7.11 we need to bypass the certificate check
-from subprocess import check_output
+from subprocess import PIPE, Popen
 from time import localtime
 try:
 	from urllib2 import urlopen
@@ -562,26 +562,39 @@ class ImageInformation(InformationBase):
 			info.append("")
 			info.append(formatLine("H", _("HiSilicon specific information")))
 			info.append("")
-			packageList = check_output(["/usr/bin/opkg", "list-installed"])
-			packageList = packageList.split("\n")
-			revision = self.findPackageRevision("grab", packageList)
-			if revision and revision != "r0":
-				info.append(formatLine("P1", _("Grab"), revision))
-			revision = self.findPackageRevision("hihalt", packageList)
-			if revision:
-				info.append(formatLine("P1", _("Halt"), revision))
-			revision = self.findPackageRevision("libs", packageList)
-			if revision:
-				info.append(formatLine("P1", _("Libs"), revision))
-			revision = self.findPackageRevision("partitions", packageList)
-			if revision:
-				info.append(formatLine("P1", _("Partitions"), revision))
-			revision = self.findPackageRevision("reader", packageList)
-			if revision:
-				info.append(formatLine("P1", _("Reader"), revision))
-			revision = self.findPackageRevision("showiframe", packageList)
-			if revision:
-				info.append(formatLine("P1", _("Showiframe"), revision))
+			process = Popen(("/usr/bin/opkg", "list-installed"), stdout=PIPE, stderr=PIPE)
+			stdout, stderr = process.communicate()
+			if process.returncode == 0:
+				missing = True
+				packageList = stdout.split("\n")
+				revision = self.findPackageRevision("grab", packageList)
+				if revision and revision != "r0":
+					info.append(formatLine("P1", _("Grab"), revision))
+					missing = False
+				revision = self.findPackageRevision("hihalt", packageList)
+				if revision:
+					info.append(formatLine("P1", _("Halt"), revision))
+					missing = False
+				revision = self.findPackageRevision("libs", packageList)
+				if revision:
+					info.append(formatLine("P1", _("Libs"), revision))
+					missing = False
+				revision = self.findPackageRevision("partitions", packageList)
+				if revision:
+					info.append(formatLine("P1", _("Partitions"), revision))
+					missing = False
+				revision = self.findPackageRevision("reader", packageList)
+				if revision:
+					info.append(formatLine("P1", _("Reader"), revision))
+					missing = False
+				revision = self.findPackageRevision("showiframe", packageList)
+				if revision:
+					info.append(formatLine("P1", _("Showiframe"), revision))
+					missing = False
+				if missing:
+					info.append(formatLine("P1", _("HiSilicon specific information not found.")))
+			else:
+				info.append(formatLine("P1", _("Package information currently not available!")))
 		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
 
 	def findPackageRevision(self, package, packageList):
