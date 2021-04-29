@@ -530,15 +530,17 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("Software information")))
 		info.append("")
+		info.append(formatLine("P1", _("GCC version"), about.getGccVersion()))
+		info.append(formatLine("P1", _("Glibc version"), about.getGlibcVersion()))
+		info.append(formatLine("P1", _("Python version"), about.getPythonVersionString()))
 		info.append(formatLine("P1", _("GStreamer version"), about.getGStreamerVersionString().replace("GStreamer", "")))
 		info.append(formatLine("P1", _("FFmpeg version"), about.getFFmpegVersionString()))
-		info.append(formatLine("P1", _("Python version"), about.getPythonVersionString()))
 		bootId = fileReadLine("/proc/sys/kernel/random/boot_id")
 		if bootId:
 			info.append(formatLine("P1", _("Boot ID"), bootId))
 		uuId = fileReadLine("/proc/sys/kernel/random/uuid")
 		if uuId:
-			info.append(formatLine("P1", _("Boot ID"), uuId))
+			info.append(formatLine("P1", _("UUID"), uuId))
 		info.append("")
 		info.append(formatLine("H", _("Boot information")))
 		info.append("")
@@ -560,7 +562,7 @@ class ImageInformation(InformationBase):
 			info.append("")
 			info.append(formatLine("H", _("HiSilicon specific information")))
 			info.append("")
-			packageList = check_output(["opkg", "list-installed"])
+			packageList = check_output(["/usr/bin/opkg", "list-installed"])
 			packageList = packageList.split("\n")
 			revision = self.findPackageRevision("grab", packageList)
 			if revision and revision != "r0":
@@ -660,7 +662,7 @@ class MultiBootInformation(InformationBase):
 	def __init__(self, session):
 		InformationBase.__init__(self, session)
 		self.setTitle(_("MultiBoot Information"))
-		self.skinName.insert(0, "MemoryInformation")
+		self.skinName.insert(0, "MultiBootInformation")
 
 	def fetchInformation(self):
 		self.informationTimer.stop()
