@@ -5,6 +5,7 @@ import re
 from six import PY2
 import socket
 import struct
+from subprocess import PIPE, Popen
 import sys
 import time
 
@@ -428,6 +429,34 @@ def getBoxUptime():
 	except:
 		print("[About] Read /proc/uptime failed.")
 		return '-'
+
+
+def getGlibcVersion():
+	process = Popen(("/lib/libc.so.6", "/lib/libc.so.6"), stdout=PIPE, stderr=PIPE)
+	stdout, stderr = process.communicate()
+	if process.returncode == 0:
+		for line in stdout.split("\n"):
+			if line.startswith("GNU C Library"):
+				data = line.split()[-1]
+				if data.endswith("."):
+					data = data[0:-1]
+				return data
+	print("[About] Get glibc version failed.")
+	return _("Unknown")
+
+
+def getGccVersion():
+	process = Popen(("/lib/libc.so.6", "/lib/libc.so.6"), stdout=PIPE, stderr=PIPE)
+	stdout, stderr = process.communicate()
+	if process.returncode == 0:
+		for line in stdout.split("\n"):
+			if line.startswith("Compiled by GNU CC version"):
+				data = line.split()[-1]
+				if data.endswith("."):
+					data = data[0:-1]
+				return data
+	print("[About] Get gcc version failed.")
+	return _("Unknown")
 
 
 # For modules that do "from About import about"
