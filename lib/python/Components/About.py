@@ -432,7 +432,7 @@ def getBoxUptime():
 
 
 def getGlibcVersion():
-	process = Popen(("/lib/libc.so.6", "/lib/libc.so.6"), stdout=PIPE, stderr=PIPE)
+	process = Popen(("/lib/libc.so.6"), stdout=PIPE, stderr=PIPE)
 	stdout, stderr = process.communicate()
 	if process.returncode == 0:
 		for line in stdout.split("\n"):
@@ -446,7 +446,7 @@ def getGlibcVersion():
 
 
 def getGccVersion():
-	process = Popen(("/lib/libc.so.6", "/lib/libc.so.6"), stdout=PIPE, stderr=PIPE)
+	process = Popen(("/lib/libc.so.6"), stdout=PIPE, stderr=PIPE)
 	stdout, stderr = process.communicate()
 	if process.returncode == 0:
 		for line in stdout.split("\n"):
