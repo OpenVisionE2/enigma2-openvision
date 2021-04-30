@@ -1,6 +1,6 @@
 from enigma import eEnv, eGetEnigmaDebugLvl, getDesktop
 from errno import ENOENT, EXDEV
-from inspect import getframeinfo, stack
+from inspect import stack
 from os import F_OK, R_OK, W_OK, access, chmod, listdir, makedirs, mkdir, readlink, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
 from os.path import basename, dirname, exists, getsize, isdir, isfile, islink, join as pathjoin, normpath, splitext
 from re import compile
@@ -10,6 +10,8 @@ from xml.etree.cElementTree import ParseError, fromstring, parse
 
 forceDebug = eGetEnigmaDebugLvl() > 4
 pathExists = exists
+
+DEFAULT_MODULE_NAME = __name__.split(".")[-1]
 
 SCOPE_TRANSPONDERDATA = 0
 SCOPE_SYSETC = 1
@@ -350,8 +352,7 @@ def fileHas(file, content, mode="r"):
 	return fileContains(file, content, mode)
 
 
-def fileReadLine(filename, default=None, debug=False):
-	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+def fileReadLine(filename, default=None, source=DEFAULT_MODULE_NAME, debug=False):
 	line = None
 	try:
 		with open(filename, "r") as fd:
@@ -367,8 +368,7 @@ def fileReadLine(filename, default=None, debug=False):
 	return line
 
 
-def fileWriteLine(filename, line, debug=False):
-	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+def fileWriteLine(filename, line, source=DEFAULT_MODULE_NAME, debug=False):
 	try:
 		with open(filename, "w") as fd:
 			fd.write(str(line))
@@ -377,12 +377,10 @@ def fileWriteLine(filename, line, debug=False):
 		print("[%s] Error %d: Unable to write a line to file '%s'! (%s)" % (source, err.errno, filename, err.strerror))
 		msg = "Failed to write"
 	if debug or forceDebug:
-		source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
 		print("[%s] Line %d: %s '%s' to file '%s'." % (source, stack()[1][0].f_lineno, msg, line, filename))
 
 
-def fileReadLines(filename, default=None, debug=False):
-	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+def fileReadLines(filename, default=None, source=DEFAULT_MODULE_NAME, debug=False):
 	lines = None
 	try:
 		with open(filename, "r") as fd:
@@ -398,8 +396,7 @@ def fileReadLines(filename, default=None, debug=False):
 	return lines
 
 
-def fileWriteLines(filename, lines, debug=False):
-	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+def fileWriteLines(filename, lines, source=DEFAULT_MODULE_NAME, debug=False):
 	try:
 		with open(filename, "w") as fd:
 			if isinstance(lines, list):
@@ -414,8 +411,7 @@ def fileWriteLines(filename, lines, debug=False):
 		print("[%s] Line %d: %s %d lines to file '%s'." % (source, stack()[1][0].f_lineno, msg, len(lines), filename))
 
 
-def fileReadXML(filename, default=None, debug=False):
-	source = splitext(basename(getframeinfo(stack()[1][0]).filename))[0]
+def fileReadXML(filename, default=None, source=DEFAULT_MODULE_NAME, debug=False):
 	dom = None
 	try:
 		with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
