@@ -20,7 +20,7 @@ from Screens.ChoiceBox import ChoiceBox
 from Screens.TimerEdit import TimerSanityConflict, TimerEditList
 from Screens.EventView import EventViewSimple
 from Screens.TimeDateInput import TimeDateInput
-from enigma import eServiceReference, getPyExt
+from enigma import eServiceReference
 from RecordTimer import RecordTimerEntry, parseEvent, AFTEREVENT, createRecordTimerEntry
 from Screens.TimerEntry import TimerEntry
 from ServiceReference import ServiceReference
@@ -30,7 +30,7 @@ from Plugins.Plugin import PluginDescriptor
 from Tools.BoundFunction import boundFunction
 from Tools.FallbackTimer import FallbackTimerList
 from Components.Button import Button
-from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN, fileExists, SCOPE_PLUGINS
+from Tools.Directories import isPluginExtensionInstalled
 from Screens.MessageBox import MessageBox
 from Components.Console import Console
 from six import PY2
@@ -127,7 +127,7 @@ class EPGSelection(Screen):
 				"red": (self.GoToTmbd, _("Search event in TMBD"))
 			})
 
-		self.isTMBD = fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin." + getPyExt()))
+		self.isTMBD = isPluginExtensionInstalled("TMBD")
 		if self.isTMBD:
 			self["key_red"] = Button(_("Search TMBD"))
 			self.select = True
@@ -155,13 +155,13 @@ class EPGSelection(Screen):
 			self.fallbackTimer = FallbackTimerList(self, self.onCreate)
 
 	def GoToTmbd(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin." + getPyExt())):
+		if isPluginExtensionInstalled("TMBD"):
 			self.runTMBD()
-		if not fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin." + getPyExt())):
+		else:
 			self.session.openWithCallback(self.doInstall, MessageBox, _('The TMBD plugin is not installed!\nDo you want to install it?'), MessageBox.TYPE_YESNO)
 
 	def runTMBD(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin." + getPyExt())):
+		if isPluginExtensionInstalled("TMBD"):
 			from Plugins.Extensions.TMBD.plugin import TMBD
 			description = _("TMBD Details")
 			description = _("TMBD details for event")

@@ -1,4 +1,4 @@
-from enigma import eTimer, getDesktop, getPyExt
+from enigma import eTimer, getDesktop
 from os.path import isfile
 
 from Screens.MessageBox import MessageBox
@@ -8,7 +8,7 @@ from Components.ScrollLabel import ScrollLabel
 from Components.Sources.StaticText import StaticText
 from Screens.Setup import Setup
 from Tools.camcontrol import CamControl
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import isPluginExtensionInstalled
 from Tools.GetEcmInfo import GetEcmInfo
 
 
@@ -95,7 +95,7 @@ class SoftcamSetup(Setup):
 		if "oscam" or "ncam" in config.misc.softcams.value.lower():
 			from Screens.OScamInfo import OscamInfoMenu
 			self.session.open(OscamInfoMenu)
-		elif isfile(ppanelFilename) and isfile(resolveFilename(SCOPE_PLUGINS, "Extensions/PPanel/plugin." + getPyExt())):
+		elif isfile(ppanelFilename) and isPluginExtensionInstalled("PPanel"):
 			from Plugins.Extensions.PPanel.ppanel import PPanel
 			self.session.open(PPanel, name="%s PPanel" % config.misc.softcams.value, node=None, filename=ppanelFilename, deletenode=None)
 

@@ -3,7 +3,7 @@
 from __future__ import print_function
 from Screens.Screen import Screen
 from Screens.ParentalControlSetup import ProtectedScreen
-from enigma import eConsoleAppContainer, eDVBDB, eTimer, getPyExt
+from enigma import eConsoleAppContainer, eDVBDB, eTimer
 from Components.ActionMap import ActionMap, NumberActionMap
 from Components.config import config, ConfigSubsection, ConfigText, ConfigYesNo
 from Components.PluginComponent import plugins
@@ -19,7 +19,7 @@ from Screens.MessageBox import MessageBox
 from Screens.ChoiceBox import ChoiceBox
 from Screens.Console import Console
 from Plugins.Plugin import PluginDescriptor
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_CURRENT_SKIN
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_CURRENT_SKIN, isSystemPluginInstalled
 from Tools.LoadPixmap import LoadPixmap
 
 from time import time
@@ -265,7 +265,7 @@ class PluginBrowser(Screen, ProtectedScreen):
 		self.checkWarnings()
 
 	def openExtensionmanager(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/SoftwareManager/plugin." + getPyExt())):
+		if isSystemPluginInstalled("SoftwareManager"):
 			try:
 				from Plugins.SystemPlugins.SoftwareManager.plugin import PluginManager
 			except ImportError as e:
