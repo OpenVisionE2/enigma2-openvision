@@ -63,9 +63,9 @@ class OverscanWizard(Screen, ConfigListScreen):
 		from enigma import eSize, ePoint
 		if getDesktop(0).size().height() == 1080:
 			lenlist = len(self.list) * 40
-			self["config"].instance.move(ePoint(343, 873 - lenlist))
+			self["config"].instance.move(ePoint(343, 885 - lenlist))
 			self["config"].instance.resize(eSize(1234, lenlist))
-			self["introduction"].instance.resize(eSize(1234, 623 - lenlist))
+			self["introduction"].instance.resize(eSize(1234, 635 - lenlist))
 		else:
 			lenlist = len(self.list) * 30
 			self["config"].instance.move(ePoint(240, 580 - lenlist))
