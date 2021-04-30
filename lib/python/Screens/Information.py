@@ -35,6 +35,8 @@ from Tools.Directories import fileReadLine, fileReadLines, fileWriteLine
 from Tools.Geolocation import geolocation
 from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
 
+MODULE_NAME = __name__.split(".")[-1]
+
 INFO_COLORS = ["N", "H", "P", "V", "M"]
 INFO_COLOR = {
 	"B": None,
@@ -198,7 +200,7 @@ class BenchmarkInformation(InformationBase):
 		self.informationTimer.stop()
 		self.cpuTypes = []
 		lines = []
-		lines = fileReadLines("/proc/cpuinfo", lines)
+		lines = fileReadLines("/proc/cpuinfo", lines, source=MODULE_NAME)
 		for line in lines:
 			if line.startswith("model name") or line.startswith("Processor"):  # HiSilicon use the label "Processor"!
 				self.cpuTypes.append([x.strip() for x in line.split(":")][1])
@@ -469,9 +471,9 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("M", _("Donate at %s") % "https://forum.openvision.tech/app.php/donate"))
 		info.append("")
-		visionVersion = fileReadLine("/etc/openvision/visionversion", boxbranding.getVisionVersion())
+		visionVersion = fileReadLine("/etc/openvision/visionversion", boxbranding.getVisionVersion(), source=MODULE_NAME)
 		info.append(formatLine("P1", _("OpenVision version"), visionVersion))
-		visionRevision = fileReadLine("/etc/openvision/visionrevision", boxbranding.getVisionRevision())
+		visionRevision = fileReadLine("/etc/openvision/visionrevision", boxbranding.getVisionRevision(), source=MODULE_NAME)
 		info.append(formatLine("P1", _("OpenVision revision"), visionRevision))
 		if config.misc.OVupdatecheck.value:
 			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if boxbranding.getVisionVersion().startswith("10") else "old")
@@ -484,11 +486,11 @@ class ImageInformation(InformationBase):
 		else:
 			ovRevisionUpdate = _("Disabled in configuration")
 		info.append(formatLine("P1", _("Latest revision on github"), ovRevisionUpdate))
-		visionLanguage = fileReadLine("/etc/openvision/visionlanguage")
+		visionLanguage = fileReadLine("/etc/openvision/visionlanguage", source=MODULE_NAME)
 		if visionLanguage:
 			info.append(formatLine("P1", _("OpenVision language"), visionLanguage))
 		info.append(formatLine("P1", _("OpenVision module"), about.getVisionModule()))
-		multibootFlag = _("Yes") if fileReadLine("/etc/openvision/multiboot", "1") else _("No")
+		multibootFlag = _("Yes") if fileReadLine("/etc/openvision/multiboot", "1", source=MODULE_NAME) else _("No")
 		info.append(formatLine("P1", _("Soft multiboot"), multibootFlag))
 		info.append(formatLine("P1", _("Flash type"), about.getFlashType()))
 		xResolution = getDesktop(0).size().width()
@@ -511,7 +513,7 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Last update"), about.getUpdateDateString()))
 		info.append(formatLine("P1", _("Enigma2 (re)starts"), config.misc.startCounter.value))
 		info.append(formatLine("P1", _("Enigma2 debug level"), eGetEnigmaDebugLvl()))
-		mediaService = fileReadLine("/etc/openvision/mediaservice")
+		mediaService = fileReadLine("/etc/openvision/mediaservice", source=MODULE_NAME)
 		if mediaService:
 			info.append(formatLine("P1", _("Media service"), mediaService.replace("enigma2-plugin-systemplugins-", "")))
 		info.append("")
@@ -535,10 +537,10 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Python version"), about.getPythonVersionString()))
 		info.append(formatLine("P1", _("GStreamer version"), about.getGStreamerVersionString().replace("GStreamer", "")))
 		info.append(formatLine("P1", _("FFmpeg version"), about.getFFmpegVersionString()))
-		bootId = fileReadLine("/proc/sys/kernel/random/boot_id")
+		bootId = fileReadLine("/proc/sys/kernel/random/boot_id", source=MODULE_NAME)
 		if bootId:
 			info.append(formatLine("P1", _("Boot ID"), bootId))
-		uuId = fileReadLine("/proc/sys/kernel/random/uuid")
+		uuId = fileReadLine("/proc/sys/kernel/random/uuid", source=MODULE_NAME)
 		if uuId:
 			info.append(formatLine("P1", _("UUID"), uuId))
 		info.append("")
@@ -622,7 +624,7 @@ class MemoryInformation(InformationBase):
 
 	def displayInformation(self):
 		info = []
-		memInfo = fileReadLines("/proc/meminfo")
+		memInfo = fileReadLines("/proc/meminfo", source=MODULE_NAME)
 		info.append(formatLine("H", _("RAM (Summary)")))
 		info.append("")
 		for line in memInfo:
@@ -912,7 +914,7 @@ class NetworkInformation(InformationBase):
 
 	def displayInformation(self):
 		info = []
-		hostname = fileReadLine("/proc/sys/kernel/hostname")
+		hostname = fileReadLine("/proc/sys/kernel/hostname", source=MODULE_NAME)
 		info.append(formatLine("H0H", _("Hostname"), hostname))
 		for interface in sorted(list(self.interfaceData.keys())):
 			info.append("")
@@ -1004,7 +1006,7 @@ class ReceiverInformation(InformationBase):
 		hwSerial = getHWSerial()
 		if hwSerial:
 			info.append(formatLine("P1", _("Hardware serial"), (hwSerial if hwSerial != "unknown" else about.getCPUSerial())))
-		hwRelease = fileReadLine("/proc/stb/info/release")
+		hwRelease = fileReadLine("/proc/stb/info/release", source=MODULE_NAME)
 		if hwRelease:
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
 		info.append(formatLine("P1", _("Brand/Meta"), SystemInfo["MachineBrand"]))
@@ -1038,7 +1040,7 @@ class ReceiverInformation(InformationBase):
 					info.append(_("RC type:|%s") % _("LIRC remote"))
 			else:
 				info.append(formatLine("P1", _("RC type"), boxRcType))
-		customCode = fileReadLine("/proc/stb/ir/rc/customcode")
+		customCode = fileReadLine("/proc/stb/ir/rc/customcode", source=MODULE_NAME)
 		if customCode:
 			info.append(formatLine("P1", _("RC custom code"), customCode))
 		info.append(formatLine("P1", _("RC code"), boxbranding.getRCType()))
@@ -1051,10 +1053,10 @@ class ReceiverInformation(InformationBase):
 		info.append(formatLine("P1", _("Kernel version"), boxbranding.getKernelVersion()))
 		moduleLayout = popen("find /lib/modules/ -type f -name 'openvision.ko' -exec modprobe --dump-modversions {} \; | grep 'module_layout' | cut -c-11").read().strip()
 		info.append(formatLine("P1", _("Kernel module layout"), (moduleLayout if moduleLayout else _("N/A"))))
-		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id")
+		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id", source=MODULE_NAME)
 		if deviceId:
 			info.append(formatLine("P1", _("Device id"), deviceId))
-		givenId = fileReadLine("/proc/device-tree/le-dt-id")
+		givenId = fileReadLine("/proc/device-tree/le-dt-id", source=MODULE_NAME)
 		if givenId:
 			info.append(formatLine("P1", _("Given device id"), givenId))
 		info.append("")
