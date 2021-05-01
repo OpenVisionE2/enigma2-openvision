@@ -79,6 +79,7 @@ class AutoRestoreWizard(MessageBox):
 		else:
 			MessageBox.close(self)
 
+
 class AutoInstallWizard(Screen):
 	skin = """<screen name="AutoInstall" position="fill" flags="wfNoBorder">
 		<panel position="left" size="5%,*"/>
