@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 16:51+0430\n"
+"POT-Creation-Date: 2021-05-01 12:06+0430\n"
 "PO-Revision-Date: 2021-01-17 18:31+0100\n"
 "Last-Translator: Željko <zeljko2@hi.ht.hr>\n"
 "Language-Team: Željko\n"
@@ -85,6 +85,10 @@ msgstr " (Radio)"
 
 msgid " (TV)"
 msgstr " (ТV)"
+
+#, fuzzy
+msgid " (auto detection)"
+msgstr "Za odabir zvuka"
 
 msgid " (disabled)"
 msgstr " (onemogućeno)"
@@ -1195,10 +1199,6 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
-msgid "%s:%s"
-msgstr "%s:%s"
-
-#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -2150,9 +2150,6 @@ msgstr ""
 "Koristite daljinski upravljač za vaš resiver\n"
 "Dozvoljava korištenje daljinskog od TV-a za upravljanje resiverom."
 
-msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
-msgstr ""
-
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr ""
 
@@ -2555,7 +2552,7 @@ msgstr "idite u duboko stanje čekanja"
 
 #, fuzzy
 msgid "Auto detect"
-msgstr "Аuto Diseqc"
+msgstr "Za odabir zvuka"
 
 msgid "Auto flesh"
 msgstr "Аuto flesh"
@@ -5657,10 +5654,6 @@ msgstr "Omogućite otkrivanje sukoba tajmera"
 msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
 msgstr "Omogućite prikaz svih pravih/lažnih, da/ne, uklj/isklj i omogućite/onemogućite postavljanje opcija kao grafički prekidač."
 
-#, fuzzy
-msgid "Enable twisted log"
-msgstr "Omogućite Netmed EPG"
-
 msgid "Enable volume control with arrow buttons"
 msgstr "Omogućite kontrolu glasnoće pomoću tipke sa strelicama"
 
@@ -5753,9 +5746,6 @@ msgid "Enigma2 version"
 msgstr "Verzija enigme: "
 
 msgid "Enigmalight"
-msgstr ""
-
-msgid "Enough - Vision image"
 msgstr ""
 
 msgid "Enter"
@@ -6591,6 +6581,10 @@ msgstr "Dodatne mogućnosti"
 msgid "G"
 msgstr "G"
 
+#, fuzzy
+msgid "GCC version"
+msgstr "Inverzija"
+
 msgid "GIGA"
 msgstr ""
 
@@ -6693,6 +6687,10 @@ msgstr ""
 #, fuzzy
 msgid "Given device id"
 msgstr "Trenutni uređaj: "
+
+#, fuzzy
+msgid "Glibc version"
+msgstr "Inverzija"
 
 msgid "Go down the list"
 msgstr "Idite niz popis"
@@ -6985,6 +6983,9 @@ msgstr ""
 #, fuzzy
 msgid "HiSilicon specific information"
 msgstr "Informacije o aktivnostima upravitelja dodataka"
+
+msgid "HiSilicon specific information not found."
+msgstr ""
 
 #, fuzzy
 msgid "Hidden / Blank"
@@ -8283,9 +8284,6 @@ msgstr ""
 msgid "Maybe the reason that recording is currently running. Please stop the recording before trying to configure the positioner."
 msgstr "Možda je razlog što se snimanje trenutno izvodi. Zaustavite snimanje prije pokušaja konfiguriranja uređaja za pozicioniranje."
 
-msgid "Maybe you're using a test image without any feeds or an unofficial one with a private feed server."
-msgstr ""
-
 msgid "Mayotte"
 msgstr "Mayotte"
 
@@ -9097,6 +9095,9 @@ msgstr "Norfolk Island"
 msgid "Normal"
 msgstr "Normalan"
 
+msgid "Normal - Standard image"
+msgstr ""
+
 msgid "Normal mode"
 msgstr "Normalni način rada"
 
@@ -9208,6 +9209,9 @@ msgstr "OK"
 
 msgid "ONID"
 msgstr "ONID"
+
+msgid "OPKG clean mode"
+msgstr ""
 
 #, fuzzy
 msgid "OSD"
@@ -9513,6 +9517,10 @@ msgstr ""
 
 msgid "PPanel"
 msgstr "PPanel"
+
+#, fuzzy
+msgid "Package information currently not available!"
+msgstr "Koristite ViaSat EPG informacije kada su dostupne."
 
 msgid "Package list update"
 msgstr "Ažuriranje popisa paketa."
@@ -14030,10 +14038,6 @@ msgstr ""
 msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr ""
 
-#, python-format
-msgid "The status of the current image could not be checked because %s can not be reached."
-msgstr "Status trenutne verzije nije moguće provjeriti jer jedan od razloga %s ne odgovara."
-
 msgid "The team relies on donations to fund OpenVision development."
 msgstr ""
 
@@ -14117,12 +14121,6 @@ msgstr ""
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
 msgstr "Ovo polje omogućuje pretraživanje dodatne brzine do %s."
-
-msgid ""
-"This image is intended for developers and testers.\n"
-"No support will be provided!\n"
-"Do you understand this?"
-msgstr ""
 
 msgid "This is a multitype tuner. Available options depend on the hardware."
 msgstr "Ovo je višenamjenski tjuner. Dostupne opcije ovise o hardveru."
@@ -14856,6 +14854,9 @@ msgstr "USALS kalibracija"
 msgid "USB stick"
 msgstr "USB stik"
 
+msgid "UUID"
+msgstr ""
+
 msgid "Uganda"
 msgstr "Uganda"
 
@@ -14883,6 +14884,10 @@ msgstr ""
 "U tijeku je automatsko ažuriranje.\n"
 "Pričekajte da se prijemnik ponovno pokrene\n"
 "što može potrajati nekoliko minuta."
+
+#, fuzzy
+msgid "Unavailable"
+msgstr "nedostupno"
 
 msgid "Uncover dashed flickering line for this service"
 msgstr "Prikaži trepćuću liniju za ovu uslugu"
@@ -14939,10 +14944,6 @@ msgid "Universal LNB"
 msgstr "Univerzalni LNB"
 
 msgid "Unknown"
-msgstr "Nepoznato"
-
-#, fuzzy
-msgid "Unknown!"
 msgstr "Nepoznato"
 
 msgid "Unmark service as dedicated 3D service"
@@ -15575,6 +15576,9 @@ msgstr ""
 msgid "Warning: no LNB; using factory defaults."
 msgstr "Upozorenje: nema LNB-a; koriste tvorničke postavke."
 
+msgid "Warning: the second input of this dual tuner may not support SCR LNBs. "
+msgstr ""
+
 msgid "Watch movies..."
 msgstr "Pregledajte video..."
 
@@ -15745,6 +15749,9 @@ msgstr "Kada je omogućeno, uvijek dekodirajte primanje web prijenosa. Ovo zauzi
 
 msgid "When enabled, authentication is required to watch http streams."
 msgstr "Kada je omogućeno, autentifikacija je potrebna za gledanje web prijenosa."
+
+msgid "When enabled, before opkg update there will be opkg clean to make sure nothing ruine the update but only enable this when you can not update online."
+msgstr ""
 
 msgid "When enabled, channel numbering will start at '1' for each bouquet."
 msgstr "Kada je omogućeno, numeriranje kanala će početi od '1' za svaki paket."
@@ -16006,10 +16013,6 @@ msgstr "S pogreškama:"
 msgid "With popup"
 msgstr "S porukom"
 
-#, fuzzy
-msgid "With text"
-msgstr "s tekstom"
-
 msgid "With this option you can switch on the display during operation."
 msgstr "S ovom opcijom možete uključiti zaslon tijekom rada."
 
@@ -16037,10 +16040,6 @@ msgstr "Pomoću ove opcije možete promjeniti LED boju ili deaktivirati LED."
 #, fuzzy
 msgid "With this option you can switch the LED fade."
 msgstr "Pomoću ove opcije možete promjeniti LED boju ili deaktivirati LED."
-
-#, fuzzy
-msgid "With tuner name"
-msgstr "s imenom tjunera"
 
 msgid "Without popup"
 msgstr "Bez poruke"
@@ -16530,6 +16529,10 @@ msgstr "reklame/kupovina"
 
 msgid "all"
 msgstr "sve"
+
+#, fuzzy
+msgid "all tuners"
+msgstr "Postavljanje rezervnog tjunera"
 
 msgid "alpha then oldest"
 msgstr ""
@@ -17292,6 +17295,10 @@ msgstr "nije podržano"
 msgid "not tested"
 msgstr "bez testa"
 
+#, fuzzy
+msgid "not valid frontend"
+msgstr "Nema pronađenog satelitskog sučelja!"
+
 msgid "not_tested"
 msgstr "bez_testa"
 
@@ -17455,6 +17462,10 @@ msgstr "romantika"
 
 msgid "rotor"
 msgstr "Motor:"
+
+#, fuzzy
+msgid "rotor is not used"
+msgstr "Tjuner nije podržan"
 
 #, fuzzy
 msgid "running..."
@@ -17804,6 +17815,12 @@ msgstr[2] "s %d greškama"
 
 msgid "with errors"
 msgstr "s greškama"
+
+msgid "with text"
+msgstr "s tekstom"
+
+msgid "with tuner name"
+msgstr "s imenom tjunera"
 
 msgid "with_errors"
 msgstr "s_greškama"

@@ -10,7 +10,6 @@ try:
 	from Plugins.SystemPlugins.OSDPositionSetup.overscanwizard import OverscanWizard
 except:
 	OverscanWizard = None
-from boxbranding import getImageVersion
 from Components.Pixmap import Pixmap
 from Components.ProgressBar import ProgressBar
 from Components.Sources.StaticText import StaticText
@@ -24,7 +23,6 @@ import os
 config.misc.firstrun = ConfigBoolean(default=True)
 config.misc.languageselected = ConfigBoolean(default=True)
 config.misc.do_overscanwizard = ConfigBoolean(default=OverscanWizard)
-config.misc.check_developimage = ConfigBoolean(default=False)
 
 
 class StartWizard(WizardLanguage, Rc):
@@ -80,26 +78,6 @@ class AutoRestoreWizard(MessageBox):
 			MessageBox.close(self, 43)
 		else:
 			MessageBox.close(self)
-
-
-def checkForDevelopImage():
-	if getImageVersion() == 'develop':
-		return config.misc.check_developimage.value
-	elif not config.misc.check_developimage.value:
-		config.misc.check_developimage.value = True
-		config.misc.check_developimage.save()
-
-
-class DevelopWizard(MessageBox):
-	def __init__(self, session):
-		MessageBox.__init__(self, session, _("This image is intended for developers and testers.\nNo support will be provided!\nDo you understand this?"), type=MessageBox.TYPE_YESNO, timeout=20, default=False, simple=True)
-
-	def close(self, value):
-		if value:
-			config.misc.check_developimage.value = False
-			config.misc.check_developimage.save()
-		MessageBox.close(self)
-
 
 class AutoInstallWizard(Screen):
 	skin = """<screen name="AutoInstall" position="fill" flags="wfNoBorder">
@@ -201,7 +179,6 @@ if not os.path.isfile("/etc/installed"):
 
 wizardManager.registerWizard(AutoInstallWizard, os.path.isfile("/etc/.doAutoinstall"), priority=0)
 wizardManager.registerWizard(AutoRestoreWizard, config.misc.languageselected.value and config.misc.firstrun.value and checkForAvailableAutoBackup(), priority=0)
-wizardManager.registerWizard(DevelopWizard, checkForDevelopImage(), priority=0)
 wizardManager.registerWizard(LanguageWizard, config.misc.languageselected.value, priority=10)
 if OverscanWizard:
 	wizardManager.registerWizard(OverscanWizard, config.misc.do_overscanwizard.value, priority=30)

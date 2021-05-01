@@ -219,6 +219,7 @@ SystemInfo["CanDownmixAAC"] = fileHas("/proc/stb/audio/aac_choices", "downmix")
 SystemInfo["HDMIAudioSource"] = fileCheck("/proc/stb/hdmi/audio_source")
 SystemInfo["BootDevice"] = getBootdevice()
 SystemInfo["FbcTunerPowerAlwaysOn"] = model in ("vusolo4k", "vuduo4k", "vuduo4kse", "vuultimo4k", "vuuno4k", "vuuno4kse") or platform == "gb7252"
+SystemInfo["HasPhysicalLoopthrough"] = ["Vuplus DVB-S NIM(AVL2108)", "GIGA DVB-S2 NIM (Internal)"]
 SystemInfo["SmallFlash"] = fileExists("/etc/openvision/smallflash")
 SystemInfo["MiddleFlash"] = fileExists("/etc/openvision/middleflash") and not fileExists("/etc/openvision/smallflash")
 SystemInfo["HaveCISSL"] = fileCheck("/etc/ssl/certs/customer.pem") and fileCheck("/etc/ssl/certs/device.pem")

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 16:51+0430\n"
+"POT-Creation-Date: 2021-05-01 12:06+0430\n"
 "PO-Revision-Date: 2013-10-23 19:15+0100\n"
 "Last-Translator: andy1 <dmmm8000pvr@gmail.com>\n"
 "Language-Team: none\n"
@@ -83,6 +83,10 @@ msgstr ""
 
 msgid " (TV)"
 msgstr ""
+
+#, fuzzy
+msgid " (auto detection)"
+msgstr "Til lyd utvalg"
 
 msgid " (disabled)"
 msgstr ""
@@ -1055,10 +1059,6 @@ msgstr ""
 
 #, python-format
 msgid "%s/%s: %s"
-msgstr ""
-
-#, python-format
-msgid "%s:%s"
 msgstr ""
 
 #, python-format
@@ -2066,9 +2066,6 @@ msgstr "ikke støttet"
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr "Bruk fjernkontroll tilhørende TV"
 
-msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
-msgstr ""
-
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr ""
 
@@ -2505,10 +2502,9 @@ msgstr "Auto oppdeling hvert ? minutter (0=aldri)"
 msgid "Auto deep standby"
 msgstr "slå helt av"
 
-#
 #, fuzzy
 msgid "Auto detect"
-msgstr "Automatisk"
+msgstr "Til lyd utvalg"
 
 #
 msgid "Auto flesh"
@@ -5881,10 +5877,6 @@ msgstr ""
 msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
 msgstr ""
 
-#, fuzzy
-msgid "Enable twisted log"
-msgstr "Aktivere Netmed EPG"
-
 msgid "Enable volume control with arrow buttons"
 msgstr ""
 
@@ -5994,9 +5986,6 @@ msgid "Enigma2 version"
 msgstr "Linuxkjerne versjon: "
 
 msgid "Enigmalight"
-msgstr ""
-
-msgid "Enough - Vision image"
 msgstr ""
 
 #, fuzzy
@@ -6886,6 +6875,10 @@ msgstr ""
 msgid "G"
 msgstr ""
 
+#, fuzzy
+msgid "GCC version"
+msgstr "Krenging"
+
 msgid "GIGA"
 msgstr ""
 
@@ -6992,6 +6985,10 @@ msgstr ""
 #, fuzzy
 msgid "Given device id"
 msgstr "Gjeldende enhet:"
+
+#, fuzzy
+msgid "Glibc version"
+msgstr "Krenging"
 
 msgid "Go down the list"
 msgstr "Gå nedover listen"
@@ -7305,6 +7302,9 @@ msgstr ""
 #, fuzzy
 msgid "HiSilicon specific information"
 msgstr "Aktivitets informasjon for programtillegg"
+
+msgid "HiSilicon specific information not found."
+msgstr ""
 
 #, fuzzy
 msgid "Hidden / Blank"
@@ -8738,9 +8738,6 @@ msgstr ""
 msgid "Maybe the reason that recording is currently running. Please stop the recording before trying to configure the positioner."
 msgstr ""
 
-msgid "Maybe you're using a test image without any feeds or an unofficial one with a private feed server."
-msgstr ""
-
 msgid "Mayotte"
 msgstr ""
 
@@ -9670,6 +9667,9 @@ msgstr ""
 msgid "Normal"
 msgstr "normal"
 
+msgid "Normal - Standard image"
+msgstr ""
+
 msgid "Normal mode"
 msgstr "Normal type"
 
@@ -9793,6 +9793,9 @@ msgid "OK"
 msgstr ""
 
 msgid "ONID"
+msgstr ""
+
+msgid "OPKG clean mode"
 msgstr ""
 
 msgid "OSD"
@@ -10112,6 +10115,10 @@ msgstr ""
 
 msgid "PPanel"
 msgstr ""
+
+#, fuzzy
+msgid "Package information currently not available!"
+msgstr "Bruk ViaSat EPG informasjon når den er tilgjengelig."
 
 #
 msgid "Package list update"
@@ -14995,10 +15002,6 @@ msgstr ""
 msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr ""
 
-#, fuzzy, python-format
-msgid "The status of the current image could not be checked because %s can not be reached."
-msgstr "Status for dagens beta programvare kan ikke kontrolleres fordi %s kan ikke nåes."
-
 msgid "The team relies on donations to fund OpenVision development."
 msgstr ""
 
@@ -15093,12 +15096,6 @@ msgstr ""
 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
-msgstr ""
-
-msgid ""
-"This image is intended for developers and testers.\n"
-"No support will be provided!\n"
-"Do you understand this?"
 msgstr ""
 
 msgid "This is a multitype tuner. Available options depend on the hardware."
@@ -15906,6 +15903,9 @@ msgstr "USALS kalibrering"
 msgid "USB stick"
 msgstr "USB minnepinne"
 
+msgid "UUID"
+msgstr ""
+
 msgid "Uganda"
 msgstr ""
 
@@ -15933,6 +15933,10 @@ msgstr ""
 "Oppdatering pågår\n"
 "Vennligst vent til mottakeren starter på nytt\n"
 "Dette kan ta flere minutter"
+
+#, fuzzy
+msgid "Unavailable"
+msgstr "utilgjengelig"
 
 msgid "Uncover dashed flickering line for this service"
 msgstr ""
@@ -15995,10 +15999,6 @@ msgid "Universal LNB"
 msgstr ""
 
 msgid "Unknown"
-msgstr "Ukjent"
-
-#, fuzzy
-msgid "Unknown!"
 msgstr "Ukjent"
 
 msgid "Unmark service as dedicated 3D service"
@@ -16686,6 +16686,9 @@ msgstr ""
 msgid "Warning: no LNB; using factory defaults."
 msgstr "Advarsel: ingen LNB; bruker standardinnstillinger."
 
+msgid "Warning: the second input of this dual tuner may not support SCR LNBs. "
+msgstr ""
+
 msgid "Watch movies..."
 msgstr "Se filmer..."
 
@@ -16866,6 +16869,9 @@ msgid "When enabled, always descramble receiving http streams. This takes up mor
 msgstr ""
 
 msgid "When enabled, authentication is required to watch http streams."
+msgstr ""
+
+msgid "When enabled, before opkg update there will be opkg clean to make sure nothing ruine the update but only enable this when you can not update online."
 msgstr ""
 
 msgid "When enabled, channel numbering will start at '1' for each bouquet."
@@ -17133,9 +17139,6 @@ msgstr ""
 msgid "With popup"
 msgstr "Med varsel"
 
-msgid "With text"
-msgstr ""
-
 #, fuzzy
 msgid "With this option you can switch on the display during operation."
 msgstr "Vis en liste over alle brukergrensesnitt og skjermvalg"
@@ -17164,11 +17167,6 @@ msgstr "Vis en liste over alle brukergrensesnitt og skjermvalg"
 #, fuzzy
 msgid "With this option you can switch the LED fade."
 msgstr "Vis en liste over alle brukergrensesnitt og skjermvalg"
-
-#
-#, fuzzy
-msgid "With tuner name"
-msgstr "Still inn tunervalg."
 
 msgid "Without popup"
 msgstr "Uten varsel"
@@ -17678,6 +17676,9 @@ msgid "advertisement/shopping"
 msgstr "reklame/shopping"
 
 msgid "all"
+msgstr ""
+
+msgid "all tuners"
 msgstr ""
 
 msgid "alpha then oldest"
@@ -18516,6 +18517,10 @@ msgstr "ikke støttet"
 msgid "not tested"
 msgstr ""
 
+#, fuzzy
+msgid "not valid frontend"
+msgstr "ugyldig type"
+
 msgid "not_tested"
 msgstr ""
 
@@ -18700,6 +18705,10 @@ msgstr "romantikk"
 #, fuzzy
 msgid "rotor"
 msgstr "kjører"
+
+#, fuzzy
+msgid "rotor is not used"
+msgstr "Motorhastighet"
 
 #, fuzzy
 msgid "running..."
@@ -19078,6 +19087,12 @@ msgstr[0] "med %d feil"
 msgstr[1] "med %d feil"
 
 msgid "with errors"
+msgstr ""
+
+msgid "with text"
+msgstr ""
+
+msgid "with tuner name"
 msgstr ""
 
 msgid "with_errors"

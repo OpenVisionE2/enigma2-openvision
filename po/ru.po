@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 16:51+0430\n"
+"POT-Creation-Date: 2021-05-01 12:06+0430\n"
 "PO-Revision-Date: 2021-04-03 02:16+0300\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: openPLi Dimitrij\n"
@@ -84,6 +84,10 @@ msgstr " (Радио)"
 
 msgid " (TV)"
 msgstr " (ТВ)"
+
+#, fuzzy
+msgid " (auto detection)"
+msgstr "Автоопределение"
 
 msgid " (disabled)"
 msgstr " (отключен)"
@@ -1070,10 +1074,6 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
-msgid "%s:%s"
-msgstr ""
-
-#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1971,9 +1971,6 @@ msgstr "Разрешить неподдерживаемые видео режи�
 
 msgid "Allows the TV remote to be used to control the receiver."
 msgstr "Позволяет использовать пульт от ТВ для управления ресивером."
-
-msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
-msgstr "Позволяет включить свернутый журнал. Он содержит очень подробную информацию обо всем, что делает."
 
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr "Позволяет включать/отключать отображение значков на передней панели."
@@ -5388,10 +5385,6 @@ msgstr "Включить обнаружение конфликтов тайме�
 msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
 msgstr "Значение для таких параметров, как 'да/нет', 'включить/выключить' и 'вкл/выкл', будет заменено графическим переключателем."
 
-#, fuzzy
-msgid "Enable twisted log"
-msgstr "Включить Netmed EPG"
-
 msgid "Enable volume control with arrow buttons"
 msgstr "Включить управление громкостью на кнопках со стрелками"
 
@@ -5484,9 +5477,6 @@ msgid "Enigma2 version"
 msgstr "Версия энигмы: "
 
 msgid "Enigmalight"
-msgstr ""
-
-msgid "Enough - Vision image"
 msgstr ""
 
 msgid "Enter"
@@ -6318,6 +6308,10 @@ msgstr "Дополнительные опции"
 msgid "G"
 msgstr "G"
 
+#, fuzzy
+msgid "GCC version"
+msgstr "Инверсия"
+
 msgid "GIGA"
 msgstr ""
 
@@ -6419,6 +6413,10 @@ msgstr ""
 #, fuzzy
 msgid "Given device id"
 msgstr "Текущее устройство:"
+
+#, fuzzy
+msgid "Glibc version"
+msgstr "Версия ядра: "
 
 msgid "Go down the list"
 msgstr "Перейти вниз списка"
@@ -6709,6 +6707,10 @@ msgstr ""
 
 #, fuzzy
 msgid "HiSilicon specific information"
+msgstr "Менеджер плагинов - информация"
+
+#, fuzzy
+msgid "HiSilicon specific information not found."
 msgstr "Менеджер плагинов - информация"
 
 #, fuzzy
@@ -7997,9 +7999,6 @@ msgstr ""
 msgid "Maybe the reason that recording is currently running. Please stop the recording before trying to configure the positioner."
 msgstr "Может быть причина этого, что сейчас идет запись. Остановите пожалуйста запись,перед настройкой позиционера."
 
-msgid "Maybe you're using a test image without any feeds or an unofficial one with a private feed server."
-msgstr ""
-
 msgid "Mayotte"
 msgstr "Mayotte"
 
@@ -8808,6 +8807,10 @@ msgstr "Norfolk Island"
 msgid "Normal"
 msgstr "Нормальный"
 
+#, fuzzy
+msgid "Normal - Standard image"
+msgstr "Cтандарт"
+
 msgid "Normal mode"
 msgstr "Нормальный режим"
 
@@ -8922,6 +8925,10 @@ msgstr "OK"
 
 msgid "ONID"
 msgstr "ONID"
+
+#, fuzzy
+msgid "OPKG clean mode"
+msgstr "Режим клиента"
 
 #, fuzzy
 msgid "OSD"
@@ -9221,6 +9228,10 @@ msgstr ""
 
 msgid "PPanel"
 msgstr "PPanel (shell скрипты)"
+
+#, fuzzy
+msgid "Package information currently not available!"
+msgstr "Использовать информацию ViaSat EPG (балтийские провайдеры 4.9E), когда она существует."
 
 msgid "Package list update"
 msgstr "Список пакетов обновления"
@@ -13674,10 +13685,6 @@ msgstr ""
 msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr ""
 
-#, python-format
-msgid "The status of the current image could not be checked because %s can not be reached."
-msgstr "Статус текущей бета версии не может быть проверен,одна из причин, %s не отвечает."
-
 msgid "The team relies on donations to fund OpenVision development."
 msgstr "Команда полагается на пожертвования для финансирования разработки OpenVision."
 
@@ -13761,15 +13768,6 @@ msgstr ""
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
 msgstr "Это позволяет вам искать дополнительную скорость передачи до %s."
-
-msgid ""
-"This image is intended for developers and testers.\n"
-"No support will be provided!\n"
-"Do you understand this?"
-msgstr ""
-"Этот имидж предназначен для разработчиков и тестировщиков.\n"
-"Никакой поддержки не будет!\n"
-"Вам это понятно?"
 
 msgid "This is a multitype tuner. Available options depend on the hardware."
 msgstr "Это мульти-тюнер. Доступные типы зависят от ПО производителя."
@@ -14494,6 +14492,9 @@ msgstr "Калибровка USALS"
 msgid "USB stick"
 msgstr "USB флешка"
 
+msgid "UUID"
+msgstr ""
+
 msgid "Uganda"
 msgstr "Uganda"
 
@@ -14521,6 +14522,10 @@ msgstr ""
 "Автоматическое обновление в процессе.\n"
 "Пожалуйста, дождитесь перезагрузки Вашего ресивера.\n"
 "Это может занять несколько минут..."
+
+#, fuzzy
+msgid "Unavailable"
+msgstr "недоступно"
 
 msgid "Uncover dashed flickering line for this service"
 msgstr "показать мигающую строку для этого сервиса"
@@ -14577,10 +14582,6 @@ msgid "Universal LNB"
 msgstr "Универсальный LNB"
 
 msgid "Unknown"
-msgstr "Неизвестный"
-
-#, fuzzy
-msgid "Unknown!"
 msgstr "Неизвестный"
 
 msgid "Unmark service as dedicated 3D service"
@@ -15205,6 +15206,9 @@ msgstr ""
 msgid "Warning: no LNB; using factory defaults."
 msgstr "Предупреждение: нет LNB; используются заводские настройки."
 
+msgid "Warning: the second input of this dual tuner may not support SCR LNBs. "
+msgstr ""
+
 msgid "Watch movies..."
 msgstr "Просмотр видео..."
 
@@ -15375,6 +15379,9 @@ msgstr "Если это включено, то полученные http стр�
 
 msgid "When enabled, authentication is required to watch http streams."
 msgstr "Если это включено, требуется аутентификация для просмотра HTTP стрима."
+
+msgid "When enabled, before opkg update there will be opkg clean to make sure nothing ruine the update but only enable this when you can not update online."
+msgstr ""
 
 msgid "When enabled, channel numbering will start at '1' for each bouquet."
 msgstr "Если включено, то нумерация каналов в каждом букете будет начинатся с '1' номера"
@@ -15635,10 +15642,6 @@ msgstr "С ошибками:"
 msgid "With popup"
 msgstr "С сообщением"
 
-#, fuzzy
-msgid "With text"
-msgstr "с текстом"
-
 msgid "With this option you can switch on the display during operation."
 msgstr "С помощью этой опции вы можете включить дисплей во время работы."
 
@@ -15666,10 +15669,6 @@ msgstr "С помощью этой опции вы можете переключ
 #, fuzzy
 msgid "With this option you can switch the LED fade."
 msgstr "С помощью этой опции вы можете переключить цвет LED или отключить LED."
-
-#, fuzzy
-msgid "With tuner name"
-msgstr "с именем тюнера"
 
 msgid "Without popup"
 msgstr "Без сообщения"
@@ -16159,6 +16158,10 @@ msgstr "реклама/шоппинг"
 
 msgid "all"
 msgstr "все"
+
+#, fuzzy
+msgid "all tuners"
+msgstr "Настройки удаленного резервного ресивера"
 
 msgid "alpha then oldest"
 msgstr ""
@@ -16916,6 +16919,10 @@ msgstr "не поддерживается"
 msgid "not tested"
 msgstr "без теста"
 
+#, fuzzy
+msgid "not valid frontend"
+msgstr "Не найден спутниковый интрефейс!"
+
 msgid "not_tested"
 msgstr "без теста"
 
@@ -17071,6 +17078,10 @@ msgstr "романс"
 
 msgid "rotor"
 msgstr "мотор"
+
+#, fuzzy
+msgid "rotor is not used"
+msgstr "Тюнер не поддерживается"
 
 #, fuzzy
 msgid "running..."
@@ -17419,6 +17430,14 @@ msgstr[2] "с %d ошибками"
 
 msgid "with errors"
 msgstr "с ошибками"
+
+#, fuzzy
+msgid "with text"
+msgstr "с текстом"
+
+#, fuzzy
+msgid "with tuner name"
+msgstr "с именем тюнера"
 
 msgid "with_errors"
 msgstr "с ошибками"

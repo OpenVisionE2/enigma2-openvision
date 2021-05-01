@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 16:51+0430\n"
+"POT-Creation-Date: 2021-05-01 12:06+0430\n"
 "PO-Revision-Date: 2021-03-07 03:11+0100\n"
 "Last-Translator: Kuatto\n"
 "Language-Team: Álvaro <mi casa>\n"
@@ -88,6 +88,10 @@ msgstr " (Radio)"
 
 msgid " (TV)"
 msgstr " (TV)"
+
+#, fuzzy
+msgid " (auto detection)"
+msgstr "Ir a Selección de Audio"
 
 msgid " (disabled)"
 msgstr " (desactivado)"
@@ -1189,10 +1193,6 @@ msgstr "%s%s(Por Defecto: %s)"
 msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
-#, python-format
-msgid "%s:%s"
-msgstr "%s:%s"
-
 #, fuzzy, python-format
 msgid "%s?"
 msgstr "%s"
@@ -1244,9 +1244,8 @@ msgstr "(muestra el menú de audio opcional del DVD)"
 msgid "(unknown)"
 msgstr "(desconocido)"
 
-#, fuzzy
 msgid "* = Restart Required"
-msgstr "Reiniciar audio"
+msgstr "* = Reiniciar Requerido"
 
 msgid "* Only available if more than one interface is active."
 msgstr "* Solo disponible si hay más de un interfaz activo."
@@ -1698,9 +1697,8 @@ msgstr ""
 msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "Un EPG gráfico para todos los servicios de un bouquet específico"
 
-#, fuzzy
 msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
-msgstr "Un resaltado en la imagen del control remoto muestra a qué botón se refiere la ayuda. Si más de un botón realiza la función indicada, se mostrará más de un resaltado. El texto debajo de la lista indica si la función es para una pulsación larga de los botones."
+msgstr "Un resaltado en la imagen del mando a distancia muestra a qué botón se refiere la ayuda. Si más de un botón realiza la función indicada, se mostrará más de un resaltado. El texto debajo de la lista enumera los botones activos y si la función requiere una pulsación larga o MAYÚS de los botones(s)."
 
 #, python-format
 msgid ""
@@ -2139,10 +2137,7 @@ msgid "Allow unsupported modes"
 msgstr "Permitir modos no compatibles"
 
 msgid "Allows the TV remote to be used to control the receiver."
-msgstr "Permite usar el control remoto del televisor para controlar el receptor."
-
-msgid "Allows you to enable the twisted log. It contains very detailed information of everything the twisted does."
-msgstr "Le permite habilitar log twisted en Carpeta tmp. Contiene información muy detallada de todo lo que hace el sistema."
+msgstr "Permite usar el mando a distancia del televisor para controlar el receptor."
 
 msgid "Allows you to enable/disable displaying icons on the frontpanel."
 msgstr "Le permite habilitar/deshabilitar la visualización de iconos en display."
@@ -3652,7 +3647,7 @@ msgid "Configuration mode: %s"
 msgstr "Modo de configuración: %s"
 
 msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
-msgstr ""
+msgstr "Las opciones de configuración para la pantalla AYUDA se pueden encontrar en 'MENÚ> Configuración> Interfaz de usuario> Configuración de interfaz de usuario'."
 
 #, fuzzy
 msgid "Configure ATSC"
@@ -4913,7 +4908,7 @@ msgid "DiSEqC-tester settings"
 msgstr "Ajustes del DiSEqC-tester"
 
 msgid "Did you see all eight arrow heads?"
-msgstr "Viste las 8 puntas de fecha?"
+msgstr "Viste las 8 puntas de las flechas?"
 
 msgid "Digital contour removal"
 msgstr "Remoción de contorno digital"
@@ -5182,7 +5177,7 @@ msgid "Do you want to preview this DVD before burning?"
 msgstr "¿Quieres previsualizar el DVD antes de quemarlo?"
 
 msgid "Do you want to quit the overscan wizard?"
-msgstr "¿Quieres salir del asistentes de overscan?"
+msgstr "¿Quieres salir del asistente de overscan?"
 
 msgid "Do you want to reboot your receiver?"
 msgstr "¿Quieres reiniciar su receptor?"
@@ -5537,9 +5532,8 @@ msgstr "Activar Virgin EPG"
 msgid "Enable auto cable scan"
 msgstr "Activar búsqueda automática de cable"
 
-#, fuzzy
 msgid "Enable auto fastscan"
-msgstr "Activar búsqueda automática rápida"
+msgstr "Habilitar escaneo rápido automático"
 
 #, fuzzy, python-format
 msgid "Enable auto fastscan for %s"
@@ -5557,9 +5551,8 @@ msgstr "Activar selección de bouquet en EPG múltiple"
 msgid "Enable client mode"
 msgstr "Habilitar modo cliente"
 
-#, fuzzy
 msgid "Enable debug logs *"
-msgstr "Ruta de registro de depuración"
+msgstr "Habilitar logs de depuración *"
 
 msgid "Enable fade-out functionality"
 msgstr ""
@@ -5609,9 +5602,6 @@ msgstr "Activa temporizador de detección de conflictos"
 
 msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
 msgstr "Habilitar para mostrar todo verdadero/falso, sí/no, encendido/apagado y activar/desactivar las opciones de configuración como un interruptor gráfico."
-
-msgid "Enable twisted log"
-msgstr "Habilitar log twisted"
 
 msgid "Enable volume control with arrow buttons"
 msgstr "Habilite el control de volumen con botones flecha (cruzeta del botón OK)"
@@ -5704,9 +5694,6 @@ msgid "Enigma2 version"
 msgstr "Versión de Enigma: "
 
 msgid "Enigmalight"
-msgstr ""
-
-msgid "Enough - Vision image"
 msgstr ""
 
 msgid "Enter"
@@ -6535,6 +6522,10 @@ msgstr "Opciones adicionales"
 msgid "G"
 msgstr "G"
 
+#, fuzzy
+msgid "GCC version"
+msgstr "Inversión"
+
 msgid "GIGA"
 msgstr ""
 
@@ -6635,6 +6626,10 @@ msgstr ""
 #, fuzzy
 msgid "Given device id"
 msgstr "Dispositivo actual: "
+
+#, fuzzy
+msgid "Glibc version"
+msgstr "Inversión"
 
 msgid "Go down the list"
 msgstr "Ve abajo de la lista"
@@ -6838,7 +6833,6 @@ msgstr "HDR10 soportado"
 msgid "HELP"
 msgstr ""
 
-#, fuzzy
 msgid "HELP provides brief information for buttons in your current context."
 msgstr "Breve información de ayuda para los botones en su contexto actual."
 
@@ -6913,9 +6907,8 @@ msgstr "anchura"
 msgid "Help"
 msgstr "Ayuda"
 
-#, fuzzy
 msgid "Help Screen Information"
-msgstr "Información Geolocalización"
+msgstr "Pantalla Información Ayuda"
 
 msgid "Helps setting up your antenna"
 msgstr "Ayuda a configurar su antena"
@@ -6926,6 +6919,9 @@ msgstr ""
 #, fuzzy
 msgid "HiSilicon specific information"
 msgstr "Información de actividad del administrador de plugins"
+
+msgid "HiSilicon specific information not found."
+msgstr ""
 
 msgid "Hidden / Blank"
 msgstr "Ocultar / En blanco"
@@ -7148,9 +7144,8 @@ msgstr "Islandia"
 msgid "Icons"
 msgstr "Iconos"
 
-#, fuzzy
 msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
-msgstr "Si una acción es configurable por el usuario, su entrada de ayuda se marcará con una (C)."
+msgstr "Si una acción es configurable por el usuario, su entrada de ayuda se marcará con un sufijo '(C)'."
 
 msgid "If disabled, underline characters in file and directory names are not shown and are replaced with spaces."
 msgstr "Si está deshabilitado, los caracteres subrayados en los nombres de archivo y directorio no se muestran y se reemplazan con espacios."
@@ -7191,7 +7186,7 @@ msgid ""
 "your scart connection. Press OK to return."
 msgstr ""
 "Si ves esto, algo está mal con\n"
-"su conexión scart. Presione OK para regresar."
+"su conexión scart. Pulse OK para regresar."
 
 msgid "If you would like to support us then please consider donating."
 msgstr ""
@@ -8002,9 +7997,8 @@ msgstr ""
 msgid "Logs Setup"
 msgstr "Ajustes Registros"
 
-#, fuzzy
 msgid "Logs folder location *"
-msgstr "Carpeta localización Logs"
+msgstr "Ubicación de la carpeta de Logs *"
 
 msgid "Long filenames"
 msgstr "Nombres largos de archivo"
@@ -8206,9 +8200,6 @@ msgstr "Número máximo de dias en EPG"
 
 msgid "Maybe the reason that recording is currently running. Please stop the recording before trying to configure the positioner."
 msgstr "Tal vez la razón por la que la grabación se está ejecutando actualmente. Por favor, detenga la grabación antes de intentar configurar el motor."
-
-msgid "Maybe you're using a test image without any feeds or an unofficial one with a private feed server."
-msgstr ""
 
 msgid "Mayotte"
 msgstr "Mayotte"
@@ -8689,9 +8680,8 @@ msgstr "Namibia"
 msgid "Nauru"
 msgstr "Nauru"
 
-#, fuzzy
 msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
-msgstr "Navegue hacia arriba / abajo con los botones ARRIBA/ABAJO y página arriba/abajo con IZQUIERDA/DERECHA. SALIR para volver a la pantalla de ayuda. Aceptar para realizar la acción descrita en la ayuda resaltada actualmente."
+msgstr "Navegue hacia arriba/abajo con los botones ARRIBA/ABAJO y página arriba/abajo con IZQUIERDA/DERECHA. Aceptar para realizar la acción descrita en la ayuda resaltada actualmente."
 
 msgid "Nepal"
 msgstr "Nepal"
@@ -9013,6 +9003,10 @@ msgstr "Isla Norfolk"
 msgid "Normal"
 msgstr "Normal"
 
+#, fuzzy
+msgid "Normal - Standard image"
+msgstr "Menú Standard"
+
 msgid "Normal mode"
 msgstr "Modo normal"
 
@@ -9096,9 +9090,8 @@ msgstr "Ahora, use la configuración de contraste para aumentar el brillo del fo
 msgid "Number of channels shown in channel selection list"
 msgstr "Número de canales que se muestran en la lista de canales"
 
-#, fuzzy
 msgid "Number of debug logs to keep *"
-msgstr "Número de filas para mostrar"
+msgstr "Número máximo de logs para mantenerlos *"
 
 msgid "Number of digits in channel number"
 msgstr "Número de dígitos en número de canal"
@@ -9123,6 +9116,9 @@ msgstr "OK"
 
 msgid "ONID"
 msgstr "ONID"
+
+msgid "OPKG clean mode"
+msgstr "Modo de limpieza OPKG"
 
 #, fuzzy
 msgid "OSD"
@@ -9281,7 +9277,7 @@ msgstr "Extensiones"
 
 #, fuzzy
 msgid "OpenVision Information"
-msgstr "Información"
+msgstr "Pantalla Información Ayuda"
 
 msgid "OpenVision Information Actions"
 msgstr ""
@@ -9357,9 +9353,8 @@ msgstr "Otros"
 msgid "Other Subtitles & lang"
 msgstr "Otros Subtítulos lenguaje"
 
-#, fuzzy
 msgid "Other buttons will jump to the help information for that button, if there is help available."
-msgstr "Otros botones saltarán a la ayuda de ese botón, si hay ayuda."
+msgstr "Otros botones saltarán a la información de ayuda para ese botón, si hay ayuda disponible."
 
 msgid "Other functions"
 msgstr "Otras funciones"
@@ -9431,6 +9426,10 @@ msgstr ""
 
 msgid "PPanel"
 msgstr "PPanel"
+
+#, fuzzy
+msgid "Package information currently not available!"
+msgstr "Usar la información de Viasat EPG cuando esté disponible."
 
 msgid "Package list update"
 msgstr "Actualización de lista de paquetes"
@@ -9858,8 +9857,8 @@ msgid ""
 "Press OK to go back to the TV mode or EXIT to cancel the moving."
 msgstr ""
 "Utilice las teclas de dirección para mover la ventana PiP.\n"
-"Presione Bouquet +/- para cambiar el tamaño de la ventana.\n"
-"Presione OK para volver al modo TV o EXIT para cancelar el movimiento."
+"Pulse Bouquet +/- para cambiar el tamaño de la ventana.\n"
+"Pulse OK para volver al modo TV o EXIT para cancelar el movimiento."
 
 msgid "Please use the UP and DOWN keys to select your language. Afterwards press the OK button."
 msgstr "Utilice las teclas ARRIBA y ABAJO para seleccionar su idioma. Luego presione el botón OK."
@@ -10089,96 +10088,95 @@ msgid "Preschool"
 msgstr ""
 
 msgid "Press '0' to toggle PiP mode"
-msgstr "Presione ‘0’ para alternar el modo PiP"
+msgstr "Pulse ‘0’ para alternar el modo PiP"
 
 msgid "Press 'OK' for attach function."
-msgstr "Presione 'OK' para asignar la función."
+msgstr "Pulse 'OK' para asignar la función."
 
 msgid "Press 'OK' for attach next function or 'CH+/-' for edit attached."
-msgstr "Presione 'OK' para asignar la siguiente función o 'CH +/-' para editar lo asignado."
+msgstr "Pulse 'OK' para asignar la siguiente función o 'CH +/-' para editar lo asignado."
 
 msgid "Press 'OK' for remove item or 'CH+/-' for toggle to list of features."
-msgstr "Presione 'Aceptar' para eliminar el elemento o 'CH +/-' para alternar a la lista de características."
+msgstr "Pulse 'Aceptar' para eliminar el elemento o 'CH +/-' para alternar a la lista de características."
 
 msgid "Press 'OK' for remove item or < > for change order or 'CH+/-' for toggle to list of features."
-msgstr "Presione 'Aceptar' para eliminar el elemento o <> para cambiar el orden o 'CH +/-' para alternar a la lista de características."
+msgstr "Pulse 'Aceptar' para eliminar el elemento o <> para cambiar el orden o 'CH +/-' para alternar a la lista de características."
 
-#, fuzzy
 msgid "Press EXIT to return to the help screen."
-msgstr "Orden de clasificación para pantalla ayuda"
+msgstr "Pulse EXIT para regresar a la pantalla de ayuda."
 
 msgid "Press INFO on your remote control for additional information."
-msgstr "Presione INFO en su mando para obtener información adicional."
+msgstr "Pulse INFO en su mando para obtener información adicional."
 
 msgid "Press MENU on your remote control for additional options."
-msgstr "Presione MENU en su mando para opciones adicionales."
+msgstr "Pulse MENU en su mando para opciones adicionales."
 
 msgid "Press OK on your remote control to continue."
-msgstr "Presione OK en su mando para continuar."
+msgstr "Pulse OK en su mando para continuar."
 
 #, python-format
 msgid "Press OK to activate the selected %s skin."
-msgstr "Presione OK para activar el skin %s seleccionado."
+msgstr "Pulse OK para activar el skin %s seleccionado."
 
 msgid "Press OK to activate the settings."
-msgstr "Presione OK para activar la configuración."
+msgstr "Pulse OK para activar la configuración."
 
 msgid "Press OK to edit the settings."
-msgstr "Presione OK para editar la configuración."
+msgstr "Pulse OK para editar la configuración."
 
 #, python-format
 msgid "Press OK to get further details for %s"
-msgstr "Presione OK para obtener más detalles sobre %s"
+msgstr "Pulse OK para obtener más detalles sobre %s"
 
 #, python-format
 msgid "Press OK to keep the currently selected %s skin."
-msgstr "Presione OK para mantener el skin %s seleccionado actualmente."
+msgstr "Pulse OK para mantener el skin %s seleccionado actualmente."
 
 msgid "Press OK to scan"
-msgstr "Presione OK para escanear"
+msgstr "Pulse OK para escanear"
 
 msgid "Press OK to select a group of satellites to configure in one block."
-msgstr "Presione OK para seleccionar un grupo de satélites para configurar en bloque."
+msgstr "Pulse OK para seleccionar un grupo de satélites para configurar en bloque."
 
 msgid "Press OK to select a provider."
-msgstr "Presione OK para seleccionar un proveedor."
+msgstr "Pulse OK para seleccionar un proveedor."
 
 msgid "Press OK to select a service."
 msgstr "Pulse OK para seleccionar un servicio."
 
 msgid "Press OK to select satellites"
-msgstr "Presione OK para seleccionar satélites"
+msgstr "Pulse OK para seleccionar satélites"
 
 #, fuzzy
 msgid "Press OK to select the save location of the log file."
-msgstr "Presione OK para alternar la selección."
+msgstr "Pulse OK para alternar la selección."
 
 msgid "Press OK to select/deselect a CAId."
-msgstr "Presione OK para seleccionar / deseleccionar un CAId."
+msgstr "Pulse OK para seleccionar / deseleccionar un CAId."
 
 msgid "Press OK to set the MAC address."
-msgstr "Presione OK para configurar la dirección MAC."
+msgstr "Pulse OK para configurar la dirección MAC."
 
 msgid "Press OK to toggle the selection"
-msgstr "Presione OK para alternar la selección"
+msgstr "Pulse OK para alternar la selección"
 
 msgid "Press OK to toggle the selection."
-msgstr "Presione OK para alternar la selección."
+msgstr "Pulse OK para alternar la selección."
 
 msgid "Press OK, save and exit..."
-msgstr "Presione OK, guadar y salir…"
+msgstr "Pulse OK, guadar y salir…"
 
 msgid "Press or select button and then press 'OK' for attach function."
-msgstr "Presione el botón del mando que quiera asignar directo o seleccione con botón 'arriba abajo' y elíjalo, luego pulse 'OK' para asignar la función."
+msgstr "Pulse el botón del mando que quiera asignar directo o seleccione con botón 'arriba abajo' y elíjalo, luego pulse 'OK' para asignar la función."
 
 msgid "Press or select button and then press 'OK' for attach next function or edit attached."
-msgstr "Presione el botón del mando que quiere asignar directo o seleccione con botón 'arriba abajo' y elíjalo, luego presione 'OK' para asignar una nueva función a la que hay en uso."
+msgstr "Pulse el botón del mando que quiere asignar directo o seleccione con botón 'arriba abajo' y elíjalo, luego presione 'OK' para asignar una nueva función a la que hay en uso."
 
 msgid "Press this button to emulate a long press on a button pressed afterwards (this also overrides any other actions assigned to emulation button)."
 msgstr ""
 
 msgid "Press yellow to set this interface as default interface."
-msgstr "Presione amarillo para establecer esta interfaz como predeterminada."
+msgstr "Pulse amarillo para establecer esta interfaz como predeterminada."
 
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
@@ -10507,10 +10505,11 @@ msgstr ""
 
 #, fuzzy
 msgid "Receiver Information"
-msgstr "Información"
+msgstr "Pantalla Información Ayuda"
 
+#, fuzzy
 msgid "Receiver Information Actions"
-msgstr ""
+msgstr "Pantalla Información Ayuda"
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -10857,7 +10856,7 @@ msgid "Reset playback position"
 msgstr "Restablecer posición de reproducción"
 
 msgid "Reset the selected devices when the GREEN button is pressed."
-msgstr "Puede elegir también su softcam y pulsar VERDE para reiniciarla."
+msgstr "Reiniciará lo seleccionado, si cambió la selección y quiere mantenerla, pulse VERDE."
 
 msgid "Reset video enhancement settings to system defaults?"
 msgstr "¿Restablecer la configuración de mejora de video a los valores por defecto?"
@@ -13665,7 +13664,7 @@ msgid ""
 "Press OK to start using Open Vision %s-%s"
 msgstr ""
 "Gracias por usar el asistente. Su receptor ahora está listo para usar.\n"
-"Presione OK para comenzar a usar su receptor."
+"Pulse OK para comenzar a usar su receptor."
 
 #, python-format
 msgid "The %d min remaining before the end of the event."
@@ -13842,10 +13841,6 @@ msgstr "La velocidad del ventilador cuando su %s %s está en uso normal."
 msgid "The speed of the fan when your %s %s is in standby mode."
 msgstr "La velocidad del ventilador cuando su %s %s está en standby."
 
-#, python-format
-msgid "The status of the current image could not be checked because %s can not be reached."
-msgstr "El estado de la imagen actual no se pudo verificar porque no se puede llegar a %s."
-
 msgid "The team relies on donations to fund OpenVision development."
 msgstr ""
 
@@ -13928,12 +13923,6 @@ msgstr "Esto le permite establecer el número de dígitos que puede ingresar al 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
 msgstr "Este campo le permite buscar un symbol rate adicional hasta %s."
-
-msgid ""
-"This image is intended for developers and testers.\n"
-"No support will be provided!\n"
-"Do you understand this?"
-msgstr ""
 
 msgid "This is a multitype tuner. Available options depend on the hardware."
 msgstr "Este es un sintonizador multitipo. Las opciones disponibles dependen del hardware."
@@ -14113,11 +14102,10 @@ msgid "This screen is not yet available."
 msgstr "No hay actualizaciones disponibles."
 
 msgid "This sets the maximum number of log files that will be retained.  Files in excess of this number will be deleted."
-msgstr ""
+msgstr "Esto establece el número máximo de archivos de registro que se conservarán. Se eliminarán los archivos que superen este número."
 
-#, fuzzy
 msgid "This sets the prefix for each line in the debug log. The 'Boot time' is the number of seconds since your %s %s was last booted."
-msgstr "Este es el prefijo de cada entrada en Debug log. 'en tiempo de arranque' es el número de segundos desde la última vez que se arrancó su %s %s."
+msgstr "Esto establece el prefijo para cada línea en el registro de depuración. El 'Tiempo de arranque' es el número de segundos desde que arrancó su %s %s por última vez."
 
 msgid "This setting allows the tuner configuration to be a duplication of how another tuner is already configured."
 msgstr "Esta configuración permite que la configuración del sintonizador sea una duplicación de otro sintonizador ya configurado."
@@ -14663,6 +14651,9 @@ msgstr "Calibrado de USALS"
 msgid "USB stick"
 msgstr "Pendrive USB"
 
+msgid "UUID"
+msgstr ""
+
 msgid "Uganda"
 msgstr "Uganda"
 
@@ -14690,6 +14681,10 @@ msgstr ""
 "Actualización en progreso\n"
 "Espere hasta que su %s %s se reinicie\n"
 "Tomará poco tiempo tenga paciencia"
+
+#, fuzzy
+msgid "Unavailable"
+msgstr "no disponible"
 
 msgid "Uncover dashed flickering line for this service"
 msgstr "Descubrir línea parpadeante discontinua para este servicio"
@@ -14746,10 +14741,6 @@ msgid "Universal LNB"
 msgstr "LNB Universal"
 
 msgid "Unknown"
-msgstr "Desconocido"
-
-#, fuzzy
-msgid "Unknown!"
 msgstr "Desconocido"
 
 msgid "Unmark service as dedicated 3D service"
@@ -14972,7 +14963,7 @@ msgid "Use these settings?"
 msgstr "¿Usar esos ajustes?"
 
 msgid "Use this option to select if debug logs of internal enigma2 activities are created.  These logs can be helpful for developers in finding and fixing problems."
-msgstr ""
+msgstr "Utilice esta opción para seleccionar si se crean registros de depuración de actividades internas de enigma2. Estos registros pueden ser útiles para que los desarrolladores encuentren y solucionen problemas."
 
 msgid "Use this video enhancement settings?"
 msgstr "¿Usar esta configuración de mejora de video??"
@@ -15262,7 +15253,7 @@ msgid "Volume down"
 msgstr "Volumen abajo"
 
 msgid "Volume keys on the receiver remote will control the TV volume."
-msgstr "Las teclas de volumen del control remoto del receptor controlarán el volumen del televisor."
+msgstr "Las teclas de volumen del mando a distancia del receptor controlarán el volumen del televisor."
 
 msgid "Volume up"
 msgstr "Volumen arriba"
@@ -15371,6 +15362,9 @@ msgstr ""
 msgid "Warning: no LNB; using factory defaults."
 msgstr "Advertencia: no LNB; usando los valores predeterminados de fábrica."
 
+msgid "Warning: the second input of this dual tuner may not support SCR LNBs. "
+msgstr ""
+
 msgid "Watch movies..."
 msgstr "Ver películas…"
 
@@ -15407,7 +15401,7 @@ msgid ""
 msgstr ""
 "Bienvenido.\n"
 "Este asistente de inicio lo guiará a través de la configuración básica de su receptor.\n"
-"Presione el botón OK en su mando a distancia para avanzar al siguiente paso."
+"Pulse el botón OK en su mando a distancia para avanzar al siguiente paso."
 
 #, fuzzy
 msgid ""
@@ -15419,7 +15413,7 @@ msgid ""
 msgstr ""
 "Bienvenido al editor de listas de reproducción.\n"
 "\n"
-"Busque el inicio de las cosas que desea cortar. Presione OK, seleccione ‘iniciar corte’.\n"
+"Busque el inicio de las cosas que desea cortar. Pulse OK, seleccione ‘iniciar corte’.\n"
 "\n"
 "Luego busque hasta el final, presione OK, seleccione ‘fin de corte’. Eso es."
 
@@ -15537,6 +15531,9 @@ msgstr "Cuando esté habilitado, siempre descifrar la recepción de streams http
 
 msgid "When enabled, authentication is required to watch http streams."
 msgstr "Cuando está habilitado, se requiere autenticación para ver los streams http."
+
+msgid "When enabled, before opkg update there will be opkg clean to make sure nothing ruine the update but only enable this when you can not update online."
+msgstr "Cuando está habilitado, antes de la actualización de opkg, habrá limpieza opkg para asegurar la actualización, habilítelo cuando no pueda actualizar en línea."
 
 msgid "When enabled, channel numbering will start at '1' for each bouquet."
 msgstr "Cuando está habilitado, la numeración de canales comenzará en ‘1’ para cada bouquet."
@@ -15792,10 +15789,6 @@ msgstr "Con errores:"
 msgid "With popup"
 msgstr "Con ventana emergente"
 
-#, fuzzy
-msgid "With text"
-msgstr "con texto"
-
 msgid "With this option you can switch on the display during operation."
 msgstr "Con esta opción puede encender la pantalla durante el funcionamiento."
 
@@ -15823,10 +15816,6 @@ msgstr "Con esta opción puede cambiar el color del LED o desactivar el LED."
 #, fuzzy
 msgid "With this option you can switch the LED fade."
 msgstr "Con esta opción puede cambiar el color del LED o desactivar el LED."
-
-#, fuzzy
-msgid "With tuner name"
-msgstr "con nombre de sintonizador"
 
 msgid "Without popup"
 msgstr "Sin ventana emergente"
@@ -16313,6 +16302,10 @@ msgstr "publicidad/compras"
 
 msgid "all"
 msgstr "todo"
+
+#, fuzzy
+msgid "all tuners"
+msgstr "Configuración del sintonizador de respaldo"
 
 msgid "alpha then oldest"
 msgstr "alfabético más antiguo"
@@ -17071,6 +17064,10 @@ msgstr "no soportado"
 msgid "not tested"
 msgstr "no testeado"
 
+#, fuzzy
+msgid "not valid frontend"
+msgstr "Razón inválida"
+
 msgid "not_tested"
 msgstr "no_testeado"
 
@@ -17230,6 +17227,10 @@ msgstr "romance"
 #, fuzzy
 msgid "rotor"
 msgstr "Rotor: "
+
+#, fuzzy
+msgid "rotor is not used"
+msgstr "El sintonizador no es compatible"
 
 msgid "running..."
 msgstr "ejecutando..."
@@ -17570,6 +17571,12 @@ msgstr[1] "con %d errores"
 
 msgid "with errors"
 msgstr "con errores"
+
+msgid "with text"
+msgstr "con texto"
+
+msgid "with tuner name"
+msgstr "con nombre de sintonizador"
 
 msgid "with_errors"
 msgstr "con_errores"

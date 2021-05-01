@@ -8,6 +8,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.NimManager import nimmanager
 from Components.Button import Button
 from Components.Label import Label
+from Components.UsageConfig import showrotorpositionChoicesUpdate
 from Components.SelectionList import SelectionList, SelectionEntryComponent
 from Components.config import getConfigListEntry, config, ConfigNothing, ConfigYesNo, configfile, NoSave, ConfigSelection
 from Components.Sources.List import List
@@ -396,7 +397,10 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 				self.list.append(getConfigListEntry(self.indent % _("Threshold"), currLnb.threshold, _("Enter the frequency at which you LNB switches between low band and high band. For more information consult the spec sheet of your LNB.")))
 
 			if currLnb.lof.value == "unicable":
-				self.advancedUnicable = getConfigListEntry(self.indent % ("%s%s" % ("SCR (Unicable/JESS) ", _("type"))), currLnb.unicable, _("Select the type of Single Cable Reception device you are using."))
+				warning_text = ""
+				if "Vuplus DVB-S NIM(AVL6222)" in self.nim.description and self.nim.internallyConnectableTo() is not None:
+					warning_text = _("Warning: the second input of this dual tuner may not support SCR LNBs. ")
+				self.advancedUnicable = getConfigListEntry(self.indent % ("%s%s" % ("SCR (Unicable/JESS) ", _("type"))), currLnb.unicable, warning_text + _("Select the type of Single Cable Reception device you are using."))
 				self.list.append(self.advancedUnicable)
 				self.externallyPowered = getConfigListEntry(self.indent % _("Externally powered"), currLnb.powerinserter, _("Select whether your SCR device is externally powered."))
 				if currLnb.unicable.value == "unicable_user":
@@ -676,6 +680,7 @@ class NimSetup(Screen, ConfigListScreen, ServiceStopScreen):
 			for x in self["config"].list:
 				x[1].save()
 			configfile.save()
+		showrotorpositionChoicesUpdate(update=True)
 
 	def cancelConfirm(self, result):
 		if not result:

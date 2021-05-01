@@ -22,6 +22,10 @@ socfamily = getSoCFamily()
 
 config.unicable = ConfigSubsection()
 
+def orbStr(pos):
+	return pos > 3600 and "N/A" or "%d.%d\xc2\xb0%s" % (pos > 1800 and ((3600 - pos) / 10, (3600 - pos) % 10, "W") or (pos / 10, pos % 10, "E"))
+
+
 
 def getConfigSatlist(orbpos, satlist):
 	if not satlist:
@@ -35,6 +39,11 @@ def getConfigSatlist(orbpos, satlist):
 
 
 class SecConfigure:
+	def __init__(self, nimmgr):
+		self.NimManager = nimmgr
+		self.configuredSatellites = set()
+		self.update()
+
 	def getConfiguredSats(self):
 		return self.configuredSatellites
 
@@ -186,13 +195,14 @@ class SecConfigure:
 			x = slot.slot
 			nim = slot.config
 			if slot.isCompatible("DVB-S"):
+				clear_lastsatrotorposition = True
 				print("[NimManager] slot: " + str(x) + " configmode: " + str(nim.configMode.value))
 				if nim.configMode.value in ("loopthrough", "satposdepends", "nothing"):
 					pass
 				else:
 					sec.setSlotNotLinked(x)
 					if nim.configMode.value == "equal":
-						pass
+						clear_lastsatrotorposition = False
 					elif nim.configMode.value == "simple":		#simple config
 						print("[NimManager] diseqcmode: ", nim.diseqcMode.value)
 						if nim.diseqcMode.value == "single":			#single
@@ -219,6 +229,7 @@ class SecConfigure:
 							self.addLNBSimple(sec, slotid=x, orbpos=nim.diseqcC.orbital_position, toneburstmode=diseqcParam.NO, diseqcmode=diseqcParam.V1_0, diseqcpos=diseqcParam.BA, fastDiSEqC=fastDiSEqC, setVoltageTone=setVoltageTone, diseqc13V=nim.diseqc13V.value)
 							self.addLNBSimple(sec, slotid=x, orbpos=nim.diseqcD.orbital_position, toneburstmode=diseqcParam.NO, diseqcmode=diseqcParam.V1_0, diseqcpos=diseqcParam.BB, fastDiSEqC=fastDiSEqC, setVoltageTone=setVoltageTone, diseqc13V=nim.diseqc13V.value)
 						elif nim.diseqcMode.value in ("positioner", "positioner_select"):		#Positioner
+							clear_lastsatrotorposition = False
 							current_mode = 3
 							sat = 0
 							if nim.diseqcMode.value == "positioner_select":
@@ -256,7 +267,11 @@ class SecConfigure:
 								inputPowerDelta=inputPowerDelta,
 								diseqc13V=nim.diseqc13V.value)
 					elif nim.configMode.value == "advanced": #advanced config
+						clear_lastsatrotorposition = not self.NimManager.getRotorSatListForNim(x, only_first=True)
 						self.updateAdvanced(sec, x)
+				if clear_lastsatrotorposition and nim.lastsatrotorposition.value:
+					nim.lastsatrotorposition.value = ""
+					nim.lastsatrotorposition.save()
 		print("[NimManager] sec config completed")
 
 	def updateAdvanced(self, sec, slotid):
@@ -503,11 +518,6 @@ class SecConfigure:
 					else:
 						sec.setRotorPosNum(0) #USALS
 
-	def __init__(self, nimmgr):
-		self.NimManager = nimmgr
-		self.configuredSatellites = set()
-		self.update()
-
 
 class NIM(object):
 	def __init__(self, slot, type, description, has_outputs=True, internally_connectable=None, multi_type={}, frontend_id=None, i2c=None, is_empty=False, supports_blind_scan=False, number_of_slots=0):
@@ -711,6 +721,15 @@ class NIM(object):
 
 
 class NimManager:
+	def __init__(self):
+		self.satList = []
+		self.cablesList = []
+		self.terrestrialsList = []
+		self.atscList = []
+		self.enumerateNIMs()
+		self.readTransponders()
+		InitNimManager(self)	#init config stuff
+
 	def getConfiguredSats(self):
 		return self.sec.getConfiguredSats()
 
@@ -914,7 +933,7 @@ class NimManager:
 			if "i2c" not in entry:
 				entry["i2c"] = None
 			if "has_outputs" not in entry:
-				entry["has_outputs"] = True
+				entry["has_outputs"] = entry["name"] in SystemInfo["HasPhysicalLoopthrough"] # "Has_Outputs: yes" not in /proc/bus/nim_sockets NIM, but the physical loopthrough exist
 			if "frontend_device" in entry: # check if internally connectable
 				if os.path.exists("/proc/stb/frontend/%d/rf_switch" % entry["frontend_device"]) and (not id or entries[id]["name"] == entries[id - 1]["name"]):
 					entry["internally_connectable"] = entry["frontend_device"] - 1
@@ -959,15 +978,6 @@ class NimManager:
 						return False
 				return True
 		return [x.slot for x in self.nim_slots if x.slot != exception and enabled(x)]
-
-	def __init__(self):
-		self.satList = []
-		self.cablesList = []
-		self.terrestrialsList = []
-		self.atscList = []
-		self.enumerateNIMs()
-		self.readTransponders()
-		InitNimManager(self)	#init config stuff
 
 	# get a list with the friendly full description
 	def nimList(self):
@@ -1142,7 +1152,24 @@ class NimManager:
 	def getNimListForSat(self, orb_pos):
 		return [nim.slot for nim in self.nim_slots if nim.isCompatible("DVB-S") and not nim.isFBCLink() and orb_pos in [sat[0] for sat in self.getSatListForNim(nim.slot)]]
 
-	def getRotorSatListForNim(self, slotid):
+	def rotorLastPositionForNim(self, slotid, number=True):
+		available_slot = False
+		for slot in self.nim_slots:
+			if slot.slot == slotid:
+				available_slot = True
+				break
+		if available_slot:
+			if self.getRotorSatListForNim(slotid, only_first=True):
+				lastrotorposition = secClass.getInstance().frontendLastRotorOrbitalPosition(slotid)
+				if lastrotorposition == -1:
+					return number and -1 or _("undefined")
+				else:
+					return number and lastrotorposition or orbStr(lastrotorposition)
+		else:
+			return number and 9999 or _("not valid frontend")
+		return number and 9998 or _("rotor is not used")
+
+	def getRotorSatListForNim(self, slotid, only_first=False):
 		list = []
 		if self.nim_slots[slotid].isCompatible("DVB-S"):
 			nim = config.Nims[slotid]
@@ -1150,6 +1177,8 @@ class NimManager:
 			if configMode == "simple":
 				if nim.diseqcMode.value == "positioner":
 					for x in self.satList:
+						if only_first:
+							return True
 						list.append(x)
 				elif nim.diseqcMode.value == "positioner_select":
 					userSatlist = nim.userSatellitesList.value
@@ -1157,11 +1186,15 @@ class NimManager:
 					for x in self.satList:
 						sat_str = str(x[0])
 						if userSatlist and ("," not in userSatlist and sat_str == userSatlist) or ((', ' + sat_str + ',' in userSatlist) or (userSatlist.startswith(sat_str + ',')) or (userSatlist.endswith(', ' + sat_str))):
+							if only_first:
+								return True
 							list.append(x)
 			elif configMode == "advanced":
 				for x in range(3601, 3605):
 					if int(nim.advanced.sat[x].lnb.value) != 0:
 						for x in self.satList:
+							if only_first:
+								return True
 							list.append(x)
 				if not list:
 					for x in self.satList:
@@ -1169,6 +1202,8 @@ class NimManager:
 						if lnbnum != 0:
 							lnb = nim.advanced.lnb[lnbnum]
 							if lnb.diseqcMode.value == "1_2":
+								if only_first:
+									return True
 								list.append(x)
 				for x in range(3605, 3607):
 					if int(nim.advanced.sat[x].lnb.value) != 0:
@@ -1177,6 +1212,8 @@ class NimManager:
 						for user_sat in self.satList:
 							sat_str = str(user_sat[0])
 							if userSatlist and ("," not in userSatlist and sat_str == userSatlist) or ((', ' + sat_str + ',' in userSatlist) or (userSatlist.startswith(sat_str + ',')) or (userSatlist.endswith(', ' + sat_str))) and user_sat not in list:
+								if only_first:
+									return True
 								list.append(user_sat)
 		return list
 
@@ -1518,6 +1555,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 		nim.latitudeOrientation = ConfigSelection(latitude_orientation_choices, "north")
 		nim.tuningstepsize = ConfigFloat(default=[0, 360], limits=[(0, 9), (0, 999)])
 		nim.rotorPositions = ConfigInteger(default=99, limits=[1, 999])
+		nim.lastsatrotorposition = ConfigText()
 		nim.turningspeedH = ConfigFloat(default=[2, 3], limits=[(0, 9), (0, 9)])
 		nim.turningspeedV = ConfigFloat(default=[1, 7], limits=[(0, 9), (0, 9)])
 		nim.powerMeasurement = ConfigYesNo(True)
