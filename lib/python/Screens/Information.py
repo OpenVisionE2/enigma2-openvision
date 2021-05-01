@@ -1051,8 +1051,7 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("P1", _("Drivers version"), about.getDriverInstalledDate()))
 		info.append(formatLine("P1", _("Kernel version"), boxbranding.getKernelVersion()))
-		moduleLayout = popen("find /lib/modules/ -type f -name 'openvision.ko' -exec modprobe --dump-modversions {} \; | grep 'module_layout' | cut -c-11").read().strip()
-		info.append(formatLine("P1", _("Kernel module layout"), (moduleLayout if moduleLayout else _("N/A"))))
+		info.append(formatLine("P1", _("Kernel module layout"), SystemInfo["ModuleLayout"]))
 		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id", source=MODULE_NAME)
 		if deviceId:
 			info.append(formatLine("P1", _("Device id"), deviceId))
