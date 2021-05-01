@@ -26,7 +26,7 @@ from Components.NimManager import nimmanager
 from Components.Pixmap import MultiPixmap
 from Components.ScrollLabel import ScrollLabel
 # from Components.Storage import Harddisk, storageManager
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
@@ -1051,7 +1051,7 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("P1", _("Drivers version"), about.getDriverInstalledDate()))
 		info.append(formatLine("P1", _("Kernel version"), boxbranding.getKernelVersion()))
-		info.append(formatLine("P1", _("Kernel module layout"), SystemInfo["ModuleLayout"]))
+		info.append(formatLine("P1", _("Kernel module layout"), _("N/A") if BoxInfo.getItem("ModuleLayout") is None else SystemInfo["ModuleLayout"]))
 		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id", source=MODULE_NAME)
 		if deviceId:
 			info.append(formatLine("P1", _("Device id"), deviceId))
