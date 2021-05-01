@@ -1,21 +1,58 @@
-from os import R_OK, access
+from os import R_OK, access, walk
 from os.path import isfile, join as pathjoin
 from re import findall
+from subprocess import PIPE, Popen
 
 from boxbranding import getDisplayType, getFHDSkin, getHaveHDMI, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveMultiTranscoding, getHaveRCA, getHaveSCART, getHaveSVIDEO, getHaveTranscoding, getHaveVFDSymbol, getHaveYUV, getImageArch, getMachineBuild, getRCIDNum, getRCName, getRCType, getSoCFamily
 from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, getBoxBrand, getBoxType
 
-from Tools.Directories import SCOPE_SKIN, fileCheck, fileExists, fileHas, pathExists, resolveFilename
+from Tools.Directories import SCOPE_SKIN, fileCheck, fileExists, fileHas, fileReadLine, pathExists, resolveFilename
+
+MODULE_NAME = __name__.split(".")[-1]
+ENIGMA_KERNEL_MODULE = "openvision.ko"
 
 SystemInfo = {}
+
+
+def loadEnigmaModule():
+	for dirpath, dirnames, filenames in walk("/lib/modules"):
+		if ENIGMA_KERNEL_MODULE in filenames:
+			modulePath = pathjoin(dirpath, ENIGMA_KERNEL_MODULE)
+			SystemInfo["EnigmaModule"] = modulePath
+			process = Popen(("/sbin/modinfo", "-d", modulePath), stdout=PIPE, stderr=PIPE)
+			stdout, stderr = process.communicate()
+			if process.returncode == 0:
+				for line in stdout.split("\n"):
+					if "=" in line:
+						variable, value = line.split("=", 1)
+						if value.upper() == "NONE":
+							value = None
+						elif value.upper() == "TRUE":
+							value = True
+						elif value.upper() == "FALSE":
+							value = False
+						elif value.isdigit() or (value[0:1] == "-" and value[1:].isdigit()):
+							value = int(value)
+						elif value.startswith("0x") or value.startswith("0X"):
+							value = int(value, 16)
+						elif value.startswith("0o") or value.startswith("0O"):
+							value = int(value, 8)
+						elif value.startswith("0b") or value.startswith("0B"):
+							value = int(value, 2)
+						SystemInfo[variable] = value
+				print("[SystemInfo] Enigma kernel module data loaded.")
+			else:
+				print("[SystemInfo] Error: Unable to load Enigma kernel module data!  (Error %d: %s)" % (process.returncode, stderr.strip()))
+
+
+loadEnigmaModule()  # First thing to do is load all the kernel Enigma2 variables.
+
 SystemInfo["HasRootSubdir"] = False
 
 from Tools.Multiboot import getMultibootStartupDevice, getMultibootslots  # This import needs to be here to avoid a SystemInfo load loop!
 
 # Parse the boot commandline.
-print("[SystemInfo] Read /proc/cmdline")
-with open("/proc/cmdline", "r") as fd:
-	cmdline = fd.read()
+cmdline = fileReadLine("/proc/cmdline", source=MODULE_NAME)
 cmdline = {k: v.strip('"') for k, v in findall(r'(\S+)=(".*?"|\S+)', cmdline)}
 
 
@@ -52,6 +89,16 @@ def getRCFile(ext):
 	return filename
 
 
+def getModuleLayout():
+	process = Popen(("/sbin/modprobe", "--dump-modversions", SystemInfo["EnigmaModule"]), stdout=PIPE, stderr=PIPE)
+	stdout, stderr = process.communicate()
+	if process.returncode == 0:
+		for detail in stdout.split("\n"):
+			if "module_layout" in detail:
+				return detail.split("\t")[0]
+	return "N/A"
+
+
 model = getBoxType()
 brand = getBoxBrand()
 platform = getMachineBuild()
@@ -80,6 +127,7 @@ else:
 SystemInfo["RemoteRepeat"] = repeat
 SystemInfo["RemoteDelay"] = 200 if model in ("maram9", "axodin") else 700
 
+SystemInfo["ModuleLayout"] = getModuleLayout()
 SystemInfo["InDebugMode"] = eGetEnigmaDebugLvl() >= 4
 SystemInfo["CommonInterface"] = eDVBCIInterfaces.getInstance().getNumOfSlots()
 SystemInfo["CommonInterfaceCIDelay"] = fileCheck("/proc/stb/tsmux/rmx_delay")
