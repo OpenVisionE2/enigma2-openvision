@@ -653,8 +653,8 @@ def shellquote(string):
 def _isExtensionInstalled(pluginname, plugintype, pluginfile):
 	path, flags = defaultPaths.get(SCOPE_PLUGINS)
 	for fileext in [".py", ".pyc", ".pyo"]:
-		fullpath = os.path.join(path, plugintype, pluginname, pluginfile + fileext)
-		if os.path.isfile(fullpath):
+		fullpath = pathjoin(path, plugintype, pluginname, pluginfile + fileext)
+		if isfile(fullpath):
 			return True
 	return False
 
