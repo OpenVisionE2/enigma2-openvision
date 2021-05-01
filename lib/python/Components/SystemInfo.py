@@ -1,12 +1,12 @@
-from os import R_OK, access, walk
-from os.path import isfile, join as pathjoin
+from os import R_OK, access, listdir, walk
+from os.path import isdir, isfile, join as pathjoin
 from re import findall
 from subprocess import PIPE, Popen
 
 from boxbranding import getDisplayType, getFHDSkin, getHaveHDMI, getHaveHDMIinFHD, getHaveHDMIinHD, getHaveMultiTranscoding, getHaveRCA, getHaveSCART, getHaveSVIDEO, getHaveTranscoding, getHaveVFDSymbol, getHaveYUV, getImageArch, getMachineBuild, getRCIDNum, getRCName, getRCType, getSoCFamily
 from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, getBoxBrand, getBoxType
 
-from Tools.Directories import SCOPE_SKIN, fileCheck, fileExists, fileHas, fileReadLine, pathExists, resolveFilename
+from Tools.Directories import SCOPE_SKIN, fileCheck, fileExists, fileHas, fileReadLine, fileReadLines, pathExists, resolveFilename
 
 MODULE_NAME = __name__.split(".")[-1]
 ENIGMA_KERNEL_MODULE = "openvision.ko"
@@ -14,38 +14,112 @@ ENIGMA_KERNEL_MODULE = "openvision.ko"
 SystemInfo = {}
 
 
+class BoxInformation:  # To maintain data integrity class variables should not be accessed from outside of this class!
+	def __init__(self):
+		self.procFiles = [file for file in listdir("/proc/openvision") if isfile(file)] if isdir("/proc/openvision") else []
+		self.boxInfo = {}
+		self.immutableList = []
+		lines = fileReadLines("/etc/enigma.conf", source=MODULE_NAME)
+		if lines:
+			for line in lines:
+				if line.startswith("#") or line.strip() == "":
+					continue
+				item, value = [x.strip() for x in line.split("=", 1)]
+				if item is not None:
+					if value.startswith("\"") or value.startswith("'") and value.endswith(value[0]):
+						value = value[1:-1]
+					elif value.startswith("(") and value.endswith(")"):
+						value = tuple(split(value))
+					elif value.startswith("[") and value.endswith("]"):
+						value = list(split(value))
+					elif value.upper() in ("FALSE", "NO", "OFF", "DISABLED"):
+						value = False
+					elif value.upper() in ("TRUE", "YES", "ON", "ENABLED"):
+						value = True
+					elif value.isdigit() or (value[0:1] == "-" and value[1:].isdigit()):
+						value = int(value)
+					elif value.startswith("0x") or value.startswith("0X"):
+						value = int(value, 16)
+					elif value.startswith("0o") or value.startswith("0O"):
+						value = int(value, 8)
+					elif value.startswith("0b") or value.startswith("0B"):
+						value = int(value, 2)
+					else:
+						try:
+							value = float(value)
+						except ValueError:
+							pass
+					self.immutableList.append(item)
+					self.boxInfo[item] = value
+
+	def getItem(self, item, default=None):
+		if self.boxInfo.get("ProcOverride", False) is False and isfile("/proc/openvision/%s" % item):
+			value = fileReadLine(pathjoin("/proc/openvision", item), source=MODULE_NAME)
+		elif item in self.boxInfo:
+			value = self.boxInfo[item]
+		elif item in SystemInfo:
+			value = SystemInfo[item]
+		else:
+			value = default
+		return value
+
+	def setItem(self, item, value, immutable=False):
+		if item in self.immutableList or item in self.procFiles:
+			print("[BoxInfo] Error: Item '%s' is immutable and can not be %s!" % (item, "changed" if item in self.boxInfo else "added"))
+			return False
+		if immutable:
+			self.immutableList.append(item)
+		self.boxInfo[item] = value
+		return True
+
+	def deleteItem(self, item):
+		if item in self.immutableListor or item in self.procFiles:
+			print("[BoxInfo] Error: Item '%s' is immutable and can not be deleted!" % item)
+		elif item in self.boxInfo:
+			del self.boxInfo[item]
+			return True
+		return False
+
+
+BoxInfo = BoxInformation()
+
+
 def loadEnigmaModule():
 	for dirpath, dirnames, filenames in walk("/lib/modules"):
 		if ENIGMA_KERNEL_MODULE in filenames:
 			modulePath = pathjoin(dirpath, ENIGMA_KERNEL_MODULE)
-			SystemInfo["EnigmaModule"] = modulePath
-			process = Popen(("/sbin/modinfo", "-d", modulePath), stdout=PIPE, stderr=PIPE)
-			stdout, stderr = process.communicate()
-			if process.returncode == 0:
-				for line in stdout.split("\n"):
-					if "=" in line:
-						variable, value = line.split("=", 1)
-						if value.upper() == "NONE":
-							value = None
-						elif value.upper() == "TRUE":
-							value = True
-						elif value.upper() == "FALSE":
-							value = False
-						elif value.isdigit() or (value[0:1] == "-" and value[1:].isdigit()):
-							value = int(value)
-						elif value.startswith("0x") or value.startswith("0X"):
-							value = int(value, 16)
-						elif value.startswith("0o") or value.startswith("0O"):
-							value = int(value, 8)
-						elif value.startswith("0b") or value.startswith("0B"):
-							value = int(value, 2)
-						SystemInfo[variable] = value
-				print("[SystemInfo] Enigma kernel module data loaded.")
+			BoxInfo.setItem("EnigmaModule", modulePath, immutable=True)
+			if isdir("/proc/openvision"):
+				print("[SystemInfo] Enigma kernel module available.")
 			else:
-				print("[SystemInfo] Error: Unable to load Enigma kernel module data!  (Error %d: %s)" % (process.returncode, stderr.strip()))
+				process = Popen(("/sbin/modinfo", "-d", modulePath), stdout=PIPE, stderr=PIPE)
+				stdout, stderr = process.communicate()
+				if process.returncode == 0:
+					for line in stdout.split("\n"):
+						if "=" in line:
+							variable, value = line.split("=", 1)
+							if value.upper() == "NONE":
+								value = None
+							elif value.upper() == "TRUE":
+								value = True
+							elif value.upper() == "FALSE":
+								value = False
+							elif value.isdigit() or (value[0:1] == "-" and value[1:].isdigit()):
+								value = int(value)
+							elif value.startswith("0x") or value.startswith("0X"):
+								value = int(value, 16)
+							elif value.startswith("0o") or value.startswith("0O"):
+								value = int(value, 8)
+							elif value.startswith("0b") or value.startswith("0B"):
+								value = int(value, 2)
+							BoxInfo.setItem(variable, value, immutable=True)
+					print("[SystemInfo] Enigma kernel module not available, data loaded into SystemInfo!")
+				else:
+					print("[SystemInfo] Error: Unable to load Enigma kernel module data!  (Error %d: %s)" % (process.returncode, stderr.strip()))
 
 
-loadEnigmaModule()  # First thing to do is load all the kernel Enigma2 variables.
+loadEnigmaModule()  # First thing to do is check / load all the kernel Enigma2 variables.
+
 
 SystemInfo["HasRootSubdir"] = False
 
@@ -90,13 +164,15 @@ def getRCFile(ext):
 
 
 def getModuleLayout():
-	process = Popen(("/sbin/modprobe", "--dump-modversions", SystemInfo["EnigmaModule"]), stdout=PIPE, stderr=PIPE)
-	stdout, stderr = process.communicate()
-	if process.returncode == 0:
-		for detail in stdout.split("\n"):
-			if "module_layout" in detail:
-				return detail.split("\t")[0]
-	return "N/A"
+	modulePath = BoxInfo.getItem("EnigmaModule")
+	if modulePath:
+		process = Popen(("/sbin/modprobe", "--dump-modversions", modulePath), stdout=PIPE, stderr=PIPE)
+		stdout, stderr = process.communicate()
+		if process.returncode == 0:
+			for detail in stdout.split("\n"):
+				if "module_layout" in detail:
+					return detail.split("\t")[0]
+	return None
 
 
 model = getBoxType()
