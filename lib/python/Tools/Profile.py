@@ -3,9 +3,9 @@
 from __future__ import print_function
 import time
 from Tools.Directories import resolveFilename, SCOPE_CONFIG, fileExists
-from Components.SystemInfo import BoxInfo
+from enigma import getBoxType
 
-model = BoxInfo.getItem("model")
+model = getBoxType()
 
 PERCENTAGE_START = 0
 PERCENTAGE_END = 100
