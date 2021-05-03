@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.config import config, ConfigSlider, ConfigSubsection, ConfigYesNo, ConfigText, ConfigInteger
-from enigma import getBoxType, getBoxBrand
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 import errno
 import xml.etree.cElementTree
 from enigma import eRCInput
@@ -14,10 +13,9 @@ import os
 import struct
 import platform
 from Tools.Directories import pathExists
-from boxbranding import getRCType
 
-model = getBoxType()
-brand = getBoxBrand()
+model = BoxInfo.getItem("model")
+brand = BoxInfo.getItem("brand")
 
 # include/uapi/asm-generic/ioctl.h
 # asm-generic/ioctl.h for HAVE_OLDE2_API
@@ -286,7 +284,7 @@ iInputDevices = inputDevices()
 
 
 config.plugins.remotecontroltype = ConfigSubsection()
-config.plugins.remotecontroltype.rctype = ConfigInteger(default=int(getRCType()))
+config.plugins.remotecontroltype.rctype = ConfigInteger(default=BoxInfo.getItem("rctype"))
 config.plugins.remotecontroltype.multirc = ConfigYesNo(default=False)
 
 

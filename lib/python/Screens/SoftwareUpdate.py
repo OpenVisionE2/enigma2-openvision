@@ -17,7 +17,7 @@ from Components.Sources.StaticText import StaticText
 from Components.Slider import Slider
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import fileExists
-from enigma import eTimer, eDVBDB, getBoxType, getBoxBrand
+from enigma import eTimer, eDVBDB
 try:
 	from urllib2 import urlopen
 except:
@@ -27,9 +27,10 @@ import os
 import json
 import time
 import calendar
+from Components.SystemInfo import BoxInfo
 
-brand = getBoxBrand()
-model = getBoxType()
+model = BoxInfo.getItem("model")
+brand = BoxInfo.getItem("brand")
 
 
 class UpdatePlugin(Screen, ProtectedScreen):

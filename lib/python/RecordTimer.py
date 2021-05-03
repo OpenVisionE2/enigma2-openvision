@@ -3,11 +3,11 @@
 from __future__ import print_function
 import os
 from os import sys
-from enigma import eEPGCache, getBestPlayableServiceReference, eStreamServer, eServiceReference, iRecordableService, quitMainloop, eActionMap, setPreferredTuner, getBoxType
+from enigma import eEPGCache, getBestPlayableServiceReference, eStreamServer, eServiceReference, iRecordableService, quitMainloop, eActionMap, setPreferredTuner
 
 from Components.config import config
 from Components.UsageConfig import defaultMoviePath
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Components.TimerSanityCheck import TimerSanityCheck
 
 from Screens.MessageBox import MessageBox
@@ -109,7 +109,7 @@ SID_symbol_states = {
 	"mbtwin": ('/proc/stb/lcd/symbol_circle', 4)
 }
 
-SID_code_states = SID_symbol_states.setdefault(getBoxType(), (None, 0))
+SID_code_states = SID_symbol_states.setdefault(BoxInfo.getItem("model"), (None, 0))
 
 n_recordings = 0  # Must be when we start running...
 

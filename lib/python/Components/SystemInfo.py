@@ -3,7 +3,7 @@ from os.path import isdir, isfile, join as pathjoin
 from re import findall
 from subprocess import PIPE, Popen
 
-from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, getBoxBrand, getBoxType
+from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl
 
 from Tools.Directories import SCOPE_SKIN, fileCheck, fileExists, fileHas, fileReadLine, fileReadLines, pathExists, resolveFilename
 
@@ -139,9 +139,6 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 
 
 BoxInfo = BoxInformation()
-
-
-SystemInfo["HasRootSubdir"] = False
 
 from Tools.Multiboot import getMultibootStartupDevice, getMultibootslots  # This import needs to be here to avoid a SystemInfo load loop!
 
@@ -288,7 +285,8 @@ SystemInfo["Has24hz"] = fileCheck("/proc/stb/video/videomode_24hz") and platform
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")
-SystemInfo["HasHDMI-CEC"] = BoxInfo.getItem("hdmi") and (fileExists("/dev/cec0") or fileExists("/dev/hdmi_cec") or fileExists("/dev/misc/hdmi_cec0"))
+SystemInfo["HasHDMI"] = BoxInfo.getItem("hdmi")
+SystemInfo["HasHDMI-CEC"] = SystemInfo["HasHDMI"] and (fileExists("/dev/cec0") or fileExists("/dev/hdmi_cec") or fileExists("/dev/misc/hdmi_cec0"))
 SystemInfo["HasHDMIHDin"] = BoxInfo.getItem("hdmihdin")
 SystemInfo["HasHDMIFHDin"] = BoxInfo.getItem("hdmifhdin")
 SystemInfo["HasHDMIin"] = SystemInfo["HasHDMIHDin"] or SystemInfo["HasHDMIFHDin"]

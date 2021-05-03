@@ -11,16 +11,15 @@ from subprocess import PIPE, Popen
 from sys import maxsize, modules
 from time import localtime, strftime
 
-from boxbranding import getSoCFamily
-from enigma import getBoxType, getBoxBrand, getEnigmaVersionString as getEnigmaVersion
+from enigma import getEnigmaVersionString as getEnigmaVersion
 
 from Components.Console import Console
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Tools.Directories import fileReadLine, fileReadLines
 
 MODULE_NAME = __name__.split(".")[-1]
 
-socfamily = getSoCFamily()
+socfamily = BoxInfo.getItem("socfamily")
 
 
 def _ifinfo(sock, addr, ifname):
@@ -85,18 +84,6 @@ def getBuildDateString():
 	if version is None:
 		return _("Unknown")
 	return "%s-%s-%s" % (version[:4], version[4:6], version[6:8])
-
-
-def getUpdateDateString():
-	if isfile("/proc/openvision/compiledate"):
-		build = fileReadLine("/proc/openvision/compiledate", source=MODULE_NAME)
-	elif isfile("/etc/openvision/compiledate"):
-		build = fileReadLine("/etc/openvision/compiledate", source=MODULE_NAME)
-	if build is not None:
-		build = build.strip()
-		if build.isdigit():
-			return "%s-%s-%s" % (build[:4], build[4:6], build[6:])
-	return _("Unknown")
 
 
 def getEnigmaVersionString():
@@ -280,7 +267,7 @@ def getCPUBrand():
 		return _("HiSilicon")
 	elif socfamily.startswith("smp"):
 		return _("Sigma Designs")
-	elif socfamily.startswith("bcm") or getBoxBrand() == "rpi":
+	elif socfamily.startswith("bcm") or BoxInfo.getItem("brand") == "rpi":
 		return _("Broadcom")
 	print("[About] No CPU brand?")
 	return _("Undefined")
@@ -316,7 +303,7 @@ def getVisionModule():
 def getDriverInstalledDate():
 	try:
 		try:
-			if getBoxType() in ("dm800", "dm8000"):
+			if BoxInfo.getItem("model") in ("dm800", "dm8000"):
 				print("[About] Read /var/lib/opkg/info/dvb-modules.control")
 				driver = [x.split("-")[-2:-1][0][-9:] for x in open(glob("/var/lib/opkg/info/*dvb-modules*.control")[0], "r") if x.startswith("Version:")][0]
 				return "%s-%s-%s" % (driver[:4], driver[4:6], driver[6:])

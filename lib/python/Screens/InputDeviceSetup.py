@@ -12,7 +12,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN
 from Tools.LoadPixmap import LoadPixmap
-from boxbranding import getRCType
+from Components.SystemInfo import BoxInfo
 
 
 class InputDeviceSelection(Screen, HelpableScreen):
@@ -356,7 +356,7 @@ class RemoteControlType(Screen, ConfigListScreen):
 		self.getDefaultRcType()
 
 	def getDefaultRcType(self):
-		self.defaultRcType = int(getRCType())
+		self.defaultRcType = BoxInfo.getItem("rctype")
 		if self.defaultRcType == 0:
 			self.defaultRcType = iRcTypeControl.readRcType()
 

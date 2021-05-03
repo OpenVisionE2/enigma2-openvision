@@ -11,22 +11,6 @@ profile("PYTHON_START")
 # it will break output redirection for crash logs.
 import Tools.RedirectOutput
 from Tools.Directories import resolveFilename, fileExists
-from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib, getMachineBuild, getSoCFamily
-from enigma import getBoxType, getBoxBrand, getE2Rev
-
-model = getBoxType()
-brand = getBoxBrand()
-platform = getMachineBuild()
-socfamily = getSoCFamily()
-
-print("[StartEnigma] Open Vision version = %s" % getVisionVersion())
-print("[StartEnigma] Open Vision revision = %s" % getVisionRevision())
-print("[StartEnigma] Brand/Meta = %s" % brand)
-print("[StartEnigma] Model = %s" % model)
-print("[StartEnigma] Platform = %s" % platform)
-print("[StartEnigma] SoC family = %s" % socfamily)
-print("[StartEnigma] Enigma2 revision = %s" % getE2Rev())
-
 import enigma
 import eConsoleImpl
 import eBaseImpl
@@ -43,10 +27,26 @@ if fileExists("/etc/init.d/inetd.busybox"):
 
 from traceback import print_exc
 
-if getHaveMultiLib() == "True":
+from Components.SystemInfo import BoxInfo
+from enigma import getE2Rev
+
+if BoxInfo.getItem("multilib"):
 	import usb.core
 	import usb.backend.libusb1
 	usb.backend.libusb1.get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")
+
+model = BoxInfo.getItem("model")
+brand = BoxInfo.getItem("brand")
+platform = BoxInfo.getItem("platform")
+socfamily = BoxInfo.getItem("socfamily")
+
+print("[StartEnigma] Open Vision version = %s" % BoxInfo.getItem("visionversion"))
+print("[StartEnigma] Open Vision revision = %s" % BoxInfo.getItem("visionrevision"))
+print("[StartEnigma] Brand/Meta = %s" % brand)
+print("[StartEnigma] Model = %s" % model)
+print("[StartEnigma] Platform = %s" % platform)
+print("[StartEnigma] SoC family = %s" % socfamily)
+print("[StartEnigma] Enigma2 revision = %s" % getE2Rev())
 
 profile("ClientMode")
 import Components.ClientMode
@@ -553,8 +553,7 @@ def runScreenTest():
 	profile("Init:PowerKey")
 	power = PowerKey(session)
 
-	from Components.SystemInfo import SystemInfo
-	if SystemInfo["VFDSymbol"]:
+	if BoxInfo.getItem("vfdsymbol"):
 		profile("VFDSYMBOLS")
 		import Components.VfdSymbols
 		Components.VfdSymbols.SymbolsCheck(session)

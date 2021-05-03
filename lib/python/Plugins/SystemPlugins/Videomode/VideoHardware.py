@@ -2,25 +2,24 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.config import config, ConfigSelection, ConfigSubDict, ConfigYesNo
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Tools.CList import CList
 import os
-from enigma import getBoxType, getBoxBrand, getDesktop
+from enigma import getDesktop
 from Components.About import about
 from Tools.Directories import fileExists
 from Components.Console import Console
-from boxbranding import getHaveAVJACK, getHaveHDMI, getMachineBuild, getSoCFamily
 import re
 
-brand = getBoxBrand()
-platform = getMachineBuild()
-socfamily = getSoCFamily().replace('bcm', '').replace('hisi', '')
+brand = BoxInfo.getItem("brand")
+platform = BoxInfo.getItem("platform")
+socfamily = BoxInfo.getItem("socfamily").replace('bcm', '').replace('hisi', '')
 chipsetstring = about.getChipSetString()
-has_hdmi = getHaveHDMI() == "True"
-has_scart = SystemInfo["HasScart"]
-has_yuv = SystemInfo["HasYPbPr"]
-has_rca = SystemInfo["HasComposite"]
-has_avjack = getHaveAVJACK() == "True"
+has_hdmi = BoxInfo.getItem("hdmi")
+has_scart = BoxInfo.getItem("scart")
+has_yuv = BoxInfo.getItem("yuv")
+has_rca = BoxInfo.getItem("rca")
+has_avjack = BoxInfo.getItem("avjack")
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -108,7 +107,7 @@ class VideoHardware:
 	if "Scart" in modes and not has_rca and not has_scart and not has_avjack:
 		del modes["Scart"]
 
-	if getBoxType() == "hd2400":
+	if BoxInfo.getItem("model") == "hd2400":
 		print("[Videomode] Read /proc/stb/info/board_revision")
 		rev = open("/proc/stb/info/board_revision", "r").read()
 		if rev >= "2":

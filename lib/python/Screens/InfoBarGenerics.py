@@ -13,7 +13,7 @@ from Components.Sources.ServiceEvent import ServiceEvent
 from Components.ServiceList import refreshServiceList
 from Components.Sources.Boolean import Boolean
 from Components.config import config, ConfigBoolean, ConfigClock
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Components.UsageConfig import preferredInstantRecordPath, defaultMoviePath
 from Components.VolumeControl import VolumeControl
 from Components.Sources.StaticText import StaticText
@@ -40,7 +40,7 @@ from Tools import Notifications, ASCIItranslit
 from Tools.Directories import fileExists, getRecordingFilename, moveFiles
 from Tools.KeyBindings import getKeyBindingKeys, getKeyDescription
 from keyids import KEYFLAGS, KEYIDS, invertKeyIds
-from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB, getBoxBrand, getBoxType
+from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB
 from time import time, localtime, strftime
 import os
 from os import sys
@@ -50,7 +50,6 @@ import datetime
 from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 # hack alert!
 from Screens.Menu import MainMenu, mdom
-from boxbranding import getMachineBuild, getSoCFamily
 from six import PY2
 if PY2:
 	from sys import maxint
@@ -59,9 +58,9 @@ else:
 	from sys import maxsize
 	maximport = maxsize
 
-model = getBoxType()
-brand = getBoxBrand()
-platform = getMachineBuild()
+model = BoxInfo.getItem("model")
+brand = BoxInfo.getItem("brand")
+platform = BoxInfo.getItem("platform")
 
 
 def isStandardInfoBar(self):
@@ -469,7 +468,7 @@ class InfoBarShowHide(InfoBarScreenSaver):
 		if config.usage.fadeout.value is True:
 			self.hideTimer.stop()
 			self.DimmingTimer.stop()
-			if getSoCFamily().startswith("bcm"):
+			if BoxInfo.getItem("socfamily").startswith("bcm"):
 				self.doWriteAlpha(config.av.osd_alpha.value)
 		self.startHideTimer()
 

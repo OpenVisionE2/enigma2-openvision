@@ -19,7 +19,7 @@ from Components.ActionMap import ActionMap, NumberActionMap, HelpableActionMap
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_CURRENT_SKIN, fileExists
 from Tools.LoadPixmap import LoadPixmap
 from Plugins.Plugin import PluginDescriptor
-from enigma import eTimer, eConsoleAppContainer, getBoxType
+from enigma import eTimer, eConsoleAppContainer
 try:
 	import commands
 except:
@@ -36,6 +36,9 @@ import fnmatch
 from Components.ScrollLabel import ScrollLabel
 from os import remove, unlink, rename
 from six import PY2
+from Components.SystemInfo import BoxInfo
+
+model = BoxInfo.getItem("model")
 
 # Define a function to determine whether a service is configured to start at boot time.
 # This checks for a start file in rc2.d (rc4.d might be more appropriate, but historically it's been rc2.d, so...).
@@ -3071,7 +3074,7 @@ class NetworkuShareSetup(Screen, ConfigListScreen):
 
 	def updateList(self, ret=None):
 		self.list = []
-		self.ushare_user = NoSave(ConfigText(default=getBoxType(), fixed_size=False))
+		self.ushare_user = NoSave(ConfigText(default=model, fixed_size=False))
 		self.ushare_iface = NoSave(ConfigText(fixed_size=False))
 		self.ushare_port = NoSave(ConfigNumber())
 		self.ushare_telnetport = NoSave(ConfigNumber())
@@ -3489,7 +3492,7 @@ class NetworkMiniDLNASetup(Screen, ConfigListScreen):
 
 	def updateList(self, ret=None):
 		self.list = []
-		self.minidlna_name = NoSave(ConfigText(default=getBoxType(), fixed_size=False))
+		self.minidlna_name = NoSave(ConfigText(default=model, fixed_size=False))
 		self.minidlna_iface = NoSave(ConfigText(fixed_size=False))
 		self.minidlna_port = NoSave(ConfigNumber())
 		self.minidlna_serialno = NoSave(ConfigNumber())

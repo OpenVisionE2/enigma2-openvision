@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Tools.Profile import profile
-from enigma import eServiceReference, getBoxType, getBoxBrand
+from enigma import eServiceReference
 from Tools.StbHardware import getBoxProc
 from Tools.Directories import fileExists
 # workaround for required config entry dependencies.
@@ -35,14 +35,11 @@ from Components.ServiceEventTracker import ServiceEventTracker, InfoBarBase
 
 profile("LOAD:HelpableScreen")
 from Screens.HelpMenu import HelpableScreen
-from boxbranding import getMachineProcModel
+from Components.SystemInfo import BoxInfo
 
-brand = getBoxBrand()
-model = getBoxType()
-try:
-	procmodel = getBoxProc()
-except:
-	procmodel = getMachineProcModel()
+model = BoxInfo.getItem("model")
+brand = BoxInfo.getItem("brand")
+procmodel = getBoxProc()
 
 
 class InfoBar(InfoBarBase, InfoBarShowHide,

@@ -1,8 +1,7 @@
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
-import boxbranding
-from enigma import eEnv, eTimer, getBoxBrand, getBoxType
+from enigma import eEnv, eTimer
 
 from Components.ActionMap import NumberActionMap
 from Components.config import ACTIONKEY_0, ACTIONKEY_ASCII, ACTIONKEY_BACKSPACE, ACTIONKEY_DELETE, ACTIONKEY_LEFT, ACTIONKEY_RIGHT, ConfigPassword, ConfigText, config
@@ -10,7 +9,7 @@ from Components.ConfigList import ConfigList
 from Components.Label import Label
 from Components.MenuList import MenuList
 from Components.Slider import Slider
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
 from Screens.MessageBox import MessageBox
@@ -442,7 +441,7 @@ class Wizard(Screen):
 		return False
 
 	def getTranslation(self, text):
-		return _(text).replace("%s %s (kernel %s)", "%s %s (kernel %s)" % (getBoxBrand(), getBoxType(), boxbranding.getKernelVersion())).replace("%s-%s", "%s-%s" % (boxbranding.getVisionVersion(), boxbranding.getVisionRevision())).replace("%s (type %s id %s)", "%s (type %s id %s)" % (boxbranding.getRCName(), boxbranding.getRCType(), boxbranding.getRCIDNum()))
+		return _(text).replace("%s %s (kernel %s)", "%s %s (kernel %s)" % (BoxInfo.getItem("brand"), BoxInfo.getItem("model"), BoxInfo.getItem("kernel"))).replace("%s-%s", "%s-%s" % (BoxInfo.getItem("visionversion"), BoxInfo.getItem("visionrevision"))).replace("%s (type %s id %s)", "%s (type %s id %s)" % (BoxInfo.getItem("rcname"), BoxInfo.getItem("rctype"), BoxInfo.getItem("rcidnum")))
 
 	def updateText(self, firstset=False):
 		text = self.getTranslation(self.wizard[self.currStep]["text"])

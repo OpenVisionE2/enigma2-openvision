@@ -2,13 +2,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.config import config, ConfigSlider, ConfigSelection, ConfigYesNo, ConfigEnableDisable, ConfigSubsection, ConfigBoolean, ConfigSelectionNumber, ConfigNothing, NoSave
-from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop, getBoxType, getBoxBrand
-from Components.SystemInfo import SystemInfo
+from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop
+from Components.SystemInfo import BoxInfo, SystemInfo
 import os
-from boxbranding import getMachineBuild
 
-model = getBoxType()
-platform = getMachineBuild()
+model = BoxInfo.getItem("model")
+platform = BoxInfo.getItem("platform")
 
 
 class AVSwitch:
@@ -75,18 +74,18 @@ class AVSwitch:
 
 def InitAVSwitch():
 	config.av = ConfigSubsection()
-	if model == "vuduo" or getBoxBrand() == "ixuss":
+	if model == "vuduo" or BoxInfo.getItem("brand") == "ixuss":
 		config.av.yuvenabled = ConfigBoolean(default=False)
 	else:
 		config.av.yuvenabled = ConfigBoolean(default=True)
 	colorformat_choices = {"cvbs": _("CVBS")}
 
 	# when YUV, Scart or S-Video is not support by HW, don't let the user select it
-	if SystemInfo["HasYPbPr"]:
+	if BoxInfo.getItem("yuv"):
 		colorformat_choices["yuv"] = _("YPbPr")
-	if SystemInfo["HasScart"]:
+	if BoxInfo.getItem("scart"):
 		colorformat_choices["rgb"] = _("RGB")
-	if SystemInfo["HasSVideo"]:
+	if BoxInfo.getItem("svideo"):
 		colorformat_choices["svideo"] = _("S-Video")
 
 	config.av.colorformat = ConfigSelection(choices=colorformat_choices, default="cvbs")

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from enigma import eTimer, eEnv, getBoxType
+from enigma import eTimer, eEnv
 from Screens.Screen import Screen
 from Components.ActionMap import ActionMap, NumberActionMap
 from Components.Pixmap import Pixmap, MultiPixmap
@@ -17,6 +17,7 @@ from Tools.LoadPixmap import LoadPixmap
 from Plugins.SystemPlugins.WirelessLan.Wlan import iWlan, iStatus, getWlanConfigName, existBcmWifi
 from time import time
 import re
+from Components.SystemInfo import BoxInfo
 
 plugin_path = eEnv.resolve("${libdir}/enigma2/python/Plugins/SystemPlugins/WirelessLan")
 
@@ -393,7 +394,7 @@ def configStrings(iface):
 		ret += '\tpre-up wl-config.sh -m ' + encryption.lower() + ' -k "' + psk + '" -s "' + essid + '" \n'
 		ret += '\tpost-down wl-down.sh\n'
 	else:
-		if (driver == 'madwifi' or getBoxType() == "dm8000") and config.plugins.wlan.hiddenessid.value:
+		if (driver == 'madwifi' or BoxInfo.getItem("model") == "dm8000") and config.plugins.wlan.hiddenessid.value:
 			ret += "\tpre-up iwconfig " + iface + " essid \"" + re.escape(config.plugins.wlan.essid.value) + "\" || true\n"
 		ret += "\tpre-up wpa_supplicant -i" + iface + " -c" + getWlanConfigName(iface) + " -B -dd -D" + driver + " || true\n"
 		ret += "\tpre-down wpa_cli -i" + iface + " terminate || true\n"

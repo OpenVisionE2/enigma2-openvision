@@ -5,9 +5,8 @@ from os import path
 from fcntl import ioctl
 from struct import pack, unpack
 from time import time, localtime
-from enigma import getBoxType
 from Tools.Directories import fileExists
-from boxbranding import getMachineBuild
+from Components.SystemInfo import BoxInfo
 
 
 def getBoxProcType():
@@ -95,7 +94,7 @@ def getFPVersion():
 			ret = open("/proc/stb/info/micomver", "r").read()
 		elif fileExists("/proc/stb/fp/version"):
 			print("[StbHardware] Read /proc/stb/fp/version")
-			if getMachineBuild() == "dm4kgen" or getBoxType() in ("dm520", "dm7080", "dm820"):
+			if BoxInfo.getItem("platform") == "dm4kgen" or BoxInfo.getItem("model") in ("dm520", "dm7080", "dm820"):
 				ret = open("/proc/stb/fp/version", "r").read()
 			else:
 				ret = long(open("/proc/stb/fp/version", "r").read())

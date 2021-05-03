@@ -4,18 +4,17 @@ from sys import maxsize
 from twisted.internet import threads
 from usb import busses
 
-from boxbranding import getMachineBuild, getDBoxLCD
-from enigma import eActionMap, eDBoxLCD, eTimer, getBoxType
+from enigma import eActionMap, eDBoxLCD, eTimer
 
 from Components.config import ConfigNothing, ConfigSelection, ConfigSlider, ConfigSubsection, ConfigYesNo, config
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Screens.InfoBar import InfoBar
 from Screens.Screen import Screen
 from Screens.Standby import inTryQuitMainloop
 from Tools.Directories import fileReadLine, fileWriteLine
 
-model = getBoxType()
-platform = getMachineBuild()
+model = BoxInfo.getItem("model")
+platform = BoxInfo.getItem("platform")
 
 
 class dummyScreen(Screen):
@@ -278,7 +277,7 @@ def standbyCounterChanged(configElement):
 
 
 def InitLcd():
-	if getDBoxLCD() == "False":
+	if not BoxInfo.getItem("dboxlcd"):
 		detected = False
 	else:
 		detected = eDBoxLCD.getInstance().detected()

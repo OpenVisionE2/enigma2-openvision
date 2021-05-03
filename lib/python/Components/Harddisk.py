@@ -4,20 +4,16 @@ from os.path import abspath, dirname, exists, ismount, join as pathjoin, normpat
 from re import search
 from time import sleep, time
 
-from boxbranding import getMachineMtdRoot, getMachineProcModel
 from enigma import eTimer
 
 from Components import Task
 from Components.Console import Console
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Tools.CList import CList
 from Tools.Directories import fileReadLine, fileReadLines
 from Tools.StbHardware import getBoxProc
 
-try:
-	hw_type = getBoxProc()
-except Exception:
-	hw_type = getMachineProcModel()
+hw_type = getBoxProc()
 
 
 def getProcMounts():
@@ -575,7 +571,7 @@ class HarddiskManager:
 		removable = False
 		BLACKLIST = []
 		if SystemInfo["HasMMC"]:
-			BLACKLIST = ["%s" % (getMachineMtdRoot()[0:7])]
+			BLACKLIST = ["%s" % (BoxInfo.getItem("mtdrootfs")[0:7])]
 		if SystemInfo["HasMMC"] and "root=/dev/mmcblk0p1" in fileReadLine("/proc/cmdline", ""):
 			BLACKLIST = ["mmcblk0p1"]
 		blacklisted = False

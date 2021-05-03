@@ -9,11 +9,10 @@ from Components.Sources.StaticText import StaticText
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.config import config, ConfigBoolean, configfile
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
-from boxbranding import getHaveHDMI
 
-has_hdmi = getHaveHDMI() == "True"
+has_hdmi = BoxInfo.getItem("hdmi")
 
 config.misc.showtestcard = ConfigBoolean(default=False)
 

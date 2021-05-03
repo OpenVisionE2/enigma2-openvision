@@ -3,18 +3,17 @@
 from __future__ import print_function
 from twisted.internet import threads
 from Components.config import config
-from enigma import eTimer, iPlayableService, iServiceInformation, getBoxType, getBoxBrand
+from enigma import eTimer, iPlayableService, iServiceInformation
 import NavigationInstance
 from Tools.Directories import fileExists
 from Components.ParentalControl import parentalControl
 from Components.ServiceEventTracker import ServiceEventTracker
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from time import time
-from boxbranding import getMachineBuild
 
-brand = getBoxBrand()
-model = getBoxType()
-platform = getMachineBuild()
+model = BoxInfo.getItem("model")
+brand = BoxInfo.getItem("brand")
+platform = BoxInfo.getItem("platform")
 
 POLLTIME = 5 # seconds
 

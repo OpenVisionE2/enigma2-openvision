@@ -3,8 +3,7 @@ from os import mkdir, remove
 from os.path import exists, isfile, islink, join as pathjoin, normpath
 from time import mktime
 
-from boxbranding import getDisplayType, getHaveWOL, getMachineBuild, getSoCFamily
-from enigma import eBackgroundFileEraser, eDVBDB, eEnv, setEnableTtCachingOnOff, setPreferredTuner, setSpinnerOnOff, setTunerTypePriorityOrder, Misc_Options, eServiceEvent, eDVBLocalTimeHandler, eEPGCache, getBoxType
+from enigma import eBackgroundFileEraser, eDVBDB, eEnv, setEnableTtCachingOnOff, setPreferredTuner, setSpinnerOnOff, setTunerTypePriorityOrder, Misc_Options, eServiceEvent, eDVBLocalTimeHandler, eEPGCache
 
 from keyids import KEYIDS
 from skin import parameters
@@ -14,11 +13,11 @@ from Components.Console import Console
 from Components.Harddisk import harddiskmanager
 from Components.NimManager import nimmanager
 from Components.ServiceList import refreshServiceList
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Tools.Directories import defaultRecordingLocation, fileHas
 
-model = getBoxType()
-displaytype = getDisplayType()
+model = BoxInfo.getItem("model")
+displaytype = BoxInfo.getItem("displaytype")
 
 
 def InitUsageConfig():
@@ -130,7 +129,7 @@ def InitUsageConfig():
 	for i in range(1, 12):
 		choicelist.append((str(i), ngettext("%d second", "%d seconds", i) % i))
 	config.usage.infobar_timeout = ConfigSelection(default="5", choices=choicelist)
-	if getSoCFamily().startswith("bcm"):
+	if BoxInfo.getItem("socfamily").startswith("bcm"):
 		config.usage.fadeout = ConfigYesNo(default=True)
 	else:
 		config.usage.fadeout = ConfigYesNo(default=False)
@@ -1071,7 +1070,7 @@ def InitUsageConfig():
 		config.usage.fanspeed = ConfigSlider(default=127, increment=8, limits=(0, 255))
 		config.usage.fanspeed.addNotifier(fanSpeedChanged)
 
-	if SystemInfo["WakeOnLAN"] or getHaveWOL() == "True":
+	if SystemInfo["WakeOnLAN"] or BoxInfo.getItem("wol"):
 		def wakeOnLANChanged(configElement):
 			if "fp" in SystemInfo["WakeOnLAN"]:
 				open(SystemInfo["WakeOnLAN"], "w").write(configElement.value and "enable" or "disable")
@@ -1356,7 +1355,7 @@ def InitUsageConfig():
 				"420": _("YCbCr420")
 			})
 		else:
-			if model == "vuzero4k" or getMachineBuild() == "dm4kgen":
+			if model == "vuzero4k" or BoxInfo.getItem("platform") == "dm4kgen":
 				config.av.hdmicolorspace = ConfigSelection(default="Edid(Auto)", choices={
 					"Edid(Auto)": _("Auto"),
 					"Hdmi_Rgb": _("RGB"),

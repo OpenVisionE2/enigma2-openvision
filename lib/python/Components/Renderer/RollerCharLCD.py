@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 from Components.config import config
 from Components.Renderer.Renderer import Renderer
-from enigma import eLabel, eTimer, getBoxType
+from enigma import eLabel, eTimer
 from Components.VariableText import VariableText
+from Components.SystemInfo import BoxInfo
 
 
 class RollerCharLCD(VariableText, Renderer):
@@ -13,7 +14,7 @@ class RollerCharLCD(VariableText, Renderer):
 		VariableText.__init__(self)
 		self.moveTimerText = None
 		self.delayTimer = None
-		if getBoxType() in ("vuduo", "sf4008", "beyonwizu4"):
+		if BoxInfo.getItem("model") in ("vuduo", "sf4008", "beyonwizu4"):
 			self.stringlength = 16
 		else:
 			self.stringlength = 12

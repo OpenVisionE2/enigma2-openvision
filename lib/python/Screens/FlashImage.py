@@ -11,7 +11,7 @@ from Components.ActionMap import ActionMap
 from Components.Console import Console
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo, SystemInfo
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Tools.Downloader import downloadWithProgress
@@ -24,9 +24,9 @@ import zipfile
 import shutil
 import tempfile
 
-from enigma import eEPGCache, getBoxType
+from enigma import eEPGCache
 
-model = getBoxType()
+model = BoxInfo.getItem("model")
 
 
 def checkimagefiles(files):
