@@ -1,4 +1,4 @@
-import boxbranding
+from boxbranding import getMachineProcModel
 
 from datetime import datetime
 from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, eLabel, eTimer, getBoxBrand, getBoxType, getDesktop, getE2Rev
@@ -256,25 +256,6 @@ class BenchmarkInformation(InformationBase):
 		return "Benchmark Information"
 
 
-class BoxBrandingInformation(InformationBase):
-	def __init__(self, session):
-		InformationBase.__init__(self, session)
-		self.setTitle(_("BoxBranding Information"))
-		self.skinName.insert(0, "BoxBrandingInformation")
-
-	def displayInformation(self):
-		info = []
-		info.append(formatLine("H", "%s %s %s" % (_("BoxBranding information for"), SystemInfo["MachineBrand"], SystemInfo["MachineModel"])))
-		info.append("")
-		for method in sorted(boxbranding.__dict__.keys()):
-			if callable(getattr(boxbranding, method)):
-				info.append(formatLine("P1", method, getattr(boxbranding, method)()))
-		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
-
-	def getSummaryInformation(self):
-		return "Build Information"
-
-
 class CommitLogInformation(InformationBase):
 	def __init__(self, session):
 		InformationBase.__init__(self, session)
@@ -471,12 +452,10 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("M", _("Donate at %s") % "https://forum.openvision.tech/app.php/donate"))
 		info.append("")
-		visionVersion = fileReadLine("/etc/openvision/visionversion", boxbranding.getVisionVersion(), source=MODULE_NAME)
-		info.append(formatLine("P1", _("OpenVision version"), visionVersion))
-		visionRevision = fileReadLine("/etc/openvision/visionrevision", boxbranding.getVisionRevision(), source=MODULE_NAME)
-		info.append(formatLine("P1", _("OpenVision revision"), visionRevision))
+		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("visionversion")))
+		info.append(formatLine("P1", _("OpenVision revision"), BoxInfo.getItem("visionrevision")))
 		if config.misc.OVupdatecheck.value:
-			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if boxbranding.getVisionVersion().startswith("10") else "old")
+			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if BoxInfo.getItem("visionversion").startswith("10") else "old")
 			try:
 				ovResponse = urlopen(ovUrl)
 				ovRevision = ovResponse.read().decode() if PY2 else ovResponse.read()
@@ -519,16 +498,16 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("Build information")))
 		info.append("")
-		info.append(formatLine("P1", _("Image"), boxbranding.getImageDistro()))
-		info.append(formatLine("P1", _("Image build/branch"), boxbranding.getImageBuild()))
+		info.append(formatLine("P1", _("Image"), BoxInfo.getItem("distro")))
+		info.append(formatLine("P1", _("Image build/branch"), BoxInfo.getItem("imagebuild")))
 		info.append(formatLine("P1", _("Image build date"), about.getBuildDateString()))
-		info.append(formatLine("P1", _("Image architecture"), boxbranding.getImageArch()))
-		if boxbranding.getImageFolder():
-			info.append(formatLine("P1", _("Image folder"), boxbranding.getImageFolder()))
-		if boxbranding.getImageFileSystem():
-			info.append(formatLine("P1", _("Image file system"), boxbranding.getImageFileSystem().strip()))
-		info.append(formatLine("P1", _("Feed URL"), boxbranding.getFeedsUrl()))
-		info.append(formatLine("P1", _("Compiled by"), boxbranding.getDeveloperName()))
+		info.append(formatLine("P1", _("Image architecture"), BoxInfo.getItem("architecture")))
+		if BoxInfo.getItem("imagedir"):
+			info.append(formatLine("P1", _("Image folder"), BoxInfo.getItem("imagedir")))
+		if BoxInfo.getItem("imagefs"):
+			info.append(formatLine("P1", _("Image file system"), BoxInfo.getItem("imagefs").strip()))
+		info.append(formatLine("P1", _("Feed URL"), BoxInfo.getItem("feedsurl")))
+		info.append(formatLine("P1", _("Compiled by"), BoxInfo.getItem("developername")))
 		info.append("")
 		info.append(formatLine("H", _("Software information")))
 		info.append("")
@@ -546,20 +525,20 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("Boot information")))
 		info.append("")
-		if boxbranding.getMachineMtdBoot():
-			info.append(formatLine("P1", _("MTD boot"), boxbranding.getMachineMtdBoot()))
-		if boxbranding.getMachineMtdRoot():
-			info.append(formatLine("P1", _("MTD root"), boxbranding.getMachineMtdRoot()))
-		if boxbranding.getMachineMtdKernel():
-			info.append(formatLine("P1", _("MTD kernel"), boxbranding.getMachineMtdKernel()))
-		if boxbranding.getMachineRootFile():
-			info.append(formatLine("P1", _("Root file"), boxbranding.getMachineRootFile()))
-		if boxbranding.getMachineKernelFile():
-			info.append(formatLine("P1", _("Kernel file"), boxbranding.getMachineKernelFile()))
-		if boxbranding.getMachineMKUBIFS():
-			info.append(formatLine("P1", _("MKUBIFS"), boxbranding.getMachineMKUBIFS()))
-		if boxbranding.getMachineUBINIZE():
-			info.append(formatLine("P1", _("UBINIZE"), boxbranding.getMachineUBINIZE()))
+		if BoxInfo.getItem("mtdbootfs"):
+			info.append(formatLine("P1", _("MTD boot"), BoxInfo.getItem("mtdbootfs")))
+		if BoxInfo.getItem("mtdrootfs"):
+			info.append(formatLine("P1", _("MTD root"), BoxInfo.getItem("mtdrootfs")))
+		if BoxInfo.getItem("mtdrootfs"):
+			info.append(formatLine("P1", _("MTD kernel"), BoxInfo.getItem("mtdrootfs")))
+		if BoxInfo.getItem("mtdrootfs"):
+			info.append(formatLine("P1", _("Root file"), BoxInfo.getItem("mtdrootfs")))
+		if BoxInfo.getItem("kernelfile"):
+			info.append(formatLine("P1", _("Kernel file"), BoxInfo.getItem("kernelfile")))
+		if BoxInfo.getItem("mkubifs"):
+			info.append(formatLine("P1", _("MKUBIFS"), BoxInfo.getItem("mkubifs")))
+		if BoxInfo.getItem("ubinize"):
+			info.append(formatLine("P1", _("UBINIZE"), BoxInfo.getItem("ubinize")))
 		if SystemInfo["HiSilicon"]:
 			info.append("")
 			info.append(formatLine("H", _("HiSilicon specific information")))
@@ -610,6 +589,27 @@ class ImageInformation(InformationBase):
 
 	def getSummaryInformation(self):
 		return "OpenVision Information"
+
+
+class KernelModuleInformation(InformationBase):
+	def __init__(self, session):
+		InformationBase.__init__(self, session)
+		self.setTitle(_("Kernel Module Information"))
+		self.skinName.insert(0, "KernelModuleInformation")
+
+	def displayInformation(self):
+		info = []
+		procList = BoxInfo.getProcList()
+		info.append(formatLine("H", "%s %s %s" % (_("Enigma kernel module information for"), BoxInfo.getItem("brand"), BoxInfo.getItem("model"))))
+		info.append("")
+		info.append(formatLine("P1", _("Kernel module path"), BoxInfo.getItem("enigmamodule")))
+		for item in procList:
+			info.append(formatLine("P1", item, str(BoxInfo.getItem(item))))
+		info.append("")
+		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
+
+	def getSummaryInformation(self):
+		return "Build Information"
 
 
 class MemoryInformation(InformationBase):
@@ -990,14 +990,14 @@ class ReceiverInformation(InformationBase):
 		info = []
 		info.append(formatLine("H", _("Hardware information")))
 		info.append("")
-		stbPlatform = boxbranding.getMachineBuild()
+		stbPlatform = BoxInfo.getItem("platform")
 		info.append(formatLine("P1", _("Hardware"), SystemInfo["MachineModel"]))
 		if stbPlatform != model:
 			info.append(formatLine("P1", _("Platform"), stbPlatform))
 		try:
 			procModel = getBoxProc()
 		except Exception as err:
-			procModel = boxbranding.getMachineProcModel()
+			procModel = getMachineProcModel()
 		if procModel != model:
 			info.append(formatLine("P1", _("Proc model"), procModel))
 		procModelType = getBoxProcType()
@@ -1010,8 +1010,8 @@ class ReceiverInformation(InformationBase):
 		if hwRelease:
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
 		info.append(formatLine("P1", _("Brand/Meta"), SystemInfo["MachineBrand"]))
-		if not boxbranding.getDisplayType().startswith(" "):
-			info.append(formatLine("P1", _("Front panel type"), boxbranding.getDisplayType()))
+		if not BoxInfo.getItem("displaytype").startswith(" "):
+			info.append(formatLine("P1", _("Front panel type"), BoxInfo.getItem("displaytype")))
 		fpVersion = getFPVersion()
 		if fpVersion and fpVersion != "unknown":
 			info.append(formatLine("P1", _("Front processor version"), fpVersion))
@@ -1020,14 +1020,14 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("P1", _("CPU"), about.getCPUInfoString()))
 		info.append(formatLine("P1", _("CPU brand"), about.getCPUBrand()))
-		socFamily = boxbranding.getSoCFamily()
+		socFamily = BoxInfo.getItem("socfamily")
 		if socFamily:
 			info.append(formatLine("P1", _("SoC family"), socFamily))
 		info.append(formatLine("P1", _("CPU architecture"), about.getCPUArch()))
-		if boxbranding.getImageFPU():
-			info.append(formatLine("P1", _("FPU"), boxbranding.getImageFPU()))
-		if boxbranding.getImageArch() == "aarch64":
-			info.append(formatLine("P1", _("MultiLib"), (_("Yes") if boxbranding.getHaveMultiLib() == "True" else _("No"))))
+		if BoxInfo.getItem("fpu"):
+			info.append(formatLine("P1", _("FPU"), BoxInfo.getItem("fpu")))
+		if BoxInfo.getItem("architecture") == "aarch64":
+			info.append(formatLine("P1", _("MultiLib"), (_("Yes") if BoxInfo.getItem("multilib") else _("No"))))
 		info.append("")
 		info.append(formatLine("H", _("Remote control information")))
 		info.append("")
@@ -1043,15 +1043,15 @@ class ReceiverInformation(InformationBase):
 		customCode = fileReadLine("/proc/stb/ir/rc/customcode", source=MODULE_NAME)
 		if customCode:
 			info.append(formatLine("P1", _("RC custom code"), customCode))
-		info.append(formatLine("P1", _("RC code"), boxbranding.getRCType()))
-		info.append(formatLine("P1", _("RC name"), boxbranding.getRCName()))
-		info.append(formatLine("P1", _("RC ID number"), boxbranding.getRCIDNum()))
+		info.append(formatLine("P1", _("RC code"), BoxInfo.getItem("rctype")))
+		info.append(formatLine("P1", _("RC name"), BoxInfo.getItem("rcname")))
+		info.append(formatLine("P1", _("RC ID number"), BoxInfo.getItem("rcidnum")))
 		info.append("")
 		info.append(formatLine("H", _("Driver and kernel information")))
 		info.append("")
 		info.append(formatLine("P1", _("Drivers version"), about.getDriverInstalledDate()))
-		info.append(formatLine("P1", _("Kernel version"), boxbranding.getKernelVersion()))
-		info.append(formatLine("P1", _("Kernel module layout"), _("N/A") if BoxInfo.getItem("ModuleLayout") is None else SystemInfo["ModuleLayout"]))
+		info.append(formatLine("P1", _("Kernel version"), BoxInfo.getItem("kernel")))
+		info.append(formatLine("P1", _("Kernel module layout"), SystemInfo["ModuleLayout"] if BoxInfo.getItem("ModuleLayout") else _("N/A")))
 		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id", source=MODULE_NAME)
 		if deviceId:
 			info.append(formatLine("P1", _("Device id"), deviceId))
@@ -1455,8 +1455,8 @@ class TunerInformation(InformationBase):
 		dvbApiVersion = dvbFeToolTxt.splitlines()[0].replace("DVB API version: ", "").strip()
 		info.append(formatLine("", _("DVB API version"), dvbApiVersion))
 		info.append("")
-		info.append(formatLine("", _("Transcoding"), (_("Yes") if boxbranding.getHaveTranscoding() == "True" else _("No"))))
-		info.append(formatLine("", _("MultiTranscoding"), (_("Yes") if boxbranding.getHaveMultiTranscoding() == "True" else _("No"))))
+		info.append(formatLine("", _("Transcoding"), (_("Yes") if BoxInfo.getItem("transcoding") else _("No"))))
+		info.append(formatLine("", _("MultiTranscoding"), (_("Yes") if BoxInfo.getItem("multitranscoding") else _("No"))))
 		info.append("")
 		info.append(formatLine("", _("DVB-C"), (_("Yes") if "DVBC" in dvbFeToolTxt or "DVB-C" in dvbFeToolTxt else _("No"))))
 		info.append(formatLine("", _("DVB-S"), (_("Yes") if "DVBS" in dvbFeToolTxt or "DVB-S" in dvbFeToolTxt else _("No"))))
