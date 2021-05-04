@@ -24,7 +24,7 @@ from Components.NimManager import nimmanager
 from Components.Pixmap import MultiPixmap
 from Components.ScrollLabel import ScrollLabel
 # from Components.Storage import Harddisk, storageManager
-from Components.SystemInfo import BoxInfo, SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
@@ -236,7 +236,7 @@ class BenchmarkInformation(InformationBase):
 
 	def displayInformation(self):
 		info = []
-		info.append(formatLine("H", "%s %s %s" % (_("Benchmark for"), SystemInfo["MachineBrand"], SystemInfo["MachineModel"])))
+		info.append(formatLine("H", "%s %s %s" % (_("Benchmark for"), BoxInfo.getItem("brand"), BoxInfo.getItem("model"))))
 		info.append("")
 		for index, cpu in enumerate(self.cpuTypes):
 			info.append(formatLine("P1", _("CPU / Core %d type") % index, cpu))
@@ -537,7 +537,7 @@ class ImageInformation(InformationBase):
 			info.append(formatLine("P1", _("MKUBIFS"), BoxInfo.getItem("mkubifs")))
 		if BoxInfo.getItem("ubinize"):
 			info.append(formatLine("P1", _("UBINIZE"), BoxInfo.getItem("ubinize")))
-		if SystemInfo["HiSilicon"]:
+		if BoxInfo.getItem("HiSilicon"):
 			info.append("")
 			info.append(formatLine("H", _("HiSilicon specific information")))
 			info.append("")
@@ -597,11 +597,10 @@ class KernelModuleInformation(InformationBase):
 
 	def displayInformation(self):
 		info = []
-		procList = BoxInfo.getProcList()
 		info.append(formatLine("H", "%s %s %s" % (_("Enigma kernel module information for"), BoxInfo.getItem("brand"), BoxInfo.getItem("model"))))
 		info.append("")
 		info.append(formatLine("P1", _("Kernel module path"), BoxInfo.getItem("enigmamodule")))
-		for item in procList:
+		for item in BoxInfo.getProcList():
 			info.append(formatLine("P1", item, str(BoxInfo.getItem(item))))
 		info.append("")
 		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
@@ -984,12 +983,12 @@ class ReceiverInformation(InformationBase):
 		self.session.openWithCallback(self.informationWindowClosed, BenchmarkInformation)
 
 	def displayInformation(self):
-		model = SystemInfo["MachineModel"]
+		model = BoxInfo.getItem("model")
 		info = []
 		info.append(formatLine("H", _("Hardware information")))
 		info.append("")
 		stbPlatform = BoxInfo.getItem("platform")
-		info.append(formatLine("P1", _("Hardware"), SystemInfo["MachineModel"]))
+		info.append(formatLine("P1", _("Hardware"), model))
 		if stbPlatform != model:
 			info.append(formatLine("P1", _("Platform"), stbPlatform))
 		procModel = getBoxProc()
@@ -1004,7 +1003,7 @@ class ReceiverInformation(InformationBase):
 		hwRelease = fileReadLine("/proc/stb/info/release", source=MODULE_NAME)
 		if hwRelease:
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
-		info.append(formatLine("P1", _("Brand/Meta"), SystemInfo["MachineBrand"]))
+		info.append(formatLine("P1", _("Brand/Meta"), BoxInfo.getItem("brand")))
 		if not BoxInfo.getItem("displaytype").startswith(" "):
 			info.append(formatLine("P1", _("Display type"), BoxInfo.getItem("displaytype")))
 		fpVersion = getFPVersion()
@@ -1046,7 +1045,7 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("P1", _("Drivers version"), about.getDriverInstalledDate()))
 		info.append(formatLine("P1", _("Kernel version"), BoxInfo.getItem("kernel")))
-		info.append(formatLine("P1", _("Kernel module layout"), SystemInfo["ModuleLayout"] if BoxInfo.getItem("ModuleLayout") else _("N/A")))
+		info.append(formatLine("P1", _("Kernel module layout"), BoxInfo.getItem("ModuleLayout") if BoxInfo.getItem("ModuleLayout") else _("N/A")))
 		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id", source=MODULE_NAME)
 		if deviceId:
 			info.append(formatLine("P1", _("Device id"), deviceId))
