@@ -69,9 +69,15 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 		elif value.startswith("\"") or value.startswith("'") and value.endswith(value[0]):
 			value = value[1:-1]
 		elif value.startswith("(") and value.endswith(")"):
-			value = tuple(split(value))
+			data = []
+			for item in [x.strip() for x in value[1:-1].split(",")]:
+				data.append(self.processValue(item))
+			value = tuple(data)
 		elif value.startswith("[") and value.endswith("]"):
-			value = list(split(value))
+			data = []
+			for item in [x.strip() for x in value[1:-1].split(",")]:
+				data.append(self.processValue(item))
+			value = list(data)
 		elif value.upper() == "NONE":
 			value = None
 		elif value.upper() in ("FALSE", "NO", "OFF", "DISABLED"):
@@ -109,9 +115,7 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 		# values loaded above.  If the values become dynamic this code
 		# should be enabled.
 		# elif item in self.procList:
-		# 	value = fileReadLine(pathjoin(PROC_PATH, item), source=MODULE_NAME)
-		# 	if value:
-		# 		value = self.processValue(value)
+		# 	value = self.processValue(fileReadLine(pathjoin(PROC_PATH, item), source=MODULE_NAME))
 		elif item in self.boxInfo:
 			value = self.boxInfo[item]
 		elif item in SystemInfo:
