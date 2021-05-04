@@ -203,10 +203,6 @@ displaytype = BoxInfo.getItem("displaytype")
 architecture = BoxInfo.getItem("architecture")
 socfamily = BoxInfo.getItem("socfamily")
 
-SystemInfo["MachineBrand"] = brand  # Users of these values should be updated to BoxInfo calls.
-SystemInfo["MachineModel"] = model
-SystemInfo["MachineBuild"] = platform
-
 # Remote control related data.
 #
 SystemInfo["RCCode"] = BoxInfo.getItem("rctype")
