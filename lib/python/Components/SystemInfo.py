@@ -185,7 +185,7 @@ def getRCFile(ext):
 
 
 def getModuleLayout():
-	modulePath = BoxInfo.getItem("EnigmaModule")
+	modulePath = BoxInfo.getItem("enigmamodule")
 	if modulePath:
 		process = Popen(("/sbin/modprobe", "--dump-modversions", modulePath), stdout=PIPE, stderr=PIPE)
 		stdout, stderr = process.communicate()
