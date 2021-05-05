@@ -39,7 +39,7 @@ from ServiceReference import ServiceReference, isPlayableForCur, hdmiInServiceRe
 from Tools import Notifications, ASCIItranslit
 from Tools.Directories import fileExists, getRecordingFilename, moveFiles
 from Tools.KeyBindings import getKeyBindingKeys, getKeyDescription
-from keyids import KEYFLAGS, KEYIDS, invertKeyIds
+from keyids import KEYFLAGS, KEYIDS, KEYIDNAMES
 from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB
 from time import time, localtime, strftime
 import os
@@ -252,7 +252,6 @@ class InfoBarUnhandledKey:
 		eActionMap.getInstance().bindAction("", maximport, self.actionB)  # Lowest priority.
 		self.flags = (1 << 1)
 		self.uflags = 0
-		self.invKeyIds = invertKeyIds()
 		self.sibIgnoreKeys = (
 			KEYIDS["KEY_VOLUMEDOWN"], KEYIDS["KEY_VOLUMEUP"],
 			KEYIDS["KEY_EXIT"], KEYIDS["KEY_OK"],
@@ -262,7 +261,7 @@ class InfoBarUnhandledKey:
 		)
 
 	def actionA(self, key, flag):  # This function is called on every keypress!
-		print("[InfoBarGenerics] Key: %s (%s) KeyID='%s' Binding='%s'." % (key, KEYFLAGS[flag], self.invKeyIds.get(key, ""), ", ".join(getKeyDescription(key))))
+		print("[InfoBarGenerics] Key: %s (%s) KeyID='%s' Binding='%s'." % (key, KEYFLAGS.get(flag, _("Unknown")), KEYIDNAMES.get(key, _("Unknown")), ", ".join(getKeyDescription(key))))
 		if flag != 2: # Don't hide on repeat.
 			self.unhandledKeyDialog.hide()
 			if self.closeSIB(key) and self.secondInfoBarScreen and self.secondInfoBarScreen.shown:
