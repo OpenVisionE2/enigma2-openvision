@@ -8,7 +8,7 @@ from Components.ScrollLabel import ScrollLabel
 from Components.Sources.StaticText import StaticText
 from Screens.Setup import Setup
 from Tools.camcontrol import CamControl
-from Tools.Directories import isPluginExtensionInstalled
+from Tools.Directories import isPluginInstalled
 from Tools.GetEcmInfo import GetEcmInfo
 
 
@@ -95,7 +95,7 @@ class SoftcamSetup(Setup):
 		if "oscam" or "ncam" in config.misc.softcams.value.lower():
 			from Screens.OScamInfo import OscamInfoMenu
 			self.session.open(OscamInfoMenu)
-		elif isfile(ppanelFilename) and isPluginExtensionInstalled("PPanel"):
+		elif isfile(ppanelFilename) and isPluginInstalled("PPanel"):
 			from Plugins.Extensions.PPanel.ppanel import PPanel
 			self.session.open(PPanel, name="%s PPanel" % config.misc.softcams.value, node=None, filename=ppanelFilename, deletenode=None)
 

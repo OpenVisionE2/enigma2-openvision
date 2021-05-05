@@ -3,7 +3,7 @@
 from Components.Converter.Converter import Converter
 from Components.config import config
 from Components.Element import cached
-from Tools.Directories import fileExists, isPluginExtensionInstalled
+from Tools.Directories import fileExists, isPluginInstalled
 from Components.Converter.Poll import Poll
 
 
@@ -28,7 +28,7 @@ class VisionCamInfo(Poll, Converter, object):
 		if not info:
 			return ""
 		# Alternative SoftCam Manager
-		if isPluginExtensionInstalled("AlternativeSoftCamManager"):
+		if isPluginInstalled("AlternativeSoftCamManager"):
 			if config.plugins.AltSoftcam.actcam.value != "none":
 				return config.plugins.AltSoftcam.actcam.value
 			else:

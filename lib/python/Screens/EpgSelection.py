@@ -30,7 +30,7 @@ from Plugins.Plugin import PluginDescriptor
 from Tools.BoundFunction import boundFunction
 from Tools.FallbackTimer import FallbackTimerList
 from Components.Button import Button
-from Tools.Directories import isPluginExtensionInstalled
+from Tools.Directories import isPluginInstalled
 from Screens.MessageBox import MessageBox
 from Components.Console import Console
 from six import PY2
@@ -127,7 +127,7 @@ class EPGSelection(Screen):
 				"red": (self.GoToTmbd, _("Search event in TMBD"))
 			})
 
-		self.isTMBD = isPluginExtensionInstalled("TMBD")
+		self.isTMBD = isPluginInstalled("TMBD")
 		if self.isTMBD:
 			self["key_red"] = Button(_("Search TMBD"))
 			self.select = True
@@ -155,13 +155,13 @@ class EPGSelection(Screen):
 			self.fallbackTimer = FallbackTimerList(self, self.onCreate)
 
 	def GoToTmbd(self):
-		if isPluginExtensionInstalled("TMBD"):
+		if isPluginInstalled("TMBD"):
 			self.runTMBD()
 		else:
 			self.session.openWithCallback(self.doInstall, MessageBox, _('The TMBD plugin is not installed!\nDo you want to install it?'), MessageBox.TYPE_YESNO)
 
 	def runTMBD(self):
-		if isPluginExtensionInstalled("TMBD"):
+		if isPluginInstalled("TMBD"):
 			from Plugins.Extensions.TMBD.plugin import TMBD
 			description = _("TMBD Details")
 			description = _("TMBD details for event")
