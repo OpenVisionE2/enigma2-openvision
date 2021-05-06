@@ -135,14 +135,17 @@ class InformationBase(Screen, HelpableScreen):
 		self["information"].setText(_("Loading information, please wait..."))
 		self.onInformationUpdated = [self.displayInformation]
 		self.onLayoutFinish.append(self.displayInformation)
+		self.console = Console()
 		self.informationTimer = eTimer()
 		self.informationTimer.callback.append(self.fetchInformation)
 		self.informationTimer.start(25)
 
 	def keyCancel(self):
+		self.console.killAll()
 		self.close()
 
 	def closeRecursive(self):
+		self.console.killAll()
 		self.close(True)
 
 	def informationWindowClosed(self, *retVal):
@@ -188,7 +191,6 @@ class BenchmarkInformation(InformationBase):
 		InformationBase.__init__(self, session)
 		self.setTitle(_("Benchmark Information"))
 		self.skinName.insert(0, "BenchmarkInformation")
-		self.console = Console()
 		self.cpuTypes = []
 		self.cpuBenchmark = None
 		self.cpuRating = None
@@ -699,7 +701,6 @@ class NetworkInformation(InformationBase):
 		self["geolocationActions"] = HelpableActionMap(self, ["ColorActions"], {
 			"yellow": (self.useGeolocation, _("Use geolocation to get WAN information")),
 		}, prio=0, description=_("Network Information Actions"))
-		self.console = Console()
 		self.interfaceData = {}
 		self.geolocationData = []
 		self.ifconfigAttributes = {
@@ -1094,7 +1095,6 @@ class StorageInformation(InformationBase):
 		self.skinName.insert(0, "StorageInformation")
 		self["information"].setText(_("Retrieving network server information, please wait..."))
 		self.mountInfo = []
-		self.console = Console()
 
 	def fetchInformation(self):
 		self.informationTimer.stop()
