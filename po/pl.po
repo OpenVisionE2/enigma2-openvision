@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-01 12:06+0430\n"
-"PO-Revision-Date: 2021-04-21 20:22+0200\n"
+"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"PO-Revision-Date: 2021-05-05 20:00+0200\n"
 "Last-Translator: blzr <blzr@o2.pl>\n"
 "Language-Team: \n"
 "Language: pl_PL\n"
@@ -86,9 +86,8 @@ msgstr " (Radio)"
 msgid " (TV)"
 msgstr ""
 
-#, fuzzy
 msgid " (auto detection)"
-msgstr "Przejdź do wyboru ścieżki audio"
+msgstr " (autowykrywanie)"
 
 msgid " (disabled)"
 msgstr " (wyłączony)"
@@ -104,6 +103,9 @@ msgstr " (niższy niż każdy auto)"
 
 msgid " HI "
 msgstr ""
+
+msgid " Warning: the selected tuner should not use SCR Unicable type for LNBs because each tuner need a own SCR number."
+msgstr " Uwaga: wybrany tuner nie powinien używać typu SCR Unicable dla konwerterów, ponieważ każdy tuner potrzebuje własnego numeru SCR."
 
 msgid " extensions."
 msgstr " rozszerzenia."
@@ -2442,7 +2444,7 @@ msgstr "Przejdź do głębokiego czuwania"
 
 #, fuzzy
 msgid "Auto detect"
-msgstr "Przejdź do wyboru ścieżki audio"
+msgstr " (autowykrywanie)"
 
 msgid "Auto flesh"
 msgstr "Auto flesh"
@@ -2790,18 +2792,6 @@ msgstr ""
 
 msgid "Bouvet Island"
 msgstr ""
-
-#, fuzzy
-msgid "BoxBranding"
-msgstr "Nagranie"
-
-#, fuzzy
-msgid "BoxBranding Information"
-msgstr "Informacje"
-
-#, fuzzy
-msgid "BoxBranding information for"
-msgstr "Informacje Softwaremanagera"
 
 msgid "Brand/Meta"
 msgstr ""
@@ -4958,6 +4948,10 @@ msgstr "Dane EIT teraz/następny na pasku info"
 msgid "Display the virtual keyboard for data entry"
 msgstr ""
 
+#, fuzzy
+msgid "Display type"
+msgstr "Wyświetlacz"
+
 msgid "Djibouti"
 msgstr "Dżibuti"
 
@@ -5600,6 +5594,9 @@ msgstr "Koniec ignorowania 'timera wyłączania' w standby"
 
 msgid "English"
 msgstr "Angielski"
+
+msgid "Enigma kernel module information for"
+msgstr ""
 
 #, fuzzy
 msgid "Enigma2 (re)starts"
@@ -6415,9 +6412,6 @@ msgstr "Z:"
 msgid "Front Panel Display"
 msgstr ""
 
-msgid "Front panel type"
-msgstr ""
-
 #, fuzzy, python-format
 msgid ""
 "Front panel your %s %s will be updated\n"
@@ -7167,10 +7161,10 @@ msgstr ""
 msgid "Image architecture"
 msgstr ""
 
-msgid "Image build date"
+msgid "Image build"
 msgstr ""
 
-msgid "Image build/branch"
+msgid "Image build date"
 msgstr ""
 
 #, fuzzy
@@ -7591,12 +7585,23 @@ msgid "Kenya"
 msgstr "Kenia"
 
 #, fuzzy
+msgid "Kernel Module"
+msgstr "Tryb użytkownika"
+
+#, fuzzy
+msgid "Kernel Module Information"
+msgstr "Informacje"
+
+#, fuzzy
 msgid "Kernel file"
 msgstr "Usuń plik"
 
 #, fuzzy
 msgid "Kernel module layout"
 msgstr "Nie znaleziono modułu"
+
+msgid "Kernel module path"
+msgstr ""
 
 #, fuzzy
 msgid "Kernel version"
@@ -13538,9 +13543,9 @@ msgstr "Szczegóły dotyczące wtyczki: "
 
 msgid "TRANSLATOR_INFO"
 msgstr ""
-"Specjalnie dla OpenPLi - @blzr\n"
+"Tłumaczenie: @blzr\n"
 "http://openpli.org/forums\n"
-"Ostatnia aktualizacja 2020.11.06"
+"Ostatnia aktualizacja 2021.05.05"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "Plik TS jest za duży dla ISO9660 level 1!"
@@ -15442,7 +15447,7 @@ msgid "Warning: no LNB; using factory defaults."
 msgstr "UWAGA: brak LNB; użyto ustawień domyślnych."
 
 msgid "Warning: the second input of this dual tuner may not support SCR LNBs. "
-msgstr ""
+msgstr "Ostrzeżenie: drugie wejście tego dual tunera może nie obsługiwać konwerterów SCR."
 
 msgid "Watch movies..."
 msgstr "Oglądaj filmy..."
@@ -16396,9 +16401,8 @@ msgstr "Reaklama/Zakupy"
 msgid "all"
 msgstr "Wszystkie"
 
-#, fuzzy
 msgid "all tuners"
-msgstr "Ustawienia tunera rezerwowego"
+msgstr "wszystkie tunery"
 
 msgid "alpha then oldest"
 msgstr ""
@@ -17159,9 +17163,8 @@ msgstr "Nieobsługiwany"
 msgid "not tested"
 msgstr "nieprzetestowane"
 
-#, fuzzy
 msgid "not valid frontend"
-msgstr "Frontend satelitarny nie znaleziony!"
+msgstr "nieprawidłowy frontend"
 
 msgid "not_tested"
 msgstr "nieprzetestowane"
@@ -17327,9 +17330,8 @@ msgstr "Romans"
 msgid "rotor"
 msgstr "obrotnica"
 
-#, fuzzy
 msgid "rotor is not used"
-msgstr "Tuner nieobsługiwany"
+msgstr "obrotnica nieużywana"
 
 #, fuzzy
 msgid "running..."

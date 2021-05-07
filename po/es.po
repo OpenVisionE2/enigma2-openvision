@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-01 12:06+0430\n"
+"POT-Creation-Date: 2021-05-07 15:42+0430\n"
 "PO-Revision-Date: 2021-03-07 03:11+0100\n"
 "Last-Translator: Kuatto\n"
 "Language-Team: Álvaro <mi casa>\n"
@@ -106,6 +106,9 @@ msgid " (lower than any auto)"
 msgstr " (más bajo que cualquier auto)"
 
 msgid " HI "
+msgstr ""
+
+msgid " Warning: the selected tuner should not use SCR Unicable type for LNBs because each tuner need a own SCR number."
 msgstr ""
 
 msgid " extensions."
@@ -888,11 +891,11 @@ msgstr "%d B"
 
 #, python-format
 msgid "%d DMIPS per core"
-msgstr ""
+msgstr "%d DMIPS por cada core"
 
 #, python-format
 msgid "%d DMIPS with %d cores"
-msgstr ""
+msgstr "%d DMIPS con %d cores"
 
 #, python-format
 msgid "%d GB"
@@ -1698,7 +1701,7 @@ msgid "A graphical EPG for all services of a specific bouquet"
 msgstr "Un EPG gráfico para todos los servicios de un bouquet específico"
 
 msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
-msgstr "Un resaltado en la imagen del mando a distancia muestra a qué botón se refiere la ayuda. Si más de un botón realiza la función indicada, se mostrará más de un resaltado. El texto debajo de la lista enumera los botones activos y si la función requiere una pulsación larga o MAYÚS de los botones(s)."
+msgstr "Un resaltado en la imagen del mando a distancia muestra a que botón se refiere la ayuda. Si más de un botón realiza la función indicada, se mostrará más de un resaltado. El texto debajo de la lista enumera los botones activos y si la función requiere una pulsación larga o MAYÚS de los botones(s)."
 
 #, python-format
 msgid ""
@@ -2759,19 +2762,17 @@ msgstr "Belice"
 
 #, fuzzy
 msgid "Benchmark"
-msgstr "Dinamarca"
+msgstr "Caracteristicas CPU DMIPS RAM de su"
 
-#, fuzzy
 msgid "Benchmark Information"
-msgstr "Información"
+msgstr "Información CPU DMIPS RAM"
 
-#, fuzzy
 msgid "Benchmark for"
-msgstr "Dinamarca"
+msgstr "Caracteristicas CPU DMIPS RAM de su"
 
 #, fuzzy
 msgid "Benchmark information"
-msgstr "Información Geolocalización"
+msgstr "Información CPU DMIPS RAM"
 
 msgid "Benin"
 msgstr "Benin"
@@ -2885,18 +2886,6 @@ msgstr "Botswana"
 
 msgid "Bouvet Island"
 msgstr "Isla Bouvet"
-
-#, fuzzy
-msgid "BoxBranding"
-msgstr "Grabando"
-
-#, fuzzy
-msgid "BoxBranding Information"
-msgstr "Información Geolocalización"
-
-#, fuzzy
-msgid "BoxBranding information for"
-msgstr "Información Geolocalización"
 
 msgid "Brand/Meta"
 msgstr ""
@@ -3034,22 +3023,21 @@ msgstr "CPU: "
 
 #, python-format
 msgid "CPU / Core %d type"
-msgstr ""
+msgstr "CPU / Core %d"
 
 #, fuzzy
 msgid "CPU architecture"
 msgstr "Arquitectura CPU: "
 
-#, fuzzy
 msgid "CPU benchmark"
-msgstr "Dinamarca"
-
-msgid "CPU brand"
-msgstr ""
+msgstr "CPU"
 
 #, fuzzy
+msgid "CPU brand"
+msgstr "Clasificación CPU"
+
 msgid "CPU rating"
-msgstr "Actualizando"
+msgstr "Clasificación CPU"
 
 msgid "CVBS"
 msgstr "CVBS"
@@ -3077,10 +3065,10 @@ msgid "Calculate all positions"
 msgstr "Calcular todas las posiciones"
 
 msgid "Calculating benchmark..."
-msgstr ""
+msgstr "Calculando espere..."
 
 msgid "Calculating rating..."
-msgstr ""
+msgstr "Calculando espere..."
 
 msgid "Calculation complete"
 msgstr "Cálculo completo"
@@ -3505,9 +3493,8 @@ msgstr "Cerrar"
 msgid "Close PiP with 'exit' button"
 msgstr "Cerrar PiP con el botón 'salir'"
 
-#, fuzzy
 msgid "Close the screen"
-msgstr "Crear selección de título"
+msgstr "Cerrar esta pantalla"
 
 #, fuzzy
 msgid "Close the screen and exit all menus"
@@ -3647,7 +3634,7 @@ msgid "Configuration mode: %s"
 msgstr "Modo de configuración: %s"
 
 msgid "Configuration options for the HELP screen can be found in 'MENU > Setup > User Interface > User Interface Setup'."
-msgstr "Las opciones de configuración para la pantalla AYUDA se pueden encontrar en 'MENÚ> Configuración> Interfaz de usuario> Configuración de interfaz de usuario'."
+msgstr "Las opciones de configuración para la pantalla AYUDA se encuentran en 'MENÚ> Configuración> Interfaz de Usuario> Ajustes Interfaz de Usuario'."
 
 #, fuzzy
 msgid "Configure ATSC"
@@ -5040,6 +5027,10 @@ msgstr "Visualizar datos ahora/siguiente EIT en la barra de información."
 msgid "Display the virtual keyboard for data entry"
 msgstr "Mover el cursor del teclado virtual hacia abajo"
 
+#, fuzzy
+msgid "Display type"
+msgstr "Ajustes Display"
+
 msgid "Djibouti"
 msgstr "Djibouti"
 
@@ -5669,6 +5660,9 @@ msgstr "Tiempo final para ignorar apagado en reposo"
 
 msgid "English"
 msgstr "Inglés"
+
+msgid "Enigma kernel module information for"
+msgstr ""
 
 #, fuzzy
 msgid "Enigma2 (re)starts"
@@ -6478,10 +6472,6 @@ msgstr "Desde:"
 msgid "Front Panel Display"
 msgstr "Panel Frontal Display"
 
-#, fuzzy
-msgid "Front panel type"
-msgstr "Panel Frontal Display"
-
 #, python-format
 msgid ""
 "Front panel your %s %s will be updated\n"
@@ -7226,11 +7216,12 @@ msgid "Image architecture"
 msgstr "Arquitectura CPU: "
 
 #, fuzzy
+msgid "Image build"
+msgstr "Imagen: "
+
+#, fuzzy
 msgid "Image build date"
 msgstr "Fecha de compilación: "
-
-msgid "Image build/branch"
-msgstr ""
 
 #, fuzzy
 msgid "Image file system"
@@ -7643,6 +7634,13 @@ msgstr "Mantiene la lista de películas abierta mientras reproduce archivos de a
 msgid "Kenya"
 msgstr "Kenia"
 
+msgid "Kernel Module"
+msgstr ""
+
+#, fuzzy
+msgid "Kernel Module Information"
+msgstr "Pantalla Información Ayuda"
+
 #, fuzzy
 msgid "Kernel file"
 msgstr "Borrar fichero"
@@ -7650,6 +7648,9 @@ msgstr "Borrar fichero"
 #, fuzzy
 msgid "Kernel module layout"
 msgstr "módulo no encontrado"
+
+msgid "Kernel module path"
+msgstr ""
 
 #, fuzzy
 msgid "Kernel version"
@@ -8231,11 +8232,11 @@ msgstr "Información de memoria"
 
 #, fuzzy
 msgid "Memory Information"
-msgstr "Información"
+msgstr "Información CPU DMIPS RAM"
 
 #, fuzzy
 msgid "Memory Information Actions"
-msgstr "Información de Montajes"
+msgstr "Información CPU DMIPS RAM"
 
 msgid "Memory index"
 msgstr "Índice de memoria"
@@ -8447,13 +8448,11 @@ msgstr "Mueva el cursor del búfer de texto al primer carácter"
 msgid "Move the text cursor to the last character"
 msgstr "Mueva el cursor del búfer de texto al último carácter"
 
-#, fuzzy
 msgid "Move to first line / screen"
-msgstr "Moverse abajo de la pantalla"
+msgstr "Mover a la primera línea en pantalla"
 
-#, fuzzy
 msgid "Move to last line / screen"
-msgstr "Moverse abajo de la pantalla"
+msgstr "Mover a la última línea en pantalla"
 
 msgid "Move to position X"
 msgstr "Mover a la posición X"
@@ -10350,9 +10349,8 @@ msgstr "Detalles TMBD"
 msgid "RAM (Summary)"
 msgstr ""
 
-#, fuzzy
 msgid "RAM benchmark"
-msgstr "Dinamarca"
+msgstr "RAM"
 
 msgid "RC ID number"
 msgstr ""
@@ -10598,9 +10596,8 @@ msgstr "Ratio de refresco"
 msgid "Refresh rate selection."
 msgstr "Selección de ratio de refresco."
 
-#, fuzzy
 msgid "Refresh the screen"
-msgstr "Selección de ratio de refresco."
+msgstr "Actualizar esta pantalla"
 
 msgid "Regard deep standby as standby"
 msgstr "Considerar el modo de reposo profundo como modo de reposo"
@@ -12220,7 +12217,7 @@ msgstr "Mostrar fondo en modo radio"
 
 #, fuzzy
 msgid "Show benchmark information"
-msgstr "Mostrar información de género en evento"
+msgstr "Información CPU DMIPS RAM"
 
 msgid "Show bluez5 in plugin browser"
 msgstr "Mostrar bluez5 en el navegador de plugins"
@@ -13798,7 +13795,7 @@ msgstr ""
 "\n"
 "En otras palabras, si el cuadro amarillo toca los cuatro lados de la pantalla, tiene al menos un 5% de overscan en todos los lados.\n"
 "\n"
-"Si ves las puntas de las ocho puntas de flecha, entonces su TV tiene el overscan deshabilitado.\n"
+"Si ves las puntas de las ocho flechas, entonces su TV tiene el overscan deshabilitado.\n"
 "\n"
 "Test Pattern por TigerDave - www.tigerdave.com/ht_menu.htm"
 
@@ -14417,7 +14414,7 @@ msgid "Total"
 msgstr "Swap Total:"
 
 msgid "Total CPU benchmark"
-msgstr ""
+msgstr "Total CPU"
 
 #, python-format
 msgid "Total clients streaming: %d (%s)"
@@ -14951,7 +14948,7 @@ msgstr "Usar el asistente de configuración de red para configurar su red\n"
 msgid ""
 "Use the up/down keys on your remote control to select an option. After that, press OK.\n"
 "We detected your RC as %s (type %s id %s)"
-msgstr "Usar las teclas arriba / abajo en su mando a distancia para seleccionar una opción. Después de eso, presione OK."
+msgstr "Usar las teclas arriba/abajo en su mando a distancia para seleccionar una opción. Después de eso, presione OK."
 
 msgid "Use the wizard to set up basic features"
 msgstr "Usar el asistente para funciones básicas"
