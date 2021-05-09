@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2020-11-29 22:07+0200\n"
 "Last-Translator: Мартин Петков <marto74bg@yahoo.co.uk>\n"
 "Language-Team: Bulgarian\n"
@@ -110,9 +110,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " разширения."
-
-msgid " ms"
-msgstr " ms"
 
 msgid " packages selected."
 msgstr " избрани пакети."
@@ -1131,6 +1128,10 @@ msgstr ""
 "Натиснете ОК за избор на мултибуут\n"
 "Натиснете Изход за затваряне"
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1141,10 +1142,6 @@ msgstr "%s %s свободно място на диска"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2110,6 +2107,10 @@ msgstr "Всички услуги на провайдер"
 msgid "All slots"
 msgstr "Всички слотове"
 
+#, fuzzy
+msgid "All supported"
+msgstr "не се поддържа"
+
 msgid "Allocate"
 msgstr "Разпредели"
 
@@ -2977,11 +2978,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "C-Band"
 
@@ -3232,6 +3228,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Смяна на букет при бързо превключване"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "DNS Настройки"
+
 msgid "Change recording (add time)"
 msgstr "Промени запис (добавяне на време)"
 
@@ -3240,9 +3240,6 @@ msgstr "Промени запис (продължителност)"
 
 msgid "Change recording (endtime)"
 msgstr "Промени запис (край на записа)"
-
-msgid "Change repeat and delay settings?"
-msgstr "Промени настройките за повторение и отлагане?"
 
 msgid "Change step size"
 msgstr "Промени размера на стъпката"
@@ -3634,6 +3631,11 @@ msgstr "Детайлни сведения за сканиране"
 msgid "Config resolution of pictures"
 msgstr "Настройка на резолюцията на изображенията"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Конфигурация"
+
 msgid "Configuration"
 msgstr "Конфигурация"
 
@@ -3737,9 +3739,6 @@ msgstr "Конфигуриране на DNS"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Настройка при кои устройства да се използва възможност за изтриване на заден план."
-
-msgid "Configure remote control type"
-msgstr "Настройка на типа дистанционно управление"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Настройка на DiSEqC режима за този LNB."
@@ -4269,9 +4268,6 @@ msgstr "Текущ CEC адрес"
 msgid "Current crash log"
 msgstr "Текущ транспондер"
 
-msgid "Current device: "
-msgstr "Текущо устройство: "
-
 msgid "Current event EPG"
 msgstr "Текущо предаване EPG"
 
@@ -4357,12 +4353,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "HLG поддръжка"
-
-msgid "DMM advanced"
-msgstr "DMM за напреднали"
-
-msgid "DMM normal"
-msgstr "DMM нормален"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4717,7 +4707,8 @@ msgstr "Закъснение след тонов импулс"
 msgid "Delay after voltage change before motor command"
 msgstr "Закъснение след изменение на напрежението преди команда за мотора"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Закъснение преди да се повтори командата:"
 
 msgid "Delay before sequence repeat"
@@ -4883,7 +4874,8 @@ msgstr "Информация за канала"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Име на устройството:"
 
 msgid "DiSEqC"
@@ -5739,6 +5731,10 @@ msgstr "Въведете PIN-кода"
 msgid "Enter URL"
 msgstr "Въведете URL"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Показвай мигаща линия за този канал"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "Въведете URL за списък с алтернативни имиджи за онлайн флашване"
 
@@ -5986,7 +5982,12 @@ msgstr "Изход редактор"
 msgid "Exit inetd recovery"
 msgstr "Изход редактор"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Изход за избор на входно устройство."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Изход за избор на входно устройство."
 
 msgid "Exit media player?"
@@ -6654,9 +6655,6 @@ msgstr "Гана"
 
 msgid "Gibraltar"
 msgstr "Гибралтар"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -7475,14 +7473,19 @@ msgid "Input "
 msgstr "Вход "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Устройства за въвеждане"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Настройка на устройствата за въвеждане"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Настройка на устройствата за въвеждане"
 
 msgid "Input Stream ID"
 msgstr "Входящ стрийм ID"
-
-msgid "Input device setup"
-msgstr "Настройка на устройствата за въвеждане"
 
 msgid "Install"
 msgstr "Инсталирай"
@@ -7560,7 +7563,8 @@ msgstr "Вътрешен"
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Интервал между бутоните при повторения:"
 
 #, fuzzy
@@ -7601,8 +7605,9 @@ msgstr "Ирак"
 msgid "Ireland"
 msgstr "Ирландия"
 
-msgid "Is this setting ok?"
-msgstr "Тези настройки ОК ли са?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Използвай ТВ дистанционното за управление"
 
 msgid "Is this video mode ok?"
 msgstr "Този видео режим ОК ли е?"
@@ -7716,18 +7721,18 @@ msgstr "Версия на ядрото: "
 msgid "Key Events"
 msgstr "Ключови Събития"
 
-msgid "Keyboard"
-msgstr "Клавиатура"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Настройка на Клавиатура"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Настройка на Родителски контрол"
 
 msgid "Keyboard data entry"
 msgstr "Въвеждане на данни от клавиатурата"
 
 msgid "Keyboard map"
 msgstr "Карта на клавиатурата"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "Кирибати"
@@ -7879,9 +7884,6 @@ msgstr "Хоби по време на отдих"
 
 msgid "Lesotho"
 msgstr "Лесото"
-
-msgid "Let you change RC type but use it with care."
-msgstr ""
 
 msgid "Let's define enigma2 once more"
 msgstr ""
@@ -8602,10 +8604,6 @@ msgstr "Мозамбик"
 
 msgid "Multi EPG"
 msgstr "Мулти ЕПГ"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Настройка на типа дистанционно"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Избор на букет при старт на Мулти-EPG"
@@ -9423,15 +9421,15 @@ msgstr "Оригинал"
 msgid "Other"
 msgstr "Друг"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "допълнително образование"
+
 msgid "Other Subtitles & lang"
 msgstr "Настройка на Субтитри и език"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "допълнително образование"
 
 msgid "Output"
 msgstr "Изход"
@@ -10211,6 +10209,10 @@ msgstr "Натиснете OK за активиране на избрания %s
 msgid "Press OK to activate the settings."
 msgstr "Натиснете ОК за да активирате настройките."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Натиснете ОК за да редактирате настройките."
+
 msgid "Press OK to edit the settings."
 msgstr "Натиснете ОК за да редактирате настройките."
 
@@ -10739,12 +10741,6 @@ msgstr "Напомняне, Вие избрахте да запазите тай
 #, fuzzy
 msgid "Remote control information"
 msgstr "Тип дистанционно"
-
-msgid "Remote control type"
-msgstr "Тип дистанционно"
-
-msgid "Remote control type setup"
-msgstr "Настройка на типа дистанционно"
 
 msgid "Removal has completed."
 msgstr "Изтриването приключи."
@@ -11563,6 +11559,9 @@ msgstr "Изберете ‘A’ или ‘B’ ако вашата антенн
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Изберете „FBC SCR“, ако този тунер ще се свърже към SCR (Unicable / JESS) устройство. За всички останали настройки изберете „FBC автоматично“."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11649,6 +11648,10 @@ msgstr "Изберете Бърз DiSEqC ако вашата антенна си
 
 msgid "Select HDD"
 msgstr "Избери HDD"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Изберете устройство за въвеждане"
 
 msgid "Select a bouquet"
 msgstr "Изберете букет"
@@ -11741,9 +11744,6 @@ msgstr ""
 msgid "Select input device"
 msgstr "Изберете устройство за въвеждане"
 
-msgid "Select input device."
-msgstr "Изберете устройство за въвеждане."
-
 msgid "Select interface"
 msgstr "Избор на интерфейс"
 
@@ -11765,6 +11765,10 @@ msgstr "Добавете провайдър..."
 
 msgid "Select refresh rate"
 msgstr "Изберете скорост за обновяване"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Използвай ТВ дистанционното за управление"
 
 msgid "Select satellites"
 msgstr "Избор на сателити"
@@ -11822,6 +11826,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Изберете протокола, използван от вашето SCR устройство. Изборите са „SCR Unicable“ (Unicable) или „SCR JESS“ (JESS, известен също като Unicable II)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Изберете тунера контролиращ моторизираната антена."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Изберете сателита свързан към Порт-A на вашия ключ. Ако не сте сигурни, изберете ‘автоматично’ и приемника ще се опита да определи това за Вас. Ако нищо не е свързано към този порт, изберете 'нищо не е свързано'."
 
@@ -11845,6 +11853,14 @@ msgstr "Изберете изместения набор от знаци"
 
 msgid "Select the shifted character set for the next character only"
 msgstr "Изберете изместения набор от знаци само за следващия знак"
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Изберете часовата зона в района или региона."
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Изберете часовата зона в района или региона."
 
 msgid "Select the time zone within the area or region."
 msgstr "Изберете часовата зона в района или региона."
@@ -15131,7 +15147,8 @@ msgstr "Използвайте бутони нагоре/надолу на ва�
 msgid "Use the wizard to set up basic features"
 msgstr "Използвай помощника за настройка на основните параметри"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Използване на тези настройки за входящо устройство?"
 
 msgid "Use these settings?"
@@ -15236,9 +15253,6 @@ msgstr "VOB Файл"
 
 msgid "VOB file"
 msgstr "VOB файл"
-
-msgid "VU+"
-msgstr "VU+"
 
 msgid "Vanuatu"
 msgstr "Вануату"
@@ -16039,9 +16053,6 @@ msgstr "Запис в /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "не се поддържа"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr "YCbCr420"
 
@@ -16571,12 +16582,6 @@ msgstr "Не преминавай в режим готовност"
 msgid "automatic"
 msgstr "автоматично"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "назад"
 
@@ -16592,9 +16597,6 @@ msgstr ""
 
 msgid "better"
 msgstr "по-добър"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "черен"
@@ -16613,12 +16615,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "долу"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "предаване/преса"
@@ -16769,9 +16765,6 @@ msgstr "готово!"
 msgid "drama (general)"
 msgstr "филм/драма (общо)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "изток"
 
@@ -16842,22 +16835,6 @@ msgstr "грешка при търсенето"
 msgid "ese"
 msgstr "Нулиране"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -16922,9 +16899,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "чужди страни/експедиции"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "напред към следващата глава"
 
@@ -16955,15 +16929,6 @@ msgstr "запиши кадъра като bitmap"
 msgid "green"
 msgstr "зелен"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -16984,19 +16949,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "занаяти"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "височина"
@@ -17029,9 +16981,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17115,14 +17064,8 @@ msgstr "списания/репортажи/документални"
 msgid "manual"
 msgstr "ръчно"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "бойни спортове"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "медицина/физиология/психология"
@@ -17465,15 +17408,6 @@ msgstr "сериозна/класическа музика"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "сериозен/класически/религиозен/исторически филм/драма"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Тест на мрежата"
@@ -17797,9 +17731,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 msgid "yellow"
 msgstr "жълт"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -116,9 +116,6 @@ msgstr ""
 #
 msgid " extensions."
 msgstr " rozšíření."
-
-msgid " ms"
-msgstr " ms"
 
 #
 msgid " packages selected."
@@ -1164,6 +1161,11 @@ msgstr ""
 "\n"
 "Stiskněte 'OK' pro Multiboot nebo 'Exit' pro zavření"
 
+#
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1176,11 +1178,6 @@ msgstr "%s %s volného místa"
 #
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #
@@ -2289,6 +2286,10 @@ msgstr "Všechny programy poskytovatele"
 msgid "All slots"
 msgstr "Všechny sloty"
 
+#, fuzzy
+msgid "All supported"
+msgstr "nepodporováno"
+
 msgid "Allocate"
 msgstr "Přidělit"
 
@@ -3263,12 +3264,6 @@ msgid "C"
 msgstr "C"
 
 #
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
-#
 msgid "C-Band"
 msgstr "C-Band"
 
@@ -3538,6 +3533,11 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Měnit přehledy při rychlém přepínání"
 
+#
+#, fuzzy
+msgid "Change device settings"
+msgstr "Nastavení DNS"
+
 msgid "Change recording (add time)"
 msgstr "Změnit nahrávání (přidat čas)"
 
@@ -3548,10 +3548,6 @@ msgstr "Změnit nahrávání (délku)"
 #
 msgid "Change recording (endtime)"
 msgstr "Změnit nahrávání (čas ukončení)"
-
-#
-msgid "Change repeat and delay settings?"
-msgstr "Změnit nastavení opakování a zpoždění"
 
 #
 msgid "Change step size"
@@ -3995,6 +3991,12 @@ msgid "Config resolution of pictures"
 msgstr "Nastavení rozlišení obrázků"
 
 #
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Nastavení"
+
+#
 msgid "Configuration"
 msgstr "Nastavení"
 
@@ -4110,9 +4112,6 @@ msgstr "Nastavuje DNS servery"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Nastavuje, na kterých zařízeních může být nastaveno mazání na pozadí."
-
-msgid "Configure remote control type"
-msgstr "Nastavit typ dálkového ovládání"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Nastavuje DiSEqC mód pro tento LNB."
@@ -4690,9 +4689,6 @@ msgstr "Současná CEC adresa"
 msgid "Current crash log"
 msgstr "Aktuální transpondér"
 
-msgid "Current device: "
-msgstr "Aktuální zařízení: "
-
 msgid "Current event EPG"
 msgstr "EPG aktuálního pořadu"
 
@@ -4796,13 +4792,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "Podpora HLG"
-
-#
-msgid "DMM advanced"
-msgstr "DMM rozšířené"
-
-msgid "DMM normal"
-msgstr "DMM normální"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -5187,7 +5176,8 @@ msgid "Delay after voltage change before motor command"
 msgstr "Zpoždění po změně napětí před povelem pro motor"
 
 #
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Zpoždění před opakováním:"
 
 msgid "Delay before sequence repeat"
@@ -5379,7 +5369,8 @@ msgid "Device mounts"
 msgstr ""
 
 #
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Název zařízení:"
 
 #
@@ -6380,6 +6371,10 @@ msgstr "Zadejte PIN"
 msgid "Enter URL"
 msgstr "Zadejte URL"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Odstranit překrývající linku pro tento program"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "Zadejte URL, kde by mohly být alternativní obrazy pro FlashImage."
 
@@ -6657,7 +6652,12 @@ msgstr "ukončit editor"
 msgid "Exit inetd recovery"
 msgstr "ukončit editor"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Zavřít výběr vstupních zařízení"
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Zavřít výběr vstupních zařízení"
 
 msgid "Exit media player?"
@@ -7405,9 +7405,6 @@ msgstr "Ghana"
 
 msgid "Gibraltar"
 msgstr "Gibraltar"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -8296,14 +8293,19 @@ msgid "Input "
 msgstr "Zadání "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Vstupní zařízení"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Nastavení vstupního zařízení"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Nastavení vstupního zařízení"
 
 msgid "Input Stream ID"
 msgstr "Input Stream ID"
-
-msgid "Input device setup"
-msgstr "Nastavení vstupního zařízení"
 
 #
 msgid "Install"
@@ -8401,7 +8403,8 @@ msgid "Internet time (NTP)"
 msgstr "Internet (ntp)"
 
 #
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Rychlost opakování:"
 
 #, fuzzy
@@ -8447,8 +8450,9 @@ msgstr "Irák"
 msgid "Ireland"
 msgstr "Irsko"
 
-msgid "Is this setting ok?"
-msgstr "Použít toto nastavení?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Používat dálkové ovládání TV"
 
 #
 msgid "Is this video mode ok?"
@@ -8579,13 +8583,9 @@ msgid "Key Events"
 msgstr "Klíčové události"
 
 #
-msgid "Keyboard"
-msgstr "Klávesnice"
-
-#
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Nastavení klávesnice"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Nastavení rodičovského zámku"
 
 #
 msgid "Keyboard data entry"
@@ -8594,6 +8594,9 @@ msgstr "Zadání dat klávesnice"
 #
 msgid "Keyboard map"
 msgstr "Rozložení kláves"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "Kiribati"
@@ -8766,9 +8769,6 @@ msgstr "Volný čas, zájmy, koníčky"
 
 msgid "Lesotho"
 msgstr "Lesotho"
-
-msgid "Let you change RC type but use it with care."
-msgstr ""
 
 msgid "Let's define enigma2 once more"
 msgstr ""
@@ -9594,11 +9594,6 @@ msgstr "Mosambik"
 #
 msgid "Multi EPG"
 msgstr "Multi EPG"
-
-#
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Nastavení typu dálkového ovládání"
 
 #
 msgid "Multi-EPG bouquet selection"
@@ -10534,15 +10529,15 @@ msgstr "Původní"
 msgid "Other"
 msgstr "Další"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "další vzdělávání"
+
 msgid "Other Subtitles & lang"
 msgstr "Ostatní titulky a jazyky"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "další vzdělávání"
 
 #
 msgid "Output"
@@ -11453,6 +11448,11 @@ msgid "Press OK to activate the settings."
 msgstr "Stiskněte OK pro aktivaci nastavení."
 
 #
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Stiskněte OK pro úpravu nastavení."
+
+#
 msgid "Press OK to edit the settings."
 msgstr "Stiskněte OK pro úpravu nastavení."
 
@@ -12055,14 +12055,6 @@ msgstr "Připomínáme, že jste se rozhodli uložit timeshift soubor."
 #, fuzzy
 msgid "Remote control information"
 msgstr "Typ dálkového ovládání"
-
-#
-msgid "Remote control type"
-msgstr "Typ dálkového ovládání"
-
-#
-msgid "Remote control type setup"
-msgstr "Nastavení typu dálkového ovládání"
 
 #
 msgid "Removal has completed."
@@ -13010,6 +13002,9 @@ msgstr "Zvolte 'A' nebo 'B', pokud to Váš anténní systém vyžaduje, jinak z
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Jestliže tuner bude připojen k SRC zařízení (Unicable/JESS), nastavte 'FCB SRC'. Pro všechna ostatní nastavení zvolte 'FBC automatic'."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -13099,6 +13094,10 @@ msgstr "Zvolte možnost Rychlý DiSEqC pokud to Váš anténní systém podporuj
 #
 msgid "Select HDD"
 msgstr "Zvolte HDD"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Vyberte vstupní zařízení"
 
 #
 msgid "Select a bouquet"
@@ -13207,9 +13206,6 @@ msgstr "Vyberte způsob udržování správného času přijímače. Můžete po
 msgid "Select input device"
 msgstr "Vyberte vstupní zařízení"
 
-msgid "Select input device."
-msgstr "Volba vstupního zařízení"
-
 #
 msgid "Select interface"
 msgstr "Vyberte interface"
@@ -13237,6 +13233,10 @@ msgstr "Vyberte poskytovatele pro přidání..."
 #
 msgid "Select refresh rate"
 msgstr "Vyberte obnovovací frekvenci"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Používat dálkové ovládání TV"
 
 #
 msgid "Select satellites"
@@ -13301,6 +13301,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Vyberte protokol Vašeho SRC zařízení. Volby jsou \"SCR Unicable\" (Unicable) nebo \"SCR JESS\" (JESS, známý též jako Unicable II)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Vyberte tuner který řídí natáčenou parabolu."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Zvolte satelit, který je připojen k A-portu Vašeho přepínače. Pokud si nejste jisti, zvolte \"Automaticky\" a přijímač se to pokusí zjistit za Vás. Pokud není k tomuto vstupu nic připojeno, vyberte \"Nepřipojeno\"."
 
@@ -13324,6 +13328,16 @@ msgstr "Další rozložení znaků"
 
 msgid "Select the shifted character set for the next character only"
 msgstr "Výběr dalšího rozložení znaků jen pro následující znak"
+
+#
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Vyberte časové pásmo v oblasti nebo regionu."
+
+#
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Vyberte časové pásmo v oblasti nebo regionu."
 
 #
 msgid "Select the time zone within the area or region."
@@ -17007,7 +17021,8 @@ msgstr "Použijte šipku nahoru / dolu na DO pro výběr volby. Potom stiskněte
 msgid "Use the wizard to set up basic features"
 msgstr "Použijte průvodce pro nastavení základních vlastností"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Použít nastavení tohoto vstupního zařízení?"
 
 msgid "Use these settings?"
@@ -17125,9 +17140,6 @@ msgstr "VOB soubor"
 
 msgid "VOB file"
 msgstr "VOB soubor"
-
-msgid "VU+"
-msgstr "VU+"
 
 #
 msgid "Vanuatu"
@@ -17999,9 +18011,6 @@ msgstr "Zapsat do /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "nepodporováno"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr "YCbCr420"
 
@@ -18581,12 +18590,6 @@ msgstr "Neusínat"
 msgid "automatic"
 msgstr "Automaticky"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 #
 msgid "back"
 msgstr "zpět"
@@ -18605,9 +18608,6 @@ msgstr ""
 #
 msgid "better"
 msgstr "lepší"
-
-msgid "beyonwizu4"
-msgstr ""
 
 #
 msgid "black"
@@ -18629,12 +18629,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "dole"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "vysílání/tisk"
@@ -18805,9 +18799,6 @@ msgstr "dokončeno!"
 msgid "drama (general)"
 msgstr "film/drama (obecně)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "východ"
 
@@ -18886,22 +18877,6 @@ msgstr "chyba při vyhledávání"
 msgid "ese"
 msgstr "Reset"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -18975,9 +18950,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "cizí země/expedice"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 #
 msgid "forward to the next chapter"
 msgstr "přeskočit na další kapitolu"
@@ -19014,15 +18986,6 @@ msgstr "zachytit tento snímek jako bitmapu"
 msgid "green"
 msgstr "Zelené"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -19043,19 +19006,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "ruční práce"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 #
 msgid "height"
@@ -19091,9 +19041,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -19188,14 +19135,8 @@ msgstr "magazíny/reportáže/dokumentární"
 msgid "manual"
 msgstr "Ručně"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "bojové sporty"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "lékařství/fyziologie/psychologie"
@@ -19599,15 +19540,6 @@ msgstr "vážná hudba/klasická muzika"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "závažný/klasický/náboženský/historický film/drama"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #
 #, fuzzy
 msgid "shortest"
@@ -19973,9 +19905,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 #
 msgid "yellow"

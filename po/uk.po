@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2021-03-11 01:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: kvinto\n"
@@ -110,9 +110,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " доповнень."
-
-msgid " ms"
-msgstr " мс"
 
 msgid " packages selected."
 msgstr " пакетів вибрано."
@@ -1141,6 +1138,10 @@ msgstr ""
 "Натисніть OK для вибору іміджа\n"
 "Натисніть Exit, щоб вийти"
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1151,10 +1152,6 @@ msgstr "%s %s вільне місце на диску"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2120,6 +2117,10 @@ msgstr "Всі канали провайдера"
 msgid "All slots"
 msgstr "Всі слоти"
 
+#, fuzzy
+msgid "All supported"
+msgstr "не підтримується"
+
 msgid "Allocate"
 msgstr "Призначити"
 
@@ -2985,11 +2986,6 @@ msgstr ""
 msgid "C"
 msgstr "С"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "С"
-
 msgid "C-Band"
 msgstr "С-Діапазон"
 
@@ -3240,6 +3236,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Автоматична зміна списку каналів"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "Параметри DNS"
+
 msgid "Change recording (add time)"
 msgstr "Змінити запис (додати час)"
 
@@ -3248,9 +3248,6 @@ msgstr "Змінити запис (тривалість)"
 
 msgid "Change recording (endtime)"
 msgstr "Змінити запис (час закінчення)"
-
-msgid "Change repeat and delay settings?"
-msgstr "Змінити налаштування повтору і затримки?"
 
 msgid "Change step size"
 msgstr "Змінити розмір кроку"
@@ -3642,6 +3639,11 @@ msgstr "Деталі конфігурації сканування"
 msgid "Config resolution of pictures"
 msgstr "Налаштування роздільчої здатності зображень"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Конфігурація"
+
 msgid "Configuration"
 msgstr "Конфігурація"
 
@@ -3745,9 +3747,6 @@ msgstr "Налаштувати DNS"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Вкажіть, на яких пристроях слід використовувати опцію фонового видалення."
-
-msgid "Configure remote control type"
-msgstr "Налаштування типу пульта керування"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Налаштування DiSEqC режиму для цього конвертора."
@@ -4278,9 +4277,6 @@ msgstr "Поточна СЕС адреса"
 msgid "Current crash log"
 msgstr "Поточний транспондер"
 
-msgid "Current device: "
-msgstr "Поточний пристрій: "
-
 msgid "Current event EPG"
 msgstr "Поточна передача EPG"
 
@@ -4366,12 +4362,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "Підтримка HLG"
-
-msgid "DMM advanced"
-msgstr "DMM розширено"
-
-msgid "DMM normal"
-msgstr "DMM нормально"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4726,7 +4716,8 @@ msgstr "Затримка після тональної команди"
 msgid "Delay after voltage change before motor command"
 msgstr "Затримка після зміни напруги перед командою двигуна"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Затримка перед повторним натисканням кнопки:"
 
 msgid "Delay before sequence repeat"
@@ -4892,7 +4883,8 @@ msgstr "Інформація каналу"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Назва пристрою:"
 
 msgid "DiSEqC"
@@ -5749,6 +5741,10 @@ msgstr "Введіть PIN-код"
 msgid "Enter URL"
 msgstr "Введіть URL"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Показати миготливу лінію для даного каналу"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "Введіть URL-адресу, де можуть бути перелічені альтернативні іміджі для FlashImage"
 
@@ -5996,7 +5992,12 @@ msgstr "Вийти з редактора"
 msgid "Exit inetd recovery"
 msgstr "Вийти з редактора"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Вийти з вибору пристрою введення."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Вийти з вибору пристрою введення."
 
 msgid "Exit media player?"
@@ -6663,9 +6664,6 @@ msgstr "Гана"
 
 msgid "Gibraltar"
 msgstr "Гібралтар"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -7484,14 +7482,19 @@ msgid "Input "
 msgstr "Вхід "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Пристрої введення"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Налаштування пристрою введення"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Налаштування пристрою введення"
 
 msgid "Input Stream ID"
 msgstr "Вхідний ID потоку"
-
-msgid "Input device setup"
-msgstr "Налаштування пристрою введення"
 
 msgid "Install"
 msgstr "Встановити"
@@ -7570,7 +7573,8 @@ msgstr "Внутрішній"
 msgid "Internet time (NTP)"
 msgstr "Інтернет (ntp)"
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Інтервал між повторним натисканням кнопки:"
 
 #, fuzzy
@@ -7611,8 +7615,9 @@ msgstr "Ірак"
 msgid "Ireland"
 msgstr "Ірландія"
 
-msgid "Is this setting ok?"
-msgstr "Чи це налаштування є нормальним?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Використовувати пульт телевізора"
 
 msgid "Is this video mode ok?"
 msgstr "Встановити даний відеорежим?"
@@ -7728,18 +7733,18 @@ msgstr "Версія ядра: "
 msgid "Key Events"
 msgstr "Кнопка Канали"
 
-msgid "Keyboard"
-msgstr "Клавіатура"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Налаштування клавіатури"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Налаштування батьківського контролю"
 
 msgid "Keyboard data entry"
 msgstr "Введення даних з клавіатури"
 
 msgid "Keyboard map"
 msgstr "Розкладка клавіатури"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "Кірибаті"
@@ -7891,9 +7896,6 @@ msgstr "Відпочинок хобі"
 
 msgid "Lesotho"
 msgstr "Лесото"
-
-msgid "Let you change RC type but use it with care."
-msgstr ""
 
 msgid "Let's define enigma2 once more"
 msgstr ""
@@ -8615,10 +8617,6 @@ msgstr "Мозамбік"
 
 msgid "Multi EPG"
 msgstr "Мульти EPG"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Вибір пульта управління"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Вибір фаворитів при старті мульти-EPG"
@@ -9435,15 +9433,15 @@ msgstr "Оригінал"
 msgid "Other"
 msgstr "Інший"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "подальшу освіту"
+
 msgid "Other Subtitles & lang"
 msgstr "Інші субтитри та мова"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "подальшу освіту"
 
 msgid "Output"
 msgstr "Вихід"
@@ -10223,6 +10221,10 @@ msgstr "Натисніть ОК для активації вибраного %s 
 msgid "Press OK to activate the settings."
 msgstr "Натисніть OK для активації налаштувань."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Натисніть ОК для редагування налаштувань."
+
 msgid "Press OK to edit the settings."
 msgstr "Натисніть ОК для редагування налаштувань."
 
@@ -10751,12 +10753,6 @@ msgstr "Нагадуємо, ви вибрали збереження таймш�
 #, fuzzy
 msgid "Remote control information"
 msgstr "Тип пульта управління"
-
-msgid "Remote control type"
-msgstr "Тип пульта управління"
-
-msgid "Remote control type setup"
-msgstr "Вибір пульта управління"
 
 msgid "Removal has completed."
 msgstr "Оновлення завершено."
@@ -11578,6 +11574,9 @@ msgstr "Виберіть 'A' або 'B', якщо це потрібно для �
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Виберіть 'FBC SCR', якщо цей тюнер буде підключатися до пристрою SCR (Unicable/JESS). Для всіх інших налаштувань виберіть 'FBC автоматичний'."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11664,6 +11663,10 @@ msgstr "Виберіть Швидкий DiSEqC, якщо ваша антена �
 
 msgid "Select HDD"
 msgstr "Вибрати HDD"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Виберіть пристрій введення"
 
 msgid "Select a bouquet"
 msgstr "Вибрати фаворит"
@@ -11756,9 +11759,6 @@ msgstr "Виберіть варіант синхронізації часу дл
 msgid "Select input device"
 msgstr "Виберіть пристрій введення"
 
-msgid "Select input device."
-msgstr "Виберіть пристрій введення."
-
 msgid "Select interface"
 msgstr "Виберіть інтерфейс"
 
@@ -11780,6 +11780,10 @@ msgstr "Виберіть провайдера, щоб додати..."
 
 msgid "Select refresh rate"
 msgstr "Виберіть частоту оновлення"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Використовувати пульт телевізора"
 
 msgid "Select satellites"
 msgstr "Виберіть супутники"
@@ -11837,6 +11841,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Виберіть протокол, який використовується Вашим пристроєм SCR. Виберіть 'SCR Unicable' (Unicable), або 'SCR JESS' (JESS, також відомий як Unicable II)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Виберіть тюнер, який керує моторизованою антеною."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Виберіть супутник, який підключений до Порт-A вашого комутатора. Якщо ви не впевнені, виберіть 'автоматично' і приймач спробує визначити це сам. Якщо до цього порту не підключено нічого, виберіть 'нічого не підключено'."
 
@@ -11860,6 +11868,14 @@ msgstr "Виберіть shift для зміни набору символів"
 
 msgid "Select the shifted character set for the next character only"
 msgstr "Виберіть shift лише для наступного символу"
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Виберіть Ваш часовий пояс у межах області чи регіону."
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Виберіть Ваш часовий пояс у межах області чи регіону."
 
 msgid "Select the time zone within the area or region."
 msgstr "Виберіть Ваш часовий пояс у межах області чи регіону."
@@ -15158,7 +15174,8 @@ msgstr "Для зміни параметрів використовуйте кн
 msgid "Use the wizard to set up basic features"
 msgstr "Використати Майстра для налаштування основних параметрів"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Використовувати ці налаштування пристрою вводу?"
 
 msgid "Use these settings?"
@@ -15263,9 +15280,6 @@ msgstr "VOB Файл"
 
 msgid "VOB file"
 msgstr "VOB файл"
-
-msgid "VU+"
-msgstr "VU+"
 
 msgid "Vanuatu"
 msgstr "Вануату"
@@ -16066,9 +16080,6 @@ msgstr "Записати в /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "не підтримується"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr ""
 
@@ -16600,12 +16611,6 @@ msgstr "Не переходити в режим очікування"
 msgid "automatic"
 msgstr "автоматичний"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "назад"
 
@@ -16621,9 +16626,6 @@ msgstr ""
 
 msgid "better"
 msgstr "кращий"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "чорний"
@@ -16642,12 +16644,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "знизу"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "мовлення/преса"
@@ -16798,9 +16794,6 @@ msgstr "виконано!"
 msgid "drama (general)"
 msgstr "фільм/драма (загальне)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "схід"
 
@@ -16871,21 +16864,6 @@ msgstr "помилка під час сканування"
 msgid "ese"
 msgstr "Скидання"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-msgid "et8000/10000/13000"
-msgstr ""
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -16950,9 +16928,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "зарубіжні країни/експедиції"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "перейти до наступного розділу"
 
@@ -16983,15 +16958,6 @@ msgstr "захопити цей кадр як растрове зображен�
 msgid "green"
 msgstr "зелений"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -17012,19 +16978,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "ремесло"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "висота"
@@ -17057,9 +17010,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17143,14 +17093,8 @@ msgstr "журнали/репортажі/документальні фільм�
 msgid "manual"
 msgstr "ручний"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "бойові види спорту"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "медицина/фізіологія/психологія"
@@ -17493,15 +17437,6 @@ msgstr "серйозна музика/класична музика"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "серйозний/класичний/релігійний/історичний фільм/драма"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Тест мережевого з'єднання"
@@ -17827,9 +17762,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 msgid "yellow"
 msgstr "жовтий"

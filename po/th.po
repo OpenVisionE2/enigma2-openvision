@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1-En-Th\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2010-04-08 18:13+0700\n"
 "Last-Translator: Tony - Thaidreambox\n"
 "Language-Team: Tony @ Thai Dreambox <tonyboyth@gmail.com>\n"
@@ -107,9 +107,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " ส่วนเพิ่มเติม"
-
-msgid " ms"
-msgstr ""
 
 msgid " packages selected."
 msgstr " ส่วนประกอบที่เลือกไว้"
@@ -1067,6 +1064,10 @@ msgid ""
 "Press exit to close"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1077,10 +1078,6 @@ msgstr "เนื้อที่เหลือยู่"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2031,6 +2028,10 @@ msgstr ""
 msgid "All slots"
 msgstr ""
 
+#, fuzzy
+msgid "All supported"
+msgstr "ไม่รองรับ"
+
 msgid "Allocate"
 msgstr ""
 
@@ -2910,11 +2911,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "C-Band"
 
@@ -3148,6 +3144,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "เปลี่ยนกลุ่มรายการเมื่อย้ายช่อง"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "ตั้งค่า Nameserver"
+
 msgid "Change recording (add time)"
 msgstr ""
 
@@ -3158,9 +3158,6 @@ msgstr "เปลี่ยนแปลงการบันทึก (ช่ว�
 #, fuzzy
 msgid "Change recording (endtime)"
 msgstr "เปลี่ยนแปลงการบันทึก (เวลาสิ้นสุด)"
-
-msgid "Change repeat and delay settings?"
-msgstr ""
 
 msgid "Change step size"
 msgstr "เปลี่ยน Step"
@@ -3554,6 +3551,11 @@ msgid "Config resolution of pictures"
 msgstr ""
 
 #, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "ตั้งค่าเครือข่าย"
+
+#, fuzzy
 msgid "Configuration"
 msgstr "ตั้งค่าเครือข่าย"
 
@@ -3662,10 +3664,6 @@ msgstr "ตั้งค่า Nameservers"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr ""
-
-#, fuzzy
-msgid "Configure remote control type"
-msgstr "ชนิดการควบคุมอายุ"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr ""
@@ -4202,9 +4200,6 @@ msgstr ""
 msgid "Current crash log"
 msgstr "ทรานสปอนเดอร์ปัจจุบัน"
 
-msgid "Current device: "
-msgstr ""
-
 msgid "Current event EPG"
 msgstr ""
 
@@ -4293,13 +4288,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "ไม่รองรับ"
-
-#, fuzzy
-msgid "DMM advanced"
-msgstr "ขั้นสูง"
-
-msgid "DMM normal"
-msgstr ""
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4664,7 +4652,7 @@ msgstr ""
 msgid "Delay after voltage change before motor command"
 msgstr ""
 
-msgid "Delay before key repeat starts:"
+msgid "Delay before key repeat starts (ms)"
 msgstr ""
 
 msgid "Delay before sequence repeat"
@@ -4835,8 +4823,9 @@ msgstr "รายละเอียดของบริการ"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
-msgstr ""
+#, fuzzy
+msgid "Device name"
+msgstr "ค้นหาบริการ"
 
 msgid "DiSEqC"
 msgstr "DiSEqC"
@@ -5699,6 +5688,9 @@ msgstr ""
 msgid "Enter URL"
 msgstr ""
 
+msgid "Enter a new name for this device."
+msgstr ""
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr ""
 
@@ -5936,7 +5928,11 @@ msgstr "ออกจากการแก้ไข"
 msgid "Exit inetd recovery"
 msgstr "ออกจากการแก้ไข"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "ยอมรับการตั้งค่านี้?"
+
+msgid "Exit input device selection and close all menus"
 msgstr ""
 
 msgid "Exit media player?"
@@ -6596,9 +6592,6 @@ msgid "Ghana"
 msgstr ""
 
 msgid "Gibraltar"
-msgstr ""
-
-msgid "GigaBlue Black"
 msgstr ""
 
 msgid "GitHub commit"
@@ -7428,13 +7421,18 @@ msgid "Input "
 msgstr "นำเข้า (Input)"
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "นำเข้า (Input)"
 
-msgid "Input Stream ID"
-msgstr ""
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "นำเข้า (Input)"
 
-msgid "Input device setup"
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "ตั้งค่า Nameserver"
+
+msgid "Input Stream ID"
 msgstr ""
 
 msgid "Install"
@@ -7518,7 +7516,7 @@ msgstr ""
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+msgid "Interval between keys when repeating (ms)"
 msgstr ""
 
 #, fuzzy
@@ -7561,8 +7559,8 @@ msgid "Ireland"
 msgstr ""
 
 #, fuzzy
-msgid "Is this setting ok?"
-msgstr "วิดีโอโหมดนี้ถูกต้องหรือไม่?"
+msgid "Is the remote control working okay?"
+msgstr "ชนิดการควบคุมอายุ"
 
 #, fuzzy
 msgid "Is this video mode ok?"
@@ -7681,12 +7679,9 @@ msgstr "เวอร์ชั่นใหม่:"
 msgid "Key Events"
 msgstr ""
 
-msgid "Keyboard"
-msgstr "แป้นพิมพ์"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "ตั้งค่าแป้นพิมพ์"
+msgid "Keyboard / Remote Control Setup"
+msgstr "ตั้งค่าการควบคุมอายุ"
 
 #, fuzzy
 msgid "Keyboard data entry"
@@ -7695,6 +7690,9 @@ msgstr "ตั้งค่าแป้นพิมพ์"
 #, fuzzy
 msgid "Keyboard map"
 msgstr "การวางแป้นพิมพ์"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr ""
@@ -7847,9 +7845,6 @@ msgid "Leisure hobbies"
 msgstr ""
 
 msgid "Lesotho"
-msgstr ""
-
-msgid "Let you change RC type but use it with care."
 msgstr ""
 
 msgid "Let's define enigma2 once more"
@@ -8588,10 +8583,6 @@ msgstr ""
 
 msgid "Multi EPG"
 msgstr "ผังรายการแบบหลากหลาย"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "ชนิดการควบคุมอายุ"
 
 msgid "Multi-EPG bouquet selection"
 msgstr ""
@@ -9422,15 +9413,15 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "เลือกที่ที่จะสำรอง"
+
 msgid "Other Subtitles & lang"
 msgstr ""
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "เลือกที่ที่จะสำรอง"
 
 msgid "Output"
 msgstr ""
@@ -10224,6 +10215,10 @@ msgstr "กดปุ่ม OK เพื่อเริ่มใช้สกิ�
 msgid "Press OK to activate the settings."
 msgstr "กดปุ่ม OK เพื่อเริ่มใช้งาน"
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "กดปุ่ม OK เพื่อแก้ไข"
+
 msgid "Press OK to edit the settings."
 msgstr "กดปุ่ม OK เพื่อแก้ไข"
 
@@ -10749,14 +10744,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Remote control information"
-msgstr "ชนิดการควบคุมอายุ"
-
-#, fuzzy
-msgid "Remote control type"
-msgstr "ชนิดการควบคุมอายุ"
-
-#, fuzzy
-msgid "Remote control type setup"
 msgstr "ชนิดการควบคุมอายุ"
 
 #, fuzzy
@@ -11593,6 +11580,9 @@ msgstr ""
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr ""
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11680,6 +11670,10 @@ msgstr ""
 
 msgid "Select HDD"
 msgstr "เลือกฮาร์ดดิสก์ (HDD)"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "นำเข้า (Input)"
 
 #, fuzzy
 msgid "Select a bouquet"
@@ -11780,9 +11774,6 @@ msgstr ""
 msgid "Select input device"
 msgstr ""
 
-msgid "Select input device."
-msgstr ""
-
 msgid "Select interface"
 msgstr "เลือกอินเตอร์เฟซ"
 
@@ -11806,6 +11797,10 @@ msgstr "เลือกผู้ให้บริการที่ต้อง
 
 msgid "Select refresh rate"
 msgstr "เลือกอัตราการปรับหน้าจอ"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "ชนิดการควบคุมอายุ"
 
 msgid "Select satellites"
 msgstr ""
@@ -11865,6 +11860,9 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr ""
 
+msgid "Select the remote control device to be used with the %s %s."
+msgstr ""
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr ""
 
@@ -11888,6 +11886,12 @@ msgid "Select the shifted character set"
 msgstr "เลือกพาธของภาพยนต์"
 
 msgid "Select the shifted character set for the next character only"
+msgstr ""
+
+msgid "Select the time delay before the button starts repeating."
+msgstr ""
+
+msgid "Select the time delay between each repeat of the button."
 msgstr ""
 
 msgid "Select the time zone within the area or region."
@@ -15204,8 +15208,8 @@ msgstr "ใช้ปุ่มขึ้นหรือลงบนรีโมท
 msgid "Use the wizard to set up basic features"
 msgstr "ใช่ตัวช่วยเพื่อตั้งค่าพื้นฐาน"
 
-#, fuzzy
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "ยอมรับการตั้งค่านี้?"
 
 #, fuzzy
@@ -15313,9 +15317,6 @@ msgid "VOB File"
 msgstr ""
 
 msgid "VOB file"
-msgstr ""
-
-msgid "VU+"
 msgstr ""
 
 #, fuzzy
@@ -16110,9 +16111,6 @@ msgstr ""
 msgid "XBox support"
 msgstr "ไม่รองรับ"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr ""
 
@@ -16611,12 +16609,6 @@ msgstr "ไม่ Standby"
 msgid "automatic"
 msgstr "อัตโนมัติ"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "กลับ"
 
@@ -16632,9 +16624,6 @@ msgstr ""
 
 msgid "better"
 msgstr "ดีขึ้น"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "ดำ"
@@ -16652,12 +16641,6 @@ msgid "both"
 msgstr ""
 
 msgid "bottom"
-msgstr ""
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
 msgstr ""
 
 msgid "broadcasting/press"
@@ -16803,9 +16786,6 @@ msgstr "เสร็จแล้ว!!"
 msgid "drama (general)"
 msgstr ""
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr ""
 
@@ -16873,21 +16853,6 @@ msgstr ""
 msgid "ese"
 msgstr "ตั้งค่าใหม่"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-msgid "et8000/10000/13000"
-msgstr ""
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -16953,9 +16918,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr ""
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "ข้ามไปตอนต่อไป"
 
@@ -16986,15 +16948,6 @@ msgstr "เก็บหน้าจอนี้ลงแฟ้ม"
 msgid "green"
 msgstr "เขียว"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -17014,18 +16967,6 @@ msgid "h:mmam/pm"
 msgstr ""
 
 msgid "handicraft"
-msgstr ""
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-msgid "hd2400"
-msgstr ""
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
 msgstr ""
 
 msgid "height"
@@ -17059,9 +17000,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17143,13 +17081,7 @@ msgstr ""
 msgid "manual"
 msgstr "ทำเอง"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
-msgstr ""
-
-msgid "mbtwinplus"
 msgstr ""
 
 msgid "medicine/physiology/psychology"
@@ -17488,15 +17420,6 @@ msgstr ""
 msgid "serious/classical/religious/historical movie/drama"
 msgstr ""
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "ทดสอบเครือข่าย"
@@ -17815,9 +17738,6 @@ msgid "wnw"
 msgstr ""
 
 msgid "wsw"
-msgstr ""
-
-msgid "xp1000"
 msgstr ""
 
 msgid "yellow"

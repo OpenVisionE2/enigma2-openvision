@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Openpli\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2019-04-03 06:49+0300\n"
 "Last-Translator: \n"
 "Language-Team: Raivo, Henkka, eesatfan, rimas, zeros\\n faas, sateks, valgekotkas, tigekala, rootsikunn\\n kain, i70, mustkass, pelmeen, Scott\\n <digi-tv.ee>\n"
@@ -110,9 +110,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " laiendused."
-
-msgid " ms"
-msgstr " ms"
 
 msgid " packages selected."
 msgstr " paketti valitud."
@@ -1127,6 +1124,10 @@ msgid ""
 "Press exit to close"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1137,10 +1138,6 @@ msgstr "%s %s vaba kettaruumi"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2112,6 +2109,10 @@ msgstr "Kõik levitajad"
 msgid "All slots"
 msgstr "Vali pesa"
 
+#, fuzzy
+msgid "All supported"
+msgstr "pole toetatud"
+
 msgid "Allocate"
 msgstr "Eralda"
 
@@ -2987,11 +2988,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "C-sagedusala"
 
@@ -3227,6 +3223,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Lemmiknimekirjade vahetus noolenuppudega"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "Nimeserveri seaded"
+
 msgid "Change recording (add time)"
 msgstr "Muuda salvestust (lisa aeg)"
 
@@ -3235,9 +3235,6 @@ msgstr "Muuda salvestuse kestust"
 
 msgid "Change recording (endtime)"
 msgstr "Muuda salvestuse lõpuaega"
-
-msgid "Change repeat and delay settings?"
-msgstr "Muuta korduse ja viiteaja seadistusi?"
 
 msgid "Change step size"
 msgstr "Muuda sammu suurust"
@@ -3631,6 +3628,11 @@ msgstr "Säti otsingu detailid"
 msgid "Config resolution of pictures"
 msgstr "Määra piltide eraldusmäär"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Seadistamine"
+
 msgid "Configuration"
 msgstr "Seadistamine"
 
@@ -3735,9 +3737,6 @@ msgstr "Seadista nimeserverid"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Määra, millisel andmekandjal kasutatakse taustal kustutamise võimalust."
-
-msgid "Configure remote control type"
-msgstr "Määra puldi tüüp"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Määra selle LNB DiSEqC režiim."
@@ -4272,9 +4271,6 @@ msgstr "Praegune CEC aadress"
 msgid "Current crash log"
 msgstr "Hetke transponder"
 
-msgid "Current device: "
-msgstr "Praegune seade: "
-
 msgid "Current event EPG"
 msgstr "Saateinfo"
 
@@ -4360,12 +4356,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "HLG tugi"
-
-msgid "DMM advanced"
-msgstr "DMM edasijõudnutele"
-
-msgid "DMM normal"
-msgstr "DMM tavaline"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4723,7 +4713,8 @@ msgstr "Viide pärast toonipurset"
 msgid "Delay after voltage change before motor command"
 msgstr "Viide pinge muutmise ja mootori käsu vahel"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Viiteaeg enne võtme kordamise algust:"
 
 msgid "Delay before sequence repeat"
@@ -4893,7 +4884,8 @@ msgstr "Kanaliinfo"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Seadme nimi:"
 
 msgid "DiSEqC"
@@ -5757,6 +5749,10 @@ msgstr "Sisesta PIN"
 msgid "Enter URL"
 msgstr "Sisesta URL"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Näita võbeleva katkendjoonega joon selle teenuse puhul"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr ""
 
@@ -6002,7 +5998,12 @@ msgstr "Välju redaktorist"
 msgid "Exit inetd recovery"
 msgstr "Välju redaktorist"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Välju sisendseadmete valikust."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Välju sisendseadmete valikust."
 
 msgid "Exit media player?"
@@ -6679,9 +6680,6 @@ msgstr "Ghana"
 
 msgid "Gibraltar"
 msgstr "Gibraltari"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -7505,14 +7503,19 @@ msgid "Input "
 msgstr "Sisend "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Sisendseadmed"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Sisendseadmete seadistamine"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Sisendseadmete seadistamine"
 
 msgid "Input Stream ID"
 msgstr "Sisendvoo ID"
-
-msgid "Input device setup"
-msgstr "Sisendseadmete seadistamine"
 
 msgid "Install"
 msgstr "Paigalda"
@@ -7590,7 +7593,8 @@ msgstr "Sisemine"
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Võtme kordamise vahemik:"
 
 #, fuzzy
@@ -7631,8 +7635,9 @@ msgstr "Iraak"
 msgid "Ireland"
 msgstr "Iirimaa"
 
-msgid "Is this setting ok?"
-msgstr "Kasutad neid seadeid?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Kasuta teleri pulti"
 
 msgid "Is this video mode ok?"
 msgstr "Kas see videoseadistus sobib?"
@@ -7746,18 +7751,18 @@ msgstr "Kernel: "
 msgid "Key Events"
 msgstr "Võtmesündmused"
 
-msgid "Keyboard"
-msgstr "Klaviatuur"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Klaviatuuriseaded"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Lapseluku seaded"
 
 msgid "Keyboard data entry"
 msgstr "Klaviatuurilt andmete sisestus"
 
 msgid "Keyboard map"
 msgstr "Klaviatuur"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "Kiribati"
@@ -7909,9 +7914,6 @@ msgstr "Vaba aja hobid"
 
 msgid "Lesotho"
 msgstr "Lesotho"
-
-msgid "Let you change RC type but use it with care."
-msgstr ""
 
 msgid "Let's define enigma2 once more"
 msgstr ""
@@ -8640,10 +8642,6 @@ msgstr "Mosambiik"
 
 msgid "Multi EPG"
 msgstr "Multi EPG"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Kaugjuhtimispuldi tüübi seadmine"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Lemmiknimekirjade valik kanalite saatekavas"
@@ -9464,15 +9462,15 @@ msgid "Other"
 msgstr "Miski muu"
 
 #, fuzzy
+msgid "Other Actions"
+msgstr "edasine haridus"
+
+#, fuzzy
 msgid "Other Subtitles & lang"
 msgstr "Subtiitrite seaded"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "edasine haridus"
 
 msgid "Output"
 msgstr "Väljund"
@@ -10254,6 +10252,10 @@ msgstr "Vajuta OK uue välimuse aktiveerimiseks."
 msgid "Press OK to activate the settings."
 msgstr "Seadete aktiveerimiseks vajuta OK."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Sätete muutmiseks vajuta OK."
+
 msgid "Press OK to edit the settings."
 msgstr "Sätete muutmiseks vajuta OK."
 
@@ -10786,12 +10788,6 @@ msgstr "Meenutus, oled valinud ajanihke faili salvestamise."
 #, fuzzy
 msgid "Remote control information"
 msgstr "Puldi tüüp"
-
-msgid "Remote control type"
-msgstr "Puldi tüüp"
-
-msgid "Remote control type setup"
-msgstr "Kaugjuhtimispuldi tüübi seadmine"
 
 msgid "Removal has completed."
 msgstr "Eemaldamine on tehtud."
@@ -11617,6 +11613,9 @@ msgstr "Vali 'A' või 'B', kui antennisüsteem seda nõuab, muudel juhtudel vali
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Vali 'Unicable', kui see tuuner kasutab unicable seadet. Kõigil ülejäänud juhtudel vali 'FBC automaatne'."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11704,6 +11703,10 @@ msgstr "Vali kiire DiSEqC, kui antennisüsteem seda toetab. Kui pole kindel, val
 
 msgid "Select HDD"
 msgstr "Vali kõvaketas"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Vali sisendseade"
 
 msgid "Select a bouquet"
 msgstr "Vali lemmiknimekiri"
@@ -11796,9 +11799,6 @@ msgstr ""
 msgid "Select input device"
 msgstr "Vali sisendseade"
 
-msgid "Select input device."
-msgstr "Vali sisendseade."
-
 msgid "Select interface"
 msgstr "Vali liides"
 
@@ -11820,6 +11820,10 @@ msgstr "Vali levitaja lisamiseks"
 
 msgid "Select refresh rate"
 msgstr "Vali värskendussagedus"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Kasuta teleri pulti"
 
 msgid "Select satellites"
 msgstr "Vali satelliidid"
@@ -11881,6 +11885,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Vali unicable seadme vorming. Valikud on 'SCR Unicable' (Unicable I vorming) või 'SCR JESS' (Unicable II vorming)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Vali tuuner, mis juhib ajamiga antenni."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Vali satelliit, mis on ühendatud lüliti porti A. Kui pole kindel, vali 'automaatne' ja vastuvõtja üritab seda teha ise. Kui see port on ühendamata, vali 'pole ühendatud'."
 
@@ -11905,6 +11913,14 @@ msgstr "Vali filmi rada"
 
 msgid "Select the shifted character set for the next character only"
 msgstr ""
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Vali horisontaalne resolutsioon:"
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Vali horisontaalne resolutsioon:"
 
 #, fuzzy
 msgid "Select the time zone within the area or region."
@@ -15251,7 +15267,8 @@ msgstr "Kasuta valimiseks üles/alla nuppu puldil, siis vajuta OK."
 msgid "Use the wizard to set up basic features"
 msgstr "Kasuta abimeest põhiomaduste seadmiseks"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Kas kasutad neid sisendseadme seadeid?"
 
 msgid "Use these settings?"
@@ -15358,9 +15375,6 @@ msgstr "VOB fail"
 
 msgid "VOB file"
 msgstr "VOB fail"
-
-msgid "VU+"
-msgstr "VU+"
 
 msgid "Vanuatu"
 msgstr "Vanuatu"
@@ -16174,9 +16188,6 @@ msgstr "Kirjuta /tmp/positionersetup.log  faili"
 msgid "XBox support"
 msgstr "pole toetatud"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr "YCbCr420"
 
@@ -16708,12 +16719,6 @@ msgstr "Ooteseisundita"
 msgid "automatic"
 msgstr "automaatne"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "tagasi"
 
@@ -16729,9 +16734,6 @@ msgstr ""
 
 msgid "better"
 msgstr "parem"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "must"
@@ -16750,12 +16752,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "all"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "ringhääling/ajakirjandus"
@@ -16906,9 +16902,6 @@ msgstr "valmis!"
 msgid "drama (general)"
 msgstr "film/draama (üldine)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "ida"
 
@@ -16979,22 +16972,6 @@ msgstr "viga otsingu teostamisel"
 msgid "ese"
 msgstr "Lähtesta"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -17059,9 +17036,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "välisriigid/reisid"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "hüppa järgmisele peatükile"
 
@@ -17092,15 +17066,6 @@ msgstr "salvesta see kaader rasterpildina"
 msgid "green"
 msgstr "roheline"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -17121,19 +17086,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "käsitöö"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "kõrgus"
@@ -17166,9 +17118,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17253,14 +17202,8 @@ msgstr "ajakirjad/raportid/dokumentaalid"
 msgid "manual"
 msgstr "juhend"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "käsitsivõitlus"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "meditsiin/füsioloogia/psühholoogia"
@@ -17604,15 +17547,6 @@ msgstr "süvamuusika/klassikaline muusika"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "tõsielu/klassika/usklik/ajalooline film/draama"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Võrgu ühenduse test"
@@ -17936,9 +17870,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 msgid "yellow"
 msgstr "kollane"

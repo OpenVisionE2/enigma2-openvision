@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2021-03-06\n"
 "Last-Translator: LinuxSTV\n"
 "Language-Team: \n"
@@ -111,9 +111,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " ekstensi."
-
-msgid " ms"
-msgstr " md"
 
 msgid " packages selected."
 msgstr " paket yang dipilih."
@@ -1132,6 +1129,10 @@ msgstr ""
 "Tekan OK untuk memilih multiboot\n"
 "Tekan Exit untuk menutup"
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1142,10 +1143,6 @@ msgstr "%s %s sisa penyimpanan disk"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2118,6 +2115,10 @@ msgstr "Semua penyedia layanan"
 msgid "All slots"
 msgstr "Pilih slot"
 
+#, fuzzy
+msgid "All supported"
+msgstr "tidak didukung"
+
 msgid "Allocate"
 msgstr "Alokasikan"
 
@@ -3003,11 +3004,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "C-Band"
 
@@ -3261,6 +3257,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Ganti buket saat zap cepat"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "Pengaturan nameserver"
+
 msgid "Change recording (add time)"
 msgstr "Ganti perekaman (tambah waktu)"
 
@@ -3269,9 +3269,6 @@ msgstr "Ganti perekaman (durasi)"
 
 msgid "Change recording (endtime)"
 msgstr "Ganti perekaman (bataswaktu)"
-
-msgid "Change repeat and delay settings?"
-msgstr "Ubah penyetelan ulang dan penundaan?"
 
 msgid "Change step size"
 msgstr "Ubah ukuran langkah"
@@ -3671,6 +3668,11 @@ msgstr "Detil Setelan Pelacakan"
 msgid "Config resolution of pictures"
 msgstr "Atur resolusi gambar"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Penyetelan"
+
 msgid "Configuration"
 msgstr "Penyetelan"
 
@@ -3779,9 +3781,6 @@ msgstr "Atur nameserver"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Atur di perangkat mana pilihan hapus latar seharusnya digunakan."
-
-msgid "Configure remote control type"
-msgstr "Atur jenis remote kontrol"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Atur mode DiSEqC untuk LNB ini."
@@ -4321,9 +4320,6 @@ msgstr "Alamat CEC saat ini"
 msgid "Current crash log"
 msgstr "Transponder saat ini"
 
-msgid "Current device: "
-msgstr "Perangkat saat ini: "
-
 msgid "Current event EPG"
 msgstr "EPG acara saat ini"
 
@@ -4410,12 +4406,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "mendukung HLG"
-
-msgid "DMM advanced"
-msgstr "DMM tingkat mahir"
-
-msgid "DMM normal"
-msgstr "DMM normal"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4774,7 +4764,8 @@ msgstr "Tunda setelah toneburst"
 msgid "Delay after voltage change before motor command"
 msgstr "Tunda setelah perubahan voltase sebelum perintah motor"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Tunda sebelum tombol ulang mulai:"
 
 msgid "Delay before sequence repeat"
@@ -4950,7 +4941,8 @@ msgstr "Informasi layanan"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Nama perangkat:"
 
 msgid "DiSEqC"
@@ -5823,6 +5815,10 @@ msgstr "Masukkan PIN"
 msgid "Enter URL"
 msgstr "Masukkan PIN"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Temukan garis kedip putus-putus untuk layanan ini"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "Masukkan URL dimana image alternatif bisa didaftar untuk FlashImage"
 
@@ -6077,7 +6073,12 @@ msgstr "Keluar dari editor"
 msgid "Exit inetd recovery"
 msgstr "Keluar dari editor"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Keluar dari pilihan perangkat input."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Keluar dari pilihan perangkat input."
 
 msgid "Exit media player?"
@@ -6763,9 +6764,6 @@ msgstr "Ghana"
 
 msgid "Gibraltar"
 msgstr "Jibraltar"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -7603,14 +7601,19 @@ msgid "Input "
 msgstr "Masukan "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Perangkat Input"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Atur perangkat input"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Atur perangkat input"
 
 msgid "Input Stream ID"
 msgstr "Masukkan ID Stream"
-
-msgid "Input device setup"
-msgstr "Atur perangkat input"
 
 msgid "Install"
 msgstr "Pasang"
@@ -7689,7 +7692,8 @@ msgstr "Internal"
 msgid "Internet time (NTP)"
 msgstr "Internet (ntp"
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Selang waktu antara tombol ketika berulang:"
 
 #, fuzzy
@@ -7730,8 +7734,9 @@ msgstr "Irak"
 msgid "Ireland"
 msgstr "Irlandia"
 
-msgid "Is this setting ok?"
-msgstr "Apakah pengaturan ini ok?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Gunakan remote kontrol TV"
 
 msgid "Is this video mode ok?"
 msgstr "Apakah mode video ini ok?"
@@ -7849,12 +7854,9 @@ msgstr "Versi kernel: "
 msgid "Key Events"
 msgstr "Acara Kunci"
 
-msgid "Keyboard"
-msgstr "Papankunci"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Pengaturan papankunci"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Atur pengawasan orangtua"
 
 #, fuzzy
 msgid "Keyboard data entry"
@@ -7862,6 +7864,9 @@ msgstr "Entri data papankunci"
 
 msgid "Keyboard map"
 msgstr "Peta papankunci"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "Kiribati"
@@ -8015,9 +8020,6 @@ msgid "Leisure hobbies"
 msgstr "Hobi santai"
 
 msgid "Lesotho"
-msgstr ""
-
-msgid "Let you change RC type but use it with care."
 msgstr ""
 
 msgid "Let's define enigma2 once more"
@@ -8764,10 +8766,6 @@ msgstr "Mozambik"
 
 msgid "Multi EPG"
 msgstr "EPG Multi"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Pengaturan jenis kontrol remote"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Pilihan buket Multi-EPG"
@@ -9598,15 +9596,15 @@ msgstr "Asli"
 msgid "Other"
 msgstr "Lainnya"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "edukasi lanjut"
+
 msgid "Other Subtitles & lang"
 msgstr "Terjemahan & bhs lain"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "edukasi lanjut"
 
 msgid "Output"
 msgstr "Keluaran"
@@ -10397,6 +10395,10 @@ msgstr "Tekan OK untuk mengaktifkan tampilan."
 msgid "Press OK to activate the settings."
 msgstr "Tekan OK untuk mengaktifkan pengaturan."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Tekan OK untuk merubah pengaturan."
+
 msgid "Press OK to edit the settings."
 msgstr "Tekan OK untuk merubah pengaturan."
 
@@ -10930,13 +10932,6 @@ msgstr "Pengingat, anda telah memilih menyimpan berkas timeshift."
 #, fuzzy
 msgid "Remote control information"
 msgstr "Jenis kontrol remote"
-
-msgid "Remote control type"
-msgstr "Jenis kontrol remote"
-
-#, fuzzy
-msgid "Remote control type setup"
-msgstr "Pengaturan jenis kontrol remote"
 
 msgid "Removal has completed."
 msgstr "Penghapusan telah selesai."
@@ -11770,6 +11765,9 @@ msgstr "Pilih 'A' atau 'B' jika sistem antena anda memerlukan ini, sebaliknya pi
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Pilih 'FBC SCR' jika penala ini akan terhubung ke perangkat SCR (Unikabel/JESS). Untuk semua setelan lain pilih 'FBC otomatis'."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11856,6 +11854,10 @@ msgstr "Pilih DiSEqC Cepat jika sistem antena anda mendukung ini. Jika anda tida
 
 msgid "Select HDD"
 msgstr "Pilih HDD"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Pilih perangkat input"
 
 msgid "Select a bouquet"
 msgstr "Pilih buket"
@@ -11951,9 +11953,6 @@ msgstr ""
 msgid "Select input device"
 msgstr "Pilih perangkat input"
 
-msgid "Select input device."
-msgstr "Pilih perangkat input."
-
 msgid "Select interface"
 msgstr "Pilih antarmuka"
 
@@ -11976,6 +11975,10 @@ msgstr "Pilih penyedia untuk ditambahkan..."
 
 msgid "Select refresh rate"
 msgstr "Pilih rerata penyegaran"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Gunakan remote kontrol TV"
 
 msgid "Select satellites"
 msgstr "Pilih satelit"
@@ -12035,6 +12038,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Pilih protokol yg digunakan peralatan SCR. Pilihnya 'Unikabel SCR' (Unikabel), atau 'JESS SCR' (JESS, dikenal juga dgn Unikabel II)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Pilih penala yang mengatur parabola bergerak."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Pilih satelit yg terhubung ke Port-A saklar anda. Jika anda tidak yakin, pilih 'otomatis' dan Rx akan mencoba menentukannya untuk anda. Jika tidak ada yg terhubung pada port ini, pilih 'tidak ada terhubung'."
 
@@ -12060,6 +12067,14 @@ msgstr "Pilih set karakter geser pada papankunci virtual"
 #, fuzzy
 msgid "Select the shifted character set for the next character only"
 msgstr "Pilih set karakter geser pada papankunci virtual"
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Pilih resolusi horizontal:"
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Pilih resolusi horizontal:"
 
 #, fuzzy
 msgid "Select the time zone within the area or region."
@@ -15419,7 +15434,8 @@ msgstr "Gunakan tombol atas/bawah pada remote kontrol untuk memilih pilihan. Set
 msgid "Use the wizard to set up basic features"
 msgstr "Gunakan wizard untuk mengatur fitur dasar"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Gunakan setelan peralatan input ini?"
 
 msgid "Use these settings?"
@@ -15526,9 +15542,6 @@ msgstr "Berkas VOB"
 
 msgid "VOB file"
 msgstr "berkas VOB"
-
-msgid "VU+"
-msgstr "VU+"
 
 #, fuzzy
 msgid "Vanuatu"
@@ -16343,9 +16356,6 @@ msgstr "Tulis ke /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "tidak didukung"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr "YCbCr420"
 
@@ -16885,12 +16895,6 @@ msgstr "Tidak bisa standby"
 msgid "automatic"
 msgstr "otomatis"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "kembali"
 
@@ -16906,9 +16910,6 @@ msgstr ""
 
 msgid "better"
 msgstr "bagus"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "hitam"
@@ -16927,12 +16928,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "bawah"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "penyiaran/press"
@@ -17083,9 +17078,6 @@ msgstr "selesai!"
 msgid "drama (general)"
 msgstr "film/drama (umum)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "timur"
 
@@ -17156,22 +17148,6 @@ msgstr "gagal saat memindai"
 msgid "ese"
 msgstr "Atur ulang"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -17236,9 +17212,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "negara asing/ekspedisi"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "maju ke bab berikutnya"
 
@@ -17269,15 +17242,6 @@ msgstr "ambil bingkai ini sbg bitmap"
 msgid "green"
 msgstr "hijau"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -17298,19 +17262,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "kerajinan tangan"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "tinggi"
@@ -17343,9 +17294,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17430,14 +17378,8 @@ msgstr "majalah/laporan/dokumenter"
 msgid "manual"
 msgstr "manual"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "olahraga beladiri"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "pengobatan/fisiologi/psikologi"
@@ -17781,15 +17723,6 @@ msgstr "serious music/classic music"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "serious/classical/religious/historical movie/drama"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Periksa Jaringan"
@@ -18115,9 +18048,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 msgid "yellow"
 msgstr "kuning"

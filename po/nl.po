@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -109,9 +109,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " applicaties."
-
-msgid " ms"
-msgstr " ms"
 
 msgid " packages selected."
 msgstr " geselecteerde pakketten."
@@ -1130,6 +1127,10 @@ msgstr ""
 "Druk ok om multiboot te kiezen\n"
 "Druk exit om af te sluiten"
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1140,10 +1141,6 @@ msgstr "%s %s beschikbare schijfruimte"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2112,6 +2109,10 @@ msgstr "Alle kanalen per provider"
 msgid "All slots"
 msgstr "Alle slots"
 
+#, fuzzy
+msgid "All supported"
+msgstr "niet ondersteund"
+
 msgid "Allocate"
 msgstr "Toewijzen"
 
@@ -2986,11 +2987,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "C-Band"
 
@@ -3244,6 +3240,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Verander van bouquet tijdens zappen"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "Nameserver-instellingen"
+
 msgid "Change recording (add time)"
 msgstr "Wijzig de opname (voeg de tijd toe)"
 
@@ -3252,9 +3252,6 @@ msgstr "Wijzig de opname (tijdsduur)"
 
 msgid "Change recording (endtime)"
 msgstr "Wijzig opname (eindtijd)"
-
-msgid "Change repeat and delay settings?"
-msgstr "Verander herhalings- en vertragingsinstellingen?"
 
 msgid "Change step size"
 msgstr "Wijzig stapgrootte"
@@ -3651,6 +3648,11 @@ msgstr "Configureer scan-instellingen"
 msgid "Config resolution of pictures"
 msgstr "Stel de resolutie van de afbeeldingen in"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Configuratie"
+
 msgid "Configuration"
 msgstr "Configuratie"
 
@@ -3802,9 +3804,6 @@ msgstr ""
 "Met deze optie stelt u in op welk apparaat de optie 'verwijder opnames op de achtergrond' gebruikt wordt.\n"
 "\n"
 "U kunt kiezen uit, alleen de interne harddisk, overal of n.v.t."
-
-msgid "Configure remote control type"
-msgstr "Configureer het type afstandbediening"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Configureer de DiSEqC modus voor deze LNB."
@@ -4475,9 +4474,6 @@ msgstr "Huidig CEC adres"
 msgid "Current crash log"
 msgstr "Huidige transponder"
 
-msgid "Current device: "
-msgstr "Huidig apparaat: "
-
 msgid "Current event EPG"
 msgstr "Huidige programma EPG"
 
@@ -4563,12 +4559,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "HLG ondersteuning"
-
-msgid "DMM advanced"
-msgstr "DMM geavanceerd"
-
-msgid "DMM normal"
-msgstr "DMM normaal"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4923,7 +4913,8 @@ msgstr "De vertraging na de 'toneburst'."
 msgid "Delay after voltage change before motor command"
 msgstr "De vertraging nadat de spanning gewijzigd is, maar vóór het motorcommando"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Wachttijd voor toetsherhaling begint:"
 
 msgid "Delay before sequence repeat"
@@ -5089,7 +5080,8 @@ msgstr "Zenderinfo"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Apparaatnaam:"
 
 msgid "DiSEqC"
@@ -5959,6 +5951,10 @@ msgstr "Voer PIN in"
 msgid "Enter URL"
 msgstr "Voer een URL in"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Déactiveer de optie 'verberg de stippellijn' voor dit kanaal"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "Hier kunt u een URL opgeven waar alternatieve images t.b.v. Flashimage te vinden zijn. "
 
@@ -6206,7 +6202,12 @@ msgstr "Editor afsluiten"
 msgid "Exit inetd recovery"
 msgstr "Editor afsluiten"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Beëindig invoerapparaatselectie"
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Beëindig invoerapparaatselectie"
 
 msgid "Exit media player?"
@@ -6873,9 +6874,6 @@ msgstr "Ghana"
 
 msgid "Gibraltar"
 msgstr "Gibraltar"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -7706,14 +7704,19 @@ msgid "Input "
 msgstr "Ingang"
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Invoerapparaten"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Invoerapparaat setup"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Invoerapparaat setup"
 
 msgid "Input Stream ID"
 msgstr "Ingang Stream ID"
-
-msgid "Input device setup"
-msgstr "Invoerapparaat setup"
 
 msgid "Install"
 msgstr "Installeer"
@@ -7792,7 +7795,8 @@ msgstr "Intern"
 msgid "Internet time (NTP)"
 msgstr "Internet (ntp)"
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Tijd tussen toetsherhaling"
 
 #, fuzzy
@@ -7833,8 +7837,9 @@ msgstr "Iraq"
 msgid "Ireland"
 msgstr "Ierland"
 
-msgid "Is this setting ok?"
-msgstr "Zijn deze instellingen correct?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Gebruik de afstandsbediening van de TV"
 
 msgid "Is this video mode ok?"
 msgstr "Is deze videomode correct?"
@@ -7949,18 +7954,18 @@ msgstr "Kernel versie: "
 msgid "Key Events"
 msgstr "Toetsaanslagen"
 
-msgid "Keyboard"
-msgstr "Toetsenbord..."
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Toetsenbordinstelling"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Kinderslotinstellingen"
 
 msgid "Keyboard data entry"
 msgstr "Toetsenbordingave"
 
 msgid "Keyboard map"
 msgstr "Toetsenbordlayout."
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "Kiribati"
@@ -8112,9 +8117,6 @@ msgstr "Vrije tijd hobby's"
 
 msgid "Lesotho"
 msgstr "Lesotho"
-
-msgid "Let you change RC type but use it with care."
-msgstr ""
 
 msgid "Let's define enigma2 once more"
 msgstr ""
@@ -8835,10 +8837,6 @@ msgstr "Mozambique"
 
 msgid "Multi EPG"
 msgstr "Multi EPG"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Hiermee stelt u het type afstandsbediening in."
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Multi-EPG bouquet selectie"
@@ -9664,15 +9662,15 @@ msgstr "Origineel"
 msgid "Other"
 msgstr "Anders"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "Meer educatie"
+
 msgid "Other Subtitles & lang"
 msgstr "Andere Ondertitels & lang"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "Meer educatie"
 
 msgid "Output"
 msgstr "Uitgang"
@@ -10477,6 +10475,10 @@ msgstr "Druk Ok om de gekozen skin, %s, te activeren."
 msgid "Press OK to activate the settings."
 msgstr "Druk Ok om de wijziging op te slaan."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Druk op Ok om te wijzigen."
+
 msgid "Press OK to edit the settings."
 msgstr "Druk op Ok om te wijzigen."
 
@@ -11008,12 +11010,6 @@ msgstr "Herinnering, u heeft ervoor gekozen om de timeshiftopname op te slaan."
 #, fuzzy
 msgid "Remote control information"
 msgstr "Type afstandsbediening"
-
-msgid "Remote control type"
-msgstr "Type afstandsbediening"
-
-msgid "Remote control type setup"
-msgstr "Hiermee stelt u het type afstandsbediening in."
 
 msgid "Removal has completed."
 msgstr "Verwijderen is afgerond."
@@ -11836,6 +11832,9 @@ msgstr "Kies voor 'A' of 'B' indien uw antenne dit vereist, of anders niet activ
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Kies voor 'Unicable' als de tuner gebruikt maakt van een SRC (Unicable / Jess) apparaat. In elk ander geval kies voor 'FBC automatisch'."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11922,6 +11921,10 @@ msgstr "Kies voor snelle DiSEqC indien uw systeem dit ondersteunt. Bij twijfel d
 
 msgid "Select HDD"
 msgstr "Kies harde schijf"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Kies invoerapparaat"
 
 msgid "Select a bouquet"
 msgstr "Kies een bouquet"
@@ -12014,9 +12017,6 @@ msgstr "Kies hoe de ontvanger correct op tijd moet blijven, via de DVB transpond
 msgid "Select input device"
 msgstr "Kies invoerapparaat"
 
-msgid "Select input device."
-msgstr "Kies invoerapparaat."
-
 msgid "Select interface"
 msgstr "Selecteer interface"
 
@@ -12038,6 +12038,10 @@ msgstr "Selecteer provider om toe te voegen..."
 
 msgid "Select refresh rate"
 msgstr "Selecteer herhalingsfrequentie"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Gebruik de afstandsbediening van de TV"
 
 msgid "Select satellites"
 msgstr "Kies de satellieten"
@@ -12095,6 +12099,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Kies het protocol van het betreffende Unicable device. Je kunt kiezen uit 'SCR Unicable' (Unicable) of 'SCR JESS' (Jess of Unicable II)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Kies de tuner die de gemotoriseerde schotel aanstuurt."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Kies de satelliet die is gekoppeld aan poort A van uw switch. Bij twijfel kies dan voor automatisch. Uw ontvanger zal proberen om dit zelf te bepalen. Indien er niets aangesloten is, kies dan voor ‘niets aangesloten’."
 
@@ -12118,6 +12126,14 @@ msgstr "Kies de tekenset voor hoofdletters"
 
 msgid "Select the shifted character set for the next character only"
 msgstr "Kies enkel een hoofdletter voor het volgende teken"
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Kies de tijdzone binnen het gebied / regio."
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Kies de tijdzone binnen het gebied / regio."
 
 msgid "Select the time zone within the area or region."
 msgstr "Kies de tijdzone binnen het gebied / regio."
@@ -15462,7 +15478,8 @@ msgstr ""
 msgid "Use the wizard to set up basic features"
 msgstr "Start de wizard voor de basisinstellingen."
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Instellingen voor dit apparaat gebruiken?"
 
 msgid "Use these settings?"
@@ -15567,9 +15584,6 @@ msgstr "VOB bestand"
 
 msgid "VOB file"
 msgstr "VOB bestand"
-
-msgid "VU+"
-msgstr "Vu+"
 
 msgid "Vanuatu"
 msgstr "Vanuatu"
@@ -16414,9 +16428,6 @@ msgstr "Schrijf naar /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "niet ondersteund"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr "YCbCr420"
 
@@ -16948,12 +16959,6 @@ msgstr "Geen stand-by"
 msgid "automatic"
 msgstr "automatisch"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "terug"
 
@@ -16969,9 +16974,6 @@ msgstr ""
 
 msgid "better"
 msgstr "beter"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "zwart"
@@ -16990,12 +16992,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "onder"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "feeds/pers"
@@ -17150,9 +17146,6 @@ msgstr "gereed!"
 msgid "drama (general)"
 msgstr "Film/Drama (Algemeen)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "oost"
 
@@ -17223,22 +17216,6 @@ msgstr "fout tijdens het scannen"
 msgid "ese"
 msgstr "Herstel"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "ET8000/ET10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -17303,9 +17280,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "Onbekende landen/Expedities"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "Verder naar het volgende hoofdstuk"
 
@@ -17336,15 +17310,6 @@ msgstr "Maak van dit beeld een screenshot"
 msgid "green"
 msgstr "groen"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -17365,19 +17330,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "Ambacht"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "hoogte"
@@ -17410,9 +17362,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17496,14 +17445,8 @@ msgstr "Magazines/Verslagen/Documentaires"
 msgid "manual"
 msgstr "handmatig"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "Vechtsport"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "Geneeskunde/Filosofie/Psychologie"
@@ -17844,15 +17787,6 @@ msgstr "Serieuze muziek/Klassieke muziek"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "Serieuze/Klassiek/Religieus/Historische film/Drama"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Netwerktest"
@@ -18177,9 +18111,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "XP1000"
 
 msgid "yellow"
 msgstr "Geel"

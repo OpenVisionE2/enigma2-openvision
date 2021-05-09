@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2010-03-09 21:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: HDTV ROMANIA(superonic,costel_mbc,neutrin,otheitis,cipy_1982,neutrin,runcanion)\n"
@@ -104,9 +104,6 @@ msgid " Warning: the selected tuner should not use SCR Unicable type for LNBs be
 msgstr ""
 
 msgid " extensions."
-msgstr ""
-
-msgid " ms"
 msgstr ""
 
 msgid " packages selected."
@@ -997,6 +994,10 @@ msgid ""
 msgstr ""
 
 #, python-format
+msgid "%s  (%s)"
+msgstr ""
+
+#, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
 
@@ -1006,10 +1007,6 @@ msgstr "spatiu liber pe disk"
 
 #, python-format
 msgid "%s ( %s Cards )"
-msgstr ""
-
-#, python-format
-msgid "%s (%s)"
 msgstr ""
 
 #, python-format
@@ -1942,6 +1939,9 @@ msgstr ""
 msgid "All slots"
 msgstr ""
 
+msgid "All supported"
+msgstr ""
+
 msgid "Allocate"
 msgstr ""
 
@@ -2823,11 +2823,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "Banda C"
 
@@ -3060,6 +3055,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Permite schimbarea buchetului prin zapping"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "Setari nume server"
+
 msgid "Change recording (add time)"
 msgstr ""
 
@@ -3070,9 +3069,6 @@ msgstr "schimba inregistrare (durata)"
 #, fuzzy
 msgid "Change recording (endtime)"
 msgstr "schimbare inregistrare (sfarsit)"
-
-msgid "Change repeat and delay settings?"
-msgstr ""
 
 msgid "Change step size"
 msgstr ""
@@ -3465,6 +3461,11 @@ msgid "Config resolution of pictures"
 msgstr ""
 
 #, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Configurare retea"
+
+#, fuzzy
 msgid "Configuration"
 msgstr "Configurare retea"
 
@@ -3573,10 +3574,6 @@ msgstr ""
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr ""
-
-#, fuzzy
-msgid "Configure remote control type"
-msgstr "Tip control parental"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr ""
@@ -4105,9 +4102,6 @@ msgstr ""
 msgid "Current crash log"
 msgstr "Transponderul curent"
 
-msgid "Current device: "
-msgstr ""
-
 msgid "Current event EPG"
 msgstr ""
 
@@ -4194,13 +4188,6 @@ msgid "DHCP Router"
 msgstr ""
 
 msgid "DLNA support"
-msgstr ""
-
-#, fuzzy
-msgid "DMM advanced"
-msgstr "avansat"
-
-msgid "DMM normal"
 msgstr ""
 
 msgid ""
@@ -4566,7 +4553,7 @@ msgstr ""
 msgid "Delay after voltage change before motor command"
 msgstr ""
 
-msgid "Delay before key repeat starts:"
+msgid "Delay before key repeat starts (ms)"
 msgstr ""
 
 msgid "Delay before sequence repeat"
@@ -4737,8 +4724,9 @@ msgstr "Info serviciu"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
-msgstr ""
+#, fuzzy
+msgid "Device name"
+msgstr "Scanare Serviciu"
 
 msgid "DiSEqC"
 msgstr "DiSEqC"
@@ -5599,6 +5587,9 @@ msgstr ""
 msgid "Enter URL"
 msgstr ""
 
+msgid "Enter a new name for this device."
+msgstr ""
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr ""
 
@@ -5835,7 +5826,11 @@ msgstr "Iesire din editor"
 msgid "Exit inetd recovery"
 msgstr "Iesire din editor"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Inchideti fara sa salvati setarile?"
+
+msgid "Exit input device selection and close all menus"
 msgstr ""
 
 msgid "Exit media player?"
@@ -6491,9 +6486,6 @@ msgid "Ghana"
 msgstr ""
 
 msgid "Gibraltar"
-msgstr ""
-
-msgid "GigaBlue Black"
 msgstr ""
 
 msgid "GitHub commit"
@@ -7314,13 +7306,18 @@ msgid "Input "
 msgstr "Intrare"
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Intrare"
 
-msgid "Input Stream ID"
-msgstr ""
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Intrare"
 
-msgid "Input device setup"
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Configurare nume server"
+
+msgid "Input Stream ID"
 msgstr ""
 
 msgid "Install"
@@ -7403,7 +7400,7 @@ msgstr ""
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+msgid "Interval between keys when repeating (ms)"
 msgstr ""
 
 #, fuzzy
@@ -7445,8 +7442,9 @@ msgstr ""
 msgid "Ireland"
 msgstr ""
 
-msgid "Is this setting ok?"
-msgstr ""
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Tip control parental"
 
 #, fuzzy
 msgid "Is this video mode ok?"
@@ -7565,12 +7563,9 @@ msgstr "Versiune noua:"
 msgid "Key Events"
 msgstr ""
 
-msgid "Keyboard"
-msgstr "Tastatura"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Configurare tastatura"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Configurare control parental"
 
 #, fuzzy
 msgid "Keyboard data entry"
@@ -7579,6 +7574,9 @@ msgstr "Configurare tastatura"
 #, fuzzy
 msgid "Keyboard map"
 msgstr "Harta tastatura"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr ""
@@ -7731,9 +7729,6 @@ msgid "Leisure hobbies"
 msgstr ""
 
 msgid "Lesotho"
-msgstr ""
-
-msgid "Let you change RC type but use it with care."
 msgstr ""
 
 msgid "Let's define enigma2 once more"
@@ -8470,10 +8465,6 @@ msgstr ""
 
 msgid "Multi EPG"
 msgstr "Multi EPG"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Tip control parental"
 
 msgid "Multi-EPG bouquet selection"
 msgstr ""
@@ -9300,15 +9291,15 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "Alege locatia copiei de siguranta"
+
 msgid "Other Subtitles & lang"
 msgstr ""
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "Alege locatia copiei de siguranta"
 
 msgid "Output"
 msgstr ""
@@ -10092,6 +10083,10 @@ msgstr "Apasati OK pentru a activa setarile"
 msgid "Press OK to activate the settings."
 msgstr "Apasati OK pentru a activa setarile"
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Apasati OK pentru a edita setarile."
+
 msgid "Press OK to edit the settings."
 msgstr "Apasati OK pentru a edita setarile."
 
@@ -10617,14 +10612,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Remote control information"
-msgstr "Tip control parental"
-
-#, fuzzy
-msgid "Remote control type"
-msgstr "Tip control parental"
-
-#, fuzzy
-msgid "Remote control type setup"
 msgstr "Tip control parental"
 
 msgid "Removal has completed."
@@ -11459,6 +11446,9 @@ msgstr ""
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr ""
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11546,6 +11536,10 @@ msgstr ""
 
 msgid "Select HDD"
 msgstr "Selectare HDD"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Intrare"
 
 #, fuzzy
 msgid "Select a bouquet"
@@ -11646,9 +11640,6 @@ msgstr ""
 msgid "Select input device"
 msgstr ""
 
-msgid "Select input device."
-msgstr ""
-
 msgid "Select interface"
 msgstr ""
 
@@ -11672,6 +11663,10 @@ msgstr "Alegeti furnizor pentru a fi adaugat..."
 
 msgid "Select refresh rate"
 msgstr "Selectati rata de reimprospatare"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Tip control parental"
 
 msgid "Select satellites"
 msgstr ""
@@ -11731,6 +11726,9 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr ""
 
+msgid "Select the remote control device to be used with the %s %s."
+msgstr ""
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr ""
 
@@ -11754,6 +11752,12 @@ msgid "Select the shifted character set"
 msgstr "selecteaza calea filmului"
 
 msgid "Select the shifted character set for the next character only"
+msgstr ""
+
+msgid "Select the time delay before the button starts repeating."
+msgstr ""
+
+msgid "Select the time delay between each repeat of the button."
 msgstr ""
 
 msgid "Select the time zone within the area or region."
@@ -15063,8 +15067,8 @@ msgstr "Foloseste tastele sus/jos pentru a selecta optiunile. Dopa asta,  apasa 
 msgid "Use the wizard to set up basic features"
 msgstr "Foloseste expertul pentru setarile de baza"
 
-#, fuzzy
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Inchideti fara sa salvati setarile?"
 
 #, fuzzy
@@ -15172,9 +15176,6 @@ msgid "VOB File"
 msgstr ""
 
 msgid "VOB file"
-msgstr ""
-
-msgid "VU+"
 msgstr ""
 
 #, fuzzy
@@ -15968,9 +15969,6 @@ msgstr ""
 msgid "XBox support"
 msgstr ""
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr ""
 
@@ -16461,12 +16459,6 @@ msgstr "fara standby"
 msgid "automatic"
 msgstr "Automat"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "inapoi"
 
@@ -16482,9 +16474,6 @@ msgstr ""
 
 msgid "better"
 msgstr "mai bine"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "negru"
@@ -16502,12 +16491,6 @@ msgid "both"
 msgstr ""
 
 msgid "bottom"
-msgstr ""
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
 msgstr ""
 
 msgid "broadcasting/press"
@@ -16653,9 +16636,6 @@ msgstr "gata!"
 msgid "drama (general)"
 msgstr ""
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr ""
 
@@ -16723,21 +16703,6 @@ msgstr ""
 msgid "ese"
 msgstr "Resetare"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-msgid "et8000/10000/13000"
-msgstr ""
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -16803,9 +16768,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr ""
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "inainte la capitolul urmator"
 
@@ -16836,15 +16798,6 @@ msgstr "capteaza imaginea ca bitmap"
 msgid "green"
 msgstr "verde"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -16864,18 +16817,6 @@ msgid "h:mmam/pm"
 msgstr ""
 
 msgid "handicraft"
-msgstr ""
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-msgid "hd2400"
-msgstr ""
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
 msgstr ""
 
 msgid "height"
@@ -16909,9 +16850,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -16993,13 +16931,7 @@ msgstr ""
 msgid "manual"
 msgstr "manual"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
-msgstr ""
-
-msgid "mbtwinplus"
 msgstr ""
 
 msgid "medicine/physiology/psychology"
@@ -17338,15 +17270,6 @@ msgstr ""
 msgid "serious/classical/religious/historical movie/drama"
 msgstr ""
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Test retea"
@@ -17664,9 +17587,6 @@ msgid "wnw"
 msgstr ""
 
 msgid "wsw"
-msgstr ""
-
-msgid "xp1000"
 msgstr ""
 
 msgid "yellow"

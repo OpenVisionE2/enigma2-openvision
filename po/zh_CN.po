@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 344784320@qq.com\n"
 "Language-Team: Openpli Team\n"
@@ -111,9 +111,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " 扩展。"
-
-msgid " ms"
-msgstr " 毫秒"
 
 msgid " packages selected."
 msgstr " 选定的软件包。"
@@ -998,6 +995,10 @@ msgstr ""
 "按“OK”进行多引导选择\n"
 "按“Exit”关闭"
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "菜单排序(%s)"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1009,10 +1010,6 @@ msgstr "%s %s 空闲空间"
 #, python-format
 msgid "%s ( %s Cards )"
 msgstr ""
-
-#, fuzzy, python-format
-msgid "%s (%s)"
-msgstr "菜单排序(%s)"
 
 #, python-format
 msgid "%s (%s)\n"
@@ -1956,6 +1953,10 @@ msgstr "所有服务供应商"
 msgid "All slots"
 msgstr "所有插槽"
 
+#, fuzzy
+msgid "All supported"
+msgstr "不支持"
+
 msgid "Allocate"
 msgstr "分配"
 
@@ -2821,11 +2822,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "C-波段"
 
@@ -3075,6 +3071,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "快速切换自定义列表"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "DNS设置"
+
 msgid "Change recording (add time)"
 msgstr "更改记录（增加时间）"
 
@@ -3083,9 +3083,6 @@ msgstr "更改记录（持续时间）"
 
 msgid "Change recording (endtime)"
 msgstr "更改记录（结束时间）"
-
-msgid "Change repeat and delay settings?"
-msgstr "配置重复和延迟设置？"
 
 msgid "Change step size"
 msgstr "更改步长"
@@ -3477,6 +3474,11 @@ msgstr "配置扫描详细信息"
 msgid "Config resolution of pictures"
 msgstr "配置图片解决方案"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "更多设置"
+
 msgid "Configuration"
 msgstr "更多设置"
 
@@ -3580,9 +3582,6 @@ msgstr "配置DNS"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "配置哪些设备后台删除选项可以使用。"
-
-msgid "Configure remote control type"
-msgstr "配置遥控类型"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "配置高频头的DiSEqC模式。"
@@ -4113,9 +4112,6 @@ msgstr "当前CEC地址"
 msgid "Current crash log"
 msgstr "当前转发器"
 
-msgid "Current device: "
-msgstr "当前设备: "
-
 msgid "Current event EPG"
 msgstr "当前事件EPG"
 
@@ -4201,12 +4197,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "HLG支持"
-
-msgid "DMM advanced"
-msgstr "DMM-高级"
-
-msgid "DMM normal"
-msgstr "DMM-标准"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4556,7 +4546,8 @@ msgstr "22K开关后延迟"
 msgid "Delay after voltage change before motor command"
 msgstr "马达命令前电压更改后延迟时间"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "按键重按延迟时间："
 
 msgid "Delay before sequence repeat"
@@ -4723,7 +4714,8 @@ msgstr "频道信息"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "设备名:"
 
 msgid "DiSEqC"
@@ -5573,6 +5565,10 @@ msgstr "输入PIN码"
 msgid "Enter URL"
 msgstr "输入URL"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "揭开此服务的闪烁虚线"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "输入一个url，其中可以列出flashimage的可选图像"
 
@@ -5820,7 +5816,12 @@ msgstr "退出编辑"
 msgid "Exit inetd recovery"
 msgstr "退出编辑"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "退出输入设备选择。"
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "退出输入设备选择。"
 
 msgid "Exit media player?"
@@ -6484,9 +6485,6 @@ msgid "Ghana"
 msgstr ""
 
 msgid "Gibraltar"
-msgstr ""
-
-msgid "GigaBlue Black"
 msgstr ""
 
 msgid "GitHub commit"
@@ -7303,14 +7301,19 @@ msgid "Input "
 msgstr "输入 "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
+msgstr "输入设备"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "输入设备"
+
+#, fuzzy
+msgid "Input Driver Setup"
 msgstr "输入设备"
 
 msgid "Input Stream ID"
 msgstr "输入流媒体ID"
-
-msgid "Input device setup"
-msgstr "输入设备"
 
 msgid "Install"
 msgstr "安装"
@@ -7388,7 +7391,8 @@ msgstr "内部"
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "按键重复间隔。"
 
 #, fuzzy
@@ -7429,8 +7433,9 @@ msgstr ""
 msgid "Ireland"
 msgstr ""
 
-msgid "Is this setting ok?"
-msgstr "这个设置可以吗?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "用电视遥控"
 
 msgid "Is this video mode ok?"
 msgstr "这个视频模式可以吗？"
@@ -7546,18 +7551,18 @@ msgstr "内核版本: "
 msgid "Key Events"
 msgstr ""
 
-msgid "Keyboard"
-msgstr "键盘布局"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "键盘设置"
+msgid "Keyboard / Remote Control Setup"
+msgstr "家长控制设置"
 
 msgid "Keyboard data entry"
 msgstr "键盘数据输入"
 
 msgid "Keyboard map"
 msgstr "键盘布局"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr ""
@@ -7708,9 +7713,6 @@ msgid "Leisure hobbies"
 msgstr "休闲业余爱好"
 
 msgid "Lesotho"
-msgstr ""
-
-msgid "Let you change RC type but use it with care."
 msgstr ""
 
 msgid "Let's define enigma2 once more"
@@ -8431,10 +8433,6 @@ msgstr ""
 
 msgid "Multi EPG"
 msgstr ""
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "遥控类型设置"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Multi-EPG自定义组选项"
@@ -9246,15 +9244,15 @@ msgstr "原始"
 msgid "Other"
 msgstr "其他"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "进阶指导"
+
 msgid "Other Subtitles & lang"
 msgstr "其他字幕和语言"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "进阶指导"
 
 msgid "Output"
 msgstr "输出"
@@ -10032,6 +10030,10 @@ msgstr "按OK键激活所选皮肤: %s。"
 msgid "Press OK to activate the settings."
 msgstr "按OK键激活设置。"
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "按OK键修改设置"
+
 msgid "Press OK to edit the settings."
 msgstr "按OK键修改设置"
 
@@ -10560,12 +10562,6 @@ msgstr "提醒，你已经选择保存时移文件。"
 #, fuzzy
 msgid "Remote control information"
 msgstr "遥控类型"
-
-msgid "Remote control type"
-msgstr "遥控类型"
-
-msgid "Remote control type setup"
-msgstr "遥控类型设置"
 
 msgid "Removal has completed."
 msgstr "过滤已完成！"
@@ -11383,6 +11379,9 @@ msgstr "如果您的天线系统需要，请选择“A”或“B”，否则请�
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "如果这个调谐器连接到一个SCR (Unicable/JESS)设备时选择 'FBC SCR' 。其他一律选择“FBC Automatic\"。"
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11469,6 +11468,10 @@ msgstr "如果您的天线系统支持，请选择Fast Diseqc。如果您不确�
 
 msgid "Select HDD"
 msgstr "选择硬盘"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "输入设备"
 
 msgid "Select a bouquet"
 msgstr "选择自定义组"
@@ -11561,9 +11564,6 @@ msgstr ""
 msgid "Select input device"
 msgstr "输入设备"
 
-msgid "Select input device."
-msgstr "选择输入设备"
-
 msgid "Select interface"
 msgstr "选择接口"
 
@@ -11585,6 +11585,10 @@ msgstr "选择要添加的提供商。。。"
 
 msgid "Select refresh rate"
 msgstr "选择刷新率"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "用电视遥控"
 
 msgid "Select satellites"
 msgstr "选择卫星"
@@ -11642,6 +11646,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "选择scr设备使用的协议。选择是“scr unicatable”（unicatable）或“scr jess”（jess，也称为unicatable ii）。"
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "选择控制电动盘的调谐器。"
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "选择连接到交换机端口A的卫星。如果您不确定，请选择“自动”，接收器将尝试为您确定。如果没有连接到此端口，请选择“没有连接”。"
 
@@ -11665,6 +11673,14 @@ msgstr "选择移位字符集"
 
 msgid "Select the shifted character set for the next character only"
 msgstr "只为下一个字符选择移位字符集"
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "选择地域或区域内的时区。"
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "选择地域或区域内的时区。"
 
 msgid "Select the time zone within the area or region."
 msgstr "选择地域或区域内的时区。"
@@ -14969,7 +14985,8 @@ msgstr "使用遥控 上/下 键选择一个选项。在此之后按下 OK 。"
 msgid "Use the wizard to set up basic features"
 msgstr "使用向导建立基本设置"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "使用此输入的设备设置吗?"
 
 msgid "Use these settings?"
@@ -15073,9 +15090,6 @@ msgid "VOB File"
 msgstr ""
 
 msgid "VOB file"
-msgstr ""
-
-msgid "VU+"
 msgstr ""
 
 msgid "Vanuatu"
@@ -15884,9 +15898,6 @@ msgstr "写入到 /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "不支持"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr ""
 
@@ -16416,12 +16427,6 @@ msgstr "一直开着"
 msgid "automatic"
 msgstr "自动"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "后退"
 
@@ -16437,9 +16442,6 @@ msgstr ""
 
 msgid "better"
 msgstr "较好"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "黑色"
@@ -16458,12 +16460,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "底部"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "广播／新闻"
@@ -16614,9 +16610,6 @@ msgstr "完成!"
 msgid "drama (general)"
 msgstr "电影/戏剧"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "东"
 
@@ -16687,21 +16680,6 @@ msgstr "扫描发生错误"
 msgid "ese"
 msgstr "复位"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-msgid "et8000/10000/13000"
-msgstr ""
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -16766,9 +16744,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "外国/探险"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "快进到下一个章节"
 
@@ -16799,15 +16774,6 @@ msgstr "抓取当前帧为bmp图片"
 msgid "green"
 msgstr "绿色"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -16828,18 +16794,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "工艺"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-msgid "hd2400"
-msgstr ""
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "高"
@@ -16872,9 +16826,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -16958,14 +16909,8 @@ msgstr "杂志/报道/纪录片"
 msgid "manual"
 msgstr "手动"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "武术运动"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "医学/生理学/心理学"
@@ -17309,15 +17254,6 @@ msgstr "严肃音乐/古典音乐"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "严肃/古典/宗教/历史/戏剧"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "网络测试"
@@ -17639,9 +17575,6 @@ msgid "wnw"
 msgstr ""
 
 msgid "wsw"
-msgstr ""
-
-msgid "xp1000"
 msgstr ""
 
 msgid "yellow"

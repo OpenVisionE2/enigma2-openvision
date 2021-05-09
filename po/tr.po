@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OPENPLi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2015-12-18 21:05+0200\n"
 "Last-Translator: Yetkin AYDIN <yetkina@gmail.com>\n"
 "Language-Team: http://www.hurforum.com <yetkina@gmail.com>\n"
@@ -112,9 +112,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr "Eklentiler."
-
-msgid " ms"
-msgstr " ms"
 
 msgid " packages selected."
 msgstr "Paketler seçildi."
@@ -1117,6 +1114,10 @@ msgid ""
 "Press exit to close"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1127,10 +1128,6 @@ msgstr "%s %s boş disk alanı"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2096,6 +2093,10 @@ msgstr ""
 msgid "All slots"
 msgstr "Yuva (Slot) seç"
 
+#, fuzzy
+msgid "All supported"
+msgstr "Desteklenmiyor"
+
 msgid "Allocate"
 msgstr "Ayır"
 
@@ -2972,11 +2973,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "C-Bant"
 
@@ -3212,6 +3208,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Kanal değiştirirken buketler arası geçişe izin"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "İsim sunucusu (DNS) ayarları"
+
 msgid "Change recording (add time)"
 msgstr "Kayıt değiştir (zaman ekle)"
 
@@ -3220,9 +3220,6 @@ msgstr "Kayıt değiştirme (süre)"
 
 msgid "Change recording (endtime)"
 msgstr "Kayıt değiştirme (bitiş zamanı)"
-
-msgid "Change repeat and delay settings?"
-msgstr "Tekrarlama ve gecikme ayarlarını değiştirin?"
 
 msgid "Change step size"
 msgstr "Ayar yapılırken atlama boyutu"
@@ -3618,6 +3615,11 @@ msgstr ""
 msgid "Config resolution of pictures"
 msgstr "Resim çözünürlüğü"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Yapılandırma"
+
 msgid "Configuration"
 msgstr "Yapılandırma"
 
@@ -3726,9 +3728,6 @@ msgstr "İsim sunucularını yapılandır"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Arka plan silme seçeneği kullanılması gereken aygıtları yapılandırın."
-
-msgid "Configure remote control type"
-msgstr "U. Kumanda tip ayarı"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Bu LNB için DiSEqC modunu yapılandırın."
@@ -4266,9 +4265,6 @@ msgstr "Güncel CEC adresi"
 msgid "Current crash log"
 msgstr "Geçerli transponder"
 
-msgid "Current device: "
-msgstr "Geçerli aygıt:"
-
 msgid "Current event EPG"
 msgstr "Geçerli EPG etkinliği"
 
@@ -4356,12 +4352,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "Desteklenmiyor"
-
-msgid "DMM advanced"
-msgstr "DMM gelişmiş"
-
-msgid "DMM normal"
-msgstr "DMM normal"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4720,7 +4710,8 @@ msgstr "Toneburst sonra Gecikme"
 msgid "Delay after voltage change before motor command"
 msgstr "Motor komutundan önce voltaj değişiminden sonra Gecikme"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Key (şifre) beklemeden önce tekrar süresi:"
 
 msgid "Delay before sequence repeat"
@@ -4892,7 +4883,8 @@ msgstr "Kanal bilgisi"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Aygıt Adı​​:"
 
 msgid "DiSEqC"
@@ -5764,6 +5756,9 @@ msgstr ""
 msgid "Enter URL"
 msgstr ""
 
+msgid "Enter a new name for this device."
+msgstr ""
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr ""
 
@@ -6003,7 +5998,12 @@ msgstr "Editörden çık"
 msgid "Exit inetd recovery"
 msgstr "Editörden çık"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Kumanda seçiminden çık."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Kumanda seçiminden çık."
 
 msgid "Exit media player?"
@@ -6674,9 +6674,6 @@ msgid "Ghana"
 msgstr ""
 
 msgid "Gibraltar"
-msgstr ""
-
-msgid "GigaBlue Black"
 msgstr ""
 
 msgid "GitHub commit"
@@ -7512,14 +7509,19 @@ msgid "Input "
 msgstr "Giriş"
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Giriş aygıtları"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Kumanda kurulumu"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Kumanda kurulumu"
 
 msgid "Input Stream ID"
 msgstr ""
-
-msgid "Input device setup"
-msgstr "Kumanda kurulumu"
 
 msgid "Install"
 msgstr "Yükle"
@@ -7597,7 +7599,8 @@ msgstr "Dahili"
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Tuş tekrarkama hızı:"
 
 #, fuzzy
@@ -7638,8 +7641,9 @@ msgstr ""
 msgid "Ireland"
 msgstr ""
 
-msgid "Is this setting ok?"
-msgstr "Bu ayar Tamam mı?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "TV uzaktan kumandasını kullan"
 
 msgid "Is this video mode ok?"
 msgstr "Bu video modu iyi mi?"
@@ -7752,12 +7756,9 @@ msgstr "Çekirdek sürümü:"
 msgid "Key Events"
 msgstr ""
 
-msgid "Keyboard"
-msgstr "Klavye"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Klavye ayarı"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Aile Koruması Kurulumu"
 
 #, fuzzy
 msgid "Keyboard data entry"
@@ -7765,6 +7766,9 @@ msgstr "Klavye ayarı"
 
 msgid "Keyboard map"
 msgstr "Klavye haritası"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr ""
@@ -7918,9 +7922,6 @@ msgid "Leisure hobbies"
 msgstr "Eğlence hobiler"
 
 msgid "Lesotho"
-msgstr ""
-
-msgid "Let you change RC type but use it with care."
 msgstr ""
 
 msgid "Let's define enigma2 once more"
@@ -8656,10 +8657,6 @@ msgstr ""
 
 msgid "Multi EPG"
 msgstr "Çoklu EPG"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "U. Kumanda tipi"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Çoklu EPG buket seçimi"
@@ -9486,15 +9483,15 @@ msgid "Other"
 msgstr "Diğer"
 
 #, fuzzy
+msgid "Other Actions"
+msgstr "İleri Eğitim"
+
+#, fuzzy
 msgid "Other Subtitles & lang"
 msgstr "Alt Yazı Ayarları"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "İleri Eğitim"
 
 msgid "Output"
 msgstr "Çıkış"
@@ -10281,6 +10278,10 @@ msgstr "Arayüzü etkinleştirmek için OK'a basın."
 msgid "Press OK to activate the settings."
 msgstr "Onaylamak için OK tuşuna basın."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Düzenlemek için OK tuşuna basın."
+
 msgid "Press OK to edit the settings."
 msgstr "Düzenlemek için OK tuşuna basın."
 
@@ -10812,13 +10813,6 @@ msgstr "Hatırlatma, ZamanKaydırmayı dosyaya kaydetmek için ayrladın."
 
 #, fuzzy
 msgid "Remote control information"
-msgstr "U. Kumanda tipi"
-
-msgid "Remote control type"
-msgstr "U. Kumanda tipi"
-
-#, fuzzy
-msgid "Remote control type setup"
 msgstr "U. Kumanda tipi"
 
 msgid "Removal has completed."
@@ -11646,6 +11640,9 @@ msgstr ""
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr ""
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11732,6 +11729,10 @@ msgstr ""
 
 msgid "Select HDD"
 msgstr "HDD Seç"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Kumanda seç"
 
 msgid "Select a bouquet"
 msgstr "Bir Buket seçin"
@@ -11826,9 +11827,6 @@ msgstr ""
 msgid "Select input device"
 msgstr "Kumanda seç"
 
-msgid "Select input device."
-msgstr "Kumanda seç."
-
 msgid "Select interface"
 msgstr "Arayüz seçimi"
 
@@ -11851,6 +11849,10 @@ msgstr "Eklenecek yayıncıyı seçin..."
 
 msgid "Select refresh rate"
 msgstr "Yenileme hızını seçin"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "TV uzaktan kumandasını kullan"
 
 msgid "Select satellites"
 msgstr "Uyduları seç"
@@ -11909,6 +11911,9 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr ""
 
+msgid "Select the remote control device to be used with the %s %s."
+msgstr ""
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr ""
 
@@ -11933,6 +11938,14 @@ msgstr "Film yolunu seçin"
 
 msgid "Select the shifted character set for the next character only"
 msgstr ""
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Seçileni sıralama yöntemi:"
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Seçileni sıralama yöntemi:"
 
 #, fuzzy
 msgid "Select the time zone within the area or region."
@@ -15282,7 +15295,8 @@ msgstr "Bir seçeneği seçmek için uzaktan kumanda üzerindeki Aşağı/Yukar�
 msgid "Use the wizard to set up basic features"
 msgstr "Temel kurulum için sihirbazı kullanın."
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Bu giriş cihazının ayarlarını kullan?"
 
 msgid "Use these settings?"
@@ -15388,9 +15402,6 @@ msgstr ""
 
 msgid "VOB file"
 msgstr ""
-
-msgid "VU+"
-msgstr "Vu+"
 
 #, fuzzy
 msgid "Vanuatu"
@@ -16201,9 +16212,6 @@ msgstr " /tmp/positionersetup.log dosyasına yaz."
 msgid "XBox support"
 msgstr "Desteklenmiyor"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr ""
 
@@ -16725,12 +16733,6 @@ msgstr "Beklemede değil"
 msgid "automatic"
 msgstr "Otomatik"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "Geri"
 
@@ -16746,9 +16748,6 @@ msgstr ""
 
 msgid "better"
 msgstr "Daha iyi"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "Siyah"
@@ -16766,12 +16765,6 @@ msgid "both"
 msgstr ""
 
 msgid "bottom"
-msgstr ""
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
 msgstr ""
 
 msgid "broadcasting/press"
@@ -16923,9 +16916,6 @@ msgstr "Tamamlandı!"
 msgid "drama (general)"
 msgstr "Film/Drama (Genel)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "Doğu"
 
@@ -16995,22 +16985,6 @@ msgstr "Tarama yapılırken hata"
 msgid "ese"
 msgstr "Sıfırla"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -17074,9 +17048,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "Yabancı Ülkeler/Keşif"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "Sonraki Bölüme İlerle"
 
@@ -17107,15 +17078,6 @@ msgstr "Bu çerçeveyi bitmap olarak yakala"
 msgid "green"
 msgstr "Yeşil"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -17136,19 +17098,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "El Sanatları"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "Yükseklik"
@@ -17181,9 +17130,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17268,14 +17214,8 @@ msgstr "Magazin/Belgesel"
 msgid "manual"
 msgstr "Elle"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "Dövüş Sporları"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "Tıp/Fizyoloji/Psikoloji"
@@ -17619,15 +17559,6 @@ msgstr "Müzik/Klasik Müzik"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "Seri/Klasik/Dini/Tarihi/Dram"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Ağ yapılandırmasını test et"
@@ -17951,9 +17882,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 msgid "yellow"
 msgstr "Sarı"

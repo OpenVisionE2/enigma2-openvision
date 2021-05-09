@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -112,9 +112,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " paplašinājumiem."
-
-msgid " ms"
-msgstr " ms"
 
 msgid " packages selected."
 msgstr " pakotnes izvēlētas."
@@ -1143,6 +1140,10 @@ msgstr ""
 "Spiediet ok multiboot izvēlei\n"
 "Spiediet iziet lai aizvērtu"
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1153,10 +1154,6 @@ msgstr "%s %s brīva vieta uz diska"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2123,6 +2120,10 @@ msgstr "Visu kanālu operatori"
 msgid "All slots"
 msgstr "Visi sloti"
 
+#, fuzzy
+msgid "All supported"
+msgstr "nav atbalstīts"
+
 msgid "Allocate"
 msgstr "Iedalīt"
 
@@ -2990,11 +2991,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "C-josla"
 
@@ -3245,6 +3241,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Mainīt buķetes ātrās slēgšanas režīmā"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "DNS iestatījumi"
+
 msgid "Change recording (add time)"
 msgstr "Mainīt ierakstu (pievienot laiku)"
 
@@ -3253,9 +3253,6 @@ msgstr "Mainīt ierakstu (ilgumu)"
 
 msgid "Change recording (endtime)"
 msgstr "Mainīt ierakstu (beigu laiku)"
-
-msgid "Change repeat and delay settings?"
-msgstr "Mainīt atkārtošanas un aiztures iestatījumus?"
 
 msgid "Change step size"
 msgstr "Mainīt soļa lielumu"
@@ -3647,6 +3644,11 @@ msgstr "Detalizēta informācija"
 msgid "Config resolution of pictures"
 msgstr "Konfigurēt attēlu izšķirtspēju"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Konfigurācija"
+
 msgid "Configuration"
 msgstr "Konfigurācija"
 
@@ -3750,9 +3752,6 @@ msgstr "Konfigurēt DNS"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Uzstāda uz kuras ierīces būtu jāizmanto fona dzēšanas iespēja."
-
-msgid "Configure remote control type"
-msgstr "Konfigurēt vadības pults tipu"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Konfigurēt DiSEqC veidu šim LNB."
@@ -4283,9 +4282,6 @@ msgstr "Pašreizējā CEC adrese"
 msgid "Current crash log"
 msgstr "Pašreizējais transponderis"
 
-msgid "Current device: "
-msgstr "Pašreizējā iekārta: "
-
 msgid "Current event EPG"
 msgstr "Pašreizējās pārraides EPG"
 
@@ -4371,12 +4367,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "HLG atbalsts"
-
-msgid "DMM advanced"
-msgstr "DMM paplašināts"
-
-msgid "DMM normal"
-msgstr "DMM normāls"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4731,7 +4721,8 @@ msgstr "Aizture pēc toņsignāla"
 msgid "Delay after voltage change before motor command"
 msgstr "Aizture pēc motora sprieguma izmaiņas"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Aizture pirms taustiņu atkārtošanas:"
 
 msgid "Delay before sequence repeat"
@@ -4897,7 +4888,8 @@ msgstr "Kanāla info"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Iekārtas nosaukums:"
 
 msgid "DiSEqC"
@@ -5754,6 +5746,10 @@ msgstr "Ievadiet PIN"
 msgid "Enter URL"
 msgstr "Adrese (URL)"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "šim kanālam neslēpt mirgojošo līniju"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "Ievadiet adresi (URL), kur atrodas alternatīvie imidži kurus izmantot uzstādīšanai."
 
@@ -6001,7 +5997,12 @@ msgstr "Iziet no redaktora"
 msgid "Exit inetd recovery"
 msgstr "Iziet no redaktora"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Iziet no ievades iekārtas izvēlnes."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Iziet no ievades iekārtas izvēlnes."
 
 msgid "Exit media player?"
@@ -6668,9 +6669,6 @@ msgstr "Gana"
 
 msgid "Gibraltar"
 msgstr "Gibraltārs"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -7491,14 +7489,19 @@ msgid "Input "
 msgstr "Ieeja "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Ievades ierīces"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Ievades ierīces iestatījumi"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Ievades ierīces iestatījumi"
 
 msgid "Input Stream ID"
 msgstr "Input Stream ID"
-
-msgid "Input device setup"
-msgstr "Ievades ierīces iestatījumi"
 
 msgid "Install"
 msgstr "Instalēt"
@@ -7577,7 +7580,8 @@ msgstr "Iekšējā"
 msgid "Internet time (NTP)"
 msgstr "Internets (ntp)"
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Intervāls starp taustiņiem, kad atkārtojas:"
 
 #, fuzzy
@@ -7618,8 +7622,9 @@ msgstr "Irāka"
 msgid "Ireland"
 msgstr "Īrija"
 
-msgid "Is this setting ok?"
-msgstr "Vai šie iestatījumi der?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Lietot TV tālvadības pulti."
 
 msgid "Is this video mode ok?"
 msgstr "Vai šis video režīms der?"
@@ -7733,18 +7738,18 @@ msgstr "Kerneļa versija: "
 msgid "Key Events"
 msgstr "Notikumus"
 
-msgid "Keyboard"
-msgstr "Tastatūra"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Tastatūras iestatījumi"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Vecāku kontroles iestatījumi"
 
 msgid "Keyboard data entry"
 msgstr "Tastatūras dati"
 
 msgid "Keyboard map"
 msgstr "Tastatūras izkārtojums"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "Kiribati"
@@ -7896,9 +7901,6 @@ msgstr "Brīvā laika hobiji"
 
 msgid "Lesotho"
 msgstr "Lesoto"
-
-msgid "Let you change RC type but use it with care."
-msgstr ""
 
 msgid "Let's define enigma2 once more"
 msgstr ""
@@ -8620,10 +8622,6 @@ msgstr "Mozambika"
 
 msgid "Multi EPG"
 msgstr "Daudzkanālu EPG"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Pults iestatījumi"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Daudzkanālu EPG buķetes izvēle"
@@ -9442,15 +9440,15 @@ msgstr "Oriģināls"
 msgid "Other"
 msgstr "Cits"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "tālākizglītība"
+
 msgid "Other Subtitles & lang"
 msgstr "Citi subtitri un valodas"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "tālākizglītība"
 
 msgid "Output"
 msgstr "Izeja"
@@ -10230,6 +10228,10 @@ msgstr "Spiediet OK lai aktivizētu izvēlēto %s noformējumu."
 msgid "Press OK to activate the settings."
 msgstr "Spiediet OK, lai aktivizētu iestatījumus."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Spiediet OK, lai rediģētu iestatījumus."
+
 msgid "Press OK to edit the settings."
 msgstr "Spiediet OK, lai rediģētu iestatījumus."
 
@@ -10758,12 +10760,6 @@ msgstr "Atgādinājums, jums jāizvēlas lai saglabātu laika aiztures failu."
 #, fuzzy
 msgid "Remote control information"
 msgstr "Pults veids"
-
-msgid "Remote control type"
-msgstr "Pults veids"
-
-msgid "Remote control type setup"
-msgstr "Pults iestatījumi"
 
 msgid "Removal has completed."
 msgstr "Dzēšana pabeigta."
@@ -11585,6 +11581,9 @@ msgstr "Izvēlieties 'A' vai 'B', ja tas nepieciešams jūsu antenu sistēmai, p
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Izvēlieties 'FBC SCR', ja šis uztvērējs izmantos SCR (Unicable/JESS) ierīci. Visiem citiem iestatījumiem izvēlieties 'FBC automātiski'."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11671,6 +11670,10 @@ msgstr "Izvēlieties 'Ātrais DiSEqC', ja jūsu antenas sistēma to atbalsta. Ja
 
 msgid "Select HDD"
 msgstr "Izvēlieties cieto disku"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Izvēlieties ievades ierīci"
 
 msgid "Select a bouquet"
 msgstr "Izvēlieties buķeti"
@@ -11763,9 +11766,6 @@ msgstr "Izvēlieties kā uztvērējā sinhronizēt pareizu laiku. No satelīta, 
 msgid "Select input device"
 msgstr "Izvēlieties ievades ierīci"
 
-msgid "Select input device."
-msgstr "Izvēlieties ievades ierīci."
-
 msgid "Select interface"
 msgstr "Izvēlieties interfeisu"
 
@@ -11787,6 +11787,10 @@ msgstr "Izvēlieties operatoru kuru pievienot..."
 
 msgid "Select refresh rate"
 msgstr "Izvēlieties atsvaidzināšanas biežumu"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Lietot TV tālvadības pulti."
 
 msgid "Select satellites"
 msgstr "Izvēlieties pavadoni"
@@ -11844,6 +11848,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Izvēlieties SCR ierīces protokolu. Izvēles ir 'SCR Unicable' (Unicable) vai 'SCR JESS' (JESS, Unicable II formāts)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Izvēlieties uztvērēju, kas kontrolē motorizēto satelītantenu."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Izvēlieties satelītu, kas ir pievienots slēdža ieejai A. Ja neesat pārliecināts, izvēlieties 'automātiski', un uztvērējs mēģinās to noteikt pats. Ja nekas nav pievienots šai ieejai, izvēlieties 'nekas nav pievienots'"
 
@@ -11867,6 +11875,14 @@ msgstr "Izvēlieties virtuālās tastatūras speciālo izkārtojumu"
 
 msgid "Select the shifted character set for the next character only"
 msgstr "Izvēlieties virtuālās tastatūras speciālo izkārtojumu nākošajam burtam"
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Izvēlieties laika zonu apgabalā vai reģionā."
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Izvēlieties laika zonu apgabalā vai reģionā."
 
 msgid "Select the time zone within the area or region."
 msgstr "Izvēlieties laika zonu apgabalā vai reģionā."
@@ -15160,7 +15176,8 @@ msgstr "Lietojiet tālvadības pults augšup/lejup taustiņus, lai izdarītu izv
 msgid "Use the wizard to set up basic features"
 msgstr "Lietot vedni galveno iespēju iestatīšanai"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Lietot šos ievades ierīces iestatījumus?"
 
 msgid "Use these settings?"
@@ -15265,9 +15282,6 @@ msgstr "VOB fails"
 
 msgid "VOB file"
 msgstr "VOB fails"
-
-msgid "VU+"
-msgstr "VU+"
 
 msgid "Vanuatu"
 msgstr "Vanuatu"
@@ -16068,9 +16082,6 @@ msgstr "Saglabā /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "nav atbalstīts"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr "YCbCr420"
 
@@ -16602,12 +16613,6 @@ msgstr "Nav gaidstāves"
 msgid "automatic"
 msgstr "automātiski"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "atpakaļ"
 
@@ -16623,9 +16628,6 @@ msgstr ""
 
 msgid "better"
 msgstr "labāks"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "melns"
@@ -16644,12 +16646,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "apakšā"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "apraide/prese"
@@ -16800,9 +16796,6 @@ msgstr "gatavs!"
 msgid "drama (general)"
 msgstr "filmas/drāma (vispārīgi)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "austrumi"
 
@@ -16873,22 +16866,6 @@ msgstr "kļūda skenējot"
 msgid "ese"
 msgstr "Atstatīt"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -16953,9 +16930,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "ārvalstis/ekspedīcijas"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "pāradresēt uz nākamo nodaļu"
 
@@ -16986,15 +16960,6 @@ msgstr "tvert kadru bitmap formātā"
 msgid "green"
 msgstr "zaļā"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -17015,19 +16980,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "rokdarbi"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "augstums"
@@ -17060,9 +17012,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17146,14 +17095,8 @@ msgstr "avīzes/atskaites/dokumentālais"
 msgid "manual"
 msgstr "manuāls"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "cīņas sports"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "medicīna/fizioloģija/psiholoģija"
@@ -17496,15 +17439,6 @@ msgstr "nopietnā mūzika/klasiskā mūzika"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "nopietnā/klasiskā/reliģiskā/vēsturiskā filma/drāma"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Tīkla pārbaude"
@@ -17830,9 +17764,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 msgid "yellow"
 msgstr "dzeltenā"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -114,9 +114,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " filendelser."
-
-msgid " ms"
-msgstr "ms"
 
 msgid " packages selected."
 msgstr "pakker valgt."
@@ -1144,6 +1141,11 @@ msgid ""
 "Press exit to close"
 msgstr ""
 
+#
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1156,11 +1158,6 @@ msgstr "%s %s fri HDD plads"
 #
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #
@@ -2247,6 +2244,10 @@ msgstr "Alle services udbyder"
 msgid "All slots"
 msgstr ""
 
+#, fuzzy
+msgid "All supported"
+msgstr "ikke supporteret"
+
 msgid "Allocate"
 msgstr "Alloker"
 
@@ -3218,12 +3219,6 @@ msgid "C"
 msgstr "C"
 
 #
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
-#
 msgid "C-Band"
 msgstr "C-Bånd"
 
@@ -3474,6 +3469,11 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Skifte favoritliste i hurtigzap"
 
+#
+#, fuzzy
+msgid "Change device settings"
+msgstr "Navneserver indstillinger"
+
 msgid "Change recording (add time)"
 msgstr "Tilpas optagelse (tilføj tid)"
 
@@ -3484,9 +3484,6 @@ msgstr "Skifte optagelses (længde)"
 #
 msgid "Change recording (endtime)"
 msgstr "Skifte optagelses (sluttid)"
-
-msgid "Change repeat and delay settings?"
-msgstr "Ændre gentage og forsinkelse"
 
 #
 msgid "Change step size"
@@ -3933,6 +3930,12 @@ msgid "Config resolution of pictures"
 msgstr "Konfigurer opløsning af billeder"
 
 #
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Konfiguration"
+
+#
 msgid "Configuration"
 msgstr "Konfiguration"
 
@@ -4050,9 +4053,6 @@ msgstr "Konfigurer navneservere"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Konfigurer på hvilke enheder at sletning i baggrunden funktionen skal bruges."
-
-msgid "Configure remote control type"
-msgstr "Konfigurer fjernbetjeningstypen"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Konfigurer DiSEqC typen for denne LNB"
@@ -4633,9 +4633,6 @@ msgstr "Nuværende CEC Adresse"
 msgid "Current crash log"
 msgstr "Nuværende transponder"
 
-msgid "Current device: "
-msgstr "Nuværende enhed"
-
 msgid "Current event EPG"
 msgstr "Nuværende EPG begivenhed"
 
@@ -4738,13 +4735,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "ikke supporteret"
-
-#
-msgid "DMM advanced"
-msgstr "DMM avanceret"
-
-msgid "DMM normal"
-msgstr "DMM normal"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -5129,7 +5119,8 @@ msgstr "Forsinkelse efter toneburst"
 msgid "Delay after voltage change before motor command"
 msgstr "Forsinkelse efter skift af spænding før motor kommando"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Forsinkelse før gentagelse af tastetryk"
 
 msgid "Delay before sequence repeat"
@@ -5319,7 +5310,8 @@ msgstr "Kanalinfo"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Enhedsnavn"
 
 #
@@ -6316,6 +6308,10 @@ msgstr "Indtast PIN"
 msgid "Enter URL"
 msgstr "Indtast PIN"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Fjern stiplet flimrende linje for denne service"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr ""
 
@@ -6574,7 +6570,12 @@ msgstr "Afslut editor"
 msgid "Exit inetd recovery"
 msgstr "Afslut editor"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Afslut input enhedsvalg"
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Afslut input enhedsvalg"
 
 msgid "Exit media player?"
@@ -7325,9 +7326,6 @@ msgid "Ghana"
 msgstr ""
 
 msgid "Gibraltar"
-msgstr ""
-
-msgid "GigaBlue Black"
 msgstr ""
 
 msgid "GitHub commit"
@@ -8221,14 +8219,19 @@ msgid "Input "
 msgstr "Indgang"
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Enheder"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Opsætning af enhed"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Opsætning af enhed"
 
 msgid "Input Stream ID"
 msgstr ""
-
-msgid "Input device setup"
-msgstr "Opsætning af enhed"
 
 #
 msgid "Install"
@@ -8320,7 +8323,8 @@ msgstr "Intern"
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Interval mellem trykgentagelse"
 
 #, fuzzy
@@ -8364,8 +8368,9 @@ msgstr ""
 msgid "Ireland"
 msgstr ""
 
-msgid "Is this setting ok?"
-msgstr "Er denne indstilling ok?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Brug TV fjernbetjening"
 
 #
 msgid "Is this video mode ok?"
@@ -8499,13 +8504,9 @@ msgid "Key Events"
 msgstr ""
 
 #
-msgid "Keyboard"
-msgstr "Tastatur"
-
-#
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Tastatur indstilling"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Forældrekontrol opsætning"
 
 #
 #, fuzzy
@@ -8515,6 +8516,9 @@ msgstr "Tastatur indstilling"
 #
 msgid "Keyboard map"
 msgstr "Tastatur layout"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr ""
@@ -8688,9 +8692,6 @@ msgid "Leisure hobbies"
 msgstr "Fritids hobbyer"
 
 msgid "Lesotho"
-msgstr ""
-
-msgid "Let you change RC type but use it with care."
 msgstr ""
 
 msgid "Let's define enigma2 once more"
@@ -9527,11 +9528,6 @@ msgstr ""
 #
 msgid "Multi EPG"
 msgstr "Multi EPG"
-
-#
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Fjernbetjeningstype"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Multi-EPG favoritliste valg"
@@ -10454,15 +10450,15 @@ msgid "Other"
 msgstr "Anden"
 
 #, fuzzy
+msgid "Other Actions"
+msgstr "yderligere uddannelse"
+
+#, fuzzy
 msgid "Other Subtitles & lang"
 msgstr "Undertekstsindstillinger"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "yderligere uddannelse"
 
 msgid "Output"
 msgstr "Output"
@@ -11361,6 +11357,11 @@ msgid "Press OK to activate the settings."
 msgstr "Tryk OK for at aktivere indstillinger."
 
 #
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Tryk på OK for at redigere indstillinger."
+
+#
 msgid "Press OK to edit the settings."
 msgstr "Tryk på OK for at redigere indstillinger."
 
@@ -11955,15 +11956,6 @@ msgstr "Husk, du har valgt at gemme tidsforskydnings filen."
 #
 #, fuzzy
 msgid "Remote control information"
-msgstr "Fjernbetjeningstype"
-
-#
-msgid "Remote control type"
-msgstr "Fjernbetjeningstype"
-
-#
-#, fuzzy
-msgid "Remote control type setup"
 msgstr "Fjernbetjeningstype"
 
 #
@@ -12915,6 +12907,9 @@ msgstr ""
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr ""
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -13003,6 +12998,10 @@ msgstr ""
 #
 msgid "Select HDD"
 msgstr "Vælg harddisk"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Vælg enhed"
 
 #
 msgid "Select a bouquet"
@@ -13111,9 +13110,6 @@ msgstr ""
 msgid "Select input device"
 msgstr "Vælg enhed"
 
-msgid "Select input device."
-msgstr "Vælg enhed."
-
 #
 msgid "Select interface"
 msgstr "Vælg interface"
@@ -13142,6 +13138,10 @@ msgstr "Vælg udbyder, der skal tilføjes..."
 #
 msgid "Select refresh rate"
 msgstr "Vælg opdaterings hastighed"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Brug TV fjernbetjening"
 
 msgid "Select satellites"
 msgstr "Vælg satelitter"
@@ -13204,6 +13204,9 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr ""
 
+msgid "Select the remote control device to be used with the %s %s."
+msgstr ""
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr ""
 
@@ -13229,6 +13232,14 @@ msgstr "Vælg stien til film"
 
 msgid "Select the shifted character set for the next character only"
 msgstr ""
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Vælg sorteringsmetode:"
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Vælg sorteringsmetode:"
 
 #, fuzzy
 msgid "Select the time zone within the area or region."
@@ -16934,7 +16945,8 @@ msgstr "Brug pil op/ned for at vælge på din fjernbetjening. Derefter tryk på 
 msgid "Use the wizard to set up basic features"
 msgstr "Bruge start assistenten til grundindstilling?"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Brug disse enhedsindstillinger til indtastningsenhed?"
 
 msgid "Use these settings?"
@@ -17054,9 +17066,6 @@ msgstr "VOB fil"
 
 msgid "VOB file"
 msgstr "VOB fil"
-
-msgid "VU+"
-msgstr "VU+"
 
 #, fuzzy
 msgid "Vanuatu"
@@ -17940,9 +17949,6 @@ msgstr "Gem til /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "ikke supporteret"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr ""
 
@@ -18509,12 +18515,6 @@ msgstr "Ingen standby"
 msgid "automatic"
 msgstr "automatisk"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 #
 msgid "back"
 msgstr "tilbage"
@@ -18533,9 +18533,6 @@ msgstr ""
 #
 msgid "better"
 msgstr "bedre"
-
-msgid "beyonwizu4"
-msgstr ""
 
 #
 msgid "black"
@@ -18557,12 +18554,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "bund"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "udsendelse/presse"
@@ -18730,9 +18721,6 @@ msgstr "færdig!"
 msgid "drama (general)"
 msgstr "film/drama"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "øst"
 
@@ -18811,22 +18799,6 @@ msgstr "fejl under skan"
 msgid "ese"
 msgstr "Genstart"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -18896,9 +18868,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "fremmede lande/ekspeditioner"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 #
 msgid "forward to the next chapter"
 msgstr "frem til næste kapitel"
@@ -18935,15 +18904,6 @@ msgstr "grab denne frame som bitmap"
 msgid "green"
 msgstr "grøn"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -18964,19 +18924,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "gør-det-selv"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "højde"
@@ -19011,9 +18958,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -19108,14 +19052,8 @@ msgstr "magasiner/reporter/dokumentar"
 msgid "manual"
 msgstr "manuelt"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "kampsport"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "medicin/fysiologi/psykologi"
@@ -19514,15 +19452,6 @@ msgstr "serøst musik/klassisk musik"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "serøst/klassisk/religiøst/historisk film/drama"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #
 #, fuzzy
 msgid "shortest"
@@ -19881,9 +19810,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 #
 msgid "yellow"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2021-05-05 20:00+0200\n"
 "Last-Translator: blzr <blzr@o2.pl>\n"
 "Language-Team: \n"
@@ -109,9 +109,6 @@ msgstr " Uwaga: wybrany tuner nie powinien używać typu SCR Unicable dla konwer
 
 msgid " extensions."
 msgstr " rozszerzenia."
-
-msgid " ms"
-msgstr " ms"
 
 msgid " packages selected."
 msgstr " pakiety wybrane."
@@ -1044,6 +1041,10 @@ msgstr ""
 "Wciśnij OK aby przejść do wyboru multiboot\n"
 "Wciśnij EXIT aby zamknąć"
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1054,10 +1055,6 @@ msgstr "%s %s wolnej przestrzeni dyskowej"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2014,6 +2011,10 @@ msgstr "Wszystkie kanały nadawcy"
 msgid "All slots"
 msgstr "Wszystkie sloty"
 
+#, fuzzy
+msgid "All supported"
+msgstr "Nieobsługiwany"
+
 msgid "Allocate"
 msgstr "Przydziel"
 
@@ -2876,11 +2877,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "Pasmo C"
 
@@ -3130,6 +3126,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Automatyczna zmiana bukietów"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "Ustawienia DNS"
+
 msgid "Change recording (add time)"
 msgstr "Zmień nagranie (dodaj czas)"
 
@@ -3138,9 +3138,6 @@ msgstr "Zmień czas trwania nagrania"
 
 msgid "Change recording (endtime)"
 msgstr "Zmień czas zakończenia nagrania"
-
-msgid "Change repeat and delay settings?"
-msgstr "Zmienić ustawienia powtórzeń i opóźnienia?"
 
 msgid "Change step size"
 msgstr "Zmień rozmiar kroku"
@@ -3531,6 +3528,11 @@ msgstr "Szczegóły konfiguracji skanowania"
 msgid "Config resolution of pictures"
 msgstr "Rozdzielczość wyświetlanych zdjęć"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Konfiguracja"
+
 msgid "Configuration"
 msgstr "Konfiguracja"
 
@@ -3634,9 +3636,6 @@ msgstr "Skonfiguruj serwery nazw (DNS)."
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Skonfiguruj dla jakich urządzeń opcja usuwania w tle ma być użyta."
-
-msgid "Configure remote control type"
-msgstr "Skonfiguruj typ pilota zdalnego sterowania"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Skonfiguruj tryb DiSEqC dla tego LNB."
@@ -4167,9 +4166,6 @@ msgstr "Aktualny adres CEC"
 msgid "Current crash log"
 msgstr "Aktualny transponder"
 
-msgid "Current device: "
-msgstr "Bieżące urządzenie: "
-
 msgid "Current event EPG"
 msgstr "EPG aktualego wydarzenia"
 
@@ -4255,12 +4251,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "Obsługa HLG"
-
-msgid "DMM advanced"
-msgstr "DMM zaawansowane"
-
-msgid "DMM normal"
-msgstr "DMM normalny"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4615,7 +4605,8 @@ msgstr "Opóźnienie po komendzie 'toneburst'"
 msgid "Delay after voltage change before motor command"
 msgstr "Opóźnienie po zmianie napięcia przed komendą 'motor'"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Opóźnienie przed rozpoczęciem powtórzenia klawisza:"
 
 msgid "Delay before sequence repeat"
@@ -4781,7 +4772,8 @@ msgstr "Parametry kanału"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Nazwa urządzenia:"
 
 msgid "DiSEqC"
@@ -5637,6 +5629,10 @@ msgstr "Wprowadź PIN"
 msgid "Enter URL"
 msgstr "Wprowadź adres"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Odkryj przerywaną linię dla tego kanału"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "Wprowadź adres URL, pod którym można znaleźć alternatywne image  do zanstalowania w multiboot z poziomu menu"
 
@@ -5884,7 +5880,12 @@ msgstr "Opuść edytor"
 msgid "Exit inetd recovery"
 msgstr "Opuść edytor"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Opuść wybór urządzenia wejściowego."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Opuść wybór urządzenia wejściowego."
 
 msgid "Exit media player?"
@@ -6549,9 +6550,6 @@ msgid "Ghana"
 msgstr ""
 
 msgid "Gibraltar"
-msgstr ""
-
-msgid "GigaBlue Black"
 msgstr ""
 
 msgid "GitHub commit"
@@ -7367,14 +7365,19 @@ msgid "Input "
 msgstr "Wejście "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Urządzenia wejścia"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Konfiguracjia urządzenia wejściowego"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Konfiguracjia urządzenia wejściowego"
 
 msgid "Input Stream ID"
 msgstr "ID strumienia wejściowego"
-
-msgid "Input device setup"
-msgstr "Konfiguracjia urządzenia wejściowego"
 
 msgid "Install"
 msgstr "Instalacja"
@@ -7452,7 +7455,8 @@ msgstr "Wewnętrzny"
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Interwał pomiędzy klawiszami przy powtarzaniu:"
 
 #, fuzzy
@@ -7493,8 +7497,9 @@ msgstr "Irak"
 msgid "Ireland"
 msgstr "Irlandia"
 
-msgid "Is this setting ok?"
-msgstr "Użyć tych ustawień?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Użyj pilota od TV"
 
 msgid "Is this video mode ok?"
 msgstr "Czy ten tryb video jest ok?"
@@ -7610,18 +7615,18 @@ msgstr "Wersja kernela: "
 msgid "Key Events"
 msgstr ""
 
-msgid "Keyboard"
-msgstr "Klawiatura"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Ustawienia klawiatury"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Ustawienia kontroli rodzicielskiej"
 
 msgid "Keyboard data entry"
 msgstr "Wprowadzanie danych z klawiatury"
 
 msgid "Keyboard map"
 msgstr "Układ klawiatury"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr ""
@@ -7772,9 +7777,6 @@ msgid "Leisure hobbies"
 msgstr "Hobby/czas wolny"
 
 msgid "Lesotho"
-msgstr ""
-
-msgid "Let you change RC type but use it with care."
 msgstr ""
 
 msgid "Let's define enigma2 once more"
@@ -8497,10 +8499,6 @@ msgstr "Mozambik"
 
 msgid "Multi EPG"
 msgstr ""
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Ustawienia typu pilota"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Wybór bukietów w Multi EPG"
@@ -9313,15 +9311,15 @@ msgstr "Oryginalny"
 msgid "Other"
 msgstr "Inne"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "Edukacja"
+
 msgid "Other Subtitles & lang"
 msgstr "Inne napisy i język"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "Edukacja"
 
 msgid "Output"
 msgstr "Wyjście"
@@ -10100,6 +10098,10 @@ msgstr "Wciśnij OK, aby aktywować wybraną skórkę %s."
 msgid "Press OK to activate the settings."
 msgstr "Wciśnij OK, aby aktywować ustawienia."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Aby edytować ustawienia, wciśnij OK."
+
 msgid "Press OK to edit the settings."
 msgstr "Aby edytować ustawienia, wciśnij OK."
 
@@ -10627,12 +10629,6 @@ msgstr "Pamietaj, wybrałeś zapisywanie pliku timeshift."
 #, fuzzy
 msgid "Remote control information"
 msgstr "Typ pilota"
-
-msgid "Remote control type"
-msgstr "Typ pilota"
-
-msgid "Remote control type setup"
-msgstr "Ustawienia typu pilota"
 
 msgid "Removal has completed."
 msgstr "Usuwanie zakończone."
@@ -11453,6 +11449,9 @@ msgstr "Wybierz 'A' lub 'B' jeżeli twój system antenowy wymaga tego, w innym p
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Wybierz 'FBC SCR' jeżeli ten tuner będzie używał urządzenia unicable / SCR. Dla wszystkich innych konfiguracji wybierz 'FBC automatyczny'."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11539,6 +11538,10 @@ msgstr "Wybierz Fast DiSEqC jeśli twój system antenowy wspiera tę funkcję, j
 
 msgid "Select HDD"
 msgstr "Wybierz HDD"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Wybierz urządzenie wejścia"
 
 msgid "Select a bouquet"
 msgstr "Wybierz bukiet"
@@ -11631,9 +11634,6 @@ msgstr "Wybierz sposób w jaki odbiornik ma utrzymywać poprawny czas - albo z t
 msgid "Select input device"
 msgstr "Wybierz urządzenie wejścia"
 
-msgid "Select input device."
-msgstr "Wybierz urządzenie wejściowe."
-
 msgid "Select interface"
 msgstr "Wybierz interfejs"
 
@@ -11655,6 +11655,10 @@ msgstr "Wybierz nadawcę do dodania..."
 
 msgid "Select refresh rate"
 msgstr "Wybierz częstotliwość odświeżania"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Użyj pilota od TV"
 
 msgid "Select satellites"
 msgstr "Wybierz satelity"
@@ -11712,6 +11716,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Wybierz typ twojego urządzenia unicable. Do wyboru masz 'SCR Unicable' (typ Unicable) lub 'SCR JESS' (JESS, znany także jako Unicable II)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Wybierz głowicę, która steruje obrotnicą."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Wybierz satelitę, który jest podłączony do Port-A twojego przełącznika. Jeśli nie jesteś pewien, wybierz 'automatyczny' i odbiornik spróbuje określić to za ciebie. Jeśli nic nie jest podłączone do tego portu, wybierz ' nic nie podłączono'."
 
@@ -11735,6 +11743,14 @@ msgstr "Wybierz zestaw znaków z 'SHIFT'"
 
 msgid "Select the shifted character set for the next character only"
 msgstr "Wybierz alternatywny znak (z SHIFT) tylko dla kolejnego znaku"
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Wybierz strefę czasową w obrębie obszaru lub regionu."
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Wybierz strefę czasową w obrębie obszaru lub regionu."
 
 msgid "Select the time zone within the area or region."
 msgstr "Wybierz strefę czasową w obrębie obszaru lub regionu."
@@ -15033,7 +15049,8 @@ msgstr "Użyj przycisków góra/dół aby wybrać opcje. Następnie wciśnij OK.
 msgid "Use the wizard to set up basic features"
 msgstr "Użyj kreatora aby ustawić podstawowe funkcje"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Użyć tych ustawień dla urządzenia?"
 
 msgid "Use these settings?"
@@ -15137,9 +15154,6 @@ msgstr "Plik VOB"
 
 msgid "VOB file"
 msgstr "Plik VOB"
-
-msgid "VU+"
-msgstr ""
 
 msgid "Vanuatu"
 msgstr ""
@@ -15939,9 +15953,6 @@ msgstr "Zapisz do /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "Nieobsługiwany"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr ""
 
@@ -16472,12 +16483,6 @@ msgstr "Bez stanu czuwania"
 msgid "automatic"
 msgstr "Automatycznie"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "Wróć"
 
@@ -16493,9 +16498,6 @@ msgstr ""
 
 msgid "better"
 msgstr "Lepszy"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "Czarny"
@@ -16514,12 +16516,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "dół"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "Relacja"
@@ -16670,9 +16666,6 @@ msgstr "Zrobione!"
 msgid "drama (general)"
 msgstr "Film/Dramat"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "wschód"
 
@@ -16743,21 +16736,6 @@ msgstr "błąd w trakcie skanowania"
 msgid "ese"
 msgstr "Resetuj"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-msgid "et8000/10000/13000"
-msgstr ""
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -16822,9 +16800,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "Wyprawy/Podróże"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "Przeskocz do następnego rozdziału"
 
@@ -16855,15 +16830,6 @@ msgstr "Zrób screenshot (.bmp)"
 msgid "green"
 msgstr "Zielony"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -16884,18 +16850,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "Rękodzieło"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-msgid "hd2400"
-msgstr ""
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "Wysokość"
@@ -16928,9 +16882,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17014,14 +16965,8 @@ msgstr "Reportaż/Dokument/Mgazyn"
 msgid "manual"
 msgstr "Ręcznie"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "Sporty walki"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "Medycyna/Fizjologia/Psychologia"
@@ -17362,15 +17307,6 @@ msgstr "Muzyka klasyczna"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "Film klasyka/historia/religia"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Test sieci"
@@ -17695,9 +17631,6 @@ msgid "wnw"
 msgstr ""
 
 msgid "wsw"
-msgstr ""
-
-msgid "xp1000"
 msgstr ""
 
 msgid "yellow"

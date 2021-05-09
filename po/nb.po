@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2021-05-01 12:55+0200\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
@@ -119,9 +119,6 @@ msgstr ""
 #
 msgid " extensions."
 msgstr " utvidelser."
-
-msgid " ms"
-msgstr " ms"
 
 msgid " packages selected."
 msgstr " valgte pakker."
@@ -1150,6 +1147,10 @@ msgstr ""
 "Trykk OK for valg av multiboot \n"
 "Trykk exit for å lukke"
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1160,10 +1161,6 @@ msgstr "%s %s ledig diskplass"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2229,6 +2226,10 @@ msgstr "Alle distributører"
 msgid "All slots"
 msgstr "Alle spor"
 
+#, fuzzy
+msgid "All supported"
+msgstr "ikke støttet"
+
 msgid "Allocate"
 msgstr "Tildel"
 
@@ -3185,11 +3186,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 #
 msgid "C-Band"
 msgstr "C-bånd"
@@ -3458,6 +3454,11 @@ msgid "Change bouquets in quickzap"
 msgstr "Automatisk skift til neste kanalliste"
 
 #
+#, fuzzy
+msgid "Change device settings"
+msgstr "Navneserver innstillinger"
+
+#
 msgid "Change recording (add time)"
 msgstr "Endre opptaket (legg til tid)"
 
@@ -3468,9 +3469,6 @@ msgstr "Endre opptakets (lengde)"
 #
 msgid "Change recording (endtime)"
 msgstr "Endre opptakets (sluttid)"
-
-msgid "Change repeat and delay settings?"
-msgstr "Endre tidsintervall på fjernkontrollens taster?"
 
 #
 msgid "Change step size"
@@ -3913,6 +3911,12 @@ msgid "Config resolution of pictures"
 msgstr "Still inn oppløsning for bildeframviser"
 
 #
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Konfigurasjon"
+
+#
 msgid "Configuration"
 msgstr "Konfigurasjon"
 
@@ -4024,10 +4028,6 @@ msgstr "Konfigurer navneservere"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Still inn hvilke enheter alternativet for bakgrunnssletting skal brukes."
-
-#
-msgid "Configure remote control type"
-msgstr "Velg fjernkontroll merke"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Still inn DiSEqC modus for denne LNB."
@@ -4585,9 +4585,6 @@ msgstr "Gjeldende CEC adresse"
 msgid "Current crash log"
 msgstr "Nåværende transponder"
 
-msgid "Current device: "
-msgstr "Gjeldende enhet: "
-
 msgid "Current event EPG"
 msgstr "Aktuell EPG programoversikt"
 
@@ -4687,13 +4684,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "HLG-støtte"
-
-#
-msgid "DMM advanced"
-msgstr "DMM avansert"
-
-msgid "DMM normal"
-msgstr "DMM normal"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -5070,7 +5060,8 @@ msgstr "Forsinkelse etter toneburst"
 msgid "Delay after voltage change before motor command"
 msgstr "Forsinkelse etter voltstyrke endring før motor kommando"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Forsinkelse før repeterende tast starter:"
 
 msgid "Delay before sequence repeat"
@@ -5256,7 +5247,8 @@ msgstr "Kanal info"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Enhetsnavn:"
 
 msgid "DiSEqC"
@@ -6219,6 +6211,10 @@ msgstr "Tast inn PIN"
 msgid "Enter URL"
 msgstr "Tast URL"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Avdekke stiplede flimmer linjer for denne kanalen"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "Angi en URL-adresse der alternative operativsystem kan være oppført for FlashImage"
 
@@ -6491,7 +6487,12 @@ msgstr "Avslutt redigering"
 msgid "Exit inetd recovery"
 msgstr "Avslutt redigering"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Avslutt inndataenhet."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Avslutt inndataenhet."
 
 #
@@ -7229,9 +7230,6 @@ msgstr "Ghana"
 
 msgid "Gibraltar"
 msgstr "Gibraltar"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -8122,14 +8120,19 @@ msgid "Input "
 msgstr "Inngang "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Enhets innstilling"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Enhetsinnstilling"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Enhetsinnstilling"
 
 msgid "Input Stream ID"
 msgstr "Inngående stream ID"
-
-msgid "Input device setup"
-msgstr "Enhetsinnstilling"
 
 #
 msgid "Install"
@@ -8225,7 +8228,8 @@ msgstr "Intern"
 msgid "Internet time (NTP)"
 msgstr "Internett (ntp)"
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Tidsintervall mellom tastene ved repeterende:"
 
 #, fuzzy
@@ -8269,8 +8273,9 @@ msgstr "Irak"
 msgid "Ireland"
 msgstr "Irland"
 
-msgid "Is this setting ok?"
-msgstr "Er denne innstillingen ok?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Bruk fjernkontroll tilhørende TV"
 
 #
 msgid "Is this video mode ok?"
@@ -8401,13 +8406,9 @@ msgid "Key Events"
 msgstr "Viktige hendelser"
 
 #
-msgid "Keyboard"
-msgstr "Tastatur"
-
-#
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Tastaturoppsett"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Foreldrekontroll oppsett"
 
 #
 msgid "Keyboard data entry"
@@ -8416,6 +8417,9 @@ msgstr "Tastatur dataregistrering"
 #
 msgid "Keyboard map"
 msgstr "Tastaturspråk"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "Kiribati"
@@ -8587,9 +8591,6 @@ msgstr "Fritid hobby"
 
 msgid "Lesotho"
 msgstr "Lesotho"
-
-msgid "Let you change RC type but use it with care."
-msgstr ""
 
 msgid "Let's define enigma2 once more"
 msgstr ""
@@ -9396,11 +9397,6 @@ msgstr "Mosambik"
 #
 msgid "Multi EPG"
 msgstr "Multi EPG"
-
-#
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Fjernkontroll type og innstilling"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Multi EPG valg i kanalliste"
@@ -10312,15 +10308,15 @@ msgstr "Original"
 msgid "Other"
 msgstr "Annen"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "videreutdanning"
+
 msgid "Other Subtitles & lang"
 msgstr "Andre undertekster & språk"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "videreutdanning"
 
 msgid "Output"
 msgstr "Utgang"
@@ -11192,6 +11188,10 @@ msgstr "Trykk OK for å ta i bruk det valgte %s utseende."
 msgid "Press OK to activate the settings."
 msgstr "Trykk OK for å aktivere instillingene."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Trykk OK for å endre innstillinger."
+
 msgid "Press OK to edit the settings."
 msgstr "Trykk OK for å endre innstillinger."
 
@@ -11774,14 +11774,6 @@ msgstr "Påminnelse, du har valgt å lagre timeskift filen."
 #, fuzzy
 msgid "Remote control information"
 msgstr "Fjernkontroll type"
-
-#
-msgid "Remote control type"
-msgstr "Fjernkontroll type"
-
-#
-msgid "Remote control type setup"
-msgstr "Fjernkontroll type og innstilling"
 
 msgid "Removal has completed."
 msgstr "Slettingen er fullført."
@@ -12688,6 +12680,9 @@ msgstr "Velg 'A' eller 'B' hvis antenne systemet krever dette, ellers, velger du
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Velg 'FBC SCR' hvis denne tuneren bruker en SCR (Unicable/JESS) enhet. Velg 'FBC automatisk' for alle andre oppsett."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -12776,6 +12771,10 @@ msgstr "Velg Fast DiSEqC hvis antenne systemet støtter dette. Hvis du er usikke
 
 msgid "Select HDD"
 msgstr "Velg hdd/ssd"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Velg enhet"
 
 #
 msgid "Select a bouquet"
@@ -12880,9 +12879,6 @@ msgstr "Velg hvordan du vil at mottakeren skal beholde riktig tid, enten fra DVB
 msgid "Select input device"
 msgstr "Velg enhet"
 
-msgid "Select input device."
-msgstr "Velg enhet."
-
 #
 msgid "Select interface"
 msgstr "Velg grensesnitt"
@@ -12910,6 +12906,10 @@ msgstr "Velg distributør som skal legges til..."
 #
 msgid "Select refresh rate"
 msgstr "Velg frekvensrate"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Bruk fjernkontroll tilhørende TV"
 
 msgid "Select satellites"
 msgstr "Velg satellitter"
@@ -12972,6 +12972,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Velg protokollen for din SCR enhet. Valgene er 'SCR Unicable' (Unicable) eller 'SCR JESS' (JESS, også kjent som Unicable II)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Velg mottakeren som styrer motorisert parabol."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Velg satellitten som er koblet til Port-A på din veksler. Hvis du er usikker velg 'automatisk' og mottakeren vil prøve å finne dette for deg. Hvis ingenting er tilkoblet denne porten, velg 'ingenting tilkoblet'."
 
@@ -12995,6 +12999,14 @@ msgstr "Velg shift tegnsett"
 
 msgid "Select the shifted character set for the next character only"
 msgstr "Velg shift tegnsettet bare for neste tegn"
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Velg tidssonen i området eller region."
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Velg tidssonen i området eller region."
 
 msgid "Select the time zone within the area or region."
 msgstr "Velg tidssonen i området eller region."
@@ -16629,7 +16641,8 @@ msgid "Use the wizard to set up basic features"
 msgstr "Bruk veiviseren til å konfigurere grunnleggende funksjoner"
 
 #
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Bruk disse innstillinger for inndataenheter?"
 
 #
@@ -16746,9 +16759,6 @@ msgstr "VOB fil"
 
 msgid "VOB file"
 msgstr "VOB fil"
-
-msgid "VU+"
-msgstr "VU+"
 
 #
 msgid "Vanuatu"
@@ -17592,9 +17602,6 @@ msgstr "Skriv til /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "ikke støttet"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr "YCbCr420"
 
@@ -18164,12 +18171,6 @@ msgstr "Ikke slå av"
 msgid "automatic"
 msgstr "automatisk"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 #
 msgid "back"
 msgstr "tilbake"
@@ -18188,9 +18189,6 @@ msgstr ""
 #
 msgid "better"
 msgstr "bedre"
-
-msgid "beyonwizu4"
-msgstr ""
 
 #
 msgid "black"
@@ -18211,12 +18209,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "bunn"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "kringkasting/presse"
@@ -18384,9 +18376,6 @@ msgstr "utført!"
 msgid "drama (general)"
 msgstr "film/drama (generelt)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "øst"
 
@@ -18464,22 +18453,6 @@ msgstr "feil under søket"
 msgid "ese"
 msgstr "Tilbakestill"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -18553,9 +18526,6 @@ msgstr "bruk AC3 Plus"
 msgid "foreign countries/expeditions"
 msgstr "utland/ekspedisjoner"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 #
 msgid "forward to the next chapter"
 msgstr "framover til neste kapittel"
@@ -18591,15 +18561,6 @@ msgstr "lagre ramme som punktgrafikk"
 msgid "green"
 msgstr "grønn"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -18620,19 +18581,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "håndverk"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "høyde"
@@ -18667,9 +18615,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -18762,14 +18707,8 @@ msgstr "magasiner/rapporter/dokumentarer"
 msgid "manual"
 msgstr "brukerveiledning"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "kampsport"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "medisin/fysiologi/psykologi"
@@ -19161,15 +19100,6 @@ msgstr "seriøs musikk/klassisk musikk"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "seriøs/klassisk/religiøs/historisk film/drama"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #
 #, fuzzy
 msgid "shortest"
@@ -19526,9 +19456,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 #
 msgid "yellow"

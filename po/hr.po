@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2021-01-17 18:31+0100\n"
 "Last-Translator: Željko <zeljko2@hi.ht.hr>\n"
 "Language-Team: Željko\n"
@@ -110,9 +110,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " proširenja."
-
-msgid " ms"
-msgstr " ms"
 
 msgid " packages selected."
 msgstr " izabrano paketa."
@@ -1141,6 +1138,10 @@ msgstr ""
 "Pritisnite ok za odabir višestrukog pokretanja.\n"
 "Pritisnite izlaz i zatvorite."
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1151,10 +1152,6 @@ msgstr "%s %s slobodnog prostora na disku"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2121,6 +2118,10 @@ msgstr "Sve usluge pružatelja usluga"
 msgid "All slots"
 msgstr "Svi utori"
 
+#, fuzzy
+msgid "All supported"
+msgstr "nije podržano"
+
 msgid "Allocate"
 msgstr "Dodjeliti"
 
@@ -2990,11 +2991,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "LNB C-opseg"
 
@@ -3245,6 +3241,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Promijenite paket u brzom prebacivanju"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "Postavke poslužitelja (DNS)"
+
 msgid "Change recording (add time)"
 msgstr "Promijeni snimanje (dodaj vrijeme)"
 
@@ -3253,9 +3253,6 @@ msgstr "Promijeni snimanje (trajanje)"
 
 msgid "Change recording (endtime)"
 msgstr "Promijeni snimanje (kraj vremena)"
-
-msgid "Change repeat and delay settings?"
-msgstr "Promijenite postavke kašnjenja i ponavljanja?"
 
 msgid "Change step size"
 msgstr "Promijenite veličinu koraka"
@@ -3647,6 +3644,11 @@ msgstr "Pojedinosti skeniranja"
 msgid "Config resolution of pictures"
 msgstr "Postavke razlučivosti slike"
 
+#, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Konfiguracija"
+
 msgid "Configuration"
 msgstr "Konfiguracija"
 
@@ -3750,9 +3752,6 @@ msgstr "Konfigurirajte imena poslužitelja (DNS)"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Konfigurirajte za koje uređaje trebate koristiti opciju brisanja u pozadini."
-
-msgid "Configure remote control type"
-msgstr "Konfigurirajte vrstu daljinskog upravljača"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Konfigurirajte DiSEqC način rada za ovaj LNB."
@@ -4283,9 +4282,6 @@ msgstr "Trenutna CEC adresa"
 msgid "Current crash log"
 msgstr "Trenutni transponder"
 
-msgid "Current device: "
-msgstr "Trenutni uređaj: "
-
 msgid "Current event EPG"
 msgstr "Trenutni EPG događaj"
 
@@ -4371,12 +4367,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "HLG podrška"
-
-msgid "DMM advanced"
-msgstr "DMM napredna"
-
-msgid "DMM normal"
-msgstr "DMM normalna"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4731,7 +4721,8 @@ msgstr "Odgoda nakon pulsa tona"
 msgid "Delay after voltage change before motor command"
 msgstr "Odgoda nakon promjene napona prije naredbe motora"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "Odgoda prije ponovnog pokretanja ključa:"
 
 msgid "Delay before sequence repeat"
@@ -4897,7 +4888,8 @@ msgstr "Servisne informacije"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "Naziv uređaja:"
 
 msgid "DiSEqC"
@@ -5758,6 +5750,10 @@ msgstr "Unesite PIN"
 msgid "Enter URL"
 msgstr "Unesite URL"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "Prikaži trepćuću liniju za ovu uslugu"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr "Unesite URL gdje se alternativni image mogu navesti za FlashImage"
 
@@ -6005,7 +6001,12 @@ msgstr "Izlaz iz uređenja"
 msgid "Exit inetd recovery"
 msgstr "Izlaz iz uređenja"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Izlaz iz odabira ulaznog uređaja."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Izlaz iz odabira ulaznog uređaja."
 
 msgid "Exit media player?"
@@ -6672,9 +6673,6 @@ msgstr "Gana"
 
 msgid "Gibraltar"
 msgstr "Gibraltar"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -7494,14 +7492,19 @@ msgid "Input "
 msgstr "Ulaz "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Ulazni uređaji"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Postavljanje uređaja za unos"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Postavljanje uređaja za unos"
 
 msgid "Input Stream ID"
 msgstr "Ulazni ID web prijenosa"
-
-msgid "Input device setup"
-msgstr "Postavljanje uređaja za unos"
 
 msgid "Install"
 msgstr "Instaliraj"
@@ -7580,7 +7583,8 @@ msgstr "Interni"
 msgid "Internet time (NTP)"
 msgstr "Internet (ntp)"
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "Interval kašnjenja gumba između ponavljanja:"
 
 #, fuzzy
@@ -7621,8 +7625,9 @@ msgstr "Irak"
 msgid "Ireland"
 msgstr "Irska"
 
-msgid "Is this setting ok?"
-msgstr "Je li ova postavka u redu?"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "Koristite daljinski upravljač za TV"
 
 msgid "Is this video mode ok?"
 msgstr "Je li ovaj video način u redu?"
@@ -7739,18 +7744,18 @@ msgstr "Verzija kernela: "
 msgid "Key Events"
 msgstr "Ključni događaji"
 
-msgid "Keyboard"
-msgstr "Tipkovnica"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Postavke tipkovnice"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Postavljanje roditeljske kontrole"
 
 msgid "Keyboard data entry"
 msgstr "Unos podataka tipkovnice"
 
 msgid "Keyboard map"
 msgstr "Raspored tipkovnice"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "Kiribati"
@@ -7902,9 +7907,6 @@ msgstr "Hobiji u slobodno vrijeme"
 
 msgid "Lesotho"
 msgstr "Lesotho"
-
-msgid "Let you change RC type but use it with care."
-msgstr ""
 
 msgid "Let's define enigma2 once more"
 msgstr ""
@@ -8626,10 +8628,6 @@ msgstr "Mozambik"
 
 msgid "Multi EPG"
 msgstr "Multi EPG"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Podešavanje tipa daljinskog upravljača"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Multi-EPG odabir paketa"
@@ -9448,15 +9446,15 @@ msgstr "Original"
 msgid "Other"
 msgstr "Ostalo"
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "daljnje obrazovanje"
+
 msgid "Other Subtitles & lang"
 msgstr "Ostali titlovi i jezici"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "daljnje obrazovanje"
 
 msgid "Output"
 msgstr "Izlaz"
@@ -10236,6 +10234,10 @@ msgstr "Pritisnite OK za aktiviranje odabranog %s skina."
 msgid "Press OK to activate the settings."
 msgstr "Pritisnite OK za aktiviranje postavki."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Pritisnite OK za uređivanje postavki."
+
 msgid "Press OK to edit the settings."
 msgstr "Pritisnite OK za uređivanje postavki."
 
@@ -10764,12 +10766,6 @@ msgstr "Zapamtite, odlučili ste spremiti datoteku vremenskog pomaka."
 #, fuzzy
 msgid "Remote control information"
 msgstr "Tip daljinskog upravljača"
-
-msgid "Remote control type"
-msgstr "Tip daljinskog upravljača"
-
-msgid "Remote control type setup"
-msgstr "Podešavanje tipa daljinskog upravljača"
 
 msgid "Removal has completed."
 msgstr "Uklanjanje je završeno."
@@ -11591,6 +11587,9 @@ msgstr "Odaberite 'A' ili 'B' ako to zahtijeva antenski sustav, u suprotnom odab
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "Odaberite 'FBC SCR' ako se ovaj tjuner spaja na SCR (Unicable/JESS) uređaj. Za sve ostale postavke odaberite 'FBC automatic'."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -11677,6 +11676,10 @@ msgstr "Odaberite brzi DiSEqC ako vaš anteni sustav to podržava. Ako niste sig
 
 msgid "Select HDD"
 msgstr "Odaberite HDD"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Odaberite ulazni uređaj"
 
 msgid "Select a bouquet"
 msgstr "Odaberite paket"
@@ -11769,9 +11772,6 @@ msgstr "Odaberite kako želite da vaš prijemnik održi točno vrijeme, putem DV
 msgid "Select input device"
 msgstr "Odaberite ulazni uređaj"
 
-msgid "Select input device."
-msgstr "Odaberite ulazni uređaj."
-
 msgid "Select interface"
 msgstr "Odaberite sučelje"
 
@@ -11793,6 +11793,10 @@ msgstr "Odaberite pružatelja usluge za dodavanje..."
 
 msgid "Select refresh rate"
 msgstr "Odaberite brzinu osvježavanja"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "Koristite daljinski upravljač za TV"
 
 msgid "Select satellites"
 msgstr "Odaberite satelite"
@@ -11850,6 +11854,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "Odaberite protokol koji koristi vaš SCR uređaj. Izbor je 'SCR Unicable' (Unicable) ili 'SCR JESS' (JESS, također poznat kao Unicable II)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "Odaberite tjuner koji kontrolira motorizirani tanjur."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "Odaberite satelit koji je spojen na Port-A vašeg preklopnika. Ako niste sigurni odaberite 'automatsko' i primatelj će to pokušati odrediti. Ako ništa nije povezano s ovim priključkom, odaberite 'ništa nije povezano'."
 
@@ -11873,6 +11881,14 @@ msgstr "Odaberite pomaknuti skup znakova"
 
 msgid "Select the shifted character set for the next character only"
 msgstr "Odaberite pomaknuti skup znakova samo za sljedeći znak"
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "Odaberite vremensku zonu unutar područja ili regije."
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "Odaberite vremensku zonu unutar područja ili regije."
 
 msgid "Select the time zone within the area or region."
 msgstr "Odaberite vremensku zonu unutar područja ili regije."
@@ -15168,7 +15184,8 @@ msgstr "Koristite tipke gore/dolje na daljinskom upravljaču za odabir opcije. N
 msgid "Use the wizard to set up basic features"
 msgstr "Pomoću vodiča postavite osnovne značajke"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Koristite li ove postavke ulaznih uređaja?"
 
 msgid "Use these settings?"
@@ -15273,9 +15290,6 @@ msgstr "VOB fajl"
 
 msgid "VOB file"
 msgstr "VOB fajl"
-
-msgid "VU+"
-msgstr "VU+"
 
 msgid "Vanuatu"
 msgstr "Vanuatu"
@@ -16076,9 +16090,6 @@ msgstr "Zapisivanje na /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "nije podržano"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr "YCbCr420"
 
@@ -16609,12 +16620,6 @@ msgstr "Bez čekanja"
 msgid "automatic"
 msgstr "automatski"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "nazad"
 
@@ -16630,9 +16635,6 @@ msgstr ""
 
 msgid "better"
 msgstr "bolje"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "crna"
@@ -16651,12 +16653,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "odozdo"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "emitiranje/tisak"
@@ -16807,9 +16803,6 @@ msgstr "dovršeno!"
 msgid "drama (general)"
 msgstr "film/drama (općenito)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "istok"
 
@@ -16880,22 +16873,6 @@ msgstr "pogreška pretraživanja"
 msgid "ese"
 msgstr "Reset"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -16960,9 +16937,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "strane zemlje/ekspedicije"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "na sljedeće poglavlje"
 
@@ -16993,15 +16967,6 @@ msgstr "snimite ovaj okvir kao bitmapu"
 msgid "green"
 msgstr "zelena"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -17022,19 +16987,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "ručni rad"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "visina"
@@ -17067,9 +17019,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17153,14 +17102,8 @@ msgstr "časopisi/izvješća/dokumentarni"
 msgid "manual"
 msgstr "ručno"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "borilački sportovi"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "medicina/fiziologija/psihologija"
@@ -17503,15 +17446,6 @@ msgstr "ozbiljna glazba/klasična glazba"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "ozbiljan/klasičan/vjerski/povijesni film/drama"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "Test mreže"
@@ -17837,9 +17771,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-msgid "xp1000"
-msgstr "xp1000"
 
 msgid "yellow"
 msgstr "žuta"

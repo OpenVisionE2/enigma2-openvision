@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2020-05-16 18:44+0200\n"
 "Last-Translator: Baldur <bsveinsson@gmail.com>\n"
 "Language-Team: Polar Team/LT Team <baddi@oreind.is>\n"
@@ -106,9 +106,6 @@ msgstr ""
 
 msgid " extensions."
 msgstr " viðbætur."
-
-msgid " ms"
-msgstr " ms"
 
 #
 msgid " packages selected."
@@ -1143,6 +1140,11 @@ msgid ""
 "Press exit to close"
 msgstr ""
 
+#
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1155,11 +1157,6 @@ msgstr "laust diskpláss"
 #
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #
@@ -2217,6 +2214,10 @@ msgstr ""
 msgid "All slots"
 msgstr ""
 
+#, fuzzy
+msgid "All supported"
+msgstr "ekki stutt"
+
 msgid "Allocate"
 msgstr ""
 
@@ -3130,11 +3131,6 @@ msgstr ""
 msgid "C"
 msgstr "C"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "C"
-
 msgid "C-Band"
 msgstr "C-Band"
 
@@ -3372,6 +3368,11 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "Skipta á milli rása flétta í rásastökki"
 
+#
+#, fuzzy
+msgid "Change device settings"
+msgstr "Uppsetning nafnaþjóns"
+
 msgid "Change recording (add time)"
 msgstr ""
 
@@ -3384,9 +3385,6 @@ msgstr "breyta upptöku (tíma)"
 #, fuzzy
 msgid "Change recording (endtime)"
 msgstr "breyta upptöku (lokatíma)"
-
-msgid "Change repeat and delay settings?"
-msgstr ""
 
 msgid "Change step size"
 msgstr "Breyta skrefa stærð"
@@ -3786,6 +3784,12 @@ msgstr ""
 
 #
 #, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "Stilling nettengingar"
+
+#
+#, fuzzy
 msgid "Configuration"
 msgstr "Stilling nettengingar"
 
@@ -3894,11 +3898,6 @@ msgstr "Stilla nafnaþjón"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr ""
-
-#
-#, fuzzy
-msgid "Configure remote control type"
-msgstr "Gerð foreldrastýringar"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr ""
@@ -4452,9 +4451,6 @@ msgstr ""
 msgid "Current crash log"
 msgstr "Núverandi sendir"
 
-msgid "Current device: "
-msgstr "Núverandi tæki: "
-
 msgid "Current event EPG"
 msgstr ""
 
@@ -4543,14 +4539,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "ekki stutt"
-
-#
-#, fuzzy
-msgid "DMM advanced"
-msgstr "meiri stillingar"
-
-msgid "DMM normal"
-msgstr ""
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4937,7 +4925,7 @@ msgstr ""
 msgid "Delay after voltage change before motor command"
 msgstr ""
 
-msgid "Delay before key repeat starts:"
+msgid "Delay before key repeat starts (ms)"
 msgstr ""
 
 msgid "Delay before sequence repeat"
@@ -5130,8 +5118,10 @@ msgstr "Upplýsingar"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
-msgstr ""
+#
+#, fuzzy
+msgid "Device name"
+msgstr "Leita að rásum"
 
 #
 msgid "DiSEqC"
@@ -6105,6 +6095,9 @@ msgstr ""
 msgid "Enter URL"
 msgstr ""
 
+msgid "Enter a new name for this device."
+msgstr ""
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr ""
 
@@ -6358,7 +6351,12 @@ msgstr "Hætta í breytingum"
 msgid "Exit inetd recovery"
 msgstr "Hætta í breytingum"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "Hætta í inntaks tækja vali."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "Hætta í inntaks tækja vali."
 
 msgid "Exit media player?"
@@ -7086,9 +7084,6 @@ msgid "Ghana"
 msgstr ""
 
 msgid "Gibraltar"
-msgstr ""
-
-msgid "GigaBlue Black"
 msgstr ""
 
 msgid "GitHub commit"
@@ -7981,14 +7976,19 @@ msgid "Input "
 msgstr "Inntak"
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "Inntaks tæki"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "Inntaks tækja uppsetning"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "Inntaks tækja uppsetning"
 
 msgid "Input Stream ID"
 msgstr ""
-
-msgid "Input device setup"
-msgstr "Inntaks tækja uppsetning"
 
 #
 msgid "Install"
@@ -8080,7 +8080,7 @@ msgstr "Netkort:"
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+msgid "Interval between keys when repeating (ms)"
 msgstr ""
 
 #
@@ -8127,9 +8127,10 @@ msgstr ""
 msgid "Ireland"
 msgstr ""
 
+#
 #, fuzzy
-msgid "Is this setting ok?"
-msgstr "Nota þessar stillingar?"
+msgid "Is the remote control working okay?"
+msgstr "Gerð foreldrastýringar"
 
 #
 #, fuzzy
@@ -8263,13 +8264,9 @@ msgid "Key Events"
 msgstr ""
 
 #
-msgid "Keyboard"
-msgstr "Lyklaborð"
-
-#
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "Uppsetning lyklaborðs"
+msgid "Keyboard / Remote Control Setup"
+msgstr "Uppsetning á foreldrastýringu"
 
 #
 #, fuzzy
@@ -8280,6 +8277,9 @@ msgstr "Uppsetning lyklaborðs"
 #, fuzzy
 msgid "Keyboard map"
 msgstr "Lyklaborðs stilling"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr ""
@@ -8455,9 +8455,6 @@ msgid "Leisure hobbies"
 msgstr ""
 
 msgid "Lesotho"
-msgstr ""
-
-msgid "Let you change RC type but use it with care."
 msgstr ""
 
 msgid "Let's define enigma2 once more"
@@ -9292,11 +9289,6 @@ msgstr ""
 #
 msgid "Multi EPG"
 msgstr "Mörg EPG"
-
-#
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "Gerð foreldrastýringar"
 
 msgid "Multi-EPG bouquet selection"
 msgstr "Mörg-EPG rásavanda val"
@@ -10234,15 +10226,15 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
+#, fuzzy
+msgid "Other Actions"
+msgstr "Veldu stað fyrir afrit"
+
 msgid "Other Subtitles & lang"
 msgstr ""
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "Veldu stað fyrir afrit"
 
 msgid "Output"
 msgstr ""
@@ -11137,6 +11129,11 @@ msgid "Press OK to activate the settings."
 msgstr "Ýtið á OK til að virkja stillingar."
 
 #
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "Ýttu á OK til að breyta stillingum."
+
+#
 msgid "Press OK to edit the settings."
 msgstr "Ýttu á OK til að breyta stillingum."
 
@@ -11724,16 +11721,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Remote control information"
-msgstr "Gerð foreldrastýringar"
-
-#
-#, fuzzy
-msgid "Remote control type"
-msgstr "Gerð foreldrastýringar"
-
-#
-#, fuzzy
-msgid "Remote control type setup"
 msgstr "Gerð foreldrastýringar"
 
 #
@@ -12687,6 +12674,9 @@ msgstr ""
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr ""
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -12776,6 +12766,10 @@ msgstr ""
 #
 msgid "Select HDD"
 msgstr "Veldu harðadisk"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "Veldu inntaks tæki"
 
 #
 #, fuzzy
@@ -12886,9 +12880,6 @@ msgstr ""
 msgid "Select input device"
 msgstr "Veldu inntaks tæki"
 
-msgid "Select input device."
-msgstr "Veldu inntaks tæki."
-
 #
 msgid "Select interface"
 msgstr "Veldu netkort"
@@ -12916,6 +12907,11 @@ msgstr "Veldu sendanda til að bæta við..."
 
 msgid "Select refresh rate"
 msgstr "Veldu hressingar tíðni"
+
+#
+#, fuzzy
+msgid "Select remote control"
+msgstr "Gerð foreldrastýringar"
 
 msgid "Select satellites"
 msgstr ""
@@ -12979,6 +12975,9 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr ""
 
+msgid "Select the remote control device to be used with the %s %s."
+msgstr ""
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr ""
 
@@ -13003,6 +13002,12 @@ msgid "Select the shifted character set"
 msgstr "velja slóð að mynd"
 
 msgid "Select the shifted character set for the next character only"
+msgstr ""
+
+msgid "Select the time delay before the button starts repeating."
+msgstr ""
+
+msgid "Select the time delay between each repeat of the button."
 msgstr ""
 
 msgid "Select the time zone within the area or region."
@@ -16682,8 +16687,8 @@ msgstr "Ýttu á up/niður takka á fjarstýringu til að velja. Ýttu svo á OK
 msgid "Use the wizard to set up basic features"
 msgstr "Nota álfinn til að setja upp grunnstillingar"
 
-#, fuzzy
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "Nota þessar stillingar fyrir inntaks tæki?"
 
 #, fuzzy
@@ -16805,9 +16810,6 @@ msgid "VOB File"
 msgstr ""
 
 msgid "VOB file"
-msgstr ""
-
-msgid "VU+"
 msgstr ""
 
 #
@@ -17673,9 +17675,6 @@ msgstr ""
 msgid "XBox support"
 msgstr "ekki stutt"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr ""
 
@@ -18213,12 +18212,6 @@ msgstr "ekki biðstaða"
 msgid "automatic"
 msgstr "Sjálfvirkt"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 #
 msgid "back"
 msgstr "til baka"
@@ -18237,9 +18230,6 @@ msgstr ""
 #
 msgid "better"
 msgstr "betra"
-
-msgid "beyonwizu4"
-msgstr ""
 
 #
 msgid "black"
@@ -18260,12 +18250,6 @@ msgid "both"
 msgstr ""
 
 msgid "bottom"
-msgstr ""
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
 msgstr ""
 
 msgid "broadcasting/press"
@@ -18427,9 +18411,6 @@ msgstr "búinn!"
 msgid "drama (general)"
 msgstr ""
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr ""
 
@@ -18505,21 +18486,6 @@ msgstr ""
 msgid "ese"
 msgstr "Endursetja"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-msgid "et8000/10000/13000"
-msgstr ""
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -18592,9 +18558,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr ""
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 #
 msgid "forward to the next chapter"
 msgstr "stökkva í næsta kafla"
@@ -18631,15 +18594,6 @@ msgstr "grípa þennan ramma sem bitmap"
 msgid "green"
 msgstr "grænn"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -18659,18 +18613,6 @@ msgid "h:mmam/pm"
 msgstr ""
 
 msgid "handicraft"
-msgstr ""
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-msgid "hd2400"
-msgstr ""
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
 msgstr ""
 
 msgid "height"
@@ -18706,9 +18648,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -18801,13 +18740,7 @@ msgstr ""
 msgid "manual"
 msgstr "handvirkt"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
-msgstr ""
-
-msgid "mbtwinplus"
 msgstr ""
 
 msgid "medicine/physiology/psychology"
@@ -19201,15 +19134,6 @@ msgstr ""
 msgid "serious/classical/religious/historical movie/drama"
 msgstr ""
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #
 #, fuzzy
 msgid "shortest"
@@ -19561,9 +19485,6 @@ msgid "wnw"
 msgstr ""
 
 msgid "wsw"
-msgstr ""
-
-msgid "xp1000"
 msgstr ""
 
 #

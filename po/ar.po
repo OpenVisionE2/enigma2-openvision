@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OBH enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:42+0430\n"
+"POT-Creation-Date: 2021-05-09 17:03+0430\n"
 "PO-Revision-Date: 2019-04-12 12:36+0300\n"
 "Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
 "Language-Team: mosad - مساعد الجعيد\n"
@@ -110,10 +110,6 @@ msgstr ""
 #, fuzzy
 msgid " extensions."
 msgstr "الملحقات."
-
-#, fuzzy
-msgid " ms"
-msgstr "مث"
 
 #, fuzzy
 msgid " packages selected."
@@ -1169,6 +1165,10 @@ msgid ""
 "Press exit to close"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "%s  (%s)"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
@@ -1179,10 +1179,6 @@ msgstr "المساحه المتبقيه فى القرص"
 
 #, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, fuzzy, python-format
-msgid "%s (%s)"
 msgstr "%s (%s)\n"
 
 #, python-format
@@ -2179,6 +2175,10 @@ msgstr "تعيين القنوات/مزودي القنوات:"
 msgid "All slots"
 msgstr "جميع أنواع الدقة"
 
+#, fuzzy
+msgid "All supported"
+msgstr "غير معتمد"
+
 msgid "Allocate"
 msgstr "تخصيص"
 
@@ -3077,11 +3077,6 @@ msgstr ""
 msgid "C"
 msgstr "القناة"
 
-#, fuzzy
-msgctxt "Abbreviation of \"Configurable\""
-msgid "C"
-msgstr "القناة"
-
 msgid "C-Band"
 msgstr "سي باند"
 
@@ -3321,6 +3316,10 @@ msgstr ""
 msgid "Change bouquets in quickzap"
 msgstr "التنقل بين الباقات بشكل أسرع"
 
+#, fuzzy
+msgid "Change device settings"
+msgstr "إعدادات اسم الخادم"
+
 msgid "Change recording (add time)"
 msgstr "تغيير التسجيل (إضافة وقت)"
 
@@ -3330,9 +3329,6 @@ msgstr "تغيير التسجيل (أدخل المده الزمنية)"
 #, fuzzy
 msgid "Change recording (endtime)"
 msgstr "تغيير التسجيل (وقت الانتهاء)"
-
-msgid "Change repeat and delay settings?"
-msgstr "تغيير إعدادات التكرار والتاخير ؟"
 
 msgid "Change step size"
 msgstr "تغيير مقاس الخطوه"
@@ -3740,6 +3736,11 @@ msgid "Config resolution of pictures"
 msgstr ""
 
 #, fuzzy
+msgctxt "Abbreviation of 'Configurable'"
+msgid "Configurable"
+msgstr "الاعدادات..."
+
+#, fuzzy
 msgid "Configuration"
 msgstr "الاعدادات..."
 
@@ -3855,9 +3856,6 @@ msgstr "تكوين أسم الخادم"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "تهيئة الأجهزة التي يجب استخدام خيار حذف الخلفية لها."
-
-msgid "Configure remote control type"
-msgstr "إعدادات نوع جهاز التحكم عن بعد"
 
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "تكوين القسام ووضع اللاقط."
@@ -4426,9 +4424,6 @@ msgstr "التحكم في عناوين الإلكترونيات الاستهلا
 msgid "Current crash log"
 msgstr "قنوات التردد الحالي"
 
-msgid "Current device: "
-msgstr "الجهاز الحالي: "
-
 #, fuzzy
 msgid "Current event EPG"
 msgstr "الحدث الحالي:"
@@ -4517,12 +4512,6 @@ msgstr ""
 #, fuzzy
 msgid "DLNA support"
 msgstr "دعم مشاركة الملفات على الشبكة المحلية"
-
-msgid "DMM advanced"
-msgstr "ضبط الريموت المتقدم"
-
-msgid "DMM normal"
-msgstr "ضبط الريموت العادي"
 
 msgid ""
 "DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
@@ -4885,7 +4874,8 @@ msgstr "التأخير بعد سماع إشارات القياسات الصوت�
 msgid "Delay after voltage change before motor command"
 msgstr "تأخير بعد تغيير الجهد قبل أوامر النظام المتحرك"
 
-msgid "Delay before key repeat starts:"
+#, fuzzy
+msgid "Delay before key repeat starts (ms)"
 msgstr "التاخير قبل بدء تكرار المفتاح:"
 
 msgid "Delay before sequence repeat"
@@ -5057,7 +5047,8 @@ msgstr "قائمة القنوات"
 msgid "Device mounts"
 msgstr ""
 
-msgid "Devicename:"
+#, fuzzy
+msgid "Device name"
 msgstr "أسم الجهاز:"
 
 msgid "DiSEqC"
@@ -5962,6 +5953,10 @@ msgstr "أعاده إدخال الرقم السري"
 msgid "Enter URL"
 msgstr "أعاده إدخال الرقم السري"
 
+#, fuzzy
+msgid "Enter a new name for this device."
+msgstr "غير مغطاه هذه الخدمة متقطعة ومتذبذبة"
+
 msgid "Enter an URL where alternative images could be listed for FlashImage"
 msgstr ""
 
@@ -6205,7 +6200,12 @@ msgstr "خروج من المحرر"
 msgid "Exit inetd recovery"
 msgstr "خروج من المحرر"
 
-msgid "Exit input device selection."
+#, fuzzy
+msgid "Exit input device selection"
+msgstr "إختيار خروج وإدخال الجهاز."
+
+#, fuzzy
+msgid "Exit input device selection and close all menus"
 msgstr "إختيار خروج وإدخال الجهاز."
 
 msgid "Exit media player?"
@@ -6900,9 +6900,6 @@ msgstr "غانا"
 
 msgid "Gibraltar"
 msgstr "جبل طارق"
-
-msgid "GigaBlue Black"
-msgstr ""
 
 msgid "GitHub commit"
 msgstr ""
@@ -7767,14 +7764,19 @@ msgid "Input "
 msgstr "الادخال "
 
 #, fuzzy
-msgid "Input Devices"
+msgid "Input Device Actions"
 msgstr "الاجهزة المدخلة"
+
+#, fuzzy
+msgid "Input Device Driver Setup"
+msgstr "إدخال إعدادات الجهاز"
+
+#, fuzzy
+msgid "Input Driver Setup"
+msgstr "إدخال إعدادات الجهاز"
 
 msgid "Input Stream ID"
 msgstr "إدخال معرف التدفق"
-
-msgid "Input device setup"
-msgstr "إدخال إعدادات الجهاز"
 
 msgid "Install"
 msgstr "تثبيت"
@@ -7855,7 +7857,8 @@ msgstr "داخلية"
 msgid "Internet time (NTP)"
 msgstr ""
 
-msgid "Interval between keys when repeating:"
+#, fuzzy
+msgid "Interval between keys when repeating (ms)"
 msgstr "الفاصل الزمني بين المفاتيح عند التكرار:"
 
 #, fuzzy
@@ -7897,8 +7900,9 @@ msgstr "العراق"
 msgid "Ireland"
 msgstr "إيرلندا"
 
-msgid "Is this setting ok?"
-msgstr "هل هذا الاعداد موافق؟"
+#, fuzzy
+msgid "Is the remote control working okay?"
+msgstr "إستخدم وحدة التحكم عن بعد للتلفزيون"
 
 msgid "Is this video mode ok?"
 msgstr "هل هذا وضع الفيديو موافق ؟"
@@ -8012,12 +8016,9 @@ msgstr "إصدار جديد:"
 msgid "Key Events"
 msgstr ""
 
-msgid "Keyboard"
-msgstr "لوحة المفاتيح"
-
 #, fuzzy
-msgid "Keyboard Setup"
-msgstr "إعدادات لوحة المفاتيح"
+msgid "Keyboard / Remote Control Setup"
+msgstr "الرقابة الأبوية"
 
 #, fuzzy
 msgid "Keyboard data entry"
@@ -8025,6 +8026,9 @@ msgstr "خريطة لوحة المفاتيح"
 
 msgid "Keyboard map"
 msgstr "خريطة لوحة المفاتيح"
+
+msgid "Keyboard mapping file to be used for keyboard input."
+msgstr ""
 
 msgid "Kiribati"
 msgstr "كيريباس"
@@ -8177,9 +8181,6 @@ msgstr "هوايات الترفيه"
 
 msgid "Lesotho"
 msgstr "ليسوتو"
-
-msgid "Let you change RC type but use it with care."
-msgstr ""
 
 msgid "Let's define enigma2 once more"
 msgstr ""
@@ -8924,10 +8925,6 @@ msgstr "موزمبيق"
 
 msgid "Multi EPG"
 msgstr "دليل برنامح يومي متعدد"
-
-#, fuzzy
-msgid "Multi remote control support"
-msgstr "نوع جهاز التحكم عن بعد"
 
 #, fuzzy
 msgid "Multi-EPG bouquet selection"
@@ -9783,15 +9780,15 @@ msgid "Other"
 msgstr "أخرى"
 
 #, fuzzy
+msgid "Other Actions"
+msgstr "مزيد من التعليم"
+
+#, fuzzy
 msgid "Other Subtitles & lang"
 msgstr "إعدادات الترجمة"
 
 msgid "Other buttons will jump to the help information for that button, if there is help available."
 msgstr ""
-
-#, fuzzy
-msgid "Other functions"
-msgstr "مزيد من التعليم"
 
 msgid "Output"
 msgstr "الإخراج"
@@ -10593,6 +10590,10 @@ msgstr "أضغط موافق لتفعيل السكن المختار."
 msgid "Press OK to activate the settings."
 msgstr "اضغط موافق لتفعيل الاعدادات."
 
+#, fuzzy
+msgid "Press OK to edit the settings of the selected device."
+msgstr "أضغط موافق لتحرير الاعدادات."
+
 msgid "Press OK to edit the settings."
 msgstr "أضغط موافق لتحرير الاعدادات."
 
@@ -11143,13 +11144,6 @@ msgstr "تذكير، الذي اخترته لحفظ ملف التحكم الزم
 
 #, fuzzy
 msgid "Remote control information"
-msgstr "نوع جهاز التحكم عن بعد"
-
-msgid "Remote control type"
-msgstr "نوع جهاز التحكم عن بعد"
-
-#, fuzzy
-msgid "Remote control type setup"
 msgstr "نوع جهاز التحكم عن بعد"
 
 #, fuzzy
@@ -12021,6 +12015,9 @@ msgstr "حدد 'أ' أو 'ب' إذا كان النظام الهوائي الخا
 msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) device. For all other setups select 'FBC automatic'."
 msgstr "حدد 'بدون كيبل' إذا استخدم هذا المؤالف جهازًا بدون كيبل. بالنسبة إلى جميع الإعدادات الأخرى ، حدد 'مؤالف أف بي سي تلقائي'."
 
+msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
 msgstr ""
 
@@ -12110,6 +12107,10 @@ msgstr "أختر دايزك سريع إذا كان نظامك الهوائي ي�
 #, fuzzy
 msgid "Select HDD"
 msgstr "تحديد"
+
+#, fuzzy
+msgid "Select Input Device"
+msgstr "إختيار الجهاز المدخل"
 
 #, fuzzy
 msgid "Select a bouquet"
@@ -12210,9 +12211,6 @@ msgstr ""
 msgid "Select input device"
 msgstr "إختيار الجهاز المدخل"
 
-msgid "Select input device."
-msgstr "إختيار الجهاز المدخل."
-
 msgid "Select interface"
 msgstr "أختار الواجهة"
 
@@ -12235,6 +12233,10 @@ msgstr "أختار مزود الخدمة لإضافته..."
 
 msgid "Select refresh rate"
 msgstr "أختار معدل التحديث"
+
+#, fuzzy
+msgid "Select remote control"
+msgstr "إستخدم وحدة التحكم عن بعد للتلفزيون"
 
 msgid "Select satellites"
 msgstr "اختيار الأقمار الصناعية"
@@ -12297,6 +12299,10 @@ msgstr ""
 msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
 msgstr "حدد تنسيق جهاز بدون كيبل الخاص بك. الاختيارات هي 'إشارة قناة واحدة بدون كيبل' (تشكيل قناة بدون كيبل أول) أو 'إشارة قناة واحدة جيسس' (تشكيل قناة بدون كيبل ثاني)."
 
+#, fuzzy
+msgid "Select the remote control device to be used with the %s %s."
+msgstr "حدد المؤالف الذي يتحكم في نظام الطبق المتحرك."
+
 msgid "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'nothing connected'."
 msgstr "حدد القمر الصناعي المتصل بالمنفذ أ من قسامك. إذا لم تكن متأكدًا ، فحدد 'تلقائي' وسيحاول جهاز الاستقبال تحديد ذلك نيابة عنك. إذا لم يكن هناك أي شيء متصل بهذا المنفذ ، فحدد 'لا شيء متصل'."
 
@@ -12322,6 +12328,14 @@ msgstr "أختار مسار الفيلم"
 
 msgid "Select the shifted character set for the next character only"
 msgstr ""
+
+#, fuzzy
+msgid "Select the time delay before the button starts repeating."
+msgstr "تعيين مكان أيقونة التسجيل"
+
+#, fuzzy
+msgid "Select the time delay between each repeat of the button."
+msgstr "تعيين مكان أيقونة التسجيل"
 
 #, fuzzy
 msgid "Select the time zone within the area or region."
@@ -15775,7 +15789,8 @@ msgstr "اضغط المفتاح العلوى أو السفلى من الريمو
 msgid "Use the wizard to set up basic features"
 msgstr "إستخدام نافذة الإعدادات لعمل الإعدادات الأساسية"
 
-msgid "Use these input device settings?"
+#, fuzzy, python-format
+msgid "Use these input device settings for '%s' (%s)?"
 msgstr "هل تستخدم إعدادات جهاز الإدخال هذه؟"
 
 msgid "Use these settings?"
@@ -15883,9 +15898,6 @@ msgstr "ملف الترجمة فوب"
 
 msgid "VOB file"
 msgstr "ملف الترجمة فوب"
-
-msgid "VU+"
-msgstr "الفوبلس"
 
 msgid "Vanuatu"
 msgstr "فانواتو"
@@ -16715,9 +16727,6 @@ msgstr "الكتابة إلى /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "غير معتمد"
 
-msgid "XP3000"
-msgstr ""
-
 msgid "YCbCr420"
 msgstr "YCbCr420"
 
@@ -17254,12 +17263,6 @@ msgstr "لا يوجد وضع استعداد"
 msgid "automatic"
 msgstr "تلقائي"
 
-msgid "axase3/xpeedlx"
-msgstr ""
-
-msgid "axodin"
-msgstr ""
-
 msgid "back"
 msgstr "للخلف"
 
@@ -17275,9 +17278,6 @@ msgstr ""
 
 msgid "better"
 msgstr "أفضل"
-
-msgid "beyonwizu4"
-msgstr ""
 
 msgid "black"
 msgstr "أسود"
@@ -17296,12 +17296,6 @@ msgstr ""
 
 msgid "bottom"
 msgstr "أسفل"
-
-msgid "bre2ze4k"
-msgstr ""
-
-msgid "bre2zet2c"
-msgstr ""
 
 msgid "broadcasting/press"
 msgstr "البث/الصحافة"
@@ -17453,9 +17447,6 @@ msgstr "إنتهى!"
 msgid "drama (general)"
 msgstr "فيلم/دراما (عام)"
 
-msgid "e4hdultra"
-msgstr ""
-
 msgid "east"
 msgstr "شرق"
 
@@ -17526,22 +17517,6 @@ msgstr "خطأ أثناء البحث"
 msgid "ese"
 msgstr "إعاده الضبط"
 
-msgid "et4x00"
-msgstr ""
-
-msgid "et5x00"
-msgstr ""
-
-msgid "et6x00"
-msgstr ""
-
-#, fuzzy
-msgid "et8000/10000/13000"
-msgstr "et8000/et10000"
-
-msgid "et9x00"
-msgstr ""
-
 msgid "execute cuts and exit"
 msgstr ""
 
@@ -17608,9 +17583,6 @@ msgstr ""
 msgid "foreign countries/expeditions"
 msgstr "الدول الأجنبية/البعثات"
 
-msgid "formuler1/3/4/4turbo/triplex"
-msgstr ""
-
 msgid "forward to the next chapter"
 msgstr "الانتقال إلى الأمام إلى الفصل التالي"
 
@@ -17641,15 +17613,6 @@ msgstr "انتزاع هذا الإطار كما نقطية"
 msgid "green"
 msgstr "أخضر"
 
-msgid "h0/8/i55plus"
-msgstr ""
-
-msgid "h3/4/5/6"
-msgstr ""
-
-msgid "h7/9/9se/9combo/9combose/10/11/i55plusse"
-msgstr ""
-
 msgid "h:mm"
 msgstr ""
 
@@ -17670,19 +17633,6 @@ msgstr ""
 
 msgid "handicraft"
 msgstr "الحرف اليدوية"
-
-msgid "hd11/51/1100/1200/1265/1500/500c/530c/vs1000/1500"
-msgstr ""
-
-#, fuzzy
-msgid "hd2400"
-msgstr "HD2400"
-
-msgid "hd60/multibox/se"
-msgstr ""
-
-msgid "hd61"
-msgstr ""
 
 msgid "height"
 msgstr "طول"
@@ -17715,9 +17665,6 @@ msgid "https://github.com/OpenVisionE2"
 msgstr ""
 
 msgid "https://openvision.tech"
-msgstr ""
-
-msgid "i55"
 msgstr ""
 
 msgid "information/education/school program"
@@ -17805,14 +17752,8 @@ msgstr "مجلات/تقارير/وثائقي"
 msgid "manual"
 msgstr "يدوي"
 
-msgid "maram9"
-msgstr ""
-
 msgid "martial sports"
 msgstr "الرياضة العسكرية"
-
-msgid "mbtwinplus"
-msgstr ""
 
 msgid "medicine/physiology/psychology"
 msgstr "الطب/علم الوظائف/علم النفس"
@@ -18169,15 +18110,6 @@ msgstr "موسيقى هادئه/موسيقى كلاسيكية"
 msgid "serious/classical/religious/historical movie/drama"
 msgstr "هادئه/الكلاسيكية/الدينية/التاريخية الفيلم/الدراما"
 
-msgid "sf4008"
-msgstr ""
-
-msgid "sf5008"
-msgstr ""
-
-msgid "sh1/lc"
-msgstr ""
-
 #, fuzzy
 msgid "shortest"
 msgstr "أختبار الشبكة"
@@ -18513,10 +18445,6 @@ msgstr ""
 
 msgid "wsw"
 msgstr ""
-
-#, fuzzy
-msgid "xp1000"
-msgstr "XP1000"
 
 msgid "yellow"
 msgstr "أصفر"
