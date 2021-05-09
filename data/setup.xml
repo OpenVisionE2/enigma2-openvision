@@ -64,9 +64,9 @@
 		<item level="2" text="Interlaced" description="In most cases this should be set to No. Only enable if you have a very specific need.">config.hdmirecord.interlaced</item>
 		<item level="1" text="Aspect ratio" description="The aspect ratio of the recording.">config.hdmirecord.aspectratio</item>
 	</setup>
-	<setup key="keyboard" title="Keyboard Setup">
-		<item level="0" text="Keyboard map">config.keyboard.keymap</item>
-		<item level="0" text="Multi remote control support" description="Let you change RC type but use it with care.">config.plugins.remotecontroltype.multirc</item>
+	<setup key="InputDevices" title="Keyboard / Remote Control Setup">
+		<item level="0" text="Keyboard map" description="Keyboard mapping file to be used for keyboard input.">config.inputDevices.keyboardMap</item>
+		<item level="0" text="Select remote control" description="Select the remote control device to be used with the %s %s.">config.inputDevices.remotesIndex</item>
 		<item level="0" text="Long press emulation with button" description="Press this button to emulate a long press on a button pressed afterwards (this also overrides any other actions assigned to emulation button).">config.usage.long_press_emulation_key</item>
 	</setup>
 	<setup key="lcd" title="Display Setup" requires="FrontpanelDisplay">

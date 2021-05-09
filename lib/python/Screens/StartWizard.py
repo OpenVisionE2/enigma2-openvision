@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from Screens.Wizard import wizardManager
-from Screens.Screen import Screen
+from Screens.HelpMenu import ShowRemoteControl
 from Screens.MessageBox import MessageBox
+from Screens.Screen import Screen
+from Screens.Wizard import wizardManager
 from Screens.WizardLanguage import WizardLanguage
-from Screens.Rc import Rc
 try:
 	from Plugins.SystemPlugins.OSDPositionSetup.overscanwizard import OverscanWizard
 except:
@@ -25,11 +25,11 @@ config.misc.languageselected = ConfigBoolean(default=True)
 config.misc.do_overscanwizard = ConfigBoolean(default=OverscanWizard)
 
 
-class StartWizard(WizardLanguage, Rc):
+class StartWizard(WizardLanguage, ShowRemoteControl):
 	def __init__(self, session, silent=True, showSteps=False, neededTag=None):
 		self.xmlfile = ["startwizard.xml"]
 		WizardLanguage.__init__(self, session, showSteps=False)
-		Rc.__init__(self)
+		ShowRemoteControl.__init__(self)
 		self["wizard"] = Pixmap()
 		self["lab1"] = StaticText(_("OpenVision"))
 		self["lab2"] = StaticText(_("Lets define enigma2 once more"))

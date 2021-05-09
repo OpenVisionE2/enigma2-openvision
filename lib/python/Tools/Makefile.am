@@ -1,10 +1,39 @@
 installdir = $(pkglibdir)/python/Tools
 
 install_PYTHON = \
-	FuzzyDate.py XMLTools.py Directories.py NumericalTextInput.py \
-	KeyBindings.py BoundFunction.py ISO639.py Notifications.py __init__.py \
-	RedirectOutput.py StbHardware.py Import.py Event.py CList.py CIHelper.py \
-	LoadPixmap.py Profile.py HardwareInfo.py Transponder.py ASCIItranslit.py \
-	Downloader.py Trashcan.py GetEcmInfo.py Alternatives.py TextBoundary.py \
-	camcontrol.py CountryCodes.py Multiboot.py FallbackTimer.py \
-	CopyFiles.py Log.py LogConfig.py Geolocation.py UnitConversions.py Trace.py WeatherID.py
+	__init__.py \
+	Alternatives.py \
+	ASCIItranslit.py \
+	BoundFunction.py \
+	camcontrol.py \
+	CIHelper.py \
+	CList.py \
+	CopyFiles.py \
+	CountryCodes.py \
+	Directories.py \
+	Downloader.py \
+	Event.py \
+	FallbackTimer.py \
+	FuzzyDate.py \
+	Geolocation.py \
+	GetEcmInfo.py \
+	HardwareInfo.py \
+	Import.py \
+	ISO639.py \
+	KeyBindings.py \
+	LoadPixmap.py \
+	Log.py \
+	LogConfig.py \
+	Multiboot.py \
+	Notifications.py \
+	NumericalTextInput.py \
+	Profile.py \
+	RedirectOutput.py \
+	StbHardware.py \
+	TextBoundary.py \
+	Trace.py \
+	Transponder.py \
+	Trashcan.py \
+	UnitConversions.py \
+	WeatherID.py \
+	XMLTools.py

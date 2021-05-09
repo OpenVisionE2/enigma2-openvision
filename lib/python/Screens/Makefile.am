@@ -1,21 +1,85 @@
 installdir = $(pkglibdir)/python/Screens
 
 install_PYTHON = \
-	AudioSelection.py ChannelSelection.py ClockDisplay.py ConfigMenu.py CopyFiles.py InfoBar.py \
-	Menu.py	MessageBox.py Screen.py ServiceScan.py TimerEdit.py \
-	MovieSelection.py Setup.py Information.py HarddiskSetup.py FixedMenu.py \
-	Satconfig.py ScanSetup.py NetworkSetup.py Ci.py TimerEntry.py Volume.py \
-	EpgSelection.py EventView.py Mute.py Standby.py ServiceInfo.py \
-	InfoBarGenerics.py HelpMenu.py Wizard.py __init__.py \
-	Dish.py LanguageSelection.py StartWizard.py PiPSetup.py \
-	PluginBrowser.py MinuteInput.py Scart.py PVRState.py \
-	Console.py InputBox.py ChoiceBox.py SimpleSummary.py \
-	TimerSelection.py PictureInPicture.py TimeDateInput.py \
-	SubtitleDisplay.py SubservicesQuickzap.py ParentalControlSetup.py NumericalTextInputHelpDialog.py \
-	SleepTimerEdit.py Opkg.py RdsDisplay.py Globals.py \
-	SessionGlobals.py LocationBox.py WizardLanguage.py TaskView.py Rc.py VirtualKeyBoard.py \
-	TextBox.py FactoryReset.py RecordPaths.py UnhandledKey.py ServiceStopScreen.py \
-	InputDeviceSetup.py DVD.py SoftwareUpdate.py AutoDiseqc.py InstallWizard.py ScreenSaver.py \
-	Hotkey.py StreamingClientsInfo.py SoftcamSetup.py FlashImage.py SetupFallbacktuner.py \
-	SkinSelector.py OScamInfo.py ClientMode.py CronTimer.py PowerTimerEdit.py PowerTimerEntry.py \
-	Time.py
+	__init__.py \
+	AudioSelection.py \
+	AutoDiseqc.py \
+	ChannelSelection.py \
+	ChoiceBox.py \
+	Ci.py \
+	ClientMode.py \
+	ClockDisplay.py \
+	ConfigMenu.py \
+	Console.py \
+	CopyFiles.py \
+	CronTimer.py \
+	Dish.py \
+	DVD.py \
+	EpgSelection.py \
+	EventView.py \
+	FactoryReset.py \
+	FixedMenu.py \
+	FlashImage.py \
+	Globals.py \
+	HarddiskSetup.py \
+	HelpMenu.py \
+	Hotkey.py \
+	InfoBar.py \
+	InfoBarGenerics.py \
+	Information.py \
+	InputBox.py \
+	InputDeviceSetup.py \
+	InstallWizard.py \
+	LanguageSelection.py \
+	LocationBox.py \
+	Menu.py	\
+	MessageBox.py \
+	MinuteInput.py \
+	MovieSelection.py \
+	Mute.py \
+	NetworkSetup.py \
+	NumericalTextInputHelpDialog.py \
+	Opkg.py \
+	OScamInfo.py \
+	ParentalControlSetup.py \
+	PictureInPicture.py \
+	PiPSetup.py \
+	PluginBrowser.py \
+	PowerTimerEdit.py \
+	PowerTimerEntry.py \
+	PVRState.py \
+	RdsDisplay.py \
+	RecordPaths.py \
+	Satconfig.py \
+	ScanSetup.py \
+	Scart.py \
+	Screen.py \
+	ScreenSaver.py \
+	ServiceInfo.py \
+	ServiceScan.py \
+	ServiceStopScreen.py \
+	SessionGlobals.py \
+	Setup.py \
+	SetupFallbacktuner.py \
+	SimpleSummary.py \
+	SkinSelector.py \
+	SleepTimerEdit.py \
+	SoftcamSetup.py \
+	SoftwareUpdate.py \
+	Standby.py \
+	StartWizard.py \
+	StreamingClientsInfo.py \
+	SubservicesQuickzap.py \
+	SubtitleDisplay.py \
+	TaskView.py \
+	TextBox.py \
+	Time.py \
+	TimeDateInput.py \
+	TimerEdit.py \
+	TimerEntry.py \
+	TimerSelection.py \
+	UnhandledKey.py \
+	VirtualKeyBoard.py \
+	Volume.py \
+	Wizard.py \
+	WizardLanguage.py

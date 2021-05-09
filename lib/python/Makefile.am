@@ -6,7 +6,6 @@ install_PYTHON = \
 	e2reactor.py \
 	GlobalActions.py \
 	keyids.py \
-	keymapparser.py \
 	Navigation.py \
 	NavigationInstance.py \
 	RecordTimer.py \

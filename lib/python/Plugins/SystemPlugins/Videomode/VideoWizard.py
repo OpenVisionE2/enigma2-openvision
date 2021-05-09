@@ -3,7 +3,7 @@
 from __future__ import print_function
 from Screens.Wizard import WizardSummary
 from Screens.WizardLanguage import WizardLanguage
-from Screens.Rc import Rc
+from Screens.HelpMenu import ShowRemoteControl
 from Plugins.SystemPlugins.Videomode.VideoHardware import video_hw
 from Components.Sources.StaticText import StaticText
 from Components.Label import Label
@@ -28,7 +28,7 @@ class VideoWizardSummary(WizardSummary):
 		self["pic"].instance.setPixmapFromFile(file)
 
 
-class VideoWizard(WizardLanguage, Rc):
+class VideoWizard(WizardLanguage, ShowRemoteControl):
 	skin = """
 		<screen position="fill" title="Welcome..." flags="wfNoBorder" >
 			<panel name="WizardMarginsTemplate"/>
@@ -58,7 +58,7 @@ class VideoWizard(WizardLanguage, Rc):
 		self.hw = video_hw
 
 		WizardLanguage.__init__(self, session, showSteps=False, showStepSlider=False)
-		Rc.__init__(self)
+		ShowRemoteControl.__init__(self)
 		self["wizard"] = Pixmap()
 		self["portpic"] = Pixmap()
 		self["lab1"] = StaticText(_("OpenVision"))

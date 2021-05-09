@@ -10,7 +10,7 @@ from Components.Sources.StaticText import StaticText
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Screens.InfoBar import InfoBar
-from Screens.Rc import Rc
+from Screens.HelpMenu import ShowRemoteControl
 from Screens.MessageBox import MessageBox
 from Screens.Standby import TryQuitMainloop
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN
@@ -93,10 +93,10 @@ class LanguageSelection(Screen):
 		self["languages"].list = list
 
 
-class LanguageWizard(LanguageSelection, Rc):
+class LanguageWizard(LanguageSelection, ShowRemoteControl):
 	def __init__(self, session):
 		LanguageSelection.__init__(self, session)
-		Rc.__init__(self)
+		ShowRemoteControl.__init__(self)
 		self.onLayoutFinish.append(self.selectKeys)
 		self["wizard"] = Pixmap()
 		self["text"] = Label()
