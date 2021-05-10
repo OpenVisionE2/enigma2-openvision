@@ -650,7 +650,7 @@ def shellquote(string):
 
 def isPluginInstalled(pluginName, pluginFile="plugin", pluginType=None):
 	path, flags = defaultPaths.get(SCOPE_PLUGINS)
-	for type in listdir(path):
+	for type in [x for x in listdir(path) if isdir(pathjoin(path, x))]:
 		for extension in ["o", "c", ""]:
 			if isfile(pathjoin(path, type, pluginName, "%s.py%s" % (pluginFile, extension))):
 				if pluginType and type != pluginType:
