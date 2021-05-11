@@ -3,7 +3,7 @@ from os.path import isfile
 
 from Screens.MessageBox import MessageBox
 from Components.ActionMap import HelpableActionMap
-from Components.config import ConfigSelection, NoSave, config
+from Components.config import ConfigSelection, config
 from Components.ScrollLabel import ScrollLabel
 from Components.Sources.StaticText import StaticText
 from Screens.Setup import Setup
@@ -21,8 +21,8 @@ class SoftcamSetup(Setup):
 			("", _("Don't restart")),
 			("s", _("Restart softcam"))
 		]
-		config.misc.softcams = NoSave(ConfigSelection(choices=self.softcam.getList()))
-		config.misc.softcams.value = self.softcam.current()
+		config.misc.softcams = ConfigSelection(default="None", choices=self.softcam.getList())
+		config.misc.softcams.value == ""
 		cardservers = self.cardserver.getList()
 		if cardservers:
 			default = self.cardserver.current()
@@ -30,9 +30,9 @@ class SoftcamSetup(Setup):
 		else:
 			cardservers = [("", _("None"))]
 			default = ""
-		config.misc.cardservers = NoSave(ConfigSelection(choices=cardservers))
-		config.misc.cardservers.value = default
-		config.misc.restarts = NoSave(ConfigSelection(default="", choices=restartOptions))
+		config.misc.cardservers = ConfigSelection(choices=cardservers)
+		config.misc.cardservers.value == ""
+		config.misc.restarts = ConfigSelection(default="", choices=restartOptions)
 		Setup.__init__(self, session=session, setup="softcamsettings")
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText()
@@ -71,9 +71,6 @@ class SoftcamSetup(Setup):
 			Setup.keySave(self)
 
 	def keyCancel(self):
-		config.misc.softcams.value = config.misc.softcams.default
-		config.misc.cardservers.value = config.misc.cardservers.default
-		config.misc.restarts.value = config.misc.restarts.default
 		Setup.keyCancel(self)
 
 	def updateButtons(self):
