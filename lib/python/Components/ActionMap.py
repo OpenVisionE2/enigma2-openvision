@@ -136,11 +136,11 @@ class ActionMap:
 		self.bound = False
 		self.execActive = False
 		self.enabled = True
-		undefinedAction = []
-		for action in self.actions.keys():
+		undefinedAction = list(self.actions.keys())
+		for action in undefinedAction[:]:
 			for context in self.contexts:
-				if not queryKeyBinding(context, action):
-					undefinedAction.append(action)
+				if queryKeyBinding(context, action):
+					undefinedAction.remove(action)
 					break
 		if undefinedAction:
 			print("[ActionMap] Keymap(s) '%s': Undefined action(s) '%s'." % ("', '".join(sorted(contexts)), "', '".join(sorted(undefinedAction))))
