@@ -4,6 +4,7 @@
 
 from ActionMap import loadKeymap, parseKeymap, removeKeymap as removeKeymapNew
 
+
 class KeymapError(Exception):
 	def __init__(self, message):
 		self.msg = message
