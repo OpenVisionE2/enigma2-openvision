@@ -455,7 +455,7 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("visionversion")))
 		info.append(formatLine("P1", _("OpenVision revision"), BoxInfo.getItem("visionrevision")))
 		if config.misc.OVupdatecheck.value:
-			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if BoxInfo.getItem("visionversion").startswith("10") else "old")
+			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if str(BoxInfo.getItem("visionversion")).startswith("10") else "old")
 			try:
 				ovResponse = urlopen(ovUrl)
 				ovRevision = ovResponse.read().decode() if PY2 else ovResponse.read()
