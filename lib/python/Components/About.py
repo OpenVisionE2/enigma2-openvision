@@ -1,9 +1,9 @@
 from array import array
+from binascii import hexlify
 from fcntl import ioctl
 from glob import glob
 from os import popen, stat
 from os.path import isfile
-from re import search
 from six import PY2
 from socket import AF_INET, SOCK_DGRAM, inet_ntoa, socket
 from struct import pack, unpack
@@ -14,7 +14,7 @@ from time import localtime, strftime
 from enigma import getEnigmaVersionString as getEnigmaVersion
 
 from Components.Console import Console
-from Components.SystemInfo import BoxInfo, SystemInfo
+from Components.SystemInfo import BoxInfo
 from Tools.Directories import fileReadLine, fileReadLines
 
 MODULE_NAME = __name__.split(".")[-1]
@@ -27,8 +27,7 @@ def _ifinfo(sock, addr, ifname):
 	info = ioctl(sock.fileno(), addr, iface)
 	if addr == 0x8927:
 		return "".join(["%02x:" % ord(char) for char in info[18:24]])[:-1].upper()
-	else:
-		return inet_ntoa(info[20:24])
+	return inet_ntoa(info[20:24])
 
 
 def getIfConfig(ifname):
@@ -63,15 +62,11 @@ def getVersionString():
 
 
 def getImageVersionString():
-	try:
-		if isfile("/var/lib/opkg/status"):
-			print("[About] Read /var/lib/opkg/status")
-			status = stat("/var/lib/opkg/status")
+	if isfile("/var/lib/opkg/status"):
+		status = stat("/var/lib/opkg/status")
 		tm = localtime(status.st_mtime)
 		if tm.tm_year >= 2018:
 			return strftime("%Y-%m-%d %H:%M:%S", tm)
-	except:
-		print("[About] Read /var/lib/opkg/status failed.")
 	return _("Unavailable")
 
 
@@ -86,6 +81,20 @@ def getBuildDateString():
 	return "%s-%s-%s" % (version[:4], version[4:6], version[6:8])
 
 
+def getUpdateDateString():
+	if isfile("/proc/openvision/compiledate"):
+		build = fileReadLine("/proc/openvision/compiledate", source=MODULE_NAME)
+	elif isfile("/etc/openvision/compiledate"):
+		build = fileReadLine("/etc/openvision/compiledate", source=MODULE_NAME)
+	else:
+		build = None
+	if build is not None:
+		build = build.strip()
+		if build.isdigit():
+			return "%s-%s-%s" % (build[:4], build[4:6], build[6:])
+	return _("Unknown")
+
+
 def getEnigmaVersionString():
 	enigmaVersion = getEnigmaVersion()
 	if "-(no branch)" in enigmaVersion:
@@ -97,24 +106,23 @@ def getGStreamerVersionString():
 	if isfile("/usr/bin/gst-launch-0.10"):
 		return "0.10.36"
 	else:
-		try:
-			print("[About] Read /var/lib/opkg/info/gstreamer.control")
-			gst = [x.split("Version: ") for x in open(glob("/var/lib/opkg/info/gstreamer?.[0-9].control")[0], "r") if x.startswith("Version:")][0]
-			return "%s" % gst[1].split("+")[0].replace("\n", "")
-		except:
-			print("[About] Read /var/lib/opkg/info/gstreamer.control failed.")
-			return _("Not Installed")
+		filenames = glob("/var/lib/opkg/info/gstreamer?.[0-9].control")
+		if filenames:
+			lines = fileReadLines(filenames[0], source=MODULE_NAME)
+			if lines:
+				for line in lines:
+					if line[0:8] == "Version:":
+						return line[9:].split("+")[0].split("-")[0]
+	return _("Not Installed")
 
 
 def getFFmpegVersionString():
-	try:
-		print("[About] Read /var/lib/opkg/info/ffmpeg.control")
-		ffmpeg = [x.split("Version: ") for x in open(glob("/var/lib/opkg/info/ffmpeg.control")[0], "r") if x.startswith("Version:")][0]
-		version = ffmpeg[1].split("-")[0].replace("\n", "")
-		return "%s" % version.split("+")[0]
-	except:
-		print("[About] Read /var/lib/opkg/info/ffmpeg.control failed.")
-		return _("Not Installed")
+	lines = fileReadLines("/var/lib/opkg/info/ffmpeg.control", source=MODULE_NAME)
+	if lines:
+		for line in lines:
+			if line[0:8] == "Version:":
+				return line[9:].split("+")[0]
+	return _("Not Installed")
 
 
 def getKernelVersionString():
@@ -125,45 +133,47 @@ def getKernelVersionString():
 
 
 def getCPUBenchmark():
-	try:
-		cpucount = 0
-		print("[About] Read /proc/cpuinfo")
-		for line in open("/proc/cpuinfo").readlines():
+	cpuCount = 0
+	lines = fileReadLines("/proc/cpuinfo", source=MODULE_NAME)
+	if lines:
+		for line in lines:
 			line = [x.strip() for x in line.strip().split(":")]
 			if line[0] == "processor":
-				cpucount += 1
-
-		if not isfile("/tmp/dhry.txt"):
-			cmdbenchmark = "dhry > /tmp/dhry.txt"
-			Console().ePopen(cmdbenchmark)
-		if isfile("/tmp/dhry.txt"):
-			print("[About] Read /tmp/dhry.txt")
-			cpubench = popen("cat /tmp/dhry.txt | grep 'Open Vision DMIPS' | sed 's|[^0-9]*||'").read().strip()
-			benchmarkstatus = popen("cat /tmp/dhry.txt | grep 'Open Vision CPU status' | cut -f2 -d':'").read().strip()
-
-		if cpucount > 1:
-			cpumaxbench = int(cpubench) * int(cpucount)
-			return "%s DMIPS per core\n%s DMIPS for all (%s) cores (%s)" % (cpubench, cpumaxbench, cpucount, benchmarkstatus)
+				cpuCount += 1
+	if not isfile("/tmp/dhry.txt"):
+		benchmarkCmd = "/usr/bin/dhry > /tmp/dhry.txt"
+		Console().ePopen(benchmarkCmd)
+	if isfile("/tmp/dhry.txt"):
+		lines = fileReadLines("/tmp/dhry.txt", source=MODULE_NAME)
+		cpuBenchmark = 0
+		cpuRating = ""
+		if lines:
+			for line in lines:
+				if line.startswith("Open Vision DMIPS"):
+					cpuBenchmark = int([x.strip() for x in line.split(":")][1])
+				if line.startswith("Open Vision CPU status"):
+					cpuRating = [x.strip() for x in line.split(":")][1]
+		if cpuCount > 1:
+			cpuMaxBenchmark = cpuBenchmark * cpuCount
+			return "%s DMIPS per core\n%s DMIPS for all (%s) cores (%s)" % (cpuBenchmark, cpuMaxBenchmark, cpuCount, cpuRating)
 		else:
-			return "%s DMIPS (%s)" % (cpubench, benchmarkstatus)
-	except:
-		print("[About] Read /tmp/dhry.txt failed.")
-		return _("Unknown")
+			return "%s DMIPS (%s)" % (cpuBenchmark, cpuRating)
+	return _("Unknown")
 
 
 def getRAMBenchmark():
-	try:
-		if not isfile("/tmp/streambench.txt"):
-			streambenchmark = "streambench > /tmp/streambench.txt"
-			Console().ePopen(streambenchmark)
-		if isfile("/tmp/streambench.txt"):
-			print("[About] Read /tmp/streambench.txt")
-			streambench = popen("cat /tmp/streambench.txt | grep 'Open Vision copy rate' | sed 's|[^0-9]*||'").read().strip()
-
-		return "%s MB/s copy rate" % (streambench)
-	except:
-		print("[About] Read /tmp/streambench.txt failed.")
-		return _("Unknown")
+	if not isfile("/tmp/streambench.txt"):
+		benchmarkCmd = "/usr/bin/streambench > /tmp/streambench.txt"
+		Console().ePopen(benchmarkCmd)
+	if isfile("/tmp/streambench.txt"):
+		lines = fileReadLines("/tmp/streambench.txt", source=MODULE_NAME)
+		ramBenchmark = 0
+		if lines:
+			for line in lines:
+				if line.startswith("Open Vision copy rate"):
+					ramBenchmark = [x.strip() for x in line.split(":")][1]
+		return "%s MB/s copy rate" % ramBenchmark
+	return _("Unknown")
 
 
 def getCPUSerial():
@@ -176,94 +186,76 @@ def getCPUSerial():
 
 
 def getCPUInfoString():
-	try:
-		cpu_count = 0
-		cpu_speed = 0
-		processor = ""
-		print("[About] Read /proc/cpuinfo")
-		for line in open("/proc/cpuinfo").readlines():
-			line = [x.strip() for x in line.strip().split(":")]
+	cpuCount = 0
+	cpuSpeed = 0
+	processor = ""
+	lines = fileReadLines("/proc/cpuinfo", source=MODULE_NAME)
+	if lines:
+		for line in lines:
+			line = [x.strip() for x in line.strip().split(":", 1)]
 			if not processor and line[0] in ("system type", "model name", "Processor"):
 				processor = line[1].split()[0]
-			elif not cpu_speed and line[0] == "cpu MHz":
-				cpu_speed = "%1.0f" % float(line[1])
+			elif not cpuSpeed and line[0] == "cpu MHz":
+				cpuSpeed = "%1.0f" % float(line[1])
 			elif line[0] == "processor":
-				cpu_count += 1
-
+				cpuCount += 1
 		if processor.startswith("ARM") and isfile("/proc/stb/info/chipset"):
-			print("[About] Read /proc/stb/info/chipset")
-			processor = "%s (%s)" % (open("/proc/stb/info/chipset").readline().strip().upper(), processor)
-
-		if not cpu_speed:
-			try:
-				print("[About] Read /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq")
-				cpu_speed = int(open("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq").read()) / 1000
-			except:
-				print("[About] Read /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq failed.")
+			processor = "%s (%s)" % (fileReadLine("/proc/stb/info/chipset", "", source=MODULE_NAME).upper(), processor)
+		if not cpuSpeed:
+			cpuSpeed = fileReadLine("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", source=MODULE_NAME)
+			if cpuSpeed is None:
 				try:
-					import binascii
-					print("[About] Read /sys/firmware/devicetree/base/cpus/cpu@0/clock-frequency")
-					cpu_speed = int(int(binascii.hexlify(open("/sys/firmware/devicetree/base/cpus/cpu@0/clock-frequency", "rb").read()), 16) / 100000000) * 100
+					cpuSpeed = int(int(hexlify(open("/sys/firmware/devicetree/base/cpus/cpu@0/clock-frequency", "rb").read()), 16) / 100000000) * 100
 				except:
 					print("[About] Read /sys/firmware/devicetree/base/cpus/cpu@0/clock-frequency failed.")
-					cpu_speed = "-"
+					cpuSpeed = "-"
+			else:
+				cpuSpeed = int(cpuSpeed) / 1000
 
 		temperature = None
 		if isfile("/proc/stb/fp/temp_sensor_avs"):
-			print("[About] Read /proc/stb/fp/temp_sensor_avs")
-			temperature = open("/proc/stb/fp/temp_sensor_avs").readline().replace("\n", "")
+			temperature = fileReadLine("/proc/stb/fp/temp_sensor_avs", source=MODULE_NAME)
 		elif isfile("/proc/stb/power/avs"):
-			print("[About] Read /proc/stb/power/avs")
-			temperature = open("/proc/stb/power/avs").readline().replace("\n", "")
+			temperature = fileReadLine("/proc/stb/power/avs", source=MODULE_NAME)
 		elif isfile("/proc/stb/fp/temp_sensor"):
-			print("[About] Read /proc/stb/fp/temp_sensor")
-			temperature = open("/proc/stb/fp/temp_sensor").readline().replace("\n", "")
+			temperature = fileReadLine("/proc/stb/fp/temp_sensor", source=MODULE_NAME)
 		elif isfile("/proc/stb/sensors/temp0/value"):
-			print("[About] Read /proc/stb/sensors/temp0/value")
-			temperature = open("/proc/stb/sensors/temp0/value").readline().replace("\n", "")
+			temperature = fileReadLine("/proc/stb/sensors/temp0/value", source=MODULE_NAME)
 		elif isfile("/proc/stb/sensors/temp/value"):
-			print("[About] Read /proc/stb/sensors/temp/value")
-			temperature = open("/proc/stb/sensors/temp/value").readline().replace("\n", "")
+			temperature = fileReadLine("/proc/stb/sensors/temp/value", source=MODULE_NAME)
 		elif isfile("/sys/devices/virtual/thermal/thermal_zone0/temp"):
-			try:
-				print("[About] Read /sys/devices/virtual/thermal/thermal_zone0/temp")
-				temperature = int(open("/sys/devices/virtual/thermal/thermal_zone0/temp").read().strip()) / 1000
-			except:
-				print("[About] Read /sys/devices/virtual/thermal/thermal_zone0/temp failed.")
+			temperature = fileReadLine("/sys/devices/virtual/thermal/thermal_zone0/temp", source=MODULE_NAME)
+			if temperature:
+				temperature = int(temperature) / 1000
 		elif isfile("/sys/class/thermal/thermal_zone0/temp"):
-			try:
-				print("[About] Read /sys/class/thermal/thermal_zone0/temp")
-				temperature = int(open("/sys/class/thermal/thermal_zone0/temp").read().strip()) / 1000
-			except:
-				print("[About] Read /sys/class/thermal/thermal_zone0/temp failed.")
+			temperature = fileReadLine("/sys/class/thermal/thermal_zone0/temp", source=MODULE_NAME)
+			if temperature:
+				temperature = int(temperature) / 1000
 		elif isfile("/proc/hisi/msp/pm_cpu"):
-			try:
-				print("[About] Read /proc/hisi/msp/pm_cpu")
-				temperature = search("temperature = (\d+) degree", open("/proc/hisi/msp/pm_cpu").read()).group(1)
-			except:
-				print("[About] Read /proc/hisi/msp/pm_cpu failed.")
+			lines = fileReadLines("/proc/hisi/msp/pm_cpu", source=MODULE_NAME)
+			if lines:
+				for line in lines:
+					if "temperature = " in line:
+						temperature = line.split("temperature = ")[1].split()[0]
 		if temperature:
 			degree = u"\u00B0"
 			if not isinstance(degree, str):
 				degree = degree.encode("UTF-8", errors="ignore")
-			return "%s %s MHz (%s) %s%sC" % (processor, cpu_speed, ngettext("%d core", "%d cores", cpu_count) % cpu_count, temperature, degree)
-		return "%s %s MHz (%s)" % (processor, cpu_speed, ngettext("%d core", "%d cores", cpu_count) % cpu_count)
-	except:
-		print("[About] Read temperature failed.")
-		return _("undefined")
+			return "%s %s MHz (%s) %s%sC" % (processor, cpuSpeed, ngettext("%d core", "%d cores", cpuCount) % cpuCount, temperature, degree)
+		return "%s %s MHz (%s)" % (processor, cpuSpeed, ngettext("%d core", "%d cores", cpuCount) % cpuCount)
 
 
 def getChipSetString():
 	chipset = fileReadLine("/proc/stb/info/chipset", source=MODULE_NAME)
 	if chipset is None:
 		return _("Undefined")
-	return str(chipset.lower())
+	return chipset.lower()
 
 
 def getCPUBrand():
-	if SystemInfo["AmlogicFamily"]:
+	if BoxInfo.getItem("AmlogicFamily"):
 		return _("Amlogic")
-	elif SystemInfo["HiSilicon"]:
+	elif BoxInfo.getItem("HiSilicon"):
 		return _("HiSilicon")
 	elif socfamily.startswith("smp"):
 		return _("Sigma Designs")
@@ -274,57 +266,56 @@ def getCPUBrand():
 
 
 def getCPUArch():
-	if SystemInfo["ArchIsARM64"]:
+	if BoxInfo.getItem("ArchIsARM64"):
 		return _("ARM64")
-	elif SystemInfo["ArchIsARM"]:
+	elif BoxInfo.getItem("ArchIsARM"):
 		return _("ARM")
 	return _("Mipsel")
 
 
 def getFlashType():
-	if SystemInfo["SmallFlash"]:
+	if BoxInfo.getItem("SmallFlash"):
 		return _("Small - Tiny image")
-	elif SystemInfo["MiddleFlash"]:
+	elif BoxInfo.getItem("MiddleFlash"):
 		return _("Middle - Lite image")
 	return _("Normal - Standard image")
 
 
 def getDVBAPI():
-	return _("Old") if SystemInfo["OLDE2API"] else _("New")
+	return _("Old") if BoxInfo.getItem("OLDE2API") else _("New")
 
 
 def getVisionModule():
-	if SystemInfo["OpenVisionModule"]:
+	if BoxInfo.getItem("OpenVisionModule"):
 		return _("Loaded")
 	print("[About] No Open Vision module!  Hard multiboot?")
 	return _("Unknown")
 
 
 def getDriverInstalledDate():
-	try:
-		try:
-			if BoxInfo.getItem("model") in ("dm800", "dm8000"):
-				print("[About] Read /var/lib/opkg/info/dvb-modules.control")
-				driver = [x.split("-")[-2:-1][0][-9:] for x in open(glob("/var/lib/opkg/info/*dvb-modules*.control")[0], "r") if x.startswith("Version:")][0]
-				return "%s-%s-%s" % (driver[:4], driver[4:6], driver[6:])
-			else:
-				print("[About] Read /var/lib/opkg/info/dvb-modules.control")
-				driver = [x.split("-")[-2:-1][0][-8:] for x in open(glob("/var/lib/opkg/info/*dvb-modules*.control")[0], "r") if x.startswith("Version:")][0]
-				return "%s-%s-%s" % (driver[:4], driver[4:6], driver[6:])
-		except:
-			print("[About] Read /var/lib/opkg/info/dvb-modules.control failed.")
-			try:
-				print("[About] Read /var/lib/opkg/info/dvb-proxy.control")
-				driver = [x.split("Version:") for x in open(glob("/var/lib/opkg/info/*dvb-proxy*.control")[0], "r") if x.startswith("Version:")][0]
-				return "%s" % driver[1].replace("\n", "")
-			except:
-				print("[About] Read /var/lib/opkg/info/dvb-proxy.control failed.")
-				print("[About] Read /var/lib/opkg/info/platform-util.control")
-				driver = [x.split("Version:") for x in open(glob("/var/lib/opkg/info/*platform-util*.control")[0], "r") if x.startswith("Version:")][0]
-				return "%s" % driver[1].replace("\n", "")
-	except:
-		print("[About] Read driver date failed.")
-		return _("Unknown")
+	filenames = glob("/var/lib/opkg/info/*dvb-modules*.control")
+	if filenames:
+		lines = fileReadLines(filenames[0], source=MODULE_NAME)
+		if lines:
+			for line in lines:
+				if line[0:8] == "Version:":
+					driver = line.split("-")[1]
+					return "%s-%s-%s" % (driver[:4], driver[4:6], driver[6:])
+	filenames = glob("/var/lib/opkg/info/*dvb-proxy*.control")
+	if filenames:
+		lines = fileReadLines(filenames[0], source=MODULE_NAME)
+		if lines:
+			for line in lines:
+				if line[0:8] == "Version:":
+					return line.split("-")[1]
+	filenames = glob("/var/lib/opkg/info/*platform-util*.control")
+	if filenames:
+		lines = fileReadLines(filenames[0], source=MODULE_NAME)
+		if lines:
+			for line in lines:
+				if line[0:8] == "Version:":
+					return line.split("-")[1]
+	return _("Unknown")
 
 
 def getPythonVersionString():
@@ -343,27 +334,19 @@ def GetIPsFromNetworkInterfaces():
 	while True:
 		_bytes = maxPossible * structSize
 		names = array("B")
-		for i in range(_bytes):
+		for index in range(_bytes):
 			names.append(0)
-		outbytes = unpack("iL", ioctl(
-			sock.fileno(),
-			0x8912,  # SIOCGIFCONF
-			pack("iL", _bytes, names.buffer_info()[0])
-		))[0]
+		outbytes = unpack("iL", ioctl(sock.fileno(), 0x8912, pack("iL", _bytes, names.buffer_info()[0])))[0]  # 0x8912 = SIOCGIFCONF
 		if outbytes == _bytes:
 			maxPossible *= 2
 		else:
 			break
-	namestr = names.tostring() if PY2 else names
+	nameStr = names.tostring() if PY2 else names
 	ifaces = []
-	for i in range(0, outbytes, structSize):
-		if PY2:
-			iface_name = bytes.decode(namestr[i:i + 16]).split("\0", 1)[0].encode("ascii")
-		else:
-			iface_name = str(namestr[i:i + 16]).split("\0", 1)[0]
-		if iface_name != "lo":
-			iface_addr = inet_ntoa(namestr[i + 20:i + 24])
-			ifaces.append((iface_name, iface_addr))
+	for index in range(0, outbytes, structSize):
+		ifaceName = bytes.decode(nameStr[index:index + 16]).split("\0", 1)[0].encode("ascii") if PY2 else str(nameStr[index:index + 16]).split("\0", 1)[0]
+		if ifaceName != "lo":
+			ifaces.append((ifaceName, inet_ntoa(nameStr[index + 20:index + 24])))
 	return ifaces
 
 
