@@ -1,18 +1,16 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from Components.GUIComponent import GUIComponent
+from enigma import eListbox, eListboxPythonStringContent
 
-from enigma import eListboxPythonStringContent, eListbox
+from Components.GUIComponent import GUIComponent
 
 
 class MenuList(GUIComponent):
-	def __init__(self, list, enableWrapAround=True, content=eListboxPythonStringContent):
+	def __init__(self, menuList, enableWrapAround=True, content=eListboxPythonStringContent):
 		GUIComponent.__init__(self)
-		self.list = list
-		self.l = content()
-		self.l.setList(self.list)
-		self.onSelectionChanged = []
+		self.menuList = menuList
 		self.enableWrapAround = enableWrapAround
+		self.l = content()
+		self.l.setList(self.menuList)
+		self.onSelectionChanged = []
 
 	def getCurrent(self):
 		return self.l.getCurrentSelection()
@@ -30,8 +28,8 @@ class MenuList(GUIComponent):
 		instance.selectionChanged.get().remove(self.selectionChanged)
 
 	def selectionChanged(self):
-		for f in self.onSelectionChanged:
-			f()
+		for module in self.onSelectionChanged:
+			module()
 
 	def getSelectionIndex(self):
 		return self.l.getCurrentSelectionIndex()
@@ -39,21 +37,21 @@ class MenuList(GUIComponent):
 	def getSelectedIndex(self):
 		return self.l.getCurrentSelectionIndex()
 
-	def setList(self, list):
-		self.list = list
-		self.l.setList(self.list)
+	def setList(self, menuList):
+		self.menuList = menuList
+		self.l.setList(self.menuList)
 
-	def moveToIndex(self, idx):
+	def moveToIndex(self, index):
 		if self.instance is not None:
-			self.instance.moveSelectionTo(idx)
+			self.instance.moveSelectionTo(index)
+
+	def top(self):
+		if self.instance is not None:
+			self.instance.moveSelection(self.instance.moveTop)
 
 	def pageUp(self):
 		if self.instance is not None:
 			self.instance.moveSelection(self.instance.pageUp)
-
-	def pageDown(self):
-		if self.instance is not None:
-			self.instance.moveSelection(self.instance.pageDown)
 
 	def up(self):
 		if self.instance is not None:
@@ -62,6 +60,14 @@ class MenuList(GUIComponent):
 	def down(self):
 		if self.instance is not None:
 			self.instance.moveSelection(self.instance.moveDown)
+
+	def pageDown(self):
+		if self.instance is not None:
+			self.instance.moveSelection(self.instance.pageDown)
+
+	def bottom(self):
+		if self.instance is not None:
+			self.instance.moveSelection(self.instance.moveEnd)
 
 	def selectionEnabled(self, enabled):
 		if self.instance is not None:
