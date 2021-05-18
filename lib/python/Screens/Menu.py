@@ -10,7 +10,7 @@ from Components.config import ConfigDictionarySet, NoSave, config, configfile
 from Components.NimManager import nimmanager
 from Components.Pixmap import Pixmap
 from Components.PluginComponent import plugins
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
 from Plugins.Plugin import PluginDescriptor
@@ -194,9 +194,9 @@ class Menu(Screen, ProtectedScreen):
 		requires = node.get("requires")
 		if requires:
 			if requires[0] == "!":
-				if SystemInfo.get(requires[1:], False):
+				if BoxInfo.getItem(requires[1:], False):
 					return
-			elif not SystemInfo.get(requires, False):
+			elif not BoxInfo.getItem(requires, False):
 				return
 
 		MenuTitle = _(node.get("text", "??").encode("UTF-8", "ignore")) if PY2 else _(node.get("text", "??"))
@@ -228,9 +228,9 @@ class Menu(Screen, ProtectedScreen):
 		requires = node.get("requires")
 		if requires:
 			if requires[0] == "!":
-				if SystemInfo.get(requires[1:], False):
+				if BoxInfo.getItem(requires[1:], False):
 					return
-			elif not SystemInfo.get(requires, False):
+			elif not BoxInfo.getItem(requires, False):
 				return
 		conditional = node.get("conditional")
 		if conditional and not eval(conditional):
