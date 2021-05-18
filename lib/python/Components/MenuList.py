@@ -4,12 +4,12 @@ from Components.GUIComponent import GUIComponent
 
 
 class MenuList(GUIComponent):
-	def __init__(self, menuList, enableWrapAround=True, content=eListboxPythonStringContent):
+	def __init__(self, list, enableWrapAround=True, content=eListboxPythonStringContent):
 		GUIComponent.__init__(self)
-		self.menuList = menuList
+		self.list = list
 		self.enableWrapAround = enableWrapAround
 		self.l = content()
-		self.l.setList(self.menuList)
+		self.l.setList(self.list)
 		self.onSelectionChanged = []
 
 	def getCurrent(self):
@@ -37,9 +37,9 @@ class MenuList(GUIComponent):
 	def getSelectedIndex(self):
 		return self.l.getCurrentSelectionIndex()
 
-	def setList(self, menuList):
-		self.menuList = menuList
-		self.l.setList(self.menuList)
+	def setList(self, list):
+		self.list = list
+		self.l.setList(self.list)
 
 	def moveToIndex(self, index):
 		if self.instance is not None:
