@@ -131,6 +131,7 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 		if immutable:
 			self.immutableList.append(item)
 		self.boxInfo[item] = value
+		SystemInfo[item] = value
 		return True
 
 	def deleteItem(self, item):
