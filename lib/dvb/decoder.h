@@ -50,11 +50,6 @@ private:
 	int m_is_slow_motion, m_is_fast_forward, m_is_freezed;
 	ePtr<eSocketNotifier> m_sn;
 	void video_event(int what);
-#if defined(DMAMLOGIC)
-	int m_fd_amvideoPoll;
-	ePtr<eSocketNotifier> m_sn_amvideoPoll;
-	void amvideo_event(int);
-#endif
 	sigc::signal1<void, struct iTSMPEGDecoder::videoEvent> m_event;
 	int m_width, m_height, m_framerate, m_aspect, m_progressive, m_gamma;
 	static int readApiSize(int fd, int &xres, int &yres, int &aspect);
