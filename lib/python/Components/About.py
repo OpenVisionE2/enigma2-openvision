@@ -182,7 +182,7 @@ def getCPUSerial():
 		for line in lines:
 			if line[0:6] == "Serial":
 				return line[10:26]
-	return "0000000000000000"
+	return _("Undefined")
 
 
 def getCPUInfoString():
