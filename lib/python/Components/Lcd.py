@@ -7,7 +7,7 @@ from usb import busses
 from enigma import eActionMap, eDBoxLCD, eTimer
 
 from Components.config import ConfigNothing, ConfigSelection, ConfigSlider, ConfigSubsection, ConfigYesNo, config
-from Components.SystemInfo import BoxInfo, SystemInfo
+from Components.SystemInfo import BoxInfo
 from Screens.InfoBar import InfoBar
 from Screens.Screen import Screen
 from Screens.Standby import inTryQuitMainloop
@@ -192,8 +192,8 @@ class LCD:
 			print("[Lcd] setLCDMode='%s'." % value)
 			fileWriteLine("/proc/stb/lcd/show_symbols", value)
 		if config.lcd.mode.value == "0":
-			SystemInfo["SeekStatePlay"] = False
-			SystemInfo["StatePlayPause"] = False
+			BoxInfo.setItem("SeekStatePlay", False)
+			BoxInfo.setItem("StatePlayPause", False)
 			if exists("/proc/stb/lcd/symbol_hdd"):
 				fileWriteLine("/proc/stb/lcd/symbol_hdd", "0")
 			if exists("/proc/stb/lcd/symbol_hddprogress"):
@@ -281,13 +281,13 @@ def InitLcd():
 		detected = False
 	else:
 		detected = eDBoxLCD.getInstance().detected()
-	SystemInfo["Display"] = detected
+	BoxInfo.setItem("Display", detected)
 	config.lcd = ConfigSubsection()
 	if exists("/proc/stb/lcd/mode"):
 		can_lcdmodechecking = fileReadLine("/proc/stb/lcd/mode")
 	else:
 		can_lcdmodechecking = False
-	SystemInfo["LCDMiniTV"] = can_lcdmodechecking
+	BoxInfo.setItem("LCDMiniTV", can_lcdmodechecking)
 	if detected:
 		ilcd = LCD()
 		if can_lcdmodechecking:
@@ -563,7 +563,7 @@ def InitLcd():
 		else:
 			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 10))
 			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 10))
-			config.lcd.bright = ConfigSlider(default=SystemInfo["DefaultDisplayBrightness"], limits=(0, 10))
+			config.lcd.bright = ConfigSlider(default=BoxInfo.getItem("DefaultDisplayBrightness"), limits=(0, 10))
 		config.lcd.dimbright.addNotifier(setLCDdimbright)
 		config.lcd.dimbright.apply = lambda: setLCDdimbright(config.lcd.dimbright)
 		config.lcd.dimdelay = ConfigSelection(choices=[
@@ -593,12 +593,12 @@ def InitLcd():
 		config.lcd.picon_pack.addNotifier(PiconPackChanged)
 		config.lcd.flip = ConfigYesNo(default=False)
 		config.lcd.flip.addNotifier(setLCDflipped)
-		if SystemInfo["LcdLiveTV"]:
+		if BoxInfo.getItem("LcdLiveTV"):
 			def lcdLiveTvChanged(configElement):
-				if "live_enable" in SystemInfo["LcdLiveTV"]:
-					fileWriteLine(SystemInfo["LcdLiveTV"], configElement.value and "enable" or "disable")
+				if "live_enable" in BoxInfo.getItem("LcdLiveTV"):
+					fileWriteLine(BoxInfo.getItem("LcdLiveTV"), configElement.value and "enable" or "disable")
 				else:
-					fileWriteLine(SystemInfo["LcdLiveTV"], configElement.value and "0" or "1")
+					fileWriteLine(BoxInfo.getItem("LcdLiveTV"), configElement.value and "0" or "1")
 				try:
 					InfoBarInstance = InfoBar.instance
 					InfoBarInstance and InfoBarInstance.session.open(dummyScreen)
@@ -608,7 +608,7 @@ def InitLcd():
 			config.lcd.showTv = ConfigYesNo(default=False)
 			config.lcd.showTv.addNotifier(lcdLiveTvChanged)
 
-		if SystemInfo["LCDMiniTV"] and platform not in ("gb7356", "gb7252", "gb72604"):
+		if BoxInfo.getItem("LCDMiniTV") and platform not in ("gb7356", "gb7252", "gb72604"):
 			config.lcd.minitvmode = ConfigSelection(choices=[
 				("0", _("Normal")),
 				("1", _("MiniTV")),
@@ -625,9 +625,9 @@ def InitLcd():
 			config.lcd.minitvfps = ConfigSlider(default=30, limits=(0, 30))
 			config.lcd.minitvfps.addNotifier(setLCDminitvfps)
 
-		if SystemInfo["VFD_scroll_repeats"] and SystemInfo["VFDRepeats"]:
+		if BoxInfo.getItem("VFD_scroll_repeats") and BoxInfo.getItem("VFDRepeats"):
 			def scroll_repeats(configElement):
-				fileWriteLine(SystemInfo["VFD_scroll_repeats"], configElement.value)
+				fileWriteLine(BoxInfo.getItem("VFD_scroll_repeats"), configElement.value)
 
 			config.usage.vfd_scroll_repeats = ConfigSelection(choices=[
 				("0", _("None")),
@@ -640,12 +640,12 @@ def InitLcd():
 			config.usage.vfd_scroll_repeats.addNotifier(scroll_repeats, immediate_feedback=False)
 		else:
 			config.usage.vfd_scroll_repeats = ConfigNothing()
-		if SystemInfo["VFD_scroll_delay"] and SystemInfo["VFDRepeats"]:
+		if BoxInfo.getItem("VFD_scroll_delay") and BoxInfo.getItem("VFDRepeats"):
 			def scroll_delay(configElement):
-				if SystemInfo["VFDDelay"]:
-					fileWriteLine(SystemInfo["VFD_scroll_delay"], hex(int(configElement.value)))
+				if BoxInfo.getItem("VFDDelay"):
+					fileWriteLine(BoxInfo.getItem("VFD_scroll_delay"), hex(int(configElement.value)))
 				else:
-					fileWriteLine(SystemInfo["VFD_scroll_delay"], configElement.value)
+					fileWriteLine(BoxInfo.getItem("VFD_scroll_delay"), configElement.value)
 
 			config.usage.vfd_scroll_delay = ConfigSlider(default=150, increment=10, limits=(0, 500))
 			config.usage.vfd_scroll_delay.addNotifier(scroll_delay, immediate_feedback=False)
@@ -656,12 +656,12 @@ def InitLcd():
 		else:
 			config.lcd.hdd = ConfigNothing()
 			config.usage.vfd_scroll_delay = ConfigNothing()
-		if SystemInfo["VFD_initial_scroll_delay"] and SystemInfo["VFDRepeats"]:
+		if BoxInfo.getItem("VFD_initial_scroll_delay") and BoxInfo.getItem("VFDRepeats"):
 			def initial_scroll_delay(configElement):
-				if SystemInfo["VFDDelay"]:
-					fileWriteLine(SystemInfo["VFD_initial_scroll_delay"], hex(int(configElement.value)))
+				if BoxInfo.getItem("VFDDelay"):
+					fileWriteLine(BoxInfo.getItem("VFD_initial_scroll_delay"), hex(int(configElement.value)))
 				else:
-					fileWriteLine(SystemInfo["VFD_initial_scroll_delay"], configElement.value)
+					fileWriteLine(BoxInfo.getItem("VFD_initial_scroll_delay"), configElement.value)
 
 			config.usage.vfd_initial_scroll_delay = ConfigSelection(choices=[
 				("3000", "3 %s" % _("seconds")),
@@ -674,12 +674,12 @@ def InitLcd():
 			config.usage.vfd_initial_scroll_delay.addNotifier(initial_scroll_delay, immediate_feedback=False)
 		else:
 			config.usage.vfd_initial_scroll_delay = ConfigNothing()
-		if SystemInfo["VFD_final_scroll_delay"] and SystemInfo["VFDRepeats"]:
+		if BoxInfo.getItem("VFD_final_scroll_delay") and BoxInfo.getItem("VFDRepeats"):
 			def final_scroll_delay(configElement):
-				if SystemInfo["VFDDelay"]:
-					fileWriteLine(SystemInfo["VFD_final_scroll_delay"], hex(int(configElement.value)))
+				if BoxInfo.getItem("VFDDelay"):
+					fileWriteLine(BoxInfo.getItem("VFD_final_scroll_delay"), hex(int(configElement.value)))
 				else:
-					fileWriteLine(SystemInfo["VFD_final_scroll_delay"], configElement.value)
+					fileWriteLine(BoxInfo.getItem("VFD_final_scroll_delay"), configElement.value)
 
 			config.usage.vfd_final_scroll_delay = ConfigSelection(choices=[
 				("3000", "3 %s" % _("seconds")),

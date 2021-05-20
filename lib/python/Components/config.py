@@ -5,7 +5,7 @@ from os.path import realpath
 from six import PY2
 from time import localtime, strftime
 
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 from Tools.Directories import SCOPE_CONFIG, fileExists, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 from Tools.NumericalTextInput import NumericalTextInput
@@ -838,7 +838,7 @@ class ConfigMacText(ConfigElement, NumericalTextInput):
 		if session is not None:
 			from Screens.NumericalTextInputHelpDialog import NumericalTextInputHelpDialog
 			self.help_window = session.instantiateDialog(NumericalTextInputHelpDialog, self)
-			if SystemInfo["OSDAnimation"]:
+			if BoxInfo.getItem("OSDAnimation"):
 				self.help_window.setAnimationMode(0)
 			self.help_window.show()
 
@@ -1845,7 +1845,7 @@ class ConfigText(ConfigElement, NumericalTextInput):
 		if session is not None:
 			from Screens.NumericalTextInputHelpDialog import NumericalTextInputHelpDialog
 			self.help_window = session.instantiateDialog(NumericalTextInputHelpDialog, self)
-			if SystemInfo["OSDAnimation"]:
+			if BoxInfo.getItem("OSDAnimation"):
 				self.help_window.setAnimationMode(0)
 			self.help_window.show()
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigText, ConfigSelection, ConfigIP, ConfigInteger, ConfigSubList, ConfigClock
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 
 
 def InitClientMode():
@@ -10,8 +10,8 @@ def InitClientMode():
 	config.clientmode.enabled = ConfigYesNo(default=False)
 
 	def clientModeChanged(configElement):
-		SystemInfo["ClientModeEnabled"] = configElement.value == True
-		SystemInfo["ClientModeDisabled"] = configElement.value != True
+		BoxInfo.setItem("ClientModeEnabled", configElement.value == True)
+		BoxInfo.setItem("ClientModeDisabled", configElement.value != True)
 	config.clientmode.enabled.addNotifier(clientModeChanged, immediate_feedback=True, initial_call=True)
 	config.clientmode.serverAddressType = ConfigSelection(default="ip", choices=[("ip", _("IP")), ("domain", _("Domain"))])
 	config.clientmode.serverIP = ConfigIP(default=[0, 0, 0, 0], auto_jump=True)

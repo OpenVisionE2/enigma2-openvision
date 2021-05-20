@@ -9,7 +9,7 @@ from Components.ConfigList import ConfigList
 from Components.Label import Label
 from Components.MenuList import MenuList
 from Components.Slider import Slider
-from Components.SystemInfo import BoxInfo, SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
 from Screens.MessageBox import MessageBox
@@ -573,7 +573,7 @@ class Wizard(Screen):
 								self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"], eval(self.wizard[self.currStep]["config"]["args"]))
 							except:
 								self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"], self.wizard[self.currStep]["config"]["args"])
-						if SystemInfo["OSDAnimation"]:
+						if BoxInfo.getItem("OSDAnimation"):
 							self.configInstance.setAnimationMode(0)
 						# self["config"].l.setList(self.configInstance["config"].list)  # DEBUG IanSav
 						self["config"].setList(self.configInstance["config"].list)

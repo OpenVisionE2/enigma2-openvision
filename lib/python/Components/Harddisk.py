@@ -8,7 +8,7 @@ from enigma import eTimer
 
 from Components import Task
 from Components.Console import Console
-from Components.SystemInfo import BoxInfo, SystemInfo
+from Components.SystemInfo import BoxInfo
 from Tools.CList import CList
 from Tools.Directories import fileReadLine, fileReadLines
 from Tools.StbHardware import getBoxProc
@@ -58,7 +58,7 @@ class Harddisk:
 		self.internal = "ide" in self.phys_path or "pci" in self.phys_path or "ahci" in self.phys_path or "sata" in self.phys_path
 		data = fileReadLine(pathjoin("/sys/block", device, "queue/rotational"), "1")
 		self.rotational = int(data)
-		if SystemInfo["Udev"]:
+		if BoxInfo.getItem("Udev"):
 			self.dev_path = "/dev/" + self.device
 			self.disk_path = self.dev_path
 			self.card = "sdhci" in self.phys_path or "mmc" in self.device
@@ -86,7 +86,7 @@ class Harddisk:
 		return self.device < ob.device
 
 	def partitionPath(self, n):
-		if SystemInfo["Udev"]:
+		if BoxInfo.getItem("Udev"):
 			if self.dev_path.startswith("/dev/mmcblk"):
 				return "%sp%s" % (self.dev_path, n)
 			else:
@@ -105,7 +105,7 @@ class Harddisk:
 	def bus(self):
 		ret = _("External")
 		# SD/MMC
-		if SystemInfo["Udev"]:
+		if BoxInfo.getItem("Udev"):
 			if "usb" in self.phys_path:
 				type_name = " (USB)"
 			else:
@@ -185,7 +185,7 @@ class Harddisk:
 
 	def numPartitions(self):
 		numPart = -1
-		if SystemInfo["Udev"]:
+		if BoxInfo.getItem("Udev"):
 			try:
 				devdir = listdir("/dev")
 			except (IOError, OSError):
@@ -259,7 +259,7 @@ class Harddisk:
 				return (res >> 8)
 		# device is not in fstab
 		res = -1
-		if SystemInfo["Udev"]:
+		if BoxInfo.getItem("Udev"):
 			# we can let udev do the job, re-read the partition table
 			res = system("hdparm -z %s" % self.disk_path)
 			# give udev some time to make the mount, which it will do asynchronously
@@ -570,9 +570,9 @@ class HarddiskManager:
 		error = False
 		removable = False
 		BLACKLIST = []
-		if SystemInfo["HasMMC"]:
+		if BoxInfo.getItem("HasMMC"):
 			BLACKLIST = ["%s" % (BoxInfo.getItem("mtdrootfs")[0:7])]
-		if SystemInfo["HasMMC"] and "root=/dev/mmcblk0p1" in fileReadLine("/proc/cmdline", ""):
+		if BoxInfo.getItem("HasMMC") and "root=/dev/mmcblk0p1" in fileReadLine("/proc/cmdline", ""):
 			BLACKLIST = ["mmcblk0p1"]
 		blacklisted = False
 		if blockdev[:7] in BLACKLIST:
@@ -597,7 +597,7 @@ class HarddiskManager:
 			# blacklist non-root eMMC devices
 			if not blacklisted and dev == 179:
 				is_mmc = True
-				if (SystemInfo["BootDevice"] and blockdev.startswith(SystemInfo["BootDevice"])) or subdev:
+				if (BoxInfo.getItem("BootDevice") and blockdev.startswith(BoxInfo.getItem("BootDevice"))) or subdev:
 					blacklisted = True
 			if blockdev[0:2] == "sr":
 				is_cdrom = True
@@ -694,7 +694,7 @@ class HarddiskManager:
 			if l and (not device[l - 1].isdigit() or device.startswith("mmcblk")):
 				self.hdd.append(Harddisk(device, removable))
 				self.hdd.sort()
-				SystemInfo["Harddisk"] = True
+				BoxInfo.setItem("Harddisk", True)
 		return error, blacklisted, removable, is_cdrom, partitions, medium_found
 
 	def addHotplugAudiocd(self, device, physdev=None):
@@ -713,7 +713,7 @@ class HarddiskManager:
 			p = Partition(mountpoint="/media/audiocd", description=description, force_mounted=True, device=device)
 			self.partitions.append(p)
 			self.on_partition_list_change("add", p)
-			SystemInfo["Harddisk"] = False
+			BoxInfo.setItem("Harddisk", False)
 		return error, blacklisted, removable, is_cdrom, partitions, medium_found
 
 	def removeHotplugPartition(self, device):
@@ -729,7 +729,7 @@ class HarddiskManager:
 					hdd.stop()
 					self.hdd.remove(hdd)
 					break
-			SystemInfo["Harddisk"] = len(self.hdd) > 0
+			BoxInfo.setItem("Harddisk", len(self.hdd) > 0)
 
 	def HDDCount(self):
 		return len(self.hdd)
@@ -871,7 +871,7 @@ class MountTask(Task.LoggingTask):
 				self.postconditions.append(Task.ReturncodePostcondition())
 				return
 		# device is not in fstab
-		if SystemInfo["Udev"]:
+		if BoxInfo.getItem("Udev"):
 			# we can let udev do the job, re-read the partition table
 			# Sorry for the sleep 2 hack...
 			self.setCmdline("sleep 2; hdparm -z " + self.hdd.disk_path)
@@ -928,4 +928,4 @@ def internalHDDNotSleeping(external=False):
 	return state
 
 
-SystemInfo["ext4"] = isFileSystemSupported("ext4")
+BoxInfo.setItem("ext4", isFileSystemSupported("ext4"))

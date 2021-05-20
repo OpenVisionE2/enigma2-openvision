@@ -5,7 +5,7 @@ from Components.Element import cached
 from Components.Harddisk import harddiskmanager
 from Components.config import config
 from enigma import eTimer
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 
 
 class HddState(Source):
@@ -89,8 +89,8 @@ class HddState(Source):
 			string = "Disk state: " + string
 		self.state_text = string
 		if prev_state != self.isSleeping or force:
-			if SystemInfo["LCDsymbol_hdd"]:
-				open(SystemInfo["LCDsymbol_hdd"], "w").write(self.isSleeping and "1" or "0")
+			if BoxInfo.getItem("LCDsymbol_hdd"):
+				open(BoxInfo.getItem("LCDsymbol_hdd"), "w").write(self.isSleeping and "1" or "0")
 			self.changed((self.CHANGED_ALL,))
 
 	def setStandbyTime(self, cfgElem):

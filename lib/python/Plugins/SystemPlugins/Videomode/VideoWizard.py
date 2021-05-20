@@ -9,7 +9,7 @@ from Components.Sources.StaticText import StaticText
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.config import config, ConfigBoolean, configfile
-from Components.SystemInfo import BoxInfo, SystemInfo
+from Components.SystemInfo import BoxInfo
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 
 has_hdmi = BoxInfo.getItem("hdmi")
@@ -141,7 +141,7 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 		ratesList = self.listRates(mode)
 		print("[Videomode] VideoWizard ratesList:", ratesList)
 		if self.port == "DVI" and mode in ("720p", "1080i", "1080p", "2160p", "2160p30"):
-			if SystemInfo["Has24hz"]:
+			if BoxInfo.getItem("Has24hz"):
 				self.rate = "auto"
 				self.hw.setMode(port=self.port, mode=mode, rate="auto")
 			else:

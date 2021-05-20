@@ -13,7 +13,7 @@ from Components.Console import Console
 from Components.Harddisk import harddiskmanager
 from Components.NimManager import nimmanager
 from Components.ServiceList import refreshServiceList
-from Components.SystemInfo import BoxInfo, SystemInfo
+from Components.SystemInfo import BoxInfo
 from Tools.Directories import defaultRecordingLocation, fileHas
 
 model = BoxInfo.getItem("model")
@@ -545,10 +545,10 @@ def InitUsageConfig():
 	atsc_nims.insert(1, ("-1", _("Auto")))
 	config.usage.recording_frontend_priority_atsc = ConfigSelection(default="-2", choices=atsc_nims)
 
-	SystemInfo["DVB-S_priority_tuner_available"] = len(dvbs_nims) > 3 and any(len(i) > 2 for i in (dvbt_nims, dvbc_nims, atsc_nims))
-	SystemInfo["DVB-T_priority_tuner_available"] = len(dvbt_nims) > 3 and any(len(i) > 2 for i in (dvbs_nims, dvbc_nims, atsc_nims))
-	SystemInfo["DVB-C_priority_tuner_available"] = len(dvbc_nims) > 3 and any(len(i) > 2 for i in (dvbs_nims, dvbt_nims, atsc_nims))
-	SystemInfo["ATSC_priority_tuner_available"] = len(atsc_nims) > 3 and any(len(i) > 2 for i in (dvbs_nims, dvbc_nims, dvbt_nims))
+	BoxInfo.setItem("DVB-S_priority_tuner_available", len(dvbs_nims) > 3 and any(len(i) > 2 for i in (dvbt_nims, dvbc_nims, atsc_nims)))
+	BoxInfo.setItem("DVB-T_priority_tuner_available", len(dvbt_nims) > 3 and any(len(i) > 2 for i in (dvbs_nims, dvbc_nims, atsc_nims)))
+	BoxInfo.setItem("DVB-C_priority_tuner_available", len(dvbc_nims) > 3 and any(len(i) > 2 for i in (dvbs_nims, dvbt_nims, atsc_nims)))
+	BoxInfo.setItem("ATSC_priority_tuner_available", len(atsc_nims) > 3 and any(len(i) > 2 for i in (dvbs_nims, dvbc_nims, dvbt_nims)))
 
 	config.misc.disable_background_scan = ConfigYesNo(default=False)
 	config.misc.use_ci_assignment = ConfigYesNo(default=False)
@@ -739,7 +739,7 @@ def InitUsageConfig():
 		("(720, 576)", _("720x576")),
 		("(1280, 720)", _("1280x720")),
 		("(1920, 1080)", _("1920x1080"))
-	][:SystemInfo["HasFullHDSkinSupport"] and 4 or 3])
+	][:BoxInfo.getItem("HasFullHDSkinSupport") and 4 or 3])
 
 	config.usage.date = ConfigSubsection()
 	config.usage.date.enabled = NoSave(ConfigBoolean(default=False))
@@ -1049,7 +1049,7 @@ def InitUsageConfig():
 		config.usage.time.enabled_display.value = False
 		config.usage.time.display.value = config.usage.time.display.default
 
-	if SystemInfo["Fan"]:
+	if BoxInfo.getItem("Fan"):
 		choicelist = [
 			("off", _("Off")),
 			("on", _("On")),
@@ -1061,21 +1061,21 @@ def InitUsageConfig():
 		config.usage.fan = ConfigSelection(choicelist)
 
 		def fanChanged(configElement):
-			open(SystemInfo["Fan"], "w").write(configElement.value)
+			open(BoxInfo.getItem("Fan"), "w").write(configElement.value)
 		config.usage.fan.addNotifier(fanChanged)
 
-	if SystemInfo["FanPWM"]:
+	if BoxInfo.getItem("FanPWM"):
 		def fanSpeedChanged(configElement):
-			open(SystemInfo["FanPWM"], "w").write(hex(configElement.value)[2:])
+			open(BoxInfo.getItem("FanPWM"), "w").write(hex(configElement.value)[2:])
 		config.usage.fanspeed = ConfigSlider(default=127, increment=8, limits=(0, 255))
 		config.usage.fanspeed.addNotifier(fanSpeedChanged)
 
-	if SystemInfo["WakeOnLAN"] or BoxInfo.getItem("wol"):
+	if BoxInfo.getItem("WakeOnLAN") or BoxInfo.getItem("wol"):
 		def wakeOnLANChanged(configElement):
-			if "fp" in SystemInfo["WakeOnLAN"]:
-				open(SystemInfo["WakeOnLAN"], "w").write(configElement.value and "enable" or "disable")
+			if "fp" in BoxInfo.getItem("WakeOnLAN"):
+				open(BoxInfo.getItem("WakeOnLAN"), "w").write(configElement.value and "enable" or "disable")
 			else:
-				open(SystemInfo["WakeOnLAN"], "w").write(configElement.value and "on" or "off")
+				open(BoxInfo.getItem("WakeOnLAN"), "w").write(configElement.value and "on" or "off")
 		config.usage.wakeOnLAN = ConfigYesNo(default=False)
 		config.usage.wakeOnLAN.addNotifier(wakeOnLANChanged)
 
@@ -1214,7 +1214,7 @@ def InitUsageConfig():
 			hdd[1].setIdleTime(int(configElement.value))
 	config.usage.hdd_standby.addNotifier(setHDDStandby, immediate_feedback=False)
 
-	if SystemInfo["12V_Output"]:
+	if BoxInfo.getItem("12V_Output"):
 		def set12VOutput(configElement):
 			Misc_Options.getInstance().set_12V_output(configElement.value == "on" and 1 or 0)
 		config.usage.output_12V.addNotifier(set12VOutput, immediate_feedback=False)
@@ -1326,9 +1326,9 @@ def InitUsageConfig():
 	config.misc.zapkey_delay = ConfigSelectionNumber(default=5, stepwidth=1, min=0, max=20, wraparound=True)
 	config.misc.numzap_picon = ConfigYesNo(default=False)
 
-	if SystemInfo["ZapMode"]:
+	if BoxInfo.getItem("ZapMode"):
 		def setZapmode(el):
-			open(SystemInfo["ZapMode"], "w").write(el.value)
+			open(BoxInfo.getItem("ZapMode"), "w").write(el.value)
 		config.misc.zapmode = ConfigSelection(default="mute", choices=[
 			("mute", _("Black screen")),
 			("hold", _("Hold screen")),
@@ -1337,16 +1337,16 @@ def InitUsageConfig():
 		])
 		config.misc.zapmode.addNotifier(setZapmode, immediate_feedback=False)
 
-	if SystemInfo["HasBypassEdidChecking"]:
+	if BoxInfo.getItem("HasBypassEdidChecking"):
 		def setHasBypassEdidChecking(configElement):
-			open(SystemInfo["HasBypassEdidChecking"], "w").write("00000001" if configElement.value else "00000000")
+			open(BoxInfo.getItem("HasBypassEdidChecking"), "w").write("00000001" if configElement.value else "00000000")
 		config.av.bypassEdidChecking = ConfigYesNo(default=False)
 		config.av.bypassEdidChecking.addNotifier(setHasBypassEdidChecking)
 
-	if SystemInfo["HasColorspace"]:
+	if BoxInfo.getItem("HasColorspace"):
 		def setHaveColorspace(configElement):
-			open(SystemInfo["HasColorspace"], "w").write(configElement.value)
-		if SystemInfo["HasColorspaceSimple"]:
+			open(BoxInfo.getItem("HasColorspace"), "w").write(configElement.value)
+		if BoxInfo.getItem("HasColorspaceSimple"):
 			config.av.hdmicolorspace = ConfigSelection(default="Edid(Auto)", choices={
 				"Edid(Auto)": _("Auto"),
 				"Hdmi_Rgb": _("RGB"),
@@ -1380,9 +1380,9 @@ def InitUsageConfig():
 				})
 		config.av.hdmicolorspace.addNotifier(setHaveColorspace)
 
-	if SystemInfo["HasColordepth"]:
+	if BoxInfo.getItem("HasColordepth"):
 		def setHaveColordepth(configElement):
-			open(SystemInfo["HasColordepth"], "w").write(configElement.value)
+			open(BoxInfo.getItem("HasColordepth"), "w").write(configElement.value)
 		config.av.hdmicolordepth = ConfigSelection(default="auto", choices={
 			"auto": _("Auto"),
 			"8bit": _("8 bit"),
@@ -1391,15 +1391,15 @@ def InitUsageConfig():
 		})
 		config.av.hdmicolordepth.addNotifier(setHaveColordepth)
 
-	if SystemInfo["HasHDMIpreemphasis"]:
+	if BoxInfo.getItem("HasHDMIpreemphasis"):
 		def setHDMIpreemphasis(configElement):
-			open(SystemInfo["HasHDMIpreemphasis"], "w").write("on" if configElement.value else "off")
+			open(BoxInfo.getItem("HasHDMIpreemphasis"), "w").write("on" if configElement.value else "off")
 		config.av.hdmipreemphasis = ConfigYesNo(default=False)
 		config.av.hdmipreemphasis.addNotifier(setHDMIpreemphasis)
 
-	if SystemInfo["HasColorimetry"]:
+	if BoxInfo.getItem("HasColorimetry"):
 		def setColorimetry(configElement):
-			open(SystemInfo["HasColorimetry"], "w").write(configElement.value)
+			open(BoxInfo.getItem("HasColorimetry"), "w").write(configElement.value)
 		config.av.hdmicolorimetry = ConfigSelection(default="auto", choices=[
 			("auto", _("Auto")),
 			("bt2020ncl", _("BT 2020 NCL")),
@@ -1408,9 +1408,9 @@ def InitUsageConfig():
 		])
 		config.av.hdmicolorimetry.addNotifier(setColorimetry)
 
-	if SystemInfo["HasHdrType"]:
+	if BoxInfo.getItem("HasHdrType"):
 		def setHdmiHdrType(configElement):
-			open(SystemInfo["HasHdrType"], "w").write(configElement.value)
+			open(BoxInfo.getItem("HasHdrType"), "w").write(configElement.value)
 		config.av.hdmihdrtype = ConfigSelection(default="auto", choices={
 			"auto": _("Auto"),
 			"none": _("SDR"),
@@ -1420,7 +1420,7 @@ def InitUsageConfig():
 		})
 		config.av.hdmihdrtype.addNotifier(setHdmiHdrType)
 
-	if SystemInfo["HDRSupport"]:
+	if BoxInfo.getItem("HDRSupport"):
 		def setHlgSupport(configElement):
 			print("[UsageConfig] Read /proc/stb/hdmi/hlg_support")
 			open("/proc/stb/hdmi/hlg_support", "w").write(configElement.value)
@@ -1453,7 +1453,7 @@ def InitUsageConfig():
 		config.av.allow_10bit = ConfigYesNo(default=False)
 		config.av.allow_10bit.addNotifier(setDisable10Bit)
 
-	if SystemInfo["CanSyncMode"]:
+	if BoxInfo.getItem("CanSyncMode"):
 		def setSyncMode(configElement):
 			print("[UsageConfig] Read /proc/stb/video/sync_mode")
 			open("/proc/stb/video/sync_mode", "w").write(configElement.value)
@@ -1683,7 +1683,7 @@ def InitUsageConfig():
 	config.visionsettings = ConfigSubsection()
 
 	config.oscaminfo = ConfigSubsection()
-	if SystemInfo["OScamInstalled"] or SystemInfo["NCamInstalled"]:
+	if BoxInfo.getItem("OScamInstalled") or BoxInfo.getItem("NCamInstalled"):
 		config.oscaminfo.showInExtensions = ConfigYesNo(default=True)
 	else:
 		config.oscaminfo.showInExtensions = ConfigYesNo(default=False)
@@ -1783,7 +1783,7 @@ def showrotorpositionChoicesUpdate(update=False):
 		config.misc.showrotorposition = ConfigSelection(default="no", choices=choiceslist)
 	else:
 		config.misc.showrotorposition.setChoices(choiceslist, "no")
-	SystemInfo["isRotorTuner"] = count > 0
+	BoxInfo.setItem("isRotorTuner", count > 0)
 
 
 def patchTuxtxtConfFile(dummyConfigElement):

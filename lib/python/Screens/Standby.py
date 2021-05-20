@@ -11,7 +11,7 @@ from Components.config import config
 from Components.AVSwitch import AVSwitch
 from Components.Console import Console
 from Components.ImportChannels import ImportChannels
-from Components.SystemInfo import BoxInfo, SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.Sources.StreamService import StreamServiceList
 from Components.Task import job_manager
 from Tools.Directories import mediafilesInUse
@@ -62,7 +62,7 @@ class StandbyScreen(Screen):
 		self.avswitch = AVSwitch()
 
 		print("[Standby] enter standby")
-		SystemInfo["StandbyState"] = True
+		BoxInfo.setItem("StandbyState", True)
 
 		if os.path.exists("/usr/script/standby_enter.sh"):
 			Console().ePopen("/usr/script/standby_enter.sh")
@@ -113,7 +113,7 @@ class StandbyScreen(Screen):
 		if self.session.pipshown:
 			self.infoBarInstance and hasattr(self.infoBarInstance, "showPiP") and self.infoBarInstance.showPiP()
 
-		if SystemInfo["ScartSwitch"]:
+		if BoxInfo.getItem("ScartSwitch"):
 			self.avswitch.setInput("SCART")
 		else:
 			self.avswitch.setInput("AUX")
@@ -124,7 +124,7 @@ class StandbyScreen(Screen):
 		except:
 			print("[Standby] Write to /proc/stb/hdmi/output failed.")
 
-		if SystemInfo["AmlogicFamily"]:
+		if BoxInfo.getItem("AmlogicFamily"):
 			try:
 				print("[Standby] Write to /sys/class/leds/led-sys/brightness")
 				open("/sys/class/leds/led-sys/brightness", "w").write("0")
@@ -188,7 +188,7 @@ class StandbyScreen(Screen):
 
 	def Power(self):
 		print("[Standby] leave standby")
-		SystemInfo["StandbyState"] = False
+		BoxInfo.setItem("StandbyState", False)
 		self.close(True)
 
 		if os.path.exists("/usr/script/StandbyLeave.sh"):
@@ -200,7 +200,7 @@ class StandbyScreen(Screen):
 		except:
 			print("[Standby] Write to /proc/stb/hdmi/output failed.")
 
-		if SystemInfo["AmlogicFamily"]:
+		if BoxInfo.getItem("AmlogicFamily"):
 			try:
 				print("[Standby] Write to /sys/class/leds/led-sys/brightness")
 				open("/sys/class/leds/led-sys/brightness", "w").write("1")
@@ -395,7 +395,7 @@ class TryQuitMainloop(MessageBox):
 				if not inStandby:
 					if os.path.exists("/usr/script/standby_enter.sh"):
 						Console().ePopen("/usr/script/standby_enter.sh")
-					if SystemInfo["HasHDMI-CEC"] and config.hdmicec.enabled.value and config.hdmicec.control_tv_standby.value and config.hdmicec.next_boxes_detect.value:
+					if BoxInfo.getItem("HasHDMI-CEC") and config.hdmicec.enabled.value and config.hdmicec.control_tv_standby.value and config.hdmicec.next_boxes_detect.value:
 						import Components.HdmiCec
 						Components.HdmiCec.hdmi_cec.secondBoxActive()
 						self.delay = eTimer()
@@ -405,7 +405,7 @@ class TryQuitMainloop(MessageBox):
 			elif not inStandby:
 				config.misc.RestartUI.value = True
 				config.misc.RestartUI.save()
-			if SystemInfo["Display"] and SystemInfo["LCDMiniTV"]:
+			if BoxInfo.getItem("Display") and BoxInfo.getItem("LCDMiniTV"):
 				print("[Standby] LCDminiTV off")
 				try:
 					print("[Standby] Write to /proc/stb/lcd/mode")

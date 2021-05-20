@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.config import config, ConfigSelection, ConfigSubDict, ConfigYesNo
-from Components.SystemInfo import BoxInfo, SystemInfo
+from Components.SystemInfo import BoxInfo
 from Tools.CList import CList
 import os
 from enigma import getDesktop
@@ -285,7 +285,7 @@ class VideoHardware:
 			except IOError:
 				print("[Videomode] Write to /proc/stb/video/videomode failed.")
 
-		if SystemInfo["Has24hz"]:
+		if BoxInfo.getItem("Has24hz"):
 			try:
 				print("[Videomode] Write to /proc/stb/video/videomode_24hz")
 				open("/proc/stb/video/videomode_24hz", "w").write(mode_24)
@@ -364,7 +364,7 @@ class VideoHardware:
 				ratelist = []
 				for rate in rates:
 					if rate in ("auto"):
-						if SystemInfo["Has24hz"]:
+						if BoxInfo.getItem("Has24hz"):
 							ratelist.append((rate, rate))
 					else:
 						ratelist.append((rate, rate))

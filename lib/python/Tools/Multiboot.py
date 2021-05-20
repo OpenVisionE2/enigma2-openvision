@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.Console import Console
 import os
 import glob
@@ -32,7 +32,7 @@ def getparam(line, param):
 def getMultibootslots():
 	bootslots = {}
 	mode12found = False
-	if SystemInfo["MultibootStartupDevice"]:
+	if BoxInfo.getItem("MultibootStartupDevice"):
 		for file in glob.glob(os.path.join(tmp.dir, 'STARTUP_*')):
 			if 'MODE_' in file:
 				mode12found = True
@@ -49,7 +49,7 @@ def getMultibootslots():
 							slot['device'] = device
 							slot['startupfile'] = os.path.basename(file)
 							if 'rootsubdir' in line:
-								SystemInfo["HasRootSubdir"] = True
+								BoxInfo.setItem("HasRootSubdir", True)
 								slot['rootsubdir'] = getparam(line, 'rootsubdir')
 								slot['kernel'] = getparam(line, 'kernel')
 							elif 'sda' in line:
@@ -63,7 +63,7 @@ def getMultibootslots():
 		Console().ePopen('umount %s' % tmp.dir)
 		if not os.path.ismount(tmp.dir):
 			os.rmdir(tmp.dir)
-		if not mode12found and SystemInfo["canMode12"]:
+		if not mode12found and BoxInfo.getItem("canMode12"):
 			#the boot device has ancient content and does not contain the correct STARTUP files
 			for slot in range(1, 5):
 				bootslots[slot] = {'device': '/dev/mmcblk0p%s' % (slot * 2 + 1), 'startupfile': None}
@@ -72,32 +72,32 @@ def getMultibootslots():
 
 
 def getCurrentImage():
-	if SystemInfo["canMultiBoot"]:
+	if BoxInfo.getItem("canMultiBoot"):
 		print("[Multiboot] Read /sys/firmware/devicetree/base/chosen/bootargs")
 		slot = [x[-1] for x in open('/sys/firmware/devicetree/base/chosen/bootargs', 'r').read().split() if x.startswith('rootsubdir')]
 		if slot:
 			return int(slot[0])
 		else:
 			device = getparam(open('/sys/firmware/devicetree/base/chosen/bootargs', 'r').read(), 'root')
-			for slot in SystemInfo["canMultiBoot"].keys():
-				if SystemInfo["canMultiBoot"][slot]['device'] == device:
+			for slot in BoxInfo.getItem("canMultiBoot").keys():
+				if BoxInfo.getItem("canMultiBoot")[slot]['device'] == device:
 					return slot
 
 
 def getCurrentImageMode():
 	print("[Multiboot] Read /sys/firmware/devicetree/base/chosen/bootargs")
-	return bool(SystemInfo["canMultiBoot"]) and SystemInfo["canMode12"] and int(open('/sys/firmware/devicetree/base/chosen/bootargs', 'r').read().replace('\0', '').split('=')[-1])
+	return bool(BoxInfo.getItem("canMultiBoot")) and BoxInfo.getItem("canMode12") and int(open('/sys/firmware/devicetree/base/chosen/bootargs', 'r').read().replace('\0', '').split('=')[-1])
 
 
 def GetImagelist():
 	Imagelist = {}
 	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
-	for slot in sorted(SystemInfo["canMultiBoot"].keys()):
-		Console().ePopen("mount %s %s" % (SystemInfo["canMultiBoot"][slot]["device"], tmp.dir))
+	for slot in sorted(BoxInfo.getItem("canMultiBoot").keys()):
+		Console().ePopen("mount %s %s" % (BoxInfo.getItem("canMultiBoot")[slot]["device"], tmp.dir))
 		BuildVersion = "  "
 		Creator = " "
 		Imagelist[slot] = {"imagename": _("Empty slot")}
-		imagedir = os.sep.join(filter(None, [tmp.dir, SystemInfo["canMultiBoot"][slot].get("rootsubdir", "")]))
+		imagedir = os.sep.join(filter(None, [tmp.dir, BoxInfo.getItem("canMultiBoot")[slot].get("rootsubdir", "")]))
 		if os.path.isfile(os.path.join(imagedir, "usr/bin/enigma2")):
 			Creator = open("%s/etc/issue" % imagedir).readlines()[-2].capitalize().strip()[:-6]
 			try:
@@ -121,8 +121,8 @@ def GetImagelist():
 
 def emptySlot(slot):
 	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
-	Console().ePopen("mount %s %s" % (SystemInfo["canMultiBoot"][slot]["device"], tmp.dir))
-	imagedir = os.sep.join(filter(None, [tmp.dir, SystemInfo["canMultiBoot"][slot].get("rootsubdir", "")]))
+	Console().ePopen("mount %s %s" % (BoxInfo.getItem("canMultiBoot")[slot]["device"], tmp.dir))
+	imagedir = os.sep.join(filter(None, [tmp.dir, BoxInfo.getItem("canMultiBoot")[slot].get("rootsubdir", "")]))
 	if os.path.isfile(os.path.join(imagedir, "usr/bin/enigma2")):
 		os.rename((os.path.join(imagedir, "usr/bin/enigma2")), (os.path.join(imagedir, "usr/bin/enigmax")))
 		ret = 0
@@ -137,8 +137,8 @@ def emptySlot(slot):
 
 def deleteImage(slot):
 	tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
-	Console().ePopen('mount %s %s' % (SystemInfo["canMultiBoot"][slot]['device'], tmp.dir))
-	enigma2binaryfile = os.path.join(os.sep.join(filter(None, [tmp.dir, SystemInfo["canMultiBoot"][slot].get('rootsubdir', '')])), 'usr/bin/enigma2')
+	Console().ePopen('mount %s %s' % (BoxInfo.getItem("canMultiBoot")[slot]['device'], tmp.dir))
+	enigma2binaryfile = os.path.join(os.sep.join(filter(None, [tmp.dir, BoxInfo.getItem("canMultiBoot")[slot].get('rootsubdir', '')])), 'usr/bin/enigma2')
 	if os.path.exists(enigma2binaryfile):
 		os.rename(enigma2binaryfile, '%s.bak' % enigma2binaryfile)
 	Console().ePopen('umount %s' % tmp.dir)
@@ -147,10 +147,10 @@ def deleteImage(slot):
 
 
 def restoreImages():
-	for slot in SystemInfo["canMultiBoot"]:
+	for slot in BoxInfo.getItem("canMultiBoot"):
 		tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
-		Console().ePopen('mount %s %s' % (SystemInfo["canMultiBoot"][slot]['device'], tmp.dir))
-		enigma2binaryfile = os.path.join(os.sep.join(filter(None, [tmp.dir, SystemInfo["canMultiBoot"][slot].get('rootsubdir', '')])), 'usr/bin/enigma2')
+		Console().ePopen('mount %s %s' % (BoxInfo.getItem("canMultiBoot")[slot]['device'], tmp.dir))
+		enigma2binaryfile = os.path.join(os.sep.join(filter(None, [tmp.dir, BoxInfo.getItem("canMultiBoot")[slot].get('rootsubdir', '')])), 'usr/bin/enigma2')
 		if os.path.exists('%s.bak' % enigma2binaryfile):
 			os.rename('%s.bak' % enigma2binaryfile, enigma2binaryfile)
 		Console().ePopen('umount %s' % tmp.dir)
@@ -160,11 +160,11 @@ def restoreImages():
 
 def getImagelist():
 	imagelist = {}
-	if SystemInfo["canMultiBoot"]:
+	if BoxInfo.getItem("canMultiBoot"):
 		tmp.dir = tempfile.mkdtemp(prefix="Multiboot")
-		for slot in sorted(SystemInfo["canMultiBoot"].keys()):
-			Console().ePopen('mount %s %s' % (SystemInfo["canMultiBoot"][slot]['device'], tmp.dir))
-			imagedir = os.sep.join(filter(None, [tmp.dir, SystemInfo["canMultiBoot"][slot].get('rootsubdir', '')]))
+		for slot in sorted(BoxInfo.getItem("canMultiBoot").keys()):
+			Console().ePopen('mount %s %s' % (BoxInfo.getItem("canMultiBoot")[slot]['device'], tmp.dir))
+			imagedir = os.sep.join(filter(None, [tmp.dir, BoxInfo.getItem("canMultiBoot")[slot].get('rootsubdir', '')]))
 			if os.path.isfile(os.path.join(imagedir, 'usr/bin/enigma2')):
 				try:
 					from datetime import datetime

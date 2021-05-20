@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from Components.Renderer.Renderer import Renderer
 from enigma import eDVBCI_UI, eLabel, iPlayableService
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.VariableText import VariableText
 
 
@@ -33,7 +33,7 @@ class CiModuleControl(Renderer, VariableText):
 	def changed(self, what):
 		if what == True or what[0] == self.CHANGED_SPECIFIC and what[1] == iPlayableService.evStart:
 			string = ""
-			NUM_CI = SystemInfo["CommonInterface"]
+			NUM_CI = BoxInfo.getItem("CommonInterface")
 			if NUM_CI and NUM_CI > 0:
 				if self.eDVBCIUIInstance:
 					for slot in range(NUM_CI):

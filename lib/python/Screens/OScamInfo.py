@@ -15,7 +15,7 @@ from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename, fileExists
 from enigma import eTimer, RT_HALIGN_LEFT, eListboxPythonMultiContent, gFont, getDesktop
 from xml.etree import ElementTree
 from operator import itemgetter
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 import os
 import time
 try:
@@ -110,7 +110,7 @@ class OscamInfo:
 		blocked = False
 		ipconfigured = ipcompiled
 		user = pwd = None
-		if SystemInfo["NCamIsActive"]:
+		if BoxInfo.getItem("NCamIsActive"):
 			ret = _("NCam webif disabled")
 		else:
 			ret = _("OScam webif disabled")
@@ -422,7 +422,7 @@ class OscamInfoMenu(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		global f
-		if SystemInfo["NCamIsActive"]:
+		if BoxInfo.getItem("NCamIsActive"):
 			screentitle = _("NCam Info Main Menu")
 			if f == 1.5:
 				self.skin = """<screen position="center,center" size="640,400" title="NCam Info Main Menu">"""
@@ -545,7 +545,7 @@ class OscamInfoMenu(Screen):
 						self.callbackmode = "readers"
 						self.session.openWithCallback(self.chooseReaderCallback, ChoiceBox, title=_("Please choose reader"), list=reader)
 		elif entry == 6:
-			if SystemInfo["NCamIsActive"]:
+			if BoxInfo.getItem("NCamIsActive"):
 				screentitle = _("NCam Config info")
 			else:
 				screentitle = _("OScam Config info")
@@ -600,7 +600,7 @@ class OscamInfoMenu(Screen):
 
 	def showMenu(self):
 		entr = self.buildMenu(self.menu)
-		if SystemInfo["NCamIsActive"]:
+		if BoxInfo.getItem("NCamIsActive"):
 			self.setTitle(_("NCam Info - Main Menu"))
 		else:
 			self.setTitle(_("OScam Info - Main Menu"))
@@ -612,7 +612,7 @@ class oscECMInfo(Screen, OscamInfo):
 	def __init__(self, session):
 		global f
 		Screen.__init__(self, session)
-		if SystemInfo["NCamIsActive"]:
+		if BoxInfo.getItem("NCamIsActive"):
 			screentitle = _("NCam ECM info")
 			if f == 1.5:
 				self.skin = """<screen position="center,center" size="960,540" title="NCam ECM info">"""
@@ -865,7 +865,7 @@ class oscInfo(Screen, OscamInfo):
 					if i != "":
 						self.out.append(self.buildLogListEntry((i,)))
 			if self.what == "c":
-				if SystemInfo["NCamIsActive"]:
+				if BoxInfo.getItem("NCamIsActive"):
 					self.setTitle(_("Client Info ( NCam-Version: %s )") % self.getVersion())
 				else:
 					self.setTitle(_("Client Info ( OScam-Version: %s )") % self.getVersion())
@@ -873,7 +873,7 @@ class oscInfo(Screen, OscamInfo):
 				self["key_yellow"].setText(_("Servers"))
 				self["key_blue"].setText(_("Log"))
 			elif self.what == "s":
-				if SystemInfo["NCamIsActive"]:
+				if BoxInfo.getItem("NCamIsActive"):
 					self.setTitle(_("Server Info ( NCam-Version: %s )") % self.getVersion())
 				else:
 					self.setTitle(_("Server Info ( OScam-Version: %s )") % self.getVersion())
@@ -881,7 +881,7 @@ class oscInfo(Screen, OscamInfo):
 				self["key_yellow"].setText("")
 				self["key_blue"].setText(_("Log"))
 			elif self.what == "l":
-				if SystemInfo["NCamIsActive"]:
+				if BoxInfo.getItem("NCamIsActive"):
 					self.setTitle(_("NCam Log ( NCam-Version: %s )") % self.getVersion())
 				else:
 					self.setTitle(_("OScam Log ( OScam-Version: %s )") % self.getVersion())
@@ -1232,7 +1232,7 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 	def __init__(self, session, msg=None):
 		Screen.__init__(self, session)
 		self.session = session
-		if SystemInfo["NCamIsActive"]:
+		if BoxInfo.getItem("NCamIsActive"):
 			if f == 1.5:
 				self.skin = """<screen position="center,center" size="960,540" title="NCam Setup">"""
 				self.skin += """<widget name="config" font="Regular;30" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="960,540" transparent="1" />"""
@@ -1302,7 +1302,7 @@ class OscamInfoConfigScreen(Screen, ConfigListScreen):
 			pass
 
 	def layoutFinished(self):
-		if SystemInfo["NCamIsActive"]:
+		if BoxInfo.getItem("NCamIsActive"):
 			self.setTitle(_("NCam Info - Configuration"))
 		else:
 			self.setTitle(_("OScam Info - Configuration"))

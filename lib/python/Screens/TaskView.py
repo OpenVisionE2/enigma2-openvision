@@ -6,7 +6,7 @@ from Components.config import config, ConfigSubsection, ConfigSelection, getConf
 from Components.ConfigList import ConfigListScreen
 from Components.Sources.Progress import Progress
 from Components.Sources.StaticText import StaticText
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.Task import job_manager
 from InfoBarGenerics import InfoBarNotifications
 from Tools import Notifications
@@ -60,7 +60,7 @@ class JobView(InfoBarNotifications, Screen, ConfigListScreen):
 		}, -2)
 
 		self.settings = ConfigSubsection()
-		if SystemInfo["DeepstandbySupport"]:
+		if BoxInfo.getItem("DeepstandbySupport"):
 			shutdownString = _("go to deep standby")
 		else:
 			shutdownString = _("shut down")
