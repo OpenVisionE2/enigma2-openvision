@@ -304,6 +304,15 @@ def createDir(path, makeParents=False):
 	return 0
 
 
+def renameDir(oldPath, newPath):
+	try:
+		rename(oldPath, newPath)
+		return 1
+	except (IOError, OSError) as err:
+		print("[Directories] Error %d: Couldn't rename directory '%s' to '%s'! (%s)" % (err.errno, oldPath, newPath, err.strerror))
+	return 0
+
+
 def removeDir(path):
 	try:
 		rmdir(path)
