@@ -631,6 +631,8 @@ class AttributeParser:
 		self.overScan(value)
 
 	def pixmap(self, value):
+		if value.endswith(".svg"): # if graphic is svg force alphatest to "blend"
+			self.guiObject.setAlphatest(2)
 		self.guiObject.setPixmap(loadPixmap(value, self.desktop, self.guiObject.size().width(), self.guiObject.size().height()))
 
 	def pointer(self, value):

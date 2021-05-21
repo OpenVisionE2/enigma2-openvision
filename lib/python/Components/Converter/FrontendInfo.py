@@ -74,7 +74,7 @@ class FrontendInfo(Converter):
 						color = "\c%08x" % colors[0]
 					elif self.source.tuner_mask & 1 << n.slot:
 						color = "\c%08x" % colors[1]
-					elif len(nimmanager.nim_slots) <= self.space_for_tuners or n.isFBCRoot() or self.show_all_non_link_tuners and not(n.isFBCLink() or n.internally_connectable):
+					elif len(nimmanager.nim_slots) <= self.space_for_tuners or n.isFBCRoot() or self.show_all_non_link_tuners and not (n.isFBCLink() or n.config_mode == "loopthrough"):
 						color = "\c%08x" % colors[2]
 					else:
 						continue
