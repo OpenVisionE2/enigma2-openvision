@@ -953,7 +953,7 @@ class NimManager:
 				entry["supports_blind_scan"] = False
 
 			entry["fbc"] = [0, 0, 0] # not fbc
-			if entry["name"] and ("fbc" in entry["name"].lower() or entry["name"] in SystemInfo["HasFBCtuner"]) and entry["frontend_device"] is not None and os.access("/proc/stb/frontend/%d/fbc_id" % entry["frontend_device"], os.F_OK):
+			if entry["name"] and ("fbc" in entry["name"].lower() or entry["name"] in BoxInfo.getItem("HasFBCtuner")) and entry["frontend_device"] is not None and os.access("/proc/stb/frontend/%d/fbc_id" % entry["frontend_device"], os.F_OK):
 				if fbc_number > 8:
 					fbc_number = 0
 					fbc_tuner += 1
