@@ -920,7 +920,7 @@ int eDVBServicePMTHandler::compareAudioSubtitleCode(const std::string &subtitleT
 {
 	for (const auto& _audioTrack : split(audioTrack, "/"))
 	{
-		if (strcasecmp(subtitleTrack, _audioTrack) == 0)
+		if (strcasecmp(subtitleTrack.c_str(), _audioTrack.c_str()) == 0)
 			return 0;
 	}
 	return -1;
