@@ -656,7 +656,10 @@ class RecordTimerEntry(timer.TimerEntry, object):
 
 				# Tell the trashcan we started recording. The trashcan gets events,
 				# but cannot tell what the associated path is.
-				Trashcan.instance.markDirty(self.Filename)
+				try:
+					Trashcan.instance.markDirty(self.Filename)
+				except:
+					pass
 				self.log_tuner(11, "start")
 				return True
 
