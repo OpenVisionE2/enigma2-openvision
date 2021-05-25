@@ -238,7 +238,7 @@ class BenchmarkInformation(InformationBase):
 
 	def displayInformation(self):
 		info = []
-		info.append(formatLine("H", "%s %s %s" % (_("Benchmark for"), BoxInfo.getItem("brand"), BoxInfo.getItem("model"))))
+		info.append(formatLine("H", "%s %s %s" % (_("Benchmark for"), BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
 		info.append("")
 		for index, cpu in enumerate(self.cpuTypes):
 			info.append(formatLine("P1", _("CPU / Core %d type") % index, cpu))
@@ -452,10 +452,10 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("M", _("Donate at %s") % "https://forum.openvision.tech/app.php/donate"))
 		info.append("")
-		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("visionversion")))
-		info.append(formatLine("P1", _("OpenVision revision"), BoxInfo.getItem("visionrevision")))
+		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("imgversion")))
+		info.append(formatLine("P1", _("OpenVision revision"), BoxInfo.getItem("imgrevision")))
 		if config.misc.OVupdatecheck.value:
-			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if str(BoxInfo.getItem("visionversion")).startswith("10") else "old")
+			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if str(BoxInfo.getItem("imgversion")).startswith("10") else "old")
 			try:
 				ovResponse = urlopen(ovUrl)
 				ovRevision = ovResponse.read().decode() if PY2 else ovResponse.read()
@@ -465,9 +465,7 @@ class ImageInformation(InformationBase):
 		else:
 			ovRevisionUpdate = _("Disabled in configuration")
 		info.append(formatLine("P1", _("Latest revision on github"), ovRevisionUpdate))
-		visionLanguage = fileReadLine("/etc/openvision/visionlanguage", source=MODULE_NAME)
-		if visionLanguage:
-			info.append(formatLine("P1", _("OpenVision language"), visionLanguage))
+		info.append(formatLine("P1", _("OpenVision language"), BoxInfo.getItem("imglanguage")))
 		info.append(formatLine("P1", _("OpenVision module"), about.getVisionModule()))
 		multibootFlag = _("Yes") if fileReadLine("/etc/openvision/multiboot", "1", source=MODULE_NAME) else _("No")
 		info.append(formatLine("P1", _("Soft multiboot"), multibootFlag))
@@ -600,7 +598,7 @@ class KernelModuleInformation(InformationBase):
 
 	def displayInformation(self):
 		info = []
-		info.append(formatLine("H", "%s %s %s" % (_("Enigma kernel module information for"), BoxInfo.getItem("brand"), BoxInfo.getItem("model"))))
+		info.append(formatLine("H", "%s %s %s" % (_("Enigma kernel module information for"), BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
 		info.append("")
 		info.append(formatLine("P1", _("Kernel module path"), BoxInfo.getItem("enigmamodule")))
 		for item in BoxInfo.getProcList():
@@ -991,6 +989,7 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		stbPlatform = BoxInfo.getItem("platform")
 		info.append(formatLine("P1", _("Hardware"), model))
+		info.append(formatLine("P1", _("Real Model"), BoxInfo.getItem("displaymodel")))
 		if stbPlatform != model:
 			info.append(formatLine("P1", _("Platform"), stbPlatform))
 		procModel = getBoxProc()
@@ -1006,6 +1005,7 @@ class ReceiverInformation(InformationBase):
 		if hwRelease:
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
 		info.append(formatLine("P1", _("Brand/Meta"), BoxInfo.getItem("brand")))
+		info.append(formatLine("P1", _("Real Brand"), BoxInfo.getItem("displaybrand")))
 		if not BoxInfo.getItem("displaytype").startswith(" "):
 			info.append(formatLine("P1", _("Display type"), BoxInfo.getItem("displaytype")))
 		fpVersion = getFPVersion()

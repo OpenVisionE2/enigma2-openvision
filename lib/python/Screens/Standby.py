@@ -23,8 +23,8 @@ from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceRefe
 inStandby = None
 infoBarInstance = None
 
-model = BoxInfo.getItem("model")
-brand = BoxInfo.getItem("brand")
+model = BoxInfo.getItem("displaymodel")
+brand = BoxInfo.getItem("displaybrand")
 
 QUIT_SHUTDOWN = 1
 QUIT_REBOOT = 2
@@ -412,7 +412,7 @@ class TryQuitMainloop(MessageBox):
 					open("/proc/stb/lcd/mode", "w").write(0)
 				except:
 					print("[Standby] Write to /proc/stb/lcd/mode failed.")
-			if model == "vusolo4k":
+			if BoxInfo.getItem("model") == "vusolo4k":
 				try:
 					print("[Standby] Write to /proc/stb/fp/oled_brightness")
 					open("/proc/stb/fp/oled_brightness", "w").write("0")

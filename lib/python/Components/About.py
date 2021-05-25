@@ -82,8 +82,8 @@ def getBuildDateString():
 
 
 def getUpdateDateString():
-	if isfile("/proc/openvision/compiledate"):
-		build = fileReadLine("/proc/openvision/compiledate", source=MODULE_NAME)
+	if isfile("/proc/enigma/compiledate"):
+		build = fileReadLine("/proc/enigma/compiledate", source=MODULE_NAME)
 	elif isfile("/etc/openvision/compiledate"):
 		build = fileReadLine("/etc/openvision/compiledate", source=MODULE_NAME)
 	else:

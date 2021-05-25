@@ -162,10 +162,10 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 			self.graphicSwitchChanged = True
 
 	def formatItemText(self, itemText):
-		return itemText.replace("%s %s", "%s %s" % (BoxInfo.getItem("brand"), BoxInfo.getItem("model")))
+		return itemText.replace("%s %s", "%s %s" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel")))
 
 	def formatItemDescription(self, item, itemDescription):
-		itemDescription = itemDescription.replace("%s %s", "%s %s" % (BoxInfo.getItem("brand"), BoxInfo.getItem("model")))
+		itemDescription = itemDescription.replace("%s %s", "%s %s" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel")))
 		if config.usage.setupShowDefault.value:
 			spacer = "\n" if config.usage.setupShowDefault.value == "newline" else "  "
 			itemDefault = item.toDisplayString(item.default)
