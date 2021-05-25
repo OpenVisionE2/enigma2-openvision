@@ -18,7 +18,7 @@ MODULE_NAME = __name__.split(".")[-1]
 
 # BLACKLIST = ("dreambox front panel", "cec_input")  # Why was this being done?
 
-REMOTE_MACHINE_BUILD = 0
+REMOTE_MODEL = 0
 REMOTE_RCTYPE = 1
 REMOTE_NAME = 2
 REMOTE_DISPLAY_NAME = 3
@@ -205,21 +205,21 @@ class RemoteControl:
 	]
 
 	def __init__(self):
-		self.machineBuild = BoxInfo.getItem("platform")
+		self.model = BoxInfo.getItem("model")
 		self.rcName = BoxInfo.getItem("rcname")
 		self.rcType = self.readRemoteControlType()
-		print("[InputDevice] RemoteControl DEBUG: machineBuild='%s', rcName='%s', rcType='%s'." % (self.machineBuild, self.rcName, self.rcType))
+		print("[InputDevice] RemoteControl DEBUG: model='%s', rcName='%s', rcType='%s'." % (self.model, self.rcName, self.rcType))
 		remotes = fileReadXML(resolveFilename(SCOPE_SKIN, "remotes.xml"), source=MODULE_NAME)
 		self.remotes = []
 		if remotes:
 			for remote in sorted(remotes.findall("remote"), key=lambda remote: (remote.tag, remote.get("displayName"))):
-				machineBuild = remote.attrib.get("machineBuild")
+				model = remote.attrib.get("model")
 				rcType = remote.attrib.get("rcType")
 				codeName = remote.attrib.get("codeName")
 				displayName = remote.attrib.get("displayName")
 				if codeName and displayName:
 					print("[InputDevice] Adding remote control for '%s'." % displayName)
-					self.remotes.append((machineBuild, rcType, codeName, displayName))
+					self.remotes.append((model, rcType, codeName, displayName))
 		self.remotes.insert(0, ("", "", "", _("Default")))
 		if BoxInfo.getItem("RemoteTypeZeroAllowed", False):
 			self.remotes.insert(1, ("", "0", "", _("All supported")))
@@ -228,7 +228,7 @@ class RemoteControl:
 		for index, remote in enumerate(self.remotes):
 			index = str(index)
 			rcChoices.append((index, remote[REMOTE_DISPLAY_NAME]))
-			if self.machineBuild == remote[REMOTE_MACHINE_BUILD] and self.rcType == remote[REMOTE_RCTYPE] and self.rcName in [x.strip() for x in remote[REMOTE_NAME].split(",")]:
+			if self.model == remote[REMOTE_MODEL] and self.rcType == remote[REMOTE_RCTYPE] and self.rcName in [x.strip() for x in remote[REMOTE_NAME].split(",")]:
 				default = index
 		config.inputDevices.remotesIndex = ConfigSelection(choices=rcChoices, default=default)
 		self.remote = self.loadRemoteControl(BoxInfo.getItem("RCMapping"))
