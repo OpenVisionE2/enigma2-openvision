@@ -988,8 +988,8 @@ class ReceiverInformation(InformationBase):
 		info.append(formatLine("H", _("Hardware information")))
 		info.append("")
 		stbPlatform = BoxInfo.getItem("platform")
-		info.append(formatLine("P1", _("Hardware"), model))
-		info.append(formatLine("P1", _("Real Model"), BoxInfo.getItem("displaymodel")))
+		info.append(formatLine("P1", _("Source Model"), model))
+		info.append(formatLine("P1", _("Model"), BoxInfo.getItem("displaymodel")))
 		if stbPlatform != model:
 			info.append(formatLine("P1", _("Platform"), stbPlatform))
 		procModel = getBoxProc()
@@ -1004,8 +1004,8 @@ class ReceiverInformation(InformationBase):
 		hwRelease = fileReadLine("/proc/stb/info/release", source=MODULE_NAME)
 		if hwRelease:
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
-		info.append(formatLine("P1", _("Brand/Meta"), BoxInfo.getItem("brand")))
-		info.append(formatLine("P1", _("Real Brand"), BoxInfo.getItem("displaybrand")))
+		info.append(formatLine("P1", _("Source Brand"), BoxInfo.getItem("brand")))
+		info.append(formatLine("P1", _("Brand"), BoxInfo.getItem("displaybrand")))
 		if not BoxInfo.getItem("displaytype").startswith(" "):
 			info.append(formatLine("P1", _("Display type"), BoxInfo.getItem("displaytype")))
 		fpVersion = getFPVersion()
