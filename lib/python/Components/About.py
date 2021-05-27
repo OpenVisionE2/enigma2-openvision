@@ -82,16 +82,9 @@ def getBuildDateString():
 
 
 def getUpdateDateString():
-	if isfile("/proc/enigma/compiledate"):
-		build = fileReadLine("/proc/enigma/compiledate", source=MODULE_NAME)
-	elif isfile("/etc/openvision/compiledate"):
-		build = fileReadLine("/etc/openvision/compiledate", source=MODULE_NAME)
-	else:
-		build = None
-	if build is not None:
-		build = build.strip()
-		if build.isdigit():
-			return "%s-%s-%s" % (build[:4], build[4:6], build[6:])
+	build = BoxInfo.getItem("compiledate")
+	if build and build.isdigit():
+		return "%s-%s-%s" % (build[:4], build[4:6], build[6:])
 	return _("Unknown")
 
 
