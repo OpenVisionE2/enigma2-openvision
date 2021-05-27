@@ -1,17 +1,16 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
 from Components.SystemInfo import BoxInfo
+from Tools.Directories import fileReadLine
 
+MODULE_NAME = __name__.split(".")[-1]
 hw_info = None
 
 
 class HardwareInfo:
-	device_name = _("unavailable")
-	device_brandname = None
-	device_model = None
+	device_name = _("Unavailable")
 	device_version = ""
 	device_revision = ""
+	device_model = None
+	device_brandname = None
 	device_hdmi = False
 
 	def __init__(self):
@@ -19,58 +18,22 @@ class HardwareInfo:
 		if hw_info:
 			return
 		hw_info = self
-
-		print("[HardwareInfo] Scanning hardware info")
-		# Version
-		try:
-			print("[HardwareInfo] Read /proc/stb/info/version")
-			self.device_version = open("/proc/stb/info/version").read().strip()
-		except:
-			print("[HardwareInfo] Read /proc/stb/info/version failed.")
-
-		# Revision
-		try:
-			print("[HardwareInfo] Read /proc/stb/info/board_revision")
-			self.device_revision = open("/proc/stb/info/board_revision").read().strip()
-		except:
-			print("[HardwareInfo] Read /proc/stb/info/board_revision failed.")
-
-		# Name ... bit odd, but history prevails
-		try:
-			print("[HardwareInfo] Read /etc/openvision/model")
-			self.device_name = open("/etc/openvision/model").read().strip()
-		except:
-			print("[HardwareInfo] Read /etc/openvision/model failed.")
-
-		# Brandname ... bit odd, but history prevails
-		try:
-			print("[HardwareInfo] Read /etc/openvision/brand")
-			self.device_brandname = open("/etc/openvision/brand").read().strip()
-		except:
-			print("[HardwareInfo] Read /etc/openvision/brand failed.")
-
-		# Model
-		try:
-			print("[HardwareInfo] Read /etc/openvision/model")
-			self.device_model = open("/etc/openvision/model").read().strip()
-		except:
-			print("[HardwareInfo] Read /etc/openvision/model failed.")
-
+		self.device_version = fileReadLine("/proc/stb/info/version", "", source=MODULE_NAME).strip()
+		self.device_revision = fileReadLine("/proc/stb/info/board_revision", "", source=MODULE_NAME).strip()
+		self.device_name = BoxInfo.getItem("model")
+		self.device_brandname = BoxInfo.getItem("brand")
+		self.device_model = BoxInfo.getItem("model")
 		self.device_model = self.device_model or self.device_name
 		self.device_hw = self.device_model
 		self.machine_name = self.device_model
-
 		if self.device_revision:
 			self.device_string = "%s (%s-%s)" % (self.device_hw, self.device_revision, self.device_version)
 		elif self.device_version:
 			self.device_string = "%s (%s)" % (self.device_hw, self.device_version)
 		else:
 			self.device_string = self.device_hw
-
-		# only some early DMM boxes do not have HDMI hardware
-		self.device_hdmi = BoxInfo.getItem("hdmi")
-
-		print("[HardwareInfo] Detected: " + self.get_device_string())
+		self.device_hdmi = BoxInfo.getItem("hdmi")  # Only some early DMM boxes do not have HDMI hardware.
+		print("[HardwareInfo] Detected: '%s'." % self.get_device_string())
 
 	def get_device_name(self):
 		return hw_info.device_name
