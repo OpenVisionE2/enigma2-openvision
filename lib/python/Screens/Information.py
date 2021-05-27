@@ -983,15 +983,16 @@ class ReceiverInformation(InformationBase):
 		self.session.openWithCallback(self.informationWindowClosed, BenchmarkInformation)
 
 	def displayInformation(self):
-		model = BoxInfo.getItem("model")
 		info = []
 		info.append(formatLine("H", _("Hardware information")))
 		info.append("")
-		stbPlatform = BoxInfo.getItem("platform")
-		info.append(formatLine("P1", _("Source Model"), model))
-		info.append(formatLine("P1", _("Model"), BoxInfo.getItem("displaymodel")))
-		if stbPlatform != model:
-			info.append(formatLine("P1", _("Platform"), stbPlatform))
+		info.append(formatLine("P1", _("Receiver name"), "%s %s" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
+		info.append(formatLine("P1", _("Build Brand"), BoxInfo.getItem("brand")))
+		platform = BoxInfo.getItem("platform")
+		model = BoxInfo.getItem("model")
+		info.append(formatLine("P1", _("Build Model"), model))
+		if platform != model:
+			info.append(formatLine("P1", _("Platform"), platform))
 		procModel = getBoxProc()
 		if procModel != model:
 			info.append(formatLine("P1", _("Proc model"), procModel))
