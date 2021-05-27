@@ -6,6 +6,7 @@ from Screens.HelpMenu import ShowRemoteControl
 from Screens.MessageBox import MessageBox
 from Components.Pixmap import Pixmap
 from Components.Sources.Boolean import Boolean
+from Components.Sources.StaticText import StaticText
 from Components.Network import iNetwork
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from enigma import eTimer
@@ -44,7 +45,12 @@ class NetworkWizard(WizardLanguage, ShowRemoteControl):
 		self["HelpWindow"] = Pixmap()
 		self["HelpWindow"].hide()
 		self["VKeyIcon"] = Boolean(False)
-
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Let's define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 		self.InstalledInterfaceCount = None
 		self.Adapterlist = None
 		self.InterfaceState = None
