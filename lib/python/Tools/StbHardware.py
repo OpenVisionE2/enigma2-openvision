@@ -1,180 +1,117 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from os import path
 from fcntl import ioctl
+from os.path import exists, isfile
 from struct import pack, unpack
-from time import time, localtime
-from Tools.Directories import fileExists
+from time import localtime, time, timezone
+
 from Components.SystemInfo import BoxInfo
+from Tools.Directories import fileReadLine, fileWriteLine
+
+MODULE_NAME = __name__.split(".")[-1]
+wasTimerWakeup = None
 
 
 def getBoxProcType():
-	procmodeltype = "unknown"
-	try:
-		if fileExists("/proc/stb/info/type"):
-			print("[StbHardware] Read /proc/stb/info/type")
-			procmodeltype = open("/proc/stb/info/type", "r").readline().strip().lower()
-	except IOError:
-		print("[StbHardware] Read /proc/stb/info/type failed.")
-	return procmodeltype
+	return fileReadLine("/proc/stb/info/type", "unknown", source=MODULE_NAME).strip().lower()
 
 
 def getBoxProc():
-	procmodel = "unknown"
-	try:
-		if fileExists("/proc/stb/info/hwmodel"):
-			print("[StbHardware] Read /proc/stb/info/hwmodel")
-			procmodel = open("/proc/stb/info/hwmodel", "r").readline().strip().lower()
-		elif fileExists("/proc/stb/info/azmodel"):
-			print("[StbHardware] Read /proc/stb/info/model")
-			procmodel = open("/proc/stb/info/model", "r").readline().strip().lower()
-		elif fileExists("/proc/stb/info/gbmodel"):
-			print("[StbHardware] Read /proc/stb/info/gbmodel")
-			procmodel = open("/proc/stb/info/gbmodel", "r").readline().strip().lower()
-		elif fileExists("/proc/stb/info/vumodel") and not fileExists("/proc/stb/info/boxtype"):
-			print("[StbHardware] Read /proc/stb/info/vumodel")
-			procmodel = open("/proc/stb/info/vumodel", "r").readline().strip().lower()
-		elif fileExists("/proc/stb/info/boxtype") and not fileExists("/proc/stb/info/vumodel"):
-			print("[StbHardware] Read /proc/stb/info/boxtype")
-			procmodel = open("/proc/stb/info/boxtype", "r").readline().strip().lower()
-		elif fileExists("/proc/boxtype"):
-			print("[StbHardware] Read /proc/boxtype")
-			procmodel = open("/proc/boxtype", "r").readline().strip().lower()
-		elif fileExists("/proc/device-tree/model"):
-			print("[StbHardware] Read /proc/device-tree/model")
-			procmodel = open("/proc/device-tree/model", "r").readline().strip()[0:12]
-		elif fileExists("/sys/firmware/devicetree/base/model"):
-			print("[StbHardware] Read /sys/firmware/devicetree/base/model")
-			procmodel = open("/sys/firmware/devicetree/base/model", "r").readline().strip()
-		else:
-			print("[StbHardware] Read /proc/stb/info/model")
-			procmodel = open("/proc/stb/info/model", "r").readline().strip().lower()
-	except IOError:
-		print("[StbHardware] getBoxProc failed!")
-	return procmodel
+	if isfile("/proc/stb/info/hwmodel"):
+		procmodel = fileReadLine("/proc/stb/info/hwmodel", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/stb/info/azmodel"):
+		procmodel = fileReadLine("/proc/stb/info/model", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/stb/info/gbmodel"):
+		procmodel = fileReadLine("/proc/stb/info/gbmodel", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/stb/info/vumodel") and not isfile("/proc/stb/info/boxtype"):
+		procmodel = fileReadLine("/proc/stb/info/vumodel", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/stb/info/boxtype") and not isfile("/proc/stb/info/vumodel"):
+		procmodel = fileReadLine("/proc/stb/info/boxtype", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/boxtype"):
+		procmodel = fileReadLine("/proc/boxtype", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/device-tree/model"):
+		procmodel = fileReadLine("/proc/device-tree/model", "unknown", source=MODULE_NAME).strip()[0:12]
+	elif isfile("/sys/firmware/devicetree/base/model"):
+		procmodel = fileReadLine("/sys/firmware/devicetree/base/model", "unknown", source=MODULE_NAME)
+	else:
+		procmodel = fileReadLine("/proc/stb/info/model", "unknown", source=MODULE_NAME)
+	return procmodel.strip().lower()
 
 
 def getHWSerial():
-	hwserial = "unknown"
-	try:
-		if fileExists("/proc/stb/info/sn"):
-			print("[StbHardware] Read /proc/stb/info/sn")
-			hwserial = open("/proc/stb/info/sn", "r").read().strip()
-		elif fileExists("/proc/stb/info/serial"):
-			print("[StbHardware] Read /proc/stb/info/serial")
-			hwserial = open("/proc/stb/info/serial", "r").read().strip()
-		elif fileExists("/proc/stb/info/serial_number"):
-			print("[StbHardware] Read /proc/stb/info/serial_number")
-			hwserial = open("/proc/stb/info/serial_number", "r").read().strip()
-		else:
-			print("[StbHardware] Read /sys/class/dmi/id/product_serial")
-			hwserial = open("/sys/class/dmi/id/product_serial", "r").read().strip()
-	except IOError:
-		print("[StbHardware] getHWSerial failed!")
-	return hwserial
+	if isfile("/proc/stb/info/sn"):
+		hwserial = fileReadLine("/proc/stb/info/sn", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/stb/info/serial"):
+		hwserial = fileReadLine("/proc/stb/info/serial", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/stb/info/serial_number"):
+		hwserial = fileReadLine("/proc/stb/info/serial_number", "unknown", source=MODULE_NAME)
+	else:
+		hwserial = fileReadLine("/sys/class/dmi/id/product_serial", "unknown", source=MODULE_NAME)
+	return hwserial.strip()
 
 
 def getBoxRCType():
-	boxrctype = "unknown"
-	try:
-		if fileExists("/proc/stb/ir/rc/type"):
-			print("[StbHardware] Read /proc/stb/ir/rc/type")
-			boxrctype = open("/proc/stb/ir/rc/type", "r").read().strip()
-	except IOError:
-		print("[StbHardware] Read /proc/stb/ir/rc/type failed.")
-	return boxrctype
+	return fileReadLine("/proc/stb/ir/rc/type", "unknown", source=MODULE_NAME).strip()
 
 
 def getFPVersion():
-	ret = "unknown"
-	try:
-		if fileExists("/proc/stb/info/micomver"):
-			print("[StbHardware] Read /proc/stb/info/micomver")
-			ret = open("/proc/stb/info/micomver", "r").read()
-		elif fileExists("/proc/stb/fp/version"):
-			print("[StbHardware] Read /proc/stb/fp/version")
-			if BoxInfo.getItem("platform") == "dm4kgen" or BoxInfo.getItem("model") in ("dm520", "dm7080", "dm820"):
-				ret = open("/proc/stb/fp/version", "r").read()
-			else:
-				ret = long(open("/proc/stb/fp/version", "r").read())
-		elif fileExists("/sys/firmware/devicetree/base/bolt/tag"):
-			print("[StbHardware] Read /sys/firmware/devicetree/base/bolt/tag")
-			ret = open("/sys/firmware/devicetree/base/bolt/tag", "r").read().rstrip("\0")
+	if isfile("/proc/stb/info/micomver"):
+		version = fileReadLine("/proc/stb/info/micomver", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/stb/fp/version"):
+		if BoxInfo.getItem("platform") == "dm4kgen" or BoxInfo.getItem("model") in ("dm520", "dm7080", "dm820"):
+			version = fileReadLine("/proc/stb/fp/version", "unknown", source=MODULE_NAME)
 		else:
-			print("[StbHardware] Read /dev/dbox/fp0")
-			fp = open("/dev/dbox/fp0")
-			ret = ioctl(fp.fileno(), 0)
-	except IOError:
-		print("[StbHardware] getFPVersion failed!")
-	return ret
+			version = long(fileReadLine("/proc/stb/fp/version", "0", source=MODULE_NAME))
+	elif isfile("/sys/firmware/devicetree/base/bolt/tag"):
+		version = fileReadLine("/sys/firmware/devicetree/base/bolt/tag", "unknown", source=MODULE_NAME).rstrip("\0")
+	else:
+		try:
+			with open("/dev/dbox/fp0") as fd:
+				version = ioctl(fd.fileno(), 0)
+		except (IOError, OSError) as err:
+			version = "unknown"
+			print("[StbHardware] Error %d: Unable to access '/dev/dbox/fp0', getFPVersion failed!  (%s)" % (err.errno, err.strerror))
+	return version
 
 
 def setFPWakeuptime(wutime):
-	try:
-		print("[StbHardware] Write to /proc/stb/fp/wakeup_time")
-		open("/proc/stb/fp/wakeup_time", "w").write(str(wutime))
-	except IOError:
-		print("[StbHardware] Write to /proc/stb/fp/wakeup_time failed.")
+	if not fileWriteLine("/proc/stb/fp/wakeup_time", str(wutime), source=MODULE_NAME):
 		try:
-			print("[StbHardware] Write to /dev/dbox/fp0")
-			fp = open("/dev/dbox/fp0")
-			ioctl(fp.fileno(), 6, pack('L', wutime)) # set wake up
-		except IOError:
-			print("[StbHardware] Write to /dev/dbox/fp0 failed.")
+			with open("/dev/dbox/fp0") as fd:
+				ioctl(fd.fileno(), 6, pack('L', wutime))  # Set wake up time.
+		except (IOError, OSError) as err:
+			print("[StbHardware] Error %d: Unable to write to '/dev/dbox/fp0', setFPWakeuptime failed!  (%s)" % (err.errno, err.strerror))
 
 
 def setRTCoffset(forsleep=None):
-	import time
-	if time.localtime().tm_isdst == 0:
-		forsleep = 7200 + time.timezone
-	else:
-		forsleep = 3600 - time.timezone
-
-	t_local = time.localtime(int(time.time()))
-
+	forsleep = 7200 + timezone if localtime().tm_isdst == 0 else 3600 - timezone
+	# t_local = localtime(int(time()))  # This line does nothing!
 	# Set RTC OFFSET (diff. between UTC and Local Time)
-	try:
-		print("[StbHardware] Write to /proc/stb/fp/rtc_offset")
-		open("/proc/stb/fp/rtc_offset", "w").write(str(forsleep))
-		print("[StbHardware] set RTC offset to %s sec." % (forsleep))
-	except IOError:
-		print("[StbHardware] Write to /proc/stb/fp/rtc_offset failed.")
+	if fileWriteLine("/proc/stb/fp/rtc_offset", str(forsleep), source=MODULE_NAME):
+		print("[StbHardware] Set RTC offset to %s sec." % forsleep)
+	else:
+		print("[StbHardware] Error: Write to '/proc/stb/fp/rtc_offset' failed!")
 
 
 def setRTCtime(wutime):
-	if path.exists("/proc/stb/fp/rtc_offset"):
+	if exists("/proc/stb/fp/rtc_offset"):
 		setRTCoffset()
-	try:
-		print("[StbHardware] Write to /proc/stb/fp/rtc")
-		open("/proc/stb/fp/rtc", "w").write(str(wutime))
-	except IOError:
-		print("[StbHardware] Write to /proc/stb/fp/rtc failed.")
+	if not fileWriteLine("/proc/stb/fp/rtc", str(wutime), source=MODULE_NAME):
 		try:
-			print("[StbHardware] Write to /dev/dbox/fp0")
-			fp = open("/dev/dbox/fp0")
-			ioctl(fp.fileno(), 0x101, pack('L', wutime)) # set wake up
-		except IOError:
-			print("[StbHardware] Write to /dev/dbox/fp0 failed.")
+			with open("/dev/dbox/fp0") as fd:
+				ioctl(fd.fileno(), 0x101, pack('L', wutime))  # Set time.
+		except (IOError, OSError) as err:
+			print("[StbHardware] Error %d: Unable to write to '/dev/dbox/fp0', setRTCtime failed!  (%s)" % (err.errno, err.strerror))
 
 
 def getFPWakeuptime():
-	ret = 0
-	try:
-		print("[StbHardware] Read /proc/stb/fp/wakeup_time")
-		ret = int(open("/proc/stb/fp/wakeup_time", "r").read())
-	except IOError:
-		print("[StbHardware] Read /proc/stb/fp/wakeup_time failed.")
+	wakeup = fileReadLine("/proc/stb/fp/wakeup_time", source=MODULE_NAME)
+	if wakeup is None:
 		try:
-			print("[StbHardware] Read /dev/dbox/fp0")
-			fp = open("/dev/dbox/fp0")
-			ret = unpack('L', ioctl(fp.fileno(), 5, '    '))[0] # get wakeuptime
-		except IOError:
-			print("[StbHardware] Read /dev/dbox/fp0 failed.")
-	return ret
-
-
-wasTimerWakeup = None
+			with open("/dev/dbox/fp0") as fd:
+				wakeup = unpack('L', ioctl(fd.fileno(), 5, '    '))[0]  # Get wakeup time.
+		except (IOError, OSError) as err:
+			wakeup = 0
+			print("[StbHardware] Error %d: Unable to read '/dev/dbox/fp0', getFPWakeuptime failed!  (%s)" % (err.errno, err.strerror))
+	return wakeup
 
 
 def getFPWasTimerWakeup(check=False):
@@ -184,36 +121,27 @@ def getFPWasTimerWakeup(check=False):
 		if check:
 			return wasTimerWakeup, isError
 		return wasTimerWakeup
-	wasTimerWakeup = False
-	try:
-		print("[StbHardware] Read /proc/stb/fp/was_timer_wakeup")
-		wasTimerWakeup = int(open("/proc/stb/fp/was_timer_wakeup", "r").read()) and True or False
-		print("[StbHardware] Write to /tmp/was_timer_wakeup.txt")
-		open("/tmp/was_timer_wakeup.txt", "w").write(str(wasTimerWakeup))
-	except:
-		try:
-			print("[StbHardware] Read /dev/dbox/fp0")
-			fp = open("/dev/dbox/fp0")
-			wasTimerWakeup = unpack('B', ioctl(fp.fileno(), 9, ' '))[0] and True or False
-		except IOError:
-			print("[StbHardware] Read /dev/dbox/fp0 failed.")
-			isError = True
+	wasTimerWakeup = fileReadLine("/proc/stb/fp/was_timer_wakeup", source=MODULE_NAME)
+	if wasTimerWakeup is not None:
+		wasTimerWakeup = int(wasTimerWakeup) and True or False
+		if not fileWriteLine("/tmp/was_timer_wakeup.txt", str(wasTimerWakeup), source=MODULE_NAME):
+			try:
+				with open("/dev/dbox/fp0") as fd:
+					wasTimerWakeup = unpack('B', ioctl(fd.fileno(), 9, ' '))[0] and True or False
+			except (IOError, OSError) as err:
+				isError = True
+				print("[StbHardware] Error %d: Unable to read '/dev/dbox/fp0', getFPWasTimerWakeup failed!  (%s)" % (err.errno, err.strerror))
 	if wasTimerWakeup:
-		# clear hardware status
-		clearFPWasTimerWakeup()
+		clearFPWasTimerWakeup()  # Clear hardware status.
 	if check:
 		return wasTimerWakeup, isError
 	return wasTimerWakeup
 
 
 def clearFPWasTimerWakeup():
-	try:
-		print("[StbHardware] Write to /proc/stb/fp/was_timer_wakeup")
-		open("/proc/stb/fp/was_timer_wakeup", "w").write('0')
-	except:
+	if not fileWriteLine("/proc/stb/fp/was_timer_wakeup", "0", source=MODULE_NAME):
 		try:
-			print("[StbHardware] Write to /dev/dbox/fp0")
-			fp = open("/dev/dbox/fp0")
-			ioctl(fp.fileno(), 10)
-		except IOError:
-			print("[StbHardware] Write to /dev/dbox/fp0 failed.")
+			with open("/dev/dbox/fp0") as fd:
+				ioctl(fd.fileno(), 10)
+		except (IOError, OSError) as err:
+			print("[StbHardware] Error %d: Unable to update '/dev/dbox/fp0', clearFPWasTimerWakeup failed!  (%s)" % (err.errno, err.strerror))
