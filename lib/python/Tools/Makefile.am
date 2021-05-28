@@ -20,7 +20,6 @@ install_PYTHON = \
 	HardwareInfo.py \
 	Import.py \
 	ISO639.py \
-	KeyBindings.py \
 	LoadPixmap.py \
 	Log.py \
 	LogConfig.py \

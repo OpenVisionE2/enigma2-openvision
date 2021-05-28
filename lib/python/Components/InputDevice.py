@@ -12,7 +12,6 @@ from Components.Console import Console
 from Components.Language import language
 from Components.SystemInfo import BoxInfo
 from Tools.Directories import SCOPE_KEYMAPS, SCOPE_SKIN, fileReadLine, fileWriteLine, fileReadLines, fileReadXML, resolveFilename
-from Tools.KeyBindings import keyDescriptions  # This is only required for remote controls that don't use keyid.
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -235,19 +234,19 @@ class RemoteControl:
 
 	def loadRemoteControl(self, filename):
 		print("[InputDevice] Loading remote control '%s'." % filename)
-		logRemaps = []
-		remapButtons = {}
-		rcButtons = {}
-		rcButtons["keyIds"] = []
 		rcs = fileReadXML(filename, source=MODULE_NAME)
 		if rcs:
 			rc = rcs.find("rc")
 			if rc:
-				index = int(rc.attrib.get("id", "2"))  # The id attribute is deprecated and will be removed.
+				rcButtons = {}
+				logRemaps = []
+				remapButtons = {}
+				placeHolder = 0
+				rcButtons["keyIds"] = []
 				rcButtons["image"] = rc.attrib.get("image")
-				print("[InputDevice] loadRemoteControl DEBUG: id='%s', image='%s'." % (index, rcButtons["image"]))
+				print("[InputDevice] loadRemoteControl DEBUG: image='%s'." % rcButtons["image"])
 				for button in rc.findall("button"):
-					id = button.attrib.get("id", button.attrib.get("keyid"))
+					id = button.attrib.get("id", "KEY_RESERVED")
 					remap = button.attrib.get("remap")
 					keyId = KEYIDS.get(id)
 					remapId = KEYIDS.get(remap)
@@ -255,23 +254,18 @@ class RemoteControl:
 						logRemaps.append((id, remap))
 						remapButtons[keyId] = remapId
 						keyId = remapId
-					name = button.attrib.get("name")  # The name attribute is deprecated and will be removed.
-					if name:
-						for key, names in keyDescriptions[index].items():
-							if (name,) == names and keyId != key:
-								if keyId is None:
-									keyId = key
-								else:
-									print("[InputDevice] Warning: The keyId %d derived from name '%s' does not match defined keyId of %d!" % (key, name, keyId))
-								break
+					if keyId == 0:
+						placeHolder -= 1
+						keyId = placeHolder
 					rcButtons["keyIds"].append(keyId)
 					rcButtons[keyId] = {}
-					rcButtons[keyId]["label"] = button.attrib.get("label", name)
+					rcButtons[keyId]["id"] = id
+					rcButtons[keyId]["label"] = button.attrib.get("label")
 					rcButtons[keyId]["pos"] = [int(x.strip()) for x in button.attrib.get("pos", "0").split(",")]
 					rcButtons[keyId]["title"] = button.attrib.get("title")
 					rcButtons[keyId]["shape"] = button.attrib.get("shape")
 					rcButtons[keyId]["coords"] = [int(x.strip()) for x in button.attrib.get("coords", "0").split(",")]
-					print("[InputDevice] loadRemoteControl DEBUG: keyId='%s', label='%s', pos='%s', title='%s', shape='%s', coords='%s'." % (keyId, rcButtons[keyId]["label"], rcButtons[keyId]["pos"], rcButtons[keyId]["title"], rcButtons[keyId]["shape"], rcButtons[keyId]["coords"]))
+					print("[InputDevice] loadRemoteControl DEBUG: id='%s', keyId='%s', label='%s', pos='%s', title='%s', shape='%s', coords='%s'." % (id, keyId, rcButtons[keyId]["label"], rcButtons[keyId]["pos"], rcButtons[keyId]["title"], rcButtons[keyId]["shape"], rcButtons[keyId]["coords"]))
 				if logRemaps:
 					for remap in logRemaps:
 						print("[InputDevice] Remapping '%s' to '%s'." % (remap[0], remap[1]))
