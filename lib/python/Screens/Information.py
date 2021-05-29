@@ -467,8 +467,7 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Latest revision on github"), ovRevisionUpdate))
 		info.append(formatLine("P1", _("OpenVision language"), BoxInfo.getItem("imglanguage")))
 		info.append(formatLine("P1", _("OpenVision module"), about.getVisionModule()))
-		multibootFlag = _("Yes") if fileReadLine("/etc/openvision/multiboot", "1", source=MODULE_NAME) else _("No")
-		info.append(formatLine("P1", _("Soft multiboot"), multibootFlag))
+		info.append(formatLine("P1", _("Soft multiboot"), _("Yes") if BoxInfo.getItem("multiboot", False) else _("No")))
 		info.append(formatLine("P1", _("Flash type"), about.getFlashType()))
 		xResolution = getDesktop(0).size().width()
 		yResolution = getDesktop(0).size().height()
@@ -491,7 +490,7 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Last update"), "%s-%s-%s" % (compileDate[:4], compileDate[4:6], compileDate[6:])))
 		info.append(formatLine("P1", _("Enigma2 (re)starts"), config.misc.startCounter.value))
 		info.append(formatLine("P1", _("Enigma2 debug level"), eGetEnigmaDebugLvl()))
-		mediaService = fileReadLine("/etc/openvision/mediaservice", source=MODULE_NAME)
+		mediaService = BoxInfo.getItem("mediaservice")
 		if mediaService:
 			info.append(formatLine("P1", _("Media service"), mediaService.replace("enigma2-plugin-systemplugins-", "")))
 		info.append("")
@@ -1005,8 +1004,6 @@ class ReceiverInformation(InformationBase):
 		hwRelease = fileReadLine("/proc/stb/info/release", source=MODULE_NAME)
 		if hwRelease:
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
-		info.append(formatLine("P1", _("Source Brand"), BoxInfo.getItem("brand")))
-		info.append(formatLine("P1", _("Brand"), BoxInfo.getItem("displaybrand")))
 		if not BoxInfo.getItem("displaytype").startswith(" "):
 			info.append(formatLine("P1", _("Display type"), BoxInfo.getItem("displaytype")))
 		fpVersion = getFPVersion()
