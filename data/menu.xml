@@ -25,7 +25,7 @@
 		<menu entryID="video_selection" level="0" text="Audio &amp; Video" weight="5">
 			<id val="video" />
 			<item entryID="av_setup" level="0" text="A/V Setup" weight="5"><setup id="avsetup" /></item>
-			<item entryID="autolanguage_setup" level="0" text="Auto Language Setup" weight="10"><setup id="autolanguagesetup" /></item>
+			<item entryID="autolanguage_setup" level="0" text="Auto Language Setup" weight="10"><setup id="AutoLanguage" /></item>
 		</menu>
 
 		<!-- Menu / Setup / Tuners and Scanning -->
@@ -41,7 +41,7 @@
 		<!-- Menu / Setup / EPG -->
 		<menu entryID="epg_menu" level="0" text="EPG" weight="15">
 			<id val="epg" />
-			<item entryID="epg_setup" level="0" text="EPG Setup" weight="5"><setup id="epgsettings" /></item>
+			<item entryID="epg_setup" level="0" text="EPG Setup" weight="5"><setup id="EPG" /></item>
 			<menu entryID="epgloadsave_menu" level="2" text="Save, Load &amp; Delete EPG Cache" weight="10">
 				<id val="epgloadsave_menu" />
 				<item entryID="saveepgcache" level="0" text="Save EPG Cache">
@@ -87,15 +87,15 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 		<!-- Menu / Setup / User Interface -->
 		<menu entryID="osd_setup" level="0" text="User Interface" weight="20">
 			<id val="osd_menu" />
-			<item entryID="user_interface" level="0" text="User Interface Setup" weight="5"><setup id="userinterface" /></item>
+			<item entryID="user_interface" level="0" text="User Interface Setup" weight="5"><setup id="UserInterface" /></item>
 			<item entryID="primary_skin_selector" level="0" text="Skin Setup" weight="10"><screen module="SkinSelector" screen="SkinSelector" /></item>
 			<menu entryID="display_selection" level="0" text="Front Panel Display" weight="15" requires="Display">
 				<id val="lcd" />
 				<item entryID="display_skin_selector" level="0" text="Skin Setup" weight="5"><screen module="SkinSelector" screen="LcdSkinSelector" /></item>
-				<item entryID="lcd_setup" level="1" text="LCD Setup" weight="10"><setup id="lcd" /></item>
-				<item entryID="led_setup" level="1" text="LED Setup" weight="15"><setup id="ledsetup" /></item>
+				<item entryID="lcd_setup" level="1" text="LCD Setup" weight="10"><setup id="FrontDisplay" /></item>
+				<item entryID="led_setup" level="1" text="LED Setup" weight="15"><setup id="LedDisplay" /></item>
 			</menu>
-			<item entryID="subtitle_setup" level="2" text="Subtitle Setup" weight="20"><setup id="subtitlesetup" /></item>
+			<item entryID="subtitle_setup" level="2" text="Subtitle Setup" weight="20"><setup id="Subtitle" /></item>
 			<item entryID="language_setup" level="0" text="Language Setup" weight="25"><screen module="LanguageSelection" /></item>
 			<item entryID="parental_setup" level="0" text="Parental Control Setup" weight="30"><screen module="ParentalControlSetup" screen="ParentalControlSetup" /></item>
 		</menu>
@@ -147,7 +147,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 		<!-- Menu / Setup / Storage -->
 		<menu entryID="hardisk_selection" level="0" text="Storage" requires="Harddisk" weight="40">
 			<id val="harddisk" />
-			<item entryID="harddisk_setup" level="0" text="Harddisk Setup" weight="5"><setup id="harddisk" /></item>
+			<item entryID="harddisk_setup" level="0" text="Harddisk Setup" weight="5"><setup id="HardDisk" /></item>
 			<item entryID="harddisk_init" level="0" text="Initialization" weight="10"><screen module="HarddiskSetup" screen="HarddiskSelection" /></item>
 			<item entryID="harddisk_check" level="0" text="Filesystem Check" weight="15"><screen module="HarddiskSetup" screen="HarddiskFsckSelection" /></item>
 		</menu>
@@ -166,10 +166,10 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 		<!-- Menu / Setup / System -->
 		<menu entryID="system_selection" level="0" text="System" weight="55">
 			<id val="system" />
-			<item entryID="accesslevel_setup" level="0" text="User Mode Setup" weight="5"><setup id="accesslevel" /></item>
-			<item entryID="usage_setup" level="0" text="Customize" weight="10"><setup id="usage" /></item>
+			<item entryID="accesslevel_setup" level="0" text="User Mode Setup" weight="5"><setup id="AccessLevel" /></item>
+			<item entryID="usage_setup" level="0" text="Customize" weight="10"><setup id="Usage" /></item>
 			<item entryID="hotkey_setup" level="1" text="Hotkey" weight="15"><screen module="Hotkey" screen="HotkeySetup" /></item>
-			<item entryID="log_settings" level="2" text="Logs Setup" weight="20"><setup id="logs" /></item>
+			<item entryID="log_settings" level="2" text="Logs Setup" weight="20"><setup id="Logs" /></item>
 			<item entryID="software_update" level="0" text="Software Update" weight="25"><screen module="SoftwareUpdate" screen="UpdatePlugin" /></item>
 			<item entryID="flash_image" level="0" text="Flash Image" weight="30" requires="canFlashWithOfgwrite"><screen module="FlashImage" screen="SelectImage" /></item>
 			<item entryID="device_setup" level="0" text="Keyboard / Remote Control Setup" weight="35"><screen module="InputDeviceSetup" screen="InputDeviceSetup" /></item>
