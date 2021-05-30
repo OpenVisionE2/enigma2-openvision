@@ -14,7 +14,7 @@ from Components.Harddisk import harddiskmanager
 from Components.NimManager import nimmanager
 from Components.ServiceList import refreshServiceList
 from Components.SystemInfo import BoxInfo
-from Tools.Directories import SCOPE_HDD, SCOPE_TIMESHIFT, defaultRecordingLocation, fileHas, resolveFilename
+from Tools.Directories import SCOPE_HDD, SCOPE_TIMESHIFT, defaultRecordingLocation, fileContains, resolveFilename
 
 model = BoxInfo.getItem("model")
 displaytype = BoxInfo.getItem("displaytype")
@@ -22,7 +22,7 @@ displaytype = BoxInfo.getItem("displaytype")
 
 def InitUsageConfig():
 	config.usage = ConfigSubsection()
-	if fileHas("/etc/network/interfaces", "iface eth0 inet static") and not fileHas("/etc/network/interfaces", "iface wlan0 inet dhcp") or fileHas("/etc/network/interfaces", "iface wlan0 inet static") and fileHas("/run/ifstate", "wlan0=wlan0"):
+	if fileContains("/etc/network/interfaces", "iface eth0 inet static") and not fileContains("/etc/network/interfaces", "iface wlan0 inet dhcp") or fileContains("/etc/network/interfaces", "iface wlan0 inet static") and fileContains("/run/ifstate", "wlan0=wlan0"):
 		config.usage.dns = ConfigSelection(default="custom", choices=[
 			("custom", _("Static IP or Custom")),
 			("google", _("Google DNS")),
