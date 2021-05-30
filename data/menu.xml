@@ -153,10 +153,11 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 		</menu>
 
 		<!-- Menu / Setup / Recordings, Playback & Timeshift -->
-		<menu entryID="rec_setup" level="1" text="Recordings, Playback &amp; Timeshift" weight="45">
+		<menu entryID="rec_setup" level="1" text="Playback, Recording &amp; Timeshift" weight="45">
 			<id val="rec" />
-			<item entryID="recording_setup" level="0" text="Recording &amp; Playback Setup" weight="5"><setup id="recording" /></item>
-			<item entryID="RecordPaths" level="2" text="Recording Paths" weight="10"><screen module="RecordPaths" screen="RecordPathsSettings" /></item>
+			<item entryID="playback_setup" level="0" text="Playback Setup" weight="5"><setup id="Playback" /></item>
+			<item entryID="recording_setup" level="0" text="Recording Setup" weight="10"><screen module="Recording" screen="RecordingSettings" /></item>
+			<item entryID="timeshift_setup" level="0" text="Timeshift Setup" weight="15"><screen module="Timeshift" screen="TimeshiftSettings" /></item>
 		</menu>
 
 		<!-- Menu / Setup / Time -->

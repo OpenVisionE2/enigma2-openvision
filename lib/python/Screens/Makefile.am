@@ -49,7 +49,7 @@ install_PYTHON = \
 	PowerTimerEntry.py \
 	PVRState.py \
 	RdsDisplay.py \
-	RecordPaths.py \
+	Recording.py \
 	Satconfig.py \
 	ScanSetup.py \
 	Scart.py \
@@ -78,6 +78,7 @@ install_PYTHON = \
 	TimerEdit.py \
 	TimerEntry.py \
 	TimerSelection.py \
+	Timeshift.py \
 	UnhandledKey.py \
 	VirtualKeyBoard.py \
 	Volume.py \
