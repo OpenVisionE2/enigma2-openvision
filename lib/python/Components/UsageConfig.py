@@ -26,7 +26,7 @@ def InitUsageConfig():
 		config.usage.dns = ConfigSelection(default="custom", choices=[
 			("custom", _("Static IP or Custom")),
 			("google", _("Google DNS")),
-			("cloadflare", _("Cloudflare")),
+			("cloudflare", _("Cloudflare")),
 			("opendns-familyshield", _("OpenDNS FamilyShield")),
 			("opendns-home", _("OpenDNS Home"))
 		])
@@ -35,7 +35,7 @@ def InitUsageConfig():
 			("dhcp-router", _("DHCP Router")),
 			("custom", _("Static IP or Custom")),
 			("google", _("Google DNS")),
-			("cloadflare", _("Cloudflare")),
+			("cloudflare", _("Cloudflare")),
 			("opendns-familyshield", _("OpenDNS FamilyShield")),
 			("opendns-home", _("OpenDNS Home"))
 		])
