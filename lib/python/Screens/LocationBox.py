@@ -132,10 +132,10 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 			"down": (self.moveDown, _("Mode down a line")),
 			"pageDown": (self.pageDown, _("Mode down a screen")),
 			"bottom": (self.moveBottom, _("Move down to last line"))
-		}, prio=0, description=_("Location Box Actions"))
+		}, prio=0, description=_("LocationBox Actions"))
 		self["selectAction"] = LocationBoxActionMap(self, "LocationBoxActions", {
 			"select": (self.select, _("Select the currently highlighted location and exit"))
-		}, prio=0, description=_("Location Box Actions"))
+		}, prio=0, description=_("LocationBox Actions"))
 		self["selectAction"].setEnabled(True)
 		self["panelActions"] = LocationBoxActionMap(self, ["LocationBoxActions", "NavigationActions"], {
 			"first": (self.switchToFileList, _("Switch to directories panel")),
@@ -416,7 +416,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 	def selectConfirmed(self, answer):
 		if answer:
 			path = pathjoin(self.getCurrentSelection(), self.filename)
-			if self.bookmarksList != sorted(self.bookmarks.value):
+			if self.bookmarks and self.bookmarksList != sorted(self.bookmarks.value):
 				self.bookmarks.value = self.bookmarksList
 				self.bookmarks.save()
 			self.disableTimer()
