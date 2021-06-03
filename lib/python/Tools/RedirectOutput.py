@@ -1,8 +1,7 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+from six import ensure_str, text_type
 import sys
+
 from enigma import ePythonOutput
-import six
 
 
 class EnigmaLog:
@@ -11,8 +10,8 @@ class EnigmaLog:
 		self.line = ""
 
 	def write(self, data):
-		if isinstance(data, six.text_type):
-			data = six.ensure_str(data.encode(encoding="UTF-8", errors="ignore"))
+		if isinstance(data, text_type):
+			data = ensure_str(data.encode(encoding="UTF-8", errors="ignore"))
 		self.line += data
 		if "\n" in data:
 			ePythonOutput(self.line, self.level)
