@@ -1279,8 +1279,9 @@ def InitUsageConfig():
 	config.crash.pythonStackOnSpinner = ConfigYesNo(default=False)
 	config.crash.pythonStackOnSpinner.addNotifier(updateStackTracePrinter, immediate_feedback=False, initial_call=True)
 	config.crash.debugLevel = ConfigSelection(choices=[
-		("3", _("No")),
-		("4", _("Yes"))
+		("3", _("No debug logs")),
+		("4", _("Basic debug logs")),
+		("5", _("Detailed debug logs"))
 	], default="3")
 	config.crash.debugLevel.save_forced = True
 	# The config.crash.debugTimeFormat item is used to set ENIGMA_DEBUG_TIME environmental variable on enigma2 start from enigma2.sh.
