@@ -1,6 +1,7 @@
 from enigma import eActionMap
 
 from keyids import KEYIDS
+from Components.config import config
 from Tools.Directories import fileReadXML
 
 MODULE_NAME = __name__.split(".")[-1]
@@ -100,7 +101,8 @@ def parseKeymap(filename, context, actionMapInstance, device, domKeys):
 		if not error:
 			if unmap is None:  # If a key was unmapped, it can only be assigned a new function in the same keymap file (avoid file parsing sequence dependency).
 				if unmapDict.get((context, keyName, mapto)) in [filename, None]:
-					# print("[ActionMap] DEBUG: Context '%s' keyName '%s' (%d) mapped to '%s' (Device: %s)." % (context, keyName, keyId, mapto, device.capitalize()))
+					if config.crash.debugActionMaps.value:
+						print("[ActionMap] Context '%s' keyName '%s' (%d) mapped to '%s' (Device: %s)." % (context, keyName, keyId, mapto, device.capitalize()))
 					actionMapInstance.bindKey(filename, device, keyId, flags, context, mapto)
 					addKeyBinding(filename, keyId, context, mapto, flags)
 			else:
