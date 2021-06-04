@@ -620,8 +620,8 @@ def runScreenTest():
 
 
 profile("Init:skin")
-import skin
-skin.loadSkinData(enigma.getDesktop(0))
+from skin import InitSkins
+InitSkins()
 
 profile("InputDevice")
 import Components.InputDevice
