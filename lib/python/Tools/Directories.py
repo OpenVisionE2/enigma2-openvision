@@ -6,6 +6,7 @@ from os.path import basename, dirname, exists, getsize, isdir, isfile, islink, j
 from re import compile
 from six import PY2
 from stat import S_IMODE
+from traceback import print_exc
 from xml.etree.cElementTree import ParseError, fromstring, parse
 
 forceDebug = eGetEnigmaDebugLvl() > 4
@@ -448,7 +449,8 @@ def fileReadXML(filename, default=None, source=DEFAULT_MODULE_NAME, debug=False)
 		else:
 			print("[%s] Error %d: Opening file '%s'! (%s)" % (source, err.errno, filename, err.strerror))
 	except Exception as err:
-		print("[%s] Error: Unexpected error opening file '%s'! (%s)" % (source, filename, err))
+		print("[%s] Error: Unexpected error opening/parsing file '%s'! (%s)" % (source, filename, err))
+		print_exc()
 	if dom is None:
 		if default:
 			dom = fromstring(default)
