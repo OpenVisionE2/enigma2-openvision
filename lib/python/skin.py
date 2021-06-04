@@ -1,16 +1,18 @@
-import errno
-import xml.etree.cElementTree
+from errno import ENOENT
+from os.path import basename, dirname, isfile
+from six import PY2
+from xml.etree.cElementTree import Element, ElementTree, fromstring
 
 from enigma import addFont, eLabel, ePixmap, ePoint, eRect, eSize, eWindow, eWindowStyleManager, eWindowStyleSkinned, getDesktop, gFont, getFontFaces, gMainDC, gRGB
-from os.path import basename, dirname, isfile
 
 from Components.config import ConfigSubsection, ConfigText, config
 from Components.SystemInfo import BoxInfo
 from Components.Sources.Source import ObsoleteSource
-from Tools.Directories import SCOPE_CONFIG, SCOPE_CURRENT_LCDSKIN, SCOPE_CURRENT_SKIN, SCOPE_FONTS, SCOPE_SKIN, resolveFilename, fileExists
+from Tools.Directories import SCOPE_CONFIG, SCOPE_CURRENT_LCDSKIN, SCOPE_CURRENT_SKIN, SCOPE_FONTS, SCOPE_SKIN, fileReadXML, resolveFilename
 from Tools.Import import my_import
 from Tools.LoadPixmap import LoadPixmap
-from six import PY2
+
+MODULE_NAME = __name__.split(".")[-1].capitalize()
 
 DEFAULT_SKIN = BoxInfo.getItem("fhdskin") and "OctEtFHD/skin.xml" or "PLi-HD/skin.xml"
 EMERGENCY_SKIN = "skin_default/skin.xml"
@@ -115,69 +117,41 @@ def InitSkins():
 	runCallbacks = True
 
 
-# Temporary entry point for older versions of StartEnigma.py.
-#
-def loadSkinData(desktop):
-	InitSkins()
-
-
 # Method to load a skin XML file into the skin data structures.
 #
 def loadSkin(filename, scope=SCOPE_SKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID):
 	global windowStyles, skinResolutions
 	filename = resolveFilename(scope, filename)
 	print("[Skin] Loading skin file '%s'." % filename)
-	try:
-		with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
-			try:
-				domSkin = xml.etree.cElementTree.parse(fd).getroot()
-				# print("[Skin] DEBUG: Extracting non screen blocks from '%s'.  (scope='%s')" % (filename, scope))
-				# For loadSingleSkinData colors, bordersets etc. are applied one after
-				# the other in order of ascending priority.
-				loadSingleSkinData(desktop, screenID, domSkin, filename, scope=scope)
-				for element in domSkin:
-					if element.tag == "screen":  # Process all screen elements.
-						name = element.attrib.get("name", None)
-						if name:  # Without a name, it's useless!
-							scrnID = element.attrib.get("id", None)
-							if scrnID is None or scrnID == screenID:  # If there is a screen ID is it for this display.
-								# print("[Skin] DEBUG: Extracting screen '%s' from '%s'.  (scope='%s')" % (name, filename, scope))
-								domScreens[name] = (element, "%s/" % dirname(filename))
-					elif element.tag == "windowstyle":  # Process the windowstyle element.
-						scrnID = element.attrib.get("id", None)
-						if scrnID is not None:  # Without an scrnID, it is useless!
-							scrnID = int(scrnID)
-							# print("[Skin] DEBUG: Processing a windowstyle ID='%s'." % scrnID)
-							domStyle = xml.etree.cElementTree.ElementTree(xml.etree.cElementTree.Element("skin"))
-							domStyle.getroot().append(element)
-							windowStyles[scrnID] = (desktop, screenID, domStyle.getroot(), filename, scope)
-					# Element is not a screen or windowstyle element so no need for it any longer.
-				reloadWindowStyles()  # Reload the window style to ensure all skin changes are taken into account.
-				print("[Skin] Loading skin file '%s' complete." % filename)
-				if runCallbacks:
-					for method in self.callbacks:
-						if method:
-							method()
-				return True
-			except xml.etree.cElementTree.ParseError as err:
-				fd.seek(0)
-				content = fd.readlines()
-				line, column = err.position
-				print("[Skin] XML Parse Error: '%s' in '%s'!" % (err, filename))
-				data = content[line - 1].replace("\t", " ").rstrip()
-				print("[Skin] XML Parse Error: '%s'" % data)
-				print("[Skin] XML Parse Error: '%s^%s'" % ("-" * column, " " * (len(data) - column - 1)))
-			except Exception as err:
-				print("[Skin] Error: Unable to parse skin data in '%s' (%s) - '%s'!" % (filename, type(err).__name__, err))
-				# import traceback
-				# traceback.print_exc()
-	except (IOError, OSError) as err:
-		if err.errno == errno.ENOENT:  # No such file or directory
-			print("[Skin] Warning: Skin file '%s' does not exist!" % filename)
-		else:
-			print("[Skin] Error %d: Opening skin file '%s'! (%s)" % (err.errno, filename, err.strerror))
-	except Exception as err:
-		print("[Skin] Error: Unexpected error opening skin file '%s'! (%s)" % (filename, err))
+	domSkin = fileReadXML(filename, source=MODULE_NAME)
+	if domSkin:
+		# For loadSingleSkinData colors, bordersets etc. are applied one after
+		# the other in order of ascending priority.
+		loadSingleSkinData(desktop, screenID, domSkin, filename, scope=scope)
+		for element in domSkin:
+			if element.tag == "screen":  # Process all screen elements.
+				name = element.attrib.get("name", None)
+				if name:  # Without a name, it's useless!
+					scrnID = element.attrib.get("id", None)
+					if scrnID is None or scrnID == screenID:  # If there is a screen ID is it for this display.
+						# print("[Skin] DEBUG: Extracting screen '%s' from '%s'.  (scope='%s')" % (name, filename, scope))
+						domScreens[name] = (element, "%s/" % dirname(filename))
+			elif element.tag == "windowstyle":  # Process the windowstyle element.
+				scrnID = element.attrib.get("id", None)
+				if scrnID is not None:  # Without an scrnID, it is useless!
+					scrnID = int(scrnID)
+					# print("[Skin] DEBUG: Processing a windowstyle ID='%s'." % scrnID)
+					domStyle = ElementTree(Element("skin"))
+					domStyle.getroot().append(element)
+					windowStyles[scrnID] = (desktop, screenID, domStyle.getroot(), filename, scope)
+			# Element is not a screen or windowstyle element so no need for it any longer.
+		reloadWindowStyles()  # Reload the window style to ensure all skin changes are taken into account.
+		print("[Skin] Loading skin file '%s' complete." % filename)
+		if runCallbacks:
+			for method in self.callbacks:
+				if method:
+					method()
+		return True
 	return False
 
 
@@ -275,7 +249,7 @@ def parseColor(value):
 def parseCoordinate(value, parent, size=0, font=None):
 	value = value.strip()
 	if value == "center":  # For speed as this can be common case.
-		result = 0 if not size else int((parent - size) // 2)
+		result = int((parent - size) // 2) if size else 0
 	elif value == "*":
 		return None
 	else:
@@ -423,17 +397,15 @@ def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), f
 			# listbox; when the scrollbar setting is applied after the size, a scrollbar
 			# will not be shown until the selection moves for the first time.
 			if attrib == "size":
-				size = value.encode("utf-8") if PY2 else value
+				size = value.encode("UTF-8", errors="ignore") if PY2 else value
 			elif attrib == "position":
-				pos = value.encode("utf-8") if PY2 else value
+				pos = value.encode("UTF-8", errors="ignore") if PY2 else value
 			elif attrib == "font":
-				font = value.encode("utf-8") if PY2 else value
+				font = value.encode("UTF-8", errors="ignore") if PY2 else value
 				skinAttributes.append((attrib, font))
 			else:
-				if PY2:
-					skinAttributes.append((attrib, value.encode("utf-8")))
-				else:
-					skinAttributes.append((attrib, value))
+				value = value.encode("UTF-8", errors="ignore") if PY2 else value
+				skinAttributes.append((attrib, value))
 	if pos is not None:
 		pos, size = context.parse(pos, size, font)
 		skinAttributes.append(("position", pos))
@@ -1150,7 +1122,7 @@ def readSkin(screen, skin, names, desktop):
 		print("[Skin] Parsing embedded skin '%s'." % name)
 		if isinstance(skin, tuple):
 			for s in skin:
-				candidate = xml.etree.cElementTree.fromstring(s)
+				candidate = fromstring(s)
 				if candidate.tag == "screen":
 					screenID = candidate.attrib.get("id", None)
 					if (not screenID) or (int(screenID) == DISPLAY_SKIN_ID):
@@ -1159,12 +1131,12 @@ def readSkin(screen, skin, names, desktop):
 			else:
 				print("[Skin] No suitable screen found!")
 		else:
-			myScreen = xml.etree.cElementTree.fromstring(skin)
+			myScreen = fromstring(skin)
 		if myScreen:
 			screen.parsedSkin = myScreen
 	if myScreen is None:
 		print("[Skin] No skin to read or screen to display.")
-		myScreen = screen.parsedSkin = xml.etree.cElementTree.fromstring("<screen></screen>")
+		myScreen = screen.parsedSkin = fromstring("<screen></screen>")
 	screen.skinAttributes = []
 	skinPath = getattr(screen, "skin_path", path)
 	context = SkinContextStack()
@@ -1286,11 +1258,8 @@ def readSkin(screen, skin, names, desktop):
 		screen.additionalWidgets.append(w)
 
 	def processScreen(widget, context):
-		if PY2:
-			widgetmode = widget.getchildren()
-		else:
-			widgetmode = widget
-		for w in widgetmode:
+		widgets = widget.getchildren() if PY2 else widget
+		for w in widgets:
 			conditional = w.attrib.get("conditional")
 			if conditional and not [i for i in conditional.split(",") if i in screen.keys()]:
 				continue
