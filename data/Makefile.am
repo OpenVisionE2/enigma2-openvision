@@ -1,4 +1,4 @@
-SUBDIRS = countries display fonts extensions keymaps skin_default rc_models VirtualKeyBoard_Icons
+SUBDIRS = countries display fonts extensions keymaps skin_default VirtualKeyBoard_Icons
 
 dist_pkgdata_DATA = \
 	black.mvi \
@@ -14,7 +14,6 @@ dist_pkgdata_DATA = \
 	otv_06180000_1000_0011.dict \
 	otv_06400000_00a9_0003.dict \
 	radio.mvi \
-	remotes.xml \
 	setup.xml \
 	skin_subtitles.xml \
 	startwizard.xml

@@ -798,7 +798,6 @@ data/display/vfd140/Makefile
 data/display/vfd255/Makefile
 data/extensions/Makefile
 data/keymaps/Makefile
-data/rc_models/Makefile
 data/skin_default/Makefile
 data/skin_default/menu/Makefile
 data/skin_default/icons/Makefile
