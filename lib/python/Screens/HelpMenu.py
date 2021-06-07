@@ -108,13 +108,13 @@ class ShowRemoteControl:
 			self["rc"].instance.setPixmap(rc)
 			self.rcPosition = self["rc"].getPosition()
 			rcHeight = self["rc"].getSize()[1]
-		for selectPic in self.selectPics:
-			nBreaks = len(selectPic.pixmaps)
-			roundup = nBreaks - 1
-			n = 1
-			for pic in selectPic.pixmaps:
-				pic.activeYPos = (rcHeight * n + roundup) / nBreaks
-				n += 1
+			for selectPic in self.selectPics:
+				nBreaks = len(selectPic.pixmaps)
+				roundup = nBreaks - 1
+				n = 1
+				for pic in selectPic.pixmaps:
+					pic.activeYPos = (rcHeight * n + roundup) / nBreaks
+					n += 1
 
 	def selectKey(self, keyId):
 		if self.rcPosition:
