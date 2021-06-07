@@ -237,10 +237,10 @@ class RemoteControl:
 	def loadRemoteControl(self, filename):
 		print("[InputDevice] Loading remote control '%s'." % filename)
 		rcs = fileReadXML(filename, source=MODULE_NAME)
+		rcButtons = {}
 		if rcs:
 			rc = rcs.find("rc")
 			if rc:
-				rcButtons = {}
 				logRemaps = []
 				remapButtons = {}
 				placeHolder = 0
