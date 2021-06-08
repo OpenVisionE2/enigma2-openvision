@@ -3,7 +3,7 @@ from six import PY2
 
 from enigma import BT_SCALE, RT_HALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_BOTTOM, RT_VALIGN_CENTER, RT_VALIGN_TOP, eListboxPythonMultiContent, getDesktop, getPrevAsciiCode, gFont
 
-from skin import fonts, loadSkin, parameters
+from skin import findSkinScreen, fonts, loadSkin, parameters
 from Components.ActionMap import HelpableNumberActionMap
 from Components.config import config
 from Components.Input import Input
@@ -20,9 +20,6 @@ from Tools.LoadPixmap import LoadPixmap
 from Tools.NumericalTextInput import NumericalTextInput
 
 pyunichr = unichr if PY2 else chr
-
-loadSkin("/usr/share/enigma2/VirtualKeyBoard_Icons/vkskin.xml")
-
 
 VKB_DONE_ICON = 0
 VKB_ENTER_ICON = 1
@@ -72,6 +69,8 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 			VKB_SAVE_TEXT: ("Save", _("Save")),
 			VKB_SEARCH_TEXT: ("Search", _("Search"))
 		}.get(style, ("Enter", u"ENTERICON"))
+		if findSkinScreen(["vkeyboard_hdskin", "vkeyboard_fhdskin"]) is None:
+			loadSkin("/usr/share/enigma2/VirtualKeyBoard_Icons/vkskin.xml")
 		if config.usage.virtualkeyBoard_style.value == "OV":
 			if getDesktop(0).size().height() == 720:
 				self.skinName = "vkeyboard_hdskin"
@@ -565,7 +564,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 		}, prio=-2, description=_("Virtual KeyBoard Functions"))
 		self.lang = language.getLanguage()
 		self["prompt"] = Label(prompt)
-		self["text"] = Input(text=text, maxSize=maxSize, visible_width=visible_width, type=type, currPos=len(text.decode("utf-8", "ignore")) if currPos is None else currPos, allMarked=allMarked)
+		self["text"] = Input(text=text, maxSize=maxSize, visible_width=visible_width, type=type, currPos=len(text.decode("UTF-8", "ignore")) if currPos is None else currPos, allMarked=allMarked)
 		self["list"] = VirtualKeyBoardList([])
 		self["mode"] = Label(_("INS"))
 		self["locale"] = Label(_("Locale") + ": " + self.lang)
@@ -1029,9 +1028,9 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 					# print("[VirtualKeyBoard] DEBUG: Left=%d, Top=%d, Width=%d, Height=%d, Image Width=%d, Image Height=%d" % (left, top, w, h, wImage, hImage))
 				else:  # Display the cell text.
 					if len(key) > 1:  # NOTE: UTF8 / Unicode glyphs only count as one character here.
-						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=1, flags=alignH | alignV, text=key.encode("utf-8", "ignore"), color=self.shiftColors[self.shiftLevel]))
+						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=1, flags=alignH | alignV, text=key.encode("UTF-8", "ignore"), color=self.shiftColors[self.shiftLevel]))
 					else:
-						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=0, flags=alignH | alignV, text=key.encode("utf-8", "ignore"), color=self.shiftColors[self.shiftLevel]))
+						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=0, flags=alignH | alignV, text=key.encode("UTF-8", "ignore"), color=self.shiftColors[self.shiftLevel]))
 			prevKey = key
 			self.index += 1
 		return res + text
@@ -1204,7 +1203,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 
 	def keyGotAscii(self):
 		self.smsChar = None
-		if self.selectAsciiKey(str(pyunichr(getPrevAsciiCode()).encode("utf-8", "ignore"))):
+		if self.selectAsciiKey(str(pyunichr(getPrevAsciiCode()).encode("UTF-8", "ignore"))):
 			self.processSelect()
 
 	def selectAsciiKey(self, char):
