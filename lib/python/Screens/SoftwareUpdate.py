@@ -48,7 +48,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 
 		self.sliderPackages = {"enigma2": 1, "openvision": 2}
 
-		self.setTitle(_("Software update"))
+		self.setTitle(_("Software Update"))
 		self.slider = Slider(0, 4)
 		self["slider"] = self.slider
 		self.activityslider = Slider(0, 100)
@@ -229,11 +229,10 @@ class UpdatePlugin(Screen, ProtectedScreen):
 						message = _("Do you want to update your %s %s?") % (brand, model) + "\n"
 					message += "(" + (ngettext("%s updated package available", "%s updated packages available", self.total_packages) % self.total_packages) + ")"
 					if self.total_packages > 150:
-						choices = [(_("Update and reboot"), "cold")]
+						choices = [(_("Update and ask to reboot"), "hot")]
 						message += " " + _("Reflash recommended!")
 					else:
-						choices = [(_("Update and reboot (recommended)"), "cold"),
-						(_("Update and ask to reboot"), "hot")]
+						choices = [(_("Update and ask to reboot (recommended)"), "hot")]
 					choices.append((_("Update channel list only"), "channels"))
 					choices.append((_("Show packages to be updated"), "showlist"))
 				else:
