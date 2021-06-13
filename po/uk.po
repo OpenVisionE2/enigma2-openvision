@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-07 15:59+0430\n"
+"POT-Creation-Date: 2021-06-13 10:11+0430\n"
 "PO-Revision-Date: 2021-03-11 01:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: kvinto\n"
@@ -66,9 +66,8 @@ msgstr ": 0000 - за замовчуванням (відключено)"
 msgid "  REC  "
 msgstr ""
 
-#, fuzzy
 msgid " (+5 volt terrestrial)"
-msgstr "Наземний"
+msgstr " (+5В для підсилювача)"
 
 msgid " (0 - all networks)"
 msgstr " (0 - всі мережі)"
@@ -106,13 +105,13 @@ msgid " (lower than any auto)"
 msgstr " (нижче будь-якого авто)"
 
 msgid " - Unicable/JESS LNBs not found"
-msgstr ""
+msgstr " - Unicable/JESS LNB не знайдено"
 
 msgid " HI "
 msgstr ""
 
 msgid " Warning: the selected tuner should not use SCR Unicable type for LNBs because each tuner need a own SCR number."
-msgstr ""
+msgstr " Попередження: вибраний тюнер не повинен використовувати тип SCR Unicable для LNB, оскільки кожен тюнер потребує власного номера SCR."
 
 msgid " extensions."
 msgstr " доповнень."
@@ -121,7 +120,7 @@ msgid " packages selected."
 msgstr " пакетів вибрано."
 
 msgid " unicable LNB input of rotor"
-msgstr ""
+msgstr " одноканальний LNB-вхід для двигуна"
 
 msgid " updates available."
 msgstr " доступно оновлень."
@@ -3299,6 +3298,9 @@ msgstr "Перевірка інтернет-з'єднання"
 msgid "Check the internet connection again"
 msgstr "Перевірити підключення до Інтернету ще раз"
 
+msgid "Checking ONID/TSID"
+msgstr ""
+
 #, fuzzy
 msgid "Checking feeds"
 msgstr "Перевірка Файлової системи..."
@@ -5824,6 +5826,9 @@ msgstr "Введіть пін-код для каналу"
 msgid "Enter the streaming port of the host receiver (normally '8001')."
 msgstr ""
 
+msgid "Enter valid ONID/TSID"
+msgstr ""
+
 msgid "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
 msgstr "Введіть поточну широту. Це число градусів від екватора, як десятковий дріб."
 
@@ -6512,7 +6517,7 @@ msgid "Force legacy signal stats"
 msgstr "Старий метод розрахунку сили сигналу"
 
 msgid "Force zap to recording service in standby"
-msgstr ""
+msgstr "Примусово переключити на канал для запису в режимі очікування"
 
 msgid "Format"
 msgstr "Форматування"
@@ -7054,7 +7059,7 @@ msgid "Hide player"
 msgstr "Приховати програвач"
 
 msgid "Hide sub-menu"
-msgstr ""
+msgstr "Приховати підменю"
 
 #, fuzzy
 msgid "Hide the InfoBar"
@@ -7147,8 +7152,9 @@ msgstr "Дані ще не отримано"
 msgid "Host receiver streaming port"
 msgstr "Ваш приймач перезавантажується"
 
+#, fuzzy
 msgid "Hostname"
-msgstr ""
+msgstr "Назва NTP хосту"
 
 msgid "HotKey Setup"
 msgstr "Налаштування Кнопок"
@@ -7896,8 +7902,9 @@ msgstr ""
 msgid "LED color during recording"
 msgstr "Місце для миттєвих записів"
 
+#, fuzzy
 msgid "LED color during recording in standby"
-msgstr ""
+msgstr "Примусово переключити на канал для запису в режимі очікування"
 
 #, fuzzy
 msgid "LED color during standby"
@@ -8012,7 +8019,7 @@ msgid "Libya"
 msgstr "Лівія"
 
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Ліхтенштейн"
 
 msgid "Lime"
 msgstr ""
@@ -8856,7 +8863,7 @@ msgid "NOW"
 msgstr "ЗАРАЗ"
 
 msgid "NTP Hostname"
-msgstr ""
+msgstr "Назва NTP хосту"
 
 msgid "NTSC"
 msgstr "NTSC"
@@ -9337,7 +9344,7 @@ msgid "OSD Setup"
 msgstr "OSD Налаштування 3D"
 
 msgid "OSD name request"
-msgstr ""
+msgstr "Запит імені OSD"
 
 msgid "OSD settings"
 msgstr "OSD налаштування"
@@ -12838,9 +12845,8 @@ msgstr "Показати іконку статусу в списку відео"
 msgid "Show status icons in movielist"
 msgstr "Показати іконку статусу в списках відео"
 
-#, fuzzy
 msgid "Show sub-menu"
-msgstr "Відображення стовпців"
+msgstr "Відображати під-меню"
 
 msgid "Show subservice selection"
 msgstr "Показати вибір субканалів"
@@ -13524,6 +13530,10 @@ msgstr "Зупинити даний стрім"
 msgid "Stop entry"
 msgstr "Зупинити запис"
 
+#, fuzzy
+msgid "Stop live TV service"
+msgstr "Перейти на останній канал"
+
 msgid "Stop play TV"
 msgstr "Зупинити відтворення на ТВ"
 
@@ -13885,7 +13895,7 @@ msgstr "Деталі про плагін: "
 
 msgid "TRANSLATOR_INFO"
 msgstr ""
-"Переклад:  kvinto - 11.05.2021\n"
+"Переклад:  kvinto - 09.06.2021\n"
 "Сторінка:    https://gisclub.tv\n"
 "                  kvinto@rambler.ru"
 
@@ -14306,7 +14316,7 @@ msgid "This allows you to set the number of digits you can input when selecting 
 msgstr ""
 
 msgid "This can be useful when using the CI(+) module. After the end of the recording, the service will be automatically stopped."
-msgstr ""
+msgstr "Це може бути корисно при використанні модуля CI(+). Після закінчення запису запис каналу буде автоматично зупинено."
 
 #, python-format
 msgid "This field allows you to search an additional symbol rate up to %s."
@@ -14317,6 +14327,9 @@ msgstr "Це є різнотиповий тюнер. Доступні опції
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Це порядок передачі команд DiSEqC в систему. Порядок повинен точно відповідати порядку, коли фізичні пристрої розташовані вздовж сигнального кабелю (починаючи з кінця приймача)."
+
+msgid "This not valid ONID/TSID"
+msgstr ""
 
 msgid "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
 msgstr "Опція служить для зниження шумів на зображенні. Це відбувається за рахунок різкості зображення."
@@ -14563,6 +14576,9 @@ msgstr ""
 
 msgid "This test detects your configured LAN adapter."
 msgstr "Цей тест визначить Ваш мережевий адаптер."
+
+msgid "This valid ONID/TSID"
+msgstr ""
 
 msgid ""
 "This will (re-)calculate all positions of your rotor and may remove previously memorised positions and fine-tuning!\n"
@@ -15178,10 +15194,8 @@ msgstr "Оновлення"
 msgid "Update and ask to reboot"
 msgstr "Оновити і запитати про перезавантаження"
 
-msgid "Update and reboot"
-msgstr "Оновити і перезавантажити"
-
-msgid "Update and reboot (recommended)"
+#, fuzzy
+msgid "Update and ask to reboot (recommended)"
 msgstr "Оновити і перезавантажити (рекомендується)"
 
 msgid "Update channel list only"
@@ -15476,6 +15490,9 @@ msgstr "VOB Файл"
 msgid "VOB file"
 msgstr "VOB файл"
 
+msgid "Valid ONID/TSID look at www.lyngsat.com..."
+msgstr ""
+
 msgid "Vanuatu"
 msgstr "Вануату"
 
@@ -15768,7 +15785,7 @@ msgid "Warning: no LNB; using factory defaults."
 msgstr "Увага: немає конвертора; використовуються налаштування за замовчуванням."
 
 msgid "Warning: the second input of this dual tuner may not support SCR LNBs. "
-msgstr ""
+msgstr "Попередження: другий вхід цього подвійного тюнера може не підтримувати LNB SCR. "
 
 msgid "Watch movies..."
 msgstr "Перегляд фільмів..."
@@ -16611,7 +16628,7 @@ msgid "Zap back to service before positioner setup?"
 msgstr "Переключити на канал перед налаштуванням позиціонера?"
 
 msgid "Zap bouquets blindly on zap buttons"
-msgstr ""
+msgstr "Переключення фаворитів наосліп кнопками переключення"
 
 msgid "Zap down"
 msgstr "Переключити вниз"
