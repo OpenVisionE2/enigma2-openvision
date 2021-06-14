@@ -12,51 +12,48 @@ from Components.SystemInfo import BoxInfo
 from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.Screen import Screen, ScreenSummary
-from Tools.Directories import SCOPE_CURRENT_SKIN, SCOPE_PLUGINS, SCOPE_SKIN, resolveFilename
+from Tools.Directories import SCOPE_CURRENT_SKIN, SCOPE_PLUGINS, SCOPE_SKIN, fileReadXML, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
+
+MODULE_NAME = __name__.split(".")[-1]
 
 domSetups = {}
 setupModTimes = {}
 
 
 class Setup(ConfigListScreen, Screen, HelpableScreen):
-	skin = [
-		"""
-	<screen name="Setup" position="center,center" size="%d,%d">
-		<widget name="config" position="%d,%d" size="e-%d,%d" enableWrapAround="1" font="Regular;%d" itemHeight="%d" scrollbarMode="showOnDemand" />
-		<widget name="footnote" position="%d,e-%d" size="e-%d,%d" font="Regular;%d" valign="center" />
-		<widget name="description" position="%d,e-%d" size="e-%d,%d" font="Regular;%d" valign="center" />
-		<widget source="key_red" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_red" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+	skin = """
+	<screen name="Setup" position="center,center" size="980,570" resolution="1280,720">
+		<widget name="config" position="10,10" size="e-20,350" enableWrapAround="1" font="Regular;25" itemHeight="35" scrollbarMode="showOnDemand" />
+		<widget name="footnote" position="10,e-185" size="e-20,25" font="Regular;20" valign="center" />
+		<widget name="description" position="10,e-160" size="e-20,100" font="Regular;20" valign="center" />
+		<widget source="key_red" render="Label" position="10,e-50" size="180,40" backgroundColor="key_red" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_green" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="200,e-50" size="180,40" backgroundColor="key_green" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_menu" render="Label" position="e-%d,e-%d" size="%d,%d" backgroundColor="key_back" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_yellow" render="Label" position="390,e-50" size="180,40" backgroundColor="key_yellow" conditional="key_yellow" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_info" render="Label" position="e-%d,e-%d" size="%d,%d" backgroundColor="key_back" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_blue" render="Label" position="580,e-50" size="180,40" backgroundColor="key_blue" conditional="key_blue" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="VKeyIcon" text="TEXT" render="Label" position="e-%d,e-%d" size="%d,%d" backgroundColor="key_back" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_menu" render="Label" position="e-400,e-50" size="90,40" backgroundColor="key_back" conditional="key_menu" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_help" render="Label" position="e-%d,e-%d" size="%d,%d" backgroundColor="key_back" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_info" render="Label" position="e-300,e-50" size="90,40" backgroundColor="key_back" conditional="key_info" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="VKeyIcon" text="TEXT" render="Label" position="e-200,e-50" size="90,40" backgroundColor="key_back" conditional="VKeyIcon" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_help" render="Label" position="e-100,e-50" size="90,40" backgroundColor="key_back" font="Regular;20" conditional="key_help" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget name="setupimage" position="0,0" size="0,0" alphatest="blend" conditional="setupimage" transparent="1" />
-	</screen>""",
-		900, 570,  # screen
-		10, 10, 20, 350, 25, 35,  # config
-		10, 185, 20, 25, 20,  # footnote
-		10, 160, 20, 100, 20,  # description
-		10, 50, 180, 40, 20,  # key_red
-		200, 50, 180, 40, 20,  # key_green
-		360, 50, 80, 40, 20,  # key_menu
-		150, 50, 80, 40, 20,  # key_info
-		180, 50, 80, 40, 20,  # key_text
-		90, 50, 80, 40, 20  # key_help
-	]
+		<widget name="HelpWindow" position="0,0" size="0,0" alphatest="blend" conditional="HelpWindow" transparent="1" zPosition="+1" />
+	</screen>"""
 
 	def __init__(self, session, setup, plugin=None, PluginLanguageDomain=None):
 		Screen.__init__(self, session, mandatoryWidgets=["config", "footnote", "description"])
@@ -88,7 +85,7 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 			if self.setupImage:
 				self["setupimage"] = Pixmap()
 			else:
-				print("[Setup] Error: Unable to load menu image '%s'!" % setupImage)
+				print("[Setup] Error: Unable to load image '%s'!" % setupImage)
 		else:
 			self.setupImage = None
 		if self.layoutFinished not in self.onLayoutFinish:
@@ -119,14 +116,12 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 				break
 		self.setTitle(_(title) if title and title != "" else _("Setup"))
 		if self.list != oldList or self.showDefaultChanged or self.graphicSwitchChanged:
-			print("[Setup] DEBUG: Config list has changed!")
+			# print("[Setup] DEBUG: Config list has changed!")
 			currentItem = self["config"].getCurrent()
 			self["config"].setList(self.list)
 			if config.usage.sort_settings.value:
 				self["config"].list.sort()
 			self.moveToItem(currentItem)
-		else:
-			print("[Setup] DEBUG: Config list is unchanged!")
 
 	def addItems(self, parentNode, including=True):
 		for element in parentNode:
@@ -339,43 +334,24 @@ def setupDom(setup=None, plugin=None):
 	print("[Setup] XML%s setup file '%s', using element '%s'%s." % (" cached" if cached else "", setupFile, setup, " from plugin '%s'" % plugin if plugin else ""))
 	if cached:
 		return domSetups[setupFile]
-	try:
-		if setupFile in domSetups:
-			del domSetups[setupFile]
-		if setupFile in setupModTimes:
-			del setupModTimes[setupFile]
-		with open(setupFile, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
-			try:
-				fileDom = parse(fd).getroot()
-				checkItems(fileDom, None)
-				setupFileDom = fileDom
-				domSetups[setupFile] = setupFileDom
-				setupModTimes[setupFile] = modTime
-				for setup in setupFileDom.findall("setup"):
-					key = setup.get("key")
-					if key:  # If there is no key then this element is useless and can be skipped!
-						title = setup.get("title", "").encode("UTF-8", errors="ignore") if PY2 else setup.get("title", "")
-						if title == "":
-							print("[Setup] Error: Setup key '%s' title is missing or blank!" % key)
-							title = "** Setup error: '%s' title is missing or blank!" % key
-						# print("[Setup] DEBUG: XML setup load: key='%s', title='%s'." % (key, setup.get("title", "").encode("UTF-8", errors="ignore")))
-			except ParseError as err:
-				fd.seek(0)
-				content = fd.readlines()
-				line, column = err.position
-				print("[Setup] XML Parse Error: '%s' in '%s'!" % (err, setupFile))
-				data = content[line - 1].replace("\t", " ").rstrip()
-				print("[Setup] XML Parse Error: '%s'" % data)
-				print("[Setup] XML Parse Error: '%s^%s'" % ("-" * column, " " * (len(data) - column - 1)))
-			except Exception as err:
-				print("[Setup] Error: Unable to parse setup data in '%s' - '%s'!" % (setupFile, err))
-	except (IOError, OSError) as err:
-		if err.errno == errno.ENOENT:  # No such file or directory.
-			print("[Setup] Warning: Setup file '%s' does not exist!" % setupFile)
-		else:
-			print("[Setup] Error %d: Opening setup file '%s'! (%s)" % (err.errno, setupFile, err.strerror))
-	except Exception as err:
-		print("[Setup] Error %d: Unexpected error opening setup file '%s'! (%s)" % (err.errno, setupFile, err.strerror))
+	if setupFile in domSetups:
+		del domSetups[setupFile]
+	if setupFile in setupModTimes:
+		del setupModTimes[setupFile]
+	fileDom = fileReadXML(setupFile, source=MODULE_NAME)
+	if fileDom:
+		checkItems(fileDom, None)
+		setupFileDom = fileDom
+		domSetups[setupFile] = setupFileDom
+		setupModTimes[setupFile] = modTime
+		for setup in setupFileDom.findall("setup"):
+			key = setup.get("key")
+			if key:  # If there is no key then this element is useless and can be skipped!
+				title = setup.get("title", "").encode("UTF-8", errors="ignore") if PY2 else setup.get("title", "")
+				if title == "":
+					print("[Setup] Error: Setup key '%s' title is missing or blank!" % key)
+					title = "** Setup error: '%s' title is missing or blank!" % key
+				# print("[Setup] DEBUG: XML setup load: key='%s', title='%s'." % (key, setup.get("title", "").encode("UTF-8", errors="ignore")))
 	return setupFileDom
 
 
