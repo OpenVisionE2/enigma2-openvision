@@ -1,4 +1,4 @@
-from enigma import eEnv, eGetEnigmaDebugLvl
+from enigma import eEnv, getDesktop, eGetEnigmaDebugLvl
 from errno import ENOENT, EXDEV
 from inspect import stack
 from os import F_OK, R_OK, W_OK, access, chmod, listdir, makedirs, mkdir, readlink, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
@@ -154,6 +154,7 @@ def resolveFilename(scope, base="", path_prefix=None):
 			pathjoin(defaultPaths[SCOPE_CONFIG][0], "skin_common"),
 			defaultPaths[SCOPE_CONFIG][0],  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
 			pathjoin(defaultPaths[SCOPE_SKIN][0], skin),
+			pathjoin(defaultPaths[SCOPE_SKIN][0], "skin_fallback_%d" % getDesktop(0).size().height()),
 			pathjoin(defaultPaths[SCOPE_SKIN][0], "skin_default"),
 			defaultPaths[SCOPE_SKIN][0]  # Can we deprecate top level of SCOPE_SKIN directory to allow a clean up?
 		]
@@ -172,6 +173,7 @@ def resolveFilename(scope, base="", path_prefix=None):
 			pathjoin(defaultPaths[SCOPE_CONFIG][0], "display", "skin_common"),
 			defaultPaths[SCOPE_CONFIG][0],  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
 			pathjoin(defaultPaths[SCOPE_LCDSKIN][0], skin),
+			pathjoin(defaultPaths[SCOPE_LCDSKIN][0], "skin_fallback_%s" % getDesktop(1).size().height()),
 			pathjoin(defaultPaths[SCOPE_LCDSKIN][0], "skin_default"),
 			defaultPaths[SCOPE_LCDSKIN][0]  # Can we deprecate top level of SCOPE_LCDSKIN directory to allow a clean up?
 		]

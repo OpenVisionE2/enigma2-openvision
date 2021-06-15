@@ -5,6 +5,7 @@ dist_install_DATA = \
 	az.png \
 	bullet.png \
 	clock.png \
+	cutting.png \
 	default.png \
 	dish.png \
 	dish_scan.png \
@@ -42,14 +43,19 @@ dist_install_DATA = \
 	icons_off.png \
 	icon_txt.png \
 	icon_view.png \
+	input_error.png \
+	input_info.png \
 	input_keyboard-configured.png \
 	input_keyboard.png \
+	input_message.png \
 	input_mouse-configured.png \
 	input_mouse.png \
+	input_question.png \
 	input_rcnew-configured.png \
 	input_rcnew.png \
 	input_rcold-configured.png \
 	input_rcold.png \
+	input_warning.png \
 	lock_error.png \
 	lock_off.png \
 	lock_on.png \
@@ -139,10 +145,4 @@ dist_install_DATA = \
 	zaprecclock_add.png \
 	zaprecclock_post.png \
 	zaprecclock_pre.png \
-	zaprecclock_prepost.png \
-	cutting.svg \
-	input_error.svg \
-	input_info.svg \
-	input_message.svg \
-	input_question.svg \
-	input_warning.svg
+	zaprecclock_prepost.png
