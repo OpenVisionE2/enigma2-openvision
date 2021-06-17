@@ -7,7 +7,6 @@ dist_pkgdata_DATA = \
 	freesat.t2 \
 	groupedservices \
 	keymap.xml \
-	keytranslation.xml \
 	menu.xml \
 	otv_00820000_fbff_16a8.dict \
 	otv_011a0000_0002_07d4.dict \
