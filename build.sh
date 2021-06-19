@@ -14,7 +14,10 @@ commit_files() {
   rm -rf *.pyo
   rm -rf *.mo
   git checkout develop
+  ./chmod.sh
+  ./dos2unix.sh
   ./PEP8.sh
+  ./futurize.sh
 }
 
 upload_files() {

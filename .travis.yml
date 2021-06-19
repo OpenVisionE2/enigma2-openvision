@@ -29,6 +29,7 @@ addons:
     - libjpeg-turbo8-dev
     - libgif-dev
     - libopenmpi-dev
+    - dos2unix
     env:
     - MATRIX_EVAL="CC=gcc-10 && CXX=g++-10 && PYTHON=2.7"
 
@@ -39,8 +40,8 @@ git:
   depth: 10
 
 before_install:
-    - pip install --upgrade pip tox six autopep8
-    - pip3 install --upgrade pip tox six autopep8
+    - pip install --upgrade pip tox six autopep8 future
+    - pip3 install --upgrade pip tox six autopep8 future
     - eval "${MATRIX_EVAL}"
 
 script:
