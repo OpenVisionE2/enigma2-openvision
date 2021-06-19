@@ -59,7 +59,7 @@ def getFPVersion():
 		if BoxInfo.getItem("platform") == "dm4kgen" or BoxInfo.getItem("model") in ("dm520", "dm7080", "dm820"):
 			version = fileReadLine("/proc/stb/fp/version", "unknown", source=MODULE_NAME)
 		else:
-			version = long(fileReadLine("/proc/stb/fp/version", "0", source=MODULE_NAME))
+			version = int(fileReadLine("/proc/stb/fp/version", "0", source=MODULE_NAME))
 	elif isfile("/sys/firmware/devicetree/base/bolt/tag"):
 		version = fileReadLine("/sys/firmware/devicetree/base/bolt/tag", "unknown", source=MODULE_NAME).rstrip("\0")
 	else:
