@@ -1,9 +1,10 @@
 from datetime import datetime
-from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, eLabel, eTimer, getDesktop, getE2Rev
+from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, eLabel, ePoint, eSize, eTimer, getDesktop, getE2Rev
 from glob import glob
 from json import loads
 from os import listdir, popen, remove, statvfs
 from os.path import basename, getmtime, isdir, isfile, join as pathjoin
+from PIL import Image
 from six import PY2
 from ssl import _create_unverified_context  # For python 2.7.11 we need to bypass the certificate check
 from subprocess import PIPE, Popen
@@ -19,9 +20,10 @@ from Components.ActionMap import HelpableActionMap
 from Components.config import config
 from Components.Console import Console
 from Components.Harddisk import Harddisk, harddiskmanager
+from Components.Label import Label
 from Components.Network import iNetwork
 from Components.NimManager import nimmanager
-from Components.Pixmap import MultiPixmap
+from Components.Pixmap import Pixmap
 from Components.ScrollLabel import ScrollLabel
 # from Components.Storage import Harddisk, storageManager
 from Components.SystemInfo import BoxInfo
@@ -29,8 +31,9 @@ from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen, ScreenSummary
-from Tools.Directories import fileReadLine, fileReadLines, fileWriteLine
+from Tools.Directories import SCOPE_CURRENT_SKIN, fileReadLine, fileReadLines, fileWriteLine, resolveFilename
 from Tools.Geolocation import geolocation
+from Tools.LoadPixmap import LoadPixmap
 from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
 
 MODULE_NAME = __name__.split(".")[-1]
@@ -66,23 +69,25 @@ def scaleNumber(number, style="Si", suffix="B"):  # This temporary code is borro
 
 
 class InformationBase(Screen, HelpableScreen):
-	skin = [
-		"""
-	<screen name="Information" position="center,center" size="%d,%d">
-		<widget name="information" position="%d,%d" size="e-%d,e-%d" colPosition="%d" divideChar="|" font="Regular;%d" noWrap="1" leftColAlign="left" rightColAlign="left" split="1" transparent="1" />
-		<widget source="key_red" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_red" conditional="key_red" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+	skin = """
+	<screen name="Information" position="center,center" size="950,560" resolution="1280,720">
+		<widget name="information" position="10,10" size="e-20,e-60" colPosition="475" conditional="information" divideChar="|" font="Regular;20" noWrap="1" leftColAlign="left" rightColAlign="left" split="1" transparent="1" />
+		<widget source="key_red" render="Label" position="10,e-50" size="180,40" backgroundColor="key_red" conditional="key_red" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_green" conditional="key_green" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="200,e-50" size="180,40" backgroundColor="key_green" conditional="key_green" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_yellow" conditional="key_yellow" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_yellow" render="Label" position="390,e-50" size="180,40" backgroundColor="key_yellow" conditional="key_yellow" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_blue" conditional="key_blue" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_blue" render="Label" position="580,e-50" size="180,40" backgroundColor="key_blue" conditional="key_blue" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_help" render="Label" position="e-%d,e-%d" size="%d,%d" backgroundColor="key_back" conditional="key_help" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_info" render="Label" position="e-180,e-50" size="80,40" backgroundColor="key_back" conditional="key_info" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_help" render="Label" position="e-90,e-50" size="80,40" backgroundColor="key_back" conditional="key_help" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="lab1" render="Label" position="0,0" size="0,0" conditional="lab1" font="Regular;22" transparent="1" />
@@ -91,15 +96,7 @@ class InformationBase(Screen, HelpableScreen):
 		<widget source="lab4" render="Label" position="0,0" size="0,0" conditional="lab4" font="Regular;18" transparent="1" />
 		<widget source="lab5" render="Label" position="0,0" size="0,0" conditional="lab5" font="Regular;18" transparent="1" />
 		<widget source="lab6" render="Label" position="0,0" size="0,0" conditional="lab6" font="Regular;18" transparent="1" />
-	</screen>""",
-		900, 560,  # screen
-		10, 10, 20, 60, 280, 20,  # information
-		10, 50, 180, 40, 20,  # key_red
-		200, 50, 180, 40, 20,  # key_green
-		390, 50, 180, 40, 20,  # key_yellow
-		580, 50, 180, 40, 20,  # key_blue
-		90, 50, 80, 40, 20  # key_help
-	]
+	</screen>"""
 
 	def __init__(self, session):
 		Screen.__init__(self, session, mandatoryWidgets=["information"])
@@ -126,6 +123,11 @@ class InformationBase(Screen, HelpableScreen):
 			"pageDown": (self["information"].pageDown, _("Move down a screen")),
 			"bottom": (self["information"].moveBottom, _("Move to last line / screen"))
 		}, prio=0, description=_("Common Information Actions"))
+		if isfile(resolveFilename(SCOPE_CURRENT_SKIN, "receiver/%s.png" % BoxInfo.getItem("model"))):
+			self["key_info"] = StaticText(_("INFO"))
+			self["infoActions"] = HelpableActionMap(self, ["InfoActions"], {
+				"info": (self.showReceiverImage, _("Show receiver image(s)"))
+			}, prio=0, description=_("Receiver Information Actions"))
 		colors = parameters.get("InformationColors", (0x00ffffff, 0x00ffffff, 0x00888888, 0x00888888, 0x00ffff00))
 		if len(colors) == len(INFO_COLORS):
 			for index in range(len(colors)):
@@ -139,6 +141,9 @@ class InformationBase(Screen, HelpableScreen):
 		self.informationTimer = eTimer()
 		self.informationTimer.callback.append(self.fetchInformation)
 		self.informationTimer.start(25)
+
+	def showReceiverImage(self):
+		self.session.openWithCallback(self.informationWindowClosed, InformationImage)
 
 	def keyCancel(self):
 		self.console.killAll()
@@ -170,6 +175,110 @@ class InformationBase(Screen, HelpableScreen):
 
 	def createSummary(self):
 		return InformationSummary
+
+
+class InformationImage(Screen, HelpableScreen):
+	skin = """
+	<screen name="InformationImage" title="Receiver Image" position="center,center" size="950,560" resolution="1280,720">
+		<widget name="name" position="10,10" size="e-20,25" font="Regular;20" halign="center" transparent="1" valign="center" />
+		<widget name="image" position="10,45" size="e-20,e-105" alphatest="blend" scale="1" transparent="1" />
+		<widget source="key_red" render="Label" position="10,e-50" size="180,40" backgroundColor="key_red" conditional="key_red" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="200,e-50" size="180,40" backgroundColor="key_green" conditional="key_green" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="390,e-50" size="180,40" backgroundColor="key_yellow" conditional="key_yellow" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_help" render="Label" position="e-90,e-50" size="80,40" backgroundColor="key_back" conditional="key_help" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="lab1" render="Label" position="0,0" size="0,0" conditional="lab1" font="Regular;22" transparent="1" />
+		<widget source="lab2" render="Label" position="0,0" size="0,0" conditional="lab2" font="Regular;18" transparent="1" />
+		<widget source="lab3" render="Label" position="0,0" size="0,0" conditional="lab3" font="Regular;18" transparent="1" />
+		<widget source="lab4" render="Label" position="0,0" size="0,0" conditional="lab4" font="Regular;18" transparent="1" />
+		<widget source="lab5" render="Label" position="0,0" size="0,0" conditional="lab5" font="Regular;18" transparent="1" />
+		<widget source="lab6" render="Label" position="0,0" size="0,0" conditional="lab6" font="Regular;18" transparent="1" />
+	</screen>"""
+
+	def __init__(self, session):
+		Screen.__init__(self, session, mandatoryWidgets=["name", "image"])
+		HelpableScreen.__init__(self)
+		self["name"] = Label()
+		self["image"] = Pixmap()
+		self["key_red"] = StaticText(_("Close"))
+		self["key_green"] = StaticText(_("Prev Image"))
+		self["key_yellow"] = StaticText(_("Next Image"))
+		self["lab1"] = StaticText(_("OpenVision"))
+		self["lab2"] = StaticText(_("Let's define enigma2 once more"))
+		self["lab3"] = StaticText(_("Report problems to:"))
+		self["lab4"] = StaticText(_("https://openvision.tech"))
+		self["lab5"] = StaticText(_("Sources are available at:"))
+		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
+		self["actions"] = HelpableActionMap(self, ["OkCancelActions", "ColorActions"], {
+			"cancel": (self.keyCancel, _("Close the screen")),
+			"close": (self.closeRecursive, _("Close the screen and exit all menus")),
+			"ok": (self.nextImage, _("Show next image")),
+			"red": (self.keyCancel, _("Close the screen")),
+			"green": (self.prevImage, _("Show previous image")),
+			"yellow": (self.nextImage, _("Show next image"))
+		}, prio=0, description=_("Receiver Image Actions"))
+		self.images = (
+			(_("Front"), "receiver/%s.png", BoxInfo.getItem("model")),
+			(_("Rear"), "receiver/%s-rear.png", BoxInfo.getItem("model")),
+			(_("Internal"), "receiver/%s-internal.png", BoxInfo.getItem("model")),
+			(_("Remote Control"), "rc/%s.png", BoxInfo.getItem("rcname")),
+			(_("Flashing"), "receiver/%s-flashing.png", BoxInfo.getItem("model"))
+		)
+		self.imageIndex = 0
+		self.widgetContext = None
+		self.onLayoutFinish.append(self.layoutFinished)
+
+	def keyCancel(self):
+		self.close()
+
+	def closeRecursive(self):
+		self.close(True)
+
+	def prevImage(self):
+		self.imageIndex -= 1
+		if self.imageIndex < 0:
+			self.imageIndex = len(self.images) - 1
+		while not isfile(resolveFilename(SCOPE_CURRENT_SKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])):
+			self.imageIndex -= 1
+			if self.imageIndex < 0:
+				self.imageIndex = len(self.images) - 1
+				break
+		self.layoutFinished()
+
+	def nextImage(self):
+		self.imageIndex += 1
+		while not isfile(resolveFilename(SCOPE_CURRENT_SKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])):
+			self.imageIndex += 1
+			if self.imageIndex >= len(self.images):
+				self.imageIndex = 0
+				break
+		self.layoutFinished()
+
+	def layoutFinished(self):
+		if self.widgetContext is None:
+			self.widgetContext = tuple(self["image"].getPosition() + self["image"].getSize())
+			print(self.widgetContext)
+		self["name"].setText("%s %s  -  %s View" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"), self.images[self.imageIndex][0]))
+		imagePath = resolveFilename(SCOPE_CURRENT_SKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])
+		image = LoadPixmap(imagePath)
+		if image:
+			img = Image.open(imagePath)
+			imageWidth, imageHeight = img.size
+			scale = float(self.widgetContext[2]) / imageWidth if imageWidth >= imageHeight else float(self.widgetContext[3]) / imageHeight
+			sizeW = int(imageWidth * scale)
+			sizeH = int(imageHeight * scale)
+			posX = self.widgetContext[0] + int(self.widgetContext[2] / 2.0 - sizeW / 2.0)
+			posY = self.widgetContext[1] + int(self.widgetContext[3] / 2.0 - sizeH / 2.0)
+			self["image"].instance.move(ePoint(posX, posY))
+			self["image"].instance.resize(eSize(sizeW, sizeH))
+			self["image"].instance.setPixmap(image)
 
 
 def formatLine(style, left, right=None):
@@ -973,7 +1082,7 @@ class ReceiverInformation(InformationBase):
 			"yellow": (self.showSystem, _("Show system information")),
 			"blue": (self.showBenchmark, _("Show benchmark information"))
 		}, prio=0, description=_("Receiver Information Actions"))
-		self.degree = str("\xc2\xb0C")
+		self.degree = u"\u00B0"
 
 	def showSystem(self):
 		self.session.openWithCallback(self.informationWindowClosed, SystemInformation)

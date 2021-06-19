@@ -194,16 +194,17 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 	<menu entryID="info_screen" level="0" text="Information" weight="20">
 		<id val="information" />
 		<item entryID="receiver_info_screen" level="0" text="Receiver" weight="5"><screen module="Information" screen="ReceiverInformation" /></item>
-		<item entryID="openvision_info_screen" level="0" text="OpenVision" weight="10"><screen module="Information" screen="ImageInformation" /></item>
-		<item entryID="tuner_info_screen" level="0" text="Tuners" weight="15"><screen module="Information" screen="TunerInformation" /></item>
-		<item entryID="device_info_screen" level="0" text="Storage" weight="20"><screen module="Information" screen="StorageInformation" /></item>
-		<item entryID="memory_info_screen" level="0" text="Memory" weight="25"><screen module="Information" screen="MemoryInformation" /></item>
-		<item entryID="network_info_screen" level="0" text="Network" weight="30"><screen module="Information" screen="NetworkInformation" /></item>
-		<item entryID="multiboot_info_screen" level="0" text="MultiBoot" weight="35"><screen module="Information" screen="MultiBootInformation" /></item>
-		<item entryID="geolocation_info_screen" level="0" text="Geolocation" weight="40"><screen module="Information" screen="GeolocationInformation" /></item>
-		<item entryID="kernelmodule_info_screen" level="2" text="Kernel Module" weight="45"><screen module="Information" screen="KernelModuleInformation" /></item>
-		<item entryID="service_info_screen" level="1" text="Service" weight="50"><screen module="ServiceInfo" screen="ServiceInfo" /></item>
-		<item entryID="streaming_clients_info_screen" level="2" text="Streaming Clients" weight="55"><screen module="StreamingClientsInfo" /></item>
+		<item entryID="receiver_image_screen" level="0" text="Images" weight="10"><screen module="Information" screen="InformationImage" /></item>
+		<item entryID="openvision_info_screen" level="0" text="OpenVision" weight="15"><screen module="Information" screen="ImageInformation" /></item>
+		<item entryID="tuner_info_screen" level="0" text="Tuners" weight="20"><screen module="Information" screen="TunerInformation" /></item>
+		<item entryID="device_info_screen" level="0" text="Storage" weight="25"><screen module="Information" screen="StorageInformation" /></item>
+		<item entryID="memory_info_screen" level="0" text="Memory" weight="30"><screen module="Information" screen="MemoryInformation" /></item>
+		<item entryID="network_info_screen" level="0" text="Network" weight="35"><screen module="Information" screen="NetworkInformation" /></item>
+		<item entryID="multiboot_info_screen" level="0" text="MultiBoot" weight="40"><screen module="Information" screen="MultiBootInformation" /></item>
+		<item entryID="geolocation_info_screen" level="0" text="Geolocation" weight="45"><screen module="Information" screen="GeolocationInformation" /></item>
+		<item entryID="kernelmodule_info_screen" level="2" text="Kernel Module" weight="50"><screen module="Information" screen="KernelModuleInformation" /></item>
+		<item entryID="service_info_screen" level="1" text="Service" weight="55"><screen module="ServiceInfo" screen="ServiceInfo" /></item>
+		<item entryID="streaming_clients_info_screen" level="2" text="Streaming Clients" weight="60"><screen module="StreamingClientsInfo" /></item>
 	</menu>
 
 	<!-- Menu / VCR Scart -->
