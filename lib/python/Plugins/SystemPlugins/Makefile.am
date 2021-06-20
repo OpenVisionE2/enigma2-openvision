@@ -14,10 +14,6 @@ if HAVE_OSDANIMATION
 SUBDIRS += AnimationSetup
 endif
 
-if DM4KGEN
-SUBDIRS += FSBLUpdater
-endif
-
 if HAVE_FCC_ABILITY
 SUBDIRS += FastChannelChange
 endif
