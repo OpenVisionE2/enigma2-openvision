@@ -931,7 +931,7 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 				"modulation": eDVBFrontendParametersCable.Modulation_QAM256,
 				"fec": eDVBFrontendParametersCable.FEC_Auto,
 				"symbolrate": 5217,
-				"system": eDVBFrontendParametersCable.System_DVB_C_ANNEX_A }
+				"system": eDVBFrontendParametersCable.System_DVB_C_ANNEX_A}
 		else:
 			defaultCab = {
 				"frequency": 466000,
