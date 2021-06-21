@@ -8,9 +8,32 @@
 # define FB_DEV "/dev/fb0"
 #endif
 
+#ifdef HAVE_HISIAPI
+	typedef struct hiRECT_S
+	{
+		int s32X;
+		int s32Y;
+		int s32Width;
+		int s32Height;
+	} HI_RECT_S;
+
+	typedef struct hiDISP_VIRTSCREEN_S
+	{
+		int enDisp;
+		HI_RECT_S stVirtScreen;
+	} DISP_VIRTSCREEN_S;
+
+	#define HI_ID_DISP 34
+	#define IOC_DISP_SET_VIRTSCREEN 12
+	#define CMD_DISP_SET_VIRTSCREEN _IOW(HI_ID_DISP, IOC_DISP_SET_VIRTSCREEN, DISP_VIRTSCREEN_S)
+#endif
+
 class fbClass
 {
 	int fbFd;
+#ifdef HAVE_HISIAPI
+	int fdDisp;
+#endif
 	int xRes, yRes, stride, bpp;
 	int available;
 	struct fb_var_screeninfo screeninfo;

@@ -313,6 +313,9 @@ void gPixmap::fill(const gRegion &region, const gColor &color)
 #endif
 #endif
 		} else
+#if HAVE_HISIAPI
+			if (surface->bpp != 0)
+#endif
 			eWarning("[gPixmap] couldn't fill %d bpp", surface->bpp);
 	}
 }

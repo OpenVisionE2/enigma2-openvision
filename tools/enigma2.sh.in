@@ -177,6 +177,12 @@ while : ; do
 	RET=$?
 	case ${RET} in
 		1)
+			if [ "${BRANDCHECK}" == "atto" ]; then
+				echo "----" > /dev/player/panel
+				echo -n "standby" > /sys/power/state
+			else
+				/sbin/halt
+			fi
 			/sbin/halt
 			if [ "${BRANDCHECK}" == "wetek" ]; then
 				echo "0" > /sys/class/leds/wetek\:blue\:wifiled/brightness

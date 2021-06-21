@@ -102,7 +102,11 @@ int eDVBDemux::openDemux(void)
 int eDVBDemux::openDVR(int flags)
 {
 	char filename[32];
+#ifdef HAVE_HISIAPI
+	snprintf(filename, sizeof(filename), "/dev/player/dvr%d", adapter);
+#else
 	snprintf(filename, sizeof(filename), "/dev/dvb/adapter%d/dvr%d", adapter, demux);
+#endif
 	eDebug("[eDVBDemux] open dvr %s", filename);
 #ifdef HAVE_AMLOGIC
 	m_pvr_fd =  ::open(filename, flags);
@@ -852,7 +856,7 @@ RESULT eDVBTSRecorder::start()
 
 	char filename[128];
 	snprintf(filename, 128, "/dev/dvb/adapter%d/demux%d", m_demux->adapter, m_demux->demux);
-#if HAVE_HISILICON
+#if HAVE_HISILICON || HAVE_HISIAPI
 	m_source_fd = ::open(filename, O_RDONLY | O_CLOEXEC | O_NONBLOCK);
 #else
 	m_source_fd = ::open(filename, O_RDONLY | O_CLOEXEC);
@@ -1054,6 +1058,7 @@ RESULT eDVBTSRecorder::startPID(int pid)
 
 void eDVBTSRecorder::stopPID(int pid)
 {
+#ifndef HAVE_HISIAPI
 	if (m_pids[pid] != -1)
 	{
 		while(true) {
@@ -1068,6 +1073,7 @@ void eDVBTSRecorder::stopPID(int pid)
 			break;
 		}
 	}
+#endif
 	m_pids[pid] = -1;
 }
 

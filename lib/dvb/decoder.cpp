@@ -46,7 +46,11 @@ eDVBAudio::eDVBAudio(eDVBDemux *demux, int dev)
 	:m_demux(demux), m_dev(dev)
 {
 	char filename[128];
+#ifdef HAVE_HISIAPI
+	sprintf(filename, "/dev/player/audio0");
+#else
 	sprintf(filename, "/dev/dvb/adapter%d/audio%d", demux ? demux->adapter : 0, dev);
+#endif
 	m_fd = ::open(filename, O_RDWR | O_CLOEXEC);
 	if (m_fd < 0)
 		eWarning("[eDVBAudio] %s: %m", filename);
@@ -176,7 +180,11 @@ int eDVBAudio::startPid(int pid, int type)
 // this is a hack which only matters for dm drivers
 //		freeze();  // why freeze here?!? this is a problem when only a pid change is requested... because of the unfreeze logic in Decoder::setState
 		eDebugNoNewLineStart("[eDVBAudio%d] AUDIO_PLAY ", m_dev);
+#ifdef HAVE_HISIAPI
+		if (::ioctl(m_fd, AUDIO_PLAY, pid) < 0)
+#else
 		if (::ioctl(m_fd, AUDIO_PLAY) < 0)
+#endif
 			eDebugNoNewLine("failed: %m\n");
 		else
 			eDebugNoNewLine("ok\n");
@@ -314,7 +322,11 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 	m_width(-1), m_height(-1), m_framerate(-1), m_aspect(-1), m_progressive(-1), m_gamma(-1)
 {
 	char filename[128];
+#ifdef HAVE_HISIAPI
+	sprintf(filename, "/dev/player/video0");
+#else
 	sprintf(filename, "/dev/dvb/adapter%d/video%d", demux ? demux->adapter : 0, dev);
+#endif
 	m_fd = ::open(filename, O_RDWR | O_CLOEXEC);
 	if (m_fd < 0)
 		eWarning("[eDVBVideo] %s: %m", filename);
@@ -497,7 +509,11 @@ int eDVBVideo::startPid(int pid, int type)
 // this is a hack which only matters for dm drivers
 //		freeze();  // why freeze here?!? this is a problem when only a pid change is requested... because of the unfreeze logic in Decoder::setState
 		eDebugNoNewLineStart("[eDVBVideo%d] VIDEO_PLAY ", m_dev);
+#ifdef HAVE_HISIAPI
+		if (::ioctl(m_fd, VIDEO_PLAY, pid) < 0)
+#else
 		if (::ioctl(m_fd, VIDEO_PLAY) < 0)
+#endif
 			eDebugNoNewLine("failed: %m\n");
 		else
 			eDebugNoNewLine("ok\n");
@@ -1227,7 +1243,11 @@ eTSMPEGDecoder::eTSMPEGDecoder(eDVBDemux *demux, int decoder)
 	m_state = stateStop;
 
 	char filename[128];
+#ifdef HAVE_HISIAPI
+	sprintf(filename, "/dev/player/audio0");
+#else
 	sprintf(filename, "/dev/dvb/adapter%d/audio%d", m_demux ? m_demux->adapter : 0, m_decoder);
+#endif
 	m_has_audio = !access(filename, W_OK);
 #ifdef HAVE_RASPBERRYPI
 	eDebug("[RPi eTSMPEGDecoder] m_has_audio=%d filename %s", m_has_audio, filename);

@@ -96,7 +96,25 @@ eDVBResourceManager::eDVBResourceManager()
 
 	if (!instance)
 		instance = this;
+#ifdef HAVE_HISIAPI
+	int num_adapter = 0;
+	while (eDVBAdapterLinux::exist(num_adapter))
+	{
+		if (eDVBAdapterLinux::isusb(num_adapter))
+		{
+			eDVBAdapterLinux *adapter = new eDVBUsbAdapter(num_adapter);
+			addAdapter(adapter);
+		}
+		else
+		{
+			eDVBAdapterLinux *adapter = new eDVBAdapterLinux(num_adapter);
+			adapter->scanDevices();
+			addAdapter(adapter, true);
+		}
 
+		num_adapter++;
+	}
+#else
 	int num_adapter = 1;
 	while (eDVBAdapterLinux::exist(num_adapter))
 	{
@@ -127,7 +145,7 @@ eDVBResourceManager::eDVBResourceManager()
 		adapter->scanDevices();
 		addAdapter(adapter, true);
 	}
-
+#endif
 	eDebug("[eDVBResourceManager] found %zd adapter, %zd frontends(%zd sim) and %zd demux",
 		m_adapter.size(), m_frontend.size(), m_simulate_frontend.size(), m_demux.size());
 
@@ -299,8 +317,18 @@ bool eDVBAdapterLinux::isusb(int nr)
 	{
 		return true;
 	}
+#ifdef HAVE_HISIAPI
+	snprintf(devicename, sizeof(devicename), "/sys/class/dvb/dvb%d.frontend0/device/ep_84", nr);
+	if (::access(devicename, X_OK) >= 0)
+	{
+		return true;
+	}
+	snprintf(devicename, sizeof(devicename), "/sys/class/dvb/dvb%d.frontend0/device/ep_8f", nr);
+	return ::access(devicename, X_OK) >= 0;
+#else
 	snprintf(devicename, sizeof(devicename), "/sys/class/dvb/dvb%d.frontend0/device/subsystem", nr);
 	return readLink(devicename).find("/usb") != std::string::npos;
+#endif
 }
 
 DEFINE_REF(eDVBUsbAdapter);
@@ -330,7 +358,11 @@ eDVBUsbAdapter::eDVBUsbAdapter(int nr)
 		if (::access(filename, X_OK) < 0) break;
 		num_fe++;
 	}
+#ifdef HAVE_HISIAPI
+	snprintf(filename, sizeof(filename), "/dev/dvb/adapter%d/frontend%d", nr, num_fe);
+#else
 	snprintf(filename, sizeof(filename), "/dev/dvb/adapter0/frontend%d", num_fe);
+#endif
 	virtualFrontendName = filename;
 
 	demuxFd = vtunerFd = pipeFd[0] = pipeFd[1] = -1;

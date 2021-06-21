@@ -16,6 +16,8 @@ from Screens.MessageBox import MessageBox
 from enigma import eTimer, eDVBFrontendParametersSatellite, eComponentScan, eDVBFrontendParametersTerrestrial, eDVBFrontendParametersCable, eConsoleAppContainer, eDVBResourceManager, eDVBFrontendParametersATSC
 from six import PY2
 
+brand = BoxInfo.getItem("brand")
+
 
 def buildTerTransponder(frequency,
 	inversion=2, bandwidth=7000000, fechigh=6, feclow=6,
@@ -922,13 +924,22 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 			"pls_code": eDVBFrontendParametersSatellite.PLS_Default_Gold_Code,
 			"t2mi_plp_id": eDVBFrontendParametersSatellite.No_T2MI_PLP_Id,
 			"t2mi_pid": eDVBFrontendParametersSatellite.T2MI_Default_Pid}
-		defaultCab = {
-			"frequency": 466000,
-			"inversion": eDVBFrontendParametersCable.Inversion_Unknown,
-			"modulation": eDVBFrontendParametersCable.Modulation_QAM64,
-			"fec": eDVBFrontendParametersCable.FEC_Auto,
-			"symbolrate": 6900,
-			"system": eDVBFrontendParametersCable.System_DVB_C_ANNEX_A}
+		if brand == "atto":
+			defaultCab = {
+				"frequency": 477000,
+				"inversion": eDVBFrontendParametersCable.Inversion_Unknown,
+				"modulation": eDVBFrontendParametersCable.Modulation_QAM256,
+				"fec": eDVBFrontendParametersCable.FEC_Auto,
+				"symbolrate": 5217,
+				"system": eDVBFrontendParametersCable.System_DVB_C_ANNEX_A }
+		else:
+			defaultCab = {
+				"frequency": 466000,
+				"inversion": eDVBFrontendParametersCable.Inversion_Unknown,
+				"modulation": eDVBFrontendParametersCable.Modulation_QAM64,
+				"fec": eDVBFrontendParametersCable.FEC_Auto,
+				"symbolrate": 6900,
+				"system": eDVBFrontendParametersCable.System_DVB_C_ANNEX_A}
 		defaultTer = {
 			"frequency": 474000,
 			"inversion": eDVBFrontendParametersTerrestrial.Inversion_Unknown,
@@ -974,7 +985,10 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 				defaultCab["symbolrate"] = frontendData.get("symbol_rate", 0) / 1000
 				defaultCab["inversion"] = frontendData.get("inversion", eDVBFrontendParametersCable.Inversion_Unknown)
 				defaultCab["fec"] = frontendData.get("fec_inner", eDVBFrontendParametersCable.FEC_Auto)
-				defaultCab["modulation"] = frontendData.get("modulation", eDVBFrontendParametersCable.Modulation_QAM16)
+				if brand == "atto":
+					defaultCab["modulation"] = frontendData.get("modulation", eDVBFrontendParametersCable.Modulation_QAM256)
+				else:
+					defaultCab["modulation"] = frontendData.get("modulation", eDVBFrontendParametersCable.Modulation_QAM16)
 				defaultCab["system"] = frontendData.get("system", eDVBFrontendParametersCable.System_DVB_C_ANNEX_A)
 			elif ttype == "DVB-T":
 				defaultTer["frequency"] = frontendData.get("frequency", 47400000) / 1000

@@ -15,7 +15,11 @@
 // #define ACCEL_DEBUG
 
 gAccel *gAccel::instance;
+#ifndef HAVE_HISILICON_ACCEL
+#ifndef HAVE_HISIAPI
 #define BCM_ACCEL
+#endif
+#endif
 
 #ifdef HAVE_HISILICON_ACCEL 
 extern int  dinobot_accel_init(void);
@@ -371,6 +375,9 @@ int gAccel::sync()
 
 int gAccel::accelAlloc(gUnmanagedSurface* surface)
 {
+#ifdef HAVE_HISIAPI
+	return 0;
+#endif
 	int stride = (surface->stride + ACCEL_ALIGNMENT_MASK) & ~ACCEL_ALIGNMENT_MASK;
 	int size = stride * surface->y;
 	if (!size)

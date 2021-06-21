@@ -1061,6 +1061,9 @@ void eTextPara::blit(gDC &dc, const ePoint &offset, const gRGB &background, cons
 					lookup16_invert[i]=lookup16_normal[i^0xF];
 			} else
 			{
+#if HAVE_HISIAPI
+				if (surface->bpp != 0)
+#endif
 				eWarning("[eTextPara] Can't render to %dbpp!", surface->bpp);
 				return;
 			}

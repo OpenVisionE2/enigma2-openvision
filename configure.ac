@@ -669,6 +669,10 @@ if test "$BOXBRAND" == "dinobot" -o "$BOXTYPE" == "reborn"; then
 	AC_DEFINE(HAVE_HISILICON, 1,[define it is a HISILICON chip])
 fi
 
+if test "$BOXBRAND" == "atto"; then
+	AC_DEFINE(HAVE_HISIAPI, 1,[define we should use HISILICON API])
+fi
+
 if test "$STBPLATFORM" == "u53" -o "$STBPLATFORM" == "u532" -o "$STBPLATFORM" == "u533"; then
 	AC_DEFINE(KEY_F6_TO_KEY_FAVORITES, 1,[define when rc FAV key sends a KEY_F6 event for its KEY_FAVORITES key])
 	AC_DEFINE(KEY_CONTEXT_MENU_TO_KEY_BACK, 1,[define when rc MOUSE key sends a KEY_CONTEXT_MENU event for its KEY_BACK key])

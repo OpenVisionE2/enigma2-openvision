@@ -417,9 +417,16 @@ void eRCDeviceInputDev::handleCode(long rccode)
 		}
 #endif
 
-#if KEY_INFO_TO_KEY_EPG
+#if defined(KEY_INFO_TO_KEY_EPG) && !defined(HAVE_HISIAPI)
 		if (ev->code == KEY_INFO) {
 			ev->code = KEY_EPG;
+		}
+#endif
+
+#if defined(HAVE_HISIAPI)
+		if (ev->code == KEY_FORWARD)
+		{
+			ev->code = KEY_FASTFORWARD;
 		}
 #endif
 

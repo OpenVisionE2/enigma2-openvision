@@ -13,8 +13,13 @@
 #include <ost/audio.h>
 #include <ost/video.h>
 #else
+#ifdef HAVE_HISIAPI
+#define VIDEO_DEV "/dev/player/video0"
+#define AUDIO_DEV "/dev/player/audio0"
+#else
 #define VIDEO_DEV "/dev/dvb/adapter0/video0"
 #define AUDIO_DEV "/dev/dvb/adapter0/audio0"
+#endif
 #include <linux/dvb/audio.h>
 #include <linux/dvb/video.h>
 #endif
@@ -152,7 +157,11 @@ void eDVBVolumecontrol::setVolume(int left, int right)
 #ifdef HAVE_ALSA
 	eDebug("[eDVBVolumecontrol] Setvolume: ALSA leftVol=%d", leftVol);
 	if (mainVolume)
+#ifdef HAVE_HISIAPI
+		snd_mixer_selem_set_playback_volume_all(mainVolume, muted ? 0 : leftVol > 95 ? 95 : leftVol);
+#else
 		snd_mixer_selem_set_playback_volume_all(mainVolume, muted ? 0 : leftVol);
+#endif
 #else
 		/* convert to -1dB steps */
 	left = 63 - leftVol * 63 / 100;
@@ -230,7 +239,11 @@ void eDVBVolumecontrol::volumeUnMute()
 #ifdef HAVE_ALSA
 	eDebug("[eDVBVolumecontrol] Setvolume: ALSA unMute to %d", leftVol);
 	if (mainVolume)
+#ifdef HAVE_HISIAPI
+		snd_mixer_selem_set_playback_volume_all(mainVolume, leftVol > 95 ? 95 : leftVol);
+#else
 		snd_mixer_selem_set_playback_volume_all(mainVolume, leftVol);
+#endif
 	muted = false;
 #else
 	int fd = openMixer();
