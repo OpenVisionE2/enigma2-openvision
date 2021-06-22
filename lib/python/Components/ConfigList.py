@@ -1,6 +1,6 @@
 from enigma import eListbox, eListboxPythonConfigContent, ePoint, eRCInput, eTimer
-from skin import parameters
 
+from skin import parameters
 from Components.ActionMap import HelpableActionMap, HelpableNumberActionMap
 from Components.config import ACTIONKEY_0, ACTIONKEY_ASCII, ACTIONKEY_BACKSPACE, ACTIONKEY_DELETE, ACTIONKEY_ERASE, ACTIONKEY_FIRST, ACTIONKEY_LAST, ACTIONKEY_LEFT, ACTIONKEY_NUMBERS, ACTIONKEY_RIGHT, ACTIONKEY_SELECT, ACTIONKEY_TIMEOUT, ACTIONKEY_TOGGLE, ConfigBoolean, ConfigElement, ConfigInteger, ConfigMacText, ConfigSelection, ConfigSequence, ConfigText, config, configfile
 from Components.GUIComponent import GUIComponent
@@ -158,11 +158,13 @@ class ConfigListScreen:
 			}, prio=1, description=_("Common Setup Actions"))
 		if "key_menu" not in self:
 			self["key_menu"] = StaticText(_("MENU"))
+		if "key_text" not in self:
+			self["key_text"] = StaticText(_("TEXT"))
+		if "VKeyIcon" not in self:
+			self["VKeyIcon"] = Boolean(False)
 		if "HelpWindow" not in self:
 			self["HelpWindow"] = Pixmap()
 			self["HelpWindow"].hide()
-		if "VKeyIcon" not in self:
-			self["VKeyIcon"] = Boolean(False)
 		self["configActions"] = HelpableActionMap(self, ["ConfigListActions"], {
 			"select": (self.keySelect, _("Select, toggle, process or edit the current entry"))
 		}, prio=1, description=_("Common Setup Actions"))
@@ -200,25 +202,18 @@ class ConfigListScreen:
 			"gotAsciiCode": (self.keyGotAscii, _("Keyboard data entry"))
 		}, prio=1, description=_("Common Setup Actions"))
 		self["editConfigActions"].setEnabled(False if fullUI else True)
-		self["VirtualKB"] = HelpableActionMap(self, "VirtualKeyboardActions", {
+		self["virtualKeyBoardActions"] = HelpableActionMap(self, "VirtualKeyboardActions", {
 			"showVirtualKeyboard": (self.keyText, _("Display the virtual keyboard for data entry"))
 		}, prio=1, description=_("Common Setup Actions"))
-		self["VirtualKB"].setEnabled(False)
+		self["virtualKeyBoardActions"].setEnabled(False)
 		self["config"] = ConfigList(list, session=session)
 		self.setCancelMessage(None)
 		self.setRestartMessage(None)
 		self.onChangedEntry = []
-		if self.noNativeKeys not in self.onLayoutFinish:
-			self.onLayoutFinish.append(self.noNativeKeys)
-		if self.handleInputHelpers not in self["config"].onSelectionChanged:
-			self["config"].onSelectionChanged.append(self.handleInputHelpers)
-		if self.showHelpWindow not in self.onExecBegin:
-			self.onExecBegin.append(self.showHelpWindow)
-		if self.hideHelpWindow not in self.onExecEnd:
-			self.onExecEnd.append(self.hideHelpWindow)
-
-	def noNativeKeys(self):
-		self["config"].instance.allowNativeKeys(False)
+		self.onExecBegin.append(self.showHelpWindow)
+		self.onExecEnd.append(self.hideHelpWindow)
+		self.onLayoutFinish.append(self.noNativeKeys)  # self.layoutFinished is already in use!
+		self["config"].onSelectionChanged.append(self.handleInputHelpers)
 
 	def setCancelMessage(self, msg):
 		self.cancelMsg = _("Really close without saving settings?") if msg is None else msg
@@ -242,6 +237,9 @@ class ConfigListScreen:
 		for x in self.onChangedEntry:
 			x()
 
+	def noNativeKeys(self):
+		self["config"].instance.allowNativeKeys(False)
+
 	def handleInputHelpers(self):
 		currConfig = self["config"].getCurrent()
 		if currConfig is not None:
@@ -256,17 +254,18 @@ class ConfigListScreen:
 				self["menuConfigActions"].setEnabled(False)
 				self["key_menu"].setText("")
 			if isinstance(currConfig[1], ConfigText):
-				self.showVKeyboard(True)
+				self.showVirtualKeyBoard(True)
 				if "HelpWindow" in self and currConfig[1].help_window and currConfig[1].help_window.instance is not None:
 					helpwindowpos = self["HelpWindow"].getPosition()
 					currConfig[1].help_window.instance.move(ePoint(helpwindowpos[0], helpwindowpos[1]))
 			else:
-				self.showVKeyboard(False)
+				self.showVirtualKeyBoard(False)
 
-	def showVKeyboard(self, state):
-		if "VKeyIcon" in self:
-			self["VirtualKB"].setEnabled(state)
+	def showVirtualKeyBoard(self, state):
+		if "key_text" in self or "VKeyIcon" in self:
+			self["key_text"].setText(_("TEXT") if state else "")
 			self["VKeyIcon"].boolean = state
+			self["virtualKeyBoardActions"].setEnabled(state)
 
 	def showHelpWindow(self):
 		self.displayHelp(True)
