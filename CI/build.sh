@@ -14,14 +14,14 @@ commit_files() {
   rm -rf *.pyo
   rm -rf *.mo
   git checkout develop
-  ./chmod.sh
-  ./dos2unix.sh
-  ./PEP8.sh
-  ./futurize.sh
+  ./CI/chmod.sh
+  ./CI/dos2unix.sh
+  ./CI/PEP8.sh
+  ./CI/futurize.sh
 }
 
 upload_files() {
-  git remote add upstream https://${GH_TOKEN}@github.com/OpenVisionE2/enigma2-openvision.git > /dev/null 2>&1
+  git remote add upstream https://${GITHUB_TOKEN}@github.com/OpenVisionE2/enigma2-openvision.git > /dev/null 2>&1
   git push --quiet upstream develop || echo "failed to push with error $?"
 }
 
