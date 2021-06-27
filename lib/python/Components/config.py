@@ -386,11 +386,11 @@ class descriptionList(choicesList):
 # 		self.value = "(OK)"
 # 		self.action = action
 # 		self.actionargs = args
-# 
+#
 # 	def handleKey(self, key):
 # 		if (key == ACTIONKEY_SELECT):
 # 			self.action(*self.actionargs)
-# 
+#
 # 	def getMulti(self, selected):
 # 		return ("text", _("<Press OK to perform action>") if selected else "")
 
