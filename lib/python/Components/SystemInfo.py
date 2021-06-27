@@ -44,6 +44,8 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 				self.boxInfo["enigmamodule"] = modulePath
 				self.immutableList.append("enigmamodule")
 				break
+		else:
+			modulePath = ""
 		# As the /proc values are static we can save time by using cached
 		# values loaded here.  If the values become dynamic this code
 		# should be disabled and the dynamic code below enabled.
@@ -53,7 +55,7 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 				self.immutableList.append(item)
 			print("[SystemInfo] Enigma kernel module available and data loaded into BoxInfo.")
 		else:
-			process = Popen(("/sbin/modinfo", "-d", modulePath), stdout=PIPE, stderr=PIPE)
+			process = Popen(("/sbin/modinfo", "-d", modulePath), stdout=PIPE, stderr=PIPE, text=True)
 			stdout, stderr = process.communicate()
 			if process.returncode == 0:
 				for line in stdout.split("\n"):
@@ -194,7 +196,7 @@ def getRCFile(ext):
 def getModuleLayout():
 	modulePath = BoxInfo.getItem("enigmamodule")
 	if modulePath:
-		process = Popen(("/sbin/modprobe", "--dump-modversions", modulePath), stdout=PIPE, stderr=PIPE)
+		process = Popen(("/sbin/modprobe", "--dump-modversions", modulePath), stdout=PIPE, stderr=PIPE, text=True)
 		stdout, stderr = process.communicate()
 		if process.returncode == 0:
 			for detail in stdout.split("\n"):
