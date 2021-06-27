@@ -879,6 +879,8 @@ class ConfigMACText(ConfigMacText):
 # This replaces the former requirement that all ids MUST be plain
 # strings, but is compatible with that requirement.
 #
+
+
 class ConfigSelection(ConfigElement):
 	def __init__(self, choices, default=None, graphic=True):
 		ConfigElement.__init__(self)
