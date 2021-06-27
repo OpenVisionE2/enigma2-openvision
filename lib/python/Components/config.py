@@ -65,7 +65,7 @@ def getKeyNumber(key):
 
 
 def getConfigListEntry(*args):
-	assert len(args) > 1, "getConfigListEntry needs a minimum of two arguments (descr, configElement)"
+	assert len(args) > 1, "[Config] Error: 'getConfigListEntry' needs a minimum of two arguments (description, configElement)!"
 	return args
 
 
@@ -203,7 +203,7 @@ class ConfigElement(object):
 	notifiers_final = property(getNotifiersFinal, setNotifiersFinal)
 
 	def addNotifier(self, notifier, initial_call=True, immediate_feedback=True, extra_args=None):
-		assert callable(notifier), "notifiers must be callable"
+		assert callable(notifier), "[Config] Error: Notifiers must be callable!"
 		if extra_args is not None:
 			self.__addExtraArgs(notifier, extra_args)
 		if immediate_feedback:
@@ -272,7 +272,7 @@ class choicesList(object):
 			elif isinstance(choices, dict):
 				self.type = choicesList.LIST_TYPE_DICT
 			else:
-				assert False, "choices must be dict or list!"
+				assert False, "[Config] Error: Choices must be dict or list!"
 		else:
 			self.type = type
 		self.choices = choices
@@ -415,8 +415,8 @@ class ConfigBoolean(ConfigElement):
 		elif key == ACTIONKEY_LAST:
 			self.value = True
 
-	def fromstring(self, val):
-		return str(val).lower() in self.trueValues
+	def fromstring(self, value):
+		return str(value).lower() in self.trueValues
 
 	def tostring(self, value):
 		return "True" if value and str(value).lower() in self.trueValues else "False"
@@ -711,146 +711,6 @@ class ConfigLocations(ConfigElement):
 		self.pos = -1
 
 
-# This is the control, and base class, for MAC text settings.
-#
-class ConfigMacText(ConfigElement, NumericalTextInput):
-	def __init__(self, default="", visible_width=False):
-		ConfigElement.__init__(self)
-		NumericalTextInput.__init__(self, nextFunc=self.nextFunc, handleTimeout=False)
-		self.marked_pos = 0
-		self.allmarked = (default != "")
-		self.fixed_size = 17
-		self.visible_width = visible_width
-		self.offset = 0
-		self.overwrite = 17
-		self.help_window = None
-		self.value = self.lastValue = self.default = default
-		self.useableChars = "0123456789ABCDEF"
-
-	def validateMarker(self):
-		textlen = len(self.text)
-		if self.marked_pos > textlen - 1:
-			self.marked_pos = textlen - 1
-		elif self.marked_pos < 0:
-			self.marked_pos = 0
-
-	def insertChar(self, ch, pos, owr):
-		if self.text[pos] == ":":
-			pos += 1
-		if owr or self.overwrite:
-			self.text = self.text[0:pos] + ch + self.text[pos + 1:]
-		elif self.fixed_size:
-			self.text = self.text[0:pos] + ch + self.text[pos:-1]
-		else:
-			self.text = self.text[0:pos] + ch + self.text[pos:]
-
-	def handleKey(self, key):
-		if key == ACTIONKEY_LEFT:
-			self.timeout()
-			if self.allmarked:
-				self.marked_pos = len(self.text)
-				self.allmarked = False
-			else:
-				if self.text[self.marked_pos - 1] == ":":
-					self.marked_pos -= 2
-				else:
-					self.marked_pos -= 1
-		elif key == ACTIONKEY_RIGHT:
-			self.timeout()
-			if self.allmarked:
-				self.marked_pos = 0
-				self.allmarked = False
-			else:
-				if self.marked_pos < (len(self.text) - 1):
-					if self.text[self.marked_pos + 1] == ":":
-						self.marked_pos += 2
-					else:
-						self.marked_pos += 1
-		elif key in ACTIONKEY_NUMBERS:
-			owr = self.lastKey == getKeyNumber(key)
-			newChar = self.getKey(getKeyNumber(key))
-			self.insertChar(newChar, self.marked_pos, owr)
-		elif key == ACTIONKEY_TIMEOUT:
-			self.timeout()
-			if self.help_window:
-				self.help_window.update(self)
-			if self.text[self.marked_pos] == ":":
-				self.marked_pos += 1
-			return
-		if self.help_window:
-			self.help_window.update(self)
-		self.validateMarker()
-		self.changed()
-
-	def nextFunc(self):
-		self.marked_pos += 1
-		self.validateMarker()
-		self.changed()
-
-	def getValue(self):
-		try:
-			return self.text.encode("utf-8")
-		except UnicodeDecodeError:
-			print("[config] Broken UTF8!")
-			return self.text
-
-	def setValue(self, val):
-		try:
-			self.text = val.decode("utf-8")
-		except UnicodeDecodeError:
-			self.text = val.decode("utf-8", "ignore")
-			print("[config] Broken UTF8!")
-
-	value = property(getValue, setValue)
-	_value = property(getValue, setValue)
-
-	def getText(self):
-		return self.text.encode("utf-8")
-
-	def getMulti(self, selected):
-		if self.visible_width:
-			if self.allmarked:
-				mark = range(0, min(self.visible_width, len(self.text)))
-			else:
-				mark = [self.marked_pos - self.offset]
-			return "mtext"[1 - selected:], self.text[self.offset:self.offset + self.visible_width].encode("utf-8") + " ", mark
-		else:
-			if self.allmarked:
-				mark = range(0, len(self.text))
-			else:
-				mark = [self.marked_pos]
-			return "mtext"[1 - selected:], self.text.encode("utf-8") + " ", mark
-
-	def onSelect(self, session):
-		self.allmarked = (self.value != "")
-		if session is not None:
-			from Screens.NumericalTextInputHelpDialog import NumericalTextInputHelpDialog
-			self.help_window = session.instantiateDialog(NumericalTextInputHelpDialog, self)
-			if BoxInfo.getItem("OSDAnimation"):
-				self.help_window.setAnimationMode(0)
-			self.help_window.show()
-
-	def onDeselect(self, session):
-		self.marked_pos = 0
-		self.offset = 0
-		if self.help_window:
-			session.deleteDialog(self.help_window)
-			self.help_window = None
-		if self.lastValue != self.value:
-			self.changedFinal()
-			self.lastValue = self.value
-
-	def getHTML(self, id):
-		return "<input type=\"text\" name=\"" + id + "\" value=\"" + self.value + "\" /><br>\n"
-
-	def unsafeAssign(self, value):
-		self.value = str(value)
-
-
-class ConfigMACText(ConfigMacText):
-	def __init__(self, default="", visible_width=False):
-		ConfigMacText.__init__(self, default=default, visible_width=visible_width)
-
 # This is the control, and base class, for selection list settings.
 #
 # ConfigSelection is a "one of.."-type.  It has the "choices", usually
@@ -879,8 +739,6 @@ class ConfigMACText(ConfigMacText):
 # This replaces the former requirement that all ids MUST be plain
 # strings, but is compatible with that requirement.
 #
-
-
 class ConfigSelection(ConfigElement):
 	def __init__(self, choices, default=None, graphic=True):
 		ConfigElement.__init__(self)
@@ -1060,15 +918,16 @@ class ConfigSelectionNumber(ConfigSelection):
 class ConfigSequence(ConfigElement):
 	def __init__(self, seperator, limits, default, censor=""):
 		ConfigElement.__init__(self)
-		assert isinstance(limits, list) and len(limits[0]) == 2, "Limits must be [(min, max),...]-tuple-list!"
-		assert censor == "" or len(censor) == 1, "Censor char must be a single char (or \"\")!"
-		# assert isinstance(default, list), "default must be a list"
-		# assert isinstance(default[0], int), "list must contain numbers"
-		# assert len(default) == len(limits), "length must match"
+		assert isinstance(limits, list) and len(limits[0]) == 2, "[Config] Error: Limits must be [(min, max),...]-tuple-list!"
+		assert censor == "" or len(censor) == 1, "[Config] Error: Censor must be a single char (or \"\")!"
+		# assert isinstance(default, list), "[Config] Error: Default must be a list!"
+		# assert isinstance(default[0], int), "[Config] Error: List must contain numbers!"
+		# assert len(default) == len(limits), "[Config] Error: Length must match!"
 		self.marked_pos = 0
 		self.seperator = seperator
 		self.limits = limits
 		self.censor = censor
+		self.hidden = censor != ""
 		self.lastValue = self.default = default
 		self.value = shallowcopy(default)
 		self.endNotifier = None
@@ -1161,7 +1020,7 @@ class ConfigSequence(ConfigElement):
 				value += self.seperator
 				if mPos >= len(value) - 1:
 					mPos += 1
-			if self.censor == "":
+			if self.censor == "" or not self.hidden:
 				value += ("%0" + str(len(str(self.limits[num][1]))) + "d") % i
 			else:
 				value += (self.censor * len(str(self.limits[num][1])))
@@ -1190,7 +1049,11 @@ class ConfigSequence(ConfigElement):
 		ret = [int(x) for x in value.split(self.seperator)]
 		return ret + [int(x[0]) for x in self.limits[len(ret):]]
 
+	def onSelect(self, session):
+		self.hidden = False
+
 	def onDeselect(self, session):
+		self.hidden = self.censor != ""
 		if self.lastValue != self._value:
 			self.changedFinal()
 			self.lastValue = shallowcopy(self._value)
@@ -1408,7 +1271,7 @@ class ConfigInteger(ConfigSequence):
 	def __init__(self, default, limits=integer_limits):
 		ConfigSequence.__init__(self, seperator=":", limits=[limits], default=default)
 
-	def setValue(self, value):  # You need to override this to do input validation.
+	def setValue(self, value):
 		self._value = [value]
 		self.changed()
 
@@ -1426,7 +1289,8 @@ class ConfigInteger(ConfigSequence):
 
 class ConfigPIN(ConfigInteger):
 	def __init__(self, default, len=4, censor=u"\u2022"):
-		assert isinstance(default, int), "ConfigPIN default must be an integer"
+		assert isinstance(default, int), "[Config] Error: 'ConfigPIN' default must be an integer!"
+		assert censor == "" or len(censor) == 1, "[Config] Error: Censor must be a single char (or \"\")!"
 		censor = censor.encode("UTF-8", errors="ignore") if PY2 else censor
 		ConfigSequence.__init__(self, seperator=":", limits=[(0, (10 ** len) - 1)], censor=censor, default=default)
 		self.len = len
@@ -1822,15 +1686,15 @@ class ConfigText(ConfigElement, NumericalTextInput):
 		else:
 			return self.text
 
-	def setValue(self, val):
+	def setValue(self, value):
 		if PY2:
 			try:
-				self.text = val.encode("UTF-8", errors="ignore")
+				self.text = value.encode("UTF-8", errors="ignore")
 			except UnicodeDecodeError:
-				self.text = val.decode("UTF-8", error="ignore")
+				self.text = value.decode("UTF-8", error="ignore")
 				print("[config] Broken UTF8!")
 		else:
-			self.text = val
+			self.text = value
 
 	value = property(getValue, setValue)
 	_value = property(getValue, setValue)
@@ -1888,13 +1752,80 @@ class ConfigDirectory(ConfigText):
 		else:
 			return ConfigText.getValue(self)
 
-	def setValue(self, val):
-		if val is None:
-			val = ""
-		ConfigText.setValue(self, val)
+	def setValue(self, value):
+		if value is None:
+			value = ""
+		ConfigText.setValue(self, value)
 
 	def onSelect(self, session):
 		self.allmarked = (self.value != "")
+
+
+class ConfigMACText(ConfigText):
+	def __init__(self, default="", visible_width=17):
+		ConfigText.__init__(self, default, fixed_size=True, visible_width=visible_width)
+		NumericalTextInput.setMode(self, "HexFastLogicalUpper")  # HexFastUpper
+		self.allmarked = False
+
+	def handleKey(self, key):
+		if key == ACTIONKEY_FIRST:
+			self.timeout()
+			self.marked_pos = 0
+		elif key == ACTIONKEY_LEFT:
+			self.timeout()
+			if self.text[self.marked_pos - 1] == ":":
+				self.marked_pos -= 2
+			else:
+				self.marked_pos -= 1
+		elif key == ACTIONKEY_RIGHT:
+			self.timeout()
+			if self.marked_pos < self.visible_width - 1 and self.text[self.marked_pos + 1] == ":":
+				self.marked_pos += 2
+			else:
+				self.marked_pos += 1
+		elif key == ACTIONKEY_LAST:
+			self.timeout()
+			self.marked_pos = len(self.text)
+		elif key == ACTIONKEY_ERASE:
+			self.timeout()
+			self.text = self.text[2].join(["00"] * 6)
+			self.marked_pos = 0
+		elif key in ACTIONKEY_NUMBERS:
+			owr = self.lastKey == getKeyNumber(key)
+			newChar = self.getKey(getKeyNumber(key))
+			self.insertChar(newChar, self.marked_pos, owr)
+		elif key == ACTIONKEY_TIMEOUT:
+			self.timeout()
+			if self.help_window:
+				self.help_window.update(self)
+			if self.text[self.marked_pos] == ":":
+				self.marked_pos += 1
+			return
+		if self.help_window:
+			self.help_window.update(self)
+		self.validateMarker()
+		self.changed()
+
+	def validateMarker(self):
+		textlen = len(self.text)
+		if self.marked_pos > textlen - 1:
+			self.marked_pos = textlen - 1
+		elif self.marked_pos < 0:
+			self.marked_pos = 0
+
+	def insertChar(self, ch, pos, owr):
+		if self.text[pos] == ":":
+			pos += 1
+		ConfigText.insertChar(self, ch, pos, owr)
+
+	def onSelect(self, session):
+		ConfigText.onSelect(self, session)
+		self.allmarked = False
+
+
+class ConfigMacText(ConfigMACText):  # Deprecated class name.
+	def __init__(self, default="", visible_width=17):
+		ConfigMACText.__init__(self, default=default, visible_width=visible_width)
 
 
 class ConfigNumber(ConfigText):
@@ -1958,13 +1889,14 @@ class ConfigNumber(ConfigText):
 class ConfigPassword(ConfigText):
 	def __init__(self, default="", fixed_size=False, visible_width=False, censor=u"\u2022"):
 		ConfigText.__init__(self, default=default, fixed_size=fixed_size, visible_width=visible_width)
+		assert censor == "" or len(censor) == 1, "[Config] Error: Censor must be a single char (or \"\")!"
 		self.censor = censor.encode("UTF-8", errors="ignore") if PY2 else censor
 		self.hidden = True
 
 	def getMulti(self, selected):
 		mtext, text, mark = ConfigText.getMulti(self, selected)
 		if self.hidden:
-			text = len(text) * self.censor  # For more security a fixed length string can be used!
+			text = self.censor * len(text)  # For more security a fixed length string can be used!
 		return (mtext, text, mark)
 
 	def onSelect(self, session):
@@ -2114,7 +2046,7 @@ class ConfigSubsection(object):
 	def __setattr__(self, name, value):
 		if name == "saved_value":
 			return self.setSavedValue(value)
-		assert isinstance(value, (ConfigSubsection, ConfigElement, ConfigSubList, ConfigSubDict)), "ConfigSubsections can only store ConfigSubsections, ConfigSubLists, ConfigSubDicts or ConfigElements"
+		assert isinstance(value, (ConfigSubsection, ConfigElement, ConfigSubList, ConfigSubDict)), "[Config] Error: 'ConfigSubsection' can only store ConfigSubsections, ConfigSubLists, ConfigSubDicts or ConfigElements!"
 		content = self.content
 		content.items[name] = value
 		x = content.stored_values.get(name, None)
