@@ -650,7 +650,7 @@ class ImageInformation(InformationBase):
 			info.append("")
 			info.append(formatLine("H", _("HiSilicon specific information")))
 			info.append("")
-			process = Popen(("/usr/bin/opkg", "list-installed"), stdout=PIPE, stderr=PIPE)
+			process = Popen(("/usr/bin/opkg", "list-installed"), stdout=PIPE, stderr=PIPE, text=True)
 			stdout, stderr = process.communicate()
 			if process.returncode == 0:
 				missing = True
