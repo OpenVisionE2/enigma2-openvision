@@ -1120,11 +1120,7 @@ def InitUsageConfig():
 		config.usage.wakeOnLAN = ConfigYesNo(default=False)
 		config.usage.wakeOnLAN.addNotifier(wakeOnLANChanged)
 
-	config.usage.boolean_graphic = ConfigSelection(default="true", choices={
-		"false": _("No"),
-		"true": _("Yes"),
-		"only_bool": _("Yes, but not in multi selections")
-	})
+	config.usage.boolean_graphic = ConfigYesNo(default=True)
 
 	config.usage.cursorscroll = ConfigSelectionNumber(min=0, max=50, stepwidth=5, default=0, wraparound=True)
 
