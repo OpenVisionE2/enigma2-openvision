@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -82,6 +82,23 @@ msgstr " (0 - všechny sítě)"
 msgid " (Channel %s)"
 msgstr " (Kanál %s)"
 
+#
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (zakázáno)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (vyšší než jakékoliv auto)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (vyšší než jakékoliv auto motoru)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (nižší než jakékoliv auto)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Oddíl %d)"
@@ -98,19 +115,6 @@ msgstr " (TV)"
 #
 msgid " (auto detection)"
 msgstr "(automatická detekce)"
-
-#
-msgid " (disabled)"
-msgstr " (zakázáno)"
-
-msgid " (higher than any auto)"
-msgstr " (vyšší než jakékoliv auto)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (vyšší než jakékoliv auto motoru)"
-
-msgid " (lower than any auto)"
-msgstr " (nižší než jakékoliv auto)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -135,9 +139,6 @@ msgstr ""
 #
 msgid " updates available."
 msgstr " dostupných aktualizací."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #
 #, fuzzy
@@ -1669,10 +1670,6 @@ msgstr "<standardní umístění>"
 msgid "<Last timer location>"
 msgstr "<poslední umístění časovače>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Stiskněte OK pro připojení funkce."
-
 #
 msgid "<unknown>"
 msgstr "<neznámý>"
@@ -3126,9 +3123,6 @@ msgstr "Boot do Android image"
 
 msgid "Boot to Recovery menu"
 msgstr "Boot do Recovery menu"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 #
 msgid "Bootup time"
@@ -4760,11 +4754,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "Podpora HLG"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5824,9 +5813,6 @@ msgstr "Dominika"
 msgid "Dominican Republic"
 msgstr "Dominikánská republika"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "Čekání na restart"
@@ -5847,11 +5833,6 @@ msgstr "Nezastavovat aktuální událost, ale zakázat následující události"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Nezastavovat aktuální událost, ale zakázat následující události"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Nepřepínat"
@@ -6963,9 +6944,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -7201,6 +7179,10 @@ msgstr "Založení adresáře %s se nezdařilo."
 msgid "Flash type"
 msgstr "Nahrát image"
 
+#, fuzzy
+msgid "Flashing"
+msgstr "Nahrávání image"
+
 msgid "Flashing Image"
 msgstr "Nahrávání image"
 
@@ -7335,6 +7317,9 @@ msgstr "Pátek"
 
 msgid "From:"
 msgstr "Z:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -8174,6 +8159,10 @@ msgstr ""
 "Image pro instalaci je neplatné\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Image: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -8404,7 +8393,8 @@ msgid "Input"
 msgstr "Zadání"
 
 #
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Zadání "
 
 #, fuzzy
@@ -8421,6 +8411,11 @@ msgstr "Nastavení vstupního zařízení"
 
 msgid "Input Stream ID"
 msgstr "Input Stream ID"
+
+#
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Jdi na pozici"
 
 #
 msgid "Install"
@@ -10064,6 +10059,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Další"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Odstranit image"
+
 msgid "Nicaragua"
 msgstr "Nikaragua"
 
@@ -10229,11 +10228,6 @@ msgstr ""
 "Před prohledáváním nejdříve nastavte Váš tuner."
 
 #
-#, fuzzy
-msgid "No update required!"
-msgstr " Žádné dostupné aktualizace."
-
-#
 msgid "No updates available"
 msgstr " Žádné dostupné aktualizace."
 
@@ -10339,6 +10333,11 @@ msgstr "Neinstalováno"
 msgid "Not associated"
 msgstr "Neasociováno"
 
+#
+#, fuzzy
+msgid "Not configured"
+msgstr "Nenakonfigurováno"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -10365,6 +10364,11 @@ msgstr "Poznámka: chcete-li, aby po probouzení přijímač přecházel do Stan
 #, fuzzy
 msgid "Nothing"
 msgstr "Nedělat nic"
+
+#
+#, fuzzy
+msgid "Nothing connected"
+msgstr "Nepřipojeno"
 
 #
 msgid ""
@@ -11428,6 +11432,11 @@ msgid "Positioner"
 msgstr "Pozicioner"
 
 #
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Pozicioner (výběr satelitů)"
+
+#
 msgid "Positioner (selecting satellites)"
 msgstr "Pozicioner (výběr satelitů)"
 
@@ -11681,6 +11690,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Předchozí"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Image: "
 
 #
 msgid "Preview"
@@ -12025,6 +12038,9 @@ msgstr "Skutečně aktualizovat frontprocesor a restartovat?"
 msgid "Really update your settop box and reboot now?"
 msgstr "Skutečně aktualizovat přijímač a restartovat"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Restart"
 
@@ -12037,6 +12053,11 @@ msgstr "Vyvolat předchozí program"
 
 msgid "Receiver"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Informace"
 
 #
 #, fuzzy
@@ -12196,6 +12217,11 @@ msgstr "  Zapamatovat programový PIN"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Připomínáme, že jste se rozhodli uložit timeshift soubor."
+
+#
+#, fuzzy
+msgid "Remote Control"
+msgstr "Odstranit položku"
 
 #
 #, fuzzy
@@ -14297,6 +14323,10 @@ msgstr "  Pluginy"
 msgid "Show multi channel EPG"
 msgstr "Zobrazovat vícekanálovou EPG"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Nahrané soubory"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Zobrazí zprávu, jestliže import ze vzdáleného přijímače byl neúspěšný"
 
@@ -14351,9 +14381,18 @@ msgstr "Zobrazovat otáčení pozicioneru"
 msgid "Show positioner position"
 msgstr "Zobrazovat pozici pozicioneru"
 
+#
+#, fuzzy
+msgid "Show previous image"
+msgstr "Předchozí podprogram"
+
 #, fuzzy
 msgid "Show python in plugin browser"
 msgstr "  Pluginy"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "Zadejte IP adresu"
 
 #
 msgid "Show record clock icons"
@@ -17066,18 +17105,8 @@ msgstr[2] "Aktualizace dokončena. %d balíčků bylo nainstalováno."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Aktualizace skončila. Chcete restartovat přijímač?"
 
-#
-#, fuzzy
-msgid "Update failed!"
-msgstr "Zápis selhal!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Aktualizace se nezdařila. Přijímač nemá funkční připojení k internetu."
-
-#
-#, fuzzy
-msgid "Update finished!"
-msgstr "Dokončeno!"
 
 msgid "Update has completed."
 msgstr "Aktualizace je dokončena."
@@ -17086,11 +17115,6 @@ msgstr "Aktualizace je dokončena."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Interval prezentace (sek.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 #
 msgid "Updatefeed not available."
@@ -17566,17 +17590,18 @@ msgid "Virgin Islands (U.S.)"
 msgstr "Panenské ostrovy (U.S.)"
 
 #
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Virtuální klávesnice"
+
+#
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Funkce virtuální klávesnice"
 
 #
 msgid "Virtual KeyBoard Text:"
 msgstr "Text virtuální klávesnice:"
-
-#
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Virtuální klávesnice"
 
 #
 msgid "Virtual keyboard"
@@ -18135,6 +18160,9 @@ msgstr "Pro obsah s poměrem stran 16:9 zvolte, zda chcete změnit velikost/rozt
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Pro obsah s poměrem stran 4:3 zvolte, zda chcete změnit velikost/roztáhnout obraz."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr "Při probuzení nebo přechodu z hlubokého spánku bude přijímač posílat odpovídající příkaz pro probuzení TV."
@@ -18831,10 +18859,6 @@ msgid "auto standby"
 msgstr "Neusínat"
 
 #
-msgid "automatic"
-msgstr "Automaticky"
-
-#
 msgid "back"
 msgstr "zpět"
 
@@ -19370,10 +19394,6 @@ msgstr "- dlouhé"
 
 msgid "magazines/reports/documentary"
 msgstr "magazíny/reportáže/dokumentární"
-
-#
-msgid "manual"
-msgstr "Ručně"
 
 msgid "martial sports"
 msgstr "bojové sporty"

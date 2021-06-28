@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2021-02-25 12:06+0100\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -78,6 +78,22 @@ msgstr " (0 - všetky siete)"
 msgid " (Channel %s)"
 msgstr " (Kanál %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (zakázané)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (vyššia, než akékoľvek auto)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (vyššia ako rotor akékoľvek auto)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (nižšia než akékoľvek auto)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Partícia %d)"
@@ -94,18 +110,6 @@ msgstr " (TV)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "Výber zvuku"
-
-msgid " (disabled)"
-msgstr " (zakázané)"
-
-msgid " (higher than any auto)"
-msgstr " (vyššia, než akékoľvek auto)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (vyššia ako rotor akékoľvek auto)"
-
-msgid " (lower than any auto)"
-msgstr " (nižšia než akékoľvek auto)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -127,9 +131,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr " dostupných aktualizácií."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1584,10 +1585,6 @@ msgstr "<Predvolené umiestnenie filmov>"
 msgid "<Last timer location>"
 msgstr "<Umiestnenie poslednej časovej nahrávky>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Stlačte 'OK' pre funkciu pripojenia."
-
 msgid "<unknown>"
 msgstr "<neznámy>"
 
@@ -2858,9 +2855,6 @@ msgstr "Štart do Android image"
 
 msgid "Boot to Recovery menu"
 msgstr "Štart do Recovery menu"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 msgid "Bootup time"
 msgstr "Čas štartu"
@@ -4331,11 +4325,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "Podpora HLG"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5261,9 +5250,6 @@ msgstr "Dominika"
 msgid "Dominican Republic"
 msgstr "Dominikánska republika"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "< Čakajúci reštart >"
@@ -5281,11 +5267,6 @@ msgstr "Nezastaviť aktuálny záznam, ale vypnúť nasledujúce záznamy"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Nezastaviť aktuálny záznam, ale vypnúť nasledujúce záznamy"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Neprepnúť"
@@ -6267,9 +6248,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "Nekódované"
 
@@ -6479,6 +6457,10 @@ msgstr "Nepodarilo sa vytvoriť adresár %s."
 msgid "Flash type"
 msgstr "Nahrať image"
 
+#, fuzzy
+msgid "Flashing"
+msgstr "Nahrať image"
+
 msgid "Flashing Image"
 msgstr "Nahrať image"
 
@@ -6597,6 +6579,9 @@ msgstr "Piatok"
 
 msgid "From:"
 msgstr "Od:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7377,6 +7362,10 @@ msgstr ""
 "Inštalačný image nie je platný\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Image: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7580,7 +7569,8 @@ msgstr "motorizmus"
 msgid "Input"
 msgstr "Vstup"
 
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Vstup "
 
 #, fuzzy
@@ -7597,6 +7587,10 @@ msgstr "Nastavenie vstupného zariadenia"
 
 msgid "Input Stream ID"
 msgstr "Vstupný Stream ID"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Otočiť do pozície"
 
 msgid "Install"
 msgstr "Inštalovať"
@@ -9020,6 +9014,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Nasleduje"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Vymazať image"
+
 msgid "Nicaragua"
 msgstr "Nikaragua"
 
@@ -9159,10 +9157,6 @@ msgstr ""
 "Nie je povolený žiadny tuner!\n"
 "Nastavte tuner pred spustením vyhľadávania staníc."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Žiadne dostupné aktualizácie"
-
 msgid "No updates available"
 msgstr "Žiadne dostupné aktualizácie"
 
@@ -9257,6 +9251,10 @@ msgstr "Nie je inštalované"
 msgid "Not associated"
 msgstr "Nepriradené"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "nenakonfigurované"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9280,6 +9278,10 @@ msgstr "Poznámka: Ak je povolené, a chcete prejsť do pohotovostného režimu 
 #, fuzzy
 msgid "Nothing"
 msgstr "Žiadna akcia"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "nič nie je pripojené"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10207,6 +10209,10 @@ msgstr "Pozícia uložená na indexe"
 msgid "Positioner"
 msgstr "Motor"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Pozicionér (výber satelitov)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Pozicionér (výber satelitov)"
 
@@ -10428,6 +10434,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Predchádzajúca"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Image: "
 
 msgid "Preview"
 msgstr "Náhľad"
@@ -10731,6 +10741,9 @@ msgstr "Naozaj aktualizovať frontprocessor a reštartovať prijímač?"
 msgid "Really update your settop box and reboot now?"
 msgstr "Naozaj aktualizovať a reštartovať prijímač?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Reštart"
 
@@ -10742,6 +10755,10 @@ msgstr "Návrat na predchádzajúcu stanicu"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Informácie"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -10883,6 +10900,10 @@ msgstr "Zapamätať PIN stanice"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Pripomienka, vybrali ste si uloženie súboru časového posunu."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "Odstrániť stanicu"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12742,6 +12763,10 @@ msgstr "Chrániť prehliadač modulov"
 msgid "Show multi channel EPG"
 msgstr "Zobraziť viackanálový EPG"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Zobraziť filmy"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Zobraziť notifikáciu v prípade, keď nebol import staníc a/alebo EPG z URL adresy vzdialeného prijímača úspešne dokončený"
 
@@ -12793,8 +12818,16 @@ msgid "Show positioner position"
 msgstr "Zobrazovať polohu pozicionéru"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "Prepnúť na predchádzajúcu stanicu"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Chrániť prehliadač modulov"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "IP adresa"
 
 msgid "Show record clock icons"
 msgstr "Zobraziť ikony nahrávacích hodín"
@@ -15218,16 +15251,8 @@ msgstr[2] "Aktualizácia dokončená, %d balíčkov bolo nainštalovaných."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Aktualizácia dokončená. Chcete reštartovať prijímač?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "Zápis zlyhal!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Aktualizácia zlyhala. Váš prijímač nemá funkčné pripojenie k internetu."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Hotovo!!"
 
 msgid "Update has completed."
 msgstr "Aktualizácia bola dokončená."
@@ -15235,11 +15260,6 @@ msgstr "Aktualizácia bola dokončená."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Interval prezentácie (sek.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "Zdroj aktualizácií nie je k dispozícií."
@@ -15648,15 +15668,16 @@ msgstr "Panenské ostrovy (Britské)"
 msgid "Virgin Islands (U.S.)"
 msgstr "Panenské ostrovy (Americké)"
 
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Virtuálna klávesnica"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Funkcie virtuálnej klávesnice"
 
 msgid "Virtual KeyBoard Text:"
 msgstr "Text virtuálnej klávesnice:"
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Virtuálna klávesnica"
 
 msgid "Virtual keyboard"
 msgstr "Virtuálna klávesnica"
@@ -16190,6 +16211,9 @@ msgstr "Ak má obsah pomer strán 16: 9, vyberte, či chcete veľkosť obrazu pr
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Ak má obsah pomer strán 4:3, vyberte, či chcete veľkosť obrazu prispôsobiť alebo obraz roztiahnuť. Doporučená hodnota: Pillarbox."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr "Keď sa prijímač prebudí z pohotovostného režímu alebo z vypnutého stavu, vyšle do TV povel na jeho zapnutie."
@@ -16829,9 +16853,6 @@ msgstr "prejsť do vypnutia"
 msgid "auto standby"
 msgstr "Neprechádzať do pohotovostného režimu"
 
-msgid "automatic"
-msgstr "automatické"
-
 msgid "back"
 msgstr "späť"
 
@@ -17307,9 +17328,6 @@ msgstr "dlhý"
 
 msgid "magazines/reports/documentary"
 msgstr "časopisy/správy/dokumentárne"
-
-msgid "manual"
-msgstr "ručne"
 
 msgid "martial sports"
 msgstr "bojové športy"

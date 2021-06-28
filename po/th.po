@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1-En-Th\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2010-04-08 18:13+0700\n"
 "Last-Translator: Tony - Thaidreambox\n"
 "Language-Team: Tony @ Thai Dreambox <tonyboyth@gmail.com>\n"
@@ -75,6 +75,19 @@ msgstr ""
 msgid " (Channel %s)"
 msgstr ""
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr "ไม่ใช้งาน"
+
+msgid " (Higher than any auto)"
+msgstr ""
+
+msgid " (Higher than rotor any auto)"
+msgstr ""
+
+msgid " (Lower than any auto)"
+msgstr ""
+
 #, python-format
 msgid " (Partition %d)"
 msgstr ""
@@ -89,18 +102,6 @@ msgid " (TV)"
 msgstr ""
 
 msgid " (auto detection)"
-msgstr ""
-
-msgid " (disabled)"
-msgstr ""
-
-msgid " (higher than any auto)"
-msgstr ""
-
-msgid " (higher than rotor any auto)"
-msgstr ""
-
-msgid " (lower than any auto)"
 msgstr ""
 
 msgid " - Unicable/JESS LNBs not found"
@@ -123,9 +124,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr " มีรายการปรับปรุง"
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1503,10 +1501,6 @@ msgstr ""
 msgid "<Last timer location>"
 msgstr ""
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "กดปุ่ม OK เพื่อเปลี่ยน"
-
 msgid "<unknown>"
 msgstr "<ไม่ทราบ>"
 
@@ -2776,9 +2770,6 @@ msgid "Boot to Android image"
 msgstr ""
 
 msgid "Boot to Recovery menu"
-msgstr ""
-
-msgid "Bootloader update required!"
 msgstr ""
 
 #, fuzzy
@@ -4252,11 +4243,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "ไม่รองรับ"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5198,9 +5184,6 @@ msgstr ""
 msgid "Dominican Republic"
 msgstr ""
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "ปิดเครื่อง"
@@ -5218,11 +5201,6 @@ msgstr "คงรายการปัจจุบันไว้ แต่ใ�
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "คงรายการปัจจุบันไว้ แต่ให้ยกเลิกรายการต่อไปแทน"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr ""
@@ -6197,9 +6175,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr ""
 
@@ -6409,6 +6384,10 @@ msgid "Flash type"
 msgstr "แฟรช"
 
 #, fuzzy
+msgid "Flashing"
+msgstr "แฟรช"
+
+#, fuzzy
 msgid "Flashing Image"
 msgstr "แฟรช"
 
@@ -6525,6 +6504,9 @@ msgid "Friday"
 msgstr "วันศุกร์"
 
 msgid "From:"
+msgstr ""
+
+msgid "Front"
 msgstr ""
 
 msgid "Front Panel Display"
@@ -7303,6 +7285,10 @@ msgid ""
 "%s"
 msgstr ""
 
+#, fuzzy
+msgid "Images"
+msgstr "แฟรช"
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7509,8 +7495,8 @@ msgstr ""
 msgid "Input"
 msgstr "นำเข้า (Input)"
 
-#, fuzzy
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "นำเข้า (Input)"
 
 msgid "Input Device Actions"
@@ -7524,6 +7510,10 @@ msgstr ""
 
 msgid "Input Stream ID"
 msgstr ""
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "ไปยังตำแหน่ง"
 
 msgid "Install"
 msgstr "ติดตั้ง"
@@ -8969,6 +8959,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr ""
 
+#, fuzzy
+msgid "Next Image"
+msgstr "ลบไฟล์"
+
 msgid "Nicaragua"
 msgstr ""
 
@@ -9114,10 +9108,6 @@ msgstr ""
 "กรุณาตั้งค่า Tuner แล้วทำการค้นหารายการที่ให้บริการก่อน"
 
 #, fuzzy
-msgid "No update required!"
-msgstr " มีรายการปรับปรุง"
-
-#, fuzzy
 msgid "No updates available"
 msgstr " มีรายการปรับปรุง"
 
@@ -9216,6 +9206,10 @@ msgstr "ติดตั้ง"
 msgid "Not associated"
 msgstr ""
 
+#, fuzzy
+msgid "Not configured"
+msgstr "ยืนยันแล้ว"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9239,6 +9233,10 @@ msgstr ""
 #, fuzzy
 msgid "Nothing"
 msgstr "ไม่ต้องทำอะไร"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "ไม่พบการเชื่อมต่อ"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10180,6 +10178,10 @@ msgstr ""
 msgid "Positioner"
 msgstr "ตัวขับจาน"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "ลบดาวเทียมนี้ออก"
+
 msgid "Positioner (selecting satellites)"
 msgstr ""
 
@@ -10400,6 +10402,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr ""
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "แฟรช"
 
 msgid "Preview"
 msgstr ""
@@ -10700,6 +10706,9 @@ msgstr ""
 msgid "Really update your settop box and reboot now?"
 msgstr ""
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "เริ่มระบบใหม่ (Reboot)"
 
@@ -10711,6 +10720,10 @@ msgstr ""
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "ข้อมูล"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -10851,6 +10864,10 @@ msgstr ""
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr ""
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "ลบรายการนี้ออก"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12742,6 +12759,10 @@ msgstr ""
 msgid "Show multi channel EPG"
 msgstr ""
 
+#, fuzzy
+msgid "Show next image"
+msgstr "ดาวเทียม"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr ""
 
@@ -12790,8 +12811,16 @@ msgid "Show positioner position"
 msgstr ""
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "ไปบริการย่อยก่อนหน้า"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "แสดงปลั๊กอิน"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "IP Address"
 
 msgid "Show record clock icons"
 msgstr ""
@@ -15221,16 +15250,8 @@ msgstr[1] ""
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "ท่านต้องการที่จะนำการตั้งค่าต่างๆ กลับมาใช้หรือไม่?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "พบข้อผิดพลาดในการเขียนข้อมูล!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr ""
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "เสร็จแล้ว!"
 
 msgid "Update has completed."
 msgstr ""
@@ -15238,11 +15259,6 @@ msgstr ""
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "ความเร็วของสไลด์ (วินาที)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr ""
@@ -15667,15 +15683,15 @@ msgid "Virgin Islands (U.S.)"
 msgstr ""
 
 #, fuzzy
-msgid "Virtual KeyBoard Functions"
+msgid "Virtual KeyBoard"
+msgstr "แป้นพิมพ์จำลอง"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "แป้นพิมพ์จำลอง"
 
 #, fuzzy
 msgid "Virtual KeyBoard Text:"
-msgstr "แป้นพิมพ์จำลอง"
-
-#, fuzzy
-msgid "Virtual Keyboard"
 msgstr "แป้นพิมพ์จำลอง"
 
 #, fuzzy
@@ -16188,6 +16204,9 @@ msgid "When the content has an aspect ratio of 16:9, choose whether to scale/str
 msgstr ""
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
+msgstr ""
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
 msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
@@ -16795,10 +16814,6 @@ msgstr "เข้าสู่โหมด Deep standby"
 msgid "auto standby"
 msgstr "ไม่ Standby"
 
-#, fuzzy
-msgid "automatic"
-msgstr "อัตโนมัติ"
-
 msgid "back"
 msgstr "กลับ"
 
@@ -17264,9 +17279,6 @@ msgstr ""
 
 msgid "magazines/reports/documentary"
 msgstr ""
-
-msgid "manual"
-msgstr "ทำเอง"
 
 msgid "martial sports"
 msgstr ""

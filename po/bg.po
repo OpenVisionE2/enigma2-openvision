@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2020-11-29 22:07+0200\n"
 "Last-Translator: Мартин Петков <marto74bg@yahoo.co.uk>\n"
 "Language-Team: Bulgarian\n"
@@ -77,6 +77,22 @@ msgstr " (0 - всички мрежи)"
 msgid " (Channel %s)"
 msgstr " (Канал %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (деактивиран)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (по-висок от всеки авто)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (по-висок от ротор всеки авто)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (по-нисък от всеки авто)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Раздел %d)"
@@ -93,18 +109,6 @@ msgstr " (ТВ)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "Към избор на аудио"
-
-msgid " (disabled)"
-msgstr " (деактивиран)"
-
-msgid " (higher than any auto)"
-msgstr " (по-висок от всеки авто)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (по-висок от ротор всеки авто)"
-
-msgid " (lower than any auto)"
-msgstr " (по-нисък от всеки авто)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -126,9 +130,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr " налични актуализации."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1572,10 +1573,6 @@ msgstr "<По подразбиране>"
 msgid "<Last timer location>"
 msgstr "<Местоположение на последния таймер>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Натиснете „OK“ за функция на прикачване."
-
 msgid "<unknown>"
 msgstr "<непознат>"
 
@@ -2847,9 +2844,6 @@ msgstr "Зареждане на Андроид имидж"
 
 msgid "Boot to Recovery menu"
 msgstr "Меню за стартиране в режим на Възстановяване"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 msgid "Bootup time"
 msgstr "Време за зареждане"
@@ -4319,11 +4313,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "HLG поддръжка"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5249,9 +5238,6 @@ msgstr "Доминикана"
 msgid "Dominican Republic"
 msgstr "Доминиканска Република"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "Очаква рестарт"
@@ -5269,11 +5255,6 @@ msgstr "Не спирай текущото предаване но спри сл
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Не спирай текущото предаване но спри следващите"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Не превключвай"
@@ -6254,9 +6235,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -6467,6 +6445,10 @@ msgstr "Грешка при създаване директория %s."
 msgid "Flash type"
 msgstr "Флашване на Имидж"
 
+#, fuzzy
+msgid "Flashing"
+msgstr "Флашване на имидж"
+
 msgid "Flashing Image"
 msgstr "Флашване на имидж"
 
@@ -6585,6 +6567,9 @@ msgstr "Петък"
 
 msgid "From:"
 msgstr "От:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7363,6 +7348,10 @@ msgstr ""
 "Невалиден имидж за инсталиране\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Имидж: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7566,7 +7555,8 @@ msgstr "автомобили"
 msgid "Input"
 msgstr "Въведи"
 
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Вход "
 
 #, fuzzy
@@ -7583,6 +7573,10 @@ msgstr "Настройка на устройствата за въвеждане
 
 msgid "Input Stream ID"
 msgstr "Входящ стрийм ID"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Към позиция"
 
 msgid "Install"
 msgstr "Инсталирай"
@@ -9001,6 +8995,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Следва"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Изтриване на Имидж"
+
 msgid "Nicaragua"
 msgstr "Никарагуа"
 
@@ -9140,10 +9138,6 @@ msgstr ""
 "Няма избран тунер!\n"
 "Моля настройте вашия тунер преди търсене на канали."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Няма налични актуализации"
-
 msgid "No updates available"
 msgstr "Няма налични актуализации"
 
@@ -9238,6 +9232,10 @@ msgstr "Не е Инсталиран"
 msgid "Not associated"
 msgstr "Не асоцииран"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "не е конфигуриран"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9261,6 +9259,10 @@ msgstr "Отбележете: ако е активирано и Вие иска�
 #, fuzzy
 msgid "Nothing"
 msgstr "Не прави нищо"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "нищо не е свързано"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10188,6 +10190,10 @@ msgstr "Позицията е съхранена с номер"
 msgid "Positioner"
 msgstr "Позиционер"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Позиционер (избор на сателити)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Позиционер (избор на сателити)"
 
@@ -10409,6 +10415,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Предишен"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Имидж: "
 
 msgid "Preview"
 msgstr "Преглед"
@@ -10712,6 +10722,9 @@ msgstr "Да обновя ли фронтпроцесора и да рестар
 msgid "Really update your settop box and reboot now?"
 msgstr "Да обновя ли Вашия приемник и да рестартирам сега?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Рестартиране"
 
@@ -10723,6 +10736,10 @@ msgstr "Връщане към предишния канал"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Информация"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -10864,6 +10881,10 @@ msgstr "Помни ПИН кода"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Напомняне, Вие избрахте да запазите таймшифт файла."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "Премахни"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12722,6 +12743,10 @@ msgstr "Защита на плъгин браузъра"
 msgid "Show multi channel EPG"
 msgstr "Покажи мулти-канален EPG"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Покажи филми"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Покажи известие когато импортирането на канали/EPG от URL на резервния приемник не завърши"
 
@@ -12773,8 +12798,16 @@ msgid "Show positioner position"
 msgstr "Показвай позицията на позиционера"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "Превключи на предишния канал"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Защита на плъгин браузъра"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "Въведете IP адрес"
 
 msgid "Show record clock icons"
 msgstr "Показвай иконки за записи"
@@ -15186,16 +15219,8 @@ msgstr[1] "Актуализацията завърши, %d пакета бяха
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Актуализацията завърши. Искате ли да рестартирате приемника?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "Грешка при запис!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Неуспешна актуализация. Приемникът няма работеща интернет връзка."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Изпълнението завърши!!"
 
 msgid "Update has completed."
 msgstr "Актуализацията завърши."
@@ -15203,11 +15228,6 @@ msgstr "Актуализацията завърши."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Слайдшоу интервал (сек.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "Няма наличен фийд за актуализации."
@@ -15618,15 +15638,16 @@ msgstr "Острови Вирджиния (Английски)"
 msgid "Virgin Islands (U.S.)"
 msgstr "Острови Вирджиния (САЩ)"
 
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Виртуална клавиатура"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Функции на Виртуална клавиатура"
 
 msgid "Virtual KeyBoard Text:"
 msgstr "Виртуална клавиатура Текст:"
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Виртуална клавиатура"
 
 msgid "Virtual keyboard"
 msgstr "Виртуална клавиатура"
@@ -16160,6 +16181,9 @@ msgstr "Когато изображението на канала има съо�
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Когато изображението на канала има съотношение на страните 4:3, изберете дали да се мащабира/разтегне картината."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr "Когато приемника се включва от режим готовност или изключен режим, ще изпрати команда към ТВ за да го включи също."
@@ -16797,9 +16821,6 @@ msgstr "изключи"
 msgid "auto standby"
 msgstr "Не преминавай в режим готовност"
 
-msgid "automatic"
-msgstr "автоматично"
-
 msgid "back"
 msgstr "назад"
 
@@ -17275,9 +17296,6 @@ msgstr "дълго"
 
 msgid "magazines/reports/documentary"
 msgstr "списания/репортажи/документални"
-
-msgid "manual"
-msgstr "ръчно"
 
 msgid "martial sports"
 msgstr "бойни спортове"

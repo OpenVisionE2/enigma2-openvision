@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -82,6 +82,22 @@ msgstr "(0 - alla nätverk)"
 msgid " (Channel %s)"
 msgstr " (Kanal %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr "(avaktiverad)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr "(högre än något auto)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr "(högre än rotor något auto)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr "(lägre än något auto)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr ""
@@ -98,18 +114,6 @@ msgstr " (TV)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "Till ljudval"
-
-msgid " (disabled)"
-msgstr "(avaktiverad)"
-
-msgid " (higher than any auto)"
-msgstr "(högre än något auto)"
-
-msgid " (higher than rotor any auto)"
-msgstr "(högre än rotor något auto)"
-
-msgid " (lower than any auto)"
-msgstr "(lägre än något auto)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -133,9 +137,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr " uppdateringar tillgängliga."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #
 #, fuzzy
@@ -1631,11 +1632,6 @@ msgid "<Last timer location>"
 msgstr "<Timerns senaste plats>"
 
 #
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Tryck OK för att växla val."
-
-#
 msgid "<unknown>"
 msgstr "<okänd>"
 
@@ -3068,9 +3064,6 @@ msgid "Boot to Android image"
 msgstr ""
 
 msgid "Boot to Recovery menu"
-msgstr ""
-
-msgid "Bootloader update required!"
 msgstr ""
 
 #
@@ -4685,11 +4678,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "stöds ej"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5736,9 +5724,6 @@ msgstr ""
 msgid "Dominican Republic"
 msgstr ""
 
-msgid "Don't ask again!"
-msgstr ""
-
 #
 #, fuzzy
 msgid "Don't restart"
@@ -5759,11 +5744,6 @@ msgstr "Avsluta inte pågående program men avaktivera kommande program"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Avsluta inte pågående program men avaktivera kommande program"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Zappa inte"
@@ -6850,9 +6830,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -7097,6 +7074,11 @@ msgstr "Flash"
 
 #
 #, fuzzy
+msgid "Flashing"
+msgstr "Flash"
+
+#
+#, fuzzy
 msgid "Flashing Image"
 msgstr "Flash"
 
@@ -7231,6 +7213,9 @@ msgstr "Fredag"
 
 msgid "From:"
 msgstr "Från :"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -8067,6 +8052,10 @@ msgid ""
 "%s"
 msgstr ""
 
+#, fuzzy
+msgid "Images"
+msgstr "Image : "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -8296,8 +8285,8 @@ msgid "Input"
 msgstr "Ingång"
 
 #
-#, fuzzy
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Ingång"
 
 #, fuzzy
@@ -8314,6 +8303,11 @@ msgstr "Inställningar för inmatningsenhet"
 
 msgid "Input Stream ID"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Gå till position"
 
 #
 msgid "Install"
@@ -9942,6 +9936,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Nästa"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Radera timer"
+
 msgid "Nicaragua"
 msgstr ""
 
@@ -10102,10 +10100,6 @@ msgstr ""
 "Ingen tuner är aktiverad!\n"
 "Vänligen konfigurera tuner före sökning efter kanaler."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Inga uppdateringar tillgängliga."
-
 msgid "No updates available"
 msgstr "Inga uppdateringar tillgängliga."
 
@@ -10217,6 +10211,11 @@ msgstr "Installera"
 msgid "Not associated"
 msgstr "Ej associerad"
 
+#
+#, fuzzy
+msgid "Not configured"
+msgstr "ej konfigurerad"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -10242,6 +10241,11 @@ msgstr "Obs : Vid aktiverad, om du vill ha viloläge efter uppstart, ställ in a
 #, fuzzy
 msgid "Nothing"
 msgstr "Gör inget"
+
+#
+#, fuzzy
+msgid "Nothing connected"
+msgstr "inget anslutet"
 
 #
 msgid ""
@@ -11286,6 +11290,10 @@ msgstr "Position sparad vid index"
 msgid "Positioner"
 msgstr "Motor"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Positioner (väljer satelliter)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Positioner (väljer satelliter)"
 
@@ -11531,6 +11539,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Föregående"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Image : "
 
 #
 msgid "Preview"
@@ -11869,6 +11881,9 @@ msgstr "Vill du verkligen uppdatera frontprocessorn och starta om nu?"
 msgid "Really update your settop box and reboot now?"
 msgstr "Vill du verkligen uppdatera din mottagare och starta om nu?"
 
+msgid "Rear"
+msgstr ""
+
 #
 msgid "Reboot"
 msgstr "Omstart"
@@ -11881,6 +11896,11 @@ msgstr "Återkalla till föregående kanal"
 
 msgid "Receiver"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Information"
 
 #
 #, fuzzy
@@ -12037,6 +12057,11 @@ msgstr "Kom ihåg service PIN"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Påminnelse, du har valt att spara timeshift filen."
+
+#
+#, fuzzy
+msgid "Remote Control"
+msgstr "Ta bort post"
 
 #
 #, fuzzy
@@ -14124,6 +14149,10 @@ msgstr "Skydda pluginhanterare"
 msgid "Show multi channel EPG"
 msgstr "Visa multikanal EPG"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Visa filmer"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr ""
 
@@ -14176,9 +14205,19 @@ msgstr "Visa ikon vid positionsrörelse"
 msgid "Show positioner position"
 msgstr "Visa rotorposition"
 
+#
+#, fuzzy
+msgid "Show previous image"
+msgstr "Växla till föregående kanal"
+
 #, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Skydda pluginhanterare"
+
+#
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "IP adress"
 
 msgid "Show record clock icons"
 msgstr "Visa klockikoner för inspelning"
@@ -16926,17 +16965,8 @@ msgstr[1] "Uppdatering klar, %d packet installerade."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Uppdatering färdig, vill du starta om din mottagare?"
 
-#
-#, fuzzy
-msgid "Update failed!"
-msgstr "Skrivning misslyckades!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Uppdatering misslyckades. Din mottagare har inte en fungerande internetanslutning."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Exekvering färdig!!"
 
 msgid "Update has completed."
 msgstr "Uppdatering har slutförts."
@@ -16945,11 +16975,6 @@ msgstr "Uppdatering har slutförts."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Slideshow intervall (sec.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 #
 msgid "Updatefeed not available."
@@ -17417,17 +17442,17 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "Virtual KeyBoard Functions"
+msgid "Virtual KeyBoard"
+msgstr "Virtuellt tangentbord"
+
+#
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Virtuellt tangentbord"
 
 #
 #, fuzzy
 msgid "Virtual KeyBoard Text:"
-msgstr "Virtuellt tangentbord"
-
-#
-#, fuzzy
-msgid "Virtual Keyboard"
 msgstr "Virtuellt tangentbord"
 
 #
@@ -17995,6 +18020,9 @@ msgstr "När innehållet har ett bildförhållande på 16:9, välj om man ska sk
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "När innehållet har ett bildförhållande på 4:3, välj om man ska skala / sträcka bilden."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr ""
@@ -18692,10 +18720,6 @@ msgid "auto standby"
 msgstr "Inget viloläge"
 
 #
-msgid "automatic"
-msgstr "Automatisk"
-
-#
 msgid "back"
 msgstr "tillbaka"
 
@@ -19224,10 +19248,6 @@ msgstr "lång"
 
 msgid "magazines/reports/documentary"
 msgstr "tidningar / rapporter / dokumentär"
-
-#
-msgid "manual"
-msgstr "manuell"
 
 msgid "martial sports"
 msgstr "kampsport"

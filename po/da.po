@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -82,6 +82,22 @@ msgstr "(0 - alle netværk)"
 msgid " (Channel %s)"
 msgstr "(Kanal %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr "(afbrudt)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr "(højere end andet auto)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr "(højere end rotor andet auto)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr "(lavere end andet auto)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr "(Partition %d)"
@@ -98,18 +114,6 @@ msgstr "(TV)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "Til lyd valg"
-
-msgid " (disabled)"
-msgstr "(afbrudt)"
-
-msgid " (higher than any auto)"
-msgstr "(højere end andet auto)"
-
-msgid " (higher than rotor any auto)"
-msgstr "(højere end rotor andet auto)"
-
-msgid " (lower than any auto)"
-msgstr "(lavere end andet auto)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -131,9 +135,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr "opdateringer tilgængelige."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #
 #, fuzzy
@@ -1636,11 +1637,6 @@ msgid "<Last timer location>"
 msgstr "<Seneste timer placering>"
 
 #
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Tryk på OK for at slå valget til eller fra."
-
-#
 msgid "<unknown>"
 msgstr "<ukendt>"
 
@@ -3076,9 +3072,6 @@ msgid "Boot to Android image"
 msgstr ""
 
 msgid "Boot to Recovery menu"
-msgstr ""
-
-msgid "Bootloader update required!"
 msgstr ""
 
 #
@@ -4704,11 +4697,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "ikke supporteret"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5760,9 +5748,6 @@ msgstr ""
 msgid "Dominican Republic"
 msgstr ""
 
-msgid "Don't ask again!"
-msgstr ""
-
 #
 #, fuzzy
 msgid "Don't restart"
@@ -5783,11 +5768,6 @@ msgstr "Stop ikke nuværende program men slå kommende programmer fra"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Stop ikke nuværende program men slå kommende programmer fra"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Zap ikke"
@@ -6880,9 +6860,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -7128,6 +7105,11 @@ msgstr "Flash"
 
 #
 #, fuzzy
+msgid "Flashing"
+msgstr "Flash"
+
+#
+#, fuzzy
 msgid "Flashing Image"
 msgstr "Flash"
 
@@ -7262,6 +7244,9 @@ msgstr "Fredag"
 
 msgid "From:"
 msgstr "Fra"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -8100,6 +8085,10 @@ msgid ""
 "%s"
 msgstr ""
 
+#, fuzzy
+msgid "Images"
+msgstr "Billede:"
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -8329,8 +8318,8 @@ msgid "Input"
 msgstr "Indgang"
 
 #
-#, fuzzy
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Indgang"
 
 #, fuzzy
@@ -8347,6 +8336,11 @@ msgstr "Opsætning af enhed"
 
 msgid "Input Stream ID"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Gå til position"
 
 #
 msgid "Install"
@@ -9985,6 +9979,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Næste"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Slet timer"
+
 msgid "Nicaragua"
 msgstr ""
 
@@ -10149,10 +10147,6 @@ msgstr ""
 "Ingen Tuner er aktiveret!\n"
 "Venligst udfør Tuner indstilling før du starter en kanal søgning."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Ingen opdateringer tilgængelig."
-
 msgid "No updates available"
 msgstr "Ingen opdateringer tilgængelig."
 
@@ -10264,6 +10258,11 @@ msgstr "Installer"
 msgid "Not associated"
 msgstr "Ikke tilknyttet"
 
+#
+#, fuzzy
+msgid "Not configured"
+msgstr "ikke konfigureret"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -10289,6 +10288,11 @@ msgstr ""
 #, fuzzy
 msgid "Nothing"
 msgstr "Gør intet"
+
+#
+#, fuzzy
+msgid "Nothing connected"
+msgstr "Intet tilsluttet"
 
 #
 msgid ""
@@ -11341,6 +11345,10 @@ msgstr "Position gemt ved Index"
 msgid "Positioner"
 msgstr "Positioner"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Positioner (vælger satellitter)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Positioner (vælger satellitter)"
 
@@ -11585,6 +11593,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Tidligere [ knap etiket, 'tidligere skærm' ]"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Billede:"
 
 #
 msgid "Preview"
@@ -11923,6 +11935,9 @@ msgstr "Opdater frontprocessor og genstart nu?"
 msgid "Really update your settop box and reboot now?"
 msgstr "Opdater boksen og genstart nu?"
 
+msgid "Rear"
+msgstr ""
+
 #
 msgid "Reboot"
 msgstr "Genstart"
@@ -11935,6 +11950,11 @@ msgstr ""
 
 msgid "Receiver"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Information"
 
 #
 #, fuzzy
@@ -12092,6 +12112,11 @@ msgstr "Husk kanal PIN"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Husk, du har valgt at gemme tidsforskydnings filen."
+
+#
+#, fuzzy
+msgid "Remote Control"
+msgstr "Fjern indgang"
 
 #
 #, fuzzy
@@ -14190,6 +14215,10 @@ msgstr "Beskyt plugin browser"
 msgid "Show multi channel EPG"
 msgstr "Vis multi kanal EPG"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Vis film"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr ""
 
@@ -14242,9 +14271,19 @@ msgstr "Vis motor bevægelse"
 msgid "Show positioner position"
 msgstr "Vis positioners position"
 
+#
+#, fuzzy
+msgid "Show previous image"
+msgstr "Skift til forrige kanal"
+
 #, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Beskyt plugin browser"
+
+#
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "IP adresse"
 
 msgid "Show record clock icons"
 msgstr "Vis optagelses ur ikoner"
@@ -16984,18 +17023,8 @@ msgstr[1] "Opdatering færdig, %d pakker blev installeret."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Opdatering færdig. Vil du genstarte din receiver?"
 
-#
-#, fuzzy
-msgid "Update failed!"
-msgstr "Skrivning mislykkedes!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Opdatering fejlede. Din receiver har ikke en fungerende internet forbindelse."
-
-#
-#, fuzzy
-msgid "Update finished!"
-msgstr "Kommandoen udført!!"
 
 msgid "Update has completed."
 msgstr "Opdatering er færdiggjort."
@@ -17004,11 +17033,6 @@ msgstr "Opdatering er færdiggjort."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Slideshow interval (sek.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 #
 msgid "Updatefeed not available."
@@ -17481,17 +17505,17 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "Virtual KeyBoard Functions"
+msgid "Virtual KeyBoard"
+msgstr "Virtuelt tastatur"
+
+#
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Virtuelt tastatur"
 
 #
 #, fuzzy
 msgid "Virtual KeyBoard Text:"
-msgstr "Virtuelt tastatur"
-
-#
-#, fuzzy
-msgid "Virtual Keyboard"
 msgstr "Virtuelt tastatur"
 
 #
@@ -18059,6 +18083,9 @@ msgstr "Når indholdet har et billedformat på 16:9 vælg om billedet skal skale
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Når indholdet har et billedformat på 4:3 vælg om billedet skal skaleres eller strækkes."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr ""
@@ -18746,10 +18773,6 @@ msgid "auto standby"
 msgstr "Ingen standby"
 
 #
-msgid "automatic"
-msgstr "automatisk"
-
-#
 msgid "back"
 msgstr "tilbage"
 
@@ -19277,10 +19300,6 @@ msgstr ""
 
 msgid "magazines/reports/documentary"
 msgstr "magasiner/reporter/dokumentar"
-
-#
-msgid "manual"
-msgstr "manuelt"
 
 msgid "martial sports"
 msgstr "kampsport"

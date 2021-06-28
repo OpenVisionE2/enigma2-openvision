@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2021-06-05 17:33+0200\n"
 "Last-Translator: Pr2\n"
 "Language-Team: french\n"
@@ -76,6 +76,22 @@ msgstr " (0 - tous les réseaux)"
 msgid " (Channel %s)"
 msgstr " (Chaîne %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (Désactivé)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (supérieur à n'importe quel auto)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (supérieur à n'importe quel rotor auto)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (inférieur à n'importe quel auto)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Partition %d)"
@@ -91,18 +107,6 @@ msgstr " (TV)"
 
 msgid " (auto detection)"
 msgstr " (détection automatique)"
-
-msgid " (disabled)"
-msgstr " (Désactivé)"
-
-msgid " (higher than any auto)"
-msgstr " (supérieur à n'importe quel auto)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (supérieur à n'importe quel rotor auto)"
-
-msgid " (lower than any auto)"
-msgstr " (inférieur à n'importe quel auto)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr " - Unicable/JESS LNBs non trouvé"
@@ -124,9 +128,6 @@ msgstr " entrée LNB unicable du rotor"
 
 msgid " updates available."
 msgstr " Mises à jour disponibles."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1570,10 +1571,6 @@ msgstr "<Emplacement par défaut des films>"
 msgid "<Last timer location>"
 msgstr "<Emplacement dernière programmation>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Appuyez sur ‘OK’ pour attacher une fonction."
-
 msgid "<unknown>"
 msgstr "<inconnu>"
 
@@ -2845,9 +2842,6 @@ msgstr "Démarrer sur l'image Android"
 
 msgid "Boot to Recovery menu"
 msgstr "Démarrer dans le menu de récupération"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 msgid "Bootup time"
 msgstr "Temps de démarrage"
@@ -4318,11 +4312,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "support HLG"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5248,9 +5237,6 @@ msgstr "Dominique"
 msgid "Dominican Republic"
 msgstr "République Dominicaine"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "En attente de redémarrage"
@@ -5268,11 +5254,6 @@ msgstr "Ne pas stopper l’événement actuel, mais désactiver les prochains"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Ne pas stopper l’événement actuel, mais désactiver les prochains"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Ne pas zapper"
@@ -6253,9 +6234,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "En clair"
 
@@ -6465,6 +6443,10 @@ msgstr "Échec création répertoire %s."
 msgid "Flash type"
 msgstr "Flasher image"
 
+#, fuzzy
+msgid "Flashing"
+msgstr "Flashage de l’image"
+
 msgid "Flashing Image"
 msgstr "Flashage de l’image"
 
@@ -6584,6 +6566,9 @@ msgstr "Vendredi"
 
 msgid "From:"
 msgstr "De:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7361,6 +7346,10 @@ msgstr ""
 "L'image à installer est invalide\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Image: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7564,7 +7553,8 @@ msgstr "Automobile"
 msgid "Input"
 msgstr "Entrée"
 
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Entrée "
 
 #, fuzzy
@@ -7581,6 +7571,10 @@ msgstr "Paramètres du périphérique d’entrée"
 
 msgid "Input Stream ID"
 msgstr "Saisir le Stream ID"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Aller à la position"
 
 msgid "Install"
 msgstr "Installer"
@@ -9004,6 +8998,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Suivant"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Supprimer l’image"
+
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
@@ -9143,10 +9141,6 @@ msgstr ""
 "Aucun tuner est activé!\n"
 "Veuillez paramétrer vos tuners avant de lancer la recherche des services."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Aucune mise à jour disponible"
-
 msgid "No updates available"
 msgstr "Aucune mise à jour disponible"
 
@@ -9241,6 +9235,10 @@ msgstr "Non installé"
 msgid "Not associated"
 msgstr "Non-Associé"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "Pas configuré"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9264,6 +9262,10 @@ msgstr "Note: lorsqu’activé, et que vous voulez mettre votre récepteur en ve
 #, fuzzy
 msgid "Nothing"
 msgstr "Ne rien faire"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "Rien n'est connecté"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10191,6 +10193,10 @@ msgstr "Position enregistrée à l'indice"
 msgid "Positioner"
 msgstr "Positionneur"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Positionneur (sélection satellites)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Positionneur (sélection satellites)"
 
@@ -10412,6 +10418,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Précédent"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Image: "
 
 msgid "Preview"
 msgstr "Aperçu"
@@ -10715,6 +10725,9 @@ msgstr "Voulez-vous vraiment mettre à jour le frontprocessor et redémarrer mai
 msgid "Really update your settop box and reboot now?"
 msgstr "Voulez-vous vraiment mettre à jour votre décodeur et redémarrer maintenant?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Reboot"
 
@@ -10726,6 +10739,10 @@ msgstr "Retour au service précédent"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Informations"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -10867,6 +10884,10 @@ msgstr "Enregistrer PIN service"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Rappel, vous avez choisi de sauvegarder votre fichier PauseDirect."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "Supprimer l'entrée"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12725,6 +12746,10 @@ msgstr "Protéger les extensions du navigateur"
 msgid "Show multi channel EPG"
 msgstr "Afficher l'EPG multi chaîne"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Afficher les films"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Afficher une notification lorsque l’import des chaînes et/ou EPG du récepteur distant n’a pas réussi"
 
@@ -12776,8 +12801,16 @@ msgid "Show positioner position"
 msgstr "Afficher la position du positionneur"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "Basculer vers la chaîne précédente"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Protéger les extensions du navigateur"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "Entrer l’adresse IP"
 
 msgid "Show record clock icons"
 msgstr "Afficher un icône d’horloge pour les enregistrements"
@@ -15209,16 +15242,8 @@ msgstr[1] "Mise à jour terminée, %d paquets ont été installés."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Mise à jour terminée. Voulez-vous redémarrer votre récepteur?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "Échec d'écriture!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "La mise à jour a échoué. Votre récepteur ne dispose pas de connexion Internet."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Exécution terminée!!"
 
 msgid "Update has completed."
 msgstr "La mise à jour est terminée."
@@ -15226,11 +15251,6 @@ msgstr "La mise à jour est terminée."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Intervalle du diaporama (s)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "MAJ feed non disponible."
@@ -15641,15 +15661,16 @@ msgstr "Îles Vierges (britanniques)"
 msgid "Virgin Islands (U.S.)"
 msgstr "Îles Vierges (USA)"
 
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Clavier virtuel"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Fonctions du clavier virtuel"
 
 msgid "Virtual KeyBoard Text:"
 msgstr "Texte du clavier virtuel:"
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Clavier virtuel"
 
 msgid "Virtual keyboard"
 msgstr "Clavier virtuel"
@@ -16183,6 +16204,9 @@ msgstr "Lorsque le contenu a un format d'image 16:9, choisir de redimensionner/�
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Lorsque le contenu a un format d'image 4:3, choisir de redimensionner/étirer l'image."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr "Lorsque le récepteur se réveille de veille ou de veille profonde, il enverra une commande au téléviseur pour le sortir de veille aussi."
@@ -16821,9 +16845,6 @@ msgstr "Mettre en veille profonde"
 msgid "auto standby"
 msgstr "Pas de veille"
 
-msgid "automatic"
-msgstr "Automatique"
-
 msgid "back"
 msgstr "Retour"
 
@@ -17299,9 +17320,6 @@ msgstr "long"
 
 msgid "magazines/reports/documentary"
 msgstr "Magazines/Rapports/Documentaires"
-
-msgid "manual"
-msgstr "Manuel"
 
 msgid "martial sports"
 msgstr "Sports martiaux"

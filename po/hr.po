@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2021-01-17 18:31+0100\n"
 "Last-Translator: Željko <zeljko2@hi.ht.hr>\n"
 "Language-Team: Željko\n"
@@ -77,6 +77,22 @@ msgstr " (0 - sve mreže)"
 msgid " (Channel %s)"
 msgstr " (Каnal %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (onemogućeno)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (veći od bilo kojeg automatskog)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (veći od bilo kojeg automatskog rotora)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (niži od bilo kojeg automatskog)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Раrticija %d)"
@@ -93,18 +109,6 @@ msgstr " (ТV)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "Za odabir zvuka"
-
-msgid " (disabled)"
-msgstr " (onemogućeno)"
-
-msgid " (higher than any auto)"
-msgstr " (veći od bilo kojeg automatskog)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (veći od bilo kojeg automatskog rotora)"
-
-msgid " (lower than any auto)"
-msgstr " (niži od bilo kojeg automatskog)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -126,9 +130,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr " dostupna ažuriranja."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1583,10 +1584,6 @@ msgstr "<Zadana lokacija videozapisa>"
 msgid "<Last timer location>"
 msgstr "<Lokacija zadnjeg tajmera>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Pritisnite 'OK' za pridodavanje funkcije."
-
 msgid "<unknown>"
 msgstr "<nepoznat>"
 
@@ -2860,9 +2857,6 @@ msgstr "Pokretanje Android slike"
 
 msgid "Boot to Recovery menu"
 msgstr "Pokretanje Izbornika za oporavak"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 msgid "Bootup time"
 msgstr "Vrijeme pokretanja"
@@ -4333,11 +4327,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "HLG podrška"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5263,9 +5252,6 @@ msgstr "Dominica"
 msgid "Dominican Republic"
 msgstr "Dominikanska Republika"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "U tijeku je ponovno pokretanje"
@@ -5287,11 +5273,6 @@ msgid "Don't stop current event but disable future events"
 msgstr ""
 "Nemojte zaustaviti trenutni događaj, ali onemogućite \n"
 "događaje koji dolaze"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Nemojte prebacivati"
@@ -6273,9 +6254,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -6485,6 +6463,10 @@ msgstr "Kreiranje direktorija %s nije uspjelo."
 msgid "Flash type"
 msgstr "Fleš imagea"
 
+#, fuzzy
+msgid "Flashing"
+msgstr "Flešanje imagea"
+
 msgid "Flashing Image"
 msgstr "Flešanje imagea"
 
@@ -6603,6 +6585,9 @@ msgstr "Petak"
 
 msgid "From:"
 msgstr "Оd:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7382,6 +7367,10 @@ msgstr ""
 "Image za instalaciju nije važeći\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Image: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7585,7 +7574,8 @@ msgstr "automobilizam"
 msgid "Input"
 msgstr "Ulaz"
 
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Ulaz "
 
 #, fuzzy
@@ -7602,6 +7592,10 @@ msgstr "Postavljanje uređaja za unos"
 
 msgid "Input Stream ID"
 msgstr "Ulazni ID web prijenosa"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Idi na položaj"
 
 msgid "Install"
 msgstr "Instaliraj"
@@ -9026,6 +9020,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Sljedeći"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Izbriši image"
+
 msgid "Nicaragua"
 msgstr "Nikaragva"
 
@@ -9165,10 +9163,6 @@ msgstr ""
 "Nije omogućen tjuner!\n"
 "Postavite postavke tjunera prije početka skeniranja usluge."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Nema dostupnih ažuriranja"
-
 msgid "No updates available"
 msgstr "Nema dostupnih ažuriranja"
 
@@ -9263,6 +9257,10 @@ msgstr "Nije instalirano"
 msgid "Not associated"
 msgstr "Nije povezano"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "nije konfiguriran"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9286,6 +9284,10 @@ msgstr "Napomena: kada je omogućeno, a želite da se nakon aktiviranja pojavi s
 #, fuzzy
 msgid "Nothing"
 msgstr "Ne radi ništa"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "ništa nije povezano"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10213,6 +10215,10 @@ msgstr "Položaj pohranjen u indeksu"
 msgid "Positioner"
 msgstr "Pozicioner"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Pozicioner (odabir satelita)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Pozicioner (odabir satelita)"
 
@@ -10434,6 +10440,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Prijašnji"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Image: "
 
 msgid "Preview"
 msgstr "Pretpregled"
@@ -10737,6 +10747,9 @@ msgstr "Dali stvarno želite ažurirati frontprocessor i ponovno pokrenuti susta
 msgid "Really update your settop box and reboot now?"
 msgstr "Dali stvarno želite ažurirati svoj STB i ponovno pokrenuti sustav?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Ponovno podizanje"
 
@@ -10748,6 +10761,10 @@ msgstr "Povratak na prethodnu uslugu"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Informacije"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -10889,6 +10906,10 @@ msgstr "Zapamtite PIN usluge"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Zapamtite, odlučili ste spremiti datoteku vremenskog pomaka."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "Ukloni unos"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12750,6 +12771,10 @@ msgstr "Zaštitita dodatka preglednika"
 msgid "Show multi channel EPG"
 msgstr "Prikažite višekanalni EPG"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Prikažite filmove"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Prikažite obavijest prilikom uvoza kanala i/ili EPG s URL-a udaljenog primatelja kada nije kompletan"
 
@@ -12801,8 +12826,16 @@ msgid "Show positioner position"
 msgstr "Prikažite položaj motora"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "Prebacite se na prethodni kanal"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Zaštitita dodatka preglednika"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "Unesite IP adresu"
 
 msgid "Show record clock icons"
 msgstr "Prikažite ikone sata za snimanje"
@@ -15223,16 +15256,8 @@ msgstr[2] "Ažuriranje je dovršeno, %d paketa je instalirano."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Ažuriranje je dovršeno. Želite li ponovno pokrenuti prijemnik?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "Zapisivanje nije uspjelo!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Ažuriranje nije uspjelo. Vaš prijemnik nema aktivnu internetsku vezu."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Izvršenje je dovršeno!"
 
 msgid "Update has completed."
 msgstr "Ažuriranje je dovršeno."
@@ -15240,11 +15265,6 @@ msgstr "Ažuriranje je dovršeno."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Interval dijaprojekcije (sek.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "Ažuriranje feeda nije dostupno."
@@ -15655,15 +15675,16 @@ msgstr "Britanski Djevičanski Otoci"
 msgid "Virgin Islands (U.S.)"
 msgstr "Djevičanski Otoci (SAD)"
 
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Virtualna tipkovnica"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Funkcije virtualne tipkovnice"
 
 msgid "Virtual KeyBoard Text:"
 msgstr "Tekst virtualne tipkovnice:"
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Virtualna tipkovnica"
 
 msgid "Virtual keyboard"
 msgstr "Virtualna tipkovnica"
@@ -16197,6 +16218,9 @@ msgstr "Kada sadržaj ima omjer 16:9, odaberite želite li skalirati/rastezati s
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Kada sadržaj ima omjer 4:3, odaberite želite li skalirati/rastezati sliku."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr "Kad se resiver probudi iz stanja čekanja ili dubokog stanja čekanja, televizoru će poslati naredbu da i njega izbaci iz stanja čekanja."
@@ -16835,9 +16859,6 @@ msgstr "idite u duboko stanje čekanja"
 msgid "auto standby"
 msgstr "Bez čekanja"
 
-msgid "automatic"
-msgstr "automatski"
-
 msgid "back"
 msgstr "nazad"
 
@@ -17313,9 +17334,6 @@ msgstr "dugo"
 
 msgid "magazines/reports/documentary"
 msgstr "časopisi/izvješća/dokumentarni"
-
-msgid "manual"
-msgstr "ručno"
 
 msgid "martial sports"
 msgstr "borilački sportovi"

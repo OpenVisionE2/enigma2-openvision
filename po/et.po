@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Openpli\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2019-04-03 06:49+0300\n"
 "Last-Translator: \n"
 "Language-Team: Raivo, Henkka, eesatfan, rimas, zeros\\n faas, sateks, valgekotkas, tigekala, rootsikunn\\n kain, i70, mustkass, pelmeen, Scott\\n <digi-tv.ee>\n"
@@ -77,6 +77,22 @@ msgstr " (0 - kõik võrgud)"
 msgid " (Channel %s)"
 msgstr " (Kanal %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (keelatud)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (suurem kui mistahes auto)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (suurem kui mis tahes rootori auto)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (väiksem kui mistahes auto)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Partitsioon %d)"
@@ -93,18 +109,6 @@ msgstr " (TV)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "Heli valik"
-
-msgid " (disabled)"
-msgstr " (keelatud)"
-
-msgid " (higher than any auto)"
-msgstr " (suurem kui mistahes auto)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (suurem kui mis tahes rootori auto)"
-
-msgid " (lower than any auto)"
-msgstr " (väiksem kui mistahes auto)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -126,9 +130,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr " uuendust saadaval."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1570,10 +1571,6 @@ msgstr "<Salvestuste tavaasukoht >"
 msgid "<Last timer location>"
 msgstr "<Viimase taimeri asukoht>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Valiku muutmiseks vajuta OK."
-
 msgid "<unknown>"
 msgstr "<tundmatu>"
 
@@ -2855,9 +2852,6 @@ msgid "Boot to Android image"
 msgstr ""
 
 msgid "Boot to Recovery menu"
-msgstr ""
-
-msgid "Bootloader update required!"
 msgstr ""
 
 #, fuzzy
@@ -4322,11 +4316,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "HLG tugi"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5262,9 +5251,6 @@ msgstr "Dominica"
 msgid "Dominican Republic"
 msgstr "Dominikaani Vabariik"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "Seiskamine"
@@ -5282,11 +5268,6 @@ msgstr "Ära peata toimuvat salvestust, aga keela tulevad"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Ära peata toimuvat salvestust, aga keela tulevad"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Ära vaheta kanalit"
@@ -6272,9 +6253,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -6491,6 +6469,10 @@ msgid "Flash type"
 msgstr "Paigalda süsteemitõmmis"
 
 #, fuzzy
+msgid "Flashing"
+msgstr "Paigalda süsteemitõmmis"
+
+#, fuzzy
 msgid "Flashing Image"
 msgstr "Paigalda süsteemitõmmis"
 
@@ -6609,6 +6591,9 @@ msgstr "Reede"
 
 msgid "From:"
 msgstr "Kellelt:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7392,6 +7377,10 @@ msgstr ""
 "Installeeritav tarkvara on kehtetu\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Tarkvara: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7596,7 +7585,8 @@ msgstr "mootorratas"
 msgid "Input"
 msgstr "Sisend"
 
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Sisend "
 
 #, fuzzy
@@ -7613,6 +7603,10 @@ msgstr "Sisendseadmete seadistamine"
 
 msgid "Input Stream ID"
 msgstr "Sisendvoo ID"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Mine kohale"
 
 msgid "Install"
 msgstr "Paigalda"
@@ -9041,6 +9035,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Järgmine"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Kustuta image"
+
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
@@ -9182,10 +9180,6 @@ msgstr ""
 "Tuuner määramata!\n"
 "Määra tuuner enne kanaliotsingu alustamist."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Uuendusi ei ole"
-
 msgid "No updates available"
 msgstr "Uuendusi ei ole"
 
@@ -9281,6 +9275,10 @@ msgstr "Paigalda"
 msgid "Not associated"
 msgstr "Pole seotud"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "ei ole häälestatud"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9304,6 +9302,10 @@ msgstr "Märkus: kui lubatud, ja sa tahad ooterežiimi pärast äratust, sea val
 #, fuzzy
 msgid "Nothing"
 msgstr "Ära tee midagi"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "pole ühendatud"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10231,6 +10233,10 @@ msgstr "Indeksis salvestatud positsioon"
 msgid "Positioner"
 msgstr "Positsioneer"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Positsioneer (valimaks satelliite)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Positsioneer (valimaks satelliite)"
 
@@ -10454,6 +10460,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Eelmine"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Tarkvara: "
 
 msgid "Preview"
 msgstr "Eelvaade"
@@ -10759,6 +10769,9 @@ msgstr "Uuendad esiprotsessori ja taaskäivitad vastuvõtja?"
 msgid "Really update your settop box and reboot now?"
 msgstr "Kas uuendad ja taaskäivitad vastuvõtja?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Taaskäivitus"
 
@@ -10770,6 +10783,10 @@ msgstr "Tagasi eelmise teenuse juurde"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Info"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -10911,6 +10928,10 @@ msgstr "Mäleta kanali PIN-i"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Meenutus, oled valinud ajanihke faili salvestamise."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "Kustuta kirje"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12790,6 +12811,10 @@ msgstr "Kaitse pluginaid"
 msgid "Show multi channel EPG"
 msgstr "Näita mitme kanali EPG"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Näita filme"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr ""
 
@@ -12841,8 +12866,16 @@ msgid "Show positioner position"
 msgstr "Näita positsioneeri asendit"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "Eelmine kanal"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Kaitse pluginaid"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "Sisesta IP-aadress"
 
 msgid "Show record clock icons"
 msgstr "Näita salvestuse kella ikoone"
@@ -15304,16 +15337,8 @@ msgstr[1] "Uuendamine tehtud, paigaldati %d paketti."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Uuendamine on tehtud. Kas taaskäivitad vastuvõtja?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "Kirjutamine nurjus!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Uuendamine nurjus. Vastuvõtjal puudub töötav internetiühendus."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Käivitus lõppenud!!"
 
 msgid "Update has completed."
 msgstr "Uuendamine on lõppenud."
@@ -15321,11 +15346,6 @@ msgstr "Uuendamine on lõppenud."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Piltide näitamise aeg (sekundit)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "Uuenduslink pole saadaval."
@@ -15737,15 +15757,16 @@ msgstr "Briti Neitsisaared"
 msgid "Virgin Islands (U.S.)"
 msgstr "Neitsisaared (USA)"
 
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Virtuaalklahvistik"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Virtuaalklahvistiku funktsioonid"
 
 #, fuzzy
 msgid "Virtual KeyBoard Text:"
-msgstr "Virtuaalklahvistik"
-
-#, fuzzy
-msgid "Virtual Keyboard"
 msgstr "Virtuaalklahvistik"
 
 msgid "Virtual keyboard"
@@ -16290,6 +16311,9 @@ msgstr "Määra, kas 16:9 pildisuhtega sisu tuleb skaleerida/venitada."
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Määra, kas 4:3 pildisuhtega sisu tuleb skaleerida/venitada."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr ""
@@ -16932,9 +16956,6 @@ msgstr "mine sügavootele"
 msgid "auto standby"
 msgstr "Ooteseisundita"
 
-msgid "automatic"
-msgstr "automaatne"
-
 msgid "back"
 msgstr "tagasi"
 
@@ -17411,9 +17432,6 @@ msgstr "pikalt"
 
 msgid "magazines/reports/documentary"
 msgstr "ajakirjad/raportid/dokumentaalid"
-
-msgid "manual"
-msgstr "juhend"
 
 msgid "martial sports"
 msgstr "käsitsivõitlus"

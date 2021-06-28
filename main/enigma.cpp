@@ -454,8 +454,12 @@ const char *getPyExt()
 
 void dump_malloc_stats(void)
 {
+#ifdef __GLIBC__
 	struct mallinfo mi = mallinfo();
 	eDebug("[ENIGMA] MALLOC: %d total", mi.uordblks);
+#else
+	eDebug("[ENIGMA] MALLOC: info not exposed");
+#endif
 }
 
 #ifdef USE_LIBVUGLES2

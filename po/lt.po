@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2021-06-07 15:04+0300\n"
 "Last-Translator: Audronis <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -77,6 +77,22 @@ msgstr " (0 - visi tinklai)"
 msgid " (Channel %s)"
 msgstr " (Kanalas %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (išjungta)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (aukščiau, nei bet koks auto)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (aukščiau, nei bet koks rotoriaus auto)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (žemiau, nei bet koks auto)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Skaidinys %d)"
@@ -92,18 +108,6 @@ msgstr " (TV)"
 
 msgid " (auto detection)"
 msgstr " (automatinis aptikimas)"
-
-msgid " (disabled)"
-msgstr " (išjungta)"
-
-msgid " (higher than any auto)"
-msgstr " (aukščiau, nei bet koks auto)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (aukščiau, nei bet koks rotoriaus auto)"
-
-msgid " (lower than any auto)"
-msgstr " (žemiau, nei bet koks auto)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr " - Unicable / JESS LNBs nerastas"
@@ -125,9 +129,6 @@ msgstr " unicable LNB rotoriaus įvestis"
 
 msgid " updates available."
 msgstr " galimi atnaujinimai."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1583,10 +1584,6 @@ msgstr "<Numatytoji filmų vieta>"
 msgid "<Last timer location>"
 msgstr "<Paskutinio laikmačio vieta>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Spauskite OK, kad pridėtumėte funkciją."
-
 msgid "<unknown>"
 msgstr "<nežinomas>"
 
@@ -2858,9 +2855,6 @@ msgstr "Įdiegti Android atvaizdą"
 
 msgid "Boot to Recovery menu"
 msgstr "Paleisti atkūrimo meniu"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 msgid "Bootup time"
 msgstr "Įkrovimo laikas"
@@ -4331,11 +4325,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "HLG palaikymas"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5261,9 +5250,6 @@ msgstr "Dominika"
 msgid "Dominican Republic"
 msgstr "Dominikos Respublika"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "Laukiama paleidimo iš naujo"
@@ -5281,11 +5267,6 @@ msgstr "Nestabdyti dabartinio įvykio, bet išjungti sekančius"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Nestabdyti dabartinio įvykio, bet išjungti sekančius"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Neperjungti"
@@ -6263,9 +6244,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "NEKODUOTI"
 
@@ -6475,6 +6453,10 @@ msgstr "Katalogo %s sukurti nepavyko."
 msgid "Flash type"
 msgstr "Įdiegtas atvaizdas"
 
+#, fuzzy
+msgid "Flashing"
+msgstr "Įdiegtas atvaizdas"
+
 msgid "Flashing Image"
 msgstr "Įdiegtas atvaizdas"
 
@@ -6593,6 +6575,9 @@ msgstr "Penktadienis"
 
 msgid "From:"
 msgstr "Nuo:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7373,6 +7358,10 @@ msgstr ""
 "Atvaizdo įdiegimas yra neleistinas\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Atvaizdas: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7576,7 +7565,8 @@ msgstr "automobilizmas"
 msgid "Input"
 msgstr "Įvestis"
 
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Įvestis "
 
 #, fuzzy
@@ -7593,6 +7583,10 @@ msgstr "Įvesties įrenginio nustatymas"
 
 msgid "Input Stream ID"
 msgstr "Srauto įvesties ID"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Į poziciją"
 
 msgid "Install"
 msgstr "Įdiegti"
@@ -9016,6 +9010,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Toliau programoje"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Ištrinti atvaizdą"
+
 msgid "Nicaragua"
 msgstr "Nikaragva"
 
@@ -9155,10 +9153,6 @@ msgstr ""
 "Joks imtuvas neįjungtas!\n"
 "Prieš pradėdami kanalų paiešką, sukonfigūruokite imtuvą."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Nereikalaujama"
-
 msgid "No updates available"
 msgstr "Atnaujinimų nėra"
 
@@ -9253,6 +9247,10 @@ msgstr "Neįdiegta"
 msgid "Not associated"
 msgstr "Nesusietas"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "nesukonfigūruotas"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9276,6 +9274,10 @@ msgstr "Pastaba: kai čia įjungta ir po imtuvo pažadinimo, norite pervesti į 
 #, fuzzy
 msgid "Nothing"
 msgstr "Nieko nedaryti"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "nieko nepajungta"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10203,6 +10205,10 @@ msgstr "Padėtis išsaugota ties žyme"
 msgid "Positioner"
 msgstr "Pozicionierius"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Pozicionierius (pasirenkami palydovai)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Pozicionierius (pasirenkami palydovai)"
 
@@ -10425,6 +10431,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Ankstesnis"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Atvaizdas: "
 
 msgid "Preview"
 msgstr "Peržiūra"
@@ -10728,6 +10738,9 @@ msgstr "Tikrai atnaujinti priekinį procesorių ir paleisti iš naujo?"
 msgid "Really update your settop box and reboot now?"
 msgstr "Tikrai atnaujinti jūsų priedėlį ir perkrauti dabar?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Paleisti iš naujo"
 
@@ -10739,6 +10752,10 @@ msgstr "Grįžti į ankstesnį kanalą"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Informacija"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -10880,6 +10897,10 @@ msgstr "Įsiminti kanalo PIN"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Priminimas: jūs pasirinkote išsaugoti laiko poslinkio failą."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "Pašalinti įrašą"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12741,6 +12762,10 @@ msgstr "Apsaugoti priedų naršyklę"
 msgid "Show multi channel EPG"
 msgstr "Rodyti daugiakanalį EPG"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Rodyti filmus"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Rodyti pranešimą, kai kanalų ir/arba EPG importas iš nuotolinio imtuvo yra nebaigtas"
 
@@ -12792,8 +12817,16 @@ msgid "Show positioner position"
 msgstr "Rodyti pozicionieriaus poziciją"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "Perjungti į ankstesnį kanalą"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Apsaugoti priedų naršyklę"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "Įrašykite IP adresą"
 
 msgid "Show record clock icons"
 msgstr "Su laikrodžiu rodyti įrašų piktogramas"
@@ -15215,16 +15248,8 @@ msgstr[2] "Atnaujinta, įdiegta %d paketų."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Atnaujinta. Ar norite paleisti imtuvą iš naujo?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "Įrašyti nepavyko!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Atnaujinimo klaida. Jūsų imtuvas neturi interneto ryšio."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Vykdymas baigtas!!"
 
 msgid "Update has completed."
 msgstr "Atnaujinimas baigtas."
@@ -15232,11 +15257,6 @@ msgstr "Atnaujinimas baigtas."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Paveikslėlio rodymo trukmė (sеk.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "Atnaujinimo šaltinis nepasiekiamas."
@@ -15647,15 +15667,16 @@ msgstr "Mergelių salos (J.K.)"
 msgid "Virgin Islands (U.S.)"
 msgstr "Mergelių salos, JAV"
 
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Virtuali klaviatūra"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Virtualiųjų klaviatūros funkcijos"
 
 msgid "Virtual KeyBoard Text:"
 msgstr "Virtualus klaviatūros tekstas:"
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Virtuali klaviatūra"
 
 msgid "Virtual keyboard"
 msgstr "Virtuali klaviatūra"
@@ -16189,6 +16210,9 @@ msgstr "Kai turinys yra kraštinių santykis 16:9, pasirinkti, ar didinti mastel
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Kai turinys yra kraštinių santykis 4:3, pasirinkti, ar didinti mastelį/ištempti vaizdą."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr "Kai imtuvas atsibunda iš budėjimo arba gilaus budėjimo režimo, jis išsiųs komandą televizoriui kad išjungti budėjimo režimą."
@@ -16826,9 +16850,6 @@ msgstr "eiti į visišką išjungimą"
 msgid "auto standby"
 msgstr "Nebudėti"
 
-msgid "automatic"
-msgstr "automatinis"
-
 msgid "back"
 msgstr "atgal"
 
@@ -17304,9 +17325,6 @@ msgstr "ilgas paspaudimas"
 
 msgid "magazines/reports/documentary"
 msgstr "žurnalai, pranešimai, dokumentika"
-
-msgid "manual"
-msgstr "rankinis"
 
 msgid "martial sports"
 msgstr "kovinis sportas"

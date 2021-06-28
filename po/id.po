@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2021-03-06\n"
 "Last-Translator: LinuxSTV\n"
 "Language-Team: \n"
@@ -78,6 +78,22 @@ msgstr " (0 - semua jaringan)"
 msgid " (Channel %s)"
 msgstr " (Kanal %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (dimatikan)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (lebih tinggi dari auto)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (lebih tinggi dari auto rotor)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (lebih rendah dari auto)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Partisi %d)"
@@ -94,18 +110,6 @@ msgstr " (TV)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "Ke pemilihan audio"
-
-msgid " (disabled)"
-msgstr " (dimatikan)"
-
-msgid " (higher than any auto)"
-msgstr " (lebih tinggi dari auto)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (lebih tinggi dari auto rotor)"
-
-msgid " (lower than any auto)"
-msgstr " (lebih rendah dari auto)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -127,9 +131,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr " pembaruan tersedia."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1574,10 +1575,6 @@ msgstr "<Lokasi film bawaan>"
 msgid "<Last timer location>"
 msgstr "<Lokasi pewaktu terakhir>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Tekan OK untuk alihkan pilihan."
-
 msgid "<unknown>"
 msgstr "<tak dikenal>"
 
@@ -2871,9 +2868,6 @@ msgstr "Boot ke Android"
 
 msgid "Boot to Recovery menu"
 msgstr "Boot ke menu recovery"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 #, fuzzy
 msgid "Bootup time"
@@ -4372,11 +4366,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "mendukung HLG"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5322,9 +5311,6 @@ msgstr "Dominika"
 msgid "Dominican Republic"
 msgstr "Republik Dominika"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "Standby / mulai ulang"
@@ -5342,11 +5328,6 @@ msgstr "Jangan hentikan acara saat ini tapi matikan acara mendatang"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Jangan hentikan acara saat ini tapi matikan acara mendatang"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Jangan zap"
@@ -6347,9 +6328,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -6571,6 +6549,10 @@ msgid "Flash type"
 msgstr "Pasang Image"
 
 #, fuzzy
+msgid "Flashing"
+msgstr "Memasang Image"
+
+#, fuzzy
 msgid "Flashing Image"
 msgstr "Memasang Image"
 
@@ -6691,6 +6673,9 @@ msgstr "Jum'at"
 
 msgid "From:"
 msgstr "Dari:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7486,6 +7471,10 @@ msgstr ""
 "Image yang ingin dipasang tidak valid\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Image: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7693,8 +7682,8 @@ msgstr "motoring"
 msgid "Input"
 msgstr "Masukan"
 
-#, fuzzy
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Masukan "
 
 #, fuzzy
@@ -7711,6 +7700,10 @@ msgstr "Atur perangkat input"
 
 msgid "Input Stream ID"
 msgstr "Masukkan ID Stream"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Menuju letak"
 
 msgid "Install"
 msgstr "Pasang"
@@ -9166,6 +9159,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Berikutnya"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Hapus pewaktu"
+
 msgid "Nicaragua"
 msgstr "Nikaragua"
 
@@ -9307,10 +9304,6 @@ msgstr ""
 "Tidak ada penala yang diaktifkan!\n"
 "Silakan atur pengaturan penala anda sebelum mulai lacak layanan."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Pembaruan tidak tersedia"
-
 msgid "No updates available"
 msgstr "Pembaruan tidak tersedia"
 
@@ -9410,6 +9403,10 @@ msgstr "Pasang"
 msgid "Not associated"
 msgstr "Tak diasosiasikan"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "tidak dikonfigurasi"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9433,6 +9430,10 @@ msgstr "Catatan: jika diaktifkan, dan anda tidak ingin ke mode standby setelah b
 #, fuzzy
 msgid "Nothing"
 msgstr "Jangan lakukan"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "tak ada yang tersambung"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10373,6 +10374,10 @@ msgstr "Letak disimpan pada indeks"
 msgid "Positioner"
 msgstr "Posisioner"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Posisioner (memilih satelit)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Posisioner (memilih satelit)"
 
@@ -10597,6 +10602,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Sebelumnya"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Image: "
 
 msgid "Preview"
 msgstr "Pratinjau"
@@ -10903,6 +10912,9 @@ msgstr "Yakin meningkatkan frontprosessor dan reboot sekarang?"
 msgid "Really update your settop box and reboot now?"
 msgstr "Yakin meningkatkan Rx anda dan reboot sekarang?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Reboot"
 
@@ -10914,6 +10926,10 @@ msgstr "Kembali ke layanan sebelumnya"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Informasi"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -11055,6 +11071,10 @@ msgstr "Ingat PIN layanan"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Pengingat, anda telah memilih menyimpan berkas timeshift."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "Hapus entri"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12945,6 +12965,10 @@ msgstr "Lindungi perambah plugin"
 msgid "Show multi channel EPG"
 msgstr "Tampilkan EPG kanal multi"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Tampilkan film"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Tampilkan pemberitahuan saat impor kanal dan/atau EPG dari URL Rx jauh tidak selesai"
 
@@ -12996,8 +13020,16 @@ msgid "Show positioner position"
 msgstr "Tampilkan posisi posisioner"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "Beralih ke kanal sebelumnya"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Lindungi perambah plugin"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "IP address"
 
 msgid "Show record clock icons"
 msgstr "Tampilkan ikon jam rekam"
@@ -15470,16 +15502,8 @@ msgstr[1] "Pembaruan selesai, %d paket terpasang."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Pembaruan selesai. Apakah anda ingin reboot Rx anda?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "Penulisan gagal!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Pembaruan gagal. Rx anda tanpa koneksi internet."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Eksekusi selesai!!"
 
 msgid "Update has completed."
 msgstr "Pembaruan telah selesai."
@@ -15487,11 +15511,6 @@ msgstr "Pembaruan telah selesai."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Interval tayangan slide (sec.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "Umpan pembaruan tidak tersedia."
@@ -15907,16 +15926,16 @@ msgid "Virgin Islands (U.S.)"
 msgstr "Kepulauan Virgin (Amerika Serikat)"
 
 #, fuzzy
-msgid "Virtual KeyBoard Functions"
+msgid "Virtual KeyBoard"
+msgstr "Papankunci virtual"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Papankunci virtual"
 
 #, fuzzy
 msgid "Virtual KeyBoard Text:"
 msgstr "Teks Papankunci Virtual:"
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Papankunci virtual"
 
 msgid "Virtual keyboard"
 msgstr "Papankunci virtual"
@@ -16457,6 +16476,9 @@ msgstr "Ketika konten punya rasio aspek 16:9, pilih apakah akan menskala/merenta
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Ketika konten punya rasio aspek 4:3, pilih apakah akan menskala/merentangkan gambar."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr "Ketika rx bangun dari siaga atau siaga dalam, ia akan mengirim perintah ke TV untuk membangunkannya dari siaga juga."
@@ -17107,9 +17129,6 @@ msgstr "menuju deep standby"
 msgid "auto standby"
 msgstr "Tidak bisa standby"
 
-msgid "automatic"
-msgstr "otomatis"
-
 msgid "back"
 msgstr "kembali"
 
@@ -17586,9 +17605,6 @@ msgstr "panjang"
 
 msgid "magazines/reports/documentary"
 msgstr "majalah/laporan/dokumenter"
-
-msgid "manual"
-msgstr "manual"
 
 msgid "martial sports"
 msgstr "olahraga beladiri"

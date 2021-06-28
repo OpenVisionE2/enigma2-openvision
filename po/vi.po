@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2019-11-19 08:58+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -77,6 +77,22 @@ msgstr " (0 - tất cả các mạng)"
 msgid " (Channel %s)"
 msgstr " (Kênh truyền hình %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (cho phép/không cho phép)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (cao hơn bất kỳ ô tô nào)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (cao hơn rôto bất kỳ ô tô nào)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (thấp hơn bất kỳ ô tô nào)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Phân vùng %d)"
@@ -93,18 +109,6 @@ msgstr " (TV)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "Để lựa chọn âm thanh"
-
-msgid " (disabled)"
-msgstr " (cho phép/không cho phép)"
-
-msgid " (higher than any auto)"
-msgstr " (cao hơn bất kỳ ô tô nào)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (cao hơn rôto bất kỳ ô tô nào)"
-
-msgid " (lower than any auto)"
-msgstr " (thấp hơn bất kỳ ô tô nào)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -126,9 +130,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr " cập nhật có sẵn."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1574,10 +1575,6 @@ msgstr "<Vị trí phim mặc định>"
 msgid "<Last timer location>"
 msgstr "<Vị trí hẹn giờ cuối>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Nhấn 'OK' để đính kèm chức năng."
-
 msgid "<unknown>"
 msgstr "<không rõ>"
 
@@ -2850,9 +2847,6 @@ msgstr "Khởi động hình ảnh Android"
 
 msgid "Boot to Recovery menu"
 msgstr "Menu khởi động vào Recovery"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 #, fuzzy
 msgid "Bootup time"
@@ -4327,11 +4321,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "Hỗ trợ HLG"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5265,9 +5254,6 @@ msgstr "Dominica"
 msgid "Dominican Republic"
 msgstr "Cộng hòa Dominican"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "Chờ / khởi động lại"
@@ -5285,11 +5271,6 @@ msgstr "Đừng dừng sự kiện hiện tại mà vô hiệu hóa các sự ki
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Đừng dừng sự kiện hiện tại mà vô hiệu hóa các sự kiện sắp tới"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Đừng bình tĩnh"
@@ -6279,9 +6260,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -6493,6 +6471,10 @@ msgstr "Tạo thư mục%s không thành công."
 msgid "Flash type"
 msgstr "Hình ảnh flash"
 
+#, fuzzy
+msgid "Flashing"
+msgstr "Hình ảnh nhấp nháy"
+
 msgid "Flashing Image"
 msgstr "Hình ảnh nhấp nháy"
 
@@ -6611,6 +6593,9 @@ msgstr "Thứ sáu"
 
 msgid "From:"
 msgstr "Từ:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7395,6 +7380,10 @@ msgstr ""
 "Hình ảnh để cài đặt không hợp lệ\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Hình ảnh: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7598,7 +7587,8 @@ msgstr "vận động"
 msgid "Input"
 msgstr "Đầu vào"
 
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Đầu vào "
 
 #, fuzzy
@@ -7615,6 +7605,10 @@ msgstr "Thiết lập thiết bị đầu vào"
 
 msgid "Input Stream ID"
 msgstr "ID luồng đầu vào"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Vị trí Goto"
 
 msgid "Install"
 msgstr "Cài vào"
@@ -9049,6 +9043,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Kế tiếp"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Xóa hình ảnh"
+
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
@@ -9188,10 +9186,6 @@ msgstr ""
 "Không có bộ chỉnh được kích hoạt!\n"
 "Vui lòng thiết lập cài đặt bộ chỉnh tần số trước khi bạn bắt đầu quét dịch vụ."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Không có bảng cập nhật có sẵn"
-
 msgid "No updates available"
 msgstr "Không có bảng cập nhật có sẵn"
 
@@ -9286,6 +9280,10 @@ msgstr "Chưa cài đặt"
 msgid "Not associated"
 msgstr "Không liên quan"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "không được cấu hình"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9309,6 +9307,10 @@ msgstr "Lưu ý: khi được bật và bạn muốn có chế độ chờ sau k
 #, fuzzy
 msgid "Nothing"
 msgstr "Không làm gì cả"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "không có gì kết nối"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10233,6 +10235,10 @@ msgstr "Vị trí được lưu trữ tại chỉ mục"
 msgid "Positioner"
 msgstr "Định vị"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Định vị (chọn vệ tinh)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Định vị (chọn vệ tinh)"
 
@@ -10454,6 +10460,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Trước đó"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Hình ảnh: "
 
 msgid "Preview"
 msgstr "Xem trước"
@@ -10759,6 +10769,9 @@ msgstr "Thực sự nâng cấp bộ xử lý trước và khởi động lại 
 msgid "Really update your settop box and reboot now?"
 msgstr "Thực sự nâng cấp hộp giải quyết của bạn và khởi động lại bây giờ?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Khởi động lại"
 
@@ -10770,6 +10783,10 @@ msgstr "Nhớ lại dịch vụ trước"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Thông tin"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -10911,6 +10928,10 @@ msgstr "Ghi nhớ mã PIN dịch vụ"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Nhắc nhở, bạn đã chọn lưu tệp timeshift."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "Xoá mục nhập"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12778,6 +12799,10 @@ msgstr "Bảo vệ trình duyệt plugin"
 msgid "Show multi channel EPG"
 msgstr "Hiển thị EPG đa kênh"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Xem phim"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Hiển thị thông báo khi nhập kênh và / hoặc EPG từ URL người nhận từ xa không hoàn thành"
 
@@ -12829,8 +12854,16 @@ msgid "Show positioner position"
 msgstr "Hiển thị vị trí định vị"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "Chuyển sang kênh trước"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Bảo vệ trình duyệt plugin"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "Nhập địa chỉ IP"
 
 msgid "Show record clock icons"
 msgstr "Hiển thị biểu tượng đồng hồ kỷ lục"
@@ -15265,16 +15298,8 @@ msgstr[1] "Cập nhật hoàn tất, gói%d đã được cài đặt."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Hoàn thành cập nhật. Bạn có muốn khởi động lại máy thu của bạn?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "Viết thất bại!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "Cập nhật thất bại. Đầu thu của bạn không có kết nối internet làm việc."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Thi công xong !!"
 
 msgid "Update has completed."
 msgstr "Cập nhật đã hoàn thành."
@@ -15282,11 +15307,6 @@ msgstr "Cập nhật đã hoàn thành."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Khoảng thời gian trình chiếu (giây)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "Cập nhật nguồn cấp dữ liệu không có sẵn."
@@ -15696,15 +15716,16 @@ msgstr "Xem video CD ..."
 msgid "Virgin Islands (U.S.)"
 msgstr "Quần đảo Virgin (Hoa Kỳ)"
 
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Bàn phím ảo"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Chức năng KeyBoard ảo"
 
 msgid "Virtual KeyBoard Text:"
 msgstr "Văn bản KeyBoard ảo:"
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Bàn phím ảo"
 
 msgid "Virtual keyboard"
 msgstr "Bàn phím ảo"
@@ -16243,6 +16264,9 @@ msgstr "Khi nội dung có tỷ lệ khung hình là 16: 9, hãy chọn có chia
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Khi nội dung có tỷ lệ khung hình là 4: 3, hãy chọn chia tỷ lệ / kéo dài hình ảnh."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr ""
@@ -16883,9 +16907,6 @@ msgstr "đi đến chế độ chờ sâu"
 msgid "auto standby"
 msgstr "Không có chế độ chờ"
 
-msgid "automatic"
-msgstr "tự động"
-
 msgid "back"
 msgstr "trở lại"
 
@@ -17361,9 +17382,6 @@ msgstr "dài"
 
 msgid "magazines/reports/documentary"
 msgstr "tạp chí / báo cáo / phim tài liệu"
-
-msgid "manual"
-msgstr "hướng dẫn sử dụng"
 
 msgid "martial sports"
 msgstr "võ thuật"

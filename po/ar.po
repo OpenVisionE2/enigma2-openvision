@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OBH enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2019-04-12 12:36+0300\n"
 "Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
 "Language-Team: mosad - مساعد الجعيد\n"
@@ -76,6 +76,22 @@ msgstr " (0-جميع الشبكات)"
 msgid " (Channel %s)"
 msgstr " (قناة %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (معطل)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (أعلى من أي تلقائي)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (أعلى من الدواران التلقائي)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (أقل من أي تلقائي)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (التقسيم %d)"
@@ -92,18 +108,6 @@ msgstr " (القنوات التلفزيونية)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "أختيار الأفلام"
-
-msgid " (disabled)"
-msgstr " (معطل)"
-
-msgid " (higher than any auto)"
-msgstr " (أعلى من أي تلقائي)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (أعلى من الدواران التلقائي)"
-
-msgid " (lower than any auto)"
-msgstr " (أقل من أي تلقائي)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -128,9 +132,6 @@ msgstr ""
 #, fuzzy
 msgid " updates available."
 msgstr "التحديثات المتوفرة."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1619,10 +1620,6 @@ msgstr "<مكان الافلام الإفتراضي>"
 msgid "<Last timer location>"
 msgstr "<مكان المؤقت الأخير>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "أضغط موافق لتغيير الأختيار."
-
 msgid "<unknown>"
 msgstr "<مجهول>"
 
@@ -2941,9 +2938,6 @@ msgid "Boot to Android image"
 msgstr ""
 
 msgid "Boot to Recovery menu"
-msgstr ""
-
-msgid "Bootloader update required!"
 msgstr ""
 
 #, fuzzy
@@ -4477,11 +4471,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "دعم مشاركة الملفات على الشبكة المحلية"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5435,9 +5424,6 @@ msgstr "دومينيكا"
 msgid "Dominican Republic"
 msgstr "جمهورية الدومينيكان"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "وضع الإستعداد / إعادة التشغيل"
@@ -5457,11 +5443,6 @@ msgstr "لا توقف الحدث الحالي لكن قم بتعطيل الأح�
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "لا توقف الحدث الحالي لكن قم بتعطيل الأحداث القادمة"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "لا تتنقل"
@@ -6476,9 +6457,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 #, fuzzy
 msgid "FTA"
 msgstr "بروتوكول نقل الملفات"
@@ -6706,6 +6684,10 @@ msgid "Flash type"
 msgstr "الشحن"
 
 #, fuzzy
+msgid "Flashing"
+msgstr "الشحن"
+
+#, fuzzy
 msgid "Flashing Image"
 msgstr "الشحن"
 
@@ -6823,6 +6805,9 @@ msgstr "الجمعه"
 #, fuzzy
 msgid "From:"
 msgstr "من:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7642,6 +7627,10 @@ msgid ""
 "%s"
 msgstr ""
 
+#, fuzzy
+msgid "Images"
+msgstr "مدير الصور"
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7856,7 +7845,8 @@ msgstr "السيارات"
 msgid "Input"
 msgstr "الإدخال"
 
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "الادخال "
 
 #, fuzzy
@@ -7873,6 +7863,10 @@ msgstr "إدخال إعدادات الجهاز"
 
 msgid "Input Stream ID"
 msgstr "إدخال معرف التدفق"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "الذهاب إلى الوضع"
 
 msgid "Install"
 msgstr "تثبيت"
@@ -9334,6 +9328,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "التالي"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "حذف المؤقت"
+
 msgid "Nicaragua"
 msgstr "نيكاراغوا"
 
@@ -9479,10 +9477,6 @@ msgstr ""
 "من فضلك أضبط إعدادات المؤالف قبل البحث عن القنوات ."
 
 #, fuzzy
-msgid "No update required!"
-msgstr "التحديثات المتوفرة."
-
-#, fuzzy
 msgid "No updates available"
 msgstr "التحديثات المتوفرة."
 
@@ -9584,6 +9578,10 @@ msgstr "تثبيت"
 msgid "Not associated"
 msgstr "غير مرتبط"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "غير مكون"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9608,6 +9606,10 @@ msgstr ""
 #, fuzzy
 msgid "Nothing"
 msgstr "لا شئ"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "لا شيئ متصل"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10565,6 +10567,10 @@ msgstr "مكان التخزين في الفهرس"
 msgid "Positioner"
 msgstr "الموتور"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "المتحرك (أختيار الاقمار)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "المتحرك (أختيار الاقمار)"
 
@@ -10791,6 +10797,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "معاينه"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "مدير الصور"
 
 msgid "Preview"
 msgstr "معاينه"
@@ -11106,6 +11116,9 @@ msgstr "حقا تريد ترقية الجهاز من مدخل المعالج ا�
 msgid "Really update your settop box and reboot now?"
 msgstr "هل حقا تريد الترقية %s %s وإعادة التشغيل الأن؟"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "إعادة التشغيل"
 
@@ -11118,6 +11131,10 @@ msgstr "العوده إلى خدمة القناة السابقه"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "معلومات"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -11264,6 +11281,10 @@ msgstr "تذكر الرقم السري للقناة"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "تذكير، الذي اخترته لحفظ ملف التحكم الزمني في البث المباشر."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "حذف الباقة"
 
 #, fuzzy
 msgid "Remote control information"
@@ -13234,6 +13255,10 @@ msgstr "حماية متصفح البلج إنز"
 msgid "Show multi channel EPG"
 msgstr "عرض دليل البرامج الإلكترونية المتعدد"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "عرض الأفلام"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr ""
 
@@ -13288,8 +13313,16 @@ msgid "Show positioner position"
 msgstr "عرض وضع الموتور المتحرك"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "التحكم في القناة السابقة"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "حماية متصفح البلج إنز"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "عنوان الأيبي"
 
 #, fuzzy
 msgid "Show record clock icons"
@@ -15808,16 +15841,8 @@ msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "هل تريد أعاده تشغيل جهاز الاستقبال الخاص بك ؟"
 
 #, fuzzy
-msgid "Update failed!"
-msgstr "فشل الكتابة!"
-
-#, fuzzy
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "فشل التحديث. الخاص بك %s %s لم يكون لها اتصال بالإنترنت لكي تعمل."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "إنهاء التنفيذ!!"
 
 #, fuzzy
 msgid "Update has completed."
@@ -15826,11 +15851,6 @@ msgstr "اكتمل النسخ الاحتياطي."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "الفاصل الزمني لعرض الشرائح (ثانيه)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "تغذية التحديث غير متوفرة."
@@ -16252,15 +16272,16 @@ msgstr "جزر فيرجين (البريطانية)"
 msgid "Virgin Islands (U.S.)"
 msgstr "جزر فيرجن (الولايات المتحدة)"
 
-msgid "Virtual KeyBoard Functions"
-msgstr ""
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "لوحة مفاتيح الحروف بالترتيب"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
+msgstr "لوحة مفاتيح الحروف بالترتيب"
 
 msgid "Virtual KeyBoard Text:"
 msgstr ""
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "لوحة مفاتيح الحروف بالترتيب"
 
 #, fuzzy
 msgid "Virtual keyboard"
@@ -16822,6 +16843,9 @@ msgstr "عندما يكون المحتوى على نسبة العرض إلى ا�
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "عندما يكون المحتوى على نسبة العرض إلى الارتفاع 4: 3، واختيار ما إذا كان مقياس / تمتد الصورة."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr ""
@@ -17463,9 +17487,6 @@ msgstr "الذهاب الى وضع الاستعداد العميق"
 msgid "auto standby"
 msgstr "لا يوجد وضع استعداد"
 
-msgid "automatic"
-msgstr "تلقائي"
-
 msgid "back"
 msgstr "للخلف"
 
@@ -17947,9 +17968,6 @@ msgstr "طويل"
 
 msgid "magazines/reports/documentary"
 msgstr "مجلات/تقارير/وثائقي"
-
-msgid "manual"
-msgstr "يدوي"
 
 msgid "martial sports"
 msgstr "الرياضة العسكرية"

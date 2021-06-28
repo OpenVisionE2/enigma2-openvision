@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2021-06-02 18:22+0200\n"
 "Last-Translator: Oriol Pellicer <oriol@elsud.org>\n"
 "Language-Team: angelodos angelo2807@hotmail.com\n"
@@ -85,6 +85,22 @@ msgstr " (0 - all networks)"
 msgid " (Channel %s)"
 msgstr " (Canal %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (Desactivat)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (superior a qualsevol autol)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (superior al rotor qualsevol auto)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (superior a qualsevol autol)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Partició% d)"
@@ -100,18 +116,6 @@ msgstr " (TV)"
 
 msgid " (auto detection)"
 msgstr "selecció d’àudio"
-
-msgid " (disabled)"
-msgstr " (Desactivat)"
-
-msgid " (higher than any auto)"
-msgstr " (superior a qualsevol autol)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (superior al rotor qualsevol auto)"
-
-msgid " (lower than any auto)"
-msgstr " (superior a qualsevol autol)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -136,9 +140,6 @@ msgstr ""
 #
 msgid " updates available."
 msgstr " actualitzacions disponibles."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #
 #, fuzzy
@@ -1690,11 +1691,6 @@ msgid "<Last timer location>"
 msgstr "<Ubicació del darrer temporitzador>"
 
 #
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Premeu ‘D’acord’ per a la funció d’adjunt."
-
-#
 msgid "<unknown>"
 msgstr "<desconegut>"
 
@@ -3102,9 +3098,6 @@ msgstr "Arrenca a la imatge d’Android"
 
 msgid "Boot to Recovery menu"
 msgstr "Menú Arrenca a recuperació"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 #
 msgid "Bootup time"
@@ -4696,11 +4689,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "Suport HLG"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5736,9 +5724,6 @@ msgstr "Dominica"
 msgid "Dominican Republic"
 msgstr "Dominicana Republica"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "Pendent de reiniciar"
@@ -5758,11 +5743,6 @@ msgstr "No aturar el programa en curs, però deshabilitar els següents"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "No aturar el programa en curs, però deshabilitar els següents"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "No activeu"
@@ -6850,9 +6830,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -7082,6 +7059,11 @@ msgid "Flash type"
 msgstr "Imatge de flaix"
 
 #
+#, fuzzy
+msgid "Flashing"
+msgstr "Imatge intermitent"
+
+#
 msgid "Flashing Image"
 msgstr "Imatge intermitent"
 
@@ -7215,6 +7197,9 @@ msgstr "Divendres"
 
 msgid "From:"
 msgstr "De:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -8047,6 +8032,10 @@ msgstr ""
 "La imatge a instal·lar no és vàlida\n"
 "% s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Imatge:"
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -8274,7 +8263,8 @@ msgid "Input"
 msgstr "Entrada"
 
 #
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Entrada "
 
 #, fuzzy
@@ -8291,6 +8281,11 @@ msgstr "Configuració del dispositiu d’entrada"
 
 msgid "Input Stream ID"
 msgstr "Identificador de flux d’entrada"
+
+#
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Anar a la posició"
 
 #
 msgid "Install"
@@ -9894,6 +9889,11 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Seguent"
 
+#
+#, fuzzy
+msgid "Next Image"
+msgstr "Ha fallat l’eliminació"
+
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
@@ -10052,10 +10052,6 @@ msgstr ""
 "No hi ha cap sintonitzador habilitat! \n"
 "Sisplau configura algun sintonitzador abans de fer una recerca de canals."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "No actualitzacions disponibles."
-
 msgid "No updates available"
 msgstr "No actualitzacions disponibles."
 
@@ -10162,6 +10158,11 @@ msgstr "Instal·lantNo està instal · lat"
 msgid "Not associated"
 msgstr "No associat"
 
+#
+#, fuzzy
+msgid "Not configured"
+msgstr "no configurat"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -10186,6 +10187,11 @@ msgstr "Nota: quan estigui habilitat i voleu que el mode d’espera després de 
 #, fuzzy
 msgid "Nothing"
 msgstr "No facis res"
+
+#
+#, fuzzy
+msgid "Nothing connected"
+msgstr "res connectat"
 
 #
 msgid ""
@@ -11223,6 +11229,10 @@ msgstr "Port del receptor remot de caiguda"
 msgid "Positioner"
 msgstr "Motor"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Posicionador (selecció de satèl·lits)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Posicionador (selecció de satèl·lits)"
 
@@ -11466,6 +11476,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Anterior"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Imatge:"
 
 #
 msgid "Preview"
@@ -11804,6 +11818,9 @@ msgstr "Actualment voleu actualitzar el frontprocessor i reiniciar-lo?"
 msgid "Really update your settop box and reboot now?"
 msgstr "Actualitzeu realment la caixa de configuració i reinicieu ara?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Reinicieu"
 
@@ -11815,6 +11832,11 @@ msgstr "Voleu el servei anterior"
 
 msgid "Receiver"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Informació"
 
 #
 #, fuzzy
@@ -11972,6 +11994,11 @@ msgstr "Recordeu el PIN del servei"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Recordatori, heu decidit guardar el fitxer timeshift."
+
+#
+#, fuzzy
+msgid "Remote Control"
+msgstr "Eliminar entrada"
 
 #
 #, fuzzy
@@ -14035,6 +14062,10 @@ msgstr "Protegiu el navegador de complements"
 msgid "Show multi channel EPG"
 msgstr "Mostra EPG multicanal"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Mostra pel·lícules"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Mostra la notificació quan no s’han completat els canals d’importació i / o EPG des de l’URL del receptor remot"
 
@@ -14086,9 +14117,19 @@ msgstr "Mostrar el moviment del motor"
 msgid "Show positioner position"
 msgstr "Mostrar la posició del posicionador"
 
+#
+#, fuzzy
+msgid "Show previous image"
+msgstr "Canvia al canal anterior"
+
 #, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Protegiu el navegador de complements"
+
+#
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "Introduïu l’adreça IP"
 
 msgid "Show record clock icons"
 msgstr "Mostra les icones del rellotge de registre"
@@ -16746,18 +16787,8 @@ msgstr[1] "S’ha instal·lat l’actualització, s’han instal·lat% d paquets
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "S’ha completat l’actualització. Voleu reiniciar el receptor?"
 
-#
-#, fuzzy
-msgid "Update failed!"
-msgstr "L’escriptura ha fallat!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "No s’ha pogut actualitzar. El receptor no té connexió a Internet que funciona."
-
-#
-#, fuzzy
-msgid "Update finished!"
-msgstr "Ha finalitzat l'execució"
 
 msgid "Update has completed."
 msgstr "S’ha finalitzat l’actualització."
@@ -16766,11 +16797,6 @@ msgstr "S’ha finalitzat l’actualització."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Interval de presentació de diapositives (seg.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 #
 msgid "Updatefeed not available."
@@ -17235,15 +17261,16 @@ msgstr "Illes Verges (britàniques)"
 msgid "Virgin Islands (U.S.)"
 msgstr "Illes Verges (EUA)"
 
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Teclat virtual"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Funcions del teclat virtual"
 
 msgid "Virtual KeyBoard Text:"
 msgstr "Text de la targeta virtual virtual:"
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Teclat virtual"
 
 msgid "Virtual keyboard"
 msgstr "Teclat virtual"
@@ -17799,6 +17826,9 @@ msgstr "Quan el contingut tingui una relació d’aspecte de 16: 9, trieu si vol
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Quan el contingut tingui una relació d’aspecte de 4: 3, trieu si voleu escalar / estirar la imatge."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr "Quan el receptor es desperta en mode d’espera o d’espera profunda, enviarà una ordre al televisor per treure’l també del mode d’espera."
@@ -18481,10 +18511,6 @@ msgid "auto standby"
 msgstr "Sense standby"
 
 #
-msgid "automatic"
-msgstr "automatic"
-
-#
 msgid "back"
 msgstr "enrere"
 
@@ -19012,10 +19038,6 @@ msgstr "llarg"
 
 msgid "magazines/reports/documentary"
 msgstr "revistes / reportatges / documentals"
-
-#
-msgid "manual"
-msgstr "manual"
 
 msgid "martial sports"
 msgstr "esports marcials"

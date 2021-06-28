@@ -23,7 +23,7 @@ MODES = {
 	"NUMBER": 6,
 	"SEARCH": 3,
 	"SEARCHUPPER": 4,
-	"SEARCHLOWER": 5,
+	"SEARCHLOWER": 5
 }
 
 PUNCTUATION0 = u"0,?!'\"\\()<>[]{}~^`|"

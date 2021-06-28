@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-13 10:11+0430\n"
+"POT-Creation-Date: 2021-06-28 09:25+0430\n"
 "PO-Revision-Date: 2020-12-05 15:11+0100\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -77,6 +77,22 @@ msgstr " (0 - összes hálózat)"
 msgid " (Channel %s)"
 msgstr " (Csatorna %s)"
 
+#, fuzzy
+msgid " (Disabled)"
+msgstr " (kikapcsolva)"
+
+#, fuzzy
+msgid " (Higher than any auto)"
+msgstr " (magasabb mint bármelyik automatikus)"
+
+#, fuzzy
+msgid " (Higher than rotor any auto)"
+msgstr " (magasabb mint bármelyik forgó automatikus)"
+
+#, fuzzy
+msgid " (Lower than any auto)"
+msgstr " (alacsonyabb mint bármelyik automatikus)"
+
 #, python-format
 msgid " (Partition %d)"
 msgstr " (Partíció %d)"
@@ -93,18 +109,6 @@ msgstr " (TV)"
 #, fuzzy
 msgid " (auto detection)"
 msgstr "Hangcsatorna kiválasztása"
-
-msgid " (disabled)"
-msgstr " (kikapcsolva)"
-
-msgid " (higher than any auto)"
-msgstr " (magasabb mint bármelyik automatikus)"
-
-msgid " (higher than rotor any auto)"
-msgstr " (magasabb mint bármelyik forgó automatikus)"
-
-msgid " (lower than any auto)"
-msgstr " (alacsonyabb mint bármelyik automatikus)"
 
 msgid " - Unicable/JESS LNBs not found"
 msgstr ""
@@ -126,9 +130,6 @@ msgstr ""
 
 msgid " updates available."
 msgstr " frissítés elérhető."
-
-msgid "!! Bootloader Upgrade !!"
-msgstr ""
 
 #, fuzzy
 msgid "%-H:%M"
@@ -1571,10 +1572,6 @@ msgstr "<Felvételek tárhelye>"
 msgid "<Last timer location>"
 msgstr "<Időzítés utolsó pozíciója>"
 
-#, fuzzy
-msgid "<Press OK to perform action>"
-msgstr "Nyomja le az OK gombot a csatoláshoz."
-
 msgid "<unknown>"
 msgstr "<ismeretlen>"
 
@@ -2844,9 +2841,6 @@ msgstr "Bootolás Androidba"
 
 msgid "Boot to Recovery menu"
 msgstr "Bootolás a visszaállítási menübe"
-
-msgid "Bootloader update required!"
-msgstr ""
 
 msgid "Bootup time"
 msgstr "Betöltési idő"
@@ -4315,11 +4309,6 @@ msgstr ""
 msgid "DLNA support"
 msgstr "HLG támogatás"
 
-msgid ""
-"DO NOT POWER OFF YOUR DEVICE WHILE UPDATING!\n"
-"Update now?"
-msgstr ""
-
 msgid "DTS"
 msgstr ""
 
@@ -5243,9 +5232,6 @@ msgstr "Dominikai Közösség"
 msgid "Dominican Republic"
 msgstr "Dominikai Köztársaság"
 
-msgid "Don't ask again!"
-msgstr ""
-
 #, fuzzy
 msgid "Don't restart"
 msgstr "Felfüggesztett újraindítás"
@@ -5263,11 +5249,6 @@ msgstr "Ne állítsa le a futó eseményt, inkább kapcsolja le a következőt"
 #, fuzzy
 msgid "Don't stop current event but disable future events"
 msgstr "Ne állítsa le a futó eseményt, inkább kapcsolja le a következőt"
-
-msgid ""
-"Don't worry your device is still ok! There are several safety mechanisms in place!\n"
-"Your device is still as fine as it was before this procedure!"
-msgstr ""
 
 msgid "Don't zap"
 msgstr "Ne váltson csatornát"
@@ -6244,9 +6225,6 @@ msgstr ""
 msgid "FPU"
 msgstr ""
 
-msgid "FSBL Update Check"
-msgstr ""
-
 msgid "FTA"
 msgstr "FTA"
 
@@ -6456,6 +6434,10 @@ msgstr "A %s mappa létrehozása nem sikerült."
 msgid "Flash type"
 msgstr "Flash Image"
 
+#, fuzzy
+msgid "Flashing"
+msgstr "Image flashelése"
+
 msgid "Flashing Image"
 msgstr "Image flashelése"
 
@@ -6574,6 +6556,9 @@ msgstr "Péntek"
 
 msgid "From:"
 msgstr "Innen:"
+
+msgid "Front"
+msgstr ""
 
 msgid "Front Panel Display"
 msgstr ""
@@ -7353,6 +7338,10 @@ msgstr ""
 "A telepítendő image nem megfelelő\n"
 "%s"
 
+#, fuzzy
+msgid "Images"
+msgstr "Image: "
+
 msgid "Immediately restart selected devices."
 msgstr ""
 
@@ -7556,7 +7545,8 @@ msgstr "motor"
 msgid "Input"
 msgstr "Bevitel"
 
-msgid "Input "
+#, fuzzy, python-format
+msgid "Input %d"
 msgstr "Bevitel "
 
 #, fuzzy
@@ -7573,6 +7563,10 @@ msgstr "Beviteli eszközök beállítása"
 
 msgid "Input Stream ID"
 msgstr "Stream ID bevitel"
+
+#, fuzzy
+msgid "Input scroll position"
+msgstr "Pozícióra ugrás"
 
 msgid "Install"
 msgstr "Telepítés"
@@ -8994,6 +8988,10 @@ msgctxt "now/next: 'next' event label"
 msgid "Next"
 msgstr "Következik"
 
+#, fuzzy
+msgid "Next Image"
+msgstr "Image törlése"
+
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
@@ -9133,10 +9131,6 @@ msgstr ""
 "Nincs engedélyezett tuner!\n"
 "Csatornakeresés előtt állítsa be a tunereket."
 
-#, fuzzy
-msgid "No update required!"
-msgstr "Nincs elérhető frissítés"
-
 msgid "No updates available"
 msgstr "Nincs elérhető frissítés"
 
@@ -9231,6 +9225,10 @@ msgstr "Nincs telepítve"
 msgid "Not associated"
 msgstr "Nem-csatlakozott"
 
+#, fuzzy
+msgid "Not configured"
+msgstr "nem konfigurált"
+
 msgid "Not currently mounted."
 msgstr ""
 
@@ -9254,6 +9252,10 @@ msgstr "Megjegyzés: ha engedélyezi, és a felébresztés után készenléti m�
 #, fuzzy
 msgid "Nothing"
 msgstr "Ne csináljon semmit"
+
+#, fuzzy
+msgid "Nothing connected"
+msgstr "semmi sincs csatlakoztatva"
 
 msgid ""
 "Nothing to scan!\n"
@@ -10183,6 +10185,10 @@ msgstr "Pozíció mentve ide: "
 msgid "Positioner"
 msgstr "Forgatómotor"
 
+#, fuzzy
+msgid "Positioner (Selecting satellites)"
+msgstr "Forgatómotor (műholdak választása)"
+
 msgid "Positioner (selecting satellites)"
 msgstr "Forgatómotor (műholdak választása)"
 
@@ -10404,6 +10410,10 @@ msgstr ""
 msgctxt "button label, 'previous screen'"
 msgid "Prev"
 msgstr "Előző"
+
+#, fuzzy
+msgid "Prev Image"
+msgstr "Image: "
 
 msgid "Preview"
 msgstr "Előnézet"
@@ -10707,6 +10717,9 @@ msgstr "Biztos benne, hogy frissíteni szeretné a frontprocesszort, majd újrai
 msgid "Really update your settop box and reboot now?"
 msgstr "Indulhat a frissítés, majd újraindítás?"
 
+msgid "Rear"
+msgstr ""
+
 msgid "Reboot"
 msgstr "Újraindítás"
 
@@ -10718,6 +10731,10 @@ msgstr "Előző csatornára váltás"
 
 msgid "Receiver"
 msgstr ""
+
+#, fuzzy
+msgid "Receiver Image Actions"
+msgstr "Információk"
 
 #, fuzzy
 msgid "Receiver Information"
@@ -10859,6 +10876,10 @@ msgstr "Szerviz-PIN megjegyzése"
 
 msgid "Reminder, you have chosen to save timeshift file."
 msgstr "Figyelem, azt választotta, hogy az időcsűsztatás felvétele ne törlődjön."
+
+#, fuzzy
+msgid "Remote Control"
+msgstr "Bejegyzés törlése"
 
 #, fuzzy
 msgid "Remote control information"
@@ -12715,6 +12736,10 @@ msgstr "Bővítménykezelő védelme"
 msgid "Show multi channel EPG"
 msgstr "Több csatornás EPG megjelenítése"
 
+#, fuzzy
+msgid "Show next image"
+msgstr "Filmek megjelenítése"
+
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Figyelmeztetés mutatása, ha a csatornák és/vagy az EPG importálása a távoli vevő URL-ből nem fejeződött be"
 
@@ -12766,8 +12791,16 @@ msgid "Show positioner position"
 msgstr "Pozícionáló pozíciójának mutatása"
 
 #, fuzzy
+msgid "Show previous image"
+msgstr "Ugrás az előző csatornára"
+
+#, fuzzy
 msgid "Show python in plugin browser"
 msgstr "Bővítménykezelő védelme"
+
+#, fuzzy
+msgid "Show receiver image(s)"
+msgstr "Adja meg az IP címet"
 
 msgid "Show record clock icons"
 msgstr "Felvételi óra ikonok megjelenítése"
@@ -15193,16 +15226,8 @@ msgstr[1] "A frissítés elkészült, %d csomag lett feltelepítve."
 msgid "Update completed. Do you want to reboot your %s %s?"
 msgstr "Frissítés sikeres. Újraindítja most a készüléket?"
 
-#, fuzzy
-msgid "Update failed!"
-msgstr "Az írás sikertelen!"
-
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "A frissítés nem sikerült. A készüléknek nincs egy működőképes kapcsolata az internettel."
-
-#, fuzzy
-msgid "Update finished!"
-msgstr "Végrehajtás befejezve!"
 
 msgid "Update has completed."
 msgstr "A frissítés elkészült."
@@ -15210,11 +15235,6 @@ msgstr "A frissítés elkészült."
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Slideshow intervallum (mp.)"
-
-msgid ""
-"Update succeeded!\n"
-"Your Bootloader is now up-to-date!"
-msgstr ""
 
 msgid "Updatefeed not available."
 msgstr "Frissítő szerver nem elérhető."
@@ -15624,15 +15644,16 @@ msgstr "Virgin-szigetek (Angol)"
 msgid "Virgin Islands (U.S.)"
 msgstr "Virgin-szigetek (Amerikai)"
 
-msgid "Virtual KeyBoard Functions"
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Virtuális Billentyűzet"
+
+#, fuzzy
+msgid "Virtual KeyBoard Actions"
 msgstr "Virtuális Billentyűzet Funkciók"
 
 msgid "Virtual KeyBoard Text:"
 msgstr "Virtuális Billentyűzet Szöveg:"
-
-#, fuzzy
-msgid "Virtual Keyboard"
-msgstr "Virtuális Billentyűzet"
 
 msgid "Virtual keyboard"
 msgstr "Virtuális Billentyűzet"
@@ -16163,6 +16184,9 @@ msgstr "Egy 16:9-es kép méretarányú tartalom nagyítva vagy széthúzva legy
 
 msgid "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
 msgstr "Egy 4:3-as kép méretarányú tartalom nagyítva vagy széthúzva legyen."
+
+msgid "When the input cursor reaches this point (percentage of the width, from either side) scroll the text to the cursor."
+msgstr ""
 
 msgid "When the receiver wakes from standby or deep standby, it will send a command to the TV to bring it out of standby too."
 msgstr "Amikor a beltéri egység felébred készenlétből vagy mély-készenlétből, parancsot küld a TV-készüléknek, hogy szintén ébredjen fel a készenlétből."
@@ -16802,9 +16826,6 @@ msgstr "kikapcsolás"
 msgid "auto standby"
 msgstr "Nincs kikapcsolás"
 
-msgid "automatic"
-msgstr "automatikus"
-
 msgid "back"
 msgstr "vissza"
 
@@ -17280,9 +17301,6 @@ msgstr "hosszú"
 
 msgid "magazines/reports/documentary"
 msgstr "magazin/riport/dokumentum"
-
-msgid "manual"
-msgstr "kézi"
 
 msgid "martial sports"
 msgstr "harci sportok"
