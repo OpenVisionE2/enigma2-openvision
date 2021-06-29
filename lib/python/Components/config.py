@@ -1682,7 +1682,7 @@ class ConfigText(ConfigElement, NumericalTextInput):
 	def setValue(self, value):
 		if PY2:
 			try:
-				self.text = value.encode("UTF-8", errors="ignore")
+				self.text = value.decode("UTF-8", errors="ignore")
 			except UnicodeDecodeError:
 				self.text = value.decode("UTF-8", error="ignore")
 				print("[config] Broken UTF8!")
