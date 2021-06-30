@@ -487,10 +487,9 @@ class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
 	def cancel(self):
 		self.close()
 
-	def restartLan(self, ret=False):
-		if ret:
-			iNetwork.restartNetwork(self.restartLanDataAvail)
-			self.restartLanRef = self.session.openWithCallback(self.restartfinishedCB, MessageBox, _("Please wait while your network is restarting..."), type=MessageBox.TYPE_INFO, enable_input=False)
+	def restartLan(self):
+		iNetwork.restartNetwork(self.restartLanDataAvail)
+		self.restartLanRef = self.session.openWithCallback(self.restartfinishedCB, MessageBox, _("Please wait while your network is restarting..."), type=MessageBox.TYPE_INFO, enable_input=False)
 
 	def restartLanDataAvail(self, data):
 		if data is True:
