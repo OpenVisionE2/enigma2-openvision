@@ -55,7 +55,7 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 				self.immutableList.append(item)
 			print("[SystemInfo] Enigma kernel module available and data loaded into BoxInfo.")
 		else:
-			process = Popen(("/sbin/modinfo", "-d", modulePath), stdout=PIPE, stderr=PIPE, text=True)
+			process = Popen(("/sbin/modinfo", "-d", modulePath), stdout=PIPE, stderr=PIPE, universal_newlines=True)
 			stdout, stderr = process.communicate()
 			if process.returncode == 0:
 				for line in stdout.split("\n"):
@@ -196,7 +196,7 @@ def getRCFile(ext):
 def getModuleLayout():
 	modulePath = BoxInfo.getItem("enigmamodule")
 	if modulePath:
-		process = Popen(("/sbin/modprobe", "--dump-modversions", modulePath), stdout=PIPE, stderr=PIPE, text=True)
+		process = Popen(("/sbin/modprobe", "--dump-modversions", modulePath), stdout=PIPE, stderr=PIPE, universal_newlines=True)
 		stdout, stderr = process.communicate()
 		if process.returncode == 0:
 			for detail in stdout.split("\n"):
