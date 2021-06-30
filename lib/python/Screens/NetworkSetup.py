@@ -502,7 +502,6 @@ class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
 
 	def restartfinishedCB(self, data):
 		if data is True:
-			self.updateStatusbar()
 			self.session.open(MessageBox, _("Finished restarting your network"), type=MessageBox.TYPE_INFO, timeout=10, default=False)
 
 
