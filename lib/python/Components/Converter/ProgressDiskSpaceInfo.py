@@ -83,17 +83,17 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 			else:
 				list = self.getMemInfo(entry[0])
 			if list[0] == 0:
-				text = '%s: Not Available' % entry[1]
+				text = _('%s: Not Available') % entry[1]
 			elif self.shortFormat:
-				text = '%s: %s, in use: %s%%' % (entry[1], self.getSizeStr(list[0]), list[3])
+				text = _('%s: %s, in use: %s%%') % (entry[1], self.getSizeStr(list[0]), list[3])
 			elif self.fullFormat:
-				text = '%s: %s Free:%s Used:%s (%s%%)' % (entry[1],
+				text = _('%s: %s Free:%s Used:%s (%s%%)') % (entry[1],
 				self.getSizeStr(list[0]),
 				self.getSizeStr(list[2]),
 				self.getSizeStr(list[1]),
 				list[3])
 			else:
-				text = '%s: %s Used:%s Free:%s' % (entry[1],
+				text = _('%s: %s Used:%s Free:%s') % (entry[1],
 				self.getSizeStr(list[0]),
 				self.getSizeStr(list[1]),
 				self.getSizeStr(list[2]))
