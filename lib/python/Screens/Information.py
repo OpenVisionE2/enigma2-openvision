@@ -20,6 +20,7 @@ from Components.ActionMap import HelpableActionMap
 from Components.config import config
 from Components.Console import Console
 from Components.Harddisk import Harddisk, harddiskmanager
+from Components.InputDevice import REMOTE_DISPLAY_NAME, REMOTE_NAME, REMOTE_RCTYPE, remoteControl
 from Components.Label import Label
 from Components.Network import iNetwork
 from Components.NimManager import nimmanager
@@ -1134,21 +1135,30 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("Remote control information")))
 		info.append("")
+		rcIndex = int(config.inputDevices.remotesIndex.value)
+		info.append(formatLine("P1", _("RC identification"), "%s  (Index: %d)" % (remoteControl.remotes[rcIndex][REMOTE_DISPLAY_NAME], rcIndex)))
+		rcName = remoteControl.remotes[rcIndex][REMOTE_NAME]
+		info.append(formatLine("P1", _("RC selected name"), rcName))
+		boxName = BoxInfo.getItem("rcname")
+		if boxName != rcName:
+			info.append(formatLine("P1", _("RC default name"), boxname))
+		rcType = remoteControl.remotes[rcIndex][REMOTE_RCTYPE]
+		info.append(formatLine("P1", _("RC selected type"), rcType))
+		boxType = BoxInfo.getItem("rctype")
+		if boxType != rcType:
+			info.append(formatLine("P1", _("RC default type"), boxType))
 		boxRcType = getBoxRCType()
 		if boxRcType:
 			if boxRcType == "unknown":
 				if isfile("/usr/bin/remotecfg"):
-					info.append(_("RC type:|%s") % _("Amlogic remote"))
+					boxRcType = _("Amlogic remote")
 				elif isfile("/usr/sbin/lircd"):
-					info.append(_("RC type:|%s") % _("LIRC remote"))
-			else:
-				info.append(formatLine("P1", _("RC type"), boxRcType))
+					boxRcType = _("LIRC remote")
+			if boxRcType != rcType:
+				info.append(formatLine("P1", _("RC detected type"), boxRcType))
 		customCode = fileReadLine("/proc/stb/ir/rc/customcode", source=MODULE_NAME)
 		if customCode:
 			info.append(formatLine("P1", _("RC custom code"), customCode))
-		info.append(formatLine("P1", _("RC code"), BoxInfo.getItem("rctype")))
-		info.append(formatLine("P1", _("RC name"), BoxInfo.getItem("rcname")))
-		info.append(formatLine("P1", _("RC ID number"), BoxInfo.getItem("rcidnum")))
 		info.append("")
 		info.append(formatLine("H", _("Driver and kernel information")))
 		info.append("")
