@@ -1,7 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-import netifaces, io, os, re
+import netifaces
+import io
+import os
+import re
 from Screens.Setup import Setup
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
