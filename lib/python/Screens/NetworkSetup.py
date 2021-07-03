@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-import os
+import netifaces, io, os, re
+from Screens.Setup import Setup
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Screens.HelpMenu import HelpableScreen
@@ -37,6 +38,12 @@ from Components.ScrollLabel import ScrollLabel
 from os import remove, unlink, rename
 from six import PY2
 from Components.SystemInfo import BoxInfo
+
+config.macaddress = ConfigSubsection()
+config.macaddress.interfaces = ConfigSelection(default="1", choices = [("1", _("eth0"))])
+config.macaddress.mac = ConfigText(default='', fixed_size=False)
+config.macaddress.new = ConfigText()
+configmac = config.macaddress
 
 model = BoxInfo.getItem("model")
 
@@ -426,82 +433,85 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 			self.createSetup()
 
 
-class NetworkMacSetup(Screen, ConfigListScreen, HelpableScreen):
-	def __init__(self, session):
-		Screen.__init__(self, session)
-		HelpableScreen.__init__(self)
-		Screen.setTitle(self, _("MAC address settings"))
-		self.curMac = self.getmac('eth0')
-		self.getConfigMac = NoSave(ConfigMacText(default=self.curMac))
+class MACSettings(Setup):
+    def __init__(self, session):
+        Setup.__init__(self, session=session, setup="macsettings")
+        self.setTitle(_("MAC Address Setup"))
+        self.session = session
+        self.onChangedEntry = []
+        self.list = []
+        self["actions"] = ActionMap(["SetupActions", "ConfigListActions"], {
+            "cancel": self.keyCancel,
+            "ok": self.ok,
+        }, -2)
+        ConfigListScreen.__init__(self, self.list, session=self.session, on_change = self.changedEntry)
+        self.CreateSetup()
 
-		self["key_red"] = StaticText(_("Cancel"))
-		self["key_green"] = StaticText(_("Save"))
+    def MacCurrent(self):
+        macaddress = configmac.mac.value
+        macdata = open("/etc/enigma2/hwmac", "w")
+        macdata.write(macaddress)
+        macdata.close()
 
-		self["introduction"] = StaticText(_("Press OK to set the MAC address."))
+    def CreateSetup(self):
+        self.Introduction = (_("Press OK to active the MAC address."))
+        self["introduction"] = StaticText(self.Introduction)
+        self.list.append(getConfigListEntry(_("Interface"), configmac.interfaces))
+        self.list.append(getConfigListEntry(_("Current mac address"), configmac.mac))
+        self.list.append(getConfigListEntry(_("Set new mac address"), configmac.new))
+        configmac.mac.value = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_LINK][0])["addr"].upper())
+        self.MacCurrent()
+        with open("/etc/enigma2/hwmac") as hwmac:
+            self.MacNew = hwmac.read()
 
-		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
-			{
-			"cancel": (self.cancel, _("Exit nameserver configuration")),
-			"ok": (self.ok, _("Activate current configuration")),
-			})
+        configmac.new.value = str(self.MacNew.upper().strip())
+        self["config"].list = self.list
+        self["config"].setList(self.list)
 
-		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
-			{
-			"red": (self.cancel, _("Exit MAC address configuration")),
-			"green": (self.ok, _("Activate MAC address configuration")),
-			})
+    def changedEntry(self):
+        for x in self.onChangedEntry:
+            x()
 
-		self["actions"] = NumberActionMap(["SetupActions"],
-		{
-			"ok": self.ok,
-		}, -2)
+    def ok(self):
+        self.session.openWithCallback(self.ChangeMac, MessageBox, _("You want to change current MAC address: ") + configmac.mac.value, MessageBox.TYPE_YESNO)
 
-		self.list = []
-		ConfigListScreen.__init__(self, self.list)
-		self.createSetup()
+    def ChangeMac(self,answer=False):
+        self.Console = Console()
+        if answer:
+            if re.match("\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}", configmac.new.value):
+                configmac.new.save()
+                self.Console.ePopen("ifconfig eth0 down && ifconfig eth0 down hw ether " + str(configmac.new.value) + " ifconfig eth0 up")
+                self.CheckInterfaces()
+                self.Console.ePopen("ifdown -v -f eth0; ifup -v eth0")
+                try:
+                    CurrentIP = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_INET][0])["addr"])
+                except:
+                    CurrentIP = "unknown"
+                self.session.open(MessageBox, _("MAC address successfully changed.\nNew MAC address: ") + configmac.new.value + "\nIP: " + CurrentIP, MessageBox.TYPE_INFO,timeout=10)
+                self.close()
+            else:
+                self.session.open(MessageBox,_("Not valide MAC address"), MessageBox.TYPE_INFO,timeout=10)
 
-	def getmac(self, iface):
-		mac = (0, 0, 0, 0, 0, 0)
-		ifconfig = commands.getoutput("ifconfig " + iface + "| grep HWaddr | awk '{ print($5) }'").strip()
-		if len(ifconfig) == 0:
-			mac = "00:00:00:00:00:00"
-		else:
-			mac = ifconfig[:17]
-		return mac
+    def CheckInterfaces(self):
+        with open("/etc/network/interfaces", "r") as interfaces:
+            interfacesdata = interfaces.read()
+        if "hwaddress ether" in interfacesdata:
+            oldMac = re.findall(r"hwaddress ether (\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2})", interfacesdata)[0]
+            interfacesdata = interfacesdata.replace(oldMac, configmac.new.value)
+            with open("/etc/network/interfaces", "w") as interfaces:
+                interfaces.write(interfacesdata)
+        else:
+            interfacesdata = open("/etc/network/interfaces", "r").readlines()
+            interfaceswrite = open("/etc/network/interfaces","w")
+            for line in interfacesdata:
+                interfaceswrite.write(line)
+                if "iface eth0 inet dhcp" in line or "iface eth0 inet static" in line:
+                    newmac = "	hwaddress ether " + configmac.new.value
+                    interfaceswrite.write(newmac + "\n")
+            interfaceswrite.close()
 
-	def createSetup(self):
-		self.list = []
-		self.list.append(getConfigListEntry(_("MAC address"), self.getConfigMac))
-		self["config"].list = self.list
-		self["config"].l.setList(self.list)
-
-	def ok(self):
-		MAC = self.getConfigMac.value
-		open("/etc/enigma2/hwmac", "w").write(MAC)
-		route = commands.getoutput("route -n |grep UG | awk '{print($2) }'")
-		self.restartLan()
-
-	def run(self):
-		self.ok()
-
-	def cancel(self):
+	def keyCancel(self):
 		self.close()
-
-	def restartLan(self):
-		iNetwork.restartNetwork(self.restartLanDataAvail)
-		self.restartLanRef = self.session.openWithCallback(self.restartfinishedCB, MessageBox, _("Please wait while your network is restarting..."), type=MessageBox.TYPE_INFO, enable_input=False)
-
-	def restartLanDataAvail(self, data):
-		if data is True:
-			iNetwork.getInterfaces(self.getInterfacesDataAvail)
-
-	def getInterfacesDataAvail(self, data):
-		if data is True:
-			self.restartLanRef.close(True)
-
-	def restartfinishedCB(self, data):
-		if data is True:
-			self.session.open(MessageBox, _("Finished restarting your network"), type=MessageBox.TYPE_INFO, timeout=10, default=False)
 
 
 class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
@@ -1151,7 +1161,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		if self["menulist"].getCurrent()[1] == 'dns':
 			self.session.open(NameserverSetup)
 		if self["menulist"].getCurrent()[1] == 'mac':
-			self.session.open(NetworkMacSetup)
+			self.session.open(MACSettings)
 		if self["menulist"].getCurrent()[1] == 'ipv6':
 			self.session.open(IPv6Setup)
 		if self["menulist"].getCurrent()[1] == 'scanwlan':
@@ -1282,7 +1292,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		if os.path.exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/NetworkWizard/networkwizard.xml")):
 			menu.append((_("Network wizard"), "openwizard"))
 		if self.iface == 'eth0':
-			menu.append((_("Network MAC settings"), "mac"))
+			menu.append((_("MAC Address Setup"), "mac"))
 			menu.append((_("Enable/Disable IPv6"), "ipv6"))
 
 		return menu
