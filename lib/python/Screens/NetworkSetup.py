@@ -478,7 +478,7 @@ class MACSettings(Setup):
     def ok(self):
         self.session.openWithCallback(self.ChangeMac, MessageBox, _("You want to change current MAC address: ") + configmac.mac.value, MessageBox.TYPE_YESNO)
 
-    def ChangeMac(self,answer=False):
+    def ChangeMac(self, answer=False):
         self.Console = Console()
         if answer:
             if re.match("\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}", configmac.new.value):
@@ -490,10 +490,10 @@ class MACSettings(Setup):
                     CurrentIP = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_INET][0])["addr"])
                 except:
                     CurrentIP = "unknown"
-                self.session.open(MessageBox, _("MAC address successfully changed.\nNew MAC address: ") + configmac.new.value + "\nIP: " + CurrentIP, MessageBox.TYPE_INFO,timeout=10)
+                self.session.open(MessageBox, _("MAC address successfully changed.\nNew MAC address: ") + configmac.new.value + "\nIP: " + CurrentIP, MessageBox.TYPE_INFO, timeout=10)
                 self.close()
             else:
-                self.session.open(MessageBox,_("Not valide MAC address"), MessageBox.TYPE_INFO,timeout=10)
+                self.session.open(MessageBox, _("Not valide MAC address"), MessageBox.TYPE_INFO, timeout=10)
 
     def CheckInterfaces(self):
         with open("/etc/network/interfaces", "r") as interfaces:
@@ -505,7 +505,7 @@ class MACSettings(Setup):
                 interfaces.write(interfacesdata)
         else:
             interfacesdata = open("/etc/network/interfaces", "r").readlines()
-            interfaceswrite = open("/etc/network/interfaces","w")
+            interfaceswrite = open("/etc/network/interfaces", "w")
             for line in interfacesdata:
                 interfaceswrite.write(line)
                 if "iface eth0 inet dhcp" in line or "iface eth0 inet static" in line:
