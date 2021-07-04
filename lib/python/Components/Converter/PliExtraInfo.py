@@ -379,6 +379,12 @@ class PliExtraInfo(Poll, Converter):
 		if self.type == "PIDInfo":
 			return self.createPIDInfo(info)
 
+		if self.type == "ServiceRef":
+			return self.createServiceRef(info)
+
+		if self.type == "TransponderInfo":
+			return self.createTransponderInfo(fedata, feraw, info)
+
 		if not feraw:
 			return ""
 
@@ -386,9 +392,6 @@ class PliExtraInfo(Poll, Converter):
 			return addspace(self.createProviderName(info)) + addspace(self.createTunerSystem(fedata)) + addspace(self.createFrequency(feraw)) + addspace(self.createPolarization(fedata)) \
 			+ addspace(self.createSymbolRate(fedata, feraw)) + addspace(self.createFEC(fedata, feraw)) + addspace(self.createModulation(fedata)) + addspace(self.createOrbPos(feraw)) \
 			+ addspace(self.createVideoCodec(info)) + addspace(self.createResolution(info)) + self.createGamma(info)
-
-		if self.type == "TransponderInfo":
-			return self.createTransponderInfo(fedata, feraw, info)
 
 		if self.type == "TransponderFrequency":
 			return self.createFrequency(feraw)
