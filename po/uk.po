@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2021-03-11 01:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: kvinto\n"
@@ -1208,6 +1208,22 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Тюнер не доступний."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1588,6 +1604,14 @@ msgstr "<невідомий>"
 msgid "=NO STREAM\n"
 msgstr "=НЕМАЄ ПОТОКУ\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1828,10 +1852,6 @@ msgstr "Запуск HbbTV (червона кнопка)"
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Активувати поточну конфігурацію"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Активувати поточну конфігурацію"
 
 msgid "Activate Picture in Picture"
@@ -4231,6 +4251,10 @@ msgid "Current CEC address"
 msgstr "Поточна СЕС адреса"
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "Поточна СЕС адреса"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "Поточний транспондер"
 
@@ -5173,6 +5197,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Ви хочете записати цю колекцію на DVD диск?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Бажаєте оновити пакет::\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Ви хочете видалити всі журнали збоїв"
 
@@ -5615,6 +5643,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Включити кешування телетексту"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5633,7 +5664,8 @@ msgstr "Включити це налаштування, якщо Ваша ант
 msgid "Enable timer conflict detection"
 msgstr "Включити виявлення конфліктів таймера"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "Увімкнути показ усіх значень типу так/ні, увімкнути/вимкнути та інше як графічний перемикач."
 
 msgid "Enable volume control with arrow buttons"
@@ -6026,10 +6058,6 @@ msgstr "Вихід з EPG"
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Вийти з налаштування DNS"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Вийти з налаштування DNS"
 
 msgid "Exit editor"
@@ -8211,16 +8239,21 @@ msgid "Luxembourgish"
 msgstr "Люксембурзька"
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Налаштування Жорсткого Диску"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "АП адреса"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Налаштування адаптера"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Налаштування Жорсткого Диску"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8918,10 +8951,6 @@ msgid "Network Information Actions"
 msgstr "Конфігурація мережі"
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Активувати налаштування мережі"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "Налаштування мережі"
 
@@ -9241,6 +9270,10 @@ msgstr "Не визначений"
 
 msgid "Not Installed"
 msgstr "Не встановлено"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "АП адреса"
 
 msgid "Not associated"
 msgstr "Немає асоціацій"
@@ -10350,6 +10383,10 @@ msgstr "Натисніть MENU на пульті ду для отримання
 msgid "Press OK on your remote control to continue."
 msgstr "Натисніть ОК для продовження."
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Натисніть ОК для редагування налаштувань."
+
 #, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Натисніть ОК для активації вибраного %s скіну."
@@ -10392,10 +10429,6 @@ msgstr "Натисніть OK, щоб вибрати місце збережен
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "Натисніть ОК щоб вибрати/зняти CAId."
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Натисніть ОК для редагування налаштувань."
 
 msgid "Press OK to toggle the selection"
 msgstr "Натисніть OK для зміни вибору"
@@ -10597,27 +10630,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "Данія"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "Додаткові Налаштування"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Перейменувати"
 
 #, fuzzy
-msgid "RC type"
-msgstr "тип"
+msgid "RC default type"
+msgstr "Тип повторення"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "Тип повторення"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "З'єднання"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "Назва колекції"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "Тип повторення"
 
 msgid "REC"
 msgstr "ЗАПИС"
@@ -12293,6 +12332,10 @@ msgstr "Встановити призначення CI для виявлення
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "АП адреса"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12495,6 +12538,10 @@ msgstr "Показати інформацію"
 msgid "Show Audioselection"
 msgstr "Показати вибір аудіо"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "Показати Так/Ні, як графічний перемикач"
+
 msgid "Show CI messages"
 msgstr "Показати повідомлення СІ"
 
@@ -12557,14 +12604,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Показати інфо транспондера"
 
-msgid "Show True/False as graphical switch"
-msgstr "Показати Так/Ні, як графічний перемикач"
-
 msgid "Show VCR scart on main menu"
 msgstr "Показати 'VCR scart' в головному меню"
 
 msgid "Show WLAN status"
 msgstr "Показати статус Wi-Fi мережі"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Показувати анімацію коли система зайнята"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -16366,10 +16414,6 @@ msgstr "Так, завжди"
 msgid "Yes, and delete this movie"
 msgstr "Так і видалити цей запис"
 
-#, fuzzy
-msgid "Yes, but not in multi selections"
-msgstr "так, але не в декількох варіантах"
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Так, видалити цей запис і повернутися в список записів"
 
@@ -16995,9 +17039,6 @@ msgstr "розкодувати і записати ecm"
 msgid "detective/thriller"
 msgstr "детектив/трілер"
 
-msgid "disable"
-msgstr "вимкнути"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Включити редагування фаворитів"
@@ -17050,9 +17091,6 @@ msgstr "вбудований"
 msgid "empty"
 msgstr "порожній"
 
-msgid "enable"
-msgstr "ввімкнути"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "включити початковий зображення"
@@ -17100,6 +17138,9 @@ msgstr "помилка під час сканування"
 #, fuzzy
 msgid "ese"
 msgstr "Скидання"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17448,9 +17489,6 @@ msgstr "немає менеджера ресурсів"
 
 msgid "no storage devices found"
 msgstr "пристрої не знайдені"
-
-msgid "none"
-msgstr "жодного"
 
 msgid "normal"
 msgstr "нормальний"

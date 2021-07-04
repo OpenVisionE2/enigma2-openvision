@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2013-10-23 19:15+0100\n"
 "Last-Translator: andy1 <dmmm8000pvr@gmail.com>\n"
 "Language-Team: none\n"
@@ -1072,6 +1072,22 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "utilgjengelig"
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1462,6 +1478,14 @@ msgstr "<ukjent>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 #
 msgid "??"
 msgstr ""
@@ -1715,11 +1739,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktivere gjeldende konfigurasjon"
-
-#
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Aktivere gjeldende konfigurasjon"
 
 #
@@ -4322,6 +4341,10 @@ msgstr "Nyheter aktuelle saker"
 msgid "Current CEC address"
 msgstr "Gjeldende CEC adresse"
 
+#, fuzzy
+msgid "Current MAC address"
+msgstr "Gjeldende CEC adresse"
+
 #
 #, fuzzy
 msgid "Current crash log"
@@ -5358,6 +5381,11 @@ msgstr "Vil du brenne denne samlingen pål DVD?"
 
 #
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Vil du oppdatere pakken:\n"
+
+#
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Vil du legge til en kanalliste?"
 
@@ -5853,6 +5881,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Aktivere tekst-TV lagring"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5871,7 +5902,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr ""
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -6294,11 +6325,6 @@ msgstr "Avslutte EPG"
 #
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Avslutte innstilling for navnetjener"
-
-#
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Avslutte innstilling for navnetjener"
 
 #
@@ -8660,19 +8686,23 @@ msgstr "Luxemburgsk"
 msgid "Luxembourgish"
 msgstr "Luxemburgsk"
 
+#, fuzzy
+msgid "MAC Address Setup"
+msgstr "Disk oppsett"
+
 #
 #, fuzzy
 msgid "MAC address"
 msgstr "IP adresse"
 
-#
-#, fuzzy
-msgid "MAC address settings"
-msgstr "Nettverksinstillinger"
-
 #, fuzzy
 msgid "MAC address setup"
 msgstr "Disk oppsett"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -9469,11 +9499,6 @@ msgstr "Nettverksinnstilling..."
 
 #
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Aktivere nettverksinnstillinger"
-
-#
-#, fuzzy
 msgid "Network Setup"
 msgstr "Nettverksinstillinger"
 
@@ -9841,6 +9866,11 @@ msgstr "Brukerdefinert"
 #, fuzzy
 msgid "Not Installed"
 msgstr "Installere"
+
+#
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP adresse"
 
 msgid "Not associated"
 msgstr "Ikke tilknyttet"
@@ -11036,6 +11066,10 @@ msgstr "Trykk på MENU på fjernkontrollen for flere alternativer."
 msgid "Press OK on your remote control to continue."
 msgstr "Trykk OK for å fortsette."
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Trykk OK for å endre innstillinger."
+
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Trykk OK for å ta i bruk det valgte skin."
@@ -11080,10 +11114,6 @@ msgstr "Oppretter katalog %s mislyktes."
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "Trykk OK for å velge/fjerne en CAId."
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Trykk OK for å endre innstillinger."
 
 msgid "Press OK to toggle the selection"
 msgstr ""
@@ -11299,12 +11329,6 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #
 #, fuzzy
 msgid "RC custom code"
@@ -11312,16 +11336,33 @@ msgstr "Tilpasse"
 
 #
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Gi nytt navn"
 
+#
 #, fuzzy
-msgid "RC type"
-msgstr "Vis type"
+msgid "RC default type"
+msgstr "Gjentagelsestype"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#
+#, fuzzy
+msgid "RC detected type"
+msgstr "Gjentagelsestype"
+
+#
+#, fuzzy
+msgid "RC identification"
+msgstr "Kommunikasjon"
+
+#
+#, fuzzy
+msgid "RC selected name"
+msgstr "Navnesamling"
+
+#
+#, fuzzy
+msgid "RC selected type"
+msgstr "Gjentagelsestype"
 
 msgid "REC"
 msgstr ""
@@ -13140,6 +13181,11 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP adresse"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -13352,6 +13398,9 @@ msgstr "Vis info"
 msgid "Show Audioselection"
 msgstr ""
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr ""
 
@@ -13419,9 +13468,6 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Vis transponder info"
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 #
 msgid "Show VCR scart on main menu"
 msgstr "Vis VCR scart på hovedmenyen"
@@ -13429,6 +13475,10 @@ msgstr "Vis VCR scart på hovedmenyen"
 #
 msgid "Show WLAN status"
 msgstr "Vis WLAN status"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Vis varsel når opptatt"
 
 msgid "Show alsa-utils in plugin browser"
 msgstr ""
@@ -17520,9 +17570,6 @@ msgstr "Ja, alltid"
 msgid "Yes, and delete this movie"
 msgstr "Ja, og slett denne filmen"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr ""
 
@@ -18187,10 +18234,6 @@ msgid "detective/thriller"
 msgstr "detektime/spenning"
 
 #
-msgid "disable"
-msgstr "deaktivere"
-
-#
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Aktivere favorittliste redigering"
@@ -18248,10 +18291,6 @@ msgstr ""
 msgid "empty"
 msgstr "tom"
 
-#
-msgid "enable"
-msgstr "aktivere"
-
 msgid "enable cuts (preview)"
 msgstr ""
 
@@ -18303,6 +18342,9 @@ msgstr ""
 #, fuzzy
 msgid "ese"
 msgstr "Tilbakestill"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -18687,10 +18729,6 @@ msgstr ""
 
 msgid "no storage devices found"
 msgstr "ingen lagringsenheter er funnet"
-
-#
-msgid "none"
-msgstr "Ingen"
 
 msgid "normal"
 msgstr "normal"

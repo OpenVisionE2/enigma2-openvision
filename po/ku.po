@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 Kurdish translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2013-04-22 04:29+0330\n"
 "Last-Translator: dimili21\n"
 "Language-Team: \n"
@@ -1189,6 +1189,22 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "unavailable"
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1566,6 +1582,14 @@ msgstr "<unknown>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1805,10 +1829,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Ti dixwazi aktif biki"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Ti dixwazi aktif biki"
 
 msgid "Activate Picture in Picture"
@@ -4214,6 +4234,10 @@ msgid "Current CEC address"
 msgstr "Current CEC address"
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "Current CEC address"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "Current transponder"
 
@@ -5167,6 +5191,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Do you want to burn this collection to DVD medium?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Do you want to update the package:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Do you want to install a channel list?"
 
@@ -5614,6 +5642,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Enable teletext caching"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5632,7 +5663,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr ""
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -6017,10 +6048,6 @@ msgstr "Exit EPG"
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Exit nameserver configuration"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Exit nameserver configuration"
 
 msgid "Exit editor"
@@ -8193,16 +8220,21 @@ msgid "Luxembourgish"
 msgstr "Luxembourgish"
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Hard disk setup"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "IP address"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Adaptör Çéki"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Hard disk setup"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8915,10 +8947,6 @@ msgid "Network Information Actions"
 msgstr "Network configuration..."
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Eyare Networké Aktif bike"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "Network setup"
 
@@ -9244,6 +9272,10 @@ msgstr "User defined"
 #, fuzzy
 msgid "Not Installed"
 msgstr "Install"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP address"
 
 msgid "Not associated"
 msgstr "Not associated"
@@ -10352,6 +10384,10 @@ msgstr "Press MENU on your remote control for additional options."
 msgid "Press OK on your remote control to continue."
 msgstr "Press OK on your remote control to continue."
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Press OK to edit the settings."
+
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Press OK to activate the selected skin."
@@ -10396,10 +10432,6 @@ msgstr "Creating directory %s failed."
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "Press OK to select/deselect a CAId."
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Press OK to edit the settings."
 
 msgid "Press OK to toggle the selection"
 msgstr ""
@@ -10601,27 +10633,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "Weki Xwu Çéki"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Rename"
 
 #, fuzzy
-msgid "RC type"
-msgstr "List type"
+msgid "RC default type"
+msgstr "Repeat type"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "Repeat type"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "Hevra Girédayi"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "Nav Koleksiyon"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "Repeat type"
 
 msgid "REC"
 msgstr ""
@@ -12303,6 +12341,10 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP address"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12506,6 +12548,9 @@ msgstr "Show info"
 msgid "Show Audioselection"
 msgstr ""
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr ""
 
@@ -12567,14 +12612,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Show transponder info"
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 msgid "Show VCR scart on main menu"
 msgstr ""
 
 msgid "Show WLAN status"
 msgstr "Show WLAN status"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Show animation while busy"
 
 msgid "Show alsa-utils in plugin browser"
 msgstr ""
@@ -16366,9 +16412,6 @@ msgstr "Yes, always"
 msgid "Yes, and delete this movie"
 msgstr "Yes, and delete this movie"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr ""
 
@@ -16980,9 +17023,6 @@ msgstr "descramble and record ecm"
 msgid "detective/thriller"
 msgstr "detective/thriller"
 
-msgid "disable"
-msgstr "disable"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Enable favourites edit"
@@ -17035,9 +17075,6 @@ msgstr ""
 msgid "empty"
 msgstr "empty"
 
-msgid "enable"
-msgstr "enable"
-
 msgid "enable cuts (preview)"
 msgstr ""
 
@@ -17084,6 +17121,9 @@ msgstr ""
 #, fuzzy
 msgid "ese"
 msgstr "Reset"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17430,9 +17470,6 @@ msgstr ""
 
 msgid "no storage devices found"
 msgstr "no storage devices found"
-
-msgid "none"
-msgstr "none"
 
 msgid "normal"
 msgstr "normal"

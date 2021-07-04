@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -1212,6 +1212,22 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Uztvērējs nav pieejams."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1592,6 +1608,14 @@ msgstr "<nezināms>"
 msgid "=NO STREAM\n"
 msgstr "-NAV STRAUMJU\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1833,10 +1857,6 @@ msgstr "Aktivizēt HbbTV"
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktivizēt pašreizējo konfigurāciju"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Aktivizēt pašreizējo konfigurāciju"
 
 msgid "Activate Picture in Picture"
@@ -4238,6 +4258,10 @@ msgid "Current CEC address"
 msgstr "Pašreizējā CEC adrese"
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "Pašreizējā CEC adrese"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "Pašreizējais transponderis"
 
@@ -5180,6 +5204,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Vai vēlaties ierakstīt šo kolekciju uz DVD nesēja?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Vai vēlaties atjaunināt pakotni:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Vai vēlaties dzēst visus žurnāla failus"
 
@@ -5622,6 +5650,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Aktivizēt teleteksta kešošanu"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5640,7 +5671,8 @@ msgstr "Iespējojiet šo iestatījumu, ja jūsu antenai ir nepieciešams spriegu
 msgid "Enable timer conflict detection"
 msgstr "Aktivizēt taimeru konflikta noteikšanu"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "Attēlot iestatījumos ar slēdža ikonu visus patiess/nepatiess, jā/nē, ieslēgts/izslēgts un iespējots/atspējots."
 
 msgid "Enable volume control with arrow buttons"
@@ -6033,10 +6065,6 @@ msgstr "Iziet no EPG"
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Iziet no DNS konfigurācijas"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Iziet no DNS konfigurācijas"
 
 msgid "Exit editor"
@@ -8216,16 +8244,21 @@ msgid "Luxembourgish"
 msgstr "Luksemburgiešu"
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Cietā diska iestatījumi"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "IP adrese"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Adaptera iestatījumi"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Cietā diska iestatījumi"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8924,10 +8957,6 @@ msgid "Network Information Actions"
 msgstr "Tīkla konfigurācija"
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Aktivizēt tīkla iestatījumus"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "Tīkla iestatījumi"
 
@@ -9247,6 +9276,10 @@ msgstr "Nav definēts"
 
 msgid "Not Installed"
 msgstr "Nav uzstādīts"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP adrese"
 
 msgid "Not associated"
 msgstr "Nav piešķirts"
@@ -10357,6 +10390,10 @@ msgstr "Papildus iespējām spiediet MENU uz tālvadības pults."
 msgid "Press OK on your remote control to continue."
 msgstr "Spiediet OK uz tālvadības pults, lai turpinātu."
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Spiediet OK, lai rediģētu iestatījumus."
+
 #, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Spiediet OK lai aktivizētu izvēlēto %s noformējumu."
@@ -10399,10 +10436,6 @@ msgstr "Spiediet OK, lai saglabātu žurnāla faila atrašanās vietu."
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "Spiediet OK, lai izvēlētos/neizvēlētos CAId."
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Spiediet OK, lai rediģētu iestatījumus."
 
 msgid "Press OK to toggle the selection"
 msgstr "Nospiediet OK, lai pārslēgtu izvēli"
@@ -10604,27 +10637,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "Dānija"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "Iestatījumi"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Pārsaukt"
 
 #, fuzzy
-msgid "RC type"
-msgstr "veids"
+msgid "RC default type"
+msgstr "Atkārtošanas veids"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "Atkārtošanas veids"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "Komunikācija"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "Kolekcijas nosaukums"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "Atkārtošanas veids"
 
 msgid "REC"
 msgstr "IER"
@@ -12300,6 +12339,10 @@ msgstr "Iestatīt CI piešķiršanu pieejamo kanālu noteikšanai."
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP adrese"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12502,6 +12545,10 @@ msgstr "Rādīt info"
 msgid "Show Audioselection"
 msgstr "Rādīt audio izvēlni"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "Rādīt jā/nē iestatījums ar ikonu"
+
 msgid "Show CI messages"
 msgstr "Rādīt CI paziņojumus"
 
@@ -12564,14 +12611,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Rādīt transpondera informāciju"
 
-msgid "Show True/False as graphical switch"
-msgstr "Rādīt jā/nē iestatījums ar ikonu"
-
 msgid "Show VCR scart on main menu"
 msgstr "Rādīt VCR scart galvenā izvēlnē"
 
 msgid "Show WLAN status"
 msgstr "Rādīt bezvadu tīkla statusu"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Rādīt animāciju kad aizņemts"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -16369,10 +16417,6 @@ msgstr "Jā vienmēr"
 msgid "Yes, and delete this movie"
 msgstr "Jā, un dzēst šo filmu"
 
-#, fuzzy
-msgid "Yes, but not in multi selections"
-msgstr "izmantot tikai jā/nē"
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Jā, dzēst šo filmu un atgriezties mediju sarakstā"
 
@@ -16999,9 +17043,6 @@ msgstr "dekodēt un ierakstīt ecm"
 msgid "detective/thriller"
 msgstr "detektīvs/trilleris"
 
-msgid "disable"
-msgstr "izslēgt"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Aktivizēt favorītu rediģēšanu"
@@ -17054,9 +17095,6 @@ msgstr "iekšējais"
 msgid "empty"
 msgstr "tukšs"
 
-msgid "enable"
-msgstr "aktivizēt"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "aktivizēt pamācību uzsākot"
@@ -17104,6 +17142,9 @@ msgstr "kļūda skenējot"
 #, fuzzy
 msgid "ese"
 msgstr "Atstatīt"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17452,9 +17493,6 @@ msgstr "nav resursu pārvaldnieka"
 
 msgid "no storage devices found"
 msgstr "atmiņas ierīce nav atrasta"
-
-msgid "none"
-msgstr "nav"
 
 msgid "normal"
 msgstr "normāli"

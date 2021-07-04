@@ -7,38 +7,11 @@
 #include <lib/dvb_ci/dvbci_camgr.h>
 #include <lib/dvb_ci/dvbci_datetimemgr.h>
 #include <lib/dvb_ci/dvbci_mmi.h>
-#include <lib/dvb_ci/dvbci.h>
-#include <lib/dvb_ci/dvbci_ui.h>
 #include <lib/dvb_ci/dvbci_ccmgr.h>
 #include <lib/dvb_ci/dvbci_hlcmgr.h>
 #include <lib/dvb_ci/dvbci_host_ctrl.h>
 #include <lib/dvb_ci/dvbci_cam_upgrade.h>
 #include <lib/dvb_ci/dvbci_app_mmi.h>
-
-eDVBCIPlusHelper::eDVBCIPlusHelper(eDVBCISlot *tslot, unsigned long tag, int session)
-{
-	m_tslot = tslot;
-	m_tag = tag;
-	m_session = session;
-	eDVBCIInterfaces::getInstance()->sendDataToHelper(eCIClient::CIPLUSHELPER_SESSION_CREATE, m_tslot->getSlotID(), m_session, m_tag, (unsigned char *)"\x00\x00\x00\x00", NULL, 0);
-}
-
-eDVBCIPlusHelper::~eDVBCIPlusHelper()
-{
-	eDVBCIInterfaces::getInstance()->sendDataToHelper(eCIClient::CIPLUSHELPER_SESSION_CLOSE, m_tslot->getSlotID(), m_session, m_tag, (unsigned char *)"\x00\x00\x00\x00", NULL, 0);
-}
-
-int eDVBCIPlusHelper::receivedAPDU(const unsigned char *tag, const void *data, int len)
-{
-	eDVBCIInterfaces::getInstance()->sendDataToHelper(eCIClient::CIPLUSHELPER_RECV_APDU, m_tslot->getSlotID(), m_session, m_tag, (unsigned char *)tag, (unsigned char *)data, len);
-	return 0;
-}
-
-int eDVBCIPlusHelper::doAction()
-{
-	eDVBCIInterfaces::getInstance()->sendDataToHelper(eCIClient::CIPLUSHELPER_DOACTION, m_tslot->getSlotID(), m_session, m_tag, (unsigned char *)"\x00\x00\x00\x00", NULL, 0);
-	return 0;
-}
 
 DEFINE_REF(eDVBCISession);
 
@@ -63,7 +36,7 @@ int eDVBCISession::buildLengthField(unsigned char *pkt, int len)
 		return 3;
 	} else
 	{
-		eDebug("[CI SESS] too big length");
+		eWarning("[CI SESS] too big length");
 		exit(0);
 	}
 }
@@ -189,9 +162,21 @@ void eDVBCISession::createSession(eDVBCISlot *slot, const unsigned char *resourc
 		session = new eDVBCICAManagerSession(slot);
 		eDebug("[CI SESS] CA MANAGER");
 		break;
+	case 0x00200041:
+		session = new eDVBCIHostControlSession;
+		eDebug("[CI SESS] Host Control");
+		break;
+	case 0x00240041:
+		session=new eDVBCIDateTimeSession;
+		eDebug("[CI SESS] DATE-TIME");
+		break;
 	case 0x00400041:
 		session = new eDVBCIMMISession(slot);
 		eDebug("[CI SESS] MMI - create session");
+		break;
+	case 0x00410041:
+		session = new eDVBCIApplicationMMISession;
+		eDebug("[CI SESS] Application MMI");
 		break;
 	case 0x008C1001:
 		session = new eDVBCICcSession(slot);
@@ -205,39 +190,17 @@ void eDVBCISession::createSession(eDVBCISlot *slot, const unsigned char *resourc
 		session = new eDVBCICAMUpgradeSession;
 		eDebug("[CI SESS] CAM Upgrade");
 		break;
-	case 0x00200041:
-		session = new eDVBCIHostControlSession;
-		eDebug("[CI SESS] Host Control");
-		break;
-	case 0x00410041:
-		session = new eDVBCIApplicationMMISession;
-		eDebug("[CI SESS] Application MMI");
-		break;
 	case 0x00100041:
 //		session=new eDVBCIAuthSession;
 		eDebug("[CI SESS] AuthSession");
 		[[fallthrough]];
-	case 0x00240041:
-		if (!eDVBCIInterfaces::getInstance()->isClientConnected())
-		{
-			session=new eDVBCIDateTimeSession;
-			eDebug("[CI SESS] DATE-TIME");
-			break;
-		}
-		[[fallthrough]];
 	case 0x00800041://EBU Teletext 00800041       128        1           1
-		printf("create EBU teletext session, but no support now .\n");
-		session=0;
-		status=0xF0;
-		break;
-	case 0x00700041://ca card data 00700041       112        *           1
-		eDebug("[CI SESS] unknown resource type %02x %02x %02x %02x", resource_identifier[0], resource_identifier[1], resource_identifier[2],resource_identifier[3]);
-		printf("create read ca card data session, but no support now .\n");
+		eDebug("[CI SESS] Create EBU teletext session but no support for now.");
 		session=0;
 		status=0xF0;
 		break;
 	case 0x00780041://EPG event  00780041       120        *           1
-		printf("create EPG event session, but no support now .\n");
+		eDebug("[CI SESS] Create EPG event session but no support for now.");
 		session=0;
 		status=0xF0;
 		break;
@@ -249,7 +212,7 @@ void eDVBCISession::createSession(eDVBCISlot *slot, const unsigned char *resourc
 
 	if (!session)
 	{
-		eDebug("[CI SESS] unknown session.. expect crash");
+		eWarning("[CI SESS] unknown session.. expect crash");
 		return;
 	}
 
@@ -300,10 +263,10 @@ void eDVBCISession::receiveData(eDVBCISlot *slot, const unsigned char *ptr, size
 
 	eDebug("[CI SESS] slot: %p",slot);
 
-	eDebugNoNewLineStart("[CI SESS]: ");
+	eTraceNoNewLineStart("[CI SESS]: ");
 	for(unsigned int i=0;i<len;i++)
-		eDebugNoNewLine("%02x ",ptr[i]);
-	eDebugNoNewLine("\n");
+		eTraceNoNewLineStart("%02x ",ptr[i]);
+	eTraceNoNewLineStart("\n");
 
 	llen = parseLengthField(pkt, hlen);
 	pkt += llen;
@@ -330,14 +293,14 @@ void eDVBCISession::receiveData(eDVBCISlot *slot, const unsigned char *ptr, size
 
 		if ((!session_nb) || (session_nb >= SLMS))
 		{
-			eDebug("[CI SESS] PROTOCOL: illegal session number %x", session_nb);
+			eWarning("[CI SESS] PROTOCOL: illegal session number %x", session_nb);
 			return;
 		}
 
 		session=sessions[session_nb-1];
 		if (!session)
 		{
-			eDebug("[CI SESS] PROTOCOL: data on closed session %x", session_nb);
+			eWarning("[CI SESS] PROTOCOL: data on closed session %x", session_nb);
 			return;
 		}
 
@@ -389,7 +352,7 @@ void eDVBCISession::receiveData(eDVBCISlot *slot, const unsigned char *ptr, size
 		}
 
 	if (len)
-		eDebug("[CI SESS] PROTOCOL: warning, TL-Data has invalid length");
+		eWarning("[CI SESS] PROTOCOL: warning, TL-Data has invalid length");
 }
 
 eDVBCISession::~eDVBCISession()
@@ -397,14 +360,3 @@ eDVBCISession::~eDVBCISession()
 //	eDebug("[CI SESS] destroy %p", this);
 }
 
-void eDVBCISession::setAction(unsigned int session, int val)
-{
-	if (val)
-	{
-		if (sessions[session - 1])
-		{
-			sessions[session - 1]->action = val;
-			sessions[session - 1]->poll();
-		}
-	}
-}

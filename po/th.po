@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1-En-Th\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2010-04-08 18:13+0700\n"
 "Last-Translator: Tony - Thaidreambox\n"
 "Language-Team: Tony @ Thai Dreambox <tonyboyth@gmail.com>\n"
@@ -1132,6 +1132,22 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "ไม่สามารถใช้ได้"
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1507,6 +1523,14 @@ msgstr "<ไม่ทราบ>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1721,10 +1745,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "สั่งใช้งานการตั้งค่าปัจจุบัน"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "สั่งใช้งานการตั้งค่าปัจจุบัน"
 
 msgid "Activate Picture in Picture"
@@ -4151,6 +4171,10 @@ msgid "Current CEC address"
 msgstr ""
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "IP Address"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "ทรานสปอนเดอร์ปัจจุบัน"
 
@@ -5114,6 +5138,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "ท่านต้องการที่จะเขียนคอลเล็คชั่นนี้ลงแผ่นดีวีดีหรือไม่?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "ยืนยันจะปรับปรุงส่วนประกอบนี้:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "ท่านต้องการที่จะติดตั้งส่วนประกอบนี้:\n"
 
@@ -5556,6 +5584,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr ""
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5574,7 +5605,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr ""
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -5958,10 +5989,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "ออกจากการตั้งค่า Nameserver"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "ออกจากการตั้งค่า Nameserver"
 
 msgid "Exit editor"
@@ -8148,16 +8175,21 @@ msgid "Luxembourgish"
 msgstr ""
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "ตั้งค่าฮาร์ดดิสก์"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "IP Address"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "ตั้งค่าอะแด๊ปเตอร์"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "ตั้งค่าฮาร์ดดิสก์"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8868,10 +8900,6 @@ msgid "Network Information Actions"
 msgstr "ตั้งค่าเครือข่าย..."
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "ตั้งค่าเครือข่าย"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "ตั้งค่าเครือข่าย"
 
@@ -9202,6 +9230,10 @@ msgstr "ผู้ใช้กำหนด"
 #, fuzzy
 msgid "Not Installed"
 msgstr "ติดตั้ง"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP Address"
 
 msgid "Not associated"
 msgstr ""
@@ -10322,6 +10354,10 @@ msgstr ""
 msgid "Press OK on your remote control to continue."
 msgstr "กดปุ่ม OK ที่รีโมทเพื่อทำงานต่อ"
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "กดปุ่ม OK เพื่อแก้ไข"
+
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "กดปุ่ม OK เพื่อเริ่มใช้สกินที่เลือกไว้"
@@ -10367,10 +10403,6 @@ msgstr "ไม่สามารถสร้างโฟลเดอร์ %s �
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "กดปุ่ม OK เพื่อเลือกหรือยกเลิก CAId"
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "กดปุ่ม OK เพื่อแก้ไข"
 
 msgid "Press OK to toggle the selection"
 msgstr ""
@@ -10571,27 +10603,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "ปรับแต่ง"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "เปลี่ยนชื่อ"
 
 #, fuzzy
-msgid "RC type"
-msgstr "ประเภทการทดสอบ"
+msgid "RC default type"
+msgstr "ทำซ้ำแบบ"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "ทำซ้ำแบบ"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "ติดต่อสื่อสาร"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "ชื่อคอลเลคชั่น"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "ทำซ้ำแบบ"
 
 msgid "REC"
 msgstr ""
@@ -12297,6 +12335,10 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP Address"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12500,6 +12542,9 @@ msgstr "แสดงข้อมูล"
 msgid "Show Audioselection"
 msgstr ""
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr ""
 
@@ -12560,15 +12605,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "แสดงข้อมูล Transponder"
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 msgid "Show VCR scart on main menu"
 msgstr ""
 
 #, fuzzy
 msgid "Show WLAN status"
 msgstr "แสดงสถานะของ WLAN"
+
+msgid "Show additional slider value"
+msgstr ""
 
 msgid "Show alsa-utils in plugin browser"
 msgstr ""
@@ -16365,9 +16410,6 @@ msgstr ""
 msgid "Yes, and delete this movie"
 msgstr "ใช่ - ต้องการที่จะลบภาพยนต์นี้"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr ""
 
@@ -16957,9 +16999,6 @@ msgstr ""
 msgid "detective/thriller"
 msgstr ""
 
-msgid "disable"
-msgstr "ไม่ใช้"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "แก้ไขรายการโปรด"
@@ -17009,9 +17048,6 @@ msgstr ""
 msgid "empty"
 msgstr "ว่าง"
 
-msgid "enable"
-msgstr "ใช้งาน"
-
 msgid "enable cuts (preview)"
 msgstr ""
 
@@ -17057,6 +17093,9 @@ msgstr ""
 #, fuzzy
 msgid "ese"
 msgstr "ตั้งค่าใหม่"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17401,9 +17440,6 @@ msgstr ""
 
 msgid "no storage devices found"
 msgstr ""
-
-msgid "none"
-msgstr "ไม่มี"
 
 msgid "normal"
 msgstr ""

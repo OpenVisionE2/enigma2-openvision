@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 344784320@qq.com\n"
 "Language-Team: Openpli Team\n"
@@ -1065,6 +1065,22 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "调谐器不可用"
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1426,6 +1442,14 @@ msgstr "<未知>"
 msgid "=NO STREAM\n"
 msgstr "=没有串流\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr ""
 
@@ -1665,10 +1689,6 @@ msgstr "激活HbbTV（红色按钮）"
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "启用当前设置"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "启用当前设置"
 
 msgid "Activate Picture in Picture"
@@ -4068,6 +4088,10 @@ msgid "Current CEC address"
 msgstr "当前CEC地址"
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "当前CEC地址"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "当前转发器"
 
@@ -5000,6 +5024,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "是否要烧录这个收藏到DVD光盘?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "是否要升级软件包:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "要删除所有crash日志文件吗？"
 
@@ -5441,6 +5469,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "启用图文电视缓冲"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5459,7 +5490,8 @@ msgstr "如果天线系统需要电源，请启用此设置"
 msgid "Enable timer conflict detection"
 msgstr "启用定时器冲突检测"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "启用以将所有真/假、是/否、开/关和启用/禁用设置选项显示为图形开关。"
 
 msgid "Enable volume control with arrow buttons"
@@ -5852,10 +5884,6 @@ msgstr "退出EPG"
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "退出DNS配置"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "退出DNS配置"
 
 msgid "Exit editor"
@@ -8029,16 +8057,21 @@ msgid "Luxembourgish"
 msgstr "卢森堡"
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "硬盘设置"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "IP地址"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "网卡设置"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "硬盘设置"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8736,10 +8769,6 @@ msgid "Network Information Actions"
 msgstr "网络配置"
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "激活网络设置"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "网络设置"
 
@@ -9058,6 +9087,10 @@ msgstr "未定义"
 
 msgid "Not Installed"
 msgstr "未安装"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP地址"
 
 msgid "Not associated"
 msgstr "不关联"
@@ -10161,6 +10194,10 @@ msgstr "按MENU键查看更多选项。"
 msgid "Press OK on your remote control to continue."
 msgstr "按OK键确认。"
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "按OK键修改设置"
+
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "按OK键激活所选皮肤: %s。"
@@ -10204,10 +10241,6 @@ msgstr "选择日志文件的目录"
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "按OK键 选择/取消 CAID"
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "按OK键修改设置"
 
 msgid "Press OK to toggle the selection"
 msgstr "按OK键切换选项"
@@ -10409,27 +10442,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "高级设置"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "改名"
 
 #, fuzzy
-msgid "RC type"
-msgstr "列表类型"
+msgid "RC default type"
+msgstr "重复类型"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "重复类型"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "通信"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "收藏名称"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "重复类型"
 
 msgid "REC"
 msgstr "录制"
@@ -12099,6 +12138,10 @@ msgstr "设置用于检测可用服务的CI分配。"
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP地址"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12301,6 +12344,10 @@ msgstr "显示信息"
 msgid "Show Audioselection"
 msgstr "显示音频选项"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "将真/假显示为图形开关"
+
 msgid "Show CI messages"
 msgstr "显示CI信息"
 
@@ -12363,14 +12410,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "显示转发器信息"
 
-msgid "Show True/False as graphical switch"
-msgstr "将真/假显示为图形开关"
-
 msgid "Show VCR scart on main menu"
 msgstr "在主菜单显示VCR scart接口"
 
 msgid "Show WLAN status"
 msgstr "显示WLAN状态"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "忙时显示动画"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -16186,10 +16234,6 @@ msgstr "总是"
 msgid "Yes, and delete this movie"
 msgstr "是的，删除此电影"
 
-#, fuzzy
-msgid "Yes, but not in multi selections"
-msgstr "是的，但不是在多重选择中"
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "是，删除此电影并返回电影列表。"
 
@@ -16814,9 +16858,6 @@ msgstr "解扰和录制 ECM"
 msgid "detective/thriller"
 msgstr "侦探/惊悚"
 
-msgid "disable"
-msgstr "禁止"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "允许编辑收藏夹"
@@ -16869,9 +16910,6 @@ msgstr ""
 msgid "empty"
 msgstr "空的"
 
-msgid "enable"
-msgstr "启用"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "启用简介"
@@ -16919,6 +16957,9 @@ msgstr "扫描发生错误"
 #, fuzzy
 msgid "ese"
 msgstr "复位"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17267,9 +17308,6 @@ msgstr "没有资源管理器"
 
 msgid "no storage devices found"
 msgstr "无存储设备"
-
-msgid "none"
-msgstr "无"
 
 msgid "normal"
 msgstr "标准"

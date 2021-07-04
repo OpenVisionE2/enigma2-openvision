@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2010-03-09 21:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: HDTV ROMANIA(superonic,costel_mbc,neutrin,otheitis,cipy_1982,neutrin,runcanion)\n"
@@ -1061,6 +1061,22 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Descrierea nu este disponibila"
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1419,6 +1435,14 @@ msgstr "<necunoscut>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr ""
 
@@ -1632,10 +1656,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "activeaza configurarea curenta"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "activeaza configurarea curenta"
 
 msgid "Activate Picture in Picture"
@@ -4052,6 +4072,10 @@ msgid "Current CEC address"
 msgstr ""
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "IP Address"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "Transponderul curent"
 
@@ -5013,6 +5037,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Doriti scrierea acestei colectii pe discul DVD?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Doriti actualizarea pachetului:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Doriti sa instalati pachetul:\n"
 
@@ -5454,6 +5482,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr ""
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5472,7 +5503,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr ""
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -5854,10 +5885,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "iesire configurare nameserver"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "iesire configurare nameserver"
 
 msgid "Exit editor"
@@ -8030,16 +8057,21 @@ msgid "Luxembourgish"
 msgstr ""
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Configurare hard disc"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "IP Address"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Adaptare setari"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Configurare hard disc"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8748,10 +8780,6 @@ msgid "Network Information Actions"
 msgstr "Configurare retea..."
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Activeaza setari retea"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "Configurare retea"
 
@@ -9080,6 +9108,10 @@ msgstr "Userul ales"
 #, fuzzy
 msgid "Not Installed"
 msgstr "Instalare"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP Address"
 
 msgid "Not associated"
 msgstr ""
@@ -10189,6 +10221,10 @@ msgstr ""
 msgid "Press OK on your remote control to continue."
 msgstr "Va rugam apasati OK de pe telecomanda pentru a continua"
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Apasati OK pentru a edita setarile."
+
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Apasati OK pentru a activa setarile"
@@ -10234,10 +10270,6 @@ msgstr "Crearea directorului %s a esuat"
 
 msgid "Press OK to select/deselect a CAId."
 msgstr ""
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Apasati OK pentru a edita setarile."
 
 msgid "Press OK to toggle the selection"
 msgstr ""
@@ -10438,27 +10470,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "Personalizare"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Redenumire"
 
 #, fuzzy
-msgid "RC type"
-msgstr "Tipul de test"
+msgid "RC default type"
+msgstr "Tip repetare"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "Tip repetare"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "Comunicare"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "Nume colectie"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "Tip repetare"
 
 msgid "REC"
 msgstr ""
@@ -12161,6 +12199,10 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP Address"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12363,6 +12405,9 @@ msgstr "Arata Informatii"
 msgid "Show Audioselection"
 msgstr ""
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr ""
 
@@ -12423,15 +12468,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Arata info despre transponder"
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 msgid "Show VCR scart on main menu"
 msgstr ""
 
 #, fuzzy
 msgid "Show WLAN status"
 msgstr "Arata stare WLAN"
+
+msgid "Show additional slider value"
+msgstr ""
 
 msgid "Show alsa-utils in plugin browser"
 msgstr ""
@@ -16222,9 +16267,6 @@ msgstr ""
 msgid "Yes, and delete this movie"
 msgstr "Da si sterge acest film"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr ""
 
@@ -16806,9 +16848,6 @@ msgstr ""
 msgid "detective/thriller"
 msgstr ""
 
-msgid "disable"
-msgstr "dezactiveaza"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Activeaza editare favorite"
@@ -16858,9 +16897,6 @@ msgstr ""
 msgid "empty"
 msgstr "gol"
 
-msgid "enable"
-msgstr "activeaza"
-
 msgid "enable cuts (preview)"
 msgstr ""
 
@@ -16906,6 +16942,9 @@ msgstr ""
 #, fuzzy
 msgid "ese"
 msgstr "Resetare"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17250,9 +17289,6 @@ msgstr ""
 
 msgid "no storage devices found"
 msgstr ""
-
-msgid "none"
-msgstr "nimic"
 
 msgid "normal"
 msgstr ""

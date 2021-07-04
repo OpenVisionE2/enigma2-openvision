@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2021-02-19 14:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: Muzoss-VELEBRDO\n"
@@ -1075,6 +1075,22 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Тјунерот не е достапен."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1455,6 +1471,14 @@ msgstr "(непознат)"
 msgid "=NO STREAM\n"
 msgstr "= НЕМА СТРИМ\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1696,10 +1720,6 @@ msgstr "Активирајте HbbTV (ЦрвенаТипка)"
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Активирајте ја тековната конфигурација"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Активирајте ја тековната конфигурација"
 
 msgid "Activate Picture in Picture"
@@ -4101,6 +4121,10 @@ msgid "Current CEC address"
 msgstr "Тековна CEC адреса"
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "Тековна CEC адреса"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "Тековен транспондер"
 
@@ -5043,6 +5067,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Дали сакате оваа колекција да се сними на ДВД?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Дали сакате да го ажурирате пакетот:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Дали сакате да ги отстраните сите записници за падови на системот"
 
@@ -5484,6 +5512,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Активирајте телетекст меморија"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5502,7 +5533,8 @@ msgstr "Активирајте ја оваа поставка ако вашио�
 msgid "Enable timer conflict detection"
 msgstr "Активирајте откривање на конфликт со тајмер"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "Активирајте, за да ги прикажете сите поставки за вклучување / исклучување и вклучување / исклучување. како што се графички прекинувачи."
 
 msgid "Enable volume control with arrow buttons"
@@ -5895,10 +5927,6 @@ msgstr "Излези од EPG"
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Излези од конфигурацијата на DNS серверот"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Излези од конфигурацијата на DNS серверот"
 
 msgid "Exit editor"
@@ -8078,16 +8106,21 @@ msgid "Luxembourgish"
 msgstr "Луксембургски"
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Поставки на Хард диск"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "IP-адреса"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Поставки за адаптер"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Поставки на Хард диск"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8786,10 +8819,6 @@ msgid "Network Information Actions"
 msgstr "Конфигурација на мрежата"
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Активирајте ги мрежните поставки"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "Мрежни поставки"
 
@@ -9109,6 +9138,10 @@ msgstr "Недефинирано"
 
 msgid "Not Installed"
 msgstr "Не е инсталирано"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP-адреса"
 
 msgid "Not associated"
 msgstr "Не се поврзани"
@@ -10219,6 +10252,10 @@ msgstr "Притиснете MENU за дополнителни опции."
 msgid "Press OK on your remote control to continue."
 msgstr "Притиснете ОК за да продолжите."
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Притиснете OK за да ги уредите поставките."
+
 #, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Притиснете ОК за да го активирате маркираниот Скин% s."
@@ -10261,10 +10298,6 @@ msgstr "Изберете директориум за дневник."
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "Притиснете OK за да селектирате / деселектирате CAId."
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Притиснете OK за да ги уредите поставките."
 
 msgid "Press OK to toggle the selection"
 msgstr "Притиснете OK за да го вклучите изборот"
@@ -10466,27 +10499,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "Данска"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "Прилагоди"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Преименувај"
 
 #, fuzzy
-msgid "RC type"
-msgstr "тип"
+msgid "RC default type"
+msgstr "Тип на повторување"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "Тип на повторување"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "Комуникација"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "Име на колекцијата"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "Тип на повторување"
 
 msgid "REC"
 msgstr "REC"
@@ -12159,6 +12198,10 @@ msgstr "Поставете ја задачата за CI за откривање
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP-адреса"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12361,6 +12404,10 @@ msgstr "Покажи инфо"
 msgid "Show Audioselection"
 msgstr "Покажи избор на тон"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "Покажи точно / неточно како графички прекинувач"
+
 msgid "Show CI messages"
 msgstr "Покажи CI пораки"
 
@@ -12423,14 +12470,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Прокажи информации за транспондер"
 
-msgid "Show True/False as graphical switch"
-msgstr "Покажи точно / неточно како графички прекинувач"
-
 msgid "Show VCR scart on main menu"
 msgstr "Покажи VCR-SCART во главното мени"
 
 msgid "Show WLAN status"
 msgstr "Покажи статус на WLAN"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Покажи анимација додека сте зафатени"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -16223,10 +16271,6 @@ msgstr "Да, секогаш"
 msgid "Yes, and delete this movie"
 msgstr "Да, и избришете го овој филм"
 
-#, fuzzy
-msgid "Yes, but not in multi selections"
-msgstr "да, но не во повеќе селекции"
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Да, избришете го овој филм и вратете се на списокот со филмови"
 
@@ -16845,9 +16889,6 @@ msgstr "декодирање и снимање ECM"
 msgid "detective/thriller"
 msgstr "детектив / трилер"
 
-msgid "disable"
-msgstr "оневозможено"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Активирајте го уредникот за фаворити"
@@ -16900,9 +16941,6 @@ msgstr "вградени"
 msgid "empty"
 msgstr "празно"
 
-msgid "enable"
-msgstr "овозможено"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "овозможете воведен екран"
@@ -16950,6 +16988,9 @@ msgstr "грешка при пребарување"
 #, fuzzy
 msgid "ese"
 msgstr "Ресетираj"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17298,9 +17339,6 @@ msgstr "нема управител на ресурси"
 
 msgid "no storage devices found"
 msgstr "не се пронајдени уреди за меморија"
-
-msgid "none"
-msgstr "нема"
 
 msgid "normal"
 msgstr "нормално"

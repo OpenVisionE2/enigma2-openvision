@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2021-05-05 20:00+0200\n"
 "Last-Translator: blzr <blzr@o2.pl>\n"
 "Language-Team: \n"
@@ -1113,6 +1113,22 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Tuner niedostępny."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1487,6 +1503,14 @@ msgstr "<nieznany>"
 msgid "=NO STREAM\n"
 msgstr "=BRAK STRUMIENIA\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1724,10 +1748,6 @@ msgstr "Włącz HbbTV (Czerwony klawisz)"
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktywuj aktualną konfigurację"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Aktywuj aktualną konfigurację"
 
 msgid "Activate Picture in Picture"
@@ -4121,6 +4141,10 @@ msgid "Current CEC address"
 msgstr "Aktualny adres CEC"
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "Aktualny adres CEC"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "Aktualny transponder"
 
@@ -5063,6 +5087,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Czy chcesz nagrać tą kolekcję na DVD?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Chcesz zaktualizować pakiet:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Czy chcesz usunąć wszystkie crash logi?"
 
@@ -5504,6 +5532,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Włącz pamięć telegazety"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5522,7 +5553,8 @@ msgstr "Włącz tą opcję, jeśli twoja instalacja potrzebuje zasilania."
 msgid "Enable timer conflict detection"
 msgstr "Włącz wykrywanie konfliktów timera"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "Włącz wyświetlanie opcji ustawień Tak / Nie, Włącz / Wyłącz w formie przełącznika graficznego."
 
 msgid "Enable volume control with arrow buttons"
@@ -5915,10 +5947,6 @@ msgstr "Wyjdź z EPG"
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Zamknij menu konfiguracji DNS"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Zamknij menu konfiguracji DNS"
 
 msgid "Exit editor"
@@ -8093,16 +8121,21 @@ msgid "Luxembourgish"
 msgstr "luxemburski"
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Ustawienia dysku HDD"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "Adres IP"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Ustawienia adaptera"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Ustawienia dysku HDD"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8796,10 +8829,6 @@ msgid "Network Information Actions"
 msgstr "Konfiguracja sieci"
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Aktywuj ustawienia sieci"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "Ustawienia sieci"
 
@@ -9119,6 +9148,10 @@ msgstr "Niezdefiniowany"
 
 msgid "Not Installed"
 msgstr "Niezainstalowany"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "Adres IP"
 
 msgid "Not associated"
 msgstr "Nie powiązane"
@@ -10226,6 +10259,10 @@ msgstr "Wciśnij MENU aby mieć dostęp do dodatkowych opcji."
 msgid "Press OK on your remote control to continue."
 msgstr "Wciśnij OK, aby kontynuować."
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Aby edytować ustawienia, wciśnij OK."
+
 #, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Wciśnij OK, aby aktywować wybraną skórkę %s."
@@ -10268,10 +10305,6 @@ msgstr "Wciśnij OK aby wybrać lokalizację dla zapisywania logu."
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "Wciśnij OK, aby wybrać/usunąć CAId."
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Aby edytować ustawienia, wciśnij OK."
 
 msgid "Press OK to toggle the selection"
 msgstr "Wciśnij OK, aby wybrać lub 'odznaczyć'"
@@ -10472,27 +10505,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "Dania"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "Konfiguracja"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Zmień nazwę"
 
 #, fuzzy
-msgid "RC type"
-msgstr "typ "
+msgid "RC default type"
+msgstr "Rozdzaj powtórzeń"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "Rozdzaj powtórzeń"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "Komunikacja"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "Nazwa kolekcji"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "Rozdzaj powtórzeń"
 
 msgid "REC"
 msgstr ""
@@ -12167,6 +12206,10 @@ msgstr "Ustaw przyporządkowanie modułu CI dla wykrywania dostępnych kanałów
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "Adres IP"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12369,6 +12412,10 @@ msgstr "Pokaż info"
 msgid "Show Audioselection"
 msgstr "Wyświetl wybór ścieżki audio"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "Wyświetlaj Tak / Nie jako przełącznik graficzny"
+
 msgid "Show CI messages"
 msgstr "Pokazuj komunikaty CI"
 
@@ -12431,14 +12478,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Pokaż info transpondera"
 
-msgid "Show True/False as graphical switch"
-msgstr "Wyświetlaj Tak / Nie jako przełącznik graficzny"
-
 msgid "Show VCR scart on main menu"
 msgstr "VCR scart w głównym menu"
 
 msgid "Show WLAN status"
 msgstr "Pokaż status WLAN"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Wyświetl 'trybiki' gdy zajęty"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -16238,10 +16286,6 @@ msgstr "Tak, zawsze"
 msgid "Yes, and delete this movie"
 msgstr "Tak, i usuń ten film"
 
-#, fuzzy
-msgid "Yes, but not in multi selections"
-msgstr "tak, ale nie w multi wyborze"
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Tak, usuń i wróć do listy filmów"
 
@@ -16867,9 +16911,6 @@ msgstr "Dekoduj i nagrywaj ECM"
 msgid "detective/thriller"
 msgstr "Kryminał/Thriller"
 
-msgid "disable"
-msgstr "Wyłącz"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Włącz edycję ulubionych"
@@ -16922,9 +16963,6 @@ msgstr "wtopione"
 msgid "empty"
 msgstr "Pusty"
 
-msgid "enable"
-msgstr "Włącz"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "Włącz ekran wstępny"
@@ -16972,6 +17010,9 @@ msgstr "błąd w trakcie skanowania"
 #, fuzzy
 msgid "ese"
 msgstr "Resetuj"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17320,9 +17361,6 @@ msgstr "brak menadżera zasobów"
 
 msgid "no storage devices found"
 msgstr "Brak urządzeń przechowywania danych"
-
-msgid "none"
-msgstr "Brak"
 
 msgid "normal"
 msgstr "Zwykły"

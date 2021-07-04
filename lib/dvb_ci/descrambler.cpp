@@ -11,11 +11,11 @@
 #ifndef CA_SET_PID
 /**
  * CA_SET_PID and ca_pid struct removed on 4.14 kernel
- * Check commit 	833ff5e7feda1a042b83e82208cef3d212ca0ef1
+ * Check commit         833ff5e7feda1a042b83e82208cef3d212ca0ef1
 **/
 struct ca_pid {
 	unsigned int pid;
-	int index;		/* -1 == disable*/
+	int index;              /* -1 == disable*/
 };
 #define CA_SET_PID _IOW('o', 135, struct ca_pid)
 #endif
@@ -39,28 +39,10 @@ struct ca_descr_data {
 };
 
 
-#ifdef OLD   
-struct ca_descr_s {
-	unsigned int index;
-	unsigned int parity;
-	unsigned char cw[8];
-};
-#endif
-
 #define CA_SET_DESCR_DATA _IOW('o', 137, struct ca_descr_data)
 
 int descrambler_set_key(int desc_fd, int index, int parity, unsigned char *data)
 {
-#ifdef OLD   
-	struct ca_descr_s d;
-	d.index = index;
-	d.parity = parity;
-	memcpy(d.cw, data + (parity * 8), 8);
-	if (ioctl(desc_fd, CA_SET_DESCR, &d)) {
-		eWarning("[Descrambler] CA_SET_DESCR");
-		return -1;
-	}
-#else
 	struct ca_descr_data d;
 
 	d.index = index;
@@ -70,7 +52,7 @@ int descrambler_set_key(int desc_fd, int index, int parity, unsigned char *data)
 	d.data = data;
 
 	if (ioctl(desc_fd, CA_SET_DESCR_DATA, &d) == -1) {
-		eWarning("[Descrambler] CA_SET_DESCR_DATA");
+		eWarning("[CI descrambler] set key failed");
 		return -1;
 	}
 
@@ -81,10 +63,9 @@ int descrambler_set_key(int desc_fd, int index, int parity, unsigned char *data)
 	d.data = data + 16;
 
 	if (ioctl(desc_fd, CA_SET_DESCR_DATA, &d) == -1) {
-		eWarning("[Descrambler] CA_SET_DESCR_DATA");
+		eWarning("[CI descrambler] set iv failed");
 		return -1;
 	}
-#endif
 
 	return 0;
 }
@@ -104,7 +85,7 @@ int descrambler_set_pid(int desc_fd, int index, int enable, int pid)
 	p.index = flags;
 
 	if (ioctl(desc_fd, CA_SET_PID, &p) == -1) {
-		eWarning("[Descrambler] CA_SET_PID");
+		eWarning("[CI descrambler] set pid failed");
 		return -1;
 	}
 
@@ -118,7 +99,7 @@ int descrambler_init(void)
 
 	desc_fd = open(filename, O_RDWR);
 	if (desc_fd == -1) {
-		eWarning("[Descrambler] can not open %s", filename);
+		eWarning("[CI descrambler] can not open %s", filename);
 	}
 
 	return desc_fd;

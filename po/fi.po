@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2020-05-16 18:41+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -1216,6 +1216,22 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Viritin ei saatavilla"
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1626,6 +1642,14 @@ msgstr "<tuntematon>"
 msgid "=NO STREAM\n"
 msgstr "=EI SYÖTETTÄ\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 #
 msgid "??"
 msgstr "??"
@@ -1890,11 +1914,6 @@ msgstr "Aktivoi HbbTV (Punainen)"
 #
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktivoi nykyiset asetukset"
-
-#
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Aktivoi nykyiset asetukset"
 
 #
@@ -4499,6 +4518,10 @@ msgstr "Uutiset ajankohtaisohjelmat"
 msgid "Current CEC address"
 msgstr "Käytettävä CEC-osoite"
 
+#, fuzzy
+msgid "Current MAC address"
+msgstr "Käytettävä CEC-osoite"
+
 #
 #, fuzzy
 msgid "Current crash log"
@@ -5568,6 +5591,11 @@ msgstr "Haluatko polttaa tämän kokoelman DVD:lle?"
 
 #
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Haluatko päivittää ohjelmapaketin:\n"
+
+#
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Haluatko asentaa lisäosia?"
 
@@ -6069,6 +6097,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Ota käyttöön teksti-tv:n välimuisti"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -6088,7 +6119,8 @@ msgstr "Käytä tätä asetusta jos antennijärjestelmäsi tarvitsee virransyöt
 msgid "Enable timer conflict detection"
 msgstr "Laita päälle ajastuskonfliktien etsintä"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "Laittaessasi tämän päälle, kaikki tosi/epätosi, kyllä/ei, päällä/pois päältä -asetukset näkyvät graafisena kytkimenä."
 
 msgid "Enable volume control with arrow buttons"
@@ -6505,11 +6537,6 @@ msgstr "Sulje ohjelmaopas"
 #
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Lopeta nimipalvelimen määritys"
-
-#
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Lopeta nimipalvelimen määritys"
 
 #
@@ -8907,18 +8934,23 @@ msgstr "Luxemburg"
 
 #
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Kiintolevyn asetukset"
+
+#
+#, fuzzy
 msgid "MAC address"
 msgstr "IP-osoite"
 
 #
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Sovittimen asetukset"
-
-#
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Kiintolevyn asetukset"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -9726,11 +9758,6 @@ msgstr "Verkon asetukset"
 
 #
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Ota verkkoasetukset käyttöön"
-
-#
-#, fuzzy
 msgid "Network Setup"
 msgstr "Lähiverkon asetukset"
 
@@ -10105,6 +10132,11 @@ msgstr "Ei määritetty"
 #, fuzzy
 msgid "Not Installed"
 msgstr "Asenna"
+
+#
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP-osoite"
 
 msgid "Not associated"
 msgstr "Ei assosioitu"
@@ -11342,6 +11374,11 @@ msgid "Press OK on your remote control to continue."
 msgstr "Jatka painamalla OK-näppäintä."
 
 #
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Muokkaa painamalla OK."
+
+#
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Ota valittu teema käyttöön painamalla OK."
@@ -11396,11 +11433,6 @@ msgstr "Valitse hakemisto lokitiedostolle"
 #
 msgid "Press OK to select/deselect a CAId."
 msgstr "Valitse/poista CAId:t OK-näppäimellä"
-
-#
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Muokkaa painamalla OK."
 
 #
 msgid "Press OK to toggle the selection"
@@ -11630,12 +11662,6 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "Tanska"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #
 #, fuzzy
 msgid "RC custom code"
@@ -11643,16 +11669,32 @@ msgstr "Yleisasetuksia"
 
 #
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Uudelleennimeä"
 
+#
 #, fuzzy
-msgid "RC type"
-msgstr "DVB tyyppi"
+msgid "RC default type"
+msgstr "Ajastus toistetaan"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#
+#, fuzzy
+msgid "RC detected type"
+msgstr "Ajastus toistetaan"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "Kommunikointi"
+
+#
+#, fuzzy
+msgid "RC selected name"
+msgstr "Kokoelman nimi"
+
+#
+#, fuzzy
+msgid "RC selected type"
+msgstr "Ajastus toistetaan"
 
 msgid "REC"
 msgstr ""
@@ -13543,6 +13585,11 @@ msgstr "Ota käyttöön CI-määritys käytettävissä olevien palvelujen löyt�
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP-osoite"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -13760,6 +13807,10 @@ msgstr "Näytä tiedot"
 msgid "Show Audioselection"
 msgstr "Näytä ääniasetukset"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "Näytä Kyllä/Ei -kysymykset gaafisina kytkiminä."
+
 msgid "Show CI messages"
 msgstr "Näytä CI:n ilmoitukset"
 
@@ -13828,9 +13879,6 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Näytä lähettimen tietoja"
 
-msgid "Show True/False as graphical switch"
-msgstr "Näytä Kyllä/Ei -kysymykset gaafisina kytkiminä."
-
 #
 msgid "Show VCR scart on main menu"
 msgstr "Näytä VCR-Scart päävalikossa"
@@ -13838,6 +13886,10 @@ msgstr "Näytä VCR-Scart päävalikossa"
 #
 msgid "Show WLAN status"
 msgstr "Näytä WLAN:in tila"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Näytä animaatio(rattaat) kun varattu"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -18033,9 +18085,6 @@ msgstr "Kyllä, aina"
 msgid "Yes, and delete this movie"
 msgstr "Kyllä ja poista tämä tallenne"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr ""
 
@@ -18707,10 +18756,6 @@ msgid "detective/thriller"
 msgstr "etsivä/trilleri"
 
 #
-msgid "disable"
-msgstr "Pois"
-
-#
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Suosikkien lisäys ja poisto"
@@ -18769,10 +18814,6 @@ msgstr "Sulautettu"
 msgid "empty"
 msgstr "Tyhjä"
 
-#
-msgid "enable"
-msgstr "Päällä"
-
 msgid "enable cuts (preview)"
 msgstr ""
 
@@ -18825,6 +18866,9 @@ msgstr "Virhe haun aikana"
 #, fuzzy
 msgid "ese"
 msgstr "Käynnistä CA-moduuli uudelleen"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -19215,10 +19259,6 @@ msgstr "Ei tiedostovalikkoa"
 
 msgid "no storage devices found"
 msgstr "Tallennuslaitteita ei löytynyt"
-
-#
-msgid "none"
-msgstr "Ei mitään"
 
 msgid "normal"
 msgstr "Normaali"

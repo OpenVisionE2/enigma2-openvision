@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -1218,6 +1218,22 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Tuner ikke tilgængelig."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1643,6 +1659,14 @@ msgstr "<ukendt>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 #
 msgid "??"
 msgstr "??"
@@ -1910,11 +1934,6 @@ msgstr "Aktiver HbbTV (Rød knap)"
 #
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktiver den aktuelle opsætning"
-
-#
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Aktiver den aktuelle opsætning"
 
 #
@@ -4589,6 +4608,10 @@ msgstr "Nyheder Igangværende Begivenheder"
 msgid "Current CEC address"
 msgstr "Nuværende CEC Adresse"
 
+#, fuzzy
+msgid "Current MAC address"
+msgstr "Nuværende CEC Adresse"
+
 #
 #, fuzzy
 msgid "Current crash log"
@@ -5668,6 +5691,11 @@ msgstr "Vil du brænde denne kollektion til DVD media?"
 
 #
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Vil du opgradere pakken:\n"
+
+#
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Vil du installere kanallisten?"
 
@@ -6173,6 +6201,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Aktiver TekstTV lagring"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -6191,7 +6222,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr "Aktiver timer konflikt detektion"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -6619,11 +6650,6 @@ msgstr "Forlad EPG"
 #
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Luk navneserver opsætning"
-
-#
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Luk navneserver opsætning"
 
 #
@@ -9056,18 +9082,23 @@ msgstr "Luxemborgsk"
 
 #
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Harddisk opsætning"
+
+#
+#, fuzzy
 msgid "MAC address"
 msgstr "IP adresse"
 
 #
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Adapter indstillinger"
-
-#
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Harddisk opsætning"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -9877,11 +9908,6 @@ msgstr "Netværkskonfiguration"
 
 #
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Aktiver netværks indstilling"
-
-#
-#, fuzzy
 msgid "Network Setup"
 msgstr "Netværks opsætning"
 
@@ -10254,6 +10280,11 @@ msgstr "Ikke defineret"
 #, fuzzy
 msgid "Not Installed"
 msgstr "Installer"
+
+#
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP adresse"
 
 msgid "Not associated"
 msgstr "Ikke tilknyttet"
@@ -11500,6 +11531,11 @@ msgid "Press OK on your remote control to continue."
 msgstr "Tryk OK på din fjernbetjening for at fortsætte."
 
 #
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Tryk på OK for at redigere indstillinger."
+
+#
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Tryk OK for at aktivere det valgte grafiske tema."
@@ -11555,11 +11591,6 @@ msgstr "Oprettelse af mappen %s mislykkedes."
 #
 msgid "Press OK to select/deselect a CAId."
 msgstr "Tryk på OK for at vælge/fravælge en CAId."
-
-#
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Tryk på OK for at redigere indstillinger."
 
 msgid "Press OK to toggle the selection"
 msgstr "Tryk OK for at skifte valg"
@@ -11779,12 +11810,6 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #
 #, fuzzy
 msgid "RC custom code"
@@ -11792,16 +11817,33 @@ msgstr "Tilpas"
 
 #
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Omdøb"
 
+#
 #, fuzzy
-msgid "RC type"
-msgstr "DVB type"
+msgid "RC default type"
+msgstr "Gentagelses type"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#
+#, fuzzy
+msgid "RC detected type"
+msgstr "Gentagelses type"
+
+#
+#, fuzzy
+msgid "RC identification"
+msgstr "Kommunikation"
+
+#
+#, fuzzy
+msgid "RC selected name"
+msgstr "Kollektions navn"
+
+#
+#, fuzzy
+msgid "RC selected type"
+msgstr "Gentagelses type"
 
 msgid "REC"
 msgstr "REC"
@@ -13713,6 +13755,11 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP adresse"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -13932,6 +13979,9 @@ msgstr "Vis info"
 msgid "Show Audioselection"
 msgstr "Vis Audioselection"
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr "Vis CI meddelelser"
 
@@ -13998,15 +14048,16 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Vis transponer info"
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 msgid "Show VCR scart on main menu"
 msgstr "Vis VCR scart i hoved menu"
 
 #
 msgid "Show WLAN status"
 msgstr "Vis WLAN Status"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Vis animation når optaget"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -18262,9 +18313,6 @@ msgstr "Ja, altid"
 msgid "Yes, and delete this movie"
 msgstr "Ja, og slet denne film"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Ja, slet denne film og returner til film listen"
 
@@ -18937,10 +18985,6 @@ msgid "detective/thriller"
 msgstr "detektiv/thriller"
 
 #
-msgid "disable"
-msgstr "afbryd"
-
-#
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Åbne favoritredigering"
@@ -18998,10 +19042,6 @@ msgstr "indlejret"
 msgid "empty"
 msgstr "tom"
 
-#
-msgid "enable"
-msgstr "tilslut"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "aktiver introskærm"
@@ -19055,6 +19095,9 @@ msgstr "fejl under skan"
 #, fuzzy
 msgid "ese"
 msgstr "Genstart"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -19443,10 +19486,6 @@ msgstr "Ingen resource manager"
 
 msgid "no storage devices found"
 msgstr "ingen lagerenhed fundet"
-
-#
-msgid "none"
-msgstr "ingen"
 
 msgid "normal"
 msgstr "normal"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -1240,6 +1240,22 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Tuner není dostupný."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1677,6 +1693,14 @@ msgstr "<neznámý>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 #
 msgid "??"
 msgstr "??"
@@ -1945,11 +1969,6 @@ msgstr "Aktivovat HbbTV (červené tlačítko)"
 #
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktivovat současnou konfiguraci"
-
-#
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Aktivovat současnou konfiguraci"
 
 #
@@ -4645,6 +4664,10 @@ msgstr "zpravodajství, publicistika"
 msgid "Current CEC address"
 msgstr "Současná CEC adresa"
 
+#, fuzzy
+msgid "Current MAC address"
+msgstr "Současná CEC adresa"
+
 #
 #, fuzzy
 msgid "Current crash log"
@@ -5730,6 +5753,11 @@ msgstr "Chcete automaticky obnovit Vaše nastavení?"
 msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Chcete vypálit tuto kompilaci na DVD?"
 
+#
+#, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Chcete aktualizovat balíček:\n"
+
 #, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Chcete odstranit všechny protokoly pádu systému"
@@ -6239,6 +6267,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Povolit caching teletextu"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -6257,7 +6288,8 @@ msgstr "Povolte toto nastavení, pokud Váš anténní systém potřebuje napáj
 msgid "Enable timer conflict detection"
 msgstr "Povolit detekci konfliktů časovačů"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "Povolením budou volby jako 'ano/ne', 'zap/vyp' a 'povolit/zakázat' nahrazeny grafickým přepínačem."
 
 msgid "Enable volume control with arrow buttons"
@@ -6701,11 +6733,6 @@ msgstr "Zavřít EPG"
 #
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Zavřít konfiguraci DNS"
-
-#
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Zavřít konfiguraci DNS"
 
 #
@@ -9132,19 +9159,24 @@ msgstr "Lucembursko"
 msgid "Luxembourgish"
 msgstr "Lucembursky"
 
+#
+#, fuzzy
+msgid "MAC Address Setup"
+msgstr "Nastavení pevného disku"
+
 #, fuzzy
 msgid "MAC address"
 msgstr "IP adresa"
 
 #
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Nastavení adaptéru"
-
-#
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Nastavení pevného disku"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -9953,11 +9985,6 @@ msgstr "Nastavení sítě"
 
 #
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Aktivovat nastavení sítě"
-
-#
-#, fuzzy
 msgid "Network Setup"
 msgstr "Nastavení sítě"
 
@@ -10329,6 +10356,10 @@ msgstr "Nedefinován"
 #
 msgid "Not Installed"
 msgstr "Neinstalováno"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP adresa"
 
 msgid "Not associated"
 msgstr "Neasociováno"
@@ -11598,6 +11629,11 @@ msgid "Press OK on your remote control to continue."
 msgstr "Stiskněte OK na dálkovém ovladači pro pokračování."
 
 #
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Stiskněte OK pro úpravu nastavení."
+
+#
 #, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Stiskněte OK pro aktivaci zvoleného %s skinu."
@@ -11651,11 +11687,6 @@ msgstr "Stiskněte OK a zvolte umístění pro ukládání logfile."
 #
 msgid "Press OK to select/deselect a CAId."
 msgstr "Stiskněte OK pro vybrání/odebrání CAId"
-
-#
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Stiskněte OK pro úpravu nastavení."
 
 #
 msgid "Press OK to toggle the selection"
@@ -11881,12 +11912,6 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "Dánsko"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #
 #, fuzzy
 msgid "RC custom code"
@@ -11894,16 +11919,33 @@ msgstr "Přizpůsobení"
 
 #
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Přejmenovat"
 
+#
 #, fuzzy
-msgid "RC type"
-msgstr "typ"
+msgid "RC default type"
+msgstr "Druh opakování"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#
+#, fuzzy
+msgid "RC detected type"
+msgstr "Druh opakování"
+
+#
+#, fuzzy
+msgid "RC identification"
+msgstr "Komunikace"
+
+#
+#, fuzzy
+msgid "RC selected name"
+msgstr "Název kompilace"
+
+#
+#, fuzzy
+msgid "RC selected type"
+msgstr "Druh opakování"
 
 #
 msgid "REC"
@@ -13815,6 +13857,10 @@ msgstr "Nastavte CI přiřazení pro zjištění dostupných programů."
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP adresa"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -14035,6 +14081,10 @@ msgstr "Zobrazit info"
 msgid "Show Audioselection"
 msgstr "Nastavení zvuku"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "Používat grafický přepínač"
+
 msgid "Show CI messages"
 msgstr "Zobrazovat CI zprávy"
 
@@ -14102,15 +14152,16 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Zobrazit info o transpondéru"
 
-msgid "Show True/False as graphical switch"
-msgstr "Používat grafický přepínač"
-
 msgid "Show VCR scart on main menu"
 msgstr "Zobrazovat VCR scart v hlavním menu"
 
 #
 msgid "Show WLAN status"
 msgstr "Zobrazit stav WLAN"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Zobrazovat animaci při zaneprázdnění"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -18334,10 +18385,6 @@ msgstr "Ano, vždy"
 msgid "Yes, and delete this movie"
 msgstr "Ano, a smazat tento film"
 
-#, fuzzy
-msgid "Yes, but not in multi selections"
-msgstr "Ano, ale ne ve vícenásobných výběrech"
-
 #
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Ano, a smazat film a zpět na seznam filmů"
@@ -19026,10 +19073,6 @@ msgid "detective/thriller"
 msgstr "detektivka/thriller"
 
 #
-msgid "disable"
-msgstr "Zakázat"
-
-#
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Povolit úpravu oblíbených"
@@ -19087,10 +19130,6 @@ msgstr "vestavěný"
 msgid "empty"
 msgstr "prázdné"
 
-#
-msgid "enable"
-msgstr "Povolit"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "povolit úvodní obrazovku"
@@ -19144,6 +19183,9 @@ msgstr "chyba při vyhledávání"
 #, fuzzy
 msgid "ese"
 msgstr "Reset"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -19539,10 +19581,6 @@ msgstr "žádný správce zdrojů"
 #
 msgid "no storage devices found"
 msgstr "žádné zařízení pro ukládání"
-
-#
-msgid "none"
-msgstr "žádný"
 
 msgid "normal"
 msgstr "Normální"

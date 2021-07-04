@@ -8,26 +8,27 @@ int eDVBCIHostLanguageAndCountrySession::receivedAPDU(const unsigned char *tag,c
 {
 	int ret = 0;
 
-	eDebugNoNewLine("[CI HLCM] SESSION(%d)/HLC %02x %02x %02x: ", session_nb, tag[0], tag[1], tag[2]);
+	eTraceNoNewLine("[CI HLC] SESSION(%d)/HLC %02x %02x %02x: ", session_nb, tag[0], tag[1], tag[2]);
 	for (int i=0; i<len; i++)
-		eDebugNoNewLine("%02x ", ((const unsigned char*)data)[i]);
-	eDebug(" ");
+		eTraceNoNewLine("%02x ", ((const unsigned char*)data)[i]);
+	eTraceNoNewLine("\n");
+
 	if ((tag[0]==0x9f) && (tag[1]==0x81))
 	{
 		switch (tag[2])
 		{
 		case 0x00:  // country enquiry
-			eDebug("[CI HLCM] Host country enquiry:");
+			eDebug("[CI HLC] Host country enquiry:");
 			state=stateCountryEnquiry;
 			ret = 1;
 			break;
 		case 0x10:  // language enquiry
-			eDebug("[CI HLCM] Host language enquiry:");
+			eDebug("[CI HLC] Host language enquiry:");
 			state=stateLanguageEnquiry;
 			ret = 1;
 			break;
 		default:
-			eDebug("[CI HLCM] unknown APDU tag 9F 80 %02x", tag[2]);
+			eWarning("[CI HLC] unknown APDU tag 9F 80 %02x", tag[2]);
 			state = stateFinal;
 			break;
 		}
@@ -54,11 +55,14 @@ std::map<std::string, std::string> eDVBCIHostLanguageAndCountrySession::createLa
 	m["fi_FI"] = "fin";
 	m["fr_FR"] = "fra";
 	m["fy_NL"] = "fry";
+	m["gl_ES"] = "glg";
 	m["he_IL"] = "heb";
 	m["hr_HR"] = "hrv";
 	m["hu_HU"] = "hun";
+	m["id_ID"] = "ind";
 	m["is_IS"] = "isl";
 	m["it_IT"] = "ita";
+	m["ku_KU"] = "kur";
 	m["lt_LT"] = "lit";
 	m["lv_LV"] = "lav";
 	m["nb_NO"] = "nob";
@@ -76,6 +80,9 @@ std::map<std::string, std::string> eDVBCIHostLanguageAndCountrySession::createLa
 	m["th_TH"] = "tha";
 	m["tr_TR"] = "tur";
 	m["uk_UA"] = "ukr";
+	m["vi_VN"] = "vie";
+	m["zh_CN"] = "zho";
+	m["zh_HK"] = "zho";
 	return m;
 }
 
@@ -88,13 +95,13 @@ int eDVBCIHostLanguageAndCountrySession::doAction()
 	case stateCountryEnquiry:
 	{
 		const unsigned char tag[] = {0x9F, 0x81, 0x01};
-		sendAPDU(tag, "DEU", 3); // XXX
+		sendAPDU(tag, "GBR", 3);
 		break;
 	}
 	case stateLanguageEnquiry:
 	{
 		const unsigned char tag[] = {0x9F, 0x81, 0x11};
-		std::string language = eConfigManager::getConfigValue("config.osd.language");
+		std::string language = eDVBCIInterfaces::getInstance()->getLanguage();
 		std::map<std::string, std::string>::const_iterator it = m_languageMap.find(language);
 		if (it != m_languageMap.end())
 			sendAPDU(tag, it->second.c_str(), 3);
@@ -103,10 +110,9 @@ int eDVBCIHostLanguageAndCountrySession::doAction()
 		break;
 	}
 	default:
-		eDebug("[CI HLCM] unknown state");
+		eWarning("[CI HLC] unknown state");
 		break;
 	}
 
 	return 0;
 }
-

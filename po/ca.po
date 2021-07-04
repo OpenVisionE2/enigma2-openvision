@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2021-06-02 18:22+0200\n"
 "Last-Translator: Oriol Pellicer <oriol@elsud.org>\n"
 "Language-Team: angelodos angelo2807@hotmail.com\n"
@@ -1263,6 +1263,22 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Sintonitzador no disponible."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1697,6 +1713,14 @@ msgstr "<desconegut>"
 msgid "=NO STREAM\n"
 msgstr "=NO STREAM\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 #
 msgid "??"
 msgstr "??"
@@ -1960,11 +1984,6 @@ msgstr "Activa HbbTV (botó vermell)"
 #
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Activar configuració del sintonitzador"
-
-#
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Activar configuració del sintonitzador"
 
 #
@@ -4586,6 +4605,10 @@ msgstr "Notícies Actualitat"
 msgid "Current CEC address"
 msgstr "Adreça actual del CEC"
 
+#, fuzzy
+msgid "Current MAC address"
+msgstr "Adreça actual del CEC"
+
 #
 #, fuzzy
 msgid "Current crash log"
@@ -5640,6 +5663,11 @@ msgstr "Voleu configurar la configuració automàtica?"
 msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Voleu gravar aquesta col·lecció al suport DVD?"
 
+#
+#, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Voleu actualitzar el paquet:\n"
+
 #, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Voleu eliminar tots els fitxers del registre de el logs"
@@ -6139,6 +6167,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Activa la memòria catxe del teletext"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -6157,7 +6188,8 @@ msgstr "Habiliteu aquesta configuració si el vostre sistema aeri necessita ener
 msgid "Enable timer conflict detection"
 msgstr "Habilita la detecció de conflictes de temporitzador"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "Habiliteu la visualització de totes les opcions de configuració veritable / falsa, sí / no, activa i desactiva / desactiva la configuració com a commutador gràfic."
 
 msgid "Enable volume control with arrow buttons"
@@ -6585,11 +6617,6 @@ msgstr "Sortir EPG"
 #
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Surt de configuració del servidors"
-
-#
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Surt de configuració del servidors"
 
 #
@@ -8983,18 +9010,23 @@ msgstr "Luxemburguès"
 
 #
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Configuració disc dur"
+
+#
+#, fuzzy
 msgid "MAC address"
 msgstr "Adreça ip"
 
 #
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Adaptar configuracions"
-
-#
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Configuració disc dur"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -9786,11 +9818,6 @@ msgstr "Xarxa configuracio"
 
 #
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Activar la configuració de la xarxa"
-
-#
-#, fuzzy
 msgid "Network Setup"
 msgstr "Configuració de xarxa"
 
@@ -10154,6 +10181,11 @@ msgstr "No definit"
 #
 msgid "Not Installed"
 msgstr "Instal·lantNo està instal · lat"
+
+#
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "Adreça ip"
 
 msgid "Not associated"
 msgstr "No associat"
@@ -11386,6 +11418,11 @@ msgid "Press OK on your remote control to continue."
 msgstr "Per continuar, premeu OK al comandament a distància."
 
 #
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Premeu OK per editar la configuració."
+
+#
 #, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Premeu OK per activar el de %s pell seleccionat."
@@ -11438,11 +11475,6 @@ msgstr "Seleccioneu el directori per al fitxer de registre."
 #
 msgid "Press OK to select/deselect a CAId."
 msgstr "Premeu OK per seleccionar / deseleccionar un CAId."
-
-#
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Premeu OK per editar la configuració."
 
 msgid "Press OK to toggle the selection"
 msgstr "Premeu OK per canviar la selecció"
@@ -11663,12 +11695,6 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "Dinamarca"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #
 #, fuzzy
 msgid "RC custom code"
@@ -11676,17 +11702,33 @@ msgstr "Personalitzar"
 
 #
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Canviar el nom"
 
 #
 #, fuzzy
-msgid "RC type"
-msgstr "tipus"
+msgid "RC default type"
+msgstr "Repetir el tipu"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#
+#, fuzzy
+msgid "RC detected type"
+msgstr "Repetir el tipu"
+
+#
+#, fuzzy
+msgid "RC identification"
+msgstr "Comunicacio"
+
+#
+#, fuzzy
+msgid "RC selected name"
+msgstr "Nom de la col·lecció"
+
+#
+#, fuzzy
+msgid "RC selected type"
+msgstr "Repetir el tipu"
 
 msgid "REC"
 msgstr "REC"
@@ -13575,6 +13617,11 @@ msgstr "Estableix l’assignació de CI per a la detecció dels serveis disponib
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "Adreça ip"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -13788,6 +13835,10 @@ msgstr "Mostra informaçio"
 msgid "Show Audioselection"
 msgstr "Mostrar audioselecció"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "Mostra True / False com a commutador gràfic"
+
 msgid "Show CI messages"
 msgstr "Mostra els missatges de CI"
 
@@ -13853,14 +13904,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Mostrar info del transponedor"
 
-msgid "Show True/False as graphical switch"
-msgstr "Mostra True / False com a commutador gràfic"
-
 msgid "Show VCR scart on main menu"
 msgstr "Mostra el scart VCR al menú principal"
 
 msgid "Show WLAN status"
 msgstr "Mostra l’estat de la WLAN"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Mostra animació mentre està ocupat"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -17997,10 +18049,6 @@ msgstr "Sí, sempre"
 msgid "Yes, and delete this movie"
 msgstr "Sí, i suprimeix aquesta pel·lícula"
 
-#, fuzzy
-msgid "Yes, but not in multi selections"
-msgstr "sí, però no en múltiples seleccions"
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Sí, suprimeix aquesta pel·lícula i torna a la llista de pel·lícules"
 
@@ -18675,10 +18723,6 @@ msgid "detective/thriller"
 msgstr "detectiu / thriller"
 
 #
-msgid "disable"
-msgstr "desactivar"
-
-#
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Activar l'edició dels preferits"
@@ -18736,10 +18780,6 @@ msgstr "encastat"
 msgid "empty"
 msgstr "buit"
 
-#
-msgid "enable"
-msgstr "habilitar"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "activa la pantalla d’introducció"
@@ -18793,6 +18833,9 @@ msgstr "error durant l’exploració"
 #, fuzzy
 msgid "ese"
 msgstr "Resetejar"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -19181,10 +19224,6 @@ msgstr "cap gestor de recursos"
 
 msgid "no storage devices found"
 msgstr "no s’han trobat dispositius d’emmagatzematge"
-
-#
-msgid "none"
-msgstr "cap"
 
 msgid "normal"
 msgstr "normal"

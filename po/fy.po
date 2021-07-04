@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2008-12-29 16:22+0100\n"
 "Last-Translator: gerrit <gerrit@nedlinux.nl>\n"
 "Language-Team: gerrit <fy@li.org>\n"
@@ -1218,6 +1218,22 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, python-format
+msgid "%s: Not Available"
+msgstr ""
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1651,6 +1667,14 @@ msgstr "<net bekend>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 #
 msgid "??"
 msgstr "??"
@@ -1887,11 +1911,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Dizze ynstellingen aktief meitsje"
-
-#
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Dizze ynstellingen aktief meitsje"
 
 #
@@ -4555,6 +4574,11 @@ msgstr ""
 
 #
 #, fuzzy
+msgid "Current MAC address"
+msgstr "IP Adres"
+
+#
+#, fuzzy
 msgid "Current crash log"
 msgstr "Hjoeddeiske Transponder"
 
@@ -5633,6 +5657,11 @@ msgstr "Wolle jo dizze kolleksje nei DVD brâne ?"
 
 #
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Wolle jo jo ynstellingen wêrom sette ?"
+
+#
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Wolle jo no nei kanalen sykje ?"
 
@@ -6137,6 +6166,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr ""
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -6155,7 +6187,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr ""
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -6579,11 +6611,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "nammeserver ynstellingen ferlitte"
-
-#
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "nammeserver ynstellingen ferlitte"
 
 #
@@ -8998,18 +9025,23 @@ msgstr ""
 
 #
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Hurde skiif ynstellingen"
+
+#
+#, fuzzy
 msgid "MAC address"
 msgstr "IP Adres"
 
 #
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Adapter ynstellingen"
-
-#
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Hurde skiif ynstellingen"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -9822,11 +9854,6 @@ msgstr "Netwurk configuraasje"
 
 #
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Netwurk ynstellingen aktief meitsje"
-
-#
-#, fuzzy
 msgid "Network Setup"
 msgstr "Netwurk ynstellingen"
 
@@ -10201,6 +10228,11 @@ msgstr "Gebruker ynstelling"
 #, fuzzy
 msgid "Not Installed"
 msgstr "Oan it ynstallearjen"
+
+#
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP Adres"
 
 msgid "Not associated"
 msgstr ""
@@ -11454,6 +11486,11 @@ msgid "Press OK on your remote control to continue."
 msgstr "Druk OK op of ôfstandsbestjinning om fierder te gean."
 
 #
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Druk OK om dizze ynstellingen te bewurkjen"
+
+#
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Druk Ok om ynstellingen aktief te meitsjen."
@@ -11509,11 +11546,6 @@ msgstr "Meitjse fan map %s is mislearre"
 #
 msgid "Press OK to select/deselect a CAId."
 msgstr ""
-
-#
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Druk OK om dizze ynstellingen te bewurkjen"
 
 msgid "Press OK to toggle the selection"
 msgstr ""
@@ -11734,12 +11766,6 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #
 #, fuzzy
 msgid "RC custom code"
@@ -11747,17 +11773,33 @@ msgstr "Oanpasse"
 
 #
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Omneame"
 
 #
 #, fuzzy
-msgid "RC type"
-msgstr "Test moadus"
+msgid "RC default type"
+msgstr "Herhelje Type"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#
+#, fuzzy
+msgid "RC detected type"
+msgstr "Herhelje Type"
+
+#
+#, fuzzy
+msgid "RC identification"
+msgstr "Netwurk configuraasje"
+
+#
+#, fuzzy
+msgid "RC selected name"
+msgstr "Kolleksje namme"
+
+#
+#, fuzzy
+msgid "RC selected type"
+msgstr "Herhelje Type"
 
 msgid "REC"
 msgstr ""
@@ -13699,6 +13741,11 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP Adres"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -13917,6 +13964,9 @@ msgstr "Ynformaasje sjen litte"
 msgid "Show Audioselection"
 msgstr ""
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr ""
 
@@ -13983,9 +14033,6 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Transponder ynfo sjen litte"
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 msgid "Show VCR scart on main menu"
 msgstr ""
 
@@ -13993,6 +14040,9 @@ msgstr ""
 #, fuzzy
 msgid "Show WLAN status"
 msgstr "WLAN status sjen litte"
+
+msgid "Show additional slider value"
+msgstr ""
 
 msgid "Show alsa-utils in plugin browser"
 msgstr ""
@@ -18187,9 +18237,6 @@ msgstr ""
 msgid "Yes, and delete this movie"
 msgstr "Ja, en ferwiderje dizze film"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr ""
 
@@ -18828,10 +18875,6 @@ msgid "detective/thriller"
 msgstr ""
 
 #
-msgid "disable"
-msgstr "utskeakelje"
-
-#
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Bewurkjen favorieten oan"
@@ -18886,10 +18929,6 @@ msgstr ""
 msgid "empty"
 msgstr "leeg"
 
-#
-msgid "enable"
-msgstr "ynskeakelje"
-
 msgid "enable cuts (preview)"
 msgstr ""
 
@@ -18941,6 +18980,9 @@ msgstr ""
 #, fuzzy
 msgid "ese"
 msgstr "Reset"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -19326,10 +19368,6 @@ msgstr ""
 
 msgid "no storage devices found"
 msgstr ""
-
-#
-msgid "none"
-msgstr "gjin"
 
 msgid "normal"
 msgstr ""

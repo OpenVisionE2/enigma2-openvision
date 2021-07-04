@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2021-01-17 18:31+0100\n"
 "Last-Translator: Željko <zeljko2@hi.ht.hr>\n"
 "Language-Team: Željko\n"
@@ -1210,6 +1210,22 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Tjuner nije raspoloživ."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1590,6 +1606,14 @@ msgstr "<nepoznat>"
 msgid "=NO STREAM\n"
 msgstr "=NEMA WEB PRIJENOSA\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1831,10 +1855,6 @@ msgstr "Aktivirajte HbbTV (crvenu tipku)"
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktivirajte aktualnu konfiguraciju"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Aktivirajte aktualnu konfiguraciju"
 
 msgid "Activate Picture in Picture"
@@ -4238,6 +4258,10 @@ msgid "Current CEC address"
 msgstr "Trenutna CEC adresa"
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "Trenutna CEC adresa"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "Trenutni transponder"
 
@@ -5180,6 +5204,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Želite li snimiti ovu zbirku na DVD medij?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Želite li nadograditi paket:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Želite li ukloniti sve zapisnike pada sustava?"
 
@@ -5626,6 +5654,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Omogućite predmemoriranje teleteksta"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5644,7 +5675,8 @@ msgstr "Omogućite ovu postavku ako vašem antenskom sustavu treba napajanje"
 msgid "Enable timer conflict detection"
 msgstr "Omogućite otkrivanje sukoba tajmera"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "Omogućite prikaz svih pravih/lažnih, da/ne, uklj/isklj i omogućite/onemogućite postavljanje opcija kao grafički prekidač."
 
 msgid "Enable volume control with arrow buttons"
@@ -6037,10 +6069,6 @@ msgstr "Izlaz iz EPG"
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Izlaz iz konfiguracije poslužitelja"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Izlaz iz konfiguracije poslužitelja"
 
 msgid "Exit editor"
@@ -8222,16 +8250,21 @@ msgid "Luxembourgish"
 msgstr "Luxemburški"
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Postavke hard diska"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "IP-adresa"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Postavke adaptera"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Postavke hard diska"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8930,10 +8963,6 @@ msgid "Network Information Actions"
 msgstr "Mrežna konfiguracija"
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Aktivirajte mrežne postavke"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "Postavljanje mreže"
 
@@ -9253,6 +9282,10 @@ msgstr "Nije definirano"
 
 msgid "Not Installed"
 msgstr "Nije instalirano"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP-adresa"
 
 msgid "Not associated"
 msgstr "Nije povezano"
@@ -10363,6 +10396,10 @@ msgstr "Pritisnite MENU na daljinskom upravljaču za dodatne opcije."
 msgid "Press OK on your remote control to continue."
 msgstr "Pritisnite OK na daljinskom upravljaču za nastavak."
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Pritisnite OK za uređivanje postavki."
+
 #, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Pritisnite OK za aktiviranje odabranog %s skina."
@@ -10405,10 +10442,6 @@ msgstr "Pritisnite OK za odabir mjesta spremanja datoteke zapisnika."
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "Pritisnite OK za odabir/poništenje odabira CAId-a."
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Pritisnite OK za uređivanje postavki."
 
 msgid "Press OK to toggle the selection"
 msgstr "Pritisnite OK za promjenu odabira"
@@ -10610,27 +10643,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "Danska"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "Prilagođavanje"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Preimenovati"
 
 #, fuzzy
-msgid "RC type"
-msgstr "tip"
+msgid "RC default type"
+msgstr "Vrsta ponavljanja"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "Vrsta ponavljanja"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "Komunikacija"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "Ime zbirke"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "Vrsta ponavljanja"
 
 msgid "REC"
 msgstr "REC"
@@ -12306,6 +12345,10 @@ msgstr "Postavite CI zadatak za otkrivanje dostupnih usluga. Mnogi CI + moduli m
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP-adresa"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12508,6 +12551,10 @@ msgstr "Prikažite informacije"
 msgid "Show Audioselection"
 msgstr "Prikažite audio izbor"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "Prikažite pravi/lažni kao grafički prekidač"
+
 msgid "Show CI messages"
 msgstr "Prikažite CI poruke"
 
@@ -12570,14 +12617,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Prikaži informacije o transponderu"
 
-msgid "Show True/False as graphical switch"
-msgstr "Prikažite pravi/lažni kao grafički prekidač"
-
 msgid "Show VCR scart on main menu"
 msgstr "Prikažite VCR scart na glavnom izborniku"
 
 msgid "Show WLAN status"
 msgstr "Prikažite WLAN status"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Prikažite animaciju dok je zauzet"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -16377,10 +16425,6 @@ msgstr "Da, uvijek"
 msgid "Yes, and delete this movie"
 msgstr "Da, izbrišite ovaj film"
 
-#, fuzzy
-msgid "Yes, but not in multi selections"
-msgstr "da, ali ne u više izbora"
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Da, izbrišite ovaj film i vratite se na popis filmova"
 
@@ -17006,9 +17050,6 @@ msgstr "dekodirati i snimiti ecm"
 msgid "detective/thriller"
 msgstr "detektiv/triler"
 
-msgid "disable"
-msgstr "onemogućiti"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Omogući uređivanje favorita"
@@ -17061,9 +17102,6 @@ msgstr "ugrađen"
 msgid "empty"
 msgstr "prazan"
 
-msgid "enable"
-msgstr "omogućiti"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "omogućite uvodni zaslon"
@@ -17111,6 +17149,9 @@ msgstr "pogreška pretraživanja"
 #, fuzzy
 msgid "ese"
 msgstr "Reset"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17459,9 +17500,6 @@ msgstr "nema upravitelja resursima"
 
 msgid "no storage devices found"
 msgstr "nema pronađenih uređaja za pohranu"
-
-msgid "none"
-msgstr "nijedan"
 
 msgid "normal"
 msgstr "normalan"

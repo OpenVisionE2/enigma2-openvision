@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -1207,6 +1207,22 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Tuner inte tillgänglig."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1638,6 +1654,14 @@ msgstr "<okänd>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 #
 msgid "??"
 msgstr "??"
@@ -1903,11 +1927,6 @@ msgstr "Aktivera HbbTV (Röd Knapp)"
 #
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktivera nuvarande konfiguration"
-
-#
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Aktivera nuvarande konfiguration"
 
 #
@@ -4571,6 +4590,10 @@ msgstr "Nyheter / aktuella händelser"
 msgid "Current CEC address"
 msgstr "Nuvarande CEC adress"
 
+#, fuzzy
+msgid "Current MAC address"
+msgstr "Nuvarande CEC adress"
+
 #
 #, fuzzy
 msgid "Current crash log"
@@ -5644,6 +5667,11 @@ msgstr "Vill du automatiskt återställa inställningar?"
 msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Vill du bränna denna samling till DVD media?"
 
+#
+#, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Vill du uppdatera paketet :\n"
+
 #, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Vill du ta bort alla crashloggsfiler"
@@ -6146,6 +6174,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Aktivera teletext cache"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -6164,7 +6195,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr "Aktivera timerkonfliktdetektering"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -6585,11 +6616,6 @@ msgstr "Avsluta EPG"
 #
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Avsluta namnserverkonfiguration"
-
-#
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Avsluta namnserverkonfiguration"
 
 #
@@ -9021,18 +9047,23 @@ msgstr "Luxemburgiska"
 
 #
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Inställningar för hårddisk"
+
+#
+#, fuzzy
 msgid "MAC address"
 msgstr "IP adress"
 
 #
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Adapterinställningar"
-
-#
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Inställningar för hårddisk"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -9834,11 +9865,6 @@ msgstr "Nätverkskonfiguration"
 
 #
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Aktivera nätverksinställningar"
-
-#
-#, fuzzy
 msgid "Network Setup"
 msgstr "Nätverksinställningar"
 
@@ -10207,6 +10233,11 @@ msgstr "Inte definerad"
 #, fuzzy
 msgid "Not Installed"
 msgstr "Installera"
+
+#
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP adress"
 
 msgid "Not associated"
 msgstr "Ej associerad"
@@ -11446,6 +11477,11 @@ msgid "Press OK on your remote control to continue."
 msgstr "Tryck OK på din fjärrkontroll för att fortsätta."
 
 #
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Tryck OK för att ändra inställningar."
+
+#
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Tryck OK för aktivera valt utseende."
@@ -11501,11 +11537,6 @@ msgstr "Skapande av katalog %s misslyckades."
 #
 msgid "Press OK to select/deselect a CAId."
 msgstr "Tryck OK för att aktivera / avaktivera en CAId."
-
-#
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Tryck OK för att ändra inställningar."
 
 msgid "Press OK to toggle the selection"
 msgstr "Tryck OK för att växla val."
@@ -11725,12 +11756,6 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #
 #, fuzzy
 msgid "RC custom code"
@@ -11738,16 +11763,33 @@ msgstr "Anpassningar"
 
 #
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Byt namn"
 
+#
 #, fuzzy
-msgid "RC type"
-msgstr "DVB Typ"
+msgid "RC default type"
+msgstr "Upprepningstyp"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#
+#, fuzzy
+msgid "RC detected type"
+msgstr "Upprepningstyp"
+
+#
+#, fuzzy
+msgid "RC identification"
+msgstr "Kommunikation"
+
+#
+#, fuzzy
+msgid "RC selected name"
+msgstr "Samlingsnamn"
+
+#
+#, fuzzy
+msgid "RC selected type"
+msgstr "Upprepningstyp"
 
 msgid "REC"
 msgstr ""
@@ -13648,6 +13690,11 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP adress"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -13867,6 +13914,9 @@ msgstr "Visa Info"
 msgid "Show Audioselection"
 msgstr "Visa ljudval"
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr "Visa CI meddelanden"
 
@@ -13933,15 +13983,16 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Visa transponderinformation"
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 msgid "Show VCR scart on main menu"
 msgstr "Visa VCR SCART i huvudmenyn"
 
 #
 msgid "Show WLAN status"
 msgstr "Visa WLAN Status"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Visa ikon när mottagaren är upptagen"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -18195,9 +18246,6 @@ msgstr "Ja, alltid"
 msgid "Yes, and delete this movie"
 msgstr "Ja, och ta bort den här filmen"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Ja, radera denna film och återgå till filmlistan"
 
@@ -18884,10 +18932,6 @@ msgid "detective/thriller"
 msgstr "detektiv / thriller"
 
 #
-msgid "disable"
-msgstr "avaktivera"
-
-#
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Aktivera favoriter editor"
@@ -18945,10 +18989,6 @@ msgstr "inbyggd"
 msgid "empty"
 msgstr "tom"
 
-#
-msgid "enable"
-msgstr "aktivera"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "Aktivera introskärm"
@@ -19002,6 +19042,9 @@ msgstr "Fel vid skanning"
 #, fuzzy
 msgid "ese"
 msgstr "Nollställ"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -19390,10 +19433,6 @@ msgstr "ingen resurshanterare"
 
 msgid "no storage devices found"
 msgstr "inga lagringsenheter hittades"
-
-#
-msgid "none"
-msgstr "ingen"
 
 msgid "normal"
 msgstr "normal"

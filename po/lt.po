@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2021-06-07 15:04+0300\n"
 "Last-Translator: Audronis <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -1209,6 +1209,22 @@ msgid "%s/%s: %s"
 msgstr "%s: %s,%s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "Imtuvas neprieinamas."
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1590,6 +1606,14 @@ msgstr "<nežinomas>"
 msgid "=NO STREAM\n"
 msgstr "=SRAUTO NĖRA\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1831,10 +1855,6 @@ msgstr "Aktyvuoti HbbTV (raudonas mygtukas)"
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktyvuoti dabartinę konfigūraciją"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "Aktyvuoti dabartinę konfigūraciją"
 
 msgid "Activate Picture in Picture"
@@ -4236,6 +4256,10 @@ msgid "Current CEC address"
 msgstr "Dabartinis CEC adresas"
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "Dabartinis CEC adresas"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "Dabartinis transponderis"
 
@@ -5178,6 +5202,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "Ar norite įrašyti šią kolekciją į DVD laikmeną?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Ar norite atnaujinti paketą:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Ar norite pašalinti visus gedimo žurnalo failus"
 
@@ -5620,6 +5648,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "Įjungti teleteksto kaupimą talpykloje"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5638,7 +5669,8 @@ msgstr "Įjunkite šį nustatymą, jei jūsų antenos sistemai reikia galios"
 msgid "Enable timer conflict detection"
 msgstr "Įjungti laikmačio konfliktų aptikimą"
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+#, fuzzy
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr "Įgalinti rodyti visas teisinga/klaidinga, taip/ne, įjungti/išjungti nustatymo parinktis kaip grafinį jungiklį."
 
 msgid "Enable volume control with arrow buttons"
@@ -6031,10 +6063,6 @@ msgstr "Užverti EPG"
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Užverti DNS konfigūravimą"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "Užverti DNS konfigūravimą"
 
 msgid "Exit editor"
@@ -8212,16 +8240,21 @@ msgid "Luxembourgish"
 msgstr "Liuksemburgiečių"
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Kietojo disko valdymas"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "IP adresas"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Adapterio nustatymai"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Kietojo disko valdymas"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8920,10 +8953,6 @@ msgid "Network Information Actions"
 msgstr "Tinklo konfigūracija"
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Aktyvuoti tinklo nustatymus"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "Tinklo sąranka"
 
@@ -9243,6 +9272,10 @@ msgstr "Neapibrėžta"
 
 msgid "Not Installed"
 msgstr "Neįdiegta"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP adresas"
 
 msgid "Not associated"
 msgstr "Nesusietas"
@@ -10354,6 +10387,10 @@ msgstr "Papildomų galimybių pasirinkimui, spauskite 'MENU'."
 msgid "Press OK on your remote control to continue."
 msgstr "Spauskite OK savo valdymo pulte ir tęskite."
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Spauskite OK ir redaguokite nustatymus."
+
 #, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Paspauskite OK, kad suaktyvintumėte pasirinktą %s temą."
@@ -10396,10 +10433,6 @@ msgstr "Paspauskite OK, kad pasirinktumėte žurnalo failo įrašymo vietą."
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "Spauskite OK, kad pasirinkti/nepasirinkti CAId."
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Spauskite OK ir redaguokite nustatymus."
 
 msgid "Press OK to toggle the selection"
 msgstr "Kad sukeisti pasirinkimus, spauskite OK"
@@ -10601,27 +10634,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "Danija"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "Vartotojo nustatymai"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Pervadinti"
 
 #, fuzzy
-msgid "RC type"
-msgstr "tipas"
+msgid "RC default type"
+msgstr "Kartojimo tipas"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "Kartojimo tipas"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "Ryšio palaikymas"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "Kolekcijos pavadinimas"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "Kartojimo tipas"
 
 msgid "REC"
 msgstr "REC"
@@ -12297,6 +12336,10 @@ msgstr "Galimų kanalų aptikimui, įtraukti ir CI priskyrimą."
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP adresas"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12499,6 +12542,10 @@ msgstr "Rodyti informaciją"
 msgid "Show Audioselection"
 msgstr "Rodyti garso pasirinkimus"
 
+#, fuzzy
+msgid "Show Boolean values as graphical switch"
+msgstr "Rodyti teisinga/klaidinga kaip grafinį jungiklį"
+
 msgid "Show CI messages"
 msgstr "Rodyti CI pranešimus"
 
@@ -12561,14 +12608,15 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Rodyti transponderio informaciją"
 
-msgid "Show True/False as graphical switch"
-msgstr "Rodyti teisinga/klaidinga kaip grafinį jungiklį"
-
 msgid "Show VCR scart on main menu"
 msgstr "Rodyti VCR SCART pagrindiniame meniu"
 
 msgid "Show WLAN status"
 msgstr "Rodyti belaidžio tinklo būseną"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "Rodyti animaciją tuo metu, kai užimta"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -16369,10 +16417,6 @@ msgstr "Taip, visada"
 msgid "Yes, and delete this movie"
 msgstr "Taip, ir ištrinti šį filmą"
 
-#, fuzzy
-msgid "Yes, but not in multi selections"
-msgstr "taip, bet ne keliuose pasirinkimuose"
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr "Taip, ištrinti šį filmą ir grįžti į filmų sąrašą"
 
@@ -16997,9 +17041,6 @@ msgstr "dekoduoti ir įrašyti ECM"
 msgid "detective/thriller"
 msgstr "detektyvas/trileris"
 
-msgid "disable"
-msgstr "išjungti"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Įjungti mėgstamų redagavimą"
@@ -17052,9 +17093,6 @@ msgstr "integruotas"
 msgid "empty"
 msgstr "tuščias"
 
-msgid "enable"
-msgstr "įjungti"
-
 #, fuzzy
 msgid "enable cuts (preview)"
 msgstr "įjungti įvadinį vaizdą"
@@ -17102,6 +17140,9 @@ msgstr "klaida, skenuojant"
 #, fuzzy
 msgid "ese"
 msgstr "Nustatyti iš naujo"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17450,9 +17491,6 @@ msgstr "išteklių valdymo nėra"
 
 msgid "no storage devices found"
 msgstr "saugojimo įrenginių nerasta"
-
-msgid "none"
-msgstr "joks"
 
 msgid "normal"
 msgstr "normalus"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 王彪 <satfan@163.com>\n"
 "Language-Team: 中國\n"
@@ -1125,6 +1125,22 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "不可用"
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1498,6 +1514,14 @@ msgstr "<未知>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "更新! 立即重啟dreambox嗎？"
 
@@ -1712,10 +1736,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "啟動網卡配置"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "啟動網卡配置"
 
 msgid "Activate Picture in Picture"
@@ -4066,6 +4086,10 @@ msgid "Current CEC address"
 msgstr ""
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "當前值: "
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "當前值: "
 
@@ -5000,6 +5024,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr " 是否燒錄這個收藏到DVD光碟?"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr " 是否升級套裝軟體:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr " 是否安裝預設的衛星列表？"
 
@@ -5440,6 +5468,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr ""
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5458,7 +5489,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr ""
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -5836,10 +5867,6 @@ msgstr ""
 #, fuzzy
 msgid "Exit IPv6 configuration"
 msgstr "調諧器配置"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
-msgstr "退出網卡配置"
 
 msgid "Exit editor"
 msgstr "退出編輯"
@@ -7969,14 +7996,19 @@ msgstr ""
 msgid "Luxembourgish"
 msgstr ""
 
+#, fuzzy
+msgid "MAC Address Setup"
+msgstr "網卡設定"
+
 msgid "MAC address"
 msgstr ""
 
-#, fuzzy
-msgid "MAC address settings"
-msgstr "網卡設定"
-
 msgid "MAC address setup"
+msgstr ""
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
 msgstr ""
 
 msgid "MENU"
@@ -8680,10 +8712,6 @@ msgid "Network Information Actions"
 msgstr ""
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "啟用網路設定"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "網路設定"
 
@@ -9006,6 +9034,9 @@ msgstr "用戶定義"
 #, fuzzy
 msgid "Not Installed"
 msgstr "安裝"
+
+msgid "Not a valid MAC address"
+msgstr ""
 
 msgid "Not associated"
 msgstr ""
@@ -10098,6 +10129,10 @@ msgstr ""
 msgid "Press OK on your remote control to continue."
 msgstr "按OK鍵確認."
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "按OK鍵修改設定"
+
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "按OK啟動所選皮膚."
@@ -10142,10 +10177,6 @@ msgstr "創建目錄%s 失敗."
 
 msgid "Press OK to select/deselect a CAId."
 msgstr "按 OK 選擇/取消 CAId."
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "按OK鍵修改設定"
 
 msgid "Press OK to toggle the selection"
 msgstr ""
@@ -10346,26 +10377,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr "週末標記:"
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "高級設定"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "重命"
 
-msgid "RC type"
-msgstr ""
+#, fuzzy
+msgid "RC default type"
+msgstr "定時類型"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "測驗到的調諧器:"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "通訊"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "收藏名稱"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "移除選定的衛星"
 
 msgid "REC"
 msgstr ""
@@ -12038,6 +12076,10 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "按OK鍵修改設定"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12233,6 +12275,9 @@ msgstr "顯示轉發器資訊"
 msgid "Show Audioselection"
 msgstr ""
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr ""
 
@@ -12291,13 +12336,13 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "顯示轉發器資訊"
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 msgid "Show VCR scart on main menu"
 msgstr ""
 
 msgid "Show WLAN status"
+msgstr ""
+
+msgid "Show additional slider value"
 msgstr ""
 
 msgid "Show alsa-utils in plugin browser"
@@ -15971,9 +16016,6 @@ msgstr ""
 msgid "Yes, and delete this movie"
 msgstr "是的，刪除此電影"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr ""
 
@@ -16561,9 +16603,6 @@ msgstr ""
 msgid "detective/thriller"
 msgstr ""
 
-msgid "disable"
-msgstr "禁止"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "允許編輯喜愛頻道"
@@ -16613,9 +16652,6 @@ msgstr ""
 msgid "empty"
 msgstr "空的"
 
-msgid "enable"
-msgstr "啟用"
-
 msgid "enable cuts (preview)"
 msgstr ""
 
@@ -16661,6 +16697,9 @@ msgstr ""
 #, fuzzy
 msgid "ese"
 msgstr "重定"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17005,9 +17044,6 @@ msgstr ""
 
 msgid "no storage devices found"
 msgstr ""
-
-msgid "none"
-msgstr "無"
 
 msgid "normal"
 msgstr ""

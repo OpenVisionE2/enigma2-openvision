@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2018-02-14 16:51+0330\n"
 "Last-Translator: Persian Prince <persianprince@pe4k.com>\n"
 "Language-Team: Persian Professionals <persianpros@yahoo.com>\n"
@@ -1176,6 +1176,23 @@ msgid "%s/%s: %s"
 msgstr "%s/%s: %s"
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "به روز رسانی های در دسترس"
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1557,6 +1574,14 @@ msgstr "<نامشخص>"
 msgid "=NO STREAM\n"
 msgstr "=بدون جریان\n"
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1777,10 +1802,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "اضافه کردن پیکربندی شبکه؟"
-
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "اضافه کردن پیکربندی شبکه؟"
 
 msgid "Activate Picture in Picture"
@@ -4213,6 +4234,10 @@ msgid "Current CEC address"
 msgstr "آدرس فعلی CEC"
 
 #, fuzzy
+msgid "Current MAC address"
+msgstr "آدرس فعلی CEC"
+
+#, fuzzy
 msgid "Current crash log"
 msgstr "فرستنده فعلی"
 
@@ -5176,6 +5201,10 @@ msgid "Do you want to burn this collection to DVD medium?"
 msgstr "آیا میخواهید این مجموعه را روی DVD رایت کنید ؟"
 
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "آیا میخواهید بسته به روز رسانی شود:\n"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "آیا واقعا قصد حذف کردن %s را دارید؟ "
 
@@ -5617,6 +5646,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr "فعال کردن ذخیره کردن تله تکست"
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5635,7 +5667,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr ""
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -6020,10 +6052,6 @@ msgstr "خروج از EPG"
 
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "اضافه کردن پیکربندی شبکه؟"
-
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "اضافه کردن پیکربندی شبکه؟"
 
 msgid "Exit editor"
@@ -8215,16 +8243,21 @@ msgid "Luxembourgish"
 msgstr ""
 
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "تنظیمات هارد"
+
+#, fuzzy
 msgid "MAC address"
 msgstr "IP آدرس"
 
 #, fuzzy
-msgid "MAC address settings"
-msgstr "تنظیمات آداپتور"
-
-#, fuzzy
 msgid "MAC address setup"
 msgstr "تنظیمات هارد"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -8932,10 +8965,6 @@ msgid "Network Information Actions"
 msgstr "پیکربندی شبکه..."
 
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "فعال کردن تنظیمات شبکه"
-
-#, fuzzy
 msgid "Network Setup"
 msgstr "تنظیمات شبکه"
 
@@ -9267,6 +9296,10 @@ msgstr ""
 #, fuzzy
 msgid "Not Installed"
 msgstr "نصب"
+
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP آدرس"
 
 msgid "Not associated"
 msgstr ""
@@ -10370,6 +10403,10 @@ msgstr "دکمه MENU روی ریموت کنترل را برای گزینه ها
 msgid "Press OK on your remote control to continue."
 msgstr "دکمه OK را برای ادامه دادن فشار دهید"
 
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "دکمه OK را برای ویرایش تنظیمات فشار دهید"
+
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "دکمه OK را برای فعال کردن پوسته انتخاب شده فشار دهید"
@@ -10416,10 +10453,6 @@ msgstr "ایجاد شاخه %s ناموفق "
 #
 msgid "Press OK to select/deselect a CAId."
 msgstr "دکمه OK را برای انتخاب کردن یا نکردن CAId فشار دهید"
-
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "دکمه OK را برای ویرایش تنظیمات فشار دهید"
 
 msgid "Press OK to toggle the selection"
 msgstr ""
@@ -10622,27 +10655,33 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "سفارشی"
 
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "تغییر نام"
 
 #, fuzzy
-msgid "RC type"
-msgstr "نوع"
+msgid "RC default type"
+msgstr "نوع تکرار"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#, fuzzy
+msgid "RC detected type"
+msgstr "نوع تکرار"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "ارتباط"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "نام مجموعه"
+
+#, fuzzy
+msgid "RC selected type"
+msgstr "نوع تکرار"
 
 msgid "REC"
 msgstr ""
@@ -12350,6 +12389,10 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP آدرس"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -12558,6 +12601,9 @@ msgstr "نمایش اطلاعات"
 msgid "Show Audioselection"
 msgstr ""
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr ""
 
@@ -12617,15 +12663,16 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr ""
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 msgid "Show VCR scart on main menu"
 msgstr "نمایش VCR scart در منوی اصلی"
 
 #, fuzzy
 msgid "Show WLAN status"
 msgstr "نمایش وضعیت شبکه بدون سیم"
+
+#, fuzzy
+msgid "Show additional slider value"
+msgstr "نمایش انیمیشن هنگام کار"
 
 #, fuzzy
 msgid "Show alsa-utils in plugin browser"
@@ -16354,9 +16401,6 @@ msgstr "بله ، همیشه"
 msgid "Yes, and delete this movie"
 msgstr ""
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr ""
 
@@ -16935,9 +16979,6 @@ msgstr ""
 msgid "detective/thriller"
 msgstr ""
 
-msgid "disable"
-msgstr ""
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr " (غیر فعال)"
@@ -16987,9 +17028,6 @@ msgstr ""
 msgid "empty"
 msgstr "خالی"
 
-msgid "enable"
-msgstr "فعال"
-
 msgid "enable cuts (preview)"
 msgstr ""
 
@@ -17034,6 +17072,9 @@ msgstr ""
 #, fuzzy
 msgid "ese"
 msgstr "بازنشانی"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -17376,9 +17417,6 @@ msgstr ""
 
 msgid "no storage devices found"
 msgstr ""
-
-msgid "none"
-msgstr "هیچ چیز"
 
 msgid "normal"
 msgstr "معمولی"

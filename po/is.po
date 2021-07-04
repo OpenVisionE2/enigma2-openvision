@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 09:25+0430\n"
+"POT-Creation-Date: 2021-07-04 20:16+0430\n"
 "PO-Revision-Date: 2020-05-16 18:44+0200\n"
 "Last-Translator: Baldur <bsveinsson@gmail.com>\n"
 "Language-Team: Polar Team/LT Team <baddi@oreind.is>\n"
@@ -1216,6 +1216,23 @@ msgid "%s/%s: %s"
 msgstr ""
 
 #, python-format
+msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgstr ""
+
+#, python-format
+msgid "%s: %s Used:%s Free:%s"
+msgstr ""
+
+#, python-format
+msgid "%s: %s, in use: %s%%"
+msgstr ""
+
+#
+#, fuzzy, python-format
+msgid "%s: Not Available"
+msgstr "ekki tiltækt"
+
+#, python-format
 msgid "%s?"
 msgstr ""
 
@@ -1645,6 +1662,14 @@ msgstr "<óþekkt>"
 msgid "=NO STREAM\n"
 msgstr ""
 
+#, python-format
+msgid "?%s-recursive?"
+msgstr ""
+
+#, python-format
+msgid "?%s?"
+msgstr ""
+
 msgid "??"
 msgstr "??"
 
@@ -1879,11 +1904,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "virkja núverandi stillingar"
-
-#
-#, fuzzy
-msgid "Activate MAC address configuration"
 msgstr "virkja núverandi stillingar"
 
 #
@@ -4403,6 +4423,11 @@ msgstr "Núverandi val:"
 msgid "Current CEC address"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Current MAC address"
+msgstr "IP Netfang"
+
 #, fuzzy
 msgid "Current crash log"
 msgstr "Núverandi sendir"
@@ -5466,6 +5491,11 @@ msgstr "Viltu brenna þessa skráar safn á DVD disk?"
 
 #
 #, fuzzy
+msgid "Do you want to change the current MAC address?\n"
+msgstr "Viltu uppfæra pakkann:\n"
+
+#
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Viltu setja inn pakkann:\n"
 
@@ -5958,6 +5988,9 @@ msgstr ""
 msgid "Enable teletext caching"
 msgstr ""
 
+msgid "Enable the current value of the slider at end of the slider bar."
+msgstr ""
+
 msgid "Enable this option to add action map / remote control mapping data to the debug log file."
 msgstr ""
 
@@ -5976,7 +6009,7 @@ msgstr ""
 msgid "Enable timer conflict detection"
 msgstr ""
 
-msgid "Enable to display all true/false, yes/no, on/off and enable/disable set up options as a graphical switch."
+msgid "Enable to display all True/False, Yes/No, On/Off and Enable/Disable set up options as a graphical switch."
 msgstr ""
 
 msgid "Enable volume control with arrow buttons"
@@ -6395,11 +6428,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "fara úr nafnaþjóns stillingum"
-
-#
-#, fuzzy
-msgid "Exit MAC address configuration"
 msgstr "fara úr nafnaþjóns stillingum"
 
 #
@@ -8809,18 +8837,23 @@ msgstr ""
 
 #
 #, fuzzy
+msgid "MAC Address Setup"
+msgstr "Uppsetning harða disks"
+
+#
+#, fuzzy
 msgid "MAC address"
 msgstr "IP Netfang"
 
 #
 #, fuzzy
-msgid "MAC address settings"
-msgstr "Stilling tækis"
-
-#
-#, fuzzy
 msgid "MAC address setup"
 msgstr "Uppsetning harða disks"
+
+msgid ""
+"MAC address successfully changed.\n"
+"New MAC address is: "
+msgstr ""
 
 msgid "MENU"
 msgstr ""
@@ -9631,11 +9664,6 @@ msgstr "Stilling nettengingar..."
 
 #
 #, fuzzy
-msgid "Network MAC settings"
-msgstr "Virkja netkerfis stillingar"
-
-#
-#, fuzzy
 msgid "Network Setup"
 msgstr "Stillingar netkerfis"
 
@@ -10016,6 +10044,11 @@ msgstr "Stillt af notanda"
 #, fuzzy
 msgid "Not Installed"
 msgstr "Setja inn"
+
+#
+#, fuzzy
+msgid "Not a valid MAC address"
+msgstr "IP Netfang"
 
 #, fuzzy
 msgid "Not associated"
@@ -11262,6 +11295,11 @@ msgid "Press OK on your remote control to continue."
 msgstr "Ýttu á OK á fjarstýringunni til að halda áfram."
 
 #
+#, fuzzy
+msgid "Press OK to activate the MAC address."
+msgstr "Ýttu á OK til að breyta stillingum."
+
+#
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
 msgstr "Ýttu á OK til að velja valið skinn."
@@ -11316,11 +11354,6 @@ msgstr "Tókst ekki að búa möppuna %s."
 #
 msgid "Press OK to select/deselect a CAId."
 msgstr "Ýttu á OK til að velja eða ekki velja CAId."
-
-#
-#, fuzzy
-msgid "Press OK to set the MAC address."
-msgstr "Ýttu á OK til að breyta stillingum."
 
 msgid "Press OK to toggle the selection"
 msgstr ""
@@ -11540,29 +11573,37 @@ msgstr ""
 msgid "RAM benchmark"
 msgstr ""
 
-msgid "RC ID number"
-msgstr ""
-
-msgid "RC code"
-msgstr ""
-
 #, fuzzy
 msgid "RC custom code"
 msgstr "Aðrar stillingar"
 
 #
 #, fuzzy
-msgid "RC name"
+msgid "RC default name"
 msgstr "Endurnefna"
 
 #
 #, fuzzy
-msgid "RC type"
-msgstr "Prufa gerð"
+msgid "RC default type"
+msgstr "Gerð endurtekningar"
 
-#, python-format
-msgid "RC type:|%s"
-msgstr ""
+#
+#, fuzzy
+msgid "RC detected type"
+msgstr "Gerð endurtekningar"
+
+#, fuzzy
+msgid "RC identification"
+msgstr "Samskipti"
+
+#, fuzzy
+msgid "RC selected name"
+msgstr "Nafn safns"
+
+#
+#, fuzzy
+msgid "RC selected type"
+msgstr "Gerð endurtekningar"
 
 msgid "REC"
 msgstr ""
@@ -13481,6 +13522,11 @@ msgstr ""
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Set a new MAC address"
+msgstr "IP Netfang"
+
 msgid "Set a temporary sort method for this directory"
 msgstr ""
 
@@ -13699,6 +13745,9 @@ msgstr "Sýna upplýsingar"
 msgid "Show Audioselection"
 msgstr ""
 
+msgid "Show Boolean values as graphical switch"
+msgstr ""
+
 msgid "Show CI messages"
 msgstr ""
 
@@ -13765,9 +13814,6 @@ msgstr ""
 msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Sýna upplýsingar um sendi"
 
-msgid "Show True/False as graphical switch"
-msgstr ""
-
 msgid "Show VCR scart on main menu"
 msgstr ""
 
@@ -13775,6 +13821,9 @@ msgstr ""
 #, fuzzy
 msgid "Show WLAN status"
 msgstr "Sýna WLAN stöðu"
+
+msgid "Show additional slider value"
+msgstr ""
 
 msgid "Show alsa-utils in plugin browser"
 msgstr ""
@@ -17969,9 +18018,6 @@ msgstr "Já, alltaf"
 msgid "Yes, and delete this movie"
 msgstr "Já, og eyða þessari bíómynd"
 
-msgid "Yes, but not in multi selections"
-msgstr ""
-
 msgid "Yes, delete this movie and return to movie list"
 msgstr ""
 
@@ -18614,10 +18660,6 @@ msgstr ""
 msgid "detective/thriller"
 msgstr ""
 
-#
-msgid "disable"
-msgstr "óvirkt"
-
 #, fuzzy
 msgid "disable cuts (edit)"
 msgstr "Virkja breytingu eftirlætis lista"
@@ -18672,10 +18714,6 @@ msgstr ""
 msgid "empty"
 msgstr "tómt"
 
-#
-msgid "enable"
-msgstr "virkt"
-
 msgid "enable cuts (preview)"
 msgstr ""
 
@@ -18727,6 +18765,9 @@ msgstr ""
 #, fuzzy
 msgid "ese"
 msgstr "Endursetja"
+
+msgid "eth0"
+msgstr ""
 
 msgid "execute cuts and exit"
 msgstr ""
@@ -19113,10 +19154,6 @@ msgstr ""
 
 msgid "no storage devices found"
 msgstr ""
-
-#
-msgid "none"
-msgstr "engin"
 
 msgid "normal"
 msgstr ""
