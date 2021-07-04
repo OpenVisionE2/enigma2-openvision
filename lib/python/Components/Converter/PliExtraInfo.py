@@ -57,6 +57,14 @@ codec_data = {
 	21: "SPARK",
 }
 
+# Dynamic range ("gamma") value to text
+gamma_data = {
+	0: "SDR",
+	1: "HDR",
+	2: "HDR10",
+	3: "HLG",
+}
+
 
 def addspace(text):
 	if text:
@@ -188,7 +196,7 @@ class PliExtraInfo(Poll, Converter):
 		return "%sx%s%s%s" % (xres, yres, mode, fps)
 
 	def createGamma(self, info):
-		return ("SDR", "HDR", "HDR10", "HLG", "")[info.getInfo(iServiceInformation.sGamma)]
+		return gamma_data.get(info.getInfo(iServiceInformation.sGamma), "")
 
 	def createVideoCodec(self, info):
 		return codec_data.get(info.getInfo(iServiceInformation.sVideoType), _("N/A"))
