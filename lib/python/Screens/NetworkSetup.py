@@ -457,11 +457,11 @@ class MACSettings(Setup):
         macdata.close()
 
     def CreateSetup(self):
-        self.Introduction = (_("Press OK to active the MAC address."))
+        self.Introduction = (_("Press OK to activate the MAC address."))
         self["introduction"] = StaticText(self.Introduction)
         self.list.append(getConfigListEntry(_("Interface"), configmac.interfaces))
-        self.list.append(getConfigListEntry(_("Current mac address"), configmac.mac))
-        self.list.append(getConfigListEntry(_("Set new mac address"), configmac.new))
+        self.list.append(getConfigListEntry(_("Current MAC address"), configmac.mac))
+        self.list.append(getConfigListEntry(_("Set a new MAC address"), configmac.new))
         configmac.mac.value = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_LINK][0])["addr"].upper())
         self.MacCurrent()
         with open("/etc/enigma2/hwmac") as hwmac:
@@ -476,7 +476,7 @@ class MACSettings(Setup):
             x()
 
     def ok(self):
-        self.session.openWithCallback(self.ChangeMac, MessageBox, _("You want to change current MAC address: ") + configmac.mac.value, MessageBox.TYPE_YESNO)
+        self.session.openWithCallback(self.ChangeMac, MessageBox, _("Do you want to change the current MAC address?\n") + configmac.mac.value, MessageBox.TYPE_YESNO)
 
     def ChangeMac(self, answer=False):
         self.Console = Console()
@@ -490,10 +490,10 @@ class MACSettings(Setup):
                     CurrentIP = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_INET][0])["addr"])
                 except:
                     CurrentIP = "unknown"
-                self.session.open(MessageBox, _("MAC address successfully changed.\nNew MAC address: ") + configmac.new.value + "\nIP: " + CurrentIP, MessageBox.TYPE_INFO, timeout=10)
+                self.session.open(MessageBox, _("MAC address successfully changed.\nNew MAC address is: ") + configmac.new.value + "\nIP: " + CurrentIP, MessageBox.TYPE_INFO, timeout=10)
                 self.close()
             else:
-                self.session.open(MessageBox, _("Not valide MAC address"), MessageBox.TYPE_INFO, timeout=10)
+                self.session.open(MessageBox, _("Not a valid MAC address"), MessageBox.TYPE_INFO, timeout=10)
 
     def CheckInterfaces(self):
         with open("/etc/network/interfaces", "r") as interfaces:
