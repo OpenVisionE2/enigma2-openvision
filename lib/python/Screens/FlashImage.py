@@ -76,8 +76,8 @@ class SelectImage(Screen):
 				try:
 					if checkimagefiles([x.split(os.sep)[-1] for x in zipfile.ZipFile(file).namelist()]):
 						if "Downloaded Images" not in self.imagesList:
-							self.imagesList["Downloaded Images"] = {}
-						self.imagesList["Downloaded Images"][file] = {'link': file, 'name': file.split(os.sep)[-1]}
+							self.imagesList[_("Downloaded Images")] = {}
+						self.imagesList[_("Downloaded Images")][file] = {'link': file, 'name': file.split(os.sep)[-1]}
 				except:
 					pass
 
