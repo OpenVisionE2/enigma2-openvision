@@ -79,8 +79,7 @@ class Network:
 		try:
 			print("[Network] Read /sys/class/net/%s/flags" % iface)
 			data['up'] = int(open('/sys/class/net/%s/flags' % iface).read().strip(), 16) & 1 == 1
-			if data['up']:
-				self.configuredInterfaces.append(iface)
+			self.configuredInterfaces.append(iface)
 			nit = ni.ifaddresses(iface)
 			data['ip'] = self.convertIP(nit[ni.AF_INET][0]['addr']) # ipv4
 			data['netmask'] = self.convertIP(nit[ni.AF_INET][0]['netmask'])
