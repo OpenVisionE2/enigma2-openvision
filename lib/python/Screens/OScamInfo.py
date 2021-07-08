@@ -679,14 +679,17 @@ class oscInfo(Screen, OscamInfo):
 		ysize = 350
 		self.rows = 12
 		self.itemheight = 25
-		self.sizeLH = sizeH - 20
+		self.sizeLH = sizeH
 		self.skin = """<screen position="center,center" size="%d, %d" title="Client Info" >""" % (sizeH, ysize)
 		button_width = int(sizeH / 4)
 		for k, v in enumerate(["red", "green", "yellow", "blue"]):
 			xpos = k * button_width
 			self.skin += """<ePixmap name="%s" position="%d,%d" size="40,40" pixmap="buttons/key_%s.png" zPosition="1" transparent="1" alphatest="blend" />""" % (v, xpos, ypos, v)
 			self.skin += """<widget source="key_%s" render="Label" position="%d,%d" size="%d,%d" font="Regular;22" zPosition="1" valign="center" transparent="1" />""" % (v, xpos + 50, ypos, button_width, 27)
-		self.skin += """<ePixmap name="divh" position="10,55" size="%d,2" pixmap="div-h.png" transparent="1" alphatest="blend" />""" % sizeH
+		if f == 1.5:
+		    self.skin += """<ePixmap name="divh" position="10,55" size="%d,2" pixmap="div-h-fhd.png" transparent="1" alphatest="blend" />""" % sizeH
+		else:
+		    self.skin += """<ePixmap name="divh" position="10,55" size="%d,2" pixmap="div-h.png" transparent="1" alphatest="blend" />""" % sizeH
 		self.skin += """<widget name="output" position="10,65" size="%d,%d" zPosition="1" scrollbarMode="showOnDemand" />""" % (self.sizeLH, ysize - 80)
 		self.skin += """</screen>"""
 		Screen.__init__(self, session)
@@ -830,12 +833,19 @@ class oscInfo(Screen, OscamInfo):
 			xpos = self.startPos[x]
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, xpos, ypos * f, xsize, self.itemheight * f, useFont, RT_HALIGN_LEFT, i, int(colour, 16)))
 			x += 1
-		if heading:
+		if heading and f != 1.5:
 			png = resolveFilename(SCOPE_CURRENT_SKIN, "div-h.png")
 			if fileExists(png):
 				png = LoadPixmap(png)
 			if png is not None:
 				res.append((eListboxPythonMultiContent.TYPE_PIXMAP, 0, (self.itemheight - 2) * f, self.sizeLH, 2 * f, png))
+
+		if heading and f == 1.5:
+			pngfhd = resolveFilename(SCOPE_CURRENT_SKIN, "div-h-fhd.png")
+			if fileExists(pngfhd):
+				pngfhd = LoadPixmap(pngfhd)
+			if pngfhd is not None:
+				res.append((eListboxPythonMultiContent.TYPE_PIXMAP, 0, (self.itemheight - 2) * f, self.sizeLH, 2 * f, pngfhd))
 		return res
 
 	def buildLogListEntry(self, listentry):
@@ -959,7 +969,7 @@ class oscEntitlements(Screen, OscamInfo):
 							MultiContentEntryText(pos = (410, 1), size = (40, 30), font=0, flags = RT_HALIGN_LEFT, text = 6), # index 6 is hop 5
 							MultiContentEntryText(pos = (480, 1), size = (70, 30), font=0, flags = RT_HALIGN_LEFT, text = 7), # index 7 is sum of cards for caid
 							MultiContentEntryText(pos = (550, 1), size = (80, 30), font=0, flags = RT_HALIGN_LEFT, text = 8), # index 8 is reshare
-							MultiContentEntryText(pos = (630, 1), size = (1024, 50), font=1, flags = RT_HALIGN_LEFT, text = 9), # index 9 is providers
+							MultiContentEntryText(pos = (630, 1), size = (1024, 45), font=1, flags = RT_HALIGN_LEFT, text = 9), # index 9 is providers
 
 												]),
 					},
@@ -989,7 +999,7 @@ class oscEntitlements(Screen, OscamInfo):
 	def buildList(self, data):
 		caids = sorted(data.keys())
 		outlist = []
-		res = [("CAID", _("System"), "1", "2", "3", "4", "5", "Total", _("Reshare"), "")]
+		res = [("CAID", _("System"), "1", "2", "3", "4", "5", "Total", _("Reshare"), _("Providers: "))]
 		for i in caids:
 			csum = 0
 			ca_id = i
