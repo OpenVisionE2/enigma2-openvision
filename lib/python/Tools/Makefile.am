@@ -18,6 +18,7 @@ install_PYTHON = \
 	Geolocation.py \
 	GetEcmInfo.py \
 	HardwareInfo.py \
+	Hex2strColor.py \
 	Import.py \
 	ISO639.py \
 	LoadPixmap.py \
