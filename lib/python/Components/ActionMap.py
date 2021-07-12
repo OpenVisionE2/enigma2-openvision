@@ -27,7 +27,7 @@ def removeKeyBinding(keyId, context, mapto, wild=True):
 	if wild and mapto == "*":
 		for context, mapto in keyBindings.keys():
 			if context == context:
-				removeKeyBinding(key, context, mapto, False)
+				removeKeyBinding(keyId, context, mapto, False)
 		return
 	contextAction = (context, mapto)
 	if contextAction in keyBindings:
