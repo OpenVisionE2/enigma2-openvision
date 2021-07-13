@@ -223,7 +223,7 @@ class HelpableActionMap(ActionMap):
 		actionDict = {}
 		for context in contexts:
 			actionList = []
-			for (action, response) in actions.iteritems():
+			for (action, response) in actions.items():
 				if not isinstance(response, (list, tuple)):
 					response = (response, None)
 				if queryKeyBinding(context, action):
