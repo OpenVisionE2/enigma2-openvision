@@ -5,14 +5,6 @@
 from Components.ActionMap import loadKeymap, parseKeymap, removeKeymap as removeKeymapNew
 
 
-class KeymapError(Exception):
-	def __init__(self, message):
-		self.msg = message
-
-	def __str__(self):
-		return self.msg
-
-
 def parseKeys(context, filename, actionmap, device, keys):
 	return parseKeymap(filename, context, actionmap, device, keys)
 
