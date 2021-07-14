@@ -1,4 +1,3 @@
-from enigma import eEnv, getDesktop, eGetEnigmaDebugLvl
 from errno import ENOENT, EXDEV
 from inspect import stack
 from os import F_OK, R_OK, W_OK, access, chmod, listdir, makedirs, mkdir, readlink, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
@@ -8,6 +7,8 @@ from six import PY2
 from stat import S_IMODE
 from traceback import print_exc
 from xml.etree.cElementTree import ParseError, fromstring, parse
+
+from enigma import eEnv, getDesktop, eGetEnigmaDebugLvl
 
 forceDebug = eGetEnigmaDebugLvl() > 4
 pathExists = exists
