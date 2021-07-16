@@ -559,7 +559,7 @@ def runScreenTest():
 	profile("Init:PowerKey")
 	power = PowerKey(session)
 
-	if BoxInfo.getItem("vfdsymbol"):
+	if BoxInfo.getItem("VFDSymbol"):
 		profile("VFDSYMBOLS")
 		import Components.VfdSymbols
 		Components.VfdSymbols.SymbolsCheck(session)
