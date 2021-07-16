@@ -24,7 +24,6 @@ install_PYTHON = \
 	FanControl.py \
 	FileList.py \
 	GUIComponent.py \
-	HTMLComponent.py \
 	Harddisk.py \
 	HdmiCec.py \
 	HdmiRecord.py \
