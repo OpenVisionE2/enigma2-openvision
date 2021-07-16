@@ -18,4 +18,5 @@ dist_install_DATA = \
 	YPbPr.png \
 	HDMI.png \
 	lcd_HDMI.png \
+	Jack.png \
 	RCA.png

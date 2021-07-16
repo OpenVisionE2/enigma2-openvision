@@ -70,6 +70,8 @@ class VideoHardware:
 		modes["Scart"] = ["PAL", "NTSC", "Multi"]
 	if has_rca:
 		modes["RCA"] = ["576i", "PAL", "NTSC", "Multi"]
+	if has_avjack:
+		modes["Jack"] = ["PAL", "NTSC", "Multi"]
 
 	if socfamily in ("7376", "7444") or platform == "dmamlogic":
 		modes["DVI"] = ["720p", "1080p", "2160p", "1080i", "576p", "576i", "480p", "480i"]
