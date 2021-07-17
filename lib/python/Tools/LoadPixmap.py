@@ -22,7 +22,7 @@ def LoadPixmap(path, desktop=None, cached=None, width=0, height=0):
 		alpha = loadPNG(path + "a.png", 0, 0)
 		ptr = loadJPG(path + "rgb.jpg", alpha, 0)
 	else:
-		raise Exception("Neither .png nor .jpg nor .svg, please fix file extension")
+		raise Exception(_("Neither .png nor .jpg nor .svg, please fix file extension"))
 	if ptr and desktop:
 		desktop.makeCompatiblePixmap(ptr)
 	return ptr
