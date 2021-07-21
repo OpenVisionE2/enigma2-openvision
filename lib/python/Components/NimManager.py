@@ -10,7 +10,6 @@ from Components.config import ConfigDateTime, ConfigFloat, ConfigInteger, Config
 from Components.SystemInfo import BoxInfo
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import SCOPE_SKIN, fileReadLine, fileReadLines, fileReadXML, fileWriteLine, resolveFilename
-from Tools.HardwareInfo import HardwareInfo
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -31,13 +30,6 @@ def getConfigSatlist(orbpos, satlist):
 			default_orbpos = orbpos
 			break
 	return ConfigSatlist(satlist, default_orbpos)
-
-
-def isInString(item, string):
-	data = [x.strip() for x in string.split(",")]
-	if item in data:
-		return True
-	return False
 
 
 class SecConfigure:
@@ -89,7 +81,7 @@ class SecConfigure:
 			else:
 				sec.setVoltageMode(switchParam._14V)
 				sec.setToneMode(switchParam.OFF)
-		elif 3 <= diseqcmode < 5:  # diseqc 1.2
+		elif 3 <= diseqcmode < 5:  # DiSEqC 1.2
 			if slotid in self.satposdepends:
 				for slot in self.satposdepends[slotid]:
 					tunermask |= (1 << slot)
@@ -107,7 +99,7 @@ class SecConfigure:
 					orbpos = orbpos.replace("]", "").replace("[", "")
 					for user_sat in self.NimManager.satList:
 						sat_str = str(user_sat[0])
-						if isInString(sat_str, orbpos):
+						if ", %s," % sat_str in ", %s," % orbpos:
 							user_satList.append(user_sat)
 			for x in user_satList:
 				print("[NimManager] SecConfigure: Add satellite '%s'." % str(x[0]))
@@ -296,7 +288,7 @@ class SecConfigure:
 				userSatlist = userSatlist.replace("]", "").replace("[", "")
 				for user_sat in self.NimManager.satList:
 					sat_str = str(user_sat[0])
-					if userSatlist and isInString(sat_str, userSatlist):
+					if userSatlist and ", %s," % sat_str in ", %s," % userSatlist:
 						print("[NimManager] SecConfigure: Add '%s' to '%s'." % (user_sat[0], lnb))
 						lnbSat[lnb].append(user_sat[0])
 		for x in self.NimManager.satList:
@@ -418,7 +410,7 @@ class SecConfigure:
 						sec.setToneburst(diseqcParam.A)
 					elif currLnb.toneburst.value == "B":
 						sec.setToneburst(diseqcParam.B)
-					# Committed Diseqc Command.
+					# Committed DiSEqC Command.
 					cdc = currLnb.commitedDiseqcCommand.value
 					c = {
 						"none": diseqcParam.SENDNO,
@@ -451,7 +443,14 @@ class SecConfigure:
 					# 3 "toneburst, committed, uncommitted",
 					# 4 "uncommitted, committed, toneburst"
 					# 5 "toneburst, uncommitted, commmitted"
-					order_map = {"ct": 0, "tc": 1, "cut": 2, "tcu": 3, "uct": 4, "tuc": 5}
+					order_map = {
+						"ct": 0,
+						"tc": 1,
+						"cut": 2,
+						"tcu": 3,
+						"uct": 4,
+						"tuc": 5
+					}
 					sec.setCommandOrder(order_map[currCO])
 				if dm == "1_2":
 					latitude = currLnb.latitude.float
@@ -728,6 +727,7 @@ class NimManager:
 			else:  # Remove multistream transponders.
 				def isMultistreamTP(tp):  # Since we are using Gold sequences there is no need to check the PLS Mode.
 					return tp[5] == eDVBFrontendParametersSatellite.System_DVB_S2 and (tp[10] > eDVBFrontendParametersSatellite.No_Stream_Id_Filter or tp[12] > eDVBFrontendParametersSatellite.PLS_Default_Gold_Code)
+
 				return [tp for tp in self.transponders[pos] if not isMultistreamTP(tp)]
 		else:
 			return []
@@ -846,6 +846,9 @@ class NimManager:
 		#
 		# nim_slots is an array which has exactly one entry for each slot, even for empty ones.
 		self.nim_slots = []
+		if config.clientmode.enabled.value:
+			print("[NimManager] Receiver in client mode, local NIMs will be ignored.")
+			return
 		nimfile = fileReadLines("/proc/bus/nim_sockets", source=MODULE_NAME)
 		if nimfile is None:
 			return
@@ -918,7 +921,6 @@ class NimManager:
 				entry["multi_type"] = {}
 			if "supports_blind_scan" not in entry:
 				entry["supports_blind_scan"] = False
-
 			entry["fbc"] = [0, 0, 0]  # Not FBC.
 			if entry["name"] and ("fbc" in entry["name"].lower() or entry["name"] in BoxInfo.getItem("HasFBCtuner")) and entry["frontend_device"] is not None and access("/proc/stb/frontend/%d/fbc_id" % entry["frontend_device"], F_OK):
 				fbc_number += 1
@@ -1123,7 +1125,7 @@ class NimManager:
 					userSatlist = userSatlist.replace("]", "").replace("[", "")
 					for x in self.satList:
 						sat_str = str(x[0])
-						if userSatlist and isInString(sat_str, userSatlist):
+						if userSatlist and ", %s," % sat_str in ", %s," % userSatlist:
 							list.append(x)
 			elif configMode == "advanced":
 				for x in range(3601, 3605):
@@ -1140,7 +1142,7 @@ class NimManager:
 						userSatlist = userSatlist.replace("]", "").replace("[", "")
 						for user_sat in self.satList:
 							sat_str = str(user_sat[0])
-							if userSatlist and isInString(sat_str, userSatlist) and user_sat not in list:
+							if userSatlist and ", %s," % sat_str in ", %s," % userSatlist and user_sat not in list:
 								list.append(user_sat)
 		return list
 
@@ -1180,7 +1182,7 @@ class NimManager:
 					userSatlist = userSatlist.replace("]", "").replace("[", "")
 					for x in self.satList:
 						sat_str = str(x[0])
-						if userSatlist and isInString(sat_str, userSatlist):
+						if userSatlist and ", %s," % sat_str in ", %s," % userSatlist:
 							if only_first:
 								return True
 							list.append(x)
@@ -1206,7 +1208,7 @@ class NimManager:
 						userSatlist = userSatlist.replace("]", "").replace("[", "")
 						for user_sat in self.satList:
 							sat_str = str(user_sat[0])
-							if userSatlist and isInString(sat_str, userSatlist) and user_sat not in list:
+							if userSatlist and ", %s," % sat_str in ", %s," % userSatlist and user_sat not in list:
 								if only_first:
 									return True
 								list.append(user_sat)
@@ -1261,9 +1263,9 @@ def InitSecParams():
 
 # TODO add support for satpos depending nims to advanced nim configuration
 # so a second/third/fourth cable from a motorized lnb can used behind a
-# diseqc 1.0 / diseqc 1.1 / toneburst switch.
+# DiSEqC 1.0 / DiSEqC 1.1 / toneburst switch.
 # The C(++) part should can handle this.
-# The configElement should be only visible when diseqc 1.2 is disabled.
+# The configElement should be only visible when DiSEqC 1.2 is disabled.
 #
 def InitNimManager(nimmgr, update_slots=[]):
 	if not hasattr(config, "Nims"):
@@ -1281,7 +1283,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 	}
 	lnb_choices_default = "universal_lnb"
 	prio_list = [("-1", _("Auto"))]
-	rangemode = chain(range(65), range(14000, 14065), (19000, 19065))
+	rangemode = chain(range(65), range(14000, 14065), range(19000, 19065))
 	for prio in rangemode:
 		description = ""
 		if prio == 0:
