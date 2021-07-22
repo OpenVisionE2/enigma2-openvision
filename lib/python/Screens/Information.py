@@ -1,5 +1,4 @@
 from datetime import datetime
-from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, eLabel, ePoint, eSize, eTimer, getDesktop, getE2Rev
 from glob import glob
 from json import loads
 from os import listdir, popen, remove, statvfs
@@ -13,6 +12,8 @@ try:
 	from urllib2 import urlopen
 except ImportError:
 	from urllib.request import urlopen
+
+from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, ePoint, eSize, eTimer, getDesktop, getE2Rev
 
 from skin import parameters
 from Components.About import about
@@ -366,6 +367,32 @@ class BenchmarkInformation(InformationBase):
 		return "Benchmark Information"
 
 
+class BuildInformation(InformationBase):
+	def __init__(self, session):
+		InformationBase.__init__(self, session)
+		self.setTitle(_("Build Information"))
+		self.skinName.insert(0, "BuildInformation")
+
+	def displayInformation(self):
+		info = []
+		info.append(formatLine("H", "%s %s %s" % (_("Build information for"), BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
+		info.append("")
+		checksum = BoxInfo.getItem("checksumerror", False)
+		if checksum:
+			info.append(formatLine("M1", _("Error: Checksum is invalid!")))
+		override = BoxInfo.getItem("overrideactive", False)
+		if override:
+			info.append(formatLine("M1", _("Warning: Overrides are currently active!")))
+		if checksum or override:
+			info.append("")
+		for item in BoxInfo.getProcList():
+			info.append(formatLine("P1", item, BoxInfo.getItem(item)))
+		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
+
+	def getSummaryInformation(self):
+		return "Build Information"
+
+
 class CommitLogInformation(InformationBase):
 	def __init__(self, session):
 		InformationBase.__init__(self, session)
@@ -385,7 +412,7 @@ class CommitLogInformation(InformationBase):
 			("OpenVision OpenEmbedded", "https://api.github.com/repos/OpenVisionE2/revision/commits"),
 			("Enigma2 Plugins", "https://api.github.com/repos/OpenVisionE2/enigma2-plugins/commits"),
 			("Extra Plugins", "https://api.github.com/repos/OpenVisionE2/extra-plugins/commits"),
-			("OpenWebIF", "https://api.github.com/repos/OpenVisionE2/OpenWebif/commits"),
+			("OpenWebIf", "https://api.github.com/repos/OpenVisionE2/OpenWebif/commits"),
 			("OpenVision Core Plugin", "https://api.github.com/repos/OpenVisionE2/openvision-core-plugin/commits"),
 			("Backup Suite Plugin", "https://api.github.com/repos/OpenVisionE2/BackupSuite/commits"),
 			("OctEtFHD Skin", "https://api.github.com/repos/OpenVisionE2/OctEtFHD-skin/commits")
@@ -697,26 +724,6 @@ class ImageInformation(InformationBase):
 
 	def getSummaryInformation(self):
 		return "OpenVision Information"
-
-
-class KernelModuleInformation(InformationBase):
-	def __init__(self, session):
-		InformationBase.__init__(self, session)
-		self.setTitle(_("Kernel Module Information"))
-		self.skinName.insert(0, "KernelModuleInformation")
-
-	def displayInformation(self):
-		info = []
-		info.append(formatLine("H", "%s %s %s" % (_("Enigma kernel module information for"), BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
-		info.append("")
-		info.append(formatLine("P1", _("Kernel module path"), BoxInfo.getItem("enigmamodule")))
-		for item in BoxInfo.getProcList():
-			info.append(formatLine("P1", item, str(BoxInfo.getItem(item))))
-		info.append("")
-		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
-
-	def getSummaryInformation(self):
-		return "Build Information"
 
 
 class MemoryInformation(InformationBase):
