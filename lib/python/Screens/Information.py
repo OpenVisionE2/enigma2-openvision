@@ -589,6 +589,10 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("M", _("Donate at %s") % "https://forum.openvision.tech/app.php/donate"))
 		info.append("")
+		info.append(formatLine("P1", _("Info file checksum"), _("Invalid") if BoxInfo.getItem("checksumerror", False) else _("Valid")))
+		override = BoxInfo.getItem("overrideactive", False)
+		if override:
+			info.append(formatLine("P1", _("Info file override"), _("Defined / Active")))
 		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("imgversion")))
 		info.append(formatLine("P1", _("OpenVision revision"), BoxInfo.getItem("imgrevision")))
 		if config.misc.OVupdatecheck.value:
