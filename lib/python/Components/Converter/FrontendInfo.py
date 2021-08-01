@@ -1,10 +1,9 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from Components.Converter.Converter import Converter
-from Components.Element import cached
-from Components.config import config
-from Components.NimManager import nimmanager
 from skin import parameters
+
+from Components.config import config
+from Components.Element import cached
+from Components.NimManager import nimmanager
+from Components.Converter.Converter import Converter
 
 
 class FrontendInfo(Converter):
@@ -132,10 +131,8 @@ class FrontendInfo(Converter):
 		elif self.type == self.SNR:
 			return self.source.snr or 0
 		elif self.type == self.BER:
-			if self.BER < self.range:
-				return self.BER or 0
-			else:
-				return self.range
+			ber = self.source.ber or 0
+			return self.range if ber > self.range else ber
 		elif self.type == self.TUNER_TYPE:
 			type = self.source.frontend_type
 			if type == 'DVB-S':
