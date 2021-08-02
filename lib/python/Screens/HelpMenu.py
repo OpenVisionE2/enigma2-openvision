@@ -401,7 +401,7 @@ class HelpMenuList(List):
 	# Convert normal help to extended help form for comparison and ignore case.
 	#
 	def _sortKeyAlpha(self, hlp):
-		return map(str.lower, hlp[1] if isinstance(hlp[1], (tuple, list)) else [hlp[1], ""])
+		return list(map(str.lower, hlp[1] if isinstance(hlp[1], (tuple, list)) else [hlp[1], ""]))
 
 	def _cmp(self, a, b):
 		return (a > b) - (a < b)
