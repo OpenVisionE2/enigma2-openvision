@@ -367,7 +367,7 @@ def fileReadLine(filename, default=None, source=DEFAULT_MODULE_NAME, debug=False
 	line = None
 	try:
 		with open(filename, "r") as fd:
-			line = fd.read().strip()
+			line = fd.read().strip().replace("\0", "")
 		msg = "Read"
 	except (IOError, OSError) as err:
 		if err.errno != ENOENT:  # ENOENT - No such file or directory.
