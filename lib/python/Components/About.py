@@ -281,7 +281,7 @@ def getDVBAPI():
 def getVisionModule():
 	if BoxInfo.getItem("OpenVisionModule"):
 		return _("Loaded")
-	print("[About] No Open Vision module!  Hard multiboot?")
+	print("[About] No Open Vision module!  Hard MultiBoot?")
 	return _("Unknown")
 
 

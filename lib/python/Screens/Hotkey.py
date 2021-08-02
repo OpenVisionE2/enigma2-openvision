@@ -266,7 +266,7 @@ def getHotkeyFunctions():
 	hotkey.functions.append((_("OScam Info"), "Module/Screens.OScamInfo/OscamInfoMenu", "Plugins"))
 	hotkey.functions.append((_("Memory Info"), "Module/Screens.Information/MemoryInformation", "Setup"))
 	if BoxInfo.getItem("canMultiBoot"):
-		hotkey.functions.append((_("Multiboot image selector"), "Module/Screens.FlashImage/MultibootSelection", "Setup"))
+		hotkey.functions.append((_("MultiBoot Image Selector"), "Module/Screens.FlashImage/MultiBootSelection", "Setup"))
 	if os.path.isdir("/etc/ppanels"):
 		for x in [x for x in os.listdir("/etc/ppanels") if x.endswith(".xml")]:
 			x = x[:-4]

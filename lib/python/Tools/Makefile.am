@@ -23,7 +23,7 @@ install_PYTHON = \
 	LoadPixmap.py \
 	Log.py \
 	LogConfig.py \
-	Multiboot.py \
+	MultiBoot.py \
 	Notifications.py \
 	NumericalTextInput.py \
 	Profile.py \

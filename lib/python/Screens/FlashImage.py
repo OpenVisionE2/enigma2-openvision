@@ -1,30 +1,28 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from Screens.Screen import Screen
-from Screens.MessageBox import MessageBox
-from Screens.Standby import getReasons
-from Components.Sources.StaticText import StaticText
+import json
+import os
+import shutil
+import tempfile
+import time
+import urllib2
+import zipfile
+
+from enigma import eEPGCache
+
+from Components.ActionMap import ActionMap
 from Components.ChoiceList import ChoiceList, ChoiceEntryComponent
 from Components.config import config, configfile
-from Components.ActionMap import ActionMap
 from Components.Console import Console
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 from Components.SystemInfo import BoxInfo
+from Components.Sources.StaticText import StaticText
+from Screens.MessageBox import MessageBox
+from Screens.Screen import Screen
+from Screens.Standby import getReasons
 from Tools.BoundFunction import boundFunction
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import SCOPE_PLUGINS, resolveFilename
 from Tools.Downloader import downloadWithProgress
-from Tools.Multiboot import getImagelist, getCurrentImage, getCurrentImageMode, deleteImage, restoreImages
-import os
-import urllib2
-import json
-import time
-import zipfile
-import shutil
-import tempfile
-
-from enigma import eEPGCache
+from Tools.MultiBoot import deleteImage, getCurrentImage, getCurrentImageMode, getImageList, restoreImages
 
 model = BoxInfo.getItem("model")
 
@@ -41,7 +39,7 @@ class SelectImage(Screen):
 		self.imagesList = {}
 		self.setIndex = 0
 		self.expanded = []
-		self.setTitle(_("Multiboot image selector"))
+		self.setTitle(_("MultiBoot Image Selector"))
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText()
 		self["key_yellow"] = StaticText()
@@ -70,7 +68,6 @@ class SelectImage(Screen):
 		self.callLater(self.getImagesList)
 
 	def getImagesList(self):
-
 		def getImages(path, files):
 			for file in [x for x in files if os.path.splitext(x)[1] == ".zip" and model in x]:
 				try:
@@ -198,7 +195,7 @@ class FlashImage(Screen):
 		Screen.__init__(self, session)
 		self.containerbackup = None
 		self.containerofgwrite = None
-		self.getImageList = None
+		self.imageList = None
 		self.downloader = None
 		self.source = source
 		self.imagename = imagename
@@ -226,7 +223,7 @@ class FlashImage(Screen):
 		else:
 			self.message = _("Do you want to flash image\n%s") % self.imagename
 		if BoxInfo.getItem("canMultiBoot"):
-			imagesList = getImagelist()
+			imagesList = getImageList()
 			currentimageslot = getCurrentImage()
 			choices = []
 			slotdict = {k: v for k, v in BoxInfo.getItem("canMultiBoot").items() if not v['device'].startswith('/dev/sda')}
@@ -392,7 +389,7 @@ class FlashImage(Screen):
 			self.session.openWithCallback(self.abort, MessageBox, _("Flashing image was not successful\n%s") % self.imagename, type=MessageBox.TYPE_ERROR, simple=True)
 
 	def abort(self, reply=None):
-		if self.getImageList or self.containerofgwrite:
+		if self.imageList or self.containerofgwrite:
 			return 0
 		if self.downloader:
 			self.downloader.stop()
@@ -402,19 +399,19 @@ class FlashImage(Screen):
 
 	def ok(self):
 		if self["header"].text == _("Flashing image successful"):
-			self.session.openWithCallback(self.abort, MultibootSelection)
+			self.session.openWithCallback(self.abort, MultiBootSelection)
 		else:
 			return 0
 
 
-class MultibootSelection(SelectImage):
+class MultiBootSelection(SelectImage):
 	def __init__(self, session, *args):
 		Screen.__init__(self, session)
 		self.skinName = "SelectImage"
 		self.session = session
 		self.expanded = []
 		self.tmp_dir = None
-		self.setTitle(_("Multiboot image selector"))
+		self.setTitle(_("MultiBoot Image Selector"))
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Reboot"))
 		self["description"] = StaticText(_("Use the cursor keys to select an installed image then reboot."))
@@ -427,7 +424,7 @@ class MultibootSelection(SelectImage):
 			"cancel": self.cancel,
 			"red": self.cancel,
 			"green": self.keyOk,
-			"yellow": self.deleteImage,
+			"yellow": self.delImage,
 			"up": self.keyUp,
 			"down": self.keyDown,
 			"left": self.keyLeft,
@@ -440,8 +437,8 @@ class MultibootSelection(SelectImage):
 		}, -1)
 
 		self.currentimageslot = getCurrentImage()
-		self.tmp_dir = tempfile.mkdtemp(prefix="MultibootSelection")
-		Console().ePopen('mount %s %s' % (BoxInfo.getItem("MultibootStartupDevice"), self.tmp_dir))
+		self.tmp_dir = tempfile.mkdtemp(prefix="MultiBoot_")
+		Console().ePopen('mount %s %s' % (BoxInfo.getItem("MultiBootStartupDevice"), self.tmp_dir))
 		self.getImagesList()
 
 	def cancel(self, value=None):
@@ -456,7 +453,7 @@ class MultibootSelection(SelectImage):
 
 	def getImagesList(self):
 		list = []
-		imagesList = getImagelist()
+		imagesList = getImageList()
 		mode = getCurrentImageMode() or 0
 		self.deletedImagesExists = False
 		if imagesList:
@@ -478,13 +475,13 @@ class MultibootSelection(SelectImage):
 		self["list"].setList(list)
 		self.selectionChanged()
 
-	def deleteImage(self):
+	def delImage(self):
 		if self["key_yellow"].text == _("Restore deleted images"):
-			self.session.openWithCallback(self.deleteImageCallback, MessageBox, _("Are you sure to restore all deleted images"), simple=True)
+			self.session.openWithCallback(self.delImageCallback, MessageBox, _("Are you sure to restore all deleted images"), simple=True)
 		elif self["key_yellow"].text == _("Delete Image"):
-			self.session.openWithCallback(self.deleteImageCallback, MessageBox, "%s:\n%s" % (_("Are you sure to delete image:"), self.currentSelected[0][0]), simple=True)
+			self.session.openWithCallback(self.delImageCallback, MessageBox, "%s:\n%s" % (_("Are you sure to delete image:"), self.currentSelected[0][0]), simple=True)
 
-	def deleteImageCallback(self, answer):
+	def delImageCallback(self, answer):
 		if answer:
 			if self["key_yellow"].text == _("Restore deleted images"):
 				restoreImages()

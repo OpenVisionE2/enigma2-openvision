@@ -608,7 +608,7 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Latest revision on github"), ovRevisionUpdate))
 		info.append(formatLine("P1", _("OpenVision language"), BoxInfo.getItem("imglanguage")))
 		info.append(formatLine("P1", _("OpenVision module"), about.getVisionModule()))
-		info.append(formatLine("P1", _("Soft multiboot"), _("Yes") if BoxInfo.getItem("multiboot", False) else _("No")))
+		info.append(formatLine("P1", _("Soft MultiBoot"), _("Yes") if BoxInfo.getItem("multiboot", False) else _("No")))
 		info.append(formatLine("P1", _("Flash type"), about.getFlashType()))
 		xResolution = getDesktop(0).size().width()
 		yResolution = getDesktop(0).size().height()

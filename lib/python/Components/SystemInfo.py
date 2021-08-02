@@ -155,7 +155,7 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 
 BoxInfo = BoxInformation()
 
-from Tools.Multiboot import getMultibootStartupDevice, getMultibootslots  # This import needs to be here to avoid a SystemInfo load loop!
+from Tools.MultiBoot import getMultiBootStartupDevice, getMultiBootSlots  # This import needs to be here to avoid a SystemInfo load loop!
 
 # Parse the boot commandline.
 cmdline = fileReadLine("/proc/cmdline", source=MODULE_NAME)
@@ -314,9 +314,9 @@ SystemInfo["Has3DSurroundSpeaker"] = fileAccess("/proc/stb/audio/3dsurround_choi
 SystemInfo["Has3DSurroundSoftLimiter"] = fileAccess("/proc/stb/audio/3dsurround_softlimiter_choices") or fileCheck("/proc/stb/audio/3dsurround_softlimiter")
 SystemInfo["hasXcoreVFD"] = (model == "osmega" or platform == "4kspycat") and fileCheck("/sys/module/brcmstb_%s/parameters/pt6302_cgram" % model)
 SystemInfo["HasOfflineDecoding"] = model not in ("osmini", "osminiplus", "et7000mini", "et11000", "mbmicro", "mbtwinplus", "mbmicrov2", "et7x00", "et8500")
-SystemInfo["MultibootStartupDevice"] = getMultibootStartupDevice()
+SystemInfo["MultiBootStartupDevice"] = getMultiBootStartupDevice()
 SystemInfo["canMode12"] = "%s_4.boxmode" % model in cmdline and cmdline["%s_4.boxmode" % model] in ("1", "12") and "192M"
-SystemInfo["canMultiBoot"] = getMultibootslots()
+SystemInfo["canMultiBoot"] = getMultiBootSlots()
 SystemInfo["canFlashWithOfgwrite"] = brand != "dreambox"
 SystemInfo["HDRSupport"] = fileAccess("/proc/stb/hdmi/hlg_support_choices") or fileCheck("/proc/stb/hdmi/hlg_support")
 SystemInfo["CanDownmixAC3"] = fileContains("/proc/stb/audio/ac3_choices", "downmix")
@@ -370,7 +370,7 @@ SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False
 SystemInfo["HasH9SD"] = model in ("h9", "i55plus") and fileAccess("/dev/mmcblk0p1")
 SystemInfo["HasSDnomount"] = model in ("h9", "h3", "i55plus") and (False, "none") or model in ("multibox", "h9combo", "h3") and (True, "mmcblk0")
-SystemInfo["canBackupEMC"] = model in ("hd51", "h7") and ("disk.img", str(BoxInfo.getItem("MultibootStartupDevice"))) or platform == "edision4k" and ("emmc.img", str(BoxInfo.getItem("MultibootStartupDevice"))) or BoxInfo.getItem("DefineSat") and ("usb_update.bin", "none")
+SystemInfo["canBackupEMC"] = model in ("hd51", "h7") and ("disk.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or platform == "edision4k" and ("emmc.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or BoxInfo.getItem("DefineSat") and ("usb_update.bin", "none")
 SystemInfo["CanSyncMode"] = fileAccess("/proc/stb/video/sync_mode_choices")
 SystemInfo["FrontpanelLEDBlinkControl"] = fileAccess("/proc/stb/fp/led_blink")
 SystemInfo["FrontpanelLEDBrightnessControl"] = fileAccess("/proc/stb/fp/led_brightness")
