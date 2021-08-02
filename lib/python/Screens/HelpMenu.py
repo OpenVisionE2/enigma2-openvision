@@ -1,4 +1,5 @@
 from collections import defaultdict
+from functools import cmp_to_key
 from sys import maxsize
 
 from enigma import eActionMap
@@ -358,8 +359,10 @@ class HelpMenuList(List):
 		for (actionmap, context, actions) in helpList:
 			amId = actMapId()
 			if headings and amId in actionMapHelp and getattr(actionmap, "description", None):
-				if sortCmp or sortKey:
-					actionMapHelp[amId].sort(cmp=sortCmp, key=sortKey)
+				if sortCmp:
+					actionMapHelp[amId].sort(key=cmp_to_key(sortCmp))
+				elif sortKey:
+					actionMapHelp[amId].sort(key=sortKey)
 				self.addListBoxContext(actionMapHelp[amId], formatFlags)
 				helpMenuList.append((None, actionmap.description, None) + extendedPadding)
 				helpMenuList.extend(actionMapHelp[amId])
@@ -373,8 +376,10 @@ class HelpMenuList(List):
 				if amId in actionMapHelp:
 					otherHelp.extend(actionMapHelp[amId])
 					del actionMapHelp[amId]
-			if sortCmp or sortKey:
-				otherHelp.sort(cmp=sortCmp, key=sortKey)
+			if sortCmp:
+				otherHelp.sort(key=cmp_to_key(sortCmp))
+			elif sortKey:
+				otherHelp.sort(key=sortKey)
 			self.addListBoxContext(otherHelp, formatFlags)
 			helpMenuList.extend(otherHelp)
 		ignoredKeyIds = (KEYIDS.get("KEY_OK"), KEYIDS.get("KEY_EXIT"))
@@ -398,8 +403,11 @@ class HelpMenuList(List):
 	def _sortKeyAlpha(self, hlp):
 		return map(str.lower, hlp[1] if isinstance(hlp[1], (tuple, list)) else [hlp[1], ""])
 
+	def _cmp(self, a, b):
+		return (a > b) - (a < b)
+
 	def _sortCmpPos(self, a, b):
-		return cmp(self._getMinPos(a[0][3]), self._getMinPos(b[0][3]))
+		return self._cmp(self._getMinPos(a[0][3]), self._getMinPos(b[0][3]))
 
 	# Reverse the coordinate tuple, too, to (y, x) to get ordering by y then x.
 	#
@@ -408,7 +416,7 @@ class HelpMenuList(List):
 		return min(map(lambda x: tuple(reversed(remoteControl.getRemoteControlKeyPos(x[0]))), a))
 
 	def _sortCmpInd(self, a, b):
-		return cmp(self._getMinInd(a[0][3]), self._getMinInd(b[0][3]))
+		return self._cmp(self._getMinInd(a[0][3]), self._getMinInd(b[0][3]))
 
 	# Sort order "Flat by key group on remote" is really
 	# "Sort in order of buttons in rcpositions.xml", and so
