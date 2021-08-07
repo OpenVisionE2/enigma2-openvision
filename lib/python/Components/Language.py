@@ -87,9 +87,9 @@ class Language:
 	def activateLanguage(self, index):
 		try:
 			if index not in self.lang:
-				print("[Language] Selected language %s does not exist, fallback to en_EN!" % index)
-				index = "en_EN"
-				Notifications.AddNotification(MessageBox, _("The selected langugage is unavailable - using en_EN"), MessageBox.TYPE_INFO, timeout=3)
+				print("[Language] Selected language %s does not exist, fallback to en_US!" % index)
+				index = "en_US"
+				Notifications.AddNotification(MessageBox, _("The selected langugage is unavailable - using en_US"), MessageBox.TYPE_INFO, timeout=3)
 			lang = self.lang[index]
 			print("[Language] Activating language " + lang[0])
 			os.environ["LANGUAGE"] = lang[1] # set languange in order gettext to work properly on external plugins

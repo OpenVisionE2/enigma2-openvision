@@ -494,7 +494,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 			"en_AU": [_("English"), _("Australian"), self.english],
 			"en_GB": [_("English"), _("United Kingdom"), self.unitedKingdom(self.english)],
 			"en_US": [_("English"), _("United States"), self.english],
-			"en_EN": [_("English"), _("Various"), self.english],
+			"en_EN": [_("English"), _("Various"), self.english],  # Support for legacy language setting.
 			"et_EE": [_("Estonian"), _("Estonia"), self.estonian(self.scandinavian)],
 			"fi_FI": [_("Finnish"), _("Finland"), self.scandinavian],
 			"fr_BE": [_("French"), _("Belgian"), self.belgian(self.french)],
@@ -919,9 +919,9 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 	def setLocale(self):
 		self.language, self.location, self.keyList = self.locales.get(self.lang, [None, None, None])
 		if self.language is None or self.location is None or self.keyList is None:
-			self.lang = "en_EN"
+			self.lang = "en_US"
 			self.language = _("English")
-			self.location = _("Various")
+			self.location = _("United States")
 			self.keyList = self.english
 		self.shiftLevel = 0
 		self["locale"].setText("%s: %s  (%s - %s)" % (_("Locale"), self.lang, self.language, self.location))

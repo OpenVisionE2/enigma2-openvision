@@ -132,8 +132,8 @@ class UpdatePlugin(Screen, ProtectedScreen):
 					lang = language.getLanguage()
 					if lang in message:
 						message = message[lang]
-					elif 'en_EN' in message:
-						message = message['en_EN']
+					elif 'en_US' in message:
+						message = message['en_US']
 					else:
 						message = _("The current image might not be stable.\nFor more information see %s.") % ("openvision.tech")
 
