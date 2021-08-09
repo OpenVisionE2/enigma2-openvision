@@ -98,7 +98,7 @@ to generate HTML."""
 		self.setIndex(self.index)
 
 	def selectNext(self):
-		if self.getIndex < self.count() - 1:
+		if self.getIndex() < self.count() - 1:
 			self.index += 1
 		elif self.enableWrapAround:
 			self.index = 0
