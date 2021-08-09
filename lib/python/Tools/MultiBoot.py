@@ -10,7 +10,7 @@ from Tools.Directories import fileReadLine, fileReadLines
 
 MODULE_NAME = __name__.split(".")[-1]
 
-PREFIX = "MultiBoot"
+PREFIX = "MultiBoot_"
 MOUNT = "/bin/mount"
 UMOUNT = "/bin/umount"
 
