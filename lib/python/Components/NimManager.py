@@ -1730,7 +1730,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 						print("[NimManager] InitNimManager tunerTypeChanged: feid %d from %d to mode %d." % (fe_id, cur_type, int(configElement.value)))
 						is_dvb_shutdown_timeout = exists("/sys/module/dvb_core/parameters/dvb_shutdown_timeout")
 						if is_dvb_shutdown_timeout:
-							oldvalue = readFileLine("/sys/module/dvb_core/parameters/dvb_shutdown_timeout", source=MODULE_NAME)
+							oldvalue = fileReadLine("/sys/module/dvb_core/parameters/dvb_shutdown_timeout", source=MODULE_NAME)
 							if oldvalue is None:
 								print("[NimManager] InitNimManager tunerTypeChanged: Read /sys/module/dvb_core/parameters/dvb_shutdown_timeout failed!")
 							fileWriteLine("/sys/module/dvb_core/parameters/dvb_shutdown_timeout", "0", source=MODULE_NAME)
