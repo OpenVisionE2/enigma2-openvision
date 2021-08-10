@@ -1,3 +1,4 @@
+from gettext import ngettext
 from locale import AM_STR, PM_STR, nl_langinfo
 from os import mkdir, remove
 from os.path import exists, isfile, islink, join as pathjoin, normpath
