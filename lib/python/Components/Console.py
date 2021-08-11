@@ -6,47 +6,47 @@ from enigma import eConsoleAppContainer
 class ConsoleItem:
 	def __init__(self, containers, cmd, callback, extraArgs):
 		self.containers = containers
-		if isinstance(cmd, str):  # Until .execute supports a better api.
+		if isinstance(cmd, str):  # Until .execute supports a better API.
 			cmd = [cmd]
-		name = cmd[0]
-		if name in self.containers:  # Create a unique name.
-			name = "%s@%s" % (str(cmd), hex(id(self)))
-		self.name = name
 		self.callback = callback
 		self.extraArgs = extraArgs
-		self.container = eConsoleAppContainer()
+		name = str(cmd)
+		if name in self.containers:
+			name = "%s@%s" % (name, hex(id(self)))  # Create a unique name.
 		self.containers[name] = self
-		# If the caller isn't interested in our results, we don't need to store the output either.
-		if callback is not None:
+		self.name = name
+		self.container = eConsoleAppContainer()
+		if callback is not None:  # If the caller isn't interested in our results, we don't need to store the output either.
 			self.appResults = []
 			self.container.dataAvail.append(self.dataAvailCB)
-		self.container.appClosed.append(self.finishedCB)
+		self.container.appClosed.append(self.appClosedCB)
 		if len(cmd) > 1:
-			print("[Console] Processing command '%s' with arguments %s." % (cmd[0], str(cmd[1:])))
+			print("[Console] Processing command '%s' with arguments '%s'." % (cmd[0], "', '".join(cmd[1:])))
 		else:
 			print("[Console] Processing command line '%s'." % cmd[0])
 		retVal = self.container.execute(*cmd)
 		if retVal:
-			self.finishedCB(retVal)
+			self.appClosedCB(retVal)
 		if callback is None:
 			try:
-				waitpid(self.container.getPID(), 0)
-			except (IOError, OSError):
-				pass
+				pid = self.container.getPID()
+				print("[Console] Waiting for command (PID %d) to finish." % pid)
+				pid, exitVal = waitpid(pid, 0)
+			except (IOError, OSError) as err:
+				print("[Console] Error %s: Wait for command to terminate failed!  (%s)" % (err.errno, err.strerror))
 
 	def dataAvailCB(self, data):
 		self.appResults.append(data)
 
-	def finishedCB(self, retVal):
-		print("[Console] Command '%s' finished." % self.name)
+	def appClosedCB(self, retVal):
+		print("[Console] Command '%s' finished with exit status of %d." % (self.name, retVal))
 		del self.containers[self.name]
 		del self.container.dataAvail[:]
 		del self.container.appClosed[:]
-		del self.container
-		callback = self.callback
-		if callback is not None:
-			data = b"".join(self.appResults)
-			callback(data, retVal, self.extraArgs)
+		self.container = None
+		if self.callback is not None:
+			appResults = b"".join(self.appResults)
+			self.callback(appResults, retVal, self.extraArgs)
 
 
 class Console(object):
@@ -57,13 +57,9 @@ class Console(object):
 		self.appContainers = {}
 
 	def ePopen(self, cmd, callback=None, extra_args=None):
-		if not extra_args:
-			extra_args = []
 		return ConsoleItem(self.appContainers, cmd, callback, extra_args)
 
 	def eBatch(self, cmds, callback, extra_args=None, debug=False):
-		if not extra_args:
-			extra_args = []
 		self.debug = debug
 		cmd = cmds.pop(0)
 		self.ePopen(cmd, self.eBatchCB, [cmds, callback, extra_args])
