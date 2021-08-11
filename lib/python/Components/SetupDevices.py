@@ -8,6 +8,9 @@ def InitSetupDevices():
 
 	config.osd = ConfigSubsection()
 	config.osd.language = ConfigText(default="en_US")
+	if config.osd.language.value == "en_EN":
+		config.osd.language.value = "en_US"
+		config.osd.language.save()
 	config.osd.language.addNotifier(languageNotifier)
 
 	config.parental = ConfigSubsection()
