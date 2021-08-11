@@ -1305,7 +1305,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 	advanced_lnb_ucsw_choices = [("0", _("None"))] + [(str(x), _("Input %d") % x) for x in range(1, 17)]
 	diseqc_mode_choices = [
 		("single", _("Single")),
-		("toneburst_a_b", _("Toneburst A/B")),
+		("toneburst_a_b", _("MiniDiSEqC A/B")),
 		("diseqc_a_b", "DiSEqC A/B"),
 		("diseqc_a_b_c_d", "DiSEqC A/B/C/D"),
 		("positioner", _("Positioner")),
@@ -1374,16 +1374,16 @@ def InitNimManager(nimmgr, update_slots=[]):
 		("1_2", _("1.2"))
 	]
 	advanced_lnb_commandOrder1_0_choices = [
-		("ct", "DiSEqC 1.0, Toneburst"),
-		("tc", "Toneburst, DiSEqC 1.0")
+		("ct", "DiSEqC 1.0, MiniDiSEqC"),
+		("tc", "MiniDiSEqC, DiSEqC 1.0")
 	]
 	advanced_lnb_commandOrder_choices = [
-		("ct", "DiSEqC 1.0, Toneburst"),
-		("tc", "Toneburst, DiSEqC 1.0"),
-		("cut", "DiSEqC 1.0, DiSEqC 1.1, Toneburst"),
-		("tcu", "Toneburst, DiSEqC 1.0, DiSEqC 1.1"),
-		("uct", "DiSEqC 1.1, DiSEqC 1.0, Toneburst"),
-		("tuc", "Toneburst, DiSEqC 1.1, DiSEqC 1.0")
+		("ct", "DiSEqC 1.0, MiniDiSEqC"),
+		("tc", "MiniDiSEqC, DiSEqC 1.0"),
+		("cut", "DiSEqC 1.0, DiSEqC 1.1, MiniDiSEqC"),
+		("tcu", "MiniDiSEqC, DiSEqC 1.0, DiSEqC 1.1"),
+		("uct", "DiSEqC 1.1, DiSEqC 1.0, MiniDiSEqC"),
+		("tuc", "MiniDiSEqC, DiSEqC 1.1, DiSEqC 1.0")
 	]
 	advanced_lnb_diseqc_repeat_choices = [
 		("none", _("None")),
@@ -1431,7 +1431,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 					section.powerinserter.save_forced = True
 					section.powerinserter.addNotifier(setPowerInserter)
 					srcfrequencylist = productparameters.get("scrs").split(",")
-					section.scrList = ConfigSelection([("%d" % (x + 1), "User Band %d (%s)" % ((x + 1), srcfrequencylist[x])) for x in range(len(srcfrequencylist))])
+					section.scrList = ConfigSelection([("%d" % (x + 1), _("User Band %d (%s)") % ((x + 1), srcfrequencylist[x])) for x in range(len(srcfrequencylist))])
 					section.scrList.save_forced = True
 					section.scrList.addNotifier(boundFunction(scrListChanged, productparameters, srcfrequencylist))
 
@@ -1456,7 +1456,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 					section.positions = ConfigInteger(default=configEntry.value == "jess" and 64 or 2)
 					section.positions.addNotifier(positionsChanged)
 					section.positionsOffset = ConfigInteger(default=0)
-					section.scrList = ConfigSelection([("%d" % (x + 1), "User Band %d" % (x + 1)) for x in range(configEntry.value == "jess" and 32 or 8)])
+					section.scrList = ConfigSelection([("%d" % (x + 1), _("User Band %d") % (x + 1)) for x in range(configEntry.value == "jess" and 32 or 8)])
 					section.scrList.save_forced = True
 					srcfrequencyList = configEntry.value == "jess" and (1210, 1420, 1680, 2040, 984, 1020, 1056, 1092, 1128, 1164, 1256, 1292, 1328, 1364, 1458, 1494, 1530, 1566, 1602,
 						1638, 1716, 1752, 1788, 1824, 1860, 1896, 1932, 1968, 2004, 2076, 2112, 2148) or (1284, 1400, 1516, 1632, 1748, 1864, 1980, 2096)
