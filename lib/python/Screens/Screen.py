@@ -1,5 +1,3 @@
-from six import PY2
-
 from enigma import eRCInput, eTimer, eWindow, getDesktop
 
 from skin import GUI_SKIN_ID, applyAllAttributes
@@ -10,8 +8,7 @@ from Components.Sources.StaticText import StaticText
 from Tools.CList import CList
 
 
-# The lines marked DEBUG: are proposals for further fixes or improvements.
-# Other commented out code is historic and should probably be deleted if it is not going to be used.
+# The lines marked DEBUG: are proposals for further fixes or improvements when partner code is updated.
 #
 class Screen(dict):
 	NO_SUSPEND, SUSPEND_STOPS, SUSPEND_PAUSES = list(range(3))
@@ -34,13 +31,13 @@ class Screen(dict):
 		self.onHide = []
 		self.execing = False
 		self.shown = True
-		# DEBUG: Variable already_shown used in CutListEditor/ui.py and StartKodi/plugin.py...
+		# DEBUG: Variable already_shown used in CutListEditor/ui.py and StartKodi/plugin.py.
 		# DEBUG: self.alreadyShown = False  # Already shown is false until the screen is really shown (after creation).
 		self.already_shown = False  # Already shown is false until the screen is really shown (after creation).
 		self.renderer = []
 		self.helpList = []  # In order to support screens *without* a help, we need the list in every screen. how ironic.
 		self.close_on_next_exec = None
-		# DEBUG: Variable already_shown used in webinterface/src/WebScreens.py...
+		# DEBUG: Variable already_shown used in webinterface/src/WebScreens.py.
 		# DEBUG: self.standAlone = False  # Stand alone screens (for example web screens) don't care about having or not having focus.
 		self.stand_alone = False  # Stand alone screens (for example web screens) don't care about having or not having focus.
 		self.keyboardMode = None
@@ -56,7 +53,7 @@ class Screen(dict):
 		return str(type(self))
 
 	def execBegin(self):
-		self.active_components = []
+		self.activeComponents = []
 		if self.close_on_next_exec is not None:
 			tmp = self.close_on_next_exec
 			self.close_on_next_exec = None
@@ -65,48 +62,44 @@ class Screen(dict):
 		else:
 			single = self.onFirstExecBegin
 			self.onFirstExecBegin = []
-			for x in self.onExecBegin + single:
-				x()
+			for callback in self.onExecBegin + single:
+				callback()
 				# DEBUG: if not self.standAlone and self.session.current_dialog != self:
 				if not self.stand_alone and self.session.current_dialog != self:
 					return
-			# assert self.session is None, "a screen can only exec once per time"
+			# assert self.session is None, "[Screen] A screen can only exec once per time!"
 			# self.session = session
-			for val in list(self.values()) + self.renderer:
-				val.execBegin()
+			for value in list(self.values()) + self.renderer:
+				value.execBegin()
 				# DEBUG: if not self.standAlone and self.session.current_dialog != self:
 				if not self.stand_alone and self.session.current_dialog != self:
 					return
-				self.active_components.append(val)
+				self.activeComponents.append(value)
 			self.execing = True
-			for x in self.onShown:
-				x()
+			for callback in self.onShown:
+				callback()
 
 	def execEnd(self):
-		active_components = self.active_components
-		# for (name, val) in self.items():
-		self.active_components = []
-		for val in active_components:
-			val.execEnd()
-		# assert self.session is not None, "execEnd on non-execing screen!"
-		# self.session = None
+		for component in self.activeComponents:
+			component.execEnd()
+		self.activeComponents = []
 		self.execing = False
-		for x in self.onExecEnd:
-			x()
+		for callback in self.onExecEnd:
+			callback()
 
 	def doClose(self):  # Never call this directly - it will be called from the session!
 		self.hide()
-		for x in self.onClose:
-			x()
+		for callback in self.onClose:
+			callback()
 		del self.helpList  # Fixup circular references.
 		self.deleteGUIScreen()
 		# First disconnect all render from their sources. We might split this out into
 		# a "unskin"-call, but currently we destroy the screen afterwards anyway.
-		for val in self.renderer:
-			val.disconnectAll()  # Disconnect converter/sources and probably destroy them. Sources will not be destroyed.
+		for item in self.renderer:
+			item.disconnectAll()  # Disconnect converter/sources and probably destroy them. Sources will not be destroyed.
 		del self.session
-		for (name, val) in list(self.items()):
-			val.destroy()
+		for (name, item) in list(self.items()):
+			item.destroy()
 			del self[name]
 		self.renderer = []
 		self.__dict__.clear()  # Really delete all elements now.
@@ -126,22 +119,22 @@ class Screen(dict):
 		# DEBUG: self.alreadyShown = True
 		self.already_shown = True
 		self.instance.show()
-		for x in self.onShow:
-			x()
-		for val in list(self.values()) + self.renderer:
-			if isinstance(val, GUIComponent) or isinstance(val, Source):
-				val.onShow()
+		for callback in self.onShow:
+			callback()
+		for value in list(self.values()) + self.renderer:
+			if isinstance(value, GUIComponent) or isinstance(value, Source):
+				value.onShow()
 
 	def hide(self):
 		if not self.shown or not self.instance:
 			return
 		self.shown = False
 		self.instance.hide()
-		for x in self.onHide:
-			x()
-		for val in list(self.values()) + self.renderer:
-			if isinstance(val, GUIComponent) or isinstance(val, Source):
-				val.onHide()
+		for callback in self.onHide:
+			callback()
+		for value in list(self.values()) + self.renderer:
+			if isinstance(value, GUIComponent) or isinstance(value, Source):
+				value.onHide()
 
 	def isAlreadyShown(self):  # Already shown is false until the screen is really shown (after creation).
 		return self.already_shown
@@ -155,12 +148,15 @@ class Screen(dict):
 	def setTitle(self, title, showPath=True):
 		try:  # This protects against calls to setTitle() before being fully initialised like self.session is accessed *before* being defined.
 			self.screenPath = ""
+			# These two lines are the old shortcut code, kept for reference.
+			# if self.session and len(self.session.dialog_stack) > 1:
+			# 	self.screenPath = " > ".join(dialog[0].getTitle() for dialog in self.session.dialog_stack[1:])
 			if self.session.dialog_stack:
-				screenclasses = [ds[0].__class__.__name__ for ds in self.session.dialog_stack]
-				if "MainMenu" in screenclasses:
-					index = screenclasses.index("MainMenu")
-					if self.session and len(screenclasses) > index:
-						self.screenPath = " > ".join(ds[0].getTitle() for ds in self.session.dialog_stack[index:])
+				screenClasses = [dialog[0].__class__.__name__ for dialog in self.session.dialog_stack]
+				if "MainMenu" in screenClasses:
+					index = screenClasses.index("MainMenu")
+					if self.session and len(screenClasses) > index:
+						self.screenPath = " > ".join(dialog[0].getTitle() for dialog in self.session.dialog_stack[index:])
 			if self.instance:
 				self.instance.setTitle(title)
 			self.summaries.setTitle(title)
@@ -184,8 +180,8 @@ class Screen(dict):
 
 	title = property(getTitle, setTitle)
 
-	def setFocus(self, o):
-		self.instance.setFocus(o.instance)
+	def setFocus(self, object):
+		self.instance.setFocus(object.instance)
 
 	def setKeyboardModeNone(self):
 		rcinput = eRCInput.getInstance()
@@ -247,42 +243,39 @@ class Screen(dict):
 		self.createGUIScreen(self.instance, self.desktop)
 
 	def createGUIScreen(self, parent, desktop, updateonly=False):
-		for val in self.renderer:
-			if isinstance(val, GUIComponent):
+		for item in self.renderer:
+			if isinstance(item, GUIComponent):
 				if not updateonly:
-					val.GUIcreate(parent)
-				if not val.applySkin(desktop, self):
-					print("[Screen] Warning: Skin is missing renderer '%s' in %s." % (val, str(self)))
-		for key in self:
-			val = self[key]
-			if isinstance(val, GUIComponent):
+					item.GUIcreate(parent)
+				if not item.applySkin(desktop, self):
+					print("[Screen] Warning: Skin is missing renderer '%s' in %s." % (item, str(self)))
+		for (name, item) in self.items():
+			if isinstance(item, GUIComponent):
 				if not updateonly:
-					val.GUIcreate(parent)
-				depr = val.deprecationInfo
-				if val.applySkin(desktop, self):
+					item.GUIcreate(parent)
+				depr = item.deprecationInfo
+				if item.applySkin(desktop, self):
 					if depr:
 						print("[Screen] WARNING: OBSOLETE COMPONENT '%s' USED IN SKIN. USE '%s' INSTEAD!" % (key, depr[0]))
 						print("[Screen] OBSOLETE COMPONENT WILL BE REMOVED %s, PLEASE UPDATE!" % depr[1])
 				elif not depr:
 					print("[Screen] Warning: Skin is missing element '%s' in %s." % (key, str(self)))
-		for w in self.additionalWidgets:
+		for item in self.additionalWidgets:
 			if not updateonly:
-				w.instance = w.widget(parent)
-				# w.instance.thisown = 0
-			applyAllAttributes(w.instance, desktop, w.skinAttributes, self.scale)
-		for f in self.onLayoutFinish:
-			if not isinstance(f, type(self.close)):
-				if PY2:
-					exec f in globals(), locals()
-				else:
-					exec(f, globals(), locals())
+				item.instance = item.widget(parent)
+			applyAllAttributes(item.instance, desktop, item.skinAttributes, self.scale)
+		for callback in self.onLayoutFinish:
+			if not isinstance(callback, type(self.close)):
+				# The following command triggers an error in Puthon 3 even if a PY2 test is used!!!
+				exec callback in globals(), locals()  # Use this version for Python 2.
+				# exec(callback, globals(), locals())  # Use this version for Python 3.
 			else:
-				f()
+				callback()
 
 	def deleteGUIScreen(self):
-		for (name, val) in self.items():
-			if isinstance(val, GUIComponent):
-				val.GUIdelete()
+		for (name, item) in self.items():
+			if isinstance(item, GUIComponent):
+				item.GUIdelete()
 
 	def createSummary(self):
 		return None
@@ -313,4 +306,6 @@ class ScreenSummary(Screen):
 			names = [names]
 		self.skinName = ["%sSummary" % x for x in names]
 		self.skinName.append("ScreenSummary")
+		self.skinName += ["%s_summary" % x for x in names]  # DEBUG: Old summary screens currently kept for compatibility.
+		self.skinName.append("SimpleSummary")  # DEBUG: Old summary screens currently kept for compatibility.
 		self.skin = parent.__dict__.get("skinSummary", self.skin)  # If parent has a "skinSummary" defined, use that as default.
