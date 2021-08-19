@@ -35,13 +35,13 @@ gRC::gRC(): rp(0), wp(0)
 	pthread_attr_t attr;
 	pthread_attr_init(&attr);
 	if (pthread_attr_setstacksize(&attr, 2048*1024) != 0)
-		eDebug("[gRC] pthread_attr_setstacksize failed");
+		eDebug("[gRC] Error: pthread_attr_setstacksize failed!");
 	int res = pthread_create(&the_thread, &attr, thread_wrapper, this);
 	pthread_attr_destroy(&attr);
 	if (res)
-		eFatal("[gRC] thread couldn't be created");
+		eFatal("[gRC] Error: Thread couldn't be created!");
 	else
-		eDebug("[gRC] thread created successfully");
+		eDebug("[gRC] Thread created successfully.");
 #endif
 }
 
@@ -71,9 +71,9 @@ gRC::~gRC()
 	o.opcode=gOpcode::shutdown;
 	submit(o);
 #ifndef SYNC_PAINT
-	eDebug("[gRC] waiting for gRC thread shutdown");
+	eDebug("[gRC] Waiting for gRC thread shutdown.");
 	pthread_join(the_thread, 0);
-	eDebug("[gRC] thread has finished");
+	eDebug("[gRC] Thread has finished.");
 #endif
 }
 
@@ -95,7 +95,7 @@ void gRC::submit(const gOpcode &o)
 #else
 			thread();
 #endif
-			//eDebug("[gRC] render buffer full...");
+			//eDebug("[gRC] Render buffer full.");
 			//fflush(stdout);
 			usleep(1000);  // wait 1 msec
 			continue;
@@ -209,7 +209,7 @@ void *gRC::thread()
 				{
 					if (!m_spinner_enabled)
 					{
-						eDebug("[gRC] main thread is non-idle! display spinner!");
+						eDebug("[gRC] Warning: Main thread is busy, displaying spinner!");
 							std::ofstream dummy("/tmp/doPythonStackTrace");
 							dummy.close();
 					}
@@ -245,7 +245,7 @@ void gRC::enableSpinner()
 {
 	if (!m_spinner_dc)
 	{
-		eDebug("[gRC] enabelSpinner: no spinner DC!");
+		eDebug("[gRC] enabelSpinner Error: No spinner DC!");
 		return;
 	}
 
@@ -267,7 +267,7 @@ void gRC::disableSpinner()
 
 	if (!m_spinner_dc)
 	{
-		eDebug("[gRC] disableSpinner: no spinner DC!");
+		eDebug("[gRC] disableSpinner Error: No spinner DC!");
 		return;
 	}
 
@@ -1008,7 +1008,7 @@ void gDC::exec(const gOpcode *o)
 		incrementSpinner();
 		break;
 	default:
-		eFatal("[gDC] illegal opcode %d. expect memory leak!", o->opcode);
+		eFatal("[gRC] gDC Error: Illegal opcode %d, expect memory leak!", o->opcode);
 	}
 }
 
@@ -1018,7 +1018,7 @@ gRGB gDC::getRGB(gColor col)
 		return gRGB(col, col, col);
 	if (col<0)
 	{
-		eFatal("[gDC] getRGB transp");
+		eFatal("[gRC] gDC Error: getRGB transp!");
 		return gRGB(0, 0, 0, 0xFF);
 	}
 	return m_pixmap->surface->clut.data[col];
