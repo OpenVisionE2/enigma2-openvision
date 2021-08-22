@@ -144,7 +144,7 @@ class LocaleSelection(Screen, HelpableScreen):
 
 	def layoutFinished(self):
 		while len(self["icons"].pixmaps) < self.MAX_PACK:
-			self["icons"].pixmaps.append(None) 
+			self["icons"].pixmaps.append(None)
 		self.updateLocaleList(self.initialLocale)
 		self.moveToLocale(self.currentLocale)
 		self.updateText(updateDescription=True)

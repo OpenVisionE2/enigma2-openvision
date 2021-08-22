@@ -50,7 +50,7 @@ LANGUAGE_DATA = {
 	# 		default or commonly known country for the language.
 	# To make managing this list easier please keep languages in ISO
 	# 639-2 Code order.  Language codes should be in lower case and
-	# country codes should be in upper case.  Be careful not to 
+	# country codes should be in upper case.  Be careful not to
 	# confuse / mix the language and country!
 	#
 	# The Character Set entry is only used to set a shell variable used
