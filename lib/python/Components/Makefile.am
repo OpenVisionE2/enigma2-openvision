@@ -31,6 +31,7 @@ install_PYTHON = \
 	Input.py \
 	InputDevice.py \
 	InputHotplug.py \
+	International.py \
 	Label.py \
 	Language.py \
 	Lcd.py \
@@ -62,7 +63,6 @@ install_PYTHON = \
 	ServiceList.py \
 	ServicePosition.py \
 	ServiceScan.py \
-	SetupDevices.py \
 	Slider.py \
 	StackTrace.py \
 	SystemInfo.py \

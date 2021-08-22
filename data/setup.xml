@@ -129,6 +129,10 @@
 		<item level="0" requires="Power4x7Suspend" text="Switch on the display during Suspend Mode" description="With this option you can switch on the display in Deep Standby Mode.">config.lcd.power4x7suspend</item>
 		<item level="0" requires="7segment" text="Show in Standby" description="This option allows you choose how to display the time or nothing in Standby">config.usage.show_in_standby</item>
 	</setup>
+	<setup key="Locale" title="Locale Selection Setup" menuTitle="Locale">
+		<item level="0" text="Locales to be displayed" description="Display the base locales or all locales for a language.">config.locales.packageLocales</item>
+		<item level="0" text="Locale list sort order" description="Sort order for the language list.">config.locales.localesSortBy</item>
+	</setup>
 	<setup key="Logs" title="Logs Setup">
 		<item level="2" text="Debug logging *" description="Use this option to select if debug logs of internal enigma2 activities are created and, if so, how much detail will be logged.  These logs can be helpful for developers in finding and fixing problems.">config.crash.debugLevel</item>
 		<item level="2" text="Include keyboard data" description="Enable this option to add keyboard keymap data to the debug log file.">config.crash.debugKeyboards</item>

@@ -364,6 +364,10 @@ def runScreen():
 	return 0
 
 
+def localeNotifier(configElement):
+	international.activateLocale(configElement.value)
+
+
 def setLoadUnlinkedUserbouquets(configElement):
 	enigma.eDVBDB.getInstance().setLoadUnlinkedUserbouquets(configElement.value)
 
@@ -477,11 +481,9 @@ from time import localtime, strftime, time
 
 from Components.config import ConfigInteger, ConfigOnOff, ConfigSubsection, ConfigText, ConfigYesNo, NoSave, config, configfile
 from Components.Console import Console
+from Components.International import international
+# from Screens.Standby import QUIT_ERROR_RESTART
 from Tools.Directories import InitFallbackFiles, SCOPE_CURRENT_SKIN, SCOPE_PLUGINS, fileReadLine, fileWriteLine, resolveFilename
-
-profile("SetupDevices")  # This will be removed when the new locale / language / country code is submitted!
-import Components.SetupDevices
-Components.SetupDevices.InitSetupDevices()
 
 profile("BusyBoxInetd")
 if isfile("/etc/init.d/inetd.busybox"):
@@ -503,15 +505,31 @@ config.crash.debugActionMaps = ConfigYesNo(default=False)
 config.crash.debugKeyboards = ConfigYesNo(default=False)
 config.crash.debugRemoteControls = ConfigYesNo(default=False)
 config.crash.debugScreens = ConfigYesNo(default=False)
+config.expert = ConfigSubsection()
+config.expert.autoinfo = ConfigOnOff(default=True)
+config.expert.fastzap = ConfigOnOff(default=True)
+config.expert.hideerrors = ConfigOnOff(default=False)
+config.expert.satpos = ConfigOnOff(default=True)
+config.expert.skipconfirm = ConfigOnOff(default=False)
+config.osd = ConfigSubsection()
+config.osd.language = ConfigText(default="en_US")
+config.osd.language.addNotifier(localeNotifier)
+config.misc.country = ConfigText(default="US")
 config.misc.DeepStandby = NoSave(ConfigYesNo(default=False))  # Detect deepstandby.
 config.misc.epgcache_filename = ConfigText(default="/hdd/epg.dat", fixed_size=False)
+config.misc.language = ConfigText(default="en")
 config.misc.load_unlinked_userbouquets = ConfigYesNo(default=True)
 config.misc.load_unlinked_userbouquets.addNotifier(setLoadUnlinkedUserbouquets)
+config.misc.locale = ConfigText(default="en_US")
+# config.misc.locale.addNotifier(localeNotifier)  # This should not be enabled while config.osd.language is in use!
 config.misc.prev_wakeup_time = ConfigInteger(default=0)
 config.misc.prev_wakeup_time_type = ConfigInteger(default=0)  # This is only valid when wakeup_time is not 0.  0 = RecordTimer, 1 = ZapTimer, 2 = Plugins, 3 = WakeupTimer.
 config.misc.RestartUI = ConfigYesNo(default=False)  # Detect user interface restart.
 config.misc.standbyCounter = NoSave(ConfigInteger(default=0))  # Number of standby.
 config.misc.startCounter = ConfigInteger(default=0)  # Number of e2 starts.
+config.parental = ConfigSubsection()
+config.parental.lock = ConfigOnOff(default=False)
+config.parental.setuplock = ConfigOnOff(default=False)
 
 profile("ClientMode")
 from Components.ClientMode import InitClientMode
