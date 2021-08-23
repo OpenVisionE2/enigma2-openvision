@@ -1283,7 +1283,7 @@ class ConfigInteger(ConfigSequence):
 
 
 class ConfigPIN(ConfigInteger):
-	def __init__(self, default, len=4, censor=u"\u2022"):
+	def __init__(self, default, pinLength=4, censor=u"\u2022"):
 		assert isinstance(default, int), "[Config] Error: 'ConfigPIN' default must be an integer!"
 		assert censor == "" or len(censor) == 1, "[Config] Error: Censor must be a single char (or \"\")!"
 		censor = censor.encode("UTF-8", errors="ignore") if PY2 else censor

@@ -119,10 +119,10 @@ class MMIDialog(Screen):
 			pinlength = entry[1]
 			if entry[3] == 1:
 				# masked pins:
-				x = ConfigPIN(0, len=pinlength, censor="*")
+				x = ConfigPIN(0, pinLength=pinlength, censor="*")
 			else:
 				# unmasked pins:
-				x = ConfigPIN(0, len=pinlength)
+				x = ConfigPIN(0, pinLength=pinlength)
 			x.addEndNotifier(self.pinEntered)
 			self["subtitle"].setText(entry[2])
 			list.append(getConfigListEntry("", x))
