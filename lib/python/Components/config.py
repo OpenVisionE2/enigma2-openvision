@@ -1287,7 +1287,7 @@ class ConfigPIN(ConfigInteger):
 		assert isinstance(default, int), "[Config] Error: 'ConfigPIN' default must be an integer!"
 		assert censor == "" or len(censor) == 1, "[Config] Error: Censor must be a single char (or \"\")!"
 		censor = censor.encode("UTF-8", errors="ignore") if PY2 else censor
-		ConfigSequence.__init__(self, seperator=":", limits=[(0, (10 ** len) - 1)], censor=censor, default=default)
+		ConfigSequence.__init__(self, seperator=":", limits=[(0, (10 ** pinLength) - 1)], censor=censor, default=default)
 		self.len = len
 
 	def getLength(self):
