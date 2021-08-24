@@ -1,19 +1,20 @@
 from errno import ENOENT, EXDEV
 from inspect import stack
-from os import F_OK, R_OK, W_OK, access, chmod, listdir, makedirs, mkdir, readlink, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
+from os import F_OK, R_OK, W_OK, access, chmod, link, listdir, makedirs, mkdir, readlink, remove, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
 from os.path import basename, dirname, exists, getsize, isdir, isfile, islink, join as pathjoin, normpath, splitext
 from re import compile
 from six import PY2
 from stat import S_IMODE
+from tempfile import mkstemp
 from traceback import print_exc
 from xml.etree.cElementTree import ParseError, fromstring, parse
 
 from enigma import eEnv, getDesktop, eGetEnigmaDebugLvl
 
+DEFAULT_MODULE_NAME = __name__.split(".")[-1]
+
 forceDebug = eGetEnigmaDebugLvl() > 4
 pathExists = exists
-
-DEFAULT_MODULE_NAME = __name__.split(".")[-1]
 
 SCOPE_TRANSPONDERDATA = 0
 SCOPE_SYSETC = 1
@@ -44,11 +45,10 @@ SCOPE_CURRENT_LCDSKIN = 21
 # SCOPE_ACTIVE_LCDSKIN is a deprecated scope function - use SCOPE_CURRENT_LCDSKIN instead.
 # SCOPE_ACTIVE_LCDSKIN = SCOPE_CURRENT_LCDSKIN
 SCOPE_ACTIVE_LCDSKIN = 21
-SCOPE_AUTORECORD = 22
-SCOPE_DEFAULTDIR = 23
-SCOPE_DEFAULTPARTITION = 24
-SCOPE_DEFAULTPARTITIONMOUNTDIR = 25
-SCOPE_LIBDIR = 26
+SCOPE_DEFAULTDIR = 22
+SCOPE_DEFAULTPARTITION = 23
+SCOPE_DEFAULTPARTITIONMOUNTDIR = 24
+SCOPE_LIBDIR = 25
 
 PATH_CREATE = 0
 PATH_DONTCREATE = 1
@@ -77,12 +77,17 @@ defaultPaths = {
 	SCOPE_LCDSKIN: (eEnv.resolve("${datadir}/enigma2/display/"), PATH_DONTCREATE),
 	SCOPE_CURRENT_LCDSKIN: (eEnv.resolve("${datadir}/enigma2/display/"), PATH_DONTCREATE),
 	SCOPE_ACTIVE_LCDSKIN: (eEnv.resolve("${datadir}/enigma2/display/"), PATH_DONTCREATE),
-	SCOPE_AUTORECORD: ("/media/hdd/movie/", PATH_DONTCREATE),
 	SCOPE_DEFAULTDIR: (eEnv.resolve("${datadir}/enigma2/defaults/"), PATH_CREATE),
 	SCOPE_DEFAULTPARTITION: ("/dev/mtdblock6", PATH_DONTCREATE),
 	SCOPE_DEFAULTPARTITIONMOUNTDIR: (eEnv.resolve("${datadir}/enigma2/dealer"), PATH_CREATE),
 	SCOPE_LIBDIR: (eEnv.resolve("${libdir}/"), PATH_DONTCREATE)
 }
+
+scopeConfig = defaultPaths[SCOPE_CONFIG][0]
+scopeSkin = defaultPaths[SCOPE_SKIN][0]
+scopeLcdSkin = defaultPaths[SCOPE_LCDSKIN][0]
+scopeFonts = defaultPaths[SCOPE_FONTS][0]
+scopePlugins = defaultPaths[SCOPE_PLUGINS][0]
 
 
 def resolveFilename(scope, base="", path_prefix=None):
@@ -92,7 +97,7 @@ def resolveFilename(scope, base="", path_prefix=None):
 		if path_prefix:
 			base = pathjoin(path_prefix, base[2:])
 		else:
-			print("[Directories] Warning: resolveFilename called with base starting with '~/' but 'path_prefix' is None!")
+			print("[Directories] Warning: resolveFilename called with base starting with '~%s' but 'path_prefix' is None!" % sep)
 	# Don't further resolve absolute paths.
 	if str(base).startswith(sep):
 		return normpath(base)
@@ -100,8 +105,8 @@ def resolveFilename(scope, base="", path_prefix=None):
 	if scope not in defaultPaths:
 		print("[Directories] Error: Invalid scope=%s provided to resolveFilename!" % scope)
 		return None
-	# Ensure that the defaultPaths directories that should exist do exist.
-	path, flag = defaultPaths.get(scope)
+	# Ensure that the defaultPath directory that should exist for this scope does exist.
+	path, flag = defaultPaths[scope]
 	if flag == PATH_CREATE and not pathExists(path):
 		try:
 			makedirs(path)
@@ -133,13 +138,12 @@ def resolveFilename(scope, base="", path_prefix=None):
 		path, flags = defaultPaths.get(scope)
 		# If the scope is SCOPE_CURRENT_SKIN or SCOPE_ACTIVE_SKIN or SCOPE_SKIN_IMAGE append the current skin to the scope path.
 		if scope in (SCOPE_CURRENT_SKIN, SCOPE_ACTIVE_SKIN, SCOPE_SKIN_IMAGE):
-			# This import must be here as this module finds the config file as part of the config initialisation.
-			from Components.config import config
+			from Components.config import config  # This import must be here as this module finds the config file as part of the config initialisation.
 			skin = dirname(config.skin.primary_skin.value)
 			path = pathjoin(path, skin)
 		elif scope in (SCOPE_CURRENT_PLUGIN_ABSOLUTE, SCOPE_CURRENT_PLUGIN_RELATIVE):
 			callingCode = normpath(stack()[1][1])
-			plugins = normpath(defaultPaths[SCOPE_PLUGINS][0])
+			plugins = normpath(scopePlugins)
 			path = None
 			if comparePath(plugins, callingCode):
 				pluginCode = callingCode[len(plugins) + 1:].split(sep)
@@ -147,36 +151,34 @@ def resolveFilename(scope, base="", path_prefix=None):
 					relative = "%s%s%s" % (pluginCode[0], sep, pluginCode[1])
 					path = pathjoin(plugins, relative)
 	elif scope in (SCOPE_CURRENT_SKIN, SCOPE_ACTIVE_SKIN, SCOPE_SKIN_IMAGE):
-		# This import must be here as this module finds the config file as part of the config initialisation.
-		from Components.config import config
+		from Components.config import config  # This import must be here as this module finds the config file as part of the config initialisation.
 		skin = dirname(config.skin.primary_skin.value)
 		resolveList = [
-			pathjoin(defaultPaths[SCOPE_CONFIG][0], skin),
-			pathjoin(defaultPaths[SCOPE_CONFIG][0], "skin_common"),
-			defaultPaths[SCOPE_CONFIG][0],  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
-			pathjoin(defaultPaths[SCOPE_SKIN][0], skin),
-			pathjoin(defaultPaths[SCOPE_SKIN][0], "skin_fallback_%d" % getDesktop(0).size().height()),
-			pathjoin(defaultPaths[SCOPE_SKIN][0], "skin_default"),
-			defaultPaths[SCOPE_SKIN][0]  # Can we deprecate top level of SCOPE_SKIN directory to allow a clean up?
+			pathjoin(scopeConfig, skin),
+			pathjoin(scopeConfig, "skin_common"),
+			scopeConfig,  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
+			pathjoin(scopeSkin, skin),
+			pathjoin(scopeSkin, "skin_fallback_%d" % getDesktop(0).size().height()),
+			pathjoin(scopeSkin, "skin_default"),
+			scopeSkin  # Can we deprecate top level of SCOPE_SKIN directory to allow a clean up?
 		]
 		file = itemExists(resolveList, base)
 		if file:
 			path = file
 	elif scope in (SCOPE_CURRENT_LCDSKIN, SCOPE_ACTIVE_LCDSKIN):
-		# This import must be here as this module finds the config file as part of the config initialisation.
-		from Components.config import config
+		from Components.config import config  # This import must be here as this module finds the config file as part of the config initialisation.
 		if hasattr(config.skin, "display_skin"):
 			skin = dirname(config.skin.display_skin.value)
 		else:
 			skin = ""
 		resolveList = [
-			pathjoin(defaultPaths[SCOPE_CONFIG][0], "display", skin),
-			pathjoin(defaultPaths[SCOPE_CONFIG][0], "display", "skin_common"),
-			defaultPaths[SCOPE_CONFIG][0],  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
-			pathjoin(defaultPaths[SCOPE_LCDSKIN][0], skin),
-			pathjoin(defaultPaths[SCOPE_LCDSKIN][0], "skin_fallback_%s" % getDesktop(1).size().height()),
-			pathjoin(defaultPaths[SCOPE_LCDSKIN][0], "skin_default"),
-			defaultPaths[SCOPE_LCDSKIN][0]  # Can we deprecate top level of SCOPE_LCDSKIN directory to allow a clean up?
+			pathjoin(scopeConfig, "display", skin),
+			pathjoin(scopeConfig, "display", "skin_common"),
+			scopeConfig,  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
+			pathjoin(scopeLcdSkin, skin),
+			pathjoin(scopeLcdSkin, "skin_fallback_%s" % getDesktop(1).size().height()),
+			pathjoin(scopeLcdSkin, "skin_default"),
+			scopeLcdSkin  # Can we deprecate top level of SCOPE_LCDSKIN directory to allow a clean up?
 		]
 		file = itemExists(resolveList, base)
 		if file:
@@ -187,38 +189,38 @@ def resolveFilename(scope, base="", path_prefix=None):
 		skin = dirname(config.skin.primary_skin.value)
 		display = dirname(config.skin.display_skin.value) if hasattr(config.skin, "display_skin") else None
 		resolveList = [
-			pathjoin(defaultPaths[SCOPE_CONFIG][0], "fonts"),
-			pathjoin(defaultPaths[SCOPE_CONFIG][0], skin, "fonts"),
-			pathjoin(defaultPaths[SCOPE_CONFIG][0], skin)
+			pathjoin(scopeConfig, "fonts"),
+			pathjoin(scopeConfig, skin, "fonts"),
+			pathjoin(scopeConfig, skin)
 		]
 		if display:
-			resolveList.append(pathjoin(defaultPaths[SCOPE_CONFIG][0], "display", display, "fonts"))
-			resolveList.append(pathjoin(defaultPaths[SCOPE_CONFIG][0], "display", display))
-		resolveList.append(pathjoin(defaultPaths[SCOPE_CONFIG][0], "skin_common", "fonts"))
-		resolveList.append(pathjoin(defaultPaths[SCOPE_CONFIG][0], "skin_common"))
-		resolveList.append(defaultPaths[SCOPE_CONFIG][0])  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
-		resolveList.append(pathjoin(defaultPaths[SCOPE_SKIN][0], skin, "fonts"))
-		resolveList.append(pathjoin(defaultPaths[SCOPE_SKIN][0], skin))
-		resolveList.append(pathjoin(defaultPaths[SCOPE_SKIN][0], "skin_default", "fonts"))
-		resolveList.append(pathjoin(defaultPaths[SCOPE_SKIN][0], "skin_default"))
+			resolveList.append(pathjoin(scopeConfig, "display", display, "fonts"))
+			resolveList.append(pathjoin(scopeConfig, "display", display))
+		resolveList.append(pathjoin(scopeConfig, "skin_common", "fonts"))
+		resolveList.append(pathjoin(scopeConfig, "skin_common"))
+		resolveList.append(scopeConfig)  # Can we deprecate top level of SCOPE_CONFIG directory to allow a clean up?
+		resolveList.append(pathjoin(scopeSkin, skin, "fonts"))
+		resolveList.append(pathjoin(scopeSkin, skin))
+		resolveList.append(pathjoin(scopeSkin, "skin_default", "fonts"))
+		resolveList.append(pathjoin(scopeSkin, "skin_default"))
 		if display:
-			resolveList.append(pathjoin(defaultPaths[SCOPE_LCDSKIN][0], display, "fonts"))
-			resolveList.append(pathjoin(defaultPaths[SCOPE_LCDSKIN][0], display))
-		resolveList.append(pathjoin(defaultPaths[SCOPE_LCDSKIN][0], "skin_default", "fonts"))
-		resolveList.append(pathjoin(defaultPaths[SCOPE_LCDSKIN][0], "skin_default"))
-		resolveList.append(defaultPaths[SCOPE_FONTS][0])
+			resolveList.append(pathjoin(scopeLcdSkin, display, "fonts"))
+			resolveList.append(pathjoin(scopeLcdSkin, display))
+		resolveList.append(pathjoin(scopeLcdSkin, "skin_default", "fonts"))
+		resolveList.append(pathjoin(scopeLcdSkin, "skin_default"))
+		resolveList.append(scopeFonts)
 		for item in resolveList:
 			file = pathjoin(item, base)
 			if pathExists(file):
 				path = file
 				break
 	elif scope == SCOPE_CURRENT_PLUGIN:
-		file = pathjoin(defaultPaths[SCOPE_PLUGINS][0], base)
+		file = pathjoin(scopePlugins, base)
 		if pathExists(file):
 			path = file
 	elif scope in (SCOPE_CURRENT_PLUGIN_ABSOLUTE, SCOPE_CURRENT_PLUGIN_RELATIVE):
 		callingCode = normpath(stack()[1][1])
-		plugins = normpath(defaultPaths[SCOPE_PLUGINS][0])
+		plugins = normpath(scopePlugins)
 		path = None
 		if comparePath(plugins, callingCode):
 			pluginCode = callingCode[len(plugins) + 1:].split(sep)
@@ -238,6 +240,10 @@ def resolveFilename(scope, base="", path_prefix=None):
 	if suffix is not None:
 		path = "%s:%s" % (path, suffix)
 	return path
+
+
+def InitDefaultPaths():
+	resolveFilename(SCOPE_CONFIG)
 
 
 def comparePath(leftPath, rightPath):
@@ -275,7 +281,7 @@ def defaultRecordingLocation(candidate=None):
 	# First, try whatever /hdd points to, or /media/hdd.
 	try:
 		path = readlink("/hdd")
-	except OSError:
+	except (IOError, OSError) as err:
 		path = "/media/hdd"
 	if not pathExists(path):
 		# Find the largest local disk.
@@ -494,13 +500,28 @@ def getRecordingFilename(basename, dirname=None):
 		i += 1
 
 
-# This is clearly a hack:
-#
-def InitFallbackFiles():
-	resolveFilename(SCOPE_CONFIG, "userbouquet.favourites.tv")
-	resolveFilename(SCOPE_CONFIG, "bouquets.tv")
-	resolveFilename(SCOPE_CONFIG, "userbouquet.favourites.radio")
-	resolveFilename(SCOPE_CONFIG, "bouquets.radio")
+def hasHardLinks(path):  # Test if the volume containing path supports hard links.
+	try:
+		fd, srcName = mkstemp(prefix="HardLink_", suffix=".test", dir=path, text=False)
+	except (IOError, OSError) as err:
+		print("[Directories] Error %d: Creating temp file!  (%s)" % (err.errno, err.strerror))
+		return False
+	dstName = "%s.link" % splitext(srcName)[0]
+	try:
+		link(srcName, dstName)
+		result = True
+	except (IOError, OSError) as err:
+		print("[Directories] Error %d: Creating hard link!  (%s)" % (err.errno, err.strerror))
+		result = False
+	try:
+		remove(srcName)
+	except (IOError, OSError) as err:
+		print("[Directories] Error %d: Removing source file!  (%s)" % (err.errno, err.strerror))
+	try:
+		remove(dstName)
+	except (IOError, OSError) as err:
+		print("[Directories] Error %d: Removing destination file!  (%s)" % (err.errno, err.strerror))
+	return result
 
 
 # Returns a list of tuples containing pathname and filename matching the given pattern
@@ -638,7 +659,7 @@ def lsof():
 				dir = pathjoin("/proc", pid, "fd")
 				for file in [pathjoin(dir, file) for file in listdir(dir)]:
 					lsof.append((pid, prog, readlink(file)))
-			except OSError:
+			except (IOError, OSError) as err:
 				pass
 	return lsof
 
@@ -670,10 +691,9 @@ def shellquote(string):
 
 
 def isPluginInstalled(pluginName, pluginFile="plugin", pluginType=None):
-	path, flags = defaultPaths.get(SCOPE_PLUGINS)
-	for type in [x for x in listdir(path) if isdir(pathjoin(path, x))]:
+	for type in [x for x in listdir(scopePlugins) if isdir(pathjoin(scopePlugins, x))]:
 		for extension in ["o", "c", ""]:
-			if isfile(pathjoin(path, type, pluginName, "%s.py%s" % (pluginFile, extension))):
+			if isfile(pathjoin(scopePlugins, type, pluginName, "%s.py%s" % (pluginFile, extension))):
 				if pluginType and type != pluginType:
 					continue
 				return True

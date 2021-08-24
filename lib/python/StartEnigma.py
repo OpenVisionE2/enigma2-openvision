@@ -483,7 +483,10 @@ from Components.config import ConfigInteger, ConfigOnOff, ConfigSubsection, Conf
 from Components.Console import Console
 from Components.International import international
 # from Screens.Standby import QUIT_ERROR_RESTART
-from Tools.Directories import InitFallbackFiles, SCOPE_CURRENT_SKIN, SCOPE_PLUGINS, fileReadLine, fileWriteLine, resolveFilename
+from Tools.Directories import InitDefaultPaths, SCOPE_CURRENT_SKIN, SCOPE_PLUGINS, fileReadLine, fileWriteLine, resolveFilename
+
+profile("CreateDefaultPaths")
+InitDefaultPaths()
 
 profile("BusyBoxInetd")
 if isfile("/etc/init.d/inetd.busybox"):
@@ -557,9 +560,6 @@ from skin import readSkin
 #
 config.misc.blackradiopic = ConfigText(default=resolveFilename(SCOPE_CURRENT_SKIN, "black.mvi"))
 config.misc.radiopic = ConfigText(default=resolveFilename(SCOPE_CURRENT_SKIN, "radio.mvi"))
-
-profile("CreatFiles")
-InitFallbackFiles()
 
 profile("Plugins")
 from Components.PluginComponent import plugins  # Initialize autorun plugins and plugin menu entries.
