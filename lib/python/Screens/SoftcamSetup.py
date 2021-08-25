@@ -33,7 +33,7 @@ class SoftcamSetup(Setup):
 		config.misc.cardservers = ConfigSelection(choices=cardservers)
 		config.misc.cardservers.value == ""
 		config.misc.restarts = ConfigSelection(default="", choices=restartOptions)
-		Setup.__init__(self, session=session, setup="softcamsettings")
+		Setup.__init__(self, session=session, setup="Softcam")
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText()
 		self["restartActions"] = HelpableActionMap(self, ["ColorActions"], {
