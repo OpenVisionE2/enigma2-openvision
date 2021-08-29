@@ -99,7 +99,7 @@ def NoSave(element):
 #
 class ConfigElement(object):
 	def __init__(self):
-		self.saveDisabled = False
+		self.save_disabled = False  # Used externally!
 		self.save_forced = False  # Used externally!
 		self.lastValue = None
 		self.saved_value = None  # Used externally!
@@ -116,7 +116,7 @@ class ConfigElement(object):
 		self.value = self.default if self.saved_value is None else self.fromstring(self.saved_value)
 
 	def save(self):  # You need to override this if str(self.value) doesn't work.
-		if self.saveDisabled or (self.value == self.default and not self.save_forced):
+		if self.save_disabled or (self.value == self.default and not self.save_forced):
 			self.saved_value = None
 		else:
 			self.saved_value = self.tostring(self.value)
@@ -124,7 +124,7 @@ class ConfigElement(object):
 			self.changedFinal()  # Call none immediate_feedback notifiers, immediate_feedback Notifiers are called as they are chanaged, so do not need to be called here.
 
 	def disableSave(self):
-		self.saveDisabled = True
+		self.save_disabled = True
 
 	def cancel(self):
 		self.load()
@@ -349,7 +349,7 @@ class descriptionList(choicesList):
 		if self.type == choicesList.LIST_TYPE_LIST:
 			ret = [not isinstance(x, tuple) and x or x[1] for x in self.choices]
 		else:
-			ret = self.choices.values()
+			ret = list(self.choices.values())
 		return ret or [""]
 
 	def __iter__(self):
@@ -615,7 +615,7 @@ class ConfigLocations(ConfigElement):
 
 	def save(self):
 		locations = self.locations
-		if self.saveDisabled or not locations:
+		if self.save_disabled or not locations:
 			self.saved_value = None
 		else:
 			self.saved_value = self.tostring([x[0] for x in locations])
