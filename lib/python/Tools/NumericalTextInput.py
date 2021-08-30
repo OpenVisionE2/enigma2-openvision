@@ -2,7 +2,7 @@ from six import PY2
 
 from enigma import eTimer
 
-from Components.Language import language
+from Components.International import international
 
 MAP_SEARCH_UPCASE = "SearchUpper"  # NOTE: Legacy interface for previous and deprecated versions of NumericalTextInput.
 MAP_SEARCH = "SearchLower"
@@ -30,7 +30,7 @@ PUNCTUATION0 = u"0,?!'\"\\()<>[]{}~^`|"
 PUNCTUATION1 = u"1 .:;+-*/=_@#$%&"
 
 MAPPINGS = (
-	# Text, TextUpper, TextLower, Search, SearchUpper, SearchLower, Hex, HexUpper, HexLower, HexFast, HexFastUpper, HexFastLower, HexLogical, HexLogicalUpper, HexLogicalLower
+	# Text, TextUpper, TextLower, Search, SearchUpper, SearchLower, Number, Hex, HexUpper, HexLower, HexFast, HexFastUpper, HexFastLower, HexLogical, HexLogicalUpper, HexLogicalLower
 	(PUNCTUATION0, PUNCTUATION0, PUNCTUATION0, u"%_0", u"%_0", u"%_0", u"0", u"0", u"0", u"0", u"0", u"0", u"0", u"0Aa", u"0A", u"0a"),
 	(PUNCTUATION1, PUNCTUATION1, PUNCTUATION1, u" 1", u" 1", u" 1", u"1", u"1AaBbCc", u"1ABC", u"1abc", u"1Aa", u"1A", u"1a", u"1Bb", u"1B", u"1b"),
 	(u"abc2ABC", u"ABC2", u"abc2", u"abc2ABC", u"ABC2", u"abc2", u"2", u"2DdEeFf", u"2DEF", u"2def", u"2Bb", u"2B", u"2b", u"2Cc", u"2C", u"2c"),
@@ -235,8 +235,8 @@ class NumericalTextInput:
 		self.mapping = []
 		for num in range(10):
 			self.mapping.append((MAPPINGS[num][index]))
-		locale = LOCALES.get(language.getLanguage(), None)
-		if locale is not None and index in range(6):
+		locale = LOCALES.get(international.getLocale(), None)
+		if locale is not None and index in list(range(6)):
 			index = index % 3
 			for num in range(10):
 				if locale[num][index] is not None:
