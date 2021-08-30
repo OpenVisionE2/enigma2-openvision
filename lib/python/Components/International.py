@@ -14,6 +14,8 @@ from Tools.Directories import SCOPE_LANGUAGE, resolveFilename
 PACKAGER = "/usr/bin/opkg"
 PACKAGE_TEMPLATE = "enigma2-locale-%s"
 
+PERMANENT_LOCALES = ["en_US"]
+
 languagePath = resolveFilename(SCOPE_LANGUAGE)
 try:
 	if PY2:
@@ -113,7 +115,7 @@ LANGUAGE_DATA = {
 	"fy": ("Western Frisian", _("Western Frisian"), "Frysk", "ISO-8859-15", ("NL", "DE")),
 	"ga": ("Irish", _("Irish"), "Gaeilge", "UTF-8", ("IE",)),
 	"gd": ("Gaelic", _("Gaelic"), "Gàidhlig", "UTF-8", ("GB",)),
-	"gl": ("Galician", _("Galician"), "Galego", "UTF-8", ("ES",)),
+	"gl": ("Galician", _("Galician"), "Galego", "UTF-8", ("ES-GA",)),
 	"gn": ("Guarani", _("Guarani"), "Avañe'ẽ", "UTF-8", ("PY",)),
 	"gu": ("Gujarati", _("Gujarati"), "ગુજરાતી", "UTF-8", ("IN",)),
 	"gv": ("Manx", _("Manx"), "Gaelg / Gailck", "UTF-8", ("GB",)),
@@ -259,6 +261,9 @@ COUNTRY_MAX = 4
 COUNTRY_DATA = {
 	# https://www.iso.org/obp/ui/#search/code/
 	# https://www.worldatlas.com/aatlas/ctycodes.htm
+	# https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
+	# https://en.wikipedia.org/wiki/ISO_3166-2
+	# https://en.wikipedia.org/wiki/ISO_3166-3
 	"AD": ("AND", "020", "Andorra", _("Andorra"), "d'Andorra"),
 	"AE": ("ARE", "784", "United Arab Emirates", _("United Arab Emirates"), "الإمارات العربية المتحدة‎ al-ʾImārāt al-ʿArabīyyah al-Muttaḥidah"),
 	"AF": ("AFG", "004", "Afghanistan", _("Afghanistan"), "افغانستان"),
@@ -327,6 +332,7 @@ COUNTRY_DATA = {
 	"EH": ("ESH", "732", "Western Sahara", _("Western Sahara"), "الصحراء الغربية"),
 	"ER": ("ERI", "232", "Eritrea", _("Eritrea"), "ኤርትራ"),
 	"ES": ("ESP", "724", "Spain", _("Spain"), "España"),
+	"ES-GA": ("ESP", "724", "Galicia (Spain)", _("Galicia (Spain)"), "Galicia (España)"),
 	"ET": ("ETH", "231", "Ethiopia", _("Ethiopia"), "ኢትዮጵያ"),
 	"FI": ("FIN", "246", "Finland", _("Finland"), "Suomi"),
 	"FJ": ("FJI", "242", "Fiji", _("Fiji"), "Viti"),
@@ -535,7 +541,8 @@ class International:
 	def __init__(self):
 		self.availablePackages = []
 		self.installedPackages = []
-		self.packageDirectories = []
+		self.installedDirectories = []
+		self.packageLocales = {}
 		self.localeList = ["en_US"]
 		self.languageList = ["en"]
 		self.activeLocale = "en_US"
@@ -560,11 +567,12 @@ class International:
 		setISO3166(data)
 
 	def initInternational(self):
-		self.availablePackages = self.getAvailablePackages()
-		self.installedPackages = self.getInstalledPackages()
-		self.packageDirectories = self.getPackageDirectories()
-		if len(self.packageDirectories) != len(self.installedPackages):
-			print("[International] Warning: Count of installed language packages and language directory entries do not match!")
+		self.availablePackages = self.getAvailablePackages(update=True)
+		self.installedPackages = self.getInstalledPackages(update=True)
+		self.installedDirectories = self.getInstalledDirectories(update=True)
+		if len(self.installedDirectories) != len(self.installedPackages):
+			print("[International] Warning: Count of installed locale/language packages and locale/language directory entries do not match!")
+		self.packageLocales = {}
 		for package in self.installedPackages:
 			locales = self.packageToLocales(package)
 			packageLocales = []
@@ -573,6 +581,7 @@ class International:
 					packageLocales.append(locale)
 				if locale not in self.localeList:
 					self.localeList.append(locale)
+			self.packageLocales[package] = packageLocales
 			language = self.splitPackage(package)[0]
 			if language not in self.languageList:
 				self.languageList.append(language)
@@ -612,8 +621,8 @@ class International:
 							setlocale(category[CAT_PYTHON], locale=(locales[0], "UTF-8"))
 							replacement = locales[0]
 						except LocaleError as err:  # If unavailable fall back to the US English locale.
-							setlocale(category[CAT_PYTHON], locale=("en_US", "UTF-8"))
-							replacement = "en_US"
+							setlocale(category[CAT_PYTHON], locale=("POSIX", ""))
+							replacement = "POSIX"
 						if localeError is None:
 							localeError = replacement
 							print("[International] Warning: Locale '%s' is not available in Python %s, using locale '%s' instead." % (locale, category[CAT_ENVIRONMENT], replacement))
@@ -635,56 +644,90 @@ class International:
 	def getActiveCatalog(self):
 		return self.catalog
 
-	def getAvailablePackages(self):
-		command = (PACKAGER, "find", PACKAGE_TEMPLATE % "*")
-		availablePackages = []
-		try:
-			# print("[International] Processing command '%s' with arguments '%s'." % (command[0], "', '".join(command[1:])))
-			process = Popen(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
-			packageText, errorText = process.communicate()
-			if errorText:
-				print("[International] getLanguagePackages Error: %s" % errorText)
-			else:
-				for language in packageText.split("\n"):
-					if language and "meta" not in language:
-						lang = language[15:].split(" ")[0]
-						if lang not in availablePackages:
-							availablePackages.append(lang)
-				availablePackages = sorted(availablePackages)
-		except (IOError, OSError) as err:
-			print("[International] getLanguagePackages Error %d: %s ('%s')" % (err.errno, err.strerror, command[0]))
+	def getAvailablePackages(self, update=False):
+		if update:
+			command = (PACKAGER, "find", PACKAGE_TEMPLATE % "*")
 			availablePackages = []
-		print("[International] There are %d available language packages in the repository '%s'." % (len(availablePackages), "', '".join(availablePackages)))
+			try:
+				# print("[International] Processing command '%s' with arguments '%s'." % (command[0], "', '".join(command[1:])))
+				process = Popen(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
+				packageText, errorText = process.communicate()
+				if errorText:
+					print("[International] getLanguagePackages Error: %s" % errorText)
+				else:
+					for language in packageText.split("\n"):
+						if language and "meta" not in language:
+							lang = language[15:].split(" ")[0]
+							if lang not in availablePackages:
+								availablePackages.append(lang)
+					availablePackages = sorted(availablePackages)
+			except (IOError, OSError) as err:
+				print("[International] getLanguagePackages Error %d: %s ('%s')" % (err.errno, err.strerror, command[0]))
+				availablePackages = []
+			print("[International] There are %d available locale/language packages in the repository '%s'." % (len(availablePackages), "', '".join(availablePackages)))
+		else:
+			availablePackages = self.availablePackages
 		return availablePackages
 
-	def getInstalledPackages(self):
-		command = (PACKAGER, "status", PACKAGE_TEMPLATE % "*")
-		installedPackages = []
-		try:
-			# print("[International] Processing command '%s' with arguments '%s'." % (command[0], "', '".join(command[1:])))
-			process = Popen(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
-			packageText, errorText = process.communicate()
-			if errorText:
-				print("[International] getInstalledPackages Error: %s" % errorText)
-			else:
-				for package in packageText.split("\n\n"):
-					if package.startswith("Package: %s" % (PACKAGE_TEMPLATE % "")) and "meta" not in package:
-						list = []
-						for data in package.split("\n"):
-							if data.startswith("Package: "):
-								installedPackages.append(data[24:])
-								break
-				installedPackages = sorted(installedPackages)
-		except (IOError, OSError) as err:
-			print("[International] getInstalledPackages Error %d: %s ('%s')" % (err.errno, err.strerror, command[0]))
-		print("[International] There are %d installed language packages '%s'." % (len(installedPackages), "', '".join(installedPackages)))
+	def getInstalledPackages(self, update=False):
+		if update:
+			command = (PACKAGER, "status", PACKAGE_TEMPLATE % "*")
+			installedPackages = []
+			try:
+				# print("[International] Processing command '%s' with arguments '%s'." % (command[0], "', '".join(command[1:])))
+				process = Popen(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
+				packageText, errorText = process.communicate()
+				if errorText:
+					print("[International] getInstalledPackages Error: %s" % errorText)
+				else:
+					for package in packageText.split("\n\n"):
+						if package.startswith("Package: %s" % (PACKAGE_TEMPLATE % "")) and "meta" not in package:
+							list = []
+							for data in package.split("\n"):
+								if data.startswith("Package: "):
+									installedPackages.append(data[24:])
+									break
+					installedPackages = sorted(installedPackages)
+			except (IOError, OSError) as err:
+				print("[International] getInstalledPackages Error %d: %s ('%s')" % (err.errno, err.strerror, command[0]))
+			print("[International] There are %d installed locale/language packages '%s'." % (len(installedPackages), "', '".join(installedPackages)))
+		else:
+			installedPackages = self.installedPackages
 		return installedPackages
 
-	def getPackageDirectories(self):  # Adapt language directory entries to match the package format.
-		global languagePath
-		packageDirectories = sorted(listdir(languagePath)) if isdir(languagePath) else []
-		print("[International] There are %d installed language directories '%s'." % (len(packageDirectories), "', '".join(packageDirectories)))
-		return packageDirectories
+	def getInstalledDirectories(self, update=False):  # Adapt language directory entries to match the package format.
+		if update:
+			global languagePath
+			installedDirectories = sorted(listdir(languagePath)) if isdir(languagePath) else []
+			print("[International] There are %d installed locale/language directories '%s'." % (len(installedDirectories), "', '".join(installedDirectories)))
+		else:
+			installedDirectories = self.installedDirectories
+		return installedDirectories
+
+	def getPurgablePackages(self, locale=None):
+		if locale is None:
+			locale = self.getLocale()
+		locales = PERMANENT_LOCALES[:]
+		if locale not in locales:
+			locales.append(locale)
+		locales.sort()
+		packages = sorted(self.getInstalledPackages())
+		for locale in locales:
+			for package in packages:
+				if locale in self.packageLocales[package]:
+					packages.remove(package)
+		return packages
+
+	def getPermanentLocales(self, locale=None):
+		if locale is None:
+			locale = self.getLocale()
+		locales = PERMANENT_LOCALES[:]
+		if locale not in locales:
+			locales.append(locale)
+		permanent = []
+		for locale in locales:
+			permanent.append("%s (%s)" % (self.getLanguageName(locale), self.getCountryName(locale)))
+		return permanent
 
 	def packageToLocales(self, package):
 		locale = package.replace("-", "_")
@@ -697,8 +740,25 @@ class International:
 				locales.append("%s_%s" % (data[0], country))
 		return locales
 
+	def localeToPackage(self, locale=None):
+		if locale is None:
+			locale = self.getLocale()
+		for package in self.getAvailablePackages():
+			if locale in self.packageLocales[package]:
+				return package
+		return None
+
+	def languageToPackage(self, language=None):
+		if language is None:
+			language = self.getLanguage()
+		for package in self.getAvailablePackages():
+			for locale in self.packageLocales[package]:
+				if language == self.getLanguage(locale):
+					return package
+		return None
+
 	def splitPackage(self, package):
-		data = package.split("-")
+		data = package.split("-", 1)
 		if len(data) < 2:
 			data.append(None)
 		else:
@@ -709,7 +769,7 @@ class International:
 		return "en_US" if self.activeLocale is None else self.activeLocale
 
 	def splitLocale(self, locale):
-		data = locale.split("_")
+		data = locale.split("_", 1)
 		if len(data) < 2:
 			data.append(None)
 		return data
@@ -741,6 +801,9 @@ class International:
 
 	def getLanguageName(self, item=None):
 		return LANGUAGE_DATA.get(self.getLanguage(item), tuple([None] * LANG_MAX))[LANG_NAME]
+
+	def getLanguageTranslated(self, item=None):
+		return LANGUAGE_DATA.get(self.getLanguage(item), tuple([None] * LANG_MAX))[LANG_TRANSLATED]
 
 	def getLanguageNative(self, item=None):
 		return LANGUAGE_DATA.get(self.getLanguage(item), tuple([None] * LANG_MAX))[LANG_NATIVE]
@@ -782,14 +845,16 @@ class International:
 		return self.runPackageManager(cmdList=[PACKAGER, "install", "--volatile-cache"], packageList=packageList, action=_("installed"))
 
 	def runPackageManager(self, cmdList=None, packageList=None, action=""):
-		status = ""
-		if cmdList is not None and packageList is not None:
+		retVal = 0
+		statusMsg = ""
+		if cmdList and packageList:
 			cmdList = tuple(cmdList + [PACKAGE_TEMPLATE % x for x in packageList])
 			print("[International] Running package manager command line '%s'." % " ".join(cmdList))
 			try:
 				process = Popen(cmdList, stdout=PIPE, stderr=PIPE, universal_newlines=True)
 				packageText, errorText = process.communicate()
-				if process.returncode:
+				retVal = process.returncode
+				if retVal:
 					print("[International] Warning: Package manager exit status is %d!" % process.returncode)
 				locales = 0
 				languages = 0
@@ -808,14 +873,15 @@ class International:
 				languages = ["%s (%s)" % (LANGUAGE_DATA[x][LANG_NAME], LANGUAGE_DATA[x][LANG_NATIVE]) for x in languages]
 				if errorText:
 					print("[International] Warning: Package manager error:\n%s" % errorText)
-					status = _("Error: %s %s not %s!  Please try again later.") % (msg, ", ".join(languages), action)
+					statusMsg = _("Error: %s %s not %s!  Please try again later.") % (msg, ", ".join(languages), action)
 				else:
-					status = "%s %s %s." % (msg, ", ".join(languages), action)
+					statusMsg = "%s %s %s." % (msg, ", ".join(languages), action)
 			except (IOError, OSError) as err:
 				print("[International] Error %d: %s for command '%s'!" % (err.errno, err.strerror, " ".join(cmdList)))
-				status = _("Error: Unable to process the command!  Please try again later.")
+				retVal = -1
+				statusMsg = _("Error: Unable to process the command!  Please try again later.")
 			self.initInternational()
-		return status
+		return retVal, statusMsg
 
 
 international = International()
