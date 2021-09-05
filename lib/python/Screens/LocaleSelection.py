@@ -408,7 +408,7 @@ class LocaleSelection(Screen, HelpableScreen):
 			config.misc.country.save()
 		if justlocal:
 			return
-		international.activateLanguage(locale, runCallbacks=True)
+		international.activateLocale(locale, runCallbacks=True)
 
 
 class LocaleSettings(Setup):
