@@ -1663,13 +1663,13 @@ class ConfigText(ConfigElement, NumericalTextInput):
 				mark = range(0, min(self.visible_width, len(self.text)))
 			else:
 				mark = [self.marked_pos - self.offset]
-			return ("mtext"[1 - selected:], self.text[self.offset:self.offset + self.visible_width].encode("UTF-8", errors="ignore") + " ", mark)
+			return ("mtext"[1 - selected:], self.text[self.offset:self.offset + self.visible_width].encode("UTF-8", errors="ignore") + "\xC2\xA0", mark)
 		else:
 			if self.allmarked:
 				mark = range(0, len(self.text))
 			else:
 				mark = [self.marked_pos]
-			return ("mtext"[1 - selected:], self.text.encode("UTF-8", errors="ignore") + " ", mark)
+			return ("mtext"[1 - selected:], self.text.encode("UTF-8", errors="ignore") + "\xC2\xA0", mark)
 
 	def getValue(self):
 		if PY2:
