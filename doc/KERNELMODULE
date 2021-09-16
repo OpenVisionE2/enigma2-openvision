@@ -148,6 +148,7 @@ Here is the list of variables currently supported:
 	"developername" or "/proc/enigma/developername" replaces "getDeveloperName()"
 	"feedsurl" or "/proc/enigma/feedsurl" replaces "getFeedsUrl()"
 	"distro" or "/proc/enigma/distro" replaces "getImageDistro()"
+	"displaydistro" or "/proc/enigma/displaydistro" replaces "getDisplayDistro()"
 	"oe" or "/proc/enigma/oe" replaces "getOEVersion()"
 	"kernel" or "/proc/enigma/kernel" replaces "getKernelVersion()"
 	"python" or "/proc/enigma/python"
@@ -319,6 +320,16 @@ distro:
 		Mostly we use this for multiboot tools.
 
 	Example: openvision
+
+displaydistro:
+
+	BoxInfo.getItem("displaydistro") (/proc/enigma/displaydistro)
+
+		This variable shows the friendly distro name.
+
+		Mostly we use this for information pages.
+
+	Example: Open Vision
 
 oe:
 
