@@ -113,19 +113,20 @@ class UpdatePlugin(Screen, ProtectedScreen):
 				version = open("/etc/issue").readlines()[-2].split()[1]
 
 				# do we have an entry for this version
-				if version in status and machine in status[version]['machines']:
+				if (version in status or 'all' in status) and (machine in status[version]['machines'] or 'all' in status[version]['machines']):
 					if 'abort' in status[version]:
 						abort = status[version]['abort']
 					if 'from' in status[version]:
 						starttime = datetime.datetime.strptime(status[version]['from'], '%Y%m%d%H%M%S')
 					else:
-						starttime = datetime.datetime.now()
+						starttime = 0
 					if 'to' in status[version]:
 						endtime = datetime.datetime.strptime(status[version]['to'], '%Y%m%d%H%M%S')
 					else:
-						endtime = datetime.datetime.now()
-					if (starttime <= datetime.datetime.now() and endtime >= datetime.datetime.now()):
-						message = str(status[version]['message'])
+						endtime = datetime.datetime.now() + 1
+					if 'message' in status[version]:
+						if (starttime <= datetime.datetime.now() and endtime >= datetime.datetime.now()):
+							message = status[version]['message']
 
 				# check if we have per-language messages
 				if isinstance(message, dict):
@@ -144,7 +145,7 @@ class UpdatePlugin(Screen, ProtectedScreen):
 		# show the user the message first
 		if message is not None:
 			if abort:
-				self.session.openWithCallback(self.close, MessageBox, message, type=MessageBox.TYPE_ERROR, picon=picon)
+				self.session.openWithCallback(self.close, MessageBox, message, type=MessageBox.TYPE_MESSAGE, picon=picon)
 			else:
 				message += "\n\n" + _("Do you want to update your %s %s?") % (brand, model)
 				self.session.openWithCallback(self.startActualUpdate, MessageBox, message, picon=picon)

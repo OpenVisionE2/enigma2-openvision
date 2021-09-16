@@ -4,6 +4,7 @@ from Components.Renderer.Renderer import Renderer
 from enigma import eDVBCI_UI, eLabel, iPlayableService
 from Components.SystemInfo import BoxInfo
 from Components.VariableText import VariableText
+from os import popen
 
 
 class CiModuleControl(Renderer, VariableText):
@@ -14,6 +15,7 @@ class CiModuleControl(Renderer, VariableText):
 		self.eDVBCIUIInstance and self.eDVBCIUIInstance.ciStateChanged.get().append(self.ciModuleStateChanged)
 		self.text = ""
 		self.allVisible = False
+		self.no_visible_state1 = "ciplushelper" in popen("top -n 1").read()
 
 	GUI_WIDGET = eLabel
 
@@ -37,10 +39,12 @@ class CiModuleControl(Renderer, VariableText):
 			if NUM_CI and NUM_CI > 0:
 				if self.eDVBCIUIInstance:
 					for slot in range(NUM_CI):
+						state = self.eDVBCIUIInstance.getState(slot)
+						if state == 1 and self.no_visible_state1:
+							continue
 						add_num = True
 						if string:
 							string += " "
-						state = self.eDVBCIUIInstance.getState(slot)
 						if state != -1:
 							if state == 0:
 								if not self.allVisible:

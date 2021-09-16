@@ -6,7 +6,7 @@ from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 
 
-class ValueToPixmap(Converter, object):
+class ValueToPixmap(Converter):
 	LANGUAGE_CODE = 0
 	PATH = 1
 

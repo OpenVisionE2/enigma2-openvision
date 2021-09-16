@@ -131,7 +131,7 @@ class AutoInstallWizard(Screen):
 		except IOError:
 			print("[StartWizard] Write to /proc/progress failed.")
 		self.package = self.packages.pop(0)
-		self["header"].setText(_("%s%% Autoinstalling %s") % (self["progress"].value, self.package))
+		self["header"].setText(_("Autoinstalling %s") % self.package + " - %s%%" % self["progress"].value)
 		try:
 			if self.container.execute('opkg install "%s"' % self.package):
 				raise Exception(_("failed to execute command!"))

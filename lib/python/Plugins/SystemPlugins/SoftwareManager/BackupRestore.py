@@ -42,7 +42,7 @@ class BackupScreen(Screen, ConfigListScreen):
 
 	def __init__(self, session, runBackup=False):
 		Screen.__init__(self, session)
-		self.session = session
+		self.setTitle(_("Backup is running..."))
 		self.runBackup = runBackup
 		self["actions"] = ActionMap(["WizardActions", "DirectionActions"],
 		{
@@ -56,15 +56,8 @@ class BackupScreen(Screen, ConfigListScreen):
 		self.fullbackupfilename = self.backuppath + "/" + self.backupfile
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
-		self.onLayoutFinish.append(self.layoutFinished)
 		if self.runBackup:
 			self.onShown.append(self.doBackup)
-
-	def layoutFinished(self):
-		self.setWindowTitle()
-
-	def setWindowTitle(self):
-		self.setTitle(_("Backup is running..."))
 
 	def doBackup(self):
 		configfile.save()
@@ -115,6 +108,7 @@ class BackupSelection(Screen):
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
+		self.setTitle(_("Select files/folders to backup"))
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Save"))
 		self["key_yellow"] = StaticText()
@@ -144,11 +138,7 @@ class BackupSelection(Screen):
 	def layoutFinished(self):
 		idx = 0
 		self["checkList"].moveToIndex(idx)
-		self.setWindowTitle()
 		self.selectionChanged()
-
-	def setWindowTitle(self):
-		self.setTitle(_("Select files/folders to backup"))
 
 	def selectionChanged(self):
 		current = self["checkList"].getCurrent()[0]
@@ -204,6 +194,7 @@ class RestoreMenu(Screen):
 
 	def __init__(self, session, plugin_path):
 		Screen.__init__(self, session)
+		self.setTitle(_("Restore backups"))
 		self.skin_path = plugin_path
 
 		self["key_red"] = StaticText(_("Cancel"))
@@ -232,13 +223,6 @@ class RestoreMenu(Screen):
 		self.flist = []
 		self["filelist"] = MenuList(self.flist)
 		self.fill_list()
-		self.onLayoutFinish.append(self.layoutFinished)
-
-	def layoutFinished(self):
-		self.setWindowTitle()
-
-	def setWindowTitle(self):
-		self.setTitle(_("Restore backups"))
 
 	def fill_list(self):
 		self.flist = []
@@ -292,7 +276,7 @@ class RestoreScreen(Screen, ConfigListScreen):
 
 	def __init__(self, session, runRestore=False):
 		Screen.__init__(self, session)
-		self.session = session
+		self.setTitle(_("Restoring..."))
 		self.runRestore = runRestore
 		self["actions"] = ActionMap(["WizardActions", "DirectionActions"],
 		{
@@ -306,15 +290,8 @@ class RestoreScreen(Screen, ConfigListScreen):
 		self.fullbackupfilename = self.backuppath + "/" + self.backupfile
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
-		self.onLayoutFinish.append(self.layoutFinished)
 		if self.runRestore:
 			self.onShown.append(self.doRestore)
-
-	def layoutFinished(self):
-		self.setWindowTitle()
-
-	def setWindowTitle(self):
-		self.setTitle(_("Restoring..."))
 
 	def doRestore(self):
 		if path.exists("/proc/stb/vmpeg/0/dst_width"):

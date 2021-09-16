@@ -5,7 +5,7 @@ from Components.Element import cached
 from time import localtime
 
 
-class AnalogClock(Converter, object):
+class AnalogClock(Converter):
 
 	def __init__(self, type):
 		Converter.__init__(self, type)

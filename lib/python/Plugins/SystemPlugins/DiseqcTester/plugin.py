@@ -159,7 +159,7 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 
 	def __init__(self, session, feid, test_type=TEST_TYPE_QUICK, loopsfailed=3, loopssuccessful=1, log=False):
 		Screen.__init__(self, session)
-		self.setup_title = _("DiSEqC Tester")
+		self.setTitle(_("DiSEqC Tester"))
 		self.feid = feid
 		self.test_type = test_type
 		self.loopsfailed = loopsfailed
@@ -188,7 +188,7 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 		self.list = []
 		self["progress_list"] = List(self.list)
 		self["progress_list"].onSelectionChanged.append(self.selectionChanged)
-		self["CmdText"] = StaticText(_("Please wait while scanning is in progress..."))
+		self["CmdText"] = StaticText(_("Please wait while scanning..."))
 		self.indexlist = {}
 		self.readTransponderList()
 		self.running = False
@@ -467,7 +467,6 @@ class DiseqcTester(Screen, TuneTest, ResultParser):
 					pass
 
 	def go(self):
-		self.setTitle(self.setup_title)
 		self.running = True
 		self["failed_counter"].setText("0")
 		self["succeeded_counter"].setText("0")
@@ -511,11 +510,8 @@ class DiseqcTesterTestTypeSelection(Screen, ConfigListScreen):
 		Screen.__init__(self, session)
 		# for the skin: first try 'DiseqcTesterTestTypeSelection', then 'Setup', this allows individual skinning
 		self.skinName = ["DiseqcTesterTestTypeSelection", "Setup"]
-		self.setup_title = _("DiSEqC-tester settings")
-		self.onChangedEntry = []
+		self.setTitle(_("DiSEqC-tester settings"))
 		self.feid = feid
-		self.list = []
-		ConfigListScreen.__init__(self, self.list, session=self.session, on_change=self.changedEntry)
 
 		self["actions"] = ActionMap(["SetupActions", "MenuActions"],
 			{
@@ -528,13 +524,8 @@ class DiseqcTesterTestTypeSelection(Screen, ConfigListScreen):
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("OK"))
 
-		self.createSetup()
-		self.onLayoutFinish.append(self.__layoutFinished)
+		self.list = []
 
-	def __layoutFinished(self):
-		self.setTitle(self.setup_title)
-
-	def createSetup(self):
 		self.testtype = ConfigSelection(choices={"quick": _("Quick"), "random": _("Random"), "complete": _("Complete")}, default="quick")
 		self.testtypeEntry = getConfigListEntry(_("Test type"), self.testtype)
 		self.list.append(self.testtypeEntry)
@@ -551,8 +542,7 @@ class DiseqcTesterTestTypeSelection(Screen, ConfigListScreen):
 		self.logEntry = getConfigListEntry(_("Log results to /tmp"), self.log)
 		self.list.append(self.logEntry)
 
-		self["config"].list = self.list
-		self["config"].l.setList(self.list)
+		ConfigListScreen.__init__(self, self.list, session)
 
 	def keyOK(self):
 		print(self.testtype.getValue())
@@ -567,21 +557,6 @@ class DiseqcTesterTestTypeSelection(Screen, ConfigListScreen):
 
 	def keyCancel(self):
 		self.close()
-
-	# for summary:
-	def changedEntry(self):
-		for x in self.onChangedEntry:
-			x()
-
-	def getCurrentEntry(self):
-		return self["config"].getCurrent()[0]
-
-	def getCurrentValue(self):
-		return str(self["config"].getCurrent()[1].getText())
-
-	def createSummary(self):
-		from Screens.Setup import SetupSummary
-		return SetupSummary
 
 
 class DiseqcTesterNimSelection(NimSelection):

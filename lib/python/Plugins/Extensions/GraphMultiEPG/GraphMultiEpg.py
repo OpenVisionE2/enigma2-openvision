@@ -1139,7 +1139,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 	def showSetup(self):
 		self.showhideWindow(True)
 		if self.protectContextMenu and config.ParentalControl.setuppinactive.value and config.ParentalControl.config_sections.context_menus.value:
-			self.session.openWithCallback(self.protectResult, PinInput, pinList=[x.value for x in config.ParentalControl.servicepin], triesEntry=config.ParentalControl.retries.servicepin, title=_("Please enter the correct pin code"), windowTitle=_("Enter pin code"))
+			self.session.openWithCallback(self.protectResult, PinInput, pinList=[x.value for x in config.ParentalControl.servicepin], triesEntry=config.ParentalControl.retries.servicepin, title=_("Please enter the correct PIN code"), windowTitle=_("Enter PIN code"))
 		else:
 			self.protectResult(True)
 
@@ -1148,7 +1148,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 			self.session.openWithCallback(self.onSetupClose, GraphMultiEpgSetup)
 			self.protectContextMenu = False
 		elif answer is not None:
-			self.session.openWithCallback(self.close, MessageBox, _("The pin code you entered is wrong."), MessageBox.TYPE_ERROR)
+			self.session.openWithCallback(self.close, MessageBox, _("The PIN code you entered is wrong."), MessageBox.TYPE_ERROR)
 
 	def onSetupClose(self, ignore=-1):
 		l = self["list"]
@@ -1302,7 +1302,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 	def disableTimer(self, timer, state, repeat=False, record=False):
 		if repeat:
 			if record:
-				title_text = _("Repeating event currently recording.\nWhat do you want to do?")
+				title_text = _("A repeating event is currently recording. What would you like to do?")
 				menu = [(_("Stop current event but not coming events"), "stoponlycurrent"), (_("Stop current event and disable coming events"), "stopall")]
 				if not timer.disabled:
 					menu.append((_("Don't stop current event but disable coming events"), "stoponlycoming"))

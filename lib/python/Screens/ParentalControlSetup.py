@@ -14,7 +14,7 @@ from Tools.BoundFunction import boundFunction
 class ProtectedScreen:
 	def __init__(self):
 		if self.isProtected() and config.ParentalControl.servicepin[0].value:
-			self.onFirstExecBegin.append(boundFunction(self.session.openWithCallback, self.pinEntered, PinInput, pinList=[x.value for x in config.ParentalControl.servicepin], triesEntry=config.ParentalControl.retries.servicepin, title=_("Please enter the correct pin code"), windowTitle=_("Enter pin code")))
+			self.onFirstExecBegin.append(boundFunction(self.session.openWithCallback, self.pinEntered, PinInput, pinList=[x.value for x in config.ParentalControl.servicepin], triesEntry=config.ParentalControl.retries.servicepin, title=_("Please enter the correct PIN code"), windowTitle=_("Enter PIN code")))
 
 	def isProtected(self):
 		return (config.ParentalControl.servicepinactive.value or config.ParentalControl.setuppinactive.value)
@@ -23,7 +23,7 @@ class ProtectedScreen:
 		if result is None:
 			self.closeProtectedScreen()
 		elif not result:
-			self.session.openWithCallback(self.closeProtectedScreen, MessageBox, _("The pin code you entered is wrong."), MessageBox.TYPE_ERROR, timeout=5)
+			self.session.openWithCallback(self.closeProtectedScreen, MessageBox, _("The PIN code you entered is wrong."), MessageBox.TYPE_ERROR, timeout=5)
 
 	def closeProtectedScreen(self, result=None):
 		self.close(None)
@@ -35,8 +35,7 @@ class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 		ProtectedScreen.__init__(self)
 		# for the skin: first try ParentalControlSetup, then Setup, this allows individual skinning
 		self.skinName = ["ParentalControlSetup", "Setup"]
-		self.setup_title = _("Parental control setup")
-		self.setTitle(self.setup_title)
+		self.setTitle(_("Parental control setup"))
 		self.onChangedEntry = []
 
 		self.list = []
@@ -53,10 +52,6 @@ class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Save"))
 		self.recursive = False
-		self.onLayoutFinish.append(self.layoutFinished)
-
-	def layoutFinished(self):
-		self.setTitle(self.setup_title)
 
 	def isProtected(self):
 		return (not config.ParentalControl.setuppinactive.value and config.ParentalControl.servicepinactive.value) or\
@@ -78,7 +73,7 @@ class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 				self.list.append(getConfigListEntry(_("Remember service PIN"), config.ParentalControl.storeservicepin))
 				if config.ParentalControl.storeservicepin.value != "never":
 					self.list.append(getConfigListEntry(_("Hide parentel locked services"), config.ParentalControl.hideBlacklist))
-				self.list.append(getConfigListEntry(_("Protect on epg age"), config.ParentalControl.age))
+				self.list.append(getConfigListEntry(_("Protect on EPG age"), config.ParentalControl.age))
 				self.reloadLists = getConfigListEntry(_("Reload blacklists"), NoSave(ConfigNothing()))
 				self.list.append(self.reloadLists)
 			self.list.append(getConfigListEntry(_("Protect Screens"), config.ParentalControl.setuppinactive))
@@ -103,7 +98,7 @@ class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 	def keyOK(self):
 		if self["config"].l.getCurrentSelection() == self.changePin:
 			if config.ParentalControl.servicepin[0].value:
-				self.session.openWithCallback(self.oldPinEntered, PinInput, pinList=[x.value for x in config.ParentalControl.servicepin], triesEntry=config.ParentalControl.retries.servicepin, title=_("Please enter the old PIN code"), windowTitle=_("Enter pin code"))
+				self.session.openWithCallback(self.oldPinEntered, PinInput, pinList=[x.value for x in config.ParentalControl.servicepin], triesEntry=config.ParentalControl.retries.servicepin, title=_("Please enter the old PIN code"), windowTitle=_("Enter PIN code"))
 			else:
 				self.oldPinEntered(True)
 		elif self["config"].l.getCurrentSelection() == self.reloadLists:
@@ -170,13 +165,13 @@ class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 
 	def oldPinEntered(self, answer):
 		if answer:
-			self.session.openWithCallback(self.newPinEntered, PinInput, title=_("Please enter the new PIN code"), windowTitle=_("Enter pin code"))
+			self.session.openWithCallback(self.newPinEntered, PinInput, title=_("Please enter the new PIN code"), windowTitle=_("Enter PIN code"))
 		elif answer == False:
-			self.session.open(MessageBox, _("The pin code you entered is wrong."), MessageBox.TYPE_ERROR, timeout=5)
+			self.session.open(MessageBox, _("The PIN code you entered is wrong."), MessageBox.TYPE_ERROR, timeout=5)
 
 	def newPinEntered(self, answer):
 		if answer is not None:
-			self.session.openWithCallback(boundFunction(self.confirmNewPinEntered, answer), PinInput, title=_("Please re-enter the new PIN code"), windowTitle=_("Enter pin code"))
+			self.session.openWithCallback(boundFunction(self.confirmNewPinEntered, answer), PinInput, title=_("Please re-enter the new PIN code"), windowTitle=_("Enter PIN code"))
 
 	def confirmNewPinEntered(self, answer1, answer2):
 		if answer2 is not None:

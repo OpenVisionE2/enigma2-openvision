@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-18 11:26+0430\n"
-"PO-Revision-Date: 2021-07-15 11:58+0200\n"
+"POT-Creation-Date: 2021-09-16 13:08+0430\n"
+"PO-Revision-Date: 2021-09-12 10:10+0200\n"
 "Last-Translator: Pr2\n"
 "Language-Team: french\n"
 "Language: fr\n"
@@ -20,12 +20,11 @@ msgstr ""
 "\n"
 "Après avoir appuyé sur OK, veuillez patienter!"
 
+#, fuzzy
 msgid ""
 "\n"
 "Conflict detection disabled!"
-msgstr ""
-"\n"
-"La détection des conflits est désactivée!"
+msgstr "La détection des conflits est désactivée!"
 
 msgid ""
 "\n"
@@ -117,17 +116,12 @@ msgstr ""
 msgid " Warning: the selected tuner should not use SCR Unicable type for LNBs because each tuner need a own SCR number."
 msgstr " Attention : le tuner sélectionné ne doit pas utiliser le type SCR Unicable pour les LNB car chaque tuner nécessite son propre numéro SCR."
 
-msgid " extensions."
-msgstr " Extensions."
-
-msgid " packages selected."
-msgstr " Paquets sélectionnés."
-
 msgid " unicable LNB input of rotor"
 msgstr " entrée LNB unicable du rotor"
 
-msgid " updates available."
-msgstr " Mises à jour disponibles."
+#, python-format
+msgid "%(freespace)s %(percent)s free disk space"
+msgstr "%(freespace)s %(percent)s espace disque libre"
 
 #, fuzzy
 msgid "%-H:%M"
@@ -243,18 +237,6 @@ msgid "%-m/%d/%Y"
 msgstr ""
 
 #, python-format
-msgid "%.0f GB"
-msgstr "%.0f GB"
-
-#, python-format
-msgid "%.0f MB"
-msgstr "%.0f MB"
-
-#, python-format
-msgid "%.0f kB"
-msgstr "%.0f kB"
-
-#, python-format
 msgid "%.1f° E"
 msgstr "%.1f° E"
 
@@ -265,10 +247,6 @@ msgstr "%.1f° O"
 #, python-format
 msgid "%.2f GB"
 msgstr "%.2f GB"
-
-#, python-format
-msgid "%03d MB"
-msgstr "%03d MB"
 
 #, python-format
 msgid "%2.1f sec"
@@ -885,10 +863,6 @@ msgid "%d %b %Y"
 msgstr "%A %d %B"
 
 #, python-format
-msgid "%d B"
-msgstr "%d B"
-
-#, python-format
 msgid "%d DMIPS per core"
 msgstr ""
 
@@ -1000,6 +974,12 @@ msgstr ""
 msgid "%d of %d KB"
 msgstr "%A %d %B"
 
+#, fuzzy, python-format
+msgid "%d package selected."
+msgid_plural "%d packages selected."
+msgstr[0] " Paquets sélectionnés."
+msgstr[1] " Paquets sélectionnés."
+
 #, python-format
 msgid "%d pixel wide"
 msgid_plural "%d pixels wide"
@@ -1061,10 +1041,6 @@ msgstr "%d.%d"
 #, fuzzy
 msgid "%d.%-m.%Y"
 msgstr "%d.%B %Y"
-
-#, python-format
-msgid "%d.%03d GB"
-msgstr "%d.%03d GB"
 
 #, fuzzy
 msgid "%d.%m"
@@ -1137,25 +1113,17 @@ msgstr ""
 "Appuyez sur OK sélectionner le multiboot\n"
 "Appuyez sur Exit pour fermer"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%s  (%s)"
-msgstr "%s (%s)\n"
+msgstr ""
 
 #, python-format
 msgid "%s  -  Scope: %s"
 msgstr ""
 
 #, python-format
-msgid "%s %s free disk space"
-msgstr "%s %s espace disque libre"
-
-#, fuzzy, python-format
 msgid "%s ( %s Cards )"
-msgstr "%s (%s)\n"
-
-#, python-format
-msgid "%s (%s)\n"
-msgstr "%s (%s)\n"
+msgstr ""
 
 #, python-format
 msgid "%s imported from fallback tuner"
@@ -1180,21 +1148,13 @@ msgid_plural "%s updated packages available"
 msgstr[0] "%s mise à jour disponible"
 msgstr[1] "%s mises à jour disponibles"
 
-#, python-format
-msgid "%s%% Autoinstalling %s"
-msgstr "%s%% Autoinstallation %s"
-
-#, python-format
-msgid "%s%d min"
-msgstr "%s%d min"
-
 #, fuzzy, python-format
-msgid "%s%s(Default: %s)"
-msgstr "%s/%s: %s"
+msgid "%s%d min"
+msgstr "%d min"
 
 #, python-format
-msgid "%s/%s: %s"
-msgstr "%s/%s: %s"
+msgid "%s%s(Default: %s)"
+msgstr ""
 
 #, python-format
 msgid "%s: %s Free:%s Used:%s (%s%%)"
@@ -1216,9 +1176,9 @@ msgstr "Aucune mise à jour disponible"
 msgid "%s?"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
-msgstr ""
+msgstr "Répertoire contient %(file)s et %(subdir)s."
 
 #, fuzzy
 msgid "( All readers)"
@@ -1326,10 +1286,7 @@ msgstr "-ERREUR AU SERVICE:%d\n"
 #, fuzzy
 msgctxt "Hotkey help separator"
 msgid "/"
-msgstr "/T"
-
-msgid "/T"
-msgstr "/T"
+msgstr "/s"
 
 msgid "/s"
 msgstr "/s"
@@ -1341,13 +1298,13 @@ msgid "1"
 msgstr "1"
 
 msgid "1.0"
-msgstr "1.0"
+msgstr ""
 
 msgid "1.1"
-msgstr "1.1"
+msgstr ""
 
 msgid "1.2"
-msgstr "1.2"
+msgstr ""
 
 msgid "10 MB/s"
 msgstr "10 MB/s"
@@ -1355,9 +1312,8 @@ msgstr "10 MB/s"
 msgid "10 bit"
 msgstr ""
 
-#, fuzzy
 msgid "10%"
-msgstr "1.0"
+msgstr ""
 
 msgid "100 MB/s"
 msgstr "100 MB/s"
@@ -1381,7 +1337,7 @@ msgid "13 V"
 msgstr "13 V"
 
 msgid "16:10"
-msgstr "16:10"
+msgstr ""
 
 msgid "16:10 Letterbox"
 msgstr "16:10 Letterbox"
@@ -1398,7 +1354,7 @@ msgid "16:10 panscan"
 msgstr "16:10 PanScan"
 
 msgid "16:9"
-msgstr "16:9"
+msgstr ""
 
 msgid "16:9 Letterbox"
 msgstr "16:9 Letterbox"
@@ -1429,12 +1385,14 @@ msgstr "1"
 msgid "2"
 msgstr "2"
 
+msgid "2 new lines"
+msgstr "2 nouvelles lignes"
+
 msgid "20 MB/s"
 msgstr "20 MB/s"
 
-#, fuzzy
 msgid "20%"
-msgstr "420"
+msgstr ""
 
 msgid "23.976"
 msgstr "23.976"
@@ -1492,21 +1450,20 @@ msgstr "Mode 3D"
 msgid "4"
 msgstr "4"
 
-#, fuzzy
 msgid "40%"
-msgstr "420"
+msgstr ""
 
 msgid "420"
-msgstr "420"
+msgstr ""
 
 msgid "422"
-msgstr "422"
+msgstr ""
 
 msgid "444"
-msgstr "444"
+msgstr ""
 
 msgid "4:3"
-msgstr "4:3"
+msgstr ""
 
 msgid "4:3 Letterbox"
 msgstr "4:3 Letterbox"
@@ -1550,9 +1507,8 @@ msgstr "7"
 msgid "70%"
 msgstr ""
 
-#, fuzzy
 msgid "720"
-msgstr "420"
+msgstr ""
 
 msgid "720x576"
 msgstr ""
@@ -1672,7 +1628,7 @@ msgstr "Un EPG graphique pour tous les services d'un bouquet spécifique"
 msgid "A highlight on the remote control image shows which button the help refers to. If more than one button performs the indicated function, more than one highlight will be shown. Text below the list lists the active buttons and whether the function requires a long press or SHIFT of the button(s)."
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "A record has been started:\n"
 "%s"
@@ -1695,6 +1651,9 @@ msgstr "Un enregistrement est en cours. Veuillez arrêter l'enregistrement avant
 
 msgid "A recording is currently running. Please stop the recording before trying to start a testing DiSEqC."
 msgstr "Un enregistrement est en cours. Veuillez arrêter l'enregistrement avant d'essayer de tester le DiSEqC."
+
+msgid "A repeating event is currently recording. What would you like to do?"
+msgstr "Répétition de l'événement en enregistrement. Que voulez-vous faire?"
 
 #, python-format
 msgid "A required tool (%s) was not found."
@@ -1754,9 +1713,8 @@ msgstr "Downmix AAC"
 msgid "AAC transcoding"
 msgstr "Transcodage: "
 
-#, fuzzy
 msgid "AC3"
-msgstr "DAC"
+msgstr ""
 
 msgid "AC3 downmix"
 msgstr "Downmix AC3"
@@ -1781,13 +1739,11 @@ msgstr "AGC:"
 msgid "ANNEX-A"
 msgstr ""
 
-#, fuzzy
 msgid "ANNEX-B"
-msgstr "DVB-C ANNEX B"
+msgstr ""
 
-#, fuzzy
 msgid "ANNEX-C"
-msgstr "DVB-C ANNEX C"
+msgstr ""
 
 msgid "ARM"
 msgstr ""
@@ -1795,17 +1751,14 @@ msgstr ""
 msgid "ARM64"
 msgstr ""
 
-msgid "ASS File"
-msgstr "Fichier ASS"
-
 msgid "ASS file"
 msgstr "Fichier ASS"
 
-msgid "ATSC"
-msgstr "ATSC"
-
 msgid "ATSC provider"
 msgstr "Opérateur ATSC"
+
+msgid "Abkhazian"
+msgstr ""
 
 msgid "Abort"
 msgstr "Abandon"
@@ -1830,6 +1783,9 @@ msgstr "A propos"
 msgid "Access point"
 msgstr "Point d'accès:"
 
+msgid "Access point:"
+msgstr "Point d'accès:"
+
 #, fuzzy
 msgid "Access to geolocation information requires an internet connection."
 msgstr "Votre récepteur ne dispose pas d'une connexion Internet"
@@ -1837,9 +1793,6 @@ msgstr "Votre récepteur ne dispose pas d'une connexion Internet"
 #, fuzzy, python-format
 msgid "Access to the %s commit logs requires an internet connection."
 msgstr "Votre récepteur ne dispose pas d'une connexion Internet"
-
-msgid "Accesspoint:"
-msgstr "Point d'accès:"
 
 msgid "Activate HbbTV (Redbutton)"
 msgstr "Activer HbbTV (bouton rouge)"
@@ -2025,8 +1978,14 @@ msgstr "Paramètres avancés pour améliorer la vidéo"
 msgid "Advanced video setup"
 msgstr "Paramètres vidéo avancés"
 
+msgid "Afar"
+msgstr ""
+
 msgid "Afghanistan"
 msgstr "Afghanistant"
+
+msgid "Afrikaans"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "After %s"
@@ -2035,10 +1994,17 @@ msgstr "Après "
 msgid "After event"
 msgstr "Après l'émission"
 
+msgid "Akan"
+msgstr ""
+
 msgid "Aland Islands"
 msgstr "Iles Aland"
 
 msgid "Albania"
+msgstr "Albanie"
+
+#, fuzzy
+msgid "Albanian"
 msgstr "Albanie"
 
 msgid "Album"
@@ -2082,7 +2048,7 @@ msgid "All satellites 4 (USALS)"
 msgstr "Tous satellites 4 (USALS)"
 
 msgid "All services provider"
-msgstr "Tous les opérateurs de services"
+msgstr "Tous les services de l'opérateur"
 
 msgid "All slots"
 msgstr "Tous les slots"
@@ -2198,6 +2164,9 @@ msgstr "Toujours inclure les messages ECM dans les enregistrements. Cela remplac
 msgid "American Samoa"
 msgstr "Samoa américaine"
 
+msgid "Amharic"
+msgstr ""
+
 msgid "Amlogic"
 msgstr ""
 
@@ -2253,11 +2222,21 @@ msgstr "Antigue et Bermude"
 msgid "Any activity"
 msgstr "Pour toute activité"
 
+#, fuzzy
+msgid "Apply any changes to the active locale/langauge and exit"
+msgstr "Annuler toute modification du thème/skin actuellement actif et quitter tous les menus"
+
+msgid "Apply the currently highlighted locale/language and exit"
+msgstr ""
+
 msgid "Aqua"
 msgstr ""
 
 msgid "Arabic"
 msgstr "Arabe"
+
+msgid "Aragonese"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "Are you ready to install \"%s\" ?"
@@ -2276,9 +2255,10 @@ msgstr "Êtes-vous certains de vouloir supprimer tous les bouquets utilisateurs 
 msgid "Are you sure to reboot to"
 msgstr "Etes-vous sûr de redémarrer sur"
 
+#. TRANSLATORS: The user is asked to delete all satellite services from a specific orbital position after a configuration change
 #, python-format
-msgid "Are you sure to remove all %d.%d%s%s services?"
-msgstr "Êtes-vous sûr de vouloir supprimer tous les %d.%d%s%s services?"
+msgid "Are you sure to remove all %s services?"
+msgstr "Êtes-vous sûr de vouloir supprimer tous les %s services?"
 
 msgid "Are you sure to remove all cable services?"
 msgstr "Êtes-vous sûr de vouloir supprimer tous les services du câble?"
@@ -2361,6 +2341,10 @@ msgstr "Agentine"
 msgid "Armenia"
 msgstr "Arménie"
 
+#, fuzzy
+msgid "Armenian"
+msgstr "Arménie"
+
 msgid "Artist"
 msgstr "Artistes"
 
@@ -2392,6 +2376,9 @@ msgstr "Format d'image"
 #, fuzzy
 msgid "Aspect ratio list"
 msgstr "Format d'image"
+
+msgid "Assamese"
+msgstr ""
 
 msgid "Assigned CAIds:"
 msgstr "CAIds assignés:"
@@ -2533,12 +2520,12 @@ msgstr "Correction couleurs auto (Auto flesh)"
 msgid "Auto focus"
 msgstr "Mise au point auto"
 
-msgid "Auto focus commencing ..."
-msgstr "Démarrage Mise au point auto ..."
+msgid "Auto focus commencing..."
+msgstr "Démarrage Mise au point auto..."
 
 #, fuzzy
 msgid "Auto install log"
-msgstr "Autoinstallation terminée"
+msgstr "Autoinstallation %s"
 
 msgid "Auto play blu-ray file"
 msgstr "Lecture auto fichier Blu-ray"
@@ -2553,12 +2540,17 @@ msgstr "Commutation auto péritel"
 msgid "Auto standby"
 msgstr "Pas de veille"
 
+#, python-format
+msgid "Autoinstalling %s"
+msgstr "Autoinstallation %s"
+
 msgid "Autoinstalling Completed"
 msgstr "Autoinstallation terminée"
 
 msgid "Autoinstalling please wait for packages being updated"
 msgstr "Autoinstallation veuillez attendre que les packages soient mis à jour"
 
+#, fuzzy
 msgid "Automatic"
 msgstr "Automatique"
 
@@ -2605,7 +2597,20 @@ msgstr "Format variables disponibles"
 msgid "Available locales are:"
 msgstr "Les locaux disponibles sont:"
 
+msgid "Avaric"
+msgstr ""
+
+msgid "Avestan"
+msgstr ""
+
+msgid "Aymara"
+msgstr ""
+
 msgid "Azerbaijan"
+msgstr "Azerbaijan"
+
+#, fuzzy
+msgid "Azerbaijani"
 msgstr "Azerbaijan"
 
 msgid "Azure"
@@ -2625,21 +2630,19 @@ msgid "BER:"
 msgstr "BER:"
 
 msgid "BT 2020 CL"
-msgstr "BT 2020 CL"
+msgstr ""
 
 msgid "BT 2020 NCL"
-msgstr "BT 2020 NCL"
+msgstr ""
 
 msgid "BT 709"
-msgstr "BT 709"
+msgstr ""
 
-#, fuzzy
 msgid "BT2020 CL"
-msgstr "BT 2020 CL"
+msgstr ""
 
-#, fuzzy
 msgid "BT2020 NCL"
-msgstr "BT 2020 NCL"
+msgstr ""
 
 msgid "BT470 BG"
 msgstr ""
@@ -2693,6 +2696,9 @@ msgstr "Bahamas"
 msgid "Bahrain"
 msgstr "Bahrain"
 
+msgid "Bambara"
+msgstr ""
+
 msgid "Band"
 msgstr "Bande"
 
@@ -2706,6 +2712,9 @@ msgid "Barbados"
 msgstr "Barbade"
 
 msgid "Base transparency for teletext, more options available within teletext screen."
+msgstr ""
+
+msgid "Bashkir"
 msgstr ""
 
 msgid "Basic PID info"
@@ -2742,6 +2751,10 @@ msgstr "Action lorsqu'un film atteint la fin"
 msgid "Belarus"
 msgstr "Bélarus"
 
+#, fuzzy
+msgid "Belarusian"
+msgstr "Bélarus"
+
 msgid "Belgian"
 msgstr "Belge"
 
@@ -2767,6 +2780,9 @@ msgstr "Danemark"
 msgid "Benchmark information"
 msgstr "Informations gestionnaire logiciel"
 
+msgid "Bengali"
+msgstr ""
+
 msgid "Benin"
 msgstr "Benin"
 
@@ -2778,6 +2794,13 @@ msgstr "Bhoutan"
 
 msgid "Big PiP"
 msgstr "Grand PiP"
+
+#, fuzzy
+msgid "Bihari languages"
+msgstr "Langues"
+
+msgid "Bislama"
+msgstr ""
 
 #, fuzzy
 msgid "Bit rate"
@@ -2824,11 +2847,11 @@ msgstr "Bleu"
 msgid "Blue long"
 msgstr "Bleu"
 
-msgid "Bolivia (Plurinational State of)"
-msgstr "Bolivie (État plurinational de)"
+msgid "Bolivia"
+msgstr ""
 
-msgid "Bonaire, Sint Eustatius and Saba"
-msgstr "Bonaire, Sint Eustatius et Saba"
+msgid "Bonaire"
+msgstr ""
 
 #, fuzzy
 msgid "Bookmark Actions"
@@ -2873,6 +2896,10 @@ msgstr "Temps de démarrage"
 msgid "Bosnia and Herzegovina"
 msgstr "Bosnie et Herzegovine"
 
+#, fuzzy
+msgid "Bosnian"
+msgstr "Estonien"
+
 msgid "Botswana"
 msgstr "Botswana"
 
@@ -2881,6 +2908,9 @@ msgstr "Île Bouvet"
 
 msgid "Brazil"
 msgstr "Brésil"
+
+msgid "Breton"
+msgstr ""
 
 msgid "Brightness"
 msgstr "Luminosité"
@@ -2909,9 +2939,16 @@ msgstr "Mise en mémoire tampon %d%%"
 msgid "Buffers"
 msgstr ""
 
+msgid "Build"
+msgstr ""
+
 #, fuzzy
 msgid "Build Brand"
 msgstr "Date de compilation: "
+
+#, fuzzy
+msgid "Build Information"
+msgstr "Informations"
 
 #, fuzzy
 msgid "Build Model"
@@ -2919,6 +2956,10 @@ msgstr "Date de compilation: "
 
 #, fuzzy
 msgid "Build information"
+msgstr "Informations"
+
+#, fuzzy
+msgid "Build information for"
 msgstr "Informations"
 
 msgid "Bulgaria"
@@ -2929,6 +2970,9 @@ msgstr "Bulgare"
 
 msgid "Burkina Faso"
 msgstr "Burkina Faso"
+
+msgid "Burmese"
+msgstr ""
 
 msgid "Burn DVD"
 msgstr "Graver le DVD"
@@ -3031,16 +3075,13 @@ msgid "CPU rating"
 msgstr "Mise à jour en cours"
 
 msgid "CVBS"
-msgstr "CVBS"
+msgstr ""
 
 msgid "Cable"
 msgstr "Câble"
 
 msgid "Cable Scan"
 msgstr "Recherche sur le câble"
-
-msgid "Cabo Verde"
-msgstr "Cap-Vert"
 
 msgid "Cache thumbnails"
 msgstr "Cache vignettes"
@@ -3125,6 +3166,14 @@ msgstr "Annuler les modifications de texte et quitter"
 msgid "Cancel any changed settings and exit all menus"
 msgstr "Annuler toute modification du thème/skin actuellement actif et quitter tous les menus"
 
+#, fuzzy
+msgid "Cancel any changes the active locale/language and exit all menus"
+msgstr "Annuler toute modification du thème/skin actuellement actif et quitter tous les menus"
+
+#, fuzzy
+msgid "Cancel any changes to the active locale/language and exit"
+msgstr "Annuler toute modification du thème/skin actuellement actif et quitter tous les menus"
+
 msgid "Cancel any changes to the currently active skin"
 msgstr "Annuler tout changement à le thème/skin actuellement actif"
 
@@ -3181,6 +3230,10 @@ msgstr "Capacité: "
 msgid "Capacity: "
 msgstr "Capacité: "
 
+#, fuzzy
+msgid "Cape Verde"
+msgstr "Cap-Vert"
+
 msgid "Card"
 msgstr "Carte"
 
@@ -3193,6 +3246,9 @@ msgstr "Carte"
 
 msgid "Cascade PiP"
 msgstr "PiP en cascade"
+
+msgid "Catalan / Valencian"
+msgstr ""
 
 msgid "Cayman Islands"
 msgstr "Îles Caïmans"
@@ -3213,8 +3269,14 @@ msgstr "Centrer les time-labels et supprimer la date"
 msgid "Central African Republic"
 msgstr "République centrafricaine"
 
+msgid "Central Khmer"
+msgstr ""
+
 msgid "Chad"
 msgstr "Tchad"
+
+msgid "Chamorro"
+msgstr ""
 
 msgid "Change Language"
 msgstr "Changer la langue"
@@ -3299,6 +3361,10 @@ msgstr "Chapitre"
 msgid "Chapter:"
 msgstr "Chapitre:"
 
+#, fuzzy
+msgid "Chechen"
+msgstr "Vérification"
+
 msgid "Check"
 msgstr "Vérification"
 
@@ -3329,6 +3395,9 @@ msgstr ""
 "Vérification tuner %s\n"
 "DiSEqC port %s pour %s"
 
+msgid "Chichewa / Chewa / Nyanja"
+msgstr ""
+
 #, fuzzy
 msgid "Children"
 msgstr "Chili"
@@ -3344,6 +3413,10 @@ msgid "Chile"
 msgstr "Chili"
 
 msgid "China"
+msgstr "Chine"
+
+#, fuzzy
+msgid "Chinese"
 msgstr "Chine"
 
 msgid "Chinese - Simplified"
@@ -3420,6 +3493,12 @@ msgstr "Choisissez le tuner à configurer."
 
 msgid "Christmas Island"
 msgstr "L'île de noël"
+
+msgid "Church Slavic"
+msgstr ""
+
+msgid "Chuvash"
+msgstr ""
 
 msgid "Circular LNB"
 msgstr "LNB circulaire"
@@ -3735,6 +3814,9 @@ msgstr "Configure les serveurs de noms"
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Configure sur quels dispositifs l'option de suppression d'arrière-plan doit être utilisée."
 
+msgid "Configure separator type used in full description for separate short and extended descriptions."
+msgstr "Configurer le type de séparateur dans la description complète pour séparer les descriptions courte étendue"
+
 msgid "Configure the DiSEqC mode for this LNB."
 msgstr "Configure le mode DiSEqC pour cette LNB."
 
@@ -4048,9 +4130,6 @@ msgstr "Conflit non résolu!"
 msgid "Congo"
 msgstr "Congo"
 
-msgid "Congo (Democratic Republic of the)"
-msgstr "Congo (République démocratique du)"
-
 msgid "Connect"
 msgstr "Connecter"
 
@@ -4145,10 +4224,18 @@ msgstr "Nom de fichiers long"
 msgid "Copyright %s 2018-%s Team OpenVision"
 msgstr ""
 
+#, fuzzy
+msgid "Cornish"
+msgstr "Danois"
+
+msgid "Corsican"
+msgstr ""
+
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-msgid "Cote d'Ivoire"
+#, fuzzy
+msgid "Cote d'Ivoire / Ivory Coast"
 msgstr "Côte d'Ivoire"
 
 #, fuzzy
@@ -4208,6 +4295,9 @@ msgstr "Création du système de fichiers"
 #, fuzzy
 msgid "Creating partition."
 msgstr "Création de partition"
+
+msgid "Cree"
+msgstr ""
 
 msgid "Croatia"
 msgstr "Croatie"
@@ -4321,14 +4411,19 @@ msgstr "Chypre"
 msgid "Czech"
 msgstr "Tchèque"
 
+#, fuzzy
+msgid "Czech Republic"
+msgstr "République centrafricaine"
+
 msgid "Czechia"
 msgstr "République Tchèque"
 
 msgid "D"
 msgstr "D"
 
+#, fuzzy
 msgid "DAC"
-msgstr "DAC"
+msgstr "PDC"
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -4380,49 +4475,31 @@ msgid "DVB type"
 msgstr "Type DVB"
 
 msgid "DVB-C"
-msgstr "DVB-C"
+msgstr ""
 
-msgid "DVB-C ANNEX B"
-msgstr "DVB-C ANNEX B"
-
-msgid "DVB-C ANNEX C"
-msgstr "DVB-C ANNEX C"
-
-#, fuzzy
 msgid "DVB-C/-S/-T"
-msgstr "DVB-C"
+msgstr ""
 
-#, fuzzy
 msgid "DVB-C/-T/-S"
-msgstr "DVB-C"
+msgstr ""
 
 msgid "DVB-S"
-msgstr "DVB-S"
+msgstr ""
 
-#, fuzzy
 msgid "DVB-S/-C/-T"
-msgstr "DVB-S"
+msgstr ""
 
-#, fuzzy
 msgid "DVB-S/-T/-C"
-msgstr "DVB-S"
-
-msgid "DVB-S2"
-msgstr "DVB-S2"
+msgstr ""
 
 msgid "DVB-T"
-msgstr "DVB-T"
+msgstr ""
 
-#, fuzzy
 msgid "DVB-T/-C/-S"
-msgstr "DVB-T"
+msgstr ""
 
-#, fuzzy
 msgid "DVB-T/-S/-C"
-msgstr "DVB-T"
-
-msgid "DVB-T2"
-msgstr "DVB-T2"
+msgstr ""
 
 msgid "DVD Burn"
 msgstr "Graver le DVD"
@@ -4649,6 +4726,9 @@ msgstr "Défaut+Picon"
 msgid "Default: '%s'."
 msgstr "Par défaut"
 
+msgid "Defined / Active"
+msgstr ""
+
 msgid "Delay after change voltage before switch command"
 msgstr "Délai après le changement de tension et avant la commande de bascule (switch)"
 
@@ -4734,6 +4814,14 @@ msgid "Delete Image"
 msgstr "Supprimer l’image"
 
 #, fuzzy
+msgid "Delete Lang"
+msgstr "Supprimer l’image"
+
+#, fuzzy
+msgid "Delete Loc"
+msgstr "Supprimer"
+
+#, fuzzy
 msgid "Delete all log files"
 msgstr "Supprimer tous les fichiers log"
 
@@ -4804,9 +4892,17 @@ msgstr "Image effacée"
 msgid "Deleted items"
 msgstr "Eléments supprimés"
 
+#, python-format
+msgid "Deleting %s (%s)..."
+msgstr ""
+
 #, fuzzy
 msgid "Deleting files"
 msgstr "Supprimer le fichier"
+
+#, fuzzy
+msgid "Democratic Republic of the Congo"
+msgstr "Congo (République démocratique du)"
 
 msgid "Denmark"
 msgstr "Danemark"
@@ -4849,11 +4945,11 @@ msgstr "Détecter les autres équipements avant de se mettre en veille"
 
 #, fuzzy
 msgid "Detected network servers"
-msgstr "Sélectionner un adaptateur réseau"
+msgstr "Disque(s) dur(s) détecté(s):"
 
 #, fuzzy
 msgid "Detected storage devices"
-msgstr "Liste des périphériques de stockage"
+msgstr "Disque(s) dur(s) détecté(s):"
 
 #, fuzzy
 msgid "Detected tuners"
@@ -4865,10 +4961,11 @@ msgstr "Service"
 
 #, fuzzy
 msgid "Device id"
-msgstr "Info service"
+msgstr "Nom du périphérique:"
 
+#, fuzzy
 msgid "Device mounts"
-msgstr ""
+msgstr "Nom du périphérique:"
 
 #, fuzzy
 msgid "Device name"
@@ -5067,12 +5164,18 @@ msgstr "Thème/Skin de l’affichage"
 msgid "Display the EIT now/next eventdata in infobar."
 msgstr "Afficher EIT maintenant/suivant dans barre d'information"
 
+msgid "Display the base locales or all locales for a language."
+msgstr ""
+
 msgid "Display the virtual keyboard for data entry"
 msgstr ""
 
 #, fuzzy
 msgid "Display type"
 msgstr "Paramètres d'affichage"
+
+msgid "Divehi / Dhivehi / Maldivian"
+msgstr ""
 
 msgid "Djibouti"
 msgstr "Djibouti"
@@ -5224,6 +5327,10 @@ msgstr "Voulez-vous lire le DVD dans le lecteur?"
 msgid "Do you want to preview this DVD before burning?"
 msgstr "Voulez-vous un aperçu du DVD avant de le graver?"
 
+#, fuzzy, python-format
+msgid "Do you want to purge all locales/languages except %s?"
+msgstr "Voulez-vous mettre à jour votre récepteur vers %s?"
+
 msgid "Do you want to quit the overscan wizard?"
 msgstr "Êtes-vous sûr de vouloir quitter l'assistant Overscan?"
 
@@ -5258,7 +5365,7 @@ msgid "Documentary"
 msgstr "Documentaire"
 
 msgid "Dolby"
-msgstr "Dolby"
+msgstr ""
 
 msgid "Domain"
 msgstr ""
@@ -5363,8 +5470,14 @@ msgstr ""
 msgid "Dutch"
 msgstr "Néerlandais"
 
+msgid "Dutch / Flemish"
+msgstr ""
+
 msgid "Dynamic contrast"
 msgstr "Contraste dynamique"
+
+msgid "Dzongkha"
+msgstr ""
 
 msgid "E"
 msgstr "E"
@@ -5512,9 +5625,6 @@ msgstr ""
 msgid "Electronic Program Guide"
 msgstr "Guide électronique programme (EPG)"
 
-msgid "Embedded"
-msgstr "Embarqué"
-
 msgid "Emergency"
 msgstr "Urgence"
 
@@ -5539,7 +5649,7 @@ msgstr "Activer le scan rapide automatique"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Activer"
+msgstr "Activé"
 
 msgid "Enable EIT EPG"
 msgstr "Activer EPG EIT"
@@ -5684,7 +5794,7 @@ msgid "Enable/Disable IPv6 support of your receiver.\n"
 msgstr "Modifier la configuration du serveur de nom de votre récepteur.\n"
 
 msgid "Enabled"
-msgstr "Activer"
+msgstr "Activé"
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -5738,7 +5848,10 @@ msgstr "Heure de fin"
 msgid "English"
 msgstr "Anglais"
 
-msgid "Enigma kernel module information for"
+msgid "English name (Ascending)"
+msgstr ""
+
+msgid "English name (Descending)"
 msgstr ""
 
 #, fuzzy
@@ -5777,6 +5890,9 @@ msgstr "Entrer l’adresse IP"
 msgid "Enter PIN"
 msgstr "Saisir le code PIN"
 
+msgid "Enter PIN code"
+msgstr "Saisir code PIN"
+
 msgid "Enter URL"
 msgstr "Entrer l’URL"
 
@@ -5804,9 +5920,6 @@ msgstr "Répertoire départ"
 msgid "Enter persistent PIN code"
 msgstr "Saisir le code PIN persistant"
 
-msgid "Enter pin code"
-msgstr "Saisir code PIN"
-
 msgid "Enter the FTP password of the host receiver (normally just leave empty)."
 msgstr ""
 
@@ -5832,6 +5945,7 @@ msgstr "Entrez le pas de fréquence que votre tuner doit utiliser pour la recher
 msgid "Enter the number stored in the positioner that corresponds to this satellite."
 msgstr "Entrez le numéro stocké dans le positionneur qui correspond à ce satellite."
 
+#, fuzzy
 msgid "Enter the service pin"
 msgstr "Entrer le code PIN de maintenace"
 
@@ -5943,6 +6057,13 @@ msgstr ""
 "Réessayer?"
 
 #, fuzzy, python-format
+msgid "Error: %s %s not %s!  Please try again later."
+msgstr "Une erreur s’est produite - Merci de réessayer plus tard"
+
+msgid "Error: Checksum is invalid!"
+msgstr ""
+
+#, fuzzy, python-format
 msgid "Error: Directory '%s' already exists!"
 msgstr "Le chemin %s existe déjà."
 
@@ -5969,8 +6090,15 @@ msgstr ""
 msgid "Error: Unable to delete directory '%s'! (Diretory may not be empty.)"
 msgstr ""
 
+#, fuzzy
+msgid "Error: Unable to process the command!  Please try again later."
+msgstr "Une erreur s’est produite - Merci de réessayer plus tard"
+
 #, python-format
 msgid "Error: Unable to rename directory '%s' to '%s'!"
+msgstr ""
+
+msgid "Esperanto"
 msgstr ""
 
 msgid "Estonia"
@@ -6033,6 +6161,9 @@ msgstr ""
 
 msgid "Everywhere"
 msgstr "Partout"
+
+msgid "Ewe"
+msgstr ""
 
 msgid "Exceeds dual layer medium!"
 msgstr "Dépasse la capacité du support double couche!"
@@ -6231,7 +6362,7 @@ msgid ""
 "inactive"
 msgstr ""
 "FBC automatique\n"
-"désactivé"
+"inactif"
 
 #, python-format
 msgid "FBC socket %s"
@@ -6377,6 +6508,14 @@ msgstr "Vitesse du ventilateur"
 msgid "Faroe Islands"
 msgstr "Îles Féroé"
 
+#, fuzzy
+msgid "Faroese"
+msgstr "Îles Féroé"
+
+#, fuzzy
+msgid "Farsi / Persian"
+msgstr "Iranien"
+
 msgid "Fast"
 msgstr "Rapide"
 
@@ -6412,6 +6551,10 @@ msgid "Feed URL"
 msgstr ""
 
 msgid "Fiji"
+msgstr "Fidji"
+
+#, fuzzy
+msgid "Fijian"
 msgstr "Fidji"
 
 msgid "File appears to be busy.\n"
@@ -6622,8 +6765,14 @@ msgstr ""
 msgid "Front processor version"
 msgstr "Version du frontprocessor: %s"
 
+msgid "Fulah"
+msgstr ""
+
 msgid "Full Range RGB"
 msgstr ""
+
+msgid "Full description separator"
+msgstr "Séparateur de la description étendue"
 
 #, fuzzy
 msgid "Full factory reset"
@@ -6650,6 +6799,9 @@ msgstr "Options supplémentaires"
 
 msgid "G"
 msgstr "G"
+
+msgid "GB"
+msgstr "GB"
 
 #, fuzzy
 msgid "GCC version"
@@ -6680,8 +6832,21 @@ msgstr ""
 msgid "Gabon"
 msgstr "Gabon"
 
+msgid "Gaelic"
+msgstr ""
+
+msgid "Galicia (Spain)"
+msgstr ""
+
+msgid "Galician"
+msgstr ""
+
 msgid "Gambia"
 msgstr "Gambie"
+
+#, fuzzy
+msgid "Ganda"
+msgstr "Rwanda"
 
 msgid "Gateway"
 msgstr "Passerelle"
@@ -6725,9 +6890,13 @@ msgstr "Actuellement le log des changements ne peut pas être retrouvé - merci 
 
 #, fuzzy
 msgid "Geolocation is not available."
-msgstr "Tuner non disponible."
+msgstr "MAJ feed non disponible."
 
 msgid "Georgia"
+msgstr "Géorgie"
+
+#, fuzzy
+msgid "Georgian"
 msgstr "Géorgie"
 
 msgid "German"
@@ -6881,6 +7050,9 @@ msgstr "Guadeloupe"
 msgid "Guam"
 msgstr "Guam"
 
+msgid "Guarani"
+msgstr ""
+
 msgid "Guard interval"
 msgstr "Intervalle de garde"
 
@@ -6895,6 +7067,9 @@ msgstr "Guinée"
 
 msgid "Guinea-Bissau"
 msgstr "Guinée-Bissau"
+
+msgid "Gujarati"
+msgstr ""
 
 msgid "Guyana"
 msgstr "Guyane"
@@ -6918,7 +7093,7 @@ msgid "HD list"
 msgstr "Liste HD"
 
 msgid "HDMI"
-msgstr "HDMI"
+msgstr ""
 
 msgid "HDMI Colordepth"
 msgstr "Profondeur de couleurs HDMI"
@@ -6949,7 +7124,7 @@ msgid "HDMI-IN Actions"
 msgstr ""
 
 msgid "HDR10"
-msgstr "HDR10"
+msgstr ""
 
 msgid "HDR10 support"
 msgstr "support HDR10"
@@ -6971,13 +7146,16 @@ msgid "HI-cleanup for external subtitles"
 msgstr "Délai pour les sous-titres externes"
 
 msgid "HLG"
-msgstr "HLG"
+msgstr ""
 
 msgid "HLG support"
 msgstr "support HLG"
 
 msgid "Haiti"
 msgstr "Haïti"
+
+msgid "Haitian / Haitian Creole"
+msgstr ""
 
 msgid "Halt"
 msgstr ""
@@ -7016,6 +7194,9 @@ msgstr "Matériel: "
 msgid "Hardware type"
 msgstr "Matériel: "
 
+msgid "Hausa"
+msgstr ""
+
 msgid "Heard Island and McDonald Islands"
 msgstr "Îles Heard et Macdonald"
 
@@ -7035,6 +7216,9 @@ msgstr "Informations"
 
 msgid "Helps setting up your antenna"
 msgstr "Aide à la configuration de votre antenne"
+
+msgid "Herero"
+msgstr ""
 
 msgid "HiSilicon"
 msgstr ""
@@ -7091,6 +7275,12 @@ msgstr "Info hiérarchie"
 msgid "High bitrate support"
 msgstr "Support haut débit"
 
+msgid "Hindi"
+msgstr ""
+
+msgid "Hiri Motu"
+msgstr ""
+
 #, fuzzy
 msgid "History Prev/Next"
 msgstr "Historique suivant"
@@ -7110,8 +7300,8 @@ msgstr "Verrouiller l'écran"
 msgid "Hold till locked"
 msgstr "Bloquer l'écran jusqu'au verrouillage"
 
-msgid "Holy See"
-msgstr "Saint-Siège"
+msgid "Holy See (Vatican City State)"
+msgstr ""
 
 msgid "Home"
 msgstr "Accueil"
@@ -7126,14 +7316,6 @@ msgid "Hops"
 msgstr ""
 
 msgid "Horizontal"
-msgstr "Horizontal"
-
-#, fuzzy
-msgid "Horizontal icons"
-msgstr "Horizontal"
-
-#, fuzzy
-msgid "Horizontal menu"
 msgstr "Horizontal"
 
 msgid "Horizontal turning speed"
@@ -7163,7 +7345,7 @@ msgstr "Encore aucune donnée reçue"
 
 #, fuzzy
 msgid "Host receiver streaming port"
-msgstr "Votre récepteur redémarre"
+msgstr "Nombre total de clients de flux (stream): "
 
 #, fuzzy
 msgid "Hostname"
@@ -7276,8 +7458,15 @@ msgstr "INS"
 msgid "Iceland"
 msgstr "Islande"
 
+#, fuzzy
+msgid "Icelandic"
+msgstr "Islande"
+
 msgid "Icons"
 msgstr "Icônes"
+
+msgid "Ido"
+msgstr ""
 
 msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
@@ -7335,6 +7524,9 @@ msgid ""
 "Do not care about the bright shades now. They will be set up in the next step.\n"
 "If you are happy with the result, press OK."
 msgstr "Si votre TV dispose d’une fonction d’amélioration de la luminosité ou du contraste, neutralisez-le. S'il y a quelque chose appelé \"dynamique\", positionnez-le sur standard. Ajustez le niveau de contre-jour sur une valeur convenant à votre goût. Baissez le contraste sur votre TV autant que possible. Puis baissez les paramètres luminosité aussi bas que possible, mais assurez-vous que les deux nuances les plus basses de gris soient distinguable. Ne pas s'inquiéter des nuances luminosité maintenant. Elles seront fixées dans la prochaine étape. si vous êtes satisfait du résultat, appuyez sur OK."
+
+msgid "Igbo"
+msgstr ""
 
 msgid "Ignore DVB-C namespace sub network"
 msgstr "Ignorer le sous-réseau de l’espace de noms DVB-C"
@@ -7508,9 +7700,8 @@ msgstr "Indonésien"
 msgid "Inetd Recovery"
 msgstr ""
 
-#, fuzzy
 msgid "Inetd recovery"
-msgstr "Enregistrement immédiat"
+msgstr ""
 
 msgid "Info"
 msgstr "Info"
@@ -7523,6 +7714,12 @@ msgstr "Barre d'information"
 
 msgid "Info bar timeout"
 msgstr "Délai d'affichage de la barre d'information"
+
+msgid "Info file checksum"
+msgstr ""
+
+msgid "Info file override"
+msgstr ""
 
 #, fuzzy
 msgid "InfoBar EPG Actions"
@@ -7616,6 +7813,14 @@ msgid "Install"
 msgstr "Installer"
 
 #, fuzzy
+msgid "Install Lang"
+msgstr "Installation"
+
+#, fuzzy
+msgid "Install Loc"
+msgstr "Installer"
+
+#, fuzzy
 msgid "Install display picons on"
 msgstr "Installer les picons sur"
 
@@ -7637,6 +7842,10 @@ msgstr "L'installation ou la suppression est terminé."
 msgid "Installing"
 msgstr "Installation"
 
+#, fuzzy, python-format
+msgid "Installing %s (%s)..."
+msgstr "Installation du logiciel..."
+
 #, fuzzy
 msgid "Installing TMBD"
 msgstr "Installation"
@@ -7648,12 +7857,8 @@ msgstr "Installation"
 msgid "Installing software..."
 msgstr "Installation du logiciel..."
 
-msgid "Instant record"
-msgstr "Enregistrement immédiat"
-
-#, fuzzy
 msgid "Instant recording"
-msgstr "Enregistrement Immédiat..."
+msgstr "Enregistrement Immédiat"
 
 msgid "Instant recording location"
 msgstr "Emplacement des enregistrements immédiats"
@@ -7672,6 +7877,13 @@ msgstr "Interface: "
 #, fuzzy
 msgid "Interlaced"
 msgstr "Interface: "
+
+#, fuzzy
+msgid "Interlingua"
+msgstr "Interne"
+
+msgid "Interlingue / Occidental"
+msgstr ""
 
 msgid "Internal"
 msgstr "Interne"
@@ -7694,6 +7906,12 @@ msgstr "Internet (ntp)"
 msgid "Interval between keys when repeating (ms)"
 msgstr "Intervalle entre les touches lors des répétitions:"
 
+msgid "Inuktitut"
+msgstr ""
+
+msgid "Inupiaq"
+msgstr ""
+
 #, fuzzy
 msgid "Invalid"
 msgstr "Type non valide"
@@ -7713,17 +7931,21 @@ msgstr "Inversion, Pilot & Roll-off"
 msgid "Invert"
 msgstr "Inverser"
 
-msgid "Iran (Islamic Republic of)"
-msgstr "Iran (République islamique d’)"
-
 msgid "Iran, Islamic Republic"
 msgstr "Iran, République islamique"
+
+#, fuzzy
+msgid "Iran, Islamic Republic of"
+msgstr "Iran (République islamique d’)"
 
 msgid "Iraq"
 msgstr "Irak"
 
 msgid "Ireland"
 msgstr "Irelande"
+
+msgid "Irish"
+msgstr ""
 
 #, fuzzy
 msgid "Is the remote control working okay?"
@@ -7747,7 +7969,7 @@ msgid ""
 msgstr ""
 "Il semble que vous ne voyez pas les huit pointes de flèches. Cela signifie que votre téléviseur a l'overscan activé, et n'est pas configuré correctement.\n"
 "\n"
-"Veuillez vous référer au manuel de votre TV et trouver comment désactiver l'overscan. Rechercher les termes comme 'Just fit', 'Full width', etc. Si vous ne trouvez pas, venez demander aux autres utilisateurs du forum http://forums.openpli.org .\n"
+"Veuillez vous référer au manuel de votre TV et trouver comment désactiver l'overscan. Rechercher les termes comme 'Just fit', 'Full width', etc. Si vous ne trouvez pas, venez demander aux autres utilisateurs du forum http://forums.openpli.org.\n"
 "\n"
 
 msgid "Italian"
@@ -7770,6 +7992,13 @@ msgstr "Jamaïque"
 
 msgid "Japan"
 msgstr "Japon"
+
+#, fuzzy
+msgid "Japanese"
+msgstr "Japon"
+
+msgid "Javanese"
+msgstr ""
 
 msgid "Jersey"
 msgstr "Jersey"
@@ -7802,12 +8031,32 @@ msgstr "Aller à la position marquée suivante"
 msgid "Jump to previous marked position"
 msgstr "Aller à la position marquée précédente"
 
+msgid "Jump to the currently active locale/language"
+msgstr ""
+
 #. TRANSLATORS: (aspect ratio policy: scale as close to fullscreen as possible)
 msgid "Just scale"
 msgstr "Juste mettre à l'échelle"
 
 msgid "KA-SAT"
 msgstr "KA-SAT"
+
+msgid "Kalaallisut / Greenlandic"
+msgstr ""
+
+#, fuzzy
+msgid "Kannada"
+msgstr "Canada"
+
+msgid "Kanuri"
+msgstr ""
+
+msgid "Kashmiri"
+msgstr ""
+
+#, fuzzy
+msgid "Kazakh"
+msgstr "Kazakhstan"
 
 msgid "Kazakhstan"
 msgstr "Kazakhstan"
@@ -7822,23 +8071,12 @@ msgid "Kenya"
 msgstr "Kenya"
 
 #, fuzzy
-msgid "Kernel Module"
-msgstr "Mode utilisateur"
-
-#, fuzzy
-msgid "Kernel Module Information"
-msgstr "Informations"
-
-#, fuzzy
 msgid "Kernel file"
 msgstr "Supprimer le fichier"
 
 #, fuzzy
 msgid "Kernel module layout"
 msgstr "Aucun module trouvé"
-
-msgid "Kernel module path"
-msgstr ""
 
 #, fuzzy
 msgid "Kernel version"
@@ -7860,14 +8098,41 @@ msgstr "Agencement du clavier"
 msgid "Keyboard mapping file to be used for keyboard input."
 msgstr ""
 
+msgid "Kikuyu / Gikuyu"
+msgstr ""
+
+msgid "Kinyarwanda"
+msgstr ""
+
+msgid "Kirghiz / Kyrgyz"
+msgstr ""
+
 msgid "Kiribati"
 msgstr "Kiribati"
 
-msgid "Korea (Democratic People's Republic of)"
+msgid "Komi"
+msgstr ""
+
+#, fuzzy
+msgid "Kongo"
+msgstr "Congo"
+
+#, fuzzy
+msgid "Korea, Democratic People's Republic of"
 msgstr "Corée (République populaire démocratique de)"
 
-msgid "Korea (Republic of)"
+#, fuzzy
+msgid "Korea, Republic of"
 msgstr "Corée (République de)"
+
+msgid "Korean"
+msgstr ""
+
+msgid "Kuanyama / Kwanyama"
+msgstr ""
+
+msgid "Kurdish"
+msgstr ""
 
 msgid "Kuwait"
 msgstr "Koweit"
@@ -7942,12 +8207,28 @@ msgstr ""
 msgid "Language"
 msgstr "Langue"
 
+#, python-format
+msgid "Language %s (%s) installed and selected."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Language %s (%s) selected."
+msgstr "Sélection de la langue"
+
 #, fuzzy
-msgid "Language Setup"
-msgstr "Langue"
+msgid "Language already selected."
+msgstr "Sélection de la langue"
 
 msgid "Language selection"
 msgstr "Sélection de la langue"
+
+#, fuzzy
+msgid "Languages"
+msgstr "Langue"
+
+#, fuzzy
+msgid "Lao"
+msgstr "Liban"
 
 msgid "Lao People's Democratic Republic"
 msgstr "Lao, République démocratique populaire du"
@@ -7981,6 +8262,10 @@ msgstr ""
 
 msgid "Latest update log"
 msgstr "Log de la dernière mise à jour"
+
+#, fuzzy
+msgid "Latin"
+msgstr "Latitude"
 
 msgid "Latitude"
 msgstr "Latitude"
@@ -8041,6 +8326,9 @@ msgstr "Libye"
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
+msgid "Limburgan / Limburger / Limburgish"
+msgstr ""
+
 msgid "Lime"
 msgstr ""
 
@@ -8068,6 +8356,9 @@ msgstr "Limites désactivées"
 msgid "Limits on"
 msgstr "Limites activées"
 
+msgid "Lingala"
+msgstr ""
+
 #, fuzzy
 msgid "Link detected"
 msgstr "Aucun CAId sélectionné"
@@ -8080,6 +8371,10 @@ msgstr "Lien:"
 
 msgid "Linked titles with a DVD menu"
 msgstr "Titres liés avec un menu DVD"
+
+#, fuzzy
+msgid "List Navigation Actions"
+msgstr "Actions de la sélection du thème/skin"
 
 msgid "List available networks"
 msgstr "Liste des réseaux disponibles"
@@ -8094,10 +8389,10 @@ msgid "List type"
 msgstr "Type de liste"
 
 #, python-format
-msgid "List version %d, found %d channel"
-msgid_plural "List version %d, found %d channels"
-msgstr[0] "Liste version %d, %d chaîne trouvée"
-msgstr[1] "Liste version %d, %d chaînes trouvées"
+msgid "List version %(ver)d, found %(num)d channel"
+msgid_plural "List version %(ver)d, found %(num)d channels"
+msgstr[0] "Liste version %(ver)d, %(num)d chaîne trouvée"
+msgstr[1] "Liste version %(ver)d, %(num)d chaînes trouvées"
 
 msgid "List/Fav"
 msgstr ""
@@ -8161,6 +8456,55 @@ msgstr "Locale"
 msgid "Locale"
 msgstr "Locale"
 
+#, python-format
+msgid "Locale %s (%s) installed and selected."
+msgstr ""
+
+#, python-format
+msgid "Locale %s (%s) selected."
+msgstr ""
+
+msgid "Locale (Ascending)"
+msgstr ""
+
+msgid "Locale (Descending)"
+msgstr ""
+
+#, fuzzy
+msgid "Locale Selection Setup"
+msgstr "Sélection de la langue"
+
+#, fuzzy
+msgid "Locale already selected."
+msgstr "Aucun CAId sélectionné"
+
+msgid "Locale list sort order"
+msgstr ""
+
+#, fuzzy
+msgid "Locale/Language"
+msgstr "Langue"
+
+#, fuzzy
+msgid "Locale/Language Selection"
+msgstr "Sélection de la langue"
+
+#, fuzzy
+msgid "Locale/Language Selection Actions"
+msgstr "Actions de la sélection du thème/skin"
+
+#, fuzzy
+msgid "Locale/Language Setup"
+msgstr "Paramètres gestionnaire logiciel"
+
+#, fuzzy
+msgid "Locales"
+msgstr "Locale"
+
+#, fuzzy
+msgid "Locales to be displayed"
+msgstr "Afficher les paquets à mettre à jour"
+
 msgid "Location"
 msgstr "Emplacement"
 
@@ -8220,6 +8564,12 @@ msgstr "Appui long sur touche"
 msgid "Longitude"
 msgstr "Longitude"
 
+msgid "Looking for active transponders in the cable network. Please wait..."
+msgstr "Recherche des transpondeurs utilisés sur réseau câblé. Veuillez patienter..."
+
+msgid "Looking for active transponders in the terrestrial network. Please wait..."
+msgstr "Recherche des transpondeurs utilisés sur réseau terrestre. Veuillez patienter..."
+
 msgid "Loop through from"
 msgstr "Rebouclé depuis"
 
@@ -8229,10 +8579,17 @@ msgstr "Minuscules"
 msgid "Lower framerate save CPU time"
 msgstr ""
 
+msgid "Luba-Katanga"
+msgstr ""
+
 msgid "Luxembourg"
 msgstr "Luxembourg"
 
 msgid "Luxembourgish"
+msgstr "Luxembourgeois"
+
+#, fuzzy
+msgid "Luxembourgish / Letzeburgesch"
 msgstr "Luxembourgeois"
 
 msgid "MAC Address Setup"
@@ -8250,6 +8607,9 @@ msgid ""
 "MAC address successfully changed.\n"
 "New MAC address is: "
 msgstr ""
+
+msgid "MB"
+msgstr "MB"
 
 msgid "MENU"
 msgstr ""
@@ -8278,8 +8638,9 @@ msgstr ""
 msgid "Macao"
 msgstr "Macao"
 
-msgid "Macedonia (the former Yugoslav Republic of)"
-msgstr "Macédoine (ex-République yougoslave de)"
+#, fuzzy
+msgid "Macedonian"
+msgstr "Nouvelle-Calédonie"
 
 msgid "Madagascar"
 msgstr "Madagascar"
@@ -8314,8 +8675,20 @@ msgstr "Faire de cette marque un point ‘de sortie’"
 msgid "Make this mark the initial 'in' point"
 msgstr "Faire de cette marque un point ‘d’entrée’"
 
+#, fuzzy
+msgid "Malagasy"
+msgstr "Madagascar"
+
 msgid "Malawi"
 msgstr "Malawi"
+
+#, fuzzy
+msgid "Malay"
+msgstr "Malaysie"
+
+#, fuzzy
+msgid "Malayalam"
+msgstr "Malaysie"
 
 msgid "Malaysia"
 msgstr "Malaysie"
@@ -8328,6 +8701,14 @@ msgstr "Mali"
 
 msgid "Malta"
 msgstr "Malte"
+
+#, fuzzy
+msgid "Maltese"
+msgstr "Malte"
+
+#, fuzzy
+msgid "Manage Locale/Language Selection settings"
+msgstr "Paramètres de la collection"
 
 msgid "Manage extensions"
 msgstr "Gestionnaire des extensions"
@@ -8367,6 +8748,15 @@ msgstr ""
 "Réinitialisation des valeurs par défaut en cours\n"
 "Attendre jusqu'à ce que enigma2 redémarre"
 
+msgid "Manx"
+msgstr ""
+
+msgid "Maori"
+msgstr ""
+
+msgid "Marathi"
+msgstr ""
+
 msgid "Margin after recording (minutes)"
 msgstr "Marge après l'enregistrement (min)"
 
@@ -8381,6 +8771,10 @@ msgid "Marker Actions"
 msgstr "Options supplémentaires"
 
 msgid "Marshall Islands"
+msgstr "Îles Marshall"
+
+#, fuzzy
+msgid "Marshallese"
 msgstr "Îles Marshall"
 
 msgid "Martinique"
@@ -8476,7 +8870,8 @@ msgstr "Messages"
 msgid "Mexico"
 msgstr "Mexique"
 
-msgid "Micronesia (Federated States of)"
+#, fuzzy
+msgid "Micronesia, Federated States of"
 msgstr "Micronésie (Etats fédérés de)"
 
 #, fuzzy
@@ -8495,6 +8890,10 @@ msgstr ""
 #, fuzzy
 msgid "MiniDLNA setup"
 msgstr "Paramètres PiP"
+
+#, fuzzy
+msgid "MiniDiSEqC A/B"
+msgstr "DiSEqC A/B"
 
 msgid "MiniTV"
 msgstr ""
@@ -8559,7 +8958,8 @@ msgstr "Modulation"
 msgid "Modulator"
 msgstr "Modulateur"
 
-msgid "Moldova (Republic of)"
+#, fuzzy
+msgid "Moldova, Republic of"
 msgstr "Moldavie (République de)"
 
 msgid "Mon"
@@ -8575,6 +8975,10 @@ msgid "Monday"
 msgstr "Lundi"
 
 msgid "Mongolia"
+msgstr "Mongolie"
+
+#, fuzzy
+msgid "Mongolian"
 msgstr "Mongolie"
 
 msgid "Montenegro"
@@ -8636,6 +9040,20 @@ msgid "Move down a screen"
 msgstr "Déplacer en bas dernière entrée"
 
 #, fuzzy
+msgid "Move down one line"
+msgstr "Déplacer en bas entrée suivante"
+
+msgid "Move down one line.  Move to the top of the next screen if this is the last line of the screen.  Move to the first line of the list if this is the last line on the list."
+msgstr ""
+
+#, fuzzy
+msgid "Move down one screen"
+msgstr "Déplacer en bas entrée suivante"
+
+msgid "Move down one screen.  Move to the last line of the screen if this is the last screen."
+msgstr ""
+
+#, fuzzy
 msgid "Move down to last entry"
 msgstr "Déplacer en bas dernière entrée"
 
@@ -8646,6 +9064,10 @@ msgstr "Déplacer en bas dernière entrée"
 #, fuzzy
 msgid "Move down to next entry"
 msgstr "Déplacer en bas entrée suivante"
+
+#, fuzzy
+msgid "Move down to the last line in the list."
+msgstr "Déplacer en bas dernière entrée"
 
 msgid "Move east"
 msgstr "Déplacer vers l'est"
@@ -8705,6 +9127,20 @@ msgid "Move up a screen"
 msgstr ""
 
 #, fuzzy
+msgid "Move up one line"
+msgstr "Remonter la liste"
+
+msgid "Move up one line.  Move to the bottom of the previous screen if this is the first line of the screen.  Move to the last of the entry / list if this is the first line of the list."
+msgstr ""
+
+#, fuzzy
+msgid "Move up one screen"
+msgstr "Déplacer en haut entrée précédente"
+
+msgid "Move up one screen.  Move to the first line of the screen if this is the first screen."
+msgstr ""
+
+#, fuzzy
 msgid "Move up to first entry"
 msgstr "Déplacer en haut première entrée"
 
@@ -8715,6 +9151,10 @@ msgstr "Déplacer en haut première entrée"
 #, fuzzy
 msgid "Move up to previous entry"
 msgstr "Déplacer en haut entrée précédente"
+
+#, fuzzy
+msgid "Move up to the first line in the list."
+msgstr "Déplacer en haut première entrée"
 
 msgid "Move west"
 msgstr "Déplacer vers l'ouest"
@@ -8756,8 +9196,8 @@ msgstr "Menu liste de films"
 msgid "Moving"
 msgstr "En mouvement"
 
-msgid "Moving east ..."
-msgstr "Déplacement en cours vers l'est ..."
+msgid "Moving east..."
+msgstr "Déplacement en cours vers l'est..."
 
 #, fuzzy
 msgid "Moving files"
@@ -8766,8 +9206,8 @@ msgstr "Nom de fichiers long"
 msgid "Moving to position"
 msgstr "Déplacement en cours vers la position"
 
-msgid "Moving west ..."
-msgstr "Déplacement en cours vers l'ouest ..."
+msgid "Moving west..."
+msgstr "Déplacement en cours vers l'ouest..."
 
 msgid "Mozambique"
 msgstr "Mozambique"
@@ -8783,6 +9223,10 @@ msgid "MultiBoot"
 msgstr "Multisat"
 
 #, fuzzy
+msgid "MultiBoot Image Selector"
+msgstr "Sélecteur d’image Multiboot"
+
+#, fuzzy
 msgid "MultiBoot Information"
 msgstr "Informations"
 
@@ -8796,13 +9240,6 @@ msgstr "Transcodage: "
 
 msgid "MultiType"
 msgstr "TypeMultiple"
-
-#, fuzzy
-msgid "Multiboot Image Selector"
-msgstr "Sélecteur d’image Multiboot"
-
-msgid "Multiboot image selector"
-msgstr "Sélecteur d’image Multiboot"
 
 msgid "Multichannel PCM"
 msgstr "PCM multi-canaux"
@@ -8918,16 +9355,33 @@ msgstr "Espace de nom - pos. orbitale"
 msgid "Namibia"
 msgstr "Namibie"
 
+msgid "Native name (Ascdending)"
+msgstr ""
+
+msgid "Native name (Descending)"
+msgstr ""
+
 msgid "Nauru"
 msgstr "Nauru"
 
+msgid "Navajo / Navaho"
+msgstr ""
+
 msgid "Navigate up/down with UP/DOWN buttons and page up/down with LEFT/RIGHT. OK to perform the action described in the currently highlighted help."
 msgstr ""
+
+#, fuzzy
+msgid "Ndonga"
+msgstr "Tonga"
 
 msgid "Neither .png nor .jpg nor .svg, please fix file extension"
 msgstr ""
 
 msgid "Nepal"
+msgstr "Népal"
+
+#, fuzzy
+msgid "Nepali"
 msgstr "Népal"
 
 msgid "Netherlands"
@@ -9108,7 +9562,7 @@ msgstr "Pas de epg.dat trouvé sur le serveur"
 msgid "No event info found, recording indefinitely."
 msgstr "Aucune information sur l’événement trouvée, enregistrement indéfini."
 
-msgid "No fast winding possible yet.. but you can use the number buttons to skip forward/backward!"
+msgid "No fast winding possible yet... but you can use the number buttons to skip forward/backward!"
 msgstr "L’avance rapide n’est pas encore possible. Cependant, vous pouvez sauter avec les touches numériques avant/arrière!"
 
 msgid "No free index available"
@@ -9251,13 +9705,31 @@ msgstr "Mode normal"
 msgid "North"
 msgstr "Nord"
 
+#, fuzzy
+msgid "North Macedonia, Republic of"
+msgstr "Macédoine du Nord (La république de)"
+
+msgid "North Ndebele"
+msgstr ""
+
 msgid "Northern Mariana Islands"
 msgstr "Iles Mariannes du Nord"
+
+msgid "Northern Sami"
+msgstr ""
 
 msgid "Norway"
 msgstr "Norvége"
 
 msgid "Norwegian"
+msgstr "Norvégien"
+
+#, fuzzy
+msgid "Norwegian Bokml"
+msgstr "Norvégien"
+
+#, fuzzy
+msgid "Norwegian Nynorsk"
 msgstr "Norvégien"
 
 #, fuzzy
@@ -9285,8 +9757,8 @@ msgid "Not currently mounted."
 msgstr ""
 
 #, python-format
-msgid "Not enough disk space. Please free up some disk space and try again. (%d MB required, %d MB available)"
-msgstr "Espace disque insuffisant. Veuillez libérer de l'espace disque et réessayer. (%d MB requis, %d MB disponible)"
+msgid "Not enough disk space. Please free up some disk space and try again. (%(req)d MB required, %(avail)d MB available)"
+msgstr "Espace disque insuffisant. Veuillez libérer de l'espace disque et réessayer. (%(req)d MB requis, %(avail)d MB disponible)"
 
 msgid "Not recommended for HiSilicon and Amlogic"
 msgstr ""
@@ -9303,7 +9775,7 @@ msgstr "Note: lorsqu’activé, et que vous voulez mettre votre récepteur en ve
 
 #, fuzzy
 msgid "Nothing"
-msgstr "Ne rien faire"
+msgstr "rien"
 
 #, fuzzy
 msgid "Nothing connected"
@@ -9367,9 +9839,8 @@ msgstr "ONID"
 msgid "OPKG clean mode"
 msgstr ""
 
-#, fuzzy
 msgid "OSD"
-msgstr "SDR"
+msgstr ""
 
 msgid "OSD 3D setup"
 msgstr "Configuration affichage 3D (OSD)"
@@ -9418,6 +9889,9 @@ msgstr "forcer désactivé"
 msgid "OVR"
 msgstr "ECR"
 
+msgid "Occitan"
+msgstr ""
+
 msgid "Off"
 msgstr "Arrêt"
 
@@ -9427,6 +9901,9 @@ msgstr "Délai décodage hors ligne (ms)"
 #, fuzzy
 msgid "Offline delete failed"
 msgstr "La suppression a échoué!"
+
+msgid "Ojibwa"
+msgstr ""
 
 msgid "Old"
 msgstr ""
@@ -9596,6 +10073,15 @@ msgstr "Ordinaire"
 msgid "Original"
 msgstr "Original"
 
+msgid "Oriya"
+msgstr ""
+
+msgid "Oromo"
+msgstr ""
+
+msgid "Ossetian / Ossetic"
+msgstr ""
+
 msgid "Other"
 msgstr "Autre"
 
@@ -9627,17 +10113,15 @@ msgstr "Ecraser les fichiers de configuration?"
 msgid "PAL"
 msgstr "PAL"
 
+#, fuzzy
 msgid "PCM"
-msgstr "PCM"
+msgstr "PDC"
 
 msgid "PCR PID"
 msgstr "PID PCR"
 
 msgid "PDC"
 msgstr "PDC"
-
-msgid "PGS File"
-msgstr "Fichier PGS"
 
 msgid "PGS file"
 msgstr "Fichier PGS"
@@ -9680,6 +10164,12 @@ msgstr "Utiliser l'information ViaSat EPG quand elle est disponible."
 msgid "Package list update"
 msgstr "Mise à jour de la liste des paquets"
 
+msgid "Packaged locales only"
+msgstr ""
+
+msgid "Packages and associated locales"
+msgstr ""
+
 msgid "Packages to update"
 msgstr "Paquets à mettre à jour"
 
@@ -9698,6 +10188,9 @@ msgstr "Palaos"
 msgid "Palestine, State of"
 msgstr "Palestine, État de"
 
+msgid "Pali"
+msgstr ""
+
 #. TRANSLATORS: (aspect ratio policy: cropped content on left/right) in doubt, keep english term
 msgid "Pan&scan"
 msgstr "Pan&Scan"
@@ -9711,6 +10204,9 @@ msgstr "Actions de la sélection du thème/skin"
 
 msgid "Panic to"
 msgstr "Panique vers"
+
+msgid "Panjabi / Punjabi"
+msgstr ""
 
 msgid "Papua New Guinea"
 msgstr "Papouasie-Nouvelle-Guinée"
@@ -9987,7 +10483,7 @@ msgstr "Merci d'entrer une nouvelle description:"
 msgid "Please enter new name:"
 msgstr "Merci d'entrer un nouveau nom:"
 
-msgid "Please enter the correct pin code"
+msgid "Please enter the correct PIN code"
 msgstr "Veuillez saisir le code PIN correct"
 
 #, fuzzy
@@ -10013,7 +10509,7 @@ msgid "Please re-enter the new PIN code"
 msgstr "Veuillez ressaisir le nouveau code PIN"
 
 msgid "Please select a playlist to delete..."
-msgstr "Veuillez choisir une liste de lecture à supprimer…"
+msgstr "Veuillez choisir une liste de lecture à supprimer..."
 
 msgid "Please select a playlist..."
 msgstr "Veuillez choisir une liste de lecture..."
@@ -10142,9 +10638,9 @@ msgstr "Veuillez attendre l'activation de votre configuration réseau..."
 
 #, fuzzy
 msgid "Please wait while feeds state is being checked."
-msgstr "Veuillez patienter pendant que la recherche est en cours..."
+msgstr "Veuillez patienter pendant le test de votre réseau..."
 
-msgid "Please wait while scanning is in progress..."
+msgid "Please wait while scanning..."
 msgstr "Veuillez patienter pendant que la recherche est en cours..."
 
 msgid "Please wait while we configure your network..."
@@ -10410,6 +10906,14 @@ msgid "Press OK to get further details for %s"
 msgstr "Appuyez sur OK pour avoir des détails sur %s"
 
 #, python-format
+msgid "Press OK to install and use this language.  [%s]"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Press OK to install and use this locale.  [%s]"
+msgstr "Appuyez sur OK pour sélectionner un service."
+
+#, python-format
 msgid "Press OK to keep the currently selected %s skin."
 msgstr "Appuyez sur OK pour conserver le thème actuellement sélectionné %s."
 
@@ -10440,8 +10944,16 @@ msgstr "Appuyez sur OK pour basculer la sélection"
 msgid "Press OK to toggle the selection."
 msgstr "Appuyez sur OK pour basculer le choix."
 
+#, fuzzy, python-format
+msgid "Press OK to use this language.  [%s]"
+msgstr "Appuyez sur OK pour éditer les paramètres."
+
+#, fuzzy, python-format
+msgid "Press OK to use this locale.  [%s]"
+msgstr "Appuyez sur OK pour avoir des détails sur %s"
+
 msgid "Press OK, save and exit..."
-msgstr "Appuyer sur OK, sauvegarder et quitter…"
+msgstr "Appuyer sur OK, sauvegarder et quitter..."
 
 msgid "Press or select button and then press 'OK' for attach function."
 msgstr "Appuyez sur ou sélectionnez le bouton, puis appuyez sur «OK» pour attacher la fonction."
@@ -10534,7 +11046,7 @@ msgstr "Protéger le tri des menus"
 msgid "Protect movie list"
 msgstr "Protéger la liste de films"
 
-msgid "Protect on epg age"
+msgid "Protect on EPG age"
 msgstr "Protéger sur l'âge de l'EPG"
 
 msgid "Protect plugin browser"
@@ -10576,10 +11088,25 @@ msgstr ""
 msgid "Puerto Rico"
 msgstr "Porto Rico"
 
+msgid "Purge"
+msgstr ""
+
+msgid "Purge all but / Add / Delete the currently highlighted locale/language"
+msgstr ""
+
+msgid "Purge all but the current and permanent locales/languages.  Add the current locale/language if it is not installed.  Delete the current locale/language if it is installed."
+msgstr ""
+
 msgid "Purge deleted user bouquets"
 msgstr "Éliminer les bouquets utilisateurs supprimés"
 
+msgid "Purging all unused locales/languages..."
+msgstr ""
+
 msgid "Purple"
+msgstr ""
+
+msgid "Pushto / Pashto"
 msgstr ""
 
 msgid "Put A/V receiver to standby too."
@@ -10600,6 +11127,9 @@ msgstr "Version Python: "
 
 msgid "Qatar"
 msgstr "Qatar"
+
+msgid "Quechua"
+msgstr ""
 
 msgid "Query details from the Internet Movie Database"
 msgstr ""
@@ -10682,8 +11212,9 @@ msgstr ""
 msgid "RF Output Setup"
 msgstr "Sortie RF"
 
+#, fuzzy
 msgid "RGB"
-msgstr "RGB"
+msgstr "GB"
 
 msgid "Radio"
 msgstr "Radio"
@@ -10714,9 +11245,9 @@ msgstr ""
 msgid "Reader Statistics"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid "Ready to install \"%s\" ?"
-msgstr ""
+msgstr "Autoinstallation %s"
 
 #, python-format
 msgid "Ready to remove \"%s\" ?"
@@ -10804,7 +11335,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Receiver name"
-msgstr "Nom du service"
+msgstr "Nom du périphérique:"
 
 msgid "Receiver or driver does not support FCC"
 msgstr ""
@@ -11090,25 +11621,18 @@ msgstr "Répéter liste lecture"
 msgid "Repeat type"
 msgstr "Type de répétition"
 
-msgid ""
-"Repeating event currently recording.\n"
-"What do you want to do?"
-msgstr ""
-"Une programmation récurrente enregistre.\n"
-"Que voulez-vous faire?"
-
-msgid "Repeating event currently recording... What do you want to do?"
-msgstr "Répétition de l'événement en enregistrement... Que voulez-vous faire?"
-
 #, fuzzy
 msgid "Repeating the event currently recording... What do you want to do?"
-msgstr "Répétition de l'événement en enregistrement... Que voulez-vous faire?"
+msgstr "Répétition de l'événement en enregistrement. Que voulez-vous faire?"
 
 msgid "Repeats"
 msgstr "Répétitions"
 
 msgid "Replace `- ` in dialogs with colored text per speaker (like teletext subtitles for the hearing impaired)"
 msgstr "Remplacer `- ` dans les dialogues par un texte coloré en fonction de l’intervenant (comme les sous-titres télétexte pour les malentendants)."
+
+msgid "Replace newlines in EPG"
+msgstr "Remplacer les retour à la ligne dans l'EPG"
 
 msgid "Report problems to:"
 msgstr ""
@@ -11242,7 +11766,7 @@ msgid "Restore your receiver settings."
 msgstr "Restaurer les réglages de votre récepteur."
 
 msgid "Restoring..."
-msgstr "Restauration en cours…"
+msgstr "Restauration en cours..."
 
 msgid "Restricted 18+"
 msgstr ""
@@ -11266,10 +11790,10 @@ msgstr "Reprise de la lecture"
 
 #, fuzzy, python-format
 msgid "Retrieving %s commit log, please wait..."
-msgstr "Récupération de la liste des images - Veuillez patienter ..."
+msgstr "Récupération de la liste des images - Veuillez patienter..."
 
 msgid "Retrieving image list - Please wait..."
-msgstr "Récupération de la liste des images - Veuillez patienter ..."
+msgstr "Récupération de la liste des images - Veuillez patienter..."
 
 #, fuzzy
 msgid "Retrieving network server information, please wait..."
@@ -11284,9 +11808,6 @@ msgstr "Retour vers la liste des films"
 
 msgid "Return to previous service"
 msgstr "Retour au service précédent"
-
-msgid "Reunion"
-msgstr "La Réunion"
 
 msgid "Reverse bouquet buttons"
 msgstr "Inverse les touches bouquets"
@@ -11314,6 +11835,10 @@ msgstr "Roumanie"
 
 msgid "Romanian"
 msgstr "Roumain"
+
+#, fuzzy
+msgid "Romansh"
+msgstr "Roumanie"
 
 msgid "Root"
 msgstr "Root"
@@ -11344,6 +11869,10 @@ msgid "Run how often ?"
 msgstr ""
 
 #, fuzzy
+msgid "Rundi"
+msgstr "Burundi"
+
+#, fuzzy
 msgid "Running"
 msgstr "En cours d'éxécution"
 
@@ -11356,11 +11885,16 @@ msgstr "Fédération de Russie"
 msgid "Rwanda"
 msgstr "Rwanda"
 
+#, fuzzy
+msgid "Réunion"
+msgstr "La Réunion"
+
 msgid "S"
 msgstr ""
 
+#, fuzzy
 msgid "S-Video"
-msgstr "S-Vidéo"
+msgstr "PID vidéo"
 
 msgid "SABnzbd"
 msgstr ""
@@ -11388,8 +11922,9 @@ msgstr "SCR JESS"
 msgid "SCR Unicable"
 msgstr "SCR Unicable"
 
+#, fuzzy
 msgid "SDR"
-msgstr "SDR"
+msgstr "SNR"
 
 msgid "SINGLE LAYER DVD"
 msgstr "DVD SIMPLE COUCHE"
@@ -11404,16 +11939,10 @@ msgid "SNR:"
 msgstr "SNR:"
 
 msgid "SPDIF"
-msgstr "SPDIF"
-
-msgid "SRT File"
-msgstr "Fichier SRT"
+msgstr ""
 
 msgid "SRT file"
 msgstr "Fichier SRT"
-
-msgid "SSA File"
-msgstr "Fichier SSA"
 
 msgid "SSA file"
 msgstr "Fichier SSA"
@@ -11465,11 +11994,25 @@ msgstr "Même résolution que le skin"
 msgid "Samoa"
 msgstr "Samoa"
 
+#, fuzzy
+msgid "Samoan"
+msgstr "Samoa"
+
 msgid "San Marino"
 msgstr "Saint Marin"
 
+msgid "Sango"
+msgstr ""
+
+msgid "Sanskrit"
+msgstr ""
+
 msgid "Sao Tome and Principe"
 msgstr "Sao Tomé et Principe"
+
+#, fuzzy
+msgid "Sardinian"
+msgstr "Ukrainien"
 
 msgid "Sat"
 msgstr "Sam"
@@ -11517,7 +12060,7 @@ msgstr "Enregistrer/saisir du texte et quitter"
 
 #, fuzzy
 msgid "Save EPG Cache"
-msgstr "Sauvegarder les modifications"
+msgstr "sauvegarde du cache de l'EPG"
 
 #, fuzzy
 msgid "Save EPG data"
@@ -11653,9 +12196,6 @@ msgid_plural "Scanning completed, %d channels found"
 msgstr[0] "Recherche terminée, %d chaînes trouvées"
 msgstr[1] "Recherche terminée, %d chaînes trouvées"
 
-msgid "Scanning failed!"
-msgstr "Echec de la recherche!"
-
 msgid "Scanning..."
 msgstr "Recherche en cours..."
 
@@ -11702,8 +12242,8 @@ msgstr ""
 msgid "Searching"
 msgstr "Recherche en cours"
 
-msgid "Searching east ..."
-msgstr "Recherche à l'est ..."
+msgid "Searching east..."
+msgstr "Recherche à l'est..."
 
 msgid "Searching for available updates. Please wait..."
 msgstr "Recherche des mises à jour disponibles. Patienter..."
@@ -11711,8 +12251,8 @@ msgstr "Recherche des mises à jour disponibles. Patienter..."
 msgid "Searching for new installed or removed packages. Please wait..."
 msgstr "Recherche les nouveaux paquets installés ou supprimés. Patienter..."
 
-msgid "Searching west ..."
-msgstr "Recherche à l'ouest ..."
+msgid "Searching west..."
+msgstr "Recherche à l'ouest..."
 
 msgid "Second cable of motorized LNB"
 msgstr "Deuxième câble d'un LNB motorisé"
@@ -11811,7 +12351,7 @@ msgstr ""
 msgid "Select 'Yes' to remove all tuning data. Selecting this option will remove all tuning and bouquet data and will make timers non functional until the receiver is retuned."
 msgstr ""
 
-msgid "Select 'Yes' to remove all user customisations of skin data. Selecting this option will remove all user based skin customisations. All affected skins will return to their standard settings. This will also clear any customied boot logos and backdrops."
+msgid "Select 'Yes' to remove all user customizations of skin data. Selecting this option will remove all user based skin customizations. All affected skins will return to their standard settings. This will also clear any customized boot logos and backdrops."
 msgstr ""
 
 msgid "Select 'Yes' when you want to configure this tuner for ATSC"
@@ -11941,6 +12481,9 @@ msgstr "Sélectionner une chaîne"
 msgid "Select channel to record from"
 msgstr "Sélectionner la chaîne à enregistrer"
 
+msgid "Select char for replacing newlines in EPG."
+msgstr "Sélectionnez le caractère pour remplacer les retours à la ligne dans l'EPG."
+
 msgid "Select copy destination for:"
 msgstr "Sélectionnez la destination de copie pour:"
 
@@ -11974,6 +12517,9 @@ msgstr "Sélectionnez la configuration de votre antenne satellite p.e. antenne f
 
 msgid "Select how you want your receiver to keep the correct time, either from the DVB transponder, or from the internet using NTP. Or use Auto, which will favour using NTP, but will fall back to transponder time when no internet connection is available."
 msgstr "Sélectionnez comment vous souhaitez que votre récepteur conserve le temps exact, soit à partir du transpondeur DVB, soit à partir d’Internet en utilisant NTP. Ou utilisez Auto, qui favorisera l’utilisation de NTP, mais retombera sur le temps du transpondeur lorsqu’aucune connexion Internet n’est disponible."
+
+msgid "Select image"
+msgstr "Sélectionner une image"
 
 msgid "Select input device"
 msgstr "Sélectionner le périphérique entrée"
@@ -12031,6 +12577,9 @@ msgstr "Sélectionner la bande utilisateur (User Band) assignée à ce tuner. Ce
 
 msgid "Select the character or action under the keyboard cursor"
 msgstr "Sélectionnez le caractère ou l'action sous le curseur du clavier"
+
+msgid "Select the currently highlighted locale/language for the user interface"
+msgstr ""
 
 msgid "Select the currently highlighted location and exit"
 msgstr ""
@@ -12375,7 +12924,7 @@ msgstr "Utiliser l'interface comme interface par défaut"
 msgid "Set limits"
 msgstr "Fixer les limites"
 
-msgid "Set pin code persistent"
+msgid "Set persistent PIN code"
 msgstr "Rendre le code PIN persistant"
 
 msgid "Set sequence repeats if your aerial system requires this. Normally if the aerial system has been configured correctly sequence repeats will not be necessary. If yours does, recheck you have command order set correctly."
@@ -12525,6 +13074,9 @@ msgstr "Décalage"
 msgid "Shift: %s"
 msgstr "Décalage"
 
+msgid "Shona"
+msgstr ""
+
 msgid "Short filenames"
 msgstr "Noms de fichiers court"
 
@@ -12560,7 +13112,7 @@ msgid "Show EIT now/next in infobar"
 msgstr "Afficher EIT maintenant/suivant dans barre d'information"
 
 msgid "Show EPG for current channel..."
-msgstr "Afficher l’EPG de la chaîne actuelle ..."
+msgstr "Afficher l’EPG de la chaîne actuelle..."
 
 #, fuzzy
 msgid "Show HDD progress"
@@ -12811,7 +13363,7 @@ msgstr "Afficher l'EPG multi chaîne"
 
 #, fuzzy
 msgid "Show next image"
-msgstr "Afficher les messages CI"
+msgstr "Sélectionner une image"
 
 msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
 msgstr "Afficher une notification lorsque l’import des chaînes et/ou EPG du récepteur distant n’a pas réussi"
@@ -13025,6 +13577,9 @@ msgstr "Éteindre"
 msgid "Shutdown when in Standby"
 msgstr "Éteindre lorsqu'il est en veille"
 
+msgid "Sichuan Yi / Nuosu"
+msgstr ""
+
 msgid "Side by side"
 msgstr "Côte à côte"
 
@@ -13077,6 +13632,9 @@ msgstr "Jeu de titre simple (compatibilité avec les anciens lecteurs)"
 msgid "Simple zoom"
 msgstr "Simple"
 
+msgid "Sindhi"
+msgstr ""
+
 msgid "Singapore"
 msgstr "Singapour"
 
@@ -13095,7 +13653,11 @@ msgstr "Satellite unique"
 msgid "Single step (GOP)"
 msgstr "Pas unique (GOP)"
 
-msgid "Sint Maarten (Dutch part)"
+msgid "Sinhala / Sinhalese"
+msgstr ""
+
+#, fuzzy
+msgid "Sint Maarten"
 msgstr "Saint-Martin (Royaume des Pays-Bas)"
 
 msgid "Site latitude"
@@ -13234,7 +13796,7 @@ msgstr "Société/Politique/Economie"
 msgid "SocketMMI"
 msgstr "Douille IMM (SocketMMI)"
 
-msgid "Soft multiboot"
+msgid "Soft MultiBoot"
 msgstr ""
 
 #, fuzzy
@@ -13274,6 +13836,10 @@ msgstr "Informations gestionnaire logiciel"
 msgid "Solomon Islands"
 msgstr "Îles Salomon"
 
+#, fuzzy
+msgid "Somali"
+msgstr "Somalie"
+
 msgid "Somalia"
 msgstr "Somalie"
 
@@ -13282,6 +13848,10 @@ msgstr "Certains téléviseurs ne se réveillent pas en veille lorsqu’ils reç
 
 msgid "Some plugins are not available:\n"
 msgstr "Certains plugins ne sont pas disponibles:\n"
+
+#, fuzzy
+msgid "Sorbian"
+msgstr "Serbe"
 
 msgid "Sorry only possible to record 2 channels at once!"
 msgstr ""
@@ -13339,6 +13909,10 @@ msgstr "Trier l’ordre des entrées des menus"
 msgid "Sort order for setup entries"
 msgstr "Définir l’ordre des entrées du menu de configuration"
 
+#, fuzzy
+msgid "Sort order for the language list."
+msgstr "Trier l’ordre des entrées des menus"
+
 msgid "Sort plugins list to default?"
 msgstr "Trier la liste des extensions par défaut?"
 
@@ -13348,6 +13922,10 @@ msgstr "Tri heures"
 
 msgid "Sorting of playlists"
 msgstr "Tri des listes de lecture"
+
+#, fuzzy
+msgid "Sotho, Southern"
+msgstr "Sud Soudan"
 
 msgid "Sound"
 msgstr "Son"
@@ -13371,6 +13949,9 @@ msgstr "Afrique du Sud"
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Géorgie du Sud et îles Sandwich du Sud"
 
+msgid "South Ndebele"
+msgstr ""
+
 msgid "South Sudan"
 msgstr "Sud Soudan"
 
@@ -13379,6 +13960,9 @@ msgstr "Espagne"
 
 msgid "Spanish"
 msgstr "Espagnol"
+
+msgid "Spanish / Castilian"
+msgstr ""
 
 #, fuzzy
 msgid "Special"
@@ -13443,10 +14027,6 @@ msgid "Sri Lanka"
 msgstr "Sri Lanka"
 
 msgid "Standard"
-msgstr "Standard"
-
-#, fuzzy
-msgid "Standard menu"
 msgstr "Standard"
 
 msgid "Standart list"
@@ -13805,6 +14385,10 @@ msgstr "Soudan"
 msgid "Sun"
 msgstr "Dim"
 
+#, fuzzy
+msgid "Sundanese"
+msgstr "Dimanche"
+
 msgid "Sunday"
 msgstr "Dimanche"
 
@@ -13821,6 +14405,9 @@ msgstr "Suriname"
 msgid "Svalbard and Jan Mayen"
 msgstr "Svalbard et Jan Mayen"
 
+msgid "Swahili"
+msgstr ""
+
 msgid "Swap PiP"
 msgstr "Permuter PiP"
 
@@ -13830,7 +14417,11 @@ msgstr "Inverser PiP et image principale"
 msgid "Swap services"
 msgstr "Inverser fenêtres services"
 
-msgid "Swaziland"
+msgid "Swati"
+msgstr ""
+
+#, fuzzy
+msgid "Swaziland / Eswatini"
 msgstr "Swaziland"
 
 msgid "Sweden"
@@ -13985,7 +14576,7 @@ msgstr ""
 "\n"
 "Traducteur: Pr2\n"
 "Support: www.openpli.org\n"
-"Dernière MAJ: 15-07-2021"
+"Dernière MAJ: 12-09-2021"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "Fichier TS trop grand pour le niveau 1 ISO9660!"
@@ -14014,17 +14605,35 @@ msgstr "Sous-titres TXT - lang"
 msgid "Table of contents for collection"
 msgstr "Table des matières pour la collection"
 
+msgid "Tagalog"
+msgstr ""
+
 msgid "Tags"
 msgstr "Etiquettes"
+
+#, fuzzy
+msgid "Tahitian"
+msgstr "Croate"
 
 msgid "Taiwan"
 msgstr "Taïwan"
 
+#, fuzzy
+msgid "Tajik"
+msgstr "Tadjikistan"
+
 msgid "Tajikistan"
 msgstr "Tadjikistan"
 
+msgid "Tamil"
+msgstr ""
+
 msgid "Tanzania, United Republic of"
 msgstr "Tanzanie (République unie de)"
+
+#, fuzzy
+msgid "Tatar"
+msgstr "Qatar"
 
 #, fuzzy
 msgid "Teletext"
@@ -14099,6 +14708,9 @@ msgstr "Sports d'hiver"
 #, fuzzy
 msgid "Telnet setup"
 msgstr "Paramètres du réseau"
+
+msgid "Telugu"
+msgstr ""
 
 msgid "Temperature and fan control"
 msgstr "Contrôle ventilateur et température"
@@ -14191,6 +14803,9 @@ msgstr "Le code PIN a été changé avec succès."
 msgid "The PIN code has been saved successfully."
 msgstr "Le code PIN a été enregistré avec succès."
 
+msgid "The PIN code you entered is wrong."
+msgstr "Le code PIN saisi est mauvais."
+
 msgid "The PIN codes you entered are different."
 msgstr "Les codes PIN saisis sont différents."
 
@@ -14245,7 +14860,7 @@ msgstr ""
 msgid ""
 "The overscan wizard has been completed.\n"
 "\n"
-"Note: you can always start the Overscan wizard later,  via\n"
+"Note: you can always start the Overscan wizard later, via\n"
 "\n"
 "Menu->Installation->System->Audio/Video->Overscan wizard"
 msgstr ""
@@ -14289,18 +14904,12 @@ msgstr ""
 msgid "The path %s already exists."
 msgstr "Le chemin %s existe déjà."
 
-msgid "The pin code you entered is wrong."
-msgstr "Le code PIN saisi est mauvais."
-
 #, python-format
 msgid "The results have been written to %s"
 msgstr "Les résultats ont été écrit sur %s."
 
 msgid "The saved PIN was cleared."
 msgstr "Le code PIN sauvegardé a été effacé."
-
-msgid "The selected langugage is unavailable - using en_EN"
-msgstr ""
 
 msgid "The sleep timer has been activated."
 msgstr "La veille programmée a été activée."
@@ -14359,12 +14968,9 @@ msgstr ""
 "L'extension LAN sans fil n'est pas installée!\n"
 "Veuillez l'installer."
 
-msgid "There are at least "
-msgstr "Il y a au moins "
-
 #, python-format
-msgid "There are at least %s updates available."
-msgstr "Il y a au moins %s mises à jour disponibles."
+msgid "There are at least %d updates available."
+msgstr "Il y a au moins %d mises à jour disponibles."
 
 msgid "There are currently no outstanding actions."
 msgstr "Il n'y a actuellement aucune action marquante."
@@ -14403,6 +15009,9 @@ msgstr ""
 msgid "This allows you to set the number of digits you can input when selecting channels using number input."
 msgstr ""
 
+msgid "This bouquet is protected by a parental control PIN"
+msgstr "Ce bouquet est protégé par un PIN contrôle parental"
+
 msgid "This can be useful when using the CI(+) module. After the end of the recording, the service will be automatically stopped."
 msgstr "Cela peut être utile lors de l’utilisation du module CI(+). Après la fin de l’enregistrement, le service sera automatiquement arrêté."
 
@@ -14412,6 +15021,14 @@ msgstr "Ce champ vous permet de chercher un taux de symbole additionnel de %s."
 
 msgid "This is a multitype tuner. Available options depend on the hardware."
 msgstr "Ceci est un tuner multi type. Les options disponibles diffèrent en fonction du matériel."
+
+#, python-format
+msgid "This is the currently selected language.  [%s]"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "This is the currently selected locale.  [%s]"
+msgstr "Supprimer le titre actuellement sélectionné"
 
 msgid "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
 msgstr "Ceci est l’ordre dans laquelle les commandes DiSEqC sont envoyées vers un système aérien. L’ordre doit correspondre exactement avec l’ordre des périphériques physiques le long du câble (en démarrant du récepteur vers la fin)."
@@ -14555,11 +15172,11 @@ msgstr "Configure le retard général des pistes audio stéréo."
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Cette option permet de régler le niveau de suppression de bruit de moustique (le bruit de moustique est un aliasing aléatoire en raison de la forte compression). Evidemment, cela va au détriment des détails de l'image."
 
-msgid "This option sets  the picture contrast."
-msgstr "Cette option définit le contraste de l'image."
-
 msgid "This option sets the picture brightness."
 msgstr "Cette option définit la luminosité de l'image."
+
+msgid "This option sets the picture contrast."
+msgstr "Cette option définit le contraste de l'image."
 
 msgid "This option sets the picture flesh tones."
 msgstr "Cette option définit dans l’image les tons de la peau."
@@ -14598,6 +15215,9 @@ msgstr "Ce récepteur ne peut pas décoder des flux %s!"
 #, fuzzy
 msgid "This screen is not yet available."
 msgstr "Il n'y a pas de mise à jour disponible."
+
+msgid "This service is protected by a parental control PIN"
+msgstr "Ce service est protégé par un PIN contrôle parental"
 
 msgid "This sets the maximum number of log files that will be retained.  Files in excess of this number will be deleted."
 msgstr ""
@@ -14647,10 +15267,11 @@ msgstr ""
 "- Aucune adresse IP valide n'a été trouvée\n"
 "- Veuillez vérifier votre DHCP, paramètres câblage et adaptateur"
 
+#, fuzzy
 msgid ""
 "This test checks whether your LAN adapter is set up for automatic IP address configuration with DHCP.\n"
 "If you get a \"disabled\" message:\n"
-" - then your LAN adapter is configured for manual IP setup\n"
+"- then your LAN adapter is configured for manual IP setup\n"
 "- verify thay you have entered the correct IP information in the adapter setup dialog.\n"
 "If you get an \"enabeld\" message:\n"
 "-verify that you have a configured and working DHCP server in your network."
@@ -14693,6 +15314,12 @@ msgstr "Jeudi"
 #, fuzzy
 msgid "TiVo support"
 msgstr "Pas supporté"
+
+msgid "Tibetan"
+msgstr ""
+
+msgid "Tigrinya"
+msgstr ""
 
 msgid "Time"
 msgstr "Heure"
@@ -14829,7 +15456,8 @@ msgstr "PauseDirect impossible!"
 msgid "Timezone"
 msgstr "Fuseau horaire"
 
-msgid "Timor-Leste"
+#, fuzzy
+msgid "Timor-Leste / East Timor"
 msgstr "Timor Oriental"
 
 msgid "Title"
@@ -14944,9 +15572,8 @@ msgstr ""
 msgid "Total CPU benchmark"
 msgstr ""
 
-#, python-format
-msgid "Total clients streaming: %d (%s)"
-msgstr "Nombre total de clients de flux (stream) : %d (%s)"
+msgid "Total clients streaming: "
+msgstr "Nombre total de clients de flux (stream): "
 
 #, fuzzy
 msgid "Total flash"
@@ -15023,14 +15650,16 @@ msgstr ""
 msgid "TrueType font (SD)"
 msgstr ""
 
-msgid "Try to find used transponders in cable network.. please wait..."
-msgstr "Recherche des transpondeurs utilisés sur réseau câblé… Veuillez patienter..."
-
-msgid "Try to find used transponders in terrestrial network... please wait..."
-msgstr "Recherche des transpondeurs utilisés sur réseau terrestre… Veuillez patienter..."
-
 msgid "Trying to download a new packetlist. Please wait..."
 msgstr "Essai téléchargement nouvelle liste paquet. Veuillez patienter..."
+
+#, fuzzy
+msgid "Tsonga"
+msgstr "Tonga"
+
+#, fuzzy
+msgid "Tswana"
+msgstr "Botswana"
 
 msgid "Tue"
 msgstr "Mar"
@@ -15099,6 +15728,10 @@ msgstr "Turquie"
 msgid "Turkish"
 msgstr "Turc"
 
+#, fuzzy
+msgid "Turkmen"
+msgstr "Turquie"
+
 msgid "Turkmenistan"
 msgstr "Turkmenistan"
 
@@ -15129,6 +15762,10 @@ msgstr "Taille du pas de rotation"
 
 msgid "Tuvalu"
 msgstr "Tuvalu"
+
+#, fuzzy
+msgid "Twi"
+msgstr "Deux"
 
 msgid "Two"
 msgstr "Deux"
@@ -15165,7 +15802,7 @@ msgstr ""
 "p.e. http://second_demo:8001"
 
 msgid "USALS"
-msgstr "USALS"
+msgstr ""
 
 msgid "USALS automatically moves a motorised dish to the correct satellite based on the coordinates entered by the user. Without USALS each satellite will need to be setup and saved individually."
 msgstr "USALS déplace automatiquement une antenne motorisée sur le satellite correct sur base des coordonnées entrées par l’utilisateur. Sans USALS chaque satellite aura besoin d’être configuré et sauvegardé individuellement."
@@ -15181,6 +15818,9 @@ msgstr ""
 
 msgid "Uganda"
 msgstr "Ouganda"
+
+msgid "Uighur / Uyghur"
+msgstr ""
 
 msgid "Ukraine"
 msgstr "Ukraine"
@@ -15309,15 +15949,15 @@ msgstr "Mise à jour terminée. Voulez-vous redémarrer votre récepteur?"
 msgid "Update failed. Your receiver does not have a working internet connection."
 msgstr "La mise à jour a échoué. Votre récepteur ne dispose pas de connexion Internet."
 
+msgid "Update feed not available."
+msgstr "MAJ feed non disponible."
+
 msgid "Update has completed."
 msgstr "La mise à jour est terminée."
 
 #, fuzzy
 msgid "Update interval (in seconds)"
 msgstr "Intervalle du diaporama (s)"
-
-msgid "Updatefeed not available."
-msgstr "MAJ feed non disponible."
 
 msgid "Updating"
 msgstr "Mise à jour en cours"
@@ -15331,6 +15971,9 @@ msgstr "Majuscules"
 #, fuzzy
 msgid "Uptime"
 msgstr "Disponibilité: %s\n"
+
+msgid "Urdu"
+msgstr ""
 
 msgid "Uruguay"
 msgstr "Uruguay"
@@ -15438,6 +16081,10 @@ msgid "Use slim screen"
 msgstr "Désactiver l’écran d’accueil"
 
 #, fuzzy
+msgid "Use the UP and DOWN buttons to select your locale/language then press the OK button to continue."
+msgstr "Veuillez utiliser les touches HAUT et BAS pour choisir votre langue. Ensuite appuyez sur OK."
+
+#, fuzzy
 msgid "Use the alternative screen"
 msgstr "Éditer les alternatifs"
 
@@ -15496,6 +16143,14 @@ msgstr "Type de recherche de service utilisé"
 msgid "User - bouquets"
 msgstr "Perso - bouquets"
 
+#, python-format
+msgid "User Band %d"
+msgstr "Bande utilisateur %d"
+
+#, python-format
+msgid "User Band %d (%s)"
+msgstr "Bande utilisateur %d(%s)"
+
 msgid "User ID"
 msgstr "ID de l’utilisateur"
 
@@ -15549,6 +16204,10 @@ msgstr "Habituellement, lorsque la langue des sous-titres est la même que la la
 msgid "Utilities"
 msgstr "Capacités: "
 
+#, fuzzy
+msgid "Uzbek"
+msgstr "Ouzbékistan"
+
 msgid "Uzbekistan"
 msgstr "Ouzbékistan"
 
@@ -15565,11 +16224,11 @@ msgstr ""
 msgid "VMGM (intro trailer)"
 msgstr "VMGM (intro bande-annonce)"
 
-msgid "VOB File"
-msgstr "Fichier VOB"
-
 msgid "VOB file"
 msgstr "Fichier VOB"
+
+msgid "Valid"
+msgstr ""
 
 msgid "Valid ONID/TSID look at www.lyngsat.com..."
 msgstr "ONID/TSID valide regarder sur www.lyngsat.com..."
@@ -15580,7 +16239,11 @@ msgstr "Vanuatu"
 msgid "Various"
 msgstr "Divers"
 
-msgid "Venezuela (Bolivarian Republic of)"
+msgid "Venda"
+msgstr ""
+
+#, fuzzy
+msgid "Venezuela, Bolivarian Republic of"
 msgstr "Venezuela (République bolivarienne du)"
 
 msgid "Vertical"
@@ -15657,14 +16320,19 @@ msgstr "Codec vidéo - taille - format"
 msgid "Viet Nam"
 msgstr "Vietnam"
 
+#, fuzzy
+msgid "Vietnamese"
+msgstr "Nom de fichier"
+
 msgid "View Rass interactive..."
 msgstr "Afficher Rass interactif..."
 
 msgid "View details"
 msgstr "Voir les détails"
 
-msgid "View list of available "
-msgstr "Voir la liste des disponibles "
+#, fuzzy, python-format
+msgid "View list of available %s extensions."
+msgstr "Voir liste extensions EPG disponibles."
 
 msgid "View list of available CommonInterface extensions"
 msgstr "Voir liste extensions Interface Commune disponibles."
@@ -15722,7 +16390,8 @@ msgstr "violet"
 msgid "Virgin Islands (British)"
 msgstr "Îles Vierges (britanniques)"
 
-msgid "Virgin Islands (U.S.)"
+#, fuzzy
+msgid "Virgin Islands (US)"
 msgstr "Îles Vierges (USA)"
 
 #, fuzzy
@@ -15746,6 +16415,9 @@ msgstr "Clavier virtuel"
 #, fuzzy, python-format
 msgid "Vol: %s"
 msgstr "Vidéo: %s fps"
+
+msgid "Volapük"
+msgstr ""
 
 msgid "Voltage mode"
 msgstr "Mode tension"
@@ -15773,8 +16445,9 @@ msgstr "Connexion WLAN"
 msgid "WAN connection information"
 msgstr "Connexion WLAN"
 
+#, fuzzy
 msgid "WEP"
-msgstr "WEP"
+msgstr "EPG"
 
 msgid "WLAN connection"
 msgstr "Connexion WLAN"
@@ -15782,14 +16455,15 @@ msgstr "Connexion WLAN"
 msgid "WMA Pro"
 msgstr ""
 
+#, fuzzy
 msgid "WPA"
-msgstr "WPA"
+msgstr "PAL"
 
 msgid "WPA or WPA2"
-msgstr "WPA ou WPA2"
+msgstr ""
 
 msgid "WPA2"
-msgstr "WPA2"
+msgstr ""
 
 msgid "WSS on 4:3"
 msgstr "WSS sur 4:3"
@@ -15851,6 +16525,9 @@ msgstr "Type de réveil"
 msgid "Wallis and Futuna"
 msgstr "Wallis et Futuna"
 
+msgid "Walloon"
+msgstr ""
+
 msgid "Warning"
 msgstr "Avertissement"
 
@@ -15862,6 +16539,12 @@ msgstr ""
 "Mise en garde !\n"
 "Il s’agit d’une option pour les utilisateurs avancés.\n"
 "Vraiment désactiver la détection des conflits de programmation?"
+
+msgid "Warning: FBC-C V1 tuner should be connected to the first slot to work correctly. Otherwise, only 2 out of 8 demodulators will be available when connected in the second slot. "
+msgstr "Avertissement: Le tuner FBC-C V1 doit être connecté dans le slot 1 pour fonctionner correctement. Sinon, seuls 2 démodulateurs sur 8 seront disponibles lorsqu’il est connecté dans le slot 2."
+
+msgid "Warning: Overrides are currently active!"
+msgstr ""
 
 msgid "Warning: no LNB; using factory defaults."
 msgstr "Attention: pas de LNB; utiliser la configuration par défaut."
@@ -15941,11 +16624,18 @@ msgstr ""
 msgid "Welcome..."
 msgstr "Bienvenue..."
 
+msgid "Welsh"
+msgstr ""
+
 msgid "West"
 msgstr "Ouest"
 
 msgid "West limit set"
 msgstr "Fixer limite Ouest"
+
+#, fuzzy
+msgid "Western Frisian"
+msgstr "Sahara Occidental"
 
 msgid "Western Sahara"
 msgstr "Sahara Occidental"
@@ -15978,7 +16668,7 @@ msgid "When enabled the arrow buttons around the OK button will follow the 'neut
 msgstr "Lorsqu'elle est activée, les boutons flèches autour du bouton OK réagiront comme le style de zapping 'neutrino' à la place de enigma2."
 
 msgid "When enabled the left, right, CH+/-, B+/-, P+/- buttons will follow the 'neutrino' style zap controls instead of the enigma2 style."
-msgstr "Lorsqu'elle est activée, les boutons Gauche, Droite, CH+/-, B+/-, P+/-  réagiront comme le style de zapping 'neutrino' à la place de enigma2."
+msgstr "Lorsqu'elle est activée, les boutons Gauche, Droite, CH+/-, B+/-, P+/- réagiront comme le style de zapping 'neutrino' à la place de enigma2."
 
 msgid "When enabled the receiver will automatically return to standby when the TV is turned off."
 msgstr "Lorsqu’il est activé, le récepteur revient automatiquement en veille lorsque le téléviseur est éteint."
@@ -16010,8 +16700,8 @@ msgstr "Lorsqu'elle est activée, vous pouvez spécifier une plage horaire penda
 msgid "When enabled you can specify an extra timeframe when the inactivity sleeptimer is ignored. Not the detection is disabled during this timeframe but the inactivity timeout is disabled"
 msgstr "Lorsqu'elle est activée, vous pouvez spécifier une plage horaire pendant laquelle l'arrêt automatique est ignoré. La détection n'est pas désactivée pendant cette période, juste le timer d'inactivité est désactivé."
 
-msgid "When enabled you can zap channels with the  CH+/-, B+/-, P+/- buttons instead of opening the channel selection list."
-msgstr "Lorsqu'elle est activée, vous zappez les chaînes avec les boutons CH+/-, B+/-, P+/-  à la place d'ouvrir la sélection des chaînes."
+msgid "When enabled you can zap channels with the CH+/-, B+/-, P+/- buttons instead of opening the channel selection list."
+msgstr "Lorsqu'elle est activée, vous zappez les chaînes avec les boutons CH+/-, B+/-, P+/- à la place d'ouvrir la sélection des chaînes."
 
 msgid "When enabled you get the channel selection list via the OK button, the infobar toggle is then transfered to exit button"
 msgstr "Lorsqu'elle est activée, vous obtenez la liste des chaînes en appuyant sur le bouton OK, le changement de barre d'infos est alors reporté sur le bouton Exit."
@@ -16354,6 +17044,9 @@ msgstr "Configuration de l'Assistant"
 msgid "Wizard to arrange the overscan"
 msgstr "Assistant pour régler l'overscan"
 
+msgid "Wolof"
+msgstr ""
+
 #, python-format
 msgid "Would you save the entered PIN %s persistent?"
 msgstr "Voulez-vous enregistrer le code PIN %s comme persistant?"
@@ -16372,20 +17065,23 @@ msgstr "Ecrire dans /tmp/positionersetup.log"
 msgid "XBox support"
 msgstr "Pas supporté"
 
+msgid "Xhosa"
+msgstr ""
+
 msgid "YCbCr420"
-msgstr "YCbCr420"
+msgstr ""
 
 msgid "YCbCr422"
-msgstr "YCbCr422"
+msgstr ""
 
 msgid "YCbCr444"
-msgstr "YCbCr444"
+msgstr ""
 
 msgid "YES"
 msgstr "OUI"
 
 msgid "YPbPr"
-msgstr "YPbPr"
+msgstr ""
 
 msgid "Year"
 msgstr "Année"
@@ -16456,6 +17152,13 @@ msgstr "Oui, sans sauvegarde"
 msgid "Yesterday"
 msgstr "Hier"
 
+msgid "Yiddish"
+msgstr ""
+
+#, fuzzy
+msgid "Yoruba"
+msgstr "Aruba"
+
 #, python-format
 msgid ""
 "You already have a channel list installed,\n"
@@ -16503,7 +17206,7 @@ msgid ""
 "\n"
 "When you select a different skin, the user interface of your receiver will restart.\n"
 "\n"
-"Note: you can always start the Overscan wizard later,  via\n"
+"Note: you can always start the Overscan wizard later, via\n"
 "\n"
 "menu->installation->system->Overscan wizard"
 msgstr ""
@@ -16536,8 +17239,8 @@ msgid "You didn't select a channel to record from."
 msgstr "Vous n'avez pas sélectionné une chaîne à enregistrer."
 
 #, python-format
-msgid "You have to wait %s!"
-msgstr "Vous devez attendre %s!"
+msgid "You have to wait %(min)d minutes, %(sec)d seconds!"
+msgstr "Vous devez attendre %(min)d minutes, %(sec)d secondes!"
 
 msgid "You must set a root password in order to be able to use network services, such as FTP, telnet or ssh."
 msgstr ""
@@ -16583,7 +17286,6 @@ msgstr ""
 msgid "Your %s %s?"
 msgstr ""
 
-#, fuzzy
 msgid "Your PIN code is 0000. This is the default PIN code and it disables parental control!\n"
 msgstr "Votre code PIN est 0000. Il s'agit du code PIN par défaut et il désactive donc le contrôle parental!\n"
 
@@ -16764,6 +17466,9 @@ msgstr "Paramètres du serveur de nom"
 msgid "ZeroTierVPN"
 msgstr ""
 
+msgid "Zhuang / Chuang"
+msgstr ""
+
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
@@ -16787,6 +17492,9 @@ msgid "Zoom from left"
 msgstr ""
 
 msgid "Zoom from right"
+msgstr ""
+
+msgid "Zulu"
 msgstr ""
 
 msgid "[alternative edit]"
@@ -16876,7 +17584,7 @@ msgstr "et sélectionne la chaîne précédente"
 
 #, fuzzy
 msgid "any recordings"
-msgstr "Enregistrements"
+msgstr "Enregistrement Immédiat"
 
 msgid "are you sure to cancel all changes"
 msgstr "êtes-vous certains d'annuler tous les changements"
@@ -16913,6 +17621,9 @@ msgstr "Retour"
 
 msgid "background image"
 msgstr "Image d'arrière-plan"
+
+msgid "backup EPG cache"
+msgstr "sauvegarde du cache de l'EPG"
 
 msgid "ballet"
 msgstr "Ballet"
@@ -17049,6 +17760,10 @@ msgstr ""
 msgid "delete time - show record time (Trash ONLY)"
 msgstr ""
 
+#, fuzzy
+msgid "deleted"
+msgstr "Supprimé"
+
 msgid "descramble and record ecm"
 msgstr "Décoder et enregistrer ecm"
 
@@ -17139,13 +17854,10 @@ msgstr "Divertissement (6-14 ans)"
 msgid "entertainment (general)"
 msgstr "Divertissement (6-14 ans)"
 
-msgid "epg cache backup"
-msgstr "sauvegarde du cache de l'epg"
-
 msgid "equestrian"
 msgstr "Équestre"
 
-msgid "error starting scanning"
+msgid "error starting scan"
 msgstr "erreur au démarrage de la recherche"
 
 msgid "error while scanning"
@@ -17329,6 +18041,10 @@ msgstr "Insérer un marqueur ici"
 msgid "insert mark here"
 msgstr "Insérer un marqueur ici"
 
+#, fuzzy
+msgid "installed"
+msgstr "Désinstaller"
+
 msgid "invalid type"
 msgstr "Type non valide"
 
@@ -17343,6 +18059,10 @@ msgstr "Se rendre vers le titre suivant"
 
 msgid "jump to chapter by number"
 msgstr "Aller au chapitre par numéro"
+
+#, fuzzy
+msgid "kB"
+msgstr "B"
 
 msgid "languages"
 msgstr "Langues"
@@ -17398,10 +18118,11 @@ msgstr "Mins"
 
 #, fuzzy
 msgid "minute"
-msgstr "Minutes"
+msgstr "%d minute"
 
+#, fuzzy
 msgid "minutes"
-msgstr "Minutes"
+msgstr "%d minutes"
 
 msgid "month"
 msgstr "Mois"
@@ -17434,8 +18155,9 @@ msgstr "Film/Théâtre (général)"
 msgid "multi"
 msgstr "multi"
 
+#, fuzzy
 msgid "multinorm"
-msgstr "Multinorme"
+msgstr "multi"
 
 #, fuzzy
 msgid "music (general)"
@@ -17463,6 +18185,9 @@ msgstr "Un"
 
 msgid "never"
 msgstr "Jamais"
+
+msgid "new line"
+msgstr "nouvelle ligne"
 
 msgid "new media"
 msgstr "Nouveaux médias"
@@ -17512,6 +18237,9 @@ msgstr "aucun gestionnaire de ressource"
 msgid "no storage devices found"
 msgstr "Aucun périphérique de stockage trouvé"
 
+msgid "none"
+msgstr "Aucun"
+
 msgid "normal"
 msgstr "Normal"
 
@@ -17533,6 +18261,9 @@ msgstr "frontend non valide"
 msgid "not_tested"
 msgstr "pas_testé"
 
+msgid "nothing"
+msgstr "rien"
+
 msgid "nothing connected"
 msgstr "Rien n'est connecté"
 
@@ -17553,6 +18284,9 @@ msgstr "off ou WPA2 on"
 
 msgid "offset is"
 msgstr "Position finale sur"
+
+msgid "omit"
+msgstr "omettre"
 
 msgid "on"
 msgstr "Marche"
@@ -17613,7 +18347,7 @@ msgstr "Enregistrements"
 
 #, fuzzy
 msgid "real recordings or streaming"
-msgstr "Emplacement enregistrements programmés"
+msgstr "Nombre total de clients de flux (stream): "
 
 #, fuzzy
 msgid "reboot system"
@@ -17711,8 +18445,9 @@ msgstr "Science-fiction/Fantastique/Horreur"
 msgid "se"
 msgstr "Utiliser"
 
+#, fuzzy
 msgid "seconds"
-msgstr "Secondes"
+msgstr "%d seconde"
 
 msgid "select CAId's"
 msgstr "Sélectionner CAId's"
@@ -17817,6 +18552,9 @@ msgstr "Science sociale/Spirituelle"
 msgid "softcam"
 msgstr "Redémarrer softcam"
 
+msgid "space"
+msgstr "espace"
+
 #, fuzzy
 msgid "special (general)"
 msgstr "Sport (général)"
@@ -17825,7 +18563,7 @@ msgid "special events"
 msgstr "Évènements spéciaux"
 
 msgid "special format data DVD (HDTV compatible)"
-msgstr "Format spécial  données DVD (compatible HDTV)"
+msgstr "Format spécial données DVD (compatible HDTV)"
 
 #, fuzzy
 msgid "sport (general)"
@@ -17893,14 +18631,8 @@ msgstr "Tennis/Squash"
 msgid "testing"
 msgstr "Travail en cours..."
 
-msgid "this bouquet is protected by a parental control pin"
-msgstr "ce bouquet est protégé par un PIN contrôle parental"
-
 msgid "this recording"
 msgstr "Cet enregistrement"
-
-msgid "this service is protected by a parental control pin"
-msgstr "Ce service est protégé par un PIN contrôle parental"
 
 msgid "toggle time, chapter, audio, subtitle info"
 msgstr "Commuter temps, chapitre, audio, info sous-titres"

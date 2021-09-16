@@ -30,6 +30,7 @@ class DVDToolbox(Screen):
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
+		self.setTitle(_("DVD media toolbox"))
 
 		self["key_red"] = StaticText(_("Exit"))
 		self["key_green"] = StaticText(_("Update"))
@@ -54,10 +55,6 @@ class DVDToolbox(Screen):
 		})
 		self.update()
 		hotplugNotifier.append(self.update)
-		self.onLayoutFinish.append(self.layoutFinished)
-
-	def layoutFinished(self):
-		self.setTitle(_("DVD media toolbox"))
 
 	def pageUp(self):
 		self["details"].pageUp()

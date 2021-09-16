@@ -31,6 +31,7 @@ class TitleProperties(Screen, ConfigListScreen):
 
 	def __init__(self, session, parent, project, title_idx):
 		Screen.__init__(self, session)
+		self.setTitle(_("Properties of current title"))
 		self.parent = parent
 		self.project = project
 		self.title_idx = title_idx
@@ -63,10 +64,6 @@ class TitleProperties(Screen, ConfigListScreen):
 		}, -2)
 
 		self.onShown.append(self.update)
-		self.onLayoutFinish.append(self.layoutFinished)
-
-	def layoutFinished(self):
-		self.setTitle(_("Properties of current title"))
 
 	def initConfigList(self, element=None):
 		try:
