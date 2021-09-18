@@ -24,7 +24,7 @@
 		<!-- Menu / Setup / Audio and Video -->
 		<menu entryID="video_selection" level="0" text="Audio &amp; Video" weight="5">
 			<id val="video" />
-			<item entryID="av_setup" level="0" text="A/V Setup" weight="5"><setup id="avsetup" /></item>
+			<item entryID="av_setup" level="0" text="Audio/Video Setup" weight="5"><setup id="AudioVideo" /></item>
 			<item entryID="autolanguage_setup" level="0" text="Auto Language Setup" weight="10"><setup id="AutoLanguage" /></item>
 		</menu>
 
@@ -93,7 +93,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 				<id val="lcd" />
 				<item entryID="display_skin_selector" level="0" text="Skin Setup" weight="5"><screen module="SkinSelector" screen="LcdSkinSelector" /></item>
 				<item entryID="lcd_setup" level="1" text="LCD Setup" weight="10"><setup id="FrontDisplay" /></item>
-				<item entryID="led_setup" level="1" text="LED Setup" weight="15"><setup id="LedDisplay" /></item>
+				<item entryID="led_setup" level="1" text="LED Setup" weight="15"><setup id="LEDDisplay" /></item>
 			</menu>
 			<item entryID="subtitle_setup" level="2" text="Subtitle Setup" weight="20"><setup id="Subtitle" /></item>
 			<item entryID="locale_setup" level="0" text="Locale/Language Setup" weight="25"><screen module="LocaleSelection" /></item>
@@ -174,7 +174,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 			<item entryID="flash_image" level="0" text="Flash Image" weight="30" requires="canFlashWithOfgwrite"><screen module="FlashImage" screen="SelectImage" /></item>
 			<item entryID="device_setup" level="0" text="Keyboard / Remote Control Setup" weight="35"><screen module="InputDeviceSetup" screen="InputDeviceSetup" /></item>
 			<item entryID="driver_setup" level="1" text="Input Driver Setup" weight="40"><screen module="InputDeviceSetup" screen="InputDeviceSelection" /></item>
-			<item entryID="rfmod_setup" level="1" text="RF Output Setup" weight="45" requires="RfModulator"><setup id="RFmod" /></item>
+			<item entryID="rfmod_setup" level="1" text="RF Modulator Output Setup" weight="45" requires="RfModulator"><setup id="RFModulator" /></item>
 			<item entryID="factory_reset" level="0" text="Factory Reset" weight="50"><screen module="FactoryReset" screen="FactoryReset" /></item>
 		</menu>
 	</menu>

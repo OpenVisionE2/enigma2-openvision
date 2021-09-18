@@ -23,7 +23,7 @@ class FactoryReset(Setup, ProtectedScreen):
 		self.resetSkins = ConfigYesNo(default=True)
 		self.resetTimers = ConfigYesNo(default=True)
 		self.resetOthers = ConfigYesNo(default=True)
-		Setup.__init__(self, session=session, setup="factoryreset")
+		Setup.__init__(self, session=session, setup="FactoryReset")
 		self["key_green"].text = _("Reset")
 		ProtectedScreen.__init__(self)
 		self.setTitle(_("Factory Reset"))

@@ -3,6 +3,9 @@
 		<item level="0" text="Setup mode" description="Configure which access level to use for the configuration menu. Expert level gives access to all items.">config.usage.setup_level</item>
 		<item level="0" text="Open Vision revision check" description="When enabled, you will see the available revision on github">config.misc.OVupdatecheck</item>
 	</setup>
+	<setup key="AudioVideo" title="Audio/Video Setup">
+		<!-- This is just a placeholder, the Videomode plugin implements this menu. -->
+	</setup>
 	<setup key="AutoLanguage" title="Auto Language Setup">
 		<item level="0" text="Audio language selection 1" description="Configure the first audio language (highest priority).">config.autolanguage.audio_autoselect1</item>
 		<item level="0" text="Audio language selection 2" conditional="config.autolanguage.audio_autoselect1.value" description="Configure the second audio language.">config.autolanguage.audio_autoselect2</item>
@@ -22,9 +25,6 @@
 		<item level="1" text="Prefer subtitles stored by service" description="When enabled, your %s %s will automatically use the subtitles which you selected before.">config.autolanguage.subtitle_usecache</item>
 		<item level="1" text="EPG language selection 1" description="Configure the primary EPG language.">config.autolanguage.audio_epglanguage</item>
 		<item level="1" text="EPG language selection 2" conditional="config.autolanguage.audio_epglanguage.value" description="Configure the secondary EPG language.">config.autolanguage.audio_epglanguage_alternative</item>
-	</setup>
-	<setup key="avsetup" title="A/V Setup">
-		<!-- this is just a placeholder, the Videomode plugin implements this submenu -->
 	</setup>
 	<setup key="EPG" title="EPG Setup">
 		<item level="2" text="EPG location" description="Choose the location where the EPG data will be stored when your %s %s is shut down. The location must be available at boot time.">config.misc.epgcachepath</item>
@@ -51,25 +51,12 @@
 		<item level="2" text="Full description separator" description="Configure separator type used in full description for separate short and extended descriptions.">config.epg.fulldescription_separator</item>
 		<item level="2" text="Replace newlines in EPG" description="Select char for replacing newlines in EPG.">config.epg.replace_newlines</item>
 	</setup>
+	<setup key="FactoryReset" title="Factory Reset Setup">
+		<!-- This is just a placeholder, the FactoryReset module implements this menu. -->
+	</setup>
 	<setup key="fanspeed" title="Fan Speed Setup" requires="FanPWM">
 		<item level="0" text="Normal speed" description="The speed of the fan when your %s %s is in normal use.">config.fans[0].pwm</item>
 		<item level="0" text="Standby speed" description="The speed of the fan when your %s %s is in standby mode.">config.fans[0].pwm_standby</item>
-	</setup>
-	<setup key="HardDisk" title="Hard Disk Setup" >
-		<item level="0" text="Hard disk standby after" description="Configure the hard disk drive to go to standby after the specified idle time.">config.usage.hdd_standby</item>
-	</setup>
-	<setup key="hdmirecord" title="HDMI Recording Setup">
-		<item level="0" text="Bitrate" description="The bitrate of the video encoder. Larger value improves quality and increases file size.">config.hdmirecord.bitrate</item>
-		<item level="0" text="Width" description="The width of the picture. The input will be scaled to match this value.">config.hdmirecord.width</item>
-		<item level="0" text="Height" description="The height of the picture. The input will be scaled to match this value.">config.hdmirecord.height</item>
-		<item level="0" text="Frame rate" description="The frame rate of the recording. Ideally, this will match the frame rate of the source or be an integer multiple. If in doubt, set to 60, which should work with most sources.">config.hdmirecord.framerate</item>
-		<item level="2" text="Interlaced" description="In most cases this should be set to No. Only enable if you have a very specific need.">config.hdmirecord.interlaced</item>
-		<item level="1" text="Aspect ratio" description="The aspect ratio of the recording.">config.hdmirecord.aspectratio</item>
-	</setup>
-	<setup key="InputDevices" title="Keyboard / Remote Control Setup">
-		<item level="0" text="Keyboard map" description="Keyboard mapping file to be used for keyboard input.">config.inputDevices.keyboardMap</item>
-		<item level="0" text="Select remote control" description="Select the remote control device to be used with the %s %s.">config.inputDevices.remotesIndex</item>
-		<item level="0" text="Long press emulation with button" description="Press this button to emulate a long press on a button pressed afterwards (this also overrides any other actions assigned to emulation button).">config.usage.long_press_emulation_key</item>
 	</setup>
 	<setup key="FrontDisplay" title="Display Setup" requires="FrontpanelDisplay">
 		<item level="0" text="Use separate picon pack for front panel display" description="Use piconlcd directory for picons on color LCD">config.lcd.picon_pack</item>
@@ -107,7 +94,23 @@
 		<item level="0" requires="LcdLiveTV" text="Clone TV screen to LCD" description="Shows live tv or informations on LCD.">config.lcd.fblcddisplay</item>
 		<item level="0" requires="ConfigDisplay" text="Show HDMI-Output Res" description="Show HDMI Output Resulution">config.lcd.showoutputresolution</item>
 	</setup>
-	<setup key="LedDisplay" title="LED Setup">
+	<setup key="HardDisk" title="Hard Disk Setup" >
+		<item level="0" text="Hard disk standby after" description="Configure the hard disk drive to go to standby after the specified idle time.">config.usage.hdd_standby</item>
+	</setup>
+	<setup key="hdmirecord" title="HDMI Recording Setup">
+		<item level="0" text="Bitrate" description="The bitrate of the video encoder. Larger value improves quality and increases file size.">config.hdmirecord.bitrate</item>
+		<item level="0" text="Width" description="The width of the picture. The input will be scaled to match this value.">config.hdmirecord.width</item>
+		<item level="0" text="Height" description="The height of the picture. The input will be scaled to match this value.">config.hdmirecord.height</item>
+		<item level="0" text="Frame rate" description="The frame rate of the recording. Ideally, this will match the frame rate of the source or be an integer multiple. If in doubt, set to 60, which should work with most sources.">config.hdmirecord.framerate</item>
+		<item level="2" text="Interlaced" description="In most cases this should be set to No. Only enable if you have a very specific need.">config.hdmirecord.interlaced</item>
+		<item level="1" text="Aspect ratio" description="The aspect ratio of the recording.">config.hdmirecord.aspectratio</item>
+	</setup>
+	<setup key="InputDevices" title="Keyboard / Remote Control Setup">
+		<item level="0" text="Keyboard map" description="Keyboard mapping file to be used for keyboard input.">config.inputDevices.keyboardMap</item>
+		<item level="0" text="Select remote control" description="Select the remote control device to be used with the %s %s.">config.inputDevices.remotesIndex</item>
+		<item level="0" text="Long press emulation with button" description="Press this button to emulate a long press on a button pressed afterwards (this also overrides any other actions assigned to emulation button).">config.usage.long_press_emulation_key</item>
+	</setup>
+	<setup key="LEDDisplay" title="LED Setup">
 		<item level="0" requires="LedPowerColor" text="LED color during normal operations" description="Configure front LED color during normal operations (this needs an enigma2 restart).">config.usage.frontled_color</item>
 		<item level="0" requires="LedPowerColor" text="LED color during recording" description="Configure front LED color during recording (this needs an enigma2 restart).">config.usage.frontledrec_color</item>
 		<item level="0" requires="LedStandbyColor" text="LED color during standby" description="Configure front LED color during standby (this needs an enigma2 restart).">config.usage.frontledstdby_color</item>
@@ -145,6 +148,9 @@
 		<item level="2" text="Debug log time format *" description="This sets the prefix for each line in the debug log. The 'Boot time' is the number of seconds since your %s %s was last booted.">config.crash.debugTimeFormat</item>
 		<item level="2" text="Number of debug logs to keep *" description="This sets the maximum number of log files that will be retained.  Files in excess of this number will be deleted.">config.crash.debugFileCount</item>
 		<item level="2" text="Log python stack trace on spinner" description="Set to yes for debugging the root cause of a spinner.">config.crash.pythonStackOnSpinner</item>
+	</setup>
+	<setup key="MACAddress" title="MAC Address Setup">
+		<!-- This is just a placeholder, the NetworkSetup module implements this menu. -->
 	</setup>
 	<setup key="network" title="Network Setup">
 		<item text="Use DHCP" description="When enabled, use DHCP for the IP configuration.">config.network.dhcp</item>
@@ -187,7 +193,7 @@
 		<item level="2" text="Quit Movie Player with EXIT button" description="When enabled, it is possible to leave the Movie Player with exit.">config.usage.leave_movieplayer_onExit</item>
 		-->
 	</setup>
-	<setup key="pluginbrowsersetup" title="Plugin Browser Setup">
+	<setup key="PluginBrowser" title="Plugin Browser Setup">
 		<item level="0" text="Show development packages in opkg" description="When enabled, you will see dev, staticdev, dbg, doc, src and po packages in opkg list.">config.misc.extraopkgpackages</item>
 		<item level="0" text="OPKG clean mode" description="When enabled, before opkg update there will be opkg clean to make sure nothing ruine the update but only enable this when you can not update online.">config.misc.opkgcleanmode</item>
 		<item level="0" text="Show alsa-utils in plugin browser" description="When enabled, you will see alsa-utils packages in plugin browser download section.">config.misc.pluginbrowser.alsautils</item>
@@ -235,7 +241,7 @@
 		<item level="2" text="Default recording type" description="Descramble &amp; record ECM' gives the option to descramble afterwards if descrambling on recording failed. 'Don't descramble, record ECM' save a scramble recording that can be descrambled on playback. 'Normal' means descramble the recording and don't record ECM.">config.recording.ecm_data</item>
 		-->
 	</setup>
-	<setup key="RFmod" title="RF Output Setup">
+	<setup key="RFModulator" title="RF Modulator Output Setup">
 		<item level="1" text="Modulator">config.rfmod.enable</item>
 		<item level="2" text="Test mode">config.rfmod.test</item>
 		<item level="2" text="Sound">config.rfmod.sound</item>
@@ -417,7 +423,7 @@
 		<item level="0" text="Sort order for help screen" description="Choose the order in which items are displayed in Help windows">config.usage.helpSortOrder</item>
 		<item level="0" text="Animation speed of help indicators" description="Control the animation speed of the button indicators in the Help screen. 'Disabled' turns off animation so that indicators jump between buttons.">config.usage.helpAnimationSpeed</item>
 	</setup>
-	<setup key="wizardsetup" title="Wizard Setup">
+	<setup key="Wizard" title="Wizard Setup">
 		<item level="0" text="Setup mode" description="Configure which access level to use for the configuration menu. Expert level gives access to all items.">config.usage.setup_level</item>
 		<item level="0" text="Open Vision revision check" description="When enabled, you will see the available revision on github">config.misc.OVupdatecheck</item>
 		<item level="0" text="Enable HDMI-CEC" description="When enabled, HDMI-CEC is enabled with standard configuration" requires="HasHDMI-CEC">config.hdmicec.enabled</item>

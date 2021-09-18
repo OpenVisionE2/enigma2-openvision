@@ -438,7 +438,7 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 
 class MACSettings(Setup):
     def __init__(self, session):
-        Setup.__init__(self, session=session, setup="macsettings")
+        Setup.__init__(self, session=session, setup="MACAddress")
         self.setTitle(_("MAC Address Setup"))
         self.session = session
         self.onChangedEntry = []

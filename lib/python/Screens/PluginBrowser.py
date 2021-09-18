@@ -132,7 +132,7 @@ class PluginBrowser(Screen, ProtectedScreen):
 
 	def pluginbrowserSetup(self):
 		from Screens.Setup import Setup
-		self.session.open(Setup, "pluginbrowsersetup")
+		self.session.open(Setup, "PluginBrowser")
 
 	def isProtected(self):
 		return config.ParentalControl.setuppinactive.value and (not config.ParentalControl.config_sections.main_menu.value or hasattr(self.session, 'infobar') and self.session.infobar is None) and config.ParentalControl.config_sections.plugin_browser.value
