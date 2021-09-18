@@ -697,10 +697,12 @@ class RecordTimerEntry(timer.TimerEntry, object):
 						if Screens.Standby.inStandby:
 							RecordTimerEntry.TryQuitMainloop()
 						else:
-							Notifications.AddNotificationWithCallback(self.sendTryQuitMainloopNotification, MessageBox, _("A finished record timer wants to shut down\nyour receiver. Shutdown now?"), timeout=20, default=True)
+							msg = _("A completed recording timer is about to shut down your receiver. Would you like to proceed?")
+							Notifications.AddNotificationWithCallback(self.sendTryQuitMainloopNotification, MessageBox, msg, timeout=20, default=True)
 				elif self.afterEvent == AFTEREVENT.STANDBY or (not wasRecTimerWakeup and self.autostate and self.afterEvent == AFTEREVENT.AUTO) or RecordTimerEntry.wasInStandby:
 					if not Screens.Standby.inStandby:
-						Notifications.AddNotificationWithCallback(self.sendStandbyNotification, MessageBox, _("A finished record timer wants to set your\nreceiver to standby. Do that now?"), timeout=20, default=True)
+						msg = _("A completed recording timer is about to put your receiver in standby mode. Would you like to proceed?")
+						Notifications.AddNotificationWithCallback(self.sendStandbyNotification, MessageBox, msg, timeout=20, default=True)
 				else:
 					RecordTimerEntry.keypress()
 			return True
@@ -869,7 +871,7 @@ class RecordTimerEntry(timer.TimerEntry, object):
 			# TODO: this has to be done.
 		elif event == iRecordableService.evStart:
 			RecordingsState(1)
-			text = _("A record has been started:\n%s") % self.name
+			text = _("A recording has started:\n%s") % self.name
 			notify = config.usage.show_message_when_recording_starts.value and not Screens.Standby.inStandby and self.InfoBarInstance and self.InfoBarInstance.execing
 			if self.dirnameHadToFallback:
 				text = '\n'.join((text, _("Please note that the previously selected media could not be accessed and therefore the default directory is being used instead.")))

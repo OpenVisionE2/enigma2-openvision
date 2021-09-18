@@ -549,6 +549,12 @@ def InitUsageConfig():
 
 	preferredTunerChoicesUpdate()
 
+	config.usage.menutype = ConfigSelection(default="standard", choices=[
+		("horzanim", _("Horizontal menu")),
+		("horzicon", _("Horizontal icons")),
+		("standard", _("Standard menu"))
+	])
+
 	config.misc.disable_background_scan = ConfigYesNo(default=False)
 	config.misc.use_ci_assignment = ConfigYesNo(default=False)
 	config.usage.show_event_progress_in_servicelist = ConfigSelection(default="percright", choices=[
