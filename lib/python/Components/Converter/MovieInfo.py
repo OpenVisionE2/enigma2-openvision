@@ -75,11 +75,11 @@ class MovieInfo(Converter):
 				filesize = info.getFileSize(service)
 				if filesize is not None:
 					if filesize >= 104857600000: #100000*1024*1024
-						return "%.0f %s" % (filesize / 1073741824.0, _("GB"))
+						return _("%.0f GB") % (filesize / 1073741824.0)
 					elif filesize >= 1073741824: #1024*1024*1024
-						return "%.2f %s" % (filesize / 1073741824.0, _("GB"))
+						return _("%.2f GB") % (filesize / 1073741824.0)
 					elif filesize >= 1048576:
-						return "%.0f %s" % (filesize / 1048576.0, _("MB"))
+						return _("%.0f MB") % (filesize / 1048576.0)
 					elif filesize >= 1024:
 						return "%.0f %s" % (filesize / 1024.0, _("kB"))
 					return "%d %s" % (filesize, _("B"))
