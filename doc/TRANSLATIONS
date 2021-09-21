@@ -29,15 +29,15 @@ How to create updated "po" files including latest strings?
 
 Follow these steps:
 
-1- git clone https://github.com/OpenPLi/enigma2.git
-2- cd enigma2
+1- git clone --depth 1 https://github.com/OpenVisionE2/enigma2-openvision.git
+2- cd enigma2-openvision
 3- cd po
-4- ./updateallpo.sh
+4- ./updateallpo-multiOS.sh
 
 You'll have the latest "enigma2.pot" and all updated ".po" files.
 
-You can start updating your language file and you can post them in this forum thread:
-https://forums.openpli.org/topic/21479-translations-for-enigma-2-please-post-them-here/
+You can start updating your language file and send it as a github PR to:
+https://github.com/OpenVisionE2/enigma2-openvision-po/tree/master/po
 
 Hint: The "enigma2.pot" file is the template that you can use to create new ".po" files.
 
