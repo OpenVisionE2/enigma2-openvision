@@ -3,7 +3,7 @@ from os.path import basename, dirname, isfile
 from six import PY2
 from xml.etree.cElementTree import Element, ElementTree, fromstring
 
-from enigma import addFont, eLabel, ePixmap, ePoint, eRect, eSize, eWindow, eWindowStyleManager, eWindowStyleSkinned, getDesktop, gFont, getFontFaces, gMainDC, gRGB
+from enigma import addFont, eLabel, ePixmap, ePoint, eRect, eSize, eWindow, eWindowStyleManager, eWindowStyleSkinned, getDesktop, gFont, getFontFaces, gMainDC, gRGB, BT_ALPHATEST, BT_ALPHABLEND
 
 from Components.config import ConfigSubsection, ConfigText, config
 from Components.SystemInfo import BoxInfo
@@ -496,9 +496,9 @@ class AttributeParser:
 	def alphaTest(self, value):
 		try:
 			self.guiObject.setAlphatest({
-				"on": 1,
+				"on": BT_ALPHATEST,
 				"off": 0,
-				"blend": 2
+				"blend": BT_ALPHABLEND
 			}[value])
 		except KeyError:
 			raise AttribValueError("'on', 'off' or 'blend'")
