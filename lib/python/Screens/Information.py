@@ -626,7 +626,6 @@ class ImageInformation(InformationBase):
 			enigmaVersion = "%s (%s)" % (enigmaVersion[0], enigmaVersion[1].capitalize())
 		info.append(formatLine("P1", _("Enigma2 version"), enigmaVersion))
 		info.append(formatLine("P1", _("Enigma2 revision"), getE2Rev()))
-		info.append(formatLine("P1", _("GitHub commit"), getE2Rev().split("+")[1]))
 		compileDate = str(BoxInfo.getItem("compiledate"))
 		info.append(formatLine("P1", _("Last update"), "%s-%s-%s" % (compileDate[:4], compileDate[4:6], compileDate[6:])))
 		info.append(formatLine("P1", _("Enigma2 (re)starts"), config.misc.startCounter.value))
