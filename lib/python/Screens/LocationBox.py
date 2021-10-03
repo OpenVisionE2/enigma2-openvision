@@ -23,56 +23,41 @@ from Tools.Directories import createDir, removeDir, renameDir
 from Tools.NumericalTextInput import NumericalTextInput
 
 BOOKMARKS_INDENT = 3
+
 defaultInhibitDirs = ["/bin", "/boot", "/dev", "/etc", "/home", "/lib", "/picon", "/piconlcd", "/proc", "/run", "/sbin", "/share", "/sys", "/tmp", "/usr", "/var"]
 
 
 class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 	"""Simple Class similar to MessageBox / ChoiceBox but used to choose a directory/pathname combination"""
 
-	skin = [
-		"""
-	<screen name="LocationBox" position="center,center" size="%d,%d">
-		<widget name="text" position="%d,%d" size="e-%d,%d" font="Regular;%d" transparent="1" valign="center" />
-		<widget name="target" position="%d,%d" size="e-%d,%d" font="Regular;%d" transparent="1" valign="center" />
-		<widget name="filetext" position="%d,%d" size="e-%d,%d" backgroundColor="#00ffffff" font="Regular;%d" foregroundColor="#00000000" valign="center" />
-		<widget name="filelist" position="%d,%d" size="e-%d,%d" enableWrapAround="1" itemHeight="%d" scrollbarMode="showOnDemand" transparent="1" />
-		<widget name="quickselect" position="%d,%d" size="e-%d,%d" font="Regular;%d" foregroundColor="#0000ffff" halign="center" transparent="1" valign="center" zPosition="+1" />
-		<widget name="booktext" position="%d,%d" size="e-%d,%d" backgroundColor="#00ffffff" font="Regular;%d" foregroundColor="#00000000" valign="center" />
-		<widget name="booklist" position="%d,%d" size="e-%d,%d" font="Regular;%d" itemHeight="%d" scrollbarMode="showOnDemand" selectionDisabled="1" transparent="1" />
-		<widget source="key_red" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_red" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+	skin = """
+	<screen name="LocationBox" position="center,center" size="1000,570" resolution="1280,720">
+		<widget name="text" position="10,10" size="e-20,25" font="Regular;20" transparent="1" valign="center" />
+		<widget name="target" position="10,35" size="e-20,25" font="Regular;20" transparent="1" valign="center" />
+		<widget name="filetext" position="10,70" size="e-20,25" backgroundColor="#00ffffff" font="Regular;20" foregroundColor="#00000000" valign="center" />
+		<widget name="filelist" position="10,95" size="e-20,245" enableWrapAround="1" itemHeight="25" scrollbarMode="showOnDemand" transparent="1" />
+		<widget name="quickselect" position="10,95" size="e-20,245" font="Regular;100" foregroundColor="#0000ffff" halign="center" transparent="1" valign="center" zPosition="+1" />
+		<widget name="booktext" position="10,355" size="e-20,25" backgroundColor="#00ffffff" font="Regular;20" foregroundColor="#00000000" valign="center" />
+		<widget name="booklist" position="10,380" size="e-20,125" font="Regular;20" itemHeight="25" scrollbarMode="showOnDemand" selectionDisabled="1" transparent="1" />
+		<widget source="key_red" render="Label" position="10,e-50" size="180,40" backgroundColor="key_red" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_green" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="200,e-50" size="180,40" backgroundColor="key_green" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_yellow" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_yellow" render="Label" position="390,e-50" size="180,40" backgroundColor="key_yellow" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_blue" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_blue" render="Label" position="580,e-50" size="180,40" backgroundColor="key_blue" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_menu" render="Label" position="e-%d,e-%d" size="%d,%d" backgroundColor="key_back" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_menu" render="Label" position="e-180,e-50" size="80,40" backgroundColor="key_back" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_help" render="Label" position="e-%d,e-%d" size="%d,%d" backgroundColor="key_back" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_help" render="Label" position="e-90,e-50" size="80,40" backgroundColor="key_back" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-	</screen>""",
-		1000, 570,  # screen
-		10, 10, 20, 25, 20, # text
-		10, 35, 20, 25, 20, # target
-		10, 70, 20, 25, 20,  # filetext
-		10, 95, 20, 245, 25,  # filelist
-		10, 95, 20, 245, 100,  # quickselect
-		10, 355, 20, 25, 20,  # booktext
-		10, 380, 20, 125, 20, 25,  # booklist
-		10, 50, 180, 40, 20,  # key_red
-		200, 50, 180, 40, 20,  # key_green
-		390, 50, 180, 40, 20,  # key_yellow
-		580, 50, 180, 40, 20,  # key_blue
-		190, 50, 80, 40, 20,  # key_menu
-		90, 50, 80, 40, 20  # key_help
-	]
+	</screen>"""
 
 	def __init__(self, session, text="", filename="", currDir=None, bookmarks=None, userMode=False, windowTitle=None, minFree=None, autoAdd=False, editDir=False, inhibitDirs=None, inhibitMounts=None):
 		Screen.__init__(self, session, mandatoryWidgets=["filetext", "quickselect"])
