@@ -3,7 +3,7 @@
 from __future__ import print_function
 from Components.Renderer.Renderer import Renderer
 from enigma import ePixmap
-from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import SCOPE_GUISKIN, resolveFilename, SCOPE_PLUGINS
 import os
 
 searchPaths = []
@@ -67,7 +67,7 @@ class PiconUni(Renderer):
 				if pngname is '':
 					pngname = self.findPicon('picon_default')
 					if pngname is '':
-						tmp = resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png')
+						tmp = resolveFilename(SCOPE_GUISKIN, 'picon_default.png')
 						if os.path.isfile(tmp):
 							pngname = tmp
 					self.nameCache['default'] = pngname

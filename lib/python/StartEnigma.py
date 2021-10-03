@@ -483,7 +483,7 @@ from Components.config import ConfigInteger, ConfigOnOff, ConfigSubsection, Conf
 from Components.Console import Console
 from Components.International import international
 # from Screens.Standby import QUIT_ERROR_RESTART
-from Tools.Directories import InitDefaultPaths, SCOPE_CURRENT_SKIN, SCOPE_PLUGINS, fileReadLine, fileWriteLine, resolveFilename
+from Tools.Directories import InitDefaultPaths, SCOPE_GUISKIN, SCOPE_PLUGINS, fileReadLine, fileWriteLine, resolveFilename
 
 profile("CreateDefaultPaths")
 InitDefaultPaths()
@@ -558,8 +558,8 @@ from skin import readSkin
 
 # The skin module must be loaded before a resolveFilename() can be run against a skin!
 #
-config.misc.blackradiopic = ConfigText(default=resolveFilename(SCOPE_CURRENT_SKIN, "black.mvi"))
-config.misc.radiopic = ConfigText(default=resolveFilename(SCOPE_CURRENT_SKIN, "radio.mvi"))
+config.misc.blackradiopic = ConfigText(default=resolveFilename(SCOPE_GUISKIN, "black.mvi"))
+config.misc.radiopic = ConfigText(default=resolveFilename(SCOPE_GUISKIN, "radio.mvi"))
 
 profile("Plugins")
 from Components.PluginComponent import plugins  # Initialize autorun plugins and plugin menu entries.

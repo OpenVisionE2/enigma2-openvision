@@ -18,7 +18,7 @@ from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Standby import TryQuitMainloop, QUIT_RESTART
-from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN, SCOPE_LCDSKIN, SCOPE_SKIN
+from Tools.Directories import resolveFilename, SCOPE_GUISKIN, SCOPE_LCDSKIN, SCOPE_SKINS
 
 
 class SkinSelector(Screen, HelpableScreen):
@@ -59,7 +59,7 @@ class SkinSelector(Screen, HelpableScreen):
 
 		element = domScreens.get("SkinSelector", (None, None))[0]
 		Screen.setTitle(self, screenTitle)
-		self.rootDir = resolveFilename(SCOPE_SKIN)
+		self.rootDir = resolveFilename(SCOPE_SKINS)
 		self.config = config.skin.primary_skin
 		self.current = currentPrimarySkin
 		self.xmlList = ["skin.xml"]
@@ -164,7 +164,7 @@ class SkinSelector(Screen, HelpableScreen):
 		preview, resolution, skin = self.currentSelectedSkin[6], self.currentSelectedSkin[5], self.currentSelectedSkin[4]
 		self.changedEntry()
 		if not exists(preview):
-			preview = resolveFilename(SCOPE_CURRENT_SKIN, "noprev.png")
+			preview = resolveFilename(SCOPE_GUISKIN, "noprev.png")
 		self.picload.startDecode(preview)
 		if skin == self.config.value:
 			self["description"].setText(_("Press OK to keep the currently selected %s skin.") % resolution)

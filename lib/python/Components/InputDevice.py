@@ -11,7 +11,7 @@ from Components.config import ConfigInteger, ConfigSelection, ConfigSelectionNum
 from Components.Console import Console
 from Components.Language import language
 from Components.SystemInfo import BoxInfo
-from Tools.Directories import SCOPE_KEYMAPS, SCOPE_SKIN, fileReadLine, fileWriteLine, fileReadLines, fileReadXML, resolveFilename
+from Tools.Directories import SCOPE_KEYMAPS, SCOPE_SKINS, fileReadLine, fileWriteLine, fileReadLines, fileReadXML, resolveFilename
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -208,7 +208,7 @@ class RemoteControl:
 		self.model = BoxInfo.getItem("model")
 		self.rcName = BoxInfo.getItem("rcname")
 		self.rcType = self.readRemoteControlType()
-		remotes = fileReadXML(resolveFilename(SCOPE_SKIN, "remotes.xml"), source=MODULE_NAME)
+		remotes = fileReadXML(resolveFilename(SCOPE_SKINS, "remotes.xml"), source=MODULE_NAME)
 		self.remotes = []
 		if remotes:
 			for remote in sorted(remotes.findall("remote"), key=lambda remote: (remote.tag, remote.get("displayName"))):

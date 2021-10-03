@@ -11,7 +11,7 @@ from Components.config import config, configfile, getConfigListEntry
 from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.MenuList import MenuList
 from Tools.LoadPixmap import LoadPixmap
-from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename, fileExists
+from Tools.Directories import SCOPE_GUISKIN, resolveFilename, fileExists
 from enigma import eTimer, RT_HALIGN_LEFT, eListboxPythonMultiContent, gFont, getDesktop
 from xml.etree import ElementTree
 from operator import itemgetter
@@ -570,7 +570,7 @@ class OscamInfoMenu(Screen):
 		for t in mlist:
 			res = [t]
 			if t.startswith("--"):
-				png = resolveFilename(SCOPE_CURRENT_SKIN, "div-h.png")
+				png = resolveFilename(SCOPE_GUISKIN, "div-h.png")
 				if fileExists(png):
 					png = LoadPixmap(png)
 				if png is not None:
@@ -578,7 +578,7 @@ class OscamInfoMenu(Screen):
 					res.append((eListboxPythonMultiContent.TYPE_PIXMAP, x, y, w, h, png))
 					x, y, w, h = skin.parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
 					res.append((eListboxPythonMultiContent.TYPE_TEXT, x, y, w, h, 0, RT_HALIGN_LEFT, t[2:]))
-					png2 = resolveFilename(SCOPE_CURRENT_SKIN, "buttons/key_" + keys[k] + ".png")
+					png2 = resolveFilename(SCOPE_GUISKIN, "buttons/key_" + keys[k] + ".png")
 					if fileExists(png2):
 						png2 = LoadPixmap(png2)
 					if png2 is not None:
@@ -587,7 +587,7 @@ class OscamInfoMenu(Screen):
 			else:
 				x, y, w, h = skin.parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, x, y, w, h, 0, RT_HALIGN_LEFT, t))
-				png2 = resolveFilename(SCOPE_CURRENT_SKIN, "buttons/key_" + keys[k] + ".png")
+				png2 = resolveFilename(SCOPE_GUISKIN, "buttons/key_" + keys[k] + ".png")
 				if fileExists(png2):
 					png2 = LoadPixmap(png2)
 				if png2 is not None:
@@ -834,14 +834,14 @@ class oscInfo(Screen, OscamInfo):
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, xpos, ypos * f, xsize, self.itemheight * f, useFont, RT_HALIGN_LEFT, i, int(colour, 16)))
 			x += 1
 		if heading and f != 1.5:
-			png = resolveFilename(SCOPE_CURRENT_SKIN, "div-h.png")
+			png = resolveFilename(SCOPE_GUISKIN, "div-h.png")
 			if fileExists(png):
 				png = LoadPixmap(png)
 			if png is not None:
 				res.append((eListboxPythonMultiContent.TYPE_PIXMAP, 0, (self.itemheight - 2) * f, self.sizeLH, 2 * f, png))
 
 		if heading and f == 1.5:
-			pngfhd = resolveFilename(SCOPE_CURRENT_SKIN, "div-h-fhd.png")
+			pngfhd = resolveFilename(SCOPE_GUISKIN, "div-h-fhd.png")
 			if fileExists(pngfhd):
 				pngfhd = LoadPixmap(pngfhd)
 			if pngfhd is not None:

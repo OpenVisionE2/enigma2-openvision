@@ -9,7 +9,7 @@ from enigma import eDVBDB, eDVBFrontendParametersSatellite, eDVBResourceManager,
 from Components.config import ConfigDateTime, ConfigFloat, ConfigInteger, ConfigNothing, ConfigOnOff, ConfigSatlist, ConfigSelection, ConfigSubDict, ConfigSubList, ConfigSubsection, ConfigText, ConfigYesNo, config
 from Components.SystemInfo import BoxInfo
 from Tools.BoundFunction import boundFunction
-from Tools.Directories import SCOPE_SKIN, fileReadLine, fileReadLines, fileReadXML, fileWriteLine, resolveFilename
+from Tools.Directories import SCOPE_SKINS, fileReadLine, fileReadLines, fileReadXML, fileWriteLine, resolveFilename
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -1488,7 +1488,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 						section.format = ConfigSelection([("unicable", _("SCR Unicable")), ("jess", _("SCR JESS"))])
 						section.format.addNotifier(formatChanged)
 
-				unicable_xml = fileReadXML(resolveFilename(SCOPE_SKIN, "unicable.xml"), source=MODULE_NAME)
+				unicable_xml = fileReadXML(resolveFilename(SCOPE_SKINS, "unicable.xml"), source=MODULE_NAME)
 				unicableList = [("unicable_lnb", _("SCR (Unicable/JESS)") + " " + _("LNB")), ("unicable_matrix", _("SCR (Unicable/JESS)") + " " + _("Switch")), ("unicable_user", _("SCR (Unicable/JESS)") + " " + _("User defined"))]
 				if not config.unicable.content.items.get("unicable", False):
 					config.unicable.unicable = ConfigSelection(unicableList)

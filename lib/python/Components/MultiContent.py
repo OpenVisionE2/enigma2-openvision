@@ -1,7 +1,7 @@
 from enigma import RT_HALIGN_LEFT, RT_VALIGN_TOP, eListboxPythonMultiContent
 
 from skin import parseColor
-from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 
 
@@ -18,7 +18,7 @@ def __resolveColor(color):
 def __resolvePixmap(pixmap):
 	if isinstance(pixmap, str):
 		try:
-			return LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, pixmap))
+			return LoadPixmap(resolveFilename(SCOPE_GUISKIN, pixmap))
 		except Exception as err:
 			print("[MultiContent] Error: Resolve pixmap '%s'!" % str(err))
 		return None

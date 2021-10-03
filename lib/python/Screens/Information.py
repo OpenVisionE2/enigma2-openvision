@@ -33,7 +33,7 @@ from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen, ScreenSummary
-from Tools.Directories import SCOPE_CURRENT_SKIN, fileReadLine, fileReadLines, fileWriteLine, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, fileReadLine, fileReadLines, fileWriteLine, resolveFilename
 from Tools.Geolocation import geolocation
 from Tools.LoadPixmap import LoadPixmap
 from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
@@ -125,7 +125,7 @@ class InformationBase(Screen, HelpableScreen):
 			"pageDown": (self["information"].pageDown, _("Move down a screen")),
 			"bottom": (self["information"].moveBottom, _("Move to last line / screen"))
 		}, prio=0, description=_("Common Information Actions"))
-		if isfile(resolveFilename(SCOPE_CURRENT_SKIN, "receiver/%s.png" % BoxInfo.getItem("model"))):
+		if isfile(resolveFilename(SCOPE_GUISKIN, "receiver/%s.png" % BoxInfo.getItem("model"))):
 			self["key_info"] = StaticText(_("INFO"))
 			self["infoActions"] = HelpableActionMap(self, ["InfoActions"], {
 				"info": (self.showReceiverImage, _("Show receiver image(s)"))
@@ -247,7 +247,7 @@ class InformationImage(Screen, HelpableScreen):
 		self.imageIndex -= 1
 		if self.imageIndex < 0:
 			self.imageIndex = len(self.images) - 1
-		while not isfile(resolveFilename(SCOPE_CURRENT_SKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])):
+		while not isfile(resolveFilename(SCOPE_GUISKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])):
 			self.imageIndex -= 1
 			if self.imageIndex < 0:
 				self.imageIndex = len(self.images) - 1
@@ -256,7 +256,7 @@ class InformationImage(Screen, HelpableScreen):
 
 	def nextImage(self):
 		self.imageIndex += 1
-		while not isfile(resolveFilename(SCOPE_CURRENT_SKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])):
+		while not isfile(resolveFilename(SCOPE_GUISKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])):
 			self.imageIndex += 1
 			if self.imageIndex >= len(self.images):
 				self.imageIndex = 0
@@ -268,7 +268,7 @@ class InformationImage(Screen, HelpableScreen):
 			self.widgetContext = tuple(self["image"].getPosition() + self["image"].getSize())
 			print(self.widgetContext)
 		self["name"].setText("%s %s  -  %s View" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"), self.images[self.imageIndex][0]))
-		imagePath = resolveFilename(SCOPE_CURRENT_SKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])
+		imagePath = resolveFilename(SCOPE_GUISKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])
 		image = LoadPixmap(imagePath)
 		if image:
 			img = Image.open(imagePath)

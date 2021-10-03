@@ -3,12 +3,12 @@ from enigma import BT_HALIGN_CENTER, BT_KEEP_ASPECT_RATIO, BT_SCALE, BT_VALIGN_C
 from skin import fonts, parameters
 from Components.MenuList import MenuList
 from Components.MultiContent import MultiContentEntryPixmapAlphaBlend, MultiContentEntryText
-from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN
+from Tools.Directories import resolveFilename, SCOPE_GUISKIN
 from Tools.LoadPixmap import LoadPixmap
 
 
 def PluginEntryComponent(plugin, width=440):
-	png = plugin.icon or LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/plugin.png"))
+	png = plugin.icon or LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/plugin.png"))
 	nx, ny, nh = parameters.get("PluginBrowserName", (120, 5, 25))
 	dx, dy, dh = parameters.get("PluginBrowserDescr", (120, 26, 17))
 	ix, iy, iw, ih = parameters.get("PluginBrowserIcon", (10, 5, 100, 40))
@@ -31,7 +31,7 @@ def PluginCategoryComponent(name, png, width=440):
 
 
 def PluginDownloadComponent(plugin, name, version=None, width=440):
-	png = plugin.icon or LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/plugin.png"))
+	png = plugin.icon or LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/plugin.png"))
 	if version:
 		if "+git" in version:
 			# remove git "hash"

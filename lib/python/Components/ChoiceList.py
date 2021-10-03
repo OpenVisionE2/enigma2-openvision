@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Components.MenuList import MenuList
-from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 from enigma import RT_HALIGN_LEFT, eListboxPythonMultiContent, gFont
 from Tools.LoadPixmap import LoadPixmap
 import skin
@@ -19,15 +19,15 @@ def ChoiceEntryComponent(key=None, text=["--"]):
 			if key == "dummy":
 				png = None
 			elif key == "expandable":
-				png = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/expandable.png"))
+				png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/expandable.png"))
 			elif key == "expanded":
-				png = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/expanded.png"))
+				png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/expanded.png"))
 			elif key == "verticalline":
-				png = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/verticalline.png"))
+				png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/verticalline.png"))
 			elif key == "bullet":
-				png = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "icons/bullet.png"))
+				png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/bullet.png"))
 			else:
-				png = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "buttons/key_%s.png" % key))
+				png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "buttons/key_%s.png" % key))
 			if png:
 				x, y, w, h = skin.parameters.get("ChoicelistIcon", (5, 0, 35, 25))
 				res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, x, y, w, h, png))

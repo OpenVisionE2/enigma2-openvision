@@ -8,7 +8,7 @@ from Screen import Screen
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.Setup import Setup
-from Tools.Directories import SCOPE_CURRENT_SKIN, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 
 
@@ -92,8 +92,8 @@ class InputDeviceSelection(Screen, HelpableScreen):
 		else:
 			deviceImage = None
 		if deviceImage:
-			deviceImage = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, deviceImage))
-		divImage = LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, "div-h.png"))
+			deviceImage = LoadPixmap(resolveFilename(SCOPE_GUISKIN, deviceImage))
+		divImage = LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, "div-h.png"))
 		return ((device, description, deviceImage, divImage))
 
 

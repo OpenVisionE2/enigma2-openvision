@@ -14,7 +14,7 @@ from Components.ImportChannels import ImportChannels
 from Components.SystemInfo import BoxInfo
 from Components.Sources.StreamService import StreamServiceList
 from Components.Task import job_manager
-from Tools.Directories import mediafilesInUse
+from Tools.Directories import mediaFilesInUse
 from Tools import Notifications
 from time import time, localtime
 from GlobalActions import globalActionMap
@@ -241,7 +241,7 @@ class StandbyScreen(Screen):
 							duration += 24 * 3600
 						self.standbyTimeoutTimer.startLongTimer(duration)
 						return
-		if self.session.screen["TunerInfo"].tuner_use_mask or mediafilesInUse(self.session):
+		if self.session.screen["TunerInfo"].tuner_use_mask or mediaFilesInUse(self.session):
 			self.standbyTimeoutTimer.startLongTimer(600)
 		else:
 			RecordTimer.RecordTimerEntry.TryQuitMainloop()
@@ -335,7 +335,7 @@ def getReasons(session, retvalue=QUIT_SHUTDOWN):
 		reasons.append(_("You seem to be in timeshift!"))
 	if eStreamServer.getInstance().getConnectedClients() or StreamServiceList:
 		reasons.append(_("Client is streaming from this box!"))
-	if not reasons and mediafilesInUse(session) and retvalue in (QUIT_SHUTDOWN, QUIT_REBOOT, QUIT_UPGRADE_FP, QUIT_UPGRADE_PROGRAM, QUIT_UPGRADE_FPANEL):
+	if not reasons and mediaFilesInUse(session) and retvalue in (QUIT_SHUTDOWN, QUIT_REBOOT, QUIT_UPGRADE_FP, QUIT_UPGRADE_PROGRAM, QUIT_UPGRADE_FPANEL):
 		reasons.append(_("A file from media is in use!"))
 	return "\n".join(reasons)
 

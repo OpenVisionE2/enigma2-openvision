@@ -7,7 +7,7 @@ import unicodedata
 from Components.Renderer.Renderer import Renderer
 from enigma import ePixmap
 from Tools.Alternatives import GetWithAlternative
-from Tools.Directories import pathExists, SCOPE_CURRENT_SKIN, resolveFilename
+from Tools.Directories import pathExists, SCOPE_GUISKIN, resolveFilename
 from Components.Harddisk import harddiskmanager
 from ServiceReference import ServiceReference
 from six import PY2
@@ -107,7 +107,7 @@ class PiconLocator:
 					series = re.sub(r's[0-9]*e[0-9]*$', '', name)
 					pngname = self.findPicon(series)
 		if not pngname: # picon default
-			tmp = resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png') # picon_default in current active skin
+			tmp = resolveFilename(SCOPE_GUISKIN, 'picon_default.png') # picon_default in current active skin
 			tmp2 = self.findPicon("picon_default") # picon_default in picon folder
 			if pathExists(tmp2):
 				pngname = tmp2
@@ -115,7 +115,7 @@ class PiconLocator:
 				if pathExists(tmp):
 					pngname = tmp
 				else:
-					pngname = resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png')
+					pngname = resolveFilename(SCOPE_GUISKIN, 'picon_default.png')
 		return pngname
 
 
@@ -138,7 +138,7 @@ class Picon(Renderer):
 	def __init__(self):
 		Renderer.__init__(self)
 		self.pngname = None
-		self.defaultpngname = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
+		self.defaultpngname = resolveFilename(SCOPE_GUISKIN, "picon_default.png")
 
 	def applySkin(self, desktop, parent):
 		attribs = self.skinAttributes[:]

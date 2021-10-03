@@ -20,11 +20,11 @@ from Screens.ParentalControlSetup import ProtectedScreen
 from Screens.Screen import Screen
 from Screens.Setup import Setup, getSetupTitle
 from Tools.BoundFunction import boundFunction
-from Tools.Directories import SCOPE_CURRENT_SKIN, SCOPE_SKIN, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, SCOPE_SKINS, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 
 # Read the menu
-file = open(resolveFilename(SCOPE_SKIN, "menu.xml"), "r")
+file = open(resolveFilename(SCOPE_SKINS, "menu.xml"), "r")
 mdom = parse(file)
 file.close()
 
@@ -40,7 +40,7 @@ def default_skin():
 def MenuEntryPixmap(entryID, png_cache, lastMenuID):
 	png = png_cache.get(entryID, None)
 	if png is None:
-		pngPath = resolveFilename(SCOPE_CURRENT_SKIN, "mainmenu/" + entryID + ".png")
+		pngPath = resolveFilename(SCOPE_GUISKIN, "mainmenu/" + entryID + ".png")
 		pos = config.skin.primary_skin.value.rfind("/")
 		if pos > -1:
 			current_skin = config.skin.primary_skin.value[:pos + 1]
@@ -55,7 +55,7 @@ def MenuEntryPixmap(entryID, png_cache, lastMenuID):
 	if png is None:
 		png = png_cache.get("missing", None)
 		if png is None:
-			png = LoadPixmap(resolveFilename(SCOPE_CURRENT_SKIN, "mainmenu/missing.png"), cached=True)
+			png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "mainmenu/missing.png"), cached=True)
 			png_cache["missing"] = png
 	return png
 

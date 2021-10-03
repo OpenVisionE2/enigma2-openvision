@@ -8,7 +8,7 @@ from Components.Sources.StaticText import StaticText
 from Screens.MessageBox import MessageBox
 from Screens.ParentalControlSetup import ProtectedScreen
 from Screens.Setup import Setup
-from Tools.Directories import SCOPE_CONFIG, SCOPE_SKIN, resolveFilename
+from Tools.Directories import SCOPE_CONFIG, SCOPE_SKINS, resolveFilename
 
 
 class FactoryReset(Setup, ProtectedScreen):
@@ -108,7 +108,7 @@ class FactoryReset(Setup, ProtectedScreen):
 		if self.resetFull.value:
 			print("[FactoryReset] Performing a full factory reset.")
 			self.wipeFiles(configDir, [""])
-			defaultFiles = pathjoin(resolveFilename(SCOPE_SKIN), "defaults", ".")
+			defaultFiles = pathjoin(resolveFilename(SCOPE_SKINS), "defaults", ".")
 			if isdir(defaultFiles):
 				print("[FactoryReset] Copying default configuration from '%s'." % defaultFiles)
 				system("cp -a %s %s" % (defaultFiles, configDir))
