@@ -665,14 +665,14 @@ class ImageInformation(InformationBase):
 		info.append("")
 		if BoxInfo.getItem("mtdbootfs"):
 			info.append(formatLine("P1", _("MTD boot"), BoxInfo.getItem("mtdbootfs")))
+		if BoxInfo.getItem("mtdkernel"):
+			info.append(formatLine("P1", _("MTD kernel"), BoxInfo.getItem("mtdkernel")))
 		if BoxInfo.getItem("mtdrootfs"):
 			info.append(formatLine("P1", _("MTD root"), BoxInfo.getItem("mtdrootfs")))
-		if BoxInfo.getItem("mtdrootfs"):
-			info.append(formatLine("P1", _("MTD kernel"), BoxInfo.getItem("mtdrootfs")))
-		if BoxInfo.getItem("mtdrootfs"):
-			info.append(formatLine("P1", _("Root file"), BoxInfo.getItem("mtdrootfs")))
 		if BoxInfo.getItem("kernelfile"):
 			info.append(formatLine("P1", _("Kernel file"), BoxInfo.getItem("kernelfile")))
+		if BoxInfo.getItem("rootfile"):
+			info.append(formatLine("P1", _("Root file"), BoxInfo.getItem("rootfile")))
 		if BoxInfo.getItem("mkubifs"):
 			info.append(formatLine("P1", _("MKUBIFS"), BoxInfo.getItem("mkubifs")))
 		if BoxInfo.getItem("ubinize"):
