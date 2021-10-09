@@ -327,6 +327,7 @@ SystemInfo["HasOfflineDecoding"] = model not in ("osmini", "osminiplus", "et7000
 SystemInfo["MultiBootStartupDevice"] = getMultiBootStartupDevice()
 SystemInfo["canMode12"] = "%s_4.boxmode" % model in cmdline and cmdline["%s_4.boxmode" % model] in ("1", "12") and "192M"
 SystemInfo["canMultiBoot"] = getMultiBootSlots()
+SystemInfo["canDualBoot"] = fileAccess("/dev/block/by-name/flag")
 SystemInfo["canFlashWithOfgwrite"] = brand != "dreambox"
 SystemInfo["HDRSupport"] = fileAccess("/proc/stb/hdmi/hlg_support_choices") or fileCheck("/proc/stb/hdmi/hlg_support")
 SystemInfo["CanDownmixAC3"] = fileContains("/proc/stb/audio/ac3_choices", "downmix")
@@ -355,7 +356,6 @@ SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileAcce
 SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7")
 SystemInfo["AndroidMode"] = BoxInfo.getItem("RecoveryMode") and model == "multibox" or brand in ("hypercube", "linkdroid", "mecool", "wetek") or platform == "dmamlogic"
-SystemInfo["canDualBoot"] = fileAccess("/dev/block/by-name/flag")
 SystemInfo["grautec"] = fileAccess("/tmp/usbtft")
 SystemInfo["CanAC3plusTranscode"] = fileAccess("/proc/stb/audio/ac3plus_choices")
 SystemInfo["CanDTSHD"] = fileAccess("/proc/stb/audio/dtshd_choices")

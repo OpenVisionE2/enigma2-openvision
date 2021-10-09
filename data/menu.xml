@@ -225,7 +225,7 @@ self.session.scart.VCRSbChanged(3)
 		<item entryID="deep_standby" level="0" text="Deep Standby" weight="30" requires="DeepstandbySupport"><screen module="Standby" screen="TryQuitMainloop">1</screen></item>
 		<item entryID="deep_standby" level="0" text="Shutdown" weight="35" requires="!DeepstandbySupport"><screen module="Standby" screen="TryQuitMainloop">1</screen></item>
 		<item entryID="maintenance_mode" level="0" text="Recovery Mode" weight="40" requires="RecoveryMode"><screen module="Standby" screen="TryQuitMainloop">16</screen></item>
-		<item entryID="dual_mode" level="0" text="Dual Mode" weight="45" requires="canDualBoot"><screen module="Standby" screen="TryQuitMainloop">16</screen></item>
+		<item entryID="dualboot" level="0" text="Switch to Android" weight="45" requires="canDualBoot"><screen module="Standby" screen="SwitchToAndroid" /></item>
 		<item entryID="android_mode" level="0" text="Android Mode" weight="50" requires="AndroidMode"><screen module="Standby" screen="TryQuitMainloop">12</screen></item>
 	</menu>
 </menu>

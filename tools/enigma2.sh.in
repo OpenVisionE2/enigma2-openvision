@@ -250,6 +250,11 @@ while : ; do
 			PREVUPD="0"
 			CURRUPD="999"
 			opkg update 2>&1 | tee /home/root/opkgupgrade.log
+			# check if we need to upgrade busybox first
+			if [ "$(opkg list-upgradable busybox)" != "" ]; then
+				opkg update busybox 2>&1 | tee -a /home/root/opkgupgrade.log
+			fi
+			# update all other packages
 			while [ "${CURRUPD}" -gt "0" ] && [ "${CURRUPD}" -ne "${PREVUPD}" ]; do
 				opkg upgrade "${DESTS}" 2>&1 | tee -a /home/root/opkgupgrade.log
 				PREVUPD="${CURRUPD}"

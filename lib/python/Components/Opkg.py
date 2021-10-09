@@ -164,10 +164,17 @@ class OpkgComponent:
 			else:
 				self.runCmdEx("update")
 		elif cmd == self.CMD_UPGRADE:
+			if os.path.exists("/home/root/opkgupgrade.log"):
+				os.unlink("/home/root/opkgupgrade.log")
 			append = ""
 			if args["test_only"]:
 				append = " -test"
-			self.runCmdEx("upgrade %s | tee /home/root/opkgupgrade.log" % append)
+			else:
+				for pkg in self.fetchedList:
+					if pkg[0] == "busybox":
+						self.runCmdEx("upgrade busybox | tee -a /home/root/opkgupgrade.log")
+						break
+			self.runCmdEx("upgrade %s | tee -a /home/root/opkgupgrade.log" % append)
 		elif cmd == self.CMD_LIST:
 			self.fetchedList = []
 			if args['installed_only']:

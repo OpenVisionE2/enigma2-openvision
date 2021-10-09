@@ -1170,6 +1170,10 @@ class ReceiverInformation(InformationBase):
 		if customCode:
 			info.append(formatLine("P1", _("RC custom code"), customCode))
 		info.append("")
+		info.append("")
+		if config.hdmicec.enabled.value:
+			info.append(formatLine("P1", _("HDMI-CEC address"), config.hdmicec.fixed_physical_address.value))
+		info.append("")
 		info.append(formatLine("H", _("Driver and kernel information")))
 		info.append("")
 		info.append(formatLine("P1", _("Drivers version"), about.getDriverInstalledDate()))
