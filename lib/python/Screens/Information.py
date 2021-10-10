@@ -45,8 +45,8 @@ INFO_COLOR = {
 	"B": None,
 	"N": 0x00ffffff,  # Normal.
 	"H": 0x00ffffff,  # Headings.
-	"P": 0x00888888,  # Prompts.
-	"V": 0x00888888,  # Values.
+	"P": 0x00cccccc,  # Prompts.
+	"V": 0x00cccccc,  # Values.
 	"M": 0x00ffff00  # Messages.
 }
 
@@ -130,7 +130,7 @@ class InformationBase(Screen, HelpableScreen):
 			self["infoActions"] = HelpableActionMap(self, ["InfoActions"], {
 				"info": (self.showReceiverImage, _("Show receiver image(s)"))
 			}, prio=0, description=_("Receiver Information Actions"))
-		colors = parameters.get("InformationColors", (0x00ffffff, 0x00ffffff, 0x00888888, 0x00888888, 0x00ffff00))
+		colors = parameters.get("InformationColors", (0x00ffffff, 0x00ffffff, 0x00cccccc, 0x00cccccc, 0x00ffff00))
 		if len(colors) == len(INFO_COLORS):
 			for index in range(len(colors)):
 				INFO_COLOR[INFO_COLORS[index]] = colors[index]
@@ -1169,7 +1169,6 @@ class ReceiverInformation(InformationBase):
 		customCode = fileReadLine("/proc/stb/ir/rc/customcode", source=MODULE_NAME)
 		if customCode:
 			info.append(formatLine("P1", _("RC custom code"), customCode))
-		info.append("")
 		info.append("")
 		if config.hdmicec.enabled.value:
 			info.append(formatLine("P1", _("HDMI-CEC address"), config.hdmicec.fixed_physical_address.value))
