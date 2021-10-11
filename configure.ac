@@ -658,7 +658,7 @@ if test "$BOXTYPE" == "tiviarmin"; then
 	AC_DEFINE(TIVIARRC, 1,[define use Tiviar RC keymap])
 fi
 
-if test "$BOXBRAND" == "dinobot" -o "$BOXTYPE" == "reborn"; then
+if test "$BOXBRAND" == "dinobot"; then
 	AC_DEFINE(HAVE_HISILICON, 1,[define it is a HISILICON chip])
 fi
 

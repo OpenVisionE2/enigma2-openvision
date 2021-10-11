@@ -16,7 +16,7 @@ MODELCHECK=`cat /etc/openvision/model`
 PLATFORMCHECK=`cat /etc/openvision/platform`
 SOCFAMILY=`cat /etc/openvision/socfamily | cut -c 1-4`
 
-if [ "${BRANDCHECK}" == "mecool" ] || [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
+if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
 	export media_arm_audio_decoder="ape,flac,dts,ac3,eac3,wma,wmapro,mp3,aac,vorbis,raac,cook,amr,pcm,adpcm"
 fi
 
@@ -216,11 +216,7 @@ while : ; do
 				mount /dev/block/by-name/bootoptions /tmp/bootoptions
 				cp -f /tmp/bootoptions/STARTUP_ANDROID /tmp/bootoptions/STARTUP_ONCE
 			else
-				if [ "${MODELCHECK}" == "su980" ] || [ "${BRANDCHECK}" == "mecool" ]; then
-					echo "Rescue not needed!"
-				else
-					echo "rescue" > /proc/stb/fp/boot_mode
-				fi
+				echo "rescue" > /proc/stb/fp/boot_mode
 			fi
 			[ -e "@bindir@/setenv" ] && "@bindir@/setenv" default_sys 1
 			[ -e "@sbindir@/fw_setenv" ] && "@sbindir@/fw_setenv" bootfromnand 1

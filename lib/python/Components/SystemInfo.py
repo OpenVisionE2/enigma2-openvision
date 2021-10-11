@@ -348,14 +348,14 @@ SystemInfo["OScamIsActive"] = BoxInfo.getItem("OScamInstalled") and fileAccess("
 SystemInfo["NCamInstalled"] = fileAccess("/usr/bin/ncam")
 SystemInfo["NCamIsActive"] = BoxInfo.getItem("NCamInstalled") and fileAccess("/tmp/.ncam/ncam.version")
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/enigma/distro")
-SystemInfo["OLDE2API"] = model in ("dm800", "su980")
+SystemInfo["OLDE2API"] = model == "dm800"
 SystemInfo["7segment"] = displaytype == "7segment" or "7seg" in displaytype
 SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or fileAccess("/proc/hisi") or fileAccess("/usr/bin/hihalt") or fileAccess("/usr/lib/hisilicon")
 SystemInfo["DefineSat"] = platform in ("octagonhisil", "gbmv200", "dagsmv200") or model in ("ustym4kpro", "beyonwizv2", "viper4k")
 SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileAccess("/proc/device-tree/amlogic-dt-id") or fileAccess("/usr/bin/amlhalt") or fileAccess("/sys/module/amports")
 SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7")
-SystemInfo["AndroidMode"] = BoxInfo.getItem("RecoveryMode") and model == "multibox" or brand in ("hypercube", "linkdroid", "mecool", "wetek") or platform == "dmamlogic"
+SystemInfo["AndroidMode"] = BoxInfo.getItem("RecoveryMode") and model == "multibox" or brand == "wetek" or platform == "dmamlogic"
 SystemInfo["grautec"] = fileAccess("/tmp/usbtft")
 SystemInfo["CanAC3plusTranscode"] = fileAccess("/proc/stb/audio/ac3plus_choices")
 SystemInfo["CanDTSHD"] = fileAccess("/proc/stb/audio/dtshd_choices")
