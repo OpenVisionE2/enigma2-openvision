@@ -9,14 +9,7 @@
 #include <lib/dvb_ci/dvbci.h>
 #include <lib/dvb/epgtransponderdatareader.h>
 #include <lib/dvb/scan.h>
-#if HAVE_HYPERCUBE
-#include <lib/ciplus/inc/trid_datatype.h>
-#include <lib/ciplus/inc/trid_errno.h>
-#include <lib/ciplus/inc/trid_ci_types.h>
-#include <lib/ciplus/inc/trid_ci_api.h>
-#else
 #include <lib/dvb_ci/dvbci_session.h>
-#endif
 #include <dvbsi++/ca_descriptor.h>
 #include <dvbsi++/ca_program_map_section.h>
 #include <dvbsi++/teletext_descriptor.h>

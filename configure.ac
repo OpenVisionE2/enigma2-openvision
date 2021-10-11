@@ -354,13 +354,6 @@ if test x"$with_libhiaccel" != xno ; then
 	AC_DEFINE(HAVE_HISILICON_ACCEL, 1,[define add HISILICON ACCEL])
 fi
 
-AC_ARG_WITH(libtriaccel,
-	AS_HELP_STRING([--with-libtriaccel],[use libtriaccel, yes or no]),
-	[with_libtriaccel=$withval],[with_libtriaccel=no])
-if test x"$with_libtriaccel" != xno ; then
-	AC_DEFINE(HAVE_TRIDENT_ACCEL, 1,[define add TRIDENT ACCEL])
-fi
-
 AC_ARG_WITH(olde2api,
 	AS_HELP_STRING([--with-olde2api],[use olde2api, yes or no]),
 	[with_olde2api=$withval],[with_olde2api=no])
@@ -730,10 +723,6 @@ fi
 
 if test "$STBPLATFORM" == "mipsspycat" -o "$BOXTYPE" == "osmini" -o "$BOXTYPE" == "osminiplus" -o "$BOXTYPE" == "osmega" -o "$STBPLATFORM" == "4kspycat"; then
 	AC_DEFINE(KEY_MEDIA_TO_KEY_LIST, 1,[define when rc sends a MEDIA event for its LIST])
-fi
-
-if test "$BOXTYPE" == "su980"; then
-	AC_DEFINE(HAVE_HYPERCUBE, 1,[enable HyperCube specific stuff])
 fi
 
 AC_CHECK_HEADERS([sys/klog.h])

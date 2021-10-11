@@ -11,12 +11,7 @@ void eGTable::sectionRead(const uint8_t *d)
 		/* if a section is missing, we retry reading the
 		   whole data up to 5 times. if after that the
 		   section is still missing, we timeout. */
-#if HAVE_HYPERCUBE
-	//5 times is not enough to recive SDT table sometimes.
-	if (m_tries > 60 * totalSections(last_section_number))
-#else
 	if (m_tries > 5 * totalSections(last_section_number))
-#endif
 	{
 		timeout();
 		return;
