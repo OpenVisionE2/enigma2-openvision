@@ -717,10 +717,6 @@ if test "$BOXBRAND" == "wetek" -o "$BOXTYPE" == "x8hp"; then
 	AC_DEFINE(WETEKRC, 1, [WeTek remote uses BACKSPACE to toggle extended functions on numeric buttons])
 fi
 
-if test "$BOXBRAND" == "linkdroid"; then
-	AC_DEFINE(HAVE_ALIEN5, 1,[enable Alien5 and similar amlogic specific stuff])
-fi
-
 if test "$STBPLATFORM" == "mipsspycat" -o "$BOXTYPE" == "osmini" -o "$BOXTYPE" == "osminiplus" -o "$BOXTYPE" == "osmega" -o "$STBPLATFORM" == "4kspycat"; then
 	AC_DEFINE(KEY_MEDIA_TO_KEY_LIST, 1,[define when rc sends a MEDIA event for its LIST])
 fi
