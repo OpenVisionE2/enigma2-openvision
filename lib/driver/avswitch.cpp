@@ -111,7 +111,6 @@ bool eAVSwitch::haveScartSwitch()
 	if (read(fd, tmp, 255) < 1)
 	{
 		eDebug("[eAVSwitch] failed to read data from /proc/stb/avs/0/input_choices: %m");
-		return false;
 	}
 	close(fd);
 	return !!strstr(tmp, "scart");

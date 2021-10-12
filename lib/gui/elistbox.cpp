@@ -71,7 +71,7 @@ void eListbox::allowNativeKeys(bool allow)
 		ePtr<eActionMap> ptr;
 		eActionMap::getInstance(ptr);
 		if (allow)
-			ptr->bindAction("ListboxActions", 0, 0, this);
+			ptr->bindAction("ListboxActions", (int64_t)0, 0, this);
 		else
 			ptr->unbindAction(this, 0);
 		m_native_keys_bound = allow;
