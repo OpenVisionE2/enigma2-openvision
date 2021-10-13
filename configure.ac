@@ -786,7 +786,6 @@ data/skin_default/menu/Makefile
 data/skin_default/icons/Makefile
 data/skin_default/buttons/Makefile
 data/skin_default/epg/Makefile
-data/skin_default/spinner/Makefile
 data/skin_default/LCDIcons/Makefile
 data/skin_fallback_1080/Makefile
 data/skin_fallback_1080/buttons/Makefile
