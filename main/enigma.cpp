@@ -209,6 +209,30 @@ static const std::string getConfigCurrentSpinner(const std::string &key)
 		return "spinner";  // if value is NOT empty, means config.skin.primary_skin exist in settings file, so return "spinner" ( /usr/share/enigma2/MYSKIN/spinner/wait1.png DOES NOT exist )
 }
 
+static const std::string getConfigValue(const std::string &key, const std::string &defvalue)
+{
+	std::string value = defvalue;
+	std::ifstream in(eEnv::resolve("${sysconfdir}/enigma2/settings").c_str());
+	
+	if (in.good()) {
+		do {
+			std::string line;
+			std::getline(in, line);
+			size_t size = key.size();
+			if (line.compare(0, size, key)== 0) {
+				value = line.substr(size + 1);
+				break;
+			}
+		} while (in.good());
+		in.close();
+	}
+	if (value.empty()) 
+		return defvalue;
+	else
+		return value;
+}
+
+
 int exit_code;
 
 void quitMainloop(int exitCode)
@@ -265,7 +289,7 @@ void catchTermSignal()
 
 int main(int argc, char **argv)
 {
-eLog(0, "Enigma is starting.\n");
+	printf("Enigma is starting.\n");
 #ifdef AZBOX
 	/* Azbox Sigma mode check, switch back from player mode to normal mode if player crashed and enigma2 restart */		
 	int val=0;
@@ -307,8 +331,6 @@ eLog(0, "Enigma is starting.\n");
 
 	// set pythonpath if unset
 	setenv("PYTHONPATH", eEnv::resolve("${libdir}/enigma2/python").c_str(), 0);
-	eLog(0, "[Enigma] Python path is '%s'.", getenv("PYTHONPATH"));
-	eLog(0, "[Enigma] DVB API version %d, DVB API version minor %d.", DVB_API_VERSION, DVB_API_VERSION_MINOR);
 
 	// get enigma2 debug level settings
 #if PY_MAJOR_VERSION >= 3
@@ -318,9 +340,13 @@ eLog(0, "Enigma is starting.\n");
 #endif
 	if (debugLvl < 0)
 		debugLvl = 0;
-	eLog(0, "[Enigma] Enigma debug level %d.", debugLvl);
 	if (getenv("ENIGMA_DEBUG_TIME"))
 		setDebugTime(atoi(getenv("ENIGMA_DEBUG_TIME")));
+
+	eLog(0, "[Enigma] Python path is '%s'.", getenv("PYTHONPATH"));
+	eLog(0, "[Enigma] DVB API version %d, DVB API version minor %d.", DVB_API_VERSION, DVB_API_VERSION_MINOR);
+	eLog(0, "[Enigma] Enigma debug level %d.", debugLvl);
+
 #ifdef HAVE_RASPBERRYPI
 //	mknod("/tmp/ENIGMA_FIFO", S_IFIFO|0666, 0);
 	cOmxDevice *m_device;
@@ -348,8 +374,8 @@ eLog(0, "Enigma is starting.\n");
 	gLCDDC::getInstance(my_lcd_dc);
 
 
-		/* ok, this is currently hardcoded for arabic. */
-			/* some characters are wrong in the regular font, force them to use the replacement font */
+	/* ok, this is currently hardcoded for arabic. */
+	/* some characters are wrong in the regular font, force them to use the replacement font */
 	for (int i = 0x60c; i <= 0x66d; ++i)
 		eTextPara::forceReplacementGlyph(i);
 	eTextPara::forceReplacementGlyph(0xfdf2);
@@ -381,46 +407,52 @@ eLog(0, "Enigma is starting.\n");
 	dsk_lcd.setRedrawTask(main);
 
 	std::string active_skin = getConfigCurrentSpinner("config.skin.primary_skin");
+	std::string spinnerPostion = getConfigValue("config.misc.spinnerPosition", "100,100");
+	int spinnerPostionX,spinnerPostionY;
+	if (sscanf(spinnerPostion.c_str(), "%d,%d", &spinnerPostionX, &spinnerPostionY) != 2)
+	{
+		spinnerPostionX = spinnerPostionY = 100;
+	}
 
 	eDebug("[Enigma] Loading spinners.");
-
 	{
-		int i = 0;
-		bool def = false;
-		std::string path = "${sysconfdir}/enigma2/spinner";
 #define MAX_SPINNER 64
+		int i = 0;
+		std::string skinpath = "${sysconfdir}/enigma2/" + active_skin;
+		std::string defpath = "${sysconfdir}/enigma2/spinner";
+		bool def = (skinpath.compare(defpath) == 0);
 		ePtr<gPixmap> wait[MAX_SPINNER];
 		while(i < MAX_SPINNER)
 		{
 			char filename[64];
 			std::string rfilename;
-			snprintf(filename, sizeof(filename), "%s/wait%d.png", path.c_str(), i + 1);
+			snprintf(filename, sizeof(filename), "%s/wait%d.png", skinpath.c_str(), i + 1);
 			rfilename = eEnv::resolve(filename);
 			loadImage(wait[i], rfilename.c_str());
 
-			if (!wait[i])
+			if (!wait[i]) 
 			{
-				if (!i)
+				// spinner failed
+				if (i==0)
 				{
+					// retry default spinner only once
 					if (!def)
 					{
 						def = true;
-						snprintf(filename, sizeof(filename), "${datadir}/enigma2/%s", active_skin.c_str());
-						path = filename;
+						skinpath = defpath;
 						continue;
 					}
 				}
-				else
-					eDebug("[Enigma] Found %d spinners.", i);
+				// exit loop because of no more spinners
 				break;
 			}
 			i++;
 		}
 		eDebug("[Enigma] Found %d spinners.", i);
-		if (i)
-			my_dc->setSpinner(eRect(ePoint(100, 100), wait[0]->size()), wait, i);
+		if (i==0)
+			my_dc->setSpinner(eRect(spinnerPostionX, spinnerPostionY, 0, 0), wait, 1);
 		else
-			my_dc->setSpinner(eRect(100, 100, 0, 0), wait, 1);
+			my_dc->setSpinner(eRect(ePoint(spinnerPostionX, spinnerPostionY), wait[0]->size()), wait, i);
 	}
 
 	gRC::getInstance()->setSpinnerDC(my_dc);
