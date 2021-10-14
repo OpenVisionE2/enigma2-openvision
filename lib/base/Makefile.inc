@@ -67,3 +67,10 @@ if RASPBERRYPI
 base_libenigma_base_a_SOURCES += base/tsRingbuffer.cpp
 baseinclude_HEADERS += base/tsRingbuffer.h
 endif
+
+if DMAMLOGIC
+baseinclude_HEADERS += \
+	base/connection.h \
+	base/io.h \
+	base/sigc.h
+endif

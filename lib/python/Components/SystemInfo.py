@@ -367,7 +367,7 @@ SystemInfo["LCDMiniTV"] = fileAccess("/proc/stb/lcd/mode")
 SystemInfo["LCDMiniTVPiP"] = BoxInfo.getItem("LCDMiniTV") and model not in ("gb800ueplus", "gbquad4k", "gbue4k")
 SystemInfo["DefaultDisplayBrightness"] = platform == "dm4kgen" and 8 or 5
 SystemInfo["ConfigDisplay"] = BoxInfo.getItem("FrontpanelDisplay") and displaytype != "7segment" and "7seg" not in displaytype
-SystemInfo["DreamBoxAudio"] = platform == "dm4kgen" or model in ("dm7080", "dm800")
+SystemInfo["DreamBoxAudio"] = platform in ("dm4kgen", "dmamlogic") or model in ("dm7080", "dm800")
 SystemInfo["VFDDelay"] = model in ("sf4008", "beyonwizu4")
 SystemInfo["VFDRepeats"] = brand != "ixuss" and displaytype != "7segment" and "7seg" not in displaytype
 SystemInfo["VFDSymbol"] = BoxInfo.getItem("vfdsymbol")

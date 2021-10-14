@@ -32,6 +32,9 @@ public:
 	void unfreeze();
 	int getPTS(pts_t &now);
 	virtual ~eDVBAudio();
+#if defined(DMAMLOGIC)
+	void setSTCValidState(int state);
+#endif
 };
 
 class eDVBVideo: public iObject, public sigc::trackable
@@ -50,6 +53,11 @@ private:
 	int m_is_slow_motion, m_is_fast_forward, m_is_freezed;
 	ePtr<eSocketNotifier> m_sn;
 	void video_event(int what);
+#if defined(DMAMLOGIC)
+	int m_fd_amvideoPoll;
+	ePtr<eSocketNotifier> m_sn_amvideoPoll;
+	void amvideo_event(int);
+#endif
 	sigc::signal1<void, struct iTSMPEGDecoder::videoEvent> m_event;
 	int m_width, m_height, m_framerate, m_aspect, m_progressive, m_gamma;
 	static int readApiSize(int fd, int &xres, int &yres, int &aspect);
@@ -92,6 +100,9 @@ public:
 	eDVBPCR(eDVBDemux *demux, int dev);
 	int startPid(int pid);
 	void stop();
+#if defined(DMAMLOGIC)
+	void restart();
+#endif
 	virtual ~eDVBPCR();
 };
 
@@ -156,6 +167,9 @@ private:
 	void demux_event(int event);
 	void video_event(struct videoEvent);
 	sigc::signal1<void, struct videoEvent> m_video_event;
+#if defined(DMAMLOGIC)
+	sigc::signal1<void, int> m_state_event;
+#endif
 	int m_video_clip_fd;
 	ePtr<eTimer> m_showSinglePicTimer;
 	void finishShowSinglePic(); // called by timer
@@ -211,12 +225,20 @@ public:
 		/* what 0=auto, 1=video, 2=audio. */
 	RESULT getPTS(int what, pts_t &pts);
 	RESULT connectVideoEvent(const sigc::slot1<void, struct videoEvent> &event, ePtr<eConnection> &connection);
+#if defined(DMAMLOGIC)
+	RESULT connectStateEvent(const sigc::slot1<void, int> &event, ePtr<eConnection> &connection);
+	int getVideoDecoderId();
+#endif
 	int getVideoWidth();
 	int getVideoHeight();
 	int getVideoProgressive();
 	int getVideoFrameRate();
 	int getVideoAspect();
 	int getVideoGamma();
+#if defined(DMAMLOGIC)
+	int getState();
+	const char* getEotf();
+#endif
 	static RESULT setHwPCMDelay(int delay);
 	static RESULT setHwAC3Delay(int delay);
 #if defined(HAVE_FCC_ABILITY)
