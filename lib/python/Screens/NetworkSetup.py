@@ -611,17 +611,19 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		self.session.open(MessageBox, _("Successfully restored /etc/inetd.conf!"), type=MessageBox.TYPE_INFO, timeout=10)
 
 	def ok(self):
-		ipv6 = '/etc/enigma2/ipv6'
-		print("[NetworkSetup] Write to /proc/sys/net/ipv6/conf/all/disable_ipv6")
+		IPv6 = "/etc/enigma2/ipv6"
 		if self.IPv6ConfigEntry.value == False:
+			print("[NetworkSetup] Write 1 to /proc/sys/net/ipv6/conf/all/disable_ipv6")
 			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("1")
-			print("[NetworkSetup] Write to /etc/enigma2/ipv6")
 			open("/etc/enigma2/ipv6", "w").write("1")
+			print("[NetworkSetup] IPv6 is now deactivated")
+			Console().ePopen('rm -R %s' % IPv6)
 		else:
+			print("[NetworkSetup] Write 0 to /proc/sys/net/ipv6/conf/all/disable_ipv6")
 			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("0")
-			Console().ePopen('rm -R %s' % ipv6)
+			open("/etc/enigma2/ipv6", "w").write("0")
+			print("[NetworkSetup] IPv6 is now activated")
 		self.restoreinetdData2()
-		self.close()
 
 	def run(self):
 		self.ok()
@@ -654,9 +656,11 @@ class InetdRecovery(Screen, ConfigListScreen):
 		})
 
 	def keyBlue(self):
-		sockTypetcp = "tcp"
-		sockTypeudp = "udp"
-		if self.ipv6.value:
+		self.IPv6ConfigEntry = NoSave(ConfigYesNo(default=self.ipv6 or False))
+		if self.IPv6ConfigEntry.value == False:
+			sockTypetcp = "tcp"
+			sockTypeudp = "udp"
+		else:
 			sockTypetcp = "tcp6"
 			sockTypeudp = "udp6"
 

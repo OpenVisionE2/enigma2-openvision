@@ -475,7 +475,7 @@ print("[StartEnigma] SoC family = %s" % socfamily)
 print("[StartEnigma] Enigma2 revision = %s" % getE2Rev())
 
 profile("Imports")
-from os.path import exists, isdir, isfile, islink, join as pathjoin
+from os.path import isdir, isfile, islink, join as pathjoin
 from traceback import print_exc
 from time import localtime, strftime, time
 
@@ -674,12 +674,6 @@ if config.clientmode.enabled.value:
 profile("IPv6")
 # if config.misg.ip6Disabled.value:
 # 	fileWriteLine("/proc/sys/net/ipv6/conf/all/disable_ipv6", "1", source=MODULE_NAME)
-if exists("/etc/enigma2/ipv6"):
-	try:
-		print("[StartEnigma] Write to /proc/sys/net/ipv6/conf/all/disable_ipv6")
-		open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("1")
-	except:
-		print("[StartEnigma] Write to /proc/sys/net/ipv6/conf/all/disable_ipv6 failed.")
 
 # from enigma import dump_malloc_stats
 # timer = eTimer()
