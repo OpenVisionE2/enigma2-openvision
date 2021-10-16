@@ -304,7 +304,6 @@ void catchTermSignal()
 
 int main(int argc, char **argv)
 {
-	printf("Enigma is starting.\n");
 #ifdef AZBOX
 	/* Azbox Sigma mode check, switch back from player mode to normal mode if player crashed and enigma2 restart */		
 	int val=0;
