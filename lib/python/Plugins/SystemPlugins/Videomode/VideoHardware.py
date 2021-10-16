@@ -332,21 +332,22 @@ class VideoHardware:
 
 	# get a list with all modes, with all rates, for a given port.
 	def getModeList(self, port):
-		if platform == "dmamlogic":
+		print("[Videomode] VideoHardware getModeList for port", port)
+		res = []
+		if platform != "dmamlogic":
+			for mode in self.modes[port]:
+				# list all rates which are completely valid
+				rates = [rate for rate in self.rates[mode] if self.isModeAvailable(port, mode, rate)]
+
+				# if at least one rate is ok, add this mode
+				if len(rates):
+					res.append((mode, rates))
+			return res
+		else:
 			res = [('2160p', ['50Hz', 'multi', '60Hz', 'auto']),
 			('1080p', ['50Hz', 'multi', '60Hz', 'auto']),
 			('720p', ['50Hz', 'multi', '60Hz']), ('1080i', ['50Hz', 'multi', '60Hz', 'auto']),
 			('576p', ['50Hz']), ('576i', ['50Hz']), ('480p', ['60Hz']), ('480i', ['60Hz'])]
-		return res
-		print("[Videomode] VideoHardware getModeList for port", port)
-		res = []
-		for mode in self.modes[port]:
-			# list all rates which are completely valid
-			rates = [rate for rate in self.rates[mode] if self.isModeAvailable(port, mode, rate)]
-
-			# if at least one rate is ok, add this mode
-			if len(rates):
-				res.append((mode, rates))
 		return res
 
 	def createConfig(self, *args):
