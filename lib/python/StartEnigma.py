@@ -671,10 +671,6 @@ if config.clientmode.enabled.value:
 	from Components.ChannelsImporter import autostart
 	autostart()
 
-profile("IPv6")
-# if config.misg.ip6Disabled.value:
-# 	fileWriteLine("/proc/sys/net/ipv6/conf/all/disable_ipv6", "1", source=MODULE_NAME)
-
 # from enigma import dump_malloc_stats
 # timer = eTimer()
 # timer.callback.append(dump_malloc_stats)
