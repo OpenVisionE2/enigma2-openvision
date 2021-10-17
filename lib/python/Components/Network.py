@@ -86,8 +86,8 @@ class Network:
 			data['bcast'] = self.convertIP(nit[ni.AF_INET][0]['broadcast'])
 			data['mac'] = nit[ni.AF_LINK][0]['addr'] # mac
 			data['gateway'] = self.convertIP(ni.gateways()['default'][ni.AF_INET][0]) # default gw
-			IPv6 = os.path.exists("/etc/enigma2/ipv6")
-			if not IPv6:
+			StatusIPv6 = open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "r").read(1)
+			if not os.path.exists("/etc/enigma2/ipv6") and not "1" in StatusIPv6:
 				open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("1")
 		except:
 			data['dhcp'] = True
