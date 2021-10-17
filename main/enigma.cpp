@@ -167,7 +167,7 @@ public:
 	}
 };
 
-bool replace(std::string& str, const std::string& from, const std::string& to) 
+bool replace(std::string& str, const std::string& from, const std::string& to)
 {
 	size_t start_pos = str.find(from);
 	if(start_pos == std::string::npos)
@@ -180,7 +180,7 @@ static const std::string getConfigCurrentSpinner(const std::string &key)
 {
 	std::string value = "spinner";
 	std::ifstream in(eEnv::resolve("${sysconfdir}/enigma2/settings").c_str());
-	
+
 	if (in.good()) {
 		do {
 			std::string line;
@@ -196,7 +196,7 @@ static const std::string getConfigCurrentSpinner(const std::string &key)
 	}
 
 	// if value is not empty, means config.skin.primary_skin exist in settings file
-	if (!value.empty()) 
+	if (!value.empty())
 	{
 
 		// check /usr/share/enigma2/MYSKIN/spinner/wait1.png
@@ -209,7 +209,7 @@ static const std::string getConfigCurrentSpinner(const std::string &key)
 
 	}
 
-	// try to find spinner in skin_default/spinner subfolder 
+	// try to find spinner in skin_default/spinner subfolder
 	value = "skin_default/spinner";
 
 	// check /usr/share/enigma2/skin_default/spinner/wait1.png
@@ -228,7 +228,7 @@ static const std::string getConfigValue(const std::string &key, const std::strin
 {
 	std::string value = defvalue;
 	std::ifstream in(eEnv::resolve("${sysconfdir}/enigma2/settings").c_str());
-	
+
 	if (in.good()) {
 		do {
 			std::string line;
@@ -241,7 +241,7 @@ static const std::string getConfigValue(const std::string &key, const std::strin
 		} while (in.good());
 		in.close();
 	}
-	if (value.empty()) 
+	if (value.empty())
 		return defvalue;
 	else
 		return value;
@@ -305,28 +305,28 @@ void catchTermSignal()
 int main(int argc, char **argv)
 {
 #ifdef AZBOX
-	/* Azbox Sigma mode check, switch back from player mode to normal mode if player crashed and enigma2 restart */		
+	/* Azbox Sigma mode check, switch back from player mode to normal mode if player crashed and enigma2 restart */
 	int val=0;
 	FILE *f = fopen("/proc/player_status", "r");
 	if (f)
-	{		
+	{
 		fscanf(f, "%d", &val);
 		fclose(f);
 	}
 	if(val)
 	{
 		int rmfp_fd = open("/tmp/rmfp.kill", O_CREAT);
-		if(rmfp_fd > 0) 
+		if(rmfp_fd > 0)
 		{
 			int t = 50;
 			close(rmfp_fd);
 			while(access("/tmp/rmfp.kill", F_OK) >= 0 && t--) {
 			usleep(10000);
 			}
-		}	
+		}
 		f = fopen("/proc/player", "w");
 		if (f)
-		{		
+		{
 			fprintf(f, "%d", 1);
 			fclose(f);
 		}
@@ -444,7 +444,7 @@ int main(int argc, char **argv)
 			rfilename = eEnv::resolve(filename);
 			loadPNG(wait[i], rfilename.c_str());
 
-			if (!wait[i]) 
+			if (!wait[i])
 			{
 				// spinner failed
 				if (i==0)
