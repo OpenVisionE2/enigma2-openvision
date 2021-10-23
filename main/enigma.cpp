@@ -538,19 +538,9 @@ const char *getBoxType()
 	return BOXTYPE;
 }
 
-const char *getBoxBrand()
-{
-	return BOXBRAND;
-}
-
 const char *getE2Rev()
 {
 	return E2REV;
-}
-
-const char *getPyExt()
-{
-	return PYEXT;
 }
 
 #include <malloc.h>
