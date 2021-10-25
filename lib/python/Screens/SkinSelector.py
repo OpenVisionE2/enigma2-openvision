@@ -98,7 +98,7 @@ class SkinSelector(Screen, HelpableScreen):
 		default = _("Default")
 		defaultPicon = _("Default+Picon")
 		current = _("Current")
-		pending = _("Pending restart")
+		pending = _("Error in XML file: Try to solve and then restart.")
 		displayPicon = pathjoin(dirname(DEFAULT_DISPLAY_SKIN), "skin_display_picon.xml")
 		skinList = []
 		# Find and list the available skins...
