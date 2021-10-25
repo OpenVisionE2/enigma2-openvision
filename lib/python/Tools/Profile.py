@@ -1,13 +1,14 @@
 from os.path import isfile
 from time import time
 
-from enigma import getBoxType
-
-from Tools.Directories import SCOPE_CONFIG, fileReadLines, fileWriteLine, resolveFilename
+from Tools.Directories import SCOPE_CONFIG, fileReadLine, fileReadLines, fileWriteLine, resolveFilename
 
 MODULE_NAME = __name__.split(".")[-1]
 
-model = getBoxType()
+if isfile("/etc/openvision/model"):
+	model = fileReadLine("/etc/openvision/model", "unknown", source=MODULE_NAME)
+else:
+	model = "unknown"
 
 PERCENTAGE_START = 0
 PERCENTAGE_END = 100
