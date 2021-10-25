@@ -1,14 +1,9 @@
-from os.path import isfile
+from os.path import join as pathjoin, isfile
 from time import time
 
-from Tools.Directories import SCOPE_CONFIG, fileReadLine, fileReadLines, fileWriteLine, resolveFilename
+from Tools.Directories import SCOPE_CONFIG, SCOPE_LIBDIR, fileReadLines, fileWriteLine, resolveFilename
 
 MODULE_NAME = __name__.split(".")[-1]
-
-if isfile("/etc/openvision/model"):
-	model = fileReadLine("/etc/openvision/model", "unknown", source=MODULE_NAME)
-else:
-	model = "unknown"
 
 PERCENTAGE_START = 0
 PERCENTAGE_END = 100
@@ -19,6 +14,22 @@ totalTime = 1
 timeStamp = None
 profileFile = resolveFilename(SCOPE_CONFIG, "profile")
 profileFd = None
+# model = BoxInfo.get("model")  # For when we can use BoxInfo.
+model = None
+
+# Workaround to get the model name.  When SystemInfo can be loaded earlier in
+# the boot process we can use BoxInfo directly rather than using this code.
+#
+lines = []
+lines = fileReadLines(pathjoin(resolveFilename(SCOPE_LIBDIR), "enigma.info"), lines, source=MODULE_NAME)
+for line in lines:
+	if line.startswith("#") or line.strip() == "":
+		continue
+	if "=" in line:
+		item, value = [x.strip() for x in line.split("=", 1)]
+		if item == "model":
+			model = value
+			break
 
 profileOld = fileReadLines(profileFile, source=MODULE_NAME)
 if profileOld:
