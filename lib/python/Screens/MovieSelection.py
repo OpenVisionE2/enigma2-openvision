@@ -225,7 +225,7 @@ def copyServiceFiles(serviceref, dest, name=None):
 
 def buildMovieLocationList(bookmarks):
 	inlist = []
-	for d in config.movielist.videodirs.getValue():
+	for d in config.movielist.videodirs.value:
 		d = os.path.normpath(d)
 		bookmarks.append((d, d))
 		inlist.append(d)
@@ -250,7 +250,6 @@ class MovieBrowserConfiguration(ConfigListScreen, Screen):
 		Screen.__init__(self, session)
 		self.setTitle(_("Movie List Setup"))
 		self.skinName = "Setup"
-		Screen.setTitle(self, _(self.setup_title))
 
 		# No ConfigText fields in MovieBrowserConfiguration so these are not currently used.
 		#self["HelpWindow"] = Pixmap()
@@ -344,7 +343,7 @@ class MovieBrowserConfiguration(ConfigListScreen, Screen):
 			config.movielist.description.value = MovieList.SHOW_DESCRIPTION
 		else:
 			config.movielist.description.value = MovieList.HIDE_DESCRIPTION
-		if not config.movielist.settings_per_directory.getValue():
+		if not config.movielist.settings_per_directory.value:
 			config.movielist.moviesort.save()
 			config.movielist.description.save()
 			config.movielist.useslim.save()
@@ -391,8 +390,7 @@ class MovieContextMenu(Screen, ProtectedScreen):
 	def __init__(self, session, csel, service):
 		Screen.__init__(self, session)
 		self.skinName = "Setup"
-		self.setup_title = _("Movie List Setup")
-		Screen.setTitle(self, _(self.setup_title))
+		self.setTitle(_("Movie List Setup"))
 
 		# No ConfigText fields in MovieBrowserConfiguration so these are not currently used.
 		#self["HelpWindow"] = Pixmap()
@@ -590,7 +588,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 
 	def __init__(self, session, selectedmovie=None, timeshiftEnabled=False):
 		Screen.__init__(self, session)
-		if config.movielist.useslim.getValue():
+		if config.movielist.useslim.value:
 			self.skinName = ["MovieSelectionSlim", "MovieSelection"]
 		else:
 			self.skinName = "MovieSelection"
@@ -634,7 +632,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		self["DescriptionBorder"] = Pixmap()
 		self["DescriptionBorder"].hide()
 
-		if config.ParentalControl.servicepinactive.getValue():
+		if config.ParentalControl.servicepinactive.value:
 			from Components.ParentalControl import parentalControl
 			if not parentalControl.sessionPinCached and config.movielist.last_videodir.value and [x for x in config.movielist.last_videodir.value[1:].split("/") if x.startswith(".") and not x.startswith(".Trash")]:
 				config.movielist.last_videodir.value = ""
@@ -1127,7 +1125,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		self.show()
 		self.reloadList(self.selectedmovie, home=True)
 		del self.selectedmovie
-		if config.movielist.show_live_tv_in_movielist.getValue():
+		if config.movielist.show_live_tv_in_movielist.value:
 			self.LivePlayTimer.start(100)
 
 	def hidewaitingtext(self):
@@ -1234,7 +1232,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		self.session.nav.stopService()
 		self.list.playInBackground = None
 		self.list.playInForeground = None
-		if config.movielist.play_audio_internal.getValue():
+		if config.movielist.play_audio_internal.value:
 			index = self.list.findService(playInBackground)
 			if index is None:
 				return # Not found?
@@ -1249,7 +1247,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 				self.callLater(self.preview)
 				self["list"].moveToIndex(index + 1)
 
-		if config.movielist.show_live_tv_in_movielist.getValue():
+		if config.movielist.show_live_tv_in_movielist.value:
 			self.LivePlayTimer.start(100)
 
 	def preview(self):
@@ -1374,7 +1372,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			action()
 
 	def saveLocalSettings(self):
-		if not config.movielist.settings_per_directory.getValue():
+		if not config.movielist.settings_per_directory.value:
 			return
 		try:
 			path = os.path.join(config.movielist.last_videodir.value, ".e2settings.pkl")
@@ -1392,7 +1390,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 
 	def loadLocalSettings(self):
 		'Load settings, called when entering a directory'
-		if config.movielist.settings_per_directory.getValue():
+		if config.movielist.settings_per_directory.value:
 			try:
 				path = os.path.join(config.movielist.last_videodir.value, ".e2settings.pkl")
 				file = open(path, "rb")
@@ -1446,14 +1444,14 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			self.settings["moviesort"] = newType
 # If we are using per-directory sort methods then set it now...
 #
-			if config.movielist.settings_per_directory.getValue():
+			if config.movielist.settings_per_directory.value:
 				self.saveLocalSettings()
 			else:
 # ..otherwise, if we are setting permanent sort methods, save it,
 # while, for temporary sort methods, indicate to MovieList.py to
 # use a temporary sort override.
 #
-				if config.movielist.perm_sort_changes.getValue():
+				if config.movielist.perm_sort_changes.value:
 					config.movielist.moviesort.setValue(newType)
 					config.movielist.moviesort.save()
 				else:
@@ -1529,7 +1527,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			index += 1
 		if MovieList.InTrashFolder:
 			for x in l_trashsort:
-				if x[3] == config.usage.trashsort_deltime.getValue():
+				if x[3] == config.usage.trashsort_deltime.value:
 					used = index
 				menu.append((_(x[1]), x[0], "%d" % index))
 				index += 1
@@ -1543,10 +1541,10 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 # get here...just in case one day it does.
 #
 		title = _("Sort list:")
-		if config.movielist.settings_per_directory.getValue():
+		if config.movielist.settings_per_directory.value:
 			title = title + "\n\n" + _("Set the sort method for this directory")
 		else:
-			if config.movielist.perm_sort_changes.getValue():
+			if config.movielist.perm_sort_changes.value:
 				title = title + "\n\n" + _("Set the global sort method")
 			else:
 				title = title + "\n\n" + _("Set a temporary sort method for this directory")
@@ -1832,13 +1830,13 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 
 	def exist_bookmark(self):
 		path = config.movielist.last_videodir.value
-		if path in config.movielist.videodirs.getValue():
+		if path in config.movielist.videodirs.value:
 			return True
 		return False
 
 	def do_addbookmark(self):
 		path = config.movielist.last_videodir.value
-		if path in config.movielist.videodirs.getValue():
+		if path in config.movielist.videodirs.value:
 			if len(path) > 40:
 				path = '...' + path[-40:]
 			mbox = self.session.openWithCallback(self.removeBookmark, MessageBox, _("Do you really want to remove your bookmark of %s?") % path)
@@ -2049,7 +2047,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 				if d not in inlist:
 					bookmarks.append((d, d))
 			# Other favourites
-			for d in config.movielist.videodirs.getValue():
+			for d in config.movielist.videodirs.value:
 				d = os.path.normpath(d)
 				bookmarks.append((d, d))
 				inlist.append(d)
@@ -2154,7 +2152,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		if current.flags & eServiceReference.mustDescent:
 			files = 0
 			subdirs = 0
-			if '.Trash' not in cur_path and config.usage.movielist_trashcan.getValue():
+			if '.Trash' not in cur_path and config.usage.movielist_trashcan.value:
 				if isFolder(item):
 					are_you_sure = _("Do you really want to move to the trash can ?")
 					subdirs += 1
@@ -2246,7 +2244,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 						mbox = self.session.openWithCallback(self.delete, MessageBox, _("File appears to be busy.\n") + are_you_sure)
 						mbox.setTitle(self.getTitle())
 						return
-			if '.Trash' not in cur_path and config.usage.movielist_trashcan.getValue():
+			if '.Trash' not in cur_path and config.usage.movielist_trashcan.value:
 				trash = Tools.Trashcan.createTrashFolder(cur_path)
 				if trash:
 					try:

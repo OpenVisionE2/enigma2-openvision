@@ -368,7 +368,7 @@ class MovieList(GUIComponent):
 
 	def setItemsPerPage(self):
 		if self.listHeight > 0:
-			itemHeight = self.listHeight / config.movielist.itemsperpage.getValue()
+			itemHeight = self.listHeight / config.movielist.itemsperpage.value
 		else:
 			itemHeight = 15 # some default (270/5)
 		self.itemHeight = itemHeight
@@ -377,23 +377,23 @@ class MovieList(GUIComponent):
 
 	def setFontsize(self):
 		if isHD():
-			self.l.setFont(0, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue()))
-			self.l.setFont(1, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue()))
+			self.l.setFont(0, gFont(self.fontName, self.fontSize + config.movielist.fontsize.value))
+			self.l.setFont(1, gFont(self.fontName, self.fontSize + config.movielist.fontsize.value))
 		else:
-			self.l.setFont(0, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue() + 10))
-			self.l.setFont(1, gFont(self.fontName, self.fontSize + config.movielist.fontsize.getValue() + 7))
+			self.l.setFont(0, gFont(self.fontName, self.fontSize + config.movielist.fontsize.value + 10))
+			self.l.setFont(1, gFont(self.fontName, self.fontSize + config.movielist.fontsize.value + 7))
 
 	def buildMovieListEntry(self, serviceref, info, begin, data):
 
-		showPicons = "picon" in config.usage.movielist_servicename_mode.getValue()
-		switch = config.usage.show_icons_in_movielist.getValue()
-		piconWidth = config.usage.movielist_piconwidth.getValue() if showPicons else 0
-		durationWidth = self.durationWidth if config.usage.load_length_of_movies_in_moviellist.getValue() else 0
+		showPicons = "picon" in config.usage.movielist_servicename_mode.value
+		switch = config.usage.show_icons_in_movielist.value
+		piconWidth = config.usage.movielist_piconwidth.value if showPicons else 0
+		durationWidth = self.durationWidth if config.usage.load_length_of_movies_in_moviellist.value else 0
 
 		width = self.l.getItemSize().width()
 
 		dateWidth = self.dateWidth
-		if not config.movielist.use_fuzzy_dates.getValue():
+		if not config.movielist.use_fuzzy_dates.value:
 			dateWidth += 30
 
 		iconSize = self.iconsWidth
@@ -434,7 +434,7 @@ class MovieList(GUIComponent):
 			data = MovieListData()
 			cur_idx = self.l.getCurrentSelectionIndex()
 			x = self.list[cur_idx] # x = ref,info,begin,...
-			if config.usage.load_length_of_movies_in_moviellist.getValue():
+			if config.usage.load_length_of_movies_in_moviellist.value:
 				data.len = x[1].getLength(x[0]) #recalc the movie length...
 			else:
 				data.len = 0 #dont recalc movielist to speedup loading the list
@@ -443,7 +443,7 @@ class MovieList(GUIComponent):
 				data.txt = info.getName(serviceref)
 			else:
 				data.txt = info.getName(serviceref).replace('_', ' ').strip()
-			if config.movielist.hide_extensions.getValue():
+			if config.movielist.hide_extensions.value:
 				fileName, fileExtension = os.path.splitext(data.txt)
 				if fileExtension in KNOWN_EXTENSIONS:
 					data.txt = fileName
