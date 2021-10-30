@@ -63,8 +63,9 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 		self.pluginLanguageDomain = PluginLanguageDomain
 		if not isinstance(self.skinName, list):
 			self.skinName = [self.skinName]
-		self.skinName.append("setup_%s" % setup)
-		self.skinName.append("Setup%s" % setup)
+		if setup:
+			self.skinName.append("setup_%s" % setup)
+			self.skinName.append("Setup%s" % setup)
 		self.skinName.append("Setup")
 		self.list = []
 		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry, fullUI=True)
