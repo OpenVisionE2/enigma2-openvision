@@ -651,6 +651,7 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("P1", _("GCC version"), about.getGccVersion()))
 		info.append(formatLine("P1", _("Glibc version"), about.getGlibcVersion()))
+		info.append(formatLine("P1", _("OpenSSL version"), BoxInfo.getItem("OpenSSLVersion")))
 		info.append(formatLine("P1", _("Python version"), about.getPythonVersionString()))
 		info.append(formatLine("P1", _("GStreamer version"), about.getGStreamerVersionString().replace("GStreamer", "")))
 		info.append(formatLine("P1", _("FFmpeg version"), about.getFFmpegVersionString()))
@@ -1169,8 +1170,8 @@ class ReceiverInformation(InformationBase):
 		customCode = fileReadLine("/proc/stb/ir/rc/customcode", source=MODULE_NAME)
 		if customCode:
 			info.append(formatLine("P1", _("RC custom code"), customCode))
-		info.append("")
 		if config.hdmicec.enabled.value:
+			info.append("")
 			info.append(formatLine("P1", _("HDMI-CEC address"), config.hdmicec.fixed_physical_address.value))
 		info.append("")
 		info.append(formatLine("H", _("Driver and kernel information")))
@@ -1572,12 +1573,10 @@ class TunerInformation(InformationBase):
 		# 	info.append(formatLine("P1", tuner, type))
 		info.append("")
 		info.append(formatLine("", _("DVB API"), about.getDVBAPI()))
-		numSlots = 0
 		dvbFeToolTxt = ""
-		nimSlots = nimmanager.getSlotCount()
-		for nim in range(nimSlots):
+		for nim in range(nimmanager.getSlotCount()):
 			dvbFeToolTxt += eDVBResourceManager.getInstance().getFrontendCapabilities(nim)
-		dvbApiVersion = dvbFeToolTxt.splitlines()[0].replace("DVB API version: ", "").strip()
+		dvbApiVersion = dvbFeToolTxt.splitlines()[0].replace("DVB API version: ", "").strip() if dvbFeToolTxt else _("N/A")
 		info.append(formatLine("", _("DVB API version"), dvbApiVersion))
 		info.append("")
 		info.append(formatLine("", _("Transcoding"), (_("Yes") if BoxInfo.getItem("transcoding") else _("No"))))

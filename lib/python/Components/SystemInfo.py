@@ -217,6 +217,17 @@ def getModuleLayout():
 	return None
 
 
+def getOpenSSLVersion():
+	process = Popen(("/usr/bin/openssl", "version"), stdout=PIPE, stderr=PIPE, universal_newlines=True)
+	stdout, stderr = process.communicate()
+	if process.returncode == 0:
+		data = stdout.strip().split()
+		if len(data) > 1 and data[0] == "OpenSSL":
+			return data[1]
+	print("[About] Get OpenSSL version failed.")
+	return _("Unknown")
+
+
 model = BoxInfo.getItem("model")
 brand = BoxInfo.getItem("brand")
 platform = BoxInfo.getItem("platform")
@@ -243,6 +254,8 @@ BoxInfo.setItem("RemoteRepeat", repeat)
 BoxInfo.setItem("RemoteDelay", 200 if model in ("maram9", "axodin") else 700)
 
 BoxInfo.setItem("multiboot", 0 if BoxInfo.getItem("distro", "").lower() == "openvision" else 1, immutable=True)
+
+BoxInfo.setItem("OpenSSLVersion", getOpenSSLVersion(), immutable=True)
 
 SystemInfo["CommonInterface"] = eDVBCIInterfaces.getInstance().getNumOfSlots()
 SystemInfo["CommonInterfaceCIDelay"] = fileCheck("/proc/stb/tsmux/rmx_delay")
