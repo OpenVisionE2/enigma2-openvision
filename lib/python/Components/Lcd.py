@@ -520,7 +520,7 @@ def InitLcd():
 		]
 		config.lcd.ledblinkcontrolcolor = ConfigSelection(choices=colorsList, default="0xffffff")
 		config.lcd.ledblinkcontrolcolor.addNotifier(setLedBlinkControlColor)
-		config.lcd.ledbrightnesscontrol = ConfigSlider(default="0xff", increment=25, limits=(0, 0xff))
+		config.lcd.ledbrightnesscontrol = ConfigSlider(default=0xff, increment=25, limits=(0, 0xff))
 		config.lcd.ledbrightnesscontrol.addNotifier(setLedBrightnessControl)
 		config.lcd.ledcolorcontrolcolor = ConfigSelection(choices=colorsList, default="0xffffff")
 		config.lcd.ledcolorcontrolcolor.addNotifier(setLedColorControlColor)
