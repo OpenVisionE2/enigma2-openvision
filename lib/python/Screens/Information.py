@@ -1109,10 +1109,13 @@ class ReceiverInformation(InformationBase):
 		info.append(formatLine("P1", _("Receiver name"), "%s %s" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
 		info.append(formatLine("P1", _("Build Brand"), BoxInfo.getItem("brand")))
 		platform = BoxInfo.getItem("platform")
+		friendlyfamily = BoxInfo.getItem("friendlyfamily")
 		model = BoxInfo.getItem("model")
 		info.append(formatLine("P1", _("Build Model"), model))
 		if platform != model:
 			info.append(formatLine("P1", _("Platform"), platform))
+		if friendlyfamily != model:
+			info.append(formatLine("P1", _("Compatible to use on"), friendlyfamily))
 		procModel = getBoxProc()
 		if procModel != model:
 			info.append(formatLine("P1", _("Proc model"), procModel))
