@@ -141,6 +141,7 @@ Here is the list of variables currently supported:
 	"brand" or "/proc/enigma/brand" replaces "getBoxBrand()"
 		("getMachineBrand() and "getBrandOEM()" in OE-Alliance's "boxbranding")
 	"displaybrand" or "/proc/enigma/displaybrand" replaces "getDisplayBrand()"
+	"friendlyfamily" or "/proc/enigma/friendlyfamily" replaces "getFriendlyFamily()"
 	"platform" or "/proc/enigma/platform" replaces "getMachineBuild()"
 	"imgversion" or "/proc/enigma/imgversion" replaces "getIMGVersion()"
 	"imgrevision" or "/proc/enigma/imgrevision" replaces "getIMGRevision()"
@@ -250,6 +251,19 @@ displaybrand:
 		Real brand is what printed on the receiver.
 
 	Example: Zgemma
+
+friendlyfamily:
+
+	BoxInfo.getItem("friendlyfamily") (/proc/enigma/friendlyfamily)
+
+		This variable defines other names that may be out there instead of the machine name.
+
+		By default MACHINE is what we use but users may know their boxes
+		with similar/different names. This results in confusing users as
+		they may not know which image is compatible for their boxes to install.
+		Friendly Family shows which boxes could use a common image.
+
+	Example: zgemmah9s zgemmah9t zgemmah92s zgemmah92h zgemmah9splus
 
 platform:
 

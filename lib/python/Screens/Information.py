@@ -1170,7 +1170,7 @@ class ReceiverInformation(InformationBase):
 		customCode = fileReadLine("/proc/stb/ir/rc/customcode", source=MODULE_NAME)
 		if customCode:
 			info.append(formatLine("P1", _("RC custom code"), customCode))
-		if config.hdmicec.enabled.value:
+		if BoxInfo.getItem("HasHDMI-CEC") and config.hdmicec.enabled.value:
 			info.append("")
 			info.append(formatLine("P1", _("HDMI-CEC address"), config.hdmicec.fixed_physical_address.value))
 		info.append("")
