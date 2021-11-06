@@ -36,7 +36,7 @@ class HdmiCECSetupScreen(Screen, ConfigListScreen):
 
 		self.list = []
 		self.logpath_entry = None
-		ConfigListScreen.__init__(self, self.list, session=self.session)
+		ConfigListScreen.__init__(self, self.list, session=self.session, on_change = self.changedEntry)
 		self.createSetup()
 		self.updateAddress()
 
@@ -69,6 +69,9 @@ class HdmiCECSetupScreen(Screen, ConfigListScreen):
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
 
+	def changedEntry(self):
+		self.createSetup()
+
 	# for summary:
 	def getCurrentEntry(self):
 		self.updateDescription()
@@ -80,15 +83,7 @@ class HdmiCECSetupScreen(Screen, ConfigListScreen):
 	###
 
 	def updateDescription(self):
-		self["description"].setText("%s\n\n%s\n\n%s" % (self.current_address, self.fixed_address, self.getCurrentDescription()))
-
-	def keyLeft(self):
-		ConfigListScreen.keyLeft(self)
-		self.createSetup()
-
-	def keyRight(self):
-		ConfigListScreen.keyRight(self)
-		self.createSetup()
+		self["description"].setText("%s\n%s\n\n%s" % (self.current_address, self.fixed_address, self.getCurrentDescription()))
 
 	def keyGo(self):
 		for x in self["config"].list:
@@ -119,11 +114,11 @@ class HdmiCECSetupScreen(Screen, ConfigListScreen):
 
 	def updateAddress(self):
 		import Components.HdmiCec
-		self.current_address = _("Current CEC address") + ": " + Components.HdmiCec.hdmi_cec.getPhysicalAddress()
+		self.current_address = _("Current CEC address") + ":\t" + Components.HdmiCec.hdmi_cec.getPhysicalAddress()
 		if config.hdmicec.fixed_physical_address.value == "0.0.0.0":
-			self.fixed_address = ""
+			self.fixed_address = _("Press yellow button to set CEC address again")
 		else:
-			self.fixed_address = _("Using fixed address") + ": " + config.hdmicec.fixed_physical_address.value
+			self.fixed_address = _("Using fixed address") + ":\t" + config.hdmicec.fixed_physical_address.value
 		self.updateDescription()
 
 	def logPath(self, res):

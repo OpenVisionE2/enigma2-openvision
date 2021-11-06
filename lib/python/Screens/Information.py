@@ -1175,7 +1175,8 @@ class ReceiverInformation(InformationBase):
 			info.append(formatLine("P1", _("RC custom code"), customCode))
 		if BoxInfo.getItem("HasHDMI-CEC") and config.hdmicec.enabled.value:
 			info.append("")
-			info.append(formatLine("P1", _("HDMI-CEC address"), config.hdmicec.fixed_physical_address.value))
+			address = config.hdmicec.fixed_physical_address.value if config.hdmicec.fixed_physical_address.value != "0.0.0.0" else _("N/A")
+			info.append(formatLine("P1", _("HDMI-CEC address"), address))
 		info.append("")
 		info.append(formatLine("H", _("Driver and kernel information")))
 		info.append("")
