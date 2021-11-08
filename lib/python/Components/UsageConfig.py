@@ -1618,7 +1618,7 @@ def InitUsageConfig():
 		("tha", _("Thai")),
 		("tur Audio_TUR", _("Turkish")),
 		("ukr Ukr", _("Ukrainian")),
-		("NAR qad", _("Visual impaired commentary"))
+		("NAR qad", _("Audio description for the visually impaired"))
 	]
 
 	epg_language_choices = audio_language_choices[:1] + audio_language_choices[2:]
