@@ -2316,12 +2316,12 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		Tools.Trashcan.cleanAll(os.path.split(current.getPath())[0])
 
 	def showNetworkMounts(self):
-		import NetworkSetup
+		from . import NetworkSetup
 		self.session.open(NetworkSetup.NetworkMountsMenu)
 
 	def showDeviceMounts(self):
-		import Plugins.SystemPlugins.MountManager
-		self.session.open(Plugins.SystemPlugins.MountManager.plugin.DevicesMountPanel)
+		import Plugins.SystemPlugins.Vision.MountManager
+		self.session.open(Plugins.SystemPlugins.Vision.MountManager.VISIONDevicesPanel)
 
 	def showActionFeedback(self, text):
 		if self.feedbackTimer is None:
