@@ -462,7 +462,7 @@ class MovieContextMenu(Screen, ProtectedScreen):
 				# Plugins expect a valid selection, so only include them if we selected a non-dir
 				if not(service.flags & eServiceReference.mustDescent):
 					for p in plugins.getPlugins(PluginDescriptor.WHERE_MOVIELIST):
-						append_to_menu(menu, (p.description, boundFunction(p, session, service)), key="bullet")
+						append_to_menu(menu, (p.description, boundFunction(p.__call__, session, service)), key="bullet")
 
 		self["config"] = ChoiceList(menu)
 
