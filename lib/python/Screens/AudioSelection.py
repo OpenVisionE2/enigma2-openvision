@@ -79,7 +79,7 @@ class AudioSelection(Screen, ConfigListScreen):
 
 	def fillList(self, arg=None):
 		from Tools.ISO639 import LanguageCodes
-		from  Components.UsageConfig import originalAudioTracks, visuallyImpairedCommentary
+		from Components.UsageConfig import originalAudioTracks, visuallyImpairedCommentary
 		streams = []
 		conflist = []
 		selectedidx = 0
