@@ -97,11 +97,6 @@ def InitUsageConfig():
 	])
 	config.usage.record_indicator_mode.addNotifier(refreshServiceList)
 
-	config.usage.virtualkeyBoard_style = ConfigSelection(default="OV", choices=[
-		("OV", _("Open Vision")),
-		("e2", _("Enigma2 default"))
-	])
-
 	choicelist = [("-1", _("Disable"))]
 	for i in range(0, 1300, 100):
 		choicelist.append((str(i), ngettext("%d pixel wide", "%d pixels wide", i) % i))
