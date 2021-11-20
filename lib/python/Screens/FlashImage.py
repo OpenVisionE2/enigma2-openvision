@@ -2,6 +2,7 @@ import json
 import os
 import shutil
 import tempfile
+import struct
 import time
 import urllib2
 import zipfile
@@ -500,7 +501,13 @@ class MultiBootSelection(SelectImage):
 					startupfile = os.path.join(self.tmp_dir, "%s_%s" % (BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'].rsplit('_', 1)[0], slot[1]))
 				else:
 					startupfile = os.path.join(self.tmp_dir, "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
-				shutil.copyfile(startupfile, os.path.join(self.tmp_dir, "STARTUP"))
+				if BoxInfo.getItem("canDualBoot"):
+					with open('/dev/block/by-name/flag', 'wb') as f:
+						f.write(struct.pack("B", int(slot[0])))
+					startupfile = os.path.join("/boot", "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
+					shutil.copyfile(startupfile, os.path.join("/boot", "STARTUP"))
+				else:
+					shutil.copyfile(startupfile, os.path.join(self.tmp_dir, "STARTUP"))
 			else:
 				if slot[1] == 1:
 					startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (slot[0], slot[0] * 2 + 1, model)
