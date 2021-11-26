@@ -88,7 +88,7 @@ class ParentalControlSetup(Screen, ConfigListScreen, ProtectedScreen):
 				self.list.append(getConfigListEntry(_("Protect movie list"), config.ParentalControl.config_sections.movie_list))
 				self.list.append(getConfigListEntry(_("Protect context menus"), config.ParentalControl.config_sections.context_menus))
 				self.list.append(getConfigListEntry(_("Protect vision core menu"), config.ParentalControl.config_sections.visioncore_menu))
-				if config.usage.menu_sort_mode.value == "user":
+				if config.usage.menu_sort_mode.value.startswith("user"):
 					self.list.append(getConfigListEntry(_("Protect menu sort"), config.ParentalControl.config_sections.menu_sort))
 		else:
 			self.changePin = getConfigListEntry(_("Enable parental protection"), config.ParentalControl.servicepinactive)
