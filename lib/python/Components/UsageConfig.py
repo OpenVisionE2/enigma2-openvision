@@ -367,8 +367,7 @@ def InitUsageConfig():
 		("movielist", _("Return to movie list")),
 		("quit", _("Return to previous service")),
 		("pause", _("Pause movie at end")),
-		("playlist", _("Play next (return to movie list)")),
-		("playlistquit", _("Play next (return to previous service)")),
+		("playlist", _("Play next in movie list")),
 		("loop", _("Continues play (loop)")),
 		("repeatcurrent", _("Repeat"))
 	])

@@ -400,11 +400,17 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 		elif answer == "restart":
 			self.doSeek(0)
 			self.setSeekState(self.SEEK_STATE_PLAY)
-		elif answer in ("playlist", "playlistquit", "loop"):
-			(next_service, item, lenght) = self.getPlaylistServiceInfo(self.cur_service)
+		elif answer in ("playlist", "loop"):
+			(next_service, item, length) = self.getPlaylistServiceInfo(self.cur_service)
+			from MovieSelection import playlist
+			if playlist:
+				self.activeResumePosition(True)
 			if next_service is not None:
 				if config.usage.next_movie_msg.value:
-					self.displayPlayedName(next_service, item, lenght)
+					self.displayPlayedName(next_service, item, length)
+				if playlist:
+					self.is_closing = False
+					self.activeResumePosition(True)
 				self.session.nav.playService(next_service)
 				self.cur_service = next_service
 			else:

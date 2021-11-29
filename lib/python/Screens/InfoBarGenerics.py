@@ -1596,6 +1596,7 @@ class InfoBarSeek:
 		self.fast_winding_hint_message_showed = False
 		self.setSeekState(self.SEEK_STATE_PLAY)
 		self.__seekableStatusChanged()
+		self.activeResumePosition(False)
 
 	def setSeekState(self, state):
 		service = self.session.nav.getCurrentService()
@@ -3510,6 +3511,9 @@ class InfoBarCueSheetSupport:
 		if answer == True:
 			self.doSeek(self.resume_point)
 		self.hideAfterResume()
+
+	def activeResumePosition(self, active=True):
+		self.active_resume_position = active
 
 	def hideAfterResume(self):
 		if isinstance(self, InfoBarShowHide):
