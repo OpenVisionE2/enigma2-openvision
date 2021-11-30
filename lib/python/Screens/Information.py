@@ -628,19 +628,6 @@ class ImageInformation(InformationBase):
 		if mediaService:
 			info.append(formatLine("P1", _("Media service"), mediaService.replace("enigma2-plugin-systemplugins-", "")))
 		info.append("")
-		info.append(formatLine("H", _("Build information")))
-		info.append("")
-		info.append(formatLine("P1", _("Image"), BoxInfo.getItem("distro")))
-		info.append(formatLine("P1", _("Image build"), BoxInfo.getItem("imagebuild")))
-		info.append(formatLine("P1", _("Image build date"), about.getBuildDateString()))
-		info.append(formatLine("P1", _("Image architecture"), BoxInfo.getItem("architecture")))
-		if BoxInfo.getItem("imagedir"):
-			info.append(formatLine("P1", _("Image folder"), BoxInfo.getItem("imagedir")))
-		if BoxInfo.getItem("imagefs"):
-			info.append(formatLine("P1", _("Image file system"), BoxInfo.getItem("imagefs").strip()))
-		info.append(formatLine("P1", _("Feed URL"), BoxInfo.getItem("feedsurl")))
-		info.append(formatLine("P1", _("Compiled by"), BoxInfo.getItem("developername")))
-		info.append("")
 		info.append(formatLine("H", _("Software information")))
 		info.append("")
 		info.append(formatLine("P1", _("GCC version"), about.getGccVersion()))
@@ -656,22 +643,6 @@ class ImageInformation(InformationBase):
 		if uuId:
 			info.append(formatLine("P1", _("UUID"), uuId))
 		info.append("")
-		info.append(formatLine("H", _("Boot information")))
-		info.append("")
-		if BoxInfo.getItem("mtdbootfs"):
-			info.append(formatLine("P1", _("MTD boot"), BoxInfo.getItem("mtdbootfs")))
-		if BoxInfo.getItem("mtdkernel"):
-			info.append(formatLine("P1", _("MTD kernel"), BoxInfo.getItem("mtdkernel")))
-		if BoxInfo.getItem("mtdrootfs"):
-			info.append(formatLine("P1", _("MTD root"), BoxInfo.getItem("mtdrootfs")))
-		if BoxInfo.getItem("kernelfile"):
-			info.append(formatLine("P1", _("Kernel file"), BoxInfo.getItem("kernelfile")))
-		if BoxInfo.getItem("rootfile"):
-			info.append(formatLine("P1", _("Root file"), BoxInfo.getItem("rootfile")))
-		if BoxInfo.getItem("mkubifs"):
-			info.append(formatLine("P1", _("MKUBIFS"), BoxInfo.getItem("mkubifs")))
-		if BoxInfo.getItem("ubinize"):
-			info.append(formatLine("P1", _("UBINIZE"), BoxInfo.getItem("ubinize")))
 		if BoxInfo.getItem("HiSilicon"):
 			info.append("")
 			info.append(formatLine("H", _("HiSilicon specific information")))
