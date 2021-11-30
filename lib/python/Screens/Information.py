@@ -3,10 +3,6 @@ from glob import glob
 from json import loads
 from os import listdir, popen, remove, statvfs
 from os.path import basename, getmtime, isdir, isfile, join as pathjoin
-try:
-	from PIL import Image
-except ImportError:
-	pass
 from six import PY2
 from ssl import _create_unverified_context  # For python 2.7.11 we need to bypass the certificate check
 from subprocess import PIPE, Popen
@@ -221,13 +217,17 @@ class InformationImage(Screen, HelpableScreen):
 		self["lab4"] = StaticText(_("https://openvision.tech"))
 		self["lab5"] = StaticText(_("Sources are available at:"))
 		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
-		self["actions"] = HelpableActionMap(self, ["OkCancelActions", "ColorActions"], {
+		self["actions"] = HelpableActionMap(self, ["OkCancelActions", "NavigationActions", "ColorActions"], {
 			"cancel": (self.keyCancel, _("Close the screen")),
 			"close": (self.closeRecursive, _("Close the screen and exit all menus")),
 			"ok": (self.nextImage, _("Show next image")),
 			"red": (self.keyCancel, _("Close the screen")),
 			"green": (self.prevImage, _("Show previous image")),
-			"yellow": (self.nextImage, _("Show next image"))
+			"yellow": (self.nextImage, _("Show next image")),
+			"up": (self.prevImage, _("Show previous image")),
+			"left": (self.prevImage, _("Show previous image")),
+			"right": (self.nextImage, _("Show next image")),
+			"down": (self.nextImage, _("Show next image"))
 		}, prio=0, description=_("Receiver Image Actions"))
 		self.images = (
 			(_("Front"), "receiver/%s.png", BoxInfo.getItem("model")),
@@ -274,15 +274,6 @@ class InformationImage(Screen, HelpableScreen):
 		imagePath = resolveFilename(SCOPE_GUISKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])
 		image = LoadPixmap(imagePath)
 		if image:
-			img = Image.open(imagePath)
-			imageWidth, imageHeight = img.size
-			scale = float(self.widgetContext[2]) / imageWidth if imageWidth >= imageHeight else float(self.widgetContext[3]) / imageHeight
-			sizeW = int(imageWidth * scale)
-			sizeH = int(imageHeight * scale)
-			posX = self.widgetContext[0] + int(self.widgetContext[2] / 2.0 - sizeW / 2.0)
-			posY = self.widgetContext[1] + int(self.widgetContext[3] / 2.0 - sizeH / 2.0)
-			self["image"].instance.move(ePoint(posX, posY))
-			self["image"].instance.resize(eSize(sizeW, sizeH))
 			self["image"].instance.setPixmap(image)
 
 
@@ -1112,12 +1103,12 @@ class ReceiverInformation(InformationBase):
 		info.append(formatLine("P1", _("Receiver name"), "%s %s" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
 		info.append(formatLine("P1", _("Build Brand"), BoxInfo.getItem("brand")))
 		platform = BoxInfo.getItem("platform")
-		friendlyfamily = BoxInfo.getItem("friendlyfamily")
+		friendlyfamily = BoxInfo.getItem("friendlyfamily")  # This shouldn't be here it is in Build.
 		model = BoxInfo.getItem("model")
 		info.append(formatLine("P1", _("Build Model"), model))
 		if platform != model:
 			info.append(formatLine("P1", _("Platform"), platform))
-		if friendlyfamily != model:
+		if friendlyfamily != model:  # This shouldn't be here it is in Build.
 			info.append(formatLine("P1", _("Compatible to use on"), friendlyfamily))
 		procModel = getBoxProc()
 		if procModel != model:
