@@ -72,6 +72,7 @@ install_PYTHON = \
 	StreamingClientsInfo.py \
 	SubservicesQuickzap.py \
 	SubtitleDisplay.py \
+	TagEditor.py \
 	TaskView.py \
 	TextBox.py \
 	Time.py \
