@@ -1,33 +1,31 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from Screens.Screen import Screen
+from datetime import datetime
+from time import localtime, mktime, time, strftime
+import urllib
+
+from enigma import eEPGCache, iRecordableServicePtr
+
 import ChannelSelection
+from RecordTimer import AFTEREVENT
 from ServiceReference import ServiceReference
-from Components.config import config, ConfigSelection, ConfigText, ConfigSubList, ConfigDateTime, ConfigClock, ConfigYesNo, getConfigListEntry
 from Components.ActionMap import NumberActionMap
+from Components.config import config, ConfigSelection, ConfigText, ConfigSubList, ConfigDateTime, ConfigClock, ConfigYesNo, getConfigListEntry
 from Components.ConfigList import ConfigListScreen
-from Tools.BoundFunction import boundFunction
-from Components.MenuList import MenuList
-from Components.Sources.StaticText import StaticText
-from Components.Button import Button
-from Components.Pixmap import Pixmap
 from Components.Label import Label
+from Components.MenuList import MenuList
 from Components.NimManager import nimmanager
+from Components.Pixmap import Pixmap
 from Components.SystemInfo import BoxInfo
 from Components.UsageConfig import defaultMoviePath
-from Screens.MovieSelection import getPreferredTagEditor
-from Screens.LocationBox import MovieLocationBox
+from Components.Sources.StaticText import StaticText
 from Screens.ChoiceBox import ChoiceBox
+from Screens.LocationBox import MovieLocationBox
 from Screens.MessageBox import MessageBox
+# from Screens.MovieSelection import getPreferredTagEditor
+from Screens.Screen import Screen
+from Screens.TagEditor import TagEditor
 from Screens.VirtualKeyBoard import VirtualKeyBoard
 from Tools.Alternatives import GetWithAlternative
 from Tools.FallbackTimer import FallbackTimerDirs
-from RecordTimer import AFTEREVENT
-from enigma import eEPGCache, iRecordableServicePtr
-from time import localtime, mktime, time, strftime
-from datetime import datetime
-import urllib
 
 
 class TimerEntry(Screen, ConfigListScreen):
@@ -253,8 +251,7 @@ class TimerEntry(Screen, ConfigListScreen):
 
 		self.tagsSet = getConfigListEntry(_("Tags"), self.timerentry_tagsset)
 		if self.timerentry_justplay.value != "zap" and not self.timerentry_fallback.value:
-			if getPreferredTagEditor():
-				self.list.append(self.tagsSet)
+			self.list.append(self.tagsSet)
 			self.list.append(getConfigListEntry(_("After event"), self.timerentry_afterevent))
 			self.list.append(getConfigListEntry(_("Recording type"), self.timerentry_recordingtype))
 
@@ -262,7 +259,7 @@ class TimerEntry(Screen, ConfigListScreen):
 		self[widget].l.setList(self.list)
 
 	def newConfig(self):
-		print("[TimerEntry] newConfig", self["config"].getCurrent())
+		print("[TimerEntry] newConfig '%s'." % str(self["config"].getCurrent()))
 		if self["config"].getCurrent() in (self.timerTypeEntry, self.timerJustplayEntry, self.frequencyEntry, self.entryShowEndTime, self.entryFallbackTimer):
 			self.createSetup("config")
 
@@ -349,12 +346,8 @@ class TimerEntry(Screen, ConfigListScreen):
 							self.openMovieLocationBox()
 				self.session.openWithCallback(selectAction, ChoiceBox, title=text, list=menu)
 
-		elif getPreferredTagEditor() and cur == self.tagsSet:
-			self.session.openWithCallback(
-				self.tagEditFinished,
-				getPreferredTagEditor(),
-				self.timerentry_tags
-			)
+		elif cur == self.tagsSet:
+			self.session.openWithCallback(self.tagEditFinished, TagEditor, tags=self.timerentry_tags)
 		else:
 			self.keyGo()
 

@@ -45,6 +45,7 @@ from Screens.MessageBox import MessageBox
 from Screens.ParentalControlSetup import ProtectedScreen
 from Screens.Screen import Screen
 from Screens.Setup import Setup
+from Screens.TagEditor import TagEditor
 from Screens.VirtualKeyBoard import VirtualKeyBoard
 from Tools.BoundFunction import boundFunction
 from Tools.CopyFiles import copyFiles, deleteFiles, moveFiles
@@ -154,18 +155,12 @@ def defaultMoviePath():
 	return result
 
 
-def setPreferredTagEditor(te):
-	global preferredTagEditor
-	if preferredTagEditor is None:
-		preferredTagEditor = te
-		print("[MovieSelection] Preferred tag editor changed to", preferredTagEditor)
-	else:
-		print("[MovieSelection] Preferred tag editor already set to", preferredTagEditor, "ignoring", te)
+def setPreferredTagEditor(tageditor):  # Place holder function for legacy plugins yet to use the new embedded TagEditor.
+	return
 
 
-def getPreferredTagEditor():
-	global preferredTagEditor
-	return preferredTagEditor
+def getPreferredTagEditor():  # Place holder function for legacy plugins yet to use the new embedded TagEditor.
+	return None
 
 
 def isTrashFolder(ref):
@@ -1610,6 +1605,14 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			mbox = self.session.open(MessageBox, msg, type=MessageBox.TYPE_ERROR, timeout=5)
 			mbox.setTitle(self.getTitle())
 
+	def do_tageditor(self):
+		item = self.getCurrentSelection()
+		if not isFolder(item):
+			self.session.openWithCallback(self.tageditorCallback, TagEditor, service=item[0])
+
+	def tageditorCallback(self, tags):
+		return
+
 	def do_rename(self):
 		item = self.getCurrentSelection()
 		if not canRename(item):
@@ -2276,6 +2279,8 @@ class MovieContextMenu(Screen, ProtectedScreen):
 					from Components.ParentalControl import parentalControl
 					if not parentalControl.sessionPinCached:
 						append_to_menu(menu, (_("Unhide parental control services"), csel.unhideParentalServices), key="9")
+				if isfile("%s.meta" % service.getPath().rstrip("/")):
+					append_to_menu(menu, (_("Edit Tags"), csel.do_tageditor), key="bullet")
 				# Plugins expect a valid selection, so only include them if we selected a non-dir
 				if not(service.flags & eServiceReference.mustDescent):
 					for p in plugins.getPlugins(PluginDescriptor.WHERE_MOVIELIST):
