@@ -9,7 +9,6 @@ def InitRecordingConfig():
 	config.recording.asktozap = ConfigYesNo(default=True)
 	config.recording.margin_before = ConfigNumber(default=3)
 	config.recording.margin_after = ConfigNumber(default=5)
-	config.recording.debug = ConfigYesNo(default=False)
 	config.recording.ascii_filenames = ConfigYesNo(default=False)
 	config.recording.keep_timers = ConfigNumber(default=7)
 	config.recording.filename_composition = ConfigSelection(default="standard", choices=[

@@ -1157,14 +1157,13 @@ class RecordTimer(timer.Timer):
 				list.append(' flags="' + ' '.join([stringToXML(x) for x in timer.flags]) + '"')
 			list.append('>\n')
 
-			if config.recording.debug.value:
-				for time, code, msg in timer.log_entries:
-					list.append('<log')
-					list.append(' code="' + str(code) + '"')
-					list.append(' time="' + str(time) + '"')
-					list.append('>')
-					list.append(str(stringToXML(msg)))
-					list.append('</log>\n')
+			for time, code, msg in timer.log_entries:
+				list.append('<log')
+				list.append(' code="' + str(code) + '"')
+				list.append(' time="' + str(time) + '"')
+				list.append('>')
+				list.append(str(stringToXML(msg)))
+				list.append('</log>\n')
 
 			list.append('</timer>\n')
 
