@@ -119,7 +119,7 @@ config.movielist.moviesort = ConfigSelection(default=str(MovieList.SORT_GROUPWIS
 config.movielist.description = ConfigSelection(default=str(MovieList.SHOW_DESCRIPTION), choices=l_desc)
 config.movielist.settings_per_directory = ConfigYesNo(default=True)
 config.movielist.perm_sort_changes = ConfigYesNo(default=True)
-config.movielist.stop_service = ConfigYesNo(default=True)
+config.movielist.stop_service = ConfigYesNo(default=False)
 config.movielist.play_audio_internal = ConfigYesNo(default=True)
 config.movielist.root = ConfigSelection(default="/media", choices=["/", "/media", "/media/hdd", "/media/hdd/movie", "/media/usb", "/media/usb/movie"])
 config.movielist.hide_extensions = ConfigYesNo(default=False)

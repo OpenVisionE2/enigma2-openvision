@@ -581,6 +581,8 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 		self.infobar and self.infobar.openMultiServiceEPG()
 
 	def showMovies(self):
+		if config.movielist.stop_service.value:
+			self.session.nav.stopService()
 		ref = self.session.nav.getCurrentlyPlayingServiceOrGroup()
 		self.playingservice = ref # movie list may change the currently playing
 		self.movieselection_dlg = self.session.openWithCallback(self.movieSelected, Screens.MovieSelection.MovieSelection, ref)
