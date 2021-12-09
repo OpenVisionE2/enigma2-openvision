@@ -1,22 +1,21 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from Components.ActionMap import ActionMap
-from Components.Button import Button
-from Components.Label import Label
-from Components.config import config
-from Components.PowerTimerList import PowerTimerList
-from Components.Sources.StaticText import StaticText
-from PowerTimer import PowerTimerEntry, AFTEREVENT
-from Screens.Screen import Screen
-from Screens.ChoiceBox import ChoiceBox
-from Screens.MessageBox import MessageBox
-from Screens.PowerTimerEntry import TimerEntry, TimerLog
-from Tools.BoundFunction import boundFunction
-from Tools.FuzzyDate import FuzzyTime
+from six import PY2
 from time import time
 from timer import TimerEntry as RealTimerEntry
-from six import PY2
+
+from PowerTimer import PowerTimerEntry, AFTEREVENT
+from Components.ActionMap import ActionMap
+from Components.Button import Button
+from Components.config import config
+from Components.Label import Label
+from Components.PowerTimerList import PowerTimerList
+from Components.Sources.StaticText import StaticText
+from Screens.ChoiceBox import ChoiceBox
+from Screens.MessageBox import MessageBox
+from Screens.PowerTimerEntry import TimerEntry
+from Screens.Screen import Screen
+from Screens.TimerEntry import TimerLog
+from Tools.BoundFunction import boundFunction
+from Tools.FuzzyDate import FuzzyTime
 
 
 class PowerTimerEditList(Screen):
