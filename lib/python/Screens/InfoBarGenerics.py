@@ -1597,7 +1597,6 @@ class InfoBarSeek:
 		self.fast_winding_hint_message_showed = False
 		self.setSeekState(self.SEEK_STATE_PLAY)
 		self.__seekableStatusChanged()
-		self.activeResumePosition(False)
 
 	def setSeekState(self, state):
 		service = self.session.nav.getCurrentService()
