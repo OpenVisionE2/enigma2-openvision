@@ -965,6 +965,7 @@ class SelectSatsEntryScreen(Screen):
 		self["key_yellow"] = Button(_("Sort by"))
 		self["key_blue"] = Button(_("Select all"))
 		self["hint"] = Label(_("Press OK to toggle the selection"))
+		self["list"] = SelectionList()
 		SatList = []
 		if not isinstance(userSatlist, str):
 			userSatlist = ""
