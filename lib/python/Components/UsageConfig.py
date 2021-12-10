@@ -509,6 +509,12 @@ def InitUsageConfig():
 		("127", _("No priority"))
 	])
 
+	choicelist = [("0", _("Disabled"))]
+	for i in (10, 50, 100, 500, 1000, 2000):
+		choicelist.append(("%d" % i, _("%d ms") % i))
+
+	config.usage.http_startdelay = ConfigSelection(default="0", choices=choicelist)
+
 	def remote_fallback_changed(configElement):
 		if configElement.value:
 			configElement.value = "%s%s" % (not configElement.value.startswith("http://") and "http://" or "", configElement.value)
