@@ -1383,7 +1383,7 @@ RESULT eEPGCache::lookupEventId(const eServiceReference &service, int event_id, 
 		else
 		{
 			result = 0;
-			eDebug("[eEPGCache] event %04x not found in epgcache", event_id);
+			eTrace("[eEPGCache] event %04x not found in epgcache", event_id);
 		}
 	}
 	return -1;
