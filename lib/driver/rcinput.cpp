@@ -30,7 +30,7 @@ void eRCDeviceInputDev::handleCode(long rccode)
 	if (ev->type != EV_KEY)
 		return;
 
-	eDebug("[eInputDeviceInit] %x %x (%u) %x", ev->value, ev->code, ev->code, ev->type);
+	eTrace("[eInputDeviceInit] %x %x (%u) %x", ev->value, ev->code, ev->code, ev->type);
 
 	int km = iskeyboard ? input->getKeyboardMode() : eRCInput::kmNone;
 
@@ -535,7 +535,7 @@ void eRCDeviceInputDev::handleCode(long rccode)
 		}
 #endif
 	}
-	eDebug("[eRCDeviceInputDev] emit: %u", ev->value); // ZZ
+	eTrace("[eRCDeviceInputDev] emit: %u", ev->value);
 	switch (ev->value)
 	{
 		case 0:
