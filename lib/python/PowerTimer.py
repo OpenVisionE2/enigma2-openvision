@@ -225,7 +225,7 @@ class PowerTimer(Timer):
 	def getNextPowerManagerTime(self):
 		nextTime = self.getNextPowerManagerTimeOld()
 		fakeTime = time() + 300
-		if config.timeshift.isRecording.value:
+		if config.usage.timeshift_start_delay.value:
 			return nextTime if 0 < nextTime < fakeTime else fakeTime
 		return nextTime
 
