@@ -292,7 +292,7 @@ def runScreen():
 	plugins.readPluginList(resolveFilename(SCOPE_PLUGINS))
 	enigma.resumeInit()
 	profile("InitSession")
-	nav = Navigation()
+	nav = Navigation(config.misc.isNextRecordTimerAfterEventActionAuto.value, config.misc.isNextPowerTimerAfterEventActionAuto.value)  # Wake up to standby for RecordTimer and PowerTimer.
 	session = Session(desktop=enigma.getDesktop(0), summaryDesktop=enigma.getDesktop(1), navigation=nav)
 	CiHandler.setSession(session)
 	screensToRun = [x.__call__ for x in plugins.getPlugins(PluginDescriptor.WHERE_WIZARD)]
@@ -321,8 +321,17 @@ def runScreen():
 	profile("Wakeup")
 	from Tools.StbHardware import setFPWakeuptime, setRTCtime
 	from Screens.SleepTimerEdit import isNextWakeupTime
-	nowTime = time()  # Get currentTime.
-	wakeupList = sorted(
+	powerTimerWakeupAuto = False
+	recordTimerWakeupAuto = False
+	nowTime = time()  # Get current time.
+	powerTimerList = sorted(
+		[x for x in ((session.nav.RecordTimer.getNextRecordingTime(), 0, session.nav.RecordTimer.isNextRecordAfterEventActionAuto()),
+					(session.nav.RecordTimer.getNextZapTime(isWakeup=True), 1),
+					(plugins.getNextWakeupTime(), 2),
+					(session.nav.PowerTimer.getNextPowerManagerTime(), 3, session.nav.PowerTimer.isNextPowerManagerAfterEventActionAuto()))
+		if x[0] != -1]
+	)
+	sleepTimerList = sorted(
 		[x for x in (
 			(session.nav.RecordTimer.getNextRecordingTime(), 0),
 			(session.nav.RecordTimer.getNextZapTime(isWakeup=True), 1),
@@ -331,28 +340,42 @@ def runScreen():
 		)
 		if x[0] != -1]
 	)
-	if wakeupList:
-		startTime = wakeupList[0]
-		if (startTime[0] - nowTime) < 270:  # No time to switch box back on.
+	if sleepTimerList:
+		startSleepTime = sleepTimerList[0]
+		if (startSleepTime[0] - nowTime) < 270:  # No time to switch box back on.
 			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
 		else:
 			if brand == "gigablue":
-				wakeupTime = startTime[0] - 120  # GigaBlue already starts 2 min. before wakeup time.
+				wakeupTime = startSleepTime[0] - 120  # GigaBlue already starts 2 min. before wakeup time.
 			else:
-				wakeupTime = startTime[0] - 240
-		if brand == "gigablue":
-			print("[StartEnigma] DVB time sync disabled... so set RTC now to current linux time!  %s." % strftime("%Y/%m/%d %H:%M", localtime(nowTime)))
+				wakeupTime = startSleepTime[0] - 240
+		if not config.ntp.timesync.value == "dvb":
 			setRTCtime(nowTime)
-		print("[StartEnigma] Set wakeup time to %s." % strftime("%Y/%m/%d %H:%M", localtime(wakeupTime)))
 		setFPWakeuptime(wakeupTime)
-		config.misc.prev_wakeup_time.value = int(startTime[0])
-		config.misc.prev_wakeup_time_type.value = startTime[1]
-		config.misc.prev_wakeup_time_type.save()
-	else:
-		config.misc.prev_wakeup_time.value = 0
-		# if not model.startswith("azboxm"):  # Skip for AZBox (mini)me - setting wakeup time to past reboots box.
-		# 	setFPWakeuptime(int(nowTime) - 3600)  # Minus one hour -> overwrite old wakeup time.
-	config.misc.prev_wakeup_time.save()
+	if powerTimerList and powerTimerList[0][1] == 3:
+		startTimePowerList = powerTimerList[0]
+		if (startTimePowerList[0], nowTime) < 60:  # No time to switch box back on.
+			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
+		else:
+			wakeupTime = startTimePowerList[0]
+		if not config.ntp.timesync.value == "dvb":
+			setRTCtime(nowTime)
+		setFPWakeuptime(wakeupTime)
+		powerTimerWakeupAuto = startTimePowerList[1] == 3 and startTimePowerList[2]
+	config.misc.isNextPowerTimerAfterEventActionAuto.value = powerTimerWakeupAuto
+	config.misc.isNextPowerTimerAfterEventActionAuto.save()
+	if powerTimerList and powerTimerList[0][1] != 3:
+		startTimePowerList = powerTimerList[0]
+		if (startTimePowerList[0], nowTime) < 270:  # No time to switch box back on.
+			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
+		else:
+			wakeupTime = (startTimePowerList[0], 240)
+		if not config.ntp.timesync.value == "dvb":
+			setRTCtime(nowTime)
+		setFPWakeuptime(wakeupTime)
+		recordTimerWakeupAuto = startTimePowerList[1] == 0 and startTimePowerList[2]
+	config.misc.isNextRecordTimerAfterEventActionAuto.value = recordTimerWakeupAuto
+	config.misc.isNextRecordTimerAfterEventActionAuto.save()
 	profile("StopNavService")
 	session.nav.stopService()
 	profile("NavShutdown")
@@ -525,8 +548,8 @@ config.misc.load_unlinked_userbouquets = ConfigYesNo(default=True)
 config.misc.load_unlinked_userbouquets.addNotifier(setLoadUnlinkedUserbouquets)
 config.misc.locale = ConfigText(default="en_US")
 # config.misc.locale.addNotifier(localeNotifier)  # This should not be enabled while config.osd.language is in use!
-config.misc.prev_wakeup_time = ConfigInteger(default=0)
-config.misc.prev_wakeup_time_type = ConfigInteger(default=0)  # This is only valid when wakeup_time is not 0.  0 = RecordTimer, 1 = ZapTimer, 2 = Plugins, 3 = WakeupTimer.
+config.misc.isNextRecordTimerAfterEventActionAuto = ConfigYesNo(default=False)  # Auto action after event in RecordTimer.
+config.misc.isNextPowerTimerAfterEventActionAuto = ConfigYesNo(default=False)  # Auto action after event in PowerTimer.
 config.misc.RestartUI = ConfigYesNo(default=False)  # Detect user interface restart.
 config.misc.standbyCounter = NoSave(ConfigInteger(default=0))  # Number of standby.
 config.misc.startCounter = ConfigInteger(default=0)  # Number of e2 starts.
