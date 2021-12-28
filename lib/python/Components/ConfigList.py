@@ -2,7 +2,7 @@ from enigma import eListbox, eListboxPythonConfigContent, ePoint, eRCInput, eTim
 
 from skin import parameters
 from Components.ActionMap import HelpableActionMap, HelpableNumberActionMap
-from Components.config import ACTIONKEY_0, ACTIONKEY_ASCII, ACTIONKEY_BACKSPACE, ACTIONKEY_DELETE, ACTIONKEY_ERASE, ACTIONKEY_FIRST, ACTIONKEY_LAST, ACTIONKEY_LEFT, ACTIONKEY_NUMBERS, ACTIONKEY_RIGHT, ACTIONKEY_SELECT, ACTIONKEY_TIMEOUT, ACTIONKEY_TOGGLE, ConfigBoolean, ConfigElement, ConfigInteger, ConfigMacText, ConfigSelection, ConfigSequence, ConfigText, config, configfile
+from Components.config import ACTIONKEY_0, ACTIONKEY_ASCII, ACTIONKEY_BACKSPACE, ACTIONKEY_DELETE, ACTIONKEY_ERASE, ACTIONKEY_FIRST, ACTIONKEY_LAST, ACTIONKEY_LEFT, ACTIONKEY_NUMBERS, ACTIONKEY_RIGHT, ACTIONKEY_SELECT, ACTIONKEY_TIMEOUT, ACTIONKEY_TOGGLE, ConfigBoolean, ConfigElement, ConfigInteger, ConfigMACText, ConfigNumber, ConfigSelection, ConfigSequence, ConfigText, config, configfile
 from Components.GUIComponent import GUIComponent
 from Components.Pixmap import Pixmap
 from Components.Sources.Boolean import Boolean
@@ -41,13 +41,15 @@ class ConfigList(GUIComponent):
 	def timeout(self):
 		self.handleKey(ACTIONKEY_TIMEOUT)
 
-	def handleKey(self, key):
+	def handleKey(self, key, callback=None):
 		selection = self.getCurrent()
 		if selection and selection[1].enabled:
-			selection[1].handleKey(key)
+			changed = selection[1].handleKey(key, callback)
 			self.invalidateCurrent()
 			if key in ACTIONKEY_NUMBERS:
 				self.timer.start(1000, 1)
+			return changed
+		return False
 
 	def toggle(self):
 		self.getCurrent()[1].toggle()
@@ -75,8 +77,8 @@ class ConfigList(GUIComponent):
 	GUI_WIDGET = eListbox
 
 	def isChanged(self):
-		for x in self.list:
-			if x[1].isChanged():
+		for item in self.list:
+			if len(item) > 1 and item[1].isChanged():
 				return True
 		return False
 
@@ -106,11 +108,11 @@ class ConfigList(GUIComponent):
 		instance.selectionChanged.get().remove(self.selectionChanged)
 		instance.setContent(None)
 
-	def setList(self, l):
-		self.__list = l
+	def setList(self, newList):
+		self.__list = newList
 		self.l.setList(self.__list)
-		if l is not None:
-			for x in l:
+		if newList is not None:
+			for x in newList:
 				assert len(x) < 2 or isinstance(x[1], ConfigElement), "[ConfigList] Error: Entry in ConfigList '%s' must be a ConfigElement!" % str(x[1])
 
 	def getList(self):
@@ -184,11 +186,7 @@ class ConfigListScreen:
 			"menu": (self.keyMenu, _("Display selection list as a selection menu")),
 		}, prio=1, description=_("Common Setup Actions"))
 		self["menuConfigActions"].setEnabled(False if fullUI else True)
-		self["editConfigActions"] = HelpableNumberActionMap(self, ["NumberActions", "TextEditActions"], {
-			"backspace": (self.keyBackspace, _("Delete character to left of cursor or select AM times")),
-			"delete": (self.keyDelete, _("Delete character under cursor or select PM times")),
-			"erase": (self.keyErase, _("Delete all the text")),
-			"toggleOverwrite": (self.keyToggle, _("Toggle new text inserts before or overwrites existing text")),
+		self["charConfigActions"] = HelpableNumberActionMap(self, ["NumberActions", "InputAsciiActions"], {
 			"1": (self.keyNumberGlobal, _("Number or SMS style data entry")),
 			"2": (self.keyNumberGlobal, _("Number or SMS style data entry")),
 			"3": (self.keyNumberGlobal, _("Number or SMS style data entry")),
@@ -201,11 +199,26 @@ class ConfigListScreen:
 			"0": (self.keyNumberGlobal, _("Number or SMS style data entry")),
 			"gotAsciiCode": (self.keyGotAscii, _("Keyboard data entry"))
 		}, prio=1, description=_("Common Setup Actions"))
+		self["charConfigActions"].setEnabled(False if fullUI else True)
+		self["editConfigActions"] = HelpableNumberActionMap(self, ["TextEditActions"], {
+			"backspace": (self.keyBackspace, _("Delete character to left of cursor or select AM times")),
+			"delete": (self.keyDelete, _("Delete character under cursor or select PM times")),
+			"erase": (self.keyErase, _("Delete all the text")),
+			"toggleOverwrite": (self.keyToggle, _("Toggle new text inserts before or overwrites existing text")),
+		}, prio=1, description=_("Common Setup Actions"))
 		self["editConfigActions"].setEnabled(False if fullUI else True)
 		self["virtualKeyBoardActions"] = HelpableActionMap(self, "VirtualKeyboardActions", {
 			"showVirtualKeyboard": (self.keyText, _("Display the virtual keyboard for data entry"))
 		}, prio=1, description=_("Common Setup Actions"))
 		self["virtualKeyBoardActions"].setEnabled(False)
+		# Temporary support for legacy code and plugins that hasn't yet been updated (next 4 lines).
+		# All code should be updated to allow a better UI experience for users.  This patch code
+		# forces course control over the edit buttons instead of individual button control that is
+		# now available.
+		self["config_actions"] = DummyActions()
+		self["config_actions"].setEnabled = self.dummyConfigActions
+		self["VirtualKB"] = DummyActions()
+		self["VirtualKB"].setEnabled = self.dummyVKBActions
 		self["config"] = ConfigList(list, session=session)
 		self.setCancelMessage(None)
 		self.setRestartMessage(None)
@@ -243,9 +256,11 @@ class ConfigListScreen:
 	def handleInputHelpers(self):
 		currConfig = self["config"].getCurrent()
 		if currConfig is not None:
-			if isinstance(currConfig[1], (ConfigInteger, ConfigMacText, ConfigSequence, ConfigText)):
+			if isinstance(currConfig[1], (ConfigInteger, ConfigSequence, ConfigText)):
+				self["charConfigActions"].setEnabled(True)
 				self["editConfigActions"].setEnabled(True)
 			else:
+				self["charConfigActions"].setEnabled(False)
 				self["editConfigActions"].setEnabled(False)
 			if isinstance(currConfig[1], ConfigSelection):
 				self["menuConfigActions"].setEnabled(True)
@@ -259,6 +274,11 @@ class ConfigListScreen:
 					helpwindowpos = self["HelpWindow"].getPosition()
 					currConfig[1].help_window.instance.move(ePoint(helpwindowpos[0], helpwindowpos[1]))
 			else:
+				self.showVirtualKeyBoard(False)
+			if isinstance(currConfig[1], ConfigMACText):
+				self["editConfigActions"].setEnabled(False)
+				self.showVirtualKeyBoard(False)
+			if isinstance(currConfig[1], ConfigNumber):
 				self.showVirtualKeyBoard(False)
 
 	def showVirtualKeyBoard(self, state):
@@ -287,10 +307,10 @@ class ConfigListScreen:
 			self.keyToggle()
 		elif isinstance(self.getCurrentItem(), ConfigSelection):
 			self.keyMenu()
-		elif isinstance(self.getCurrentItem(), ConfigText):
+		elif isinstance(self.getCurrentItem(), ConfigText) and not isinstance(self.getCurrentItem(), (ConfigMACText, ConfigNumber)):
 			self.keyText()
 		else:
-			self["config"].handleKey(ACTIONKEY_SELECT)
+			self["config"].handleKey(ACTIONKEY_SELECT, self.entryChanged)
 
 	def keyOK(self):  # This is the deprecated version of keySelect!
 		self.keySelect()
@@ -318,9 +338,11 @@ class ConfigListScreen:
 
 	def keyMenuCallback(self, answer):
 		if answer:
-			self["config"].getCurrent()[1].value = answer[1]
+			prev = str(self.getCurrentValue())
+			self["config"].getCurrent()[1].setValue(answer[1])
 			self["config"].invalidateCurrent()
-			self.entryChanged()
+			if answer[1] != prev:
+				self.entryChanged()
 
 	def keyTop(self):
 		self["config"].moveTop()
@@ -332,20 +354,16 @@ class ConfigListScreen:
 		self["config"].moveUp()
 
 	def keyFirst(self):
-		self["config"].handleKey(ACTIONKEY_FIRST)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_FIRST, self.entryChanged)
 
 	def keyLeft(self):
-		self["config"].handleKey(ACTIONKEY_LEFT)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_LEFT, self.entryChanged)
 
 	def keyRight(self):
-		self["config"].handleKey(ACTIONKEY_RIGHT)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_RIGHT, self.entryChanged)
 
 	def keyLast(self):
-		self["config"].handleKey(ACTIONKEY_LAST)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_LAST, self.entryChanged)
 
 	def keyDown(self):
 		self["config"].moveDown()
@@ -357,28 +375,22 @@ class ConfigListScreen:
 		self["config"].moveBottom()
 
 	def keyBackspace(self):
-		self["config"].handleKey(ACTIONKEY_BACKSPACE)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_BACKSPACE, self.entryChanged)
 
 	def keyDelete(self):
-		self["config"].handleKey(ACTIONKEY_DELETE)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_DELETE, self.entryChanged)
 
 	def keyErase(self):
-		self["config"].handleKey(ACTIONKEY_ERASE)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_ERASE, self.entryChanged)
 
 	def keyToggle(self):
-		self["config"].handleKey(ACTIONKEY_TOGGLE)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_TOGGLE, self.entryChanged)
 
 	def keyGotAscii(self):
-		self["config"].handleKey(ACTIONKEY_ASCII)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_ASCII, self.entryChanged)
 
 	def keyNumberGlobal(self, number):
-		self["config"].handleKey(ACTIONKEY_0 + number)
-		self.entryChanged()
+		self["config"].handleKey(ACTIONKEY_0 + number, self.entryChanged)
 
 	def keySave(self):
 		if self.saveAll():
@@ -393,10 +405,11 @@ class ConfigListScreen:
 
 	def saveAll(self):
 		restart = False
-		for x in self["config"].list:
-			if x[0].endswith("*") and x[1].isChanged():
-				restart = True
-			x[1].save()
+		for item in self["config"].list:
+			if len(item) > 1:
+				if item[0].endswith("*") and item[1].isChanged():
+					restart = True
+				item[1].save()
 		configfile.save()
 		return restart
 
@@ -416,8 +429,9 @@ class ConfigListScreen:
 	def cancelConfirm(self, result):
 		if not result:
 			return
-		for x in self["config"].list:
-			x[1].cancel()
+		for item in self["config"].list:
+			if len(item) > 1:
+				item[1].cancel()
 		if not hasattr(self, "closeParameters"):
 			self.closeParameters = ()
 		self.close(*self.closeParameters)
@@ -428,3 +442,27 @@ class ConfigListScreen:
 
 	def run(self):  # Allow ConfigList based screens to be processed from the Wizard.
 		self.keySave()
+
+	def dummyConfigActions(self, value):  # Temporary support for legacy code and plugins that hasn't yet been updated.
+		self["configActions"].setEnabled(value)
+		self["navigationActions"].setEnabled(value)
+		self["menuConfigActions"].setEnabled(value)
+		self["charConfigActions"].setEnabled(value)
+		self["editConfigActions"].setEnabled(value)
+
+	def dummyVKBActions(self, value):  # Temporary support for legacy code and plugins that hasn't yet been updated.
+		self["virtualKeyBoardActions"].setEnabled(value)
+
+
+class DummyActions:  # Temporary support for legacy code and plugins that hasn't yet been updated.
+	def setEnabled(self, enabled):
+		pass
+
+	def destroy(self):
+		pass
+
+	def execBegin(self):
+		pass
+
+	def execEnd(self):
+		pass
