@@ -25,7 +25,8 @@ base_libenigma_base_a_SOURCES = \
 	base/thread.cpp \
 	base/httpsstream.cpp \
 	base/httpstream.cpp \
-	base/wrappers.cpp
+	base/wrappers.cpp \
+	base/esimpleconfig.cpp
 
 EXTRA_DIST += \
 	base/eenv.cpp.in
@@ -61,7 +62,8 @@ baseinclude_HEADERS = \
 	base/thread.h \
 	base/httpsstream.h \
 	base/httpstream.h \
-	base/wrappers.h
+	base/wrappers.h \
+	base/esimpleconfig.h
 
 if RASPBERRYPI
 base_libenigma_base_a_SOURCES += base/tsRingbuffer.cpp
