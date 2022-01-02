@@ -80,7 +80,7 @@ class SelectImage(Screen):
 		if not self.imagesList:
 			if not self.jsonlist:
 				try:
-					self.jsonlist = dict(json.load(urllib2.urlopen('https://openvision.tech/download/json/%s' % model)))
+					self.jsonlist = dict(json.load(urllib2.urlopen('https://images.openvision.dedyn.io/json/%s' % model)))
 					if config.usage.alternative_imagefeed.value:
 						self.jsonlist.update(dict(json.load(urllib2.urlopen('%s%s' % (config.usage.alternative_imagefeed.value, model)))))
 				except:
