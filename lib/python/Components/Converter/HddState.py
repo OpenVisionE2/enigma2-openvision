@@ -70,7 +70,7 @@ class HddState(Converter):
 			for hdd in self.hdd_list:
 				if string and not self.notDiskLetterName:
 					string += " "
-				if (hdd[1].max_idle_time or force) and not hdd[1].isActive():
+				if (hdd[1].max_idle_time or force) and not hdd[1].isSleeping():
 					state = True
 				if not self.notDiskLetterName:
 					string += "\c%08x" % (state and self.colors[1] or self.colors[0])
