@@ -4,6 +4,7 @@ from __future__ import print_function
 from Screens.MessageBox import MessageBox
 from enigma import eStreamServer
 
+
 class ServiceStopScreen:
 	def __init__(self):
 		try:
