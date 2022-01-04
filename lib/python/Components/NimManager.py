@@ -1581,10 +1581,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 		nim.toneAmplitude.fe_id = slot_id
 		nim.toneAmplitude.slot_id = slot_id
 		nim.toneAmplitude.addNotifier(toneAmplitudeChanged)
-		nim.scpcSearchRange = ConfigSelection([
-			("0", _("No")),
-			("1", _("Yes"))
-		], "0")
+		nim.scpcSearchRange = ConfigYesNo(False)
 		nim.scpcSearchRange.fe_id = slot_id
 		nim.scpcSearchRange.slot_id = slot_id
 		nim.scpcSearchRange.addNotifier(scpcSearchRangeChanged)

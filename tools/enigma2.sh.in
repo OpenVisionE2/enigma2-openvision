@@ -251,7 +251,7 @@ while : ; do
 				opkg upgrade "${DESTS}" 2>&1 | tee -a /home/root/opkgupgrade.log
 				PREVUPD="${CURRUPD}"
 				CURRUPD=`opkg list-upgradable | wc -l`
-				echo "===> ${CURRUPD} PACKAGE(S) REMAINING" >> /home/root/ipkupgrade.log
+				echo "===> ${CURRUPD} PACKAGE(S) REMAINING" >> /home/root/opkupgrade.log
 			done
 			/sbin/reboot
 			;;

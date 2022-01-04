@@ -48,18 +48,18 @@ int eDVBCICAManagerSession::doAction()
 {
 	switch (state)
 	{
-	case stateStarted:
-	{
-		const unsigned char tag[3]={0x9F, 0x80, 0x30}; // ca info enq
-		sendAPDU(tag);
-		state=stateFinal;
-		return 0;
-	}
-	case stateFinal:
-		eWarning("[CI CA] stateFinal and action should not happen");
-		[[fallthrough]];
-	default:
-		return 0;
+		case stateStarted:
+		{
+			const unsigned char tag[3]={0x9F, 0x80, 0x30}; // ca info enq
+			sendAPDU(tag);
+			state=stateFinal;
+			return 0;
+		}
+		case stateFinal:
+			eDebug("[CI CA] stateFinal und action! kann doch garnicht sein ;)");
+			[[fallthrough]];
+		default:
+			return 0;
 	}
 }
 

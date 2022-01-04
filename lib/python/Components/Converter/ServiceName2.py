@@ -511,7 +511,7 @@ class ServiceName2(Converter, object):
 			return bouq
 		elif self.type == self.PROVIDER:
 			if self.isStream:
-				if self.refstr and ('%3a//' in self.refstr or '%3a//' in self.refstr):
+				if self.refstr and ('%3a//' in self.refstr):
 					return self.getIPTVProvider(self.refstr)
 				return self.getIPTVProvider(refstr)
 			else:

@@ -250,11 +250,15 @@ int eDVBSatelliteTransponderData::getInversion() const
 
 	switch (getProperty(DTV_INVERSION))
 	{
-	case INVERSION_OFF: return eDVBFrontendParametersSatellite::Inversion_Off;
-	case INVERSION_ON: return eDVBFrontendParametersSatellite::Inversion_On;
-	default: eDebug("[eDVBSatelliteTransponderData] got unsupported inversion from frontend! report as INVERSION_AUTO!\n");
-	[[fallthrough]];
-	case INVERSION_AUTO: return eDVBFrontendParametersSatellite::Inversion_Unknown;
+		case INVERSION_OFF:
+			return eDVBFrontendParametersSatellite::Inversion_Off;
+		case INVERSION_ON:
+			return eDVBFrontendParametersSatellite::Inversion_On;
+		default:
+			eDebug("[eDVBSatelliteTransponderData] Got unsupported inversion from frontend! report as INVERSION_AUTO!\n");
+			[[fallthrough]];
+		case INVERSION_AUTO:
+			return eDVBFrontendParametersSatellite::Inversion_Unknown;
 	}
 }
 
@@ -283,20 +287,33 @@ int eDVBSatelliteTransponderData::getFecInner() const
 
 	switch (getProperty(DTV_INNER_FEC))
 	{
-	case FEC_1_2: return eDVBFrontendParametersSatellite::FEC_1_2;
-	case FEC_2_3: return eDVBFrontendParametersSatellite::FEC_2_3;
-	case FEC_3_4: return eDVBFrontendParametersSatellite::FEC_3_4;
-	case FEC_3_5: return eDVBFrontendParametersSatellite::FEC_3_5;
-	case FEC_4_5: return eDVBFrontendParametersSatellite::FEC_4_5;
-	case FEC_5_6: return eDVBFrontendParametersSatellite::FEC_5_6;
-	case FEC_6_7: return eDVBFrontendParametersSatellite::FEC_6_7;
-	case FEC_7_8: return eDVBFrontendParametersSatellite::FEC_7_8;
-	case FEC_8_9: return eDVBFrontendParametersSatellite::FEC_8_9;
-	case FEC_9_10: return eDVBFrontendParametersSatellite::FEC_9_10;
-	case FEC_NONE: return eDVBFrontendParametersSatellite::FEC_None;
-	default: eDebug("[eDVBSatelliteTransponderData] got unsupported FEC from frontend! report as FEC_AUTO!\n");
-	[[fallthrough]];
-	case FEC_AUTO: return eDVBFrontendParametersSatellite::FEC_Auto;
+		case FEC_1_2:
+			return eDVBFrontendParametersSatellite::FEC_1_2;
+		case FEC_2_3:
+			return eDVBFrontendParametersSatellite::FEC_2_3;
+		case FEC_3_4:
+			return eDVBFrontendParametersSatellite::FEC_3_4;
+		case FEC_3_5:
+			return eDVBFrontendParametersSatellite::FEC_3_5;
+		case FEC_4_5:
+			return eDVBFrontendParametersSatellite::FEC_4_5;
+		case FEC_5_6:
+			return eDVBFrontendParametersSatellite::FEC_5_6;
+		case FEC_6_7:
+			return eDVBFrontendParametersSatellite::FEC_6_7;
+		case FEC_7_8:
+			return eDVBFrontendParametersSatellite::FEC_7_8;
+		case FEC_8_9:
+			return eDVBFrontendParametersSatellite::FEC_8_9;
+		case FEC_9_10:
+			return eDVBFrontendParametersSatellite::FEC_9_10;
+		case FEC_NONE:
+			return eDVBFrontendParametersSatellite::FEC_None;
+		default:
+			eDebug("[eDVBSatelliteTransponderData] Got unsupported FEC from frontend! report as FEC_AUTO!\n");
+			[[fallthrough]];
+		case FEC_AUTO:
+			return eDVBFrontendParametersSatellite::FEC_Auto;
 	}
 }
 
@@ -306,12 +323,17 @@ int eDVBSatelliteTransponderData::getModulation() const
 
 	switch (getProperty(DTV_MODULATION))
 	{
-	default: eDebug("[eDVBSatelliteTransponderData] got unsupported modulation from frontend! report as QPSK!");
-	[[fallthrough]];
-	case QPSK: return eDVBFrontendParametersSatellite::Modulation_QPSK;
-	case PSK_8: return eDVBFrontendParametersSatellite::Modulation_8PSK;
-	case APSK_16: return eDVBFrontendParametersSatellite::Modulation_16APSK;
-	case APSK_32: return eDVBFrontendParametersSatellite::Modulation_32APSK;
+		default:
+			eDebug("[eDVBSatelliteTransponderData] Got unsupported modulation from frontend! report as QPSK!");
+			[[fallthrough]];
+		case QPSK:
+			return eDVBFrontendParametersSatellite::Modulation_QPSK;
+		case PSK_8:
+			return eDVBFrontendParametersSatellite::Modulation_8PSK;
+		case APSK_16:
+			return eDVBFrontendParametersSatellite::Modulation_16APSK;
+		case APSK_32:
+			return eDVBFrontendParametersSatellite::Modulation_32APSK;
 	}
 }
 
@@ -353,10 +375,10 @@ int eDVBSatelliteTransponderData::getSystem() const
 
 	switch (getProperty(DTV_DELIVERY_SYSTEM))
 	{
-	default: eDebug("[eDVBSatelliteTransponderData] got unsupported system from frontend! report as DVBS!");
-	[[fallthrough]];
-	case SYS_DVBS: return eDVBFrontendParametersSatellite::System_DVB_S;
-	case SYS_DVBS2: return eDVBFrontendParametersSatellite::System_DVB_S2;
+		default: eDebug("[eDVBSatelliteTransponderData] Got unsupported system from frontend! report as DVBS!");
+		[[fallthrough]];
+		case SYS_DVBS: return eDVBFrontendParametersSatellite::System_DVB_S;
+		case SYS_DVBS2: return eDVBFrontendParametersSatellite::System_DVB_S2;
 	}
 }
 

@@ -155,6 +155,7 @@ inline FT_Error fontRenderClass::getGlyphImage(FTC_Image_Desc *font, FT_UInt gly
 std::string fontRenderClass::AddFont(const std::string &filename, const std::string &name, int scale, int renderflags)
 {
 	eDebugNoNewLineStart("[Font] Adding font '%s'", filename.c_str());
+	fflush(stdout);
 	int error;
 	FT_Face face;
 

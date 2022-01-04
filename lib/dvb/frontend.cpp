@@ -481,7 +481,6 @@ RESULT eDVBFrontendParameters::calculateDifference(const iDVBFrontendParameters 
 		default:
 			return -1;
 	}
-	return 0;
 }
 
 RESULT eDVBFrontendParameters::getHash(unsigned long &hash) const

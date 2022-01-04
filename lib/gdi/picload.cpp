@@ -68,6 +68,8 @@ static unsigned char *color_resize(unsigned char * orgin, int ox, int oy, int dx
 					b += q[2];
 				}
 			}
+			if (sq == 0) // prevent Division by zero
+				sq = 1;
 			p[0] = r / sq;
 			p[1] = g / sq;
 			p[2] = b / sq;
@@ -269,6 +271,7 @@ static unsigned char *bmp_load(const char *file,  int *x, int *y)
 			break;
 		}
 		default:
+			delete [] pic_buffer;
 			close(fd);
 			return NULL;
 	}
@@ -585,6 +588,7 @@ static void svg_load(Cfilepara* filepara, bool forceRGB = false)
 		unsigned char *pic_buffer2 = (unsigned char*)malloc(w*h*3); // 24bit RGB
 		if (pic_buffer2 == nullptr)
 		{
+			free(pic_buffer);
 			return;
 		}
 		for (int i=0; i<w*h; i++)
@@ -1410,10 +1414,8 @@ RESULT ePicLoad::setPara(PyObject *val)
 		bool auto_orientation	= (PySequence_Size(val) > 7) ?
 						PyInt_AsLong(PySequence_Fast_GET_ITEM(fast, 7)) :
 						0;
-
 		return setPara(width, height, aspectRatio, as, useCache, resizeType, bg_str, auto_orientation);
 	}
-	return 1;
 }
 
 RESULT ePicLoad::setPara(int width, int height, double aspectRatio, int as, bool useCache, int resizeType, const char *bg_str, bool auto_orientation)

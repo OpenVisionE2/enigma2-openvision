@@ -2542,11 +2542,10 @@ class InfoBarPiP:
 					if lastPiPServiceTimeout:
 						self.lastPiPServiceTimeoutTimer.startLongTimer(lastPiPServiceTimeout)
 				del self.session.pip
-				if BoxInfo.getItem("LCDMiniTV"):
-					if config.lcd.modepip.value >= "1":
-						print('[InfoBarGenerics] LCDMiniTV disable PIP')
-						print("[InfoBarGenerics] Write to /proc/stb/lcd/mode")
-						open("/proc/stb/lcd/mode", "w").write(config.lcd.modeminitv.value)
+				if BoxInfo.getItem("LCDMiniTV") and int(config.lcd.modepip.value) >= 1:
+					print('[InfoBarGenerics] LCDMiniTV disable PIP')
+					print("[InfoBarGenerics] Write to /proc/stb/lcd/mode")
+					open("/proc/stb/lcd/mode", "w").write(config.lcd.modeminitv.value)
 				self.session.pipshown = False
 			if hasattr(self, "ScreenSaverTimerStart"):
 				self.ScreenSaverTimerStart()

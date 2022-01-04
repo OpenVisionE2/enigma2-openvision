@@ -302,8 +302,7 @@ class AudioSelection(Screen, ConfigListScreen):
 		self.fillList()
 
 	def changeBTAudio(self, btaudio):
-		if btaudio.value:
-			config.av.btaudio.value = btaudio.value
+		config.av.btaudio.value = btaudio.value
 		config.av.btaudio.save()
 
 	def changePCMMultichannel(self, multichan):

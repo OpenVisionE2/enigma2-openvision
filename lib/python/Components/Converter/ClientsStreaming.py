@@ -115,8 +115,6 @@ class ClientsStreaming(Converter, Poll):
 		else:
 			return _("(unknown)")
 
-		return ""
-
 	text = property(getText)
 
 	@cached

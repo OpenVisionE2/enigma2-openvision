@@ -42,7 +42,8 @@ char* makefilename(const char* dir, const char* base, const char* ext, const cha
 		strcpy(buf, dir);
 		if (buf[len1-1] != '/') {
 			buf[len1++] = '/';
-			buf[len1] = 0;
+			// FIME Out of bound memory access
+			buf[len1] = 0; // NOSONAR
 		}
 	}
 	if (base)

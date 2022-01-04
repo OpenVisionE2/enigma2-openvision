@@ -33,7 +33,7 @@ class StringList(Converter):
 				print("[StringList] is not master, so update to index", index)
 				x.index = index
 
-	def getIndex(self, index):
+	def getIndex(self):
 		return None
 
 	index = property(getIndex, setIndex)
