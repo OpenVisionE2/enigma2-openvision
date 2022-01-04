@@ -3,7 +3,7 @@ from os.path import basename, dirname, isfile
 from six import PY2
 from xml.etree.cElementTree import Element, ElementTree, fromstring
 
-from enigma import BT_ALPHABLEND, BT_ALPHATEST, addFont, eLabel, ePixmap, ePoint, eRect, eSize, eWindow, eWindowStyleManager, eWindowStyleSkinned, getDesktop, gFont, getFontFaces, gMainDC, gRGB
+from enigma import BT_ALPHABLEND, BT_ALPHATEST, BT_HALIGN_CENTER, BT_HALIGN_LEFT, BT_HALIGN_RIGHT, BT_KEEP_ASPECT_RATIO, BT_SCALE, BT_VALIGN_BOTTOM, BT_VALIGN_CENTER, BT_VALIGN_TOP, addFont, eLabel, ePixmap, ePoint, eRect, eSize, eWindow, eWindowStyleManager, eWindowStyleSkinned, getDesktop, gFont, getFontFaces, gMainDC, gRGB
 
 from Components.config import ConfigSubsection, ConfigText, config
 from Components.SystemInfo import BoxInfo
@@ -157,7 +157,7 @@ def loadSkin(filename, scope=SCOPE_SKINS, desktop=getDesktop(GUI_SKIN_ID), scree
 		reloadWindowStyles()  # Reload the window style to ensure all skin changes are taken into account.
 		print("[Skin] Loading skin file '%s' complete." % filename)
 		if runCallbacks:
-			for method in self.callbacks:
+			for method in callbacks:
 				if method:
 					method()
 		return True
@@ -165,6 +165,7 @@ def loadSkin(filename, scope=SCOPE_SKINS, desktop=getDesktop(GUI_SKIN_ID), scree
 
 
 def reloadSkins():
+	global colors, domScreens, fonts, menus, parameters, setups, switchPixmap
 	domScreens.clear()
 	colors.clear()
 	colors = {
@@ -188,12 +189,14 @@ def reloadSkins():
 
 
 def addCallback(callback):
+	global callbacks
 	if callback not in callbacks:
 		callbacks.append(callback)
 
 
 def removeCallback(callback):
-	if callback in self.callbacks:
+	global callbacks
+	if callback in callbacks:
 		callbacks.remove(callback)
 
 
@@ -569,6 +572,9 @@ class AttributeParser:
 		value = value.lower() in ("1", "enabled", "enablewraparound", "on", "true", "yes")
 		self.guiObject.setWrapAround(value)
 
+	def excludes(self, value):
+		pass
+
 	def flags(self, value):
 		errors = []
 		flags = [x.strip() for x in value.split(",")]
@@ -613,6 +619,9 @@ class AttributeParser:
 			}[value])
 		except KeyError:
 			raise AttribValueError("'left', 'center'/'centre', 'right' or 'block'")
+
+	def includes(self, value):  # Same as conditional.  Created to partner new "excludes" attribute.
+		pass
 
 	def itemHeight(self, value):
 		# print("[Skin] DEBUG: Scale itemHeight %d -> %d." % (int(value), self.applyVerticalScale(value)))
@@ -673,6 +682,55 @@ class AttributeParser:
 	def scale(self, value):
 		value = 1 if value.lower() in ("1", "enabled", "on", "scale", "true", "yes") else 0
 		self.guiObject.setScale(value)
+
+	def scaleFlags(self, value):
+		base = BT_SCALE | BT_KEEP_ASPECT_RATIO
+		try:
+			self.guiObject.setPixmapScaleFlags({
+				"none": 0,
+				"scale": BT_SCALE,
+				"scaleKeepAspect": base,
+				"scaleLeftTop": base | BT_HALIGN_LEFT | BT_VALIGN_TOP,
+				"scaleLeftCenter": base | BT_HALIGN_LEFT | BT_VALIGN_CENTER,
+				"scaleLeftCentre": base | BT_HALIGN_LEFT | BT_VALIGN_CENTER,
+				"scaleLeftMiddle": base | BT_HALIGN_LEFT | BT_VALIGN_CENTER,
+				"scaleLeftBottom": base | BT_HALIGN_LEFT | BT_VALIGN_BOTTOM,
+				"scaleCenterTop": base | BT_HALIGN_CENTER | BT_VALIGN_TOP,
+				"scaleCentreTop": base | BT_HALIGN_CENTER | BT_VALIGN_TOP,
+				"scaleMiddleTop": base | BT_HALIGN_CENTER | BT_VALIGN_TOP,
+				"scaleCenter": base | BT_HALIGN_CENTER | BT_VALIGN_CENTER,
+				"scaleCentre": base | BT_HALIGN_CENTER | BT_VALIGN_CENTER,
+				"scaleMiddle": base | BT_HALIGN_CENTER | BT_VALIGN_CENTER,
+				"scaleCenterBottom": base | BT_HALIGN_CENTER | BT_VALIGN_BOTTOM,
+				"scaleCentreBottom": base | BT_HALIGN_CENTER | BT_VALIGN_BOTTOM,
+				"scaleMiddleBottom": base | BT_HALIGN_CENTER | BT_VALIGN_BOTTOM,
+				"scaleRightTop": base | BT_HALIGN_RIGHT | BT_VALIGN_TOP,
+				"scaleRightCenter": base | BT_HALIGN_RIGHT | BT_VALIGN_CENTER,
+				"scaleRightCentre": base | BT_HALIGN_RIGHT | BT_VALIGN_CENTER,
+				"scaleRightMiddle": base | BT_HALIGN_RIGHT | BT_VALIGN_CENTER,
+				"scaleRightBottom": base | BT_HALIGN_RIGHT | BT_VALIGN_BOTTOM,
+				"moveLeftTop": BT_HALIGN_LEFT | BT_VALIGN_TOP,
+				"moveLeftCenter": BT_HALIGN_LEFT | BT_VALIGN_CENTER,
+				"moveLeftCentre": BT_HALIGN_LEFT | BT_VALIGN_CENTER,
+				"moveLeftMiddle": BT_HALIGN_LEFT | BT_VALIGN_CENTER,
+				"moveLeftBottom": BT_HALIGN_LEFT | BT_VALIGN_BOTTOM,
+				"moveCenterTop": BT_HALIGN_CENTER | BT_VALIGN_TOP,
+				"moveCentreTop": BT_HALIGN_CENTER | BT_VALIGN_TOP,
+				"moveMiddleTop": BT_HALIGN_CENTER | BT_VALIGN_TOP,
+				"moveCenter": BT_HALIGN_CENTER | BT_VALIGN_CENTER,
+				"moveCentre": BT_HALIGN_CENTER | BT_VALIGN_CENTER,
+				"moveMiddle": BT_HALIGN_CENTER | BT_VALIGN_CENTER,
+				"moveCenterBottom": BT_HALIGN_CENTER | BT_VALIGN_BOTTOM,
+				"moveCentreBottom": BT_HALIGN_CENTER | BT_VALIGN_BOTTOM,
+				"moveMiddleBottom": BT_HALIGN_CENTER | BT_VALIGN_BOTTOM,
+				"moveRightTop": BT_HALIGN_RIGHT | BT_VALIGN_TOP,
+				"moveRightCenter": BT_HALIGN_RIGHT | BT_VALIGN_CENTER,
+				"moveRightCentre": BT_HALIGN_RIGHT | BT_VALIGN_CENTER,
+				"moveRightMiddle": BT_HALIGN_RIGHT | BT_VALIGN_CENTER,
+				"moveRightBottom": BT_HALIGN_RIGHT | BT_VALIGN_BOTTOM
+			}[value])
+		except KeyError:
+			raise AttribValueError("'none', 'scale', 'scaleKeepAspect', 'scaleLeftTop', 'scaleLeftCenter', 'scaleLeftBottom', 'scaleCenterTop', 'scaleCenter', 'scaleCenterBottom', 'scaleRightTop', 'scaleRightCenter', 'scaleRightBottom', 'moveLeftTop', 'moveLeftCenter', 'moveLeftBottom', 'moveCenterTop', 'moveCenter', 'moveCenterBottom', 'moveRightTop', 'moveRightCenter', 'moveRightBottom' ('Center'/'Centre'/'Middle' are equivalent)")
 
 	def scrollbarBackgroundPixmap(self, value):
 		self.guiObject.setScrollbarBackgroundPicture(loadPixmap(value, self.desktop))
@@ -1327,6 +1385,12 @@ def readSkin(screen, skin, names, desktop):
 				continue
 			objecttypes = w.attrib.get("objectTypes", "").split(",")
 			if len(objecttypes) > 1 and (objecttypes[0] not in screen.keys() or not [i for i in objecttypes[1:] if i == screen[objecttypes[0]].__class__.__name__]):
+				continue
+			includes = w.attrib.get("includes")
+			if includes and not [i for i in includes.split(",") if i in screen.keys()]:
+				continue
+			excludes = w.attrib.get("excludes")
+			if excludes and [i for i in excludes.split(",") if i in screen.keys()]:
 				continue
 			p = processors.get(w.tag, processNone)
 			try:
