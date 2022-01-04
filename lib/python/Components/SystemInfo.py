@@ -315,7 +315,7 @@ SystemInfo["HasTranscoding"] = BoxInfo.getItem("transcoding") or BoxInfo.getItem
 SystemInfo["HasH265Encoder"] = fileContains("/proc/stb/encoder/0/vcodec_choices", "h265")
 SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model in ("vusolo4k", "gbquad4k", "gbue4k")
 SystemInfo["HasColordepth"] = fileCheck("/proc/stb/video/hdmi_colordepth")
-SystemInfo["HasFrontDisplayPicon"] = model in ("et8500", "vusolo4k", "vuuno4kse", "vuduo4k", "vuduo4kse", "vuultimo4k")
+SystemInfo["HasFrontDisplayPicon"] = model in ("et8500", "vusolo4k", "vuuno4kse", "vuduo4k", "vuduo4kse", "vuultimo4k", "gbquad4k", "gbue4k")
 SystemInfo["Has24hz"] = fileCheck("/proc/stb/video/videomode_24hz") and platform != "dmamlogic"
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
