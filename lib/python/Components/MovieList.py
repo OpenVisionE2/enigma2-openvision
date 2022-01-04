@@ -157,7 +157,7 @@ def resetMoviePlayState(cutsFileName, ref=None):
 class MovieList(GUIComponent):
 	SORT_ALPHANUMERIC = 1
 	SORT_RECORDED = 2
-	SHUFFLE = 3
+	SORT_SHUFFLE = 3
 	SORT_ALPHANUMERIC_REVERSE = 4
 	SORT_RECORDED_REVERSE = 5
 	SORT_ALPHANUMERIC_FLAT = 6
@@ -165,8 +165,11 @@ class MovieList(GUIComponent):
 	SORT_GROUPWISE = 8
 	SORT_ALPHA_DATE_OLDEST_FIRST = 9
 	SORT_ALPHAREV_DATE_NEWEST_FIRST = 10
-	SORT_LONGEST = 11
-	SORT_SHORTEST = 12
+	SORT_DURATION_ALPHA = 11
+	SORT_DURATIONREV_ALPHA = 12
+	SORT_SIZE_ALPHA = 13
+	SORT_SIZEREV_ALPHA = 14
+	SORT_DESCRIPTION_ALPHA = 15
 
 	HIDE_DESCRIPTION = 1
 	SHOW_DESCRIPTION = 2
@@ -178,8 +181,8 @@ class MovieList(GUIComponent):
 # NOTE! that these two *must* *follow on* from the end of the
 #		SORT_* items above!
 #
-	TRASHSORT_SHOWRECORD = 13
-	TRASHSORT_SHOWDELETE = 14
+	TRASHSORT_SHOWRECORD = 16
+	TRASHSORT_SHOWDELETE = 17
 	UsingTrashSort = False
 	InTrashFolder = False
 
@@ -764,7 +767,7 @@ class MovieList(GUIComponent):
 			self.list = sorted(self.list[:numberOfDirs], key=self.buildBeginTimeSortKey) + sorted(self.list[numberOfDirs:], key=self.buildBeginTimeSortKey)
 		elif self.current_sort == MovieList.SORT_RECORDED_REVERSE:
 			self.list = sorted(self.list[:numberOfDirs], key=self.buildBeginTimeSortKey, reverse=True) + sorted(self.list[numberOfDirs:], key=self.buildBeginTimeSortKey, reverse=True)
-		elif self.current_sort == MovieList.SHUFFLE:
+		elif self.current_sort == MovieList.SORT_SHUFFLE:
 			dirlist = self.list[:numberOfDirs]
 			shufflelist = self.list[numberOfDirs:]
 			random.shuffle(shufflelist)
@@ -773,10 +776,19 @@ class MovieList(GUIComponent):
 			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaDateSortKey) + sorted(self.list[numberOfDirs:], key=self.buildAlphaDateSortKey)
 		elif self.current_sort == MovieList.SORT_ALPHAREV_DATE_NEWEST_FIRST:
 			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaDateSortKey, reverse=True) + sorted(self.list[numberOfDirs:], key=self.buildAlphaDateSortKey, reverse=True)
-		elif self.current_sort == MovieList.SORT_LONGEST:
-			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaNumericSortKey) + sorted(self.list[numberOfDirs:], key=self.buildLengthSortKey, reverse=True)
-		elif self.current_sort == MovieList.SORT_SHORTEST:
-			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaNumericSortKey) + sorted(self.list[numberOfDirs:], key=self.buildLengthSortKey)
+
+		elif self.sort_type == MovieList.SORT_DURATION_ALPHA:
+			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaDateSortKey) + sorted(self.list[numberOfDirs:], key=self.buildLengthAlphaSortKey)
+		elif self.sort_type == MovieList.SORT_DURATIONREV_ALPHA:
+			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaDateSortKey) + sorted(self.list[numberOfDirs:], key=self.buildLengthRevAlphaSortKey)
+		elif self.sort_type == MovieList.SORT_SIZE_ALPHA:
+			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaDateSortKey) + sorted(self.list[numberOfDirs:], key=self.buildSizeAlphaSortKey)
+		elif self.sort_type == MovieList.SORT_SIZEREV_ALPHA:
+			self.list = sorted(self.list[:numberOfDirs], key=self.buildAlphaDateSortKey) + sorted(self.list[numberOfDirs:], key=self.buildSizeRevAlphaSortKey)
+		elif self.sort_type == MovieList.SORT_DESCRIPTION_ALPHA:
+			self.list = sorted(self.list[:numberOfDirs], key=self.buildDescrAlphaSortKey) + sorted(self.list[numberOfDirs:], key=self.buildDescrAlphaSortKey)
+		else:
+			self.list.sort(key=self.buildGroupwiseSortkey)
 
 		for x in self.list:
 			if x[1]:
@@ -847,62 +859,89 @@ class MovieList(GUIComponent):
 		for tag in realtags:
 			self.tags[tag] = set([tag])
 
-	def buildLengthSortKey(self, x):
-		# x = ref,info,begin,...
-		ref = x[0]
-		name = x[1] and x[1].getName(ref)
-		len = x[1] and x[1].getLength(ref)
-		if ref.flags & eServiceReference.mustDescent:
-			return (0, len or 0, name and name.lower() or "", -x[2])
-		return (1, len or 0, name and name.lower() or "", -x[2])
-
-	def buildAlphaNumericSortKey(self, x):
-		# x = ref,info,begin,...
-		ref = x[0]
-		name = x[1] and x[1].getName(ref)
-		if ref.flags & eServiceReference.mustDescent:
-			return (0, name and name.lower() or "", -x[2])
-		return (1, name and name.lower() or "", -x[2])
+	def getNameKey(self, ref, info):
+		# Append the file name numeric suffix to the name, to reliably
+		# sort recordings that have been split.
+		name = info and info.getName(ref)
+		if name:
+			path = ref.getPath()
+			if path.endswith(".ts") and path[-7] == "_":
+				name += path[-6:-3]
+		return name and name.lower() or ""
 
 	def buildAlphaDateSortKey(self, x):
 		# x = ref,info,begin,...
 		ref = x[0]
-		name = x[1] and x[1].getName(ref)
+		name = self.getNameKey(ref, x[1])
 		if ref.flags & eServiceReference.mustDescent:
-			return (0, name and name.lower() or "", x[2])
-		return (1, name and name.lower() or "", x[2])
+			return (0, name, x[2])
+		return (1, name, x[2])
 
 	def buildAlphaNumericFlatSortKey(self, x):
 		# x = ref,info,begin,...
 		ref = x[0]
-		name = x[1] and x[1].getName(ref)
-		if name and ref.flags & eServiceReference.mustDescent:
-			# only use directory basename for sorting
-			p = os.path.split(name)
-			if not p[1]:
-				# if path ends in '/', p is blank.
-				p = os.path.split(p[0])
-			name = p[1]
-		# print("Sorting for -%s-" % name)
+		name = self.getNameKey(ref, x[1]) or ".."
+		if ref.flags & eServiceReference.mustDescent:
+			# Only use directory basename for sorting.
+			try:
+				name = os.path.basename(os.path.normpath(name))
+			except (IOError, OSError) as err:
+				pass
+		# print("[MovieList] Sorting for -%s-" % name)
+		return (1, name, -x[2])
 
-		return (1, name and name.lower() or "", -x[2])
+	def buildAlphaNumericSortKey(self, x):
+		# x = ref,info,begin,...
+		ref = x[0]
+		name = self.getNameKey(ref, x[1])
+		if ref.flags & eServiceReference.mustDescent:
+			return (0, name, -x[2])
+		return (1, name, -x[2])
 
 	def buildBeginTimeSortKey(self, x):
 		ref = x[0]
-		if ref.flags & eServiceReference.mustDescent:
-			return (0, x[1] and x[1].getName(ref).lower() or "")
-		if PY2:
-			return (1, -x[2])
-		else:
-			return (1, "", -x[2])
+		name = self.getNameKey(ref, x[1])
+		path = ref.getPath()
+		if ref.flags & eServiceReference.mustDescent and os.path.exists(path):
+			try:
+				mtime = -os.stat(path).st_mtime
+			except (IOError, OSError) as err:
+				mtime = 0
+			return (0, x[1] and mtime, name)
+		return (1, -x[2], name)
 
-	def buildGroupwiseSortkey(self, x):
-		# Sort recordings by date, sort MP3 and stuff by name
+	def buildDescrAlphaSortKey(self, x):
 		ref = x[0]
-		if ref.type >= eServiceReference.idUser:
-			return self.buildAlphaNumericSortKey(x)
-		else:
-			return self.buildBeginTimeSortKey(x)
+		info = x[1]
+		name = self.getNameKey(ref, info)
+		descr = info and info.getInfoString(ref, iServiceInformation.sDescription)
+		return 1, descr, name, -x[2]
+
+	def buildGroupwiseSortkey(self, x):  # Sort recordings by date, sort MP3 and stuff by name.
+		ref = x[0]
+		return self.buildAlphaNumericSortKey(x) if ref.type >= eServiceReference.idUser else self.buildBeginTimeSortKey(x)
+
+	def buildLengthAlphaSortKey(self, x):
+		ref = x[0]
+		info = x[1]
+		name = self.getNameKey(ref, info)
+		len = info and info.getLength(ref)
+		return 1, len, name, -x[2]
+
+	def buildLengthRevAlphaSortKey(self, x):
+		x = self.buildLengthAlphaSortKey(x)
+		return (x[0], -x[1], x[2], x[3])
+
+	def buildSizeAlphaSortKey(self, x):
+		ref = x[0]
+		info = x[1]
+		name = self.getNameKey(ref, info)
+		size = info and info.getFileSize(ref)
+		return 1, size, name, -x[2]
+
+	def buildSizeRevAlphaSortKey(self, x):
+		x = self.buildSizeAlphaSortKey(x)
+		return (x[0], -x[1], x[2], x[3])
 
 	def moveTo(self, serviceref):
 		index = self.findService(serviceref)
