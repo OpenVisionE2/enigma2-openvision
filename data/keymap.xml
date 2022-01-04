@@ -269,6 +269,20 @@
 		These should be module specific key maps.
 	-->
 
+	<map context="ChoiceBoxActions">
+		<!-- Also uses ColorActions -->
+		<!-- Also uses NavigationActions -->
+		<!-- Also uses NumberActions -->
+		<key id="KEY_EXIT" mapto="cancel" flags="m" />
+		<key id="KEY_OK" mapto="select" flags="m" />
+		<key id="KEY_TEXT" mapto="resetList" flags="m" />
+		<key id="KEY_PREVIOUS" mapto="moveItemUp" flags="m" />
+		<key id="KEY_NEXT" mapto="moveItemDown" flags="m" />
+		<!-- Keyboard specific buttons -->
+		<key id="KEY_ESC" mapto="cancel" flags="m" />
+		<key id="KEY_ENTER" mapto="select" flags="m" />
+	</map>
+
 	<map context="ConfigListActions">
 		<!-- Also uses NavigationActions -->
 		<!-- Also uses NumberActions -->
