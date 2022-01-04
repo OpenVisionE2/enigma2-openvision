@@ -1,3 +1,3 @@
-Enigma2 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+Enigma2 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) [![enigma2](https://github.com/OpenVisionE2/enigma2-openvision/actions/workflows/enigma2.yml/badge.svg)](https://github.com/OpenVisionE2/enigma2-openvision/actions/workflows/enigma2.yml) [![ovbot](https://github.com/OpenVisionE2/enigma2-openvision/actions/workflows/ovbot.yml/badge.svg)](https://github.com/OpenVisionE2/enigma2-openvision/actions/workflows/ovbot.yml)
 =======
 To build enigma2, start reading here: https://github.com/OpenVisionE2/openvision-development-platform/blob/develop/README.md
