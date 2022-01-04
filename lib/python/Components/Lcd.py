@@ -450,12 +450,6 @@ def InitLcd():
 		def setXcoreVFD(configElement):
 			if exists("/sys/module/brcmstb_osmega/parameters/pt6302_cgram"):
 				fileWriteLine("/sys/module/brcmstb_osmega/parameters/pt6302_cgram", configElement.value)
-			if exists("/sys/module/brcmstb_spycat4k/parameters/pt6302_cgram"):
-				fileWriteLine("/sys/module/brcmstb_spycat4k/parameters/pt6302_cgram", configElement.value)
-			if exists("/sys/module/brcmstb_spycat4kmini/parameters/pt6302_cgram"):
-				fileWriteLine("/sys/module/brcmstb_spycat4kmini/parameters/pt6302_cgram", configElement.value)
-			if exists("/sys/module/brcmstb_spycat4kcombo/parameters/pt6302_cgram"):
-				fileWriteLine("/sys/module/brcmstb_spycat4kcombo/parameters/pt6302_cgram", configElement.value)
 
 		config.usage.vfd_xcorevfd = ConfigSelection(choices=[
 			("0", _("12 character")),
@@ -543,7 +537,7 @@ def InitLcd():
 		config.lcd.power4x7suspend.addNotifier(setPower4x7Suspend)
 		if platform in ("dm4kgen", "8100s"):
 			standby_default = 4
-		elif model in ("spycat4kmini", "osmega"):
+		elif model == "osmega":
 			standby_default = 10
 		else:
 			standby_default = 1
@@ -556,7 +550,7 @@ def InitLcd():
 			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 4))
 			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 4))
 			config.lcd.bright = ConfigSlider(default=4, limits=(0, 4))
-		elif model in ("spycat4kmini", "osmega"):
+		elif model == "osmega":
 			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 10))
 			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 10))
 			config.lcd.bright = ConfigSlider(default=10, limits=(0, 10))
