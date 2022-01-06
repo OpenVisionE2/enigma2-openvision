@@ -1,8 +1,8 @@
 from json import loads
 try:
-	from urllib2 import URLError, urlopen
+	from urllib.request import urlopen
 except ImportError:
-	from urllib.request import URLError, urlopen
+	from urllib2 import urlopen
 
 # Data available from http://ip-api.com/json/:
 #
@@ -95,15 +95,10 @@ class Geolocation:
 				return self.geolocation
 			else:
 				print("[Geolocation] Error: Geolocation lookup returned '%s' status!  Message '%s' returned." % (status, geolocation.get("message", None)))
-		except URLError as err:
-			if hasattr(err, "code"):
-				print("[Geolocation] Error: Geolocation data not available! (Code: %s)" % err.code)
-			if hasattr(err, "reason"):
-				print("[Geolocation] Error: Geolocation data not available! (Reason: %s)" % err.reason)
 		except ValueError:
 			print("[Geolocation] Error: Geolocation data returned can not be processed!")
-		except Exception:
-			print("[Geolocation] Error: Geolocation network connection failed!")
+		except Exception as err:
+			print("[Geolocation] Error: Geolocation network data not available!  (%s)" % str(err))
 		return {}
 
 	def fieldsToNumber(self, fields):
