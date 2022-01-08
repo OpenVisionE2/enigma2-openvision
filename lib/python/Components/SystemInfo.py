@@ -257,7 +257,7 @@ BoxInfo.setItem("multiboot", 0 if BoxInfo.getItem("distro", "").lower() == "open
 
 BoxInfo.setItem("OpenSSLVersion", getOpenSSLVersion(), immutable=True)
 
-SystemInfo["CommonInterface"] = eDVBCIInterfaces.getInstance().getNumOfSlots()
+SystemInfo["CommonInterface"] = model in ("h9combo", "h9combose", "h10", "pulse4kmini") and 1 or eDVBCIInterfaces.getInstance().getNumOfSlots()
 SystemInfo["CommonInterfaceCIDelay"] = fileCheck("/proc/stb/tsmux/rmx_delay")
 for cislot in range(BoxInfo.getItem("CommonInterface", 0)):
 	SystemInfo["CI%dSupportsHighBitrates" % cislot] = fileCheck("/proc/stb/tsmux/ci%d_tsclk" % cislot)
