@@ -87,7 +87,7 @@ class Wlan:
 			scanresults = None
 			print("[WirelessLan] No wireless networks could be found")
 		aps = {}
-		if scanresults is not None:
+		if scanresults:
 			(num_channels, frequencies) = ifobj.getChannelInfo()
 			index = 1
 			for result in scanresults:
