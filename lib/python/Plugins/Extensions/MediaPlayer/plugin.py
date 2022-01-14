@@ -490,7 +490,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			idx = self.filelist.getSelectionIndex()
 			r = self.filelist.list[idx]
 			text = r[1][7]
-			if r[0][1] == True:
+			if r[0][1]:
 				if len(text) < 2:
 					text += " "
 				if text[:2] != "..":
@@ -501,7 +501,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			if idx < len(self.filelist.list):
 				r = self.filelist.list[idx]
 				text = r[1][7]
-				if r[0][1] == True:
+				if r[0][1]:
 					text = "/" + text
 				self.summaries.setText(text, 3)
 			else:
@@ -511,7 +511,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			if idx < len(self.filelist.list):
 				r = self.filelist.list[idx]
 				text = r[1][7]
-				if r[0][1] == True:
+				if r[0][1]:
 					text = "/" + text
 				self.summaries.setText(text, 4)
 			else:
@@ -662,9 +662,9 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			self.switchToPlayList()
 
 	def applySettings(self, answer=True):
-		if answer is True:
+		if answer:
 			self.savePlaylistOnExit = config.mediaplayer.savePlaylistOnExit.getValue()
-			if config.mediaplayer.repeat.getValue() == True:
+			if config.mediaplayer.repeat.getValue():
 				self["repeat"].setPixmapNum(1)
 			else:
 				self["repeat"].setPixmapNum(0)
@@ -781,7 +781,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 		filelist = FileList(directory, useServiceRef=True, showMountpoints=False, isTop=True)
 
 		for x in filelist.getFileList():
-			if x[0][1] == True: #isDir
+			if x[0][1]: #isDir
 				if recursive:
 					if x[0][0] != directory:
 						self.copyDirectory(x[0][0])
@@ -811,7 +811,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			# simulate first
 			if not offline.deleteFromDisk(1):
 				result = True
-		if result == True:
+		if result:
 			self.session.openWithCallback(self.deleteConfirmed_offline, MessageBox, _("Do you really want to delete %s?") % (name))
 		else:
 			self.session.openWithCallback(self.close, MessageBox, _("You cannot delete this!"), MessageBox.TYPE_ERROR)
@@ -872,7 +872,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 		next = self.playlist.getCurrentIndex() + 1
 		if next < len(self.playlist):
 			self.changeEntry(next)
-		elif (len(self.playlist) > 0) and (config.mediaplayer.repeat.getValue() == True):
+		elif (len(self.playlist) > 0) and (config.mediaplayer.repeat.getValue()):
 			self.stopEntry()
 			self.changeEntry(0)
 		elif (len(self.playlist) > 0):
@@ -976,7 +976,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 					needsInfoUpdate = True
 
 			self.unPauseService()
-			if needsInfoUpdate == True:
+			if needsInfoUpdate:
 				path = self.playlist.getServiceRefList()[self.playlist.getCurrentIndex()].getPath()
 				self["coverArt"].updateCoverArt(path)
 			else:

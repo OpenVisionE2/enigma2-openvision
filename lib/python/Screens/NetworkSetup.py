@@ -208,30 +208,18 @@ class NetworkAdapterSelection(Screen, HelpableScreen):
 		interfacepng = None
 
 		if not iNetwork.isWirelessInterface(iface):
-			if active is True:
-				interfacepng = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/network_wired-active.png"))
-			elif active is False:
-				interfacepng = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/network_wired-inactive.png"))
-			else:
-				interfacepng = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/network_wired.png"))
+			icon = {True: "icons/network_wired-active.png", False: "icons/network_wired-inactive.png", None: "icons/network_wired.png"}[active]
+			interfacepng = LoadPixmap(resolveFilename(SCOPE_GUISKIN, icon))
 		elif iNetwork.isWirelessInterface(iface):
-			if active is True:
-				interfacepng = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/network_wireless-active.png"))
-			elif active is False:
-				interfacepng = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/network_wireless-inactive.png"))
-			else:
-				interfacepng = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/network_wireless.png"))
+			icon = {True: "icons/network_wireless-active.png", False: "icons/network_wireless-inactive.png", None: "icons/network_wireless.png"}[active]
+			interfacepng = LoadPixmap(resolveFilename(SCOPE_GUISKIN, icon))
 
 		num_configured_if = len(iNetwork.getConfiguredAdapters())
 		if num_configured_if >= 2:
-			if active is True:
-				defaultpng = LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, "buttons/button_green.png"))
-			elif active is False:
-				defaultpng = LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, "buttons/button_green_off.png"))
-		if active is True:
-			activepng = LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, "icons/lock_on.png"))
-		elif active is False:
-			activepng = LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, "icons/lock_error.png"))
+			icon = "buttons/button_green.png" if active else "buttons/button_green_off.png"
+			defaultpng = LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, icon))
+		icon = "icons/lock_on.png" if active else "icons/lock_error.png"
+		activepng = LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, icon))
 
 		description = iNetwork.getFriendlyAdapterDescription(iface)
 
@@ -265,7 +253,7 @@ class NetworkAdapterSelection(Screen, HelpableScreen):
 				default_int = True
 			else:
 				default_int = False
-			if iNetwork.getAdapterAttribute(x[1], 'up') is True:
+			if iNetwork.getAdapterAttribute(x[1], 'up'):
 				active_int = True
 			else:
 				active_int = False
@@ -314,15 +302,15 @@ class NetworkAdapterSelection(Screen, HelpableScreen):
 		self.restartLanRef = self.session.openWithCallback(self.restartfinishedCB, MessageBox, _("Please wait while we configure your network..."), type=MessageBox.TYPE_INFO, enable_input=False)
 
 	def restartLanDataAvail(self, data):
-		if data is True:
+		if data:
 			iNetwork.getInterfaces(self.getInterfacesDataAvail)
 
 	def getInterfacesDataAvail(self, data):
-		if data is True:
+		if data:
 			self.restartLanRef.close(True)
 
 	def restartfinishedCB(self, data):
-		if data is True:
+		if data:
 			self.updateList()
 			self.session.open(MessageBox, _("Finished configuring your network"), type=MessageBox.TYPE_INFO, timeout=10, default=False)
 
@@ -937,7 +925,7 @@ class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
 			self.keyCancel()
 
 	def secondIfaceFoundCB(self, data):
-		if data is False:
+		if not data:
 			self.applyConfig(True)
 		else:
 			configuredInterfaces = iNetwork.getConfiguredAdapters()
@@ -948,7 +936,7 @@ class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
 			iNetwork.deactivateInterface(configuredInterfaces, self.deactivateSecondInterfaceCB)
 
 	def deactivateSecondInterfaceCB(self, data):
-		if data is True:
+		if data:
 			self.applyConfig(True)
 
 	def applyConfig(self, ret=False):
@@ -967,12 +955,12 @@ class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
 				iNetwork.setAdapterAttribute(self.iface, "configStrings", self.configStrings(self.iface))
 				self.ws.writeConfig(self.iface)
 
-			if self.activateInterfaceEntry.value is False:
+			if not self.activateInterfaceEntry.value:
 				iNetwork.deactivateInterface(self.iface, self.deactivateInterfaceCB)
 				iNetwork.writeNetworkConfig()
 				self.applyConfigRef = self.session.openWithCallback(self.applyConfigfinishedCB, MessageBox, _("Please wait for activation of your network configuration..."), type=MessageBox.TYPE_INFO, enable_input=False)
 			else:
-				if self.oldInterfaceState is False:
+				if not self.oldInterfaceState:
 					iNetwork.activateInterface(self.iface, self.deactivateInterfaceCB)
 				else:
 					iNetwork.deactivateInterface(self.iface, self.activateInterfaceCB)
@@ -982,37 +970,36 @@ class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
 			self.keyCancel()
 
 	def deactivateInterfaceCB(self, data):
-		if data is True:
+		if data:
 			self.applyConfigDataAvail(True)
 
 	def activateInterfaceCB(self, data):
-		if data is True:
+		if data:
 			iNetwork.activateInterface(self.iface, self.applyConfigDataAvail)
 
 	def applyConfigDataAvail(self, data):
-		if data is True:
+		if data:
 			iNetwork.getInterfaces(self.getInterfacesDataAvail)
 
 	def getInterfacesDataAvail(self, data):
-		if data is True:
+		if data:
 			self.applyConfigRef.close(True)
 
 	def applyConfigfinishedCB(self, data):
-		if data is True:
+		if data:
 			if self.finished_cb:
 				self.session.openWithCallback(lambda x: self.finished_cb(), MessageBox, _("Your network configuration has been activated."), type=MessageBox.TYPE_INFO, timeout=10)
 			else:
 				self.session.openWithCallback(self.ConfigfinishedCB, MessageBox, _("Your network configuration has been activated."), type=MessageBox.TYPE_INFO, timeout=10)
 
 	def ConfigfinishedCB(self, data):
-		if data is not None:
-			if data is True:
-				self.close('ok')
+		if data is not None and data:
+			self.close('ok')
 
 	def keyCancelConfirm(self, result):
 		if not result:
 			return
-		if self.oldInterfaceState is False:
+		if not self.oldInterfaceState:
 			iNetwork.deactivateInterface(self.iface, self.keyCancelCB)
 		else:
 			self.close('cancel')
@@ -1026,7 +1013,7 @@ class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
 
 	def keyCancelCB(self, data):
 		if data is not None:
-			if data is True:
+			if data:
 				self.close('cancel')
 
 	def runAsync(self, finished_cb):
@@ -1290,7 +1277,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 
 	def AdapterSetupClosed(self, *ret):
 		if ret is not None and len(ret):
-			if ret[0] == 'ok' and (iNetwork.isWirelessInterface(self.iface) and iNetwork.getAdapterAttribute(self.iface, "up") is True):
+			if ret[0] == 'ok' and (iNetwork.isWirelessInterface(self.iface) and iNetwork.getAdapterAttribute(self.iface, "up")):
 				try:
 					from Plugins.SystemPlugins.WirelessLan.plugin import WlanStatus
 				except ImportError as e:
@@ -1325,15 +1312,15 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 			self.restartLanRef = self.session.openWithCallback(self.restartfinishedCB, MessageBox, _("Please wait while your network is restarting..."), type=MessageBox.TYPE_INFO, enable_input=False)
 
 	def restartLanDataAvail(self, data):
-		if data is True:
+		if data:
 			iNetwork.getInterfaces(self.getInterfacesDataAvail)
 
 	def getInterfacesDataAvail(self, data):
-		if data is True:
+		if data:
 			self.restartLanRef.close(True)
 
 	def restartfinishedCB(self, data):
-		if data is True:
+		if data:
 			self.updateStatusbar()
 			self.session.open(MessageBox, _("Finished restarting your network"), type=MessageBox.TYPE_INFO, timeout=10, default=False)
 
@@ -1373,9 +1360,9 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 	def getInfoCB(self, data, status):
 		self.LinkState = None
 		if data is not None:
-			if data is True:
+			if data:
 				if status is not None:
-					if status[self.iface]["essid"] == "off" or status[self.iface]["accesspoint"] == "Not-Associated" or status[self.iface]["accesspoint"] == False:
+					if status[self.iface]["essid"] == "off" or status[self.iface]["accesspoint"] == "Not-Associated" or not status[self.iface]["accesspoint"]:
 						self.LinkState = False
 						self["statuspic"].setPixmapNum(1)
 						self["statuspic"].show()
@@ -1384,8 +1371,8 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 						iNetwork.checkNetworkState(self.checkNetworkCB)
 
 	def checkNetworkCB(self, data):
-		if iNetwork.getAdapterAttribute(self.iface, "up") is True:
-			if self.LinkState is True:
+		if iNetwork.getAdapterAttribute(self.iface, "up"):
+			if self.LinkState:
 				if data <= 2:
 					self["statuspic"].setPixmapNum(0)
 				else:
@@ -1453,7 +1440,7 @@ class NetworkAdapterTest(Screen):
 		self.nextStepTimer.callback.append(self.nextStepTimerFire)
 
 	def cancel(self):
-		if self.oldInterfaceState is False:
+		if not self.oldInterfaceState:
 			iNetwork.setAdapterAttribute(self.iface, "up", self.oldInterfaceState)
 			iNetwork.deactivateInterface(self.iface)
 		self.close()
@@ -1572,7 +1559,7 @@ class NetworkAdapterTest(Screen):
 
 	def doStep4(self):
 		self["Dhcptext"].setForegroundColorNum(1)
-		if iNetwork.getAdapterAttribute(self.iface, 'dhcp') is True:
+		if iNetwork.getAdapterAttribute(self.iface, 'dhcp'):
 			self["Dhcp"].setForegroundColorNum(2)
 			self["Dhcp"].setText(_("enabled"))
 			self["DhcpInfo_Check"].setPixmapNum(0)
@@ -1796,9 +1783,9 @@ class NetworkAdapterTest(Screen):
 
 	def getInfoCB(self, data, status):
 		if data is not None:
-			if data is True:
+			if data:
 				if status is not None:
-					if status[self.iface]["essid"] == "off" or status[self.iface]["accesspoint"] == "Not-Associated" or status[self.iface]["accesspoint"] == False:
+					if status[self.iface]["essid"] == "off" or status[self.iface]["accesspoint"] == "Not-Associated" or not status[self.iface]["accesspoint"]:
 						self["Network"].setForegroundColorNum(1)
 						self["Network"].setText(_("disconnected"))
 						self["NetworkInfo_Check"].setPixmapNum(1)

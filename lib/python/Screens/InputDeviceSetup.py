@@ -114,7 +114,7 @@ class InputDeviceDriverSetup(Setup):
 		settingsList = []
 		if self.enableEntry and isinstance(self.enableEntry[1], ConfigYesNo):
 			settingsList.append(self.enableEntry)
-			if self.enableEntry[1].value is True:
+			if self.enableEntry[1].value:
 				settingsList.append(self.nameEntry)
 				settingsList.append(self.delayEntry)
 				settingsList.append(self.repeatEntry)
