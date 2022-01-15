@@ -15,7 +15,7 @@ from json import loads
 from enigma import eDVBDB, eEPGCache
 from Screens.MessageBox import MessageBox
 from Components.config import config, ConfigText
-from Tools import Notifications
+from Tools.Notifications import AddNotificationWithID
 try:
 	from base64 import encodestring
 	encodecommand = encodestring
@@ -140,6 +140,7 @@ class ImportChannels():
 	def ImportChannelsDone(self, flag, message=None):
 		shutil.rmtree(self.tmp_dir, True)
 		if flag:
-			Notifications.AddNotificationWithID("ChannelsImportOK", MessageBox, _("%s imported from fallback tuner") % message, type=MessageBox.TYPE_INFO, timeout=5)
-		else:
-			Notifications.AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Import from fallback tuner failed, %s") % message, type=MessageBox.TYPE_ERROR, timeout=5)
+#			AddNotificationWithID("ChannelsImportOK", MessageBox, _("%s imported from fallback tuner") % message, type=MessageBox.TYPE_INFO, timeout=5)
+#		else:
+#			AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Import from fallback tuner failed, %s") % message, type=MessageBox.TYPE_ERROR, timeout=5)
+		      return

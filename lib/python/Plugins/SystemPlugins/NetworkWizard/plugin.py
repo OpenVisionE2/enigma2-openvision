@@ -19,7 +19,7 @@ def startSetup(menuid):
 
 
 def NetworkWizard(*args, **kwargs):
-	from NetworkWizard import NetworkWizard
+	from .NetworkWizard import NetworkWizard
 	return NetworkWizard(*args, **kwargs)
 
 

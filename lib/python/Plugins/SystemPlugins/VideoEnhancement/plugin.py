@@ -8,7 +8,7 @@ from Components.ActionMap import ActionMap
 from Components.Sources.StaticText import StaticText
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
-from Plugins.SystemPlugins.VideoEnhancement import VideoEnhancement
+from . import VideoEnhancement
 import os
 import skin
 
