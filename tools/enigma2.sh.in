@@ -59,6 +59,11 @@ if [ -f /proc/stb/fp/nec_ir ]; then
 	[ -f /sys/class/remote/amremote/protocol ] && echo "2" > /sys/class/remote/amremote/protocol
 fi
 
+# LC_ALL available?
+if [ -z $LC_ALL ]; then
+	export LC_ALL=en_GB.utf8
+fi
+
 # Check for sundtek tuner helper lib.
 if [ -e /opt/lib/libmediaclient.so ]; then
 	LIBS="/opt/lib/libmediaclient.so @libdir@/libopen.so.0.0.0"
