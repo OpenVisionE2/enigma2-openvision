@@ -56,6 +56,9 @@ dist_install_DATA = \
 	input_rcold-configured.png \
 	input_rcold.png \
 	input_warning.png \
+	install.png \
+	installable.png \
+	installed.png \
 	lock_error.png \
 	lock_off.png \
 	lock_on.png \
@@ -103,6 +106,7 @@ dist_install_DATA = \
 	rass_page4.png \
 	record.png \
 	redx.png \
+	remove.png \
 	rep.png \
 	repeat_off.png \
 	repeat_on.png \
@@ -128,11 +132,24 @@ dist_install_DATA = \
 	scan-t.png \
 	selectioncross.png \
 	shuffle.png \
-	timer_done.png  timer_failed.png  timer_prep.png  timer_rep.png   timer_zap.png \
-	timer_off.png   timer_rec.png   timer_wait.png   timer_autotimer.png \
+	timer_autotimer.png \
+	timer_done.png \
+	timer_failed.png \
+	timer_off.png \
+	timer_prep.png \
+	timer_rec.png \
+	timer_rep.png \
+	timer_wait.png \
+	timer_zap.png \
+	traffic_green.png \
+	traffic_off.png \
+	traffic_red.png \
+	traffic_yellow.png \
 	trashcan.png \
 	unlock.png \
 	unlockBouquet.png \
+	upgrade.png \
+	upgradeable.png \
 	verticalline.png \
 	verticalline-plugins.png \
 	za.png \

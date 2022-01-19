@@ -11,6 +11,18 @@ if [ -d /home/root ]; then
 	cd
 fi
 
+# Function to determine if a BusyBox update has been flagged and do the update.
+# This code should be run just before a restart to ensure that any shell changes
+# do not impact running code.
+#
+function check_busybox_update {
+	if [ -e /etc/enigma2/.busybox_update_required ]; then
+		DEFERRED=`cat /etc/enigma2/.busybox_update_required`
+		rm /etc/enigma2/.busybox_update_required
+		${DEFERRED} 2>&1 | tee -a /home/root/opkgupgrade.log
+	fi
+} 
+
 BRANDCHECK=`sed -En 's|^brand=(.+)$|\1|p' /usr/lib/enigma.info`
 MODELCHECK=`sed -En 's|^model=(.+)$|\1|p' /usr/lib/enigma.info`
 PLATFORMCHECK=`sed -En 's|^platform=(.+)$|\1|p' /usr/lib/enigma.info`
@@ -145,7 +157,6 @@ while : ; do
 		LD_PRELOAD="${LIBS}" ENIGMA_DEBUG_LVL="${DEBUG_LVL}" ENIGMA_DEBUG_TIME="${DEBUG_TIME}" "@bindir@/enigma2" >> "${FILE}" 2>&1
 	fi
 
-
 	# Enigma2 exit codes:
 	#
 	#  1 - halt
@@ -169,10 +180,7 @@ while : ; do
 			if [ "${BRANDCHECK}" == "atto" ]; then
 				echo "----" > /dev/player/panel
 				echo -n "standby" > /sys/power/state
-			else
-				/sbin/halt
 			fi
-			/sbin/halt
 			if [ "${BRANDCHECK}" == "wetek" ]; then
 				echo "0" > /sys/class/leds/wetek\:blue\:wifiled/brightness
 				echo "0" > /sys/class/leds/wetek\:blue\:ethled/brightness
@@ -183,9 +191,12 @@ while : ; do
 			elif [ -f /proc/stb/fp/led_brightness ]; then
 				echo "00000008" > /proc/stb/fp/led_brightness
 			fi
+			check_busybox_update
+			/sbin/halt
 			;;
 		2)
 			[ -f /proc/stb/fp/force_restart ] && echo "1" > /proc/stb/fp/force_restart
+			check_busybox_update
 			/sbin/reboot
 			;;
 		3)
@@ -196,6 +207,7 @@ while : ; do
 			sleep 0.1;
 			/sbin/rmmod fp
 			/sbin/modprobe fp
+			check_busybox_update
 			/sbin/reboot
 			;;
 		5)
@@ -216,6 +228,7 @@ while : ; do
 			fi
 			[ -e "@bindir@/setenv" ] && "@bindir@/setenv" default_sys 1
 			[ -e "@sbindir@/fw_setenv" ] && "@sbindir@/fw_setenv" bootfromnand 1
+			check_busybox_update
 			/sbin/reboot
 			;;
 		16)
@@ -228,6 +241,7 @@ while : ; do
 			else
 				echo "rescue" > /proc/stb/fp/boot_mode
 			fi
+			check_busybox_update
 			/sbin/reboot
 			;;
 		42)
@@ -242,10 +256,6 @@ while : ; do
 			PREVUPD="0"
 			CURRUPD="999"
 			opkg update 2>&1 | tee /home/root/opkgupgrade.log
-			# check if we need to upgrade busybox first
-			if [ "$(opkg list-upgradable busybox)" != "" ]; then
-				opkg update busybox 2>&1 | tee -a /home/root/opkgupgrade.log
-			fi
 			# update all other packages
 			while [ "${CURRUPD}" -gt "0" ] && [ "${CURRUPD}" -ne "${PREVUPD}" ]; do
 				opkg upgrade "${DESTS}" 2>&1 | tee -a /home/root/opkgupgrade.log
@@ -253,6 +263,7 @@ while : ; do
 				CURRUPD=`opkg list-upgradable | wc -l`
 				echo "===> ${CURRUPD} PACKAGE(S) REMAINING" >> /home/root/opkupgrade.log
 			done
+			check_busybox_update
 			/sbin/reboot
 			;;
 		43)
