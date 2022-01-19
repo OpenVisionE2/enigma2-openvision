@@ -438,66 +438,66 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 
 
 class MACSettings(Setup):
-    def __init__(self, session):
-        Setup.__init__(self, session, setup="MACAddress")
-        self.setTitle(_("MAC Address Setup"))
-        self["actions"] = ActionMap(["OkCancelActions"], {
-            "cancel": self.keyCancel,
-            "ok": self.ok,
-        }, -2)
-        self.writereadMAC()
+	def __init__(self, session):
+		Setup.__init__(self, session, setup="MACAddress")
+		self.setTitle(_("MAC Address Setup"))
+		self["actions"] = ActionMap(["OkCancelActions"], {
+			"cancel": self.keyCancel,
+			"ok": self.ok,
+		}, -2)
+		self.writereadMAC()
 
-    def macCurrent(self):
-        macaddress = configmac.mac.value
-        macdata = open("/etc/enigma2/hwmac", "w")
-        macdata.write(macaddress)
-        macdata.close()
+	def macCurrent(self):
+		macaddress = configmac.mac.value
+		macdata = open("/etc/enigma2/hwmac", "w")
+		macdata.write(macaddress)
+		macdata.close()
 
-    def writereadMAC(self):
-        configmac.mac.value = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_LINK][0])["addr"].upper())
-        self.macCurrent()
-        with open("/etc/enigma2/hwmac") as hwmac:
-            self.macUpdated = hwmac.read()
+	def writereadMAC(self):
+		configmac.mac.value = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_LINK][0])["addr"].upper())
+		self.macCurrent()
+		with open("/etc/enigma2/hwmac") as hwmac:
+			self.macUpdated = hwmac.read()
 
-        configmac.change.value = str(self.macUpdated.upper().strip())
+		configmac.change.value = str(self.macUpdated.upper().strip())
 
-    def ok(self):
-        self.session.openWithCallback(self.changeMac, MessageBox, _("Do you want to change the current MAC address?\n") + configmac.mac.value, MessageBox.TYPE_YESNO)
+	def ok(self):
+		self.session.openWithCallback(self.changeMac, MessageBox, _("Do you want to change the current MAC address?\n") + configmac.mac.value, MessageBox.TYPE_YESNO)
 
-    def changeMac(self, answer=False):
-        self.Console = Console()
-        if answer:
-            if re.match("\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}", configmac.change.value):
-                configmac.change.save()
-                self.Console.ePopen("ifconfig eth0 down && ifconfig eth0 down hw ether " + str(configmac.change.value) + " ifconfig eth0 up")
-                self.checkInterfaces()
-                self.Console.ePopen("ifdown -v -f eth0; ifup -v eth0")
-                try:
-                    CurrentIP = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_INET][0])["addr"])
-                except:
-                    CurrentIP = "unknown"
-                self.session.open(MessageBox, _("MAC address successfully changed.\nNew MAC address is: ") + configmac.change.value + "\nIP: " + CurrentIP, MessageBox.TYPE_INFO, timeout=10)
-                self.close()
-            else:
-                self.session.open(MessageBox, _("Not a valid MAC address"), MessageBox.TYPE_INFO, timeout=10)
+	def changeMac(self, answer=False):
+		self.Console = Console()
+		if answer:
+			if re.match("\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}", configmac.change.value):
+				configmac.change.save()
+				self.Console.ePopen("ifconfig eth0 down && ifconfig eth0 down hw ether " + str(configmac.change.value) + " ifconfig eth0 up")
+				self.checkInterfaces()
+				self.Console.ePopen("ifdown -v -f eth0; ifup -v eth0")
+				try:
+					CurrentIP = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_INET][0])["addr"])
+				except:
+					CurrentIP = "unknown"
+				self.session.open(MessageBox, _("MAC address successfully changed.\nNew MAC address is: ") + configmac.change.value + "\nIP: " + CurrentIP, MessageBox.TYPE_INFO, timeout=10)
+				self.close()
+			else:
+				self.session.open(MessageBox, _("Not a valid MAC address"), MessageBox.TYPE_INFO, timeout=10)
 
-    def checkInterfaces(self):
-        with open("/etc/network/interfaces", "r") as interfaces:
-            interfacesdata = interfaces.read()
-        if "hwaddress ether" in interfacesdata:
-            oldMac = re.findall(r"hwaddress ether (\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2})", interfacesdata)[0]
-            interfacesdata = interfacesdata.replace(oldMac, configmac.change.value)
-            with open("/etc/network/interfaces", "w") as interfaces:
-                interfaces.write(interfacesdata)
-        else:
-            interfacesdata = open("/etc/network/interfaces", "r").readlines()
-            interfaceswrite = open("/etc/network/interfaces", "w")
-            for line in interfacesdata:
-                interfaceswrite.write(line)
-                if "iface eth0 inet dhcp" in line or "iface eth0 inet static" in line:
-                    newmac = "	hwaddress ether " + configmac.change.value
-                    interfaceswrite.write(newmac + "\n")
-            interfaceswrite.close()
+	def checkInterfaces(self):
+		with open("/etc/network/interfaces", "r") as interfaces:
+			interfacesdata = interfaces.read()
+		if "hwaddress ether" in interfacesdata:
+			oldMac = re.findall(r"hwaddress ether (\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2})", interfacesdata)[0]
+			interfacesdata = interfacesdata.replace(oldMac, configmac.change.value)
+			with open("/etc/network/interfaces", "w") as interfaces:
+				interfaces.write(interfacesdata)
+		else:
+			interfacesdata = open("/etc/network/interfaces", "r").readlines()
+			interfaceswrite = open("/etc/network/interfaces", "w")
+			for line in interfacesdata:
+				interfaceswrite.write(line)
+				if "iface eth0 inet dhcp" in line or "iface eth0 inet static" in line:
+					newmac = "	hwaddress ether " + configmac.change.value
+					interfaceswrite.write(newmac + "\n")
+			interfaceswrite.close()
 
 	def keyCancel(self):
 		self.close()
