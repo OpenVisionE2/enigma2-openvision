@@ -59,12 +59,12 @@ class EPGList(GUIComponent):
 		self.tw = 120
 		self.dy = 0
 
-		if type is EPG_TYPE_SINGLE:
+		if type == EPG_TYPE_SINGLE:
 			self.l.setBuildFunc(self.buildSingleEntry)
-		elif type is EPG_TYPE_MULTI:
+		elif type == EPG_TYPE_MULTI:
 			self.l.setBuildFunc(self.buildMultiEntry)
 		else:
-			assert(type is EPG_TYPE_SIMILAR)
+			assert(type == EPG_TYPE_SIMILAR)
 			self.l.setBuildFunc(self.buildSimilarEntry)
 		self.epgcache = eEPGCache.getInstance()
 		self.clocks = [LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/epgclock_add.png')),
@@ -116,13 +116,13 @@ class EPGList(GUIComponent):
 		return event
 
 	def getCurrentChangeCount(self):
-		if self.type is EPG_TYPE_MULTI and self.l.getCurrentSelection() is not None:
+		if self.type == EPG_TYPE_MULTI and self.l.getCurrentSelection() is not None:
 			return self.l.getCurrentSelection()[0]
 		return 0
 
 	def getCurrent(self):
 		idx = 0
-		if self.type is EPG_TYPE_MULTI:
+		if self.type == EPG_TYPE_MULTI:
 			idx += 1
 		tmp = self.l.getCurrentSelection()
 		if tmp is None:
@@ -177,7 +177,7 @@ class EPGList(GUIComponent):
 		self.space = self.iconSize + self.iconDistance
 		self.dy = int((height - self.iconSize) / 2.)
 
-		if self.type is EPG_TYPE_SINGLE:
+		if self.type == EPG_TYPE_SINGLE:
 			if self.skinColumns:
 				x = 0
 				self.weekday_rect = Rect(0, 0, self.gap(self.col[0] + 100), height)
@@ -189,7 +189,7 @@ class EPGList(GUIComponent):
 				self.weekday_rect = Rect(0, 0, width / 20 * 2 - 10, height)
 				self.datetime_rect = Rect(width / 20 * 2, 0, width / 20 * 5 - 15, height)
 				self.descr_rect = Rect(width / 20 * 7, 0, width / 20 * 13, height)
-		elif self.type is EPG_TYPE_MULTI:
+		elif self.type == EPG_TYPE_MULTI:
 			if self.skinColumns:
 				x = 0
 				self.service_rect = Rect(x, 0, self.gap(self.col[0]), height)
@@ -365,10 +365,10 @@ class EPGList(GUIComponent):
 		list = self.list
 		if list:
 			event_id = self.getSelectedEventId()
-			if type is 1:
+			if type == 1:
 				list.sort(key=lambda x: (x[4] and x[4].lower(), x[2]))
 			else:
-				assert(type is 0)
+				assert(type == 0)
 				list.sort(key=lambda x: x[2])
 			self.l.invalidate()
 			self.moveToEventId(event_id)
