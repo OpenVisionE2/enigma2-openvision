@@ -3299,8 +3299,13 @@ class InfoBarResolutionSelection:
 class InfoBarTimerButton:
 	def __init__(self):
 		self["TimerButtonActions"] = HelpableActionMap(self, ["InfobarTimerButtonActions"], {
-			"timerSelection": (self.timerSelection, _("Timer selection")),
+			"sleepTimer": (self.sleepTimer, _("Manage sleep timer")),
+			"timerSelection": (self.timerSelection, _("Timer selection"))
 		}, prio=0, description=_("Timer Actions"))
+
+	def sleepTimer(self):
+		from Screens.SleepTimerEdit import SleepTimerEdit
+		self.session.open(SleepTimerEdit)
 
 	def timerSelection(self):
 		from Screens.TimerEdit import TimerEditList
