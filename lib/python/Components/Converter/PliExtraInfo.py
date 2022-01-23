@@ -50,11 +50,11 @@ codec_data = {
 	14: "DIVX 4",
 	15: "DIVX 5",
 	16: "AVS",
-	17: "AVS2",
 	18: "VP6",
 	19: "N/A 19",
 	20: "N/A 20",
 	21: "SPARK",
+	40: "AVS2",
 }
 
 # Dynamic range ("gamma") value to text

@@ -401,7 +401,7 @@ eDVBVideo::eDVBVideo(eDVBDemux *demux, int dev)
 #define VIDEO_STREAMTYPE_H265_HEVC 7
 #endif
 #define VIDEO_STREAMTYPE_AVS 16
-#define VIDEO_STREAMTYPE_AVS2 17
+#define VIDEO_STREAMTYPE_AVS2 40
 
 #ifdef HAVE_RASPBERRYPI
 int eDVBVideo::startPid(int pid, int type, bool is_pvr)

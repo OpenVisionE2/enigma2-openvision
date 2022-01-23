@@ -8,7 +8,6 @@ install_PYTHON = \
 	ChoiceBox.py \
 	Ci.py \
 	ClientMode.py \
-	ConfigMenu.py \
 	Console.py \
 	CopyFiles.py \
 	CronTimer.py \
