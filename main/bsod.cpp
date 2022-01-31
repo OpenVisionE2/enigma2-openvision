@@ -29,7 +29,7 @@ static const char *crash_emailaddr =
 	CRASH_EMAILADDR;
 #endif
 
-/* Defined in bsod.cpp */
+/* Defined in eerror.cpp */
 void retrieveLogBuffer(const char **p1, unsigned int *s1, const char **p2, unsigned int *s2);
 
 static const std::string getConfigString(const std::string &key, const std::string &defaultValue)
@@ -355,7 +355,7 @@ void oops(const mcontext_t &context)
 #elif defined(__arm__)
 	eLog(lvlFatal, "PC: %08lx", (unsigned long)context.arm_pc);
 	eLog(lvlFatal, "Fault Address: %08lx", (unsigned long)context.fault_address);
-	eLog(lvlFatal, "Error Code:: %lu", (unsigned long)context.error_code);
+	eLog(lvlFatal, "Error Code: %lu", (unsigned long)context.error_code);
 #else
 	eLog(lvlFatal, "FIXME: no oops support!");
 #endif
@@ -366,9 +366,9 @@ void oops(const mcontext_t &context)
  * it's not async-signal-safe and so must not be used in signal
  * handlers.
  */
-#ifdef __GLIBC__
 void print_backtrace()
 {
+#ifdef __GLIBC__
 	void *array[15];
 	size_t size;
 	size_t cnt;
@@ -385,15 +385,13 @@ void print_backtrace()
 			eLog(lvlFatal, "%s(%s) [0x%lX]", info.dli_fname, info.dli_sname != NULL ? info.dli_sname : "n/a", (unsigned long int) array[cnt]);
 		}
 	}
-}
 #endif
+}
 void handleFatalSignal(int signum, siginfo_t *si, void *ctx)
 {
 	ucontext_t *uc = (ucontext_t*)ctx;
 	oops(uc->uc_mcontext);
-#ifdef __GLIBC__
 	print_backtrace();
-#endif
 	eLog(lvlFatal, "-------FATAL SIGNAL (%d)", signum);
 	bsodFatal("enigma2, signal");
 }
