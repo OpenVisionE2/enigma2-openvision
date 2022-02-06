@@ -119,8 +119,8 @@ class InformationBase(Screen, HelpableScreen):
 			"ok": (self.refreshInformation, _("Refresh the screen")),
 			"top": (self["information"].moveTop, _("Move to first line / screen")),
 			"pageUp": (self["information"].pageUp, _("Move up a screen")),
-			"up": (self["information"].pageUp, _("Move up a screen")),
-			"down": (self["information"].pageDown, _("Move down a screen")),
+			"up": (self["information"].moveUp, _("Move up a line")),
+			"down": (self["information"].moveDown, _("Move down a line")),
 			"pageDown": (self["information"].pageDown, _("Move down a screen")),
 			"bottom": (self["information"].moveBottom, _("Move to last line / screen"))
 		}, prio=0, description=_("Common Information Actions"))

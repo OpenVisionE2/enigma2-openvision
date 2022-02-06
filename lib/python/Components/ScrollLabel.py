@@ -19,6 +19,7 @@ class ScrollLabel(GUIComponent):
 		self.column = 0
 		self.split = False
 		self.splitchar = "|"
+		self.lineheight = None
 
 	def applySkin(self, desktop, parent):
 		scrollbarWidth = 20
@@ -64,14 +65,14 @@ class ScrollLabel(GUIComponent):
 			applyAllAttributes(self.scrollbar, desktop, scrollbar_attribs + widget_attribs, parent.scale)
 			ret = True
 		self.pageWidth = self.long_text.size().width()
-		lineheight = fontRenderClass.getInstance().getLineHeight(self.long_text.getFont()) or 30 # assume a random lineheight if nothing is visible
-		lines = int(self.long_text.size().height() / lineheight)
-		self.pageHeight = int(lines * lineheight)
+		self.lineheight = fontRenderClass.getInstance().getLineHeight(self.long_text.getFont()) or 30 # assume a random lineheight if nothing is visible
+		lines = int(self.long_text.size().height() / self.lineheight)
+		self.pageHeight = int(lines * self.lineheight)
 		self.instance.move(self.long_text.position())
-		self.instance.resize(eSize(self.pageWidth, self.pageHeight + int(lineheight / 6)))
-		self.long_text.resize(eSize(self.pageWidth - 30, self.pageHeight + int(lineheight / 6)))
+		self.instance.resize(eSize(self.pageWidth, self.pageHeight + int(self.lineheight / 6)))
+		self.long_text.resize(eSize(self.pageWidth - 30, self.pageHeight + int(self.lineheight / 6)))
 		self.scrollbar.move(ePoint(self.pageWidth - scrollbarWidth, 0))
-		self.scrollbar.resize(eSize(scrollbarWidth, self.pageHeight + int(lineheight / 6)))
+		self.scrollbar.resize(eSize(scrollbarWidth, self.pageHeight + int(self.lineheight / 6)))
 		self.scrollbar.setOrientation(eSlider.orVertical)
 		self.scrollbar.setRange(0, 100)
 		self.scrollbar.setBorderWidth(scrollbarBorderWidth)
@@ -118,10 +119,21 @@ class ScrollLabel(GUIComponent):
 		self.setPos(0)
 		self.updateScrollbar()
 
+	def homePage(self):
+		return self.moveTop()
+
 	def pageUp(self):
 		if self.TotalTextHeight > self.pageHeight:
 			self.setPos(self.curPos - self.pageHeight)
 			self.updateScrollbar()
+
+	def moveUp(self):
+		self.setPos(self.curPos - int(self.lineheight))
+		self.updateScrollbar()
+
+	def moveDown(self):
+		self.setPos(self.curPos + int(self.lineheight))
+		self.updateScrollbar()
 
 	def pageDown(self):
 		if self.TotalTextHeight > self.pageHeight:
@@ -129,16 +141,11 @@ class ScrollLabel(GUIComponent):
 			self.updateScrollbar()
 
 	def moveBottom(self):
-		self.lastPage()
-		self.updateScrollbar()
-
-	def homePage(self):
-		self.setPos(0)
+		self.setPos(self.TotalTextHeight - self.pageHeight)
 		self.updateScrollbar()
 
 	def endPage(self):
-		self.lastPage()
-		self.updateScrollbar()
+		return self.moveBottom()
 
 	def lastPage(self):
 		self.setPos(self.TotalTextHeight - self.pageHeight)
@@ -147,8 +154,8 @@ class ScrollLabel(GUIComponent):
 		return self.TotalTextHeight <= self.pageHeight or self.curPos == self.TotalTextHeight - self.pageHeight
 
 	def updateScrollbar(self):
-		vis = max(100 * self.pageHeight / self.TotalTextHeight, 3)
-		start = (100 - vis) * self.curPos / (self.TotalTextHeight - self.pageHeight)
+		vis = max(100 * self.pageHeight // self.TotalTextHeight, 3)
+		start = (100 - vis) * self.curPos // (self.TotalTextHeight - self.pageHeight)
 		self.scrollbar.setStartEnd(start, start + vis)
 
 	def GUIcreate(self, parent):
