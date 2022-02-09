@@ -32,7 +32,7 @@ if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
 	export media_arm_audio_decoder="ape,flac,dts,ac3,eac3,wma,wmapro,mp3,aac,vorbis,raac,cook,amr,pcm,adpcm"
 fi
 
-if [ "${PLATFORMCHECK}" == "octagonhisil" ] || [ "${MODELCHECK}" == "ustym4kpro" ] || [ "${PLATFORMCHECK}" == "gbmv200" ] || [ "${MODELCHECK}" == "beyonwizv2" ] || [ "${MODELCHECK}" == "viper4k" ]; then
+if [ "${PLATFORMCHECK}" == "octagonhisil" ] || [ "${PLATFORMCHECK}" == "uclanhisil" ] || [ "${PLATFORMCHECK}" == "gbmv200" ] || [ "${MODELCHECK}" == "beyonwizv2" ] || [ "${MODELCHECK}" == "viper4k" ]; then
 	COUNT=`ps -ef | grep libreader | grep -v "grep" | wc -l`
 	if [ "${COUNT}" -eq "0" ];then
 		libreader 720P_50

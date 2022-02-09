@@ -419,6 +419,12 @@ class TryQuitMainloop(MessageBox):
 					open("/proc/stb/fp/oled_brightness", "w").write("0")
 				except:
 					print("[Standby] Write to /proc/stb/fp/oled_brightness failed.")
+			if BoxInfo.getItem("model") == "pulse4k":
+				try:
+					print("[Standby] Write to /proc/stb/lcd/oled_brightness")
+					open("/proc/stb/lcd/oled_brightness", "w").write("0")
+				except:
+					print("[Standby] Write to /proc/stb/lcd/oled_brightness failed.")
 			self.quitMainloop()
 		else:
 			MessageBox.close(self, True)
