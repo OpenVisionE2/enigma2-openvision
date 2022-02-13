@@ -21,7 +21,7 @@ function check_busybox_update {
 		rm /etc/enigma2/.busybox_update_required
 		${DEFERRED} 2>&1 | tee -a /home/root/opkgupgrade.log
 	fi
-} 
+}
 
 BRANDCHECK=`sed -En 's|^brand=(.+)$|\1|p' /usr/lib/enigma.info`
 MODELCHECK=`sed -En 's|^model=(.+)$|\1|p' /usr/lib/enigma.info`
