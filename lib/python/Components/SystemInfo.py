@@ -364,7 +364,7 @@ SystemInfo["OpenVisionModule"] = fileCheck("/proc/enigma/distro")
 SystemInfo["OLDE2API"] = model == "dm800"
 SystemInfo["7segment"] = displaytype == "7segment" or "7seg" in displaytype
 SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or fileAccess("/proc/hisi") or fileAccess("/usr/bin/hihalt") or fileAccess("/usr/lib/hisilicon")
-SystemInfo["DefineSat"] = platform in ("octagonhisil", "gbmv200", "dagsmv200", "uclanhisil") or model in ("beyonwizv2", "viper4k")
+SystemInfo["DefineSat"] = platform in ("octagonhisil", "gbmv200", "dagsmv200", "uclanhisil", "qviarthisil") or model in ("beyonwizv2", "viper4k")
 SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileAccess("/proc/device-tree/amlogic-dt-id") or fileAccess("/usr/bin/amlhalt") or fileAccess("/sys/module/amports")
 SystemInfo["OSDAnimation"] = fileCheck("/proc/stb/fb/animation_mode")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7")
@@ -393,7 +393,7 @@ SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False
 SystemInfo["HasH9SD"] = model in ("h9", "i55plus") and fileAccess("/dev/mmcblk0p1")
 SystemInfo["HasSDnomount"] = model in ("h9", "h3", "i55plus") and (False, "none") or model in ("multibox", "h9combo", "h3") and (True, "mmcblk0")
-SystemInfo["canBackupEMC"] = model in ("hd51", "h7") and ("disk.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or platform == "edision4k" and ("emmc.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or BoxInfo.getItem("DefineSat") and ("usb_update.bin", "none")
+SystemInfo["canBackupEMC"] = model in ("hd51", "h7", "vs1500") or platform == "8100s" and ("disk.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or platform == "edision4k" and ("emmc.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or BoxInfo.getItem("DefineSat") and ("usb_update.bin", "none")
 SystemInfo["CanSyncMode"] = fileAccess("/proc/stb/video/sync_mode_choices")
 SystemInfo["FrontpanelLEDBlinkControl"] = fileAccess("/proc/stb/fp/led_blink")
 SystemInfo["FrontpanelLEDBrightnessControl"] = fileAccess("/proc/stb/fp/led_brightness")
