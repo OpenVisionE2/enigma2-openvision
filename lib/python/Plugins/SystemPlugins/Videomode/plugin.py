@@ -13,7 +13,7 @@ from Plugins.SystemPlugins.Videomode.VideoHardware import video_hw
 config.misc.videowizardenabled = ConfigBoolean(default=True)
 
 
-class VideoSetup(Screen, ConfigListScreen):
+class VideoSetup(ConfigListScreen, Screen):
 
 	def __init__(self, session, hw):
 		Screen.__init__(self, session)
@@ -216,10 +216,6 @@ class VideoSetup(Screen, ConfigListScreen):
 
 	def getCurrentDescription(self):
 		return self["config"].getCurrent() and len(self["config"].getCurrent()) > 2 and self["config"].getCurrent()[2] or ""
-
-	def createSummary(self):
-		from Screens.Setup import SetupSummary
-		return SetupSummary
 
 
 class VideomodeHotplug:

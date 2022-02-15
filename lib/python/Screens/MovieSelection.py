@@ -744,9 +744,6 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			print("[MovieSelection] failed to unsubscribe:", e)
 			pass
 
-	def createSummary(self):
-		return MovieSelectionSummary
-
 	def updateDescription(self):
 		if self.settings["description"] == MovieList.SHOW_DESCRIPTION:
 			self["DescriptionBorder"].show()

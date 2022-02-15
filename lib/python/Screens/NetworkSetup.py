@@ -326,7 +326,7 @@ class NetworkAdapterSelection(Screen, HelpableScreen):
 					self.session.openWithCallback(self.AdapterSetupClosed, NetworkWizard, selection[0])
 
 
-class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
+class NameserverSetup(ConfigListScreen, HelpableScreen, Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		HelpableScreen.__init__(self)
@@ -387,7 +387,6 @@ class NameserverSetup(Screen, ConfigListScreen, HelpableScreen):
 			i += 1
 
 		self["config"].list = self.list
-		self["config"].l.setList(self.list)
 
 	def ok(self):
 		self.RefreshNameServerUsed()
@@ -684,7 +683,7 @@ class InetdRecovery(Screen, ConfigListScreen):
 			commands.append('/etc/init.d/inetd.busybox restart')
 
 
-class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
+class AdapterSetup(ConfigListScreen, HelpableScreen, Screen):
 	def __init__(self, session, networkinfo, essid=None):
 		Screen.__init__(self, session)
 		HelpableScreen.__init__(self)
@@ -877,7 +876,6 @@ class AdapterSetup(Screen, ConfigListScreen, HelpableScreen):
 									self.list.append(self.encryptionType)
 							self.list.append(self.encryptionKey)
 		self["config"].list = self.list
-		self["config"].l.setList(self.list)
 
 	def KeyBlue(self):
 		self.session.openWithCallback(self.NameserverSetupClosed, NameserverSetup)

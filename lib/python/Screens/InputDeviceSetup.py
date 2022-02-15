@@ -12,7 +12,7 @@ from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 
 
-class InputDeviceSelection(Screen, HelpableScreen):
+class InputDeviceSelection(HelpableScreen, Screen):
 	skin = """
 	<screen name="InputDeviceSelection" position="center,center" size="560,400">
 		<ePixmap pixmap="buttons/red.png" position="0,0" size="140,40" alphatest="on" />
@@ -137,7 +137,7 @@ class InputDeviceDriverSetup(Setup):
 			print("[InputDeviceSetup] Changes made for '%s' (%s) were not confirmed." % (self.device, self.nameEntry[1].value))
 
 
-class InputDeviceSetup(Setup):
+class InputDeviceSetup(ConfigListScreen, Screen):
 	def __init__(self, session):
 		Setup.__init__(self, session, "InputDevices")
 		self.initialKeyboardMap = config.inputDevices.keyboardMap.value

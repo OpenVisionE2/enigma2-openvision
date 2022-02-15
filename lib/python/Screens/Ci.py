@@ -530,7 +530,7 @@ class CiSelection(Screen):
 		self.close()
 
 
-class PermanentPinEntry(Screen, ConfigListScreen):
+class PermanentPinEntry(ConfigListScreen, Screen):
 	def __init__(self, session, pin, pin_slot):
 		Screen.__init__(self, session)
 		self.skinName = ["ParentalControlChangePin", "Setup"]
@@ -574,20 +574,3 @@ class PermanentPinEntry(Screen, ConfigListScreen):
 
 	def cancel(self):
 		self.close(None)
-
-	def keyNumberGlobal(self, number):
-		ConfigListScreen.keyNumberGlobal(self, number)
-
-	def changedEntry(self):
-		for x in self.onChangedEntry:
-			x()
-
-	def getCurrentEntry(self):
-		return self["config"].getCurrent()[0]
-
-	def getCurrentValue(self):
-		return str(self["config"].getCurrent()[1].getText())
-
-	def createSummary(self):
-		from Screens.Setup import SetupSummary
-		return SetupSummary

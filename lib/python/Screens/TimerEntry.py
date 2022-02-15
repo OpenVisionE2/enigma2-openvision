@@ -28,7 +28,7 @@ from Tools.Alternatives import GetWithAlternative
 from Tools.FallbackTimer import FallbackTimerDirs
 
 
-class TimerEntry(Screen, ConfigListScreen):
+class TimerEntry(ConfigListScreen, Screen):
 	EMPTY = 0
 
 	def __init__(self, session, timer):
