@@ -149,7 +149,7 @@ extern void bsodFatal(const char *component);
 int formatTime(char *buf, int bufferSize, int flags)
 {
 	int pos = 0;
-	struct timespec tp;
+	struct timespec tp = {};
 	struct tm loctime;
 	struct timeval tim;
 

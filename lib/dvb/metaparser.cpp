@@ -22,7 +22,7 @@ eDVBMetaParser::eDVBMetaParser()
 
 static time_t getmtime(const std::string &basename)
 {
-	struct stat s;
+	struct stat s = {};
 	if (::stat(basename.c_str(), &s) == 0)
 	{
 		return s.st_mtime;
@@ -33,9 +33,9 @@ static time_t getmtime(const std::string &basename)
 static off_t fileSize(const std::string &basename)
 {
 	off_t filesize = 0;
-	char buf[16];
+	char buf[16] = {};
 	std::string splitname;
-	struct stat64 s;
+	struct stat64 s = {};
 
 	/* get filesize */
 	if (!stat64(basename.c_str(), &s))

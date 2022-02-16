@@ -115,7 +115,7 @@ int eStaticServiceWebTSInfo::getInfo(const eServiceReference &ref, int w)
 	{
 	case iServiceInformation::sTimeCreate:
 	{
-		struct stat s;
+		struct stat s = {};
 		if (!stat(ref.path.c_str(), &s))
 			return s.st_mtime;
 	}
@@ -126,7 +126,7 @@ int eStaticServiceWebTSInfo::getInfo(const eServiceReference &ref, int w)
 
 long long eStaticServiceWebTSInfo::getFileSize(const eServiceReference &ref)
 {
-	struct stat s;
+	struct stat s = {};
 	if (!stat(ref.path.c_str(), &s))
 		return s.st_size;
 	return 0;
@@ -230,7 +230,7 @@ int eServiceWebTS::openHttpConnection(std::string url)
 	if (fd == -1)
 		return -1;
 
-	struct sockaddr_in addr;
+	struct sockaddr_in addr = {};
 	addr.sin_family = AF_INET;
 	addr.sin_addr.s_addr = *((in_addr_t*)h->h_addr_list[0]);
 	addr.sin_port = htons(port);
@@ -746,7 +746,7 @@ void eStreamThreadWeb::thread() {
 	bool eof = false;
 	fd_set rfds;
 	fd_set wfds;
-	struct timeval timeout;
+	struct timeval timeout = {};
 	int rc,r,w,maxfd;
 	time_t next_scantime = 0;
 	bool sosSend = false;

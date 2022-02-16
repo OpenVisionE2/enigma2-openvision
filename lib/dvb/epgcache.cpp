@@ -1184,7 +1184,7 @@ void eEPGCache::save()
 #ifdef EPG_DEBUG
 		eDebug("[eEPGCache] store epg to realpath '%s'", buf);
 #endif
-		struct statfs st;
+		struct statfs st = {};
 		off64_t tmp;
 		if (statfs(buf, &st) < 0) {
 			eDebug("[eEPGCache] statfs '%s' failed in save (%m)", buf);
@@ -1342,7 +1342,7 @@ RESULT eEPGCache::lookupEventTime(const eServiceReference &service, time_t t, co
 RESULT eEPGCache::lookupEventTime(const eServiceReference &service, time_t t, Event *& result, int direction)
 {
 	singleLock s(cache_lock);
-	const eventData *data=0;
+	const eventData *data = nullptr;
 	RESULT ret = lookupEventTime(service, t, data, direction);
 	if ( !ret && data )
 		result = new Event((uint8_t*)data->get());
@@ -1354,15 +1354,16 @@ RESULT eEPGCache::lookupEventTime(const eServiceReference &service, time_t t, Ev
 RESULT eEPGCache::lookupEventTime(const eServiceReference &service, time_t t, ePtr<eServiceEvent> &result, int direction)
 {
 	singleLock s(cache_lock);
-	const eventData *data=0;
+	const eventData *data = nullptr;
 	RESULT ret = lookupEventTime(service, t, data, direction);
 	result = NULL;
 	if ( !ret && data )
 	{
-		Event ev((uint8_t*)data->get());
+		Event *ev = new Event((uint8_t*)data->get());
 		result = new eServiceEvent();
 		const eServiceReferenceDVB &ref = (const eServiceReferenceDVB&)service;
-		ret = result->parseFrom(&ev, (ref.getTransportStreamID().get()<<16)|ref.getOriginalNetworkID().get());
+		ret = result->parseFrom(ev, (ref.getTransportStreamID().get()<<16)|ref.getOriginalNetworkID().get());
+		delete ev;
 	}
 	return ret;
 }
@@ -1393,7 +1394,7 @@ RESULT eEPGCache::saveEventToFile(const char* filename, const eServiceReference 
 {
 	RESULT ret = -1;
 	singleLock s(cache_lock);
-	const eventData *data = NULL;
+	const eventData *data = nullptr;
 	if ( eit_event_id != -1 )
 	{
 		eDebug("[eEPGCache] %s epg event id %x", __func__, eit_event_id);
