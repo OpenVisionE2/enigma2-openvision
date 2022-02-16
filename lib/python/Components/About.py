@@ -8,7 +8,7 @@ from six import PY2
 from socket import AF_INET, SOCK_DGRAM, inet_ntoa, socket
 from struct import pack, unpack
 from subprocess import PIPE, Popen
-from sys import maxsize, modules
+from sys import maxsize, modules, version_info
 from time import localtime, strftime
 
 from enigma import getEnigmaVersionString as getEnigmaVersion
@@ -312,12 +312,7 @@ def getDriverInstalledDate():
 
 
 def getPythonVersionString():
-	process = Popen(("/usr/bin/python", "-V"), stdout=PIPE, stderr=PIPE, universal_newlines=True)
-	stdout, stderr = process.communicate()
-	if process.returncode == 0:
-		return stderr.strip().split()[1]
-	print("[About] Get python version failed.")
-	return _("Unknown")
+	return "%s.%s.%s" % (version_info.major, version_info.minor, version_info.micro)
 
 
 def GetIPsFromNetworkInterfaces():
