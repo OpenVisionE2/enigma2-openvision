@@ -384,7 +384,12 @@ class Menu(Screen, ProtectedScreen):
 
 	def __onExecBegin(self):
 		self.onExecBegin.remove(self.__onExecBegin)
-		self.okbuttonClick()
+		if config.usage.menutype.value == "horzanim" and findSkinScreen("Animmain"):
+			return
+		elif config.usage.menutype.value == "horzicon" and findSkinScreen("Iconmain"):
+			return
+		else:
+			self.okbuttonClick()
 
 	def showHelp(self):
 		if config.usage.menu_show_numbers.value not in ("menu&plugins", "menu"):
