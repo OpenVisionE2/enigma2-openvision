@@ -235,7 +235,7 @@ class ServiceInfo(Screen):
 				posi = 3600 - posi
 				EW = "W"
 		charactersPython = str('\xc2\xb0') if PY2 else str('\xb0')
-		return "%s - %s%s %s" % (namespace, (float(posi) / 10.0), charactersPython, EW)
+		return "%s - %s%s %s" % (namespace, (float(posi) / 10.0), charactersPython, _(EW))
 
 	def getTrackList(self):
 		trackList = []
