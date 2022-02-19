@@ -44,7 +44,7 @@ class Network:
 
 	def onRemoteRootFS(self):
 		if self.remoteRootFS is None:
-			import Harddisk
+			from Components import Harddisk
 			for parts in Harddisk.getProcMounts():
 				if parts[1] == '/' and parts[2] == 'nfs':
 					self.remoteRootFS = True
@@ -77,8 +77,8 @@ class Network:
 	def getAddrInet(self, iface, callback):
 		data = {'up': False, 'dhcp': False, 'preup': False, 'predown': False}
 		try:
-			print("[Network] Read /sys/class/net/%s/carrier" % iface)
 			if os.path.exists('/sys/class/net/%s/carrier' % iface):
+				print("[Network] Read /sys/class/net/%s/carrier" % iface)
 				data['up'] = open('/sys/class/net/%s/carrier' % iface).read().strip() == '1'
 			if data['up']:
 				self.configuredInterfaces.append(iface)

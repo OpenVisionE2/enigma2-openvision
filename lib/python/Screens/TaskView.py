@@ -8,7 +8,7 @@ from Components.Sources.Progress import Progress
 from Components.Sources.StaticText import StaticText
 from Components.SystemInfo import BoxInfo
 from Components.Task import job_manager
-from InfoBarGenerics import InfoBarNotifications
+from Screens.InfoBarGenerics import InfoBarNotifications
 from Tools.Notifications import AddNotification, AddNotificationWithCallback, notifications
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox

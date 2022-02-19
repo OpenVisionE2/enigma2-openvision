@@ -4,7 +4,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.InputDevice import REMOTE_DISPLAY_NAME, REMOTE_MODEL, REMOTE_RCTYPE, inputDevices, remoteControl
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
-from Screen import Screen
+from . Screen import Screen
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.Setup import Setup
