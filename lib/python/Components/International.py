@@ -586,7 +586,7 @@ class International:
 			if language not in self.languageList:
 				self.languageList.append(language)
 			count = len(packageLocales)
-			print("[International] Package '%s' supports %d locale%s '%s'." % (package, count, "" if count == 1 else "s", "', '".join(packageLocales)))
+#			print("[International] Package '%s' supports %d locale%s '%s'." % (package, count, "" if count == 1 else "s", "', '".join(packageLocales)))
 		self.localeList.sort()
 		self.languageList.sort()
 
@@ -665,7 +665,7 @@ class International:
 			except (IOError, OSError) as err:
 				print("[International] getLanguagePackages Error %d: %s ('%s')" % (err.errno, err.strerror, command[0]))
 				availablePackages = []
-			print("[International] There are %d available locale/language packages in the repository '%s'." % (len(availablePackages), "', '".join(availablePackages)))
+#			print("[International] There are %d available locale/language packages in the repository '%s'." % (len(availablePackages), "', '".join(availablePackages)))
 		else:
 			availablePackages = self.availablePackages
 		return availablePackages
@@ -691,7 +691,7 @@ class International:
 					installedPackages = sorted(installedPackages)
 			except (IOError, OSError) as err:
 				print("[International] getInstalledPackages Error %d: %s ('%s')" % (err.errno, err.strerror, command[0]))
-			print("[International] There are %d installed locale/language packages '%s'." % (len(installedPackages), "', '".join(installedPackages)))
+#			print("[International] There are %d installed locale/language packages '%s'." % (len(installedPackages), "', '".join(installedPackages)))
 		else:
 			installedPackages = self.installedPackages
 		return installedPackages
@@ -700,7 +700,7 @@ class International:
 		if update:
 			global languagePath
 			installedDirectories = sorted(listdir(languagePath)) if isdir(languagePath) else []
-			print("[International] There are %d installed locale/language directories '%s'." % (len(installedDirectories), "', '".join(installedDirectories)))
+#			print("[International] There are %d installed locale/language directories '%s'." % (len(installedDirectories), "', '".join(installedDirectories)))
 		else:
 			installedDirectories = self.installedDirectories
 		return installedDirectories
