@@ -267,8 +267,7 @@ class Screen(dict):
 		for callback in self.onLayoutFinish:
 			if not isinstance(callback, type(self.close)):
 				# The following command triggers an error in Puthon 3 even if a PY2 test is used!!!
-				exec callback in globals(), locals()  # Use this version for Python 2.
-				# exec(callback, globals(), locals())  # Use this version for Python 3.
+				exec(callback, globals(), locals())  # Use this version for Python 2 and 3.
 			else:
 				callback()
 

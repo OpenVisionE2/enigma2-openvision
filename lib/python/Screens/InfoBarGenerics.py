@@ -51,7 +51,6 @@ import datetime
 from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 # hack alert!
 from Screens.Menu import MainMenu, mdom
-from six import PY2
 from sys import maxsize
 
 MODULE_NAME = __name__.split(".")[-1]
@@ -1153,12 +1152,8 @@ class InfoBarEPG:
 		}, prio=0, description=_("InfoBar EPG Actions"))
 
 	def getEPGPluginList(self, getAll=False):
-		if PY2:
-			pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
-					if 'selectedevent' not in p.__call__.func_code.co_varnames] or []
-		else:
-			pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
-					if 'selectedevent' not in p.__call__.__code__.co_varnames] or []
+		pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
+				if 'selectedevent' not in p.__call__.__code__.co_varnames] or []
 		from Components.ServiceEventTracker import InfoBarCount
 		if getAll or InfoBarCount == 1:
 			pluginlist.append((_("Show EPG for current channel..."), self.openSingleServiceEPG, _("Display EPG list for current channel")))

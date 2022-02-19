@@ -266,11 +266,11 @@ class RecordTimer(Timer):
 		return self.saveTimers()
 
 	def createTimer(self, timerDom):
-		serviceReference = ServiceReference(timerDom.get("serviceref").encode("UTF-8"))
+		serviceReference = ServiceReference(timerDom.get("serviceref"))
 		begin = int(timerDom.get("begin"))
 		end = int(timerDom.get("end"))
-		name = timerDom.get("name").encode("UTF-8")
-		description = timerDom.get("description").encode("UTF-8")
+		name = timerDom.get("name")
+		description = timerDom.get("description")
 		eit = timerDom.get("eit")
 		eit = int(eit) if eit and eit != "None" else None
 		disabled = bool(int(timerDom.get("disabled", False)))
@@ -282,7 +282,8 @@ class RecordTimer(Timer):
 			"auto": AFTEREVENT.AUTO
 		}.get(timerDom.get("afterevent", "nothing"), "nothing")
 		location = timerDom.get("location")
-		location = location.encode("UTF-8") if location and location != "None" else None
+		if location == "None":
+			location = None
 		tags = timerDom.get("tags")
 		tags = tags.encode("UTF-8").split(" ") if tags and tags != "None" else None
 		descramble = bool(int(timerDom.get("descramble", True)))
@@ -298,9 +299,9 @@ class RecordTimer(Timer):
 		entry.repeated = bool(int(timerDom.get("repeated", False)))
 		flags = timerDom.get("flags")
 		if flags:
-			entry.flags = set(flags.encode("UTF-8").split(" "))
+			entry.flags = set(flags.split(" "))
 		for log in timerDom.findall("log"):
-			entry.log_entries.append((int(log.get("time")), int(log.get("code")), log.text.strip().encode("UTF-8")))
+			entry.log_entries.append((int(log.get("time")), int(log.get("code")), log.text.strip()))
 		return entry
 
 	def doActivate(self, w):

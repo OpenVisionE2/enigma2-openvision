@@ -33,7 +33,6 @@ from Components.Button import Button
 from Tools.Directories import isPluginInstalled
 from Screens.MessageBox import MessageBox
 from Components.Console import Console
-from six import PY2
 
 mepg_config_initialized = False
 
@@ -236,12 +235,8 @@ class EPGSelection(Screen):
 		text = _("Select action")
 		event = self["list"].getCurrent()[0]
 		if event:
-			if PY2:
-				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
-					if 'selectedevent' in p.__call__.func_code.co_varnames]
-			else:
-				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
-					if 'selectedevent' in p.__call__.__code__.co_varnames]
+			menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
+				if 'selectedevent' in p.__call__.__code__.co_varnames]
 			if menu:
 				text += ": %s" % event.getEventName()
 		if self.type == EPG_TYPE_MULTI:

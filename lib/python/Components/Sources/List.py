@@ -30,7 +30,7 @@ to generate HTML."""
 	def updateList(self, list):
 		"""Changes the list without changing the selection or emitting changed Events"""
 		maxIndex = len(list) - 1
-		oldIndex = min(self.index, maxIndex)
+		oldIndex = self.index
 		self.disable_callbacks = True
 		self.list = list
 		self.index = oldIndex

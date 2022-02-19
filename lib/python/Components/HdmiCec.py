@@ -106,6 +106,8 @@ config.hdmicec.sourceactive_zaptimers = ConfigYesNo(default=False)
 
 class HdmiCec:
 
+	instance = None
+
 	def __init__(self):
 		try:
 			if HdmiCec.instance:

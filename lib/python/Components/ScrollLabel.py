@@ -1,3 +1,4 @@
+from __future__ import division
 from enigma import eLabel, ePoint, eSize, eSlider, eWidget, fontRenderClass
 
 from skin import applyAllAttributes, loadPixmap
@@ -98,7 +99,7 @@ class ScrollLabel(GUIComponent):
 				self.long_text.setText("\n".join(left))
 				self.right_text.setText("\n".join(right))
 			else:
-				self.long_text.setText(text)
+				self.long_text.setText(str(text))
 			self.TotalTextHeight = self.long_text.calculateSize().height()
 			self.long_text.resize(eSize(self.pageWidth - 30, self.TotalTextHeight))
 			self.split and self.right_text.resize(eSize(self.pageWidth - self.column - 30, self.TotalTextHeight))

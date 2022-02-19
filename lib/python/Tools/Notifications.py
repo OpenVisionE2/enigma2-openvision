@@ -12,9 +12,9 @@ current_notifications = []
 
 
 def __AddNotification(fnc, screen, id, *args, **kwargs):
-	if ".MessageBox'>" in str(screen):
+	if ".MessageBox'>" in repr(screen):
 		kwargs["simple"] = True
-	if ".Standby'>" in str(screen):
+	if ".Standby'>" in repr(screen):
 		removeCIdialog()
 	lock.acquire(True)
 	notifications.append((fnc, screen, args, kwargs, id))

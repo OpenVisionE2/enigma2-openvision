@@ -2,12 +2,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import threading
-try:
-	import urllib2
-	from urllib2 import quote
-except:
-	import urllib
-	from urllib import quote
 import os
 import shutil
 import tempfile
@@ -16,6 +10,16 @@ from enigma import eDVBDB, eEPGCache
 from Screens.MessageBox import MessageBox
 from Components.config import config, ConfigText
 from Tools.Notifications import AddNotificationWithID
+from time import sleep
+try: # Python 3
+	import urllib
+	from urllib.request import urlopen, Request, urlretrieve
+	from urllib.parse import quote	# raises ImportError in Python 2
+	from urllib.error import HTTPError, URLError # raises ImportError in Python 2
+except ImportError: # Python 2
+	import urllib
+	from urllib import quote
+	from urllib2 import Request, urlopen, HTTPError, URLError
 try:
 	from base64 import encodestring
 	encodecommand = encodestring
@@ -23,7 +27,7 @@ except ImportError:
 	from base64 import encodebytes
 	encodecommand = encodebytes
 import xml.etree.ElementTree as et
-from six import PY2
+from six.moves.urllib.parse import quote
 
 settingfiles = ('lamedb', 'bouquets.', 'userbouquet.', 'blacklist', 'whitelist', 'alternatives.')
 
@@ -40,21 +44,26 @@ class ImportChannels():
 			if config.usage.remote_fallback_openwebif_customize.value:
 				self.url = "%s:%s" % (self.url, config.usage.remote_fallback_openwebif_port.value)
 				if config.usage.remote_fallback_openwebif_userid.value and config.usage.remote_fallback_openwebif_password.value:
-					self.header = "Basic %s" % encodecommand("%s:%s" % (config.usage.remote_fallback_openwebif_userid.value, config.usage.remote_fallback_openwebif_password.value)).strip()
+					self.header = "Basic %s" % encodecommand(("%s:%s" % (config.usage.remote_fallback_openwebif_userid.value, config.usage.remote_fallback_openwebif_password.value)).encode("UTF-8")).strip()
+			self.remote_fallback_import = config.usage.remote_fallback_import.value
 			self.thread = threading.Thread(target=self.threaded_function, name="ChannelsImport")
 			self.thread.start()
 
 	def getUrl(self, url, timeout=5):
-		if PY2:
-			request = urllib2.Request(url)
-			if self.header:
-				request.add_header("Authorization", self.header)
-			return urllib2.urlopen(request, timeout=timeout)
-		else:
-			request = urllib.request.Request(url)
-			if self.header:
-				request.add_header("Authorization", self.header)
-			return urllib.urlopen(request, timeout=timeout)
+		request = Request(url)
+		if self.header:
+			request.add_header("Authorization", self.header)
+		try:
+			result = urlopen(request, timeout=timeout)
+		except URLError as e:
+			if "[Errno -3]" in str(e.reason):
+				print("[ImportChannels] Network is not up yet, delay 5 seconds")
+				# network not up yet
+				sleep(5)
+				return self.getUrl(url, timeout)
+			print("[ImportChannels] URLError ", e)
+			raise e
+		return result
 
 	def getTerrestrialUrl(self):
 		url = config.usage.remote_fallback_dvb_t.value
@@ -121,7 +130,7 @@ class ImportChannels():
 					try:
 						open(os.path.join(self.tmp_dir, os.path.basename(file)), "wb").write(self.getUrl("%s/file?file=%s" % (self.url, quote(file))).read())
 					except Exception as e:
-						print("[Import Channels] Exception: %s" % str(e))
+						print("[ImportChannels] Exception: %s" % str(e))
 						self.ImportChannelsDone(False, _("ERROR downloading file %s") % file)
 						return
 			except:
@@ -143,4 +152,4 @@ class ImportChannels():
 #			AddNotificationWithID("ChannelsImportOK", MessageBox, _("%s imported from fallback tuner") % message, type=MessageBox.TYPE_INFO, timeout=5)
 #		else:
 #			AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Import from fallback tuner failed, %s") % message, type=MessageBox.TYPE_ERROR, timeout=5)
-		      return
+			return

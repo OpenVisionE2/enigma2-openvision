@@ -204,10 +204,10 @@ class Task(object):
 		pass
 
 	def processStdout(self, data):
-		self.processOutput(data)
+		self.processOutput(data.decode())
 
 	def processStderr(self, data):
-		self.processOutput(data)
+		self.processOutput(data.decode())
 
 	def processOutput(self, data):
 		self.output_line += data
@@ -504,7 +504,7 @@ class ToolExistsPrecondition(Condition):
 			self.realpath = task.cmd
 			path = os.environ.get('PATH', '').split(os.pathsep)
 			path.append(task.cwd + '/')
-			absolutes = filter(lambda file: os.access(file, os.X_OK), map(lambda directory, file=task.cmd: os.path.join(directory, file), path))
+			absolutes = list(filter(lambda file: os.access(file, os.X_OK), list(map(lambda directory, file=task.cmd: os.path.join(directory, file), path))))
 			if absolutes:
 				self.realpath = absolutes[0]
 				return True

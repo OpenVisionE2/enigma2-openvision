@@ -5,6 +5,7 @@ import netifaces
 import io
 import os
 import re
+from six import PY2, ensure_str
 from Screens.Setup import Setup
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
@@ -39,7 +40,6 @@ import glob
 import fnmatch
 from Components.ScrollLabel import ScrollLabel
 from os import remove, unlink, rename
-from six import PY2
 from Components.SystemInfo import BoxInfo
 
 macaddress = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_LINK][0])["addr"].upper())
@@ -93,6 +93,7 @@ class NSCommon:
 		self.Console.ePopen('opkg install ' + pkgname + ' >/dev/null 2>&1', callback)
 
 	def checkNetworkState(self, str, retval, extra_args):
+		str = ensure_str(str)
 		if 'Collected errors' in str:
 			self.session.openWithCallback(self.close, MessageBox, _("Seems a background update check is in progress, please wait a few minutes and then try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 		elif not str:
@@ -119,6 +120,7 @@ class NSCommon:
 		self.Console.ePopen('opkg list_installed ' + self.service_name, self.RemovedataAvail)
 
 	def RemovedataAvail(self, str, retval, extra_args):
+		str = ensure_str(str)
 		if str:
 			if self.reboot_at_end:
 				restartbox = self.session.openWithCallback(self.RemovePackage, MessageBox, _('Your receiver will be restarted after the removal of the service\nDo you want to remove the service now ?'), MessageBox.TYPE_YESNO)
@@ -1098,24 +1100,43 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		self.onClose.append(self.cleanup)
 
 	def queryWirelessDevice(self, iface):
-		try:
-			from pythonwifi.iwlibs import Wireless
-			import errno
-		except ImportError as e:
-			return False
+		if PY2:
+			try:
+				from pythonwifi.iwlibs import Wireless
+				import errno
+			except ImportError:
+				return False
+			else:
+				try:
+					ifobj = Wireless(iface) # a Wireless NIC Object
+					wlanresponse = ifobj.getAPaddr()
+				except IOError as error_no:
+					if error_no in (errno.EOPNOTSUPP, errno.ENODEV, errno.EPERM):
+						return False
+					else:
+						print("[NetworkSetup] error: ", error_no, error_str)
+						return True
+				else:
+					return True
 		else:
 			try:
-				ifobj = Wireless(iface) # a Wireless NIC Object
-				wlanresponse = ifobj.getAPaddr()
-			except IOError as error_no_error_str:
-				(error_no, error_str) = error_no_error_str
-				if error_no in (errno.EOPNOTSUPP, errno.ENODEV, errno.EPERM):
-					return False
-				else:
-					print("[NetworkSetup] error: ", error_no, error_str)
-					return True
+				from wifi.scan import Cell
+				import errno
+			except ImportError:
+				return False
 			else:
-				return True
+				try:
+					Console().ePopen("ifconfig %s up" % iface)
+					wlanresponse = list(Cell.all(iface))
+				except IOError as err:
+					error_no, error_str = err.args
+					if error_no in (errno.EOPNOTSUPP, errno.ENODEV, errno.EPERM):
+						return False
+					else:
+						print("[NetworkSetup] error: ", error_no, error_str)
+						return True
+				else:
+					return True
 
 	def ok(self):
 		self.cleanup()
@@ -1325,10 +1346,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 	def dataAvail(self, data):
 		self.LinkState = None
 		for line in data.splitlines():
-			if PY2:
-				line = line.strip()
-			else:
-				line = line.strip().decode()
+			line = line.strip()
 			if 'Link detected:' in line:
 				if "yes" in line:
 					self.LinkState = True
@@ -2683,7 +2701,7 @@ class NetworkInadyn(NSCommon, Screen):
 					self['labalias'].setText(line)
 				elif line.startswith('update_period_sec '):
 					line = line[18:]
-					line = (int(line) / 60)
+					line = (int(line) // 60)
 					self['labtime'].setText(str(line))
 				elif line.startswith('dyndns_system ') or line.startswith('#dyndns_system '):
 					if line.startswith('#'):
@@ -2765,7 +2783,7 @@ class NetworkInadynSetup(Screen, ConfigListScreen):
 					self.list.append(ina_alias1)
 				elif line.startswith('update_period_sec '):
 					line = line[18:]
-					line = (int(line) / 60)
+					line = (int(line) // 60)
 					self.ina_period.value = line
 					ina_period1 = getConfigListEntry(_("Time update in minutes") + ":", self.ina_period)
 					self.list.append(ina_period1)

@@ -299,7 +299,7 @@ def runScreen():
 	profile("InitWizards")
 	screensToRun += wizardManager.getWizards()
 	screensToRun.append((100, InfoBar.InfoBar))
-	screensToRun.sort()
+#	screensToRun.sort()
 	enigma.ePythonConfigQuery.setQueryFunc(configfile.getResolvedKey)
 	config.misc.epgcache_filename.addNotifier(setEPGCachePath)
 	runNextScreen(session, screensToRun)

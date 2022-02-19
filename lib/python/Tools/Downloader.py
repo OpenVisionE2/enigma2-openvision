@@ -16,24 +16,24 @@ class HTTPProgressDownloader(client.HTTPDownloader):
 		self.deferred = defer.Deferred()
 
 	def noPage(self, reason):
-		if self.status == "304":
-			client.HTTPDownloader.page(self, "")
+		if self.status == b"304":
+			client.HTTPDownloader.page(self, b"")
 		else:
 			client.HTTPDownloader.noPage(self, reason)
 		if self.error_callback:
 			self.error_callback(reason.getErrorMessage(), self.status)
 
 	def gotHeaders(self, headers):
-		if self.status == "200":
-			if "content-length" in headers:
-				self.totalbytes = int(headers["content-length"][0])
+		if self.status == b"200":
+			if b"content-length" in headers:
+				self.totalbytes = int(headers[b"content-length"][0])
 			else:
 				self.totalbytes = 0
 			self.currentbytes = 0.0
 		return client.HTTPDownloader.gotHeaders(self, headers)
 
 	def pagePart(self, packet):
-		if self.status == "200":
+		if self.status == b"200":
 			self.currentbytes += len(packet)
 		if self.totalbytes and self.progress_callback:
 			self.progress_callback(self.currentbytes, self.totalbytes)
@@ -48,12 +48,14 @@ class HTTPProgressDownloader(client.HTTPDownloader):
 
 class downloadWithProgress:
 	def __init__(self, url, outputfile, contextFactory=None, *args, **kwargs):
+		if isinstance(url, str):
+			url = url.encode("UTF-8")
 		parsed = urlparse(url)
 		scheme = parsed.scheme
 		host = parsed.hostname
-		port = parsed.port or (443 if scheme == 'https' else 80)
+		port = parsed.port or (443 if scheme == b'https' else 80)
 		self.factory = HTTPProgressDownloader(url, outputfile, *args, **kwargs)
-		if scheme == 'https':
+		if scheme == b'https':
 			from twisted.internet import ssl
 			if contextFactory is None:
 				contextFactory = ssl.ClientContextFactory()

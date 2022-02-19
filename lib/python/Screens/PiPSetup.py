@@ -87,15 +87,15 @@ class PiPSetup(Screen):
 
 		oldsize = self.size
 		if self.mode != "split":
-			w = clip(self.size[0] * resize / 100, MIN_W, MAX_W)
-			h = clip(self.size[1] * resize / 100, MIN_H, MAX_H)
+			w = clip(self.size[0] * resize // 100, MIN_W, MAX_W)
+			h = clip(self.size[1] * resize // 100, MIN_H, MAX_H)
 		else:
-			w = clip(self.size[0] * resize / 100, MAX_X / 2, MAX_X)
-			h = clip(self.size[1] * resize / 100, MAX_Y / 2, MAX_Y)
+			w = clip(self.size[0] * resize // 100, MAX_X // 2, MAX_X)
+			h = clip(self.size[1] * resize // 100, MAX_Y // 2, MAX_Y)
 
 		# calculate offset from center
-		mx = (oldsize[0] - w) / 2
-		my = (oldsize[1] - h) / 2
+		mx = (oldsize[0] - w) // 2
+		my = (oldsize[1] - h) // 2
 
 		self.size = (w, h)
 		# reclip, account for new center
@@ -131,16 +131,16 @@ class PiPSetup(Screen):
 
 	def keyNumberGlobal(self, number):
 		if number > 0 and self.mode == "standard":
-			colsize = MAX_X / 3
-			rowsize = MAX_Y / 3
+			colsize = MAX_X // 3
+			rowsize = MAX_Y // 3
 			col = (number - 1) % 3
-			row = (number - 1) / 3
+			row = (number - 1) // 3
 
 			self.size = (180, 135)
 
 			# offset to keep center
-			ox = (colsize - self.size[0]) / 2
-			oy = (rowsize - self.size[1]) / 2
+			ox = (colsize - self.size[0]) // 2
+			oy = (rowsize - self.size[1]) // 2
 
 			self.pos = (col * colsize + ox, row * rowsize + oy)
 		elif number == 0:

@@ -181,20 +181,20 @@ class Network:
 					else:
 						ifaces[currif]["dhcp"] = False
 				if split[0] == "address":
-					ifaces[currif]["address"] = map(int, split[1].split('.'))
+					ifaces[currif]["address"] = list(map(int, split[1].split('.')))
 					if "ip" in self.ifaces[currif]:
 						if self.ifaces[currif]["ip"] != ifaces[currif]["address"] and ifaces[currif]["dhcp"] == False:
-							self.ifaces[currif]["ip"] = map(int, split[1].split('.'))
+							self.ifaces[currif]["ip"] = list(map(int, split[1].split('.')))
 				if split[0] == "netmask":
-					ifaces[currif]["netmask"] = map(int, split[1].split('.'))
+					ifaces[currif]["netmask"] = list(map(int, split[1].split('.')))
 					if "netmask" in self.ifaces[currif]:
 						if self.ifaces[currif]["netmask"] != ifaces[currif]["netmask"] and ifaces[currif]["dhcp"] == False:
-							self.ifaces[currif]["netmask"] = map(int, split[1].split('.'))
+							self.ifaces[currif]["netmask"] = list(map(int, split[1].split('.')))
 				if split[0] == "gateway":
-					ifaces[currif]["gateway"] = map(int, split[1].split('.'))
+					ifaces[currif]["gateway"] = list(map(int, split[1].split('.')))
 					if "gateway" in self.ifaces[currif]:
 						if self.ifaces[currif]["gateway"] != ifaces[currif]["gateway"] and ifaces[currif]["dhcp"] == False:
-							self.ifaces[currif]["gateway"] = map(int, split[1].split('.'))
+							self.ifaces[currif]["gateway"] = list(map(int, split[1].split('.')))
 				if split[0] == "pre-up":
 					if "preup" in self.ifaces[currif]:
 						self.ifaces[currif]["preup"] = i
@@ -331,7 +331,7 @@ class Network:
 		return iface
 
 	def getAdapterList(self):
-		return self.ifaces.keys()
+		return list(self.ifaces.keys())
 
 	def getAdapterAttribute(self, iface, attribute):
 		print("Getting attribute ", attribute, " for adapter", iface)
@@ -653,15 +653,15 @@ class Network:
 	def calc_netmask(self, nmask):
 		from struct import pack
 		from socket import inet_ntoa
-		mask = 1L << 31
-		xnet = (1L << 32) - 1
+		mask = 1 << 31
+		xnet = (1 << 32) - 1
 		cidr_range = range(0, 32)
 		cidr = int(nmask)
 		if cidr not in cidr_range:
 			print('[Network] cidr invalid: %str' % cidr)
 			return None
 		else:
-			nm = ((1L << cidr) - 1) << (32 - cidr)
+			nm = ((1 << cidr) - 1) << (32 - cidr)
 			netmask = str(inet_ntoa(pack('>L', nm)))
 			return netmask
 

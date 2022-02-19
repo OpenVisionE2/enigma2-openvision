@@ -4,7 +4,11 @@ import shutil
 import tempfile
 import struct
 import time
-import urllib2
+try: # Python 3
+	from urllib.request import urlopen # raises ImportError in Python 2
+	from urllib.error import HTTPError, URLError # raises ImportError in Python 2
+except ImportError: # Python 2
+	from urllib import urlopen
 import zipfile
 
 from enigma import eEPGCache
@@ -83,9 +87,9 @@ class SelectImage(Screen):
 		if not self.imagesList:
 			if not self.jsonlist:
 				try:
-					self.jsonlist = dict(json.load(urllib2.urlopen('https://images.openvision.dedyn.io/json/%s' % model)))
+					self.jsonlist = dict(json.load(urlopen('https://images.openvision.dedyn.io/json/%s' % model)))
 					if config.usage.alternative_imagefeed.value:
-						self.jsonlist.update(dict(json.load(urllib2.urlopen('%s%s' % (config.usage.alternative_imagefeed.value, model)))))
+						self.jsonlist.update(dict(json.load(urlopen('%s%s' % (config.usage.alternative_imagefeed.value, model)))))
 				except:
 					pass
 			self.imagesList = dict(self.jsonlist)
@@ -494,31 +498,34 @@ class MultiBootSelection(SelectImage):
 		self.session.openWithCallback(self.doReboot, MessageBox, "%s:\n%s" % (_("Are you sure to reboot to"), self.currentSelected[0][0]), simple=True)
 
 	def doReboot(self, answer):
-		if answer:
-			slot = self.currentSelected[0][1]
-			if slot == "Recovery":
-				shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_RECOVERY"), os.path.join(self.tmp_dir, "STARTUP"))
-			elif slot == "Android":
-				shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_ANDROID"), os.path.join(self.tmp_dir, "STARTUP"))
-			elif BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile']:
-				if BoxInfo.getItem("canMode12"):
-					startupfile = os.path.join(self.tmp_dir, "%s_%s" % (BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'].rsplit('_', 1)[0], slot[1]))
+		try:
+			if answer:
+				slot = self.currentSelected[0][1]
+				if slot == "Recovery":
+					shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_RECOVERY"), os.path.join(self.tmp_dir, "STARTUP"))
+				elif slot == "Android":
+					shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_ANDROID"), os.path.join(self.tmp_dir, "STARTUP"))
+				elif BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile']:
+					if BoxInfo.getItem("canMode12"):
+						startupfile = os.path.join(self.tmp_dir, "%s_%s" % (BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'].rsplit('_', 1)[0], slot[1]))
+					else:
+						startupfile = os.path.join(self.tmp_dir, "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
+					if BoxInfo.getItem("canDualBoot"):
+						with open('/dev/block/by-name/flag', 'wb') as f:
+							f.write(struct.pack("B", int(slot[0])))
+						startupfile = os.path.join("/boot", "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
+						shutil.copyfile(startupfile, os.path.join("/boot", "STARTUP"))
+					else:
+						shutil.copyfile(startupfile, os.path.join(self.tmp_dir, "STARTUP"))
 				else:
-					startupfile = os.path.join(self.tmp_dir, "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
-				if BoxInfo.getItem("canDualBoot"):
-					with open('/dev/block/by-name/flag', 'wb') as f:
-						f.write(struct.pack("B", int(slot[0])))
-					startupfile = os.path.join("/boot", "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
-					shutil.copyfile(startupfile, os.path.join("/boot", "STARTUP"))
-				else:
-					shutil.copyfile(startupfile, os.path.join(self.tmp_dir, "STARTUP"))
-			else:
-				if slot[1] == 1:
-					startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (slot[0], slot[0] * 2 + 1, model)
-				else:
-					startupFileContents = "boot emmcflash0.kernel%s 'brcm_cma=520M@248M brcm_cma=%s@768M root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=12'\n" % (slot[0], BoxInfo.getItem("canMode12"), slot[0] * 2 + 1, model)
-				open(os.path.join(self.tmp_dir, "STARTUP"), 'w').write(startupFileContents)
-			self.cancel(2)
+					if slot[1] == 1:
+						startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (slot[0], slot[0] * 2 + 1, model)
+					else:
+						startupFileContents = "boot emmcflash0.kernel%s 'brcm_cma=520M@248M brcm_cma=%s@768M root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=12'\n" % (slot[0], BoxInfo.getItem("canMode12"), slot[0] * 2 + 1, model)
+					open(os.path.join(self.tmp_dir, "STARTUP"), 'w').write(startupFileContents)
+				self.cancel(2)
+		except IOError as err:
+			print("[FlashImage] No such file or directory: %s/STARTUP" % self.tmp_dir)
 
 	def selectionChanged(self):
 		self.currentSelected = self["list"].l.getCurrentSelection()

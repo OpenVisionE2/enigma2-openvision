@@ -348,7 +348,7 @@ class Harddisk:
 			task.setTool("mkfs.ext4")
 			if size > 20000:
 				try:
-					version = map(int, fileReadLine("/proc/version").split(" ", 4)[2].split(".", 2)[:2])
+					version = list(map(int, fileReadLine("/proc/version").split(" ", 4)[2].split(".", 2)[:2]))
 					if (version[0] > 3) or (version[0] > 2 and version[1] >= 2):
 						# Linux version 3.2 supports bigalloc and -C option, use 256k blocks
 						task.args += ["-C", "262144"]

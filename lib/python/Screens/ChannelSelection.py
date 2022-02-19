@@ -373,7 +373,7 @@ class ChannelContextMenu(Screen):
 		cur = self.csel.getCurrentSelection()
 		if cur and cur.valid():
 			name = eServiceCenter.getInstance().info(cur).getName(cur) or ServiceReference(cur).getServiceName() or ""
-			name = name.replace('\xc2\x86', '').replace('\xc2\x87', '')
+			name = name.replace('\x86', '').replace('\x87', '')
 			return name
 		return ""
 
@@ -767,12 +767,8 @@ class ChannelSelectionEPG(InfoBarHotkey):
 		Screens.InfoBar.InfoBar.instance.runPlugin(plugin)
 
 	def getEPGPluginList(self, getAll=False):
-		if PY2:
-			pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
-					if 'selectedevent' not in p.__call__.func_code.co_varnames] or []
-		else:
-			pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
-					if 'selectedevent' not in p.__call__.__code__.co_varnames] or []
+		pluginlist = [(p.name, boundFunction(self.runPlugin, p), p.description or p.name) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
+				if 'selectedevent' not in p.__call__.__code__.co_varnames] or []
 		from Components.ServiceEventTracker import InfoBarCount
 		if getAll or InfoBarCount == 1:
 			pluginlist.append((_("Show EPG for current channel..."), self.openSingleServiceEPG, _("Display EPG list for current channel")))
@@ -990,7 +986,7 @@ class ChannelSelectionEdit:
 		cur = self.getCurrentSelection()
 		if cur and cur.valid():
 			name = eServiceCenter.getInstance().info(cur).getName(cur) or ServiceReference(cur).getServiceName() or ""
-			name = name.replace('\xc2\x86', '').replace('\xc2\x87', '')
+			name = name.replace('\x86', '').replace('\x87', '')
 			if name:
 				self.session.openWithCallback(self.renameEntryCallback, VirtualKeyBoard, title=_("Please enter new name:"), text=name)
 		else:
@@ -1177,9 +1173,9 @@ class ChannelSelectionEdit:
 			messageText = _("Are you sure to remove all terrestrial services?")
 		else:
 			if unsigned_orbpos > 1800:
-				orbpos = _("%.1f° W") % ((3600 - unsigned_orbpos) / 10.0)
+				orbpos = _("%.1f?? W") % ((3600 - unsigned_orbpos) / 10.0)
 			else:
-				orbpos = _("%.1f° E") % (unsigned_orbpos / 10.0)
+				orbpos = _("%.1f?? E") % (unsigned_orbpos / 10.0)
 			# TRANSLATORS: The user is asked to delete all satellite services from a specific orbital position after a configuration change
 			messageText = _("Are you sure to remove all %s services?") % orbpos
 		self.session.openWithCallback(self.removeSatelliteServicesCallback, MessageBox, messageText)
@@ -1860,9 +1856,8 @@ class ChannelSelectionBase(Screen):
 					self.numberSelectionActions(number)
 			else:
 				unichar = self.numericalTextInput.getKey(number)
-				charstr = unichar.encode("utf-8")
-				if len(charstr) == 1:
-					self.servicelist.moveToChar(charstr[0])
+				if len(unichar) == 1:
+					self.servicelist.moveToChar(unichar[0])
 
 	def numberSelectionActions(self, number):
 		if not(hasattr(self, "movemode") and self.movemode):
@@ -1887,9 +1882,8 @@ class ChannelSelectionBase(Screen):
 			unichar = unichr(getPrevAsciiCode())
 		else:
 			unichar = chr(getPrevAsciiCode())
-		charstr = unichar.encode("utf-8")
-		if len(charstr) == 1:
-			self.servicelist.moveToChar(charstr[0])
+		if len(unichar) == 1:
+			self.servicelist.moveToChar(unichar[0])
 
 	def getRoot(self):
 		return self.servicelist.getRoot()

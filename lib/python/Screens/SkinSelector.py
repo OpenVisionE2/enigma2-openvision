@@ -111,7 +111,7 @@ class SkinSelector(Screen, HelpableScreen):
 					resolution = None
 					if skinFile == "skin.xml":
 						try:
-							with open(skinPath, "r") as fd:
+							with open(skinPath, "rb") as fd:
 								resolutions = {
 									"480": _("NTSC"),
 									"576": _("PAL"),
@@ -123,7 +123,7 @@ class SkinSelector(Screen, HelpableScreen):
 								}
 								mm = mmap.mmap(fd.fileno(), 0, prot=mmap.PROT_READ)
 								skinheight = re.search(b"\<?resolution.*?\syres\s*=\s*\"(\d+)\"", mm).group(1)
-								resolution = skinheight and resolutions.get(skinheight, None)
+								resolution = skinheight and resolutions.get(skinheight.decode(), None)
 								mm.close()
 						except:
 							pass

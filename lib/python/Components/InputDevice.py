@@ -114,7 +114,7 @@ class InputDevices:
 		oldVal = self.getDeviceAttribute(device, "enabled")
 		# print("[InputDevice] setDeviceEnabled DEBUG: Set device '%s' to '%s' from '%s'." % (device, value, oldVal))
 		self.setDeviceAttribute(device, "enabled", value)
-		if oldval and not value:
+		if oldVal and not value:
 			self.setDeviceDefaults(device)
 
 	def getDeviceName(self, device):

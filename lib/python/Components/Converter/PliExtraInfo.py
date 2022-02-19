@@ -264,15 +264,15 @@ class PliExtraInfo(Poll, Converter):
 			return ""
 		yres = info.getInfo(iServiceInformation.sVideoHeight)
 		mode = ("i", "p", " ")[info.getInfo(iServiceInformation.sProgressive)]
-		fps = (info.getInfo(iServiceInformation.sFrameRate) + 500) / 1000
-		if not fps:
+		fps = (info.getInfo(iServiceInformation.sFrameRate) + 500) // 1000
+		if not fps or fps == -1:
 			try:
 				if os.path.exists("/proc/stb/vmpeg/0/framerate"):
 					print("[PliExtraInfo] Read /proc/stb/vmpeg/0/framerate")
-					fps = (int(open("/proc/stb/vmpeg/0/framerate", "r").read()) + 500) / 1000
+					fps = (int(open("/proc/stb/vmpeg/0/framerate", "r").read()) + 500) // 1000
 				elif os.path.exists("/proc/stb/vmpeg/0/fallback_framerate"):
 					print("[PliExtraInfo] Read /proc/stb/vmpeg/0/fallback_framerate")
-					fps = (int(open("/proc/stb/vmpeg/0/fallback_framerate", "r").read()) + 0) / 1000
+					fps = (int(open("/proc/stb/vmpeg/0/fallback_framerate", "r").read()) + 0) // 1000
 			except:
 				print("[PliExtraInfo] Read framerate failed.")
 		if not mode:
@@ -362,9 +362,9 @@ class PliExtraInfo(Poll, Converter):
 		frequency = feraw.get("frequency")
 		if frequency:
 			if "DVB-T" in feraw.get("tuner_type"):
-				return "%d %s" % (int(frequency / 1000000. + 0.5), _("MHz"))
+				return "%d %s" % (int(frequency // 1000000. + 0.5), _("MHz"))
 			else:
-				return str(int(frequency / 1000 + 0.5))
+				return str(int(frequency // 1000 + 0.5))
 		return ""
 
 	def createChannelNumber(self, fedata, feraw):
@@ -378,7 +378,7 @@ class PliExtraInfo(Poll, Converter):
 		else:
 			symbolrate = fedata.get("symbol_rate")
 			if symbolrate:
-				return str(symbolrate / 1000)
+				return str(symbolrate // 1000)
 		return ""
 
 	def createPolarization(self, fedata):

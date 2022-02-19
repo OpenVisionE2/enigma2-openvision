@@ -116,7 +116,7 @@ class Navigation:
 	def dispatchEvent(self, i):
 		for x in self.event:
 			x(i)
-		if i == iPlayableService.evEnd:
+		if i == iPlayableService.evEnd and i != None:
 			self.currentlyPlayingServiceReference = None
 			self.currentlyPlayingServiceOrGroup = None
 			self.currentlyPlayingService = None

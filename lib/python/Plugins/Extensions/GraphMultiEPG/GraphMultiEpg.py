@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from __future__ import print_function
 from skin import parseColor, parseFont
 from Components.config import config, ConfigClock, ConfigInteger, ConfigSubsection, ConfigYesNo, ConfigSelection, ConfigSelectionNumber
@@ -38,7 +39,6 @@ from time import localtime, time, strftime, mktime
 from Components.PluginComponent import plugins
 from Plugins.Plugin import PluginDescriptor
 from Tools.BoundFunction import boundFunction
-from six import PY2
 
 MAX_TIMELINES = 6
 
@@ -407,9 +407,9 @@ class EPGList(GUIComponent):
 		global listscreen
 		if self.listHeight > 0:
 			if listscreen:
-				itemHeight = self.listHeight / config.misc.graph_mepg.items_per_page_listscreen.getValue()
+				itemHeight = self.listHeight // config.misc.graph_mepg.items_per_page_listscreen.getValue()
 			else:
-				itemHeight = self.listHeight / config.misc.graph_mepg.items_per_page.getValue()
+				itemHeight = self.listHeight // config.misc.graph_mepg.items_per_page.getValue()
 		else:
 			itemHeight = 54 # some default (270/5)
 		if listscreen:
@@ -449,7 +449,7 @@ class EPGList(GUIComponent):
 		width = esize.width()
 		height = esize.height()
 		if self.showServiceTitle:
-			w = width / 10 * 2
+			w = width // 10 * 2
 		else:     # if self.showPicon:    # this must be set if showServiceTitle is None
 			w = 2 * height - 2 * self.serviceBorderVerWidth  # FIXME: could do better...
 		self.number_width = self.showChannelNumber and 'FROM BOUQUET' in self.epg_bouquet.toString() and getTextBoundarySize(self.instance, self.serviceFont, self.instance.size(), "0000" if config.usage.alternative_number_mode.value else "00000").width() + 2 * self.serviceBorderVerWidth or 0
@@ -463,8 +463,8 @@ class EPGList(GUIComponent):
 		self.picon_size = eSize(piconWidth, piconHeight)
 
 	def calcEntryPosAndWidthHelper(self, stime, duration, start, end, width):
-		xpos = (stime - start) * width / (end - start)
-		ewidth = (stime + duration - start) * width / (end - start)
+		xpos = (stime - start) * width // (end - start)
+		ewidth = (stime + duration - start) * width // (end - start)
 		ewidth -= xpos
 		if xpos < 0:
 			ewidth += xpos
@@ -684,11 +684,11 @@ class EPGList(GUIComponent):
 					self.fillMultiEPG(None) # refill
 					return True
 			elif dir == +3: #next day
-				self.offs += 60 * 24 / self.time_epoch
+				self.offs += 60 * 24 // self.time_epoch
 				self.fillMultiEPG(None) # refill
 				return True
 			elif dir == -3: #prev day
-				self.offs -= 60 * 24 / self.time_epoch
+				self.offs -= 60 * 24 // self.time_epoch
 				if self.offs < 0:
 					self.offs = 0
 				self.fillMultiEPG(None) # refill
@@ -824,11 +824,11 @@ class TimelineText(GUIComponent):
 			service_rect = l.getServiceRect()
 			itemHeight = self.l.getItemSize().height()
 			time_steps = 60 if time_epoch > 180 else 30
-			num_lines = time_epoch / time_steps
+			num_lines = time_epoch // time_steps
 			timeStepsCalc = time_steps * 60
-			incWidth = event_rect.width() / num_lines
+			incWidth = event_rect.width() // num_lines
 			if int(config.misc.graph_mepg.center_timeline.value):
-				tlMove = incWidth / 2
+				tlMove = incWidth // 2
 				tlFlags = RT_HALIGN_CENTER | RT_VALIGN_CENTER
 			else:
 				tlMove = 0
@@ -864,7 +864,7 @@ class TimelineText(GUIComponent):
 
 		now = time()
 		if now >= time_base and now < (time_base + time_epoch * 60):
-			xpos = int((((now - time_base) * event_rect.width()) / (time_epoch * 60)) - (timeline_now.instance.size().width() / 2))
+			xpos = int((((now - time_base) * event_rect.width()) // (time_epoch * 60)) - (timeline_now.instance.size().width() // 2))
 			old_pos = timeline_now.position
 			new_pos = (xpos + eventLeft, old_pos[1])
 			if old_pos != new_pos:
@@ -1116,7 +1116,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 			elif type == "prime_time":
 				now = [x for x in localtime(date)]
 				prime = config.misc.graph_mepg.prime_time.value
-				date = mktime([now[0], now[1], now[2], prime[0], prime[1], 0, 0, 0, now[8]])
+				date = mktime((now[0], now[1], now[2], prime[0], prime[1], 0, 0, 0, now[8]))
 				if now[3] > prime[0] or (now[3] == prime[0] and now[4] > prime[1]):
 					date = date + 60 * 60 * 24
 				self.time_mode = self.TIME_PRIME
@@ -1177,12 +1177,8 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		text = _("Select action")
 		event = self["list"].getCurrent()[0]
 		if event:
-			if PY2:
-				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
-					if 'selectedevent' in p.__call__.func_code.co_varnames]
-			else:
-				menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
-					if 'selectedevent' in p.__call__.__code__.co_varnames]
+			menu = [(p.name, boundFunction(self.runPlugin, p)) for p in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO)
+				if 'selectedevent' in p.__call__.__code__.co_varnames]
 			if menu:
 				text += ": %s" % event.getEventName()
 			keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "red", "green", "yellow"][:len(menu)] + (len(menu) - 13) * [""] + keys

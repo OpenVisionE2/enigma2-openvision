@@ -63,7 +63,7 @@ def write_cache(cache_file, cache_data):
 		path = os.path.dirname(cache_file)
 		if not os.path.isdir(path):
 			os.mkdir(path)
-		pickle.dump(cache_data, open(cache_file, 'w'), -1)
+		pickle.dump(cache_data, open(cache_file, 'wb'), -1)
 	except Exception as ex:
 		print("[SoftwareManager] Failed to write cache data to %s:" % cache_file, ex)
 
@@ -82,7 +82,7 @@ def valid_cache(cache_file, cache_ttl):
 
 
 def load_cache(cache_file):
-	return pickle.load(open(cache_file))
+	return pickle.load(open(cache_file, 'rb'))
 
 
 class UpdatePluginMenu(Screen):

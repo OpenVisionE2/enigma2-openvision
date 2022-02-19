@@ -1,5 +1,5 @@
 from copy import copy, deepcopy
-from six import PY2
+from six import PY2, iteritems
 
 from enigma import BT_SCALE, RT_HALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_BOTTOM, RT_VALIGN_CENTER, RT_VALIGN_TOP, eListboxPythonMultiContent, getDesktop, getPrevAsciiCode, gFont
 
@@ -551,7 +551,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 		}, prio=0, description=_("Virtual KeyBoard Actions"))
 		self.lang = language.getLanguage()
 		self["prompt"] = Label(prompt)
-		self["text"] = Input(text=text, maxSize=maxSize, visible_width=visible_width, type=type, currPos=len(text.decode("UTF-8", "ignore")) if currPos is None else currPos, allMarked=allMarked)
+		self["text"] = Input(text=text, maxSize=maxSize, visible_width=visible_width, type=type, currPos=len(text) if currPos is None else currPos, allMarked=allMarked)
 		self["list"] = VirtualKeyBoardList([])
 		self["mode"] = Label(_("INS"))
 		self["locale"] = Label("%s: %s" % (_("Locale"), self.lang))
@@ -1019,10 +1019,14 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 					res.append(MultiContentEntryPixmapAlphaBlend(pos=(left, top), size=(wImage, hImage), png=image))
 					# print("[VirtualKeyBoard] DEBUG: Left=%d, Top=%d, Width=%d, Height=%d, Image Width=%d, Image Height=%d" % (left, top, w, h, wImage, hImage))
 				else:  # Display the cell text.
-					if len(key) > 1:  # NOTE: UTF8 / Unicode glyphs only count as one character here.
+					if len(key) > 1 and PY2:  # NOTE: UTF8 / Unicode glyphs only count as one character here.
 						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=1, flags=alignH | alignV, text=key.encode("UTF-8", "ignore"), color=self.shiftColors[self.shiftLevel]))
-					else:
+					elif not len(key) > 1 and PY2:
 						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=0, flags=alignH | alignV, text=key.encode("UTF-8", "ignore"), color=self.shiftColors[self.shiftLevel]))
+					elif len(key) > 1 and not PY2:  # NOTE: UTF8 / Unicode glyphs only count as one character here.
+						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=1, flags=alignH | alignV, text=key, color=self.shiftColors[self.shiftLevel]))
+					elif not len(key) > 1 and not PY2:
+						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=0, flags=alignH | alignV, text=key, color=self.shiftColors[self.shiftLevel]))
 			prevKey = key
 			self.index += 1
 		return res + text
@@ -1068,11 +1072,17 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 
 	def processSelect(self):
 		self.smsChar = None
-		text = self.keyList[self.shiftLevel][self.selectedKey // self.keyboardWidth][self.selectedKey % self.keyboardWidth].encode("UTF-8", "ignore")
+		if PY2:
+			text = self.keyList[self.shiftLevel][self.selectedKey // self.keyboardWidth][self.selectedKey % self.keyboardWidth].encode("UTF-8", "ignore")
+		text = self.keyList[self.shiftLevel][self.selectedKey // self.keyboardWidth][self.selectedKey % self.keyboardWidth]
 		cmd = self.cmds.get(text.upper(), None)
-		if cmd is None:
+		if cmd == None and PY2:
 			self["text"].char(text.encode("UTF-8", "ignore"))
-		else:
+		elif cmd != None and PY2:
+			exec(cmd)
+		elif cmd == None and not PY2:
+			self["text"].char(text)
+		elif cmd != None and not PY2:
 			exec(cmd)
 		if text not in (u"SHIFT", u"SHIFTICON") and self.shiftHold != -1:
 			self.shiftRestore()
@@ -1085,7 +1095,7 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 
 	def localeMenu(self):
 		languages = []
-		for locale, data in self.locales.iteritems():
+		for locale, data in iteritems(self.locales):
 			languages.append(("%s  -  %s  (%s)" % (data[0], data[1], locale), locale))
 		languages = sorted(languages)
 		index = 0
@@ -1195,8 +1205,12 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 
 	def keyGotAscii(self):
 		self.smsChar = None
-		if self.selectAsciiKey(str(pyunichr(getPrevAsciiCode()).encode("UTF-8", "ignore"))):
-			self.processSelect()
+		if PY2:
+			if self.selectAsciiKey(str(pyunichr(getPrevAsciiCode()).encode("UTF-8", "ignore"))):
+				self.processSelect()
+		else:
+			if self.selectAsciiKey(str(pyunichr(getPrevAsciiCode()))):
+				self.processSelect()
 
 	def selectAsciiKey(self, char):
 		if char == u" ":

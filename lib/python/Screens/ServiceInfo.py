@@ -11,6 +11,7 @@ from ServiceReference import ServiceReference
 from enigma import eListboxPythonMultiContent, eListbox, gFont, iServiceInformation, eServiceCenter, eDVBFrontendParametersSatellite, RT_HALIGN_LEFT, RT_VALIGN_CENTER
 from Tools.Transponder import ConvertToHumanReadable, getChannelNumber
 import skin
+from six import PY2
 
 TYPE_TEXT = 0
 TYPE_VALUE_HEX = 1
@@ -197,7 +198,10 @@ class ServiceInfo(Screen):
 					#live dvb-s-t
 						fillList = fillList + [(_("Service reference"), refstr, TYPE_TEXT)]
 				self.audio = self.service and self.service.audioTracks()
-				self.numberofTracks = self.audio and self.audio.getNumberOfTracks()
+				if self.audio:
+					self.numberofTracks = self.audio.getNumberOfTracks()
+				else:
+					self.numberofTracks = 0
 				self.subList = self.getSubtitleList()
 				self.togglePIDButton()
 				trackList = self.getTrackList()
@@ -230,7 +234,8 @@ class ServiceInfo(Screen):
 			if posi > 1800:
 				posi = 3600 - posi
 				EW = "W"
-		return "%s - %s\xc2\xb0 %s" % (namespace, (float(posi) / 10.0), EW)
+		charactersPython = str('\xc2\xb0') if PY2 else str('\xb0')
+		return "%s - %s%s %s" % (namespace, (float(posi) / 10.0), charactersPython, EW)
 
 	def getTrackList(self):
 		trackList = []

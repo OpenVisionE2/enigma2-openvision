@@ -203,6 +203,13 @@ class VideoSetup(ConfigListScreen, Screen):
 		else:
 			self.keySave()
 
+	def getCurrentEntry(self):
+		self.updateDescription()
+		return ConfigListScreen.getCurrentEntry(self)
+
+	def updateDescription(self):
+		self['description'].setText('%s' % self.getCurrentDescription())
+
 
 class VideomodeHotplug:
 	def __init__(self, hw):

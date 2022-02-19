@@ -430,7 +430,7 @@ class ConfigListScreen:
 		if not result:
 			return
 		for item in self["config"].list:
-			if len(item) > 1:
+			if len(item) > 1 and item != None:
 				item[1].cancel()
 		if not hasattr(self, "closeParameters"):
 			self.closeParameters = ()

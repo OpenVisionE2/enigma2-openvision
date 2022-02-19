@@ -4,8 +4,8 @@ from Components.GUIComponent import GUIComponent
 from Components.VariableText import VariableText
 from Components.VariableValue import VariableValue
 
-from enigma import iPlayableService
-from enigma import eLabel, eSlider, eTimer
+from enigma import iPlayableService, eLabel, eSlider, eTimer
+from six import iteritems
 
 
 class PerServiceBase(object):
@@ -33,7 +33,7 @@ class PerServiceBase(object):
 			self.navcore.event.append(PerServiceBase.event)
 
 		EventMap = EventMap.setdefault
-		for x in eventmap.iteritems():
+		for x in iteritems(eventmap):
 			EventMap(x[0], []).append((with_event, x[1]))
 
 		# start with stopped state, so simulate that
@@ -46,7 +46,7 @@ class PerServiceBase(object):
 
 	def destroy(self):
 		EventMap = PerServiceBase.EventMap.setdefault
-		for x in self.eventmap.iteritems():
+		for x in iteritems(self.eventmap):
 			EventMap(x[0], []).remove((self.with_event, x[1]))
 
 	def enablePolling(self, interval=60000):
