@@ -402,7 +402,7 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 			self.setSeekState(self.SEEK_STATE_PLAY)
 		elif answer in ("playlist", "loop"):
 			(next_service, item, length) = self.getPlaylistServiceInfo(self.cur_service)
-			from MovieSelection import playlist
+			from .MovieSelection import playlist
 			if playlist:
 				self.activeResumePosition(True)
 			if next_service is not None:

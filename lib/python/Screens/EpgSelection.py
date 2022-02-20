@@ -3,7 +3,7 @@
 from __future__ import print_function
 from Screens.Screen import Screen
 try:
-	import ChannelSelection
+	from . import ChannelSelection
 except ImportError:
 	from Screens import ChannelSelection
 import Screens.InfoBar
