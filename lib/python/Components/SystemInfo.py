@@ -399,3 +399,4 @@ SystemInfo["FrontpanelLEDBlinkControl"] = fileAccess("/proc/stb/fp/led_blink")
 SystemInfo["FrontpanelLEDBrightnessControl"] = fileAccess("/proc/stb/fp/led_brightness")
 SystemInfo["FrontpanelLEDColorControl"] = fileAccess("/proc/stb/fp/led_color")
 SystemInfo["FrontpanelLEDFadeControl"] = fileAccess("/proc/stb/fp/led_fade")
+SystemInfo["FCC"] = False
