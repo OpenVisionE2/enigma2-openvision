@@ -25,13 +25,16 @@ config.plugins.fccsetup.disableforrec = ConfigYesNo(default=True)
 
 FccInstance = None
 
+
 def FCCChanged():
 	if FccInstance:
 		FccInstance.FCCSetupChanged()
 
+
 def checkSupportFCC():
 	global g_max_fcc
 	return bool(g_max_fcc)
+
 
 class FCCSupport:
 	def __init__(self, session):
@@ -444,6 +447,7 @@ class FCCSupport:
 		self.fccTimeoutWait = None
 		self.fccTimeoutTimer.stop()
 
+
 class FCCSetup(Screen, ConfigListScreen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
@@ -516,11 +520,13 @@ class FCCSetup(Screen, ConfigListScreen):
 		ConfigListScreen.keySave(self)
 		FCCChanged()
 
+
 def getExtensionName():
 	if config.plugins.fccsetup.activate.value:
 		return _("Disable Fast Channel Change")
 
 	return _("Enable Fast Channel Change")
+
 
 def ToggleUpdate():
 	if config.plugins.fccsetup.activate.value:
@@ -530,10 +536,12 @@ def ToggleUpdate():
 	config.plugins.fccsetup.activate.save()
 	FCCChanged()
 
+
 def FCCSupportInit(reason, **kwargs):
 	if "session" in kwargs:
 		global FccInstance
 		FccInstance = FCCSupport(kwargs["session"])
+
 
 def showFCCExtentionMenu():
 	currentScreenName = None
@@ -541,17 +549,21 @@ def showFCCExtentionMenu():
 		currentScreenName = FccInstance.session.current_dialog.__class__.__name__
 	return (currentScreenName == "InfoBar")
 
+
 def addExtentions(infobarExtensions):
 	infobarExtensions.addExtension((getExtensionName, ToggleUpdate, showFCCExtentionMenu), None)
 
+
 def FCCStart(session, **kwargs):
 	session.open(FCCSetup)
+
 
 def main(menuid, **kwargs):
 	if menuid == "scan":
 		return [(_("Fast Channel Change"), FCCStart, "FCCSetup", 5)]
 	else:
 		return []
+
 
 def Plugins(**kwargs):
 	list = []
