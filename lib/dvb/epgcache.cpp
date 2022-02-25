@@ -2521,14 +2521,18 @@ PyObject *eEPGCache::search(ePyObject arg)
 			else if (tuplesize > 4 && (querytype > 0) )
 			{
 				ePyObject obj = PyTuple_GET_ITEM(arg, 3);
+#if PY_MAJOR_VERSION < 3
 				if (PyString_Check(obj))
 				{
 					int casetype = PyLong_AsLong(PyTuple_GET_ITEM(arg, 4));
 					const char *str = PyString_AS_STRING(obj);
-#if PY_MAJOR_VERSION < 3
 					int strlen = PyString_Size(obj);
 #else
-					int strlen = PyBytes_Size(obj);
+				if (PyUnicode_Check(obj))
+				{
+					int casetype = PyLong_AsLong(PyTuple_GET_ITEM(arg, 4));
+					ssize_t strlen;
+					const char *str = PyUnicode_AsUTF8AndSize(obj, &strlen);
 #endif
 					switch (querytype)
 					{
@@ -2597,7 +2601,7 @@ PyObject *eEPGCache::search(ePyObject arg)
 								auto cril = cid.getIdentifier();
 								for (auto crit = cril->begin(); crit != cril->end(); ++crit)
 								{
-									// UK broadcasters set the two top bits of crid_type, i.e. 0x31 and 0x32 rather than 
+									// UK broadcasters set the two top bits of crid_type, i.e. 0x31 and 0x32 rather than
 									// the specification's 1 and 2 for episode and series respectively
 									if (((*crit)->getType() & 0xf) == casetype)
 									{
