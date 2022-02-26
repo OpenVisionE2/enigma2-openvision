@@ -1,7 +1,8 @@
 from __future__ import print_function
-try:
-	from pickle import dump, load
-except ImportError:
+from six import PY2
+if PY2:
+	from cPickle import dump, load
+else:
 	from pickle import dump, load
 from os import W_OK, access, listdir, mkdir, rename, rmdir, stat
 from os.path import abspath, basename, exists, isdir, isfile, join as pathjoin, normpath, pardir, realpath, split, splitext
