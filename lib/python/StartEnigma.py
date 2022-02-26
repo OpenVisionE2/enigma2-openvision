@@ -354,7 +354,7 @@ def runScreen():
 		setFPWakeuptime(wakeupTime)
 	if powerTimerList and powerTimerList[0][1] == 3:
 		startTimePowerList = powerTimerList[0]
-		if (startTimePowerList[0], nowTime) < 60:  # No time to switch box back on.
+		if (startTimePowerList[0] - nowTime) < 60:  # No time to switch box back on.
 			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
 		else:
 			wakeupTime = startTimePowerList[0]
@@ -366,7 +366,7 @@ def runScreen():
 	config.misc.isNextPowerTimerAfterEventActionAuto.save()
 	if powerTimerList and powerTimerList[0][1] != 3:
 		startTimePowerList = powerTimerList[0]
-		if (startTimePowerList[0], nowTime) < 270:  # No time to switch box back on.
+		if (startTimePowerList[0] - nowTime) < 270:  # No time to switch box back on.
 			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
 		else:
 			wakeupTime = (startTimePowerList[0], 240)
