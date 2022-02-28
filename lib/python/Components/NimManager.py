@@ -919,7 +919,7 @@ class NimManager:
 			if "supports_blind_scan" not in entry:
 				entry["supports_blind_scan"] = False
 			entry["fbc"] = [0, 0, 0]  # Not FBC.
-			if entry["name"] and ("fbc" in entry["name"].lower() or entry["name"] in BoxInfo.getItem("HasFBCtuner")) and entry["frontend_device"] is not None and access("/proc/stb/frontend/%d/fbc_id" % entry["frontend_device"], F_OK):
+			if entry["name"] and ("fbc" in entry["name"].lower() or (entry["name"] in BoxInfo.getItem("HasFBCtuner") and entry["frontend_device"] is not None and access("/proc/stb/frontend/%d/fbc_id" % entry["frontend_device"], F_OK))):
 				fbc_number += 1
 				if fbc_number <= (entry["type"] and "DVB-C" in entry["type"] and 1 or 2):
 					entry["fbc"] = [1, fbc_number, fbc_tuner]  # FBC root.
