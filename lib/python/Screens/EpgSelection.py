@@ -201,13 +201,13 @@ class EPGSelection(Screen):
 
 	def nextBouquet(self):
 		if self.type == EPG_TYPE_SINGLE:
-			self.session.openWithCallback(self.channelSelectionCallback, ChannelSelection.SimpleChannelSelection, _("Select channel"), True, True, self.currentService.ref, self.parent and self.parent.epg_bouquet)
+			self.session.openWithCallback(self.channelSelectionCallback, Screens.ChannelSelection.SimpleChannelSelection, _("Select channel"), True, True, self.currentService.ref, self.parent and self.parent.epg_bouquet)
 		if self.bouquetChangeCB:
 			self.bouquetChangeCB(1, self)
 
 	def prevBouquet(self):
 		if self.type == EPG_TYPE_SINGLE:
-			self.session.openWithCallback(self.channelSelectionCallback, ChannelSelection.SimpleChannelSelection, _("Select channel"), True, True, self.currentService.ref, self.parent and self.parent.epg_bouquet)
+			self.session.openWithCallback(self.channelSelectionCallback, Screens.ChannelSelection.SimpleChannelSelection, _("Select channel"), True, True, self.currentService.ref, self.parent and self.parent.epg_bouquet)
 		if self.bouquetChangeCB:
 			self.bouquetChangeCB(-1, self)
 
@@ -374,7 +374,7 @@ class EPGSelection(Screen):
 		if self.type == EPG_TYPE_MULTI:
 			self["list"].updateMultiEPG(1)
 		if self.type == EPG_TYPE_SINGLE:
-			self.session.openWithCallback(self.channelSelectionCallback, ChannelSelection.SimpleChannelSelection, _("Select channel"), True, True, self.currentService.ref, self.parent and self.parent.epg_bouquet)
+			self.session.openWithCallback(self.channelSelectionCallback, Screens.ChannelSelection.SimpleChannelSelection, _("Select channel"), True, True, self.currentService.ref, self.parent and self.parent.epg_bouquet)
 
 	def channelSelectionCallback(self, *args):
 		if args and len(args) == 2:
