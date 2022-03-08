@@ -1,3 +1,4 @@
+from os.path import isfile
 from Components.ActionMap import HelpableActionMap
 from Components.config import ConfigSelection, ConfigYesNo, config, getConfigListEntry
 from Components.ConfigList import ConfigListScreen
@@ -8,7 +9,7 @@ from . Screen import Screen
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.Setup import Setup
-from Tools.Directories import SCOPE_GUISKIN, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, SCOPE_KEYMAPS, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 
 
@@ -137,13 +138,14 @@ class InputDeviceDriverSetup(Setup):
 			print("[InputDeviceSetup] Changes made for '%s' (%s) were not confirmed." % (self.device, self.nameEntry[1].value))
 
 
-class InputDeviceSetup(ConfigListScreen, Screen):
+class InputDeviceSetup(Setup):
 	def __init__(self, session):
 		Setup.__init__(self, session, "InputDevices")
 		self.initialKeyboardMap = config.inputDevices.keyboardMap.value
 		self.initialRemotesIndex = config.inputDevices.remotesIndex.value
 
 	def keySave(self):
+		from Components.Console import Console
 		map = config.inputDevices.keyboardMap.value
 		if map != self.initialKeyboardMap:
 			print("[InputDevice] Activating keyboard keymap: '%s'." % map)
