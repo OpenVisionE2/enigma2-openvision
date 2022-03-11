@@ -207,7 +207,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 				result[0] = st.f_bsize * st.f_blocks
 				result[2] = st.f_bsize * st.f_bavail
 				result[1] = result[0] - result[2]
-				result[3] = result[1] * 100 / result[0]
+				result[3] = result[1] * 100 // result[0]
 		return result
 
 	def getSizeStr(self, value, u=0):
