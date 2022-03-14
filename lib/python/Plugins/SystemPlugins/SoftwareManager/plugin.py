@@ -56,6 +56,7 @@ config.plugins.softwaremanager.overwriteConfigFiles = ConfigSelection(
 config.plugins.softwaremanager.onSetupMenu = ConfigYesNo(default=True)
 config.plugins.softwaremanager.onBlueButton = ConfigYesNo(default=False)
 config.plugins.softwaremanager.epgcache = ConfigYesNo(default=False)
+config.plugins.softwaremanager.scanner_with_subdirs = ConfigYesNo(default=False)
 
 
 def write_cache(cache_file, cache_data):
@@ -347,51 +348,46 @@ class SoftwareManagerSetup(ConfigListScreen, Screen):
 	def __init__(self, session, skin_path=None):
 		Screen.__init__(self, session)
 		self.skin_path = skin_path
-		if self.skin_path is None:
+		if not self.skin_path:
 			self.skin_path = resolveFilename(SCOPE_PLUGIN, "SystemPlugins/SoftwareManager")
-
-		self.onChangedEntry = []
-		self.setTitle(_("Software manager setup"))
-		self.overwriteConfigfilesEntry = None
-
-		self.list = []
-		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry)
-
+		self.skinName = "SoftwareManagerSetup"
+		self.setTitle(_("Software Manager Setup"))
 		self["actions"] = ActionMap(["SetupActions", "MenuActions"],
 			{
 				"cancel": self.keyCancel,
 				"save": self.apply,
 				"menu": self.closeRecursive,
 			}, -2)
-
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("OK"))
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText()
 		self["introduction"] = StaticText()
-
+		self.list = []
+		ConfigListScreen.__init__(self, self.list, session=self.session, on_change=self.changedEntry)
 		self.createSetup()
 
 	def createSetup(self):
 		self.list = []
-		self.overwriteConfigfilesEntry = getConfigListEntry(_("Overwrite configuration files?"), config.plugins.softwaremanager.overwriteConfigFiles)
-		self.list.append(self.overwriteConfigfilesEntry)
+		self.list.append(getConfigListEntry(_("Overwrite configuration files?"), config.plugins.softwaremanager.overwriteConfigFiles, _("Overwrite configuration files during software update?")))
 		self.list.append(getConfigListEntry(_("show softwaremanager in setup menu"), config.plugins.softwaremanager.onSetupMenu))
 		self.list.append(getConfigListEntry(_("show softwaremanager on blue button"), config.plugins.softwaremanager.onBlueButton))
 		self.list.append(getConfigListEntry(_("backup EPG cache"), config.plugins.softwaremanager.epgcache))
+		self.list.append(getConfigListEntry(_("Scan and search files and extensions in subdirs"), config.plugins.softwaremanager.scanner_with_subdirs, _("For Media Scanner, enabled will take search more time, but will do a full scan of all subdirs where your media files or extensions are located.")))
 
 		self["config"].list = self.list
 		self["config"].l.setSeperation(400)
 		self["config"].l.setList(self.list)
-		if not self.selectionChanged in self["config"].onSelectionChanged:
-			self["config"].onSelectionChanged.append(self.selectionChanged)
-		self.selectionChanged()
 
-	def selectionChanged(self):
-		if self["config"].getCurrent() == self.overwriteConfigfilesEntry:
-			self["introduction"].setText(_("Overwrite configuration files during software update?"))
-		else:
-			self["introduction"].setText("")
+	def changedEntry(self):
+		self.createSetup()
+
+	def getCurrentEntry(self):
+		self.updateDescription()
+		return ConfigListScreen.getCurrentEntry(self)
+
+	def updateDescription(self):
+		self["introduction"].setText("%s" % (self.getCurrentDescription()))
 
 	def newConfig(self):
 		pass

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Plugins.Plugin import PluginDescriptor
+from Components.config import config
 from Components.PluginComponent import plugins
 
 import os
@@ -69,7 +70,7 @@ add_type("video/mpeg", ".wtv")
 
 def getType(file):
 	(type, _) = guess_type(file)
-	if type is None:
+	if type == None:
 		# Detect some unknown types
 		if file[-12:].lower() == "video_ts.ifo":
 			return "video/x-dvd"
@@ -98,7 +99,7 @@ class Scanner:
 		return True
 
 	def handleFile(self, res, file):
-		if (self.mimetypes is None or file.mimetype in self.mimetypes) and self.checkFile(file):
+		if (self.mimetypes == None or file.mimetype in self.mimetypes) and self.checkFile(file):
 			res.setdefault(self, []).append(file)
 
 	def __repr__(self):
@@ -115,7 +116,7 @@ class ScanPath:
 		self.with_subdirs = with_subdirs
 
 	def __repr__(self):
-		return self.path + "(" + str(self.with_subdirs) + ")"
+		return self.path + str(self.with_subdirs)
 
 	# we will use this in a set(), so we need to implement __hash__ and __cmp__
 	def __hash__(self):
@@ -131,21 +132,21 @@ class ScanPath:
 
 
 class ScanFile:
-	def __init__(self, path, mimetype=None, size=None, autodetect=True):
+	def __init__(self, path, mimetype=None, size="", autodetect=True):
 		self.path = path
-		if mimetype is None and autodetect:
+		if mimetype == None and autodetect:
 			self.mimetype = getType(path)
 		else:
 			self.mimetype = mimetype
 		self.size = size
 
 	def __repr__(self):
-		return "<ScanFile " + self.path + " (" + str(self.mimetype) + ", " + str(self.size) + " MB)>"
+		return self.path + str(self.mimetype)
 
 
 def execute(option):
 	print("[Scanner] execute", option)
-	if option is None:
+	if option == None:
 		return
 
 	(_, scanner, files, session) = option
@@ -165,45 +166,32 @@ def scanDevice(mountpoint):
 
 	res = {}
 
-	# merge all to-be-scanned paths, with priority to
-	# with_subdirs.
-
 	paths_to_scan = set()
 
-	# first merge them all...
+	# merge all to-be-scanned paths.
+	# first merge them all.
 	for s in scanner:
 		paths_to_scan.update(set(s.paths_to_scan))
-
-	# ...then remove with_subdir=False when same path exists
-	# with with_subdirs=True
-	for p in paths_to_scan:
-		if p.with_subdirs == True and ScanPath(path=p.path) in paths_to_scan:
-			paths_to_scan.remove(ScanPath(path=p.path))
 
 	from Components.Harddisk import harddiskmanager
 	blockdev = mountpoint.rstrip("/").rsplit('/', 1)[-1]
 	error, blacklisted, removable, is_cdrom, partitions, medium_found = harddiskmanager.getBlockDevInfo(blockdev)
-
-	# now scan the paths
 	for p in paths_to_scan:
-		path = os.path.join(mountpoint, p.path)
-
-		for root, dirs, files in os.walk(path):
+		for root, dirs, files in os.walk(mountpoint): # now scan the files paths.
 			for f in files:
-				path = os.path.join(root, f)
 				if (is_cdrom and f.endswith(".wav") and f.startswith("track")) or f == "cdplaylist.cdpls":
-					sfile = ScanFile(path, "audio/x-cda")
+					sfile = ScanFile(os.path.join(root, f), "audio/x-cda")
 				else:
-					sfile = ScanFile(path)
+					sfile = ScanFile(os.path.join(root, f))
 				for s in scanner:
 					s.handleFile(res, sfile)
 
-			# if we really don't want to scan subdirs, stop here.
-			if not p.with_subdirs:
+			if config.plugins.softwaremanager.scanner_with_subdirs.value: # True choose search files in subdirs.
+				continue
+			else:
 				del dirs[:]
-
-	# res is a dict with scanner -> [ScanFiles]
-	return res
+		# res is a dict with scanner -> [ScanFiles]
+		return res
 
 
 def openList(session, files):
