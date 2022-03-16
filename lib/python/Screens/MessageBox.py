@@ -3,7 +3,7 @@ from enigma import eTimer
 from Components.ActionMap import HelpableActionMap
 from Components.Label import Label
 from Components.MenuList import MenuList
-from Components.Pixmap import MultiPixmap
+from Components.Pixmap import MultiPixmap, Pixmap
 from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.Screen import Screen, ScreenSummary
@@ -34,20 +34,24 @@ class MessageBox(Screen, HelpableScreen):
 	def __init__(self, session, text, type=TYPE_YESNO, timeout=-1, list=None, default=True, closeOnAnyKey=False, enableInput=True, msgBoxID=None, typeIcon=None, timeoutDefault=None, windowTitle=None, skinName=None, close_on_any_key=False, enable_input=True, timeout_default=None, title=None, picon=None, skin_name=None, simple=None):
 		Screen.__init__(self, session)
 		HelpableScreen.__init__(self)
+		self.timerRunning = False
+		self["autoresize"] = Label("")
 		self.text = text
 		self["text"] = Label(text)
 		self.type = type
 		if type == self.TYPE_YESNO:
 			self.list = [(_("Yes"), True), (_("No"), False)] if list is None else list
 			self["list"] = MenuList(self.list)
-			if isinstance(default, bool):
-				self.startIndex = 0 if default else 1
-			elif isinstance(default, int):
-				self.startIndex = default
+			if isinstance(default, int):
+				self["list"].moveToIndex(default)
+			elif default in (bool):
+				self["list"].moveToIndex(0 if default else 1)
 			else:
 				print("[MessageBox] Error: The context of the default (%s) can't be determined!" % default)
 		else:
-			self.list = None
+			self.list = []
+			self["list"] = MenuList([])
+			self["list"].hide()
 		self.timeout = timeout
 		if close_on_any_key == True:  # Process legacy close_on_any_key argument.
 			closeOnAnyKey = True
@@ -82,8 +86,25 @@ class MessageBox(Screen, HelpableScreen):
 		if typeIcon is None:
 			typeIcon = type
 		self.typeIcon = typeIcon
+		self.picon = (typeIcon != self.TYPE_NOICON)  # Legacy picon argument to support old skins.
 		if typeIcon:
-			self["icon"] = MultiPixmap()
+			self["icon"] = MultiPixmap()  # These line can go with new skins that only use self["icon"]...
+			self["QuestionPixmap"] = Pixmap()  # These lines are to be compatible with the old Pixmaps.
+			self["QuestionPixmap"].hide()
+			self["InfoPixmap"] = Pixmap()
+			self["InfoPixmap"].hide()
+			self["WarningPixmap"] = Pixmap()
+			self["WarningPixmap"].hide()
+			self["ErrorPixmap"] = Pixmap()
+			self["ErrorPixmap"].hide()
+			if typeIcon == self.TYPE_YESNO:
+				self["QuestionPixmap"].show()
+			elif typeIcon == self.TYPE_WARNING:
+				self["WarningPixmap"].show()
+			elif typeIcon == self.TYPE_INFO:
+				self["InfoPixmap"].show()
+			elif typeIcon == self.TYPE_ERROR:
+				self["ErrorPixmap"].show()
 		if timeout_default is not None:  # Process legacy timeout_default argument.
 			timeoutDefault = timeout_default
 		self.timeoutDefault = timeoutDefault
@@ -112,7 +133,7 @@ class MessageBox(Screen, HelpableScreen):
 	def layoutFinished(self):
 		if self.list:
 			self["list"].instance.allowNativeKeys(False)  # Override listbox navigation.
-			self["list"].moveToIndex(self.startIndex)
+			# self["list"].moveToIndex(self.startIndex)
 		if self.typeIcon:
 			self["icon"].setPixmapNum(self.typeIcon - 1)
 		prefix = self.TYPE_PREFIX.get(self.type, _("Unknown"))
@@ -194,6 +215,12 @@ class MessageBox(Screen, HelpableScreen):
 
 	def autoResize(self):  # Dummy method place holder for some legacy skins.
 		pass
+
+	def getListWidth(self):  # keep text autoresize compatible for others skins MessageBoxSimple.
+		def getListLineTextWidth(text):
+			self["autoresize"].setText(text)
+			return self["autoresize"].getSize()[0]
+		return max([getListLineTextWidth(line[0]) for line in self.list]) if self.list else 0
 
 	def createSummary(self):
 		return MessageBoxSummary
