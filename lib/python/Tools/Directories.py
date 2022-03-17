@@ -256,8 +256,9 @@ def fileReadLines(filename, default=None, source=DEFAULT_MODULE_NAME, debug=Fals
 		with open(filename, "r") as fd:
 			lines = fd.read().splitlines()
 		msg = "Read"
-	except (IOError, OSError) as err:
-		if err.errno != ENOENT:  # ENOENT - No such file or directory.
+	except (IOError, OSError, UnicodeDecodeError) as err:
+		print("UnicodeDecodeError: %s %s" % (err, filename))
+		if not UnicodeDecodeError and err.errno != ENOENT:  # ENOENT - No such file or directory.
 			print("[%s] Error %d: Unable to read lines from file '%s'!  (%s)" % (source, err.errno, filename, err.strerror))
 		lines = default
 		msg = "Default"
@@ -288,20 +289,36 @@ def fileWriteLines(filename, lines, source=DEFAULT_MODULE_NAME, debug=False):
 def fileReadXML(filename, default=None, source=DEFAULT_MODULE_NAME, debug=False):
 	dom = None
 	try:
-		with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
-			try:
-				dom = parse(fd).getroot()
-				msg = "Read"
-			except ParseError as err:
-				fd.seek(0)
-				content = fd.readlines()
-				line, column = err.position
-				print("[%s] XML Parse Error: '%s' in '%s'!" % (source, err, filename))
-				data = content[line - 1].replace("\t", " ").rstrip()
-				print("[%s] XML Parse Error: '%s'" % (source, data))
-				print("[%s] XML Parse Error: '%s^%s'" % (source, "-" * column, " " * (len(data) - column - 1)))
-			except Exception as err:
-				print("[%s] Error: Unable to parse data in '%s' - '%s'!" % (source, filename, err))
+		if PY2:
+			with open(filename, "r") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
+				try:
+					dom = parse(fd).getroot()
+					msg = "Read"
+				except ParseError as err:
+					fd.seek(0)
+					content = fd.readlines()
+					line, column = err.position
+					print("[%s] XML Parse Error: '%s' in '%s'!" % (source, err, filename))
+					data = content[line - 1].replace("\t", " ").rstrip()
+					print("[%s] XML Parse Error: '%s'" % (source, data))
+					print("[%s] XML Parse Error: '%s^%s'" % (source, "-" * column, " " * (len(data) - column - 1)))
+				except Exception as err:
+					print("[%s] Error: Unable to parse data in '%s' - '%s'!" % (source, filename, err))
+		else:
+			with open(filename, "r", encoding="UTF-8") as fd:  # This open gets around a possible file handle leak in Python's XML parser.
+				try:
+					dom = parse(fd).getroot()
+					msg = "Read"
+				except ParseError as err:
+					fd.seek(0)
+					content = fd.readlines()
+					line, column = err.position
+					print("[%s] XML Parse Error: '%s' in '%s'!" % (source, err, filename))
+					data = content[line - 1].replace("\t", " ").rstrip()
+					print("[%s] XML Parse Error: '%s'" % (source, data))
+					print("[%s] XML Parse Error: '%s^%s'" % (source, "-" * column, " " * (len(data) - column - 1)))
+				except Exception as err:
+					print("[%s] Error: Unable to parse data in '%s' - '%s'!" % (source, filename, err))
 	except (IOError, OSError) as err:
 		if err.errno == ENOENT:  # ENOENT - No such file or directory.
 			print("[%s] Warning: File '%s' does not exist!" % (source, filename))
@@ -320,7 +337,8 @@ def fileReadXML(filename, default=None, source=DEFAULT_MODULE_NAME, debug=False)
 		else:
 			msg = "Failed to read"
 	if debug or forceDebug:
-		print("[%s] Line %d: %s from XML file '%s'." % (source, getframe(1).f_lineno, msg, filename))
+		length = len(dom) if dom else 0
+		print("[%s] %s Lines=%d from XML '%s'." % (source, msg, length, filename))
 	return dom
 
 
@@ -559,8 +577,8 @@ def fileAccess(file, mode="r"):
 	result = False
 	try:
 		result = access(file, accMode)
-	except (IOError, OSError) as err:
-		print("[Directories] Error %d: Couldn't determine file '%s' access mode!  (%s)" % (err.errno, file, err.strerror))
+	except (IOError, OSError, UnicodeEncodeError) as err:
+		print("[Directories] Error: %s (%s)" % (err, file))
 	return result
 
 

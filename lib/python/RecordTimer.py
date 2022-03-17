@@ -860,7 +860,7 @@ class RecordTimerEntry(TimerEntry, object):
 		else:
 			if not self.calculateFilename():
 				self.do_backoff()
-				self.start_prepare = time() + self.backoff
+				self.start_prepare = int(time() + self.backoff)
 				return False
 			rec_ref = self.service_ref and self.service_ref.ref
 			if rec_ref and rec_ref.flags & eServiceReference.isGroup:
@@ -930,7 +930,7 @@ class RecordTimerEntry(TimerEntry, object):
 							name = event_name
 							if not self.calculateFilename(event_name):
 								self.do_backoff()
-								self.start_prepare = time() + self.backoff
+								self.start_prepare = int(time() + self.backoff)
 								return False
 					event_id = evt.getEventId()
 				else:
@@ -948,7 +948,7 @@ class RecordTimerEntry(TimerEntry, object):
 				# We must calc our start time before stopRecordService call because in Screens/Standby.py
 				# TryQuitMainloop tries to get the next start time in evEnd event handler.
 				self.do_backoff()
-				self.start_prepare = time() + self.backoff
+				self.start_prepare = int(time() + self.backoff)
 				NavigationInstance.instance.stopRecordService(self.record_service)
 				self.record_service = None
 				self.rec_ref = None

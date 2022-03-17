@@ -2215,11 +2215,18 @@ class Config(ConfigSubsection):
 
 	def saveToFile(self, filename):
 		try:
-			with open("%s.writing" % filename, "w") as fd:
-				fd.write(self.pickle())
-				fd.flush()
-				fsync(fd.fileno())
-			rename("%s.writing" % filename, filename)
+			if PY2:
+				with open("%s.writing" % filename, "w") as fd:
+					fd.write(self.pickle())
+					fd.flush()
+					fsync(fd.fileno())
+				rename("%s.writing" % filename, filename)
+			else:
+				with open("%s.writing" % filename, "w", encoding="UTF-8") as fd:
+					fd.write(self.pickle())
+					fd.flush()
+					fsync(fd.fileno())
+				rename("%s.writing" % filename, filename)
 		except (IOError, OSError) as err:
 			print("[Config] Error %d: Couldn't write '%s'!  (%s)" % (err.errno, filename, err.strerror))
 

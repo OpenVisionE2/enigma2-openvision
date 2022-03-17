@@ -1,33 +1,38 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+import re
+from six import PY2, PY3, ensure_str
+from os.path import exists as fileAccess
+from six.moves import range
+
+if PY2:
+	from string import maketrans, strip
+	from pythonwifi.iwlibs import Wireless
+	from pythonwifi import flags as wififlags
+else:
+	from wifi.scan import Cell
+
+from enigma import eConsoleAppContainer
+
 from Components.config import config, ConfigYesNo, NoSave, ConfigSubsection, ConfigText, ConfigSelection, ConfigPassword
 from Components.Console import Console
 from Components.Network import iNetwork
-import enigma
-import os
-try:
-	from string import maketrans, strip
-except:
-	pass
-from pythonwifi.iwlibs import Wireless, getWNICnames
-from pythonwifi import flags as wififlags
-from six import PY2
 
-list = ["WPA/WPA2", "WPA2", "WPA", "WEP", "Unencrypted"]
+modelist = ["WPA/WPA2", "WPA2", "WPA", "WEP", "Unencrypted"]
 
 weplist = ["ASCII", "HEX"]
 
 config.plugins.wlan = ConfigSubsection()
 config.plugins.wlan.essid = NoSave(ConfigText(default="", fixed_size=False))
 config.plugins.wlan.hiddenessid = NoSave(ConfigYesNo(default=False))
-config.plugins.wlan.encryption = NoSave(ConfigSelection(list, default="WPA/WPA2"))
+config.plugins.wlan.encryption = NoSave(ConfigSelection(modelist, default="WPA2"))
 config.plugins.wlan.wepkeytype = NoSave(ConfigSelection(weplist, default="ASCII"))
 config.plugins.wlan.psk = NoSave(ConfigPassword(default="", fixed_size=False))
 
 
 def existBcmWifi(iface):
-	return os.path.exists("/tmp/bcm/" + iface)
+	return fileAccess("/tmp/bcm/" + iface)
 
 
 def getWlConfName(iface):
@@ -35,7 +40,11 @@ def getWlConfName(iface):
 
 
 def getWlanConfigName(iface):
-	return '/etc/wpa_supplicant.' + iface + '.conf'
+	driver = iNetwork.detectWlanModule(iface)
+	if driver == 'brcm-wl':
+		return '/etc/wl.conf.' + iface
+	else:
+		return '/etc/wpa_supplicant.' + iface + '.conf'
 
 
 class Wlan:
@@ -46,22 +55,28 @@ class Wlan:
 		a = ''
 		b = ''
 		for i in range(0, 255):
-			a = a + chr(i)
+			a += chr(i)
 			if i < 32 or i > 127:
-				b = b + ' '
+				b += ' '
 			else:
-				b = b + chr(i)
-
-		if PY2:
-			self.asciitrans = maketrans(a, b)
-		else:
-			self.asciitrans = str.maketrans(a, b)
+				b += chr(i)
+			self.asciitrans = maketrans(a, b) if PY2 else str.maketrans(a, b)
 
 	def asciify(self, str):
 		return str.translate(self.asciitrans)
 
 	def getWirelessInterfaces(self):
-		return getWNICnames()
+		device = re.compile('[a-z]{2,}[0-9]*:')
+		ifnames = []
+
+		fp = open('/proc/net/wireless', 'r')
+		for line in fp:
+			try:
+				ifnames.append(device.search(line).group()[:-1])
+			except AttributeError:
+				pass
+
+		return ifnames
 
 	def setInterface(self, iface=None):
 		self.iface = iface
@@ -72,89 +87,112 @@ class Wlan:
 	def getNetworkList(self):
 		if self.oldInterfaceState is None:
 			self.oldInterfaceState = iNetwork.getAdapterAttribute(self.iface, "up")
-		if not self.oldInterfaceState:
-			if not iNetwork.getAdapterAttribute(self.iface, "up"):
+		if self.oldInterfaceState is False:
+			if iNetwork.getAdapterAttribute(self.iface, "up") is False:
 				iNetwork.setAdapterAttribute(self.iface, "up", True)
-				enigma.eConsoleAppContainer().execute("ifconfig %s up" % self.iface)
+				Console().ePopen("ifconfig " + self.iface + " up")
 				if existBcmWifi(self.iface):
-					enigma.eConsoleAppContainer().execute("wl up")
+					eConsoleAppContainer().execute("wl up")
+		if PY2:
+			ifobj = Wireless(self.iface) # a Wireless NIC Object
 
-		ifobj = Wireless(self.iface) # a Wireless NIC Object
+			try:
+				scanresults = ifobj.scan()
+			except:
+				scanresults = None
+				print("[Wlan] No wireless networks could be found")
+			aps = {}
+			if scanresults is not None:
+				(num_channels, frequencies) = ifobj.getChannelInfo()
+				index = 1
+				for result in scanresults:
+					bssid = result.bssid
 
-		try:
-			scanresults = ifobj.scan()
-		except:
-			scanresults = None
-			print("[WirelessLan] No wireless networks could be found")
-		aps = {}
-		if scanresults:
-			(num_channels, frequencies) = ifobj.getChannelInfo()
-			index = 1
-			for result in scanresults:
-				bssid = result.bssid
+					# skip hidden networks
+					if not result.essid:
+						continue
 
-				# skip hidden networks
-				if not result.essid:
-					continue
-
-				if result.encode.flags & wififlags.IW_ENCODE_DISABLED > 0:
-					encryption = False
-				elif result.encode.flags & wififlags.IW_ENCODE_NOKEY > 0:
-					encryption = True
-				else:
-					encryption = None
-
-				signal = str(result.quality.siglevel - 0x100) + " dBm"
-				quality = "%s/%s" % (result.quality.quality, ifobj.getQualityMax().quality)
-
-				extra = []
-				for element in result.custom:
-					element = element.decode()
-					if PY2:
-						extra.append(strip(self.asciify(element)))
+					if result.encode.flags & wififlags.IW_ENCODE_DISABLED > 0:
+						encryption = False
+					elif result.encode.flags & wififlags.IW_ENCODE_NOKEY > 0:
+						encryption = True
 					else:
-						extra.append(str.strip(self.asciify(element)))
-				for element in extra:
-					if 'SignalStrength' in element:
-						signal = element[element.index('SignalStrength') + 15:element.index(',L')]
-					if 'LinkQuality' in element:
-						quality = element[element.index('LinkQuality') + 12:len(element)]
+						encryption = None
 
-				channel = "Unknown"
-				try:
-					channel = frequencies.index(ifobj._formatFrequency(result.frequency.getFrequency())) + 1
-				except:
-					channel = "Unknown"
+					signal = str(result.quality.siglevel - 0x100) + " dBm"
+					quality = "%s/%s" % (result.quality.quality, ifobj.getQualityMax().quality)
 
-				if PY2:
-					stripessid = strip(self.asciify(result.essid))
-				else:
-					stripessid = str.strip(self.asciify(result.essid))
+					extra = []
+					for element in result.custom:
+						element = element.encode()
+						extra.append(strip(self.asciify(element)))
+					for element in extra:
+						if 'SignalStrength' in element:
+							signal = element[element.index('SignalStrength') + 15:element.index(',L')]
+						if 'LinkQuality' in element:
+							quality = element[element.index('LinkQuality') + 12:len(element)]
 
-				aps[bssid] = {
-					'active': True,
-					'bssid': result.bssid,
-					'channel': channel,
-					'encrypted': encryption,
-					'essid': stripessid,
-					'iface': self.iface,
-					'maxrate': ifobj._formatBitrate(result.rate[-1][-1]),
-					'noise': '',#result.quality.nlevel-0x100,
-					'quality': str(quality),
-					'signal': str(signal),
-					'custom': extra,
-				}
+					try:
+						channel = frequencies.index(ifobj._formatFrequency(result.frequency.getFrequency())) + 1
+					except:
+						channel = "Unknown"
 
-				index = index + 1
+					aps[bssid] = {
+						'active': True,
+						'bssid': result.bssid,
+						'channel': channel,
+						'encrypted': encryption,
+						'essid': strip(self.asciify(result.essid)),
+						'iface': self.iface,
+						'maxrate': ifobj._formatBitrate(result.rate[-1][-1]),
+						'noise': '',#result.quality.nlevel-0x100,
+						'quality': str(quality),
+						'signal': str(signal),
+						'custom': extra,
+					}
+
+					index += 1
+
+		else:
+			aps = {}
+			try:
+				scanresults = list(Cell.all(self.iface, 5))
+				print("[Wlan] Scan results = %s" % scanresults)
+			except:
+				scanresults = None
+				print("[Wlan] No wireless networks could be found")
+			if scanresults is not None:
+				for i in range(len(scanresults)):
+					bssid = scanresults[i].ssid
+					aps[bssid] = {
+						'active': True,
+						'bssid': scanresults[i].ssid,
+						'essid': scanresults[i].ssid,
+						'channel': scanresults[i].channel,
+						'encrypted': scanresults[i].encrypted,
+						'encryption_type': scanresults[i].encryption_type if scanresults[i].encrypted else "n/a",
+						'iface': self.iface,
+						'maxrate': scanresults[i].bitrates,
+						'mode': scanresults[i].mode,
+						'quality': scanresults[i].quality,
+						'signal': scanresults[i].signal,
+						'frequency': scanresults[i].frequency,
+						'frequency_norm': scanresults[i].frequency_norm,
+						'address': scanresults[i].address,
+						'noise': scanresults[i].noise,
+						'pairwise_ciphers': scanresults[i].pairwise_ciphers,
+						'authentication_suites': scanresults[i].authentication_suites,
+					}
+		print("[Wlan] apsresults1 = %s" % aps)
 		return aps
 
 	def stopGetNetworkList(self):
-		if self.oldInterfaceState is not None:
-			if not self.oldInterfaceState:
+		if self.oldInterfaceState:
+			if self.oldInterfaceState is False:
 				iNetwork.setAdapterAttribute(self.iface, "up", False)
-				enigma.eConsoleAppContainer().execute("ifconfig %s down" % self.iface)
+				Console().ePopen("ifconfig " + self.iface + " down")
 				if existBcmWifi(self.iface):
-					enigma.eConsoleAppContainer().execute("wl down")
+					eConsoleAppContainer().execute("wl down")
 				self.oldInterfaceState = None
 				self.iface = None
 
@@ -171,7 +209,7 @@ class wpaSupplicant:
 		contents += "ssid=" + essid + "\n"
 		contents += "method=" + encryption + "\n"
 		contents += "key=" + psk + "\n"
-		print("[WirelessLan] content = \n" + contents)
+		print("[Wlan] Content = \n" + contents)
 
 		fd = open(getWlConfName(iface), "w")
 		fd.write(contents)
@@ -207,7 +245,7 @@ class wpaSupplicant:
 				else:
 					continue
 		except:
-			print("[WirelessLan] Error parsing ", configfile)
+			print("[Wlan] Error parsing ", configfile)
 			wsconfig = {
 					'hiddenessid': False,
 					'ssid': "",
@@ -216,8 +254,8 @@ class wpaSupplicant:
 					'key': "",
 				}
 
-		for (k, v) in wsconf.items():
-			print("[WirelessLan] wsconf[%s] %s" % (k, v))
+		for (k, v) in list(wsconf.items()):
+			print("[Wlan] wsconf [%s] %s" % (k, v))
 
 		return wsconf
 
@@ -232,7 +270,7 @@ class wpaSupplicant:
 			self.writeBcmWifiConfig(iface, essid, encryption, psk)
 			return
 
-		fp = file(getWlanConfigName(iface), 'w')
+		fp = open(getWlanConfigName(iface), 'w')
 		fp.write('#WPA Supplicant Configuration by enigma2\n')
 		fp.write('ctrl_interface=/var/run/wpa_supplicant\n')
 		fp.write('eapol_version=1\n')
@@ -270,19 +308,19 @@ class wpaSupplicant:
 		fp.write('}')
 		fp.write('\n')
 		fp.close()
-		#system('cat ' + getWlanConfigName(iface))
+		#Console().ePopen('cat ' + getWlanConfigName(iface))
 
 	def loadConfig(self, iface):
 		if existBcmWifi(iface):
 			return self.loadBcmWifiConfig(iface)
 
 		configfile = getWlanConfigName(iface)
-		if not os.path.exists(configfile):
+		if not fileAccess(configfile):
 			configfile = '/etc/wpa_supplicant.conf'
 		try:
 			#parse the wpasupplicant configfile
-			print("[WirelessLan] parsing configfile: ", configfile)
-			fp = file(configfile, 'r')
+			print("[Wlan] Parsing configfile: ", configfile)
+			fp = open(configfile, 'r')
 			supplicant = fp.readlines()
 			fp.close()
 			essid = None
@@ -333,7 +371,7 @@ class wpaSupplicant:
 					'key': config.plugins.wlan.psk.value,
 				}
 
-			for (key, item) in wsconfig.items():
+			for (key, item) in list(wsconfig.items()):
 				if item == "None" or item == "":
 					if key == 'hiddenessid':
 						wsconfig['hiddenessid'] = False
@@ -346,7 +384,7 @@ class wpaSupplicant:
 					if key == 'key':
 						wsconfig['key'] = ""
 		except:
-			print("[WirelessLan] Error parsing ", configfile)
+			print("[Wlan] Error parsing ", configfile)
 			wsconfig = {
 					'hiddenessid': False,
 					'ssid': "",
@@ -354,7 +392,7 @@ class wpaSupplicant:
 					'wepkeytype': "ASCII",
 					'key': "",
 				}
-		#print("[Wlan.py] WS-CONFIG-->",wsconfig)
+		#print("[Wlan] WS-CONFIG-->",wsconfig)
 		return wsconfig
 
 
@@ -366,21 +404,23 @@ class Status:
 		self.WlanConsole = Console()
 
 	def stopWlanConsole(self):
-		if self.WlanConsole is not None:
-			print("[WirelessLan] iStatus killing self.WlanConsole")
+		if self.WlanConsole:
+			print("[Wlan] Killing self.WlanConsole")
 			self.WlanConsole.killAll()
 			self.WlanConsole = None
 
 	def getDataForInterface(self, iface, callback=None):
 		self.WlanConsole = Console()
 		cmd = "iwconfig " + iface
-		if callback is not None:
+		if callback:
 			self.statusCallback = callback
 		self.WlanConsole.ePopen(cmd, self.iwconfigFinished, iface)
 
 	def iwconfigFinished(self, result, retval, extra_args):
+		result = ensure_str(result)
 		iface = extra_args
-		data = {'essid': False, 'frequency': False, 'accesspoint': False, 'bitrate': False, 'encryption': False, 'quality': False, 'signal': False}
+		ssid = "off"
+		data = {'essid': False, 'frequency': False, 'accesspoint': False, 'bitrate': False, 'encryption': False, 'quality': False, 'signal': False, 'channel': False, 'encryption_type': False, 'frequency': False, 'frequency_norm': False}
 		for line in result.splitlines():
 			line = line.strip()
 			if "ESSID" in line:
@@ -391,18 +431,18 @@ class Status:
 						ssid = (line[line.index('ESSID') + 7:line.index('"  Nickname')])
 					else:
 						ssid = (line[line.index('ESSID') + 7:len(line) - 1])
-				if ssid is not None:
+				if ssid != "off":
 					data['essid'] = ssid
 			if "Frequency" in line:
 				frequency = line[line.index('Frequency') + 10:line.index(' GHz')]
-				if frequency is not None:
+				if frequency:
 					data['frequency'] = frequency
 			if "Access Point" in line:
 				if "Sensitivity" in line:
 					ap = line[line.index('Access Point') + 14:line.index('   Sensitivity')]
 				else:
 					ap = line[line.index('Access Point') + 14:len(line)]
-				if ap is not None:
+				if ap:
 					data['accesspoint'] = ap
 			if "Bit Rate" in line:
 				if "kb" in line:
@@ -411,27 +451,27 @@ class Status:
 					br = line[line.index('Bit Rate') + 9:line.index(' Gb/s')]
 				else:
 					br = line[line.index('Bit Rate') + 9:line.index(' Mb/s')]
-				if br is not None:
+				if br:
 					data['bitrate'] = br
 			if "Encryption key" in line:
 				if ":off" in line:
 					enc = "off"
 				elif "Security" in line:
 					enc = line[line.index('Encryption key') + 15:line.index('   Security')]
-					if enc is not None:
+					if enc:
 						enc = "on"
 				else:
 					enc = line[line.index('Encryption key') + 15:len(line)]
-					if enc is not None:
+					if enc:
 						enc = "on"
-				if enc is not None:
+				if enc:
 					data['encryption'] = enc
 			if 'Quality' in line:
 				if "/100" in line:
 					qual = line[line.index('Quality') + 8:line.index('  Signal')]
 				else:
 					qual = line[line.index('Quality') + 8:line.index('Sig')]
-				if qual is not None:
+				if qual:
 					data['quality'] = qual
 			if 'Signal level' in line:
 				if "dBm" in line:
@@ -446,23 +486,63 @@ class Status:
 						signal = line[line.index('Signal level') + 13:line.index('  Noise')]
 					else:
 						signal = line[line.index('Signal level') + 13:len(line)]
-				if signal is not None:
+				if signal:
 					data['signal'] = signal
-
+		if PY3:
+			if ssid != None and ssid != "off" and ssid != "":
+				try:
+					scanresults = list(Cell.all(iface, 5))
+					print("[Wlan] Scan results = %s" % scanresults)
+				except:
+					scanresults = None
+					print("[Wlan] No wireless networks could be found")
+				aps = {}
+				if scanresults is not None:
+					for i in range(len(scanresults)):
+						bssid = scanresults[i].ssid
+						aps[bssid] = {
+							'active': True,
+							'bssid': scanresults[i].ssid,
+							'essid': scanresults[i].ssid,
+							'channel': scanresults[i].channel,
+							'encrypted': scanresults[i].encrypted,
+							'encryption_type': scanresults[i].encryption_type if scanresults[i].encrypted else "n/a",
+							'iface': iface,
+							'maxrate': scanresults[i].bitrates,
+							'mode': scanresults[i].mode,
+							'quality': scanresults[i].quality,
+							'signal': scanresults[i].signal,
+							'frequency': scanresults[i].frequency,
+							'frequency_norm': scanresults[i].frequency_norm,
+							'address': scanresults[i].address,
+							'noise': scanresults[i].noise,
+							'pairwise_ciphers': scanresults[i].pairwise_ciphers,
+							'authentication_suites': scanresults[i].authentication_suites,
+						}
+					#data['bitrate'] = aps[ssid]["maxrate"]
+					data['encryption'] = aps[ssid]["encrypted"]
+					data['quality'] = aps[ssid]["quality"]
+					data['signal'] = aps[ssid]["signal"]
+					data['channel'] = aps[ssid]["channel"]
+					data['encryption_type'] = aps[ssid]["encryption_type"]
+					#data['frequency'] = aps[ssid]["frequency"]
+					data['frequency_norm'] = aps[ssid]["frequency_norm"]
+		print("[Wlan] apsresults2 = %s" % data)
 		self.wlaniface[iface] = data
 		self.backupwlaniface = self.wlaniface
 
-		if self.WlanConsole is not None:
+		if self.WlanConsole:
 			if not self.WlanConsole.appContainers:
-				print("[WirelessLan] self.wlaniface after loading:", self.wlaniface)
-				if self.statusCallback is not None:
+				print("[Wlan] self.wlaniface after loading:", self.wlaniface)
+				if self.statusCallback:
 						self.statusCallback(True, self.wlaniface)
 						self.statusCallback = None
 
 	def getAdapterAttribute(self, iface, attribute):
 		self.iface = iface
-		if self.iface in self.wlaniface and attribute in self.wlaniface[self.iface]:
-			return self.wlaniface[self.iface][attribute]
+		if self.iface in self.wlaniface:
+			if attribute in self.wlaniface[self.iface]:
+				return self.wlaniface[self.iface][attribute]
 		return None
 
 

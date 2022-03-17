@@ -301,7 +301,7 @@ class EPGList(GUIComponent):
 					(eListboxPythonMultiContent.TYPE_TEXT, r3.x + self.tw, r3.y, r3.w, r3.h, 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, EventName)
 				))
 			else:
-				percent = (nowTime - beginTime) * 100 / duration
+				percent = (nowTime - beginTime) * 100 // duration
 				prefix = "+"
 				remaining = ((beginTime + duration) - int(time())) / 60
 				if remaining <= 0:
@@ -347,7 +347,7 @@ class EPGList(GUIComponent):
 		self.selectionChanged()
 
 	def fillSingleEPG(self, service):
-		t = time()
+		t = int(time())
 		epg_time = t - config.epg.histminutes.getValue() * 60
 		test = ['RIBDT', (service.ref.toString(), 0, epg_time, -1)]
 		self.list = self.queryEPG(test)

@@ -65,8 +65,11 @@ class StubInfo:
 		return True
 
 	def getInfo(self, serviceref, w):
-		if w == iServiceInformation.sTimeCreate:
-			return os.stat(serviceref.getPath()).st_ctime
+		try:
+			if w == iServiceInformation.sTimeCreate:
+				return os.stat(serviceref.getPath()).st_ctime
+		except UnicodeEncodeError as err:
+			print("UnicodeEncodeError: %s" % (err))
 		if w == iServiceInformation.sDescription:
 			return serviceref.getPath()
 		return 0
@@ -495,7 +498,7 @@ class MovieList(GUIComponent):
 				if switch == 'i' and hasattr(data, 'icon') and data.icon is not None:
 					res.append(MultiContentEntryPixmapAlphaTest(pos=(colX, self.partIconeShift), size=(iconSize, data.icon.size().height()), png=data.icon))
 				elif switch in ('p', 's'):
-					if hasattr(data, 'part') and data.part > 0:
+					if hasattr(data, 'part') and data.part != None and data.part > 0:
 						res.append(MultiContentEntryProgress(pos=(colX, self.pbarShift), size=(iconSize, self.pbarHeight), percent=data.part, borderWidth=2, foreColor=data.partcol, foreColorSelected=None, backColor=None, backColorSelected=None))
 					elif hasattr(data, 'icon') and data.icon is not None:
 						res.append(MultiContentEntryPixmapAlphaTest(pos=(colX, self.pbarShift), size=(iconSize, self.pbarHeight), png=data.icon))

@@ -1231,7 +1231,7 @@ class StorageInformation(InformationBase):
 		info = []
 		info.append(formatLine("H", _("Detected storage devices")))
 		info.append("")
-		partitions = sorted(harddiskmanager.getMountedPartitions(), key=lambda partitions: partitions.device)
+		partitions = sorted(harddiskmanager.getMountedPartitions(), key=lambda partitions: partitions.device or "")
 		for partition in partitions:
 			if partition.mountpoint == "/":
 				info.append(formatLine("H1", "/dev/root", partition.description))

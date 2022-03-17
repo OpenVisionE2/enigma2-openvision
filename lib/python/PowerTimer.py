@@ -116,7 +116,7 @@ class PowerTimer(Timer):
 			for logTime, logCode, logMsg in timer.log_entries:
 				if logTime < ignoreBefore:
 					continue
-				timerList.append("\t\t<log code=\"%d\" time=\"%d\">%s</log>" % (logCode, logTime, stringToXML(logMsg)))
+				timerList.append("\t\t<log code=\"%d\" time=\"%d\">%s</log>" % (logCode, logTime, stringToXML(str(logMsg))))
 			timerList.append("\t</timer>")
 		timerList.append("</timers>\n")
 		# Should this code also use a writeLock as for the regular timers?

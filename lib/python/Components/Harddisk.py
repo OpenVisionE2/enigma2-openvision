@@ -270,20 +270,23 @@ class Harddisk:
 		return 1  # No longer supported, use createCheckJob instead.
 
 	def killPartitionTable(self):
-		zero = "\0" * 512
-		h = open(self.dev_path, "wb")
-		# delete first 9 sectors, which will likely kill the first partition too
-		for i in range(9):
-			h.write(zero)
-		h.close()
+		zero = 512 * b"\0"
+		try:
+			with open(self.dev_path, "wb") as h:
+				for i in range(9):  # Delete first 9 sectors, which will likely kill the first partition too.
+					h.write(zero)
+		except (IOError, OSError) as err:
+			print("[Harddisk] Error: Failed to wipe partition table on '%s':" % self.dev_path, err)
 
 	def killPartition(self, n):
-		zero = "\0" * 512
+		zero = 512 * b"\0"
 		part = self.partitionPath(n)
-		h = open(part, "wb")
-		for i in range(3):
-			h.write(zero)
-		h.close()
+		try:
+			with open(part, "wb") as h:
+				for i in range(3):
+					h.write(zero)
+		except (IOError, OSError) as err:
+			print("[Harddisk] Error: Failed to wipe partition on '%s':" % part, err)
 
 	def createMovieDir(self):
 		mkdir(pathjoin(self.mount_path, 'movie'))

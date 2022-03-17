@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from enigma import eServiceReference, eServiceReferenceDVB, eServiceCenter, getBestPlayableServiceReference
 import NavigationInstance
+from six import PY2
 
 
 class ServiceReference(eServiceReference):
@@ -79,7 +80,10 @@ def resolveAlternate(ref):
 
 
 def makeServiceQueryStr(serviceTypes):
-	return ' || '.join(map(lambda x: '(type == %d)' % x, serviceTypes))
+	if PY2:
+		return ' || '.join(map(lambda x: '(type == %d)' % x, serviceTypes))
+	else:
+		return ' || '.join(['(type == %d)' % x for x in serviceTypes])
 
 
 def serviceRefAppendPath(sref, path):

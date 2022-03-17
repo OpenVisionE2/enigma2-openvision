@@ -166,7 +166,7 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 				if check > 1:
 					if result[0] > 0:
 						result[1] = result[0] - result[2]
-						result[3] = result[1] * 100 / result[0]
+						result[3] = result[1] * 100 // result[0]
 					break
 
 			fd.close()

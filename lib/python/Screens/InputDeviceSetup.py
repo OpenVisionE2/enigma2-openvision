@@ -76,7 +76,7 @@ class InputDeviceSelection(HelpableScreen, Screen):
 			deviceList.append(self.buildInterfaceList(device[1], _(device[0]), inputDevices.getDeviceAttribute(device[1], "type")))
 		self["list"].setList(deviceList)
 		size = len(deviceList)
-		if deviceIndex >= size:
+		if deviceIndex != None and deviceIndex >= size:
 			deviceIndex = size - 1 if size else 0
 		self["list"].setIndex(deviceIndex)
 
