@@ -550,10 +550,10 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 			config.usage.cutlisteditor_keep_bookmarks.value ^= True
 			config.usage.cutlisteditor_keep_bookmarks.save()
 		elif result == CutListContextMenu.RET_QUICKEXECUTE:
-			menu = [(_("cancel"), 0),
-					(_("end at this position"), 1),
-					(_("punch cuts"), 2),
-					(_("both"), 3)]
+			menu = [(_("Cancel"), 0),
+					(_("End at this position"), 1),
+					(_("Punch cuts"), 2),
+					(_("Both"), 3)]
 			self.session.openWithCallback(self.quickCallback, ChoiceBox, title=_("How would you like to modify the movie?\nWarning: This operation cannot be undone!"), list=menu)
 		elif result == CutListContextMenu.RET_ENABLECUTS:
 			self.cut_state = 3
@@ -571,7 +571,7 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 		elif result == CutListContextMenu.RET_GRABFRAME:
 			self.grabFrame()
 
-	def executeCallback(self, answer):
+	def executeCallback(self, *answer):
 		if answer:
 			self.close()
 		else:
