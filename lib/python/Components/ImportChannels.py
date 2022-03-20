@@ -104,7 +104,7 @@ class ImportChannels():
 			except Exception as e:
 				# for the moment just log and ignore
 				print("[ImportChannels] %s" % str(e))
-				continue;
+				continue
 
 			# check the contents for more bouquet files
 			for line in content:
@@ -156,7 +156,7 @@ class ImportChannels():
 
 		if "channels" in self.remote_fallback_import:
 			print("[ImportChannels] enumerate remote files")
-			files = self.ImportGetFilelist(True, 'bouquets.tv', 'bouquets.radio');
+			files = self.ImportGetFilelist(True, 'bouquets.tv', 'bouquets.radio')
 
 			print("[ImportChannels] fetch remote files")
 			for file in files:
@@ -167,7 +167,7 @@ class ImportChannels():
 					print("[ImportChannels] Exception: %s" % str(e))
 
 			print("[ImportChannels] enumerate local files")
-			files = self.ImportGetFilelist(False, 'bouquets.tv', 'bouquets.radio');
+			files = self.ImportGetFilelist(False, 'bouquets.tv', 'bouquets.radio')
 
 			print("[ImportChannels] Removing old local files...")
 			for file in files:
