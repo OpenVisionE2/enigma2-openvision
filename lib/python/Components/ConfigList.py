@@ -223,6 +223,7 @@ class ConfigListScreen:
 		self.setCancelMessage(None)
 		self.setRestartMessage(None)
 		self.onChangedEntry = []
+		self.onSave = []
 		self.onExecBegin.append(self.showHelpWindow)
 		self.onExecEnd.append(self.hideHelpWindow)
 		self.onLayoutFinish.append(self.noNativeKeys)  # self.layoutFinished is already in use!
@@ -393,6 +394,8 @@ class ConfigListScreen:
 		self["config"].handleKey(ACTIONKEY_0 + number, self.entryChanged)
 
 	def keySave(self):
+		for notifier in self.onSave:
+			notifier()
 		if self.saveAll():
 			self.session.openWithCallback(self.restartConfirm, MessageBox, self.restartMsg, default=True, type=MessageBox.TYPE_YESNO)
 		else:
@@ -412,6 +415,19 @@ class ConfigListScreen:
 				item[1].save()
 		configfile.save()
 		return restart
+
+	def addSaveNotifier(self, notifier):
+		if callable(notifier):
+			self.onSave.append(notifier)
+		else:
+			raise TypeError("[ConfigList] Error: Notifier must be callable!")
+
+	def removeSaveNotifier(self, notifier):
+		while notifier in self.onSave:
+			self.onSave.remove(notifier)
+
+	def clearSaveNotifiers(self):
+		self.onSave = []
 
 	def keyCancel(self):
 		self.closeConfigList(())
