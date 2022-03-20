@@ -66,7 +66,7 @@ class VAudioInfo(Poll, Converter, object):
 		return description_str
 
 	def getAudioIcon(self, info):
-		description_str = self.get_short(self.getAudioCodec(info).translate(None, ' .').lower())
+		description_str = self.get_short(self.getAudioCodec(info).translate(str.maketrans("", "", ' .')).lower())
 		return description_str
 
 	def get_short(self, audioName):
