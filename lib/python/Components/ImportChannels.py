@@ -66,23 +66,26 @@ class ImportChannels():
 		return url[:url.rfind(":")] if url else self.url
 
 	def getFallbackSettings(self):
-		return self.getUrl("%s/web/settings" % self.getTerrestrialUrl()).read()
+		if not URLError:
+			return self.getUrl("%s/web/settings" % self.getTerrestrialUrl()).read()
 
 	def getFallbackSettingsValue(self, settings, e2settingname):
-		root = et.fromstring(settings)
-		for e2setting in root:
-			if e2settingname in e2setting[0].text:
-				return e2setting[1].text
-		return ""
+		if settings:
+			root = et.fromstring(settings)
+			for e2setting in root:
+				if e2settingname in e2setting[0].text:
+					return e2setting[1].text
+			return ""
 
 	def getTerrestrialRegion(self, settings):
-		description = ""
-		descr = self.getFallbackSettingsValue(settings, ".terrestrial")
-		if "Europe" in descr:
-			description = "fallback DVB-T/T2 Europe"
-		if "Australia" in descr:
-			description = "fallback DVB-T/T2 Australia"
-		config.usage.remote_fallback_dvbt_region.value = description
+		if settings:
+			description = ""
+			descr = self.getFallbackSettingsValue(settings, ".terrestrial")
+			if "Europe" in descr:
+				description = "fallback DVB-T/T2 Europe"
+			if "Australia" in descr:
+				description = "fallback DVB-T/T2 Australia"
+			config.usage.remote_fallback_dvbt_region.value = description
 
 	"""
 	Enumerate all the files that make up the bouquet system, either local or on a remote machine
