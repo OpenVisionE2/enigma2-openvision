@@ -52,6 +52,11 @@ from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 # hack alert!
 from Screens.Menu import MainMenu, mdom
 from sys import maxsize
+from six import PY2
+if PY2:
+	import cPickle as pickle
+else:
+	import pickle
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -121,10 +126,6 @@ def getResumePoint(session):
 def saveResumePoints():
 	global resumePointCache, resumePointCacheLast
 	try:
-		import cPickle as pickle
-	except:
-		import pickle
-	try:
 		f = open('/etc/enigma2/resumepoints.pkl', 'wb')
 		pickle.dump(resumePointCache, f, pickle.HIGHEST_PROTOCOL)
 		f.close()
@@ -134,10 +135,6 @@ def saveResumePoints():
 
 
 def loadResumePoints():
-	try:
-		import cPickle as pickle
-	except:
-		import pickle
 	try:
 		return pickle.load(open('/etc/enigma2/resumepoints.pkl', 'rb'))
 	except Exception as ex:
@@ -3525,7 +3522,7 @@ class InfoBarCueSheetSupport:
 		r = seek.getPlayPosition()
 		if r[0]:
 			return None
-		return int(r[1])
+		return long(r[1]) if PY2 else int(r[1])
 
 	def cueGetEndCutPosition(self):
 		ret = False
