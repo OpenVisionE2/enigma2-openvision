@@ -13,6 +13,7 @@ from Components.config import config, ConfigText
 from Tools.Notifications import AddNotificationWithID
 from time import sleep
 from six import PY2
+from six.moves.urllib.error import URLError
 from six.moves.urllib.parse import quote
 import xml.etree.ElementTree as et
 if PY2:
@@ -50,14 +51,14 @@ class ImportChannels():
 			request.add_header("Authorization", self.header)
 		try:
 			result = urlopen(request, timeout=timeout)
-		except URLError as e:
-			if "[Errno -3]" in str(e.reason):
+		except URLError as err:
+			if "[Errno -3]" in str(err.reason):
 				print("[ImportChannels] Network is not up yet, delay 5 seconds")
 				# network not up yet
 				sleep(5)
 				return self.getUrl(url, timeout)
-			print("[ImportChannels] URLError ", e)
-			raise e
+			print("[ImportChannels] URLError ", err)
+			raise err
 		return result
 
 	def getTerrestrialUrl(self):
