@@ -156,9 +156,9 @@ class PowerTimer(Timer):
 		# last enigma2 running.
 		autosleeprepeat = timerDom.get("autosleeprepeat", "once")
 		if autosleeprepeat == "repeated":
-			offset = time() + 30
-			begin = offset
-			end = offset
+			begin = time() + int(timerDom.get("autosleepdelay", "0"))
+			if end <= begin:
+				end = begin
 		entry = PowerTimerEntry(begin, end, disabled, afterevent, timertype)
 		entry.autosleepinstandbyonly = timerDom.get("autosleepinstandbyonly", "no")
 		entry.autosleepdelay = int(timerDom.get("autosleepdelay", "0"))
@@ -225,7 +225,7 @@ class PowerTimer(Timer):
 	def getNextPowerManagerTime(self):
 		nextTime = self.getNextPowerManagerTimeOld()
 		fakeTime = time() + 300
-		if config.usage.timeshift_start_delay.value:
+		if hasattr(self, "timeshift") and config.usage.timeshift_start_delay.value:
 			return nextTime if 0 < nextTime < fakeTime else fakeTime
 		return nextTime
 
