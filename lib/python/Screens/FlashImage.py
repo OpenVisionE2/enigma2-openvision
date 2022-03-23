@@ -447,14 +447,17 @@ class MultiBootSelection(SelectImage):
 		self.getImagesList()
 
 	def cancel(self, value=None):
-		Console().ePopen('umount %s' % self.tmp_dir)
-		if not os.path.ismount(self.tmp_dir):
-			os.rmdir(self.tmp_dir)
-		if value == 2:
-			from Screens.Standby import TryQuitMainloop
-			self.session.open(TryQuitMainloop, 2)
-		else:
-			self.close(value)
+		try:
+			Console().ePopen('umount %s' % self.tmp_dir)
+			if not os.path.ismount(self.tmp_dir):
+				os.rmdir(self.tmp_dir)
+			if value == 2:
+				from Screens.Standby import TryQuitMainloop
+				self.session.open(TryQuitMainloop, 2)
+			else:
+				self.close(value)
+		except FileNotFoundError as err:
+			print("[FlashImage]: %s" % err)
 
 	def getImagesList(self):
 		list = []
