@@ -119,17 +119,20 @@ class LCD:
 				self.autoDimDownLCDTimer.start(10, True)
 
 	def autoDimUpLCD(self):
-		if not inTryQuitMainloop:
-			self.autoDimDownLCDTimer.stop()
-			if self.currBrightness < self.brightness:
-				self.currBrightness = self.currBrightness + 5
-				if self.currBrightness >= self.brightness:
-					self.currBrightness = self.brightness
-				eDBoxLCD.getInstance().setLCDBrightness(self.currBrightness)
-				self.autoDimUpLCDTimer.start(10, True)
-			else:
-				if self.dimBrightness is not None and self.currBrightness > self.dimBrightness and self.dimDelay is not None and self.dimDelay > 0:
-					self.autoDimDownLCDTimer.startLongTimer(self.dimDelay)
+		try:
+			if not inTryQuitMainloop:
+				self.autoDimDownLCDTimer.stop()
+				if self.currBrightness < self.brightness:
+					self.currBrightness = self.currBrightness + 5
+					if self.currBrightness >= self.brightness:
+						self.currBrightness = self.brightness
+					eDBoxLCD.getInstance().setLCDBrightness(self.currBrightness)
+					self.autoDimUpLCDTimer.start(10, True)
+				else:
+					if self.dimBrightness is not None and self.currBrightness > self.dimBrightness and self.dimDelay is not None and self.dimDelay > 0:
+						self.autoDimDownLCDTimer.startLongTimer(self.dimDelay)
+		except:
+			pass
 
 	def setBright(self, value):
 		value *= 255
@@ -184,7 +187,7 @@ class LCD:
 		eDBoxLCD.getInstance().setFlipped(value)
 
 	def setScreenShot(self, value):
- 		eDBoxLCD.getInstance().setDump(value)
+		eDBoxLCD.getInstance().setDump(value)
 
 	def isOled(self):
 		return eDBoxLCD.getInstance().isOled()
