@@ -53,7 +53,9 @@ transponders = ((12515000, 22000000, eDVBFrontendParametersSatellite.FEC_5_6, 19
 
 
 def getProviderList():
-	return [x[0] for x in providers if nimmanager.getNimListForSat(transponders[x[1][0]][3])]
+	for x in providers:
+		if nimmanager.getNimListForSat(transponders[x[1][0]][3]):
+			return [x[0] for x in providers]
 
 
 class FastScanStatus(Screen):
