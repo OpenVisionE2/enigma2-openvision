@@ -44,7 +44,7 @@ class MessageBox(Screen, HelpableScreen):
 			self["list"] = MenuList(self.list)
 			if isinstance(default, int):
 				self["list"].moveToIndex(default)
-			elif default in (bool):
+			elif default in (True, False):
 				self["list"].moveToIndex(0 if default else 1)
 			else:
 				print("[MessageBox] Error: The context of the default (%s) can't be determined!" % default)
