@@ -1003,13 +1003,13 @@ class RecordTimerEntry(TimerEntry, object):
 				# i.e. cable / sat.. then the second recording needs an own extension... when we create the file
 				# here than calculateFilename is happy
 				if not self.justplay:
-					open(self.Filename + self.record_service.getFilenameExtension(), "w").close()
+					try:
+						open(self.Filename + self.record_service.getFilenameExtension(), "w").close()
 					# Give the Trashcan a chance to clean up
 					# Need try/except as Trashcan.instance may not exist
 					# for a missed recording started at boot-time.
-					try:
 						Trashcan.instance.cleanIfIdle(self.Filename)
-					except Exception as e:
+					except (Exception, UnicodeEncodeError) as e:
 						print("[RecordTimer] Failed to call Trashcan.instance.cleanIfIdle()!")
 						print("[RecordTimer] Error: %s" % str(e))
 				# Fine, it worked, resources are allocated.
