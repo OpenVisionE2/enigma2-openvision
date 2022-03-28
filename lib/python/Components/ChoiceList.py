@@ -17,7 +17,7 @@ def ChoiceEntryComponent(key=None, text=None):
 		if key:
 			x, y, w, h = parameters.get("ChoicelistName", (45, 0, 800, 25))
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, x, y, w, h, 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, text[0]))
-			if key == "dummy":
+			if key in ("dummy", "none"):
 				png = None
 			elif key == "expandable":
 				png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "icons/expandable.png"))
