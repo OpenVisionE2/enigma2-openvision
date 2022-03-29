@@ -666,28 +666,28 @@ def InitUsageConfig():
 	])
 	config.usage.elapsed_time_positive_vfd = ConfigYesNo(default=False)
 
-	config.usage.frontled_color = ConfigSelection(default="2", choices=[
+	config.usage.frontled_color = ConfigSelection(default="1", choices=[
 		("0", _("Off")),
 		("1", _("Blue")),
 		("2", _("Red")),
 		("3", _("Blinking blue")),
 		("4", _("Blinking red"))
 	])
-	config.usage.frontledrec_color = ConfigSelection(default="3", choices=[
+	config.usage.frontledrec_color = ConfigSelection(default="2", choices=[
 		("0", _("Off")),
 		("1", _("Blue")),
 		("2", _("Red")),
 		("3", _("Blinking blue")),
 		("4", _("Blinking red"))
 	])
-	config.usage.frontledstdby_color = ConfigSelection(default="0", choices=[
+	config.usage.frontledstdby_color = ConfigSelection(default="2", choices=[
 		("0", _("Off")),
 		("1", _("Blue")),
 		("2", _("Red")),
-		("3", _("Blinking blue")),
+		("3", _("Blinking violet")),
 		("4", _("Blinking red"))
 	])
-	config.usage.frontledrecstdby_color = ConfigSelection(default="3", choices=[
+	config.usage.frontledrecstdby_color = ConfigSelection(default="4", choices=[
 		("0", _("Off")),
 		("1", _("Blue")),
 		("2", _("Red")),
