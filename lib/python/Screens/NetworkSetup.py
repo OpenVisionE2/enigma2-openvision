@@ -3811,17 +3811,14 @@ class NetworkPassword(ConfigListScreen, Screen):
 			self.close()
 
 	def dataAvail(self, data):
+		data = ensure_str(data)
 		self.output_line += data
 		while True:
 			i = self.output_line.find('\n')
 			if i == -1:
 				break
-			self.processOutputLine(self.output_line[:i + 1])
+			self.output_line[:i + 1]
 			self.output_line = self.output_line[i + 1:]
-
-	def processOutputLine(self, line):
-		if line.find('password: '):
-			self.container.write("%s\n" % self.password.value)
 
 	def runFinished(self, retval):
 		del self.container.dataAvail[:]
