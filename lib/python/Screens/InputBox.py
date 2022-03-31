@@ -92,7 +92,7 @@ class InputBox(Screen):
 
 
 class PinInput(InputBox):
-	def __init__(self, session, service="", triesEntry=None, pinList=[], popup=False, simple=True, zap=False, *args, **kwargs):
+	def __init__(self, session, service="", triesEntry="", pinList=[], popup=False, simple=True, zap=False, *args, **kwargs):
 		InputBox.__init__(self, session=session, text="    ", maxSize=True, type=Input.PIN, *args, **kwargs)
 		self.zap = zap
 		self.waitTime = 15
