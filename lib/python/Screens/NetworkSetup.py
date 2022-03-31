@@ -217,7 +217,7 @@ class NetworkAdapterSelection(Screen, HelpableScreen):
 			interfacepng = LoadPixmap(resolveFilename(SCOPE_GUISKIN, icon))
 
 		num_configured_if = len(iNetwork.getConfiguredAdapters())
-		if num_configured_if >= 2:
+		if num_configured_if:
 			icon = "buttons/button_green.png" if active else "buttons/button_green_off.png"
 			defaultpng = LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, icon))
 		icon = "icons/lock_on.png" if active else "icons/lock_error.png"
