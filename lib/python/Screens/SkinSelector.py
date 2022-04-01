@@ -242,7 +242,7 @@ class LcdSkinSelector(SkinSelector):
 		self.rootDir = resolveFilename(SCOPE_LCDSKIN)
 		self.config = config.skin.display_skin
 		self.current = currentDisplaySkin
-		self.xmlList = ["skin_display.xml", "skin_display_picon.xml"]
+		self.xmlList = ["skin_display.xml", "skin_display_picon.xml", "skin_display_grautec.xml"]
 
 
 class SkinSelectorSummary(Screen):
