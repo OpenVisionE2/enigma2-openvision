@@ -44,7 +44,7 @@ from Components.SystemInfo import BoxInfo
 
 macaddress = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_LINK][0])["addr"].upper())
 config.macaddress = ConfigSubsection()
-config.macaddress.interfaces = ConfigSelection(default="1", choices=[("1", _("eth0"))])
+config.macaddress.interfaces = ConfigSelection(default="1", choices=[("1", "eth0")])
 config.macaddress.mac = ConfigText(default="", fixed_size=False)
 config.macaddress.change = ConfigText(default="%s" % macaddress)
 configmac = config.macaddress
@@ -1289,8 +1289,8 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		if os.path.exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/NetworkWizard/networkwizard.xml")):
 			menu.append((_("Network wizard"), "openwizard"))
 		if self.iface == 'eth0':
-			menu.append((_("MAC Address Setup"), "mac"))
 			menu.append((_("Enable/Disable IPv6"), "ipv6"))
+		menu.append((_("MAC Address Setup"), "mac")) # with this ident we collect MAC settings for wlan0 and eth0.
 
 		return menu
 
