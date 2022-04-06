@@ -45,7 +45,7 @@ class ChoiceBox(Screen, HelpableScreen):
 				self.skinName.insert(0, skinName)
 			else:
 				self.skinName = skinName + self.skinName
-		self["actions"] = HelpableNumberActionMap(self, ["ChoiceBoxActions", "NumberActions", "ColorActions", "NavigationActions"], {
+		self["actions"] = HelpableNumberActionMap(self, ["ChoiceBoxActions", "NumberActions", "ColorActions", "NavigationActions", "MenuActions"], {
 			"cancel": (self.keyCancel, _("Cancel the action selection and exit")),
 			"select": (self.keySelect, _("Run the currently highlighted action")),
 			"1": (self.keyNumberGlobal, _("Run the numbered action")),
@@ -58,6 +58,7 @@ class ChoiceBox(Screen, HelpableScreen):
 			"8": (self.keyNumberGlobal, _("Run the numbered action")),
 			"9": (self.keyNumberGlobal, _("Run the numbered action")),
 			"0": (self.keyNumberGlobal, _("Run the numbered action")),
+			"menu": self.KeyMenu,
 			"red": (self.keyRed, _("Run the RED action")),
 			"green": (self.keyGreen, _("Run the GREEN action")),
 			"yellow": (self.keyYellow, _("Run the YELLOW action")),
@@ -87,10 +88,16 @@ class ChoiceBox(Screen, HelpableScreen):
 		if current:
 			self.goEntry(current[0])
 		else:
-			self.cancel()
+			self.keyCancel()
 
 	def keyNumberGlobal(self, number):
 		self.goKey(str(number))
+
+	def KeyMenu(self):
+		if "menu" in self.keyMap:
+			self.goKey("menu")
+		else:
+			self.keyCancel()
 
 	def keyRed(self):
 		self.goKey("red")
