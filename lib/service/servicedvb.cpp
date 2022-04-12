@@ -2335,9 +2335,9 @@ int eDVBServicePlay::selectAudioStream(int i)
 
 	m_current_audio_pid = apid;
 #ifdef HAVE_RASPBERRYPI
-	if (m_is_primary && !m_noaudio && m_decoder->setAudioPID(apid, apidtype, amode))
+	if ((m_is_primary || !m_noaudio) && m_decoder->setAudioPID(apid, apidtype, amode))
 #else
-	if (m_is_primary && !m_noaudio && m_decoder->setAudioPID(apid, apidtype))
+	if ((m_is_primary || !m_noaudio) && m_decoder->setAudioPID(apid, apidtype))
 #endif
 	{
 		eDebug("[eDVBServicePlay] set audio pid %04x failed", apid);
