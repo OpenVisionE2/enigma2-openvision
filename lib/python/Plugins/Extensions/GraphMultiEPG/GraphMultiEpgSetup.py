@@ -46,7 +46,7 @@ class GraphMultiEpgSetup(ConfigListScreen, Screen):
 		self.list.append(getConfigListEntry(_("Prime time"), config.misc.graph_mepg.prime_time))
 		self.list.append(getConfigListEntry(_("Items per page "), config.misc.graph_mepg.items_per_page))
 		self.list.append(getConfigListEntry(_("Items per page for list screen"), config.misc.graph_mepg.items_per_page_listscreen))
-		self.list.append(getConfigListEntry(_("Start with list screen"), config.misc.graph_mepg.default_mode))
+		self.list.append(getConfigListEntry(_("Show list with PiP"), config.misc.graph_mepg.default_mode))
 		self.list.append(getConfigListEntry(_("Skip empty services"), config.misc.graph_mepg.overjump))
 		self.list.append(getConfigListEntry(_("Service title mode"), config.misc.graph_mepg.servicetitle_mode))
 		self.list.append(getConfigListEntry(_("Round start time on"), config.misc.graph_mepg.roundTo))
