@@ -55,13 +55,14 @@ class ImportChannels():
 			result = urlopen(request, timeout=timeout)
 		except URLError as err:
 			if "[Errno -3]" in str(err.reason):
-				print("[ImportChannels] Network is not up yet, delay 5 seconds")
-				# network not up yet
-				sleep(5)
-				return self.getUrl(url, timeout)
-			print("[ImportChannels] URLError ", err)
-			raise err
-		return result
+				try:
+					print("[ImportChannels] Network is not up yet, delay 5 seconds")
+					# network not up yet
+					sleep(5)
+					return self.getUrl(url, timeout)
+				except URLError as err:
+					print("[ImportChannels] URLError ", err)
+					return result
 
 	def getTerrestrialUrl(self):
 		url = config.usage.remote_fallback_dvb_t.value
