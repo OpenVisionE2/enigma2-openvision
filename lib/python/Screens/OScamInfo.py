@@ -256,7 +256,7 @@ class OscamInfo:
 						if ecmtime == "0" or ecmtime == "":
 							ecmtime = _("n/a")
 						else:
-							ecmtime = str(float(ecmtime) / 1000)[:5]
+							ecmtime = str(float(ecmtime) // 1000)[:5]
 					else:
 						ecmtime = "not available"
 					srvname = cl.find("request").text
@@ -285,11 +285,9 @@ class OscamInfo:
 							tmp[cl.attrib["type"]].append((name, proto, "%s:%s" % (caid, srvid), srvname_short, ecmtime, ip, connstatus))
 			else:
 				cdata = 'b"<![CDATA"'
-				if cdata not in result[1]:
-					tmp = result[1].replace("<log>", "<log><![CDATA[").replace("</log>", "]]></log>")
-				else:
+				if cdata:
 					tmp = result[1]
-				data = ElementTree.XML(result[1])
+				data = ElementTree.XML(tmp)
 				log = data.find("log")
 				logtext = log.text
 			if typ == "s":
@@ -676,7 +674,7 @@ class oscInfo(Screen, OscamInfo):
 		self.scrolling = False
 		self.webif_data = self.readXML(typ=self.what)
 		ypos = 10
-		ysize = 350
+		ysize = 340
 		self.rows = 12
 		self.itemheight = 25
 		self.sizeLH = sizeH
@@ -1202,8 +1200,8 @@ class oscReaderStats(Screen, OscamInfo):
 						rcs = j.attrib["rcs"]
 						num = j.text
 						if rcs == "found":
-							avg_time = str(float(avgtime) / 1000)[:5]
-							last_time = str(float(lasttime) / 1000)[:5]
+							avg_time = str(float(avgtime) // 1000)[:5]
+							last_time = str(float(lasttime) // 1000)[:5]
 							if "lastrequest" in j.attrib:
 								lastreq = j.attrib["lastrequest"]
 								try:
