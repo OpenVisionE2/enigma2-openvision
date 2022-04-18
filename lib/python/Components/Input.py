@@ -7,7 +7,6 @@ from Components.VariableText import VariableText
 from Tools.NumericalTextInput import NumericalTextInput
 
 
-
 class Input(VariableText, GUIComponent, NumericalTextInput):
 	TEXT = 0
 	PIN = 1
