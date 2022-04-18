@@ -6,7 +6,6 @@ from Components.GUIComponent import GUIComponent
 from Components.VariableText import VariableText
 from Tools.NumericalTextInput import NumericalTextInput
 
-pyunichr = unichr if PY2 else chr
 
 
 class Input(VariableText, GUIComponent, NumericalTextInput):
@@ -234,7 +233,7 @@ class Input(VariableText, GUIComponent, NumericalTextInput):
 		if self.allMarked:
 			self.deleteAllChars()
 			self.allMarked = False
-		self.insertChar(pyunichr(code), self.currPos, False, False)
+		self.insertChar(chr(code), self.currPos, False, False)
 		self.innerRight()
 		self.update()
 

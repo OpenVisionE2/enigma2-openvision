@@ -1538,10 +1538,7 @@ class PacketManager(Screen, NumericalTextInput):
 				self.setNextIdx(keyvalue[0])
 
 	def keyGotAscii(self):
-		if PY2:
-			keyvalue = unichr(getPrevAsciiCode()).encode("utf-8")
-		else:
-			keyvalue = chr(getPrevAsciiCode()).encode("utf-8")
+		keyvalue = chr(getPrevAsciiCode()).encode("utf-8")
 		if len(keyvalue) == 1:
 			self.setNextIdx(keyvalue[0])
 

@@ -48,7 +48,6 @@ from Screens.EventView import EventViewEPGSelect
 import os
 import unicodedata
 from time import time
-from six import PY2
 
 profile("ChannelSelection.py after imports")
 
@@ -1877,9 +1876,9 @@ class ChannelSelectionBase(Screen):
 				else:
 					self.numberSelectionActions(number)
 			else:
-				unichar = self.numericalTextInput.getKey(number)
-				if len(unichar) == 1:
-					self.servicelist.moveToChar(unichar[0])
+				charstr = self.numericalTextInput.getKey(number)
+				if len(charstr) == 1:
+					self.servicelist.moveToChar(charstr[0])
 
 	def numberSelectionActions(self, number):
 		if not(hasattr(self, "movemode") and self.movemode):
@@ -1900,12 +1899,9 @@ class ChannelSelectionBase(Screen):
 		self.selectionNumber = ""
 
 	def keyAsciiCode(self):
-		if PY2:
-			unichar = unichr(getPrevAsciiCode())
-		else:
-			unichar = chr(getPrevAsciiCode())
-		if len(unichar) == 1:
-			self.servicelist.moveToChar(unichar[0])
+		charstr = chr(getPrevAsciiCode())
+		if len(charstr) == 1:
+			self.servicelist.moveToChar(charstr[0])
 
 	def getRoot(self):
 		return self.servicelist.getRoot()

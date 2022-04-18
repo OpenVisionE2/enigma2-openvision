@@ -18,7 +18,6 @@ from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 from Tools.NumericalTextInput import NumericalTextInput
 
-pyunichr = unichr if PY2 else chr
 
 VKB_DONE_ICON = 0
 VKB_ENTER_ICON = 1
@@ -1205,12 +1204,8 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 
 	def keyGotAscii(self):
 		self.smsChar = None
-		if PY2:
-			if self.selectAsciiKey(str(pyunichr(getPrevAsciiCode()).encode("UTF-8", "ignore"))):
-				self.processSelect()
-		else:
-			if self.selectAsciiKey(str(pyunichr(getPrevAsciiCode()))):
-				self.processSelect()
+		if self.selectAsciiKey(str(chr(getPrevAsciiCode()))):
+			self.processSelect()
 
 	def selectAsciiKey(self, char):
 		if char == u" ":
