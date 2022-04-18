@@ -258,12 +258,15 @@ class RecordTimer(Timer):
 		# list-creating loop under the lock.
 		#
 		with writeLock:
-			file = open("%s.writing" % self.timersFilename, "w")
-			file.write("\n".join(timerList))
-			file.flush()
-			fsync(file.fileno())
-			file.close()
-			rename("%s.writing" % self.timersFilename, self.timersFilename)
+			try:
+				file = open("%s.writing" % self.timersFilename, "w")
+				file.write("\n".join(timerList))
+				file.flush()
+				fsync(file.fileno())
+				file.close()
+				rename("%s.writing" % self.timersFilename, self.timersFilename)
+			except UnicodeEncodeError as err:
+				print("[RecordTimer] %s" % err)
 
 	def saveTimer(self):
 		return self.saveTimers()
