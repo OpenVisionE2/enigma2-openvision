@@ -361,7 +361,7 @@ def getGlibcVersion():
 	if process.returncode == 0:
 		for line in stdout.split("\n"):
 			if line.startswith("GNU C Library"):
-				data = line.split()[-1]
+				data = line.split(",")[0].split()[-1]
 				if data.endswith("."):
 					data = data[0:-1]
 				return data
