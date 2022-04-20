@@ -130,11 +130,11 @@ class Harddisk:
 				try:
 					stat = statvfs(dev)
 					cap = int(stat.f_blocks * stat.f_bsize)
-					return cap / 1000 / 1000
+					return cap // 1000 // 1000
 				except (IOError, OSError):
 					return 0
 		cap = int(line)
-		return cap / 1000 * 512 / 1000
+		return cap // 1000 * 512 // 1000
 
 	def capacity(self):
 		cap = self.diskSize()
@@ -142,7 +142,7 @@ class Harddisk:
 			return ""
 		if cap < 1000:
 			return _("%d MB") % cap
-		return _("%.2f GB") % (cap / 1000.0)
+		return _("%.2f GB") % (cap // 1000.0)
 
 	def model(self):
 		if self.device[:2] == "hd":
@@ -161,7 +161,7 @@ class Harddisk:
 		if dev:
 			try:
 				stat = statvfs(dev)
-				return (stat.f_bfree / 1000) * (stat.f_bsize / 1024)
+				return (stat.f_bfree // 1000) * (stat.f_bsize // 1024)
 			except (IOError, OSError):
 				pass
 		return -1
@@ -175,7 +175,7 @@ class Harddisk:
 		for mpath in mediapath:
 			try:
 				stat = statvfs(mpath)
-				freetot += (stat.f_bfree / 1000) * (stat.f_bsize / 1000)
+				freetot += (stat.f_bfree // 1000) * (stat.f_bsize // 1000)
 			except (IOError, OSError):
 				pass
 		return freetot
@@ -906,20 +906,20 @@ class MkfsTask(Task.LoggingTask):
 
 	def processOutput(self, data):
 		print("[Harddisk] MkfsTask - [Mkfs] %s" % data)
-		if "Writing inode tables:" in data:
+		if "Writing inode tables:" in str(data):
 			self.fsck_state = "inode"
-		elif "Creating journal" in data:
+		elif "Creating journal" in str(data):
 			self.fsck_state = "journal"
 			self.setProgress(80)
-		elif "Writing superblocks " in data:
+		elif "Writing superblocks " in str(data):
 			self.setProgress(95)
 		elif self.fsck_state == "inode":
-			if "/" in data:
+			if "/" in str(data):
 				try:
-					d = data.strip(" \x08\r\n").split("/", 1)
+					d = str(data).strip(" \x08\r\n").split("/", 1)
 					if "\x08" in d[1]:
 						d[1] = d[1].split("\x08", 1)[0]
-					self.setProgress(80 * int(d[0]) / int(d[1]))
+					self.setProgress(80 * int(d[0]) // int(d[1]))
 				except Exception as err:
 					print("[Harddisk] MkfsTask - [Mkfs] Error: %s" % err)
 				return  # Don't log the progess.
