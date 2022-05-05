@@ -137,8 +137,6 @@ eDVBResourceManager::eDVBResourceManager()
 		num_adapter++;
 	}
 
-	setUsbTuner();
-
 	if (eDVBAdapterLinux::exist(0))
 	{
 		eDVBAdapterLinux *adapter = new eDVBAdapterLinux(0);
@@ -146,6 +144,8 @@ eDVBResourceManager::eDVBResourceManager()
 		addAdapter(adapter, true);
 	}
 #endif
+	setUsbTuner();
+
 	eDebug("[eDVBResourceManager] found %zd adapter, %zd frontends(%zd sim) and %zd demux",
 		m_adapter.size(), m_frontend.size(), m_simulate_frontend.size(), m_demux.size());
 
