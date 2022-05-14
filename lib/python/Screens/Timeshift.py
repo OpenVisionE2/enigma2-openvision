@@ -5,7 +5,7 @@ from Components.config import config
 from Screens.LocationBox import defaultInhibitDirs, TimeshiftLocationBox
 from Screens.MessageBox import MessageBox
 from Screens.Setup import Setup
-from Tools.Directories import fileAccess, hasHardLinks
+from Tools.Directories import fileAccess # hasHardLinks this gives false errors.
 
 
 class TimeshiftSettings(Setup):
@@ -80,10 +80,10 @@ class TimeshiftSettings(Setup):
 			self.errorItem = self["config"].getCurrentIndex()
 			footnote = _("Directory '%s' not writeable!") % path
 			green = ""
-		elif not hasHardLinks(path):
-			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("Directory '%s' can't be linked to recordings!") % path
-			green = ""
+		#elif not hasHardLinks(path):
+			#self.errorItem = self["config"].getCurrentIndex()
+			#footnote = _("Directory '%s' can't be linked to recordings!") % path
+			#green = ""
 		else:
 			self.errorItem = -1
 			footnote = ""
