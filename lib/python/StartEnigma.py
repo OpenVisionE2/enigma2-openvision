@@ -311,7 +311,7 @@ def runScreen():
 		profile("VFDSymbols")
 		import Components.VfdSymbols
 		Components.VfdSymbols.SymbolsCheck(session)
-	session.scart = AutoScartControl(session)  # We need session.scart to access it from within menu.xml.
+	session.scart = AutoScartControl(session) if enigma.eAVSwitch.getInstance().haveScartSwitch() else None  # We need session.scart to access it from within menu.xml.
 	profile("InitTrashcan")
 	import Tools.Trashcan
 	Tools.Trashcan.init(session)
@@ -611,8 +611,10 @@ from Screens.Menu import MainMenu, mdom
 profile("GloabalActions")
 from GlobalActions import globalActionMap
 
-profile("Scart")
-from Screens.Scart import Scart
+if enigma.eAVSwitch.getInstance().haveScartSwitch():
+	profile("Scart")
+	print("[StartEnigma] Initialising Scart module")
+	from Screens.Scart import Scart
 
 profile("VolumeControl")
 from Components.VolumeControl import VolumeControl
