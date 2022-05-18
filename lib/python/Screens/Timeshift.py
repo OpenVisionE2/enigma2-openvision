@@ -1,5 +1,5 @@
-from os import stat
-from os.path import isdir, join as pathjoin
+from os import stat, statvfs, makedirs
+from os.path import isdir, exists, join as pathjoin
 
 from Components.config import config
 from Screens.LocationBox import defaultInhibitDirs, TimeshiftLocationBox
@@ -68,13 +68,21 @@ class TimeshiftSettings(Setup):
 		self.changedEntry()
 
 	def pathStatus(self, path):
-		if not isdir(path):
+		if not exists(config.usage.timeshift_path.value):
+			makedirs(config.usage.timeshift_path.value)
+		size = statvfs(config.usage.timeshift_path.value)
+		free = int((size.f_bfree * size.f_frsize) // (1024 * 1024))
+		if isdir(path) and not stat(path).st_dev in self.inhibitDevs and fileAccess(path, "w") and free <= 200:
+			self.errorItem = self["config"].getCurrentIndex()
+			footnote = _("'%s' %d MB little space available") % (path, free)
+			green = ""
+		elif not isdir(path):
 			self.errorItem = self["config"].getCurrentIndex()
 			footnote = _("Directory '%s' does not exist!") % path
 			green = ""
 		elif stat(path).st_dev in self.inhibitDevs:
 			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("Flash directory '%s' not allowed!") % path
+			footnote = _("'%s'= Internal Flash. It is not a storage device") % path
 			green = ""
 		elif not fileAccess(path, "w"):
 			self.errorItem = self["config"].getCurrentIndex()
