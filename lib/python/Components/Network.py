@@ -137,18 +137,15 @@ class Network:
 
 	def writeNameserverConfig(self):
 		try:
-			Console().ePopen('rm -f /etc/resolv.conf')
 			fp = open('/etc/resolv.conf', 'w')
 			for nameserver in self.nameservers:
 				fp.write("nameserver %d.%d.%d.%d\n" % tuple(nameserver))
 			fp.close()
 			if config.usage.dns.value.lower() not in ("dhcp-router", "custom"):
-				Console().ePopen('rm -f /etc/enigma2/nameserversdns.conf')
 				fp = open('/etc/enigma2/nameserversdns.conf', 'w')
 				for nameserver in self.nameservers:
 					fp.write("nameserver %d.%d.%d.%d\n" % tuple(nameserver))
 				fp.close()
-			#self.restartNetwork()
 		except:
 			print("[Network] resolv.conf or nameserversdns.conf - writing failed")
 
