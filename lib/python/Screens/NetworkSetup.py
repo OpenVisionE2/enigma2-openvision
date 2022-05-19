@@ -429,7 +429,6 @@ class NameserverSetup(ConfigListScreen, HelpableScreen, Screen):
 class MACSettings(Setup):
 	def __init__(self, session):
 		Setup.__init__(self, session, setup="MACAddress")
-		self.setTitle(_("MAC Address Setup"))
 		self["actions"] = ActionMap(["OkCancelActions"], {
 			"cancel": self.keyCancel,
 			"ok": self.ok,
