@@ -2069,9 +2069,9 @@ class InfoBarTimeshift():
 			if config.usage.timeshift_path.value:
 				size = statvfs(config.usage.timeshift_path.value)
 				free = int((size.f_bfree * size.f_frsize) // (1024 * 1024))
-				if free <= 200:
+				if free <= 1000:
 					return AddNotification(MessageBox, _("Free %d MB: Low space available for timeshift. Change device") % free, type=MessageBox.TYPE_ERROR, timeout=10)
-			if not ts.startTimeshift() and free > 200:
+			if not ts.startTimeshift() and free > 1000:
 				# we remove the "relative time" for now.
 				#self.pvrStateDialog["timeshift"].setRelative(time.time())
 

@@ -1,5 +1,5 @@
-from os import stat, statvfs, makedirs
-from os.path import isdir, exists, join as pathjoin
+from os import stat, statvfs
+from os.path import isdir, join as pathjoin
 
 from Components.config import config
 from Screens.LocationBox import defaultInhibitDirs, TimeshiftLocationBox
@@ -68,11 +68,9 @@ class TimeshiftSettings(Setup):
 		self.changedEntry()
 
 	def pathStatus(self, path):
-		if not exists(config.usage.timeshift_path.value):
-			makedirs(config.usage.timeshift_path.value)
 		size = statvfs(config.usage.timeshift_path.value)
 		free = int((size.f_bfree * size.f_frsize) // (1024 * 1024))
-		if isdir(path) and not stat(path).st_dev in self.inhibitDevs and fileAccess(path, "w") and free <= 200:
+		if isdir(path) and not stat(path).st_dev in self.inhibitDevs and fileAccess(path, "w") and free <= 1000:
 			self.errorItem = self["config"].getCurrentIndex()
 			footnote = _("'%s' %d MB little space available") % (path, free)
 			green = ""

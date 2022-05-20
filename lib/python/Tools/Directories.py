@@ -71,7 +71,7 @@ defaultPaths = {
 	SCOPE_PLAYLIST: (eEnv.resolve("${sysconfdir}/enigma2/playlist/"), PATH_CREATE),
 	SCOPE_MEDIA: ("/media/", PATH_DONTCREATE),
 	SCOPE_HDD: ("/media/hdd/movie/", PATH_DONTCREATE),
-	SCOPE_TIMESHIFT: ("/media/hdd/timeshift/", PATH_DONTCREATE),
+	SCOPE_TIMESHIFT: ("/media/hdd/timeshift/recordings/", PATH_DONTCREATE),
 	SCOPE_DEFAULTDIR: (eEnv.resolve("${datadir}/enigma2/defaults/"), PATH_CREATE),
 	SCOPE_LIBDIR: (eEnv.resolve("${libdir}/"), PATH_DONTCREATE)
 }

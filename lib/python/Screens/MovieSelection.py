@@ -4,7 +4,7 @@ if PY2:
 	from cPickle import dump, load
 else:
 	from pickle import dump, load
-from os import W_OK, access, listdir, mkdir, makedirs, rename, rmdir, stat
+from os import W_OK, access, listdir, mkdir, rename, rmdir, stat
 from os.path import abspath, basename, exists, isdir, isfile, join as pathjoin, normpath, pardir, realpath, split, splitext
 from time import time
 
@@ -1093,8 +1093,6 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 
 	def loadLocalSettings(self):
 		'Load settings, called when entering a directory'
-		if not exists(config.usage.timeshift_path.value):
-			makedirs(config.usage.timeshift_path.value)
 		if config.movielist.settings_per_directory.value:
 			path = pathjoin(config.movielist.last_videodir.value, ".e2settings.pkl")
 			try:
