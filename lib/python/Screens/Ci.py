@@ -21,6 +21,10 @@ def setCIBitrate(configElement):
 	eDVBCI_UI.getInstance().setClockRate(configElement.slotid, eDVBCI_UI.rateNormal if configElement.value == "no" else eDVBCI_UI.rateHigh)
 
 
+def setCIEnabled(configElement):
+    eDVBCI_UI.getInstance().setEnabled(configElement.slotid, configElement.value)
+
+
 def setdvbCiDelay(configElement):
 	open(BoxInfo.getItem("CommonInterfaceCIDelay"), "w").write(configElement.value)
 	configElement.save()
@@ -36,6 +40,9 @@ def InitCiConfig():
 	if BoxInfo.getItem("CommonInterface"):
 		for slot in range(BoxInfo.getItem("CommonInterface")):
 			config.ci.append(ConfigSubsection())
+			config.ci[slot].enabled = ConfigYesNo(default=True)
+			config.ci[slot].enabled.slotid = slot
+			config.ci[slot].enabled.addNotifier(setCIEnabled)
 			config.ci[slot].canDescrambleMultipleServices = ConfigSelection(choices=[("auto", _("auto")), ("no", _("no")), ("yes", _("yes"))], default="auto")
 			config.ci[slot].use_static_pin = ConfigYesNo(default=True)
 			config.ci[slot].static_pin = ConfigPIN(default=0)
@@ -438,8 +445,10 @@ class CiSelection(Screen):
 		self.state[slot] = state
 		if self.slot > 1:
 			self.list.append(("**************************", ConfigNothing(), 3, slot))
-		self.list.append((_("Reset"), ConfigNothing(), 0, slot))
-		self.list.append((_("Init"), ConfigNothing(), 1, slot))
+		self.addToList(getConfigListEntry(_("CI %s enabled" % slot), config.ci[slot].enabled), -1, slot)
+		if not self.state[slot] == 3:  # module disabled by the user
+			self.list.append((_("Reset"), ConfigNothing(), 0, slot))
+			self.list.append((_("Init"), ConfigNothing(), 1, slot))
 
 		if self.state[slot] == 0: #no module
 			self.list.append((_("no module found"), ConfigNothing(), 2, slot))
