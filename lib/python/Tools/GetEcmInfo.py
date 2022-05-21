@@ -43,7 +43,7 @@ class GetEcmInfo:
 			data = self.getText()
 			return True
 		else:
-			info['ecminterval0'] = int(time.time() - ecm_time + 0.5)
+			info['ecminterval0'] = (int(time.time()) - ecm_time + 0.5)
 
 	def getEcm(self):
 		return (self.pollEcmData(), ecm)

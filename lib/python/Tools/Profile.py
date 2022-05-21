@@ -55,7 +55,7 @@ def profile(checkPoint):
 		if checkPoint in profileData:
 			timeStamp = profileData[checkPoint]
 			if totalTime:
-				percentage = timeStamp * (PERCENTAGE_END - PERCENTAGE_START) / totalTime + PERCENTAGE_START
+				percentage = timeStamp * (PERCENTAGE_END - PERCENTAGE_START) // totalTime + PERCENTAGE_START
 			else:
 				percentage = PERCENTAGE_START
 			if model == "axodin":

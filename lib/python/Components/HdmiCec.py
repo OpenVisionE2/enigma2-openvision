@@ -250,8 +250,8 @@ class HdmiCec:
 		physicaladdress = eHdmiCEC.getInstance().getPhysicalAddress()
 		if devicetypeSend:
 			devicetype = eHdmiCEC.getInstance().getDeviceType()
-			return str(struct.pack('BBB', int(physicaladdress / 256), int(physicaladdress % 256), devicetype))
-		return str(struct.pack('BB', int(physicaladdress / 256), int(physicaladdress % 256)))
+			return str(struct.pack('BBB', int(physicaladdress // 256), int(physicaladdress % 256), devicetype))
+		return str(struct.pack('BB', int(physicaladdress // 256), int(physicaladdress % 256)))
 
 	def wakeupMessages(self):
 		if config.hdmicec.enabled.value:
