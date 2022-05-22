@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: IMS <ims@openpli.org>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -1262,10 +1262,6 @@ msgstr "%s KSymb/s"
 msgid "%s MHz"
 msgstr "%s MHz"
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s importováno ze záložního tuneru"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1309,9 +1305,18 @@ msgstr " Žádné dostupné aktualizace."
 msgid "%s?"
 msgstr ""
 
+#
+#, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr " %s dostupná aktualizace"
+
 #, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Adresář obsahuje %(file)s a %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -1841,27 +1846,26 @@ msgid "A/V settings"
 msgstr "Nastavení A/V"
 
 msgid "AAC downmix"
-msgstr "AAC downmix"
+msgstr "AAC přepočet"
 
 #, fuzzy
 msgid "AAC plus downmix"
-msgstr "AAC downmix"
+msgstr "AAC přepočet"
 
 #
-#, fuzzy
 msgid "AAC transcoding"
-msgstr "Transkódování: "
+msgstr "AAC transkódování"
 
 msgid "AC3"
 msgstr ""
 
 msgid "AC3 downmix"
-msgstr "AC3 downmix"
+msgstr "AC3 přepočet"
 
 #
 #, fuzzy
 msgid "AC3 plus transcoding"
-msgstr "Transkódování: "
+msgstr "AC3 transkódování"
 
 msgid "ACQUIRING TSID/ONID"
 msgstr "ACQUIRING TSID/ONID"
@@ -2324,7 +2328,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3411,6 +3415,11 @@ msgstr "K"
 msgid "CH%s"
 msgstr "K%s"
 
+#
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "FCC povolen"
+
 msgid "CI (Common Interface) Setup"
 msgstr "CI (Common Interface)"
 
@@ -3787,12 +3796,12 @@ msgstr "Číslo kanálu a název programu"
 msgid "Channelnumber, picon and servicename"
 msgstr "Číslo kanálu, pikona a název programu"
 
-#
-msgid "Channels"
-msgstr "Kanály"
-
 msgid "Channels and EPG"
 msgstr "Programy a EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 #
 msgid "Channels only"
@@ -3931,25 +3940,24 @@ msgstr ""
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
-#, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
-msgstr "Nastavuje, zda bude vícekanálový zvuk přepočítáván na stereo."
+msgstr "Zvolte, zda by měly být zvukové stopy AAC překódovány."
 
 #, fuzzy
 msgid "Choose whether AC3 Plus sound tracks should be transcoded to AC3."
-msgstr "Nastavuje, zda bude vícekanálový zvuk přepočítáván na stereo."
+msgstr "Zvolte, zda by měly být zvukové stopy AC3 překódovány."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Nastavuje, zda bude vícekanálový zvuk přepočítáván na stereo."
+msgstr "Zvolte, zda by měly být vícekanálové zvukové stopy acc+ přepočítávány na stereo."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Nastavuje, zda bude vícekanálový zvuk přepočítáván na stereo."
+msgstr "Zvolte, zda mají být zvukové stopy WMA přepočítávány."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
-msgstr "Nastavuje, zda bude vícekanálový zvuk přepočítáván na stereo."
+msgstr "Zvolte, zda by měly být vícekanálové zvukové stopy acc+ přepočítávány na stereo."
 
 msgid "Choose whether to scan a single transponder, one satellite or multiple satellites."
 msgstr "Vyberte, zda chcete prohledat jeden transpondér, jeden satelit nebo více satelitů."
@@ -4040,7 +4048,13 @@ msgstr "Klient streamuje z tohoto přijímače!"
 msgid "Client mode"
 msgstr "inicializační modul"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4626,7 +4640,7 @@ msgid "Configure whether multi channel PCM sound should be enabled."
 msgstr "Nastavuje, zda by měl být povolen vícekanálový PCM zvuk."
 
 msgid "Configure whether multi channel sound tracks should be downmixed to stereo."
-msgstr "Nastavuje, zda bude vícekanálový zvuk přepočítáván na stereo."
+msgstr "Nastavuje, zda budou vícekanálové zvukové stopy přepočítávány na stereo."
 
 msgid "Configure whether or not a rotor position will be displayed on the infobar"
 msgstr "Nastavuje, zda (a jak) bude zobrazována pozice pozicioneru v infobaru."
@@ -4714,7 +4728,9 @@ msgstr "Připojené překódování, omezení - bez PiP!"
 msgid "Connection information"
 msgstr "Informace o činnosti správce pluginů"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -5022,9 +5038,8 @@ msgstr "Česká republika"
 msgid "D"
 msgstr "D"
 
-#, fuzzy
 msgid "DAC"
-msgstr "PDC"
+msgstr "DAC"
 
 #
 msgid "DHCP"
@@ -5038,13 +5053,14 @@ msgid "DLNA support"
 msgstr "Podpora HLG"
 
 msgid "DTS"
-msgstr ""
+msgstr "DTS"
 
 msgid "DTS downmix"
-msgstr "DTS downmix"
+msgstr "DTS přepočet"
 
+#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr ""
+msgstr "DTS-HD HR/DTS-HD MA/DTS"
 
 #
 msgid "DUAL LAYER DVD"
@@ -5367,7 +5383,7 @@ msgstr "Standardní"
 
 #, fuzzy
 msgid "Define additional delay in milliseconds before start of http(s) streams."
-msgstr "Zpoždění v milisekundách před začátkem přetáčení textu na displeji."
+msgstr "Nastavte dodatečné zpoždění v millisekundách před startem http(s) streamu, když např. připojený vzdálený tuner používá složitý systém DiSEqC."
 
 msgid "Defined / Active"
 msgstr ""
@@ -5518,7 +5534,7 @@ msgstr "Založit adresář"
 
 #
 msgid "Delete entry"
-msgstr "smazat položku"
+msgstr "Smazat položku"
 
 #
 msgid "Delete failed!"
@@ -5627,20 +5643,24 @@ msgid "Deselected packages usually occur because those packaged are incompatible
 msgstr ""
 
 # ##
-msgid "Destination of fallback remote receiver"
-msgstr "Umístění vzdáleného záložního přijímače"
-
-# ##
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "Umístění záložního tuneru pro ATSC"
 
 # ##
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "Umístění záložního přijímače pro DVB-C"
 
 # ##
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "Umístění záložního přijímače pro DVB-T"
+
+# ##
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "Umístění vzdáleného záložního přijímače"
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5765,10 +5785,6 @@ msgstr "adresář"
 msgid "Directory %s does not exist."
 msgstr "Adresář %s neexistuje."
 
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
-
 #
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
@@ -5802,13 +5818,12 @@ msgstr "Zakázat"
 msgid "Disable Animations"
 msgstr "Zakázat časovač"
 
-#, fuzzy
 msgid "Disable FCC during recordings"
-msgstr "Vždy vkládat ECM do nahrávek"
+msgstr "Zakázat FCC při nahrávání"
 
 #, fuzzy
 msgid "Disable Fast Channel Change"
-msgstr "Použít fastscan jména kanálů"
+msgstr "Fast Channel Change"
 
 #
 msgid "Disable Picture in Picture"
@@ -6231,8 +6246,9 @@ msgstr[0] "Dokončeno - instalován, aktualizován nebo odstraněn %d balíček 
 msgstr[1] "Dokončeno - instalovány, aktualizovány nebo odstraněny %d balíčky (%s)"
 msgstr[2] "Dokončeno - instalováno, aktualizováno nebo odstraněno %d balíčků (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "Přepočítávat"
 
 #
 #, fuzzy
@@ -6274,9 +6290,8 @@ msgstr "Stahuje se nový seznam balíčků. Prosím, čekejte..."
 msgid "Downloading plugin information. Please wait..."
 msgstr "Stahuji informace o pluginech. Prosím, čekejte..."
 
-#, fuzzy
 msgid "Downmix"
-msgstr "DTS downmix"
+msgstr "Přepočítávat"
 
 msgid "Drama"
 msgstr ""
@@ -6358,10 +6373,18 @@ msgstr "Výběr EPG"
 msgid "EPG Setup"
 msgstr "Nastavení"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #
 #, fuzzy
 msgid "EPG filename"
 msgstr "Název souboru"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 #
 msgid "EPG language selection 1"
@@ -6392,8 +6415,8 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "CHYBA - prohledávání selhalo (%s)!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
-msgstr "CHYBA stažení souboru /etc/enigma2/%s"
+msgid "ERROR downloading file %s"
+msgstr "CHYBA stažení souboru %s/%s"
 
 #
 msgid "East"
@@ -6519,7 +6542,7 @@ msgstr "Povolit automatický fastscan"
 #
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Povolen"
+msgstr "Povolit bluetooth audio"
 
 #
 msgid "Enable EIT EPG"
@@ -6527,7 +6550,7 @@ msgstr "Povolit EIT EPG"
 
 #, fuzzy
 msgid "Enable Fast Channel Change"
-msgstr "Povolit automatické prohledání kabelu"
+msgstr "Fast Channel Change"
 
 msgid "Enable Focus Animation"
 msgstr ""
@@ -6628,7 +6651,13 @@ msgstr "Povoluje nebo zakazuje používání HDMI-CEC."
 msgid "Enable parental protection"
 msgstr "Povolit rodičovskou ochranu"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Na vzdáleném přijímači se budou zkoušet naladit služby, které nelze naladit lokálně (např. tuner je obsazený nebo typ služby není k dispozici na místním tuneru). Zadejte úplnou URL adresu včetně http:// a číslo portu (normálně ...:8001), například http://druhy_box:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6685,6 +6714,9 @@ msgstr "Upravuje nastavení DNS.\n"
 #
 msgid "Enabled"
 msgstr "Povolen"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #
 #, fuzzy
@@ -6958,12 +6990,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Chyba při zrušení streamu!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Chyba při zapisování epg.dat na serveru"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Chyba při načítání epg.dat ze serveru"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6971,9 +6997,6 @@ msgid ""
 msgstr ""
 "Chyba při získávání informací ze záložního časovače\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Chyba při načítání umístění epg.dat na serveru"
 
 #
 #, python-format
@@ -7341,14 +7364,12 @@ msgid "FCC 1953"
 msgstr ""
 
 #
-#, fuzzy
 msgid "FCC enabled"
-msgstr "Povoleno"
+msgstr "FCC povolen"
 
 #
-#, fuzzy
 msgid "FCCSetup"
-msgstr "Nastavení"
+msgstr "Nastavení FCC"
 
 #
 msgid "FEC"
@@ -7443,10 +7464,22 @@ msgstr "Záložní přijímač"
 msgid "Fallback remote receiver IP"
 msgstr "IP adresa záložního přijímače"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "IP adresa záložního přijímače"
+
 msgid "Fallback remote receiver Port"
 msgstr "Port záložního přijímače"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Port záložního přijímače"
+
 msgid "Fallback remote receiver URL"
+msgstr "Adresa vzdáleného záložního přijímače"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "Adresa vzdáleného záložního přijímače"
 
 msgid "Fallback remote receiver for ATSC"
@@ -7506,13 +7539,13 @@ msgid "Fast"
 msgstr "Rychle"
 
 msgid "Fast Channel Change"
-msgstr ""
+msgstr "Fast Channel Change"
 
 msgid "Fast Channel Change Setup"
-msgstr ""
+msgstr "Fast Channel Change Nastavení"
 
 msgid "Fast Channel Change setup"
-msgstr ""
+msgstr "Fast Channel Change nastavení"
 
 #
 msgid "Fast DiSEqC"
@@ -7725,6 +7758,10 @@ msgstr "Francie"
 msgid "Free"
 msgstr ""
 
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
+msgstr ""
+
 msgid "Free flash"
 msgstr ""
 
@@ -7915,7 +7952,7 @@ msgstr "Hlavní AC3 zpoždění"
 #
 #, fuzzy
 msgid "General BT audio delay"
-msgstr "Hlavní AC3 zpoždění"
+msgstr "Hlavní bluetooth audio zpoždění"
 
 #
 msgid "General PCM delay"
@@ -8177,7 +8214,7 @@ msgid "HD list"
 msgstr "Seznam HD"
 
 msgid "HDMI"
-msgstr ""
+msgstr "HDMI"
 
 msgid "HDMI Colordepth"
 msgstr "Barevná hloubka HDMI"
@@ -8380,9 +8417,8 @@ msgstr ""
 msgid "Hiri Motu"
 msgstr ""
 
-#, fuzzy
 msgid "History Prev/Next"
-msgstr "Historie další"
+msgstr "Historie předchozí/další"
 
 msgid "History back"
 msgstr "Historie zpět"
@@ -8545,7 +8581,8 @@ msgstr "I"
 msgid "IP address"
 msgstr "IP adresa"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "IP adresa vzdáleného záložního přijímače"
 
 msgid "IPv6"
@@ -8686,18 +8723,20 @@ msgstr "Image: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Ze záložního přijímače se importují programy a/nebo EPG také v případě probuzení z pohotovostního režimu"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Ze záložního přijímače se importují programy a/nebo EPG po spuštění přijímače"
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "Ze záložního přijímače se importují programy a/nebo EPG také v případě, že jsou přijímač nebo enigma2 zrestartovány"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Import ze záložního tuneru selhal, %s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "Ze záložního přijímače se importují programy a/nebo EPG také v případě, že jsou přijímač nebo enigma2 zrestartovány"
 
 msgid "Import from remote receiver URL"
 msgstr "Importovat ze záložního přijímače"
@@ -9369,10 +9408,9 @@ msgstr ""
 msgid "LED brightness during standby."
 msgstr ""
 
-#
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Okamžité nahrávání"
+msgstr "Zakázat FCC při nahrávání"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -9590,9 +9628,6 @@ msgstr "Akce pro výběr skinu"
 
 msgid "List available networks"
 msgstr "Seznam dostupných sítí"
-
-msgid "List mode"
-msgstr "Seznam"
 
 #
 msgid "List of storage devices"
@@ -9910,7 +9945,8 @@ msgstr "Hlavní menu"
 msgid "Maintain old EPG data for"
 msgstr "Udržovat stará EPG data"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Umožňuje ruční spuštění importu programů a/nebo EPG z nabídky rozšíření"
 
 #
@@ -10071,9 +10107,8 @@ msgid "Mauritius"
 msgstr "Mauricius"
 
 #
-#, fuzzy
 msgid "Max channels"
-msgstr "Kanály"
+msgstr "Maximálně kanálů"
 
 msgid "Max memory positions"
 msgstr "Maximum pozic paměti"
@@ -10843,7 +10878,7 @@ msgstr "Nastavení sítě..."
 msgid "Network information"
 msgstr "Nastavení sítě"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 #
@@ -11004,9 +11039,6 @@ msgstr "Žádný popis k dispozici."
 #
 msgid "No displayable files on this medium found!"
 msgstr "Žádné zobrazitelné soubory na tomto médiu nebyly nalezeny!"
-
-msgid "No epg.dat file found server"
-msgstr "Na serveru nebyl nalezen soubor epg.dat"
 
 #
 msgid "No event info found, recording indefinitely."
@@ -11812,7 +11844,7 @@ msgid "Partitions"
 msgstr "Polarizace"
 
 msgid "Passthrough"
-msgstr ""
+msgstr "Průchozí"
 
 msgid "Password"
 msgstr "Heslo"
@@ -11886,6 +11918,10 @@ msgstr "Filipíny"
 #, fuzzy
 msgid "PiP Actions"
 msgstr "Pozice"
+
+#, fuzzy
+msgid "PiP mode"
+msgstr "Seznam"
 
 #
 msgid "PiP setup"
@@ -12391,6 +12427,10 @@ msgid "Port D"
 msgstr "Port D"
 
 msgid "Port of fallback remote receiver"
+msgstr "Port vzdáleného záložního přijímače"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Port vzdáleného záložního přijímače"
 
 #
@@ -13138,6 +13178,10 @@ msgid "Receiver name"
 msgstr "Název zařízení:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr "Přijímač nebo ovladač nepodporuje FCC"
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 #
@@ -13901,7 +13945,7 @@ msgid "SNR:"
 msgstr "SNR:"
 
 msgid "SPDIF"
-msgstr ""
+msgstr "SPDIF"
 
 msgid "SRT file"
 msgstr "SRT soubor"
@@ -14870,6 +14914,10 @@ msgstr ""
 msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
+#, fuzzy
+msgid "Server not available"
+msgstr "Tuner není dostupný."
+
 #
 #, fuzzy
 msgid "Server:"
@@ -14997,6 +15045,9 @@ msgstr "Programy"
 msgid "Set CI assignment for detection of available services."
 msgstr "Nastavte CI přiřazení pro zjištění dostupných programů."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -15006,7 +15057,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Výchozí nastavení hotkey?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "Nastavení záložních tunerů pro DVB-T/C nebo ATSC"
 
 msgid "Set as startup service"
@@ -15065,7 +15117,8 @@ msgstr "Systém"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Otestuje síťové nastavení přijímače.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Nastavte uživatelské jméno pro OpenWebIf z Vašeho záložního tuneru."
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -15093,10 +15146,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Zvolte způsob třídění:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Nastavte heslo pro OpenWebIf z Vašeho záložního tuneru."
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Nastavte port pro OpenWebIf z Vašeho záložního tuneru."
 
 #, fuzzy
@@ -15216,9 +15271,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Krátké názvy souborů"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "Zobrazit"
@@ -15446,6 +15498,10 @@ msgid "Show image items"
 msgstr "Nahrané soubory"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Zobrazit zprávu při úspěšném importu"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Vypínat přijímač ve Standby"
 
@@ -15479,6 +15535,10 @@ msgstr "Zobrazovat čísla v menu nebo pluginech"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Zobrazit poslední změny"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Zobrazit PiP"
 
 #
 #, fuzzy
@@ -15530,10 +15590,12 @@ msgstr "Výběr image"
 msgid "Show next page of description"
 msgstr "Zobrazit rozšířený popis"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Zobrazí zprávu, jestliže import ze vzdáleného přijímače byl neúspěšný"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Zobrazí zprávu po úspěšném importu programů a/nebo EPG ze vzdáleného přijímače"
 
 msgid "Show notification when import channels was not successful"
@@ -15742,6 +15804,10 @@ msgstr "Zobrazit/skrýt okno"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Zobrazit info"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Zobrazí zprávu po úspěšném importu programů a/nebo EPG ze vzdáleného přijímače"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Zobrazuje vysílání nebo informace na LCD."
@@ -16387,6 +16453,10 @@ msgstr "Výchozí adresář"
 msgid "Start from the beginning"
 msgstr "Spustit od začátku"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Importovat též při restartu přijímače/enigma2"
+
 msgid "Start instant recording"
 msgstr "Spustit okamžité nahrávání"
 
@@ -16419,9 +16489,6 @@ msgstr "Začátek ignorování vypnutí ve Standby"
 #
 msgid "Start timeshift"
 msgstr "Spustit timeshift"
-
-msgid "Start with list screen"
-msgstr "Start se seznamem"
 
 #
 msgid "Starting on"
@@ -16968,7 +17035,7 @@ msgstr ""
 "Pro případné korekce můžete kontaktovat autora\n"
 "na výše uvedené adrese.\n"
 "\n"
-"®27.3.2022"
+"®18.5.2022"
 
 #
 msgid "TS file is too large for ISO9660 level 1!"
@@ -17583,7 +17650,7 @@ msgstr "Umožňuje zobrazovat plnou cestu ukazující k aktuální obrazovce - m
 
 #, fuzzy
 msgid "This option allows you to switch audio to BT speakers."
-msgstr "Umožňuje nastavit automatickou úroveň hlasitosti."
+msgstr "Umožňuje přepnout zvuk do bluetooth reproduktorů."
 
 #, fuzzy
 msgid "This option allows you to use video sync mode."
@@ -17597,7 +17664,7 @@ msgstr "Nastavení může být užitečné pro dlouhé HDMI kabely."
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
-msgstr "Nastavuje hlavní zpoždění zvukových stereo stop."
+msgstr "Nastavuje hlavní zpoždění zvuku pro bluetooth reproduktory."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Nastavuje úroveň potlačení Mosquito Noise (Mosquito Noise je náhodný aliasing v důsledku silné komprese). Obvykle na úkor detailů obrazu."
@@ -18320,7 +18387,8 @@ msgstr ""
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "URL pro záložní vzdálený přijímač"
 
 msgid "USALS"
@@ -19061,8 +19129,9 @@ msgstr "EPG"
 msgid "WLAN connection"
 msgstr "WLAN připojení"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "WMA Pro přepočet"
 
 #
 #, fuzzy
@@ -19308,7 +19377,8 @@ msgstr "Při zapnutí TV bude satelitní přijímač automaticky probuzen z poho
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Jestliže je zapnuto, pak je možné přijímač probouzet v síti LAN pomocí Magic packetu."
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Do přehledu časovačů jsou importovány časovače ze záložního tuneru"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -19317,7 +19387,8 @@ msgstr "Pokud je povoleno a vyberete nový kanál ve výběru kanálů, pak výb
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Pokud je povoleno, pak můžete ovládat pomocí tlačítek se šipkami hlasitost namísto přístupu do seznamu kanálů"
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Můžete přizpůsobit nastavení OpenWebIf pro záložní tuner"
 
 #
@@ -19479,9 +19550,8 @@ msgstr "Jestliže je povoleno, toto nastavení má větší váhu než 'Preferov
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Jestliže je povoleno, toto nastavení má větší váhu než 'Preferovaný tuner'."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Jestliže je povoleno, timeshift se na pozadí automaticky spustí po nastavené době."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 #
 msgid "When enabled, use DHCP for the IP configuration."
@@ -19750,10 +19820,11 @@ msgstr "Ano"
 msgid "Yes (save index in setup tuner)"
 msgstr "Ano (uložit index v nastavení tuneru)"
 
-msgid "Yes and save"
-msgstr "Ano a uložit"
-
 msgid "Yes and save in movie dir"
+msgstr "Ano a uložit do adresáře filmů"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Ano a uložit do adresáře filmů"
 
 #
@@ -19892,6 +19963,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Nezvolili jste kanál pro nahrávání."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"
@@ -20060,9 +20135,8 @@ msgstr "Zambie"
 msgid "Zap"
 msgstr "Přepnout"
 
-#, fuzzy
 msgid "Zap Up/Down"
-msgstr "Přepnout dolů"
+msgstr "Přepnout nahoru/dolů"
 
 #, fuzzy
 msgid "Zap and record"
@@ -20399,14 +20473,13 @@ msgid "controlled by HDMI"
 msgstr "řízeno pomocí HDMI"
 
 msgid "convert to AC3"
-msgstr ""
+msgstr "konvertovat do AC3"
 
 msgid "convert to DTS"
-msgstr ""
+msgstr "konvertovat do DTS"
 
-#, fuzzy
 msgid "convert to multi-channel PCM"
-msgstr "Vícekanálové PCM"
+msgstr "konvertovat do vícekanálového PCM"
 
 msgid "cooking"
 msgstr "vaření"
@@ -20538,9 +20611,8 @@ msgstr "experimentální film/video"
 msgid "extra wide"
 msgstr "Extra široký"
 
-#, fuzzy
 msgid "extrawide"
-msgstr "Extra široký"
+msgstr "extra široký"
 
 #
 msgid "failed"
@@ -20670,8 +20742,9 @@ msgstr ""
 msgid "horizontal"
 msgstr "Horizontální"
 
+#, fuzzy
 msgid "http(s) stream start delay"
-msgstr ""
+msgstr "Počáteční zpoždění http(s) streamu"
 
 msgid "https://github.com/OpenVisionE2"
 msgstr ""
@@ -21009,7 +21082,6 @@ msgid "pre-school children's program"
 msgstr "program pro předškolní děti"
 
 #
-#, fuzzy
 msgid "priority"
 msgstr "Priorita"
 
@@ -21397,9 +21469,8 @@ msgstr "netestovatelné"
 msgid "until standby/restart"
 msgstr "do standby/restartu"
 
-#, fuzzy
 msgid "use best / controlled by HDMI"
-msgstr "řízeno pomocí HDMI"
+msgstr "použít nejlepší / řízeno pomocí HDMI"
 
 msgid "use_hdmi_cacenter"
 msgstr ""

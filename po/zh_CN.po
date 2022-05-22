@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2021-07-31 17:00+0800\n"
 "Last-Translator: 孤独之剑 <haotzyy1970@yahoo.com>\n"
 "Language-Team: 孤独之剑 <haotzyy1970@yahoo.com>\n"
@@ -1211,10 +1211,6 @@ msgstr ""
 msgid "%s MHz"
 msgstr ""
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s 从备用调谐器启用导入定时器"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1257,8 +1253,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s 个更新包可用"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "目录包含 %(file)s 和 %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -2140,7 +2144,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3115,6 +3119,10 @@ msgstr "频道"
 msgid "CH%s"
 msgstr "频道%s"
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "启用"
+
 msgid "CI (Common Interface) Setup"
 msgstr "CI 通用接口选择"
 
@@ -3459,11 +3467,12 @@ msgstr "频道号和服务名称"
 msgid "Channelnumber, picon and servicename"
 msgstr "频道号,picon和服务名称"
 
-msgid "Channels"
-msgstr "频道"
-
 msgid "Channels and EPG"
 msgstr "频道和EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 msgid "Channels only"
 msgstr "仅频道"
@@ -3693,7 +3702,13 @@ msgstr "客户端正在从该机顶盒中进行流式处理!"
 msgid "Client mode"
 msgstr "模块初始化"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4300,7 +4315,9 @@ msgstr "连接转码,限制-无PiP!"
 msgid "Connection information"
 msgstr "插件管理器活动信息"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -5124,17 +5141,21 @@ msgstr "取消"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
-msgstr "备用的遥控接收器目标"
-
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "ATSC远程备用接收器的目的地"
 
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "DVB-C远程备份接收器的目的地"
 
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "DVB-T远程备份接收器的目的地"
+
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "备用的遥控接收器目标"
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5234,10 +5255,6 @@ msgstr "目录"
 #, python-format
 msgid "Directory %s does not exist."
 msgstr "目录 %s 不存在."
-
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
 
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
@@ -5631,8 +5648,9 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "完成-已安装,更新或删除 %d 个程序包 (%s)"
 msgstr[1] "完成-已安装,更新或删除 %d 个程序包 (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "DTS缩减混音"
 
 #, fuzzy
 msgid "Download error"
@@ -5741,9 +5759,17 @@ msgstr "EPG选择"
 msgid "EPG Setup"
 msgstr "设置"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "文件名"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "EPG自动语言1"
@@ -5769,7 +5795,7 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "错误 - 扫描 (%s)失败!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
+msgid "ERROR downloading file %s"
 msgstr "下载文件 %s 时出错"
 
 msgid "East"
@@ -5878,7 +5904,7 @@ msgstr "启用自动快速扫描"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "启用"
+msgstr "允许编辑自定义组"
 
 msgid "Enable EIT EPG"
 msgstr "启用EIT EPG"
@@ -5973,7 +5999,13 @@ msgstr "使用HDMI-CEC启用或禁用."
 msgid "Enable parental protection"
 msgstr "启用家长保护"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "启用远程enigma2接收机来尝试介入本地服务器 (如：当本地调谐器被占用或者频道类型不可用时. 指定完整的URL 包括 http:// 和端口数字 (一般为...:8001),如： http://second_box:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6028,6 +6060,9 @@ msgstr "编辑机顶盒的域名服务器配置.\n"
 
 msgid "Enabled"
 msgstr "启用"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6271,12 +6306,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "停止串流出错！"
 
-msgid "Error when writing epg.dat on server"
-msgstr "在服务器上写入epg.dat时出错"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "从服务器检索epg.dat时出错"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6284,9 +6313,6 @@ msgid ""
 msgstr ""
 "检索备用定时器信息时出错\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "检索服务器上epg.dat的位置时出错"
 
 #, python-format
 msgid ""
@@ -6706,10 +6732,22 @@ msgstr "备用的远程接收器"
 msgid "Fallback remote receiver IP"
 msgstr "备用远程接收器IP"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "备用远程接收器IP"
+
 msgid "Fallback remote receiver Port"
 msgstr "备用远程接收器端口"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "备用远程接收器端口"
+
 msgid "Fallback remote receiver URL"
+msgstr "备用远程接收器URL"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "备用远程接收器URL"
 
 msgid "Fallback remote receiver for ATSC"
@@ -6956,6 +6994,10 @@ msgid "France"
 msgstr "法国"
 
 msgid "Free"
+msgstr ""
+
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
 msgstr ""
 
 msgid "Free flash"
@@ -7716,7 +7758,8 @@ msgstr "I"
 msgid "IP address"
 msgstr "IP地址"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "备用接收器IP地址"
 
 msgid "IPv6"
@@ -7846,18 +7889,20 @@ msgstr "镜像版本: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "从远程接收器URL导入频道或EPG,当接收器正在退出待机状态"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "启动接收器时从远程接收器URL导入频道或EPG"
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "重新启动接收器时,从远程接收器URL导入频道或EPG"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "从备用调谐器导入失败，%s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "重新启动接收器时,从远程接收器URL导入频道或EPG"
 
 msgid "Import from remote receiver URL"
 msgstr "从远程接收器URL导入"
@@ -8454,7 +8499,7 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "实时录制的位置"
+msgstr "媒体流里总是包含ECM"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -8644,9 +8689,6 @@ msgstr "主题选择操作"
 
 msgid "List available networks"
 msgstr "列出可用网络"
-
-msgid "List mode"
-msgstr "输出模式"
 
 msgid "List of storage devices"
 msgstr "存储设备的列表"
@@ -8928,7 +8970,8 @@ msgstr "主菜单"
 msgid "Maintain old EPG data for"
 msgstr "保留过期的EPG数据"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "可以通过以下方式手动启动通道导入EPG扩展菜单"
 
 msgid "Make this mark an 'in' point"
@@ -9740,7 +9783,7 @@ msgstr "网络配置..."
 msgid "Network information"
 msgstr "网络配置"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -9880,9 +9923,6 @@ msgstr "无可用信息."
 
 msgid "No displayable files on this medium found!"
 msgstr "当前位置未找到文件!"
-
-msgid "No epg.dat file found server"
-msgstr "在服务器上找不到epg.dat文件"
 
 msgid "No event info found, recording indefinitely."
 msgstr "EPG数据没有发现,无限制录制."
@@ -10677,6 +10717,10 @@ msgstr "菲律宾"
 msgid "PiP Actions"
 msgstr "位置"
 
+#, fuzzy
+msgid "PiP mode"
+msgstr "输出模式"
+
 msgid "PiP setup"
 msgstr "画中画设置"
 
@@ -11093,6 +11137,10 @@ msgid "Port D"
 msgstr "端口D"
 
 msgid "Port of fallback remote receiver"
+msgstr "备用接收器端口"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "备用接收器端口"
 
 msgid "Portugal"
@@ -11748,6 +11796,10 @@ msgid "Receiver name"
 msgstr "设备名:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr ""
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -13272,6 +13324,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "调谐器不可用."
+
+#, fuzzy
 msgid "Server:"
 msgstr "频道"
 
@@ -13384,6 +13440,9 @@ msgstr "频道"
 msgid "Set CI assignment for detection of available services."
 msgstr "设置用于检测可用服务的CI分配."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13393,7 +13452,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "重置所有热键?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "DVB-T/C或ATSC备用调谐器的识别"
 
 msgid "Set as startup service"
@@ -13448,7 +13508,8 @@ msgstr "系统设置"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "测试机顶盒的网络配置.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "从备用调谐器设置OpenWebif的用户ID"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13474,10 +13535,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "排序方式:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "从备用调谐器设置OpenWebif的密码"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "从备用调谐器设置OpenWebif的端口"
 
 #, fuzzy
@@ -13586,9 +13649,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "短文件名"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "显示"
@@ -13798,6 +13858,10 @@ msgid "Show image items"
 msgstr "显示电影"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "导入频道成功时显示通知"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "待机时关机"
 
@@ -13826,6 +13890,10 @@ msgstr "显示菜单或插件编号"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "显示最近版本"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "显示画中画"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -13873,10 +13941,12 @@ msgstr "删除镜像"
 msgid "Show next page of description"
 msgstr "显示扩展描述"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "从远程接收器URL导入频道和EPG时显示通知未完成"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "从远程接收器URL导入频道和EPG时显示通知已完成"
 
 msgid "Show notification when import channels was not successful"
@@ -14067,6 +14137,10 @@ msgstr "显示/隐藏窗口"
 #, fuzzy
 msgid "Showiframe"
 msgstr "显示信息"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "从远程接收器URL导入频道和EPG时显示通知已完成"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "在LCD显示电视内容或信息."
@@ -14630,6 +14704,10 @@ msgstr "启动目录"
 msgid "Start from the beginning"
 msgstr "重头开始"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "在重新启动enigma2时导入"
+
 msgid "Start instant recording"
 msgstr "启动即时录制"
 
@@ -14656,9 +14734,6 @@ msgstr "开始时间忽略待机下关机"
 
 msgid "Start timeshift"
 msgstr "启动时移"
-
-msgid "Start with list screen"
-msgstr "屏幕中心较低位置"
 
 msgid "Starting on"
 msgstr "开始"
@@ -16371,7 +16446,8 @@ msgstr "未知"
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "备用远程接收器URL"
 
 msgid "USALS"
@@ -17027,8 +17103,9 @@ msgstr "EPG设置"
 msgid "WLAN connection"
 msgstr "WLAN连接"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "AAC缩减混音"
 
 #, fuzzy
 msgid "WPA"
@@ -17261,7 +17338,8 @@ msgstr "一旦启用,当电视打开时,接收器将自动从待机状态唤醒.
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "一旦启用,机顶盒将可以通过LAN唤醒"
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "启用后,从备用调谐器导入定时器"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17270,7 +17348,8 @@ msgstr "一旦启用,当你在频道选项列表里选择新的频道时,频道�
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "一旦启用,你可以使用箭头控制音量来获取频道选项列表"
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "启用后,您可以自定义回退调谐器的OpenWebIf设置"
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17429,9 +17508,8 @@ msgstr "一旦启用,此设置将有比录制首选调谐器更大的适用范�
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "一旦启用,此设置将拥有比首选调谐器更大的适用范围."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "一旦启用,时移将在后台按指定时间之后自动启动."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "一旦启用,将使用DHCP来配置IP地址."
@@ -17688,10 +17766,11 @@ msgstr "是"
 msgid "Yes (save index in setup tuner)"
 msgstr "是（为设置转发器建立索引）"
 
-msgid "Yes and save"
-msgstr "是并保存"
-
 msgid "Yes and save in movie dir"
+msgstr "是并保存到movie目录"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "是并保存到movie目录"
 
 msgid "Yes to all"
@@ -17815,6 +17894,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "你没有选择要录制的频道."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"

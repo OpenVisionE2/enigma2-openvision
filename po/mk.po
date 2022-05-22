@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2021-02-19 14:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: Muzoss-VELEBRDO\n"
@@ -1088,10 +1088,6 @@ msgstr ""
 msgid "%s MHz"
 msgstr ""
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s е внесен од резервен тјунер"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1134,8 +1130,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s достапен ажуриран пакет"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Директориумот содржи %(file)s и %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -2016,7 +2020,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -2991,6 +2995,10 @@ msgstr "Канал"
 msgid "CH%s"
 msgstr "CH%s"
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "овозможено"
+
 msgid "CI (Common Interface) Setup"
 msgstr "Поставки за CI (Заеднички интерфејс)"
 
@@ -3335,11 +3343,12 @@ msgstr "Број и име на каналот"
 msgid "Channelnumber, picon and servicename"
 msgstr "Број, пикон и име на каналот"
 
-msgid "Channels"
-msgstr "Канали"
-
 msgid "Channels and EPG"
 msgstr "Канали и EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 msgid "Channels only"
 msgstr "Само канали"
@@ -3569,7 +3578,13 @@ msgstr "Клиент стримува од ресиверот!"
 msgid "Client mode"
 msgstr "иницијален модул"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4176,7 +4191,9 @@ msgstr "Поврзано транскодирање, ограничување - 
 msgid "Connection information"
 msgstr "Управување со Плагини: планирани активности"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -5000,17 +5017,21 @@ msgstr "Деселектирај"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
-msgstr "Внесете URL на резервниот пријемник"
-
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "Дестинација на резервниот тјунер за ATSC"
 
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "Дестинација на резервниот тјунер за DVB-C"
 
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "Дестинација на резервниот тјунер за DVB-T"
+
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "Внесете URL на резервниот пријемник"
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5110,10 +5131,6 @@ msgstr "Директориум"
 #, python-format
 msgid "Directory %s does not exist."
 msgstr "Директориумот %s не постои."
-
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
 
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
@@ -5513,8 +5530,9 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Gotovo - Instaliran, ažuriran ili отстранет %d paket (%s)"
 msgstr[1] "Gotovo - Instaliran, ažuriran ili отстранет %d paket (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "DTS downmix"
 
 #, fuzzy
 msgid "Download error"
@@ -5623,9 +5641,17 @@ msgstr "Избор на EPG"
 msgid "EPG Setup"
 msgstr "Поставки"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "име на фајлот"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "Избор на јазик EPG 1"
@@ -5651,7 +5677,7 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "ГРЕШКА - Пребарувањето не успеа (%s)!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
+msgid "ERROR downloading file %s"
 msgstr "ГРЕШКА при преземање на датотеката %s"
 
 msgid "East"
@@ -5760,7 +5786,7 @@ msgstr "Активирај автоматско брзо пребарување"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Овозможено"
+msgstr "Активирај го уредувањето букети"
 
 msgid "Enable EIT EPG"
 msgstr "Овозможете EIT EPG"
@@ -5855,7 +5881,13 @@ msgstr "Активирај или деактивирај користење на
 msgid "Enable parental protection"
 msgstr "Активирај родителска заштита"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Дозволете да пробате да пренесувате канал од дополнителен приемник енигма2 ако локалниот тјунер е зафатен. Наведете го целиот URL, вклучително и http:// и бројот на портата (обично ...:8001), пример: http://IP_addition.Приемник:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -5910,6 +5942,9 @@ msgstr "Уредете ги поставките за DNS на вашиот пр
 
 msgid "Enabled"
 msgstr "Овозможено"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6153,12 +6188,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Грешка при запирање на стримот!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Грешка при пишување на epg.dat на серверот"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Грешка при повторно враќање на epg.dat од серверот"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6166,9 +6195,6 @@ msgid ""
 msgstr ""
 "Грешка при враќање на информациите за тајмерот за замена\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Грешка при враќање на локацијата на epg.dat на серверот"
 
 #, python-format
 msgid ""
@@ -6588,10 +6614,22 @@ msgstr "Резервен далечински приемник"
 msgid "Fallback remote receiver IP"
 msgstr "IP резервен далечински управувач"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "IP резервен далечински управувач"
+
 msgid "Fallback remote receiver Port"
 msgstr "Порт на резервниот далечински приемник"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Порт на резервниот далечински приемник"
+
 msgid "Fallback remote receiver URL"
+msgstr "URL на резервниот далечински приемник"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "URL на резервниот далечински приемник"
 
 msgid "Fallback remote receiver for ATSC"
@@ -6838,6 +6876,10 @@ msgid "France"
 msgstr "Франција"
 
 msgid "Free"
+msgstr ""
+
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
 msgstr ""
 
 msgid "Free flash"
@@ -7598,7 +7640,8 @@ msgstr "И"
 msgid "IP address"
 msgstr "IP-адреса"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "IP на резервниот приемник"
 
 msgid "IPv6"
@@ -7732,18 +7775,20 @@ msgstr "Имиџ: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Увезете канали и / или EPG од URL-то на примателот, дури и ако приемникот излезе од режимот на стендбај \""
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Увезете канали и / или EPG од URL на далечински приемник кога ресиверот се стартува"
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "Увезете канали и / или EPG од URL-то на далечинскиот приемник кога ресиверот или енигмата2 се рестартира"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Увозот од резервниот приемник не успеа, %s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "Увезете канали и / или EPG од URL-то на далечинскиот приемник кога ресиверот или енигмата2 се рестартира"
 
 msgid "Import from remote receiver URL"
 msgstr "Увезете од URL-то на далечинскиот приемник"
@@ -8339,10 +8384,11 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Локација за инстант снимки"
+msgstr "Секогаш вклучувај ECM во снимките"
 
+#, fuzzy
 msgid "LED color during recording in standby"
-msgstr ""
+msgstr "Секогаш вклучувај ECM во снимките"
 
 #, fuzzy
 msgid "LED color during standby"
@@ -8528,9 +8574,6 @@ msgstr "Акции за избор на Скин"
 
 msgid "List available networks"
 msgstr "Прикажи ги достапните мрежи"
-
-msgid "List mode"
-msgstr "Режим на список"
 
 msgid "List of storage devices"
 msgstr "Список на уреди за меморија"
@@ -8812,7 +8855,8 @@ msgstr "Главно мени"
 msgid "Maintain old EPG data for"
 msgstr "Чувајте податоци за истечен EPG (за неколку минути)"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Ви овозможува рачно да започнете со увоз на канал и / или EPG преку менито за Plagin"
 
 msgid "Make this mark an 'in' point"
@@ -9624,7 +9668,7 @@ msgstr "Конфигурација на мрежа ..."
 msgid "Network information"
 msgstr "Конфигурација на мрежата"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -9764,9 +9808,6 @@ msgstr "Нема достапен опис."
 
 msgid "No displayable files on this medium found!"
 msgstr "Не се пронајдени датотеки што може да се прикажат на овој медиум!"
-
-msgid "No epg.dat file found server"
-msgstr "Не е пронајдена датотека epg.dat на серверот"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Не се пронајдени податоци за EPG. Започнете со неограничено снимање."
@@ -10561,6 +10602,10 @@ msgstr "Филипини"
 msgid "PiP Actions"
 msgstr "Позиција"
 
+#, fuzzy
+msgid "PiP mode"
+msgstr "Режим на список"
+
 msgid "PiP setup"
 msgstr "Поставки на PiP"
 
@@ -10977,6 +11022,10 @@ msgid "Port D"
 msgstr "Порт Д"
 
 msgid "Port of fallback remote receiver"
+msgstr "Порт за резервен далечински приемник"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Порт за резервен далечински приемник"
 
 msgid "Portugal"
@@ -11632,6 +11681,10 @@ msgid "Receiver name"
 msgstr "Име на уред:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr ""
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -13156,6 +13209,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "Тјунерот не е достапен."
+
+#, fuzzy
 msgid "Server:"
 msgstr "Канал"
 
@@ -13268,6 +13325,9 @@ msgstr "Канали"
 msgid "Set CI assignment for detection of available services."
 msgstr "Поставете ја задачата за CI за откривање на достапни канали."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13277,7 +13337,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Да се постават сите hotkey за стандардно?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "Поставете дополнителни резервни приемници за DVB-T / C или ATSC"
 
 msgid "Set as startup service"
@@ -13332,7 +13393,8 @@ msgstr "Систем"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Тестирајте ја мрежната конфигурација на приемникот.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Поставете го Корисничкиот ID на OpenWebif од вашиот резервен тјунер"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13358,10 +13420,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Изберете метод на сортирање:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Поставете ја лозинката за OpenWebif од вашиот резервен тјунер"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Поставете пор на OpenWebif од вашиот резервен тјунер"
 
 #, fuzzy
@@ -13470,9 +13534,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Кратки имиња на датотеки"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "Покажи"
@@ -13682,6 +13743,10 @@ msgid "Show image items"
 msgstr "Прикажи филмови"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Покажи известување кога увозните канали биле успешни"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Исклучи ако е во Стендбај"
 
@@ -13710,6 +13775,10 @@ msgstr "Покажи нумерирање на менито или плагин�
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Прикажи ги последните промени"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Покажи PiP (слика во слика)"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -13757,10 +13826,12 @@ msgstr "Избриши имиџ"
 msgid "Show next page of description"
 msgstr "Покажи проширен опис"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Покажи известување ако увозните канали и / или EPG од URL-то на далечинскиот приемник не се завршени"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Покажи известување кога ќе завршат увозните канали и / или EPG од URL-то на далечинскиот приемник. \""
 
 msgid "Show notification when import channels was not successful"
@@ -13952,6 +14023,10 @@ msgstr "Прикажи / скриј го прозорецот"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Покажи инфо"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Покажи известување кога ќе завршат увозните канали и / или EPG од URL-то на далечинскиот приемник. \""
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Покажи live ТВ или информации на LCD."
@@ -14512,6 +14587,10 @@ msgstr "Почетен директориум"
 msgid "Start from the beginning"
 msgstr "Започни од почеток"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Дури и при увозот/ рестартирај енигма2"
+
 msgid "Start instant recording"
 msgstr "Започнете инстантно снимање"
 
@@ -14538,9 +14617,6 @@ msgstr "Време на започнување без промена од сте
 
 msgid "Start timeshift"
 msgstr "Започнете со timeshift"
-
-msgid "Start with list screen"
-msgstr "Започнете со список"
 
 msgid "Starting on"
 msgstr "Почнувајќи од"
@@ -16246,7 +16322,8 @@ msgstr "Непознато"
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "Порт на резервен далечински приемник"
 
 msgid "USALS"
@@ -16900,8 +16977,9 @@ msgstr "EPG"
 msgid "WLAN connection"
 msgstr "WLAN врска"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "AAC downmix"
 
 #, fuzzy
 msgid "WPA"
@@ -17134,7 +17212,8 @@ msgstr "Ако ја активирате оваа опција, приемник
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Ако ја активирате оваа опција, set top box може да се вклучи преку LAN"
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Ако ја активирате оваа опција, тајмерот од резервниот приемник се импортира"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17143,7 +17222,8 @@ msgstr "Ако ја активирате оваа опција, тогаш пр�
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Ако ја активирате оваа опција, можете да ја контролирате јачината на звукот со копчињата со стрелки, наместо да ја добиете листата за избор на канали"
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Ако ја активирате оваа опција, можете да ги прилагодите поставките OpenWebIf за резервниот приемник"
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17306,9 +17386,8 @@ msgstr "Ако е активирана оваа опција, оваа пост�
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Ако е активирана оваа опција, оваа поставка има поголема тежина од „Претпочитан приемник“."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Ако е активирана оваа опција, timeshift започнува автоматски во позадина по одредено време."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Ако е активирана оваа опција, користете DHCP за IP-конфигурацијата."
@@ -17565,10 +17644,11 @@ msgstr "Да"
 msgid "Yes (save index in setup tuner)"
 msgstr "Да (зачувајте го индексот во поставките на Тјунер)"
 
-msgid "Yes and save"
-msgstr "Да и зачувај"
-
 msgid "Yes and save in movie dir"
+msgstr "Да и зачувај во директориум на филм"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Да и зачувај во директориум на филм"
 
 msgid "Yes to all"
@@ -17687,6 +17767,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Не одбравте канал од кој да снимате."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"

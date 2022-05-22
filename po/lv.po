@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -1233,10 +1233,6 @@ msgstr "%s KSymb/s"
 msgid "%s MHz"
 msgstr "%s MHz"
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s importēts no attālinātā uztvērēja"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1279,8 +1275,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s pakotnes atjauninājums pieejams"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Mape satur %(file)s un %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -1754,19 +1758,18 @@ msgstr "AAC dekodēšana"
 msgid "AAC plus downmix"
 msgstr "AAC dekodēšana"
 
-#, fuzzy
 msgid "AAC transcoding"
-msgstr "Transkodē:"
+msgstr "AAC pārkodēšana"
 
 msgid "AC3"
-msgstr ""
+msgstr "AC3"
 
 msgid "AC3 downmix"
 msgstr "AC3 dekodēšana"
 
 #, fuzzy
 msgid "AC3 plus transcoding"
-msgstr "Transkodē:"
+msgstr "AC3 pārkodēšana"
 
 msgid "ACQUIRING TSID/ONID"
 msgstr "ACQUIRING TSID/ONID"
@@ -2160,7 +2163,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3135,6 +3138,10 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "Kan%s"
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "FCC aktivizēts"
+
 msgid "CI (Common Interface) Setup"
 msgstr "Common interfeiss"
 
@@ -3479,11 +3486,12 @@ msgstr "Kanāla numurs un nosaukums"
 msgid "Channelnumber, picon and servicename"
 msgstr "Kanāla numurs, pikona un kanāla nosaukums"
 
-msgid "Channels"
-msgstr "Kanālus"
-
 msgid "Channels and EPG"
 msgstr "Kanālus un EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 msgid "Channels only"
 msgstr "Tikai kanālus"
@@ -3612,25 +3620,24 @@ msgstr ""
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
-#, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
-msgstr "Uzstāda kā daudzkanālu skaņu celiņi tiks dekodēti uz stereo."
+msgstr "Izvēlieties, vai AAC skaņas celiņi tiks pārkodēti."
 
 #, fuzzy
 msgid "Choose whether AC3 Plus sound tracks should be transcoded to AC3."
-msgstr "Uzstāda kā daudzkanālu skaņu celiņi tiks dekodēti uz stereo."
+msgstr "Izvēlieties, vai AC3 skaņas celiņi tiks pārkodēti."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Uzstāda kā daudzkanālu skaņu celiņi tiks dekodēti uz stereo."
+msgstr "Izvēlieties kā daudzkanālu skaņu celiņi tiks dekodēti uz stereo."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Uzstāda kā daudzkanālu skaņu celiņi tiks dekodēti uz stereo."
+msgstr "Izvēlieties, vai WMA Pro skaņas celiņi tiks dekodēti."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
-msgstr "Uzstāda kā daudzkanālu skaņu celiņi tiks dekodēti uz stereo."
+msgstr "Izvēlieties kā daudzkanālu skaņu celiņi tiks dekodēti uz stereo."
 
 msgid "Choose whether to scan a single transponder, one satellite or multiple satellites."
 msgstr "Izvēlieties, vai skenēt vienu transponderi, vienu satelītu vai vairākus satelītus."
@@ -3713,7 +3720,13 @@ msgstr "Klients straumē no uztvērēja!"
 msgid "Client mode"
 msgstr "inicializēt moduli"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4320,7 +4333,9 @@ msgstr "Izmanto transkodēšanu, PiP nevar lietot!"
 msgid "Connection information"
 msgstr "Spraudņu pārlūka aktivitātes informācija"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -4591,9 +4606,8 @@ msgstr "Čehija"
 msgid "D"
 msgstr "D"
 
-#, fuzzy
 msgid "DAC"
-msgstr "PDC"
+msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -4606,13 +4620,14 @@ msgid "DLNA support"
 msgstr "HLG atbalsts"
 
 msgid "DTS"
-msgstr ""
+msgstr "DTS"
 
 msgid "DTS downmix"
 msgstr "DTS dekodēšana"
 
+#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr ""
+msgstr "DTS-HD HR/DTS-HD MA/DTS"
 
 msgid "DUAL LAYER DVD"
 msgstr "Dubultslāņu DVD"
@@ -4910,7 +4925,7 @@ msgstr "Noklusētais"
 
 #, fuzzy
 msgid "Define additional delay in milliseconds before start of http(s) streams."
-msgstr "Aizture milisekundēs pirms teksta ritināšanas displejā."
+msgstr "Norādiet papildu aizkavi milisekundēs pirms http(s) straumes sākuma, piemēram, lai pievienotu attālināto uztvērēju ar sarežģītu DiSEqC sistēmu."
 
 msgid "Defined / Active"
 msgstr ""
@@ -5144,17 +5159,21 @@ msgstr "Atcelt izvēli"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
-msgstr "Attālinātā rezerves uztvērēja adrese"
-
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "ATSC attālinātā rezerves uztvērēja adrese"
 
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "DVB-C attālinātā rezerves uztvērēja adrese"
 
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "DVB-T attālinātā rezerves uztvērēja adrese"
+
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "Attālinātā rezerves uztvērēja adrese"
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5255,10 +5274,6 @@ msgstr "Mape"
 msgid "Directory %s does not exist."
 msgstr "Mape %s neeksistē."
 
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
-
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
 msgstr "Mape %s neeksistē."
@@ -5285,13 +5300,12 @@ msgstr "Izslēgt"
 msgid "Disable Animations"
 msgstr "Izslēgt taimeri"
 
-#, fuzzy
 msgid "Disable FCC during recordings"
-msgstr "Vienmēr iekļaut ECM ierakstos"
+msgstr "Izslēgt FCC ieraksta laikā"
 
 #, fuzzy
 msgid "Disable Fast Channel Change"
-msgstr "Lietot ātrās meklēšanas kanālu nosaukumus"
+msgstr "Atrā kanālu pārslēgšana"
 
 msgid "Disable Picture in Picture"
 msgstr "Izslēgt attēls attēlā"
@@ -5657,8 +5671,9 @@ msgstr[0] "Pabeigts - instalēta, atjaunināta vai dzēsta %d pakotne (%s)"
 msgstr[1] "Pabeigts - instalētas, atjauninātas vai dzēstas %d pakotnes (%s)"
 msgstr[2] "Pabeigts - instalētas, atjauninātas vai dzēstas %d pakotnes (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "Dekodēt"
 
 #, fuzzy
 msgid "Download error"
@@ -5692,9 +5707,8 @@ msgstr "Mēģina lejuplādēt jaunu pakotņu sarakstu. Lūdzu gaidiet..."
 msgid "Downloading plugin information. Please wait..."
 msgstr "Lejuplādē spraudņu informāciju. Lūdzu uzgaidiet..."
 
-#, fuzzy
 msgid "Downmix"
-msgstr "DTS dekodēšana"
+msgstr "Dekodēt"
 
 msgid "Drama"
 msgstr ""
@@ -5766,9 +5780,17 @@ msgstr "EPG izvēle"
 msgid "EPG Setup"
 msgstr "Iestatījumi"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "faila nosaukums"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "EPG valodas izvēle 1"
@@ -5794,8 +5816,8 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "KĻŪDA - meklēšana neizdevās (%s)!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
-msgstr "Kļūda lejupielādējot failu %s"
+msgid "ERROR downloading file %s"
+msgstr "Kļūda lejupielādējot failu %s/%s"
 
 msgid "East"
 msgstr "Austrumi"
@@ -5903,14 +5925,14 @@ msgstr "Lietot ātro auto skenēšanu"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Aktivizēts"
+msgstr "Aktivizēt bluetooth audio"
 
 msgid "Enable EIT EPG"
 msgstr "Lietot EIT EPG"
 
 #, fuzzy
 msgid "Enable Fast Channel Change"
-msgstr "Lietot kabeļu tīkla auto skenēšanu"
+msgstr "Atrā kanālu pārslēgšana"
 
 msgid "Enable Focus Animation"
 msgstr ""
@@ -5998,7 +6020,13 @@ msgstr "Ieslēgt vai izslēgt HDMI-CEC."
 msgid "Enable parental protection"
 msgstr "Aktivizēt vecāku kontroli"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Izmantot citu Enigma2 uztvērēju, kuru lietot lai mēģinātu uztvert kanālu kurš nav uztverams lokāli (piem. uztvērējs ir aizņemts vai kanāla veids nav pieejams lokālajā uztvērējā). Norādiet pilnu adresi ieskaitot http:// un porta numuru (pēc noklusējuma ...:8001), piem. http://second_box:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6053,6 +6081,9 @@ msgstr "Rediģēt uztvērēja DNS uzstādījumus.\n"
 
 msgid "Enabled"
 msgstr "Aktivizēts"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6296,12 +6327,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Kļūda apturot straumēšanu!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Kļūda rakstot uz attālinātā uztvērēja epg.dat"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Kļūda iegūstot epg.dat no attālinātā uztvērēja"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6309,9 +6334,6 @@ msgid ""
 msgstr ""
 "Kļūda iegūstot taimerus no attālinātā uztvērēja\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Kļūda iegūstot epg.dat atrašanās vietu no attālinātā uztvērēja"
 
 #, python-format
 msgid ""
@@ -6639,13 +6661,11 @@ msgstr ""
 msgid "FCC 1953"
 msgstr ""
 
-#, fuzzy
 msgid "FCC enabled"
-msgstr "aktivizēts"
+msgstr "FCC aktivizēts"
 
-#, fuzzy
 msgid "FCCSetup"
-msgstr "Iestatījumi"
+msgstr "FCC Iestatījumi"
 
 msgid "FEC"
 msgstr "FEC"
@@ -6731,10 +6751,22 @@ msgstr "Attālinātais rezerves uztvērējs"
 msgid "Fallback remote receiver IP"
 msgstr "Rezerves uztvērēja IP adrese"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "Rezerves uztvērēja IP adrese"
+
 msgid "Fallback remote receiver Port"
 msgstr "Rezerves uztvērēja ports"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Rezerves uztvērēja ports"
+
 msgid "Fallback remote receiver URL"
+msgstr "Rezerves uztvērēja adrese"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "Rezerves uztvērēja adrese"
 
 msgid "Fallback remote receiver for ATSC"
@@ -6789,13 +6821,13 @@ msgid "Fast"
 msgstr "Ātrs"
 
 msgid "Fast Channel Change"
-msgstr ""
+msgstr "Atrā kanālu pārslēgšana"
 
 msgid "Fast Channel Change Setup"
-msgstr ""
+msgstr "Atrās kanālu pārslēgšanas iestatījumi"
 
 msgid "Fast Channel Change setup"
-msgstr ""
+msgstr "Atrās kanālu pārslēgšanas iestatījumi"
 
 msgid "Fast DiSEqC"
 msgstr "Ātrais DiSEqC"
@@ -6983,6 +7015,10 @@ msgstr "Francija"
 msgid "Free"
 msgstr ""
 
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
+msgstr ""
+
 msgid "Free flash"
 msgstr ""
 
@@ -7151,14 +7187,14 @@ msgid "General"
 msgstr ""
 
 msgid "General AC3 delay"
-msgstr "Vispārējā AC3 aizture"
+msgstr "AC3 aizture"
 
 #, fuzzy
 msgid "General BT audio delay"
-msgstr "Vispārējā AC3 aizture"
+msgstr "Bluetooth audio aizture"
 
 msgid "General PCM delay"
-msgstr "Vispārējā PCM aizture"
+msgstr "PCM aizture"
 
 msgid "Generic"
 msgstr ""
@@ -7394,7 +7430,7 @@ msgid "HD list"
 msgstr "HD saraksts"
 
 msgid "HDMI"
-msgstr ""
+msgstr "HDMI"
 
 msgid "HDMI Colordepth"
 msgstr "HDMI krāsu dziļums"
@@ -7585,9 +7621,8 @@ msgstr ""
 msgid "Hiri Motu"
 msgstr ""
 
-#, fuzzy
 msgid "History Prev/Next"
-msgstr "Vēsture uz priekšu"
+msgstr "Vēsture"
 
 msgid "History back"
 msgstr "Vēsture atpakaļ"
@@ -7739,7 +7774,8 @@ msgstr "I"
 msgid "IP address"
 msgstr "IP adrese"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "Attālinātā rezerves uztvērēja IP adrese"
 
 msgid "IPv6"
@@ -7873,18 +7909,20 @@ msgstr "Imidžs: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Importēt kanālus un/vai EPG no attālinātā uztvērēja arī ieslēdzoties no gaidstāves"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Importēt kanālus un/vai EPG no attālinātā uztvērēja kad uztvērējs tiek islēgts"
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "Importēt kanālus un/vai EPG no attālinātā uztvērēja kad enigma tiek pārstartēta"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Importēšana no attālinātā uztvērēja neizdevās %s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "Importēt kanālus un/vai EPG no attālinātā uztvērēja kad enigma tiek pārstartēta"
 
 msgid "Import from remote receiver URL"
 msgstr "Importēt no attālinātā uztvērēja"
@@ -8479,7 +8517,7 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Ierakstu atrašanās vieta"
+msgstr "Izslēgt FCC ieraksta laikā"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -8670,9 +8708,6 @@ msgstr "Noformējuma izvēlnes darbības"
 
 msgid "List available networks"
 msgstr "Skatīt pieejamos tīklus"
-
-msgid "List mode"
-msgstr "Saraksta režīms"
 
 msgid "List of storage devices"
 msgstr "Atmiņas ierīču saraksts"
@@ -8956,7 +8991,8 @@ msgstr "Galvenā izvēlne"
 msgid "Maintain old EPG data for"
 msgstr "Saglabāt vecos EPG datus"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Atļaut kanālu un/vai EPG importu izmantojot paplašinājumu izvēlni"
 
 msgid "Make this mark an 'in' point"
@@ -9097,9 +9133,8 @@ msgstr "Mauritānija"
 msgid "Mauritius"
 msgstr "Maurīcija"
 
-#, fuzzy
 msgid "Max channels"
-msgstr "Kanālus"
+msgstr "Kanālu skaits"
 
 msgid "Max memory positions"
 msgstr "Maksimālā pozīcija atmiņā"
@@ -9768,7 +9803,7 @@ msgstr "Tīkla konfigurācija..."
 msgid "Network information"
 msgstr "Tīkla konfigurācija"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -9908,9 +9943,6 @@ msgstr "Apraksts nav pieejams."
 
 msgid "No displayable files on this medium found!"
 msgstr "Datu nesējā nav atrasti attēlojami faili!"
-
-msgid "No epg.dat file found server"
-msgstr "Attālinātā uztvērējā epg.dat fails nav pieejams"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Nav atrasta informācija par pārraidi, ierakstīs nepārtraukti."
@@ -10632,7 +10664,7 @@ msgid "Partitions"
 msgstr "Polarizācija"
 
 msgid "Passthrough"
-msgstr ""
+msgstr "Nemainīt"
 
 msgid "Password"
 msgstr "Parole"
@@ -10703,6 +10735,10 @@ msgstr "Filipīnas"
 #, fuzzy
 msgid "PiP Actions"
 msgstr "Pozīcija"
+
+#, fuzzy
+msgid "PiP mode"
+msgstr "Saraksta režīms"
 
 msgid "PiP setup"
 msgstr "PiP iestatījumi"
@@ -11120,6 +11156,10 @@ msgid "Port D"
 msgstr "Ieeja D"
 
 msgid "Port of fallback remote receiver"
+msgstr "Rezerves uztvērēja ports"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Rezerves uztvērēja ports"
 
 msgid "Portugal"
@@ -11775,6 +11815,10 @@ msgid "Receiver name"
 msgstr "Iekārtas nosaukums:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr "Uztvērējs vai draiveris neatbalsta FCC"
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -12434,7 +12478,7 @@ msgid "SNR:"
 msgstr "SNR:"
 
 msgid "SPDIF"
-msgstr ""
+msgstr "SPDIF"
 
 msgid "SRT file"
 msgstr "SRT fails"
@@ -13299,6 +13343,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "Uztvērējs nav pieejams."
+
+#, fuzzy
 msgid "Server:"
 msgstr "Kanāls"
 
@@ -13411,6 +13459,9 @@ msgstr "Kanāli"
 msgid "Set CI assignment for detection of available services."
 msgstr "Iestatīt CI piešķiršanu pieejamo kanālu noteikšanai."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13420,7 +13471,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Iestatīt visu taustiņu noklusētās vērtības?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "Iestatīt attālinātā uztvērēju lai to izmantotu DVB-T/C vai ATSC avotam"
 
 msgid "Set as startup service"
@@ -13429,9 +13481,8 @@ msgstr "Iestatīt kā starta kanālu"
 msgid "Set blocktimes by weekday"
 msgstr "Iestatīt bloķēšanas laikus pa dienām"
 
-#, fuzzy
 msgid "Set cursor on service from channel history"
-msgstr "Pārslēgt uz iepriekšējo kanālu vēsturē"
+msgstr "Pārvietot kursoru uz iepriekšējo kanālu"
 
 msgid "Set default"
 msgstr "Pēc noklusējuma"
@@ -13475,7 +13526,8 @@ msgstr "Sistēma"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Pārbaudīt uztvērēja tīkla iestatījumus.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "OpenWebif lietotāja ID attālinātā uztvērējā"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13501,10 +13553,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Izvēlieties kārtošanas metodi:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "OpenWebif parole attālinātā uztvērējā"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "OpenWebif ports attālinātā uztvērējā"
 
 #, fuzzy
@@ -13613,9 +13667,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Īsie failu nosaukumi"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "Rādīt"
@@ -13825,6 +13876,10 @@ msgid "Show image items"
 msgstr "Rādīt ierakstus"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Parādīt brīdinājumu kad imports ir izdevies"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Izslēgt kad ir gaidstāvē"
 
@@ -13853,6 +13908,10 @@ msgstr "Rādīt numurus iestatījumiem vai spraudņiem"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Parādīt jaunākās izmaiņas"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Rādīt PiP"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -13900,10 +13959,12 @@ msgstr "Izvēlieties imidžu"
 msgid "Show next page of description"
 msgstr "Rādīt paplašināto aprakstu"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Parādīt brīdinājumu kad kanālu un/vai EPG imports no attālinātā uztvērēja nav izdevies"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Parādīt brīdinājumu kad kanālu un/vai EPG imports no attālinātā uztvērēja ir izdevies"
 
 msgid "Show notification when import channels was not successful"
@@ -14094,6 +14155,10 @@ msgstr "Rādīt/slēpt logu"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Rādīt info"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Parādīt brīdinājumu kad kanālu un/vai EPG imports no attālinātā uztvērēja ir izdevies"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Rādīt pārraides vai informāciju LCD."
@@ -14655,6 +14720,10 @@ msgstr "Sākuma mape"
 msgid "Start from the beginning"
 msgstr "Sākt no sākuma"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Importēt pārstartējot enigmu"
+
 msgid "Start instant recording"
 msgstr "Sākt ierakstu"
 
@@ -14681,9 +14750,6 @@ msgstr "Sākuma laiks pēc kura ignorēt izslēgšanu gaidstāvē"
 
 msgid "Start timeshift"
 msgstr "Sākt laika aizturi"
-
-msgid "Start with list screen"
-msgstr "Sākt ar saraksta logu"
 
 msgid "Starting on"
 msgstr "Sākot ar"
@@ -15747,7 +15813,7 @@ msgstr "Atļauj parādīt pilnu ceļu uz esošo ekrānu."
 
 #, fuzzy
 msgid "This option allows you to switch audio to BT speakers."
-msgstr "Atļauj iestatīt automātiskā skaļuma līmeni."
+msgstr "Atļauj iestatīt audio uz bluetooth skaļruņiem."
 
 #, fuzzy
 msgid "This option allows you to use video sync mode."
@@ -15761,7 +15827,7 @@ msgstr "Šī opcija var būt noderīga gariem HDMI kabeļiem."
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
-msgstr "Uzstāda vispārējo aizturi stereo skaņu ierakstiem."
+msgstr "Uzstāda aizturi bluetooth skaļruņiem."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Iestata musquito trokšņa slāpēšanas līmeni (musquito troksnis ir traucējumi spēcīgas saspiešanas rezultātā). Diemžēl tas samazina attēla detalizāciju."
@@ -16392,7 +16458,8 @@ msgstr "NEZINĀMS"
 msgid "URL"
 msgstr "Adrese"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "Rezerves uztvērēja adrese (URL)"
 
 msgid "USALS"
@@ -17046,8 +17113,9 @@ msgstr "EPG"
 msgid "WLAN connection"
 msgstr "Bezvadu savienojums"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "WMA Pro dekodēšana"
 
 #, fuzzy
 msgid "WPA"
@@ -17280,7 +17348,8 @@ msgstr "Ja ieslēgts, uztvērējs automātiski pamodīsies no gaidstāves kad ie
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Ja ieslēgts, tad uztvērēju var pamodināt no tīkla"
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Ja ieslēgts, tad tiks importēti taimeri no attālinātā uztvērēja"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17289,7 +17358,8 @@ msgstr "Ja ieslēgts, tad ja kanālu izvēlnē izvēlēsieties jaunu kanālu, iz
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Ja ieslēgts, ar virziena pogām ap OK jūs varat regulēt skaļumu, nevis atvērt kanālu sarakstu"
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Ja ieslēgts, jūs varat pielāgot OpenWebIf iestatījumus attālinātam uztvērējam"
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17438,9 +17508,8 @@ msgstr "Ja ieslēgts, mediju sarakstā tiks parādīts katra ieraksta garums (ta
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Ja ieslēgts, mediju sarakstā tiks parādīts katra ieraksta garums (tas prasa zināmu ielādes laiku)."
 
-#, fuzzy
 msgid "When enabled, then when changing bouquets, set the cursor on the service from the channel history in the channel selection list."
-msgstr "Ja ieslēgts, ar virziena pogām ap OK jūs varat regulēt skaļumu, nevis atvērt kanālu sarakstu"
+msgstr "Ja ieslēgts, tad mainot buķetes kursors tiks pārvietots uz iepriekšējo kanālu no izmantošanas vēstures."
 
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr "Ja ieslēgts, šis iestatījums tiks lietots 'Ieteicamais uztvērējs ierakstam' vietā."
@@ -17448,9 +17517,8 @@ msgstr "Ja ieslēgts, šis iestatījums tiks lietots 'Ieteicamais uztvērējs ie
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Ja ieslēgts, šis iestatījums tiks lietots 'Ieteicamais uztvērējs' vietā."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Ja ieslēgts, pēc norādītā laika laika aizture sāksies fonā automātiski."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Ja ieslēgts, lieto DHCP IP konfigurācijai"
@@ -17707,10 +17775,11 @@ msgstr "Jā"
 msgid "Yes (save index in setup tuner)"
 msgstr "Jā (saglabāt numuru uztvērēja iestatījumos)"
 
-msgid "Yes and save"
-msgstr "Jā un saglabāt"
-
 msgid "Yes and save in movie dir"
+msgstr "Jā un saglabāt ierakstu mapē"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Jā un saglabāt ierakstu mapē"
 
 msgid "Yes to all"
@@ -17836,6 +17905,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Jūs nenorādījāt ierakstāmo kanālu."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"
@@ -17998,9 +18071,8 @@ msgstr "Zambija"
 msgid "Zap"
 msgstr "Pārslēgt"
 
-#, fuzzy
 msgid "Zap Up/Down"
-msgstr "Pārslēgt uz leju"
+msgstr "Pārslēgt uz augšu/leju"
 
 #, fuzzy
 msgid "Zap and record"
@@ -18301,14 +18373,13 @@ msgid "controlled by HDMI"
 msgstr "kontrolē HDMI"
 
 msgid "convert to AC3"
-msgstr ""
+msgstr "konvertē uz AC3"
 
 msgid "convert to DTS"
-msgstr ""
+msgstr "konvertē uz DTS"
 
-#, fuzzy
 msgid "convert to multi-channel PCM"
-msgstr "Daudzkanālu PCM"
+msgstr "konvertē uz daudzkanālu PCM"
 
 msgid "cooking"
 msgstr "cepšana"
@@ -18427,7 +18498,6 @@ msgstr "eksperimentālās filmas/video"
 msgid "extra wide"
 msgstr "ļoti plašs"
 
-#, fuzzy
 msgid "extrawide"
 msgstr "ļoti plašs"
 
@@ -18547,8 +18617,9 @@ msgstr ""
 msgid "horizontal"
 msgstr "horizontālā"
 
+#, fuzzy
 msgid "http(s) stream start delay"
-msgstr ""
+msgstr "Http(s) straumes aizkave"
 
 msgid "https://github.com/OpenVisionE2"
 msgstr ""
@@ -18840,9 +18911,8 @@ msgstr "tautas kultūra/tradicionālā māksla"
 msgid "pre-school children's program"
 msgstr "pirmsskolas bērnu programma"
 
-#, fuzzy
 msgid "priority"
-msgstr "Prioritāte"
+msgstr "prioritāte"
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -19181,12 +19251,11 @@ msgstr "netestēts"
 msgid "until standby/restart"
 msgstr "līdz gaidstāvei/pārstartēšanai"
 
-#, fuzzy
 msgid "use best / controlled by HDMI"
-msgstr "kontrolē HDMI"
+msgstr "izmantot labāko no HDMI"
 
 msgid "use_hdmi_cacenter"
-msgstr ""
+msgstr "izmantot hdmi cacenter"
 
 msgid "user defined"
 msgstr "lietotāja definēts"

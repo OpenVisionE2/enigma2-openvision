@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2021-05-24 17:48+0300\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: openPLi Dimitrij\n"
@@ -1231,10 +1231,6 @@ msgstr "%s KSymb/s"
 msgid "%s MHz"
 msgstr "%s MHz"
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s импортируем из резервного ресивера"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1277,8 +1273,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s обновленный пакет доступен"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr " Директория содержит %(file)s и %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -1748,25 +1752,24 @@ msgid "A/V settings"
 msgstr "Аудио/видео настройки"
 
 msgid "AAC downmix"
-msgstr "AAC микширование"
+msgstr "Микширование AAC"
 
 #, fuzzy
 msgid "AAC plus downmix"
-msgstr "AAC микширование"
+msgstr "Микширование AAC"
 
-#, fuzzy
 msgid "AAC transcoding"
-msgstr "Транскодирование: "
+msgstr "Транскодирование AAC"
 
 msgid "AC3"
-msgstr ""
+msgstr "AC3"
 
 msgid "AC3 downmix"
-msgstr "AC3 микширование"
+msgstr "Микширование AC3"
 
 #, fuzzy
 msgid "AC3 plus transcoding"
-msgstr "Транскодирование: "
+msgstr "Транскодирование AC3"
 
 msgid "ACQUIRING TSID/ONID"
 msgstr "ПОЛУЧЕНИЕ TSID/ONID"
@@ -2160,7 +2163,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3134,6 +3137,10 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "FCC включено"
+
 msgid "CI (Common Interface) Setup"
 msgstr "Настройка CI (Common Interface) модулей"
 
@@ -3478,11 +3485,12 @@ msgstr "Номер канала и название сервиса"
 msgid "Channelnumber, picon and servicename"
 msgstr "Номер канала, пикон и название сервиса"
 
-msgid "Channels"
-msgstr "Каналы"
-
 msgid "Channels and EPG"
 msgstr "каналы и EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 msgid "Channels only"
 msgstr "Каналы только"
@@ -3611,25 +3619,24 @@ msgstr ""
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
-#, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
-msgstr "Настройка - следует ли многоканальную звуковую дорожку декодировать в стереозвук."
+msgstr "Выберите, следует ли перекодировать звуковые дорожки AAC."
 
 #, fuzzy
 msgid "Choose whether AC3 Plus sound tracks should be transcoded to AC3."
-msgstr "Настройка - следует ли многоканальную звуковую дорожку декодировать в стереозвук."
+msgstr "Выберите, следует ли перекодировать звуковые дорожки AC3."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Настройка - следует ли многоканальную звуковую дорожку декодировать в стереозвук."
+msgstr "Выберите, следует ли микшировать многоканальные звуковые дорожки AAC+ в стерео."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Настройка - следует ли многоканальную звуковую дорожку декодировать в стереозвук."
+msgstr "Выберите, следует ли микшировать звуковые дорожки WMA Pro."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
-msgstr "Настройка - следует ли многоканальную звуковую дорожку декодировать в стереозвук."
+msgstr "Выберите, следует ли микшировать многоканальные звуковые дорожки AAC+ в стерео."
 
 msgid "Choose whether to scan a single transponder, one satellite or multiple satellites."
 msgstr "Выберите, сканировать ли один транспондер, один спутник или несколько спутников."
@@ -3712,7 +3719,13 @@ msgstr "Клиент использует стрим из этого ресив�
 msgid "Client mode"
 msgstr "инициализация модуля"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4319,7 +4332,9 @@ msgstr "Подключено транскодирование, лимит - PiP 
 msgid "Connection information"
 msgstr "Менеджер плагинов - информация"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -4590,9 +4605,8 @@ msgstr "Czechia"
 msgid "D"
 msgstr "D"
 
-#, fuzzy
 msgid "DAC"
-msgstr "PDC"
+msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -4605,13 +4619,14 @@ msgid "DLNA support"
 msgstr "HLG поддержка"
 
 msgid "DTS"
-msgstr ""
+msgstr "DTS"
 
 msgid "DTS downmix"
-msgstr "DTS микширование"
+msgstr "Микширование DTS"
 
+#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr ""
+msgstr "DTS-HD HR/DTS-HD MA/DTS"
 
 msgid "DUAL LAYER DVD"
 msgstr "DUAL LAYER (двойной слой) DVD"
@@ -4909,7 +4924,7 @@ msgstr "Дефолт"
 
 #, fuzzy
 msgid "Define additional delay in milliseconds before start of http(s) streams."
-msgstr "Задержка текста в миллисекундах перед началом прокрутки на дисплее."
+msgstr "Определите дополнительную задержку в миллисекундах перед стартом стрима http(s), например в подключенном удаленнoм тюнере используется сложная система DiSEqC."
 
 msgid "Defined / Active"
 msgstr ""
@@ -5143,17 +5158,21 @@ msgstr "Не выбирать"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
-msgstr "Назначение запасного удаленного ресивера"
-
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "Назначение запасного удаленного ресивера для ATSC"
 
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "Назначение запасного удаленного ресивера для DVB-C"
 
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "Назначение запасного удаленного ресивера для DVB-T"
+
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "Назначение запасного удаленного ресивера"
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5254,10 +5273,6 @@ msgstr "Директория"
 msgid "Directory %s does not exist."
 msgstr "Директория %s отсутствует."
 
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
-
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
 msgstr "Директория %s отсутствует."
@@ -5284,13 +5299,12 @@ msgstr "Отключить"
 msgid "Disable Animations"
 msgstr "Отключить таймер"
 
-#, fuzzy
 msgid "Disable FCC during recordings"
-msgstr "Всегда включать ECM в записи"
+msgstr "Отключать FCC во время записи"
 
 #, fuzzy
 msgid "Disable Fast Channel Change"
-msgstr "Названия каналов из быстрого поиска"
+msgstr "FCC - быстрая смена канала"
 
 msgid "Disable Picture in Picture"
 msgstr "Отключить PiP (картинку в картинке)"
@@ -5656,8 +5670,9 @@ msgstr[0] "Выполнено - Установлен, обновлен или у
 msgstr[1] "Выполнено - Установлено, обновлено или удалено %d пакета (%s)"
 msgstr[2] "Выполнено - Установлено, обновлено или удалено %d пакетов (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "Микширование"
 
 #, fuzzy
 msgid "Download error"
@@ -5691,9 +5706,8 @@ msgstr "Пытаемся загрузить новый список пакето
 msgid "Downloading plugin information. Please wait..."
 msgstr "Загрузка информации о плагинах. Пожалуйста, подождите..."
 
-#, fuzzy
 msgid "Downmix"
-msgstr "DTS микширование"
+msgstr "Микширование"
 
 msgid "Drama"
 msgstr ""
@@ -5765,9 +5779,17 @@ msgstr "Выбор EPG"
 msgid "EPG Setup"
 msgstr "Настройки"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "имя файла"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "Выбор языка EPG 1"
@@ -5793,8 +5815,8 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "ОШИБКА - сканирование не удалось (%s)!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
-msgstr "ОШИБКА при загрузке файла %s"
+msgid "ERROR downloading file %s"
+msgstr "ОШИБКА при загрузке файла %s/%s"
 
 msgid "East"
 msgstr "Восток"
@@ -5902,14 +5924,14 @@ msgstr "Включить автосканирование"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Включено"
+msgstr "Включить блютуз аудио"
 
 msgid "Enable EIT EPG"
 msgstr "Включить EIT EPG"
 
 #, fuzzy
 msgid "Enable Fast Channel Change"
-msgstr "Включить кабельное автосканирование"
+msgstr "FCC - быстрая смена канала"
 
 msgid "Enable Focus Animation"
 msgstr ""
@@ -5997,7 +6019,13 @@ msgstr "Включение или отключение использовани�
 msgid "Enable parental protection"
 msgstr "Включить родительский контроль"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Разрешить удаленный ресивер на enigma2, который попытается запустить стрим этого сервиса, если локальный тюнер занят.Укажите полный URL, включая http:// и номер порта (обычно ...:8001), пример: http://айпи_удаленного_ресивера:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6052,6 +6080,9 @@ msgstr "Редактировать конфигурацию сервера им�
 
 msgid "Enabled"
 msgstr "Включено"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6295,12 +6326,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Ошибка при остановке стрима!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Ошибка при записи epg.dat с сервера."
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Ошибка при получении epg.dat с сервера."
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6308,9 +6333,6 @@ msgid ""
 msgstr ""
 "Ошибка получения информации о резервных таймерах\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Ошибка при получении местоположения epg.dat с сервера."
 
 #, python-format
 msgid ""
@@ -6638,13 +6660,11 @@ msgstr ""
 msgid "FCC 1953"
 msgstr ""
 
-#, fuzzy
 msgid "FCC enabled"
-msgstr "включено"
+msgstr "FCC включено"
 
-#, fuzzy
 msgid "FCCSetup"
-msgstr "Настройки"
+msgstr "Настройки FCC"
 
 msgid "FEC"
 msgstr "FEC"
@@ -6730,10 +6750,22 @@ msgstr "Резервный удаленный ресивер"
 msgid "Fallback remote receiver IP"
 msgstr "IP резервного удаленного ресивера"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "IP резервного удаленного ресивера"
+
 msgid "Fallback remote receiver Port"
 msgstr "Порт резервного удаленного ресивера"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Порт резервного удаленного ресивера"
+
 msgid "Fallback remote receiver URL"
+msgstr "URL резервного удаленного ресивера"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "URL резервного удаленного ресивера"
 
 msgid "Fallback remote receiver for ATSC"
@@ -6788,13 +6820,13 @@ msgid "Fast"
 msgstr "Быстро"
 
 msgid "Fast Channel Change"
-msgstr ""
+msgstr "FCC - быстрая смена канала"
 
 msgid "Fast Channel Change Setup"
-msgstr ""
+msgstr "FCC - настройки"
 
 msgid "Fast Channel Change setup"
-msgstr ""
+msgstr "FCC - настройки"
 
 msgid "Fast DiSEqC"
 msgstr "Быстрый DiSEqC (без задержки команд)"
@@ -6982,6 +7014,10 @@ msgstr "France"
 msgid "Free"
 msgstr ""
 
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
+msgstr ""
+
 msgid "Free flash"
 msgstr ""
 
@@ -7154,7 +7190,7 @@ msgstr "Общая задержка AC3"
 
 #, fuzzy
 msgid "General BT audio delay"
-msgstr "Общая задержка AC3"
+msgstr "Общая задержка блютуз аудио"
 
 msgid "General PCM delay"
 msgstr "Общая задержка PCM"
@@ -7393,7 +7429,7 @@ msgid "HD list"
 msgstr "HD лист"
 
 msgid "HDMI"
-msgstr ""
+msgstr "HDMI"
 
 msgid "HDMI Colordepth"
 msgstr "Глубина цвета HDMI"
@@ -7584,9 +7620,8 @@ msgstr ""
 msgid "Hiri Motu"
 msgstr ""
 
-#, fuzzy
 msgid "History Prev/Next"
-msgstr "история каналов - далее"
+msgstr "История каналов - сейчас/далее"
 
 msgid "History back"
 msgstr "история каналов - назад"
@@ -7738,7 +7773,8 @@ msgstr "I"
 msgid "IP address"
 msgstr "IP-адрес"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "IP запасного удаленного ресивера"
 
 msgid "IPv6"
@@ -7872,18 +7908,20 @@ msgstr "Имидж: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Импортировать каналы/EPG при выходе из режима ожидания"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Импортировать каналы и/или EPG из удаленного ресивера при загрузке ресивера"
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "Импортировать каналы/EPG после рестарта enigma2"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Ошибка импорта из резевного ресивера %s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "Импортировать каналы/EPG после рестарта enigma2"
 
 msgid "Import from remote receiver URL"
 msgstr "Импорт из URL удаленного ресивера"
@@ -8480,7 +8518,7 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Расположение немедленные записей"
+msgstr "Отключать FCC во время записи"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -8671,9 +8709,6 @@ msgstr "Выбор скина"
 
 msgid "List available networks"
 msgstr "Просмотр списка доступных сетей"
-
-msgid "List mode"
-msgstr "Режим списка"
 
 msgid "List of storage devices"
 msgstr "Список устройств хранения"
@@ -8957,7 +8992,8 @@ msgstr "Главное меню"
 msgid "Maintain old EPG data for"
 msgstr "Сохранять прошедшие данные EPG для (мин)"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Добавить импорт в меню дополнений"
 
 msgid "Make this mark an 'in' point"
@@ -9098,9 +9134,8 @@ msgstr "Mauritania"
 msgid "Mauritius"
 msgstr "Mauritius"
 
-#, fuzzy
 msgid "Max channels"
-msgstr "Каналы"
+msgstr "Максимальное количество каналов"
 
 msgid "Max memory positions"
 msgstr "Максимальная позиция памяти"
@@ -9769,7 +9804,7 @@ msgstr "Конфигурация сети..."
 msgid "Network information"
 msgstr "Конфигурация сети"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -9909,9 +9944,6 @@ msgstr "Нет доступного описания."
 
 msgid "No displayable files on this medium found!"
 msgstr "Нет отображаемых файлов на этом носителе!"
-
-msgid "No epg.dat file found server"
-msgstr "Файл epg.dat не найден на сервере."
 
 msgid "No event info found, recording indefinitely."
 msgstr "Информация о событии не найдена, запись на неопределенное время."
@@ -10635,7 +10667,7 @@ msgid "Partitions"
 msgstr "Поляризация"
 
 msgid "Passthrough"
-msgstr ""
+msgstr "прямой звук"
 
 msgid "Password"
 msgstr "Password"
@@ -10706,6 +10738,10 @@ msgstr "Philippines"
 #, fuzzy
 msgid "PiP Actions"
 msgstr "Позиция"
+
+#, fuzzy
+msgid "PiP mode"
+msgstr "Режим списка"
 
 msgid "PiP setup"
 msgstr "Настройки PiP"
@@ -11123,6 +11159,10 @@ msgid "Port D"
 msgstr "Порт D"
 
 msgid "Port of fallback remote receiver"
+msgstr "Порт запасного удаленного ресивера"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Порт запасного удаленного ресивера"
 
 msgid "Portugal"
@@ -11778,6 +11818,10 @@ msgid "Receiver name"
 msgstr "Имя устройства:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr "Ресивер или драйвер не поддерживает FCC!"
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -12439,7 +12483,7 @@ msgid "SNR:"
 msgstr "SNR:"
 
 msgid "SPDIF"
-msgstr ""
+msgstr "SPDIF"
 
 msgid "SRT file"
 msgstr "SRT файл"
@@ -13304,6 +13348,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "Тюнер не доступен."
+
+#, fuzzy
 msgid "Server:"
 msgstr "Сервис"
 
@@ -13416,6 +13464,9 @@ msgstr "Сервисы"
 msgid "Set CI assignment for detection of available services."
 msgstr "Установите назначение CI для обнаружения доступных сервисов. Многие модули CI+ могут декодировать только один канал одновременно."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13425,7 +13476,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Установить все горячие кнопки по умолчанию?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "Установите резервный удаленный ресивер для DVB-T/C или ATSC"
 
 msgid "Set as startup service"
@@ -13479,7 +13531,8 @@ msgstr "Система"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Тест сетевой конфигурации Вашего ресивера.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Установить ID пользователя OpenWebif из вашего резервного ресивера"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13505,10 +13558,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Выбор способа сортировки:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Установить пароль OpenWebif из вашего резервного ресивера"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Установить порт OpenWebif из вашего резервного ресивера"
 
 #, fuzzy
@@ -13617,9 +13672,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Короткое название"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "Показать"
@@ -13829,6 +13881,10 @@ msgid "Show image items"
 msgstr "Показать видео"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Показывать уведомление, когда импорт каналов удался"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Выключение из режима ожидания"
 
@@ -13857,6 +13913,10 @@ msgstr "Показать номера меню или плагинов"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Показать последние изменения на гите"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Показать PiP"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -13904,10 +13964,12 @@ msgstr "Выбор имиджа"
 msgid "Show next page of description"
 msgstr "показать расширенное описание"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Показывать уведомление, когда импорт каналов/EPG из удаленного ресивера URL не завершен"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Показывать уведомление, когда импорт каналов/EPG из удаленного ресивера URL завершен"
 
 msgid "Show notification when import channels was not successful"
@@ -14098,6 +14160,10 @@ msgstr "Показать/скрыть окно"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Показать инфо"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Показывать уведомление, когда импорт каналов/EPG из удаленного ресивера URL завершен"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Показать live тв или информацию на дисплее LCD."
@@ -14659,6 +14725,10 @@ msgstr "Начальный каталог"
 msgid "Start from the beginning"
 msgstr "Начать с самого начала"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Импорт при перезагрузке ресивера/рестарт enigma2"
+
 msgid "Start instant recording"
 msgstr "Старт немедленной записи"
 
@@ -14685,9 +14755,6 @@ msgstr "Начало периода времени игнорирования"
 
 msgid "Start timeshift"
 msgstr "Старт таймшифта"
-
-msgid "Start with list screen"
-msgstr "Начинать с режима списка"
 
 msgid "Starting on"
 msgstr "Начиная с"
@@ -15751,7 +15818,7 @@ msgstr "Эта опция позволяет вам показать полны�
 
 #, fuzzy
 msgid "This option allows you to switch audio to BT speakers."
-msgstr "Эта опция настраивает уровень автоматической громкости звука."
+msgstr "Эта опция позволяет переключать звук на блютуз динамики."
 
 #, fuzzy
 msgid "This option allows you to use video sync mode."
@@ -15765,7 +15832,7 @@ msgstr "Эта опция может быть полезна для длинны
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
-msgstr "Настройка общей задержки звуковых дорожек со стереозвуком."
+msgstr "Этот параметр настраивает общую задержку звука для динамиков блютуз."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Эта опция устанавливает уровень подавления шума от mosquito noise (Mosquito Noise - случайное алиасирование в результате сильного сжатия). Очевидно, это происходит за счет деталей изображения."
@@ -16396,7 +16463,8 @@ msgstr "НЕИЗВЕСТНО"
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "Впишите URL запасного удаленного ресивера"
 
 msgid "USALS"
@@ -17050,8 +17118,9 @@ msgstr "EPG"
 msgid "WLAN connection"
 msgstr "WLAN соединение"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "Микширование WMA Pro"
 
 #, fuzzy
 msgid "WPA"
@@ -17284,7 +17353,8 @@ msgstr "Если включено, то ресивер автоматическ�
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Если включено и если спецификация ресивера позволяет, то можно разбудить ресивер из глубокого ожидания по LAN подключению удаленно."
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "При включении, таймеры из резервного ресивера будут импортированы"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17293,7 +17363,8 @@ msgstr "Если включено, то при выборе нового кан�
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Если включено, то вы можете регулировать управление громкостью на кнопках (лево/право, вверх/вниз) около кнопки OK, вместо списка выбора каналов."
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Если включено, то Вы можете настроить параметры OpenWebIf из резервного ресивера"
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17451,9 +17522,8 @@ msgstr "Когда включен этот параметр, то он имее�
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Когда включен этот параметр, то он имеет большее предпочтение чем 'Приоритетный тюнер'."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Если включено, таймшифт запускается автоматически в фоновом режиме после указанного времени."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Если включено, используйте DHCP для конфигурации айпи."
@@ -17710,10 +17780,11 @@ msgstr "Да"
 msgid "Yes (save index in setup tuner)"
 msgstr "Да (сохранить номер в настройках тюнера)"
 
-msgid "Yes and save"
-msgstr "Да, и сохранить"
-
 msgid "Yes and save in movie dir"
+msgstr "Да, и сохранить в каталог movie"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Да, и сохранить в каталог movie"
 
 msgid "Yes to all"
@@ -17839,6 +17910,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Вы не выбрали канал для записи."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"
@@ -18000,9 +18075,8 @@ msgstr "Zambia"
 msgid "Zap"
 msgstr "Переключение"
 
-#, fuzzy
 msgid "Zap Up/Down"
-msgstr "Переключить канал вниз"
+msgstr "Переключать вверх/вниз"
 
 #, fuzzy
 msgid "Zap and record"
@@ -18303,14 +18377,13 @@ msgid "controlled by HDMI"
 msgstr "управляемый по HDMI"
 
 msgid "convert to AC3"
-msgstr ""
+msgstr "конвертировать в AC3"
 
 msgid "convert to DTS"
-msgstr ""
+msgstr "конвертировать в DTS"
 
-#, fuzzy
 msgid "convert to multi-channel PCM"
-msgstr "Мультиканал PCM"
+msgstr "конвертировать PCM мульти-канал"
 
 msgid "cooking"
 msgstr "приготовление"
@@ -18429,7 +18502,6 @@ msgstr "экспериментальный фильм/видео"
 msgid "extra wide"
 msgstr "экстра широкий"
 
-#, fuzzy
 msgid "extrawide"
 msgstr "экстра широкий"
 
@@ -18549,8 +18621,9 @@ msgstr ""
 msgid "horizontal"
 msgstr "горизонтальная"
 
+#, fuzzy
 msgid "http(s) stream start delay"
-msgstr ""
+msgstr "Задержка старта стрима Http(s)"
 
 msgid "https://github.com/OpenVisionE2"
 msgstr ""
@@ -18842,9 +18915,8 @@ msgstr "популярные культура/традиции искусств�
 msgid "pre-school children's program"
 msgstr "дошкольные детские программы"
 
-#, fuzzy
 msgid "priority"
-msgstr "Приоритет LNB"
+msgstr "приоритет"
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -19183,12 +19255,11 @@ msgstr "непроверяема"
 msgid "until standby/restart"
 msgstr "до режима ожидания/перезагрузки"
 
-#, fuzzy
 msgid "use best / controlled by HDMI"
-msgstr "управляемый по HDMI"
+msgstr "использовать контроль по HDMI"
 
 msgid "use_hdmi_cacenter"
-msgstr ""
+msgstr "использовать HDMI cacenter"
 
 msgid "user defined"
 msgstr "пользовательский вариант"

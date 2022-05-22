@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2021-08-02 09:19+0700\n"
 "Last-Translator: krong\n"
 "Language-Team: none\n"
@@ -1190,10 +1190,6 @@ msgstr ""
 msgid "%s MHz"
 msgstr ""
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s được nhập từ bộ điều chỉnh dự phòng"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1236,8 +1232,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s gói cập nhật có sẵn"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Thư mục chứa %(file)s và %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -2118,7 +2122,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3089,6 +3093,10 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "kích hoạt"
+
 msgid "CI (Common Interface) Setup"
 msgstr "Cài đặt CI (Giao diện chung)"
 
@@ -3433,11 +3441,12 @@ msgstr "Số kênh và tên dịch vụ"
 msgid "Channelnumber, picon and servicename"
 msgstr "Số kênh, picon và tên dịch vụ"
 
-msgid "Channels"
-msgstr "Kênh truyền hình"
-
 msgid "Channels and EPG"
 msgstr "Kênh và EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 msgid "Channels only"
 msgstr "Chỉ các kênh"
@@ -3667,7 +3676,13 @@ msgstr "Khách hàng đang phát trực tuyến từ hộp này!"
 msgid "Client mode"
 msgstr "mô-đun init"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4274,7 +4289,9 @@ msgstr "Chuyển mã được kết nối, giới hạn - không có PiP!"
 msgid "Connection information"
 msgstr "Thông tin hoạt động của trình quản lý plugin"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -5098,17 +5115,21 @@ msgstr "Bỏ chọn"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
-msgstr "Đích đến của máy thu từ xa dự phòng"
-
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "Đích đến của máy thu từ xa dự phòng cho ATSC"
 
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "Đích đến của máy thu từ xa dự phòng cho DVB-C"
 
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "Đích đến của máy thu từ xa dự phòng cho DVB-T"
+
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "Đích đến của máy thu từ xa dự phòng"
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5208,10 +5229,6 @@ msgstr "Danh mục"
 #, python-format
 msgid "Directory %s does not exist."
 msgstr "Thư mục%s không tồn tại."
-
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
 
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
@@ -5610,8 +5627,9 @@ msgid "Done - Installed, updated or removed %d package (%s)"
 msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Xong - Đã cài đặt, nâng cấp hoặc gỡ bỏ gói%d (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "DTS downmix"
 
 #, fuzzy
 msgid "Download error"
@@ -5720,9 +5738,17 @@ msgstr "Lựa chọn EPG"
 msgid "EPG Setup"
 msgstr "Thiết lập"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "tên tệp"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "Lựa chọn ngôn ngữ EPG 1"
@@ -5748,7 +5774,7 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "LỖI - không quét được (%s)!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
+msgid "ERROR downloading file %s"
 msgstr "LỖI tải xuống tệp%s"
 
 msgid "East"
@@ -5857,7 +5883,7 @@ msgstr "Bật quét nhanh tự động"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Đã bật"
+msgstr "Cho phép chỉnh sửa gói kênh"
 
 msgid "Enable EIT EPG"
 msgstr "Kích hoạt EIT EPG"
@@ -5952,7 +5978,13 @@ msgstr "Bật hoặc tắt bằng HDMI-CEC."
 msgid "Enable parental protection"
 msgstr "Bật tính năng bảo vệ của phụ huynh"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Cho phép máy thu enigma2 từ xa cố gắng điều chỉnh các dịch vụ không thể điều chỉnh cục bộ (ví dụ: bộ điều chỉnh bị chiếm dụng hoặc loại dịch vụ không khả dụng trên bộ điều chỉnh cục bộ. Chỉ định URL hoàn chỉnh bao gồm http:// và số cổng (thông thường ...:8001 ), ví dụ http://second_box:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6007,6 +6039,9 @@ msgstr "Chỉnh sửa cấu hình máy chủ tên của máy thu của bạn.\n"
 
 msgid "Enabled"
 msgstr "Đã bật"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6250,12 +6285,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Lỗi dừng luồng!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Lỗi khi ghi epg.dat trên máy chủ"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Lỗi khi truy xuất epg.data từ máy chủ"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6263,9 +6292,6 @@ msgid ""
 msgstr ""
 "Lỗi trong khi truy xuất thông tin hẹn giờ dự phòng\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Lỗi khi truy xuất vị trí của epg.data trên máy chủ"
 
 #, python-format
 msgid ""
@@ -6685,10 +6711,22 @@ msgstr "Dự phòng thu từ xa"
 msgid "Fallback remote receiver IP"
 msgstr "Dự phòng IP nhận từ xa"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "Dự phòng IP nhận từ xa"
+
 msgid "Fallback remote receiver Port"
 msgstr "Cổng thu dự phòng từ xa"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Cổng thu dự phòng từ xa"
+
 msgid "Fallback remote receiver URL"
+msgstr "Dự phòng URL nhận từ xa"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "Dự phòng URL nhận từ xa"
 
 msgid "Fallback remote receiver for ATSC"
@@ -6935,6 +6973,10 @@ msgid "France"
 msgstr "Pháp"
 
 msgid "Free"
+msgstr ""
+
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
 msgstr ""
 
 msgid "Free flash"
@@ -7695,7 +7737,8 @@ msgstr "I"
 msgid "IP address"
 msgstr "Địa chỉ IP"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "IP của máy thu từ xa dự phòng"
 
 msgid "IPv6"
@@ -7829,18 +7872,20 @@ msgstr "Hình ảnh: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Nhập kênh và / hoặc EPG từ URLmáy thu từ xa cũng khi máy thu thoát khỏi chế độ chờ"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Nhập kênh và / hoặc EPG từ URL máy thu từ xa khi máy thu được khởi động"
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "Nhập kênh và / hoặc EPG từ URL máy thu từ xa khi máy thu hoặc enigma2 được khởi động lại"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Nhập từ bộ điều chỉnh dự phòng không thành công,%s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "Nhập kênh và / hoặc EPG từ URL máy thu từ xa khi máy thu hoặc enigma2 được khởi động lại"
 
 msgid "Import from remote receiver URL"
 msgstr "Nhập từ URL máy thu từ xa"
@@ -8436,7 +8481,7 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Vị trí ghi âm tức thì"
+msgstr "Luôn bao gồm ECM trong bản ghi"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -8625,9 +8670,6 @@ msgstr "Hành động lựa chọn giao diện"
 
 msgid "List available networks"
 msgstr "Liệt kê các mạng khả dụng"
-
-msgid "List mode"
-msgstr "Chế độ danh sách"
 
 msgid "List of storage devices"
 msgstr "Danh sách các thiết bị lưu trữ"
@@ -8907,7 +8949,8 @@ msgstr "Menu chính"
 msgid "Maintain old EPG data for"
 msgstr "Duy trì dữ liệu EPG cũ cho"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Làm cho nó có thể tự khởi tạo việc nhập kênh và / hoặc EPG thông qua menu mở rộng"
 
 msgid "Make this mark an 'in' point"
@@ -9719,7 +9762,7 @@ msgstr "Cấu hình mạng..."
 msgid "Network information"
 msgstr "Cấu hình mạng"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -9859,9 +9902,6 @@ msgstr "Không có mô tả."
 
 msgid "No displayable files on this medium found!"
 msgstr "Không tìm thấy tập tin nào trên phương tiện này!"
-
-msgid "No epg.dat file found server"
-msgstr "Không tìm thấy máy chủ tập tin epg.dat"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Không tìm thấy thông tin sự kiện, ghi lại vô thời hạn."
@@ -10656,6 +10696,10 @@ msgstr "Philippines"
 msgid "PiP Actions"
 msgstr "Chức vụ"
 
+#, fuzzy
+msgid "PiP mode"
+msgstr "Chế độ danh sách"
+
 msgid "PiP setup"
 msgstr "Thiết lập PiP"
 
@@ -11072,6 +11116,10 @@ msgid "Port D"
 msgstr "CổngD"
 
 msgid "Port of fallback remote receiver"
+msgstr "Cổng thu dự phòng từ xa"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Cổng thu dự phòng từ xa"
 
 msgid "Portugal"
@@ -11727,6 +11775,10 @@ msgid "Receiver name"
 msgstr "Tên thiết bị:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr ""
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -13248,6 +13300,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "Bộ chỉnh không có sẵn."
+
+#, fuzzy
 msgid "Server:"
 msgstr "Dịch vụ"
 
@@ -13360,6 +13416,9 @@ msgstr "Dịch vụ"
 msgid "Set CI assignment for detection of available services."
 msgstr "Đặt gán CI để phát hiện các dịch vụ khả dụng."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13369,7 +13428,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Đặt tất cả các phím nóng để mặc định?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "Đặt bộ điều chỉnh dự phòng thay thế cho DVB-T / C hoặc ATSC"
 
 msgid "Set as startup service"
@@ -13424,7 +13484,8 @@ msgstr "Hệ thống"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Kiểm tra cấu hình mạng của máy thu của bạn.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Đặt ID người dùng của OpenWebif từ bộ điều chỉnh dự phòng của bạn"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13450,10 +13511,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Chọn phương pháp sắp xếp:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Đặt mật khẩu của OpenWebif từ bộ điều chỉnh dự phòng của bạn"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Đặt cổng của OpenWebif từ bộ điều chỉnh dự phòng của bạn"
 
 #, fuzzy
@@ -13562,9 +13625,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Tên tập tin ngắn"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "Đưa ra cho xem"
@@ -13774,6 +13834,10 @@ msgid "Show image items"
 msgstr "Xem phim"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Hiển thị thông báo khi các kênh nhập khẩu thành công"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Tắt máy khi ở chế độ chờ"
 
@@ -13802,6 +13866,10 @@ msgstr "Hiển thị số menu hoặc số plugin"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Hiển thị các cam kết mới nhất"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Hiển thị PiP"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -13849,10 +13917,12 @@ msgstr "Xóa hình ảnh"
 msgid "Show next page of description"
 msgstr "Hiển thị mô tả mở rộng"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Hiển thị thông báo khi nhập kênh và / hoặc EPG từ URL người nhận từ xa không hoàn thành"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Hiển thị thông báo khi nhập kênh và / hoặc EPG từ URL người nhận từ xa hoàn tất"
 
 msgid "Show notification when import channels was not successful"
@@ -14043,6 +14113,10 @@ msgstr "Hiển thị / ẩn cửa sổ"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Hiển thị thông tin"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Hiển thị thông báo khi nhập kênh và / hoặc EPG từ URL người nhận từ xa hoàn tất"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Hiển thị truyền hình trực tiếp hoặc thông tin trên LCD."
@@ -14605,6 +14679,10 @@ msgstr "Bắt đầu thư mục"
 msgid "Start from the beginning"
 msgstr "Bắt đầu từ đầu"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Đồng thời nhập vào lúc khởi động lại / khởi động lại enigma2"
+
 msgid "Start instant recording"
 msgstr "Bắt đầu ghi âm ngay lập tức"
 
@@ -14631,9 +14709,6 @@ msgstr "Bắt đầu thời gian để bỏ qua tắt máy ở chế độ chờ
 
 msgid "Start timeshift"
 msgstr "Bắt đầu timeshift"
-
-msgid "Start with list screen"
-msgstr "Bắt đầu với màn hình danh sách"
 
 msgid "Starting on"
 msgstr "Bắt đầu vào"
@@ -16346,7 +16421,8 @@ msgstr "KHÔNG XÁC ĐỊNH"
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "URL của máy thu từ xa dự phòng"
 
 msgid "USALS"
@@ -17000,8 +17076,9 @@ msgstr "EPG"
 msgid "WLAN connection"
 msgstr "Kết nối mạng WLAN"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "AAC kết hợp"
 
 #, fuzzy
 msgid "WPA"
@@ -17234,7 +17311,8 @@ msgstr "Khi được bật, đầu thu sẽ tự động đánh thức từ ch�
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Khi được bật, hộp trên cùng có thể thức dậy trên mạng LAN"
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Khi được bật, bộ hẹn giờ từ bộ điều chỉnh dự phòng được nhập"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17243,7 +17321,8 @@ msgstr "Khi được bật thì khi bạn chọn một kênh mới trong lựa c
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Khi được bật, bạn có thể điều khiển âm lượng bằng các nút mũi tên thay vì lấy danh sách chọn kênh"
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Khi được bật, bạn có thể tùy chỉnh cài đặt OpenWeb If cho bộ điều chỉnh dự phòng"
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17402,9 +17481,8 @@ msgstr "Khi được bật, cài đặt này có trọng lượng lớn hơn 'B�
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Khi được bật, cài đặt này có trọng lượng lớn hơn 'Bộ điều chỉnh ưu tiên'."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Khi được bật, timeshift bắt đầu tự động trong nền sau thời gian được chỉ định."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Khi được bật, sử dụng DHCP cho cấu hình IP."
@@ -17661,10 +17739,11 @@ msgstr "Vâng"
 msgid "Yes (save index in setup tuner)"
 msgstr "Có (lưu chỉ mục trong bộ chỉnh thiết lập)"
 
-msgid "Yes and save"
-msgstr "Có và lưu lại"
-
 msgid "Yes and save in movie dir"
+msgstr "Có và lưu trong thư mục phim"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Có và lưu trong thư mục phim"
 
 msgid "Yes to all"
@@ -17789,6 +17868,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Bạn đã không chọn một kênh để ghi lại."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"

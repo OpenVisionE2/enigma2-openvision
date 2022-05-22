@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -1211,10 +1211,6 @@ msgstr "%s KSymb/s"
 msgid "%s MHz"
 msgstr "%s MHz"
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s geïmporteerd vanaf de Fallback tuner"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1257,8 +1253,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s nieuw pakket beschikbaar"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Directory bevat %(file)s en %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -1732,19 +1736,18 @@ msgstr "AAC downmix"
 msgid "AAC plus downmix"
 msgstr "AAC downmix"
 
-#, fuzzy
 msgid "AAC transcoding"
-msgstr "Transcoderen:"
+msgstr "AAC transcoding"
 
 msgid "AC3"
-msgstr ""
+msgstr "AC3"
 
 msgid "AC3 downmix"
 msgstr "AC3 downmix"
 
 #, fuzzy
 msgid "AC3 plus transcoding"
-msgstr "Transcoderen:"
+msgstr "AC3 transcoding"
 
 msgid "ACQUIRING TSID/ONID"
 msgstr "VERKRIJG TSID/ONID"
@@ -2141,7 +2144,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3123,6 +3126,10 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "FCC geactiveerd"
+
 msgid "CI (Common Interface) Setup"
 msgstr "Instellen CI (Common Interface)"
 
@@ -3470,11 +3477,12 @@ msgstr "Kanaalnummer en servicenaam"
 msgid "Channelnumber, picon and servicename"
 msgstr "Kanaalnummer, picon en servicenaam"
 
-msgid "Channels"
-msgstr "Zenders"
-
 msgid "Channels and EPG"
 msgstr "Zenders + EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 msgid "Channels only"
 msgstr "Alléén de zenders"
@@ -3608,25 +3616,24 @@ msgstr ""
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
-#, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
-msgstr "Indien geactiveerd stelt u in of zenders met meerdere geluidskanalen, of deze kanalen omgezet moeten worden naar stereo."
+msgstr "Bepaal of geluid in AAC opmaak getranscodeerd moeten worden."
 
 #, fuzzy
 msgid "Choose whether AC3 Plus sound tracks should be transcoded to AC3."
-msgstr "Indien geactiveerd stelt u in of zenders met meerdere geluidskanalen, of deze kanalen omgezet moeten worden naar stereo."
+msgstr "Indien geactiveerd, dan stelt u hiermee in of AC3 geluid omgezet moet worden naar stereo."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Indien geactiveerd stelt u in of zenders met meerdere geluidskanalen, of deze kanalen omgezet moeten worden naar stereo."
+msgstr "Indien geactiveerd, dan stelt u hiermee in of Multi channel AAC geluid omgezet moet worden naar stereo."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Indien geactiveerd stelt u in of zenders met meerdere geluidskanalen, of deze kanalen omgezet moeten worden naar stereo."
+msgstr "Indien geactiveerd, dan stelt u hiermee in of WMA Pro geluid omgezet moet worden naar stereo."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
-msgstr "Indien geactiveerd stelt u in of zenders met meerdere geluidskanalen, of deze kanalen omgezet moeten worden naar stereo."
+msgstr "Indien geactiveerd, dan stelt u hiermee in of Multi channel AAC geluid omgezet moet worden naar stereo."
 
 msgid "Choose whether to scan a single transponder, one satellite or multiple satellites."
 msgstr "Kies of u een enkele transponder, een satelliet of meerdere satellieten wilt scannen."
@@ -3709,7 +3716,13 @@ msgstr "Er wordt momenteel gestreamd vanaf deze box!"
 msgid "Client mode"
 msgstr "module initialiseren"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4504,7 +4517,9 @@ msgstr "Verbonden transcoding, beperking - geen PIP!"
 msgid "Connection information"
 msgstr "Pluginmanager achtergrondinformatie"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -4775,9 +4790,8 @@ msgstr "Tsjechië"
 msgid "D"
 msgstr "D"
 
-#, fuzzy
 msgid "DAC"
-msgstr "PDC"
+msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -4790,13 +4804,14 @@ msgid "DLNA support"
 msgstr "HLG ondersteuning"
 
 msgid "DTS"
-msgstr ""
+msgstr "DTS"
 
 msgid "DTS downmix"
 msgstr "DTS downmix"
 
+#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr ""
+msgstr "DTS-HD HR/DTS-HD MA/DTS"
 
 msgid "DUAL LAYER DVD"
 msgstr "DUAL LAYER DVD"
@@ -5328,17 +5343,21 @@ msgstr "Deselecteer"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
-msgstr "Hier geeft u de locatie van de Fallback (externe) tuner aan. U kunt kiezen uit een voorgedefinieerde in het netwerk aanwezige receiver of een zelf in te voeren IPadres of URL. In twee gevallen dient u een poortnummer in te geven. Dit wordt duidelijk aangegeven."
-
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "Hier geeft u de locatie van de Fallback (externe) tuner aan t.b.v. ATSC ontvangst. U kunt kiezen uit een voorgedefinieerde in het netwerk aanwezige receiver of een zelf in te voeren IPadres of URL. In twee gevallen dient u een poortnummer in te geven. Dit wordt duidelijk aangegeven."
 
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "Hier geeft u de locatie van de Fallback (externe) tuner aan t.b.v. DVB-C ontvangst. U kunt kiezen uit een voorgedefinieerde in het netwerk aanwezige receiver of een zelf in te voeren IPadres of URL. In twee gevallen dient u een poortnummer in te geven. Dit wordt duidelijk aangegeven."
 
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "Hier geeft u de locatie van de Fallback (externe) tuner aan t.b.v. DVB-T ontvangst. U kunt kiezen uit een voorgedefinieerde in het netwerk aanwezige receiver of een zelf in te voeren IPadres of URL. In twee gevallen dient u een poortnummer in te geven. Dit wordt duidelijk aangegeven."
+
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "Hier geeft u de locatie van de Fallback (externe) tuner aan. U kunt kiezen uit een voorgedefinieerde in het netwerk aanwezige receiver of een zelf in te voeren IPadres of URL. In twee gevallen dient u een poortnummer in te geven. Dit wordt duidelijk aangegeven."
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5439,10 +5458,6 @@ msgstr "Map"
 msgid "Directory %s does not exist."
 msgstr "Map %s bestaat niet."
 
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
-
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
 msgstr "Map %s bestaat niet."
@@ -5469,13 +5484,12 @@ msgstr "Uit"
 msgid "Disable Animations"
 msgstr "Timer uitschakelen"
 
-#, fuzzy
 msgid "Disable FCC during recordings"
-msgstr "Voeg de ECM altijd toe aan opnames"
+msgstr "Déactiveer FCC tijdens opnames"
 
 #, fuzzy
 msgid "Disable Fast Channel Change"
-msgstr "Wilt u de Fastscan zendernamen gebruiken"
+msgstr "Snelle zenderwisseling"
 
 msgid "Disable Picture in Picture"
 msgstr "Picture In Picture uitschakelen"
@@ -5845,8 +5859,9 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Gereed - %d pakket geïnstalleerd, vervangen of verwijderd (%s)"
 msgstr[1] "Gereed - %d pakketten geïnstalleerd, vervangen of verwijderd (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "Downmix"
 
 #, fuzzy
 msgid "Download error"
@@ -5880,9 +5895,8 @@ msgstr "Er wordt geprobeerd een nieuwe pakketlijst te downloaden... Een ogenblik
 msgid "Downloading plugin information. Please wait..."
 msgstr "Applicatie informatie ophalen. Een ogenblik aub..."
 
-#, fuzzy
 msgid "Downmix"
-msgstr "DTS downmix"
+msgstr "Downmix"
 
 msgid "Drama"
 msgstr ""
@@ -5954,9 +5968,17 @@ msgstr "EPG selectie"
 msgid "EPG Setup"
 msgstr "Instellingen"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "bestandnaam"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "Eerste taalkeuze t.b.v. de EPG weergave"
@@ -5982,8 +6004,8 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "Fout - zoeken mislukt (%s)!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
-msgstr "Fout tijdens het downloaden van bestand %s"
+msgid "ERROR downloading file %s"
+msgstr "Fout tijdens het downloaden bestand %s%s"
 
 msgid "East"
 msgstr "Oost"
@@ -6095,14 +6117,14 @@ msgstr "Wilt u de automatische Fastscan activeren"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Ingeschakeld"
+msgstr "Activeer bluetooth audio"
 
 msgid "Enable EIT EPG"
 msgstr "EIT EPG inschakelen"
 
 #, fuzzy
 msgid "Enable Fast Channel Change"
-msgstr "Activeer de automatische kabelscan"
+msgstr "Snelle zenderwisseling"
 
 msgid "Enable Focus Animation"
 msgstr ""
@@ -6190,7 +6212,13 @@ msgstr "Indien geactiveerd, dan wordt HDMI-CEC ingeschakeld."
 msgid "Enable parental protection"
 msgstr "Kinderslot inschakelen"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Indien geactiveerd, dan wordt er een link naar een externe enigma2 receiver actief waarmee er, naast de huidige locale tuners, een extra tuner beschikbaar komt. Hiermee wordt de flexibiliteit om meer kanalen simultaan vanaf één ontvanger te kunnen opnemen aanzienlijk vergroot. De opties worden hierna uitgelegd."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6250,6 +6278,9 @@ msgstr ""
 
 msgid "Enabled"
 msgstr "Ingeschakeld"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6493,12 +6524,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Fout stop de stream!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Fout tijdens het wegschrijven van de epg.dat op de server"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Fout tijdens het ophalen van de epg.dat van de server"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6506,9 +6531,6 @@ msgid ""
 msgstr ""
 "Fout tijdens het ophalen van de Fallback timer informatie\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Fout tijdens het ophalen van de locatie van de epg.dat op de server"
 
 #, python-format
 msgid ""
@@ -6836,13 +6858,11 @@ msgstr ""
 msgid "FCC 1953"
 msgstr ""
 
-#, fuzzy
 msgid "FCC enabled"
-msgstr "Ingeschakeld"
+msgstr "FCC geactiveerd"
 
-#, fuzzy
 msgid "FCCSetup"
-msgstr "Instellingen"
+msgstr "FCC instellen"
 
 msgid "FEC"
 msgstr "FEC"
@@ -6928,10 +6948,22 @@ msgstr "Fallback externe tuner"
 msgid "Fallback remote receiver IP"
 msgstr "IPadres van de Fallback tuner"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "IPadres van de Fallback tuner"
+
 msgid "Fallback remote receiver Port"
 msgstr "Ingave van de poort van de Fallback tuner"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Ingave van de poort van de Fallback tuner"
+
 msgid "Fallback remote receiver URL"
+msgstr "URL (http) van de Fallback ontvanger"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "URL (http) van de Fallback ontvanger"
 
 msgid "Fallback remote receiver for ATSC"
@@ -6986,13 +7018,13 @@ msgid "Fast"
 msgstr "Snel"
 
 msgid "Fast Channel Change"
-msgstr ""
+msgstr "Snelle zenderwisseling"
 
 msgid "Fast Channel Change Setup"
-msgstr ""
+msgstr "Snelle zenderwisseling. Instellen"
 
 msgid "Fast Channel Change setup"
-msgstr ""
+msgstr "Snelle zenderwisseling instellen"
 
 msgid "Fast DiSEqC"
 msgstr "Snelle DiSEqC"
@@ -7180,6 +7212,10 @@ msgstr "Frankrijk"
 msgid "Free"
 msgstr ""
 
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
+msgstr ""
+
 msgid "Free flash"
 msgstr ""
 
@@ -7352,7 +7388,7 @@ msgstr "Algehele AC3 vertraging"
 
 #, fuzzy
 msgid "General BT audio delay"
-msgstr "Algehele AC3 vertraging"
+msgstr "Algehele bluetooth geluids-vertraging"
 
 msgid "General PCM delay"
 msgstr "Algehele PCM vertraging"
@@ -7591,7 +7627,7 @@ msgid "HD list"
 msgstr "HD lijst"
 
 msgid "HDMI"
-msgstr ""
+msgstr "HDMI"
 
 msgid "HDMI Colordepth"
 msgstr "HDMI kleurdiepte"
@@ -7782,9 +7818,8 @@ msgstr ""
 msgid "Hiri Motu"
 msgstr ""
 
-#, fuzzy
 msgid "History Prev/Next"
-msgstr "Historiek volgende"
+msgstr "Historiek Vorige / Volgende"
 
 msgid "History back"
 msgstr "Historiek vorige"
@@ -7936,7 +7971,8 @@ msgstr "I"
 msgid "IP address"
 msgstr "IP-adres:"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "Indien u bij de voorgaande optie heeft gekozen voor 'IPadres', dan kunt u nu een specifiek IPadres ingeven waarop de Fallback tuner in het netwerk te vinden is."
 
 msgid "IPv6"
@@ -8077,21 +8113,20 @@ msgstr "Image: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Indien geactiveerd, dan importeert u ook de zenders en/of de EPG vanaf de externe ontvanger als deze uit stand-by komt."
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr ""
-"Indien geactiveerd, dan importeert u zenders van een externe ontvanger indien uw ontvanger opstart.\n"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
 "\n"
-"Na activatie van deze functie kunt u nadere details instellen."
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+"Don't forget to manually set server IP."
 msgstr "Indien geactiveerd, dan importeert u ook de zenders en/of de EPG vanaf de externe ontvanger als de ontvanger of enigma2 is herstart."
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Import vanaf de Fallback tuner mislukt, %s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "Indien geactiveerd, dan importeert u ook de zenders en/of de EPG vanaf de externe ontvanger als de ontvanger of enigma2 is herstart."
 
 msgid "Import from remote receiver URL"
 msgstr "Importeer data vanaf een externe ontvanger"
@@ -8687,7 +8722,7 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Opname-locatie directe opnames"
+msgstr "Déactiveer FCC tijdens opnames"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -8877,9 +8912,6 @@ msgstr "Skin selectie actie(s)"
 
 msgid "List available networks"
 msgstr "Toon beschikbare netwerken"
-
-msgid "List mode"
-msgstr "Lijstmode"
 
 msgid "List of storage devices"
 msgstr "Overzicht van opslagmedia"
@@ -9161,7 +9193,8 @@ msgstr "Hoofdmenu"
 msgid "Maintain old EPG data for"
 msgstr "De oude EPG data bewaren gedurende ... minuten."
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Indien geactiveerd, dan krijgt u de mogelijkheid om handmatig de import van zenders en/of EPG via het applicatie-menu (blauwe toets) uit te voeren."
 
 msgid "Make this mark an 'in' point"
@@ -9302,9 +9335,8 @@ msgstr "Mauritanië"
 msgid "Mauritius"
 msgstr "Mauritius"
 
-#, fuzzy
 msgid "Max channels"
-msgstr "Zenders"
+msgstr "Max aantal kanalen"
 
 msgid "Max memory positions"
 msgstr "Maximale aantal geheugenposities"
@@ -9973,7 +10005,7 @@ msgstr "Netwerkconfiguratie..."
 msgid "Network information"
 msgstr "Netwerk configuratie"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -10115,9 +10147,6 @@ msgstr "Geen beschrijving beschikbaar."
 
 msgid "No displayable files on this medium found!"
 msgstr "Geen weer te geven bestanden op dit medium gevonden!"
-
-msgid "No epg.dat file found server"
-msgstr "Er is geen epg.dat bestand op de server gevonden"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Geen EPG gegevens gevonden. Opname voor onbepaalde tijd."
@@ -10844,7 +10873,7 @@ msgid "Partitions"
 msgstr "Polarisatie"
 
 msgid "Passthrough"
-msgstr ""
+msgstr "Passthrough"
 
 msgid "Password"
 msgstr "Wachtwoord"
@@ -10915,6 +10944,10 @@ msgstr "Philippijnen"
 #, fuzzy
 msgid "PiP Actions"
 msgstr "Positie"
+
+#, fuzzy
+msgid "PiP mode"
+msgstr "Lijstmode"
 
 msgid "PiP setup"
 msgstr "PIP instellingen"
@@ -11357,6 +11390,10 @@ msgid "Port D"
 msgstr "Poort D"
 
 msgid "Port of fallback remote receiver"
+msgstr "Indien bij 'Fallback tuner' (optie 3) gekozen is voor een separaat IPadres, dan kunt u hier de gebruikte poort van de Fallback tuner ingeven."
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Indien bij 'Fallback tuner' (optie 3) gekozen is voor een separaat IPadres, dan kunt u hier de gebruikte poort van de Fallback tuner ingeven."
 
 msgid "Portugal"
@@ -12015,6 +12052,10 @@ msgid "Receiver name"
 msgstr "Apparaatnaam:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr "De ontvanger of de driver ondersteunt geen FCC"
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -12678,7 +12719,7 @@ msgid "SNR:"
 msgstr "SNR:"
 
 msgid "SPDIF"
-msgstr ""
+msgstr "SPDIF"
 
 msgid "SRT file"
 msgstr "SRT bestand"
@@ -13544,6 +13585,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "Tuner niet beschikbaar"
+
+#, fuzzy
 msgid "Server:"
 msgstr "Zender"
 
@@ -13657,6 +13702,9 @@ msgstr "Zenders"
 msgid "Set CI assignment for detection of available services."
 msgstr "Kies CI toekenning om de beschikbare zenders te detecteren."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13666,7 +13714,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Zet alle Hotkey instellingen terug?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "Indien geactiveerd, dan kunt u alternatieve Fallback tuners ingeven t.b.v. DVB-T/C or ATSC ontvangst."
 
 msgid "Set as startup service"
@@ -13722,7 +13771,8 @@ msgstr ""
 "Test de netwerkconfiguratie.\n"
 "\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Voer het gebruikers ID van de OpenWebif in vanaf uw Fallback tuner."
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13748,10 +13798,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Kies de sorteermethode:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Stel het wachtwoord van de OpenWebif in vanaf je Fallback tuner"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Stel de poort van de OpenWebif in vanaf de Fallback tuner."
 
 #, fuzzy
@@ -13869,9 +13921,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Korte bestandsnamen"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "Toon menu-item"
@@ -14081,11 +14130,15 @@ msgid "Show image items"
 msgstr "Toon de films"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Toon een melding indien de import geslaagd is"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Sluit volledig af indien in stand-by"
 
 msgid "Show in extensions menu"
-msgstr "In applicatie-menu tonen"
+msgstr "Toon in applicatie-menu"
 
 msgid "Show info"
 msgstr "Toon de informatie"
@@ -14109,6 +14162,10 @@ msgstr "Toon telnummers in menu en plugins overzichten"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Toon de laatste commits"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Toon de PIP"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -14156,10 +14213,12 @@ msgstr "Kies de image"
 msgid "Show next page of description"
 msgstr "Weergave met uitgebreide informatie"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Indien geactiveerd, dan wordt er een melding weergegeven indien de import van zenders en/of EPG vanaf de externe ontvanger niet (compleet) gelukt is."
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Indien geactiveerd, dan wordt er een melding weergegeven indien de import van zenders en/of EPG vanaf de externe ontvanger geslaagd is."
 
 msgid "Show notification when import channels was not successful"
@@ -14356,6 +14415,10 @@ msgstr "Toon/verberg het scherm"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Toon de informatie"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Indien geactiveerd, dan wordt er een melding weergegeven indien de import van zenders en/of EPG vanaf de externe ontvanger geslaagd is."
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Indien geactiveerd, dan wordt er Live TV getoond op het LCD display indien PIP actief is."
@@ -14917,6 +14980,10 @@ msgstr "Start map"
 msgid "Start from the beginning"
 msgstr "Start vanaf het begin"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Importeer ook bij een herstart van de ontvanger of Enigma"
+
 msgid "Start instant recording"
 msgstr "Start een directe opname"
 
@@ -14943,9 +15010,6 @@ msgstr "Start tijd om in stand-by gaan te negeren"
 
 msgid "Start timeshift"
 msgstr "Start de timeshift"
-
-msgid "Start with list screen"
-msgstr "Start met een zichtbare lijst"
 
 msgid "Starting on"
 msgstr "Start op"
@@ -15430,7 +15494,7 @@ msgstr "Plugin details:"
 msgid "TRANSLATOR_INFO"
 msgstr ""
 "Deze Nederlandse vertaling wordt u aangeboden door het OpenPLi team.\n"
-"De laatste aanpassing in deze vertaling is gedaan op 7 November 2021.\n"
+"De laatste aanpassing in deze vertaling is gedaan op 12 April 2022.\n"
 "Voor aanvullingen of opmerkingen stuurt u een mail naar translators@openpli.org."
 
 msgid "TS file is too large for ISO9660 level 1!"
@@ -16034,10 +16098,7 @@ msgstr "Met deze optie kunt u het path weergeven hoe u in het huidige scherm ben
 
 #, fuzzy
 msgid "This option allows you to switch audio to BT speakers."
-msgstr ""
-"Met deze optie kunt u het automatisch volume in of uitschakelen.\n"
-"\n"
-"Hiermee wordt het verschil in geluidssterkte tussen de verschillende zenders op een gelijk niveau gebracht."
+msgstr "Met deze optie kunt u de audio omschakelen naar de bluetooth-luidsprekers."
 
 #, fuzzy
 msgid "This option allows you to use video sync mode."
@@ -16051,7 +16112,7 @@ msgstr "Deze optie is vooral praktisch voor lange HDMI kabels omdat door het geb
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
-msgstr "Met deze optie stelt u de algemene audiovertraging van stereo geluid in."
+msgstr "Met deze optie stelt u de algemene audiovertraging in voor bluetooth-luidsprekers."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Met deze optie stelt u het niveau van de overdruk van musquito noise. (Musquito Noise is random aliasing as a result of strong compression). Uiteraard gaat e.e.a. ten koste van de beelddetails."
@@ -16682,7 +16743,8 @@ msgstr "ONBEKEND"
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "Indien u hier kiest voor IPadres, dan voert u in de regels hieronder de URL in zoals in het onderstaande voorbeeld aangegeven wordt. Het volstaat om enkel het IPadres in te voeren zonder http:// of poortnummer. Deze worden standaard toegevoegd zodat het eindresultaat er bijvoorbeeld zo uit zal zien. http://192.168.100.202:8001"
 
 msgid "USALS"
@@ -17347,8 +17409,9 @@ msgstr "EPG"
 msgid "WLAN connection"
 msgstr "WLAN connectie"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "WMA Pro downmix"
 
 #, fuzzy
 msgid "WPA"
@@ -17593,7 +17656,8 @@ msgstr "Indien geactiveerd, dan zal ook de ontvanger opstarten zodra de TV wordt
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Indien geactiveerd, dan is het mogelijk om de 'Wake On Lan functie' te gebruiken. Hiermee kunt u via het netwerk contact maken met de ontvanger waarna deze zal starten vanuit 'deep sleep'."
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Indien geactiveerd, dan worden ook de timers van de externe tuner geïmporteerd."
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17602,7 +17666,8 @@ msgstr "Indien geactiveerd, dan zal, indien u een keuze gemaakt heeft, het selec
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Indien geactiveerd, dan kunt u het volume bedienen met de pijltjestoetsen, i.p.v. dat u hiermee de zenderlijst opent."
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Indien geactiveerd, dan kunt u de instellingen van de Fallback tuner aanpassen in de Webinterface."
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17769,12 +17834,8 @@ msgstr "Indien geactiveerd, dan wordt de voorkeur gegeven aan deze optie boven d
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Indien geactiveerd, dan wordt er voorkeur gegeven aan deze optie boven de optie 'Voorkeurstuner'."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
 msgstr ""
-"Met deze optie stelt u de tijdsduur in na hoeveel tijd de timeshift automatisch op de achtergrond gestart wordt.\n"
-"\n"
-"U kunt kiezen tussen 'geen timeshift of van 0 - 5 minuten maximaal."
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Indien geactiveerd, gebruik dan DHCP om jouw IPadres te bepalen."
@@ -18046,10 +18107,11 @@ msgstr "Ja"
 msgid "Yes (save index in setup tuner)"
 msgstr "Ja (sla index op in setup tuner)"
 
-msgid "Yes and save"
-msgstr "Ja en sla op"
-
 msgid "Yes and save in movie dir"
+msgstr "Ja en sla op in de opnamedirectory"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Ja en sla op in de opnamedirectory"
 
 msgid "Yes to all"
@@ -18176,6 +18238,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "U heeft geen kanaal geselecteerd om van op te nemen."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"
@@ -18338,9 +18404,8 @@ msgstr "Zambia"
 msgid "Zap"
 msgstr "Zap"
 
-#, fuzzy
 msgid "Zap Up/Down"
-msgstr "Zap naar beneden"
+msgstr "Zap Omhoog / Omlaag"
 
 #, fuzzy
 msgid "Zap and record"
@@ -18641,14 +18706,13 @@ msgid "controlled by HDMI"
 msgstr "geregeld door de HDMI"
 
 msgid "convert to AC3"
-msgstr ""
+msgstr "converteer naar AC3"
 
 msgid "convert to DTS"
-msgstr ""
+msgstr "converteer naar DTS"
 
-#, fuzzy
 msgid "convert to multi-channel PCM"
-msgstr "Multichannel PCM"
+msgstr "zet om naar Multi-channel PCM"
 
 msgid "cooking"
 msgstr "Kookprogramma"
@@ -18767,7 +18831,6 @@ msgstr "Experimentele films/Video"
 msgid "extra wide"
 msgstr "Extra breed"
 
-#, fuzzy
 msgid "extrawide"
 msgstr "Extra breed"
 
@@ -19180,7 +19243,6 @@ msgstr "Moderne cultuur/Traditionele kunst"
 msgid "pre-school children's program"
 msgstr "Peuter/Kleuterprogramma"
 
-#, fuzzy
 msgid "priority"
 msgstr "Prioriteit"
 
@@ -19521,12 +19583,11 @@ msgstr "niet te testen"
 msgid "until standby/restart"
 msgstr "tot stand-by / herstart"
 
-#, fuzzy
 msgid "use best / controlled by HDMI"
-msgstr "geregeld door de HDMI"
+msgstr "gebruik de beste / gecontroleerd door HDMI"
 
 msgid "use_hdmi_cacenter"
-msgstr ""
+msgstr "gebruik hdmi_cacenter"
 
 msgid "user defined"
 msgstr "Door gebruiker bepaald"

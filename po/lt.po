@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
-"PO-Revision-Date: 2021-12-10 00:18+0200\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"PO-Revision-Date: 2022-04-12 21:59+0300\n"
 "Last-Translator: Audronis <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
 "Language: lt_LT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.0.1\n"
 
 msgid ""
 "\n"
@@ -1232,10 +1232,6 @@ msgstr "%s KSymb/s"
 msgid "%s MHz"
 msgstr "%s MHz"
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s importuota iš nuotolinio imtuvo"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1278,8 +1274,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "galimas %s paketo atnaujinimas"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Kataloge yra %(file)s ir %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -1753,19 +1757,18 @@ msgstr "AAC suliejimas"
 msgid "AAC plus downmix"
 msgstr "AAC suliejimas"
 
-#, fuzzy
 msgid "AAC transcoding"
-msgstr "Perkodavimas: "
+msgstr "AAC perkodavimas"
 
 msgid "AC3"
-msgstr ""
+msgstr "AC3"
 
 msgid "AC3 downmix"
 msgstr "AC3 suliejimas"
 
 #, fuzzy
 msgid "AC3 plus transcoding"
-msgstr "Perkodavimas: "
+msgstr "AC3 perkodavimas"
 
 msgid "ACQUIRING TSID/ONID"
 msgstr "GAUNAMAS TSID/ONID"
@@ -2159,7 +2162,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3134,6 +3137,10 @@ msgstr "KAN"
 msgid "CH%s"
 msgstr "KAN.%s"
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "FCC įjungta"
+
 msgid "CI (Common Interface) Setup"
 msgstr "CI (įstatomo modulio) sąranka"
 
@@ -3192,7 +3199,7 @@ msgstr "Kabelinės TV kanalų paieška"
 
 #, python-format
 msgid "Cable scan executable utility not found '%s'!"
-msgstr ""
+msgstr "Kabelio nuskaitymo vykdomasis įrankis nerastas '%s'!"
 
 msgid "Cache thumbnails"
 msgstr "Miniatiūras kaupti talpykloje"
@@ -3478,11 +3485,12 @@ msgstr "Kanalo numeris ir pavadinimas"
 msgid "Channelnumber, picon and servicename"
 msgstr "Kanalo numeris, logotipas ir kanalo pavadinimas"
 
-msgid "Channels"
-msgstr "Kanalai"
-
 msgid "Channels and EPG"
 msgstr "Kanalai ir EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 msgid "Channels only"
 msgstr "Tik kanalai"
@@ -3539,7 +3547,7 @@ msgstr "Čilė"
 
 #, fuzzy
 msgid "Children/Youth"
-msgstr "Švietimas, mokslas, ..."
+msgstr "Vaikai / jaunimas / Švietimas / Mokslas"
 
 #, fuzzy
 msgid "Childrens"
@@ -3611,25 +3619,24 @@ msgstr ""
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
-#, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
-msgstr "Pasirinkite, ar sulieti daugiakanalio garso takelius į stereo garsą."
+msgstr "Pasirinkite, ar AAC garso takeliai bus perkoduoti."
 
 #, fuzzy
 msgid "Choose whether AC3 Plus sound tracks should be transcoded to AC3."
-msgstr "Pasirinkite, ar sulieti daugiakanalio garso takelius į stereo garsą."
+msgstr "Pasirinkite, ar AC3 garso takeliai turi būti perkoduoti."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Pasirinkite, ar sulieti daugiakanalio garso takelius į stereo garsą."
+msgstr "Pasirinkite, ar kelių kanalų aac+ garso takeliai turi būti sulieti su stereofoniniu ryšiu."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Pasirinkite, ar sulieti daugiakanalio garso takelius į stereo garsą."
+msgstr "Pasirinkite, ar WMA Pro garso takeliai turėtų būti sulieti."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
-msgstr "Pasirinkite, ar sulieti daugiakanalio garso takelius į stereo garsą."
+msgstr "Pasirinkite, ar kelių kanalų aac+ garso takeliai turi būti sulieti su stereofoniniu ryšiu."
 
 msgid "Choose whether to scan a single transponder, one satellite or multiple satellites."
 msgstr "Pasirinkite, ar skenuoti vieną transponderį, vieną palydovą ar kelis palydovus."
@@ -3712,7 +3719,13 @@ msgstr "Klientas transliuoja iš šio imtuvo!"
 msgid "Client mode"
 msgstr "aptinkamas modulis"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4319,7 +4332,9 @@ msgstr "Pajungtas perkodavimas. PiP negalimas!"
 msgid "Connection information"
 msgstr "Priedų tvarkyklės aktyvumo informacija"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -4498,7 +4513,7 @@ msgstr "Dabartinis"
 
 #, fuzzy
 msgid "Current Affairs"
-msgstr "Naujienos, aktualijos"
+msgstr "Naujienos / Aktualijos / Socialiniai"
 
 #, fuzzy
 msgid "Current CEC address:"
@@ -4590,9 +4605,8 @@ msgstr "Čekija"
 msgid "D"
 msgstr "D"
 
-#, fuzzy
 msgid "DAC"
-msgstr "PDC"
+msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -4605,13 +4619,14 @@ msgid "DLNA support"
 msgstr "HLG palaikymas"
 
 msgid "DTS"
-msgstr ""
+msgstr "DTS"
 
 msgid "DTS downmix"
 msgstr "DTS suliejimas"
 
+#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr ""
+msgstr "DTS-HD HR/DTS-HD MA/DTS"
 
 msgid "DUAL LAYER DVD"
 msgstr "DVISLUOKSNIS DVD"
@@ -5143,17 +5158,21 @@ msgstr "Atšaukti pasirinkimą"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
-msgstr "Atsarginio nuotolinio imtuvo paskirtis"
-
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "ATSC nuotolinio atsarginio imtuvo paskirties vieta"
 
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "DVB-C nuotolinio atsarginio imtuvo paskirties vieta"
 
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "DVB-T nuotolinio atsarginio imtuvo paskirties vieta"
+
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "Atsarginio nuotolinio imtuvo paskirtis"
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5254,10 +5273,6 @@ msgstr "Katalogas"
 msgid "Directory %s does not exist."
 msgstr "Katalogo %s nėra."
 
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
-
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
 msgstr "Katalogo %s nėra."
@@ -5284,13 +5299,12 @@ msgstr "Išjungti"
 msgid "Disable Animations"
 msgstr "Išjungti laikmatį"
 
-#, fuzzy
 msgid "Disable FCC during recordings"
-msgstr "Į įrašus visada įtraukti ECM"
+msgstr "Išjunkite FCC įrašymo metu"
 
 #, fuzzy
 msgid "Disable Fast Channel Change"
-msgstr "Naudokite greitos paieškos kanalo pavadinimus"
+msgstr "Greitasis kanalų perjungimas"
 
 msgid "Disable Picture in Picture"
 msgstr "Išjungti vaizdą vaizde"
@@ -5327,9 +5341,8 @@ msgstr ""
 msgid "Disk space to reserve for recordings (in GB)"
 msgstr "Įrašams rezervuota disko apimtis (GB)"
 
-#, fuzzy
 msgid "Disk state: "
-msgstr "paieškos eiga"
+msgstr "Disko būsena: "
 
 msgid "Display 16:9 content as"
 msgstr "16:9 santykio turinį rodyti, kaip"
@@ -5657,8 +5670,9 @@ msgstr[0] "Baigta - įdiegtas, atnaujintas, ar pašalintas %d paketas (%s)"
 msgstr[1] "Baigta - įdiegti, atnaujinti ar pašalinti %d paketai (%s)"
 msgstr[2] "Baigta - įdiegta,atnaujinta ar pašalinta %d paketų (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "Kanalų suliejimas"
 
 #, fuzzy
 msgid "Download error"
@@ -5673,9 +5687,8 @@ msgstr "Galimi parsisiųsti nauji priedai"
 msgid "Downloadable plugins"
 msgstr "Galimi parsisiųsti priedai"
 
-#, fuzzy
 msgid "Downloaded Images"
-msgstr "Parsiunčiamas atvaizdas"
+msgstr "Atsisiųsti atvaizdai"
 
 msgid "Downloading"
 msgstr "Parsisiunčiama"
@@ -5693,9 +5706,8 @@ msgstr "Atsisiunčiamas naujas paketų sąrašas. Prašome laukti..."
 msgid "Downloading plugin information. Please wait..."
 msgstr "Parsiunčiama informacija apie priedus. Prašome laukti..."
 
-#, fuzzy
 msgid "Downmix"
-msgstr "DTS suliejimas"
+msgstr "Kanalų suliejimas"
 
 msgid "Drama"
 msgstr ""
@@ -5767,9 +5779,17 @@ msgstr "EPG pasirinkimas"
 msgid "EPG Setup"
 msgstr "Valdymas"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "failo pavadinimas"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "1-a pasirinkta EPG kalba"
@@ -5795,8 +5815,8 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "KLAIDA - paieška nepavyko (%s)!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
-msgstr "KLAIDA, parsiunčiant failą %s"
+msgid "ERROR downloading file %s"
+msgstr "Failų %s/%s atsisiuntimo KLAIDA"
 
 msgid "East"
 msgstr "Rytai"
@@ -5863,7 +5883,7 @@ msgstr "Informacija"
 
 #, fuzzy
 msgid "Education/Science/Factual"
-msgstr "švietimas, mokslas, faktai (bendra)"
+msgstr "švietimo / mokslo / faktinės temos (bendrosios)"
 
 msgid "Egypt"
 msgstr "Egiptas"
@@ -5904,14 +5924,14 @@ msgstr "Įjungti automatinę greitą paiešką"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Įjungta"
+msgstr "Įjungti bluetooth garsą"
 
 msgid "Enable EIT EPG"
 msgstr "Įjungti EIT EPG"
 
 #, fuzzy
 msgid "Enable Fast Channel Change"
-msgstr "Įjungti kabelinės TV auto paiešką"
+msgstr "Greitasis kanalų perjungimas"
 
 msgid "Enable Focus Animation"
 msgstr ""
@@ -5999,7 +6019,13 @@ msgstr "Įjungti arba išjungti HDMI-CEC."
 msgid "Enable parental protection"
 msgstr "Įjungti tėvų kontrolę"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Įjungti nuotolinį enigma2 imtuvą, kad būtų galima žiūrėti kanalus, kurie negali būti priimti lokaliai (pvz., imtuvas užimtas, arba kanalas nepasiekiamas vietiniam imtuvui. Nurodykite pilną internetinį adresą, įskaitant http://ir prievado numerį (paprastai ...:8001), pvz., http://antrasis_aparatas:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6054,6 +6080,9 @@ msgstr "Redaguoti imtuvo vardų serverių konfigūraciją.\n"
 
 msgid "Enabled"
 msgstr "Įjungta"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6297,12 +6326,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Srauto stabdymo klaida!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Klaida, įrašant epg.dat serveryje"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Klaida, ieškant epg.data iš serverio"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6310,9 +6333,6 @@ msgid ""
 msgstr ""
 "Klaida atsisiunčiant atsarginio imtuvo laikmačio informaciją\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Klaida atkūrus epg.dat vietą serveryje"
 
 #, python-format
 msgid ""
@@ -6636,13 +6656,11 @@ msgstr ""
 msgid "FCC 1953"
 msgstr ""
 
-#, fuzzy
 msgid "FCC enabled"
-msgstr "įjungtas"
+msgstr "FCC įjungta"
 
-#, fuzzy
 msgid "FCCSetup"
-msgstr "Valdymas"
+msgstr "FCC sąranka"
 
 msgid "FEC"
 msgstr "FEC"
@@ -6728,10 +6746,22 @@ msgstr "Atsarginis nuotolinis imtuvas"
 msgid "Fallback remote receiver IP"
 msgstr "Atsarginio nuotolinio imtuvo IP"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "Atsarginio nuotolinio imtuvo IP"
+
 msgid "Fallback remote receiver Port"
 msgstr "Atsarginio nuotolinio imtuvo jungtis"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Atsarginio nuotolinio imtuvo jungtis"
+
 msgid "Fallback remote receiver URL"
+msgstr "Atsarginio nuotolinio imtuvo internetinis adresas"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "Atsarginio nuotolinio imtuvo internetinis adresas"
 
 msgid "Fallback remote receiver for ATSC"
@@ -6786,13 +6816,13 @@ msgid "Fast"
 msgstr "Greitas"
 
 msgid "Fast Channel Change"
-msgstr ""
+msgstr "Greitasis kanalų perjungimas"
 
 msgid "Fast Channel Change Setup"
-msgstr ""
+msgstr "Greitojo kanalų perjungimo sąranka"
 
 msgid "Fast Channel Change setup"
-msgstr ""
+msgstr "Greitojo kanalų perjungimo sąranka"
 
 msgid "Fast DiSEqC"
 msgstr "Greitas DiSEqC"
@@ -6980,6 +7010,10 @@ msgstr "Prancūzija"
 msgid "Free"
 msgstr ""
 
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
+msgstr ""
+
 msgid "Free flash"
 msgstr ""
 
@@ -7077,9 +7111,8 @@ msgstr "Visiškai permatomas"
 msgid "Full view resolution"
 msgstr "Pilno vaizdo rezoliucija"
 
-#, fuzzy
 msgid "Fullbackup Images"
-msgstr "Atsarginis laikmatis"
+msgstr "Pilnos atsarginės kopijos atvaizdai"
 
 msgid "Function of OK button"
 msgstr "'OK' mygtuko funkcija"
@@ -7153,7 +7186,7 @@ msgstr "Bendra AC3 delsa"
 
 #, fuzzy
 msgid "General BT audio delay"
-msgstr "Bendra AC3 delsa"
+msgstr "Bendras Bluetooth garso vėlavimas"
 
 msgid "General PCM delay"
 msgstr "Bendra PCM delsa"
@@ -7392,7 +7425,7 @@ msgid "HD list"
 msgstr "HD sąrašas"
 
 msgid "HDMI"
-msgstr ""
+msgstr "HDMI"
 
 msgid "HDMI Colordepth"
 msgstr "HDMI spalvų erdvė"
@@ -7583,9 +7616,8 @@ msgstr ""
 msgid "Hiri Motu"
 msgstr ""
 
-#, fuzzy
 msgid "History Prev/Next"
-msgstr "Istorija pirmyn"
+msgstr "Istorija pirmyn/atgal"
 
 msgid "History back"
 msgstr "Istorija atgal"
@@ -7737,7 +7769,8 @@ msgstr "I"
 msgid "IP address"
 msgstr "IP adresas"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "Atsarginio nuotolinio imtuvo IP"
 
 msgid "IPv6"
@@ -7871,18 +7904,20 @@ msgstr "Atvaizdas: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Importuoti kanalus ir/arba EPG iš nuotolinio imtuvo URL taip pat, kai imtuvas išeina iš budėjimo režimo"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Importuoti kanalus ir/arba EPG iš nuotolinio imtuvo URL, kai imtuvas yra paleistas"
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "Importuoti kanalus ir/arba EPG iš nuotolinio imtuvo URL, kai imtuvas arba enigma2 yra paleidžiami iš naujo"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Importuoti iš nuotolinio imtuvo nepavyko, %s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "Importuoti kanalus ir/arba EPG iš nuotolinio imtuvo URL, kai imtuvas arba enigma2 yra paleidžiami iš naujo"
 
 msgid "Import from remote receiver URL"
 msgstr "Importuoti epg iš nuotolinio imtuvo URL"
@@ -8478,7 +8513,7 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Vieta greitiems įrašams"
+msgstr "Išjunkite FCC įrašymo metu"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -8669,9 +8704,6 @@ msgstr "Temos pasirinkimo veiksmai"
 
 msgid "List available networks"
 msgstr "Galimų tinklų sąrašas"
-
-msgid "List mode"
-msgstr "Sąrašo režimas"
 
 msgid "List of storage devices"
 msgstr "Saugojimo įrenginių sąrašas"
@@ -8955,7 +8987,8 @@ msgstr "Pagrindinis meniu"
 msgid "Maintain old EPG data for"
 msgstr "Išlaikyti senus EPG duomenis"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Padaryti galimybę rankiniu būdu inicijuoti kanalų importavimą ir/arba EPG per išplėstinį meniu"
 
 msgid "Make this mark an 'in' point"
@@ -9096,9 +9129,8 @@ msgstr "Mauritanija"
 msgid "Mauritius"
 msgstr "Mauricijus"
 
-#, fuzzy
 msgid "Max channels"
-msgstr "Kanalai"
+msgstr "Maksimalūs kanalai"
 
 msgid "Max memory positions"
 msgstr "Maksimalios atminties pozicijos"
@@ -9767,7 +9799,7 @@ msgstr "Tinklo konfigūracija..."
 msgid "Network information"
 msgstr "Tinklo konfigūracija"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -9833,7 +9865,7 @@ msgstr ""
 
 #, fuzzy
 msgid "News/Current Affairs"
-msgstr "Naujienos, aktualijos"
+msgstr "Naujienos / Aktualijos / Socialiniai"
 
 msgctxt "button label, 'next screen'"
 msgid "Next"
@@ -9907,9 +9939,6 @@ msgstr "Joks aprašymas nepasiekiamas."
 
 msgid "No displayable files on this medium found!"
 msgstr "Jokių failų čia nerasta!"
-
-msgid "No epg.dat file found server"
-msgstr "Failo epg.dat serveryje nerasta"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Informacija apie įvykius nerasta, tęsiamas įrašymas."
@@ -10631,7 +10660,7 @@ msgid "Partitions"
 msgstr "Poliarizacija"
 
 msgid "Passthrough"
-msgstr ""
+msgstr "Pereiti"
 
 msgid "Password"
 msgstr "Slaptažodis"
@@ -10702,6 +10731,10 @@ msgstr "Filipinai"
 #, fuzzy
 msgid "PiP Actions"
 msgstr "Padėtis"
+
+#, fuzzy
+msgid "PiP mode"
+msgstr "Sąrašo režimas"
 
 msgid "PiP setup"
 msgstr "PiP sąranka"
@@ -10778,7 +10811,7 @@ msgstr "Atkurti pagrindiniame lange"
 
 #, fuzzy
 msgid "Play last movie"
-msgstr "filmas suaugusiems, drama"
+msgstr "suaugusiųjų filmas"
 
 msgid "Play music..."
 msgstr "Paleisti muziką..."
@@ -11121,6 +11154,10 @@ msgstr "Jungtis D"
 msgid "Port of fallback remote receiver"
 msgstr "Atsarginio nuotolinio imtuvo jungtis"
 
+#, fuzzy
+msgid "Port of fallback remote receiver."
+msgstr "Atsarginio nuotolinio imtuvo jungtis"
+
 msgid "Portugal"
 msgstr "Portugalija"
 
@@ -11261,7 +11298,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Preserve bookmarks in cuts"
-msgstr "Pašalinti žymę"
+msgstr "išsaugoti žymeles gabalais"
 
 msgid "Press '0' to toggle PiP mode"
 msgstr "PiP langams sukeisti spauskite '0'"
@@ -11774,6 +11811,10 @@ msgid "Receiver name"
 msgstr "Įrenginio pavadinimas:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr "Imtuvas arba tvarkyklės nepalaiko FCC"
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -11983,7 +12024,7 @@ msgstr "Pašalinti žymę"
 
 #, fuzzy
 msgid "Remove bookmarks in cuts"
-msgstr "Pašalinti žymę"
+msgstr "šalinti žymeles gabaluose"
 
 msgid "Remove bouquet from parental protection"
 msgstr "Pašalinti paketą iš tėvų kontrolės"
@@ -12433,7 +12474,7 @@ msgid "SNR:"
 msgstr "SNR:"
 
 msgid "SPDIF"
-msgstr ""
+msgstr "SPDIF"
 
 msgid "SRT file"
 msgstr "SRT failas"
@@ -13298,6 +13339,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "Imtuvas neprieinamas."
+
+#, fuzzy
 msgid "Server:"
 msgstr "Apie kanalą"
 
@@ -13410,6 +13455,9 @@ msgstr "Kanalai"
 msgid "Set CI assignment for detection of available services."
 msgstr "Galimų kanalų aptikimui, įtraukti ir CI priskyrimą."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13419,7 +13467,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Perjungti greitųjų klavišų reikšmes į numatytąsias?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "Nustatykite alternatyvius DVB-T/C arba ATSC atsarginius imtuvus"
 
 msgid "Set as startup service"
@@ -13428,9 +13477,8 @@ msgstr "Nustatyti kaip pradinį kanalą"
 msgid "Set blocktimes by weekday"
 msgstr "Nustatykite blokavimo kartus pagal savaitės dieną"
 
-#, fuzzy
 msgid "Set cursor on service from channel history"
-msgstr "Perjungti į ankstesnį kanalą istorijoje"
+msgstr "Nustatyti žymeklį ant paslaugos iš kanalo istorijos"
 
 msgid "Set default"
 msgstr "Nustatykite numatytuoju"
@@ -13474,7 +13522,8 @@ msgstr "Sistema"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Tikrinkite savo imtuvo tinklo konfigūraciją.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Nustatykite OpenWebif naudotojo ID iš atsarginio imtuvo"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13500,10 +13549,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Pasirinkite rūšiavimo būdą:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Nustatykite OpenWebif slaptažodį iš atsarginio derintuvo"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Nustatykite OpenWebif jungtį iš savo atsarginio imtuvo"
 
 #, fuzzy
@@ -13612,9 +13663,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Trumpi failų pavadinimai"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "﻿Rodyti"
@@ -13824,6 +13872,10 @@ msgid "Show image items"
 msgstr "Rodyti filmus"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Rodyti pranešimą, kai kanalų importas pavyko"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Išjungti, esant budėjimo būsenoje"
 
@@ -13852,6 +13904,10 @@ msgstr "Rodyti meniu arba priedų numerius"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Rodyti paskutinius veiksmus"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Rodyti PiP"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -13899,10 +13955,12 @@ msgstr "Pasirinkite atvaizdą"
 msgid "Show next page of description"
 msgstr "Rodyti išplėstinį aprašymą"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Rodyti pranešimą, kai kanalų ir/arba EPG importas iš nuotolinio imtuvo yra nebaigtas"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Rodyti pranešimą, kai kanalų ir/arba EPG importas iš nuotolinio imtuvo yra baigtas"
 
 msgid "Show notification when import channels was not successful"
@@ -14093,6 +14151,10 @@ msgstr "Rodyti/slėpti langą"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Rodyti informaciją"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Rodyti pranešimą, kai kanalų ir/arba EPG importas iš nuotolinio imtuvo yra baigtas"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Rodyti live tv arba informacijas LCD."
@@ -14293,11 +14355,11 @@ msgstr "Lizdas %d"
 
 #, python-format
 msgid "Slot %s / FBC in %s"
-msgstr ""
+msgstr "Lizdas %s / FBC %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Slot %s / FBC virtual %s"
-msgstr "FBC virtualus"
+msgstr "Lizdų %s / FBC virtualus %s"
 
 msgid "Slovak"
 msgstr "Slovakų"
@@ -14595,7 +14657,6 @@ msgstr "Šri Lanka"
 msgid "Standard"
 msgstr "Standartinis"
 
-#, fuzzy
 msgid "Standard list"
 msgstr "Standartinis sąrašas"
 
@@ -14655,6 +14716,10 @@ msgstr "Pradinis katalogas"
 msgid "Start from the beginning"
 msgstr "Pradėti nuo pradžių"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Importuoti kanalus perkraunant arba paleidžiant grafinę aplinką iš naujo"
+
 msgid "Start instant recording"
 msgstr "Pradėti neplaninį įrašymą"
 
@@ -14681,9 +14746,6 @@ msgstr "Išjungimas, nesant aktyvumo, ignoruojamas nuo"
 
 msgid "Start timeshift"
 msgstr "Pradėti laiko poslinkį"
-
-msgid "Start with list screen"
-msgstr "Pradėti, atveriant sąrašo langą"
 
 msgid "Starting on"
 msgstr "Pradedama"
@@ -15165,7 +15227,7 @@ msgstr "Išsamiau apie priedą: "
 msgid "TRANSLATOR_INFO"
 msgstr ""
 "P&C Adga, adga45@gmail.com\n"
-"Pasvalys, 2021-12-10 versija"
+"Pasvalys, 2022-04-12 versija"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "TS failas per didelis 1 lygio ISO9660!"
@@ -15751,7 +15813,7 @@ msgstr "Ši parinktis leidžia rodyti viso ekrano kelią, vedantį į dabartinį
 
 #, fuzzy
 msgid "This option allows you to switch audio to BT speakers."
-msgstr "Ši parinktis leidžia jums nustatyti automatinį garsumo lygį."
+msgstr "Ši parinktis leidžia perjungti garsą į bluetooth garsiakalbius."
 
 #, fuzzy
 msgid "This option allows you to use video sync mode."
@@ -15765,7 +15827,7 @@ msgstr "Ši parinktis gali būti naudinga ilgiems HDMI laidams."
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
-msgstr "Nustatykite bendrą stereo garso takelių delsą."
+msgstr "Ši parinktis konfigūruoja bendrą bluetooth garsiakalbių garso uždelsimą."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Ši parinktis nustato \"moskitų\" triukšmų šalinimą (lyg uodų spiečiai apie kontūrus - suspaudimo metu atsiradę atsitiktinės nereikalingos detalės). Žinoma, tai pasiekiama bendro vaizdo ryškumo sumažėjimo kaina."
@@ -16396,7 +16458,8 @@ msgstr "NEŽINOMA"
 msgid "URL"
 msgstr "Internetinis adresas"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "Atsarginio nuotolinio imtuvo internetinis adresas"
 
 msgid "USALS"
@@ -17050,8 +17113,9 @@ msgstr "Elektroninis programų vadovas"
 msgid "WLAN connection"
 msgstr "Belaidis ryšys"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "WMA Pro suliejimas"
 
 #, fuzzy
 msgid "WPA"
@@ -17284,7 +17348,8 @@ msgstr "Kai įjungta, imtuvas automatiškai pažadins budėjimo režimą, kai te
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Kai čia įjungta, aparatą galima pažadinti nuo tinklo veiklos"
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Kai įjungta, atsarginio imtuvo laikmatis yra importuojamas"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17293,7 +17358,8 @@ msgstr "Kai čia įjungta, pasirinkus naują kanalą kanalų pasirinkime, kanala
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Kai čia įjungta, rodyklių mygtukais, vietoj kanalų pasirinkimo sąrašo lango įjungimo, jūs galite kontroliuoti garsą"
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Kai įjungta, galite pritaikyti OpenWebIf nustatymus atsarginiam imtuvui"
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17442,9 +17508,8 @@ msgstr "Kai čia įjungta, filmų sąraše bus rodoma kiekvieno įrašo trukmė 
 msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Kai čia įjungta, filmų sąraše bus rodoma kiekvieno įrašo trukmė (tai gali kažkiek prailginti paleidimo laiką)."
 
-#, fuzzy
 msgid "When enabled, then when changing bouquets, set the cursor on the service from the channel history in the channel selection list."
-msgstr "Kai čia įjungta, rodyklių mygtukais, vietoj kanalų pasirinkimo sąrašo lango įjungimo, jūs galite kontroliuoti garsą"
+msgstr "Kai įjungta, tada, keisdami paketus, nustatykite žymeklį tarnyboje iš kanalo retrospektyvos kanalo pasirinkimo sąraše."
 
 msgid "When enabled, this setting has more weight than 'Preferred tuner for recordings'."
 msgstr "Kai čia įjungta, šis pasirinkimas turi daugiau svorio, nei 'Pageidautinas imtuvas įrašams'."
@@ -17452,9 +17517,8 @@ msgstr "Kai čia įjungta, šis pasirinkimas turi daugiau svorio, nei 'Pageidaut
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Kai čia įjungta, šis pasirinkimas turi daugiau svorio, nei 'Pageidautinas imtuvas'."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Kai čia įjungta, laiko poslinkis įsijungs po nurodyto laiko automatiškai."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Kai čia įjungta, IP adresą priskirs tinklo DHCP serveris."
@@ -17711,10 +17775,11 @@ msgstr "Taip"
 msgid "Yes (save index in setup tuner)"
 msgstr "Taip (palikti žymę imtuvo sąrankoje)"
 
-msgid "Yes and save"
-msgstr "Taip, ir išsaugoti"
-
 msgid "Yes and save in movie dir"
+msgstr "Taip, ir išsaugoti filmų kataloge"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Taip, ir išsaugoti filmų kataloge"
 
 msgid "Yes to all"
@@ -17839,6 +17904,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Jūs nepasirinkote kanalo, kad įrašyti."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"
@@ -18001,9 +18070,8 @@ msgstr "Zambija"
 msgid "Zap"
 msgstr "Perjungti"
 
-#, fuzzy
 msgid "Zap Up/Down"
-msgstr "Perjungti žemyn"
+msgstr "Perjungti aukštyn/žemyn"
 
 #, fuzzy
 msgid "Zap and record"
@@ -18132,9 +18200,8 @@ msgstr "aktyvuokite tinklo plokštės konfigūraciją"
 msgid "active"
 msgstr "aktyvus"
 
-#, fuzzy
 msgid "active "
-msgstr "aktyvus"
+msgstr "Aktyvus"
 
 msgid "actual time only"
 msgstr "tik realus laikas"
@@ -18144,7 +18211,7 @@ msgstr "papildomas rotoriaus kabelis"
 
 #, fuzzy
 msgid "adult movie/drama"
-msgstr "filmas suaugusiems, drama"
+msgstr "suaugusiųjų filmas"
 
 msgid "advanced"
 msgstr "išplėstinis"
@@ -18277,7 +18344,7 @@ msgstr "vaikų, jaunimo programa (bendra)"
 
 #, fuzzy
 msgid "childrens (general)"
-msgstr "filmas/drama (bendras)"
+msgstr "filmai (bendrai)"
 
 msgid "circular left"
 msgstr "apskritiminė kairė"
@@ -18293,7 +18360,7 @@ msgstr "komedija"
 
 #, fuzzy
 msgid "comedy (general)"
-msgstr "filmas/drama (bendras)"
+msgstr "filmai (bendrai)"
 
 msgid "confirmed"
 msgstr "patvirtinta"
@@ -18305,14 +18372,13 @@ msgid "controlled by HDMI"
 msgstr "kontroliuojama HDMI"
 
 msgid "convert to AC3"
-msgstr ""
+msgstr "konvertuoti į AC3"
 
 msgid "convert to DTS"
-msgstr ""
+msgstr "konvertuoti į DTS"
 
-#, fuzzy
 msgid "convert to multi-channel PCM"
-msgstr "Daugiakanalis PCM"
+msgstr "konvertuoti į daugiakanalį PCM"
 
 msgid "cooking"
 msgstr "valgio gaminimas"
@@ -18364,7 +18430,7 @@ msgstr "padaryta!"
 
 #, fuzzy
 msgid "drama (general)"
-msgstr "filmas/drama (bendras)"
+msgstr "filmai (bendrai)"
 
 msgid "east"
 msgstr "rytai"
@@ -18374,11 +18440,11 @@ msgstr "ekonomika, socialiniai mokslai"
 
 #, fuzzy
 msgid "education/information (general)"
-msgstr "švietimas, mokslas, faktai (bendra)"
+msgstr "švietimo / mokslo / faktinės temos (bendrosios)"
 
 #, fuzzy
 msgid "education/science/factual topics (general)"
-msgstr "švietimas, mokslas, faktai (bendra)"
+msgstr "švietimo / mokslo / faktinės temos (bendrosios)"
 
 msgid "embedded"
 msgstr "integruotas"
@@ -18431,9 +18497,8 @@ msgstr "eksperimentinis filmas/video"
 msgid "extra wide"
 msgstr "ypač platus"
 
-#, fuzzy
 msgid "extrawide"
-msgstr "ypač platus"
+msgstr "ypač plačiai"
 
 msgid "failed"
 msgstr "nepavyko"
@@ -18565,7 +18630,7 @@ msgstr "informacija, švietimas, mokyklos programa"
 
 #, fuzzy
 msgid "infotainment (general)"
-msgstr "filmas/drama (bendras)"
+msgstr "filmai (bendrai)"
 
 msgid "init module"
 msgstr "aptinkamas modulis"
@@ -18673,13 +18738,12 @@ msgstr "perkelti aukštyn prie pirmo įrašo"
 msgid "move up to previous entry"
 msgstr "perkelti aukštyn prie ankstesnio įrašo"
 
-#, fuzzy
 msgid "movie (general)"
-msgstr "filmas/drama (bendras)"
+msgstr "filmai (bendrai)"
 
 #, fuzzy
 msgid "movie/drama (general)"
-msgstr "filmas/drama (bendras)"
+msgstr "filmai (bendrai)"
 
 msgid "multi"
 msgstr "daugialypis"
@@ -18690,7 +18754,7 @@ msgstr "daugialypis"
 
 #, fuzzy
 msgid "music (general)"
-msgstr "filmas/drama (bendras)"
+msgstr "filmai (bendrai)"
 
 msgid "music/ballet/dance (general)"
 msgstr "muzika/baletas/šokiai (bendra)"
@@ -18723,7 +18787,7 @@ msgstr "nauja media laikmena"
 
 #, fuzzy
 msgid "news (general)"
-msgstr "filmas/drama (bendras)"
+msgstr "filmai (bendrai)"
 
 msgid "news magazine"
 msgstr "naujienų žurnalas"
@@ -18845,9 +18909,8 @@ msgstr "populiarioji kultūra/tradiciniai menai"
 msgid "pre-school children's program"
 msgstr "ikimokyklinė vaikų programa"
 
-#, fuzzy
 msgid "priority"
-msgstr "Pirmenybė"
+msgstr "pirmenybė"
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -18893,7 +18956,7 @@ msgstr "pašalinti šią žymę"
 
 #, fuzzy
 msgid "remove marks (preserve cuts)"
-msgstr "Pašalinti žymę"
+msgstr "šalinti žymeles gabaluose"
 
 msgid "repeated"
 msgstr "pakartotinis"
@@ -18960,7 +19023,7 @@ msgstr "rimta muzika/klasikinė muzika"
 
 #, fuzzy
 msgid "serious/classical/religious/historical movie/drama"
-msgstr "rimtas/klasikinis/religinis/istorinis filmas/drama"
+msgstr "rimta/klasikinė/religinė/istorinė drama"
 
 msgid "show DVD main menu"
 msgstr "rodyti pagrindinį DVD meniu"
@@ -19032,7 +19095,6 @@ msgstr "lizdas%s -%s, su atsargine kopija"
 msgid "slot%s - %s, without backup"
 msgstr "lizdas%s - %s, be atsarginės kopijos"
 
-#, fuzzy
 msgid "soap/melodrama/folkloric"
 msgstr "muilo opera/melodrama/folkloras"
 
@@ -19041,7 +19103,7 @@ msgstr "socialiniai/politiniai klausimai/ekonomika (bendra)"
 
 #, fuzzy
 msgid "social/spiritual science"
-msgstr "socialinis/dvasinis mokslas"
+msgstr "socialiniai/dvasiniai mokslai"
 
 #, fuzzy
 msgid "softcam"
@@ -19080,9 +19142,8 @@ msgstr ""
 msgid "standard"
 msgstr "standartinis"
 
-#, fuzzy
 msgid "standby "
-msgstr "Budėjimo režimas"
+msgstr "Laukimo "
 
 msgid "stepsize"
 msgstr "žingsnio dydis"
@@ -19114,7 +19175,7 @@ msgstr "vandens sportas"
 
 #, fuzzy
 msgid "technology/natural science"
-msgstr "technologijos, gamtos mokslai"
+msgstr "technologijos / gamtos mokslai"
 
 msgid "template file"
 msgstr "šablono failas"
@@ -19188,12 +19249,11 @@ msgstr "netikrintinas"
 msgid "until standby/restart"
 msgstr "iki budėjimo/paleidimo iš naujo"
 
-#, fuzzy
 msgid "use best / controlled by HDMI"
-msgstr "kontroliuojama HDMI"
+msgstr "naudoti geriausią / valdoma HDMI"
 
 msgid "use_hdmi_cacenter"
-msgstr ""
+msgstr "naudoti_hdmi_cacenter"
 
 msgid "user defined"
 msgstr "naudotojo nustatytas"

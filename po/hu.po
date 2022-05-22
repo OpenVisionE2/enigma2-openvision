@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2021-11-03 15:10+0100\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -1209,10 +1209,6 @@ msgstr ""
 msgid "%s MHz"
 msgstr ""
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s importálva a tartalék tunerből"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1255,8 +1251,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s frissítés elérhető"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "A mappa tartalma %(file)s és %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -2136,7 +2140,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3109,6 +3113,10 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "engedélyezve"
+
 msgid "CI (Common Interface) Setup"
 msgstr "CI (Common Interface) beállítása"
 
@@ -3453,11 +3461,12 @@ msgstr "Csatornaszám és szolgáltatásnév"
 msgid "Channelnumber, picon and servicename"
 msgstr "Csatornaszám, picon és szolgáltatásnév"
 
-msgid "Channels"
-msgstr "Csatornák"
-
 msgid "Channels and EPG"
 msgstr "Csatornák és EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 msgid "Channels only"
 msgstr "Csak csatornák"
@@ -3687,7 +3696,13 @@ msgstr "Van streamelő kliens erről a boxról!"
 msgid "Client mode"
 msgstr "modul inicializálása"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4294,7 +4309,9 @@ msgstr "Csatlakoztatott transzkódolás limit - nincs kép a képben!"
 msgid "Connection information"
 msgstr "Bővítménykezelő - végrehajtási információk"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -5116,17 +5133,21 @@ msgstr "Kijelölés törlése"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
-msgstr "Tartalék távoli vevő cél"
-
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "Tartalék távoli vevő célja ATSC vételhez"
 
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "Tartalék távoli vevő célja DVB-C vételhez"
 
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "Tartalék távoli vevő célja DVB-T vételhez"
+
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "Tartalék távoli vevő cél"
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5226,10 +5247,6 @@ msgstr "Mappa"
 #, python-format
 msgid "Directory %s does not exist."
 msgstr "A %s mappa nem létezik."
-
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
 
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
@@ -5627,8 +5644,9 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "%d szoftvercsomag telepítése, frissítése vagy eltávolítása elkészült (%s)"
 msgstr[1] "%d szoftvercsomag telepítése, frissítése vagy eltávolítása elkészült (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "DTS lekeverése"
 
 #, fuzzy
 msgid "Download error"
@@ -5737,9 +5755,17 @@ msgstr "Elektronikus műsorújság"
 msgid "EPG Setup"
 msgstr "Beállítások"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "fájlnév"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "EPG nyelvválasztás 1"
@@ -5765,7 +5791,7 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "HIBA - nem sikerült a keresés (%s)!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
+msgid "ERROR downloading file %s"
 msgstr "HIBA a %s fájl letöltése során"
 
 msgid "East"
@@ -5874,7 +5900,7 @@ msgstr "Automatikus gyorskeresés engedélyezése"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Engedélyezve"
+msgstr "Lista szerkesztés engedélyezése"
 
 msgid "Enable EIT EPG"
 msgstr "EIT EPG engedélyezése"
@@ -5969,7 +5995,13 @@ msgstr "HDMI-CEC engedélyezése vagy letiltása"
 msgid "Enable parental protection"
 msgstr "Gyermekzár védelem engedélyezése"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Lehetővé teszi, hogy egy távoli enigma2 készülékről próbálja meg a csatorna megjelenítését, ha a helyi tuner erre nem képes (pl. a tuner foglalt, mert egy másik csatornán felvétel van folyamatban). Adja meg a tljes URL-t, beleértve a 'http://' részt és a port számát is. Pl: http://second_box:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6024,6 +6056,9 @@ msgstr "A készülék névszerver beállításainak módosítása.\n"
 
 msgid "Enabled"
 msgstr "Engedélyezve"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6263,12 +6298,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "A stream leállítása sikertelen!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Hiba az epg.dat fájl szerverre írása során"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Hiba történt az epg.dat fájl letöltésekor a szerverről"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6276,9 +6305,6 @@ msgid ""
 msgstr ""
 "Hiba történt a tartalék tuner időzítők letöltésekor\n"
 "%s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Hiba történt az epg.dat fájl helyének meghatározásakor a szerveren"
 
 #, python-format
 msgid ""
@@ -6698,10 +6724,22 @@ msgstr "Tartalék távoli vevő"
 msgid "Fallback remote receiver IP"
 msgstr "Tartalék távoli vevő IP címe"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "Tartalék távoli vevő IP címe"
+
 msgid "Fallback remote receiver Port"
 msgstr "Tartalék távoli vevő portja"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Tartalék távoli vevő portja"
+
 msgid "Fallback remote receiver URL"
+msgstr "Tartalék távoli vevő URL címe"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "Tartalék távoli vevő URL címe"
 
 msgid "Fallback remote receiver for ATSC"
@@ -6948,6 +6986,10 @@ msgid "France"
 msgstr "Franciaország"
 
 msgid "Free"
+msgstr ""
+
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
 msgstr ""
 
 msgid "Free flash"
@@ -7708,7 +7750,8 @@ msgstr "I"
 msgid "IP address"
 msgstr "IP cím"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "Tartalék távoli vevő IP címe"
 
 msgid "IPv6"
@@ -7842,18 +7885,20 @@ msgstr "Image: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címéből a készülék felébredésekor"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címéből a készülék bekapcsolásakor"
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címéből a kezelőfelület újraindításakor"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "A csatornák importálása a tartalék tunerből sikertelen: %s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "A csatornák és/vagy az EPG importálása a távoli vevő URL címéből a kezelőfelület újraindításakor"
 
 msgid "Import from remote receiver URL"
 msgstr "Importálás a távoli vevő URL címéből"
@@ -8450,7 +8495,7 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Azonnali felvételek helye"
+msgstr "A felvételek mindig tartalmazzák az ECM-et"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -8640,9 +8685,6 @@ msgstr "Kinézet választás műveletek"
 
 msgid "List available networks"
 msgstr "Elérhető hálózatok listázása"
-
-msgid "List mode"
-msgstr "Listázás módja"
 
 msgid "List of storage devices"
 msgstr "Tárolóeszközök listája"
@@ -8924,7 +8966,8 @@ msgstr "Főmenü"
 msgid "Maintain old EPG data for"
 msgstr "Elmúlt EPG adat tárolása eddig"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Lehetővé teszik a csatornák és/vagy EPG kézi importálását a kiterjesztések menüből"
 
 msgid "Make this mark an 'in' point"
@@ -9736,7 +9779,7 @@ msgstr "Hálózati beállítások..."
 msgid "Network information"
 msgstr "Hálózati beállítások"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -9876,9 +9919,6 @@ msgstr "Nincs elérhető leírás."
 
 msgid "No displayable files on this medium found!"
 msgstr "A hordozón nem található lejátszható fájl!"
-
-msgid "No epg.dat file found server"
-msgstr "Nem található az epg.dat fájl a szerveren"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Nincs esemény infó, felvétel korlátlanul."
@@ -10675,6 +10715,10 @@ msgstr "Fülöp-szigetek"
 msgid "PiP Actions"
 msgstr "Pozíció"
 
+#, fuzzy
+msgid "PiP mode"
+msgstr "Listázás módja"
+
 msgid "PiP setup"
 msgstr "Kép-a-Képben beállítások"
 
@@ -11091,6 +11135,10 @@ msgid "Port D"
 msgstr "D Port"
 
 msgid "Port of fallback remote receiver"
+msgstr "Tartalék távoli vevő portja"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Tartalék távoli vevő portja"
 
 msgid "Portugal"
@@ -11746,6 +11794,10 @@ msgid "Receiver name"
 msgstr "Eszköznév:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr ""
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -13269,6 +13321,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "Tuner nem elérhető."
+
+#, fuzzy
 msgid "Server:"
 msgstr "Csatorna információ"
 
@@ -13381,6 +13437,9 @@ msgstr "Csatornák"
 msgid "Set CI assignment for detection of available services."
 msgstr "A CI hozzárendelés beállítása az elérhető szolgáltatások érzékeléséhez."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13390,7 +13449,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Minden hotkey-t visszaállít alapértelmezett állapotba?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "Alternatív tartalék tuner beállítása DVB-T/C vagy ATSC vételhez"
 
 msgid "Set as startup service"
@@ -13445,7 +13505,8 @@ msgstr "Rendszer"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "A készülék hálózati konfigurációjának ellenőrzése.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Állítsa be az OpenWebIf felhasználói azonosítót a tartalék tunerből"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13471,10 +13532,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Rendezési módszer választása:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Állítsa be az OpenWebIf jelszót a tartalék tunerből"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Állítsa be az OpenWebIf portot a tartalék tunerből"
 
 #, fuzzy
@@ -13583,9 +13646,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Rövid fájlnevek"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "Mutatás"
@@ -13795,6 +13855,10 @@ msgid "Show image items"
 msgstr "Filmek megjelenítése"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Figyelmeztetés mutatása, ha a csatornák importálása sikeres volt"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Kikapcsolás készenlétbe lépés után"
 
@@ -13823,6 +13887,10 @@ msgstr "Menü vagy bővítmény számának mutatása"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Legutóbbi módosítások mutatása"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Kép a képben megjelenítése"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -13870,10 +13938,12 @@ msgstr "Image kiválasztása"
 msgid "Show next page of description"
 msgstr "Bővített leírás megjelenítése"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Figyelmeztetés mutatása, ha a csatornák és/vagy az EPG importálása a távoli vevő URL-ből nem fejeződött be"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Figyelmeztetés mutatása, ha a csatornák és/vagy az EPG importálása a távoli vevő URL-ből befejeződött"
 
 msgid "Show notification when import channels was not successful"
@@ -14064,6 +14134,10 @@ msgstr "Ablak elrejtése/mutatása"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Info megjelenítése"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Figyelmeztetés mutatása, ha a csatornák és/vagy az EPG importálása a távoli vevő URL-ből befejeződött"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Élő TV-adást vagy egyéb információkat jelenít meg az LCD kijelzőn."
@@ -14626,6 +14700,10 @@ msgstr "Kiindulási mappa"
 msgid "Start from the beginning"
 msgstr "Indítsa az elejétől"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Importáljon a készülék/kezelőfelület újraindításakor"
+
 msgid "Start instant recording"
 msgstr "Azonalli felvétel indítása"
 
@@ -14652,9 +14730,6 @@ msgstr "A készenlétből kikapcsolás figyelmen kívül hagyása ettől az idő
 
 msgid "Start timeshift"
 msgstr "Időcsúsztatás elindítása"
-
-msgid "Start with list screen"
-msgstr "Indítás lista-nézettel"
 
 msgid "Starting on"
 msgstr "Mely dátumtól?"
@@ -16373,7 +16448,8 @@ msgstr "ISMERETLEN"
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "Tartalék távoli vevő URL címe"
 
 msgid "USALS"
@@ -17026,8 +17102,9 @@ msgstr "EPG"
 msgid "WLAN connection"
 msgstr "Vezeték nélküli kapcsolat"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "AAC lekeverése"
 
 #, fuzzy
 msgid "WPA"
@@ -17257,7 +17334,8 @@ msgstr "Ha engedélyezi, a készülék automatikusan felébred a készenlétből
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Ha engedélyezi, a készülék képes lesz LAN-on keresztül bekapcsolni."
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Ezzel engedélyezheti az időzítők importálását a tartalék tunerből"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17266,7 +17344,8 @@ msgstr "Ha engedélyezi, akkor a csatornaválasztó listában egy új csatorna k
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Ha engedélyezi, a nyíl gombok a hangerőt fogják változtatni, és nem a csatornalistát jelenítik meg."
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Ha engedélyezi, testreszabhatja az OpenWebIf beállításait a tartalék tunerhez."
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17425,9 +17504,8 @@ msgstr "Ha engedélyezi, ez a beállítás felülírja az 'Előnyben részesíte
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Ha engedélyezi, ez a beállítás felülírja az 'Előnyben részesített tuner'-t."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Az időcsúsztatás induljon el automatikusan a háttérben a megadott idő után."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Ha engedélyezi, a DHCP lesz használatban az az IP beállításánál."
@@ -17684,10 +17762,11 @@ msgstr "Igen"
 msgid "Yes (save index in setup tuner)"
 msgstr "Igen (a tuner beállításokban az index mentése)"
 
-msgid "Yes and save"
-msgstr "Igen, mentéssel"
-
 msgid "Yes and save in movie dir"
+msgstr "Igen, mentéssel a filmek mappájába"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Igen, mentéssel a filmek mappájába"
 
 msgid "Yes to all"
@@ -17813,6 +17892,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Nem választott ki csatornát, ahonnan történjen a felvétel."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"

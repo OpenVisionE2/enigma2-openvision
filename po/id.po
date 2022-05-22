@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2021-03-06\n"
 "Last-Translator: LinuxSTV\n"
 "Language-Team: \n"
@@ -1213,10 +1213,6 @@ msgstr ""
 msgid "%s MHz"
 msgstr ""
 
-#, fuzzy, python-format
-msgid "%s imported from fallback tuner"
-msgstr "Impor kanal dari penala digunakan"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1259,8 +1255,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s pembaruan paket tersedia"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Direktori berisi %(file)s dan %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -2155,7 +2159,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3143,6 +3147,10 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "aktifkan"
+
 msgid "CI (Common Interface) Setup"
 msgstr "Pengaturan CI (Common Interface)"
 
@@ -3492,12 +3500,12 @@ msgid "Channelnumber, picon and servicename"
 msgstr "Nomor kanal, pikon dan nama layanan"
 
 #, fuzzy
-msgid "Channels"
-msgstr "Kanal"
-
-#, fuzzy
 msgid "Channels and EPG"
 msgstr "Kanal dan EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 #, fuzzy
 msgid "Channels only"
@@ -3729,7 +3737,13 @@ msgstr "Klien sedang streaming dari Rx ini!"
 msgid "Client mode"
 msgstr "init module"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4349,7 +4363,9 @@ msgstr "Transcoding terhubung, batasan - tak ada PiP!"
 msgid "Connection information"
 msgstr "Informasi aktifitas pengelola plugin"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -5189,19 +5205,19 @@ msgid "Deselected packages usually occur because those packaged are incompatible
 msgstr ""
 
 #, fuzzy
-msgid "Destination of fallback remote receiver"
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "Alamat URL penggunaan rx dari jauh"
 
 #, fuzzy
-msgid "Destination of fallback remote receiver for ATSC"
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "Alamat URL penggunaan rx dari jauh"
 
 #, fuzzy
-msgid "Destination of fallback remote receiver for DVB-C"
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "Alamat URL penggunaan rx dari jauh"
 
 #, fuzzy
-msgid "Destination of fallback remote receiver for DVB-T"
+msgid "Destination of fallback remote receiver."
 msgstr "Alamat URL penggunaan rx dari jauh"
 
 msgid "Detailed debug logs"
@@ -5302,10 +5318,6 @@ msgstr "Direktori"
 #, python-format
 msgid "Directory %s does not exist."
 msgstr "Direktori %s tidak ada."
-
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
 
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
@@ -5711,8 +5723,9 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Selesai - Terpasang, dinaiktingkatkan atau dihapus %d paket (%s)"
 msgstr[1] "Selesai - Terpasang, dinaiktingkatkan atau dihapus %d paket (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "downmix DTS"
 
 #, fuzzy
 msgid "Download error"
@@ -5824,9 +5837,17 @@ msgstr "Pemilihan EPG"
 msgid "EPG Setup"
 msgstr "Pengaturan"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "nama file"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "Pemilihan bahasa EPG 1"
@@ -5852,7 +5873,7 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "Kesalahan - gagal melacak (%s)!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
+msgid "ERROR downloading file %s"
 msgstr "Terjadi kesalahan mengunduh berkas %s"
 
 msgid "East"
@@ -5963,7 +5984,7 @@ msgstr "Aktifkan pelacakan cepat otomatis"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Diaktifkan"
+msgstr "Aktifkan ubah buket"
 
 msgid "Enable EIT EPG"
 msgstr "Aktifkan EPG EIT"
@@ -6062,7 +6083,13 @@ msgstr "Aktifkan EPG EIT"
 msgid "Enable parental protection"
 msgstr "Aktifkan perlindungan orangtua"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Aktifkan rx enigma2 dari jauh untuk mencoba menala layanan yang tidak bisa ditala secara lokal (misalnya penala sedang digunakan atau tipe layanan tidak tersedia pada penala lokal. Tentukan URL lengkap termasuk http:// dan nomor port (biasanya ...:8001), misalnya http://box_kedua:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6117,6 +6144,9 @@ msgstr "Ubah setelan namaserver pada Rx anda.\n"
 
 msgid "Enabled"
 msgstr "Diaktifkan"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6362,25 +6392,10 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Kesalahan, hentikan stream!"
 
-msgid "Error when writing epg.dat on server"
-msgstr ""
-
-#, fuzzy
-msgid "Error while retreiving epg.dat from server"
-msgstr ""
-"Kesalahan ketika mengambil informasi pewaktu mundur\n"
-"%s"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr ""
-"Kesalahan ketika mengambil informasi pewaktu mundur\n"
-"%s"
-
-#, fuzzy
-msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 "Kesalahan ketika mengambil informasi pewaktu mundur\n"
 "%s"
@@ -6809,10 +6824,22 @@ msgid "Fallback remote receiver IP"
 msgstr "URL penggunaan rx dari jauh"
 
 #, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "URL penggunaan rx dari jauh"
+
+#, fuzzy
 msgid "Fallback remote receiver Port"
 msgstr "URL penggunaan rx dari jauh"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "URL penggunaan rx dari jauh"
+
 msgid "Fallback remote receiver URL"
+msgstr "URL penggunaan rx dari jauh"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "URL penggunaan rx dari jauh"
 
 #, fuzzy
@@ -7069,6 +7096,10 @@ msgid "France"
 msgstr "Perancis"
 
 msgid "Free"
+msgstr ""
+
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
 msgstr ""
 
 msgid "Free flash"
@@ -7845,7 +7876,7 @@ msgid "IP address"
 msgstr "Alamat IP"
 
 #, fuzzy
-msgid "IP of fallback remote receiver"
+msgid "IP of fallback remote receiver."
 msgstr "IP Rx jauh terpakai"
 
 msgid "IPv6"
@@ -7979,19 +8010,20 @@ msgstr "Image: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Impor kanal dan/atau EPG dari URL Rx jauh juga ketika Rx itu keluar dari posisi standby"
 
 #, fuzzy
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Impor kanal dan/atau EPG dari URL Rx jauh ketika Rx dihidupkan."
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "Impor kanal dan/atau EPG dari URL Rx jauh ketika Rx atau enigma2 dimulai ulang"
 
-#, fuzzy, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Kanal dari penala terpakai gagal %s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "Impor kanal dan/atau EPG dari URL Rx jauh ketika Rx atau enigma2 dimulai ulang"
 
 #, fuzzy
 msgid "Import from remote receiver URL"
@@ -8595,10 +8627,11 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Lokasi perekaman segera"
+msgstr "Selalu sertakan ECM dalam merekam"
 
+#, fuzzy
 msgid "LED color during recording in standby"
-msgstr ""
+msgstr "Selalu sertakan ECM dalam merekam"
 
 #, fuzzy
 msgid "LED color during standby"
@@ -8785,9 +8818,6 @@ msgstr "Pilih tindakan"
 
 msgid "List available networks"
 msgstr "Daftar jaringan tersedia"
-
-msgid "List mode"
-msgstr "Mode daftar"
 
 msgid "List of storage devices"
 msgstr "Daftar perangat penyimpanan"
@@ -9071,7 +9101,8 @@ msgstr "Menu Utama"
 msgid "Maintain old EPG data for"
 msgstr "Biarkan data EPG lama hingga"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Memungkinkan untuk secara manual mengawali impor kanal dan/atau EPG lewat menu ekstensi"
 
 msgid "Make this mark an 'in' point"
@@ -9906,7 +9937,7 @@ msgstr "Pengaturan jaringan..."
 msgid "Network information"
 msgstr "Pengaturan jaringan"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -10047,9 +10078,6 @@ msgstr "Deskripsi tidak tersedia."
 
 msgid "No displayable files on this medium found!"
 msgstr "Tidak ditemukan file yang bisa dilihat pada medium ini!"
-
-msgid "No epg.dat file found server"
-msgstr ""
 
 msgid "No event info found, recording indefinitely."
 msgstr "Info acara tidak ditemukan, merekam tanpa batas waktu."
@@ -10855,6 +10883,10 @@ msgstr "Filipina"
 msgid "PiP Actions"
 msgstr "Letak"
 
+#, fuzzy
+msgid "PiP mode"
+msgstr "Mode daftar"
+
 msgid "PiP setup"
 msgstr "Atur PiP"
 
@@ -11277,6 +11309,10 @@ msgstr "Port D"
 
 #, fuzzy
 msgid "Port of fallback remote receiver"
+msgstr "Port receiver jauh yg digunakan"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Port receiver jauh yg digunakan"
 
 #, fuzzy
@@ -11939,6 +11975,10 @@ msgid "Receiver name"
 msgstr "Nama perangkat:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr ""
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -13489,6 +13529,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "Penala tidak tersedia."
+
+#, fuzzy
 msgid "Server:"
 msgstr "Kanal"
 
@@ -13604,6 +13648,9 @@ msgstr "Layanan"
 msgid "Set CI assignment for detection of available services."
 msgstr "Set penetapan CI untuk deteksi ketersediaan layanan."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13613,8 +13660,9 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Atur semua tombol pintas ke bawaan?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
-msgstr ""
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
+msgstr "Alamat URL alternatif untuk DVB-T/C atau ATSC"
 
 msgid "Set as startup service"
 msgstr "Atur sbg layanan saat mulai"
@@ -13668,7 +13716,8 @@ msgstr "Sistem"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Tes penyetelan jaringan Rx anda.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Atur ID Pengguna OpenWebif dari penala terpakai anda"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13694,10 +13743,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Pilih metode sortir:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Atur katakunci OpenWebif dari penala terpakai anda"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Atur port OpenWebif dari penala terpakai anda"
 
 #, fuzzy
@@ -13807,9 +13858,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Nama file pendek"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 #, fuzzy
 msgid "Show"
@@ -14020,6 +14068,10 @@ msgid "Show image items"
 msgstr "Tampilkan film"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Tampilkan pemberitahuan saat impor kanal berhasil"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Matikan saat Standby"
 
@@ -14048,6 +14100,10 @@ msgstr "Tampilkan nomor menu atau plugin"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Tampilkan pengerjaan terbaru"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Tampilkan PiP"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -14095,10 +14151,12 @@ msgstr "Hapus pewaktu"
 msgid "Show next page of description"
 msgstr "Tampilkan deskripsi lebih luas"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Tampilkan pemberitahuan saat impor kanal dan/atau EPG dari URL Rx jauh tidak selesai"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Tampilkan pemberitahuan saat impor kanal dan/atau EPG dari URL Rx jauh telah selesai"
 
 msgid "Show notification when import channels was not successful"
@@ -14294,6 +14352,10 @@ msgstr "Tampilkan/sembunyikan jendela"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Tampilkan info"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Tampilkan pemberitahuan saat impor kanal dan/atau EPG dari URL Rx jauh telah selesai"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Tampilkan tv live atau informasi pada LCD."
@@ -14866,6 +14928,10 @@ msgstr "Direktori mulai"
 msgid "Start from the beginning"
 msgstr "Mulai dari awal"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Impor juga saat reboot/restart enigma2"
+
 msgid "Start instant recording"
 msgstr "Mulai merekam segera"
 
@@ -14892,9 +14958,6 @@ msgstr "Waktu mulai untuk mengabaikan shutdown dalam standby"
 
 msgid "Start timeshift"
 msgstr "Mulai timeshift"
-
-msgid "Start with list screen"
-msgstr "Mulai dgn layar daftar"
 
 msgid "Starting on"
 msgstr "Mulai dari"
@@ -16638,7 +16701,8 @@ msgstr "TAK DIKENAL"
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "Alamat URL rx jauh digunakan"
 
 msgid "USALS"
@@ -17304,8 +17368,9 @@ msgstr "EPG"
 msgid "WLAN connection"
 msgstr "Koneksi WLAN"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "Downmix AAC"
 
 #, fuzzy
 msgid "WPA"
@@ -17542,7 +17607,8 @@ msgstr "Ketika diaktifkan, rx akan secara otomatis menggunakan jalur audio yang 
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Ketika diaktifkan, Rx bisa melakukan 'wakeup on LAN'"
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Ketika diaktifkan, pewaktu dari penala digunakan diimpor"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17551,7 +17617,8 @@ msgstr "Ketika diaktifkan, jadinya saat anda memilih suatu kanal pada pemilihan 
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Ketika diaktifkan, anda bisa mengatur volume suara dengan tombol panah daripada membuka daftar pemilihan kanal."
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Ketika diaktifkan, anda bisa menyesuaikan setelan OpenWebif pada penala digunakan"
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17713,9 +17780,8 @@ msgstr "Ketika diaktifkan, setelan ini punya bobot lebih daripada 'Penala piliha
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Ketika diaktifkan, setelan ini punya bobot lebih daripada 'Penala pilihan'."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Ketika diaktifkan, timeshift mulai otomatis pada latar setelah waktu yang ditentukan."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Ketika diaktifkan, gunakan DHCP untuk setelan IP."
@@ -17976,10 +18042,11 @@ msgstr "Ya"
 msgid "Yes (save index in setup tuner)"
 msgstr "Ya (simpan indeks di pengaturan penala)"
 
-msgid "Yes and save"
-msgstr "Ya dan simpan"
-
 msgid "Yes and save in movie dir"
+msgstr "Ya dan simpan ke dalam direktori film"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Ya dan simpan ke dalam direktori film"
 
 msgid "Yes to all"
@@ -18109,6 +18176,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Anda tidak memilih kanal untuk merekam."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"

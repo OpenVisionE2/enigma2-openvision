@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -1225,10 +1225,6 @@ msgstr ""
 msgid "%s MHz"
 msgstr ""
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr ""
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1271,8 +1267,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s uppdatering tillgänglig."
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Katalogen innehåller %(file)s och %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -2279,7 +2283,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3360,6 +3364,11 @@ msgstr ""
 msgid "CH%s"
 msgstr ""
 
+#
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "aktiverad"
+
 msgid "CI (Common Interface) Setup"
 msgstr "CI (Common Interface) inställning"
 
@@ -3708,14 +3717,13 @@ msgstr "Kanalnummer och kanalnamn"
 msgid "Channelnumber, picon and servicename"
 msgstr "Kanalnummer, picon och kanalnamn"
 
-#
-#, fuzzy
-msgid "Channels"
-msgstr "Kanal"
-
 #, fuzzy
 msgid "Channels and EPG"
 msgstr "Kanal info"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 #
 #, fuzzy
@@ -3960,7 +3968,13 @@ msgstr ""
 msgid "Client mode"
 msgstr "initiera modul"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4632,7 +4646,9 @@ msgstr "Ansluten omkodning, gräns - ingen BiB!"
 msgid "Connection information"
 msgstr "Pluginhanterare aktivitetsinformation"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -5534,19 +5550,19 @@ msgid "Deselected packages usually occur because those packaged are incompatible
 msgstr ""
 
 #, fuzzy
-msgid "Destination of fallback remote receiver"
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "URL för reserv fjärrmottagare"
 
 #, fuzzy
-msgid "Destination of fallback remote receiver for ATSC"
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "URL för reserv fjärrmottagare"
 
 #, fuzzy
-msgid "Destination of fallback remote receiver for DVB-C"
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "URL för reserv fjärrmottagare"
 
 #, fuzzy
-msgid "Destination of fallback remote receiver for DVB-T"
+msgid "Destination of fallback remote receiver."
 msgstr "URL för reserv fjärrmottagare"
 
 msgid "Detailed debug logs"
@@ -5657,10 +5673,6 @@ msgstr "Katalog"
 #, python-format
 msgid "Directory %s does not exist."
 msgstr "Bibliotek %s finns ej."
-
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
 
 #
 #, fuzzy, python-format
@@ -6124,8 +6136,9 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Klar - installerat, uppdaterat eller avinstallerat %d paket (%s)"
 msgstr[1] "Klar - installerat, uppdaterat eller avinstallerat %d paket (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "DTS nedmixning"
 
 #, fuzzy
 msgid "Download error"
@@ -6255,10 +6268,18 @@ msgstr "EPG val"
 msgid "EPG Setup"
 msgstr "Inställningar"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #
 #, fuzzy
 msgid "EPG filename"
 msgstr "filnamn"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "Val av EPG språk 1"
@@ -6286,7 +6307,7 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "FEL - misslyckad sökning (%s)!"
 
 #, python-format
-msgid "ERROR downloading file %s/%s"
+msgid "ERROR downloading file %s"
 msgstr ""
 
 #
@@ -6412,7 +6433,7 @@ msgstr "Aktivera auto snabbskanning"
 #
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Aktiverad"
+msgstr "Aktivera favoritlisteditor"
 
 msgid "Enable EIT EPG"
 msgstr "Aktivera EIT EPG"
@@ -6517,7 +6538,13 @@ msgstr "Aktivera EIT EPG"
 msgid "Enable parental protection"
 msgstr "Aktivera föräldrakontroll"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Aktivera fjärrmottagare för att försöka ställa in kanaler som inte kan ställas in lokalt (t.ex. att tuner är upptagen eller kanalen inte är tillgänglig på den lokala tunern). Ange den fullständiga webbadressen inklusive http://och portnummer (vanligtvis ...:8001), till exempel http://andra boxen:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6572,6 +6599,9 @@ msgstr "Ändra namnserverkonfigurationen för din mottagare.\n"
 #
 msgid "Enabled"
 msgstr "Aktiverad"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #
 #, fuzzy
@@ -6834,19 +6864,10 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr ""
 
-msgid "Error when writing epg.dat on server"
-msgstr ""
-
-msgid "Error while retreiving epg.dat from server"
-msgstr ""
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr ""
-
-msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #
@@ -7311,10 +7332,22 @@ msgid "Fallback remote receiver IP"
 msgstr "URL för reserv fjärrmottagare"
 
 #, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "URL för reserv fjärrmottagare"
+
+#, fuzzy
 msgid "Fallback remote receiver Port"
 msgstr "URL för reserv fjärrmottagare"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "URL för reserv fjärrmottagare"
+
 msgid "Fallback remote receiver URL"
+msgstr "URL för reserv fjärrmottagare"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "URL för reserv fjärrmottagare"
 
 #, fuzzy
@@ -7594,6 +7627,10 @@ msgid "France"
 msgstr "romantik"
 
 msgid "Free"
+msgstr ""
+
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
 msgstr ""
 
 msgid "Free flash"
@@ -8423,7 +8460,7 @@ msgid "IP address"
 msgstr "IP adress"
 
 #, fuzzy
-msgid "IP of fallback remote receiver"
+msgid "IP of fallback remote receiver."
 msgstr "URL för reserv fjärrmottagare"
 
 msgid "IPv6"
@@ -8559,19 +8596,20 @@ msgstr "Image : "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
-msgstr ""
-
 #, fuzzy
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "URL för reserv fjärrmottagare"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
-msgstr ""
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
+msgstr "URL för reserv fjärrmottagare"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr ""
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "URL för reserv fjärrmottagare"
 
 #, fuzzy
 msgid "Import from remote receiver URL"
@@ -9230,13 +9268,13 @@ msgstr ""
 msgid "LED brightness during standby."
 msgstr ""
 
-#
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Plats för direktinspelningar"
+msgstr "Inkludera alltid ECM i inspelningar"
 
+#, fuzzy
 msgid "LED color during recording in standby"
-msgstr ""
+msgstr "Inkludera alltid ECM i inspelningar"
 
 #, fuzzy
 msgid "LED color during standby"
@@ -9447,9 +9485,6 @@ msgstr "Välj åtgärd"
 
 msgid "List available networks"
 msgstr "Lista med tillgängliga nätverk"
-
-msgid "List mode"
-msgstr "Listläge"
 
 #
 msgid "List of storage devices"
@@ -9762,7 +9797,7 @@ msgstr "Huvudmeny"
 msgid "Maintain old EPG data for"
 msgstr "Behåll gammal EPG data i"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr ""
 
 msgid "Make this mark an 'in' point"
@@ -10676,7 +10711,7 @@ msgstr "Nätverkskonfiguration..."
 msgid "Network information"
 msgstr "Nätverkskonfiguration"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 #
@@ -10833,9 +10868,6 @@ msgstr "Ingen beskrivning tillgänglig."
 #
 msgid "No displayable files on this medium found!"
 msgstr "Inga visningsbara filer hittade på detta media!"
-
-msgid "No epg.dat file found server"
-msgstr ""
 
 #
 msgid "No event info found, recording indefinitely."
@@ -11704,6 +11736,10 @@ msgstr ""
 msgid "PiP Actions"
 msgstr ""
 
+#, fuzzy
+msgid "PiP mode"
+msgstr "Listläge"
+
 #
 msgid "PiP setup"
 msgstr "BiB inställningar"
@@ -12198,6 +12234,10 @@ msgstr "Port D"
 
 #, fuzzy
 msgid "Port of fallback remote receiver"
+msgstr "URL för reserv fjärrmottagare"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "URL för reserv fjärrmottagare"
 
 #
@@ -12929,6 +12969,10 @@ msgid "Receiver name"
 msgstr "Enhetens namn :"
 
 msgid "Receiver or driver does not support FCC"
+msgstr ""
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 #
@@ -14647,6 +14691,10 @@ msgstr ""
 msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
+#, fuzzy
+msgid "Server not available"
+msgstr "Tuner inte tillgänglig."
+
 #
 #, fuzzy
 msgid "Server:"
@@ -14774,6 +14822,9 @@ msgstr "Kanaler"
 msgid "Set CI assignment for detection of available services."
 msgstr ""
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -14783,7 +14834,7 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Ställ in alla hotkey till standard?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr ""
 
 msgid "Set as startup service"
@@ -14842,7 +14893,7 @@ msgstr "System"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Testa nätverkskonfigurationen för din mottagare.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr ""
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -14868,10 +14919,10 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Välj sorteringsmetod :"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr ""
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr ""
 
 #, fuzzy
@@ -14992,9 +15043,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Korta filnamn"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 #, fuzzy
 msgid "Show"
@@ -15216,6 +15264,9 @@ msgstr "Visa ikoner för nya / osedda objekt"
 msgid "Show image items"
 msgstr "Visa filmer"
 
+msgid "Show import notification for channels and EPG"
+msgstr ""
+
 #, fuzzy
 msgid "Show in Standby"
 msgstr "Stäng av vid viloläge"
@@ -15250,6 +15301,10 @@ msgstr "Visa menynummer"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Visa senaste commits"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Visa BiB"
 
 #
 #, fuzzy
@@ -15300,11 +15355,13 @@ msgstr "Radera timer"
 msgid "Show next page of description"
 msgstr "Visa utökad beskrivning"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
-msgstr ""
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
+msgstr "URL för reserv fjärrmottagare"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
-msgstr ""
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
+msgstr "URL för reserv fjärrmottagare"
 
 msgid "Show notification when import channels was not successful"
 msgstr ""
@@ -15509,6 +15566,9 @@ msgstr "Visa / Dölj fönster"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Visa Info"
+
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr ""
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Visar direktsänd tv eller information på LCD."
@@ -16151,6 +16211,9 @@ msgstr "Startbibliotek"
 msgid "Start from the beginning"
 msgstr "Spela upp från början"
 
+msgid "Start import when restart enigma2"
+msgstr ""
+
 msgid "Start instant recording"
 msgstr "Starta Direktinspelning"
 
@@ -16181,9 +16244,6 @@ msgstr "Starttid för att ignorera avstängning i viloläge"
 #
 msgid "Start timeshift"
 msgstr "Starta timeshift"
-
-msgid "Start with list screen"
-msgstr "Börja med listskärmen"
 
 #
 msgid "Starting on"
@@ -18115,7 +18175,8 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "URL för reserv fjärrmottagare"
 
 msgid "USALS"
@@ -18847,8 +18908,9 @@ msgstr "EPG"
 msgid "WLAN connection"
 msgstr "WLAN anslutning"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "AAC nedmixning"
 
 #
 #, fuzzy
@@ -19099,7 +19161,7 @@ msgstr "Vid aktiverad kommer mottagaren automatiskt använda ljudspåret som du 
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Vid aktiverad kan mottagaren väckas upp från LAN (WoL)"
 
-msgid "When enabled the timer from the fallback tuner is imported"
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr ""
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -19108,7 +19170,7 @@ msgstr "Vid aktiverad så när du väljer en ny kanal i kanallistan kommer kanal
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Vid aktiverad kan du kontrollera volymen med pilknapparna istället för att få fram kanallistan."
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr ""
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -19273,9 +19335,8 @@ msgstr "Vid aktiverad har denna inställning mer vikt än 'föredragen tuner fö
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Vid aktiverad har denna inställning mer vikt än 'föredragen tuner'."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Vid aktiverad startas timeshift automatiskt i bakgrunden vid en angiven tid."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 #
 msgid "When enabled, use DHCP for the IP configuration."
@@ -19545,10 +19606,11 @@ msgstr "Ja"
 msgid "Yes (save index in setup tuner)"
 msgstr "Ja(spara index i tunerinställning)"
 
-msgid "Yes and save"
-msgstr "Ja och spara"
-
 msgid "Yes and save in movie dir"
+msgstr "Ja och spara i filmkatalog"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Ja och spara i filmkatalog"
 
 #
@@ -19688,6 +19750,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Du valde ingen kanal att spela in från."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"

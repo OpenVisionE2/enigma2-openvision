@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2022-04-02 17:25+0200\n"
 "Last-Translator: blzr <blzr@o2.pl>\n"
 "Language-Team: \n"
@@ -1135,10 +1135,6 @@ msgstr ""
 msgid "%s MHz"
 msgstr ""
 
-#, python-format
-msgid "%s imported from fallback tuner"
-msgstr "%s zaimportowano z tunera rezerwowego"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1181,8 +1177,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s zaktualizowany pakiet dostępny"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Katalog zawiera %(file)s i %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -2058,7 +2062,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3029,6 +3033,10 @@ msgstr ""
 msgid "CH%s"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "Włączone"
+
 msgid "CI (Common Interface) Setup"
 msgstr "Ustawienia modułu dostępu CI"
 
@@ -3372,11 +3380,12 @@ msgstr "Numer kanału i nazwa"
 msgid "Channelnumber, picon and servicename"
 msgstr "Numer kanału, pikona i nazwa"
 
-msgid "Channels"
-msgstr "Kanały"
-
 msgid "Channels and EPG"
 msgstr "Kanały i EPG"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 msgid "Channels only"
 msgstr "Tylko kanały"
@@ -3604,7 +3613,13 @@ msgstr "Klient strumieniuje z tego odbiornika!"
 msgid "Client mode"
 msgstr "Zainicjuj moduł"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4210,7 +4225,9 @@ msgstr "Aktywny transcoding, PiP niedostępny!"
 msgid "Connection information"
 msgstr "Informacja o działaniu menadżera wtyczek"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -5033,17 +5050,21 @@ msgstr "Odznacz"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
-msgstr "Lokalizacja zdalnego odbiornika rezerwowego"
-
-msgid "Destination of fallback remote receiver for ATSC"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "Lokalizacja zdalnego odbiornika rezerwowego dla ATSC"
 
-msgid "Destination of fallback remote receiver for DVB-C"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "Lokalizacja zdalnego odbiornika rezerwowego dla DVB-C"
 
-msgid "Destination of fallback remote receiver for DVB-T"
+#, fuzzy
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "Lokalizacja zdalnego odbiornika rezerwowego dla DVB-T"
+
+#, fuzzy
+msgid "Destination of fallback remote receiver."
+msgstr "Lokalizacja zdalnego odbiornika rezerwowego"
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -5143,10 +5164,6 @@ msgstr "Katalog"
 #, python-format
 msgid "Directory %s does not exist."
 msgstr "Katalog %s nie istnieje."
-
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
 
 #, fuzzy, python-format
 msgid "Directory '%s' does not exist!"
@@ -5654,9 +5671,17 @@ msgstr "Wybór EPG"
 msgid "EPG Setup"
 msgstr "Ustawienia"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #, fuzzy
 msgid "EPG filename"
 msgstr "Nazwa pliku"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "Preferowany język EPG 1"
@@ -5682,7 +5707,7 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "BŁĄD - skanowanie (%s) nie powiodło się!"
 
 #, fuzzy, python-format
-msgid "ERROR downloading file %s/%s"
+msgid "ERROR downloading file %s"
 msgstr "BŁĄD pobierania pliku /etc/enigma2/%s"
 
 msgid "East"
@@ -5791,7 +5816,7 @@ msgstr "Włącz automatyczny fastscan"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Włączone"
+msgstr "Włącz edycję bukietu"
 
 msgid "Enable EIT EPG"
 msgstr "Włącz EIT EPG"
@@ -5886,7 +5911,13 @@ msgstr "Włącz lub wyłącz funkcję HDMI-CEC."
 msgid "Enable parental protection"
 msgstr "Włącz kontrolę rodzicielską"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Włącz, aby zdalny odbiornik (na enigma2), był ewentualnym 'źródłem' kanałów, które nie mogą być odebrane lokalnie (np. głowice są zajęte lub typ kanału jest niedostępny na lokalnym tunerze. Wpisz kompletny URL zawierający http:// i numer portu (standardowo ...:8001), np. http://drugi_box:8001"
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -5941,6 +5972,9 @@ msgstr "Edytuj ustawienia DNS odbiornika.\n"
 
 msgid "Enabled"
 msgstr "Włączone"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6184,12 +6218,6 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Błąd zatrzymania streamu!"
 
-msgid "Error when writing epg.dat on server"
-msgstr "Błąd przy zapisywaniu epg.dat na serwer"
-
-msgid "Error while retreiving epg.dat from server"
-msgstr "Błąd podczas pobierania epg.dat z serwera"
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
@@ -6197,9 +6225,6 @@ msgid ""
 msgstr ""
 "Błąd podczas pobierania informacji o timerze z tunera zapasowego\n"
 "% s"
-
-msgid "Error while retreiving location of epg.dat on server"
-msgstr "Błąd podczas pobierania lokalizacji epg.dat na serwerze"
 
 #, python-format
 msgid ""
@@ -6618,10 +6643,22 @@ msgstr "Zdalny odbiornik rezerwowy"
 msgid "Fallback remote receiver IP"
 msgstr "IP zdalnego odbiornika rezerwowego"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "IP zdalnego odbiornika rezerwowego"
+
 msgid "Fallback remote receiver Port"
 msgstr "Port zdalnego odbiornika rezerwowego"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Port zdalnego odbiornika rezerwowego"
+
 msgid "Fallback remote receiver URL"
+msgstr "Adres zdalnego odbiornika rezerwowego"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "Adres zdalnego odbiornika rezerwowego"
 
 msgid "Fallback remote receiver for ATSC"
@@ -6868,6 +6905,10 @@ msgid "France"
 msgstr "Francja"
 
 msgid "Free"
+msgstr ""
+
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
 msgstr ""
 
 msgid "Free flash"
@@ -7624,7 +7665,8 @@ msgstr ""
 msgid "IP address"
 msgstr "Adres IP"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "Adres zdalnego odbiornika rezerwowego"
 
 msgid "IPv6"
@@ -7756,18 +7798,20 @@ msgstr ""
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Importuj kanały i / lub EPG ze zdalnego odbiornika również wtedy, gdy odbiornik wychodzi z trybu standby"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
-msgstr "Importuj kanały i / lub EPG ze zdalnego odbiornika wtedy, gdy odbiornik startuje"
-
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "Importuj kanały i / lub EPG ze zdalnego odbiornika wtedy, gdy odbiornik lub enigma się restartuje"
 
-#, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Import z tunera rezerwowego niepowiódł się, %s"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
+msgstr "Importuj kanały i / lub EPG ze zdalnego odbiornika wtedy, gdy odbiornik lub enigma się restartuje"
 
 msgid "Import from remote receiver URL"
 msgstr "Importuj ze zdalnego odbiornika"
@@ -8363,7 +8407,7 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Lokalizacja dla 'natychmiastowych' nagrań"
+msgstr "Zawsze zawieraj ECMy w nagraniach"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -8554,9 +8598,6 @@ msgstr "Działania związane z wyborem skórki"
 
 msgid "List available networks"
 msgstr "Pokaż listę dostępnych sieci"
-
-msgid "List mode"
-msgstr "Tryb listy"
 
 msgid "List of storage devices"
 msgstr "Lista urządzeń przechowywania danych"
@@ -8840,7 +8881,8 @@ msgstr "Menu główne"
 msgid "Maintain old EPG data for"
 msgstr "Trzymaj stare dane EPG przez (w min.)"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Umożliw ręczne rozpoczęcie importu kanałów i / lub EPG z poziomu menu rozszerzeń"
 
 msgid "Make this mark an 'in' point"
@@ -9643,7 +9685,7 @@ msgstr "Konfiguracja sieci..."
 msgid "Network information"
 msgstr "Konfiguracja sieci"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 msgid "Network mount"
@@ -9783,9 +9825,6 @@ msgstr "Brak dostępnego opisu."
 
 msgid "No displayable files on this medium found!"
 msgstr "Brak plików do wyświetlenia na tym nośniku!"
-
-msgid "No epg.dat file found server"
-msgstr "Nie znaleziono pliku epg.dat na serwerze"
 
 msgid "No event info found, recording indefinitely."
 msgstr "Nie znaleziono informacji o wydarzeniu, nagrywanie na czas nieokreślony."
@@ -10576,6 +10615,10 @@ msgstr "Filipiny"
 msgid "PiP Actions"
 msgstr "Pozycja"
 
+#, fuzzy
+msgid "PiP mode"
+msgstr "Tryb listy"
+
 msgid "PiP setup"
 msgstr "Ustawienia PiP"
 
@@ -10992,6 +11035,10 @@ msgid "Port D"
 msgstr "Port D"
 
 msgid "Port of fallback remote receiver"
+msgstr "Port zdalnego odbiornika rezerwowego"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Port zdalnego odbiornika rezerwowego"
 
 msgid "Portugal"
@@ -11645,6 +11692,10 @@ msgid "Receiver name"
 msgstr "Nazwa urządzenia:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr ""
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 msgid "Reception settings"
@@ -13164,6 +13215,10 @@ msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
 #, fuzzy
+msgid "Server not available"
+msgstr "Tuner niedostępny."
+
+#, fuzzy
 msgid "Server:"
 msgstr "Aktualny kanał"
 
@@ -13276,6 +13331,9 @@ msgstr "Kanały"
 msgid "Set CI assignment for detection of available services."
 msgstr "Ustaw przyporządkowanie modułu CI dla wykrywania dostępnych kanałów."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -13285,7 +13343,8 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr "Przestawić wszystkie klawisze do ustawień domyślnych?"
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+#, fuzzy
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr "Ustaw alternatywny tuner rezerwowy dla DVB-T/C lub ATSC"
 
 msgid "Set as startup service"
@@ -13339,7 +13398,8 @@ msgstr "Tworzenie systemu plików"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Testuj konfiguracjię sieci.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Wpisz nazwę użytkownika do zalogowania do OpenWebif tunera rezerwowego"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -13365,10 +13425,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Sposób sortowania:"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Wpisz hasło do zalogowania do OpenWebif tunera rezerwowego"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Wpisz port OpenWebif tunera rezerwowego"
 
 #, fuzzy
@@ -13477,9 +13539,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Krótkie nazwy plików"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 msgid "Show"
 msgstr "Pokaż"
@@ -13689,6 +13748,10 @@ msgid "Show image items"
 msgstr "Wyświetl listę nagrań"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Pokazuj informację gdy import kanałów się powiódł"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Wyłączaj, gdy w trybie czuwania"
 
@@ -13717,6 +13780,10 @@ msgstr "Wyświetlaj numerację menu lub wtyczek"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Wyświetl ostatnie commity"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Pokaż PiP"
 
 #, fuzzy
 msgid "Show live tv when movie stopped"
@@ -13764,10 +13831,12 @@ msgstr "Wybierz image"
 msgid "Show next page of description"
 msgstr "Pokaż rozszerzony opis"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Pokazuj informację gdy import kanałów i / lub EPG ze zdalnego odbiornika nie powiódł się"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Pokazuj informację gdy import kanałów i / lub EPG ze zdalnego odbiornika zakończył się"
 
 msgid "Show notification when import channels was not successful"
@@ -13958,6 +14027,10 @@ msgstr "Pokaż/ukryj okno"
 #, fuzzy
 msgid "Showiframe"
 msgstr "Pokaż info"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Pokazuj informację gdy import kanałów i / lub EPG ze zdalnego odbiornika zakończył się"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Wyświetla tv na żywo lub informacje na LCD."
@@ -14517,6 +14590,10 @@ msgstr "Katalog początkowy"
 msgid "Start from the beginning"
 msgstr "Rozpocznij od początku"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Importuj także przy restarcie odbiornika / enigmy"
+
 msgid "Start instant recording"
 msgstr "Rozpocznij natychmiastowe nagrywanie"
 
@@ -14543,9 +14620,6 @@ msgstr "Początek ignorowania 'timera wyłączania' w standby"
 
 msgid "Start timeshift"
 msgstr "Rozpocznij timeshift"
-
-msgid "Start with list screen"
-msgstr "Rozpocznij ekranem z listą"
 
 msgid "Starting on"
 msgstr "Rozpocznij od"
@@ -16256,7 +16330,8 @@ msgstr "NIEZNANY"
 msgid "URL"
 msgstr ""
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "Adres zdalnego odbiornika rezerwowego"
 
 msgid "USALS"
@@ -17140,7 +17215,8 @@ msgstr "Gdy włączone, odbiornik automatycznie wybudzi się ze stanu czuwania p
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Gdy włączone, odbiornik może zostać wybudzony po LAN"
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Gdy włączone, timer ze zdalnego odbiornika jest importowany"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -17149,7 +17225,8 @@ msgstr "Gdy włączone, jeśli wybierzesz nowy kanał w liście wyboru kanałów
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Gdy włączone, strzałki prawa/lewa regulują głośność, a nie otwierają listy wyboru kanałów."
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Gdy włączone, możesz dostosować ustawienia OpenWebIf dla tunera rezerwowego"
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -17307,9 +17384,8 @@ msgstr "Gdy włączone, to ustawienie ma pierwszeństwo przed opcją 'Tuner pref
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Gdy włączone, to ustawienie ma pierwszeństwo przed opcją 'Tuner preferowany'."
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Gdy włączone, timeshift zostanie uruchomiony w tle po określonym czasie."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Gdy włączone, używa DHCP do konfiguracji IP."
@@ -17566,10 +17642,11 @@ msgstr "Tak"
 msgid "Yes (save index in setup tuner)"
 msgstr "Tak (zapisz indeks w ustawienich tunera)"
 
-msgid "Yes and save"
-msgstr "Tak i zapisz"
-
 msgid "Yes and save in movie dir"
+msgstr "Tak, i zapisz w katalogu movie"
+
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Tak, i zapisz w katalogu movie"
 
 msgid "Yes to all"
@@ -17694,6 +17771,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Nie wybrałeś kanału z którego nagrywać."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"

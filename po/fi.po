@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 13:08+0430\n"
+"POT-Creation-Date: 2022-05-22 21:28+0430\n"
 "PO-Revision-Date: 2020-05-16 18:41+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -1230,10 +1230,6 @@ msgstr ""
 msgid "%s MHz"
 msgstr ""
 
-#, fuzzy, python-format
-msgid "%s imported from fallback tuner"
-msgstr "Tuo ajastimet etävastaaottimelta"
-
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1277,8 +1273,16 @@ msgid "%s?"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "'%s' %d MB little space available"
+msgstr "%s päivitetty ohjelmapaketti saatavilla"
+
+#, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Hakemisto sisältää %(file)s ja %(subdir)s."
+
+#, python-format
+msgid "'%s'= Internal Flash. It is not a storage device"
+msgstr ""
 
 #, fuzzy
 msgid "( All readers)"
@@ -2257,7 +2261,7 @@ msgstr ""
 msgid "Allows you to hide the extensions of known file types."
 msgstr ""
 
-msgid "Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart."
+msgid "Allows you to set a schedule to import the EPG and channels list."
 msgstr ""
 
 #, fuzzy
@@ -3309,6 +3313,11 @@ msgid "CH%s"
 msgstr "CH%s"
 
 #
+#, fuzzy, python-format
+msgid "CI %s enabled"
+msgstr "Päällä"
+
+#
 msgid "CI (Common Interface) Setup"
 msgstr "CI-liitäntä/CAM"
 
@@ -3660,13 +3669,12 @@ msgid "Channelnumber, picon and servicename"
 msgstr "Kanavanumero, logo ja nimi"
 
 #
-#, fuzzy
-msgid "Channels"
-msgstr "Kanava"
-
-#
 msgid "Channels and EPG"
 msgstr "Kanavat ja ohjelmaopas"
+
+#, python-format
+msgid "Channels imported successfully from %s"
+msgstr ""
 
 #
 #, fuzzy
@@ -3920,7 +3928,13 @@ msgstr "Striimaus on käynnissä tältä laitteelta!"
 msgid "Client mode"
 msgstr "alusta moduuli"
 
-msgid "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared."
+msgid ""
+"Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
+"\n"
+"Paths to search EPG and Channels on server:\n"
+"Internal Flash, HDD, USB.\n"
+"\n"
+"Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
 
 msgid "Clients"
@@ -4555,7 +4569,9 @@ msgstr "Transkoodaus yhdistetty. Rajoitus - ei PiP-kuvaa!"
 msgid "Connection information"
 msgstr "Lisäosien hallinnan asennustiedot"
 
-msgid "Connection using the supplied FTP parameters failed. Please recheck the details and try again."
+msgid ""
+"Connection using supplied FTP parameters failed.\n"
+"Check parameters of server."
 msgstr ""
 
 msgid "Console"
@@ -5461,19 +5477,20 @@ msgstr "Ei valittu"
 msgid "Deselected packages usually occur because those packaged are incompatible with existing packages.  While this is mostly harmless it is possible that your %s %s may experience issues."
 msgstr ""
 
-msgid "Destination of fallback remote receiver"
+#, fuzzy
+msgid "Destination of fallback remote receiver for ATSC."
 msgstr "Etävastaanottimen kohde"
 
 #, fuzzy
-msgid "Destination of fallback remote receiver for ATSC"
+msgid "Destination of fallback remote receiver for DVB-C."
 msgstr "Etävastaanottimen kohde"
 
 #, fuzzy
-msgid "Destination of fallback remote receiver for DVB-C"
+msgid "Destination of fallback remote receiver for DVB-T."
 msgstr "Etävastaanottimen kohde"
 
 #, fuzzy
-msgid "Destination of fallback remote receiver for DVB-T"
+msgid "Destination of fallback remote receiver."
 msgstr "Etävastaanottimen kohde"
 
 msgid "Detailed debug logs"
@@ -5588,10 +5605,6 @@ msgstr "Hakemisto"
 #, python-format
 msgid "Directory %s does not exist."
 msgstr "Hakemistoa %s ei löydy."
-
-#, python-format
-msgid "Directory '%s' can't be linked to recordings!"
-msgstr ""
 
 #
 #, fuzzy, python-format
@@ -6052,8 +6065,9 @@ msgid_plural "Done - Installed, updated or removed %d packages (%s)"
 msgstr[0] "Valmis - asennettu, päivitetty tai poistettu %d ohjelmapaketti (%s)"
 msgstr[1] "Valmis - asennettu, päivitetty tai poistettu %d ohjelmapakettia (%s)"
 
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "DTS muunnos stereoksi"
 
 #
 #, fuzzy
@@ -6179,10 +6193,18 @@ msgstr "Ohjelmaoppaan valinta"
 msgid "EPG Setup"
 msgstr "Asetukset"
 
+#, python-format
+msgid "EPG and Channels not received receiver %s is turned off"
+msgstr ""
+
 #
 #, fuzzy
 msgid "EPG filename"
 msgstr "Tiedostonimi"
+
+#, python-format
+msgid "EPG imported successfully from %s"
+msgstr ""
 
 msgid "EPG language selection 1"
 msgstr "Ohjelmaoppaan kieli 1"
@@ -6211,7 +6233,7 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "VIRHE - haku epäonnistui (%s)!"
 
 #, python-format
-msgid "ERROR downloading file %s/%s"
+msgid "ERROR downloading file %s"
 msgstr ""
 
 #
@@ -6340,7 +6362,7 @@ msgstr "Ota käyttöön autom. pikahaku"
 #
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Käytössä"
+msgstr "Kanavalistojen lisäys ja poisto"
 
 msgid "Enable EIT EPG"
 msgstr "Ota käyttöön EIT EPG"
@@ -6445,7 +6467,13 @@ msgstr "Ota käyttöön HDMI-CEC"
 msgid "Enable parental protection"
 msgstr "Ota käyttöön lapsilukko"
 
-msgid "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001."
+#, fuzzy
+msgid ""
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"\n"
+"You can use this receiver only in client mode using server channel list and EPG.\n"
+"\n"
+"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Ota käyttöön etävastaanotin. Etävastaanotinta kokeillaan kun paikallisia virittimiä ei voida käyttään - esimerkiksi kun virittimet ovat varattu, tai soveltuvia virittimiä ei ole. Määrittele koko URL mukaanlukien http:// ja portti (yleensä :8001), esimerkiksi http://toinen_laite:8001."
 
 msgid "Enable screenshot of LCD in /tmp."
@@ -6502,6 +6530,9 @@ msgstr "Muokkaa nimipalvelimen asetuksia vastaanottimessasi.\n"
 #
 msgid "Enabled"
 msgstr "Käytössä"
+
+msgid "Enabled will perform a channels and EPG import on every enigma2 restart."
+msgstr ""
 
 #, fuzzy
 msgid "Encrypted TV"
@@ -6761,19 +6792,10 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr ""
 
-msgid "Error when writing epg.dat on server"
-msgstr ""
-
-msgid "Error while retreiving epg.dat from server"
-msgstr ""
-
 #, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr ""
-
-msgid "Error while retreiving location of epg.dat on server"
 msgstr ""
 
 #
@@ -7231,10 +7253,22 @@ msgstr "Etävastaanottimen osoite"
 msgid "Fallback remote receiver IP"
 msgstr "Etävastaanottimen IP-osoite"
 
+#, fuzzy
+msgid "Fallback remote receiver IP."
+msgstr "Etävastaanottimen IP-osoite"
+
 msgid "Fallback remote receiver Port"
 msgstr "Etävastaanottimen portti"
 
+#, fuzzy
+msgid "Fallback remote receiver Port."
+msgstr "Etävastaanottimen portti"
+
 msgid "Fallback remote receiver URL"
+msgstr "Etävastaanottimen URL-osoite"
+
+#, fuzzy
+msgid "Fallback remote receiver URL."
 msgstr "Etävastaanottimen URL-osoite"
 
 #, fuzzy
@@ -7504,6 +7538,10 @@ msgid "France"
 msgstr "France"
 
 msgid "Free"
+msgstr ""
+
+#, python-format
+msgid "Free %d MB: Low space available for timeshift. Change device"
 msgstr ""
 
 msgid "Free flash"
@@ -8324,7 +8362,8 @@ msgstr ""
 msgid "IP address"
 msgstr "IP-osoite"
 
-msgid "IP of fallback remote receiver"
+#, fuzzy
+msgid "IP of fallback remote receiver."
 msgstr "Etävastaanottimen IP-osoite"
 
 msgid "IPv6"
@@ -8465,19 +8504,20 @@ msgstr "Ohjelmisto: "
 msgid "Immediately restart selected devices."
 msgstr ""
 
-msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Tuo kanavat ja/tai ohjelmaopas etävastaanottimelta valmiustilasta poistuttaessa"
 
 #, fuzzy
-msgid "Import channels and/or EPG from remote receiver URL when receiver is booted"
+msgid ""
+"Import channels and/or EPG from remote receiver URL or IP.\n"
+"\n"
+"Don't forget to manually set server IP."
 msgstr "Tuo kanavat ja/tai ohjelmaopas etävastaanottimelta uudelleenkäynnistyksen yhteydessä"
 
-msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted"
+#, fuzzy
+msgid "Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted."
 msgstr "Tuo kanavat ja/tai ohjelmaopas etävastaanottimelta uudelleenkäynnistyksen yhteydessä"
-
-#, fuzzy, python-format
-msgid "Import from fallback tuner failed, %s"
-msgstr "Tuo kanavat etävastaanottimelta"
 
 msgid "Import from remote receiver URL"
 msgstr "Tuo etävastaanottimelta"
@@ -9136,10 +9176,11 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Tallennuksien hakemisto"
+msgstr "Sisällytä aina ECM tallennuksiin"
 
+#, fuzzy
 msgid "LED color during recording in standby"
-msgstr ""
+msgstr "Sisällytä aina ECM tallennuksiin"
 
 #, fuzzy
 msgid "LED color during standby"
@@ -9353,9 +9394,6 @@ msgstr "Valitse toiminto"
 
 msgid "List available networks"
 msgstr "Näytä verkot"
-
-msgid "List mode"
-msgstr "Luettelotila"
 
 #
 msgid "List of storage devices"
@@ -9671,7 +9709,8 @@ msgstr "Päävalikko"
 msgid "Maintain old EPG data for"
 msgstr "Säilytä vanhoja ohjelmatietoja (min)"
 
-msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu"
+#, fuzzy
+msgid "Make it possible to manually initiate the channels import and/or EPG via the extension menu."
 msgstr "Lisää valinta kanavien ja/tai ohjelmaopas -tiedon tuonnille laajennusvalikkoon"
 
 #
@@ -10599,7 +10638,7 @@ msgstr "Verkon asetukset..."
 msgid "Network information"
 msgstr "Verkon asetukset"
 
-msgid "Network interface for change MAC address (to change WiFi MAC have previous activated LAN DHCP)."
+msgid "Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP."
 msgstr ""
 
 #
@@ -10761,9 +10800,6 @@ msgstr "Kuvausta ei ole saatavilla."
 #
 msgid "No displayable files on this medium found!"
 msgstr "Tiedostoja ei löytynyt!"
-
-msgid "No epg.dat file found server"
-msgstr ""
 
 #
 msgid "No event info found, recording indefinitely."
@@ -11631,6 +11667,10 @@ msgstr "Philippines"
 msgid "PiP Actions"
 msgstr "Sijainti"
 
+#, fuzzy
+msgid "PiP mode"
+msgstr "Luettelotila"
+
 #
 msgid "PiP setup"
 msgstr "PiP-kuvan asetukset"
@@ -12121,6 +12161,10 @@ msgid "Port D"
 msgstr "Portti D"
 
 msgid "Port of fallback remote receiver"
+msgstr "Etävastaanottimen portti"
+
+#, fuzzy
+msgid "Port of fallback remote receiver."
 msgstr "Etävastaanottimen portti"
 
 #
@@ -12868,6 +12912,10 @@ msgid "Receiver name"
 msgstr "Laitenimi:"
 
 msgid "Receiver or driver does not support FCC"
+msgstr ""
+
+#, python-format
+msgid "Receiver with IP %s is turned off."
 msgstr ""
 
 #
@@ -14577,6 +14625,10 @@ msgstr ""
 msgid "Server Info ( OScam-Version: %s )"
 msgstr ""
 
+#, fuzzy
+msgid "Server not available"
+msgstr "Viritin ei saatavilla"
+
 #
 #, fuzzy
 msgid "Server:"
@@ -14709,6 +14761,9 @@ msgstr "Palvelut"
 msgid "Set CI assignment for detection of available services."
 msgstr "Ota käyttöön CI-määritys käytettävissä olevien palvelujen löytämiseksi."
 
+msgid "Set FTP connection to the remote receiver be established in passive mode (normally 'no')."
+msgstr ""
+
 msgid "Set PIN Pressing [OK]"
 msgstr ""
 
@@ -14718,7 +14773,7 @@ msgstr ""
 msgid "Set all hotkey to default?"
 msgstr ""
 
-msgid "Set alternative fallback tuners for DVB-T/C or ATSC"
+msgid "Set alternative fallback tuners for DVB-T/C or ATSC."
 msgstr ""
 
 msgid "Set as startup service"
@@ -14777,7 +14832,8 @@ msgstr "Järjestelmä"
 msgid "Set the MAC address of your receiver.\n"
 msgstr "Testaa vastaanottimesi verkkomääritykset.\n"
 
-msgid "Set the User ID of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the User ID of the OpenWebif from your fallback tuner."
 msgstr "Aseta etävastaanottimen OpenWebIf käyttäjätunnus"
 
 msgid "Set the default location for your instant recordings. Press OK to add new locations, LEFT/RIGHT to select from any existing locations."
@@ -14805,10 +14861,12 @@ msgstr ""
 msgid "Set the global sort method"
 msgstr "Valitse lajittelutapa"
 
-msgid "Set the password of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the password of the OpenWebif from your fallback tuner."
 msgstr "Aseta etävastaanottimen OpenWebIf salasana"
 
-msgid "Set the port of the OpenWebif from your fallback tuner"
+#, fuzzy
+msgid "Set the port of the OpenWebif from your fallback tuner."
 msgstr "Aseta etävastaanottimen OpenWebIf portti"
 
 #, fuzzy
@@ -14925,9 +14983,6 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Lyhyet tiedostonimet"
-
-msgid "Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?"
-msgstr ""
 
 #
 msgid "Show"
@@ -15154,6 +15209,10 @@ msgid "Show image items"
 msgstr "Näytä tallennukset"
 
 #, fuzzy
+msgid "Show import notification for channels and EPG"
+msgstr "Näytä ilmoitus kun tuonti onnistui"
+
+#, fuzzy
 msgid "Show in Standby"
 msgstr "Siirry virransäästötilaan"
 
@@ -15188,6 +15247,10 @@ msgstr "Numeroi valikot ja/tai lisäosat"
 #, fuzzy
 msgid "Show latest commit log information"
 msgstr "Näytä viimeisimmät muutokset"
+
+#, fuzzy
+msgid "Show list with PiP"
+msgstr "Näytä PiP"
 
 #
 #, fuzzy
@@ -15239,10 +15302,12 @@ msgstr "Poista ohjelmistokuva"
 msgid "Show next page of description"
 msgstr "Näytä laajennettu ohjelmakuvaus"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL did not complete."
 msgstr "Näytä ilmoitus kun kanavien ja/tai ohjelmaoppaan tuonti etävastaanottimelta ei onnistunut"
 
-msgid "Show notification when import channels and/or EPG from remote receiver URL is completed"
+#, fuzzy
+msgid "Show notification when import channels and/or EPG from remote receiver URL is completed."
 msgstr "Näytä ilmoitus kun kanavien ja/tai ohjelmaoppaan tuonti etävastaanottimelta onnistui"
 
 msgid "Show notification when import channels was not successful"
@@ -15453,6 +15518,10 @@ msgstr ""
 #, fuzzy
 msgid "Showiframe"
 msgstr "Näytä tiedot"
+
+#, fuzzy
+msgid "Shows a notification when the channel and EPG import from server is completed successfully."
+msgstr "Näytä ilmoitus kun kanavien ja/tai ohjelmaoppaan tuonti etävastaanottimelta onnistui"
 
 msgid "Shows live tv or informations on LCD."
 msgstr "Näyttää tv:n tai tiedot etupaneelissa"
@@ -16090,6 +16159,10 @@ msgstr "Aloitushakemisto"
 msgid "Start from the beginning"
 msgstr "Aloita alusta"
 
+#, fuzzy
+msgid "Start import when restart enigma2"
+msgstr "Tuo uudelleenkäynnistyksessä"
+
 #
 msgid "Start instant recording"
 msgstr "Aloita tallennus?"
@@ -16121,9 +16194,6 @@ msgstr "Aikavälin aloitusaika"
 
 msgid "Start timeshift"
 msgstr "Aloita ajansiirto"
-
-msgid "Start with list screen"
-msgstr "Käynnistä luettelotilaan"
 
 #
 msgid "Starting on"
@@ -18025,7 +18095,8 @@ msgstr ""
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of fallback remote receiver"
+#, fuzzy
+msgid "URL of fallback remote receiver."
 msgstr "Etävastaanottimen URL-osoite"
 
 msgid "USALS"
@@ -18751,8 +18822,9 @@ msgstr "Ohjelmaopas"
 msgid "WLAN connection"
 msgstr "WLAN-yhteys"
 
+#, fuzzy
 msgid "WMA Pro"
-msgstr ""
+msgstr "AAC:n muunto stereoksi"
 
 #
 #, fuzzy
@@ -19001,7 +19073,8 @@ msgstr "Kun päällä, vastaanotin käyttää kanavalle aiemmin valitsemaasi ä�
 msgid "When enabled the set top box is able to wakeup on LAN"
 msgstr "Käy käytössä, vastaanotin voi käynnistyä verkkokomennolla"
 
-msgid "When enabled the timer from the fallback tuner is imported"
+#, fuzzy
+msgid "When enabled the timer from the fallback tuner is imported."
 msgstr "Kun käytössä, ajastukset tuodaan etävastaanottimelta"
 
 msgid "When enabled then when you select a new channel in the channel selection the channel selection will not close. It will only close when you select the current playing service. This is a kind of preview mode"
@@ -19010,7 +19083,8 @@ msgstr "Kun käytössä, uuden kanavan valinta OK näppäimellä ei sulje kanava
 msgid "When enabled you can control the volume with the arrow buttons instead of getting the channel selection list"
 msgstr "Kun käytössä, nuolinäppäimet ohjaavat äänenvoimakkuutta kanavanvalinnan sijasta"
 
-msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner"
+#, fuzzy
+msgid "When enabled you can customize the OpenWebIf settings for the fallback tuner."
 msgstr "Käy käytössä, voit määritellä etävastaanottimen OpenWebIf asetuksia"
 
 msgid "When enabled you can specify a timeframe to ignore the shutdown timer when the receiver is in standby mode"
@@ -19170,9 +19244,8 @@ msgstr "Kun päällä, tämä ohittaa tallennusten ensisijainen viritin valinnan
 msgid "When enabled, this setting has more weight than 'Preferred tuner'."
 msgstr "Kun päällä, tämä ohittaa ensisijainen viritin valinnan"
 
-#, fuzzy
-msgid "When enabled, timeshift starts automatically in background after the specified time."
-msgstr "Kun päällä, ajansiirto alkaa automaattisesti taustalla määritellyn ajan jälkeen."
+msgid "When enabled, timeshift starts automatically in background after the specified time. Timeshift recording will start for each started service, the previous one is deleted. This background recording is not saved unless you press the PLAY-PAUSE, if zap to another service then you will have options to save the previous service recording."
+msgstr ""
 
 msgid "When enabled, use DHCP for the IP configuration."
 msgstr "Kun päällä, käytetään DHCP:tä IP-määritykseen."
@@ -19440,11 +19513,13 @@ msgstr "Kyllä"
 msgid "Yes (save index in setup tuner)"
 msgstr "Kyllä (tallenna muistipaikka myös viritinasetuksiin)"
 
-msgid "Yes and save"
-msgstr "Kyllä ja tallenna"
-
 #
 msgid "Yes and save in movie dir"
+msgstr "Kyllä ja tallenna tallennehakemistoon"
+
+#
+#, fuzzy
+msgid "Yes and save in timeshift dir"
 msgstr "Kyllä ja tallenna tallennehakemistoon"
 
 msgid "Yes to all"
@@ -19575,6 +19650,10 @@ msgstr ""
 
 msgid "You didn't select a channel to record from."
 msgstr "Et valinnut tallennuskanavaa."
+
+#, python-format
+msgid "You have not set manual IP for %s"
+msgstr ""
 
 #, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"
