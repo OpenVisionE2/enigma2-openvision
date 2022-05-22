@@ -224,6 +224,8 @@ class Network:
 		try:
 			if config.usage.dns.value.lower() in ("dhcp-router", "custom"):
 				fp = open('/etc/resolv.conf', 'r')
+				if (os.path.isfile("/etc/enigma2/nameserversdns.conf")):
+					Console().ePopen('rm /etc/enigma2/nameserversdns.conf')
 			else:
 				fp = open('/etc/enigma2/nameserversdns.conf', 'r')
 			resolv = fp.readlines()
