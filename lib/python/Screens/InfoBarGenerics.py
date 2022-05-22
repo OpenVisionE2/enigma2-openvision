@@ -3382,18 +3382,6 @@ class InfoBarNotifications:
 				n[3]["onSessionOpenCallback"]()
 				del n[3]["onSessionOpenCallback"]
 
-			if n[4] and n[4].startswith("ChannelsImport"):
-				if "channels" in config.usage.remote_fallback_import.value:
-					eDVBDB.getInstance().reloadBouquets()
-					eDVBDB.getInstance().reloadServicelist()
-					from Components.ParentalControl import parentalControl
-					parentalControl.open()
-					refreshServiceList()
-					reload_whitelist_vbi()
-				if "epg" in config.usage.remote_fallback_import.value:
-					eEPGCache.getInstance().load()
-				if config.misc.initialchannelselection.value or not(config.usage.remote_fallback_import.value and (n[4].endswith("NOK") and config.usage.remote_fallback_nok.value or config.usage.remote_fallback_ok.value)):
-					return
 			if cb:
 				dlg = self.session.openWithCallback(cb, n[1], *n[2], **n[3])
 			elif not current_notifications and n[4] == "ZapError":

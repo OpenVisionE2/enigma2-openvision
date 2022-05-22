@@ -96,119 +96,119 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		self.list = []
 		self.list.append(getConfigListEntry(_("Enable fallback remote receiver"),
 			config.usage.remote_fallback_enabled,
-			_("Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally (e.g. tuner is occupied or service type is unavailable on the local tuner. Specify complete URL including http:// and port number (normally ...:8001), e.g. http://second_box:8001.")))
+			_("Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n\nYou can use this receiver only in client mode using server channel list and EPG.\n\nSet manual IP for importing EPG and Channels in 'Import remote receiver URL'.")))
 		self.list.append(getConfigListEntry(_("Import from remote receiver URL"),
 			config.usage.remote_fallback_import,
-			_("Import channels and/or EPG from remote receiver URL when receiver is booted")))
+			_("Import channels and/or EPG from remote receiver URL or IP.\n\nDon't forget to manually set server IP.")))
 		if config.usage.remote_fallback_enabled.value or config.usage.remote_fallback_import.value:
 			self.list.append(getConfigListEntry(_("Enable import timer from fallback tuner"),
 				config.usage.remote_fallback_external_timer,
-				_("When enabled the timer from the fallback tuner is imported")))
+				_("When enabled the timer from the fallback tuner is imported.")))
 			self.list.append(getConfigListEntry(_("Fallback remote receiver"),
 				self.avahiselect,
-				_("Destination of fallback remote receiver")))
+				_("Destination of fallback remote receiver.")))
 			if self.avahiselect.value == "ip":
 				self.list.append(getConfigListEntry("  %s" % _("Fallback remote receiver IP"),
 					self.ip,
-					_("IP of fallback remote receiver")))
+					_("IP of fallback remote receiver.")))
 				self.list.append(getConfigListEntry("  %s" % _("Fallback remote receiver Port"),
 					self.port,
 					_("Port of fallback remote receiver")))
 			if self.avahiselect.value == "url":
 				self.list.append(getConfigListEntry("  %s" % _("Fallback remote receiver URL"),
 					config.usage.remote_fallback,
-					_("URL of fallback remote receiver")))
+					_("URL of fallback remote receiver.")))
 		if config.usage.remote_fallback_enabled.value and config.usage.remote_fallback_import.value and config.usage.remote_fallback.value:
 			self.list.append(getConfigListEntry(_("Import remote receiver URL"),
 				self.avahiselect_seperate,
-				_("URL of fallback remote receiver")))
+				_("URL of fallback remote receiver.")))
 			if self.avahiselect_seperate.value == "ip":
 				self.list.append(getConfigListEntry("  %s" % _("Fallback remote receiver IP"),
 					self.ip_seperate,
-					_("IP of fallback remote receiver")))
+					_("IP of fallback remote receiver.")))
 				self.list.append(getConfigListEntry("  %s" % _("Fallback remote receiver Port"),
 					self.port_seperate,
-					_("Port of fallback remote receiver")))
+					_("Port of fallback remote receiver.")))
 			if self.avahiselect_seperate.value == "url":
 				self.list.append(getConfigListEntry("  %s" % _("Fallback remote receiver URL"),
 					config.usage.remote_fallback_import_url,
-					_("URL of fallback remote receiver")))
+					_("URL of fallback remote receiver.")))
 		if config.usage.remote_fallback_enabled.value and config.usage.remote_fallback_import.value:
 			self.list.append(getConfigListEntry(_("Also import at reboot/restart enigma2"),
 				config.usage.remote_fallback_import_restart,
-				_("Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted")))
+				_("Import channels and/or EPG from remote receiver URL when receiver or enigma2 is restarted.")))
 			self.list.append(getConfigListEntry(_("Also import when box is leaving standby"),
 				config.usage.remote_fallback_import_standby,
-				_("Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby")))
+				_("Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby.")))
 			self.list.append(getConfigListEntry(_("Also import from the extension menu"),
 				config.usage.remote_fallback_extension_menu,
-				_("Make it possible to manually initiate the channels import and/or EPG via the extension menu")))
+				_("Make it possible to manually initiate the channels import and/or EPG via the extension menu.")))
 			self.list.append(getConfigListEntry(_("Show notification when import channels was successful"),
 				config.usage.remote_fallback_ok,
-				_("Show notification when import channels and/or EPG from remote receiver URL is completed")))
+				_("Show notification when import channels and/or EPG from remote receiver URL is completed.")))
 			self.list.append(getConfigListEntry(_("Show notification when import channels was not successful"),
 				config.usage.remote_fallback_nok,
-				_("Show notification when import channels and/or EPG from remote receiver URL did not complete")))
+				_("Show notification when import channels and/or EPG from remote receiver URL did not complete.")))
 			self.list.append(getConfigListEntry(_("Customize OpenWebIF settings for fallback tuner"),
 				config.usage.remote_fallback_openwebif_customize,
-				_("When enabled you can customize the OpenWebIf settings for the fallback tuner")))
+				_("When enabled you can customize the OpenWebIf settings for the fallback tuner.")))
 			if config.usage.remote_fallback_openwebif_customize.value:
 				self.list.append(getConfigListEntry("  %s" % _("User ID"),
 					config.usage.remote_fallback_openwebif_userid,
-					_("Set the User ID of the OpenWebif from your fallback tuner")))
+					_("Set the User ID of the OpenWebif from your fallback tuner.")))
 				self.list.append(getConfigListEntry("  %s" % _("Password"),
 					config.usage.remote_fallback_openwebif_password,
-					_("Set the password of the OpenWebif from your fallback tuner")))
+					_("Set the password of the OpenWebif from your fallback tuner.")))
 				self.list.append(getConfigListEntry("  %s" % _("Port"),
 					config.usage.remote_fallback_openwebif_port,
-					"  %s" % _("Set the port of the OpenWebif from your fallback tuner")))
+					"%s" % _("Set the port of the OpenWebif from your fallback tuner.")))
 		if config.usage.remote_fallback_enabled.value and config.usage.remote_fallback.value:
 			self.list.append(getConfigListEntry(_("Alternative URLs for DVB-T/C or ATSC"),
 				config.usage.remote_fallback_alternative,
-				_("Set alternative fallback tuners for DVB-T/C or ATSC")))
+				_("Set alternative fallback tuners for DVB-T/C or ATSC.")))
 			if config.usage.remote_fallback_alternative.value:
 				self.list.append(getConfigListEntry("  %s" % _("Fallback remote receiver for DVB-T"),
 					self.avahi_dvb_t,
-					_("Destination of fallback remote receiver for DVB-T")))
+					_("Destination of fallback remote receiver for DVB-T.")))
 				if self.avahi_dvb_t.value == "ip":
 					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver IP"),
 						self.ip_dvb_t,
-						_("IP of fallback remote receiver")))
+						_("IP of fallback remote receiver.")))
 					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver Port"),
 						self.port_dvb_t,
 						_("Port of fallback remote receiver")))
 				if self.avahi_dvb_t.value == "url":
 					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver URL"),
 						config.usage.remote_fallback_dvb_t,
-						_("URL of fallback remote receiver")))
+						_("URL of fallback remote receiver.")))
 				self.list.append(getConfigListEntry("  %s" % _("Fallback remote receiver for DVB-C"),
 					self.avahi_dvb_c,
-					_("Destination of fallback remote receiver for DVB-C")))
+					_("Destination of fallback remote receiver for DVB-C.")))
 				if self.avahi_dvb_c.value == "ip":
 					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver IP"),
 						self.ip_dvb_c,
-						_("IP of fallback remote receiver")))
+						_("IP of fallback remote receiver.")))
 					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver Port"),
 						self.port_dvb_c,
 						_("Port of fallback remote receiver")))
 				if self.avahi_dvb_c.value == "url":
 					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver URL"),
 						config.usage.remote_fallback_dvb_c,
-						_("URL of fallback remote receiver")))
+						_("URL of fallback remote receiver.")))
 				self.list.append(getConfigListEntry("  %s" % _("Fallback remote receiver for ATSC"),
 					self.avahi_atsc,
-					_("Destination of fallback remote receiver for ATSC")))
+					_("Destination of fallback remote receiver for ATSC.")))
 				if self.avahi_atsc.value == "ip":
-					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver IP"),
+					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver IP."),
 						self.ip_atsc,
-						_("IP of fallback remote receiver")))
-					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver Port"),
+						_("IP of fallback remote receiver.")))
+					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver Port."),
 						self.port_atsc,
 						_("Port of fallback remote receiver")))
 				if self.avahi_atsc.value == "url":
-					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver URL"),
+					self.list.append(getConfigListEntry("    %s" % _("Fallback remote receiver URL."),
 						config.usage.remote_fallback_atsc,
-						_("URL of fallback remote receiver")))
+						_("URL of fallback remote receiver.")))
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
 

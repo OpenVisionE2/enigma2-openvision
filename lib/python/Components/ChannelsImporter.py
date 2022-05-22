@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.config import config
-
+from Tools.Notifications import AddNotificationWithID
+from Screens.MessageBox import MessageBox
 #for scheduler
 from time import mktime, strftime, time, localtime
 from enigma import eTimer
@@ -10,7 +11,9 @@ from enigma import eTimer
 #for downloader
 import os
 import re
-import urllib2
+from sys import version_info
+from six.moves.urllib.error import URLError, HTTPError
+from six.moves.urllib.request import Request, urlopen
 from enigma import eServiceReference, eDVBDB
 
 autoClientModeTimer = None
@@ -143,8 +146,10 @@ class AutoClientModeTimer:
 
 
 class ChannelsImporter():
-	DIR_ENIGMA2 = '/etc/enigma2/'
-	DIR_TMP = '/tmp/'
+	DIR_ENIGMA2 = "/etc/enigma2/"
+	DIR_HDD = "/media/hdd/"
+	DIR_USB = "/media/usb/"
+	DIR_TMP = "/tmp/"
 
 	def __init__(self):
 		self.fetchRemoteBouquets()
@@ -245,13 +250,18 @@ class ChannelsImporter():
 			self.removeFiles(self.DIR_ENIGMA2, target)
 		print("[ChannelsImporter] processFiles Loading new channel list...")
 		for filename in allFiles:
-			self.copyFile(self.DIR_TMP + filename, self.DIR_ENIGMA2 + filename)
-			self.removeFiles(self.DIR_TMP, filename)
-		db = eDVBDB.getInstance()
-		db.reloadServicelist()
-		db.reloadBouquets()
+			try:
+				self.copyFile(self.DIR_TMP + filename, self.DIR_ENIGMA2 + filename)
+				self.removeFiles(self.DIR_TMP, filename)
+			except OSError as err:
+				print("%s" % err)
+		eDVBDB.getInstance().reloadBouquets()
+		eDVBDB.getInstance().reloadServicelist()
 		print("[ChannelsImporter] processFiles New channel list loaded.")
-		self.checkEPG()
+		AddNotificationWithID("ChannelsImportOK", MessageBox, _("Channels imported successfully from %s") % self.getRemoteAddress(), type=MessageBox.TYPE_INFO, timeout=5) if config.clientmode_notifications_ok.value and config.clientmode.enabled.value else None
+		self.checkEPG() if config.clientmode.enabled.value else None
+		if not config.clientmode.enabled.value and config.usage.remote_fallback_ok.value:
+			AddNotificationWithID("ChannelsImportOK", MessageBox, _("Channels imported successfully from %s") % self.getRemoteAddress(), type=MessageBox.TYPE_INFO, timeout=5)
 
 	def checkEPG(self):
 		print("[ChannelsImporter] checkEPG Force EPG save on remote receiver...")
@@ -264,22 +274,45 @@ class ChannelsImporter():
 			print("[ChannelsImporter] checkEPG Error fetching 'settings' file. Stopping script.")
 
 	def checkEPGCallback(self):
-		file = open(self.DIR_TMP + "settings")
-		lines = file.readlines()
-		file.close()
-		self.remoteEPGpath = self.DIR_ENIGMA2
-		self.remoteEPGfile = "epg"
-		self.remoteEPGfile = "%s.dat" % self.remoteEPGfile.replace('.dat', '')
-		print("[ChannelsImporter] Remote EPG filename. '%s%s'" % (self.remoteEPGpath, self.remoteEPGfile))
-		self.removeFiles(self.DIR_TMP, "settings")
-		result = self.FTPdownloadFile(self.remoteEPGpath, self.remoteEPGfile, "epg.dat")
-		if result:
-			self.importEPGCallback()
-		else:
-			print("[ChannelsImporter] checkEPGCallback Download epg.dat from remote receiver failed. Check file exists on remote receiver.")
+		try:
+			self.remoteEPGpath = self.DIR_ENIGMA2
+			self.remoteEPGfile = "epg"
+			self.remoteEPGfile = "%s.dat" % self.remoteEPGfile.replace('.dat', '')
+			print("[ChannelsImporter] Remote EPG filename. '%s%s'" % (self.remoteEPGpath, self.remoteEPGfile))
+			result = self.FTPdownloadFile(self.remoteEPGpath, self.remoteEPGfile, "epg.dat")
+			if result:
+				self.importEPGCallback()
+			else:
+				print("[ChannelsImporter] Remote EPG filename not path in internal flash")
+		except Exception as err:
+			print("[ChannelsImporter] cannot save EPG %s" % err)
+		try:
+			self.remoteEPGpath = self.DIR_HDD
+			self.remoteEPGfile = "epg"
+			self.remoteEPGfile = "%s.dat" % self.remoteEPGfile.replace('.dat', '')
+			print("[ChannelsImporter] Remote EPG filename. '%s%s'" % (self.remoteEPGpath, self.remoteEPGfile))
+			result = self.FTPdownloadFile(self.remoteEPGpath, self.remoteEPGfile, "epg.dat")
+			if result:
+				self.importEPGCallback()
+			else:
+				print("[ChannelsImporter] Remote EPG filename not path in HDD")
+		except Exception as err:
+			print("[ChannelsImporter] cannot save EPG %s" % err)
+		try:
+			self.remoteEPGpath = self.DIR_USB
+			self.remoteEPGfile = "epg"
+			self.remoteEPGfile = "%s.dat" % self.remoteEPGfile.replace('.dat', '')
+			print("[ChannelsImporter] Remote EPG filename. '%s%s'" % (self.remoteEPGpath, self.remoteEPGfile))
+			result = self.FTPdownloadFile(self.remoteEPGpath, self.remoteEPGfile, "epg.dat")
+			if result:
+				self.importEPGCallback()
+			else:
+				print("[ChannelsImporter] Remote EPG filename not path in USB")
+		except Exception as err:
+			print("[ChannelsImporter] cannot save EPG %s" % err)
 
 	def importEPGCallback(self):
-		print("[ChannelsImporter] importEPGCallback '%s%s' downloaded successfully. " % (self.remoteEPGpath, self.remoteEPGfile))
+		print("[ChannelsImporter] importEPGCallback '%s%s' downloaded successfully from server." % (self.remoteEPGpath, self.remoteEPGfile))
 		print("[ChannelsImporter] importEPGCallback Removing current EPG data...")
 		try:
 			os.remove(config.misc.epgcache_filename.value)
@@ -290,6 +323,7 @@ class ChannelsImporter():
 		from enigma import eEPGCache
 		epgcache = eEPGCache.getInstance()
 		epgcache.load()
+		AddNotificationWithID("ChannelsImportOK", MessageBox, _("EPG imported successfully from %s") % self.getRemoteAddress(), type=MessageBox.TYPE_INFO, timeout=5) if config.clientmode_notifications_ok.value else None
 		print("[ChannelsImporter] importEPGCallback New EPG data loaded...")
 		print("[ChannelsImporter] importEPGCallback Closing importer.")
 
@@ -350,14 +384,12 @@ class ChannelsImporter():
 		url = "http://%s/api/saveepg" % self.getRemoteAddress()
 		print('[ChannelsImporter] saveEPGonRemoteReceiver URL: %s' % url)
 		try:
-			req = urllib2.Request(url)
-			response = urllib2.urlopen(req)
+			req = Request(url)
+			response = urlopen(req)
 			print('[ChannelsImporter] saveEPGonRemoteReceiver Response: %d, %s' % (response.getcode(), response.read().strip().replace("\r", "").replace("\n", "")))
-		except urllib2.HTTPError as err:
-			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR:', err)
-		except urllib2.URLError as err:
-			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR:', err.reason[0])
-		except urllib2 as err:
-			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR:', err)
+		except HTTPError as err:
+			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR: %s', err)
+		except URLError as err:
+			print('[ChannelsImporter] saveEPGonRemoteReceiver ERROR: %s', err)
 		except:
 			print('[ChannelsImporter] saveEPGonRemoteReceiver undefined error')

@@ -56,7 +56,7 @@ class ClientModeScreen(ConfigListScreen, Screen):
 
 	def createSetup(self):
 		setup_list = []
-		setup_list.append(getConfigListEntry(_("Enable client mode"), config.clientmode.enabled, _('Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.')))
+		setup_list.append(getConfigListEntry(_("Enable client mode"), config.clientmode.enabled, _("Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n\nPaths to search EPG and Channels on server:\nInternal Flash, HDD, USB.\n\nServer must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server.")))
 		if config.clientmode.enabled.value:
 			setup_list.append(getConfigListEntry(_("Host receiver address type"), config.clientmode.serverAddressType, _('Select between entering an IP address or a domain.')))
 			if config.clientmode.serverAddressType.value == "ip":
@@ -67,8 +67,11 @@ class ClientModeScreen(ConfigListScreen, Screen):
 			setup_list.append(getConfigListEntry(_("Host receiver FTP username"), config.clientmode.serverFTPusername, _("Enter the FTP username of the host receiver (normally 'root').")))
 			setup_list.append(getConfigListEntry(_("Host receiver FTP password"), config.clientmode.serverFTPpassword, _("Enter the FTP password of the host receiver (normally just leave empty).")))
 			setup_list.append(getConfigListEntry(_("Host receiver FTP port"), config.clientmode.serverFTPPort, _("Enter the FTP port of the host receiver (normally '21').")))
-			setup_list.append(getConfigListEntry(_("FTP passive mode"), config.clientmode.passive, _("Should the FTP connection to the remote receiver be established in passive mode (normally 'no')?")))
-			setup_list.append(getConfigListEntry(_("Schedule EPG and channel list import"), config.clientmode.enableSchedule, _("Allows you to set a schedule to import the EPG and channels list. The EPG and channels list will always be imported on reboot or GUI restart.")))
+			setup_list.append(getConfigListEntry(_("FTP passive mode"), config.clientmode.passive, _("Set FTP connection to the remote receiver be established in passive mode (normally 'no').")))
+			setup_list.append(getConfigListEntry(_("Schedule EPG and channel list import"), config.clientmode.enableSchedule, _("Allows you to set a schedule to import the EPG and channels list.")))
+			setup_list.append(getConfigListEntry(_("Start import when restart enigma2"), config.clientmode_import_restart, _("Enabled will perform a channels and EPG import on every enigma2 restart.")))
+			if config.clientmode_import_restart.value:
+				setup_list.append(getConfigListEntry(_("Show import notification for channels and EPG"), config.clientmode_notifications_ok, _("Shows a notification when the channel and EPG import from server is completed successfully.")))
 			if config.clientmode.enableSchedule.value:
 				setup_list.append(getConfigListEntry(_("Repeat how often"), config.clientmode.scheduleRepeatInterval, _("Set the repeat interval of the schedule.")))
 				if config.clientmode.scheduleRepeatInterval.value in ("daily",):
@@ -85,8 +88,6 @@ class ClientModeScreen(ConfigListScreen, Screen):
 
 	def keyGo(self):
 		if config.clientmode.enabled.value and not self.checkFTPconnection():
-			mbox = self.session.open(MessageBox, _("Connection using the supplied FTP parameters failed. Please recheck the details and try again."), MessageBox.TYPE_ERROR)
-			mbox.setTitle(_("FTP connection failure"))
 			return
 		if self.initial_state != config.clientmode.enabled.value:
 			restartbox = self.session.openWithCallback(self.restartGUI, MessageBox, _("GUI needs a restart to switch modes\nDo you want to restart the GUI now?"), MessageBox.TYPE_YESNO)
@@ -113,7 +114,8 @@ class ClientModeScreen(ConfigListScreen, Screen):
 		elif self.initial_state != config.clientmode.enabled.value: # switching back to normal mode
 			# load nim config from config.clientmode.nimcache
 			import json
-			nim_config_list = json.loads(config.clientmode.nim_cache.value)
+			if config.clientmode.nim_cache.value:
+				nim_config_list = json.loads(config.clientmode.nim_cache.value)
 			config.clientmode.nim_cache.value = ""
 			config.Nims = ConfigSubList()
 			for x in nim_config_list:
@@ -129,6 +131,8 @@ class ClientModeScreen(ConfigListScreen, Screen):
 			config.clientmode.remote_fallback_enabled_cache.value = False
 			config.clientmode.remote_fallback_cache.value = ""
 		config.usage.save()
+		config.clientmode_import_restart.save()
+		config.clientmode_notifications_ok.save()
 		config.clientmode.save()
 		configfile.save()
 
@@ -153,7 +157,9 @@ class ClientModeScreen(ConfigListScreen, Screen):
 			print("[ClientMode] checkFTPconnection FTP connection failure:", result)
 			return False
 		except Exception as err:
-			print("[ClientMode] checkFTPconnection Error:", err)
+			print("[ClientMode] checkFTPconnection:", err)
+			mbox = self.session.open(MessageBox, _("Receiver with IP %s is turned off.") % self.getRemoteAddress(), MessageBox.TYPE_ERROR) if "[Errno 113] No route to host" in str(err) else self.session.open(MessageBox, _("Connection using supplied FTP parameters failed.\nCheck parameters of server."), MessageBox.TYPE_ERROR)
+			mbox.setTitle(_("FTP connection failure"))
 			return False
 
 	def restartGUI(self, answer):
