@@ -1299,14 +1299,7 @@ void eDVBCISlot::closeDevice()
 	close(fd);
 	fd = -1;
 	notifier->stop();
-#ifdef __sh__
-	mmi_active = false;
-	eDVBCI_UI::getInstance()->setAppName(getSlotID(), "");
-	eDVBCISession::deleteSessions(this);
-	eDVBCIInterfaces::getInstance()->ciRemoved(this);
-#else
 	data(eSocketNotifier::Priority);
-#endif
 	state = stateDisabled;
 }
 
