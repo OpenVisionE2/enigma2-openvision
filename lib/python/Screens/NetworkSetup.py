@@ -93,7 +93,6 @@ class NSCommon:
 		self.Console.ePopen('opkg install ' + pkgname + ' >/dev/null 2>&1', callback)
 
 	def checkNetworkState(self, str, retval, extra_args):
-		str = ensure_str(str)
 		if 'Collected errors' in str:
 			self.session.openWithCallback(self.close, MessageBox, _("Seems a background update check is in progress, please wait a few minutes and then try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 		elif not str:
@@ -120,7 +119,6 @@ class NSCommon:
 		self.Console.ePopen('opkg list_installed ' + self.service_name, self.RemovedataAvail)
 
 	def RemovedataAvail(self, str, retval, extra_args):
-		str = ensure_str(str)
 		if str:
 			if self.reboot_at_end:
 				restartbox = self.session.openWithCallback(self.RemovePackage, MessageBox, _('Your receiver will be restarted after the removal of the service\nDo you want to remove the service now ?'), MessageBox.TYPE_YESNO)

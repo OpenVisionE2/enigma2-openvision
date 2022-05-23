@@ -154,7 +154,7 @@ class SoftwareTools(PackageInfoHandler):
 			if self.NetworkConnectionAvailable == True:
 				if not self.UpdateConsole:
 					self.UpdateConsole = Console()
-				cmd = self.opkg.opkg + " install enigma2-meta enigma2-plugins-meta enigma2-skins-meta"
+				cmd = self.opkg.opkg + " install enigma2-meta enigma2-plugins-meta"
 				self.UpdateConsole.ePopen(cmd, self.InstallMetaPackageCB, callback)
 			else:
 				self.InstallMetaPackageCB(True)
