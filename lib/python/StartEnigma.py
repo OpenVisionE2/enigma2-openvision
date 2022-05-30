@@ -323,7 +323,7 @@ def runScreen():
 	from Screens.SleepTimerEdit import isNextWakeupTime
 	powerTimerWakeupAuto = False
 	recordTimerWakeupAuto = False
-	nowTime = time()  # Get current time.
+	nowTime = int(time())  # Get current time.
 	powerTimerList = sorted(
 		[x for x in ((session.nav.RecordTimer.getNextRecordingTime(), 0, session.nav.RecordTimer.isNextRecordAfterEventActionAuto()),
 					(session.nav.RecordTimer.getNextZapTime(isWakeup=True), 1),

@@ -22,7 +22,7 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 		self["description"] = Label("")
 
 		self.list = []
-		ConfigListScreen.__init__(self, self.list, session=session)
+		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry)
 		self.createSetup()
 
 		self["setupActions"] = ActionMap(["SetupActions", "ColorActions"],
@@ -107,7 +107,7 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 					_("Specify the end time to ignore the shutdown timer when the receiver is in standby mode")))
 		self.list.append(getConfigListEntry(_("Enable wakeup timer"),
 			config.usage.wakeup_enabled,
-			_("Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'.")))
+			_("When it is enabled, and you want to go to standby mode after wakeup timer, please set \"Startup to Standby\" option in \"Customize\" setup to \"No, except Wakeup timer\".")))
 		if config.usage.wakeup_enabled.value != "no":
 			for i in range(7):
 				self.list.append(getConfigListEntry([_("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"), _("Saturday"), _("Sunday")][i],
@@ -117,6 +117,16 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 						config.usage.wakeup_time[i]))
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
+
+	def changedEntry(self):
+		self.createSetup()
+
+	def getCurrentEntry(self):
+		self.updateDescription()
+		return ConfigListScreen.getCurrentEntry(self)
+
+	def updateDescription(self):
+		self["description"].setText(self.getCurrentDescription())
 
 	def ok(self):
 		if self["config"].isChanged():
