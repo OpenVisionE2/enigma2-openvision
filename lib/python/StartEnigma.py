@@ -567,7 +567,7 @@ from Screens import InfoBar
 from Screens.SimpleSummary import SimpleSummary
 
 profile("Bouquets")
-if config.clientmode.enabled.value == False:
+if not config.clientmode.enabled.value or not config.clientmode_import_restart.value:
 	enigma.eDVBDB.getInstance().reloadBouquets()
 
 profile("ParentalControl")
