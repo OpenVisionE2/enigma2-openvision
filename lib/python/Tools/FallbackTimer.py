@@ -151,11 +151,12 @@ class FallbackTimerList():
 			else:
 				self.fallback(root[1].text)
 		except:
-				self.fallback("Unexpected Error")
+			self.fallback("Unexpected Error")
 
 	def fallback(self, message=None):
+		from Tools.Notifications import AddNotificationWithID
 		if message:
-			self.parent.session.openWithCallback(self.fallbackNOK, MessageBox, _("Error while retreiving fallback timer information\n%s") % message, MessageBox.TYPE_ERROR)
+			AddNotificationWithID("fallbackFunctionNOK", MessageBox, _("Error while retreiving fallback timer information\n%s") % message, MessageBox.TYPE_ERROR, timeout=10)
 		else:
 			self.fallbackFunction()
 
