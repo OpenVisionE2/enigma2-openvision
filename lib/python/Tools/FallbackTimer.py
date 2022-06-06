@@ -25,7 +25,7 @@ class FallbackTimerList():
 		self.fallbackFunctionNOK = fallbackFunctionNOK or fallbackFunction
 		self.parent = parent
 		self.headers = {}
-		if config.usage.remote_fallback_enabled.value and config.usage.remote_fallback_external_timer.value and config.usage.remote_fallback.value:
+		if config.usage.remote_fallback_enabled.value and config.usage.remote_fallback_external_timer.value and config.usage.remote_fallback.value or config.ipboxclient.remotetimers.value:
 			self.url = config.usage.remote_fallback.value.rsplit(":", 1)[0]
 			if config.usage.remote_fallback_openwebif_customize.value:
 				self.url = "%s:%s" % (self.url, config.usage.remote_fallback_openwebif_port.value)
