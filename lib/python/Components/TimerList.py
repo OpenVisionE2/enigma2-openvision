@@ -37,7 +37,7 @@ class TimerList(GUIComponent):
 		if timer.repeated:
 			days = (_("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun"))
 			repeatedtext = []
-			flags = timer.repeated
+			flags = int(timer.repeated)
 			for x in (0, 1, 2, 3, 4, 5, 6):
 				if flags & 1 == 1:
 					repeatedtext.append(days[x])
