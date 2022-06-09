@@ -196,7 +196,10 @@ class Navigation:
 			else:
 				playref = ref
 			if self.pnav:
-				self.pnav.stopService()
+				if not BoxInfo.getItem("FCC"):
+					self.pnav.stopService()
+				else:
+					self.skipServiceReferenceReset = True
 				self.currentlyPlayingServiceReference = playref
 				self.currentlyPlayingServiceOrGroup = ref
 				if startPlayingServiceOrGroup and startPlayingServiceOrGroup.flags & eServiceReference.isGroup and not ref.flags & eServiceReference.isGroup:
@@ -231,7 +234,6 @@ class Navigation:
 								if config.usage.frontend_priority_dvbs.value != config.usage.frontend_priority.value:
 									setPreferredTuner(int(config.usage.frontend_priority_dvbs.value))
 									setPriorityFrontend = True
-				self.skipServiceReferenceReset = True
 				if self.pnav.playService(playref):
 					print("[Navigation] Failed to start: ", playref.toString())
 					self.currentlyPlayingServiceReference = None
