@@ -35,9 +35,9 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 
 	def createSetup(self):
 		self.list = []
-		self.list.append(getConfigListEntry(_("Startup to Standby"),
+		self.list.append(getConfigListEntry(_("Startup to standby from deepstandby or from turn off"),
 			config.usage.startup_to_standby,
-			_("Startup the set top box in standby")))
+			_("Startup the set top box in standby from deepstandby or from turn off.")))
 		if InfoBar.instance and InfoBar.instance.sleepTimer.isActive():
 			statusSleeptimerText = _("(activated +%d min)") % InfoBar.instance.sleepTimerState()
 		else:
