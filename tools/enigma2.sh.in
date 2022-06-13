@@ -27,7 +27,7 @@ BRANDCHECK=`sed -En 's|^brand=(.+)$|\1|p' /usr/lib/enigma.info`
 MODELCHECK=`sed -En 's|^model=(.+)$|\1|p' /usr/lib/enigma.info`
 PLATFORMCHECK=`sed -En 's|^platform=(.+)$|\1|p' /usr/lib/enigma.info`
 SOCFAMILY=`sed -En 's|^socfamily=(....).*$|\1|p' /usr/lib/enigma.info`
-PYVER=`cat /usr/lib/enigma.info | grep python= | cut -d= -f2`
+PYVER=`sed -En 's|^python=(.+)$|\1|p' /usr/lib/enigma.info`
 
 if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
 	export media_arm_audio_decoder="ape,flac,dts,ac3,eac3,wma,wmapro,mp3,aac,vorbis,raac,cook,amr,pcm,adpcm"
