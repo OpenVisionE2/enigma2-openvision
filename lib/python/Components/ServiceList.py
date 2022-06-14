@@ -292,7 +292,6 @@ class ServiceList(GUIComponent):
 	GUI_WIDGET = eListbox
 
 	def postWidgetCreate(self, instance):
-		instance.setWrapAround(True)
 		instance.setContent(self.l)
 		instance.selectionChanged.get().append(self.selectionChanged)
 		self.setMode(self.mode)

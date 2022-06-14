@@ -19,8 +19,8 @@ class ConfigList(GUIComponent):
 		self.l = eListboxPythonConfigContent()
 		seperation = parameters.get("ConfigListSeperator", 200)
 		self.l.setSeperation(seperation)
-		height, space = parameters.get("ConfigListSlider", (17, 0))
-		self.l.setSlider(height, space)
+		height, borderWidth = parameters.get("ConfigListSlider", (17, 0))
+		self.l.setSlider(height, borderWidth)
 		self.timer = eTimer()
 		self.list = list
 		self.onSelectionChanged = []
@@ -100,7 +100,6 @@ class ConfigList(GUIComponent):
 	def postWidgetCreate(self, instance):
 		instance.selectionChanged.get().append(self.selectionChanged)
 		instance.setContent(self.l)
-		self.instance.setWrapAround(True)
 
 	def preWidgetRemove(self, instance):
 		if isinstance(self.current, tuple) and len(self.current) >= 2:
