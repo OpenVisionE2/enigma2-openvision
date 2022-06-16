@@ -36,7 +36,7 @@ def write(data):
 	try:
 		if logfile.tell() > size:
 			# Do a sort of 16k round robin
-			logfile.reset()
+			logfile.seek(0)
 		logfile.write(data)
 	finally:
 		mutex.release()
@@ -49,7 +49,7 @@ def getvalue():
 	try:
 		pos = logfile.tell()
 		head = logfile.read()
-		logfile.reset()
+		logfile.seek(0)
 		tail = logfile.read(pos)
 	finally:
 		mutex.release()
