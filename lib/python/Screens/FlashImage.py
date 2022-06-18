@@ -456,10 +456,11 @@ class MultiBootSelection(SelectImage):
 				self.session.open(TryQuitMainloop, 2)
 			else:
 				self.close(value)
-		except FileNotFoundError as err:
-			print("[FlashImage]: %s" % err)
-			from Screens.Standby import TryQuitMainloop
-			self.session.open(TryQuitMainloop, 3)
+		except Exception as err:
+			import errno
+			if err.errno == errno.ENOENT:
+				from Screens.Standby import TryQuitMainloop
+				self.session.open(TryQuitMainloop, 3)
 
 	def getImagesList(self):
 		list = []
