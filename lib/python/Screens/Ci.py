@@ -445,14 +445,14 @@ class CiSelection(Screen):
 		self.state[slot] = state
 		if self.slot > 1:
 			self.list.append(("**************************", ConfigNothing(), 3, slot))
-		self.addToList(getConfigListEntry(_("CI %s enabled" % slot), config.ci[slot].enabled), -1, slot)
-		if not self.state[slot] == 3:  # module disabled by the user
-			self.list.append((_("Reset"), ConfigNothing(), 0, slot))
-			self.list.append((_("Init"), ConfigNothing(), 1, slot))
+		self.list.append((_("CI enabled"), config.ci[slot].enabled, -1, slot))
+		if self.state[slot] in (0, 3):
+			self.list.append((self.state[slot] == 0 and _("no module found") or _("module disabled"), ConfigNothing(), 2, slot))
+			return
+		self.list.append((_("Reset"), ConfigNothing(), 0, slot))
+		self.list.append((_("Init"), ConfigNothing(), 1, slot))
 
-		if self.state[slot] == 0: #no module
-			self.list.append((_("no module found"), ConfigNothing(), 2, slot))
-		elif self.state[slot] == 1: #module in init
+		if self.state[slot] == 1: #module in init
 			self.list.append((_("init module"), ConfigNothing(), 2, slot))
 		elif self.state[slot] == 2: #module ready
 			appname = eDVBCI_UI.getInstance().getAppName(slot)
@@ -474,26 +474,13 @@ class CiSelection(Screen):
 			self.list.append(getConfigListEntry(_("CI Operation Mode"), config.cimisc.civersion, _("Your hardware can detect CI mode itself or works only in legacy mode.")))
 
 	def updateState(self, slot):
-		state = eDVBCI_UI.getInstance().getState(slot)
-		self.state[slot] = state
-
-		slotidx = 0
-		while len(self.list[slotidx]) < 3 or self.list[slotidx][3] != slot:
-			slotidx += 1
-
-		if slot > 0:
-			slotidx += 1 #do not change separator
-		slotidx += 1 #do not change Reset
-		slotidx += 1 #do not change Init
-
-		if state == 0: #no module
-			self.list[slotidx] = (_("no module found"), ConfigNothing(), 2, slot)
-		elif state == 1: #module in init
-			self.list[slotidx] = (_("init module"), ConfigNothing(), 2, slot)
-		elif state == 2: #module ready
-			appname = eDVBCI_UI.getInstance().getAppName(slot)
-			self.list[slotidx] = (appname, ConfigNothing(), 2, slot)
-
+		self.list = []
+		self.slot = 0
+		for module in range(BoxInfo.getItem("CommonInterface")):
+			state = eDVBCI_UI.getInstance().getState(module)
+			if state != -1:
+				self.slot += 1
+				self.appendEntries(module, state)
 		lst = self["entries"]
 		lst.list = self.list
 		lst.l.setList(self.list)
