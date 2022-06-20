@@ -23,7 +23,7 @@ import Screens.InfoBar
 from Tools import Notifications, ASCIItranslit, Trashcan
 from Tools.Alternatives import ResolveCiAlternative
 from Tools.CIHelper import cihelper
-from Tools.Directories import SCOPE_CONFIG, fileReadXML, getRecordingFilename, resolveFilename
+from Tools.Directories import SCOPE_CONFIG, fileReadXML, getRecordingFilename, resolveFilename, isPluginInstalled
 from Tools.Notifications import AddNotification, AddNotificationWithCallback, AddPopup
 from Tools.XMLTools import stringToXML
 
@@ -311,9 +311,15 @@ class RecordTimer(Timer):
 		return entry
 
 	def doActivate(self, w):
+		# when activating a timer for servicetype 4097,
+		# and ServiceApp has player enabled, then skip recording.
+		if "4097:" in w.service_ref.ref.toString() and isPluginInstalled("ServiceApp") and config.plugins.serviceapp.servicemp3.replace.value:
+			print("[RecordTimer][doActivate] found ServiceApp & player enabled - disable this timer recording")
+			w.state = RecordTimerEntry.StateEnded
+			AddPopup(_("Recording IPTV with ServiceApp enabled, timer ended\nDisable ServiceApp to record IPTV"), type=MessageBox.TYPE_ERROR, timeout=0, id="TimerRecordingFailed")
 		# when activating a timer which has already passed,
 		# simply abort the timer. don't run trough all the stages.
-		if w.shouldSkip():
+		elif w.shouldSkip():
 			w.state = RecordTimerEntry.StateEnded
 		else:
 			# when active returns true, this means "accepted".

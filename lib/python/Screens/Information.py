@@ -32,7 +32,7 @@ from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen, ScreenSummary
-from Tools.Directories import SCOPE_GUISKIN, fileReadLine, fileReadLines, fileWriteLine, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, fileReadLine, fileReadLines, fileWriteLine, resolveFilename, isPluginInstalled
 from Tools.Geolocation import geolocation
 from Tools.LoadPixmap import LoadPixmap
 from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
@@ -615,7 +615,7 @@ class ImageInformation(InformationBase):
 		enigmaVersion = about.getEnigmaVersionString()
 		enigmaVersion = enigmaVersion.rsplit("-", enigmaVersion.count("-") - 2)
 		if len(enigmaVersion) == 3:
-		 	enigmaVersion = "%s (%s-%s)" % (enigmaVersion[0], enigmaVersion[2], enigmaVersion[1].capitalize())
+			enigmaVersion = "%s (%s-%s)" % (enigmaVersion[0], enigmaVersion[2], enigmaVersion[1].capitalize())
 		else:
 			enigmaVersion = "%s (%s)" % (enigmaVersion[0], enigmaVersion[1].capitalize())
 		info.append(formatLine("P1", _("Enigma2 version"), enigmaVersion))
@@ -624,6 +624,8 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Last update"), "%s-%s-%s" % (compileDate[:4], compileDate[4:6], compileDate[6:])))
 		info.append(formatLine("P1", _("Enigma2 (re)starts"), config.misc.startCounter.value))
 		info.append(formatLine("P1", _("Enigma2 debug level"), eGetEnigmaDebugLvl()))
+		player = "ServiceApp" if isPluginInstalled("ServiceApp") and config.plugins.serviceapp.servicemp3.replace.value else "Default"
+		info.append(formatLine("P1", _("Enigma2 player"), "%s") % player)
 		mediaService = BoxInfo.getItem("mediaservice")
 		if mediaService:
 			info.append(formatLine("P1", _("Media service"), mediaService.replace("enigma2-plugin-systemplugins-", "")))
