@@ -285,32 +285,6 @@ def getVisionModule():
 	return _("Unknown")
 
 
-def getDriverInstalledDate():
-	filenames = glob("/var/lib/opkg/info/*dvb-modules*.control")
-	if filenames:
-		lines = fileReadLines(filenames[0], source=MODULE_NAME)
-		if lines:
-			for line in lines:
-				if line[0:8] == "Version:":
-					driver = line.split("-")[1]
-					return "%s-%s-%s" % (driver[:4], driver[4:6], driver[6:])
-	filenames = glob("/var/lib/opkg/info/*dvb-proxy*.control")
-	if filenames:
-		lines = fileReadLines(filenames[0], source=MODULE_NAME)
-		if lines:
-			for line in lines:
-				if line[0:8] == "Version:":
-					return line.split("-")[1]
-	filenames = glob("/var/lib/opkg/info/*platform-util*.control")
-	if filenames:
-		lines = fileReadLines(filenames[0], source=MODULE_NAME)
-		if lines:
-			for line in lines:
-				if line[0:8] == "Version:":
-					return line.split("-")[1]
-	return _("Unknown")
-
-
 def getPythonVersionString():
 	return "%s.%s.%s" % (version_info.major, version_info.minor, version_info.micro)
 
