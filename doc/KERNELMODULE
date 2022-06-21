@@ -152,6 +152,7 @@ Here is the list of variables currently supported:
 	"displaydistro" or "/proc/enigma/displaydistro" replaces "getDisplayDistro()"
 	"oe" or "/proc/enigma/oe" replaces "getOEVersion()"
 	"kernel" or "/proc/enigma/kernel" replaces "getKernelVersion()"
+	"driverdate" or "/proc/enigma/driverdate" replaces "getDriverDate()"
 	"python" or "/proc/enigma/python"
 	"mediaservice" or "/proc/enigma/mediaservice" replaces "getE2Service()"
 	"multilib" or "/proc/enigma/multilib" replaces "getHaveMultiLib()"
@@ -367,6 +368,16 @@ kernel:
 		are compatible.
 
 	Example: 4.4.35
+
+driverdate:
+
+	BoxInfo.getItem("driverdate") (/proc/enigma/driverdate)
+
+		This variable defines the driver date.
+
+		Just to make About/Information screen faster.
+
+	Example: 1.1.2022
 
 python:
 
