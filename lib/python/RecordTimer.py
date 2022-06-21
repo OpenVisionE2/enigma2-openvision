@@ -313,10 +313,10 @@ class RecordTimer(Timer):
 	def doActivate(self, w):
 		# when activating a timer for servicetype 4097,
 		# and ServiceApp has player enabled, then skip recording.
-		if "4097:" in w.service_ref.ref.toString() and isPluginInstalled("ServiceApp") and config.plugins.serviceapp.servicemp3.replace.value:
-			print("[RecordTimer][doActivate] found ServiceApp & player enabled - disable this timer recording")
+		if "4097:" in w.service_ref.ref.toString() and isPluginInstalled("ServiceApp") and config.plugins.serviceapp.servicemp3.replace.value or "4097:" in w.service_ref.ref.toString() and BoxInfo.getItem("HiSilicon"):
+			print("[RecordTimer][doActivate] ServiceApp enabled or the set top box is SoC HiSilicon - disable this timer recording")
 			w.state = RecordTimerEntry.StateEnded
-			AddPopup(_("Recording IPTV with ServiceApp enabled, timer ended\nDisable ServiceApp to record IPTV"), type=MessageBox.TYPE_ERROR, timeout=0, id="TimerRecordingFailed")
+			AddPopup(_("Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\nTimer ended"), type=MessageBox.TYPE_ERROR, timeout=0, id="TimerRecordingFailed")
 		# when activating a timer which has already passed,
 		# simply abort the timer. don't run trough all the stages.
 		elif w.shouldSkip():
