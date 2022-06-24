@@ -50,7 +50,7 @@ def parseEvent(event, description=True):
 		name = event.getEventName()
 		description = event.getShortDescription()
 		if description == "":
-			description = event.getExtendedDescription()
+			description = event.getShortDescription().replace("\n", " ")
 	else:
 		name = ""
 		description = ""
