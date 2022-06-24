@@ -54,9 +54,7 @@ class Navigation:
 
 		self.__isRestartUI = config.misc.RestartUI.value
 		startup_to_standby = config.usage.startup_to_standby.value
-		from Screens.SleepTimerEdit import isNextWakeupTime
-		if isNextWakeupTime():
-			wakeup_time_type = config.usage.wakeup_enabled.value
+		wakeup_time_type = config.misc.prev_wakeup_time_type.value
 		wakeup_timer_enabled = False
 		if config.usage.remote_fallback_import_restart.value and not config.clientmode.enabled.value:
 			ImportChannels()
@@ -64,7 +62,7 @@ class Navigation:
 			import Components.ChannelsImporter
 			Components.ChannelsImporter.autostart()
 		if self.__wasTimerWakeup:
-			wakeup_timer_enabled = wakeup_time_type == 3
+			wakeup_timer_enabled = wakeup_time_type == 3 and config.misc.prev_wakeup_time.value
 			if not wakeup_timer_enabled:
 				RecordTimer.RecordTimerEntry.setWasInDeepStandby()
 		if config.misc.RestartUI.value:
@@ -74,10 +72,12 @@ class Navigation:
 		else:
 			if config.usage.remote_fallback_import.value and not config.usage.remote_fallback_import_restart.value:
 				ImportChannels()
-			if startup_to_standby == "yes" or self.__wasTimerWakeup and (wakeup_time_type == 0 or wakeup_time_type == 1 or (config.usage.wakeup_enabled.value and startup_to_standby == "except")):
+			if startup_to_standby == "yes" or self.__wasTimerWakeup and config.misc.prev_wakeup_time.value and (wakeup_time_type == 0 or wakeup_time_type == 1 or (wakeup_time_type == 3 and startup_to_standby == "except")):
 				if not Screens.Standby.inTryQuitMainloop:
 					AddNotification(Screens.Standby.Standby, wakeup_timer_enabled and 1 or True)
-		if config.usage.wakeup_enabled.value:
+		if config.misc.prev_wakeup_time.value:
+			config.misc.prev_wakeup_time.value = 0
+			config.misc.prev_wakeup_time.save()
 			configfile.save()
 
 	def _processTimerWakeup(self):

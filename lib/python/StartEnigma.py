@@ -352,6 +352,12 @@ def runScreen():
 		if not config.ntp.timesync.value == "dvb":
 			setRTCtime(nowTime)
 		setFPWakeuptime(wakeupTime)
+		config.misc.prev_wakeup_time.value = startSleepTime[0]
+		config.misc.prev_wakeup_time_type.value = int(startSleepTime[1])
+		config.misc.prev_wakeup_time_type.save()
+	else:
+		config.misc.prev_wakeup_time.value = 0
+	config.misc.prev_wakeup_time.save()
 	if powerTimerList and powerTimerList[0][1] == 3:
 		startTimePowerList = powerTimerList[0]
 		if (startTimePowerList[0] - nowTime) < 60:  # No time to switch box back on.
@@ -549,6 +555,8 @@ config.misc.load_unlinked_userbouquets = ConfigYesNo(default=True)
 config.misc.load_unlinked_userbouquets.addNotifier(setLoadUnlinkedUserbouquets)
 config.misc.locale = ConfigText(default="en_US")
 # config.misc.locale.addNotifier(localeNotifier)  # This should not be enabled while config.osd.language is in use!
+config.misc.prev_wakeup_time = ConfigInteger(default=0)
+config.misc.prev_wakeup_time_type = ConfigInteger(default=0)  # This is only valid when wakeup_time is not 0.  0 = RecordTimer, 1 = ZapTimer, 2 = Plugins, 3 = WakeupTimer.
 config.misc.isNextRecordTimerAfterEventActionAuto = ConfigYesNo(default=False)  # Auto action after event in RecordTimer.
 config.misc.isNextPowerTimerAfterEventActionAuto = ConfigYesNo(default=False)  # Auto action after event in PowerTimer.
 config.misc.RestartUI = ConfigYesNo(default=False)  # Detect user interface restart.
