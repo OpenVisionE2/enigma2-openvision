@@ -1161,7 +1161,7 @@ def InitUsageConfig():
 	choicelist = [("newline", _("new line")), ("2newlines", _("2 new lines")), ("space", _("space")), ("dot", " . "), ("dash", " - "), ("asterisk", " * "), ("nothing", _("nothing"))]
 	config.epg.fulldescription_separator = ConfigSelection(default="nothing", choices=choicelist)
 	choicelist = [("no", _("no")), ("nothing", _("omit")), ("space", _("space")), ("dot", ". "), ("dash", " - "), ("asterisk", " * "), ("hashtag", " # ")]
-	config.epg.replace_newlines = ConfigSelection(default="no", choices=choicelist)
+	config.epg.replace_newlines = ConfigSelection(default="space", choices=choicelist)
 
 	config.epg.cacheloadsched = ConfigYesNo(default=False)
 	config.epg.cachesavesched = ConfigYesNo(default=False)
