@@ -1706,6 +1706,7 @@ def InitUsageConfig():
 	config.streaming.descramble_client = ConfigYesNo(default=False)
 	config.streaming.stream_eit = ConfigYesNo(default=True)
 	config.streaming.stream_ait = ConfigYesNo(default=True)
+	config.streaming.stream_pid = ConfigYesNo(default=False)
 	config.streaming.authentication = ConfigYesNo(default=False)
 
 	config.mediaplayer = ConfigSubsection()
