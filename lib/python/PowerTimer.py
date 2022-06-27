@@ -2,7 +2,7 @@ from bisect import insort
 from os import fsync, remove, rename
 from os.path import exists
 from sys import maxsize
-from time import ctime, time
+from time import ctime, localtime, mktime, time
 
 from enigma import eActionMap, quitMainloop
 
@@ -213,7 +213,13 @@ class PowerTimer(Timer):
 		return -1
 
 	def getNextPowerManagerTimeOld(self):
-		now = time()
+		now = localtime()
+		start_wake_up = int(time())
+		current_week_day = int(now.tm_wday)
+		if config.usage.wakeup_enabled.value:  # Start wakeup from deepstandby with SleepTimerEdit and ZapTimer or RecordTimer actived.
+			wakeup_sleep_timer = int(mktime((now.tm_year, now.tm_mon, now.tm_mday, config.usage.wakeup_time[current_week_day].value[0], config.usage.wakeup_time[current_week_day].value[1], 0, now.tm_wday, now.tm_yday, now.tm_isdst)))
+			if wakeup_sleep_timer > time():
+				return start_wake_up
 		for timer in self.timer_list:
 			if timer.timerType != TIMERTYPE.AUTOSTANDBY and timer.timerType != TIMERTYPE.AUTODEEPSTANDBY:
 				next_act = timer.getNextWakeup()
@@ -408,15 +414,15 @@ class PowerTimerEntry(TimerEntry, object):
 				if ((not Screens.Standby.inStandby and NavigationInstance.instance.getCurrentlyPlayingServiceReference() and
 					("0:0:0:0:0:0:0:0:0" in NavigationInstance.instance.getCurrentlyPlayingServiceReference().toString() or
 					 "4097:" in NavigationInstance.instance.getCurrentlyPlayingServiceReference().toString()
-				     ) or
-				     (int(ClientsStreaming("NUMBER").getText()) > 0)
-				    ) or
-				    (NavigationInstance.instance.RecordTimer.isRecording() or
-				     abs(NavigationInstance.instance.RecordTimer.getNextRecordingTime() - time()) <= 900 or
-				     abs(NavigationInstance.instance.RecordTimer.getNextZapTime() - time()) <= 900) or
-				     (self.autosleepinstandbyonly == "yes" and not Screens.Standby.inStandby) or
-				     (self.autosleepinstandbyonly == "yes" and Screens.Standby.inStandby and internalHDDNotSleeping()
-				    )
+					 ) or
+					 (int(ClientsStreaming("NUMBER").getText()) > 0)
+					) or
+					(NavigationInstance.instance.RecordTimer.isRecording() or
+					 abs(NavigationInstance.instance.RecordTimer.getNextRecordingTime() - time()) <= 900 or
+					 abs(NavigationInstance.instance.RecordTimer.getNextZapTime() - time()) <= 900) or
+					 (self.autosleepinstandbyonly == "yes" and not Screens.Standby.inStandby) or
+					 (self.autosleepinstandbyonly == "yes" and Screens.Standby.inStandby and internalHDDNotSleeping()
+					)
 				   ):
 					self.do_backoff()  # Retry.
 					return False
