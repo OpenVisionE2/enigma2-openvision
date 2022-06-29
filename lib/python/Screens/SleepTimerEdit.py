@@ -142,7 +142,7 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 			else:
 				sleepTimer = int(sleepTimer)
 			if sleepTimer or not self.getCurrentEntry().endswith(_("(not activated)")):
-				InfoBar.instance.setSleepTimer(sleepTimer)
+				InfoBar.instance and InfoBar.instance.setSleepTimer(sleepTimer)
 			self.close(True)
 		self.close()
 
@@ -169,8 +169,8 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 		remaining = 0
 		ref = self.session.nav.getCurrentlyPlayingServiceReference()
 		if ref:
-			path = ref.getPath()
-			if path: # Movie
+			refstr = ref.toString()
+			if "%3a//" not in refstr and refstr.rsplit(":", 1)[1].startswith("/"): # Movie
 				service = self.session.nav.getCurrentService()
 				seek = service and service.seek()
 				if seek:
