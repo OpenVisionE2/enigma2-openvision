@@ -216,9 +216,10 @@ class PowerTimer(Timer):
 		now = localtime()
 		start_wake_up = int(time())
 		current_week_day = int(now.tm_wday)
-		if config.usage.wakeup_enabled.value:  # Start wakeup from deepstandby with SleepTimerEdit and ZapTimer or RecordTimer actived.
+		if config.usage.wakeup_enabled.value != "standby":  # Start wakeup from deepstandby with SleepTimerEdit and ZapTimer or RecordTimer actived.
 			wakeup_sleep_timer = int(mktime((now.tm_year, now.tm_mon, now.tm_mday, config.usage.wakeup_time[current_week_day].value[0], config.usage.wakeup_time[current_week_day].value[1], 0, now.tm_wday, now.tm_yday, now.tm_isdst)))
 			if wakeup_sleep_timer > time():
+				wakeup_sleep_timer = time()  # Keep shutdown mode if value is standby_to_shutdown timer from SleepTimerEdit.
 				return start_wake_up
 		for timer in self.timer_list:
 			if timer.timerType != TIMERTYPE.AUTOSTANDBY and timer.timerType != TIMERTYPE.AUTODEEPSTANDBY:
