@@ -35,7 +35,7 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 
 	def createSetup(self):
 		self.list = []
-		self.list.append(getConfigListEntry(_("Startup to standby from deepstandby or from power off"),
+		self.list.append(getConfigListEntry(_("Startup to standby from deepstandby or power off"),
 			config.usage.startup_to_standby,
 			_("Startup the set top box in standby from deepstandby or from turn off.")))
 		if InfoBar.instance and InfoBar.instance.sleepTimer.isActive():
@@ -110,7 +110,7 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 					_("Specify the end time to ignore the shutdown timer when the receiver is in standby mode")))
 		self.list.append(getConfigListEntry(_("Enable wakeup timer"),
 			config.usage.wakeup_enabled,
-			_("When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or from power off\" to \"No, except Wakeup timer\".")))
+			_("When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\".")))
 		if config.usage.wakeup_enabled.value != "no":
 			for i in range(7):
 				self.list.append(getConfigListEntry([_("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"), _("Saturday"), _("Sunday")][i],

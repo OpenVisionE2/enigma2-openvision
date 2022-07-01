@@ -212,15 +212,16 @@ class PowerTimer(Timer):
 			return timer.begin
 		return -1
 
-	def getNextPowerManagerTimeOld(self):
-		now = localtime()
-		start_wake_up = int(time())
+	def getNextWakeupSleepTimer(self): # Start wakeup from deepstandby with SleepTimerEdit and ZapTimer or RecordTimer actived.
+		now = localtime(time())
 		current_week_day = int(now.tm_wday)
-		if config.usage.wakeup_enabled.value != "standby":  # Start wakeup from deepstandby with SleepTimerEdit and ZapTimer or RecordTimer actived.
-			wakeup_sleep_timer = int(mktime((now.tm_year, now.tm_mon, now.tm_mday, config.usage.wakeup_time[current_week_day].value[0], config.usage.wakeup_time[current_week_day].value[1], 0, now.tm_wday, now.tm_yday, now.tm_isdst)))
-			if wakeup_sleep_timer > time():
-				wakeup_sleep_timer = time()  # Keep shutdown mode if value is standby_to_shutdown timer from SleepTimerEdit.
-				return start_wake_up
+		return int(mktime((now.tm_year, now.tm_mon, now.tm_mday, config.usage.wakeup_time[current_week_day].value[0], config.usage.wakeup_time[current_week_day].value[1], 0, now.tm_wday, now.tm_yday, now.tm_isdst))) # Timer config.usage.wakeup_time.value
+
+	def getNextPowerManagerTimeOld(self):
+		now = time()
+		if config.usage.wakeup_enabled.value != "standby":
+			if self.getNextWakeupSleepTimer() > time():
+				return self.getNextWakeupSleepTimer() # SleepTimerEdit wakeup from deepstandby timer.
 		for timer in self.timer_list:
 			if timer.timerType != TIMERTYPE.AUTOSTANDBY and timer.timerType != TIMERTYPE.AUTODEEPSTANDBY:
 				next_act = timer.getNextWakeup()
