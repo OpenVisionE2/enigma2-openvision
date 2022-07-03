@@ -41,16 +41,10 @@ class PowerTimerEditList(Screen):
 		self.key_yellow_choice = self.EMPTY
 		self.key_blue_choice = self.EMPTY
 
-		if self.key_red_choice == StaticText:
-			self["key_red"] = StaticText("")
-			self["key_green"] = StaticText(_("Add"))
-			self["key_yellow"] = StaticText("")
-			self["key_blue"] = StaticText("")
-		else:
-			self["key_red"] = Button("")
-			self["key_green"] = Button(_("Add"))
-			self["key_yellow"] = Button("")
-			self["key_blue"] = Button("")
+		self["key_red"] = StaticText("")
+		self["key_green"] = StaticText(_("Add"))
+		self["key_yellow"] = StaticText("")
+		self["key_blue"] = StaticText("")
 
 		self["description"] = Label()
 

@@ -29,7 +29,6 @@ from Tools.FallbackTimer import FallbackTimerDirs
 
 
 class TimerEntry(ConfigListScreen, Screen):
-	EMPTY = 0
 
 	def __init__(self, session, timer):
 		Screen.__init__(self, session)
@@ -41,17 +40,10 @@ class TimerEntry(ConfigListScreen, Screen):
 		self.timer.dirname_prev = self.timer.dirname
 		self.entryDate = None
 		self.entryService = None
-		self.key_red_choice = self.EMPTY
-		if self.key_red_choice != Pixmap:
-			self["key_red"] = StaticText(_("Cancel"))
-			self["key_green"] = StaticText(_("Save"))
-			self["key_yellow"] = StaticText(_("Timer type"))
-			self["key_blue"] = StaticText("")
-		if self.key_red_choice != StaticText:
-			self["oktext"] = Label(_("OK"))
-			self["canceltext"] = Label(_("Cancel"))
-			self["ok"] = Pixmap()
-			self["cancel"] = Pixmap()
+		self["key_red"] = StaticText(_("Cancel"))
+		self["key_green"] = StaticText(_("Save"))
+		self["key_yellow"] = StaticText(_("Timer type"))
+		self["key_blue"] = StaticText("")
 		self["actions"] = HelpableNumberActionMap(self, ["SetupActions", "GlobalActions", "PiPSetupActions", "ColorActions"], {
 			"ok": self.keySelect,
 			"save": self.keyGo,
