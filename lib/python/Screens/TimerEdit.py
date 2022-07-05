@@ -24,7 +24,6 @@ from time import time
 from timer import TimerEntry as RealTimerEntry
 from ServiceReference import ServiceReference
 from enigma import eServiceReference, eEPGCache
-from six import PY2
 
 
 class TimerEditList(Screen, ProtectedScreen):
@@ -236,6 +235,7 @@ class TimerEditList(Screen, ProtectedScreen):
 			self.key_blue_choice = self.EMPTY
 
 	def fillTimerList(self):
+		from functools import cmp_to_key
 
 		def eol_compare(x, y):
 			if x[0].state != y[0].state and x[0].state == RealTimerEntry.StateEnded or y[0].state == RealTimerEntry.StateEnded:
@@ -250,11 +250,7 @@ class TimerEditList(Screen, ProtectedScreen):
 		self.list.extend([(timer, True) for timer in self.session.nav.RecordTimer.processed_timers])
 
 		if config.usage.timerlist_finished_timer_position.index: #end of list
-			if PY2:
-				self.list.sort(cmp=eol_compare)
-			else:
-				import functools
-				self.list.sort(key=functools.cmp_to_key(eol_compare))
+			self.list.sort(key=cmp_to_key(eol_compare))
 		else:
 			self.list.sort(key=lambda x: x[0].begin)
 		self["timerlist"].l.setList(self.list)
