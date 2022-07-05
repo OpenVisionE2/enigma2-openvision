@@ -35,7 +35,7 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 
 	def createSetup(self):
 		self.list = []
-		self.list.append(getConfigListEntry(_("Startup to standby from deepstandby or from turn off"),
+		self.list.append(getConfigListEntry(_("Startup to standby from deepstandby or power off"),
 			config.usage.startup_to_standby,
 			_("Startup the set top box in standby from deepstandby or from turn off.")))
 		if InfoBar.instance and InfoBar.instance.sleepTimer.isActive():
@@ -110,7 +110,7 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 					_("Specify the end time to ignore the shutdown timer when the receiver is in standby mode")))
 		self.list.append(getConfigListEntry(_("Enable wakeup timer"),
 			config.usage.wakeup_enabled,
-			_("When it is enabled, and you want to go to standby mode after wakeup timer, set \"Startup to Standby\" to \"No, except Wakeup timer\".\n\nNote: If you have an active timer, it won't wake up, set a \"wake-up\" type power timer for this action.")))
+			_("When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\".")))
 		if config.usage.wakeup_enabled.value != "no":
 			for i in range(7):
 				self.list.append(getConfigListEntry([_("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"), _("Saturday"), _("Sunday")][i],
@@ -142,7 +142,7 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 			else:
 				sleepTimer = int(sleepTimer)
 			if sleepTimer or not self.getCurrentEntry().endswith(_("(not activated)")):
-				InfoBar.instance.setSleepTimer(sleepTimer)
+				InfoBar.instance and InfoBar.instance.setSleepTimer(sleepTimer)
 			self.close(True)
 		self.close()
 
@@ -169,8 +169,8 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 		remaining = 0
 		ref = self.session.nav.getCurrentlyPlayingServiceReference()
 		if ref:
-			path = ref.getPath()
-			if path: # Movie
+			refstr = ref.toString()
+			if "%3a//" not in refstr and refstr.rsplit(":", 1)[1].startswith("/"): # Movie
 				service = self.session.nav.getCurrentService()
 				seek = service and service.seek()
 				if seek:
