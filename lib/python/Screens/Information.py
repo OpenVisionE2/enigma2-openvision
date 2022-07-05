@@ -406,7 +406,7 @@ class CommitLogInformation(InformationBase):
 			("OpenVision OpenEmbedded", "https://api.github.com/repos/OpenVisionE2/revision/commits"),
 			("Enigma2 Plugins", "https://api.github.com/repos/OpenVisionE2/enigma2-plugins/commits"),
 			("Extra Plugins", "https://api.github.com/repos/OpenVisionE2/extra-plugins/commits"),
-			("OpenWebIf", "https://api.github.com/repos/OpenVisionE2/OpenWebif/commits"),
+			("OpenWebif", "https://api.github.com/repos/OpenVisionE2/OpenWebif/commits"),
 			("OpenVision Core Plugin", "https://api.github.com/repos/OpenVisionE2/openvision-core-plugin/commits"),
 			("Backup Suite Plugin", "https://api.github.com/repos/OpenVisionE2/BackupSuite/commits"),
 			("OctEtFHD Skin", "https://api.github.com/repos/OpenVisionE2/OctEtFHD-skin/commits")
