@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from Components.config import config
 from Components.Console import Console
-from Components.About import about
 from Components.PackageInfo import PackageInfoHandler
 from Components.Language import language
 from Components.Sources.List import List
@@ -23,7 +22,7 @@ class SoftwareTools(PackageInfoHandler):
 	installed_packetlist = {}
 
 	def __init__(self):
-		aboutInfo = about.getImageVersionString()
+		aboutInfo = str(BoxInfo.getItem("imageversion"))
 		if aboutInfo.startswith("dev-"):
 			self.ImageVersion = 'Experimental'
 		else:

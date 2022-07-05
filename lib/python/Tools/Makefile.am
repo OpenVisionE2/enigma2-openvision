@@ -8,6 +8,7 @@ install_PYTHON = \
 	camcontrol.py \
 	CIHelper.py \
 	CList.py \
+	Conversions.py \
 	CopyFiles.py \
 	CountryCodes.py \
 	Directories.py \

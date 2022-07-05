@@ -32,6 +32,7 @@ from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen, ScreenSummary
+from Tools.Conversions import scaleNumber, formatDate
 from Tools.Directories import SCOPE_GUISKIN, fileReadLine, fileReadLines, fileWriteLine, resolveFilename, isPluginInstalled
 from Tools.Geolocation import geolocation
 from Tools.LoadPixmap import LoadPixmap
@@ -50,23 +51,18 @@ INFO_COLOR = {
 }
 
 
-def scaleNumber(number, style="Si", suffix="B"):  # This temporary code is borrowed from the new Storage.py!
-	units = ["", "K", "M", "G", "T", "P", "E", "Z", "Y"]
-	style = style.capitalize()
-	if style not in ("Si", "Iec", "Jedec"):
-		print("[Information] Error: Invalid number unit style '%s' specified so 'Si' is assumed!" % style)
-	if style == "Si":
-		units[1] = units[1].lower()
-	negative = number < 0
-	if negative:
-		number = -number
-	digits = len(str(number))
-	scale = int((digits - 1) // 3)
-	result = float(number) / (10 ** (scale * 3)) if style == "Si" else float(number) / (1024 ** scale)
-	if negative:
-		result = -result
-	# print("[Information] DEBUG: Number=%d, Digits=%d, Scale=%d, Factor=%d, Result=%f." % (number, digits, scale, 10 ** (scale * 3), result))
-	return "%.3f %s%s%s" % (result, units[scale], ("i" if style == "Iec" and scale else ""), suffix)
+def getBoxProcTypeName():
+	boxProcTypes = {
+		"00": _("OTT Model"),
+		"10": _("Single Tuner"),
+		"11": _("Twin Tuner"),
+		"12": _("Combo Tuner"),
+		"22": _("Hybrid Tuner")
+	}
+	procType = getBoxProcType()
+	if procType == "unknown":
+		return _("Unknown")
+	return "%s  -  %s" % (procType, boxProcTypes.get(procType, _("Unknown")))
 
 
 class InformationBase(Screen, HelpableScreen):
@@ -621,7 +617,7 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Enigma2 version"), enigmaVersion))
 		info.append(formatLine("P1", _("Enigma2 revision"), getE2Rev()))
 		compileDate = str(BoxInfo.getItem("compiledate"))
-		info.append(formatLine("P1", _("Last update"), "%s-%s-%s" % (compileDate[:4], compileDate[4:6], compileDate[6:])))
+		info.append(formatLine("P1", _("Last update"), formatDate("%s%s%s" % (compileDate[:4], compileDate[4:6], compileDate[6:]))))
 		info.append(formatLine("P1", _("Enigma2 (re)starts"), config.misc.startCounter.value))
 		info.append(formatLine("P1", _("Enigma2 debug level"), eGetEnigmaDebugLvl()))
 		if isPluginInstalled("ServiceApp") and config.plugins.serviceapp.servicemp3.replace.value or isPluginInstalled("ServiceApp") and BoxInfo.getItem("HiSilicon") and not config.plugins.serviceapp.servicemp3.replace.value:
@@ -1088,7 +1084,7 @@ class ReceiverInformation(InformationBase):
 		procModel = getBoxProc()
 		if procModel != model:
 			info.append(formatLine("P1", _("Proc model"), procModel))
-		procModelType = getBoxProcType()
+		procModelType = getBoxProcTypeName()
 		if procModelType and procModelType != "unknown":
 			info.append(formatLine("P1", _("Hardware type"), procModelType))
 		hwSerial = getHWSerial()
@@ -1149,7 +1145,7 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("Driver and kernel information")))
 		info.append("")
-		info.append(formatLine("P1", _("Drivers version"), BoxInfo.getItem("driverdate")))
+		info.append(formatLine("P1", _("Drivers version"), formatDate(BoxInfo.getItem("driverdate"))))
 		info.append(formatLine("P1", _("Kernel version"), BoxInfo.getItem("kernel")))
 		info.append(formatLine("P1", _("Kernel module layout"), BoxInfo.getItem("ModuleLayout") if BoxInfo.getItem("ModuleLayout") else _("N/A")))
 		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id", source=MODULE_NAME)
