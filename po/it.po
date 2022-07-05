@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi-enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2020-05-16 18:46+0200\n"
 "Last-Translator: Gringo <openpli@tiscali.it>\n"
 "Language-Team: www.linsat.net <spaeleus@croci.org>\n"
@@ -3133,10 +3133,6 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "Abilitato"
-
 msgid "CI (Common Interface) Setup"
 msgstr "Configurazione CI (Common Interface)"
 
@@ -3155,6 +3151,10 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "Assegnazione CI"
+
+#, fuzzy
+msgid "CI enabled"
+msgstr "Abilitato"
 
 msgid "CI slot: "
 msgstr "Slot CI: "
@@ -3770,6 +3770,10 @@ msgstr "Combinato"
 
 msgid "Combo"
 msgstr "Combo"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Selezionare il sintonizzatore"
 
 #, fuzzy
 msgid "Comedy"
@@ -7743,6 +7747,9 @@ msgstr "Ungherese"
 msgid "Hungary"
 msgstr "Ungheria"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -7979,6 +7986,10 @@ msgstr "Includere ECM nei flussi http"
 
 msgid "Include EIT in http streams"
 msgstr "Includere EIT nei flussi http"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Includere AIT nei flussi http"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9159,8 +9170,8 @@ msgid "Media scanner"
 msgstr "Ricerca multimediale"
 
 #, fuzzy
-msgid "Media service"
-msgstr "Aggiungere un canale"
+msgid "Media service player"
+msgstr "Lettore multimediale"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "Il supporto non è un DVD masterizzabile!"
@@ -10168,9 +10179,6 @@ msgstr "Non in esecuzione"
 msgid "Not tested:"
 msgstr "Non verificato:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Se questa impostazione è attivata e si desidera mettere il ricevitore in sospensione all'accensione, impostare l'opzione 'Accensione in stato di sospensione' a 'No, eccetto per il timer di riattivazione' (questa opzione si trova nel menu Impostazioni > Impostazioni sistema > Personalizzazioni)."
-
 #, fuzzy
 msgid "Nothing"
 msgstr "Nessuna"
@@ -10287,6 +10295,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "forza disabilitata"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Modello"
+
 msgid "OVR"
 msgstr ""
 
@@ -10369,6 +10381,10 @@ msgstr "Muovere la parabola velocemente solo prima di questa ora siderale."
 
 msgid "Only on startup"
 msgstr "Solo all'avvio"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Abilitare il timer di riattivazione"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Scegliere \"Sì\" solo se si sta utilizzando un multiswitch che ha bisogno di un comando DiSEqC Porta A. Per tutte le altre configurazioni scegliere \"No\"."
@@ -11218,8 +11234,9 @@ msgstr "Spegnere se messo in sospensione"
 msgid "Power On Display"
 msgstr "Schermata di accensione"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Ordine per orario"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Gestione dell'alimentazione. Consultare il manuale del ricevitore per ulteriori informazioni."
@@ -11841,6 +11858,11 @@ msgstr "Registrazione"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Percorso registrazioni"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Impostazioni di registrazione"
@@ -14274,6 +14296,10 @@ msgid "Single EPG"
 msgstr "EPG singolo"
 
 #, fuzzy
+msgid "Single Tuner"
+msgstr "Singolo"
+
+#, fuzzy
 msgid "Single line mode"
 msgstr "Selezionare la modalità video"
 
@@ -14777,11 +14803,12 @@ msgstr "Avvio il"
 msgid "Starts in a few seconds"
 msgstr "si avvierà tra pochi secondi"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Mettere il ricevitore in sospensione dopo l'accensione."
 
-msgid "Startup to Standby"
-msgstr "Accensione in stato di sospensione"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -16472,6 +16499,10 @@ msgstr "Tuvalu"
 msgid "Twi"
 msgstr "Due"
 
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Sintonizzatore"
+
 msgid "Two"
 msgstr "Due"
 
@@ -17432,6 +17463,10 @@ msgstr "Se questa impostazione è attivata, i dati EIT (Event Information Table)
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Se abilitato, HDMI-CEC è impostato con le configurazioni standard"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Se questa impostazione è attivata, i dati AIT saranno inclusi nei flussi http. Ciò consente ad un ricevitore client di utilizzare HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Se questa impostazione è attivata, sarà visualizzato un messaggio di popup quando termina la riproduzione di un video e quella successiva sta per iniziare."
 
@@ -17650,6 +17685,10 @@ msgstr "Se questa impostazione è attivata, il ricevitore selezionerà la tracci
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Se questa impostazione è attivata, il ricevitore potrà rilevare un segnale di attività sull'ingresso SCART VCR."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Se questa impostazione è attivata e si desidera mettere il ricevitore in sospensione all'accensione, impostare l'opzione 'Accensione in stato di sospensione' a 'No, eccetto per il timer di riattivazione' (questa opzione si trova nel menu Impostazioni > Impostazioni sistema > Personalizzazioni)."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Un valore diverso da zero (in minuti) farà avviare una registrazione anticipandola rispetto all'orario di inizio previsto dall'EPG."
@@ -18771,6 +18810,10 @@ msgstr "%d minuto"
 #, fuzzy
 msgid "minutes"
 msgstr "%d minuti"
+
+#, fuzzy
+msgid "module disabled"
+msgstr "forza disabilitata"
 
 msgid "month"
 msgstr "mese"

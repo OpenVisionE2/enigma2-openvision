@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Frenske <voorzitter@openpli.org>\n"
 "Language-Team: PLiteam <translators@openpli.org>\n"
@@ -3126,10 +3126,6 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "FCC geactiveerd"
-
 msgid "CI (Common Interface) Setup"
 msgstr "Instellen CI (Common Interface)"
 
@@ -3148,6 +3144,10 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "CI toewijzing"
+
+#, fuzzy
+msgid "CI enabled"
+msgstr "FCC geactiveerd"
 
 msgid "CI slot: "
 msgstr "CI slot: "
@@ -3629,7 +3629,7 @@ msgstr "Indien geactiveerd, dan stelt u hiermee in of Multi channel AAC geluid o
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Indien geactiveerd, dan stelt u hiermee in of WMA Pro geluid omgezet moet worden naar stereo."
+msgstr "Indien geactiveerd, dan stelt u hiermee in of Multi channel AAC geluid omgezet moet worden naar stereo."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
@@ -3791,6 +3791,10 @@ msgstr "Gecombineerd"
 
 msgid "Combo"
 msgstr "Combo"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Kies de tuner"
 
 #, fuzzy
 msgid "Comedy"
@@ -4809,9 +4813,8 @@ msgstr "DTS"
 msgid "DTS downmix"
 msgstr "DTS downmix"
 
-#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr "DTS-HD HR/DTS-HD MA/DTS"
+msgstr ""
 
 msgid "DUAL LAYER DVD"
 msgstr "DUAL LAYER DVD"
@@ -7942,6 +7945,9 @@ msgstr "Hongaars"
 msgid "Hungary"
 msgstr "Hongarije"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -8185,6 +8191,10 @@ msgstr "Neem ECM op in http streams"
 
 msgid "Include EIT in http streams"
 msgstr "Neem EIT op in http streams"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Neem AIT op in http streams"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9363,8 +9373,8 @@ msgid "Media scanner"
 msgstr "Mediascanner"
 
 #, fuzzy
-msgid "Media service"
-msgstr "Voeg een zender toe"
+msgid "Media service player"
+msgstr "Mediaspeler"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "Dit medium is geen beschrijfbare DVD!"
@@ -10364,9 +10374,6 @@ msgstr "niet actief"
 msgid "Not tested:"
 msgstr "Niet getest:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Let op: Indien u deze optie activeert en u wilt de ontvanger vanuit 'ontwaken' in stand-by zetten, stelt u dan de optie 'opstarten naar stand-by' in op 'nee, uitgezonderd wakeup timer'."
-
 #, fuzzy
 msgid "Nothing"
 msgstr "niets"
@@ -10488,6 +10495,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "geforceerd uitgeschakeld"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Model"
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -10570,6 +10581,10 @@ msgstr "Verplaats de schotel alléén met hoge snelheid voor dit tijdstip."
 
 msgid "Only on startup"
 msgstr "Enkel na het opstarten"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Activeer de 'wake up timer'"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Kies enkel 'ja' indien u een multiswitch gebruikt die een DiSEqC poort-A signaal commando vereist. Voor elke andere opstelling kiest u voor 'nee'."
@@ -11450,8 +11465,9 @@ msgstr "Kleur van de LED in stand-by"
 msgid "Power On Display"
 msgstr "Schakel het display in"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Sorteertijd"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Power management. Raadpleeg de handleiding van uw ontvanger voor meer details."
@@ -12074,6 +12090,11 @@ msgstr "Opname"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Opnamelocaties"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Instellingen t.b.v. de opnames"
@@ -14517,6 +14538,10 @@ msgstr "Enkel"
 msgid "Single EPG"
 msgstr "Zender EPG"
 
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Enkel"
+
 msgid "Single line mode"
 msgstr "Enkele regel modus"
 
@@ -15018,14 +15043,15 @@ msgstr "Start op"
 msgid "Starts in a few seconds"
 msgstr "start over enkele seconden"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr ""
 "Indien geactiveerd, dan zal de ontvanger direct na een herstart naar stand-by gaan.\n"
 "\n"
 "Dit is enkel praktisch als er (geregeld) stroomuitval is en HDMI-CEC geactiveerd is, omdat anders mogelijk beide apparaten 'aan' blijven zonder toezicht."
 
-msgid "Startup to Standby"
-msgstr "Opstarten en ga naar direct naar stand-by"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -16719,6 +16745,10 @@ msgstr "Tuvalu"
 msgid "Twi"
 msgstr "Twee"
 
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Tuner"
+
 msgid "Two"
 msgstr "Twee"
 
@@ -17697,6 +17727,10 @@ msgstr "Indien geactiveerd, dan zal de EIT data toegevoegd worden aan de http st
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Indien geactiveerd, dan is HDMI-CEC actief met standaard instellingen"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Indien geactiveerd, dan zal de AIT data worden toegevoegd aan de http streams. Hiermee kan een cliënt-ontvanger HbbTV gebruiken."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Indien geactiveerd, dan zal er een bericht op het scherm getoond worden zodra een film afgelopen is en een nieuwe zal starten."
 
@@ -17922,6 +17956,10 @@ msgstr "Indien geactiveerd, dan selecteert de ontvanger een AC3+ spoor indien de
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Indien geactiveerd, herkent de ontvanger een signaal op de VCR SCART ingang."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Let op: Indien u deze optie activeert en u wilt de ontvanger vanuit 'ontwaken' in stand-by zetten, stelt u dan de optie 'opstarten naar stand-by' in op 'nee, uitgezonderd wakeup timer'."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr ""
@@ -19051,6 +19089,10 @@ msgstr "%d minuut"
 msgid "minutes"
 msgstr "%d minuten"
 
+#, fuzzy
+msgid "module disabled"
+msgstr "geforceerd uitgeschakeld"
+
 msgid "month"
 msgstr "maand"
 
@@ -19586,6 +19628,7 @@ msgstr "tot stand-by / herstart"
 msgid "use best / controlled by HDMI"
 msgstr "gebruik de beste / gecontroleerd door HDMI"
 
+#, fuzzy
 msgid "use_hdmi_cacenter"
 msgstr "gebruik hdmi_cacenter"
 

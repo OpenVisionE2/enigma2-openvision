@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2020-05-16 18:41+0200\n"
 "Last-Translator: jamu\n"
 "Language-Team: BoxFreak/jamu\n"
@@ -3313,11 +3313,6 @@ msgid "CH%s"
 msgstr "CH%s"
 
 #
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "Päällä"
-
-#
 msgid "CI (Common Interface) Setup"
 msgstr "CI-liitäntä/CAM"
 
@@ -3337,6 +3332,11 @@ msgstr ""
 #
 msgid "CI assignment"
 msgstr "CI-määritys"
+
+#
+#, fuzzy
+msgid "CI enabled"
+msgstr "Päällä"
 
 msgid "CI slot: "
 msgstr ""
@@ -4007,6 +4007,11 @@ msgstr "Kolumbia"
 
 msgid "Combo"
 msgstr "Yhdistelmä"
+
+#
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Valitse viritin"
 
 #, fuzzy
 msgid "Comedy"
@@ -8332,6 +8337,9 @@ msgstr "Unkari"
 msgid "Hungary"
 msgstr "Unkari"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr ""
 
@@ -8583,6 +8591,10 @@ msgstr "Liitä ECM http-striimeihin"
 
 msgid "Include EIT in http streams"
 msgstr "Sisällytä EIT http-striimeihin"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Sisällytä AIT http-striimeihin"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9901,10 +9913,9 @@ msgstr "Mediasoitin"
 msgid "Media scanner"
 msgstr "Mediaskanneri"
 
-#
 #, fuzzy
-msgid "Media service"
-msgstr "Lisää kanava"
+msgid "Media service player"
+msgstr "Mediasoitin"
 
 #
 msgid "Medium is not a writeable DVD!"
@@ -11054,9 +11065,6 @@ msgstr "Alussa"
 msgid "Not tested:"
 msgstr ""
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Määritä herätetäänkö vastaanotin automaattisesti määriteltynä aikana. Jos lisäksi haluat että vastaanotin siirtyy valmiustilaan herätyksen jälkeen, aseta 'Käynnisty valmiustilaan' arvoksi järjestelmän yleisasetuksissa 'Ei, paitsi ajastetusta herätyksestä'."
-
 #
 #, fuzzy
 msgid "Nothing"
@@ -11182,6 +11190,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "Pois päältä"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Malli"
+
 msgid "OVR"
 msgstr ""
 
@@ -11269,6 +11281,10 @@ msgstr ""
 
 msgid "Only on startup"
 msgstr "Vain käynnistyksessä"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Herätysajastin"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr ""
@@ -12228,8 +12244,10 @@ msgstr "Siirry virransäästötilaan"
 msgid "Power On Display"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Aikajärj."
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr ""
@@ -12938,6 +12956,11 @@ msgstr "Tallenne"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Tallennushakemistot"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr ""
@@ -15641,6 +15664,11 @@ msgstr "Ohjelmaopas"
 
 #
 #, fuzzy
+msgid "Single Tuner"
+msgstr "Yksi"
+
+#
+#, fuzzy
 msgid "Single line mode"
 msgstr "Valitse video-tila"
 
@@ -16203,11 +16231,12 @@ msgstr "Alkaen"
 msgid "Starts in a few seconds"
 msgstr "Aloita offline-purku"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Käynnistetäänkö laite valmiustilaan"
 
-msgid "Startup to Standby"
-msgstr "Käynnisty valmiustilaan"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #
 #, fuzzy
@@ -18065,6 +18094,11 @@ msgid "Twi"
 msgstr "Kaksi"
 
 #
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Viritin"
+
+#
 msgid "Two"
 msgstr "Kaksi"
 
@@ -19114,6 +19148,10 @@ msgstr "Kun päällä, EIT-tiedot lähetetään http-striimeissä. Tämä mahdol
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Kun päällä, HDMI-CEC on käytössä vakioasetuksilla"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Kun päällä, AIT-tiedot lähetetään http-striimeissä. Tämä mahdollistaa HbbTV:n käyttämisen asiakasvastaanottimessa."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Kun päällä, näytetään viesti-ikkuna kun tallenne loppuu ja seuraava alkaa."
 
@@ -19332,6 +19370,10 @@ msgstr "Kun päällä, vastaanotin valitsee AC3+ ääniraidan (kun saatavilla)."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Kun päällä, vastaanotin tunnistaa aktiviteetin VCR SCART-sisäänmenossa."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Määritä herätetäänkö vastaanotin automaattisesti määriteltynä aikana. Jos lisäksi haluat että vastaanotin siirtyy valmiustilaan herätyksen jälkeen, aseta 'Käynnisty valmiustilaan' arvoksi järjestelmän yleisasetuksissa 'Ei, paitsi ajastetusta herätyksestä'."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Kun arvo ei ole nolla, tallennus alkaa aiemmin kuin ohjelmaoppaassa oleva aloitusaika."
@@ -20539,6 +20581,10 @@ msgstr "%d minuutti"
 #, fuzzy
 msgid "minutes"
 msgstr "%d minuuttia"
+
+#, fuzzy
+msgid "module disabled"
+msgstr "Pois päältä"
 
 #
 msgid "month"

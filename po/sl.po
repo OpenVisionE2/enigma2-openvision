@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Project Slovenia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2020-05-16 18:48+0200\n"
 "Last-Translator: Taykun345 <support@satnigmo.com>\n"
 "Language-Team: Satnigmo <support@satnigmo.com>\n"
@@ -3429,11 +3429,6 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
-#
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "vključeno"
-
 msgid "CI (Common Interface) Setup"
 msgstr "CI vmesnik"
 
@@ -3453,6 +3448,11 @@ msgstr ""
 #
 msgid "CI assignment"
 msgstr "CI dodelitev"
+
+#
+#, fuzzy
+msgid "CI enabled"
+msgstr "vključeno"
 
 msgid "CI slot: "
 msgstr ""
@@ -4122,6 +4122,10 @@ msgstr "Barvni format"
 
 msgid "Combo"
 msgstr ""
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Izbor kanalnika"
 
 msgid "Comedy"
 msgstr ""
@@ -8566,6 +8570,9 @@ msgstr "Madžarščina"
 msgid "Hungary"
 msgstr "Madžarščina"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr ""
 
@@ -8820,6 +8827,11 @@ msgstr "Prisotnost ECM paketkov v HTTP toku"
 #
 msgid "Include EIT in http streams"
 msgstr "Prisotnost EIT podatkov v HTTP toku"
+
+#
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Prisotnost AIT podatkov v HTTP toku"
 
 #
 #, fuzzy
@@ -10143,8 +10155,8 @@ msgstr "Iskalnik datotek"
 
 #
 #, fuzzy
-msgid "Media service"
-msgstr "Nov kanal"
+msgid "Media service player"
+msgstr "Predvajalnik vsebin"
 
 #
 msgid "Medium is not a writeable DVD!"
@@ -11300,9 +11312,6 @@ msgstr "Na začetku"
 msgid "Not tested:"
 msgstr ""
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr ""
-
 #
 #, fuzzy
 msgid "Nothing"
@@ -11432,6 +11441,11 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "onemogočeno"
 
+#
+#, fuzzy
+msgid "OTT Model"
+msgstr "Način"
+
 msgid "OVR"
 msgstr ""
 
@@ -11522,6 +11536,11 @@ msgstr ""
 
 msgid "Only on startup"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Only power off"
+msgstr "Premik kanalov znotraj paketa"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr ""
@@ -12494,8 +12513,10 @@ msgstr "Izklop v stanju pripravljenosti"
 msgid "Power On Display"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Čas urejanja"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr ""
@@ -13207,6 +13228,11 @@ msgstr "Snemanje"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Poti snemanja datotek"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Nastavitve snemanja"
@@ -15979,6 +16005,11 @@ msgstr "Enostavni EPG"
 
 #
 #, fuzzy
+msgid "Single Tuner"
+msgstr "Posamezen"
+
+#
+#, fuzzy
 msgid "Single line mode"
 msgstr "Izberite video način"
 
@@ -16553,12 +16584,12 @@ msgstr "Začnem ob"
 msgid "Starts in a few seconds"
 msgstr "Prični z offline dekodiranjem"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Po vklopu sprejemnika, ko je le-ta popolnoma izključen, sprejemnik preide v stanje pripravljenosti."
 
-#
-msgid "Startup to Standby"
-msgstr "Vklop in prehod v stanje pripravljenosti"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #
 #, fuzzy
@@ -18412,6 +18443,11 @@ msgid "Twi"
 msgstr "Dva"
 
 #
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Kanalnik"
+
+#
 msgid "Two"
 msgstr "Dva"
 
@@ -19476,6 +19512,10 @@ msgstr "Če je nastavitev vključena, potem so EIT podatki vključeni v HTTP tok
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Če je nastavitev vključena, potem sprejemnik pridobi IP naslov samodejno - DHCP."
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Če je nastavitev vključena, potem so AIT podatki vključeni v HTTP tokove. Če uporabljate storitev HBBTV, potem je ta nastavitev bistvenega pomena!"
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Če je nastavitev vključena, se ob prehodu iz enega filma na drugi film prikaže posebno obvestilo."
 
@@ -19697,6 +19737,9 @@ msgstr "Če je nastavitev vključena, potem sprejemnik samodejno izbere AC3+ zvo
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Če je nastavitev vključena, potem sprejemnik samodejno zazna aktivnost na vhodu SCART."
+
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr ""
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Če je nastavitev vključena, potem se snemanje začne prej, kot je to določeno s sporedom. Če se po sporedu oddaja prične ob 10:00, lahko sprejemnik (odvisno od nastavitve) prične snemati že ob 09:50."
@@ -20906,6 +20949,11 @@ msgstr "%d minuta"
 #, fuzzy
 msgid "minutes"
 msgstr "%d minut"
+
+#
+#, fuzzy
+msgid "module disabled"
+msgstr "onemogočeno"
 
 #
 msgid "month"

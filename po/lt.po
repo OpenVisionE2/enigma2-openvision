@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2022-04-12 21:59+0300\n"
 "Last-Translator: Audronis <adga45@gmail.com>\n"
 "Language-Team: Adga (C) <adga45@gmail.com>\n"
@@ -3137,10 +3137,6 @@ msgstr "KAN"
 msgid "CH%s"
 msgstr "KAN.%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "FCC įjungta"
-
 msgid "CI (Common Interface) Setup"
 msgstr "CI (įstatomo modulio) sąranka"
 
@@ -3159,6 +3155,10 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "CI priskyrimas"
+
+#, fuzzy
+msgid "CI enabled"
+msgstr "FCC įjungta"
 
 msgid "CI slot: "
 msgstr "CI lizdas: "
@@ -3632,7 +3632,7 @@ msgstr "Pasirinkite, ar kelių kanalų aac+ garso takeliai turi būti sulieti su
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Pasirinkite, ar WMA Pro garso takeliai turėtų būti sulieti."
+msgstr "Pasirinkite, ar kelių kanalų aac+ garso takeliai turi būti sulieti su stereofoniniu ryšiu."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
@@ -3794,6 +3794,10 @@ msgstr "Kombinuotas"
 
 msgid "Combo"
 msgstr "Kombo"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Pasirinkite imtuvą"
 
 #, fuzzy
 msgid "Comedy"
@@ -4624,9 +4628,8 @@ msgstr "DTS"
 msgid "DTS downmix"
 msgstr "DTS suliejimas"
 
-#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr "DTS-HD HR/DTS-HD MA/DTS"
+msgstr ""
 
 msgid "DUAL LAYER DVD"
 msgstr "DVISLUOKSNIS DVD"
@@ -7740,6 +7743,9 @@ msgstr "Vengrų"
 msgid "Hungary"
 msgstr "Vengrija"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -7976,6 +7982,10 @@ msgstr "Įtraukti ECM į http srautus"
 
 msgid "Include EIT in http streams"
 msgstr "Įtraukti EIT į http srautus"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Įtraukti AIT į http srautus"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9157,8 +9167,8 @@ msgid "Media scanner"
 msgstr "Media failų paieška"
 
 #, fuzzy
-msgid "Media service"
-msgstr "Pridėti kanalą"
+msgid "Media service player"
+msgstr "Media grotuvas"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "Tai neįrašomas DVD!"
@@ -10156,9 +10166,6 @@ msgstr "neveikia"
 msgid "Not tested:"
 msgstr "Netikrinta:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Pastaba: kai čia įjungta ir po imtuvo pažadinimo, norite pervesti į  budėjimo būseną, pasirinkite 'Startuoti imtuvą į budėjimo būseną', kaip 'Ne, išskyrus pažadinimo laikmatį'."
-
 #, fuzzy
 msgid "Nothing"
 msgstr "nieko"
@@ -10275,6 +10282,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "priverstinai išjungta"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Modelis"
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -10357,6 +10368,10 @@ msgstr "Tik greitai perkelti anteną iki šios valandos."
 
 msgid "Only on startup"
 msgstr "Tik paleidimo metu"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Įjungti pažadinimo laikmatį"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Pasirinkite tik \"taip\", jei naudojate \"multiswich\", kurio komandinis signalas \"DiSEqC Port-A\" reikalingas. Visoms kitoms sąrankoms pasirinkite \"ne\"."
@@ -11212,8 +11227,9 @@ msgstr "LED būsenos veikimas laukimo režimu"
 msgid "Power On Display"
 msgstr "Maitinimas ekrane"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Rūšiuoti pagal laiką"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Maitinimo valdymas. Daugiau informacijos ieškokite savo imtuvo naudojimo instrukcijoje."
@@ -11833,6 +11849,11 @@ msgstr "Įrašas"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Įrašų vieta"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Įrašymo valdymas"
@@ -14253,6 +14274,10 @@ msgstr "Vienas"
 msgid "Single EPG"
 msgstr "Vieno kanalo EPG"
 
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Vienas"
+
 msgid "Single line mode"
 msgstr "Vienos eilutės režimas"
 
@@ -14754,11 +14779,12 @@ msgstr "Pradedama"
 msgid "Starts in a few seconds"
 msgstr "prasidės po kelių sekundžių"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Paleisti imtuvą laukimo režime"
 
-msgid "Startup to Standby"
-msgstr "Paleisti į budėjimo režimą"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -16434,6 +16460,10 @@ msgstr "Tuvalu"
 msgid "Twi"
 msgstr "Du"
 
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Imtuvas"
+
 msgid "Two"
 msgstr "Du"
 
@@ -17389,6 +17419,10 @@ msgstr "Kai čia įjungta, http sraute bus įtraukti ir EIT duomenys. Tai leis k
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Kai įjungta, HDMI-CEC įjungta su standartine konfigūracija"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Kai čia įjungta, http sraute bus įtraukti ir AIT duomenys. Tai leis kliento imtuvui naudotis HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Kai čia įjungta, bus rodomas iššokančios žinutės langas, kai baigsis filmas ir prasidės kitas."
 
@@ -17605,6 +17639,10 @@ msgstr "Kai čia įjungta, esant galimybei, imtuvas pasirinks AC3+ takelį."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Kai įjungta, imtuvas aptiks veikiančias įvestis VCR SCART."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Pastaba: kai čia įjungta ir po imtuvo pažadinimo, norite pervesti į  budėjimo būseną, pasirinkite 'Startuoti imtuvą į budėjimo būseną', kaip 'Ne, išskyrus pažadinimo laikmatį'."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Kai čia nelygu '0', įrašymas prasidės nurodytą laiką anksčiau, nei įvykio pradžios laikas pagal EPG."
@@ -18717,6 +18755,10 @@ msgstr "%d minutė"
 msgid "minutes"
 msgstr "%d minutės"
 
+#, fuzzy
+msgid "module disabled"
+msgstr "priverstinai išjungta"
+
 msgid "month"
 msgstr "mėnuo"
 
@@ -19252,6 +19294,7 @@ msgstr "iki budėjimo/paleidimo iš naujo"
 msgid "use best / controlled by HDMI"
 msgstr "naudoti geriausią / valdoma HDMI"
 
+#, fuzzy
 msgid "use_hdmi_cacenter"
 msgstr "naudoti_hdmi_cacenter"
 

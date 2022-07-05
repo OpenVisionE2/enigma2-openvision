@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2021-04-30 16:06+0200\n"
 "Last-Translator: kueken\n"
 "Language-Team: OpenPLi\n"
@@ -3120,10 +3120,6 @@ msgstr "Kanal"
 msgid "CH%s"
 msgstr "CH%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "Aktiviert"
-
 msgid "CI (Common Interface) Setup"
 msgstr "CI (Common Interface) Einstellungen"
 
@@ -3142,6 +3138,10 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "CI-Zuweisung"
+
+#, fuzzy
+msgid "CI enabled"
+msgstr "Aktiviert"
 
 msgid "CI slot: "
 msgstr "CI-Slot: "
@@ -3778,6 +3778,10 @@ msgstr "kombiniert"
 
 msgid "Combo"
 msgstr "Combo"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Wähle Tuner"
 
 #, fuzzy
 msgid "Comedy"
@@ -7737,6 +7741,9 @@ msgstr "Ungarisch"
 msgid "Hungary"
 msgstr "Ungarn"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -7973,6 +7980,10 @@ msgstr "Integriere ECM in HTTP-Streams"
 
 msgid "Include EIT in http streams"
 msgstr "Integriere EIT in HTTP-Streams"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Integriere AIT in HTTP-Streams"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9153,8 +9164,8 @@ msgid "Media scanner"
 msgstr "Media Scanner"
 
 #, fuzzy
-msgid "Media service"
-msgstr "Kanal hinzufügen"
+msgid "Media service player"
+msgstr "Media Player"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "Das Medium ist keine beschreibbare DVD!"
@@ -10154,9 +10165,6 @@ msgstr "nicht laufen"
 msgid "Not tested:"
 msgstr "Nicht getestet:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Hinweis: Wenn diese Option aktiviert ist und Sie nach dem Aufwachen in den Standby-Modus wechseln wollen, setzen Sie die Option “Startup to Standby” auf “No, außer Wakeup Timer”."
-
 #, fuzzy
 msgid "Nothing"
 msgstr "Nichts tun"
@@ -10273,6 +10281,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "deaktiviert erzwingen"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Modell"
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -10355,6 +10367,10 @@ msgstr "Bewegen Sie die Satellitenschüssel erst kurz vor dieser Stunde."
 
 msgid "Only on startup"
 msgstr "Nur beim Start"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Aktiviere Aufwach-Timer"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Wählen Sie nur “Ja”, wenn Sie einen Multiswitch verwenden, der ein DiSEqC Port-A-Befehlssignal benötigt. Für alle anderen Setups wählen Sie ‘Nein’."
@@ -11213,8 +11229,9 @@ msgstr "Status LED im Standy"
 msgid "Power On Display"
 msgstr "Display einschalten"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Sortiere nach Zeit"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Energieverwaltung. Weitere Informationen finden Sie in der Bedienungsanleitung Ihres Receivers."
@@ -11834,6 +11851,11 @@ msgstr "Aufnahme"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Aufnahmepfade"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Aufnahme Einstellungen"
@@ -14259,6 +14281,10 @@ msgstr "Einzeln"
 msgid "Single EPG"
 msgstr "Einfach-EPG"
 
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Einzeln"
+
 msgid "Single line mode"
 msgstr "Einzeilige Kanalliste"
 
@@ -14765,11 +14791,12 @@ msgstr "Beginnend ab"
 msgid "Starts in a few seconds"
 msgstr "startet in wenigen Sekunden"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Starte den Receiver im Standby-Modus."
 
-msgid "Startup to Standby"
-msgstr "Start im Standby-Modus"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -16450,6 +16477,10 @@ msgstr "Tuvalu"
 msgid "Twi"
 msgstr "Zwei"
 
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Tuner"
+
 msgid "Two"
 msgstr "Zwei"
 
@@ -17409,6 +17440,10 @@ msgstr "Wenn aktiviert, werden EIT Daten in HTTP-Streams eingefügt. Dies ermög
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Bei Einstellung 'Ja' wird HDMI-CEC mit Standardeinstellungen aktiviert."
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Wenn aktiviert, werden AIT Daten in HTTP-Streams eingefügt. Dies ermöglicht Client-Receivern HbbTV zu benutzen."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Anzeige eines Popups wenn ein Film fertig wiedergegeben wurde und die nächste Wiedergabe startet."
 
@@ -17628,6 +17663,10 @@ msgstr "Der Receiver wählt (falls verfügbar) die AC3+ Tonspur aus, wenn diese 
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Der Receiver erkennt Aktivitäten am Video-SCART Eingang."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Hinweis: Wenn diese Option aktiviert ist und Sie nach dem Aufwachen in den Standby-Modus wechseln wollen, setzen Sie die Option “Startup to Standby” auf “No, außer Wakeup Timer”."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Legt standardmäßig fest, um wie viele Minuten eine Aufnahme früher beginnen soll, als von den EPG Informationen angedacht."
@@ -18745,6 +18784,10 @@ msgstr "%d Minute"
 #, fuzzy
 msgid "minutes"
 msgstr "%d Minuten"
+
+#, fuzzy
+msgid "module disabled"
+msgstr "deaktiviert erzwingen"
 
 msgid "month"
 msgstr "Monat"

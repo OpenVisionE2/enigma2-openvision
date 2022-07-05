@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -3138,10 +3138,6 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "Kan%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "FCC aktivizēts"
-
 msgid "CI (Common Interface) Setup"
 msgstr "Common interfeiss"
 
@@ -3160,6 +3156,10 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "CI piešķiršana"
+
+#, fuzzy
+msgid "CI enabled"
+msgstr "FCC aktivizēts"
 
 msgid "CI slot: "
 msgstr "CI slots: "
@@ -3633,7 +3633,7 @@ msgstr "Izvēlieties kā daudzkanālu skaņu celiņi tiks dekodēti uz stereo."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Izvēlieties, vai WMA Pro skaņas celiņi tiks dekodēti."
+msgstr "Izvēlieties kā daudzkanālu skaņu celiņi tiks dekodēti uz stereo."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
@@ -3795,6 +3795,10 @@ msgstr "Apvienotais"
 
 msgid "Combo"
 msgstr "Combo"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Izvēlieties uztvērēju"
 
 #, fuzzy
 msgid "Comedy"
@@ -4625,9 +4629,8 @@ msgstr "DTS"
 msgid "DTS downmix"
 msgstr "DTS dekodēšana"
 
-#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr "DTS-HD HR/DTS-HD MA/DTS"
+msgstr ""
 
 msgid "DUAL LAYER DVD"
 msgstr "Dubultslāņu DVD"
@@ -7745,6 +7748,9 @@ msgstr "Ungāru"
 msgid "Hungary"
 msgstr "Ungārija"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -7981,6 +7987,10 @@ msgstr "Ietvert ECM http plūsmās"
 
 msgid "Include EIT in http streams"
 msgstr "Ietvert EIT http plūsmās"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Ietvert AIT http plūsmās"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9161,8 +9171,8 @@ msgid "Media scanner"
 msgstr "Mediju skenētājs"
 
 #, fuzzy
-msgid "Media service"
-msgstr "Pievienot kanālu"
+msgid "Media service player"
+msgstr "Mediju atskaņotājs"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "Datu nesējs nav ierakstāms DVD!"
@@ -10160,9 +10170,6 @@ msgstr "nenotiek"
 msgid "Not tested:"
 msgstr "Nav pārbaudīts:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Ja iespējots, bet vēlaties pāriet gaidstāvē pēc ieslēgšanas iestatījumā 'Ieslēdzot pāriet gaidstāvē' norādiet 'Lietojot pamodināšanas taimeri'"
-
 #, fuzzy
 msgid "Nothing"
 msgstr "nav"
@@ -10279,6 +10286,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "piespiedu izslēgts"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Modelis"
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -10361,6 +10372,10 @@ msgstr "Ātri pārvietot satelītantenu tikai pirms šīs stundas."
 
 msgid "Only on startup"
 msgstr "Tikai startējot"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Aktivizēt pamodināšanas taimeri"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Izvēlieties 'jā', ja izmantojat multiswitch, kuram nepieciešams DiSEqC Port-A komanda. Visiem citiem iestatījumiem izvēlieties 'nē'."
@@ -11216,8 +11231,9 @@ msgstr "LED gaidstāvē"
 msgid "Power On Display"
 msgstr "Ieslēgt displeju"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Kārt. laiks"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Barošanas pārvaldīšana. Lai iegūtu papildinformāciju, skatiet uztvērēja rokasgrāmatu."
@@ -11837,6 +11853,11 @@ msgstr "Ieraksta"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Ierakstīšanas ceļš"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Ieraksta iestatījumi"
@@ -14257,6 +14278,10 @@ msgstr "Viens"
 msgid "Single EPG"
 msgstr "Kanāla EPG"
 
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Viens"
+
 msgid "Single line mode"
 msgstr "Viena rinda"
 
@@ -14758,11 +14783,12 @@ msgstr "Sākot ar"
 msgid "Starts in a few seconds"
 msgstr "tūlīt sāksies"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Ieslēdzot uztvērēju pāriet gaidstāvē"
 
-msgid "Startup to Standby"
-msgstr "Ieslēdzot pāriet gaidstāvē"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -16434,6 +16460,10 @@ msgstr "Tuvalu"
 msgid "Twi"
 msgstr "Divi"
 
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Uztvērējs"
+
 msgid "Two"
 msgstr "Divi"
 
@@ -17389,6 +17419,10 @@ msgstr "Ja ieslēgts, EIT dati tiks iekļauti http plūsmās. Tas atļaus klient
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Ja ieslēgts, HDMI-CEC būs pieejams izmantojot standarta konfigurāciju"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Ja ieslēgts, AIT dati tiks iekļauti http plūsmās. Tas atļaus klienta uztvērējam lietot HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Ja ieslēgts, kad filma beigsies tiks parādīts paziņojums, un sāksies nākošā."
 
@@ -17605,6 +17639,10 @@ msgstr "Ja ieslēgts, uztvērējs izvēlēsies AC3+ celiņu (ja pieejams)."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Ja ieslēgts, jūsu uztvērējs noteiks aktivitāti VRC SCART ieejā."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Ja iespējots, bet vēlaties pāriet gaidstāvē pēc ieslēgšanas iestatījumā 'Ieslēdzot pāriet gaidstāvē' norādiet 'Lietojot pamodināšanas taimeri'"
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Ja nav nulle, ieraksts sāksies ātrāk, nevis laikā kas parādīts EPG."
@@ -18719,6 +18757,10 @@ msgstr "%d minūte"
 msgid "minutes"
 msgstr "%d minūtes"
 
+#, fuzzy
+msgid "module disabled"
+msgstr "piespiedu izslēgts"
+
 msgid "month"
 msgstr "mēnesis"
 
@@ -19254,6 +19296,7 @@ msgstr "līdz gaidstāvei/pārstartēšanai"
 msgid "use best / controlled by HDMI"
 msgstr "izmantot labāko no HDMI"
 
+#, fuzzy
 msgid "use_hdmi_cacenter"
 msgstr "izmantot hdmi cacenter"
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -3364,11 +3364,6 @@ msgstr ""
 msgid "CH%s"
 msgstr ""
 
-#
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "aktiverad"
-
 msgid "CI (Common Interface) Setup"
 msgstr "CI (Common Interface) inställning"
 
@@ -3388,6 +3383,11 @@ msgstr ""
 #
 msgid "CI assignment"
 msgstr "CI tilldelning"
+
+#
+#, fuzzy
+msgid "CI enabled"
+msgstr "aktiverad"
 
 msgid "CI slot: "
 msgstr "CI plats :"
@@ -4055,6 +4055,10 @@ msgstr "Färgformat"
 
 msgid "Combo"
 msgstr ""
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Välj tuner"
 
 #, fuzzy
 msgid "Comedy"
@@ -8428,6 +8432,9 @@ msgstr "Ungerska"
 msgid "Hungary"
 msgstr "Ungerska"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr ""
 
@@ -8677,6 +8684,10 @@ msgstr "Inkludera ECM i http strömmar"
 
 msgid "Include EIT in http streams"
 msgstr "Inkludera EIT i http strömmar"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Inkludera AIT i http strömmar"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9983,8 +9994,8 @@ msgstr "Mediaspelare"
 
 #
 #, fuzzy
-msgid "Media service"
-msgstr "Lägg till tjänst"
+msgid "Media service player"
+msgstr "Mediaspelare"
 
 #
 msgid "Medium is not a writeable DVD!"
@@ -11120,9 +11131,6 @@ msgstr "Timeout för motorkörning"
 msgid "Not tested:"
 msgstr "Inte testad :"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Obs : Vid aktiverad, om du vill ha viloläge efter uppstart, ställ in alternativet 'Uppstart till viloläge' som 'Nej, förutom uppstartstimer'."
-
 #
 #, fuzzy
 msgid "Nothing"
@@ -11251,6 +11259,11 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "avaktiverad"
 
+#
+#, fuzzy
+msgid "OTT Model"
+msgstr "Läge "
+
 msgid "OVR"
 msgstr ""
 
@@ -11339,6 +11352,10 @@ msgstr ""
 
 msgid "Only on startup"
 msgstr "Endast vid uppstart"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Aktivera uppväckningstimer"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr ""
@@ -12298,8 +12315,10 @@ msgstr "Stäng av vid viloläge"
 msgid "Power On Display"
 msgstr "Ta bort alla loggfiler"
 
+#
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Sortera tid"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr ""
@@ -12996,6 +13015,11 @@ msgstr "Spelar in"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Sökvägar för inspelningar"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Inspellningsinställningar"
@@ -15688,6 +15712,11 @@ msgstr "Singel EPG"
 
 #
 #, fuzzy
+msgid "Single Tuner"
+msgstr "Singel"
+
+#
+#, fuzzy
 msgid "Single line mode"
 msgstr "Välj videoläge"
 
@@ -16253,11 +16282,12 @@ msgstr "Startar på"
 msgid "Starts in a few seconds"
 msgstr "Starta avkodning offline"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Starta upp mottagaren i viloläge"
 
-msgid "Startup to Standby"
-msgstr "Uppstart till viloläge"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #
 #, fuzzy
@@ -18144,6 +18174,11 @@ msgid "Twi"
 msgstr "Två"
 
 #
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Tuner"
+
+#
 msgid "Two"
 msgstr "Två"
 
@@ -19204,6 +19239,10 @@ msgstr "Vid aktiverad kommer EIT data inkluderas i http strömmar. Detta tillåt
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Vid aktiverad används DHCP för IP konfiguration."
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Vid aktiverad kommer AIT data inkluderas i http strömmar. Detta tillåter en klientmottagare att använda HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Vid aktiverad kommer ett meddelande visas när en film har slutat och nästa kommer att starta."
 
@@ -19424,6 +19463,10 @@ msgstr "Vid aktiverad kommer mottagaren välja ett AC3+ spår (när det är till
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Vid aktiverad kommer din mottagare känna av aktivitet på VCR SCART ingången."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Obs : Vid aktiverad, om du vill ha viloläge efter uppstart, ställ in alternativet 'Uppstart till viloläge' som 'Nej, förutom uppstartstimer'."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Vid icke noll kommer en inspelning starta tidigare än starttiden som anges av EPG."
@@ -20643,6 +20686,11 @@ msgstr "%d minut"
 #, fuzzy
 msgid "minutes"
 msgstr "%d minuter"
+
+#
+#, fuzzy
+msgid "module disabled"
+msgstr "avaktiverad"
 
 #
 msgid "month"

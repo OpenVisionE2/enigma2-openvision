@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2021-11-03 15:10+0100\n"
 "Last-Translator: mcfly82\n"
 "Language-Team: mcfly82 & wysless\n"
@@ -3113,10 +3113,6 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "engedélyezve"
-
 msgid "CI (Common Interface) Setup"
 msgstr "CI (Common Interface) beállítása"
 
@@ -3135,6 +3131,10 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "CI hozzárendelés"
+
+#, fuzzy
+msgid "CI enabled"
+msgstr "engedélyezve"
 
 msgid "CI slot: "
 msgstr "CI foglalat: "
@@ -3771,6 +3771,10 @@ msgstr "Kombinált"
 
 msgid "Combo"
 msgstr "Kombó"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Tuner kiválasztása"
 
 #, fuzzy
 msgid "Comedy"
@@ -7721,6 +7725,9 @@ msgstr "Magyar"
 msgid "Hungary"
 msgstr "Magyarország"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -7957,6 +7964,10 @@ msgstr "Legyen ECM a HTTP jelfolyamban"
 
 msgid "Include EIT in http streams"
 msgstr "Legyen EIT a HTTP jelfolyamban"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Legyen AIT a HTTP jelfolyamban"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9137,8 +9148,8 @@ msgid "Media scanner"
 msgstr "Média kereső"
 
 #, fuzzy
-msgid "Media service"
-msgstr "Csatorna hozzáadása"
+msgid "Media service player"
+msgstr "Médialejátszó"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "Az adathordozó nem írható DVD!"
@@ -10136,9 +10147,6 @@ msgstr "nem fut"
 msgid "Not tested:"
 msgstr "Nincs tesztelve:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Megjegyzés: ha engedélyezi, és a felébresztés után készenléti módot szeretne, állítsa az 'Indításkor készenléti módba\" lehetőséget erre: 'Nem, kivéve Felébresztés időzítő'."
-
 #, fuzzy
 msgid "Nothing"
 msgstr "semmi"
@@ -10257,6 +10265,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "kényszerített tiltás"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Modell"
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -10339,6 +10351,10 @@ msgstr "Az antenna gyors forgatása ezen óra előtt."
 
 msgid "Only on startup"
 msgstr "Csak indításkor"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Felébresztés időzítő engedélyezése"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Csak akkor válassza az 'igen'-t, ha olyan multiswich-et használ, amely megköveteli a DiSEqC Port-A parancs jelet. Minden egyéb esetben válassza a 'nem'-et."
@@ -11195,8 +11211,9 @@ msgstr "A működési LED állapota készenlét módban"
 msgid "Power On Display"
 msgstr "Előlapi kijelző"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Rendez: Idő"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Energiagazdálkodás. További információkért olvassa el készüléke használati útmutatóját."
@@ -11816,6 +11833,11 @@ msgstr "Felvétel"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Felvételek tárhelye"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Felvétel beállítások"
@@ -14236,6 +14258,10 @@ msgstr "Egyetlen"
 msgid "Single EPG"
 msgstr "Műsorújság"
 
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Egyetlen"
+
 msgid "Single line mode"
 msgstr "Egy soros mód"
 
@@ -14738,11 +14764,12 @@ msgstr "Mely dátumtól?"
 msgid "Starts in a few seconds"
 msgstr "azonnal kezdődik"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "A vevőkészülék indítása készenléti módban"
 
-msgid "Startup to Standby"
-msgstr "Indításkor készenléti módba"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -16424,6 +16451,10 @@ msgstr "Tuvalu"
 msgid "Twi"
 msgstr "Kettő"
 
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Tuner"
+
 msgid "Two"
 msgstr "Kettő"
 
@@ -17375,6 +17406,10 @@ msgstr "A HTTP jelfolyamba kerüljön bele a DVB-ből származó EIT adatcsomag 
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "A HDMI-CEC engedélyezése az alapértelmezett beállításokkal."
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "A HTTP jelfolyamba kerüljön bele a DVB-ből származó AID adatcsomag is. Ezáltal a fogadó készülék képes lesz HbbTV-t is kezelni."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Egy figyelmeztető buborék jelenjen meg a képernyőn, amikor egy fájl a végéhez ért és a következő elindul."
 
@@ -17592,6 +17627,10 @@ msgstr "Ha engedélyezi, a készülék egy AC3+ hangsávot fog választani (amen
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "A készülék figyelje, hogy történik-e valami a VCR Scart bemenetén."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Megjegyzés: ha engedélyezi, és a felébresztés után készenléti módot szeretne, állítsa az 'Indításkor készenléti módba\" lehetőséget erre: 'Nem, kivéve Felébresztés időzítő'."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Ennyivel korábban kezdje a felvételt, mint amennyi időt mond az EPG."
@@ -18708,6 +18747,10 @@ msgstr "%d perc"
 #, fuzzy
 msgid "minutes"
 msgstr "%d perc"
+
+#, fuzzy
+msgid "module disabled"
+msgstr "kényszerített tiltás"
 
 msgid "month"
 msgstr "hónap"

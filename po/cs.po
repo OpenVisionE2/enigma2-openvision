@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLi enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: IMS <ims@openpli.org>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 
 #
 msgid ""
@@ -3415,11 +3415,6 @@ msgstr "K"
 msgid "CH%s"
 msgstr "K%s"
 
-#
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "FCC povolen"
-
 msgid "CI (Common Interface) Setup"
 msgstr "CI (Common Interface)"
 
@@ -3439,6 +3434,10 @@ msgstr ""
 #
 msgid "CI assignment"
 msgstr "CI přiřazení"
+
+#
+msgid "CI enabled"
+msgstr "CI povolen"
 
 #
 msgid "CI slot: "
@@ -3949,11 +3948,11 @@ msgstr "Zvolte, zda by měly být zvukové stopy AC3 překódovány."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Zvolte, zda by měly být vícekanálové zvukové stopy acc+ přepočítávány na stereo."
+msgstr "Vyberte, zda se mají vícekanálové zvukové stopy DTS-HD (HR/MA) sloučit nebo překódovat."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Zvolte, zda mají být zvukové stopy WMA přepočítávány."
+msgstr "Vyberte, zda se mají vícekanálové zvukové stopy DTS-HD (HR/MA) sloučit nebo překódovat."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
@@ -4134,6 +4133,10 @@ msgstr "kombinovaný"
 
 msgid "Combo"
 msgstr "Combo"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Zvolte tuner"
 
 #, fuzzy
 msgid "Comedy"
@@ -5058,9 +5061,8 @@ msgstr "DTS"
 msgid "DTS downmix"
 msgstr "DTS přepočet"
 
-#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr "DTS-HD HR/DTS-HD MA/DTS"
+msgstr ""
 
 #
 msgid "DUAL LAYER DVD"
@@ -8551,6 +8553,9 @@ msgstr "Maďarsky"
 msgid "Hungary"
 msgstr "Maďarsko"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -8802,6 +8807,11 @@ msgstr "Včetně ECM v http streamech"
 #
 msgid "Include EIT in http streams"
 msgstr "Včetně EIT v http streamech"
+
+#
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Včetně AIT v http streamech"
 
 #
 #, fuzzy
@@ -10140,8 +10150,8 @@ msgstr "Prohledávání médií"
 
 #
 #, fuzzy
-msgid "Media service"
-msgstr "Přidat program"
+msgid "Media service player"
+msgstr "Přehrávač médií"
 
 #
 msgid "Medium is not a writeable DVD!"
@@ -10736,7 +10746,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "NCam webif disabled"
-msgstr "Zakázat vynucení"
+msgstr "modul zakázán"
 
 #
 msgid "NEXT"
@@ -11289,9 +11299,6 @@ msgstr "neprobíhá"
 msgid "Not tested:"
 msgstr "Netestováno:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Poznámka: chcete-li, aby po probouzení přijímač přecházel do Standby, nastavte v 'Přizpůsobení' volbu 'Po startu přepnout do Standby' na 'Ne, kromě časovače probouzení'."
-
 #
 #, fuzzy
 msgid "Nothing"
@@ -11420,6 +11427,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "Zakázat vynucení"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Моdel"
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -11513,6 +11524,11 @@ msgstr "Rychlé otáčení paraboly pouze před touto hodinou."
 
 msgid "Only on startup"
 msgstr "Pouze při startu"
+
+#
+#, fuzzy
+msgid "Only power off"
+msgstr "Povolit časovač vypnutí"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Zvolte pouze 'Ano', pokud používáte multiswitch, který vyžaduje DiSEqC Port-A příkazový signál. Pro všechna ostatní nastavení zvolte 'Ne'."
@@ -12495,8 +12511,9 @@ msgstr "Stav provozní LED v pohotovostním stavu."
 msgid "Power On Display"
 msgstr "Zapnout displej"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Časovač vypnutí"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Řízení spotřeby. Další informace získáte v návodu k přijímači."
@@ -13205,6 +13222,11 @@ msgstr "záznam"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Umístění nahrávání"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Nastavení nahrávání"
@@ -15927,6 +15949,11 @@ msgid "Single EPG"
 msgstr "EPG programu"
 
 #
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Jeden"
+
+#
 msgid "Single line mode"
 msgstr "Jednořádkový mód"
 
@@ -16500,12 +16527,12 @@ msgid "Starts in a few seconds"
 msgstr "začne během několika vteřin"
 
 #
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Po startu přepne přijímač do pohotovostního režimu."
 
-#
-msgid "Startup to Standby"
-msgstr "Po startu přepnout do Standby"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #
 #, fuzzy
@@ -17035,7 +17062,7 @@ msgstr ""
 "Pro případné korekce můžete kontaktovat autora\n"
 "na výše uvedené adrese.\n"
 "\n"
-"®18.5.2022"
+"®25.6.2022"
 
 #
 msgid "TS file is too large for ISO9660 level 1!"
@@ -18359,6 +18386,11 @@ msgid "Twi"
 msgstr "Dva"
 
 #
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Tuner"
+
+#
 msgid "Two"
 msgstr "Dva"
 
@@ -19420,6 +19452,10 @@ msgstr "Při povolení budou přidávána EIT data do streamu. To umožní klien
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Jestliže je povoleno, funkce HDMI-CEC je ve standardní konfiguraci povolena"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Při povolení budou přidávána AIT data do streamu. To umožní klientskému přijímači používat HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Při povolení bude zobrazována zpráva po skončení přehrávání před začátkem nového přehrávání."
 
@@ -19639,6 +19675,10 @@ msgstr "Jestliže je povoleno, přijímač bude vybírat AC3+ stopu (bude-li dos
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Jestliže je povoleno, přijímač bude detekovat aktivitu na vstupu VCR SCART."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Poznámka: chcete-li, aby po probouzení přijímač přecházel do Standby, nastavte v 'Přizpůsobení' volbu 'Po startu přepnout do Standby' na 'Ne, kromě časovače probouzení'."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Při nenulové hodnotě nahrávání začne dříve, než je čas začátku uvedený v EPG."
@@ -20857,6 +20897,10 @@ msgid "minutes"
 msgstr "%d minut"
 
 #
+msgid "module disabled"
+msgstr "modul zakázán"
+
+#
 msgid "month"
 msgstr "měsíc"
 
@@ -21472,8 +21516,9 @@ msgstr "do standby/restartu"
 msgid "use best / controlled by HDMI"
 msgstr "použít nejlepší / řízeno pomocí HDMI"
 
+#, fuzzy
 msgid "use_hdmi_cacenter"
-msgstr ""
+msgstr "použít HDMI cacenter"
 
 #
 msgid "user defined"

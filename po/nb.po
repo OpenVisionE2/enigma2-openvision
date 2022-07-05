@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2022-04-29 18:05+0200\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
@@ -3329,11 +3329,6 @@ msgid "CH%s"
 msgstr "CH%s"
 
 #
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "FCC aktivert"
-
-#
 msgid "CI (Common Interface) Setup"
 msgstr "CI (Common Interface) oppsett"
 
@@ -3353,6 +3348,11 @@ msgstr ""
 #
 msgid "CI assignment"
 msgstr "CI tildeling"
+
+#
+#, fuzzy
+msgid "CI enabled"
+msgstr "FCC aktivert"
 
 #
 msgid "CI slot: "
@@ -3863,7 +3863,7 @@ msgstr "Velg om flerkanals aac+-lydspor skal nedmikses til stereo."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Velg om WMA Pro lydspor skal nedmikses."
+msgstr "Velg om flerkanals aac+-lydspor skal nedmikses til stereo."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
@@ -4042,6 +4042,10 @@ msgstr "Kombinert"
 
 msgid "Combo"
 msgstr "Kombi"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Velg tuner"
 
 #, fuzzy
 msgid "Comedy"
@@ -4935,9 +4939,8 @@ msgstr "DTS"
 msgid "DTS downmix"
 msgstr "DTS nedskalering"
 
-#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr "DTS-HD HR/DTS-HD MA/DTS"
+msgstr ""
 
 #
 msgid "DUAL LAYER DVD"
@@ -8348,6 +8351,9 @@ msgstr "Ungarsk"
 msgid "Hungary"
 msgstr "Ungarn"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -8596,6 +8602,10 @@ msgstr "Inkluder ECM i http strømmer"
 
 msgid "Include EIT in http streams"
 msgstr "Inkluder EIT i http strømmer"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Inkluder AIT i http strømmer"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9915,8 +9925,8 @@ msgstr "Mediesøker"
 
 #
 #, fuzzy
-msgid "Media service"
-msgstr "Legg til kanal"
+msgid "Media service player"
+msgstr "Mediespiller"
 
 #
 msgid "Medium is not a writeable DVD!"
@@ -11037,9 +11047,6 @@ msgstr "kjører ikke"
 msgid "Not tested:"
 msgstr "Ikke testet:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "NB: Hvis aktivert og du ønsker standby modus etter vekking, brukes valget 'Oppstart til Standby' som 'Nei, unntatt tidsur tid'."
-
 #
 #, fuzzy
 msgid "Nothing"
@@ -11163,6 +11170,11 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "styrke deaktivert"
 
+#
+#, fuzzy
+msgid "OTT Model"
+msgstr "Type"
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -11251,6 +11263,10 @@ msgstr "Bare flytt parabolen raskt før denne time."
 
 msgid "Only on startup"
 msgstr "Bare etter oppstart"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Bruk våkne timer"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Bare velg 'Ja' Hvis du bruker en multiswich som krever et DiSEqC Port-A kommando signal. For alle andre oppsett velger du \"nei\"."
@@ -12212,8 +12228,10 @@ msgstr "LED-status i standby-modus"
 msgid "Power On Display"
 msgstr "Slå på display"
 
+#
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Sorter tid"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Strømstyring. Se i din mottakers bruksanvisning for mer informasjon."
@@ -12890,6 +12908,11 @@ msgstr "Tar opp"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Opptaksbane"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Opptaks innstilling"
@@ -15557,6 +15580,11 @@ msgstr "Enkel"
 msgid "Single EPG"
 msgstr "Kanal EPG"
 
+#
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Enkel"
+
 msgid "Single line mode"
 msgstr "Én linje-modus"
 
@@ -16108,11 +16136,12 @@ msgstr "Starter på"
 msgid "Starts in a few seconds"
 msgstr "starter innen få sekunder"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Slå på mottakeren i standby"
 
-msgid "Startup to Standby"
-msgstr "Slå på til standby"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -17957,6 +17986,11 @@ msgid "Twi"
 msgstr "To"
 
 #
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Tuner"
+
+#
 msgid "Two"
 msgstr "To"
 
@@ -18978,6 +19012,10 @@ msgstr "Hvis aktivert, vil EIT data inngå i http strømmer. Dette tillater klie
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Hvis aktivert, blir HDMI-CEC aktivert med standard innstilling"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Hvis aktivert, vil AIT data inngå i http strømmer. Dette tillater en klient mottaker å bruke HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Hvis aktivert, en popup-melding vil bli vist når en film er ferdig og den neste vil starte."
 
@@ -19194,6 +19232,10 @@ msgstr "Hvis aktivert, vil mottakeren bruke AC3+ spor (når tilgjengelig)."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Hvis aktivert, vil mottakeren oppdage aktivitet på VCR SCART inngangen."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "NB: Hvis aktivert og du ønsker standby modus etter vekking, brukes valget 'Oppstart til Standby' som 'Nei, unntatt tidsur tid'."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Når annet tall enn null er valgt vil et opptak starte tidligere enn starttiden angitt av EPG."
@@ -20396,6 +20438,11 @@ msgid "minutes"
 msgstr "%d minutter"
 
 #
+#, fuzzy
+msgid "module disabled"
+msgstr "styrke deaktivert"
+
+#
 msgid "month"
 msgstr "måned"
 
@@ -20996,6 +21043,7 @@ msgstr "til slår av/starter på nytt"
 msgid "use best / controlled by HDMI"
 msgstr "bruk best / kontrollert av HDMI"
 
+#, fuzzy
 msgid "use_hdmi_cacenter"
 msgstr "bruk HDMI forhåndsvalg"
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -3363,11 +3363,6 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
-#
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "Tilsluttet"
-
 msgid "CI (Common Interface) Setup"
 msgstr "CI (Common Interface) Setup"
 
@@ -3388,6 +3383,11 @@ msgstr ""
 #
 msgid "CI assignment"
 msgstr "CI tildeling"
+
+#
+#, fuzzy
+msgid "CI enabled"
+msgstr "Tilsluttet"
 
 msgid "CI slot: "
 msgstr "CI port: "
@@ -4056,6 +4056,10 @@ msgstr "Farve format"
 
 msgid "Combo"
 msgstr ""
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Vælg Tuner"
 
 #, fuzzy
 msgid "Comedy"
@@ -8450,6 +8454,9 @@ msgstr "Ungarsk"
 msgid "Hungary"
 msgstr "Ungarsk"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -8701,6 +8708,10 @@ msgstr "Inkluder ECM i http stream"
 
 msgid "Include EIT in http streams"
 msgstr "Inkluder EIT i http stream"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Inkluder AIT i http stream"
 
 #, fuzzy
 msgid "Include action map data"
@@ -10014,8 +10025,8 @@ msgstr "Mediescanner"
 
 #
 #, fuzzy
-msgid "Media service"
-msgstr "Tilføj kanal"
+msgid "Media service player"
+msgstr "Medie afspiller"
 
 #
 msgid "Medium is not a writeable DVD!"
@@ -11158,9 +11169,6 @@ msgstr "Ved begyndelsen"
 msgid "Not tested:"
 msgstr "Ikke testet: "
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr ""
-
 #
 #, fuzzy
 msgid "Nothing"
@@ -11290,6 +11298,11 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "slukket"
 
+#
+#, fuzzy
+msgid "OTT Model"
+msgstr "Modus [ Satellit konfigurations modus]"
+
 msgid "OVR"
 msgstr ""
 
@@ -11378,6 +11391,10 @@ msgstr ""
 
 msgid "Only on startup"
 msgstr "Kun ved opstart"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Aktiver wakeup timer"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr ""
@@ -12343,8 +12360,10 @@ msgstr "Luk ned når standby er aktiv"
 msgid "Power On Display"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Sorter tid"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr ""
@@ -13041,6 +13060,11 @@ msgstr "Optager"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Sti til optagelse"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Optagelses Setup"
@@ -15748,6 +15772,11 @@ msgstr "Enkelt EPG"
 
 #
 #, fuzzy
+msgid "Single Tuner"
+msgstr "Enkelt"
+
+#
+#, fuzzy
 msgid "Single line mode"
 msgstr "Vælg video type"
 
@@ -16314,11 +16343,12 @@ msgstr "Starter på"
 msgid "Starts in a few seconds"
 msgstr "Start offline dekodning"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Start set top boxen i standby"
 
-msgid "Startup to Standby"
-msgstr "Startup i standby"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #
 #, fuzzy
@@ -18195,6 +18225,11 @@ msgid "Twi"
 msgstr "To"
 
 #
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Tuner"
+
+#
 msgid "Two"
 msgstr "To"
 
@@ -19261,6 +19296,10 @@ msgstr "Ved aktivering vil EIT data blive inkluderet i http streams. Dette giver
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Ved aktivering bruges DHCP ved IP konfigurationen."
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Ved aktivering vil AIT data blive inkluderet i http streams. Dette giver klient receiveren mulighed for at bruge HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Ved aktivering vil der dukke en besked op når en film afsluttes og den næste starter."
 
@@ -19481,6 +19520,9 @@ msgstr "Ved aktivering vil receiveren væge et AC3+ lydspor (hvis det er tilgæn
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Ved aktivering vil din receiver automatisk opdage aktivitet på VCR SCART indgangen."
+
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr ""
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Ved andre værdier end nul vil optagelsen starte tidligere end den start tid der er angivet af EPG."
@@ -20690,6 +20732,11 @@ msgstr "%d minut"
 #, fuzzy
 msgid "minutes"
 msgstr "%d minutter"
+
+#
+#, fuzzy
+msgid "module disabled"
+msgstr "slukket"
 
 #
 msgid "month"

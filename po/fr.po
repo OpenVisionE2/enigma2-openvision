@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
-"PO-Revision-Date: 2022-05-08 10:55+0200\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
+"PO-Revision-Date: 2022-06-21 18:47+0200\n"
 "Last-Translator: Pr2\n"
 "Language-Team: french\n"
 "Language: fr\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 
 msgid ""
 "\n"
@@ -3116,10 +3116,6 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "FCC activé"
-
 msgid "CI (Common Interface) Setup"
 msgstr "Configuration CI (Interface Commune)"
 
@@ -3138,6 +3134,9 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "Assignation CI"
+
+msgid "CI enabled"
+msgstr "CI activé"
 
 msgid "CI slot: "
 msgstr "Slot CI: "
@@ -3607,11 +3606,11 @@ msgstr "Défini si la piste son AC3 doit être transcodée."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Défini si la piste audio multi canaux AAC+ doit être remixées en stéréo."
+msgstr "Choisissez si les pistes sonores multicanaux DTS-HD(HR/MA) doivent être downmixées ou transcodées."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Défini si la piste audio WMA Pro  doit être remixées en stéréo."
+msgstr "Choisissez si les pistes sonores multicanaux DTS-HD(HR/MA) doivent être downmixées ou transcodées."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
@@ -3773,6 +3772,10 @@ msgstr "Combiné"
 
 msgid "Combo"
 msgstr "Combo"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Choisir tuner"
 
 #, fuzzy
 msgid "Comedy"
@@ -4603,9 +4606,8 @@ msgstr "DTS"
 msgid "DTS downmix"
 msgstr "Downmix DTS"
 
-#, fuzzy
 msgid "DTS/DTS-HD HR/DTS-HD MA/DTS:X"
-msgstr "DTS-HD HR/DTS-HD MA/DTS"
+msgstr ""
 
 msgid "DUAL LAYER DVD"
 msgstr "DVD DOUBLE COUCHE"
@@ -7723,6 +7725,9 @@ msgstr "Hongrois"
 msgid "Hungary"
 msgstr "Hongrie"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -7956,6 +7961,10 @@ msgstr "Inclure ECM dans les flux HTTP"
 
 msgid "Include EIT in http streams"
 msgstr "Inclure EIT dans les flux HTTP"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Inclure AIT dans les flux HTTP"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9135,8 +9144,8 @@ msgid "Media scanner"
 msgstr "Media scanner"
 
 #, fuzzy
-msgid "Media service"
-msgstr "Ajouter service"
+msgid "Media service player"
+msgstr "Lecteur multimédia"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "Ce support n'est pas un DVD enregistrable!"
@@ -9656,7 +9665,7 @@ msgstr ""
 
 #, fuzzy
 msgid "NCam webif disabled"
-msgstr "forcer désactivé"
+msgstr "module désactivé"
 
 msgid "NEXT"
 msgstr "SUIVANT"
@@ -10134,9 +10143,6 @@ msgstr "Ne fonctionne pas"
 msgid "Not tested:"
 msgstr "Pas testé:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Note: lorsqu’activé, et que vous voulez mettre votre récepteur en veille après un réveil, mettre l’option ‘Démarrer en mode veille ‘ sur ‘Non, excepté la minuterie de réveil’."
-
 #, fuzzy
 msgid "Nothing"
 msgstr "rien"
@@ -10253,6 +10259,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "forcer désactivé"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Modèle"
+
 msgid "OVR"
 msgstr "ECR"
 
@@ -10335,6 +10345,10 @@ msgstr "Déplacer uniquement l’antenne rapidement avant cette heure."
 
 msgid "Only on startup"
 msgstr "Seulement au démarrage"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Activation de la minuterie de mise hors tension"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Choisir ‘oui’ uniquement si vous utilisez un multiswitch qui requière un signal de commande DiSEqC Port-A. Pour toutes les autres configuration choisir ‘non’."
@@ -11190,8 +11204,9 @@ msgstr "État de la LED de fonctionnement en veille"
 msgid "Power On Display"
 msgstr "Allumage de l’affichage"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Minuterie de mise hors tension"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Gestion de l’alimentation. Consultez le manuel de votre récepteur pour plus d’information."
@@ -11811,6 +11826,11 @@ msgstr "Enregistrement"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Chemins des enregistrements"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Configuration enregistrement"
@@ -14228,6 +14248,10 @@ msgstr "Unique"
 msgid "Single EPG"
 msgstr "EPG Unique"
 
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Unique"
+
 msgid "Single line mode"
 msgstr "Mode ligne unique"
 
@@ -14729,11 +14753,12 @@ msgstr "Démarre sur"
 msgid "Starts in a few seconds"
 msgstr "démarre dans quelques secondes"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Démarrer le récepteur en mode veille"
 
-msgid "Startup to Standby"
-msgstr "Démarrer en veille"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -15205,7 +15230,7 @@ msgstr ""
 "\n"
 "Support: https://www.openpli.org/\n"
 "Traducteur: Pr2\n"
-"Dernière MÀJ: 08-05-2022"
+"Dernière MÀJ: 19-06-2022"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "Fichier TS trop grand pour le niveau 1 ISO9660!"
@@ -16412,6 +16437,10 @@ msgstr "Tuvalu"
 msgid "Twi"
 msgstr "Deux"
 
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Tuner"
+
 msgid "Two"
 msgstr "Deux"
 
@@ -17371,6 +17400,10 @@ msgstr "Lorsqu'elle est activée, les données EIT seront inclus dans les flux h
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Lorsqu'elle est activée, l’HDMI-CEC est activé dans la configuration standard"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Lorsqu'elle est activée, les données de l'AIT seront inclus dans les flux http. Cela permet à un récepteur client d'utiliser HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Lorsqu'elle est activée, un message contextuel s'affiche quand un film est terminé et que le prochain va commencer."
 
@@ -17587,6 +17620,10 @@ msgstr "Lorsqu'elle est activée, le récepteur sélectionne une piste AC3+ (si 
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Lorsqu'elle est activée, le récepteur détectera l'activité sur l'entrée péritel magnétoscope."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Note: lorsqu’activé, et que vous voulez mettre votre récepteur en veille après un réveil, mettre l’option ‘Démarrer en mode veille ‘ sur ‘Non, excepté la minuterie de réveil’."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Lorsque différent de zéro, un enregistrement commence plus tôt que l'heure de départ indiquée par le guide des programmes."
@@ -18701,6 +18738,9 @@ msgstr "%d minute"
 msgid "minutes"
 msgstr "%d minutes"
 
+msgid "module disabled"
+msgstr "module désactivé"
+
 msgid "month"
 msgstr "Mois"
 
@@ -19236,8 +19276,9 @@ msgstr "Jusqu'à veille/redémarrage"
 msgid "use best / controlled by HDMI"
 msgstr "utilise le meilleur / contrôlé par HDMI"
 
+#, fuzzy
 msgid "use_hdmi_cacenter"
-msgstr "utiliser_hdmi_cacenter"
+msgstr "utiliser HDMI cacenter"
 
 msgid "user defined"
 msgstr "Défini par l'utilisateur"

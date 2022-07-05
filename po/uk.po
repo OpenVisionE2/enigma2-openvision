@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2021-03-11 01:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: kvinto\n"
@@ -1756,9 +1756,8 @@ msgstr "AAC мікшування"
 msgid "AAC plus downmix"
 msgstr "AAC мікшування"
 
-#, fuzzy
 msgid "AAC transcoding"
-msgstr "Перекодування: "
+msgstr "Перекодування AAC"
 
 msgid "AC3"
 msgstr ""
@@ -1768,7 +1767,7 @@ msgstr "AC3 мікшування"
 
 #, fuzzy
 msgid "AC3 plus transcoding"
-msgstr "Перекодування: "
+msgstr "Перекодування AC3"
 
 msgid "ACQUIRING TSID/ONID"
 msgstr ""
@@ -3137,10 +3136,6 @@ msgstr "КАН"
 msgid "CH%s"
 msgstr "КАН%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "ввімкнуто"
-
 msgid "CI (Common Interface) Setup"
 msgstr "Налаштування CI (Common Interface)"
 
@@ -3159,6 +3154,10 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "Призначення CI"
+
+#, fuzzy
+msgid "CI enabled"
+msgstr "FCC ввімкнуто"
 
 msgid "CI slot: "
 msgstr "CI слот: "
@@ -3619,25 +3618,24 @@ msgstr ""
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
-#, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
-msgstr "Налаштуйте, чи слід змішувати багатоканальну звукову доріжку в стерео звук."
+msgstr "Виберіть, чи слід перекодувати звукові доріжки AAC."
 
 #, fuzzy
 msgid "Choose whether AC3 Plus sound tracks should be transcoded to AC3."
-msgstr "Налаштуйте, чи слід змішувати багатоканальну звукову доріжку в стерео звук."
+msgstr "Виберіть, чи слід перекодувати звукові доріжки AC3."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Налаштуйте, чи слід змішувати багатоканальну звукову доріжку в стерео звук."
+msgstr "Виберіть, чи слід перекодувати багатоканальні звукові доріжки aac+ в стерео звук."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Налаштуйте, чи слід змішувати багатоканальну звукову доріжку в стерео звук."
+msgstr "Виберіть, чи слід перекодувати багатоканальні звукові доріжки aac+ в стерео звук."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
-msgstr "Налаштуйте, чи слід змішувати багатоканальну звукову доріжку в стерео звук."
+msgstr "Виберіть, чи слід перекодувати багатоканальні звукові доріжки aac+ в стерео звук."
 
 msgid "Choose whether to scan a single transponder, one satellite or multiple satellites."
 msgstr "Виберіть, чи потрібно сканувати один транспондер, один супутник чи декілька супутників."
@@ -3795,6 +3793,10 @@ msgstr "Комбіновані"
 
 msgid "Combo"
 msgstr "Комбо"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Вибір Тюнера"
 
 #, fuzzy
 msgid "Comedy"
@@ -4606,9 +4608,8 @@ msgstr "Чехія"
 msgid "D"
 msgstr "D"
 
-#, fuzzy
 msgid "DAC"
-msgstr "PDC"
+msgstr "DAC"
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -4925,7 +4926,7 @@ msgstr "За замовчуванням"
 
 #, fuzzy
 msgid "Define additional delay in milliseconds before start of http(s) streams."
-msgstr "Затримка в мілісекундах перед початком прокрутки тексту на дисплеї."
+msgstr "Задайте додаткову затримку в мс-дах перед початком http(s) потоків, напр. для підключення віддаленого тюнера Ви використовуєте складну систему DiSEqC."
 
 msgid "Defined / Active"
 msgstr ""
@@ -5300,13 +5301,12 @@ msgstr "Вимкнуто"
 msgid "Disable Animations"
 msgstr "Вимкнути таймер"
 
-#, fuzzy
 msgid "Disable FCC during recordings"
-msgstr "Завжди включати ECM у записи"
+msgstr "Вимкнути FCC під час запису"
 
 #, fuzzy
 msgid "Disable Fast Channel Change"
-msgstr "Швидкий пошук по іменах каналів"
+msgstr "Швидка зміна каналу"
 
 msgid "Disable Picture in Picture"
 msgstr "Вимкнути РіР"
@@ -5674,7 +5674,7 @@ msgstr[2] "Виконано - Встановлено, оновлено чи ви
 
 #, fuzzy
 msgid "Down"
-msgstr "DTS мікшування"
+msgstr "Мікшування"
 
 #, fuzzy
 msgid "Download error"
@@ -5708,9 +5708,8 @@ msgstr "Спроба завантажити новий список пакеті
 msgid "Downloading plugin information. Please wait..."
 msgstr "Завантаження інформації про додатки. Зачекайте..."
 
-#, fuzzy
 msgid "Downmix"
-msgstr "DTS мікшування"
+msgstr "Мікшування"
 
 msgid "Drama"
 msgstr ""
@@ -5819,7 +5818,7 @@ msgstr "ПОМИЛКА - сканування невдале (%s)!"
 
 #, fuzzy, python-format
 msgid "ERROR downloading file %s"
-msgstr "ПОМИЛКА завантаження файлу /etc/enigma2/%s"
+msgstr "ПОМИЛКА завантаження файлу %s/%s"
 
 msgid "East"
 msgstr "Схід"
@@ -5927,14 +5926,14 @@ msgstr "Включити швидке автосканування"
 
 #, fuzzy
 msgid "Enable BT audio"
-msgstr "Включити редагування фавориту"
+msgstr "Включити аудіо Bluetooth"
 
 msgid "Enable EIT EPG"
 msgstr "Включити EIT ЕПГ"
 
 #, fuzzy
 msgid "Enable Fast Channel Change"
-msgstr "Включити автосканування кабельного ТБ"
+msgstr "Швидка зміна каналу"
 
 msgid "Enable Focus Animation"
 msgstr ""
@@ -6663,13 +6662,11 @@ msgstr ""
 msgid "FCC 1953"
 msgstr ""
 
-#, fuzzy
 msgid "FCC enabled"
-msgstr "ввімкнуто"
+msgstr "FCC ввімкнуто"
 
-#, fuzzy
 msgid "FCCSetup"
-msgstr "Налаштування"
+msgstr "FCC Налаштування"
 
 msgid "FEC"
 msgstr "ФЕК"
@@ -6825,13 +6822,13 @@ msgid "Fast"
 msgstr "Швидко"
 
 msgid "Fast Channel Change"
-msgstr ""
+msgstr "Швидка зміна каналу"
 
 msgid "Fast Channel Change Setup"
-msgstr ""
+msgstr "Налаштування Швидкої зміни каналу"
 
 msgid "Fast Channel Change setup"
-msgstr ""
+msgstr "Налаштування швидкої зміни каналу"
 
 msgid "Fast DiSEqC"
 msgstr "Швидкий DiSEqC"
@@ -7195,7 +7192,7 @@ msgstr "Загальна AC3 затримка"
 
 #, fuzzy
 msgid "General BT audio delay"
-msgstr "Загальна AC3 затримка"
+msgstr "Загальна аудіо-bluetooth затримка"
 
 msgid "General PCM delay"
 msgstr "Загальна PCM затримка"
@@ -7434,7 +7431,7 @@ msgid "HD list"
 msgstr "Список HD"
 
 msgid "HDMI"
-msgstr ""
+msgstr "HDMI"
 
 msgid "HDMI Colordepth"
 msgstr "Глибина кольору HDMI"
@@ -7625,9 +7622,8 @@ msgstr ""
 msgid "Hiri Motu"
 msgstr ""
 
-#, fuzzy
 msgid "History Prev/Next"
-msgstr "Вперед в історії"
+msgstr "Історія Попередня/Далі"
 
 msgid "History back"
 msgstr "Назад в історії"
@@ -7749,6 +7745,9 @@ msgstr "Венгерська"
 
 msgid "Hungary"
 msgstr "Венгрія"
+
+msgid "Hybrid Tuner"
+msgstr ""
 
 msgid "I"
 msgstr "I"
@@ -7986,6 +7985,10 @@ msgstr "Додати ECM до http потоку"
 
 msgid "Include EIT in http streams"
 msgstr "Додати EIT до http потоку"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Додати AIT до http потоку"
 
 #, fuzzy
 msgid "Include action map data"
@@ -8524,7 +8527,7 @@ msgstr ""
 
 #, fuzzy
 msgid "LED color during recording"
-msgstr "Завжди включати ECM у записи"
+msgstr "Вимкнути FCC під час запису"
 
 #, fuzzy
 msgid "LED color during recording in standby"
@@ -9169,8 +9172,8 @@ msgid "Media scanner"
 msgstr "Медіа сканер"
 
 #, fuzzy
-msgid "Media service"
-msgstr "Додати канал"
+msgid "Media service player"
+msgstr "Медіа плеєр"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "Носій не є записуючим DVD!"
@@ -10168,9 +10171,6 @@ msgstr "не працює"
 msgid "Not tested:"
 msgstr "Не протестовано:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Примітка: якщо цей параметр увімкнено, і Вам потрібен режим очікування після пробудження, встановіть опцію `Запуск в режим очікування' як `Ні, крім таймера пробудження'."
-
 #, fuzzy
 msgid "Nothing"
 msgstr "нічого"
@@ -10287,6 +10287,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "примусово вимкнуто"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Модель"
+
 msgid "OVR"
 msgstr ""
 
@@ -10369,6 +10373,10 @@ msgstr "Швидко переміщувати антену до цього ча�
 
 msgid "Only on startup"
 msgstr "Тільки при включенні"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Включити таймер пробудження"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Виберіть 'Так' коли Ви використовуєте мультисвіч, який вимагає команду DiSEqC Port-A. Для всіх інших налаштувань виберіть 'Ні'."
@@ -11224,8 +11232,9 @@ msgstr "Яскравість LED у режимі очікування"
 msgid "Power On Display"
 msgstr "Включення дисплею"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Сортувати за часом"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Управління живленням. Для отримання додаткової інформації зверніться до керівництва вашого приймача."
@@ -11823,7 +11832,7 @@ msgid "Receiver name"
 msgstr "Назва пристрою:"
 
 msgid "Receiver or driver does not support FCC"
-msgstr ""
+msgstr "Приймач або драйвер не підтримують FCC"
 
 #, python-format
 msgid "Receiver with IP %s is turned off."
@@ -11845,6 +11854,11 @@ msgstr "Запис"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Місце записів"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Налаштування запису"
@@ -14265,6 +14279,10 @@ msgstr "Простий"
 msgid "Single EPG"
 msgstr "Простий ЕПГ"
 
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Простий"
+
 msgid "Single line mode"
 msgstr "Режим одного рядка"
 
@@ -14766,11 +14784,12 @@ msgstr "Почати з"
 msgid "Starts in a few seconds"
 msgstr "починається через кілька секунд"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Ініціювання тюнера в режимі очікування"
 
-msgid "Startup to Standby"
-msgstr "Запуск з режиму очікування"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -15211,7 +15230,7 @@ msgid "T2MI PID"
 msgstr ""
 
 msgid "T2MI PLP"
-msgstr ""
+msgstr "T2MI PLP"
 
 msgid "T2MI PLP ID"
 msgstr ""
@@ -15238,7 +15257,7 @@ msgstr "Деталі про плагін: "
 
 msgid "TRANSLATOR_INFO"
 msgstr ""
-"Переклад:  kvinto - 10.04.2022\n"
+"Переклад:  kvinto - 29.05.2022\n"
 "Пошта:  badsystem@ukr.net"
 
 msgid "TS file is too large for ISO9660 level 1!"
@@ -15825,7 +15844,7 @@ msgstr "Цей параметр дозволяє відобразити шлях
 
 #, fuzzy
 msgid "This option allows you to switch audio to BT speakers."
-msgstr "Цей параметр дозволяє Вам налаштувати рівень автозвуку."
+msgstr "Ця опція дозволяє перемикати звук на динаміки Bluetooth."
 
 #, fuzzy
 msgid "This option allows you to use video sync mode."
@@ -15839,7 +15858,7 @@ msgstr "Цей параметр може бути корисним для дов
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
-msgstr "Налаштування загальної затримки звукових доріжок із стереозвуком."
+msgstr "Цей параметр налаштовує загальну затримку звуку для динаміків Bluetooth."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Цей параметр встановлює рівень придушення москітного шуму (Mosquito Noise є випадковим псевдонімом в результаті сильного стиснення). Очевидно, що це відбувається за рахунок деталей зображення."
@@ -16445,6 +16464,10 @@ msgstr "Тувалу"
 #, fuzzy
 msgid "Twi"
 msgstr "Два"
+
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Тюнер"
 
 msgid "Two"
 msgstr "Два"
@@ -17127,7 +17150,7 @@ msgstr "Безпровідне з'єднання WLAN"
 
 #, fuzzy
 msgid "WMA Pro"
-msgstr "AAC мікшування"
+msgstr "WMA Pro мікшування"
 
 #, fuzzy
 msgid "WPA"
@@ -17401,6 +17424,10 @@ msgstr "Якщо задіяно, дані EIT будуть включені в h
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Якщо ввімкнено, HDMI-CEC увімкнено із стандартною конфігурацією"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Якщо задіяно, AIT дані будуть включені в HTTP-потоки. Це дозволить клієнтам приймача використовувати HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Показати спливаюче вікно, коли один фільм закінчився, а наступний починається."
 
@@ -17617,6 +17644,10 @@ msgstr "Якщо ця функція включена, то приймач бу�
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Якщо увімкнено, приймач виявить активність на вході VCR SCART."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Примітка: якщо цей параметр увімкнено, і Вам потрібен режим очікування після пробудження, встановіть опцію `Запуск в режим очікування' як `Ні, крім таймера пробудження'."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Вкажіть на скільки хвилин раніше, ніж час початку передачі по телегіду, починати запис."
@@ -18083,9 +18114,8 @@ msgstr "Замбія"
 msgid "Zap"
 msgstr "Переключити"
 
-#, fuzzy
 msgid "Zap Up/Down"
-msgstr "Переключити вниз"
+msgstr "Переключити Ввех/Вниз"
 
 #, fuzzy
 msgid "Zap and record"
@@ -18386,14 +18416,13 @@ msgid "controlled by HDMI"
 msgstr "управляється HDMI"
 
 msgid "convert to AC3"
-msgstr ""
+msgstr "конвертувати в AC3"
 
 msgid "convert to DTS"
-msgstr ""
+msgstr "конвертувати в DTS"
 
-#, fuzzy
 msgid "convert to multi-channel PCM"
-msgstr "Багатоканальне PCM"
+msgstr "конвертувати в багатоканальне PCM"
 
 msgid "cooking"
 msgstr "приготування їжі"
@@ -18510,9 +18539,8 @@ msgid "experimental film/video"
 msgstr "експериментальний фільм/відео"
 
 msgid "extra wide"
-msgstr "надширокий"
+msgstr "дуже широкий"
 
-#, fuzzy
 msgid "extrawide"
 msgstr "надширокий"
 
@@ -18632,8 +18660,9 @@ msgstr ""
 msgid "horizontal"
 msgstr "горизонталь"
 
+#, fuzzy
 msgid "http(s) stream start delay"
-msgstr ""
+msgstr "Затримка початку потоку HTTP(s)."
 
 msgid "https://github.com/OpenVisionE2"
 msgstr ""
@@ -18732,6 +18761,10 @@ msgstr "%d хвилина"
 #, fuzzy
 msgid "minutes"
 msgstr "%d хвилин"
+
+#, fuzzy
+msgid "module disabled"
+msgstr "примусово вимкнуто"
 
 msgid "month"
 msgstr "місяць"
@@ -18925,9 +18958,8 @@ msgstr "популярна культура/традиційні мистецт�
 msgid "pre-school children's program"
 msgstr "дитяча програма дошкільного віку"
 
-#, fuzzy
 msgid "priority"
-msgstr "Пріоритет"
+msgstr "пріоритет"
 
 #, fuzzy
 msgid "real or pseudo recordings"
@@ -19266,9 +19298,8 @@ msgstr "нестабільний"
 msgid "until standby/restart"
 msgstr "до режиму очікування/перезавантаження"
 
-#, fuzzy
 msgid "use best / controlled by HDMI"
-msgstr "управляється HDMI"
+msgstr "використовувати найкраще/керується HDMI"
 
 msgid "use_hdmi_cacenter"
 msgstr ""

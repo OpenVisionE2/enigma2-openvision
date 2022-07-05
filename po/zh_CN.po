@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2021-07-31 17:00+0800\n"
 "Last-Translator: 孤独之剑 <haotzyy1970@yahoo.com>\n"
 "Language-Team: 孤独之剑 <haotzyy1970@yahoo.com>\n"
@@ -3119,10 +3119,6 @@ msgstr "频道"
 msgid "CH%s"
 msgstr "频道%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "启用"
-
 msgid "CI (Common Interface) Setup"
 msgstr "CI 通用接口选择"
 
@@ -3141,6 +3137,10 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "CI选择"
+
+#, fuzzy
+msgid "CI enabled"
+msgstr "启用"
 
 msgid "CI slot: "
 msgstr "CI插槽: "
@@ -3777,6 +3777,10 @@ msgstr "合并"
 
 msgid "Combo"
 msgstr "组合(Combo)"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "选择调谐器"
 
 #, fuzzy
 msgid "Comedy"
@@ -7729,6 +7733,9 @@ msgstr "匈牙利语"
 msgid "Hungary"
 msgstr "匈牙利"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -7961,6 +7968,10 @@ msgstr "媒体流里包含ECM"
 
 msgid "Include EIT in http streams"
 msgstr "媒体流里包含EIT"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "媒体流里包含AIT"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9141,8 +9152,8 @@ msgid "Media scanner"
 msgstr "媒体扫描器"
 
 #, fuzzy
-msgid "Media service"
-msgstr "添加频道"
+msgid "Media service player"
+msgstr "媒体播放器"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "媒介不是可写DVD!"
@@ -10140,9 +10151,6 @@ msgstr "未运行"
 msgid "Not tested:"
 msgstr "还未测试:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "注意:一旦启用,并且你想唤醒后进入待机模式,设置选项\"启动后进入待机“作为否,除了唤醒定时器."
-
 #, fuzzy
 msgid "Nothing"
 msgstr "无动作"
@@ -10259,6 +10267,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "强制禁用"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "模式"
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -10341,6 +10353,10 @@ msgstr "在这段时间前才能快速转动卫星天线."
 
 msgid "Only on startup"
 msgstr "仅仅在启动时"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "启用唤醒定时器"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "只有在使用需要DiSEqC端口A命令信号的多开关时,才选择'是'.对于所有其他设置,选择'否'."
@@ -11197,8 +11213,9 @@ msgstr "待机状态下LED的工作状态"
 msgid "Power On Display"
 msgstr "接通电源显示"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "按时间排序"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "电源管理.有关更多信息,请查阅接收器手册."
@@ -11818,6 +11835,11 @@ msgstr "正在录制"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "录制路径"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "录制设置"
@@ -14239,6 +14261,10 @@ msgstr "单个"
 msgid "Single EPG"
 msgstr "单个EPG"
 
+#, fuzzy
+msgid "Single Tuner"
+msgstr "单个"
+
 msgid "Single line mode"
 msgstr "单行模式"
 
@@ -14742,11 +14768,12 @@ msgstr "开始"
 msgid "Starts in a few seconds"
 msgstr "几秒钟后开始"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "待机模式下启动机顶盒"
 
-msgid "Startup to Standby"
-msgstr "启动后进入待机模式"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -16422,6 +16449,10 @@ msgstr "图瓦卢"
 msgid "Twi"
 msgstr "二"
 
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "调谐器"
+
 msgid "Two"
 msgstr "二"
 
@@ -17379,6 +17410,10 @@ msgstr "一旦启用,EIT数据将会被包含在多媒体流里面,这可以使�
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "启用时,HDMI-CEC 以标准配置启用"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "一旦启用,AIT数据将会被包含到多媒体流里面.这将会允许客户端接收机使用HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "一旦启用,在一部电影结束切下一步电影开始时将会显示弹出式信息框."
 
@@ -17596,6 +17631,10 @@ msgstr "一旦启用,接收机将选择AC3音轨（如果可用的话）."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "一旦启用,接受机将检测VCR SCART输入接口上的活动."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "注意:一旦启用,并且你想唤醒后进入待机模式,设置选项\"启动后进入待机“作为否,除了唤醒定时器."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "非零时,录制将早于EPG注明的时间开始."
@@ -18711,6 +18750,10 @@ msgstr "%d 分钟"
 #, fuzzy
 msgid "minutes"
 msgstr "%d 分钟"
+
+#, fuzzy
+msgid "module disabled"
+msgstr "强制禁用"
 
 msgid "month"
 msgstr "月"

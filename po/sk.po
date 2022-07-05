@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:28+0430\n"
+"POT-Creation-Date: 2022-07-05 20:37+0430\n"
 "PO-Revision-Date: 2022-04-05 10:41+0200\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
@@ -3138,10 +3138,6 @@ msgstr "CH"
 msgid "CH%s"
 msgstr "CH%s"
 
-#, fuzzy, python-format
-msgid "CI %s enabled"
-msgstr "zapnuté"
-
 msgid "CI (Common Interface) Setup"
 msgstr "Nastavenie CI (Common Interface) modulu"
 
@@ -3160,6 +3156,10 @@ msgstr ""
 
 msgid "CI assignment"
 msgstr "Priradenie CI"
+
+#, fuzzy
+msgid "CI enabled"
+msgstr "zapnuté"
 
 msgid "CI slot: "
 msgstr "CI slot: "
@@ -3796,6 +3796,10 @@ msgstr "Kombinované"
 
 msgid "Combo"
 msgstr "Combo"
+
+#, fuzzy
+msgid "Combo Tuner"
+msgstr "Zvoľte tuner"
 
 #, fuzzy
 msgid "Comedy"
@@ -7751,6 +7755,9 @@ msgstr "Maďarčina"
 msgid "Hungary"
 msgstr "Maďarsko"
 
+msgid "Hybrid Tuner"
+msgstr ""
+
 msgid "I"
 msgstr "I"
 
@@ -7987,6 +7994,10 @@ msgstr "Zahrnúť ECM do http streamov"
 
 msgid "Include EIT in http streams"
 msgstr "Zahrnúť EIT (EPG) do http streamov"
+
+#, fuzzy
+msgid "Include SDT, BAT in http streams"
+msgstr "Zahrnúť AIT (HbbTV) do http streamov"
 
 #, fuzzy
 msgid "Include action map data"
@@ -9170,8 +9181,8 @@ msgid "Media scanner"
 msgstr "Prehľadávač médií"
 
 #, fuzzy
-msgid "Media service"
-msgstr "Pridať stanicu"
+msgid "Media service player"
+msgstr "Prehrávač médií"
 
 msgid "Medium is not a writeable DVD!"
 msgstr "Médium nie je zapisovateľný disk DVD!"
@@ -10169,9 +10180,6 @@ msgstr "nebeží"
 msgid "Not tested:"
 msgstr "Netestované:"
 
-msgid "Note: when enabled, and you do want standby mode after wake up, set option 'Startup to Standby' as 'No, except Wakeup timer'."
-msgstr "Poznámka: Ak je povolené, a chcete prejsť do pohotovostného režimu po prebudení prijímača, nastavte voľbu \"Prebudenie do pohotovostného režimu\" na \"Nie, s výnimkou časovača prebudenia\"."
-
 #, fuzzy
 msgid "Nothing"
 msgstr "nič"
@@ -10288,6 +10296,10 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "vynútiť zakázanie"
 
+#, fuzzy
+msgid "OTT Model"
+msgstr "Model"
+
 msgid "OVR"
 msgstr "OVR"
 
@@ -10370,6 +10382,10 @@ msgstr "Pred touto hodinou iba rýchlo presunúť parabolu."
 
 msgid "Only on startup"
 msgstr "Iba pri spustení"
+
+#, fuzzy
+msgid "Only power off"
+msgstr "Povoliť časovač prebudenia prijímača"
 
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr "Vyberte 'áno' iba v prípade, ak používate multiprepínač ktorý vyžaduje signálny príkaz pre DiSEqC Port-A. Pre všetky ostatné nastavenia vyberte 'nie'."
@@ -11225,8 +11241,9 @@ msgstr "LED stav v pohotovostnom režime"
 msgid "Power On Display"
 msgstr "Zapnúť obrazovku"
 
+#, fuzzy
 msgid "Power Timers"
-msgstr ""
+msgstr "Triediť podľa času"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Správa napájania. Pre viac informácií si preštudujte návod k prijímaču."
@@ -11846,6 +11863,11 @@ msgstr "Nahrávanie"
 #, fuzzy
 msgid "Recording Actions"
 msgstr "Záznamové cesty"
+
+msgid ""
+"Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
+"Timer ended"
+msgstr ""
 
 msgid "Recording Setup"
 msgstr "Nastavenie nahrávania"
@@ -14266,6 +14288,10 @@ msgstr "Jeden"
 msgid "Single EPG"
 msgstr "Jeden EPG"
 
+#, fuzzy
+msgid "Single Tuner"
+msgstr "Jeden"
+
 msgid "Single line mode"
 msgstr "Režim jedného riadku"
 
@@ -14767,11 +14793,12 @@ msgstr "Začína"
 msgid "Starts in a few seconds"
 msgstr "začne o pár sekúnd"
 
-msgid "Startup the set top box in standby"
+#, fuzzy
+msgid "Startup the set top box in standby from deepstandby or from turn off."
 msgstr "Po štarte prepne set top box do pohotovostného režimu"
 
-msgid "Startup to Standby"
-msgstr "Po štarte prepnúť do pohotovostného režimu"
+msgid "Startup to standby from deepstandby or power off"
+msgstr ""
 
 #, fuzzy
 msgid "State"
@@ -16448,6 +16475,10 @@ msgstr "Tuvalu"
 msgid "Twi"
 msgstr "Dva"
 
+#, fuzzy
+msgid "Twin Tuner"
+msgstr "Tuner"
+
 msgid "Two"
 msgstr "Dva"
 
@@ -17401,6 +17432,10 @@ msgstr "Ak povolené, EIT údaje sa zahrnú do http streamov. To umožní vzdial
 msgid "When enabled, HDMI-CEC is enabled with standard configuration"
 msgstr "Ak je povolené, HDMI-CEC sa aktivuje so štandardnou konfiguráciou"
 
+#, fuzzy
+msgid "When enabled, SDT, BAT data will be included in http streams."
+msgstr "Ak je povolené, budú dáta AIT zahrnuté do http streamov. To umožní klientskemu prijímaču používať HbbTV."
+
 msgid "When enabled, a popup message will be shown when a movie has finished and the next one will start."
 msgstr "Ak povolené, zobrazí sa správa keď skončil film a nasledujúci začne."
 
@@ -17617,6 +17652,10 @@ msgstr "Ak povolené, prijímač zvolí AC3+ stopu (ak je dostupná)."
 
 msgid "When enabled, your receiver will detect activity on the VCR SCART input."
 msgstr "Ak povolené, bude Váš prijímač sledovať aktivitu na vstupe VCR SCART."
+
+#, fuzzy
+msgid "When it is enabled and you want to go to standby only from wake up timer, set \"Startup to standby from deepstandby or power off\" to \"No, except Wakeup timer\"."
+msgstr "Poznámka: Ak je povolené, a chcete prejsť do pohotovostného režimu po prebudení prijímača, nastavte voľbu \"Prebudenie do pohotovostného režimu\" na \"Nie, s výnimkou časovača prebudenia\"."
 
 msgid "When nonzero, a recording will start earlier than the starting time indicated by the EPG."
 msgstr "Ak nenulové, nahrávanie začne skôr než v čase z EPG."
@@ -18732,6 +18771,10 @@ msgstr "%d minúta"
 #, fuzzy
 msgid "minutes"
 msgstr "%d minút"
+
+#, fuzzy
+msgid "module disabled"
+msgstr "vynútiť zakázanie"
 
 msgid "month"
 msgstr "mesiac"
