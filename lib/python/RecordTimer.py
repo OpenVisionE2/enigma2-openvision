@@ -915,7 +915,7 @@ class RecordTimerEntry(TimerEntry, object):
 					if start_zap:
 						self.log(1, "Zapping in CI+ used.")
 						self.failureCB(answer=True, ref=rec_ref)
-						Notifications.AddNotification(MessageBox, _("In order to record a timer, the TV was switched to the recording service!\n"), type=MessageBox.TYPE_INFO, timeout=20)
+						AddNotification(MessageBox, _("In order to record a timer, the TV was switched to the recording service!\n"), type=MessageBox.TYPE_INFO, timeout=20)
 			self.log(1, "The 'record ref' is %s." % rec_ref and rec_ref.toString())
 			self.setRecordingPreferredTuner()
 			self.record_service = rec_ref and NavigationInstance.instance.recordService(rec_ref)
@@ -1004,7 +1004,7 @@ class RecordTimerEntry(TimerEntry, object):
 							if self.ts_dialog is None:
 								self.openChoiceActionBeforeZap()
 						else:
-							Notifications.AddNotification(MessageBox, _("In order to record a timer, the TV was switched to the recording service!\n"), type=MessageBox.TYPE_INFO, timeout=20)
+							AddNotification(MessageBox, _("In order to record a timer, the TV was switched to the recording service!\n"), type=MessageBox.TYPE_INFO, timeout=20)
 							self.setRecordingPreferredTuner()
 							self.failureCB(answer=True)
 							self.log(5, "Zap to recording service.")
@@ -1046,10 +1046,10 @@ class RecordTimerEntry(TimerEntry, object):
 							self.openChoiceActionBeforeZap()
 					elif not config.recording.asktozap.value:
 						self.log(8, "Asking user to zap away.")
-						Notifications.AddNotificationWithCallback(self.failureCB, MessageBox, _("A timer failed to record!\nDisable TV and try again?\n"), timeout=20, default=True)
+						AddNotificationWithCallback(self.failureCB, MessageBox, _("A timer failed to record!\nDisable TV and try again?\n"), timeout=20, default=True)
 					else:  # Zap without asking.
 						self.log(9, "Zap without asking.")
-						Notifications.AddNotification(MessageBox, _("In order to record a timer, the TV was switched to the recording service!\n"), type=MessageBox.TYPE_INFO, timeout=20)
+						AddNotification(MessageBox, _("In order to record a timer, the TV was switched to the recording service!\n"), type=MessageBox.TYPE_INFO, timeout=20)
 						self.setRecordingPreferredTuner()
 						self.failureCB(answer=True)
 				elif cur_ref:
@@ -1101,7 +1101,7 @@ class RecordTimerEntry(TimerEntry, object):
 								self.InfoBarInstance.session.pip.servicePath = self.InfoBarInstance.servicelist and self.InfoBarInstance.servicelist.getCurrentServicePath()
 								self.log(11, "Zapping as PiP.")
 								if notify:
-									Notifications.AddPopup(text=_("Zapped to timer service %s as Picture in Picture!") % self.service_ref.getServiceName(), type=MessageBox.TYPE_INFO, timeout=5)
+									AddPopup(text=_("Zapped to timer service %s as Picture in Picture!") % self.service_ref.getServiceName(), type=MessageBox.TYPE_INFO, timeout=5)
 								return True
 							else:
 								del self.InfoBarInstance.session.pip
@@ -1140,7 +1140,7 @@ class RecordTimerEntry(TimerEntry, object):
 						if not force:
 							self.failureCB(answer=True, close_pip=False)
 						if notify or force:
-							Notifications.AddPopup(text=_("Zapped to timer service %s!") % self.service_ref.getServiceName(), type=MessageBox.TYPE_INFO, timeout=5)
+							AddPopup(text=_("Zapped to timer service %s!") % self.service_ref.getServiceName(), type=MessageBox.TYPE_INFO, timeout=5)
 				return True
 			else:
 				if RecordTimerEntry.wasInDeepStandby:
@@ -1148,7 +1148,7 @@ class RecordTimerEntry(TimerEntry, object):
 					if Screens.Standby.inStandby:  # In case some plugin did put the receiver already in standby.
 						config.misc.standbyCounter.value = 0
 					else:
-						Notifications.AddNotification(Screens.Standby.Standby, StandbyCounterIncrease=False)
+						AddNotification(Screens.Standby.Standby, StandbyCounterIncrease=False)
 				if config.recording.zap_record_service_in_standby.value and Screens.Standby.inStandby:
 					cur_ref = NavigationInstance.instance.getCurrentlyPlayingServiceReference()
 					if self.rec_ref and (not cur_ref or cur_ref != self.rec_ref):
@@ -1197,11 +1197,11 @@ class RecordTimerEntry(TimerEntry, object):
 							RecordTimerEntry.TryQuitMainloop()
 						else:
 							msg = _("A completed recording timer is about to shut down your receiver. Would you like to proceed?")
-							Notifications.AddNotificationWithCallback(self.sendTryQuitMainloopNotification, MessageBox, msg, timeout=20, default=True)
+							AddNotificationWithCallback(self.sendTryQuitMainloopNotification, MessageBox, msg, timeout=20, default=True)
 				elif self.afterEvent == AFTEREVENT.STANDBY or (not wasRecTimerWakeup and self.autostate and self.afterEvent == AFTEREVENT.AUTO) or RecordTimerEntry.wasInStandby:
 					if not Screens.Standby.inStandby:
 						msg = _("A completed recording timer is about to put your receiver in standby mode. Would you like to proceed?")
-						Notifications.AddNotificationWithCallback(self.sendStandbyNotification, MessageBox, msg, timeout=20, default=True)
+						AddNotificationWithCallback(self.sendStandbyNotification, MessageBox, msg, timeout=20, default=True)
 				else:
 					RecordTimerEntry.keypress()
 			return True
@@ -1301,12 +1301,12 @@ class RecordTimerEntry(TimerEntry, object):
 	def sendStandbyNotification(self, answer):
 		RecordTimerEntry.keypress()
 		if answer:
-			Notifications.AddNotification(Screens.Standby.Standby)
+			AddNotification(Screens.Standby.Standby)
 
 	def sendTryQuitMainloopNotification(self, answer):
 		RecordTimerEntry.keypress()
 		if answer:
-			Notifications.AddNotification(Screens.Standby.TryQuitMainloop, 1)
+			AddNotification(Screens.Standby.TryQuitMainloop, 1)
 		else:
 			global wasRecTimerWakeup
 			wasRecTimerWakeup = False
@@ -1375,7 +1375,7 @@ class RecordTimerEntry(TimerEntry, object):
 			# show notification. the "id" will make sure that it will be
 			# displayed only once, even if more timers are failing at the
 			# same time. (which is very likely in case of disk fullness)
-			Notifications.AddPopup(text=_("Write error while recording.\n"), type=MessageBox.TYPE_ERROR, timeout=0, id="WriteErrorMessage")
+			AddPopup(text=_("Write error while recording.\n"), type=MessageBox.TYPE_ERROR, timeout=0, id="WriteErrorMessage")
 			# ok, the recording has been stopped. we need to properly note
 			# that in our state, with also keeping the possibility to re-try.
 			# TODO: this has to be done.
@@ -1387,7 +1387,7 @@ class RecordTimerEntry(TimerEntry, object):
 				text = "\n".join((text, _("Please note that the previously selected media could not be accessed and therefore the default directory is being used instead.")))
 				notify = True
 			if notify:
-				Notifications.AddPopup(text=text, type=MessageBox.TYPE_INFO, timeout=3)
+				AddPopup(text=text, type=MessageBox.TYPE_INFO, timeout=3)
 		elif event == iRecordableService.evRecordAborted:
 			NavigationInstance.instance.RecordTimer.removeEntry(self)
 		elif event == iRecordableService.evGstRecordEnded:
