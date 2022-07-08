@@ -55,15 +55,13 @@ class Navigation:
 		self.__isRestartUI = config.misc.RestartUI.value
 		startup_to_standby = config.usage.startup_to_standby.value
 		wakeup_time_type = config.misc.prev_wakeup_time_type.value
-		wakeup_timer_enabled = False
 		if config.usage.remote_fallback_import_restart.value and not config.clientmode.enabled.value:
 			ImportChannels()
 		if config.clientmode.enabled.value and config.clientmode_import_restart.value:
 			import Components.ChannelsImporter
 			Components.ChannelsImporter.autostart()
 		if self.__wasTimerWakeup:
-			wakeup_timer_enabled = wakeup_time_type == 3 and config.misc.prev_wakeup_time.value
-			if not wakeup_timer_enabled:
+			if wakeup_time_type == 3 and not config.misc.isNextRecordTimerAfterEventActionAuto.value: # "inStandby". Do not execute setWasInDeepStandby static method if recording exists.
 				RecordTimer.RecordTimerEntry.setWasInDeepStandby()
 		if config.misc.RestartUI.value:
 			config.misc.RestartUI.value = False
