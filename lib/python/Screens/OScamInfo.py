@@ -18,13 +18,9 @@ from operator import itemgetter
 from Components.SystemInfo import BoxInfo
 import os
 import time
-try:
-	import urllib2
-except:
-	import urllib
-	from urllib.request import HTTPHandler, HTTPDigestAuthHandler
 import skin
-from six import PY2
+from six.moves import urllib
+from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler
 
 ###global
 f = 1
@@ -178,43 +174,23 @@ class OscamInfo:
 		if part is not None and reader is not None:
 			self.url = "%s://%s:%s/%s.html?part=%s&label=%s" % (self.proto, self.ip, self.port, self.api, part, reader)
 
-		if PY2:
-			opener = urllib2.build_opener(urllib2.HTTPHandler)
-			if not self.username == "":
-				pwman = urllib2.HTTPPasswordMgrWithDefaultRealm()
-				pwman.add_password(None, self.url, self.username, self.password)
-				handlers = urllib2.HTTPDigestAuthHandler(pwman)
-				opener = urllib2.build_opener(urllib2.HTTPHandler, handlers)
-				urllib2.install_opener(opener)
-			request = urllib2.Request(self.url)
-			err = False
-			try:
-				data = urllib2.urlopen(request).read()
-				# print(data)
-			except urllib2.URLError as e:
-				if hasattr(e, "reason"):
-					err = str(e.reason)
-				elif hasattr(e, "code"):
-					err = str(e.code)
-		else:
-			opener = urllib.request.build_opener(HTTPHandler)
-			if not self.username == "":
-				pwman = urllib.request.HTTPPasswordMgrWithDefaultRealm()
-				pwman.add_password(None, self.url, self.username, self.password)
-				handlers = urllib.request.HTTPDigestAuthHandler(pwman)
-				opener = urllib.request.build_opener(urllib.request.HTTPHandler, handlers)
-				urllib.request.install_opener(opener)
-			request = urllib.request.Request(self.url)
-			err = False
-			try:
-				data = urllib.request.urlopen(request).read()
-				# print(data)
-			except urllib.error.URLError as e:
-				if hasattr(e, "reason"):
-					err = str(e.reason)
-				elif hasattr(e, "code"):
-					err = str(e.code)
-
+		opener = urllib.request.build_opener(HTTPHandler)
+		if not self.username == "":
+			pwman = urllib.request.HTTPPasswordMgrWithDefaultRealm()
+			pwman.add_password(None, self.url, self.username, self.password)
+			handlers = HTTPDigestAuthHandler(pwman)
+			opener = urllib.request.build_opener(HTTPHandler, handlers)
+			urllib.request.install_opener(opener)
+		request = urllib.request.Request(self.url)
+		err = False
+		try:
+			data = urllib.request.urlopen(request).read()
+			# print data
+		except urllib.error.URLError as e:
+			if hasattr(e, "reason"):
+				err = str(e.reason)
+			elif hasattr(e, "code"):
+				err = str(e.code)
 		if err is not False:
 			print("[OScamInfo] Open WebIF error: %s" % err)
 			return False, err
@@ -256,7 +232,7 @@ class OscamInfo:
 						if ecmtime == "0" or ecmtime == "":
 							ecmtime = _("n/a")
 						else:
-							ecmtime = str(float(ecmtime) // 1000)[:5]
+							ecmtime = str(float(ecmtime) / 1000)[:5]
 					else:
 						ecmtime = "not available"
 					srvname = cl.find("request").text
@@ -284,8 +260,9 @@ class OscamInfo:
 							tmp[cl.attrib["type"]] = []
 							tmp[cl.attrib["type"]].append((name, proto, "%s:%s" % (caid, srvid), srvname_short, ecmtime, ip, connstatus))
 			else:
-				cdata = 'b"<![CDATA"'
-				if cdata:
+				if b"<![CDATA" not in result[1]:
+					tmp = result[1].replace("<log>", "<log><![CDATA[").replace("</log>", "]]></log>")
+				else:
 					tmp = result[1]
 				data = ElementTree.XML(tmp)
 				log = data.find("log")
@@ -573,9 +550,9 @@ class OscamInfoMenu(Screen):
 					png = LoadPixmap(png)
 				if png is not None:
 					x, y, w, h = skin.parameters.get("ChoicelistDash", (0, 2 * f, 800 * f, 2 * f))
-					res.append((eListboxPythonMultiContent.TYPE_PIXMAP, x, y, w, h, png))
+					res.append((eListboxPythonMultiContent.TYPE_PIXMAP, int(x), int(y), int(w), int(h), png))
 					x, y, w, h = skin.parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
-					res.append((eListboxPythonMultiContent.TYPE_TEXT, x, y, w, h, 0, RT_HALIGN_LEFT, t[2:]))
+					res.append((eListboxPythonMultiContent.TYPE_TEXT, int(x), int(y), int(w), int(h), 0, RT_HALIGN_LEFT, t[2:]))
 					png2 = resolveFilename(SCOPE_GUISKIN, "buttons/key_" + keys[k] + ".png")
 					if fileExists(png2):
 						png2 = LoadPixmap(png2)
@@ -584,13 +561,13 @@ class OscamInfoMenu(Screen):
 						res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, x, y, w, h, png2))
 			else:
 				x, y, w, h = skin.parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
-				res.append((eListboxPythonMultiContent.TYPE_TEXT, x, y, w, h, 0, RT_HALIGN_LEFT, t))
+				res.append((eListboxPythonMultiContent.TYPE_TEXT, int(x), int(y), int(w), int(h), 0, RT_HALIGN_LEFT, t))
 				png2 = resolveFilename(SCOPE_GUISKIN, "buttons/key_" + keys[k] + ".png")
 				if fileExists(png2):
 					png2 = LoadPixmap(png2)
 				if png2 is not None:
 					x, y, w, h = skin.parameters.get("ChoicelistIcon", (5 * f, 0, 35 * f, 25 * f))
-					res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, x, y, w, h, png2))
+					res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, int(x), int(y), int(w), int(h), png2))
 			menuentries.append(res)
 			if k < len(keys) - 1:
 				k += 1
@@ -649,8 +626,8 @@ class oscECMInfo(Screen, OscamInfo):
 	def buildListEntry(self, listentry):
 		return [
 			"",
-			(eListboxPythonMultiContent.TYPE_TEXT, 10 * f, 2 * f, 300 * f, 30 * f, 0, RT_HALIGN_LEFT, listentry[0]),
-			(eListboxPythonMultiContent.TYPE_TEXT, 300 * f, 2 * f, 300 * f, 30 * f, 0, RT_HALIGN_LEFT, listentry[1])
+			(eListboxPythonMultiContent.TYPE_TEXT, int(10 * f), int(2 * f), int(300 * f), int(30 * f), 0, RT_HALIGN_LEFT, listentry[0]),
+			(eListboxPythonMultiContent.TYPE_TEXT, int(280 * f), int(2 * f), int(320 * f), int(30 * f), 0, RT_HALIGN_LEFT, listentry[1])
 			]
 
 	def showData(self):
@@ -679,15 +656,15 @@ class oscInfo(Screen, OscamInfo):
 		self.itemheight = 25
 		self.sizeLH = sizeH
 		self.skin = """<screen position="center,center" size="%d, %d" title="Client Info" >""" % (sizeH, ysize)
-		button_width = int(sizeH / 4)
+		button_width = int(sizeH // 4)
 		for k, v in enumerate(["red", "green", "yellow", "blue"]):
 			xpos = k * button_width
 			self.skin += """<ePixmap name="%s" position="%d,%d" size="40,40" pixmap="buttons/key_%s.png" zPosition="1" transparent="1" alphatest="blend" />""" % (v, xpos, ypos, v)
 			self.skin += """<widget source="key_%s" render="Label" position="%d,%d" size="%d,%d" font="Regular;22" zPosition="1" valign="center" transparent="1" />""" % (v, xpos + 50, ypos, button_width, 27)
 		if f == 1.5:
-		    self.skin += """<ePixmap name="divh" position="10,55" size="%d,2" pixmap="div-h-fhd.png" transparent="1" alphatest="blend" />""" % sizeH
+			self.skin += """<ePixmap name="divh" position="10,55" size="%d,2" pixmap="div-h-fhd.png" transparent="1" alphatest="blend" />""" % sizeH
 		else:
-		    self.skin += """<ePixmap name="divh" position="10,55" size="%d,2" pixmap="div-h.png" transparent="1" alphatest="blend" />""" % sizeH
+			self.skin += """<ePixmap name="divh" position="10,55" size="%d,2" pixmap="div-h.png" transparent="1" alphatest="blend" />""" % sizeH
 		self.skin += """<widget name="output" position="10,65" size="%d,%d" zPosition="1" scrollbarMode="showOnDemand" />""" % (self.sizeLH, ysize - 80)
 		self.skin += """</screen>"""
 		Screen.__init__(self, session)
@@ -715,7 +692,7 @@ class oscInfo(Screen, OscamInfo):
 			self.loop = eTimer()
 			self.loop.callback.append(self.showData)
 			timeout = config.oscaminfo.intervall.value * 1000
-			self.loop.start(int(100))
+			self.loop.start(timeout, False)
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions"],
 					{
 						"ok": self.key_ok,
@@ -827,30 +804,30 @@ class oscInfo(Screen, OscamInfo):
 		else:
 			colour = "0xffffff"
 		for i in listentry[:-1]:
-			xsize = self.fieldsize[x]
-			xpos = self.startPos[x]
-			res.append((eListboxPythonMultiContent.TYPE_TEXT, xpos, ypos * f, xsize, self.itemheight * f, useFont, RT_HALIGN_LEFT, i, int(colour, 16)))
+			xsize = int(self.fieldsize[x])
+			xpos = int(self.startPos[x])
+			res.append((eListboxPythonMultiContent.TYPE_TEXT, xpos, int(ypos * f), xsize, int(self.itemheight * f), useFont, RT_HALIGN_LEFT, i, int(colour, 16)))
 			x += 1
 		if heading and f != 1.5:
 			png = resolveFilename(SCOPE_GUISKIN, "div-h.png")
 			if fileExists(png):
 				png = LoadPixmap(png)
 			if png is not None:
-				res.append((eListboxPythonMultiContent.TYPE_PIXMAP, 0, (self.itemheight - 2) * f, self.sizeLH, 2 * f, png))
+				res.append((eListboxPythonMultiContent.TYPE_PIXMAP, 0, int((self.itemheight - 2) * f), self.sizeLH, int(2 * f), png))
 
 		if heading and f == 1.5:
 			pngfhd = resolveFilename(SCOPE_GUISKIN, "div-h-fhd.png")
 			if fileExists(pngfhd):
 				pngfhd = LoadPixmap(pngfhd)
 			if pngfhd is not None:
-				res.append((eListboxPythonMultiContent.TYPE_PIXMAP, 0, (self.itemheight - 2) * f, self.sizeLH, 2 * f, pngfhd))
+				res.append((eListboxPythonMultiContent.TYPE_PIXMAP, 0, int((self.itemheight - 2) * f), self.sizeLH, int(2 * f), pngfhd))
 		return res
 
 	def buildLogListEntry(self, listentry):
 		res = [""]
 		for i in listentry:
 			if i.strip() != "" or i is not None:
-				res.append((eListboxPythonMultiContent.TYPE_TEXT, 5 * f, 0, self.sizeLH, self.itemheight * f, 2, RT_HALIGN_LEFT, i))
+				res.append((eListboxPythonMultiContent.TYPE_TEXT, int(5 * f), 0, self.sizeLH, int(self.itemheight * f), 2, RT_HALIGN_LEFT, i))
 		return res
 
 	def showData(self):
@@ -995,7 +972,7 @@ class oscEntitlements(Screen, OscamInfo):
 		self.close()
 
 	def buildList(self, data):
-		caids = sorted(data.keys())
+		caids = list(data.keys())
 		outlist = []
 		res = [("CAID", _("System"), "1", "2", "3", "4", "5", "Total", _("Reshare"), _("Providers: "))]
 		for i in caids:
@@ -1040,7 +1017,7 @@ class oscEntitlements(Screen, OscamInfo):
 			csystem = i.attrib["system"]
 			creshare = i.attrib["reshare"]
 			if not host_ok:
-				hostadr = i.find("hostaddress")
+				hostadr = i.find("hostaddress").text
 			chop = int(i.attrib["hop"])
 			if chop > 5:
 				chop = 5
@@ -1135,7 +1112,7 @@ class oscReaderStats(Screen, OscamInfo):
 		self.close()
 
 	def buildList(self, data):
-		caids = sorted(data.keys())
+		caids = list(data.keys())
 		outlist = []
 		res = [("CAID", "System", "1", "2", "3", "4", "5", "Total", "Reshare", "")]
 		for i in caids:
@@ -1187,7 +1164,7 @@ class oscReaderStats(Screen, OscamInfo):
 
 				ecmstat = rdr.find("ecmstats")
 				totalecm = ecmstat.attrib["totalecm"]
-				ecmcount = ecmstat.attrib["count"] and int(ecmstat.attrib["count"]) or 0
+				ecmcount = int(ecmstat.attrib["count"])
 				lastacc = ecmstat.attrib["lastaccess"]
 				ecm = ecmstat.findall("ecm")
 				if ecmcount > 0:
@@ -1200,8 +1177,8 @@ class oscReaderStats(Screen, OscamInfo):
 						rcs = j.attrib["rcs"]
 						num = j.text
 						if rcs == "found":
-							avg_time = str(float(avgtime) // 1000)[:5]
-							last_time = str(float(lasttime) // 1000)[:5]
+							avg_time = str(float(avgtime) / 1000)[:5]
+							last_time = str(float(lasttime) / 1000)[:5]
 							if "lastrequest" in j.attrib:
 								lastreq = j.attrib["lastrequest"]
 								try:
