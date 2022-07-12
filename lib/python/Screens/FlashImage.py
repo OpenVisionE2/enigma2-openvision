@@ -5,6 +5,7 @@ import tempfile
 import struct
 import time
 from six.moves.urllib.request import urlopen
+import zipfile
 
 from enigma import eEPGCache
 
