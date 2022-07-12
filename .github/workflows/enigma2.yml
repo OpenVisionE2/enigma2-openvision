@@ -31,8 +31,6 @@ jobs:
         sudo apt-get install zlib1g-dev
         sudo apt-get install gettext
         sudo apt-get install swig
-        sudo apt-get install libgstreamer1.0-dev
-        sudo apt-get install libgstreamer-plugins-base1.0-dev
         sudo apt-get install libfreetype6-dev
         sudo apt-get install libsigc++-2.0-dev
         sudo apt-get install libfribidi-dev
@@ -79,6 +77,6 @@ jobs:
         autoreconf -i
         ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
         make
-        python -m compileall .
+        python2 -m compileall .
         find . -type f -name "*.po" -exec msgfmt {} -o {}.mo \;
         echo done!
