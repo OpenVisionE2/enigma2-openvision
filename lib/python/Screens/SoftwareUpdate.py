@@ -1,8 +1,5 @@
 from json import load
-try:
-	from urllib.request import urlopen
-except ImportError:
-	from urllib2 import urlopen
+from six.moves.urllib.request import urlopen
 
 from enigma import eTimer
 

@@ -5,10 +5,7 @@ from ServiceReference import ServiceReference
 from Components.config import config
 from Screens.MessageBox import MessageBox
 from timer import TimerEntry as TimerObject
-try:
-	from urllib import quote
-except:
-	from urllib.parse import quote
+from six.moves.urllib.parse import quote
 import xml
 try:
 	from base64 import encodestring
