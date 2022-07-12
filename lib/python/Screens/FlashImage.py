@@ -4,11 +4,7 @@ import shutil
 import tempfile
 import struct
 import time
-try: # Python 3
-	from urllib.request import urlopen # raises ImportError in Python 2
-	from urllib.error import HTTPError, URLError # raises ImportError in Python 2
-except ImportError: # Python 2
-	from urllib import urlopen
+from six.moves.urllib.request import urlopen
 import zipfile
 
 from enigma import eEPGCache

@@ -19,8 +19,8 @@ from Components.SystemInfo import BoxInfo
 import os
 import time
 import skin
-from six.moves import urllib
-from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler
+from six.moves.urllib.error import URLError
+from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler, Request, urlopen, build_opener, install_opener
 
 ###global
 f = 1
@@ -174,19 +174,19 @@ class OscamInfo:
 		if part is not None and reader is not None:
 			self.url = "%s://%s:%s/%s.html?part=%s&label=%s" % (self.proto, self.ip, self.port, self.api, part, reader)
 
-		opener = urllib.request.build_opener(HTTPHandler)
+		opener = build_opener(HTTPHandler)
 		if not self.username == "":
-			pwman = urllib.request.HTTPPasswordMgrWithDefaultRealm()
+			pwman = HTTPPasswordMgrWithDefaultRealm()
 			pwman.add_password(None, self.url, self.username, self.password)
 			handlers = HTTPDigestAuthHandler(pwman)
-			opener = urllib.request.build_opener(HTTPHandler, handlers)
-			urllib.request.install_opener(opener)
-		request = urllib.request.Request(self.url)
+			opener = build_opener(HTTPHandler, handlers)
+			install_opener(opener)
+		request = Request(self.url)
 		err = False
 		try:
-			data = urllib.request.urlopen(request).read()
+			data = urlopen(request).read()
 			# print data
-		except urllib.error.URLError as e:
+		except URLError as e:
 			if hasattr(e, "reason"):
 				err = str(e.reason)
 			elif hasattr(e, "code"):

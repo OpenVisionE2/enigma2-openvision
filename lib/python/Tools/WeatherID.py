@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from urllib2 import urlopen, URLError
-from urllib import urlencode
+from six.moves.urllib.parse import urlencode
+from six.moves.urllib.request import urlopen
+from six.moves.urllib.error import URLError
 import sys
 import re
 import json

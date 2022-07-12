@@ -2,10 +2,7 @@
 # -*- coding: utf-8 -*-
 from twisted.web import client
 from twisted.internet import reactor, defer
-try:
-	from urlparse import urlparse
-except:
-	from urllib.parse import urlparse
+from six.moves.urllib.parse import urlparse
 from Components.SystemInfo import BoxInfo
 
 
