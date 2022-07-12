@@ -269,8 +269,19 @@ class InformationImage(Screen, HelpableScreen):
 		self["name"].setText("%s %s  -  %s View" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"), self.images[self.imageIndex][0]))
 		imagePath = resolveFilename(SCOPE_GUISKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])
 		image = LoadPixmap(imagePath)
-		if image:
-			self["image"].instance.setPixmap(image)
+		if not BoxInfo.getItem("middleflash") and not BoxInfo.getItem("smallflash"):
+			from PIL import Image
+			if image:
+				img = Image.open(imagePath)
+				imageWidth, imageHeight = img.size
+				scale = float(self.widgetContext[2]) / imageWidth if imageWidth >= imageHeight else float(self.widgetContext[3]) / imageHeight
+				sizeW = int(imageWidth * scale)
+				sizeH = int(imageHeight * scale)
+				posX = self.widgetContext[0] + int(self.widgetContext[2] // 2 - sizeW // 2)
+				posY = self.widgetContext[1] + int(self.widgetContext[3] // 2 - sizeH // 2)
+				self["image"].instance.move(ePoint(posX, posY))
+				self["image"].instance.resize(eSize(sizeW, sizeH))
+				self["image"].instance.setPixmap(image)
 
 
 def formatLine(style, left, right=None):
