@@ -68,7 +68,7 @@ jobs:
         make
         sudo make install
         popd
-    - name: build enigma2
+    - name: build enigma2 (not python files)
       env: 
         CC: "gcc-${{ matrix.gcc }}"
         CXX: "g++-${{ matrix.gcc }}"
@@ -77,6 +77,13 @@ jobs:
         autoreconf -i
         ./configure --with-libsdl=no --with-boxtype=h9 --with-boxbrand=airdigital --enable-dependency-tracking ac_cv_prog_c_openmp=-fopenmp --with-nolcd
         make
+    - name: compile python2
+      run: |
         python2 -m compileall .
+    - name: compile python3
+      run: |
+        python3 -m compileall .
+    - name: compile po files
+      run: |
         find . -type f -name "*.po" -exec msgfmt {} -o {}.mo \;
         echo done!
