@@ -2,16 +2,16 @@ name: enigma2
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ test ]
   pull_request:
-    branches: [ develop ]
+    branches: [ test ]
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
-        gcc: [11]
+        gcc: [12]
     steps:
     - uses: actions/checkout@v2
     - name: install gcc ${{ matrix.gcc }}
