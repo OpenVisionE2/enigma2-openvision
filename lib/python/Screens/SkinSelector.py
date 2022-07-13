@@ -98,8 +98,9 @@ class SkinSelector(Screen, HelpableScreen):
 		default = _("Default")
 		defaultPicon = _("Default+Picon")
 		current = _("Current")
-		pending = _("Error in XML file: Try to solve and then restart.")
+		pending = _("Error in XML")
 		displayPicon = pathjoin(dirname(DEFAULT_DISPLAY_SKIN), "skin_display_picon.xml")
+		displayGrautec = pathjoin(dirname(DEFAULT_DISPLAY_SKIN), "skin_display_grautec.xml")
 		skinList = []
 		# Find and list the available skins...
 		for dir in [dir for dir in listdir(self.rootDir) if isdir(pathjoin(self.rootDir, dir))]:
@@ -136,9 +137,11 @@ class SkinSelector(Screen, HelpableScreen):
 					elif skin == DEFAULT_SKIN:
 						list = [dir, default, dir, skin, resolution, preview]
 					elif skin == DEFAULT_DISPLAY_SKIN:
-						list = [default, default, dir, skin, resolution, preview]
+						list = [DEFAULT_DISPLAY_SKIN.split(".")[0].split("/")[1], default, dir, skin, DEFAULT_DISPLAY_SKIN.split("/skin_")[1], preview]
 					elif skin == displayPicon:
-						list = [dir, defaultPicon, dir, skin, resolution, preview]
+						list = [displayPicon.split(".")[0].split("/")[1], default, dir, skin, displayPicon.split("/skin_")[1], preview]
+					elif skin == displayGrautec:
+						list = [displayGrautec.split(".")[0].split("/")[1], default, dir, skin, displayGrautec.split("/skin_")[1], preview]
 					else:
 						list = [dir, "", dir, skin, resolution, preview]
 					if skin == self.current:
@@ -167,9 +170,9 @@ class SkinSelector(Screen, HelpableScreen):
 			preview = resolveFilename(SCOPE_GUISKIN, "noprev.png")
 		self.picload.startDecode(preview)
 		if skin == self.config.value:
-			self["description"].setText(_("Press OK to keep the currently selected %s skin.") % resolution)
+			self["description"].setText(_("Press OK to keep the currently selected skin %s.") % resolution)
 		else:
-			self["description"].setText(_("Press OK to activate the selected %s skin.") % resolution)
+			self["description"].setText(_("Press OK to activate the selected skin %s.") % resolution)
 
 	def cancel(self):
 		self.close(False)
