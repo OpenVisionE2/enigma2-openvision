@@ -20,7 +20,7 @@ import os
 import time
 import skin
 from six.moves.urllib.error import URLError
-from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler, Request, urlopen, build_opener, install_opener
+from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler, HTTPPasswordMgrWithDefaultRealm, Request, urlopen, build_opener, install_opener
 
 ###global
 f = 1
