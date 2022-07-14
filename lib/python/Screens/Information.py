@@ -7,10 +7,7 @@ from six import PY2
 from ssl import _create_unverified_context  # For python 2.7.11 we need to bypass the certificate check
 from subprocess import PIPE, Popen
 from time import localtime
-try:
-	from urllib2 import urlopen
-except ImportError:
-	from urllib.request import urlopen
+from six.moves.urllib.request import urlopen
 
 from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, ePoint, eSize, eTimer, getDesktop, getE2Rev
 
@@ -1543,7 +1540,9 @@ class TunerInformation(InformationBase):
 			count += 1
 		for count in range(len(descList)):
 			data = descList[count]["start"] if descList[count]["start"] == descList[count]["end"] else ("%s-%s" % (descList[count]["start"], descList[count]["end"]))
-			info.append(formatLine("P1", "Tuner %s" % data, descList[count]["desc"]))
+			info.append(formatLine("P1", "Tuner %s:" % data))
+			data = descList[count]["start"] if descList[count]["start"] == descList[count]["end"] else ("%s-%s" % (descList[count]["start"], descList[count]["end"]))
+			info.append(formatLine("P2", "%s" % descList[count]["desc"]))
 		# info.append("")
 		# info.append(formatLine("H", _("Logical tuners")))  # Each tuner is a listed separately even if the hardware is common.
 		# info.append("")

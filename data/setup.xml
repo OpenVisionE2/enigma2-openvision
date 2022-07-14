@@ -322,8 +322,8 @@
 			<item level="0" text="IP address" description="Set receiver IP address.">config.oscaminfo.ip</item>
 			<item level="0" text="Port (httpport)" description="Set in section [webif] port (httpport), enter (0) if you don't have any numeric value assigned in your (httpport).">config.oscaminfo.port</item>
 		</if>
-		<item level="0" text="Automatically update Clients/Servers view" description="Automatically update Clients/Servers view.">config.oscaminfo.autoupdate</item>
-		<item level="0" text="Update interval (in seconds)" description="Update interval (in seconds)." conditional="config.oscaminfo.autoupdate.value">config.oscaminfo.intervall</item>
+		<item level="0" text="Automatically update Clients/Servers/Log screens" description="Enabled, screens Clients, Servers and Log are updated on time interval.">config.oscaminfo.autoupdate</item>
+		<item level="0" text="Update interval (in seconds)" description="Time interval for screens update Clients/Servers/Log (in seconds)." conditional="config.oscaminfo.autoupdate.value">config.oscaminfo.intervall</item>
 	</setup>
 	<setup key="Subtitle" title="Subtitle Setup">
 		<item level="0" text="Teletext subtitle color" description="Configure the color of the teletext subtitles.">config.subtitles.ttx_subtitle_colors</item>
