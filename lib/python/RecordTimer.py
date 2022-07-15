@@ -298,11 +298,12 @@ class RecordTimer(Timer):
 		alwaysZap = bool(int(timerDom.get("always_zap", False)))
 		zapWakeup = timerDom.get("zap_wakeup", "always")
 		renameRepeat = bool(int(timerDom.get("rename_repeat", True)))
+		repeated = timerDom.get("repeated")
 		conflictDetection = bool(int(timerDom.get("conflict_detection", True)))
 		pipZap = bool(int(timerDom.get("pipzap", False)))
 		# filename = timerDom.get("filename").encode("UTF-8")
 		entry = RecordTimerEntry(serviceReference, begin, end, name, description, eit, disabled, justPlay, afterEvent, dirname=location, tags=tags, descramble=descramble, record_ecm=recordEcm, isAutoTimer=isAutoTimer, always_zap=alwaysZap, zap_wakeup=zapWakeup, rename_repeat=renameRepeat, conflict_detection=conflictDetection, pipzap=pipZap)
-		entry.repeated = bool(int(timerDom.get("repeated", False)))
+		entry.repeated = int(repeated) # 1 Weekly, 31 Mon-Fr, 127 Daily, Others for User Defined.
 		flags = timerDom.get("flags")
 		if flags:
 			entry.flags = set(flags.split(" "))
@@ -928,7 +929,7 @@ class RecordTimerEntry(TimerEntry, object):
 			description = self.description
 			if self.repeated:
 				epgcache = eEPGCache.getInstance()
-				queryTime = self.begin + (self.end - self.begin) / 2
+				queryTime = int(self.end - self.begin) // 2
 				evt = epgcache.lookupEventTime(rec_ref, queryTime)
 				if evt:
 					if self.rename_repeat:
