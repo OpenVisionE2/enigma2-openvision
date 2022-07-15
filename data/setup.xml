@@ -309,6 +309,22 @@
 		<item level="0" text="Select cardserver" description="Select a cardserver from the available list." conditional="config.misc.cardservers.value != ''">config.misc.cardservers</item>
 		<item level="0" text="Restart" description="Reset the selected devices and save changes of your config when the GREEN button is pressed.">config.misc.restarts</item>
 	</setup>
+	<setup key="OscamInfo" title="OScam Info Setup">
+		<if conditional="config.misc.softcams.value == 'ncam'">
+			<item level="0" text="Read userdata from ncam.conf" description="Read userdata from ncam.conf.">config.oscaminfo.userdatafromconf</item>
+		</if>
+		<if conditional="config.misc.softcams.value == 'oscam'">
+			<item level="0" text="Read userdata from oscam.conf" description="Read userdata from oscam.conf.">config.oscaminfo.userdatafromconf</item>
+		</if>
+		<if conditional="not config.oscaminfo.userdatafromconf.value">
+			<item level="0" text="Username (httpuser)" description="Set username if you have it set in section [webif] httpuser.">config.oscaminfo.username</item>
+			<item level="0" text="Password (httpwd)" description="Set password if you have it set in section [webif] httppwd.">config.oscaminfo.password</item>
+			<item level="0" text="IP address" description="Set receiver IP address.">config.oscaminfo.ip</item>
+			<item level="0" text="Port (httpport)" description="Set in section [webif] port (httpport), enter (0) if you don't have any numeric value assigned in your (httpport).">config.oscaminfo.port</item>
+		</if>
+		<item level="0" text="Automatically update Clients/Servers/Log screens" description="Enabled, screens Clients, Servers and Log are updated on time interval.">config.oscaminfo.autoupdate</item>
+		<item level="0" text="Update interval (in seconds)" description="Time interval for screens update Clients/Servers/Log (in seconds)." conditional="config.oscaminfo.autoupdate.value">config.oscaminfo.intervall</item>
+	</setup>
 	<setup key="Subtitle" title="Subtitle Setup">
 		<item level="0" text="Teletext subtitle color" description="Configure the color of the teletext subtitles.">config.subtitles.ttx_subtitle_colors</item>
 		<item level="2" text="Use original teletext position" description="When enabled, teletext subtitles will be displayed at their original position.">config.subtitles.ttx_subtitle_original_position</item>

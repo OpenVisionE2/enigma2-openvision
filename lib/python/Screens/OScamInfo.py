@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 from __future__ import print_function
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
@@ -7,8 +5,8 @@ from Screens.ChoiceBox import ChoiceBox
 from Components.ActionMap import ActionMap, NumberActionMap
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
-from Components.config import config, configfile, getConfigListEntry
-from Components.ConfigList import ConfigList, ConfigListScreen
+from Components.config import config
+from Screens.Setup import Setup
 from Components.MenuList import MenuList
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Directories import SCOPE_GUISKIN, resolveFilename, fileExists
@@ -20,7 +18,7 @@ import os
 import time
 import skin
 from six.moves.urllib.error import URLError
-from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler, Request, urlopen, build_opener, install_opener
+from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler, HTTPPasswordMgrWithDefaultRealm, Request, urlopen, build_opener, install_opener
 
 ###global
 f = 1
@@ -524,7 +522,7 @@ class OscamInfoMenu(Screen):
 				screentitle = _("NCam Config info")
 			else:
 				screentitle = _("OScam Config info")
-			self.session.open(OscamInfoConfigScreen)
+			self.session.open(OscamInfoSetup)
 
 	def chooseReaderCallback(self, retval):
 		print(retval)
@@ -536,7 +534,7 @@ class OscamInfoMenu(Screen):
 
 	def ErrMsgCallback(self, retval):
 		print(retval)
-		self.session.open(OscamInfoConfigScreen)
+		self.session.open(OscamInfoSetup)
 
 	def buildMenu(self, mlist):
 		keys = ["red", "green", "yellow", "blue", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ""]
@@ -575,10 +573,10 @@ class OscamInfoMenu(Screen):
 
 	def showMenu(self):
 		entr = self.buildMenu(self.menu)
-		if BoxInfo.getItem("NCamIsActive"):
-			self.setTitle(_("NCam Info - Main Menu"))
+		if config.misc.softcams.value == "ncam":
+			self.setTitle(_("NCam Info Main Menu"))
 		else:
-			self.setTitle(_("OScam Info - Main Menu"))
+			self.setTitle(_("OScam Info Main Menu"))
 		self["mainmenu"].l.setList(entr)
 		self["mainmenu"].moveToIndex(0)
 
@@ -587,8 +585,8 @@ class oscECMInfo(Screen, OscamInfo):
 	def __init__(self, session):
 		global f
 		Screen.__init__(self, session)
-		if BoxInfo.getItem("NCamIsActive"):
-			screentitle = _("NCam ECM info")
+		if config.misc.softcams.value == "ncam":
+			Screen.setTitle(self, _("Ncam ECM info"))
 			if f == 1.5:
 				self.skin = """<screen position="center,center" size="960,540" title="NCam ECM info">"""
 				self.skin += """<widget name="output" font="FHD; 30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="50,50" size="960,540" transparent="1" />"""
@@ -596,7 +594,7 @@ class oscECMInfo(Screen, OscamInfo):
 				self.skin = """<screen position="center ,center" size="640,360" title="NCam ECM info">"""
 				self.skin += """<widget name="output" font="FHD; 30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="33,33" size="640,360" transparent="1" />"""
 		else:
-			screentitle = _("OScam ECM info")
+			Screen.setTitle(self, _("OScam ECM info"))
 			if f == 1.5:
 				self.skin = """<screen position="center,center" size="960,540" title="OScam ECM info">"""
 				self.skin += """<widget name="output" font="FHD; 30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="50,50" size="960,540" transparent="1" />"""
@@ -1017,7 +1015,7 @@ class oscEntitlements(Screen, OscamInfo):
 			csystem = i.attrib["system"]
 			creshare = i.attrib["reshare"]
 			if not host_ok:
-				hostadr = i.find("hostaddress").text
+				hostadr = i.find("hostaddress")
 			chop = int(i.attrib["hop"])
 			if chop > 5:
 				chop = 5
@@ -1213,105 +1211,17 @@ class oscReaderStats(Screen, OscamInfo):
 		self.setTitle(" ".join(title))
 
 
-class OscamInfoConfigScreen(Screen, ConfigListScreen):
+class OscamInfoSetup(Setup):
 	def __init__(self, session, msg=None):
-		Screen.__init__(self, session)
-		self.session = session
-		if BoxInfo.getItem("NCamIsActive"):
-			if f == 1.5:
-				self.skin = """<screen position="center,center" size="960,540" title="NCam Setup">"""
-				self.skin += """<widget name="config" font="Regular;30" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="960,540" transparent="1" />"""
-				self.skin += """<widget name="status" render="Label" font="Regular;30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="50,50" size="960,540" transparent="1" />"""
-				self.skin += """<eLabel backgroundColor="white" name="" position="0,450" size="960,2" zPosition="-9" />"""
-				self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="60,475" size="40,40" />"""
-				self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="255,475" size="40,40" />"""
-				self.skin += """<widget source="key_red" render="Label" font="Regular;28" position="120,480" size="270,40" transparent="1" zPosition="1" />"""
-				self.skin += """<widget source="key_green" render="Label" font="Regular;28" position="315,480" size="270,40" transparent="1" zPosition="1" />"""
-			else:
-				self.skin = """<screen position="center,center" size="640,400" title="NCam Setup">"""
-				self.skin += """<widget name="config" font="Regular;20" itemHeight="50" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="640,400" transparent="1" />"""
-				self.skin += """<widget name="status" render="Label" font="Regular;20" itemHeight="30" scrollbarMode="showOnDemand" enableWrapAround="1" position="33,33" size="640,360" transparent="1" />"""
-				self.skin += """<eLabel backgroundColor="white" name="" position="0,350" size="640,2" zPosition="-9" />"""
-				self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="40,365" size="35,35" />"""
-				self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="180,365" size="35,35" />"""
-				self.skin += """<widget source="key_red" render="Label" font="Regular;18" position="80,367" size="180,35" transparent="1" zPosition="1" />"""
-				self.skin += """<widget source="key_green" render="Label" font="Regular;18" position="220,367" size="220,35" transparent="1" zPosition="1" />"""
-		else:
-			if f == 1.5:
-				self.skin = """<screen position="center,center" size="960,540" title="OScam Setup">"""
-				self.skin += """<widget name="config" font="Regular;30" itemHeight="50" backgroundColor="black" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="960,540" transparent="1" />"""
-				self.skin += """<widget name="status" render="Label" font="Regular;30" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" position="50,50" size="960,540" transparent="1" />"""
-				self.skin += """<eLabel backgroundColor="white" name="" position="0,450" size="960,2" zPosition="-9" />"""
-				self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="60,475" size="40,40" />"""
-				self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="255,475" size="40,40" />"""
-				self.skin += """<widget source="key_red" render="Label" font="Regular;28" position="120,480" size="270,40" transparent="1" zPosition="1" />"""
-				self.skin += """<widget source="key_green" render="Label" font="Regular;28" position="315,480" size="270,40" transparent="1" zPosition="1" />"""
-			else:
-				self.skin = """<screen position="center,center" size="640,400" title="OScam Setup">"""
-				self.skin += """<widget name="config" font="Regular;20" itemHeight="50" foregroundColor="white" scrollbarMode="showOnDemand" enableWrapAround="1" position="center,center" size="640,400" transparent="1" />"""
-				self.skin += """<widget name="status" render="Label" font="Regular;20" itemHeight="30" scrollbarMode="showOnDemand" enableWrapAround="1" position="33,33" size="640,360" transparent="1" />"""
-				self.skin += """<eLabel backgroundColor="white" name="" position="0,350" size="640,2" zPosition="-9" />"""
-				self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_red.png" position="40,365" size="35,35" />"""
-				self.skin += """<ePixmap alphatest="blend" pixmap="buttons/key_green.png" position="180,365" size="35,35" />"""
-				self.skin += """<widget source="key_red" render="Label" font="Regular;18" position="80,367" size="180,35" transparent="1" zPosition="1" />"""
-				self.skin += """<widget source="key_green" render="Label" font="Regular;18" position="220,367" size="220,35" transparent="1" zPosition="1" />"""
-		self.skin += """</screen>"""
-		if msg is not None:
-			self.msg = "Error:\n%s" % msg
-		else:
-			self.msg = ""
-		self.oscamconfig = []
-		self["key_red"] = StaticText(_("Cancel"))
-		self["key_green"] = StaticText(_("OK"))
-		self["status"] = StaticText(self.msg)
-		self["config"] = ConfigList(self.oscamconfig)
-		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
-		{
-			"red": self.cancel,
-			"green": self.save,
-			"save": self.save,
-			"cancel": self.cancel,
-			"ok": self.save,
-		}, -2)
-		ConfigListScreen.__init__(self, self.oscamconfig, session=self.session)
-		self.createSetup()
-		config.oscaminfo.userdatafromconf.addNotifier(self.elementChanged, initial_call=False)
-		config.oscaminfo.autoupdate.addNotifier(self.elementChanged, initial_call=False)
-		self.onLayoutFinish.append(self.layoutFinished)
-
-	def elementChanged(self, instance):
-		self.createSetup()
-		try:
-			self["config"].l.setList(self.oscamconfig)
-		except KeyError:
-			pass
+		Setup.__init__(self, session, setup="OscamInfo")
+		self.msg = msg
+		if self.msg:
+			self.msg = "Error:\n%s" % self.msg
 
 	def layoutFinished(self):
-		if BoxInfo.getItem("NCamIsActive"):
-			self.setTitle(_("NCam Info - Configuration"))
-		else:
-			self.setTitle(_("OScam Info - Configuration"))
-		self["config"].l.setList(self.oscamconfig)
-
-	def createSetup(self):
-		self.oscamconfig = []
-		self.oscamconfig.append(getConfigListEntry(_("Read Userdata from oscam.conf/ncam.conf"), config.oscaminfo.userdatafromconf))
-		if not config.oscaminfo.userdatafromconf.value:
-			self.oscamconfig.append(getConfigListEntry(_("Username (httpuser)"), config.oscaminfo.username))
-			self.oscamconfig.append(getConfigListEntry(_("Password (httpwd)"), config.oscaminfo.password))
-			self.oscamconfig.append(getConfigListEntry(_("IP address"), config.oscaminfo.ip))
-			self.oscamconfig.append(getConfigListEntry(_("Port"), config.oscaminfo.port))
-		self.oscamconfig.append(getConfigListEntry(_("Automatically update Client/Server View?"), config.oscaminfo.autoupdate))
-		if config.oscaminfo.autoupdate.value:
-			self.oscamconfig.append(getConfigListEntry(_("Update interval (in seconds)"), config.oscaminfo.intervall))
-
-	def save(self):
-		for x in self.oscamconfig:
-			x[1].save()
-		configfile.save()
-		self.close()
-
-	def cancel(self):
-		for x in self.oscamconfig:
-			x[1].cancel()
-		self.close()
+		Setup.layoutFinished(self)
+		if config.misc.softcams.value == "ncam":
+			self.setTitle(_("Ncam Info Setup"))
+		if self.msg:
+			self.setFootnote(self.msg)
+			self.msg = None
