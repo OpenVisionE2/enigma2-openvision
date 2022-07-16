@@ -260,7 +260,23 @@ class TimerEntry(ConfigListScreen, Screen):
 		self[widget].l.setList(self.list)
 
 	def newConfig(self):
-		print("[TimerEntry] newConfig '%s'." % str(self["config"].getCurrent()))
+		newConfigSelected = [
+			self.timerentry_justplay.value,
+			self.timerentry_type.value,
+			self.timerentry_zapwakeup.value,
+			self.timerentry_repeated.value,
+			self.timerentry_weekday.value,
+			self.timerentry_renamerepeat.value,
+			self.timerentry_starttime.value,
+			self.timerentry_endtime.value,
+			self.timerentry_service.value,
+			self.timerentry_dirname.value,
+			self.timerentry_conflictdetection.value,
+			self.timerentry_tagsset.value,
+			self.timerentry_afterevent.value,
+			self.timerentry_recordingtype.value
+		]
+		print("[TimerEntry] newConfigSelected '%s'" % newConfigSelected)
 		if self["config"].getCurrent() in (self.timerTypeEntry, self.timerJustplayEntry, self.frequencyEntry, self.entryShowEndTime, self.entryFallbackTimer):
 			self.createSetup("config")
 
