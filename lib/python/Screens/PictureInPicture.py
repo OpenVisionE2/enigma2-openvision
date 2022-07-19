@@ -85,7 +85,7 @@ class PictureInPicture(Screen):
 		self.onLayoutFinish.append(self.LayoutFinished)
 
 	def __del__(self):
-		if self.pipservice:
+		if hasattr(self, "pipservice"):
 			del self.pipservice
 		self.setExternalPiP(False)
 		self.setSizePosMainWindow()
@@ -202,7 +202,10 @@ class PictureInPicture(Screen):
 				return False
 			if ref and "4097" in ref.toString():
 				self.pipservice = None
-				AddPopup(text=_("Service type 4097 incorrect for PiP!"), type=MessageBox.TYPE_ERROR, timeout=5, id="ZapPipError")
+				self.currentService = None
+				self.currentServiceReference = None
+				if not config.usage.hide_zap_errors.value:
+					AddPopup(text=_("Service type 4097 incorrect for PiP!"), type=MessageBox.TYPE_ERROR, timeout=5, id="ZapPipError")
 				return False
 			if self.isPlayableForPipService(ref):
 				print("[PictureInPicture] playing pip service", ref and ref.toString())
@@ -217,11 +220,13 @@ class PictureInPicture(Screen):
 				self.pipservice.start()
 				self.currentService = service
 				self.currentServiceReference = ref
+				print("[PictureInPicture] playing pip service", ref and ref.toString())
 				return True
 			else:
 				self.pipservice = None
 				self.currentService = None
 				self.currentServiceReference = None
+				print("[PictureInPicture] error play pip service", ref and ref.toString())
 				if not config.usage.hide_zap_errors.value:
 					AddPopup(text=_("Incorrect service type for Picture in Picture!"), type=MessageBox.TYPE_ERROR, timeout=5, id="ZapPipError")
 		return False
