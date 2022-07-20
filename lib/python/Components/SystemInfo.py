@@ -5,8 +5,8 @@
 # is not currently tested in this code!)
 
 from hashlib import md5
-from os import R_OK, access, listdir, walk
-from os.path import exists as fileAccess, isdir, isfile, join as pathjoin
+from os import R_OK, access
+from os.path import exists as fileAccess, isfile, join as pathjoin
 from re import findall
 from subprocess import PIPE, Popen
 
