@@ -614,8 +614,6 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("Enigma2 information")))
 		info.append("")
-		# [WanWizard] Removed until we find a reliable way to determine the installation date
-		# info.append(_("Installed:|%s") % about.getFlashDateString())
 		enigmaVersion = about.getEnigmaVersionString()
 		enigmaVersion = enigmaVersion.rsplit("-", enigmaVersion.count("-") - 2)
 		if len(enigmaVersion) == 3:
@@ -638,12 +636,12 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("Software information")))
 		info.append("")
-		info.append(formatLine("P1", _("GCC version"), about.getGccVersion()))
-		info.append(formatLine("P1", _("Glibc version"), about.getGlibcVersion()))
-		info.append(formatLine("P1", _("OpenSSL version"), BoxInfo.getItem("OpenSSLVersion")))
-		info.append(formatLine("P1", _("Python version"), about.getPythonVersionString()))
-		info.append(formatLine("P1", _("GStreamer version"), about.getGStreamerVersionString().replace("GStreamer", "")))
-		info.append(formatLine("P1", _("FFmpeg version"), about.getFFmpegVersionString()))
+		info.append(formatLine("P1", _("GCC version"), BoxInfo.getItem("gcc")))
+		info.append(formatLine("P1", _("Glibc version"), BoxInfo.getItem("glibc")))
+		info.append(formatLine("P1", _("OpenSSL version"), BoxInfo.getItem("openssl")))
+		info.append(formatLine("P1", _("Python version"), BoxInfo.getItem("python")))
+		info.append(formatLine("P1", _("GStreamer version"), BoxInfo.getItem("gstreamer")))
+		info.append(formatLine("P1", _("FFmpeg version"), BoxInfo.getItem("ffmpeg")))
 		bootId = fileReadLine("/proc/sys/kernel/random/boot_id", source=MODULE_NAME)
 		if bootId:
 			info.append(formatLine("P1", _("Boot ID"), bootId))
