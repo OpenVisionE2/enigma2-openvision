@@ -526,7 +526,6 @@ class Wizard(Screen):
 				for renderer in self.renderer:
 					rootrenderer = renderer
 					while renderer.source is not None:
-						print("[Wizard] self.list: '%s'." % str(self["list"]))
 						if renderer.source is self["list"]:
 							print("[Wizard] setZPosition.")
 							rootrenderer.instance.setZPosition(1)
@@ -557,35 +556,30 @@ class Wizard(Screen):
 				if self.wizard[self.currStep]["config"]["type"] == "dynamic":
 					print("[Wizard] Config type is dynamic.")
 					self["config"].instance.setZPosition(2)
-					# self["config"].l.setList(eval("self." + self.wizard[self.currStep]["config"]["source"])())  # DEBUG IanSav
 					self["config"].setList(eval("self." + self.wizard[self.currStep]["config"]["source"])())
-				elif self.wizard[self.currStep]["config"]["screen"] is not None:
+				elif self.wizard[self.currStep]["config"]["screen"]:
 					if self.wizard[self.currStep]["config"]["type"] == "standalone":
 						print("[Wizard] Type is standalone.")
 						self.session.openWithCallback(self.ok, self.wizard[self.currStep]["config"]["screen"])
 					else:
 						self["config"].instance.setZPosition(2)
-						print("[Wizard] Wizard screen '%s'." % self.wizard[self.currStep]["config"]["screen"])
-						if self.wizard[self.currStep]["config"]["args"] is None:
+						print("[Wizard] Screen '%s'." % self.wizard[self.currStep]["config"]["screen"])
+						if not self.wizard[self.currStep]["config"]["args"]:
 							self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"])
+						elif self.wizard[self.currStep]["config"]["args"] == "SetupAccessLevels":
+							self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"], self.wizard[self.currStep]["config"]["args"])
 						else:
-							try:
-								self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"], eval(self.wizard[self.currStep]["config"]["args"]))
-							except:
-								self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"], self.wizard[self.currStep]["config"]["args"])
+							self.configInstance = self.session.instantiateDialog(self.wizard[self.currStep]["config"]["screen"], eval(self.wizard[self.currStep]["config"]["args"]))
+
 						if BoxInfo.getItem("OSDAnimation"):
 							self.configInstance.setAnimationMode(0)
-						# self["config"].l.setList(self.configInstance["config"].list)  # DEBUG IanSav
 						self["config"].setList(self.configInstance["config"].list)
 						callbacks = self.configInstance["config"].onSelectionChanged
 						self.configInstance["config"].destroy()
-						print("[Wizard] clearConfigList '%s' '%s'." % (self.configInstance["config"], self["config"]))
 						self.configInstance["config"] = self["config"]
 						self.configInstance["config"].onSelectionChanged = callbacks
-						print("[Wizard] clearConfigList '%s' '%s'." % (self.configInstance["config"], self["config"]))
 						self["config"].setCurrentIndex(0)
 				else:
-					# self["config"].l.setList([])  # DEBUG IanSav
 					self["config"].setList([])
 					self.handleInputHelpers()
 			else:
