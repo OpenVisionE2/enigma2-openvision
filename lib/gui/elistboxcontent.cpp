@@ -248,7 +248,7 @@ void eListboxPythonStringContent::paint(gPainter &painter, eWindowStyle &style, 
 			if (local_style)
 			{
 				text_offset += local_style->m_text_offset;
-//HACK VTI hat hier scheinbar einen Fehler und addiert den Textoffset zweimal auf, also machen wir das hier auch so
+//VTI workaround
 				if (local_style->m_use_vti_workaround)
 					text_offset += local_style->m_text_offset;
 
