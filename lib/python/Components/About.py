@@ -1,15 +1,11 @@
 from array import array
 from binascii import hexlify
 from fcntl import ioctl
-from glob import glob
-from os import popen, stat
 from os.path import isfile
 from six import PY2
 from socket import AF_INET, SOCK_DGRAM, inet_ntoa, socket
 from struct import pack, unpack
-from subprocess import PIPE, Popen
-from sys import maxsize, modules, version_info
-from time import localtime, strftime
+from sys import maxsize, modules
 
 from enigma import getEnigmaVersionString as getEnigmaVersion
 
@@ -57,72 +53,11 @@ def getIfTransferredData(ifname):
 				return rx_bytes, tx_bytes
 
 
-def getVersionString():
-	return getImageVersionString()
-
-
-def getImageVersionString():
-	if isfile("/var/lib/opkg/status"):
-		status = stat("/var/lib/opkg/status")
-		tm = localtime(status.st_mtime)
-		if tm.tm_year >= 2018:
-			return strftime("%Y-%m-%d %H:%M:%S", tm)
-	return _("Unavailable")
-
-
-def getFlashDateString():  # WW -placeholder for BC purposes, commented out for the moment in the Screen.
-	return _("Unknown")
-
-
-def getBuildDateString():
-	version = fileReadLine("/etc/version", source=MODULE_NAME)
-	if version is None:
-		return _("Unknown")
-	return "%s-%s-%s" % (version[:4], version[4:6], version[6:8])
-
-
-def getUpdateDateString():
-	build = BoxInfo.getItem("compiledate")
-	if build and build.isdigit():
-		return "%s-%s-%s" % (build[:4], build[4:6], build[6:])
-	return _("Unknown")
-
-
 def getEnigmaVersionString():
 	enigmaVersion = getEnigmaVersion()
 	if "-(no branch)" in enigmaVersion:
 		enigmaVersion = enigmaVersion[:-12]
 	return enigmaVersion
-
-
-def getGStreamerVersionString():
-	if isfile("/usr/bin/gst-launch-0.10"):
-		return "0.10.36"
-	else:
-		filenames = glob("/var/lib/opkg/info/gstreamer?.[0-9].control")
-		if filenames:
-			lines = fileReadLines(filenames[0], source=MODULE_NAME)
-			if lines:
-				for line in lines:
-					if line[0:8] == "Version:":
-						return line[9:].split("+")[0].split("-")[0]
-	return _("Not Installed")
-
-
-def getFFmpegVersionString():
-	lines = fileReadLines("/var/lib/opkg/info/ffmpeg.control", source=MODULE_NAME)
-	if lines:
-		for line in lines:
-			if line[0:8] == "Version:":
-				return line[9:].split("+")[0]
-	return _("Not Installed")
-
-
-def getKernelVersionString():
-	version = fileReadLine("/proc/version", source=MODULE_NAME)
-	if version is None:
-		return _("Unknown")
-	return version.split(" ", 4)[2].split("-", 2)[0]
 
 
 def getCPUBenchmark():
@@ -285,10 +220,6 @@ def getVisionModule():
 	return _("Unknown")
 
 
-def getPythonVersionString():
-	return "%s.%s.%s" % (version_info.major, version_info.minor, version_info.micro)
-
-
 def GetIPsFromNetworkInterfaces():
 	structSize = 40 if maxsize > 2 ** 32 else 32
 	sock = socket(AF_INET, SOCK_DGRAM)
@@ -327,34 +258,6 @@ def getBoxUptime():
 	times.append(ngettext("%d hour", "%d hours", h) % h)
 	times.append(ngettext("%d minute", "%d minutes", m) % m)
 	return " ".join(times)
-
-
-def getGlibcVersion():
-	process = Popen(("/lib/libc.so.6"), stdout=PIPE, stderr=PIPE, universal_newlines=True)
-	stdout, stderr = process.communicate()
-	if process.returncode == 0:
-		for line in stdout.split("\n"):
-			if line.startswith("GNU C Library"):
-				data = line.split(",")[0].split()[-1]
-				if data.endswith("."):
-					data = data[0:-1]
-				return data
-	print("[About] Get glibc version failed.")
-	return _("Unknown")
-
-
-def getGccVersion():
-	process = Popen(("/lib/libc.so.6"), stdout=PIPE, stderr=PIPE, universal_newlines=True)
-	stdout, stderr = process.communicate()
-	if process.returncode == 0:
-		for line in stdout.split("\n"):
-			if line.startswith("Compiled by GNU CC version"):
-				data = line.split()[-1]
-				if data.endswith("."):
-					data = data[0:-1]
-				return data
-	print("[About] Get gcc version failed.")
-	return _("Unknown")
 
 
 # For modules that do "from About import about".
