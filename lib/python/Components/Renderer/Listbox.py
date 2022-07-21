@@ -48,7 +48,7 @@ class Listbox(Renderer):
 	def setWrapAround(self, wrapAround):
 		if self.instance is not None:
 			self.instance.setWrapAround(wrapAround)
-	
+
 	def getWrapAround(self):
 		return self.instance and self.instance.getWrapAround()
 
