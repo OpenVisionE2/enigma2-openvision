@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from enigma import eTimer, eEnv
+from enigma import eTimer
 from Screens.Screen import Screen
 from Components.ActionMap import ActionMap, NumberActionMap
 from Components.Pixmap import Pixmap, MultiPixmap
@@ -18,8 +18,6 @@ from Plugins.SystemPlugins.WirelessLan.Wlan import iWlan, iStatus, getWlanConfig
 from time import time
 import re
 from Components.SystemInfo import BoxInfo
-
-plugin_path = eEnv.resolve("${libdir}/enigma2/python/Plugins/SystemPlugins/WirelessLan")
 
 
 modelist = ["Unencrypted", "WEP", "WPA", "WPA/WPA2", "WPA2"]
@@ -207,7 +205,6 @@ class WlanScan(Screen):
 		Screen.__init__(self, session)
 		self.setTitle(_("Select a wireless network"))
 		self.iface = iface
-		self.skin_path = plugin_path
 		self.oldInterfaceState = iNetwork.getAdapterAttribute(self.iface, "up")
 		self.APList = None
 		self.newAPList = None
