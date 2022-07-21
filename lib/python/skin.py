@@ -6,8 +6,7 @@ from xml.etree.cElementTree import Element, ElementTree, fromstring
 from enigma import BT_ALPHABLEND, BT_ALPHATEST, BT_HALIGN_CENTER, BT_HALIGN_LEFT, BT_HALIGN_RIGHT, BT_KEEP_ASPECT_RATIO, BT_SCALE, BT_VALIGN_BOTTOM, BT_VALIGN_CENTER, BT_VALIGN_TOP, addFont, eLabel, eListbox, ePixmap, ePoint, eRect, eSize, eSlider, eSubtitleWidget, eWindow, eWindowStyleManager, eWindowStyleSkinned, getDesktop, gFont, getFontFaces, gMainDC, gRGB
 
 from Components.config import ConfigSubsection, ConfigText, config
-from Components.RcModel import rc_model
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.Sources.Source import ObsoleteSource
 from Tools.Directories import SCOPE_LCDSKIN, SCOPE_GUISKIN, SCOPE_FONTS, SCOPE_SKINS, pathExists, resolveFilename, fileReadXML
 from Tools.Import import my_import
@@ -15,8 +14,8 @@ from Tools.LoadPixmap import LoadPixmap
 
 MODULE_NAME = __name__.split(".")[-1].capitalize()
 
-DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "OctEtFHD/skin.xml"
-DEFAULT_DISPLAY_SKIN = SystemInfo["grautec"] and "skin_default/skin_display_grautec.xml" or "skin_default/skin_display.xml"
+DEFAULT_SKIN = BoxInfo.getItem("fhdskin") and "OctEtFHD/skin.xml" or "PLi-HD/skin.xml"
+DEFAULT_DISPLAY_SKIN = BoxInfo.getItem("grautec") and "skin_default/skin_display_grautec.xml" or "skin_default/skin_display.xml"
 SKIN_DEFAULT = "skin_default/skin.xml"
 EMERGENCY_NAME = "OctEtFHD"
 EMERGENCY_SKIN = "skin_fallback_1080/skin.xml"
@@ -483,8 +482,8 @@ def parsePixmap(path, desktop, width=0, height=0):
 	option = path.find("#")
 	if option != -1:
 		path = path[:option]
-	if basename(path) in ("rc.png", "rc0.png", "rc1.png", "rc2.png", "oldrc.png") and rc_model.rcIsDefault() is False:
-		path = rc_model.getRcImg()
+	if basename(path) in ("rc.png", "rc0.png", "rc1.png", "rc2.png", "oldrc.png"):
+		path = BoxInfo.getItem("RCImage")
 	if isfile(path):
 		pixmap = LoadPixmap(path, desktop, None, width, height)
 		if pixmap is None:
