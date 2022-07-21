@@ -241,8 +241,6 @@ BoxInfo.setItem("RemoteDelay", 200 if model in ("maram9", "axodin") else 700)
 
 BoxInfo.setItem("multiboot", 0 if BoxInfo.getItem("distro", "").lower() == "openvision" else 1, immutable=True)
 
-BoxInfo.setItem("OpenSSLVersion", getOpenSSLVersion(), immutable=True)
-
 SystemInfo["CommonInterface"] = model in ("h9combo", "h9combose", "h10", "pulse4kmini") and 1 or eDVBCIInterfaces.getInstance().getNumOfSlots()
 SystemInfo["CommonInterfaceCIDelay"] = fileCheck("/proc/stb/tsmux/rmx_delay")
 for cislot in range(BoxInfo.getItem("CommonInterface", 0)):
