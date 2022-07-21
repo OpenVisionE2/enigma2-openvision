@@ -19,8 +19,8 @@ class ConfigList(GUIComponent):
 		self.l = eListboxPythonConfigContent()
 		seperation = parameters.get("ConfigListSeperator", 200)
 		self.l.setSeperation(seperation)
-		height, borderWidth = parameters.get("ConfigListSlider", (17, 0))
-		self.l.setSlider(height, borderWidth)
+		height, space = parameters.get("ConfigListSlider", (17, 0))
+		self.l.setSlider(height, space)
 		self.timer = eTimer()
 		self.list = list
 		self.onSelectionChanged = []
@@ -42,15 +42,14 @@ class ConfigList(GUIComponent):
 		self.handleKey(ACTIONKEY_TIMEOUT)
 
 	def handleKey(self, key, callback=None):
-		for item in range(len(self.list)):
-			selection = self.getCurrent()
-			if selection and selection[1].enabled:
-				changed = selection[1].handleKey(key, callback)
-				self.invalidateCurrent()
-				if key in ACTIONKEY_NUMBERS:
-					self.timer.start(1000, 1)
-				return changed
-			return False
+		selection = self.getCurrent()
+		if selection and selection[1].enabled:
+			changed = selection[1].handleKey(key, callback)
+			self.invalidateCurrent()
+			if key in ACTIONKEY_NUMBERS:
+				self.timer.start(1000, 1)
+			return changed
+		return False
 
 	def toggle(self):
 		self.getCurrent()[1].toggle()
@@ -101,6 +100,7 @@ class ConfigList(GUIComponent):
 	def postWidgetCreate(self, instance):
 		instance.selectionChanged.get().append(self.selectionChanged)
 		instance.setContent(self.l)
+		self.instance.setWrapAround(True)
 
 	def preWidgetRemove(self, instance):
 		if isinstance(self.current, tuple) and len(self.current) >= 2:
@@ -182,7 +182,7 @@ class ConfigListScreen:
 			"pageDown": (self.keyPageDown, _("Move down a screen")),
 			"bottom": (self.keyBottom, _("Move to last line / screen"))
 		}, prio=1, description=_("Common Setup Actions"))
-		self["menuConfigActions"] = HelpableActionMap(self, ["ConfigListActions"], {
+		self["menuConfigActions"] = HelpableActionMap(self, "ConfigListActions", {
 			"menu": (self.keyMenu, _("Display selection list as a selection menu")),
 		}, prio=1, description=_("Common Setup Actions"))
 		self["menuConfigActions"].setEnabled(False if fullUI else True)
@@ -207,7 +207,7 @@ class ConfigListScreen:
 			"toggleOverwrite": (self.keyToggle, _("Toggle new text inserts before or overwrites existing text")),
 		}, prio=1, description=_("Common Setup Actions"))
 		self["editConfigActions"].setEnabled(False if fullUI else True)
-		self["virtualKeyBoardActions"] = HelpableActionMap(self, ["VirtualKeyboardActions"], {
+		self["virtualKeyBoardActions"] = HelpableActionMap(self, "VirtualKeyboardActions", {
 			"showVirtualKeyboard": (self.keyText, _("Display the virtual keyboard for data entry"))
 		}, prio=1, description=_("Common Setup Actions"))
 		self["virtualKeyBoardActions"].setEnabled(False)
@@ -236,10 +236,7 @@ class ConfigListScreen:
 		self.restartMsg = _("Restart GUI now?") if msg is None else msg
 
 	def getCurrentItem(self):
-		try:
-			return self["config"].getCurrent() and self["config"].getCurrent()[1] or None
-		except Exception as err:
-			print(err)
+		return self["config"].getCurrent() and self["config"].getCurrent()[1] or None
 
 	def getCurrentEntry(self):
 		return self["config"].getCurrent() and self["config"].getCurrent()[0] or ""
