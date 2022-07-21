@@ -202,7 +202,7 @@ class ConfigListScreen:
 			"pageDown": (self.keyPageDown, _("Move down a screen")),
 			"bottom": (self.keyBottom, _("Move to last line / screen"))
 		}, prio=1, description=_("Common Setup Actions"))
-		self["menuConfigActions"] = HelpableActionMap(self, ["ConfigListActions"], {
+		self["menuConfigActions"] = HelpableActionMap(self, "ConfigListActions", {
 			"menu": (self.keyMenu, _("Display selection list as a selection menu")),
 		}, prio=1, description=_("Common Setup Actions"))
 		self["menuConfigActions"].setEnabled(False if fullUI else True)
@@ -227,7 +227,7 @@ class ConfigListScreen:
 			"toggleOverwrite": (self.keyToggle, _("Toggle new text inserts before or overwrites existing text")),
 		}, prio=1, description=_("Common Setup Actions"))
 		self["editConfigActions"].setEnabled(False if fullUI else True)
-		self["virtualKeyBoardActions"] = HelpableActionMap(self, ["VirtualKeyboardActions"], {
+		self["virtualKeyBoardActions"] = HelpableActionMap(self, "VirtualKeyboardActions", {
 			"showVirtualKeyboard": (self.keyText, _("Display the virtual keyboard for data entry"))
 		}, prio=1, description=_("Common Setup Actions"))
 		self["virtualKeyBoardActions"].setEnabled(False)
