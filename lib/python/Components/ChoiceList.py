@@ -31,10 +31,6 @@ def ChoiceEntryComponent(key=None, text=None):
 				png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "buttons/key_%s.png" % key))
 			if png:
 				x, y, w, h = parameters.get("ChoicelistIcon", (5, 0, 35, 25))
-				if key == "verticalline" and "ChoicelistIconVerticalline" in parameters:
-					x, y, w, h = parameters.get("ChoicelistIconVerticalline", (5, 0, 35, 25))
-				if key == "expanded" and "ChoicelistIconExpanded" in parameters:
-					x, y, w, h = parameters.get("ChoicelistIconExpanded", (5, 0, 35, 25))
 				res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, x, y, w, h, png))
 		else:
 			x, y, w, h = parameters.get("ChoicelistNameSingle", (5, 0, 800, 25))
@@ -48,8 +44,12 @@ class ChoiceList(MenuList):
 		font = fonts.get("ChoiceList", ("Regular", 20, 30))
 		self.l.setFont(0, gFont(font[0], font[1]))
 		self.l.setItemHeight(font[2])
+		self.itemHeight = font[2]
 		self.selection = selection
 
 	def postWidgetCreate(self, instance):
 		MenuList.postWidgetCreate(self, instance)
 		self.moveToIndex(self.selection)
+
+	def getItemHeight(self):
+		return self.itemHeight
