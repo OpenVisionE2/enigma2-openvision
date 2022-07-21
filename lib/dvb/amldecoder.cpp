@@ -605,7 +605,8 @@ RESULT eAMLTSMPEGDecoder::showSinglePic(const char *filename)
 				unsigned char iframe[s.st_size];
 				unsigned char stuffing[8192];
 				memset(stuffing, 0, 8192);
-				read(f, iframe, s.st_size);
+				ssize_t ret = read(f, iframe, s.st_size);
+				if (ret < 0) eDebug("[eAMLTSMPEGDecoder] read failed: %m");
 
 				setAvsyncEnable(0);
 				m_radio_pic_on = 1;

@@ -597,6 +597,7 @@ void eDVBScan::addLcnToDB(eDVBNamespace ns, eOriginalNetworkID onid, eTransportS
 		SCAN_eDebug("[eDVBScan] [LCN] File is present, trying to write...");
 		int size = 0;
 		bool added = false;
+		size_t ret; /* dummy value to store fread return values */
 		fseek(m_lcn_file, 0, SEEK_END);
 		size = ftell(m_lcn_file);
 		
@@ -604,7 +605,7 @@ void eDVBScan::addLcnToDB(eDVBNamespace ns, eOriginalNetworkID onid, eTransportS
 		{
 			char tmp[40];
 			fseek(m_lcn_file, i*39, SEEK_SET);
-			fread (tmp, 1, 39, m_lcn_file);
+			ret = fread (tmp, 1, 39, m_lcn_file);
 			if (memcmp(tmp, row, 23) == 0)
 			{
 				tmp[38] = 0;
