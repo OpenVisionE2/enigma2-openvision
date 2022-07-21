@@ -153,7 +153,6 @@ Here is the list of variables currently supported:
 	"oe" or "/proc/enigma/oe" replaces "getOEVersion()"
 	"kernel" or "/proc/enigma/kernel" replaces "getKernelVersion()"
 	"driverdate" or "/proc/enigma/driverdate" replaces "getDriverDate()"
-	"python" or "/proc/enigma/python"
 	"mediaservice" or "/proc/enigma/mediaservice" replaces "getE2Service()"
 	"multilib" or "/proc/enigma/multilib" replaces "getHaveMultiLib()"
 	"architecture" or "/proc/enigma/architecture" replaces "getImageArch()"
@@ -287,7 +286,7 @@ imgversion:
 		This variable defines the main image version which only changes when 
 		GCC changes or when other important packages like python get updated.
 
-	Example: 10.3
+	Example: 12.1
 
 imgrevision:
 
@@ -295,7 +294,7 @@ imgrevision:
 
 		This variable defines the image revision which changes after a batch of changes.
 
-	Example: r396
+	Example: r456
 
 imglanguage:
 
@@ -378,14 +377,6 @@ driverdate:
 		Just to make About/Information screen faster.
 
 	Example: 1.1.2022
-
-python:
-
-	BoxInfo.getItem("python") (/proc/enigma/python)
-
-		This variable defines the python exact version.
-
-	Example: 2.7.18
 
 mediaservice:
 

@@ -638,6 +638,7 @@ class ImageInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("P1", _("GCC version"), BoxInfo.getItem("gcc")))
 		info.append(formatLine("P1", _("Glibc version"), BoxInfo.getItem("glibc")))
+		info.append(formatLine("P1", _("Binutils version"), BoxInfo.getItem("binutils")))
 		info.append(formatLine("P1", _("OpenSSL version"), BoxInfo.getItem("openssl")))
 		info.append(formatLine("P1", _("Python version"), BoxInfo.getItem("python")))
 		info.append(formatLine("P1", _("GStreamer version"), BoxInfo.getItem("gstreamer")))
