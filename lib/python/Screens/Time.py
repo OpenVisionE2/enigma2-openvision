@@ -58,9 +58,9 @@ class Time(Setup):
 
 class TimeWizard(ConfigListScreen, Screen, ShowRemoteControl):
 	skin = """
-	<screen name="Time Wizard" position="center,60" size="980,635" resolution="1280,720">
+	<screen name="TimeWizard" position="center,60" size="980,635" resolution="1280,720">
 		<widget name="text" position="10,10" size="e-20,25" font="Regular;20" transparent="1" valign="center" />
-		<widget name="config" position="10,40" size="e-20,250" enableWrapAround="1" font="Regular;25" itemHeight="35" scrollbarMode="showOnDemand" />
+		<widget name="config" position="10,40" size="e-20,250" enableWrapAround="1" entryFont="Regular;25" valueFont="Regular;25" itemHeight="35" scrollbarMode="showOnDemand" />
 		<widget source="key_red" render="Label" objectTypes="key_red,StaticText" position="180,e-50" size="180,40" backgroundColor="key_red" conditional="key_red" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
