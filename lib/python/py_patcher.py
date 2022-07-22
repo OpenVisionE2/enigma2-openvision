@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import os
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from Tools.PyVerHelper import getPyExt
 
-filename = "/usr/lib/enigma2/python/Plugins/Extensions/MediaPortal/plugin.pyo"
+filename = resolveFilename(SCOPE_PLUGINS, "Extensions/MediaPortal/plugin.%s" % getPyExt())
 os.rename(filename, filename + ".org")
 
 source = open(filename + ".org", "r")
@@ -19,7 +21,7 @@ for line, str in enumerate(source):
 	str = str.replace('dm920N', 'dn920N')
 
 	if oldstr != str:
-		print("!!! Patch pyo line %d" % (line))
+		print("!!! Patch line %d" % (line))
 
 	dest.write(str)
 

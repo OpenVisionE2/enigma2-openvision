@@ -28,6 +28,7 @@ install_PYTHON = \
 	Notifications.py \
 	NumericalTextInput.py \
 	Profile.py \
+	PyVerHelper.py \
 	RedirectOutput.py \
 	StbHardware.py \
 	TextBoundary.py \
