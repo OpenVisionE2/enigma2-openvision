@@ -412,7 +412,6 @@ if test "$BOXBRAND" == "rpi"; then
 	RPI_CFLAGS=" $LIBNL_CFLAGS"
 	CXXFLAGS+="$RPI_CFLAGS"
 	AC_DEFINE(HAVE_RASPBERRYPI, 1,[enable rpi specific stuff])
-	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi
 
 AM_CONDITIONAL(DMAMLOGIC, test "$STBPLATFORM" == "dmamlogic")
@@ -473,7 +472,6 @@ if test "$STBPLATFORM" == "octagonhisil" -o "$STBPLATFORM" == "octagonhisilnew" 
 	AC_DEFINE(HAVE_HISILICON, 1,[define it is a HISILICON chip])
 	AC_DEFINE(CONFIG_HISILICON_FB, 1,[define add HISILICON framebuffer blit])
 	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
-	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
 fi
 
 if test "$BOXBRAND" == "dags"; then
@@ -693,8 +691,8 @@ if test "$BOXTYPE" == "vuultimo4k"; then
 	AC_DEFINE(HAVE_COLORLCD800, 1,[define when using a 800x480 color display device])
 fi
 
-if test "$STBPLATFORM" == "vu4kgen" -o "$BOXTYPE" == "sf4008"; then
-	AC_DEFINE(VMSG_TYPE2, 1,[define vtuner_message type 2])
+if test "$STBPLATFORM" == "vu1gen" -o "$STBPLATFORM" == "vu2gen"; then
+	AC_DEFINE(VMSG_TYPE1, 1,[define vtuner_message type 1])
 fi
 
 if test "$BOXTYPE" == "vuzero" -o "$STBPLATFORM" == "vu1gen" -o "$BOXTYPE" == "vusolose" -o "$BOXTYPE" == "vusolo2"; then
