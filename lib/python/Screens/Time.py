@@ -125,7 +125,8 @@ class TimeWizard(ConfigListScreen, Screen, ShowRemoteControl):
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"], {
 			"yellow": self.yellow,
 			"ok": self.red,
-			"red": self.red
+			"red": self.red,
+			"back": self.red
 		}, -2)
 		self.onLayoutFinish.append(self.selectKeys)
 		self.updateTimeList()
