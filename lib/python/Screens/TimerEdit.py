@@ -159,7 +159,7 @@ class TimerEditList(Screen, ProtectedScreen):
 			else:
 				self["key_info"].setText(_("Info"))
 			text = dropEPGNewLines(cur.description)
-			event = eEPGCache.getInstance().lookupEventId(cur.service_ref.ref, cur.eit) if cur.eit is not None else None
+			event = eEPGCache.getInstance().lookupEventId(cur.service_ref.ref, cur.eit) or 0 if cur.eit else None
 			if event:
 				ext_description = dropEPGNewLines(event.getExtendedDescription())
 				short_description = dropEPGNewLines(event.getShortDescription())
