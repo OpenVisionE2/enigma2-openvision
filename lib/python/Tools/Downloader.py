@@ -7,7 +7,7 @@ from enigma import eTimer
 
 
 class DownloadWithProgress:
-	def __init__(self, url, outputFile):
+	def __init__(self, url, outputFile, headers=None):
 		self.url = url
 		self.outputFile = outputFile
 		self.userAgent = "%s %s Enigma2 HbbTV/1.1.1 (+PVR+RTSP+DL;OpenVision;;;)" % (BoxInfo.getItem("brand"), BoxInfo.getItem("model"))
