@@ -496,7 +496,7 @@ def moveFiles(fileList):
 	except (IOError, OSError) as err:
 		if err.errno == EXDEV:  # EXDEV - Invalid cross-device link.
 			print("[Directories] Warning: Cannot rename across devices, trying slower move.")
-			from Screens.CopyFiles import moveFiles as extMoveFiles
+			from Tools.CopyFiles import moveFiles as extMoveFiles
 			extMoveFiles(fileList, item[0])
 			print("[Directories] Moving files in background.")
 		else:
@@ -578,7 +578,7 @@ def fileAccess(file, mode="r"):
 	try:
 		result = access(file, accMode)
 	except (IOError, OSError, UnicodeEncodeError) as err:
-		print("[Directories] Error: %s (%s)" % (err, file))
+		print("[Directories] Error %d: Couldn't determine file '%s' access mode!  (%s)" % (err.errno, file, err.strerror))
 	return result
 
 
