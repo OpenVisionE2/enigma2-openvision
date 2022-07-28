@@ -3,7 +3,7 @@ from sys import version_info
 
 def getPyVS():
 	PyVS = "%s" % (version_info.major) #Example: 2
-	return PyVS
+	return int(PyVS)
 
 
 def getPyVerSt():
@@ -17,7 +17,7 @@ def getPythonVersionString():
 
 
 def getPyExt():
-	if getPyVS() == "2":
+	if getPyVS() == 2:
 		PyExt = "pyo"
 	else:
 		PyExt = "pyc"
