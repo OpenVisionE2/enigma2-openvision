@@ -2,7 +2,6 @@ from os import sys
 from os.path import exists
 from sys import maxsize
 from twisted.internet import threads
-from six import PY2
 
 from enigma import eActionMap, eDBoxLCD, eTimer
 
@@ -71,6 +70,7 @@ class IconCheckPoller:
 			fileWriteLine("/proc/stb/lcd/symbol_network", linkState)
 		elif exists("/proc/stb/lcd/symbol_network") and config.lcd.mode.value == "0":
 			fileWriteLine("/proc/stb/lcd/symbol_network", "0")
+		from six import PY2
 		if PY2:
 			from usb import busses
 			USBState = 0

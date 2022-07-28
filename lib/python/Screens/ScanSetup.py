@@ -16,7 +16,6 @@ from Tools.Directories import fileExists
 from Screens.InfoBar import InfoBar
 from Screens.MessageBox import MessageBox
 from enigma import eTimer, eDVBFrontendParametersSatellite, eComponentScan, eDVBFrontendParametersTerrestrial, eDVBFrontendParametersCable, eConsoleAppContainer, eDVBResourceManager, eDVBFrontendParametersATSC
-from six import PY2
 
 brand = BoxInfo.getItem("brand")
 
@@ -205,13 +204,11 @@ class CableTransponderSearchSupport:
 		self.cable_search_session.close(True)
 
 	def getCableTransponderData(self, str):
-		str = str.decode()
+		if isinstance(str, bytes):
+			str = str.decode()
 		print("[getCableTransponderData] ", str)
 		#prepend any remaining data from the previous call
-		if PY2:
-			str = self.remainingdata + str
-		else:
-			str = self.remainingdata + str.decode()
+		str = self.remainingdata + str
 		lines = str.split('\n')
 		#'str' should end with '\n', so when splitting, the last line should be empty. If this is not the case, we received an incomplete line
 		if len(lines[-1]):

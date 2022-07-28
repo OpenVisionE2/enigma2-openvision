@@ -11,7 +11,6 @@ from ServiceReference import ServiceReference
 from enigma import eListboxPythonMultiContent, eListbox, gFont, iServiceInformation, eServiceCenter, eDVBFrontendParametersSatellite, RT_HALIGN_LEFT, RT_VALIGN_CENTER
 from Tools.Transponder import ConvertToHumanReadable, getChannelNumber
 import skin
-from six import PY2
 
 TYPE_TEXT = 0
 TYPE_VALUE_HEX = 1
@@ -234,6 +233,7 @@ class ServiceInfo(Screen):
 			if posi > 1800:
 				posi = 3600 - posi
 				EW = "W"
+		from six import PY2
 		charactersPython = str('\xc2\xb0') if PY2 else str('\xb0')
 		return "%s - %s%s %s" % (namespace, (float(posi) / 10.0), charactersPython, _(EW))
 

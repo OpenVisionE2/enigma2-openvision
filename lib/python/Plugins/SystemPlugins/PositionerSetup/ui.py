@@ -1050,7 +1050,7 @@ class PositionerSetup(Screen):
 			print((_("Lock ratio") + "     %5.1f" + chr(176) + "   : %6.2f") % (pos, lock), file=log)
 
 		def optimise(readings):
-			#	if sys.version_info >= (3, 0):
+			#	if getPyVS() >= (3, 0):
 			xi = list(readings.keys())
 			yi = [x_y1[0] for x_y1 in list(readings.values())]
 			#	else:

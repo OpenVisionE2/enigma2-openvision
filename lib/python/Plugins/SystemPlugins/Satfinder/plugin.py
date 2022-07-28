@@ -17,7 +17,6 @@ from Tools.Transponder import getChannelNumber, channel2frequency
 from Tools.BoundFunction import boundFunction
 from Screens.Screen import Screen # for services found class
 import skin
-from six import PY2
 
 try: # for reading the current transport stream (SatfinderExtra)
 	from Plugins.SystemPlugins.AutoBouquetsMaker.scanner import dvbreader
@@ -888,6 +887,7 @@ class SatfinderExtra(Satfinder):
 				colour = green
 			else:
 				colour = red
+			from six import PY2
 			services.append("%s%s%s" % (dash, colour, service["service_name"].decode("ISO-8859-1").encode("UTF-8"))) if PY2 else services.append("%s%s%s" % (dash, colour, service["service_name"]))
 
 		self.session.open(ServicesFound, "\n".join(services), legend)

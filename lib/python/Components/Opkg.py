@@ -1,6 +1,5 @@
 from os import listdir
 from os.path import exists, join as pathjoin, normpath
-from six import PY3
 
 from enigma import eConsoleAppContainer
 
@@ -224,7 +223,7 @@ class OpkgComponent:
 			self.cmdFinished(-1)
 
 	def cmdData(self, data):
-		if PY3:
+		if isinstance(data, bytes):
 			data = data.decode()
 		self.cache = "%s%s" % (self.cache, data)
 		while True:

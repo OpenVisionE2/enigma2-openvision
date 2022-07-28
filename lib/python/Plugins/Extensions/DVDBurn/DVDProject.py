@@ -5,7 +5,6 @@ from Tools.Directories import fileExists
 from Components.config import config, ConfigSubsection, ConfigInteger, ConfigText, ConfigSelection, ConfigSequence, ConfigSubList
 from . import DVDTitle
 import xml.dom.minidom
-from six import iteritems
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_FONTS
 
 
@@ -59,6 +58,7 @@ class DVDProject:
 
 	def saveProject(self, path):
 		from Tools.XMLTools import stringToXML
+		from six import iteritems
 		list = []
 		list.append('<?xml version="1.0" encoding="utf-8" ?>\n')
 		list.append('<DreamDVDBurnerProject>\n')

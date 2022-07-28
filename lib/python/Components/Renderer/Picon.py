@@ -10,7 +10,6 @@ from Tools.Alternatives import GetWithAlternative
 from Tools.Directories import pathExists, SCOPE_GUISKIN, resolveFilename
 from Components.Harddisk import harddiskmanager
 from ServiceReference import ServiceReference
-from six import PY2
 
 
 class PiconLocator:
@@ -94,6 +93,7 @@ class PiconLocator:
 			pngname = self.findPicon('_'.join(fields))
 		if not pngname: # picon by channel name
 			name = ServiceReference(serviceName).getServiceName()
+			from six import PY2
 			if PY2:
 				name = unicodedata.normalize('NFKD', unicode(name, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			else:

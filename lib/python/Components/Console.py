@@ -1,5 +1,4 @@
 from os import waitpid
-from six import PY2
 from enigma import eConsoleAppContainer
 
 
@@ -47,10 +46,9 @@ class ConsoleItem:
 		self.container = None
 		if self.callback != None:
 			appResults = b"".join(self.appResults)
-			if PY2:
-				appResults = appResults if self.binary else appResults
-			else:
-				appResults = appResults if self.binary else appResults.decode()
+
+			if isinstance(appResults, bytes):
+				appResults = appResults.decode()
 
 			self.callback(appResults, retVal, self.extraArgs)
 

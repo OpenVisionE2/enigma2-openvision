@@ -5,7 +5,6 @@ import netifaces
 import io
 import os
 import re
-from six import PY2, ensure_str
 from Screens.Setup import Setup
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
@@ -1097,6 +1096,7 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 		self.onClose.append(self.cleanup)
 
 	def queryWirelessDevice(self, iface):
+		from six import PY2
 		if PY2:
 			try:
 				from pythonwifi.iwlibs import Wireless
@@ -3808,6 +3808,7 @@ class NetworkPassword(ConfigListScreen, Screen):
 			self.close()
 
 	def dataAvail(self, data):
+		from six import ensure_str
 		data = ensure_str(data)
 		self.output_line += data
 		while True:

@@ -7,7 +7,6 @@ from Components.ActionMap import ActionMap
 from Components.ScrollLabel import ScrollLabel
 from Components.Sources.StaticText import StaticText
 from Screens.MessageBox import MessageBox
-from six import PY2
 
 
 class Console(Screen):
@@ -120,6 +119,7 @@ class Console(Screen):
 			self.show()
 
 	def dataAvail(self, str):
+		from six import PY2
 		if PY2:
 			self["text"].appendText(str)
 		else:

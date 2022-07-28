@@ -12,7 +12,6 @@ from Components.Console import Console
 from Components.Language import language
 from Components.SystemInfo import BoxInfo
 from Tools.Directories import SCOPE_KEYMAPS, SCOPE_SKINS, fileReadLine, fileWriteLine, fileReadLines, fileReadXML, resolveFilename
-from six import PY2
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -38,6 +37,7 @@ class InputDevices:
 				self.fd = osopen("/dev/input/%s" % device, O_RDWR | O_NONBLOCK)
 				self.name = ioctl(self.fd, self.EVIOCGNAME(256), buffer)
 				osclose(self.fd)
+				from six import PY2
 				if PY2:
 					self.name = str(self.name[:self.name.find(b"\0")])
 				else:

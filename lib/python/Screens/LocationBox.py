@@ -2,7 +2,6 @@
 
 from os import sep, statvfs
 from os.path import exists, isdir, join as pathjoin
-from six import PY2
 
 from enigma import eTimer
 
@@ -414,6 +413,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 			self.selectByStart()
 			self.quickSelectPos += 1
 		char = self.getKey(digit)  # Get char and append to text.
+		from six import PY2
 		self.quickSelect = self.quickSelect[:self.quickSelectPos] + (unicode(char) if PY2 else str(char))
 		self["quickselect"].setText(self.quickSelect)
 		self["quickselect"].visible = True

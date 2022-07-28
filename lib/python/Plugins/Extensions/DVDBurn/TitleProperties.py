@@ -11,7 +11,6 @@ from Components.config import config, getConfigListEntry, ConfigInteger
 from Components.ConfigList import ConfigListScreen
 from Components.AVSwitch import AVSwitch
 from . import DVDTitle
-from six import iteritems
 
 
 class TitleProperties(Screen, ConfigListScreen):
@@ -152,6 +151,7 @@ from Tools.ISO639 import LanguageCodes
 class LanguageChoices():
 	def __init__(self):
 		from Components.Language import language as syslanguage
+		from six import iteritems
 		syslang = syslanguage.getLanguage()[:2]
 		self.langdict = {}
 		self.choices = []

@@ -10,7 +10,6 @@ from Tools.Directories import resolveFilename, SCOPE_CONFIG
 from Tools.Notifications import AddPopup, AddNotificationParentalControl, RemovePopup
 from enigma import eTimer, eServiceCenter, iServiceInformation, eServiceReference, eDVBDB
 import time
-from six import iteritems
 
 TYPE_SERVICE = "SERVICE"
 TYPE_BOUQUETSERVICE = "BOUQUETSERVICE"
@@ -198,6 +197,7 @@ class ParentalControl:
 
 	def saveListToFile(self, sWhichList, vList):
 		file = open(resolveFilename(SCOPE_CONFIG, sWhichList), 'w')
+		from six import iteritems
 		for sService, sType in iteritems(vList):
 			if (TYPE_SERVICE in sType or TYPE_BOUQUET in sType) and not sService.startswith("-"):
 				file.write(str(sService) + "\n")

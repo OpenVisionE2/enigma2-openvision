@@ -10,13 +10,13 @@ from Tools.StbHardware import getFPWasTimerWakeup
 import NavigationInstance
 from enigma import eTimer
 from os import sys
-from six import PY2
-if PY2:
-	from sys import maxint
-	maximport = maxint
-else:
+from Tools.PyVerHelper import getPyVS
+if getPyVS() >= 3:
 	from sys import maxsize
 	maximport = maxsize
+else: # Python 2
+	from sys import maxint
+	maximport = maxint
 
 LOGPATH = "/hdd/"
 LOGFILE = "hdmicec.log"

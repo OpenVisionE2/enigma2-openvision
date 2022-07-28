@@ -11,7 +11,6 @@ from Components.FileList import FileList
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS, SCOPE_FONTS, SCOPE_HDD
 from Components.config import config, getConfigListEntry
 from Components.ConfigList import ConfigListScreen
-from six import iteritems
 
 
 class FileBrowser(Screen, HelpableScreen):
@@ -173,6 +172,7 @@ class ProjectSettings(ConfigListScreen, Screen):
 
 		self["config"].setList(self.list)
 		self.keydict = {}
+		from six import iteritems
 		for key, val in iteritems(self.settings.dict()):
 			self.keydict[val] = key
 		for key, val in iteritems(self.project.menutemplate.settings.dict()):
