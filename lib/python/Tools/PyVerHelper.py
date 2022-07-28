@@ -3,7 +3,7 @@ from sys import version_info
 
 def getPyVS():
 	PyVS = "%s" % (version_info.major) #Example: 2
-	return PyVS
+	return int(PyVS)
 
 
 def getPyVerSt():
