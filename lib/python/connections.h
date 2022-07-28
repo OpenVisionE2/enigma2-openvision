@@ -31,7 +31,7 @@ inline PyObject *PyFrom(const char *c)
 {
 	return PyString_FromString(c);
 }
-
+// Only used by console which might transfer binary data(screenshots). So use Bytes instead of Unicode
 inline PyObject *PyFrom(std::pair<const char*, int>& p)
 {
 #if PY_MAJOR_VERSION < 3

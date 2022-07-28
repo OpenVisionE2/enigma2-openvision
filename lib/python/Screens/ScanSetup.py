@@ -16,6 +16,7 @@ from Tools.Directories import fileExists
 from Screens.InfoBar import InfoBar
 from Screens.MessageBox import MessageBox
 from enigma import eTimer, eDVBFrontendParametersSatellite, eComponentScan, eDVBFrontendParametersTerrestrial, eDVBFrontendParametersCable, eConsoleAppContainer, eDVBResourceManager, eDVBFrontendParametersATSC
+from six import ensure_str
 
 brand = BoxInfo.getItem("brand")
 
@@ -204,8 +205,7 @@ class CableTransponderSearchSupport:
 		self.cable_search_session.close(True)
 
 	def getCableTransponderData(self, str):
-		if isinstance(str, bytes):
-			str = str.decode()
+		str = ensure_str(str)
 		print("[getCableTransponderData] ", str)
 		#prepend any remaining data from the previous call
 		str = self.remainingdata + str
@@ -416,6 +416,7 @@ class TerrestrialTransponderSearchSupport:
 				self.terrestrialTransponderSearch(freq, bandWidth)
 
 	def getTerrestrialTransponderData(self, str):
+		str = ensure_str(str)
 		print("[getTerrestrialTransponderData] ", str)
 		if self.terrestrial_tunerName.startswith("Sundtek"):
 			str = self.remaining_data + str

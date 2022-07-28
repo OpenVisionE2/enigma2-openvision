@@ -204,12 +204,14 @@ class Task(object):
 		pass
 
 	def processStdout(self, data):
-		self.processOutput(data.decode())
+		self.processOutput(data)
 
 	def processStderr(self, data):
-		self.processOutput(data.decode())
+		self.processOutput(data)
 
 	def processOutput(self, data):
+		from six import ensure_str
+		data = ensure_str(data)
 		self.output_line += data
 		while True:
 			i = self.output_line.find('\n')

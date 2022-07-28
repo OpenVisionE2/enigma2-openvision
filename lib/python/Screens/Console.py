@@ -119,8 +119,6 @@ class Console(Screen):
 			self.show()
 
 	def dataAvail(self, str):
-		from six import PY2
-		if PY2:
-			self["text"].appendText(str)
-		else:
-			self["text"].appendText(str.decode())
+		from six import ensure_str
+		str = ensure_str(str)
+		self["text"].appendText(str)

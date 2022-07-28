@@ -40,6 +40,7 @@ import fnmatch
 from Components.ScrollLabel import ScrollLabel
 from os import remove, unlink, rename
 from Components.SystemInfo import BoxInfo
+from six import ensure_str
 
 macaddress = str(dict(netifaces.ifaddresses("eth0")[netifaces.AF_LINK][0])["addr"].upper())
 config.macaddress = ConfigSubsection()
@@ -92,6 +93,7 @@ class NSCommon:
 		self.Console.ePopen('opkg install ' + pkgname + ' >/dev/null 2>&1', callback)
 
 	def checkNetworkState(self, str, retval, extra_args):
+		str = ensure_str(str)
 		if 'Collected errors' in str:
 			self.session.openWithCallback(self.close, MessageBox, _("Seems a background update check is in progress, please wait a few minutes and then try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 		elif not str:
@@ -104,6 +106,7 @@ class NSCommon:
 			self.updateService()
 
 	def checkNetworkStateFinished(self, result, retval, extra_args=None):
+		result = ensure_str(result)
 		if 'bad address' in result:
 			self.session.openWithCallback(self.InstallPackageFailed, MessageBox, _("Your receiver is not connected to the internet, please check your network settings and try again."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 		if self.reboot_at_end:
@@ -118,6 +121,7 @@ class NSCommon:
 		self.Console.ePopen('opkg list_installed ' + self.service_name, self.RemovedataAvail)
 
 	def RemovedataAvail(self, str, retval, extra_args):
+		str = ensure_str(str)
 		if str:
 			if self.reboot_at_end:
 				restartbox = self.session.openWithCallback(self.RemovePackage, MessageBox, _('Your receiver will be restarted after the removal of the service\nDo you want to remove the service now ?'), MessageBox.TYPE_YESNO)
@@ -3808,7 +3812,6 @@ class NetworkPassword(ConfigListScreen, Screen):
 			self.close()
 
 	def dataAvail(self, data):
-		from six import ensure_str
 		data = ensure_str(data)
 		self.output_line += data
 		while True:

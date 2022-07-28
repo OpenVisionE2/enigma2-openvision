@@ -223,8 +223,8 @@ class OpkgComponent:
 			self.cmdFinished(-1)
 
 	def cmdData(self, data):
-		if isinstance(data, bytes):
-			data = data.decode()
+		from six import ensure_str
+		data = ensure_str(data)
 		self.cache = "%s%s" % (self.cache, data)
 		while True:
 			linePtr = self.cache.find("\n", self.cachePtr + 1)

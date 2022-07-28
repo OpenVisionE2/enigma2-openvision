@@ -47,8 +47,8 @@ class ConsoleItem:
 		if self.callback != None:
 			appResults = b"".join(self.appResults)
 
-			if isinstance(appResults, bytes):
-				appResults = appResults.decode()
+			from six import ensure_str
+			appResults = ensure_str(appResults)
 
 			self.callback(appResults, retVal, self.extraArgs)
 

@@ -607,8 +607,8 @@ class PluginDownloadBrowser(Screen):
 
 	def dataAvail(self, str):
 		#prepend any remaining data from the previous call
-		if isinstance(str, bytes):
-			str = str.decode()
+		from six import ensure_str
+		str = ensure_str(str)
 		str = self.remainingdata + str
 		#split in lines
 		lines = str.split('\n')
