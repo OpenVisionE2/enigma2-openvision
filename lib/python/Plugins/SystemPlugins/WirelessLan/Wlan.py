@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import re
-from six import PY2, PY3, ensure_str
+from six import PY2
 from os.path import exists as fileAccess
 from six.moves import range
 
@@ -417,6 +417,7 @@ class Status:
 		self.WlanConsole.ePopen(cmd, self.iwconfigFinished, iface)
 
 	def iwconfigFinished(self, result, retval, extra_args):
+		from six import ensure_str
 		result = ensure_str(result)
 		iface = extra_args
 		ssid = "off"
@@ -488,6 +489,7 @@ class Status:
 						signal = line[line.index('Signal level') + 13:len(line)]
 				if signal:
 					data['signal'] = signal
+		from six import PY3
 		if PY3:
 			if ssid != None and ssid != "off" and ssid != "":
 				try:

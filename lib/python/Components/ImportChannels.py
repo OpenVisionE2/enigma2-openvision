@@ -10,17 +10,17 @@ from Screens.MessageBox import MessageBox
 from Components.config import config
 from Tools.Notifications import AddNotificationWithID
 from time import sleep
-from sys import version_info
-from six.moves.urllib.error import URLError, HTTPError
-from six.moves.urllib.parse import quote
-from six.moves.urllib.request import Request, urlopen
-import xml.etree.ElementTree as et
-if version_info.major >= 3:
+from Tools.PyVerHelper import getPyVS
+if getPyVS() >= 3:
 	from base64 import encodebytes
 	encodecommand = encodebytes
 else: # Python 2
 	from base64 import encodestring
 	encodecommand = encodestring
+from six.moves.urllib.error import URLError, HTTPError
+from six.moves.urllib.parse import quote
+from six.moves.urllib.request import Request, urlopen
+import xml.etree.ElementTree as et
 
 supportfiles = ('lamedb', 'blacklist', 'whitelist', 'alternatives.')
 
@@ -305,7 +305,7 @@ class ImportChannels():
 				count = 0
 				for file in files:
 					count += 1
-					file = file if version_info.major >= 3 else file.encode("UTF-8")
+					file = file if getPyVS() >= 3 else file.encode("UTF-8")
 					print("[ImportChannels] Downloading %s" % file)
 					try:
 						open("%s/%s" % (channelslistserver, os.path.basename(file)), "wb").write(urlopen("%s/file?file=%s" % (self.url, file), timeout=5).read())

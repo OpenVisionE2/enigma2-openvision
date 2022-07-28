@@ -24,7 +24,6 @@ from Tools.LoadPixmap import LoadPixmap
 
 from time import time
 import os
-from six import PY3
 
 language.addCallback(plugins.reloadPlugins)
 
@@ -287,17 +286,20 @@ class PluginDownloadBrowser(Screen):
 	FREQUENCY_PREFIX = 'frequency-xml-list-'
 	GLIBCCHARMAP_PREFIX = 'glibc-charmap-'
 	GLIBCGCONC_PREFIX = 'glibc-gconv-'
-	GSTPLUGINS_PREFIX = 'gstreamer1.0-plugins-'
+	if BoxInfo.getItem("brand") == "wetek":
+		GSTPLUGINS_PREFIX = 'gst-plugins-'
+	else:
+		GSTPLUGINS_PREFIX = 'gstreamer1.0-plugins-'
 	GSTOLDPLUGINS_PREFIX = 'gst-plugins-'
 	KERNELMODULE_PREFIX = 'kernel-module-'
 	MTDUTILS_PREFIX = 'mtd-utils-'
 	PACKAGEGROUPBASE_PREFIX = 'packagegroup-base-'
 	PAMPLUGIN_PREFIX = 'pam-plugin-'
 	PERLMODULE_PREFIX = 'perl-module-'
-	if PY3:
-		PYTHON_PREFIX = 'python3-'
-	else:
+	if BoxInfo.getItem("python").startswith("2"):
 		PYTHON_PREFIX = 'python-'
+	else:
+		PYTHON_PREFIX = 'python3-'
 	TZDATA_PREFIX = 'tzdata-'
 	UTILLINUX_PREFIX = 'util-linux-'
 	lastDownloadDate = None
@@ -605,8 +607,8 @@ class PluginDownloadBrowser(Screen):
 
 	def dataAvail(self, str):
 		#prepend any remaining data from the previous call
-		if PY3:
-			str = str.decode()
+		from six import ensure_str
+		str = ensure_str(str)
 		str = self.remainingdata + str
 		#split in lines
 		lines = str.split('\n')

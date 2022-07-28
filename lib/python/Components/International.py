@@ -4,7 +4,6 @@ from gettext import bindtextdomain, install, textdomain, translation
 from locale import Error as LocaleError, LC_ALL, LC_COLLATE, LC_CTYPE, LC_MESSAGES, LC_MONETARY, LC_NUMERIC, LC_TIME, setlocale, getlocale
 from os import environ, listdir
 from os.path import isdir
-from six import PY2
 from subprocess import Popen, PIPE
 from time import localtime, strftime, time
 
@@ -18,6 +17,7 @@ PERMANENT_LOCALES = ["en_US"]
 
 languagePath = resolveFilename(SCOPE_LANGUAGE)
 try:
+	from six import PY2
 	if PY2:
 		install("enigma2", languagePath, unicode=False, codeset="UTF-8", names=("ngettext", "pgettext"))
 	else:

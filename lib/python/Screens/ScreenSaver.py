@@ -9,13 +9,13 @@ import Screens.Standby
 from enigma import ePoint, eTimer, iPlayableService, eActionMap
 import os
 import random
-from six import PY2
-if PY2:
-	from sys import maxint
-	maximport = maxint
-else:
+from Tools.PyVerHelper import getPyVS
+if getPyVS() >= 3:
 	from sys import maxsize
 	maximport = maxsize
+else: # Python 2
+	from sys import maxint
+	maximport = maxint
 from os import sys
 
 

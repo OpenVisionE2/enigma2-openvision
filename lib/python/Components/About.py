@@ -2,7 +2,6 @@ from array import array
 from binascii import hexlify
 from fcntl import ioctl
 from os.path import isfile
-from six import PY2
 from socket import AF_INET, SOCK_DGRAM, inet_ntoa, socket
 from struct import pack, unpack
 from sys import maxsize, modules
@@ -234,6 +233,7 @@ def GetIPsFromNetworkInterfaces():
 			maxPossible *= 2
 		else:
 			break
+	from six import PY2
 	nameStr = names.tostring() if PY2 else names.tobytes()
 	ifaces = []
 	for index in range(0, outbytes, structSize):

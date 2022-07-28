@@ -1,4 +1,3 @@
-from six import ensure_str, text_type
 import sys
 
 from enigma import ePythonOutput
@@ -10,6 +9,7 @@ class EnigmaLog:
 		self.line = ""
 
 	def write(self, data):
+		from six import ensure_str, text_type
 		if isinstance(data, text_type):
 			data = ensure_str(data.encode(encoding="UTF-8", errors="ignore"))
 		self.line += data
