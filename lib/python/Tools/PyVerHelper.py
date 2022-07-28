@@ -17,7 +17,7 @@ def getPythonVersionString():
 
 
 def getPyExt():
-	if getPyVS() == "2":
+	if getPyVS() == 2:
 		PyExt = "pyo"
 	else:
 		PyExt = "pyc"
