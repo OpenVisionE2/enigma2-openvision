@@ -37,9 +37,7 @@ class InputDevices:
 				self.fd = osopen("/dev/input/%s" % device, O_RDWR | O_NONBLOCK)
 				self.name = ioctl(self.fd, self.EVIOCGNAME(256), buffer)
 				osclose(self.fd)
-				from six import ensure_str
-				self.name = ensure_str(self.name)
-				self.name = str(self.name[:self.name.find(b"\0")])
+				self.name = str(self.name.decode()[:self.name.find(b"\0")])
 			except (IOError, OSError) as err:
 				print("[InputDevice] Error: device='%s' getInputDevices <ERROR: ioctl(EVIOCGNAME): '%s'>" % (device, str(err)))
 				self.name = None
