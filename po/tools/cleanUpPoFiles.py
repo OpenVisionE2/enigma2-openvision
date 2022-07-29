@@ -142,11 +142,9 @@ def indicateProgress():
 
 
 def isFoundInFile(msgid, data):
-  from six import ensure_str
-  data = ensure_str(data)
   isFound = False
   regex_msgid = r'["\'](' + re.escape(msgid) + '|' + re.escape(polib.escape(msgid)) + ')["\']'
-  if re.search(regex_msgid, data.read(0)):
+  if re.search(regex_msgid, data.read(0).decode()):
     isFound = True
   return isFound
 
