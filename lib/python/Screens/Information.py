@@ -597,9 +597,7 @@ class ImageInformation(InformationBase):
 			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if str(BoxInfo.getItem("imgversion")).startswith("10") else "old")
 			try:
 				ovResponse = urlopen(ovUrl)
-				from six import ensure_str
-				ovResponse = ensure_str(ovResponse)
-				ovRevision = ovResponse.read().strip()
+				ovRevision = str(ovResponse.read().decode()).strip()
 				ovRevisionUpdate = ovRevision[1:]
 			except Exception as err:
 				ovRevisionUpdate = _("Requires internet connection")
