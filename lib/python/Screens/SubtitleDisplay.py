@@ -4,13 +4,13 @@ from Screens.Screen import Screen
 from Components.Label import Label
 from enigma import eTimer, getDesktop, eActionMap, gFont
 from Components.ActionMap import ActionMap
-from six import PY2
-if PY2:
-	from sys import maxint
-	maximport = maxint
-else:
+from Tools.PyVerHelper import getPyVS
+if getPyVS() >= 3:
 	from sys import maxsize
 	maximport = maxsize
+else: # Python 2
+	from sys import maxint
+	maximport = maxint
 import skin
 from os import sys
 

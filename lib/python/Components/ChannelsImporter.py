@@ -11,7 +11,6 @@ from enigma import eTimer
 #for downloader
 import os
 import re
-from sys import version_info
 from six.moves.urllib.error import URLError, HTTPError
 from six.moves.urllib.request import Request, urlopen
 from enigma import eServiceReference, eDVBDB

@@ -14,6 +14,7 @@ from Screens.MessageBox import MessageBox
 from Tools.Directories import fileExists
 from os import system, listdir, rename, path, mkdir
 from time import sleep
+from six import ensure_str
 
 
 class CronTimers(Screen):
@@ -57,6 +58,7 @@ class CronTimers(Screen):
 		self.Console.ePopen('opkg list_installed ' + self.service_name, self.checkNetworkState)
 
 	def checkNetworkState(self, str, retval, extra_args):
+		str = ensure_str(str)
 		if 'Collected errors' in str:
 			self.session.openWithCallback(self.close, MessageBox, _("Seems a background update check is in progress, please try again later."), type=MessageBox.TYPE_INFO, timeout=10, close_on_any_key=True)
 		elif not str:
@@ -89,6 +91,7 @@ class CronTimers(Screen):
 			self.close()
 
 	def RemovedataAvail(self, str, retval, extra_args):
+		str = ensure_str(str)
 		if str:
 			self.session.openWithCallback(self.RemovePackage, MessageBox, _('Ready to remove "%s" ?') % self.service_name)
 		else:

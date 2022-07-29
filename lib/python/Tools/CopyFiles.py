@@ -80,11 +80,13 @@ class DownloaderPostcondition(Condition):
 
 class DownloadTask(Task):
 	def __init__(self, job, url, path, **kwargs):
+		from six import ensure_str
+		url = ensure_str(url)
 		self.kwargs = kwargs
 		Task.__init__(self, job, _("Downloading"))
 		self.postconditions.append(DownloaderPostcondition())
 		self.job = job
-		self.url = url.decode() if isinstance(url, bytes) else url
+		self.url = url
 		self.path = path
 		self.error_message = ""
 		self.last_recvbytes = 0
