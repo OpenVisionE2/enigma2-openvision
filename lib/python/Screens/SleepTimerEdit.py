@@ -22,7 +22,7 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 		self["description"] = Label("")
 
 		self.list = []
-		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry)
+		ConfigListScreen.__init__(self, self.list, session=session)
 		self.createSetup()
 
 		self["setupActions"] = ActionMap(["SetupActions", "ColorActions"],
@@ -120,16 +120,6 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 						config.usage.wakeup_time[i]))
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
-
-	def changedEntry(self):
-		self.createSetup()
-
-	def getCurrentEntry(self):
-		self.updateDescription()
-		return ConfigListScreen.getCurrentEntry(self)
-
-	def updateDescription(self):
-		self["description"].setText(self.getCurrentDescription())
 
 	def ok(self):
 		if self["config"].isChanged():

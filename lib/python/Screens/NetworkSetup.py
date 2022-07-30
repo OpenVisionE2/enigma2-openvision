@@ -1865,10 +1865,7 @@ class NetworkMountsMenu(Screen, HelpableScreen):
 			"left": self.left,
 			"right": self.right,
 		}, -2)
-
-		if not self.selectionChanged in self["menulist"].onSelectionChanged:
-			self["menulist"].onSelectionChanged.append(self.selectionChanged)
-		self.selectionChanged()
+		self["menulist"].onSelectionChanged.append(self.selectionChanged)
 
 	def createSummary(self):
 		from Screens.PluginBrowser import PluginBrowserSummary

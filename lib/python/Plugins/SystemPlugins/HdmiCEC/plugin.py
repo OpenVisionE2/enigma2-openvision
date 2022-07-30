@@ -73,12 +73,7 @@ class HdmiCECSetupScreen(ConfigListScreen, Screen):
 		self.createSetup()
 
 	def getCurrentEntry(self):
-		self.updateDescription()
-		return ConfigListScreen.getCurrentEntry(self)
-
-	def updateDescription(self):
-		text = "%s\n%s\n\n%s" % (self.current_address, self.fixed_address, self.getCurrentDescription()) if config.hdmicec.enabled.value else self.getCurrentDescription()
-		self["description"].setText(text)
+		self["description"].setText("%s\n%s\n\n%s" % (self.current_address, self.fixed_address, self.getCurrentDescription()))
 
 	def keyGo(self):
 		for x in self["config"].list:
@@ -86,8 +81,6 @@ class HdmiCECSetupScreen(ConfigListScreen, Screen):
 		self.close()
 
 	def keyCancel(self):
-		for x in self["config"].list:
-			x[1].cancel()
 		self.close()
 
 	def keyOk(self):
@@ -114,7 +107,6 @@ class HdmiCECSetupScreen(ConfigListScreen, Screen):
 			self.fixed_address = _("Press yellow button to set CEC address again")
 		else:
 			self.fixed_address = _("Using fixed address:") + " %s" % config.hdmicec.fixed_physical_address.value
-		self.updateDescription()
 
 	def logPath(self, res):
 		if res is not None:
