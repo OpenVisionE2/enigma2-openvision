@@ -28,7 +28,7 @@ class VideoSetup(ConfigListScreen, Screen):
 		self.onHide.append(self.stopHotplug)
 
 		self.list = []
-		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry)
+		ConfigListScreen.__init__(self, self.list, session=session)
 
 		from Components.ActionMap import ActionMap
 		self["actions"] = ActionMap(["SetupActions", "MenuActions"],

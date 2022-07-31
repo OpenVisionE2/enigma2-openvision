@@ -56,7 +56,6 @@ class VideoEnhancementSetup(ConfigListScreen, Screen):
 		self["key_green"] = StaticText(_("Save"))
 		self["key_yellow"] = StaticText(_("Last config"))
 		self["key_blue"] = StaticText(_("Default"))
-
 		if not self.SelectionChanged in self["config"].onSelectionChanged:
 			self["config"].onSelectionChanged.append(self.SelectionChanged)
 		self.rememberOldSettings()
@@ -151,8 +150,8 @@ class VideoEnhancementSetup(ConfigListScreen, Screen):
 
 	def confirm(self, confirmed):
 		if confirmed:
-			if self.splitEntry is not None:
-				config.pep.split.setValue('off')
+			if self.splitEntry:
+				config.pep.split.value
 			self.keySave()
 
 	def apply(self):
@@ -210,7 +209,7 @@ class VideoEnhancementSetup(ConfigListScreen, Screen):
 		self.session.openWithCallback(self.keyYellowConfirm, MessageBox, _("Reset video enhancement settings to your last configuration?"), MessageBox.TYPE_YESNO, timeout=20, default=False)
 
 	def keyBlueConfirm(self, confirmed):
-		if not confirmed:
+		if confirmed:
 			if self.contrastEntry is not None:
 				config.pep.contrast.setValue(128)
 			if self.saturationEntry is not None:
@@ -301,9 +300,7 @@ class VideoEnhancementPreview(ConfigListScreen, Screen):
 		self["config"].list = self.list
 		self["config"].l.setSeperation(self.seperation)
 		self["config"].l.setList(self.list)
-		if not self.selectionChanged in self["config"].onSelectionChanged:
-			self["config"].onSelectionChanged.append(self.selectionChanged)
-		self.selectionChanged()
+		self["config"].onSelectionChanged.append(self.selectionChanged)
 
 	def selectionChanged(self):
 		self["introduction"].setText(_("Current value: ") + self.getCurrentValue())

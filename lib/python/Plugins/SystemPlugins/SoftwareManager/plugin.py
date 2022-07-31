@@ -380,13 +380,6 @@ class SoftwareManagerSetup(ConfigListScreen, Screen):
 	def changedEntry(self):
 		self.createSetup()
 
-	def getCurrentEntry(self):
-		self.updateDescription()
-		return ConfigListScreen.getCurrentEntry(self)
-
-	def updateDescription(self):
-		self["introduction"].setText("%s" % (self.getCurrentDescription()))
-
 	def newConfig(self):
 		pass
 
