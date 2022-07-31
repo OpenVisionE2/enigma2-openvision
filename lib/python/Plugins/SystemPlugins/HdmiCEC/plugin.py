@@ -73,7 +73,8 @@ class HdmiCECSetupScreen(ConfigListScreen, Screen):
 		self.createSetup()
 
 	def getCurrentEntry(self):
-		self["description"].setText("%s\n%s\n\n%s" % (self.current_address, self.fixed_address, self.getCurrentDescription()))
+		text = "%s\n%s\n\n%s" % (self.current_address, self.fixed_address, self.getCurrentDescription()) if config.hdmicec.enabled.value else self.getCurrentDescription()
+		self["description"].setText(text)
 
 	def keyGo(self):
 		for x in self["config"].list:
