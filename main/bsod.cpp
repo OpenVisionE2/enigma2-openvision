@@ -201,16 +201,16 @@ void bsodFatal(const char *component)
 		stringFromFile(f, "stbmodel", "/etc/openvision/model");
 		stringFromFile(f, "stbbrand", "/etc/openvision/brand");
 		stringFromFile(f, "stbplatform", "/etc/openvision/platform");
+		stringFromFile(f, "friendlyfamily", "/etc/openvision/friendlyfamily");
 		stringFromFile(f, "socfamily", "/etc/openvision/socfamily");
+		stringFromFile(f, "architecture", "/etc/openvision/architecture");
 		stringFromFile(f, "kernel", "/etc/openvision/kernel");
 		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
+		stringFromFile(f, "driverdate", "/etc/openvision/driverdate");
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
 		stringFromFile(f, "distro", "/etc/openvision/distro");
 		stringFromFile(f, "oe", "/etc/openvision/oe");
-		stringFromFile(f, "python", "/etc/openvision/python");
 		stringFromFile(f, "mediaservice", "/etc/openvision/mediaservice");
-		stringFromFile(f, "architecture", "/etc/openvision/architecture");
-		stringFromFile(f, "multilib", "/etc/openvision/multilib");
 		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
 		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");
 		stringFromFile(f, "visionlanguage", "/etc/openvision/visionlanguage");
@@ -219,6 +219,14 @@ void bsodFatal(const char *component)
 		stringFromFile(f, "rcidnum", "/etc/openvision/rcidnum");
 		stringFromFile(f, "compiledby", "/etc/openvision/developername");
 		stringFromFile(f, "feedsurl", "/etc/openvision/feedsurl");
+		stringFromFile(f, "binutils", "/etc/openvision/binutils");
+		stringFromFile(f, "busybox", "/etc/openvision/busybox");
+		stringFromFile(f, "ffmpeg", "/etc/openvision/ffmpeg");
+		stringFromFile(f, "gcc", "/etc/openvision/gcc");
+		stringFromFile(f, "glibc", "/etc/openvision/glibc");
+		stringFromFile(f, "gstreamer", "/etc/openvision/gstreamer");
+		stringFromFile(f, "openssl", "/etc/openvision/openssl");
+		stringFromFile(f, "python", "/etc/openvision/python");
 
 		/* dump the log ringbuffer */
 		fprintf(f, "\n\n");
