@@ -12,10 +12,9 @@ from Components.config import config, ConfigSubsection, ConfigSelection, ConfigS
 from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.SystemInfo import BoxInfo
 from enigma import eTimer, eDVBCI_UI
-from os.path import isfile
 import Screens.Standby
 
-drivers_extrahw = "/var/lib/opkg/info/enigma2-plugin-drivers-extrahw-cardreader.control"
+extrahw = "/var/lib/opkg/info/enigma2-plugin-drivers-extrahw-cardreader.control"
 forceNotShowCiMessages = False
 
 
@@ -413,8 +412,9 @@ class CiSelection(Screen):
 		self["entries"] = menuList
 		self["entries"].onSelectionChanged.append(self.selectionChanged)
 		self["text"] = Label("")
-		if not isfile(drivers_extrahw):
-			self["description"] = Label(_("Install package from plugins [+] drivers:\n\"enigma2-plugin-drivers-extrahw-cardreader\""))
+		from os.path import isfile
+		if not isfile(extrahw):
+			self["description"] = Label(_("Install the recommended package from online feeds for more hardware support:\n\"enigma2-plugin-drivers-extrahw-cardreader\""))
 		self.onLayoutFinish.append(self.layoutFinished)
 
 	def layoutFinished(self):
