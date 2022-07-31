@@ -14,6 +14,7 @@ from Components.SystemInfo import BoxInfo
 from enigma import eTimer, eDVBCI_UI
 import Screens.Standby
 
+extrahw = "/var/lib/opkg/info/enigma2-plugin-drivers-extrahw-cardreader.control"
 forceNotShowCiMessages = False
 
 
@@ -411,6 +412,9 @@ class CiSelection(Screen):
 		self["entries"] = menuList
 		self["entries"].onSelectionChanged.append(self.selectionChanged)
 		self["text"] = Label("")
+		from os.path import isfile
+		if not isfile(extrahw):
+			self["description"] = Label(_("Install the recommended package from online feeds for more hardware support:\n\"enigma2-plugin-drivers-extrahw-cardreader\""))
 		self.onLayoutFinish.append(self.layoutFinished)
 
 	def layoutFinished(self):
