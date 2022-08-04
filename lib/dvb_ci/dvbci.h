@@ -85,8 +85,8 @@ class eDVBCISlot: public iObject, public sigc::trackable
 	void removeService(uint16_t program_number=0xFFFF);
 	int setSource(const std::string &source);
 	int setClockRate(int);
-	int setEnabled(bool);
 	void determineCIVersion();
+	int setEnabled(bool);
 	static std::string getTunerLetter(int tuner_no) { return std::string(1, char(65 + tuner_no)); }
 public:
 	enum {stateRemoved, stateInserted, stateInvalid, stateResetted, stateDisabled};

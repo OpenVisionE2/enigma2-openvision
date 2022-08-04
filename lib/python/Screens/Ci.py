@@ -503,7 +503,7 @@ class CiSelection(Screen):
 
 	def okbuttonClick(self):
 		cur = self["entries"].getCurrent()
-		if cur and hasattr(self, "entryData"):
+		if cur:
 			idx = self["entries"].getCurrentIndex()
 			entryData = self.entryData[idx]
 			action = entryData[0]

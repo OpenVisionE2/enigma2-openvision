@@ -56,7 +56,7 @@ int eDVBCICAManagerSession::doAction()
 			return 0;
 		}
 		case stateFinal:
-			eDebug("[CI CA] stateFinal und action! kann doch garnicht sein ;)");
+			eWarning("[CI CA] stateFinal and action should not happen");
 			[[fallthrough]];
 		default:
 			return 0;

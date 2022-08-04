@@ -26,6 +26,7 @@ int eDVBCIDateTimeSession::receivedAPDU(const unsigned char *tag,const void *dat
 			m_interval = (data && len) ? ((unsigned char *)data)[0] : 0;
 			state=stateSendDateTime;
 			return 1;
+			break;
 		default:
 			eWarning("[CI DT] unknown APDU tag 9F 84 %02x", tag[2]);
 			break;
@@ -38,13 +39,14 @@ int eDVBCIDateTimeSession::doAction()
 {
 	switch (state)
 	{
+		case stateStarted:
+			return 0;
 		case stateSendDateTime:
 			sendDateTime();
 			return 0;
 		case stateFinal:
-			eDebug("[CI DT] stateFinal und action! kann doch garnicht sein ;)");
+			eWarning("[CI DT] stateFinal and action should not happen");
 			[[fallthrough]];
-		case stateStarted:
 		default:
 			return 0;
 	}
