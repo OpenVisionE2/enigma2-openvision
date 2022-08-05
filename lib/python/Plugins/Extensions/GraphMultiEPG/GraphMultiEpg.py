@@ -14,6 +14,7 @@ from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixm
 from Components.TimerList import TimerList
 from Components.Renderer.Picon import getPiconName
 from Components.Sources.ServiceEvent import ServiceEvent
+from Components.Sources.StaticText import StaticText
 from Components.UsageConfig import preferredTimerPath
 import Screens.InfoBar
 from Screens.Screen import Screen
@@ -892,16 +893,15 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		now = time() - config.epg.histminutes.getValue() * 60
 		self.ask_time = now - now % int(config.misc.graph_mepg.roundTo.getValue())
 		self["key_red"] = Button("")
-		self["key_green"] = Button("")
+		self["key_green"] = StaticText("")
 
 		global listscreen
 		if listscreen:
 			self["key_yellow"] = Button(_("Normal mode"))
 			self.skinName = "GraphMultiEPGList"
 		else:
-			self["key_yellow"] = Button(_("PiP mode"))
-
-		self["key_blue"] = Button(_("Prime time"))
+			self["key_yellow"] = Button(_("Mode PiP"))
+		self["key_blue"] = Button(_("Add autotimer\nPrime time (Press long)"))
 
 		self.key_green_choice = self.EMPTY
 		self.key_red_choice = self.EMPTY
@@ -938,9 +938,10 @@ class GraphMultiEPG(Screen, HelpableScreen):
 				"timerAdd": (self.timerAdd, _("Add/remove change timer for current event")),
 				"info": (self.infoKeyPressed, _("Show detailed event info")),
 				"red": (self.zapTo, _("Zap to selected channel")),
-				"blue": (self.togglePrimeNow, _("Goto primetime / now")),
-				"blue_long": (self.enterDateTime, _("Goto specific date/time")),
+				"blue": (self.addAutoTimer, _("Add autotimer")),
+				"blue_long": (self.togglePrimeNow, _("Goto specific date/time")),
 				"yellow": (self.swapMode, _("Switch between normal mode and list mode")),
+				"text": (self.enterDateTime, _("Goto specific date/time")),
 				"menu": (self.furtherOptions, _("Further Options")),
 				"nextBouquet": (self.nextBouquet, self.getKeyNextBouquetHelptext),
 				"prevBouquet": (self.prevBouquet, self.getKeyPrevBouquetHelptext),
@@ -979,6 +980,8 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		self.onLayoutFinish.append(self.onCreate)
 		self.previousref = self.session.nav.getCurrentlyPlayingServiceOrGroup()
 		self.fallbackTimer = FallbackTimerList(self, self.onCreate)
+		self.isAutoTimer = _("You are ready to add an event to automatic timer.\nIf there are no conflicts, once added you must enter menu:\n\nTimers > AutoTimers and search the event with green button.")
+		self.isNotAutoTimer = _("The AutoTimer plugin is not installed.")
 
 	def moveUp(self):
 		self.showhideWindow(True)
@@ -1088,6 +1091,17 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		elif self.time_mode == self.TIME_PRIME or self.time_mode == self.TIME_CHANGE:
 			self.setNewTime("now_time")
 
+	def addAutoTimer(self):
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimerEditor import addAutotimerFromEvent
+			event, service = self["list"].getCurrent()[:2]
+			if not event:
+				return
+			addAutotimerFromEvent(self.session, evt=event, service=service)
+			self.session.open(MessageBox, self.isAutoTimer, type=MessageBox.TYPE_INFO, timeout=10)
+		except ImportError:
+			self.session.open(MessageBox, self.isNotAutoTimer, type=MessageBox.TYPE_ERROR, timeout=10)
+
 	def enterDateTime(self):
 		self.showhideWindow(True)
 		t = localtime(time())
@@ -1105,14 +1119,14 @@ class GraphMultiEPG(Screen, HelpableScreen):
 				l.fillMultiEPG(None, self.ask_time)
 				self.moveTimeLines(True)
 				self.time_mode = self.TIME_CHANGE
-				self["key_blue"].setText(_("Now"))
+				self["key_blue"].setText(_("Add autotimer\nNow (Press long)"))
 
 	def setNewTime(self, type=''):
 		if type:
 			date = time() - config.epg.histminutes.getValue() * 60
 			if type == "now_time":
 				self.time_mode = self.TIME_NOW
-				self["key_blue"].setText(_("Prime time"))
+				self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)"))
 			elif type == "prime_time":
 				now = [x for x in localtime(date)]
 				prime = config.misc.graph_mepg.prime_time.value
@@ -1120,7 +1134,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 				if now[3] > prime[0] or (now[3] == prime[0] and now[4] > prime[1]):
 					date = date + 60 * 60 * 24
 				self.time_mode = self.TIME_PRIME
-				self["key_blue"].setText(_("Now"))
+				self["key_blue"].setText(_("Add autotimer\nNow (Press long)"))
 			l = self["list"]
 			self.ask_time = date - date % int(config.misc.graph_mepg.roundTo.getValue())
 			l.resetOffset()
@@ -1163,7 +1177,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		l.fillMultiEPG(None, self.ask_time)
 		self.moveTimeLines(True)
 		self.time_mode = self.TIME_NOW
-		self["key_blue"].setText(_("Prime time"))
+		self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)"))
 
 	def closeScreen(self):
 		self.zapFunc(None, zapback=True)

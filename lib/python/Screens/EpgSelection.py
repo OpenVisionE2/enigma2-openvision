@@ -65,7 +65,7 @@ class EPGSelection(Screen):
 			self.setTitle(_("Single EPG"))
 			self.type = EPG_TYPE_SINGLE
 			self["key_yellow"] = StaticText()
-			self["key_blue"] = StaticText(_("Select Channel"))
+			self["key_blue"] = StaticText(_("Change channel"))
 			self.currentService = ServiceReference(service)
 			self.zapFunc = zapFunc
 			self.sort_type = 0
@@ -100,33 +100,46 @@ class EPGSelection(Screen):
 		self.key_green_choice = self.ADD_TIMER
 		self.key_red_choice = self.EMPTY
 		self["list"] = EPGList(type=self.type, selChangedCB=self.onSelectionChanged, timer=session.nav.RecordTimer)
-
-		self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"],
-			{
-				"cancel": self.closeScreen,
-				"ok": self.eventSelected,
-				"timerAdd": self.timerAdd,
-				"yellow": self.yellowButtonPressed,
-				"blue": self.blueButtonPressed,
-				"info": self.infoKeyPressed,
-				"menu": self.furtherOptions,
-				"nextBouquet": self.nextBouquet, # just used in multi epg yet
-				"prevBouquet": self.prevBouquet, # just used in multi epg yet
-				"nextService": self.nextService, # just used in single epg yet
-				"prevService": self.prevService, # just used in single epg yet
-				"preview": self.eventPreview,
-			})
-
-		self['colouractions'] = HelpableActionMap(self, ["ColorActions"],
+		if self.type == EPG_TYPE_MULTI or self.type == EPG_TYPE_SINGLE and not isPluginInstalled("EPGSearch"):
+			self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"],
+				{
+					"cancel": self.closeScreen,
+					"ok": self.eventSelected,
+					"timerAdd": self.timerAdd,
+					"yellow": self.yellowButtonPressed,
+					"blue": self.blueButtonPressed,
+					"info": self.infoKeyPressed,
+					"menu": self.furtherOptions,
+					"nextBouquet": self.nextBouquet, # just used in multi epg yet
+					"prevBouquet": self.prevBouquet, # just used in multi epg yet
+					"nextService": self.nextService, # just used in single epg yet
+					"prevService": self.prevService, # just used in single epg yet
+					"preview": self.eventPreview
+				})
+		else:
+			self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"],
+				{
+					"cancel": self.closeScreen,
+					"ok": self.eventSelected,
+					"timerAdd": self.timerAdd,
+					"yellow": self.yellowButtonPressed,
+					"info": self.infoKeyPressed,
+					"menu": self.furtherOptions,
+					"nextBouquet": self.nextBouquet,
+					"prevBouquet": self.prevBouquet,
+					"nextService": self.nextService,
+					"prevService": self.prevService,
+					"preview": self.eventPreview
+				})
+		self['tmbd'] = HelpableActionMap(self, ["ColorActions"],
 			{
 				"red": (self.GoToTmbd, _("Search event in TMBD"))
 			})
-
 		self.isTMBD = isPluginInstalled("TMBD")
 		if self.isTMBD:
 			self["key_red"] = Button(_("Search TMBD"))
 			self.select = True
-		if not self.isTMBD:
+		else:
 			self["key_red"] = Button(_("TMBD Not Installed"))
 			self.select = False
 		try:

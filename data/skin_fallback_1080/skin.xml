@@ -650,7 +650,7 @@
 			<convert type="EventTime">Duration</convert>
 			<convert type="ClockToText">AsLengthHours</convert>
 		</widget>
-		<widget source="session.Event_Next" backgroundColor="OE_Accent1" scrollbarBorderWidth="0" pixmap="OctEtFHD/colors/00A4C400.png" position="665,673" size="1020,2" render="Progress" transparent="0" zPosition="1">
+		<widget source="session.Event_Next" backgroundColor="OE_Accent1" pixmap="OctEtFHD/colors/00A4C400.png" position="665,673" size="1020,2" render="Progress" transparent="0" zPosition="1">
 			<convert type="EventTime">Progress</convert>
 		</widget>
 		<widget source="session.CurrentService" render="Pixmap" pixmap="OctEtFHD/my_icons/ip_tv.png" position="1038,967" size="63,32" zPosition="2" alphatest="blend">
@@ -1074,13 +1074,13 @@
 		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_NewBg2" foregroundColor="green_light" halign="left" position="50,325" size="500,45" transparent="1" valign="center">
 			<convert type="EventName">Name</convert>
 		</widget>
-		<widget backgroundColor="blue_light" scrollbarBorderWidth="0" pixmap="OctEtFHD/colors/00A4C400.png" position="50,365" render="Progress" size="500,5" source="ServiceEvent" transparent="0" zPosition="1">
+		<widget backgroundColor="blue_light" pixmap="OctEtFHD/colors/00A4C400.png" position="50,365" render="Progress" size="500,5" source="ServiceEvent" transparent="0" zPosition="1">
 			<convert type="EventTime">Progress</convert>
 		</widget>
 		<widget backgroundColor="OE_NewBg2" font="RegularBold;26" halign="left" position="50,375" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="500,330" source="ServiceEvent" transparent="1" valign="top">
 			<convert type="EventName">ExtendedDescription</convert>
 		</widget>
-		<widget backgroundColor="blue_light" foregroundColor="blue_light" scrollbarBorderWidth="0" position="50,720" render="Progress" size="500,5" source="Event" transparent="0" zPosition="1">
+		<widget backgroundColor="blue_light" foregroundColor="blue_light" position="50,720" render="Progress" size="500,5" source="Event" transparent="0" zPosition="1">
 			<convert type="EventTime">Progress</convert>
 		</widget>
 		<widget source="ServiceEvent" render="NextEvents" position="50,745" size="500,330" noWrap="1" font="Regular;26" backgroundColor="OE_NewBg2" foregroundColor="#a4c400" transparent="1" zPosition="5">
@@ -1144,7 +1144,7 @@
 			<convert type="RemainingToText">NoSeconds</convert>
 		</widget>
 		<eLabel backgroundColor="OE_Accent1" foregroundColor="OE_Accent1" position="81,244" size="570,1"/>
-		<widget backgroundColor="OE_PreBlack2" scrollbarBorderWidth="0" pixmap="OctEtFHD/colors/00A4C400.png" position="80,242" render="Progress" size="570,5" source="ServiceEvent" transparent="1" zPosition="1">
+		<widget backgroundColor="OE_PreBlack2" pixmap="OctEtFHD/colors/00A4C400.png" position="80,242" render="Progress" size="570,5" source="ServiceEvent" transparent="1" zPosition="1">
 			<convert type="EventTime">Progress</convert>
 		</widget>
 		<widget backgroundColor="OE_Background" font="Regular;29" halign="left" position="80,260" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="570,563" source="ServiceEvent" transparent="1" valign="top">
@@ -1502,7 +1502,7 @@
 		<panel name="MultiEPGEventView"/>
 		<widget name="FullDescription" position="85,122" size="0,0" font="Regular;22" halign="left" zPosition="3" backgroundColor="OE_Background" transparent="1"/>
 		<widget name="epg_eventname" position="35,122" size="0,0" font="Regular;22" halign="left" zPosition="3" backgroundColor="OE_Background" transparent="1"/>
-		<widget source="Event" render="Progress" backgroundColor="blue_light" scrollbarBorderWidth="0" pixmap="OctEtFHD/colors/00A4C400.png" position="40,140" size="290,6" transparent="0" zPosition="3">
+		<widget source="Event" render="Progress" backgroundColor="blue_light" pixmap="OctEtFHD/colors/00A4C400.png" position="40,140" size="290,6" transparent="0" zPosition="3">
 			<convert type="EventTime">Progress</convert>
 		</widget>
 		<widget name="channel" font="RegularBold;34" backgroundColor="OE_Background" position="350,90" size="830,50" halign="left" transparent="1"/>
@@ -3060,21 +3060,22 @@
 		<!-- Clock -->
 		<panel name="Clock"/>
 	</screen>
+	<!-- TIME DATE INPUT -->
 	<screen name="TimeDateInput" title="Time/Date Input" backgroundColor="transparent" flags="wfNoBorder" position="0,center" size="1920,1080" transparent="0">
 		<eLabel backgroundColor="OE_Background" foregroundColor="OE_Background" name="" position="30,center" size="1070,270" zPosition="-15"/>
 		<eLabel backgroundColor="OE_NewBg2" foregroundColor="white" name="" position="70,center" size="80,340" zPosition="-11" valign="center"/>
 		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="170,470" size="900,2" zPosition="-9"/>
+		<ePixmap alphatest="blend" pixmap="OctEtFHD/colors/o_logo.png" position="75,center" size="78,75" zPosition="4"/>
 		<!-- Widget -->
 		<widget source="Title" render="Label" font="RegularBold;34" backgroundColor="OE_Background" position="170,413" size="900,50" transparent="1" valign="center" zPosition="3" foregroundColor="white"/>
-		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="170,490" size="900,100" transparent="1" zPosition="3"/>
+		<widget name="config" itemHeight="45" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="170,490" size="900,100" transparent="1" zPosition="3"/>
 		<!-- Button -->
 		<eLabel backgroundColor="white" name="" position="170,605" size="900,2" zPosition="-9"/>
 		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="170,620" size="40,40"/>
 		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_green.png" position="500,620" size="40,40"/>
-		<widget name="canceltext" font="Regular;28" backgroundColor="OE_Background" position="215,620" size="280,40" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget name="oktext" font="Regular;28" backgroundColor="OE_Background" position="545,620" size="280,40" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget name="cancel" font="Regular;28" backgroundColor="OE_Background" position="215,620" size="280,40" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget name="ok" font="Regular;28" backgroundColor="OE_Background" position="545,620" size="280,40" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget name="HelpWindow" conditional="HelpWindow" pixmap="OctEtFHD/skin_default/vkey_icon.png" position="445,825" size="0,0" transparent="1" zPosition="10" alphatest="on"/>
+		<widget source="key_red" render="Label" font="Regular;28" backgroundColor="OE_Background" position="215,620" size="280,40" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget source="key_green" render="Label" font="Regular;28" backgroundColor="OE_Background" position="545,620" size="280,40" halign="left" valign="center" transparent="1" zPosition="1"/>
 		<!-- Clock -->
 		<panel name="Clock"/>
 	</screen>
@@ -3245,7 +3246,7 @@
 	<screen name="RunSoftwareUpdate" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
 		<panel name="StanDardScreen"/>
 		<panel name="TemplatePip"/>
-		<ePixmap alphatest="blend" pixmap="buttons/key_help.png" position="18,1035" size="64,43"/>
+		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_help.png" position="18,1035" size="64,43"/>
 		<widget name="activity" position="26,140" backgroundColor="blue_light" foregroundColor="green_light" scrollbarBorderWidth="2" size="1250,30"/>
 		<widget name="update" font="RegularBold;26" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" backgroundColor="OE_Background" position="26,200" size="1250,750" transparent="1"/>
 	</screen>
@@ -4187,7 +4188,7 @@
 		<eLabel backgroundColor="blue_light" name="" position="400,865" size="1520,2" zPosition="-9"/>
 		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;23" position="410,150" size="1400,710" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" backgroundColor="OE_Background" transparent="1"/>
 		<widget source="text" render="Label" position="410,860" font="RegularBold;28" backgroundColor="OE_Background" foregroundColor="blue_light" zPosition="2" size="1490,90" transparent="1" valign="center" halign="center"/>
-		<widget name="HelpWindow" conditional="HelpWindow" pixmap="skin_default/vkey_icon.png" position="280,700" size="0,0" transparent="1" zPosition="10" alphatest="on"/>
+		<widget name="HelpWindow" conditional="HelpWindow" pixmap="OctEtFHD/skin_default/vkey_icon.png" position="280,700" size="0,0" transparent="1" zPosition="10" alphatest="on"/>
 		<widget source="VKeyIcon" render="Pixmap" conditional="VKeyIcon" pixmap="OctEtFHD/buttons/key_text.png" position="1835,160" zPosition="1" size="64,43" transparent="1" alphatest="blend">
 			<convert type="ConditionalShowHide"/>
 		</widget>
@@ -4977,17 +4978,30 @@
 		<!-- Buttons -->
 		<ePixmap pixmap="OctEtFHD/buttons/key_menu.png" position="185,950" size="64,43" zPosition="2" alphatest="blend"/>
 		<ePixmap pixmap="OctEtFHD/buttons/key_info.png" position="260,950" size="64,43" zPosition="2" alphatest="blend"/>
-		<!-- Keys Sources -->
-		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="500,950" size="40,40"/>
-		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_green.png" position="830,950" size="40,40"/>
-		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_yellow.png" position="1220,950" size="40,40"/>
-		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_blue.png" position="1550,950" size="40,40"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="550,935" size="240,70" name="key_red" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="875,935" size="270,70" name="key_green" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1265,935" size="270,70" render="Label" source="key_yellow" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1600,935" size="270,70" render="Label" source="key_blue" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1265,935" size="270,70" name="key_yellow" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1600,935" size="270,70" name="key_blue" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<ePixmap objectTypes="key_red,Button,Label" alphatest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="500,950" size="40,40"/>
+		<ePixmap objectTypes="key_green,Button,Label" alphatest="blend" pixmap="OctEtFHD/buttons/key_green.png" position="830,950" size="40,40"/>
+		<ePixmap objectTypes="key_yellow,Button,Label" alphatest="blend" pixmap="OctEtFHD/buttons/key_yellow.png" position="1220,950" size="40,40"/>
+		<ePixmap objectTypes="key_blue,Button,Label" alphatest="blend" pixmap="OctEtFHD/buttons/key_blue.png" position="1550,950" size="40,40"/>
+		<widget objectTypes="key_red,Label,Button" name="key_red" font="RegularBold;24" backgroundColor="OE_Background" position="550,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_green,Label,Button" name="key_green" font="RegularBold;24" backgroundColor="OE_Background" position="875,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_red,Label,Button" name="key_yellow" font="RegularBold;24" backgroundColor="OE_Background" position="1265,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_green,Label,Button" name="key_blue" font="RegularBold;24" backgroundColor="OE_Background" position="1600,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_red,StaticText" source="key_red" render="Label" font="RegularBold;24" backgroundColor="OE_Background" position="550,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_green,StaticText" source="key_green" render="Label" font="RegularBold;24" backgroundColor="OE_Background" position="875,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" font="RegularBold;24" backgroundColor="OE_Background" position="1265,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" font="RegularBold;24" backgroundColor="OE_Background" position="1600,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget source="key_red" render="Pixmap" pixmap="OctEtFHD/buttons/key_red.png" objectTypes="key_red,StaticText" backgroundColor="OE_Background" position="500,950" size="40,40" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="key_green" render="Pixmap" pixmap="OctEtFHD/buttons/key_green.png" objectTypes="key_green,StaticText" backgroundColor="OE_Background" position="830,950" size="40,40" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="key_yellow" render="Pixmap" pixmap="OctEtFHD/buttons/key_yellow.png" objectTypes="key_yellow,StaticText" backgroundColor="OE_Background" position="1220,950" size="40,40" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="key_blue" render="Pixmap" pixmap="OctEtFHD/buttons/key_blue.png" objectTypes="key_blue,StaticText" backgroundColor="OE_Background" position="1550,950" size="40,40" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
 	</screen>
 		<!-- TEMPLATE MULTIEPG AND EVENTVIEW -->
 	<screen name="MultiEPGEventView">
@@ -5000,24 +5014,38 @@
 		<eLabel backgroundColor="blue_light" name="" position="350,930" size="1540,2" zPosition="-9"/>
 		<eLabel backgroundColor="blue_light" name="" position="50,142" size="270,2" zPosition="2" foregroundColor="white"/>
 		<eLabel backgroundColor="blue_light" name="" position="50,930" size="275,2" zPosition="2"/>
-		<!-- Buttons -->
 		<ePixmap pixmap="OctEtFHD/buttons/key_menu.png" position="50,950" size="64,43" zPosition="2" alphatest="blend"/>
 		<ePixmap pixmap="OctEtFHD/buttons/key_info.png" position="120,950" size="64,43" zPosition="2" alphatest="blend"/>
 		<ePixmap pixmap="OctEtFHD/buttons/key_leftright.png" position="190,950" size="64,43" zPosition="2" alphatest="blend"/>
-		<ePixmap pixmap="OctEtFHD/buttons/key_help.png" position="260,950" size="64,43" zPosition="2" alphatest="blend"/>
-		<ePixmap pixmap="OctEtFHD/buttons/key_red.png" position="350,950" size="40,40" alphatest="blend"/>
-		<ePixmap pixmap="OctEtFHD/buttons/key_green.png" position="710,950" size="40,40" alphatest="blend"/>
-		<ePixmap pixmap="OctEtFHD/buttons/key_yellow.png" position="1100,950" size="40,40" alphatest="blend"/>
-		<ePixmap pixmap="OctEtFHD/buttons/key_blue.png" position="1490,950" size="40,40" alphatest="blend"/>
-		<!-- Keys Sources -->
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="395,935" size="300,70" source="key_red" render="Label" objectTypes="key_red,StaticText" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="755,935" size="300,70" source="key_green" render="Label" objectTypes="key_green,StaticText" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1145,935" size="300,70" source="key_yellow" render="Label" objectTypes="key_yellow,StaticText" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1535,935" size="300,70" source="key_blue" render="Label" halign="left" objectTypes="key_blue,StaticText" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="395,935" size="300,70" name="key_red" objectTypes="key_red,Label,Button" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="755,935" size="300,70" name="key_green" objectTypes="key_green,Label,Button" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1145,935" size="300,70" name="key_yellow" objectTypes="key_yellow,Label,Button" halign="left" valign="center" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1535,935" size="300,70" name="key_blue" objectTypes="key_blue,Label,Button" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<!-- SOURCE MultiEPG -->
+		<ePixmap objectTypes="key_red,Button,Label" alphatest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="350,950" size="40,40"/>
+		<ePixmap objectTypes="key_green,Button,Label" alphatest="blend" pixmap="OctEtFHD/buttons/key_green.png" position="710,950" size="40,40"/>
+		<ePixmap objectTypes="key_yellow,Button,Label" alphatest="blend" pixmap="OctEtFHD/buttons/key_yellow.png" position="1150,950" size="40,40"/>
+		<ePixmap objectTypes="key_blue,Button,Label" alphatest="blend" pixmap="OctEtFHD/buttons/key_blue.png" position="1540,950" size="40,40"/>
+		<widget objectTypes="key_red,Label,Button" name="key_red" font="RegularBold;24" backgroundColor="OE_Background" position="395,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_green,Label,Button" name="key_green" font="RegularBold;24" backgroundColor="OE_Background" position="755,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_yellow,Label,Button" name="key_yellow" font="RegularBold;24" backgroundColor="OE_Background" position="1195,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_blue,Label,Button" name="key_blue" font="RegularBold;24" backgroundColor="OE_Background" position="1585,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget source="key_red" render="Pixmap" pixmap="OctEtFHD/buttons/key_red.png" objectTypes="key_red,StaticText" backgroundColor="OE_Background" position="350,950" size="40,40" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<!-- SOURCE EVENTVIEW -->
+		<widget source="key_red" render="Label" objectTypes="key_red,StaticText" font="RegularBold;24" backgroundColor="OE_Background" position="395,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget source="key_green" render="Pixmap" pixmap="OctEtFHD/buttons/key_green.png" objectTypes="key_green,StaticText" backgroundColor="OE_Background" position="710,950" size="40,40" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="key_green" render="Label" objectTypes="key_green,StaticText" font="RegularBold;24" backgroundColor="OE_Background" position="755,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget source="key_yellow" render="Pixmap" pixmap="OctEtFHD/buttons/key_yellow.png" objectTypes="key_yellow,StaticText" backgroundColor="OE_Background" position="1150,950" size="40,40" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="key_yellow" render="Label" objectTypes="key_yellow,StaticText" font="RegularBold;24" backgroundColor="OE_Background" position="1195,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget source="key_blue" render="Pixmap" pixmap="OctEtFHD/buttons/key_blue.png" objectTypes="key_blue,StaticText" backgroundColor="OE_Background" position="1540,950" size="40,40" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="key_blue" render="Label" objectTypes="key_blue,StaticText" font="RegularBold;24" backgroundColor="OE_Background" position="1585,935" size="270,70" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget source="key_help" render="Pixmap" pixmap="OctEtFHD/buttons/key_help.png" objectTypes="key_help,StaticText" backgroundColor="OE_Background" position="260,950" size="64,43" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
 	</screen>
 		<!-- TEMPLATE GRAPHICAL EPG -->
 	<screen name="TemplateGraphicalEPG">
@@ -5027,7 +5055,7 @@
 		<widget backgroundColor="OE_Background" font="RegularBold;28" position="160,85" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" size="1000,50" source="Event" transparent="1" halign="left">
 			<convert type="EventName">Name</convert>
 		</widget>
-		<widget backgroundColor="blue_light" scrollbarBorderWidth="0" pixmap="OctEtFHD/colors/00A4C400.png" position="160,160" render="Progress" size="950,6" source="Event" transparent="0" zPosition="1">
+		<widget backgroundColor="blue_light" pixmap="OctEtFHD/colors/00A4C400.png" position="160,160" render="Progress" size="950,6" source="Event" transparent="0" zPosition="1">
 			<convert type="EventTime">Progress</convert>
 		</widget>
 		<widget source="Event" render="Label" font="RegularBold;26" backgroundColor="OE_Background" position="150,130" size="100,45" halign="center" transparent="1">
@@ -5043,18 +5071,25 @@
 		<eLabel backgroundColor="OE_NewBg2" foregroundColor="white" name="" position="45,center" size="100,1080" zPosition="1" valign="center"/>
 		<eLabel backgroundColor="blue_light" name="" position="160,930" size="1730,2" zPosition="-9"/>
 		<!-- Buttons -->
-		<ePixmap pixmap="OctEtFHD/buttons/key_menu.png" position="62,830" size="64,43" zPosition="2" alphatest="blend"/>
+		<ePixmap pixmap="OctEtFHD/buttons/key_menu.png" position="62,785" size="64,43" zPosition="2" alphatest="blend"/>
+		<ePixmap pixmap="OctEtFHD/buttons/key_text.png" position="62,830" size="64,43" zPosition="2" alphatest="blend"/>
 		<ePixmap pixmap="OctEtFHD/buttons/key_channel.png" position="62,875" size="64,43" zPosition="2" alphatest="blend"/>
 		<ePixmap pixmap="OctEtFHD/buttons/key_info.png" position="62,920" size="64,43" zPosition="2" alphatest="blend"/>
 		<ePixmap pixmap="OctEtFHD/buttons/key_help.png" position="62,965" size="64,43" zPosition="2" alphatest="blend"/>
 		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="180,950" size="40,40"/>
-		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_green.png" position="570,950" size="40,40"/>
 		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_yellow.png" position="975,950" size="40,40"/>
-		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_blue.png" position="1390,950" size="40,40"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" halign="left" position="225,935" size="300,70" name="key_red" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" halign="left" position="615,935" size="300,70" name="key_green" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" halign="left" position="1020,935" size="300,70" name="key_yellow" transparent="1" zPosition="1"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;24" halign="left" position="1435,935" size="400,70" name="key_blue" transparent="1" zPosition="1"/>
+		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_blue.png" position="1340,950" size="40,40"/>
+		<widget backgroundColor="OE_Background" font="RegularBold;24" position="225,935" size="300,70" source="key_red" render="Label" objectTypes="key_red,StaticText" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget backgroundColor="OE_Background" font="RegularBold;24" position="565,935" size="300,70" source="key_green" render="Label" objectTypes="key_green,StaticText" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1020,935" size="300,70" source="key_yellow" render="Label" objectTypes="key_yellow,StaticText" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1385,935" size="510,70" source="key_blue" render="Label" halign="left" objectTypes="key_blue,StaticText" valign="center" transparent="1" zPosition="1"/>
+		<widget backgroundColor="OE_Background" font="RegularBold;24" position="225,935" size="300,70" name="key_red" objectTypes="key_red,Label,Button" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget backgroundColor="OE_Background" font="RegularBold;24" position="565,935" size="300,70" name="key_green" objectTypes="key_green,Label,Button" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1020,935" size="300,70" name="key_yellow" objectTypes="key_yellow,Label,Button" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget backgroundColor="OE_Background" font="RegularBold;24" position="1385,935" size="510,70" name="key_blue" objectTypes="key_blue,Label,Button" halign="left" valign="center" transparent="1" zPosition="1"/>
+		<widget source="key_green" render="Pixmap" pixmap="OctEtFHD/buttons/key_green.png" objectTypes="key_green,StaticText" backgroundColor="OE_Background" position="520,950" size="40,40" alphatest="blend" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
 		<ePixmap alphatest="blend" pixmap="OctEtFHD/colors/o_logo.png" position="55,85" size="75,75" transparent="1" zPosition="1"/>
 	</screen>
 		<!-- STANDARD SCREEN -->
@@ -5379,16 +5414,16 @@ self.instance.move(ePoint((screenSize[0] - width) // 2, (screenSize[1] - height)
 		<widget source="session.Event_Next" render="xtraPoster" position="470,645" size="185,278" zPosition="2"/>
 	</screen>
 	<screen name="poster_channelselection">
-		<widget source="ServiceEvent" render="xtraPoster" position="80,50" size="185,278" zPosition="2"/>
+		<widget source="ServiceEvent" conditional="ServiceEvent" render="xtraPoster" position="80,50" size="185,278" zPosition="2"/>
 	</screen>
 	<screen name="poster_movieselection">
-		<widget source="Service" render="xtraPoster" position="110,10" size="260,400" zPosition="2"/>
+		<widget source="Service" conditional="Service" render="xtraPoster" position="110,10" size="260,400" zPosition="2"/>
 	</screen>
 	<screen name="TemplateXtraEPGSelection">
-		<widget source="Event" render="xtraPoster" position="165,285" size="185,278" zPosition="2"/>
+		<widget source="Event" conditional="Event" render="xtraPoster" position="165,285" size="185,278" zPosition="2"/>
 	</screen>
 	<screen name="TemplateXtraMultiEPGEventView">
-		<widget source="Event" render="xtraPoster" position="90,620" size="185,278" zPosition="2"/>
+		<widget source="Event" conditional="Event" render="xtraPoster" position="90,620" size="185,278" zPosition="2"/>
 	</screen>
 		<!-- REMOTE CONTROL -->
 	<screen name="TemplateRemoteControl">
