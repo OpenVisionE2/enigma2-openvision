@@ -47,8 +47,9 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 			print("[SystemInfo] Enigma information file data loaded into BoxInfo.")
 		else:
 			print("[SystemInfo] ERROR: Enigma information file is not available!  The system is unlikely to boot or operate correctly.")
-		lines = fileReadLines(pathjoin(resolveFilename(SCOPE_LIBDIR), "enigma.conf"), source=MODULE_NAME)
-		if lines:
+		filename = isfile(resolveFilename(SCOPE_LIBDIR, "enigma.conf"))
+		if filename:
+			lines = fileReadLines(pathjoin(resolveFilename(SCOPE_LIBDIR), "enigma.conf"), source=MODULE_NAME)
 			print("[SystemInfo] Enigma config override file available and data loaded into BoxInfo.")
 			self.boxInfo["overrideactive"] = True
 			for line in lines:

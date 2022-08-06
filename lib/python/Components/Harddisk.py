@@ -800,10 +800,10 @@ class HarddiskManager:
 	def getUserfriendlyDeviceName(self, dev, phys):
 		dev, part = self.splitDeviceName(dev)
 		description = _("External Storage %s") % dev
-		if exists(pathjoin("/sys", phys, "model")):
-			description = fileReadLine(pathjoin("/sys", phys, "model"), _("Unknown"))
-		elif exists(pathjoin("/sys", phys, "name")):
-			description = fileReadLine(pathjoin("/sys", phys, "name"), _("Unknown"))
+		if exists(pathjoin("/sys" + phys + "/model")):
+			description = fileReadLine(pathjoin("/sys" + phys + "/model"), _("Unknown"))
+		elif exists(pathjoin("/sys" + phys + "/name")):
+			description = fileReadLine(pathjoin("/sys" + phys + "/name"), _("Unknown"))
 		else:
 			print("[Harddisk] Error: Couldn't read model!")
 		# not wholedisk and not partition 1
