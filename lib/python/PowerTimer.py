@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bisect import insort
 from os import fsync, remove, rename
 from os.path import exists

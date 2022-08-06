@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This module is a placeholder / redirector to allow old code and plugins
 # to continue to function until such time that they are updated to use the
 # newer modules and methods.

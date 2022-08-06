@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 # A Job consists of many "Tasks".
 # A task is the run of an external tool, with proper methods for failure handling
 from Tools.CList import CList

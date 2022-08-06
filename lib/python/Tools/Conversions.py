@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from locale import format_string
 from time import localtime, time, strftime, strptime
 

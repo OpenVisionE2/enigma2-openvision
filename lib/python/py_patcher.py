@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 import os
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Tools.PyVerHelper import getPyExt

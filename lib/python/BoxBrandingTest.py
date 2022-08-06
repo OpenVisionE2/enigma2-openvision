@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 import boxbranding
 print("getIMGVersion=%s<" % boxbranding.getIMGVersion())
 print("getIMGRevision=%s<" % boxbranding.getIMGRevision())

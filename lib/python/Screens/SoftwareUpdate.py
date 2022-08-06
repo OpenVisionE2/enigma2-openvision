@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from json import load
 from six.moves.urllib.request import urlopen
 

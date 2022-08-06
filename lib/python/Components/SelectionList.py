@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from enigma import BT_KEEP_ASPECT_RATIO, BT_SCALE, RT_HALIGN_LEFT, RT_VALIGN_CENTER, eListboxPythonMultiContent, gFont
 
 from skin import fonts, parameters

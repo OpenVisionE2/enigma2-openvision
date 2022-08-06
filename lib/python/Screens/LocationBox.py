@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Generic Screen to select a path/filename combination
 
 from os import sep, statvfs

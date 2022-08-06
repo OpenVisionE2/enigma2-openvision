@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from enigma import eTimer, getDesktop
 from os.path import isfile
 

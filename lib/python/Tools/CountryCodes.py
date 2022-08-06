@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # The ISO3166 list of countries is built by the International module.
 #
 # The list contains 5 fields:

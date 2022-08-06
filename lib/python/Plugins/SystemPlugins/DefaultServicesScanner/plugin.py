@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Components.NimManager import nimmanager
 from Plugins.Plugin import PluginDescriptor
 from Screens.ScanSetup import ScanSetup

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from six import PY2
 from xml.etree.cElementTree import parse
 

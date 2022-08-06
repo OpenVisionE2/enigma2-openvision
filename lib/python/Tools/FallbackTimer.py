@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from ServiceReference import ServiceReference
 from Components.config import config
 from Screens.MessageBox import MessageBox

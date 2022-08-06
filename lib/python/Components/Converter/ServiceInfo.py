@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from enigma import iPlayableService, iServiceInformation
 
 from Components.Converter.Converter import Converter

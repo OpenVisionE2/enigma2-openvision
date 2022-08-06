@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 import os
 from datasource import datasource
 from xml.dom import minidom

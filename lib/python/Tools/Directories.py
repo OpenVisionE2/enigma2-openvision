@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from errno import ENOENT, EXDEV
 from os import F_OK, R_OK, W_OK, access, chmod, link, listdir, makedirs, mkdir, readlink, remove, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
 from os.path import basename, dirname, exists, getsize, isdir, isfile, islink, join as pathjoin, normpath, splitext

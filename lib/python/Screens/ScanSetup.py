@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from __future__ import division
 from Screens.Screen import Screen
 from Screens.ServiceScan import ServiceScan

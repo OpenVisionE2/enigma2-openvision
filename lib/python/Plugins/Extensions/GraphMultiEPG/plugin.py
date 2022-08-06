@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Plugins.Plugin import PluginDescriptor
 from Plugins.Extensions.GraphMultiEPG.GraphMultiEpg import GraphMultiEPG

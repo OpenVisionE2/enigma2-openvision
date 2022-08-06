@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 import re
 from six import PY2
 from os.path import exists as fileAccess

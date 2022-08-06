@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Components.Pixmap import PixmapConditional
 from Components.ConditionalWidget import BlinkingWidgetConditional, BlinkingWidget

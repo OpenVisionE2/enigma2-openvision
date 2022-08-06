@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from collections import defaultdict
 from functools import cmp_to_key
 from sys import maxsize

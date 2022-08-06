@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Tools.Profile import profile
 from enigma import eServiceReference
 from Tools.StbHardware import getBoxProc

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os.path import isfile
 from Components.ActionMap import HelpableActionMap
 from Components.config import ConfigSelection, ConfigYesNo, config, getConfigListEntry

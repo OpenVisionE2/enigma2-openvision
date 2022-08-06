@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from six import PY2
 
 from enigma import eLabel

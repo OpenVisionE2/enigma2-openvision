@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 ##
 ## P(icture)i(n)g(raphics) renderer

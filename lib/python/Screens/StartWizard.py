@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Screens.HelpMenu import ShowRemoteControl
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen

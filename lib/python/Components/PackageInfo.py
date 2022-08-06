@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import xml.sax
 from Tools.Directories import crawlDirectory, resolveFilename, SCOPE_CONFIG, SCOPE_SKINS, copyfile, copytree

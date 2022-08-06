@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # To improve performance while Enigma2 runs as root the Python method
 # fileAccess() from Directories.py is mapped to the Operating System
 # function exists().  If read access is actually required then move the

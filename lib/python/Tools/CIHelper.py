@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from xml.etree.cElementTree import parse
 from enigma import eDVBCIInterfaces, eDVBCI_UI, eEnv, eServiceCenter, eServiceReference, getBestPlayableServiceReference, iRecordableService
 from Components.SystemInfo import BoxInfo

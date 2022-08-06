@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os import stat, statvfs
 from os.path import isdir, join as pathjoin
 

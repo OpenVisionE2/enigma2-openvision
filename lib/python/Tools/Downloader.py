@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os import unlink
 import requests
 from twisted.internet import reactor

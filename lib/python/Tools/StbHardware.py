@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from fcntl import ioctl
 from os.path import exists, isfile
 from struct import pack, unpack

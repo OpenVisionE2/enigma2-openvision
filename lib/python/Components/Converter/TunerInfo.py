@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Components.Sources.TunerInfo import TunerInfo as TunerInfoSource
 from Components.Converter.Converter import Converter

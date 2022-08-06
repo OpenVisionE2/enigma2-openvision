@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Components.config import config, ConfigSelection, ConfigSubDict, ConfigYesNo
 from Components.SystemInfo import BoxInfo
 from Tools.CList import CList

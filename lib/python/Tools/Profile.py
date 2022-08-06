@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os.path import join as pathjoin, isfile
 from time import time
 

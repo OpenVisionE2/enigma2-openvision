@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bisect import insort
 from os import fsync, makedirs, remove, rename, sys
 from os.path import exists, isdir, realpath

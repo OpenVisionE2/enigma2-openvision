@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Components.Label import Label
 from Screens.LocaleSelection import LocaleWizard
 from Screens.Wizard import Wizard

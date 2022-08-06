@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Components.ActionMap import HelpableActionMap, HelpableNumberActionMap
 from Components.config import config, ConfigSubsection, ConfigText
 from Components.ChoiceList import ChoiceEntryComponent, ChoiceList

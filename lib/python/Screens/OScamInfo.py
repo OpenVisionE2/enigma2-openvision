@@ -1,4 +1,4 @@
-from __future__ import print_function
+# -*- coding: utf-8 -*-
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Screens.ChoiceBox import ChoiceBox

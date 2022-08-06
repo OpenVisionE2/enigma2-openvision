@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from enigma import iPlayableService, eDVBResourceManager, eDVBSatelliteEquipmentControl
 from Components.Sources.Source import Source

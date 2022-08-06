@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Screens.ChannelSelection import ChannelSelection, BouquetSelector, SilentBouquetSelector
 from Components.ActionMap import ActionMap, HelpableActionMap, HelpableNumberActionMap, NumberActionMap
 from Components.Harddisk import harddiskmanager

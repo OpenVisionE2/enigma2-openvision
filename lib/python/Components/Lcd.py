@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os import sys
 from os.path import exists
 from sys import maxsize

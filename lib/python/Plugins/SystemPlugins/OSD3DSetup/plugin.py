@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Screens.Screen import Screen
 from Screens.ChannelSelection import FLAG_IS_DEDICATED_3D

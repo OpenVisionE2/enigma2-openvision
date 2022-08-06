@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Screens.Satconfig import NimSelection
 from Screens.Screen import Screen
 from Screens.TextBox import TextBox

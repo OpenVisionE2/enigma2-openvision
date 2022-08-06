@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os.path import isdir, isfile
 
 from enigma import eServiceCenter, eServiceReference, iDVBMetaFile, iServiceInformation

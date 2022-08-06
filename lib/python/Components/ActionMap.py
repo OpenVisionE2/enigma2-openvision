@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from enigma import eActionMap
 
 from keyids import KEYIDS

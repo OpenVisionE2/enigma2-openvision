@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from traceback import print_stack
 
 from Components.International import international

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from array import array
 from binascii import hexlify
 from fcntl import ioctl

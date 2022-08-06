@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from locale import AM_STR, PM_STR, nl_langinfo
 from os import mkdir, makedirs, remove
 from os.path import exists, isfile, islink, join as pathjoin, normpath

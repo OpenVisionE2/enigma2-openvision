@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Tools.Profile import profile, profileFinal  # This facilitates the start up progress counter.
 profile("StartPython")
 import Tools.RedirectOutput  # Don't remove this line. This import facilitates connecting stdout and stderr redirections to the log files.

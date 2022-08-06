@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Components.SystemInfo import BoxInfo
 from Tools.Directories import fileReadLine
 

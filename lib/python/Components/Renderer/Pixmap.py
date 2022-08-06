@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from enigma import ePixmap
 
 from Components.Renderer.Renderer import Renderer

@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from six.moves.urllib.parse import urlencode
 from six.moves.urllib.request import urlopen

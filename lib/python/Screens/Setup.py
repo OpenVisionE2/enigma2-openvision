@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from gettext import dgettext
 from os.path import getmtime, isfile, join as pathjoin
 from six import PY2

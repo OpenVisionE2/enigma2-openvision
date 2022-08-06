@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Components.Renderer.Renderer import Renderer
 
 from enigma import eCanvas, eRect, gRGB

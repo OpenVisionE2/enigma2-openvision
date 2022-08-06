@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from fcntl import ioctl
 from os import listdir, major, minor, mkdir, popen, rmdir, sep, stat, statvfs, system, unlink
 from os.path import abspath, dirname, exists, ismount, join as pathjoin, normpath, realpath

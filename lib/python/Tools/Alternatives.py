@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from enigma import eServiceCenter, eServiceReference
 from Components.config import config

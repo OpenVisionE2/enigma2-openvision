@@ -1,4 +1,4 @@
-from __future__ import print_function
+# -*- coding: utf-8 -*-
 from enigma import eTimer, eDVBSatelliteEquipmentControl, eDVBResourceManager, eDVBDiseqcCommand, eDVBFrontendParametersSatellite, iDVBFrontend
 
 from Screens.Screen import Screen

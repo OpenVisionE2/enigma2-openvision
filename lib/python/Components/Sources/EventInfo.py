@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Components.PerServiceDisplay import PerServiceBase
 from Components.Element import cached

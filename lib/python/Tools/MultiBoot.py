@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime
 from os import rename, rmdir, sep, stat
 from os.path import basename, exists, isfile, ismount, join as pathjoin

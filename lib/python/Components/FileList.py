@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os import listdir
 from os.path import basename, dirname, isdir, join as pathjoin, normpath, realpath
 from re import compile

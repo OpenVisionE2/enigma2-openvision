@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Components.Sources.StaticText import StaticText
 from Screens.Screen import Screen

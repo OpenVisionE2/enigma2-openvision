@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Components.PerServiceDisplay import PerServiceDisplay, PerServiceBase
 from Components.GUIComponent import GUIComponent
 from enigma import eTimer, iPlayableService, ePositionGauge
