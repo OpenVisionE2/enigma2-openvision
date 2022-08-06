@@ -115,19 +115,14 @@ class EPGSelection(Screen):
 					"preview": self.eventPreview
 				})
 		else:
-			self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"],
+			self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"], # context for plugin EPGSearh.
 				{
 					"cancel": self.closeScreen,
 					"ok": self.eventSelected,
 					"timerAdd": self.timerAdd,
 					"yellow": self.yellowButtonPressed,
 					"info": self.infoKeyPressed,
-					"menu": self.furtherOptions,
-					"nextBouquet": self.nextBouquet,
-					"prevBouquet": self.prevBouquet,
-					"nextService": self.nextService,
-					"prevService": self.prevService,
-					"preview": self.eventPreview
+					"menu": self.furtherOptions
 				})
 		self['tmbd'] = HelpableActionMap(self, ["ColorActions"],
 			{
