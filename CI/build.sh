@@ -18,6 +18,7 @@ commit_files() {
   ./CI/dos2unix.sh
   ./CI/PEP8.sh
   ./CI/futurize.sh
+  ./CI/header.sh
 }
 
 upload_files() {
