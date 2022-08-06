@@ -10,7 +10,7 @@ begin=$(date +"%s")
 
 find . -type f -name "*.py" | xargs -L1 sed -i '/^#!\/usr\/bin\/env/d' # Avoid "#!/usr/bin/env python" lines and remove them all.
 find . -type f -name "*.py" | xargs -L1 sed -i '/ coding:/d' # Avoid duplicate "# -*- coding: utf-8 -*-" lines and remove them all.
-find . -type f -name "*.py" | xargs -L1 sed -i '/print_function/d' # Avoid duplicate "from __future__ import print_function" lines and remove them all.
+#find . -type f -name "*.py" | xargs -L1 sed -i '/print_function/d' # Avoid duplicate "from __future__ import print_function" lines and remove them all.
 find . -type f -name "*.py" | xargs -L1 sed -i '/^#!\/usr\/bin\/python/d' # Avoid duplicate "#!/usr/bin/python" lines and remove them all.
 find . -type f -name "*.py" | xargs -L1 sed -i '1i# -*- coding: utf-8 -*-' # Add "# -*- coding: utf-8 -*-" as the second line, always!
 
