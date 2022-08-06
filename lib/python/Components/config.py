@@ -462,6 +462,7 @@ class descriptionsList(choicesList):
 class ConfigBoolean(ConfigElement):
 	def __init__(self, default=False, descriptions=None, graphic=True):
 		ConfigElement.__init__(self)
+		default = bool(default)
 		if not isinstance(default, bool):
 			# raise TypeError("[Config] Error: 'ConfigBoolean' default must be a Boolean!")
 			print("[Config] Error: 'ConfigBoolean' default must be a Boolean!  (%s)" % default)
