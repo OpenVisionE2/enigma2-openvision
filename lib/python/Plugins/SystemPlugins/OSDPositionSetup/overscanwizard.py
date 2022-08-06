@@ -16,7 +16,7 @@ class OverscanWizard(Screen, ConfigListScreen):
 				<ePixmap pixmap="overscan1920x1080.png" position="0,0" size="1920,1080" zPosition="3" alphatest="on"/>
 				<widget name="title" position="380,212" size="1160,35" font="Regular;40" backgroundColor="black" foregroundColor="blue" halign="center" valign="center" zPosition="4"/>
 				<widget name="introduction" position="380,247" size="1160,660" font="Regular;26" halign="center" valign="center" backgroundColor="black" zPosition="4"/>
-				<widget name="config" position="380,867" size="1160,35" font="Regular;30" itemHeight="40" zPosition="4"/>
+				<widget name="config" position="380,867" size="1160,35" entryFont="Regular;30" valueFont="Regular;29" itemHeight="40" zPosition="4"/>
 				<widget name="HelpWindow" position="0,0" size="0,0" alphatest="blend" conditional="HelpWindow" transparent="1" zPosition="+1"/>
 			</screen>"""
 		else:
@@ -24,7 +24,7 @@ class OverscanWizard(Screen, ConfigListScreen):
 				<ePixmap pixmap="overscan1280x720.png" position="0,0" size="1280,720" zPosition="3" alphatest="on"/>
 				<widget name="title" position="240,135" size="800,40" font="Regular;30" backgroundColor="black" foregroundColor="blue" halign="center" valign="center" zPosition="4"/>
 				<widget name="introduction" position="240,175" size="800,440" font="Regular;18" backgroundColor="black" halign="center" valign="center" zPosition="4"/>
-				<widget name="config" position="240,580" size="800,120" font="Regular;20" itemHeight="30" zPosition="4"/>
+				<widget name="config" position="240,580" size="800,120" entryFont="Regular;20" valueFont="Regular;21" itemHeight="30" zPosition="4"/>
 				<widget name="HelpWindow" position="0,0" size="0,0" alphatest="blend" conditional="HelpWindow" transparent="1" zPosition="+1"/>
 			</screen>"""
 
