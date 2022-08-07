@@ -97,9 +97,9 @@ class BoxInformation:  # To maintain data integrity class variables should not b
 			value = list(data)
 		elif valueTest == "NONE":
 			value = None
-		elif valueTest in ("FALSE", "NO", "OFF", "DISABLED"):
+		elif valueTest in ("FALSE", "NO", "OFF", "DISABLED", "DISABLE"):
 			value = False
-		elif valueTest in ("TRUE", "YES", "ON", "ENABLED"):
+		elif valueTest in ("TRUE", "YES", "ON", "ENABLED", "ENABLE"):
 			value = True
 		elif value.isdigit() or (value[0:1] == "-" and value[1:].isdigit()):
 			value = int(value)
@@ -243,7 +243,7 @@ BoxInfo.setItem("RemoteDelay", 200 if model in ("maram9", "axodin") else 700)
 
 BoxInfo.setItem("multiboot", 0 if BoxInfo.getItem("distro", "").lower() == "openvision" else 1, immutable=True)
 
-SystemInfo["CommonInterface"] = model in ("h9combo", "h9combose", "h10", "pulse4kmini") and 1 or eDVBCIInterfaces.getInstance().getNumOfSlots()
+SystemInfo["CommonInterface"] = model in ("h9combo", "h9combose", "pulse4kmini") and 1 or eDVBCIInterfaces.getInstance().getNumOfSlots() or model == "vuzero" and 0
 SystemInfo["CommonInterfaceCIDelay"] = fileCheck("/proc/stb/tsmux/rmx_delay")
 for cislot in range(BoxInfo.getItem("CommonInterface", 0)):
 	SystemInfo["CI%dSupportsHighBitrates" % cislot] = fileCheck("/proc/stb/tsmux/ci%d_tsclk" % cislot)
