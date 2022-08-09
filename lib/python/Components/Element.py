@@ -52,7 +52,7 @@ class Element(object):
 			self.master = downstream
 
 	def connectUpstream(self, upstream):
-		if not(not self.SINGLE_SOURCE or self.source is None):
+		if not (not self.SINGLE_SOURCE or self.source is None):
 			raise AssertionError
 
 		self.sources.append(upstream)

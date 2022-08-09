@@ -2273,7 +2273,7 @@ class MovieContextMenu(Screen, ProtectedScreen):
 				if isfile("%s.meta" % service.getPath().rstrip("/")):
 					append_to_menu(menu, (_("Edit Tags"), csel.do_tageditor), key="bullet")
 				# Plugins expect a valid selection, so only include them if we selected a non-dir
-				if not(service.flags & eServiceReference.mustDescent):
+				if not (service.flags & eServiceReference.mustDescent):
 					for p in plugins.getPlugins(PluginDescriptor.WHERE_MOVIELIST):
 						append_to_menu(menu, (p.description, boundFunction(p.__call__, session, service)), key="bullet")
 		self["config"] = ChoiceList(menu)
@@ -2283,7 +2283,7 @@ class MovieContextMenu(Screen, ProtectedScreen):
 
 	def isResetable(self):
 		item = self.csel.getCurrentSelection()
-		return not(item[1] and moviePlayState("%s.cuts" % item[0].getPath(), item[0], item[1].getLength(item[0])) is None)
+		return not (item[1] and moviePlayState("%s.cuts" % item[0].getPath(), item[0], item[1].getLength(item[0])) is None)
 
 	def pinEntered(self, answer):
 		if answer:
