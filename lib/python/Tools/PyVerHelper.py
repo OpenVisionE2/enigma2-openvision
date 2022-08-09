@@ -28,3 +28,9 @@ def getPyExt():
 def getPyPath():
 	PyPath = "python%s" % (getPyVerSt()) #Example: python2.7
 	return PyPath
+
+
+def convertEmpty(value):
+	if "" in value:
+		value = value.replace("", "0")
+	return value

@@ -123,7 +123,7 @@ def getFPWasTimerWakeup(check=False):
 			return wasTimerWakeup, isError
 		return wasTimerWakeup
 	wasTimerWakeup = fileReadLine("/proc/stb/fp/was_timer_wakeup", source=MODULE_NAME)
-	if wasTimerWakeup is not None:
+	if wasTimerWakeup is not None and wasTimerWakeup is not "":
 		wasTimerWakeup = int(wasTimerWakeup) and True or False
 		if not fileWriteLine("/tmp/was_timer_wakeup.txt", str(wasTimerWakeup), source=MODULE_NAME):
 			try:
