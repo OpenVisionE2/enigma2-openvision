@@ -436,7 +436,7 @@
 		<widget source="session.Event_Now" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" font="RegularBold;30" halign="left" noWrap="1" position="575,933" size="1050,64" transparent="1">
 			<convert type="EventName">Name</convert>
 		</widget>
-		<widget backgroundColor="OE_Background" font="RegularBold;28" position="335,935" render="Label" size="105,40" source="session.Event_Now" transparent="1">
+		<widget backgroundColor="OE_Background" font="RegularBold;28" position="335,935" render="Label" size="90,40" source="session.Event_Now" transparent="1">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText"/>
 		</widget>
@@ -451,7 +451,7 @@
 		<widget source="session.Event_Now" render="Progress" backgroundColor="OE_NewBg" pixmap="OctEtFHD/colors/00A4C400.png" position="336,975" size="1510,4" transparent="0" zPosition="7">
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget backgroundColor="OE_Background" font="RegularBold;28" position="335,988" render="Label" size="105,40" source="session.Event_Next" transparent="1" valign="top">
+		<widget backgroundColor="OE_Background" font="RegularBold;28" position="335,988" render="Label" size="90,40" source="session.Event_Next" transparent="1" valign="top">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText"/>
 		</widget>
@@ -617,11 +617,11 @@
 			<convert type="ConditionalShowHide">
 			</convert>
 		</widget>
-		<widget backgroundColor="OE_ListBackground" foregroundColor="green_light" font="RegularBold;28" position="663,188" render="Label" size="100,48" source="session.Event_Now" transparent="1">
+		<widget backgroundColor="OE_ListBackground" foregroundColor="green_light" font="RegularBold;28" position="663,188" render="Label" size="90,35" source="session.Event_Now" transparent="1">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText"/>
 		</widget>
-		<widget backgroundColor="OE_ListBackground" foregroundColor="green_light" font="RegularBold;28" position="745,188" render="Label" size="100,40" source="session.Event_Now" transparent="1">
+		<widget backgroundColor="OE_ListBackground" foregroundColor="green_light" font="RegularBold;28" position="745,188" render="Label" size="100,35" source="session.Event_Now" transparent="1">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText">Format:-%H:%M</convert>
 		</widget>
@@ -635,11 +635,11 @@
 		<widget source="session.Event_Now" render="Progress" foregroundColor="blue_light" backgroundColor="green_light" position="665,225" size="1020,6" transparent="0" zPosition="10">
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget backgroundColor="OE_ListBackground" foregroundColor="green_light" font="RegularBold;28" position="663,638" render="Label" size="100,48" source="session.Event_Next" transparent="1">
+		<widget backgroundColor="OE_ListBackground" foregroundColor="green_light" font="RegularBold;28" position="663,638" render="Label" size="90,35" source="session.Event_Next" transparent="1">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText"/>
 		</widget>
-		<widget backgroundColor="OE_ListBackground" foregroundColor="green_light" font="RegularBold;28" position="745,638" render="Label" size="100,40" source="session.Event_Next" transparent="1">
+		<widget backgroundColor="OE_ListBackground" foregroundColor="green_light" font="RegularBold;28" position="745,638" render="Label" size="100,35" source="session.Event_Next" transparent="1">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText">Format:-%H:%M</convert>
 		</widget>
@@ -1130,12 +1130,12 @@
 		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" foregroundColor="green_light" halign="left" position="80,150" size="570,45" transparent="1" valign="center">
 			<convert type="EventName">Name</convert>
 		</widget>
-		<widget backgroundColor="OE_Background" font="RegularBold;28" halign="left" position="80,200" render="Label" size="85,40" source="ServiceEvent" transparent="1">
+		<widget backgroundColor="OE_Background" font="RegularBold;28" halign="left" position="80,200" render="Label" size="85,35" source="ServiceEvent" transparent="1">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText"/>
 		</widget>
 		<eLabel backgroundColor="OE_Background" font="RegularBold;32" halign="center" position="156,198" size="30,40" text="-" transparent="1" valign="center"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;28" halign="right" position="176,200" render="Label" size="85,40" source="ServiceEvent" transparent="1">
+		<widget backgroundColor="OE_Background" font="RegularBold;28" halign="right" position="176,200" render="Label" size="85,35" source="ServiceEvent" transparent="1">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText"/>
 		</widget>
@@ -1456,7 +1456,6 @@
 	<!-- GRAPHICAL MULTI EPG LIST -->
 	<screen name="GraphMultiEPGList" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
 		<panel name="TemplateGraphicalEPG"/>
-		<widget source="Title" render="Label" font="RegularBold;28" backgroundColor="OE_Background" foregroundColor="blue_light" halign="left" position="700,20" size="420,45" transparent="0" zPosition="10"/>
 		<widget source="Event" render="xtraPoster" position="1150,80" size="185,278" zPosition="2"/>
 		<widget source="session.VideoPicture" render="Pig" position="1365,75" size="530,290" zPosition="1" backgroundColor="#df0b1300"/>
 		<eLabel backgroundColor="OE_Accent1" foregroundColor="OE_Accent1" position="160,365" size="1730,2"/>
@@ -1476,7 +1475,6 @@
 	<!-- GRAPHICAL MULTI EPG -->
 	<screen name="GraphMultiEPG" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
 		<panel name="TemplateGraphicalEPG"/>
-		<widget source="Title" render="Label" font="RegularBold;28" backgroundColor="OE_Background" foregroundColor="blue_light" halign="left" valign="center" position="1182,80" size="660,45" transparent="1" zPosition="10"/>
 		<widget backgroundColor="blue" foregroundColor="white" name="timeline_text" position="160,170" selection="0" size="1730,50" transparent="1" itemHeight="55" font="RegularBold;26"/>
 		<widget name="list" position="160,230" size="1730,690" scrollbarMode="showNever" ServiceFont="Regular;28" ServiceBackgroundColor="OE_Background" EntryBackgroundColor="dark" EntryBackgroundColorNow="#37732F" EntryBackgroundColorSelected="OE_Selection" EntryBorderColor="darkgrey" EntryFont="RegularBold;24" EntryForegroundColor="#ffffff" EntryForegroundColorNow="#ffffff" EntryForegroundColorSelected="#ffffff" EventBorderWidth="0" ServiceBackgroundColorSelected="dark" ServiceBorderColor="darkgrey" ServiceBorderWidth="0" ServiceForegroundColorSelected="yellow" transparent="1"/>
 		<widget alphatest="blend" name="timeline_now" pixmap="OctEtFHD/extensions/timeline-now.png" position="0,230" size="17,690" zPosition="2"/>
@@ -1512,11 +1510,11 @@
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget name="epg_description" position="350,220" size="1540,705" backgroundColor="OE_Background" font="RegularBold;26" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" transparent="1"/>
-		<widget source="Event" render="Label" font="RegularBold;28" position="85,160" size="105,45" zPosition="2" halign="center" valign="center" backgroundColor="OE_NewBg2" transparent="1">
+		<widget source="Event" render="Label" font="RegularBold;28" position="85,165" size="95,35" zPosition="2" halign="center" valign="center" backgroundColor="OE_NewBg2" transparent="1">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText"/>
 		</widget>
-		<widget source="Event" render="Label" font="RegularBold;28" position="175,160" size="105,45" zPosition="2" halign="center" valign="center" backgroundColor="OE_NewBg2" foregroundColor="OE_Foreground" transparent="1">
+		<widget source="Event" render="Label" font="RegularBold;28" position="170,160" size="105,45" zPosition="2" halign="center" valign="center" backgroundColor="OE_NewBg2" foregroundColor="OE_Foreground" transparent="1">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText">Format:-%H:%M</convert>
 		</widget>
@@ -4778,32 +4776,32 @@
 	<!-- #######################################################################TEMPLATES #################################################################################-->
 	<!-- <panel name="Clock"/> -->
 	<screen name="Clock">
-		<eLabel backgroundColor="OE_NewBg2" position="1390,5" size="490,75" transparent="0" zPosition="2"/>
-		<eLabel backgroundColor="blue_light" name="" position="1392,7" size="485,1" zPosition="2"/>
-		<eLabel backgroundColor="blue_light" name="" position="1392,7" size="1,70" zPosition="2"/>
-		<eLabel backgroundColor="blue_light" name="" position="1877,7" size="1,70" zPosition="2"/>
-		<eLabel backgroundColor="blue_light" name="" position="1392,77" size="486,1" zPosition="2"/>
-		<widget backgroundColor="OE_NewBg" font="RegularBold;40" halign="left" position="1735,13" zPosition="3" render="Label" size="155,60" source="global.CurrentTime" transparent="1" valign="center" foregroundColor="white">
+		<eLabel backgroundColor="OE_NewBg2" position="1370,5" size="543,75" transparent="0" zPosition="2"/>
+		<eLabel backgroundColor="blue_light" name="" position="1372,7" size="540,1" zPosition="2"/>
+		<eLabel backgroundColor="blue_light" name="" position="1372,7" size="1,70" zPosition="2"/>
+		<eLabel backgroundColor="blue_light" name="" position="1911,7" size="1,70" zPosition="2"/>
+		<eLabel backgroundColor="blue_light" name="" position="1372,77" size="540,1" zPosition="2"/>
+		<widget backgroundColor="OE_NewBg" font="RegularBold;40" halign="left" position="1715,13" zPosition="3" render="Label" size="195,60" source="global.CurrentTime" transparent="1" valign="center" foregroundColor="white">
 			<convert type="ClockToText"></convert>
 		</widget>
-		<widget backgroundColor="OE_NewBg2" font="RegularBold;24" halign="center"  valign="center" position="1393,10" zPosition="3" render="Label" size="332,65" source="global.CurrentTime" transparent="1">
+		<widget backgroundColor="OE_NewBg2" font="RegularBold;24" halign="center"  valign="center" position="1373,10" zPosition="3" render="Label" size="352,65" source="global.CurrentTime" transparent="1">
 			<convert type="ClockToText">LongDate</convert>
 		</widget>
 	</screen>
 		<!-- CLOCK EPG -->
 	<screen name="FrameClock">
-		<eLabel backgroundColor="OE_NewBg2" position="1425,0" size="485,72" transparent="0" zPosition="2" foregroundColor="white"/>
-		<widget backgroundColor="OE_NewBg" font="RegularBold;40" halign="left" position="1770,5" zPosition="3" render="Label" size="155,60" source="global.CurrentTime" transparent="1" valign="center" foregroundColor="white">
+		<eLabel backgroundColor="OE_NewBg2" position="1385,0" size="525,72" transparent="0" zPosition="2" foregroundColor="white"/>
+		<widget backgroundColor="OE_NewBg" font="RegularBold;40" halign="left" position="1690,5" zPosition="3" render="Label" size="195,60" source="global.CurrentTime" transparent="1" valign="center" foregroundColor="white">
 			<convert type="ClockToText"></convert>
 		</widget>
-		<widget backgroundColor="OE_NewBg2" font="RegularBold;24" halign="center"  valign="center" position="1427,5" zPosition="3" render="Label" size="328,65" source="global.CurrentTime" transparent="1">
+		<widget backgroundColor="OE_NewBg2" font="RegularBold;24" halign="center"  valign="center" position="1377,5" zPosition="3" render="Label" size="328,65" source="global.CurrentTime" transparent="1">
 			<convert type="ClockToText">LongDate</convert>
 		</widget>
 	</screen>
 		<!-- CLOCK INFORMATION -->
 	<screen name="ClockInformation">
 		<eLabel backgroundColor="OE_NewBg2" position="0,45" size="400,72" transparent="0" zPosition="2" foregroundColor="white"/>
-		<widget backgroundColor="OE_NewBg" font="RegularBold;30" halign="left" position="150,30" zPosition="3" render="Label" size="88,30" source="global.CurrentTime" transparent="1" valign="center" foregroundColor="white">
+		<widget backgroundColor="OE_NewBg" font="RegularBold;30" halign="left" position="150,30" zPosition="3" render="Label" size="150,30" source="global.CurrentTime" transparent="1" valign="center" foregroundColor="white">
 			<convert type="ClockToText"></convert>
 		</widget>
 		<widget backgroundColor="OE_NewBg2" font="RegularBold;26" halign="center" valign="center" position="0,93" zPosition="3" render="Label" size="395,30" source="global.CurrentTime" transparent="1">
@@ -5052,6 +5050,7 @@
 	<screen name="TemplateGraphicalEPG">
 		<panel name="FrameClock"/>
 		<panel name="TemplateFrame"/>
+		<widget source="Title" render="Label" font="RegularBold;28" backgroundColor="OE_Background" foregroundColor="blue_light" halign="center" valign="center" position="150,10" size="1230,45" transparent="1" zPosition="10"/>
 		<!-- Event -->
 		<widget backgroundColor="OE_Background" font="RegularBold;28" position="160,85" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" size="1000,50" source="Event" transparent="1" halign="left">
 			<convert type="EventName">Name</convert>
@@ -5059,11 +5058,11 @@
 		<widget backgroundColor="blue_light" pixmap="OctEtFHD/colors/00A4C400.png" position="160,160" render="Progress" size="950,6" source="Event" transparent="0" zPosition="1">
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget source="Event" render="Label" font="RegularBold;26" backgroundColor="OE_Background" position="150,130" size="100,45" halign="center" transparent="1">
+		<widget source="Event" render="Label" font="RegularBold;26" backgroundColor="OE_Background" position="150,130" size="150,45" halign="center" transparent="1">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText"/>
 		</widget>
-		<widget source="Event" render="Label" font="RegularBold;26" backgroundColor="OE_Background" position="1020,130" size="100,45" halign="center" transparent="1">
+		<widget source="Event" render="Label" font="RegularBold;26" backgroundColor="OE_Background" position="970,130" size="150,45" halign="center" transparent="1">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText"/>
 		</widget>
@@ -5106,7 +5105,7 @@
 		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="5,1077" size="1279,3" zPosition="-15"/>
 		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="5,0" size="3,1078" zPosition="-15"/>
 		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="1281,0" size="3,1078" zPosition="-15"/>
-		<ePixmap alphatest="blend" pixmap="OctEtFHD/colors/o_logo.png" position="1300,5" size="75,75" transparent="1" zPosition="1"/>
+		<ePixmap alphatest="blend" pixmap="OctEtFHD/colors/o_logo.png" position="1290,5" size="75,75" transparent="1" zPosition="1"/>
 		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="26,138" size="1250,2" zPosition="-9"/>
 		<eLabel backgroundColor="blue_light" name="" position="26,965" size="1250,2" zPosition="-9"/>
 		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="20,1033" size="1261,2" zPosition="-15"/>
