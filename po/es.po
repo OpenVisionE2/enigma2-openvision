@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-05 20:37+0430\n"
-"PO-Revision-Date: 2021-11-11 19:09+0100\n"
+"PO-Revision-Date: 2022-08-05 18:26+0200\n"
 "Last-Translator: Kuatto\n"
 "Language-Team: Álvaro <mi casa>\n"
 "Language: es_ES\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.1.1\n"
 
 msgid ""
 "\n"
@@ -2637,8 +2637,9 @@ msgstr "Comience automáticamente timeshift después"
 msgid "Automatically turn on external subtitles"
 msgstr "Activar automáticamente los subtítulos externos"
 
+#, fuzzy
 msgid "Automatically update Client/Server View?"
-msgstr "Actualizar automáticamente la vista cliente/servidor?"
+msgstr "Actualizar automáticamente las pantallas Clientes/Servidores/Log"
 
 msgid "Autostart"
 msgstr "Autoinicio"
@@ -3581,13 +3582,11 @@ msgstr "Elegir el nombre del archivo que contiene los datos EPG en su %s %s cuan
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr "Elija el orden en el que se muestran los elementos en las ventanas de Ayuda"
 
-#, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
-msgstr "Configure si las pistas de sonido multicanal se deben mezclar a estéreo."
+msgstr "Elija si las pistas de sonido AAC deben transcodificarse."
 
-#, fuzzy
 msgid "Choose whether AC3 Plus sound tracks should be transcoded to AC3."
-msgstr "Configure si las pistas de sonido multicanal se deben mezclar a estéreo."
+msgstr "Elija si las pistas de sonido AC3 Plus deben transcodificarse a AC3."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
@@ -3662,11 +3661,11 @@ msgstr "Mueva el cursor del teclado virtual hacia arriba"
 
 #, python-format
 msgid "Client Info ( NCam-Version: %s )"
-msgstr "Información del Cliente ( Versión Ncam: %s )"
+msgstr "Información del Cliente ( Versión NCam: %s )"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Client Info ( OScam-Version: %s )"
-msgstr "Información del Cliente ( Versión OScam: %s )"
+msgstr "Información del Cliente ( Versión OSCam: %s )"
 
 msgid "Client Mode"
 msgstr "Modo Cliente"
@@ -6232,7 +6231,7 @@ msgstr ""
 "%s"
 
 msgid "Error in XML file: Try to solve and then restart."
-msgstr "Error en archivo XML: intente solucionarlo y luego reinicie."
+msgstr ""
 
 msgid "Error stop stream!"
 msgstr "Error al detener el stream!"
@@ -6713,8 +6712,9 @@ msgstr "Persa"
 msgid "Fast"
 msgstr "Rápido"
 
+#, fuzzy
 msgid "Fast Channel Change"
-msgstr ""
+msgstr "Cambiar canal"
 
 msgid "Fast Channel Change Setup"
 msgstr ""
@@ -9493,19 +9493,20 @@ msgstr "Cambiar config"
 msgid "NCam ECM info"
 msgstr "ECM Info"
 
+#, fuzzy
 msgid "NCam Info - Configuration"
-msgstr "NCam Info - Configuración"
+msgstr "Configuración EPG Import"
 
 msgid "NCam Info - Main Menu"
-msgstr "NCam Info - Menú Principal"
+msgstr "Menú principal - Información NCam"
 
 #, fuzzy
 msgid "NCam Info Main Menu"
-msgstr "NCam Info - Menú Principal"
+msgstr "Menú principal - Información NCam"
 
 #, fuzzy, python-format
 msgid "NCam Log ( NCam-Version: %s )"
-msgstr "Información del Cliente ( Versión Ncam: %s )"
+msgstr "Información del Cliente ( Versión NCam: %s )"
 
 msgid "NCam webif disabled"
 msgstr "Webif NCam deshabilitado"
@@ -10001,6 +10002,7 @@ msgstr "Nada para escanear! Configura su sintonizador y vuelve a intentarlo."
 msgid "Nothing to upgrade"
 msgstr ""
 
+#, fuzzy
 msgid "Now"
 msgstr "Ahora"
 
@@ -10069,7 +10071,7 @@ msgstr "Transparencia OSD"
 
 #, fuzzy
 msgid "OScam Config info"
-msgstr "OScam Info - Configuración"
+msgstr "Cambiar config"
 
 #, fuzzy
 msgid "OScam ECM info"
@@ -10077,24 +10079,27 @@ msgstr "ECM Info"
 
 #, fuzzy
 msgid "OScam Info"
-msgstr "OScam Info - Menú Principal"
+msgstr "Ajustes Información OSCam"
 
+#, fuzzy
 msgid "OScam Info - Configuration"
-msgstr "OScam Info - Configuración"
+msgstr "Configuración EPG Import"
 
+#, fuzzy
 msgid "OScam Info - Main Menu"
-msgstr "OScam Info - Menú Principal"
+msgstr "Menú principal - Información OSCam"
 
 #, fuzzy
 msgid "OScam Info Main Menu"
-msgstr "OScam Info - Menú Principal"
+msgstr "Menú principal - Información OSCam"
 
 #, fuzzy, python-format
 msgid "OScam Log ( OScam-Version: %s )"
-msgstr "Información del Servidor ( Versión OScam: %s )"
+msgstr "Información del Servidor ( Versión OSCam: %s )"
 
+#, fuzzy
 msgid "OScam webif disabled"
-msgstr "Webif OScam deshabilitado"
+msgstr "Webif OSCam deshabilitado"
 
 #, fuzzy
 msgid "OTT Model"
@@ -10854,9 +10859,6 @@ msgid ""
 "\n"
 "Press YELLOW to set the time zone via geolocation."
 msgstr ""
-"Configura sus opciones de horario.\n"
-"\n"
-"Pulsa Amarillo para usar su horario y continue con el wizard."
 
 msgid "Please setup the following basic configs!"
 msgstr "Por favor, configure las siguientes configuraciones básicas!"
@@ -11132,7 +11134,7 @@ msgstr "Pulse OK para activar la actual dirección MAC."
 
 #, fuzzy, python-format
 msgid "Press OK to activate the selected %s skin."
-msgstr "Presione OK para activar el seleccionado %s."
+msgstr "Presione OK para activar el seleccionado skin %s."
 
 msgid "Press OK to activate the settings."
 msgstr "Pulse OK para activar la configuración."
@@ -11162,7 +11164,7 @@ msgstr "Presione OK para instalar y usar esta configuración.  [%s]"
 
 #, fuzzy, python-format
 msgid "Press OK to keep the currently selected %s skin."
-msgstr "Presione OK para mantener el %s seleccionado actualmente."
+msgstr "Presione OK para mantener el actualmente seleccionado skin %s."
 
 msgid "Press OK to scan"
 msgstr "Pulse OK para escanear"
@@ -11243,8 +11245,9 @@ msgstr "Vista previa del canal seleccionado"
 msgid "Primary DNS"
 msgstr "DNS Primario"
 
+#, fuzzy
 msgid "Prime time"
-msgstr "Hora de mayor audiencia"
+msgstr "Ordenar por fecha"
 
 msgid "Priority"
 msgstr "Prioridad"
@@ -11316,7 +11319,7 @@ msgid "Protect standby menu"
 msgstr "Proteger menú de reposo"
 
 msgid "Protect timer menu"
-msgstr "Proteger menú de temporizares"
+msgstr "Proteger menú de temporizadores"
 
 msgid "Protect vision core menu"
 msgstr "Proteger menú vision core"
@@ -11505,7 +11508,7 @@ msgstr "Clasificación indefinida"
 
 #, fuzzy
 msgid "Read Userdata from oscam.conf/ncam.conf"
-msgstr "Leer datos usuarios desde oscam.conf"
+msgstr "Leer datos usuarios desde oscam.conf."
 
 msgid "Reader"
 msgstr "Lector"
@@ -11632,8 +11635,6 @@ msgid ""
 "Recording IPTV with ServiceApp enabled or your set top box have HiSilicon chipset\n"
 "Timer ended"
 msgstr ""
-"Grabación de IPTV con ServiceApp habilitado o su receptor tiene chipset HiSilicon\n"
-"Temporizador terminado"
 
 msgid "Recording Setup"
 msgstr "Ajustes Grabaciones"
@@ -12720,6 +12721,7 @@ msgstr "Seleccione ‘sí’ para enviar solamente el comando DiSEqC cuando camb
 msgid "Select CAId"
 msgstr "Seleccionar CAId"
 
+#, fuzzy
 msgid "Select Channel"
 msgstr "Seleccionar Canal"
 
@@ -13096,11 +13098,11 @@ msgstr "Serv.Nombre"
 
 #, python-format
 msgid "Server Info ( NCam-Version: %s )"
-msgstr "Información del Servidor ( Versión Ncam: %s )"
+msgstr "Información del Servidor ( Versión NCam: %s )"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Server Info ( OScam-Version: %s )"
-msgstr "Información del Servidor ( Versión OScam: %s )"
+msgstr "Información del Servidor ( Versión OSCam: %s )"
 
 msgid "Server not available"
 msgstr "Servidor no disponible"
@@ -15132,7 +15134,7 @@ msgstr "El estándar de DVD no admite transmisiones de video H.264 (HDTV). ¿Des
 
 #, fuzzy
 msgid "The MovieCut plugin is not installed."
-msgstr "Este plugin no está instalado."
+msgstr "El plugin temporizador automático no está instalado."
 
 msgid "The PIN code has been changed successfully."
 msgstr "El código PIN ha sido cambiado con éxito."
@@ -15478,9 +15480,8 @@ msgstr "Esta opción le permite mostrar números que accederan directo al menu y
 msgid "This option allows you to show the full screen path leading to the current screen."
 msgstr "Esta opción le permite mostrar la ruta de pantalla completa que conduce a la pantalla actual."
 
-#, fuzzy
 msgid "This option allows you to switch audio to BT speakers."
-msgstr "Esta opción le permite configurar el nivel de volumen automático."
+msgstr "Esta opción le permite cambiar el audio a altavoces BT."
 
 #, fuzzy
 msgid "This option allows you to use video sync mode."
@@ -15492,9 +15493,8 @@ msgstr "Esta opción le permite ver las configuraciones antiguas y nuevas una al
 msgid "This option can be useful for long HDMI cables."
 msgstr "Esta opción puede ser útil para cables HDMI largos."
 
-#, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
-msgstr "Configure el retardo del audio de las pistas de sonido Stereo."
+msgstr "Esta opción configura el retardo de audio general para altavoces BT."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Esta opción establece el nivel de supresión del ruido del mosquito (Mosquito Noise es resultado de una fuerte compresión). Obviamente, esto va a costa de los detalles de la imagen."
@@ -15799,16 +15799,20 @@ msgstr "Propiedades del título"
 msgid "Titleset mode"
 msgstr "Modo Titleset"
 
-#, python-format
+#, fuzzy, python-format
 msgid "To apply the selected '%s' skin the GUI needs to restart. Would you like to restart the GUI now?"
-msgstr "Para aplicar el skin  '%s' seleccionado, la GUI debe reiniciarse. ¿Desea reiniciar la GUI ahora?"
+msgstr ""
+"Para aplicar el skin '%s' seleccionado, la GUI debe reiniciarse.\n"
+"¿Desea reiniciar la GUI ahora?"
 
 msgid "To audio selection"
 msgstr "Ir a Selección de Audio"
 
-#, python-format
+#, fuzzy, python-format
 msgid "To save and apply the selected '%s' skin the GUI needs to restart. Would you like to save the selection and restart the GUI now?"
-msgstr "Para guardar y aplicar el skin '%s' seleccionada, la GUI debe reiniciarse. ¿Desea guardar la selección y reiniciar la GUI ahora?"
+msgstr ""
+"Para guardar y aplicar el skin '%s' seleccionado, la GUI debe reiniciarse.\n"
+"¿Desea guardar la selección y reiniciar la GUI ahora?"
 
 msgid "To subtitle selection"
 msgstr "Ir a Selección de Subtítulos"
@@ -16512,7 +16516,7 @@ msgid "Username"
 msgstr "Nombre de usuario"
 
 msgid "Username (httpuser)"
-msgstr "Nombre Usuario (httpuser)"
+msgstr "Nombre usuario (httpuser)"
 
 #, python-format
 msgid "Using LNB %d"
@@ -17574,9 +17578,9 @@ msgstr "No seleccionó un canal a grabar."
 msgid "You have not set manual IP for %s"
 msgstr "No ha establecido una IP manual para %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You have to wait %(min)d minutes, %(sec)d seconds!"
-msgstr "Tienes que esperar % minutos, % segundos!"
+msgstr "Tienes que esperar %(min)d minutos, %(sec)d segundos!"
 
 msgid "You must set a root password in order to be able to use network services, such as FTP, telnet or ssh."
 msgstr "Debe establecer una contraseña de root para poder utilizar los servicios de red, como FTP, telnet o ssh."
