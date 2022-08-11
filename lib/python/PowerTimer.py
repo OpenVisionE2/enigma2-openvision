@@ -329,7 +329,10 @@ class PowerTimerEntry(TimerEntry, object):
 			return "PowerTimerEntry(type=%s, begin=%s Disabled)" % (timertype, ctime(self.begin))
 
 	def log(self, code, msg):
-		self.log_entries.append((int(time()), code, msg))
+		if config.powertimerlog.actived.value:
+			self.log_entries.append((int(time()), code, msg))
+		else:
+			self.log_entries = []
 
 	def do_backoff(self):  # Back-off an auto-repeat timer by its autosleepdelay, not 5, 10, 20, 30 mins.
 		if self.autosleeprepeat == "repeated" and self.timerType in (TIMERTYPE.AUTOSTANDBY, TIMERTYPE.AUTODEEPSTANDBY):

@@ -28,32 +28,27 @@ class PowerTimerEditList(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.skinName = "TimerEditList"
-		Screen.setTitle(self, _("PowerTimer list"))
-
+		Screen.setTitle(self, _("PowerTimer List"))
 		self.onChangedEntry = []
 		list = []
 		self.list = list
 		self.fillTimerList()
-
 		self["timerlist"] = PowerTimerList(list)
-
 		self.key_red_choice = self.EMPTY
 		self.key_yellow_choice = self.EMPTY
 		self.key_blue_choice = self.EMPTY
-
 		self["key_red"] = StaticText("")
 		self["key_green"] = StaticText(_("Add"))
 		self["key_yellow"] = StaticText("")
 		self["key_blue"] = StaticText("")
 		self["key_info"] = StaticText("")
-
 		self["description"] = Label()
-
 		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ShortcutActions", "TimerEditActions"],
 			{
 				"ok": self.openEdit,
 				"cancel": self.leave,
 				"green": self.addCurrentTimer,
+				"blue": self.enableDisableTimerLog,
 				"log": self.showLog,
 				"left": self.left,
 				"right": self.right,
@@ -62,6 +57,12 @@ class PowerTimerEditList(Screen):
 			}, -1)
 		self.session.nav.PowerTimer.on_state_change.append(self.onStateChange)
 		self.onShown.append(self.updateState)
+
+	def enableDisableTimerLog(self):
+		config.powertimerlog.actived.value = False if config.powertimerlog.actived.value else True
+		text = _("Enable log") if not config.powertimerlog.actived.value else _("Disable log")
+		self["key_blue"].setText(text)
+		config.powertimerlog.actived.save()
 
 	def createSummary(self):
 		return PowerTimerEditListSummary
@@ -142,6 +143,8 @@ class PowerTimerEditList(Screen):
 			elif ((not cur.isRunning()) or cur.repeated) and (not cur.disabled) and (self.key_yellow_choice != self.DISABLE):
 				self["actions"].actions.update({"yellow": self.toggleDisabledState})
 				self["key_yellow"].setText(_("Disable"))
+				text = _("Enable log") if not config.powertimerlog.actived.value else _("Disable log")
+				self["key_blue"].setText(text)
 				self.key_yellow_choice = self.DISABLE
 				self["key_info"].setText("Info")
 		else:
