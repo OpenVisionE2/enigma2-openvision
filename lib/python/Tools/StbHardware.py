@@ -4,7 +4,6 @@ from os.path import exists, isfile
 from struct import pack, unpack
 from time import localtime, time, timezone
 
-from Components.SystemInfo import BoxInfo
 from Tools.Directories import fileReadLine, fileWriteLine
 
 MODULE_NAME = __name__.split(".")[-1]
@@ -57,10 +56,7 @@ def getFPVersion():
 	if isfile("/proc/stb/info/micomver"):
 		version = fileReadLine("/proc/stb/info/micomver", "unknown", source=MODULE_NAME)
 	elif isfile("/proc/stb/fp/version"):
-		if BoxInfo.getItem("platform") == "dm4kgen" or BoxInfo.getItem("model") in ("dm520", "dm7080", "dm820"):
-			version = fileReadLine("/proc/stb/fp/version", "unknown", source=MODULE_NAME)
-		else:
-			version = int(fileReadLine("/proc/stb/fp/version", "0", source=MODULE_NAME))
+		version = fileReadLine("/proc/stb/fp/version", "unknown", source=MODULE_NAME)
 	elif isfile("/sys/firmware/devicetree/base/bolt/tag"):
 		version = fileReadLine("/sys/firmware/devicetree/base/bolt/tag", "unknown", source=MODULE_NAME).rstrip("\0")
 	else:
