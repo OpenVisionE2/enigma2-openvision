@@ -3,13 +3,7 @@ from Screens.Screen import Screen
 from Components.Label import Label
 from enigma import eTimer, getDesktop, eActionMap, gFont
 from Components.ActionMap import ActionMap
-from Tools.PyVerHelper import getPyVS
-if getPyVS() >= 3:
-	from sys import maxsize
-	maximport = maxsize
-else: # Python 2
-	from sys import maxint
-	maximport = maxint
+from sys import maxsize
 import skin
 from os import sys
 
@@ -17,7 +11,7 @@ from os import sys
 class SubtitleDisplay(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		eActionMap.getInstance().bindAction('', -maximport - 1, self.__keypress)
+		eActionMap.getInstance().bindAction('', -maxsize - 1, self.__keypress)
 
 		self.messageShown = False
 		self['message'] = Label()
