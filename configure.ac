@@ -691,15 +691,11 @@ if test "$BOXTYPE" == "vuultimo4k"; then
 	AC_DEFINE(HAVE_COLORLCD800, 1,[define when using a 800x480 color display device])
 fi
 
-if test "$STBPLATFORM" == "vu1gen" -o "$STBPLATFORM" == "vu2gen"; then
-	AC_DEFINE(VMSG_TYPE1, 1,[define vtuner_message type 1])
-fi
-
 if test "$BOXTYPE" == "vuzero" -o "$STBPLATFORM" == "vu1gen" -o "$BOXTYPE" == "vusolose" -o "$BOXTYPE" == "vusolo2"; then
 	AC_DEFINE(FORCE_AUTO_INV, 1,[force Inversion auto for vuplus mipsel boxes])
 fi
 
-if test "$BOXBRAND" == "wetek" -o "$BOXTYPE" == "x8hp"; then
+if test "$BOXBRAND" == "wetek"; then
 	AC_DEFINE(KEY_F7_TO_KEY_MENU, 1,[define when rc sends a KEY_F7 event for its KEY_MENU])
 	AC_DEFINE(KEY_F1_TO_KEY_MEDIA, 1,[define when rc sends a KEY_F1 event for its KEY_MEDIA])
 	AC_DEFINE(KEY_HOME_TO_KEY_INFO, 1,[define when rc sends a KEY_HOME event for its KEY_INFO])

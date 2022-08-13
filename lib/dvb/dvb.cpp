@@ -502,7 +502,7 @@ eDVBUsbAdapter::eDVBUsbAdapter(int nr)
 		goto error;
 	}
 
-#if (_IOC_NONE == 0) && (!VMSG_TYPE1)
+#if _IOC_NONE == 0
 #define VTUNER_GET_MESSAGE  11
 #define VTUNER_SET_RESPONSE 12
 #define VTUNER_SET_NAME     13
