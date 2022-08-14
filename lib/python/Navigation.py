@@ -20,6 +20,10 @@ from os import path
 
 # TODO: remove pNavgation, eNavigation and rewrite this stuff in python.
 
+model = BoxInfo.getItem("model")
+brand = BoxInfo.getItem("brand")
+platform = BoxInfo.getItem("platform")
+
 
 class Navigation:
 	def __init__(self, nextRecordTimerAfterEventActionAuto=False, nextPowerManagerAfterEventActionAuto=False):
@@ -31,7 +35,7 @@ class Navigation:
 
 		import Navigation as Nav
 		Nav.navcore = self
-
+		Screens.Standby.TVstate()
 		self.pnav = pNavigation()
 		self.pnav.m_event.get().append(self.dispatchEvent)
 		self.pnav.m_record_event.get().append(self.dispatchRecordEvent)
@@ -73,10 +77,19 @@ class Navigation:
 					self.standbytimer = eTimer()
 					self.standbytimer.callback.append(self.gotostandby)
 					self.standbytimer.start(15000, True) # Time increse 15 second for standby.
+		wasTimerWakeup, wasTimerWakeup_failure = getFPWasTimerWakeup(True)
 		if config.misc.prev_wakeup_time.value:
 			config.misc.prev_wakeup_time.value = 0
 			config.misc.prev_wakeup_time.save()
 			configfile.save()
+		if not config.workaround.deeprecord.value and (wasTimerWakeup_failure or model in ('ixussone', 'uniboxhde', 'sezam5000hd', 'mbtwin', 'beyonwizt3', 'et8000') or brand in ('ebox', 'azbox', 'xp', 'ini', 'entwopia') or platform in ('dags7335', 'dags7356', 'dags7362')):
+			print("[Navigation] FORCED DEEPSTANDBY-WORKAROUND FOR (%s)" % model)
+			print("-" * 100)
+			config.workaround.deeprecord.setValue(True)
+			config.workaround.deeprecord.save()
+			config.save()
+		if Screens.Standby.TVinStandby.getTVstandby('waitfortimesync') and not wasTimerWakeup:
+			Screens.Standby.TVinStandby.setTVstate('power')
 
 	def _processTimerWakeup(self):
 		now = time()

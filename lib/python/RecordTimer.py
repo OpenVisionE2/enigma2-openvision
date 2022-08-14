@@ -979,17 +979,12 @@ class RecordTimerEntry(TimerEntry, object):
 				self.backoff = 100
 		self.log(10, "Backoff, retry in %d seconds." % self.backoff)
 
-	def sendactivesource(self):
-		if BoxInfo.getItem("HasHDMI-CEC") and config.hdmicec.enabled.value and config.hdmicec.sourceactive_zaptimers.value:
-			import Components.HdmiCec
-			Components.HdmiCec.hdmi_cec.sendMessage(0, "sourceactive")
-			print("[RecordTimer] Source active was sent.")
-
 	def activate(self):
 		next_state = self.state + 1
 		self.log(5, "Activating state %d." % next_state)
 		if next_state == self.StatePrepared:
 			if self.always_zap:
+				Screens.Standby.TVinStandby.skipHdmiCecNow('zapandrecordtimer')
 				if Screens.Standby.inStandby:
 					self.log(5, "Wakeup and zap to recording service.")
 					RecordTimerEntry.setWasInStandby()
@@ -997,7 +992,6 @@ class RecordTimerEntry(TimerEntry, object):
 					Screens.Standby.inStandby.paused_service = None
 					Screens.Standby.inStandby.Power()  # Wake up standby.
 				else:
-					self.sendactivesource()
 					if RecordTimerEntry.wasInDeepStandby:
 						RecordTimerEntry.setWasInStandby()
 					cur_ref = NavigationInstance.instance.getCurrentlyPlayingServiceReference()
@@ -1074,6 +1068,7 @@ class RecordTimerEntry(TimerEntry, object):
 			if self.cancelled:
 				return True
 			if self.justplay:
+				Screens.Standby.TVinStandby.skipHdmiCecNow('zaptimer')
 				if Screens.Standby.inStandby:
 					if RecordTimerEntry.wasInDeepStandby and self.zap_wakeup in ("always", "from_deep_standby") or self.zap_wakeup in ("always", "from_standby"):
 						self.log(11, "Wake up and zap.")
@@ -1082,7 +1077,6 @@ class RecordTimerEntry(TimerEntry, object):
 						Screens.Standby.inStandby.paused_service = None
 						Screens.Standby.inStandby.Power()  # Wake up standby.
 				else:
-					self.sendactivesource()
 					if RecordTimerEntry.wasInDeepStandby:
 						RecordTimerEntry.setWasInStandby()
 					notify = config.usage.show_message_when_recording_starts.value and self.InfoBarInstance and self.InfoBarInstance.execing

@@ -49,13 +49,7 @@ import datetime
 from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 # hack alert!
 from Screens.Menu import MainMenu, mdom
-from Tools.PyVerHelper import getPyVS
-if getPyVS() >= 3:
-	from sys import maxsize
-	maximport = maxsize
-else: # Python 2
-	from sys import maxint
-	maximport = maxint
+from sys import maxsize
 try:
 	import cPickle as pickle
 except:
@@ -224,7 +218,7 @@ class InfoBarDish:
 
 class InfoBarLongKeyDetection:
 	def __init__(self):
-		eActionMap.getInstance().bindAction('', -maximport - 1, self.detection) #highest prio
+		eActionMap.getInstance().bindAction('', -maxsize - 1, self.detection) #highest prio
 		self.LongButtonPressed = False
 
 	#this function is called on every keypress!
@@ -245,8 +239,8 @@ class InfoBarUnhandledKey:
 		self.checkUnusedTimer = eTimer()
 		self.checkUnusedTimer.callback.append(self.checkUnused)
 		self.onLayoutFinish.append(self.unhandledKeyDialog.hide)
-		eActionMap.getInstance().bindAction("", -maximport - 1, self.actionA)  # Highest priority.
-		eActionMap.getInstance().bindAction("", maximport, self.actionB)  # Lowest priority.
+		eActionMap.getInstance().bindAction("", -maxsize - 1, self.actionA)  # Highest priority.
+		eActionMap.getInstance().bindAction("", maxsize, self.actionB)  # Lowest priority.
 		self.flags = (1 << 1)
 		self.uflags = 0
 		self.sibIgnoreKeys = (
@@ -3395,7 +3389,7 @@ class InfoBarNotifications:
 				self.hide()
 				dlg.show()
 				self.notificationDialog = dlg
-				eActionMap.getInstance().bindAction('', -maximport - 1, self.keypressNotification)
+				eActionMap.getInstance().bindAction('', -maxsize - 1, self.keypressNotification)
 			else:
 				dlg = self.session.open(n[1], *n[2], **n[3])
 
@@ -3870,7 +3864,7 @@ class InfoBarPowersaver:
 		self.sleepTimer = eTimer()
 		self.sleepStartTime = 0
 		self.sleepTimer.callback.append(self.sleepTimerTimeout)
-		eActionMap.getInstance().bindAction('', -maximport - 1, self.keypress)
+		eActionMap.getInstance().bindAction('', -maxsize - 1, self.keypress)
 
 	def keypress(self, key, flag):
 		if flag:
@@ -4154,3 +4148,17 @@ class InfoBarHdmi2:
 			else:
 				self.hdmi_enabled_full = False
 				self.session.nav.playService(slist.servicelist.getCurrent())
+
+
+class InfoBarOpenOnTopHelper:
+	def __init__(self):
+		pass
+
+	def openInfoBarSession(self, session, option=None):
+		try:
+			if option is None:
+				self.session.open(session)
+			else:
+				self.session.open(session, option)
+		except Exception as e:
+			print("[InfoBarGenerics] [openInfoBarSession] Exception:", e)
