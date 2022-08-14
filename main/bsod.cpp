@@ -210,6 +210,7 @@ void bsodFatal(const char *component)
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
 		stringFromFile(f, "distro", "/etc/openvision/distro");
 		stringFromFile(f, "oe", "/etc/openvision/oe");
+		stringFromFile(f, "imagetype", "/etc/openvision/imagetype");
 		stringFromFile(f, "mediaservice", "/etc/openvision/mediaservice");
 		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
 		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");

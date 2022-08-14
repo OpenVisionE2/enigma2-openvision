@@ -11,10 +11,14 @@ wasTimerWakeup = None
 
 
 def getBoxProcType():
-	return fileReadLine("/proc/stb/info/type", "unknown", source=MODULE_NAME).strip().lower()
+	proctype = "unknown"
+	if isfile("/proc/stb/info/type"):
+		proctype = fileReadLine("/proc/stb/info/type", "unknown", source=MODULE_NAME).strip().lower()
+	return proctype
 
 
 def getBoxProc():
+	procmodel = "unknown"
 	if isfile("/proc/stb/info/hwmodel"):
 		procmodel = fileReadLine("/proc/stb/info/hwmodel", "unknown", source=MODULE_NAME)
 	elif isfile("/proc/stb/info/azmodel"):
@@ -37,6 +41,7 @@ def getBoxProc():
 
 
 def getHWSerial():
+	hwserial = "unknown"
 	if isfile("/proc/stb/info/sn"):
 		hwserial = fileReadLine("/proc/stb/info/sn", "unknown", source=MODULE_NAME)
 	elif isfile("/proc/stb/info/serial"):
@@ -49,10 +54,14 @@ def getHWSerial():
 
 
 def getBoxRCType():
-	return fileReadLine("/proc/stb/ir/rc/type", "unknown", source=MODULE_NAME).strip()
+	rctype = "unknown"
+	if isfile("/proc/stb/ir/rc/type"):
+		proctype = fileReadLine("/proc/stb/ir/rc/type", "unknown", source=MODULE_NAME).strip()
+	return rctype
 
 
 def getFPVersion():
+	version = "unknown"
 	if isfile("/proc/stb/info/micomver"):
 		version = fileReadLine("/proc/stb/info/micomver", "unknown", source=MODULE_NAME)
 	elif isfile("/proc/stb/fp/version"):
@@ -64,7 +73,6 @@ def getFPVersion():
 			with open("/dev/dbox/fp0") as fd:
 				version = ioctl(fd.fileno(), 0)
 		except (IOError, OSError) as err:
-			version = "unknown"
 			print("[StbHardware] Error %d: Unable to access '/dev/dbox/fp0', getFPVersion failed!  (%s)" % (err.errno, err.strerror))
 	return version
 
