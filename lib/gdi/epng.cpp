@@ -8,6 +8,10 @@
 #include <lib/gdi/pixmapcache.h>
 #include <unistd.h>
 
+#include <map>
+#include <string>
+#include <lib/base/elock.h>
+
 extern "C" {
 #include <jpeglib.h>
 }

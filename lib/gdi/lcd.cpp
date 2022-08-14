@@ -926,9 +926,11 @@ eDBoxLCD::eDBoxLCD()
 		    !access("/proc/stb/fp/oled_brightness", W_OK) )
 			lcd_type = 2;
 		lcdfd = open("/dev/dbox/lcd0", O_RDWR);
-	}
-	else
+	} else
+	{
+		eDebug("[eLCD] found OLED display!");
 		lcd_type = 1;
+	}
 
 	if (lcdfd < 0)
 		eDebug("[eLCD] No oled0 or lcd0 device found!");
@@ -1059,19 +1061,19 @@ int eDBoxLCD::setLED(int value, int option)
 	switch(option)
 	{
 		case LED_BRIGHTNESS:
-			eDebug("setLEDNormalState %d", value);
+			eDebug("[eLCD] setLEDNormalState %d", value);
 			if(ioctl(lcdfd, LED_IOCTL_BRIGHTNESS_NORMAL, (unsigned char)value) < 0)
-				eDebug("[LED] can't set led brightness");
+				eDebug("[eLCD] can't set led brightness");
 			break;
 		case LED_DEEPSTANDBY:
-			eDebug("setLEDBlinkingTime %d", value);
+			eDebug("[eLCD] setLEDBlinkingTime %d", value);
 			if(ioctl(lcdfd, LED_IOCTL_BRIGHTNESS_DEEPSTANDBY, (unsigned char)value) < 0)
-				eDebug("[LED] can't set led deep standby");
+				eDebug("[eLCD] can't set led deep standby");
 			break;
 		case LED_BLINKINGTIME:
-			eDebug("setLEDBlinkingTime %d", value);
+			eDebug("[eLCD] setLEDBlinkingTime %d", value);
 			if(ioctl(lcdfd, LED_IOCTL_BLINKING_TIME, (unsigned char)value) < 0)
-				eDebug("[LED] can't set led blinking time");
+				eDebug("[eLCD] can't set led blinking time");
 			break;
 	}
 	return(0);
