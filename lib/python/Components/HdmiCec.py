@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from datetime import datetime
 from os import remove, statvfs, uname
 from os.path import exists, isfile, join as pathjoin
-from six import PY3, ensure_binary
+from six import ensure_str
 from struct import pack
 from sys import maxsize
 from time import time
@@ -733,7 +733,7 @@ class HdmiCec:
 			elif message == "osdname":
 				cmd = 0x47
 				data = uname()[1]
-				data = ensure_binary(data[:14])
+				data = data[:14]
 			elif message == "poweractive":
 				cmd = 0x90
 				data = pack("B", 0x00)
@@ -759,15 +759,11 @@ class HdmiCec:
 				cmd = 0x8f
 			if cmd:
 				# TODO : Test
-				if PY3:
-					try:
-						data = data.decode("UTF-8")
-					except:
-						data = data.decode("ISO-8859-1")
+				data = ensure_str(data, encoding='UTF-8', errors='ignore')
 				if config.misc.DeepStandby.value: # no delay for messages before go in to deep-standby
 					if config.hdmicec.debug.value:
 						self.debugTx(address, cmd, data)
-					eHdmiCEC.getInstance().sendMessage(address, cmd, data, len(data))
+					eHdmiCEC.getInstance().sendMessage(address, cmd, str(data), len(data))
 				else:
 					self.queue.append((address, cmd, data))
 					if not self.wait.isActive():
@@ -778,7 +774,7 @@ class HdmiCec:
 			(address, cmd, data) = self.queue.pop(0)
 			if config.hdmicec.debug.value:
 				self.debugTx(address, cmd, data)
-			eHdmiCEC.getInstance().sendMessage(address, cmd, data, len(data))
+			eHdmiCEC.getInstance().sendMessage(address, cmd, str(data), len(data))
 			self.wait.start(int(config.hdmicec.minimum_send_interval.value), True)
 
 	def sendMessages(self, messages):
@@ -1026,8 +1022,6 @@ class HdmiCec:
 
 	def standby(self):
 		if not Screens.Standby.inStandby:
-			import NavigationInstance
-			NavigationInstance.instance.skipWakeup = True
 			from Screens.InfoBar import InfoBar
 			if InfoBar and InfoBar.instance:
 				self.CECwritedebug("[HdmiCec] go into standby...", True)
@@ -1099,15 +1093,11 @@ class HdmiCec:
 		elif keyEvent == 1 and keyCode in (113, 114, 115):
 			cmd = 0x45
 		if cmd:
-			if PY3:
-				try:
-					data = data.decode("UTF-8")
-				except:
-					data = data.decode("ISO-8859-1")
+			data = ensure_str(data, encoding='UTF-8', errors='ignore')
 
 			if config.hdmicec.debug.value:
 				self.debugTx(address, cmd, data)
-			eHdmiCEC.getInstance().sendMessage(self.volumeForwardingDestination, cmd, data, len(data))
+			eHdmiCEC.getInstance().sendMessage(self.volumeForwardingDestination, cmd, str(data), len(data))
 			return 1
 		else:
 			return 0
@@ -1360,16 +1350,12 @@ class HdmiCec:
 									data += pack("B", int(d or "0", 16))
 
 							# TODO: Test
-							if PY3:
-								try:
-									data = data.decode("UTF-8")
-								except:
-									data = data.decode("ISO-8859-1")
+							data = ensure_str(data, encoding='UTF-8', errors='ignore')
 
 							if config.hdmicec.debug.value:
 								self.debugTx(address, cmd, data)
 
-							eHdmiCEC.getInstance().sendMessage(address, cmd, data, len(data))
+							eHdmiCEC.getInstance().sendMessage(address, cmd, str(data), len(data))
 						self.cmdWaitTimer.startLongTimer(waittime)
 				except Exception as e:
 					self.CECwritedebug("[HdmiCec] CECcmdline - error: %s" % e, True)
