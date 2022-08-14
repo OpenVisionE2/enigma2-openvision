@@ -111,6 +111,15 @@ eServiceTS::~eServiceTS()
 
 DEFINE_REF(eServiceTS);
 
+static size_t crop(char *buf)
+{
+	size_t len = strlen(buf) - 1;
+	while (len > 0 && (buf[len] == '\r' || buf[len] == '\n')) {
+		buf[len--] = '\0';
+	}
+	return len;
+}
+
 static int getline(char** pbuffer, size_t* pbufsize, int fd)
 {
 	size_t i = 0;
@@ -286,7 +295,7 @@ RESULT eServiceTS::stop()
 
 void eServiceTS::recv_event(int evt)
 {
-	eDebug("[eServiceTS] eServiceTS::recv_event: %d", evt);
+	eDebug("[eServiceTS] recv_event: %d", evt);
 	switch (evt) {
 	case eStreamThread::evtEOS:
 		m_decodedemux->flush();

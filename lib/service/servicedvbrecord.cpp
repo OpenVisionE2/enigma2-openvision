@@ -212,7 +212,7 @@ int eDVBServiceRecord::doPrepare()
 		eDVBServicePMTHandler::serviceType servicetype;
 
 		if(tryFallbackTuner(/*REF*/m_ref, /*REF*/m_is_stream_client, m_is_pvr, m_simulate))
-			eDebug("[eDVBServiceRecord] ServiceRecord: fallback tuner selected");
+			eDebug("[eDVBServiceRecord] fallback tuner selected");
 
 		if (m_streaming)
 		{

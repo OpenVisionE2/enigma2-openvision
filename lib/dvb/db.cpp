@@ -140,16 +140,16 @@ RESULT eBouquet::flushChanges()
 		CFile f((filename + ".writing").c_str(), "w");
 		if (!f)
 			goto err;
-		if ( fprintf(f, "#NAME %s\n", m_bouquet_name.c_str()) < 0 )
+		if ( fprintf(f, "#NAME %s\r\n", m_bouquet_name.c_str()) < 0 )
 			goto err;
 		for (list::iterator i(m_services.begin()); i != m_services.end(); ++i)
 		{
 			eServiceReference tmp = *i;
 			std::string str = tmp.path;
-			if ( fprintf(f, "#SERVICE %s\n", tmp.toString().c_str()) < 0 )
+			if ( fprintf(f, "#SERVICE %s\r\n", tmp.toString().c_str()) < 0 )
 				goto err;
 			if ( i->name.length() )
-				if ( fprintf(f, "#DESCRIPTION %s\n", i->name.c_str()) < 0 )
+				if ( fprintf(f, "#DESCRIPTION %s\r\n", i->name.c_str()) < 0 )
 					goto err;
 		}
 		f.sync();
@@ -255,6 +255,7 @@ int eDVBService::isPlayable(const eServiceReference &ref, const eServiceReferenc
 
 		if (res_mgr->canAllocateChannel(chid, chid_ignore, system, simulate))
 		{
+//			std::string python_config_str;
 			bool use_ci_assignment = eConfigManager::getConfigBoolValue("config.misc.use_ci_assignment", false);
 			if (use_ci_assignment)
 			{
@@ -1129,6 +1130,8 @@ void eDVBDB::loadBouquet(const char *path)
 		{
 			int len;
 			if ((len = getline(&line, &linesize, fp)) < 2) break;
+			/* strip newline */
+//			line[--len] = 0;
 			/* strip newline (when found) */
 			if (line[len - 1] == '\n') line[--len] = 0;
 			/* strip carriage return (when found) */
@@ -1235,7 +1238,7 @@ void eDVBDB::reloadBouquets()
 	loadBouquet("bouquets.tv");
 	loadBouquet("bouquets.radio");
 	// create default bouquets when missing
-	if ( m_bouquets["bouquets.tv"].m_services.empty() )
+	if ( m_bouquets.find("userbouquet.favourites.tv") == m_bouquets.end() )
 	{
 		eBouquet &b = m_bouquets["userbouquet.favourites.tv"];
 		b.m_filename = "userbouquet.favourites.tv";
@@ -1250,7 +1253,7 @@ void eDVBDB::reloadBouquets()
 		parent.m_services.push_back(ref);
 		parent.flushChanges();
 	}
-	if ( m_bouquets["bouquets.radio"].m_services.empty() )
+	if ( m_bouquets.find("userbouquet.favourites.radio") == m_bouquets.end() )
 	{
 		eBouquet &b = m_bouquets["userbouquet.favourites.radio"];
 		b.m_filename = "userbouquet.favourites.radio";
