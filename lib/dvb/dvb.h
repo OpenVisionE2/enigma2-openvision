@@ -27,11 +27,7 @@ class eDVBRegisteredFrontend: public iObject, public sigc::trackable
 {
 	DECLARE_REF(eDVBRegisteredFrontend);
 	ePtr<eTimer> disable;
-	void closeFrontend()
-	{
-		if (!m_inuse && m_frontend->closeFrontend()) // frontend busy
-			disable->start(30000, true);  // retry close in 30secs
-	}
+	void closeFrontend();
 public:
 	sigc::signal0<void> stateChanged;
 	eDVBRegisteredFrontend(eDVBFrontend *fe, iDVBAdapter *adap)
