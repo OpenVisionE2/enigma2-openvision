@@ -169,13 +169,14 @@ def getImageList():
 				imageData = getSlotImageData(imageDir)
 				version = "%s " % imageData["imgversion"] if imageData.get("imgversion", None) else ""
 				revision = "%s " % imageData["imgrevision"] if imageData.get("imgrevision", None) and imageData.get("imgrevision", 0) != imageData.get("compiledate", 0) else ""
+				imgtype = "%s " % imageData["imagetype"] if imageData.get("imagetype", None) else ""
 				date = str(imageData["compiledate"])
 				if imageData.get("compiledate", 0) == 0:
 					date = ""
 				else:
 					date = str(imageData["compiledate"])
 					date = " (%s-%s-%s)" % (date[0:4], date[4:6], date[6:8])
-				imageList[slot] = {"imagename": "%s %s%s%s" % (imageData.get("displaydistro", imageData.get("distro", _("Unknown"))), version, revision, date)}
+				imageList[slot] = {"imagename": "%s %s%s%s%s" % (imageData.get("displaydistro", imageData.get("distro", _("Unknown"))), version, revision, imgtype, date)}
 			elif isfile(pathjoin(imageDir, "usr/bin/enigma2.bak")):
 				imageList[slot] = {"imagename": _("Deleted image")}
 			else:
