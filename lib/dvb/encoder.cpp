@@ -59,12 +59,17 @@ eEncoder::eEncoder()
 
 		for(int index = 0; index < 4; index++) // increase this if machines appear with more than 4 encoding engines
 		{
-			char filename[64];
+			char filename[256];
 
 			snprintf(filename, sizeof(filename), "/proc/stb/encoder/%d/decoder", index);
 
 			if (CFile::parseInt(&decoder_index, filename) < 0)
-				break;
+			{
+				// VU+ 
+				snprintf(filename, sizeof(filename), "/proc/stb/encoder/%d/demux", index);
+				if (CFile::parseInt(&decoder_index, filename) < 0)
+					break;
+			}
 
 			/* the connected video decoder for "Xtrend" transcoding / encoding or for Broadcom HDMI recording */
 			if((navigation_instance_normal = new eNavigation(service_center, decoder_index)) == nullptr)
@@ -193,8 +198,12 @@ int eEncoder::allocateEncoder(const std::string &serviceref, int &buffersize,
 		}
 	}
 
-	snprintf(filename, sizeof(filename), "/proc/stb/encoder/%d/apply", encoder_index);
-	CFile::writeInt(filename, 1);
+	if(!bcm_encoder) {
+
+		snprintf(filename, sizeof(filename), "/proc/stb/encoder/%d/apply", encoder_index);
+		CFile::writeInt(filename, 1);
+
+	}
 
 	if(source_file.empty())
 		encoder[encoder_index].file_fd = -1;

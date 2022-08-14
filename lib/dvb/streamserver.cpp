@@ -219,7 +219,8 @@ void eStreamClient::notifier(int what)
 						int interlaced = 0;
 						int aspectratio = 0;
 						int buffersize;
-						std::string vcodec, acodec;
+						std::string vcodec = "h264";
+						std::string acodec = "aac";
 
 						sscanf(request.substr(pos).c_str(), "&bitrate=%d", &bitrate);
 						pos = request.find("&width=");
