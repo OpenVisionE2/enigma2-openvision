@@ -11,7 +11,7 @@ class EnigmaLog:
 
 	def write(self, data):
 		from six import ensure_str
-		data = ensure_str(data.encode(encoding="UTF-8", errors="ignore"))
+		data = ensure_str(data, encoding="UTF-8", errors="ignore")
 		self.line += data
 		if "\n" in data:
 			ePythonOutput(self.line, self.level)
