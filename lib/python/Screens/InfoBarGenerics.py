@@ -4154,18 +4154,6 @@ class InfoBarOpenOnTopHelper:
 	def __init__(self):
 		pass
 
-	def openInfoBarMessage(self, message, messageboxtyp, timeout=-1):
-		try:
-			self.session.open(MessageBox, message, messageboxtyp, timeout=timeout)
-		except Exception as e:
-			print("[InfoBarGenerics] InfoBarOpenMessage Exception:", e)
-
-	def openInfoBarMessageWithCallback(self, callback, message, messageboxtyp, timeout=-1, default=True):
-		try:
-			self.session.openWithCallback(callback, MessageBox, message, messageboxtyp, timeout=timeout, default=default)
-		except Exception as e:
-			print("[InfoBarGenerics] openInfoBarMessageWithCallback Exception:", e)
-
 	def openInfoBarSession(self, session, option=None):
 		try:
 			if option is None:
@@ -4173,4 +4161,4 @@ class InfoBarOpenOnTopHelper:
 			else:
 				self.session.open(session, option)
 		except Exception as e:
-			print("[InfoBarGenerics] openInfoBarSession Exception:", e)
+			print("[InfoBarGenerics] [openInfoBarSession] Exception:", e)
