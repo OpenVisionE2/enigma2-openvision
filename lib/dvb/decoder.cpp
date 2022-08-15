@@ -1160,25 +1160,12 @@ int eTSMPEGDecoder::setState()
 		int *s = state_table[m_state];
 		if (changed & (changeState|changeVideo) && m_video)
 		{
-// see comment below
 			m_video->setSlowMotion(s[1]);
 			m_video->setFastForward(s[2]);
 			if (s[0])
 				m_video->unfreeze();
 			else
 				m_video->freeze();
-// the VIDEO_CONTINUE would reset the FASTFORWARD  command so we
-// execute the FASTFORWARD after the VIDEO_CONTINUE
-			if (s[1])
-			{
-				m_video->setFastForward(s[2]);
-				m_video->setSlowMotion(s[1]);
-			}
-			else
-			{
-				m_video->setSlowMotion(s[1]);
-				m_video->setFastForward(s[2]);
-			}
 		}
 		if (changed & (changeState|changeAudio) && m_audio)
 		{
