@@ -24,6 +24,7 @@
 #include <lib/base/estring.h>
 #include <lib/dvb/dvb.h>
 #include <lib/dvb/db.h>
+#include <lib/python/python.h>
 #include <errno.h>
 #include "absdiff.h"
 
@@ -456,7 +457,7 @@ void eDVBScan::PMTready(int err)
 			if (pcrpid == 0xFFFF)
 				pcrpid = pmt.getPcrPid();
 			else
-				SCAN_eDebug("[eDVBScan]   already have a pcrpid %04x %04x", pcrpid, pmt.getPcrPid());
+				SCAN_eDebug("[eDVBScan] already have a pcrpid %04x %04x", pcrpid, pmt.getPcrPid());
 			ElementaryStreamInfoConstIterator es;
 			for (es = pmt.getEsInfo()->begin(); es != pmt.getEsInfo()->end(); ++es)
 			{
@@ -683,11 +684,11 @@ void eDVBScan::addChannelToScan(iDVBFrontendParameters *feparm)
 			if (!found_count)
 			{
 				*i = feparm;  // update
-				SCAN_eDebug("[eDVBScan]   update");
+				SCAN_eDebug("[eDVBScan] update");
 			}
 			else
 			{
-				SCAN_eDebug("[eDVBScan]   remove dupe");
+				SCAN_eDebug("[eDVBScan] remove dupe");
 				m_ch_toScan.erase(i++);
 				continue;
 			}
@@ -698,7 +699,7 @@ void eDVBScan::addChannelToScan(iDVBFrontendParameters *feparm)
 
 	if (found_count > 0)
 	{
-		SCAN_eDebug("[eDVBScan]   already in todo list");
+		SCAN_eDebug("[eDVBScan] already in todo list");
 		return;
 	}
 
@@ -706,7 +707,7 @@ void eDVBScan::addChannelToScan(iDVBFrontendParameters *feparm)
 	for (std::list<ePtr<iDVBFrontendParameters> >::const_iterator i(m_ch_scanned.begin()); i != m_ch_scanned.end(); ++i)
 		if (sameChannel(*i, feparm))
 		{
-			SCAN_eDebug("[eDVBScan]   successfully scanned");
+			SCAN_eDebug("[eDVBScan] successfully scanned");
 			return;
 		}
 
@@ -714,18 +715,18 @@ void eDVBScan::addChannelToScan(iDVBFrontendParameters *feparm)
 	for (std::list<ePtr<iDVBFrontendParameters> >::const_iterator i(m_ch_unavailable.begin()); i != m_ch_unavailable.end(); ++i)
 		if (sameChannel(*i, feparm, true))
 		{
-			SCAN_eDebug("[eDVBScan]   scanned but not available");
+			SCAN_eDebug("[eDVBScan] scanned but not available");
 			return;
 		}
 
 		/* ... on the current channel */
 	if (sameChannel(m_ch_current, feparm))
 	{
-		SCAN_eDebug("[eDVBScan]   is current");
+		SCAN_eDebug("[eDVBScan] is current");
 		return;
 	}
 
-	SCAN_eDebug("[eDVBScan]   really add");
+	SCAN_eDebug("[eDVBScan] really add");
 		/* otherwise, add it to the todo list. */
 	m_ch_toScan.push_front(feparm); // better.. then the rotor not turning wild from east to west :)
 }
@@ -1621,14 +1622,14 @@ RESULT eDVBScan::processSDT(eDVBNamespace dvbnamespace, const ServiceDescription
 					service->genSortName();
 
 					service->m_provider_name = strip_non_graph(convertDVBUTF8(d.getServiceProviderName(),-1,tsonid,0));
-					SCAN_eDebug("[eDVBScan]   name '%s', provider_name '%s'", service->m_service_name.c_str(), service->m_provider_name.c_str());
+					SCAN_eDebug("[eDVBScan] name '%s', provider_name '%s'", service->m_service_name.c_str(), service->m_provider_name.c_str());
 					break;
 				}
 				case CA_IDENTIFIER_DESCRIPTOR:
 				{
 					CaIdentifierDescriptor &d = (CaIdentifierDescriptor&)**desc;
 					const CaSystemIdList &caids = *d.getCaSystemIds();
-					SCAN_eDebugNoNewLineStart("[eDVBScan]   CA");
+					SCAN_eDebugNoNewLineStart("[eDVBScan] CA");
 					for (CaSystemIdList::const_iterator i(caids.begin()); i != caids.end(); ++i)
 					{
 						SCAN_eDebugNoNewLine(" %04x", *i);
@@ -1638,7 +1639,7 @@ RESULT eDVBScan::processSDT(eDVBNamespace dvbnamespace, const ServiceDescription
 					break;
 				}
 				default:
-					SCAN_eDebug("[eDVBScan]   descr<%x>", (*desc)->getTag());
+					SCAN_eDebug("[eDVBScan] descr<%x>", (*desc)->getTag());
 					break;
 				}
 			}
@@ -1744,7 +1745,7 @@ RESULT eDVBScan::processVCT(eDVBNamespace dvbnamespace, const VirtualChannelTabl
 					break;
 				}
 				default:
-					SCAN_eDebug("[eDVBScan]   descr<%x>", (*desc)->getTag());
+					SCAN_eDebug("[eDVBScan] descr<%x>", (*desc)->getTag());
 					break;
 				}
 			}

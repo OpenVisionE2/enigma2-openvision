@@ -269,7 +269,7 @@ sync:
 		else
 #endif
 			ret = ::read(m_fd, tmp, 192);
-		if (ret < 192)
+		if (ret < 0 || ret < 192)
 			return rd ? rd : ret;
 
 		if (tmp[4] != 0x47)
@@ -294,7 +294,7 @@ sync:
 				eDebugNoNewLine("\n");
 				x=0;
 #else
-				// eDebug("[eM2TSFile] m2ts out of sync at pos %jd, real %jd", (intmax_t)(offset + m_sync_offset), (intmax_t)m_current_offset);
+				eTrace("[eM2TSFile] m2ts out of sync at pos %jd, real %jd", (intmax_t)(offset + m_sync_offset), (intmax_t)m_current_offset);
 #endif
 				for (; x < 192; ++x)
 				{

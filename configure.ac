@@ -483,6 +483,7 @@ fi
 if test "$BOXBRAND" == "dreambox"; then
 	AC_DEFINE(DREAMBOX, 1, [Dreambox hardware])
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
+#	AC_DEFINE(HAVE_FREEZE, 1, [define when freeze workaround is needed])
 fi
 
 if test "$STBPLATFORM" == "dmamlogic"; then
