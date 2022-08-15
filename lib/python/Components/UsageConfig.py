@@ -1506,7 +1506,22 @@ def InitUsageConfig():
 	config.subtitles.colourise_dialogs = ConfigYesNo(default=False)
 	config.subtitles.subtitle_borderwidth = ConfigSelection(default="3", choices=["%d" % x for x in range(1, 6)])
 	config.subtitles.subtitle_fontsize = ConfigSelection(default="40", choices=["%d" % x for x in range(16, 101) if not x % 2])
-	config.subtitles.showbackground = ConfigYesNo(default=False)
+
+	backtrans = [
+		("0", _("No transparency")),
+		("12", "5%"),
+		("25", "10%"),
+		("38", "15%"),
+		("50", "20%"),
+		("75", "30%"),
+		("100", "40%"),
+		("125", "50%"),
+		("150", "60%"),
+		("175", "70%"),
+		("200", "80%"),
+		("225", "90%"),
+		("255", _("Full transparency"))]
+	config.subtitles.subtitle_backtrans = ConfigSelection(default="255", choices=backtrans)
 
 	subtitle_delay_choicelist = []
 	for i in range(-900000, 1845000, 45000):

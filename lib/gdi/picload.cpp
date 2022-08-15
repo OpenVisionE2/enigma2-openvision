@@ -5,6 +5,7 @@
 #include <lib/base/cfile.h>
 #include <lib/base/wrappers.h>
 #include <lib/gdi/picload.h>
+#include <lib/gdi/picexif.h>
 
 extern "C" {
 #define HAVE_BOOLEAN
@@ -18,6 +19,8 @@ extern "C" {
 #include <nanosvg.h>
 #define NANOSVGRAST_IMPLEMENTATION
 #include <nanosvgrast.h>
+
+#include <Python.h>
 
 extern const uint32_t crc32_table[256];
 
@@ -176,7 +179,7 @@ static unsigned char *bmp_load(const char *file,  int *x, int *y)
 			{
 				if (read(fd, tbuffer, (*x) / 2 + *x % 2) != ((*x) / 2 + *x % 2))
 				{
-					eDebug("[ePicLoad] failed to read %d bytes...", ((*x) / 2 + *x % 2));
+					eTrace("[ePicLoad] failed to read %d bytes...", ((*x) / 2 + *x % 2));
 				}
 				int j;
 				for (j = 0; j < (*x) / 2; j++)
@@ -201,7 +204,7 @@ static unsigned char *bmp_load(const char *file,  int *x, int *y)
 				{
 					if (read(fd, buff, skip) != skip)
 					{
-						eDebug("[ePicLoad] failed to read %d bytes...", skip);
+						eTrace("[ePicLoad] failed to read %d bytes...", skip);
 					}
 				}
 				wr_buffer -= (*x) * 6;
@@ -223,7 +226,7 @@ static unsigned char *bmp_load(const char *file,  int *x, int *y)
 			{
 				if (read(fd, tbuffer, *x) != *x)
 				{
-					eDebug("[ePicLoad] failed to read %d bytes...", *x);
+					eTrace("[ePicLoad] failed to read %d bytes...", *x);
 				}
 				for (int j = 0; j < *x; j++)
 				{
@@ -235,7 +238,7 @@ static unsigned char *bmp_load(const char *file,  int *x, int *y)
 				{
 					if (read(fd, buff, skip) != skip)
 					{
-						eDebug("[ePicLoad] failed to skip %d bytes...", skip);
+						eTrace("[ePicLoad] failed to skip %d bytes...", skip);
 					}
 				}
 				wr_buffer -= (*x) * 3;
@@ -251,7 +254,7 @@ static unsigned char *bmp_load(const char *file,  int *x, int *y)
 			{
 				if (read(fd, wr_buffer, (*x) * 3) != ((*x) * 3))
 				{
-					eDebug("[ePicLoad] failed to read %d bytes...", ((*x) * 3));
+					eTrace("[ePicLoad] failed to read %d bytes...", ((*x) * 3));
 				}
 				for (int j = 0; j < (*x) * 3 ; j = j + 3)
 				{
@@ -263,7 +266,7 @@ static unsigned char *bmp_load(const char *file,  int *x, int *y)
 				{
 					if (read(fd, buff, skip) != skip)
 					{
-						eDebug("[ePicLoad] failed to skip %d bytes...", skip);
+						eTrace("[ePicLoad] failed to skip %d bytes...", skip);
 					}
 				}
 				wr_buffer -= (*x) * 3;
@@ -294,16 +297,21 @@ static void png_load(Cfilepara* filepara, int background, bool forceRGB=false)
 
 	png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 	if (png_ptr == NULL)
+	{
+		eTrace("[ePicLoad] Error png_create_read_struct");
 		return;
+	}
 	png_infop info_ptr = png_create_info_struct(png_ptr);
 	if (info_ptr == NULL)
 	{
+		eTrace("[ePicLoad] Error png_create_info_struct");
 		png_destroy_read_struct(&png_ptr, (png_infopp)NULL, (png_infopp)NULL);
 		return;
 	}
 
 	if (setjmp(png_jmpbuf(png_ptr)))
 	{
+		eTrace("[ePicLoad] Error setjmp");
 		png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
 		return;
 	}
@@ -779,14 +787,14 @@ void ePicLoad::thread()
 	hasStarted();
 	if (nice(4))
 	{
-		eDebug("[ePicLoad] thread failed to modify scheduling priority (%m)");
+		eTrace("[ePicLoad] thread failed to modify scheduling priority (%m)");
 	}
 	runLoop();
 }
 
 void ePicLoad::decodePic()
 {
-	// eDebug("[ePicLoad] decode picture... %s", m_filepara->file);
+	eTrace("[ePicLoad] decode picture... %s", m_filepara->file);
 
 	getExif(m_filepara->file, m_filepara->id);
 	switch(m_filepara->id)
@@ -806,7 +814,7 @@ void ePicLoad::decodePic()
 
 void ePicLoad::decodeThumb()
 {
-	// eDebug("[ePicLoad] get Thumbnail... %s", m_filepara->file);
+	eTrace("[ePicLoad] get Thumbnail... %s", m_filepara->file);
 
 	bool exif_thumbnail = false;
 	bool cachefile_found = false;
@@ -822,7 +830,7 @@ void ePicLoad::decodeThumb()
 			m_filepara->file = strdup(THUMBNAILTMPFILE);
 			m_filepara->id = F_JPEG; // imbedded thumbnail seem to be jpeg
 			exif_thumbnail = true;
-		//	eDebug("[ePicLoad] decodeThumb: Exif Thumbnail found");
+			eTrace("[ePicLoad] decodeThumb: Exif Thumbnail found");
 		}
 		//else
 		//	eDebug("[ePicLoad] decodeThumb: NO Exif Thumbnail found");
@@ -865,7 +873,7 @@ void ePicLoad::decodeThumb()
 				free(m_filepara->file);
 				m_filepara->file = strdup(cachefile.c_str());
 				m_filepara->id = F_JPEG;
-			//	eDebug("[ePicLoad] Cache File %s found", cachefile.c_str());
+				eTrace("[ePicLoad] Cache File %s found", cachefile.c_str());
 			}
 		}
 	}
@@ -933,7 +941,7 @@ void ePicLoad::gotMessage(const Message &msg)
 			msg_main.send(Message(Message::decode_finished));
 			break;
 		case Message::quit: // called from decode thread
-			// eDebug("[ePicLoad] decode thread ... got quit msg");
+			eTrace("[ePicLoad] decode thread ... got quit msg");
 			quit(0);
 			break;
 		case Message::decode_finished: // called from main thread
@@ -963,7 +971,7 @@ int ePicLoad::startThread(int what, const char *file, int x, int y, bool async)
 {
 	if(async && threadrunning && m_filepara != NULL)
 	{
-		// eDebug("[ePicLoad] thread running");
+		eTrace("[ePicLoad] thread running");
 		m_filepara->callback = false;
 		return 1;
 	}
@@ -1406,7 +1414,12 @@ RESULT ePicLoad::setPara(PyObject *val)
 		ePyObject fast		= PySequence_Fast(val, "");
 		int width		= PyInt_AsLong(PySequence_Fast_GET_ITEM(fast, 0));
 		int height		= PyInt_AsLong(PySequence_Fast_GET_ITEM(fast, 1));
-		double aspectRatio 	= PyInt_AsLong(PySequence_Fast_GET_ITEM(fast, 2));
+		ePyObject pas = PySequence_Fast_GET_ITEM(fast, 2);
+#if PY_MAJOR_VERSION < 3
+		double aspectRatio 	= PyInt_AsLong(pas);
+#else
+		double aspectRatio 	= PyFloat_Check(pas) ? PyFloat_AsDouble(pas) : PyLong_AsDouble(pas); 
+#endif
 		int as			= PyInt_AsLong(PySequence_Fast_GET_ITEM(fast, 3));
 		bool useCache		= PyInt_AsLong(PySequence_Fast_GET_ITEM(fast, 4));
 		int resizeType	        = PyInt_AsLong(PySequence_Fast_GET_ITEM(fast, 5));
