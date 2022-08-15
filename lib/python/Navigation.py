@@ -31,7 +31,7 @@ class Navigation:
 
 		import Navigation as Nav
 		Nav.navcore = self
-
+		Screens.Standby.TVstate()
 		self.pnav = pNavigation()
 		self.pnav.m_event.get().append(self.dispatchEvent)
 		self.pnav.m_record_event.get().append(self.dispatchRecordEvent)

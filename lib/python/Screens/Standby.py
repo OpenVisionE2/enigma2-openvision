@@ -21,6 +21,7 @@ from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceRefe
 
 inStandby = None
 infoBarInstance = None
+TVinStandby = None
 
 model = BoxInfo.getItem("displaymodel")
 brand = BoxInfo.getItem("displaybrand")
@@ -38,6 +39,66 @@ QUIT_UPGRADE_PROGRAM = 42
 QUIT_IMAGE_RESTORE = 43
 QUIT_UPGRADE_FPANEL = 44
 QUIT_WOL = 45
+
+
+class TVstate: #load in Navigation
+	def __init__(self):
+		global TVinStandby
+		if TVinStandby is not None:
+			print("[Standby] only one TVstate instance is allowed!")
+		TVinStandby = self
+
+		try:
+			import Components.HdmiCec
+			self.hdmicec_instance = Components.HdmiCec.hdmi_cec.instance
+			self.hdmicec_ok = self.hdmicec_instance and config.hdmicec.enabled.value
+		except:
+			self.hdmicec_ok = False
+
+		if not self.hdmicec_ok:
+			print('[Standby] HDMI-CEC is not enabled or unavailable!')
+
+	def skipHdmiCecNow(self, value):
+		if self.hdmicec_ok:
+			if value is True or value is False:
+				self.hdmicec_instance.tv_skip_messages = value
+			elif 'zaptimer' in value:
+				self.hdmicec_instance.tv_skip_messages = config.hdmicec.control_tv_wakeup.value and not config.hdmicec.tv_wakeup_zaptimer.value and inStandby
+			elif 'zapandrecordtimer' in value:
+				self.hdmicec_instance.tv_skip_messages = config.hdmicec.control_tv_wakeup.value and not config.hdmicec.tv_wakeup_zapandrecordtimer.value and inStandby
+			elif 'wakeuppowertimer' in value:
+				self.hdmicec_instance.tv_skip_messages = config.hdmicec.control_tv_wakeup.value and not config.hdmicec.tv_wakeup_wakeuppowertimer.value and inStandby
+
+	def getTVstandby(self, value):
+		if self.hdmicec_ok:
+			if 'zaptimer' in value:
+				return config.hdmicec.control_tv_wakeup.value and not config.hdmicec.tv_wakeup_zaptimer.value
+			elif 'zapandrecordtimer' in value:
+				return config.hdmicec.control_tv_wakeup.value and not config.hdmicec.tv_wakeup_zapandrecordtimer.value
+			elif 'wakeuppowertimer' in value:
+				return config.hdmicec.control_tv_wakeup.value and not config.hdmicec.tv_wakeup_wakeuppowertimer.value
+		return False
+
+	def getTVstate(self, value):
+		if self.hdmicec_ok:
+			if not config.hdmicec.check_tv_state.value or self.hdmicec_instance.sendMessagesIsActive():
+				return False
+			elif value == 'on':
+				return value in self.hdmicec_instance.tv_powerstate and config.hdmicec.control_tv_standby.value
+			elif value == 'standby':
+				return value in self.hdmicec_instance.tv_powerstate and config.hdmicec.control_tv_wakeup.value
+			elif value == 'active':
+				return 'on' in self.hdmicec_instance.tv_powerstate and self.hdmicec_instance.activesource
+			elif value == 'notactive':
+				return 'standby' in self.hdmicec_instance.tv_powerstate or not self.hdmicec_instance.activesource
+		return False
+
+	def setTVstate(self, value):
+		if self.hdmicec_ok:
+			if value == 'on' or (value == 'power' and config.hdmicec.handle_deepstandby_events.value and not self.hdmicec_instance.handleTimer.isActive()):
+				self.hdmicec_instance.wakeupMessages()
+			elif value == 'standby':
+				self.hdmicec_instance.standbyMessages()
 
 
 def isInfoBarInstance():
@@ -397,13 +458,6 @@ class TryQuitMainloop(MessageBox):
 				if not inStandby:
 					if os.path.exists("/usr/script/standby_enter.sh"):
 						Console().ePopen("/usr/script/standby_enter.sh")
-					if BoxInfo.getItem("HasHDMI-CEC") and config.hdmicec.enabled.value and config.hdmicec.control_tv_standby.value and config.hdmicec.next_boxes_detect.value:
-						import Components.HdmiCec
-						Components.HdmiCec.hdmi_cec.secondBoxActive()
-						self.delay = eTimer()
-						self.delay.timeout.callback.append(self.quitMainloop)
-						self.delay.start(1500, True)
-						return
 			elif not inStandby:
 				config.misc.RestartUI.value = True
 				config.misc.RestartUI.save()

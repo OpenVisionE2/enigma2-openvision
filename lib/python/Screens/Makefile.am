@@ -19,6 +19,7 @@ install_PYTHON = \
 	FlashImage.py \
 	Globals.py \
 	HarddiskSetup.py \
+	HDMICEC.py \
 	HelpMenu.py \
 	Hotkey.py \
 	InfoBar.py \
