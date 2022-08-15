@@ -77,8 +77,6 @@ class TVstate: #load in Navigation
 				return config.hdmicec.control_tv_wakeup.value and not config.hdmicec.tv_wakeup_zapandrecordtimer.value
 			elif 'wakeuppowertimer' in value:
 				return config.hdmicec.control_tv_wakeup.value and not config.hdmicec.tv_wakeup_wakeuppowertimer.value
-			elif 'waitfortimesync' in value:
-				return config.hdmicec.control_tv_wakeup.value and not (config.hdmicec.deepstandby_waitfortimesync.value)
 		return False
 
 	def getTVstate(self, value):
