@@ -919,16 +919,54 @@ eDBoxLCD::eDBoxLCD()
 	inverted = 0;
 	lcd_type = 0;
 #ifndef NO_LCD
-	lcdfd = open("/dev/dbox/oled0", O_RDWR);
+	FILE *boxtype_file;
+	FILE *fp_file;
+	char fp_version[20];
+	snprintf(boxtype_name, sizeof(boxtype_name), "unknown");
+	if((boxtype_file = fopen("/etc/openvision/architecture", "r")) != NULL)
+	{
+		fgets(boxtype_name, sizeof(boxtype_name), boxtype_file);
+		fclose(boxtype_file);
+	}
+	if((strcmp(boxtype_name, "unknown") != 0))
+	{
+		if((strcmp(boxtype_name, "sh4\n") == 0))
+		{
+				if((fp_file = fopen("/proc/stb/fp/version", "r")) != NULL)
+				{
+					fgets(fp_version, sizeof(fp_version), fp_file);
+					fclose(fp_file);
+				}
+				if(strcmp(fp_version, "4\n") == 0)
+				{
+					lcdfd = open("/dev/null", O_RDWR);
+				}
+				else
+				{
+					lcdfd = open("/dev/dbox/oled0", O_RDWR);
+				}
+		}		
+		else
+		{
+			lcdfd = open("/dev/dbox/oled0", O_RDWR);
+		}		
+	}	
+	else
+	{
+		lcdfd = open("/dev/dbox/oled0", O_RDWR);
+	}
+
 	if (lcdfd < 0)
 	{
 		if (!access("/proc/stb/lcd/oled_brightness", W_OK) ||
 		    !access("/proc/stb/fp/oled_brightness", W_OK) )
 			lcd_type = 2;
 		lcdfd = open("/dev/dbox/lcd0", O_RDWR);
-	}
-	else
+	} else
+	{
+		eDebug("[eLCD] found OLED display!");
 		lcd_type = 1;
+	}
 
 	if (lcdfd < 0)
 		eDebug("[eLCD] No oled0 or lcd0 device found!");
@@ -1059,19 +1097,19 @@ int eDBoxLCD::setLED(int value, int option)
 	switch(option)
 	{
 		case LED_BRIGHTNESS:
-			eDebug("setLEDNormalState %d", value);
+			eDebug("[eLCD] setLEDNormalState %d", value);
 			if(ioctl(lcdfd, LED_IOCTL_BRIGHTNESS_NORMAL, (unsigned char)value) < 0)
-				eDebug("[LED] can't set led brightness");
+				eDebug("[eLCD] can't set led brightness");
 			break;
 		case LED_DEEPSTANDBY:
-			eDebug("setLEDBlinkingTime %d", value);
+			eDebug("[eLCD] setLEDBlinkingTime %d", value);
 			if(ioctl(lcdfd, LED_IOCTL_BRIGHTNESS_DEEPSTANDBY, (unsigned char)value) < 0)
-				eDebug("[LED] can't set led deep standby");
+				eDebug("[eLCD] can't set led deep standby");
 			break;
 		case LED_BLINKINGTIME:
-			eDebug("setLEDBlinkingTime %d", value);
+			eDebug("[eLCD] setLEDBlinkingTime %d", value);
 			if(ioctl(lcdfd, LED_IOCTL_BLINKING_TIME, (unsigned char)value) < 0)
-				eDebug("[LED] can't set led blinking time");
+				eDebug("[eLCD] can't set led blinking time");
 			break;
 	}
 	return(0);
