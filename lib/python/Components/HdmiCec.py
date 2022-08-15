@@ -64,7 +64,6 @@ for i in (5, 10, 30, 60, 120, 300, 600, 900, 1800, 3600):
 	else:
 		choicelist.append((str(i), _("%d min") % (i / 60)))
 config.hdmicec.handle_tv_delaytime = ConfigSelection(default="0", choices=[("0", _("None"))] + choicelist)
-config.hdmicec.deepstandby_waitfortimesync = ConfigYesNo(default=True)
 config.hdmicec.tv_wakeup_zaptimer = ConfigYesNo(default=True)
 config.hdmicec.tv_wakeup_zapandrecordtimer = ConfigYesNo(default=True)
 config.hdmicec.tv_wakeup_wakeuppowertimer = ConfigYesNo(default=True)
@@ -1008,11 +1007,11 @@ class HdmiCec:
 	def deepstandby(self):
 		import NavigationInstance
 		now = time()
-		recording = NavigationInstance.instance.getRecordingsCheckBeforeActivateDeepStandby()
-		rectimer = abs(NavigationInstance.instance.RecordTimer.getNextRecordingTime() - now) <= 900 or NavigationInstance.instance.RecordTimer.getStillRecording() or abs(NavigationInstance.instance.RecordTimer.getNextZapTime() - now) <= 900
-		pwrtimer = abs(NavigationInstance.instance.PowerTimer.getNextPowerManagerTime() - now) <= 900 or NavigationInstance.instance.PowerTimer.isProcessing(exceptTimer=0) or not NavigationInstance.instance.PowerTimer.isAutoDeepstandbyEnabled()
-		if recording or rectimer or pwrtimer:
-			self.CECwritedebug("[HdmiCec] go not into deepstandby... recording=%s, rectimer=%s, pwrtimer=%s" % (recording, rectimer, pwrtimer), True)
+		recording = NavigationInstance.instance._processTimerWakeup()
+		rectimer = abs(NavigationInstance.instance.__nextRecordTimerAfterEventActionAuto and NavigationInstance.instance.RecordTimer.getNextRecordingTime() - now) <= 360
+		powertimer = abs(NavigationInstance.instance.PowerTimer.getNextPowerManagerTime() - now) <= 360
+		if recording or rectimer or powertimer:
+			self.CECwritedebug("[HdmiCec] go not into deepstandby... recording=%s, rectimer=%s, powertimer=%s" % (recording, rectimer, powertimer), True)
 			self.standby()
 		else:
 			from Screens.InfoBar import InfoBar
