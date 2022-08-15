@@ -13,6 +13,8 @@
 #endif
 #include <lib/gdi/glcddc.h>
 
+#define DM9X0_LCD_Y_OFFSET 4
+
 eLCD *eLCD::instance;
 
 eLCD::eLCD()
@@ -30,10 +32,13 @@ eLCD *eLCD::getInstance()
 
 void eLCD::setSize(int xres, int yres, int bpp)
 {
-	res = eSize(xres, yres);
+	_stride = xres * bpp / 8;
 	_buffer = new unsigned char[xres * yres * bpp/8];
-	memset(_buffer, 0, res.height() * res.width() * bpp / 8);
-	_stride = res.width() * bpp / 8;
+	if((strcmp(platform_name, "dm4kgen\n") == 0))
+		xres -= DM9X0_LCD_Y_OFFSET;
+		eDebug("[eLCD] platform: %s", platform_name);
+	res = eSize(xres, yres);
+	memset(_buffer, 0, xres * yres * bpp / 8);
 	eDebug("[eLCD] (%dx%dx%d) buffer %p %d bytes, stride %d", xres, yres, bpp, _buffer, xres * yres * bpp / 8, _stride);
 }
 
@@ -919,18 +924,24 @@ eDBoxLCD::eDBoxLCD()
 	inverted = 0;
 	lcd_type = 0;
 #ifndef NO_LCD
-	FILE *boxtype_file;
+	FILE *platform_file;
+	FILE *architecture_file;
 	FILE *fp_file;
-	char fp_version[20];
-	snprintf(boxtype_name, sizeof(boxtype_name), "unknown");
-	if((boxtype_file = fopen("/etc/openvision/architecture", "r")) != NULL)
+	snprintf(platform_name, sizeof(platform_name), "unknown");
+	if((platform_file = fopen("/etc/openvision/platform", "r")) != NULL)
 	{
-		fgets(boxtype_name, sizeof(boxtype_name), boxtype_file);
-		fclose(boxtype_file);
+		fgets(platform_name, sizeof(platform_name), platform_file);
+		fclose(platform_file);
 	}
-	if((strcmp(boxtype_name, "unknown") != 0))
+	snprintf(architecture_name, sizeof(architecture_name), "unknown");
+	if((architecture_file = fopen("/etc/openvision/architecture", "r")) != NULL)
 	{
-		if((strcmp(boxtype_name, "sh4\n") == 0))
+		fgets(architecture_name, sizeof(architecture_name), architecture_file);
+		fclose(architecture_file);
+	}
+	if((strcmp(architecture_name, "unknown") != 0))
+	{
+		if((strcmp(architecture_name, "sh4\n") == 0))
 		{
 				if((fp_file = fopen("/proc/stb/fp/version", "r")) != NULL)
 				{
@@ -1006,11 +1017,16 @@ eDBoxLCD::eDBoxLCD()
 			lcd_type = 3;
 		}
 		eDebug("[eLCD] xres=%d, yres=%d, bpp=%d lcd_type=%d", xres, yres, bpp, lcd_type);
-
-		instance = this;
-		setSize(xres, yres, bpp);
 	}
 #endif
+	if (FILE * file = fopen("/proc/stb/lcd/right_half", "w"))
+	{
+		fprintf(file,"skin");
+		fclose(file);
+	}
+	instance=this;
+
+	setSize(xres, yres, bpp);
 }
 
 void eDBoxLCD::setInverted(unsigned char inv)
@@ -1051,7 +1067,9 @@ int eDBoxLCD::setLCDContrast(int contrast)
 	}
 
 	if(ioctl(lcdfd, LCD_IOCTL_SRV, &contrast) < 0)
-		eDebug("[eLCD] can't set lcd contrast: %m");
+	{
+		eDebug("[eLCD] can't set lcd contrast");
+	}
 	close(fp);
 #endif
 	return(0);
@@ -1063,7 +1081,7 @@ int eDBoxLCD::setLCDBrightness(int brightness)
 	if (lcdfd < 0)
 		return(0);
 
-	eDebug("[eLCD] setLCDBrightness %d", brightness);
+	eTrace("[eLCD] setLCDBrightness %d", brightness);
 	FILE *f = fopen("/proc/stb/lcd/oled_brightness", "w");
 	if (!f)
 		f = fopen("/proc/stb/fp/oled_brightness", "w");
@@ -1139,7 +1157,7 @@ void eDBoxLCD::dumpLCD2PNG(void)
 		switch(bpp)
 		{
 			case 8:
-				eDebug("[eLCD] 8 bit not supportet yet");
+				eDebug("[eLCD] 8 bit not supported yet");
 				break;
 			case 16:
 				{
@@ -1171,10 +1189,10 @@ void eDBoxLCD::dumpLCD2PNG(void)
 				}
 				break;
 			case 32:
-				eDebug("[eLCD]  32 bit not supportet yet");
+				eDebug("[eLCD] 32 bit not supported yet");
 				break;
 			default:
-				eDebug("[eLCD] %d bit not supportet yet",bpp);
+				eDebug("[eLCD] %d bit not supported yet",bpp);
 		}
 	}
 }
@@ -1230,22 +1248,59 @@ void eDBoxLCD::update()
 			write(lcdfd, raw, _stride * height);
 		}
 		else
-#if !defined(DREAMBOX_MOVE_LCD)
-			write(lcdfd, _buffer, _stride * res.height());
-#else
 		{
-			unsigned char gb_buffer[_stride * res.height()];
-			for (int offset = 0; offset < ((_stride * res.height())>>2); offset ++)
+			FILE *file;
+			if((strcmp(platform_name, "dm4kgen\n") == 0))
 			{
-				unsigned int src = 0;
-				if (offset%(_stride>>2) >= 4) // 4 is offset for dm9x0
-					src = ((unsigned int*)_buffer)[offset - 4];  
-			//                                             blue                         red                  green low                     green high
-			((unsigned int*)gb_buffer)[offset] = ((src >> 3) & 0x001F001F) | ((src << 3) & 0xF800F800) | ((src >> 8) & 0x00E000E0) | ((src << 8) & 0x07000700);
+				unsigned char gb_buffer[_stride * res.height()];
+				for (int offset = 0; offset < ((_stride * res.height())>>2); offset ++)
+				{
+					unsigned int src = 0;
+					if (offset%(_stride>>2) >= DM9X0_LCD_Y_OFFSET)
+						src = ((unsigned int*)_buffer)[offset - DM9X0_LCD_Y_OFFSET];
+					//                                             blue                         red                  green low                     green high
+					((unsigned int*)gb_buffer)[offset] = ((src >> 3) & 0x001F001F) | ((src << 3) & 0xF800F800) | ((src >> 8) & 0x00E000E0) | ((src << 8) & 0x07000700);
+				}
+				write(lcdfd, gb_buffer, _stride * res.height());
+				if (file != NULL)
+				{
+					fclose(file);
+				}
 			}
-			write(lcdfd, gb_buffer, _stride * res.height());
-		}
+#ifdef LCD_COLOR_BITORDER_RGB565
+			else if((file = fopen("/etc/openvision/model", "r")) != NULL)
+			{
+				//gggrrrrrbbbbbggg bit order from memory
+				//gggbbbbbrrrrrggg bit order to LCD
+				unsigned char gb_buffer[_stride * res.height()];
+				if(! (0x03 & (_stride * res.height())))
+				{//fast
+					for (int offset = 0; offset < ((_stride * res.height())>>2); offset ++)
+					{
+						unsigned int src = ((unsigned int*)_buffer)[offset];
+						((unsigned int*)gb_buffer)[offset] = src & 0xE007E007 | (src & 0x1F001F00) >>5 | (src & 0x00F800F8) << 5;
+					}
+				}
+				else
+				{//slow
+					for (int offset = 0; offset < _stride * res.height(); offset += 2)
+					{
+						gb_buffer[offset] = (_buffer[offset] & 0x07) | ((_buffer[offset + 1] << 3) & 0xE8);
+						gb_buffer[offset + 1] = (_buffer[offset + 1] & 0xE0)| ((_buffer[offset] >> 3) & 0x1F);
+					}
+				}
+				write(lcdfd, gb_buffer, _stride * res.height());
+				if (file != NULL)
+				{
+					fclose(file);
+				}
+			}
 #endif
+			else
+			{
+				write(lcdfd, _buffer, _stride * res.height());
+			}
+		}
 	}
 	else /* lcd_type == 1 */
 	{
