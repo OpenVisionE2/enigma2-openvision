@@ -919,7 +919,43 @@ eDBoxLCD::eDBoxLCD()
 	inverted = 0;
 	lcd_type = 0;
 #ifndef NO_LCD
-	lcdfd = open("/dev/dbox/oled0", O_RDWR);
+	FILE *boxtype_file;
+	FILE *fp_file;
+	char fp_version[20];
+	snprintf(boxtype_name, sizeof(boxtype_name), "unknown");
+	if((boxtype_file = fopen("/etc/openvision/architecture", "r")) != NULL)
+	{
+		fgets(boxtype_name, sizeof(boxtype_name), boxtype_file);
+		fclose(boxtype_file);
+	}
+	if((strcmp(boxtype_name, "unknown") != 0))
+	{
+		if((strcmp(boxtype_name, "sh4\n") == 0))
+		{
+				if((fp_file = fopen("/proc/stb/fp/version", "r")) != NULL)
+				{
+					fgets(fp_version, sizeof(fp_version), fp_file);
+					fclose(fp_file);
+				}
+				if(strcmp(fp_version, "4\n") == 0)
+				{
+					lcdfd = open("/dev/null", O_RDWR);
+				}
+				else
+				{
+					lcdfd = open("/dev/dbox/oled0", O_RDWR);
+				}
+		}		
+		else
+		{
+			lcdfd = open("/dev/dbox/oled0", O_RDWR);
+		}		
+	}	
+	else
+	{
+		lcdfd = open("/dev/dbox/oled0", O_RDWR);
+	}
+
 	if (lcdfd < 0)
 	{
 		if (!access("/proc/stb/lcd/oled_brightness", W_OK) ||
