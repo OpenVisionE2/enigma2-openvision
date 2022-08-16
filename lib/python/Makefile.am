@@ -14,4 +14,5 @@ install_PYTHON = \
 	skin.py \
 	StartEnigma.py \
 	timer.py \
-	PowerTimer.py
+	PowerTimer.py \
+	Remote.py
