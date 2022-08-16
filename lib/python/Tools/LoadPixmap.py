@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from enigma import loadPNG, loadJPG, loadSVG, getDesktop
+from enigma import loadPNG, loadJPG, loadSVG, loadGIF, getDesktop
 
 # If cached is not supplied, LoadPixmap defaults to caching PNGs and not caching JPGs
 # Split alpha channel JPGs are never cached as the C++ layer's caching is based on
@@ -10,6 +10,9 @@ def LoadPixmap(path, desktop=None, cached=None, width=0, height=0):
 	if path[-4:] == ".png":
 		# cache unless caller explicity requests to not cache
 		ptr = loadPNG(path, 0, 0 if not cached else 1)
+	elif path[-4:] == ".gif":
+		# don't cache unless caller explicity requests caching
+		ptr = loadGIF(path, 1 if cached else 0)
 	elif path[-4:] == ".jpg":
 		# don't cache unless caller explicity requests caching
 		ptr = loadJPG(path, 1 if cached else 0)
@@ -21,7 +24,7 @@ def LoadPixmap(path, desktop=None, cached=None, width=0, height=0):
 		alpha = loadPNG(path + "a.png", 0, 0)
 		ptr = loadJPG(path + "rgb.jpg", alpha, 0)
 	else:
-		raise Exception(_("Neither .png nor .jpg nor .svg, please fix file extension"))
+		raise Exception(_("Neither .png nor .jpg nor .svg nor .gif!"))
 	if ptr and desktop:
 		desktop.makeCompatiblePixmap(ptr)
 	return ptr
