@@ -4,7 +4,6 @@ from Components.VariableText import VariableText
 from Components.VariableValue import VariableValue
 
 from enigma import iPlayableService, eLabel, eSlider, eTimer
-from six import iteritems
 
 
 class PerServiceBase(object):
@@ -32,6 +31,7 @@ class PerServiceBase(object):
 			self.navcore.event.append(PerServiceBase.event)
 
 		EventMap = EventMap.setdefault
+		from six import iteritems
 		for x in iteritems(eventmap):
 			EventMap(x[0], []).append((with_event, x[1]))
 
@@ -45,6 +45,7 @@ class PerServiceBase(object):
 
 	def destroy(self):
 		EventMap = PerServiceBase.EventMap.setdefault
+		from six import iteritems
 		for x in iteritems(self.eventmap):
 			EventMap(x[0], []).remove((self.with_event, x[1]))
 

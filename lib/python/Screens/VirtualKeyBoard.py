@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from copy import copy, deepcopy
-from six import PY2
+from six import PY2, PY3
 
 from enigma import BT_SCALE, RT_HALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_BOTTOM, RT_VALIGN_CENTER, RT_VALIGN_TOP, eListboxPythonMultiContent, getDesktop, getPrevAsciiCode, gFont
 
@@ -1023,9 +1023,9 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=1, flags=alignH | alignV, text=key.encode("UTF-8", "ignore"), color=self.shiftColors[self.shiftLevel]))
 					elif not len(key) > 1 and PY2:
 						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=0, flags=alignH | alignV, text=key.encode("UTF-8", "ignore"), color=self.shiftColors[self.shiftLevel]))
-					elif len(key) > 1 and not PY2:  # NOTE: UTF8 / Unicode glyphs only count as one character here.
+					elif len(key) > 1 and PY3:  # NOTE: UTF8 / Unicode glyphs only count as one character here.
 						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=1, flags=alignH | alignV, text=key, color=self.shiftColors[self.shiftLevel]))
-					elif not len(key) > 1 and not PY2:
+					elif not len(key) > 1 and PY3:
 						text.append(MultiContentEntryText(pos=(xData, self.padding[1]), size=(w, h), font=0, flags=alignH | alignV, text=key, color=self.shiftColors[self.shiftLevel]))
 			prevKey = key
 			self.index += 1
@@ -1080,9 +1080,9 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 			self["text"].char(text.encode("UTF-8", "ignore"))
 		elif cmd != None and PY2:
 			exec(cmd)
-		elif cmd == None and not PY2:
+		elif cmd == None and PY3:
 			self["text"].char(text)
-		elif cmd != None and not PY2:
+		elif cmd != None and PY3:
 			exec(cmd)
 		if text not in (u"SHIFT", u"SHIFTICON") and self.shiftHold != -1:
 			self.shiftRestore()

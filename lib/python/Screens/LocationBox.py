@@ -414,8 +414,8 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 			self.selectByStart()
 			self.quickSelectPos += 1
 		char = self.getKey(digit)  # Get char and append to text.
-		from six import PY2
-		self.quickSelect = self.quickSelect[:self.quickSelectPos] + (unicode(char) if PY2 else str(char))
+		from six import text_type
+		self.quickSelect = self.quickSelect[:self.quickSelectPos] + text_type(char)
 		self["quickselect"].setText(self.quickSelect)
 		self["quickselect"].visible = True
 		self.timerType = 0

@@ -81,6 +81,7 @@ class VAudioInfo(Poll, Converter, object):
 		return description_str
 
 	def get_short(self, audioName):
+		from six import iteritems
 		for return_codec, codecs in sorted(iteritems(self.codecs)):
 			for codec in codecs:
 				if codec in audioName:

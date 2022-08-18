@@ -50,10 +50,7 @@ from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 # hack alert!
 from Screens.Menu import MainMenu, mdom
 from sys import maxsize
-try:
-	import cPickle as pickle
-except:
-	import pickle
+from six.moves import cPickle as pickle
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -3520,14 +3517,14 @@ class InfoBarCueSheetSupport:
 		return service.seek()
 
 	def cueGetCurrentPosition(self):
-		from six import PY2
+		from six import integer_types
 		seek = self.__getSeekable()
 		if seek is None:
 			return None
 		r = seek.getPlayPosition()
 		if r[0]:
 			return None
-		return long(r[1]) if PY2 else int(r[1])
+		return integer_types(r[1])
 
 	def cueGetEndCutPosition(self):
 		ret = False

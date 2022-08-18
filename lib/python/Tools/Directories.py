@@ -3,7 +3,7 @@ from errno import ENOENT, EXDEV
 from os import F_OK, R_OK, W_OK, access, chmod, link, listdir, makedirs, mkdir, readlink, remove, rename, rmdir, sep, stat, statvfs, symlink, utime, walk
 from os.path import basename, dirname, exists, getsize, isdir, isfile, islink, join as pathjoin, normpath, splitext
 from re import compile
-from six import PY2
+from six import PY2, text_type
 from shutil import copy2
 from stat import S_IMODE
 from sys import _getframe as getframe
@@ -391,7 +391,7 @@ def getRecordingFilename(basename, dirname=None):
 	# but must not truncate in the middle of a multi-byte utf8 character!
 	# So convert the truncation to unicode and back, ignoring errors, the
 	# result will be valid utf8 and so xml parsing will be OK.
-	filename = unicode(filename[:247], "UTF8", "ignore").encode("UTF8", "ignore") if PY2 else filename[:247]
+	filename = text_type(filename[:247], "UTF8", "ignore").encode("UTF8", "ignore") if PY2 else filename[:247]
 	if dirname is None:
 		dirname = defaultRecordingLocation()
 	else:

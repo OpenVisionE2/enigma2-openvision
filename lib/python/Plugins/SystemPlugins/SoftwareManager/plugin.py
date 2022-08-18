@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import time
-try:
-	import cPickle as pickle
-except:
-	import pickle
+from six.moves import cPickle as pickle
 from Plugins.Plugin import PluginDescriptor
 from Screens.Console import Console
 from Screens.ChoiceBox import ChoiceBox

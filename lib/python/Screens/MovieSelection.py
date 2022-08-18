@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-try:
-	from cPickle import dump, load
-except:
-	from pickle import dump, load
+from six.moves.cPickle import dump, load
 from os import W_OK, access, listdir, mkdir, rename, rmdir, stat
 from os.path import abspath, basename, exists, isdir, isfile, join as pathjoin, normpath, pardir, realpath, split, splitext
 from time import time

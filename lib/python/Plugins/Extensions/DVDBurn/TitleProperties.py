@@ -149,10 +149,10 @@ from Tools.ISO639 import LanguageCodes
 class LanguageChoices():
 	def __init__(self):
 		from Components.Language import language as syslanguage
-		from six import iteritems
 		syslang = syslanguage.getLanguage()[:2]
 		self.langdict = {}
 		self.choices = []
+		from six import iteritems
 		for key, val in iteritems(LanguageCodes):
 			if len(key) == 2:
 				self.langdict[key] = val[0]
@@ -170,6 +170,7 @@ class LanguageChoices():
 		DVB_lang = DVB_lang.lower()
 		for word in ("stereo", "audio", "description", "2ch", "dolby digital"):
 			DVB_lang = DVB_lang.replace(word, "").strip()
+		from six import iteritems
 		for key, val in iteritems(LanguageCodes):
 			if DVB_lang.find(key.lower()) == 0:
 				if len(key) == 2:

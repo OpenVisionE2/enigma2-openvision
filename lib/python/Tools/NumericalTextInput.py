@@ -278,5 +278,5 @@ class NumericalTextInput:
 		return self.mapping[num][self.pos]
 
 	def setUseableChars(self, useable):
-		from six import PY2
-		self.useableChars = unicode(useable) if PY2 else str(useable)
+		from six import text_type
+		self.useableChars = text_type(useable)

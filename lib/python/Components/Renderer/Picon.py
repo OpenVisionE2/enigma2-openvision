@@ -95,11 +95,11 @@ class PiconLocator:
 			pngname = self.findPicon('_'.join(fields))
 		if not pngname: # picon by channel name
 			name = ServiceReference(serviceName).getServiceName()
-			from six import PY2
+			from six import PY2, text_type
 			if PY2:
-				name = unicodedata.normalize('NFKD', unicode(name, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+				name = unicodedata.normalize('NFKD', text_type(name, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			else:
-				name = unicodedata.normalize('NFKD', str(name)).encode('ASCII', 'ignore').decode('ASCII', 'ignore')
+				name = unicodedata.normalize('NFKD', text_type(name)).encode('ASCII', 'ignore').decode('ASCII', 'ignore')
 			name = re.sub('[^a-z0-9]', '', name.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 			if len(name) > 0:
 				pngname = self.findPicon(name)

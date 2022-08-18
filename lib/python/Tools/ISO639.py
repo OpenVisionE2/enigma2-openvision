@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-try:
-	import cPickle as pickle
-except:
-	import pickle
-import enigma
+from six.moves import cPickle as pickle
+from enigma import eEnv
 from six import PY2
 
-with open(enigma.eEnv.resolve("${datadir}/enigma2/iso-639-3.pck"), 'rb') as f:
+with open(eEnv.resolve("${datadir}/enigma2/iso-639-3.pck"), 'rb') as f:
 	if PY2:
 		LanguageCodes = pickle.load(f)
 	else:
