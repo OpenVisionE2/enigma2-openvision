@@ -3517,14 +3517,14 @@ class InfoBarCueSheetSupport:
 		return service.seek()
 
 	def cueGetCurrentPosition(self):
-		from six import integer_types
+		from six import PY2
 		seek = self.__getSeekable()
 		if seek is None:
 			return None
 		r = seek.getPlayPosition()
 		if r[0]:
 			return None
-		return integer_types(r[1])
+		return long(r[1]) if PY2 else int(r[1])
 
 	def cueGetEndCutPosition(self):
 		ret = False
