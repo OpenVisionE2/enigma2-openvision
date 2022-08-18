@@ -198,13 +198,9 @@ class PictureInPicture(Screen):
 				if not config.usage.hide_zap_errors.value:
 					AddPopup(text="PiP...\n" + _("Connected transcoding, limit - no PiP!"), type=MessageBox.TYPE_ERROR, timeout=5, id="ZapPipError")
 				return False
-			if ref and "4097" in ref.toString():
-				self.pipservice = None
-				self.currentService = None
-				self.currentServiceReference = None
-				if not config.usage.hide_zap_errors.value:
-					AddPopup(text=_("Service type 4097 incorrect for PiP!"), type=MessageBox.TYPE_ERROR, timeout=5, id="ZapPipError")
-				return False
+			if ref.toString().startswith("4097"):
+				#Change to service type 1 and try to play a stream as type 1
+				ref = eServiceReference("1" + ref.toString()[4:])
 			if self.isPlayableForPipService(ref):
 				print("[PictureInPicture] playing pip service", ref and ref.toString())
 			self.pipservice = eServiceCenter.getInstance().play(ref)
