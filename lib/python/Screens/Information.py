@@ -38,6 +38,10 @@ from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSer
 
 MODULE_NAME = __name__.split(".")[-1]
 
+#servicemp3 = "/var/lib/opkg/info/enigma2-plugin-systemplugins-servicemp3.control"
+#serviceapp = "/var/lib/opkg/info/enigma2-plugin-systemplugins-serviceapp.control"
+#servicehisilicon = "/var/lib/opkg/info/enigma2-plugin-systemplugins-servicehisilicon.control"
+
 INFO_COLORS = ["N", "H", "P", "V", "M"]
 INFO_COLOR = {
 	"B": None,
@@ -627,13 +631,17 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("Last update"), formatDate("%s%s%s" % (compileDate[:4], compileDate[4:6], compileDate[6:]))))
 		info.append(formatLine("P1", _("Enigma2 (re)starts"), config.misc.startCounter.value))
 		info.append(formatLine("P1", _("Enigma2 debug level"), eGetEnigmaDebugLvl()))
-		if isPluginInstalled("ServiceApp") and config.plugins.serviceapp.servicemp3.replace.value or isPluginInstalled("ServiceApp") and BoxInfo.getItem("HiSilicon") and not config.plugins.serviceapp.servicemp3.replace.value:
-			mediaService = "ServiceApp"
-		elif BoxInfo.getItem("HiSilicon") and isPluginInstalled("ServiceHisilicon") and not isPluginInstalled("ServiceApp"):
+		if isPluginInstalled("ServiceHisilicon") and not isPluginInstalled("ServiceMP3"):
 			mediaService = "ServiceHisilicon"
-		else:
+		elif isPluginInstalled("ServiceMP3") and not isPluginInstalled("ServiceHisilicon"):
 			mediaService = "ServiceMP3"
+		else:
+			mediaService = _("Unknown")
+		if isPluginInstalled("ServiceApp"):
+			extraService = "ServiceApp"
 		info.append(formatLine("P1", _("Media service player"), "%s") % mediaService)
+		if extraService == "ServiceApp":
+			info.append(formatLine("P1", _("Extra service player"), "%s") % extraService)
 		info.append("")
 		info.append(formatLine("H", _("Software information")))
 		info.append("")
