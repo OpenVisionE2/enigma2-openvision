@@ -425,6 +425,7 @@ AM_CONDITIONAL(HAVE_GRAUTEC8000, test "$BOXTYPE" == "dm8000")
 
 if test "$STBPLATFORM" == "7000s" -o "$STBPLATFORM" == "7100s" -o "$BOXTYPE" == "twinboxlcdci5" -o "$STBPLATFORM" == "7210s" -o "$BOXTYPE" == "sf238" -o "$BOXTYPE" == "odin2hybrid" -o "$BOXTYPE" == "odinplus"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
+#	AC_DEFINE(LCD_COLOR_BITORDER_RGB565, 1,[define when lcd uses RGB565 bitorder])
 fi
 
 if test "$STBPLATFORM" == "8100s"; then
@@ -481,6 +482,7 @@ fi
 
 if test "$BOXBRAND" == "dreambox"; then
 	AC_DEFINE(DREAMBOX, 1, [Dreambox hardware])
+#	AC_DEFINE(HAVE_FREEZE, 1, [define when freeze workaround is needed])
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 fi
 
