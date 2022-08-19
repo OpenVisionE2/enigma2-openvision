@@ -21,7 +21,10 @@ import os
 
 config.misc.firstrun = ConfigBoolean(default=True)
 config.misc.languageselected = ConfigBoolean(default=True)
-config.misc.do_overscanwizard = ConfigBoolean(default=OverscanWizard)
+if config.misc.firstrun.value == 0:
+	config.misc.do_overscanwizard = ConfigBoolean(default=False)
+else:
+	config.misc.do_overscanwizard = ConfigBoolean(default=OverscanWizard)
 
 
 class StartWizard(WizardLanguage, ShowRemoteControl):
