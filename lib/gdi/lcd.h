@@ -33,6 +33,9 @@ protected:
 	int locked;
 	static eLCD *instance;
 	void setSize(int xres, int yres, int bpp);
+#ifdef EXTRA_LCD_CHECK
+	char architecture_name[20];
+	char fp_version[20];
 #endif
 public:
 	static eLCD *getInstance();
