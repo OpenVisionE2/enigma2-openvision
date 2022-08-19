@@ -41,6 +41,16 @@ void eLCD::setSize(int xres, int yres, int bpp)
 	eDebug("[eLCD] (%dx%dx%d) buffer %p %d bytes, stride %d", xres, yres, bpp, _buffer, xres * yres * bpp / 8, _stride);
 }
 #else
+#ifdef LCD_COLOR_BITORDER_RGB565
+void eLCD::setSize(int xres, int yres, int bpp)
+{
+	_stride = xres * bpp / 8;
+	_buffer = new unsigned char[xres * yres * bpp/8];
+	res = eSize(xres, yres);
+	memset(_buffer, 0, xres * yres * bpp / 8);
+	eDebug("[eLCD] (%dx%dx%d) buffer %p %d bytes, stride %d", xres, yres, bpp, _buffer, xres * yres * bpp / 8, _stride);
+}
+#else
 void eLCD::setSize(int xres, int yres, int bpp)
 {
 	res = eSize(xres, yres);
@@ -49,6 +59,7 @@ void eLCD::setSize(int xres, int yres, int bpp)
 	_stride = res.width() * bpp / 8;
 	eDebug("[eLCD] (%dx%dx%d) buffer %p %d bytes, stride %d", xres, yres, bpp, _buffer, xres * yres * bpp / 8, _stride);
 }
+#endif
 #endif
 eLCD::~eLCD()
 {
