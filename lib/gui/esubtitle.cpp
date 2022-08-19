@@ -119,7 +119,7 @@ void eSubtitleWidget::setPage(const eDVBTeletextSubtitlePage &p)
 
 void eSubtitleWidget::setPage(const eDVBSubtitlePage &p)
 {
-	//eDebug("[eSubtitleWidget] setPage");
+	eTrace("[eSubtitleWidget] setPage");
 	m_dvb_page = p;
 	invalidate(m_visible_region); // invalidate old visible regions
 	m_visible_region.rects.clear();
@@ -157,7 +157,7 @@ void eSubtitleWidget::setPage(const eDVBSubtitlePage &p)
 			}
 		}
 		eDebug("[eSubtitleWidget] add %d %d %d %d", it->m_position.x(), it->m_position.y(), it->m_pixmap->size().width(), it->m_pixmap->size().height());
-		//eDebug("[eSubtitleWidget] disp width %d, disp height %d", p.m_display_size.width(), p.m_display_size.height());
+		eTrace("[eSubtitleWidget] disp width %d, disp height %d", p.m_display_size.width(), p.m_display_size.height());
 		eRect r = eRect(it->m_position, it->m_pixmap->size());
 		r.scale(size().width(), p.m_display_size.width(), size().height(), p.m_display_size.height());
 		m_visible_region |= r;
@@ -312,6 +312,7 @@ int eSubtitleWidget::event(int event, void *data, void *data2)
 
 		int borderwidth = eConfigManager::getConfigIntValue("config.subtitles.subtitle_borderwidth", 2) * getDesktop(0)->size().width()/1280;
 		int fontsize = eConfigManager::getConfigIntValue("config.subtitles.subtitle_fontsize", 34) * getDesktop(0)->size().width()/1280;
+		int bcktrans = eConfigManager::getConfigIntValue("config.subtitles.subtitle_backtrans", 255);
 
 		if (m_pixmap)
 		{
@@ -332,7 +333,7 @@ int eSubtitleWidget::event(int event, void *data, void *data2)
 				if (!element.m_text.empty())
 				{
 					eRect &area = element.m_area;
-					if (eConfigManager::getConfigBoolValue("config.subtitles.showbackground"))
+					if (bcktrans != 255)
 					{
 						ePtr<eTextPara> para = new eTextPara(area);
 						para->setFont(subtitleStyles[Subtitle_TTX].font);
@@ -356,7 +357,7 @@ int eSubtitleWidget::event(int event, void *data, void *data2)
 							bbox.setHeight(bboxHeight);
 							area.setTop(area.top() - borderwidth);
 						}
-						painter.setForegroundColor(gRGB(0,0,0,64));
+						painter.setForegroundColor(gRGB(0,0,0,bcktrans));
 						painter.fill(bbox);
 						borderwidth = 0;
 					}
@@ -429,7 +430,7 @@ int eSubtitleWidget::event(int event, void *data, void *data2)
 				subtitleStyles[face].font->pointSize=fontsize;
 				painter.setFont(subtitleStyles[face].font);
 				eRect &area = element.m_area;
-				if (eConfigManager::getConfigBoolValue("config.subtitles.showbackground"))
+				if (bcktrans != 255)
 				{
 					ePtr<eTextPara> para = new eTextPara(area);
 					para->setFont(subtitleStyles[face].font);
@@ -448,7 +449,7 @@ int eSubtitleWidget::event(int event, void *data, void *data2)
 					bbox.setTop(bboxTop);
 					bbox.setHeight(bboxHeight);
 					area.setTop(area.top() - borderwidth);
-					painter.setForegroundColor(gRGB(0,0,0,64));
+					painter.setForegroundColor(gRGB(0,0,0,bcktrans));
 					painter.fill(bbox);
 					borderwidth = 0;
 				}
