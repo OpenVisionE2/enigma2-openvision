@@ -12,7 +12,9 @@
 	#include <lib/base/estring.h>
 #endif
 #include <lib/gdi/glcddc.h>
-
+#ifdef DM9X0_LCD
+#define DM9X0_LCD_Y_OFFSET 4
+#endif
 eLCD *eLCD::instance;
 
 eLCD::eLCD()
@@ -27,7 +29,28 @@ eLCD *eLCD::getInstance()
 {
 	return instance;
 }
-
+#ifdef DM9X0_LCD
+void eLCD::setSize(int xres, int yres, int bpp)
+{
+	_stride = xres * bpp / 8;
+	_buffer = new unsigned char[xres * yres * bpp/8];
+	xres -= DM9X0_LCD_Y_OFFSET;
+	eDebug("[eLCD] platform: dm4kgen");
+	res = eSize(xres, yres);
+	memset(_buffer, 0, xres * yres * bpp / 8);
+	eDebug("[eLCD] (%dx%dx%d) buffer %p %d bytes, stride %d", xres, yres, bpp, _buffer, xres * yres * bpp / 8, _stride);
+}
+#else
+#ifdef LCD_COLOR_BITORDER_RGB565
+void eLCD::setSize(int xres, int yres, int bpp)
+{
+	_stride = xres * bpp / 8;
+	_buffer = new unsigned char[xres * yres * bpp/8];
+	res = eSize(xres, yres);
+	memset(_buffer, 0, xres * yres * bpp / 8);
+	eDebug("[eLCD] (%dx%dx%d) buffer %p %d bytes, stride %d", xres, yres, bpp, _buffer, xres * yres * bpp / 8, _stride);
+}
+#else
 void eLCD::setSize(int xres, int yres, int bpp)
 {
 	res = eSize(xres, yres);
@@ -36,7 +59,8 @@ void eLCD::setSize(int xres, int yres, int bpp)
 	_stride = res.width() * bpp / 8;
 	eDebug("[eLCD] (%dx%dx%d) buffer %p %d bytes, stride %d", xres, yres, bpp, _buffer, xres * yres * bpp / 8, _stride);
 }
-
+#endif
+#endif
 eLCD::~eLCD()
 {
 	if (_buffer)
@@ -80,119 +104,119 @@ void eLCD::renderText(ePoint start, const char *text)
 					++text;
 					switch (*text) 
 					{
-						case 0xffffff80: text2[n++] = 0xb7;     //√. - A
+						case 0xffffff80: text2[n++] = 0xb7;     //√É. - A
 										 break;
-						case 0xffffff81: text2[n++] = 0xb5;     //√~A - A
+						case 0xffffff81: text2[n++] = 0xb5;     //√É~A - A
 										 break;
-						case 0xffffff82: text2[n++] = 0xb6;     //√. - A
+						case 0xffffff82: text2[n++] = 0xb6;     //√É. - A
 										 break;
-						case 0xffffff83: text2[n++] = 0xc7;     //√.  - A
+						case 0xffffff83: text2[n++] = 0xc7;     //√É.  - A
 										 break;
-						case 0xffffff84: text2[n++] = 0x8E;     //√.
+						case 0xffffff84: text2[n++] = 0x8E;     //√É.
 										 break;
-						case 0xffffff85: text2[n++] = 0x8F;     //√.
+						case 0xffffff85: text2[n++] = 0x8F;     //√É.
 										 break;
-						case 0xffffff86: text2[n++] = 0x92;     //√.
+						case 0xffffff86: text2[n++] = 0x92;     //√É.
 										 break;
-						case 0xffffff87: text2[n++] = 0x80;     //√.
+						case 0xffffff87: text2[n++] = 0x80;     //√É.
 										 break;
-						case 0xffffff88: text2[n++] = 0xd4;     //√. -E
+						case 0xffffff88: text2[n++] = 0xd4;     //√É. -E
 										 break;
-						case 0xffffff89: text2[n++] = 0x90;     //√.
+						case 0xffffff89: text2[n++] = 0x90;     //√É.
 										 break;
-						case 0xffffff8a: text2[n++] = 0xd2;     //√. - E
+						case 0xffffff8a: text2[n++] = 0xd2;     //√É. - E
 										 break;
-						case 0xffffff8b: text2[n++] = 0xd3;     //√. - E
+						case 0xffffff8b: text2[n++] = 0xd3;     //√É. - E
 										 break;
-						case 0xffffff8c: text2[n++] = 0xde;     //√. - I
+						case 0xffffff8c: text2[n++] = 0xde;     //√É. - I
 										 break;
-						case 0xffffff8d: text2[n++] = 0xd6;     //√~M - I
+						case 0xffffff8d: text2[n++] = 0xd6;     //√É~M - I
 										 break;
-						case 0xffffff8e: text2[n++] = 0xd7;     //√. - I
+						case 0xffffff8e: text2[n++] = 0xd7;     //√É. - I
 										 break;
-						case 0xffffff8f: text2[n++] = 0xd8;     //√~O - I
+						case 0xffffff8f: text2[n++] = 0xd8;     //√É~O - I
 										 break;
-						case 0xffffff90: text2[n++] = 0xd0;     //√~P - D
+						case 0xffffff90: text2[n++] = 0xd0;     //√É~P - D
 										 break;
-						case 0xffffff91: text2[n++] = 0xa5;     //√.
+						case 0xffffff91: text2[n++] = 0xa5;     //√É.
 										 break;
-						case 0xffffff92: text2[n++] = 0xe3;     //√. - O
+						case 0xffffff92: text2[n++] = 0xe3;     //√É. - O
 										 break;
-						case 0xffffff93: text2[n++] = 0xe0;     //√. - O
+						case 0xffffff93: text2[n++] = 0xe0;     //√É. - O
 										 break;
-						case 0xffffff94: text2[n++] = 0xe2;     //√. - O
+						case 0xffffff94: text2[n++] = 0xe2;     //√É. - O
 										 break;
-						case 0xffffff95: text2[n++] = 0xe5;     //√. - O
+						case 0xffffff95: text2[n++] = 0xe5;     //√É. - O
 										 break;
-						case 0xffffff96: text2[n++] = 0x99;     //√.
+						case 0xffffff96: text2[n++] = 0x99;     //√É.
 										 break;
 						case 0xffffff97: text2[n++] = 0x78;     //x
 										 break;
-						case 0xffffff99: text2[n++] = 0xeb;     //√. - U
+						case 0xffffff99: text2[n++] = 0xeb;     //√É. - U
 										 break;
-						case 0xffffff9a: text2[n++] = 0xe9;     //√. - U
+						case 0xffffff9a: text2[n++] = 0xe9;     //√É. - U
 										 break;
-						case 0xffffff9b: text2[n++] = 0xea;     //√.  - U
+						case 0xffffff9b: text2[n++] = 0xea;     //√É.  - U
 										 break;
-						case 0xffffff9c: text2[n++] = 0x9a;     //√.
+						case 0xffffff9c: text2[n++] = 0x9a;     //√É.
 										 break;
-						case 0xffffff9d: text2[n++] = 0xed;     //√~] - Y
+						case 0xffffff9d: text2[n++] = 0xed;     //√É~] - Y
 										 break;
-						case 0xffffffa0: text2[n++] = 0x85;     //√
+						case 0xffffffa0: text2[n++] = 0x85;     //√É
 										 break;
-						case 0xffffffa1: text2[n++] = 0xa0;     //√°
+						case 0xffffffa1: text2[n++] = 0xa0;     //√É¬°
 										 break;
-						case 0xffffffa2: text2[n++] = 0x83;     //√¢
+						case 0xffffffa2: text2[n++] = 0x83;     //√É¬¢
 										 break;
-						case 0xffffffa3: text2[n++] = 0xc6;     //√£
+						case 0xffffffa3: text2[n++] = 0xc6;     //√É¬£
 										 break;
-						case 0xffffffa4: text2[n++] = 0x84;     //√§
+						case 0xffffffa4: text2[n++] = 0x84;     //√É¬§
 										 break;
-						case 0xffffffa5: text2[n++] = 0x86;     //√•
+						case 0xffffffa5: text2[n++] = 0x86;     //√É¬•
 										 break;
-						case 0xffffffa6: text2[n++] = 0x91;     //√¶
+						case 0xffffffa6: text2[n++] = 0x91;     //√É¬¶
 										 break;
-						case 0xffffffa7: text2[n++] = 0x87;     //√ß
+						case 0xffffffa7: text2[n++] = 0x87;     //√É¬ß
 										 break;
-						case 0xffffffa8: text2[n++] = 0x8a;     //√®
+						case 0xffffffa8: text2[n++] = 0x8a;     //√É¬®
 										 break;
-						case 0xffffffa9: text2[n++] = 0x82;     //√©
+						case 0xffffffa9: text2[n++] = 0x82;     //√É¬©
 										 break;
-						case 0xffffffaa: text2[n++] = 0x88;     //√™
+						case 0xffffffaa: text2[n++] = 0x88;     //√É¬™
 										 break;
-						case 0xffffffab: text2[n++] = 0x89;     //√´
+						case 0xffffffab: text2[n++] = 0x89;     //√É¬´
 										 break;
-						case 0xffffffac: text2[n++] = 0x8d;     //√¨
+						case 0xffffffac: text2[n++] = 0x8d;     //√É¬¨
 										 break;
-						case 0xffffffad: text2[n++] = 0xa1;     //√≠
+						case 0xffffffad: text2[n++] = 0xa1;     //√É¬≠
 										 break;
-						case 0xffffffae: text2[n++] = 0x8c;     //√Æ
+						case 0xffffffae: text2[n++] = 0x8c;     //√É¬Æ
 										 break;
-						case 0xffffffaf: text2[n++] = 0x8b;     //√Ø
+						case 0xffffffaf: text2[n++] = 0x8b;     //√É¬Ø
 										 break;
-						case 0xffffffb1: text2[n++] = 0xa4;     //√±
+						case 0xffffffb1: text2[n++] = 0xa4;     //√É¬±
 										 break;
-						case 0xffffffb2: text2[n++] = 0x95;     //√≤
+						case 0xffffffb2: text2[n++] = 0x95;     //√É¬≤
 										 break;
-						case 0xffffffb3: text2[n++] = 0xa2;     //√≥
+						case 0xffffffb3: text2[n++] = 0xa2;     //√É¬≥
 										 break;
-						case 0xffffffb4: text2[n++] = 0x93;     //√¥
+						case 0xffffffb4: text2[n++] = 0x93;     //√É¬¥
 										 break;
-						case 0xffffffb5: text2[n++] = 0xe4;     //√µ
+						case 0xffffffb5: text2[n++] = 0xe4;     //√É¬µ
 										 break;
-						case 0xffffffb6: text2[n++] = 0x94;     //√∂
+						case 0xffffffb6: text2[n++] = 0x94;     //√É¬∂
 										 break;
-						case 0xffffffb9: text2[n++] = 0x97;     //√π
+						case 0xffffffb9: text2[n++] = 0x97;     //√É¬π
 										 break;
-						case 0xffffffba: text2[n++] = 0xa3;     //√∫
+						case 0xffffffba: text2[n++] = 0xa3;     //√É¬∫
 										 break;
-						case 0xffffffbb: text2[n++] = 0x96;     //√ª
+						case 0xffffffbb: text2[n++] = 0x96;     //√É¬ª
 										 break;
-						case 0xffffffbc: text2[n++] = 0x81;     //√º
+						case 0xffffffbc: text2[n++] = 0x81;     //√É¬º
 										 break;
-						case 0xffffffbd: text2[n++] = 0xec;     //√Ω - y
+						case 0xffffffbd: text2[n++] = 0xec;     //√É¬Ω - y
 										 break;
-						case 0xffffffbf: text2[n++] = 0x98;     //√ø
+						case 0xffffffbf: text2[n++] = 0x98;     //√É¬ø
 										 break;
 						default:         text2[n++] = 0xffffffC3;
 										 text2[n++] = *text;
@@ -227,7 +251,7 @@ void eLCD::renderText(ePoint start, const char *text)
 										 break;
 						case 0xffffffa1: text2[n++] = 0x50;     //P
 										 break;
-						case 0xffffffa3: text2[n++] = 0x15;     //Œ£
+						case 0xffffffa3: text2[n++] = 0x15;     //√é¬£
 										 break;
 						case 0xffffffa4: text2[n++] = 0x54;     //T
 										 break;
@@ -235,15 +259,15 @@ void eLCD::renderText(ePoint start, const char *text)
 										 break;
 						case 0xffffffa7: text2[n++] = 0x58;     //X
 										 break;
-						case 0xffffffa9: text2[n++] = 0xf4;     //Œ© NO
+						case 0xffffffa9: text2[n++] = 0xf4;     //√é¬© NO
 										 break;
-						case 0xffffffaa: text2[n++] = 0xd8;     //√~O - I
+						case 0xffffffaa: text2[n++] = 0xd8;     //√É~O - I
 										 break;
-						case 0xffffffab: text2[n++] = 0x59;     //≈∏ - Y
+						case 0xffffffab: text2[n++] = 0x59;     //√Ö¬∏ - Y
 										 break;
-						case 0xffffffb2: text2[n++] = 0xe1;     //Œ≤
+						case 0xffffffb2: text2[n++] = 0xe1;     //√é¬≤
 										 break;
-						case 0xffffffbc: text2[n++] = 0xe6;     //Œº
+						case 0xffffffbc: text2[n++] = 0xe6;     //√é¬º
 										 break;
 						case 0xffffffbd: text2[n++] = 0x76;     //v
 										 break;
@@ -260,109 +284,109 @@ void eLCD::renderText(ePoint start, const char *text)
 					++text;
 					switch (*text)
 					{
-						case 0xffffff81: text2[n++] = 0xd3;     //® - ®
+						case 0xffffff81: text2[n++] = 0xd3;     //¬® - ¬®
 							break;
-						case 0xffffff84: text2[n++] = 0x45;     //™ - ≈
+						case 0xffffff84: text2[n++] = 0x45;     //¬™ - √Ö
 							break;
-						case 0xffffff86: text2[n++] = 0x49;     //≤ - ≤
+						case 0xffffff86: text2[n++] = 0x49;     //¬≤ - ¬≤
 							break;
-						case 0xffffff87: text2[n++] = 0xd8;     //Ø - Ø
+						case 0xffffff87: text2[n++] = 0xd8;     //¬Ø - ¬Ø
 							break;
-						case 0xffffff90: text2[n++] = 0x41;     //¿ - A
+						case 0xffffff90: text2[n++] = 0x41;     //√Ä - A
 							break;
-						case 0xffffff91: text2[n++] = 0xb0;     //¡ - ¡
+						case 0xffffff91: text2[n++] = 0xb0;     //√Å - √Å
 							break;
-						case 0xffffff92: text2[n++] = 0x42;     //¬ - ¬
+						case 0xffffff92: text2[n++] = 0x42;     //√Ç - √Ç
 							break;
-						case 0xffffff93: text2[n++] = 0xb1;     //√ - √
+						case 0xffffff93: text2[n++] = 0xb1;     //√É - √É
 							break;
-						case 0xffffff94: text2[n++] = 0xb2;     //ƒ - ƒ
+						case 0xffffff94: text2[n++] = 0xb2;     //√Ñ - √Ñ
 							break;
-						case 0xffffff95: text2[n++] = 0x45;     //≈ - ≈
+						case 0xffffff95: text2[n++] = 0x45;     //√Ö - √Ö
 							break;
-						case 0xffffff96: text2[n++] = 0xb3;     //∆ - ∆
+						case 0xffffff96: text2[n++] = 0xb3;     //√Ü - √Ü
 							break;
-						case 0xffffff97: text2[n++] = 0xb4;     //« - «
+						case 0xffffff97: text2[n++] = 0xb4;     //√á - √á
 							break;
-						case 0xffffff98: text2[n++] = 0xb8;     //» - »
+						case 0xffffff98: text2[n++] = 0xb8;     //√à - √à
 							break;
-						case 0xffffff99: text2[n++] = 0xb9;     //… - …
+						case 0xffffff99: text2[n++] = 0xb9;     //√â - √â
 							break;
-						case 0xffffff9a: text2[n++] = 0x4b;     //  -  
+						case 0xffffff9a: text2[n++] = 0x4b;     //√ä - √ä
 							break;
-						case 0xffffff9b: text2[n++] = 0xba;     //À - À
+						case 0xffffff9b: text2[n++] = 0xba;     //√ã - √ã
 							break;
-						case 0xffffff9c: text2[n++] = 0x4d;     //Ã - Ã
+						case 0xffffff9c: text2[n++] = 0x4d;     //√å - √å
 							break;
-						case 0xffffff9d: text2[n++] = 0x48;     //Õ - Õ
+						case 0xffffff9d: text2[n++] = 0x48;     //√ç - √ç
 							break;
-						case 0xffffff9e: text2[n++] = 0x4f;     //Œ - Œ
+						case 0xffffff9e: text2[n++] = 0x4f;     //√é - √é
 							break;
-						case 0xffffff9f: text2[n++] = 0xbb;     //œ - œ
+						case 0xffffff9f: text2[n++] = 0xbb;     //√è - √è
 							break;
-						case 0xffffffa0: text2[n++] = 0x50;     //– - –
+						case 0xffffffa0: text2[n++] = 0x50;     //√ê - √ê
 							break;
-						case 0xffffffa1: text2[n++] = 0x43;     //— - —
+						case 0xffffffa1: text2[n++] = 0x43;     //√ë - √ë
 							break;
-						case 0xffffffa2: text2[n++] = 0x54;     //“ - “
+						case 0xffffffa2: text2[n++] = 0x54;     //√í - √í
 							break;
-						case 0xffffffa3: text2[n++] = 0xbc;     //” - ”
+						case 0xffffffa3: text2[n++] = 0xbc;     //√ì - √ì
 							break;
-						case 0xffffffa4: text2[n++] = 0xbf;     //‘ - ‘
+						case 0xffffffa4: text2[n++] = 0xbf;     //√î - √î
 							break;
-						case 0xffffffa5: text2[n++] = 0x58;     //’ - ’
+						case 0xffffffa5: text2[n++] = 0x58;     //√ï - √ï
 							break;
-						case 0xffffffa6: text2[n++] = 0xc0;     //÷ - ÷
+						case 0xffffffa6: text2[n++] = 0xc0;     //√ñ - √ñ
 							break;
-						case 0xffffffa7: text2[n++] = 0xc1;     //◊ - ◊
+						case 0xffffffa7: text2[n++] = 0xc1;     //√ó - √ó
 							break;
-						case 0xffffffa8: text2[n++] = 0xc2;     //ÿ - ÿ
+						case 0xffffffa8: text2[n++] = 0xc2;     //√ò - √ò
 							break;
-						case 0xffffffa9: text2[n++] = 0xc3;     //Ÿ - Ÿ
+						case 0xffffffa9: text2[n++] = 0xc3;     //√ô - √ô
 							break;
-						case 0xffffffaa: text2[n++] = 0xc4;     //⁄ - ⁄
+						case 0xffffffaa: text2[n++] = 0xc4;     //√ö - √ö
 							break;
-						case 0xffffffab: text2[n++] = 0xc5;     //€ - €
+						case 0xffffffab: text2[n++] = 0xc5;     //√õ - √õ
 							break;
-						case 0xffffffac: text2[n++] = 0x62;     //‹ - ‹
+						case 0xffffffac: text2[n++] = 0x62;     //√ú - √ú
 							break;
-						case 0xffffffad: text2[n++] = 0xc8;     //› - ›
+						case 0xffffffad: text2[n++] = 0xc8;     //√ù - √ù
 							break;
-						case 0xffffffae: text2[n++] = 0xc9;     //ﬁ - ﬁ
+						case 0xffffffae: text2[n++] = 0xc9;     //√û - √û
 							break;
-						case 0xffffffaf: text2[n++] = 0xca;     //ﬂ - ﬂ
+						case 0xffffffaf: text2[n++] = 0xca;     //√ü - √ü
 							break;
-						case 0xffffffb0: text2[n++] = 0x41;     //‡ - ¿
+						case 0xffffffb0: text2[n++] = 0x41;     //√† - √Ä
 							break;
-						case 0xffffffb1: text2[n++] = 0xb0;     //· - ¡
+						case 0xffffffb1: text2[n++] = 0xb0;     //√° - √Å
 							break;
-						case 0xffffffb2: text2[n++] = 0x42;     //‚ - ¬
+						case 0xffffffb2: text2[n++] = 0x42;     //√¢ - √Ç
 							break;
-						case 0xffffffb3: text2[n++] = 0xb1;     //„ - √
+						case 0xffffffb3: text2[n++] = 0xb1;     //√£ - √É
 							break;
-						case 0xffffffb4: text2[n++] = 0xb2;     //‰ - ƒ
+						case 0xffffffb4: text2[n++] = 0xb2;     //√§ - √Ñ
 							break;
-						case 0xffffffb5: text2[n++] = 0x45;     //Â - ≈
+						case 0xffffffb5: text2[n++] = 0x45;     //√• - √Ö
 							break;
-						case 0xffffffb6: text2[n++] = 0xb3;     //Ê - ∆
+						case 0xffffffb6: text2[n++] = 0xb3;     //√¶ - √Ü
 							break;
-						case 0xffffffb7: text2[n++] = 0xb4;     //Á - «
+						case 0xffffffb7: text2[n++] = 0xb4;     //√ß - √á
 							break;
-						case 0xffffffb8: text2[n++] = 0xb8;     //Ë - »
+						case 0xffffffb8: text2[n++] = 0xb8;     //√® - √à
 							break;
-						case 0xffffffb9: text2[n++] = 0xb9;     //È - …
+						case 0xffffffb9: text2[n++] = 0xb9;     //√© - √â
 							break;
-						case 0xffffffba: text2[n++] = 0x4b;     //Í -  
+						case 0xffffffba: text2[n++] = 0x4b;     //√™ - √ä
 							break;
-						case 0xffffffbb: text2[n++] = 0xba;     //Î - À
+						case 0xffffffbb: text2[n++] = 0xba;     //√´ - √ã
 							break;
-						case 0xffffffbc: text2[n++] = 0x4d;     //Ï - Ã
+						case 0xffffffbc: text2[n++] = 0x4d;     //√¨ - √å
 							break;
-						case 0xffffffbd: text2[n++] = 0x48;     //Ì - Õ
+						case 0xffffffbd: text2[n++] = 0x48;     //√≠ - √ç
 							break;
-						case 0xffffffbe: text2[n++] = 0x4f;     //Ó - Œ
+						case 0xffffffbe: text2[n++] = 0x4f;     //√Æ - √é
 							break;
-						case 0xffffffbf: text2[n++] = 0xbb;     //Ô - œ
+						case 0xffffffbf: text2[n++] = 0xbb;     //√Ø - √è
 							break;
 						default:	text2[n++] = 0xffffffd0;
 								text2[n++] = *text;
@@ -375,45 +399,45 @@ void eLCD::renderText(ePoint start, const char *text)
 					++text;
 					switch (*text) 
 					{
-						case 0xffffff80: text2[n++] = 0x50;     // - –
+						case 0xffffff80: text2[n++] = 0x50;     //√∞ - √ê
 							break;
-						case 0xffffff81: text2[n++] = 0x43;     //Ò - —
+						case 0xffffff81: text2[n++] = 0x43;     //√± - √ë
 							break;
-						case 0xffffff82: text2[n++] = 0x54;     //Ú - “
+						case 0xffffff82: text2[n++] = 0x54;     //√≤ - √í
 							break;
-						case 0xffffff83: text2[n++] = 0xbc;     //Û - ”
+						case 0xffffff83: text2[n++] = 0xbc;     //√≥ - √ì
 							break;
-						case 0xffffff84: text2[n++] = 0xbf;     //Ù - ‘
+						case 0xffffff84: text2[n++] = 0xbf;     //√¥ - √î
 							break;
-						case 0xffffff85: text2[n++] = 0x58;     //ı - ’
+						case 0xffffff85: text2[n++] = 0x58;     //√µ - √ï
 							break;
-						case 0xffffff86: text2[n++] = 0xc0;     //ˆ - ÷
+						case 0xffffff86: text2[n++] = 0xc0;     //√∂ - √ñ
 							break;
-						case 0xffffff87: text2[n++] = 0xc1;     //˜ - ◊
+						case 0xffffff87: text2[n++] = 0xc1;     //√∑ - √ó
 							break;
-						case 0xffffff88: text2[n++] = 0xc2;     //¯ - ÿ
+						case 0xffffff88: text2[n++] = 0xc2;     //√∏ - √ò
 							break;
-						case 0xffffff89: text2[n++] = 0xc3;     //˘ - Ÿ
+						case 0xffffff89: text2[n++] = 0xc3;     //√π - √ô
 							break;
-						case 0xffffff8a: text2[n++] = 0xc4;     //˙ - ⁄
+						case 0xffffff8a: text2[n++] = 0xc4;     //√∫ - √ö
 							break;
-						case 0xffffff8b: text2[n++] = 0xc5;     //˚ - €
+						case 0xffffff8b: text2[n++] = 0xc5;     //√ª - √õ
 							break;
-						case 0xffffff8c: text2[n++] = 0x62;     //¸ - ‹
+						case 0xffffff8c: text2[n++] = 0x62;     //√º - √ú
 							break;
-						case 0xffffff8d: text2[n++] = 0xc8;     //˝ - ›
+						case 0xffffff8d: text2[n++] = 0xc8;     //√Ω - √ù
 							break;
-						case 0xffffff8e: text2[n++] = 0xc9;     //˛ - ﬁ
+						case 0xffffff8e: text2[n++] = 0xc9;     //√æ - √û
 							break;
-						case 0xffffff8f: text2[n++] = 0xca;     //ˇ - ﬂ
+						case 0xffffff8f: text2[n++] = 0xca;     //√ø - √ü
 							break;
-						case 0xffffff91: text2[n++] = 0xd3;     //∏ - ®
+						case 0xffffff91: text2[n++] = 0xd3;     //¬∏ - ¬®
 							break;
-						case 0xffffff94: text2[n++] = 0x45;     //∫ - ≈
+						case 0xffffff94: text2[n++] = 0x45;     //¬∫ - √Ö
 							break;
-						case 0xffffff96: text2[n++] = 0x49;     //≥ - ≤
+						case 0xffffff96: text2[n++] = 0x49;     //¬≥ - ¬≤
 							break;
-						case 0xffffff97: text2[n++] = 0xd8;     //ø - Ø
+						case 0xffffff97: text2[n++] = 0xd8;     //¬ø - ¬Ø
 							break;
 						default:	text2[n++] = 0xffffffd1;
 								text2[n++] = *text;
@@ -443,119 +467,119 @@ void eLCD::renderText(ePoint start, const char *text)
 					++text;
 					switch (*text) 
 					{
-						case 0xffffff80: text2[n++] = 0x41;     //√. - A
+						case 0xffffff80: text2[n++] = 0x41;     //√É. - A
 										 break;
-						case 0xffffff81: text2[n++] = 0x41;     //√~A - A
+						case 0xffffff81: text2[n++] = 0x41;     //√É~A - A
 										 break;
-						case 0xffffff82: text2[n++] = 0x41;     //√. - A
+						case 0xffffff82: text2[n++] = 0x41;     //√É. - A
 										 break;
-						case 0xffffff83: text2[n++] = 0x41;     //√.  - A
+						case 0xffffff83: text2[n++] = 0x41;     //√É.  - A
 										 break;
-						case 0xffffff84: text2[n++] = 0x8E;     //√.
+						case 0xffffff84: text2[n++] = 0x8E;     //√É.
 										 break;
-						case 0xffffff85: text2[n++] = 0x8F;     //√.
+						case 0xffffff85: text2[n++] = 0x8F;     //√É.
 										 break;
-						case 0xffffff86: text2[n++] = 0x92;     //√.
+						case 0xffffff86: text2[n++] = 0x92;     //√É.
 										 break;
-						case 0xffffff87: text2[n++] = 0x80;     //√.
+						case 0xffffff87: text2[n++] = 0x80;     //√É.
 										 break;
-						case 0xffffff88: text2[n++] = 0x45;     //√. -E
+						case 0xffffff88: text2[n++] = 0x45;     //√É. -E
 										 break;
-						case 0xffffff89: text2[n++] = 0x90;     //√.
+						case 0xffffff89: text2[n++] = 0x90;     //√É.
 										 break;
-						case 0xffffff8a: text2[n++] = 0x45;     //√. - E
+						case 0xffffff8a: text2[n++] = 0x45;     //√É. - E
 										 break;
-						case 0xffffff8b: text2[n++] = 0x45;     //√. - E
+						case 0xffffff8b: text2[n++] = 0x45;     //√É. - E
 										 break;
-						case 0xffffff8c: text2[n++] = 0x49;     //√. - I
+						case 0xffffff8c: text2[n++] = 0x49;     //√É. - I
 										 break;
-						case 0xffffff8d: text2[n++] = 0x49;     //√~M - I
+						case 0xffffff8d: text2[n++] = 0x49;     //√É~M - I
 										 break;
-						case 0xffffff8e: text2[n++] = 0x49;     //√. - I
+						case 0xffffff8e: text2[n++] = 0x49;     //√É. - I
 										 break;
-						case 0xffffff8f: text2[n++] = 0x49;     //√~O - I
+						case 0xffffff8f: text2[n++] = 0x49;     //√É~O - I
 										 break;
-						case 0xffffff90: text2[n++] = 0x44;     //√~P - D
+						case 0xffffff90: text2[n++] = 0x44;     //√É~P - D
 										 break;
-						case 0xffffff91: text2[n++] = 0x17;     //√.
+						case 0xffffff91: text2[n++] = 0x17;     //√É.
 										 break;
-						case 0xffffff92: text2[n++] = 0x4f;     //√. - O
+						case 0xffffff92: text2[n++] = 0x4f;     //√É. - O
 										 break;
-						case 0xffffff93: text2[n++] = 0x4f;     //√. - O
+						case 0xffffff93: text2[n++] = 0x4f;     //√É. - O
 										 break;
-						case 0xffffff94: text2[n++] = 0x4f;     //√. - O
+						case 0xffffff94: text2[n++] = 0x4f;     //√É. - O
 										 break;
-						case 0xffffff95: text2[n++] = 0x4f;     //√. - O
+						case 0xffffff95: text2[n++] = 0x4f;     //√É. - O
 										 break;
-						case 0xffffff96: text2[n++] = 0x99;     //√.
+						case 0xffffff96: text2[n++] = 0x99;     //√É.
 										 break;
 						case 0xffffff97: text2[n++] = 0x78;     //x
 										 break;
-						case 0xffffff99: text2[n++] = 0x55;     //√. - U
+						case 0xffffff99: text2[n++] = 0x55;     //√É. - U
 										 break;
-						case 0xffffff9a: text2[n++] = 0x55;     //√. - U
+						case 0xffffff9a: text2[n++] = 0x55;     //√É. - U
 										 break;
-						case 0xffffff9b: text2[n++] = 0x55;     //√.  - U
+						case 0xffffff9b: text2[n++] = 0x55;     //√É.  - U
 										 break;
-						case 0xffffff9c: text2[n++] = 0x9a;     //√.
+						case 0xffffff9c: text2[n++] = 0x9a;     //√É.
 										 break;
-						case 0xffffff9d: text2[n++] = 0x59;     //√~] - Y
+						case 0xffffff9d: text2[n++] = 0x59;     //√É~] - Y
 										 break;
-						case 0xffffffa0: text2[n++] = 0x85;     //√
+						case 0xffffffa0: text2[n++] = 0x85;     //√É
 										 break;
-						case 0xffffffa1: text2[n++] = 0x12;     //√°
+						case 0xffffffa1: text2[n++] = 0x12;     //√É¬°
 										 break;
-						case 0xffffffa2: text2[n++] = 0x83;     //√¢
+						case 0xffffffa2: text2[n++] = 0x83;     //√É¬¢
 										 break;
-						case 0xffffffa3: text2[n++] = 0xe1;     //√£
+						case 0xffffffa3: text2[n++] = 0xe1;     //√É¬£
 										 break;
-						case 0xffffffa4: text2[n++] = 0x84;     //√§
+						case 0xffffffa4: text2[n++] = 0x84;     //√É¬§
 										 break;
-						case 0xffffffa5: text2[n++] = 0x86;     //√•
+						case 0xffffffa5: text2[n++] = 0x86;     //√É¬•
 										 break;
-						case 0xffffffa6: text2[n++] = 0x91;     //√¶
+						case 0xffffffa6: text2[n++] = 0x91;     //√É¬¶
 										 break;
-						case 0xffffffa7: text2[n++] = 0x87;     //√ß
+						case 0xffffffa7: text2[n++] = 0x87;     //√É¬ß
 										 break;
-						case 0xffffffa8: text2[n++] = 0x8a;     //√®
+						case 0xffffffa8: text2[n++] = 0x8a;     //√É¬®
 										 break;
-						case 0xffffffa9: text2[n++] = 0x82;     //√©
+						case 0xffffffa9: text2[n++] = 0x82;     //√É¬©
 										 break;
-						case 0xffffffaa: text2[n++] = 0x88;     //√™
+						case 0xffffffaa: text2[n++] = 0x88;     //√É¬™
 										 break;
-						case 0xffffffab: text2[n++] = 0x89;     //√´
+						case 0xffffffab: text2[n++] = 0x89;     //√É¬´
 										 break;
-						case 0xffffffac: text2[n++] = 0x8d;     //√¨
+						case 0xffffffac: text2[n++] = 0x8d;     //√É¬¨
 										 break;
-						case 0xffffffad: text2[n++] = 0x13;     //√≠
+						case 0xffffffad: text2[n++] = 0x13;     //√É¬≠
 										 break;
-						case 0xffffffae: text2[n++] = 0x8c;     //√Æ
+						case 0xffffffae: text2[n++] = 0x8c;     //√É¬Æ
 										 break;
-						case 0xffffffaf: text2[n++] = 0x8b;     //√Ø
+						case 0xffffffaf: text2[n++] = 0x8b;     //√É¬Ø
 										 break;
-						case 0xffffffb1: text2[n++] = 0x16;     //√±
+						case 0xffffffb1: text2[n++] = 0x16;     //√É¬±
 										 break;
-						case 0xffffffb2: text2[n++] = 0x95;     //√≤
+						case 0xffffffb2: text2[n++] = 0x95;     //√É¬≤
 										 break;
-						case 0xffffffb3: text2[n++] = 0x14;     //√≥
+						case 0xffffffb3: text2[n++] = 0x14;     //√É¬≥
 										 break;
-						case 0xffffffb4: text2[n++] = 0x93;     //√¥
+						case 0xffffffb4: text2[n++] = 0x93;     //√É¬¥
 										 break;
-						case 0xffffffb5: text2[n++] = 0xef;     //√µ
+						case 0xffffffb5: text2[n++] = 0xef;     //√É¬µ
 										 break;
-						case 0xffffffb6: text2[n++] = 0x94;     //√∂
+						case 0xffffffb6: text2[n++] = 0x94;     //√É¬∂
 										 break;
-						case 0xffffffb9: text2[n++] = 0x97;     //√π
+						case 0xffffffb9: text2[n++] = 0x97;     //√É¬π
 										 break;
-						case 0xffffffba: text2[n++] = 0x15;     //√∫
+						case 0xffffffba: text2[n++] = 0x15;     //√É¬∫
 										 break;
-						case 0xffffffbb: text2[n++] = 0x96;     //√ª
+						case 0xffffffbb: text2[n++] = 0x96;     //√É¬ª
 										 break;
-						case 0xffffffbc: text2[n++] = 0x81;     //√º
+						case 0xffffffbc: text2[n++] = 0x81;     //√É¬º
 										 break;
-						case 0xffffffbd: text2[n++] = 0x79;     //√Ω - y
+						case 0xffffffbd: text2[n++] = 0x79;     //√É¬Ω - y
 										 break;
-						case 0xffffffbf: text2[n++] = 0x98;     //√ø
+						case 0xffffffbf: text2[n++] = 0x98;     //√É¬ø
 										 break;
 						default:         text2[n++] = 0xffffffC3;
 										 text2[n++] = *text;
@@ -590,7 +614,7 @@ void eLCD::renderText(ePoint start, const char *text)
 										 break;
 						case 0xffffffa1: text2[n++] = 0x50;     //P
 										 break;
-						case 0xffffffa3: text2[n++] = 0xf6;     //Œ£
+						case 0xffffffa3: text2[n++] = 0xf6;     //√é¬£
 										 break;
 						case 0xffffffa4: text2[n++] = 0x54;     //T
 										 break;
@@ -598,25 +622,25 @@ void eLCD::renderText(ePoint start, const char *text)
 										 break;
 						case 0xffffffa7: text2[n++] = 0x58;     //X
 										 break;
-						case 0xffffffa9: text2[n++] = 0xf4;     //Œ©
+						case 0xffffffa9: text2[n++] = 0xf4;     //√é¬©
 										 break;
-						case 0xffffffaa: text2[n++] = 0x49;     //√~O - I
+						case 0xffffffaa: text2[n++] = 0x49;     //√É~O - I
 										 break;
-						case 0xffffffab: text2[n++] = 0x59;     //≈∏ - Y
+						case 0xffffffab: text2[n++] = 0x59;     //√Ö¬∏ - Y
 										 break;
-						case 0xffffffac: text2[n++] = 0xe0;     //Œ¨ - Œ±
+						case 0xffffffac: text2[n++] = 0xe0;     //√é¬¨ - √é¬±
 										 break;
-						case 0xffffffad: text2[n++] = 0xe3;     //Œ≠ - Œµ
+						case 0xffffffad: text2[n++] = 0xe3;     //√é¬≠ - √é¬µ
 										 break;
-						case 0xffffffb1: text2[n++] = 0xe0;     //Œ±
+						case 0xffffffb1: text2[n++] = 0xe0;     //√é¬±
 										 break;
-						case 0xffffffb2: text2[n++] = 0xe2;     //Œ≤
+						case 0xffffffb2: text2[n++] = 0xe2;     //√é¬≤
 										 break;
-						case 0xffffffb5: text2[n++] = 0xe3;     //Œµ
+						case 0xffffffb5: text2[n++] = 0xe3;     //√é¬µ
 										 break;
-						case 0xffffffb8: text2[n++] = 0xf2;     //Œ∏
+						case 0xffffffb8: text2[n++] = 0xf2;     //√é¬∏
 										 break;
-						case 0xffffffbc: text2[n++] = 0xe4;     //Œº
+						case 0xffffffbc: text2[n++] = 0xe4;     //√é¬º
 										 break;
 						case 0xffffffbd: text2[n++] = 0x76;     //v
 										 break;
@@ -634,171 +658,171 @@ void eLCD::renderText(ePoint start, const char *text)
 					switch (*text)
 					{
 						case 0xffffff81: 
-							text2[n++] = 0x59;     //® - YO
+							text2[n++] = 0x59;     //¬® - YO
 							text2[n++] = 0x4f;	
 							break;
 						case 0xffffff84: 
-							text2[n++] = 0x45;     //™ - E
+							text2[n++] = 0x45;     //¬™ - E
 							break;
 						case 0xffffff86: 
-							text2[n++] = 0x49;     //≤ - I
+							text2[n++] = 0x49;     //¬≤ - I
 							break;
 						case 0xffffff87: 
-	    					text2[n++] = 0x59;     //Ø - YI
+	    					text2[n++] = 0x59;     //¬Ø - YI
 							text2[n++] = 0x49;
 							break;
 						case 0xffffff90: 
-							text2[n++] = 0x41;     //¿ - A
+							text2[n++] = 0x41;     //√Ä - A
 							break;
 						case 0xffffff91: 
-							text2[n++] = 0x42;     //¡ - B
+							text2[n++] = 0x42;     //√Å - B
 							break;
 						case 0xffffff92: 
-							text2[n++] = 0x56;     //¬ - V
+							text2[n++] = 0x56;     //√Ç - V
 							break;
 						case 0xffffff93: 
-							text2[n++] = 0x47;     //√ - G
+							text2[n++] = 0x47;     //√É - G
 							break;
 						case 0xffffff94: 
-							text2[n++] = 0x44;     //ƒ - D
+							text2[n++] = 0x44;     //√Ñ - D
 							break;
 						case 0xffffff95: 
-							text2[n++] = 0x45;     //≈ - E
+							text2[n++] = 0x45;     //√Ö - E
 							break;
 						case 0xffffff96: 
-							text2[n++] = 0x5a;     //∆ - ZH
+							text2[n++] = 0x5a;     //√Ü - ZH
 							text2[n++] = 0x48;
 							break;
 						case 0xffffff97: 
-							text2[n++] = 0x5a;     //« - Z
+							text2[n++] = 0x5a;     //√á - Z
 							break;
 						case 0xffffff98: 
-							text2[n++] = 0x49;     //» - I
+							text2[n++] = 0x49;     //√à - I
 							break;
 						case 0xffffff99: 
-							text2[n++] = 0x4a;     //… - J
+							text2[n++] = 0x4a;     //√â - J
 							break;
 						case 0xffffff9a: 
-							text2[n++] = 0x4b;     //  - K
+							text2[n++] = 0x4b;     //√ä - K
 							break;
 						case 0xffffff9b: 
-							text2[n++] = 0x4c;     //À - L
+							text2[n++] = 0x4c;     //√ã - L
 							break;
 						case 0xffffff9c: 
-							text2[n++] = 0x4d;     //Ã - M
+							text2[n++] = 0x4d;     //√å - M
 							break;
 						case 0xffffff9d: 
-							text2[n++] = 0x4e;     //Õ - N
+							text2[n++] = 0x4e;     //√ç - N
 							break;
 						case 0xffffff9e: 
-							text2[n++] = 0x4f;     //Œ - O
+							text2[n++] = 0x4f;     //√é - O
 							break;
 						case 0xffffff9f: 
-							text2[n++] = 0x50;     //œ - P
+							text2[n++] = 0x50;     //√è - P
 							break;
 						case 0xffffffa0: 
-							text2[n++] = 0x52;     //– - R
+							text2[n++] = 0x52;     //√ê - R
 							break;
 						case 0xffffffa1: 
-							text2[n++] = 0x53;     //— - S
+							text2[n++] = 0x53;     //√ë - S
 							break;
 						case 0xffffffa2: 
-							text2[n++] = 0x54;     //“ - T
+							text2[n++] = 0x54;     //√í - T
 							break;
 						case 0xffffffa3: 
-							text2[n++] = 0x55;     //” - U
+							text2[n++] = 0x55;     //√ì - U
 							break;
 						case 0xffffffa4: 
-							text2[n++] = 0x46;     //‘ - F
+							text2[n++] = 0x46;     //√î - F
 							break;
 						case 0xffffffa5: 
-							text2[n++] = 0x48;     //’ - H
+							text2[n++] = 0x48;     //√ï - H
 							break;
 						case 0xffffffa6: 
-							text2[n++] = 0x43;     //÷ - C
+							text2[n++] = 0x43;     //√ñ - C
 							break;
 						case 0xffffffa7: 
-							text2[n++] = 0x43;     //◊ - CH
+							text2[n++] = 0x43;     //√ó - CH
 							text2[n++] = 0x48;
 							break;
 						case 0xffffffa8: 
-							text2[n++] = 0x53;     //ÿ - SH
+							text2[n++] = 0x53;     //√ò - SH
 							text2[n++] = 0x48;
 							break;
 						case 0xffffffa9: 
-							text2[n++] = 0x53;     //Ÿ - SHH
+							text2[n++] = 0x53;     //√ô - SHH
 							text2[n++] = 0x48;
 							text2[n++] = 0x48;
 							break;
 						case 0xffffffaa: 
-							text2[n++] = 0x22;     //⁄ - "
+							text2[n++] = 0x22;     //√ö - "
 							break;
 						case 0xffffffab: 
-							text2[n++] = 0x59;     //€ - Y
+							text2[n++] = 0x59;     //√õ - Y
 							break;
 						case 0xffffffac: 
-							text2[n++] = 0x27;     //‹ - '
+							text2[n++] = 0x27;     //√ú - '
 							break;
 						case 0xffffffad: 
-							text2[n++] = 0x45;     //› - EH
+							text2[n++] = 0x45;     //√ù - EH
 							text2[n++] = 0x48;
 							break;
 						case 0xffffffae: 
-							text2[n++] = 0x59;     //ﬁ - YU
+							text2[n++] = 0x59;     //√û - YU
 							text2[n++] = 0x55;
 							break;
 						case 0xffffffaf: 
-							text2[n++] = 0x59;     //ﬂ - YA
+							text2[n++] = 0x59;     //√ü - YA
 							text2[n++] = 0x41;
 							break;
 						case 0xffffffb0: 
-							text2[n++] = 0x61;     //‡ - a
+							text2[n++] = 0x61;     //√† - a
 							break;
 						case 0xffffffb1: 
-							text2[n++] = 0x62;     //· - b
+							text2[n++] = 0x62;     //√° - b
 							break;
 						case 0xffffffb2: 
-							text2[n++] = 0x76;     //‚ - v
+							text2[n++] = 0x76;     //√¢ - v
 							break;
 						case 0xffffffb3: 
-							text2[n++] = 0x67;     //„ - g
+							text2[n++] = 0x67;     //√£ - g
 							break;
 						case 0xffffffb4: 
-							text2[n++] = 0x64;     //‰ - d
+							text2[n++] = 0x64;     //√§ - d
 							break;
 						case 0xffffffb5: 
-							text2[n++] = 0x65;     //Â - e
+							text2[n++] = 0x65;     //√• - e
 							break;
 						case 0xffffffb6: 
-							text2[n++] = 0x7a;     //Ê - zh
+							text2[n++] = 0x7a;     //√¶ - zh
 							text2[n++] = 0x68;
 							break;
 						case 0xffffffb7: 
-							text2[n++] = 0x7a;     //Á - z
+							text2[n++] = 0x7a;     //√ß - z
 							break;
 						case 0xffffffb8: 
-							text2[n++] = 0x69;     //Ë - i
+							text2[n++] = 0x69;     //√® - i
 							break;
 						case 0xffffffb9: 
-							text2[n++] = 0x6a;     //È - j
+							text2[n++] = 0x6a;     //√© - j
 							break;
 						case 0xffffffba: 
-							text2[n++] = 0x6b;     //Í - k
+							text2[n++] = 0x6b;     //√™ - k
 							break;
 						case 0xffffffbb: 
-							text2[n++] = 0x6c;     //Î - l
+							text2[n++] = 0x6c;     //√´ - l
 							break;
 						case 0xffffffbc: 
-							text2[n++] = 0x6d;     //Ï - m
+							text2[n++] = 0x6d;     //√¨ - m
 							break;
 						case 0xffffffbd: 
-							text2[n++] = 0x6e;     //Ì - n
+							text2[n++] = 0x6e;     //√≠ - n
 							break;
 						case 0xffffffbe: 
-							text2[n++] = 0x6f;     //Ó - o
+							text2[n++] = 0x6f;     //√Æ - o
 							break;
 						case 0xffffffbf: 
-							text2[n++] = 0x70;     //Ô - p
+							text2[n++] = 0x70;     //√Ø - p
 							break;
 						default:
 							text2[n++] = 0xffffffd0;
@@ -812,72 +836,72 @@ void eLCD::renderText(ePoint start, const char *text)
 					++text;
 					switch (*text) {
 						case 0xffffff80: 
-							text2[n++] = 0x72;     // - r
+							text2[n++] = 0x72;     //√∞ - r
 							break;
 						case 0xffffff81:
-							text2[n++] = 0x73;     //Ò - s
+							text2[n++] = 0x73;     //√± - s
 							break;
 						case 0xffffff82:
-							text2[n++] = 0x74;     //Ú - t
+							text2[n++] = 0x74;     //√≤ - t
 							break;
 						case 0xffffff83:
-							text2[n++] = 0x75;     //Û - u
+							text2[n++] = 0x75;     //√≥ - u
 							break;
 						case 0xffffff84:
-							text2[n++] = 0x66;     //Ù - f
+							text2[n++] = 0x66;     //√¥ - f
 							break;
 						case 0xffffff85:
-							text2[n++] = 0x68;     //ı - h
+							text2[n++] = 0x68;     //√µ - h
 							break;
 						case 0xffffff86:
-							text2[n++] = 0x63;     //ˆ - c
+							text2[n++] = 0x63;     //√∂ - c
 							break;
 						case 0xffffff87:
-							text2[n++] = 0x63;     //˜ - ch
+							text2[n++] = 0x63;     //√∑ - ch
 							text2[n++] = 0x68;
 							break;
 						case 0xffffff88:
-							text2[n++] = 0x73;     //¯ - sh
+							text2[n++] = 0x73;     //√∏ - sh
 							text2[n++] = 0x68;
 							break;
 						case 0xffffff89:
-							text2[n++] = 0x73;     //˘ - shh
+							text2[n++] = 0x73;     //√π - shh
 							text2[n++] = 0x68;
 							text2[n++] = 0x68;
 							break;
 						case 0xffffff8a: 
-							text2[n++] = 0x22;     //˙ - "
+							text2[n++] = 0x22;     //√∫ - "
 							break;
 						case 0xffffff8b:
-							text2[n++] = 0x79;     //˚ - y
+							text2[n++] = 0x79;     //√ª - y
 							break;
 						case 0xffffff8c:
-							text2[n++] = 0x27;     //¸ - '
+							text2[n++] = 0x27;     //√º - '
 							break;
 						case 0xffffff8d:
-							text2[n++] = 0x65;     //˝ - eh
+							text2[n++] = 0x65;     //√Ω - eh
 							text2[n++] = 0x68;
 							break;
 						case 0xffffff8e:
-							text2[n++] = 0x79;     //˛ - yu
+							text2[n++] = 0x79;     //√æ - yu
 							text2[n++] = 0x75;
 							break;
 						case 0xffffff8f:
-							text2[n++] = 0x79;     //ˇ - ya
+							text2[n++] = 0x79;     //√ø - ya
 							text2[n++] = 0x61;
 							break;
 						case 0xffffff91:
-							text2[n++] = 0x79;     //∏ - yo
+							text2[n++] = 0x79;     //¬∏ - yo
 							text2[n++] = 0x6f;
 							break;
 						case 0xffffff94:
-							text2[n++] = 0x65;     //∫ - e
+							text2[n++] = 0x65;     //¬∫ - e
 							break;
 						case 0xffffff96:
-							text2[n++] = 0x69;     //≥ - i
+							text2[n++] = 0x69;     //¬≥ - i
 							break;
 						case 0xffffff97:
-							text2[n++] = 0x79;     //ø - yi
+							text2[n++] = 0x79;     //¬ø - yi
 							text2[n++] = 0x69;
 							break;
 						default:
@@ -919,22 +943,52 @@ eDBoxLCD::eDBoxLCD()
 	inverted = 0;
 	lcd_type = 0;
 #ifndef NO_LCD
-	lcdfd = open("/dev/dbox/oled0", O_RDWR);
+#ifdef EXTRA_LCD_CHECK
+	FILE *architecture_file;
+	FILE *fp_file;
+	snprintf(architecture_name, sizeof(architecture_name), "unknown");
+	if((architecture_file = fopen("/etc/openvision/architecture", "r")) != NULL)
+	{
+		fgets(architecture_name, sizeof(architecture_name), architecture_file);
+		fclose(architecture_file);
+	}
+	if((strcmp(architecture_name, "sh4\n") == 0))
+	{
+		if((fp_file = fopen("/proc/stb/fp/version", "r")) != NULL)
+		{
+			fgets(fp_version, sizeof(fp_version), fp_file);
+			fclose(fp_file);
+		}
+		if(strcmp(fp_version, "4\n") == 0)
+		{
+			lcdfd = open("/dev/null", O_RDWR);
+		}
+		else
+		{
+			lcdfd = open("/dev/dbox/oled0", O_RDWR);
+		}
+	}		
+	else
+#else
+	{
+		lcdfd = open("/dev/dbox/oled0", O_RDWR);
+	}
+#endif
 	if (lcdfd < 0)
 	{
 		if (!access("/proc/stb/lcd/oled_brightness", W_OK) ||
 		    !access("/proc/stb/fp/oled_brightness", W_OK) )
 			lcd_type = 2;
 		lcdfd = open("/dev/dbox/lcd0", O_RDWR);
-	}
-	else
+	} else
+	{
+		eDebug("[eLCD] found OLED display!");
 		lcd_type = 1;
-
+	}
 	if (lcdfd < 0)
 		eDebug("[eLCD] No oled0 or lcd0 device found!");
 	else
 	{
-
 #ifndef LCD_IOCTL_ASC_MODE
 #define LCDSET                  0x1000
 #define LCD_IOCTL_ASC_MODE	(21|LCDSET)
@@ -968,11 +1022,19 @@ eDBoxLCD::eDBoxLCD()
 			lcd_type = 3;
 		}
 		eDebug("[eLCD] xres=%d, yres=%d, bpp=%d lcd_type=%d", xres, yres, bpp, lcd_type);
-
-		instance = this;
-		setSize(xres, yres, bpp);
 	}
 #endif
+	if (access("/proc/stb/lcd/right_half", F_OK) == 0)
+	{
+		FILE *right_file;
+		if (right_file = fopen("/proc/stb/lcd/right_half", "w"))
+		{
+			fprintf(right_file,"skin");
+			fclose(right_file);
+		}
+	}
+	instance = this;
+	setSize(xres, yres, bpp);
 }
 
 void eDBoxLCD::setInverted(unsigned char inv)
@@ -1003,17 +1065,19 @@ int eDBoxLCD::setLCDContrast(int contrast)
 #define LCDSET                  0x1000
 #define	LCD_IOCTL_SRV			(10|LCDSET)
 #endif
-	eDebug("[eLCD] setLCDContrast %d", contrast);
+	eTrace("[eLCD] setLCDContrast %d", contrast);
 
 	int fp;
 	if((fp = open("/dev/dbox/fp0", O_RDWR)) < 0)
 	{
-		eDebug("[eLCD] can't open /dev/dbox/fp0: %m");
+		eDebug("[eLCD] can't open /dev/dbox/fp0");
 		return(-1);
 	}
 
 	if(ioctl(lcdfd, LCD_IOCTL_SRV, &contrast) < 0)
-		eDebug("[eLCD] can't set lcd contrast: %m");
+	{
+		eDebug("[eLCD] can't set lcd contrast");
+	}
 	close(fp);
 #endif
 	return(0);
@@ -1025,14 +1089,14 @@ int eDBoxLCD::setLCDBrightness(int brightness)
 	if (lcdfd < 0)
 		return(0);
 
-	eDebug("[eLCD] setLCDBrightness %d", brightness);
+	eTrace("[eLCD] setLCDBrightness %d", brightness);
 	FILE *f = fopen("/proc/stb/lcd/oled_brightness", "w");
 	if (!f)
 		f = fopen("/proc/stb/fp/oled_brightness", "w");
 	if (f)
 	{
 		if (fprintf(f, "%d", brightness) == 0)
-			eDebug("[eLCD] write /proc/stb/lcd|fp/oled_brightness failed: %m");
+			eDebug("[eLCD] write /proc/stb/lcd|fp/oled_brightness failed!");
 		fclose(f);
 	}
 	else
@@ -1040,14 +1104,14 @@ int eDBoxLCD::setLCDBrightness(int brightness)
 		int fp;
 		if ((fp = open("/dev/dbox/fp0", O_RDWR)) < 0)
 		{
-			eDebug("[eLCD] can't open /dev/dbox/fp0: %m");
+			eDebug("[eLCD] can't open /dev/dbox/fp0");
 			return(-1);
 		}
 #ifndef FP_IOCTL_LCD_DIMM
 #define FP_IOCTL_LCD_DIMM       3
 #endif
 		if (ioctl(fp, FP_IOCTL_LCD_DIMM, &brightness) < 0)
-			eDebug("[eLCD] can't set lcd brightness: %m");
+			eDebug("[eLCD] can't set lcd brightness");
 		close(fp);
 	}
 #endif
@@ -1059,19 +1123,19 @@ int eDBoxLCD::setLED(int value, int option)
 	switch(option)
 	{
 		case LED_BRIGHTNESS:
-			eDebug("setLEDNormalState %d", value);
+			eDebug("[eLCD] setLEDNormalState %d", value);
 			if(ioctl(lcdfd, LED_IOCTL_BRIGHTNESS_NORMAL, (unsigned char)value) < 0)
-				eDebug("[LED] can't set led brightness");
+				eDebug("[eLCD] can't set led brightness");
 			break;
 		case LED_DEEPSTANDBY:
-			eDebug("setLEDBlinkingTime %d", value);
+			eDebug("[eLCD] setLEDBlinkingTime %d", value);
 			if(ioctl(lcdfd, LED_IOCTL_BRIGHTNESS_DEEPSTANDBY, (unsigned char)value) < 0)
-				eDebug("[LED] can't set led deep standby");
+				eDebug("[eLCD] can't set led deep standby");
 			break;
 		case LED_BLINKINGTIME:
-			eDebug("setLEDBlinkingTime %d", value);
+			eDebug("[eLCD] setLEDBlinkingTime %d", value);
 			if(ioctl(lcdfd, LED_IOCTL_BLINKING_TIME, (unsigned char)value) < 0)
-				eDebug("[LED] can't set led blinking time");
+				eDebug("[eLCD] can't set led blinking time");
 			break;
 	}
 	return(0);
@@ -1101,7 +1165,7 @@ void eDBoxLCD::dumpLCD2PNG(void)
 		switch(bpp)
 		{
 			case 8:
-				eDebug("[eLCD] 8 bit not supportet yet");
+				eDebug("[eLCD] 8 bit not supported yet");
 				break;
 			case 16:
 				{
@@ -1133,10 +1197,10 @@ void eDBoxLCD::dumpLCD2PNG(void)
 				}
 				break;
 			case 32:
-				eDebug("[eLCD]  32 bit not supportet yet");
+				eDebug("[eLCD] 32 bit not supported yet");
 				break;
 			default:
-				eDebug("[eLCD] %d bit not supportet yet",bpp);
+				eDebug("[eLCD] %d bit not supported yet",bpp);
 		}
 	}
 }
@@ -1192,22 +1256,53 @@ void eDBoxLCD::update()
 			write(lcdfd, raw, _stride * height);
 		}
 		else
-#if !defined(DREAMBOX_MOVE_LCD)
-			write(lcdfd, _buffer, _stride * res.height());
-#else
 		{
-			unsigned char gb_buffer[_stride * res.height()];
-			for (int offset = 0; offset < ((_stride * res.height())>>2); offset ++)
+#ifdef DM9X0_LCD
+			if(1)
 			{
-				unsigned int src = 0;
-				if (offset%(_stride>>2) >= 4) // 4 is offset for dm9x0
-					src = ((unsigned int*)_buffer)[offset - 4];  
-			//                                             blue                         red                  green low                     green high
-			((unsigned int*)gb_buffer)[offset] = ((src >> 3) & 0x001F001F) | ((src << 3) & 0xF800F800) | ((src >> 8) & 0x00E000E0) | ((src << 8) & 0x07000700);
+				unsigned char gb_buffer[_stride * res.height()];
+				for (int offset = 0; offset < ((_stride * res.height())>>2); offset ++)
+				{
+					unsigned int src = 0;
+					if (offset%(_stride>>2) >= DM9X0_LCD_Y_OFFSET)
+						src = ((unsigned int*)_buffer)[offset - DM9X0_LCD_Y_OFFSET];
+					//                                             blue                         red                  green low                     green high
+					((unsigned int*)gb_buffer)[offset] = ((src >> 3) & 0x001F001F) | ((src << 3) & 0xF800F800) | ((src >> 8) & 0x00E000E0) | ((src << 8) & 0x07000700);
+				}
+				write(lcdfd, gb_buffer, _stride * res.height());
 			}
-			write(lcdfd, gb_buffer, _stride * res.height());
-		}
+			else
 #endif
+#ifdef LCD_COLOR_BITORDER_RGB565
+			if(1)
+			{
+				//gggrrrrrbbbbbggg bit order from memory
+				//gggbbbbbrrrrrggg bit order to LCD
+				unsigned char gb_buffer[_stride * res.height()];
+				if(! (0x03 & (_stride * res.height())))
+				{//fast
+					for (int offset = 0; offset < ((_stride * res.height())>>2); offset ++)
+					{
+						unsigned int src = ((unsigned int*)_buffer)[offset];
+						((unsigned int*)gb_buffer)[offset] = src & 0xE007E007 | (src & 0x1F001F00) >>5 | (src & 0x00F800F8) << 5;
+					}
+				}
+				else
+				{//slow
+					for (int offset = 0; offset < _stride * res.height(); offset += 2)
+					{
+						gb_buffer[offset] = (_buffer[offset] & 0x07) | ((_buffer[offset + 1] << 3) & 0xE8);
+						gb_buffer[offset + 1] = (_buffer[offset + 1] & 0xE0)| ((_buffer[offset] >> 3) & 0x1F);
+					}
+				}
+				write(lcdfd, gb_buffer, _stride * res.height());
+			}
+			else
+#endif
+			{
+				write(lcdfd, _buffer, _stride * res.height());
+			}
+		}
 	}
 	else /* lcd_type == 1 */
 	{
