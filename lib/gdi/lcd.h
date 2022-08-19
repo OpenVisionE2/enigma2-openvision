@@ -37,6 +37,7 @@ protected:
 	char architecture_name[20];
 	char fp_version[20];
 #endif
+#endif
 public:
 	static eLCD *getInstance();
 	virtual int lock();
