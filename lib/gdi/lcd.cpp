@@ -1263,6 +1263,7 @@ void eDBoxLCD::update()
 				}
 				write(lcdfd, gb_buffer, _stride * res.height());
 			}
+			else
 #endif
 #ifdef LCD_COLOR_BITORDER_RGB565
 			if(1)
@@ -1288,8 +1289,8 @@ void eDBoxLCD::update()
 				}
 				write(lcdfd, gb_buffer, _stride * res.height());
 			}
-#endif
 			else
+#endif
 			{
 				write(lcdfd, _buffer, _stride * res.height());
 			}
