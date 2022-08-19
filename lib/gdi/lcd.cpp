@@ -1020,8 +1020,8 @@ eDBoxLCD::eDBoxLCD()
 		FILE *right_file;
 		if (right_file = fopen("/proc/stb/lcd/right_half", "w"))
 		{
-			fprintf(file,"skin");
-			fclose(file);
+			fprintf(right_file,"skin");
+			fclose(right_file);
 		}
 	}
 
