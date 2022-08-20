@@ -3,7 +3,7 @@ from Plugins.Plugin import PluginDescriptor
 from Components.Harddisk import harddiskmanager
 from twisted.internet.protocol import Protocol, Factory
 from os import remove
-from os.path import isfile
+from os.path import isfile, exists
 
 # globals
 hotplugNotifier = []
@@ -97,7 +97,7 @@ def autostart(reason, **kwargs):
 	if reason == 0:
 		from twisted.internet import reactor
 		try:
-			if isfile("/tmp/hotplug.socket"):
+			if exists("/tmp/hotplug.socket"):
 				remove("/tmp/hotplug.socket")
 		except OSError:
 			pass
