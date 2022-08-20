@@ -84,20 +84,18 @@ while : ; do
 	else
 		SEARCHDIRS="@sysconfdir@/enigma2/skin_common @sysconfdir@/enigma2 @datadir@/enigma2/skin_default @datadir@/enigma2"
 	fi
-	if [ -x "@bindir@/exteplayer3" -o -x "@bindir@/showiframe" ]; then
-		for DIR in $SEARCHDIRS; do
-			if [ -d "${DIR}" ] && [ -f "${DIR}/bootlogo.mp4" ]; then
-				"@bindir@/exteplayer3" "${DIR}/bootlogo.mp4"
-				break
-			elif [ -d "${DIR}" ] && [ -f "${DIR}/backdrop.mvi" ]; then
-				if [ "${SOCFAMILY}" == "hisi" ]; then
-					killall -9 showiframe; sleep 0.1
-				fi
-				"@bindir@/showiframe" "${DIR}/backdrop.mvi"
-				break
+	for DIR in $SEARCHDIRS; do
+		if [ -d "${DIR}" ] && [ -f "${DIR}/bootlogo.mp4" ] && [ -x "@bindir@/exteplayer3" ]; then
+			"@bindir@/exteplayer3" "${DIR}/bootlogo.mp4"
+			break
+		elif [ -d "${DIR}" ] && [ -f "${DIR}/bootlogo.mvi" ] && [ -x "@bindir@/showiframe" ]; then
+			if [ "${SOCFAMILY}" == "hisi" ]; then
+				killall -9 showiframe; sleep 0.1
 			fi
-		done
-	fi
+			"@bindir@/showiframe" "${DIR}/bootlogo.mvi"
+			break
+		fi
+	done
 
 	# Hook to execute scripts always before enigma2 start.
 	if [ -x "@bindir@/enigma2_pre_start.sh" ]; then

@@ -43,7 +43,6 @@ def getSlotImageData(imageDir):
 	else:
 		imageDateList = [
 			"usr/share/enigma2/bootlogo.mvi",
-			"usr/share/bootlogo.mvi",
 			"var/lib/opkg/status"
 		]
 		fileDate = ""
