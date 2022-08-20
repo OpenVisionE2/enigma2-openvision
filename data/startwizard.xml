@@ -29,7 +29,7 @@ self.session.open(PESpeedUp)
 			<text value="Please connect your %s %s (kernel %s) to the internet"/>
 			<list>
 				<listentry caption="Check the internet connection" step="update"/>
-				<listentry caption="Skip internet connection check (disables automatic package installation)" step="time"/>
+				<listentry caption="Skip internet connection check (disables automatic package installation)" step="nima"/>
 			</list>
 			<code>
 self.clearSelectedKeys()
@@ -52,7 +52,7 @@ self.condition = not config.misc.installwizard.opkgloaded.value
 			<text value="Your %s %s (kernel %s) does not have an internet connection"/>
 			<list>
 				<listentry caption="Check the internet connection again" step="update"/>
-				<listentry caption="Skip internet connection check (disables automatic package installation)" step="time"/>
+				<listentry caption="Skip internet connection check (disables automatic package installation)" step="nima"/>
 			</list>
 			<code>
 self.clearSelectedKeys()
