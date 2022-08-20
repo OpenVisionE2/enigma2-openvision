@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from fcntl import ioctl
-from os.path import exists, isfile
+from os.path import isfile
 from struct import pack, unpack
 from time import localtime, time, timezone
 
@@ -97,7 +97,7 @@ def setRTCoffset(forsleep=None):
 
 
 def setRTCtime(wutime):
-	if exists("/proc/stb/fp/rtc_offset"):
+	if isfile("/proc/stb/fp/rtc_offset"):
 		setRTCoffset()
 	if not fileWriteLine("/proc/stb/fp/rtc", str(wutime), source=MODULE_NAME):
 		try:

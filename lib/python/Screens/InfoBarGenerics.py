@@ -42,7 +42,7 @@ from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInform
 from time import time, localtime, strftime
 import os
 from os import sys
-from os.path import exists
+from os.path import isfile, splitext
 from bisect import insort
 import itertools
 import datetime
@@ -145,7 +145,7 @@ class whitelist:
 
 
 def reload_whitelist_vbi():
-	whitelist.vbi = [line.strip() for line in open('/etc/enigma2/whitelist_vbi', 'r').readlines()] if os.path.isfile('/etc/enigma2/whitelist_vbi') else []
+	whitelist.vbi = [line.strip() for line in open('/etc/enigma2/whitelist_vbi', 'r').readlines()] if isfile('/etc/enigma2/whitelist_vbi') else []
 
 
 reload_whitelist_vbi()
@@ -159,7 +159,7 @@ def reload_subservice_groupslist(force=False):
 	if subservice.groupslist is None or force:
 		try:
 			groupedservices = "/etc/enigma2/groupedservices"
-			if not os.path.isfile(groupedservices):
+			if not isfile(groupedservices):
 				groupedservices = "/usr/share/enigma2/groupedservices"
 			subservice.groupslist = [list(g) for k, g in itertools.groupby([line.split('#')[0].strip() for line in open(groupedservices).readlines()], lambda x:not x) if not k]
 		except:
@@ -1583,10 +1583,10 @@ class InfoBarSeek:
 #		print("seekable status changed!")
 		if not self.isSeekable():
 			BoxInfo.setItem("SeekStatePlay", False)
-			if os.path.exists("/proc/stb/lcd/symbol_hdd"):
+			if isfile("/proc/stb/lcd/symbol_hdd"):
 				print("[InfoBarGenerics] Write to /proc/stb/lcd/symbol_hdd")
 				open("/proc/stb/lcd/symbol_hdd", "w").write("0")
-			if os.path.exists("/proc/stb/lcd/symbol_hddprogress"):
+			if isfile("/proc/stb/lcd/symbol_hddprogress"):
 				print("[InfoBarGenerics] Write to /proc/stb/lcd/symbol_hddprogress")
 				open("/proc/stb/lcd/symbol_hddprogress", "w").write("0")
 			self["SeekActions"].setEnabled(False)
@@ -3264,7 +3264,7 @@ class InfoBarResolutionSelection:
 		resList.append((_("Video: %dx%d@%gHz") % (xRes, yRes, fps), ""))
 		resList.append(("--", ""))
 		# Do we need a new sorting with this way here or should we disable some choices?
-		if exists("/proc/stb/video/videomode_choices"):
+		if isfile("/proc/stb/video/videomode_choices"):
 			videoModes = fileReadLine("/proc/stb/video/videomode_choices", "", source=MODULE_NAME)
 			videoModes = videoModes.replace("pal ", "").replace("ntsc ", "").split(" ")
 			for videoMode in videoModes:
@@ -4021,7 +4021,7 @@ class InfoBarHDMI:
 		else:
 			curref = self.session.nav.getCurrentlyPlayingServiceOrGroup()
 			if curref and curref.type != eServiceReference.idServiceHDMIIn:
-				if curref and curref.type != -1 and os.path.splitext(curref.toString().split(":")[10])[1].lower() in AUDIO_EXTENSIONS.union(MOVIE_EXTENSIONS, DVD_EXTENSIONS):
+				if curref and curref.type != -1 and splitext(curref.toString().split(":")[10])[1].lower() in AUDIO_EXTENSIONS.union(MOVIE_EXTENSIONS, DVD_EXTENSIONS):
 					setResumePoint(self.session)
 				self.session.nav.playService(hdmiInServiceRef())
 			elif isStandardInfoBar(self):
