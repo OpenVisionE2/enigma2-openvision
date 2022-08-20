@@ -16,7 +16,7 @@ import NavigationInstance
 from ServiceReference import ServiceReference, isPlayableForCur
 from Screens.InfoBar import InfoBar
 from Components.Sources.StreamService import StreamServiceList
-from os import path
+from os.path import isfile
 
 # TODO: remove pNavgation, eNavigation and rewrite this stuff in python.
 
@@ -143,20 +143,21 @@ class Navigation:
 			print("[Navigation] ignore request to play already running service(1)")
 			return 1
 		print("[Navigation] playing", ref and ref.toString())
-		if path.exists("/proc/stb/lcd/symbol_signal") and config.lcd.mode.value == '1':
-			try:
-				if '0:0:0:0:0:0:0:0:0' not in ref.toString():
-					signal = 1
-				else:
-					signal = 0
-				print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
-				open("/proc/stb/lcd/symbol_signal", "w").write(str(signal))
-			except:
+		if isfile("/proc/stb/lcd/symbol_signal"):
+			if config.lcd.mode.value == '1':
+				try:
+					if '0:0:0:0:0:0:0:0:0' not in ref.toString():
+						signal = 1
+					else:
+						signal = 0
+					print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
+					open("/proc/stb/lcd/symbol_signal", "w").write(str(signal))
+				except:
+					print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
+					open("/proc/stb/lcd/symbol_signal", "w").write("0")
+			elif config.lcd.mode.value == '0':
 				print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
 				open("/proc/stb/lcd/symbol_signal", "w").write("0")
-		elif path.exists("/proc/stb/lcd/symbol_signal") and config.lcd.mode.value == '0':
-			print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
-			open("/proc/stb/lcd/symbol_signal", "w").write("0")
 		if ref is None:
 			self.stopService()
 			return 0
@@ -288,7 +289,7 @@ class Navigation:
 			self.pnav.stopService()
 		self.currentlyPlayingServiceReference = None
 		self.currentlyPlayingServiceOrGroup = None
-		if path.exists("/proc/stb/lcd/symbol_signal"):
+		if isfile("/proc/stb/lcd/symbol_signal"):
 			print("[Navigation] Write to /proc/stb/lcd/symbol_signal")
 			open("/proc/stb/lcd/symbol_signal", "w").write("0")
 

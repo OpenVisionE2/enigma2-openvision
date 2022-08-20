@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import os
+from os import listdir, rmdir
+from os.path import exists, isdir, join
 from bisect import insort
 from Components.ActionMap import loadKeymap
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
@@ -42,15 +43,15 @@ class PluginComponent:
 	def readPluginList(self, directory):
 		"""enumerates plugins"""
 		new_plugins = []
-		for c in os.listdir(directory):
-			directory_category = os.path.join(directory, c)
-			if not os.path.isdir(directory_category):
+		for c in listdir(directory):
+			directory_category = join(directory, c)
+			if not isdir(directory_category):
 				continue
-			for pluginname in os.listdir(directory_category):
+			for pluginname in listdir(directory_category):
 				if pluginname == "__pycache__" or pluginname == "WebInterface":
 					continue
-				path = os.path.join(directory_category, pluginname)
-				if os.path.isdir(path):
+				path = join(directory_category, pluginname)
+				if isdir(path):
 						profile('plugin ' + pluginname)
 						try:
 							plugin = my_import('.'.join(["Plugins", c, pluginname, "plugin"]))
@@ -59,7 +60,7 @@ class PluginComponent:
 							print("[PluginComponent] Plugin ", c + "/" + pluginname, "failed to load:", exc)
 							# supress errors due to missing plugin.py* files (badly removed plugin)
 							for fn in ('plugin.py', 'plugin.pyc', 'plugin.pyo'):
-								if os.path.exists(os.path.join(path, fn)):
+								if exists(join(path, fn)):
 									self.warnings.append((c + "/" + pluginname, str(exc)))
 									from traceback import print_exc
 									print_exc()
@@ -67,7 +68,7 @@ class PluginComponent:
 							else:
 								print("[PluginComponent] Plugin probably removed, but not cleanly in", path)
 								try:
-									os.rmdir(path)
+									rmdir(path)
 								except:
 									pass
 							continue
@@ -81,7 +82,7 @@ class PluginComponent:
 							p.updateIcon(path)
 							new_plugins.append(p)
 
-						keymap = os.path.join(path, "keymap.xml")
+						keymap = join(path, "keymap.xml")
 						if fileExists(keymap):
 							try:
 								loadKeymap(keymap)

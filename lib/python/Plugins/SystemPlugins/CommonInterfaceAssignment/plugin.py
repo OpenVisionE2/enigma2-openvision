@@ -21,7 +21,8 @@ from Tools.BoundFunction import boundFunction
 from Tools.CIHelper import cihelper
 from Tools.XMLTools import stringToXML
 
-import os
+from os import remove, unlink
+from os.path import exists
 
 
 class CIselectMainMenu(Screen):
@@ -174,13 +175,13 @@ class CIconfigMenu(Screen):
 		self.session.openWithCallback(self.finishedCAidSelection, CAidSelect, self.caidlist, self.selectedcaid)
 
 	def menuPressed(self):
-		if os.path.exists(self.filename):
+		if exists(self.filename):
 			self.session.openWithCallback(self.deleteXMLfile, MessageBox, _("Delete file") + " " + self.filename + "?", MessageBox.TYPE_YESNO)
 
 	def deleteXMLfile(self, answer):
 		if answer:
 			try:
-				os.remove(self.filename)
+				remove(self.filename)
 			except:
 				print("[CommonInterfaceAssignment] CI_Config_CI%d error remove xml..." % self.ci_slot)
 			else:
@@ -300,10 +301,10 @@ class CIconfigMenu(Screen):
 			fp.close()
 		except:
 			print("[CommonInterfaceAssignment] CI_Config_CI%d xml not written" % self.ci_slot)
-			os.unlink(self.filename)
+			unlink(self.filename)
 
 	def loadXML(self):
-		if not os.path.exists(self.filename):
+		if not exists(self.filename):
 			self.setServiceListInfo()
 			return
 
@@ -339,7 +340,7 @@ class CIconfigMenu(Screen):
 		except:
 			print("[CommonInterfaceAssignment] CI_Config_CI%d error parsing xml..." % self.ci_slot)
 			try:
-				os.remove(self.filename)
+				remove(self.filename)
 			except:
 				print("[CommonInterfaceAssignment] CI_Activate_Config_CI%d error remove damaged xml..." % self.ci_slot)
 

@@ -11,7 +11,8 @@ from Components.Sources.StaticText import StaticText
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Tools.Directories import fileExists
-from os import system, listdir, rename, path, mkdir
+from os import system, listdir, rename, mkdir
+from os.path import exists, isfile
 from time import sleep
 from six import ensure_str
 
@@ -19,9 +20,9 @@ from six import ensure_str
 class CronTimers(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		if path.exists('/usr/scripts') and not path.exists('/usr/script'):
+		if exists('/usr/scripts') and not exists('/usr/script'):
 			rename('/usr/scripts', '/usr/script')
-		if not path.exists('/usr/script'):
+		if not exists('/usr/script'):
 			mkdir('/usr/script', 0o755)
 		screentitle = _("Cron manager")
 		title = screentitle
@@ -158,7 +159,7 @@ class CronTimers(Screen):
 		self['labdisabled'].hide()
 		self.my_crond_active = False
 		self.my_crond_run = False
-		if path.exists('/etc/rc3.d/S90crond'):
+		if exists('/etc/rc3.d/S90crond'):
 			self['labdisabled'].hide()
 			self['labactive'].show()
 			self.my_crond_active = True
@@ -179,7 +180,7 @@ class CronTimers(Screen):
 			self.summary_running = _("Stopped")
 
 		self.list = []
-		if path.exists('/etc/cron/crontabs/root'):
+		if isfile('/etc/cron/crontabs/root'):
 			f = open('/etc/cron/crontabs/root', 'r')
 			for line in f.readlines():
 				parts = line.strip().split()

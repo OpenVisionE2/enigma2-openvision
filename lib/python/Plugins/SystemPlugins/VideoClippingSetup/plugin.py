@@ -129,8 +129,8 @@ def startup(reason, **kwargs):
 
 
 def Plugins(**kwargs):
-	from os import path
-	if path.exists("/proc/stb/vmpeg/0/clip_left"):
+	from os.path import isfile
+	if isfile("/proc/stb/vmpeg/0/clip_left"):
 		from Plugins.Plugin import PluginDescriptor
 		return [PluginDescriptor(name=_("Video clipping setup"), description=_("clip overscan / letterbox borders"), where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main),
 					PluginDescriptor(name=_("Video clipping setup"), description="", where=PluginDescriptor.WHERE_SESSIONSTART, fnc=startup)]

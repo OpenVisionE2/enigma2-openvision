@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from bisect import insort
 from os import fsync, makedirs, remove, rename, sys
-from os.path import exists, isdir, realpath
+from os.path import isfile, isdir, realpath
 from sys import maxsize
 from threading import Lock
 from time import ctime, localtime, strftime, time
@@ -178,7 +178,7 @@ class RecordTimer(Timer):
 	def loadTimers(self, justLoad=False):
 		timersDom = fileReadXML(self.timersFilename, source=MODULE_NAME)
 		if timersDom is None:
-			if not exists(self.timersFilename):
+			if not isfile(self.timersFilename):
 				return
 			AddPopup(_("The timer file 'timers.xml' is corrupt and could not be loaded."), type=MessageBox.TYPE_ERROR, timeout=0, id="TimerLoadFailed")
 			print("[RecordTimer] Error: Loading 'timers.xml' failed!")
@@ -1060,7 +1060,7 @@ class RecordTimerEntry(TimerEntry, object):
 			# We've seen two threads arrive here "together".
 			# Both see the file as existing, but only one can delete it...
 			with wasrecLock:
-				if exists("/tmp/was_rectimer_wakeup") and not wasRecTimerWakeup:
+				if isfile("/tmp/was_rectimer_wakeup") and not wasRecTimerWakeup:
 					wasRecTimerWakeup = int(open("/tmp/was_rectimer_wakeup", "r").read()) and True or False
 					remove("/tmp/was_rectimer_wakeup")
 			self.autostate = Screens.Standby.inStandby
