@@ -637,10 +637,9 @@ class ImageInformation(InformationBase):
 			mediaService = "ServiceMP3"
 		else:
 			mediaService = _("Unknown")
+		info.append(formatLine("P1", _("Media service player"), "%s") % mediaService)
 		if isPluginInstalled("ServiceApp"):
 			extraService = "ServiceApp"
-		info.append(formatLine("P1", _("Media service player"), "%s") % mediaService)
-		if extraService == "ServiceApp":
 			info.append(formatLine("P1", _("Extra service player"), "%s") % extraService)
 		info.append("")
 		info.append(formatLine("H", _("Software information")))
