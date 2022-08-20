@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 from datetime import datetime
 from os import remove, statvfs, uname
-from os.path import exists, isfile, join as pathjoin
+from os.path import isfile, join as pathjoin
 from six import ensure_str
 from struct import pack
 from sys import maxsize

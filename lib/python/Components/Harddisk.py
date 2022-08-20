@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from fcntl import ioctl
 from os import listdir, major, minor, mkdir, popen, rmdir, sep, stat, statvfs, system, unlink
-from os.path import abspath, dirname, exists, ismount, join as pathjoin, normpath, realpath
+from os.path import isfile, abspath, dirname, exists, ismount, join as pathjoin, normpath, realpath
 from re import search
 from time import sleep, time
 
@@ -309,7 +309,7 @@ class Harddisk:
 		task = Task.ConditionTask(job, _("Waiting for partition."), timeoutCount=20)
 		task.check = lambda: not exists(self.partitionPath("1"))
 		task.weighting = 1
-		if exists("/usr/sbin/parted"):
+		if isfile("/usr/sbin/parted"):
 			use_parted = True
 		else:
 			if size > 2097151:

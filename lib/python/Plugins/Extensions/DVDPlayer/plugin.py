@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
+from os.path import exists, join
 from Tools.Directories import fileExists
 from Plugins.Plugin import PluginDescriptor
 from Components.Harddisk import harddiskmanager
@@ -14,8 +14,8 @@ def main(session, **kwargs):
 
 def play(session, **kwargs):
 	from Screens import DVD
-	if (os.path.exists(os.path.join(harddiskmanager.getAutofsMountpoint(harddiskmanager.getCD()), "VIDEO_TS"))
-			or os.path.exists(os.path.join(harddiskmanager.getAutofsMountpoint(harddiskmanager.getCD()), "video_ts"))):
+	if (exists(join(harddiskmanager.getAutofsMountpoint(harddiskmanager.getCD()), "VIDEO_TS"))
+			or exists(join(harddiskmanager.getAutofsMountpoint(harddiskmanager.getCD()), "video_ts"))):
 		session.open(DVD.DVDPlayer, dvd_device=harddiskmanager.getAutofsMountpoint(harddiskmanager.getCD()))
 	else:
 		return
@@ -37,8 +37,8 @@ def filescan_open(list, session, **kwargs):
 	from Screens import DVD
 	if len(list) == 1 and list[0].mimetype == "video/x-dvd":
 		cd = harddiskmanager.getCD()
-		if cd and (os.path.exists(os.path.join(harddiskmanager.getAutofsMountpoint(cd), "VIDEO_TS"))
-				or os.path.exists(os.path.join(harddiskmanager.getAutofsMountpoint(cd), "video_ts"))):
+		if cd and (exists(join(harddiskmanager.getAutofsMountpoint(cd), "VIDEO_TS"))
+				or exists(join(harddiskmanager.getAutofsMountpoint(cd), "video_ts"))):
 			print("[DVDPlayer] found device /dev/%s", " mount path ", harddiskmanager.getAutofsMountpoint(cd))
 			session.open(DVD.DVDPlayer, dvd_device="/dev/%s" % (harddiskmanager.getAutofsMountpoint(cd)))
 			return
@@ -90,8 +90,8 @@ def menu(menuid, **kwargs):
 		global detected_DVD
 		if detected_DVD is None or detected_DVD:
 			cd = harddiskmanager.getCD()
-			if cd and (os.path.exists(os.path.join(harddiskmanager.getAutofsMountpoint(cd), "VIDEO_TS"))
-					or os.path.exists(os.path.join(harddiskmanager.getAutofsMountpoint(cd), "video_ts"))):
+			if cd and (exists(join(harddiskmanager.getAutofsMountpoint(cd), "VIDEO_TS"))
+					or exists(join(harddiskmanager.getAutofsMountpoint(cd), "video_ts"))):
 				print("[DVDPlayer] Mountpoint is present and is", harddiskmanager.getAutofsMountpoint(cd))
 				detected_DVD = True
 			else:

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from bisect import insort
 from os import fsync, remove, rename
-from os.path import exists
+from os.path import isfile
 from sys import maxsize
 from time import ctime, localtime, mktime, time
 
@@ -57,7 +57,7 @@ class PowerTimer(Timer):
 	def loadTimers(self):
 		timersDom = fileReadXML(self.timersFilename, source=MODULE_NAME)
 		if timersDom is None:
-			if not exists(self.timersFilename):
+			if not isfile(self.timersFilename):
 				return
 			AddPopup(_("The timer file 'pm_timers.xml' is corrupt and could not be loaded."), type=MessageBox.TYPE_ERROR, timeout=0, id="TimerLoadFailed")
 			print("[PowerTimer] Error: Loading 'pm_timers.xml' failed!")
@@ -372,7 +372,7 @@ class PowerTimerEntry(TimerEntry, object):
 			return True
 		elif next_state == self.StateRunning:
 			self.wasPowerTimerWakeup = False
-			if exists("/tmp/was_powertimer_wakeup"):
+			if isfile("/tmp/was_powertimer_wakeup"):
 				self.wasPowerTimerWakeup = int(open("/tmp/was_powertimer_wakeup", "r").read()) and True or False
 				remove("/tmp/was_powertimer_wakeup")
 			# If this timer has been cancelled, just go to "end" state.

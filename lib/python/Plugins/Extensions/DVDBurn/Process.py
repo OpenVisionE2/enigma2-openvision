@@ -2,7 +2,6 @@
 from Components.Task import Task, Job, DiskspacePrecondition, Condition, ToolExistsPrecondition
 from Components.Harddisk import harddiskmanager
 from Screens.MessageBox import MessageBox
-import os
 
 
 class png2yuvTask(Task):
@@ -188,10 +187,10 @@ class DemuxTask(Task):
 		print(self.mplex_streamfiles)
 
 		if failed:
-			import os
+			from os import remove
 			for file in self.generated_files:
 				try:
-					os.remove(file)
+					remove(file)
 				except OSError:
 					pass
 
@@ -924,7 +923,8 @@ class DVDJob(Job):
 		if self.menupreview:
 			PreviewTask(self, self.workspace + "/dvd/VIDEO_TS/")
 		else:
-			hasProjectX = os.path.exists('/usr/bin/projectx')
+			from os.path import isfile
+			hasProjectX = isfile('/usr/bin/projectx')
 			print("[DVDBurn] DVDJob hasProjectX=", hasProjectX)
 			for self.i in range(nr_titles):
 				self.title = self.project.titles[self.i]

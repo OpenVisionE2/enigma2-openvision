@@ -1057,7 +1057,7 @@ def InitUsageConfig():
 			("on", _("On")),
 			("auto", _("Auto"))
 		]
-		if exists("/proc/stb/fp/fan_choices"):
+		if isfile("/proc/stb/fp/fan_choices"):
 			print("[UsageConfig] Read /proc/stb/fp/fan_choices")
 			choicelist = [x for x in choicelist if x[0] in open("/proc/stb/fp/fan_choices", "r").read().strip().split(" ")]
 		config.usage.fan = ConfigSelection(choicelist)

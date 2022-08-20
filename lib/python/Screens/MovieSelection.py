@@ -1000,7 +1000,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 					# force a BLU-RAY extention
 					Screens.InfoBar.InfoBar.instance.checkTimeshiftRunning(boundFunction(self.itemSelectedCheckTimeshiftCallback, "bluray", path))
 					return
-				if isdir(pathjoin(path, "VIDEO_TS/")) or exists(pathjoin(path, "VIDEO_TS.IFO")):
+				if isdir(pathjoin(path, "VIDEO_TS/")) or isfile(pathjoin(path, "VIDEO_TS.IFO")):
 					# force a DVD extention
 					Screens.InfoBar.InfoBar.instance.checkTimeshiftRunning(boundFunction(self.itemSelectedCheckTimeshiftCallback, ".img", path))
 					return

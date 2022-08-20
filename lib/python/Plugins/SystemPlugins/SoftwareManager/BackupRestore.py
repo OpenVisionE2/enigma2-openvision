@@ -12,7 +12,8 @@ from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.FileList import MultiFileSelectList
 from enigma import eEnv, eEPGCache
 from Tools.Directories import *
-from os import path, makedirs, listdir, stat, rename, remove
+from os import makedirs, listdir, stat, rename, remove
+from os.path import exists, isfile
 from datetime import date
 
 config.plugins.configurationbackup = ConfigSubsection()
@@ -62,13 +63,13 @@ class BackupScreen(ConfigListScreen, Screen):
 		if config.plugins.softwaremanager.epgcache.value:
 			eEPGCache.getInstance().save()
 		try:
-			if (path.exists(self.backuppath) == False):
+			if (exists(self.backuppath) == False):
 				makedirs(self.backuppath)
 			self.backupdirs = ' '.join(config.plugins.configurationbackup.backupdirs.value)
-			if path.exists(self.fullbackupfilename):
+			if isfile(self.fullbackupfilename):
 				dt = str(date.fromtimestamp(stat(self.fullbackupfilename).st_ctime))
 				self.newfilename = self.backuppath + "/" + dt + '-' + self.backupfile
-				if path.exists(self.newfilename):
+				if isfile(self.newfilename):
 					remove(self.newfilename)
 				rename(self.fullbackupfilename, self.newfilename)
 			if self.finished_cb:
@@ -223,7 +224,7 @@ class RestoreMenu(Screen):
 	def fill_list(self):
 		self.flist = []
 		self.path = getBackupPath()
-		if (path.exists(self.path) == False):
+		if (exists(self.path) == False):
 			makedirs(self.path)
 		for file in listdir(self.path):
 			if (file.endswith(".tar.gz")):
@@ -258,7 +259,7 @@ class RestoreMenu(Screen):
 		if ret:
 			self.exe = True
 			print("[SoftwareManager] removing:", self.val)
-			if path.exists(self.val):
+			if exists(self.val):
 				remove(self.val)
 			self.exe = False
 			self.fill_list()
@@ -290,7 +291,7 @@ class RestoreScreen(Screen, ConfigListScreen):
 			self.onShown.append(self.doRestore)
 
 	def doRestore(self):
-		if path.exists("/proc/stb/vmpeg/0/dst_width"):
+		if isfile("/proc/stb/vmpeg/0/dst_width"):
 			print("[BackupRestore] Add /proc/stb/vmpeg/0 entries to backup command.")
 			restorecmdlist = ["tar -xzvf " + self.fullbackupfilename + " -C /", "echo 0 > /proc/stb/vmpeg/0/dst_height", "echo 0 > /proc/stb/vmpeg/0/dst_left", "echo 0 > /proc/stb/vmpeg/0/dst_top", "echo 0 > /proc/stb/vmpeg/0/dst_width", "killall -9 enigma2"]
 		else:

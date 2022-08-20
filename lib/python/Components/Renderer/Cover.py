@@ -6,7 +6,7 @@ from Components.Pixmap import Pixmap
 from Components.config import config
 from Components.Sources.ServiceEvent import ServiceEvent
 from Components.Sources.CurrentService import CurrentService
-from os import path as os_path
+from os.path import exists, splitext, join, split, basename, isdir, dirname
 
 
 class Cover(Renderer):
@@ -45,8 +45,8 @@ class Cover(Renderer):
 					if service.toString().endswith == '..':
 						path = config.movielist.last_videodir.value
 					for ext in self.exts:
-						p = os_path.dirname(path) + '/folder' + ext
-						picname = os_path.exists(p) and p or ''
+						p = dirname(path) + '/folder' + ext
+						picname = exists(p) and p or ''
 						if picname:
 							break
 
@@ -55,7 +55,7 @@ class Cover(Renderer):
 				if picname == self.picname:
 					return
 				self.picname = picname
-				if picname != '' and os_path.exists(picname):
+				if picname != '' and exists(picname):
 					sc = AVSwitch().getFramebufferScale()
 					size = self.instance.size()
 					self.picload = ePicLoad()
@@ -85,13 +85,13 @@ class Cover(Renderer):
 
 	def findCover(self, path):
 		fpath = p1 = p2 = p3 = ''
-		name, ext = os_path.splitext(path)
+		name, ext = splitext(path)
 		ext = ext.lower()
-		if os_path.isfile(path):
-			dir = os_path.dirname(path)
+		if exists(path):
+			dir = dirname(path)
 			p1 = name
-			p2 = os_path.join(dir, os_path.basename(dir))
-		elif os_path.isdir(path):
+			p2 = join(dir, basename(dir))
+		elif isdir(path):
 			if path.lower().endswith('/bdmv'):
 				dir = path[:-5]
 				if dir.lower().endswith('/brd'):
@@ -102,18 +102,18 @@ class Cover(Renderer):
 					dir = dir[:-4]
 			else:
 				dir = path
-				p2 = os_path.join(dir, 'folder')
-			prtdir, dirname = os_path.split(dir)
-			p1 = os_path.join(dir, dirname)
-			p3 = os_path.join(prtdir, dirname)
+				p2 = join(dir, 'folder')
+			prtdir, dirname = split(dir)
+			p1 = join(dir, dirname)
+			p3 = join(prtdir, dirname)
 		pathes = (p1, p2, p3)
 		for p in pathes:
 			for ext in self.exts:
 				path = p + ext
-				if os_path.exists(path):
+				if exists(path):
 					break
 
-			if os_path.exists(path):
+			if exists(path):
 				fpath = path
 				break
 

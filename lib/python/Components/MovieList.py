@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import os
+from os import stat
+from os.path import exists, split, splitext, normpath, realpath, basename
 import struct
 import random
 from time import localtime, strftime
@@ -44,14 +45,14 @@ class MovieListData:
 
 class StubInfo:
 	def getName(self, serviceref):
-		return os.path.split(serviceref.getPath())[1]
+		return split(serviceref.getPath())[1]
 
 	def getLength(self, serviceref):
 		return -1
 
 	def getFileSize(self, serviceref):
 		try:
-			return os.stat(serviceref.getPath()).st_size
+			return stat(serviceref.getPath()).st_size
 		except:
 			return -1
 
@@ -64,7 +65,7 @@ class StubInfo:
 	def getInfo(self, serviceref, w):
 		try:
 			if w == iServiceInformation.sTimeCreate:
-				return os.stat(serviceref.getPath()).st_ctime
+				return stat(serviceref.getPath()).st_ctime
 		except UnicodeEncodeError as err:
 			print("UnicodeEncodeError: %s" % (err))
 		if w == iServiceInformation.sDescription:
@@ -268,7 +269,7 @@ class MovieList(GUIComponent):
 		result = {}
 		for timer in NavigationInstance.instance.RecordTimer.timer_list:
 			if timer.isRunning() and not timer.justplay:
-				result[os.path.split(timer.Filename)[1] + timer.record_service.getFilenameExtension()] = timer
+				result[split(timer.Filename)[1] + timer.record_service.getFilenameExtension()] = timer
 		if self.runningTimers == result:
 			return
 		self.runningTimers = result
@@ -417,10 +418,10 @@ class MovieList(GUIComponent):
 				# Special case: "parent"
 				txt = ".."
 			else:
-				p = os.path.split(pathName)
+				p = split(pathName)
 				if not p[1]:
 					# if path ends in '/', p is blank.
-					p = os.path.split(p[0])
+					p = split(p[0])
 				txt = p[1]
 				if txt == ".Trash":
 					res.append(MultiContentEntryPixmapAlphaTest(pos=((col0iconSize - self.iconTrash.size().width()) // 2, (self.itemHeight - self.iconFolder.size().height()) // 2), size=(iconSize, self.iconTrash.size().height()), png=self.iconTrash))
@@ -447,12 +448,12 @@ class MovieList(GUIComponent):
 			else:
 				data.txt = info.getName(serviceref).replace('_', ' ').strip()
 			if config.movielist.hide_extensions.value:
-				fileName, fileExtension = os.path.splitext(data.txt)
+				fileName, fileExtension = splitext(data.txt)
 				if fileExtension in KNOWN_EXTENSIONS:
 					data.txt = fileName
 			data.icon = None
 			data.part = None
-			if os.path.split(pathName)[1] in self.runningTimers:
+			if split(pathName)[1] in self.runningTimers:
 				if switch == 'i':
 					if (self.playInBackground or self.playInForeground) and serviceref == (self.playInBackground or self.playInForeground):
 						data.icon = self.iconMoviePlayRec
@@ -641,11 +642,11 @@ class MovieList(GUIComponent):
 			return
 		realtags = set()
 		autotags = {}
-		rootPath = os.path.normpath(root.getPath())
+		rootPath = normpath(root.getPath())
 		parent = None
 		# Don't navigate above the "root"
-		if len(rootPath) > 1 and (os.path.realpath(rootPath) != os.path.realpath(config.movielist.root.value)):
-			parent = os.path.split(os.path.normpath(rootPath))[0]
+		if len(rootPath) > 1 and (realpath(rootPath) != realpath(config.movielist.root.value)):
+			parent = split(normpath(rootPath))[0]
 			if parent and (parent not in defaultInhibitDirs):
 				# enigma wants an extra '/' appended
 				if not parent.endswith('/'):
@@ -656,7 +657,7 @@ class MovieList(GUIComponent):
 				numberOfDirs += 1
 
 		if config.usage.movielist_trashcan.value:
-			here = os.path.realpath(rootPath)
+			here = realpath(rootPath)
 			MovieList.InTrashFolder = here.startswith(getTrashFolder(here))
 		else:
 			MovieList.InTrashFolder = False
@@ -682,10 +683,10 @@ class MovieList(GUIComponent):
 			begin2 = 0
 			if MovieList.UsingTrashSort:
 				f_path = serviceref.getPath()
-				if os.path.exists(f_path):	# Override with deltime for sorting
+				if exists(f_path):	# Override with deltime for sorting
 					if MovieList.UsingTrashSort == MovieList.TRASHSORT_SHOWRECORD:
 						begin2 = begin		# Save for later re-instatement
-					begin = os.stat(f_path).st_ctime
+					begin = stat(f_path).st_ctime
 
 			if serviceref.flags & eServiceReference.mustDescent:
 				dirname = info.getName(serviceref)
@@ -799,7 +800,7 @@ class MovieList(GUIComponent):
 					break
 
 		if self.root and numberOfDirs > 0:
-			rootPath = os.path.normpath(self.root.getPath())
+			rootPath = normpath(self.root.getPath())
 			if not rootPath.endswith('/'):
 				rootPath += '/'
 			if rootPath != parent:
@@ -807,7 +808,7 @@ class MovieList(GUIComponent):
 				# list for parentDirectory index. Usually it is the first one anyway
 				for index, item in enumerate(self.list):
 					if item[0].flags & eServiceReference.mustDescent:
-						itempath = os.path.normpath(item[0].getPath())
+						itempath = normpath(item[0].getPath())
 						if not itempath.endswith('/'):
 							itempath += '/'
 						if itempath == rootPath:
@@ -885,7 +886,7 @@ class MovieList(GUIComponent):
 		if ref.flags & eServiceReference.mustDescent:
 			# Only use directory basename for sorting.
 			try:
-				name = os.path.basename(os.path.normpath(name))
+				name = basename(normpath(name))
 			except (IOError, OSError) as err:
 				pass
 		# print("[MovieList] Sorting for -%s-" % name)
@@ -1014,9 +1015,9 @@ class MovieList(GUIComponent):
 def getShortName(name, serviceref):
 	if serviceref.flags & eServiceReference.mustDescent: #Directory
 		pathName = serviceref.getPath()
-		p = os.path.split(pathName)
+		p = split(pathName)
 		if not p[1]: #if path ends in '/', p is blank.
-			p = os.path.split(p[0])
+			p = split(p[0])
 		return p[1].upper()
 	else:
 		return name

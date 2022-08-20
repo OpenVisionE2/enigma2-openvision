@@ -7,12 +7,12 @@ from enigma import ePixmap
 from Tools.Directories import fileExists, SCOPE_GUISKIN, resolveFilename
 from Components.Element import cached
 from Components.Converter.Poll import Poll
-import os
+from os.path import exists
 
 
 class PicEmu2(Renderer, Poll):
 	__module__ = __name__
-	if os.path.exists("/usr/lib64"):
+	if exists("/usr/lib64"):
 		searchPaths = ('/data/%s/', '/usr/share/enigma2/%s/', '/usr/lib64/enigma2/python/Plugins/Extensions/%s/', '/media/sde1/%s/', '/media/cf/%s/', '/media/sdd1/%s/', '/media/hdd/%s/', '/media/usb/%s/', '/media/ba/%s/', '/mnt/ba/%s/', '/media/sda/%s/', '/etc/%s/')
 	else:
 		searchPaths = ('/data/%s/', '/usr/share/enigma2/%s/', '/usr/lib/enigma2/python/Plugins/Extensions/%s/', '/media/sde1/%s/', '/media/cf/%s/', '/media/sdd1/%s/', '/media/hdd/%s/', '/media/usb/%s/', '/media/ba/%s/', '/mnt/ba/%s/', '/media/sda/%s/', '/etc/%s/')
