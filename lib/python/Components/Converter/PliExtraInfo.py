@@ -7,7 +7,6 @@ from Tools.Transponder import ConvertToHumanReadable
 from Tools.GetEcmInfo import GetEcmInfo
 from Components.Converter.Poll import Poll
 from skin import parameters
-from os.path import isfile
 
 caid_data = (
 	("0x0100", "0x01ff", "Seca", "S", True),
@@ -265,6 +264,7 @@ class PliExtraInfo(Poll, Converter):
 		fps = (info.getInfo(iServiceInformation.sFrameRate) + 500) // 1000
 		if not fps or fps == -1:
 			try:
+				from os.path import isfile
 				if isfile("/proc/stb/vmpeg/0/framerate"):
 					print("[PliExtraInfo] Read /proc/stb/vmpeg/0/framerate")
 					fps = (int(open("/proc/stb/vmpeg/0/framerate", "r").read()) + 500) // 1000

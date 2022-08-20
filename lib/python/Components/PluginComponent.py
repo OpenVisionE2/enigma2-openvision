@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from os import listdir, rmdir
-from os.path import exists, isfile, join
+from os.path import exists, isdir, join
 from bisect import insort
 from Components.ActionMap import loadKeymap
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
@@ -51,7 +51,7 @@ class PluginComponent:
 				if pluginname == "__pycache__" or pluginname == "WebInterface":
 					continue
 				path = join(directory_category, pluginname)
-				if .isdir(path):
+				if isdir(path):
 						profile('plugin ' + pluginname)
 						try:
 							plugin = my_import('.'.join(["Plugins", c, pluginname, "plugin"]))

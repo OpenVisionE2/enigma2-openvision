@@ -5,7 +5,6 @@ from Tools.StbHardware import getBoxProc
 from Tools.Directories import fileExists
 # workaround for required config entry dependencies.
 import Screens.MovieSelection
-from os.path import exists
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 
@@ -160,6 +159,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 	def restartLastMovie(self):
 		service = enigma.eServiceReference(config.usage.last_movie_played.value)
 		if service:
+			from os.path import exists
 			if exists(service.getPath()):
 				from Components.ParentalControl import parentalControl
 				if parentalControl.isServicePlayable(service, self.openMoviePlayer):
