@@ -285,6 +285,8 @@ def standbyCounterChanged(configElement):
 def InitLcd():
 	if not BoxInfo.getItem("dboxlcd"):
 		detected = False
+	elif model == "pulse4kmini":
+		detected = True
 	else:
 		detected = eDBoxLCD.getInstance().detected()
 	BoxInfo.setItem("Display", detected)
