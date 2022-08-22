@@ -228,12 +228,12 @@
 		<panel name="SummaryClockPanel" />
 	</screen>
 	<screen name="MessageBox_summary" position="0,0" size="220,176">
-		<widget source="parent.Text" render="Label" position="0,0" size="220,176" font="FdLcD;26" halign="center" />
-		<widget source="parent.selectedChoice" render="Label" position="0,135" size="220,28" font="FdLcD;26" halign="center" noWrap="1" />
+		<widget source="parent.Text" conditional="parent.Text" render="Label" position="0,0" size="220,176" font="FdLcD;26" halign="center" />
+		<widget source="parent.selectedChoice" conditional="parent.selectedChoice" render="Label" position="0,135" size="220,28" font="FdLcD;26" halign="center" noWrap="1" />
 	</screen>
 	<screen name="MessageBoxSimple_summary" position="0,0" size="220,176">
-		<widget source="parent.Text" render="Label" position="0,0" size="220,176" font="FdLcD;26" halign="center" />
-		<widget source="parent.selectedChoice" render="Label" position="0,135" size="220,28" font="FdLcD;26" halign="center" noWrap="1" />
+		<widget source="parent.Text" conditional="parent.Text" render="Label" position="0,0" size="220,176" font="FdLcD;26" halign="center" />
+		<widget source="parent.selectedChoice" conditional="parent.selectedChoice" render="Label" position="0,135" size="220,28" font="FdLcD;26" halign="center" noWrap="1" />
 	</screen>
 	<screen name="AboutSummary" position="0,0" size="220,176">
 		<widget source="parent.Title" render="Label" position="top" size="*,100" font="FdLcD;28" halign="center" valign="center" />

@@ -400,12 +400,12 @@
 		<widget source="parent.summary_list" render="Label" position="fill" font="FdLcD;21" noWrap="1" valign="top" />
 	</screen>
 	<screen name="MessageBox_summary" position="0,0" size="390,240">
-		<widget source="parent.Text" render="Label" position="0,0" size="390,240" font="FdLcD;24" halign="center" />
-		<widget source="parent.selectedChoice" render="Label" position="0,135" size="390,28" font="FdLcD;26" foregroundColor="#F4FA58" halign="center" noWrap="1" />
+		<widget source="parent.Text" conditional="parent.Text" render="Label" position="0,0" size="390,240" font="FdLcD;24" halign="center" />
+		<widget source="parent.selectedChoice" conditional="parent.selectedChoice" render="Label" position="0,135" size="390,28" font="FdLcD;26" foregroundColor="#F4FA58" halign="center" noWrap="1" />
 	</screen>
 	<screen name="MessageBoxSimple_summary" position="0,0" size="390,240">
-		<widget source="parent.Text" render="Label" position="0,0" size="390,240" font="FdLcD;24" halign="center" />
-		<widget source="parent.selectedChoice" render="Label" position="0,135" size="390,28" font="FdLcD;26" foregroundColor="#F4FA58" halign="center" noWrap="1" />
+		<widget source="parent.Text" conditional="parent.Text" render="Label" position="0,0" size="390,240" font="FdLcD;24" halign="center" />
+		<widget source="parent.selectedChoice" conditional="parent.selectedChoice" render="Label" position="0,135" size="390,28" font="FdLcD;26" foregroundColor="#F4FA58" halign="center" noWrap="1" />
 	</screen>
 	<screen name="AboutSummary" position="0,0" size="390,240">
 		<widget source="AboutText" render="Label" position="0,0" size="390,240" font="FdLcD;11" />
