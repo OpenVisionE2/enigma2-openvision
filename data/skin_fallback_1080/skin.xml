@@ -2687,11 +2687,16 @@
 		<widget name="state" position="70,12" size="200,50" font="RegularBold;34" backgroundColor="OE_Background" transparent="1" valign="center" halign="center"/>
 	</screen>
 	<!-- QUICK SUBTITLES CONFIG KEY BLUE -->
-	<screen name="QuickSubtitlesConfigMenu" title="Subtitle settings" backgroundColor="OE_Background" position="40,70" size="1030,415">
-		<eLabel backgroundColor="OE_NewBg2" position="10,10" size="80,450" zPosition="-5" foregroundColor="white"/>
-		<widget name="config" itemHeight="40" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" backgroundColor="OE_Background" position="100,10" size="920,450" transparent="1"/>
+	<screen name="QuickSubtitlesConfigMenu" title="Subtitle settings" backgroundColor="OE_Background" position="40,70" size="1190,415">
+		<eLabel backgroundColor="OE_NewBg2" position="10,10" size="245,450" zPosition="-5" foregroundColor="white"/>
+		<widget name="config" itemHeight="40" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" backgroundColor="OE_Background" position="262,10" size="920,450" transparent="1"/>
 		<widget name="videofps" position="105,290" size="910,40" backgroundColor="OE_Background" transparent="1" zPosition="1" font="Regular;24" valign="center" halign="left" foregroundColor="blue"/>
-		<ePixmap alphatest="blend" pixmap="OctEtFHD/colors/o_logo.png" position="12,30" size="75,75" transparent="1" zPosition="1"/>
+		<ePixmap alphatest="blend" pixmap="OctEtFHD/colors/o_logo.png" position="85,30" size="75,75" zPosition="1"/>
+		<ePixmap alphatest="blend" pixmap="OctEtFHD/buttons/key_ok.png" position="15,300" size="64,43" zPosition="1"/>
+		<widget name="save" position="23,295" size="210,55" backgroundColor="OE_Background" transparent="1" zPosition="1" font="Regular;24" valign="center" halign="center"/>
+		<ePixmap objectTypes="key_red,Button,Label" alphatest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="30,360" size="40,40"/>
+		<widget name="key_red" position="85,370" size="150,35" backgroundColor="OE_Background" transparent="1" zPosition="1" font="Regular;24"/>
+		<widget name="HelpWindow" conditional="HelpWindow" pixmap="OctEtFHD/skin_default/vkey_icon.png" position="445,825" size="0,0" transparent="1" zPosition="10" alphatest="on"/>
 	</screen>
 		<screen name="QuickSubtitlesClearRests" title="Subtitle settings" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
 		<panel name="StanDardScreen"/>

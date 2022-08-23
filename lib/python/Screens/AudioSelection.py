@@ -520,6 +520,8 @@ class QuickSubtitlesConfigMenu(ConfigListScreen, Screen):
 		self.center_dvb_subs = ConfigYesNo(default=(eDVBDB.getInstance().getFlag(eServiceReference(self.service_string)) & self.FLAG_CENTER_DVB_SUBS) and True)
 		self.center_dvb_subs.addNotifier(self.setCenterDvbSubs)
 		self["videofps"] = Label("")
+		self["key_red"] = Label(_("Exit"))
+		self["save"] = Label(_("Save"))
 
 		sub = self.infobar.selected_subtitle
 		if sub[0] == 0:  # dvb
