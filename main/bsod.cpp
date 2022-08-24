@@ -198,36 +198,36 @@ void bsodFatal(const char *component)
 			enigma2_rev,
 			component);
 
-		stringFromFile(f, "stbmodel", "/etc/openvision/model");
-		stringFromFile(f, "stbbrand", "/etc/openvision/brand");
-		stringFromFile(f, "stbplatform", "/etc/openvision/platform");
-		stringFromFile(f, "friendlyfamily", "/etc/openvision/friendlyfamily");
-		stringFromFile(f, "socfamily", "/etc/openvision/socfamily");
 		stringFromFile(f, "architecture", "/etc/openvision/architecture");
-		stringFromFile(f, "kernel", "/etc/openvision/kernel");
-		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
-		stringFromFile(f, "driverdate", "/etc/openvision/driverdate");
-		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
-		stringFromFile(f, "distro", "/etc/openvision/distro");
-		stringFromFile(f, "oe", "/etc/openvision/oe");
-		stringFromFile(f, "imagetype", "/etc/openvision/imagetype");
-		stringFromFile(f, "mediaservice", "/etc/openvision/mediaservice");
-		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
-		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");
-		stringFromFile(f, "visionlanguage", "/etc/openvision/visionlanguage");
-		stringFromFile(f, "rctype", "/etc/openvision/rctype");
-		stringFromFile(f, "rcname", "/etc/openvision/rcname");
-		stringFromFile(f, "rcidnum", "/etc/openvision/rcidnum");
-		stringFromFile(f, "compiledby", "/etc/openvision/developername");
-		stringFromFile(f, "feedsurl", "/etc/openvision/feedsurl");
 		stringFromFile(f, "binutils", "/etc/openvision/binutils");
+		stringFromFile(f, "brand", "/etc/openvision/brand");
 		stringFromFile(f, "busybox", "/etc/openvision/busybox");
+		stringFromFile(f, "compiledby", "/etc/openvision/developername");
+		stringFromFile(f, "distro", "/etc/openvision/distro");
+		stringFromFile(f, "driverdate", "/etc/openvision/driverdate");
+		stringFromFile(f, "feedsurl", "/etc/openvision/feedsurl");
 		stringFromFile(f, "ffmpeg", "/etc/openvision/ffmpeg");
+		stringFromFile(f, "friendlyfamily", "/etc/openvision/friendlyfamily");
 		stringFromFile(f, "gcc", "/etc/openvision/gcc");
 		stringFromFile(f, "glibc", "/etc/openvision/glibc");
 		stringFromFile(f, "gstreamer", "/etc/openvision/gstreamer");
+		stringFromFile(f, "imagetype", "/etc/openvision/imagetype");
+		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
+		stringFromFile(f, "kernel", "/etc/openvision/kernel");
+		stringFromFile(f, "mediaservice", "/etc/openvision/mediaservice");
+		stringFromFile(f, "model", "/etc/openvision/model");
+		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
+		stringFromFile(f, "oe", "/etc/openvision/oe");
 		stringFromFile(f, "openssl", "/etc/openvision/openssl");
+		stringFromFile(f, "platform", "/etc/openvision/platform");
 		stringFromFile(f, "python", "/etc/openvision/python");
+		stringFromFile(f, "rcidnum", "/etc/openvision/rcidnum");
+		stringFromFile(f, "rcname", "/etc/openvision/rcname");
+		stringFromFile(f, "rctype", "/etc/openvision/rctype");
+		stringFromFile(f, "socfamily", "/etc/openvision/socfamily");
+		stringFromFile(f, "visionlanguage", "/etc/openvision/visionlanguage");
+		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");
+		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
 
 		/* dump the log ringbuffer */
 		fprintf(f, "\n\n");

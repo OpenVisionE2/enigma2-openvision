@@ -135,70 +135,70 @@ to the original "boxbranding" method calls as appropriate.
 
 Here is the list of variables currently supported:
 
-	"model" or "/proc/enigma/model" replaces "getBoxType()"
-		("getMachineName()" and "getMachineMake()" in OE-Alliance's "boxbranding")
-	"displaymodel" or "/proc/enigma/displaymodel" replaces "getDisplayModel()"
+	"architecture" or "/proc/enigma/architecture" replaces "getImageArch()"
+	"avjack" or "/proc/enigma/avjack" replaces "getHaveAVJACK()"
+	"blindscanbinary" or "/proc/enigma/blindscanbinary" replaces "getBlindscanBin()"
 	"brand" or "/proc/enigma/brand" replaces "getBoxBrand()"
 		("getMachineBrand() and "getBrandOEM()" in OE-Alliance's "boxbranding")
-	"displaybrand" or "/proc/enigma/displaybrand" replaces "getDisplayBrand()"
-	"friendlyfamily" or "/proc/enigma/friendlyfamily" replaces "getFriendlyFamily()"
-	"platform" or "/proc/enigma/platform" replaces "getMachineBuild()"
-	"imgversion" or "/proc/enigma/imgversion" replaces "getIMGVersion()"
-	"imgrevision" or "/proc/enigma/imgrevision" replaces "getIMGRevision()"
-	"imglanguage" or "/proc/enigma/imglanguage" replaces "getIMGLanguage()
-	"developername" or "/proc/enigma/developername" replaces "getDeveloperName()"
-	"feedsurl" or "/proc/enigma/feedsurl" replaces "getFeedsUrl()"
-	"distro" or "/proc/enigma/distro" replaces "getImageDistro()"
-	"displaydistro" or "/proc/enigma/displaydistro" replaces "getDisplayDistro()"
-	"oe" or "/proc/enigma/oe" replaces "getOEVersion()"
-	"kernel" or "/proc/enigma/kernel" replaces "getKernelVersion()"
-	"driverdate" or "/proc/enigma/driverdate" replaces "getDriverDate()"
-	"mediaservice" or "/proc/enigma/mediaservice" replaces "getE2Service()"
-	"multilib" or "/proc/enigma/multilib" replaces "getHaveMultiLib()"
-	"architecture" or "/proc/enigma/architecture" replaces "getImageArch()"
-	"socfamily" or "/proc/enigma/socfamily" replaces "getSoCFamily()"
-	"blindscanbinary" or "/proc/enigma/blindscanbinary" replaces "getBlindscanBin()"
-	"rctype" or "/proc/enigma/rctype" replaces "getRCType()"
-	"rcname" or "/proc/enigma/rcname" repalces "getRCName()"
-	"rcidnum" or "/proc/enigma/rcidnum" replaces "getRCIDNum()"
-	"smallflash" or "/proc/enigma/smallflash" replaces "getHaveSmallFlash()"
-	"middleflash" or "/proc/enigma/middleflash" replaces "getHaveMiddleFlash()"
-	"imagedir" or "/proc/enigma/imagedir" replaces "getImageFolder()"
-	"imagefs" or "/proc/enigma/imagefs" replaces "getImageFileSystem()"
-	"mtdbootfs" or "/proc/enigma/mtdbootfs" replaces "getMachineMtdBoot()"
-	"mtdrootfs" or "/proc/enigma/mtdrootfs" replaces "getMachineMtdRoot()"
-	"mtdkernel" or "/proc/enigma/mtdkernel" replaces "getMachineMtdKernel()"
-	"rootfile" or "/proc/enigma/rootfile" repalces "getMachineRootFile()"
-	"kernelfile" or "/proc/enigma/kernelfile" replaces "getMachineKernelFile()"
-	"mkubifs" or "/proc/enigma/mkubifs" replaces "getMachineMKUBIFS()"
-	"ubinize" or "/proc/enigma/ubinize" replaces "getMachineUBINIZE()"
-	"forcemode" or "/proc/enigma/forcemode" replaces "getForceMode()"
-	"compiledate" or "/proc/enigma/compiledate"
-	"fpu" or "/proc/enigma/fpu" replaces "getImageFPU()"
-	"displaytype" or "/proc/enigma/displaytype" replaces "getDisplayType()"
-	"transcoding" or "/proc/enigma/transcoding" replaces "getHaveTranscoding()"
-		("getHaveTranscoding1()" in OE-Alliance's "boxbranding")
-	"multitranscoding" or "/proc/enigma/multitranscoding" replaces "getHaveMultiTranscoding()"
-		("getHaveTranscoding2()" in OE-Alliance's "boxbranding")
-	"hdmi" or "/proc/enigma/hdmi" replaces "getHaveHDMI()"
-	"yuv" or "/proc/enigma/yuv" replaces "getHaveYUV()"
-	"rca" or "/proc/enigma/rca" replaces "getHaveRCA()"
-	"avjack" or "/proc/enigma/avjack" replaces "getHaveAVJACK()"
-	"scart" or "/proc/enigma/scart" replaces "getHaveSCART()"
-	"dvi" or "/proc/enigma/dvi" replaces "getHaveDVI()"
-	"svideo" or "/proc/enigma/svideo" replaces "getHaveSVIDEO()"
-	"hdmihdin" or "/proc/enigma/hdmihdin" replaces "getHaveHDMIinHD()"
-	"hdmifhdin" or "/proc/enigma/hdmifhdin" replaces "getHaveHDMIinFHD()"
-	"wol" or "/proc/enigma/wol" replaces "getHaveWOL()"
-		(Also "getHaveWWOL()" in OE-Alliance's "boxbranding" as we don't split Wake-on-LAN and Wake-on-WLAN)
 	"ci" or "/proc/enigma/ci" replaces "getHaveCI()"
-	"vfdsymbol" or "/proc/enigma/vfdsymbol" replaces "getHaveVFDSymbol()"
-	"fhdskin" or "/proc/enigma/fhdskin" replaces "getFHDSkin()"
+	"compiledate" or "/proc/enigma/compiledate"
 	"dboxlcd" or "/proc/enigma/dboxlcd" replaces "getDBoxLCD()"
-	"imageversion" or "/proc/enigma/imageversion" replaces "getImageVersion()"
+	"developername" or "/proc/enigma/developername" replaces "getDeveloperName()"
+	"displaybrand" or "/proc/enigma/displaybrand" replaces "getDisplayBrand()"
+	"displaydistro" or "/proc/enigma/displaydistro" replaces "getDisplayDistro()"
+	"displaymodel" or "/proc/enigma/displaymodel" replaces "getDisplayModel()"
+	"displaytype" or "/proc/enigma/displaytype" replaces "getDisplayType()"
+	"distro" or "/proc/enigma/distro" replaces "getImageDistro()"
+	"driverdate" or "/proc/enigma/driverdate" replaces "getDriverDate()"
+	"dvi" or "/proc/enigma/dvi" replaces "getHaveDVI()"
+	"feedsurl" or "/proc/enigma/feedsurl" replaces "getFeedsUrl()"
+	"fhdskin" or "/proc/enigma/fhdskin" replaces "getFHDSkin()"
+	"forcemode" or "/proc/enigma/forcemode" replaces "getForceMode()"
+	"fpu" or "/proc/enigma/fpu" replaces "getImageFPU()"
+	"friendlyfamily" or "/proc/enigma/friendlyfamily" replaces "getFriendlyFamily()"
+	"hdmifhdin" or "/proc/enigma/hdmifhdin" replaces "getHaveHDMIinFHD()"
+	"hdmihdin" or "/proc/enigma/hdmihdin" replaces "getHaveHDMIinHD()"
+	"hdmi" or "/proc/enigma/hdmi" replaces "getHaveHDMI()"
 	"imagebuild" or "/proc/enigma/imagebuild" replaces "getImageBuild()"
 	"imagedevbuild" or "/proc/enigma/imagedevbuild" replaces "getImageDevBuild()"
+	"imagedir" or "/proc/enigma/imagedir" replaces "getImageFolder()"
+	"imagefs" or "/proc/enigma/imagefs" replaces "getImageFileSystem()"
 	"imagetype" or "/proc/enigma/imagetype" replaces "getImageType()"
+	"imageversion" or "/proc/enigma/imageversion" replaces "getImageVersion()"
+	"imglanguage" or "/proc/enigma/imglanguage" replaces "getIMGLanguage()
+	"imgrevision" or "/proc/enigma/imgrevision" replaces "getIMGRevision()"
+	"imgversion" or "/proc/enigma/imgversion" replaces "getIMGVersion()"
+	"kernelfile" or "/proc/enigma/kernelfile" replaces "getMachineKernelFile()"
+	"kernel" or "/proc/enigma/kernel" replaces "getKernelVersion()"
+	"mediaservice" or "/proc/enigma/mediaservice" replaces "getE2Service()"
+	"middleflash" or "/proc/enigma/middleflash" replaces "getHaveMiddleFlash()"
+	"mkubifs" or "/proc/enigma/mkubifs" replaces "getMachineMKUBIFS()"
+	"model" or "/proc/enigma/model" replaces "getBoxType()"
+		("getMachineName()" and "getMachineMake()" in OE-Alliance's "boxbranding")
+	"mtdbootfs" or "/proc/enigma/mtdbootfs" replaces "getMachineMtdBoot()"
+	"mtdkernel" or "/proc/enigma/mtdkernel" replaces "getMachineMtdKernel()"
+	"mtdrootfs" or "/proc/enigma/mtdrootfs" replaces "getMachineMtdRoot()"
+	"multilib" or "/proc/enigma/multilib" replaces "getHaveMultiLib()"
+	"multitranscoding" or "/proc/enigma/multitranscoding" replaces "getHaveMultiTranscoding()"
+		("getHaveTranscoding2()" in OE-Alliance's "boxbranding")
+	"oe" or "/proc/enigma/oe" replaces "getOEVersion()"
+	"platform" or "/proc/enigma/platform" replaces "getMachineBuild()"
+	"rca" or "/proc/enigma/rca" replaces "getHaveRCA()"
+	"rcidnum" or "/proc/enigma/rcidnum" replaces "getRCIDNum()"
+	"rcname" or "/proc/enigma/rcname" repalces "getRCName()"
+	"rctype" or "/proc/enigma/rctype" replaces "getRCType()"
+	"rootfile" or "/proc/enigma/rootfile" repalces "getMachineRootFile()"
+	"scart" or "/proc/enigma/scart" replaces "getHaveSCART()"
+	"smallflash" or "/proc/enigma/smallflash" replaces "getHaveSmallFlash()"
+	"socfamily" or "/proc/enigma/socfamily" replaces "getSoCFamily()"
+	"svideo" or "/proc/enigma/svideo" replaces "getHaveSVIDEO()"
+	"transcoding" or "/proc/enigma/transcoding" replaces "getHaveTranscoding()"
+		("getHaveTranscoding1()" in OE-Alliance's "boxbranding")
+	"ubinize" or "/proc/enigma/ubinize" replaces "getMachineUBINIZE()"
+	"vfdsymbol" or "/proc/enigma/vfdsymbol" replaces "getHaveVFDSymbol()"
+	"wol" or "/proc/enigma/wol" replaces "getHaveWOL()"
+		(Also "getHaveWWOL()" in OE-Alliance's "boxbranding" as we don't split Wake-on-LAN and Wake-on-WLAN)
+	"yuv" or "/proc/enigma/yuv" replaces "getHaveYUV()"
 	"/proc/enigma/informations" which has all above information in one proc file.
 		NOTE: There is no "enigma.info" version of this item!
 
@@ -208,26 +208,34 @@ Here is the list of variables currently supported:
 
 Time to explain each one and give examples:
 
-model:
+architecture:
 
-	BoxInfo.getItem("model") (/proc/enigma/model)
+	BoxInfo.getItem("architecture") (/proc/enigma/architecture)
 
-		This variable defines the receiver model in OE sources.
+		This variable defines the main architecture of the image.
 
-		Real model could be a different thing in real life and this is 
-		only what kernel defconfig shows as hostname.
+		Useful when we want to know what kind of ipk files we can install 
+		on a receiver via opkg or what type of binary files we could run.
 
-	Example: h9
+	Example: cortexa15hf-neon-vfpv4
 
-displaymodel:
+avjack:
 
-	BoxInfo.getItem("displaymodel") (/proc/enigma/displaymodel)
+	BoxInfo.getItem("avjack") (/proc/enigma/avjack)
 
-		This variable defines the receiver real model in real life.
+		This variable defines if a receiver has AV Jack output.
 
-		Real model is what printed on the receiver.
+	Example: False
 
-	Example: H9T
+blindscanbinary:
+
+	BoxInfo.getItem("blindscanbinary") (/proc/enigma/blindscanbinary)
+
+		This variable defines the blindscan binary file name.
+
+		We use this for blindscan tools.
+
+	Example: blindscan
 
 brand:
 
@@ -241,6 +249,40 @@ brand:
 
 	Example: airdigital
 
+ci:
+
+	BoxInfo.getItem("ci") (/proc/enigma/ci)
+
+		This variable defines if a receiver has DVB Common Interface slot.
+
+	Example: True
+
+compiledate:
+
+	BoxInfo.getItem("compiledate") (/proc/enigma/compiledate)
+
+		This variable defines the compile date of the enigma.ko file.
+
+	Example: 20210524
+
+dboxlcd:
+
+	BoxInfo.getItem("dboxlcd") (/proc/enigma/dboxlcd)
+
+		This variable defines if a receiver supports eDBoxLCD enigma2 feature.
+
+	Example: True
+
+developername:
+
+	BoxInfo.getItem("developername") (/proc/enigma/developername)
+
+		This variable defines who compiled the image which could be a real developer 
+		or just a certified compiler, some image compilers add/remove things and with 
+		this variable we know which one has what packages.
+
+	Example: persianpros
+
 displaybrand:
 
 	BoxInfo.getItem("displaybrand") (/proc/enigma/displaybrand)
@@ -250,6 +292,99 @@ displaybrand:
 		Real brand is what printed on the receiver.
 
 	Example: Zgemma
+
+displaydistro:
+
+	BoxInfo.getItem("displaydistro") (/proc/enigma/displaydistro)
+
+		This variable shows the friendly distro name.
+
+		Mostly we use this for information pages.
+
+	Example: Open Vision
+
+displaymodel:
+
+	BoxInfo.getItem("displaymodel") (/proc/enigma/displaymodel)
+
+		This variable defines the receiver real model in real life.
+
+		Real model is what printed on the receiver.
+
+	Example: H9T
+
+displaytype:
+
+	BoxInfo.getItem("displaytype") (/proc/enigma/displaytype)
+
+		This variable defines the front display type of a receiver.
+
+	Example: colorlcd400 (for h9 this is empty and I just wrote an example)
+
+distro:
+
+	BoxInfo.getItem("distro") (/proc/enigma/distro)
+
+		This variable defines the image distro.
+
+		Mostly we use this for multiboot tools.
+
+	Example: openvision
+
+driverdate:
+
+	BoxInfo.getItem("driverdate") (/proc/enigma/driverdate)
+
+		This variable defines the driver date.
+
+		Just to make About/Information screen faster.
+
+	Example: 1.1.2022
+
+dvi:
+
+	BoxInfo.getItem("dvi") (/proc/enigma/dvi)
+
+		This variable defines if a receiver has DVI output.
+
+	Example: False
+
+feedsurl:
+
+	BoxInfo.getItem("feedsurl") (/proc/enigma/feedsurl)
+
+		This variable defines the main feed URL for opkg.
+
+	Example: https://feeds.openenigma.org
+
+fhdskin:
+
+	BoxInfo.getItem("fhdskin") (/proc/enigma/fhdskin)
+
+		This variable defines if a receiver supports Full HD skins.
+
+	Example: True
+
+forcemode:
+
+	BoxInfo.getItem("forcemode") (/proc/enigma/forcemode)
+
+		This variable defines the force mode of the zip file.
+
+		Some receivers won't flash without enabling the force mode.
+
+		Mostly we use this for backup tools.
+
+	Example: no
+
+fpu:
+
+	BoxInfo.getItem("fpu") (/proc/enigma/fpu)
+
+		This variable defines the fpu type which is the float type of 
+		the architecure and it's CPU dependent.
+
+	Example: hard
 
 friendlyfamily:
 
@@ -264,221 +399,49 @@ friendlyfamily:
 
 	Example: zgemmah9s zgemmah9t zgemmah92s zgemmah92h zgemmah9splus
 
-platform:
+hdmifhdin:
 
-	BoxInfo.getItem("platform") (/proc/enigma/platform)
+	BoxInfo.getItem("hdmifhdin") (/proc/enigma/hdmifhdin)
 
-		This variable defines the receiver platform in OE sources.
+		This variable defines if a receiver has HDMI-In (Full HD) input.
 
-		This is not a real thing, it's what developers call a family of 
-		similar hardwares.  Instead of checking models one by one we 
-		could assing something to a family and reduce the checks.
-		If a model does not belong to a family the platform will be 
-		same as model so model and platform are equal in some receivers.
+	Example: False
 
-	Example: zgemmahisi3798mv200
+hdmihdin:
 
-imgversion:
+	BoxInfo.getItem("hdmihdin") (/proc/enigma/hdmihdin)
 
-	BoxInfo.getItem("imgversion") (/proc/enigma/imgversion)
+		This variable defines if a receiver has HDMI-In input.
 
-		This variable defines the main image version which only changes when 
-		GCC changes or when other important packages like python get updated.
+	Example: False
 
-	Example: 12.1
+hdmi:
 
-imgrevision:
+	BoxInfo.getItem("hdmi") (/proc/enigma/hdmi)
 
-	BoxInfo.getItem("imgrevision") (/proc/enigma/imgrevision)
+		This variable defines if a receiver has HDMI output.
 
-		This variable defines the image revision which changes after a batch of changes.
+	Example: True
 
-	Example: r456
+imagebuild:
 
-imglanguage:
+	BoxInfo.getItem("imagebuild") (/proc/enigma/imagebuild)
 
-	BoxInfo.getItem("imglanguage") (/proc/enigma/imglanguage)
+		This variable defines the image build.
 
-		This variable defines the language set which could be english, multilanguage 
-		or extralanguage (which has all) depending on the flash size.
-
-		multilanguage has ar, de, es, it, ru and tr locales.
-
-	Example: extralanguage
-
-developername:
-
-	BoxInfo.getItem("developername") (/proc/enigma/developername)
-
-		This variable defines who compiled the image which could be a real developer 
-		or just a certified compiler, some image compilers add/remove things and with 
-		this variable we know which one has what packages.
-
-	Example: persianpros
-
-feedsurl:
-
-	BoxInfo.getItem("feedsurl") (/proc/enigma/feedsurl)
-
-		This variable defines the main feed URL for opkg.
-
-	Example: https://feeds.openenigma.org
-
-distro:
-
-	BoxInfo.getItem("distro") (/proc/enigma/distro)
-
-		This variable defines the image distro.
-
-		Mostly we use this for multiboot tools.
-
-	Example: openvision
-
-displaydistro:
-
-	BoxInfo.getItem("displaydistro") (/proc/enigma/displaydistro)
-
-		This variable shows the friendly distro name.
-
-		Mostly we use this for information pages.
-
-	Example: Open Vision
-
-oe:
-
-	BoxInfo.getItem("oe") (/proc/enigma/oe)
-
-		This variable defines the OE branch.
-
-		If it's anything other than "master" means it's fixed on a specific branch 
-		like pyro and there will be no more updates from main OE and requires only 
-		monthly maintenance to keep it up-to-date with other sources.
+		Mostly we use this for backup tools and compatibility with other images.
 
 	Example: master
 
-kernel:
+imagedevbuild:
 
-	BoxInfo.getItem("kernel") (/proc/enigma/kernel)
+	BoxInfo.getItem("imagedevbuild") (/proc/enigma/imagedevbuild)
 
-		This variable defines the kernel version.
+		This variable defines the image developer build.
 
-		Let us know what version of the kernel a receiver has so what features 
-		are compatible.
+		Mostly we use this for backup tools and compatibility with other images.
 
-	Example: 4.4.35
-
-driverdate:
-
-	BoxInfo.getItem("driverdate") (/proc/enigma/driverdate)
-
-		This variable defines the driver date.
-
-		Just to make About/Information screen faster.
-
-	Example: 1.1.2022
-
-mediaservice:
-
-	BoxInfo.getItem("mediaservice") (/proc/enigma/mediaservice)
-
-		This variable defines the enigma2 media service.
-
-	Example: enigma2-plugin-systemplugins-servicehisilicon
-
-multilib:
-
-	BoxInfo.getItem("multilib") (/proc/enigma/multilib)
-
-		This variable defines the multilib situation.
-
-		It can only be True if an image has aarch64 architecture and lib64 
-		is available in the root directory.
-
-	Example: False
-
-architecture:
-
-	BoxInfo.getItem("architecture") (/proc/enigma/architecture)
-
-		This variable defines the main architecture of the image.
-
-		Useful when we want to know what kind of ipk files we can install 
-		on a receiver via opkg or what type of binary files we could run.
-
-	Example: cortexa15hf-neon-vfpv4
-
-socfamily:
-
-	BoxInfo.getItem("socfamily") (/proc/enigma/socfamily)
-
-		This variable defines the SoC type.
-
-		Some settings could be applied per SoC as they're CPU dependent.
-
-	Example: hisi3798mv200
-
-blindscanbinary:
-
-	BoxInfo.getItem("blindscanbinary") (/proc/enigma/blindscanbinary)
-
-		This variable defines the blindscan binary file name.
-
-		We use this for blindscan tools.
-
-	Example: blindscan
-
-rctype:
-
-	BoxInfo.getItem("rctype") (/proc/enigma/rctype)
-
-		This variable defines the remote control type.
-
-	Example: 28
-
-rcname:
-
-	BoxInfo.getItem("rcname") (/proc/enigma/rcname)
-
-		This variable defines the remote control name which we use for XML and 
-		PNG files.
-
-	Example: zgemma6
-
-rcidnum:
-
-	BoxInfo.getItem("rcidnum") (/proc/enigma/rcidnum)
-
-		This variable defines the remote control ID number.
-
-		In remote control XML files we have a line like <rc id="2"> which 
-		define what ID number could be used.
-
-	Example: 2
-
-smallflash:
-
-	BoxInfo.getItem("smallflash") (/proc/enigma/smallflash)
-
-		This variable defines the flash size and if it's equal to 64MB 
-		or less than that.
-
-		We use this to compile compatible images for small flash receivers.
-
-	Example: False
-
-middleflash:
-
-	BoxInfo.getItem("middleflash") (/proc/enigma/middleflash)
-
-		This variable defines the flash size and if it's equal to 128MB or 
-		less but more than 64MB.
-
-		Even some receivers with 128MB flashes can not flash or boot images 
-		more than 96MB because of a limit in their CFE.
-
-		We use this to compile compatible images for middle flash receivers.
-
-	Example: False
+	Example: new
 
 imagedir:
 
@@ -501,242 +464,15 @@ imagefs:
 
 	Example: ubi (sometimes there's a space at the beginning of this variable which should be avoided)
 
-mtdbootfs:
+imagetype:
 
-	BoxInfo.getItem("mtdbootfs") (/proc/enigma/mtdbootfs)
+	BoxInfo.getItem("imagetype") (/proc/enigma/imagetype)
 
-		This variable defines the boot filesystem mtd number of an image.
+		This variable defines the image type.
 
-		Mostly we use this for backup/multiboot tools.
+		Mostly we use this for backup tools and compatibility with other images.
 
-	Example: mmcblk0p4 (for h9 this is empty and I just wrote an example)
-
-mtdrootfs:
-
-	BoxInfo.getItem("mtdrootfs") (/proc/enigma/mtdrootfs)
-
-		This variable defines the root filesystem mtd number of an image.
-
-		Mostly we use this for backup/multiboot tools.
-
-	Example: mtd7
-
-mtdkernel:
-
-	BoxInfo.getItem("mtdkernel") (/proc/enigma/mtdkernel)
-
-		This variable defines the kernel mtd number of an image.
-
-		Mostly we use this for backup/multiboot tools.
-
-	Example: mtd6
-
-rootfile:
-
-	BoxInfo.getItem("rootfile") (/proc/enigma/rootfile)
-
-		This variable defines the root file name of an image.
-
-		Mostly we use this for backup/multiboot tools.
-
-	Example: rootfs.ubi
-
-kernelfile:
-
-	BoxInfo.getItem("kernelfile") (/proc/enigma/kernelfile)
-
-		This variable defines the kernel file name of an image.
-
-		Mostly we use this for backup tools.
-
-	Example: uImage
-
-mkubifs:
-
-	BoxInfo.getItem("mkubifs") (/proc/enigma/mkubifs)
-
-		This variable defines the mkubifs command parameters.
-
-		Mostly we use this for backup tools when want to repack the image.
-
-	Example: -m 2048 -e 126976 -c 8192
-
-ubinize:
-
-	BoxInfo.getItem("ubinize") (/proc/enigma/ubinize)
-
-		This variable defines the ubinize command parameters.
-
-		Mostly we use this for backup tools when want to repack the image.
-
-	Example: -m 2048 -p 128KiB
-
-forcemode:
-
-	BoxInfo.getItem("forcemode") (/proc/enigma/forcemode)
-
-		This variable defines the force mode of the zip file.
-
-		Some receivers won't flash without enabling the force mode.
-
-		Mostly we use this for backup tools.
-
-	Example: no
-
-compiledate:
-
-	BoxInfo.getItem("compiledate") (/proc/enigma/compiledate)
-
-		This variable defines the compile date of the enigma.ko file.
-
-	Example: 20210524
-
-fpu:
-
-	BoxInfo.getItem("fpu") (/proc/enigma/fpu)
-
-		This variable defines the fpu type which is the float type of 
-		the architecure and it's CPU dependent.
-
-	Example: hard
-
-displaytype:
-
-	BoxInfo.getItem("displaytype") (/proc/enigma/displaytype)
-
-		This variable defines the front display type of a receiver.
-
-	Example: colorlcd400 (for h9 this is empty and I just wrote an example)
-
-transcoding:
-
-	BoxInfo.getItem("transcoding") (/proc/enigma/transcoding)
-
-		This variable defines if a receiver supports transcoding feature.
-
-	Example: False
-
-multitranscoding:
-
-	BoxInfo.getItem("multitranscoding") (/proc/enigma/multitranscoding)
-
-		This variable defines if a receiver supports multi transcoding feature.
-
-	Example: True
-
-hdmi:
-
-	BoxInfo.getItem("hdmi") (/proc/enigma/hdmi)
-
-		This variable defines if a receiver has HDMI output.
-
-	Example: True
-
-yuv:
-
-	BoxInfo.getItem("yuv") (/proc/enigma/yuv)
-
-		This variable defines if a receiver has YUV output.
-
-	Example: False
-
-rca:
-
-	BoxInfo.getItem("rca") (/proc/enigma/rca)
-
-		This variable defines if a receiver has RCA output.
-
-	Example: False
-
-avjack:
-
-	BoxInfo.getItem("avjack") (/proc/enigma/avjack)
-
-		This variable defines if a receiver has AV Jack output.
-
-	Example: False
-
-scart:
-
-	BoxInfo.getItem("scart") (/proc/enigma/scart)
-
-		This variable defines if a receiver has SCART output.
-
-	Example: False
-
-dvi:
-
-	BoxInfo.getItem("dvi") (/proc/enigma/dvi)
-
-		This variable defines if a receiver has DVI output.
-
-	Example: False
-
-svideo:
-
-	BoxInfo.getItem("svideo") (/proc/enigma/svideo)
-
-		This variable defines if a receiver has S-Video output.
-
-	Example: False
-
-hdmihdin:
-
-	BoxInfo.getItem("hdmihdin") (/proc/enigma/hdmihdin)
-
-		This variable defines if a receiver has HDMI-In input.
-
-	Example: False
-
-hdmifhdin:
-
-	BoxInfo.getItem("hdmifhdin") (/proc/enigma/hdmifhdin)
-
-		This variable defines if a receiver has HDMI-In (Full HD) input.
-
-	Example: False
-
-wol:
-
-	BoxInfo.getItem("wol") (/proc/enigma/wol)
-
-		This variable defines if a receiver supports Wake-on-LAN/WLAN feature.
-
-	Example: True
-
-ci:
-
-	BoxInfo.getItem("ci") (/proc/enigma/ci)
-
-		This variable defines if a receiver has DVB Common Interface slot.
-
-	Example: True
-
-vfdsymbol:
-
-	BoxInfo.getItem("vfdsymbol") (/proc/enigma/vfdsymbol)
-
-		This variable defines if a receiver supports VFD symbol feature.
-
-		It also depends on the display type.
-
-	Example: False
-
-fhdskin:
-
-	BoxInfo.getItem("fhdskin") (/proc/enigma/fhdskin)
-
-		This variable defines if a receiver supports Full HD skins.
-
-	Example: True
-
-dboxlcd:
-
-	BoxInfo.getItem("dboxlcd") (/proc/enigma/dboxlcd)
-
-		This variable defines if a receiver supports eDBoxLCD enigma2 feature.
-
-	Example: True
+	Example: release
 
 imageversion:
 
@@ -748,35 +484,299 @@ imageversion:
 
 	Example: develop
 
-imagebuild:
+imglanguage:
 
-	BoxInfo.getItem("imagebuild") (/proc/enigma/imagebuild)
+	BoxInfo.getItem("imglanguage") (/proc/enigma/imglanguage)
 
-		This variable defines the image build.
+		This variable defines the language set which could be english, multilanguage 
+		or extralanguage (which has all) depending on the flash size.
 
-		Mostly we use this for backup tools and compatibility with other images.
+		multilanguage has ar, de, es, it, ru and tr locales.
+
+	Example: extralanguage
+
+imgrevision:
+
+	BoxInfo.getItem("imgrevision") (/proc/enigma/imgrevision)
+
+		This variable defines the image revision which changes after a batch of changes.
+
+	Example: r456
+
+imgversion:
+
+	BoxInfo.getItem("imgversion") (/proc/enigma/imgversion)
+
+		This variable defines the main image version which only changes when 
+		GCC changes or when other important packages like python get updated.
+
+	Example: 12.1
+
+kernelfile:
+
+	BoxInfo.getItem("kernelfile") (/proc/enigma/kernelfile)
+
+		This variable defines the kernel file name of an image.
+
+		Mostly we use this for backup tools.
+
+	Example: uImage
+
+kernel:
+
+	BoxInfo.getItem("kernel") (/proc/enigma/kernel)
+
+		This variable defines the kernel version.
+
+		Let us know what version of the kernel a receiver has so what features 
+		are compatible.
+
+	Example: 4.4.35
+
+mediaservice:
+
+	BoxInfo.getItem("mediaservice") (/proc/enigma/mediaservice)
+
+		This variable defines the enigma2 media service.
+
+	Example: enigma2-plugin-systemplugins-servicehisilicon
+
+middleflash:
+
+	BoxInfo.getItem("middleflash") (/proc/enigma/middleflash)
+
+		This variable defines the flash size and if it's equal to 128MB or 
+		less but more than 64MB.
+
+		Even some receivers with 128MB flashes can not flash or boot images 
+		more than 96MB because of a limit in their CFE.
+
+		We use this to compile compatible images for middle flash receivers.
+
+	Example: False
+
+mkubifs:
+
+	BoxInfo.getItem("mkubifs") (/proc/enigma/mkubifs)
+
+		This variable defines the mkubifs command parameters.
+
+		Mostly we use this for backup tools when want to repack the image.
+
+	Example: -m 2048 -e 126976 -c 8192
+
+model:
+
+	BoxInfo.getItem("model") (/proc/enigma/model)
+
+		This variable defines the receiver model in OE sources.
+
+		Real model could be a different thing in real life and this is 
+		only what kernel defconfig shows as hostname.
+
+	Example: h9
+
+mtdbootfs:
+
+	BoxInfo.getItem("mtdbootfs") (/proc/enigma/mtdbootfs)
+
+		This variable defines the boot filesystem mtd number of an image.
+
+		Mostly we use this for backup/multiboot tools.
+
+	Example: mmcblk0p4 (for h9 this is empty and I just wrote an example)
+
+mtdkernel:
+
+	BoxInfo.getItem("mtdkernel") (/proc/enigma/mtdkernel)
+
+		This variable defines the kernel mtd number of an image.
+
+		Mostly we use this for backup/multiboot tools.
+
+	Example: mtd6
+
+mtdrootfs:
+
+	BoxInfo.getItem("mtdrootfs") (/proc/enigma/mtdrootfs)
+
+		This variable defines the root filesystem mtd number of an image.
+
+		Mostly we use this for backup/multiboot tools.
+
+	Example: mtd7
+
+multilib:
+
+	BoxInfo.getItem("multilib") (/proc/enigma/multilib)
+
+		This variable defines the multilib situation.
+
+		It can only be True if an image has aarch64 architecture and lib64 
+		is available in the root directory.
+
+	Example: False
+
+multitranscoding:
+
+	BoxInfo.getItem("multitranscoding") (/proc/enigma/multitranscoding)
+
+		This variable defines if a receiver supports multi transcoding feature.
+
+	Example: True
+
+oe:
+
+	BoxInfo.getItem("oe") (/proc/enigma/oe)
+
+		This variable defines the OE branch.
+
+		If it's anything other than "master" means it's fixed on a specific branch 
+		like pyro and there will be no more updates from main OE and requires only 
+		monthly maintenance to keep it up-to-date with other sources.
 
 	Example: master
 
-imagedevbuild:
+platform:
 
-	BoxInfo.getItem("imagedevbuild") (/proc/enigma/imagedevbuild)
+	BoxInfo.getItem("platform") (/proc/enigma/platform)
 
-		This variable defines the image developer build.
+		This variable defines the receiver platform in OE sources.
 
-		Mostly we use this for backup tools and compatibility with other images.
+		This is not a real thing, it's what developers call a family of 
+		similar hardwares.  Instead of checking models one by one we 
+		could assing something to a family and reduce the checks.
+		If a model does not belong to a family the platform will be 
+		same as model so model and platform are equal in some receivers.
 
-	Example: new
+	Example: zgemmahisi3798mv200
 
-imagetype:
+rca:
 
-	BoxInfo.getItem("imagetype") (/proc/enigma/imagetype)
+	BoxInfo.getItem("rca") (/proc/enigma/rca)
 
-		This variable defines the image type.
+		This variable defines if a receiver has RCA output.
 
-		Mostly we use this for backup tools and compatibility with other images.
+	Example: False
 
-	Example: release
+rcidnum:
+
+	BoxInfo.getItem("rcidnum") (/proc/enigma/rcidnum)
+
+		This variable defines the remote control ID number.
+
+		In remote control XML files we have a line like <rc id="2"> which 
+		define what ID number could be used.
+
+	Example: 2
+
+rcname:
+
+	BoxInfo.getItem("rcname") (/proc/enigma/rcname)
+
+		This variable defines the remote control name which we use for XML and 
+		PNG files.
+
+	Example: zgemma6
+
+rctype:
+
+	BoxInfo.getItem("rctype") (/proc/enigma/rctype)
+
+		This variable defines the remote control type.
+
+	Example: 28
+
+rootfile:
+
+	BoxInfo.getItem("rootfile") (/proc/enigma/rootfile)
+
+		This variable defines the root file name of an image.
+
+		Mostly we use this for backup/multiboot tools.
+
+	Example: rootfs.ubi
+
+scart:
+
+	BoxInfo.getItem("scart") (/proc/enigma/scart)
+
+		This variable defines if a receiver has SCART output.
+
+	Example: False
+
+smallflash:
+
+	BoxInfo.getItem("smallflash") (/proc/enigma/smallflash)
+
+		This variable defines the flash size and if it's equal to 64MB 
+		or less than that.
+
+		We use this to compile compatible images for small flash receivers.
+
+	Example: False
+
+socfamily:
+
+	BoxInfo.getItem("socfamily") (/proc/enigma/socfamily)
+
+		This variable defines the SoC type.
+
+		Some settings could be applied per SoC as they're CPU dependent.
+
+	Example: hisi3798mv200
+
+svideo:
+
+	BoxInfo.getItem("svideo") (/proc/enigma/svideo)
+
+		This variable defines if a receiver has S-Video output.
+
+	Example: False
+
+transcoding:
+
+	BoxInfo.getItem("transcoding") (/proc/enigma/transcoding)
+
+		This variable defines if a receiver supports transcoding feature.
+
+	Example: False
+
+ubinize:
+
+	BoxInfo.getItem("ubinize") (/proc/enigma/ubinize)
+
+		This variable defines the ubinize command parameters.
+
+		Mostly we use this for backup tools when want to repack the image.
+
+	Example: -m 2048 -p 128KiB
+
+vfdsymbol:
+
+	BoxInfo.getItem("vfdsymbol") (/proc/enigma/vfdsymbol)
+
+		This variable defines if a receiver supports VFD symbol feature.
+
+		It also depends on the display type.
+
+	Example: False
+
+wol:
+
+	BoxInfo.getItem("wol") (/proc/enigma/wol)
+
+		This variable defines if a receiver supports Wake-on-LAN/WLAN feature.
+
+	Example: True
+
+yuv:
+
+	BoxInfo.getItem("yuv") (/proc/enigma/yuv)
+
+		This variable defines if a receiver has YUV output.
+
+	Example: False
 
 informations:
 

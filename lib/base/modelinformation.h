@@ -10,8 +10,8 @@ class eModelInformation
 		eModelInformation();
 		static eModelInformation& getInstance() { static eModelInformation m_instance; return m_instance; }
 		std::string getValue(const std::string &key);
-		std::string BoxType() { return getValue("STB"); }
-		std::string MachineBrand() { return getValue("Brand"); }
+		std::string BoxType() { return getValue("model"); }
+		std::string MachineBrand() { return getValue("brand"); }
 		std::string Date() { return getValue("date"); }
 		std::string Creator() { return getValue("creator"); }
 		std::string Url() { return getValue("url"); }
