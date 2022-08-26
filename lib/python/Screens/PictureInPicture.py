@@ -207,10 +207,6 @@ class PictureInPicture(Screen):
 				return False
 			if self.isPlayableForPipService(ref):
 				print("[PictureInPicture] playing pip service", ref and ref.toString())
-			else:
-				if not config.usage.hide_zap_errors.value:
-					AddPopup(text="PiP...\n" + _("No free tuner!"), type=MessageBox.TYPE_ERROR, timeout=5, id="ZapPipError")
-				return False
 			self.pipservice = eServiceCenter.getInstance().play(ref)
 			if self.pipservice and not self.pipservice.setTarget(1, True):
 				if hasattr(self, "dishpipActive") and self.dishpipActive is not None:
