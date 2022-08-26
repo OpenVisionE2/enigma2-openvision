@@ -38,9 +38,9 @@ class Listbox(Renderer):
 			instance.setContent(self.__content)
 		instance.selectionChanged.get().append(self.selectionChanged)
 		# Trigger property changes
-		self.wrapAround = self.wrapAround
-		self.selectionEnabled = self.selectionEnabled
-		self.scrollbarMode = self.scrollbarMode
+		self.setWrapAround(self.wrapAround)
+		self.setSelectionEnabled(self.selectionEnabled)
+		self.setScrollbarMode(self.scrollbarMode)
 
 	def preWidgetRemove(self, instance):
 		instance.setContent(None)
