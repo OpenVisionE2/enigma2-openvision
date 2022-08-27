@@ -1020,6 +1020,9 @@ const static unsigned int EPG_MAGIC = 0x98765432;
 
 void eEPGCache::load()
 {
+	if(m_debug) {
+		eDebug("[eEPGCache] load()");
+	}
 	if (m_filename.empty())
 		m_filename = "/media/hdd/epg.dat";
 	std::vector<char> vEPGDAT(m_filename.begin(), m_filename.end());
@@ -1152,6 +1155,9 @@ void eEPGCache::load()
 		}
 	}
 	(void)ret;
+	if(m_debug) {
+		eDebug("[eEPGCache] load() - finished");
+	}
 }
 
 void eEPGCache::save()
@@ -1381,7 +1387,7 @@ RESULT eEPGCache::lookupEventTime(const eServiceReference &service, time_t t, eP
 		Event *ev = new Event((uint8_t*)data->get());
 		result = new eServiceEvent();
 		const eServiceReferenceDVB &ref = (const eServiceReferenceDVB&)service;
-		ret = result->parseFrom(ev, (ref.getTransportStreamID().get()<<16)|ref.getOriginalNetworkID().get());
+		ret = result->parseFrom(ev, (ref.getTransportStreamID().get()<<16)|ref.getOriginalNetworkID().get(), ref.getServiceID().get());
 		delete ev;
 	}
 	return ret;
@@ -1403,7 +1409,9 @@ RESULT eEPGCache::lookupEventId(const eServiceReference &service, int event_id, 
 		else
 		{
 			result = 0;
-			eTrace("[eEPGCache] event %04x not found in epgcache", event_id);
+			if(m_debug) {
+				eTrace("[eEPGCache] event %04x not found in epgcache", event_id);
+			}
 		}
 	}
 	return -1;
@@ -1470,7 +1478,7 @@ RESULT eEPGCache::lookupEventId(const eServiceReference &service, int event_id, 
 		Event ev((uint8_t*)data->get());
 		result = new eServiceEvent();
 		const eServiceReferenceDVB &ref = (const eServiceReferenceDVB&)service;
-		ret = result->parseFrom(&ev, (ref.getTransportStreamID().get()<<16)|ref.getOriginalNetworkID().get(), ref.getServiceID().get(), ref.getServiceID().get());
+		ret = result->parseFrom(&ev, (ref.getTransportStreamID().get()<<16)|ref.getOriginalNetworkID().get(), ref.getServiceID().get());
 	}
 	return ret;
 }
