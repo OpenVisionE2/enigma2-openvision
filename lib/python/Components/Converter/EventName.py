@@ -252,13 +252,13 @@ class EventName(Converter):
 					country = config.misc.epggenrecountry.value
 				return self.separator.join((genretext for genretext in (self.trimText(getGenreStringSub(genre[0], genre[1], country=country)) for genre in genres) if genretext))
 		elif self.type == self.CRID_EPISODE:
-			return self.getCrid(event, eServiceEventEnums.EPISODE_MATCH)
+			return self.trimText(getCrid(event, eServiceEventEnums.EPISODE_MATCH))
 		elif self.type == self.CRID_SERIES:
-			return self.getCrid(event, eServiceEventEnums.SERIES_MATCH)
+			return self.trimText(getCrid(event, eServiceEventEnums.SERIES_MATCH))
 		elif self.type == self.CRID_RECOMMENDATION:
-			return self.getCrid(event, eServiceEventEnums.RECOMMENDATION_MATCH)
+			return self.trimText(getCrid(event, eServiceEventEnums.RECOMMENDATION_MATCH))
 		elif self.type == self.NAME_NOW:
-			return pgettext("now/next: 'now' event label", "Now") + ": " + self.trimText(event.getEventName())
+			return "%s: %s" % (pgettext("now/next: 'now' event label", "Now"), self.trimText(event.getEventName()))
 		elif self.type == self.SHORT_DESCRIPTION:
 			return dropEPGNewLines(event.getShortDescription())
 		elif self.type == self.EXTENDED_DESCRIPTION:
@@ -283,7 +283,7 @@ class EventName(Converter):
 				start = localtime(mktime([begin.tm_year, (pil & 0x7800) >> 11, (pil & 0xF8000) >> 15, (pil & 0x7C0) >> 6, (pil & 0x3F), 0, begin.tm_wday, begin.tm_yday, begin.tm_isdst]))
 				if self.type == self.PDCTIMESHORT:
 					return strftime(config.usage.time.short.value, start)
-				return strftime(config.usage.date.short.value + " " + config.usage.time.short.value, start)
+				return strftime("%s %s" % (config.usage.date.short.value, config.usage.time.short.value), start)
 		elif self.type == self.ISRUNNINGSTATUS:
 			if event.getPdcPil():
 				running_status = event.getRunningStatus()
@@ -309,13 +309,13 @@ class EventName(Converter):
 					self.list = [] if self.epgcache is None else self.epgcache.lookupEvent(test)
 					if self.list:
 						if self.type == self.NAME_NEXT and self.list[1][1]:
-							return pgettext("now/next: 'next' event label", "Next") + ": " + self.trimText(self.list[1][1])
+							return "%s: %s" % (pgettext("now/next: 'next' event label", "Next"), self.trimText(self.list[1][1]))
 						elif self.type == self.NAME_NEXT2 and self.list[1][1]:
 							return self.trimText(self.list[1][1])
 						elif self.type == self.NEXT_DESCRIPTION and (self.list[1][2] or self.list[1][3]):
 							return self.formatDescription(self.list[1][2], self.list[1][3])
 						if self.type == self.THIRD_NAME and self.list[2][1]:
-							return pgettext("third event: 'third' event label", "Later") + ": " + self.trimText(self.list[2][1])
+							return "%s: %s" % (pgettext("third event: 'third' event label", "Later"), self.trimText(self.list[2][1]))
 						elif self.type == self.THIRD_NAME2 and self.list[2][1]:
 							return self.trimText(self.list[2][1])
 						elif self.type == self.THIRD_DESCRIPTION and (self.list[2][2] or self.list[2][3]):
@@ -323,7 +323,7 @@ class EventName(Converter):
 			except:
 				# Failed to return any EPG data.
 				if self.type == self.NAME_NEXT:
-					return pgettext("now/next: 'next' event label", "Next") + ": " + self.trimText(event.getEventName())
+					return "%s: %s" % (pgettext("now/next: 'next' event label", "Next"), self.trimText(event.getEventName()))
 		elif self.type == self.RAWRATING:
 			rating = event.getParentalData()
 			if rating:

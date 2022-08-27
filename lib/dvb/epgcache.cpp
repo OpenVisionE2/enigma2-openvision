@@ -5,6 +5,7 @@
 #include <lib/service/event.h>
 #include <fcntl.h>
 #include <fstream>
+#include <regex>
 #include <sys/vfs.h> // for statfs
 #include <lib/base/encoding.h>
 #include <lib/base/estring.h>
@@ -16,6 +17,7 @@
 #include <lib/base/nconfig.h>
 #include <dvbsi++/content_identifier_descriptor.h>
 #include <dvbsi++/descriptor_tag.h>
+#include <unordered_set>
 
 #include <Python.h>
 
@@ -772,7 +774,7 @@ void eEPGCache::sectionRead(const uint8_t *data, int source, eEPGChannelData *ch
 			}
 		}
 next:
-//#ifdef EPG_DEBUG
+#ifdef EPG_DEBUG
 		if(m_debug) {
 			if ( servicemap.byEvent.size() != servicemap.byTime.size() )
 			{
@@ -799,7 +801,7 @@ next:
 					servicemap.byEvent.size(), servicemap.byTime.size() );
 			}
 		}
-//#endif
+#endif
 		ptr += eit_event_size;
 		eit_event = (eit_event_struct*)(((uint8_t*)eit_event) + eit_event_size);
 	}
