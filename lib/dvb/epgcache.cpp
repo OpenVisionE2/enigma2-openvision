@@ -480,7 +480,7 @@ bool eEPGCache::FixOverlapping(EventCacheItem &servicemap, time_t TM, int durati
 		{
 			uint16_t event_id = tmp->second->getEventID();
 			servicemap.byEvent.erase(event_id);
-//#ifdef EPG_DEBUG
+#ifdef EPG_DEBUG
 			if(m_debug) {
 				Event evt((uint8_t*)tmp->second->get());
 				eServiceEvent event;
@@ -491,7 +491,7 @@ bool eEPGCache::FixOverlapping(EventCacheItem &servicemap, time_t TM, int durati
 					event.getEventName().c_str(),
 					event.getExtendedDescription().c_str());
 			}
-//#endif
+#endif
 			delete tmp->second;
 			if (tmp == servicemap.byTime.begin())
 			{
@@ -517,7 +517,7 @@ bool eEPGCache::FixOverlapping(EventCacheItem &servicemap, time_t TM, int durati
 		{
 			uint16_t event_id = tmp->second->getEventID();
 			servicemap.byEvent.erase(event_id);
-//#ifdef EPG_DEBUG
+#ifdef EPG_DEBUG
 			if(m_debug) {
 				Event evt((uint8_t*)tmp->second->get());
 				eServiceEvent event;
@@ -528,7 +528,7 @@ bool eEPGCache::FixOverlapping(EventCacheItem &servicemap, time_t TM, int durati
 					event.getEventName().c_str(),
 					event.getExtendedDescription().c_str());
 			}
-//#endif
+#endif
 			delete tmp->second;
 			servicemap.byTime.erase(tmp++);
 			ret = true;
