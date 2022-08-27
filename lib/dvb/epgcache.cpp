@@ -708,11 +708,11 @@ void eEPGCache::sectionRead(const uint8_t *data, int source, eEPGChannelData *ch
 				}
 			}
 			evt = new eventData(eit_event, eit_event_size, source, (tsid<<16)|onid);
-//#ifdef EPG_DEBUG
+#ifdef EPG_DEBUG
 			if(m_debug) {
 				bool consistencyCheck=true;
 			}
-//#endif
+#endif
 			if (ev_erase_count > 0 && tm_erase_count > 0) // 2 different pairs have been removed
 			{
 				// exempt memory
@@ -737,16 +737,16 @@ void eEPGCache::sectionRead(const uint8_t *data, int source, eEPGChannelData *ch
 			}
 			else // added new eventData
 			{
-//#ifdef EPG_DEBUG
+#ifdef EPG_DEBUG
 				if(m_debug) {
 					consistencyCheck=false;
 				}
-//#endif
+#endif
 				ev_it = prevEventIt = servicemap.byEvent.insert( prevEventIt, std::pair<const uint16_t, eventData*>( event_id, evt) );
 				tm_it = prevTimeIt = servicemap.byTime.insert( prevTimeIt, std::pair<const time_t, eventData*>( TM, evt ) );
 			}
 
-//#ifdef EPG_DEBUG
+#ifdef EPG_DEBUG
 			if(m_debug) {
 				if ( consistencyCheck )
 				{
@@ -766,7 +766,7 @@ void eEPGCache::sectionRead(const uint8_t *data, int source, eEPGChannelData *ch
 							ev_it->first, event_id );
 				}
 			}
-//#endif
+#endif
 			if (FixOverlapping(servicemap, TM, duration, tm_it, service))
 			{
 				prevEventIt = servicemap.byEvent.end();
