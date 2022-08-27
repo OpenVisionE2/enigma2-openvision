@@ -1162,11 +1162,9 @@ void eEPGCache::load()
 
 void eEPGCache::save()
 {
-//#ifdef EPG_DEBUG
 	if(m_debug) {
 		eDebug("[eEPGCache] save()");
 	}
-//#endif
 	bool save_epg = eConfigManager::getConfigBoolValue("config.epg.saveepg", true);
 	if (save_epg)
 	{
@@ -1202,11 +1200,9 @@ void eEPGCache::save()
 			fclose(f);
 			return;
 		}
-//#ifdef EPG_DEBUG
 		if(m_debug) {
 			eDebug("[eEPGCache] store epg to realpath '%s'", buf);
 		}
-//#endif
 		struct statfs st = {};
 		off64_t tmp;
 		if (statfs(buf, &st) < 0) {
@@ -1252,11 +1248,9 @@ void eEPGCache::save()
 				++cnt;
 			}
 		}
-//#ifdef EPG_DEBUG
 		if(m_debug) {
 			eDebug("[eEPGCache] %d events written to %s", cnt, EPGDAT);
 		}
-//#endif
 		eventData::save(f);
 #ifdef ENABLE_PRIVATE_EPG
 		const char* text3 = "PRIVATE_EPG";
@@ -1410,7 +1404,7 @@ RESULT eEPGCache::lookupEventId(const eServiceReference &service, int event_id, 
 		{
 			result = 0;
 			if(m_debug) {
-				eTrace("[eEPGCache] event %04x not found in epgcache", event_id);
+				eDebug("[eEPGCache] event %04x not found in epgcache", event_id);
 			}
 		}
 	}
