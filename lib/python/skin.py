@@ -600,8 +600,13 @@ def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), f
 	font = None
 	for attrib, value in node.items():  # Walk all attributes.
 		if attrib not in ignore:
+			newValue = value
 			if attrib in filenames:
-				value = resolveFilename(SCOPE_GUISKIN, value, path_prefix=skinPath)
+				# DEBUG: Why does a SCOPE_LCDSKIN image replace the GUI image?!?!?!
+				pngFile = resolveFilename(SCOPE_GUISKIN, value, path_prefix=skinPath)
+				if not isfile(pngFile) and isfile(resolveFilename(SCOPE_LCDSKIN, value, path_prefix=skinPath)):
+					pngFile = resolveFilename(SCOPE_LCDSKIN, value, path_prefix=skinPath)
+				newValue = pngFile
 			# Bit of a hack this, really.  When a window has a flag (e.g. wfNoBorder)
 			# it needs to be set at least before the size is set, in order for the
 			# window dimensions to be calculated correctly in all situations.
@@ -610,15 +615,14 @@ def collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), f
 			# listbox; when the scrollbar setting is applied after the size, a scrollbar
 			# will not be shown until the selection moves for the first time.
 			if attrib == "size":
-				size = value
+				size = newValue
 			elif attrib == "position":
-				pos = value
+				pos = newValue
 			elif attrib == "font":
-				font = value
-				skinAttributes.append((attrib, font))
+				font = newValue
+				skinAttributes.append((attrib, newValue))
 			else:
-				value = value
-				skinAttributes.append((attrib, value))
+				skinAttributes.append((attrib, newValue))
 	if pos is not None:
 		pos, size = context.parse(pos, size, font)
 		skinAttributes.append(("position", pos))
