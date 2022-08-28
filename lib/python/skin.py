@@ -15,11 +15,13 @@ from Tools.LoadPixmap import LoadPixmap
 
 MODULE_NAME = __name__.split(".")[-1].capitalize()
 
-DEFAULT_SKIN = BoxInfo.getItem("fhdskin") and "OctEtFHD/skin.xml" or "PLi-HD/skin.xml"
+smallflash = BoxInfo.getItem("smallflash")
+
+DEFAULT_SKIN = BoxInfo.getItem("fhdskin") and "OctEtFHD/skin.xml" and not smallflash or "PLi-HD/skin.xml"
 DEFAULT_DISPLAY_SKIN = BoxInfo.getItem("grautec") and "skin_default/skin_display_grautec.xml" or "skin_default/skin_display.xml"
 SKIN_DEFAULT = "skin_default/skin.xml"
-EMERGENCY_NAME = "OctEtFHD"
-EMERGENCY_SKIN = "skin_fallback_1080/skin.xml"
+EMERGENCY_NAME = "OctEtFHD" if not smallflash else "Stone II"
+EMERGENCY_SKIN = "skin_fallback_1080/skin.xml" if not smallflash else SKIN_DEFAULT
 SUBTITLE_SKIN = "skin_subtitles.xml"
 USER_SKIN_TEMPLATE = "skin_user_%s.xml"
 USER_SKIN = "skin_user.xml"
@@ -52,13 +54,11 @@ variables = {}
 
 config.skin = ConfigSubsection()
 skin = resolveFilename(SCOPE_SKINS, DEFAULT_SKIN)
-config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
-config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
-
 if not isfile(skin):
 	print("[Skin] Error: Default skin '%s' is not readable or is not a file!  Using emergency skin." % skin)
-	DEFAULT_SKIN = SKIN_DEFAULT
-DEFAULT_SKIN = EMERGENCY_SKIN
+	DEFAULT_SKIN = EMERGENCY_SKIN
+config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
+config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
 
 currentPrimarySkin = None
 currentDisplaySkin = None
