@@ -278,7 +278,7 @@ int fbClass::SetMode(int nxRes, int nyRes, int nbpp)
 	memset(lfb, 0, stride*yRes);
 #ifdef HAVE_HISIAPI
 	if (fdDisp < 0)
-		eDebug("Error: File '/dev/hi_disp' can't not be opened.");
+		eDebug("[fb] Error: File '/dev/hi_disp' can't not be opened.");
 	else
 	{
 		DISP_VIRTSCREEN_S virtscreen;
@@ -289,7 +289,7 @@ int fbClass::SetMode(int nxRes, int nyRes, int nbpp)
 		virtscreen.stVirtScreen.s32Width  = nxRes;
 
 		if (ioctl(fdDisp, CMD_DISP_SET_VIRTSCREEN, &virtscreen) < 0)
-			eDebug("Failed to set resolution %dx%d in \"/dev/hi_disp\" for hisilicon.", nxRes, nyRes);
+			eDebug("[fb] Failed to set resolution %dx%d in \"/dev/hi_disp\" for hisilicon.", nxRes, nyRes);
 	}
 #endif
 	blit();

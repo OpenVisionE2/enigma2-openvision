@@ -15,13 +15,20 @@ from Tools.LoadPixmap import LoadPixmap
 
 MODULE_NAME = __name__.split(".")[-1].capitalize()
 
+fhdskin = BoxInfo.getItem("fhdskin")
 smallflash = BoxInfo.getItem("smallflash")
 
-DEFAULT_SKIN = BoxInfo.getItem("fhdskin") and "OctEtFHD/skin.xml" and not smallflash or "PLi-HD/skin.xml"
+if fhdskin and not smallflash:
+	DEFAULT_SKIN = "OctEtFHD/skin.xml"
+	EMERGENCY_NAME = "OctEtFHD"
+	EMERGENCY_SKIN = "skin_fallback_1080/skin.xml"
+else:
+	DEFAULT_SKIN = "PLi-HD/skin.xml"
+	EMERGENCY_NAME = "Stone II"
+	EMERGENCY_SKIN = "skin_default/skin.xml"
+
 DEFAULT_DISPLAY_SKIN = BoxInfo.getItem("grautec") and "skin_default/skin_display_grautec.xml" or "skin_default/skin_display.xml"
 SKIN_DEFAULT = "skin_default/skin.xml"
-EMERGENCY_NAME = "OctEtFHD" if not smallflash else "Stone II"
-EMERGENCY_SKIN = "skin_fallback_1080/skin.xml" if not smallflash else SKIN_DEFAULT
 SUBTITLE_SKIN = "skin_subtitles.xml"
 USER_SKIN_TEMPLATE = "skin_user_%s.xml"
 USER_SKIN = "skin_user.xml"
