@@ -7,7 +7,6 @@ from time import localtime, strftime, struct_time
 
 from enigma import getPrevAsciiCode
 
-from Components.SystemInfo import BoxInfo
 from Tools.Directories import SCOPE_CONFIG, fileAccess, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 from Tools.NumericalTextInput import NumericalTextInput
@@ -1756,8 +1755,7 @@ class ConfigText(ConfigElement, NumericalTextInput):
 		if session is not None:
 			from Screens.NumericalTextInputHelpDialog import NumericalTextInputHelpDialog
 			self.help_window = session.instantiateDialog(NumericalTextInputHelpDialog, self)
-			if BoxInfo.getItem("OSDAnimation"):
-				self.help_window.setAnimationMode(0)
+			self.help_window.setAnimationMode(0)
 			self.help_window.show()
 
 	def onDeselect(self, session):
