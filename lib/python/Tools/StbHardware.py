@@ -56,7 +56,7 @@ def getHWSerial():
 def getBoxRCType():
 	rctype = "unknown"
 	if isfile("/proc/stb/ir/rc/type"):
-		proctype = fileReadLine("/proc/stb/ir/rc/type", "unknown", source=MODULE_NAME).strip()
+		rctype = fileReadLine("/proc/stb/ir/rc/type", "unknown", source=MODULE_NAME).strip()
 	return rctype
 
 

@@ -1138,9 +1138,9 @@ class ReceiverInformation(InformationBase):
 			info.append(formatLine("P1", _("RC default name"), boxName))
 		rcType = remoteControl.remotes[rcIndex][REMOTE_RCTYPE]
 		info.append(formatLine("P1", _("RC selected type"), rcType))
-		boxType = BoxInfo.getItem("rctype")
-		if boxType != rcType:
-			info.append(formatLine("P1", _("RC default type"), boxType))
+		sysType = BoxInfo.getItem("rctype")
+		if sysType != rcType:
+			info.append(formatLine("P1", _("RC default type"), sysType))
 		boxRcType = getBoxRCType()
 		if boxRcType:
 			if boxRcType == "unknown":

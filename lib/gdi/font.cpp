@@ -198,8 +198,11 @@ fontRenderClass::fontRenderClass(): fb(fbClass::getInstance())
 	eDebug("[Font] Loading fonts.");
 	fflush(stdout);
 	font=0;
-
+#if HAVE_ARCH_ARM
+	int maxbytes=8*1024*1024;
+#else
 	int maxbytes=4*1024*1024;
+#endif
 	eDebug("[Font] Intializing font cache, using max. %dMB.", maxbytes/1024/1024);
 	fflush(stdout);
 	{

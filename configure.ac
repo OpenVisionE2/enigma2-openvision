@@ -74,6 +74,12 @@ AC_ARG_WITH(e2rev,
 AC_SUBST(E2REV)
 AC_DEFINE_UNQUOTED(E2REV,"$E2REV",[enigma2 revision])
 
+AC_ARG_WITH(arch,
+	AS_HELP_STRING([--with-arch],[build for architecture, $withval]),
+	[ARCHITECTURE="$withval"],[ARCHITECTURE=""])
+AC_SUBST(ARCHITECTURE)
+AC_DEFINE_UNQUOTED(ARCHITECTURE,"$ARCHITECTURE",[architecture type])
+
 AC_ARG_WITH(nolcd,
 	AC_HELP_STRING([--with-nolcd], [disable ascii based lcd, yes or no]),
 	[[withnolcd=$withval]],
@@ -422,6 +428,10 @@ AM_CONDITIONAL(HAVE_COLORLCD2, test "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm
 AM_CONDITIONAL(HAVE_COLORLCD3, test "$BOXTYPE" == "dm7080")
 AM_CONDITIONAL(HAVE_GRAUTEC70X0, test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm7080")
 AM_CONDITIONAL(HAVE_GRAUTEC8000, test "$BOXTYPE" == "dm8000")
+
+if test "$ARCHITECTURE" == "arm" -o "$ARCHITECTURE" == "aarch64"; then
+	AC_DEFINE(HAVE_ARCH_ARM, 1,[define when something is for all arm architectures])
+fi
 
 if test "$STBPLATFORM" == "7000s" -o "$STBPLATFORM" == "7100s" -o "$BOXTYPE" == "twinboxlcdci5" -o "$STBPLATFORM" == "7210s" -o "$BOXTYPE" == "sf238" -o "$BOXTYPE" == "odin2hybrid" -o "$BOXTYPE" == "odinplus"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
