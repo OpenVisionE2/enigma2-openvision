@@ -2616,14 +2616,14 @@ PyObject *eEPGCache::search(ePyObject arg)
 							{
 								auto cid = ContentIdentifierDescriptor(data);
 								auto cril = cid.getIdentifier();
-								for (auto crit = cril->begin(); crit != cril->end(); ++crit)
+								for (auto crid = cril->begin(); crid != cril->end(); ++crid)
 								{
 									// UK broadcasters set the two top bits of crid_type, i.e. 0x31 and 0x32 rather than
 									// the specification's 1 and 2 for episode and series respectively
 									if (((*crid)->getType() & 0xf) == casetype && (*crid)->getBytes()->data() != NULL)
 									{
 										// Exact match required for CRID data
-										if ((*crit)->getLength() == strlen && memcmp((*crit)->getBytes()->data(), str, strlen) == 0)
+										if ((*crid)->getLength() == strlen && memcmp((*crid)->getBytes()->data(), str, strlen) == 0)
 										{
 											descr.push_back(it->first);
 										}
