@@ -177,7 +177,7 @@ const eDVBService::cacheID eDVBService::audioCacheTags[] = {
 const int eDVBService::nAudioCacheTags = sizeof(eDVBService::audioCacheTags) / sizeof(eDVBService::audioCacheTags[0]);
 
 eDVBService::eDVBService()
-	:m_cache(0), m_flags(0)
+	:m_cache(0), m_aus_da_flag(0), m_flags(0)
 {
 }
 
@@ -191,6 +191,8 @@ eDVBService &eDVBService::operator=(const eDVBService &s)
 	m_service_name = s.m_service_name;
 	m_service_name_sort = s.m_service_name_sort;
 	m_provider_name = s.m_provider_name;
+	m_default_authority = s.m_default_authority;
+	m_aus_da_flag = s.m_aus_da_flag;
 	m_flags = s.m_flags;
 	m_ca = s.m_ca;
 	copyCache(s.m_cache);
@@ -472,6 +474,16 @@ void eDVBDB::parseServiceData(ePtr<eDVBService> s, std::string str)
 			int val;
 			sscanf(v.c_str(), "%x", &val);
 			s->m_ca.push_back((uint16_t)val);
+		}
+		else if (p == 'a') {
+			std::string da = urlDecode(v);
+			std::transform(da.begin(), da.end(), da.begin(), ::tolower);
+			s->m_default_authority = da;
+		}
+		else if (p == 'A') {
+			uint32_t val;
+			sscanf(v.c_str(), "%x", &val);
+			s->m_aus_da_flag = val;
 		}
 	}
 }
@@ -800,6 +812,26 @@ void eDVBDB::loadServicelist(const char *file)
 	eDebug("[eDVBDB] loaded %d channels/transponders and %d services", tcount, scount);
 }
 
+static std::string encode(const std::string s)
+{
+	int len = s.size();
+	std::string res;
+	int i;
+	for (i=0; i<len; ++i)
+	{
+		unsigned char c = s[i];
+		if ((c == ':') || (c < 32) || (c == '%') || (c == ','))
+		{
+			res += "%";
+			char hex[8];
+			snprintf(hex, 8, "%02x", c);
+			res += hex;
+		} else
+			res += c;
+	}
+	return res;
+}
+
 void eDVBDB::saveServicelist(const char *file)
 {
 	eDebug("[eDVBDB] ---- saving lame channel db");
@@ -999,6 +1031,22 @@ void eDVBDB::saveServicelist(const char *file)
 			fprintf(f, ",f:%x", i->second->m_flags);
 			if (g)
 				fprintf(g, ",f:%x", i->second->m_flags);
+		}
+
+		if (!i->second->m_default_authority.empty()) {
+			std::string da = i->second->m_default_authority;
+			std::transform(da.begin(), da.end(), da.begin(), ::tolower);
+			da = encode(da);
+
+			fprintf(f, ",a:%s", da.c_str());
+			if (g)
+				fprintf(g, ",a:%s", da.c_str());
+		}
+
+		if (i->second->m_aus_da_flag) {
+			fprintf(f, ",A:%x", i->second->m_aus_da_flag);
+			if (g)
+				fprintf(g, ",A:%x", i->second->m_aus_da_flag);
 		}
 
 		fprintf(f, "\n");
@@ -1289,6 +1337,7 @@ void eDVBDB::setNumberingMode(bool numberingMode)
 
 int eDVBDB::renumberBouquet(eBouquet &bouquet, int startChannelNum)
 {
+	eDebug("[eDVBDB] Renumber %s, starting at %d", bouquet.m_bouquet_name.c_str(), startChannelNum);
 	std::list<eServiceReference> &list = bouquet.m_services;
 	for (std::list<eServiceReference>::iterator it = list.begin(); it != list.end(); ++it)
 	{
