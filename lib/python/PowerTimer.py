@@ -215,16 +215,21 @@ class PowerTimer(Timer):
 			return timer.begin
 		return -1
 
-	def getNextWakeupSleepTimer(self): # Start wakeup from deepstandby with SleepTimerEdit and ZapTimer or RecordTimer actived.
+	def getNextWakeupSleepTimer(self): # Start wakeup from deepstandby or standby with SleepTimerEdit include ZapTimer or RecordTimer actived.
 		now = localtime(time())
 		current_week_day = int(now.tm_wday)
 		return int(mktime((now.tm_year, now.tm_mon, now.tm_mday, config.usage.wakeup_time[current_week_day].value[0], config.usage.wakeup_time[current_week_day].value[1], 0, now.tm_wday, now.tm_yday, now.tm_isdst))) # Timer config.usage.wakeup_time.value
 
 	def getNextPowerManagerTimeOld(self):
 		now = time()
-		if config.usage.wakeup_enabled.value != "standby":
+		if config.usage.wakeup_enabled.value != "no": # SleepTimerEdit run only if active.
 			if self.getNextWakeupSleepTimer() > time():
-				return self.getNextWakeupSleepTimer() # SleepTimerEdit wakeup from deepstandby timer.
+				if Screens.Standby.inStandby and config.usage.wakeup_enabled.value == "standby": # SleepTimerEdit wake up only from "standby".
+					return self.getNextWakeupSleepTimer()
+				elif config.usage.wakeup_enabled.value != "standby": # SleepTimerEdit wake up from deepstandby, "deepstandby" or "yes".
+					return self.getNextWakeupSleepTimer()
+				else:
+					return -1 # SleepTimerEdit mode deepstandby and config usage value wake up only from "standby" (not wake up).
 		for timer in self.timer_list:
 			if timer.timerType != TIMERTYPE.AUTOSTANDBY and timer.timerType != TIMERTYPE.AUTODEEPSTANDBY:
 				next_act = timer.getNextWakeup()
