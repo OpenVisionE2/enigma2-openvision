@@ -2748,8 +2748,16 @@ class InfoBarInstantRecord:
 			if limitEvent:
 				end = info["end"]
 		else:
+			from Tools.Directories import isPluginInstalled
+			message = _("No event info found, recording indefinitely.")
 			if limitEvent and serviceref:
-				self.session.open(MessageBox, _("No event info found, recording indefinitely."), MessageBox.TYPE_INFO)
+				if serviceref.toString().startswith("1"):
+					self.session.open(MessageBox, message, MessageBox.TYPE_INFO)
+				elif isPluginInstalled("ServiceApp"): # channels with IPTV reference.
+					if not config.plugins.serviceapp.servicemp3.replace.value:
+						self.session.open(MessageBox, message, MessageBox.TYPE_INFO)
+				else:
+					self.session.open(MessageBox, message, MessageBox.TYPE_INFO)
 
 		if isinstance(serviceref, eServiceReference):
 			serviceref = ServiceReference(serviceref)
@@ -2781,7 +2789,7 @@ class InfoBarInstantRecord:
 			if serviceref:
 				self.session.open(MessageBox, _("Could not record due to invalid service %s") % serviceref, MessageBox.TYPE_INFO)
 			else:
-				self.session.open(MessageBox, _("Could not record due to invalid service"), MessageBox.TYPE_INFO)
+				self.session.open(MessageBox, _("Could not record due to busy tuner"), MessageBox.TYPE_INFO)
 			recording.autoincrease = False
 
 	def isInstantRecordRunning(self):
