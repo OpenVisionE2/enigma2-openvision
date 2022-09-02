@@ -203,7 +203,8 @@ canRename = canMove
 
 def createMoveList(serviceref, dest):
 	# normpath is to remove the trailing "/" from directories
-	src = isinstance(serviceref, str) and "%s.ts" % serviceref or normpath(serviceref.getPath())
+	ext_ts = "%s.ts" % serviceref
+	src = isinstance(serviceref, str) and "%s.ts" % serviceref or normpath(serviceref.getPath()) if exists(ext_ts) else isinstance(serviceref, str) and "%s.stream" % serviceref or normpath(serviceref.getPath())
 	srcPath, srcName = split(src)
 	if normpath(srcPath) == dest:
 		# Move file to itself is allowed, so we have to check it.
