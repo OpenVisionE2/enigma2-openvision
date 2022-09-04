@@ -15,8 +15,8 @@ from Tools.LoadPixmap import LoadPixmap
 
 MODULE_NAME = __name__.split(".")[-1].capitalize()
 
-ovSkin = resolveFilename(SCOPE_SKINS, "OctEtFHD/skin.xml")
-pliSkin = resolveFilename(SCOPE_SKINS, "PLi-HD/skin.xml")
+ovSkin = isfile(resolveFilename(SCOPE_SKINS, "OctEtFHD/skin.xml"))
+pliSkin = isfile(resolveFilename(SCOPE_SKINS, "PLi-HD/skin.xml"))
 
 if BoxInfo.getItem("HasFullHDSkinSupport") and ovSkin:
 	DEFAULT_SKIN = "OctEtFHD/skin.xml"
@@ -64,11 +64,12 @@ variables = {}
 
 config.skin = ConfigSubsection()
 skin = resolveFilename(SCOPE_SKINS, DEFAULT_SKIN)
-if not isfile(skin):
-	print("[Skin] Error: Default skin '%s' is not readable or is not a file!  Using emergency skin." % skin)
-	DEFAULT_SKIN = EMERGENCY_SKIN
 config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
 config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
+if not isfile(skin):
+	print("[Skin] Error: Default skin '%s' is not readable or is not a file!  Using emergency skin." % skin)
+	DEFAULT_SKIN = SKIN_DEFAULT
+DEFAULT_SKIN = EMERGENCY_SKIN
 
 currentPrimarySkin = None
 currentDisplaySkin = None
