@@ -1413,6 +1413,7 @@ RESULT eDVBServicePlay::start()
 	eServiceReferenceDVB service = (eServiceReferenceDVB&)m_reference;
 	bool scrambled = true;
 	int packetsize = 188;
+	RESULT ret = 0;
 	eDVBServicePMTHandler::serviceType type = eDVBServicePMTHandler::livetv;
 
 	if(tryFallbackTuner(/*REF*/service, /*REF*/m_is_stream, m_is_pvr, /*simulate*/false))
@@ -1464,7 +1465,7 @@ RESULT eDVBServicePlay::start()
 #ifndef HAVE_RASPBERRYPI
 	m_first_program_info = 1;
 	ePtr<iTsSource> source = createTsSource(service, packetsize);
-	m_service_handler.tuneExt(service, source, service.path.c_str(), m_cue, false, m_dvb_service, type, scrambled);
+	ret = m_service_handler.tuneExt(service, source, service.path.c_str(), m_cue, false, m_dvb_service, type, scrambled);
 #endif
 	if (m_is_pvr)
 	{
@@ -1492,7 +1493,7 @@ RESULT eDVBServicePlay::start()
 	ePtr<iTsSource> source = createTsSource(service, packetsize);
 	m_service_handler.tuneExt(service, source, service.path.c_str(), m_cue, false, m_dvb_service, type, scrambled);
 #endif
-	return 0;
+	return ret;
 }
 
 RESULT eDVBServicePlay::stop()
