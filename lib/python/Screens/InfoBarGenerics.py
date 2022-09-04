@@ -2751,7 +2751,7 @@ class InfoBarInstantRecord:
 	def startInstantRecording(self, limitEvent=False):
 		begin = int(time())
 		end = begin + 3600      # dummy
-		name = "instant record"
+		name = _("Instant record")
 		info = {}
 
 		self.getProgramInfoAndEvent(info, name)
@@ -2867,7 +2867,7 @@ class InfoBarInstantRecord:
 			if len(list) >= 2 and about.getChipSetString().startswith("meson-6"):
 				AddNotification(MessageBox, _("Sorry only possible to record 2 channels at once!"), MessageBox.TYPE_ERROR, timeout=5)
 				return
-			self.startInstantRecording(limitEvent=answer[1] in ("event", "manualendtime") or False)
+			self.startInstantRecording(limitEvent=answer[1] in ("event") or False)
 			if answer[1] == "manualduration":
 				self.changeDuration(len(self.recording) - 1)
 			elif answer[1] == "manualendtime":
