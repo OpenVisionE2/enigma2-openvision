@@ -22,7 +22,7 @@ echo ""
 finish=$(date +"%s")
 timediff=$(($finish-$begin))
 echo -e "Change time was $(($timediff / 60)) minutes and $(($timediff % 60)) seconds."
-echo -e "Fast changing would be less than 1 minutes."
+echo -e "Fast changing would be less than 1 minute."
 echo ""
 echo "Cleanup Done!"
 echo ""
