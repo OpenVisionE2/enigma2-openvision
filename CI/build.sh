@@ -19,6 +19,7 @@ commit_files() {
   ./CI/PEP8.sh
   ./CI/futurize.sh
   ./CI/header.sh
+  ./CI/skin.sh
 }
 
 upload_files() {
