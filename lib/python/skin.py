@@ -669,7 +669,7 @@ class AttributeParser:
 
 	def alphatest(self, value):  # This legacy definition uses an inconsistent name, use 'alphaTest' instead!
 		self.alphaTest(value)
-		# attribDeprecationWarning("alphatest", "alphaTest")
+		attribDeprecationWarning("alphatest", "alphaTest")
 
 	def animationMode(self, value):
 		self.guiObject.setAnimationMode(parseAnimationMode(value))
@@ -744,11 +744,11 @@ class AttributeParser:
 
 	def halign(self, value):  # This legacy definition uses an inconsistent name, use 'horizontalAlignment' instead!
 		self.horizontalAlignment(value)
-		# attribDeprecationWarning("halign", "horizontalAlignment")
+		attribDeprecationWarning("halign", "horizontalAlignment")
 
 	def hAlign(self, value):  # This typo catcher definition uses an inconsistent name, use 'horizontalAlignment' instead!
 		self.horizontalAlignment(value)
-		# attribDeprecationWarning("hAlign", "horizontalAlignment")
+		attribDeprecationWarning("hAlign", "horizontalAlignment")
 
 	def horizontalAlignment(self, value):
 		self.guiObject.setHAlign(parseHorizontalAlignment(value))
@@ -865,7 +865,7 @@ class AttributeParser:
 
 	def seek_pointer(self, value):  # This legacy definition uses an inconsistent name, use 'seekPointer' instead!
 		self.seekPointer(value)
-		# attribDeprecationWarning("seek_pointer", "seekPointer")
+		attribDeprecationWarning("seek_pointer", "seekPointer")
 
 	def seekPointer(self, value):
 		(name, pos) = [x.strip() for x in value.split(":", 1)]
@@ -915,11 +915,11 @@ class AttributeParser:
 
 	def valign(self, value):  # This legacy definition uses an inconsistent name, use 'verticalAlignment' instead!
 		self.verticalAlignment(value)
-		# attribDeprecationWarning("valign", "verticalAlignment")
+		attribDeprecationWarning("valign", "verticalAlignment")
 
 	def vAlign(self, value):  # This typo catcher definition uses an inconsistent name, use 'verticalAlignment' instead!
 		self.verticalAlignment(value)
-		# attribDeprecationWarning("vAlign", "verticalAlignment")
+		attribDeprecationWarning("vAlign", "verticalAlignment")
 
 	def valueFont(self, value):
 		self.guiObject.setValueFont(parseFont(value, self.scaleTuple))
