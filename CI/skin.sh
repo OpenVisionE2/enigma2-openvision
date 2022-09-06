@@ -8,24 +8,24 @@ echo ""
 echo "Changing xml files, please wait ..." 
 begin=$(date +"%s")
 
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|alphatest=|alphaTest=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|halign=|horizontalAlignment=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|hAlign=|horizontalAlignment=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|OverScan=|overScan=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|scrollbarBackgroundPicture=|scrollbarBackgroundPixmap=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|scrollbarbackgroundPixmap=|scrollbarBackgroundPixmap=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|scrollbarSliderBorderColor=|scrollbarBorderColor=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|scrollbarSliderBorderWidth=|scrollbarBorderWidth=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|scrollbarSliderForegroundColor=|scrollbarForegroundColor=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|scrollbarSliderPicture=|scrollbarForegroundPixmap=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|scrollbarSliderPixmap=|scrollbarForegroundPixmap=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|secondFont=|valueFont=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|secondfont=|valueFont=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|seek_pointer=|seekPointer=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|selectionDisabled=|selection=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|sliderPixmap=|scrollbarForegroundPixmap=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|valign=|verticalAlignment=|g"
-find . -type f -name "*.xml" | xargs -L1 sed -i "s|vAlign=|verticalAlignment=|g"
+find . -type f -name "*.xml" -exec sed -i "s|alphatest=|alphaTest=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|halign=|horizontalAlignment=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|hAlign=|horizontalAlignment=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|OverScan=|overScan=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|scrollbarBackgroundPicture=|scrollbarBackgroundPixmap=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|scrollbarbackgroundPixmap=|scrollbarBackgroundPixmap=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|scrollbarSliderBorderColor=|scrollbarBorderColor=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|scrollbarSliderBorderWidth=|scrollbarBorderWidth=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|scrollbarSliderForegroundColor=|scrollbarForegroundColor=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|scrollbarSliderPicture=|scrollbarForegroundPixmap=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|scrollbarSliderPixmap=|scrollbarForegroundPixmap=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|secondFont=|valueFont=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|secondfont=|valueFont=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|seek_pointer=|seekPointer=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|selectionDisabled=|selection=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|sliderPixmap=|scrollbarForegroundPixmap=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|valign=|verticalAlignment=|g" {} \;
+find . -type f -name "*.xml" -exec sed -i "s|vAlign=|verticalAlignment=|g" {} \;
 
 git add -u
 git add *
