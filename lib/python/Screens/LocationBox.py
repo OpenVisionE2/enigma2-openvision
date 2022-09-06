@@ -32,29 +32,29 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 
 	skin = """
 	<screen name="LocationBox" position="center,center" size="1000,570" resolution="1280,720">
-		<widget name="text" position="10,10" size="e-20,25" font="Regular;20" transparent="1" valign="center" />
-		<widget name="target" position="10,35" size="e-20,25" font="Regular;20" transparent="1" valign="center" />
-		<widget name="filetext" position="10,70" size="e-20,25" backgroundColor="#00ffffff" font="Regular;20" foregroundColor="#00000000" valign="center" />
+		<widget name="text" position="10,10" size="e-20,25" font="Regular;20" transparent="1" verticalAlignment="center" />
+		<widget name="target" position="10,35" size="e-20,25" font="Regular;20" transparent="1" verticalAlignment="center" />
+		<widget name="filetext" position="10,70" size="e-20,25" backgroundColor="#00ffffff" font="Regular;20" foregroundColor="#00000000" verticalAlignment="center" />
 		<widget name="filelist" position="10,95" size="e-20,245" enableWrapAround="1" itemHeight="25" scrollbarMode="showOnDemand" transparent="1" />
-		<widget name="quickselect" position="10,95" size="e-20,245" font="Regular;100" foregroundColor="#0000ffff" halign="center" transparent="1" valign="center" zPosition="+1" />
-		<widget name="booktext" position="10,355" size="e-20,25" backgroundColor="#00ffffff" font="Regular;20" foregroundColor="#00000000" valign="center" />
-		<widget name="booklist" position="10,380" size="e-20,125" font="Regular;20" itemHeight="25" scrollbarMode="showOnDemand" selectionDisabled="1" transparent="1" />
-		<widget source="key_red" render="Label" position="10,e-50" size="180,40" backgroundColor="key_red" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget name="quickselect" position="10,95" size="e-20,245" font="Regular;100" foregroundColor="#0000ffff" horizontalAlignment="center" transparent="1" verticalAlignment="center" zPosition="+1" />
+		<widget name="booktext" position="10,355" size="e-20,25" backgroundColor="#00ffffff" font="Regular;20" foregroundColor="#00000000" verticalAlignment="center" />
+		<widget name="booklist" position="10,380" size="e-20,125" font="Regular;20" itemHeight="25" scrollbarMode="showOnDemand" selection="1" transparent="1" />
+		<widget source="key_red" render="Label" position="10,e-50" size="180,40" backgroundColor="key_red" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="200,e-50" size="180,40" backgroundColor="key_green" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="200,e-50" size="180,40" backgroundColor="key_green" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="390,e-50" size="180,40" backgroundColor="key_yellow" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_yellow" render="Label" position="390,e-50" size="180,40" backgroundColor="key_yellow" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label" position="580,e-50" size="180,40" backgroundColor="key_blue" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_blue" render="Label" position="580,e-50" size="180,40" backgroundColor="key_blue" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_menu" render="Label" position="e-180,e-50" size="80,40" backgroundColor="key_back" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_menu" render="Label" position="e-180,e-50" size="80,40" backgroundColor="key_back" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_help" render="Label" position="e-90,e-50" size="80,40" backgroundColor="key_back" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_help" render="Label" position="e-90,e-50" size="80,40" backgroundColor="key_back" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>"""

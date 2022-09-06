@@ -35,16 +35,16 @@ class SoftwareUpdate(Screen, HelpableScreen, ProtectedScreen):
 
 	skin = ["""
 	<screen name="SoftwareUpdate" title="Software Update" position="center,center" size="%d,%d" >
-		<widget name="traffic_off" position="%d,%d" size="%d,%d" alphatest="blend" pixmap="icons/traffic_off.png" scale="1" />
-		<widget name="traffic_red" position="%d,%d" size="%d,%d" alphatest="blend" pixmap="icons/traffic_red.png" scale="1" />
-		<widget name="traffic_yellow" position="%d,%d" size="%d,%d" alphatest="blend" pixmap="icons/traffic_yellow.png" scale="1" />
-		<widget name="traffic_green" position="%d,%d" size="%d,%d" alphatest="blend" pixmap="icons/traffic_green.png" scale="1" />
-		<widget name="feedstatus_off" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" valign="center" />
-		<widget name="feedstatus_red" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" valign="center" />
-		<widget name="feedstatus_yellow" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" valign="center" />
-		<widget name="feedstatus_green" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" valign="center" />
-		<widget name="package_text" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" valign="center" />
-		<widget name="package_count" position="%d,%d" size="%d,%d" font="Regular;%d" halign="right" transparent="1" valign="center" />
+		<widget name="traffic_off" position="%d,%d" size="%d,%d" alphaTest="blend" pixmap="icons/traffic_off.png" scale="1" />
+		<widget name="traffic_red" position="%d,%d" size="%d,%d" alphaTest="blend" pixmap="icons/traffic_red.png" scale="1" />
+		<widget name="traffic_yellow" position="%d,%d" size="%d,%d" alphaTest="blend" pixmap="icons/traffic_yellow.png" scale="1" />
+		<widget name="traffic_green" position="%d,%d" size="%d,%d" alphaTest="blend" pixmap="icons/traffic_green.png" scale="1" />
+		<widget name="feedstatus_off" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" verticalAlignment="center" />
+		<widget name="feedstatus_red" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" verticalAlignment="center" />
+		<widget name="feedstatus_yellow" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" verticalAlignment="center" />
+		<widget name="feedstatus_green" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" verticalAlignment="center" />
+		<widget name="package_text" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" verticalAlignment="center" />
+		<widget name="package_count" position="%d,%d" size="%d,%d" font="Regular;%d" horizontalAlignment="right" transparent="1" verticalAlignment="center" />
 		<widget name="feedmessage" position="%d,%d" size="%d,%d" font="Regular;%d" transparent="1" />
 		<widget name="activity" position="%d,%d" size="%d,%d" />
 		<widget source="list" render="Listbox" position="%d,%d" size="%d,%d" scrollbarMode="showOnDemand">
@@ -62,13 +62,13 @@ class SoftwareUpdate(Screen, HelpableScreen, ProtectedScreen):
 				}
 			</convert>
 		</widget>
-		<widget source="key_red" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_red" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_red" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_red" font="Regular;%d" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_green" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_green" font="Regular;%d" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_yellow" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_yellow" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_yellow" font="Regular;%d" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>""",
@@ -393,7 +393,7 @@ class SoftwareUpdateSummary(ScreenSummary):
 class RunSoftwareUpdate(Screen, HelpableScreen):
 	skin = """
 	<screen name="RunSoftwareUpdate" position="center,center" size="720,435" resolution="1280,720">
-		<widget name="update" position="10,10" size="700,400" font="Regular;20" halign="center" transparent="1" valign="center" />
+		<widget name="update" position="10,10" size="700,400" font="Regular;20" horizontalAlignment="center" transparent="1" verticalAlignment="center" />
 		<widget name="activity" position="10,420" size="700,5" />
 	</screen>"""
 

@@ -22,7 +22,7 @@ from Tools.Directories import resolveFilename, SCOPE_GUISKIN, SCOPE_LCDSKIN, SCO
 class SkinSelector(Screen, HelpableScreen):
 	skin = ["""
 	<screen name="SkinSelector" position="center,center" size="%d,%d">
-		<widget name="preview" position="center,%d" size="%d,%d" alphatest="blend" />
+		<widget name="preview" position="center,%d" size="%d,%d" alphaTest="blend" />
 		<widget source="skins" render="Listbox" position="center,%d" size="%d,%d" enableWrapAround="1" scrollbarMode="showOnDemand">
 			<convert type="TemplatedMultiContent">
 				{
@@ -35,9 +35,9 @@ class SkinSelector(Screen, HelpableScreen):
 				}
 			</convert>
 		</widget>
-		<widget source="description" render="Label" position="center,e-%d" size="%d,%d" font="Regular;%d" valign="center" />
-		<widget source="key_red" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_red" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center" />
-		<widget source="key_green" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_green" font="Regular;%d" foregroundColor="key_text" halign="center" valign="center" />
+		<widget source="description" render="Label" position="center,e-%d" size="%d,%d" font="Regular;%d" verticalAlignment="center" />
+		<widget source="key_red" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_red" font="Regular;%d" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center" />
+		<widget source="key_green" render="Label" position="%d,e-%d" size="%d,%d" backgroundColor="key_green" font="Regular;%d" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center" />
 	</screen>""",
 		670, 570,
 		10, 356, 200,

@@ -53,35 +53,35 @@ class VirtualKeyBoardEntryComponent:
 class VirtualKeyBoard(Screen, HelpableScreen):
 	skin = """
 	<screen name="VirtualKeyBoard" title="Virtual KeyBoard" position="center,center" size="770,470" resolution="1280,720" zPosition="99">
-		<widget name="prompt" position="10,10" size="750,50" font="Regular;20" transparent="1" valign="center" />
+		<widget name="prompt" position="10,10" size="750,50" font="Regular;20" transparent="1" verticalAlignment="center" />
 		<eLabel position="10,80" size="750,2" backgroundColor="#00555555" />
 		<eLabel position="10,124" size="750,2" backgroundColor="#00555555" />
 		<eLabel position="10,80" size="2,45" backgroundColor="#00555555" />
 		<eLabel position="759,80" size="2,45" backgroundColor="#00555555" />
-		<widget name="text" position="15,90" size="740,25" font="Regular;20" noWrap="1" transparent="1" valign="center" />
-		<widget name="list" position="10,140" size="630,225" selectionDisabled="1" transparent="1" />
-		<widget name="mode" position="700,140" size="60,25" font="Regular;20" halign="right" transparent="1" valign="center" />
-		<widget source="key_info" render="Label" position="e-100,225" size="90,40" backgroundColor="key_back" conditional="key_info" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget name="text" position="15,90" size="740,25" font="Regular;20" noWrap="1" transparent="1" verticalAlignment="center" />
+		<widget name="list" position="10,140" size="630,225" selection="1" transparent="1" />
+		<widget name="mode" position="700,140" size="60,25" font="Regular;20" horizontalAlignment="right" transparent="1" verticalAlignment="center" />
+		<widget source="key_info" render="Label" position="e-100,225" size="90,40" backgroundColor="key_back" conditional="key_info" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_text" render="Label" position="e-100,275" size="90,40" backgroundColor="key_back" conditional="key_text" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_text" render="Label" position="e-100,275" size="90,40" backgroundColor="key_back" conditional="key_text" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_help" render="Label" position="e-100,325" size="90,40" backgroundColor="key_back" font="Regular;20" conditional="key_help" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_help" render="Label" position="e-100,325" size="90,40" backgroundColor="key_back" font="Regular;20" conditional="key_help" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget name="locale" position="10,380" size="500,25" font="Regular;20" transparent="1" valign="center" />
-		<widget name="language" position="520,380" size="240,25" font="Regular;20" halign="right" transparent="1" valign="center" />
-		<widget source="key_red" render="Label" position="10,e-50" size="180,40" backgroundColor="key_red" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget name="locale" position="10,380" size="500,25" font="Regular;20" transparent="1" verticalAlignment="center" />
+		<widget name="language" position="520,380" size="240,25" font="Regular;20" horizontalAlignment="right" transparent="1" verticalAlignment="center" />
+		<widget source="key_red" render="Label" position="10,e-50" size="180,40" backgroundColor="key_red" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="200,e-50" size="180,40" backgroundColor="key_green" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="200,e-50" size="180,40" backgroundColor="key_green" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="390,e-50" size="180,40" backgroundColor="key_yellow" conditional="key_yellow" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_yellow" render="Label" position="390,e-50" size="180,40" backgroundColor="key_yellow" conditional="key_yellow" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label" position="580,e-50" size="180,40" backgroundColor="key_blue" conditional="key_blue" font="Regular;20" foregroundColor="key_text" halign="center" valign="center">
+		<widget source="key_blue" render="Label" position="580,e-50" size="180,40" backgroundColor="key_blue" conditional="key_blue" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>"""

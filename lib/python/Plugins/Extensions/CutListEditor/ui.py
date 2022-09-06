@@ -133,19 +133,19 @@ class CutListEditor(Screen, InfoBarBase, InfoBarSeek, InfoBarCueSheetSupport, He
 						}
 					</convert>
 		</widget>
-		<eLabel position="240,548" size=" 80,20" text="IN" zPosition="3" halign="center" font="Regular;20" backgroundColor="#004000"/>
-		<widget position="330,548" size=" 70,20" name="InLen" zPosition="3" halign="right" font="Regular;20" backgroundColor="#004000"/>
-		<eLabel position="240,573" size=" 80,20" text="OUT" zPosition="3" halign="center" font="Regular;20" backgroundColor="#400000"/>
-		<widget position="330,573" size=" 70,20" name="OutLen" zPosition="3" halign="right" font="Regular;20" backgroundColor="#400000"/>
+		<eLabel position="240,548" size=" 80,20" text="IN" zPosition="3" horizontalAlignment="center" font="Regular;20" backgroundColor="#004000"/>
+		<widget position="330,548" size=" 70,20" name="InLen" zPosition="3" horizontalAlignment="right" font="Regular;20" backgroundColor="#004000"/>
+		<eLabel position="240,573" size=" 80,20" text="OUT" zPosition="3" horizontalAlignment="center" font="Regular;20" backgroundColor="#400000"/>
+		<widget position="330,573" size=" 70,20" name="OutLen" zPosition="3" horizontalAlignment="right" font="Regular;20" backgroundColor="#400000"/>
 		<eLabel position="462,86" size="768,432" backgroundColor="transparent2" zPosition="3"/>
 		<widget position="462,86" size="768,432" name="Video" zPosition="-10"/>
-		<widget position="462,528" size="768,30" backgroundColor="black" font="Regular; 18" halign="center" render="Label" source="session.CurrentService" transparent="1" valign="center" zPosition="3" foregroundColor="white">
+		<widget position="462,528" size="768,30" backgroundColor="black" font="Regular; 18" horizontalAlignment="center" render="Label" source="session.CurrentService" transparent="1" verticalAlignment="center" zPosition="3" foregroundColor="white">
 			<convert type="ServiceName">Name</convert>
 		</widget>
-		<widget position="462,559" size="768,25" backgroundColor="black" font="Regular; 19" halign="center" render="Label" source="session.CurrentService" transparent="1" valign="center" zPosition="3" foregroundColor="white">
+		<widget position="462,559" size="768,25" backgroundColor="black" font="Regular; 19" horizontalAlignment="center" render="Label" source="session.CurrentService" transparent="1" verticalAlignment="center" zPosition="3" foregroundColor="white">
 			<convert type="ServicePosition">Position,Detailed</convert>
 		</widget>
-		<widget position="430,584" size=" 65,25" name="SeekState" zPosition="1" halign="right" font="Regular;20" valign="center"/>
+		<widget position="430,584" size=" 65,25" name="SeekState" zPosition="1" horizontalAlignment="right" font="Regular;20" verticalAlignment="center"/>
 		<widget position="510,586" size="720,20" name="Timeline" backgroundColor="un808888" foregroundColor="black" pointer="position_arrow.png:3,5" zPosition="3"/>
 		<panel name="FullscreenMenuButtonPanel" />
 		<panel name="FullScreenColourPanel" />
