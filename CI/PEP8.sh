@@ -65,11 +65,11 @@ git add *
 git commit -m "PEP8 double aggressive W291 ~ W293 and W391"
 
 echo ""
-echo "PEP8 double aggressive E101 and E113"
-autopep8 . -a -a -j 0 --recursive --select=E101,E113 --in-place
+echo "PEP8 double aggressive E113"
+autopep8 . -a -a -j 0 --recursive --select=E113 --in-place
 git add -u
 git add *
-git commit -m "PEP8 double aggressive E101 and E113"
+git commit -m "PEP8 double aggressive E113"
 
 echo ""
 finish=$(date +"%s")
