@@ -170,15 +170,13 @@ class SkinSelector(Screen, HelpableScreen):
 			preview = resolveFilename(SCOPE_GUISKIN, "noprev.png")
 		self.picload.startDecode(preview)
 		skinfile = resolveFilename(SCOPE_GUISKIN, skin, "skin.xml")
-		oldskin = fileContains(skinfile, "alphatest=") or fileContains(skinfile, "OverScan=") or fileContains(skinfile, "scrollbarBackgroundPicture=") or fileContains(skinfile, "scrollbarbackgroundPixmap=") or fileContains(skinfile, "scrollbarSliderBorderColor=") or fileContains(skinfile, "scrollbarSliderBorderWidth=") or fileContains(skinfile, "scrollbarSliderForegroundColor=") or fileContains(skinfile, "scrollbarSliderPicture=") or fileContains(skinfile, "scrollbarSliderPixmap=") or fileContains(skinfile, "seek_pointer=") or fileContains(skinfile, "selectionDisabled=") or fileContains(skinfile, "sliderPixmap=") or fileContainsNoCase(skinfile, "halign=") or fileContainsNoCase(skinfile, "secondFont=") or fileContainsNoCase(skinfile, "valign=")
+		oldskin = fileContains(skinfile, "alphatest=") or fileContains(skinfile, "OverScan=") or fileContains(skinfile, "scrollbarBackgroundPicture=") or fileContains(skinfile, "scrollbarbackgroundPixmap=") or fileContains(skinfile, "scrollbarSliderBorderColor=") or fileContains(skinfile, "scrollbarSliderBorderWidth=") or fileContains(skinfile, "scrollbarSliderForegroundColor=") or fileContains(skinfile, "scrollbarSliderPicture=") or fileContains(skinfile, "scrollbarSliderPixmap=") or fileContains(skinfile, "seek_pointer=") or fileContains(skinfile, "selectionDisabled=") or fileContains(skinfile, "sliderPixmap=") or fileContainsNoCase(skinfile, "halign=") or fileContainsNoCase(skinfile, "secondfont=") or fileContainsNoCase(skinfile, "valign=")
+		if oldskin:
+			self["key_blue"].setText(_("Convert to new API"))
 		if skin == self.config.value:
 			self["description"].setText(_("Press OK to keep the currently selected skin %s.") % resolution)
-			if oldskin:
-				self["key_blue"].setText(_("Convert to new API"))
 		else:
 			self["description"].setText(_("Press OK to activate the selected skin %s.") % resolution)
-			if oldskin:
-				self["key_blue"].setText(_("Convert to new API"))
 
 	def cancel(self):
 		self.close(False)
@@ -211,10 +209,12 @@ class SkinSelector(Screen, HelpableScreen):
 		from Tools.Directories import SCOPE_SCRIPTS
 		from os.path import isfile
 		converter = isfile(resolveFilename(SCOPE_SCRIPTS, "convertskin.sh"))
+		skin = self["skins"].getCurrent()[3]
 		skinpath = resolveFilename(SCOPE_GUISKIN, skin)
 		self.Console = Console()
 		if converter:
 			self.Console.ePopen("/usr/script/convertskin.sh %s &" % skinpath)
+			restartBox = self.session.openWithCallback(self.restartGUI, MessageBox, _("Welcome to the new API!\nGUI needs to restart.\nWould you like to restart the GUI now?"), MessageBox.TYPE_YESNO)
 		else:
 			print("[SkinSelector] /usr/script/convertskin.sh not found!")
 
