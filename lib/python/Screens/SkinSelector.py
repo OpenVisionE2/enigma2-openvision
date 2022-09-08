@@ -16,7 +16,7 @@ from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Standby import TryQuitMainloop, QUIT_RESTART
-from Tools.Directories import resolveFilename, SCOPE_GUISKIN, SCOPE_LCDSKIN, SCOPE_SKINS
+from Tools.Directories import resolveFilename, SCOPE_GUISKIN, SCOPE_LCDSKIN, SCOPE_SKINS, fileContains, fileContainsNoCase
 
 
 class SkinSelector(Screen, HelpableScreen):
@@ -66,6 +66,7 @@ class SkinSelector(Screen, HelpableScreen):
 		self["preview"] = Pixmap()
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Save"))
+		self["key_blue"] = StaticText("")
 		self["description"] = StaticText(_("Please wait... Loading list..."))
 		self["actions"] = HelpableNumberActionMap(self, ["SetupActions", "DirectionActions", "ColorActions"], {
 			"ok": (self.save, _("Save and activate the currently selected skin")),
@@ -73,6 +74,7 @@ class SkinSelector(Screen, HelpableScreen):
 			"close": (self.cancelRecursive, _("Cancel any changes to the currently active skin and exit all menus")),
 			"red": (self.cancel, _("Cancel any changes to the currently active skin")),
 			"green": (self.save, _("Save and activate the currently selected skin")),
+			"blue": (self.blue, _("Convert old values to new ones")),
 			"up": (self.up, _("Move to the previous skin")),
 			"down": (self.down, _("Move to the next skin")),
 			"left": (self.left, _("Move to the previous page")),
@@ -167,10 +169,16 @@ class SkinSelector(Screen, HelpableScreen):
 		if not exists(preview):
 			preview = resolveFilename(SCOPE_GUISKIN, "noprev.png")
 		self.picload.startDecode(preview)
+		skinfile = resolveFilename(SCOPE_GUISKIN, skin, "skin.xml")
+		oldskin = fileContains(skinfile, "alphatest=") or fileContains(skinfile, "OverScan=") or fileContains(skinfile, "scrollbarBackgroundPicture=") or fileContains(skinfile, "scrollbarbackgroundPixmap=") or fileContains(skinfile, "scrollbarSliderBorderColor=") or fileContains(skinfile, "scrollbarSliderBorderWidth=") or fileContains(skinfile, "scrollbarSliderForegroundColor=") or fileContains(skinfile, "scrollbarSliderPicture=") or fileContains(skinfile, "scrollbarSliderPixmap=") or fileContains(skinfile, "seek_pointer=") or fileContains(skinfile, "selectionDisabled=") or fileContains(skinfile, "sliderPixmap=") or fileContainsNoCase(skinfile, "halign=") or fileContainsNoCase(skinfile, "secondFont=") or fileContainsNoCase(skinfile, "valign=")
 		if skin == self.config.value:
 			self["description"].setText(_("Press OK to keep the currently selected skin %s.") % resolution)
+			if oldskin:
+				self["key_blue"].setText(_("Convert to new API"))
 		else:
 			self["description"].setText(_("Press OK to activate the selected skin %s.") % resolution)
+			if oldskin:
+				self["key_blue"].setText(_("Convert to new API"))
 
 	def cancel(self):
 		self.close(False)
@@ -197,6 +205,18 @@ class SkinSelector(Screen, HelpableScreen):
 			print("[SkinSelector] Selected skin: '%s'" % pathjoin(self.rootDir, skin))
 			restartBox = self.session.openWithCallback(self.restartGUI, MessageBox, _("To save and apply the selected '%s' skin the GUI needs to restart.\nWould you like to save the selection and restart the GUI now?") % label, MessageBox.TYPE_YESNO)
 			restartBox.setTitle(_("SkinSelector: Restart GUI"))
+
+	def blue(self):
+		from Components.Console import Console
+		from Tools.Directories import SCOPE_SCRIPTS
+		from os.path import isfile
+		converter = isfile(resolveFilename(SCOPE_SCRIPTS, "convertskin.sh"))
+		skinpath = resolveFilename(SCOPE_GUISKIN, skin)
+		self.Console = Console()
+		if converter:
+			self.Console.ePopen("/usr/script/convertskin.sh %s &" % skinpath)
+		else:
+			print("[SkinSelector] /usr/script/convertskin.sh not found!")
 
 	def restartGUI(self, answer):
 		if answer:

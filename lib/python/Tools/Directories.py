@@ -39,6 +39,7 @@ SCOPE_HDD = 17
 SCOPE_TIMESHIFT = 18
 SCOPE_DEFAULTDIR = 19
 SCOPE_LIBDIR = 20
+SCOPE_SCRIPTS = 21
 
 # Deprecated scopes:
 SCOPE_ACTIVE_LCDSKIN = SCOPE_LCDSKIN
@@ -74,7 +75,8 @@ defaultPaths = {
 	SCOPE_HDD: ("/media/hdd/movie/", PATH_DONTCREATE),
 	SCOPE_TIMESHIFT: ("/media/hdd/timeshift/recordings/", PATH_DONTCREATE),
 	SCOPE_DEFAULTDIR: (eEnv.resolve("${datadir}/enigma2/defaults/"), PATH_CREATE),
-	SCOPE_LIBDIR: (eEnv.resolve("${libdir}/"), PATH_DONTCREATE)
+	SCOPE_LIBDIR: (eEnv.resolve("${libdir}/"), PATH_DONTCREATE),
+	SCOPE_SCRIPTS: (eEnv.resolve("/usr/script/"), PATH_DONTCREATE)
 }
 
 scopeConfig = defaultPaths[SCOPE_CONFIG][0]
@@ -597,6 +599,17 @@ def fileContains(file, content, mode="r"):
 		with open(file, mode) as fd:
 			text = fd.read()
 		if content in text:
+			result = True
+	return result
+
+
+def fileContainsNoCase(file, content, mode="r"):
+	result = False
+	lcontent = content.lower()
+	if fileExists(file, mode):
+		with open(file, mode) as fd:
+			text = fd.read()
+		if lcontent in text:
 			result = True
 	return result
 
