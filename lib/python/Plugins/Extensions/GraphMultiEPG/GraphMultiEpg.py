@@ -25,7 +25,7 @@ from Screens.EpgSelection import EPGSelection
 from Screens.TimerEdit import TimerSanityConflict, TimerEditList
 from Screens.MessageBox import MessageBox
 from Screens.ChoiceBox import ChoiceBox
-from Tools.Directories import resolveFilename, SCOPE_GUISKIN
+from Tools.Directories import resolveFilename, SCOPE_GUISKIN, isPluginInstalled
 from RecordTimer import RecordTimerEntry, parseEvent, AFTEREVENT, createRecordTimerEntry
 from ServiceReference import ServiceReference, isPlayableForCur
 from Tools.LoadPixmap import LoadPixmap
@@ -899,7 +899,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 			self.skinName = "GraphMultiEPGList"
 		else:
 			self["key_yellow"] = Button(_("Mode PiP"))
-		self["key_blue"] = Button(_("Add autotimer\nPrime time (Press long)"))
+		self["key_blue"] = Button(_("Add autotimer\nPrime time (Press long)")) if isPluginInstalled("AutoTimer") else Button(_("Prime time (Press long)"))
 
 		self.key_green_choice = self.EMPTY
 		self.key_red_choice = self.EMPTY
@@ -1117,14 +1117,14 @@ class GraphMultiEPG(Screen, HelpableScreen):
 				l.fillMultiEPG(None, self.ask_time)
 				self.moveTimeLines(True)
 				self.time_mode = self.TIME_CHANGE
-				self["key_blue"].setText(_("Add autotimer\nNow (Press long)"))
+				self["key_blue"].setText(_("Add autotimer\nNow (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("Now (Press long)"))
 
 	def setNewTime(self, type=''):
 		if type:
 			date = time() - config.epg.histminutes.getValue() * 60
 			if type == "now_time":
 				self.time_mode = self.TIME_NOW
-				self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)"))
+				self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("Prime time (Press long)"))
 			elif type == "prime_time":
 				now = [x for x in localtime(date)]
 				prime = config.misc.graph_mepg.prime_time.value
@@ -1132,7 +1132,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 				if now[3] > prime[0] or (now[3] == prime[0] and now[4] > prime[1]):
 					date = date + 60 * 60 * 24
 				self.time_mode = self.TIME_PRIME
-				self["key_blue"].setText(_("Add autotimer\nNow (Press long)"))
+				self["key_blue"].setText(_("Add autotimer\nNow (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("Now (Press long)"))
 			l = self["list"]
 			self.ask_time = date - date % int(config.misc.graph_mepg.roundTo.getValue())
 			l.resetOffset()
@@ -1175,7 +1175,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		l.fillMultiEPG(None, self.ask_time)
 		self.moveTimeLines(True)
 		self.time_mode = self.TIME_NOW
-		self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)"))
+		self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("Prime time (Press long)"))
 
 	def closeScreen(self):
 		self.zapFunc(None, zapback=True)
