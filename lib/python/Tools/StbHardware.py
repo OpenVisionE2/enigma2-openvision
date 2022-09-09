@@ -150,3 +150,11 @@ def clearFPWasTimerWakeup():
 				ioctl(fd.fileno(), 10)
 		except (IOError, OSError) as err:
 			print("[StbHardware] Error %d: Unable to update '/dev/dbox/fp0', clearFPWasTimerWakeup failed!  (%s)" % (err.errno, err.strerror))
+
+
+def timereps(reps, func):
+	start = time()
+	for i in range(0, reps):
+		func()
+	end = time()
+	return (end - start) / reps

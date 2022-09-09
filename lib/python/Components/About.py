@@ -104,6 +104,14 @@ def getRAMBenchmark():
 	return _("Unknown")
 
 
+def getPythonBenchmark():
+	from Tools.StbHardware import timereps
+	from os import listdir
+	listdir_time = timereps(100000, lambda: listdir('/'))
+	pythonBenchmark = 1 / listdir_time
+	return _("%d listdir('/') per second") % pythonBenchmark
+
+
 def getCPUSerial():
 	lines = fileReadLines("/proc/cpuinfo", source=MODULE_NAME)
 	if lines:

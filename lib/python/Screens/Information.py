@@ -309,6 +309,7 @@ class BenchmarkInformation(InformationBase):
 		self.cpuBenchmark = None
 		self.cpuRating = None
 		self.ramBenchmark = None
+		self.pythonBenchmark = None
 
 	def fetchInformation(self):
 		self.informationTimer.stop()
@@ -339,6 +340,14 @@ class BenchmarkInformation(InformationBase):
 		for line in result.split("\n"):
 			if line.startswith("Open Vision copy rate"):
 				self.ramBenchmark = float([x.strip() for x in line.split(":")][1])
+		self.console.ePopen(("ls", "ls"), self.pythonBenchmarkFinished)
+		for callback in self.onInformationUpdated:
+			callback()
+
+	def pythonBenchmarkFinished(self, result, retVal, extraArgs):
+		from Tools.StbHardware import timereps
+		listdir_time = timereps(100000, lambda: listdir('/'))
+		self.pythonBenchmark = 1 / listdir_time
 		for callback in self.onInformationUpdated:
 			callback()
 
@@ -346,6 +355,7 @@ class BenchmarkInformation(InformationBase):
 		self.cpuBenchmark = None
 		self.cpuRating = None
 		self.ramBenchmark = None
+		self.pythonBenchmark = None
 		self.informationTimer.start(25)
 		for callback in self.onInformationUpdated:
 			callback()
@@ -364,6 +374,9 @@ class BenchmarkInformation(InformationBase):
 		info.append(formatLine("P1", _("CPU rating"), self.cpuRating if self.cpuRating else _("Calculating rating...")))
 		info.append("")
 		info.append(formatLine("P1", _("RAM benchmark"), "%.2f MB/s copy rate" % self.ramBenchmark if self.ramBenchmark else _("Calculating benchmark...")))
+		info.append("")
+		from Tools.PyVerHelper import getPythonVersionString
+		info.append(formatLine("P1", _("Python %s benchmark") % getPythonVersionString(), _("%d listdir('/') per second") % self.pythonBenchmark if self.pythonBenchmark else _("Calculating benchmark...")))
 		self["information"].setText("\n".join(info).encode("UTF-8", "ignore") if PY2 else "\n".join(info))
 
 	def getSummaryInformation(self):
@@ -1160,7 +1173,7 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("Driver and kernel information")))
 		info.append("")
-		info.append(formatLine("P1", _("Drivers version"), formatDate(BoxInfo.getItem("driverdate"))))
+		info.append(formatLine("P1", _("Drivers version"), BoxInfo.getItem("driverdate")))
 		info.append(formatLine("P1", _("Kernel version"), BoxInfo.getItem("kernel")))
 		info.append(formatLine("P1", _("Kernel module layout"), BoxInfo.getItem("ModuleLayout") if BoxInfo.getItem("ModuleLayout") else _("N/A")))
 		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id", source=MODULE_NAME)
