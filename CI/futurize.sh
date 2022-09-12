@@ -12,7 +12,7 @@ begin=$(date +"%s")
 
 echo ""
 echo "2to3 safe cleanup"
-find . -name "*.py" -type f -exec 2to3 -f raise -f except -f has_key -f idioms -f paren -f ne -f isinstance -w -n {} \;
+find . -name "*.py" -type f -exec 2to3 -f raise -f except -f has_key -f idioms -f paren -f ne -f isinstance -f exec -f apply -f execfile -f xreadlines -f numliterals -w -n {} \;
 find . -name "*.bak" -type f -exec rm -f {} \;
 git add -u
 git add *
