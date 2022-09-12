@@ -588,8 +588,8 @@ class VirtualKeyBoard(Screen, HelpableScreen):
 		self.maxKey = 0
 		self.overwrite = False
 		self.selectedKey = None
-		self.sms = NumericalTextInput(self.smsGotChar)
 		self.smsChar = None
+		self.sms = NumericalTextInput(self.smsGotChar)
 		self.setLocale()
 		if self.setKeyboardModeAscii not in self.onExecBegin:
 			self.onExecBegin.append(self.setKeyboardModeAscii)
