@@ -1023,7 +1023,8 @@ class HdmiCec:
 			from Screens.InfoBar import InfoBar
 			if InfoBar and InfoBar.instance:
 				self.CECwritedebug("[HdmiCec] go into standby...", True)
-				InfoBar.instance.openInfoBarSession(Screens.Standby.Standby)
+				if not self.sendMessagesIsActive():
+					InfoBar.instance.openInfoBarSession(Screens.Standby.Standby)
 
 	def wakeup(self):
 		if int(config.hdmicec.workaround_turnbackon.value) and self.standbytime > time():
