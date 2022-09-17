@@ -293,7 +293,9 @@ SystemInfo["3DMode"] = fileCheck("/proc/stb/fb/3dmode") or fileCheck("/proc/stb/
 SystemInfo["3DZNorm"] = fileCheck("/proc/stb/fb/znorm") or fileCheck("/proc/stb/fb/primary/zoffset")
 SystemInfo["Blindscan_t2_available"] = brand == "vuplus"
 SystemInfo["HasFullHDSkinSupport"] = BoxInfo.getItem("fhdskin")
-SystemInfo["HasMMC"] = "root" in cmdline and cmdline["root"].startswith("/dev/mmcblk") if isfile("/proc/cmdline") else "mmcblk" in mtdkernel
+SystemInfo["HasEMMC"] = BoxInfo.getItem("emmc")
+SystemInfo["HasMMC"] = BoxInfo.getItem("mmc") or "root" in cmdline and cmdline["root"].startswith("/dev/mmcblk") if isfile("/proc/cmdline") else "mmcblk" in mtdkernel
+SystemInfo["MMCEMMC"] = BoxInfo.getItem("HasMMC") or BoxInfo.getItem("HasEMMC")
 SystemInfo["HasTranscoding"] = BoxInfo.getItem("transcoding") or BoxInfo.getItem("multitranscoding") or fileAccess("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
 SystemInfo["HasH265Encoder"] = fileContains("/proc/stb/encoder/0/vcodec_choices", "h265")
 SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model in ("vusolo4k", "gbquad4k", "gbue4k")
@@ -360,7 +362,7 @@ SystemInfo["FrontpanelLEDBrightnessControl"] = fileAccess("/proc/stb/fp/led_brig
 SystemInfo["FrontpanelLEDColorControl"] = fileAccess("/proc/stb/fp/led_color")
 SystemInfo["FrontpanelLEDFadeControl"] = fileAccess("/proc/stb/fp/led_fade")
 SystemInfo["FCC"] = False
-SystemInfo["CanProc"] = BoxInfo.getItem("HasMMC") and brand != "vuplus"
+SystemInfo["CanProc"] = BoxInfo.getItem("MMCEMMC") and brand != "vuplus"
 SystemInfo["CanAACTranscode"] = fileAccess("/proc/stb/audio/aac_transcode_choices")
 SystemInfo["CanAC3PlusTranscode"] = fileContains("/proc/stb/audio/ac3plus_choices", "force_ac3")
 SystemInfo["CanBTAudioDelay"] = fileCheck("/proc/stb/audio/btaudio_delay") or fileCheck("/proc/stb/audio/btaudio_delay_pcm")

@@ -151,6 +151,7 @@ Here is the list of variables currently supported:
 	"distro" or "/proc/enigma/distro" replaces "getImageDistro()"
 	"driverdate" or "/proc/enigma/driverdate" replaces "getDriverDate()"
 	"dvi" or "/proc/enigma/dvi" replaces "getHaveDVI()"
+	"emmc" or "/proc/enigma/emmc" replaces "getEMMC()"
 	"feedsurl" or "/proc/enigma/feedsurl" replaces "getFeedsUrl()"
 	"fhdskin" or "/proc/enigma/fhdskin" replaces "getFHDSkin()"
 	"forcemode" or "/proc/enigma/forcemode" replaces "getForceMode()"
@@ -173,6 +174,7 @@ Here is the list of variables currently supported:
 	"mediaservice" or "/proc/enigma/mediaservice" replaces "getE2Service()"
 	"middleflash" or "/proc/enigma/middleflash" replaces "getHaveMiddleFlash()"
 	"mkubifs" or "/proc/enigma/mkubifs" replaces "getMachineMKUBIFS()"
+	"mmc" or "/proc/enigma/mmc" replaces "getMMC()"
 	"model" or "/proc/enigma/model" replaces "getBoxType()"
 		("getMachineName()" and "getMachineMake()" in OE-Alliance's "boxbranding")
 	"mtdbootfs" or "/proc/enigma/mtdbootfs" replaces "getMachineMtdBoot()"
@@ -348,6 +350,14 @@ dvi:
 		This variable defines if a receiver has DVI output.
 
 	Example: False
+
+emmc:
+
+	BoxInfo.getItem("emmc") (/proc/enigma/emmc)
+
+		This variable defines if a receiver has Embedded MultiMediaCard.
+
+	Example: True
 
 feedsurl:
 
@@ -564,6 +574,15 @@ mkubifs:
 		Mostly we use this for backup tools when want to repack the image.
 
 	Example: -m 2048 -e 126976 -c 8192
+
+mmc:
+
+	BoxInfo.getItem("mmc") (/proc/enigma/mmc)
+
+		This variable defines if a receiver has MultiMediaCard.
+
+	Example: True
+
 
 model:
 
