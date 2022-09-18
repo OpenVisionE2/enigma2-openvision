@@ -185,6 +185,7 @@ def getHotkeyFunctions():
 	hotkey.functions.append((_("Show single service EPG"), "Infobar/openSingleServiceEPG", "EPG"))
 	hotkey.functions.append((_("Show multi channel EPG"), "Infobar/openMultiServiceEPG", "EPG"))
 	hotkey.functions.append((_("Show Audioselection"), "Infobar/audioSelection", "InfoBar"))
+	hotkey.functions.append((_("Change AC3 audio track"), "Infobar/audioSelectionLong", "InfoBar"))
 	hotkey.functions.append((_("Switch to radio mode"), "Infobar/showRadio", "InfoBar"))
 	hotkey.functions.append((_("Switch to TV mode"), "Infobar/showTv", "InfoBar"))
 	hotkey.functions.append((_("Toggle TV/RADIO mode"), "Infobar/toggleTvRadio", "InfoBar"))

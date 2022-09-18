@@ -10,7 +10,7 @@ from Components.ServiceEventTracker import ServiceEventTracker
 from Components.Sources.ServiceEvent import ServiceEvent
 from Components.ServiceList import refreshServiceList
 from Components.Sources.Boolean import Boolean
-from Components.config import config, ConfigBoolean, ConfigClock
+from Components.config import config, ConfigBoolean, ConfigClock, ACTIONKEY_RIGHT
 from Components.SystemInfo import BoxInfo
 from Components.UsageConfig import preferredInstantRecordPath, defaultMoviePath
 from Components.VolumeControl import VolumeControl
@@ -2981,14 +2981,23 @@ class InfoBarAudioSelection:
 	def __init__(self):
 		self["AudioSelectionAction"] = HelpableActionMap(self, ["InfobarAudioSelectionActions"], {
 			"audioSelection": (self.audioSelection, _("Audio options")),
-		}, prio=0, description=_("Audio Actions"))
+			"audioSelectionLong": (self.audioSelectionLong, _("Toggle downmix")),
+		}, description=_("Audio track selection, downmix and other audio options"))
 
 	def audioSelection(self):
 		from Screens.AudioSelection import AudioSelection
 		self.session.openWithCallback(self.audioSelected, AudioSelection, infobar=self)
 
 	def audioSelected(self, ret=None):
-		print("[InfoBarGenerics] audioSelected", ret)
+		print("[InfoBarGenerics] audioSelected %s" % ret)
+
+	def audioSelectionLong(self):
+		if BoxInfo.getItem("CanDownmixAC3"):
+			config.av.downmix_ac3.handleKey(ACTIONKEY_RIGHT)
+			config.av.downmix_ac3.save()
+			message = _("Dolby digital downmix is now %s") % config.av.downmix_ac3.getText()
+			print("[InfoBarGenerics] Audio dolby digital downmix is now %s" % config.av.downmix_ac3.value)
+			AddPopup(text=message, type=MessageBox.TYPE_INFO, timeout=5, id="DDdownmixToggle")
 
 
 class InfoBarSubserviceSelection:

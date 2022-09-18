@@ -882,12 +882,15 @@
 	<screen name="AudioSelection" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
 		<panel name="StanDardScreen"/>
 		<panel name="TemplatePip"/>
-		<eLabel backgroundColor="blue_light" position="26,415" size="1250,5"/>
+		<eLabel backgroundColor="blue_light" position="26,515" size="1250,5"/>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_menu.png" position="18,1035" size="64,43"/>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_ok.png" position="85,1035" size="64,43"/>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_exit.png" position="152,1035" size="64,43"/>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_leftright.png" position="219,1035" size="64,43"/>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_downup.png" position="286,1035" size="64,43"/>
+		<widget source="key_help" alphaTest="blend" pixmap="OctEtFHD/buttons/key_help.png" position="353,1035" size="64,43" render="Pixmap" zPosition="1">
+			<convert type="ConditionalShowHide"/>
+		</widget>
 		<widget source="key_red" alphaTest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="26,155" render="Pixmap" size="40,40" zPosition="1">
 			<convert type="ConditionalShowHide"/>
 		</widget>
@@ -900,8 +903,8 @@
 		<widget source="key_blue" alphaTest="blend" pixmap="OctEtFHD/buttons/key_blue.png" position="26,305" size="40,40" render="Pixmap" zPosition="1">
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;23" position="70,155" size="1185,250" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" transparent="1" zPosition="3"/>
-		<widget source="streams" render="Listbox" position="26,435" size="1250,365" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" transparent="1" zPosition="3">
+		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;23" position="70,155" size="1185,350" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" transparent="1" zPosition="3"/>
+		<widget source="streams" render="Listbox" position="26,535" size="1250,365" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" transparent="1" zPosition="3">
 			<convert type="TemplatedMultiContent">
 				{"templates":
 				{"default": (50, [
@@ -1180,7 +1183,7 @@
 		<widget backgroundColor="OE_Background" colorEventProgressbarBorder="OE_Selection" colorEventProgressbarBorderSelected="OE_Foreground" colorServiceDescription="#a4c400" colorServiceDescriptionSelected="OE_Foreground" foregroundColorServiceNotAvail="OE_Accent2" itemHeight="50" name="list" position="26,center" scrollbarMode="showNever" serviceItemHeight="50" serviceNumberFont="RegularBold;32" serviceNameFont="RegularBold;32" serviceInfoFont="RegularBold;27" size="1250,800" transparent="1" fieldMargins="15" nonplayableMargins="15" itemsDistances="8" progressBarWidth="70" progressPercentWidth="80" progressbarHeight="12"/>
 		<!-- RDS RADIO RTP TEXT -->
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_menu.png" position="18,1035" size="64,43"/>
-		<widget source="RdsDecoder" render="Pixmap" pixmap="rass_logo.png" position="1395,500" size="50,21" alphaTest="blend">
+		<widget source="RdsDecoder" render="Pixmap" pixmap="OctEtFHD/icons/rass_logo.png" position="1395,500" size="50,21" alphaTest="blend">
 			<convert type="RdsInfo">RasInteractiveAvailable</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
@@ -2692,11 +2695,11 @@
 		<widget name="config" itemHeight="40" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" backgroundColor="OE_Background" position="262,10" size="920,450" transparent="1"/>
 		<widget name="videofps" position="105,290" size="910,40" backgroundColor="OE_Background" transparent="1" zPosition="1" font="Regular;24" verticalAlignment="center" horizontalAlignment="left" foregroundColor="blue"/>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/colors/o_logo.png" position="85,30" size="75,75" zPosition="1"/>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_ok.png" position="15,300" size="64,43" zPosition="1"/>
-		<widget name="save" position="23,295" size="210,55" backgroundColor="OE_Background" transparent="1" zPosition="1" font="Regular;24" verticalAlignment="center" horizontalAlignment="center"/>
-		<ePixmap objectTypes="key_red,Button,Label" alphaTest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="30,360" size="40,40"/>
-		<widget name="key_red" position="85,370" size="150,35" backgroundColor="OE_Background" transparent="1" zPosition="1" font="Regular;24"/>
-		<widget name="HelpWindow" conditional="HelpWindow" pixmap="OctEtFHD/skin_default/vkey_icon.png" position="445,825" size="0,0" transparent="1" zPosition="10" alphaTest="on"/>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_ok.png" position="15,150" size="64,43" zPosition="1"/>
+		<widget name="save" position="23,145" size="210,55" backgroundColor="OE_Background" transparent="1" zPosition="1" font="Regular;24" verticalAlignment="center" horizontalAlignment="center"/>
+		<ePixmap objectTypes="key_red,Button,Label" alphaTest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="30,210" size="40,40"/>
+		<widget name="key_red" position="85,220" size="150,35" backgroundColor="OE_Background" transparent="1" zPosition="1" font="Regular;24"/>
+		<widget name="HelpWindow" conditional="HelpWindow" pixmap="OctEtFHD/skin_default/vkey_icon.png" position="445,260" size="0,0" transparent="1" zPosition="10" alphaTest="on"/>
 	</screen>
 		<screen name="QuickSubtitlesClearRests" title="Subtitle settings" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
 		<panel name="StanDardScreen"/>

@@ -20,6 +20,7 @@ commit_files() {
   ./CI/futurize.sh
   ./CI/header.sh
   ./CI/skin.sh
+  ./CI/pyskin.sh
 }
 
 upload_files() {
