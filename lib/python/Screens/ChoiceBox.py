@@ -79,7 +79,7 @@ class ChoiceBox(Screen, HelpableScreen):
 		self.onLayoutFinish.append(self.layoutFinished)
 
 	def layoutFinished(self):
-		self["list"].instance.allowNativeKeys(False)  # Override listbox navigation.
+		self["list"].instance.enableAutoNavigation(False)  # Override listbox navigation.
 
 	def keyCancel(self):
 		self.close(None)

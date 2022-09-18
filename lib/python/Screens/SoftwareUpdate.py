@@ -169,7 +169,7 @@ class SoftwareUpdate(Screen, HelpableScreen, ProtectedScreen):
 			config.ParentalControl.config_sections.software_update.value
 
 	def layoutFinished(self):
-		self["list"].master.master.instance.allowNativeKeys(False)
+		self["list"].master.master.instance.enableAutoNavigation(False)
 		self.setStatus("update")
 		self.opkg.startCmd(OpkgComponent.CMD_UPDATE)
 		self.timer.start(25, True)
