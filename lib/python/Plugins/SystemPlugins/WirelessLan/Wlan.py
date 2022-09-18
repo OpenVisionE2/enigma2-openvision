@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
 from six import PY2
-from os.path import exists as fileAccess
 from six.moves import range
 
 if PY2:
@@ -30,7 +29,8 @@ config.plugins.wlan.psk = NoSave(ConfigPassword(default="", fixed_size=False))
 
 
 def existBcmWifi(iface):
-	return fileAccess("/tmp/bcm/" + iface)
+	from os.path import exists
+	return exists("/tmp/bcm/" + iface)
 
 
 def getWlConfName(iface):
@@ -313,7 +313,8 @@ class wpaSupplicant:
 			return self.loadBcmWifiConfig(iface)
 
 		configfile = getWlanConfigName(iface)
-		if not fileAccess(configfile):
+		from os.path import isfile
+		if not isfile(configfile):
 			configfile = '/etc/wpa_supplicant.conf'
 		try:
 			#parse the wpasupplicant configfile

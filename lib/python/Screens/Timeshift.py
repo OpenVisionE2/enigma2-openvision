@@ -6,7 +6,6 @@ from Components.config import config
 from Screens.LocationBox import defaultInhibitDirs, TimeshiftLocationBox
 from Screens.MessageBox import MessageBox
 from Screens.Setup import Setup
-from Tools.Directories import fileAccess # hasHardLinks this gives false errors.
 
 
 class TimeshiftSettings(Setup):
@@ -69,6 +68,7 @@ class TimeshiftSettings(Setup):
 		self.changedEntry()
 
 	def pathStatus(self, path):
+		from Tools.Directories import fileAccess # hasHardLinks this gives false errors.
 		size = statvfs(config.usage.timeshift_path.value)
 		free = int((size.f_bfree * size.f_frsize) // (1024 * 1024))
 		if isdir(path) and not stat(path).st_dev in self.inhibitDevs and fileAccess(path, "w") and free <= 1000:

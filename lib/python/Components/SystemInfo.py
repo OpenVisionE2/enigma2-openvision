@@ -1,13 +1,7 @@
 # -*- coding: utf-8 -*-
-# To improve performance while Enigma2 runs as root the Python method
-# fileAccess() from Directories.py is mapped to the Operating System
-# function exists().  If read access is actually required then move the
-# fileExists import back to Directories.py.  (Note that write access
-# is not currently tested in this code!)
-
 from hashlib import md5
 from os import R_OK, access
-from os.path import exists as fileAccess, isfile, join as pathjoin
+from os.path import exists, isfile, join as pathjoin
 from re import findall
 from subprocess import PIPE, Popen
 
@@ -173,14 +167,14 @@ cmdline = {k: v.strip('"') for k, v in findall(r'(\S+)=(".*?"|\S+)', cmdline)}
 
 def getNumVideoDecoders():
 	numVideoDecoders = 0
-	while fileAccess("/dev/dvb/adapter0/video%d" % numVideoDecoders):
+	while exists("/dev/dvb/adapter0/video%d" % numVideoDecoders):
 		numVideoDecoders += 1
 	return numVideoDecoders
 
 
 def countFrontpanelLEDs():
-	numLeds = fileAccess("/proc/stb/fp/led_set_pattern") and 1 or 0
-	while fileAccess("/proc/stb/fp/led%d_pattern" % numLeds):
+	numLeds = exists("/proc/stb/fp/led_set_pattern") and 1 or 0
+	while exists("/proc/stb/fp/led%d_pattern" % numLeds):
 		numLeds += 1
 	return numLeds
 
@@ -192,7 +186,7 @@ def hassoftcaminstalled():
 
 def getBootdevice():
 	dev = ("root" in cmdline and cmdline["root"].startswith("/dev/")) and cmdline["root"][5:]
-	while dev and not fileAccess("/sys/block/%s" % dev):
+	while dev and not exists("/sys/block/%s" % dev):
 		dev = dev[:-1]
 	return dev
 
@@ -251,18 +245,18 @@ for cislot in range(BoxInfo.getItem("CommonInterface", 0)):
 	SystemInfo["CI%dRelevantPidsRoutingSupport" % cislot] = fileCheck("/proc/stb/tsmux/ci%d_relevant_pids_routing" % cislot)
 SystemInfo["HasSoftcamInstalled"] = hassoftcaminstalled()
 SystemInfo["NumVideoDecoders"] = getNumVideoDecoders()
-SystemInfo["Udev"] = not fileAccess("/dev/.devfsd")
+SystemInfo["Udev"] = not fileCheck("/dev/.devfsd")
 SystemInfo["PIPAvailable"] = BoxInfo.getItem("NumVideoDecoders", 0) > 1
 SystemInfo["CanMeasureFrontendInputPower"] = eDVBResourceManager.getInstance().canMeasureFrontendInputPower()
 SystemInfo["12V_Output"] = Misc_Options.getInstance().detected_12V_output()
 SystemInfo["ZapMode"] = fileCheck("/proc/stb/video/zapmode") or fileCheck("/proc/stb/video/zapping_mode")
 SystemInfo["NumFrontpanelLEDs"] = countFrontpanelLEDs()
-SystemInfo["FrontpanelDisplay"] = fileAccess("/dev/dbox/oled0") or fileAccess("/dev/dbox/lcd0")
+SystemInfo["FrontpanelDisplay"] = fileCheck("/dev/dbox/oled0") or fileCheck("/dev/dbox/lcd0")
 SystemInfo["LCDsymbol_circle_recording"] = fileCheck("/proc/stb/lcd/symbol_circle") or platform == "gfuturesbcmarm" and fileCheck("/proc/stb/lcd/symbol_recording")
 SystemInfo["LCDsymbol_timeshift"] = fileCheck("/proc/stb/lcd/symbol_timeshift")
 SystemInfo["LCDshow_symbols"] = (model == "et9x00" or platform == "gfuturesbcmarm") and fileCheck("/proc/stb/lcd/show_symbols")
 SystemInfo["LCDsymbol_hdd"] = platform == "gfuturesbcmarm" and fileCheck("/proc/stb/lcd/symbol_hdd")
-SystemInfo["FrontpanelDisplayGrayscale"] = fileAccess("/dev/dbox/oled0")
+SystemInfo["FrontpanelDisplayGrayscale"] = fileCheck("/dev/dbox/oled0")
 SystemInfo["DeepstandbySupport"] = model != "dm800"
 SystemInfo["Fan"] = fileCheck("/proc/stb/fp/fan")
 SystemInfo["FanPWM"] = BoxInfo.getItem("Fan") and fileCheck("/proc/stb/fp/fan_pwm")
@@ -279,7 +273,7 @@ SystemInfo["Power4x7Standby"] = fileCheck("/proc/stb/fp/power4x7standby")
 SystemInfo["Power4x7Suspend"] = fileCheck("/proc/stb/fp/power4x7suspend")
 SystemInfo["WakeOnLAN"] = fileCheck("/proc/stb/power/wol") or fileCheck("/proc/stb/fp/wol")
 SystemInfo["HasExternalPIP"] = platform != "1genxt" and fileCheck("/proc/stb/vmpeg/1/external")
-SystemInfo["VideoDestinationConfigurable"] = fileAccess("/proc/stb/vmpeg/0/dst_left")
+SystemInfo["VideoDestinationConfigurable"] = fileCheck("/proc/stb/vmpeg/0/dst_left")
 SystemInfo["hasPIPVisibleProc"] = fileCheck("/proc/stb/vmpeg/1/visible")
 SystemInfo["MaxPIPSize"] = platform in ("gfuturesbcmarm", "8100s", "h7") and (360, 288) or (540, 432)
 SystemInfo["VFD_scroll_repeats"] = model != "et8500" and fileCheck("/proc/stb/lcd/scroll_repeats")
@@ -296,13 +290,13 @@ SystemInfo["HasFullHDSkinSupport"] = BoxInfo.getItem("fhdskin")
 SystemInfo["HasEMMC"] = BoxInfo.getItem("emmc")
 SystemInfo["HasMMC"] = BoxInfo.getItem("mmc") or "root" in cmdline and cmdline["root"].startswith("/dev/mmcblk") if isfile("/proc/cmdline") else "mmcblk" in mtdkernel
 SystemInfo["MMCEMMC"] = BoxInfo.getItem("HasMMC") or BoxInfo.getItem("HasEMMC")
-SystemInfo["HasTranscoding"] = BoxInfo.getItem("transcoding") or BoxInfo.getItem("multitranscoding") or fileAccess("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
+SystemInfo["HasTranscoding"] = BoxInfo.getItem("transcoding") or BoxInfo.getItem("multitranscoding") or fileCheck("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
 SystemInfo["HasH265Encoder"] = fileContains("/proc/stb/encoder/0/vcodec_choices", "h265")
 SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model in ("vusolo4k", "gbquad4k", "gbue4k")
 SystemInfo["HasFrontDisplayPicon"] = model in ("et8500", "vusolo4k", "vuuno4kse", "vuduo4k", "vuduo4kse", "vuultimo4k", "gbquad4k", "gbue4k")
 SystemInfo["Has24hz"] = fileCheck("/proc/stb/video/videomode_24hz") and platform != "dmamlogic"
 SystemInfo["HasHDMI"] = BoxInfo.getItem("hdmi")
-SystemInfo["HasHDMI-CEC"] = BoxInfo.getItem("HasHDMI") and (fileAccess("/dev/cec0") or fileAccess("/dev/hdmi_cec") or fileAccess("/dev/misc/hdmi_cec0"))
+SystemInfo["HasHDMI-CEC"] = BoxInfo.getItem("HasHDMI") and (fileCheck("/dev/cec0") or fileCheck("/dev/hdmi_cec") or fileCheck("/dev/misc/hdmi_cec0"))
 SystemInfo["HasHDMIHDin"] = BoxInfo.getItem("hdmihdin")
 SystemInfo["HasHDMIFHDin"] = BoxInfo.getItem("hdmifhdin")
 SystemInfo["HasHDMIin"] = BoxInfo.getItem("HasHDMIHDin") or BoxInfo.getItem("HasHDMIFHDin")
@@ -315,33 +309,33 @@ SystemInfo["HasOfflineDecoding"] = model not in ("osmini", "osminiplus", "et7000
 SystemInfo["MultiBootStartupDevice"] = getMultiBootStartupDevice()
 SystemInfo["canMode12"] = "%s_4.boxmode" % model in cmdline and cmdline["%s_4.boxmode" % model] in ("1", "12") and "192M"
 SystemInfo["canMultiBoot"] = getMultiBootSlots()
-SystemInfo["canDualBoot"] = fileAccess("/dev/block/by-name/flag")
+SystemInfo["canDualBoot"] = fileCheck("/dev/block/by-name/flag")
 SystemInfo["canFlashWithOfgwrite"] = brand != "dreambox"
 SystemInfo["BootDevice"] = getBootdevice()
 SystemInfo["FbcTunerPowerAlwaysOn"] = model in ("vusolo4k", "vuduo4k", "vuduo4kse", "vuultimo4k", "vuuno4k", "vuuno4kse")
 SystemInfo["HasPhysicalLoopthrough"] = ["Vuplus DVB-S NIM(AVL2108)", "GIGA DVB-S2 NIM (Internal)"]
 SystemInfo["HasPhysicalLoopthrough"] = ["Vuplus DVB-S NIM(AVL2108)", "GIGA DVB-S2 NIM (Internal)", "AVL6211"] if model in ("et7x00", "et8500") else ["Vuplus DVB-S NIM(AVL2108)", "GIGA DVB-S2 NIM (Internal)"]
 SystemInfo["HasFBCtuner"] = ["Vuplus DVB-C NIM(BCM3158)", "Vuplus DVB-C NIM(BCM3148)", "Vuplus DVB-S NIM(7376 FBC)", "Vuplus DVB-S NIM(45308X FBC)", "Vuplus DVB-S NIM(45208 FBC)", "DVB-S2 NIM(45208 FBC)", "DVB-S2X NIM(45308X FBC)", "DVB-S2 NIM(45308 FBC)", "DVB-C NIM(3128 FBC)", "BCM45208", "BCM45308X", "BCM3158"]
-SystemInfo["SmallFlash"] = BoxInfo.getItem("smallflash") and not BoxInfo.getItem("middleflash") or fileAccess("/etc/openvision/smallflash")
-SystemInfo["MiddleFlash"] = BoxInfo.getItem("middleflash") and not BoxInfo.getItem("smallflash") or fileAccess("/etc/openvision/middleflash")
+SystemInfo["SmallFlash"] = BoxInfo.getItem("smallflash") and not BoxInfo.getItem("middleflash") or fileCheck("/etc/openvision/smallflash")
+SystemInfo["MiddleFlash"] = BoxInfo.getItem("middleflash") and not BoxInfo.getItem("smallflash") or fileCheck("/etc/openvision/middleflash")
 SystemInfo["HaveCISSL"] = fileCheck("/etc/ssl/certs/customer.pem") and fileCheck("/etc/ssl/certs/device.pem")
 SystemInfo["CanChangeOsdAlpha"] = access("/proc/stb/video/alpha", R_OK) and True or False
-SystemInfo["ScalerSharpness"] = fileAccess("/proc/stb/vmpeg/0/pep_scaler_sharpness")
-SystemInfo["OScamInstalled"] = fileAccess("/usr/bin/oscam") or fileAccess("/usr/bin/oscam-emu") or fileAccess("/usr/bin/oscam-smod")
-SystemInfo["OScamIsActive"] = BoxInfo.getItem("OScamInstalled") and fileAccess("/tmp/.oscam/oscam.version")
-SystemInfo["NCamInstalled"] = fileAccess("/usr/bin/ncam")
-SystemInfo["NCamIsActive"] = BoxInfo.getItem("NCamInstalled") and fileAccess("/tmp/.ncam/ncam.version")
+SystemInfo["ScalerSharpness"] = fileCheck("/proc/stb/vmpeg/0/pep_scaler_sharpness")
+SystemInfo["OScamInstalled"] = fileCheck("/usr/bin/oscam") or fileCheck("/usr/bin/oscam-emu") or fileCheck("/usr/bin/oscam-smod")
+SystemInfo["OScamIsActive"] = BoxInfo.getItem("OScamInstalled") and fileCheck("/tmp/.oscam/oscam.version")
+SystemInfo["NCamInstalled"] = fileCheck("/usr/bin/ncam")
+SystemInfo["NCamIsActive"] = BoxInfo.getItem("NCamInstalled") and fileCheck("/tmp/.ncam/ncam.version")
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/enigma/distro")
 SystemInfo["OLDE2API"] = model == "dm800"
 SystemInfo["7segment"] = displaytype == "7segment" or "7seg" in displaytype
-SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or fileAccess("/proc/hisi") or fileAccess("/usr/bin/hihalt") or fileAccess("/usr/lib/hisilicon")
+SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or fileCheck("/proc/hisi") or fileCheck("/usr/bin/hihalt") or fileCheck("/usr/lib/hisilicon")
 SystemInfo["DefineSat"] = platform in ("octagonhisil", "octagonhisilnew", "gbmv200", "uclanhisil", "qviarthisil") or model in ("beyonwizv2", "viper4k")
-SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileAccess("/proc/device-tree/amlogic-dt-id") or fileAccess("/usr/bin/amlhalt") or fileAccess("/sys/module/amports")
+SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileCheck("/proc/device-tree/amlogic-dt-id") or fileCheck("/usr/bin/amlhalt") or fileCheck("/sys/module/amports")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7")
 SystemInfo["AndroidMode"] = BoxInfo.getItem("RecoveryMode") and model == "multibox" or brand == "wetek" or platform == "dmamlogic"
-SystemInfo["grautec"] = fileAccess("/tmp/usbtft")
+SystemInfo["grautec"] = fileCheck("/tmp/usbtft")
 SystemInfo["GraphicLCD"] = model in ("vuultimo", "xpeedlx3", "et10000", "hd2400", "sezammarvel", "atemionemesis", "mbultra", "beyonwizt4", "osmio4kplus")
-SystemInfo["LCDMiniTV"] = fileAccess("/proc/stb/lcd/mode")
+SystemInfo["LCDMiniTV"] = fileCheck("/proc/stb/lcd/mode")
 SystemInfo["LCDMiniTVPiP"] = BoxInfo.getItem("LCDMiniTV") and model not in ("gb800ueplus", "gbquad4k", "gbue4k")
 SystemInfo["DefaultDisplayBrightness"] = platform == "dm4kgen" and 8 or 5
 SystemInfo["ConfigDisplay"] = BoxInfo.getItem("FrontpanelDisplay") and displaytype != "7segment" and "7seg" not in displaytype
@@ -354,42 +348,42 @@ SystemInfo["ArchIsARM"] = architecture.startswith(("arm", "cortex"))
 SystemInfo["SeekStatePlay"] = False
 SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False
-SystemInfo["HasH9SD"] = model in ("h9", "i55plus") and fileAccess("/dev/mmcblk0p1")
+SystemInfo["HasH9SD"] = model in ("h9", "i55plus") and fileCheck("/dev/mmcblk0p1")
 SystemInfo["HasSDnomount"] = model in ("h9", "h3", "i55plus") and (False, "none") or model in ("multibox", "h9combo", "h3") and (True, "mmcblk0")
 SystemInfo["canBackupEMC"] = model in ("hd51", "h7", "vs1500") or platform == "8100s" and ("disk.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or platform == "edision4k" and ("emmc.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or BoxInfo.getItem("DefineSat") and ("usb_update.bin", "none")
-SystemInfo["FrontpanelLEDBlinkControl"] = fileAccess("/proc/stb/fp/led_blink")
-SystemInfo["FrontpanelLEDBrightnessControl"] = fileAccess("/proc/stb/fp/led_brightness")
-SystemInfo["FrontpanelLEDColorControl"] = fileAccess("/proc/stb/fp/led_color")
-SystemInfo["FrontpanelLEDFadeControl"] = fileAccess("/proc/stb/fp/led_fade")
+SystemInfo["FrontpanelLEDBlinkControl"] = fileCheck("/proc/stb/fp/led_blink")
+SystemInfo["FrontpanelLEDBrightnessControl"] = fileCheck("/proc/stb/fp/led_brightness")
+SystemInfo["FrontpanelLEDColorControl"] = fileCheck("/proc/stb/fp/led_color")
+SystemInfo["FrontpanelLEDFadeControl"] = fileCheck("/proc/stb/fp/led_fade")
 SystemInfo["FCC"] = False
 SystemInfo["CanProc"] = BoxInfo.getItem("MMCEMMC") and brand != "vuplus"
-SystemInfo["CanAACTranscode"] = fileAccess("/proc/stb/audio/aac_transcode_choices")
+SystemInfo["CanAACTranscode"] = fileCheck("/proc/stb/audio/aac_transcode_choices")
 SystemInfo["CanAC3PlusTranscode"] = fileContains("/proc/stb/audio/ac3plus_choices", "force_ac3")
 SystemInfo["CanBTAudioDelay"] = fileCheck("/proc/stb/audio/btaudio_delay") or fileCheck("/proc/stb/audio/btaudio_delay_pcm")
 SystemInfo["CanBTAudio"] = fileCheck("/proc/stb/audio/btaudio")
 SystemInfo["CanDownmixAAC"] = fileContains("/proc/stb/audio/aac_choices", "downmix")
-SystemInfo["CanDownmixAACPlus"] = fileAccess("/proc/stb/audio/aacplus_choices")
+SystemInfo["CanDownmixAACPlus"] = fileCheck("/proc/stb/audio/aacplus_choices")
 SystemInfo["CanDownmixAC3"] = fileContains("/proc/stb/audio/ac3_choices", "downmix")
 SystemInfo["CanDownmixDTS"] = fileContains("/proc/stb/audio/dts_choices", "downmix")
-SystemInfo["CanDTSHD"] = fileAccess("/proc/stb/audio/dtshd_choices")
-SystemInfo["CanSyncMode"] = fileAccess("/proc/stb/video/sync_mode_choices")
-SystemInfo["CanWMAPRO"] = fileAccess("/proc/stb/audio/wmapro")
-SystemInfo["Has3DSpeaker"] = fileAccess("/proc/stb/audio/3d_surround_speaker_position_choices") or fileCheck("/proc/stb/audio/3d_surround_speaker_position")
-SystemInfo["Has3DSurround"] = fileAccess("/proc/stb/audio/3d_surround_choices") or fileCheck("/proc/stb/audio/3d_surround")
-SystemInfo["Has3DSurroundSoftLimiter"] = fileAccess("/proc/stb/audio/3dsurround_softlimiter_choices") or fileCheck("/proc/stb/audio/3dsurround_softlimiter")
-SystemInfo["Has3DSurroundSpeaker"] = fileAccess("/proc/stb/audio/3dsurround_choices") or fileCheck("/proc/stb/audio/3dsurround")
+SystemInfo["CanDTSHD"] = fileCheck("/proc/stb/audio/dtshd_choices")
+SystemInfo["CanSyncMode"] = fileCheck("/proc/stb/video/sync_mode_choices")
+SystemInfo["CanWMAPRO"] = fileCheck("/proc/stb/audio/wmapro")
+SystemInfo["Has3DSpeaker"] = fileCheck("/proc/stb/audio/3d_surround_speaker_position_choices") or fileCheck("/proc/stb/audio/3d_surround_speaker_position")
+SystemInfo["Has3DSurround"] = fileCheck("/proc/stb/audio/3d_surround_choices") or fileCheck("/proc/stb/audio/3d_surround")
+SystemInfo["Has3DSurroundSoftLimiter"] = fileCheck("/proc/stb/audio/3dsurround_softlimiter_choices") or fileCheck("/proc/stb/audio/3dsurround_softlimiter")
+SystemInfo["Has3DSurroundSpeaker"] = fileCheck("/proc/stb/audio/3dsurround_choices") or fileCheck("/proc/stb/audio/3dsurround")
 SystemInfo["HasAutoVolume"] = fileContains("/proc/stb/audio/avl_choices", "none") or fileContains("/proc/stb/audio/avl_choices", "hdmi") or fileCheck("/proc/stb/audio/avl")
-SystemInfo["HasAutoVolumeLevel"] = fileAccess("/proc/stb/audio/autovolumelevel_choices") or fileCheck("/proc/stb/audio/autovolumelevel")
+SystemInfo["HasAutoVolumeLevel"] = fileCheck("/proc/stb/audio/autovolumelevel_choices") or fileCheck("/proc/stb/audio/autovolumelevel")
 SystemInfo["HasBypassEdidChecking"] = fileCheck("/proc/stb/hdmi/bypass_edid_checking")
-SystemInfo["HasColordepthChoices"] = fileAccess("/proc/stb/video/hdmi_colordepth_choices")
+SystemInfo["HasColordepthChoices"] = fileCheck("/proc/stb/video/hdmi_colordepth_choices")
 SystemInfo["HasColordepth"] = fileCheck("/proc/stb/video/hdmi_colordepth")
-SystemInfo["HasColorimetryChoices"] = fileAccess("/proc/stb/video/hdmi_colorimetry_choices")
+SystemInfo["HasColorimetryChoices"] = fileCheck("/proc/stb/video/hdmi_colorimetry_choices")
 SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
-SystemInfo["HasColorspaceChoices"] = fileAccess("/proc/stb/video/hdmi_colorspace_choices")
+SystemInfo["HasColorspaceChoices"] = fileCheck("/proc/stb/video/hdmi_colorspace_choices")
 SystemInfo["HasColorspace"] = fileCheck("/proc/stb/video/hdmi_colorspace")
 SystemInfo["HasColorspaceSimple"] = BoxInfo.getItem("HasColorspace") and model in ("vusolo4k", "vuuno4k", "vuuno4kse", "vuultimo4k", "vuduo4k", "vuduo4kse")
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")
 SystemInfo["HasMultichannelPCM"] = fileCheck("/proc/stb/audio/multichannel_pcm")
 SystemInfo["HDMIAudioSource"] = fileCheck("/proc/stb/hdmi/audio_source")
-SystemInfo["HDRSupport"] = fileAccess("/proc/stb/hdmi/hlg_support_choices") or fileCheck("/proc/stb/hdmi/hlg_support")
+SystemInfo["HDRSupport"] = fileCheck("/proc/stb/hdmi/hlg_support_choices") or fileCheck("/proc/stb/hdmi/hlg_support")
