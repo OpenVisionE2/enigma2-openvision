@@ -1514,7 +1514,7 @@ RESULT eTSMPEGDecoder::showSinglePic(const char *filename)
 			if (m_video_clip_fd >= 0)
 				finishShowSinglePic();
 #endif
-#ifndef HAVE_RAPSBERRYPI
+#ifndef HAVE_RASPBERRYPI
 			if (m_video_clip_fd == -1)
 				m_video_clip_fd = open("/dev/dvb/adapter0/video0", O_WRONLY);
 #endif
