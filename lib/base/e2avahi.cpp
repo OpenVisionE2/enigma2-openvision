@@ -322,7 +322,7 @@ static void avahi_client_callback(AvahiClient *client, AvahiClientState state, v
  * whenever any of the events happens. */
 static AvahiWatch* avahi_watch_new(const AvahiPoll *api, int fd, AvahiWatchEvent event, AvahiWatchCallback callback, void *userdata)
 {
-	eDebug("[Avahi] %s(%d %#x)", __func__, fd, event);
+	eTrace("[Avahi] %s(%d %#x)", __func__, fd, event);
 
 	return new AvahiWatch((eMainloop*)api->userdata, fd, event, callback, userdata);
 }
@@ -331,21 +331,21 @@ static AvahiWatch* avahi_watch_new(const AvahiPoll *api, int fd, AvahiWatchEvent
 /** Update the events to wait for. It is safe to call this function from an AvahiWatchCallback */
 static void avahi_watch_update(AvahiWatch *w, AvahiWatchEvent event)
 {
-	eDebug("[Avahi] %s(%#x)", __func__, event);
+	eTrace("[Avahi] %s(%#x)", __func__, event);
 	w->sn->setRequested(event);
 }
 
 /** Return the events that happened. It is safe to call this function from an AvahiWatchCallback  */
 AvahiWatchEvent avahi_watch_get_events(AvahiWatch *w)
 {
-	eDebug("[Avahi] %s", __func__);
+	eTrace("[Avahi] %s", __func__);
 	return (AvahiWatchEvent)w->lastEvent;
 }
 
 /** Free a watch. It is safe to call this function from an AvahiWatchCallback */
 void avahi_watch_free(AvahiWatch *w)
 {
-	eDebug("[Avahi] %s", __func__);
+	eTrace("[Avahi] %s", __func__);
 	delete w;
 }
 

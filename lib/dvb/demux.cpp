@@ -76,7 +76,7 @@ eDVBDemux::eDVBDemux(int adapter, int demux):
 	m_dvr_source_offset(DMX_SOURCE_DVR0)
 {
 	if (CFile::parseInt(&m_dvr_source_offset, "/proc/stb/frontend/dvr_source_offset") == 0)
-		eDebug("[eDVBDemux] using %d for PVR DMX_SET_SOURCE", m_dvr_source_offset);
+		eTrace("[eDVBDemux] using %d for PVR DMX_SET_SOURCE", m_dvr_source_offset);
 #ifdef HAVE_RASPBERRYPI
 	decsa = new cDeCSA(adapter, demux);
 	eDebug("[RPi eDVBDemux] new cDeCSA (adapter%d, demux%d)", adapter, demux);

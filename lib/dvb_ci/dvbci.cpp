@@ -820,7 +820,7 @@ int eDVBCIInterfaces::setInputSource(int tuner_no, const std::string &source)
 			return 0;
 		}
 
-		eDebug("[CI] eDVBCIInterfaces setInputSource(%d, %s)", tuner_no, source.c_str());
+		eTrace("[CI] eDVBCIInterfaces setInputSource(%d, %s)", tuner_no, source.c_str());
 	}
 	return 0;
 }

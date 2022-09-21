@@ -264,7 +264,7 @@ int eDVBAdapterLinux::getNumDemux()
 
 RESULT eDVBAdapterLinux::getDemux(ePtr<eDVBDemux> &demux, int nr)
 {
-	eDebug("[eDVBAdapterLinux] get demux %d", nr);
+	eTrace("[eDVBAdapterLinux] get demux %d", nr);
 
 	eSmartPtrList<eDVBDemux>::iterator i(m_demux.begin());
 	while (nr && (i != m_demux.end()))
