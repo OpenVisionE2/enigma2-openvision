@@ -190,7 +190,13 @@ while : ; do
 				echo "00000008" > /proc/stb/fp/led_brightness
 			fi
 			check_busybox_update
-			/sbin/halt
+			if [ -x "@bindir@/turnoff_power" ]; then
+				"@bindir@/turnoff_power"
+			elif [ -x "@bindir@/hihalt" ]; then
+				"@bindir@/hihalt"
+			else
+				/sbin/halt
+			fi
 			;;
 		2)
 			[ -f /proc/stb/fp/force_restart ] && echo "1" > /proc/stb/fp/force_restart
