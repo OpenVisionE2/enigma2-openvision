@@ -65,7 +65,7 @@ def getBoxProcTypeName():
 	procType = getBoxProcType()
 	if procType == "unknown":
 		return _("Unknown")
-	return "%s  -  %s" % (procType, boxProcTypes.get(procType, _("Unknown")))
+	return "%s - %s" % (procType, boxProcTypes.get(procType, _("Unknown")))
 
 
 class InformationBase(Screen, HelpableScreen):
@@ -1113,9 +1113,7 @@ class ReceiverInformation(InformationBase):
 		procModel = getBoxProc()
 		if procModel != model and procModel != "unknown":
 			info.append(formatLine("P1", _("Proc model"), procModel))
-		procModelType = getBoxProcTypeName()
-		if procModelType and procModelType != "unknown":
-			info.append(formatLine("P1", _("Hardware type"), procModelType))
+		info.append(formatLine("P1", _("Hardware type"), getBoxProcTypeName().split("-")[0])) if getBoxProcTypeName() != _("unknown") else ""
 		hwSerial = getHWSerial()
 		if hwSerial:
 			info.append(formatLine("P1", _("Hardware serial"), (hwSerial if hwSerial != "unknown" else about.getCPUSerial())))
@@ -1564,6 +1562,7 @@ class TunerInformation(InformationBase):
 			info.append(formatLine("P1", "Tuner %s:" % data))
 			data = descList[count]["start"] if descList[count]["start"] == descList[count]["end"] else ("%s-%s" % (descList[count]["start"], descList[count]["end"]))
 			info.append(formatLine("P2", "%s" % descList[count]["desc"]))
+		info.append(formatLine("P1", _("Tuner type"), "%s" % getBoxProcTypeName().split("-")[1])) if getBoxProcTypeName() != _("Unknown") else ""
 		# info.append("")
 		# info.append(formatLine("H", _("Logical tuners")))  # Each tuner is a listed separately even if the hardware is common.
 		# info.append("")

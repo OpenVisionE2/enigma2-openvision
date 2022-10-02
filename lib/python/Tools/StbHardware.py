@@ -14,6 +14,8 @@ def getBoxProcType():
 	proctype = "unknown"
 	if isfile("/proc/stb/info/type"):
 		proctype = fileReadLine("/proc/stb/info/type", "unknown", source=MODULE_NAME).strip().lower()
+	elif isfile("/proc/stb/info/subtype"):
+		proctype = fileReadLine("/proc/stb/info/subtype", "unknown", source=MODULE_NAME).strip().lower()
 	return proctype
 
 
