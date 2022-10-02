@@ -207,6 +207,15 @@ class PowerTimer(Timer):
 				insort(self.processed_timers, w)
 		self.stateChanged(w)
 
+	def isProcessing(self, exceptTimer=None, endedTimer=None):
+		isRunning = False
+		for timer in self.timer_list:
+			if timer.timerType != TIMERTYPE.AUTOSTANDBY and timer.timerType != TIMERTYPE.AUTODEEPSTANDBY and timer.timerType != exceptTimer and timer.timerType != endedTimer:
+				if timer.isRunning():
+					isRunning = True
+					break
+		return isRunning
+
 	def getNextZapTime(self):
 		now = time()
 		for timer in self.timer_list:
