@@ -388,6 +388,12 @@ def InitAVSwitch():
 	else:
 		config.av.sync_mode = ConfigNothing()
 
+	if BoxInfo.getItem("HasMultichannelPCM"):
+		def setPCMMultichannel(configElement):
+			open(BoxInfo.getItem("HasMultichannelPCM"), "w").write(configElement.value and "enable" or "disable")
+		config.av.multichannel_pcm = ConfigYesNo(default=False)
+		config.av.multichannel_pcm.addNotifier(setPCMMultichannel)
+
 	if BoxInfo.getItem("CanDownmixAC3"):
 		default = "downmix"
 		choices = [
@@ -670,12 +676,6 @@ def InitAVSwitch():
 			open("/proc/stb/audio/autovolumelevel_choices", "w").write("enabled" if configElement.value else "disabled")
 		config.av.autovolumelevel = ConfigYesNo(default=False)
 		config.av.autovolumelevel.addNotifier(setAutoVolumeLevel)
-
-	if BoxInfo.getItem("HasMultichannelPCM"):
-		def setPCMMultichannel(configElement):
-			open(BoxInfo.getItem("HasMultichannelPCM"), "w").write(configElement.value and "enable" or "disable")
-		config.av.multichannel_pcm = ConfigYesNo(default=False)
-		config.av.multichannel_pcm.addNotifier(setPCMMultichannel)
 
 	if BoxInfo.getItem("ScalerSharpness"):
 		def setScaler_sharpness(config):

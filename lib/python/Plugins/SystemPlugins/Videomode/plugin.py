@@ -139,7 +139,7 @@ class VideoSetup(ConfigListScreen, Screen):
 				getConfigListEntry(_("General AC3 delay"), config.av.generalAC3delay, _("Configure the general audio delay of Dolby Digital sound tracks.")),
 				getConfigListEntry(_("General PCM delay"), config.av.generalPCMdelay, _("Configure the general audio delay of stereo sound tracks."))
 			))
-			if BoxInfo.getItem("HasMultichannelPCM"):
+			if BoxInfo.getItem("CanPcmMultichannel"):
 				self.list.append(getConfigListEntry(_("Multichannel PCM"), config.av.multichannel_pcm, _("Configure whether multi channel PCM sound should be enabled.")))
 			if BoxInfo.getItem("HasAutoVolume") or BoxInfo.getItem("HasAutoVolumeLevel"):
 				self.list.append(getConfigListEntry(_("Audio auto volume level"), BoxInfo.getItem("HasAutoVolume") and config.av.autovolume or config.av.autovolumelevel, _("This option allows you can to set the auto volume level.")))
