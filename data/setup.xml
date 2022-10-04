@@ -190,8 +190,11 @@
 		<item level="2" text="Include DVB scan data" description="Enable this option to add extra DVB scan data to the debug log file.">config.crash.debugDVBScan</item>
 		<item level="2" text="Logs folder location *" description="Choose the location for crash and debug logs folder.">config.crash.debugPath</item>
 		<item level="2" text="Debug log time format *" description="This sets the prefix for each line in the debug log. The 'Boot time' is the number of seconds since your %s %s was last booted.">config.crash.debugTimeFormat</item>
-		<item level="2" text="Number of debug logs to keep *" description="This sets the maximum number of log files that will be retained.  Files in excess of this number will be deleted.">config.crash.debugFileCount</item>
 		<item level="2" text="Log python stack trace on spinner" description="Set to yes for debugging the root cause of a spinner.">config.crash.pythonStackOnSpinner</item>
+		<item level="2" text="Number of debug logs to keep *" description="This sets the maximum number of log files that will be retained. Files in excess of this number will be deleted.">config.crash.debugFileCount</item>
+		<item level="2" text="Maximum number of days" description="Logs older than the specified number of days will be deleted.">config.crash.daysloglimit</item>
+		<item level="2" text="Maximum total space used (MB)" description="When maximum space for all logs is reached, the oldest logs will be deleted.">config.crash.sizeloglimit</item>
+		<item level="2" text="Show Logs Manager in extensions list" description="Allows you to show/hide Log Manager in extensions (blue button).">config.logmanager.showinextensions</item>
 	</setup>
 	<setup key="MACAddress" title="MAC Address Setup">
 		<item level="0" text="Interface to change MAC" description="Network interface for change MAC address. For change MAC WiFi activate LAN-WLAN DHCP.">config.macaddress.interfaces</item>

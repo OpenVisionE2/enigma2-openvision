@@ -700,6 +700,10 @@ profile("CommonInterface")
 from Screens.Ci import CiHandler, InitCiConfig
 InitCiConfig()
 
+profile("Init:LogManager")
+import Screens.LogManager
+Screens.LogManager.AutoLogManager()
+
 profile("EpgCacheScheduler")
 from Components.EpgLoadSave import EpgCacheLoadCheck, EpgCacheSaveCheck
 EpgCacheSaveCheck()
