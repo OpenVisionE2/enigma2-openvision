@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from enigma import eTimer, eBackgroundFileEraser, eLabel, gFont, fontRenderClass
 from os import remove, walk, stat, rmdir
-from os.path import join, getsize, isdir, exists, isdir
+from os.path import join, getsize, isdir, exists
 from time import time
 import Components.Task
 from Components.ActionMap import ActionMap
