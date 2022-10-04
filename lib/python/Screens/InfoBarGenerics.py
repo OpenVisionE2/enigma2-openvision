@@ -2321,6 +2321,7 @@ class InfoBarExtensions:
 			"extensions": (self.showExtensionSelection, _("Show extensions")),
 		}, prio=1, description=_("Extension Actions"))  # Lower priority.
 		self.addExtension(extension=self.getOScamInfo, type=InfoBarExtensions.EXTENSION_LIST)
+		self.addExtension(extension=self.getLogManager, type=InfoBarExtensions.EXTENSION_LIST)
 
 	def getOSname(self):
 		return _("OScam Info") if config.misc.softcams.value == "oscam" else _("Ncam Info")
@@ -2334,6 +2335,15 @@ class InfoBarExtensions:
 	def openSoftcamSetup(self):
 		from Screens.SoftcamSetup import SoftcamSetup
 		self.session.open(SoftcamSetup)
+
+	def getLogManagerName(self):
+		return _("Logs Manager")
+
+	def getLogManager(self):
+		if config.logmanager.showinextensions.value:
+			return [((boundFunction(self.getLogManagerName), boundFunction(self.openLogManager), lambda: True), None)]
+		else:
+			return []
 
 	def importChannels(self):
 		from Components.ImportChannels import ImportChannels
@@ -2394,6 +2404,10 @@ class InfoBarExtensions:
 	def openOScamInfo(self):
 		from Screens.OScamInfo import OscamInfoMenu
 		self.session.open(OscamInfoMenu)
+
+	def openLogManager(self):
+		from Screens.LogManager import LogManager
+		self.session.open(LogManager)
 
 	@staticmethod
 	def _getAutoTimerPluginFunc():

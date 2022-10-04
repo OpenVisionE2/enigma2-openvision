@@ -1265,7 +1265,7 @@ def InitUsageConfig():
 	], default="1")
 	config.crash.debugTimeFormat.save_forced = True
 	debugPath = [
-		("/home/root/logs/", "/home/root/")
+		("/home/root/logs/", "/home/root/logs/")
 	]
 	for partition in harddiskmanager.getMountedPartitions():
 		if exists(partition.mountpoint):
@@ -1280,7 +1280,14 @@ def InitUsageConfig():
 
 	config.crash.debugPath.addNotifier(updateDebugPath, immediate_feedback=False)
 	config.crash.debugFileCount = ConfigSelectionNumber(min=2, max=20, stepwidth=1, default=5, wraparound=True)
+	config.crash.daysloglimit = ConfigSelectionNumber(min=1, max=30, stepwidth=1, default=8, wraparound=True)
+	config.crash.sizeloglimit = ConfigSelectionNumber(min=1, max=20, stepwidth=1, default=2, wraparound=True)
 	config.crash.debugFileCount.save_forced = True
+
+	config.logmanager = ConfigSubsection()
+	config.logmanager.showinextensions = ConfigYesNo(default=False)
+	config.logmanager.path = ConfigText(default="/")
+	config.logmanager.sentfiles = ConfigLocations(default="")
 
 	config.seek = ConfigSubsection()
 	config.seek.selfdefined_13 = ConfigNumber(default=15)
