@@ -38,7 +38,7 @@
 #
 remote="origin"
 branch="develop"
-python="python"
+python="python2"
 localgsed="sed"
 xml2po="xml2po.py"
 findoptions=""
