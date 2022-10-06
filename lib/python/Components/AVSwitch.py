@@ -594,6 +594,14 @@ def InitAVSwitch():
 		config.av.wmapro = ConfigSelection(choices=choices, default=default)
 		config.av.wmapro.addNotifier(setWMAPRO)
 
+	if BoxInfo.getItem("CanAudioDelay"):
+		def setAudioDelay(configElement):
+			open(BoxInfo.getItem("CanAudioDelay"), "w").write(format(configElement.value * 90, "x"))
+		config.av.audiodelay = ConfigSelectionNumber(-1000, 1000, 5, default=0)
+		config.av.audiodelay.addNotifier(setAudioDelay)
+	else:
+		config.av.audiodelay = ConfigNothing()
+
 	if BoxInfo.getItem("CanBTAudio"):
 		choices = [
 			("off", _("Off")),

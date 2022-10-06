@@ -359,6 +359,7 @@ SystemInfo["FCC"] = False
 SystemInfo["CanProc"] = BoxInfo.getItem("MMCEMMC") and brand != "vuplus"
 SystemInfo["CanAACTranscode"] = fileCheck("/proc/stb/audio/aac_transcode_choices")
 SystemInfo["CanAC3PlusTranscode"] = fileContains("/proc/stb/audio/ac3plus_choices", "force_ac3")
+SystemInfo["CanAudioDelay"] = fileCheck("/proc/stb/audio/audio_delay_pcm") or fileCheck("/proc/stb/audio/audio_delay_bitstream")
 SystemInfo["CanBTAudioDelay"] = fileCheck("/proc/stb/audio/btaudio_delay") or fileCheck("/proc/stb/audio/btaudio_delay_pcm")
 SystemInfo["CanBTAudio"] = fileCheck("/proc/stb/audio/btaudio")
 SystemInfo["CanDownmixAAC"] = fileContains("/proc/stb/audio/aac_choices", "downmix")
