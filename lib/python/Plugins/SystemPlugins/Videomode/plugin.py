@@ -89,7 +89,7 @@ class VideoSetup(ConfigListScreen, Screen):
 			if level >= 1:
 				self.list.append(getConfigListEntry(_("Allow unsupported modes"), config.av.edid_override, _("When selected this allows video modes to be selected even if they are not reported as supported.")))
 				if BoxInfo.getItem("HasBypassEdidChecking"):
-					self.list.append(getConfigListEntry(_("Bypass HDMI EDID checking"), config.av.bypassEdidChecking, _("Configure if the HDMI EDID checking should be bypassed as this might solve issue with some TVs.")))
+					self.list.append(getConfigListEntry(_("Bypass HDMI EDID checking"), config.av.bypass_edid_checking, _("Configure if the HDMI EDID checking should be bypassed as this might solve issue with some TVs.")))
 				if BoxInfo.getItem("HasColorspace"):
 					self.list.append(getConfigListEntry(_("HDMI Colorspace"), config.av.hdmicolorspace, _("This option allows you to configure the Colorspace from Auto to RGB")))
 				if BoxInfo.getItem("HasColordepth"):
