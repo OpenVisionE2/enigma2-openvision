@@ -41,7 +41,7 @@ SCOPE_DEFAULTDIR = 19
 SCOPE_LIBDIR = 20
 SCOPE_SCRIPTS = 21
 
-# Deprecated scopes:
+# Deprecated scopes (old->new):
 SCOPE_ACTIVE_LCDSKIN = SCOPE_LCDSKIN
 SCOPE_ACTIVE_SKIN = SCOPE_GUISKIN
 SCOPE_CURRENT_LCDSKIN = SCOPE_LCDSKIN
@@ -58,13 +58,13 @@ defaultPaths = {
 	SCOPE_HOME: ("", PATH_DONTCREATE),  # User home directory
 	SCOPE_LANGUAGE: (eEnv.resolve("${datadir}/enigma2/po/"), PATH_DONTCREATE),
 	SCOPE_KEYMAPS: (eEnv.resolve("${datadir}/keymaps/"), PATH_CREATE),
-	SCOPE_METADIR: (eEnv.resolve("${datadir}/meta/"), PATH_CREATE),
+	SCOPE_METADIR: (eEnv.resolve("${datadir}/meta/"), PATH_DONTCREATE),
 	SCOPE_SKINS: (eEnv.resolve("${datadir}/enigma2/"), PATH_DONTCREATE),
 	SCOPE_GUISKIN: (eEnv.resolve("${datadir}/enigma2/"), PATH_DONTCREATE),
-	SCOPE_LCDSKIN: (eEnv.resolve("${datadir}/enigma2/display/"), PATH_DONTCREATE),
+	SCOPE_LCDSKIN: (eEnv.resolve("${datadir}/enigma2/display/"), PATH_CREATE),
 	SCOPE_FONTS: (eEnv.resolve("${datadir}/fonts/"), PATH_DONTCREATE),
-	SCOPE_PLUGINS: (eEnv.resolve("${libdir}/enigma2/python/Plugins/"), PATH_CREATE),
-	SCOPE_PLUGIN: (eEnv.resolve("${libdir}/enigma2/python/Plugins/"), PATH_CREATE),
+	SCOPE_PLUGINS: (eEnv.resolve("${libdir}/enigma2/python/Plugins/"), PATH_DONTCREATE),
+	SCOPE_PLUGIN: (eEnv.resolve("${libdir}/enigma2/python/Plugins/"), PATH_DONTCREATE),
 	SCOPE_PLUGIN_ABSOLUTE: (eEnv.resolve("${libdir}/enigma2/python/Plugins/"), PATH_DONTCREATE),
 	SCOPE_PLUGIN_RELATIVE: (eEnv.resolve("${libdir}/enigma2/python/Plugins/"), PATH_DONTCREATE),
 	SCOPE_SYSETC: (eEnv.resolve("${sysconfdir}/"), PATH_DONTCREATE),
@@ -76,7 +76,7 @@ defaultPaths = {
 	SCOPE_TIMESHIFT: ("/media/hdd/timeshift/recordings/", PATH_DONTCREATE),
 	SCOPE_DEFAULTDIR: (eEnv.resolve("${datadir}/enigma2/defaults/"), PATH_CREATE),
 	SCOPE_LIBDIR: (eEnv.resolve("${libdir}/"), PATH_DONTCREATE),
-	SCOPE_SCRIPTS: (eEnv.resolve("/usr/script/"), PATH_DONTCREATE)
+	SCOPE_SCRIPTS: (eEnv.resolve("/usr/script/"), PATH_CREATE)
 }
 
 scopeConfig = defaultPaths[SCOPE_CONFIG][0]
