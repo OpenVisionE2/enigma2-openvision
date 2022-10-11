@@ -64,7 +64,7 @@ def getMultiBootStartupDevice():
 	global startupDevice
 	startupDevice = None
 	tempDir = mkdtemp(prefix=PREFIX)
-	for device in ("/dev/block/by-name/bootoptions", "/dev/mmcblk0p1", "/dev/mmcblk1p1", "/dev/mmcblk0p3", "/dev/mmcblk0p4"):
+	for device in ("/dev/block/by-name/bootoptions", "/dev/mmcblk0p1", "/dev/mmcblk1p1", "/dev/mmcblk0p3", "/dev/mmcblk0p4", "/dev/mtdblock2"):
 		if exists(device):
 			if exists("/dev/block/by-name/flag"):
 				Console().ePopen((MOUNT, MOUNT, "--bind", device, tempDir))
@@ -106,7 +106,7 @@ def getMultiBootSlots():
 					for line in lines:
 						if "root=" in line:
 							device = getArgValue(line, "root")
-							if exists(device):
+							if exists(device) or device == 'ubi0:ubifs':
 								slot["device"] = device
 								slot["startupfile"] = basename(file)
 								if "rootsubdir" in line:
