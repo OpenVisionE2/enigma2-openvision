@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from fcntl import ioctl
-from os import listdir, major, minor, mkdir, popen, rmdir, sep, stat, statvfs, system, unlink
-from os.path import isfile, abspath, dirname, exists, ismount, join as pathjoin, normpath, realpath
+from os import listdir, major, minor, mkdir, popen, rmdir, sep, stat, statvfs, system, unlink, lstat, walk
+from os.path import isfile, abspath, dirname, exists, ismount, join as pathjoin, normpath, realpath, islink
 from re import search
 from time import sleep, time
 
@@ -38,6 +38,30 @@ def findMountPoint(path):
 	while not ismount(path):
 		path = dirname(path)
 	return path
+
+
+def getFolderSize(path):
+	if islink(path):
+		return (lstat(path).st_size, 0)
+	if isfile(path):
+		st = lstat(path)
+		return (st.st_size, st.st_blocks * 512)
+	total_bytes = 0
+	have = []
+	for dirpath, dirnames, filenames in walk(path):
+		total_bytes += lstat(dirpath).st_blocks * 512
+		for f in filenames:
+			fp = pathjoin(dirpath, f)
+			if islink(fp):
+				continue
+			st = lstat(fp)
+			if st.st_ino in have:
+				continue
+			have.append(st.st_ino)
+			total_bytes += st.st_blocks * 512
+		for d in dirnames:
+			dp = pathjoin(dirpath, d)
+	return total_bytes
 
 
 class Harddisk:
