@@ -52,13 +52,21 @@ RESULT eNavigation::playService(const eServiceReference &service)
 	return res;
 }
 
+#if SIGCXX_MAJOR_VERSION == 3
+RESULT eNavigation::connectEvent(const sigc::slot<void(int)> &event, ePtr<eConnection> &connection)
+#else
 RESULT eNavigation::connectEvent(const sigc::slot1<void,int> &event, ePtr<eConnection> &connection)
+#endif
 {
 	connection = new eConnection(this, m_event.connect(event));
 	return 0;
 }
 
+#if SIGCXX_MAJOR_VERSION == 3
+RESULT eNavigation::connectRecordEvent(const sigc::slot<void(ePtr<iRecordableService>,int)> &event, ePtr<eConnection> &connection)
+#else
 RESULT eNavigation::connectRecordEvent(const sigc::slot2<void,ePtr<iRecordableService>,int> &event, ePtr<eConnection> &connection)
+#endif
 {
 	connection = new eConnection(this, m_record_event.connect(event));
 	return 0;

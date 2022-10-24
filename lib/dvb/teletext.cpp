@@ -649,12 +649,20 @@ void eDVBTeletextParser::setPageAndMagazine(int page, int magazine, const char *
 		m_page_X &= 0xFF;
 }
 
+#if SIGCXX_MAJOR_VERSION == 3
+void eDVBTeletextParser::connectNewStream(const sigc::slot<void()> &slot, ePtr<eConnection> &connection)
+#else
 void eDVBTeletextParser::connectNewStream(const sigc::slot0<void> &slot, ePtr<eConnection> &connection)
+#endif
 {
 	connection = new eConnection(this, m_new_subtitle_stream.connect(slot));
 }
 
+#if SIGCXX_MAJOR_VERSION == 3
+void eDVBTeletextParser::connectNewPage(const sigc::slot<void(const eDVBTeletextSubtitlePage&)> &slot, ePtr<eConnection> &connection)
+#else
 void eDVBTeletextParser::connectNewPage(const sigc::slot1<void, const eDVBTeletextSubtitlePage&> &slot, ePtr<eConnection> &connection)
+#endif
 {
 	connection = new eConnection(this, m_new_subtitle_page.connect(slot));
 }

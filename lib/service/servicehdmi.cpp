@@ -114,7 +114,11 @@ eServiceHDMI::~eServiceHDMI()
 
 DEFINE_REF(eServiceHDMI);
 
+#if SIGCXX_MAJOR_VERSION == 3
+RESULT eServiceHDMI::connectEvent(const sigc::slot<void(iPlayableService*,int)> &event, ePtr<eConnection> &connection)
+#else
 RESULT eServiceHDMI::connectEvent(const sigc::slot2<void,iPlayableService*,int> &event, ePtr<eConnection> &connection)
+#endif
 {
 	connection = new eConnection((iPlayableService*)this, m_event.connect(event));
 	return 0;
@@ -351,7 +355,11 @@ RESULT eServiceHDMIRecord::frontendInfo(ePtr<iFrontendInformation> &ptr)
 	return 0;
 }
 
+#if SIGCXX_MAJOR_VERSION == 3
+RESULT eServiceHDMIRecord::connectEvent(const sigc::slot<void(iRecordableService*,int)> &event, ePtr<eConnection> &connection)
+#else
 RESULT eServiceHDMIRecord::connectEvent(const sigc::slot2<void,iRecordableService*,int> &event, ePtr<eConnection> &connection)
+#endif
 {
 	connection = new eConnection((iRecordableService*)this, m_event.connect(event));
 	return 0;

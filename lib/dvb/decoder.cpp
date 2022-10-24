@@ -755,7 +755,11 @@ void eDVBVideo::video_event(int)
 	}
 }
 
+#if SIGCXX_MAJOR_VERSION == 3
+RESULT eDVBVideo::connectEvent(const sigc::slot<void(struct iTSMPEGDecoder::videoEvent)> &event, ePtr<eConnection> &conn)
+#else
 RESULT eDVBVideo::connectEvent(const sigc::slot1<void, struct iTSMPEGDecoder::videoEvent> &event, ePtr<eConnection> &conn)
+#endif
 {
 	conn = new eConnection(this, m_event.connect(event));
 	return 0;
@@ -1601,7 +1605,11 @@ void eTSMPEGDecoder::finishShowSinglePic()
 	}
 }
 
+#if SIGCXX_MAJOR_VERSION == 3
+RESULT eTSMPEGDecoder::connectVideoEvent(const sigc::slot<void(struct videoEvent)> &event, ePtr<eConnection> &conn)
+#else
 RESULT eTSMPEGDecoder::connectVideoEvent(const sigc::slot1<void, struct videoEvent> &event, ePtr<eConnection> &conn)
+#endif
 {
 	conn = new eConnection(this, m_video_event.connect(event));
 	return 0;

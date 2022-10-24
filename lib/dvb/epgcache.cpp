@@ -408,7 +408,7 @@ static pthread_mutex_t cache_lock =
 DEFINE_REF(eEPGCache)
 
 eEPGCache::eEPGCache()
-	:messages(this,1, "eEPGCache"), m_running(false), m_enabledEpgSources(0), cleanTimer(eTimer::create(this)), m_debug(false), m_timeQueryRef(nullptr)
+	:messages(this,1,"eEPGCache"), m_running(false), m_enabledEpgSources(0), cleanTimer(eTimer::create(this)), m_debug(false), m_timeQueryRef(nullptr)
 {
 	eDebug("[eEPGCache] Initialized EPGCache (wait for setCacheFile call now)");
 
@@ -1864,7 +1864,11 @@ PyObject *eEPGCache::lookupEvent(ePyObject list, ePyObject convertFunc)
 						break;
 					}
 					case 1:
+#if PY_MAJOR_VERSION < 3
 						type=PyInt_AsLong(entry);
+#else
+						type=PyLong_AsLong(entry);
+#endif
 						if (type < -1 || type > 2)
 						{
 							eDebug("[eEPGCache] unknown type %d", type);
@@ -1872,10 +1876,18 @@ PyObject *eEPGCache::lookupEvent(ePyObject list, ePyObject convertFunc)
 						}
 						break;
 					case 2:
+#if PY_MAJOR_VERSION < 3
 						event_id=stime=PyInt_AsLong(entry);
+#else
+						event_id=stime=PyLong_AsLong(entry);
+#endif
 						break;
 					case 3:
+#if PY_MAJOR_VERSION < 3
 						minutes=PyInt_AsLong(entry);
+#else
+						minutes=PyLong_AsLong(entry);
+#endif
 						break;
 					default:
 						eDebug("[eEPGCache] unneeded extra argument");
@@ -2329,8 +2341,8 @@ void eEPGCache::importEvent(ePyObject serviceReference, ePyObject list)
 }
 
 /**
- * @brief Import EPG events from Python into the EPG database. Each event in the @p list
- * is added to each service in the @p serviceReferences list.
+ * @brief Import EPG events from Python into the EPG database. Each event in the @list
+ * is added to each service in the @serviceReferences list.
  *
  * @param serviceReferences Any of: a single service reference string; a list of service reference
  * strings; a single tuple with DVB triplet or a list of tuples with DVB triplets. A DVB triplet is
@@ -2353,15 +2365,17 @@ void eEPGCache::importEvents(ePyObject serviceReferences, ePyObject list)
 {
 	std::vector<eServiceReferenceDVB> refs;
 
+#if PY_MAJOR_VERSION < 3
+	char *refstr;
+	
 	if (PyString_Check(serviceReferences))
 	{
-#if PY_MAJOR_VERSION < 3
-		char *refstr;
-
 		refstr = PyString_AS_STRING(serviceReferences);
 #else
-		const char *refstr;
+	const char *refstr;
 
+	if (PyUnicode_Check(serviceReferences))
+	{
 		refstr = PyUnicode_AsUTF8(serviceReferences);
 #endif
 	        if (!refstr)
@@ -2392,14 +2406,10 @@ void eEPGCache::importEvents(ePyObject serviceReferences, ePyObject list)
 #if PY_MAJOR_VERSION < 3
 			if (PyString_Check(item))
 			{
-				char *refstr;
-
 				refstr = PyString_AS_STRING(item);
 #else
 			if (PyUnicode_Check(item))
 			{
-				const char *refstr;
-
 				refstr = PyUnicode_AsUTF8(item);
 #endif
 				if (!refstr)
@@ -2647,7 +2657,6 @@ PyObject *eEPGCache::search(ePyObject arg)
 #if PY_MAJOR_VERSION < 3
 				if (PyString_Check(obj))
 				{
-
 					refstr = PyString_AS_STRING(obj);
 #else
 				if (PyUnicode_Check(obj))
@@ -2747,11 +2756,7 @@ PyObject *eEPGCache::search(ePyObject arg)
 							it != eventData::descriptors.end(); ++it)
 						{
 							uint8_t *data = it->second.data;
-#if PY_MAJOR_VERSION < 3
 							int textlen = 0;
-#else
-							ssize_t textlen = 0;
-#endif
 							const char *textptr = NULL;
 							if ( data[0] == SHORT_EVENT_DESCRIPTOR && querytype > 0 && querytype < 5 )
 							{

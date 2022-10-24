@@ -44,8 +44,13 @@ public:
 	int start(int pid);
 	void setPageAndMagazine(int page, int magazine, const char * lang);
 	void setMagazine(int magazine);
+#if SIGCXX_MAJOR_VERSION == 3
+	void connectNewStream(const sigc::slot<void()> &slot, ePtr<eConnection> &connection);
+	void connectNewPage(const sigc::slot<void(const eDVBTeletextSubtitlePage &)> &slot, ePtr<eConnection> &connection);
+#else
 	void connectNewStream(const sigc::slot0<void> &slot, ePtr<eConnection> &connection);
 	void connectNewPage(const sigc::slot1<void,const eDVBTeletextSubtitlePage &> &slot, ePtr<eConnection> &connection);
+#endif
 	std::set<eDVBServicePMTHandler::subtitleStream> m_found_subtitle_pages;
 private:
 	std::map<int, unsigned int> m_modifications;
@@ -66,8 +71,13 @@ private:
 
 	void addSubtitleString(int color, std::string string, int source_line);
 
+#if SIGCXX_MAJOR_VERSION == 3
+	sigc::signal<void()> m_new_subtitle_stream;
+	sigc::signal<void(const eDVBTeletextSubtitlePage&)> m_new_subtitle_page;
+#else
 	sigc::signal0<void> m_new_subtitle_stream;
 	sigc::signal1<void,const eDVBTeletextSubtitlePage&> m_new_subtitle_page;
+#endif
 };
 
 #endif

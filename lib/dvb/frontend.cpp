@@ -2921,7 +2921,11 @@ tune_error:
 	return res;
 }
 
+#if SIGCXX_MAJOR_VERSION == 3
+RESULT eDVBFrontend::connectStateChange(const sigc::slot<void(iDVBFrontend*)> &stateChange, ePtr<eConnection> &connection)
+#else
 RESULT eDVBFrontend::connectStateChange(const sigc::slot1<void,iDVBFrontend*> &stateChange, ePtr<eConnection> &connection)
+#endif
 {
 	connection = new eConnection(this, m_stateChanged.connect(stateChange));
 	return 0;

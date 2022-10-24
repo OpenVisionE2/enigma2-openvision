@@ -58,7 +58,11 @@ private:
 	ePtr<eSocketNotifier> m_sn_amvideoPoll;
 	void amvideo_event(int);
 #endif
+#if SIGCXX_MAJOR_VERSION == 3
+	sigc::signal<void(struct iTSMPEGDecoder::videoEvent)> m_event;
+#else
 	sigc::signal1<void, struct iTSMPEGDecoder::videoEvent> m_event;
+#endif
 	int m_width, m_height, m_framerate, m_aspect, m_progressive, m_gamma;
 	static int readApiSize(int fd, int &xres, int &yres, int &aspect);
 public:
@@ -81,7 +85,11 @@ public:
 	void unfreeze();
 	int getPTS(pts_t &now);
 	virtual ~eDVBVideo();
+#if SIGCXX_MAJOR_VERSION == 3
+	RESULT connectEvent(const sigc::slot<void(struct iTSMPEGDecoder::videoEvent)> &event, ePtr<eConnection> &conn);
+#else
 	RESULT connectEvent(const sigc::slot1<void, struct iTSMPEGDecoder::videoEvent> &event, ePtr<eConnection> &conn);
+#endif
 	int getWidth();
 	int getHeight();
 	int getProgressive();
@@ -166,9 +174,17 @@ private:
 
 	void demux_event(int event);
 	void video_event(struct videoEvent);
+#if SIGCXX_MAJOR_VERSION == 3
+	sigc::signal<void(struct videoEvent)> m_video_event;
+#else
 	sigc::signal1<void, struct videoEvent> m_video_event;
+#endif
 #if defined(DMAMLOGIC)
+#if SIGCXX_MAJOR_VERSION == 3
+	sigc::signal<void(int)> m_state_event;
+#else
 	sigc::signal1<void, int> m_state_event;
+#endif
 #endif
 	int m_video_clip_fd;
 	ePtr<eTimer> m_showSinglePicTimer;
@@ -224,9 +240,17 @@ public:
 	RESULT setRadioPic(const std::string &filename);
 		/* what 0=auto, 1=video, 2=audio. */
 	RESULT getPTS(int what, pts_t &pts);
+#if SIGCXX_MAJOR_VERSION == 3
+	RESULT connectVideoEvent(const sigc::slot<void(struct videoEvent)> &event, ePtr<eConnection> &connection);
+#else
 	RESULT connectVideoEvent(const sigc::slot1<void, struct videoEvent> &event, ePtr<eConnection> &connection);
+#endif
 #if defined(DMAMLOGIC)
+#if SIGCXX_MAJOR_VERSION == 3
+	RESULT connectStateEvent(const sigc::slot<void(int)> &event, ePtr<eConnection> &connection);
+#else
 	RESULT connectStateEvent(const sigc::slot1<void, int> &event, ePtr<eConnection> &connection);
+#endif
 	int getVideoDecoderId();
 #endif
 	int getVideoWidth();

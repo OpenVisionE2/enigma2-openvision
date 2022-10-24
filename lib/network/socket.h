@@ -54,12 +54,21 @@ public:
 			Listening, Connection, Closing };
 	int state();
 
+#if SIGCXX_MAJOR_VERSION == 3
+	sigc::signal<void()> connectionClosed_;
+	sigc::signal<void()> connected_;
+	sigc::signal<void()> readyRead_;
+	sigc::signal<void()> hangup;
+	sigc::signal<void(int)> bytesWritten_;
+	sigc::signal<void(int)> error_;
+#else
 	sigc::signal0<void> connectionClosed_;
 	sigc::signal0<void> connected_;
 	sigc::signal0<void> readyRead_;
 	sigc::signal0<void> hangup;
 	sigc::signal1<void,int> bytesWritten_;
 	sigc::signal1<void,int> error_;
+#endif
 };
 
 class eUnixDomainSocket: public eSocket

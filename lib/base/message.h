@@ -157,7 +157,11 @@ public:
 			eFatal("[eFixedMessagePump<%s>] write error %m", name);
 	}
 public:
+#if SIGCXX_MAJOR_VERSION == 3
+	sigc::signal<void(const T&)> recv_msg;
+#else
 	sigc::signal1<void,const T&> recv_msg;
+#endif
 	void send(const T &msg)
 	{
 		{
