@@ -2766,12 +2766,12 @@ class InfoBarInstantRecord:
 			message = _("No event info found, recording indefinitely.")
 			if limitEvent and serviceref:
 				if serviceref.toString().startswith("1"):
-					self.session.open(MessageBox, message, MessageBox.TYPE_INFO)
+					AddPopup(_("%s") % message, MessageBox.TYPE_INFO, timeout=5)
 				elif isPluginInstalled("ServiceApp"): # channels with IPTV reference.
 					if not config.plugins.serviceapp.servicemp3.replace.value:
-						self.session.open(MessageBox, message, MessageBox.TYPE_INFO)
+						AddPopup(_("%s") % message, MessageBox.TYPE_INFO, timeout=5)
 				else:
-					self.session.open(MessageBox, message, MessageBox.TYPE_INFO)
+					AddPopup(_("%s") % message, MessageBox.TYPE_INFO, timeout=5)
 
 		if isinstance(serviceref, eServiceReference):
 			serviceref = ServiceReference(serviceref)
@@ -2797,13 +2797,13 @@ class InfoBarInstantRecord:
 				if recording.setAutoincreaseEnd():
 					self.session.nav.RecordTimer.record(recording)
 					self.recording.append(recording)
-					self.session.open(MessageBox, _("Record time limited due to conflicting timer %s") % name_date, MessageBox.TYPE_INFO)
+					AddPopup(_("Record time limited due to conflicting timer %s") % name_date, MessageBox.TYPE_INFO, timeout=5)
 				else:
-					self.session.open(MessageBox, _("Could not record due to conflicting timer %s") % name, MessageBox.TYPE_INFO)
+					AddPopup(_("Could not record due to conflicting timer %s") % name, MessageBox.TYPE_INFO, timeout=5)
 			if serviceref:
-				self.session.open(MessageBox, _("Could not record due to invalid service %s") % serviceref, MessageBox.TYPE_INFO)
+				AddPopup(_("Could not record due to invalid service %s") % serviceref, MessageBox.TYPE_INFO, timeout=5)
 			else:
-				self.session.open(MessageBox, _("Could not record due to busy tuner"), MessageBox.TYPE_INFO)
+				AddPopup(_("Could not record due to busy tuner"), MessageBox.TYPE_INFO, timeout=5)
 			recording.autoincrease = False
 
 	def isInstantRecordRunning(self):
