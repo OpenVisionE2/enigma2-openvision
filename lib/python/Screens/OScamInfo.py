@@ -357,31 +357,36 @@ class OscamInfo:
 	def getECMInfo(self, ecminfo):
 		result = []
 		if isfile(ecminfo):
-			data = open(ecminfo, "r").readlines()
-			for i in data:
-				if "caid" in i:
-					result.append((_("CAID"), i.split(":")[1].strip()))
-				elif "pid" in i:
-					result.append((_("PID"), i.split(" ")[1].strip()))
-				elif "prov" in i:
-					result.append((_("Provider"), i.split(":")[1].strip()))
-				elif "reader" in i:
-					result.append((_("Reader"), i.split(":")[1].strip()))
-				elif "from" in i and not "cache" in i:
-					result.append((_("Address"), i.split(":")[1].strip()))
-				elif "from" in i and "cache" in i:
-					result.append((_("From"), i.split(":")[1].strip()))
-				elif "protocol" in i and not "none" in i:
-					result.append((_("Protocol"), i.split(":")[1].strip()))
-				elif "none" in i:
-					result.append(("CacheEX", i.split(":")[1].strip().replace("none", "cacheex")))
-				elif "hops" in i:
-					result.append((_("Hops"), i.split(":")[1].strip()))
-				elif "ecm time" in i:
-					result.append((_("ECM Time"), i.split(":")[1].strip()))
-				else:
-					result
-			return result
+			try:
+				with open(ecminfo, "r") as fd:
+					data = fd.readlines()
+			except UnicodeDecodeError as err:
+				print("[OScamInfo] %s" % err)
+			if data:
+				for i in data:
+					if "caid" in i:
+						result.append((_("CAID"), i.split(":")[1].strip()))
+					elif "pid" in i:
+						result.append((_("PID"), i.split(" ")[1].strip()))
+					elif "prov" in i:
+						result.append((_("Provider"), i.split(":")[1].strip()))
+					elif "reader" in i:
+						result.append((_("Reader"), i.split(":")[1].strip()))
+					elif "from" in i and not "cache" in i:
+						result.append((_("Address"), i.split(":")[1].strip()))
+					elif "from" in i and "cache" in i:
+						result.append((_("From"), i.split(":")[1].strip()))
+					elif "protocol" in i and not "none" in i:
+						result.append((_("Protocol"), i.split(":")[1].strip()))
+					elif "none" in i:
+						result.append(("CacheEX", i.split(":")[1].strip().replace("none", "cacheex")))
+					elif "hops" in i:
+						result.append((_("Hops"), i.split(":")[1].strip()))
+					elif "ecm time" in i:
+						result.append((_("ECM Time"), i.split(":")[1].strip()))
+					else:
+						result
+				return result
 
 
 class oscMenuList(MenuList):
