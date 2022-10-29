@@ -92,8 +92,25 @@ class ParentalControl:
 		elif int(config.ParentalControl.age.value):
 			event = info and info.getEvent(ref)
 			rating = event and event.getParentalData()
-			age = rating and rating.getRating()
+			age = rating and rating.getRating() # rating.getRating() = (age - 3) if rating.getRating().
 			age = age and age <= 15 and age + 3 or 0
+			if age == 0:
+				try: # Age control based on getExtendedDescription also valid for EIT.
+					agecontrol = "%s" % int(config.ParentalControl.age.value)
+					description = event.getExtendedDescription().strip()
+					if "(+%s)" % int(config.ParentalControl.age.value) in str(description):
+						rating = event.getExtendedDescription().lstrip(")")
+					elif "+%s" % int(config.ParentalControl.age.value) in str(description) or "-%s" % int(config.ParentalControl.age.value) in str(description):
+						rating = event.getExtendedDescription().strip()
+					elif "TP" in str(description): # Add here future EPG character filters for other platforms EPG.
+						rating = None
+					if rating:
+						if agecontrol in str(rating):
+							age = agecontrol
+							if age:
+								return age or service and service in self.blacklist
+				except Exception as err:
+					print(err)
 		return (age and age >= int(config.ParentalControl.age.value)) or service and service in self.blacklist
 
 	def isServicePlayable(self, ref, callback, session=None):
