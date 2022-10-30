@@ -20,7 +20,7 @@ import os
 
 class hotkey:
 	functions = None
-	hotkeys = [(_("Red") + " " + _("long"), "red_long", ""),
+	hotkeys = [(_("Red") + " " + _("long"), "red_long", "Infobar/activateRedButton"),
 		(_("Green") + " " + _("long"), "green_long", ""),
 		(_("Yellow") + " " + _("long"), "yellow_long", "Plugins/Extensions/GraphMultiEPG/1"),
 		(_("Blue") + " " + _("long"), "blue_long", "SoftcamSetup"),
@@ -30,11 +30,15 @@ class hotkey:
 		("F2" + " " + _("long"), "f2_long", ""),
 		("F3", "f3", ""),
 		("F3" + " " + _("long"), "f3_long", ""),
+		("F4", "f4", ""),
+		("F4" + " " + _("long"), "f4_long", ""),
+		("Channel up", "channelup", ""),
+		("Channel down", "channeldown", ""),
 		("PIP", "f6", ""),
 		("PIP" + " " + _("long"), "f6_long", ""),
 		(_("Red"), "red", ""),
 		(_("Green"), "green", ""),
-		(_("Yellow"), "yellow", ""),
+		(_("Yellow"), "yellow", "Infobar/importAutoTimerCurrentEvent"),
 		(_("Blue"), "blue", ""),
 		("Rec", "rec", ""),
 		("Rec" + " " + _("long"), "rec_long", "Infobar/instantRecord"),
@@ -66,8 +70,6 @@ class hotkey:
 		("Up", "cross_up", ""),
 		("Down", "cross_down", ""),
 		("Ok", "ok", ""),
-		("Channel up", "channelup", ""),
-		("Channel down", "channeldown", ""),
 		("Page up", "pageUp", ""),
 		("Page up" + " " + _("long"), "pageUp_long", ""),
 		("Page down", "pageDown", ""),
@@ -238,6 +240,7 @@ def getHotkeyFunctions():
 	hotkey.functions.append((_("Sleeptimer edit"), "Module/Screens.SleepTimerEdit/SleepTimerEdit", "Setup"))
 	hotkey.functions.append((_("Channel Info"), "Module/Screens.ServiceInfo/ServiceInfo", "Setup"))
 	hotkey.functions.append((_("Timer"), "Module/Screens.TimerEdit/TimerEditList", "Setup"))
+	hotkey.functions.append((_("Import AutoTimer"), "Infobar/importAutoTimerCurrentEvent", "Setup"))
 	for plugin in plugins.getPluginsForMenu("system"):
 		if plugin[2]:
 			hotkey.functions.append((plugin[0], "MenuPlugin/system/" + plugin[2], "Setup"))

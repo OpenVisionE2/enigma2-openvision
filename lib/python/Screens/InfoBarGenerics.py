@@ -2319,6 +2319,7 @@ class InfoBarExtensions:
 		self.addExtension((lambda: _("Manually import from fallback tuner"), self.importChannels, lambda: config.usage.remote_fallback_extension_menu.value and config.usage.remote_fallback_import.value))
 		self["InstantExtensionsActions"] = HelpableActionMap(self, ["InfobarExtensions"], {
 			"extensions": (self.showExtensionSelection, _("Show extensions")),
+			"openCurrentEventAutoTimer": (self.importAutoTimerCurrentEvent, _("Import autotimer in current event")),
 		}, prio=1, description=_("Extension Actions"))  # Lower priority.
 		self.addExtension(extension=self.getOScamInfo, type=InfoBarExtensions.EXTENSION_LIST)
 		self.addExtension(extension=self.getLogManager, type=InfoBarExtensions.EXTENSION_LIST)
@@ -2409,25 +2410,19 @@ class InfoBarExtensions:
 		from Screens.LogManager import LogManager
 		self.session.open(LogManager)
 
-	@staticmethod
-	def _getAutoTimerPluginFunc():
-		# Use the WHERE_MENU descriptor because it's the only
-		# AutoTimer plugin descriptor that opens the AutoTimer
-		# overview and is always present.
-
-		for l in plugins.getPlugins(PluginDescriptor.WHERE_MENU):
-			if l.name == _("Auto Timers"):  # Must use translated name
-				menuEntry = l("timermenu")
-				if menuEntry and len(menuEntry[0]) > 1 and callable(menuEntry[0][1]):
-					return menuEntry[0][1]
-		return None
-
-	def showAutoTimerList(self):
-		autotimerFunc = self._getAutoTimerPluginFunc()
-		if autotimerFunc is not None:
-			autotimerFunc(self.session)
+	def importAutoTimerCurrentEvent(self):
+		from Tools.Directories import isPluginInstalled
+		if isPluginInstalled("AutoTimer"):
+			service = self.session.nav.getCurrentService()
+			event = service and service.info().getEvent(0)
+			from Plugins.Extensions.AutoTimer.AutoTimerEditor import addAutotimerFromEvent
+			self.isAutoTimer = _("You are ready to add an event to automatic timer.\nIf there are no conflicts, once added you must enter menu:\n\nTimers > AutoTimers and search the event with green button.")
+			if not event:
+				return
+			addAutotimerFromEvent(self.session, evt=event, service=service)
+			self.session.open(MessageBox, self.isAutoTimer, MessageBox.TYPE_INFO, timeout=10)
 		else:
-			self.session.open(MessageBox, _("The AutoTimer plugin is not installed!\nPlease install it."), type=MessageBox.TYPE_INFO, timeout=10)
+			AddPopup(_("The AutoTimer plugin is not installed."), MessageBox.TYPE_ERROR, timeout=5)
 
 
 from Tools.BoundFunction import boundFunction
