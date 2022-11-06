@@ -1125,15 +1125,18 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 			except ImportError:
 				return False
 			else:
+				from wifi.exceptions import InterfaceError
 				try:
-					Console().ePopen("ifconfig %s up" % iface)
+					self.Console.ePopen("ifconfig %s up" % self.iface)
 					wlanresponse = list(Cell.all(iface))
-				except IOError as err:
-					error_no, error_str = err.args
-					if error_no in (errno.EOPNOTSUPP, errno.ENODEV, errno.EPERM):
+				except InterfaceError as err:
+					print("[NetworkSetup] queryWirelessDevice InterfaceError:", err)
+					return False
+				except (IOError, OSError) as err:
+					if err.errno in (errno.EOPNOTSUPP, errno.ENODEV, errno.EPERM):
 						return False
 					else:
-						print("[NetworkSetup] error: ", error_no, error_str)
+						print("[NetworkSetup] queryWirelessDevice Error:", err.errno, err.strerror)
 						return True
 				else:
 					return True
