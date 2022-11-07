@@ -90,19 +90,19 @@ class SelectImage(Screen):
 				except:
 					pass
 			self.imagesList = dict(self.jsonlist)
-
-			for media in ['/media/%s' % x for x in os.listdir('/media')] + (['/media/net/%s' % x for x in os.listdir('/media/net')] if os.path.isdir('/media/net') else []):
-				try:
-					getImages(media, [os.path.join(media, x) for x in os.listdir(media) if os.path.splitext(x)[1] == ".zip" and model in x])
-					for folder in ["images", "downloaded_images", "imagebackups"]:
-						if folder in os.listdir(media):
-							subfolder = os.path.join(media, folder)
-							if os.path.isdir(subfolder) and not os.path.islink(subfolder) and not os.path.ismount(subfolder):
-								getImages(subfolder, [os.path.join(subfolder, x) for x in os.listdir(subfolder) if os.path.splitext(x)[1] == ".zip" and model in x])
-								for dir in [dir for dir in [os.path.join(subfolder, dir) for dir in os.listdir(subfolder)] if os.path.isdir(dir) and os.path.splitext(dir)[1] == ".unzipped"]:
-									shutil.rmtree(dir)
-				except:
-					pass
+			for mountdir in ["/media", "/media/net", "/media/autofs"]:
+				for media in ['%s/%s' % (mountdir, x) for x in os.listdir('%s' % mountdir)] + (['%s/%s' % (mountdir, x) for x in os.listdir('%s' % mountdir)] if os.path.isdir('%s' % mountdir) else []):
+					try:
+						getImages(media, [os.path.join(media, x) for x in os.listdir(media) if os.path.splitext(x)[1] == ".zip" and model in x])
+						for folder in ["images", "downloaded_images", "imagebackups"]:
+							if folder in os.listdir(media):
+								subfolder = os.path.join(media, folder)
+								if os.path.isdir(subfolder) and not os.path.islink(subfolder) and not os.path.ismount(subfolder):
+									getImages(subfolder, [os.path.join(subfolder, x) for x in os.listdir(subfolder) if os.path.splitext(x)[1] == ".zip" and model in x])
+									for dir in [dir for dir in [os.path.join(subfolder, dir) for dir in os.listdir(subfolder)] if os.path.isdir(dir) and os.path.splitext(dir)[1] == ".unzipped"]:
+										shutil.rmtree(dir)
+					except:
+						pass
 
 		list = []
 		for catagorie in reversed(sorted(self.imagesList.keys())):
@@ -267,11 +267,13 @@ class FlashImage(Screen):
 					return (path, True)
 				mounts = []
 				devices = []
-				for path in ['/media/%s' % x for x in os.listdir('/media')] + (['/media/net/%s' % x for x in os.listdir('/media/net')] if os.path.isdir('/media/net') else []):
-					if checkIfDevice(path, diskstats):
-						devices.append((path, avail(path)))
-					else:
-						mounts.append((path, avail(path)))
+				for mountdir in ["/media", "/media/net", "/media/autofs"]:
+					for path in ['%s/%s' % (mountdir, x) for x in os.listdir('%s' % mountdir)] + (['%s/%s' % (mountdir, x) for x in os.listdir('%s' % mountdir)] if os.path.isdir('%s' % mountdir) else []):
+						if path:
+							if checkIfDevice(path, diskstats):
+								devices.append((path, avail(path)))
+							else:
+								mounts.append((path, avail(path)))
 				devices.sort(key=lambda x: x[1], reverse=True)
 				mounts.sort(key=lambda x: x[1], reverse=True)
 				return ((devices[0][1] > 500 and (devices[0][0], True)) if devices else mounts and mounts[0][1] > 500 and (mounts[0][0], False)) or (None, None)
