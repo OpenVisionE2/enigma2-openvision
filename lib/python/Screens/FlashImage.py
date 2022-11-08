@@ -499,9 +499,9 @@ class MultiBootSelection(SelectImage):
 	def doReboot(self, answer):
 		if answer:
 			slot = self.currentSelected[0][1]
-			if slot == "Recovery":
+			if slot == "Recovery" and os.path.isfile(os.path.join(self.tmp_dir, "STARTUP_RECOVERY")):
 				shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_RECOVERY"), os.path.join(self.tmp_dir, "STARTUP"))
-			elif slot == "Android":
+			elif slot == "Android" and os.path.isfile(os.path.join(self.tmp_dir, "STARTUP_ANDROID")):
 				shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_ANDROID"), os.path.join(self.tmp_dir, "STARTUP"))
 			elif BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile']:
 				if BoxInfo.getItem("canMode12"):
@@ -512,9 +512,11 @@ class MultiBootSelection(SelectImage):
 					with open('/dev/block/by-name/flag', 'wb') as f:
 						f.write(struct.pack("B", int(slot[0])))
 					startupfile = os.path.join("/boot", "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
-					shutil.copyfile(startupfile, os.path.join("/boot", "STARTUP"))
+					if os.path.isfile(startupfile):
+						shutil.copyfile(startupfile, os.path.join("/boot", "STARTUP"))
 				else:
-					shutil.copyfile(startupfile, os.path.join(self.tmp_dir, "STARTUP"))
+					if os.path.isfile(startupfile):
+						shutil.copyfile(startupfile, os.path.join(self.tmp_dir, "STARTUP"))
 			else:
 				if slot[1] == 1:
 					startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (slot[0], slot[0] * 2 + 1, model)
