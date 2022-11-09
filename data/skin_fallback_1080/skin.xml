@@ -2406,18 +2406,21 @@
 		<widget font="RegularBold;30" horizontalAlignment="center" name="key0" position="236,177" size="440,60" verticalAlignment="center" foregroundColor="white" backgroundColor="OE_NewBg2"/>
 		<widget font="Console; 37" horizontalAlignment="center" name="help2" position="679,177" size="230,60" verticalAlignment="center" foregroundColor="white" backgroundColor="OE_NewBg2"/>
 	</screen>
+	<!-- OPEN MULTIBOOT OMB-->
 	<screen name="OMBManagerList" title="OMB Manager List" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
 		<panel name="StanDardScreen"/>
-		<widget name="label1" font="RegularBold;26" backgroundColor="OE_Background" horizontalAlignment="left" position="170,140" size="400,45" transparent="1"/>
-		<widget name="label2" font="RegularBold;30" backgroundColor="OE_Background" foregroundColor="green_light" horizontalAlignment="left" position="170,190" size="1250,50" transparent="1"/>
-		<widget source="list" render="Listbox" itemHeight="50" font="RegularBold;26" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="OE_Background" position="170,270" size="1250,650" zPosition="3" transparent="1">
+		<panel name="TemplatePip"/>
+		<widget name="label1" font="RegularBold;26" backgroundColor="OE_Background" horizontalAlignment="left" position="26,140" size="400,45" transparent="1"/>
+		<widget name="label2" font="RegularBold;30" backgroundColor="OE_Background" foregroundColor="green_light" horizontalAlignment="left" position="26,190" size="1250,50" transparent="1"/>
+		<widget source="list" render="Listbox" itemHeight="50" font="RegularBold;26" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="OE_Background" position="26,270" size="1250,650" zPosition="3" transparent="1">
 			<convert type="StringList"/>
 		</widget>
 	</screen>
 	<screen name="OMBManagerInstall" title="OMB Manager Install" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
 		<panel name="StanDardScreen"/>
+		<panel name="TemplatePip"/>
 		<widget name="info" font="RegularBold;26" backgroundColor="OE_Background" foregroundColor="OE_Foreground" horizontalAlignment="left" position="26,140" size="1250,50" transparent="1"/>
-		<widget source="list" render="Listbox" itemHeight="50" font="RegularBold;26" scrollbarMode="showOnDemand" enableWrapAround="1" position="170,210" size="1250,700" backgroundColor="OE_Background" foregroundColor="OE_Foreground" zPosition="3" transparent="1">
+		<widget source="list" render="Listbox" itemHeight="50" font="RegularBold;26" scrollbarMode="showOnDemand" enableWrapAround="1" position="26,210" size="1250,700" backgroundColor="OE_Background" foregroundColor="OE_Foreground" zPosition="3" transparent="1">
 			<convert type="StringList"/>
 		</widget>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_red.png" position="170,960" size="40,40"/>
@@ -2429,10 +2432,12 @@
 	</screen>
 	<screen name="OMBManagerPreferences" title="Preferences" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
 		<panel name="StanDardScreen"/>
+		<panel name="TemplatePip"/>
 		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="OE_Background" position="26,140" size="1250,750" transparent="1"/>
 	</screen>
 	<screen name="OMBManagerAbout" title="OMB Manager About" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
 		<panel name="StanDardScreen"/>
+		<panel name="TemplatePip"/>
 		<widget name="about" font="RegularBold;26" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="OE_Background" position="26,145" size="1250,850" transparent="1" foregroundColor="white"/>
 	</screen>
 	<!-- OPENWEBIF -->
