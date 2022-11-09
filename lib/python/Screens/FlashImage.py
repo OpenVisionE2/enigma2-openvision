@@ -23,7 +23,7 @@ from Screens.Screen import Screen
 from Screens.Standby import getReasons, TryQuitMainloop
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import SCOPE_PLUGINS, resolveFilename
-from Tools.Downloader import downloadWithProgress
+from Tools.Downloader import DownloadWithProgress
 from Tools.MultiBoot import deleteImage, getCurrentImage, getCurrentImageMode, getImageList, restoreImages
 
 model = BoxInfo.getItem("model")
@@ -332,7 +332,7 @@ class FlashImage(Screen):
 			if "://" in self.source:
 				self["header"].setText(_("Downloading Image"))
 				self["info"].setText(self.imagename)
-				self.downloader = downloadWithProgress(self.source, self.zippedimage)
+				self.downloader = DownloadWithProgress(self.source, self.zippedimage)
 				self.downloader.addProgress(self.downloadProgress)
 				self.downloader.addEnd(self.downloadEnd)
 				self.downloader.addError(self.downloadError)
@@ -349,7 +349,7 @@ class FlashImage(Screen):
 		self.downloader.stop()
 		self.session.openWithCallback(self.abort, MessageBox, _("Error during downloading image\n%s\n%s") % (self.imagename, reason), type=MessageBox.TYPE_ERROR, simple=True)
 
-	def downloadEnd(self):
+	def downloadEnd(self, outputFile):
 		self.downloader.stop()
 		self.unzip()
 
