@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-import json
-import os
-import shutil
-import tempfile
-import struct
-import time
+from json import load
+from os import access, listdir, major, minor, mkdir, remove, rmdir, sep, stat, statvfs, walk, W_OK
+from os.path import isdir, isfile, join, splitext, ismount, islink
+from shutil import copyfile, rmtree
+from tempfile import mkdtemp
+from struct import pack
 from six.moves.urllib.request import urlopen
-import zipfile
+from zipfile import ZipFile
 
 from enigma import eEPGCache
 
@@ -20,7 +20,7 @@ from Components.SystemInfo import BoxInfo
 from Components.Sources.StaticText import StaticText
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
-from Screens.Standby import getReasons
+from Screens.Standby import getReasons, TryQuitMainloop
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import SCOPE_PLUGINS, resolveFilename
 from Tools.Downloader import downloadWithProgress
@@ -69,38 +69,38 @@ class SelectImage(Screen):
 
 	def getImagesList(self):
 		def getImages(path, files):
-			for file in [x for x in files if os.path.splitext(x)[1] == ".zip" and model in x]:
+			for file in [x for x in files if splitext(x)[1] == ".zip" and model in x]:
 				try:
-					if checkimagefiles([x.split(os.sep)[-1] for x in zipfile.ZipFile(file).namelist()]):
+					if checkimagefiles([x.split(sep)[-1] for x in ZipFile(file).namelist()]):
 						imagetyp = _("Downloaded Images")
-						if 'backup' in file.split(os.sep)[-1]:
+						if 'backup' in file.split(sep)[-1]:
 							imagetyp = _("Fullbackup Images")
 						if imagetyp not in self.imagesList:
 							self.imagesList[imagetyp] = {}
-						self.imagesList[imagetyp][file] = {'link': file, 'name': file.split(os.sep)[-1]}
+						self.imagesList[imagetyp][file] = {'link': file, 'name': file.split(sep)[-1]}
 				except:
 					pass
 
 		if not self.imagesList:
 			if not self.jsonlist:
 				try:
-					self.jsonlist = dict(json.load(urlopen('https://images.openvision.dedyn.io/json/%s' % model)))
+					self.jsonlist = dict(load(urlopen('https://images.openvision.dedyn.io/json/%s' % model)))
 					if config.usage.alternative_imagefeed.value:
-						self.jsonlist.update(dict(json.load(urlopen('%s%s' % (config.usage.alternative_imagefeed.value, model)))))
+						self.jsonlist.update(dict(load(urlopen('%s%s' % (config.usage.alternative_imagefeed.value, model)))))
 				except:
 					pass
 			self.imagesList = dict(self.jsonlist)
 			for mountdir in ["/media", "/media/net", "/media/autofs"]:
-				for media in ['%s/%s' % (mountdir, x) for x in os.listdir('%s' % mountdir)] + (['%s/%s' % (mountdir, x) for x in os.listdir('%s' % mountdir)] if os.path.isdir('%s' % mountdir) else []):
+				for media in ['%s/%s' % (mountdir, x) for x in listdir('%s' % mountdir)] + (['%s/%s' % (mountdir, x) for x in listdir('%s' % mountdir)] if isdir('%s' % mountdir) else []):
 					try:
-						getImages(media, [os.path.join(media, x) for x in os.listdir(media) if os.path.splitext(x)[1] == ".zip" and model in x])
+						getImages(media, [join(media, x) for x in listdir(media) if splitext(x)[1] == ".zip" and model in x])
 						for folder in ["images", "downloaded_images", "imagebackups"]:
-							if folder in os.listdir(media):
-								subfolder = os.path.join(media, folder)
-								if os.path.isdir(subfolder) and not os.path.islink(subfolder) and not os.path.ismount(subfolder):
-									getImages(subfolder, [os.path.join(subfolder, x) for x in os.listdir(subfolder) if os.path.splitext(x)[1] == ".zip" and model in x])
-									for dir in [dir for dir in [os.path.join(subfolder, dir) for dir in os.listdir(subfolder)] if os.path.isdir(dir) and os.path.splitext(dir)[1] == ".unzipped"]:
-										shutil.rmtree(dir)
+							if folder in listdir(media):
+								subfolder = join(media, folder)
+								if isdir(subfolder) and not islink(subfolder) and not ismount(subfolder):
+									getImages(subfolder, [join(subfolder, x) for x in listdir(subfolder) if splitext(x)[1] == ".zip" and model in x])
+									for dir in [dir for dir in [join(subfolder, dir) for dir in listdir(subfolder)] if isdir(dir) and splitext(dir)[1] == ".unzipped"]:
+										rmtree(dir)
 					except:
 						pass
 
@@ -142,10 +142,10 @@ class SelectImage(Screen):
 		currentSelected = self["list"].l.getCurrentSelection()[0][1]
 		if not ("://" in currentSelected or currentSelected in ["Expander", "Waiter"]):
 			try:
-				os.remove(currentSelected)
+				remove(currentSelected)
 				currentSelected = ".".join([currentSelected[:-4], "unzipped"])
-				if os.path.isdir(currentSelected):
-					shutil.rmtree(currentSelected)
+				if isdir(currentSelected):
+					rmtree(currentSelected)
 				self.setIndex = self["list"].getSelectedIndex()
 				self.imagesList = []
 				self.getImagesList()
@@ -250,25 +250,25 @@ class FlashImage(Screen):
 
 			def findmedia(path):
 				def avail(path):
-					if not path.startswith('/mmc') and os.path.isdir(path) and os.access(path, os.W_OK):
+					if not path.startswith('/mmc') and isdir(path) and access(path, W_OK):
 						try:
-							statvfs = os.statvfs(path)
-							return (statvfs.f_bavail * statvfs.f_frsize) / (1 << 20)
+							statvfspath = statvfs(path)
+							return (statvfspath.f_bavail * statvfspath.f_frsize) / (1 << 20)
 						except:
 							pass
 
 				def checkIfDevice(path, diskstats):
-					st_dev = os.stat(path).st_dev
-					return (os.major(st_dev), os.minor(st_dev)) in diskstats
+					st_dev = stat(path).st_dev
+					return (major(st_dev), minor(st_dev)) in diskstats
 
 				print("[FlashImage] Read /proc/diskstats")
 				diskstats = [(int(x[0]), int(x[1])) for x in [x.split()[0:3] for x in open('/proc/diskstats').readlines()] if x[2].startswith("sd")]
-				if os.path.isdir(path) and checkIfDevice(path, diskstats) and avail(path) > 500:
+				if isdir(path) and checkIfDevice(path, diskstats) and avail(path) > 500:
 					return (path, True)
 				mounts = []
 				devices = []
 				for mountdir in ["/media", "/media/net", "/media/autofs"]:
-					for path in ['%s/%s' % (mountdir, x) for x in os.listdir('%s' % mountdir)] + (['%s/%s' % (mountdir, x) for x in os.listdir('%s' % mountdir)] if os.path.isdir('%s' % mountdir) else []):
+					for path in ['%s/%s' % (mountdir, x) for x in listdir('%s' % mountdir)] + (['%s/%s' % (mountdir, x) for x in listdir('%s' % mountdir)] if isdir('%s' % mountdir) else []):
 						if path:
 							if checkIfDevice(path, diskstats):
 								devices.append((path, avail(path)))
@@ -278,19 +278,19 @@ class FlashImage(Screen):
 				mounts.sort(key=lambda x: x[1], reverse=True)
 				return ((devices[0][1] > 500 and (devices[0][0], True)) if devices else mounts and mounts[0][1] > 500 and (mounts[0][0], False)) or (None, None)
 
-			self.destination, isDevice = findmedia(os.path.isfile(self.BACKUP_SCRIPT) and hasattr(config.plugins, "autobackup") and config.plugins.autobackup.where.value or "/media/hdd")
+			self.destination, isDevice = findmedia(isfile(self.BACKUP_SCRIPT) and hasattr(config.plugins, "autobackup") and config.plugins.autobackup.where.value or "/media/hdd")
 
 			if self.destination:
 
-				destination = os.path.join(self.destination, 'downloaded_images')
-				self.zippedimage = "://" in self.source and os.path.join(destination, self.imagename) or self.source
-				self.unzippedimage = os.path.join(destination, '%s.unzipped' % self.imagename[:-4])
+				destination = join(self.destination, 'downloaded_images')
+				self.zippedimage = "://" in self.source and join(destination, self.imagename) or self.source
+				self.unzippedimage = join(destination, '%s.unzipped' % self.imagename[:-4])
 
 				try:
-					if os.path.isfile(destination):
-						os.remove(destination)
-					if not os.path.isdir(destination):
-						os.mkdir(destination)
+					if isfile(destination):
+						remove(destination)
+					if not isdir(destination):
+						mkdir(destination)
 					if doBackup:
 						if isDevice:
 							self.startBackupsettings(True)
@@ -307,7 +307,7 @@ class FlashImage(Screen):
 
 	def startBackupsettings(self, retval):
 		if retval:
-			if os.path.isfile(self.BACKUP_SCRIPT):
+			if isfile(self.BACKUP_SCRIPT):
 				self["info"].setText(_("Backing up to: %s") % self.destination)
 				configfile.save()
 				if config.plugins.autobackup.epgcache.value:
@@ -330,7 +330,6 @@ class FlashImage(Screen):
 		self.show()
 		if reply:
 			if "://" in self.source:
-				from Tools.Downloader import downloadWithProgress
 				self["header"].setText(_("Downloading Image"))
 				self["info"].setText(self.imagename)
 				self.downloader = downloadWithProgress(self.source, self.zippedimage)
@@ -362,7 +361,7 @@ class FlashImage(Screen):
 
 	def doUnzip(self):
 		try:
-			zipfile.ZipFile(self.zippedimage, 'r').extractall(self.unzippedimage)
+			ZipFile(self.zippedimage, 'r').extractall(self.unzippedimage)
 			self.flashimage()
 		except:
 			self.session.openWithCallback(self.abort, MessageBox, _("Error during unzipping image\n%s") % self.imagename, type=MessageBox.TYPE_ERROR, simple=True)
@@ -371,7 +370,7 @@ class FlashImage(Screen):
 		self["header"].setText(_("Flashing Image"))
 
 		def findimagefiles(path):
-			for path, subdirs, files in os.walk(path):
+			for path, subdirs, files in walk(path):
 				if not subdirs and files:
 					return checkimagefiles(files) and path
 		imagefiles = findimagefiles(self.unzippedimage)
@@ -441,16 +440,15 @@ class MultiBootSelection(SelectImage):
 		}, -1)
 
 		self.currentimageslot = getCurrentImage()
-		self.tmp_dir = tempfile.mkdtemp(prefix="MultiBoot_")
+		self.tmp_dir = mkdtemp(prefix="MultiBoot_")
 		Console().ePopen('mount %s %s' % (BoxInfo.getItem("MultiBootStartupDevice"), self.tmp_dir))
 		self.getImagesList()
 
 	def cancel(self, value=None):
 		Console().ePopen('umount %s' % self.tmp_dir)
-		if not os.path.ismount(self.tmp_dir):
-			os.rmdir(self.tmp_dir)
-		if value == 2 and not os.path.isfile(os.path.join(self.tmp_dir, "STARTUP")):
-			from Screens.Standby import TryQuitMainloop
+		if not ismount(self.tmp_dir):
+			rmdir(self.tmp_dir)
+		if value == 2 and not isfile(join(self.tmp_dir, "STARTUP")):
 			self.session.open(TryQuitMainloop, 2)
 		else:
 			self.close(value)
@@ -470,9 +468,9 @@ class MultiBootSelection(SelectImage):
 						list.append(ChoiceEntryComponent('', ((_("slot%s - %s mode 12 (current image)") if x == self.currentimageslot and mode == 12 else _("slot%s - %s mode 12")) % (x, imagesList[x]['imagename']), (x, 12))))
 					else:
 						list.append(ChoiceEntryComponent('', ((_("slot%s - %s (current image)") if x == self.currentimageslot and mode != 12 else _("slot%s - %s")) % (x, imagesList[x]['imagename']), (x, 1))))
-		if os.path.isfile(os.path.join(self.tmp_dir, "STARTUP_RECOVERY")):
+		if isfile(join(self.tmp_dir, "STARTUP_RECOVERY")):
 			list.append(ChoiceEntryComponent('', ((_("Boot to Recovery menu")), "Recovery")))
-		if os.path.isfile(os.path.join(self.tmp_dir, "STARTUP_ANDROID")):
+		if isfile(join(self.tmp_dir, "STARTUP_ANDROID")):
 			list.append(ChoiceEntryComponent('', ((_("Boot to Android image")), "Android")))
 		if not list:
 			list.append(ChoiceEntryComponent('', ((_("No images found")), "Waiter")))
@@ -499,30 +497,30 @@ class MultiBootSelection(SelectImage):
 	def doReboot(self, answer):
 		if answer:
 			slot = self.currentSelected[0][1]
-			if slot == "Recovery" and os.path.isfile(os.path.join(self.tmp_dir, "STARTUP_RECOVERY")):
-				shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_RECOVERY"), os.path.join(self.tmp_dir, "STARTUP"))
-			elif slot == "Android" and os.path.isfile(os.path.join(self.tmp_dir, "STARTUP_ANDROID")):
-				shutil.copyfile(os.path.join(self.tmp_dir, "STARTUP_ANDROID"), os.path.join(self.tmp_dir, "STARTUP"))
+			if slot == "Recovery" and isfile(join(self.tmp_dir, "STARTUP_RECOVERY")):
+				copyfile(join(self.tmp_dir, "STARTUP_RECOVERY"), join(self.tmp_dir, "STARTUP"))
+			elif slot == "Android" and isfile(join(self.tmp_dir, "STARTUP_ANDROID")):
+				copyfile(join(self.tmp_dir, "STARTUP_ANDROID"), join(self.tmp_dir, "STARTUP"))
 			elif BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile']:
 				if BoxInfo.getItem("canMode12"):
-					startupfile = os.path.join(self.tmp_dir, "%s_%s" % (BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'].rsplit('_', 1)[0], slot[1]))
+					startupfile = join(self.tmp_dir, "%s_%s" % (BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'].rsplit('_', 1)[0], slot[1]))
 				else:
-					startupfile = os.path.join(self.tmp_dir, "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
+					startupfile = join(self.tmp_dir, "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
 				if BoxInfo.getItem("canDualBoot"):
 					with open('/dev/block/by-name/flag', 'wb') as f:
-						f.write(struct.pack("B", int(slot[0])))
-					startupfile = os.path.join("/boot", "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
-					if os.path.isfile(startupfile):
-						shutil.copyfile(startupfile, os.path.join("/boot", "STARTUP"))
+						f.write(pack("B", int(slot[0])))
+					startupfile = join("/boot", "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
+					if isfile(startupfile):
+						copyfile(startupfile, join("/boot", "STARTUP"))
 				else:
-					if os.path.isfile(startupfile):
-						shutil.copyfile(startupfile, os.path.join(self.tmp_dir, "STARTUP"))
+					if isfile(startupfile):
+						copyfile(startupfile, join(self.tmp_dir, "STARTUP"))
 			else:
 				if slot[1] == 1:
 					startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (slot[0], slot[0] * 2 + 1, model)
 				else:
 					startupFileContents = "boot emmcflash0.kernel%s 'brcm_cma=520M@248M brcm_cma=%s@768M root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=12'\n" % (slot[0], BoxInfo.getItem("canMode12"), slot[0] * 2 + 1, model)
-				with open(os.path.join(self.tmp_dir, "STARTUP", "w")) as f:
+				with open(join(self.tmp_dir, "STARTUP", "w")) as f:
 					f.write(startupFileContents)
 					f.close()
 			self.cancel(2)
