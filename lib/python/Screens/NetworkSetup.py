@@ -523,13 +523,15 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
-
-		print("[NetworkSetup] Read /proc/sys/net/ipv6/conf/all/disable_ipv6")
-		old_ipv6 = open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "r").read()
-		if int(old_ipv6) == 1:
-			self.ipv6 = False
-		else:
-			self.ipv6 = True
+		disable_ipv6 = "/proc/sys/net/ipv6/conf/all/disable_ipv6"
+		if exists(disable_ipv6):
+			status_ipv6 = open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "r").read()
+			if int(status_ipv6) == 1:
+				self.ipv6 = False
+				print("[NetworkSetup] IPv6 is deactived")
+			else:
+				self.ipv6 = True
+				print("[NetworkSetup] IPv6 is actived")
 		self.IPv6ConfigEntry = NoSave(ConfigYesNo(default=self.ipv6 or False))
 		self.createSetup()
 
@@ -585,18 +587,24 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		self.session.open(MessageBox, _("Successfully restored /etc/inetd.conf!"), type=MessageBox.TYPE_INFO, timeout=10)
 
 	def ok(self):
-		IPv6 = "/etc/enigma2/ipv6"
-		if self.IPv6ConfigEntry.value == False:
-			print("[NetworkSetup] Write 1 to /proc/sys/net/ipv6/conf/all/disable_ipv6")
-			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("1")
-			open("/etc/enigma2/ipv6", "w").write("1")
-			print("[NetworkSetup] IPv6 is now deactivated")
-			Console().ePopen('rm -R %s' % IPv6)
+		enable_ipv6 = "/etc/enigma2/ipv6"
+		disable_ipv6 = "/proc/sys/net/ipv6/conf/all/disable_ipv6"
+		if self.IPv6ConfigEntry.value == False and exists(disable_ipv6):
+			with open(disable_ipv6, "w") as fd:
+				fd.write("1")
+				fd.close()
+			print("[NetworkSetup] IPv6 is now deactived")
+			if exists(enable_ipv6):
+				Console().ePopen('rm %s' % enable_ipv6)
 		else:
-			print("[NetworkSetup] Write 0 to /proc/sys/net/ipv6/conf/all/disable_ipv6")
-			open("/proc/sys/net/ipv6/conf/all/disable_ipv6", "w").write("0")
-			open("/etc/enigma2/ipv6", "w").write("0")
-			print("[NetworkSetup] IPv6 is now activated")
+			if exists(disable_ipv6):
+				with open(disable_ipv6, "w") as fd:
+					fd.write("0")
+					fd.close()
+				with open(enable_ipv6, "w") as fd:
+					fd.write("0")
+					fd.close()
+				print("[NetworkSetup] IPv6 is now actived")
 		self.restoreinetdData2()
 
 	def run(self):
