@@ -29,7 +29,7 @@ PLATFORMCHECK=`sed -En 's|^platform=(.+)$|\1|p' /usr/lib/enigma.info`
 SOCFAMILY=`sed -En 's|^socfamily=(....).*$|\1|p' /usr/lib/enigma.info`
 PYVER=`sed -En 's|^python=(.+)$|\1|p' /usr/lib/enigma.info`
 
-if [ "${PLATFORMCHECK}" == "octagonhisil" ] || [ "${PLATFORMCHECK}" == "octagonhisilnew" ] || [ "${PLATFORMCHECK}" == "uclanhisil" ] || [ "${PLATFORMCHECK}" == "gbmv200" ] || [ "${PLATFORMCHECK}" == "qviarthisil" ] || [ "${MODELCHECK}" == "beyonwizv2" ] || [ "${MODELCHECK}" == "viper4k" ]; then
+if [ "${PLATFORMCHECK}" == "octagonhisil" ] || [ "${PLATFORMCHECK}" == "octagonhisilnew" ] || [ "${PLATFORMCHECK}" == "uclanhisil" ] || [ "${PLATFORMCHECK}" == "gbmv200" ] || [ "${PLATFORMCHECK}" == "qviarthisil" ] || [ "${MODELCHECK}" == "beyonwizv2" ] || [ "${MODELCHECK}" == "viper4k" ] || [ "${MODELCHECK}" == "ip8" ]; then
 	COUNT=`ps -ef | grep libreader | grep -v "grep" | wc -l`
 	if [ "${COUNT}" -eq "0" ];then
 		libreader 720P_50
