@@ -17,13 +17,13 @@
 #   $(PYTHON_EXTRA_LDFLAGS) for embedding Python in your code.
 #
 #   You can search for some particular version of Python by passing a
-#   parameter to this macro, for example ">= '2.3.1'", or "== '2.4'". Please
+#   parameter to this macro, for example ">= '2.7.18'", or "== '2.7'". Please
 #   note that you *have* to pass also an operator along with the version to
 #   match, and pay special attention to the single quotes surrounding the
 #   version number. Don't use "PYTHON_VERSION" for this: that environment
 #   variable is declared as precious and thus reserved for the end-user.
 #
-#   This macro should work for all versions of Python >= 2.1.0. As an end
+#   This macro should work for all versions of Python >= 2.7.18. As an end
 #   user, you can disable the check for the python version by setting the
 #   PYTHON_NOVERSIONCHECK environment variable to something else than the
 #   empty string.
@@ -75,7 +75,7 @@ AC_DEFUN([AX_PYTHON_DEVEL],[
 	# Allow the use of a (user set) custom python version
 	#
 	AC_ARG_VAR([PYTHON_VERSION],[The installed Python
-		version to use, for example '2.3'. This string
+		version to use, for example '2.7.18'. This string
 		will be appended to the Python interpreter
 		canonical name.])
 
@@ -86,19 +86,19 @@ AC_DEFUN([AX_PYTHON_DEVEL],[
 	fi
 
 	#
-	# Check for a version of Python >= 2.1.0
+	# Check for a version of Python >= 2.7.18
 	#
-	AC_MSG_CHECKING([for a version of Python >= '2.1.0'])
+	AC_MSG_CHECKING([for a version of Python >= '2.7.18'])
 	ac_supports_python_ver=`$PYTHON -c "import sys; \
 		ver = sys.version.split ()[[0]]; \
-		print (ver >= '2.1.0')"`
+		print (ver >= '2.7.18')"`
 	if test "$ac_supports_python_ver" != "True"; then
 		if test -z "$PYTHON_NOVERSIONCHECK"; then
 			AC_MSG_RESULT([no])
 			AC_MSG_FAILURE([
 This version of the AC@&t@_PYTHON_DEVEL macro
 doesn't work properly with versions of Python before
-2.1.0. You may need to re-run configure, setting the
+2.7.18. You may need to re-run configure, setting the
 variables PYTHON_CPPFLAGS, PYTHON_LIBS, PYTHON_SITE_PKG,
 PYTHON_EXTRA_LIBS and PYTHON_EXTRA_LDFLAGS by hand.
 Moreover, to disable this check, set PYTHON_NOVERSIONCHECK
