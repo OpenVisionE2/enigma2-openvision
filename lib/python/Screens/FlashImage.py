@@ -203,13 +203,12 @@ class FlashImage(Screen):
 		self.source = source
 		self.imagename = imagename
 		self.reasons = getReasons(session)
-
 		self["header"] = Label(_("Backup settings"))
 		self["info"] = Label(_("Save settings and EPG data"))
 		self["progress"] = ProgressBar()
 		self["progress"].setRange((0, 100))
 		self["progress"].setValue(0)
-
+		self["progress_counter"] = Label("")
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"],
 		{
 			"cancel": self.abort,
@@ -344,6 +343,8 @@ class FlashImage(Screen):
 
 	def downloadProgress(self, current, total):
 		self["progress"].setValue(int(100 * current / total))
+		self.progressCounter = int(100 * current / total)
+		self["progress_counter"].setText(str(self.progressCounter) + " %")
 
 	def downloadError(self, reason, status):
 		self.downloader.stop()
@@ -351,6 +352,7 @@ class FlashImage(Screen):
 
 	def downloadEnd(self, outputFile):
 		self.downloader.stop()
+		self["progress_counter"].hide()
 		self.unzip()
 
 	def unzip(self):
