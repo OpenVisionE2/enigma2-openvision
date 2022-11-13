@@ -369,7 +369,7 @@ class ServiceInfoEX(Poll, Converter, object):
 				return len(subtitlelist) > 0
 			return False
 		elif self.type == self.EDITMODE:
-			return hasattr(self.source, "editmode") and not not self.source.editmode
+			return hasattr(self.source, "editmode") and not self.source.editmode
 		elif self.type == self.IS_SATELLITE:
 			if type == 'DVB-S':
 				return True

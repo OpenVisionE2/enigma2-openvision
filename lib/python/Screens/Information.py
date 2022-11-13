@@ -426,7 +426,7 @@ class CommitLogInformation(InformationBase):
 			branch = ""
 		self.projects = [
 			("OpenVision Enigma2", "https://api.github.com/repos/OpenVisionE2/enigma2-openvision/commits%s" % branch),
-			("OpenVision OpenEmbedded", "https://api.github.com/repos/OpenVisionE2/revision/commits"),
+			("OpenVision Revision", "https://api.github.com/repos/OpenVisionE2/revision/commits"),
 			("Enigma2 Plugins", "https://api.github.com/repos/OpenVisionE2/enigma2-plugins/commits"),
 			("Extra Plugins", "https://api.github.com/repos/OpenVisionE2/extra-plugins/commits"),
 			("OpenWebif", "https://api.github.com/repos/OpenVisionE2/OpenWebif/commits"),
@@ -613,7 +613,7 @@ class ImageInformation(InformationBase):
 		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("imgversion")))
 		info.append(formatLine("P1", _("OpenVision revision"), BoxInfo.getItem("imgrevision")))
 		if config.misc.OVupdatecheck.value:
-			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("new" if str(BoxInfo.getItem("imgversion")).startswith("10") else "old")
+			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("old" if BoxInfo.getItem("oe") == "pyro" else "new")
 			try:
 				ovResponse = urlopen(ovUrl)
 				ovRevision = str(ovResponse.read().decode()).strip()
