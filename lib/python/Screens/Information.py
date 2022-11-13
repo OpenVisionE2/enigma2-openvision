@@ -611,7 +611,7 @@ class ImageInformation(InformationBase):
 		if override:
 			info.append(formatLine("P1", _("Info file override"), _("Defined / Active")))
 		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("imgversion")))
-		info.append(formatLine("P1", _("OpenVision revision"), BoxInfo.getItem("imgrevision")))
+		info.append(formatLine("P1", _("OpenVision revision"), "%s on %s" % (BoxInfo.getItem("imgrevision"), BoxInfo.getItem("model"))))
 		if config.misc.OVupdatecheck.value:
 			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("old" if BoxInfo.getItem("oe") == "pyro" else "new")
 			try:
