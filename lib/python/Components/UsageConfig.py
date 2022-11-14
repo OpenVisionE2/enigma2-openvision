@@ -342,6 +342,7 @@ def InitUsageConfig():
 		makedirs(config.usage.timeshift_path.value, 0o755) # Create Timeshift DefaultValue directorie and users Directories. PathStatus of Timeshift module values this directorie.
 	config.usage.timeshift_path.save()
 	config.usage.allowed_timeshift_paths = ConfigLocations(default=[resolveFilename(SCOPE_TIMESHIFT)])
+	config.usage.timeshift_skipreturntolive = ConfigYesNo(default=False)
 
 	config.usage.trashsort_deltime = ConfigSelection(default="no", choices=[
 		("no", _("No")),
