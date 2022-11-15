@@ -394,15 +394,15 @@
 	<!-- MENU SORT -->
 	<screen name="MenuSort" position="fill" backgroundColor="transparent" flags="wfNoBorder">
 		<panel name="MainMenu"/>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_leftright.png" position="995,924" size="64,43"/>
-		<eLabel backgroundColor="OE_NewBg2" foregroundColor="white" name="" position="290,926" size="1107,39" zPosition="-10"/>
-		<eLabel text="Move" position="1065,930" size="340,39" backgroundColor="OE_NewBg2" zPosition="1" transparent="1" font="RegularBold;24"/>
-		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_red.png" position="20,925" size="40,40"/>
-		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_green.png" position="280,925" size="40,40"/>
-		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_yellow.png" position="690,925" size="40,40"/>
-		<widget source="key_red" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="60,925" size="140,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
-		<widget source="key_green" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="320,927" size="370,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
-		<widget source="key_yellow" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="730,927" size="240,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_leftright.png" position="955,1004" size="64,43"/>
+		<eLabel backgroundColor="OE_NewBg2" position="290,1004" size="904,43" zPosition="-10"/>
+		<eLabel text="Move" position="1025,1010" size="168,30" backgroundColor="OE_NewBg2" zPosition="1" transparent="1" font="RegularBold;24"/>
+		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_red.png" position="17,1005" size="40,40"/>
+		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_green.png" position="260,1005" size="40,40"/>
+		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_yellow.png" position="670,1005" size="40,40"/>
+		<widget source="key_red" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="55,1005" size="140,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
+		<widget source="key_green" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="300,1007" size="370,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
+		<widget source="key_yellow" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="710,1007" size="240,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
 	</screen>
 	<!-- CHOICEBOX -->
 	<screen name="ChoiceBox" position="fill" flags="wfNoBorder">
@@ -433,7 +433,7 @@
 		<widget source="session.CurrentService" render="Label" font="RegularBold;24" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="458,885" size="730,28" transparent="1" zPosition="1">
 			<convert type="PliExtraInfo">TransponderInfo</convert>
 		</widget>
-		<widget source="session.Event_Now" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" font="RegularBold;30" horizontalAlignment="left" noWrap="1" position="575,933" size="1050,64" transparent="1">
+		<widget source="session.Event_Now" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" font="RegularBold;30" noWrap="1" position="575,933" size="1050,64" transparent="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget backgroundColor="OE_Background" font="RegularBold;28" position="335,935" render="Label" size="90,40" source="session.Event_Now" transparent="1">
@@ -459,7 +459,7 @@
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText">Format:- %H:%M</convert>
 		</widget>
-		<widget source="session.Event_Next" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" horizontalAlignment="left" position="575,986" size="1050,48" transparent="1" verticalAlignment="top">
+		<widget source="session.Event_Next" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" position="575,986" size="1050,48" transparent="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget backgroundColor="OE_Background" font="RegularBold;28" horizontalAlignment="right" position="1681,988" render="Label" size="165,45" source="session.Event_Next" transparent="1">
@@ -594,13 +594,13 @@
 			<convert type="ServiceName2">Reference</convert>
 		</widget>
 		<widget source="session.CurrentService" render="ChannelNumber" backgroundColor="OE_NewBg" foregroundColor="OE_Foreground" font="RegularBold;38" verticalAlignment="center" horizontalAlignment="center" position="25,200" size="440,48" transparent="1" zPosition="1"/>
-		<widget source="session.CurrentService" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="25,250" size="440,45" font="RegularBold;30" noWrap="1" backgroundColor="OE_NewBg" transparent="1" horizontalAlignment="center" verticalAlignment="center">
+		<widget source="session.CurrentService" render="Label" horizontalAlignment="center" verticalAlignment="center" position="25,250" size="440,45" font="RegularBold;30" noWrap="1" backgroundColor="OE_NewBg" transparent="1">
 			<convert type="ServiceName">Name</convert>
 		</widget>
-		<widget source="session.CurrentService" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" font="RegularBold;28" foregroundColor="yellow" backgroundColor="OE_NewBg" noWrap="1" position="25,300" size="440,45" horizontalAlignment="center" verticalAlignment="center" zPosition="4" transparent="1">
+		<widget source="session.CurrentService" render="Label" font="RegularBold;28" foregroundColor="yellow" backgroundColor="OE_NewBg" noWrap="1" position="25,300" size="440,45" horizontalAlignment="center" verticalAlignment="center" zPosition="4" transparent="1">
 			<convert type="ServiceName">Provider</convert>
 		</widget>
-		<widget source="session.CurrentService" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" position="25,350" size="440,45" font="RegularBold;28" backgroundColor="OE_NewBg" horizontalAlignment="center" verticalAlignment="center" transparent="1" foregroundColor="blue_light">
+		<widget source="session.CurrentService" render="Label" position="25,350" size="440,45" font="RegularBold;28" backgroundColor="OE_NewBg" horizontalAlignment="center" verticalAlignment="center" transparent="1" foregroundColor="blue_light">
 			<convert type="Audio">AudioCodec</convert>
 		</widget>
 		<widget source="session.CurrentService" render="Label" backgroundColor="OE_NewBg" position="25,400" size="440,25" horizontalAlignment="center" verticalAlignment="center" zPosition="6" font="RegularBold;22" transparent="1" >
@@ -625,7 +625,7 @@
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText">Format:-%H:%M</convert>
 		</widget>
-		<widget source="session.Event_Now" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" backgroundColor="OE_ListBackground" font="RegularBold;30" horizontalAlignment="left" noWrap="1" position="845,185" size="635,48" transparent="1">
+		<widget source="session.Event_Now" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" backgroundColor="OE_ListBackground" font="RegularBold;30" noWrap="1" position="845,185" size="635,48" transparent="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget backgroundColor="OE_ListBackground" font="RegularBold;30" horizontalAlignment="right" position="1420,180" render="Label" size="265,48" source="session.Event_Now" transparent="1">
@@ -643,7 +643,7 @@
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText">Format:-%H:%M</convert>
 		</widget>
-		<widget source="session.Event_Next" font="RegularBold;30" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" backgroundColor="OE_ListBackground" horizontalAlignment="left" position="845,635" size="635,48" transparent="1" verticalAlignment="top">
+		<widget source="session.Event_Next" font="RegularBold;30" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" backgroundColor="OE_ListBackground" position="845,635" size="635,48" transparent="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget backgroundColor="OE_ListBackground" font="RegularBold;30" horizontalAlignment="right" position="1520,635" render="Label" size="165,48" source="session.Event_Next" transparent="1">
@@ -716,14 +716,14 @@
 			<convert type="ValueRange">1921,3841</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<widget source="session.Event_Now" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" position="665,235" size="1020,380" font="RegularBold;25" zPosition="1" backgroundColor="OE_ListBackground" transparent="1" horizontalAlignment="left">
+		<widget source="session.Event_Now" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" position="665,235" size="1020,380" font="RegularBold;25" zPosition="1" backgroundColor="OE_ListBackground" transparent="1">
 			<convert type="EventName">ExtendedDescription</convert>
 		</widget>
-		<widget source="session.Event_Next" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" position="665,680" size="1020,260" font="RegularBold;25" zPosition="1" backgroundColor="OE_ListBackground" transparent="1" horizontalAlignment="left" foregroundColor="grey">
+		<widget source="session.Event_Next" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" position="665,680" size="1020,260" font="RegularBold;25" zPosition="1" backgroundColor="OE_ListBackground" transparent="1" foregroundColor="grey">
 			<convert type="EventName">ExtendedDescription</convert>
 		</widget>
 		<!-- CryptoInfo -->
-		<widget source="session.CurrentService" render="Label" font="RegularBold;21" position="470,1020" size="1210,35" zPosition="50" backgroundColor="OE_ListBackground" transparent="1" noWrap="1" verticalAlignment="center" horizontalAlignment="left" foregroundColor="white">
+		<widget source="session.CurrentService" render="Label" font="RegularBold;21" position="470,1020" size="1210,35" zPosition="50" backgroundColor="OE_ListBackground" transparent="1" noWrap="1" foregroundColor="white">
 			<convert type="CaidInfo2"/>
 		</widget>
 		<!--widget source="session.CurrentService" render="PicEmu2" path="OctEtFHD/emu" position="540,965" size="98,31" transparent="1" alphaTest="blend" zPosition="3"/> -->
@@ -734,23 +734,23 @@
 		<widget alphaTest="blend" render="MSNWeatherPixmap" position="55,700" size="128,128" source="session.MSNWeather" transparent="1" zPosition="8">
 			<convert type="MSNWeather">weathericon,current,/usr/share/enigma2/OctEtFHD/WeatherIcon/,png</convert>
 		</widget>
-		<widget source="session.MSNWeather" render="Label" position="120,620" size="330,70" font="RegularBold;24" horizontalAlignment="center" verticalAlignment="center" backgroundColor="OE_NewBg" transparent="1" zPosition="2">
+		<widget source="session.MSNWeather" render="Label" position="100,620" size="330,70" font="RegularBold;24" horizontalAlignment="center" verticalAlignment="center" backgroundColor="OE_NewBg" transparent="1" zPosition="2">
 			<convert type="MSNWeather">winddisplay</convert>
 		</widget>
-		<widget source="session.MSNWeather" render="Label" position="220,695" size="220,35" font="RegularBold;24" horizontalAlignment="left" backgroundColor="OE_NewBg" transparent="1" zPosition="2">
+		<widget source="session.MSNWeather" render="Label" position="220,695" size="220,35" font="RegularBold;24" backgroundColor="OE_NewBg" transparent="1" zPosition="2">
 			<convert type="MSNWeather">observationtime</convert>
 		</widget>
 		<widget noWrap="1" backgroundColor="OE_NewBg" font="RegularBold;40" render="Label" position="170,730" size="170,87" source="session.MSNWeather" transparent="1" zPosition="8" horizontalAlignment="center" foregroundColor="red">
 			<convert type="MSNWeather">temperature_current</convert>
 		</widget>
-		<widget noWrap="1" backgroundColor="OE_NewBg" font="RegularBold;28" render="Label" position="25,830" size="440,40" source="session.MSNWeather" zPosition="3" horizontalAlignment="center" verticalAlignment="center" transparent="1" foregroundColor="yellow">
+		<widget noWrap="1" backgroundColor="OE_NewBg" font="RegularBold;28" render="Label" position="25,830" size="440,40" source="session.MSNWeather" zPosition="3" transparent="1" foregroundColor="yellow">
 			<convert type="MSNWeather">city</convert>
 		</widget>
 		<eLabel text="Humidity:" position="85,905" size="205,35" zPosition="5" font="RegularBold;28" transparent="1"/>
-		<widget noWrap="1" backgroundColor="OE_NewBg" font="RegularBold;28" render="Label" position="295,905" size="80,50" source="session.MSNWeather" zPosition="3" horizontalAlignment="center" transparent="1" foregroundColor="blue_light">
+		<widget noWrap="1" backgroundColor="OE_NewBg" font="RegularBold;28" render="Label" position="315,905" size="80,50" source="session.MSNWeather" zPosition="3" transparent="1" foregroundColor="blue_light">
 			<convert type="MSNWeather">humidity</convert>
 		</widget>
-		<eLabel text="%" position="375,905" size="30,50" zPosition="5" horizontalAlignment="center" font="RegularBold;28" transparent="1"/>
+		<eLabel text="%" position="375,905" size="30,50" zPosition="5" font="RegularBold;28" transparent="1"/>
 	</screen>
 	<!-- MAIN MENU INFORMATION (NEW) -->
 	<!-- INFO COMMON -->
@@ -1044,7 +1044,7 @@
 		<eLabel backgroundColor="blue_light" name="" position="1905,45" size="2,1000" zPosition="-15"/>
 		<eLabel backgroundColor="OE_NewBg2" foregroundColor="white" name="" position="35,center" size="530,1080" zPosition="-11" verticalAlignment="center"/>
 		<!-- Widget -->
-		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_NewBg2" position="40,0" size="525,50" horizontalAlignment="left" verticalAlignment="center" transparent="1">
+		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_NewBg2" position="40,0" size="525,50" transparent="1">
 			<convert type="ServiceName">Name</convert>
 		</widget>
 		<widget source="Title" render="Label" font="RegularBold;34" backgroundColor="OE_Background" position="580,50" size="1310,90" horizontalAlignment="center" verticalAlignment="center" transparent="1"/>
@@ -1074,13 +1074,13 @@
 		<widget alphaTest="blend" position="415,260" render="Picon" size="100,60" source="ServiceEvent" transparent="1" zPosition="2">
 			<convert type="ServiceName2">Reference</convert>
 		</widget>
-		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_NewBg2" foregroundColor="green_light" horizontalAlignment="left" position="50,325" size="500,45" transparent="1" verticalAlignment="center">
+		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_NewBg2" foregroundColor="green_light" position="50,325" size="500,45" transparent="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget backgroundColor="blue_light" pixmap="OctEtFHD/colors/00A4C400.png" position="50,365" render="Progress" size="500,5" source="ServiceEvent" transparent="0" zPosition="1">
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget backgroundColor="OE_NewBg2" font="RegularBold;26" horizontalAlignment="left" position="50,375" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="500,330" source="ServiceEvent" transparent="1" verticalAlignment="top">
+		<widget backgroundColor="OE_NewBg2" font="RegularBold;26" position="50,375" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="500,330" source="ServiceEvent" transparent="1">
 			<convert type="EventName">ExtendedDescription</convert>
 		</widget>
 		<widget backgroundColor="blue_light" foregroundColor="blue_light" position="50,720" render="Progress" size="500,5" source="Event" transparent="0" zPosition="1">
@@ -4841,26 +4841,29 @@
 	<screen name="MainMenu">
 		<panel name="Clock"/>
 		<panel name="TemplateMenuSort"/>
-		<eLabel text="Show menu numbers" position="20,420" size="265,45" font="RegularBold;19" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_help.png" position="120,480" size="64,43"/>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/colors/setting1.png" position="100,182" size="100,100" transparent="1" zPosition="10"/>
-		<eLabel backgroundColor="OE_NewBg2" foregroundColor="white" name="" position="20,center" size="270,850" zPosition="-10"/>
-		<eLabel backgroundColor="OE_Background" foregroundColor="OE_Background" name="" position="15,center" size="1380,770" zPosition="-15"/>
-		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="15,154" size="1380,2" zPosition="-15"/>
-		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="15,924" size="1382,2" zPosition="-15"/>
-		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="15,154" size="2,771" zPosition="-15"/>
-		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="1395,154" size="2,771" zPosition="-15"/>
-		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="295,270" size="1095,2" zPosition="-9"/>
+		<eLabel text="Show menu numbers" position="20,300" size="265,45" font="RegularBold;19" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_help.png" position="120,360" size="64,43"/>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/colors/setting1.png" position="100,082" size="100,100" transparent="1" zPosition="10"/>
+		<eLabel backgroundColor="OE_NewBg2" foregroundColor="white" name="" position="20,15" size="270,1050" zPosition="-10"/>
+		<eLabel backgroundColor="OE_Background" foregroundColor="OE_Background" name="" position="15,30" size="1180,1020" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="15,29" size="1180,2" zPosition="-15"/>
+		<eLabel backgroundColor="OE_NewBg2" position="290,24" size="912,5" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="15,1049" size="1182,2" zPosition="-15"/>
+		<eLabel backgroundColor="OE_NewBg2" position="290,1051" size="912,5" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="15,029" size="2,1021" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="1195,029" size="2,1021" zPosition="-15"/>
+		<eLabel backgroundColor="OE_NewBg2" position="1197,029" size="5,1023" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="295,165" size="895,2" zPosition="-9"/>
 		<!--  Widget -->
-		<widget source="title" render="Label" font="RegularBold;35" backgroundColor="OE_Background" position="295,190" size="1095,85" transparent="1" horizontalAlignment="center"/>
-		<widget source="menu" render="Listbox" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" backgroundColor="OE_Background" position="295,275" size="1095,650" transparent="1">
+		<widget source="title" render="Label" font="RegularBold;35" backgroundColor="OE_Background" position="290,55" size="905,85" transparent="1" verticalAlignment="center" horizontalAlignment="center"/>
+		<widget source="menu" render="Listbox" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" backgroundColor="OE_Background" position="295,170" size="895,832" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{
 				"template":
 				[
-				MultiContentEntryText(pos = (15, 12), size = (1095, 60), color_sel = 0x00a2f0f7, flags = RT_HALIGN_LEFT, text = 0)
+				MultiContentEntryText(pos = (15, 12), size = (895, 60), color_sel = 0x00a2f0f7, text = 0)
 				],
-				"fonts": [gFont("RegularBold", 34)],
+				"fonts": [gFont("RegularBold", 36)],
 				"itemHeight": 64
 				}
 			</convert>
@@ -4965,11 +4968,11 @@
 	</screen>
 		<!-- MENU SORT -->
 	<screen name="TemplateMenuSort">
-		<ePixmap alphaTest="blend" objectTypes="key_blue,Button,Label" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_blue.png" position="20,835" size="40,40"/>
-		<widget source="key_blue" render="Pixmap" pixmap="OctEtFHD/buttons/key_blue.png" objectTypes="key_blue,StaticText" backgroundColor="OE_NewBg2" position="20,835" size="40,40" alphaTest="blend" zPosition="1">
+		<ePixmap alphaTest="blend" objectTypes="key_blue,Button,Label" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_blue.png" position="17,910" size="40,40"/>
+		<widget source="key_blue" render="Pixmap" pixmap="OctEtFHD/buttons/key_blue.png" objectTypes="key_blue,StaticText" backgroundColor="OE_NewBg2" position="17,910" size="40,40" alphaTest="blend" zPosition="1">
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<widget source="key_blue" conditional="key_blue" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="60,820" size="240,70" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
+		<widget source="key_blue" conditional="key_blue" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="54,895" size="240,70" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
 	</screen>
 		<!-- MENUS EPG -->
 		<!-- FRAME EPG -->
@@ -4998,7 +5001,7 @@
 		<widget alphaTest="blend" position="140,150" render="Picon" size="220,130" source="Service" transparent="1" zPosition="5">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
-		<widget source="Event" font="RegularBold;25" render="RunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="45,575" size="435,350" transparent="1" horizontalAlignment="left" verticalAlignment="top" zPosition="2">
+		<widget source="Event" font="RegularBold;25" render="RunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="45,575" size="435,350" transparent="1" zPosition="2">
 			<convert type="EventName">FullDescription</convert>
 		</widget>
 		<!-- Buttons -->
