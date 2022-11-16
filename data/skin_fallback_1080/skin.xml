@@ -394,15 +394,15 @@
 	<!-- MENU SORT -->
 	<screen name="MenuSort" position="fill" backgroundColor="transparent" flags="wfNoBorder">
 		<panel name="MainMenu"/>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_leftright.png" position="955,1004" size="64,43"/>
-		<eLabel backgroundColor="OE_NewBg2" position="290,1004" size="904,43" zPosition="-10"/>
-		<eLabel text="Move" position="1025,1010" size="168,30" backgroundColor="OE_NewBg2" zPosition="1" transparent="1" font="RegularBold;24"/>
-		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_red.png" position="17,1005" size="40,40"/>
-		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_green.png" position="260,1005" size="40,40"/>
-		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_yellow.png" position="670,1005" size="40,40"/>
-		<widget source="key_red" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="55,1005" size="140,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
-		<widget source="key_green" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="300,1007" size="370,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
-		<widget source="key_yellow" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="710,1007" size="240,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_leftright.png" position="940,1004" size="64,43"/>
+		<eLabel backgroundColor="OE_NewBg2" position="277,1004" size="903,45" zPosition="-10"/>
+		<eLabel text="Move" position="1010,1010" size="168,30" backgroundColor="OE_NewBg2" zPosition="1" transparent="1" font="RegularBold;24"/>
+		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_red.png" position="2,1005" size="40,40"/>
+		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_green.png" position="235,1005" size="40,40"/>
+		<ePixmap alphaTest="blend" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_yellow.png" position="655,1005" size="40,40"/>
+		<widget source="key_red" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="40,1005" size="202,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
+		<widget source="key_green" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="280,1007" size="370,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
+		<widget source="key_yellow" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="695,1007" size="240,39" transparent="1" zPosition="1" horizontalAlignment="left" verticalAlignment="center"/>
 	</screen>
 	<!-- CHOICEBOX -->
 	<screen name="ChoiceBox" position="fill" flags="wfNoBorder">
@@ -4841,27 +4841,28 @@
 	<screen name="MainMenu">
 		<panel name="Clock"/>
 		<panel name="TemplateMenuSort"/>
-		<eLabel text="Show menu numbers" position="20,300" size="265,45" font="RegularBold;19" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_help.png" position="120,360" size="64,43"/>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/colors/setting1.png" position="100,082" size="100,100" transparent="1" zPosition="10"/>
-		<eLabel backgroundColor="OE_NewBg2" foregroundColor="white" name="" position="20,15" size="270,1050" zPosition="-10"/>
-		<eLabel backgroundColor="OE_Background" foregroundColor="OE_Background" name="" position="15,30" size="1180,1020" zPosition="-15"/>
-		<eLabel backgroundColor="blue_light" position="15,29" size="1180,2" zPosition="-15"/>
-		<eLabel backgroundColor="OE_NewBg2" position="290,24" size="912,5" zPosition="-15"/>
-		<eLabel backgroundColor="blue_light" position="15,1049" size="1182,2" zPosition="-15"/>
-		<eLabel backgroundColor="OE_NewBg2" position="290,1051" size="912,5" zPosition="-15"/>
-		<eLabel backgroundColor="blue_light" position="15,029" size="2,1021" zPosition="-15"/>
-		<eLabel backgroundColor="blue_light" position="1195,029" size="2,1021" zPosition="-15"/>
-		<eLabel backgroundColor="OE_NewBg2" position="1197,029" size="5,1023" zPosition="-15"/>
-		<eLabel backgroundColor="blue_light" position="295,165" size="895,2" zPosition="-9"/>
+		<eLabel text="Show menu numbers" position="5,300" size="265,45" font="RegularBold;19" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_help.png" position="105,360" size="64,43"/>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/colors/setting1.png" position="85,082" size="100,100" transparent="1" zPosition="10"/>
+		<eLabel backgroundColor="OE_NewBg2" position="5,24" size="270,1032" zPosition="-10"/>
+		<eLabel backgroundColor="blue_light" position="275,31" size="2,1018" zPosition="-10"/>
+		<eLabel backgroundColor="OE_Background" position="0,30" size="1180,1020" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="0,29" size="1180,2" zPosition="-15"/>
+		<eLabel backgroundColor="OE_NewBg2" position="275,24" size="912,5" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="0,1049" size="1182,2" zPosition="-15"/>
+		<eLabel backgroundColor="OE_NewBg2" position="275,1051" size="912,5" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="0,29" size="2,1021" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="1180,029" size="2,1021" zPosition="-15"/>
+		<eLabel backgroundColor="OE_NewBg2" position="1182,029" size="5,1023" zPosition="-15"/>
+		<eLabel backgroundColor="blue_light" position="282,165" size="892,2" zPosition="-9"/>
 		<!--  Widget -->
-		<widget source="title" render="Label" font="RegularBold;35" backgroundColor="OE_Background" position="290,55" size="905,85" transparent="1" verticalAlignment="center" horizontalAlignment="center"/>
-		<widget source="menu" render="Listbox" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" backgroundColor="OE_Background" position="295,170" size="895,832" transparent="1">
+		<widget source="title" render="Label" font="RegularBold;35" backgroundColor="OE_Background" position="275,55" size="905,85" transparent="1" verticalAlignment="center" horizontalAlignment="center"/>
+		<widget source="menu" render="Listbox" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" backgroundColor="OE_Background" position="282,170" size="892,832" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{
 				"template":
 				[
-				MultiContentEntryText(pos = (15, 12), size = (895, 60), color_sel = 0x00a2f0f7, text = 0)
+				MultiContentEntryText(pos = (3, 12), size = (892, 60), color_sel = 0x00a2f0f7, text = 0)
 				],
 				"fonts": [gFont("RegularBold", 36)],
 				"itemHeight": 64
@@ -4968,11 +4969,11 @@
 	</screen>
 		<!-- MENU SORT -->
 	<screen name="TemplateMenuSort">
-		<ePixmap alphaTest="blend" objectTypes="key_blue,Button,Label" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_blue.png" position="17,910" size="40,40"/>
-		<widget source="key_blue" render="Pixmap" pixmap="OctEtFHD/buttons/key_blue.png" objectTypes="key_blue,StaticText" backgroundColor="OE_NewBg2" position="17,910" size="40,40" alphaTest="blend" zPosition="1">
+		<ePixmap alphaTest="blend" objectTypes="key_blue,Button,Label" backgroundColor="OE_NewBg2" pixmap="OctEtFHD/buttons/key_blue.png" position="2,910" size="40,40"/>
+		<widget source="key_blue" render="Pixmap" pixmap="OctEtFHD/buttons/key_blue.png" objectTypes="key_blue,StaticText" backgroundColor="OE_NewBg2" position="2,910" size="40,40" alphaTest="blend" zPosition="1">
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<widget source="key_blue" conditional="key_blue" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="54,895" size="240,70" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
+		<widget source="key_blue" conditional="key_blue" render="Label" font="RegularBold;24" backgroundColor="OE_NewBg2" position="39,895" size="240,70" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
 	</screen>
 		<!-- MENUS EPG -->
 		<!-- FRAME EPG -->
