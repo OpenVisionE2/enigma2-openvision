@@ -10,10 +10,10 @@ from subprocess import PIPE, Popen
 from time import localtime
 from six.moves.urllib.request import urlopen
 
-from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, ePoint, eSize, eTimer, getDesktop, getE2Rev
+from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, ePoint, eSize, eTimer, getDesktop, getE2Rev, getOEMInfo
 
 from skin import parameters
-from Components.About import about
+from Components.About import about, getChipSetString
 from Components.ActionMap import HelpableActionMap
 from Components.config import config
 from Components.Console import Console
@@ -42,6 +42,15 @@ MODULE_NAME = __name__.split(".")[-1]
 #serviceapp = "/var/lib/opkg/info/enigma2-plugin-systemplugins-serviceapp.control"
 #servicehisilicon = "/var/lib/opkg/info/enigma2-plugin-systemplugins-servicehisilicon.control"
 
+model = BoxInfo.getItem("model")
+platform = BoxInfo.getItem("platform")
+displaymodel = BoxInfo.getItem("displaymodel")
+displaybrand = BoxInfo.getItem("displaybrand")
+rcname = BoxInfo.getItem("rcname")
+procType = getBoxProcType()
+procModel = getBoxProc()
+fpVersion = getFPVersion()
+
 INFO_COLORS = ["N", "H", "P", "V", "M"]
 INFO_COLOR = {
 	"B": None,
@@ -62,10 +71,58 @@ def getBoxProcTypeName():
 		"21": _("Twin Hybrid"),
 		"22": _("Hybrid Tuner")
 	}
-	procType = getBoxProcType()
 	if procType == "unknown":
 		return _("Unknown")
 	return "%s - %s" % (procType, boxProcTypes.get(procType, _("Unknown")))
+
+
+if getOEMInfo() == "available":
+	if procModel == "dm525":
+		model = procModel
+		displaymodel = procModel
+	elif model == "et7x00":
+		if getChipSetString() == "bcm73625":
+			displaymodel = "ET7100 V2"
+		else:
+			displaymodel = "ET7000"
+	elif model == "sf8008":
+		if procType == "10":
+			model = "sf8008s"
+			displaymodel = "SF8008 4K Single"
+		elif procType == "11":
+			model = "sf8008t"
+			displaymodel = "SF8008 4K Twin"
+	elif model == "sfx6008" and procType == "10":
+		model = "sfx6018"
+		displaymodel = "SFX6018 S2"
+	elif platform == "7100s" and procModel == "7200s":
+		platform == "7200s"
+	elif model == "ustym4kpro":
+		if procType == "10":
+			model = "ustym4kprosingle"
+			displaymodel = "Ustym 4K PRO Single"
+		elif procType == "11":
+			model = "ustym4kprotwin"
+			displaymodel = "Ustym 4K PRO Twin"
+	elif model == "ventonhdx":
+		if procModel == "ini-3000":
+			model = "uniboxhd1"
+			displaymodel = "HD-1"
+		elif procModel == "ini-5000":
+			model = "uniboxhd2"
+			displaymodel = "HD-2"
+		elif procModel in ("ini-7000", "ini-7012"):
+			model = "uniboxhd3"
+			displaymodel = "HD-3"
+	elif model == "xpeedlx":
+		if procModel == "ini-1000lx":
+			model = "xpeedlx2t"
+			displaymodel = "LX-2T"
+		elif procModel == "ini-1000de":
+			if fpVersion == "2":
+				model = "xpeedlx2"
+			else:
+				model = "xpeedlx1"
 
 
 class InformationBase(Screen, HelpableScreen):
@@ -123,7 +180,7 @@ class InformationBase(Screen, HelpableScreen):
 			"pageDown": (self["information"].pageDown, _("Move down a screen")),
 			"bottom": (self["information"].moveBottom, _("Move to last line / screen"))
 		}, prio=0, description=_("Common Information Actions"))
-		if isfile(resolveFilename(SCOPE_GUISKIN, "receiver/%s.png" % BoxInfo.getItem("model"))):
+		if isfile(resolveFilename(SCOPE_GUISKIN, "receiver/%s.png" % model)):
 			self["key_info"] = StaticText(_("INFO"))
 			self["infoActions"] = HelpableActionMap(self, ["InfoActions"], {
 				"info": (self.showReceiverImage, _("Show receiver image(s)"))
@@ -229,11 +286,11 @@ class InformationImage(Screen, HelpableScreen):
 			"down": (self.nextImage, _("Show next image"))
 		}, prio=0, description=_("Receiver Image Actions"))
 		self.images = (
-			(_("Front"), "receiver/%s.png", BoxInfo.getItem("model")),
-			(_("Rear"), "receiver/%s-rear.png", BoxInfo.getItem("model")),
-			(_("Internal"), "receiver/%s-internal.png", BoxInfo.getItem("model")),
-			(_("Remote Control"), "rc/%s.png", BoxInfo.getItem("rcname")),
-			(_("Flashing"), "receiver/%s-flashing.png", BoxInfo.getItem("model"))
+			(_("Front"), "receiver/%s.png", model),
+			(_("Rear"), "receiver/%s-rear.png", model),
+			(_("Internal"), "receiver/%s-internal.png", model),
+			(_("Remote Control"), "rc/%s.png", rcname),
+			(_("Flashing"), "receiver/%s-flashing.png", model)
 		)
 		self.imageIndex = 0
 		self.widgetContext = None
@@ -269,7 +326,7 @@ class InformationImage(Screen, HelpableScreen):
 		if self.widgetContext is None:
 			self.widgetContext = tuple(self["image"].getPosition() + self["image"].getSize())
 			print(self.widgetContext)
-		self["name"].setText("%s %s  -  %s View" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"), self.images[self.imageIndex][0]))
+		self["name"].setText("%s %s  -  %s View" % (displaybrand, displaymodel, self.images[self.imageIndex][0]))
 		imagePath = resolveFilename(SCOPE_GUISKIN, self.images[self.imageIndex][1] % self.images[self.imageIndex][2])
 		image = LoadPixmap(imagePath)
 		if not BoxInfo.getItem("middleflash") and not BoxInfo.getItem("smallflash"):
@@ -363,7 +420,7 @@ class BenchmarkInformation(InformationBase):
 
 	def displayInformation(self):
 		info = []
-		info.append(formatLine("H", "%s %s %s" % (_("Benchmark for"), BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
+		info.append(formatLine("H", "%s %s %s" % (_("Benchmark for"), displaybrand, displaymodel)))
 		info.append("")
 		for index, cpu in enumerate(self.cpuTypes):
 			info.append(formatLine("P1", _("CPU / Core %d type") % index, cpu))
@@ -392,7 +449,7 @@ class BuildInformation(InformationBase):
 
 	def displayInformation(self):
 		info = []
-		info.append(formatLine("H", "%s %s %s" % (_("Build information for"), BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
+		info.append(formatLine("H", "%s %s %s" % (_("Build information for"), displaybrand, displaymodel)))
 		info.append("")
 		checksum = BoxInfo.getItem("checksumerror", False)
 		if checksum:
@@ -611,7 +668,7 @@ class ImageInformation(InformationBase):
 		if override:
 			info.append(formatLine("P1", _("Info file override"), _("Defined / Active")))
 		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("imgversion")))
-		info.append(formatLine("P1", _("OpenVision revision"), "%s on %s" % (BoxInfo.getItem("imgrevision"), BoxInfo.getItem("model"))))
+		info.append(formatLine("P1", _("OpenVision revision"), "%s on %s" % (BoxInfo.getItem("imgrevision"), model)))
 		if config.misc.OVupdatecheck.value:
 			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("old" if BoxInfo.getItem("oe") == "pyro" else "new")
 			try:
@@ -1100,17 +1157,14 @@ class ReceiverInformation(InformationBase):
 		info = []
 		info.append(formatLine("H", _("Hardware information")))
 		info.append("")
-		info.append(formatLine("P1", _("Receiver name"), "%s %s" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"))))
+		info.append(formatLine("P1", _("Receiver name"), "%s %s" % (displaybrand, displaymodel)))
 		info.append(formatLine("P1", _("Build Brand"), BoxInfo.getItem("brand")))
-		platform = BoxInfo.getItem("platform")
 		friendlyfamily = BoxInfo.getItem("friendlyfamily")  # This shouldn't be here it is in Build.
-		model = BoxInfo.getItem("model")
 		info.append(formatLine("P1", _("Build Model"), model))
 		if platform != model:
 			info.append(formatLine("P1", _("Platform"), platform))
 		if friendlyfamily != model:  # This shouldn't be here it is in Build.
 			info.append(formatLine("P1", _("Compatible to use on"), friendlyfamily))
-		procModel = getBoxProc()
 		if procModel != model and procModel != "unknown":
 			info.append(formatLine("P1", _("Proc model"), procModel))
 		info.append(formatLine("P1", _("Hardware type"), getBoxProcTypeName().split("-")[0])) if getBoxProcTypeName() != _("unknown") else ""
@@ -1122,7 +1176,6 @@ class ReceiverInformation(InformationBase):
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
 		if not BoxInfo.getItem("displaytype").startswith(" "):
 			info.append(formatLine("P1", _("Display type"), BoxInfo.getItem("displaytype")))
-		fpVersion = getFPVersion()
 		if fpVersion and fpVersion != "unknown":
 			info.append(formatLine("P1", _("Front processor version"), fpVersion))
 		info.append("")
@@ -1145,9 +1198,8 @@ class ReceiverInformation(InformationBase):
 		info.append(formatLine("P1", _("RC identification"), "%s  (Index: %d)" % (remoteControl.remotes[rcIndex][REMOTE_DISPLAY_NAME], rcIndex)))
 		rcName = remoteControl.remotes[rcIndex][REMOTE_NAME]
 		info.append(formatLine("P1", _("RC selected name"), rcName))
-		boxName = BoxInfo.getItem("rcname")
-		if boxName != rcName:
-			info.append(formatLine("P1", _("RC default name"), boxName))
+		if rcname != rcName:
+			info.append(formatLine("P1", _("RC default name"), rcname))
 		rcType = remoteControl.remotes[rcIndex][REMOTE_RCTYPE]
 		info.append(formatLine("P1", _("RC selected type"), rcType))
 		sysType = BoxInfo.getItem("rctype")
