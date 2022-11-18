@@ -90,3 +90,7 @@ class DownloadWithProgress:
 		print("[Downloader] Warning: DownloadWithProgress 'addCallback' is deprecated use 'addEnd' instead!")
 		self.endCallback = endCallback
 		return self
+
+
+class downloadWithProgress(DownloadWithProgress):  # Class names should start with a Capital letter, this catches old code until that code can be updated.
+	pass
