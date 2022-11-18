@@ -59,6 +59,7 @@ EXTRA_OECONF = "\
 	--with-boxbrand="${BOX_BRAND}" \
 	--with-stbplatform=${STB_PLATFORM} \
 	--with-e2rev=${SRCPV} \
+	--with-oeminfo=${@bb.utils.contains("MACHINE_FEATURES", "oem-info", "available", "unavailable", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "uianimation", "--with-libvugles2" , "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "osdanimation", "--with-osdanimation" , "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "hiaccel", "--with-libhiaccel" , "", d)} \

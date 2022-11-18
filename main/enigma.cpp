@@ -502,6 +502,11 @@ const char *getE2Rev()
 	return E2REV;
 }
 
+const char *getOEMInfo()
+{
+	return OEMINFO;
+}
+
 #include <malloc.h>
 
 void dump_malloc_stats(void)

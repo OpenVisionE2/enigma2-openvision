@@ -74,6 +74,12 @@ AC_ARG_WITH(e2rev,
 AC_SUBST(E2REV)
 AC_DEFINE_UNQUOTED(E2REV,"$E2REV",[enigma2 revision])
 
+AC_ARG_WITH(oeminfo,
+	AS_HELP_STRING([--with-oeminfo],[value of OEMINFO, $withval]),
+	[OEMINFO="$withval"],[OEMINFO=""])
+AC_SUBST(OEMINFO)
+AC_DEFINE_UNQUOTED(OEMINFO,"$OEMINFO",[oem info])
+
 AC_ARG_WITH(arch,
 	AS_HELP_STRING([--with-arch],[build for architecture, $withval]),
 	[ARCHITECTURE="$withval"],[ARCHITECTURE=""])
