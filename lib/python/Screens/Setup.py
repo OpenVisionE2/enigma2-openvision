@@ -9,12 +9,15 @@ from Components.config import ConfigBoolean, ConfigNothing, ConfigSelection, con
 from Components.ConfigList import ConfigListScreen
 from Components.Label import Label
 from Components.Pixmap import Pixmap
-from Components.SystemInfo import BoxInfo
 from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.Screen import Screen, ScreenSummary
 from Tools.Directories import SCOPE_GUISKIN, SCOPE_PLUGINS, SCOPE_SKINS, fileReadXML, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
+from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand
+
+displaybrand = getOEMShowDisplayBrand()
+displaymodel = getOEMShowDisplayModel()
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -164,10 +167,10 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 			self.graphicSwitchChanged = True
 
 	def formatItemText(self, itemText):
-		return itemText.replace("%s %s", "%s %s" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel")))
+		return itemText.replace("%s %s", "%s %s" % (displaybrand, displaymodel))
 
 	def formatItemDescription(self, item, itemDescription):
-		itemDescription = itemDescription.replace("%s %s", "%s %s" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel")))
+		itemDescription = itemDescription.replace("%s %s", "%s %s" % (displaybrand, displaymodel))
 		if config.usage.setupShowDefault.value:
 			spacer = "\n" if config.usage.setupShowDefault.value == "newline" else "  "
 			itemDefault = item.toDisplayString(item.default)
@@ -175,6 +178,7 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 		return itemDescription
 
 	def includeElement(self, element):
+		from Components.SystemInfo import BoxInfo
 		itemLevel = int(element.get("level", 0))
 		if itemLevel > config.usage.setup_level.index:  # The item is higher than the current setup level.
 			return False

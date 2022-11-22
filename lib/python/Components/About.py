@@ -86,7 +86,7 @@ def getCPUBenchmark():
 			return "%s DMIPS per core\n%s DMIPS for all (%s) cores (%s)" % (cpuBenchmark, cpuMaxBenchmark, cpuCount, cpuRating)
 		else:
 			return "%s DMIPS (%s)" % (cpuBenchmark, cpuRating)
-	return _("Unknown")
+	return "unknown"
 
 
 def getRAMBenchmark():
@@ -101,7 +101,7 @@ def getRAMBenchmark():
 				if line.startswith("Open Vision copy rate"):
 					ramBenchmark = [x.strip() for x in line.split(":")][1]
 		return "%s MB/s copy rate" % ramBenchmark
-	return _("Unknown")
+	return "unknown"
 
 
 def getPythonBenchmark():
@@ -118,7 +118,7 @@ def getCPUSerial():
 		for line in lines:
 			if line[0:6] == "Serial":
 				return line[10:26]
-	return _("Undefined")
+	return "unknown"
 
 
 def getCPUInfoString():
@@ -184,7 +184,7 @@ def getCPUInfoString():
 def getChipSetString():
 	chipset = fileReadLine("/proc/stb/info/chipset", source=MODULE_NAME)
 	if chipset is None:
-		return _("Undefined")
+		return "unknown"
 	return chipset.lower()
 
 
@@ -198,7 +198,7 @@ def getCPUBrand():
 	elif socfamily.startswith("bcm") or BoxInfo.getItem("brand") == "rpi":
 		return _("Broadcom")
 	print("[About] No CPU brand?")
-	return _("Undefined")
+	return "unknown"
 
 
 def getCPUArch():
@@ -225,7 +225,7 @@ def getVisionModule():
 	if BoxInfo.getItem("OpenVisionModule"):
 		return _("Loaded")
 	print("[About] No Open Vision module!  Hard MultiBoot?")
-	return _("Unknown")
+	return "unknown"
 
 
 def GetIPsFromNetworkInterfaces():

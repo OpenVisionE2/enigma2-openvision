@@ -10,7 +10,7 @@ from subprocess import PIPE, Popen
 from time import localtime
 from six.moves.urllib.request import urlopen
 
-from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, ePoint, eSize, eTimer, getDesktop, getE2Rev, getOEMInfo
+from enigma import eConsoleAppContainer, eDVBResourceManager, eGetEnigmaDebugLvl, ePoint, eSize, eTimer, getDesktop, getE2Rev
 
 from skin import parameters
 from Components.About import about, getChipSetString
@@ -35,6 +35,7 @@ from Tools.Directories import SCOPE_GUISKIN, fileReadLine, fileReadLines, fileWr
 from Tools.Geolocation import geolocation
 from Tools.LoadPixmap import LoadPixmap
 from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
+from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand, getOEMShowModel
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -43,9 +44,10 @@ MODULE_NAME = __name__.split(".")[-1]
 #servicehisilicon = "/var/lib/opkg/info/enigma2-plugin-systemplugins-servicehisilicon.control"
 
 model = BoxInfo.getItem("model")
+vmodel = getOEMShowModel()
 platform = BoxInfo.getItem("platform")
-displaymodel = BoxInfo.getItem("displaymodel")
-displaybrand = BoxInfo.getItem("displaybrand")
+displaymodel = getOEMShowDisplayModel()
+displaybrand = getOEMShowDisplayBrand()
 rcname = BoxInfo.getItem("rcname")
 procType = getBoxProcType()
 procModel = getBoxProc()
@@ -64,7 +66,7 @@ INFO_COLOR = {
 
 def getBoxProcTypeName():
 	boxProcTypes = {
-		"00": _("OTT Model"),
+		"00": _("OTT"),
 		"10": _("Single Tuner"),
 		"11": _("Twin Tuner"),
 		"12": _("Combo Tuner"),
@@ -74,55 +76,6 @@ def getBoxProcTypeName():
 	if procType == "unknown":
 		return _("Unknown")
 	return "%s - %s" % (procType, boxProcTypes.get(procType, _("Unknown")))
-
-
-if getOEMInfo() == "available":
-	if procModel == "dm525":
-		model = procModel
-		displaymodel = procModel
-	elif model == "et7x00":
-		if getChipSetString() == "bcm73625":
-			displaymodel = "ET7100 V2"
-		else:
-			displaymodel = "ET7000"
-	elif model == "sf8008":
-		if procType == "10":
-			model = "sf8008s"
-			displaymodel = "SF8008 4K Single"
-		elif procType == "11":
-			model = "sf8008t"
-			displaymodel = "SF8008 4K Twin"
-	elif model == "sfx6008" and procType == "10":
-		model = "sfx6018"
-		displaymodel = "SFX6018 S2"
-	elif platform == "7100s" and procModel == "7200s":
-		platform == "7200s"
-	elif model == "ustym4kpro":
-		if procType == "10":
-			model = "ustym4kprosingle"
-			displaymodel = "Ustym 4K PRO Single"
-		elif procType == "11":
-			model = "ustym4kprotwin"
-			displaymodel = "Ustym 4K PRO Twin"
-	elif model == "ventonhdx":
-		if procModel == "ini-3000":
-			model = "uniboxhd1"
-			displaymodel = "HD-1"
-		elif procModel == "ini-5000":
-			model = "uniboxhd2"
-			displaymodel = "HD-2"
-		elif procModel in ("ini-7000", "ini-7012"):
-			model = "uniboxhd3"
-			displaymodel = "HD-3"
-	elif model == "xpeedlx":
-		if procModel == "ini-1000lx":
-			model = "xpeedlx2t"
-			displaymodel = "LX-2T"
-		elif procModel == "ini-1000de":
-			if fpVersion == "2":
-				model = "xpeedlx2"
-			else:
-				model = "xpeedlx1"
 
 
 class InformationBase(Screen, HelpableScreen):
@@ -668,7 +621,7 @@ class ImageInformation(InformationBase):
 		if override:
 			info.append(formatLine("P1", _("Info file override"), _("Defined / Active")))
 		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("imgversion")))
-		info.append(formatLine("P1", _("OpenVision revision"), "%s on %s" % (BoxInfo.getItem("imgrevision"), model)))
+		info.append(formatLine("P1", _("OpenVision revision"), "%s on %s" % (BoxInfo.getItem("imgrevision"), vmodel)))
 		if config.misc.OVupdatecheck.value:
 			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("old" if BoxInfo.getItem("oe") == "pyro" else "new")
 			try:
@@ -1167,10 +1120,11 @@ class ReceiverInformation(InformationBase):
 			info.append(formatLine("P1", _("Compatible to use on"), friendlyfamily))
 		if procModel != model and procModel != "unknown":
 			info.append(formatLine("P1", _("Proc model"), procModel))
-		info.append(formatLine("P1", _("Hardware type"), getBoxProcTypeName().split("-")[0])) if getBoxProcTypeName() != _("unknown") else ""
-		hwSerial = getHWSerial()
-		if hwSerial:
-			info.append(formatLine("P1", _("Hardware serial"), (hwSerial if hwSerial != "unknown" else about.getCPUSerial())))
+		info.append(formatLine("P1", _("Hardware type"), getBoxProcTypeName().split("-")[0])) if getBoxProcTypeName() != _("Unknown") else ""
+		hwSerial = getHWSerial() if getHWSerial() != "unknown" else None
+		cpuSerial = about.getCPUSerial() if about.getCPUSerial() != "unknown" else None
+		if hwSerial or cpuSerial:
+			info.append(formatLine("P1", _("Hardware serial"), (hwSerial if hwSerial else cpuSerial)))
 		hwRelease = fileReadLine("/proc/stb/info/release", source=MODULE_NAME)
 		if hwRelease:
 			info.append(formatLine("P1", _("Factory release"), hwRelease))

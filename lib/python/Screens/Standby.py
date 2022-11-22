@@ -18,13 +18,15 @@ from Tools.Notifications import AddNotification
 from time import time, localtime
 from GlobalActions import globalActionMap
 from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, quitMainloop, iRecordableService
+from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand
+
+displaybrand = getOEMShowDisplayBrand()
+displaymodel = getOEMShowDisplayModel()
+model = BoxInfo.getItem("model")
 
 inStandby = None
 infoBarInstance = None
 TVinStandby = None
-
-model = BoxInfo.getItem("displaymodel")
-brand = BoxInfo.getItem("displaybrand")
 
 QUIT_SHUTDOWN = 1
 QUIT_REBOOT = 2
@@ -363,17 +365,17 @@ class QuitMainloopScreen(Screen):
 		Screen.__init__(self, session)
 		from Components.Label import Label
 		text = {
-			QUIT_SHUTDOWN: _("Your %s %s is shutting down") % (brand, model),
-			QUIT_REBOOT: _("Your %s %s is rebooting") % (brand, model),
-			QUIT_RESTART: _("The user interface of your %s %s is restarting") % (brand, model),
-			QUIT_UPGRADE_FP: _("Your frontprocessor will be updated\nPlease wait until your %s %s reboots\nThis may take a few minutes") % (brand, model),
-			QUIT_DEBUG_RESTART: _("The user interface of your %s %s is restarting in debug mode") % (brand, model),
-			QUIT_REBOOT_ANDROID: _("Your %s %s is rebooting into android mode") % (brand, model),
-			QUIT_REBOOT_RECOVERY: _("Your %s %s is rebooting into recovery mode") % (brand, model),
-			QUIT_UPGRADE_PROGRAM: _("Unattended update in progress\nPlease wait until your %s %s reboots\nThis may take a few minutes") % (brand, model),
-			QUIT_MANUFACTURER_RESET: _("Manufacturer reset in progress\nPlease wait until your %s %s restarts") % (brand, model),
-			QUIT_UPGRADE_FPANEL: _("Front panel your %s %s will be updated\nThis may take a few minutes") % (brand, model),
-			QUIT_WOL: _("Your %s %s goes to WOL") % (brand, model)
+			QUIT_SHUTDOWN: _("Your %s %s is shutting down") % (displaybrand, displaymodel),
+			QUIT_REBOOT: _("Your %s %s is rebooting") % (displaybrand, displaymodel),
+			QUIT_RESTART: _("The user interface of your %s %s is restarting") % (displaybrand, displaymodel),
+			QUIT_UPGRADE_FP: _("Your frontprocessor will be updated\nPlease wait until your %s %s reboots\nThis may take a few minutes") % (displaybrand, displaymodel),
+			QUIT_DEBUG_RESTART: _("The user interface of your %s %s is restarting in debug mode") % (displaybrand, displaymodel),
+			QUIT_REBOOT_ANDROID: _("Your %s %s is rebooting into android mode") % (displaybrand, displaymodel),
+			QUIT_REBOOT_RECOVERY: _("Your %s %s is rebooting into recovery mode") % (displaybrand, displaymodel),
+			QUIT_UPGRADE_PROGRAM: _("Unattended update in progress\nPlease wait until your %s %s reboots\nThis may take a few minutes") % (displaybrand, displaymodel),
+			QUIT_MANUFACTURER_RESET: _("Manufacturer reset in progress\nPlease wait until your %s %s restarts") % (displaybrand, displaymodel),
+			QUIT_UPGRADE_FPANEL: _("Front panel your %s %s will be updated\nThis may take a few minutes") % (displaybrand, displaymodel),
+			QUIT_WOL: _("Your %s %s goes to WOL") % (displaybrand, displaymodel)
 		}.get(retvalue)
 		self["text"] = Label(text)
 
@@ -470,13 +472,13 @@ class TryQuitMainloop(MessageBox):
 					open("/proc/stb/lcd/mode", "w").write(0)
 				except:
 					print("[Standby] Write to /proc/stb/lcd/mode failed.")
-			if BoxInfo.getItem("model") == "vusolo4k":
+			if model == "vusolo4k":
 				try:
 					print("[Standby] Write to /proc/stb/fp/oled_brightness")
 					open("/proc/stb/fp/oled_brightness", "w").write("0")
 				except:
 					print("[Standby] Write to /proc/stb/fp/oled_brightness failed.")
-			if BoxInfo.getItem("model") == "pulse4k":
+			if model == "pulse4k":
 				try:
 					print("[Standby] Write to /proc/stb/lcd/oled_brightness")
 					open("/proc/stb/lcd/oled_brightness", "w").write("0")

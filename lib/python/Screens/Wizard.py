@@ -16,6 +16,7 @@ from Components.Sources.StaticText import StaticText
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Tools.Directories import fileWriteLine
+from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand
 
 
 class WizardSummary(Screen):
@@ -442,7 +443,7 @@ class Wizard(Screen):
 		return False
 
 	def getTranslation(self, text):
-		return _(text).replace("%s %s (kernel %s)", "%s %s (kernel %s)" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel"), BoxInfo.getItem("kernel"))).replace("%s-%s", "%s-%s" % (BoxInfo.getItem("imgversion"), BoxInfo.getItem("imgrevision"))).replace("%s (type %s id %s)", "%s (type %s id %s)" % (BoxInfo.getItem("rcname"), BoxInfo.getItem("rctype"), BoxInfo.getItem("rcidnum")))
+		return _(text).replace("%s %s (kernel %s)", "%s %s (kernel %s)" % (getOEMShowDisplayBrand(), getOEMShowDisplayModel(), BoxInfo.getItem("kernel"))).replace("%s-%s", "%s-%s" % (BoxInfo.getItem("imgversion"), BoxInfo.getItem("imgrevision"))).replace("%s (type %s id %s)", "%s (type %s id %s)" % (BoxInfo.getItem("rcname"), BoxInfo.getItem("rctype"), BoxInfo.getItem("rcidnum")))
 
 	def updateText(self, firstset=False):
 		text = self.getTranslation(self.wizard[self.currStep]["text"])

@@ -27,6 +27,7 @@ install_PYTHON = \
 	MultiBoot.py \
 	Notifications.py \
 	NumericalTextInput.py \
+	OEMInfo.py \
 	Profile.py \
 	PyVerHelper.py \
 	RedirectOutput.py \

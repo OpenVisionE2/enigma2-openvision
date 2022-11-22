@@ -489,16 +489,19 @@ except ImportError:
 profile("SystemInfo")
 from enigma import getE2Rev
 from Components.SystemInfo import BoxInfo
+from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand, getOEMShowModel
 
 model = BoxInfo.getItem("model")
 brand = BoxInfo.getItem("brand")
 platform = BoxInfo.getItem("platform")
 socfamily = BoxInfo.getItem("socfamily")
+displaydistro = BoxInfo.getItem("displaydistro")
 
-print("[StartEnigma] Receiver name = %s %s" % (BoxInfo.getItem("displaybrand"), BoxInfo.getItem("displaymodel")))
-print("[StartEnigma] %s version = %s" % (BoxInfo.getItem("displaydistro"), BoxInfo.getItem("imgversion")))
-print("[StartEnigma] %s revision = %s" % (BoxInfo.getItem("displaydistro"), BoxInfo.getItem("imgrevision")))
-print("[StartEnigma] %s type = %s" % (BoxInfo.getItem("displaydistro"), BoxInfo.getItem("imagetype")))
+print("[StartEnigma] Receiver name = %s %s" % (getOEMShowDisplayBrand(), getOEMShowDisplayModel()))
+print("[StartEnigma] Receiver virtual name = %s" % getOEMShowModel())
+print("[StartEnigma] %s version = %s" % (displaydistro, BoxInfo.getItem("imgversion")))
+print("[StartEnigma] %s revision = %s" % (displaydistro, BoxInfo.getItem("imgrevision")))
+print("[StartEnigma] %s type = %s" % (displaydistro, BoxInfo.getItem("imagetype")))
 print("[StartEnigma] Build Brand = %s" % brand)
 print("[StartEnigma] Build Model = %s" % model)
 print("[StartEnigma] Platform = %s" % platform)
