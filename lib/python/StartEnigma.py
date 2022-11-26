@@ -308,6 +308,7 @@ def runScreen():
 	vol = VolumeControl(session)
 	profile("InitPowerKey")
 	power = PowerKey(session)
+	from Components.SystemInfo import BoxInfo
 	if BoxInfo.getItem("VFDSymbol"):
 		profile("VFDSymbols")
 		import Components.VfdSymbols
@@ -528,8 +529,8 @@ if isfile("/etc/init.d/inetd.busybox"):
 	Console().ePopen("/etc/init.d/inetd.busybox start")
 	print("[StartEnigma] Finished starting BusyBox inetd.")
 
-profile("MultiLib")
 if BoxInfo.getItem("multilib"):
+	profile("MultiLib")
 	import usb.core
 	import usb.backend.libusb1
 	usb.backend.libusb1.get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")
@@ -653,12 +654,14 @@ profile("AVSwitch")
 import Components.AVSwitch
 Components.AVSwitch.InitAVSwitch()
 
-profile("FanControl")
-from Components.FanControl import fancontrol
+if BoxInfo.getItem("Fan"):
+	profile("FanControl")
+	from Components.FanControl import fancontrol
 
-profile("HdmiRecord")
-import Components.HdmiRecord
-Components.HdmiRecord.InitHdmiRecord()
+if BoxInfo.getItem("HasHDMIin"):
+	profile("HdmiRecord")
+	import Components.HdmiRecord
+	Components.HdmiRecord.InitHdmiRecord()
 
 profile("RecordingConfig")
 import Components.RecordingConfig
@@ -699,9 +702,10 @@ profile("RFMod")
 from Components.RFmod import InitRFmod
 InitRFmod()
 
-profile("CommonInterface")
-from Screens.Ci import CiHandler, InitCiConfig
-InitCiConfig()
+if BoxInfo.getItem("ci"):
+	profile("CommonInterface")
+	from Screens.Ci import CiHandler, InitCiConfig
+	InitCiConfig()
 
 profile("Init:LogManager")
 import Screens.LogManager
