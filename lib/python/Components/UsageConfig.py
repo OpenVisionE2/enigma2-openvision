@@ -68,6 +68,16 @@ def InitUsageConfig():
 	config.misc.extraopkgpackages = ConfigYesNo(default=False)
 	config.misc.opkgcleanmode = ConfigYesNo(default=False)
 
+	def correctInvalidEPGDataChange(configElement):
+		eServiceEvent.setUTF8Fix(int(configElement.value))
+
+	config.usage.correct_invalid_epgdata = ConfigSelection(default="0", choices=[
+		("0", _("Disabled")),
+		("1", _("Enabled")),
+		("2", _("Debug"))
+	])
+	config.usage.correct_invalid_epgdata.addNotifier(correctInvalidEPGDataChange)
+
 	config.usage.alternative_number_mode = ConfigYesNo(default=False)
 
 	def alternativeNumberModeChange(configElement):
