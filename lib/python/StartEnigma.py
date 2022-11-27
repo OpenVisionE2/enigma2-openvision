@@ -295,7 +295,12 @@ def runScreen():
 	profile("InitSession")
 	nav = Navigation(config.misc.isNextRecordTimerAfterEventActionAuto.value, config.misc.isNextPowerTimerAfterEventActionAuto.value)  # Wake up to standby for RecordTimer and PowerTimer.
 	session = Session(desktop=enigma.getDesktop(0), summaryDesktop=enigma.getDesktop(1), navigation=nav)
-	CiHandler.setSession(session)
+	from Components.SystemInfo import BoxInfo
+	if BoxInfo.getItem("ci"):
+		profile("CommonInterface")
+		from Screens.Ci import CiHandler, InitCiConfig
+		InitCiConfig()
+		CiHandler.setSession(session)
 	screensToRun = [x.__call__ for x in plugins.getPlugins(PluginDescriptor.WHERE_WIZARD)]
 	profile("InitWizards")
 	screensToRun += wizardManager.getWizards()
@@ -308,7 +313,6 @@ def runScreen():
 	vol = VolumeControl(session)
 	profile("InitPowerKey")
 	power = PowerKey(session)
-	from Components.SystemInfo import BoxInfo
 	if BoxInfo.getItem("VFDSymbol"):
 		profile("VFDSymbols")
 		import Components.VfdSymbols
@@ -701,11 +705,6 @@ if platform == "dm4kgen" or model in ("dm7080", "dm820"):
 profile("RFMod")
 from Components.RFmod import InitRFmod
 InitRFmod()
-
-if BoxInfo.getItem("ci"):
-	profile("CommonInterface")
-	from Screens.Ci import CiHandler, InitCiConfig
-	InitCiConfig()
 
 profile("Init:LogManager")
 import Screens.LogManager
