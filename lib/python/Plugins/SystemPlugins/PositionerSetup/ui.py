@@ -237,7 +237,7 @@ class PositionerSetup(Screen):
 		self.statusMsgBlinkRate = 500 / self.UPDATE_INTERVAL	# milliseconds
 		self.tuningChangedTo(tp)
 
-		self["actions"] = NumberActionMap(["DirectionActions", "OkCancelActions", "ColorActions", "TimerEditActions", "InputActions", "InfobarMenuActions"],
+		self["actions"] = NumberActionMap(["DirectionActions", "OkCancelActions", "ColorActions", "TimerEditActions", "InputActions", "InfobarMenuActions", "SetupActions"],
 		{
 			"ok": self.keyOK,
 			"cancel": self.keyCancel,
@@ -1342,7 +1342,7 @@ class PositionerSetupLog(Screen):
 		self["key_green"] = Button(_("Save"))
 		self["key_blue"] = Button(_("Clear"))
 		self["list"] = ScrollLabel(log.getvalue())
-		self["actions"] = ActionMap(["DirectionActions", "OkCancelActions", "ColorActions"],
+		self["actions"] = ActionMap(["NavigationActions", "OkCancelActions", "ColorActions", "SetupActions"],
 		{
 			"red": self.cancel,
 			"green": self.save,
