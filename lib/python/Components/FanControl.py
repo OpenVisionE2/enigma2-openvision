@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from os.path import exists
+from os.path import isfile
 
 from Components.config import config, ConfigSubList, ConfigSubsection, ConfigSlider
 from Tools.BoundFunction import boundFunction
@@ -14,7 +14,7 @@ model = BoxInfo.getItem("model")
 class FanControl:
 	# ATM there's only support for one fan
 	def __init__(self):
-		if exists("/proc/stb/fp/fan_vlt") or exists("/proc/stb/fp/fan_pwm") or exists("/proc/stb/fp/fan_speed"):
+		if isfile("/proc/stb/fp/fan_vlt") or isfile("/proc/stb/fp/fan_pwm") or isfile("/proc/stb/fp/fan_speed"):
 			self.fancount = 1
 		else:
 			self.fancount = 0
@@ -97,36 +97,46 @@ class FanControl:
 		return self.fancount
 
 	def hasRPMSensor(self, fanid):
-		return exists("/proc/stb/fp/fan_speed")
+		return isfile("/proc/stb/fp/fan_speed")
 
 	def hasFanControl(self, fanid):
-		return exists("/proc/stb/fp/fan_vlt") or exists("/proc/stb/fp/fan_pwm")
+		return isfile("/proc/stb/fp/fan_vlt") or isfile("/proc/stb/fp/fan_pwm")
 
 	def getFanSpeed(self, fanid):
-		print("[FanControl] Read /proc/stb/fp/fan_speed")
-		return int(open("/proc/stb/fp/fan_speed", "r").readline().strip()[:-4])
+		try:
+			return int(open("/proc/stb/fp/fan_speed", "r").readline().strip()[:-4])
+		except:
+			print("[FanControl] Read /proc/stb/fp/fan_speed failed!")
 
 	def getVoltage(self, fanid):
-		print("[FanControl] Read /proc/stb/fp/fan_vlt")
-		return int(open("/proc/stb/fp/fan_vlt", "r").readline().strip(), 16)
+		try:
+			return int(open("/proc/stb/fp/fan_vlt", "r").readline().strip(), 16)
+		except:
+			print("[FanControl] Read /proc/stb/fp/fan_vlt failed!")
 
 	def setVoltage(self, fanid, value):
 		if model == "beyonwizu4":
 			return
 		if value > 255:
 			return
-		print("[FanControl] Write to /proc/stb/fp/fan_vlt")
-		open("/proc/stb/fp/fan_vlt", "w").write("%x" % value)
+		try:
+			open("/proc/stb/fp/fan_vlt", "w").write("%x" % value)
+		except:
+			print("[FanControl] Write to /proc/stb/fp/fan_vlt failed!")
 
 	def getPWM(self, fanid):
-		print("[FanControl] Read /proc/stb/fp/fan_pwm")
-		return int(open("/proc/stb/fp/fan_pwm", "r").readline().strip(), 16)
+		try:
+			return int(open("/proc/stb/fp/fan_pwm", "r").readline().strip(), 16)
+		except:
+			print("[FanControl] Read /proc/stb/fp/fan_pwm failed!")
 
 	def setPWM(self, fanid, value):
 		if value > 255:
 			return
-		print("[FanControl] Write to /proc/stb/fp/fan_pwm")
-		open("/proc/stb/fp/fan_pwm", "w").write("%x" % value)
+		try:
+			open("/proc/stb/fp/fan_pwm", "w").write("%x" % value)
+		except:
+			print("[FanControl] Write to /proc/stb/fp/fan_pwm failed!")
 
 
 fancontrol = FanControl()

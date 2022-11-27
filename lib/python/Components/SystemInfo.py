@@ -258,7 +258,7 @@ SystemInfo["LCDshow_symbols"] = (model == "et9x00" or platform == "gfuturesbcmar
 SystemInfo["LCDsymbol_hdd"] = platform == "gfuturesbcmarm" and fileCheck("/proc/stb/lcd/symbol_hdd")
 SystemInfo["FrontpanelDisplayGrayscale"] = fileCheck("/dev/dbox/oled0")
 SystemInfo["DeepstandbySupport"] = model != "dm800"
-SystemInfo["Fan"] = fileCheck("/proc/stb/fp/fan")
+SystemInfo["Fan"] = fileCheck("/proc/stb/fp/fan") or BoxInfo.getItem("fan")
 SystemInfo["FanPWM"] = BoxInfo.getItem("Fan") and fileCheck("/proc/stb/fp/fan_pwm")
 SystemInfo["PowerLED"] = fileCheck("/proc/stb/power/powerled")
 SystemInfo["PowerLED2"] = fileCheck("/proc/stb/power/powerled2")

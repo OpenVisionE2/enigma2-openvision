@@ -152,6 +152,7 @@ Here is the list of variables currently supported:
 	"driverdate" or "/proc/enigma/driverdate" replaces "getDriverDate()"
 	"dvi" or "/proc/enigma/dvi" replaces "getHaveDVI()"
 	"emmc" or "/proc/enigma/emmc" replaces "getEMMC()"
+	"fan" or "/proc/enigma/fan" replaces "getHaveFan()"
 	"feedsurl" or "/proc/enigma/feedsurl" replaces "getFeedsUrl()"
 	"fhdskin" or "/proc/enigma/fhdskin" replaces "getFHDSkin()"
 	"forcemode" or "/proc/enigma/forcemode" replaces "getForceMode()"
@@ -358,6 +359,14 @@ emmc:
 		This variable defines if a receiver has Embedded MultiMediaCard.
 
 	Example: True
+
+fan:
+
+	BoxInfo.getItem("fan") (/proc/enigma/fan)
+
+		This variable defines if a receiver has fan.
+
+	Example: False
 
 feedsurl:
 
