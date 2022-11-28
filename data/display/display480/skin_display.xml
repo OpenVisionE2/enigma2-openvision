@@ -43,75 +43,75 @@
 	</screen>
 
 	<screen name="InfoBarSummary" position="0,0" size="480,320">
-		<widget source="session.CurrentService" render="Label" position="0,5" size="480,70" font="FdLcD;55" horizontalAlignment="center" verticalAlignment="center" foregroundColor="#FFFF00" >
+		<widget source="session.CurrentService" render="Label" position="0,5" size="480,70" font="FdLcD;55" foregroundColor="#FFFF00" >
 			<convert type="ServiceName">Name</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="0,70" size="480,90" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.Event_Now" render="Label" position="0,70" size="480,90" font="FdLcD;40" >
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget source="session.Event_Now" render="Progress" position="20,170" size="440,20" borderWidth="1" >
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="20,200" size="130,40" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.Event_Now" render="Label" position="20,200" size="130,40" font="FdLcD;40" >
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText">Format:%H:%M</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="150,200" size="130,40" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.Event_Now" render="Label" position="150,200" size="130,40" font="FdLcD;40" >
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText">Format:- %H:%M</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="350,200" size="100,40" font="FdLcD;40" horizontalAlignment="right" verticalAlignment="center" >
+		<widget source="session.Event_Now" render="Label" position="350,200" size="100,40" font="FdLcD;40" >
 			<convert type="EventTime">Remaining</convert>
 			<convert type="RemainingToText">FOLLOW</convert>
 		</widget>
-		<eLabel text="TUNER:" position="20,260" size="160,60" horizontalAlignment="center" verticalAlignment="center" font="FdLcD;40" />
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="A" foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<eLabel text="TUNER:" position="20,260" size="160,60" font="FdLcD;40" />
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="A" foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">0,0</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="B" foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="B" foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">1,1</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="C" foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="C" foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">2,2</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="D" foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="D" foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">3,3</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<!--text="E" results "O" -> text="E " results "E"-->
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="E " foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="E " foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">4,4</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="F" foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="F" foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">5,5</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="G" foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="G" foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">6,6</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="H" foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="H" foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">7,7</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="I" foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="I" foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">8,8</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="J" foregroundColor="#04B404" font="FdLcD;40" horizontalAlignment="center" verticalAlignment="center" >
+		<widget source="session.FrontendInfo" render="FixedLabel" position="180,260" size="60,60" text="J" foregroundColor="#04B404" font="FdLcD;40" >
 			<convert type="FrontendInfo">NUMBER</convert>
 			<convert type="ValueRange">9,9</convert>
 			<convert type="ConditionalShowHide" />

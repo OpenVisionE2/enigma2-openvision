@@ -110,11 +110,11 @@
 		<widget source="session.CurrentService" render="LcdPicon" position="118,0" zPosition="2" size="236,142" alphaTest="on">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="0,111" size="115,51" font="FdLcD;38" foregroundColor="#87CEFA" verticalAlignment="center" horizontalAlignment="center">
+		<widget source="session.Event_Now" render="Label" position="0,111" size="115,51" font="FdLcD;38" foregroundColor="#87CEFA">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText"></convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="357,111" size="115,51" font="FdLcD;38" foregroundColor="#87CEFA" verticalAlignment="center" horizontalAlignment="center">
+		<widget source="session.Event_Now" render="Label" position="357,111" size="115,51" font="FdLcD;38" foregroundColor="#87CEFA">
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText"></convert>
 		</widget>
@@ -123,7 +123,7 @@
 			<convert type="EventTime">Progress</convert>
 		</widget>
 		<eLabel position="0,224" size="471,3" backgroundColor="#BDBDBD" zPosition="3" />
-		<widget source="session.Event_Now" render="Label" position="353,231" size="118,53" font="FdLcD;40" zPosition="0" foregroundColor="#A9E2F3" horizontalAlignment="right" transparent="1">
+		<widget source="session.Event_Now" render="Label" position="353,231" size="118,53" font="FdLcD;40" zPosition="0" foregroundColor="#A9E2F3" transparent="1">
 			<convert type="EventTime">Remaining</convert>
 			<convert type="RemainingToText">OnlyMinute</convert>
 		</widget>

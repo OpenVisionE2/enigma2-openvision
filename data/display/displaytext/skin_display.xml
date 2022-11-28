@@ -23,7 +23,7 @@
 
 <!-- main-->
 	<screen name="InfoBarSummary" position="0,0" size="132,64">
-		<widget source="session.CurrentService" render="Label" position="0,0" size="120,25" horizontalAlignment="left" noWrap="1" >
+		<widget source="session.CurrentService" render="Label" position="0,0" size="120,25" noWrap="1" >
 			<convert type="ServiceName">NameOnly</convert>
 		</widget>
 		<widget source="session.RecordState" render="FixedLabel" text=" " position="0,30" zPosition="1" size="120,34">

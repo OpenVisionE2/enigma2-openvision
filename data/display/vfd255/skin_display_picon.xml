@@ -109,16 +109,16 @@
 
 <!-- main-->
 	<screen name="InfoBarSummary" position="0,0" size="255,64">
-		<widget source="session.CurrentService" render="Label" position="0,0" size="170,22" font="FdLcD;18" horizontalAlignment="left" noWrap="1">
+		<widget source="session.CurrentService" render="Label" position="0,0" size="170,22" font="FdLcD;18" noWrap="1">
 			<convert type="ServiceName">NameOnly</convert>
 		</widget>
 		<widget source="session.CurrentService" render="LcdPicon" position="0,0" size="170,40" backgroundColor="#ff000000">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="0,48" size="190,20" font="FdLcD;15" horizontalAlignment="left" noWrap="1">
+		<widget source="session.Event_Now" render="Label" position="0,48" size="190,20" font="FdLcD;15" noWrap="1">
 			<convert type="EventName">Name</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="140,40" size="70,12" font="FdLcD;10" horizontalAlignment="left" verticalAlignment="bottom">
+		<widget source="session.Event_Now" render="Label" position="140,40" size="70,12" font="FdLcD;10" >
 			<convert type="EventTime">VFDRemaining</convert>
 			<convert type="RemainingToText">VFDNoSeconds</convert>
 		</widget>

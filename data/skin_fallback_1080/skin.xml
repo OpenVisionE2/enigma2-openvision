@@ -1471,7 +1471,7 @@
 		<widget alphaTest="blend" name="timeline3" pixmap="OctEtFHD/extensions/timeline.png" position="0,430" size="1,500" zPosition="2"/>
 		<widget alphaTest="blend" name="timeline4" pixmap="OctEtFHD/extensions/timeline.png" position="0,430" size="1,500" zPosition="2"/>
 		<widget alphaTest="blend" name="timeline5" pixmap="OctEtFHD/extensions/timeline.png" position="0,430" size="1,500" zPosition="2"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;26" horizontalAlignment="left" position="160,180" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="965,180" source="Event" transparent="1" verticalAlignment="top">
+		<widget backgroundColor="OE_Background" font="RegularBold;26" position="160,180" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="965,180" source="Event" transparent="1">
 			<convert type="EventName">FullDescription</convert>
 		</widget>
 	</screen>
@@ -5083,7 +5083,7 @@
 		<panel name="TemplateFrame"/>
 		<widget source="Title" render="Label" font="RegularBold;28" backgroundColor="OE_Background" foregroundColor="blue_light" horizontalAlignment="center" verticalAlignment="center" position="150,10" size="1230,45" transparent="1" zPosition="10"/>
 		<!-- Event -->
-		<widget backgroundColor="OE_Background" font="RegularBold;28" position="160,85" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" size="1000,50" source="Event" transparent="1" horizontalAlignment="left">
+		<widget backgroundColor="OE_Background" font="RegularBold;28" position="160,85" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" render="RunningText" size="1000,50" source="Event" transparent="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget backgroundColor="blue_light" pixmap="OctEtFHD/colors/00A4C400.png" position="160,160" render="Progress" size="950,6" source="Event" transparent="0" zPosition="1">

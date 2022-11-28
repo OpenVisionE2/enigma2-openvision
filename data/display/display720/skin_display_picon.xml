@@ -77,32 +77,32 @@
 
 <!-- main-->
 	<screen name="InfoBarSummary" position="0,0" size="720,576">
-		<widget source="session.CurrentService" render="Label" position="15,21" size="675,100" foregroundColor="#e5b243" font="FdLcD;95" horizontalAlignment="center" zPosition="14">
+		<widget source="session.CurrentService" render="Label" position="15,21" size="675,100" foregroundColor="#e5b243" font="FdLcD;95" zPosition="14">
 			<convert type="ServiceName">Name</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="14,200" foregroundColor="#e5b243" size="675,120" font="FdLcDLight;55" horizontalAlignment="center" verticalAlignment="center">
+		<widget source="session.Event_Now" render="Label" position="14,200" foregroundColor="#e5b243" size="675,120" font="FdLcDLight;55">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget source="session.Event_Now" render="Progress" position="27,120" size="660,25" foregroundColor="#02c6ff" borderWidth="2">
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="14,150" size="139,52" font="FdLcD;50" horizontalAlignment="center" transparent="1" foregroundColor="#02c6ff">
+		<widget source="session.Event_Now" render="Label" position="14,150" size="139,52" font="FdLcD;50" transparent="1" foregroundColor="#02c6ff">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="ClockToText">Format:%H:%M</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="143,150" size="169,52" font="FdLcD;50" horizontalAlignment="center" transparent="1" foregroundColor="#02c6ff" >
+		<widget source="session.Event_Now" render="Label" position="143,150" size="169,52" font="FdLcD;50" transparent="1" foregroundColor="#02c6ff" >
 			<convert type="EventTime">EndTime</convert>
 			<convert type="ClockToText">Format:- %H:%M</convert>
 		</widget>
-		<widget source="session.RecordState" render="FixedLabel" text="&#174;" position="20,420" foregroundColor="#ff0000" size="140,70" font="FdLcD;65" horizontalAlignment="center" verticalAlignment="center" zPosition="22">
+		<widget source="session.RecordState" render="FixedLabel" text="&#174;" position="20,420" foregroundColor="#ff0000" size="140,70" font="FdLcD;65" zPosition="22">
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
-		<widget source="session.RecordState" render="FixedLabel" text="&#174;" position="20,420" foregroundColor="#ff0000" size="140,70" font="FdLcD;65" horizontalAlignment="center" verticalAlignment="center" zPosition="22">
+		<widget source="session.RecordState" render="FixedLabel" text="&#174;" position="20,420" foregroundColor="#ff0000" size="140,70" font="FdLcD;65" zPosition="22">
 			<convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,False,CheckSourceBoolean</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="421,145" size="266,46" font="FdLcD;50" horizontalAlignment="right" foregroundColor="#02c6ff" >
+		<widget source="session.Event_Now" render="Label" position="421,145" size="266,46" font="FdLcD;50" foregroundColor="#02c6ff" >
 			<convert type="EventTime">Remaining</convert>
 			<convert type="RemainingToText">InMinutes</convert>
 		</widget>
