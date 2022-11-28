@@ -10,7 +10,7 @@ from enigma import eDVBDB, eDVBFrontendParametersSatellite, eDVBResourceManager,
 from Components.config import ConfigDateTime, ConfigFloat, ConfigInteger, ConfigNothing, ConfigOnOff, ConfigSatlist, ConfigSelection, ConfigSubDict, ConfigSubList, ConfigSubsection, ConfigText, ConfigYesNo, config
 from Components.SystemInfo import BoxInfo
 from Tools.BoundFunction import boundFunction
-from Tools.Directories import SCOPE_SKINS, fileReadLine, fileReadLines, fileReadXML, fileWriteLine, resolveFilename
+from Tools.Directories import SCOPE_SKINS, fileReadLine, fileReadXML, fileWriteLine, resolveFilename
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -844,8 +844,9 @@ class NimManager:
 		if config.clientmode.enabled.value:
 			print("[NimManager] Receiver in client mode, local NIMs will be ignored.")
 			return
-		nimfile = fileReadLines("/proc/bus/nim_sockets", source=MODULE_NAME)
-		if nimfile is None:
+		try:
+			nimfile = open("/proc/bus/nim_sockets")
+		except (IOError, OSError):
 			return
 		current_slot = None
 		entries = {}
