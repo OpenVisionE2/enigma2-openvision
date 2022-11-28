@@ -1817,6 +1817,17 @@ class ConfigDirectory(ConfigText):
 	def onSelect(self, session):
 		self.allmarked = (self.value != "")
 
+	def getValue(self):
+		if self.text == "":
+			return None
+		else:
+			return ConfigText.getValue(self)
+
+	def setValue(self, value):
+		if value is None:
+			value = ""
+		ConfigText.setValue(self, value)
+
 
 class ConfigMACText(ConfigText):
 	def __init__(self, default="", visible_width=17):

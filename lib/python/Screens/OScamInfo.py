@@ -426,7 +426,7 @@ class OscamInfoMenu(Screen):
 		self.menu = [_("Show /tmp/ecm.info"), _("Show Clients"), _("Show Readers/Proxies"), _("Show log"), _("Card infos (CCcam-Reader)"), _("ECM Statistics"), _("Setup")]
 		self.osc = OscamInfo()
 		self["mainmenu"] = oscMenuList([])
-		self["actions"] = NumberActionMap(["OkCancelActions", "InputActions", "ColorActions", "NavigationActions"], {
+		self["actions"] = NumberActionMap(["OkCancelActions", "InputActions", "ColorActions", "ListboxActions"], {
 			"ok": self.ok,
 			"cancel": self.exit,
 			"red": self.red,
