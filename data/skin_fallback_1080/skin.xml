@@ -579,6 +579,7 @@
 	<!-- SECOND INFOBAR -->
 	<screen name="SecondInfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" title="InfoBar">
 		<panel name="poster_secondinfobar"/>
+		<panel name="SecondInfobarButtons"/>
 		<eLabel backgroundColor="OE_ListBackground" name="InfoBar" position="10,160" size="1690,895" zPosition="-22" foregroundColor="white"/>
 		<eLabel backgroundColor="blue_light" name="" position="10,158" size="1690,2" zPosition="-22" foregroundColor="white"/>
 		<eLabel backgroundColor="blue_light" name="" position="10,1055" size="1690,2" zPosition="-22" foregroundColor="white"/>
@@ -723,12 +724,12 @@
 			<convert type="EventName">ExtendedDescription</convert>
 		</widget>
 		<!-- CryptoInfo -->
-		<widget source="session.CurrentService" render="Label" font="RegularBold;21" position="470,1020" size="1210,35" zPosition="50" backgroundColor="OE_ListBackground" transparent="1" noWrap="1" foregroundColor="white">
-			<convert type="CaidInfo2"/>
-		</widget>
-		<!--widget source="session.CurrentService" render="PicEmu2" path="OctEtFHD/emu" position="540,965" size="98,31" transparent="1" alphaTest="blend" zPosition="3"/> -->
 		<widget source="session.CurrentService" render="PicCript" path="OctEtFHD/cript" position="470,965" size="98,31" alphaTest="blend" zPosition="3"/>
 		<panel name="Clock"/>
+		<!--widget source="session.CurrentService" render="PicEmu2" path="OctEtFHD/emu" position="540,965" size="98,31" transparent="1" alphaTest="blend" zPosition="3"/> -->
+		<widget source="session.CurrentService" render="Label" font="RegularBold;21" position="540,965" size="565,35" zPosition="50" backgroundColor="OE_ListBackground" transparent="1" noWrap="1" foregroundColor="white">
+			<convert type="CaidInfo2"/>
+		</widget>
 		 <!-- MSNWeather -->
 		<ePixmap pixmap="OctEtFHD/WeatherIcon/wind.png" position="52,630" size="60,60" alphaTest="blend"/>
 		<widget alphaTest="blend" render="MSNWeatherPixmap" position="55,700" size="128,128" source="session.MSNWeather" transparent="1" zPosition="8">
@@ -4911,6 +4912,13 @@
 		<widget source="key_info" render="Pixmap" pixmap="OctEtFHD/buttons/key_info.png" objectTypes="key_info,StaticText" backgroundColor="OE_NewBg2" position="85,1035" size="64,43" alphaTest="blend" zPosition="-1">
 			<convert type="ConditionalShowHide"/>
 		</widget>
+	</screen>
+		<!--  NAME KEYS FOR ACTIONS BUTTONS SECONDINFOBAR-->
+	<screen name="SecondInfobarButtons">
+		<ePixmap objectTypes="key_yellow,Button,Label" alphaTest="blend" pixmap="OctEtFHD/buttons/key_yellow.png" position="480,1010" size="40,40"/>
+		<ePixmap objectTypes="key_blue,Button,Label" alphaTest="blend" pixmap="OctEtFHD/buttons/key_blue.png" position="920,1010" size="40,40"/>
+		<widget objectTypes="key_yellow,Label,Button" name="key_yellow" font="RegularBold;24" backgroundColor="OE_Background" position="525,1000" size="400,60" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_blue,Label,Button" name="key_blue" font="RegularBold;24" backgroundColor="OE_Background" position="965,1000" size="400,60" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
 	</screen>
 		<!--  SOURCES AND NAMES KEYS ALL WITH CONDITION RED GREEN YELLOW BLUE SCREENS INFORMATION-->
 	<screen name="ButtonsInformation">
