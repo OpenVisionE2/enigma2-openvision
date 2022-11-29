@@ -69,9 +69,9 @@ def InitUsageConfig():
 	config.misc.opkgcleanmode = ConfigYesNo(default=False)
 
 	def correctInvalidEPGDataChange(configElement):
-		eServiceEvent.setUTF8Fix(int(configElement.value))
+		eServiceEvent.setUTF8CorrectMode(int(configElement.value))
 
-	config.usage.correct_invalid_epgdata = ConfigSelection(default="0", choices=[
+	config.usage.correct_invalid_epgdata = ConfigSelection(default="1", choices=[
 		("0", _("Disabled")),
 		("1", _("Enabled")),
 		("2", _("Debug"))
