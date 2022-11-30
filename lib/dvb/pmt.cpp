@@ -407,6 +407,11 @@ void eDVBServicePMTHandler::AITready(int error)
 							break;
 						}
 					}
+					// Quick'n'dirty hack to prevent crashes because of invalid UTF-8 characters
+					// The root cause is in the SimpleApplicationLocationDescriptor or the AIT is buggy
+					if(SALDescPath.size() == 1)
+						SALDescPath="";
+
 					hbbtvUrl = TPDescPath + SALDescPath;
 				}
 				if(!hbbtvUrl.empty())
