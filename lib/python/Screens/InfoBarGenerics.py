@@ -2334,7 +2334,13 @@ class InfoBarExtensions:
 		self.addExtension(extension=self.getLogManager, type=InfoBarExtensions.EXTENSION_LIST)
 
 	def getOSname(self):
-		return _("OScam Info") if config.misc.softcams.value == "oscam" else _("Ncam Info")
+		from process import ProcessList
+		oscam = str(ProcessList().named("oscam")).strip("[]")
+		ncam = str(ProcessList().named("ncam")).strip("[]")
+		if oscam:
+			return _("OSCam Info")
+		if ncam:
+			return _("NCam Info")
 
 	def getOScamInfo(self):
 		if BoxInfo.getItem("OScamInstalled") or BoxInfo.getItem("NCamInstalled"):

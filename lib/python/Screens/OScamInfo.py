@@ -19,7 +19,9 @@ import time
 import skin
 from six.moves.urllib.error import URLError
 from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler, HTTPPasswordMgrWithDefaultRealm, Request, urlopen, build_opener, install_opener
-
+from process import ProcessList
+oscam = str(ProcessList().named("oscam")).strip("[]")
+ncam = str(ProcessList().named("ncam")).strip("[]")
 ###global
 f = 1
 sizeH = 700
@@ -138,8 +140,7 @@ class OscamInfo:
 
 	def openWebIF(self, part=None, reader=None):
 		self.proto = "http"
-		self.api = "oscamapi"
-
+		self.api = "oscamapi" if oscam else "ncamapi"
 		if config.oscaminfo.userdatafromconf.value:
 			udata = self.getUserData()
 			if isinstance(udata, str):
@@ -854,7 +855,7 @@ class oscInfo(Screen, OscamInfo):
 					if i != "":
 						self.out.append(self.buildLogListEntry((i,)))
 			if self.what == "c":
-				if BoxInfo.getItem("NCamIsActive"):
+				if ncam:
 					self.setTitle(_("Client Info ( NCam-Version: %s )") % self.getVersion())
 				else:
 					self.setTitle(_("Client Info ( OScam-Version: %s )") % self.getVersion())
@@ -862,7 +863,7 @@ class oscInfo(Screen, OscamInfo):
 				self["key_yellow"].setText(_("Servers"))
 				self["key_blue"].setText(_("Log"))
 			elif self.what == "s":
-				if BoxInfo.getItem("NCamIsActive"):
+				if ncam:
 					self.setTitle(_("Server Info ( NCam-Version: %s )") % self.getVersion())
 				else:
 					self.setTitle(_("Server Info ( OScam-Version: %s )") % self.getVersion())
@@ -870,7 +871,7 @@ class oscInfo(Screen, OscamInfo):
 				self["key_yellow"].setText("")
 				self["key_blue"].setText(_("Log"))
 			elif self.what == "l":
-				if BoxInfo.getItem("NCamIsActive"):
+				if ncam:
 					self.setTitle(_("NCam Log ( NCam-Version: %s )") % self.getVersion())
 				else:
 					self.setTitle(_("OScam Log ( OScam-Version: %s )") % self.getVersion())
