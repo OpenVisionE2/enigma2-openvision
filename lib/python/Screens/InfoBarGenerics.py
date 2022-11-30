@@ -283,7 +283,7 @@ class HideVBILine(Screen):
 class SecondInfoBar(Screen):
 	def __init__(self, session, skinName):
 		Screen.__init__(self, session)
-		self.skinName = skinName
+		self.skinName = ["SecondInfoBar"]
 		if isPluginInstalled("AutoTimer"):
 			self["key_yellow"] = Label()
 		self["key_blue"] = Label()
