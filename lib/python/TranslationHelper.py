@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file is used to define strings that must be translated but, due
 # to the nature of the code, can't be translated where the text is
 # defined. A particular example of this issue is when code needs to
