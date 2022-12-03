@@ -916,7 +916,11 @@ std::string repairUTF8(const char *szIn, int len)
 {
 	Py_ssize_t sz = len;
 	PyObject * pyinput = PyUnicode_DecodeUTF8Stateful(szIn, sz, "ignore", NULL);
+#if PY_MAJOR_VERSION < 3
+	std::string res = PyString_AS_STRING(pyinput);
+#else
 	std::string res = PyUnicode_AsUTF8(pyinput);
+#endif
 	Py_DECREF(pyinput);
 	return res;
 }
