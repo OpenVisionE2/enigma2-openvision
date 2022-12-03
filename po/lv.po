@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 10:29+0330\n"
+"POT-Creation-Date: 2022-12-03 17:58+0330\n"
 "PO-Revision-Date: 2014-11-12 00:49+0200\n"
 "Last-Translator: Taapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -907,8 +907,36 @@ msgid "%d DMIPS with %d cores"
 msgstr ""
 
 #, python-format
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#, python-format
+msgid "%d Digit"
+msgid_plural "%d Digits"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#, fuzzy, python-format
+msgid "%d Event"
+msgid_plural "%d Events"
+msgstr[0] "Notikumus"
+msgstr[1] "Notikumus"
+msgstr[2] "Notikumus"
+
+#, python-format
 msgid "%d GB"
 msgstr ""
+
+#, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #, python-format
 msgid "%d KB"
@@ -941,6 +969,55 @@ msgid_plural "%d Mins"
 msgstr[0] "%d MB"
 msgstr[1] "%d MB"
 msgstr[2] "%d MB"
+
+#, fuzzy, python-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d minūte"
+msgstr[1] "%d minūtes"
+msgstr[2] "%d minūtes"
+
+#, fuzzy, python-format
+msgid "%d Month"
+msgid_plural "%d Months"
+msgstr[0] "%d MB"
+msgstr[1] "%d MB"
+msgstr[2] "%d MB"
+
+#, fuzzy, python-format
+msgid "%d Pixel"
+msgid_plural "%d Pixels"
+msgstr[0] "Pikseļi\n"
+msgstr[1] "Pikseļi\n"
+msgstr[2] "Pikseļi\n"
+
+#, fuzzy, python-format
+msgid "%d Pixel wide"
+msgid_plural "%d Pixels wide"
+msgstr[0] "%d pikseli plats"
+msgstr[1] "%d pikseļus plats"
+msgstr[2] "%d pikseļus plats"
+
+#, fuzzy, python-format
+msgid "%d Second"
+msgid_plural "%d Seconds"
+msgstr[0] "%d sekunde"
+msgstr[1] "%d sekundes"
+msgstr[2] "%d sekundes"
+
+#, python-format
+msgid "%d Week"
+msgid_plural "%d Weeks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#, fuzzy, python-format
+msgid "%d Year"
+msgid_plural "%d Years"
+msgstr[0] "Gads"
+msgstr[1] "Gads"
+msgstr[2] "Gads"
 
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
 #, python-format
@@ -2770,10 +2847,6 @@ msgstr "Auto DiSEqC"
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Automātiska attēla attēlošana izmantojot EXIF datus"
 
-#, fuzzy
-msgid "Auto Timers"
-msgstr "Automātiska ielāde"
-
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Automātiska nodaļu veidošana katras ? minūtes (0=neveidot)"
 
@@ -2810,6 +2883,10 @@ msgstr "Automātiska SCART pārslēgšana"
 #, fuzzy
 msgid "Auto standby"
 msgstr "Nav gaidstāves"
+
+#, fuzzy
+msgid "AutoTimer"
+msgstr "Taimeri"
 
 #, python-format
 msgid "Autoinstalling %s"
@@ -3056,7 +3133,7 @@ msgstr "Dānija"
 
 #, fuzzy
 msgid "Benchmark information"
-msgstr "Programmatūras pārvaldnieka informācija"
+msgstr "Informācija"
 
 msgid "Bengali"
 msgstr ""
@@ -3853,6 +3930,9 @@ msgstr ""
 msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
+msgid "Choose the option to correct invalid EPG data."
+msgstr ""
+
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
@@ -4569,7 +4649,7 @@ msgstr "Izmanto transkodēšanu, PiP nevar lietot!"
 
 #, fuzzy
 msgid "Connection information"
-msgstr "Spraudņu pārlūka aktivitātes informācija"
+msgstr "Informācija"
 
 msgid ""
 "Connection using supplied FTP parameters failed.\n"
@@ -4663,6 +4743,10 @@ msgstr ""
 #, fuzzy
 msgid "Cornish"
 msgstr "Dāņu"
+
+#, fuzzy
+msgid "Correct invalid EPG data"
+msgstr "Saglabā iestatījumus un EPG datus"
 
 msgid "Corsican"
 msgstr ""
@@ -5141,6 +5225,9 @@ msgid "Dayname Year/MM/D"
 msgstr ""
 
 msgid "Dayname Year/MM/DD"
+msgstr ""
+
+msgid "Debug"
 msgstr ""
 
 #, fuzzy
@@ -5669,8 +5756,9 @@ msgstr ""
 msgid "Display next system information screen"
 msgstr ""
 
+#, fuzzy
 msgid "Display oscam information."
-msgstr ""
+msgstr "Informācija"
 
 #, fuzzy
 msgid "Display previous commit log"
@@ -6344,9 +6432,6 @@ msgid ""
 "Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Izmantot citu Enigma2 uztvērēju, kuru lietot lai mēģinātu uztvert kanālu kurš nav uztverams lokāli (piem. uztvērējs ir aizņemts vai kanāla veids nav pieejams lokālajā uztvērējā). Norādiet pilnu adresi ieskaitot http:// un porta numuru (pēc noklusējuma ...:8001), piem. http://second_box:8001."
 
-msgid "Enable screenshot of LCD in /tmp."
-msgstr ""
-
 msgid "Enable teletext caching"
 msgstr "Aktivizēt teleteksta kešošanu"
 
@@ -6654,7 +6739,7 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Kļūda apturot straumēšanu!"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
@@ -7442,6 +7527,10 @@ msgstr "Pk"
 msgid "Friday"
 msgstr "Piektdiena"
 
+#, fuzzy
+msgid "From"
+msgstr "No:"
+
 msgid "From:"
 msgstr "No:"
 
@@ -7566,6 +7655,10 @@ msgstr "Bluetooth audio aizture"
 
 msgid "General PCM delay"
 msgstr "PCM aizture"
+
+#, fuzzy
+msgid "General audio delay"
+msgstr "Bluetooth audio aizture"
 
 msgid "Generic"
 msgstr ""
@@ -7905,7 +7998,7 @@ msgstr "Cietā diska iestatījumi"
 
 #, fuzzy
 msgid "Hardware information"
-msgstr "Programmatūras pārvaldnieka informācija"
+msgstr "Informācija"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -8237,6 +8330,9 @@ msgstr "Ja iestatīts 'jā', uz TV tieks sūtītas vienādas komandas gan izslē
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "Ja iestatīts 'jā', signāla vērtības (SNR utt.) tiks aprēķinātas no API V3. Šī ir vecā API versija, kas tagad ir aizstāta."
 
+msgid "If set to 'yes', allows you to use timeshift with alternative audio plugins."
+msgstr ""
+
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
 
@@ -8308,6 +8404,14 @@ msgstr "Imidžs: "
 
 msgid "Immediately restart selected devices."
 msgstr ""
+
+#, fuzzy
+msgid "Import AutoTimer"
+msgstr "Kārt. laiks"
+
+#, fuzzy
+msgid "Import autotimer in current event"
+msgstr "Gaidstāve pēc pašreizējās pārraides"
 
 #, fuzzy
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
@@ -10150,6 +10254,10 @@ msgstr "N/A"
 msgid "NCam Config info"
 msgstr ""
 
+#, fuzzy
+msgid "NCam Info"
+msgstr "ECM info"
+
 msgid "NCam Info Main Menu"
 msgstr ""
 
@@ -10239,10 +10347,6 @@ msgstr ""
 #, fuzzy
 msgid "Ncam ECM info"
 msgstr "ECM info"
-
-#, fuzzy
-msgid "Ncam Info"
-msgstr "Info"
 
 #, fuzzy
 msgid "Ncam Info Setup"
@@ -10746,6 +10850,10 @@ msgstr "ONID"
 msgid "OPKG clean mode"
 msgstr ""
 
+#, fuzzy
+msgid "OSCam Info"
+msgstr "ECM info"
+
 msgid "OSD"
 msgstr ""
 
@@ -10790,9 +10898,8 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "piespiedu izslēgts"
 
-#, fuzzy
-msgid "OTT Model"
-msgstr "Modelis"
+msgid "OTT"
+msgstr ""
 
 msgid "OUT"
 msgstr ""
@@ -10888,7 +10995,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision information"
-msgstr "Atvērt izvēlēto mapi"
+msgstr "Informācija"
 
 msgid "Open Vision revision check"
 msgstr ""
@@ -12018,7 +12125,7 @@ msgstr "Norise"
 
 #, fuzzy
 msgid "Processor information"
-msgstr "Programmatūras pārvaldnieka informācija"
+msgstr "Informācija"
 
 msgid "Progress"
 msgstr "Progress"
@@ -12411,6 +12518,10 @@ msgstr "Ieraksta iestatījumi"
 
 msgid "Recording in progress"
 msgstr "Ieraksts notiek"
+
+#, fuzzy
+msgid "Recording time has been set."
+msgstr "Miega taimeris tika izslēgts."
 
 msgid "Recording type"
 msgstr "Ieraksta veids"
@@ -13356,9 +13467,6 @@ msgid "Scans default lamedbs sorted by satellite with a connected dish positione
 msgstr "Meklē noklusētos lamedbs, sakārtotus pēc pavadoņiem ar pievienotu pozicioniera antenu"
 
 msgid "Schedule EPG and channel list import"
-msgstr ""
-
-msgid "Screenshot of LCD in /tmp"
 msgstr ""
 
 msgid "Scroll delay"
@@ -14547,6 +14655,10 @@ msgstr "Rādīt palīdzību"
 msgid "Show media player on main menu"
 msgstr "Parādīt mediju atskaņotāju pamata izvēlnē"
 
+#, fuzzy
+msgid "Show menu numbers"
+msgstr "Rādīt numurus iestatījumiem vai spraudņiem"
+
 msgid "Show menu or plugin numbers"
 msgstr "Rādīt numurus iestatījumiem vai spraudņiem"
 
@@ -14715,7 +14827,7 @@ msgstr "Subtitru iestatīšana"
 
 #, fuzzy
 msgid "Show system information"
-msgstr "Programmatūras pārvaldnieka informācija"
+msgstr "Informācija"
 
 #, fuzzy
 msgid "Show the TV player"
@@ -14940,6 +15052,9 @@ msgstr "Izlaist tukšos kanālus"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Izlaist interneta savienojuma pārbaudi (atspējo automātisku pakotņu uzstādīšanu)"
+
+msgid "Skip jumping to live TV while timeshifting with plugins"
+msgstr ""
 
 #, fuzzy
 msgid "Sleep Timer"
@@ -16106,14 +16221,6 @@ msgid "The '%s' log file contains no information."
 msgstr ""
 
 #, fuzzy
-msgid ""
-"The AutoTimer plugin is not installed!\n"
-"Please install it."
-msgstr ""
-"Bezvadu tīkla spraudnis nav instalēts!\n"
-"Lūdzu uzstādiet to."
-
-#, fuzzy
 msgid "The AutoTimer plugin is not installed."
 msgstr "Šis spraudnis nav instalēts."
 
@@ -16503,6 +16610,10 @@ msgstr "Šī opcija var būt noderīga gariem HDMI kabeļiem."
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
+msgstr "Uzstāda aizturi bluetooth skaļruņiem."
+
+#, fuzzy
+msgid "This option configures the general audio delay."
 msgstr "Uzstāda aizturi bluetooth skaļruņiem."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
@@ -16990,7 +17101,7 @@ msgstr "Informācija"
 
 #, fuzzy
 msgid "Translation information"
-msgstr "Tulkojums"
+msgstr "Informācija"
 
 msgid "Translation:"
 msgstr "Tulkojums:"
@@ -17254,6 +17365,7 @@ msgstr "Atsaukt atinstalēšanu"
 msgid "Unencrypted"
 msgstr "Nešifrēts"
 
+#, fuzzy
 msgid "Unexpected error while retreiving fallback tuner's timer information"
 msgstr "Negaidīta kļūda iegūstot taimeru informāciju no attālinātā uztvērēja"
 
@@ -17435,6 +17547,9 @@ msgstr "izmantot labāko no HDMI"
 
 msgid "Use circular LNB"
 msgstr "Lietot cirkulāro LNB"
+
+msgid "Use config file /etc/\"inetd.conf\" in mode IPv6 compatible with IPv4."
+msgstr ""
 
 #, fuzzy
 msgid "Use defaults"

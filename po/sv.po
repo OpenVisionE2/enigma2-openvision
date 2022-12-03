@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 10:29+0330\n"
+"POT-Creation-Date: 2022-12-03 17:58+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -917,8 +917,32 @@ msgid "%d DMIPS with %d cores"
 msgstr ""
 
 #, python-format
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%d Digit"
+msgid_plural "%d Digits"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%d Event"
+msgid_plural "%d Events"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
 msgid "%d GB"
 msgstr ""
+
+#, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-format
 msgid "%d KB"
@@ -950,6 +974,50 @@ msgid "%d Min"
 msgid_plural "%d Mins"
 msgstr[0] ""
 msgstr[1] ""
+
+#, fuzzy, python-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d minut"
+msgstr[1] "%d minuter"
+
+#
+#, fuzzy, python-format
+msgid "%d Month"
+msgid_plural "%d Months"
+msgstr[0] "månad"
+msgstr[1] "månad"
+
+#, fuzzy, python-format
+msgid "%d Pixel"
+msgid_plural "%d Pixels"
+msgstr[0] "%d pixelbredd"
+msgstr[1] "%d pixelbredd"
+
+#, fuzzy, python-format
+msgid "%d Pixel wide"
+msgid_plural "%d Pixels wide"
+msgstr[0] "%d pixelbredd"
+msgstr[1] "%d pixelbredd"
+
+#, fuzzy, python-format
+msgid "%d Second"
+msgid_plural "%d Seconds"
+msgstr[0] "%d sekund"
+msgstr[1] "%d sekunder"
+
+#, python-format
+msgid "%d Week"
+msgid_plural "%d Weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#
+#, fuzzy, python-format
+msgid "%d Year"
+msgid_plural "%d Years"
+msgstr[0] "År"
+msgstr[1] "År"
 
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
 #, python-format
@@ -2940,11 +3008,6 @@ msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Auto EXIF orientering rotation / vändning"
 
 #
-#, fuzzy
-msgid "Auto Timers"
-msgstr "Auto hudfärg"
-
-#
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Auto kapitelsplit varje ? minut (0=aldrig)"
 
@@ -2988,6 +3051,11 @@ msgstr "Auto scart växling"
 #, fuzzy
 msgid "Auto standby"
 msgstr "Inget viloläge"
+
+#
+#, fuzzy
+msgid "AutoTimer"
+msgstr "Timer"
 
 #
 #, fuzzy, python-format
@@ -3263,9 +3331,10 @@ msgstr "Information"
 msgid "Benchmark for"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Benchmark information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Information"
 
 msgid "Bengali"
 msgstr ""
@@ -4106,6 +4175,9 @@ msgstr ""
 msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
+msgid "Choose the option to correct invalid EPG data."
+msgstr ""
+
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
@@ -4896,7 +4968,7 @@ msgstr "Ansluten omkodning, gräns - ingen BiB!"
 #
 #, fuzzy
 msgid "Connection information"
-msgstr "Pluginhanterare aktivitetsinformation"
+msgstr "Information"
 
 msgid ""
 "Connection using supplied FTP parameters failed.\n"
@@ -4994,6 +5066,9 @@ msgstr ""
 #, fuzzy
 msgid "Cornish"
 msgstr "Danska"
+
+msgid "Correct invalid EPG data"
+msgstr ""
 
 msgid "Corsican"
 msgstr ""
@@ -5515,6 +5590,9 @@ msgid "Dayname Year/MM/D"
 msgstr ""
 
 msgid "Dayname Year/MM/DD"
+msgstr ""
+
+msgid "Debug"
 msgstr ""
 
 #
@@ -6110,8 +6188,10 @@ msgstr ""
 msgid "Display next system information screen"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Display oscam information."
-msgstr ""
+msgstr "Information"
 
 #, fuzzy
 msgid "Display previous commit log"
@@ -6884,9 +6964,6 @@ msgid ""
 "Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Aktivera fjärrmottagare för att försöka ställa in kanaler som inte kan ställas in lokalt (t.ex. att tuner är upptagen eller kanalen inte är tillgänglig på den lokala tunern). Ange den fullständiga webbadressen inklusive http://och portnummer (vanligtvis ...:8001), till exempel http://andra boxen:8001."
 
-msgid "Enable screenshot of LCD in /tmp."
-msgstr ""
-
 msgid "Enable teletext caching"
 msgstr "Aktivera teletext cache"
 
@@ -7213,11 +7290,11 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr ""
+msgstr "URL för reserv fjärrmottagare"
 
 #
 #, python-format
@@ -8089,6 +8166,10 @@ msgstr "Fre"
 msgid "Friday"
 msgstr "Fredag"
 
+#, fuzzy
+msgid "From"
+msgstr "Från :"
+
 msgid "From:"
 msgstr "Från :"
 
@@ -8223,6 +8304,11 @@ msgstr "Generell AC3 fördröjning"
 #
 msgid "General PCM delay"
 msgstr "Generell PCM fördröjning"
+
+#
+#, fuzzy
+msgid "General audio delay"
+msgstr "Generell AC3 fördröjning"
 
 msgid "Generic"
 msgstr ""
@@ -8596,9 +8682,10 @@ msgstr "Hårddisk"
 msgid "Harddisk Setup"
 msgstr "Hårddiskinställningar"
 
+#
 #, fuzzy
 msgid "Hardware information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Information"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -8942,6 +9029,9 @@ msgstr ""
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr ""
 
+msgid "If set to 'yes', allows you to use timeshift with alternative audio plugins."
+msgstr ""
+
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
 
@@ -9012,6 +9102,15 @@ msgstr "Image : "
 
 msgid "Immediately restart selected devices."
 msgstr ""
+
+#
+#, fuzzy
+msgid "Import AutoTimer"
+msgstr "Sortera tid"
+
+#, fuzzy
+msgid "Import autotimer in current event"
+msgstr "Viloläge efter aktuellt program"
 
 #, fuzzy
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
@@ -11069,6 +11168,11 @@ msgstr "N / A"
 msgid "NCam Config info"
 msgstr ""
 
+#
+#, fuzzy
+msgid "NCam Info"
+msgstr "Info"
+
 msgid "NCam Info Main Menu"
 msgstr ""
 
@@ -11168,11 +11272,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Ncam ECM info"
-msgstr "Info"
-
-#
-#, fuzzy
-msgid "Ncam Info"
 msgstr "Info"
 
 #
@@ -11741,6 +11840,11 @@ msgstr "ONID"
 msgid "OPKG clean mode"
 msgstr ""
 
+#
+#, fuzzy
+msgid "OSCam Info"
+msgstr "Info"
+
 msgid "OSD"
 msgstr ""
 
@@ -11789,10 +11893,8 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "avaktiverad"
 
-#
-#, fuzzy
-msgid "OTT Model"
-msgstr "Läge "
+msgid "OTT"
+msgstr ""
 
 msgid "OUT"
 msgstr ""
@@ -11892,9 +11994,10 @@ msgstr ""
 msgid "Open Vision Commit Info Setup"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Open Vision information"
-msgstr "Öppna sökvägsplats"
+msgstr "Information"
 
 msgid "Open Vision revision check"
 msgstr ""
@@ -13161,9 +13264,10 @@ msgstr "Söker efter uppdateringar"
 msgid "Process"
 msgstr "Process"
 
+#
 #, fuzzy
 msgid "Processor information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Information"
 
 msgid "Progress"
 msgstr "Stor tidslinje"
@@ -13597,6 +13701,11 @@ msgstr "Inspellningsinställningar"
 
 msgid "Recording in progress"
 msgstr "Inspelning pågår"
+
+#
+#, fuzzy
+msgid "Recording time has been set."
+msgstr "Insomningstimern är avstängd."
 
 msgid "Recording type"
 msgstr "Inpelningstyp"
@@ -14667,9 +14776,6 @@ msgid "Scans default lamedbs sorted by satellite with a connected dish positione
 msgstr "Sök grund lamedbs sorterat på satellit med en ansluten parabolmotor"
 
 msgid "Schedule EPG and channel list import"
-msgstr ""
-
-msgid "Screenshot of LCD in /tmp"
 msgstr ""
 
 msgid "Scroll delay"
@@ -15974,6 +16080,10 @@ msgid "Show media player on main menu"
 msgstr "Visa mediaspelaren i huvudmenyn"
 
 #, fuzzy
+msgid "Show menu numbers"
+msgstr "Visa menynummer"
+
+#, fuzzy
 msgid "Show menu or plugin numbers"
 msgstr "Visa menynummer"
 
@@ -16148,9 +16258,10 @@ msgstr "Visa val av tjänst"
 msgid "Show subtitle selection"
 msgstr "Visa undertextval"
 
+#
 #, fuzzy
 msgid "Show system information"
-msgstr "Information om mjukvaruhanterare"
+msgstr "Information"
 
 #
 #, fuzzy
@@ -16412,6 +16523,9 @@ msgstr "Hoppa över tomma kanaler"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Hoppa över kontroll av internetanslutning (inaktiverar automatisk paketinstallation)"
+
+msgid "Skip jumping to live TV while timeshifting with plugins"
+msgstr ""
 
 #
 #, fuzzy
@@ -17717,15 +17831,6 @@ msgstr ""
 
 #
 #, fuzzy
-msgid ""
-"The AutoTimer plugin is not installed!\n"
-"Please install it."
-msgstr ""
-"Pluginet för trådlöst LAN är inte installerad!\n"
-"Vänligen installera den."
-
-#
-#, fuzzy
 msgid "The AutoTimer plugin is not installed."
 msgstr "Detta plugin är inte installerat."
 
@@ -18166,6 +18271,10 @@ msgstr ""
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
+msgstr "Konfigurera den generella ljudfördröjningen av stereo ljudspår."
+
+#, fuzzy
+msgid "This option configures the general audio delay."
 msgstr "Konfigurera den generella ljudfördröjningen av stereo ljudspår."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
@@ -18719,7 +18828,7 @@ msgstr "Information"
 #
 #, fuzzy
 msgid "Translation information"
-msgstr "Översättning"
+msgstr "Information"
 
 #
 msgid "Translation:"
@@ -19219,6 +19328,9 @@ msgstr ""
 
 msgid "Use circular LNB"
 msgstr "Använd cirkulär LNB"
+
+msgid "Use config file /etc/\"inetd.conf\" in mode IPv6 compatible with IPv4."
+msgstr ""
 
 #, fuzzy
 msgid "Use defaults"

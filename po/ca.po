@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 10:29+0330\n"
-"PO-Revision-Date: 2022-06-19 18:41+0200\n"
+"POT-Creation-Date: 2022-12-03 17:58+0330\n"
+"PO-Revision-Date: 2022-10-13 18:38+0200\n"
 "Last-Translator: Oriol Pellicer <oriol@elsud.org>\n"
 "Language-Team: angelodos angelo2807@hotmail.com\n"
 "Language: ca\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #
 msgid ""
@@ -957,8 +957,32 @@ msgid "%d DMIPS with %d cores"
 msgstr ""
 
 #, python-format
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%d Digit"
+msgid_plural "%d Digits"
+msgstr[0] ""
+msgstr[1] ""
+
+#, fuzzy, python-format
+msgid "%d Event"
+msgid_plural "%d Events"
+msgstr[0] "Esdeveniments clau"
+msgstr[1] "Esdeveniments clau"
+
+#, python-format
 msgid "%d GB"
 msgstr ""
+
+#, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-format
 msgid "%d KB"
@@ -990,6 +1014,49 @@ msgid "%d Min"
 msgid_plural "%d Mins"
 msgstr[0] "%d MB"
 msgstr[1] "%d MB"
+
+#, fuzzy, python-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d minut"
+msgstr[1] "%d minuts"
+
+#, fuzzy, python-format
+msgid "%d Month"
+msgid_plural "%d Months"
+msgstr[0] "%d MB"
+msgstr[1] "%d MB"
+
+#, fuzzy, python-format
+msgid "%d Pixel"
+msgid_plural "%d Pixels"
+msgstr[0] "Pixels\n"
+msgstr[1] "Pixels\n"
+
+#, fuzzy, python-format
+msgid "%d Pixel wide"
+msgid_plural "%d Pixels wide"
+msgstr[0] "%d píxel d’ample"
+msgstr[1] "%d píxel d’amples"
+
+#, fuzzy, python-format
+msgid "%d Second"
+msgid_plural "%d Seconds"
+msgstr[0] "%d segon"
+msgstr[1] "%d segons"
+
+#, python-format
+msgid "%d Week"
+msgid_plural "%d Weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#
+#, fuzzy, python-format
+msgid "%d Year"
+msgid_plural "%d Years"
+msgstr[0] "Any"
+msgstr[1] "Any"
 
 #
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
@@ -2963,11 +3030,6 @@ msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Auto EXIF Orientació de rotació / volteig"
 
 #
-#, fuzzy
-msgid "Auto Timers"
-msgstr "Auto flesh"
-
-#
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "El capítol automàtic es divideix cada? minuts (0 = mai)"
 
@@ -3010,6 +3072,11 @@ msgstr "Canvi automàtic de descart"
 #, fuzzy
 msgid "Auto standby"
 msgstr "Sense standby"
+
+#
+#, fuzzy
+msgid "AutoTimer"
+msgstr "Programació"
 
 #
 #, python-format
@@ -3282,9 +3349,10 @@ msgstr "Informació"
 msgid "Benchmark for"
 msgstr "Dinamarca"
 
+#
 #, fuzzy
 msgid "Benchmark information"
-msgstr "Informació del gestor de programari"
+msgstr "Informació"
 
 msgid "Bengali"
 msgstr ""
@@ -3611,9 +3679,8 @@ msgid "CI assignment"
 msgstr "Assignació de CI"
 
 #
-#, fuzzy
 msgid "CI enabled"
-msgstr "FCC activat"
+msgstr "CI habilitat"
 
 msgid "CI slot: "
 msgstr "CI slot: "
@@ -4142,6 +4209,9 @@ msgid "Choose the location where the EPG data will be stored when your %s %s is 
 msgstr ""
 
 msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
+msgstr ""
+
+msgid "Choose the option to correct invalid EPG data."
 msgstr ""
 
 msgid "Choose the order in which items are displayed in Help windows"
@@ -4912,7 +4982,7 @@ msgstr "Transcodificació connectada, límit - no PiP!"
 #
 #, fuzzy
 msgid "Connection information"
-msgstr "Informació sobre l’activitat del gestor de connectors"
+msgstr "Informació"
 
 msgid ""
 "Connection using supplied FTP parameters failed.\n"
@@ -5011,6 +5081,10 @@ msgstr ""
 #, fuzzy
 msgid "Cornish"
 msgstr "Danès"
+
+#, fuzzy
+msgid "Correct invalid EPG data"
+msgstr "Guardar la configuració i les dades d’EPG"
 
 msgid "Corsican"
 msgstr ""
@@ -5523,6 +5597,9 @@ msgid "Dayname Year/MM/D"
 msgstr ""
 
 msgid "Dayname Year/MM/DD"
+msgstr ""
+
+msgid "Debug"
 msgstr ""
 
 #
@@ -6113,8 +6190,10 @@ msgstr ""
 msgid "Display next system information screen"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Display oscam information."
-msgstr ""
+msgstr "Informació"
 
 #, fuzzy
 msgid "Display previous commit log"
@@ -6877,9 +6956,6 @@ msgid ""
 "Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Habiliteu el receptor enigma2 remot per intentar sintonitzar serveis que no es poden ajustar localment (per exemple, el sintonitzador està ocupat o el tipus de servei no està disponible al sintonitzador local. Especifiqueu l’URL complet inclòs el número http: // i el port (normalment …: 8001 ), per exemple, http: // second_box: 8001."
 
-msgid "Enable screenshot of LCD in /tmp."
-msgstr ""
-
 msgid "Enable teletext caching"
 msgstr "Activa la memòria catxe del teletext"
 
@@ -7212,7 +7288,7 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Error d’aturar el flux!"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
@@ -8076,6 +8152,10 @@ msgstr "Div"
 msgid "Friday"
 msgstr "Divendres"
 
+#, fuzzy
+msgid "From"
+msgstr "De:"
+
 msgid "From:"
 msgstr "De:"
 
@@ -8205,6 +8285,10 @@ msgstr "Retard general d'àudio bluetooth"
 msgid "General PCM delay"
 msgstr "Retard general del PCM"
 
+#, fuzzy
+msgid "General audio delay"
+msgstr "Retard general d'àudio bluetooth"
+
 msgid "Generic"
 msgstr ""
 
@@ -8230,7 +8314,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Geolocation information cannot be retrieved, please try again later."
-msgstr "Actualment no es pot recuperar el registre de compromís. Torneu-ho a provar més endavant"
+msgstr "Actualment el registre de confirmació no es pot recuperar; si us plau, torneu-ho a provar més tard."
 
 #
 #, fuzzy
@@ -8569,9 +8653,10 @@ msgstr "Disc dur"
 msgid "Harddisk Setup"
 msgstr "Configuració del disc dur"
 
+#
 #, fuzzy
 msgid "Hardware information"
-msgstr "Informació del gestor de programari"
+msgstr "Informació"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -8924,6 +9009,9 @@ msgstr "Si s’estableix a “sí”, s’enviaran les mateixes ordres al televi
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "Si es defineix a “sí”, els valors de senyal (SNR, etc.) es calcularan a partir de l’API V3. Aquesta és una versió antiga de l’API que ara ha estat substituïda."
 
+msgid "If set to 'yes', allows you to use timeshift with alternative audio plugins."
+msgstr ""
+
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
 
@@ -8997,6 +9085,15 @@ msgstr "Imatge:"
 
 msgid "Immediately restart selected devices."
 msgstr ""
+
+#
+#, fuzzy
+msgid "Import AutoTimer"
+msgstr "Sense timeout"
+
+#, fuzzy
+msgid "Import autotimer in current event"
+msgstr "Espera després de l’esdeveniment actual"
 
 #, fuzzy
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
@@ -11045,6 +11142,10 @@ msgstr "N/D"
 msgid "NCam Config info"
 msgstr ""
 
+#, fuzzy
+msgid "NCam Info"
+msgstr "ECM Info"
+
 msgid "NCam Info Main Menu"
 msgstr ""
 
@@ -11055,7 +11156,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "NCam webif disabled"
-msgstr "força desactivada"
+msgstr "mòdul desactivat"
 
 #
 msgid "NEXT"
@@ -11147,11 +11248,6 @@ msgstr ""
 #, fuzzy
 msgid "Ncam ECM info"
 msgstr "ECM Info"
-
-#
-#, fuzzy
-msgid "Ncam Info"
-msgstr "Info"
 
 #, fuzzy
 msgid "Ncam Info Setup"
@@ -11713,6 +11809,10 @@ msgstr "ONID"
 msgid "OPKG clean mode"
 msgstr ""
 
+#, fuzzy
+msgid "OSCam Info"
+msgstr "ECM Info"
+
 msgid "OSD"
 msgstr ""
 
@@ -11759,10 +11859,8 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "força desactivada"
 
-#
-#, fuzzy
-msgid "OTT Model"
-msgstr "Model"
+msgid "OTT"
+msgstr ""
 
 msgid "OUT"
 msgstr ""
@@ -11862,9 +11960,10 @@ msgstr "Seleccioneu només “sí” si utilitzeu un interruptor multiswitch que
 msgid "Open Vision Commit Info Setup"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Open Vision information"
-msgstr "Obre la ubicació seleccionada"
+msgstr "Informació"
 
 msgid "Open Vision revision check"
 msgstr ""
@@ -11969,11 +12068,11 @@ msgstr "Funcionament de l’estat del LED en mode d’espera"
 
 #, fuzzy
 msgid "Operating LED color"
-msgstr "Funcionament de l’estat del LED mentre s’executa."
+msgstr "Estat del LED en funcionament mentre s’executa"
 
 #, fuzzy
 msgid "Operating LED color while blinking"
-msgstr "Funcionament de l’estat del LED mentre s’executa."
+msgstr "Estat del LED en funcionament mentre s’executa"
 
 #, fuzzy
 msgid "Operating LED fade"
@@ -11982,9 +12081,8 @@ msgstr "Funcionament de l’estat del LED en mode d’espera"
 msgid "Operating LED status in deep standby mode"
 msgstr "Funcionament de l’estat del LED en mode d’espera profunda"
 
-#, fuzzy
 msgid "Operating LED status while running"
-msgstr "Funcionament de l’estat del LED mentre s’executa."
+msgstr "Estat del LED en funcionament mentre s’executa"
 
 msgid "Opkg"
 msgstr "Opkg"
@@ -13130,9 +13228,10 @@ msgstr "Actualització de la llista de paquets"
 msgid "Process"
 msgstr "Procés"
 
+#
 #, fuzzy
 msgid "Processor information"
-msgstr "Informació del gestor de programari"
+msgstr "Informació"
 
 msgid "Progress"
 msgstr "Progrés "
@@ -13564,6 +13663,11 @@ msgstr "Configuració de l’enregistrament"
 
 msgid "Recording in progress"
 msgstr "Gravació en curs"
+
+#
+#, fuzzy
+msgid "Recording time has been set."
+msgstr "S'ha desactivat la programació d'aturada."
 
 msgid "Recording type"
 msgstr "Tipus de grabacio"
@@ -14630,9 +14734,6 @@ msgid "Scans default lamedbs sorted by satellite with a connected dish positione
 msgstr "Escaneja les làmpades predeterminades ordenades per satèl·lit amb un posicionador de plat connectat"
 
 msgid "Schedule EPG and channel list import"
-msgstr ""
-
-msgid "Screenshot of LCD in /tmp"
 msgstr ""
 
 msgid "Scroll delay"
@@ -15927,6 +16028,10 @@ msgstr "Mostra ajuda"
 msgid "Show media player on main menu"
 msgstr "Mostra el reproductor multimèdia al menú principal"
 
+#, fuzzy
+msgid "Show menu numbers"
+msgstr "Mostra els números del menú o del complement"
+
 msgid "Show menu or plugin numbers"
 msgstr "Mostra els números del menú o del complement"
 
@@ -16098,9 +16203,10 @@ msgstr "Mostra la selecció del subservici"
 msgid "Show subtitle selection"
 msgstr "Mostra la selecció de subtítols"
 
+#
 #, fuzzy
 msgid "Show system information"
-msgstr "Informació del gestor de programari"
+msgstr "Informació"
 
 #
 #, fuzzy
@@ -16359,6 +16465,9 @@ msgstr "Omet els serveis buits"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Omet la verificació de la connexió a Internet (desactiva la instal·lació automàtica de paquets)"
+
+msgid "Skip jumping to live TV while timeshifting with plugins"
+msgstr ""
 
 #
 #, fuzzy
@@ -17267,9 +17376,8 @@ msgstr "Mostra la llista d’extensions de visualització i d’interfície d’
 msgid "Switch on the display during Suspend Mode"
 msgstr "Mostra la llista d’extensions de visualització i d’interfície d’usuari disponibles"
 
-#, fuzzy
 msgid "Switch on the display during operation"
-msgstr "Enceneu la pantalla durant el funcionament."
+msgstr "Enceneu la pantalla durant el funcionament"
 
 msgid "Switch to Android"
 msgstr "Canvia a Android"
@@ -17630,20 +17738,11 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "The %s commit logs can't be retrieved, please try again later."
-msgstr "Actualment no es pot recuperar el registre de compromís. Torneu-ho a provar més endavant"
+msgstr "Actualment el registre de confirmació no es pot recuperar; si us plau, torneu-ho a provar més tard."
 
 #, python-format
 msgid "The '%s' log file contains no information."
 msgstr ""
-
-#
-#, fuzzy
-msgid ""
-"The AutoTimer plugin is not installed!\n"
-"Please install it."
-msgstr ""
-"El complement LAN sense fils no està instal·lat.\n"
-"Instal·leu-lo."
 
 #
 #, fuzzy
@@ -18058,6 +18157,10 @@ msgstr "Aquesta opció pot ser útil per a cables HDMI llargs."
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
+msgstr "Aquesta opció configura el retard d'àudio general per als altaveus bluetooth."
+
+#, fuzzy
+msgid "This option configures the general audio delay."
 msgstr "Aquesta opció configura el retard d'àudio general per als altaveus bluetooth."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
@@ -18603,7 +18706,7 @@ msgstr "Informació"
 #
 #, fuzzy
 msgid "Translation information"
-msgstr "Traducció"
+msgstr "Informació"
 
 #
 msgid "Translation:"
@@ -18898,6 +19001,7 @@ msgstr "Desfés la desinstal·lació"
 msgid "Unencrypted"
 msgstr "No xifrat"
 
+#, fuzzy
 msgid "Unexpected error while retreiving fallback tuner's timer information"
 msgstr "Error inesperat a l’hora de recuperar la informació del temporitzador del tornador de caiguda"
 
@@ -19096,6 +19200,9 @@ msgstr "ús millor / controlat per HDMI"
 
 msgid "Use circular LNB"
 msgstr "Utilitzeu LNB circular"
+
+msgid "Use config file /etc/\"inetd.conf\" in mode IPv6 compatible with IPv4."
+msgstr ""
 
 #
 #, fuzzy
@@ -21313,9 +21420,8 @@ msgid "minutes"
 msgstr "%d minuts"
 
 #
-#, fuzzy
 msgid "module disabled"
-msgstr "força desactivada"
+msgstr "mòdul desactivat"
 
 #
 msgid "month"

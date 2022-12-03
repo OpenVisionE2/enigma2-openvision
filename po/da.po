@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 10:29+0330\n"
+"POT-Creation-Date: 2022-12-03 17:58+0330\n"
 "PO-Revision-Date: 2017-01-18 16:38+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
@@ -919,8 +919,32 @@ msgid "%d DMIPS with %d cores"
 msgstr ""
 
 #, python-format
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%d Digit"
+msgid_plural "%d Digits"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%d Event"
+msgid_plural "%d Events"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
 msgid "%d GB"
 msgstr ""
+
+#, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-format
 msgid "%d KB"
@@ -952,6 +976,50 @@ msgid "%d Min"
 msgid_plural "%d Mins"
 msgstr[0] ""
 msgstr[1] ""
+
+#, fuzzy, python-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d minut"
+msgstr[1] "%d minutter"
+
+#
+#, fuzzy, python-format
+msgid "%d Month"
+msgid_plural "%d Months"
+msgstr[0] "måned"
+msgstr[1] "måned"
+
+#, fuzzy, python-format
+msgid "%d Pixel"
+msgid_plural "%d Pixels"
+msgstr[0] "%d pixel bredde"
+msgstr[1] "%d pixels bredde"
+
+#, fuzzy, python-format
+msgid "%d Pixel wide"
+msgid_plural "%d Pixels wide"
+msgstr[0] "%d pixel bredde"
+msgstr[1] "%d pixels bredde"
+
+#, fuzzy, python-format
+msgid "%d Second"
+msgid_plural "%d Seconds"
+msgstr[0] "%d sekund"
+msgstr[1] "%d sekunder"
+
+#, python-format
+msgid "%d Week"
+msgid_plural "%d Weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#
+#, fuzzy, python-format
+msgid "%d Year"
+msgid_plural "%d Years"
+msgstr[0] "År"
+msgstr[1] "År"
 
 #
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
@@ -2934,11 +3002,6 @@ msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Auto EXIF Orientation rotation/spejling"
 
 #
-#, fuzzy
-msgid "Auto Timers"
-msgstr "Auto flash"
-
-#
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Auto kapitel oprettelse hvert ? minut (0=aldrig) "
 
@@ -2982,6 +3045,11 @@ msgstr "Autoskift Scart"
 #, fuzzy
 msgid "Auto standby"
 msgstr "Ingen standby"
+
+#
+#, fuzzy
+msgid "AutoTimer"
+msgstr "Timer"
 
 #
 #, fuzzy, python-format
@@ -3257,9 +3325,10 @@ msgstr "Information"
 msgid "Benchmark for"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Benchmark information"
-msgstr "Softwarehåndterings information"
+msgstr "Information"
 
 msgid "Bengali"
 msgstr ""
@@ -4104,6 +4173,9 @@ msgstr ""
 msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
+msgid "Choose the option to correct invalid EPG data."
+msgstr ""
+
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
@@ -4897,7 +4969,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "Connection information"
-msgstr "Aktivitetsinformation for plugin styring"
+msgstr "Information"
 
 msgid ""
 "Connection using supplied FTP parameters failed.\n"
@@ -4998,6 +5070,9 @@ msgstr ""
 #, fuzzy
 msgid "Cornish"
 msgstr "Dansk"
+
+msgid "Correct invalid EPG data"
+msgstr ""
 
 msgid "Corsican"
 msgstr ""
@@ -5521,6 +5596,9 @@ msgid "Dayname Year/MM/D"
 msgstr ""
 
 msgid "Dayname Year/MM/DD"
+msgstr ""
+
+msgid "Debug"
 msgstr ""
 
 #
@@ -6120,8 +6198,10 @@ msgstr ""
 msgid "Display next system information screen"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Display oscam information."
-msgstr ""
+msgstr "Information"
 
 #, fuzzy
 msgid "Display previous commit log"
@@ -6899,9 +6979,6 @@ msgid ""
 "Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Aktiver trådløs enigma2 receiver for at prøve at tune ind til services der ikke kan tunes ind på lokalt (f.eks. tuner er optaget eller service typen er ikke tilgængelig på den lokale tuner. Specificer komplet URL inkluderet http:// og port nummer (normalt ...:8001), f.eks. http://second_box:8001."
 
-msgid "Enable screenshot of LCD in /tmp."
-msgstr ""
-
 msgid "Enable teletext caching"
 msgstr "Aktiver TekstTV lagring"
 
@@ -7232,11 +7309,11 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr ""
+msgstr "URL af fallback remote receiver"
 
 #
 #, python-format
@@ -8108,6 +8185,10 @@ msgstr "Fre"
 msgid "Friday"
 msgstr "Fredag"
 
+#, fuzzy
+msgid "From"
+msgstr "Fra"
+
 msgid "From:"
 msgstr "Fra"
 
@@ -8239,6 +8320,11 @@ msgstr "Standard AC3 forsinkelse"
 #
 msgid "General PCM delay"
 msgstr "Standard PCM forsinkelse"
+
+#
+#, fuzzy
+msgid "General audio delay"
+msgstr "Standard AC3 forsinkelse"
 
 msgid "Generic"
 msgstr ""
@@ -8612,9 +8698,10 @@ msgstr "Harddisk..."
 msgid "Harddisk Setup"
 msgstr "Harddisk Setup"
 
+#
 #, fuzzy
 msgid "Hardware information"
-msgstr "Softwarehåndterings information"
+msgstr "Information"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -8963,6 +9050,9 @@ msgstr ""
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr ""
 
+msgid "If set to 'yes', allows you to use timeshift with alternative audio plugins."
+msgstr ""
+
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
 
@@ -9034,6 +9124,15 @@ msgstr "Billede:"
 
 msgid "Immediately restart selected devices."
 msgstr ""
+
+#
+#, fuzzy
+msgid "Import AutoTimer"
+msgstr "Sorter tid"
+
+#, fuzzy
+msgid "Import autotimer in current event"
+msgstr "Standby efter nuværende begivenhed"
 
 #, fuzzy
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
@@ -11099,6 +11198,11 @@ msgstr "Ikke tilgængelig"
 msgid "NCam Config info"
 msgstr ""
 
+#
+#, fuzzy
+msgid "NCam Info"
+msgstr "Info"
+
 msgid "NCam Info Main Menu"
 msgstr ""
 
@@ -11200,11 +11304,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Ncam ECM info"
-msgstr "Info"
-
-#
-#, fuzzy
-msgid "Ncam Info"
 msgstr "Info"
 
 #
@@ -11778,6 +11877,11 @@ msgstr "ONID"
 msgid "OPKG clean mode"
 msgstr ""
 
+#
+#, fuzzy
+msgid "OSCam Info"
+msgstr "Info"
+
 msgid "OSD"
 msgstr ""
 
@@ -11826,10 +11930,8 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "slukket"
 
-#
-#, fuzzy
-msgid "OTT Model"
-msgstr "Modus [ Satellit konfigurations modus]"
+msgid "OTT"
+msgstr ""
 
 msgid "OUT"
 msgstr ""
@@ -11929,9 +12031,10 @@ msgstr ""
 msgid "Open Vision Commit Info Setup"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Open Vision information"
-msgstr "Åben valgte placering"
+msgstr "Information"
 
 msgid "Open Vision revision check"
 msgstr ""
@@ -13204,9 +13307,10 @@ msgstr "Pakke liste opdatering"
 msgid "Process"
 msgstr "Bearbejdning"
 
+#
 #, fuzzy
 msgid "Processor information"
-msgstr "Softwarehåndterings information"
+msgstr "Information"
 
 msgid "Progress"
 msgstr "Fremskridt"
@@ -13640,6 +13744,11 @@ msgstr "Optagelses Setup"
 
 msgid "Recording in progress"
 msgstr "Igangværende optagelse"
+
+#
+#, fuzzy
+msgid "Recording time has been set."
+msgstr "Sleep timeren er ikke aktiveret."
 
 msgid "Recording type"
 msgstr "Optagelsestype"
@@ -14717,9 +14826,6 @@ msgid "Scans default lamedbs sorted by satellite with a connected dish positione
 msgstr "Søge standard lamedbs sorteret efter satellit med tilsluttet parabol motor"
 
 msgid "Schedule EPG and channel list import"
-msgstr ""
-
-msgid "Screenshot of LCD in /tmp"
 msgstr ""
 
 msgid "Scroll delay"
@@ -16028,6 +16134,10 @@ msgid "Show media player on main menu"
 msgstr "Vis mediaplayer på hovedmenu"
 
 #, fuzzy
+msgid "Show menu numbers"
+msgstr "Vis begivenhedsinfo plugins"
+
+#, fuzzy
 msgid "Show menu or plugin numbers"
 msgstr "Vis begivenhedsinfo plugins"
 
@@ -16203,9 +16313,10 @@ msgstr "Vis subservice selektion"
 msgid "Show subtitle selection"
 msgstr "Vis underteksts selektion"
 
+#
 #, fuzzy
 msgid "Show system information"
-msgstr "Softwarehåndterings information"
+msgstr "Information"
 
 #
 #, fuzzy
@@ -16469,6 +16580,9 @@ msgstr "Spring tomme kanaler over"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Spring internet tjek over (slår automatisk pakke installation fra)"
+
+msgid "Skip jumping to live TV while timeshifting with plugins"
+msgstr ""
 
 #
 #, fuzzy
@@ -17779,15 +17893,6 @@ msgstr ""
 
 #
 #, fuzzy
-msgid ""
-"The AutoTimer plugin is not installed!\n"
-"Please install it."
-msgstr ""
-"Trådløs LAN plugin er ikke installeret!\n"
-"Installer det venligst."
-
-#
-#, fuzzy
 msgid "The AutoTimer plugin is not installed."
 msgstr "Dette plugin er ikke installeret"
 
@@ -18215,6 +18320,10 @@ msgstr ""
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
+msgstr "Konfigurer standard lyd forsinkelse ved brug af stereo spor."
+
+#, fuzzy
+msgid "This option configures the general audio delay."
 msgstr "Konfigurer standard lyd forsinkelse ved brug af stereo spor."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
@@ -18768,7 +18877,7 @@ msgstr "Information"
 #
 #, fuzzy
 msgid "Translation information"
-msgstr "Oversættelse"
+msgstr "Information"
 
 #
 msgid "Translation:"
@@ -19268,6 +19377,9 @@ msgstr ""
 
 msgid "Use circular LNB"
 msgstr "Brug cirkuler LNB"
+
+msgid "Use config file /etc/\"inetd.conf\" in mode IPv6 compatible with IPv4."
+msgstr ""
 
 #, fuzzy
 msgid "Use defaults"

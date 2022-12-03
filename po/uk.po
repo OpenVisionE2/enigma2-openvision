@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 10:29+0330\n"
+"POT-Creation-Date: 2022-12-03 17:58+0330\n"
 "PO-Revision-Date: 2022-09-27 16:12+0200\n"
 "Last-Translator: kueken\n"
 "Language-Team: kvinto\n"
@@ -905,8 +905,36 @@ msgid "%d DMIPS with %d cores"
 msgstr ""
 
 #, python-format
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#, python-format
+msgid "%d Digit"
+msgid_plural "%d Digits"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#, fuzzy, python-format
+msgid "%d Event"
+msgid_plural "%d Events"
+msgstr[0] "Кнопка Канали"
+msgstr[1] "Кнопка Канали"
+msgstr[2] "Кнопка Канали"
+
+#, python-format
 msgid "%d GB"
 msgstr ""
+
+#, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #, python-format
 msgid "%d KB"
@@ -939,6 +967,55 @@ msgid_plural "%d Mins"
 msgstr[0] "%d МБ"
 msgstr[1] "%d МБ"
 msgstr[2] "%d МБ"
+
+#, fuzzy, python-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d хвилина"
+msgstr[1] "%d хвилини"
+msgstr[2] "%d хвилин"
+
+#, fuzzy, python-format
+msgid "%d Month"
+msgid_plural "%d Months"
+msgstr[0] "%d МБ"
+msgstr[1] "%d МБ"
+msgstr[2] "%d МБ"
+
+#, fuzzy, python-format
+msgid "%d Pixel"
+msgid_plural "%d Pixels"
+msgstr[0] "Пікселі\n"
+msgstr[1] "Пікселі\n"
+msgstr[2] "Пікселі\n"
+
+#, fuzzy, python-format
+msgid "%d Pixel wide"
+msgid_plural "%d Pixels wide"
+msgstr[0] "%d піксель в ширину"
+msgstr[1] "%d пікселі в ширину"
+msgstr[2] "%d пікселів в ширину"
+
+#, fuzzy, python-format
+msgid "%d Second"
+msgid_plural "%d Seconds"
+msgstr[0] "%d секунда"
+msgstr[1] "%d секунди"
+msgstr[2] "%d секунд"
+
+#, python-format
+msgid "%d Week"
+msgid_plural "%d Weeks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#, fuzzy, python-format
+msgid "%d Year"
+msgid_plural "%d Years"
+msgstr[0] "Рік"
+msgstr[1] "Рік"
+msgstr[2] "Рік"
 
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
 #, python-format
@@ -2768,10 +2845,6 @@ msgstr "Авто DiSEqC"
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Авто EXIF обертання орієнтація/гортати"
 
-#, fuzzy
-msgid "Auto Timers"
-msgstr "Авто пам'ять"
-
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Автоматично розділяти на розділи кожні ? хвилин (0=ніколи)"
 
@@ -2808,6 +2881,10 @@ msgstr "Авто переключення на скарт"
 #, fuzzy
 msgid "Auto standby"
 msgstr "Не переходити в режим очікування"
+
+#, fuzzy
+msgid "AutoTimer"
+msgstr "Таймер"
 
 #, python-format
 msgid "Autoinstalling %s"
@@ -3054,7 +3131,7 @@ msgstr "Данія"
 
 #, fuzzy
 msgid "Benchmark information"
-msgstr "Інформація менеджера ПЗ"
+msgstr " - інформація"
 
 msgid "Bengali"
 msgstr ""
@@ -3234,7 +3311,7 @@ msgstr "Дата збірки: "
 
 #, fuzzy
 msgid "Build information for"
-msgstr "Інформація"
+msgstr " - інформація"
 
 msgid "Bulgaria"
 msgstr "Болгарія"
@@ -3848,6 +3925,9 @@ msgid "Choose the location where the EPG data will be stored when your %s %s is 
 msgstr ""
 
 msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
+msgstr ""
+
+msgid "Choose the option to correct invalid EPG data."
 msgstr ""
 
 msgid "Choose the order in which items are displayed in Help windows"
@@ -4566,7 +4646,7 @@ msgstr "З'єднання транскодування, обмежено - не�
 
 #, fuzzy
 msgid "Connection information"
-msgstr "Інформація активності плагінів"
+msgstr " - інформація"
 
 msgid ""
 "Connection using supplied FTP parameters failed.\n"
@@ -4660,6 +4740,10 @@ msgstr ""
 #, fuzzy
 msgid "Cornish"
 msgstr "Данська"
+
+#, fuzzy
+msgid "Correct invalid EPG data"
+msgstr "Зберегти налаштування і дані ЕПГ"
 
 msgid "Corsican"
 msgstr ""
@@ -4910,7 +4994,7 @@ msgstr "Положення субтитрів"
 
 #, fuzzy
 msgid "DVB information"
-msgstr "Інформація"
+msgstr " - інформація"
 
 msgid "DVB subtitle black transparency"
 msgstr "Прозорість DVB субтитрів"
@@ -5138,6 +5222,9 @@ msgid "Dayname Year/MM/D"
 msgstr ""
 
 msgid "Dayname Year/MM/DD"
+msgstr ""
+
+msgid "Debug"
 msgstr ""
 
 #, fuzzy
@@ -5666,8 +5753,9 @@ msgstr ""
 msgid "Display next system information screen"
 msgstr ""
 
+#, fuzzy
 msgid "Display oscam information."
-msgstr ""
+msgstr " - інформація"
 
 #, fuzzy
 msgid "Display previous commit log"
@@ -6341,9 +6429,6 @@ msgid ""
 "Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Включити віддалений приймач enigma2, щоб спробувати настроїтись на канали, які неможливо настроїти на місцевому рівні (наприклад, приймач зайнятий або тип каналу недоступний на локальному тюнері. Вкажіть повну URL-адресу, включаючи http: // та номер порту (зазвичай: 8001), наприклад http: //second_box: 8001."
 
-msgid "Enable screenshot of LCD in /tmp."
-msgstr ""
-
 msgid "Enable teletext caching"
 msgstr "Включити кешування телетексту"
 
@@ -6489,7 +6574,7 @@ msgstr "Рівень налагодження Enigma: %d\n"
 
 #, fuzzy
 msgid "Enigma2 information"
-msgstr "Інформація"
+msgstr " - інформація"
 
 #, fuzzy
 msgid "Enigma2 revision"
@@ -6651,7 +6736,7 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Помилка зупинки потоку!"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
@@ -7439,6 +7524,10 @@ msgstr "П'ят"
 msgid "Friday"
 msgstr "П'ятниця"
 
+#, fuzzy
+msgid "From"
+msgstr "Від:"
+
 msgid "From:"
 msgstr "Від:"
 
@@ -7563,6 +7652,10 @@ msgstr "Загальна аудіо-bluetooth затримка"
 
 msgid "General PCM delay"
 msgstr "Загальна PCM затримка"
+
+#, fuzzy
+msgid "General audio delay"
+msgstr "Загальна аудіо-bluetooth затримка"
 
 msgid "Generic"
 msgstr ""
@@ -7902,7 +7995,7 @@ msgstr "Налаштування жорсткого диску"
 
 #, fuzzy
 msgid "Hardware information"
-msgstr "Інформація менеджера ПЗ"
+msgstr " - інформація"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -7930,7 +8023,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Help Screen Information"
-msgstr "Інформація"
+msgstr " - інформація"
 
 msgid "Helps setting up your antenna"
 msgstr "Допомога в налаштуванні антени"
@@ -8234,6 +8327,9 @@ msgstr "Якщо встановлено значення 'так', на теле
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "Якщо вибрано 'так', значення сигналу (SNR і т.д.) обчислюватимуться з API V3. Це стара версія API, яка тепер замінена."
 
+msgid "If set to 'yes', allows you to use timeshift with alternative audio plugins."
+msgstr ""
+
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
 
@@ -8305,6 +8401,14 @@ msgstr "Імідж: "
 
 msgid "Immediately restart selected devices."
 msgstr ""
+
+#, fuzzy
+msgid "Import AutoTimer"
+msgstr "Сортувати за часом"
+
+#, fuzzy
+msgid "Import autotimer in current event"
+msgstr "Режим очікування після поточної передачі"
 
 #, fuzzy
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
@@ -9217,7 +9321,7 @@ msgstr "Перейти до зазначеної дати/часу"
 
 #, fuzzy
 msgid "Local information"
-msgstr "Інформація"
+msgstr " - інформація"
 
 msgid "Local network"
 msgstr "Локальна мережа"
@@ -9294,7 +9398,7 @@ msgstr "Захистити контекстні меню"
 
 #, fuzzy
 msgid "Location information"
-msgstr "Інформація"
+msgstr " - інформація"
 
 #, fuzzy
 msgid "LocationBox Actions"
@@ -10149,6 +10253,10 @@ msgstr "Не визначено"
 msgid "NCam Config info"
 msgstr ""
 
+#, fuzzy
+msgid "NCam Info"
+msgstr "ECM Інфо"
+
 msgid "NCam Info Main Menu"
 msgstr ""
 
@@ -10238,10 +10346,6 @@ msgstr ""
 #, fuzzy
 msgid "Ncam ECM info"
 msgstr "ECM Інфо"
-
-#, fuzzy
-msgid "Ncam Info"
-msgstr "Інфо"
 
 #, fuzzy
 msgid "Ncam Info Setup"
@@ -10745,6 +10849,10 @@ msgstr "ONID"
 msgid "OPKG clean mode"
 msgstr ""
 
+#, fuzzy
+msgid "OSCam Info"
+msgstr "ECM Інфо"
+
 msgid "OSD"
 msgstr ""
 
@@ -10789,9 +10897,8 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "примусово вимкнуто"
 
-#, fuzzy
-msgid "OTT Model"
-msgstr "Модель"
+msgid "OTT"
+msgstr ""
 
 msgid "OUT"
 msgstr ""
@@ -10887,7 +10994,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Open Vision information"
-msgstr "Відкрити вибране місце"
+msgstr " - інформація"
 
 msgid "Open Vision revision check"
 msgstr ""
@@ -12016,7 +12123,7 @@ msgstr "Процес"
 
 #, fuzzy
 msgid "Processor information"
-msgstr "Інформація менеджера ПЗ"
+msgstr " - інформація"
 
 msgid "Progress"
 msgstr "Прогрес"
@@ -12409,6 +12516,10 @@ msgstr "Налаштування запису"
 
 msgid "Recording in progress"
 msgstr "Триває запис"
+
+#, fuzzy
+msgid "Recording time has been set."
+msgstr "Таймер сну було вимкнено."
 
 msgid "Recording type"
 msgstr "Тип запису"
@@ -13354,9 +13465,6 @@ msgid "Scans default lamedbs sorted by satellite with a connected dish positione
 msgstr "Просканувати стандартні супутники записані в позиціонері"
 
 msgid "Schedule EPG and channel list import"
-msgstr ""
-
-msgid "Screenshot of LCD in /tmp"
 msgstr ""
 
 msgid "Scroll delay"
@@ -14545,6 +14653,10 @@ msgstr "Показати меню допомоги"
 msgid "Show media player on main menu"
 msgstr "Показати програвач у головному меню"
 
+#, fuzzy
+msgid "Show menu numbers"
+msgstr "Показати меню, або номери плагіна"
+
 msgid "Show menu or plugin numbers"
 msgstr "Показати меню, або номери плагіна"
 
@@ -14713,7 +14825,7 @@ msgstr "Показати вибір субтитрів"
 
 #, fuzzy
 msgid "Show system information"
-msgstr "Інформація менеджера ПЗ"
+msgstr " - інформація"
 
 #, fuzzy
 msgid "Show the TV player"
@@ -14938,6 +15050,9 @@ msgstr "Пропускати канали без предач"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Пропустити перевірку інтернет з'єднання (вимикає автоматичну установку пакетів)"
+
+msgid "Skip jumping to live TV while timeshifting with plugins"
+msgstr ""
 
 #, fuzzy
 msgid "Sleep Timer"
@@ -15888,7 +16003,7 @@ msgstr "Деталі про плагін: "
 
 msgid "TRANSLATOR_INFO"
 msgstr ""
-"Переклад:  kvinto - 26.09.2022\n"
+"Переклад:  kvinto - 01.11.2022\n"
 "Пошта:  badsystem@ukr.net"
 
 msgid "TS file is too large for ISO9660 level 1!"
@@ -16103,14 +16218,6 @@ msgstr "Наразі не вдається отримати журнал ком�
 #, python-format
 msgid "The '%s' log file contains no information."
 msgstr ""
-
-#, fuzzy
-msgid ""
-"The AutoTimer plugin is not installed!\n"
-"Please install it."
-msgstr ""
-"Додаток Wі-Fі мережі не встановлений!\n"
-"Будь ласка, встановіть його."
 
 #, fuzzy
 msgid "The AutoTimer plugin is not installed."
@@ -16504,6 +16611,10 @@ msgstr "Цей параметр може бути корисним для дов
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
+msgstr "Цей параметр налаштовує загальну затримку звуку для динаміків Bluetooth."
+
+#, fuzzy
+msgid "This option configures the general audio delay."
 msgstr "Цей параметр налаштовує загальну затримку звуку для динаміків Bluetooth."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
@@ -16991,7 +17102,7 @@ msgstr "Інформація"
 
 #, fuzzy
 msgid "Translation information"
-msgstr "Переклад"
+msgstr " - інформація"
 
 msgid "Translation:"
 msgstr "Переклад:"
@@ -17255,8 +17366,9 @@ msgstr "Скасувати видалення"
 msgid "Unencrypted"
 msgstr "Декодований"
 
+#, fuzzy
 msgid "Unexpected error while retreiving fallback tuner's timer information"
-msgstr "Несподівана помилка під час отримання інформації про таймер резервного тюнера"
+msgstr "Неочікувана помилка під час отримання інформації про таймер з резервного тюнера"
 
 msgid "UnhandledKey"
 msgstr "Неопрацьований Ключ"
@@ -17436,6 +17548,9 @@ msgstr "використовувати найкраще/керується HDMI"
 
 msgid "Use circular LNB"
 msgstr "Використовувати круговий LNB"
+
+msgid "Use config file /etc/\"inetd.conf\" in mode IPv6 compatible with IPv4."
+msgstr ""
 
 #, fuzzy
 msgid "Use defaults"

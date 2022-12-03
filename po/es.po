@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 10:29+0330\n"
+"POT-Creation-Date: 2022-12-03 17:58+0330\n"
 "PO-Revision-Date: 2022-10-04 00:23+0200\n"
 "Last-Translator: Kuatto\n"
 "Language-Team: Álvaro <mi casa>\n"
@@ -915,8 +915,32 @@ msgid "%d DMIPS with %d cores"
 msgstr "%d DMIPS con %d cores"
 
 #, python-format
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%d Digit"
+msgid_plural "%d Digits"
+msgstr[0] ""
+msgstr[1] ""
+
+#, fuzzy, python-format
+msgid "%d Event"
+msgid_plural "%d Events"
+msgstr[0] "Eventos clave"
+msgstr[1] "Eventos clave"
+
+#, python-format
 msgid "%d GB"
 msgstr ""
+
+#, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] ""
+msgstr[1] ""
 
 #, fuzzy, python-format
 msgid "%d KB"
@@ -948,6 +972,48 @@ msgid "%d Min"
 msgid_plural "%d Mins"
 msgstr[0] ""
 msgstr[1] ""
+
+#, fuzzy, python-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d minuto"
+msgstr[1] "%d minutos"
+
+#, fuzzy, python-format
+msgid "%d Month"
+msgid_plural "%d Months"
+msgstr[0] "Mensual"
+msgstr[1] "Mensual"
+
+#, fuzzy, python-format
+msgid "%d Pixel"
+msgid_plural "%d Pixels"
+msgstr[0] "%d píxel de ancho"
+msgstr[1] "%d píxeles de ancho"
+
+#, fuzzy, python-format
+msgid "%d Pixel wide"
+msgid_plural "%d Pixels wide"
+msgstr[0] "%d píxel de ancho"
+msgstr[1] "%d píxeles de ancho"
+
+#, fuzzy, python-format
+msgid "%d Second"
+msgid_plural "%d Seconds"
+msgstr[0] "%d segundo"
+msgstr[1] "%d segundos"
+
+#, fuzzy, python-format
+msgid "%d Week"
+msgid_plural "%d Weeks"
+msgstr[0] "Semanalmente"
+msgstr[1] "Semanalmente"
+
+#, fuzzy, python-format
+msgid "%d Year"
+msgid_plural "%d Years"
+msgstr[0] "Año"
+msgstr[1] "Año"
 
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
 #, python-format
@@ -2748,10 +2814,6 @@ msgstr "DiSEqC Automático"
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Rotación / giro automático de orientación EXIF"
 
-#, fuzzy
-msgid "Auto Timers"
-msgstr "Temporizador Automático"
-
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Auto separación de capítulos cada ? Minutos (0=nunca)"
 
@@ -2786,6 +2848,9 @@ msgstr "Cambio de scart automático"
 
 msgid "Auto standby"
 msgstr "Modo reposo automático"
+
+msgid "AutoTimer"
+msgstr "Temporizador Automático"
 
 #, python-format
 msgid "Autoinstalling %s"
@@ -3811,6 +3876,9 @@ msgstr "Elegir la ubicación donde se guardarán los datos EPG en su %s %s cuand
 msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr "Elegir el nombre del archivo que contiene los datos EPG en su %s %s cuando se apaga. Puede ser útil para distinguir entre varios receptores."
 
+msgid "Choose the option to correct invalid EPG data."
+msgstr "Elija la opción para corregir datos EPG no válidos."
+
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr "Elija el orden en el que se muestran los elementos en las ventanas de Ayuda"
 
@@ -4610,6 +4678,9 @@ msgstr ""
 msgid "Cornish"
 msgstr "Danés"
 
+msgid "Correct invalid EPG data"
+msgstr "Corregir datos EPG no válidos"
+
 msgid "Corsican"
 msgstr ""
 
@@ -5078,6 +5149,9 @@ msgstr "Nombre Día Año/MM/D"
 
 msgid "Dayname Year/MM/DD"
 msgstr "Nombre Día Año/MM/DD"
+
+msgid "Debug"
+msgstr ""
 
 #, fuzzy
 msgid "Debug Logs"
@@ -6245,9 +6319,6 @@ msgstr ""
 "\n"
 "Configure la IP manual para importar EPG y canales en \"Importar URL del receptor reserva\"."
 
-msgid "Enable screenshot of LCD in /tmp."
-msgstr "Habilite la captura de pantalla de LCD en /tmp."
-
 msgid "Enable teletext caching"
 msgstr "Habilitar el caché de teletexto"
 
@@ -7321,6 +7392,9 @@ msgstr "Vie"
 msgid "Friday"
 msgstr "Viernes"
 
+msgid "From"
+msgstr "Desde"
+
 msgid "From:"
 msgstr "Desde:"
 
@@ -7442,6 +7516,10 @@ msgstr "Retardo General audio bluetooth"
 
 msgid "General PCM delay"
 msgstr "Retardo general PCM"
+
+#, fuzzy
+msgid "General audio delay"
+msgstr "Retardo General audio bluetooth"
 
 msgid "Generic"
 msgstr "Genérico"
@@ -8092,6 +8170,9 @@ msgstr "Si se establece en 'Sí', se enviarán los mismos comandos al televisor 
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "Si se establece en ‘sí’, los valores de señal (SNR, etc.) se calcularán a partir de la API V3. Esta es una versión antigua de API que ahora ha sido reemplazada."
 
+msgid "If set to 'yes', allows you to use timeshift with alternative audio plugins."
+msgstr "Si se establece en 'sí', le permite usar Timeshift con plugins de audio alternativos."
+
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr "Si el texto es demasiado largo para mostrarse en la pantalla del display, se repetirá (número de veces):"
 
@@ -8162,6 +8243,12 @@ msgstr "Imágenes"
 
 msgid "Immediately restart selected devices."
 msgstr "Reinicie inmediatamente los seleccionados."
+
+msgid "Import AutoTimer"
+msgstr "Importar Temporizador Automático"
+
+msgid "Import autotimer in current event"
+msgstr "Importar temporizador automático en el evento actual"
 
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr "Importar canales y/o EPG desde la URL del receptor reserva también cuando el receptor salga del modo de reposo."
@@ -9953,6 +10040,10 @@ msgid "NCam Config info"
 msgstr "Cambiar config"
 
 #, fuzzy
+msgid "NCam Info"
+msgstr "Ajustes Información NCam"
+
+#, fuzzy
 msgid "NCam Info Main Menu"
 msgstr "Menú principal - Información NCam"
 
@@ -10037,10 +10128,6 @@ msgstr "Navegue hacia arriba/abajo con los botones ARRIBA/ABAJO y página arriba
 #, fuzzy
 msgid "Ncam ECM info"
 msgstr "ECM Info"
-
-#, fuzzy
-msgid "Ncam Info"
-msgstr "Ajustes Información NCam"
 
 #, fuzzy
 msgid "Ncam Info Setup"
@@ -10541,6 +10628,10 @@ msgid "OPKG clean mode"
 msgstr "Modo de limpieza OPKG"
 
 #, fuzzy
+msgid "OSCam Info"
+msgstr "Ajustes Información OSCam"
+
+#, fuzzy
 msgid "OSD"
 msgstr "SD"
 
@@ -10588,8 +10679,8 @@ msgstr "Información del Servidor ( Versión OSCam: %s )"
 msgid "OScam webif disabled"
 msgstr "Webif OSCam deshabilitado"
 
-msgid "OTT Model"
-msgstr "Modelo OTT"
+msgid "OTT"
+msgstr ""
 
 msgid "OUT"
 msgstr ""
@@ -12165,6 +12256,9 @@ msgstr "Ajustes Grabaciones"
 msgid "Recording in progress"
 msgstr "Grabación en progreso"
 
+msgid "Recording time has been set."
+msgstr "Se ha establecido el tiempo de grabación."
+
 msgid "Recording type"
 msgstr "Tipo de grabación"
 
@@ -12566,9 +12660,8 @@ msgstr "Restaurar copias de seguridad"
 msgid "Restore defaults"
 msgstr "Restaurar por defecto fstab"
 
-#, fuzzy
 msgid "Restore deleted images"
-msgstr "restaurar bouquets de usuario borrados"
+msgstr "Restaurar imágenes eliminadas"
 
 #, fuzzy
 msgid "Restore deleted user bouquets"
@@ -13075,10 +13168,6 @@ msgstr "Escanea lamedbs por defecto ordenados por satélite con un motor de plat
 msgid "Schedule EPG and channel list import"
 msgstr "Programar la importación de EPG y lista de canales"
 
-#, fuzzy
-msgid "Screenshot of LCD in /tmp"
-msgstr "Habilite la captura de pantalla de LCD en /tmp."
-
 msgid "Scroll delay"
 msgstr "Retardo de repetición"
 
@@ -13257,7 +13346,7 @@ msgstr "Seleccione ‘sí’ para elegir qué bandas o tamaños de pasos serán 
 
 #, python-format
 msgid "Select 'yes' to include %s multiplexes in your search."
-msgstr "Seleccione ‘sí’ para incluir% s múltiplex en su búsqueda."
+msgstr "Seleccione ‘sí’ para incluir %s multiplexes en su búsqueda."
 
 #, python-format
 msgid "Select 'yes' to include symbol rate %s in your search."
@@ -14224,6 +14313,9 @@ msgstr "Mostrar log"
 msgid "Show media player on main menu"
 msgstr "Mostrar reproductor multimedia en el menú principal"
 
+msgid "Show menu numbers"
+msgstr "Mostrar números de menú"
+
 msgid "Show menu or plugin numbers"
 msgstr "Mostrar números de menú o plugin"
 
@@ -14596,6 +14688,9 @@ msgstr "Omitir eventos vacíos"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Omitir comprobación de conexión a Internet"
+
+msgid "Skip jumping to live TV while timeshifting with plugins"
+msgstr "Salta a la TV en vivo mientras cambias de tiempo con plugins"
 
 msgid "Sleep Timer"
 msgstr "Temporizador de Descanso"
@@ -15724,14 +15819,6 @@ msgstr ""
 msgid "The '%s' log file contains no information."
 msgstr "La geolocalización no contiene información sobre la zona horaria."
 
-#, fuzzy
-msgid ""
-"The AutoTimer plugin is not installed!\n"
-"Please install it."
-msgstr ""
-"El plugin de LAN inalámbrica no está instalado!\n"
-"Por favor instálalo."
-
 msgid "The AutoTimer plugin is not installed."
 msgstr "El plugin temporizador automático no está instalado."
 
@@ -16112,6 +16199,10 @@ msgstr "Esta opción puede ser útil para cables HDMI largos."
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
+msgstr "Esta opción configura el retardo de audio general para altavoces bluetooth."
+
+#, fuzzy
+msgid "This option configures the general audio delay."
 msgstr "Esta opción configura el retardo de audio general para altavoces bluetooth."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
@@ -17047,6 +17138,9 @@ msgstr "Usar mejor controlado por HDMI"
 
 msgid "Use circular LNB"
 msgstr "Usar un LNB circular"
+
+msgid "Use config file /etc/\"inetd.conf\" in mode IPv6 compatible with IPv4."
+msgstr "Utilice el archivo config /etc/\"inetd.conf\" en modo IPv6 compatible con IPv4."
 
 msgid "Use defaults"
 msgstr "Valores por defecto"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Project Slovenia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 10:29+0330\n"
+"POT-Creation-Date: 2022-12-03 17:58+0330\n"
 "PO-Revision-Date: 2020-05-16 18:48+0200\n"
 "Last-Translator: Taykun345 <support@satnigmo.com>\n"
 "Language-Team: Satnigmo <support@satnigmo.com>\n"
@@ -915,8 +915,40 @@ msgid "%d DMIPS with %d cores"
 msgstr ""
 
 #, python-format
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#, python-format
+msgid "%d Digit"
+msgid_plural "%d Digits"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#, python-format
+msgid "%d Event"
+msgid_plural "%d Events"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#, python-format
 msgid "%d GB"
 msgstr ""
+
+#, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #, python-format
 msgid "%d KB"
@@ -950,6 +982,66 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
+
+#
+#, fuzzy, python-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d minuta"
+msgstr[1] "%d minuti"
+msgstr[2] "%d minute"
+msgstr[3] "%d minut"
+
+#
+#, fuzzy, python-format
+msgid "%d Month"
+msgid_plural "%d Months"
+msgstr[0] "mesec"
+msgstr[1] "mesec"
+msgstr[2] "mesec"
+msgstr[3] "mesec"
+
+#, fuzzy, python-format
+msgid "%d Pixel"
+msgid_plural "%d Pixels"
+msgstr[0] "%d velikost točke"
+msgstr[1] "%d velikosti točk"
+msgstr[2] "%d velikosti točk"
+msgstr[3] "%d velikost točk"
+
+#, fuzzy, python-format
+msgid "%d Pixel wide"
+msgid_plural "%d Pixels wide"
+msgstr[0] "%d velikost točke"
+msgstr[1] "%d velikosti točk"
+msgstr[2] "%d velikosti točk"
+msgstr[3] "%d velikost točk"
+
+#
+#, fuzzy, python-format
+msgid "%d Second"
+msgid_plural "%d Seconds"
+msgstr[0] "%d sekunda"
+msgstr[1] "%d sekundi"
+msgstr[2] "%d sekunde"
+msgstr[3] "%d sekund"
+
+#, python-format
+msgid "%d Week"
+msgid_plural "%d Weeks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#
+#, fuzzy, python-format
+msgid "%d Year"
+msgid_plural "%d Years"
+msgstr[0] "Leto"
+msgstr[1] "Leto"
+msgstr[2] "Leto"
+msgstr[3] "Leto"
 
 #
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
@@ -3002,11 +3094,6 @@ msgid "Auto EXIF Orientation rotation/flipping"
 msgstr ""
 
 #
-#, fuzzy
-msgid "Auto Timers"
-msgstr "Časovniki"
-
-#
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Samodejna delitev poglavja vsakih ? minut (0=vedno)"
 
@@ -3051,6 +3138,11 @@ msgstr "Samodejno preklapljanje SCART"
 #, fuzzy
 msgid "Auto standby"
 msgstr "Ni stanja pripravljenosti"
+
+#
+#, fuzzy
+msgid "AutoTimer"
+msgstr "Časovniki"
 
 #
 #, fuzzy, python-format
@@ -3327,9 +3419,10 @@ msgstr "Informacije"
 msgid "Benchmark for"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Benchmark information"
-msgstr "Softwaremanager informacije"
+msgstr "Informacije"
 
 msgid "Bengali"
 msgstr ""
@@ -4174,6 +4267,9 @@ msgstr ""
 msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
+msgid "Choose the option to correct invalid EPG data."
+msgstr ""
+
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
@@ -4965,9 +5061,10 @@ msgstr "Povezan s"
 msgid "Connected transcoding, limit - no PiP!"
 msgstr ""
 
+#
 #, fuzzy
 msgid "Connection information"
-msgstr "Softwaremanager informacije"
+msgstr "Informacije"
 
 msgid ""
 "Connection using supplied FTP parameters failed.\n"
@@ -5066,6 +5163,9 @@ msgstr ""
 #, fuzzy
 msgid "Cornish"
 msgstr "Dansko"
+
+msgid "Correct invalid EPG data"
+msgstr ""
 
 msgid "Corsican"
 msgstr ""
@@ -5591,6 +5691,9 @@ msgid "Dayname Year/MM/D"
 msgstr ""
 
 msgid "Dayname Year/MM/DD"
+msgstr ""
+
+msgid "Debug"
 msgstr ""
 
 #
@@ -6207,8 +6310,10 @@ msgstr ""
 msgid "Display next system information screen"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Display oscam information."
-msgstr ""
+msgstr "Informacije"
 
 #, fuzzy
 msgid "Display previous commit log"
@@ -7012,9 +7117,6 @@ msgid ""
 "Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Omogoči možnost, da se oddaljeni/rezervni enigma2 sprejemnik uporabi za gledanje kanalov, ki niso na voljo na primarnem sprejemniku ali pa je kanalnik zaseden s sprejemom nekega drugega kanala. Določite celoten naslov - EUR, vključno s \"http: //\". in številko vrat (običajno ...:8001 ), na primer http: // rezervni_sprejemnik:8001."
 
-msgid "Enable screenshot of LCD in /tmp."
-msgstr ""
-
 #
 msgid "Enable teletext caching"
 msgstr "Predpolnjenje teleteksta"
@@ -7343,11 +7445,11 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
-msgstr ""
+msgstr "Naslov rezervnega oddaljenega sprejemnika"
 
 #
 #, python-format
@@ -8232,6 +8334,10 @@ msgstr "Pet"
 msgid "Friday"
 msgstr "Petek"
 
+#, fuzzy
+msgid "From"
+msgstr "Od:"
+
 msgid "From:"
 msgstr "Od:"
 
@@ -8359,6 +8465,11 @@ msgstr "Zamik AC3 zvoka"
 #
 msgid "General PCM delay"
 msgstr "Zamik PCM zvoka"
+
+#
+#, fuzzy
+msgid "General audio delay"
+msgstr "Zamik AC3 zvoka"
 
 msgid "Generic"
 msgstr ""
@@ -8735,9 +8846,10 @@ msgstr "Trdi disk"
 msgid "Harddisk Setup"
 msgstr "Trdi disk"
 
+#
 #, fuzzy
 msgid "Hardware information"
-msgstr "Softwaremanager informacije"
+msgstr "Informacije"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -9085,6 +9197,9 @@ msgstr ""
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr ""
 
+msgid "If set to 'yes', allows you to use timeshift with alternative audio plugins."
+msgstr ""
+
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
 
@@ -9156,6 +9271,16 @@ msgstr "Verzija slike: "
 
 msgid "Immediately restart selected devices."
 msgstr ""
+
+#
+#, fuzzy
+msgid "Import AutoTimer"
+msgstr "Čas urejanja"
+
+#
+#, fuzzy
+msgid "Import autotimer in current event"
+msgstr "Stanje pripravljenosti po trenutnem dogodku"
 
 #, fuzzy
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
@@ -11246,6 +11371,11 @@ msgstr "N/A"
 msgid "NCam Config info"
 msgstr ""
 
+#
+#, fuzzy
+msgid "NCam Info"
+msgstr "Info"
+
 msgid "NCam Info Main Menu"
 msgstr ""
 
@@ -11347,11 +11477,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Ncam ECM info"
-msgstr "Info"
-
-#
-#, fuzzy
-msgid "Ncam Info"
 msgstr "Info"
 
 #
@@ -11930,6 +12055,11 @@ msgstr "ONID"
 msgid "OPKG clean mode"
 msgstr ""
 
+#
+#, fuzzy
+msgid "OSCam Info"
+msgstr "Info"
+
 msgid "OSD"
 msgstr ""
 
@@ -11979,10 +12109,8 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "onemogočeno"
 
-#
-#, fuzzy
-msgid "OTT Model"
-msgstr "Način"
+msgid "OTT"
+msgstr ""
 
 msgid "OUT"
 msgstr ""
@@ -12084,8 +12212,10 @@ msgstr ""
 msgid "Open Vision Commit Info Setup"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Open Vision information"
-msgstr ""
+msgstr "Informacije"
 
 msgid "Open Vision revision check"
 msgstr ""
@@ -13379,9 +13509,10 @@ msgstr "Iskanje posodobitev ..."
 msgid "Process"
 msgstr "Proces"
 
+#
 #, fuzzy
 msgid "Processor information"
-msgstr "Softwaremanager informacije"
+msgstr "Informacije"
 
 #
 msgid "Progress"
@@ -13817,6 +13948,11 @@ msgstr "Nastavitve snemanja"
 
 msgid "Recording in progress"
 msgstr "V teku je snemanje ..."
+
+#
+#, fuzzy
+msgid "Recording time has been set."
+msgstr "Časovnik spanja je onemogočen."
 
 msgid "Recording type"
 msgstr "Vrsta snemanja"
@@ -14911,9 +15047,6 @@ msgid "Scans default lamedbs sorted by satellite with a connected dish positione
 msgstr "Iskanje privzetih lamedbs razvrščenih po satelitih s povezanimi pozicionerji."
 
 msgid "Schedule EPG and channel list import"
-msgstr ""
-
-msgid "Screenshot of LCD in /tmp"
 msgstr ""
 
 msgid "Scroll delay"
@@ -16260,6 +16393,11 @@ msgstr "Prikaz pomoči"
 msgid "Show media player on main menu"
 msgstr "Prikaz multimedijskega predvajalnika v osnovnem meniju"
 
+#
+#, fuzzy
+msgid "Show menu numbers"
+msgstr "Prikaz razširjene informacijske vrstice"
+
 msgid "Show menu or plugin numbers"
 msgstr ""
 
@@ -16447,9 +16585,10 @@ msgstr "Prikaz izbirnika pod-kanalov"
 msgid "Show subtitle selection"
 msgstr "Prikaz izbirnika podnapisov"
 
+#
 #, fuzzy
 msgid "Show system information"
-msgstr "Softwaremanager informacije"
+msgstr "Informacije"
 
 #
 #, fuzzy
@@ -16713,6 +16852,9 @@ msgstr "Preskok kanalov brez sporeda"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Preskok preverbe internetne povezave (izklop samodejne namestitve paketov)"
+
+msgid "Skip jumping to live TV while timeshifting with plugins"
+msgstr ""
 
 #
 #, fuzzy
@@ -18049,15 +18191,6 @@ msgstr ""
 
 #
 #, fuzzy
-msgid ""
-"The AutoTimer plugin is not installed!\n"
-"Please install it."
-msgstr ""
-"Vtičnik za brezžično mrežo ni nameščen!\n"
-"Prosim, da ga namestite."
-
-#
-#, fuzzy
 msgid "The AutoTimer plugin is not installed."
 msgstr "Ta vtičnik ni nameščen."
 
@@ -18442,6 +18575,10 @@ msgstr ""
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
+msgstr "Določitev zamika zvoka pri stereo zvočnih sledeh. Priporočena nastavitev je \"0\"."
+
+#, fuzzy
+msgid "This option configures the general audio delay."
 msgstr "Določitev zamika zvoka pri stereo zvočnih sledeh. Priporočena nastavitev je \"0\"."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
@@ -18998,7 +19135,7 @@ msgstr "Informacije"
 #
 #, fuzzy
 msgid "Translation information"
-msgstr "Prevod"
+msgstr "Informacije"
 
 #
 msgid "Translation:"
@@ -19495,6 +19632,9 @@ msgid "Use best / Controlled by HDMI"
 msgstr ""
 
 msgid "Use circular LNB"
+msgstr ""
+
+msgid "Use config file /etc/\"inetd.conf\" in mode IPv6 compatible with IPv4."
 msgstr ""
 
 #

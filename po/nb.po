@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 10:29+0330\n"
-"PO-Revision-Date: 2022-04-29 18:05+0200\n"
+"POT-Creation-Date: 2022-12-03 17:58+0330\n"
+"PO-Revision-Date: 2022-10-09 16:35+0200\n"
 "Last-Translator: GeirJ <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
 "Language: nb\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: iso-8859-15\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,-1,31,1959,-1,-1,-1\n"
 
 #
@@ -916,8 +916,32 @@ msgid "%d DMIPS with %d cores"
 msgstr ""
 
 #, python-format
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%d Digit"
+msgid_plural "%d Digits"
+msgstr[0] ""
+msgstr[1] ""
+
+#, fuzzy, python-format
+msgid "%d Event"
+msgid_plural "%d Events"
+msgstr[0] "Viktige hendelser"
+msgstr[1] "Viktige hendelser"
+
+#, python-format
 msgid "%d GB"
 msgstr ""
+
+#, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-format
 msgid "%d KB"
@@ -949,6 +973,49 @@ msgid "%d Min"
 msgid_plural "%d Mins"
 msgstr[0] "%d MB"
 msgstr[1] "%d MB"
+
+#, fuzzy, python-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d minutt"
+msgstr[1] "%d minutter"
+
+#, fuzzy, python-format
+msgid "%d Month"
+msgid_plural "%d Months"
+msgstr[0] "%d MB"
+msgstr[1] "%d MB"
+
+#, fuzzy, python-format
+msgid "%d Pixel"
+msgid_plural "%d Pixels"
+msgstr[0] "Piksler\n"
+msgstr[1] "Piksler\n"
+
+#, fuzzy, python-format
+msgid "%d Pixel wide"
+msgid_plural "%d Pixels wide"
+msgstr[0] "%d piksel bredde"
+msgstr[1] "%d pikslers bredde"
+
+#, fuzzy, python-format
+msgid "%d Second"
+msgid_plural "%d Seconds"
+msgstr[0] "%d sekund"
+msgstr[1] "%d sekunder"
+
+#, python-format
+msgid "%d Week"
+msgid_plural "%d Weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#
+#, fuzzy, python-format
+msgid "%d Year"
+msgid_plural "%d Years"
+msgstr[0] "År"
+msgstr[1] "År"
 
 #
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
@@ -1385,7 +1452,7 @@ msgstr "3"
 #
 #, fuzzy
 msgid "-4"
-msgstr "24"
+msgstr "4"
 
 #
 #, fuzzy
@@ -1405,7 +1472,7 @@ msgstr "7"
 #
 #, fuzzy
 msgid "-8"
-msgstr "8K"
+msgstr "8"
 
 #
 #, fuzzy
@@ -1663,9 +1730,8 @@ msgid "3d mode"
 msgstr "3D valg"
 
 #
-#, fuzzy
 msgid "4"
-msgstr "24"
+msgstr "4"
 
 msgid "4, 4"
 msgstr ""
@@ -1708,7 +1774,7 @@ msgstr "4K"
 #
 #, fuzzy
 msgid "4X"
-msgstr "24"
+msgstr "4"
 
 #
 msgid "5"
@@ -1774,9 +1840,8 @@ msgid "720x576"
 msgstr ""
 
 #
-#, fuzzy
 msgid "8"
-msgstr "8K"
+msgstr "8"
 
 msgid "8 bit"
 msgstr ""
@@ -2915,11 +2980,6 @@ msgid "Auto EXIF Orientation rotation/flipping"
 msgstr "Auto EXIF (bildedata) orientering/rotering"
 
 #
-#, fuzzy
-msgid "Auto Timers"
-msgstr "Auto rens"
-
-#
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "Auto oppdeling hvert ? minutter (0=aldri)"
 
@@ -2961,6 +3021,11 @@ msgstr "Auto scart bytte"
 #, fuzzy
 msgid "Auto standby"
 msgstr "Ikke slå av"
+
+#
+#, fuzzy
+msgid "AutoTimer"
+msgstr "Timer"
 
 #
 #, python-format
@@ -3227,9 +3292,10 @@ msgstr "Informasjon"
 msgid "Benchmark for"
 msgstr "Danmark"
 
+#
 #, fuzzy
 msgid "Benchmark information"
-msgstr "Programvareadministrasjon"
+msgstr "Informasjon"
 
 msgid "Bengali"
 msgstr ""
@@ -3557,9 +3623,8 @@ msgid "CI assignment"
 msgstr "CI tildeling"
 
 #
-#, fuzzy
 msgid "CI enabled"
-msgstr "FCC aktivert"
+msgstr "CI aktivert"
 
 #
 msgid "CI slot: "
@@ -4096,6 +4161,9 @@ msgstr ""
 msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
+msgid "Choose the option to correct invalid EPG data."
+msgstr ""
+
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
@@ -4108,11 +4176,11 @@ msgstr "Velg om AC3 lydspor skal transkodes."
 
 #, fuzzy
 msgid "Choose whether DTS channel sound tracks should be downmixed or transcoded."
-msgstr "Velg om flerkanals aac+-lydspor skal nedmikses til stereo."
+msgstr "Velg om multi kanals DTS-HD(HR/MA)-lydspor skal være nedmikset eller transkodet."
 
 #, fuzzy
 msgid "Choose whether WMA Pro channel sound tracks should be downmixed or transcoded."
-msgstr "Velg om flerkanals aac+-lydspor skal nedmikses til stereo."
+msgstr "Velg om multi kanals DTS-HD(HR/MA)-lydspor skal være nedmikset eller transkodet."
 
 #, fuzzy
 msgid "Choose whether multi channel sound tracks should be convert to PCM or SPDIF."
@@ -4860,9 +4928,10 @@ msgstr "Koblet til"
 msgid "Connected transcoding, limit - no PiP!"
 msgstr "Transcoding tilkoblet. Bilde i bilde kan ikke brukes!"
 
+#
 #, fuzzy
 msgid "Connection information"
-msgstr "Aktivitets informasjon for utvidelser"
+msgstr "Informasjon"
 
 msgid ""
 "Connection using supplied FTP parameters failed.\n"
@@ -4965,6 +5034,10 @@ msgstr ""
 #, fuzzy
 msgid "Cornish"
 msgstr "Dansk"
+
+#, fuzzy
+msgid "Correct invalid EPG data"
+msgstr "Lagre innstillinger og EPG data"
 
 msgid "Corsican"
 msgstr ""
@@ -5185,9 +5258,8 @@ msgstr "Sentral afrikanske republikk"
 msgid "Czechia"
 msgstr "Tsjekkia"
 
-#, fuzzy
 msgid "D"
-msgstr "HD"
+msgstr "D"
 
 msgid "DAC"
 msgstr "DAC"
@@ -5477,6 +5549,9 @@ msgid "Dayname Year/MM/D"
 msgstr ""
 
 msgid "Dayname Year/MM/DD"
+msgstr ""
+
+msgid "Debug"
 msgstr ""
 
 #
@@ -6058,8 +6133,10 @@ msgstr ""
 msgid "Display next system information screen"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Display oscam information."
-msgstr ""
+msgstr "Informasjon"
 
 #, fuzzy
 msgid "Display previous commit log"
@@ -6815,9 +6892,6 @@ msgid ""
 "Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
 msgstr "Aktiver ekstern enigma2 mottaker som kan brukes til å søke opp kanaler/tjenester som ikke kan nåes lokalt (eks.tuner er opptatt eller kanal/tjeneste er utenfor rekkevidde for lokal tuner). Tast inn komplett URL inkludert http:// og port nummer (normalt ...:8001), eks. http://andre_boks:8001."
 
-msgid "Enable screenshot of LCD in /tmp."
-msgstr ""
-
 msgid "Enable teletext caching"
 msgstr "Aktiver tekst-TV mellomlagring"
 
@@ -7152,12 +7226,12 @@ msgstr ""
 msgid "Error stop stream!"
 msgstr "Feil stopp strøm!"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Error while retreiving fallback timer information\n"
 "%s"
 msgstr ""
-"Feil ved henting av reserve timer informasjon\n"
+"Feil under henting av reserve timer informasjon\n"
 "%s"
 
 #
@@ -8021,6 +8095,10 @@ msgstr "Fre"
 msgid "Friday"
 msgstr "Fredag"
 
+#, fuzzy
+msgid "From"
+msgstr "Fra:"
+
 msgid "From:"
 msgstr "Fra:"
 
@@ -8149,6 +8227,10 @@ msgstr "Generell Bluetooth lyd forsinkelse"
 msgid "General PCM delay"
 msgstr "PCM forsinkelse"
 
+#, fuzzy
+msgid "General audio delay"
+msgstr "Generell Bluetooth lyd forsinkelse"
+
 msgid "Generic"
 msgstr ""
 
@@ -8174,7 +8256,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Geolocation information cannot be retrieved, please try again later."
-msgstr "Oppdateringsloggen er for øyeblikket utilgjengelig. Prøv igjen senere"
+msgstr "Oppdateringsloggen er for øyeblikket utilgjengelig. Prøv igjen senere."
 
 #, fuzzy
 msgid "Geolocation is not available."
@@ -8510,9 +8592,10 @@ msgstr "Lagrings innstilling"
 msgid "Harddisk Setup"
 msgstr "Lagrings oppsett"
 
+#
 #, fuzzy
 msgid "Hardware information"
-msgstr "Programvareadministrasjon"
+msgstr "Informasjon"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -8866,6 +8949,9 @@ msgstr "Hvis satt til 'ja' blir de samme kommandoene sendt til TV-en for dyp sta
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr "Hvis satt til 'Ja' signal verdier (SNR, etc) vil bli beregnet fra API v3. Dette er en gammel API-versjon som nå er erstattet."
 
+msgid "If set to 'yes', allows you to use timeshift with alternative audio plugins."
+msgstr ""
+
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
 
@@ -8937,6 +9023,16 @@ msgstr "Operativsystem: "
 
 msgid "Immediately restart selected devices."
 msgstr ""
+
+#
+#, fuzzy
+msgid "Import AutoTimer"
+msgstr "Sorter tid"
+
+#
+#, fuzzy
+msgid "Import autotimer in current event"
+msgstr "Slå av etter nåværende program"
 
 #, fuzzy
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
@@ -10990,6 +11086,11 @@ msgstr "Ikke/aktuelt"
 msgid "NCam Config info"
 msgstr ""
 
+#
+#, fuzzy
+msgid "NCam Info"
+msgstr "ECM info"
+
 msgid "NCam Info Main Menu"
 msgstr ""
 
@@ -11000,7 +11101,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "NCam webif disabled"
-msgstr "styrke deaktivert"
+msgstr "modul deaktivert"
 
 #
 msgid "NEXT"
@@ -11094,11 +11195,6 @@ msgstr ""
 #, fuzzy
 msgid "Ncam ECM info"
 msgstr "ECM info"
-
-#
-#, fuzzy
-msgid "Ncam Info"
-msgstr "Info"
 
 #, fuzzy
 msgid "Ncam Info Setup"
@@ -11659,6 +11755,11 @@ msgstr "ONID"
 msgid "OPKG clean mode"
 msgstr ""
 
+#
+#, fuzzy
+msgid "OSCam Info"
+msgstr "ECM info"
+
 msgid "OSD"
 msgstr ""
 
@@ -11706,10 +11807,8 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "styrke deaktivert"
 
-#
-#, fuzzy
-msgid "OTT Model"
-msgstr "Type"
+msgid "OTT"
+msgstr ""
 
 msgid "OUT"
 msgstr ""
@@ -11812,7 +11911,7 @@ msgstr ""
 #
 #, fuzzy
 msgid "Open Vision information"
-msgstr "Åpne valg mappe"
+msgstr "Informasjon"
 
 msgid "Open Vision revision check"
 msgstr ""
@@ -11919,11 +12018,11 @@ msgstr "LED-status i standby-modus"
 
 #, fuzzy
 msgid "Operating LED color"
-msgstr "LED-status under bruk."
+msgstr "LED-status under bruk"
 
 #, fuzzy
 msgid "Operating LED color while blinking"
-msgstr "LED-status under bruk."
+msgstr "LED-status under bruk"
 
 #, fuzzy
 msgid "Operating LED fade"
@@ -11932,9 +12031,8 @@ msgstr "LED-status i standby-modus"
 msgid "Operating LED status in deep standby mode"
 msgstr "LED-status i dyp standby-modus"
 
-#, fuzzy
 msgid "Operating LED status while running"
-msgstr "LED-status under bruk."
+msgstr "LED-status under bruk"
 
 msgid "Opkg"
 msgstr "Opkg"
@@ -12787,10 +12885,9 @@ msgstr "LED-status i standby-modus"
 msgid "Power On Display"
 msgstr "Slå på display"
 
-#
 #, fuzzy
 msgid "Power Timers"
-msgstr "Sorter tid"
+msgstr "Slå av timer"
 
 msgid "Power management. Consult your receiver's manual for more information."
 msgstr "Strømstyring. Se i din mottakers bruksanvisning for mer informasjon."
@@ -13059,9 +13156,10 @@ msgstr "Ser etter ny programvare"
 msgid "Process"
 msgstr "Prossess"
 
+#
 #, fuzzy
 msgid "Processor information"
-msgstr "Programvareadministrasjon"
+msgstr "Informasjon"
 
 msgid "Progress"
 msgstr "Stor framdriftsbar"
@@ -13501,6 +13599,11 @@ msgstr "Opptaks innstilling"
 
 msgid "Recording in progress"
 msgstr "Opptak pågår"
+
+#
+#, fuzzy
+msgid "Recording time has been set."
+msgstr "Dvale timer har blitt deaktivert."
 
 msgid "Recording type"
 msgstr "Opptakstype"
@@ -14532,9 +14635,6 @@ msgid "Scans default lamedbs sorted by satellite with a connected dish positione
 msgstr "Søker etter standard satellittrekkefølge ved hjelp av parabolmotor"
 
 msgid "Schedule EPG and channel list import"
-msgstr ""
-
-msgid "Screenshot of LCD in /tmp"
 msgstr ""
 
 msgid "Scroll delay"
@@ -15845,6 +15945,11 @@ msgid "Show media player on main menu"
 msgstr "Vis mediespiller på hovedmenyen"
 
 #
+#, fuzzy
+msgid "Show menu numbers"
+msgstr "Vis meny eller plugin-numre"
+
+#
 msgid "Show menu or plugin numbers"
 msgstr "Vis meny eller plugin-numre"
 
@@ -16032,9 +16137,10 @@ msgstr "Vis underleverandør valg"
 msgid "Show subtitle selection"
 msgstr "Vis tekst tv valg"
 
+#
 #, fuzzy
 msgid "Show system information"
-msgstr "Programvareadministrasjon"
+msgstr "Informasjon"
 
 #
 #, fuzzy
@@ -16292,6 +16398,9 @@ msgstr "Hopp over ubrukte kanaler"
 
 msgid "Skip internet connection check (disables automatic package installation)"
 msgstr "Hopp over Internett-tilkoblingen (deaktiverer automatisk installasjon av pakken)"
+
+msgid "Skip jumping to live TV while timeshifting with plugins"
+msgstr ""
 
 #, fuzzy
 msgid "Sleep Timer"
@@ -17195,9 +17304,8 @@ msgstr "Slå på displayet under standby-modus"
 msgid "Switch on the display during Suspend Mode"
 msgstr "Slå på displayet under hvilemodus"
 
-#, fuzzy
 msgid "Switch on the display during operation"
-msgstr "Slå på displayet under drift."
+msgstr "Slå på displayet under drift"
 
 #
 msgid "Switch to Android"
@@ -17338,7 +17446,7 @@ msgid "TMBD details for event"
 msgstr "Detaljer for utvidelser: "
 
 msgid "TRANSLATOR_INFO"
-msgstr "Oversettelse til norsk bokmål oppdatert den 29.04.2022"
+msgstr "Oversettelse til norsk bokmål oppdatert den 09.10.2022"
 
 #
 msgid "TS file is too large for ISO9660 level 1!"
@@ -17562,20 +17670,11 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "The %s commit logs can't be retrieved, please try again later."
-msgstr "Oppdateringsloggen er for øyeblikket utilgjengelig. Prøv igjen senere"
+msgstr "Oppdateringsloggen er for øyeblikket utilgjengelig. Prøv igjen senere."
 
 #, python-format
 msgid "The '%s' log file contains no information."
 msgstr ""
-
-#
-#, fuzzy
-msgid ""
-"The AutoTimer plugin is not installed!\n"
-"Please install it."
-msgstr ""
-"Den trådløse LAN-plugin-modulen er ikke installert!\n"
-"Vennligst installer den."
 
 #
 #, fuzzy
@@ -17990,6 +18089,10 @@ msgstr "Dette alternativet kan være nyttig for lange HDMI-kabler."
 
 #, fuzzy
 msgid "This option configures the general audio delay for BT speakers."
+msgstr "Dette alternativet konfigurerer den generelle lydforsinkelsen for Bluetooth høyttalere."
+
+#, fuzzy
+msgid "This option configures the general audio delay."
 msgstr "Dette alternativet konfigurerer den generelle lydforsinkelsen for Bluetooth høyttalere."
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
@@ -18540,7 +18643,7 @@ msgstr "Informasjon"
 #
 #, fuzzy
 msgid "Translation information"
-msgstr "Oversettelse"
+msgstr "Informasjon"
 
 #
 msgid "Translation:"
@@ -18835,8 +18938,9 @@ msgstr "Angre avinstallering"
 msgid "Unencrypted"
 msgstr "Ukryptert"
 
+#, fuzzy
 msgid "Unexpected error while retreiving fallback tuner's timer information"
-msgstr "Uventet feil ved henting av reserve tuners timer informasjon"
+msgstr "Uventet feil under henting av timer informasjon på reservemottakeren"
 
 #
 msgid "UnhandledKey"
@@ -19029,6 +19133,9 @@ msgstr "bruk best / kontrollert av HDMI"
 #
 msgid "Use circular LNB"
 msgstr "Bruk sirkulær LNB"
+
+msgid "Use config file /etc/\"inetd.conf\" in mode IPv6 compatible with IPv4."
+msgstr ""
 
 #
 #, fuzzy
@@ -21226,9 +21333,8 @@ msgid "minutes"
 msgstr "%d minutter"
 
 #
-#, fuzzy
 msgid "module disabled"
-msgstr "styrke deaktivert"
+msgstr "modul deaktivert"
 
 #
 msgid "month"

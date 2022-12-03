@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 10:29+0330\n"
+"POT-Creation-Date: 2022-12-03 17:58+0330\n"
 "PO-Revision-Date: 2018-02-14 16:51+0330\n"
 "Last-Translator: Persian Prince <persianprince@pe4k.com>\n"
 "Language-Team: Persian Professionals <persianpros@yahoo.com>\n"
@@ -899,8 +899,28 @@ msgid "%d DMIPS with %d cores"
 msgstr ""
 
 #, python-format
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] ""
+
+#, python-format
+msgid "%d Digit"
+msgid_plural "%d Digits"
+msgstr[0] ""
+
+#, python-format
+msgid "%d Event"
+msgid_plural "%d Events"
+msgstr[0] ""
+
+#, python-format
 msgid "%d GB"
 msgstr ""
+
+#, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] ""
 
 #, python-format
 msgid "%d KB"
@@ -931,6 +951,41 @@ msgstr "%d مگابایت"
 msgid "%d Min"
 msgid_plural "%d Mins"
 msgstr[0] "%d مگابایت"
+
+#, fuzzy, python-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "%d دقیقه"
+
+#, fuzzy, python-format
+msgid "%d Month"
+msgid_plural "%d Months"
+msgstr[0] "%d مگابایت"
+
+#, python-format
+msgid "%d Pixel"
+msgid_plural "%d Pixels"
+msgstr[0] ""
+
+#, python-format
+msgid "%d Pixel wide"
+msgid_plural "%d Pixels wide"
+msgstr[0] ""
+
+#, fuzzy, python-format
+msgid "%d Second"
+msgid_plural "%d Seconds"
+msgstr[0] "%d ثانیه"
+
+#, python-format
+msgid "%d Week"
+msgid_plural "%d Weeks"
+msgstr[0] ""
+
+#, fuzzy, python-format
+msgid "%d Year"
+msgid_plural "%d Years"
+msgstr[0] "سال"
 
 #. TRANSLATORS: Intermediate scanning result, '%d' channel(s) have been found so far
 #, python-format
@@ -2739,11 +2794,6 @@ msgstr ""
 msgid "Auto EXIF Orientation rotation/flipping"
 msgstr ""
 
-#
-#, fuzzy
-msgid "Auto Timers"
-msgstr "خودکار flesh"
-
 msgid "Auto chapter split every ? minutes (0=never)"
 msgstr "ایجاد فصل به صورت خودکار بر حسب دقیقه ؟ صفر به معنی هیچ وقت است"
 
@@ -2781,6 +2831,10 @@ msgstr "جایگزینی خودکار scart"
 #, fuzzy
 msgid "Auto standby"
 msgstr "خاموشی موقت"
+
+#, fuzzy
+msgid "AutoTimer"
+msgstr "نوع لیست"
 
 #, fuzzy, python-format
 msgid "Autoinstalling %s"
@@ -3032,7 +3086,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Benchmark information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr "اطلاعات"
 
 msgid "Bengali"
 msgstr ""
@@ -3810,6 +3864,9 @@ msgstr ""
 msgid "Choose the name of the file that holds the EPG data when your %s %s is shut down. This can be handy to differentiate between several boxes."
 msgstr ""
 
+msgid "Choose the option to correct invalid EPG data."
+msgstr ""
+
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
@@ -4526,10 +4583,9 @@ msgstr "وصل شده به"
 msgid "Connected transcoding, limit - no PiP!"
 msgstr ""
 
-#
 #, fuzzy
 msgid "Connection information"
-msgstr "اطلاعات فعالیت مدیریت پلاگین"
+msgstr "اطلاعات"
 
 msgid ""
 "Connection using supplied FTP parameters failed.\n"
@@ -4620,6 +4676,9 @@ msgstr ""
 #, fuzzy
 msgid "Cornish"
 msgstr "دانمارکی"
+
+msgid "Correct invalid EPG data"
+msgstr ""
 
 msgid "Corsican"
 msgstr ""
@@ -5104,6 +5163,9 @@ msgid "Dayname Year/MM/D"
 msgstr ""
 
 msgid "Dayname Year/MM/DD"
+msgstr ""
+
+msgid "Debug"
 msgstr ""
 
 #, fuzzy
@@ -5635,8 +5697,9 @@ msgstr ""
 msgid "Display next system information screen"
 msgstr ""
 
+#, fuzzy
 msgid "Display oscam information."
-msgstr ""
+msgstr "اطلاعات"
 
 #, fuzzy
 msgid "Display previous commit log"
@@ -6310,9 +6373,6 @@ msgid ""
 "You can use this receiver only in client mode using server channel list and EPG.\n"
 "\n"
 "Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
-msgstr ""
-
-msgid "Enable screenshot of LCD in /tmp."
 msgstr ""
 
 msgid "Enable teletext caching"
@@ -7400,6 +7460,10 @@ msgstr "جمعه"
 msgid "Friday"
 msgstr "جمعه"
 
+#, fuzzy
+msgid "From"
+msgstr "از:"
+
 msgid "From:"
 msgstr "از:"
 
@@ -7524,6 +7588,11 @@ msgstr "تاخیر عمومی AC3"
 #, fuzzy
 msgid "General PCM delay"
 msgstr "تاخیر عمومی PCM"
+
+#
+#, fuzzy
+msgid "General audio delay"
+msgstr "تاخیر عمومی AC3"
 
 msgid "Generic"
 msgstr ""
@@ -7871,7 +7940,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Hardware information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr "اطلاعات"
 
 #, fuzzy
 msgid "Hardware serial"
@@ -8201,6 +8270,9 @@ msgstr ""
 msgid "If set to 'yes' signal values (SNR, etc) will be calculated from API V3. This is an old API version that has now been superseded."
 msgstr ""
 
+msgid "If set to 'yes', allows you to use timeshift with alternative audio plugins."
+msgstr ""
+
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
 
@@ -8266,6 +8338,14 @@ msgstr "عکس: "
 
 msgid "Immediately restart selected devices."
 msgstr ""
+
+#, fuzzy
+msgid "Import AutoTimer"
+msgstr "چیدمان بر اساس زمان"
+
+#, fuzzy
+msgid "Import autotimer in current event"
+msgstr "اضافه/حذف زمان از رخداد فعلی"
 
 msgid "Import channels and/or EPG from remote receiver URL also when the receiver is getting out of standby."
 msgstr ""
@@ -10085,6 +10165,10 @@ msgstr "در دسترس نیست"
 msgid "NCam Config info"
 msgstr ""
 
+#, fuzzy
+msgid "NCam Info"
+msgstr "اطلاعات"
+
 msgid "NCam Info Main Menu"
 msgstr ""
 
@@ -10172,10 +10256,6 @@ msgstr ""
 
 #, fuzzy
 msgid "Ncam ECM info"
-msgstr "اطلاعات"
-
-#, fuzzy
-msgid "Ncam Info"
 msgstr "اطلاعات"
 
 #, fuzzy
@@ -10685,6 +10765,10 @@ msgstr "ONID"
 msgid "OPKG clean mode"
 msgstr ""
 
+#, fuzzy
+msgid "OSCam Info"
+msgstr "اطلاعات"
+
 msgid "OSD"
 msgstr ""
 
@@ -10729,9 +10813,8 @@ msgstr ""
 msgid "OScam webif disabled"
 msgstr "غیر فعال شد"
 
-#, fuzzy
-msgid "OTT Model"
-msgstr "حالت"
+msgid "OTT"
+msgstr ""
 
 msgid "OUT"
 msgstr ""
@@ -10825,8 +10908,9 @@ msgstr ""
 msgid "Open Vision Commit Info Setup"
 msgstr ""
 
+#, fuzzy
 msgid "Open Vision information"
-msgstr ""
+msgstr "اطلاعات"
 
 msgid "Open Vision revision check"
 msgstr ""
@@ -11947,7 +12031,7 @@ msgstr "پردازش"
 
 #, fuzzy
 msgid "Processor information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr "اطلاعات"
 
 msgid "Progress"
 msgstr "پیشرفت"
@@ -12341,6 +12425,10 @@ msgstr ""
 
 msgid "Recording in progress"
 msgstr "ضبط در حال پیشرفت"
+
+#, fuzzy
+msgid "Recording time has been set."
+msgstr "مسیر های ضبط کردن"
 
 msgid "Recording type"
 msgstr "نوع ضبط"
@@ -13300,9 +13388,6 @@ msgid "Scans default lamedbs sorted by satellite with a connected dish positione
 msgstr ""
 
 msgid "Schedule EPG and channel list import"
-msgstr ""
-
-msgid "Screenshot of LCD in /tmp"
 msgstr ""
 
 msgid "Scroll delay"
@@ -14505,6 +14590,10 @@ msgid "Show media player on main menu"
 msgstr ""
 
 #, fuzzy
+msgid "Show menu numbers"
+msgstr "نمایش اعداد منو"
+
+#, fuzzy
 msgid "Show menu or plugin numbers"
 msgstr "نمایش اعداد منو"
 
@@ -14673,7 +14762,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Show system information"
-msgstr "اطلاعات مدیریت نرم افزار"
+msgstr "اطلاعات"
 
 #, fuzzy
 msgid "Show the TV player"
@@ -14904,6 +14993,9 @@ msgid "Skip empty services"
 msgstr "نادیده گرفتن کانال خالی"
 
 msgid "Skip internet connection check (disables automatic package installation)"
+msgstr ""
+
+msgid "Skip jumping to live TV while timeshifting with plugins"
 msgstr ""
 
 #, fuzzy
@@ -16101,15 +16193,6 @@ msgstr ""
 msgid "The '%s' log file contains no information."
 msgstr ""
 
-#
-#, fuzzy
-msgid ""
-"The AutoTimer plugin is not installed!\n"
-"Please install it."
-msgstr ""
-"بسته هدایتگر شبکه نصب نشده است\n"
-"لطفا آن را نصب کنید"
-
 msgid "The AutoTimer plugin is not installed."
 msgstr ""
 
@@ -16466,6 +16549,9 @@ msgid "This option can be useful for long HDMI cables."
 msgstr ""
 
 msgid "This option configures the general audio delay for BT speakers."
+msgstr ""
+
+msgid "This option configures the general audio delay."
 msgstr ""
 
 msgid "This option set the level of surpression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
@@ -16923,7 +17009,7 @@ msgstr "اطلاعات"
 
 #, fuzzy
 msgid "Translation information"
-msgstr "ترجمه"
+msgstr "اطلاعات"
 
 msgid "Translation:"
 msgstr "ترجمه:"
@@ -17351,6 +17437,9 @@ msgid "Use best / Controlled by HDMI"
 msgstr ""
 
 msgid "Use circular LNB"
+msgstr ""
+
+msgid "Use config file /etc/\"inetd.conf\" in mode IPv6 compatible with IPv4."
 msgstr ""
 
 #, fuzzy
