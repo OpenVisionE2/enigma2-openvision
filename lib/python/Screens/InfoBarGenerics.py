@@ -2756,7 +2756,7 @@ class InfoBarInstantRecord:
 			info["name"] = curEvent[2]
 			info["description"] = curEvent[3]
 			info["eventid"] = curEvent[4]
-			info["end"] = curEvent[1]
+			# info["end"] = curEvent[1]
 
 	def startInstantRecording(self, limitEvent=False):
 		begin = int(time())
@@ -2769,27 +2769,26 @@ class InfoBarInstantRecord:
 		event = info["event"]
 
 		if event is not None:
-			if limitEvent:
-				end = info["end"]
+			end = begin + self.currentEventTime() # time now + remaining event time: instant record with (stop after current event).
 		else:
 			message = _("No event info found, recording indefinitely.")
 			if not limitEvent and serviceref:
 				if serviceref.toString().startswith("1"):
-					AddPopup(_("%s") % message, MessageBox.TYPE_INFO, timeout=5)
+					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=5)
 				elif isPluginInstalled("ServiceApp"): # channels with IPTV reference.
 					if not config.plugins.serviceapp.servicemp3.replace.value:
-						AddPopup(_("%s") % message, MessageBox.TYPE_INFO, timeout=5)
+						AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=5)
 				else:
-					AddPopup(_("%s") % message, MessageBox.TYPE_INFO, timeout=5)
+					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=5)
 			else:
-				message = _("Recording time has been set.")
+				message = _("A recording has been set.")
 				if serviceref.toString().startswith("1"):
-					AddPopup(_("%s") % message, MessageBox.TYPE_INFO, timeout=10)
+					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=10)
 				elif isPluginInstalled("ServiceApp"): # channels with IPTV reference.
 					if not config.plugins.serviceapp.servicemp3.replace.value:
-						AddPopup(_("%s") % message, MessageBox.TYPE_INFO, timeout=10)
+						AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=10)
 				else:
-					AddPopup(_("%s") % message, MessageBox.TYPE_INFO, timeout=10)
+					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=10)
 
 		if isinstance(serviceref, eServiceReference):
 			serviceref = ServiceReference(serviceref)
@@ -2885,7 +2884,7 @@ class InfoBarInstantRecord:
 			if len(list) >= 2 and about.getChipSetString().startswith("meson-6"):
 				AddNotification(MessageBox, _("Sorry only possible to record 2 channels at once!"), MessageBox.TYPE_ERROR, timeout=5)
 				return
-			self.startInstantRecording(limitEvent=answer[1] in ("manualendtime", "manualduration") or False)
+			self.startInstantRecording(limitEvent=answer[1] in ("event", "manualendtime", "manualduration") or False)
 			if answer[1] == "manualduration":
 				self.changeDuration(len(self.recording) - 1)
 			elif answer[1] == "manualendtime":
