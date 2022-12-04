@@ -2781,7 +2781,7 @@ class InfoBarInstantRecord:
 				else:
 					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=5)
 			else:
-				message = _("A recording has been set.")
+				message = _("Recording time has been set.")
 				if serviceref.toString().startswith("1"):
 					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=10)
 				elif isPluginInstalled("ServiceApp"): # channels with IPTV reference.
@@ -2967,11 +2967,17 @@ class InfoBarInstantRecord:
 						"\n" + _("No HDD found or HDD not initialized!"), MessageBox.TYPE_ERROR)
 			return
 
-		if isStandardInfoBar(self):
+		service = self.session.nav.getCurrentService()
+		event = service and service.info().getEvent(0)
+		if isStandardInfoBar(self) and event:
 			common = ((_("Add recording (stop after current event)"), "event"),
 				(_("Add recording (indefinitely)"), "indefinitely"),
 				(_("Add recording (enter recording duration)"), "manualduration"),
 				(_("Add recording (enter recording endtime)"), "manualendtime"),)
+		elif isStandardInfoBar(self):
+			common = ((_("Add recording (indefinitely)"), "indefinitely"),
+			(_("Add recording (enter recording duration)"), "manualduration"),
+			(_("Add recording (enter recording endtime)"), "manualendtime"),)
 		else:
 			common = ()
 		if self.isInstantRecordRunning():
