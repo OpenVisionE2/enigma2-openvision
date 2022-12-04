@@ -39,7 +39,7 @@ def PipPigMode(value):
 			if not PipPigModeEnabled:
 				if BoxInfo.getItem("hasPIPVisibleProc"):
 					open(BoxInfo.getItem("hasPIPVisibleProc"), "w").write("0")
-				if hasattr(value, "pipservice"):
+				elif hasattr(value, "pipservice"):
 					import skin
 					x, y, w, h = skin.parameters.get("PipHidePosition", (16, 16, 16, 16))
 					pip = InfoBar.instance.session.pip
