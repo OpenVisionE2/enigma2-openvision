@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from enigma import eTimer, eBackgroundFileEraser, eLabel, gFont, fontRenderClass
-from os import remove, walk, stat, rmdir
+from os import remove, walk, stat, rmdir, listdir
 from os.path import join, getsize, isdir, exists
 from time import time
 import Components.Task
@@ -128,6 +128,7 @@ class LogManagerPoller:
 class LogManager(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
+		self.logs = listdir("/home/root/logs")
 		self.logtype = "crashlogs"
 		self["myactions"] = ActionMap(["ColorActions", "OkCancelActions", "DirectionActions"], {
 			"ok": self.changeSelectionState,
@@ -140,9 +141,10 @@ class LogManager(Screen):
 			"down": self.down,
 			"up": self.up
 		}, -1)
-		self["key_red"] = Button(_("Debug Logs"))
-		self["key_green"] = Button(_("View"))
-		self["key_yellow"] = Button(_("Delete"))
+		if self.logs:
+			self["key_red"] = Button(_("Debug Logs"))
+			self["key_green"] = Button(_("View"))
+			self["key_yellow"] = Button(_("Delete"))
 		self.onChangedEntry = []
 		self.sentsingle = ""
 		self.selectedFiles = config.logmanager.sentfiles.value
@@ -209,43 +211,46 @@ class LogManager(Screen):
 			self.selectedFiles = self["list"].getSelectedList()
 
 	def changelogtype(self):
-		self["LogsSize"].update(config.crash.debugPath.value)
-		import re
-		if self.logtype == "crashlogs":
-			self["key_red"].setText(_("Crash Logs"))
-			self.logtype = "debuglogs"
-			self.matchingPattern = "enigma2_debug_"
-		else:
-			self["key_red"].setText(_("Debug Logs"))
-			self.logtype = "crashlogs"
-			self.matchingPattern = "enigma2_crash_"
-		self["list"].matchingPattern = re.compile(self.matchingPattern)
-		self["list"].changeDir(self.defaultDir)
+		if self.logs:
+			self["LogsSize"].update(config.crash.debugPath.value)
+			import re
+			if self.logtype == "crashlogs":
+				self["key_red"].setText(_("Crash Logs"))
+				self.logtype = "debuglogs"
+				self.matchingPattern = "enigma2_debug_"
+			else:
+				self["key_red"].setText(_("Debug Logs"))
+				self.logtype = "crashlogs"
+				self.matchingPattern = "enigma2_crash_"
+			self["list"].matchingPattern = re.compile(self.matchingPattern)
+			self["list"].changeDir(self.defaultDir)
 
 	def showLog(self):
-		try:
-			self.sel = self["list"].getCurrent()[0]
-		except:
-			self.sel = None
-		if self.sel:
-			self.session.open(LogManagerViewLog, self.sel[0])
+		if self.logs:
+			try:
+				self.sel = self["list"].getCurrent()[0]
+			except:
+				self.sel = None
+			if self.sel:
+				self.session.open(LogManagerViewLog, self.sel[0])
 
 	def deletelog(self):
-		try:
-			self.sel = self["list"].getCurrent()[0]
-		except:
-			self.sel = None
-		self.selectedFiles = self["list"].getSelectedList()
-		if self.selectedFiles:
-			message = _("Do you want to delete all the selected files:\nchoose \"No\" to only delete the currently selected file.")
-			ybox = self.session.openWithCallback(self.doDelete1, MessageBox, message, MessageBox.TYPE_YESNO)
-			ybox.setTitle(_("Delete Confirmation"))
-		elif self.sel:
-			message = _("Are you sure you want to delete this log?\n") + str(self.sel[0])
-			ybox = self.session.openWithCallback(self.doDelete3, MessageBox, message, MessageBox.TYPE_YESNO)
-			ybox.setTitle(_("Delete Confirmation"))
-		else:
-			self.session.open(MessageBox, _("You have not selected any logs to delete."), MessageBox.TYPE_INFO, timeout=10)
+		if self.logs:
+			try:
+				self.sel = self["list"].getCurrent()[0]
+			except:
+				self.sel = None
+			self.selectedFiles = self["list"].getSelectedList()
+			if self.selectedFiles:
+				message = _("Do you want to delete all the selected files:\nchoose \"No\" to only delete the currently selected file.")
+				ybox = self.session.openWithCallback(self.doDelete1, MessageBox, message, MessageBox.TYPE_YESNO)
+				ybox.setTitle(_("Delete Confirmation"))
+			elif self.sel:
+				message = _("Are you sure you want to delete this log?\n") + str(self.sel[0])
+				ybox = self.session.openWithCallback(self.doDelete3, MessageBox, message, MessageBox.TYPE_YESNO)
+				ybox.setTitle(_("Delete Confirmation"))
+			else:
+				self.session.open(MessageBox, _("You have not selected any logs to delete."), MessageBox.TYPE_INFO, timeout=10)
 
 	def doDelete1(self, answer):
 		self.selectedFiles = self["list"].getSelectedList()
@@ -371,6 +376,7 @@ class LogInfo(VariableText, GUIComponent):
 	def __init__(self, path, type, update=True):
 		GUIComponent.__init__(self)
 		VariableText.__init__(self)
+		self.logs = listdir("/home/root/logs")
 		self.type = type
 # 		self.path = config.crash.debugPath.value
 		if update:
@@ -390,7 +396,7 @@ class LogInfo(VariableText, GUIComponent):
 					total_size = "%d MB" % (total_size >> 20)
 				else:
 					total_size = "%d GB" % (total_size >> 30)
-				self.setText(_("Space used:") + " " + total_size)
+				self.setText(_("Exist are debug or crash files.\nSpace used:") + " " + total_size) if self.logs else self.setText(_("Exist are no debug files or crash."))
 			except:
 				# occurs when f_blocks is 0 or a similar error
 				self.setText("-?-")
