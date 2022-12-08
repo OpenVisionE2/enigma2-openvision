@@ -1122,7 +1122,7 @@
 		<eLabel backgroundColor="white" name="" position="680,930" size="1160,2" zPosition="-9"/>
 		<eLabel backgroundColor="OE_NewBg2" foregroundColor="white" name="" position="65,center" size="600,1080" zPosition="-11" verticalAlignment="center"/>
 		<!-- Widget -->
-		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" position="80,85" size="450,50" horizontalAlignment="left" verticalAlignment="center" transparent="1">
+		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" position="80,85" size="450,50" transparent="1">
 			<convert type="ServiceName">Name</convert>
 		</widget>
 		<eLabel backgroundColor="blue_light" name="" position="80,142" size="570,2" zPosition="-9" foregroundColor="un5678a4"/>
@@ -1131,7 +1131,7 @@
 		<widget alphaTest="blend" position="550,77" render="Picon" size="100,60" source="ServiceEvent" transparent="1" zPosition="2">
 			<convert type="RefString">ServicelistRef</convert>
 		</widget>
-		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" foregroundColor="green_light" horizontalAlignment="left" position="80,150" size="570,45" transparent="1" verticalAlignment="center">
+		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" foregroundColor="green_light" position="80,150" size="570,45" transparent="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget backgroundColor="OE_Background" font="RegularBold;28" horizontalAlignment="left" position="80,200" render="Label" size="85,35" source="ServiceEvent" transparent="1">
@@ -1151,7 +1151,7 @@
 		<widget backgroundColor="OE_PreBlack2" pixmap="OctEtFHD/colors/00A4C400.png" position="80,242" render="Progress" size="570,5" source="ServiceEvent" transparent="1" zPosition="1">
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget backgroundColor="OE_Background" font="Regular;29" horizontalAlignment="left" position="80,260" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="570,563" source="ServiceEvent" transparent="1" verticalAlignment="top">
+		<widget backgroundColor="OE_Background" font="Regular;29" position="80,260" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="570,563" source="ServiceEvent" transparent="1">
 			<convert type="EventName">ExtendedDescription</convert>
 		</widget>
 		<widget source="ServiceEvent" render="NextEvents" position="80,835" size="570,110" noWrap="1" font="Regular;29" backgroundColor="OE_Background" foregroundColor="OE_Foreground" transparent="1" zPosition="5">
@@ -1606,7 +1606,7 @@
 		<widget alphaTest="blend" position="70,415" render="Picon" size="220,130" source="Service" transparent="1" zPosition="5">
 			<convert type="ServiceName2">Reference</convert>
 		</widget>
-		<widget source="Event" font="RegularBold;26" render="RunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" backgroundColor="OE_Background" position="350,715" size="1490,210" horizontalAlignment="left" transparent="1" verticalAlignment="top">
+		<widget source="Event" font="RegularBold;26" render="RunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" backgroundColor="OE_Background" position="350,715" size="1490,210" transparent="1">
 			<convert type="EventName">FullDescription</convert>
 		</widget>
 	</screen>
@@ -2033,7 +2033,7 @@
 		<widget name="freeDiskSpace" position="30,980" size="440,90" font="RegularBold;22" backgroundColor="OE_NewBg2" transparent="1" zPosition="1"/>
 		<widget name="movie_sort" pixmaps="OctEtFHD/icons/az.png,icons/newtop.png,icons/shuffle.png,icons/za.png,icons/oldtop.png,icons/faz.png,icons/fza.png,icons/default.png" position="370,950" zPosition="10" size="35,20" transparent="1" alphaTest="on"/>
 		<widget name="movie_off" pixmaps="OctEtFHD/icons/ask.png,icons/movielist.png,icons/quit.png,icons/pause.png,icons/playlist.png,icons/playlistquit.png,icons/loop.png,icons/rep.png" position="420,950" zPosition="10" size="35,20" transparent="1" alphaTest="on"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;26" horizontalAlignment="left" position="30,420" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="440,450" source="Service" transparent="1" verticalAlignment="top" zPosition="1">
+		<widget backgroundColor="OE_Background" font="RegularBold;26" position="30,420" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="440,450" source="Service" transparent="1" zPosition="1">
 			<convert type="EventName">ExtendedDescription</convert>
 		</widget>
 		<widget name="DescriptionBorder" position="0,0" size="0,0"/>
@@ -2070,7 +2070,7 @@
 			<convert type="ServiceTime">Duration</convert>
 			<convert type="ClockToText"/>
 		</widget>
-		<widget backgroundColor="OE_Background" font="RegularBold;22" horizontalAlignment="left" position="100,690" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="925,285" source="Service" transparent="1" verticalAlignment="top">
+		<widget backgroundColor="OE_Background" font="RegularBold;22" position="100,690" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" render="RunningText" size="925,285" source="Service" transparent="1">
 			<convert type="EventName">ExtendedDescription</convert>
 		</widget>
 		<widget name="movie_sort" pixmaps="OctEtFHD/icons/az.png,icons/newtop.png,icons/shuffle.png,icons/za.png,icons/oldtop.png,icons/faz.png,icons/fza.png,icons/default.png" position="25,890" size="35,20" transparent="1" alphaTest="on"/>
