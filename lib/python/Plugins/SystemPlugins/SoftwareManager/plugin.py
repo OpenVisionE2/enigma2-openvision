@@ -174,6 +174,10 @@ class UpdatePluginMenu(Screen):
 			"red": self.close,
 			"menu": self.handleMenu,
 			"showEventInfo": self.handleInfo,
+			"left": self.pageUp,
+			"right": self.pageDown,
+			"down": self.down,
+			"up": self.up,
 			"1": self.go,
 			"2": self.go,
 			"3": self.go,
@@ -182,7 +186,7 @@ class UpdatePluginMenu(Screen):
 			"6": self.go,
 			"7": self.go,
 			"8": self.go,
-			"9": self.go,
+			"9": self.go
 		}, -1)
 		self.onLayoutFinish.append(self.layoutFinished)
 		self.backuppath = getBackupPath()
@@ -320,6 +324,18 @@ class UpdatePluginMenu(Screen):
 		if (ret == True):
 			self.exe = True
 			self.session.open(RestoreScreen, runRestore=True)
+
+	def up(self):
+		self["menu"].up()
+
+	def down(self):
+		self["menu"].down()
+
+	def pageUp(self):
+		self["menu"].pageUp()
+
+	def pageDown(self):
+		self["menu"].pageDown()
 
 
 class SoftwareManagerSetup(ConfigListScreen, Screen):

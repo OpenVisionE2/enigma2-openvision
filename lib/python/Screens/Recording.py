@@ -2,6 +2,7 @@
 from os import stat
 from os.path import isdir, join as pathjoin
 
+from Components.ActionMap import ActionMap
 from Components.config import config
 from Components.UsageConfig import preferredPath
 from Screens.LocationBox import defaultInhibitDirs, MovieLocationBox
@@ -27,6 +28,11 @@ class RecordingSettings(Setup):
 		self.errorItem = -1
 		if self.getCurrentItem() in (config.usage.default_path, config.usage.timer_path, config.usage.instantrec_path):
 			self.pathStatus(self.getCurrentValue())
+		self["configActions"] = ActionMap(["ConfigListActions", "OkCancelActions"], {
+			"select": self.keySelect,
+			"cancel": self.close,
+			"save": self.keySave
+		}, -1)
 
 	def selectionChanged(self):
 		if self.errorItem == -1:

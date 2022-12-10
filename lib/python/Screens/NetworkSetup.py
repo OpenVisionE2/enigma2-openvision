@@ -345,20 +345,23 @@ class NameserverSetup(ConfigListScreen, HelpableScreen, Screen):
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
 			{
-			"cancel": (self.cancel, _("Exit nameserver configuration")),
+			"cancel": (self.keyCancel, _("Exit nameserver configuration")),
 			"ok": (self.ok, _("Activate current configuration")),
 			})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
 			{
-			"red": (self.cancel, _("Exit nameserver configuration")),
+			"red": (self.keyCancel, _("Exit nameserver configuration")),
 			"green": (self.add, _("Add a nameserver entry")),
 			"yellow": (self.remove, _("Remove a nameserver entry")),
 			})
 
 		self["actions"] = NumberActionMap(["SetupActions"],
 		{
+			"cancel": self.keyCancel,
 			"ok": self.ok,
+			"left": self.keyLeft,
+			"right": self.keyRight
 		}, -2)
 
 		self.list = []
@@ -402,7 +405,7 @@ class NameserverSetup(ConfigListScreen, HelpableScreen, Screen):
 	def run(self):
 		self.ok()
 
-	def cancel(self):
+	def keyCancel(self):
 		self.close()
 
 	def add(self):
@@ -424,6 +427,14 @@ class NameserverSetup(ConfigListScreen, HelpableScreen, Screen):
 		if index < len(self.nameservers):
 			self.createConfig()
 			self.createSetup()
+
+	def keyLeft(self):
+		ConfigListScreen.keyLeft(self)
+		self.createConfig()
+
+	def keyRight(self):
+		ConfigListScreen.keyRight(self)
+		self.createConfig()
 
 
 class MACSettings(Setup):
@@ -505,20 +516,23 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
 			{
-			"cancel": (self.cancel, _("Exit IPv6 configuration")),
+			"cancel": (self.keyCancel, _("Exit IPv6 configuration")),
 			"ok": (self.ok, _("Activate IPv6 configuration")),
 			})
 
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
 			{
-			"red": (self.cancel, _("Exit IPv6 configuration")),
+			"red": (self.keyCancel, _("Exit IPv6 configuration")),
 			"green": (self.ok, _("Activate IPv6 configuration")),
 			"blue": (self.restoreinetdData2, _("Restore inetd.conf")),
 			})
 
 		self["actions"] = NumberActionMap(["SetupActions"],
 		{
+			"cancel": self.keyCancel,
 			"ok": self.ok,
+			"left": self.keyLeft,
+			"right": self.keyRight
 		}, -2)
 
 		self.list = []
@@ -610,8 +624,16 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 	def run(self):
 		self.ok()
 
-	def cancel(self):
+	def keyCancel(self):
 		self.close()
+
+	def keyLeft(self):
+		ConfigListScreen.keyLeft(self)
+		self.createSetup()
+
+	def keyRight(self):
+		ConfigListScreen.keyRight(self)
+		self.createSetup()
 
 
 class InetdRecovery(Screen, ConfigListScreen):
@@ -726,7 +748,10 @@ class AdapterSetup(ConfigListScreen, HelpableScreen, Screen):
 
 		self["actions"] = NumberActionMap(["SetupActions"],
 		{
+			"cancel": self.keyCancel,
 			"ok": self.keySave,
+			"left": self.keyLeft,
+			"right": self.keyRight
 		}, -2)
 
 		self.list = []
@@ -1433,8 +1458,8 @@ class NetworkAdapterTest(Screen):
 
 		self["shortcuts"] = ActionMap(["ShortcutActions", "WizardActions"],
 		{
-			"red": self.cancel,
-			"back": self.cancel,
+			"red": self.keyCancel,
+			"back": self.keyCancel,
 		}, -2)
 		self["infoshortcuts"] = ActionMap(["ShortcutActions", "WizardActions"],
 		{
@@ -1465,7 +1490,7 @@ class NetworkAdapterTest(Screen):
 		self.nextStepTimer = eTimer()
 		self.nextStepTimer.callback.append(self.nextStepTimerFire)
 
-	def cancel(self):
+	def keyCancel(self):
 		if not self.oldInterfaceState:
 			iNetwork.setAdapterAttribute(self.iface, "up", self.oldInterfaceState)
 			iNetwork.deactivateInterface(self.iface)

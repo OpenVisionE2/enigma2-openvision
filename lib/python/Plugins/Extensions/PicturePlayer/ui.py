@@ -59,7 +59,15 @@ class picshow(Screen):
 			"green": self.KeyGreen,
 			"yellow": self.KeyYellow,
 			"menu": self.KeyMenu,
-			"ok": self.KeyOk
+			"ok": self.KeyOk,
+			"left": self.pageUp,
+			"right": self.pageDown,
+			"up": self.moveUp,
+			"down": self.moveDown,
+			"upUp": self.doNothing,
+			"downUp": self.doNothing,
+			"rightUp": self.doNothing,
+			"leftUp": self.doNothing
 		}, -1)
 
 		self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
@@ -147,6 +155,21 @@ class picshow(Screen):
 		config.pic.save()
 		self.session.nav.playService(self.oldService)
 		self.close()
+
+	def moveUp(self):
+		self["filelist"].instance.moveSelection(self["filelist"].instance.moveUp)
+
+	def moveDown(self):
+		self["filelist"].instance.moveSelection(self["filelist"].instance.moveDown)
+
+	def pageUp(self):
+		self["filelist"].instance.moveSelection(self["filelist"].instance.pageUp)
+
+	def pageDown(self):
+		self["filelist"].instance.moveSelection(self["filelist"].instance.pageDown)
+
+	def doNothing(self):
+		pass
 
 
 class Pic_Setup(ConfigListScreen, Screen):

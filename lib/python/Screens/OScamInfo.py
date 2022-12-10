@@ -445,7 +445,9 @@ class OscamInfoMenu(Screen):
 			"9": self.keyNumberGlobal,
 			"0": self.keyNumberGlobal,
 			"up": self.up,
-			"down": self.down
+			"down": self.down,
+			"left": self.pageUp,
+			"right": self.pageDown
 		}, -1)
 		self.onLayoutFinish.append(self.showMenu)
 
@@ -489,6 +491,12 @@ class OscamInfoMenu(Screen):
 
 	def down(self):
 		pass
+
+	def pageUp(self):
+		self["mainmenu"].instance.moveSelection(self["mainmenu"].instance.pageUp)
+
+	def pageDown(self):
+		self["mainmenu"].instance.moveSelection(self["mainmenu"].instance.pageDown)
 
 	def goEntry(self, entry):
 		if entry in (1, 2, 3) and config.oscaminfo.userdatafromconf.value and self.osc.confPath()[0] is None:

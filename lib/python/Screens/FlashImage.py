@@ -58,6 +58,10 @@ class SelectImage(Screen):
 			"down": self.keyDown,
 			"left": self.keyLeft,
 			"right": self.keyRight,
+			"upUp": self.doNothing,
+			"downUp": self.doNothing,
+			"rightUp": self.doNothing,
+			"leftUp": self.doNothing,
 			"upRepeated": self.keyUp,
 			"downRepeated": self.keyDown,
 			"leftRepeated": self.keyLeft,
@@ -183,6 +187,9 @@ class SelectImage(Screen):
 	def keyDown(self):
 		self["list"].instance.moveSelection(self["list"].instance.moveDown)
 		self.selectionChanged()
+
+	def doNothing(self):
+		pass
 
 
 class FlashImage(Screen):

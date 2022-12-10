@@ -34,6 +34,8 @@ class VideoSetup(ConfigListScreen, Screen):
 				"cancel": self.keyCancel,
 				"save": self.apply,
 				"menu": self.closeRecursive,
+				"left": self.keyLeft,
+				"right": self.keyRight
 			}, -2)
 
 		self["key_red"] = StaticText(_("Cancel"))

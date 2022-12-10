@@ -125,8 +125,8 @@ class BackupSelection(Screen):
 			"yellow": self.changeSelectionState,
 			"green": self.saveSelection,
 			"ok": self.okClicked,
-			"left": self.left,
-			"right": self.right,
+			"left": self.pageUp,
+			"right": self.pageDown,
 			"down": self.down,
 			"up": self.up
 		}, -1)
@@ -151,10 +151,10 @@ class BackupSelection(Screen):
 	def down(self):
 		self["checkList"].down()
 
-	def left(self):
+	def pageUp(self):
 		self["checkList"].pageUp()
 
-	def right(self):
+	def pageDown(self):
 		self["checkList"].pageDown()
 
 	def changeSelectionState(self):
@@ -205,10 +205,18 @@ class RestoreMenu(Screen):
 
 		self.path = ""
 
-		self["actions"] = NumberActionMap(["SetupActions"],
+		self["actions"] = NumberActionMap(["DirectionActions", "SetupActions"],
 		{
 			"ok": self.KeyOk,
-			"cancel": self.keyCancel
+			"cancel": self.keyCancel,
+			"left": self.pageUp,
+			"right": self.pageDown,
+			"down": self.down,
+			"up": self.up,
+			"upUp": self.doNothing,
+			"downUp": self.doNothing,
+			"rightUp": self.doNothing,
+			"leftUp": self.doNothing
 		}, -1)
 
 		self["shortcuts"] = ActionMap(["ShortcutActions"],
@@ -263,6 +271,21 @@ class RestoreMenu(Screen):
 				remove(self.val)
 			self.exe = False
 			self.fill_list()
+
+	def up(self):
+		self["filelist"].up()
+
+	def down(self):
+		self["filelist"].down()
+
+	def pageUp(self):
+		self["filelist"].pageUp()
+
+	def pageDown(self):
+		self["filelist"].pageDown()
+
+	def doNothing(self):
+		pass
 
 
 class RestoreScreen(Screen, ConfigListScreen):

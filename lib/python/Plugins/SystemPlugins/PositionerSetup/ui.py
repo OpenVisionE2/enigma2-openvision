@@ -242,7 +242,11 @@ class PositionerSetup(Screen):
 			"ok": self.keyOK,
 			"cancel": self.keyCancel,
 			"up": self.keyUp,
+			"upUp": self.doNothing,
 			"down": self.keyDown,
+			"downUp": self.doNothing,
+			"leftUp": self.pageUp,
+			"rightUp": self.pageDown,
 			"left": self.keyLeft,
 			"right": self.keyRight,
 			"red": self.redKey,
@@ -488,6 +492,19 @@ class PositionerSetup(Screen):
 		if not self.isMoving:
 			self["list"].instance.moveSelection(self["list"].instance.moveDown)
 			self.updateColors(self.getCurrentConfigPath())
+
+	def pageUp(self):
+		if not self.isMoving:
+			self["list"].instance.moveSelection(self["list"].instance.pageUp)
+			self.updateColors(self.getCurrentConfigPath())
+
+	def pageDown(self):
+		if not self.isMoving:
+			self["list"].instance.moveSelection(self["list"].instance.pageDown)
+			self.updateColors(self.getCurrentConfigPath())
+
+	def doNothing(self):
+		pass
 
 	def keyNumberGlobal(self, number):
 		if self.frontend is None:

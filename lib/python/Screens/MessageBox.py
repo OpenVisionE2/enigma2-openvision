@@ -61,18 +61,22 @@ class MessageBox(Screen, HelpableScreen):
 			enableInput = False
 		if enableInput:
 			if self.list:
-				self["actions"] = HelpableActionMap(self, ["MsgBoxActions", "NavigationActions"], {
+				self["actions"] = HelpableActionMap(self, ["MsgBoxActions", "NavigationActions", "DirectionActions"], {
 					"cancel": (self.cancel, _("Select the No / False response")),
 					"select": (self.select, _("Return the current selection response")),
 					"selectOk": (self.selectOk, _("Select the Yes / True response")),
 					"top": (self.top, _("Move to first line")),
 					"pageUp": (self.pageUp, _("Move up a page")),
 					"up": (self.up, _("Move up a line")),
+					"upUp": self.doNothing,
 					# "first": (self.top, _("Move to first line")),
 					# "left": (self.pageUp, _("Move up a page")),
 					# "right": (self.pageDown, _("Move down a page")),
 					# "last": (self.bottom, _("Move to last line")),
 					"down": (self.down, _("Move down a line")),
+					"downUp": self.doNothing,
+					"leftUp": self.pageUp,
+					"rightUp": self.pageDown,
 					"pageDown": (self.pageDown, _("Move down a page")),
 					"bottom": (self.bottom, _("Move to last line"))
 				}, prio=0, description=_("Message Box Actions"))
@@ -203,6 +207,9 @@ class MessageBox(Screen, HelpableScreen):
 
 	def pageDown(self):
 		self.move(self["list"].instance.pageDown)
+
+	def doNothing(self):
+		pass
 
 	def bottom(self):
 		self.move(self["list"].instance.moveEnd)

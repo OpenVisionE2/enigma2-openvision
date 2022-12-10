@@ -37,6 +37,8 @@ class OverscanWizard(Screen, ConfigListScreen):
 			"green": self.keyGo,
 			"red": self.keyCancel,
 			"ok": self.keyGo,
+			"left": self.keyLeft,
+			"right": self.keyRight
 		}, -2)
 
 		self.step = 1

@@ -55,7 +55,11 @@ class TimerEntry(ConfigListScreen, Screen):
 			"red": self.keyCancel,
 			"green": self.keyGo,
 			"yellow": self.changeTimerType,
-			"blue": self.changeZapWakeupType
+			"blue": self.changeZapWakeupType,
+			"left": self.keyLeft,
+			"right": self.keyRight,
+			"up": self.moveUp,
+			"down": self.moveDown
 		}, prio=-2)
 		self.list = []
 		ConfigListScreen.__init__(self, self.list, session=session)
@@ -556,6 +560,12 @@ class TimerEntry(ConfigListScreen, Screen):
 			self.timerentry_tags = ret
 			self.timerentry_tagsset.setChoices([not ret and _("None") or " ".join(ret)])
 			self["config"].invalidate(self.tagsSet)
+
+	def moveUp(self):
+		self["config"].instance.moveSelection(self["config"].instance.moveUp)
+
+	def moveDown(self):
+		self["config"].instance.moveSelection(self["config"].instance.moveDown)
 
 
 class TimerLog(Screen, HelpableScreen):

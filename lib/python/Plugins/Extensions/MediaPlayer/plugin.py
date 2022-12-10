@@ -204,7 +204,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 				"showEventInfo": (self.showEventInformation, _("show event details")),
 			})
 
-		self["actions"] = MoviePlayerActionMap(self, ["DirectionActions"],
+		self["actions"] = MoviePlayerActionMap(self, ["InfobarSeekActions", "DirectionActions"],
 		{
 			"right": self.rightDown,
 			"rightRepeated": self.doNothing,
@@ -221,7 +221,7 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			"downUp": self.doNothing,
 		}, -2)
 
-		InfoBarSeek.__init__(self, actionmap="MediaPlayerSeekActions")
+		InfoBarSeek.__init__(self, actionmap="InfobarSeekActions")
 
 		self.mediaPlayerInfoBar = self.session.instantiateDialog(MediaPlayerInfoBar)
 

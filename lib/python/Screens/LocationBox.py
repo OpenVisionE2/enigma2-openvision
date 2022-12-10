@@ -108,9 +108,12 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 
 		# Actions that will reset QuickSelect...
 		self["locationActions"] = LocationBoxActionMap(self, ["LocationBoxActions", "NavigationActions"], {
-			"enter": (self.enter, (_("Change directory / Select bookmark"), _("If the upper panel is active pressing OK will change the current directory.  If the lower panel is active pressing OK will select the current bookmark and exit."))),
+			"select": self.enter,
+			"enter": (self.enter, (_("Change directory / Select bookmark"), _("If the upper panel is active pressing GREEN or OK will change the current directory.  If the lower panel is active pressing GREEN or OK will select the current bookmark and exit."))),
 			"cancel": (self.cancel, _("Cancel the location selection")),
 			"menu": (self.showMenu, _("Display context menu")),
+			"left": (self.switchToFileList, _("Switch to directories panel")),
+			"right": (self.switchToBookList, _("Switch to bookmarks panel")),
 			"top": (self.moveTop, _("Move up to first line")),
 			"pageUp": (self.pageUp, _("Move up a screen")),
 			"up": (self.moveUp, _("Move up a line")),
@@ -123,10 +126,10 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 		}, prio=0, description=_("LocationBox Actions"))
 		self["selectAction"].setEnabled(True)
 		self["panelActions"] = LocationBoxActionMap(self, ["LocationBoxActions", "NavigationActions"], {
-			"first": (self.switchToFileList, _("Switch to directories panel")),
+			#"first": (self.switchToFileList, _("Switch to directories panel")),
 			"left": (self.switchToFileList, _("Switch to directories panel")),
 			"right": (self.switchToBookList, _("Switch to bookmarks panel")),
-			"last": (self.switchToBookList, _("Switch to bookmarks panel")),
+			#"last": (self.switchToBookList, _("Switch to bookmarks panel")),
 			"swap": (self.swapPanels, _("Switch to the other panel"))
 		}, prio=0, description=_("Panel Selection Actions"))
 		self["panelActions"].setEnabled(True)

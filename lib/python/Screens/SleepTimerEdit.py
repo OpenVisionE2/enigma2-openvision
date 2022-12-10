@@ -30,6 +30,8 @@ class SleepTimerEdit(ConfigListScreen, Screen):
 			"red": self.cancel,
 			"cancel": self.cancel,
 			"ok": self.ok,
+			"left": self.keyLeft,
+			"right": self.keyRight
 		}, -2)
 
 	def createSetup(self):

@@ -56,6 +56,14 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 			"cancel": self.cancel,
 			"up": self.keyUp,
 			"down": self.keyDown,
+			"upRepeated": self.keyUp,
+			"downRepeated": self.keyDown,
+			"left": self.keyLeft,
+			"right": self.keyRight,
+			"upUp": self.doNothing,
+			"downUp": self.doNothing,
+			"rightUp": self.doNothing,
+			"leftUp": self.doNothing,
 			"volumeUp": self.volumeUp,
 			"volumeDown": self.volumeDown,
 			"volumeMute": self.volumeMute,
@@ -674,6 +682,9 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 
 	def cancel(self):
 		self.close(0)
+
+	def doNothing(self):
+		pass
 
 
 class SubtitleSelection(AudioSelection):

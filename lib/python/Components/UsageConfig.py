@@ -1244,6 +1244,7 @@ def InitUsageConfig():
 
 	config.usage.keymap = ConfigText(default=eEnv.resolve("${datadir}/enigma2/keymap.xml"))
 	config.usage.alternative_imagefeed = ConfigText(default="", fixed_size=False)
+	config.usage.actionLeftRightToPageUpPageDown = ConfigYesNo(default=True)
 
 	# config.crash = ConfigSubsection()
 

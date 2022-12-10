@@ -26,6 +26,8 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 			"menu": self.keyCancel,
 			"cancel": self.keyCancel,
 			"save": self.run,
+			"left": self.keyLeft,
+			"right": self.keyRight
 		}, -2)
 
 		self["key_red"] = StaticText(_("Exit"))
@@ -270,3 +272,11 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		if not self.remote_fallback_prev and config.usage.remote_fallback_import.value:
 			ImportChannels()
 		self.close(False)
+
+	def keyLeft(self):
+		ConfigListScreen.keyLeft(self)
+		self.createConfig()
+
+	def keyRight(self):
+		ConfigListScreen.keyRight(self)
+		self.createConfig()

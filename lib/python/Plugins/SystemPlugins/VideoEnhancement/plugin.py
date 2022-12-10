@@ -47,6 +47,8 @@ class VideoEnhancementSetup(ConfigListScreen, Screen):
 				"yellow": self.keyYellow,
 				"blue": self.keyBlue,
 				"menu": self.closeRecursive,
+				"left": self.keyLeft,
+				"right": self.keyRight
 			}, -2)
 
 		self["key_red"] = StaticText(_("Cancel"))
@@ -276,6 +278,8 @@ class VideoEnhancementPreview(ConfigListScreen, Screen):
 			{
 				"cancel": self.keyCancel,
 				"save": self.keySave,
+				"left": self.keyLeft,
+				"right": self.keyRight
 			}, -2)
 
 		self["key_red"] = StaticText(_("Cancel"))

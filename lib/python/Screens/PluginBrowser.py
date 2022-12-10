@@ -96,7 +96,11 @@ class PluginBrowser(Screen, ProtectedScreen):
 		self["DirectionActions"] = ActionMap(["DirectionActions"],
 		{
 			"moveUp": self.moveUp,
-			"moveDown": self.moveDown
+			"moveDown": self.moveDown,
+			"upUp": self.doNothing,
+			"downUp": self.doNothing,
+			"leftUp": self.pageUp,
+			"rightUp": self.pageDown
 		})
 		self["NumberActions"] = NumberActionMap(["NumberActions"],
 		{
@@ -207,6 +211,15 @@ class PluginBrowser(Screen, ProtectedScreen):
 
 	def moveDown(self):
 		self.move(1)
+
+	def pageUp(self):
+		self["list"].instance.moveSelection(self["list"].instance.pageUp)
+
+	def pageDown(self):
+		self["list"].instance.moveSelection(self["list"].instance.pageDown)
+
+	def doNothing(self):
+		pass
 
 	def move(self, direction):
 		if len(self.list) > 1:
