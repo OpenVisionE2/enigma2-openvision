@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from os import listdir
-from os.path import basename, dirname, isdir, join as pathjoin, normpath, realpath
+from os.path import basename, dirname, isdir, join as pathjoin, normpath, realpath, exists
 from re import compile
 
 from enigma import BT_SCALE, BT_VALIGN_CENTER, RT_HALIGN_LEFT, RT_VALIGN_CENTER, eListboxPythonMultiContent, eServiceCenter, eServiceReference, gFont
@@ -375,7 +375,11 @@ class MultiFileSelectList(FileList):
 			self.l.setList(self.list)
 
 	def getSelectedList(self):
-		return self.selectedFiles
+		selectedFilesExist = []
+		for x in self.selectedFiles:
+			if exists(x):
+				selectedFilesExist.append(x)
+		return selectedFilesExist
 
 	def changeDir(self, directory, select=None):
 		self.list = []
