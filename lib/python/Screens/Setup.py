@@ -74,6 +74,7 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 			self.skinName.append("Setup%s" % setup)
 		self.skinName.append("Setup")
 		self.list = []
+		self.onImmediateUpdateRequired = []
 		ConfigListScreen.__init__(self, self.list, session=session, on_change=self.changedEntry, fullUI=True)
 		self["footnote"] = Label()
 		self["footnote"].hide()
@@ -101,6 +102,8 @@ class Setup(ConfigListScreen, Screen, HelpableScreen):
 	def changedEntry(self):
 		if isinstance(self["config"].getCurrent()[1], (ConfigBoolean, ConfigSelection)):
 			self.createSetup()
+		for x in self.onImmediateUpdateRequired:
+			x()
 
 	def createSetup(self):
 		oldList = self.list
@@ -275,6 +278,8 @@ class SetupSummary(ScreenSummary):
 			self.onHide.append(self.removeWatcher)
 
 	def addWatcher(self):
+		if hasattr(self.parent, "onImmediateUpdateRequired") and self.selectionChanged not in self.parent.onImmediateUpdateRequired:
+			self.parent.onImmediateUpdateRequired.append(self.selectionChanged)
 		if self.selectionChanged not in self.parent.onChangedEntry:
 			self.parent.onChangedEntry.append(self.selectionChanged)
 		if self.selectionChanged not in self.parent["config"].onSelectionChanged:
@@ -282,6 +287,8 @@ class SetupSummary(ScreenSummary):
 		self.selectionChanged()
 
 	def removeWatcher(self):
+		if hasattr(self.parent, "onImmediateUpdateRequired") and self.selectionChanged in self.parent.onImmediateUpdateRequired:
+			self.parent.onImmediateUpdateRequired.remove(self.selectionChanged)
 		if self.selectionChanged in self.parent.onChangedEntry:
 			self.parent.onChangedEntry.remove(self.selectionChanged)
 		if self.selectionChanged in self.parent["config"].onSelectionChanged:
