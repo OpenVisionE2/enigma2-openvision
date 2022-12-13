@@ -1092,10 +1092,7 @@ def InitUsageConfig():
 
 	if BoxInfo.getItem("WakeOnLAN") or BoxInfo.getItem("wol"):
 		def wakeOnLANChanged(configElement):
-			if "fp" in BoxInfo.getItem("WakeOnLAN"):
-				open(BoxInfo.getItem("WakeOnLAN"), "w").write(configElement.value and "enable" or "disable")
-			else:
-				open(BoxInfo.getItem("WakeOnLAN"), "w").write(configElement.value and "on" or "off")
+			open(BoxInfo.getItem("WakeOnLAN"), "w").write(BoxInfo.getItem("WakeOnLANType")[configElement.value])
 		config.usage.wakeOnLAN = ConfigYesNo(default=False)
 		config.usage.wakeOnLAN.addNotifier(wakeOnLANChanged)
 

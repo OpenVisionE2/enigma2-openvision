@@ -154,6 +154,14 @@ def clearFPWasTimerWakeup():
 			print("[StbHardware] Error %d: Unable to update '/dev/dbox/fp0', clearFPWasTimerWakeup failed!  (%s)" % (err.errno, err.strerror))
 
 
+def getWakeOnLANType(fileName):
+	value = ""
+	if fileName:
+		value = fileReadLine(fileName)
+	onOff = ("off", "on")
+	return onOff if value in onOff else ("disable", "enable")
+
+
 def timereps(reps, func):
 	start = time()
 	for i in range(0, reps):
