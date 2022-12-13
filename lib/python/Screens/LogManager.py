@@ -5,7 +5,7 @@ from os.path import join, getsize, isdir, exists
 from time import time
 import Components.Task
 from Components.ActionMap import ActionMap
-from Components.Button import Button
+from Components.Sources.StaticText import StaticText
 from Components.config import config, configfile
 from Components.FileList import FileList, MultiFileSelectList
 from Components.GUIComponent import GUIComponent
@@ -128,7 +128,7 @@ class LogManagerPoller:
 class LogManager(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.logs = listdir("/home/root/logs")
+		self.logs = listdir(config.crash.debugPath.value)
 		self.logtype = "crashlogs"
 		self["myactions"] = ActionMap(["ColorActions", "OkCancelActions", "DirectionActions"], {
 			"ok": self.changeSelectionState,
@@ -142,9 +142,13 @@ class LogManager(Screen):
 			"up": self.up
 		}, -1)
 		if self.logs:
-			self["key_red"] = Button(_("Debug Logs"))
-			self["key_green"] = Button(_("View"))
-			self["key_yellow"] = Button(_("Delete"))
+			self["key_red"] = StaticText(_("Debug Logs"))
+			self["key_green"] = StaticText(_("View"))
+			self["key_yellow"] = StaticText(_("Delete"))
+		else:
+			self["key_red"] = StaticText("")
+			self["key_green"] = StaticText("")
+			self["key_yellow"] = StaticText("")
 		self.onChangedEntry = []
 		self.sentsingle = ""
 		self.selectedFiles = config.logmanager.sentfiles.value
@@ -211,19 +215,22 @@ class LogManager(Screen):
 			self.selectedFiles = self["list"].getSelectedList()
 
 	def changelogtype(self):
-		if self.logs:
-			self["LogsSize"].update(config.crash.debugPath.value)
-			import re
-			if self.logtype == "crashlogs":
-				self["key_red"].setText(_("Crash Logs"))
-				self.logtype = "debuglogs"
-				self.matchingPattern = "enigma2_debug_"
-			else:
-				self["key_red"].setText(_("Debug Logs"))
-				self.logtype = "crashlogs"
-				self.matchingPattern = "enigma2_crash_"
-			self["list"].matchingPattern = re.compile(self.matchingPattern)
-			self["list"].changeDir(self.defaultDir)
+		self["LogsSize"].update(config.crash.debugPath.value)
+		import re
+		if self.logtype == "crashlogs":
+			self["key_red"].setText(_("Crash Logs"))
+			self.logtype = "debuglogs"
+			self.matchingPattern = "enigma2_debug_"
+		else:
+			self["key_red"].setText(_("Debug Logs"))
+			self.logtype = "crashlogs"
+			self.matchingPattern = "enigma2_crash_"
+		self["list"].matchingPattern = re.compile(self.matchingPattern)
+		self["list"].changeDir(self.defaultDir)
+		if not listdir(config.crash.debugPath.value):
+			self["key_red"].setText("")
+			self["key_green"].setText("")
+			self["key_yellow"].setText("")
 
 	def showLog(self):
 		if self.logs:
@@ -233,6 +240,8 @@ class LogManager(Screen):
 				self.sel = None
 			if self.sel:
 				self.session.open(LogManagerViewLog, self.sel[0])
+			else:
+				self.session.open(MessageBox, _("You have not selected any logs to view."), MessageBox.TYPE_INFO, timeout=10)
 
 	def deletelog(self):
 		if self.logs:
@@ -269,8 +278,10 @@ class LogManager(Screen):
 		if answer is True:
 			self.selectedFiles = self["list"].getSelectedList()
 			self["list"].instance.moveSelectionTo(0)
-			for f in self.selectedFiles:
-				remove(f)
+			for file in self.selectedFiles:
+				if exists(file):
+					remove(file)
+					self.changelogtype()
 			config.logmanager.sentfiles.setValue("")
 			config.logmanager.sentfiles.save()
 			configfile.save()
@@ -282,6 +293,7 @@ class LogManager(Screen):
 			self["list"].instance.moveSelectionTo(0)
 			if exists(self.defaultDir + self.sel[0]):
 				remove(self.defaultDir + self.sel[0])
+				self.changelogtype()
 			self["list"].changeDir(self.defaultDir)
 			self["LogsSize"].update(config.crash.debugPath.value)
 
@@ -306,10 +318,10 @@ class LogManagerViewLog(Screen):
 			"right": self["list"].pageDown,
 			"left": self["list"].pageUp
 		}, -2)
-		self["key_red"] = Button(_("First page"))
-		self["key_green"] = Button(_("Page forward"))
-		self["key_yellow"] = Button(_("Page back"))
-		self["key_blue"] = Button(_("Last page"))
+		self["key_red"] = StaticText(_("First page"))
+		self["key_green"] = StaticText(_("Page forward"))
+		self["key_yellow"] = StaticText(_("Page back"))
+		self["key_blue"] = StaticText(_("Last page"))
 		self.onLayoutFinish.append(self.layoutFinished)
 
 	def layoutFinished(self):
@@ -376,7 +388,7 @@ class LogInfo(VariableText, GUIComponent):
 	def __init__(self, path, type, update=True):
 		GUIComponent.__init__(self)
 		VariableText.__init__(self)
-		self.logs = listdir("/home/root/logs")
+		self.logs = listdir(path)
 		self.type = type
 # 		self.path = config.crash.debugPath.value
 		if update:
@@ -396,7 +408,7 @@ class LogInfo(VariableText, GUIComponent):
 					total_size = "%d MB" % (total_size >> 20)
 				else:
 					total_size = "%d GB" % (total_size >> 30)
-				self.setText(_("Exist are debug or crash files.\nSpace used:") + " " + total_size) if self.logs else self.setText(_("Exist are no debug files or crash."))
+				self.setText(_("Exist are debug or crash files.\nSpace used:") + " " + total_size) if self.logs and get_size(path) > 0 else self.setText(_("Exist are no debug files or crash."))
 			except:
 				# occurs when f_blocks is 0 or a similar error
 				self.setText("-?-")
