@@ -35,6 +35,9 @@ if getOEMInfo() == "available":
 	elif model == "sfx6008" and procType == "10":
 		model = "sfx6018"
 		displaymodel = "SFX6018 S2"
+	elif model == "sx88v2" and procType == "00":
+		model = "sx888"
+		displaymodel = "SX888 4K DUAL OS"
 	elif platform == "7100s" and procModel == "7200s":
 		platform == "7200s"
 	elif model == "ustym4kpro":
