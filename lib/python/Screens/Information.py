@@ -1491,6 +1491,8 @@ class SystemInformation(InformationBase):
 			callback()
 
 	def dataAvail(self, data):
+		if isinstance(data, bytes):
+			data = data.decode("UTF-8", "ignore")
 		self.commandData += data
 
 	def appClosed(self, retVal):
