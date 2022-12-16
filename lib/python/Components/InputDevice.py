@@ -305,6 +305,7 @@ class RemoteControl:
 		return fileReadLine("/proc/stb/ir/rc/type", "0", source=MODULE_NAME)
 
 	def writeRemoteControlType(self, rcType):
+		rcType = BoxInfo.getItem("rctype")
 		if int(rcType) > 0:
 			fileWriteLine("/proc/stb/ir/rc/type", rcType, source=MODULE_NAME)
 
