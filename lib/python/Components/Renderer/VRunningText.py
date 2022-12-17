@@ -80,7 +80,7 @@ class VRunningText(Renderer):
 			attribs = []
 			for (attrib, value) in self.skinAttributes:
 				if attrib == "font":
-					self.txfont = parseFont(value, ((1, 1), (1, 1)))
+					self.txfont = parseFont(value, screen.scale)
 				elif attrib == "foregroundColor":
 					self.fcolor = parseColor(value)
 				elif attrib == "backgroundColor":
