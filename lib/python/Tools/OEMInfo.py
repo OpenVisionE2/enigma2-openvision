@@ -20,11 +20,32 @@ if getOEMInfo() == "available":
 	if procModel == "dm525":
 		model = procModel
 		displaymodel = procModel
+	elif model == "et4x00":
+		displaymodel = "ET4000"
+	elif model == "et5x00":
+		displaymodel = "ET5000"
+	elif model == "et6x00":
+		if procModel == "et6000":
+			displaymodel = "ET6000"
+		elif procModel == "et6500":
+			displaymodel = "ET6500"
 	elif model == "et7x00":
-		if getChipSetString() == "bcm73625":
-			displaymodel = "ET7100 V2"
-		else:
-			displaymodel = "ET7000"
+		if procModel == "et7000":
+			if getChipSetString() == "bcm73625":
+				displaymodel = "ET7100 V2"
+			else:
+				displaymodel = "ET7000"
+		elif procModel == "et7500":
+			displaymodel = "ET7500"
+	elif model == "et9x00":
+		if procModel == "et9000":
+			displaymodel = "ET9000"
+		elif procModel == "et9100":
+			displaymodel = "ET9100"
+		elif procModel == "et9200":
+			displaymodel = "ET9200"
+		elif procModel == "et9500":
+			displaymodel = "ET9500"
 	elif model == "sf8008":
 		if procType == "10":
 			model = "sf8008s"
@@ -35,9 +56,9 @@ if getOEMInfo() == "available":
 	elif model == "sfx6008" and procType == "10":
 		model = "sfx6018"
 		displaymodel = "SFX6018 S2"
-	elif model == "sx88v2" and procType == "00":
+	elif model == "sx88v2" and procType == "00" or procType == "unknown":
 		model = "sx888"
-		displaymodel = "SX888 4K DUAL OS"
+		displaymodel = "SX888V2 4K DUAL OS"
 	elif platform == "7100s" and procModel == "7200s":
 		platform == "7200s"
 	elif model == "ustym4kpro":
