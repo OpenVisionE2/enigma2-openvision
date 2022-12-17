@@ -34,7 +34,7 @@ from Tools.Conversions import scaleNumber, formatDate
 from Tools.Directories import SCOPE_GUISKIN, fileReadLine, fileReadLines, fileWriteLine, resolveFilename, isPluginInstalled
 from Tools.Geolocation import geolocation
 from Tools.LoadPixmap import LoadPixmap
-from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType
+from Tools.StbHardware import getFPVersion, getBoxProc, getBoxProcType, getHWSerial, getBoxRCType, getDemodVersion
 from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand, getOEMShowModel
 
 MODULE_NAME = __name__.split(".")[-1]
@@ -1132,6 +1132,9 @@ class ReceiverInformation(InformationBase):
 			info.append(formatLine("P1", _("Display type"), BoxInfo.getItem("displaytype")))
 		if fpVersion and fpVersion != "unknown":
 			info.append(formatLine("P1", _("Front processor version"), fpVersion))
+		DemodVersion = getDemodVersion()
+		if DemodVersion and DemodVersion != "unknown":
+			info.append(formatLine("P1", _("Demod firmware version"), DemodVersion))
 		info.append("")
 		info.append(formatLine("H", _("Processor information")))
 		info.append("")
