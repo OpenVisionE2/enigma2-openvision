@@ -2,7 +2,6 @@
 from os.path import isfile
 from Components.ActionMap import HelpableActionMap
 from Components.config import ConfigSelection, ConfigYesNo, config, getConfigListEntry
-from Components.ConfigList import ConfigListScreen
 from Components.InputDevice import REMOTE_DISPLAY_NAME, REMOTE_MODEL, REMOTE_RCTYPE, inputDevices, remoteControl
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
