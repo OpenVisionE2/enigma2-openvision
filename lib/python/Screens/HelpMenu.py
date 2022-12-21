@@ -188,9 +188,9 @@ class HelpMenu(Screen, ShowRemoteControl):
 		self["buttonlist"] = Label("")
 		self["description"] = Label("")
 		self["key_help"] = StaticText(_("HELP"))
-		self["helpActions"] = ActionMap(["HelpActions"], {
+		self["helpActions"] = ActionMap(["HelpActions", "OkCancelActions"], {
 			"cancel": self.close,  # self.closeHelp,
-			"select": self.selectItem,
+			"ok": self.selectItem,
 			"displayHelp": self.showHelp,
 			"displayHelpLong": self.showButtons
 		}, prio=-1)
