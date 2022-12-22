@@ -52,7 +52,7 @@ class TimerEditList(Screen, ProtectedScreen):
 
 		self["description"] = Label("")
 
-		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ShortcutActions", "TimerEditActions"],
+		self["actions"] = ActionMap(["OkCancelActions", "NavigationActions", "ShortcutActions", "TimerEditActions"],
 			{
 				"ok": self.openEdit,
 				"cancel": self.leave,
