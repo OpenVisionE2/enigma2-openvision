@@ -414,6 +414,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 			"9": self.keyNumberGlobal
 		}, prio=0)
 		self["playbackActions"] = HelpableActionMap(self, ["MoviePlayerActions"], {
+			"leavePlayerOnExit": (self.abort, _("Exit movie list")),
 			"leavePlayer": (self.playbackStop, _("Stop")),
 			"moveNext": (self.playNext, _("Play next")),
 			"movePrev": (self.playPrev, _("Play previous")),
