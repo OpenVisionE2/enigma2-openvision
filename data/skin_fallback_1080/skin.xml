@@ -430,7 +430,7 @@
 		<widget source="session.CurrentService" render="Label" position="458,850" size="750,35" font="RegularBold;27" noWrap="1" backgroundColor="background" transparent="1" horizontalAlignment="left" verticalAlignment="center" foregroundColor="white">
 			<convert type="ServiceName">Name</convert>
 		</widget>
-		<widget source="session.CurrentService" render="Label" font="RegularBold;24" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="458,885" size="730,28" transparent="1" zPosition="1">
+		<widget source="session.CurrentService" render="Label" font="RegularBold;24" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="458,885" size="640,28" transparent="1" zPosition="1">
 			<convert type="PliExtraInfo">TransponderInfo</convert>
 		</widget>
 		<widget source="session.Event_Now" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_Background" font="RegularBold;30" noWrap="1" position="575,933" size="1050,64" transparent="1">
@@ -481,23 +481,22 @@
 			<convert type="ClientsStreaming"/>
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/rec_off.png" position="1272,870" size="63,32" zPosition="1"/>
-		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/rec_on.png" position="1272,870" render="Pixmap" size="63,32" source="session.RecordState" zPosition="2">
+		<widget source="session.CurrentService" render="FixedLabel" text="Subservices" position="1100,885" zPosition="4" size="250,25" font="RegularBold;24" foregroundColor="green" backgroundColor="OE_Background" transparent="1">
+			<convert type="ServiceInfo">SubservicesAvailable</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/rec_off.png" position="1345,870" size="63,32" zPosition="1"/>
+		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/rec_on.png" position="1345,870" render="Pixmap" size="63,32" source="session.RecordState" zPosition="2">
 			<convert type="ConditionalShowHide">Blink</convert>
 		</widget>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/crypt_off.png" position="1345,870" size="63,32" zPosition="1"/>
-		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/crypt_on.png" position="1345,870" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/crypt_off.png" position="1418,870" size="63,32" zPosition="1"/>
+		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/crypt_on.png" position="1418,870" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
 			<convert type="ServiceInfo">IsCrypted</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/txt_off.png" position="1418,870" size="63,32" zPosition="1"/>
-		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/txt_on.png" position="1418,870" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/txt_off.png" position="1491,870" size="63,32" zPosition="1"/>
+		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/txt_on.png" position="1491,870" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
 			<convert type="ServiceInfo">HasTelext</convert>
-			<convert type="ConditionalShowHide"/>
-		</widget>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_off.png" position="1491,870" size="63,32" zPosition="1"/>
-		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_on.png" position="1491,870" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
-			<convert type="ServiceInfo">SubservicesAvailable</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/hbbtv_off.png" position="1564,870" size="63,32" zPosition="1"/>
@@ -1540,11 +1539,6 @@
 			<convert type="ServiceInfo">IsWidescreen</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/txt_off.png" position="118,550" size="63,32" zPosition="1"/>
-		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/txt_on.png" position="118,550" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
-			<convert type="ServiceInfo">HasTelext</convert>
-			<convert type="ConditionalShowHide"/>
-		</widget>
 		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/sd_on.png" position="50,490" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="1">
 			<convert type="ServiceInfo">VideoWidth</convert>
 			<convert type="ValueRange">0,720</convert>
@@ -1570,19 +1564,9 @@
 			<convert type="ServiceInfo">IsCrypted</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/rec_off.png" position="254,550" size="63,32" zPosition="1"/>
-		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/rec_on.png" position="254,550" render="Pixmap" size="63,32" source="session.RecordState" zPosition="2">
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/rec_off.png" position="150,550" size="63,32" zPosition="1"/>
+		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/rec_on.png" position="150,550" render="Pixmap" size="63,32" source="session.RecordState" zPosition="2">
 			<convert type="ConditionalShowHide">Blink</convert>
-		</widget>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/hbbtv_off.png" position="50,550" size="63,32" zPosition="1"/>
-		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/hbbtv_on.png" position="50,550" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="10">
-			<convert type="ServiceInfo">HasHBBTV</convert>
-			<convert type="ConditionalShowHide"/>
-		</widget>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_off.png" position="186,550" size="63,32" zPosition="1"/>
-		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_on.png" position="186,550" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
-			<convert type="ServiceInfo">SubservicesAvailable</convert>
-			<convert type="ConditionalShowHide"/>
 		</widget>
 	</screen>
 	<!-- MULTI SELECTION EPG -->
