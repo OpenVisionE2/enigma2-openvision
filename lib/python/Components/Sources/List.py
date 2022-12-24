@@ -6,7 +6,7 @@ from Components.Sources.Source import Source
 class List(Source):
 	"""The datasource of a listbox. Currently, the format depends on the used converter. So
 if you put a simple string list in here, you need to use a StringList converter, if you are
-using a "multi content list styled"-list, you need to use the StaticMultiList converter, and
+using a "multi content list styled"-list, you need to use the StaticMultiList (from https://github.com/OpenVisionE2/extra-renderers-converters) converter, and
 setup the "fonts".
 
 This has been done so another converter could convert the list to a different format, for example
