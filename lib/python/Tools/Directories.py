@@ -271,6 +271,23 @@ def fileReadLines(filename, default=None, source=DEFAULT_MODULE_NAME, debug=Fals
 	return lines
 
 
+def fileReadLinesISO(filename, default=None, source=DEFAULT_MODULE_NAME, debug=False):
+	lines = None
+	try:
+		with open(filename, "r", encoding="ISO 8859-1") as fd:
+			lines = fd.read().splitlines()
+		msg = "Read"
+	except (IOError, OSError, UnicodeDecodeError) as err:
+		if not UnicodeDecodeError and err.errno != ENOENT:  # ENOENT - No such file or directory.
+			print("[%s] Error %d: Unable to read lines from file '%s'!  (%s)" % (source, err.errno, filename, err.strerror))
+		lines = default
+		msg = "Default"
+	if debug or forceDebug:
+		length = len(lines) if lines else 0
+		print("[%s] Line %d: %s %d lines from file '%s'." % (source, getframe(1).f_lineno, msg, length, filename))
+	return lines
+
+
 def fileWriteLines(filename, lines, source=DEFAULT_MODULE_NAME, debug=False):
 	try:
 		with open(filename, "w") as fd:
