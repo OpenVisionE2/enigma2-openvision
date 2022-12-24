@@ -497,7 +497,7 @@
 		</widget>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_off.png" position="1491,870" size="63,32" zPosition="1"/>
 		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_on.png" position="1491,870" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
-			<convert type="ServiceInfo">SubtitlesAvailable</convert>
+			<convert type="ServiceInfo">SubservicesAvailable</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/hbbtv_off.png" position="1564,870" size="63,32" zPosition="1"/>
@@ -592,7 +592,7 @@
 		<eLabel backgroundColor="blue_light" position="55,955" size="380,2" transparent="0" zPosition="-1" foregroundColor="blue_light"/>
 		<eLabel backgroundColor="blue_light" name="" position="465,955" size="1235,2" zPosition="-22" foregroundColor="white"/>
 		<widget alphaTest="blend" position="135,10" render="Picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
-			<convert type="ServiceName2">Reference</convert>
+			<convert type="ServiceName">Reference</convert>
 		</widget>
 		<widget source="session.CurrentService" render="ChannelNumber" backgroundColor="OE_NewBg" foregroundColor="OE_Foreground" font="RegularBold;38" verticalAlignment="center" horizontalAlignment="center" position="25,200" size="440,48" transparent="1" zPosition="1"/>
 		<widget source="session.CurrentService" render="Label" horizontalAlignment="center" verticalAlignment="center" position="25,250" size="440,45" font="RegularBold;30" noWrap="1" backgroundColor="OE_NewBg" transparent="1">
@@ -608,7 +608,7 @@
 			<convert type="PliExtraInfo">CryptoBar</convert>
 		</widget>
 		<widget source="session.CurrentService" render="Label" position="25,415" size="440,90" horizontalAlignment="center" verticalAlignment="center" font="RegularBold;22" zPosition="4" transparent="1" foregroundColor="OE_Foreground" backgroundColor="OE_NewBg" noWrap="1">
-			<convert type="ServiceName2">Satellite</convert>
+			<convert type="ServiceName">Satellite</convert>
 		</widget>
 		<widget source="session.CurrentService" render="Label" font="RegularBold;21" backgroundColor="OE_NewBg" position="25,535" size="440,90" verticalAlignment="center" horizontalAlignment="center" transparent="1" zPosition="1">
 			<convert type="PliExtraInfo">TransponderInfo</convert>
@@ -678,7 +678,7 @@
 			<convert type="ConditionalShowHide"/>
 		</widget>
 		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_on.png" position="1330,967" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
-			<convert type="ServiceInfoEX">SubtitlesAvailable</convert>
+			<convert type="ServiceInfo">SubservicesAvailable</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_off.png" position="1330,967" size="63,32" zPosition="1"/>
@@ -1073,7 +1073,7 @@
 			<convert type="RemainingToText">NoSeconds</convert>
 		</widget>
 		<widget alphaTest="blend" position="415,260" render="Picon" size="100,60" source="ServiceEvent" transparent="1" zPosition="2">
-			<convert type="ServiceName2">Reference</convert>
+			<convert type="ServiceName">Reference</convert>
 		</widget>
 		<widget source="ServiceEvent" font="RegularBold;30" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" backgroundColor="OE_NewBg2" foregroundColor="green_light" position="50,325" size="500,45" transparent="1">
 			<convert type="EventName">Name</convert>
@@ -1581,7 +1581,7 @@
 		</widget>
 		<ePixmap alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_off.png" position="186,550" size="63,32" zPosition="1"/>
 		<widget alphaTest="blend" pixmap="OctEtFHD/my_icons/sub_on.png" position="186,550" render="Pixmap" size="63,32" source="session.CurrentService" zPosition="2">
-			<convert type="ServiceInfo">SubtitlesAvailable</convert>
+			<convert type="ServiceInfo">SubservicesAvailable</convert>
 			<convert type="ConditionalShowHide"/>
 		</widget>
 	</screen>
@@ -1604,7 +1604,7 @@
 		<widget alphaTest="blend" name="more_button_sel" pixmap="OctEtFHD/colors/epg_label.png" position="71,340" size="229,49" transparent="1" zPosition="2"/>
 		<widget name="list" font="RegularBold;28" itemHeight="50" setEventItemFont="RegularBold;26" setEventTimeFont="RegularBold;26" setColWidths="290,180" setColGap="20" setTimeWidth="155" setIconDistance="10" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" backgroundColor="OE_Background" position="350,155" size="1540,550" transparent="1"/>
 		<widget alphaTest="blend" position="70,415" render="Picon" size="220,130" source="Service" transparent="1" zPosition="5">
-			<convert type="ServiceName2">Reference</convert>
+			<convert type="ServiceName">Reference</convert>
 		</widget>
 		<widget source="Event" font="RegularBold;26" render="RunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" backgroundColor="OE_Background" position="350,715" size="1490,210" transparent="1">
 			<convert type="EventName">FullDescription</convert>
@@ -3042,10 +3042,11 @@
 	<screen name="SubtitleDisplay" position="fill" zPosition="-1" flags="wfNoBorder" backgroundColor="transparent">
 		<panel name="message"/>
 	</screen>
-	<screen backgroundColor="transparent" flags="wfNoBorder" name="SubservicesQuickzap" position="570,850" size="840,100" title="Subservices">
-		<eLabel backgroundColor="OE_NewBg2" font="RegularBold;28" foregroundColor="white" horizontalAlignment="center" position="0,0" size="840,45" text="Subservices" verticalAlignment="center"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;32" foregroundColor="white" horizontalAlignment="center" name="CurrentSubserviceNumber" position="0,45" size="130,55" verticalAlignment="center"/>
-		<widget backgroundColor="OE_Background" font="RegularBold;32" foregroundColor="white" position="110,45" render="Label" size="710,55" source="session.CurrentService" verticalAlignment="center">
+	<!-- ####### SUBSERVICES QUICK ZAP ####### -->
+	<screen name="SubservicesQuickzap" backgroundColor="transparent" flags="wfNoBorder" position="570,850" size="840,100" title="Subservices">
+		<eLabel backgroundColor="OE_NewBg2" font="RegularBold;28" horizontalAlignment="center" position="0,0" size="840,45" text="Subservices" verticalAlignment="center"/>
+		<widget name="CurrentSubserviceNumber" foregroundColor="blue_light" backgroundColor="OE_Background" font="RegularBold;30" horizontalAlignment="center" position="0,45" size="133,55" verticalAlignment="center"/>
+		<widget source="session.CurrentService" backgroundColor="OE_Background" font="RegularBold;32" position="133,45" render="Label" size="708,55" verticalAlignment="center">
 			<convert type="ServiceName">Name</convert>
 		</widget>
 	</screen>

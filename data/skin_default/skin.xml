@@ -1479,7 +1479,7 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth) // 2, orgpos.y() + 
 	<screen name="NumberZapPicon" position="center,center" size="465,116" title="NumberZapPicon">
 		<widget name="number" position="143,4" size="315,55" horizontalAlignment="center" verticalAlignment="center" font="Regular;50"/>
 		<widget source="Service" render="Picon" position="5,16" size="130,85" zPosition="5" alphaTest="blend">
-			<convert type="ServiceName2">Reference</convert>
+			<convert type="ServiceName">Reference</convert>
 		</widget>
 		<widget name="servicename" position="143,60" size="315,55" font="Regular;25" horizontalAlignment="center" verticalAlignment="center"/>
 	</screen>
