@@ -43,6 +43,7 @@ config.misc.pluginbrowser.packagegroupbase = ConfigYesNo(default=False)
 config.misc.pluginbrowser.pamplugin = ConfigYesNo(default=False)
 config.misc.pluginbrowser.perlmodule = ConfigYesNo(default=False)
 config.misc.pluginbrowser.python = ConfigYesNo(default=False)
+config.misc.pluginbrowser.samba = ConfigYesNo(default=False)
 config.misc.pluginbrowser.tzdata = ConfigYesNo(default=False)
 config.misc.pluginbrowser.utillinux = ConfigYesNo(default=False)
 
@@ -311,6 +312,7 @@ class PluginDownloadBrowser(Screen):
 		PYTHON_PREFIX = 'python-'
 	else:
 		PYTHON_PREFIX = 'python3-'
+	SAMBA_PREFIX = 'samba-'
 	TZDATA_PREFIX = 'tzdata-'
 	UTILLINUX_PREFIX = 'util-linux-'
 	lastDownloadDate = None
@@ -444,13 +446,13 @@ class PluginDownloadBrowser(Screen):
 				self.doRemove(self.installFinished, self["list"].l.getCurrentSelection()[0].name)
 
 	def doRemove(self, callback, pkgname):
-		if pkgname.startswith((self.ALSAUTILS_PREFIX, self.BLUEZ_PREFIX, self.BUSYBOX_PREFIX, self.E2FSPROGS_PREFIX, self.ENIGMA2LOCALE_PREFIX, self.FIRMWARE_PREFIX, self.FREQUENCY_PREFIX, self.GLIBCCHARMAP_PREFIX, self.GLIBCGCONC_PREFIX, self.GSTPLUGINS_PREFIX, self.GSTOLDPLUGINS_PREFIX, self.KERNELMODULE_PREFIX, self.MTDUTILS_PREFIX, self.PACKAGEGROUPBASE_PREFIX, self.PAMPLUGIN_PREFIX, self.PERLMODULE_PREFIX, self.PYTHON_PREFIX, self.TZDATA_PREFIX, self.UTILLINUX_PREFIX)):
+		if pkgname.startswith((self.ALSAUTILS_PREFIX, self.BLUEZ_PREFIX, self.BUSYBOX_PREFIX, self.E2FSPROGS_PREFIX, self.ENIGMA2LOCALE_PREFIX, self.FIRMWARE_PREFIX, self.FREQUENCY_PREFIX, self.GLIBCCHARMAP_PREFIX, self.GLIBCGCONC_PREFIX, self.GSTPLUGINS_PREFIX, self.GSTOLDPLUGINS_PREFIX, self.KERNELMODULE_PREFIX, self.MTDUTILS_PREFIX, self.PACKAGEGROUPBASE_PREFIX, self.PAMPLUGIN_PREFIX, self.PERLMODULE_PREFIX, self.PYTHON_PREFIX, self.SAMBA_PREFIX, self.TZDATA_PREFIX, self.UTILLINUX_PREFIX)):
 			self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_remove + Opkg.opkgExtraDestinations() + " " + pkgname, "sync"], skin="Console_Pig")
 		else:
 			self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_remove + Opkg.opkgExtraDestinations() + " " + self.PLUGIN_PREFIX + pkgname, "sync"], skin="Console_Pig")
 
 	def doInstall(self, callback, pkgname):
-		if pkgname.startswith((self.ALSAUTILS_PREFIX, self.BLUEZ_PREFIX, self.BUSYBOX_PREFIX, self.E2FSPROGS_PREFIX, self.ENIGMA2LOCALE_PREFIX, self.FIRMWARE_PREFIX, self.FREQUENCY_PREFIX, self.GLIBCCHARMAP_PREFIX, self.GLIBCGCONC_PREFIX, self.GSTPLUGINS_PREFIX, self.GSTOLDPLUGINS_PREFIX, self.KERNELMODULE_PREFIX, self.MTDUTILS_PREFIX, self.PACKAGEGROUPBASE_PREFIX, self.PAMPLUGIN_PREFIX, self.PERLMODULE_PREFIX, self.PYTHON_PREFIX, self.TZDATA_PREFIX, self.UTILLINUX_PREFIX)):
+		if pkgname.startswith((self.ALSAUTILS_PREFIX, self.BLUEZ_PREFIX, self.BUSYBOX_PREFIX, self.E2FSPROGS_PREFIX, self.ENIGMA2LOCALE_PREFIX, self.FIRMWARE_PREFIX, self.FREQUENCY_PREFIX, self.GLIBCCHARMAP_PREFIX, self.GLIBCGCONC_PREFIX, self.GSTPLUGINS_PREFIX, self.GSTOLDPLUGINS_PREFIX, self.KERNELMODULE_PREFIX, self.MTDUTILS_PREFIX, self.PACKAGEGROUPBASE_PREFIX, self.PAMPLUGIN_PREFIX, self.PERLMODULE_PREFIX, self.PYTHON_PREFIX, self.SAMBA_PREFIX, self.TZDATA_PREFIX, self.UTILLINUX_PREFIX)):
 			self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_install + " " + pkgname, "sync"], skin="Console_Pig")
 		else:
 			self.session.openWithCallback(callback, Console, cmdlist=[self.opkg_install + " " + self.PLUGIN_PREFIX + pkgname, "sync"], skin="Console_Pig")
@@ -591,6 +593,10 @@ class PluginDownloadBrowser(Screen):
 						pluginlist.append(plugin + (plugin[0],))
 			if config.misc.pluginbrowser.python.value:
 				for plugin in Opkg.enumPlugins(self.PYTHON_PREFIX):
+					if plugin[0] not in self.installedplugins:
+						pluginlist.append(plugin + (plugin[0],))
+			if config.misc.pluginbrowser.samba.value:
+				for plugin in Opkg.enumPlugins(self.SAMBA_PREFIX):
 					if plugin[0] not in self.installedplugins:
 						pluginlist.append(plugin + (plugin[0],))
 			if config.misc.pluginbrowser.tzdata.value:
