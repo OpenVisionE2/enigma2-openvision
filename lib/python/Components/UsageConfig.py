@@ -67,6 +67,7 @@ def InitUsageConfig():
 	config.misc.OVupdatecheck = ConfigYesNo(default=False)
 	config.misc.extraopkgpackages = ConfigYesNo(default=False)
 	config.misc.opkgcleanmode = ConfigYesNo(default=False)
+	config.misc.actionLeftRightToPageUpPageDown = ConfigYesNo(default=True)
 
 	def correctInvalidEPGDataChange(configElement):
 		eServiceEvent.setUTF8CorrectMode(int(configElement.value))
@@ -1241,7 +1242,6 @@ def InitUsageConfig():
 
 	config.usage.keymap = ConfigText(default=eEnv.resolve("${datadir}/enigma2/keymap.xml"))
 	config.usage.alternative_imagefeed = ConfigText(default="", fixed_size=False)
-	config.usage.actionLeftRightToPageUpPageDown = ConfigYesNo(default=True)
 
 	# config.crash = ConfigSubsection()
 
