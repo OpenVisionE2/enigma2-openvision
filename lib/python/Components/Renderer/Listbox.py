@@ -20,6 +20,7 @@ class Listbox(Renderer):
 		Renderer.__init__(self)
 		self.__content = None
 		self.__selectionEnabled = True  # FIXME: The default is true already.
+		self.scale = None
 
 	GUI_WIDGET = eListbox
 
@@ -32,6 +33,10 @@ class Listbox(Renderer):
 			self.instance.setContent(self.__content)
 
 	content = property(lambda self: self.__content, setContent)
+
+	def applySkin(self, desktop, parent):
+		self.scale = parent.scale
+		return Renderer.applySkin(self, desktop, parent)
 
 	def postWidgetCreate(self, instance):
 		if self.__content is not None:
