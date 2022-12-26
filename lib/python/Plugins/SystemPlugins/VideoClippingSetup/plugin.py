@@ -40,6 +40,8 @@ class VideoClippingCoordinates(ConfigListScreen, Screen):
 			"green": self.keyGo,
 			"red": self.keyCancel,
 			"menu": self.closeRecursive,
+			"left": self.keyLeft,
+			"right": self.keyRight
 		}, -2)
 
 		self.list = []

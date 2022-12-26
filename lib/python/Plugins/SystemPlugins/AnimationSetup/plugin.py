@@ -66,6 +66,8 @@ class AnimationSetupConfig(ConfigListScreen, Screen):
 			"yellow": self.keyYellow,
 			"red": self.keyRed,
 			"cancel": self.keyRed,
+			"left": self.keyLeft,
+			"right": self.keyRight
 		}, -2)
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Save"))
