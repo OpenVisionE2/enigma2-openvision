@@ -3,6 +3,7 @@
 #include <csignal>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 #ifdef __GLIBC__
 #include <execinfo.h>
 #endif
@@ -81,6 +82,22 @@ static void stringFromFile(FILE* f, const char* context, const char* filename)
 		std::string line;
 		std::getline(in, line);
 		fprintf(f, "%s=%s\n", context, line.c_str());
+		in.close();
+	}
+}
+
+static void dumpFile(FILE* f, const char* filename)
+{
+	std::ifstream in(filename);
+	if (in.good()) {
+		do
+		{
+			std::string line;
+			std::getline(in, line);
+			fprintf(f, "%s\n", line.c_str());
+		}
+		while (in.good());
+		in.close();
 	}
 }
 
@@ -198,36 +215,65 @@ void bsodFatal(const char *component)
 			enigma2_rev,
 			component);
 
-		stringFromFile(f, "architecture", "/etc/openvision/architecture");
-		stringFromFile(f, "binutils", "/etc/openvision/binutils");
-		stringFromFile(f, "brand", "/etc/openvision/brand");
-		stringFromFile(f, "busybox", "/etc/openvision/busybox");
-		stringFromFile(f, "compiledby", "/etc/openvision/developername");
-		stringFromFile(f, "distro", "/etc/openvision/distro");
-		stringFromFile(f, "driverdate", "/etc/openvision/driverdate");
-		stringFromFile(f, "feedsurl", "/etc/openvision/feedsurl");
-		stringFromFile(f, "ffmpeg", "/etc/openvision/ffmpeg");
-		stringFromFile(f, "friendlyfamily", "/etc/openvision/friendlyfamily");
-		stringFromFile(f, "gcc", "/etc/openvision/gcc");
-		stringFromFile(f, "glibc", "/etc/openvision/glibc");
-		stringFromFile(f, "gstreamer", "/etc/openvision/gstreamer");
-		stringFromFile(f, "imagetype", "/etc/openvision/imagetype");
-		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
-		stringFromFile(f, "kernel", "/etc/openvision/kernel");
+/*
 		stringFromFile(f, "mediaservice", "/etc/openvision/mediaservice");
-		stringFromFile(f, "model", "/etc/openvision/model");
-		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
-		stringFromFile(f, "oe", "/etc/openvision/oe");
-		stringFromFile(f, "openssl", "/etc/openvision/openssl");
-		stringFromFile(f, "platform", "/etc/openvision/platform");
-		stringFromFile(f, "python", "/etc/openvision/python");
-		stringFromFile(f, "rcidnum", "/etc/openvision/rcidnum");
-		stringFromFile(f, "rcname", "/etc/openvision/rcname");
-		stringFromFile(f, "rctype", "/etc/openvision/rctype");
-		stringFromFile(f, "socfamily", "/etc/openvision/socfamily");
-		stringFromFile(f, "visionlanguage", "/etc/openvision/visionlanguage");
-		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");
-		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
+*/
+
+		std::ifstream in(eEnv::resolve("${libdir}/enigma.info").c_str());
+		const std::list<std::string> enigmainfovalues {
+			"architecture=",
+			"binutils=",
+			"brand=",
+			"busybox=",
+			"developername=",
+			"distro=",
+			"driverdate=",
+			"feedsurl=",
+			"ffmpeg=",
+			"friendlyfamily=",
+			"gcc=",
+			"glibc=",
+			"gstreamer=",
+			"imagetype=",
+			"imglanguage=",
+			"imgrevision=",
+			"imgversion=",
+			"kernel=",
+			"model=",
+			"oe=",
+			"openssl=",
+			"platform=",
+			"python=",
+			"rcidnum=",
+			"rcname=",
+			"rctype=",
+			"socfamily="
+		};
+
+		if (in.good()) {
+			do
+			{
+				std::string line;
+				std::getline(in, line);
+				for(std::list<std::string>::const_iterator i = enigmainfovalues.begin(); i != enigmainfovalues.end(); ++i)
+				{
+					if (line.find(i->c_str()) != std::string::npos) {
+						line.erase(std::remove( line.begin(), line.end(), '\"' ),line.end());
+						line.erase(std::remove( line.begin(), line.end(), '\'' ),line.end());
+						fprintf(f, "%s\n", line.c_str());
+						break;
+					}
+				}
+			}
+			while (in.good());
+			in.close();
+		}
+
+		fprintf(f, "\n");
+		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
+
+		fprintf(f, "\nnimsockets:\n");
+		dumpFile(f, "/proc/bus/nim_sockets");
 
 		/* dump the log ringbuffer */
 		fprintf(f, "\n\n");
