@@ -239,6 +239,7 @@ class InformationImage(Screen, HelpableScreen):
 			"down": (self.nextImage, _("Show next image"))
 		}, prio=0, description=_("Receiver Image Actions"))
 		self.images = (
+			(_("RC Map"), "receiver/%s-preview.png", rcname),
 			(_("Front"), "receiver/%s.png", model),
 			(_("Rear"), "receiver/%s-rear.png", model),
 			(_("Internal"), "receiver/%s-internal.png", model),
