@@ -119,7 +119,8 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 			"up": (self.moveUp, _("Move up a line")),
 			"down": (self.moveDown, _("Mode down a line")),
 			"pageDown": (self.pageDown, _("Mode down a screen")),
-			"bottom": (self.moveBottom, _("Move down to last line"))
+			"bottom": (self.moveBottom, _("Move down to last line")),
+			"bookmark": (self.addDeleteBookmark, _("Add / Delete bookmark"))
 		}, prio=0, description=_("LocationBox Actions"))
 		self["selectAction"] = LocationBoxActionMap(self, "LocationBoxActions", {
 			"select": (self.select, _("Select the currently highlighted location and exit"))

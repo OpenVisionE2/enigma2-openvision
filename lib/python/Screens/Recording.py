@@ -28,7 +28,7 @@ class RecordingSettings(Setup):
 		self.errorItem = -1
 		if self.getCurrentItem() in (config.usage.default_path, config.usage.timer_path, config.usage.instantrec_path):
 			self.pathStatus(self.getCurrentValue())
-		self["configActions"] = ActionMap(["ConfigListActions", "OkCancelActions"], {
+		self["configActions"] = ActionMap(["ConfigListActions"], {
 			"select": self.keySelect,
 			"cancel": self.close,
 			"save": self.keySave
