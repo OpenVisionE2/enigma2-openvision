@@ -241,7 +241,7 @@ class HelpMenu(Screen, ShowRemoteControl):
 			for button in selection[3]:
 				label = remoteControl.getRemoteControlKeyLabel(button[0])
 				if label is None:
-					label = "Note: No button defined for this action!"
+					label = _("Note: No button defined for this action!")
 				if len(button) > 1:
 					if button[1] == "SHIFT":
 						self.selectKey(KEYIDS.get("KEY_SHIFT"))
