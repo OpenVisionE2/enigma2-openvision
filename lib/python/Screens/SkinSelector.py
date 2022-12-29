@@ -113,9 +113,9 @@ class SkinSelector(Screen, HelpableScreen):
 			for skinFile in self.xmlList:
 				skin = pathjoin(dir, skinFile)
 				skinPath = pathjoin(self.rootDir, skin)
-				parseDone = fileReadXML(skinPath)
-				parseError = _("File error %s") % skin
 				if exists(skinPath):
+					parseDone = fileReadXML(skinPath)
+					parseError = _("File error %s") % skin
 					resolution = None
 					if skinFile == "skin.xml":
 						try:
