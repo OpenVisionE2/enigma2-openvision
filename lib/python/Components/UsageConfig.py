@@ -69,6 +69,8 @@ def InitUsageConfig():
 	config.misc.opkgcleanmode = ConfigYesNo(default=False)
 	config.misc.actionLeftRightToPageUpPageDown = ConfigYesNo(default=True)
 
+	config.misc.usegstplaybin3 = ConfigYesNo(default=False)
+
 	def correctInvalidEPGDataChange(configElement):
 		eServiceEvent.setUTF8CorrectMode(int(configElement.value))
 
