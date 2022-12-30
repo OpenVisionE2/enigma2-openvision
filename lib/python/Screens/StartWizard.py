@@ -16,8 +16,9 @@ from Components.ScrollLabel import ScrollLabel
 from Components.config import config, ConfigBoolean, configfile
 from Screens.LocaleSelection import LocaleWizard
 from Screens.Time import TimeWizard
-from enigma import eConsoleAppContainer, eTimer, eActionMap
-import os
+from enigma import eConsoleAppContainer, eTimer, eActionMap, quitMainloop
+from os import listdir, unlink
+from os.path import isfile, join, isdir, getmtime, dirname
 
 config.misc.firstrun = ConfigBoolean(default=True)
 config.misc.languageselected = ConfigBoolean(default=True)
@@ -65,8 +66,8 @@ def setLanguageFromBackup(backupfile):
 
 
 def checkForAvailableAutoBackup():
-	for backupfile in ["/media/%s/backup/Vision-AutoBackup.tar.gz" % media for media in os.listdir("/media/") if os.path.isdir(os.path.join("/media/", media))]:
-		if os.path.isfile(backupfile):
+	for backupfile in ["/media/%s/backup/Vision-AutoBackup.tar.gz" % media for media in listdir("/media/") if isdir(join("/media/", media))]:
+		if isfile(backupfile):
 			setLanguageFromBackup(backupfile)
 			return True
 
@@ -77,12 +78,15 @@ class AutoRestoreWizard(MessageBox):
 
 	def close(self, value):
 		if value:
-			MessageBox.close(self, 43)
-		else:
-			MessageBox.close(self)
+			if isfile("/etc/.doNotAutoInstall"):
+				unlink("/etc/.doNotAutoInstall")
+				MessageBox.close(self, 43)
+			else:
+				self.session.open(AutoInstall)
+		MessageBox.close(self)
 
 
-class AutoInstallWizard(Screen):
+class AutoInstall(Screen):
 	skin = """<screen name="AutoInstall" position="fill" flags="wfNoBorder">
 		<panel position="left" size="5%,*"/>
 		<panel position="right" size="5%,*"/>
@@ -114,11 +118,11 @@ class AutoInstallWizard(Screen):
 		autoinstallfiles = glob.glob('/media/*/backup/autoinstall%s' % mac_address) + glob.glob('/media/net/*/backup/autoinstall%s' % mac_address)
 		if not autoinstallfiles:
 			autoinstallfiles = glob.glob('/media/*/backup/autoinstall') + glob.glob('/media/net/*/backup/autoinstall')
-		autoinstallfiles.sort(key=os.path.getmtime, reverse=True)
+		autoinstallfiles.sort(key=getmtime, reverse=True)
 		for autoinstallfile in autoinstallfiles:
-			if os.path.isfile(autoinstallfile):
-				autoinstalldir = os.path.dirname(autoinstallfile)
-				self.packages = [package.strip() for package in open(autoinstallfile).readlines()] + [os.path.join(autoinstalldir, file) for file in os.listdir(autoinstalldir) if file.endswith(".ipk")]
+			if isfile(autoinstallfile):
+				autoinstalldir = dirname(autoinstallfile)
+				self.packages = [package.strip() for package in open(autoinstallfile).readlines()] + [join(autoinstalldir, file) for file in listdir(autoinstalldir) if file.endswith(".ipk")]
 				if self.packages:
 					self.number_of_packages = len(self.packages)
 					# make sure we have a valid package list before attempting to restore packages
@@ -174,15 +178,13 @@ class AutoInstallWizard(Screen):
 			self.container.dataAvail.remove(self.dataAvail)
 		self.container = None
 		self.logfile.close()
-		os.remove("/etc/.doAutoinstall")
-		self.close(3)
+		quitMainloop(43)
 
 
-if not os.path.isfile("/etc/installed"):
+if not isfile("/etc/installed"):
 	from Components.Console import Console
 	Console().ePopen("opkg list_installed | cut -d ' ' -f 1 > /etc/installed;chmod 444 /etc/installed")
 
-wizardManager.registerWizard(AutoInstallWizard, os.path.isfile("/etc/.doAutoinstall"), priority=0)
 wizardManager.registerWizard(AutoRestoreWizard, config.misc.firstrun.value and checkForAvailableAutoBackup(), priority=10)
 wizardManager.registerWizard(LocaleWizard, config.misc.firstrun.value, priority=10)
 wizardManager.registerWizard(TimeWizard, config.misc.firstrun.value, priority=20)

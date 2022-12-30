@@ -274,7 +274,9 @@ while : ; do
 			# Auto install and autobackup.
 			[ -f /sys/class/vtconsole/vtcon1/bind ] && echo "1" > /sys/class/vtconsole/vtcon1/bind
 			/etc/init.d/settings-restore.sh
-			/etc/init.d/avahi-daemon stop
+			if [ -f /etc/init.d/avahi-daemon ]; then
+				/etc/init.d/avahi-daemon stop
+			fi
 			ifdown eth1
 			ip addr flush dev eth1 scope global
 			ifdown eth0
@@ -284,12 +286,10 @@ while : ; do
 			rm /var/run/udhcpc*
 			/etc/init.d/dbus-1 reload
 			/etc/init.d/networking start
-			/etc/init.d/avahi-daemon start
-			if [ ! -f /etc/.doNotAutoinstall ]; then
-				touch /etc/.doAutoinstall
-			else
-				rm -f /etc/.doNotAutoInstall
+			if [ -f /etc/init.d/avahi-daemon ]; then
+				/etc/init.d/avahi-daemon start
 			fi
+			/etc/init.d/softcam restart
 			break
 			;;
 		44)
