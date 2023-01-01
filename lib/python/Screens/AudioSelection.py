@@ -18,9 +18,6 @@ from Plugins.Plugin import PluginDescriptor
 
 from enigma import iPlayableService, eTimer, eSize, eDVBDB, eServiceReference, eServiceCenter, iServiceInformation
 
-from Tools.ISO639 import LanguageCodes
-from Tools.BoundFunction import boundFunction
-
 FOCUS_CONFIG, FOCUS_STREAMS = range(2)
 [PAGE_AUDIO, PAGE_SUBTITLES] = ["audio", "subtitles"]
 
@@ -627,7 +624,12 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 
 	def keyDown(self):
 		if self.focus == FOCUS_CONFIG:
-			if self["config"].getCurrentIndex() < len(self["config"].getList()) - 1:
+			configList = self["config"].getList()
+			count = len(configList)
+			for x in configList:
+				if x[0] == "":
+					count -= 1
+			if self["config"].getCurrentIndex() < count - 1:
 				self["config"].instance.moveSelection(self["config"].instance.moveDown)
 			else:
 				self["config"].instance.setSelectionEnable(False)
