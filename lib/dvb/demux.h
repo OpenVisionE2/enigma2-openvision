@@ -85,8 +85,13 @@ class eDVBSectionReader: public iDVBSectionReader, public sigc::trackable
 	void data(int);
 	ePtr<eSocketNotifier> notifier;
 #if defined(DMAMLOGIC)
+#if SIGCXX_MAJOR_VERSION == 3
+	Slot0<void(__u8*)> m_buffer_func;
+#else
 	Slot0<__u8*> m_buffer_func;
+#endif
 	bool m_have_external_buffer_func;
+
 #endif
 public:
 	eDVBSectionReader(eDVBDemux *demux, eMainloop *context, RESULT &res);
@@ -94,7 +99,11 @@ public:
 	RESULT setBufferSize(int size);
 	RESULT start(const eDVBSectionFilterMask &mask);
 #if defined(DMAMLOGIC)
+#if SIGCXX_MAJOR_VERSION == 3
+	RESULT startWithExternalBufferFunc(const eDVBSectionFilterMask &mask, const Slot0<void(__u8*)> &buffer_func);
+#else
 	RESULT startWithExternalBufferFunc(const eDVBSectionFilterMask &mask, const Slot0<__u8*> &buffer_func);
+#endif
 #endif
 	RESULT stop();
 #if SIGCXX_MAJOR_VERSION == 3

@@ -8,6 +8,21 @@
 typedef sigc::connection	Connection;
 typedef sigc::trackable		Object;
 
+#if SIGCXX_MAJOR_VERSION == 3
+#define Signal0			sigc::signal
+#define Signal1			sigc::signal
+#define Signal2			sigc::signal
+#define Signal3			sigc::signal
+#define Signal4			sigc::signal
+#define Signal5			sigc::signal
+
+#define Slot0			sigc::slot
+#define Slot1			sigc::slot
+#define Slot2			sigc::slot
+#define Slot3			sigc::slot
+#define Slot4			sigc::slot
+#define Slot5			sigc::slot
+#else
 #define Signal0			sigc::signal0
 #define Signal1			sigc::signal1
 #define Signal2			sigc::signal2
@@ -21,6 +36,7 @@ typedef sigc::trackable		Object;
 #define Slot3			sigc::slot3
 #define Slot4			sigc::slot4
 #define Slot5			sigc::slot5
+#endif
 
 #define slot(x, y)		sigc::mem_fun(x, y)
 
