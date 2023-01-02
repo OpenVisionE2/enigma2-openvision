@@ -1,31 +1,14 @@
 # -*- coding: utf-8 -*-
-from Components.ActionMap import ActionMap
-from Components.Label import Label
 from Components.Console import Console
-from Components.ScrollLabel import ScrollLabel
-from Screens.Screen import Screen
+from Screens.TextBox import TextBox
 
 
-class AboutUserInstalledPlugins(Screen):
+class AboutUserInstalledPlugins(TextBox):
 	def __init__(self, session):
-		Screen.__init__(self, session)
-		self.setTitle(_("User installed plugins"))
-		self.skinName = ["Information"]
-
-		self["key_red"] = self["red"] = Label(_("Close"))
-		self["actions"] = ActionMap(["SetupActions", "NavigationActions"],
-		{
-			"cancel": self.close,
-			"up": self.pageUp,
-			"down": self.pageDown,
-			"left": self.pageUp,
-			"right": self.pageDown,
-			"pageUp": self.pageUp,
-			"pageDown": self.pageDown,
-		}, -2)
-
 		self.Console = Console()
-		self["information"] = ScrollLabel()
+		TextBox.__init__(self, session, label="AboutScrollLabel")
+		self.setTitle(_("User installed plugins"))
+		self.skinName = "Information"
 		self.onLayoutFinish.append(self.checkOPKG)
 
 	def checkOPKG(self):
@@ -47,12 +30,6 @@ class AboutUserInstalledPlugins(Screen):
 					if plugin and line.startswith("Status") and "user installed" in line:
 						plugins_out.append(plugin)
 						break
-			self["information"].setText("\n".join(sorted(plugins_out)))
+			self["AboutScrollLabel"].setText("\n".join(sorted(plugins_out)))
 		else:
-			self["information"].setText(_("No user installed plugins found"))
-
-	def pageUp(self):
-		self["information"].pageUp()
-
-	def pageDown(self):
-		self["information"].pageDown()
+			self["AboutScrollLabel"].setText(_("No user installed plugins found"))
