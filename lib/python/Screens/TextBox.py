@@ -17,8 +17,8 @@ class TextBox(Screen):
 		self[self.label] = ScrollLabel(self.text)
 
 		self["key_red"] = Button(_("Close"))
-
-		self["actions"] = ActionMap(["SetupActions", "NavigationActions"],
+		
+		self["textBoxActions"] = ActionMap(["SetupActions", "NavigationActions"],
 				{
 					"cancel": self.close,
 					"ok": self.close,
@@ -28,7 +28,7 @@ class TextBox(Screen):
 					"right": self[self.label].pageDown,
 					"pageUp": self[self.label].pageUp,
 					"pageDown": self[self.label].pageDown,
-				}, -1)
+				}, prio=1)
 
 		if title:
 			self.setTitle(title)
