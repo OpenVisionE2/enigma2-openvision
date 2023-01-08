@@ -160,9 +160,9 @@ class InputDeviceSetup(Setup):
 			rcType = config.inputDevices.remotesIndex.default if index == 0 else remoteControl.remotes[index][REMOTE_RCTYPE]
 			if rcType:
 				remoteControl.writeRemoteControlType(rcType)
-				print("[InputDeviceSetup] Trying remote control index=%d, getMachineBuild='%s', rcType='%s', name='%s'." % (index, remoteControl.remotes[index][REMOTE_MODEL], remoteControl.remotes[index][REMOTE_RCTYPE], remoteControl.remotes[index][REMOTE_DISPLAY_NAME]))
+				print("[InputDeviceSetup] Trying remote control index=%d, platform='%s', rcType='%s', name='%s'." % (index, remoteControl.remotes[index][REMOTE_MODEL], remoteControl.remotes[index][REMOTE_RCTYPE], remoteControl.remotes[index][REMOTE_DISPLAY_NAME]))
 			else:
-				print("[InputDeviceSetup] Remote control index=%d, getMachineBuild='%s', rcType='%s', name='%s' does not use rcType." % (index, remoteControl.remotes[index][REMOTE_MODEL], remoteControl.remotes[index][REMOTE_RCTYPE], remoteControl.remotes[index][REMOTE_DISPLAY_NAME]))
+				print("[InputDeviceSetup] Remote control index=%d, platform='%s', rcType='%s', name='%s' does not use rcType." % (index, remoteControl.remotes[index][REMOTE_MODEL], remoteControl.remotes[index][REMOTE_RCTYPE], remoteControl.remotes[index][REMOTE_DISPLAY_NAME]))
 			self.session.openWithCallback(self.keySaveCallback, MessageBox, _("Is the remote control working okay?"), MessageBox.TYPE_YESNO, timeout=10, default=False, timeout_default=False)
 			return
 		Setup.keySave(self)
@@ -180,6 +180,6 @@ class InputDeviceSetup(Setup):
 		config.inputDevices.remotesIndex.value = self.initialRemotesIndex
 		index = int(self.initialRemotesIndex)
 		remoteControl.writeRemoteControlType(remoteControl.remotes[index][REMOTE_RCTYPE])
-		print("[InputDeviceSetup] Restoring remote control index=%d, getMachineBuild='%s', rcType='%s', name='%s'." % (index, remoteControl.remotes[index][REMOTE_MODEL], remoteControl.remotes[index][REMOTE_RCTYPE], remoteControl.remotes[index][REMOTE_DISPLAY_NAME]))
+		print("[InputDeviceSetup] Restoring remote control index=%d, platform='%s', rcType='%s', name='%s'." % (index, remoteControl.remotes[index][REMOTE_MODEL], remoteControl.remotes[index][REMOTE_RCTYPE], remoteControl.remotes[index][REMOTE_DISPLAY_NAME]))
 		for item in self["config"].list:
 			self["config"].invalidate(item)
