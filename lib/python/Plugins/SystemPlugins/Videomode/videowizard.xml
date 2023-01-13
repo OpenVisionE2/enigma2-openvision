@@ -11,7 +11,7 @@ self.selectKey("OK")
 	</step>
 	<step id="modeselection" nextstep="rateselection" timeout="20" timeoutaction="selectnext">
 		<text value="Video mode selection." />
-		<displaytext value="Select video mode" />
+		<displaytext value="Select video mode." />
 		<list type="dynamic" source="listModes" evaluation="modeSelectionMade" onselect="modeSelectionMoved" />
 		<code>
 self.clearSelectedKeys()
