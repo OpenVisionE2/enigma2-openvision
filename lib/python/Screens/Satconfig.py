@@ -775,6 +775,8 @@ class NimSelection(Screen):
 			"green": self.okbuttonClick,
 			"menu": self.exit,
 			"yellow": self.clientmode,
+			"left": self.keyLeft,
+			"right": self.keyRight,
 		}, -2)
 		self.setTitle(_("Choose Tuner"))
 
@@ -933,6 +935,12 @@ class NimSelection(Screen):
 		self["nimlist"].updateList(self.list)
 		if index is not None:
 			self["nimlist"].setIndex(index)
+
+	def keyLeft(self):
+		self["nimlist"].pageUp()
+
+	def keyRight(self):
+		self["nimlist"].pageDown()
 
 
 class SelectSatsEntryScreen(Screen):
