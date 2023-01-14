@@ -32,9 +32,6 @@ public:
 	void unfreeze();
 	int getPTS(pts_t &now);
 	virtual ~eDVBAudio();
-#if defined(DMAMLOGIC)
-	void setSTCValidState(int state);
-#endif
 };
 
 class eDVBVideo: public iObject, public sigc::trackable
@@ -53,11 +50,6 @@ private:
 	int m_is_slow_motion, m_is_fast_forward, m_is_freezed;
 	ePtr<eSocketNotifier> m_sn;
 	void video_event(int what);
-#if defined(DMAMLOGIC)
-	int m_fd_amvideoPoll;
-	ePtr<eSocketNotifier> m_sn_amvideoPoll;
-	void amvideo_event(int);
-#endif
 #if SIGCXX_MAJOR_VERSION == 3
 	sigc::signal<void(struct iTSMPEGDecoder::videoEvent)> m_event;
 #else
@@ -108,9 +100,6 @@ public:
 	eDVBPCR(eDVBDemux *demux, int dev);
 	int startPid(int pid);
 	void stop();
-#if defined(DMAMLOGIC)
-	void restart();
-#endif
 	virtual ~eDVBPCR();
 };
 
@@ -179,13 +168,6 @@ private:
 #else
 	sigc::signal1<void, struct videoEvent> m_video_event;
 #endif
-#if defined(DMAMLOGIC)
-#if SIGCXX_MAJOR_VERSION == 3
-	sigc::signal<void(int)> m_state_event;
-#else
-	sigc::signal1<void, int> m_state_event;
-#endif
-#endif
 	int m_video_clip_fd;
 	ePtr<eTimer> m_showSinglePicTimer;
 	void finishShowSinglePic(); // called by timer
@@ -245,24 +227,12 @@ public:
 #else
 	RESULT connectVideoEvent(const sigc::slot1<void, struct videoEvent> &event, ePtr<eConnection> &connection);
 #endif
-#if defined(DMAMLOGIC)
-#if SIGCXX_MAJOR_VERSION == 3
-	RESULT connectStateEvent(const sigc::slot<void(int)> &event, ePtr<eConnection> &connection);
-#else
-	RESULT connectStateEvent(const sigc::slot1<void, int> &event, ePtr<eConnection> &connection);
-#endif
-	int getVideoDecoderId();
-#endif
 	int getVideoWidth();
 	int getVideoHeight();
 	int getVideoProgressive();
 	int getVideoFrameRate();
 	int getVideoAspect();
 	int getVideoGamma();
-#if defined(DMAMLOGIC)
-	int getState();
-	const char* getEotf();
-#endif
 	static RESULT setHwPCMDelay(int delay);
 	static RESULT setHwAC3Delay(int delay);
 #if defined(HAVE_FCC_ABILITY)

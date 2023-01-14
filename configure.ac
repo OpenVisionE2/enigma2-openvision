@@ -436,7 +436,6 @@ if test "$BOXBRAND" == "rpi"; then
 	AC_DEFINE(HAVE_RASPBERRYPI, 1,[enable rpi specific stuff])
 fi
 
-AM_CONDITIONAL(DMAMLOGIC, test "$STBPLATFORM" == "dmamlogic")
 AM_CONDITIONAL(RASPBERRYPI, test "$BOXBRAND" == "rpi")
 
 AM_CONDITIONAL(HAVE_COLORLCD1, test "$BOXTYPE" == "dm8000" -o "$BOXTYPE" == "dm800" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2")
@@ -507,10 +506,6 @@ if test "$BOXBRAND" == "dreambox"; then
 	AC_DEFINE(DREAMBOX, 1, [Dreambox hardware])
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 #	AC_DEFINE(HAVE_FREEZE, 1, [define when freeze workaround is needed])
-fi
-
-if test "$STBPLATFORM" == "dmamlogic"; then
-	AC_DEFINE(DMAMLOGIC, 1, [Dreambox Amlogic hardware])
 fi
 
 if test "$BOXTYPE" == "dm7080"; then

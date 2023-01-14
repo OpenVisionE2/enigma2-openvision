@@ -37,7 +37,6 @@ if [ "${PLATFORMCHECK}" == "octagonhisil" ] || [ "${PLATFORMCHECK}" == "octagonh
 fi
 
 if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
-	export media_arm_audio_decoder="ape,flac,dts,ac3,eac3,wma,wmapro,mp3,aac,vorbis,raac,cook,amr,pcm,adpcm"
 	echo "1" > /sys/class/graphics/fb0/osd_clear
 	echo "1" > /sys/class/graphics/fb1/osd_clear
 	FIRSTRUN=`sed -En 's|^config\.misc\.firstrun=(.+)$|\1|p' /etc/enigma2/settings | tr [A-Z] [a-z]`
@@ -53,6 +52,7 @@ elif [ -f /proc/stb/fp/led_brightness ]; then
 fi
 
 if [ -f /proc/stb/fp/nec_ir ]; then
+	/sbin/insmod /lib/modules/4.9/extra/lcd/lcd.ko
 	echo "1" > /proc/stb/fp/nec_ir
 	[ -f /sys/class/remote/amremote/protocol ] && echo "2" > /sys/class/remote/amremote/protocol
 fi
@@ -236,6 +236,9 @@ while : ; do
 			/sbin/reboot
 			;;
 		16)
+			if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
+				"@sbindir@/to-the-rescue"
+			fi
 			if [ -e /dev/block/by-name/flag ]; then
 				echo -n "0" > /dev/block/by-name/flag
 			elif [ -e /dev/block/by-name/bootoptions ]; then
