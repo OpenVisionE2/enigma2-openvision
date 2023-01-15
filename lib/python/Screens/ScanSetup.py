@@ -1312,8 +1312,8 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 		parm = eDVBFrontendParametersSatellite()
 		parm.modulation = modulation
 		parm.system = system
-		parm.frequency = frequency * 1000
-		parm.symbol_rate = symbol_rate * 1000
+		parm.frequency = int(frequency * 1000)
+		parm.symbol_rate = int(symbol_rate * 1000)
 		parm.polarisation = polarisation
 		parm.fec = fec
 		parm.inversion = inversion
