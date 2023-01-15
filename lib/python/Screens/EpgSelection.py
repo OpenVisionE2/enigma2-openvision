@@ -94,46 +94,31 @@ class EPGSelection(Screen):
 		if self.bouquetChangeCB == StaticText:
 			self["key_green"] = StaticText(_("Add timer"))
 		else:
-			self["key_green"] = Button(_("Add timer"))
+			self["key_green"] = StaticText(_("Add timer"))
 		self.key_green_choice = self.ADD_TIMER
 		self.key_red_choice = self.EMPTY
 		self["list"] = EPGList(type=self.type, selChangedCB=self.onSelectionChanged, timer=session.nav.RecordTimer)
-		if self.type == EPG_TYPE_MULTI or self.type == EPG_TYPE_SINGLE and not isPluginInstalled("EPGSearch"):
-			self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"],
-				{
-					"cancel": self.closeScreen,
-					"ok": self.eventSelected,
-					"timerAdd": self.timerAdd,
-					"yellow": self.yellowButtonPressed,
-					"blue": self.blueButtonPressed,
-					"info": self.infoKeyPressed,
-					"menu": self.furtherOptions,
-					"nextBouquet": self.nextBouquet, # just used in multi epg yet
-					"prevBouquet": self.prevBouquet, # just used in multi epg yet
-					"nextService": self.nextService, # just used in single epg yet
-					"prevService": self.prevService, # just used in single epg yet
-					"preview": self.eventPreview
-				})
-		else:
-			self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"], # context for plugin EPGSearh.
-				{
-					"cancel": self.closeScreen,
-					"ok": self.eventSelected,
-					"timerAdd": self.timerAdd,
-					"yellow": self.yellowButtonPressed,
-					"info": self.infoKeyPressed,
-					"menu": self.furtherOptions
-				})
-		self['tmbd'] = HelpableActionMap(self, ["ColorActions"],
-			{
-				"red": (self.GoToTmbd, _("Search event in TMBD"))
-			})
+		self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions"], {
+			"cancel": self.closeScreen,
+			"ok": self.eventSelected,
+			"red": self.goToTmbd,
+			"timerAdd": self.timerAdd,
+			"yellow": self.yellowButtonPressed,
+			"blue": self.blueButtonPressed,
+			"info": self.infoKeyPressed,
+			"menu": self.furtherOptions,
+			"nextBouquet": self.nextBouquet, # just used in multi epg yet
+			"prevBouquet": self.prevBouquet, # just used in multi epg yet
+			"nextService": self.nextService, # just used in single epg yet
+			"prevService": self.prevService, # just used in single epg yet
+			"preview": self.eventPreview
+		})
 		self.isTMBD = isPluginInstalled("TMBD")
 		if self.isTMBD:
-			self["key_red"] = Button(_("Search TMBD"))
+			self["key_red"] = StaticText(_("Search TMBD"))
 			self.select = True
 		else:
-			self["key_red"] = Button(_("TMBD Not Installed"))
+			self["key_red"] = StaticText(_("TMBD not installed"))
 			self.select = False
 		try:
 			from Plugins.Extensions.YTTrailer.plugin import baseEPGSelection__init__
@@ -155,7 +140,7 @@ class EPGSelection(Screen):
 		else:
 			self.fallbackTimer = FallbackTimerList(self, self.onCreate)
 
-	def GoToTmbd(self):
+	def goToTmbd(self):
 		if isPluginInstalled("TMBD"):
 			self.runTMBD()
 		else:

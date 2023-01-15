@@ -4,7 +4,7 @@ from time import localtime, strftime
 from enigma import eEPGCache, eTimer, eServiceReference
 
 from RecordTimer import AFTEREVENT, RecordTimerEntry, createRecordTimerEntry, parseEvent
-from Components.ActionMap import HelpableActionMap
+from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.config import config
 from Components.Label import Label
 from Components.PluginComponent import plugins
@@ -64,7 +64,7 @@ class EventViewBase:
 		else:
 			self.fallbackTimer = FallbackTimerList(self, self.layoutFinished)
 		self.windowTitle = windowTitle
-		self.isRecording = (not serviceRef.ref.flags & eServiceReference.isGroup) and serviceRef.ref.getPath()
+		self.isRecording = (not serviceRef.ref.flags & eServiceReference.isGroup) and serviceRef.ref.getPath() and "%3a//" not in serviceRef.ref.toString()
 		self["channel"] = Label()
 		self["datetime"] = Label()
 		self["duration"] = Label()
@@ -78,19 +78,17 @@ class EventViewBase:
 		self.keyGreenAction = self.ADD_TIMER
 		self["key_menu"] = StaticText(_("MENU"))
 		self["key_info"] = StaticText(_("INFO"))
-		self["actions"] = HelpableActionMap(self, ["OkCancelActions", "EventViewActions"], {
+		self["actions"] = HelpableActionMap(self, ["OkActions", "EventViewActions"], {
 			"cancel": (self.close, _("Close Event View screen")),
 			"ok": (self.close, _("Close Event View screen")),
 			"contextMenu": (self.doContext, _("Open context menu")),
 			"timerAdd": (self.addTimer, _("Add a timer for the current event")),
 			"pageUp": (self.pageUp, _("Show previous page of description")),
-			"pageDown": (self.pageDown, _("Show next page of description"))
-		}, prio=0, description=_("Event View Actions"))
-		self["eventActions"] = HelpableActionMap(self, ["EventViewActions"], {
+			"pageDown": (self.pageDown, _("Show next page of description")),
+			"openSimilarList": self.openSimilarList,
 			"prevEvent": (self.prevEvent, _("Show previous event")),
 			"nextEvent": (self.nextEvent, _("Show next event"))
 		}, prio=0, description=_("Event View Actions"))
-		self["eventActions"].setEnabled(callback is not None)
 		self["similarActions"] = HelpableActionMap(self, ["EventViewActions"], {
 			"openSimilarList": (self.openSimilarList, _("Find similar events in the EPG"))
 		}, prio=0, description=_("Event View Actions"))
@@ -356,24 +354,36 @@ class EventViewEPGSelect(Screen, HelpableScreen, EventViewBase):
 		Screen.__init__(self, session)
 		HelpableScreen.__init__(self)
 		EventViewBase.__init__(self, event, serviceRef, callback=callback, similarEPGCB=similarEPGCB, parent=parent, windowTitle=windowTitle)
-		if singleEPGCB:
+		self.singleEPGCB = singleEPGCB
+		self.multiEPGCB = multiEPGCB
+		if singleEPGCB or multiEPGCB:
 			self["key_yellow"] = StaticText(_("Single EPG"))
-			self["singleAction"] = HelpableActionMap(self, ["EventViewEPGActions"], {
-				"openSingleServiceEPG": (self.openSingleEPG, _("Open the single service EPG view"))
-			}, prio=0, description=_("Event View Actions"))
-			self.singleEPGCB = singleEPGCB
-		if multiEPGCB:
 			self["key_blue"] = StaticText(_("Multi EPG"))
-			self["multiAction"] = HelpableActionMap(self, ["EventViewEPGActions"], {
-				"openMultiServiceEPG": (self.openMultiEPG, _("Open the multi service EPG view"))
+			self["singleMultiEPGActions"] = HelpableActionMap(self, ["EventViewEPGActions"], {
+				"openSingleServiceEPG": (self.openSingleEPG, _("Open Simple EPG")),
+				"openMultiServiceEPG": (self.openMultiEPG, _("Open Multi EPG"))
 			}, prio=0, description=_("Event View Actions"))
-			self.multiEPGCB = multiEPGCB
+			self["actions"] = ActionMap(["GMEPGSelectActions", "EventViewActions"], {
+				"red": self.openSimilarList,
+				"cancel": self.keyCancel,
+				"timerAdd": self.addTimer,
+				"yellow": self.openSingleEPG,
+				"info": self.doContext,
+				"menu": self.doContext,
+				"prevEvent": self.prevEvent,
+				"nextEvent": self.nextEvent,
+				"moveUp": self.pageUp,
+				"moveDown": self.pageDown
+			})
 		self.skinName = ["EventView"]
 		if skinName:
 			if isinstance(skinName, str):
 				self.skinName.insert(0, skinName)
 			else:
 				self.skinName = skinName + self.skinName
+
+	def keyCancel(self):
+		self.close(None)
 
 	def openSingleEPG(self):
 		self.hide()
