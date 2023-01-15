@@ -363,7 +363,7 @@ class EventViewEPGSelect(Screen, HelpableScreen, EventViewBase):
 				"openSingleServiceEPG": (self.openSingleEPG, _("Open Simple EPG")),
 				"openMultiServiceEPG": (self.openMultiEPG, _("Open Multi EPG"))
 			}, prio=0, description=_("Event View Actions"))
-			self["actions"] = ActionMap(["GMEPGSelectActions", "EventViewActions"], {
+			self["actions"] = ActionMap(["GMEPGSelectActions", "EventViewActions", "OkCancelActions"], {
 				"red": self.openSimilarList,
 				"cancel": self.keyCancel,
 				"timerAdd": self.addTimer,
