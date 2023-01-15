@@ -2881,6 +2881,7 @@
 	<screen name="Satfinder" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
 		<panel name="StanDardScreen"/>
 		<panel name="TemplateNoPip"/>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_menu.png" position="18,1035" size="64,43"/>
 		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" backgroundColor="OE_Background" position="26,265" size="1250,705" transparent="1"/>
 		<eLabel backgroundColor="OE_Background" font="RegularBold;26" foregroundColor="OE_Foreground" name="snr" position="40,144" size="120,45" text="SNR:" transparent="1"/>
 		<widget borderColor="grey" scrollbarBorderWidth="2" backgroundColor="OE_Background" foregroundColor="un56c856" position="165,148" render="Progress" size="850,20" source="Frontend" transparent="1">
@@ -2899,13 +2900,13 @@
 		<widget backgroundColor="OE_Background" font="RegularBold;26" position="1035,183" render="Label" size="120,45" source="Frontend" transparent="1">
 			<convert type="FrontendInfo">BER</convert>
 		</widget>
-		<eLabel text="TSID:" position="40,225" size="100,35" backgroundColor="OE_Background" zPosition="2" font="RegularBold;26" transparent="1"/>
-		<widget source="tsid" render="Label" position="160,225" size="150,35" font="RegularBold;26" foregroundColor="green_light" backgroundColor="OE_Background" horizontalAlignment="left" transparent="1" zPosition="3"/>
-		<eLabel text="ONID:" position="365,225" size="100,35" backgroundColor="OE_Background" zPosition="2" font="RegularBold;26" transparent="1"/>
-		<widget source="onid" render="Label" position="470,225" size="150,35" font="RegularBold;26" foregroundColor="green_light" backgroundColor="OE_Background" horizontalAlignment="left" transparent="1" zPosition="3"/>
-		<eLabel text="Orb Pos:" position="655,225" size="130,35" backgroundColor="OE_Background" zPosition="2" font="RegularBold;26" transparent="1"/>
-		<widget source="pos" render="Label" position="795,225" size="150,35" font="RegularBold;26" foregroundColor="green_light" backgroundColor="OE_Background" horizontalAlignment="left" transparent="1" zPosition="3"/>
-		<eLabel name="lock" backgroundColor="OE_Background" font="RegularBold;26" foregroundColor="OE_Foreground" position="940,220" size="230,45" horizontalAlignment="right" text="Lock:" transparent="1"/>
+		<widget source="tsidtext" conditional="tsidtext" render="Label" position="40,225" size="100,35" font="RegularBold;26" backgroundColor="OE_Background" horizontalAlignment="left" transparent="1" zPosition="3"/>
+		<widget source="tsid" conditional="tsid" render="Label" position="160,225" size="150,35" font="RegularBold;26" foregroundColor="green_light" backgroundColor="OE_Background" horizontalAlignment="left" transparent="1" zPosition="3"/>
+		<widget source="onidtext" conditional="onidtext" render="Label" position="365,225" size="100,35" font="RegularBold;26" backgroundColor="OE_Background" horizontalAlignment="left" transparent="1" zPosition="3"/>
+		<widget source="onid" conditional="onid" render="Label" position="470,225" size="150,35" font="RegularBold;26" foregroundColor="green_light" backgroundColor="OE_Background" horizontalAlignment="left" transparent="1" zPosition="3"/>
+		<widget source="postext" conditional="postext" render="Label" position="630,225" size="260,35" font="RegularBold;26" backgroundColor="OE_Background" horizontalAlignment="left" transparent="1" zPosition="3"/>
+		<widget source="pos" conditional="pos" render="Label" position="865,225" size="130,35" font="RegularBold;26" foregroundColor="green_light" backgroundColor="OE_Background" horizontalAlignment="left" transparent="1" zPosition="3"/>
+		<eLabel name="lock" backgroundColor="OE_Background" font="RegularBold;26" foregroundColor="OE_Foreground" position="940,225" size="230,45" horizontalAlignment="right" text="Lock:" transparent="1"/>
 		<widget alphaTest="on" pixmap="OctEtFHD/extensions/lock_on.png" position="1240,220" render="Pixmap" size="35,35" source="Frontend" zPosition="1">
 			<convert type="FrontendInfo">LOCK</convert>
 			<convert type="ConditionalShowHide"/>
