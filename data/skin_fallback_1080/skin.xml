@@ -388,10 +388,10 @@
 	<screen name="Setup" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080" title="Setup">
 		<panel name="StanDardScreen"/>
 		<panel name="TemplatePip"/>
-		<widget source="key_help" conditional="key_help" render="Label" position="20,1040" size="200,35" backgroundColor="key_back" font="Regular;24" halign="center" valign="center">
+		<widget source="key_help" conditional="key_help" render="Label" position="20,1040" size="200,35" backgroundColor="key_back" font="Regular;24" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<widget source="key_menu" conditional="key_menu" render="Label" position="225,1040" size="200,35" backgroundColor="key_back" font="Regular;24" halign="center" valign="center">
+		<widget source="key_menu" conditional="key_menu" render="Label" position="225,1040" size="200,35" backgroundColor="key_back" font="Regular;24" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide"/>
 		</widget>
 		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;22" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" backgroundColor="OE_Background" position="26,140" size="1250,800" transparent="1"/>
