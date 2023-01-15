@@ -522,6 +522,7 @@
 	<map context="InfobarEPGActions">
 		<key id="KEY_INFO" mapto="showEventInfo" flags="b" />
 		<key id="KEY_INFO" mapto="showEventInfoPlugin" flags="l" />
+		<key id="KEY_INFO" mapto="showInfobarOrEpgWhenInfobarAlreadyVisible" flags="b" />
 		<key id="KEY_EPG" mapto="showEventInfoSingleEPG" flags="b" />
 		<key id="KEY_EPG" mapto="showEventGuidePlugin" flags="l" />
 		<key id="KEY_OK" mapto="showEventInfoMultiEPG" flags="l" />
@@ -555,6 +556,11 @@
 		<key id="KEY_SAT" mapto="openSatellitesList" flags="m" />
 		<key id="BTN_0" mapto="zapUp" flags="mr" />
 		<key id="BTN_1" mapto="zapDown" flags="mr" />
+	</map>
+
+	<map context="InfobarZoomActions">
+		<key id="KEY_ZOOM" mapto="ZoomInOut" flags="b" />
+		<key id="KEY_ZOOM" mapto="ZoomOff" flags="l" />
 	</map>
 
 	<map context="InfobarHDMIActions">
@@ -1210,6 +1216,8 @@
 		<key id="KEY_F2" mapto="f2_long" flags="l" />
 		<key id="KEY_F3" mapto="f3" flags="b" />
 		<key id="KEY_F3" mapto="f3_long" flags="l" />
+		<key id="KEY_F4" mapto="f4" flags="b" />
+		<key id="KEY_F4" mapto="f4_long" flags="l" />
 		<key id="KEY_F6" mapto="f6" flags="b" />
 		<key id="KEY_F6" mapto="f6_long" flags="l" />
 		<key id="KEY_AUX" mapto="HDMIin" flags="b" />
