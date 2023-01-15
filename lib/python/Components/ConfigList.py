@@ -177,7 +177,9 @@ class ConfigListScreen:
 			self["fullUIActions"] = HelpableActionMap(self, ["ConfigListActions"], {
 				"cancel": (self.keyCancel, _("Cancel any changed settings and exit")),
 				"close": (self.closeRecursive, _("Cancel any changed settings and exit all menus")),
-				"save": (self.keySave, _("Save all changed settings and exit"))
+				"save": (self.keySave, _("Save all changed settings and exit")),
+				"select": (self.keySelect, _("Select, toggle, process or edit the current entry")),
+				"menu": self.keyMenu
 			}, prio=1, description=_("Common Setup Actions"))
 		if "key_menu" not in self:
 			self["key_menu"] = StaticText(_("MENU"))
