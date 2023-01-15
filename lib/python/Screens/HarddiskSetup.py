@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-from . Screen import Screen
+from Screens.Screen import Screen
 from Components.ActionMap import ActionMap
 from Components.Harddisk import harddiskmanager
 from Components.MenuList import MenuList
 from Components.Label import Label
-from Components.Pixmap import Pixmap
 from Screens.MessageBox import MessageBox
 
 
@@ -22,11 +21,11 @@ class HarddiskSetup(Screen):
 		self["actions"] = ActionMap(["OkCancelActions"],
 		{
 			"ok": self.hddQuestion,
-			"cancel": self.close
+			"cancel": self.keyCancel
 		})
 		self["shortcuts"] = ActionMap(["ShortcutActions"],
 		{
-			"red": self.close,
+			"red": self.keyCancel,
 			"green": self.hddQuestion
 		})
 
@@ -46,6 +45,9 @@ class HarddiskSetup(Screen):
 		except Exception as ex:
 			self.session.open(MessageBox, str(ex), type=MessageBox.TYPE_ERROR, timeout=10)
 		self.close()
+
+	def keyCancel(self):
+		self.close(None)
 
 
 class HarddiskSelection(Screen):
