@@ -17,6 +17,7 @@ class ChoiceBox(Screen, HelpableScreen):
 	def __init__(self, session, text=None, list=None, keys=None, selection=0, skinName=None, windowTitle=None, title=None, skin_name=None):
 		Screen.__init__(self, session)
 		HelpableScreen.__init__(self)
+		from .ChoiceBox import OrderedChoiceBox
 		if title is not None:  # Process legacy title argument.
 			text = title
 		if text is None:
@@ -73,7 +74,10 @@ class ChoiceBox(Screen, HelpableScreen):
 			# "last": (self.bottom, _("Move to last line")),
 			"down": (self.down, _("Move down a line")),
 			"pageDown": (self.pageDown, _("Move down a page")),
-			"bottom": (self.bottom, _("Move to last line"))
+			"bottom": (self.bottom, _("Move to last line")),
+			"resetList": self.setDefaultChoiceList,
+			"moveItemUp": self.additionalMoveUp,
+			"moveItemDown": self.additionalMoveDown
 		}, prio=-2, description=_("Choice Box Actions"))
 		self.setTitle(windowTitle or _("Select"))
 		self.onLayoutFinish.append(self.layoutFinished)
@@ -141,6 +145,18 @@ class ChoiceBox(Screen, HelpableScreen):
 
 	def bottom(self):
 		self.move(1, self["list"].instance.moveEnd)
+
+	def setDefaultChoiceList(self):
+		if hasattr(self, "setDefaultChoiceListCallback"):
+			OrderedChoiceBox.setDefaultChoiceList(self)
+
+	def additionalMoveUp(self):
+		if hasattr(self, "additionalMove"):
+			OrderedChoiceBox.additionalMoveUp(self)
+
+	def additionalMoveDown(self):
+		if hasattr(self, "additionalMove"):
+			OrderedChoiceBox.additionalMoveDown(self)
 
 	def move(self, direction, step):  # The list should not start or end in a separator line.
 		limit = len(self["list"].list) - 1 if direction > 0 else 0
