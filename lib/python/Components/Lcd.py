@@ -419,7 +419,7 @@ def InitLcd():
 				fileWriteLine("/proc/stb/fp/ledsuspendledcolor", configElement.value)
 
 		def setLedBlinkControlColor(configElement):
-			if isfile("/proc/stb/fp/led_blink") and platform != "dmamlogic":
+			if isfile("/proc/stb/fp/led_blink"):
 				fileWriteLine("/proc/stb/fp/led_blink", configElement.value)
 
 		def setLedBrightnessControl(configElement):

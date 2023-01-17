@@ -265,7 +265,7 @@ SystemInfo["PowerLED"] = fileCheck("/proc/stb/power/powerled")
 SystemInfo["PowerLED2"] = fileCheck("/proc/stb/power/powerled2")
 SystemInfo["StandbyLED"] = fileCheck("/proc/stb/power/standbyled")
 SystemInfo["SuspendLED"] = fileCheck("/proc/stb/power/suspendled")
-SystemInfo["Display"] = BoxInfo.getItem("FrontpanelDisplay") or BoxInfo.getItem("StandbyLED") or platform == "dmamlogic"
+SystemInfo["Display"] = BoxInfo.getItem("FrontpanelDisplay") or BoxInfo.getItem("StandbyLED")
 SystemInfo["LedPowerColor"] = fileCheck("/proc/stb/fp/ledpowercolor")
 SystemInfo["LedStandbyColor"] = fileCheck("/proc/stb/fp/ledstandbycolor")
 SystemInfo["LedSuspendColor"] = fileCheck("/proc/stb/fp/ledsuspendledcolor")
@@ -296,7 +296,7 @@ SystemInfo["HasTranscoding"] = BoxInfo.getItem("transcoding") or BoxInfo.getItem
 SystemInfo["HasH265Encoder"] = fileContains("/proc/stb/encoder/0/vcodec_choices", "h265")
 SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model in ("vusolo4k", "gbquad4k", "gbue4k")
 SystemInfo["HasFrontDisplayPicon"] = model in ("et8500", "vusolo4k", "vuuno4kse", "vuduo4k", "vuduo4kse", "vuultimo4k", "gbquad4k", "gbue4k")
-SystemInfo["Has24hz"] = fileCheck("/proc/stb/video/videomode_24hz") and platform != "dmamlogic"
+SystemInfo["Has24hz"] = fileCheck("/proc/stb/video/videomode_24hz")
 SystemInfo["HasHDMI"] = BoxInfo.getItem("hdmi")
 SystemInfo["HasHDMI-CEC"] = BoxInfo.getItem("HasHDMI") and (fileCheck("/dev/cec0") or fileCheck("/dev/hdmi_cec") or fileCheck("/dev/misc/hdmi_cec0"))
 SystemInfo["HasHDMIHDin"] = BoxInfo.getItem("hdmihdin")
@@ -333,15 +333,15 @@ SystemInfo["7segment"] = displaytype == "7segment" or "7seg" in displaytype
 SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or fileCheck("/proc/hisi") or fileCheck("/usr/bin/hihalt") or fileCheck("/usr/lib/hisilicon")
 SystemInfo["DefineSat"] = platform in ("octagonhisil", "octagonhisilnew", "gbmv200", "uclanhisil") or model in ("beyonwizv2", "viper4k")
 SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileCheck("/proc/device-tree/amlogic-dt-id") or fileCheck("/usr/bin/amlhalt") or fileCheck("/sys/module/amports")
-SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7") or platform == "dmamlogic"
-SystemInfo["AndroidMode"] = BoxInfo.getItem("RecoveryMode") and model == "multibox" or brand == "wetek" or platform == "dmamlogic"
+SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7")
+SystemInfo["AndroidMode"] = BoxInfo.getItem("RecoveryMode") and model == "multibox" or brand == "wetek"
 SystemInfo["grautec"] = fileCheck("/tmp/usbtft")
 SystemInfo["GraphicLCD"] = model in ("vuultimo", "xpeedlx3", "et10000", "hd2400", "sezammarvel", "atemionemesis", "mbultra", "beyonwizt4", "osmio4kplus")
 SystemInfo["LCDMiniTV"] = fileCheck("/proc/stb/lcd/mode")
 SystemInfo["LCDMiniTVPiP"] = BoxInfo.getItem("LCDMiniTV") and model not in ("gb800ueplus", "gbquad4k", "gbue4k")
-SystemInfo["DefaultDisplayBrightness"] = platform in ("dm4kgen", "dmamlogic") and 8 or 5
+SystemInfo["DefaultDisplayBrightness"] = platform == "dm4kgen" and 8 or 5
 SystemInfo["ConfigDisplay"] = BoxInfo.getItem("FrontpanelDisplay") and displaytype != "7segment" and "7seg" not in displaytype
-SystemInfo["DreamBoxAudio"] = platform in ("dm4kgen", "dmamlogic") or model in ("dm7080", "dm800")
+SystemInfo["DreamBoxAudio"] = platform == "dm4kgen" or model in ("dm7080", "dm800")
 SystemInfo["VFDDelay"] = model in ("sf4008", "beyonwizu4")
 SystemInfo["VFDRepeats"] = brand != "ixuss" and displaytype != "7segment" and "7seg" not in displaytype
 SystemInfo["VFDSymbol"] = BoxInfo.getItem("vfdsymbol")

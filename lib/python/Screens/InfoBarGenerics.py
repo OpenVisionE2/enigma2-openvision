@@ -4161,7 +4161,7 @@ class InfoBarHdmi2:
 					del self.session.pip
 
 	def HDMIInFull(self):
-		if platform in ("dm4kgen", "dmamlogic") or model in ("dm7080", "dm820"):
+		if platform == "dm4kgen" or model in ("dm7080", "dm820"):
 			print("[InfoBarGenerics] Read /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
 			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "r").read()
 			if check.startswith("off"):
@@ -4171,7 +4171,7 @@ class InfoBarHdmi2:
 				self.oldvideomode_50hz = open("/proc/stb/video/videomode_50hz", "r").read()
 				print("[InfoBarGenerics] Read /proc/stb/video/videomode_60hz")
 				self.oldvideomode_60hz = open("/proc/stb/video/videomode_60hz", "r").read()
-				if platform in ("dm4kgen", "dmamlogic"):
+				if platform == "dm4kgen":
 					print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
 					open("/proc/stb/video/videomode", "w").write("1080p")
 				else:
