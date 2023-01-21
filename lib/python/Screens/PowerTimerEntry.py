@@ -112,10 +112,14 @@ class TimerEntry(Screen, ConfigListScreen):
 			shutdownString = _("go to deep standby")
 		else:
 			shutdownString = _("shut down")
-		self.timerentry_timertype = ConfigSelection(choices=[("wakeup", _("wakeup")), ("wakeuptostandby", _("wakeup to standby")), ("autostandby", _("auto standby")), ("autodeepstandby", _("auto deepstandby")), ("standby", _("go to standby")), ("deepstandby", shutdownString), ("reboot", _("reboot system")), ("restart", _("restart GUI"))], default=timertype)
-		self.timerentry_afterevent = ConfigSelection(choices=[("nothing", _("do nothing")), ("wakeuptostandby", _("wakeup to standby")), ("standby", _("go to standby")), ("deepstandby", shutdownString), ("nothing", _("do nothing"))], default=afterevent)
+		self.listTimerType = [("wakeup", _("wakeup")), ("autostandby", _("auto standby")), ("autodeepstandby", _("auto deepstandby")), ("standby", _("go to standby")), ("deepstandby", shutdownString), ("reboot", _("reboot system")), ("restart", _("restart GUI"))]
+		self.listWakeupStandby = [("wakeuptostandby", _("wakeup to standby"))]
+		self.timerentry_timertype = ConfigSelection(choices=self.listTimerType, default=timertype)
+		self.timerentry_afterevent = ConfigSelection(choices=[("nothing", _("do nothing")), ("deepstandby", shutdownString), ("nothing", _("do nothing"))], default=afterevent)
+		if config.usage.startup_to_standby.value == "no": # Not activated in Sleep Timer, if it is activated this module execute this function.
+			self.timerentry_timertype = ConfigSelection(choices=self.listTimerType + self.listWakeupStandby, default=timertype)
+			self.timerentry_afterevent = ConfigSelection(choices=[("nothing", _("do nothing")), ("wakeuptostandby", _("wakeup to standby")), ("standby", _("go to standby")), ("deepstandby", shutdownString), ("nothing", _("do nothing"))], default=afterevent)
 		self.timerentry_type = ConfigSelection(choices=[("once", _("once")), ("repeated", _("repeated"))], default=type)
-
 		self.timerentry_repeated = ConfigSelection(default=repeated, choices=[("daily", _("daily")), ("weekly", _("weekly")), ("weekdays", _("Mon-Fri")), ("user", _("user defined"))])
 		self.timerentry_autosleepdelay = ConfigInteger(default=autosleepdelay, limits=(10, 300))
 		self.timerentry_autosleeprepeat = ConfigSelection(choices=[("once", _("once")), ("repeated", _("repeated"))], default=autosleeprepeat)

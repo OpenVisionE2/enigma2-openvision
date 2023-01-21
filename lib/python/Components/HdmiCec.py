@@ -1007,7 +1007,7 @@ class HdmiCec:
 		now = time()
 		recordings = NavigationInstance.instance.getRecordings()
 		rectimer = abs(NavigationInstance.instance.RecordTimer.getNextRecordingTime() - now) <= 360
-		powertimer = abs(NavigationInstance.instance.PowerTimer.getNextPowerManagerTimeOld() - now) <= 360 or NavigationInstance.instance.PowerTimer.isProcessing(exceptTimer=0)
+		powertimer = abs(NavigationInstance.instance.PowerTimer.getNextPowerTimeActive() - now) <= 360 or NavigationInstance.instance.PowerTimer.isProcessing(exceptTimer=0)
 		recording = "Active" if recordings else "Inactive"
 		if recordings or rectimer or powertimer:
 			self.CECwritedebug("[HdmiCec] go not into deepstandby... recording=%s, rectimer=%s, powertimer=%s" % (recording, rectimer, powertimer), True)
