@@ -5390,12 +5390,10 @@ self.instance.move(ePoint((screenSize[0] - width) // 2, (screenSize[1] - height)
 		<eLabel backgroundColor="OE_NewBg2" position="1215,0" size="705,1080" zPosition="-16"/>
 		<widget name="list" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" backgroundColor="OE_Background" position="26,145" size="1250,815" transparent="1" zPosition="3"/>
 		<ePixmap pixmap="OctEtFHD/buttons/key_help.png" position="20,1035" size="64,43" alphaTest="blend"/>
-		<widget source="key_text" conditional="key_text" render="Pixmap" pixmap="OctEtFHD/buttons/key_leftright.png" position="100,1035" size="64,43" backgroundColor="OE_NewBg2" alphaTest="blend"/>
-		<widget source="key_text" conditional="key_text" text="Move" render="FixedLabel" backgroundColor="OE_NewBg2" position="175,1040" size="250,35" font="RegularBold;26" zPosition="1"/>
-		<widget source="key_text" conditional="key_text" render="Pixmap" pixmap="OctEtFHD/buttons/key_text.png" position="425,1035" size="64,43" backgroundColor="OE_NewBg2" alphaTest="blend">
+		<widget source="key_prev_next" conditional="key_prev_next" render="Label" font="RegularBold;24" position="150,1042" size="640,30" backgroundColor="OE_NewBg2">
 			<convert type="ConditionalShowHide"/>
 		</widget>
-		<widget source="key_text" conditional="key_text" text="Reset" render="FixedLabel" backgroundColor="OE_NewBg2" position="500,1040" size="300,35" font="RegularBold;26" zPosition="1">
+		<widget source="key_text" conditional="key_text" render="Label" font="RegularBold;24" position="795,1042" size="450,30" backgroundColor="OE_NewBg2">
 			<convert type="ConditionalShowHide"/>
 		</widget>
 		<widget name="description" conditional="description" position="1290,110" size="620,165" font="RegularBold;27" horizontalAlignment="center" verticalAlignment="center" backgroundColor="OE_NewBg2" foregroundColor="blue_light" transparent="1" zPosition="2"/>

@@ -201,6 +201,7 @@ class ChoiceBoxSummary(ScreenSummary):
 
 class OrderedChoiceBox(ChoiceBox):
 	def __init__(self, session, text=None, list=None, keys=None, selection=0, order=None, skinName=None, windowTitle=None):
+		self["key_prev_next"] = StaticText(_("< PREV NEXT >  Move"))
 		if order:
 			self.initialList = list
 			if keys is None:
@@ -233,14 +234,15 @@ class OrderedChoiceBox(ChoiceBox):
 				"resetList": (self.setDefaultChoiceList, _("Reset list order to default"))
 			}, prio=0, description=_("Choice Box Order Actions"))
 			self["resetActions"].setEnabled(self.configType.value != "")
-			self["key_text"] = StaticText(_("TEXT") if self.configType.value != "" else "")
+			self["key_text"] = StaticText(_("TEXT   Reset") if self.configType.value != "" else "")
 			self["orderActions"] = HelpableActionMap(self, ["ChoiceBoxActions"], {
 				"moveItemUp": (self.additionalMoveUp, _("Move the current item up one line")),
 				"moveItemDown": (self.additionalMoveDown, _("Move the current item down one line"))
 			}, prio=0, description=_("Choice Box Order Actions"))
 
 	def setDefaultChoiceList(self):
-		self.session.openWithCallback(self.setDefaultChoiceListCallback, MessageBox, _("Reset list order to default?"), MessageBox.TYPE_YESNO)
+		if self.configType.value != "":
+			self.session.openWithCallback(self.setDefaultChoiceListCallback, MessageBox, _("Reset list order to default?"), MessageBox.TYPE_YESNO)
 
 	def setDefaultChoiceListCallback(self, answer):
 		if answer:
@@ -282,4 +284,4 @@ class OrderedChoiceBox(ChoiceBox):
 			self.configType.value = ",".join(x[0][0] for x in self.list)
 			self.configType.save()
 			self["resetActions"].setEnabled(True)
-			self["key_text"].setText(_("TEXT"))
+			self["key_text"].setText(_("TEXT   Reset"))
