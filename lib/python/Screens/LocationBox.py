@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Generic Screen to select a path/filename combination
 
-from os import sep, statvfs
+from os import sep, stat, statvfs
 from os.path import exists, isdir, join as pathjoin
 
 from enigma import eTimer
@@ -23,7 +23,15 @@ from Tools.NumericalTextInput import NumericalTextInput
 
 BOOKMARKS_INDENT = 3
 
-defaultInhibitDirs = ["/bin", "/boot", "/dev", "/etc", "/home", "/lib", "/picon", "/piconlcd", "/proc", "/run", "/sbin", "/share", "/sys", "/tmp", "/usr", "/var"]
+DEFAULT_INHIBIT_DIRECTORIES = ("/bin", "/boot", "/dev", "/etc", "/home", "/lib", "/picon", "/piconlcd", "/proc", "/run", "/sbin", "/share", "/sys", "/tmp", "/usr", "/var")
+defaultInhibitDirs = list(DEFAULT_INHIBIT_DIRECTORIES)
+DEFAULT_INHIBIT_DEVICES = []
+for dir in DEFAULT_INHIBIT_DIRECTORIES + ("/", "/media"):
+	if isdir(dir):
+		device = stat(dir).st_dev
+		if device not in DEFAULT_INHIBIT_DEVICES:
+			DEFAULT_INHIBIT_DEVICES.append(device)
+DEFAULT_INHIBIT_DEVICES = tuple(DEFAULT_INHIBIT_DEVICES)
 
 
 class LocationBox(Screen, NumericalTextInput, HelpableScreen):
@@ -467,7 +475,7 @@ class MovieLocationBox(LocationBox):
 			minFree=minFree,
 			autoAdd=config.movielist.add_bookmark.value,
 			editDir=True,
-			inhibitDirs=defaultInhibitDirs,
+			inhibitDirs=DEFAULT_INHIBIT_DIRECTORIES,
 			# inhibitMounts=None
 		)
 		self.skinName = "LocationBox"
@@ -486,7 +494,7 @@ class TimeshiftLocationBox(LocationBox):
 			minFree=1024,  # The same minFree requirement is hardcoded in servicedvb.cpp.
 			autoAdd=True,
 			editDir=True,
-			inhibitDirs=defaultInhibitDirs,
+			inhibitDirs=DEFAULT_INHIBIT_DIRECTORIES,
 			# inhibitMounts=None
 		)
 		self.skinName = "LocationBox"

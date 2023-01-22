@@ -3,19 +3,13 @@ from os import stat, statvfs
 from os.path import isdir, join as pathjoin
 
 from Components.config import config
-from Screens.LocationBox import defaultInhibitDirs, TimeshiftLocationBox
+from Screens.LocationBox import DEFAULT_INHIBIT_DEVICES, TimeshiftLocationBox
 from Screens.MessageBox import MessageBox
 from Screens.Setup import Setup
 
 
 class TimeshiftSettings(Setup):
 	def __init__(self, session):
-		self.inhibitDevs = []
-		for dir in defaultInhibitDirs + ["/", "/media"]:
-			if isdir(dir):
-				device = stat(dir).st_dev
-				if device not in self.inhibitDevs:
-					self.inhibitDevs.append(device)
 		self.buildChoices("TimeshiftPath", config.usage.timeshift_path, None)
 		Setup.__init__(self, session=session, setup="Timeshift")
 		self.greenText = self["key_green"].text
@@ -69,17 +63,11 @@ class TimeshiftSettings(Setup):
 
 	def pathStatus(self, path):
 		from Tools.Directories import fileAccess # hasHardLinks this gives false errors.
-		size = statvfs(config.usage.timeshift_path.value)
-		free = int((size.f_bfree * size.f_frsize) // (1024 * 1024))
-		if isdir(path) and not stat(path).st_dev in self.inhibitDevs and fileAccess(path, "w") and free <= 1000:
+		if not isdir(path):
 			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("'%s' %d MB little space available") % (path, free)
+			footnote = _("'%s' does not exist") % path
 			green = ""
-		elif not isdir(path):
-			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("Directory '%s' does not exist!") % path
-			green = ""
-		elif stat(path).st_dev in self.inhibitDevs:
+		elif stat(path).st_dev in DEFAULT_INHIBIT_DEVICES:
 			self.errorItem = self["config"].getCurrentIndex()
 			footnote = _("'%s'= Internal Flash. It is not a storage device") % path
 			green = ""
@@ -95,5 +83,13 @@ class TimeshiftSettings(Setup):
 			self.errorItem = -1
 			footnote = ""
 			green = self.greenText
+		if isdir(path):
+			size = statvfs(path)
+			free = int((size.f_bfree * size.f_frsize) // (1024 * 1024) // 1000)
+			if free:
+				if isdir(path) and not stat(path).st_dev in DEFAULT_INHIBIT_DEVICES and fileAccess(path, "w") and free <= 4:
+					self.errorItem = self["config"].getCurrentIndex()
+					footnote = _("'%s' Storage device capacity less to %d GB") % (path, free)
+					green = ""
 		self.setFootnote(footnote)
 		self["key_green"].text = green

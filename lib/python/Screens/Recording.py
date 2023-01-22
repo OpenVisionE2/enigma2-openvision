@@ -5,7 +5,7 @@ from os.path import isdir, join as pathjoin
 from Components.ActionMap import ActionMap
 from Components.config import config
 from Components.UsageConfig import preferredPath
-from Screens.LocationBox import defaultInhibitDirs, MovieLocationBox
+from Screens.LocationBox import DEFAULT_INHIBIT_DEVICES, MovieLocationBox
 from Screens.MessageBox import MessageBox
 from Screens.Setup import Setup
 
@@ -14,12 +14,6 @@ class RecordingSettings(Setup):
 	def __init__(self, session):
 		self.styles = [("<default>", _("<Default movie location>")), ("<current>", _("<Current movielist location>")), ("<timer>", _("<Last timer location>"))]
 		self.styleKeys = [x[0] for x in self.styles]
-		self.inhibitDevs = []
-		for dir in defaultInhibitDirs + ["/", "/media"]:
-			if isdir(dir):
-				device = stat(dir).st_dev
-				if device not in self.inhibitDevs:
-					self.inhibitDevs.append(device)
 		self.buildChoices("DefaultPath", config.usage.default_path, None)
 		self.buildChoices("TimerPath", config.usage.timer_path, None)
 		self.buildChoices("InstantPath", config.usage.instantrec_path, None)
@@ -108,7 +102,7 @@ class RecordingSettings(Setup):
 			self.errorItem = self["config"].getCurrentIndex()
 			footnote = _("Directory '%s' does not exist!") % path
 			green = ""
-		elif stat(path).st_dev in self.inhibitDevs:
+		elif stat(path).st_dev in DEFAULT_INHIBIT_DEVICES:
 			self.errorItem = self["config"].getCurrentIndex()
 			footnote = _("Flash directory '%s' not allowed!") % path
 			green = ""
