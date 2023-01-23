@@ -257,8 +257,11 @@ ASCIItranslit = {
 
 
 def legacyEncode(string):
+	from six import PY3
+	if isinstance(string, bytes):
+		string = string.decode("utf-8")
 	string2 = ""
-	for z, char in enumerate(string.decode("utf-8")):
+	for z, char in enumerate(string):
 		i = ord(char)
 		if i < 33:
 			string2 += "_"
@@ -266,7 +269,7 @@ def legacyEncode(string):
 			string2 += ASCIItranslit[i]
 		else:
 			try:
-				string2 += char.encode('ascii', 'strict')
+				string2 += char.encode('ascii', 'strict').decode("utf-8") if PY3 else char.encode('ascii', 'strict')
 			except:
 				string2 += "_"
 	return string2.upper()
