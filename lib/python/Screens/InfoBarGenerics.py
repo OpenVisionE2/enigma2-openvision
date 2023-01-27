@@ -40,7 +40,9 @@ from Tools.Notifications import AddNotificationWithCallback, AddPopup, current_n
 from keyids import KEYFLAGS, KEYIDS, KEYIDNAMES
 from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB
 from time import time, localtime, strftime
-from os.path import isfile, splitext
+from os.path import exists, isfile, join, splitext
+from os import listdir, remove
+from shutil import move
 from bisect import insort
 import itertools
 import datetime
@@ -2058,6 +2060,19 @@ class InfoBarTimeshift():
 				return
 		return 0
 
+	def getFileNameExtensionAP(self):
+		for extension in [x for x in listdir(config.usage.timeshift_path.value) if splitext(x)[1] == ".ap"]:
+			apfile = join(config.usage.timeshift_path.value, extension)
+			if exists(apfile) and "timeshift." in apfile:
+				for extension in sorted([x for x in listdir(config.usage.timeshift_path.value) if splitext(x)[1] == ".ts" and not splitext(x)[1] == ".ts.ap" and not splitext(x)[1] == ".ts.sc"], reverse=True):
+					tsfile = join(config.usage.timeshift_path.value, extension)
+					if exists(tsfile) and exists(apfile):
+						move(apfile, tsfile.replace(".ts", ".ts.ap"))
+						self.session.openWithCallback(self.startTimeshift, MessageBox, _("Previous saved timeshift has editing properties with plugin CutListEditor."), type=MessageBox.TYPE_INFO, timeout=10)
+			else:
+				return self.startTimeshift()
+		return self.startTimeshift()
+
 	def startTimeshift(self, pauseService=True):
 		print("[InfoBarGenerics] enable timeshift")
 		ts = self.getTimeshift()
@@ -2102,6 +2117,11 @@ class InfoBarTimeshift():
 				self.current_timeshift_filename = ts.getTimeshiftFilename()
 				self.new_timeshift_filename = self.generateNewTimeshiftFileName()
 				self.setLCDsymbolTimeshift()
+				self.getFileNameExtensionAP()
+				for extension in [x for x in listdir(config.usage.timeshift_path.value) if splitext(x)[1] == ".ap"]: # Remove old file extension .AP if not current event.
+					apfile = join(config.usage.timeshift_path.value, extension)
+					if exists(apfile) and "timeshift." in apfile:
+						remove(apfile)
 			else:
 				print("[InfoBarGenerics] timeshift failed")
 
