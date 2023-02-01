@@ -386,7 +386,7 @@ def parseCoordinate(value, parent, size=0, font=None, scale=(1, 1)):
 		if "h" in val:
 			val = val.replace("h", "*%s" % fonts[font][2])
 		if "f" in val:
-			val = val.replace("f", "*%s" % getSkinFactor())
+			val = val.replace("f", "%s" % getSkinFactor())
 		try:
 			result = int(val)  # For speed try a simple number first.
 		except ValueError:
@@ -406,7 +406,7 @@ def parseFont(value, scale=((1, 1), (1, 1))):
 			size = int(size)
 		except ValueError:
 			try:
-				val = size.replace("f", "*%s" % getSkinFactor())
+				val = size.replace("f", "%s" % getSkinFactor())
 				size = int(eval(val))
 			except Exception as err:
 				print("[Skin] Error (%s - %s): Font size in '%s', evaluated to '%s', can't be processed!" % (type(err).__name__, err, value, val))
