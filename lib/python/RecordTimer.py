@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from bisect import insort
 from os import fsync, makedirs, remove, rename, statvfs, sys
-from os.path import isfile, isdir, realpath
+from os.path import exists, isfile, isdir, realpath
 from sys import maxsize
 from threading import Lock
 from time import ctime, localtime, strftime, time
@@ -91,27 +91,35 @@ def findSafeRecordPath(dirname):
 
 
 def getRecordingStorageSize():
-	styles = ["<default>", "<current>", "<timer>"]
-	if config.usage.default_path.value:
+	flashsize = statvfs("/")
+	flash = int(flashsize.f_bfree * flashsize.f_frsize)
+	if exists(config.usage.default_path.value):
 		size = statvfs(config.usage.default_path.value)
 		storage = int(size.f_bfree * size.f_frsize)
-	if storage > 1:
-		return storage // (1024 * 1024) // 1000
-	if config.usage.timer_path.value not in styles:
+		if storage > flash:
+			return storage // (1024 * 1024) // 1000
+	if exists(config.usage.timer_path.value):
 		size = statvfs(config.usage.timer_path.value)
 		storage = int(size.f_bfree * size.f_frsize)
-		return storage // (1024 * 1024) // 1000 if storage > 1 else 0
-	if config.usage.instantrec_path.value not in styles:
+		if storage > flash:
+			return storage // (1024 * 1024) // 1000
+	if exists(config.usage.instantrec_path.value):
 		size = statvfs(config.usage.instantrec_path.value)
 		storage = int(size.f_bfree * size.f_frsize)
-		return storage // (1024 * 1024) // 1000 if storage > 1 else 0
+		if storage > flash:
+			return storage // (1024 * 1024) // 1000
+	return 0
 
 
 def getTimeshiftStorageSize():
-	if config.usage.timeshift_path.value:
+	flashsize = statvfs("/")
+	flash = int(flashsize.f_bfree * flashsize.f_frsize)
+	if exists(config.usage.timeshift_path.value):
 		size = statvfs(config.usage.timeshift_path.value)
 		storage = int(size.f_bfree * size.f_frsize)
-		return storage // (1024 * 1024) // 1000
+		if storage > flash:
+			return storage // (1024 * 1024) // 1000
+	return 0
 
 
 # This code is for use by hardware with a stb device file which, when

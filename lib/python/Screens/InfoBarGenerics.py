@@ -2080,7 +2080,7 @@ class InfoBarTimeshift():
 			if not pauseService and not int(config.usage.timeshift_start_delay.value):
 				self.session.open(MessageBox, _("Timeshift not possible!"), MessageBox.TYPE_ERROR, simple=True)
 			print("[InfoBarGenerics] no ts interface")
-			self.session.openWithCallback(self.closed, MessageBox, _("Timeshift not enough diskspace. Is path set?"), type=MessageBox.TYPE_ERROR, timeout=10)
+			self.session.openWithCallback(self.closed, MessageBox, _("Timeshift not enough diskspace. Is device mounted?"), type=MessageBox.TYPE_ERROR, timeout=10)
 			if pauseService:
 				return self.playpauseStreamService()
 			else:
