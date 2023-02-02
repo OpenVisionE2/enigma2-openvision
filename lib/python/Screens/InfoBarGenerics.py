@@ -42,7 +42,6 @@ from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInform
 from time import time, localtime, strftime
 from os.path import exists, isfile, join, splitext
 from os import listdir, remove
-from shutil import move
 from bisect import insort
 import itertools
 import datetime
@@ -2061,16 +2060,18 @@ class InfoBarTimeshift():
 		return 0
 
 	def getFileNameExtensionAP(self):
-		for extension in [x for x in listdir(config.usage.timeshift_path.value) if splitext(x)[1] == ".ap"]:
+		for extension in [x for x in listdir(config.usage.timeshift_path.value) if ".ap" in x]:
 			apfile = join(config.usage.timeshift_path.value, extension)
 			if exists(apfile) and "timeshift." in apfile:
-				for extension in sorted([x for x in listdir(config.usage.timeshift_path.value) if splitext(x)[1] == ".ts" and not splitext(x)[1] == ".ts.ap" and not splitext(x)[1] == ".ts.sc"], reverse=True):
+				for extension in sorted([x for x in listdir(config.usage.timeshift_path.value) if ".ts" in x and not ".ts.sc" in x], reverse=True):
 					tsfile = join(config.usage.timeshift_path.value, extension)
 					if exists(tsfile) and exists(apfile):
-						move(apfile, tsfile.replace(".ts", ".ts.ap"))
+						from shutil import copy2, move
+						copy2(apfile, tsfile + ".cuts") # timeshift file for editing with cuts plugin MovieCut.
+						move(apfile, tsfile + ".ap") # timeshift file needed to edit plugin CutListEditor.
 						self.session.openWithCallback(self.startTimeshift, MessageBox, _("Previous saved timeshift has editing properties with plugin CutListEditor."), type=MessageBox.TYPE_INFO, timeout=10)
 			else:
-				return self.startTimeshift()
+				return self.startTimeshift() # save AP tmp file with file name ts.
 		return self.startTimeshift()
 
 	def startTimeshift(self, pauseService=True):
@@ -2115,10 +2116,10 @@ class InfoBarTimeshift():
 				self.new_timeshift_filename = self.generateNewTimeshiftFileName()
 				self.setLCDsymbolTimeshift()
 				self.getFileNameExtensionAP()
-				for extension in [x for x in listdir(config.usage.timeshift_path.value) if splitext(x)[1] == ".ap"]: # Remove old file extension .AP if not current event.
-					apfile = join(config.usage.timeshift_path.value, extension)
-					if exists(apfile) and "timeshift." in apfile:
-						remove(apfile)
+				for file in [x for x in listdir(config.usage.timeshift_path.value) if "timeshift." in x and ".ap" in x]: # Remove old file extension .AP if not current event.
+					oldapfile = join(config.usage.timeshift_path.value, file)
+					if exists(oldapfile):
+						remove(oldapfile)
 			else:
 				print("[InfoBarGenerics] timeshift failed")
 
