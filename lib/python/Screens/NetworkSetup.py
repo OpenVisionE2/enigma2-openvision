@@ -23,10 +23,7 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_GUISKIN, fil
 from Tools.LoadPixmap import LoadPixmap
 from Plugins.Plugin import PluginDescriptor
 from enigma import eTimer, eConsoleAppContainer
-try:
-	import commands
-except:
-	import subprocess as commands
+import subprocess as commands
 from Components.Console import Console
 from Screens.Standby import TryQuitMainloop
 from random import Random
