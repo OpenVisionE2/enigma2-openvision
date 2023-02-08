@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Components.Task import PythonTask, Task, Job, job_manager as JobManager, Condition
+from Components.Task import PythonTask, Task, Job, job_manager as JobManager, ReturncodePostcondition
 from Tools.Directories import fileExists
 from enigma import eTimer
 from os import path
@@ -68,12 +68,12 @@ class DownloadProcessTask(Job):
 		DownloadTask(self, url, filename, **kwargs)
 
 
-class DownloaderPostcondition(Condition):
+class DownloaderPostcondition(ReturncodePostcondition):
 	def check(self, task):
 		return task.returncode == 0
 
 	def getErrorMessage(self, task):
-		return self.error_message
+		return ReturncodePostcondition.getErrorMessage(self, task)
 
 
 class DownloadTask(Task):
@@ -86,9 +86,8 @@ class DownloadTask(Task):
 		self.job = job
 		self.url = url
 		self.path = path
-		self.error_message = ""
-		self.last_recvbytes = 0
 		self.error_message = None
+		self.last_recvbytes = 0
 		self.download = None
 		self.aborted = False
 
@@ -121,11 +120,9 @@ class DownloadTask(Task):
 				self.name = _("Downloading") + ' ' + _("%d of %d Bytes") % (recvbytes, totalbytes)
 			self.last_recvbytes = recvbytes
 
-	def download_failed(self, failure_instance=None, error_message=""):
-		self.error_message = error_message
-		if error_message == "" and failure_instance is not None:
-			self.error_message = failure_instance.getErrorMessage()
-		Task.processFinished(self, 1)
+	def download_failed(self, failure_instance=None, error_message=None):
+		if failure_instance:
+			Task.processFinished(self, failure_instance)
 
 	def download_finished(self, string=""):
 		if self.aborted:

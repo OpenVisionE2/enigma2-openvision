@@ -84,7 +84,7 @@ class Job(object):
 			else:
 				print("[Task] keeps staying resident:", task)
 				return
-		if len(res):
+		if len(res) and self.callback:
 			print(">>> Error:", res)
 			self.status = self.FAILED
 			self.state_changed()
