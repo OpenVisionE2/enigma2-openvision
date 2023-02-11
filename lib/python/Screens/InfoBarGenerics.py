@@ -2806,32 +2806,26 @@ class InfoBarInstantRecord:
 		end = begin + 3600      # dummy
 		name = _("Instant record")
 		info = {}
-
 		self.getProgramInfoAndEvent(info, name)
 		serviceref = info["serviceref"]
 		event = info["event"]
-
 		if event is not None:
 			end = begin + self.currentEventTime() # time now + remaining event time: instant record with (stop after current event).
-		else:
-			message = _("No event info found, recording indefinitely.")
-			if not limitEvent and serviceref:
-				if serviceref.toString().startswith("1"):
-					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=5)
-				elif isPluginInstalled("ServiceApp"): # channels with IPTV reference.
-					if not config.plugins.serviceapp.servicemp3.replace.value:
-						AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=5)
-				else:
-					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=5)
+			if limitEvent:
+				message = _("Recording timer has been set")
+				AddNotification(MessageBox, message, type=MessageBox.TYPE_INFO, timeout=5)
 			else:
-				message = _("Recording time has been set.")
-				if serviceref.toString().startswith("1"):
-					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=10)
-				elif isPluginInstalled("ServiceApp"): # channels with IPTV reference.
-					if not config.plugins.serviceapp.servicemp3.replace.value:
-						AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=10)
+				message = _("Recording set to (24 hours)")
+				AddNotification(MessageBox, message, type=MessageBox.TYPE_INFO, timeout=5)
+		else:
+			service = self.session.nav.getCurrentlyPlayingServiceReference()
+			if service and service.toString().startswith("1:"):
+				if limitEvent:
+					message = _("Recording timer has been set")
+					AddNotification(MessageBox, message, type=MessageBox.TYPE_INFO, timeout=10)
 				else:
-					AddPopup("%s" % message, MessageBox.TYPE_INFO, timeout=10)
+					message = _("No event info found, recording set to (24 hours)")
+					AddNotification(MessageBox, message, type=MessageBox.TYPE_INFO, timeout=10)
 
 		if isinstance(serviceref, eServiceReference):
 			serviceref = ServiceReference(serviceref)
@@ -3009,18 +3003,15 @@ class InfoBarInstantRecord:
 			self.session.open(MessageBox, _("Recording path is \"%s\"") % pirr
 				+ "\n\n" + _("Storage device not available or not initialized."), MessageBox.TYPE_ERROR)
 			return
-
-		service = self.session.nav.getCurrentService()
-		event = service and service.info().getEvent(0)
-		if isStandardInfoBar(self) and event:
-			common = ((_("Add recording (stop after current event)"), "event"),
-				(_("Add recording (indefinitely)"), "indefinitely"),
-				(_("Add recording (enter recording duration)"), "manualduration"),
-				(_("Add recording (enter recording endtime)"), "manualendtime"),)
-		elif isStandardInfoBar(self):
-			common = ((_("Add recording (indefinitely)"), "indefinitely"),
-			(_("Add recording (enter recording duration)"), "manualduration"),
-			(_("Add recording (enter recording endtime)"), "manualendtime"),)
+		if isStandardInfoBar(self):
+			info = {}
+			self.getProgramInfoAndEvent(info, "")
+			event_entry = ((_("Add recording (stop after current event)"), "event"),)
+			common = ((_("Add recording set to (24 hours)"), "indefinitely"),
+					(_("Add recording (enter recording duration)"), "manualduration"),
+					(_("Add recording (enter recording endtime)"), "manualendtime"),)
+			if info["event"]:
+				common = event_entry + common
 		else:
 			common = ()
 		if self.isInstantRecordRunning():
