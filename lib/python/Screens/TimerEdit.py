@@ -52,16 +52,20 @@ class TimerEditList(Screen, ProtectedScreen):
 
 		self["description"] = Label("")
 
-		self["actions"] = ActionMap(["OkCancelActions", "NavigationActions", "ShortcutActions", "TimerEditActions"],
+		self["actions"] = ActionMap(["OkCancelActions", "NavigationActions", "DirectionActions", "ShortcutActions", "TimerEditActions"],
 			{
 				"ok": self.openEdit,
 				"cancel": self.leave,
 				"green": self.addCurrentTimer,
 				"log": self.showLog,
-				"left": self.left,
-				"right": self.right,
-				"up": self.up,
-				"down": self.down
+				"left": self.pageUp,
+				"right": self.pageDown,
+				"up": self.moveUp,
+				"down": self.moveDown,
+				"upUp": self.doNothing,
+				"downUp": self.doNothing,
+				"leftUp": self.pageUp,
+				"rightUp": self.pageDown
 			}, -1)
 		self.setTitle(_("Timer overview"))
 
@@ -72,21 +76,24 @@ class TimerEditList(Screen, ProtectedScreen):
 	def isProtected(self):
 		return config.ParentalControl.setuppinactive.value and (not config.ParentalControl.config_sections.main_menu.value or hasattr(self.session, 'infobar') and self.session.infobar is None) and config.ParentalControl.config_sections.timer_menu.value and config.ParentalControl.servicepin[0].value
 
-	def up(self):
+	def moveUp(self):
 		self["timerlist"].instance.moveSelection(self["timerlist"].instance.moveUp)
 		self.updateState()
 
-	def down(self):
+	def moveDown(self):
 		self["timerlist"].instance.moveSelection(self["timerlist"].instance.moveDown)
 		self.updateState()
 
-	def left(self):
+	def pageUp(self):
 		self["timerlist"].instance.moveSelection(self["timerlist"].instance.pageUp)
 		self.updateState()
 
-	def right(self):
+	def pageDown(self):
 		self["timerlist"].instance.moveSelection(self["timerlist"].instance.pageDown)
 		self.updateState()
+
+	def doNothing(self):
+		pass
 
 	def toggleDisabledState(self):
 		cur = self["timerlist"].getCurrent()
@@ -428,8 +435,8 @@ class TimerSanityConflict(Screen):
 				"ok": self.editTimer,
 				"yellow": self.toggleTimer,
 				"blue": self.ignoreConflict,
-				"up": self.up,
-				"down": self.down,
+				"up": self.moveUp,
+				"down": self.moveDown,
 				"log": self.showLog,
 				"menu": self.openExtendedSetup
 			}, -1)
@@ -548,11 +555,11 @@ class TimerSanityConflict(Screen):
 		if menu:
 			self.session.openWithCallback(showAction, ChoiceBox, title=_("Select action"), list=menu)
 
-	def up(self):
+	def moveUp(self):
 		self["timerlist"].instance.moveSelection(self["timerlist"].instance.moveUp)
 		self.updateState()
 
-	def down(self):
+	def moveDown(self):
 		self["timerlist"].instance.moveSelection(self["timerlist"].instance.moveDown)
 		self.updateState()
 

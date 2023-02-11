@@ -64,8 +64,8 @@ class SelectImage(Screen):
 			"leftUp": self.doNothing,
 			"upRepeated": self.keyUp,
 			"downRepeated": self.keyDown,
-			"leftRepeated": self.keyLeft,
-			"rightRepeated": self.keyRight,
+			"leftRepeated": self.keyUp,
+			"rightRepeated": self.keyDown,
 			"menu": boundFunction(self.close, True),
 		}, -1)
 
@@ -444,8 +444,12 @@ class MultiBootSelection(SelectImage):
 			"right": self.keyRight,
 			"upRepeated": self.keyUp,
 			"downRepeated": self.keyDown,
-			"leftRepeated": self.keyLeft,
-			"rightRepeated": self.keyRight,
+			"leftRepeated": self.keyUp,
+			"rightRepeated": self.keyDown,
+			"upUp": self.doNothing,
+			"downUp": self.doNothing,
+			"rightUp": self.doNothing,
+			"leftUp": self.doNothing,
 			"menu": boundFunction(self.cancel, True),
 		}, -1)
 

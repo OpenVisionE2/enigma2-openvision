@@ -2017,6 +2017,7 @@ class ChannelSelection(ChannelSelectionBase, ChannelSelectionEdit, ChannelSelect
 		self["ChannelSelectEPGActions"] = ActionMap(["ChannelSelectEPGActions"],
 			{
 				"showEPGList": self.showEPGList,
+				"info": self.showEPGList
 			})
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
