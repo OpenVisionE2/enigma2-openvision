@@ -598,23 +598,20 @@
 		<widget alphaTest="blend" position="135,10" render="Picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
-		<widget source="session.CurrentService" render="ChannelNumber" backgroundColor="OE_NewBg" foregroundColor="OE_Foreground" font="RegularBold;38" verticalAlignment="center" horizontalAlignment="center" position="25,200" size="440,48" transparent="1" zPosition="1"/>
-		<widget source="session.CurrentService" render="Label" horizontalAlignment="center" verticalAlignment="center" position="25,250" size="440,45" font="RegularBold;30" noWrap="1" backgroundColor="OE_NewBg" transparent="1">
-			<convert type="ServiceName">Name</convert>
-		</widget>
-		<widget source="session.CurrentService" render="Label" font="RegularBold;28" foregroundColor="yellow" backgroundColor="OE_NewBg" noWrap="1" position="25,300" size="440,45" horizontalAlignment="center" verticalAlignment="center" zPosition="4" transparent="1">
-			<convert type="ServiceName">Provider</convert>
-		</widget>
-		<widget source="session.CurrentService" render="Label" position="25,350" size="440,45" font="RegularBold;28" backgroundColor="OE_NewBg" horizontalAlignment="center" verticalAlignment="center" transparent="1" foregroundColor="blue_light">
-			<convert type="Audio">AudioCodec</convert>
-		</widget>
-		<widget source="session.CurrentService" render="Label" backgroundColor="OE_NewBg" position="25,400" size="440,25" horizontalAlignment="center" verticalAlignment="center" zPosition="6" font="RegularBold;22" transparent="1" >
-			<convert type="PliExtraInfo">CryptoBar</convert>
-		</widget>
-		<widget source="session.CurrentService" render="Label" position="25,415" size="440,90" horizontalAlignment="center" verticalAlignment="center" font="RegularBold;22" zPosition="4" transparent="1" foregroundColor="OE_Foreground" backgroundColor="OE_NewBg" noWrap="1">
+		<widget source="session.CurrentService" render="Label" position="25,170" size="440,90" horizontalAlignment="center" verticalAlignment="center" font="RegularBold;22" zPosition="4" transparent="1" foregroundColor="OE_Foreground" backgroundColor="OE_NewBg" noWrap="1">
 			<convert type="ServiceName">Satellite</convert>
 		</widget>
-		<widget source="session.CurrentService" render="Label" font="RegularBold;21" backgroundColor="OE_NewBg" position="25,535" size="440,90" verticalAlignment="center" horizontalAlignment="center" transparent="1" zPosition="1">
+		<widget source="session.CurrentService" render="ChannelNumber" backgroundColor="OE_NewBg" foregroundColor="OE_Foreground" font="RegularBold;38" verticalAlignment="center" horizontalAlignment="center" position="25,280" size="440,48" transparent="1" zPosition="1"/>
+		<widget source="session.CurrentService" render="Label" font="RegularBold;28" foregroundColor="yellow" backgroundColor="OE_NewBg" noWrap="1" position="25,330" size="440,45" horizontalAlignment="center" verticalAlignment="center" zPosition="4" transparent="1">
+			<convert type="ServiceName">Provider</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="25,380" size="440,45" font="RegularBold;28" backgroundColor="OE_NewBg" horizontalAlignment="center" verticalAlignment="center" transparent="1" foregroundColor="blue_light">
+			<convert type="Audio">AudioCodec</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" backgroundColor="OE_NewBg" position="25,430" size="440,25" horizontalAlignment="center" verticalAlignment="center" zPosition="6" font="RegularBold;22" transparent="1" >
+			<convert type="PliExtraInfo">CryptoBar</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" font="RegularBold;21" backgroundColor="OE_NewBg" position="25,455" size="440,90" verticalAlignment="center" horizontalAlignment="center" transparent="1" zPosition="1">
 			<convert type="PliExtraInfo">TransponderInfo</convert>
 		</widget>
 		<widget source="session.CurrentService" render="Pixmap" pixmap="OctEtFHD/my_icons/logo_iptv.png" alphaTest="blend" position="110,958" zPosition="20" size="250,90" transparent="1">
@@ -730,8 +727,8 @@
 		<!-- CryptoInfo -->
 		<widget source="session.CurrentService" render="PicCript" path="OctEtFHD/cript" position="470,965" size="98,31" alphaTest="blend" zPosition="3"/>
 		<panel name="Clock"/>
-		<!--widget source="session.CurrentService" render="PicEmu2" path="OctEtFHD/emu" position="540,965" size="98,31" transparent="1" alphaTest="blend" zPosition="3"/> -->
-		<widget source="session.CurrentService" render="Label" font="RegularBold;21" position="540,965" size="565,35" zPosition="50" backgroundColor="OE_ListBackground" transparent="1" noWrap="1" foregroundColor="white">
+		<widget source="session.CurrentService" render="PicEmu2" path="OctEtFHD/emu" position="540,965" size="98,31" transparent="1" alphaTest="blend" zPosition="3"/>
+		<widget source="session.CurrentService" render="Label" font="RegularBold;21" position="660,965" size="450,35" zPosition="50" backgroundColor="OE_ListBackground" transparent="1" noWrap="1" foregroundColor="white">
 			<convert type="CaidInfo2"/>
 		</widget>
 		 <!-- MSNWeather -->
@@ -4909,10 +4906,18 @@
 	</screen>
 		<!--  NAME KEYS FOR ACTIONS BUTTONS SECONDINFOBAR-->
 	<screen name="SecondInfobarButtons">
-		<ePixmap objectTypes="key_yellow,Button,Label" alphaTest="blend" pixmap="OctEtFHD/buttons/key_yellow.png" position="480,1010" size="40,40"/>
-		<ePixmap objectTypes="key_blue,Button,Label" alphaTest="blend" pixmap="OctEtFHD/buttons/key_blue.png" position="920,1010" size="40,40"/>
-		<widget objectTypes="key_yellow,Label,Button" name="key_yellow" font="RegularBold;24" backgroundColor="OE_Background" position="525,1000" size="400,60" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
-		<widget objectTypes="key_blue,Label,Button" name="key_blue" font="RegularBold;24" backgroundColor="OE_Background" position="965,1000" size="400,60" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
+		<widget alphaTest="blend" pixmap="OctEtFHD/buttons/key_green.png" position="480,1010" render="Pixmap" size="40,40" source="session.CurrentService" zPosition="2">
+			<convert type="ServiceInfo">SubservicesAvailable</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<ePixmap objectTypes="key_yellow,Button,Label" alphaTest="blend" pixmap="OctEtFHD/buttons/key_yellow.png" position="825,1010" size="40,40"/>
+		<ePixmap objectTypes="key_blue,Button,Label" alphaTest="blend" pixmap="OctEtFHD/buttons/key_blue.png" position="1335,1010" size="40,40"/>
+		<widget source="session.CurrentService" render="FixedLabel" text="Subservices" position="525,1015" zPosition="4" size="295,25" font="RegularBold;24" backgroundColor="OE_Background" transparent="1">
+			<convert type="ServiceInfo">SubservicesAvailable</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget objectTypes="key_yellow,Label,Button" name="key_yellow" font="RegularBold;24" backgroundColor="OE_Background" position="870,1000" size="500,60" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
+		<widget objectTypes="key_blue,Label,Button" name="key_blue" font="RegularBold;24" backgroundColor="OE_Background" position="1380,1000" size="300,60" horizontalAlignment="left" verticalAlignment="center" transparent="1" zPosition="1"/>
 	</screen>
 		<!--  SOURCES AND NAMES KEYS ALL WITH CONDITION RED GREEN YELLOW BLUE SCREENS INFORMATION-->
 	<screen name="ButtonsInformation">
