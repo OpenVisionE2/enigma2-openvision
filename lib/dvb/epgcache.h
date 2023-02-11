@@ -210,6 +210,9 @@ public:
 	RESULT lookupEventTime(const eServiceReference &service, time_t, Event* &, int direction=0);
 	RESULT getNextTimeEntry(Event *&);
 #endif
+	/* Used by servicedvbrecord.cpp, timeshift, etc. to write the EIT file */
+	RESULT saveEventToFile(const char* filename, const eServiceReference &service, int eit_event_id, time_t begTime, time_t endTime);
+
 	enum {
 		SIMILAR_BROADCASTINGS_SEARCH,
 		EXAKT_TITLE_SEARCH,
@@ -229,9 +232,6 @@ public:
 	};
 	PyObject *lookupEvent(SWIG_PYOBJECT(ePyObject) list, SWIG_PYOBJECT(ePyObject) convertFunc=(PyObject*)0);
 	PyObject *search(SWIG_PYOBJECT(ePyObject));
-
-	/* Used by servicedvbrecord.cpp, timeshift, etc. to write the EIT file */
-	RESULT saveEventToFile(const char* filename, const eServiceReference &service, int eit_event_id, time_t begTime, time_t endTime);
 
 	// eServiceEvent are parsed epg events.. it's safe to use them after cache unlock
 	// for use from python ( members: m_start_time, m_duration, m_short_description, m_extended_description )
