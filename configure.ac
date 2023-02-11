@@ -796,6 +796,7 @@ data/skin_default/epg/Makefile
 data/skin_default/LCDIcons/Makefile
 data/skin_fallback_1080/Makefile
 data/skin_fallback_1080/buttons/Makefile
+data/skin_fallback_1080/epg/Makefile
 data/skin_fallback_1080/icons/Makefile
 include/Makefile
 lib/Makefile

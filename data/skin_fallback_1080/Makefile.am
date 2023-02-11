@@ -1,4 +1,4 @@
-SUBDIRS = buttons icons
+SUBDIRS = buttons epg icons
 
 installdir = $(pkgdatadir)/skin_fallback_1080
 
