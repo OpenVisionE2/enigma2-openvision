@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from os import stat
+from os import stat, statvfs
 from os.path import isdir, join as pathjoin
 
 from Components.ActionMap import ActionMap
@@ -100,19 +100,26 @@ class RecordingSettings(Setup):
 			green = self.greenText
 		elif not isdir(path):
 			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("Directory '%s' does not exist!") % path
+			footnote = _("'%s' does not exist. Press 'OK' to change path.") % path
 			green = ""
 		elif stat(path).st_dev in DEFAULT_INHIBIT_DEVICES:
 			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("Flash directory '%s' not allowed!") % path
+			footnote = _("'%s' is Internal Flash. It is not a storage device. Press 'OK' to change path.") % path
 			green = ""
 		elif not fileAccess(path, "w"):
 			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("Directory '%s' not writable!") % path
+			footnote = _("'%s' not writeable. Press 'OK' to change path.") % path
 			green = ""
 		else:
 			self.errorItem = -1
 			footnote = ""
 			green = self.greenText
+		if isdir(path):
+			size = statvfs(path)
+			storage = int((size.f_bfree * size.f_frsize) // (1024 * 1024) // 1000)
+			if isdir(path) and not stat(path).st_dev in DEFAULT_INHIBIT_DEVICES and fileAccess(path, "w") and storage <= 1:
+				self.errorItem = self["config"].getCurrentIndex()
+				footnote = _("'%s' Storage device free size %d GB. Press 'OK' to change path.") % (path, storage)
+				green = ""
 		self.setFootnote(footnote)
 		self["key_green"].text = green

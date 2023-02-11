@@ -48,20 +48,22 @@ def getFolderSize(path):
 		return (st.st_size, st.st_blocks * 512)
 	total_bytes = 0
 	have = []
-	for dirpath, dirnames, filenames in walk(path):
-		total_bytes += lstat(dirpath).st_blocks * 512
-		for f in filenames:
-			fp = pathjoin(dirpath, f)
-			if islink(fp):
-				continue
-			st = lstat(fp)
-			if st.st_ino in have:
-				continue
-			have.append(st.st_ino)
-			total_bytes += st.st_blocks * 512
-		for d in dirnames:
-			dp = pathjoin(dirpath, d)
-	return total_bytes
+	flash = ["/"]
+	if path not in flash:
+		for dirpath, dirnames, filenames in walk(path):
+			total_bytes += lstat(dirpath).st_blocks * 512
+			for f in filenames:
+				fp = pathjoin(dirpath, f)
+				if islink(fp):
+					continue
+				st = lstat(fp)
+				if st.st_ino in have:
+					continue  # skip hardlinks which were already counted
+				have.append(st.st_ino)
+				total_bytes += st.st_blocks * 512
+			for d in dirnames:
+				dp = pathjoin(dirpath, d)
+		return total_bytes
 
 
 class Harddisk:

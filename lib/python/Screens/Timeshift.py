@@ -65,15 +65,15 @@ class TimeshiftSettings(Setup):
 		from Tools.Directories import fileAccess # hasHardLinks this gives false errors.
 		if not isdir(path):
 			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("'%s' does not exist") % path
+			footnote = _("'%s' does not exist. Press 'OK' to change path.") % path
 			green = ""
 		elif stat(path).st_dev in DEFAULT_INHIBIT_DEVICES:
 			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("'%s'= Internal Flash. It is not a storage device") % path
+			footnote = _("'%s' is Internal Flash. It is not a storage device. Press 'OK' to change path.") % path
 			green = ""
 		elif not fileAccess(path, "w"):
 			self.errorItem = self["config"].getCurrentIndex()
-			footnote = _("Directory '%s' not writeable!") % path
+			footnote = _("'%s' not writeable. Press 'OK' to change path.") % path
 			green = ""
 		#elif not hasHardLinks(path):
 			#self.errorItem = self["config"].getCurrentIndex()
@@ -85,11 +85,11 @@ class TimeshiftSettings(Setup):
 			green = self.greenText
 		if isdir(path):
 			size = statvfs(path)
-			free = int((size.f_bfree * size.f_frsize) // (1024 * 1024) // 1000)
-			if free:
-				if isdir(path) and not stat(path).st_dev in DEFAULT_INHIBIT_DEVICES and fileAccess(path, "w") and free <= 4:
+			storage = int((size.f_bfree * size.f_frsize) // (1024 * 1024) // 1000)
+			if storage:
+				if isdir(path) and not stat(path).st_dev in DEFAULT_INHIBIT_DEVICES and fileAccess(path, "w") and storage <= 1:
 					self.errorItem = self["config"].getCurrentIndex()
-					footnote = _("'%s' Storage device capacity less to %d GB") % (path, free)
+					footnote = _("'%s' Storage device free size %d GB. Press 'OK' to change path.") % (path, storage)
 					green = ""
 		self.setFootnote(footnote)
 		self["key_green"].text = green
