@@ -43,7 +43,7 @@ from Plugins.Plugin import PluginDescriptor
 from Components.PluginComponent import plugins
 from Screens.ChoiceBox import ChoiceBox
 from Screens.EventView import EventViewEPGSelect
-import os
+from os import listdir, remove, rename
 import unicodedata
 from time import time
 
@@ -117,7 +117,7 @@ def append_when_current_valid(current, menu, args, level=0, key="dummy"):
 
 
 def removed_userbouquets_available():
-	for file in os.listdir("/etc/enigma2/"):
+	for file in listdir("/etc/enigma2/"):
 		if file.startswith("userbouquet") and file.endswith(".del"):
 			return True
 	return False
@@ -413,19 +413,19 @@ class ChannelContextMenu(Screen):
 
 	def purgeDeletedBouquetsCallback(self, answer):
 		if answer:
-			for file in os.listdir("/etc/enigma2/"):
+			for file in listdir("/etc/enigma2/"):
 				if file.startswith("userbouquet") and file.endswith(".del"):
 					file = "/etc/enigma2/" + file
 					print("[ChannelSelection] permantly remove file ", file)
-					os.remove(file)
+					remove(file)
 			self.close()
 
 	def restoreDeletedBouquets(self):
-		for file in os.listdir("/etc/enigma2/"):
+		for file in listdir("/etc/enigma2/"):
 			if file.startswith("userbouquet") and file.endswith(".del"):
 				file = "/etc/enigma2/" + file
 				print("[ChannelSelection] restore file ", file[:-4])
-				os.rename(file, file[:-4])
+				rename(file, file[:-4])
 		eDVBDBInstance = eDVBDB.getInstance()
 		eDVBDBInstance.setLoadUnlinkedUserbouquets(True)
 		eDVBDBInstance.reloadBouquets()

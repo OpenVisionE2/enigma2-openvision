@@ -2,7 +2,7 @@
 from enigma import eTimer
 from Screens.Screen import Screen
 from Components.ActionMap import ActionMap, NumberActionMap
-from Components.Pixmap import Pixmap, MultiPixmap
+from Components.Pixmap import MultiPixmap
 from Components.Label import Label
 from Components.Sources.StaticText import StaticText
 from Components.Sources.List import List

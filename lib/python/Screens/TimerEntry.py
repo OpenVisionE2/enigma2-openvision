@@ -13,7 +13,6 @@ from Components.ConfigList import ConfigListScreen
 from Components.Label import Label
 from Components.MenuList import MenuList
 from Components.NimManager import nimmanager
-from Components.Pixmap import Pixmap
 from Components.SystemInfo import BoxInfo
 from Components.UsageConfig import defaultMoviePath
 from Components.Sources.StaticText import StaticText

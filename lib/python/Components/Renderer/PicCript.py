@@ -3,7 +3,6 @@ from os.path import isfile, join as pathjoin
 
 from enigma import ePixmap, iServiceInformation
 
-from Components.Pixmap import Pixmap
 from Components.Renderer.Renderer import Renderer
 from Tools.Directories import SCOPE_GUISKIN, fileReadLines, resolveFilename
 
