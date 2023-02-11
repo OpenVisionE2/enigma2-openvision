@@ -899,7 +899,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 			self.skinName = "GraphMultiEPGList"
 		else:
 			self["key_yellow"] = Button(_("Mode PiP"))
-		self["key_blue"] = Button(_("Add autotimer\nPrime time (Press long)")) if isPluginInstalled("AutoTimer") else Button(_("Prime time (Press long)"))
+		self["key_blue"] = Button(_("Add autotimer\nPrime time (Press long)")) if isPluginInstalled("AutoTimer") else Button(_("AutoTimer is not installed\nPrime time (Press long)"))
 
 		self.key_green_choice = self.EMPTY
 		self.key_red_choice = self.EMPTY
@@ -978,8 +978,26 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		self.onLayoutFinish.append(self.onCreate)
 		self.previousref = self.session.nav.getCurrentlyPlayingServiceOrGroup()
 		self.fallbackTimer = FallbackTimerList(self, self.onCreate)
-		self.isAutoTimer = _("You are ready to add an event to automatic timer.\nIf there are no conflicts, once added you must enter menu:\n\nTimers > AutoTimers and search the event with green button.")
-		self.isNotAutoTimer = _("The AutoTimer plugin is not installed.")
+		self.isAutoTimer = _("You are ready to add this event to automatic timer.\nIf there are no conflicts, once added you must enter menu:\n\nTimers > AutoTimers and search the event with green button.")
+
+	def doInstallAutoTimer(self, val):
+		from Components.Console import Console
+		self.Console = Console()
+		self.message = self.session.open(MessageBox, _("Please wait..."), MessageBox.TYPE_INFO, enable_input=False)
+		self.message.setTitle(_("Installing AutoTimer"))
+		if val:
+			self.Console.ePopen("opkg update && opkg install enigma2-plugin-extensions-autotimer", self.autoTimerInstall)
+		else:
+			self.message.close()
+
+	def autoTimerInstall(self, str, retval, extra_args):
+		from os.path import isfile
+		if not isfile("/var/lib/opkg/info/enigma2-plugin-extensions-autotimer.control"):
+			self.session.open(MessageBox, _("Feed not available. The AutoTimer plugin was not installed."), MessageBox.TYPE_ERROR, timeout=10)
+			self.message.close()
+		else:
+			self.session.open(MessageBox, _("The AutoTimer plugin is installed."), MessageBox.TYPE_INFO, timeout=10)
+			self.message.close()
 
 	def moveUp(self):
 		self.showhideWindow(True)
@@ -1092,13 +1110,17 @@ class GraphMultiEPG(Screen, HelpableScreen):
 	def addAutoTimer(self):
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimerEditor import addAutotimerFromEvent
+			from os.path import isfile
 			event, service = self["list"].getCurrent()[:2]
 			if not event:
 				return
-			addAutotimerFromEvent(self.session, evt=event, service=service)
-			self.session.open(MessageBox, self.isAutoTimer, type=MessageBox.TYPE_INFO, timeout=10)
+			if isfile("/var/lib/opkg/info/enigma2-plugin-extensions-autotimer.control"):
+				addAutotimerFromEvent(self.session, evt=event, service=service)
+				self.session.open(MessageBox, self.isAutoTimer, type=MessageBox.TYPE_INFO, timeout=10)
+			else:
+				self.session.openWithCallback(self.doInstallAutoTimer, MessageBox, _('The AutoTimer plugin is not installed!\nDo you want to install it?'), MessageBox.TYPE_YESNO)
 		except ImportError:
-			self.session.open(MessageBox, self.isNotAutoTimer, type=MessageBox.TYPE_ERROR, timeout=10)
+			self.session.openWithCallback(self.doInstallAutoTimer, MessageBox, _('The AutoTimer plugin is not installed!\nDo you want to install it?'), MessageBox.TYPE_YESNO)
 
 	def enterDateTime(self):
 		self.showhideWindow(True)
@@ -1117,14 +1139,14 @@ class GraphMultiEPG(Screen, HelpableScreen):
 				l.fillMultiEPG(None, self.ask_time)
 				self.moveTimeLines(True)
 				self.time_mode = self.TIME_CHANGE
-				self["key_blue"].setText(_("Add autotimer\nNow (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("Now (Press long)"))
+				self["key_blue"].setText(_("Add autotimer\nNow (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("AutoTimer is not installed\nNow (Press long)"))
 
 	def setNewTime(self, type=''):
 		if type:
 			date = time() - config.epg.histminutes.getValue() * 60
 			if type == "now_time":
 				self.time_mode = self.TIME_NOW
-				self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("Prime time (Press long)"))
+				self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("AutoTimer is not installed\nPrime time (Press long)"))
 			elif type == "prime_time":
 				now = [x for x in localtime(date)]
 				prime = config.misc.graph_mepg.prime_time.value
@@ -1132,7 +1154,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 				if now[3] > prime[0] or (now[3] == prime[0] and now[4] > prime[1]):
 					date = date + 60 * 60 * 24
 				self.time_mode = self.TIME_PRIME
-				self["key_blue"].setText(_("Add autotimer\nNow (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("Now (Press long)"))
+				self["key_blue"].setText(_("Add autotimer\nNow (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("AutoTimer is not installed\nNow (Press long)"))
 			l = self["list"]
 			self.ask_time = date - date % int(config.misc.graph_mepg.roundTo.getValue())
 			l.resetOffset()
@@ -1175,7 +1197,7 @@ class GraphMultiEPG(Screen, HelpableScreen):
 		l.fillMultiEPG(None, self.ask_time)
 		self.moveTimeLines(True)
 		self.time_mode = self.TIME_NOW
-		self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("Prime time (Press long)"))
+		self["key_blue"].setText(_("Add autotimer\nPrime time (Press long)")) if isPluginInstalled("AutoTimer") else self["key_blue"].setText(_("AutoTimer is not installed\nPrime time (Press long)"))
 
 	def closeScreen(self):
 		self.zapFunc(None, zapback=True)
