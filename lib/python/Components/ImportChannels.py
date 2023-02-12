@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import threading
-import os
+from os import listdir, mkdir, remove, walk
+from os.path import basename, dirname, exists, join
 import re
 import shutil
 import tempfile
@@ -55,27 +56,23 @@ class ImportChannels():
 		try:
 			result = urlopen(request, timeout=timeout)
 		except URLError as err:
-			print("[ImportChannels] %s" % err)
 			if "[Errno -3]" in str(err.reason):
-				try:
-					print("[ImportChannels] Network is not up yet, delay 5 seconds")
-					# network not up yet
-					sleep(5)
-					return self.getUrl(url, timeout)
-				except URLError as err:
-					print("[ImportChannels] %s" % err)
-				return result
-
-	def getTerrestrialUrl(self):
-		url = config.usage.remote_fallback_dvb_t.value
-		return url[:url.rfind(":")] if url else self.url
+				print("[ImportChannels] Network is not up yet, delay 5 seconds")
+				# network not up yet
+				sleep(5)
+				return self.getUrl(url, timeout)
+			print("[ImportChannels]", err)
+			raise (err)
+		return result
 
 	def getFallbackSettings(self):
-		if not URLError:  # currently disabled, we get syntax errors when we try to load settings from the server.
-			return (str(self.getUrl("%s/web/settings" % self.getTerrestrialUrl())))
+		try:
+			return self.getUrl(self.url + "/api/settings")
+		except HTTPError as err:
+			self.ImportChannelsDone(False, _("%s") % err)
 
 	def getFallbackSettingsValue(self, settings, e2settingname):
-		if settings:
+		if isinstance(settings, bytes):
 			root = et.fromstring(settings)
 			for e2setting in root:
 				if e2settingname in e2setting[0].text:
@@ -86,9 +83,9 @@ class ImportChannels():
 		if settings:
 			description = ""
 			descr = self.getFallbackSettingsValue(settings, ".terrestrial")
-			if "Europe" in descr:
+			if descr and "Europe" in descr:
 				description = "fallback DVB-T/T2 Europe"
-			if "Australia" in descr:
+			if descr and "Australia" in descr:
 				description = "fallback DVB-T/T2 Australia"
 			config.usage.remote_fallback_dvbt_region.value = description
 
@@ -144,10 +141,10 @@ class ImportChannels():
 
 	def removeFiles(self, targetdir, target):
 		targetLen = len(target)
-		for root, dirs, files in os.walk(targetdir):
+		for root, dirs, files in walk(targetdir):
 			for name in files:
 				if target in name[:targetLen]:
-					os.remove(os.path.join(root, name))
+					remove(join(root, name))
 
 	def checkEPGCallback(self):
 		try:
@@ -191,7 +188,7 @@ class ImportChannels():
 		print("[ImportChannels] importEPGCallback '%s%s' downloaded successfully from server." % (self.remoteEPGpath, self.remoteEPGfile))
 		print("[ImportChannels] importEPGCallback Removing current EPG data...")
 		try:
-			os.remove(config.misc.epgcache_filename.value)
+			remove(config.misc.epgcache_filename.value)
 		except OSError:
 			pass
 		shutil.move(self.DIR_TMP + "epg.dat", config.misc.epgcache_filename.value)
@@ -210,25 +207,26 @@ class ImportChannels():
 			config.clientmode_notifications_ok.value = False
 			print("[ImportChannels] Starting to load epg.dat files and channels from server box")
 			try:
-				self.getUrl("%s/web/saveepg" % self.url, timeout=5)
+				urlopen(self.url + "/web/saveepg")
 			except Exception as err:
 				print("[ImportChannels] %s" % err)
-				return self.ImportChannelsDone(False, _("Server not available")) if config.usage.remote_fallback_nok.value else None
+				self.ImportChannelsDone(False, _("Server not available")) if config.usage.remote_fallback_nok.value else None
+				return AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Set new value to \"Fallback remote receiver\" change URL %s") % self.url, type=MessageBox.TYPE_ERROR, timeout=10)
 			print("[ImportChannels] Get EPG Location")
 			try:
 				epgdatfile = "/etc/enigma2/epg.dat"
-				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, os.path.dirname(epgdatfile)), timeout=5).read())["files"] if os.path.basename(file).startswith("epg.dat")]
+				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, dirname(epgdatfile)), timeout=5).read())["files"] if basename(file).startswith("epg.dat")]
 				epg_location = files[0] if files else None
 				if epg_location:
 					print("[ImportChannels] Copy EPG file...")
 					try:
 						try:
-							os.mkdir("/tmp/epgdat")
+							mkdir("/tmp/epgdat")
 						except:
 							print("[ImportChannels] epgdat folder exists in tmp")
 						epgdattmp = "/tmp/epgdat"
 						epgdatserver = "/tmp/epgdat/epg.dat"
-						open("%s/%s" % (epgdattmp, os.path.basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
+						open("%s/%s" % (epgdattmp, basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
 						if "epg.dat" in (epgdatserver):
 							shutil.move("%s" % epgdatserver, "%s" % (config.misc.epgcache_filename.value))
 							eEPGCache.getInstance().load()
@@ -242,18 +240,18 @@ class ImportChannels():
 				return self.downloadEPG(), self.importChannelsCallback()
 			try:
 				epgdatfile = "/media/hdd/epg.dat"
-				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, os.path.dirname(epgdatfile)), timeout=5).read())["files"] if os.path.basename(file).startswith("epg.dat")]
+				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, dirname(epgdatfile)), timeout=5).read())["files"] if basename(file).startswith("epg.dat")]
 				epg_location = files[0] if files else None
 				if epg_location:
 					print("[ImportChannels] Copy EPG file...")
 					try:
 						try:
-							os.mkdir("/tmp/epgdat")
+							mkdir("/tmp/epgdat")
 						except:
 							print("[ImportChannels] epgdat folder exists in tmp")
 						epgdattmp = "/tmp/epgdat"
 						epgdatserver = "/tmp/epgdat/epg.dat"
-						open("%s/%s" % (epgdattmp, os.path.basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
+						open("%s/%s" % (epgdattmp, basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
 						if "epg.dat" in (epgdatserver):
 							shutil.move("%s" % epgdatserver, "%s" % (config.misc.epgcache_filename.value))
 							eEPGCache.getInstance().load()
@@ -267,18 +265,18 @@ class ImportChannels():
 				return self.downloadEPG(), self.importChannelsCallback()
 			try:
 				epgdatfile = "/media/usb/epg.dat"
-				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, os.path.dirname(epgdatfile)), timeout=5).read())["files"] if os.path.basename(file).startswith("epg.dat")]
+				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, dirname(epgdatfile)), timeout=5).read())["files"] if basename(file).startswith("epg.dat")]
 				epg_location = files[0] if files else None
 				if epg_location:
 					print("[ImportChannels] Copy EPG file...")
 					try:
 						try:
-							os.mkdir("/tmp/epgdat")
+							mkdir("/tmp/epgdat")
 						except:
 							print("[ImportChannels] epgdat folder exists in tmp")
 						epgdattmp = "/tmp/epgdat"
 						epgdatserver = "/tmp/epgdat/epg.dat"
-						open("%s/%s" % (epgdattmp, os.path.basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
+						open("%s/%s" % (epgdattmp, basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
 						if "epg.dat" in (epgdatserver):
 							shutil.move("%s" % epgdatserver, "%s" % (config.misc.epgcache_filename.value))
 							eEPGCache.getInstance().load()
@@ -295,37 +293,31 @@ class ImportChannels():
 	def importChannelsCallback(self):
 		if "channels" in self.remote_fallback_import:
 			channelslist = ('lamedb', 'bouquets.', 'userbouquet.', 'blacklist', 'whitelist', 'alternatives.')
+			channelslistserver = "/tmp/channelslist"
 			try:
 				try:
-					os.mkdir("/tmp/channelslist")
+					mkdir("/tmp/channelslist")
 				except:
 					print("[ImportChannels] channelslist folder exists in tmp")
-				channelslistserver = "/tmp/channelslist"
-				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, channelslistpath), timeout=5).read())["files"] if os.path.basename(file).startswith(channelslist)]
+				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, channelslistpath), timeout=5).read())["files"] if basename(file).startswith(channelslist) and not "+" in file]
 				count = 0
 				for file in files:
 					count += 1
 					file = file if getPyVS() >= 3 else file.encode("UTF-8")
 					print("[ImportChannels] Downloading %s" % file)
 					try:
-						open("%s/%s" % (channelslistserver, os.path.basename(file)), "wb").write(urlopen("%s/file?file=%s" % (self.url, file), timeout=5).read())
+						open("%s/%s" % (channelslistserver, basename(file)), "wb").write(urlopen("%s/file?file=%s" % (self.url, file), timeout=5).read())
 					except:
 						return self.ImportChannelsDone(False, _("ERROR downloading file %s") % file) if config.usage.remote_fallback_nok.value else None
 			except:
-				try:
-					ipServer = [int(x) for x in self.url.split(":")[1][2:].split(".")]
-					config.clientmode.serverIP.value = ipServer
-					config.clientmode.save()
-				except:
-					print("[ImportChannels] You need to configure IP in ClientMode, do it from ImportChannels setup")
-					return AddNotificationWithID("ChannelsImportNOK", MessageBox, _("You have not set manual IP for %s") % self.url, type=MessageBox.TYPE_ERROR, timeout=10)
-
+				print("[ImportChannels] You need to configure IP in ClientMode, do it from ImportChannels setup")
+				return AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Set new value to \"Fallback remote receiver\" change URL %s") % self.url, type=MessageBox.TYPE_ERROR, timeout=10)
 			print("[ImportChannels] Removing files...")
-			files = [file for file in os.listdir("%s" % channelslistpath) if file.startswith(channelslist) and file.startswith(channelslistserver)]
+			files = [file for file in listdir("%s" % channelslistpath) if file.startswith(channelslist) and file.startswith(channelslistserver)]
 			for file in files:
-				os.remove("%s/%s" % (channelslistpath, file))
+				remove("%s/%s" % (channelslistpath, file))
 			print("[ImportChannels] copying files...")
-			files = [x for x in os.listdir(channelslistserver) if x.startswith(channelslist)]
+			files = [x for x in listdir(channelslistserver)]
 			for file in files:
 				shutil.move("%s/%s" % (channelslistserver, file), "%s/%s" % (channelslistpath, file))
 			shutil.rmtree(channelslistserver)
@@ -337,7 +329,8 @@ class ImportChannels():
 		#self.ImportChannelsDone(True, {"channels": _("Channels"), "epg": _("EPG"), "channels_epg": _("Channels and EPG")}[self.remote_fallback_import])
 
 	def ImportChannelsDone(self, flag, message=None):
-		shutil.rmtree(self.tmp_dir, True)
+		if hasattr(self, "tmp_dir") and exists(self.tmp_dir):
+			shutil.rmtree(self.tmp_dir, True)
 		if config.usage.remote_fallback_ok.value:
 			AddNotificationWithID("ChannelsImportOK", MessageBox, _("%s") % message, type=MessageBox.TYPE_INFO, timeout=5)
 		elif config.usage.remote_fallback_nok.value:

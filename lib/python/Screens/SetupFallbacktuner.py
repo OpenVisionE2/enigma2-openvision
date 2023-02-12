@@ -42,6 +42,8 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		self.createConfig()
 		self.createSetup()
 		self.remote_fallback_prev = config.usage.remote_fallback_import.value
+		self["config"].onSelectionChanged.append(self.selectionChanged)
+		self.selectionChanged()
 
 	def createConfig(self):
 
@@ -77,6 +79,8 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		try:
 			ipDefault = [int(x) for x in config.usage.remote_fallback.value.split(":")[1][2:].split(".")]
 			portDefault = int(config.usage.remote_fallback.value.split(":")[2])
+			config.clientmode.serverIP.value = ipDefault
+			config.clientmode.save()
 		except:
 			ipDefault = [0, 0, 0, 0]
 			portDefault = 8001
@@ -95,10 +99,10 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		self.list = []
 		self.list.append(getConfigListEntry(_("Enable fallback remote receiver"),
 			config.usage.remote_fallback_enabled,
-			_("Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n\nYou can use this receiver only in client mode using server channel list and EPG.\n\nSet manual IP for importing EPG and Channels in 'Import remote receiver URL'.")))
+			_("Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n\nYou can use this receiver only in client mode using server channel list, timers and EPG.")))
 		self.list.append(getConfigListEntry(_("Import from remote receiver URL"),
 			config.usage.remote_fallback_import,
-			_("Import channels and/or EPG from remote receiver URL or IP.\n\nDon't forget to manually set server IP.")))
+			_("Import channels and/or EPG from remote receiver URL or IP.")))
 		if config.usage.remote_fallback_enabled.value or config.usage.remote_fallback_import.value:
 			self.list.append(getConfigListEntry(_("Enable import timer from fallback tuner"),
 				config.usage.remote_fallback_external_timer,
@@ -211,6 +215,15 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
 
+	def selectionChanged(self):
+		if self.force_update_list:
+			self["config"].onSelectionChanged.remove(self.selectionChanged)
+			self.createSetup()
+			self["config"].onSelectionChanged.append(self.selectionChanged)
+			self.force_update_list = False
+		if not (isinstance(self["config"].getCurrent()[1], ConfigBoolean) or isinstance(self["config"].getCurrent()[1], ConfigSelection)):
+			self.force_update_list = True
+
 	def changedEntry(self):
 		if isinstance(self["config"].getCurrent()[1], ConfigBoolean) or isinstance(self["config"].getCurrent()[1], ConfigSelection):
 			self.createSetup()
@@ -275,8 +288,8 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 
 	def keyLeft(self):
 		ConfigListScreen.keyLeft(self)
-		self.createConfig()
+		self.createSetup()
 
 	def keyRight(self):
 		ConfigListScreen.keyRight(self)
-		self.createConfig()
+		self.createSetup()
