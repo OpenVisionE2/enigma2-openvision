@@ -47,6 +47,7 @@ class TimerEntry(ConfigListScreen, Screen):
 			"ok": self.keySelect,
 			"save": self.keyGo,
 			"cancel": self.keyCancel,
+			"menu": self.keyMenu,
 			"volumeUp": self.incrementStart,
 			"volumeDown": self.decrementStart,
 			"size+": self.incrementEnd,
@@ -547,6 +548,9 @@ class TimerEntry(ConfigListScreen, Screen):
 
 	def keyCancel(self):
 		self.close((False,))
+
+	def keyMenu(self):
+		ConfigListScreen.keyMenu(self)
 
 	def pathSelected(self, res):
 		if res is not None:

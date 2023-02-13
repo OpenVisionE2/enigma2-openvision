@@ -3128,6 +3128,9 @@
 		<widget name="canceltext" conditional="canceltext" position="220,965" size="0,0" backgroundColor="OE_Background"/>
 		<widget name="ok" conditional="ok" position="500,980" size="0,0" backgroundColor="OE_Background"/>
 		<widget name="oktext" conditional="oktext" position="550,965" size="0,0" backgroundColor="OE_Background"/>
+		<widget source="key_menu" conditional="key_menu" render="Label" position="225,1040" size="200,35" backgroundColor="key_back" font="Regular;24" horizontalAlignment="center" verticalAlignment="center">
+			<convert type="ConditionalShowHide"/>
+		</widget>
 	</screen>
 	<!-- POWERTIMERENTRY -->
 	<screen name="PowerTimerEntry" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
