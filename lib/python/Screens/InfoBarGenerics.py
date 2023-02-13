@@ -2953,7 +2953,12 @@ class InfoBarInstantRecord:
 				if self.recording[self.selectedEntry].end != ret[1]:
 					self.recording[self.selectedEntry].autoincrease = False
 				self.recording[self.selectedEntry].end = ret[1]
-				self.session.nav.RecordTimer.timeChanged(self.recording[self.selectedEntry])
+		else:
+			if self.recording[self.selectedEntry].end != int(time()):
+				self.recording[self.selectedEntry].autoincrease = False
+			self.recording[self.selectedEntry].end = int(time())
+			AddNotification(MessageBox, _("Recording timer was canceled"), type=MessageBox.TYPE_INFO, timeout=5)
+		self.session.nav.RecordTimer.timeChanged(self.recording[self.selectedEntry])
 
 	def changeDuration(self, entry):
 		if entry is not None and entry >= 0:
@@ -2975,13 +2980,18 @@ class InfoBarInstantRecord:
 			self.session.nav.RecordTimer.timeChanged(entry)
 
 	def inputCallback(self, value):
+		entry = self.recording[self.selectedEntry]
 		if value:
 			print("[InfoBarGenerics] stopping recording after", int(value), "minutes.")
-			entry = self.recording[self.selectedEntry]
 			if int(value) != 0:
 				entry.autoincrease = False
 			entry.end = int(time()) + 60 * int(value)
-			self.session.nav.RecordTimer.timeChanged(entry)
+		else:
+			if entry.end != int(time()):
+				entry.autoincrease = False
+			entry.end = int(time())
+			AddNotification(MessageBox, _("Recording timer was canceled"), type=MessageBox.TYPE_INFO, timeout=5)
+		self.session.nav.RecordTimer.timeChanged(entry)
 
 	def isTimerRecordRunning(self):
 		identical = timers = 0
