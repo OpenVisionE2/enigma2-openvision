@@ -145,7 +145,6 @@ class AutoClientModeTimer:
 class ChannelsImporter():
 	DIR_ENIGMA2 = "/etc/enigma2/"
 	DIR_HDD = "/media/hdd/"
-	DIR_USB = "/media/usb/"
 	DIR_TMP = "/tmp/"
 
 	def __init__(self):
@@ -293,18 +292,6 @@ class ChannelsImporter():
 				self.importEPGCallback()
 			else:
 				print("[ChannelsImporter] Remote EPG filename not path in HDD")
-		except Exception as err:
-			print("[ChannelsImporter] cannot save EPG %s" % err)
-		try:
-			self.remoteEPGpath = self.DIR_USB
-			self.remoteEPGfile = "epg"
-			self.remoteEPGfile = "%s.dat" % self.remoteEPGfile.replace('.dat', '')
-			print("[ChannelsImporter] Remote EPG filename. '%s%s'" % (self.remoteEPGpath, self.remoteEPGfile))
-			result = self.FTPdownloadFile(self.remoteEPGpath, self.remoteEPGfile, "epg.dat")
-			if result:
-				self.importEPGCallback()
-			else:
-				print("[ChannelsImporter] Remote EPG filename not path in USB")
 		except Exception as err:
 			print("[ChannelsImporter] cannot save EPG %s" % err)
 

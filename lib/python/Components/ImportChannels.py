@@ -31,7 +31,6 @@ channelslistpath = "/etc/enigma2"
 class ImportChannels():
 	DIR_ENIGMA2 = "/etc/enigma2/"
 	DIR_HDD = "/media/hdd/"
-	DIR_USB = "/media/usb/"
 	DIR_TMP = "/tmp/"
 
 	def __init__(self):
@@ -171,18 +170,6 @@ class ImportChannels():
 				print("[ImportChannels] Remote EPG filename not path in HDD")
 		except Exception as err:
 			print("[ImportChannels] cannot save EPG %s" % err)
-		try:
-			self.remoteEPGpath = self.DIR_USB
-			self.remoteEPGfile = "epg"
-			self.remoteEPGfile = "%s.dat" % self.remoteEPGfile.replace('.dat', '')
-			print("[ImportChannels] Remote EPG filename. '%s%s'" % (self.remoteEPGpath, self.remoteEPGfile))
-			result = self.FTPdownloadFile(self.remoteEPGpath, self.remoteEPGfile, "epg.dat")
-			if result:
-				self.importEPGCallback()
-			else:
-				print("[ImportChannels] Remote EPG filename not path in USB")
-		except Exception as err:
-			print("[ImportChannels] cannot save EPG %s" % err)
 
 	def importEPGCallback(self):
 		print("[ImportChannels] importEPGCallback '%s%s' downloaded successfully from server." % (self.remoteEPGpath, self.remoteEPGfile))
@@ -203,91 +190,44 @@ class ImportChannels():
 		self.getTerrestrialRegion(settings)
 		self.tmp_dir = tempfile.mkdtemp(prefix="ImportChannels_")
 
-		if "epg" in self.remote_fallback_import and not config.clientmode.enabled.value or "channels_epg" in self.remote_fallback_import and not config.clientmode.enabled.value:
-			config.clientmode_notifications_ok.value = False
-			print("[ImportChannels] Starting to load epg.dat files and channels from server box")
-			try:
-				urlopen(self.url + "/web/saveepg")
-			except Exception as err:
-				print("[ImportChannels] %s" % err)
-				self.ImportChannelsDone(False, _("Server not available")) if config.usage.remote_fallback_nok.value else None
-				return AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Set new value to \"Fallback remote receiver\" change URL %s") % self.url, type=MessageBox.TYPE_ERROR, timeout=10)
-			print("[ImportChannels] Get EPG Location")
-			try:
-				epgdatfile = "/etc/enigma2/epg.dat"
-				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, dirname(epgdatfile)), timeout=5).read())["files"] if basename(file).startswith("epg.dat")]
-				epg_location = files[0] if files else None
-				if epg_location:
-					print("[ImportChannels] Copy EPG file...")
-					try:
-						try:
-							mkdir("/tmp/epgdat")
-						except:
-							print("[ImportChannels] epgdat folder exists in tmp")
-						epgdattmp = "/tmp/epgdat"
-						epgdatserver = "/tmp/epgdat/epg.dat"
-						open("%s/%s" % (epgdattmp, basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
-						if "epg.dat" in (epgdatserver):
-							shutil.move("%s" % epgdatserver, "%s" % (config.misc.epgcache_filename.value))
-							eEPGCache.getInstance().load()
-							shutil.rmtree(epgdattmp)
-							self.ImportChannelsDone(False, _("EPG imported successfully from %s") % self.url) if config.usage.remote_fallback_ok.value else None
-							return self.importChannelsCallback()
-					except Exception as err:
-						print("[ImportChannels] cannot save EPG %s" % err)
-			except Exception as err:
-				print("[ImportChannels] %s" % err)
-				return self.downloadEPG(), self.importChannelsCallback()
-			try:
-				epgdatfile = "/media/hdd/epg.dat"
-				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, dirname(epgdatfile)), timeout=5).read())["files"] if basename(file).startswith("epg.dat")]
-				epg_location = files[0] if files else None
-				if epg_location:
-					print("[ImportChannels] Copy EPG file...")
-					try:
-						try:
-							mkdir("/tmp/epgdat")
-						except:
-							print("[ImportChannels] epgdat folder exists in tmp")
-						epgdattmp = "/tmp/epgdat"
-						epgdatserver = "/tmp/epgdat/epg.dat"
-						open("%s/%s" % (epgdattmp, basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
-						if "epg.dat" in (epgdatserver):
-							shutil.move("%s" % epgdatserver, "%s" % (config.misc.epgcache_filename.value))
-							eEPGCache.getInstance().load()
-							shutil.rmtree(epgdattmp)
-							self.ImportChannelsDone(False, _("EPG imported successfully from %s") % self.url) if config.usage.remote_fallback_ok.value else None
-							return self.importChannelsCallback()
-					except Exception as err:
-						print("[ImportChannels] cannot save EPG %s" % err)
-			except Exception as err:
-				print("[ImportChannels] %s" % err)
-				return self.downloadEPG(), self.importChannelsCallback()
-			try:
-				epgdatfile = "/media/usb/epg.dat"
-				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, dirname(epgdatfile)), timeout=5).read())["files"] if basename(file).startswith("epg.dat")]
-				epg_location = files[0] if files else None
-				if epg_location:
-					print("[ImportChannels] Copy EPG file...")
-					try:
-						try:
-							mkdir("/tmp/epgdat")
-						except:
-							print("[ImportChannels] epgdat folder exists in tmp")
-						epgdattmp = "/tmp/epgdat"
-						epgdatserver = "/tmp/epgdat/epg.dat"
-						open("%s/%s" % (epgdattmp, basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
-						if "epg.dat" in (epgdatserver):
-							shutil.move("%s" % epgdatserver, "%s" % (config.misc.epgcache_filename.value))
-							eEPGCache.getInstance().load()
-							shutil.rmtree(epgdattmp)
-							self.ImportChannelsDone(False, _("EPG imported successfully from %s") % self.url) if config.usage.remote_fallback_ok.value else None
-							return self.importChannelsCallback()
-					except Exception as err:
-						print("[ImportChannels] cannot save EPG %s" % err)
-			except Exception as err:
-				print("[ImportChannels] %s" % err)
-				return self.downloadEPG(), self.importChannelsCallback()
+		if "epg" in self.remote_fallback_import and not config.clientmode.enabled.value:
+			if config.usage.remote_fallback_import_restart.value or config.usage.remote_fallback_import_standby.value:
+				config.clientmode_notifications_ok.value = False
+				print("[ImportChannels] Starting to load epg.dat files and channels from server box")
+				try:
+					urlopen(self.url + "/api/saveepg")
+				except Exception as err:
+					print("[ImportChannels] %s" % err)
+					self.ImportChannelsDone(False, _("Server not available")) if config.usage.remote_fallback_nok.value else None
+					return AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Set new value to \"Fallback remote receiver\" change URL %s") % self.url, type=MessageBox.TYPE_ERROR, timeout=10)
+				print("[ImportChannels] Get EPG Location")
+				try:
+					searchPaths = ("/etc/enigma2/", "/media/hdd/")
+					for epg in searchPaths:
+						epgdatfile = join(epg, "epg.dat")
+						files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, dirname(epgdatfile)), timeout=5).read())["files"] if basename(file).startswith("epg.dat")]
+						epg_location = files[0] if files else None
+						if epg_location:
+							print("[ImportChannels] Copy EPG file...")
+							try:
+								try:
+									mkdir("/tmp/epgdat")
+								except:
+									print("[ImportChannels] epgdat folder exists in tmp")
+								epgdattmp = "/tmp/epgdat"
+								epgdatserver = "/tmp/epgdat/epg.dat"
+								open("%s/%s" % (epgdattmp, basename(epg_location)), "wb").write(urlopen("%s/file?file=%s" % (self.url, epg_location), timeout=5).read())
+								if "epg.dat" in epgdatserver:
+									shutil.move("%s" % epgdatserver, "%s" % (config.misc.epgcache_filename.value))
+									eEPGCache.getInstance().load()
+									shutil.rmtree(epgdattmp)
+									self.ImportChannelsDone(False, _("EPG imported successfully from %s") % self.url) if config.usage.remote_fallback_ok.value else None
+									return self.importChannelsCallback()
+							except Exception as err:
+								print("[ImportChannels] cannot save EPG %s" % err)
+				except Exception as err:
+					print("[ImportChannels] %s" % err)
+					return self.downloadEPG(), self.importChannelsCallback() if "channels_epg" in self.remote_fallback_import else None
 		return self.importChannelsCallback()
 
 	def importChannelsCallback(self):
@@ -326,7 +266,6 @@ class ImportChannels():
 			from Components.ChannelsImporter import ChannelsImporter
 			self.ImportChannelsDone(False, _("Channels imported successfully from %s") % self.url) if config.usage.remote_fallback_ok.value and files else None
 			ChannelsImporter() if not config.clientmode.enabled.value and not files else None
-		#self.ImportChannelsDone(True, {"channels": _("Channels"), "epg": _("EPG"), "channels_epg": _("Channels and EPG")}[self.remote_fallback_import])
 
 	def ImportChannelsDone(self, flag, message=None):
 		if hasattr(self, "tmp_dir") and exists(self.tmp_dir):

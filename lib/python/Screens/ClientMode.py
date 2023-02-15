@@ -50,7 +50,7 @@ class ClientModeScreen(ConfigListScreen, Screen):
 
 	def createSetup(self):
 		setup_list = []
-		setup_list.append(getConfigListEntry(_("Enable client mode"), config.clientmode.enabled, _("Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n\nPaths to search EPG and Channels on server:\nInternal Flash, HDD, USB.\n\nServer must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server.")))
+		setup_list.append(getConfigListEntry(_("Enable client mode"), config.clientmode.enabled, _("Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n\nPaths to search EPG and/or Channels on server:\nInternal Flash or /media/hdd/.\n\nServer must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server.")))
 		if config.clientmode.enabled.value:
 			setup_list.append(getConfigListEntry(_("Host receiver address type"), config.clientmode.serverAddressType, _('Select between entering an IP address or a domain.')))
 			if config.clientmode.serverAddressType.value == "ip":
