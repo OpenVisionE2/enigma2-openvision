@@ -1213,9 +1213,18 @@ def InitUsageConfig():
 		eEPGCache.getInstance().setCacheFile(config.misc.epgcache_filename.value)
 		epgcache = eEPGCache.getInstance()
 		epgcache.save()
-		if not config.misc.epgcache_filename.value.startswith("/etc/enigma2/"):
-			if exists(pathjoin("/etc/enigma2", "%s.dat" % config.misc.epgcachefilename.value.replace(".dat", ""))):
-				remove(pathjoin("/etc/enigma2", "%s.dat" % config.misc.epgcachefilename.value.replace(".dat", "")))
+		for partition in harddiskmanager.getMountedPartitions(): # ckeck epg.dat file
+			if exists(partition.mountpoint):
+				path = normpath(partition.mountpoint)
+			if not config.misc.epgcache_filename.value.startswith("/etc/enigma2/"): # delete internal flash
+				if exists(pathjoin("/etc/enigma2/", "%s.dat" % config.misc.epgcachefilename.value.replace(".dat", ""))):
+					remove(pathjoin("/etc/enigma2/", "%s.dat" % config.misc.epgcachefilename.value.replace(".dat", "")))
+				if path not in config.misc.epgcache_filename.value: # delete on all devices with no value in config
+					if exists(pathjoin(path, "%s.dat" % config.misc.epgcachefilename.value.replace(".dat", ""))):
+						remove(pathjoin(path, "%s.dat" % config.misc.epgcachefilename.value.replace(".dat", "")))
+			else: # delete in all devices except internal flash
+				if exists(pathjoin(path, "%s.dat" % config.misc.epgcachefilename.value.replace(".dat", ""))):
+					remove(pathjoin(path, "%s.dat" % config.misc.epgcachefilename.value.replace(".dat", "")))
 	config.misc.epgcachepath.addNotifier(EpgCacheChanged, immediate_feedback=False)
 	config.misc.epgcachefilename.addNotifier(EpgCacheChanged, immediate_feedback=False)
 
