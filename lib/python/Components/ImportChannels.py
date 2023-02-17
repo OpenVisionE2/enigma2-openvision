@@ -55,7 +55,7 @@ class ImportChannels():
 		try:
 			result = urlopen(request, timeout=timeout)
 		except URLError as err:
-			if "[Errno -3]" in str(err.reason):
+			if "[Errno -3]" in str(err):
 				print("[ImportChannels] Network is not up yet, delay 5 seconds")
 				# network not up yet
 				sleep(5)
@@ -239,7 +239,7 @@ class ImportChannels():
 					mkdir("/tmp/channelslist")
 				except:
 					print("[ImportChannels] channelslist folder exists in tmp")
-				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, channelslistpath), timeout=5).read())["files"] if basename(file).startswith(channelslist) and not "+" in file]
+				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, channelslistpath), timeout=5).read())["files"] if basename(file).startswith(channelslist)]
 				count = 0
 				for file in files:
 					count += 1
@@ -248,7 +248,7 @@ class ImportChannels():
 					try:
 						open("%s/%s" % (channelslistserver, basename(file)), "wb").write(urlopen("%s/file?file=%s" % (self.url, file), timeout=5).read())
 					except:
-						return self.ImportChannelsDone(False, _("ERROR downloading file %s") % file) if config.usage.remote_fallback_nok.value else None
+						return self.ImportChannelsDone(False, _("ERROR downloading file %s. Use button YELLOW in server \"Purge channel list\"") % file) if config.usage.remote_fallback_nok.value else None
 			except:
 				print("[ImportChannels] You need to configure IP in ClientMode, do it from ImportChannels setup")
 				return AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Set new value to \"Fallback remote receiver\" change URL %s") % self.url, type=MessageBox.TYPE_ERROR, timeout=10)
