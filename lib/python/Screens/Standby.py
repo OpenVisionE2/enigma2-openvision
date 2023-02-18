@@ -206,7 +206,7 @@ class StandbyScreen(Screen):
 		if gotoShutdownTime:
 			self.standbyTimeoutTimer.startLongTimer(gotoShutdownTime)
 
-		if self.StandbyCounterIncrease is not 1: # Wakeup timer with value "yes" or "standby" (only standby mode) in SleepTimerEdit.
+		if self.StandbyCounterIncrease: # Wakeup timer with value "yes" or "standby" (only standby mode) in SleepTimerEdit.
 			gotoWakeupTime = isNextWakeupTime(True)
 			if gotoWakeupTime != -1:
 				curtime = localtime(time())
