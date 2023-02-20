@@ -44,6 +44,7 @@ from Components.PluginComponent import plugins
 from Screens.ChoiceBox import ChoiceBox
 from Screens.EventView import EventViewEPGSelect
 from os import listdir, remove, rename
+from os.path import isfile
 import unicodedata
 from time import time
 
@@ -270,6 +271,10 @@ class ChannelContextMenu(Screen):
 					append_when_current_valid(current, menu, (_("Disable move mode"), self.toggleMoveMode), level=0, key="6")
 				else:
 					append_when_current_valid(current, menu, (_("Enable move mode"), self.toggleMoveMode), level=0, key="6")
+					if not isfile("/etc/enigma2/unorderedbouquets"):
+						menu.append(ChoiceEntryComponent("dummy", (_("Order bouquets alphabetic a-z"), self.sortedBouquetList)))
+					else:
+						menu.append(ChoiceEntryComponent("dummy", (_("Disorder bouquets alphabetic"), self.unorderedBouquetList)))
 				if csel.entry_marked and not inAlternativeList:
 					append_when_current_valid(current, menu, (_("Remove entry"), self.removeEntry), level=0, key="8")
 					self.removeFunction = self.removeCurrentService
@@ -489,6 +494,33 @@ class ChannelContextMenu(Screen):
 
 	def showBouquetInputBox(self):
 		self.session.openWithCallback(self.bouquetInputCallback, VirtualKeyBoard, title=_("Please enter a name for the new bouquet"), text="", maxSize=False, visible_width=56, type=Input.TEXT)
+
+	def refreshBouquetList(self):
+		eDVBDB.getInstance().reloadBouquets()
+		refreshServiceList()
+		self.csel.showFavourites()
+		self.close()
+
+	def sortedBouquetList(self):
+		from os.path import join
+		from shutil import copy2
+		copy2("/etc/enigma2/bouquets.tv", "/etc/enigma2/unorderedbouquets")
+		with open("/etc/enigma2/bouquets.tv", "w") as fd:
+			fd.write('#NAME User - Bouquets (TV)' + "\n")
+			fd.close()
+		with open("/etc/enigma2/bouquets.tv", "a") as fd:
+			for filelist in sorted([x for x in listdir("/etc/enigma2") if "userbouquet." in x and ".tv" in x]):
+				namesbouquet = join(filelist)
+				bouquetstv = ('#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "%s" ORDER BY bouquet' % namesbouquet)
+				fd.write(bouquetstv + "\n")
+			fd.close()
+		self.refreshBouquetList()
+
+	def unorderedBouquetList(self):
+		from shutil import copy2
+		copy2("/etc/enigma2/unorderedbouquets", "/etc/enigma2/bouquets.tv")
+		remove("/etc/enigma2/unorderedbouquets")
+		self.refreshBouquetList()
 
 	def bouquetInputCallback(self, bouquet):
 		if bouquet is not None:
