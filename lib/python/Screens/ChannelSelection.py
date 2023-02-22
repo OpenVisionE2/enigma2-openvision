@@ -271,10 +271,11 @@ class ChannelContextMenu(Screen):
 					append_when_current_valid(current, menu, (_("Disable move mode"), self.toggleMoveMode), level=0, key="6")
 				else:
 					append_when_current_valid(current, menu, (_("Enable move mode"), self.toggleMoveMode), level=0, key="6")
-					if not isfile("/etc/enigma2/unorderedbouquets"):
-						menu.append(ChoiceEntryComponent("dummy", (_("Order bouquets alphabetic a-z"), self.sortedBouquetList)))
-					else:
-						menu.append(ChoiceEntryComponent("dummy", (_("Disorder bouquets alphabetic"), self.unorderedBouquetList)))
+					if config.usage.multibouquet.value:
+						if not isfile("/etc/enigma2/unorderedbouquets"):
+							menu.append(ChoiceEntryComponent("dummy", (_("Sort bouquets alphabetic A-Z"), self.sortedBouquetList)))
+						else:
+							menu.append(ChoiceEntryComponent("dummy", (_("Undo bouquets order alphabetic"), self.unorderedBouquetList)))
 				if csel.entry_marked and not inAlternativeList:
 					append_when_current_valid(current, menu, (_("Remove entry"), self.removeEntry), level=0, key="8")
 					self.removeFunction = self.removeCurrentService
