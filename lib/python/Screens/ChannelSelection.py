@@ -13,7 +13,7 @@ profile("ChannelSelection.py 1")
 from Screens.EpgSelection import EPGSelection
 from enigma import eServiceReference, eServiceReferenceDVB, eEPGCache, eServiceCenter, eRCInput, eTimer, eDVBDB, iPlayableService, iServiceInformation, getPrevAsciiCode
 from Components.config import config, configfile, ConfigSubsection, ConfigText, ConfigYesNo
-from Tools.NumericalTextInput import NumericalTextInput
+from Tools.NumericalTextInput import NumericalTextInput, MAP_SEARCH
 profile("ChannelSelection.py 2")
 from Components.NimManager import nimmanager
 profile("ChannelSelection.py 2.1")
@@ -1891,7 +1891,13 @@ class ChannelSelectionBase(Screen):
 				if number == 8:
 					self.removeCurrentEntry(bouquet=False)
 			else:
-				self.numberSelectionActions(number)
+				try:
+					self.numberSelectionActions(number)
+				except:
+					self.numberSelectionActions = NumericalTextInput(mapping=MAP_SEARCH)
+					charstr = self.numericalTextInput.getKey(number)
+					if len(charstr) == 1:
+						self.servicelist.moveToChar(charstr[0])
 		else:
 			current_root = self.getRoot()
 			if current_root and 'FROM BOUQUET "bouquets.' in current_root.getPath():
@@ -1903,11 +1909,10 @@ class ChannelSelectionBase(Screen):
 					if number == 8:
 						self.removeCurrentEntry(bouquet=True)
 				else:
-					self.numberSelectionActions(number)
-			else:
-				charstr = self.numericalTextInput.getKey(number)
-				if len(charstr) == 1:
-					self.servicelist.moveToChar(charstr[0])
+					self.numberSelectionActions = NumericalTextInput(mapping=MAP_SEARCH)
+					charstr = self.numericalTextInput.getKey(number)
+					if len(charstr) == 1:
+						self.servicelist.moveToChar(charstr[0])
 
 	def numberSelectionActions(self, number):
 		if not (hasattr(self, "movemode") and self.movemode):
