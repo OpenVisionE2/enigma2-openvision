@@ -460,9 +460,9 @@ class MultiBootSelection(SelectImage):
 
 	def cancel(self, value=None):
 		Console().ePopen('umount %s' % self.tmp_dir)
-		if exists(self.tmp_dir):
+		if not ismount(self.tmp_dir) and exists(self.tmp_dir):
 			rmdir(self.tmp_dir)
-		if value == 2 and not isfile(join(self.tmp_dir, "STARTUP")):
+		if value == 2 and not exists(self.tmp_dir):
 			self.session.open(TryQuitMainloop, 2)
 		else:
 			self.close(value)
