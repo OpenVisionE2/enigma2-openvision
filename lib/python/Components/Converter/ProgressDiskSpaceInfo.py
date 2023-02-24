@@ -85,13 +85,13 @@ class ProgressDiskSpaceInfo(Poll, Converter):
 			elif self.shortFormat:
 				text = _('%s: %s, in use: %s%%') % (entry[1], self.getSizeStr(list[0]), list[3])
 			elif self.fullFormat:
-				text = _('%s: %s Free:%s Used:%s (%s%%)') % (entry[1],
+				text = _('%s: %s Free: %s Used: %s (%s%%)') % (entry[1],
 				self.getSizeStr(list[0]),
 				self.getSizeStr(list[2]),
 				self.getSizeStr(list[1]),
 				list[3])
 			else:
-				text = _('%s: %s Used:%s Free:%s') % (entry[1],
+				text = _('%s: %s Used: %s Free: %s') % (entry[1],
 				self.getSizeStr(list[0]),
 				self.getSizeStr(list[1]),
 				self.getSizeStr(list[2]))
