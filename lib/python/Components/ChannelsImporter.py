@@ -361,8 +361,15 @@ class ChannelsImporter():
 					return True
 			return False
 		except Exception as err:
-			print("[ChannelsImporter] FTPdownloadFile Error:", err)
-			return False
+			try:
+				if "550" in str(err) and sourcefile != "epg.dat":
+					os.remove(self.DIR_TMP + sourcefile)
+					AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Imported list with bouquet empty <n/a> %s file does not exist") % sourcefile, type=MessageBox.TYPE_ERROR, timeout=5)
+					return True
+			except Exception as err:
+				if "550" in str(err) and sourcefile != "epg.dat":
+					AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Server Error: %s %s is included in bouquets.tv and does not exist in channel list") % (err, sourcefile), type=MessageBox.TYPE_ERROR, timeout=10)
+				return False
 
 	def forceSaveEPGonRemoteReceiver(self):
 		url = "http://%s/api/saveepg" % self.getRemoteAddress()
