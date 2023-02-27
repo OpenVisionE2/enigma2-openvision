@@ -327,7 +327,8 @@ class CronTimersConfig(Screen, ConfigListScreen):
 		if config.crontimers.commandtype.value == "custom":
 			self.list.append(getConfigListEntry(_("Command to run"), config.crontimers.user_command))
 		else:
-			self.list.append(getConfigListEntry(_("Command to run"), config.crontimers.predefined_command))
+			if f:
+				self.list.append(getConfigListEntry(_("Command to run"), config.crontimers.predefined_command))
 		self["config"].list = self.list
 		self["config"].setList(self.list)
 
