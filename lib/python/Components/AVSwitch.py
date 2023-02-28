@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from Components.config import config, ConfigSlider, ConfigSelection, ConfigYesNo, ConfigEnableDisable, ConfigOnOff, ConfigSubsection, ConfigBoolean, ConfigSelectionNumber, ConfigNothing, NoSave
+from Components.config import config, ConfigSlider, ConfigSelection, ConfigYesNo, ConfigEnableDisable, ConfigSubsection, ConfigBoolean, ConfigSelectionNumber, ConfigNothing, NoSave
 from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop
 from Components.SystemInfo import BoxInfo
-import os
+from os.path import exists
 
 model = BoxInfo.getItem("model")
 brand = BoxInfo.getItem("brand")
@@ -109,18 +109,19 @@ def InitAVSwitch():
 	"panscan": _("Panscan"),
 	# TRANSLATORS: (aspect ratio policy: scale as close to fullscreen as possible)
 	"scale": _("Just scale")}
-	try:
-		if "full" in open("/proc/stb/video/policy2_choices").read().split('\n', 1)[0]:
-			# TRANSLATORS: (aspect ratio policy: display as fullscreen, even if the content aspect ratio does not match the screen ratio)
-			policy2_choices.update({"full": _("Full screen")})
-	except:
-		print("[AVSwitch] Read /proc/stb/video/policy2_choices failed!")
-	try:
-		if "auto" in open("/proc/stb/video/policy2_choices").read().split('\n', 1)[0]:
-			# TRANSLATORS: (aspect ratio policy: automatically select the best aspect ratio mode)
-			policy2_choices.update({"auto": _("Auto")})
-	except:
-		print("[AVSwitch] Read /proc/stb/video/policy2_choices failed!")
+	if exists("/proc/stb/video/policy2_choices"):
+		try:
+			if "full" in open("/proc/stb/video/policy2_choices").read().split('\n', 1)[0]:
+				# TRANSLATORS: (aspect ratio policy: display as fullscreen, even if the content aspect ratio does not match the screen ratio)
+				policy2_choices.update({"full": _("Full screen")})
+		except:
+			print("[AVSwitch] Read /proc/stb/video/policy2_choices failed.")
+		try:
+			if "auto" in open("/proc/stb/video/policy2_choices").read().split('\n', 1)[0]:
+				# TRANSLATORS: (aspect ratio policy: automatically select the best aspect ratio mode)
+				policy2_choices.update({"auto": _("Auto")})
+		except:
+			print("[AVSwitch] Read /proc/stb/video/policy2_choices failed.")
 	config.av.policy_169 = ConfigSelection(choices=policy2_choices, default="scale")
 	policy_choices = {
 	# TRANSLATORS: (aspect ratio policy: black bars on left/right) in doubt, keep english term.
@@ -129,24 +130,25 @@ def InitAVSwitch():
 	"panscan": _("Panscan"),
 	# TRANSLATORS: (aspect ratio policy: scale as close to fullscreen as possible)
 	"scale": _("Just scale")}
-	try:
-		if "nonlinear" in open("/proc/stb/video/policy_choices").read().split('\n', 1)[0]:
-			# TRANSLATORS: (aspect ratio policy: display as fullscreen, with stretching the left/right)
-			policy_choices.update({"nonlinear": _("Nonlinear")})
-	except:
-		print("[AVSwitch] Read /proc/stb/video/policy_choices failed!")
-	try:
-		if "full" in open("/proc/stb/video/policy_choices").read().split('\n', 1)[0]:
-			# TRANSLATORS: (aspect ratio policy: display as fullscreen, even if the content aspect ratio does not match the screen ratio)
-			policy_choices.update({"full": _("Full screen")})
-	except:
-		print("[AVSwitch] Read /proc/stb/video/policy_choices failed!")
-	try:
-		if "auto" in open("/proc/stb/video/policy_choices").read().split('\n', 1)[0]:
-			# TRANSLATORS: (aspect ratio policy: automatically select the best aspect ratio mode)
-			policy_choices.update({"auto": _("Auto")})
-	except:
-		print("[AVSwitch] Read /proc/stb/video/policy_choices failed!")
+	if exists("/proc/stb/video/policy_choices"):
+		try:
+			if "nonlinear" in open("/proc/stb/video/policy_choices").read().split('\n', 1)[0]:
+				# TRANSLATORS: (aspect ratio policy: display as fullscreen, with stretching the left/right)
+				policy_choices.update({"nonlinear": _("Nonlinear")})
+		except:
+			print("[AVSwitch] Read /proc/stb/video/policy_choices failed.")
+		try:
+			if "full" in open("/proc/stb/video/policy_choices").read().split('\n', 1)[0]:
+				# TRANSLATORS: (aspect ratio policy: display as fullscreen, even if the content aspect ratio does not match the screen ratio)
+				policy_choices.update({"full": _("Full screen")})
+		except:
+			print("[AVSwitch] Read /proc/stb/video/policy_choices failed.")
+		try:
+			if "auto" in open("/proc/stb/video/policy_choices").read().split('\n', 1)[0]:
+				# TRANSLATORS: (aspect ratio policy: automatically select the best aspect ratio mode)
+				policy_choices.update({"auto": _("Auto")})
+		except:
+			print("[AVSwitch] Read /proc/stb/video/policy_choices failed.")
 	config.av.policy_43 = ConfigSelection(choices=policy_choices, default="scale")
 	config.av.tvsystem = ConfigSelection(choices={"pal": "PAL", "ntsc": "NTSC", "multinorm": "multinorm"}, default="pal")
 	config.av.wss = ConfigEnableDisable(default=True)
