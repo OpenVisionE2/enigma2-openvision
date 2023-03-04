@@ -473,7 +473,7 @@ class MultiBootSelection(SelectImage):
 		mode = getCurrentImageMode() or 0
 		self.deletedImagesExists = False
 		if imagesList:
-			for index, x in enumerate(sorted(imagesList.keys())):
+			for index, x in enumerate(imagesList):
 				if imagesList[x]["imagename"] == _("Deleted image"):
 					self.deletedImagesExists = True
 				elif imagesList[x]["imagename"] != _("Empty slot"):
