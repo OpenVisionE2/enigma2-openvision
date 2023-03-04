@@ -73,10 +73,6 @@ class Navigation:
 					self.standbytimer = eTimer()
 					self.standbytimer.callback.append(self.gotostandby)
 					self.standbytimer.start(15000, True) # Time increse 15 second for standby.
-		if config.misc.prev_wakeup_time.value:
-			config.misc.prev_wakeup_time.value = 0
-			config.misc.prev_wakeup_time.save()
-			configfile.save()
 
 	def _processTimerWakeup(self):
 		now = time()
