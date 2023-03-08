@@ -329,66 +329,64 @@ class NameserverSetup(ConfigListScreen, HelpableScreen, Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		HelpableScreen.__init__(self)
-		self.setTitle(_("Configure nameservers"))
+		self.setTitle(_("Settings DNS Server"))
 		self.backupNameserverList = iNetwork.getNameserverList()[:]
 		print("[NetworkSetup] backup-list:", self.backupNameserverList)
-
 		self["key_red"] = StaticText(_("Cancel"))
-		self["key_green"] = StaticText(_("Add"))
-		self["key_yellow"] = StaticText(_("Delete"))
-
 		self["introduction"] = StaticText(_("Press OK to activate the settings."))
 		self.createConfig()
-
 		self["OkCancelActions"] = HelpableActionMap(self, ["OkCancelActions"],
 			{
 			"cancel": (self.keyCancel, _("Exit nameserver configuration")),
 			"ok": (self.ok, _("Activate current configuration")),
 			})
-
 		self["ColorActions"] = HelpableActionMap(self, ["ColorActions"],
 			{
 			"red": (self.keyCancel, _("Exit nameserver configuration")),
-			"green": (self.add, _("Add a nameserver entry")),
-			"yellow": (self.remove, _("Remove a nameserver entry")),
 			})
-
 		self["actions"] = NumberActionMap(["SetupActions"],
 		{
 			"cancel": self.keyCancel,
 			"ok": self.ok,
 			"left": self.keyLeft,
-			"right": self.keyRight
+			"right": self.keyRight,
+			"menu": self.keyMenu
 		}, -2)
-
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
 		self.createSetup()
 
-	def createConfig(self):
+	def createConfig(self): # Updatable list of servers to write IP DNS.
 		self.nameservers = iNetwork.getNameserverList()
 		if config.usage.dns.value == 'google':
 			self.nameserverEntries = [NoSave(ConfigIP(default=[8, 8, 8, 8])), NoSave(ConfigIP(default=[8, 8, 4, 4]))]
+		elif config.usage.dns.value == 'quad9security':
+			self.nameserverEntries = [NoSave(ConfigIP(default=[9, 9, 9, 9])), NoSave(ConfigIP(default=[149, 112, 112, 112]))]
+		elif config.usage.dns.value == 'quad9nosecurity':
+			self.nameserverEntries = [NoSave(ConfigIP(default=[9, 9, 9, 10])), NoSave(ConfigIP(default=[149, 112, 112, 10]))]
+		elif config.usage.dns.value == 'opendns':
+			self.nameserverEntries = [NoSave(ConfigIP(default=[208, 67, 222, 222])), NoSave(ConfigIP(default=[208, 67, 220, 220]))]
+		elif config.usage.dns.value == 'opendns-2':
+			self.nameserverEntries = [NoSave(ConfigIP(default=[208, 67, 220, 222])), NoSave(ConfigIP(default=[208, 67, 222, 220]))]
 		elif config.usage.dns.value == 'cloudflare':
 			self.nameserverEntries = [NoSave(ConfigIP(default=[1, 1, 1, 1])), NoSave(ConfigIP(default=[1, 0, 0, 1]))]
-		elif config.usage.dns.value == 'opendns-familyshield':
-			self.nameserverEntries = [NoSave(ConfigIP(default=[208, 67, 222, 123])), NoSave(ConfigIP(default=[208, 67, 220, 123]))]
-		elif config.usage.dns.value == 'opendns-home':
-			self.nameserverEntries = [NoSave(ConfigIP(default=[208, 67, 222, 222])), NoSave(ConfigIP(default=[208, 67, 220, 220]))]
-		elif config.usage.dns.value == 'custom' or config.usage.dns.value == 'dhcp-router':
+		else:
 			self.nameserverEntries = [NoSave(ConfigIP(default=nameserver)) for nameserver in self.nameservers]
 
 	def createSetup(self):
 		self.list = []
-		self.DNSEntry = getConfigListEntry(_("Nameserver configuration"), config.usage.dns)
-		self.list.append(self.DNSEntry)
+		self.ListDNSServers = getConfigListEntry(_("DNS server name"), config.usage.dns)
+		self.list.append(self.ListDNSServers)
 
 		i = 1
 		for x in self.nameserverEntries:
-			self.list.append(getConfigListEntry(_("Nameserver %d") % (i), x))
+			self.list.append(getConfigListEntry(_("DNS %d") % (i), x))
 			i += 1
-
 		self["config"].list = self.list
+		if config.usage.dns.value == "staticip":
+			self["introduction"] = StaticText(_("Press OK to activate the settings.\n\nWith DNS server name \"Static IP Router\" you can use DNS provided by other servers."))
+		elif config.usage.dns.value == "dhcp-router":
+			self["introduction"] = StaticText(_("Press OK to activate the settings.\n\nWith DNS server name \"DHCP Router\" If the old DNS are still maintained, to obtain the DNS of your internet provider, reboot receiver."))
 
 	def ok(self):
 		self.RefreshNameServerUsed()
@@ -405,19 +403,6 @@ class NameserverSetup(ConfigListScreen, HelpableScreen, Screen):
 	def keyCancel(self):
 		self.close()
 
-	def add(self):
-		iNetwork.addNameserver([0, 0, 0, 0])
-		self.createConfig()
-		self.createSetup()
-
-	def remove(self):
-		print("[NetworkSetup] currentIndex:", self["config"].getCurrentIndex())
-		index = self["config"].getCurrentIndex()
-		if index < len(self.nameservers):
-			iNetwork.removeNameserver(self.nameservers[index])
-			self.createConfig()
-			self.createSetup()
-
 	def RefreshNameServerUsed(self):
 		print("[NetworkSetup] currentIndex:", self["config"].getCurrentIndex())
 		index = self["config"].getCurrentIndex()
@@ -432,6 +417,9 @@ class NameserverSetup(ConfigListScreen, HelpableScreen, Screen):
 	def keyRight(self):
 		ConfigListScreen.keyRight(self)
 		self.createConfig()
+
+	def keyMenu(self):
+		ConfigListScreen.keyMenu(self)
 
 
 class MACSettings(Setup):
