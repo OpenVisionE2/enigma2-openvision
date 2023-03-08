@@ -1874,7 +1874,7 @@
 		<widget name="text" font="RegularBold;27" backgroundColor="OE_Background" position="26,370" size="1250,660" horizontalAlignment="center" verticalAlignment="top"/>
 	</screen>
 	<!-- MESSAGEBOX SIMPLE-->
-	<screen name="MessageBoxSimple" backgroundColor="OE_Background" position="260,center" size="1390,445">
+	<screen name="MessageBoxSimple" backgroundColor="OE_Background" position="260,center" size="1395,445">
 		<panel name="MessageBoxTemplate"/>
 		<panel name="autoresize"/>
 		<eLabel backgroundColor="OE_NewBg2" position="0,3" size="100,640" zPosition="-10"/>
@@ -3051,18 +3051,10 @@
 		<panel name="Clock"/>
 	</screen>
 	<!-- TEXTBOX -->
-	<screen name="TextBox" title="Message" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
-		<eLabel backgroundColor="OE_Background" foregroundColor="OE_Background" name="" position="30,center" size="1090,800" zPosition="-15"/>
-		<eLabel backgroundColor="OE_NewBg2" foregroundColor="white" name="" position="70,center" size="80,1080" zPosition="-11" verticalAlignment="center"/>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/colors/o_logo.png" position="72,55" size="78,75" transparent="1" zPosition="1"/>
-		<eLabel name="" foregroundColor="white" backgroundColor="blue_light" position="170,205" size="925,2" zPosition="-9"/>
-		<!-- Widget -->
-		<widget render="Label" source="Title" font="RegularBold;34" backgroundColor="OE_Background" position="170,148" size="925,50" transparent="1" verticalAlignment="center" zPosition="3" foregroundColor="white"/>
-		<widget name="text" font="RegularBold;28" backgroundColor="OE_Background" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" position="170,center" size="925,600" transparent="1" horizontalAlignment="left"/>
-		<eLabel backgroundColor="blue_light" name="" position="170,860" size="925,2" zPosition="-9"/>
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_exit.png" position="77,886" size="64,43"/>
-		<!-- Clock -->
-		<panel name="Clock"/>
+	<screen name="TextBox" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
+		<panel name="StanDardScreen"/>
+		<panel name="TemplateNoPip"/>
+		<widget name="text" font="RegularBold;28" backgroundColor="OE_Background" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" position="26,160" size="1240,820" transparent="1"/>
 	</screen>
 	<!-- TIME DATE INPUT -->
 	<screen name="TimeDateInput" title="Time/Date Input" backgroundColor="transparent" flags="wfNoBorder" position="0,center" size="1920,1080" transparent="0">
@@ -5247,7 +5239,7 @@
 	</screen>
 		<!-- MESSAGEBOX TEMPLATE-->
 	<screen name="MessageBoxTemplate">
-		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_help.png" position="20,105" size="64,43"/>
+		<ePixmap alphaTest="blend" pixmap="OctEtFHD/buttons/key_help.png" position="20,93" size="64,43"/>
 		<widget name="icon" pixmaps="icons/input_question.png,icons/input_info.png,icons/input_warning.png,icons/input_error.png,icons/input_message.png" position="10,3" size="80,80" alphaTest="blend"/>
 		<widget name="ErrorPixmap" conditional="ErrorPixmap" pixmap="icons/input_error.png" position="10,3" size="80,80" alphaTest="blend"/>
 		<widget name="QuestionPixmap" conditional="QuestionPixmap" pixmap="icons/input_question.png" position="10,3" size="80,80" alphaTest="blend"/>
@@ -5303,8 +5295,8 @@ elif self.typeIcon:
 else:
 	width = newTextSize[0]
 	height = newTextSize[1]
-width += 20
-height += 20
+width += 70
+height += 68
 self.instance.resize(eSize(width, height))
 self.instance.move(ePoint((screenSize[0] - width) // 2, (screenSize[1] - height) // 2))
 		</applet>

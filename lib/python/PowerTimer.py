@@ -14,7 +14,7 @@ from Components.Harddisk import internalHDDNotSleeping
 from Components.TimerSanityCheck import TimerSanityCheck
 from Screens.MessageBox import MessageBox
 import Screens.Standby
-from Tools.Directories import SCOPE_CONFIG, fileReadXML, getRecordingFilename, resolveFilename
+from Tools.Directories import SCOPE_CONFIG, fileReadXML, resolveFilename, isPluginInstalled
 from Tools.Notifications import AddNotification, AddNotificationWithUniqueIDCallback, AddPopup
 from Tools.XMLTools import stringToXML
 
@@ -53,6 +53,8 @@ class PowerTimer(Timer):
 		Timer.__init__(self)
 		self.timersFilename = resolveFilename(SCOPE_CONFIG, "pm_timers.xml")
 		self.loadTimers()
+		if self.getWakeupEPGImport is not None:
+			self.getWakeupEPGImport()
 
 	def loadTimers(self):
 		timersDom = fileReadXML(self.timersFilename, source=MODULE_NAME)
@@ -299,6 +301,26 @@ class PowerTimer(Timer):
 	def cleanupDaily(self, days):
 		Timer.cleanupDaily(self, days)
 		self.saveTimers()
+
+	def getWakeupEPGImport(self):
+		now = localtime(time())
+		begin = int(mktime(localtime(time())))
+		if isPluginInstalled("EPGImport") and config.misc.prev_wakeup_time_type.value == 2:
+			importwakeup = config.plugins.epgimport.wakeup.value
+			importtime = int(mktime((now.tm_year, now.tm_mon, now.tm_mday, importwakeup[0], importwakeup[1], 0, now.tm_wday, now.tm_yday, now.tm_isdst)))
+			if not config.misc.RestartUI.value and \
+				not config.plugins.epgimport.shutdown.value and \
+				not config.plugins.epgimport.standby_afterwakeup.value:
+					if not isPluginInstalled("EPGRefresh"):
+						return AddPopup(_("Plugin EPGImport actived EPG import and woke up your receiver"), type=MessageBox.TYPE_INFO, timeout=0)
+					else:
+						refreshwakeup = config.plugins.epgrefresh.begin.value
+						refreshtime = int(mktime((now.tm_year, now.tm_mon, now.tm_mday, refreshwakeup[0], refreshwakeup[1], 0, now.tm_wday, now.tm_yday, now.tm_isdst)))
+						if (refreshtime - begin) < 360 and (refreshtime - begin) > 0:
+							return None
+						elif (importtime - begin) < 240 and (importtime - begin) > 0:
+							return AddPopup(_("Plugin EPGImport actived EPG import and woke up your receiver"), type=MessageBox.TYPE_INFO, timeout=0)
+		return None
 
 
 class PowerTimerEntry(TimerEntry, object):

@@ -568,7 +568,7 @@ config.misc.load_unlinked_userbouquets.addNotifier(setLoadUnlinkedUserbouquets)
 config.misc.locale = ConfigText(default="en_US")
 # config.misc.locale.addNotifier(localeNotifier)  # This should not be enabled while config.osd.language is in use!
 config.misc.prev_wakeup_time = ConfigInteger(default=0)
-config.misc.prev_wakeup_time_type = ConfigInteger(default=0)  # This is only valid when wakeup_time is not 0.  0 = RecordTimer, 1 = ZapTimer, 2 = Plugins, 3 = WakeupTimer.
+config.misc.prev_wakeup_time_type = ConfigInteger(default=0)  # This is only valid when wakeup_time is not 0.  0 = RecordTimer, 1 = ZapTimer, 2 = Plugins-PowerTimer, 3 = WakeupTime.
 config.misc.isNextRecordTimerAfterEventActionAuto = ConfigYesNo(default=False)  # Auto action after event in RecordTimer.
 config.misc.isNextPowerTimerAfterEventActionAuto = ConfigYesNo(default=False)  # Auto action after event in PowerTimer.
 config.misc.RestartUI = ConfigYesNo(default=False)  # Detect user interface restart.
