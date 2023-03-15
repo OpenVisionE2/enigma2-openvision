@@ -99,11 +99,11 @@ def autostart(reason, **kwargs):
 		try:
 			if exists("/tmp/hotplug.socket"):
 				remove("/tmp/hotplug.socket")
-		except OSError:
-			pass
-		factory = Factory()
-		factory.protocol = Hotplug
-		reactor.listenUNIX("/tmp/hotplug.socket", factory)
+			factory = Factory()
+			factory.protocol = Hotplug
+			reactor.listenUNIX("/tmp/hotplug.socket", factory)
+		except (OSError, CannotListenError) as err:
+			print("[Hotplug]", err)
 
 
 def Plugins(**kwargs):

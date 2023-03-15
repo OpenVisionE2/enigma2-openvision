@@ -20,7 +20,6 @@ def mountpoint_choosen(option):
 
 	from Screens.ChoiceBox import ChoiceBox
 
-	print("[MediaScanner] scanning", option)
 	(description, mountpoint, session) = option
 	res = scanDevice(mountpoint)
 
@@ -29,13 +28,13 @@ def mountpoint_choosen(option):
 	if not list:
 		from Screens.MessageBox import MessageBox
 		if os.access(mountpoint, os.F_OK | os.R_OK):
-			session.open(MessageBox, _("No displayable files on this medium found!"), MessageBox.TYPE_INFO, simple=True, timeout=5)
+			session.open(MessageBox, _("%s connected successfully. No playable files on this medium found!") % description, MessageBox.TYPE_INFO, simple=True, timeout=5)
 		else:
-			print("[MediaScanner] ignore", mountpoint, "because its not accessible")
+			session.open(MessageBox, _("Storage device not available or not initialized."), MessageBox.TYPE_ERROR, simple=True, timeout=10)
 		return
 
 	session.openWithCallback(execute, ChoiceBox,
-		title=_("The following files were found..."),
+		title=_("%s connected successfully.\nPlayable files found.") % description,
 		list=list)
 
 
@@ -74,6 +73,7 @@ def partitionListChanged(action, device):
 				print("[MediaScanner] mountpoint", device.mountpoint)
 				print("[MediaScanner] description", device.description)
 				print("[MediaScanner] force_mounted", device.force_mounted)
+				print("[MediaScanner] scanning", device.description, device.mountpoint)
 				mountpoint_choosen((device.description, device.mountpoint, global_session))
 		else:
 			print("[MediaScanner] main infobar is not execing... so we ignore hotplug event!")
