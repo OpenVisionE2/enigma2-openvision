@@ -2080,14 +2080,14 @@ class InfoBarTimeshift():
 		if ts is None:
 			if not pauseService and not int(config.usage.timeshift_start_delay.value):
 				self.session.open(MessageBox, _("Timeshift not possible!"), MessageBox.TYPE_ERROR, simple=True)
-			print("[InfoBarGenerics] no ts interface")
-			self.session.openWithCallback(self.closed, MessageBox, _("Timeshift not enough diskspace. Is device mounted?"), type=MessageBox.TYPE_ERROR, timeout=10)
-			if pauseService:
+			print("[InfoBarGenerics] timeshift no ts interface")
+			if pauseService and getTimeshiftStorageSize() <= 1:
+				self.session.open(MessageBox, _("Timeshift not enough diskspace. Is device mounted?"), MessageBox.TYPE_ERROR, simple=True)
+			elif pauseService:
 				return self.playpauseStreamService()
 			else:
 				return 0
-
-		if ts.isTimeshiftEnabled():
+		if hasattr(ts, "isTimeshiftEnabled") and ts.isTimeshiftEnabled():
 			print("[InfoBarGenerics] timeshift already enabled?")
 		else:
 			if getTimeshiftStorageSize() <= 1:
