@@ -9,7 +9,6 @@ from Components.config import config
 from Components.Label import Label
 from Components.PluginComponent import plugins
 from Components.ScrollLabel import ScrollLabel
-from Components.TimerList import TimerList
 # from Components.UsageConfig import dropEPGNewLines, preferredTimerPath, replaceEPGSeparator
 from Components.UsageConfig import preferredTimerPath
 from Components.Sources.Event import Event
@@ -86,6 +85,7 @@ class EventViewBase:
 			"pageUp": (self.pageUp, _("Show previous page of description")),
 			"pageDown": (self.pageDown, _("Show next page of description")),
 			"openSimilarList": self.openSimilarList,
+			"openPartialList": self.open_partial_list,
 			"prevEvent": (self.prevEvent, _("Show previous event")),
 			"nextEvent": (self.nextEvent, _("Show next event"))
 		}, prio=0, description=_("Event View Actions"))
@@ -312,14 +312,22 @@ class EventViewBase:
 			self["epg_description"].setText("%s\n\n%s" % (self["epg_description"].getText(), "\n".join(similar)))
 			self["FullDescription"].setText("%s\n\n%s" % (self["FullDescription"].getText(), "\n".join(similar)))
 			if self.similarEPGCB:
-				self["key_red"].setText(_("Similar"))
+				self["key_red"].text = _("Similar")
 				self["similarActions"].setEnabled(True)
+		if not self["key_yellow"].text:
+			self["key_yellow"].text = _("Partial")
 
 	def openSimilarList(self):
 		id = self.event and self.event.getEventId()
 		serviceRef = str(self.serviceRef)
 		if id:
 			self.similarEPGCB(id, serviceRef)
+
+	def open_partial_list(self):
+		if self.similarEPGCB:
+			event = self.event and self.event.getEventName()
+			if event:
+				self.similarEPGCB(event, None)
 
 	def doContext(self):
 		if self.event:
