@@ -65,47 +65,23 @@ class EPGList(GUIComponent):
 			assert (type == EPG_TYPE_SIMILAR)
 			self.l.setBuildFunc(self.buildSimilarEntry)
 		self.epgcache = eEPGCache.getInstance()
-		self.clocks = [LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/epgclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/epgclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/epgclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/epgclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/epgclock_post.png')),
-
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zapclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zapclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zapclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zapclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zapclock_post.png')),
-
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zaprecclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zaprecclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zaprecclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zaprecclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/zaprecclock_post.png')),
-
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repepgclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repepgclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repepgclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repepgclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repepgclock_post.png')),
-
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzapclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzapclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzapclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzapclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzapclock_post.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzaprecclock_add.png')),
-
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzaprecclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzaprecclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzaprecclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/repzaprecclock_post.png')),
-
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/pipclock_add.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/pipclock_pre.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/pipclock.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/pipclock_prepost.png')),
-				LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, 'icons/pipclock_post.png'))]
+		main_icons = (
+			"epgclock",
+			"zapclock",
+			"zaprecclock",
+			"repepgclock",
+			"repzapclock",
+			"repzaprecclock",
+			"pipclock"
+		)
+		add_icons = (
+			"_add",
+			"_pre",
+			"",
+			"_prepost",
+			"_post"
+		)
+		self.clocks = tuple(LoadPixmap(cached=True, path=resolveFilename(SCOPE_GUISKIN, "icons/%s%s.png" % (m, a))) for m in main_icons for a in add_icons)
 
 	def getEventFromId(self, service, eventid):
 		event = None
