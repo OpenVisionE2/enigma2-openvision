@@ -1268,6 +1268,12 @@ def InitUsageConfig():
 					pass
 		config.crash.pythonStackOnSpinner.addNotifier(updateStackTracePrinter, immediate_feedback=False, initial_call=True)
 
+	config.crash.bsodpython = ConfigYesNo(default=True)
+	config.crash.bsodpython_ready = NoSave(ConfigYesNo(default=False))
+	choiceList = [("0", _("Never"))] + [(str(x), str(x)) for x in range(1, 11)]
+	config.crash.bsodhide = ConfigSelection(default="1", choices=choiceList)
+	config.crash.bsodmax = ConfigSelection(default="3", choices=choiceList)
+
 	config.crash.debugLevel = ConfigSelection(choices=[
 		("3", _("No debug logs")),
 		("4", _("Basic debug logs")),
@@ -1299,6 +1305,7 @@ def InitUsageConfig():
 			mkdir(config.crash.debugPath.value, 0o755)
 
 	config.crash.debugPath.addNotifier(updateDebugPath, immediate_feedback=False)
+
 	config.crash.debugFileCount = ConfigSelectionNumber(min=2, max=20, stepwidth=1, default=5, wraparound=True)
 	config.crash.daysloglimit = ConfigSelectionNumber(min=1, max=30, stepwidth=1, default=8, wraparound=True)
 	config.crash.sizeloglimit = ConfigSelectionNumber(min=1, max=20, stepwidth=1, default=2, wraparound=True)

@@ -181,6 +181,9 @@
 	</setup>
 	<setup key="Logs" title="Logs Setup">
 		<item level="2" text="Debug logging *" description="Use this option to select if debug logs of internal enigma2 activities are created and, if so, how much detail will be logged.  These logs can be helpful for developers in finding and fixing problems.">config.crash.debugLevel</item>
+		<item level="2" text="Python crash handler" description="Try to prevent reboots for software errors and maintain of the availability.">config.crash.bsodpython</item>
+		<item level="2" text="Show crash info on screen and write crash log for x times" description="If 'never', will write crash log despite that for the first crash." requires="config.crash.bsodpython">config.crash.bsodhide</item>
+		<item level="2" text="Restart after x crashes" description="If 'never', will force restart despite that after 100 crashes." requires="config.crash.bsodpython">config.crash.bsodmax</item>
 		<item level="2" text="Include keyboard data" description="Enable this option to add keyboard keymap data to the debug log file.">config.crash.debugKeyboards</item>
 		<item level="2" text="Include remote control data" description="Enable this option to add remote control data to the debug log file.">config.crash.debugRemoteControls</item>
 		<item level="2" text="Include action map data" description="Enable this option to add action map / remote control mapping data to the debug log file.">config.crash.debugActionMaps</item>

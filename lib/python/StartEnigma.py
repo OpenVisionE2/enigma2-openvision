@@ -148,14 +148,23 @@ class Session:
 
 	def openWithCallback(self, callback, screen, *arguments, **kwargs):
 		dialog = self.open(screen, *arguments, **kwargs)
-		dialog.callback = callback
-		return dialog
+		if dialog != "config.crash.bsodpython.value=True":
+			dialog.callback = callback
+			return dialog
 
 	def open(self, screen, *arguments, **kwargs):
 		if self.dialog_stack and not self.in_exec:
 			raise RuntimeError("[StartEnigma] Error: Modal open are allowed only from a screen which is modal!")  # ...unless it's the very first screen.
 		self.pushCurrent()
-		dialog = self.current_dialog = self.instantiateDialog(screen, *arguments, **kwargs)
+		if config.crash.bsodpython.value:
+			try:
+				dialog = self.current_dialog = self.instantiateDialog(screen, *arguments, **kwargs)
+			except:
+				self.popCurrent()
+				raise
+				return "config.crash.bsodpython.value=True"
+		else:
+			dialog = self.current_dialog = self.instantiateDialog(screen, *arguments, **kwargs)
 		dialog.isTmp = True
 		dialog.callback = None
 		self.execBegin()
