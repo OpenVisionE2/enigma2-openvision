@@ -8,7 +8,6 @@ from Components.Sources.StaticText import StaticText
 from Components.ServiceEventTracker import ServiceEventTracker
 from Components.SystemInfo import BoxInfo
 from enigma import iPlayableService, eTimer, eServiceReference, iRecordableService
-import os
 import glob
 from enigma import eFCCServiceManager
 
@@ -88,8 +87,9 @@ class FCCSupport:
 #		on_pip_start_stop.append(self.FCCForceStopforPIP)
 
 	def setProcFCC(self, value):
+		from os import access, W_OK
 		procPath = "/proc/stb/frontend/fbc/fcc"
-		if os.access(procPath, os.W_OK):
+		if access(procPath, W_OK):
 			open(procPath, 'w').write(value and "enable" or "disable")
 		else:
 			print("[FCCSupport] write fail! : ", procPath)

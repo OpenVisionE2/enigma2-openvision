@@ -8,7 +8,7 @@
 #
 # by pieterg, 2008
 
-import os
+from os import makedirs, rename, symlink
 import sys
 
 f = open(sys.argv[1]).readlines()
@@ -69,17 +69,17 @@ while len(f) > 2:
 		#TODO: west
 
 	try:
-		os.makedirs(sat + '/' + servicetype)
+		makedirs(sat + '/' + servicetype)
 	except:
 		pass
 
 	try:
-		os.rename(linkname, sat + '/' + servicetype + '/' + filename)
+		rename(linkname, sat + '/' + servicetype + '/' + filename)
 	except:
 		pass
 
 	try:
-		os.symlink(filename, sat + '/' + servicetype + '/' + linkname)
+		symlink(filename, sat + '/' + servicetype + '/' + linkname)
 	except:
 		pass
 

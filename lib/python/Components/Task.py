@@ -2,6 +2,8 @@
 # A Job consists of many "Tasks".
 # A task is the run of an external tool, with proper methods for failure handling
 from Tools.CList import CList
+from os import access, W_OK, statvfs, X_OK, environ, pathsep
+from os.path import join
 
 
 class Job(object):
@@ -433,8 +435,7 @@ class JobManager:
 #		self.device = device
 #
 #	def check(self, task):
-#		import os
-#		return os.access(self.device + "part1", os.F_OK)
+#		return access(self.device + "part1", F_OK)
 #
 #class CreatePartitionTask(Task):
 #	def __init__(self, device):
@@ -472,7 +473,7 @@ class Condition:
 
 class WorkspaceExistsPrecondition(Condition):
 	def check(self, task):
-		return os.access(task.job.workspace, os.W_OK)
+		return access(task.job.workspace, W_OK)
 
 
 class DiskspacePrecondition(Condition):
@@ -481,9 +482,8 @@ class DiskspacePrecondition(Condition):
 		self.diskspace_available = 0
 
 	def check(self, task):
-		import os
 		try:
-			s = os.statvfs(task.job.workspace)
+			s = statvfs(task.job.workspace)
 			self.diskspace_available = s.f_bsize * s.f_bavail
 			return self.diskspace_available >= self.diskspace_required
 		except OSError:
@@ -495,16 +495,15 @@ class DiskspacePrecondition(Condition):
 
 class ToolExistsPrecondition(Condition):
 	def check(self, task):
-		import os
 		if task.cmd[0] == '/':
 			self.realpath = task.cmd
 			print("[Task] ToolExistsPrecondition WARNING: usage of absolute paths for tasks should be avoided!")
-			return os.access(self.realpath, os.X_OK)
+			return access(self.realpath, X_OK)
 		else:
 			self.realpath = task.cmd
-			path = os.environ.get('PATH', '').split(os.pathsep)
+			path = environ.get('PATH', '').split(pathsep)
 			path.append(task.cwd + '/')
-			absolutes = list(filter(lambda file: os.access(file, os.X_OK), list(map(lambda directory, file=task.cmd: os.path.join(directory, file), path))))
+			absolutes = list(filter(lambda file: access(file, X_OK), list(map(lambda directory, file=task.cmd: join(directory, file), path))))
 			if absolutes:
 				self.realpath = absolutes[0]
 				return True

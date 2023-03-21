@@ -6,7 +6,8 @@ from Components.NimManager import nimmanager
 from Components.Opkg import OpkgComponent
 from Components.config import config, configfile
 from enigma import eConsoleAppContainer, eDVBDB
-import os
+from os import listdir
+from os.path import isfile
 from Components.SystemInfo import BoxInfo
 
 
@@ -210,7 +211,7 @@ class PackageInfoHandler:
 		if not isinstance(self.directory, list):
 			self.directory = [self.directory]
 
-		for indexfile in os.listdir(self.directory[0]):
+		for indexfile in listdir(self.directory[0]):
 			if indexfile.startswith("index-"):
 				if indexfile.endswith(".xml"):
 					if indexfile[-7:-6] == "_":
@@ -219,7 +220,7 @@ class PackageInfoHandler:
 		if len(indexfileList):
 			for file in indexfileList:
 				neededFile = self.directory[0] + "/" + file
-				if os.path.isfile(neededFile):
+				if isfile(neededFile):
 					self.readIndex(self.directory[0] + "/", neededFile)
 
 		if prerequisites:
@@ -357,7 +358,7 @@ class PackageInfoHandler:
 			self.mergeServices(service["directory"], service["name"])
 
 	def readfile(self, filename):
-		if not os.path.isfile(filename):
+		if not isfile(filename):
 			return []
 		fd = open(filename)
 		lines = fd.readlines()
@@ -365,7 +366,7 @@ class PackageInfoHandler:
 		return lines
 
 	def mergeConfig(self, directory, name, merge=True):
-		if os.path.isfile(directory + name):
+		if isfile(directory + name):
 			config.loadFromFile(directory + name, base_file=False)
 			configfile.save()
 		self.installNext()
@@ -394,7 +395,7 @@ class PackageInfoHandler:
 				self.installNext()
 
 	def mergeServices(self, directory, name, merge=False):
-		if os.path.isfile(directory + name):
+		if isfile(directory + name):
 			db = eDVBDB.getInstance()
 			db.reloadServicelist()
 			db.loadServicelist(directory + name)

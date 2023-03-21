@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-import os
+from os import rename, remove
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Tools.PyVerHelper import getPyExt
 
 filename = resolveFilename(SCOPE_PLUGINS, "Extensions/MediaPortal/plugin.%s" % getPyExt())
-os.rename(filename, filename + ".org")
+rename(filename, filename + ".org")
 
 source = open(filename + ".org", "r")
 dest = open(filename, "w")
@@ -25,4 +25,4 @@ for line, str in enumerate(source):
 
 del source
 del dest
-os.remove(filename + ".org")
+remove(filename + ".org")

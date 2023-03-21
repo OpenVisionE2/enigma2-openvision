@@ -15,7 +15,8 @@ from ServiceReference import ServiceReference
 from enigma import eServiceReference
 from Components.Pixmap import Pixmap
 from Components.Label import Label
-import os
+from os import listdir
+from os.path import isdir, isfile
 
 
 class hotkey:
@@ -265,12 +266,12 @@ def getHotkeyFunctions():
 	hotkey.functions.append((_("Memory Info"), "Module/Screens.Information/MemoryInformation", "Setup"))
 	if BoxInfo.getItem("canMultiBoot"):
 		hotkey.functions.append((_("MultiBoot Image Selector"), "Module/Screens.FlashImage/MultiBootSelection", "Setup"))
-	if os.path.isdir("/etc/ppanels"):
-		for x in [x for x in os.listdir("/etc/ppanels") if x.endswith(".xml")]:
+	if isdir("/etc/ppanels"):
+		for x in [x for x in listdir("/etc/ppanels") if x.endswith(".xml")]:
 			x = x[:-4]
 			hotkey.functions.append((_("PPanel") + " " + x, "PPanel/" + x, "PPanels"))
-	if os.path.isdir("/usr/script"):
-		for x in [x for x in os.listdir("/usr/script") if x.endswith(".sh")]:
+	if isdir("/usr/script"):
+		for x in [x for x in listdir("/usr/script") if x.endswith(".sh")]:
 			x = x[:-3]
 			hotkey.functions.append((_("Shellscript") + " " + x, "Shellscript/" + x, "Shellscripts"))
 
@@ -728,12 +729,12 @@ class InfoBarHotkey():
 					config.movielist.last_videodir.value = moviepath
 			elif selected[0] == "PPanel":
 				ppanelFileName = '/etc/ppanels/' + selected[1] + ".xml"
-				if os.path.isfile(ppanelFileName) and os.path.isdir(resolveFilename(SCOPE_PLUGINS, 'Extensions/PPanel')):
+				if isfile(ppanelFileName) and isdir(resolveFilename(SCOPE_PLUGINS, 'Extensions/PPanel')):
 					from Plugins.Extensions.PPanel.ppanel import PPanel
 					self.session.open(PPanel, name=selected[1] + ' PPanel', node=None, filename=ppanelFileName, deletenode=None)
 			elif selected[0] == "Shellscript":
 				command = '/usr/script/' + selected[1] + ".sh"
-				if os.path.isfile(command):
+				if isfile(command):
 					if ".hidden." in command:
 						from enigma import eConsoleAppContainer
 						eConsoleAppContainer().execute(command)

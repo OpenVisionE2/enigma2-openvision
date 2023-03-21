@@ -2,7 +2,6 @@
 from Components.config import config, ConfigSelection, ConfigSubDict, ConfigYesNo
 from Components.SystemInfo import BoxInfo
 from Tools.CList import CList
-import os
 from enigma import getDesktop
 from Components.About import about
 from Tools.Directories import fileExists

@@ -10,7 +10,6 @@ from Screens.MessageBox import MessageBox
 
 profile("LOAD:enigma")
 import enigma
-import os
 from os import sys
 
 profile("LOAD:InfoBarGenerics")

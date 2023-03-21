@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import os
+from os import remove
+from os.path import isfile
 from threading import Thread, current_thread
 from sys import _current_frames
 from traceback import extract_stack
@@ -29,8 +30,8 @@ class StackTracePrinter(Thread):
 
 	def run(self):
 		while (self.__running == True):
-			if (os.path.isfile("/tmp/doPythonStackTrace")):
-				os.remove("/tmp/doPythonStackTrace")
+			if (isfile("/tmp/doPythonStackTrace")):
+				remove("/tmp/doPythonStackTrace")
 				if config.crash.pythonStackOnSpinner.value:
 					print("[StackTrace] StackTrace")
 					code = []

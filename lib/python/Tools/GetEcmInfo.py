@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
+from os import stat
 import time
 
 ECM_INFO = '/tmp/ecm.info'
@@ -18,7 +18,7 @@ class GetEcmInfo:
 		global info
 		global ecm
 		try:
-			ecm_time = os.stat(ECM_INFO).st_mtime
+			ecm_time = stat(ECM_INFO).st_mtime
 		except:
 			ecm_time = old_ecm_time
 			data = EMPTY_ECM_INFO

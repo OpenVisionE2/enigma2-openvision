@@ -21,7 +21,8 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_GUISKIN, isP
 from Tools.LoadPixmap import LoadPixmap
 
 from time import time
-import os
+from os import unlink
+from os.path import normpath
 
 language.addCallback(plugins.reloadPlugins)
 
@@ -404,7 +405,7 @@ class PluginDownloadBrowser(Screen):
 			dest = result[1]
 			if dest.startswith('/'):
 				# Custom install path, add it to the list too
-				dest = os.path.normpath(dest)
+				dest = normpath(dest)
 				extra = '--add-dest %s:%s -d %s' % (dest, dest, dest)
 				Opkg.opkgAddDestination(dest)
 			else:
@@ -501,7 +502,7 @@ class PluginDownloadBrowser(Screen):
 				print("[PluginBrowser] postInstallCall failed:", ex)
 			self.resetPostInstall()
 		try:
-			os.unlink('/tmp/opkg.conf')
+			unlink('/tmp/opkg.conf')
 		except:
 			pass
 		for plugin in self.pluginlist:

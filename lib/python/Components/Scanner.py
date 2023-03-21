@@ -3,7 +3,8 @@ from Plugins.Plugin import PluginDescriptor
 from Components.config import config
 from Components.PluginComponent import plugins
 
-import os
+from os import walk
+from os.path import join
 from mimetypes import guess_type, add_type
 
 add_type("audio/dts", ".dts")
@@ -177,12 +178,12 @@ def scanDevice(mountpoint):
 	blockdev = mountpoint.rstrip("/").rsplit('/', 1)[-1]
 	error, blacklisted, removable, is_cdrom, partitions, medium_found = harddiskmanager.getBlockDevInfo(blockdev)
 	for p in paths_to_scan:
-		for root, dirs, files in os.walk(mountpoint): # now scan the files paths.
+		for root, dirs, files in walk(mountpoint): # now scan the files paths.
 			for f in files:
 				if (is_cdrom and f.endswith(".wav") and f.startswith("track")) or f == "cdplaylist.cdpls":
-					sfile = ScanFile(os.path.join(root, f), "audio/x-cda")
+					sfile = ScanFile(join(root, f), "audio/x-cda")
 				else:
-					sfile = ScanFile(os.path.join(root, f))
+					sfile = ScanFile(join(root, f))
 				for s in scanner:
 					s.handleFile(res, sfile)
 

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
-import os
+from os import listdir
+from os.path import isdir, join
 import string
 import re
 from xml.sax import make_parser
@@ -47,10 +48,10 @@ if not no_comments:
 	parser.setProperty(property_lexical_handler, contentHandler)
 
 for arg in sys.argv[1:]:
-	if os.path.isdir(arg):
-		for file in os.listdir(arg):
+	if isdir(arg):
+		for file in listdir(arg):
 			if file.endswith(".xml"):
-				parser.parse(os.path.join(arg, file))
+				parser.parse(join(arg, file))
 	else:
 		try:
 			parser.parse(arg)

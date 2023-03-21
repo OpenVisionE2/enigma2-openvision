@@ -7,7 +7,8 @@ from time import mktime, strftime, time, localtime
 from enigma import eTimer
 
 #for downloader
-import os
+from os import remove, walk
+from os.path import join
 import re
 from six.moves.urllib.error import URLError, HTTPError
 from six.moves.urllib.request import Request, urlopen
@@ -299,7 +300,7 @@ class ChannelsImporter():
 		print("[ChannelsImporter] importEPGCallback '%s%s' downloaded successfully from server." % (self.remoteEPGpath, self.remoteEPGfile))
 		print("[ChannelsImporter] importEPGCallback Removing current EPG data...")
 		try:
-			os.remove(config.misc.epgcache_filename.value)
+			remove(config.misc.epgcache_filename.value)
 		except OSError:
 			pass
 		self.copyFile(self.DIR_TMP + "epg.dat", config.misc.epgcache_filename.value)
@@ -329,10 +330,10 @@ class ChannelsImporter():
 
 	def removeFiles(self, targetdir, target):
 		targetLen = len(target)
-		for root, dirs, files in os.walk(targetdir):
+		for root, dirs, files in walk(targetdir):
 			for name in files:
 				if target in name[:targetLen]:
-					os.remove(os.path.join(root, name))
+					remove(join(root, name))
 
 	def copyFile(self, source, dest):
 		import shutil
@@ -363,7 +364,7 @@ class ChannelsImporter():
 		except Exception as err:
 			try:
 				if "550" in str(err) and sourcefile != "epg.dat":
-					os.remove(self.DIR_TMP + sourcefile)
+					remove(self.DIR_TMP + sourcefile)
 					AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Imported list with bouquet empty <n/a> %s file does not exist") % sourcefile, type=MessageBox.TYPE_ERROR, timeout=5)
 					return True
 			except Exception as err:

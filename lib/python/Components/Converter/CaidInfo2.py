@@ -4,7 +4,7 @@ from enigma import iServiceInformation
 from Tools.Directories import fileExists
 from Components.Element import cached
 from Components.Converter.Poll import Poll
-import os
+from os import stat
 
 info = {}
 old_ecm_mtime = None
@@ -482,8 +482,8 @@ class CaidInfo2(Poll, Converter, object):
 		service = self.source.service
 		if service:
 			try:
-				ecm_mtime = os.stat("/tmp/ecm.info").st_mtime
-				if not os.stat("/tmp/ecm.info").st_size > 0:
+				ecm_mtime = stat("/tmp/ecm.info").st_mtime
+				if not stat("/tmp/ecm.info").st_size > 0:
 					info = {}
 				if ecm_mtime == old_ecm_mtime:
 					return info

@@ -34,7 +34,8 @@ __email__ = "9741693+wedebe@users.noreply.github.com"
 
 import time
 from datetime import timedelta
-import os
+from os import stat, walk, system
+from os.path import dirname, abspath, sep, join, getsize, basename
 import glob
 import polib
 import fnmatch
@@ -44,7 +45,7 @@ import mmap
 import sys
 from operator import attrgetter
 
-scriptPath = os.path.dirname(os.path.abspath(__file__)) + os.path.sep
+scriptPath = dirname(abspath(__file__)) + sep
 
 poFiles = scriptPath + "../*.po*"
 codeBasePath = scriptPath + "../.."
@@ -123,13 +124,13 @@ def removeMatchingObsolete(poFile, poEntry):
 
 def getIncludedExcludedPaths(root, dirs, files):
     # exclude dirs
-    # dirs[:] = [os.path.join(root, d) for d in dirs]
+    # dirs[:] = [join(root, d) for d in dirs]
     # dirs[:] = [d for d in dirs if not re.match(excludes, d)]
     # exclude/include files
-    files = [os.path.join(root, f) for f in files]
+    files = [join(root, f) for f in files]
     files = [f for f in files if not re.match(excludes, f)]
     files = [f for f in files if re.match(includes, f)]
-    files.sort(key=lambda f: os.stat(f).st_size, reverse=True) # sort by file size descending
+    files.sort(key=lambda f: stat(f).st_size, reverse=True) # sort by file size descending
     return files
 
 
@@ -173,13 +174,13 @@ def searchCodebaseForOccurrences(poFile):
         unCachedEntries = getUncachedEntries(poFile)
         if len(unCachedEntries) > 0:
             print("Searching for %d occurrences..." % len(unCachedEntries))
-            for root, dirs, files in os.walk(codeBasePath, topdown=True, onerror=None):
+            for root, dirs, files in walk(codeBasePath, topdown=True, onerror=None):
                 for fName in getIncludedExcludedPaths(root, dirs, files):
                     indicateProgress()
                     sys.stdout.flush()
                     try:
                         baseDirectory = fName.replace(codeBasePath, "")
-                        size = os.stat(fName).st_size
+                        size = stat(fName).st_size
                         f2 = open(fName)
                         data = mmap.mmap(f2.fileno(), size, access=mmap.ACCESS_READ)
                         entryIndex = 0
@@ -275,14 +276,14 @@ def main():
     try:
         filesGlob = glob.glob(poFiles)
         fileCountStr = str(len(filesGlob))
-        poFilesGlob = sorted(filesGlob, key=os.path.getsize, reverse=True)
+        poFilesGlob = sorted(filesGlob, key=getsize, reverse=True)
         fileIndex = 0
-        os.system('clear')
+        system('clear')
         print("Running... (first file will take substantially longer as there's no cache)")
 
         for fileName in poFilesGlob:
             fileIndex = fileIndex + 1
-            baseFileName = os.path.basename(fileName)
+            baseFileName = basename(fileName)
             print(("Processing file %3d" % fileIndex) + "/" + str(fileCountStr) + " (" + baseFileName + ")")
             poFile = processPoFile(fileName)
             poFile.save(fileName + prefs['newFileExt'])

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import os
+from os import listdir
+from os.path import join, isdir
 import re
 import unicodedata
 from Components.Renderer.Renderer import Renderer
@@ -23,9 +24,9 @@ class PiconLocator:
 
 	def __onMountpointAdded(self, mountpoint):
 		try:
-			path = os.path.join(mountpoint, self.piconDirectories) + '/'
-			if os.path.isdir(path) and path not in self.searchPaths:
-				for fn in os.listdir(path):
+			path = join(mountpoint, self.piconDirectories) + '/'
+			if isdir(path) and path not in self.searchPaths:
+				for fn in listdir(path):
 					if fn.endswith('.png') or fn.endswith('.svg'):
 						print("[Picon] adding path:", path)
 						self.searchPaths.append(path)
@@ -34,7 +35,7 @@ class PiconLocator:
 			pass
 
 	def __onMountpointRemoved(self, mountpoint):
-		path = os.path.join(mountpoint, self.piconDirectories) + '/'
+		path = join(mountpoint, self.piconDirectories) + '/'
 		try:
 			self.searchPaths.remove(path)
 			print("[Picon] removed path:", path)

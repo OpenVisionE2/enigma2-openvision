@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from ServiceReference import ServiceReference
 from enigma import eServiceReference
-import os
+from os.path import dirname
 
 
 class PlaylistIO:
@@ -33,7 +33,7 @@ class PlaylistIO:
 		if entry[0] == "/":
 			path = entry
 		else:
-			path = os.path.dirname(filename) + "/" + entry
+			path = dirname(filename) + "/" + entry
 			for proto in self.REMOTE_PROTOS:
 				if entry.startswith(proto):
 					path = entry

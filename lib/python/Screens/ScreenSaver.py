@@ -6,7 +6,7 @@ from Components.Pixmap import Pixmap
 from Components.config import config
 import Screens.Standby
 from enigma import ePoint, eTimer, iPlayableService, eActionMap
-import os
+from os.path import splitext
 import random
 from sys import maxsize
 from os import sys
@@ -41,7 +41,7 @@ class InfoBarScreenSaver:
 			ref = self.session.nav.getCurrentlyPlayingServiceReference()
 			if ref and not pip_show:
 				ref = ref.toString().split(":")
-				flag = ref[2] in ("2", "A") or os.path.splitext(ref[10])[1].lower() in AUDIO_EXTENSIONS
+				flag = ref[2] in ("2", "A") or splitext(ref[10])[1].lower() in AUDIO_EXTENSIONS
 		if time and flag and not pip_show:
 			self.screenSaverTimer.startLongTimer(time)
 		else:
@@ -104,7 +104,7 @@ class Screensaver(Screen):
 			ref = self.session.nav.getCurrentlyPlayingServiceReference()
 			if ref:
 				ref = ref.toString().split(":")
-				if not os.path.splitext(ref[10])[1].lower() in AUDIO_EXTENSIONS:
+				if not splitext(ref[10])[1].lower() in AUDIO_EXTENSIONS:
 					self.hide()
 
 	def doMovePicture(self):

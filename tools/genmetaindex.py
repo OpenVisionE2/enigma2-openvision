@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # usage: genmetaindex.py <xml-files>  > index.xml
 import sys
-import os
+from os.path import basename
 from xml.etree.ElementTree import ElementTree, Element
 
 root = Element("index")
@@ -12,7 +12,7 @@ for file in sys.argv[1:]:
 	p.parse(file)
 
 	package = Element("package")
-	package.set("details", os.path.basename(file))
+	package.set("details", basename(file))
 
 	# we need all prerequisites
 	package.append(p.find("prerequisites"))

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
+from os.path import isfile
 from datasource import datasource
 from xml.dom import minidom
 from xml.dom.minidom import Document
@@ -11,7 +11,7 @@ class satxml(datasource):
 		self.filename = filename
 		datasource.__init__(self)
 
-		if not os.path.isfile(filename):
+		if not isfile(filename):
 			print("[satxml] File %s doesn't exist. Creating it." % filename)
 
 	def getStatus(self):
