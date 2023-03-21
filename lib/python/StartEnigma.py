@@ -55,8 +55,8 @@ class Session:
 				plugin.__call__(reason=0, session=self)
 			except:
 				print("[StartEnigma] Error: Plugin raised exception at WHERE_SESSIONSTART!")
-				import traceback
-				traceback.print_exc()
+				from traceback import print_exc
+				print_exc()
 
 	def processDelay(self):
 		callback = self.current_dialog.callback
@@ -515,7 +515,6 @@ print("[StartEnigma] Enigma2 revision = %s" % getE2Rev())
 
 profile("Imports")
 from os.path import isdir, isfile, islink, join as pathjoin
-from traceback import print_exc
 from time import localtime, strftime, time
 
 from Components.config import ConfigInteger, ConfigOnOff, ConfigSubsection, ConfigText, ConfigYesNo, NoSave, config, configfile
@@ -639,10 +638,6 @@ if enigma.eAVSwitch.getInstance().haveScartSwitch():
 profile("VolumeControl")
 from Components.VolumeControl import VolumeControl
 
-profile("StackTracePrinter")
-from Components.StackTrace import StackTracePrinter
-StackTracePrinterInst = StackTracePrinter()
-
 profile("Skin")
 from skin import InitSkins
 InitSkins()
@@ -674,6 +669,11 @@ Components.RecordingConfig.InitRecordingConfig()
 profile("UsageConfig")
 import Components.UsageConfig
 Components.UsageConfig.InitUsageConfig()
+
+if config.crash.pythonStackOnSpinner.value:
+	profile("StackTracePrinter")
+	from Components.StackTrace import StackTracePrinter
+	StackTracePrinterInst = StackTracePrinter()
 
 profile("TimeZones")
 from Components.Timezones import InitTimeZones
@@ -729,6 +729,7 @@ try:
 except Exception:
 	print("Error: Exception in Python StartEnigma startup code:")
 	print("=" * 52)
+	from traceback import print_exc
 	print_exc(file=stdout)
 	enigma.quitMainloop(5)  # QUIT_ERROR_RESTART
 	print("-" * 52)

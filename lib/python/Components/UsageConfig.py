@@ -1249,20 +1249,25 @@ def InitUsageConfig():
 	config.usage.keymap = ConfigText(default=eEnv.resolve("${datadir}/enigma2/keymap.xml"))
 	config.usage.alternative_imagefeed = ConfigText(default="", fixed_size=False)
 
-	# config.crash = ConfigSubsection()
-
-	def updateStackTracePrinter(configElement):
-		from Components.StackTrace import StackTracePrinter
-		if configElement.value:
-			if (isfile("/tmp/doPythonStackTrace")):
-				remove("/tmp/doPythonStackTrace")
-			from threading import current_thread
-			StackTracePrinter.getInstance().activate(current_thread().ident)
-		else:
-			StackTracePrinter.getInstance().deactivate()
-
 	config.crash.pythonStackOnSpinner = ConfigYesNo(default=False)
-	config.crash.pythonStackOnSpinner.addNotifier(updateStackTracePrinter, immediate_feedback=False, initial_call=True)
+	if config.crash.pythonStackOnSpinner.value:
+		def updateStackTracePrinter(configElement):
+			from Components.StackTrace import StackTracePrinter
+			if configElement.value:
+				if (isfile("/tmp/doPythonStackTrace")):
+					remove("/tmp/doPythonStackTrace")
+				from threading import current_thread
+				try:
+					StackTracePrinter.getInstance().activate(current_thread().ident)
+				except:
+					pass
+			else:
+				try:
+					StackTracePrinter.getInstance().deactivate()
+				except:
+					pass
+		config.crash.pythonStackOnSpinner.addNotifier(updateStackTracePrinter, immediate_feedback=False, initial_call=True)
+
 	config.crash.debugLevel = ConfigSelection(choices=[
 		("3", _("No debug logs")),
 		("4", _("Basic debug logs")),
