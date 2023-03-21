@@ -470,10 +470,10 @@ class PowerTimerEntry(TimerEntry, object):
 					return False
 				if not Screens.Standby.inTryQuitMainloop:  # Not a shutdown messagebox is open.
 					if Screens.Standby.inStandby:  # In standby.
-						quitMainloop(1)
+						quitMainloop(1) # Shutdown
 						return True
 					else:
-						AddNotificationWithUniqueIDCallback(self.sendTryQuitMainloopNotification, "PT_StateChange", MessageBox, _("A finished powertimer wants to shutdown your receiver. Do that now?"), timeout=180)
+						AddNotificationWithUniqueIDCallback(self.sendTryToShutdownNotification, "PT_StateChange", MessageBox, _("A finished powertimer wants to shutdown your receiver. Do that now?"), timeout=180)
 						if self.autosleeprepeat == "once":
 							eActionMap.getInstance().unbindAction("", self.keyPressed)
 							return True
@@ -489,9 +489,9 @@ class PowerTimerEntry(TimerEntry, object):
 					return False
 				if not Screens.Standby.inTryQuitMainloop:  # Not a shutdown messagebox is open.
 					if Screens.Standby.inStandby:  # In standby.
-						quitMainloop(1)
+						quitMainloop(1) # Shutdown
 					else:
-						AddNotificationWithUniqueIDCallback(self.sendTryQuitMainloopNotification, "PT_StateChange", MessageBox, _("A finished powertimer wants to shutdown your receiver. Do that now?"), timeout=180)
+						AddNotificationWithUniqueIDCallback(self.sendTryToShutdownNotification, "PT_StateChange", MessageBox, _("A finished powertimer wants to shutdown your receiver. Do that now?"), timeout=180)
 				return True
 			elif self.timerType == TIMERTYPE.REBOOT:
 				if NavigationInstance.instance.RecordTimer.isRecording() or abs(NavigationInstance.instance.RecordTimer.getNextRecordingTime() - time()) <= 900 or abs(NavigationInstance.instance.RecordTimer.getNextZapTime() - time()) <= 900:
@@ -499,7 +499,7 @@ class PowerTimerEntry(TimerEntry, object):
 					return False
 				if not Screens.Standby.inTryQuitMainloop:  # Not a shutdown messagebox is open.
 					if Screens.Standby.inStandby:  # In standby.
-						quitMainloop(2)
+						quitMainloop(2) # Reboot
 					else:
 						AddNotificationWithUniqueIDCallback(self.sendTryToRebootNotification, "PT_StateChange", MessageBox, _("A finished powertimer wants to reboot your receiver. Do that now?"), timeout=180)
 				return True
@@ -509,7 +509,7 @@ class PowerTimerEntry(TimerEntry, object):
 					return False
 				if not Screens.Standby.inTryQuitMainloop:  # Not a shutdown messagebox is open.
 					if Screens.Standby.inStandby:  # In standby.
-						quitMainloop(3)
+						quitMainloop(3) # Restart
 					else:
 						AddNotificationWithUniqueIDCallback(self.sendTryToRestartNotification, "PT_StateChange", MessageBox, _("A finished powertimer wants to restart the user interface.\nDo that now?"), timeout=180)
 				return True
@@ -525,9 +525,9 @@ class PowerTimerEntry(TimerEntry, object):
 					return False
 				if not Screens.Standby.inTryQuitMainloop:  # Not a shutdown messagebox is open.
 					if Screens.Standby.inStandby:  # In standby.
-						quitMainloop(1)
+						quitMainloop(1) # Shutdown
 					else:
-						AddNotificationWithUniqueIDCallback(self.sendTryQuitMainloopNotification, "PT_StateChange", MessageBox, _("A finished powertimer wants to shutdown your receiver. Do that now?"), timeout=180)
+						AddNotificationWithUniqueIDCallback(self.sendTryToShutdownNotification, "PT_StateChange", MessageBox, _("A finished powertimer wants to shutdown your receiver. Do that now?"), timeout=180)
 			return True
 
 	def setAutoincreaseEnd(self, entry=None):
@@ -554,7 +554,7 @@ class PowerTimerEntry(TimerEntry, object):
 		if answer:
 			AddNotification(Screens.Standby.Standby)
 
-	def sendTryQuitMainloopNotification(self, answer):
+	def sendTryToShutdownNotification(self, answer):
 		if answer:
 			AddNotification(Screens.Standby.TryQuitMainloop, 1)
 

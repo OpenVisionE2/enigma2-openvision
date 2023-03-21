@@ -178,7 +178,7 @@ class AutoInstall(Screen):
 			self.container.dataAvail.remove(self.dataAvail)
 		self.container = None
 		self.logfile.close()
-		quitMainloop(43)
+		quitMainloop(43) # restart for autobackup restore
 
 
 if not isfile("/etc/installed"):

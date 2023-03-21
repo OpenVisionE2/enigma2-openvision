@@ -39,8 +39,6 @@
 #include "bsod.h"
 #include "version_info.h"
 
-#include <Python.h>
-
 #ifdef OBJECT_DEBUG
 int object_total_remaining;
 
@@ -229,7 +227,7 @@ void quitMainloop(int exitCode)
 			close(fd);
 		}
 		else
-			eDebug("[Enigma] quitMainloop open /dev/dbox/fp0 for wakeup timer clear failed!  (%m)");
+			eTrace("[Enigma] quitMainloop open /dev/dbox/fp0 for wakeup timer clear failed!  (%m)");
 	}
 	exit_code = exitCode;
 	eApp->quit(0);
@@ -308,11 +306,7 @@ int main(int argc, char **argv)
 	setenv("PYTHONPATH", eEnv::resolve("${libdir}/enigma2/python").c_str(), 0);
 
 	// get enigma2 debug level settings
-#if PY_MAJOR_VERSION >= 3
-	debugLvl = getenv("ENIGMA_DEBUG_LVL") ? atoi(getenv("ENIGMA_DEBUG_LVL")) : 4;
-#else
 	debugLvl = getenv("ENIGMA_DEBUG_LVL") ? atoi(getenv("ENIGMA_DEBUG_LVL")) : 3;
-#endif
 	if (debugLvl < 0)
 		debugLvl = 0;
 	if (getenv("ENIGMA_DEBUG_TIME"))

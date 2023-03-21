@@ -221,7 +221,7 @@ class PowerKey:
 	def shutdown(self):
 		print("[StartEnigma] Power off, now!")
 		if not Screens.Standby.inTryQuitMainloop and self.session.current_dialog and self.session.current_dialog.ALLOW_SUSPEND:
-			self.session.open(Screens.Standby.TryQuitMainloop, 1)  # QUIT_SHUTDOWN
+			self.session.open(Screens.Standby.TryQuitMainloop, 1)  # Shutdown
 		else:
 			return 0
 

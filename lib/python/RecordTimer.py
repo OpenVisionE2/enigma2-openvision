@@ -1231,7 +1231,7 @@ class RecordTimerEntry(TimerEntry, object):
 							RecordTimerEntry.TryQuitMainloop()
 						else:
 							msg = _("A completed recording timer is about to shut down your receiver. Would you like to proceed?")
-							AddNotificationWithCallback(self.sendTryQuitMainloopNotification, MessageBox, msg, timeout=20, default=True)
+							AddNotificationWithCallback(self.sendTryToShutdownNotification, MessageBox, msg, timeout=20, default=True)
 				elif self.afterEvent == AFTEREVENT.STANDBY or (not wasRecTimerWakeup and self.autostate and self.afterEvent == AFTEREVENT.AUTO) or RecordTimerEntry.wasInStandby:
 					if not Screens.Standby.inStandby:
 						msg = _("A completed recording timer is about to put your receiver in standby mode. Would you like to proceed?")
@@ -1337,7 +1337,7 @@ class RecordTimerEntry(TimerEntry, object):
 		if answer:
 			AddNotification(Screens.Standby.Standby)
 
-	def sendTryQuitMainloopNotification(self, answer):
+	def sendTryToShutdownNotification(self, answer):
 		RecordTimerEntry.keypress()
 		if answer:
 			AddNotification(Screens.Standby.TryQuitMainloop, 1)

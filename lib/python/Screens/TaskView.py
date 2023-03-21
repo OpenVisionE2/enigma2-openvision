@@ -147,7 +147,7 @@ class JobView(InfoBarNotifications, ConfigListScreen, Screen):
 		if self.settings.afterEvent.getValue() == "deepstandby":
 			if not Screens.Standby.inTryQuitMainloop:
 				msg = _("A sleep timer is about to shut down your receiver. Would you like to proceed?")
-				AddNotificationWithCallback(self.sendTryQuitMainloopNotification, MessageBox, msg, timeout=20)
+				AddNotificationWithCallback(self.sendTryToShutdownNotification, MessageBox, msg, timeout=20)
 		elif self.settings.afterEvent.getValue() == "standby":
 			if not Screens.Standby.inStandby:
 				msg = _("A sleep timer is about to put your receiver in standby mode. Would you like to proceed?")
@@ -163,6 +163,6 @@ class JobView(InfoBarNotifications, ConfigListScreen, Screen):
 		if answer:
 			AddNotification(Screens.Standby.Standby)
 
-	def sendTryQuitMainloopNotification(self, answer):
+	def sendTryToShutdownNotification(self, answer):
 		if answer:
 			AddNotification(Screens.Standby.TryQuitMainloop, 1)

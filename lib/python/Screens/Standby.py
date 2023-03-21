@@ -32,13 +32,13 @@ QUIT_SHUTDOWN = 1
 QUIT_REBOOT = 2
 QUIT_RESTART = 3
 QUIT_UPGRADE_FP = 4
-QUIT_ERROR_RESTART = 5
+QUIT_ERROR_RESTART = 5 # install new settings?
 QUIT_DEBUG_RESTART = 6
 QUIT_MANUFACTURER_RESET = 7
 QUIT_REBOOT_ANDROID = 12
 QUIT_REBOOT_RECOVERY = 16
 QUIT_UPGRADE_PROGRAM = 42
-QUIT_IMAGE_RESTORE = 43
+QUIT_IMAGE_RESTORE = 43 # restart for autobackup restore?
 QUIT_UPGRADE_FPANEL = 44
 QUIT_WOL = 45
 
@@ -240,8 +240,10 @@ class StandbyScreen(Screen):
 			RecordTimer.RecordTimerEntry.stopTryQuitMainloop()
 		self.avswitch.setInput("ENCODER")
 		self.leaveMute()
+
 		if isfile("/usr/script/standby_leave.sh"):
 			Console().ePopen("/usr/script/standby_leave.sh")
+
 		if config.usage.remote_fallback_import_standby.value and not config.clientmode.enabled.value:
 			ImportChannels()
 
@@ -368,13 +370,13 @@ class QuitMainloopScreen(Screen):
 			QUIT_SHUTDOWN: _("Your %s %s is shutting down") % (displaybrand, displaymodel),
 			QUIT_REBOOT: _("Your %s %s is rebooting") % (displaybrand, displaymodel),
 			QUIT_RESTART: _("The user interface of your %s %s is restarting") % (displaybrand, displaymodel),
-			QUIT_UPGRADE_FP: _("Your frontprocessor will be updated\nPlease wait until your %s %s reboots\nThis may take a few minutes") % (displaybrand, displaymodel),
+			QUIT_UPGRADE_FP: _("Front processor of your %s %s will be updated\nThis may take a few minutes") % (displaybrand, displaymodel),
 			QUIT_DEBUG_RESTART: _("The user interface of your %s %s is restarting in debug mode") % (displaybrand, displaymodel),
 			QUIT_REBOOT_ANDROID: _("Your %s %s is rebooting into android mode") % (displaybrand, displaymodel),
 			QUIT_REBOOT_RECOVERY: _("Your %s %s is rebooting into recovery mode") % (displaybrand, displaymodel),
 			QUIT_UPGRADE_PROGRAM: _("Unattended update in progress\nPlease wait until your %s %s reboots\nThis may take a few minutes") % (displaybrand, displaymodel),
 			QUIT_MANUFACTURER_RESET: _("Manufacturer reset in progress\nPlease wait until your %s %s restarts") % (displaybrand, displaymodel),
-			QUIT_UPGRADE_FPANEL: _("Front panel your %s %s will be updated\nThis may take a few minutes") % (displaybrand, displaymodel),
+			QUIT_UPGRADE_FPANEL: _("Front panel of your %s %s will be updated\nThis may take a few minutes") % (displaybrand, displaymodel),
 			QUIT_WOL: _("Your %s %s goes to WOL") % (displaybrand, displaymodel)
 		}.get(retvalue)
 		self["text"] = Label(text)
@@ -414,17 +416,17 @@ class TryQuitMainloop(MessageBox):
 		reason = check_reasons and getReasons(session, retvalue)
 		if reason:
 			text = {
-				QUIT_SHUTDOWN: _("Really shutdown now?"),
-				QUIT_REBOOT: _("Really reboot now?"),
-				QUIT_RESTART: _("Really restart now?"),
-				QUIT_UPGRADE_FP: _("Really update the front processor and reboot now?"),
-				QUIT_DEBUG_RESTART: _("Really restart in debug mode now?"),
+				QUIT_SHUTDOWN: _("Really shutdown?"),
+				QUIT_REBOOT: _("Really reboot?"),
+				QUIT_RESTART: _("Really restart?"),
+				QUIT_UPGRADE_FP: _("Really update the front processor and reboot?"),
+				QUIT_DEBUG_RESTART: _("Really restart in debug mode?"),
 				QUIT_REBOOT_ANDROID: _("Really reboot into android mode?"),
 				QUIT_REBOOT_RECOVERY: _("Really reboot into recovery mode?"),
-				QUIT_UPGRADE_PROGRAM: _("Really update your settop box and reboot now?"),
-				QUIT_MANUFACTURER_RESET: _("Really perform a manufacturer reset now?"),
-				QUIT_UPGRADE_FPANEL: _("Really update the front panel and reboot now?"),
-				QUIT_WOL: _("Really WOL now?")
+				QUIT_UPGRADE_PROGRAM: _("Really update your STB and reboot?"),
+				QUIT_MANUFACTURER_RESET: _("Really perform a manufacturer reset?"),
+				QUIT_UPGRADE_FPANEL: _("Really update the front panel and reboot?"),
+				QUIT_WOL: _("Really go to WOL?")
 			}.get(retvalue, None)
 			if text:
 				MessageBox.__init__(self, session, "%s\n%s" % (reason, text), type=MessageBox.TYPE_YESNO, timeout=timeout, default=default_yes)
@@ -459,9 +461,8 @@ class TryQuitMainloop(MessageBox):
 			self.hide()
 			if self.retval == QUIT_SHUTDOWN:
 				config.misc.DeepStandby.value = True
-				if not inStandby:
-					if isfile("/usr/script/standby_enter.sh"):
-						Console().ePopen("/usr/script/standby_enter.sh")
+				if not inStandby and isfile("/usr/script/standby_enter.sh"):
+					Console().ePopen("/usr/script/standby_enter.sh")
 			elif not inStandby:
 				config.misc.RestartUI.value = True
 				config.misc.RestartUI.save()
@@ -528,4 +529,4 @@ class SwitchToAndroid(Screen):
 
 	def switchAndroid(self):
 		self.onShown.remove(self.switchAndroid)
-		self.session.openWithCallback(self.goAndroid, MessageBox, _("\n Do you want to switch to Android ?"))
+		self.session.openWithCallback(self.goAndroid, MessageBox, _("\n Do you want to switch to Android?"))
