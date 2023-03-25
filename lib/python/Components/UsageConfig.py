@@ -33,26 +33,16 @@ def InitUsageConfig():
 			Console().ePopen("sed -i '$a@reboot root rm -f /home/root/.cache/gstreamer-0.10/registry.arm.bin' /etc/crontab")
 		else:
 			print("[UsageConfig] No registry.arm.bin?")
-	if fileContains("/etc/network/interfaces", "iface eth0 inet static") and not fileContains("/etc/network/interfaces", "iface wlan0 inet dhcp") or fileContains("/etc/network/interfaces", "iface wlan0 inet static") and fileContains("/run/ifstate", "wlan0=wlan0"):
-		config.usage.dns = ConfigSelection(default="staticip", choices=[
-			("staticip", _("Static IP Router")),
-			("google", _("Google DNS")),
-			("quad9security", _("Quad9 Security")),
-			("quad9nosecurity", _("Quad9 No Security")),
-			("cloudflare", _("Cloudflare")),
-			("opendns", _("OpenDNS")),
-			("opendns-2", _("OpenDNS-2"))
-		])
-	else:
-		config.usage.dns = ConfigSelection(default="dhcp-router", choices=[
-			("dhcp-router", _("DHCP Router")),
-			("google", _("Google DNS")),
-			("quad9security", _("Quad9 Security")),
-			("quad9nosecurity", _("Quad9 No Security")),
-			("cloudflare", _("Cloudflare")),
-			("opendns", _("OpenDNS")),
-			("opendns-2", _("OpenDNS-2"))
-		])
+	config.usage.dns = ConfigSelection(default="dhcp-router", choices=[
+		("dhcp-router", _("DHCP Router")),
+		("staticip", _("Static IP Router")),
+		("google", _("Google DNS")),
+		("quad9security", _("Quad9 Security")),
+		("quad9nosecurity", _("Quad9 No Security")),
+		("cloudflare", _("Cloudflare")),
+		("opendns", _("OpenDNS")),
+		("opendns-2", _("OpenDNS-2"))
+	])
 	config.usage.subnetwork = ConfigYesNo(default=True)
 	config.usage.subnetwork_cable = ConfigYesNo(default=True)
 	config.usage.subnetwork_terrestrial = ConfigYesNo(default=True)
