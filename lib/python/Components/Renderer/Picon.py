@@ -11,9 +11,9 @@ from ServiceReference import ServiceReference
 
 
 class PiconLocator:
-	def __init__(self, piconDirectories=['picon']):
+	def __init__(self):
 		harddiskmanager.on_partition_list_change.append(self.__onPartitionChange)
-		self.piconDirectories = piconDirectories
+		self.piconDirectories = "picon"
 		self.activePiconPath = None
 		self.searchPaths = []
 		for mp in ('/usr/share/enigma2/', '/'):
@@ -22,26 +22,24 @@ class PiconLocator:
 			self.__onMountpointAdded(part.mountpoint)
 
 	def __onMountpointAdded(self, mountpoint):
-		for piconDirectory in self.piconDirectories:
-			try:
-				path = os.path.join(mountpoint, piconDirectory) + '/'
-				if os.path.isdir(path) and path not in self.searchPaths:
-					for fn in os.listdir(path):
-						if fn.endswith('.png') or fn.endswith('.svg'):
-							print("[Picon] adding path:", path)
-							self.searchPaths.append(path)
-							break
-			except:
-				pass
+		try:
+			path = os.path.join(mountpoint, self.piconDirectories) + '/'
+			if os.path.isdir(path) and path not in self.searchPaths:
+				for fn in os.listdir(path):
+					if fn.endswith('.png') or fn.endswith('.svg'):
+						print("[Picon] adding path:", path)
+						self.searchPaths.append(path)
+						break
+		except:
+			pass
 
 	def __onMountpointRemoved(self, mountpoint):
-		for piconDirectory in self.piconDirectories:
-			path = os.path.join(mountpoint, self.piconDirectories) + '/'
-			try:
-				self.searchPaths.remove(path)
-				print("[Picon] removed path:", path)
-			except:
-				pass
+		path = os.path.join(mountpoint, self.piconDirectories) + '/'
+		try:
+			self.searchPaths.remove(path)
+			print("[Picon] removed path:", path)
+		except:
+			pass
 
 	def __onPartitionChange(self, why, part):
 		if why == 'add':
