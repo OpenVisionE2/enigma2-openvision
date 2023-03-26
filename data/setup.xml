@@ -82,7 +82,7 @@
 		<item level="2" text="Use 12 characters display mode" description="If enabled, display shows 12 chars instead 8, but in latin-1/translit only." requires="hasXcoreVFD">config.usage.vfd_xcorevfd</item>
 		<item level="1" requires="GraphicLCD" text="LCD scroll speed" description="Set the scrolling speed of text on the front panel display.">config.usage.lcd_scroll_speed</item>
 		<item level="1" requires="GraphicLCD" text="Time for next LCD scrolling" description="If the text is too long to be displayed on the front panel display, it will be repeated (number of times):">config.usage.lcd_scroll_delay</item>
-		<item level="1" text="Show Display Icons" description="Allows you to enable/disable displaying icons on the frontpanel.">config.lcd.mode</item>
+		<item level="1" text="Show Display Icons" description="Allows you to enable/disable displaying icons on the front panel.">config.lcd.mode</item>
 		<item level="1" requires="LCDMiniTV" text="Show MiniTV in the front panel display" description="You can display MiniTV with or without OSD menu.">config.lcd.modeminitv</item>
 		<item level="1" requires="LCDMiniTV" text="Show PIP in the front panel display" description="You can display PIP with or without OSD menu.">config.lcd.modepip</item>
 		<item level="1" requires="LCDMiniTV" text="Set framerate for MiniTV" description="Lower framerate save CPU time.">config.lcd.fpsminitv</item>
@@ -403,8 +403,9 @@
 		<item level="0" text="Time zone" description="Select the time zone within the area or region.">config.timezone.val</item>
 		<item level="0" text="Date style" description="Choose the display formatting style for dates. 'D' / 'DD' is the date and 'M' / 'MM' is the month in digits.  ('DD' and 'MM' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin." requires="config.usage.date.enabled">config.usage.date.dayfull</item>
 		<item level="0" text="Time style" description="Choose the display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes and 'ss' is the seconds.  ('HH' and 'hh' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin." requires="config.usage.time.enabled">config.usage.time.long</item>
-		<item level="1" text="Time synchronization method" description="Select how you want your receiver to keep the correct time, either from the DVB transponder, or from the internet using NTP. Or use Auto, which will favour using NTP, but will fall back to transponder time when no internet connection is available.">config.ntp.timesync</item>
-		<item level="1" text="NTP Hostname" conditional="config.ntp.timesync.value != 'dvb'" description="The hostname or the IP address of the NTP server to synchronise the time with.">config.ntp.server</item>
+		<item level="1" text="Time synchronization method" description="Select how you want your receiver to keep the correct time, either from the DVB transponder, or from the internet. Or use Auto, which will favour using internet, but will fall back to transponder time when no internet connection is available.">config.ntp.timesync</item>
+		<item level="1" text="RFC 5905 hostname (SNTP - Simple Network Time Protocol)" conditional="config.ntp.timesync.value != 'dvb'" description="The hostname or the IP address of the RFC 5905 server to synchronise the time with.">config.ntp.sntpserver</item>
+		<item level="1" text="RFC 868 hostname (rdate - Remote Date)" conditional="config.ntp.timesync.value != 'dvb'" description="The hostname or the IP address of the RFC 868 server to synchronise the time with.">config.ntp.rdateserver</item>
 	</setup>
 	<setup key="Timeshift" title="Timeshift Setup">
 		<item level="0" text="Timeshift location" description="Set the default location for your timeshift files. Press OK to add new locations, LEFT/RIGHT to select any existing locations.">config.usage.timeshift_path</item>
