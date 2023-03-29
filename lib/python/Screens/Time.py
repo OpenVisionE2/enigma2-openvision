@@ -24,7 +24,7 @@ class Time(Setup):
 		}, prio=0, description=_("Time Setup Actions"))
 		self.selectionChanged()
 
-	def checkTimeSyncRootFile(self):
+	def rootFileSyncTime(self):
 		if config.ntp.timesync.value != "dvb":
 			if not islink("/etc/network/if-up.d/timesync") and not fileContains("/var/spool/cron/root", "timesync"):
 				Console().ePopen("ln -s /usr/bin/timesync /etc/network/if-up.d/timesync;echo '30 * * * * /usr/bin/timesync silent' >>/var/spool/cron/root")
@@ -34,7 +34,7 @@ class Time(Setup):
 
 	def keySave(self):
 		Setup.keySave(self)
-		self.checkTimeSyncRootFile()
+		self.rootFileSyncTime()
 
 	def selectionChanged(self):
 		if Setup.getCurrentItem(self) in (config.timezone.area, config.timezone.val):
@@ -47,11 +47,11 @@ class Time(Setup):
 
 	def useGeolocation(self):
 		geolocationData = geolocation.getGeolocationData(fields="status,message,timezone,proxy")
-		if geolocationData.get("proxy", True):
+		if geolocationData.get("proxy", True) and hasattr(self, "setFootnote"):
 			self.setFootnote(_("Geolocation is not available."))
 			return
 		tz = geolocationData.get("timezone", None)
-		if tz is None:
+		if tz is None and hasattr(self, "setFootnote"):
 			self.setFootnote(_("Geolocation does not contain time zone information."))
 		else:
 			areaItem = None
@@ -70,7 +70,11 @@ class Time(Setup):
 			if valItem is not None:
 				valItem[1].changed()
 			self["config"].invalidate(valItem)
-			self.setFootnote(_("Geolocation has been used to set the time zone."))
+			try:
+				self.setFootnote(_("Geolocation has been used to set the time zone."))
+			except KeyError:
+				pass
+			self.rootFileSyncTime()
 
 
 class TimeWizard(ConfigListScreen, Screen, ShowRemoteControl):
@@ -129,7 +133,7 @@ class TimeWizard(ConfigListScreen, Screen, ShowRemoteControl):
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
 		self["text"] = Label()
-		self["text"].setText(_("Press YELLOW button to set your schedule."))
+		self["text"].setText(_("Press YELLOW button if your time zone is not set or press \"OK\" to continue wizard."))
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_yellow"] = StaticText(_("Set local time"))
 		self["wizard"] = Pixmap()
@@ -140,13 +144,13 @@ class TimeWizard(ConfigListScreen, Screen, ShowRemoteControl):
 		self["lab5"] = StaticText(_("Sources are available at:"))
 		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"], {
-			"yellow": self.yellow,
-			"ok": self.red,
-			"red": self.red,
-			"back": self.red
+			"yellow": self.keyGeolocation,
+			"ok": self.keySave,
+			"red": self.keySave,
+			"back": self.keySave
 		}, -2)
 		self.onLayoutFinish.append(self.selectKeys)
-		self.updateTimeList()
+		self.getTimeList()
 
 	def selectKeys(self):
 		self.clearSelectedKeys()
@@ -156,33 +160,25 @@ class TimeWizard(ConfigListScreen, Screen, ShowRemoteControl):
 		self.selectKey("RIGHT")
 		self.selectKey("RED")
 		self.selectKey("YELLOW")
+		self.selectKey("OK")
 
-	def updateTimeList(self):
+	def getTimeList(self):
 		self.list = []
 		self.list.append(getConfigListEntry(_("Time zone area"), config.timezone.area))
 		self.list.append(getConfigListEntry(_("Time zone"), config.timezone.val))
-		if config.usage.date.enabled.value:
-			self.list.append(getConfigListEntry(_("Date style"), config.usage.date.dayfull))
-			config.usage.date.dayfull.save()
-		if config.usage.time.enabled.value:
-			self.list.append(getConfigListEntry(_("Time style"), config.usage.time.long))
-			config.usage.time.long.save()
+		self.list.append(getConfigListEntry(_("Date style"), config.usage.date.dayfull))
+		self.list.append(getConfigListEntry(_("Time style"), config.usage.time.long))
 		self.list.append(getConfigListEntry(_("Time synchronization method"), config.ntp.timesync))
-		config.ntp.timesync.save()
 		if config.ntp.timesync.value != "dvb":
 			self.list.append(getConfigListEntry(_("RFC 5905 hostname (SNTP - Simple Network Time Protocol)"), config.ntp.sntpserver))
-			config.ntp.sntpserver.save()
 			self.list.append(getConfigListEntry(_("RFC 868 hostname (rdate - Remote Date)"), config.ntp.rdateserver))
-			config.ntp.rdateserver.save()
-		config.timezone.val.save()
-		config.timezone.area.save()
 		self["config"].list = self.list
 		self["config"].setList(self.list)
 
-	def useGeolocation(self):
+	def geolocationWizard(self):
 		geolocationData = geolocation.getGeolocationData(fields="status,message,timezone,proxy")
 		if geolocationData.get("proxy", True):
-			self["text"].setText(_("Geolocation is not available."))
+			self["text"].setText(_("Geolocation is not available. There is no Internet.\nPress \"OK\" to continue wizard."))
 			return
 		tz = geolocationData.get("timezone", None)
 		if not tz:
@@ -204,10 +200,9 @@ class TimeWizard(ConfigListScreen, Screen, ShowRemoteControl):
 			if valItem:
 				valItem[1].changed()
 			self["config"].invalidate(valItem)
-			self.updateTimeList()
 			self["text"].setText(_("Your local time has been set successfully. Settings has been saved.\n\nPress \"OK\" to continue wizard."))
 
-	def checkTimeSyncRootFile(self):
+	def rootFileSyncTimeWizard(self):
 		if config.ntp.timesync.value != "dvb":
 			if not islink("/etc/network/if-up.d/timesync") and not fileContains("/var/spool/cron/root", "timesync"):
 				Console().ePopen("ln -s /usr/bin/timesync /etc/network/if-up.d/timesync;echo '30 * * * * /usr/bin/timesync silent' >>/var/spool/cron/root")
@@ -215,9 +210,10 @@ class TimeWizard(ConfigListScreen, Screen, ShowRemoteControl):
 			if islink("/etc/network/if-up.d/timesync") and fileContains("/var/spool/cron/root", "timesync"):
 				Console().ePopen("sed -i '/timesync/d' /var/spool/cron/root;unlink /etc/network/if-up.d/timesync")
 
-	def red(self):
-		self.close()
+	def keySave(self):
+		ConfigListScreen.keySave(self)
+		self.rootFileSyncTimeWizard()
+		self.close(True)
 
-	def yellow(self):
-		self.useGeolocation()
-		self.checkTimeSyncRootFile()
+	def keyGeolocation(self):
+		self.geolocationWizard()

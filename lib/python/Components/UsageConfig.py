@@ -1647,6 +1647,8 @@ def InitUsageConfig():
 	config.misc.softcam_setup.extension_menu = ConfigYesNo(default=True)
 
 	config.ntp = ConfigSubsection()
+	config.ntp.sntpserver = ConfigText("pool.ntp.org", fixed_size=False)
+	config.ntp.rdateserver = ConfigText("time.nist.gov", fixed_size=False)
 	config.powertimerlog = ConfigSubsection()
 	config.powertimerlog.actived = ConfigYesNo(default=False)
 
@@ -1663,8 +1665,6 @@ def InitUsageConfig():
 		("ntp", _("Internet time"))
 	])
 	config.ntp.timesync.addNotifier(timesyncChanged)
-	config.ntp.sntpserver = ConfigText("pool.ntp.org", fixed_size=False)
-	config.ntp.rdateserver = ConfigText("time.nist.gov", fixed_size=False)
 
 
 def updateChoices(sel, choices):

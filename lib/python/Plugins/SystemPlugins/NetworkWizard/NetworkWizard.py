@@ -2,17 +2,19 @@
 from Screens.WizardLanguage import WizardLanguage
 from Screens.HelpMenu import ShowRemoteControl
 from Screens.MessageBox import MessageBox
+from Screens.Time import Time
 from Components.Pixmap import Pixmap
 from Components.Sources.Boolean import Boolean
 from Components.Sources.StaticText import StaticText
 from Components.Network import iNetwork
+from Tools.Geolocation import geolocation
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from enigma import eTimer
 
 import enigma
 
 
-class NetworkWizard(WizardLanguage, ShowRemoteControl):
+class NetworkWizard(WizardLanguage, ShowRemoteControl, Time):
 	skin = """
 		<screen position="0,0" size="720,576" title="Welcome..." flags="wfNoBorder" >
 			<widget name="text" position="153,40" size="340,300" font="Regular;22" />
@@ -75,6 +77,10 @@ class NetworkWizard(WizardLanguage, ShowRemoteControl):
 		self.rescanTimer.callback.append(self.rescanTimerFired)
 		self.getInstalledInterfaceCount()
 		self.isWlanPluginInstalled()
+		geolocationData = geolocation.getGeolocationData(fields="isp,org,mobile,proxy,query", useCache=False)
+		if geolocationData.get("status", None) == "success":
+			Time.useGeolocation(self) # set time zone auto.
+			Time.rootFileSyncTime(self) # set SNTP - rdate in root file.
 
 	def exitWizardQuestion(self, ret=False):
 		if (ret):
