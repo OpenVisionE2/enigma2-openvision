@@ -5,4 +5,4 @@ install_PYTHON = \
 	FrontendStatus.py Boolean.py Config.py ServiceList.py RdsDecoder.py StreamService.py \
 	StaticText.py CanvasSource.py ServiceEvent.py Event.py FrontendInfo.py TunerInfo.py \
 	RecordState.py Progress.py Sensor.py \
-	HbbtvApplication.py
+	HbbtvApplication.py City.py
