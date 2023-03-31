@@ -47,7 +47,7 @@ class InstallWizard(ConfigListScreen, Screen):
 			self.createMenu()
 
 	def checkNetwork(self):
-		if self.adapters:
+		if hasattr(self, "adapters") and self.adapters:
 			self.adapter = self.adapters.pop(0)
 			if iNetwork.getAdapterAttribute(self.adapter, 'up'):
 				iNetwork.checkNetworkState(self.checkNetworkStateCallback)
