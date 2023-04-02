@@ -209,12 +209,29 @@
 	</parameters>
 
 	<!-- WIZARD INIT -->
+	<!-- NETWORK WIZARD-->
+	<screen name="NetworkWizard" title="Network Wizard" backgroundColor="transparent" flags="wfNoBorder" position="0,center" size="1920,1080" transparent="0">
+		<panel name="TemplateWizard"/>
+		<panel name="TemplateRemoteControl"/>
+		<panel name="TemplateWizardLanguage"/>
+		<widget name="text" conditional="text" font="RegularBold;26" horizontalAlignment="left" verticalAlignment="center" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,50" size="1430,550" transparent="1"/>
+		<widget name="label" conditional="label" backgroundColor="#0000fafa" position="445,495" size="1430,2" zPosition="-9"/>
+		<widget source="list" render="Listbox" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,500" size="1430,500" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" transparent="1">
+			<convert type="TemplatedMultiContent">
+				{"template":[
+				MultiContentEntryText(pos=(20,10),size=(1440,45),flags=RT_HALIGN_LEFT,text=0)],
+				"fonts":[gFont("RegularBold",30)],
+				"itemHeight":50}
+			</convert>
+		</widget>
+		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" foregroundColor="OE_Foreground" backgroundColor="OE_Background" transparent="1" position="445,500" size="1430,500" zPosition="1"/>
+	</screen>
 	<!-- LOCALE WIZARD-->
 	<screen name="LocaleWizard" title="Locale/Language Wizard" position="fill" backgroundColor="transparent" transparent="0" flags="wfNoBorder">
 		<panel name="TemplateWizard"/>
 		<panel name="TemplateRemoteControl"/>
 		<widget name="text" conditional="text" font="RegularBold;26" horizontalAlignment="left" verticalAlignment="center" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,170" size="1420,90" transparent="1"/>
-		<eLabel backgroundColor="#0000fafa" position="445,275" size="1430,2" zPosition="-8"/>
+		<widget name="label" conditional="label" backgroundColor="#0000fafa" position="445,275" size="1430,2" zPosition="-8"/>
 		<ePixmap alphaTest="blend" pixmap="picon_default.png" position="105,25" size="220,132" transparent="1" zPosition="10"/>
 		<widget name="icons" position="0,0" size="30,27" pixmaps="OctEtFHD/icons/lock_off.png,icons/lock_on.png,icons/lock_error.png" alphaTest="blend"/>
 		<widget source="locales" render="Listbox" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" backgroundColor="OE_Background" position="445,280" size="1430,745" transparent="1">
@@ -240,7 +257,7 @@
 		<panel name="TemplateRemoteControl"/>
 		<panel name="ButtonsInformation"/>
 		<widget name="text" conditional="text" font="RegularBold;26" horizontalAlignment="left" verticalAlignment="center" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,170" size="1420,90" transparent="1"/>
-		<eLabel backgroundColor="#0000fafa" position="445,275" size="1430,2" zPosition="-8"/>
+		<widget name="label" conditional="label" backgroundColor="#0000fafa" position="445,275" size="1430,2" zPosition="-8"/>
 		<widget source="languages" render="Listbox" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" backgroundColor="OE_Background" position="445,280" size="1430,715" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template":[
@@ -259,7 +276,10 @@
 		<panel name="TemplateRemoteControl"/>
 		<panel name="TemplateWizardLanguage"/>
 		<widget name="text" conditional="text" font="RegularBold;26" horizontalAlignment="left" verticalAlignment="center" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,130" size="1430,200" transparent="1"/>
-		<eLabel backgroundColor="#0000fafa" position="445,385" size="1430,2" zPosition="-9"/>
+		<widget source="global.CurrentTime" backgroundColor="OE_Background" font="RegularBold;28" position="1735,352" zPosition="3" render="Label" size="140,30" transparent="1">
+			<convert type="ClockToText">Mixed</convert>
+		</widget>
+		<widget name="label" conditional="label" backgroundColor="#0000fafa" position="445,385" size="1430,2" zPosition="-9"/>
 		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" foregroundColor="OE_Foreground" backgroundColor="OE_Background" transparent="1" position="445,390" size="1430,655" zPosition="1"/>
 	</screen>
 	<!-- VIDEO WIZARD-->
@@ -268,7 +288,7 @@
 		<panel name="TemplateRemoteControl"/>
 		<panel name="TemplateWizardLanguage"/>
 		<widget name="text" conditional="text" font="RegularBold;26" horizontalAlignment="left" verticalAlignment="center" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,160" size="1430,300" transparent="1"/>
-		<eLabel backgroundColor="#0000fafa" position="445,470" size="1430,2" zPosition="-9"/>
+		<widget name="label" conditional="label" backgroundColor="#0000fafa" position="445,470" size="1430,2" zPosition="-9"/>
 		<widget source="list" render="Listbox" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,480" size="1430,525" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template":[
@@ -287,23 +307,6 @@
 		<eLabel backgroundColor="OE_Background" position="0,47" size="500,45" zPosition="-15"/>
 		<eLabel text="VideoMode" position="0,0" size="480,45" font="RegularBold;28" backgroundColor="OE_NewBg" transparent="1" verticalAlignment="center" horizontalAlignment="right"/>
 		<widget name="videomode" position="0,47" size="480,45" font="RegularBold;28" backgroundColor="OE_Background" transparent="1" verticalAlignment="center" horizontalAlignment="right"/>
-		</screen>
-		<!-- NETWORK WIZARD-->
-		<screen name="NetworkWizard" title="Network Wizard" backgroundColor="transparent" flags="wfNoBorder" position="0,center" size="1920,1080" transparent="0">
-		<panel name="TemplateWizard"/>
-		<panel name="TemplateRemoteControl"/>
-		<panel name="TemplateWizardLanguage"/>
-		<widget name="text" conditional="text" font="RegularBold;26" horizontalAlignment="left" verticalAlignment="center" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,50" size="1430,550" transparent="1"/>
-		<eLabel backgroundColor="#0000fafa" position="445,495" size="1430,2" zPosition="-9"/>
-		<widget source="list" render="Listbox" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,500" size="1430,500" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" transparent="1">
-			<convert type="TemplatedMultiContent">
-				{"template":[
-				MultiContentEntryText(pos=(20,10),size=(1440,45),flags=RT_HALIGN_LEFT,text=0)],
-				"fonts":[gFont("RegularBold",30)],
-				"itemHeight":50}
-			</convert>
-		</widget>
-		<widget name="config" itemHeight="50" entryFont="RegularBold;26" valueFont="Regular;23" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" enableWrapAround="1" foregroundColor="OE_Foreground" backgroundColor="OE_Background" transparent="1" position="445,500" size="1430,500" zPosition="1"/>
 	</screen>
 	<!-- START WIZARD-->
 	<screen name="StartWizard" title="Start Wizard" backgroundColor="transparent" flags="wfNoBorder" position="0,center" size="1920,1080" transparent="0">
@@ -312,7 +315,7 @@
 		<panel name="TemplateWizardLanguage"/>
 		<widget name="text" conditional="text" font="RegularBold;26" horizontalAlignment="left" verticalAlignment="center" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,130" size="1430,200" transparent="1"/>
 		<eLabel text="Progress:" font="RegularBold;34" backgroundColor="OE_Background" position="445,335" size="215,45" transparent="1"/>
-		<eLabel backgroundColor="#0000fafa" position="445,385" size="1430,2" zPosition="-9"/>
+		<widget name="label" conditional="label" backgroundColor="#0000fafa" position="445,385" size="1430,2" zPosition="-9"/>
 		<widget source="list" render="Listbox" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,390" size="1430,655" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template":[
@@ -996,7 +999,7 @@
 		<panel name="TemplateRemoteControl"/>
 		<panel name="ButtonsInformation"/>
 		<widget name="text" conditional="text" font="RegularBold;26" horizontalAlignment="left" verticalAlignment="center" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,130" size="1430,200" transparent="1"/>
-		<eLabel backgroundColor="#0000fafa" position="445,385" size="1430,2" zPosition="-9"/>
+		<widget name="label" conditional="label" backgroundColor="#0000fafa" position="445,385" size="1430,2" zPosition="-9"/>
 		<widget source="list" render="Listbox" backgroundColor="OE_Background" foregroundColor="OE_Foreground" position="445,390" scrollbarMode="showOnDemand" size="1430,500" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template":[

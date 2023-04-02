@@ -80,16 +80,20 @@ class Time(Setup):
 class TimeWizard(ConfigListScreen, Screen, ShowRemoteControl):
 	skin = """
 	<screen name="TimeWizard" position="center,60" size="980,635" resolution="1280,720">
-		<widget name="text" position="10,10" size="e-20,25" font="Regular;20" transparent="1" verticalAlignment="center" />
-		<widget name="config" position="10,40" size="e-20,250" enableWrapAround="1" entryFont="Regular;25" valueFont="Regular;25" itemHeight="35" scrollbarMode="showOnDemand" />
-		<widget source="key_red" render="Label" objectTypes="key_red,StaticText" position="180,e-50" size="180,40" backgroundColor="key_red" conditional="key_red" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
+		<widget name="text" position="10,10" size="e-20,25" font="Regular;16" transparent="1" verticalAlignment="center" />
+		<widget name="config" position="10,40" size="e-20,260" enableWrapAround="1" entryFont="Regular;18" valueFont="Regular;18" itemHeight="35" scrollbarMode="showOnDemand" />
+		<widget source="key_red" render="Label" objectTypes="key_red,StaticText" position="180,e-50" size="180,40" backgroundColor="key_red" conditional="key_red" font="Regular;18" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" objectTypes="key_yellow,StaticText" position="390,e-50" size="180,40" backgroundColor="key_yellow" conditional="key_yellow" font="Regular;20" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
+		<widget source="key_yellow" render="Label" objectTypes="key_yellow,StaticText" position="390,e-50" size="180,40" backgroundColor="key_yellow" conditional="key_yellow" font="Regular;18" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
 		</widget>
+		<widget source="global.CurrentTime" font="Regular;20" position="680,e-40" render="Label" size="140,30" transparent="1">
+			<convert type="ClockToText">Mixed</convert>
+		</widget>
+		<widget name="label" conditional="label" position="0,0" size="0,0" />
 		<widget name="HelpWindow" position="0,0" size="0,0" alphaTest="blend" conditional="HelpWindow" transparent="1" zPosition="+1" />
-		<widget name="rc" conditional="rc" alphaTest="blend" position="10,290" size="100,360" />
+		<widget name="rc" conditional="rc" alphaTest="blend" position="10,300" size="100,360" />
 		<widget name="wizard" conditional="wizard" pixmap="picon_default.png" position="740,400" size="220,132" alphaTest="blend" />
 		<widget name="indicatorU0" pixmap="rc_circle.png" position="0,0" size="23,23" alphaTest="blend" offset="11,11" zPosition="11" />
 		<widget name="indicatorU1" pixmap="rc_circle.png" position="0,0" size="23,23" alphaTest="blend" offset="11,11" zPosition="11" />
