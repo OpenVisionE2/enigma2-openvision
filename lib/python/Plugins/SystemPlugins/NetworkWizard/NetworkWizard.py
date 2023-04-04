@@ -8,9 +8,9 @@ from Components.Pixmap import Pixmap
 from Components.Sources.Boolean import Boolean
 from Components.Sources.StaticText import StaticText
 from Components.Network import iNetwork
-from Components.Sources.City import CITY_LOCALE
+from Components.Timezones import TIMEZONE_FILE
 from Tools.Geolocation import geolocation
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS, fileReadXML
 from enigma import eTimer
 
 import enigma
@@ -83,8 +83,13 @@ class NetworkWizard(WizardLanguage, ShowRemoteControl, Time):
 		if geolocationData.get("status", None) == "success":
 			Time.useGeolocation(self) # set time zone auto.
 			Time.rootFileSyncTime(self) # set SNTP - rdate in root file.
-			config.osd.language.value = CITY_LOCALE.get(config.timezone.val.value) # Init default user language
-			config.osd.language.save()
+			fileDom = fileReadXML(TIMEZONE_FILE)
+			if fileDom:
+				for city in fileDom.findall("zone"):
+					if config.timezone.val.value in city.attrib.get("name"):
+						localeCode = city.attrib.get("localeCode")
+						config.osd.language.value = localeCode
+						config.osd.language.save()
 
 	def exitWizardQuestion(self, ret=False):
 		if (ret):
