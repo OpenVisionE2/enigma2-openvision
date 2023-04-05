@@ -22,7 +22,7 @@ from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Standby import getReasons, TryQuitMainloop
 from Tools.BoundFunction import boundFunction
-from Tools.Directories import SCOPE_PLUGINS, resolveFilename
+from Tools.Directories import SCOPE_PLUGINS, resolveFilename, fileContains
 from Tools.Downloader import DownloadWithProgress
 from Tools.MultiBoot import deleteImage, getCurrentImage, getCurrentImageMode, getImageList, restoreImages
 
@@ -492,7 +492,10 @@ class MultiBootSelection(SelectImage):
 			list += list12
 			list = sorted(list) if config.usage.multiboot_order.value else list
 		if isfile(join(self.tmp_dir, "STARTUP_RECOVERY")):
-			list.append(ChoiceEntryComponent('', ((_("Boot to Recovery menu")), "Recovery")))
+			recovery_text = _("Boot to Recovery menu")
+			if BoxInfo.getItem("hasKexec"):
+				recovery_text = _("Boot to Recovery image - slot0 %s") % (fileContains("/proc/cmdline", "rootsubdir=linuxrootfs0") and _("(current)") or "")
+			list.append(ChoiceEntryComponent('', (recovery_text, "Recovery")))
 		if isfile(join(self.tmp_dir, "STARTUP_ANDROID")):
 			list.append(ChoiceEntryComponent('', ((_("Boot to Android image")), "Android")))
 		if not list:
@@ -578,19 +581,21 @@ class KexecInit(Screen):
 		Screen.__init__(self, session)
 		self.skinName = ["KexecInit", "Setup"]
 		self.setTitle(_("Kexec MultiBoot Manager"))
+		self.kexec_files = exists("/usr/bin/kernel_auto.bin") and exists("/usr/bin/STARTUP.cpio.gz")
 		self["description"] = Label(_("Press Green key to enable MultiBoot!\n\nWill reboot within 10 seconds,\nunless you have eMMC slots to restore.\nRestoring eMMC slots can take from 1 -> 5 minutes per slot."))
+		self["key_red"] = StaticText(self.kexec_files and _("Remove forever") or "")
 		self["key_green"] = StaticText(_("Init Vu+ MultiBoot"))
-		self["actions"] = ActionMap(["SetupActions"],
+		self["actions"] = ActionMap(["TeletextActions"],
 		{
-			"save": self.RootInit,
+			"green": self.RootInit,
 			"ok": self.close,
-			"cancel": self.close,
-			"menu": self.close,
+			"exit": self.close,
+			"red": self.removeFiles,
 		}, -1)
 
 	def RootInit(self):
 		self["actions"].setEnabled(False)  # This function takes time so disable the ActionMap to avoid responding to multiple button presses
-		if isfile("/usr/bin/kernel_auto.bin") and isfile("/usr/bin/STARTUP.cpio.gz"):
+		if self.kexec_files:
 			self.setTitle(_("Kexec MultiBoot Initialisation - will reboot after 10 seconds."))
 			self["description"].setText(_("Kexec MultiBoot Initialisation in progress!\n\nWill reboot after restoring any eMMC slots.\nThis can take from 1 -> 5 minutes per slot."))
 			with open("/STARTUP", 'w') as f:
@@ -617,4 +622,13 @@ class KexecInit(Screen):
 		for usbslot in range(1, 4):
 			if isdir("/media/hdd/%s/linuxrootfs%s" % (self.model, usbslot)):
 				Console().ePopen("cp -R /media/hdd/%s/linuxrootfs%s . /" % (self.model, usbslot))
-		self.session.open(TryQuitMainloop, 2) # Reboot
+		self.session.open(TryQuitMainloop, 2)
+
+	def removeFiles(self):
+		if self.kexec_files:
+			self.session.openWithCallback(self.removeFilesAnswer, MessageBox, _("Really permanently delete MultiBoot files?\n%s") % "(/usr/bin/kernel_auto.bin /usr/bin/STARTUP.cpio.gz)", simple=True)
+
+	def removeFilesAnswer(self, answer=None):
+		if answer:
+			Console().ePopen("rm -rf /usr/bin/kernel_auto.bin /usr/bin/STARTUP.cpio.gz")
+			self.close()
