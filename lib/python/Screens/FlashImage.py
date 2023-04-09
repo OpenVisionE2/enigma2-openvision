@@ -5,7 +5,7 @@ from os.path import isdir, isfile, join, splitext, ismount, islink, exists
 from shutil import copyfile, rmtree
 from tempfile import mkdtemp
 from struct import pack
-from six.moves.urllib.request import urlopen
+from six.moves.urllib.request import urlopen, Request
 from zipfile import ZipFile
 
 from enigma import eEPGCache
@@ -27,6 +27,18 @@ from Tools.Downloader import DownloadWithProgress
 from Tools.MultiBoot import deleteImage, getCurrentImage, getCurrentImageMode, getImageList, restoreImages
 
 model = BoxInfo.getItem("model")
+
+FEED_URLS = [
+	("openATV", "https://images.mynonpublic.com/openatv/json/"),
+	("OpenBH", "https://images.openbh.net/json/"),
+	("OpenPLi", "http://downloads.openpli.org/json/"),
+	("OpenViX", "https://www.openvix.co.uk/json/"),
+	("OpenHDF", "https://flash.hdfreaks.cc/openhdf/json/"),
+	("TeamBlue", "https://images.teamblue.tech/json/"),
+	("Open8eIGHT", "http://openeight.de/json/"),
+	("OpenDROID", "https://opendroid.org/json/"),
+	("EGAMI", "https://image.egami-image.com/json/")
+]
 
 
 def checkimagefiles(files):
@@ -87,12 +99,28 @@ class SelectImage(Screen):
 
 		if not self.imagesList:
 			if not self.jsonlist:
+				url = "https://images.openvision.dedyn.io/json%s/%s" % (config.usage.alternative_imagefeed.value, model)
 				try:
-					self.jsonlist = dict(load(urlopen('https://images.openvision.dedyn.io/json/%s' % model)))
-					if config.usage.alternative_imagefeed.value:
-						self.jsonlist.update(dict(load(urlopen('%s%s' % (config.usage.alternative_imagefeed.value, model)))))
+					self.jsonlist = dict(load(urlopen(url)))
 				except:
-					pass
+					print("[FlashImage] getImagesList Error: Unable to load json data from URL '%s'!" % url)
+				alternative_imagefeed = config.usage.alternative_imagefeed.value
+				if alternative_imagefeed:
+					if "http" in alternative_imagefeed:
+						url = "%s%s" % (config.usage.alternative_imagefeed.value, model)
+						try:
+							self.jsonlist.update(dict(load(urlopen(url))))
+						except:
+							print("[FlashImage] getImagesList Error: Unable to load json data from alternative URL '%s'!" % url)
+					elif alternative_imagefeed == "all":
+							for link in FEED_URLS:
+								url = "%s%s" % (link[1], model)
+								try:
+									req = Request(url, None, {"User-agent": "Mozilla/5.0 (Windows; U; Windows NT 5.1; en; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5"})
+									self.jsonlist.update(dict(load(urlopen(req))))
+								except:
+									print("[FlashImage] getImagesList Error: Unable to load json data from %s URL '%s'!" % (link[0], url))
+
 			self.imagesList = dict(self.jsonlist)
 			for mountdir in ["/media", "/media/net", "/media/autofs"]:
 				for media in ['%s/%s' % (mountdir, x) for x in listdir('%s' % mountdir)] + (['%s/%s' % (mountdir, x) for x in listdir('%s' % mountdir)] if isdir('%s' % mountdir) else []):
