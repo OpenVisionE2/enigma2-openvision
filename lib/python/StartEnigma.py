@@ -602,7 +602,7 @@ def setEPGCachePath(configElement):
 		configElement.value = pathjoin(configElement.value, "epg.dat")
 	enigma.eEPGCache.getInstance().setCacheFile(configElement.value)
 
-	
+
 def runScreen():
 	def runNextScreen(session, screensToRun, *result):
 		if result:
