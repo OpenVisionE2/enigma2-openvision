@@ -10,8 +10,6 @@ enigma.eTimer = eBaseImpl.eTimer
 enigma.eSocketNotifier = eBaseImpl.eSocketNotifier
 enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
 
-MODULE_NAME = "StartEnigma"  # This is done here as "__name__.split(".")[-1]" returns "__main__" for this module.
-
 # Session.open:
 # * Push current active dialog ("current_dialog") onto stack.
 # * Call execEnd for this dialog.
@@ -332,6 +330,8 @@ def dump(dir, p=""):
 #################################
 
 import sys  # This is needed for the twisted redirection access to stderr and stdout.
+
+MODULE_NAME = "StartEnigma"  # This is done here as "__name__.split(".")[-1]" returns "__main__" for this module.
 
 profile("Twisted")
 print("[StartEnigma] Initializing Twisted.")
