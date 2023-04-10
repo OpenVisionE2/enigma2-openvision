@@ -370,7 +370,6 @@ except ImportError:
 	print("[StartEnigma] Error: Twisted not available!")
 
 profile("SystemInfo")
-from enigma import getE2Rev
 from Components.SystemInfo import BoxInfo
 from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand, getOEMShowModel
 
@@ -389,7 +388,7 @@ print("[StartEnigma] Build Brand = %s" % brand)
 print("[StartEnigma] Build Model = %s" % model)
 print("[StartEnigma] Platform = %s" % platform)
 print("[StartEnigma] SoC family = %s" % socfamily)
-print("[StartEnigma] Enigma2 revision = %s" % getE2Rev())
+print("[StartEnigma] Enigma2 revision = %s" % enigma.getE2Rev())
 
 profile("Imports")
 from os.path import isdir, isfile, islink, join as pathjoin
@@ -591,9 +590,8 @@ from Components.EpgLoadSave import EpgCacheLoadCheck, EpgCacheSaveCheck
 EpgCacheSaveCheck()
 EpgCacheLoadCheck()
 
-# from enigma import dump_malloc_stats
 # timer = eTimer()
-# timer.callback.append(dump_malloc_stats)
+# timer.callback.append(enigma.dump_malloc_stats)
 # timer.start(1000)
 
 def setEPGCachePath(configElement):
