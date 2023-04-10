@@ -38,6 +38,8 @@ MODULE_NAME = "StartEnigma"  # This is done here as "__name__.split(".")[-1]" re
 # Session.doClose:
 # * Destroy screen.
 #
+
+
 class Session:
 	def __init__(self, desktop=None, summaryDesktop=None, navigation=None):
 		self.desktop = desktop
@@ -594,6 +596,7 @@ EpgCacheLoadCheck()
 # timer.callback.append(enigma.dump_malloc_stats)
 # timer.start(1000)
 
+
 def setEPGCachePath(configElement):
 	if isdir(configElement.value) or islink(configElement.value):
 		configElement.value = pathjoin(configElement.value, "epg.dat")
@@ -725,6 +728,7 @@ def runScreen():
 	from Screens.InfoBarGenerics import saveResumePoints
 	saveResumePoints()
 	return 0
+
 
 # Lets get going and load a screen.
 #
