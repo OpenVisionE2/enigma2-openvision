@@ -329,7 +329,7 @@ def dump(dir, p=""):
 #                               #
 #################################
 
-from sys import stdout
+import sys  # This is needed for the twisted redirection access to stderr and stdout.
 
 profile("Twisted")
 print("[StartEnigma] Initializing Twisted.")
@@ -363,7 +363,7 @@ try:  # Configure the twisted logging
 		util.untilConcludes(self.write, msg)
 		util.untilConcludes(self.flush)
 
-	logger = log.FileLogObserver(stdout)
+	logger = log.FileLogObserver(sys.stdout)
 	log.FileLogObserver.emit = quietEmit
 	log.startLoggingWithObserver(logger.emit)
 except ImportError:
@@ -412,9 +412,9 @@ if isfile("/etc/init.d/inetd.busybox"):
 
 if BoxInfo.getItem("multilib"):
 	profile("MultiLib")
-	import usb.core
-	import usb.backend.libusb1
-	usb.backend.libusb1.get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")
+	# import usb.core
+	from usb.backend.libusb1 import get_backend
+	get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")
 
 # These entries could be moved back to UsageConfig.py when it is safe to bring UsageConfig init to this location in StartEnigma2.py.
 #
@@ -521,15 +521,15 @@ from skin import InitSkins
 InitSkins()
 
 profile("InputDevice")
-import Components.InputDevice
-Components.InputDevice.InitInputDevices()
+from Components.InputDevice import InitInputDevices
+InitInputDevices()
 
 profile("Hotplug")
 import Components.InputHotplug
 
 profile("AVSwitch")
-import Components.AVSwitch
-Components.AVSwitch.InitAVSwitch()
+from Components.AVSwitch import InitAVSwitch
+InitAVSwitch()
 
 if BoxInfo.getItem("fan"):
 	profile("FanControl")
@@ -537,16 +537,16 @@ if BoxInfo.getItem("fan"):
 
 if BoxInfo.getItem("HasHDMIin"):
 	profile("HdmiRecord")
-	import Components.HdmiRecord
-	Components.HdmiRecord.InitHdmiRecord()
+	from Components.HdmiRecord import InitHdmiRecord
+	InitHdmiRecord()
 
 profile("RecordingConfig")
-import Components.RecordingConfig
-Components.RecordingConfig.InitRecordingConfig()
+from Components.RecordingConfig import InitRecordingConfig
+InitRecordingConfig()
 
 profile("UsageConfig")
-import Components.UsageConfig
-Components.UsageConfig.InitUsageConfig()
+from Components.UsageConfig import InitUsageConfig
+InitUsageConfig()
 
 if config.crash.pythonStackOnSpinner.value:
 	profile("StackTracePrinter")
@@ -566,9 +566,9 @@ from Components.Network import InitNetwork
 InitNetwork()
 
 profile("LCD")
-import Components.Lcd
-Components.Lcd.InitLcd()
-Components.Lcd.IconCheck()
+from Components.Lcd import IconCheck, InitLcd
+InitLcd()
+IconCheck()
 
 # Disable internal vfd clock until we can adjust it for standby.
 if platform == "inihdx":
@@ -583,8 +583,8 @@ from Components.RFmod import InitRFmod
 InitRFmod()
 
 profile("Init:LogManager")
-import Screens.LogManager
-Screens.LogManager.AutoLogManager()
+from Screens.LogManager import AutoLogManager
+AutoLogManager()
 
 profile("EpgCacheScheduler")
 from Components.EpgLoadSave import EpgCacheLoadCheck, EpgCacheSaveCheck
@@ -643,12 +643,12 @@ def runScreen():
 	power = PowerKey(session)
 	if BoxInfo.getItem("VFDSymbol"):
 		profile("VFDSymbols")
-		import Components.VfdSymbols
-		Components.VfdSymbols.SymbolsCheck(session)
+		from Components.VfdSymbols import SymbolsCheck
+		SymbolsCheck(session)
 	session.scart = AutoScartControl(session) if enigma.eAVSwitch.getInstance().haveScartSwitch() else None  # We need session.scart to access it from within menu.xml.
 	profile("InitTrashcan")
-	import Tools.Trashcan
-	Tools.Trashcan.init(session)
+	from Tools.Trashcan import init
+	init(session)
 	profile("RunReactor")
 	profileFinal()
 	if platform == "odinm7" or model == "xp1000":
@@ -724,8 +724,8 @@ def runScreen():
 	session.nav.shutdown()
 	profile("SaveConfigfile")
 	configfile.save()
-	from Screens import InfoBarGenerics
-	InfoBarGenerics.saveResumePoints()
+	from Screens.InfoBarGenerics import saveResumePoints
+	saveResumePoints()
 	return 0
 
 # Lets get going and load a screen.
@@ -738,6 +738,6 @@ except Exception:
 	print("Error: Exception in Python StartEnigma startup code:")
 	print("=" * 52)
 	from traceback import print_exc
-	print_exc(file=stdout)
+	print_exc(file=sys.stdout)
 	enigma.quitMainloop(5)  # QUIT_ERROR_RESTART
 	print("-" * 52)
