@@ -10,7 +10,6 @@ enigma.eTimer = eBaseImpl.eTimer
 enigma.eSocketNotifier = eBaseImpl.eSocketNotifier
 enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
 
-
 # Session.open:
 # * Push current active dialog ("current_dialog") onto stack.
 # * Call execEnd for this dialog.
@@ -37,6 +36,8 @@ enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
 # Session.doClose:
 # * Destroy screen.
 #
+
+
 class Session:
 	def __init__(self, desktop=None, summaryDesktop=None, navigation=None):
 		self.desktop = desktop
@@ -283,143 +284,12 @@ class AutoScartControl:
 				self.scartDialog.switchToTV()
 
 
-def runScreen():
-	def runNextScreen(session, screensToRun, *result):
-		if result:
-			enigma.quitMainloop(*result)
-			return
-		screen = screensToRun[0][1]
-		args = screensToRun[0][2:]
-		if screensToRun:
-			session.openWithCallback(boundFunction(runNextScreen, session, screensToRun[1:]), screen, *args)
-		else:
-			session.open(screen, *args)
-
-	config.misc.startCounter.value += 1
-	config.misc.startCounter.save()
-	profile("ReadPluginList")
-	enigma.pauseInit()
-	plugins.readPluginList(resolveFilename(SCOPE_PLUGINS))
-	enigma.resumeInit()
-	profile("InitSession")
-	nav = Navigation(config.misc.isNextRecordTimerAfterEventActionAuto.value, config.misc.isNextPowerTimerAfterEventActionAuto.value)  # Wake up to standby for RecordTimer and PowerTimer.
-	session = Session(desktop=enigma.getDesktop(0), summaryDesktop=enigma.getDesktop(1), navigation=nav)
-	from Components.SystemInfo import BoxInfo
-	if BoxInfo.getItem("ci"):
-		profile("CommonInterface")
-		from Screens.Ci import CiHandler, InitCiConfig
-		InitCiConfig()
-		CiHandler.setSession(session)
-	screensToRun = [x.__call__ for x in plugins.getPlugins(PluginDescriptor.WHERE_WIZARD)]
-	profile("InitWizards")
-	screensToRun += wizardManager.getWizards()
-	screensToRun.append((100, InfoBar.InfoBar))
-#	screensToRun.sort()
-	enigma.ePythonConfigQuery.setQueryFunc(configfile.getResolvedKey)
-	config.misc.epgcache_filename.addNotifier(setEPGCachePath)
-	runNextScreen(session, screensToRun)
-	profile("InitVolumeControl")
-	vol = VolumeControl(session)
-	profile("InitPowerKey")
-	power = PowerKey(session)
-	if BoxInfo.getItem("VFDSymbol"):
-		profile("VFDSymbols")
-		import Components.VfdSymbols
-		Components.VfdSymbols.SymbolsCheck(session)
-	session.scart = AutoScartControl(session) if enigma.eAVSwitch.getInstance().haveScartSwitch() else None  # We need session.scart to access it from within menu.xml.
-	profile("InitTrashcan")
-	import Tools.Trashcan
-	Tools.Trashcan.init(session)
-	profile("RunReactor")
-	profileFinal()
-	runReactor()
-	profile("Wakeup")
-	from Tools.StbHardware import setFPWakeuptime, setRTCtime
-	from Screens.SleepTimerEdit import isNextWakeupTime
-	powerTimerWakeupAuto = False
-	recordTimerWakeupAuto = False
-	nowTime = int(time())  # Get current time.
-	powerTimerList = sorted(
-		[x for x in ((session.nav.RecordTimer.getNextRecordingTime(), 0, session.nav.RecordTimer.isNextRecordAfterEventActionAuto()),
-					(session.nav.RecordTimer.getNextZapTime(isWakeup=True), 1),
-					(plugins.getNextWakeupTime(), 2),
-					(session.nav.PowerTimer.getNextPowerManagerTime(), 3, session.nav.PowerTimer.isNextPowerManagerAfterEventActionAuto()))
-		if x[0] != -1]
-	)
-	sleepTimerList = sorted(
-		[x for x in (
-			(session.nav.RecordTimer.getNextRecordingTime(), 0),
-			(session.nav.RecordTimer.getNextZapTime(isWakeup=True), 1),
-			(plugins.getNextWakeupTime(), 2),
-			(isNextWakeupTime(), 3)
-		)
-		if x[0] != -1]
-	)
-	if sleepTimerList:
-		startSleepTime = sleepTimerList[0]
-		if (startSleepTime[0] - nowTime) < 270:  # No time to switch box back on.
-			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
-		else:
-			if brand == "gigablue":
-				wakeupTime = startSleepTime[0] - 120  # GigaBlue already starts 2 min. before wakeup time.
-			else:
-				wakeupTime = startSleepTime[0] - 240
-		if not config.ntp.timesync.value == "dvb":
-			setRTCtime(nowTime)
-		setFPWakeuptime(wakeupTime)
-		config.misc.prev_wakeup_time.value = startSleepTime[0]
-		config.misc.prev_wakeup_time_type.value = int(startSleepTime[1])
-		config.misc.prev_wakeup_time_type.save()
-	else:
-		config.misc.prev_wakeup_time.value = 0
-	config.misc.prev_wakeup_time.save()
-	if powerTimerList and powerTimerList[0][1] == 3:
-		startTimePowerList = powerTimerList[0]
-		if (startTimePowerList[0] - nowTime) < 60:  # No time to switch box back on.
-			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
-		else:
-			wakeupTime = startTimePowerList[0]
-		if not config.ntp.timesync.value == "dvb":
-			setRTCtime(nowTime)
-		setFPWakeuptime(wakeupTime)
-		powerTimerWakeupAuto = startTimePowerList[1] == 3 and startTimePowerList[2]
-	config.misc.isNextPowerTimerAfterEventActionAuto.value = powerTimerWakeupAuto
-	config.misc.isNextPowerTimerAfterEventActionAuto.save()
-	if powerTimerList and powerTimerList[0][1] != 3:
-		startTimePowerList = powerTimerList[0]
-		if (startTimePowerList[0] - nowTime) < 270:  # No time to switch box back on.
-			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
-		else:
-			wakeupTime = (startTimePowerList[0], 240)
-		if not config.ntp.timesync.value == "dvb":
-			setRTCtime(nowTime)
-		setFPWakeuptime(wakeupTime)
-		recordTimerWakeupAuto = startTimePowerList[1] == 0 and startTimePowerList[2]
-	config.misc.isNextRecordTimerAfterEventActionAuto.value = recordTimerWakeupAuto
-	config.misc.isNextRecordTimerAfterEventActionAuto.save()
-	profile("StopNavService")
-	session.nav.stopService()
-	profile("NavShutdown")
-	session.nav.shutdown()
-	profile("SaveConfigfile")
-	configfile.save()
-	from Screens import InfoBarGenerics
-	InfoBarGenerics.saveResumePoints()
-	return 0
-
-
 def localeNotifier(configElement):
 	international.activateLocale(configElement.value)
 
 
 def setLoadUnlinkedUserbouquets(configElement):
 	enigma.eDVBDB.getInstance().setLoadUnlinkedUserbouquets(configElement.value)
-
-
-def setEPGCachePath(configElement):
-	if isdir(configElement.value) or islink(configElement.value):
-		configElement.value = pathjoin(configElement.value, "epg.dat")
-	enigma.eEPGCache.getInstance().setCacheFile(configElement.value)
 
 
 def dump(dir, p=""):
@@ -459,11 +329,12 @@ def dump(dir, p=""):
 #                               #
 #################################
 
-from sys import stdout
+import sys  # This is needed for the twisted redirection access to stderr and stdout.
 
-MODULE_NAME = __name__.split(".")[-1]
+MODULE_NAME = "StartEnigma"  # This is done here as "__name__.split(".")[-1]" returns "__main__" for this module.
 
 profile("Twisted")
+print("[StartEnigma] Initializing Twisted.")
 try:  # Configure the twisted processor
 	from twisted.python.runtime import platform
 	platform.supportsThreads = lambda: True
@@ -494,14 +365,13 @@ try:  # Configure the twisted logging
 		util.untilConcludes(self.write, msg)
 		util.untilConcludes(self.flush)
 
-	logger = log.FileLogObserver(stdout)
+	logger = log.FileLogObserver(sys.stdout)
 	log.FileLogObserver.emit = quietEmit
 	log.startLoggingWithObserver(logger.emit)
 except ImportError:
 	print("[StartEnigma] Error: Twisted not available!")
 
 profile("SystemInfo")
-from enigma import getE2Rev
 from Components.SystemInfo import BoxInfo
 from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand, getOEMShowModel
 
@@ -520,7 +390,7 @@ print("[StartEnigma] Build Brand = %s" % brand)
 print("[StartEnigma] Build Model = %s" % model)
 print("[StartEnigma] Platform = %s" % platform)
 print("[StartEnigma] SoC family = %s" % socfamily)
-print("[StartEnigma] Enigma2 revision = %s" % getE2Rev())
+print("[StartEnigma] Enigma2 revision = %s" % enigma.getE2Rev())
 
 profile("Imports")
 from os.path import isdir, isfile, islink, join as pathjoin
@@ -530,7 +400,7 @@ from Components.config import ConfigInteger, ConfigOnOff, ConfigSubsection, Conf
 from Components.Console import Console
 from Components.International import international
 # from Screens.Standby import QUIT_ERROR_RESTART
-from Tools.Directories import InitDefaultPaths, SCOPE_GUISKIN, SCOPE_PLUGINS, fileReadLine, fileWriteLine, resolveFilename
+from Tools.Directories import InitDefaultPaths, SCOPE_GUISKIN, SCOPE_PLUGINS, fileUpdateLine, resolveFilename
 
 profile("CreateDefaultPaths")
 InitDefaultPaths()
@@ -543,9 +413,9 @@ if isfile("/etc/init.d/inetd.busybox"):
 
 if BoxInfo.getItem("multilib"):
 	profile("MultiLib")
-	import usb.core
-	import usb.backend.libusb1
-	usb.backend.libusb1.get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")
+	# import usb.core
+	from usb.backend.libusb1 import get_backend
+	get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")
 
 # These entries could be moved back to UsageConfig.py when it is safe to bring UsageConfig init to this location in StartEnigma2.py.
 #
@@ -652,15 +522,15 @@ from skin import InitSkins
 InitSkins()
 
 profile("InputDevice")
-import Components.InputDevice
-Components.InputDevice.InitInputDevices()
+from Components.InputDevice import InitInputDevices
+InitInputDevices()
 
 profile("Hotplug")
 import Components.InputHotplug
 
 profile("AVSwitch")
-import Components.AVSwitch
-Components.AVSwitch.InitAVSwitch()
+from Components.AVSwitch import InitAVSwitch
+InitAVSwitch()
 
 if BoxInfo.getItem("fan"):
 	profile("FanControl")
@@ -668,16 +538,16 @@ if BoxInfo.getItem("fan"):
 
 if BoxInfo.getItem("HasHDMIin"):
 	profile("HdmiRecord")
-	import Components.HdmiRecord
-	Components.HdmiRecord.InitHdmiRecord()
+	from Components.HdmiRecord import InitHdmiRecord
+	InitHdmiRecord()
 
 profile("RecordingConfig")
-import Components.RecordingConfig
-Components.RecordingConfig.InitRecordingConfig()
+from Components.RecordingConfig import InitRecordingConfig
+InitRecordingConfig()
 
 profile("UsageConfig")
-import Components.UsageConfig
-Components.UsageConfig.InitUsageConfig()
+from Components.UsageConfig import InitUsageConfig
+InitUsageConfig()
 
 if config.crash.pythonStackOnSpinner.value:
 	profile("StackTracePrinter")
@@ -697,37 +567,168 @@ from Components.Network import InitNetwork
 InitNetwork()
 
 profile("LCD")
-import Components.Lcd
-Components.Lcd.InitLcd()
-Components.Lcd.IconCheck()
+from Components.Lcd import IconCheck, InitLcd
+InitLcd()
+IconCheck()
 
-if platform == "dm4kgen" or model in ("dm7080", "dm820"):
-	filename = "/proc/stb/hdmi-rx/0/hdmi_rx_monitor"
-	check = fileReadLine(filename, "", source=MODULE_NAME)
-	if check.startswith("on"):
-		fileWriteLine(filename, "off", source=MODULE_NAME)
-	filename = "/proc/stb/audio/hdmi_rx_monitor"
-	check = fileReadLine(filename, "", source=MODULE_NAME)
-	if check.startswith("on"):
-		fileWriteLine(filename, "off", source=MODULE_NAME)
+# Disable internal vfd clock until we can adjust it for standby.
+if platform == "inihdx":
+	fileUpdateLine("/proc/stb/fp/enable_clock", conditionValue="1", replacementValue="0", source=MODULE_NAME)
+
+if platform in ("dm4kgen", "gb7252") or model in ("dm7080", "dm820"):
+	fileUpdateLine("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", conditionValue="on", replacementValue="off", source=MODULE_NAME)
+	fileUpdateLine("/proc/stb/audio/hdmi_rx_monitor", conditionValue="on", replacementValue="off", source=MODULE_NAME)
 
 profile("RFMod")
 from Components.RFmod import InitRFmod
 InitRFmod()
 
 profile("Init:LogManager")
-import Screens.LogManager
-Screens.LogManager.AutoLogManager()
+from Screens.LogManager import AutoLogManager
+AutoLogManager()
 
 profile("EpgCacheScheduler")
 from Components.EpgLoadSave import EpgCacheLoadCheck, EpgCacheSaveCheck
 EpgCacheSaveCheck()
 EpgCacheLoadCheck()
 
-# from enigma import dump_malloc_stats
 # timer = eTimer()
-# timer.callback.append(dump_malloc_stats)
+# timer.callback.append(enigma.dump_malloc_stats)
 # timer.start(1000)
+
+
+def setEPGCachePath(configElement):
+	if isdir(configElement.value) or islink(configElement.value):
+		configElement.value = pathjoin(configElement.value, "epg.dat")
+	enigma.eEPGCache.getInstance().setCacheFile(configElement.value)
+
+
+def runScreen():
+	def runNextScreen(session, screensToRun, *result):
+		if result:
+			enigma.quitMainloop(*result)
+			return
+		screen = screensToRun[0][1]
+		args = screensToRun[0][2:]
+		if screensToRun:
+			session.openWithCallback(boundFunction(runNextScreen, session, screensToRun[1:]), screen, *args)
+		else:
+			session.open(screen, *args)
+
+	config.misc.startCounter.value += 1
+	config.misc.startCounter.save()
+	profile("ReadPluginList")
+	enigma.pauseInit()
+	plugins.readPluginList(resolveFilename(SCOPE_PLUGINS))
+	enigma.resumeInit()
+	profile("InitSession")
+	nav = Navigation(config.misc.isNextRecordTimerAfterEventActionAuto.value, config.misc.isNextPowerTimerAfterEventActionAuto.value)  # Wake up to standby for RecordTimer and PowerTimer.
+	session = Session(desktop=enigma.getDesktop(0), summaryDesktop=enigma.getDesktop(1), navigation=nav)
+	from Components.SystemInfo import BoxInfo
+	if BoxInfo.getItem("ci"):
+		profile("CommonInterface")
+		from Screens.Ci import CiHandler, InitCiConfig
+		InitCiConfig()
+		CiHandler.setSession(session)
+	screensToRun = [x.__call__ for x in plugins.getPlugins(PluginDescriptor.WHERE_WIZARD)]
+	profile("InitWizards")
+	screensToRun += wizardManager.getWizards()
+	screensToRun.append((100, InfoBar.InfoBar))
+#	screensToRun.sort()
+	enigma.ePythonConfigQuery.setQueryFunc(configfile.getResolvedKey)
+	config.misc.epgcache_filename.addNotifier(setEPGCachePath)
+	runNextScreen(session, screensToRun)
+	profile("InitVolumeControl")
+	vol = VolumeControl(session)
+	profile("InitPowerKey")
+	power = PowerKey(session)
+	if BoxInfo.getItem("VFDSymbol"):
+		profile("VFDSymbols")
+		from Components.VfdSymbols import SymbolsCheck
+		SymbolsCheck(session)
+	session.scart = AutoScartControl(session) if enigma.eAVSwitch.getInstance().haveScartSwitch() else None  # We need session.scart to access it from within menu.xml.
+	profile("InitTrashcan")
+	from Tools.Trashcan import init
+	init(session)
+	profile("RunReactor")
+	profileFinal()
+	if platform == "odinm7" or model == "xp1000":
+		fileUpdateLine("/dev/dbox/oled0", conditionValue=None, replacementValue="-E2-", create=True, source=MODULE_NAME)
+	runReactor()
+	profile("Wakeup")
+	from Tools.StbHardware import setFPWakeuptime, setRTCtime
+	from Screens.SleepTimerEdit import isNextWakeupTime
+	powerTimerWakeupAuto = False
+	recordTimerWakeupAuto = False
+	nowTime = int(time())  # Get current time.
+	powerTimerList = sorted(
+		[x for x in ((session.nav.RecordTimer.getNextRecordingTime(), 0, session.nav.RecordTimer.isNextRecordAfterEventActionAuto()),
+					(session.nav.RecordTimer.getNextZapTime(isWakeup=True), 1),
+					(plugins.getNextWakeupTime(), 2),
+					(session.nav.PowerTimer.getNextPowerManagerTime(), 3, session.nav.PowerTimer.isNextPowerManagerAfterEventActionAuto()))
+		if x[0] != -1]
+	)
+	sleepTimerList = sorted(
+		[x for x in (
+			(session.nav.RecordTimer.getNextRecordingTime(), 0),
+			(session.nav.RecordTimer.getNextZapTime(isWakeup=True), 1),
+			(plugins.getNextWakeupTime(), 2),
+			(isNextWakeupTime(), 3)
+		)
+		if x[0] != -1]
+	)
+	if sleepTimerList:
+		startSleepTime = sleepTimerList[0]
+		if (startSleepTime[0] - nowTime) < 270:  # No time to switch box back on.
+			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
+		else:
+			if brand == "gigablue":
+				wakeupTime = startSleepTime[0] - 120  # GigaBlue already starts 2 min. before wakeup time.
+			else:
+				wakeupTime = startSleepTime[0] - 240
+		if not config.ntp.timesync.value == "dvb":
+			setRTCtime(nowTime)
+		setFPWakeuptime(wakeupTime)
+		config.misc.prev_wakeup_time.value = startSleepTime[0]
+		config.misc.prev_wakeup_time_type.value = int(startSleepTime[1])
+		config.misc.prev_wakeup_time_type.save()
+	else:
+		config.misc.prev_wakeup_time.value = 0
+	config.misc.prev_wakeup_time.save()
+	if powerTimerList and powerTimerList[0][1] == 3:
+		startTimePowerList = powerTimerList[0]
+		if (startTimePowerList[0] - nowTime) < 60:  # No time to switch box back on.
+			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
+		else:
+			wakeupTime = startTimePowerList[0]
+		if not config.ntp.timesync.value == "dvb":
+			setRTCtime(nowTime)
+		setFPWakeuptime(wakeupTime)
+		powerTimerWakeupAuto = startTimePowerList[1] == 3 and startTimePowerList[2]
+	config.misc.isNextPowerTimerAfterEventActionAuto.value = powerTimerWakeupAuto
+	config.misc.isNextPowerTimerAfterEventActionAuto.save()
+	if powerTimerList and powerTimerList[0][1] != 3:
+		startTimePowerList = powerTimerList[0]
+		if (startTimePowerList[0] - nowTime) < 270:  # No time to switch box back on.
+			wakeupTime = nowTime + 30  # So switch back on in 30 seconds.
+		else:
+			wakeupTime = (startTimePowerList[0], 240)
+		if not config.ntp.timesync.value == "dvb":
+			setRTCtime(nowTime)
+		setFPWakeuptime(wakeupTime)
+		recordTimerWakeupAuto = startTimePowerList[1] == 0 and startTimePowerList[2]
+	config.misc.isNextRecordTimerAfterEventActionAuto.value = recordTimerWakeupAuto
+	config.misc.isNextRecordTimerAfterEventActionAuto.save()
+	profile("StopNavService")
+	session.nav.stopService()
+	profile("NavShutdown")
+	session.nav.shutdown()
+	profile("SaveConfigfile")
+	configfile.save()
+	from Screens.InfoBarGenerics import saveResumePoints
+	saveResumePoints()
+	return 0
+
 
 # Lets get going and load a screen.
 #
@@ -739,6 +740,6 @@ except Exception:
 	print("Error: Exception in Python StartEnigma startup code:")
 	print("=" * 52)
 	from traceback import print_exc
-	print_exc(file=stdout)
+	print_exc(file=sys.stdout)
 	enigma.quitMainloop(5)  # QUIT_ERROR_RESTART
 	print("-" * 52)
