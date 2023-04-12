@@ -215,6 +215,9 @@
 
 <!-- Mediaplayer -->
 	<screen name="MediaPlayerLCDScreen" position="0,0" size="720,576">
+		<widget name="text1" position="2,110" size="0,0" font="FdLcD;50" />
+		<widget name="text3" position="2,110" size="0,0" font="FdLcD;50" />
+		<widget name="text4" position="2,110" size="0,0" font="FdLcD;50" />
 		<widget source="session.CurrentService" render="Label" position="15,21" size="675,320" foregroundColor="#e5b243" font="FdLcD;70" horizontalAlignment="center" verticalAlignment="center" zPosition="14" >
 			<convert type="ServiceName">Name</convert>
 		</widget>

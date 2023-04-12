@@ -172,6 +172,9 @@
 	</screen>
 
 	<screen name="MediaPlayerLCDScreen" position="0,0" size="128,32">
+		<widget name="text1" position="4,0" size="0,0" font="Regular;16" />
+		<widget name="text3" position="4,36" size="0,0" font="Regular;10" />
+		<widget name="text4" position="4,49" size="0,0" font="Regular;10" />
 		<widget source="session.CurrentService" render="Label" position="0,9" size="132,20" font="FdLcD;16" horizontalAlignment="left" verticalAlignment="top" zPosition="1" noWrap="1" transparent="1" >
 			<convert type="ServiceName">Name</convert>
 		</widget>
