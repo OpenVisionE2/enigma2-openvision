@@ -4,7 +4,7 @@ from os import rename, rmdir, sep, stat
 from os.path import basename, exists, isfile, ismount, join as pathjoin
 from glob import glob
 from tempfile import mkdtemp
-
+from subprocess import check_output
 from Components.Console import Console
 from Components.SystemInfo import BoxInfo
 from Tools.Directories import fileReadLine, fileReadLines
@@ -64,7 +64,8 @@ def getMultiBootStartupDevice():
 	global startupDevice
 	startupDevice = None
 	tempDir = mkdtemp(prefix=PREFIX)
-	for device in ("/dev/block/by-name/bootoptions", "/dev/mmcblk0p1", "/dev/mmcblk1p1", "/dev/mmcblk0p3", "/dev/mmcblk0p4", "/dev/mtdblock2"):
+	bootList = ("/dev/block/by-name/bootoptions", "/dev/mmcblk0p1", "/dev/mmcblk1p1", "/dev/mmcblk0p3", "/dev/mmcblk0p4", "/dev/mtdblock2") if not BoxInfo.getItem("hasKexec") else ("/dev/mmcblk0p4", "/dev/mmcblk0p7", "/dev/mmcblk0p9")
+	for device in bootList:
 		if exists(device):
 			if exists("/dev/block/by-name/flag"):
 				Console().ePopen((MOUNT, MOUNT, "--bind", device, tempDir))
@@ -106,6 +107,10 @@ def getMultiBootSlots():
 					for line in lines:
 						if "root=" in line:
 							device = getArgValue(line, "root")
+							if "UUID=" in device:
+								slotx = str(getUUIDtoSD(device))
+								if slotx is not None:
+									device = slotx
 							if exists(device) or device == 'ubi0:ubifs':
 								slot["device"] = device
 								slot["startupfile"] = basename(file)
@@ -142,14 +147,19 @@ def getMultiBootSlots():
 def getCurrentImage():
 	global bootSlots, bootArgs
 	if bootSlots:
-		slot = [x[-1] for x in bootArgs.split() if x.startswith("rootsubdir")]
-		if slot:
-			return int(slot[0])
-		else:
-			device = getArgValue(bootArgs, "root")
-			for slot in bootSlots.keys():
-				if bootSlots[slot]["device"] == device:
-					return slot
+		if not BoxInfo.getItem("hasKexec"):
+			slot = [x[-1] for x in bootArgs.split() if x.startswith("rootsubdir")]
+			if slot:
+				return int(slot[0])
+			else:
+				device = getArgValue(bootArgs, "root")
+				for slot in bootSlots.keys():
+					if bootSlots[slot]["device"] == device:
+						return slot
+		else: # kexec kernel multiboot VU+
+			rootsubdir = [x for x in bootArgs.split() if x.startswith("rootsubdir")]
+			char = "/" if "/" in rootsubdir[0] else "="
+			return int(rootsubdir[0].rsplit(char, 1)[1][11:])
 	return None
 
 
@@ -230,3 +240,14 @@ def restoreImage(slot):
 def restoreImages():
 	for slot in bootSlots:
 		restoreImage(slot)
+
+
+def getUUIDtoSD(UUID): # returns None on failure
+	check = "/sbin/blkid"
+	if exists(check):
+		lines = check_output([check]).decode(encoding="utf8", errors="ignore").split("\n")
+		for line in lines:
+			if UUID in line.replace('"', ''):
+				return line.split(":")[0].strip()
+	else:
+		return None
