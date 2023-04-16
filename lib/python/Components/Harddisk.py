@@ -9,7 +9,7 @@ from enigma import eTimer
 
 from Components import Task
 from Components.Console import Console
-from Components.SystemInfo import BoxInfo
+from Components.SystemInfo import SystemInfo, BoxInfo
 from Tools.CList import CList
 from Tools.Directories import fileReadLine, fileReadLines
 from Tools.StbHardware import getBoxProc
@@ -674,6 +674,16 @@ class HarddiskManager:
 			if not error and not blacklisted and medium_found:
 				for part in partitions:
 					self.addHotplugPartition(part)
+					if len(partitions) != 0:
+						if removable:
+							SystemInfo["HasUsbhdd"][part] = len(partitions)
+						physicalDevice = realpath(pathjoin("/sys/block", blockdev, "device"))
+						for partition in partitions:
+							description = self.getUserfriendlyDeviceName(partition, physicalDevice)
+							print("[Harddisk] Found partition '%s', description='%s', device='%s'." % (partition, description, physicalDevice))
+							part = Partition(mountpoint=self.getMountpoint(partition, skiproot=True), description=description, force_mounted=True, device=partition)
+							self.partitions.append(part)
+							self.on_partition_list_change("add", part)
 				self.devices_scanned_on_init.append((blockdev, removable, is_cdrom, medium_found))
 
 	def enumerateNetworkMounts(self, refresh=False):
@@ -709,10 +719,10 @@ class HarddiskManager:
 			return "/media/" + device
 		return r
 
-	def getMountpoint(self, device):
+	def getMountpoint(self, device, skiproot=None):
 		dev = "/dev/%s" % device
 		for item in getProcMounts():
-			if item[0] == dev:
+			if (item[0] == dev and skiproot == None) or (item[0] == dev and skiproot == True and item[1] != "/"):
 				return item[1]
 		return None
 
@@ -721,6 +731,7 @@ class HarddiskManager:
 		# physdev is the physical device path, which we (might) use to determine the userfriendly name
 		if not physdev:
 			dev, part = self.splitDeviceName(device)
+			devicePath = "/sys/block/%s" % dev
 			try:
 				physdev = realpath("/sys/block/" + dev + "/device")[4:]
 			except (IOError, OSError) as err:
@@ -742,6 +753,10 @@ class HarddiskManager:
 				self.hdd.append(Harddisk(device, removable))
 				self.hdd.sort()
 				BoxInfo.setItem("Harddisk", True)
+			partitions = [partition for partition in sorted(listdir(devicePath)) if partition.startswith(dev)]
+			if len(partitions) != 0:
+				SystemInfo["HasUsbhdd"][device] = len(partitions)
+				print("[Harddisk]2 SystemInfo['HasUsbhdd']= %s" % SystemInfo["HasUsbhdd"])
 		return error, blacklisted, removable, is_cdrom, partitions, medium_found
 
 	def addHotplugAudiocd(self, device, physdev=None):
