@@ -84,5 +84,6 @@ install_PYTHON = \
 	UserPlugins.py \
 	VirtualKeyBoard.py \
 	Volume.py \
+	VuplusKexec.py \
 	Wizard.py \
 	WizardLanguage.py

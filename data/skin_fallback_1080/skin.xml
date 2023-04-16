@@ -3490,9 +3490,10 @@
 	<!-- IMAGE FLASH MULTIBOOT SELECT IMAGE -->
 	<screen name="SelectImage" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
 		<panel name="ScreenOpenVision"/>
+		<panel name="HelpInformation"/>
 		<widget name="list" font="RegularBold;26" scrollbarMode="showOnDemand" scrollbarForegroundColor="blue_light" scrollbarBorderColor="blue_light" backgroundColor="OE_Background" position="410,155" zPosition="10" size="1490,670" transparent="1"/>
 		<eLabel backgroundColor="blue_light" position="410,830" size="1490,2" zPosition="2"/>
-		<widget source="description" render="Label" font="RegularBold;26" foregroundColor="blue_light" backgroundColor="OE_Background" position="410,848" size="1490,70" transparent="1" horizontalAlignment="center" verticalAlignment="center"/>
+		<widget source="description" render="Label" font="RegularBold;28" foregroundColor="blue_light" backgroundColor="OE_Background" position="410,848" size="1490,70" transparent="1" horizontalAlignment="center" verticalAlignment="center" zPosition="3"/>
 	</screen>
 	<!-- FLASHIMAGE -->
 	<screen name="FlashImage" position="fill" zPosition="10" flags="wfNoBorder">
@@ -3502,6 +3503,7 @@
 		<widget name="progress" position="410,280" size="1490,50" foregroundColor="blue_light" scrollbarBorderWidth="2" scrollbarBorderColor="green_light" zPosition="10" transparent="1"/>
 		<eLabel backgroundColor="blue_light" position="410,830" size="1490,2" zPosition="2"/>
 		<widget name="info" font="RegularBold;24" foregroundColor="blue_light" backgroundColor="OE_Background" position="410,848" size="1490,90" transparent="1" zPosition="10" horizontalAlignment="center" verticalAlignment="center"/>
+		<widget source="description" render="Label" font="RegularBold;28" foregroundColor="blue_light" backgroundColor="OE_Background" position="410,848" size="1490,70" transparent="1" horizontalAlignment="center" verticalAlignment="center" zPosition="3"/>
 	</screen>
 	<!-- AUTO BACKUP -->
 	<screen name="Config" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
@@ -5180,6 +5182,7 @@
 		<panel name="ClockInformation"/>
 		<panel name="TitleInformation"/>
 		<panel name="ButtonsInformation"/>
+		<panel name="TemplateInformation"/>
 		<ePixmap alphaTest="blend" pixmap="picon_default.png" position="85,150" size="220,132" transparent="1" zPosition="10"/>
 		<eLabel text="OpenVision" position="0,330" size="400,70" font="RegularBold;40" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
 		<eLabel text="Lets define enigma2 once more" position="0,405" size="400,70" font="RegularBold;21" backgroundColor="OE_NewBg2" foregroundColor="blue_light" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
@@ -5195,12 +5198,12 @@
 		<panel name="TitleInformation"/>
 		<panel name="ButtonsInformation"/>
 		<ePixmap alphaTest="blend" pixmap="picon_default.png" position="85,150" size="220,132" transparent="1" zPosition="10"/>
-		<widget source="lab1" render="Label" position="0,330" size="400,70" font="RegularBold;40" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
-		<widget source="lab2" render="Label" position="0,405" size="400,70" font="RegularBold;22" backgroundColor="OE_NewBg2" foregroundColor="blue_light" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
-		<widget source="lab3" render="Label" position="0,530" size="400,70" font="RegularBold;23" backgroundColor="OE_NewBg2" foregroundColor="blue_light" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
-		<widget source="lab4" render="Label" position="0,590" size="400,70" font="RegularBold;23" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
-		<widget source="lab5" render="Label" position="0,715" size="400,70" font="RegularBold;23" backgroundColor="OE_NewBg2" foregroundColor="blue_light" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
-		<widget source="lab6" render="Label" position="0,790" size="400,35" font="RegularBold;22" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
+		<widget source="lab1" conditional="lab1" render="Label" position="0,330" size="400,70" font="RegularBold;40" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
+		<widget source="lab2" conditional="lab2" render="Label" position="0,405" size="400,70" font="RegularBold;22" backgroundColor="OE_NewBg2" foregroundColor="blue_light" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
+		<widget source="lab3" conditional="lab3" render="Label" position="0,530" size="400,70" font="RegularBold;23" backgroundColor="OE_NewBg2" foregroundColor="blue_light" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
+		<widget source="lab4" conditional="lab4" render="Label" position="0,590" size="400,70" font="RegularBold;23" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
+		<widget source="lab5" conditional="lab5" render="Label" position="0,715" size="400,70" font="RegularBold;23" backgroundColor="OE_NewBg2" foregroundColor="blue_light" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
+		<widget source="lab6" conditional="lab6" render="Label" position="0,790" size="400,35" font="RegularBold;22" backgroundColor="OE_NewBg2" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="3"/>
 		<!-- Button -->
 	</screen>
 		<!-- INFORMATION STANDARD -->
@@ -5263,7 +5266,7 @@ from enigma import ePoint, eSize, getDesktop
 screenSize = (getDesktop(0).size().width(), getDesktop(0).size().height())
 iconPos = (10, 25)
 listPos = (110, 85)
-listSize = (1290, 140)
+listSize = (1375, 140)
 if self.list:
 	scrollbarWidth = 25  # self["list"].instance.getScrollbarOffset() + self["list"].instance.getScrollbarWidth()
 	height = 35
@@ -5277,7 +5280,7 @@ if self.list:
 else:
 	textAdjust = 0
 textPos = (95, 15)
-textSize = (1285, 65)
+textSize = (1370, 65)
 maxWidth = textSize[0] + textAdjust + (0 if self.typeIcon else textPos[0] - iconPos[0])
 newTextWidth, newTextHeight = getScreenObjectSize(self.text, self["text"], maxWidth, screenSize[1])
 if newTextHeight > screenSize[1] - 100:

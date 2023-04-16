@@ -86,21 +86,28 @@ def getMultiBootSlots():
 	global bootSlots, startupDevice
 	bootSlots = {}
 	mode12Found = False
+	BoxInfo.setItem("VuUUIDSlot", "")
+	UUID = ""
+	UUIDnum = 0
 	if startupDevice is None:
 		startupDevice = getMultiBootStartupDevice()
 	if startupDevice:
 		tempDir = mkdtemp(prefix=PREFIX)
 		Console().ePopen((MOUNT, MOUNT, startupDevice, tempDir))
 		for file in glob(pathjoin(tempDir, "STARTUP_*")):
-			if "STARTUP_RECOVERY" in file:
-				BoxInfo.setItem("RecoveryMode", True)
-				print("[MultiBoot] Recovery mode is set to True.")
 			if "MODE_" in file:
 				mode12Found = True
 				slotNumber = file.rsplit("_", 3)[1]
+			elif "STARTUP_RECOVERY" in file:
+				BoxInfo.setItem("RecoveryMode", True)
+				print("[MultiBoot] Recovery mode is set to True.")
+				slotNumber = "0"
 			else:
 				slotNumber = file.rsplit("_", 1)[1]
 			if slotNumber.isdigit() and slotNumber not in bootSlots:
+				if BoxInfo.getItem("hasKexec") and int(slotNumber) > 3:
+					BoxInfo.setItem("HasKexecUSB", True)
+					print("[Multiboot][getMultibootslots] slot", slot)
 				lines = fileReadLines(file, source=MODULE_NAME)
 				if lines:
 					slot = {}
@@ -108,9 +115,12 @@ def getMultiBootSlots():
 						if "root=" in line:
 							device = getArgValue(line, "root")
 							if "UUID=" in device:
+								UUID = device
+								UUIDnum += 1
 								slotx = str(getUUIDtoSD(device))
 								if slotx is not None:
 									device = slotx
+								slot["kernel"] = "/linuxrootfs%s/zImage" % slotNumber
 							if exists(device) or device == 'ubi0:ubifs':
 								slot["device"] = device
 								slot["startupfile"] = basename(file)
@@ -118,7 +128,7 @@ def getMultiBootSlots():
 									BoxInfo.setItem("HasRootSubdir", True)
 									slot["kernel"] = getArgValue(line, "kernel")
 									slot["rootsubdir"] = getArgValue(line, "rootsubdir")
-								elif "sda" in line:
+								elif not BoxInfo.getItem("hasKexec") and 'sda' in line:
 									slot["kernel"] = getArgValue(line, "kernel")
 									slot["rootsubdir"] = None
 								else:
@@ -159,6 +169,7 @@ def getCurrentImage():
 		else: # kexec kernel multiboot VU+
 			rootsubdir = [x for x in bootArgs.split() if x.startswith("rootsubdir")]
 			char = "/" if "/" in rootsubdir[0] else "="
+			BoxInfo.setItem("VuUUIDSlot", UUID, UUIDnum if UUIDnum != 0 else "")
 			return int(rootsubdir[0].rsplit(char, 1)[1][11:])
 	return None
 
@@ -168,11 +179,17 @@ def getCurrentImageMode():
 	return bool(bootSlots) and BoxInfo.getItem("canMode12") and int(bootArgs.split("=")[-1])
 
 
-def getImageList():
+def getImageList(Recovery=None):
 	imageList = {}
 	if bootSlots:
 		tempDir = mkdtemp(prefix=PREFIX)
 		for slot in sorted(list(bootSlots.keys())):
+			if slot == 0:
+				if not Recovery:  # called by ImageManager
+					continue
+				else:  # called by FlashImage
+					imageList[slot] = {"imagename": _("Recovery Mode")}
+					continue
 			Console().ePopen((MOUNT, MOUNT, bootSlots[slot]["device"], tempDir))
 			imageDir = sep.join(filter(None, [tempDir, bootSlots[slot].get("rootsubdir", "")]))
 			if isfile(pathjoin(imageDir, "usr/bin/enigma2")):
