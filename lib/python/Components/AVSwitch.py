@@ -761,10 +761,10 @@ def InitAVSwitch():
 	config.av.volume_stepsize.addNotifier(setVolumeStepsize)
 
 	if BoxInfo.getItem("CanChangeOsdAlpha"):
-		def setAlpha(config):
+		def setOSDAlpha(config):
 			try:
 				open("/proc/stb/video/alpha", "w").write(str(config.value))
 			except:
 				print("[AVSwitch] Write to /proc/stb/video/alpha failed!")
 		config.av.osd_alpha = ConfigSlider(default=255, limits=(0, 255))
-		config.av.osd_alpha.addNotifier(setAlpha)
+		config.av.osd_alpha.addNotifier(setOSDAlpha)
