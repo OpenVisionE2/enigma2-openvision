@@ -464,7 +464,7 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 		usbIn = BoxInfo.getItem('HasUsbhdd').keys() and BoxInfo.getItem("hasKexec")
 		self["key_red"] = StaticText(_("Cancel") if not usbIn else _("Add USB slots"))
 		self["key_green"] = StaticText(_("Reboot"))
-		self["description"] = StaticText(_("Use the cursor keys to select an installed image and press OK or GREEN button for reboot."))
+		self["description"] = StaticText()
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText()
 		self["list"] = ChoiceList([])
@@ -529,8 +529,13 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 			list = sorted(list) if config.usage.multiboot_order.value else list
 		if isfile(join(self.tmp_dir, "STARTUP_RECOVERY")):
 			list.append(ChoiceEntryComponent('', ((_("Boot to Recovery menu")), "Recovery")))
+			self["description"] = StaticText(_("Select image or boot to recovery menu and press OK or GREEN button for reboot."))
 		if isfile(join(self.tmp_dir, "STARTUP_ANDROID")):
 			list.append(ChoiceEntryComponent('', ((_("Boot to Android image")), "Android")))
+			self["description"] = StaticText(_("Select image or boot to Android image and press OK or GREEN button for reboot."))
+		if list12 or list:
+			if not isfile(join(self.tmp_dir, "STARTUP_RECOVERY")) and not isfile(join(self.tmp_dir, "STARTUP_ANDROID")):
+				self["description"] = StaticText(_("Select image and press OK or GREEN button for reboot."))
 		if not list:
 			list.append(ChoiceEntryComponent('', ((_("No images found")), "Waiter")))
 		self["list"].setList(list)
