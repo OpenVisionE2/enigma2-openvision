@@ -475,7 +475,7 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 			"red": (self.cancel, _("Cancel")) if not usbIn else (self.KexecMount, _("Add USB slots (require receiver Vu+ 4k)")),
 			"green": (self.keyOk, _("Select image and reboot")),
 			"yellow": (self.delImage, _("Select image and delete")),
-			"blue": (self.order, _("Orde image modes and slots (requires receiver with feature)")),
+			"blue": (self.order, _("Orde image per modes and slots (require receiver with mode slot 12)")),
 			"up": self.keyUp,
 			"down": self.keyDown,
 			"left": self.keyLeft,

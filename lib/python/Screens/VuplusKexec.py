@@ -19,16 +19,12 @@ STARTUP_3 = "kernel=/linuxrootfs3/zImage root=/dev/%s rootsubdir=linuxrootfs3" %
 class VuplusKexec(Screen):
 
 	skin = """
-	<screen name="VuplusKexec" position="center,center" size="750,700" flags="wfNoBorder" backgroundColor="transparent">
-		<eLabel name="b" position="0,0" size="750,700" backgroundColor="#00ffffff" zPosition="-2" />
-		<eLabel name="a" position="1,1" size="748,698" backgroundColor="#00000000" zPosition="-1" />
-		<widget source="Title" render="Label" position="center,14" foregroundColor="#00ffffff" size="e-10%,35" horizontalAlignment="left" verticalAlignment="center" font="Regular; 28" backgroundColor="#00000000" />
-		<eLabel name="line" position="1,60" size="748,1" backgroundColor="#00ffffff" zPosition="1" />
-		<eLabel name="line2" position="1,250" size="748,4" backgroundColor="#00ffffff" zPosition="1" />
-		<widget source="description" render="Label" position="2,80" size="730,30" horizontalAlignment="center" font="Regular; 22" backgroundColor="#00000000" foregroundColor="#00ffffff" />
-		<!-- widget source="key_red" render="Label" position="30,200" size="150,30" noWrap="1" zPosition="1" verticalAlignment="center" font="Regular; 20" horizontalAlignment="left" backgroundColor="#00000000" foregroundColor="#00ffffff" / -->
-		<widget source="key_green" render="Label" position="200,200" size="150,30" noWrap="1" zPosition="1" verticalAlignment="center" font="Regular; 20" horizontalAlignment="left" backgroundColor="#00000000" foregroundColor="#00ffffff" />
-		<ePixmap pixmap="skin_default/buttons/green.png" position="200,200" size="40,40" alphaTest="blend" />
+	<screen name="VuplusKexec" position="center,180" size="980,235" resolution="1280,720">
+		<widget source="footnote" conditional="footnote" render="Label" position="0,10" size="960,50" foregroundColor="yellow" horizontalAlignment="center" font="Regular;20" />
+		<widget source="description" render="Label" position="0,70" size="960,500" horizontalAlignment="center" font="Regular;22"  />
+		<widget source="key_green" render="Label" objectTypes="key_green,StaticText" position="20,e-170" size="180,40" backgroundColor="key_green" conditional="key_green" font="Regular;18" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
+			<convert type="ConditionalShowHide" />
+		</widget>
 	</screen>
 	"""
 
@@ -49,7 +45,7 @@ class VuplusKexec(Screen):
 	def RootInit(self):
 		self["actions"].setEnabled(False)  # This function takes time so disable the ActionMap to avoid responding to multiple button presses
 		if fileExists("/usr/bin/kernel_auto.bin") and fileExists("/usr/bin/STARTUP.cpio.gz"):
-			self.title = _("Vu+ MultiBoot Initialisation - will reboot after 10 seconds.")
+			self["footnote"] = StaticText(_("Vu+ MultiBoot Initialisation - will reboot after 10 seconds."))
 			self["description"].text = _("Vu+ MultiBoot Initialisation in progress\n\nWill reboot after restoring any eMMC slots\nThis can take from 1 -> 5 minutes per slot.")
 			with open("/STARTUP", 'w') as f:
 				f.write(STARTUP)
