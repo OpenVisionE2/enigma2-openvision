@@ -294,8 +294,8 @@ SystemInfo["HasMMC"] = BoxInfo.getItem("mmc") or "root" in cmdline and cmdline["
 SystemInfo["MMCEMMC"] = BoxInfo.getItem("HasMMC") or BoxInfo.getItem("HasEMMC")
 SystemInfo["HasTranscoding"] = BoxInfo.getItem("transcoding") or BoxInfo.getItem("multitranscoding") or fileCheck("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
 SystemInfo["HasH265Encoder"] = fileContains("/proc/stb/encoder/0/vcodec_choices", "h265")
-SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model in ("vusolo4k", "gbquad4k", "gbue4k")
-SystemInfo["HasFrontDisplayPicon"] = model in ("et8500", "vusolo4k", "vuuno4kse", "vuduo4k", "vuduo4kse", "vuultimo4k", "gbquad4k", "gbue4k")
+SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model == "vusolo4k" or platform == "gb7252"
+SystemInfo["HasFrontDisplayPicon"] = model in ("et8500", "vusolo4k", "vuuno4kse", "vuduo4k", "vuduo4kse", "vuultimo4k") or platform == "gb7252"
 SystemInfo["Has24hz"] = fileCheck("/proc/stb/video/videomode_24hz")
 SystemInfo["HasHDMI"] = BoxInfo.getItem("hdmi")
 SystemInfo["HasHDMI-CEC"] = BoxInfo.getItem("HasHDMI") and (fileCheck("/dev/cec0") or fileCheck("/dev/hdmi_cec") or fileCheck("/dev/misc/hdmi_cec0"))
@@ -309,14 +309,13 @@ SystemInfo["HasComposite"] = BoxInfo.getItem("rca")
 SystemInfo["hasXcoreVFD"] = (model == "osmega" or platform == "4kspycat") and fileCheck("/sys/module/brcmstb_%s/parameters/pt6302_cgram" % model)
 SystemInfo["HasOfflineDecoding"] = model not in ("osmini", "osminiplus", "et7000mini", "et11000", "mbmicro", "mbtwinplus", "mbmicrov2", "et7x00", "et8500")
 SystemInfo["hasKexec"] = fileContains("/proc/cmdline", "kexec=1")
-SystemInfo["canKexec"] = model in ("vusolo4k", "vuduo4k", "vuduo4kse", "vuultimo4k", "vuuno4k", "vuuno4kse", "vuzero4k") and not BoxInfo.getItem("hasKexec") and isfile("/usr/bin/kernel_auto.bin") and isfile("/usr/bin/STARTUP.cpio.gz")
+SystemInfo["canKexec"] = platform == "vu4kgen" and not BoxInfo.getItem("hasKexec") and isfile("/usr/bin/kernel_auto.bin") and isfile("/usr/bin/STARTUP.cpio.gz")
 SystemInfo["MultiBootStartupDevice"] = getMultiBootStartupDevice()
 SystemInfo["canMode12"] = "%s_4.boxmode" % model in cmdline and cmdline["%s_4.boxmode" % model] in ("1", "12") and "192M"
 SystemInfo["canMultiBoot"] = getMultiBootSlots()
 SystemInfo["canDualBoot"] = fileCheck("/dev/block/by-name/flag")
-SystemInfo["canFlashWithOfgwrite"] = brand != "dreambox"
 SystemInfo["BootDevice"] = getBootdevice()
-SystemInfo["FbcTunerPowerAlwaysOn"] = model in ("vusolo4k", "vuduo4k", "vuduo4kse", "vuultimo4k", "vuuno4k", "vuuno4kse")
+SystemInfo["FbcTunerPowerAlwaysOn"] = platform == "vu4kgen" and not model == "vuzero4k"
 SystemInfo["HasPhysicalLoopthrough"] = ["Vuplus DVB-S NIM(AVL2108)", "GIGA DVB-S2 NIM (Internal)"]
 SystemInfo["HasPhysicalLoopthrough"] = ["Vuplus DVB-S NIM(AVL2108)", "GIGA DVB-S2 NIM (Internal)", "AVL6211"] if model in ("et7x00", "et8500") else ["Vuplus DVB-S NIM(AVL2108)", "GIGA DVB-S2 NIM (Internal)"]
 SystemInfo["HasFBCtuner"] = ["Vuplus DVB-C NIM(BCM3158)", "Vuplus DVB-C NIM(BCM3148)", "Vuplus DVB-S NIM(7376 FBC)", "Vuplus DVB-S NIM(45308X FBC)", "Vuplus DVB-S NIM(45208 FBC)", "DVB-S2 NIM(45208 FBC)", "DVB-S2X NIM(45308X FBC)", "DVB-S2 NIM(45308 FBC)", "DVB-C NIM(3128 FBC)", "BCM45208", "BCM45308X", "BCM3158"]
@@ -340,7 +339,7 @@ SystemInfo["AndroidMode"] = BoxInfo.getItem("RecoveryMode") and model == "multib
 SystemInfo["grautec"] = fileCheck("/tmp/usbtft")
 SystemInfo["GraphicLCD"] = model in ("vuultimo", "xpeedlx3", "et10000", "hd2400", "sezammarvel", "atemionemesis", "mbultra", "beyonwizt4", "osmio4kplus")
 SystemInfo["LCDMiniTV"] = fileCheck("/proc/stb/lcd/mode")
-SystemInfo["LCDMiniTVPiP"] = BoxInfo.getItem("LCDMiniTV") and model not in ("gb800ueplus", "gbquad4k", "gbue4k")
+SystemInfo["LCDMiniTVPiP"] = BoxInfo.getItem("LCDMiniTV") and not model == "gb800ueplus" and not platform == "gb7252"
 SystemInfo["DefaultDisplayBrightness"] = platform == "dm4kgen" and 8 or 5
 SystemInfo["ConfigDisplay"] = BoxInfo.getItem("FrontpanelDisplay") and displaytype != "7segment" and "7seg" not in displaytype
 SystemInfo["DreamBoxAudio"] = platform == "dm4kgen" or model in ("dm7080", "dm800")
@@ -386,7 +385,7 @@ SystemInfo["HasColorimetryChoices"] = fileCheck("/proc/stb/video/hdmi_colorimetr
 SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
 SystemInfo["HasColorspaceChoices"] = fileCheck("/proc/stb/video/hdmi_colorspace_choices")
 SystemInfo["HasColorspace"] = fileCheck("/proc/stb/video/hdmi_colorspace")
-SystemInfo["HasColorspaceSimple"] = BoxInfo.getItem("HasColorspace") and model in ("vusolo4k", "vuuno4k", "vuuno4kse", "vuultimo4k", "vuduo4k", "vuduo4kse")
+SystemInfo["HasColorspaceSimple"] = BoxInfo.getItem("HasColorspace") and BoxInfo.getItem("FbcTunerPowerAlwaysOn")
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")
 SystemInfo["HasMultichannelPCM"] = fileCheck("/proc/stb/audio/multichannel_pcm")
