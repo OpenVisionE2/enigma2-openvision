@@ -160,7 +160,8 @@ class Harddisk:
 					return cap // 1000 // 1000
 				except (IOError, OSError):
 					return 0
-		cap = int(line)
+		else:
+			cap = int(line)
 		return cap // 1000 * 512 // 1000
 
 	def capacity(self):
