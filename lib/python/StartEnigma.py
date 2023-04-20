@@ -371,6 +371,11 @@ try:  # Configure the twisted logging
 except ImportError:
 	print("[StartEnigma] Error: Twisted not available!")
 
+# Initialize the country, language and locale data.
+#
+profile("International")
+from Components.International import international
+
 profile("SystemInfo")
 from Components.SystemInfo import BoxInfo
 from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand, getOEMShowModel
@@ -398,7 +403,6 @@ from time import localtime, strftime, time
 
 from Components.config import ConfigInteger, ConfigOnOff, ConfigSubsection, ConfigText, ConfigYesNo, NoSave, config, configfile
 from Components.Console import Console
-from Components.International import international
 # from Screens.Standby import QUIT_ERROR_RESTART
 from Tools.Directories import InitDefaultPaths, SCOPE_GUISKIN, SCOPE_PLUGINS, fileUpdateLine, resolveFilename
 
@@ -421,6 +425,7 @@ if BoxInfo.getItem("multilib"):
 #
 profile("InitializeConfigs")
 config.crash = ConfigSubsection()
+config.crash.debugInternational = ConfigYesNo(default=False)
 config.crash.debugActionMaps = ConfigYesNo(default=False)
 config.crash.debugKeyboards = ConfigYesNo(default=False)
 config.crash.debugOpkg = ConfigYesNo(default=False)
