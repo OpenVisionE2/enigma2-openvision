@@ -150,19 +150,21 @@ class Harddisk:
 		return ret
 
 	def diskSize(self):
-		line = fileReadLine(self.sysfsPath("size"))
-		if line is None:
+		cap = 0
+		try:
+			line = fileReadLine(self.sysfsPath("size"))
+			cap = int(line)
+			return cap // 1000 * 512 // 1000
+		except:
 			dev = self.findMount()
 			if dev:
 				try:
 					stat = statvfs(dev)
 					cap = int(stat.f_blocks * stat.f_bsize)
 					return cap // 1000 // 1000
-				except (IOError, OSError):
-					return 0
-		else:
-			cap = int(line)
-		return cap // 1000 * 512 // 1000
+				except:
+					pass
+		return cap
 
 	def capacity(self):
 		cap = self.diskSize()
