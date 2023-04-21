@@ -81,7 +81,6 @@ class PluginBrowser(Screen, ProtectedScreen):
 
 		self["key_red"] = self["red"] = Label(_("Remove plugins"))
 		self["key_green"] = self["green"] = Label(_("Download plugins"))
-		self["key_yellow"] = self["yellow"] = Label(_("User plugins"))
 		self.list = []
 		self["list"] = PluginList(self.list)
 
@@ -94,8 +93,7 @@ class PluginBrowser(Screen, ProtectedScreen):
 		self["PluginDownloadActions"] = ActionMap(["ColorActions"],
 		{
 			"red": self.delete,
-			"green": self.download,
-			"yellow": self.userInstalledPlugins
+			"green": self.download
 		})
 		self["DirectionActions"] = ActionMap(["DirectionActions"],
 		{
@@ -286,10 +284,6 @@ class PluginBrowser(Screen, ProtectedScreen):
 				self.session.open(MessageBox, _("The software management extension is not installed!\nPlease install it."), type=MessageBox.TYPE_INFO, timeout=10)
 			else:
 				self.session.openWithCallback(self.PluginDownloadBrowserClosed, PluginManager)
-
-	def userInstalledPlugins(self):
-		from Screens.UserPlugins import AboutUserInstalledPlugins
-		self.session.open(AboutUserInstalledPlugins)
 
 
 class PluginDownloadBrowser(Screen):

@@ -81,7 +81,6 @@ install_PYTHON = \
 	TimerSelection.py \
 	Timeshift.py \
 	UnhandledKey.py \
-	UserPlugins.py \
 	VirtualKeyBoard.py \
 	Volume.py \
 	Wizard.py \
