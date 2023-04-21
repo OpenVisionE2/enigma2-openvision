@@ -174,10 +174,10 @@
 		<item level="0" requires="FrontpanelLEDBrightnessControl" text="Operating LED brightness" description="With this option you can switch the LED brightness.">config.lcd.ledbrightnesscontrol</item>
 		<item level="0" requires="FrontpanelLEDColorControl" text="Operating LED color" description="With this option you can switch the LED color.">config.lcd.ledcolorcontrolcolor</item>
 		<item level="0" requires="FrontpanelLEDFadeControl" text="Operating LED fade" description="With this option you can switch the LED fade.">config.lcd.ledfadecontrolcolor</item>
-		<item level="0" text="Brightness" description="Configure the brightness level of the front panel display." requires="NoHaveFrontpanelDisplay">config.lcd.bright</item>
-		<item level="0" text="Brightness (Dimmed)" description="Configure the brightness level of the front panel display for dimmed operation." requires="NoHaveFrontpanelDisplay">config.lcd.dimbright</item>
-		<item level="0" text="Dim delay" description="Dim the LCD after specified time." requires="NoHaveFrontpanelDisplay">config.lcd.dimdelay</item>
-		<item level="0" text="Standby" description="Configure the brightness level of the front panel display during standby." requires="NoHaveFrontpanelDisplay">config.lcd.standby</item>
+		<item level="0" text="Brightness" description="Configure the brightness level of the front panel display." requires="NoFpDisplay">config.lcd.bright</item>
+		<item level="0" text="Brightness (Dimmed)" description="Configure the brightness level of the front panel display for dimmed operation." requires="NoFpDisplay">config.lcd.dimbright</item>
+		<item level="0" text="Dim delay" description="Dim the LCD after specified time." requires="NoFpDisplay">config.lcd.dimdelay</item>
+		<item level="0" text="Standby" description="Configure the brightness level of the front panel display during standby." requires="NoFpDisplay">config.lcd.standby</item>
 	</setup>
 	<setup key="Locale" title="Locale Selection Setup" menuTitle="Locale">
 		<item level="0" text="Locales to be displayed" description="Display the base locales or all locales for a language.">config.locales.packageLocales</item>
