@@ -156,6 +156,8 @@ def getMultiBootSlots():
 
 def getCurrentImage():
 	global bootSlots, bootArgs
+	UUID = ""
+	UUIDnum = 0
 	if bootSlots:
 		if not BoxInfo.getItem("hasKexec"):
 			slot = [x[-1] for x in bootArgs.split() if x.startswith("rootsubdir")]
