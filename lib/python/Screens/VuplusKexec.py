@@ -20,7 +20,7 @@ class VuplusKexec(Screen):
 
 	skin = """
 	<screen name="VuplusKexec" position="center,180" size="980,235" resolution="1280,720">
-		<widget source="footnote" conditional="footnote" render="Label" position="0,10" size="960,50" foregroundColor="yellow" horizontalAlignment="center" font="Regular;20" />
+		<widget source="footnote" render="Label" position="0,10" size="960,50" foregroundColor="yellow" horizontalAlignment="center" font="Regular;20" />
 		<widget source="description" render="Label" position="0,70" size="960,500" horizontalAlignment="center" font="Regular;22"  />
 		<widget source="key_green" render="Label" objectTypes="key_green,StaticText" position="20,e-170" size="180,40" backgroundColor="key_green" conditional="key_green" font="Regular;18" foregroundColor="key_text" horizontalAlignment="center" verticalAlignment="center">
 			<convert type="ConditionalShowHide" />
@@ -33,6 +33,7 @@ class VuplusKexec(Screen):
 		self.title = _("Vu+ MultiBoot Manager")
 		self["description"] = StaticText(_("Press GREEN button to enable MultiBoot\n\nWill reboot within 10 seconds,\nunless you have eMMC slots to restore.\nRestoring eMMC slots can take from 1 -> 5 minutes per slot."))
 		# self["key_red"] = StaticText(_("Cancel"))
+		self["footnote"] = StaticText()
 		self["key_green"] = StaticText(_("Init Vu+ MultiBoot"))
 		self["actions"] = ActionMap(["SetupActions"],
 		{
@@ -45,7 +46,7 @@ class VuplusKexec(Screen):
 	def RootInit(self):
 		self["actions"].setEnabled(False)  # This function takes time so disable the ActionMap to avoid responding to multiple button presses
 		if fileExists("/usr/bin/kernel_auto.bin") and fileExists("/usr/bin/STARTUP.cpio.gz"):
-			self["footnote"] = StaticText(_("Vu+ MultiBoot Initialisation - will reboot after 10 seconds."))
+			self["footnote"].text = _("Vu+ MultiBoot Initialisation - will reboot after 10 seconds.")
 			self["description"].text = _("Vu+ MultiBoot Initialisation in progress\n\nWill reboot after restoring any eMMC slots\nThis can take from 1 -> 5 minutes per slot.")
 			with open("/STARTUP", 'w') as f:
 				f.write(STARTUP)
