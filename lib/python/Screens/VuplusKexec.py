@@ -44,39 +44,37 @@ class VuplusKexec(Screen):
 			"cancel": self.close,
 			"menu": self.close,
 		}, -1)
-		partitions = sorted(harddiskmanager.getMountedPartitions(), key=lambda partitions: partitions.device or "")
-		for partition in partitions:
-			self.folderVuplus = join(partition.mountpoint, "vuplus")
-			if BoxInfo.getItem("model") == "vuzero4k" and pathExists(self.folderVuplus):
-				self["footnote"].text = _("Delete or rename folder \"vuplus\" in path '%s' before initializing.") % partition.mountpoint
 
 	def RootInit(self):
-		if BoxInfo.getItem("model") == "vuzero4k" and pathExists(self.folderVuplus):
-			self.close()
+		partitions = sorted(harddiskmanager.getMountedPartitions(), key=lambda partitions: partitions.device or "")
+		for partition in partitions:
+			fileForceUpdate = join(partition.mountpoint, "%s/force.update") % BoxInfo.getItem("imagedir")
+			if BoxInfo.getItem("model") == "vuzero4k" and fileExists(fileForceUpdate) and "noforce.update" not in fileForceUpdate:
+				from shutil import move
+				move(fileForceUpdate, fileForceUpdate.replace("force.update", "noforce.update"))
+		self["actions"].setEnabled(False)  # This function takes time so disable the ActionMap to avoid responding to multiple button presses
+		if fileExists("/usr/bin/kernel_auto.bin") and fileExists("/usr/bin/STARTUP.cpio.gz"):
+			self["footnote"].text = _("Vu+ MultiBoot Initialisation - will reboot after 10 seconds.")
+			self["description"].text = _("Vu+ MultiBoot Initialisation in progress\n\nWill reboot after restoring any eMMC slots\nThis can take from 1 -> 5 minutes per slot.")
+			with open("/STARTUP", 'w') as f:
+				f.write(STARTUP)
+			with open("/STARTUP_RECOVERY", 'w') as f:
+				f.write(STARTUP_RECOVERY)
+			with open("/STARTUP_1", 'w') as f:
+				f.write(STARTUP_1)
+			with open("/STARTUP_2", 'w') as f:
+				f.write(STARTUP_2)
+			with open("/STARTUP_3", 'w') as f:
+				f.write(STARTUP_3)
+			print("[VuplusKexec][RootInit] Kernel Root", BoxInfo.getItem("mtdkernel"), "   ", BoxInfo.getItem("mtdrootfs"))
+			cmdlist = []
+			cmdlist.append("dd if=/dev/%s of=/zImage" % BoxInfo.getItem("mtdkernel"))						# backup old kernel
+			cmdlist.append("dd if=/usr/bin/kernel_auto.bin of=/dev/%s" % BoxInfo.getItem("mtdkernel"))  # create new kernel
+			cmdlist.append("mv /usr/bin/STARTUP.cpio.gz /STARTUP.cpio.gz")						# copy userroot routine
+			Console().eBatch(cmdlist, self.RootInitEnd, debug=True)
 		else:
-			self["actions"].setEnabled(False)  # This function takes time so disable the ActionMap to avoid responding to multiple button presses
-			if fileExists("/usr/bin/kernel_auto.bin") and fileExists("/usr/bin/STARTUP.cpio.gz"):
-				self["footnote"].text = _("Vu+ MultiBoot Initialisation - will reboot after 10 seconds.")
-				self["description"].text = _("Vu+ MultiBoot Initialisation in progress\n\nWill reboot after restoring any eMMC slots\nThis can take from 1 -> 5 minutes per slot.")
-				with open("/STARTUP", 'w') as f:
-					f.write(STARTUP)
-				with open("/STARTUP_RECOVERY", 'w') as f:
-					f.write(STARTUP_RECOVERY)
-				with open("/STARTUP_1", 'w') as f:
-					f.write(STARTUP_1)
-				with open("/STARTUP_2", 'w') as f:
-					f.write(STARTUP_2)
-				with open("/STARTUP_3", 'w') as f:
-					f.write(STARTUP_3)
-				print("[VuplusKexec][RootInit] Kernel Root", BoxInfo.getItem("mtdkernel"), "   ", BoxInfo.getItem("mtdrootfs"))
-				cmdlist = []
-				cmdlist.append("dd if=/dev/%s of=/zImage" % BoxInfo.getItem("mtdkernel"))						# backup old kernel
-				cmdlist.append("dd if=/usr/bin/kernel_auto.bin of=/dev/%s" % BoxInfo.getItem("mtdkernel"))  # create new kernel
-				cmdlist.append("mv /usr/bin/STARTUP.cpio.gz /STARTUP.cpio.gz")						# copy userroot routine
-				Console().eBatch(cmdlist, self.RootInitEnd, debug=True)
-			else:
-				self.session.open(MessageBox, _("VuplusKexec: Create Vu+ Multiboot environment - Unable to complete, Vu+ Multiboot files missing."), MessageBox.TYPE_INFO, timeout=30)
-				self.close()
+			self.session.open(MessageBox, _("VuplusKexec: Create Vu+ Multiboot environment - Unable to complete, Vu+ Multiboot files missing."), MessageBox.TYPE_INFO, timeout=30)
+			self.close()
 
 	def RootInitEnd(self, *args, **kwargs):
 		print("[VuplusKexec][RootInitEnd] rebooting")
