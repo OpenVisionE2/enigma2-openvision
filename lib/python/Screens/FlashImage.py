@@ -514,6 +514,12 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 		self.deletedImagesExists = False
 		if imagesList:
 			for index, x in enumerate(imagesList):
+				if BoxInfo.getItem("hasKexec") and x == 1:
+					self["description"] = StaticText(_("Select slot image or slot0 recovery mode image and press OK or GREEN button to reboot."))
+					if x != self.currentimageslot:
+						list.append(ChoiceEntryComponent('', ((_("slot0 - Recovery mode image (current)")), "Recovery")))
+					else:
+						list.append(ChoiceEntryComponent('', ((_("slot0 - Recovery mode image")), "Recovery")))
 				if imagesList[x]["imagename"] == _("Deleted image"):
 					self.deletedImagesExists = True
 				elif imagesList[x]["imagename"] != _("Empty slot"):
@@ -527,7 +533,7 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 			self["key_blue"].setText(_("Order by modes") if config.usage.multiboot_order.value else _("Order by slots"))
 			list += list12
 			list = sorted(list) if config.usage.multiboot_order.value else list
-		if isfile(join(self.tmp_dir, "STARTUP_RECOVERY")):
+		if isfile(join(self.tmp_dir, "STARTUP_RECOVERY")) and not BoxInfo.getItem("hasKexec"):
 			list.append(ChoiceEntryComponent('', ((_("Boot to Recovery menu")), "Recovery")))
 			self["description"] = StaticText(_("Select image or boot to recovery menu and press OK or GREEN button for reboot."))
 		if isfile(join(self.tmp_dir, "STARTUP_ANDROID")):
