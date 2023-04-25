@@ -301,13 +301,43 @@ def InitAVSwitch():
 	else:
 		config.av.hdmicolordepth = ConfigNothing()
 
+	if BoxInfo.getItem("AmlHDRSupport"):
+		def setAMLHDR10(configElement):
+			try:
+				open("/sys/class/amhdmitx/amhdmitx0/config", "w").write(configElement.value)
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /sys/class/amhdmitx/amhdmitx0/config failed!")
+		config.av.amlhdr10_support = ConfigSelection(choices={
+				"hdr10-0": _("Force enabled"),
+				"hdr10-1": _("Force disabled"),
+				"hdr10-2": _("Controlled by HDMI")},
+				default = "hdr10-2")
+		config.av.amlhdr10_support.addNotifier(setAMLHDR10)
+	else:
+		config.av.amlhdr10_support = ConfigNothing()
+
+	if BoxInfo.getItem("AmlHDRSupport"):
+		def setAMLHLG(configElement):
+			try:
+				open("/sys/class/amhdmitx/amhdmitx0/config", "w").write(configElement.value)
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /sys/class/amhdmitx/amhdmitx0/config failed!")
+		config.av.amlhlg_support = ConfigSelection(choices={
+				"hlg-0": _("Force enabled"),
+				"hlg-1": _("Force disabled"),
+				"hlg-2": _("Controlled by HDMI")},
+				default = "hlg-2")
+		config.av.amlhlg_support.addNotifier(setAMLHLG)
+	else:
+		config.av.amlhlg_support = ConfigNothing()
+
 	if BoxInfo.getItem("HasHdrType"):
 		def setHdmiHdrType(configElement):
 			try:
 				with open(BoxInfo.getItem("HasHdrType"), "w") as hdmihdrtype:
 					hdmihdrtype.write(configElement.value)
 			except (IOError, OSError):
-				pass
+				print("[AVSwitch] Write to /proc/stb/video/hdmi_hdrtype failed!")
 		config.av.hdmihdrtype = ConfigSelection(choices={
 			"auto": _("Auto"),
 			"dolby": _("Dolby"),
@@ -380,7 +410,7 @@ def InitAVSwitch():
 					hdmi_audio_source.write(configElement.value)
 					hdmi_audio_source.close()
 			except (IOError, OSError):
-				pass
+				print("[AVSwitch] Write to /proc/stb/hdmi/audio_source failed!")
 		config.av.hdmi_audio_source.addNotifier(setAudioSource)
 	else:
 		config.av.hdmi_audio_source = ConfigNothing()
@@ -398,7 +428,7 @@ def InitAVSwitch():
 					syncmode.write(configElement.value)
 					syncmode.close()
 			except (IOError, OSError):
-				pass
+				print("[AVSwitch] Write to /proc/stb/video/sync_mode_choices failed!")
 		config.av.sync_mode.addNotifier(setSyncMode)
 	else:
 		config.av.sync_mode = ConfigNothing()
@@ -411,16 +441,30 @@ def InitAVSwitch():
 
 	if BoxInfo.getItem("CanDownmixAC3"):
 		default = "downmix"
-		choices = [
-			("downmix", _("Downmix")),
-			("passthrough", _("Passthrough"))
-		]
+		if platform == "dmamlogic"
+			choices = [
+				("downmix", _("Downmix")),
+				("passthrough", _("Passthrough")),
+				("hdmi_best", _("Use best / Controlled by HDMI"))
+			]
+		else:
+			choices = [
+				("downmix", _("Downmix")),
+				("passthrough", _("Passthrough"))
+			]
 
 		def setAC3Downmix(configElement):
-			with open("/proc/stb/audio/ac3", "w") as trackac3:
-				trackac3.write(configElement.value)
-				trackac3.close()
-			if BoxInfo.getItem("HasMultichannelPCM", False) and configElement.value == "passthrough":
+			if platform == "dmamlogic":
+				with open("/sys/class/audiodsp/digital_raw", "w") as trackac3:
+					trackac3.write(configElement.value)
+					trackac3.close()
+			else:
+				with open("/proc/stb/audio/ac3", "w") as trackac3:
+					trackac3.write(configElement.value)
+					trackac3.close()
+			if platform == "dmamlogic":
+				BoxInfo.setItem("CanPcmMultichannel", True)
+			elif BoxInfo.getItem("HasMultichannelPCM", False) and configElement.value == "passthrough":
 				BoxInfo.setItem("CanPcmMultichannel", True)
 			else:
 				BoxInfo.setItem("CanPcmMultichannel", False)
@@ -572,7 +616,6 @@ def InitAVSwitch():
 				("force_dts", _("Convert to DTS"))
 			]
 			default = "force_ac3"
-
 		def setAC3plusTranscode(configElement):
 			try:
 				open("/proc/stb/audio/ac3plus", "w").write(configElement.value)

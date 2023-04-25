@@ -15,6 +15,7 @@ from Components.SystemInfo import BoxInfo
 from Components.VolumeControl import VolumeControl
 from Components.PluginComponent import plugins
 from Plugins.Plugin import PluginDescriptor
+from Components.SystemInfo import BoxInfo
 
 from enigma import iPlayableService, eTimer, eSize, eDVBDB, eServiceReference, eServiceCenter, iServiceInformation
 
@@ -121,10 +122,17 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 			if self.subtitlelist:
 				conflist.append(getConfigListEntry(_("To subtitle selection"), self.settings.menupage))
 			if BoxInfo.getItem("CanDownmixAC3"):
-				choice_list = [
-					("downmix", _("Downmix")),
-					("passthrough", _("Passthrough"))
-				]
+				if BoxInfo.getItem("platform") == "dmamlogic"
+					choice_list = [
+						("downmix", _("Downmix")),
+						("passthrough", _("Passthrough")),
+						("hdmi_best", _("Use best / Controlled by HDMI"))
+					]
+				else:
+					choice_list = [
+						("downmix", _("Downmix")),
+						("passthrough", _("Passthrough"))
+					]
 				if BoxInfo.getItem("CanProc"):
 					with open("/proc/stb/audio/ac3_choices", "r") as ac3_choices:
 						ac3_choices.read().split('\n', 1)[0]
