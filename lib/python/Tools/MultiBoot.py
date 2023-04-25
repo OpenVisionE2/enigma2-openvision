@@ -107,10 +107,10 @@ def getMultiBootSlots():
 			if slotNumber.isdigit() and slotNumber not in bootSlots:
 				if BoxInfo.getItem("hasKexec") and int(slotNumber) > 3:
 					BoxInfo.setItem("HasKexecUSB", True)
-					print("[Multiboot][getMultibootslots] slot", slot)
 				lines = fileReadLines(file, source=MODULE_NAME)
 				if lines:
 					slot = {}
+					print("[Multiboot][getMultibootslots] slot", slot)
 					for line in lines:
 						if "root=" in line:
 							device = getArgValue(line, "root")
