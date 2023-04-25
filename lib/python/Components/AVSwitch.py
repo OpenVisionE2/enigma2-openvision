@@ -311,7 +311,7 @@ def InitAVSwitch():
 				"hdr10-0": _("Force enabled"),
 				"hdr10-1": _("Force disabled"),
 				"hdr10-2": _("Controlled by HDMI")},
-				default = "hdr10-2")
+				default="hdr10-2")
 		config.av.amlhdr10_support.addNotifier(setAMLHDR10)
 	else:
 		config.av.amlhdr10_support = ConfigNothing()
@@ -326,7 +326,7 @@ def InitAVSwitch():
 				"hlg-0": _("Force enabled"),
 				"hlg-1": _("Force disabled"),
 				"hlg-2": _("Controlled by HDMI")},
-				default = "hlg-2")
+				default="hlg-2")
 		config.av.amlhlg_support.addNotifier(setAMLHLG)
 	else:
 		config.av.amlhlg_support = ConfigNothing()
