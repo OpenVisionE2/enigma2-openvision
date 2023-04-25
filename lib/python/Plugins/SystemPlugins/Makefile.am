@@ -4,7 +4,13 @@ SUBDIRS = SoftwareManager PositionerSetup Satfinder \
 	SatelliteEquipmentControl Videomode VideoTune Hotplug \
 	DefaultServicesScanner DiseqcTester CommonInterfaceAssignment \
 	CableScan FastScan OSDPositionSetup OSD3DSetup VideoClippingSetup \
-	VideoEnhancement WirelessLan NetworkWizard
+	WirelessLan NetworkWizard
+
+if DMAMLOGIC
+SUBDIRS += VideoEnhancementAML
+else
+SUBDIRS += VideoEnhancement
+endif
 
 if HAVE_LIBVUGLES2
 SUBDIRS += AnimationSetup

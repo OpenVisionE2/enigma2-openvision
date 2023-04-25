@@ -83,7 +83,15 @@ dvbinclude_HEADERS = \
 	dvb/fbc.h \
 	dvb/atsc.h
 
-if HAVE_AMLOGIC
+if DMAMLOGIC
+dvbinclude_HEADERS += \
+	dvb/alsa.h \
+	dvb/decoders.h \
+	dvb/ringbuffer.h \
+	dvb/tsparser.h
+endif
+
+if AMLOGIC
 dvb_libenigma_dvb_a_SOURCES += dvb/amldecoder.cpp
 dvbinclude_HEADERS += dvb/amldecoder.h
 endif
