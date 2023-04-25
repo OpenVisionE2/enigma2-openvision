@@ -2,7 +2,7 @@
 from Components.config import config, ConfigSlider, ConfigSelection, ConfigYesNo, ConfigEnableDisable, ConfigSubsection, ConfigBoolean, ConfigSelectionNumber, ConfigNothing, NoSave
 from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop
 from Components.SystemInfo import BoxInfo
-from os.path import exists
+from os.path import exists, isfile
 
 model = BoxInfo.getItem("model")
 brand = BoxInfo.getItem("brand")
@@ -28,11 +28,18 @@ class AVSwitch:
 		if valstr in ("4_3_letterbox", "4_3_panscan"): # 4:3
 			return (4, 3)
 		elif valstr == "16_9": # auto ... 4:3 or 16:9
-			try:
-				if "1" in open("/proc/stb/vmpeg/0/aspect", "r").read().split('\n', 1)[0]: # 4:3
-					return (4, 3)
-			except IOError:
-				print("[AVSwitch] Read /proc/stb/vmpeg/0/aspect failed!")
+			if isfile("/proc/stb/vmpeg/0/aspect"):
+				try:
+					if "1" in open("/proc/stb/vmpeg/0/aspect", "r").read().split('\n', 1)[0]: # 4:3
+						return (4, 3)
+				except IOError:
+					print("[AVSwitch] Read /proc/stb/vmpeg/0/aspect failed!")
+			elif isfile("/sys/class/video/screen_mode"):
+				try:
+					if "1" in open("/sys/class/video/screen_mode", "r").read().split('\n', 1)[0]: # 4:3
+						return (4, 3)
+				except IOError:
+					print("[AVSwitch] Read /sys/class/video/screen_mode failed!")
 		elif valstr in ("16_9_always", "16_9_letterbox"): # 16:9
 			pass
 		elif valstr in ("16_10_letterbox", "16_10_panscan"): # 16:10

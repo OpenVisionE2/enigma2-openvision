@@ -44,6 +44,8 @@ AC_SUBST(LIBJPEG_LIBS)
 AC_CHECK_LIB([ungif], [DGifOpen], [LIBGIF_LIBS="-lungif"], [AC_CHECK_LIB([gif], [DGifOpen], [LIBGIF_LIBS="-lgif"], [AC_MSG_ERROR([Could not find libgif or libungif])])])
 AC_SUBST(LIBGIF_LIBS)
 
+FFMPEG_CFLAGS=" "
+
 AC_ARG_WITH(crashlogemail,
 	[  --with-crashlogemail=crash log email address],
 	[CRASHLOGEMAIL="$withval"],[CRASHLOGEMAIL="crash@openvision.tech"])
@@ -436,6 +438,7 @@ if test "$BOXBRAND" == "rpi"; then
 	AC_DEFINE(HAVE_RASPBERRYPI, 1,[enable rpi specific stuff])
 fi
 
+AM_CONDITIONAL(DMAMLOGIC, test "$STBPLATFORM" == "dmamlogic")
 AM_CONDITIONAL(RASPBERRYPI, test "$BOXBRAND" == "rpi")
 
 AM_CONDITIONAL(HAVE_COLORLCD1, test "$BOXTYPE" == "dm8000" -o "$BOXTYPE" == "dm800" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2")
@@ -506,6 +509,13 @@ if test "$BOXBRAND" == "dreambox"; then
 	AC_DEFINE(DREAMBOX, 1, [Dreambox hardware])
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 #	AC_DEFINE(HAVE_FREEZE, 1, [define when freeze workaround is needed])
+fi
+
+if test "$STBPLATFORM" == "dmamlogic"; then
+	ALSA_CFLAGS="-lasound"
+	FFMPEG_CFLAGS=" -lavdevice -lavformat -lavcodec -lswresample -lswscale -lavutil -lm "
+	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
+	AC_DEFINE(DMAMLOGIC, 1, [Dreambox Amlogic hardware])
 fi
 
 if test "$BOXTYPE" == "dm7080"; then
@@ -758,7 +768,7 @@ CXXFLAGS="$CXXFLAGS -Wall -Wextra \
 	-Wno-error=aggregate-return -Wno-error=missing-field-initializers \
 	-Wno-error=packed -Wno-error=vla -Wno-error=clobbered -Wno-error=unused-parameter \
 	$BASE_CFLAGS $ENIGMA2_CFLAGS $PTHREAD_CFLAGS $OPENMP_CFLAGS $ALSA_CFLAGS \
-	$GLES_CFLAGS $AMCODEC_CFLAGS $AMADEC_CFLAGS $DVBCSA_CFLAGS"
+	$GLES_CFLAGS $AMCODEC_CFLAGS $AMADEC_CFLAGS $DVBCSA_CFLAGS $FFMPEG_CFLAGS"
 
 AC_CONFIG_FILES([
 Makefile

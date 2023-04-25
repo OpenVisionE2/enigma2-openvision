@@ -75,6 +75,8 @@ def getFPVersion():
 		version = fileReadLine("/proc/stb/info/micomver", "unknown", source=MODULE_NAME)
 	elif isfile("/proc/stb/fp/version"):
 		version = fileReadLine("/proc/stb/fp/version", "unknown", source=MODULE_NAME)
+	elif isfile("/proc/stb/fp/fp_version"):
+		version = fileReadLine("/proc/stb/fp/fp_version", "unknown", source=MODULE_NAME)
 	elif isfile("/sys/firmware/devicetree/base/bolt/tag"):
 		version = fileReadLine("/sys/firmware/devicetree/base/bolt/tag", "unknown", source=MODULE_NAME).rstrip("\0")
 	else:

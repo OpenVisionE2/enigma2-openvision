@@ -196,10 +196,17 @@ void eAVSwitch::setAspectRatio(int ratio)
 	const char *policy[] = {"letterbox", "panscan", "bestfit", "panscan", "letterbox", "panscan", "letterbox"};
 
 	int fd;
+#ifdef DMAMLOGIC
+	if((fd = open("/sys/class/video/screen_mode", O_WRONLY)) < 0) {
+		eDebug("[eAVSwitch] cannot open /sys/class/video/screen_mode: %m");
+		return;
+	}
+#else
 	if((fd = open("/proc/stb/video/aspect", O_WRONLY)) < 0) {
 		eDebug("[eAVSwitch] cannot open /proc/stb/video/aspect: %m");
 		return;
 	}
+#endif
 //	eDebug("set aspect to %s", aspect[ratio]);
 	if (write(fd, aspect[ratio], strlen(aspect[ratio])) < 1)
 	{
@@ -254,11 +261,19 @@ void eAVSwitch::setVideomode(int mode)
 	}
 	else
 	{
+#ifdef DMAMLOGIC
+		int fd = open("/sys/class/display/mode", O_WRONLY);
+		if(fd < 0) {
+			eDebug("[eAVSwitch] cannot open /sys/class/display/mode: %m");
+			return;
+		}
+#else
 		int fd = open("/proc/stb/video/videomode", O_WRONLY);
 		if(fd < 0) {
 			eDebug("[eAVSwitch] cannot open /proc/stb/video/videomode: %m");
 			return;
 		}
+#endif
 		switch(mode) {
 			case 0:
 				if (write(fd, pal, strlen(pal)) < 1)

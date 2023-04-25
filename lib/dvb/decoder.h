@@ -3,6 +3,9 @@
 
 #include <lib/base/object.h>
 #include <lib/dvb/demux.h>
+#ifdef DMAMLOGIC
+#include <lib/dvb/tsparser.h>
+#endif
 #ifdef HAVE_RASPBERRYPI
 #include <omx.h>
 #include <lib/dvb/omxdecoder.h>
@@ -16,6 +19,9 @@ class eDVBAudio: public iObject
 private:
 	ePtr<eDVBDemux> m_demux;
 	int m_fd, m_fd_demux, m_dev, m_is_freezed;
+#ifdef DMAMLOGIC
+	eTsParser *m_TsPaser;
+#endif
 public:
 	enum { aMPEG, aAC3, aDTS, aAAC, aAACHE, aLPCM, aDTSHD, aDDP, aDRA, aAC4 };
 	eDVBAudio(eDVBDemux *demux, int dev);
@@ -136,6 +142,10 @@ private:
 #else
 	int m_vpid, m_vtype, m_apid, m_atype, m_pcrpid, m_textpid;
 #endif
+#ifdef DMAMLOGIC
+	int m_width, m_height, m_framerate, m_aspect, m_progressive;
+	void parseVideoInfo(); // called by timer
+#endif
 #if defined(HAVE_FCC_ABILITY)
 	int m_fcc_fd;
 	bool m_fcc_enable;
@@ -172,6 +182,9 @@ private:
 	ePtr<eTimer> m_showSinglePicTimer;
 	void finishShowSinglePic(); // called by timer
 public:
+#ifdef DMAMLOGIC
+	enum { aMPEG, aAC3, aDTS, aAAC, aAACHE, aLPCM, aDTSHD, aDDP,UNKNOWN = -1, MPEG2=0, MPEG4_H264, VC1 = 3, MPEG4_Part2, VC1_SM, MPEG1, H265_HEVC, AVS = 16, AVS2 = 40 };
+#endif
 	enum { pidNone = -1 };
 	eTSMPEGDecoder(eDVBDemux *demux, int decoder);
 	virtual ~eTSMPEGDecoder();

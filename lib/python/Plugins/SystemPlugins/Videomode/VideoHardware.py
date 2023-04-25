@@ -6,6 +6,7 @@ from enigma import getDesktop
 from Components.About import about
 from Tools.Directories import fileExists
 from Components.Console import Console
+from os.path import isfile
 import re
 
 brand = BoxInfo.getItem("brand")
@@ -130,12 +131,20 @@ class VideoHardware:
 					if aspect == "16:10":
 						ret = (16, 10)
 			elif is_auto:
-				try:
-					aspect_str = open("/proc/stb/vmpeg/0/aspect", "r").read()
-					if aspect_str == "1": # 4:3
-						ret = (4, 3)
-				except IOError:
-					print("[Videomode] Read /proc/stb/vmpeg/0/aspect failed!")
+				if isfile("/proc/stb/vmpeg/0/aspect"):
+					try:
+						aspect_str = open("/proc/stb/vmpeg/0/aspect", "r").read()
+						if aspect_str == "1": # 4:3
+							ret = (4, 3)
+					except IOError:
+						print("[Videomode] Read /proc/stb/vmpeg/0/aspect failed!")
+				elif isfile("/sys/class/video/screen_mode"):
+					try:
+						aspect_str = open("/sys/class/video/screen_mode", "r").read()
+						if aspect_str == "1": # 4:3
+							ret = (4, 3)
+					except IOError:
+						print("[Videomode] Read /sys/class/video/screen_mode failed!")
 			else:  # 4:3
 				ret = (4, 3)
 		return ret
@@ -249,11 +258,18 @@ class VideoHardware:
 			open("/proc/stb/video/videomode_50hz", "w").write(mode_50)
 		except IOError:
 			print("[Videomode] Write to /proc/stb/video/videomode_50hz failed!")
-			try:
-				# fallback if no possibility to setup 50 hz mode
-				open("/proc/stb/video/videomode", "w").write(mode_50)
-			except IOError:
-				print("[Videomode] Write to /proc/stb/video/videomode failed!")
+			if isfile("/proc/stb/video/videomode"):
+				try:
+					# fallback if no possibility to setup 50 hz mode
+					open("/proc/stb/video/videomode", "w").write(mode_50)
+				except IOError:
+					print("[Videomode] Write to /proc/stb/video/videomode failed!")
+			elif isfile("/sys/class/display/mode"):
+				try:
+					# fallback if no possibility to setup 50 hz mode
+					open("/sys/class/display/mode", "w").write(mode_50)
+				except IOError:
+					print("[Videomode] Write to /sys/class/display/mode failed!")
 		try:
 			open("/proc/stb/video/videomode_60hz", "w").write(mode_60)
 		except IOError:
