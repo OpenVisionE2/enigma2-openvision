@@ -332,8 +332,8 @@ class VideoHardware:
 				open('/sys/class/video/axis', 'w').write(axis[mode])
 			except:
 				print("[Videomode] Write to /sys/class/video/axis failed!")
-			stride = open("/sys/class/graphics/fb0/stride","r").read().strip()
-			print("[Videomode] Framebuffer mode:%s  stride:%s axis:%s" % (getDesktop(0).size().width(),stride,axis[mode]))
+			stride = open("/sys/class/graphics/fb0/stride", "r").read().strip()
+			print("[Videomode] Framebuffer mode:%s  stride:%s axis:%s" % (getDesktop(0).size().width(), stride, axis[mode]))
 		try:
 			open("/proc/stb/video/videomode_50hz", "w").write(mode_50)
 		except IOError:
@@ -382,7 +382,7 @@ class VideoHardware:
 			config.av.videorate[mode].save()
 
 	def getAMLMode(self):
-		currentmode = open("/sys/class/display/mode","r").read().strip()
+		currentmode = open("/sys/class/display/mode", "r").read().strip()
 		return currentmode[:-4]
 
 	def getWindowsAxis(self):
