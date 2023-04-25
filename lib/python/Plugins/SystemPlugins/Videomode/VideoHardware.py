@@ -307,7 +307,7 @@ class VideoHardware:
 		if platform == "dmamlogic":
 			amlmode = list(modes.values())[0]
 			try:
-				print("[Videomode] Amlogic setting videomode to mode: %s" %amlmode)
+				print("[Videomode] Amlogic setting videomode to mode: %s" % amlmode)
 				open('/sys/class/display/mode', 'w').write(amlmode)
 			except:
 				print("[Videomode] Write to /sys/class/display/mode failed!")
