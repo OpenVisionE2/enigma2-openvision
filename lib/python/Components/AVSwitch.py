@@ -616,6 +616,7 @@ def InitAVSwitch():
 				("force_dts", _("Convert to DTS"))
 			]
 			default = "force_ac3"
+
 		def setAC3plusTranscode(configElement):
 			try:
 				open("/proc/stb/audio/ac3plus", "w").write(configElement.value)
