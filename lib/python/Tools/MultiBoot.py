@@ -107,10 +107,10 @@ def getMultiBootSlots():
 			if slotNumber.isdigit() and slotNumber not in bootSlots:
 				if BoxInfo.getItem("hasKexec") and int(slotNumber) > 3:
 					BoxInfo.setItem("HasKexecUSB", True)
-					print("[Multiboot][getMultibootslots] slot", slot)
 				lines = fileReadLines(file, source=MODULE_NAME)
 				if lines:
 					slot = {}
+					print("[Multiboot][getMultibootslots] slot", slot)
 					for line in lines:
 						if "root=" in line:
 							device = getArgValue(line, "root")
@@ -124,6 +124,7 @@ def getMultiBootSlots():
 							if exists(device) or device == 'ubi0:ubifs':
 								slot["device"] = device
 								slot["startupfile"] = basename(file)
+								slot["slotType"] = "eMMC" if "mmc" in slot["device"] else "USB"
 								if "rootsubdir" in line:
 									BoxInfo.setItem("HasRootSubdir", True)
 									slot["kernel"] = getArgValue(line, "kernel")
@@ -186,13 +187,10 @@ def getImageList(Recovery=None):
 	if bootSlots:
 		tempDir = mkdtemp(prefix=PREFIX)
 		for slot in sorted(list(bootSlots.keys())):
-			if slot == 0:
-				if not Recovery:  # called by ImageManager
-					continue
-				else:  # called by FlashImage
-					imageList[slot] = {"imagename": _("Recovery Mode")}
-					continue
-			Console().ePopen((MOUNT, MOUNT, bootSlots[slot]["device"], tempDir))
+			try:  # Avoid problems Dev lost USB Slots Kexec
+				Console().ePopen((MOUNT, MOUNT, bootSlots[slot]["device"], tempDir))
+			except:
+				pass
 			imageDir = sep.join(filter(None, [tempDir, bootSlots[slot].get("rootsubdir", "")]))
 			if isfile(pathjoin(imageDir, "usr/bin/enigma2")):
 				imageData = getSlotImageData(imageDir)
