@@ -442,7 +442,7 @@ def InitAVSwitch():
 	if BoxInfo.getItem("CanDownmixAC3"):
 		default = "downmix"
 		if platform == "dmamlogic"
-			choices = [
+		choices = [
 				("downmix", _("Downmix")),
 				("passthrough", _("Passthrough")),
 				("hdmi_best", _("Use best / Controlled by HDMI"))

@@ -123,7 +123,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 				conflist.append(getConfigListEntry(_("To subtitle selection"), self.settings.menupage))
 			if BoxInfo.getItem("CanDownmixAC3"):
 				if BoxInfo.getItem("platform") == "dmamlogic"
-					choice_list = [
+				choice_list = [
 						("downmix", _("Downmix")),
 						("passthrough", _("Passthrough")),
 						("hdmi_best", _("Use best / Controlled by HDMI"))
