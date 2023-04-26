@@ -7,7 +7,7 @@ from subprocess import PIPE, Popen
 
 from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl
 
-from Tools.Directories import SCOPE_LIBDIR, SCOPE_SKINS, fileCheck, fileContains, fileReadLine, fileReadLines, resolveFilename
+from Tools.Directories import SCOPE_LIBDIR, SCOPE_SKINS, scopeLCDSkin, fileCheck, fileContains, fileReadLine, fileReadLines, resolveFilename
 from Tools.StbHardware import getWakeOnLANType
 
 MODULE_NAME = __name__.split(".")[-1]
@@ -258,7 +258,8 @@ SystemInfo["CanMeasureFrontendInputPower"] = eDVBResourceManager.getInstance().c
 SystemInfo["12V_Output"] = Misc_Options.getInstance().detected_12V_output()
 SystemInfo["ZapMode"] = fileCheck("/proc/stb/video/zapmode") or fileCheck("/proc/stb/video/zapping_mode")
 SystemInfo["NumFrontpanelLEDs"] = countFrontpanelLEDs()
-SystemInfo["FrontpanelDisplay"] = fileCheck("/dev/dbox/oled0") or fileCheck("/dev/dbox/lcd0")
+SystemInfo["FrontpanelDisplay"] = exists(scopeLCDSkin) and fileCheck("/dev/dbox/oled0") or exists(scopeLCDSkin) and fileCheck("/dev/dbox/lcd0")
+SystemInfo["NoFpDisplay"] = not exists(scopeLCDSkin)
 SystemInfo["LCDsymbol_circle_recording"] = fileCheck("/proc/stb/lcd/symbol_circle") or platform == "gfuturesbcmarm" and fileCheck("/proc/stb/lcd/symbol_recording")
 SystemInfo["LCDsymbol_timeshift"] = fileCheck("/proc/stb/lcd/symbol_timeshift")
 SystemInfo["LCDshow_symbols"] = (model == "et9x00" or platform == "gfuturesbcmarm") and fileCheck("/proc/stb/lcd/show_symbols")

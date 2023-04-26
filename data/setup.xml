@@ -62,8 +62,8 @@
 	</setup>
 	<setup key="FrontDisplay" title="Display Setup" requires="FrontpanelDisplay">
 		<item level="0" text="Use separate picon pack for front panel display" requires="VFD_scroll_repeats" description="Use piconlcd directory for picons on color LCD.">config.lcd.picon_pack</item>
-		<item level="0" text="Date style" description="Choose the front panel display formatting style for dates. 'D' / 'DD' is the date and 'M' / 'MM' is the month in digits.  ('DD' and 'MM' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin." requires="config.usage.date.enabled_display">config.usage.date.display</item>
-		<item level="0" text="Time style" description="Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin." requires="config.usage.time.enabled_display">config.usage.time.display</item>
+		<item level="0" text="Date style" description="Choose the front panel display formatting style for dates. 'D' / 'DD' is the date and 'M' / 'MM' is the month in digits.  ('DD' and 'MM' have leading zeros for single digit values.) The screen display will be based on your choice but can be influenced by the skin." requires="FrontpanelDisplay">config.usage.date.display</item>
+		<item level="0" text="Time style" description="Choose the front panel display formatting style for times. 'H' / 'HH' is the hour for a 24 hour clock, 'h' / 'hh' is the hour for a 12 hour clock, 'mm' is the minutes.  ('HH' and 'hh' have leading zeros for single digit values.) The front panel display will be based on your choice but can be influenced any applicable skin." requires="FrontpanelDisplay">config.usage.time.display</item>
 		<item level="1" requires="ConfigDisplay" text="Show Time Remaining/Elapsed" description="This option allows you choose how to display remaining time, or elapsed time, or both.">config.usage.swap_time_remaining_on_vfd</item>
 		<item level="1" requires="ConfigDisplay" text="Show Transponder Remaining/Elapsed as" description="This option allows you choose how to display the remaining/elapsed time for live TV.">config.usage.swap_time_display_on_vfd</item>
 		<item level="1" requires="ConfigDisplay" text="Show Media playback Remaining/Elapsed as" description="This option allows you to choose how to display the remaining/elapsed time for Media playback.">config.usage.swap_media_time_display_on_vfd</item>
@@ -86,8 +86,8 @@
 		<item level="1" requires="LCDMiniTV" text="Show MiniTV in the front panel display" description="You can display MiniTV with or without OSD menu.">config.lcd.modeminitv</item>
 		<item level="1" requires="LCDMiniTV" text="Show PIP in the front panel display" description="You can display PIP with or without OSD menu.">config.lcd.modepip</item>
 		<item level="1" requires="LCDMiniTV" text="Set framerate for MiniTV" description="Lower framerate save CPU time.">config.lcd.fpsminitv</item>
-		<item level="1" text="REC symbol in use" description="Configure how to show REC symbol in use (this needs an enigma2 restart).">config.usage.blinking_rec_symbol_during_recording</item>
-		<item level="1" text="REC symbol in Standby" description="Configure how to show REC symbol in standby (this needs an enigma2 restart).">config.usage.blinking_display_clock_during_recording</item>
+		<item level="1" text="REC symbol in use" description="Configure how to show REC symbol in use (this needs an enigma2 restart)." requires="FrontpanelDisplay">config.usage.blinking_rec_symbol_during_recording</item>
+		<item level="1" text="REC symbol in Standby" description="Configure how to show REC symbol in standby (this needs an enigma2 restart)." requires="FrontpanelDisplay">config.usage.blinking_display_clock_during_recording</item>
 		<item level="1" requires="ConfigDisplay" text="Scrolling speed (software renderer)" description="Set the scrolling speed of text on the front panel display, this is used by software renderer in some skins.">config.lcd.scroll_speed</item>
 		<item level="1" requires="ConfigDisplay" text="Scrolling delay (software renderer)" description="Set the delay time between repeated loops, this is used by software renderer in some skins.">config.lcd.scroll_delay</item>
 		<item level="0" requires="ConfigDisplay" text="Power On Display" description="This option allows you to Power Off the display.">config.lcd.power</item>
@@ -174,6 +174,10 @@
 		<item level="0" requires="FrontpanelLEDBrightnessControl" text="Operating LED brightness" description="With this option you can switch the LED brightness.">config.lcd.ledbrightnesscontrol</item>
 		<item level="0" requires="FrontpanelLEDColorControl" text="Operating LED color" description="With this option you can switch the LED color.">config.lcd.ledcolorcontrolcolor</item>
 		<item level="0" requires="FrontpanelLEDFadeControl" text="Operating LED fade" description="With this option you can switch the LED fade.">config.lcd.ledfadecontrolcolor</item>
+		<item level="0" text="Brightness" description="Configure the brightness level of the front panel display." requires="NoFpDisplay">config.lcd.bright</item>
+		<item level="0" text="Brightness (Dimmed)" description="Configure the brightness level of the front panel display for dimmed operation." requires="NoFpDisplay">config.lcd.dimbright</item>
+		<item level="0" text="Dim delay" description="Dim the LCD after specified time." requires="NoFpDisplay">config.lcd.dimdelay</item>
+		<item level="0" text="Standby" description="Configure the brightness level of the front panel display during standby." requires="NoFpDisplay">config.lcd.standby</item>
 	</setup>
 	<setup key="Locale" title="Locale Selection Setup" menuTitle="Locale">
 		<item level="0" text="Locales to be displayed" description="Display the base locales or all locales for a language.">config.locales.packageLocales</item>
