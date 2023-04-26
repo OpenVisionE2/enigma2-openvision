@@ -399,7 +399,7 @@ AC_ARG_WITH(amlogic,
 	[[with_amlogic=$withval]],
 	[[with_amlogic=no]]
 )
-AM_CONDITIONAL(HAVE_AMLOGIC, test x"$with_amlogic" = xyes)
+AM_CONDITIONAL(AMLOGIC, test x"$with_amlogic" = xyes)
 if test x"$with_amlogic" = xyes ; then
 	AC_DEFINE(HAVE_AMLOGIC, 1,[Enables AMLOGIC decoder support])
 	PKG_CHECK_MODULES(AMCODEC, libamcodec)
@@ -418,6 +418,7 @@ if test x"$with_fcc" = xyes ; then
 	AC_DEFINE(HAVE_FCC_ABILITY, 1,[use FCC specific codes for fast channel change])
 fi
 
+AM_CONDITIONAL(RASPBERRYPI, test "$BOXBRAND" == "rpi")
 if test "$BOXBRAND" == "rpi"; then
 	PKG_CHECK_MODULES(DVBCSA, libdvbcsa)
 	PKG_CHECK_MODULES(LIBNL, libnl-1 >= 1.0-pre8, has_libnl=yes, dummy=no)
@@ -435,8 +436,6 @@ if test "$BOXBRAND" == "rpi"; then
 	CXXFLAGS+="$RPI_CFLAGS"
 	AC_DEFINE(HAVE_RASPBERRYPI, 1,[enable rpi specific stuff])
 fi
-
-AM_CONDITIONAL(RASPBERRYPI, test "$BOXBRAND" == "rpi")
 
 AM_CONDITIONAL(HAVE_COLORLCD1, test "$BOXTYPE" == "dm8000" -o "$BOXTYPE" == "dm800" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2")
 AM_CONDITIONAL(HAVE_COLORLCD2, test "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2" -o "$BOXTYPE" == "dm820")

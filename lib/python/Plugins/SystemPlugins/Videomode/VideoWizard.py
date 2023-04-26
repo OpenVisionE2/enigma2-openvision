@@ -91,16 +91,16 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 				if port != "DVI-PC":
 					list.append((descr, port))
 		list.sort(key=lambda x: x[0])
-		print("[Videomode] VideoWizard listInputChannels:", list)
+		# print("[Videomode] VideoWizard listInputChannels:", list)
 		return list
 
 	def inputSelectionMade(self, index):
-		print("[Videomode] VideoWizard inputSelectionMade:", index)
+		# print("[Videomode] VideoWizard inputSelectionMade:", index)
 		self.port = index
 		self.inputSelect(index)
 
 	def inputSelectionMoved(self):
-		print("[Videomode] VideoWizard input selection moved:", self.selection)
+		# print("[Videomode] VideoWizard input selection moved:", self.selection)
 		self.inputSelect(self.selection)
 		if self["portpic"].instance is not None:
 			picname = self.selection
@@ -109,9 +109,9 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 			self["portpic"].instance.setPixmapFromFile(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/Videomode/" + picname + ".png"))
 
 	def inputSelect(self, port):
-		print("[Videomode] VideoWizard inputSelect:", port)
+		# print("[Videomode] VideoWizard inputSelect:", port)
 		modeList = self.hw.getModeList(self.selection)
-		print("[Videomode] VideoWizard modeList:", modeList)
+		# print("[Videomode] VideoWizard modeList:", modeList)
 		self.port = port
 		if (len(modeList) > 0):
 			ratesList = self.listRates(modeList[0][0])
@@ -119,25 +119,25 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 
 	def listModes(self):
 		list = []
-		print("[Videomode] VideoWizard modes for port", self.port)
+		# print("[Videomode] VideoWizard modes for port", self.port)
 		for mode in self.hw.getModeList(self.port):
 			#if mode[0] != "PC":
 				list.append((mode[0], mode[0]))
-		print("[Videomode] VideoWizard modeslist:", list)
+		# print("[Videomode] VideoWizard modeslist:", list)
 		return list
 
 	def modeSelectionMade(self, index):
-		print("[Videomode] VideoWizard modeSelectionMade:", index)
+		# print("[Videomode] VideoWizard modeSelectionMade:", index)
 		self.mode = index
 		self.modeSelect(index)
 
 	def modeSelectionMoved(self):
-		print("[Videomode] VideoWizard mode selection moved:", self.selection)
+		# print("[Videomode] VideoWizard mode selection moved:", self.selection)
 		self.modeSelect(self.selection)
 
 	def modeSelect(self, mode):
 		ratesList = self.listRates(mode)
-		print("[Videomode] VideoWizard ratesList:", ratesList)
+		# print("[Videomode] VideoWizard ratesList:", ratesList)
 		if self.port == "DVI" and mode in ("720p", "1080i", "1080p", "2160p", "2160p30"):
 			if BoxInfo.getItem("Has24hz"):
 				self.rate = "auto"
@@ -152,13 +152,13 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 		if querymode is None:
 			querymode = self.mode
 		list = []
-		print("[Videomode] VideoWizard modes for port", self.port, "and mode", querymode)
+		# print("[Videomode] VideoWizard modes for port", self.port, "and mode", querymode)
 		for mode in self.hw.getModeList(self.port):
 			print("[Videomode] VideoWizard mode:", mode)
 			if mode[0] == querymode:
 				for rate in mode[1]:
 					if self.port == "DVI-PC":
-						print("[Videomode] VideoWizard rate:", rate)
+						# print("[Videomode] VideoWizard rate:", rate)
 						if rate == "640x480":
 							list.insert(0, (rate, rate))
 							continue
@@ -166,12 +166,12 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 		return list
 
 	def rateSelectionMade(self, index):
-		print("[Videomode] VideoWizard rateSelectionMade:", index)
+		# print("[Videomode] VideoWizard rateSelectionMade:", index)
 		self.rate = index
 		self.rateSelect(index)
 
 	def rateSelectionMoved(self):
-		print("[Videomode] VideoWizard rate selection moved:", self.selection)
+		# print("[Videomode] VideoWizard rate selection moved:", self.selection)
 		self.rateSelect(self.selection)
 
 	def rateSelect(self, rate):
@@ -180,7 +180,7 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 	def showTestCard(self, selection=None):
 		if selection is None:
 			selection = self.selection
-		print("[Videomode] VideoWizard set config.misc.showtestcard to", {'yes': True, 'no': False}[selection])
+		# print("[Videomode] VideoWizard set config.misc.showtestcard to", {'yes': True, 'no': False}[selection])
 		if selection == "yes":
 			config.misc.showtestcard.value = True
 		else:

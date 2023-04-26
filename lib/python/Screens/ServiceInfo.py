@@ -159,6 +159,10 @@ class ServiceInfo(Screen):
 							fps = (int(open("/proc/stb/vmpeg/0/framerate", "r").read()) + 500) // 1000
 						except:
 							pass
+						try:
+							fps = (int(open("/proc/stb/vmpeg/0/frame_rate", "r").read()) + 500) // 1000
+						except:
+							pass
 					resolution += str(fps)
 					resolution += (" i", " p", "")[self.info.getInfo(iServiceInformation.sProgressive)]
 					aspect = self.getServiceInfoValue(iServiceInformation.sAspect)

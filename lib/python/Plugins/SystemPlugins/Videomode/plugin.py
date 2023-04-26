@@ -107,6 +107,9 @@ class VideoSetup(ConfigListScreen, Screen):
 					self.list.append(getConfigListEntry(_("HDR10 support"), config.av.hdr10_support, _("This option allows you to force the HDR10 modes for UHD")))
 					self.list.append(getConfigListEntry(_("Allow 12bit"), config.av.allow_12bit, _("This option allows you to enable or disable the 12 bit color mode")))
 					self.list.append(getConfigListEntry(_("Allow 10bit"), config.av.allow_10bit, _("This option allows you to enable or disable the 10 bit color mode")))
+				if BoxInfo.getItem("AmlHDRSupport"):
+					self.list.append(getConfigListEntry(_("Amlogic HLG Support"), config.av.amlhlg_support, _("This option allows you to force the HLG modes for UHD")))
+					self.list.append(getConfigListEntry(_("Amlogic HDR10 Support"), config.av.amlhdr10_support, _("This option allows you to force the HDR10 modes for UHD")))
 				if BoxInfo.getItem("CanSyncMode"):
 					self.list.append(getConfigListEntry(_("Video sync mode"), config.av.sync_mode, _("This option allows you to use video sync mode.")))
 
@@ -162,6 +165,8 @@ class VideoSetup(ConfigListScreen, Screen):
 
 		if BoxInfo.getItem("CanChangeOsdAlpha"):
 			self.list.append(getConfigListEntry(_("OSD transparency"), config.av.osd_alpha, _("Configure the transparency of the OSD.")))
+		if BoxInfo.getItem("CanChangeOsdPlaneAlpha"):
+			self.list.append(getConfigListEntry(_("OSD plane transparency"), config.av.osd_planealpha, _("Configure the transparency of the OSD.")))
 
 		if not isinstance(config.av.scaler_sharpness, ConfigNothing):
 			self.list.append(getConfigListEntry(_("Scaler sharpness"), config.av.scaler_sharpness, _("Configure the sharpness of the video scaling.")))

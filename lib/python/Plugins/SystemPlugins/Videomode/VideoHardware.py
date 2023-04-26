@@ -6,7 +6,7 @@ from enigma import getDesktop
 from Components.About import about
 from Tools.Directories import fileExists
 from Components.Console import Console
-import re
+from os.path import isfile
 
 brand = BoxInfo.getItem("brand")
 platform = BoxInfo.getItem("platform")
@@ -47,6 +47,13 @@ class VideoHardware:
 		rates["2160p"] = {"50Hz": {50: "2160p50"}, "60Hz": {60: "2160p60"}, "multi": {50: "2160p50", 60: "2160p60"}, "auto": {50: "2160p50", 60: "2160p60", 24: "2160p24"}}
 	else:
 		rates["2160p"] = {"50Hz": {50: "2160p50"}, "60Hz": {60: "2160p"}, "multi": {50: "2160p50", 60: "2160p"}, "auto": {50: "2160p50", 60: "2160p", 24: "2160p24"}}
+
+	rates["smpte"] = {"50Hz": {50: "smpte50hz"},
+		"60Hz": {60: "smpte60hz"},
+		"30Hz": {30: "smpte30hz"},
+		"25Hz": {25: "smpte25hz"},
+		"24Hz": {24: "smpte24hz"},
+		"auto": {60: "smpte60hz"}}
 
 	rates["PC"] = {
 		"1024x768": {60: "1024x768"},
@@ -131,12 +138,18 @@ class VideoHardware:
 					if aspect == "16:10":
 						ret = (16, 10)
 			elif is_auto:
-				try:
-					aspect_str = open("/proc/stb/vmpeg/0/aspect", "r").read()
-					if aspect_str == "1": # 4:3
-						ret = (4, 3)
-				except IOError:
-					print("[Videomode] Read /proc/stb/vmpeg/0/aspect failed!")
+				if isfile("/proc/stb/vmpeg/0/aspect"):
+					try:
+						aspect_str = open("/proc/stb/vmpeg/0/aspect", "r").read()
+					except IOError:
+						print("[Videomode] Read /proc/stb/vmpeg/0/aspect failed!")
+				elif isfile("/sys/class/video/screen_mode"):
+					try:
+						aspect_str = open("/sys/class/video/screen_mode", "r").read()
+					except IOError:
+						print("[Videomode] Read /sys/class/video/screen_mode failed!")
+				if aspect_str == "1": # 4:3
+					ret = (4, 3)
 			else:  # 4:3
 				ret = (4, 3)
 		return ret
@@ -179,36 +192,45 @@ class VideoHardware:
 		config.av.policy_43.addNotifier(self.updateAspect)
 
 	def readAvailableModes(self):
-		try:
-			modes = open("/proc/stb/video/videomode_choices").read()[:-1]
-		except IOError:
-			print("[Videomode] Read /proc/stb/video/videomode_choices failed!")
-			self.modes_available = []
-			return
-		self.modes_available = modes.split(' ')
+		if isfile("/sys/class/amhdmitx/amhdmitx0/disp_cap"):
+			print("[Videomode] Read /sys/class/amhdmitx/amhdmitx0/disp_cap")
+			modes = open("/sys/class/amhdmitx/amhdmitx0/disp_cap").read()[:-1].replace('*', '')
+			self.modes_available = modes.splitlines()
+			return self.modes_available
+		else:
+			try:
+				modes = open("/proc/stb/video/videomode_choices").read()[:-1]
+			except (IOError, OSError):
+				print("[Videomode] Read /proc/stb/video/videomode_choices failed!")
+				self.modes_available = []
+				return
+			self.modes_available = modes.split(' ')
 
 	def readPreferredModes(self):
 		if config.av.edid_override.value == False:
-			try:
-				modes = open("/proc/stb/video/videomode_edid").read()[:-1]
-				self.modes_preferred = modes.split(' ')
-				print("[Videomode] VideoHardware reading edid modes: ", self.modes_preferred)
-			except IOError:
-				print("[Videomode] Read /proc/stb/video/videomode_edid failed!")
+			if isfile("/sys/class/amhdmitx/amhdmitx0/disp_cap"):
+				modes = open("/sys/class/amhdmitx/amhdmitx0/disp_cap").read()[:-1].replace('*', '')
+				self.modes_preferred = modes.splitlines()
+				print("[Videomode] VideoHardware reading disp_cap modes: ", self.modes_preferred)
+			else:
 				try:
-					modes = open("/proc/stb/video/videomode_preferred").read()[:-1]
+					modes = open("/proc/stb/video/videomode_edid").read()[:-1]
 					self.modes_preferred = modes.split(' ')
-				except IOError:
-					print("[Videomode] Read /proc/stb/video/videomode_preferred failed!")
-					self.modes_preferred = self.modes_available
-
+					print("[Videomode] VideoHardware reading edid modes: ", self.modes_preferred)
+				except (IOError, OSError):
+					print("[Videomode] Read /proc/stb/video/videomode_edid failed!")
+					try:
+						modes = open("/proc/stb/video/videomode_preferred").read()[:-1]
+						self.modes_preferred = modes.split(' ')
+					except IOError:
+						print("[Videomode] Read /proc/stb/video/videomode_preferred failed!")
+						self.modes_preferred = self.modes_available
 			if len(self.modes_preferred) <= 1:
 				self.modes_preferred = self.modes_available
 				print("[Videomode] VideoHardware reading preferred modes is empty, using all video modes")
 		else:
 			self.modes_preferred = self.modes_available
 			print("[Videomode] VideoHardware reading preferred modes override, using all video modes")
-
 		self.last_modes_preferred = self.modes_preferred
 
 	# check if a high-level mode with a given rate is available.
@@ -235,12 +257,23 @@ class VideoHardware:
 
 		mode_50 = modes.get(50)
 		mode_60 = modes.get(60)
+		mode_30 = modes.get(30)
+		mode_25 = modes.get(25)
 		mode_24 = modes.get(24)
 
 		if mode_50 is None or force == 60:
 			mode_50 = mode_60
 		if mode_60 is None or force == 50:
 			mode_60 = mode_50
+
+		if mode_30 is None or force:
+			mode_30 = mode_60
+			if force == 50:
+				mode_30 = mode_50
+		if mode_25 is None or force:
+			mode_25 = mode_60
+			if force == 50:
+				mode_25 = mode_50
 		if mode_24 is None or force:
 			mode_24 = mode_60
 			if force == 50:
@@ -250,11 +283,18 @@ class VideoHardware:
 			open("/proc/stb/video/videomode_50hz", "w").write(mode_50)
 		except IOError:
 			print("[Videomode] Write to /proc/stb/video/videomode_50hz failed!")
-			try:
-				# fallback if no possibility to setup 50 hz mode
-				open("/proc/stb/video/videomode", "w").write(mode_50)
-			except IOError:
-				print("[Videomode] Write to /proc/stb/video/videomode failed!")
+			if isfile("/proc/stb/video/videomode"):
+				try:
+					# fallback if no possibility to setup 50 hz mode
+					open("/proc/stb/video/videomode", "w").write(mode_50)
+				except IOError:
+					print("[Videomode] Write to /proc/stb/video/videomode failed!")
+			elif isfile("/sys/class/display/mode"):
+				try:
+					# fallback if no possibility to setup 50 hz mode
+					open("/sys/class/display/mode", "w").write(mode_50)
+				except IOError:
+					print("[Videomode] Write to /sys/class/display/mode failed!")
 		try:
 			open("/proc/stb/video/videomode_60hz", "w").write(mode_60)
 		except IOError:
@@ -336,11 +376,9 @@ class VideoHardware:
 			for (mode, rates) in modes:
 				ratelist = []
 				for rate in rates:
-					if rate in ("auto"):
-						if Has24hz:
-							ratelist.append((rate, mode == "2160p30" and "auto (25Hz 30Hz 24Hz)" or "auto (50Hz 60Hz 24Hz)"))
-					else:
-						ratelist.append((rate, rate == "multi" and (mode == "2160p30" and "multi (25Hz 30Hz)" or "multi (50Hz 60Hz)") or rate))
+					if rate == "auto" and not Has24hz:
+						continue
+					ratelist.append((rate, rate))
 				config.av.videorate[mode] = ConfigSelection(choices=ratelist)
 		config.av.videoport = ConfigSelection(choices=lst)
 

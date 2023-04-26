@@ -3342,13 +3342,22 @@ class InfoBarResolutionSelection:
 		pass
 
 	def resolutionSelection(self):
-		xRes = int(fileReadLine("/proc/stb/vmpeg/0/xres", 0, source=MODULE_NAME), 16)
-		yRes = int(fileReadLine("/proc/stb/vmpeg/0/yres", 0, source=MODULE_NAME), 16)
+		if isfile("/proc/stb/vmpeg/0/xres"):
+			xRes = int(fileReadLine("/proc/stb/vmpeg/0/xres", 0, source=MODULE_NAME), 16)
+		elif isfile("/sys/class/video/frame_width"):
+			xRes = int(fileReadLine("/sys/class/video/frame_width", 0, source=MODULE_NAME))
+		if isfile("/proc/stb/vmpeg/0/yres"):
+			yRes = int(fileReadLine("/proc/stb/vmpeg/0/yres", 0, source=MODULE_NAME), 16)
+		elif isfile("/sys/class/video/frame_height"):
+			yRes = int(fileReadLine("/sys/class/video/frame_height", 0, source=MODULE_NAME))
 		if brand == "azbox":
 			print("[InfoBarGenerics] Set fps to 50 for azbox to avoid further problems!")
 			fps = 50.0
 		else:
-			fps = float(fileReadLine("/proc/stb/vmpeg/0/framerate", 50000, source=MODULE_NAME)) / 1000.0
+			if isfile("/proc/stb/vmpeg/0/framerate"):
+				fps = float(fileReadLine("/proc/stb/vmpeg/0/framerate", 50000, source=MODULE_NAME)) / 1000.0
+			elif isfile("/proc/stb/vmpeg/0/frame_rate"):
+				fps = float(fileReadLine("/proc/stb/vmpeg/0/frame_rate", 50000, source=MODULE_NAME)) / 1000.0
 		resList = []
 		resList.append((_("Exit"), "exit"))
 		resList.append((_("Auto (not available)"), "auto"))
@@ -3365,7 +3374,10 @@ class InfoBarResolutionSelection:
 				if videoMode[-1].isdigit():
 					video = "%sHz" % videoMode
 				resList.append((video, videoMode))
-		videoMode = fileReadLine("/proc/stb/video/videomode", "Unknown", source=MODULE_NAME)
+		if isfile("/proc/stb/video/videomode"):
+			videoMode = fileReadLine("/proc/stb/video/videomode", "Unknown", source=MODULE_NAME)
+		elif isfile("/sys/class/display/mode"):
+			videoMode = fileReadLine("/sys/class/display/mode", "Unknown", source=MODULE_NAME)
 		keys = ["green", "yellow", "blue", "", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 		selection = 0
 		for item in range(len(resList)):
@@ -3381,10 +3393,16 @@ class InfoBarResolutionSelection:
 				if videoMode[1] == "exit" or videoMode[1] == "" or videoMode[1] == "auto":
 					self.ExGreen_toggleGreen()
 				if videoMode[1] != "auto":
-					if fileWriteLine("/proc/stb/video/videomode", videoMode[1], source=MODULE_NAME):
-						print("[InfoBarGenerics] New video mode is %s." % videoMode[1])
-					else:
-						print("[InfoBarGenerics] Error: Unable to set new video mode of %s!" % videoMode[1])
+					if isfile("/proc/stb/video/videomode"):
+						if fileWriteLine("/proc/stb/video/videomode", videoMode[1], source=MODULE_NAME):
+							print("[InfoBarGenerics] New video mode is %s." % videoMode[1])
+						else:
+							print("[InfoBarGenerics] Error: Unable to set new video mode of %s!" % videoMode[1])
+					elif isfile("/sys/class/display/mode"):
+						if fileWriteLine("/sys/class/display/mode", videoMode[1], source=MODULE_NAME):
+							print("[InfoBarGenerics] New video mode is %s." % videoMode[1])
+						else:
+							print("[InfoBarGenerics] Error: Unable to set new video mode of %s!" % videoMode[1])
 					# from enigma import gMainDC
 					# gMainDC.getInstance().setResolution(-1, -1)
 					self.ExGreen_doHide()
@@ -4213,18 +4231,26 @@ class InfoBarHdmi2:
 			print("[InfoBarGenerics] Read /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
 			check = open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "r").read()
 			if check.startswith("off"):
-				print("[InfoBarGenerics] Read /proc/stb/video/videomode")
-				self.oldvideomode = open("/proc/stb/video/videomode", "r").read()
+				if isfile("/proc/stb/video/videomode"):
+					print("[InfoBarGenerics] Read /proc/stb/video/videomode")
+					self.oldvideomode = open("/proc/stb/video/videomode", "r").read()
+				elif isfile("/sys/class/display/mode"):
+					print("[InfoBarGenerics] Read /sys/class/display/mode")
+					self.oldvideomode = open("/sys/class/display/mode", "r").read()
 				print("[InfoBarGenerics] Read /proc/stb/video/videomode_50hz")
 				self.oldvideomode_50hz = open("/proc/stb/video/videomode_50hz", "r").read()
 				print("[InfoBarGenerics] Read /proc/stb/video/videomode_60hz")
 				self.oldvideomode_60hz = open("/proc/stb/video/videomode_60hz", "r").read()
-				if platform == "dm4kgen":
-					print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
-					open("/proc/stb/video/videomode", "w").write("1080p")
-				else:
-					print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
-					open("/proc/stb/video/videomode", "w").write("720p")
+				if isfile("/proc/stb/video/videomode"):
+					if platform == "dm4kgen":
+						print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
+						open("/proc/stb/video/videomode", "w").write("1080p")
+					else:
+						print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
+						open("/proc/stb/video/videomode", "w").write("720p")
+				elif isfile("/sys/class/display/mode"):
+					print("[InfoBarGenerics] Write to /sys/class/display/mode")
+					open("/sys/class/display/mode", "w").write("1080p")
 				print("[InfoBarGenerics] Write to /proc/stb/audio/hdmi_rx_monitor")
 				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("on")
 				print("[InfoBarGenerics] Write to /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
@@ -4234,8 +4260,12 @@ class InfoBarHdmi2:
 				open("/proc/stb/audio/hdmi_rx_monitor", "w").write("off")
 				print("[InfoBarGenerics] Write to /proc/stb/hdmi-rx/0/hdmi_rx_monitor")
 				open("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", "w").write("off")
-				print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
-				open("/proc/stb/video/videomode", "w").write(self.oldvideomode)
+				if isfile("/proc/stb/video/videomode"):
+					print("[InfoBarGenerics] Write to /proc/stb/video/videomode")
+					open("/proc/stb/video/videomode", "w").write(self.oldvideomode)
+				elif isfile("/sys/class/display/mode"):
+					print("[InfoBarGenerics] Write to /sys/class/display/mode")
+					open("/sys/class/display/mode", "w").write(self.oldvideomode)
 				print("[InfoBarGenerics] Write to /proc/stb/video/videomode_50hz")
 				open("/proc/stb/video/videomode_50hz", "w").write(self.oldvideomode_50hz)
 				print("[InfoBarGenerics] Write to /proc/stb/video/videomode_60hz")

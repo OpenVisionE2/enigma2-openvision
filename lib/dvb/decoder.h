@@ -136,15 +136,6 @@ private:
 #else
 	int m_vpid, m_vtype, m_apid, m_atype, m_pcrpid, m_textpid;
 #endif
-#if defined(HAVE_FCC_ABILITY)
-	int m_fcc_fd;
-	bool m_fcc_enable;
-	int m_fcc_state;
-	int m_fcc_feid;
-	int m_fcc_vpid;
-	int m_fcc_vtype;
-	int m_fcc_pcrpid;
-#endif
 	enum
 	{
 		changeVideo = 1,
@@ -170,6 +161,15 @@ private:
 #endif
 	int m_video_clip_fd;
 	ePtr<eTimer> m_showSinglePicTimer;
+#if defined(HAVE_FCC_ABILITY)
+	int m_fcc_fd;
+	bool m_fcc_enable;
+	int m_fcc_state;
+	int m_fcc_feid;
+	int m_fcc_vpid;
+	int m_fcc_vtype;
+	int m_fcc_pcrpid;
+#endif
 	void finishShowSinglePic(); // called by timer
 public:
 	enum { pidNone = -1 };

@@ -29,11 +29,18 @@ class AVSwitch:
 		if valstr in ("4_3_letterbox", "4_3_panscan"): # 4:3
 			return (4, 3)
 		elif valstr == "16_9": # auto ... 4:3 or 16:9
-			try:
-				if "1" in open("/proc/stb/vmpeg/0/aspect", "r").read().split('\n', 1)[0]: # 4:3
-					return (4, 3)
-			except IOError:
-				print("[AVSwitch] Read /proc/stb/vmpeg/0/aspect failed!")
+			if isfile("/proc/stb/vmpeg/0/aspect"):
+				try:
+					if "1" in open("/proc/stb/vmpeg/0/aspect", "r").read().split('\n', 1)[0]: # 4:3
+						return (4, 3)
+				except IOError:
+					print("[AVSwitch] Read /proc/stb/vmpeg/0/aspect failed!")
+			elif isfile("/sys/class/video/screen_mode"):
+				try:
+					if "1" in open("/sys/class/video/screen_mode", "r").read().split('\n', 1)[0]: # 4:3
+						return (4, 3)
+				except IOError:
+					print("[AVSwitch] Read /sys/class/video/screen_mode failed!")
 		elif valstr in ("16_9_always", "16_9_letterbox"): # 16:9
 			pass
 		elif valstr in ("16_10_letterbox", "16_10_panscan"): # 16:10
@@ -302,6 +309,37 @@ def InitAVSwitch():
 	else:
 		config.av.hdmicolordepth = ConfigNothing()
 
+	AmlHDRSupport = BoxInfo.getItem("AmlHDRSupport")
+	if AmlHDRSupport:
+		def setAMLHDR10(configElement):
+			try:
+				open("/sys/class/amhdmitx/amhdmitx0/config", "w").write(configElement.value)
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /sys/class/amhdmitx/amhdmitx0/config failed!")
+		config.av.amlhdr10_support = ConfigSelection(choices={
+				"hdr10-0": _("Force enabled"),
+				"hdr10-1": _("Force disabled"),
+				"hdr10-2": _("Controlled by HDMI")},
+				default="hdr10-2")
+		config.av.amlhdr10_support.addNotifier(setAMLHDR10)
+	else:
+		config.av.amlhdr10_support = ConfigNothing()
+
+	if AmlHDRSupport:
+		def setAMLHLG(configElement):
+			try:
+				open("/sys/class/amhdmitx/amhdmitx0/config", "w").write(configElement.value)
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /sys/class/amhdmitx/amhdmitx0/config failed!")
+		config.av.amlhlg_support = ConfigSelection(choices={
+				"hlg-0": _("Force enabled"),
+				"hlg-1": _("Force disabled"),
+				"hlg-2": _("Controlled by HDMI")},
+				default="hlg-2")
+		config.av.amlhlg_support.addNotifier(setAMLHLG)
+	else:
+		config.av.amlhlg_support = ConfigNothing()
+
 	HasHdrType = BoxInfo.getItem("HasHdrType")
 	if HasHdrType:
 		def setHdmiHdrType(configElement):
@@ -309,7 +347,7 @@ def InitAVSwitch():
 				with open(HasHdrType, "w") as hdmihdrtype:
 					hdmihdrtype.write(configElement.value)
 			except (IOError, OSError):
-				pass
+				print("[AVSwitch] Write to /proc/stb/video/hdmi_hdrtype failed!")
 		config.av.hdmihdrtype = ConfigSelection(choices={
 			"auto": _("Auto"),
 			"dolby": _("Dolby"),
@@ -384,7 +422,7 @@ def InitAVSwitch():
 					hdmi_audio_source.write(configElement.value)
 					hdmi_audio_source.close()
 			except (IOError, OSError):
-				pass
+				print("[AVSwitch] Write to /proc/stb/hdmi/audio_source failed!")
 		config.av.hdmi_audio_source.addNotifier(setAudioSource)
 	else:
 		config.av.hdmi_audio_source = ConfigNothing()
@@ -403,7 +441,7 @@ def InitAVSwitch():
 					syncmode.write(configElement.value)
 					syncmode.close()
 			except (IOError, OSError):
-				pass
+				print("[AVSwitch] Write to /proc/stb/video/sync_mode_choices failed!")
 		config.av.sync_mode.addNotifier(setSyncMode)
 	else:
 		config.av.sync_mode = ConfigNothing()
@@ -789,3 +827,12 @@ def InitAVSwitch():
 				print("[AVSwitch] Write to /proc/stb/video/alpha failed!")
 		config.av.osd_alpha = ConfigSlider(default=255, limits=(0, 255))
 		config.av.osd_alpha.addNotifier(setOSDAlpha)
+
+	if BoxInfo.getItem("CanChangeOsdPlaneAlpha"):
+		def setOSDPlaneAlpha(config):
+			try:
+				open("/sys/class/graphics/fb0/osd_plane_alpha", "w").write(hex(config.value))
+			except:
+				print("[AVSwitch] Write to /sys/class/graphics/fb0/osd_plane_alpha failed!")
+		config.av.osd_planealpha = ConfigSlider(default=255, limits=(0, 255))
+		config.av.osd_planealpha.addNotifier(setOSDPlaneAlpha)
