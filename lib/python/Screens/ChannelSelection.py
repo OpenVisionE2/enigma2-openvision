@@ -568,12 +568,13 @@ class ChannelContextMenu(Screen):
 			self.close()
 
 	def showServiceInPiP(self, root=None, ref=None):
+		LCDMiniTVPiP = BoxInfo.getItem("LCDMiniTVPiP")
 		newservice = ref or self.csel.getCurrentSelection()
 		currentBouquet = root or self.csel.getRoot()
 		if ref and root or (self.PiPAvailable and not self.csel.dopipzap and newservice and newservice.valid() and Components.ParentalControl.parentalControl.isServicePlayable(newservice, boundFunction(self.showServiceInPiP, root=currentBouquet), self.session)):
 			if hasattr(self.session, 'pipshown') and self.session.pipshown and hasattr(self.session, 'pip'):
 				del self.session.pip
-				if BoxInfo.getItem("LCDMiniTVPiP") and int(config.lcd.modepip.value) >= 1:
+				if LCDMiniTVPiP and int(config.lcd.modepip.value) >= 1:
 					print('[ChannelSelection] LCDMiniTV disable PIP')
 					print("[ChannelSelection] Write to /proc/stb/lcd/mode")
 					open("/proc/stb/lcd/mode", "w").write(config.lcd.modeminitv.value)
@@ -584,7 +585,7 @@ class ChannelContextMenu(Screen):
 				self.session.pipshown = True
 				self.session.pip.servicePath = self.csel.getCurrentServicePath()
 				self.session.pip.servicePath[1] = currentBouquet
-				if BoxInfo.getItem("LCDMiniTVPiP") and int(config.lcd.modepip.value) >= 1:
+				if LCDMiniTVPiP and int(config.lcd.modepip.value) >= 1:
 					print('[ChannelSelection] LCDMiniTV enable PIP')
 					print("[ChannelSelection] Write to /proc/stb/lcd/mode")
 					open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)

@@ -23,6 +23,7 @@ from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand
 displaybrand = getOEMShowDisplayBrand()
 displaymodel = getOEMShowDisplayModel()
 model = BoxInfo.getItem("model")
+AmlogicFamily = BoxInfo.getItem("AmlogicFamily")
 
 inStandby = None
 infoBarInstance = None
@@ -190,7 +191,7 @@ class StandbyScreen(Screen):
 			except:
 				print("[Standby] Write to /proc/stb/hdmi/output failed.")
 
-		if BoxInfo.getItem("AmlogicFamily"):
+		if AmlogicFamily:
 			try:
 				print("[Standby] Write to /sys/class/leds/led-sys/brightness")
 				open("/sys/class/leds/led-sys/brightness", "w").write("0")
@@ -269,7 +270,7 @@ class StandbyScreen(Screen):
 			except:
 				print("[Standby] Write to /proc/stb/hdmi/output failed.")
 
-		if BoxInfo.getItem("AmlogicFamily"):
+		if AmlogicFamily:
 			try:
 				print("[Standby] Write to /sys/class/leds/led-sys/brightness")
 				open("/sys/class/leds/led-sys/brightness", "w").write("1")

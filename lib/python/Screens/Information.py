@@ -652,8 +652,8 @@ class ImageInformation(InformationBase):
 			enigmaVersion = "%s (%s)" % (enigmaVersion[0], enigmaVersion[1].capitalize())
 		info.append(formatLine("P1", _("Enigma2 version"), enigmaVersion))
 		info.append(formatLine("P1", _("Enigma2 revision"), getE2Rev()))
-		compileDate = str(BoxInfo.getItem("compiledate"))
-		info.append(formatLine("P1", _("Last update"), formatDate("%s%s%s" % (compileDate[:4], compileDate[4:6], compileDate[6:]))))
+		compiledate = str(BoxInfo.getItem("compiledate"))
+		info.append(formatLine("P1", _("Last update"), formatDate("%s%s%s" % (compiledate[:4], compiledate[4:6], compiledate[6:]))))
 		info.append(formatLine("P1", _("Enigma2 (re)starts"), config.misc.startCounter.value))
 		info.append(formatLine("P1", _("Enigma2 debug level"), eGetEnigmaDebugLvl()))
 		if isPluginInstalled("ServiceHisilicon") and not isPluginInstalled("ServiceMP3"):
@@ -1129,8 +1129,9 @@ class ReceiverInformation(InformationBase):
 		hwRelease = fileReadLine("/proc/stb/info/release", source=MODULE_NAME)
 		if hwRelease:
 			info.append(formatLine("P1", _("Factory release"), hwRelease))
-		if not BoxInfo.getItem("displaytype").startswith(" "):
-			info.append(formatLine("P1", _("Display type"), BoxInfo.getItem("displaytype")))
+		displaytype = BoxInfo.getItem("displaytype")
+		if not displaytype.startswith(" "):
+			info.append(formatLine("P1", _("Display type"), displaytype))
 		if fpVersion and fpVersion != "unknown":
 			info.append(formatLine("P1", _("Front processor version"), fpVersion))
 		DemodVersion = getDemodVersion()
@@ -1141,12 +1142,13 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("P1", _("CPU"), about.getCPUInfoString()))
 		info.append(formatLine("P1", _("CPU brand"), about.getCPUBrand()))
-		socFamily = BoxInfo.getItem("socfamily")
-		if socFamily:
-			info.append(formatLine("P1", _("SoC family"), socFamily))
+		socfamily = BoxInfo.getItem("socfamily")
+		if socfamily:
+			info.append(formatLine("P1", _("SoC family"), socfamily))
 		info.append(formatLine("P1", _("CPU architecture"), about.getCPUArch()))
-		if BoxInfo.getItem("fpu"):
-			info.append(formatLine("P1", _("FPU"), BoxInfo.getItem("fpu")))
+		fpu = BoxInfo.getItem("fpu")
+		if fpu:
+			info.append(formatLine("P1", _("FPU"), fpu))
 		if BoxInfo.getItem("architecture") == "aarch64":
 			info.append(formatLine("P1", _("MultiLib"), (_("Yes") if BoxInfo.getItem("multilib") else _("No"))))
 		info.append("")
@@ -1158,11 +1160,11 @@ class ReceiverInformation(InformationBase):
 		info.append(formatLine("P1", _("RC selected name"), rcName))
 		if rcname != rcName:
 			info.append(formatLine("P1", _("RC default name"), rcname))
-		rcType = remoteControl.remotes[rcIndex][REMOTE_RCTYPE]
-		info.append(formatLine("P1", _("RC selected type"), rcType))
-		sysType = BoxInfo.getItem("rctype")
-		if sysType != rcType:
-			info.append(formatLine("P1", _("RC default type"), sysType))
+		sysType = remoteControl.remotes[rcIndex][REMOTE_RCTYPE]
+		info.append(formatLine("P1", _("RC selected type"), sysType))
+		rctype = BoxInfo.getItem("rctype")
+		if rctype != sysType:
+			info.append(formatLine("P1", _("RC default type"), rctype))
 		boxRcType = getBoxRCType()
 		if boxRcType:
 			if boxRcType == "unknown":
@@ -1170,7 +1172,7 @@ class ReceiverInformation(InformationBase):
 					boxRcType = _("Amlogic remote")
 				elif isfile("/usr/sbin/lircd"):
 					boxRcType = _("LIRC remote")
-			if boxRcType != rcType:
+			if boxRcType != sysType:
 				info.append(formatLine("P1", _("RC detected type"), boxRcType))
 		customCode = fileReadLine("/proc/stb/ir/rc/customcode", source=MODULE_NAME)
 		if customCode:
@@ -1184,7 +1186,8 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("P1", _("Drivers version"), BoxInfo.getItem("driverdate")))
 		info.append(formatLine("P1", _("Kernel version"), BoxInfo.getItem("kernel")))
-		info.append(formatLine("P1", _("Kernel module layout"), BoxInfo.getItem("ModuleLayout") if BoxInfo.getItem("ModuleLayout") else _("N/A")))
+		ModuleLayout = BoxInfo.getItem("ModuleLayout")
+		info.append(formatLine("P1", _("Kernel module layout"), ModuleLayout if ModuleLayout else _("N/A")))
 		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id", source=MODULE_NAME)
 		if deviceId:
 			info.append(formatLine("P1", _("Device id"), deviceId))

@@ -20,13 +20,17 @@ import skin
 from six.moves.urllib.error import URLError
 from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler, HTTPPasswordMgrWithDefaultRealm, Request, urlopen, build_opener, install_opener
 from process import ProcessList
+
+NCamIsActive = BoxInfo.getItem("NCamIsActive")
+
 oscam = str(ProcessList().named("oscam")).strip("[]")
 ncam = str(ProcessList().named("ncam")).strip("[]")
-###global
+
 f = 1
 sizeH = 700
 HDSKIN = False
 screenwidth = getDesktop(0).size().width()
+
 if screenwidth and screenwidth == 1920:
 	f = 1.5
 	sizeH = screenwidth - 150
@@ -38,7 +42,6 @@ elif screenwidth and screenwidth > 1920:
 elif screenwidth and screenwidth > 1024:
 	sizeH = screenwidth - 100
 	HDSKIN = True
-###global
 
 
 class OscamInfo:
@@ -106,7 +109,7 @@ class OscamInfo:
 		blocked = False
 		ipconfigured = ipcompiled
 		user = pwd = None
-		if BoxInfo.getItem("NCamIsActive"):
+		if NCamIsActive:
 			ret = _("NCam webif disabled")
 		else:
 			ret = _("OScam webif disabled")
@@ -405,7 +408,7 @@ class OscamInfoMenu(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		global f
-		if BoxInfo.getItem("NCamIsActive"):
+		if NCamIsActive:
 			screentitle = _("NCam Info Main Menu")
 			if f == 1.5:
 				self.skin = """<screen position="center,center" size="640,400" title="NCam Info Main Menu">"""
@@ -535,7 +538,7 @@ class OscamInfoMenu(Screen):
 						self.callbackmode = "readers"
 						self.session.openWithCallback(self.chooseReaderCallback, ChoiceBox, title=_("Please choose reader"), list=reader)
 		elif entry == 6:
-			if BoxInfo.getItem("NCamIsActive"):
+			if NCamIsActive:
 				screentitle = _("NCam Config info")
 			else:
 				screentitle = _("OScam Config info")

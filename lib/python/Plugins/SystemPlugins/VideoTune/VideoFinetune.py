@@ -9,6 +9,8 @@ from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from enigma import gFont, getDesktop, gMainDC, eSize, RT_HALIGN_RIGHT, RT_WRAP
 from six.moves import range
 
+HasFullHDSkinSupport = BoxInfo.getItem("HasFullHDSkinSupport")
+
 
 def RGB(r, g, b):
 	return (r << 16) | (g << 8) | b
@@ -391,12 +393,12 @@ class VideoFinetune(Screen):
 		c.flush()
 
 	def testpic_overscan(self):
-		self.next = BoxInfo.getItem("HasFullHDSkinSupport") and self.testpic_fullhd or self.testpic_pixels
+		self.next = HasFullHDSkinSupport and self.testpic_fullhd or self.testpic_pixels
 		self.hide()
 		self.session.openWithCallback(self.testpicCallback, OverscanTestScreen)
 
 	def testpic_fullhd(self):
-		if BoxInfo.getItem("HasFullHDSkinSupport"):
+		if HasFullHDSkinSupport:
 			self.next = self.hasUHD and self.testpic_uhd or self.testpic_pixels
 			self.hide()
 			self.session.openWithCallback(self.testpicCallback, FullHDTestScreen)

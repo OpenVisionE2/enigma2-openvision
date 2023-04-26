@@ -1065,7 +1065,8 @@ def InitUsageConfig():
 		config.usage.time.enabled_display.value = False
 		config.usage.time.display.value = config.usage.time.display.default
 
-	if BoxInfo.getItem("Fan"):
+	Fan = BoxInfo.getItem("Fan")
+	if Fan:
 		choicelist = [
 			("off", _("Off")),
 			("on", _("On")),
@@ -1077,18 +1078,20 @@ def InitUsageConfig():
 		config.usage.fan = ConfigSelection(choicelist)
 
 		def fanChanged(configElement):
-			open(BoxInfo.getItem("Fan"), "w").write(configElement.value)
+			open(Fan, "w").write(configElement.value)
 		config.usage.fan.addNotifier(fanChanged)
 
-	if BoxInfo.getItem("FanPWM"):
+	FanPWM = BoxInfo.getItem("FanPWM")
+	if FanPWM:
 		def fanSpeedChanged(configElement):
-			open(BoxInfo.getItem("FanPWM"), "w").write(hex(configElement.value)[2:])
+			open(FanPWM, "w").write(hex(configElement.value)[2:])
 		config.usage.fanspeed = ConfigSlider(default=127, increment=8, limits=(0, 255))
 		config.usage.fanspeed.addNotifier(fanSpeedChanged)
 
-	if BoxInfo.getItem("WakeOnLAN") or BoxInfo.getItem("wol"):
+	WakeOnLAN = BoxInfo.getItem("WakeOnLAN")
+	if WakeOnLAN or BoxInfo.getItem("wol"):
 		def wakeOnLANChanged(configElement):
-			open(BoxInfo.getItem("WakeOnLAN"), "w").write(BoxInfo.getItem("WakeOnLANType")[configElement.value])
+			open(WakeOnLAN, "w").write(BoxInfo.getItem("WakeOnLANType")[configElement.value])
 		config.usage.wakeOnLAN = ConfigYesNo(default=False)
 		config.usage.wakeOnLAN.addNotifier(wakeOnLANChanged)
 
@@ -1371,9 +1374,10 @@ def InitUsageConfig():
 	config.misc.zapkey_delay = ConfigSelectionNumber(default=5, stepwidth=1, min=0, max=20, wraparound=True)
 	config.misc.numzap_picon = ConfigYesNo(default=False)
 
-	if BoxInfo.getItem("ZapMode"):
+	ZapMode = BoxInfo.getItem("ZapMode")
+	if ZapMode:
 		def setZapmode(el):
-			open(BoxInfo.getItem("ZapMode"), "w").write(el.value)
+			open(ZapMode, "w").write(el.value)
 		config.misc.zapmode = ConfigSelection(default="mute", choices=[
 			("mute", _("Black screen")),
 			("hold", _("Hold screen")),

@@ -101,8 +101,9 @@ class HddState(Converter):
 			string = _("Disk state: ") + string
 		self.state_text = string
 		if prev_state != self.isActive or force:
-			if BoxInfo.getItem("LCDsymbol_hdd"):
-				open(BoxInfo.getItem("LCDsymbol_hdd"), "w").write(self.isActive and "1" or "0")
+			LCDsymbol_hdd = BoxInfo.getItem("LCDsymbol_hdd")
+			if LCDsymbol_hdd:
+				open(LCDsymbol_hdd, "w").write(self.isActive and "1" or "0")
 			self.changed((self.CHANGED_ALL,))
 
 	def setStandbyTime(self, cfgElem):

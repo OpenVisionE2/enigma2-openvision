@@ -189,9 +189,6 @@ class SoftwareUpdate(Screen, HelpableScreen, ProtectedScreen):
 	def checkTrafficLight(self):
 		self.timer.callback.remove(self.checkTrafficLight)
 		try:
-			# with urlopen("%s/%s.php" % (BoxInfo.getItem("feedsurl"), BoxInfo.getItem("model")), timeout=5) as url:
-			# 	status = url.read()
-			# status = dict(load(status))
 			status = dict(load(urlopen("%s/%s.php" % (BoxInfo.getItem("feedsurl"), BoxInfo.getItem("model")), timeout=5)))
 			message = status.get("message")
 			status = status.get("status")

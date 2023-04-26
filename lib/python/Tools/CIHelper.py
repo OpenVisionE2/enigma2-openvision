@@ -6,6 +6,8 @@ from Components.config import config
 import NavigationInstance
 from six import ensure_str
 
+CommonInterface = BoxInfo.getItem("CommonInterface")
+
 
 class CIHelper:
 
@@ -17,7 +19,7 @@ class CIHelper:
 	CI_MULTIDESCRAMBLE_MODULES = ("AlphaCrypt", "M7 CAM701 Multi-2")
 
 	def parse_ci_assignment(self):
-		NUM_CI = BoxInfo.getItem("CommonInterface")
+		NUM_CI = CommonInterface
 		if NUM_CI and NUM_CI > 0:
 			self.CI_ASSIGNMENT_LIST = []
 
@@ -160,7 +162,7 @@ class CIHelper:
 
 	def canMultiDescramble(self, ci):
 		if self.CI_MULTIDESCRAMBLE is None:
-			NUM_CI = BoxInfo.getItem("CommonInterface")
+			NUM_CI = CommonInterface
 			if NUM_CI and NUM_CI > 0:
 				self.CI_MULTIDESCRAMBLE = []
 				for slot in range(NUM_CI):

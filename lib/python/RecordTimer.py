@@ -30,6 +30,11 @@ from Tools.XMLTools import stringToXML
 
 MODULE_NAME = __name__.split(".")[-1]
 
+dvbaptavailable = BoxInfo.getItem("ATSC_priority_tuner_available")
+dvbcptavailable = BoxInfo.getItem("DVB-C_priority_tuner_available")
+dvbsptavailable = BoxInfo.getItem("DVB-S_priority_tuner_available")
+dvbtptavailable = BoxInfo.getItem("DVB-T_priority_tuner_available")
+
 # For descriptions etc we have:
 # service reference  (to get the service name)
 # name               (title)
@@ -838,27 +843,27 @@ class RecordTimerEntry(TimerEntry, object):
 		self.external = self.external_prev = False
 		self.setAdvancedPriorityFrontend = None
 		self.background_zap = None
-		if BoxInfo.getItem("DVB-T_priority_tuner_available") or BoxInfo.getItem("DVB-C_priority_tuner_available") or BoxInfo.getItem("DVB-S_priority_tuner_available") or BoxInfo.getItem("ATSC_priority_tuner_available"):
+		if dvbtptavailable or dvbcptavailable or dvbsptavailable or dvbaptavailable:
 			rec_ref = self.service_ref and self.service_ref.ref
 			str_service = rec_ref and rec_ref.toString()
 			if str_service and "%3a//" not in str_service and not str_service.rsplit(":", 1)[1].startswith("/"):
 				type_service = rec_ref.getUnsignedData(4) >> 16
 				if type_service == 0xEEEE:
-					if BoxInfo.getItem("DVB-T_priority_tuner_available") and config.usage.recording_frontend_priority_dvbt.value != "-2":
+					if dvbtptavailable and config.usage.recording_frontend_priority_dvbt.value != "-2":
 						if config.usage.recording_frontend_priority_dvbt.value != config.usage.frontend_priority.value:
 							self.setAdvancedPriorityFrontend = config.usage.recording_frontend_priority_dvbt.value
-					if BoxInfo.getItem("ATSC_priority_tuner_available") and config.usage.recording_frontend_priority_atsc.value != "-2":
+					if dvbaptavailable and config.usage.recording_frontend_priority_atsc.value != "-2":
 						if config.usage.recording_frontend_priority_atsc.value != config.usage.frontend_priority.value:
 							self.setAdvancedPriorityFrontend = config.usage.recording_frontend_priority_atsc.value
 				elif type_service == 0xFFFF:
-					if BoxInfo.getItem("DVB-C_priority_tuner_available") and config.usage.recording_frontend_priority_dvbc.value != "-2":
+					if dvbcptavailable and config.usage.recording_frontend_priority_dvbc.value != "-2":
 						if config.usage.recording_frontend_priority_dvbc.value != config.usage.frontend_priority.value:
 							self.setAdvancedPriorityFrontend = config.usage.recording_frontend_priority_dvbc.value
-					if BoxInfo.getItem("ATSC_priority_tuner_available") and config.usage.recording_frontend_priority_atsc.value != "-2":
+					if dvbaptavailable and config.usage.recording_frontend_priority_atsc.value != "-2":
 						if config.usage.recording_frontend_priority_atsc.value != config.usage.frontend_priority.value:
 							self.setAdvancedPriorityFrontend = config.usage.recording_frontend_priority_atsc.value
 				else:
-					if BoxInfo.getItem("DVB-S_priority_tuner_available") and config.usage.recording_frontend_priority_dvbs.value != "-2":
+					if dvbsptavailable and config.usage.recording_frontend_priority_dvbs.value != "-2":
 						if config.usage.recording_frontend_priority_dvbs.value != config.usage.frontend_priority.value:
 							self.setAdvancedPriorityFrontend = config.usage.recording_frontend_priority_dvbs.value
 		self.needChangePriorityFrontend = self.setAdvancedPriorityFrontend is not None or config.usage.recording_frontend_priority.value != "-2" and config.usage.recording_frontend_priority.value != config.usage.frontend_priority.value

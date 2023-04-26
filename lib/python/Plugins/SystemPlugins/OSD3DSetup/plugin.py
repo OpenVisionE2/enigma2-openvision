@@ -8,6 +8,8 @@ from Components.SystemInfo import BoxInfo
 from Components.config import config, ConfigSubsection, ConfigInteger, ConfigSelection, ConfigSlider, getConfigListEntry
 from enigma import iPlayableService, iServiceInformation, eServiceCenter, eServiceReference, eDVBDB
 
+Mode3D = BoxInfo.getItem("3DMode")
+
 modelist = {"off": _("Off"), "auto": _("Auto"), "sidebyside": _("Side by side"), "topandbottom": _("Top and bottom")}
 
 config.plugins.OSD3DSetup = ConfigSubsection()
@@ -80,10 +82,10 @@ isDedicated3D = False
 def applySettings(mode=config.plugins.OSD3DSetup.mode.value, znorm=int(config.plugins.OSD3DSetup.znorm.value)):
 	global previous, isDedicated3D
 	mode = isDedicated3D and mode == "auto" and "sidebyside" or mode
-	mode == "3dmode" in BoxInfo.getItem("3DMode") and mode or mode == 'sidebyside' and 'sbs' or mode == 'topandbottom' and 'tab' or 'off'
+	mode == "3dmode" in Mode3D and mode or mode == 'sidebyside' and 'sbs' or mode == 'topandbottom' and 'tab' or 'off'
 	if previous != (mode, znorm):
 		try:
-			open(BoxInfo.getItem("3DMode"), "w").write(mode)
+			open(Mode3D, "w").write(mode)
 			open(BoxInfo.getItem("3DZNorm"), "w").write('%d' % znorm)
 			previous = (mode, znorm)
 		except:
@@ -137,7 +139,7 @@ def autostart(reason, **kwargs):
 
 
 def Plugins(**kwargs):
-	if BoxInfo.getItem("3DMode"):
+	if Mode3D:
 		from Plugins.Plugin import PluginDescriptor
 		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=autostart),
 			PluginDescriptor(name=_("OSD 3D setup"), description=_("Adjust 3D settings"), where=PluginDescriptor.WHERE_MENU, fnc=startSetup)]

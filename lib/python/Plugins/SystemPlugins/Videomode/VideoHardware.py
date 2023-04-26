@@ -17,6 +17,7 @@ has_scart = BoxInfo.getItem("scart")
 has_yuv = BoxInfo.getItem("yuv")
 has_rca = BoxInfo.getItem("rca")
 has_avjack = BoxInfo.getItem("avjack")
+Has24hz = BoxInfo.getItem("Has24hz")
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -259,7 +260,7 @@ class VideoHardware:
 		except IOError:
 			print("[Videomode] Write to /proc/stb/video/videomode_60hz failed!")
 
-		if BoxInfo.getItem("Has24hz"):
+		if Has24hz:
 			try:
 				open("/proc/stb/video/videomode_24hz", "w").write(mode_24)
 			except IOError:
@@ -336,7 +337,7 @@ class VideoHardware:
 				ratelist = []
 				for rate in rates:
 					if rate in ("auto"):
-						if BoxInfo.getItem("Has24hz"):
+						if Has24hz:
 							ratelist.append((rate, mode == "2160p30" and "auto (25Hz 30Hz 24Hz)" or "auto (50Hz 60Hz 24Hz)"))
 					else:
 						ratelist.append((rate, rate == "multi" and (mode == "2160p30" and "multi (25Hz 30Hz)" or "multi (50Hz 60Hz)") or rate))

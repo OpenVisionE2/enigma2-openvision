@@ -15,6 +15,8 @@ from Tools.Directories import fileReadLine, fileWriteLine
 
 model = BoxInfo.getItem("model")
 platform = BoxInfo.getItem("platform")
+VFDRepeats = BoxInfo.getItem("VFDRepeats")
+VFDDelay = BoxInfo.getItem("VFDDelay")
 
 
 class dummyScreen(Screen):
@@ -586,12 +588,13 @@ def InitLcd():
 		config.lcd.picon_pack.addNotifier(PiconPackChanged)
 		config.lcd.flip = ConfigYesNo(default=False)
 		config.lcd.flip.addNotifier(setLCDflipped)
-		if BoxInfo.getItem("LcdLiveTV"):
+		LcdLiveTV = BoxInfo.getItem("LcdLiveTV")
+		if LcdLiveTV:
 			def lcdLiveTvChanged(configElement):
-				if "live_enable" in BoxInfo.getItem("LcdLiveTV"):
-					fileWriteLine(BoxInfo.getItem("LcdLiveTV"), configElement.value and "enable" or "disable")
+				if "live_enable" in LcdLiveTV:
+					fileWriteLine(LcdLiveTV, configElement.value and "enable" or "disable")
 				else:
-					fileWriteLine(BoxInfo.getItem("LcdLiveTV"), configElement.value and "0" or "1")
+					fileWriteLine(LcdLiveTV, configElement.value and "0" or "1")
 				try:
 					InfoBarInstance = InfoBar.instance
 					InfoBarInstance and InfoBarInstance.session.open(dummyScreen)
@@ -618,9 +621,10 @@ def InitLcd():
 			config.lcd.minitvfps = ConfigSlider(default=30, limits=(0, 30))
 			config.lcd.minitvfps.addNotifier(setLCDminitvfps)
 
-		if BoxInfo.getItem("VFD_scroll_repeats") and BoxInfo.getItem("VFDRepeats"):
+		VFD_scroll_repeats = BoxInfo.getItem("VFD_scroll_repeats")
+		if VFD_scroll_repeats and VFDRepeats:
 			def scroll_repeats(configElement):
-				fileWriteLine(BoxInfo.getItem("VFD_scroll_repeats"), configElement.value)
+				fileWriteLine(VFD_scroll_repeats, configElement.value)
 
 			config.usage.vfd_scroll_repeats = ConfigSelection(choices=[
 				("0", _("None")),
@@ -633,12 +637,13 @@ def InitLcd():
 			config.usage.vfd_scroll_repeats.addNotifier(scroll_repeats, immediate_feedback=False)
 		else:
 			config.usage.vfd_scroll_repeats = ConfigNothing()
-		if BoxInfo.getItem("VFD_scroll_delay") and BoxInfo.getItem("VFDRepeats"):
+		VFD_scroll_delay = BoxInfo.getItem("VFD_scroll_delay")
+		if VFD_scroll_delay and VFDRepeats:
 			def scroll_delay(configElement):
-				if BoxInfo.getItem("VFDDelay"):
-					fileWriteLine(BoxInfo.getItem("VFD_scroll_delay"), hex(int(configElement.value)))
+				if VFDDelay:
+					fileWriteLine(VFD_scroll_delay, hex(int(configElement.value)))
 				else:
-					fileWriteLine(BoxInfo.getItem("VFD_scroll_delay"), configElement.value)
+					fileWriteLine(VFD_scroll_delay, configElement.value)
 
 			config.usage.vfd_scroll_delay = ConfigSlider(default=150, increment=10, limits=(0, 500))
 			config.usage.vfd_scroll_delay.addNotifier(scroll_delay, immediate_feedback=False)
@@ -646,12 +651,13 @@ def InitLcd():
 		else:
 			config.lcd.hdd = ConfigNothing()
 			config.usage.vfd_scroll_delay = ConfigNothing()
-		if BoxInfo.getItem("VFD_initial_scroll_delay") and BoxInfo.getItem("VFDRepeats"):
+		VFD_initial_scroll_delay = BoxInfo.getItem("VFD_initial_scroll_delay")
+		if VFD_initial_scroll_delay and VFDRepeats:
 			def initial_scroll_delay(configElement):
-				if BoxInfo.getItem("VFDDelay"):
-					fileWriteLine(BoxInfo.getItem("VFD_initial_scroll_delay"), hex(int(configElement.value)))
+				if VFDDelay:
+					fileWriteLine(VFD_initial_scroll_delay, hex(int(configElement.value)))
 				else:
-					fileWriteLine(BoxInfo.getItem("VFD_initial_scroll_delay"), configElement.value)
+					fileWriteLine(VFD_initial_scroll_delay, configElement.value)
 
 			config.usage.vfd_initial_scroll_delay = ConfigSelection(choices=[
 				("3000", "3 %s" % _("seconds")),
@@ -664,12 +670,13 @@ def InitLcd():
 			config.usage.vfd_initial_scroll_delay.addNotifier(initial_scroll_delay, immediate_feedback=False)
 		else:
 			config.usage.vfd_initial_scroll_delay = ConfigNothing()
-		if BoxInfo.getItem("VFD_final_scroll_delay") and BoxInfo.getItem("VFDRepeats"):
+		VFD_final_scroll_delay = BoxInfo.getItem("VFD_final_scroll_delay")
+		if VFD_final_scroll_delay and VFDRepeats:
 			def final_scroll_delay(configElement):
-				if BoxInfo.getItem("VFDDelay"):
-					fileWriteLine(BoxInfo.getItem("VFD_final_scroll_delay"), hex(int(configElement.value)))
+				if VFDDelay:
+					fileWriteLine(VFD_final_scroll_delay, hex(int(configElement.value)))
 				else:
-					fileWriteLine(BoxInfo.getItem("VFD_final_scroll_delay"), configElement.value)
+					fileWriteLine(VFD_final_scroll_delay, configElement.value)
 
 			config.usage.vfd_final_scroll_delay = ConfigSelection(choices=[
 				("3000", "3 %s" % _("seconds")),

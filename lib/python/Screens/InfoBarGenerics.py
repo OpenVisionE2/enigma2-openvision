@@ -2219,8 +2219,9 @@ class InfoBarTimeshift():
 		self.restartSubtitle()
 
 	def setLCDsymbolTimeshift(self):
-		if BoxInfo.getItem("LCDsymbol_timeshift"):
-			open(BoxInfo.getItem("LCDsymbol_timeshift"), "w").write(self.timeshiftEnabled() and "1" or "0")
+		LCDsymbol_timeshift = BoxInfo.getItem("LCDsymbol_timeshift")
+		if LCDsymbol_timeshift:
+			open(LCDsymbol_timeshift, "w").write(self.timeshiftEnabled() and "1" or "0")
 
 	def __serviceStarted(self):
 		self.pvrStateDialog.hide()
@@ -2623,10 +2624,11 @@ class InfoBarPiP:
 			self.session.pip.setAnimationMode(0)
 			self.session.pip.show()
 			newservice = self.lastPiPService or self.session.nav.getCurrentlyPlayingServiceOrGroup() or (slist and slist.servicelist.getCurrent())
+			LCDMiniTVPiP = BoxInfo.getItem("LCDMiniTVPiP")
 			if self.session.pip.playService(newservice):
 				self.session.pipshown = True
 				self.session.pip.servicePath = slist and slist.getCurrentServicePath()
-				if BoxInfo.getItem("LCDMiniTVPiP") and int(config.lcd.modepip.value) >= 1:
+				if LCDMiniTVPiP and int(config.lcd.modepip.value) >= 1:
 					print('[InfoBarGenerics] LCDMiniTV enable PIP')
 					print("[InfoBarGenerics] Write to /proc/stb/lcd/mode")
 					open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)
@@ -2641,7 +2643,7 @@ class InfoBarPiP:
 				if self.session.pip.playService(newservice):
 					self.session.pipshown = True
 					self.session.pip.servicePath = slist and slist.getCurrentServicePath()
-					if BoxInfo.getItem("LCDMiniTVPiP") and int(config.lcd.modepip.value) >= 1:
+					if LCDMiniTVPiP and int(config.lcd.modepip.value) >= 1:
 						print('[InfoBarGenerics] LCDMiniTV enable PIP')
 						print("[InfoBarGenerics] Write to /proc/stb/lcd/mode")
 						open("/proc/stb/lcd/mode", "w").write(config.lcd.modepip.value)

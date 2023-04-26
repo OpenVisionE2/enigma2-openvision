@@ -8,7 +8,7 @@ from struct import pack
 from six.moves.urllib.request import urlopen, Request
 from zipfile import ZipFile
 
-from enigma import eEPGCache
+from enigma import eEPGCache, fbClass
 
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.ChoiceList import ChoiceList, ChoiceEntryComponent
@@ -29,6 +29,12 @@ from Tools.Downloader import DownloadWithProgress
 from Tools.MultiBoot import deleteImage, getCurrentImage, getCurrentImageMode, getImageList, restoreImages
 
 model = BoxInfo.getItem("model")
+vumodel = model[2:]
+canMultiBoot = BoxInfo.getItem("canMultiBoot")
+canMode12 = BoxInfo.getItem("canMode12")
+HasUsbhdd = BoxInfo.getItem('HasUsbhdd')
+VuUUIDSlot = BoxInfo.getItem("VuUUIDSlot")
+hasKexec = BoxInfo.getItem("hasKexec")
 
 FEED_URLS = [
 	("openATV", "https://images.mynonpublic.com/openatv/json/"),
@@ -267,12 +273,12 @@ class FlashImage(Screen):
 			self.message = _("%s\nDo you still want to flash image\n%s?") % (self.reasons, self.imagename)
 		else:
 			self.message = _("Do you want to flash image\n%s") % self.imagename
-		if BoxInfo.getItem("canMultiBoot") and BoxInfo.getItem("HasUsbhdd"):
+		if canMultiBoot and BoxInfo.getItem("HasUsbhdd"):
 			imagesList = getImageList()
 			currentimageslot = getCurrentImage()
 			choices = []
-			slotdict = {k: v for k, v in BoxInfo.getItem("canMultiBoot").items() if not v['device'].startswith('/dev/sda')}
-			numberSlots = len(slotdict) + 1 if not BoxInfo.getItem("hasKexec") else len(slotdict)
+			slotdict = {k: v for k, v in canMultiBoot.items() if not v['device'].startswith('/dev/sda')}
+			numberSlots = len(slotdict) + 1 if not hasKexec else len(slotdict)
 			for x in range(1, numberSlots):
 				choices.append(((_("slot%s - %s (current image) with, backup") if x == currentimageslot else _("slot%s - %s, with backup")) % (x, imagesList[x]['imagename']), (x, "with backup")))
 			for x in range(1, numberSlots):
@@ -281,13 +287,13 @@ class FlashImage(Screen):
 			self.session.openWithCallback(self.checkMedia, MessageBox, self.message, list=choices, default=currentimageslot, simple=True)
 		else:
 			self.session.openWithCallback(self.abort, MessageBox, _("Storage device not available.\nMount device or reboot system and try again."), type=MessageBox.TYPE_ERROR, timeout=10)
-		if not BoxInfo.getItem("canMultiBoot"):
+		if not canMultiBoot:
 			choices = [(_("Yes, with backup"), "with backup"), (_("Yes, without backup"), "without backup"), (_("No, do not flash image"), False)]
 			self.session.openWithCallback(self.checkMedia, MessageBox, self.message, list=choices, default=False, simple=True)
 
 	def checkMedia(self, retval):
 		if retval:
-			if BoxInfo.getItem("canMultiBoot"):
+			if canMultiBoot:
 				self.multibootslot = retval[0]
 				doBackup = retval[1] == "with backup"
 			else:
@@ -423,16 +429,18 @@ class FlashImage(Screen):
 					return checkimagefiles(files) and path
 		imagefiles = findimagefiles(self.unzippedimage)
 		if imagefiles:
-			if BoxInfo.getItem("canMultiBoot"):
+			if canMultiBoot:
 				command = "/usr/bin/ofgwrite -k -r -m%s '%s'" % (self.multibootslot, imagefiles)
 			else:
 				command = "/usr/bin/ofgwrite -k -r '%s'" % imagefiles
 			self.containerofgwrite = Console()
 			self.containerofgwrite.ePopen(command, self.FlashimageDone)
+			fbClass.getInstance().lock()
 		else:
 			self.session.openWithCallback(self.abort, MessageBox, _("Image to install is invalid\n%s") % self.imagename, type=MessageBox.TYPE_ERROR, simple=True)
 
 	def FlashimageDone(self, data, retval, extra_args):
+		fbClass.getInstance().unlock()
 		self.containerofgwrite = None
 		if retval == 0:
 			self["header"].setText(_("Flashing image successful"))
@@ -464,7 +472,7 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 		self.expanded = []
 		self.tmp_dir = None
 		self.setTitle(_("MultiBoot Image Selector"))
-		usbIn = BoxInfo.getItem('HasUsbhdd').keys() and BoxInfo.getItem("hasKexec")
+		usbIn = HasUsbhdd.keys() and hasKexec
 		self["key_red"] = StaticText(_("Cancel") if not usbIn else _("Add USB slots"))
 		self["key_green"] = StaticText(_("Reboot"))
 		self["description"] = StaticText()
@@ -517,7 +525,7 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 		self.deletedImagesExists = False
 		if imagesList:
 			for index, x in enumerate(imagesList):
-				if BoxInfo.getItem("hasKexec") and x == 1:
+				if hasKexec and x == 1:
 					self["description"] = StaticText(_("Select slot image and press OK or GREEN button to reboot."))
 					if not self.currentimageslot:  # Slot0
 						list.append(ChoiceEntryComponent('', ((_("slot0 - Recovery mode image (current)")), "Recovery")))
@@ -526,15 +534,15 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 				if imagesList[x]["imagename"] == _("Deleted image"):
 					self.deletedImagesExists = True
 				elif imagesList[x]["imagename"] != _("Empty slot"):
-					if BoxInfo.getItem("canMode12"):
+					if canMode12:
 						list.insert(index, ChoiceEntryComponent('', ((_("slot%s - %s mode 1 (current image)") if x == self.currentimageslot and mode != 12 else _("slot%s - %s mode 1")) % (x, imagesList[x]['imagename']), (x, 1))))
 						list12.insert(index, ChoiceEntryComponent('', ((_("slot%s - %s mode 12 (current image)") if x == self.currentimageslot and mode == 12 else _("slot%s - %s mode 12")) % (x, imagesList[x]['imagename']), (x, 12))))
 					else:
-						if not BoxInfo.getItem("hasKexec"):
+						if not hasKexec:
 							list.append(ChoiceEntryComponent('', ((_("slot%s - %s (current image)") if x == self.currentimageslot and mode != 12 else _("slot%s - %s")) % (x, imagesList[x]['imagename']), (x, 1))))
 						else:
 							if x != self.currentimageslot:
-								list.append(ChoiceEntryComponent('', ((_("slot%s %s - %s")) % (x, BoxInfo.getItem("canMultiBoot")[x]["slotType"], imagesList[x]['imagename']), (x, 1))))  # list USB eMMC slots not current
+								list.append(ChoiceEntryComponent('', ((_("slot%s %s - %s")) % (x, canMultiBoot[x]["slotType"], imagesList[x]['imagename']), (x, 1))))  # list USB eMMC slots not current
 							else:
 								list.append(ChoiceEntryComponent('', ((_("slot%s - %s (current image)")) % (x, imagesList[x]['imagename']), (x, 1))))  # Slot current != Slot0
 		if list12:
@@ -542,7 +550,7 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 			self["key_blue"].setText(_("Order by modes") if config.usage.multiboot_order.value else _("Order by slots"))
 			list += list12
 			list = sorted(list) if config.usage.multiboot_order.value else list
-		if isfile(join(self.tmp_dir, "STARTUP_RECOVERY")) and not BoxInfo.getItem("hasKexec"):
+		if isfile(join(self.tmp_dir, "STARTUP_RECOVERY")) and not hasKexec:
 			list.append(ChoiceEntryComponent('', ((_("Boot to Recovery menu")), "Recovery")))
 			self["description"] = StaticText(_("Select image or boot to recovery menu and press OK or GREEN button for reboot."))
 		if isfile(join(self.tmp_dir, "STARTUP_ANDROID")):
@@ -587,15 +595,15 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 				copyfile(join(self.tmp_dir, "STARTUP_RECOVERY"), join(self.tmp_dir, "STARTUP"))
 			elif slot == "Android" and isfile(join(self.tmp_dir, "STARTUP_ANDROID")):
 				copyfile(join(self.tmp_dir, "STARTUP_ANDROID"), join(self.tmp_dir, "STARTUP"))
-			elif BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile']:
-				if BoxInfo.getItem("canMode12"):
-					startupfile = join(self.tmp_dir, "%s_%s" % (BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'].rsplit('_', 1)[0], slot[1]))
+			elif canMultiBoot[slot[0]]['startupfile']:
+				if canMode12:
+					startupfile = join(self.tmp_dir, "%s_%s" % (canMultiBoot[slot[0]]['startupfile'].rsplit('_', 1)[0], slot[1]))
 				else:
-					startupfile = join(self.tmp_dir, "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
+					startupfile = join(self.tmp_dir, "%s" % canMultiBoot[slot[0]]['startupfile'])
 				if BoxInfo.getItem("canDualBoot"):
 					with open('/dev/block/by-name/flag', 'wb') as f:
 						f.write(pack("B", int(slot[0])))
-					startupfile = join("/boot", "%s" % BoxInfo.getItem("canMultiBoot")[slot[0]]['startupfile'])
+					startupfile = join("/boot", "%s" % canMultiBoot[slot[0]]['startupfile'])
 					if isfile(startupfile):
 						copyfile(startupfile, join("/boot", "STARTUP"))
 				else:
@@ -605,7 +613,7 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 				if slot[1] == 1:
 					startupFileContents = "boot emmcflash0.kernel%s 'root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=1'\n" % (slot[0], slot[0] * 2 + 1, model)
 				else:
-					startupFileContents = "boot emmcflash0.kernel%s 'brcm_cma=520M@248M brcm_cma=%s@768M root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=12'\n" % (slot[0], BoxInfo.getItem("canMode12"), slot[0] * 2 + 1, model)
+					startupFileContents = "boot emmcflash0.kernel%s 'brcm_cma=520M@248M brcm_cma=%s@768M root=/dev/mmcblk0p%s rw rootwait %s_4.boxmode=12'\n" % (slot[0], canMode12, slot[0] * 2 + 1, model)
 				with open(join(self.tmp_dir, "STARTUP", "w")) as f:
 					f.write(startupFileContents)
 					f.close()
@@ -622,9 +630,9 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 
 	def KexecMount(self):
 		hdd = []
-		usblist = list(BoxInfo.getItem('HasUsbhdd').keys())
+		usblist = list(HasUsbhdd.keys())
 		print("[MultiBootSelection] usblist=", usblist)
-		if not BoxInfo.getItem("VuUUIDSlot"):
+		if not VuUUIDSlot:
 			with open("/proc/mounts", "r") as fd:
 				xlines = fd.readlines()
 				for hddkey in range(len(usblist)):
@@ -647,27 +655,26 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 				if free < 1024:
 					des = str(round((float(free)), 2)) + _("MB")
 					print("[MultiBootSelection][add USB STARTUP slot] limited free space", des)
-					self.session.open(MessageBox, _("FlashImage: Add USB STARTUP slots - USB (%s) only has %s free. At least 1024MB is required.") % (usb, des), MessageBox.TYPE_INFO, timeout=30)
+					self.session.open(MessageBox, _("FlashImage: Add USB STARTUP slots - USB (%s) only has %s free. At least 1GB is required.") % (usb, des), MessageBox.TYPE_INFO, timeout=30)
 					self.cancel()
 					return
 				Console().ePopen("/sbin/blkid | grep " + "/dev/" + hdd[0], self.KexecMountRet)
 		else:
-			hiKey = sorted(BoxInfo.getItem("canMultiBoot").keys(), reverse=True)[0]
+			hiKey = sorted(canMultiBoot.keys(), reverse=True)[0]
 			self.session.openWithCallback(self.addSTARTUPs, MessageBox, _("Add 4 more Vu+ Multiboot USB slots after slot %s ?") % hiKey, MessageBox.TYPE_YESNO, timeout=30)
 
 	def addSTARTUPs(self, answer):
-		hiKey = sorted(BoxInfo.getItem("canMultiBoot").keys(), reverse=True)[0]
-		hiUUIDkey = BoxInfo.getItem("VuUUIDSlot")[1]
+		hiKey = sorted(canMultiBoot.keys(), reverse=True)[0]
+		hiUUIDkey = VuUUIDSlot[1]
 		print("[MultiBootSelection]1 answer, hiKey,  hiUUIDkey", answer, "   ", hiKey, "   ", hiUUIDkey)
 		if answer is False:
 			self.close()
 		else:
-			boxmodel = model[2:]
 			for usbslot in range(hiKey + 1, hiKey + 5):
-				STARTUP_usbslot = "kernel=%s/linuxrootfs%d/zImage root=%s rootsubdir=%s/linuxrootfs%d" % (boxmodel, usbslot, BoxInfo.getItem("VuUUIDSlot")[0], boxmodel, usbslot) # /STARTUP_<n>
-				if boxmodel in ("duo4k"):
+				STARTUP_usbslot = "kernel=%s/linuxrootfs%d/zImage root=%s rootsubdir=%s/linuxrootfs%d" % (vumodel, usbslot, VuUUIDSlot[0], vumodel, usbslot) # /STARTUP_<n>
+				if model == "vuduo4k":
 					STARTUP_usbslot += " rootwait=40"
-				elif boxmodel in ("duo4kse"):
+				elif model == "vuduo4kse":
 					STARTUP_usbslot += " rootwait=35"
 				with open("/%s/STARTUP_%d" % (self.tmp_dir, usbslot), 'w') as f:
 					f.write(STARTUP_usbslot)
@@ -677,12 +684,11 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 	def KexecMountRet(self, result=None, retval=None, extra_args=None):
 		self.device_uuid = "UUID=" + result.split("UUID=")[1].split(" ")[0].replace('"', '')
 		usb = result.split(":")[0]
-		boxmodel = model[2:]
 		for usbslot in range(4, 8):
-			STARTUP_usbslot = "kernel=%s/linuxrootfs%d/zImage root=%s rootsubdir=%s/linuxrootfs%d" % (boxmodel, usbslot, self.device_uuid, boxmodel, usbslot) # /STARTUP_<n>
-			if boxmodel in ("duo4k"):
+			STARTUP_usbslot = "kernel=%s/linuxrootfs%d/zImage root=%s rootsubdir=%s/linuxrootfs%d" % (vumodel, usbslot, self.device_uuid, vumodel, usbslot) # /STARTUP_<n>
+			if model == "vuduo4k":
 				STARTUP_usbslot += " rootwait=40"
-			elif boxmodel in ("duo4kse"):
+			elif model == "vuduo4kse":
 				STARTUP_usbslot += " rootwait=35"
 			print("[MultiBootSelection] STARTUP_%d --> %s, self.tmp_dir: %s" % (usbslot, STARTUP_usbslot, self.tmp_dir))
 			with open("/%s/STARTUP_%d" % (self.tmp_dir, usbslot), 'w') as f:

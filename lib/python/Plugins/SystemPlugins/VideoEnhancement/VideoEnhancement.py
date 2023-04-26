@@ -3,6 +3,8 @@ from Components.config import config, ConfigSubsection, ConfigSlider, ConfigSele
 from os.path import isfile
 from Components.SystemInfo import BoxInfo
 
+ScalerSharpness = BoxInfo.getItem("ScalerSharpness")
+
 # The "VideoEnhancement" is the interface to /proc/stb/vmpeg/0.
 
 
@@ -163,7 +165,7 @@ class VideoEnhancement:
 		else:
 			config.pep.split = NoSave(ConfigNothing())
 
-		if BoxInfo.getItem("ScalerSharpness"):
+		if ScalerSharpness:
 			def setSharpness(config):
 				myval = int(config.value * 256)
 				try:
@@ -256,7 +258,7 @@ class VideoEnhancement:
 		try:
 			x = config.av.scaler_sharpness.value
 		except KeyError:
-			if BoxInfo.getItem("ScalerSharpness"):
+			if ScalerSharpness:
 				def setScaler_sharpness(config):
 					myval = int(config.value)
 					try:

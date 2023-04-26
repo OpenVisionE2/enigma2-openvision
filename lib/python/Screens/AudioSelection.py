@@ -18,6 +18,8 @@ from Plugins.Plugin import PluginDescriptor
 
 from enigma import iPlayableService, eTimer, eSize, eDVBDB, eServiceReference, eServiceCenter, iServiceInformation
 
+CanProc = BoxInfo.getItem("CanProc")
+
 FOCUS_CONFIG, FOCUS_STREAMS = range(2)
 [PAGE_AUDIO, PAGE_SUBTITLES] = ["audio", "subtitles"]
 
@@ -125,7 +127,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("downmix", _("Downmix")),
 					("passthrough", _("Passthrough"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/ac3_choices", "r") as ac3_choices:
 						ac3_choices.read().split('\n', 1)[0]
 						ac3_choices.close()
@@ -138,7 +140,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("downmix", _("Downmix")),
 					("passthrough", _("Passthrough"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/aac_choices", "r") as aac_choices:
 						aac_choices.read().split('\n', 1)[0]
 						aac_choices.close()
@@ -146,7 +148,8 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 				self.settings.downmix_aac.addNotifier(self.changeAACDownmix, initial_call=False)
 				conflist.append(getConfigListEntry(_("AAC downmix"), self.settings.downmix_aac, None))
 
-			if BoxInfo.getItem("CanDownmixAACPlus"):
+			CanDownmixAACPlus = BoxInfo.getItem("CanDownmixAACPlus")
+			if CanDownmixAACPlus:
 				choice_list = [
 					("downmix", _("Downmix")),
 					("passthrough", _("Passthrough")),
@@ -157,8 +160,8 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("wide", _("Wide")),
 					("extrawide", _("Extra wide"))
 				]
-				if BoxInfo.getItem("CanProc"):
-					with open(BoxInfo.getItem("CanDownmixAACPlus"), "r") as aacplus_choices:
+				if CanProc:
+					with open(CanDownmixAACPlus, "r") as aacplus_choices:
 						aacplus_choices.read().split('\n', 1)[0]
 						aacplus_choices.close()
 				self.settings.downmix_aacplus = ConfigSelection(choices=choice_list, default=config.av.downmix_aacplus.value)
@@ -170,7 +173,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("downmix", _("Downmix")),
 					("passthrough", _("Passthrough"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/dts_choices", "r") as dts_choices:
 						dts_choices.read().split('\n', 1)[0]
 						dts_choices.close()
@@ -178,7 +181,8 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 				self.settings.downmix_dts.addNotifier(self.changeDTSDownmix, initial_call=False)
 				conflist.append(getConfigListEntry(_("DTS downmix"), self.settings.downmix_dts, None))
 
-			if BoxInfo.getItem("CanDTSHD"):
+			CanDTSHD = BoxInfo.getItem("CanDTSHD")
+			if CanDTSHD:
 				choice_list = [
 					("downmix", _("Downmix")),
 					("force_dts", _("Convert to DTS")),
@@ -186,22 +190,23 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("multichannel", _("Convert to multi-channel PCM")),
 					("hdmi_best", _("Use best / Controlled by HDMI"))
 				]
-				if BoxInfo.getItem("CanProc"):
-					with open(BoxInfo.getItem("CanDTSHD"), "r") as dtshd_choices:
+				if CanProc:
+					with open(CanDTSHD, "r") as dtshd_choices:
 						dtshd_choices.read().split('\n', 1)[0]
 						dtshd_choices.close()
 				self.settings.dtshd = ConfigSelection(choices=choice_list, default=config.av.dtshd.value)
 				self.settings.dtshd.addNotifier(self.changeDTSHD, initial_call=False)
 				conflist.append(getConfigListEntry(_("DTS-HD HR/DTS-HD MA/DTS"), self.settings.dtshd, None))
 
-			if BoxInfo.getItem("CanAACTranscode"):
+			CanAACTranscode = BoxInfo.getItem("CanAACTranscode")
+			if CanAACTranscode:
 				choice_list = [
 					("off", _("Off")),
 					("ac3", _("AC3")),
 					("dts", _("DTS"))
 				]
-				if BoxInfo.getItem("CanProc"):
-					with open(BoxInfo.getItem("CanAACTranscode"), "r") as aac_transcode_choices:
+				if CanProc:
+					with open(CanAACTranscode, "r") as aac_transcode_choices:
 						aac_transcode_choices.read().split('\n', 1)[0]
 						aac_transcode_choices.close()
 				self.settings.transcodeaac = ConfigSelection(choices=choice_list, default=config.av.transcodeaac.value)
@@ -213,7 +218,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("use_hdmi_caps", _("Controlled by HDMI")),
 					("force_ac3", _("Convert to AC3"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/ac3plus_choices", "r") as ac3plus_choices:
 						ac3plus_choices.read().split('\n', 1)[0]
 						ac3plus_choices.close()
@@ -228,7 +233,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("multichannel", _("Convert to multi-channel PCM")),
 					("hdmi_best", _("Use best / Controlled by HDMI"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/wmapro_choices", "r") as wmapro_choices:
 						wmapro_choices.read().split('\n', 1)[0]
 						wmapro_choices.close()
@@ -249,7 +254,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("spdif", _("SPDIF")),
 					("dac", _("DAC"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/3d_surround_choices", "r") as surround:
 						surround.read().split('\n', 1)[0]
 						surround.close()
@@ -263,7 +268,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("wide", _("Wide")),
 					("extrawide", _("Extra wide"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/3d_surround_speaker_position_choices", "r") as speaker:
 						speaker.read().split('\n', 1)[0]
 						speaker.close()
@@ -278,7 +283,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("wide", _("Wide")),
 					("extrawide", _("Extra wide"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/3dsurround_choices", "r") as surroundspeaker:
 						surroundspeaker.read().split('\n', 1)[0]
 						surroundspeaker.close()
@@ -293,7 +298,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("spdif", _("SPDIF")),
 					("dac", _("DAC"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/avl_choices", "r") as avl_choices:
 						avl_choices.read().split('\n', 1)[0]
 						avl_choices.close()
@@ -306,7 +311,7 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 					("disabled", _("Off")),
 					("enabled", _("On"))
 				]
-				if BoxInfo.getItem("CanProc"):
+				if CanProc:
 					with open("/proc/stb/audio/autovolumelevel_choices", "r") as autovolumelevel_choices:
 						autovolumelevel_choices.read().split('\n', 1)[0]
 						autovolumelevel_choices.close()
@@ -492,11 +497,12 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 		self.fillList()
 
 	def changeAC3Downmix(self, downmix):
+		HasMultichannelPCM = BoxInfo.getItem("HasMultichannelPCM")
 		config.av.downmix_ac3.setValue(downmix.value)
-		if BoxInfo.getItem("HasMultichannelPCM"):
+		if HasMultichannelPCM:
 			config.av.multichannel_pcm.setValue(False)
 		config.av.downmix_ac3.save()
-		if BoxInfo.getItem("HasMultichannelPCM"):
+		if HasMultichannelPCM:
 			config.av.multichannel_pcm.save()
 		self.fillList()
 

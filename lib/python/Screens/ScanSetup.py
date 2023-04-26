@@ -17,6 +17,7 @@ from enigma import eTimer, eDVBFrontendParametersSatellite, eComponentScan, eDVB
 from six import ensure_str
 
 brand = BoxInfo.getItem("brand")
+Blindscan_t2_available = BoxInfo.getItem("Blindscan_t2_available")
 
 
 def buildTerTransponder(frequency,
@@ -841,7 +842,7 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 				if nimmanager.getNimName(nim.slot).startswith("Sundtek"):
 					self.TerrestrialCompleteEntry = getConfigListEntry(_('Scan options'), self.scan_ter_complete_type)
 					self.list.append(self.TerrestrialCompleteEntry)
-				elif BoxInfo.getItem("Blindscan_t2_available") and nim.isCompatible("DVB-T2") and len(self.terrestrialTransponderGetCmd(nim.slot)):
+				elif Blindscan_t2_available and nim.isCompatible("DVB-T2") and len(self.terrestrialTransponderGetCmd(nim.slot)):
 					self.list.append(getConfigListEntry(_('Blindscan'), self.scan_terrestrial_binary_scan))
 				if self.TerrestrialCompleteEntry is None or self.scan_ter_complete_type.value == "extended":
 					if nim.canBeCompatible("DVB-T2"):
@@ -1487,7 +1488,7 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 			elif self.scan_typeterrestrial.value == "complete":
 				if nimmanager.getNimName(nim.slot).startswith("Sundtek") and self.scan_ter_complete_type.value == "all":
 					action = SEARCH_TERRESTRIAL2_TRANSPONDERS
-				elif BoxInfo.getItem("Blindscan_t2_available") and self.scan_terrestrial_binary_scan.value and nim.isCompatible("DVB-T2") and len(self.terrestrialTransponderGetCmd(nim.slot)):
+				elif Blindscan_t2_available and self.scan_terrestrial_binary_scan.value and nim.isCompatible("DVB-T2") and len(self.terrestrialTransponderGetCmd(nim.slot)):
 					action = SEARCH_TERRESTRIAL2_TRANSPONDERS
 				else:
 					getInitialTerrestrialTransponderList(tlist, self.TerrestrialRegion.description[self.TerrestrialRegion.value], int(self.scan_ter.system.value))
@@ -1776,7 +1777,7 @@ class ScanSimple(ConfigListScreen, Screen, CableTransponderSearchSupport, Terres
 
 			if need_scan:
 				nims_to_scan.append(nim)
-				if nim.isCompatible("DVB-T2") and BoxInfo.getItem("Blindscan_t2_available") and len(self.terrestrialTransponderGetCmd(nim.slot)):
+				if nim.isCompatible("DVB-T2") and Blindscan_t2_available and len(self.terrestrialTransponderGetCmd(nim.slot)):
 					self.t2_nim_found = True
 
 		# we save the config elements to use them on keyGo
@@ -1869,7 +1870,7 @@ class ScanSimple(ConfigListScreen, Screen, CableTransponderSearchSupport, Terres
 							action = SEARCH_CABLE_TRANSPONDERS
 							networkid = config.Nims[nim.slot].cable.scan_networkid.value
 					if nim.isCompatible("DVB-T"):
-						if BoxInfo.getItem("Blindscan_t2_available") and self.scan_terrestrial_binary_scan.value and nim.isCompatible("DVB-T2") and len(self.terrestrialTransponderGetCmd(nim.slot)):
+						if Blindscan_t2_available and self.scan_terrestrial_binary_scan.value and nim.isCompatible("DVB-T2") and len(self.terrestrialTransponderGetCmd(nim.slot)):
 							action = SEARCH_TERRESTRIAL2_TRANSPONDERS
 						else:
 							getInitialTerrestrialTransponderList(tlist, nimmanager.getTerrestrialDescription(nim.slot))

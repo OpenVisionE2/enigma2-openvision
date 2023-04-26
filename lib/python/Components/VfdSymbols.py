@@ -74,18 +74,22 @@ class SymbolsCheckPoller:
 		del self.service
 
 	def Recording(self):
-		if BoxInfo.getItem("FrontpanelLEDBrightnessControl"):
+		FrontpanelLEDBrightnessControl = BoxInfo.getItem("FrontpanelLEDBrightnessControl")
+		FrontpanelLEDColorControl = BoxInfo.getItem("FrontpanelLEDColorControl")
+		FrontpanelLEDFadeControl = BoxInfo.getItem("FrontpanelLEDFadeControl")
+		FrontpanelLEDBlinkControl = BoxInfo.getItem("FrontpanelLEDBlinkControl")
+		if FrontpanelLEDBrightnessControl:
 			BRIGHTNESS_DEFAULT = 0xff
 			if config.lcd.ledbrightnesscontrol.value > 0xff or config.lcd.ledbrightnesscontrol.value < 0:
 				print("[VfdSymbols] LED brightness has to be between 0x0 and 0xff! Using default value (%x)" % (BRIGHTNESS_DEFAULT))
 				config.lcd.ledbrightnesscontrol.value = BRIGHTNESS_DEFAULT
-			open(BoxInfo.getItem("FrontpanelLEDBrightnessControl"), "w").write(config.lcd.ledbrightnesscontrol.value)
-		elif BoxInfo.getItem("FrontpanelLEDColorControl"):
+			open(FrontpanelLEDBrightnessControl, "w").write(config.lcd.ledbrightnesscontrol.value)
+		elif FrontpanelLEDColorControl:
 			COLOR_DEFAULT = 0xffffff
 			if config.lcd.ledcolorcontrolcolor.value > 0xffffff or config.lcd.ledcolorcontrolcolor.value < 0:
 				print("[VfdSymbols] LED color has to be between 0x0 and 0xffffff (r, g b)! Using default value (%x)" % (COLOR_DEFAULT))
 				config.lcd.ledcolorcontrolcolor.value = COLOR_DEFAULT
-			open(BoxInfo.getItem("FrontpanelLEDColorControl"), "w").write(config.lcd.ledcolorcontrolcolor.value)
+			open(FrontpanelLEDColorControl, "w").write(config.lcd.ledcolorcontrolcolor.value)
 		elif fileExists("/proc/stb/lcd/symbol_circle"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			print("[VfdSymbols] Write to /proc/stb/lcd/symbol_circle")
@@ -205,18 +209,18 @@ class SymbolsCheckPoller:
 					open("/proc/stb/fp/ledpowercolor", "w").write(config.usage.frontledstdby_color.value)
 				else:
 					open("/proc/stb/fp/ledpowercolor", "w").write(config.lcd.ledpowercolor.value)
-		elif BoxInfo.getItem("FrontpanelLEDFadeControl"):
+		elif FrontpanelLEDFadeControl:
 			FADE_DEFAULT = 0x7
 			if config.lcd.ledfadecontrolcolor.value > 0xff or config.lcd.ledfadecontrolcolor.value < 0:
 				print("[VfdSymbols] LED fade has to be between 0x0 and 0xff! Using default value (%x)" % (FADE_DEFAULT))
 				config.lcd.ledfadecontrolcolor.value = FADE_DEFAULT
-			open(BoxInfo.getItem("FrontpanelLEDFadeControl"), "w").write(config.lcd.ledfadecontrolcolor.value)
-		elif BoxInfo.getItem("FrontpanelLEDBlinkControl"):
+			open(FrontpanelLEDFadeControl, "w").write(config.lcd.ledfadecontrolcolor.value)
+		elif FrontpanelLEDBlinkControl:
 			BLINK_DEFAULT = 0x0710ff
 			if config.lcd.ledblinkcontrolcolor.value > 0xffffff or config.lcd.ledblinkcontrolcolor.value < 0:
 				print("[VfdSymbols] LED blink has to be between 0x0 and 0xffffff (on, total, repeats)! Using default value (%x)" % (BLINK_DEFAULT))
 				config.lcd.ledblinkcontrolcolor.value = BLINK_DEFAULT
-			open(BoxInfo.getItem("FrontpanelLEDBlinkControl"), "w").write(config.lcd.ledblinkcontrolcolor.value)
+			open(FrontpanelLEDBlinkControl, "w").write(config.lcd.ledblinkcontrolcolor.value)
 		else:
 			if not fileExists("/proc/stb/lcd/symbol_recording") or not fileExists("/proc/stb/lcd/symbol_record_1") or not fileExists("/proc/stb/lcd/symbol_record_2"):
 				return

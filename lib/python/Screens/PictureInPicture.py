@@ -9,6 +9,10 @@ from Components.config import config, ConfigPosition, ConfigSelection
 from Tools.Notifications import AddPopup, RemovePopup
 from Screens.MessageBox import MessageBox
 
+hasPIPVisibleProc = BoxInfo.getItem("hasPIPVisibleProc")
+VideoDestinationConfigurable = BoxInfo.getItem("VideoDestinationConfigurable")
+HasExternalPIP = BoxInfo.getItem("HasExternalPIP")
+
 MAX_X = 720
 MAX_Y = 576
 pip_config_initialized = False
@@ -19,8 +23,8 @@ PipPigModeTimer = eTimer()
 def timedStopPipPigMode():
 	from Screens.InfoBar import InfoBar
 	if InfoBar.instance and InfoBar.instance.session:
-		if BoxInfo.getItem("hasPIPVisibleProc"):
-			open(BoxInfo.getItem("hasPIPVisibleProc"), "w").write("1")
+		if hasPIPVisibleProc:
+			open(hasPIPVisibleProc, "w").write("1")
 		elif hasattr(InfoBar.instance.session, "pip"):
 			InfoBar.instance.session.pip.relocate()
 	global PipPigModeEnabled
@@ -37,8 +41,8 @@ def PipPigMode(value):
 			PipPigModeTimer.stop()
 			global PipPigModeEnabled
 			if not PipPigModeEnabled:
-				if BoxInfo.getItem("hasPIPVisibleProc"):
-					open(BoxInfo.getItem("hasPIPVisibleProc"), "w").write("0")
+				if hasPIPVisibleProc:
+					open(hasPIPVisibleProc, "w").write("0")
 				elif hasattr(value, "pipservice"):
 					import skin
 					x, y, w, h = skin.parameters.get("PipHidePosition", (16, 16, 16, 16))
@@ -67,12 +71,12 @@ class PictureInPicture(Screen):
 		self.currentServiceReference = None
 
 		self.choicelist = [("standard", _("Standard"))]
-		if BoxInfo.getItem("VideoDestinationConfigurable"):
+		if VideoDestinationConfigurable:
 			self.choicelist.append(("cascade", _("Cascade PiP")))
 			self.choicelist.append(("split", _("Splitscreen")))
 			self.choicelist.append(("byside", _("Side by side")))
 		self.choicelist.append(("bigpig", _("Big PiP")))
-		if BoxInfo.getItem("HasExternalPIP"):
+		if HasExternalPIP:
 			self.choicelist.append(("external", _("External PiP")))
 
 		if not pip_config_initialized:
@@ -151,12 +155,12 @@ class PictureInPicture(Screen):
 			self.setSizePosMainWindow()
 
 	def setSizePosMainWindow(self, x=0, y=0, w=0, h=0):
-		if BoxInfo.getItem("VideoDestinationConfigurable"):
+		if VideoDestinationConfigurable:
 			self["video"].instance.setFullScreenPosition(eRect(x, y, w, h))
 
 	def setExternalPiP(self, onoff):
-		if BoxInfo.getItem("HasExternalPIP"):
-			open(BoxInfo.getItem("HasExternalPIP"), "w").write(onoff and "on" or "off")
+		if HasExternalPIP:
+			open(HasExternalPIP, "w").write(onoff and "on" or "off")
 
 	def active(self):
 		self.pipActive.show()

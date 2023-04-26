@@ -11,6 +11,9 @@ from Tools.Directories import fileReadLine, fileReadLines
 
 MODULE_NAME = __name__.split(".")[-1]
 
+canMode12 = BoxInfo.getItem("canMode12")
+hasKexec = BoxInfo.getItem("hasKexec")
+
 PREFIX = "MultiBoot_"
 MOUNT = "/bin/mount"
 UMOUNT = "/bin/umount"
@@ -105,7 +108,7 @@ def getMultiBootSlots():
 			else:
 				slotNumber = file.rsplit("_", 1)[1]
 			if slotNumber.isdigit() and slotNumber not in bootSlots:
-				if BoxInfo.getItem("hasKexec") and int(slotNumber) > 3:
+				if hasKexec and int(slotNumber) > 3:
 					BoxInfo.setItem("HasKexecUSB", True)
 				lines = fileReadLines(file, source=MODULE_NAME)
 				if lines:
@@ -129,7 +132,7 @@ def getMultiBootSlots():
 									BoxInfo.setItem("HasRootSubdir", True)
 									slot["kernel"] = getArgValue(line, "kernel")
 									slot["rootsubdir"] = getArgValue(line, "rootsubdir")
-								elif not BoxInfo.getItem("hasKexec") and 'sda' in line:
+								elif not hasKexec and 'sda' in line:
 									slot["kernel"] = getArgValue(line, "kernel")
 									slot["rootsubdir"] = None
 								else:
@@ -143,7 +146,7 @@ def getMultiBootSlots():
 		Console().ePopen((UMOUNT, UMOUNT, tempDir))
 		if not ismount(tempDir):
 			rmdir(tempDir)
-		if not mode12Found and BoxInfo.getItem("canMode12"):
+		if not mode12Found and canMode12:
 			# The boot device has ancient content and does not contain the correct STARTUP files!
 			for slot in range(1, 5):
 				bootSlots[slot] = {"device": "/dev/mmcblk0p%s" % (slot * 2 + 1), "startupfile": None}
@@ -160,7 +163,7 @@ def getCurrentImage():
 	UUID = ""
 	UUIDnum = 0
 	if bootSlots:
-		if not BoxInfo.getItem("hasKexec"):
+		if not hasKexec:
 			slot = [x[-1] for x in bootArgs.split() if x.startswith("rootsubdir")]
 			if slot:
 				return int(slot[0])
@@ -179,7 +182,7 @@ def getCurrentImage():
 
 def getCurrentImageMode():
 	global bootArgs
-	return bool(bootSlots) and BoxInfo.getItem("canMode12") and int(bootArgs.split("=")[-1])
+	return bool(bootSlots) and canMode12 and int(bootArgs.split("=")[-1])
 
 
 def getImageList(Recovery=None):
@@ -193,7 +196,7 @@ def getImageList(Recovery=None):
 				else:  # called by FlashImage
 					imageList[slot] = {"imagename": _("Recovery Mode")}
 					continue
-			print("[MultiBoot] [getImagelist] slot = ", slot)
+			print("[MultiBoot] [getImageList] slot = ", slot)
 			try:  # Avoid problems Dev lost USB Slots Kexec
 				Console().ePopen((MOUNT, MOUNT, bootSlots[slot]["device"], tempDir))
 			except:

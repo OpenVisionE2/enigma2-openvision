@@ -9,12 +9,15 @@ from enigma import eTimer
 
 from Components import Task
 from Components.Console import Console
-from Components.SystemInfo import SystemInfo, BoxInfo
+from Components.SystemInfo import BoxInfo
 from Tools.CList import CList
 from Tools.Directories import fileReadLine, fileReadLines
 from Tools.StbHardware import getBoxProc
 
-hw_type = getBoxProc()
+Udev = BoxInfo.getItem("Udev")
+HasMMC = BoxInfo.getItem("HasMMC")
+BootDevice = BoxInfo.getItem("BootDevice")
+HasUsbhdd = BoxInfo.getItem("HasUsbhdd")
 
 
 def getProcMounts():
@@ -85,7 +88,7 @@ class Harddisk:
 		self.internal = "ide" in self.phys_path or "pci" in self.phys_path or "ahci" in self.phys_path or "sata" in self.phys_path
 		data = fileReadLine(pathjoin("/sys/block", device, "queue/rotational"), "1")
 		self.rotational = int(data)
-		if BoxInfo.getItem("Udev"):
+		if Udev:
 			self.dev_path = "/dev/" + self.device
 			self.disk_path = self.dev_path
 			self.card = "sdhci" in self.phys_path or "mmc" in self.device
@@ -113,7 +116,7 @@ class Harddisk:
 		return self.device < ob.device
 
 	def partitionPath(self, n):
-		if BoxInfo.getItem("Udev"):
+		if Udev:
 			if self.dev_path.startswith("/dev/mmcblk"):
 				return "%sp%s" % (self.dev_path, n)
 			else:
@@ -132,7 +135,7 @@ class Harddisk:
 	def bus(self):
 		ret = _("External")
 		# SD/MMC
-		if BoxInfo.getItem("Udev"):
+		if Udev:
 			if "usb" in self.phys_path:
 				type_name = " (USB)"
 			else:
@@ -215,7 +218,7 @@ class Harddisk:
 
 	def numPartitions(self):
 		numPart = -1
-		if BoxInfo.getItem("Udev"):
+		if Udev:
 			try:
 				devdir = listdir("/dev")
 			except (IOError, OSError):
@@ -289,7 +292,7 @@ class Harddisk:
 				return (res >> 8)
 		# device is not in fstab
 		res = -1
-		if BoxInfo.getItem("Udev"):
+		if Udev:
 			# we can let udev do the job, re-read the partition table
 			res = system("hdparm -z %s" % self.disk_path)
 			# give udev some time to make the mount, which it will do asynchronously
@@ -611,9 +614,9 @@ class HarddiskManager:
 		error = False
 		removable = False
 		BLACKLIST = []
-		if BoxInfo.getItem("HasMMC"):
+		if HasMMC:
 			BLACKLIST = ["%s" % (BoxInfo.getItem("mtdrootfs")[0:7])]
-		if BoxInfo.getItem("HasMMC") and "root=/dev/mmcblk0p1" in fileReadLine("/proc/cmdline", ""):
+		if HasMMC and "root=/dev/mmcblk0p1" in fileReadLine("/proc/cmdline", ""):
 			BLACKLIST = ["mmcblk0p1"]
 		blacklisted = False
 		if blockdev[:7] in BLACKLIST:
@@ -638,7 +641,7 @@ class HarddiskManager:
 			# blacklist non-root eMMC devices
 			if not blacklisted and dev == 179:
 				is_mmc = True
-				if (BoxInfo.getItem("BootDevice") and blockdev.startswith(BoxInfo.getItem("BootDevice"))) or subdev:
+				if (BootDevice and blockdev.startswith(BootDevice)) or subdev:
 					blacklisted = True
 			if blockdev[0:2] == "sr":
 				is_cdrom = True
@@ -679,7 +682,7 @@ class HarddiskManager:
 					self.addHotplugPartition(part)
 					if len(partitions) != 0:
 						if removable:
-							SystemInfo["HasUsbhdd"][part] = len(partitions)
+							HasUsbhdd[part] = len(partitions)
 						physicalDevice = realpath(pathjoin("/sys/block", blockdev, "device"))
 						for partition in partitions:
 							description = self.getUserfriendlyDeviceName(partition, physicalDevice)
@@ -741,7 +744,7 @@ class HarddiskManager:
 				physdev = dev
 				print("[Harddisk] Error %d: Couldn't determine blockdev physdev for device '%s'!  (%s)" % (err.errno, device, err.strerror))
 		error, blacklisted, removable, is_cdrom, partitions, medium_found = self.getBlockDevInfo(device)
-		if hw_type in ("elite", "premium", "premium+", "ultra"):
+		if getBoxProc() in ("elite", "premium", "premium+", "ultra"):
 			if device[0:3] == "hda":
 				blacklisted = True
 		if not blacklisted and medium_found:
@@ -758,8 +761,8 @@ class HarddiskManager:
 				BoxInfo.setItem("Harddisk", True)
 			partitions = [partition for partition in sorted(listdir(devicePath)) if partition.startswith(dev)]
 			if len(partitions) != 0:
-				SystemInfo["HasUsbhdd"][device] = len(partitions)
-				print("[Harddisk]2 SystemInfo['HasUsbhdd']= %s" % SystemInfo["HasUsbhdd"])
+				HasUsbhdd[device] = len(partitions)
+				print("[Harddisk] HasUsbhdd = %s" % HasUsbhdd)
 		return error, blacklisted, removable, is_cdrom, partitions, medium_found
 
 	def addHotplugAudiocd(self, device, physdev=None):
@@ -938,7 +941,7 @@ class MountTask(Task.LoggingTask):
 				self.postconditions.append(Task.ReturncodePostcondition())
 				return
 		# device is not in fstab
-		if BoxInfo.getItem("Udev"):
+		if Udev:
 			# we can let udev do the job, re-read the partition table
 			# Sorry for the sleep 2 hack...
 			self.setCmdline("sleep 2; hdparm -z " + self.hdd.disk_path)

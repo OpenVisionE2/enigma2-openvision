@@ -24,6 +24,8 @@ from Tools.XMLTools import stringToXML
 from os import remove, unlink
 from os.path import exists
 
+CommonInterface = BoxInfo.getItem("CommonInterface")
+
 
 class CIselectMainMenu(Screen):
 	skin = """
@@ -48,7 +50,7 @@ class CIselectMainMenu(Screen):
 				"cancel": self.close
 			}, -1)
 
-		NUM_CI = BoxInfo.getItem("CommonInterface")
+		NUM_CI = CommonInterface
 
 		print("[CommonInterfaceAssignment] CI_Wizzard FOUND %d CI Slots " % NUM_CI)
 
@@ -682,7 +684,7 @@ def find_in_list(list, search, listpos=0):
 
 
 def isModule():
-	NUM_CI = BoxInfo.getItem("CommonInterface")
+	NUM_CI = CommonInterface
 	if NUM_CI and NUM_CI > 0:
 		for slot in range(NUM_CI):
 			state = eDVBCI_UI.getInstance().getState(slot)

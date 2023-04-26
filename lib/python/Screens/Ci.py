@@ -13,6 +13,9 @@ from enigma import eTimer, eDVBCI_UI
 import Screens.Standby
 
 brand = BoxInfo.getItem("brand")
+CommonInterfaceCIDelay = BoxInfo.getItem("CommonInterfaceCIDelay")
+CommonInterface = BoxInfo.getItem("CommonInterface")
+HasCISSL = BoxInfo.getItem("HasCISSL")
 
 extrahw = "/var/lib/opkg/info/enigma2-plugin-drivers-extrahw-cardreader.control"
 forceNotShowCiMessages = False
@@ -30,7 +33,7 @@ def setCIEnabled(configElement):
 
 
 def setdvbCiDelay(configElement):
-	open(BoxInfo.getItem("CommonInterfaceCIDelay"), "w").write(configElement.value)
+	open(CommonInterfaceCIDelay, "w").write(configElement.value)
 	configElement.save()
 
 
@@ -41,8 +44,8 @@ def setRelevantPidsRouting(configElement):
 def InitCiConfig():
 	config.ci = ConfigSubList()
 	config.cimisc = ConfigSubsection()
-	if BoxInfo.getItem("CommonInterface"):
-		for slot in range(BoxInfo.getItem("CommonInterface")):
+	if CommonInterface:
+		for slot in range(CommonInterface):
 			config.ci.append(ConfigSubsection())
 			config.ci[slot].enabled = ConfigYesNo(default=True)
 			config.ci[slot].enabled.slotid = slot
@@ -62,11 +65,11 @@ def InitCiConfig():
 				config.ci[slot].relevantPidsRouting = ConfigYesNo(default=False)
 				config.ci[slot].relevantPidsRouting.slotid = slot
 				config.ci[slot].relevantPidsRouting.addNotifier(setRelevantPidsRouting)
-		if BoxInfo.getItem("CommonInterfaceCIDelay"):
+		if CommonInterfaceCIDelay:
 			config.cimisc.dvbCiDelay = ConfigSelection(default="256", choices=[("16"), ("32"), ("64"), ("128"), ("256")])
 			config.cimisc.dvbCiDelay.addNotifier(setdvbCiDelay)
 		if brand in ("entwopia", "tripledot", "dreambox"):
-			if BoxInfo.getItem("HaveCISSL"):
+			if HasCISSL:
 				config.cimisc.civersion = ConfigSelection(default="ciplus1", choices=[("auto", _("Auto")), ("ciplus1", _("CI Plus 1.2")), ("ciplus2", _("CI Plus 1.3")), ("legacy", _("CI Legacy"))])
 			else:
 				config.cimisc.civersion = ConfigSelection(default="legacy", choices=[("legacy", _("CI Legacy"))])
@@ -403,7 +406,7 @@ class CiSelection(Screen):
 		self.state = {}
 		self.list = []
 		self.slot = 0
-		for slot in range(BoxInfo.getItem("CommonInterface")):
+		for slot in range(CommonInterface):
 			state = eDVBCI_UI.getInstance().getState(slot)
 			if state != -1:
 				self.slot += 1
@@ -474,9 +477,9 @@ class CiSelection(Screen):
 			self.list.append(getConfigListEntry(_("High bitrate support"), config.ci[slot].canHandleHighBitrates, 3, slot))
 		if BoxInfo.getItem("CI%dRelevantPidsRoutingSupport" % slot):
 			self.list.append(getConfigListEntry(_("PID Filtering"), config.ci[slot].relevantPidsRouting, 3, slot))
-		if BoxInfo.getItem("CommonInterfaceCIDelay"):
+		if CommonInterfaceCIDelay:
 			self.list.append(getConfigListEntry(_("DVB CI Delay"), config.cimisc.dvbCiDelay, 3, slot))
-		if BoxInfo.getItem("HaveCISSL"):
+		if HasCISSL:
 			self.list.append(getConfigListEntry(_("CI Operation Mode"), config.cimisc.civersion, _("Choose the CI protocol operation mode for standard CI or CI Plus.")))
 		else:
 			self.list.append(getConfigListEntry(_("CI Operation Mode"), config.cimisc.civersion, _("Your hardware can detect CI mode itself or works only in legacy mode.")))
@@ -484,7 +487,7 @@ class CiSelection(Screen):
 	def updateState(self, slot):
 		self.list = []
 		self.slot = 0
-		for module in range(BoxInfo.getItem("CommonInterface")):
+		for module in range(CommonInterface):
 			state = eDVBCI_UI.getInstance().getState(module)
 			if state != -1:
 				self.slot += 1
@@ -529,7 +532,7 @@ class CiSelection(Screen):
 		pass
 
 	def cancel(self):
-		for slot in range(BoxInfo.getItem("CommonInterface")):
+		for slot in range(CommonInterface):
 			state = eDVBCI_UI.getInstance().getState(slot)
 			if state != -1:
 				CiHandler.unregisterCIMessageHandler(slot)
