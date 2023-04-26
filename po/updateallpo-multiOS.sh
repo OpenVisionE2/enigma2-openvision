@@ -156,7 +156,7 @@ git pull
 # Retrieve languages from Makefile.am LANGS variable for backward compatibility
 #
 printf "Po files update/creation from script starting.\n"
-languages=($(gawk ' BEGIN { FS=" " } 
+languages=($(awk ' BEGIN { FS=" " } 
 		/^LANGS/ {
 			for (i=3; i<=NF; i++)
 				printf "%s ", $i

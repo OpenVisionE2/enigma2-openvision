@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 17:58+0330\n"
+"POT-Creation-Date: 2023-04-26 18:19+0330\n"
 "PO-Revision-Date: 2017-03-05 13:24+0100\n"
 "Last-Translator: Magnus Nilsson <mag_nilsson@hotmail.com>\n"
 "Language-Team: \n"
@@ -20,7 +20,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "\n"
-" Do you want to switch to Android ?"
+" Do you want to switch to Android?"
 msgstr "Vill du spela upp DVD i spelaren?"
 
 msgid ""
@@ -1279,6 +1279,20 @@ msgstr ""
 msgid "%s"
 msgstr "bc%s"
 
+#, python-format
+msgid ""
+"%s\n"
+"\n"
+"If the DNS of other servers are still kept in the DHCP Router, to get the DNS from your Router, reboot receiver."
+msgstr ""
+
+#, python-format
+msgid ""
+"%s\n"
+"\n"
+"You can use the DNS provided by other servers in Static IP Router."
+msgstr ""
+
 #, fuzzy, python-format
 msgid ""
 "%s\n"
@@ -1313,6 +1327,17 @@ msgstr ""
 msgid "%s MHz"
 msgstr ""
 
+#, fuzzy, python-format
+msgid ""
+"%s connected successfully.\n"
+"Playable files found."
+msgstr "PIN-koden har ändrats!"
+
+#
+#, fuzzy, python-format
+msgid "%s connected successfully. No playable files on this medium found!"
+msgstr "Inga visningsbara filer hittade på detta media!"
+
 #. TRANSLATORS: The satellite with name '%s' is no longer used after a configuration change. The user is asked whether or not the satellite should be deleted.
 #, python-format
 msgid "%s is no longer used. Should it be deleted?"
@@ -1335,11 +1360,11 @@ msgid "%s%s(Default: %s)"
 msgstr ""
 
 #, python-format
-msgid "%s: %s Free:%s Used:%s (%s%%)"
+msgid "%s: %s Free: %s Used: %s (%s%%)"
 msgstr ""
 
 #, python-format
-msgid "%s: %s Used:%s Free:%s"
+msgid "%s: %s Used: %s Free: %s"
 msgstr ""
 
 #, python-format
@@ -1354,16 +1379,33 @@ msgstr "Inga uppdateringar tillgängliga."
 msgid "%s?"
 msgstr ""
 
-#, fuzzy, python-format
-msgid "'%s' %d MB little space available"
-msgstr "%s uppdatering tillgänglig."
+#, python-format
+msgid ""
+"'%s' Storage device free size %d GB.\n"
+"%s"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "'%s' contains %d file(s) and %d sub-directories.\n"
 msgstr "Katalogen innehåller %(file)s och %(subdir)s."
 
+#
+#, fuzzy, python-format
+msgid ""
+"'%s' does not exist.\n"
+"%s"
+msgstr "Bibliotek %s finns ej."
+
 #, python-format
-msgid "'%s'= Internal Flash. It is not a storage device"
+msgid ""
+"'%s' is Internal Flash. It is not a storage device.\n"
+"%s"
+msgstr ""
+
+#, python-format
+msgid ""
+"'%s' not writeable.\n"
+"%s"
 msgstr ""
 
 msgid "'Handle standby from TV' has a higher priority than 'Handle input from TV'."
@@ -1372,6 +1414,10 @@ msgstr ""
 #, fuzzy
 msgid "( All readers)"
 msgstr "Alla åldersgrupper"
+
+#, python-format
+msgid "(Attention! There will be a restart after %d crashes.)"
+msgstr ""
 
 #, fuzzy
 msgid "(Radio)"
@@ -1425,10 +1471,8 @@ msgstr ""
 msgid "* Only available if more than one interface is active."
 msgstr "* Enbart tillgänglig om mer än ett kort är aktivt."
 
-#
-#, fuzzy
 msgid "* current animation"
-msgstr "Aktivera nuvarande konfiguration"
+msgstr ""
 
 msgctxt "Text list separator"
 msgid ", "
@@ -1481,13 +1525,6 @@ msgstr "8"
 #, fuzzy
 msgid "-9"
 msgstr "9"
-
-msgid "-NO SERVICE\n"
-msgstr ""
-
-#, python-format
-msgid "-SERVICE ERROR:%d\n"
-msgstr ""
 
 #, fuzzy
 msgctxt "Hotkey help separator"
@@ -1879,6 +1916,9 @@ msgstr ""
 msgid ":"
 msgstr ""
 
+msgid "< PREV NEXT >  Move"
+msgstr ""
+
 #
 msgid "<Current movielist location>"
 msgstr "<Filmlistans aktuella plats>"
@@ -1894,9 +1934,6 @@ msgstr "<Timerns senaste plats>"
 #
 msgid "<unknown>"
 msgstr "<okänd>"
-
-msgid "=NO STREAM\n"
-msgstr ""
 
 #, python-format
 msgid "?%s-recursive?"
@@ -1924,6 +1961,10 @@ msgstr "En avslutad inspelningstimer vill stänga av din mottagare. Stänga av n
 #, python-format
 msgid "A configuration file (%s) has been modified since it was installed. Would you like to keep the modified version?"
 msgstr "En konfigurationsfil (%s) har ändrats sedan installationen. Vill du behålla din ändring?"
+
+#, python-format
+msgid "A crash log was %s created in '%s'"
+msgstr ""
 
 msgid "A file from media is in use!"
 msgstr ""
@@ -2142,7 +2183,7 @@ msgstr "Aktivera HbbTV (Röd Knapp)"
 #
 #, fuzzy
 msgid "Activate IPv6 configuration"
-msgstr "Aktivera nuvarande konfiguration"
+msgstr "aktivera nätverksconfiguration"
 
 #
 msgid "Activate Picture in Picture"
@@ -2152,8 +2193,9 @@ msgid "Activate a way to send individual or specific internal HDMI-CEC commands 
 msgstr ""
 
 #
+#, fuzzy
 msgid "Activate current configuration"
-msgstr "Aktivera nuvarande konfiguration"
+msgstr "aktivera nätverksconfiguration"
 
 #
 msgid "Activate network settings"
@@ -2189,6 +2231,10 @@ msgstr "Lägg till"
 msgid "Add / Delete bookmark"
 msgstr "Lägg till bokmärke"
 
+#, python-format
+msgid "Add 4 more Vu+ Multiboot USB slots after slot %s ?"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Add BISS CaID to service"
@@ -2204,13 +2250,16 @@ msgstr "Lägg till bokmärke"
 msgid "Add Timer"
 msgstr "Lägg till timer"
 
+#, fuzzy
+msgid "Add USB slots"
+msgstr "Välj plats"
+
+msgid "Add USB slots (require receiver Vu+ 4k)"
+msgstr ""
+
 #
 msgid "Add a mark"
 msgstr "Lägg till markör"
-
-#
-msgid "Add a nameserver entry"
-msgstr "Lägg till en namnserver post"
 
 #
 #, fuzzy
@@ -2267,6 +2316,9 @@ msgstr "Lägg till fil i spellista"
 msgid "Add files to playlist"
 msgstr "Lägg till filer i spellista"
 
+msgid "Add legacy LEFT/RIGHT actions"
+msgstr ""
+
 #
 msgid "Add marker"
 msgstr "Lägg till markör"
@@ -2289,12 +2341,13 @@ msgid "Add recording (enter recording endtime)"
 msgstr "Lägg till inspelning (ange sluttid för inspelning)"
 
 #
-msgid "Add recording (indefinitely)"
-msgstr "Lägg till inspelning (oändlig)"
-
-#
 msgid "Add recording (stop after current event)"
 msgstr "Lägg till inspelning (avsluta efter nuvarande program)"
+
+#
+#, fuzzy
+msgid "Add recording set to (24 hours)"
+msgstr "Lägg till inspelning (ange inspelningslängd)"
 
 #
 msgid "Add service"
@@ -2456,11 +2509,6 @@ msgstr "Placering av kanalnamn"
 msgid "All"
 msgstr "Alla"
 
-#
-#, fuzzy
-msgid "All Services"
-msgstr "Kanaler"
-
 msgid "All ages"
 msgstr "Alla åldersgrupper"
 
@@ -2526,7 +2574,7 @@ msgstr "Använd TV:ns fjärrkontroll"
 msgid "Allows you to assign the selected function to this button."
 msgstr ""
 
-msgid "Allows you to enable/disable displaying icons on the frontpanel."
+msgid "Allows you to enable/disable displaying icons on the front panel."
 msgstr ""
 
 msgid "Allows you to hide the extensions of known file types."
@@ -2615,6 +2663,14 @@ msgstr ""
 
 msgid "Amlogic"
 msgstr ""
+
+#, fuzzy
+msgid "Amlogic HDR10 Support"
+msgstr "stöds ej"
+
+#, fuzzy
+msgid "Amlogic HLG Support"
+msgstr "stöds ej"
 
 msgid "Amlogic remote"
 msgstr ""
@@ -2763,13 +2819,6 @@ msgstr ""
 #
 #, fuzzy
 msgid "Are you sure you want to delete this log?\n"
-msgstr "Är du säker på att du vill avsluta den här guiden?"
-
-#
-#, fuzzy
-msgid ""
-"Are you sure you want to delete this:\n"
-" "
 msgstr "Är du säker på att du vill avsluta den här guiden?"
 
 #
@@ -3057,6 +3106,16 @@ msgstr "Inget viloläge"
 msgid "AutoTimer"
 msgstr "Timer"
 
+msgid ""
+"AutoTimer is not installed\n"
+"Now (Press long)"
+msgstr ""
+
+msgid ""
+"AutoTimer is not installed\n"
+"Prime time (Press long)"
+msgstr ""
+
 #
 #, fuzzy, python-format
 msgid "Autoinstalling %s"
@@ -3261,9 +3320,6 @@ msgid "Bangladesh"
 msgstr ""
 
 msgid "Barbados"
-msgstr ""
-
-msgid "Base transparency for teletext, more options available within teletext screen."
 msgstr ""
 
 msgid "Bashkir"
@@ -3667,9 +3723,6 @@ msgstr "CI tilldelning"
 msgid "CI enabled"
 msgstr "aktiverad"
 
-msgid "CI slot: "
-msgstr "CI plats :"
-
 msgid "CIFS/Samba"
 msgstr ""
 
@@ -3823,6 +3876,9 @@ msgstr "Kanallista"
 msgid "Cancel the action selection and exit"
 msgstr ""
 
+msgid "Cancel the image selection and exit"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Cancel the location selection"
@@ -3896,9 +3952,6 @@ msgstr ""
 msgid "Cayman Islands"
 msgstr ""
 
-msgid "Celsius"
-msgstr ""
-
 #, fuzzy
 msgid "Center"
 msgstr "centrera"
@@ -3942,10 +3995,9 @@ msgstr "Byt favoritlista med snabbzapp"
 msgid "Change channel"
 msgstr "Kanal"
 
-#
 #, fuzzy
 msgid "Change device settings"
-msgstr "Namnserverinställningar"
+msgstr "Använd dessa inställningar för inmatningsenhet?"
 
 msgid "Change directory / Select bookmark"
 msgstr ""
@@ -3988,6 +4040,12 @@ msgstr "Kanallista"
 #, fuzzy
 msgid "Channel context menu"
 msgstr "Meny för kanallista"
+
+msgid "Channel list is clean no characters to purge."
+msgstr ""
+
+msgid "Channel list was successfully purged."
+msgstr ""
 
 #, fuzzy
 msgid "Channel name"
@@ -4088,7 +4146,8 @@ msgstr "Kontrollerar filsystem..."
 msgid "Checking filesystem..."
 msgstr "Kontrollerar filsystem..."
 
-msgid "Checking the internet connection"
+#, fuzzy
+msgid "Checking the internet connection."
 msgstr "Kontrollerar Internetanslutningen"
 
 #, python-format
@@ -4293,8 +4352,8 @@ msgstr "initiera modul"
 msgid ""
 "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
 "\n"
-"Paths to search EPG and Channels on server:\n"
-"Internal Flash, HDD, USB.\n"
+"Paths to search EPG and/or Channels on server:\n"
+"Internal Flash or /media/hdd/.\n"
 "\n"
 "Server must have authentication disabled for streams http in MENU \"customize\". Set password if it is set on server."
 msgstr ""
@@ -4595,10 +4654,6 @@ msgstr "Konfigurera om undertexten skall växla mellan normal, italic, bold och 
 #
 msgid "Configure interface"
 msgstr "Konfigurera kort"
-
-#
-msgid "Configure nameservers"
-msgstr "Konfigurera namnservers"
 
 msgid "Configure on which devices the background delete option should be used."
 msgstr "Konfigurera på vilka enheter som bakgrundsradering ska användas."
@@ -5168,10 +5223,6 @@ msgstr ""
 msgid "Cron Timers"
 msgstr "Timer"
 
-#, fuzzy
-msgid "Cron manager"
-msgstr "ingen resurshanterare"
-
 msgid "Cuba"
 msgstr ""
 
@@ -5314,6 +5365,14 @@ msgstr ""
 msgid "DLNA support"
 msgstr "stöds ej"
 
+#, python-format
+msgid "DNS %d"
+msgstr ""
+
+#, fuzzy
+msgid "DNS server name"
+msgstr "Kanalnamn"
+
 msgid "DTS"
 msgstr ""
 
@@ -5357,6 +5416,10 @@ msgid "DVB subtitle black transparency"
 msgstr "Svart transparens för DVB undertexter"
 
 msgid "DVB type"
+msgstr "DVB Typ"
+
+#, fuzzy
+msgid "DVB type:"
 msgstr "DVB Typ"
 
 msgid "DVB-C"
@@ -5500,6 +5563,9 @@ msgid "Day Mon-D"
 msgstr ""
 
 msgid "Day Mon-DD"
+msgstr ""
+
+msgid "Day of the month"
 msgstr ""
 
 msgid "Dayname D Month Year"
@@ -5828,6 +5894,10 @@ msgstr "Radera timer"
 msgid "Delete logfile"
 msgstr "Ta bort fil"
 
+#, python-format
+msgid "Delete or rename folder \"vuplus\" in path '%s' before initializing."
+msgstr ""
+
 #
 msgid "Delete playlist entry"
 msgstr "Ta bort post i spellista"
@@ -5882,6 +5952,9 @@ msgid "Deleting files"
 msgstr "Ta bort fil"
 
 msgid "Democratic Republic of the Congo"
+msgstr ""
+
+msgid "Demod firmware version"
 msgstr ""
 
 msgid "Denmark"
@@ -6037,21 +6110,6 @@ msgstr "Katalog"
 #
 #, python-format
 msgid "Directory %s does not exist."
-msgstr "Bibliotek %s finns ej."
-
-#
-#, fuzzy, python-format
-msgid "Directory '%s' does not exist!"
-msgstr "Bibliotek %s finns ej."
-
-#
-#, fuzzy, python-format
-msgid "Directory '%s' not writable!"
-msgstr "Bibliotek %s finns ej."
-
-#
-#, fuzzy, python-format
-msgid "Directory '%s' not writeable!"
 msgstr "Bibliotek %s finns ej."
 
 #
@@ -6412,6 +6470,11 @@ msgid ""
 msgstr "Vill du ladda ner image till %s ?"
 
 #
+#, fuzzy, python-format
+msgid "Do you want to install \"%s\" ?"
+msgstr "Vill du installera en kanallista?"
+
+#
 #, fuzzy
 msgid "Do you want to install Plugins?"
 msgstr "Vill du installera en kanallista?"
@@ -6439,7 +6502,21 @@ msgid "Do you want to reboot your receiver?"
 msgstr "Vill du starta om din mottagare?"
 
 #
+#, fuzzy, python-format
+msgid "Do you want to remove \"%s\" ?"
+msgstr ""
+"Vill du verkligen ta bort\n"
+"pluginet \"%s\"?"
+
+#
 msgid "Do you want to remove the package:\n"
+msgstr "Vill du ta bort detta paketet :\n"
+
+#
+#, fuzzy
+msgid ""
+"Do you want to remove this command or script?\n"
+"\n"
 msgstr "Vill du ta bort detta paketet :\n"
 
 #
@@ -6675,9 +6752,9 @@ msgstr ""
 msgid "EPG filename"
 msgstr "filnamn"
 
-#, python-format
+#, fuzzy, python-format
 msgid "EPG imported successfully from %s"
-msgstr ""
+msgstr "PIN-koden har ändrats!"
 
 msgid "EPG language selection 1"
 msgstr "Val av EPG språk 1"
@@ -6705,7 +6782,7 @@ msgid "ERROR - failed to scan (%s)!"
 msgstr "FEL - misslyckad sökning (%s)!"
 
 #, python-format
-msgid "ERROR downloading file %s"
+msgid "ERROR downloading file %s. Use button YELLOW in server \"Purge channel list\""
 msgstr ""
 
 #
@@ -6726,8 +6803,9 @@ msgid "Edit"
 msgstr "Ändra"
 
 #
+#, fuzzy
 msgid "Edit DNS"
-msgstr "Ändra DNS"
+msgstr "Ändra"
 
 #
 #, fuzzy
@@ -6873,6 +6951,11 @@ msgstr "Aktivera ViaSat EPG"
 msgid "Enable Virgin EPG"
 msgstr "Aktivera Virgin EPG"
 
+#
+#, fuzzy
+msgid "Enable Vu+ MultiBoot"
+msgstr "Aktivera favoritlisteditor"
+
 msgid "Enable auto cable scan"
 msgstr "Aktivera auto kabelskanning"
 
@@ -6944,6 +7027,9 @@ msgstr "Aktivera flyttläge"
 msgid "Enable multiple bouquets"
 msgstr "Aktivera flera favoritlistor"
 
+msgid "Enable new GStreamer 1.x playback"
+msgstr ""
+
 #, fuzzy
 msgid "Enable or disable IPv6"
 msgstr "Aktivera EIT EPG"
@@ -6955,14 +7041,15 @@ msgstr "Aktivera EIT EPG"
 msgid "Enable parental protection"
 msgstr "Aktivera föräldrakontroll"
 
-#, fuzzy
 msgid ""
-"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on the local tuner.\n"
+"Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on local tuner.\n"
 "\n"
-"You can use this receiver only in client mode using server channel list and EPG.\n"
+"You can use this receiver only in client mode using server channel list, timers and EPG.\n"
 "\n"
-"Set manual IP for importing EPG and Channels in 'Import remote receiver URL'."
-msgstr "Aktivera fjärrmottagare för att försöka ställa in kanaler som inte kan ställas in lokalt (t.ex. att tuner är upptagen eller kanalen inte är tillgänglig på den lokala tunern). Ange den fullständiga webbadressen inklusive http://och portnummer (vanligtvis ...:8001), till exempel http://andra boxen:8001."
+"If YELLOW button is available, it means that channel list include characters bad, e.g. \"+\", then list cannot be import from server.\n"
+"\n"
+"If you press YELLOW button then it will clean up list to remove these characters."
+msgstr ""
 
 msgid "Enable teletext caching"
 msgstr "Aktivera teletext cache"
@@ -7163,7 +7250,7 @@ msgstr "Ange PIN"
 msgid "Enter a new name for this device."
 msgstr "Frilägg streckad flimrande linje för denna kanal"
 
-msgid "Enter an URL where alternative images could be listed for FlashImage"
+msgid "Enter an URL where alternative images could be listed for FlashImage. Enter text 'all' for automatic access of many images."
 msgstr ""
 
 msgid "Enter if you are in the east or west hemisphere."
@@ -7282,9 +7369,6 @@ msgstr ""
 msgid ""
 "Error during unzipping image\n"
 "%s"
-msgstr ""
-
-msgid "Error in XML"
 msgstr ""
 
 msgid "Error stop stream!"
@@ -7460,6 +7544,14 @@ msgstr "Exekvering pågår :"
 msgid "Exif"
 msgstr "Exif"
 
+msgid ""
+"Exist are debug or crash files.\n"
+"Space used:"
+msgstr ""
+
+msgid "Exist are no debug files or crash."
+msgstr ""
+
 #
 msgid "Exit"
 msgstr "Avsluta"
@@ -7467,10 +7559,9 @@ msgstr "Avsluta"
 msgid "Exit EPG"
 msgstr "Avsluta EPG"
 
-#
 #, fuzzy
 msgid "Exit IPv6 configuration"
-msgstr "Avsluta namnserverkonfiguration"
+msgstr "Nätverkskonfiguration"
 
 #
 msgid "Exit editor"
@@ -7510,8 +7601,9 @@ msgid "Exit movie player?"
 msgstr "Avsluta movieplayer?"
 
 #
+#, fuzzy
 msgid "Exit nameserver configuration"
-msgstr "Avsluta namnserverkonfiguration"
+msgstr "avsluta nätverkskortskonfiguration"
 
 #
 msgid "Exit network interface list"
@@ -7755,9 +7847,6 @@ msgstr "Fabriksåterställning"
 msgid "Fade the infobar when hiding"
 msgstr ""
 
-msgid "Fahrenheit"
-msgstr ""
-
 #
 msgid "Failed"
 msgstr "Misslyckades"
@@ -7911,6 +8000,11 @@ msgstr "Favoriter"
 msgid "Feed disabled!"
 msgstr "avaktiverad"
 
+#
+#, fuzzy
+msgid "Feed not available. The AutoTimer plugin was not installed."
+msgstr "Detta plugin är inte installerat."
+
 #, fuzzy
 msgid "Feed stable."
 msgstr "omöjlig att testa"
@@ -7933,6 +8027,10 @@ msgstr "Filen verkar vara upptagen.\n"
 
 msgid "File can not displayed - File not found"
 msgstr ""
+
+#, fuzzy, python-format
+msgid "File error %s"
+msgstr "med fel"
 
 msgid ""
 "File oscam.conf/ncam.conf not found.\n"
@@ -8002,14 +8100,16 @@ msgid "Flash Image"
 msgstr "Flash"
 
 #
-#, fuzzy, python-format
-msgid "Flash directory '%s' not allowed!"
-msgstr "Skapande av katalog %s misslyckades."
-
-#
 #, fuzzy
 msgid "Flash type"
 msgstr "Flash"
+
+msgid "FlashImage: Add USB STARTUP slots - No EXT4 USB attached."
+msgstr ""
+
+#, python-format
+msgid "FlashImage: Add USB STARTUP slots - USB (%s) only has %s free. At least 1GB is required."
+msgstr ""
 
 #
 #, fuzzy
@@ -8100,10 +8200,6 @@ msgstr "romantik"
 msgid "Free"
 msgstr ""
 
-#, python-format
-msgid "Free %d MB: Low space available for timeshift. Change device"
-msgstr ""
-
 msgid "Free flash"
 msgstr ""
 
@@ -8181,7 +8277,16 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid ""
-"Front panel your %s %s will be updated\n"
+"Front panel of your %s %s will be updated\n"
+"This may take a few minutes"
+msgstr ""
+"Din frontprocessor kommer att uppdateras\n"
+"Vänta tills din mottagare startat om\n"
+"Detta kan ta några minuter!"
+
+#, fuzzy, python-format
+msgid ""
+"Front processor of your %s %s will be updated\n"
 "This may take a few minutes"
 msgstr ""
 "Din frontprocessor kommer att uppdateras\n"
@@ -8341,6 +8446,11 @@ msgstr "För tillfället kan inte commit loggen tas emot - var vänlig försök 
 #, fuzzy
 msgid "Geolocation is not available."
 msgstr "Uppdateringsfeed ej tillgänglig."
+
+msgid ""
+"Geolocation is not available. There is no Internet.\n"
+"Press \"OK\" to continue wizard."
+msgstr ""
 
 msgid "Georgia"
 msgstr ""
@@ -8935,6 +9045,11 @@ msgstr ""
 msgid "I do not want to perform any service scans"
 msgstr "Vill du söka efter kanaler?"
 
+#
+#, fuzzy
+msgid "ID"
+msgstr "D"
+
 msgid "IDLE"
 msgstr ""
 
@@ -9008,6 +9123,12 @@ msgstr "Ikoner"
 msgid "Ido"
 msgstr ""
 
+msgid "If 'never', will force restart despite that after 100 crashes."
+msgstr ""
+
+msgid "If 'never', will write crash log despite that for the first crash."
+msgstr ""
+
 msgid "If an action is user-configurable, its help entry will be flagged with a '(C)' suffix."
 msgstr ""
 
@@ -9023,6 +9144,9 @@ msgstr ""
 msgid "If enabled, display shows 12 chars instead 8, but in latin-1/translit only."
 msgstr ""
 
+msgid "If enabled, the new GStreamer 1.x playback engine will be used."
+msgstr ""
+
 msgid "If set to 'Yes' the same commands will be sent to the TV for deep standby events as are sent during regular standby events."
 msgstr ""
 
@@ -9035,7 +9159,7 @@ msgstr ""
 msgid "If the text is too long to be displayed on the front panel display, it will be repeated (number of times):"
 msgstr ""
 
-msgid "If the upper panel is active pressing OK will change the current directory.  If the lower panel is active pressing OK will select the current bookmark and exit."
+msgid "If the upper panel is active pressing GREEN or OK will change the current directory.  If the lower panel is active pressing GREEN or OK will select the current bookmark and exit."
 msgstr ""
 
 msgid "If using multiple uncommitted switches the DiSEqC commands must be sent multiple times. Set to the number of uncommitted switches in the chain minus one."
@@ -9117,10 +9241,7 @@ msgid "Import channels and/or EPG from remote receiver URL also when the receive
 msgstr "URL för reserv fjärrmottagare"
 
 #, fuzzy
-msgid ""
-"Import channels and/or EPG from remote receiver URL or IP.\n"
-"\n"
-"Don't forget to manually set server IP."
+msgid "Import channels and/or EPG from remote receiver URL or IP."
 msgstr "URL för reserv fjärrmottagare"
 
 #, fuzzy
@@ -9134,6 +9255,10 @@ msgstr "URL för reserv fjärrmottagare"
 #, fuzzy
 msgid "Import remote receiver URL"
 msgstr "URL för reserv fjärrmottagare"
+
+#, python-format
+msgid "Imported list with bouquet empty <n/a> %s file does not exist"
+msgstr ""
 
 msgid "In live view wait this many seconds after a numeric key press before assuming the required channel number has been entered. Default: 5 seconds. Setting zero will require confirmation with 'OK'. "
 msgstr ""
@@ -9255,8 +9380,10 @@ msgstr ""
 msgid "Inetd Recovery"
 msgstr ""
 
+#
+#, fuzzy
 msgid "Inetd recovery"
-msgstr ""
+msgstr "Direktinspelning"
 
 #
 msgid "Info"
@@ -9320,6 +9447,9 @@ msgstr "Infobalk timeout"
 #
 msgid "Init"
 msgstr "Initiera"
+
+msgid "Init Vu+ MultiBoot"
+msgstr ""
 
 msgid "Initial fast forward speed"
 msgstr "Initial snabbspolningshastighet framåt"
@@ -9444,6 +9574,11 @@ msgstr "Installerar mjukvara..."
 
 #
 #, fuzzy
+msgid "Installing AutoTimer"
+msgstr "Installerar"
+
+#
+#, fuzzy
 msgid "Installing Software..."
 msgstr "Installerar mjukvara..."
 
@@ -9513,12 +9648,10 @@ msgstr "Intern Flash"
 msgid "Internal hdd only"
 msgstr "Endast Intern HDD"
 
+#
 #, fuzzy
-msgid "Internet"
-msgstr "Intern"
-
-msgid "Internet time (NTP)"
-msgstr ""
+msgid "Internet time"
+msgstr "Starttid"
 
 #, fuzzy
 msgid "Interval between keys when repeating (ms)"
@@ -9585,7 +9718,7 @@ msgstr ""
 msgid ""
 "It seems you did not see all the eight arrow heads. This means your TV has overscan enabled, and is not configured properly.\n"
 "\n"
-"Please refer to your TV's manual to find how you can disable overscan on your TV. Look for terms like 'Just fit', 'Full width', etc. If you can't find it, ask other users at https://forum.openvision.tech\n"
+"Please refer to your TV's manual to find how you can disable overscan on your TV. Look for terms like 'Just fit', 'Full width', etc. If you can't find it, ask other users.\n"
 "\n"
 msgstr ""
 "Det verkar som att du inte såg alla åtta pilhuvudena. Detta tyder på att du har överskanning aktiverad, och att denna inte är konfigurerad ordentligt.\n"
@@ -10340,6 +10473,11 @@ msgid ""
 "New MAC address is: "
 msgstr ""
 
+#
+#, fuzzy
+msgid "MB"
+msgstr "B"
+
 msgid "MENU"
 msgstr ""
 
@@ -10691,9 +10829,6 @@ msgstr ""
 
 msgid "Mipsel"
 msgstr ""
-
-msgid "Missing "
-msgstr "Saknad"
 
 #
 #, fuzzy
@@ -11158,10 +11293,6 @@ msgstr "Ljud av"
 msgid "Myanmar"
 msgstr ""
 
-#, fuzzy
-msgid "N"
-msgstr "Nej"
-
 msgid "N/A"
 msgstr "N / A"
 
@@ -11205,9 +11336,6 @@ msgstr "Nej"
 msgid "NOW"
 msgstr "NU"
 
-msgid "NTP Hostname"
-msgstr ""
-
 #
 msgid "NTSC"
 msgstr "NTSC"
@@ -11221,27 +11349,14 @@ msgid "Nameserver"
 msgstr "Namnserver"
 
 #
-#, python-format
-msgid "Nameserver %d"
-msgstr "Namnserver %d"
-
-#
 #, fuzzy
-msgid "Nameserver configuration"
-msgstr "Avsluta namnserverkonfiguration"
-
-#
-msgid "Nameserver settings"
-msgstr "Namnserverinställningar"
-
-#
 msgid "Nameserver setup"
-msgstr "Namnserverinstallation"
+msgstr "Namnserver"
 
 #
 #, fuzzy
 msgid "NameserverSetup"
-msgstr "Namnserverinstallation"
+msgstr "Namnserver"
 
 msgid "Namespace & Orbital pos."
 msgstr ""
@@ -11462,9 +11577,6 @@ msgstr ""
 msgid "No ECMPids available (FTA Service)"
 msgstr ""
 
-msgid "No HDD found or HDD not initialized!"
-msgstr "Ingen HDD hittad eller HDD inte initierad!"
-
 #, fuzzy
 msgid "No active subservices available."
 msgstr "Inga uppdateringar tillgängliga."
@@ -11497,11 +11609,8 @@ msgid "No description available."
 msgstr "Ingen beskrivning tillgänglig."
 
 #
-msgid "No displayable files on this medium found!"
-msgstr "Inga visningsbara filer hittade på detta media!"
-
-#
-msgid "No event info found, recording indefinitely."
+#, fuzzy
+msgid "No event info found, recording set to (24 hours)"
 msgstr "Ingen programinfo hittades, inspelning oändlig."
 
 msgid "No fast winding possible yet... but you can use the number buttons to skip forward/backward!"
@@ -11746,6 +11855,9 @@ msgstr "Timeout för motorkörning"
 msgid "Not tested:"
 msgstr "Inte testad :"
 
+msgid "Note: No button defined for this action!"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Nothing"
@@ -11777,9 +11889,6 @@ msgstr ""
 msgctxt "now/next: 'now' event label"
 msgid "Now"
 msgstr "Nu"
-
-msgid "Now (Press long)"
-msgstr ""
 
 #
 msgid "Now playing"
@@ -11833,10 +11942,6 @@ msgstr ""
 msgid "ONID"
 msgstr "ONID"
 
-#, fuzzy
-msgid "ONID:"
-msgstr "ONID"
-
 msgid "OPKG clean mode"
 msgstr ""
 
@@ -11857,6 +11962,10 @@ msgstr "OSD 3D inställning"
 
 msgid "OSD name request"
 msgstr "OSD namnförfrågan"
+
+#, fuzzy
+msgid "OSD plane transparency"
+msgstr "OSD transparens"
 
 #
 msgid "OSD settings"
@@ -11991,6 +12100,16 @@ msgstr "Endast vid uppstart"
 msgid "Only select 'yes' if you are using a multiswich that requires a DiSEqC Port-A command signal. For all other setups select 'no'."
 msgstr ""
 
+#
+#, fuzzy
+msgid "Open Multi EPG"
+msgstr "Multi EPG"
+
+#
+#, fuzzy
+msgid "Open Simple EPG"
+msgstr "Singel EPG"
+
 msgid "Open Vision Commit Info Setup"
 msgstr ""
 
@@ -12032,19 +12151,10 @@ msgstr "Öppna inställning för tuner"
 msgid "Open the movie list"
 msgstr "Öppna filmlistan"
 
-#
-#, fuzzy
-msgid "Open the multi service EPG view"
-msgstr "Öppna filmlistan"
-
-#, fuzzy
-msgid "Open the single service EPG view"
-msgstr "Visa singel kanal EPG"
-
-msgid "OpenDNS FamilyShield"
+msgid "OpenDNS"
 msgstr ""
 
-msgid "OpenDNS Home"
+msgid "OpenDNS-2"
 msgstr ""
 
 #
@@ -12123,11 +12233,22 @@ msgstr "Val stäng av timer"
 msgid "Orange"
 msgstr ""
 
-msgid "Orb Pos:"
-msgstr ""
-
 msgid "Orbital position"
 msgstr "Banposition"
+
+#, fuzzy
+msgid "Orbital position:"
+msgstr "Banposition"
+
+msgid "Orde image per modes and slots (require receiver with mode slot 12)"
+msgstr ""
+
+#, fuzzy
+msgid "Order by modes"
+msgstr "omvänd datumordning"
+
+msgid "Order by slots"
+msgstr ""
 
 msgid "Ordinary"
 msgstr ""
@@ -12330,6 +12451,14 @@ msgstr "Kanaleditor för föräldrakontroll"
 #
 msgid "Parental control setup"
 msgstr "Inställningar för föräldrakontroll"
+
+msgid "Partial"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Partial EPG"
+msgstr "Multi EPG"
 
 #, fuzzy
 msgid "Partition"
@@ -12573,12 +12702,14 @@ msgstr "Vänligen välj en utökning..."
 msgid "Please choose reader"
 msgstr "Vänligen välj en utökning..."
 
+#
+#, fuzzy
 msgid ""
 "Please configure or verify your Nameservers by filling out the required values.\n"
 "When you are ready press OK to continue."
 msgstr ""
-"Vänligen konfigurera eller bekräfta din namnserver med att fylla i de begärda fälten.\n"
-"När du är klar tryck OK för att fortsätta."
+"Vänligen konfigurera din Internetanslutning med att fylla i begärda fält.\n"
+"När du är klar tryck OK för att forsätta."
 
 #, fuzzy
 msgid "Please configure the fallback tuner setup"
@@ -12846,6 +12977,9 @@ msgstr "Pluginhanterare"
 msgid "Plugin Browser Setup"
 msgstr "Pluginhanterare"
 
+msgid "Plugin EPGImport actived EPG import and woke up your receiver"
+msgstr ""
+
 #
 msgid "Plugin browser"
 msgstr "Pluginhanterare"
@@ -13090,8 +13224,27 @@ msgstr ""
 msgid "Press EXIT to return to the help screen."
 msgstr "Tryck OK för att växla val."
 
+msgid ""
+"Press GREEN button to enable MultiBoot\n"
+"\n"
+"Will reboot within 10 seconds,\n"
+"unless you have eMMC slots to restore.\n"
+"Restoring eMMC slots can take from 1 -> 5 minutes per slot."
+msgstr ""
+
 msgid "Press INFO on your remote control for additional information."
 msgstr "Tryck INFO på din fjärrkontroll för ytterligare information."
+
+msgid "Press LEFT RIGHT OK or MENU to change path."
+msgstr ""
+
+#, python-format
+msgid ""
+"Press LEFT RIGHT OK or MENU to choose another server.\n"
+"\n"
+"Active server: %s\n"
+"DNS: %s"
+msgstr ""
 
 msgid "Press MENU on your remote control for additional options."
 msgstr "Tryck MENU på din fjärrkontroll för ytterligare valmöjligheter."
@@ -13171,6 +13324,11 @@ msgstr "Tryck OK för att välja satelliter"
 msgid "Press OK to select/deselect a CAId."
 msgstr "Tryck OK för att aktivera / avaktivera en CAId."
 
+#
+#, fuzzy
+msgid "Press OK to show details."
+msgstr "Tryck OK för att ändra inställningar."
+
 msgid "Press OK to toggle the selection"
 msgstr "Tryck OK för att växla val."
 
@@ -13191,7 +13349,7 @@ msgstr "Tryck OK för att få utförligare information om %s"
 msgid "Press OK, save and exit..."
 msgstr "Tryck OK för att spara och avsluta..."
 
-msgid "Press YELLOW button to set your schedule."
+msgid "Press YELLOW button if your time zone is not set or press \"OK\" to continue wizard."
 msgstr ""
 
 msgid "Press or select button and then press 'OK' for attach function."
@@ -13235,15 +13393,14 @@ msgstr "Förhandsgranskningsmeny"
 msgid "Preview selected channel"
 msgstr "Förhandsgranska vald kanal"
 
+msgid "Previous saved timeshift has editing properties with plugin CutListEditor."
+msgstr ""
+
 #
 msgid "Primary DNS"
 msgstr "Primär DNS"
 
 msgid "Prime time"
-msgstr "Bästa sändningstid"
-
-#, fuzzy
-msgid "Prime time (Press long)"
 msgstr "Bästa sändningstid"
 
 #
@@ -13369,6 +13526,10 @@ msgstr ""
 msgid "Purge all but the current and permanent locales/languages.  Add the current locale/language if it is not installed.  Delete the current locale/language if it is installed."
 msgstr ""
 
+#, fuzzy
+msgid "Purge channel list"
+msgstr "ingen kanallista"
+
 msgid "Purge deleted user bouquets"
 msgstr "Rensa borttagna favoritlistor"
 
@@ -13392,6 +13553,9 @@ msgstr "Sätt mottagaren i viloläge"
 msgid "Python %s benchmark"
 msgstr ""
 
+msgid "Python crash handler"
+msgstr ""
+
 #
 msgid "Python frontend for /tmp/mmi.socket"
 msgstr "Python frontend för /tmp/mmi.socket"
@@ -13401,6 +13565,12 @@ msgid "Python version"
 msgstr "Pythonversion :"
 
 msgid "Qatar"
+msgstr ""
+
+msgid "Quad9 No Security"
+msgstr ""
+
+msgid "Quad9 Security"
 msgstr ""
 
 msgid "Quechua"
@@ -13449,6 +13619,9 @@ msgid "RAM (Summary)"
 msgstr ""
 
 msgid "RAM benchmark"
+msgstr ""
+
+msgid "RC Map"
 msgstr ""
 
 #
@@ -13509,6 +13682,12 @@ msgstr "Röd knapp..."
 msgid "RF Modulator Output Setup"
 msgstr ""
 
+msgid "RFC 5905 hostname (SNTP - Simple Network Time Protocol)"
+msgstr ""
+
+msgid "RFC 868 hostname (rdate - Remote Date)"
+msgstr ""
+
 #
 #, fuzzy
 msgid "RGB"
@@ -13554,19 +13733,9 @@ msgstr ""
 msgid "Reader Statistics"
 msgstr ""
 
-#
-#, fuzzy, python-format
-msgid "Ready to install \"%s\" ?"
-msgstr "Installerar"
-
 #, python-format
 msgid "Ready to remove \"%s\" ?"
 msgstr ""
-
-#
-#, fuzzy
-msgid "Really WOL now?"
-msgstr "Verkligen starta om nu?"
 
 #
 msgid "Really close without saving settings?"
@@ -13585,8 +13754,13 @@ msgstr "Verkligen ta bort färdiga timerinspelningar?"
 msgid "Really exit the subservices quickzap?"
 msgstr "Verkligen avsluta underkanals snabbzapp?"
 
+#
 #, fuzzy
-msgid "Really perform a manufacturer reset now?"
+msgid "Really go to WOL?"
+msgstr "Verkligen starta om nu?"
+
+#, fuzzy
+msgid "Really perform a manufacturer reset?"
 msgstr "Skydda tillverkarens återställningsskärm"
 
 #
@@ -13600,20 +13774,23 @@ msgid "Really reboot into recovery mode?"
 msgstr "Verkligen starta om nu?"
 
 #
-msgid "Really reboot now?"
+#, fuzzy
+msgid "Really reboot?"
 msgstr "Verkligen starta om nu?"
 
 #
 #, fuzzy
-msgid "Really restart in debug mode now?"
+msgid "Really restart in debug mode?"
 msgstr "Verkligen starta om nu?"
 
 #
-msgid "Really restart now?"
+#, fuzzy
+msgid "Really restart?"
 msgstr "Verkligen starta om nu?"
 
 #
-msgid "Really shutdown now?"
+#, fuzzy
+msgid "Really shutdown?"
 msgstr "Verkligen stänga av nu?"
 
 #, python-format
@@ -13621,14 +13798,15 @@ msgid "Really store at index %2d for current position?"
 msgstr "Vill du verkligen spara vid index %2d för denna position?"
 
 #, fuzzy
-msgid "Really update the front panel and reboot now?"
+msgid "Really update the front panel and reboot?"
 msgstr "Vill du verkligen uppdatera frontprocessorn och starta om nu?"
 
 #, fuzzy
-msgid "Really update the front processor and reboot now?"
+msgid "Really update the front processor and reboot?"
 msgstr "Vill du verkligen uppdatera frontprocessorn och starta om nu?"
 
-msgid "Really update your settop box and reboot now?"
+#, fuzzy
+msgid "Really update your STB and reboot?"
 msgstr "Vill du verkligen uppdatera din mottagare och starta om nu?"
 
 msgid "Rear"
@@ -13699,12 +13877,30 @@ msgstr "Sökvägar för inspelningar"
 msgid "Recording Setup"
 msgstr "Inspellningsinställningar"
 
+#, python-format
+msgid "Recording failed: Storage device free size %d GB."
+msgstr ""
+
 msgid "Recording in progress"
 msgstr "Inspelning pågår"
 
 #
+#, fuzzy, python-format
+msgid "Recording path is \"%s\""
+msgstr "Sökvägar för inspelningar"
+
 #, fuzzy
-msgid "Recording time has been set."
+msgid "Recording set to (24 hours)"
+msgstr "Inspellningsinställningar"
+
+#
+#, fuzzy
+msgid "Recording timer has been set"
+msgstr "Insomningstimern är avstängd."
+
+#
+#, fuzzy
+msgid "Recording timer was canceled"
 msgstr "Insomningstimern är avstängd."
 
 msgid "Recording type"
@@ -13852,10 +14048,6 @@ msgstr "Konfiguration av insomningstimer"
 #
 msgid "Remove a mark"
 msgstr "Ta bort en markör"
-
-#
-msgid "Remove a nameserver entry"
-msgstr "Ta bort en namnserver post"
 
 #
 #, fuzzy
@@ -14147,6 +14339,11 @@ msgstr "Starta om GUI nu?"
 
 #
 #, fuzzy
+msgid "Restart after x crashes"
+msgstr "Omstarts test"
+
+#
+#, fuzzy
 msgid "Restart both"
 msgstr "Omstarts test"
 
@@ -14350,9 +14547,6 @@ msgstr "Rotorns stegposition :"
 msgid "Rotor turning speed"
 msgstr "Rotorns rotationsfart"
 
-msgid "Rotor: "
-msgstr "Rotor :"
-
 msgid "Round start time on"
 msgstr "Avrunda starttid till"
 
@@ -14360,8 +14554,9 @@ msgstr "Avrunda starttid till"
 msgid "Routing request"
 msgstr "Källbegäran"
 
-msgid "Run how often ?"
-msgstr ""
+#, fuzzy
+msgid "Run frequency"
+msgstr "Alla frekvenser"
 
 msgid "Run the BLUE action"
 msgstr ""
@@ -14401,9 +14596,6 @@ msgid "Rwanda"
 msgstr ""
 
 msgid "Réunion"
-msgstr ""
-
-msgid "S"
 msgstr ""
 
 msgid "SABnzbd"
@@ -14802,9 +14994,6 @@ msgstr "Söker"
 msgid "Search east"
 msgstr "Sök öst"
 
-msgid "Search event in TMBD"
-msgstr ""
-
 #
 msgid "Search west"
 msgstr "Sök väst"
@@ -14896,6 +15085,10 @@ msgstr ""
 msgid "Seems internet connection down, Or TMBD Plugin not on feed."
 msgstr ""
 
+#, python-format
+msgid "Seems your receiver has a software problem. Since the last reboot it has occurred %d times.\n"
+msgstr ""
+
 #
 msgid "Select"
 msgstr "Välj"
@@ -14910,6 +15103,9 @@ msgid "Select 'FBC SCR' if this tuner will connect to a SCR (Unicable/JESS) devi
 msgstr ""
 
 msgid "Select 'Yes' to enable editing of this device's settings. Selecting 'No' resets the devices settings to their default values."
+msgstr ""
+
+msgid "Select 'Yes' to enable use of the LEFT/RIGHT buttons to move PageUp/PageDown when the LEFT/RIGHT buttons are otherwise undefined. This provides legacy navigation for users who prefer it."
 msgstr ""
 
 msgid "Select 'Yes' to remove all keymap data. Selecting this option will remove all keymap override data and restore the default keymap definitions."
@@ -15118,12 +15314,29 @@ msgstr ""
 msgid "Select how the satellite dish is set up. i.e. fixed dish, single LNB, DiSEqC switch, positioner, etc."
 msgstr ""
 
-msgid "Select how you want your receiver to keep the correct time, either from the DVB transponder, or from the internet using NTP. Or use Auto, which will favour using NTP, but will fall back to transponder time when no internet connection is available."
+msgid "Select how you want your receiver to keep the correct time, either from the DVB transponder, or from the internet. Or use Auto, which will favour using internet, but will fall back to transponder time when no internet connection is available."
 msgstr ""
 
 #, fuzzy
 msgid "Select image"
 msgstr "Radera timer"
+
+#, fuzzy
+msgid "Select image and delete"
+msgstr "Radera timer"
+
+msgid "Select image and press OK or GREEN button for reboot."
+msgstr ""
+
+#, fuzzy
+msgid "Select image and reboot"
+msgstr "Radera timer"
+
+msgid "Select image or boot to Android image and press OK or GREEN button for reboot."
+msgstr ""
+
+msgid "Select image or boot to recovery menu and press OK or GREEN button for reboot."
+msgstr ""
 
 msgid "Select in which resolution pictures are displayed with picture viewer or movie player."
 msgstr "Konfigurera i vilken upplösning bilderna skall visas med bildvisaren och movie player."
@@ -15165,6 +15378,9 @@ msgstr "Välj kanal att lägga till..."
 
 msgid "Select slot"
 msgstr "Välj plats"
+
+msgid "Select slot image and press OK or GREEN button to reboot."
+msgstr ""
 
 #, fuzzy
 msgid "Select softcam"
@@ -15300,7 +15516,8 @@ msgid "Select video input with up/down buttons"
 msgstr "Välj videoingång med upp / ner knapparna"
 
 #
-msgid "Select video mode"
+#, fuzzy
+msgid "Select video mode."
 msgstr "Välj videoläge"
 
 msgid "Select whether your SCR device is externally powered."
@@ -15411,6 +15628,10 @@ msgstr ""
 #, fuzzy
 msgid "Serv.Name"
 msgstr "Kanalnamn"
+
+#, python-format
+msgid "Server Error: %s %s is included in bouquets.tv and does not exist in channel list"
+msgstr ""
 
 #, python-format
 msgid "Server Info ( NCam-Version: %s )"
@@ -15624,6 +15845,10 @@ msgstr "Sätt sluttid"
 msgid "Set new MAC address"
 msgstr "Nuvarande CEC adress"
 
+#, fuzzy, python-format
+msgid "Set new value to \"Fallback remote receiver\" change URL %s"
+msgstr "URL för reserv fjärrmottagare"
+
 msgid "Set password if you have it set in section [webif] httppwd."
 msgstr ""
 
@@ -15744,6 +15969,9 @@ msgstr ""
 msgid "Settings"
 msgstr "Inställningar"
 
+msgid "Settings DNS Server"
+msgstr ""
+
 #
 msgid "Setup"
 msgstr "Inställningar"
@@ -15803,6 +16031,9 @@ msgstr ""
 
 msgid "Short filenames"
 msgstr "Korta filnamn"
+
+msgid "Should the crash counter be reset to prevent a restart?"
+msgstr ""
 
 #, fuzzy
 msgid "Show"
@@ -15936,6 +16167,9 @@ msgstr "Visa kanalnummer i kanallistan"
 
 msgid "Show columns"
 msgstr "Visa Kolumner"
+
+msgid "Show crash info on screen and write crash log for x times"
+msgstr ""
 
 msgid "Show crypto icons"
 msgstr "Visa krypteringsikoner"
@@ -16202,6 +16436,10 @@ msgid "Show recording symbol"
 msgstr "Stoppa inspelningar :"
 
 #, fuzzy
+msgid "Show samba in plugin browser"
+msgstr "Visa menynummer"
+
+#, fuzzy
 msgid "Show satellites list"
 msgstr "Visa kanallista"
 
@@ -16218,6 +16456,10 @@ msgstr "Visa andra InfoBalken"
 msgid "Show second infobar"
 msgstr "Visa andra infobalken"
 
+#, fuzzy
+msgid "Show service event information"
+msgstr "Visa detaljerad programinfo"
+
 msgid "Show service list"
 msgstr "Visa kanallista"
 
@@ -16230,10 +16472,6 @@ msgstr "Visa kanallista eller filmer"
 #, fuzzy
 msgid "Show setup default value"
 msgstr "Ange standard"
-
-#, fuzzy
-msgid "Show sevice event information"
-msgstr "Visa detaljerad programinfo"
 
 msgid "Show single service EPG"
 msgstr "Visa singel kanal EPG"
@@ -16767,6 +17005,11 @@ msgstr "Sortera A-Z"
 msgid "Sort Trash by deletion time"
 msgstr ""
 
+#
+#, fuzzy
+msgid "Sort bouquets alphabetic A-Z"
+msgstr "Avbryt att editera favoritlista"
+
 msgid "Sort by"
 msgstr "Sortera efter"
 
@@ -16841,9 +17084,6 @@ msgstr ""
 #, fuzzy
 msgid "South Sudan"
 msgstr "Syd"
-
-msgid "Space used:"
-msgstr ""
 
 msgid "Spain"
 msgstr ""
@@ -17055,7 +17295,7 @@ msgstr ""
 msgid "State"
 msgstr "sökningsstatus"
 
-msgid "Static IP or Custom"
+msgid "Static IP Router"
 msgstr ""
 
 msgid "Status"
@@ -17226,6 +17466,14 @@ msgstr ""
 msgid "Storage Information"
 msgstr "Information om mjukvaruhanterare"
 
+msgid "Storage device not available or not initialized."
+msgstr ""
+
+msgid ""
+"Storage device not available.\n"
+"Mount device or reboot system and try again."
+msgstr ""
+
 #, fuzzy
 msgid "Storage information"
 msgstr "Information om mjukvaruhanterare"
@@ -17246,14 +17494,6 @@ msgstr "Strömning"
 
 msgid "Stream request"
 msgstr "Strömningsförfrågan"
-
-#, fuzzy
-msgid "Stream-tv"
-msgstr "Strömning"
-
-#, fuzzy
-msgid "Streaming"
-msgstr "Strömning"
 
 #, fuzzy
 msgid "Streaming Clients"
@@ -17579,6 +17819,9 @@ msgstr ""
 msgid "TEXT"
 msgstr ""
 
+msgid "TEXT   Reset"
+msgstr ""
+
 msgid "TEXT button"
 msgstr ""
 
@@ -17589,14 +17832,14 @@ msgstr ""
 msgid "TMBD Details Plugin"
 msgstr "Detaljer för plugin : "
 
-#
-#, fuzzy
-msgid "TMBD Not Installed"
-msgstr "Installera"
-
 #, fuzzy
 msgid "TMBD details for event"
 msgstr "Detaljer för plugin : "
+
+#
+#, fuzzy
+msgid "TMBD not installed"
+msgstr "Installera"
 
 msgid "TRANSLATOR_INFO"
 msgstr "Information för översättare"
@@ -17606,10 +17849,6 @@ msgid "TS file is too large for ISO9660 level 1!"
 msgstr "TS fil är för stor för ISO9660 level 1!"
 
 msgid "TSID"
-msgstr "TSID"
-
-#, fuzzy
-msgid "TSID:"
 msgstr "TSID"
 
 msgid "TUNER:"
@@ -17727,9 +17966,6 @@ msgstr ""
 msgid "Teletext alpha"
 msgstr ""
 
-msgid "Teletext base visibility"
-msgstr ""
-
 #, fuzzy
 msgid "Teletext font and resolution"
 msgstr "Välj sorteringsmetod :"
@@ -17831,8 +18067,17 @@ msgstr ""
 
 #
 #, fuzzy
-msgid "The AutoTimer plugin is not installed."
-msgstr "Detta plugin är inte installerat."
+msgid "The AutoTimer plugin is installed."
+msgstr "Detta plugin är installerat."
+
+#
+#, fuzzy
+msgid ""
+"The AutoTimer plugin is not installed!\n"
+"Do you want to install it?"
+msgstr ""
+"Pluginet för trådlöst LAN är inte installerad!\n"
+"Vänligen installera den."
 
 msgid "The DVD standard doesn't support H.264 (HDTV) video streams. Do you want to create a special format data DVD (which will not play in stand-alone DVD players) instead?"
 msgstr "DVD standarden stödjer inte H.264 (HDTV) videoströmmar. Vill du skapa en speciell format data DVD (kommer ej kunna spelas i vanlig DVD spelare) istället?"
@@ -17880,17 +18125,16 @@ msgstr ""
 msgid "The detailed information is intended for developers only."
 msgstr ""
 
-#
-msgid "The following files were found..."
-msgstr "Följande filer hittades..."
-
 msgid "The frame rate of the recording. Ideally, this will match the frame rate of the source or be an integer multiple. If in doubt, set to 60, which should work with most sources."
 msgstr ""
 
 msgid "The height of the picture. The input will be scaled to match this value."
 msgstr ""
 
-msgid "The hostname or the IP address of the NTP server to synchronise the time with."
+msgid "The hostname or the IP address of the RFC 5905 server to synchronise the time with."
+msgstr ""
+
+msgid "The hostname or the IP address of the RFC 868 server to synchronise the time with."
 msgstr ""
 
 #
@@ -18545,11 +18789,6 @@ msgid "Timer Overview"
 msgstr "Timeröversikt"
 
 #
-#, fuzzy
-msgid "Timer Selection"
-msgstr "Timerval"
-
-#
 msgid "Timer edit"
 msgstr "Ändra Timer"
 
@@ -18628,12 +18867,19 @@ msgstr ""
 msgid "Timeshift Setup"
 msgstr "Timeshift"
 
+#, python-format
+msgid "Timeshift failed: Storage device free size %d GB."
+msgstr ""
+
 msgid "Timeshift is running. Select an action.\n"
 msgstr "Timeshift körs. Välj en åtgärd.\n"
 
 #
 msgid "Timeshift location"
 msgstr "Plats för timeshift"
+
+msgid "Timeshift not enough diskspace. Is device mounted?"
+msgstr ""
 
 #
 msgid "Timeshift not possible!"
@@ -18881,6 +19127,9 @@ msgstr ""
 msgid "TrueType font (SD)"
 msgstr ""
 
+msgid "Try to prevent reboots for software errors and maintain of the availability."
+msgstr ""
+
 msgid "Try to send repeated commands if not all commands are executed. (e.g. TV wakeup, but not switched to correct input.)"
 msgstr ""
 
@@ -19118,6 +19367,9 @@ msgstr "Frilägg streckad flimrande linje för denna kanal"
 #, fuzzy
 msgid "Undefined"
 msgstr "odefinierad"
+
+msgid "Undo bouquets order alphabetic"
+msgstr ""
 
 #
 msgid "Undo install"
@@ -19390,9 +19642,6 @@ msgstr "Vänligen använd UPP och NER pil för att välja språk. Efter val tryc
 #, fuzzy
 msgid "Use the alternative screen"
 msgstr "Ändra alternativ"
-
-msgid "Use the cursor keys to select an installed image then reboot."
-msgstr ""
 
 msgid ""
 "Use the deletion time to sort Trash directories.\n"
@@ -19789,6 +20038,22 @@ msgstr ""
 msgid "Volume up"
 msgstr "Volym upp"
 
+msgid "Vu+ MultiBoot Initialisation - will reboot after 10 seconds."
+msgstr ""
+
+msgid ""
+"Vu+ MultiBoot Initialisation in progress\n"
+"\n"
+"Will reboot after restoring any eMMC slots\n"
+"This can take from 1 -> 5 minutes per slot."
+msgstr ""
+
+msgid "Vu+ MultiBoot Manager"
+msgstr ""
+
+msgid "VuKexec: Create Vu+ Multiboot environment - Unable to complete, Vu+ Multiboot files missing."
+msgstr ""
+
 #
 msgid "W"
 msgstr "V"
@@ -19800,6 +20065,16 @@ msgstr "WLAN anslutning"
 #, fuzzy
 msgid "WAN connection information"
 msgstr "WLAN anslutning"
+
+#, python-format
+msgid ""
+"WARNING: The DNS were not saved in your settings.\n"
+"\n"
+"Active server: %s\n"
+"DNS Active: %s\n"
+"\n"
+"It is necessary to choose a server and save with GREEN button!."
+msgstr ""
 
 #, fuzzy
 msgid "WEP"
@@ -19892,6 +20167,9 @@ msgstr ""
 "Varning!\n"
 "Detta val är endast för avancerade användare.\n"
 "Verkligen stänga av timerkonfliktdetektering?"
+
+msgid "Warning! This is the last crash before an automatic restart is performed.\n"
+msgstr ""
 
 msgid "Warning: FBC-C V1 tuner should be connected to the first slot to work correctly. Otherwise, only 2 out of 8 demodulators will be available when connected in the second slot. "
 msgstr ""
@@ -20012,12 +20290,6 @@ msgid "Western Frisian"
 msgstr ""
 
 msgid "Western Sahara"
-msgstr ""
-
-msgid "What date of month ?"
-msgstr ""
-
-msgid "What day of week ?"
 msgstr ""
 
 msgid "What type of service scan do you want?"
@@ -20300,6 +20572,9 @@ msgid "When enabled, you will see perl-module packages in plugin browser downloa
 msgstr ""
 
 msgid "When enabled, you will see python packages in plugin browser download section."
+msgstr ""
+
+msgid "When enabled, you will see samba packages in plugin browser download section."
 msgstr ""
 
 msgid "When enabled, you will see the available revision on github"
@@ -20601,7 +20876,14 @@ msgstr ""
 "\"%s\"?"
 
 msgid ""
-"You are ready to add an event to automatic timer.\n"
+"You are ready to add current event to automatic timer.\n"
+"If there are no conflicts, once added you must enter menu:\n"
+"\n"
+"Timers > AutoTimers and search the event with green button."
+msgstr ""
+
+msgid ""
+"You are ready to add this event to automatic timer.\n"
 "If there are no conflicts, once added you must enter menu:\n"
 "\n"
 "Timers > AutoTimers and search the event with green button."
@@ -20687,8 +20969,7 @@ msgstr "Du valde ingen kanal att spela in från."
 msgid "You have not selected any logs to delete."
 msgstr "Vänligen välj en spellista för radering..."
 
-#, python-format
-msgid "You have not set manual IP for %s"
+msgid "You have not selected any logs to view."
 msgstr ""
 
 #, python-format
@@ -20696,6 +20977,9 @@ msgid "You have to wait %(min)d minutes, %(sec)d seconds!"
 msgstr ""
 
 msgid "You must set a root password in order to be able to use network services, such as FTP, telnet or ssh."
+msgstr ""
+
+msgid "You must set at least one command"
 msgstr ""
 
 #, python-format
@@ -20750,16 +21034,6 @@ msgstr "Din samling överstiger storleken på single layer media, du kommer beh�
 msgid "Your current collection will get lost!"
 msgstr "Din nuvarande samling kommer försvinna!"
 
-#, fuzzy, python-format
-msgid ""
-"Your frontprocessor will be updated\n"
-"Please wait until your %s %s reboots\n"
-"This may take a few minutes"
-msgstr ""
-"Din frontprocessor kommer att uppdateras\n"
-"Vänta tills din mottagare startat om\n"
-"Detta kan ta några minuter!"
-
 msgid "Your hardware can detect CI mode itself or works only in legacy mode."
 msgstr ""
 
@@ -20775,7 +21049,10 @@ msgstr ""
 msgid "Your internet connection is working (IP address: %s)"
 msgstr "Din Internetanslutning fungerar (ip : %s)"
 
-msgid "Your local time has been set successfully. Press \"OK\" to continue wizard."
+msgid ""
+"Your local time has been set successfully. Settings has been saved.\n"
+"\n"
+"Press \"OK\" to continue wizard."
 msgstr ""
 
 #
@@ -20934,7 +21211,7 @@ msgstr "Timerlogg"
 #
 #, fuzzy
 msgid "ZeroTier setup"
-msgstr "Namnserverinstallation"
+msgstr "Motorinstallation"
 
 msgid "ZeroTierVPN"
 msgstr ""
@@ -21286,11 +21563,6 @@ msgstr "tom"
 msgid "enabled"
 msgstr "aktiverad"
 
-#
-#, fuzzy
-msgid "ene"
-msgstr "Genre"
-
 msgid "entertainment (10-16 year old)"
 msgstr "underhållning (10-16 år)"
 
@@ -21309,11 +21581,6 @@ msgstr "fel vid start av skanning"
 
 msgid "error while scanning"
 msgstr "Fel vid skanning"
-
-#
-#, fuzzy
-msgid "ese"
-msgstr "Nollställ"
 
 #
 msgid "exit DVD player or return to file browser"
@@ -21481,9 +21748,6 @@ msgstr "initiera moduler"
 msgid "installed"
 msgstr "Avinstallera"
 
-msgid "invalid type"
-msgstr "ogiltig typ"
-
 msgid "jazz"
 msgstr "jazz"
 
@@ -21630,11 +21894,6 @@ msgid "nature/animals/environment"
 msgstr "natur / djur / miljö"
 
 #
-#, fuzzy
-msgid "ne"
-msgstr "En"
-
-#
 msgid "never"
 msgstr "aldrig"
 
@@ -21658,15 +21917,6 @@ msgstr "nyheter / aktuella frågor (allmänt)"
 
 msgid "news/weather report"
 msgstr "nyheter / väderprognos"
-
-#
-#, fuzzy
-msgid "nne"
-msgstr "ingen"
-
-#, fuzzy
-msgid "nnw"
-msgstr "Okänd"
 
 #
 msgid "no"
@@ -21701,6 +21951,11 @@ msgid "none"
 msgstr "ingen"
 
 #
+#, fuzzy
+msgid "not"
+msgstr "nej"
+
+#
 msgid "not configured"
 msgstr "ej konfigurerad"
 
@@ -21730,9 +21985,6 @@ msgstr "Gör inget"
 msgid "nothing connected"
 msgstr "inget anslutet"
 
-msgid "nw"
-msgstr ""
-
 #
 msgid "of a DUAL layer medium used."
 msgstr "av DUAL layer media använt."
@@ -21759,8 +22011,9 @@ msgid "once"
 msgstr "en gång"
 
 #
+#, fuzzy
 msgid "open nameserver configuration"
-msgstr "öppna namnserver konfiguration"
+msgstr "Tunerkonfiguration"
 
 #, fuzzy
 msgid "original language"
@@ -21901,11 +22154,6 @@ msgstr "sökningsstatus"
 msgid "science fiction/fantasy/horror"
 msgstr "science fiction / fantasi / skräck"
 
-#
-#, fuzzy
-msgid "se"
-msgstr "Använd"
-
 #, fuzzy
 msgid "seconds"
 msgstr "%d sekund"
@@ -21962,6 +22210,10 @@ msgid "skip forward"
 msgstr "hoppa framåt"
 
 #, python-format
+msgid "slot%s %s - %s"
+msgstr ""
+
+#, python-format
 msgid "slot%s - %s"
 msgstr ""
 
@@ -21999,6 +22251,12 @@ msgstr ""
 
 #, python-format
 msgid "slot%s - %s, without backup"
+msgstr ""
+
+msgid "slot0 - Recovery mode image"
+msgstr ""
+
+msgid "slot0 - Recovery mode image (current)"
 msgstr ""
 
 #, fuzzy
@@ -22041,14 +22299,6 @@ msgid "sports magazine"
 msgstr "sportmagasin"
 
 #
-#, fuzzy
-msgid "sse"
-msgstr "Använd"
-
-msgid "ssw"
-msgstr ""
-
-#
 msgid "standard"
 msgstr "standard"
 
@@ -22062,9 +22312,6 @@ msgstr "stegstorlek"
 
 msgid "successful"
 msgstr "lyckad"
-
-msgid "sw"
-msgstr ""
 
 #
 msgid "switch to the next angle"
@@ -22249,12 +22496,6 @@ msgstr "med tunernamn"
 
 msgid "with_errors"
 msgstr "med_fel"
-
-msgid "wnw"
-msgstr ""
-
-msgid "wsw"
-msgstr ""
 
 msgid "x"
 msgstr ""
