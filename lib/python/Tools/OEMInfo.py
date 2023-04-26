@@ -68,6 +68,9 @@ if getOEMInfo() == "available":
 		elif procType == "11":
 			model = "ustym4kprotwin"
 			displaymodel = "Ustym 4K PRO Twin"
+		elif procType == "12":
+			model = "ustym4kprocombo"
+			displaymodel = "Ustym 4K PRO Combo"
 	elif model == "ventonhdx":
 		if procModel == "ini-3000":
 			model = "uniboxhd1"
