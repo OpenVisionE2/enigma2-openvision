@@ -47,7 +47,7 @@ class EventViewBase:
 	ADD_TIMER = 0
 	REMOVE_TIMER = 1
 
-	def __init__(self, event, serviceRef, callback=None, similarEPGCB=None, parent=None, windowTitle=None):
+	def __init__(self, event, serviceRef, callback=None, similarEPGCB=None, singleEPGCB=None, parent=None, windowTitle=None):
 		self.event = event
 		self.serviceRef = serviceRef
 		self.callbackMethod = callback
@@ -57,6 +57,7 @@ class EventViewBase:
 			self.similarBroadcastTimer = eTimer()
 			self.similarBroadcastTimer.callback.append(self.getSimilarEvents)
 		self.similarEPGCB = similarEPGCB
+		self.singleEPGCB = singleEPGCB
 		if parent and hasattr(parent, "fallbackTimer"):
 			self.fallbackTimer = parent.fallbackTimer
 			self.onLayoutFinish.append(self.layoutFinished)
@@ -73,6 +74,7 @@ class EventViewBase:
 		self["epg_description"] = ScrollLabel()
 		self["FullDescription"] = ScrollLabel()
 		self["key_red"] = StaticText("")
+		self["key_yellow"] = StaticText("")
 		self["key_green"] = StaticText("" if self.isRecording else _("Add Timer"))
 		self.keyGreenAction = self.ADD_TIMER
 		self["key_menu"] = StaticText(_("MENU"))
@@ -150,6 +152,7 @@ class EventViewBase:
 		self["datetime"].setText("%s - %s" % (strftime("%s, %s" % (config.usage.date.daylong.value, config.usage.time.short.value), beginTime), strftime(config.usage.time.short.value, endTime)))
 		self["duration"].setText(_("%d min") % (duration // 60))
 		self["key_red"].setText("")
+		self["key_yellow"].setText(_("Single EPG")) if self.singleEPGCB else self["key_yellow"].setText(_("Partial"))
 		self["similarActions"].setEnabled(False)
 		if self.similarBroadcastTimer:
 			self.similarBroadcastTimer.start(25, True)
@@ -314,14 +317,15 @@ class EventViewBase:
 			if self.similarEPGCB:
 				self["key_red"].text = _("Similar")
 				self["similarActions"].setEnabled(True)
-		if not self["key_yellow"].text:
-			self["key_yellow"].text = _("Partial")
 
 	def openSimilarList(self):
 		id = self.event and self.event.getEventId()
 		serviceRef = str(self.serviceRef)
-		if id:
-			self.similarEPGCB(id, serviceRef)
+		try:
+			if id:
+				self.similarEPGCB(id, serviceRef)
+		except:
+			pass
 
 	def open_partial_list(self):
 		if self.similarEPGCB:
