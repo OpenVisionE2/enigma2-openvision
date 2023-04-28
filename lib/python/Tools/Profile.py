@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from os.path import join as pathjoin, isfile
+from os.path import join, isfile
 from time import time
 
 from Tools.Directories import SCOPE_CONFIG, SCOPE_LIBDIR, fileReadLines, fileWriteLine, resolveFilename
@@ -22,7 +22,7 @@ model = None
 # the boot process we can use BoxInfo directly rather than using this code.
 #
 lines = []
-lines = fileReadLines(pathjoin(resolveFilename(SCOPE_LIBDIR), "enigma.info"), lines, source=MODULE_NAME)
+lines = fileReadLines(join(resolveFilename(SCOPE_LIBDIR), "enigma.info"), lines, source=MODULE_NAME)
 for line in lines:
 	if line.startswith("#") or line.strip() == "":
 		continue

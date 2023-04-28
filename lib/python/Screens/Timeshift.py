@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from os import stat, statvfs
-from os.path import isdir, join as pathjoin
+from os.path import isdir, join
 
 from Components.config import config
 from Screens.LocationBox import DEFAULT_INHIBIT_DEVICES, TimeshiftLocationBox
@@ -58,7 +58,7 @@ class TimeshiftSettings(Setup):
 
 	def pathSelect(self, path):
 		if path is not None:
-			path = pathjoin(path, "")
+			path = join(path, "")
 			self.buildChoices("TimeshiftPath", config.usage.timeshift_path, path)
 		self["config"].invalidateCurrent()
 		self.changedEntry()

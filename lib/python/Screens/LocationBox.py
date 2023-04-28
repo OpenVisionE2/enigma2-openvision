@@ -2,7 +2,7 @@
 # Generic Screen to select a path/filename combination
 
 from os import sep, stat, statvfs
-from os.path import exists, isdir, join as pathjoin
+from os.path import exists, isdir, join
 
 from enigma import eTimer
 
@@ -221,7 +221,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 			self["bookmarkAction"].setEnabled(False)
 			self["key_yellow"].setText("")
 		else:
-			self["target"].setText(pathjoin(directory, self.filename))
+			self["target"].setText(join(directory, self.filename))
 			self["key_green"].setText(_("Select"))
 			self["selectAction"].setEnabled(True)
 			if self.currList == "filelist" and directory not in self.bookmarksList:
@@ -342,7 +342,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 
 	def createDirectoryCallback(self, directory):
 		if directory:
-			path = pathjoin(self["filelist"].current_directory, directory)
+			path = join(self["filelist"].current_directory, directory)
 			if isdir(path):
 				self.session.open(MessageBox, _("Error: Directory '%s' already exists!") % path, type=MessageBox.TYPE_ERROR, timeout=5)
 			elif createDir(path):
@@ -360,7 +360,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 
 	def renameDirectoryCallback(self, directory, newName):
 		if newName:
-			newPath = pathjoin(self["filelist"].current_directory, newName)
+			newPath = join(self["filelist"].current_directory, newName)
 			if exists(newPath):
 				self.session.open(MessageBox, _("Error: File or directory '%s' already exists!") % newPath, type=MessageBox.TYPE_ERROR, timeout=5)
 			elif renameDir(directory, newPath):
@@ -411,7 +411,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 
 	def selectConfirmed(self, answer):
 		if answer:
-			path = pathjoin(self.getCurrentSelection(), self.filename)
+			path = join(self.getCurrentSelection(), self.filename)
 			if self.bookmarks and self.bookmarksList != sorted(self.bookmarks.value):
 				self.bookmarks.value = self.bookmarksList
 				self.bookmarks.save()
@@ -448,7 +448,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 		if currentDir and self.quickSelect:  # Don't try to select if there is no directory or QuickSelect text.
 			self["quickselect"].visible = False
 			self["quickselect"].setText("")
-			pattern = pathjoin(currentDir, self.quickSelect).lower()
+			pattern = join(currentDir, self.quickSelect).lower()
 			files = self["filelist"].getFileList()  # Files returned by getFileList() are absolute paths.
 			for index, file in enumerate(files):
 				if file[0][0] and file[0][0].lower().startswith(pattern):  # Select first file starting with case insensitive QuickSelect text.

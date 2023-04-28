@@ -4,7 +4,7 @@ import re
 
 from enigma import ePicLoad, getDesktop
 from os import listdir
-from os.path import dirname, exists, isdir, join as pathjoin
+from os.path import dirname, exists, isdir, join
 
 from skin import DEFAULT_SKIN, DEFAULT_DISPLAY_SKIN, EMERGENCY_NAME, EMERGENCY_SKIN, currentDisplaySkin, currentPrimarySkin, domScreens
 from Components.ActionMap import HelpableNumberActionMap
@@ -104,15 +104,15 @@ class SkinSelector(Screen, HelpableScreen):
 		default = _("Default")
 		defaultPicon = _("Default+Picon")
 		current = _("Current")
-		displayPicon = pathjoin(dirname(DEFAULT_DISPLAY_SKIN), "skin_display_picon.xml")
-		displayGrautec = pathjoin(dirname(DEFAULT_DISPLAY_SKIN), "skin_display_grautec.xml")
+		displayPicon = join(dirname(DEFAULT_DISPLAY_SKIN), "skin_display_picon.xml")
+		displayGrautec = join(dirname(DEFAULT_DISPLAY_SKIN), "skin_display_grautec.xml")
 		skinList = []
 		# Find and list the available skins...
-		for dir in [dir for dir in listdir(self.rootDir) if isdir(pathjoin(self.rootDir, dir))]:
-			previewPath = pathjoin(self.rootDir, dir)
+		for dir in [dir for dir in listdir(self.rootDir) if isdir(join(self.rootDir, dir))]:
+			previewPath = join(self.rootDir, dir)
 			for skinFile in self.xmlList:
-				skin = pathjoin(dir, skinFile)
-				skinPath = pathjoin(self.rootDir, skin)
+				skin = join(dir, skinFile)
+				skinPath = join(self.rootDir, skin)
 				if exists(skinPath):
 					parseDone = fileReadXML(skinPath)
 					parseError = _("File error %s") % skin
@@ -138,7 +138,7 @@ class SkinSelector(Screen, HelpableScreen):
 						print("[SkinSelector] Resolution of skin '%s': '%s'." % (skinPath, "Unknown" if resolution is None else resolution))
 						# Code can be added here to reject unsupported resolutions.
 					# The "piconprev.png" image should be "prevpicon.png" to keep it with its partner preview image.
-					preview = pathjoin(previewPath, "piconprev.png" if skinFile == "skin_display_picon.xml" else "prev.png")
+					preview = join(previewPath, "piconprev.png" if skinFile == "skin_display_picon.xml" else "prev.png")
 					if skin == EMERGENCY_SKIN:
 						list = [EMERGENCY_NAME, emergency, dir, skin, resolution, preview]
 					elif skin == DEFAULT_SKIN:
@@ -197,19 +197,19 @@ class SkinSelector(Screen, HelpableScreen):
 		label, skin = self.currentSelectedSkin[1], self.currentSelectedSkin[4]
 		if skin == self.config.value:
 			if skin == self.current:
-				print("[SkinSelector] Selected skin: '%s' (Unchanged!)" % pathjoin(self.rootDir, skin))
+				print("[SkinSelector] Selected skin: '%s' (Unchanged!)" % join(self.rootDir, skin))
 				self.cancel()
 			else:
-				print("[SkinSelector] Selected skin: '%s' (Trying to restart again!)" % pathjoin(self.rootDir, skin))
+				print("[SkinSelector] Selected skin: '%s' (Trying to restart again!)" % join(self.rootDir, skin))
 				restartBox = self.session.openWithCallback(self.restartGUI, MessageBox, _("To apply the selected '%s' skin the GUI needs to restart.\nWould you like to restart the GUI now?") % label, MessageBox.TYPE_YESNO)
 				restartBox.setTitle(_("SkinSelector: Restart GUI"))
 		elif skin == self.current:
-			print("[SkinSelector] Selected skin: '%s' (Pending skin '%s' cancelled!)" % (pathjoin(self.rootDir, skin), pathjoin(self.rootDir, self.config.value)))
+			print("[SkinSelector] Selected skin: '%s' (Pending skin '%s' cancelled!)" % (join(self.rootDir, skin), join(self.rootDir, self.config.value)))
 			self.config.value = skin
 			self.config.save()
 			self.cancel()
 		else:
-			print("[SkinSelector] Selected skin: '%s'" % pathjoin(self.rootDir, skin))
+			print("[SkinSelector] Selected skin: '%s'" % join(self.rootDir, skin))
 			restartBox = self.session.openWithCallback(self.restartGUI, MessageBox, _("To save and apply the selected '%s' skin the GUI needs to restart.\nWould you like to save the selection and restart the GUI now?") % label, MessageBox.TYPE_YESNO)
 			restartBox.setTitle(_("SkinSelector: Restart GUI"))
 

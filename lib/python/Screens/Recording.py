@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from os import stat, statvfs
-from os.path import isdir, join as pathjoin
+from os.path import isdir, join
 
 from Components.ActionMap import ActionMap
 from Components.config import config
@@ -77,7 +77,7 @@ class RecordingSettings(Setup):
 
 	def pathSelect(self, path):
 		if path is not None:
-			path = pathjoin(path, "")
+			path = join(path, "")
 			item = self.getCurrentItem()
 			if item is config.usage.default_path:
 				self.buildChoices("DefaultPath", config.usage.default_path, path)

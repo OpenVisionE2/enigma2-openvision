@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from os import remove, statvfs, uname
-from os.path import isfile, join as pathjoin
+from os.path import isfile, join
 from six import ensure_str, ensure_binary
 from struct import pack
 from sys import maxsize
@@ -1249,7 +1249,7 @@ class HdmiCec:
 			else:
 				return
 			now = datetime.now()
-			debugfile = pathjoin(log_path, now.strftime("Enigma2-hdmicec-%Y%m%d.log"))
+			debugfile = join(log_path, now.strftime("Enigma2-hdmicec-%Y%m%d.log"))
 			timestamp = now.strftime("%H:%M:%S.%f")[:-2]
 			debugtext = "%s %s%s\n" % (timestamp, ("[   ] " if debugprint else ""), debugtext.replace("[HdmiCec] ", ""))
 			if self.start_log:
