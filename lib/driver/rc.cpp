@@ -143,9 +143,9 @@ std::string eRCInputEventDriver::getDeviceName()
 	if (handle >= 0) {
 		::ioctl(handle, EVIOCGNAME(128), name);
 	}
-
+#ifdef FORCE_ADVANCED_REMOTE
 	if (!strcmp(name, "dreambox remote control (native)")) return "dreambox advanced remote control (native)";
-
+#endif
 	eDebug("[eRCInputEventDriver] devicename=%s", name);
 	return name;
 }
