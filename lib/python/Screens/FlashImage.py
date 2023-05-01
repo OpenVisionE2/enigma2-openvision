@@ -38,7 +38,7 @@ hasKexec = BoxInfo.getItem("hasKexec")
 
 FEED_URLS = [
 	("ATV", "https://images.mynonpublic.com/openatv/json/"),
-	("OpenBH", "https://images.openbh.net/json/"),
+	("OpenBh", "https://images.openbh.net/json/"),
 	("OpenPLi", "http://downloads.openpli.org/json/"),
 	("OpenViX", "https://www.openvix.co.uk/json/"),
 	("OpenHDF", "https://flash.hdfreaks.cc/openhdf/json/"),
