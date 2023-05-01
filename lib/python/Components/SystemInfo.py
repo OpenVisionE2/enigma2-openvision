@@ -163,7 +163,6 @@ BoxInfo.setItem('HasUsbhdd', {})
 BoxInfo.setItem('HasRootSubdir', False)
 BoxInfo.setItem('HasMultibootMTD', False)
 BoxInfo.setItem('HasKexecUSB', False)
-BoxInfo.setItem('RecoveryMode', False)
 
 from Tools.MultiBoot import getMultiBootStartupDevice, getMultiBootSlots  # This import needs to be here to avoid a SystemInfo load loop!
 
