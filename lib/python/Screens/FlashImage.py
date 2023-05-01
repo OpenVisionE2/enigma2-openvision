@@ -37,7 +37,7 @@ VuUUIDSlot = BoxInfo.getItem("VuUUIDSlot")
 hasKexec = BoxInfo.getItem("hasKexec")
 
 FEED_URLS = [
-	("openATV", "https://images.mynonpublic.com/openatv/json/"),
+	("ATV", "https://images.mynonpublic.com/openatv/json/"),
 	("OpenBH", "https://images.openbh.net/json/"),
 	("OpenPLi", "http://downloads.openpli.org/json/"),
 	("OpenViX", "https://www.openvix.co.uk/json/"),
