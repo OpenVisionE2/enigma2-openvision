@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <sys/ioctl.h>
 
+#include <lib/base/modelinformation.h>
 #include <lib/gdi/esize.h>
 #include <lib/base/init.h>
 #include <lib/base/init_num.h>
@@ -944,14 +945,9 @@ eDBoxLCD::eDBoxLCD()
 	lcd_type = 0;
 #ifndef NO_LCD
 #ifdef EXTRA_LCD_CHECK
-	FILE *architecture_file;
 	FILE *fp_file;
-	snprintf(architecture_name, sizeof(architecture_name), "unknown");
-	if((architecture_file = fopen("/etc/openvision/architecture", "r")) != NULL)
-	{
-		fgets(architecture_name, sizeof(architecture_name), architecture_file);
-		fclose(architecture_file);
-	}
+	eModelInformation &modelinformation = eModelInformation::getInstance();
+	snprintf(architecture_name, sizeof(architecture_name), modelinformation.getValue("architecture"));
 	if((strcmp(architecture_name, "sh4\n") == 0))
 	{
 		if((fp_file = fopen("/proc/stb/fp/version", "r")) != NULL)
