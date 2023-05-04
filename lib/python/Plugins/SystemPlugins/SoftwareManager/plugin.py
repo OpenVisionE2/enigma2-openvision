@@ -1205,9 +1205,6 @@ class PluginDetails(Screen, PackageInfoHandler):
 		thumbnailUrl = None
 		if "screenshot" in entry:
 			thumbnailUrl = entry["screenshot"]
-			if self.language == "de":
-				if thumbnailUrl[-7:] == "_en.jpg":
-					thumbnailUrl = thumbnailUrl[:-7] + "_de.jpg"
 
 		if thumbnailUrl is not None:
 			self.thumbnail = "/tmp/" + thumbnailUrl.split('/')[-1]
