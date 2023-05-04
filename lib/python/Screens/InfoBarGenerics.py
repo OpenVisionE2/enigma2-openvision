@@ -3970,7 +3970,7 @@ class InfoBarServiceErrorPopupSupport:
 				eDVBServicePMTHandler.eventMisconfiguration: _("Service unavailable!\nCheck tuner configuration!"),
 			}.get(error) #this returns None when the key not exist in the dict
 
-			if error and not config.usage.hide_zap_errors.value:
+			if error and not config.usage.hide_zap_errors.value and not config.usage.remote_fallback_enabled.value:
 				self.closeNotificationInstantiateDialog()
 				AddPopup(text=error, type=MessageBox.TYPE_ERROR, timeout=5, id="ZapError") if hasattr(self, "dishDialog") and not self.dishDialog.dishState() and not self.session.pipshown else AddPopup(text="PiP...\n" + _("No free tuner!"), type=MessageBox.TYPE_ERROR, timeout=5, id="ZapPipError")
 
