@@ -18,6 +18,7 @@ has_yuv = BoxInfo.getItem("yuv")
 has_rca = BoxInfo.getItem("rca")
 has_avjack = BoxInfo.getItem("avjack")
 Has24hz = BoxInfo.getItem("Has24hz")
+AmlogicFamily = BoxInfo.getItem("AmlogicFamily")
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -25,6 +26,17 @@ Has24hz = BoxInfo.getItem("Has24hz")
 # selected mode. No other strict checking is done.
 
 config.av.edid_override = ConfigYesNo(default=True)
+
+axis = {"480i": "0 0 719 479",
+	"480p": "0 0 719 479",
+	"576i": "0 0 719 575",
+	"576p": "0 0 719 575",
+	"720p": "0 0 1279 719",
+	"1080i": "0 0 1919 1079",
+	"1080p": "0 0 1919 1079",
+	"2160p30": "0 0 3839 2159",
+	"2160p": "0 0 3839 2159",
+	"smpte": "0 0 4095 2159"}
 
 
 class VideoHardware:
@@ -34,19 +46,30 @@ class VideoHardware:
 	rates["PAL"] = {"50Hz": {50: "pal"}, "60Hz": {60: "pal60"}, "multi": {50: "pal", 60: "pal60"}}
 	rates["NTSC"] = {"60Hz": {60: "ntsc"}}
 	rates["Multi"] = {"multi": {50: "pal", 60: "ntsc"}}
-	rates["480i"] = {"60Hz": {60: "480i"}}
-	rates["576i"] = {"50Hz": {50: "576i"}}
-	rates["480p"] = {"60Hz": {60: "480p"}}
-	rates["576p"] = {"50Hz": {50: "576p"}}
-	rates["720p"] = {"50Hz": {50: "720p50"}, "60Hz": {60: "720p"}, "multi": {50: "720p50", 60: "720p"}, "auto": {50: "720p50", 60: "720p", 24: "720p24"}}
-	rates["1080i"] = {"50Hz": {50: "1080i50"}, "60Hz": {60: "1080i"}, "multi": {50: "1080i50", 60: "1080i"}, "auto": {50: "1080i50", 60: "1080i", 24: "1080p24"}}
-	rates["1080p"] = {"50Hz": {50: "1080p50"}, "60Hz": {60: "1080p"}, "multi": {50: "1080p50", 60: "1080p"}, "auto": {50: "1080p50", 60: "1080p", 24: "1080p24"}}
-	rates["2160p30"] = {"25Hz": {50: "2160p25"}, "30Hz": {60: "2160p30"}, "multi": {50: "2160p25", 60: "2160p30"}, "auto": {50: "2160p25", 60: "2160p30", 24: "2160p24"}}
 
-	if platform == "dm4kgen":
-		rates["2160p"] = {"50Hz": {50: "2160p50"}, "60Hz": {60: "2160p60"}, "multi": {50: "2160p50", 60: "2160p60"}, "auto": {50: "2160p50", 60: "2160p60", 24: "2160p24"}}
+	if platform == "dmamlogic":
+		rates["480i"] = {"60Hz": {60: "480i60hz"}}
+		rates["576i"] = {"50Hz": {50: "576i50hz"}}
+		rates["480p"] = {"60Hz": {60: "480p60hz"}}
+		rates["576p"] = {"50Hz": {50: "576p50hz"}}
+		rates["720p"] = {"50Hz": {50: "720p50hz"}, "60Hz": {60: "720p60hz"}, "auto": {60: "720p60hz"}}
+		rates["1080i"] = {"50Hz": {50: "1080i50hz"}, "60Hz": {60: "1080i60hz"}, "auto": {60: "1080i60hz"}}
+		rates["1080p"] = {"50Hz": {50: "1080p50hz"}, "60Hz": {60: "1080p60hz"}, "30Hz": {30: "1080p30hz"}, "25Hz": {25: "1080p25hz"}, "24Hz": {24: "1080p24hz"}, "auto": {60: "1080p60hz"}}
+		rates["2160p"] = {"50Hz": {50: "2160p50hz"}, "60Hz": {60: "2160p60hz"}, "30Hz": {30: "2160p30hz"}, "25Hz": {25: "2160p25hz"}, "24Hz": {24: "2160p24hz"}, "auto": {60: "2160p60hz"}}
+		rates["2160p30"] = {"25Hz": {50: "2160p25hz"}, "30Hz": {60: "2160p30hz"}, "auto": {60: "2160p30hz"}}
 	else:
-		rates["2160p"] = {"50Hz": {50: "2160p50"}, "60Hz": {60: "2160p"}, "multi": {50: "2160p50", 60: "2160p"}, "auto": {50: "2160p50", 60: "2160p", 24: "2160p24"}}
+		rates["480i"] = {"60Hz": {60: "480i"}}
+		rates["576i"] = {"50Hz": {50: "576i"}}
+		rates["480p"] = {"60Hz": {60: "480p"}}
+		rates["576p"] = {"50Hz": {50: "576p"}}
+		rates["720p"] = {"50Hz": {50: "720p50"}, "60Hz": {60: "720p"}, "multi": {50: "720p50", 60: "720p"}, "auto": {50: "720p50", 60: "720p", 24: "720p24"}}
+		rates["1080i"] = {"50Hz": {50: "1080i50"}, "60Hz": {60: "1080i"}, "multi": {50: "1080i50", 60: "1080i"}, "auto": {50: "1080i50", 60: "1080i", 24: "1080p24"}}
+		rates["1080p"] = {"50Hz": {50: "1080p50"}, "60Hz": {60: "1080p"}, "multi": {50: "1080p50", 60: "1080p"}, "auto": {50: "1080p50", 60: "1080p", 24: "1080p24"}}
+		if platform == "dm4kgen":
+			rates["2160p"] = {"50Hz": {50: "2160p50"}, "60Hz": {60: "2160p60"}, "multi": {50: "2160p50", 60: "2160p60"}, "auto": {50: "2160p50", 60: "2160p60", 24: "2160p24"}}
+		else:
+			rates["2160p"] = {"50Hz": {50: "2160p50"}, "60Hz": {60: "2160p"}, "multi": {50: "2160p50", 60: "2160p"}, "auto": {50: "2160p50", 60: "2160p", 24: "2160p24"}}
+		rates["2160p30"] = {"25Hz": {50: "2160p25"}, "30Hz": {60: "2160p30"}, "multi": {50: "2160p25", 60: "2160p30"}, "auto": {50: "2160p25", 60: "2160p30", 24: "2160p24"}}
 
 	rates["smpte"] = {"50Hz": {50: "smpte50hz"},
 		"60Hz": {60: "smpte60hz"},
@@ -87,12 +110,16 @@ class VideoHardware:
 	elif socfamily in ("7241", "7358", "7362", "73625", "7356", "73565", "7424", "7425", "7435", "7581", "3716mv410") or brand == "azbox":
 		modes["DVI"] = ["720p", "1080p", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080p", "1080i"}
-	elif chipsetstring == "meson-6":
-		modes["DVI"] = ["720p", "1080p", "1080i"]
-		widescreen_modes = {"720p", "1080p", "1080i"}
-	elif chipsetstring in ("meson-64", "s905d") or socfamily in ("aml905d", "meson64"):
-		modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i"]
-		widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
+	elif AmlogicFamily:
+		if platform == "dmamlogic":
+			modes["DVI"] = ["720p", "1080p", "smpte", "2160p30", "2160p", "1080i", "576p", "576i", "480p", "480i"]
+			widescreen_modes = {"720p", "1080p", "1080i", "2160p", "smpte"}
+		elif chipsetstring == "meson-6" and platform != "dmamlogic":
+			modes["DVI"] = ["720p", "1080p", "1080i"]
+			widescreen_modes = {"720p", "1080p", "1080i"}
+		elif chipsetstring in ("meson-64", "s905d") or socfamily in ("aml905d", "meson64") and platform != "dmamlogic":
+			modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i"]
+			widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
 	else:
 		modes["DVI"] = ["720p", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080i"}
@@ -279,6 +306,37 @@ class VideoHardware:
 			if force == 50:
 				mode_24 = mode_50
 
+		if platform == "dmamlogic":
+			amlmode = list(modes.values())[0]
+			try:
+				print("[Videomode] Amlogic setting videomode to mode: %s" % amlmode)
+				open('/sys/class/display/mode', 'w').write(amlmode)
+			except:
+				print("[Videomode] Write to /sys/class/display/mode failed!")
+			try:
+				open("/etc/u-boot.scr.d/000_hdmimode.scr", "w").write("setenv hdmimode %s" % amlmode)
+			except:
+				print("[Videomode] Write to /etc/u-boot.scr.d/000_hdmimode.scr failed!")
+			try:
+				open("/etc/u-boot.scr.d/000_outputmode.scr", "w").write("setenv outputmode %s" % amlmode)
+			except:
+				print("[Videomode] Write to /etc/u-boot.scr.d/000_outputmode.scr failed!")
+			Console().ePopen("update-autoexec")
+			try:
+				open('/sys/class/ppmgr/ppscaler', 'w').write('1')
+			except:
+				print("[Videomode] Write to /sys/class/ppmgr/ppscaler failed!")
+			try:
+				open('/sys/class/ppmgr/ppscaler', 'w').write('0')
+			except:
+				print("[Videomode] Write to /sys/class/ppmgr/ppscaler failed!")
+			try:
+				open('/sys/class/video/axis', 'w').write(axis[mode])
+			except:
+				print("[Videomode] Write to /sys/class/video/axis failed!")
+			stride = open("/sys/class/graphics/fb0/stride", "r").read().strip()
+			print("[Videomode] Framebuffer mode:%s  stride:%s axis:%s" % (getDesktop(0).size().width(), stride, axis[mode]))
+
 		try:
 			open("/proc/stb/video/videomode_50hz", "w").write(mode_50)
 		except IOError:
@@ -325,6 +383,15 @@ class VideoHardware:
 		if mode in config.av.videorate:
 			config.av.videorate[mode].value = rate
 			config.av.videorate[mode].save()
+
+	def getAMLMode(self):
+		currentmode = open("/sys/class/display/mode", "r").read().strip()
+		return currentmode[:-4]
+
+	def getWindowsAxis(self):
+		port = config.av.videoport.value
+		mode = config.av.videomode[port].value
+		return axis[mode]
 
 	def isPortAvailable(self, port):
 		# fixme
@@ -455,18 +522,32 @@ class VideoHardware:
 			wss = "auto"
 
 		print("[Videomode] VideoHardware -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss)
-		if chipsetstring.startswith("meson-6"):
-			arw = "0"
-			if config.av.policy_43.value == "bestfit":
-				arw = "10"
-			if config.av.policy_43.value == "panscan":
-				arw = "11"
-			if config.av.policy_43.value == "letterbox":
-				arw = "12"
-			try:
-				open("/sys/class/video/screen_mode", "w").write(arw)
-			except IOError:
-				print("[Videomode] Write to /sys/class/video/screen_mode failed!")
+
+		if AmlogicFamily:
+			if platform == "dmamlogic":
+				arw = "0"
+				if config.av.policy_43.value == "bestfit":
+					arw = "10"
+				if config.av.policy_43.value == "letterbox":
+					arw = "11"
+				if config.av.policy_43.value == "panscan":
+					arw = "12"
+				try:
+					open("/sys/class/video/screen_mode", "w").write(arw)
+				except IOError:
+					print("[Videomode] Write to /sys/class/video/screen_mode failed!")
+			elif chipsetstring.startswith("meson-6") and platform != "dmamlogic":
+				arw = "0"
+				if config.av.policy_43.value == "bestfit":
+					arw = "10"
+				if config.av.policy_43.value == "panscan":
+					arw = "11"
+				if config.av.policy_43.value == "letterbox":
+					arw = "12"
+				try:
+					open("/sys/class/video/screen_mode", "w").write(arw)
+				except IOError:
+					print("[Videomode] Write to /sys/class/video/screen_mode failed!")
 
 		try:
 			open("/proc/stb/video/aspect", "w").write(aspect)

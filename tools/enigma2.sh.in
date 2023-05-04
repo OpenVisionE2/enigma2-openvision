@@ -42,6 +42,12 @@ elif [ -f /proc/stb/fp/led_brightness ]; then
 	echo "000000ff" > /proc/stb/fp/led_brightness
 fi
 
+if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
+	/sbin/insmod /lib/modules/4.9/extra/lcd/lcd.ko
+	echo "1" > /proc/stb/fp/nec_ir
+	[ -f /sys/class/remote/amremote/protocol ] && echo "2" > /sys/class/remote/amremote/protocol
+fi
+
 # LC_ALL available?
 if [ -z $LC_ALL ] && [ ${PYVER::1} == 3 ]; then
 	export LC_ALL=en_GB.utf8
@@ -222,6 +228,9 @@ while : ; do
 			/sbin/reboot
 			;;
 		16)
+			if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
+				"@sbindir@/to-the-rescue"
+			fi
 			if [ -e /dev/block/by-name/flag ]; then
 				echo -n "0" > /dev/block/by-name/flag
 			elif [ -e /dev/block/by-name/bootoptions ]; then

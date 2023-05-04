@@ -111,3 +111,11 @@ dvbinclude_HEADERS += \
 	dvb/fcc.h \
 	dvb/fccdecoder.h
 endif
+
+if DMAMLOGIC
+dvbinclude_HEADERS += \
+	dvb/alsa.h \
+	dvb/decoders.h \
+	dvb/ringbuffer.h \
+	dvb/tsparser.h
+endif

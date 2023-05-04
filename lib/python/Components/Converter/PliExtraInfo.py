@@ -6,6 +6,7 @@ from Components.config import config
 from Tools.Transponder import ConvertToHumanReadable
 from Tools.GetEcmInfo import GetEcmInfo
 from Components.Converter.Poll import Poll
+from Components.SystemInfo import BoxInfo
 from skin import parameters
 from os.path import isfile
 
@@ -293,11 +294,11 @@ class PliExtraInfo(Poll, Converter):
 		if not mode:
 			try:
 				print("[PliExtraInfo] Read /proc/stb/vmpeg/0/progressive")
-				mod = int(open("/proc/stb/vmpeg/0/progressive", "r").read())
-				if mod == 1:
-					mode = "p"
+				mod = open("/proc/stb/vmpeg/0/progressive", "r")
+				if BoxInfo.getItem("AmlogicFamily"):
+					mode = "p" if int(mod.read()) else "i"
 				else:
-					mode = "i"
+					mode = "p" if int(mod.read(), 16) else "i"
 			except:
 				print("[PliExtraInfo] Read /proc/stb/vmpeg/0/progressive failed.")
 		fps = (info.getInfo(iServiceInformation.sFrameRate) + 500) // 1000

@@ -455,16 +455,30 @@ def InitAVSwitch():
 
 	if BoxInfo.getItem("CanDownmixAC3"):
 		default = "downmix"
-		choices = [
-			("downmix", _("Downmix")),
-			("passthrough", _("Passthrough"))
-		]
+		if platform == "dmamlogic":
+			choices = [
+					("downmix", _("Downmix")),
+					("passthrough", _("Passthrough")),
+					("hdmi_best", _("Use best / Controlled by HDMI"))
+				]
+		else:
+			choices = [
+				("downmix", _("Downmix")),
+				("passthrough", _("Passthrough"))
+			]
 
 		def setAC3Downmix(configElement):
-			with open("/proc/stb/audio/ac3", "w") as trackac3:
-				trackac3.write(configElement.value)
-				trackac3.close()
-			if BoxInfo.getItem("HasMultichannelPCM", False) and configElement.value == "passthrough":
+			if platform == "dmamlogic":
+				with open("/sys/class/audiodsp/digital_raw", "w") as trackac3:
+					trackac3.write(configElement.value)
+					trackac3.close()
+			else:
+				with open("/proc/stb/audio/ac3", "w") as trackac3:
+					trackac3.write(configElement.value)
+					trackac3.close()
+			if platform == "dmamlogic":
+				BoxInfo.setItem("CanPcmMultichannel", True)
+			elif BoxInfo.getItem("HasMultichannelPCM", False) and configElement.value == "passthrough":
 				BoxInfo.setItem("CanPcmMultichannel", True)
 			else:
 				BoxInfo.setItem("CanPcmMultichannel", False)

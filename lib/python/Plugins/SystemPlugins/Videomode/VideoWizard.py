@@ -15,6 +15,27 @@ has_hdmi = BoxInfo.getItem("hdmi")
 config.misc.showtestcard = ConfigBoolean(default=False)
 
 
+def sortkey(name):
+	if name[0] == "2160p":
+		return 1
+	elif name[0] == "2160p30":
+		return 2
+	elif name[0] == "1080p":
+		return 3
+	elif name[0] == "720p":
+		return 4
+	elif name[0] == "1080i":
+		return 5
+	elif name[0] == "smpte":
+		return 20
+	elif name[0] == "multi":
+		return 1
+	elif name[0] == "auto":
+		return 2
+	else:
+		return 6
+
+
 class VideoWizardSummary(WizardSummary):
 	def __init__(self, session, parent):
 		WizardSummary.__init__(self, session, parent)
@@ -124,7 +145,7 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 			#if mode[0] != "PC":
 				list.append((mode[0], mode[0]))
 		# print("[Videomode] VideoWizard modeslist:", list)
-		return list
+		return sorted(list, key=sortkey)
 
 	def modeSelectionMade(self, index):
 		# print("[Videomode] VideoWizard modeSelectionMade:", index)
@@ -163,7 +184,7 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 							list.insert(0, (rate, rate))
 							continue
 					list.append((rate, rate))
-		return list
+		return sorted(list, key=sortkey)
 
 	def rateSelectionMade(self, index):
 		# print("[Videomode] VideoWizard rateSelectionMade:", index)

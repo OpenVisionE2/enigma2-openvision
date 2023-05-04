@@ -509,6 +509,14 @@ if test "$BOXBRAND" == "dreambox"; then
 #	AC_DEFINE(HAVE_FREEZE, 1, [define when freeze workaround is needed])
 fi
 
+AM_CONDITIONAL(DMAMLOGIC, test "$STBPLATFORM" == "dmamlogic")
+if test "$STBPLATFORM" == "dmamlogic"; then
+	ALSA_CFLAGS="-lasound"
+	FFMPEG_CFLAGS="-lavdevice -lavformat -lavcodec -lswresample -lswscale -lavutil -lm"
+	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
+	AC_DEFINE(HAVE_DMAMLOGIC, 1, [Dreambox Amlogic hardware])
+fi
+
 if test "$BOXTYPE" == "dm7080"; then
 	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
 	AC_DEFINE(CONFIG_ION, 1,[define when we need to use ION allocator])
@@ -745,22 +753,10 @@ AX_CHECK_COMPILE_FLAG([-Wattribute-alias], [CXXFLAGS="$CXXFLAGS -Wattribute-alia
 AX_CHECK_COMPILE_FLAG([-Wattribute-alias=1], [CXXFLAGS="$CXXFLAGS -Wattribute-alias=1"])
 
 CPPFLAGS="$CPPFLAGS $PYTHON_CPPFLAGS"
-CFLAGS="$CFLAGS -Wall"
-CXXFLAGS="$CXXFLAGS -Wall -Wextra \
-	-Wformat=2 -Wformat-overflow=2 -Wformat-nonliteral -Wformat-security \
-	-Wimplicit-fallthrough=5 -Wduplicated-branches -Wtrampolines \
-	-Wdangling-else -Wshift-overflow=2 -Wswitch \
-	-Wunused-but-set-parameter -Wunused-const-variable=1 -Wuninitialized \
-	-Wstringop-overflow=3 -Woverlength-strings -Wno-error=deprecated-declarations \
-	-Wunsafe-loop-optimizations -Wpointer-arith \
-	-Wfloat-equal -Wlogical-op \
-	-Wno-error=cast-align=strict -Wno-error=ignored-qualifiers \
-	-Wno-error=cast-function-type \
-	-Wno-error=stringop-truncation -Wno-error=shadow -Wno-error=cast-qual \
-	-Wno-error=aggregate-return -Wno-error=missing-field-initializers \
-	-Wno-error=packed -Wno-error=vla -Wno-error=clobbered -Wno-error=unused-parameter \
+CFLAGS="$CFLAGS"
+CXXFLAGS="$CXXFLAGS \
 	$BASE_CFLAGS $ENIGMA2_CFLAGS $PTHREAD_CFLAGS $OPENMP_CFLAGS $ALSA_CFLAGS \
-	$GLES_CFLAGS $AMCODEC_CFLAGS $AMADEC_CFLAGS $DVBCSA_CFLAGS"
+	$GLES_CFLAGS $AMCODEC_CFLAGS $AMADEC_CFLAGS $DVBCSA_CFLAGS $FFMPEG_CFLAGS"
 
 AC_CONFIG_FILES([
 Makefile
@@ -860,6 +856,8 @@ lib/python/Plugins/SystemPlugins/SoftwareManager/Makefile
 lib/python/Plugins/SystemPlugins/SoftwareManager/meta/Makefile
 lib/python/Plugins/SystemPlugins/VideoEnhancement/Makefile
 lib/python/Plugins/SystemPlugins/VideoEnhancement/meta/Makefile
+lib/python/Plugins/SystemPlugins/VideoEnhancementAML/Makefile
+lib/python/Plugins/SystemPlugins/VideoEnhancementAML/meta/Makefile
 lib/python/Plugins/SystemPlugins/VideoTune/Makefile
 lib/python/Plugins/SystemPlugins/VideoTune/meta/Makefile
 lib/python/Plugins/SystemPlugins/Videomode/Makefile
