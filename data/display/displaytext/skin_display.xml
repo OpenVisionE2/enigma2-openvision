@@ -110,7 +110,7 @@
 		<widget source="parent.selectedChoice" conditional="parent.selectedChoice" render="Label" position="0,50" size="120,14" horizontalAlignment="left" noWrap="1"  />
 	</screen>
 	<screen name="JobView_summary" position="0,0" size="132,64">
-		<widget source="parent.summary_job_progress" render="Label" position="0,0" size="132,64" font="Regular;12" zPosition="2" transparent="1">
+		<widget source="parent.summary_job_progress" render="Label" position="0,0" size="132,64" font="Regular;12" transparent="1">
 			<convert type="ProgressToText" />
 		</widget>
 	</screen>

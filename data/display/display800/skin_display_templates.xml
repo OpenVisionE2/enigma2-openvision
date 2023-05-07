@@ -370,7 +370,7 @@
 	<screen name="JobView_summary" position="0,0" size="800,480">
 		<widget source="parent.summary_job_name" render="Label" position="40,50" size="720,110" foregroundColor="white" font="FdLcD;85" horizontalAlignment="center" verticalAlignment="center" zPosition="2" />
 		<widget source="parent.summary_job_task" render="Label" position="40,200" size="720,160" foregroundColor="white" font="FdLcDLight;65" horizontalAlignment="center" verticalAlignment="top" zPosition="2" />
-		<widget source="parent.summary_job_progress" render="Label" position="40,410" size="720,60" foregroundColor="white" font="FdLcDLight;60" horizontalAlignment="left" verticalAlignment="center" zPosition="3">
+		<widget source="parent.summary_job_progress" render="Label" position="40,410" size="720,60" foregroundColor="white" font="FdLcDLight;60" horizontalAlignment="left" verticalAlignment="center">
 			<convert type="ProgressToText" />
 		</widget>
 	</screen>
