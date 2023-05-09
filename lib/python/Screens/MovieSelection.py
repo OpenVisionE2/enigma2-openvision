@@ -1314,7 +1314,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, InfoBarBase, Pr
 		self.current_ref = eServiceReference("2:0:1:0:0:0:0:0:0:0:%s" % path)
 		# Magic: this sets extra things to show
 		if config.movielist.hide_images.value:
-			self.current_ref.setName("16384:jpg 16384:png 16384:gif 16384:bmp")
+			self.current_ref.setName("16384:jpg 16384:jpeg 16384:png 16384:gif 16384:bmp 16384:svg")
 		else:
 			self.current_ref.setName("16384:png")
 
