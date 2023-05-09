@@ -650,7 +650,7 @@ if test "$BOXTYPE" == "maram9"; then
 	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
 fi
 
-if test "$BOXTYPE" == "osnino" -o "$BOXTYPE" == "osninoplus" -o "$BOXTYPE" == "osninopro" -o "$STBPLATFORM" == "edision4k"; then
+if test "$STBPLATFORM" == "edisionmipsgen1" -o "$STBPLATFORM" == "edision4k"; then
 	AC_DEFINE(KEY_MEDIA_TO_KEY_LIST, 1,[define when rc sends a MEDIA event for its LIST])
 	AC_DEFINE(KEY_VIDEO_TO_KEY_ANGLE, 1,[define when rc sends a VIDEO event for its ANGLE])
 fi
@@ -709,7 +709,7 @@ if test "$BOXBRAND" == "wetek"; then
 	AC_DEFINE(WETEKRC, 1, [WeTek remote uses BACKSPACE to toggle extended functions on numeric buttons])
 fi
 
-if test "$STBPLATFORM" == "mipsspycat" -o "$BOXTYPE" == "osmini" -o "$BOXTYPE" == "osminiplus" -o "$BOXTYPE" == "osmega" -o "$STBPLATFORM" == "4kspycat"; then
+if test "$STBPLATFORM" == "mipsspycat" -o "$STBPLATFORM" == "edisionmipsgen2" -o "$STBPLATFORM" == "4kspycat"; then
 	AC_DEFINE(KEY_MEDIA_TO_KEY_LIST, 1,[define when rc sends a MEDIA event for its LIST])
 fi
 

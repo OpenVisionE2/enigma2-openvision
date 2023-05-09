@@ -111,7 +111,7 @@ class SymbolsCheckPoller:
 				open("/proc/stb/lcd/symbol_pvr2", "w").write("1")
 			else:
 				open("/proc/stb/lcd/symbol_pvr2", "w").write("0")
-		elif model in ("osninopro", "9910lx", "9911lx", "osnino", "osninoplus", "9920lx") or brand in ("wetek", "ixuss") and fileExists("/proc/stb/lcd/powerled"):
+		elif platform == "edisionmipsgen1" or model in ("9910lx", "9911lx", "9920lx") or brand in ("wetek", "ixuss") and fileExists("/proc/stb/lcd/powerled"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			print("[VfdSymbols] Write to /proc/stb/lcd/powerled")
