@@ -37,15 +37,16 @@ VuUUIDSlot = BoxInfo.getItem("VuUUIDSlot")
 hasKexec = BoxInfo.getItem("hasKexec")
 
 FEED_URLS = [
+	("EGAMI", "https://image.egami-image.com/json/"),
+	("Open8eIGHT", "http://openeight.de/json/"),
 	("openATV", "https://images.mynonpublic.com/openatv/json/"),
 	("OpenBh", "https://images.openbh.net/json/"),
-	("OpenPLi", "http://downloads.openpli.org/json/"),
-	("OpenViX", "https://www.openvix.co.uk/json/"),
-	("OpenHDF", "https://flash.hdfreaks.cc/openhdf/json/"),
-	("TeamBlue", "https://images.teamblue.tech/json/"),
-	("Open8eIGHT", "http://openeight.de/json/"),
 	("OpenDROID", "https://opendroid.org/json/"),
-	("EGAMI", "https://image.egami-image.com/json/")
+	("OpenHDF", "https://flash.hdfreaks.cc/openhdf/json/"),
+	("OpenPLi", "http://downloads.openpli.org/json/"),
+	("OpenSPA", "https://openspa.webhop.info/online/json.php?box="),
+	("OpenViX", "https://www.openvix.co.uk/json/"),
+	("TeamBlue", "https://images.teamblue.tech/json/")
 ]
 
 
@@ -383,7 +384,7 @@ class FlashImage(Screen):
 			if "://" in self.source:
 				self["header"].setText(_("Downloading Image"))
 				self["info"].setText(self.imagename)
-				self.downloader = DownloadWithProgress(self.source, self.zippedimage)
+				self.downloader = DownloadWithProgress(self.source.replace(" ", "%20"), self.zippedimage)
 				self.downloader.addProgress(self.downloadProgress)
 				self.downloader.addEnd(self.downloadEnd)
 				self.downloader.addError(self.downloadError)
