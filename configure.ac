@@ -437,12 +437,6 @@ if test "$BOXBRAND" == "rpi"; then
 	AC_DEFINE(HAVE_RASPBERRYPI, 1,[enable rpi specific stuff])
 fi
 
-AM_CONDITIONAL(HAVE_COLORLCD1, test "$BOXTYPE" == "dm8000" -o "$BOXTYPE" == "dm800" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2")
-AM_CONDITIONAL(HAVE_COLORLCD2, test "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2" -o "$BOXTYPE" == "dm820")
-AM_CONDITIONAL(HAVE_COLORLCD3, test "$BOXTYPE" == "dm7080")
-AM_CONDITIONAL(HAVE_GRAUTEC70X0, test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm7080")
-AM_CONDITIONAL(HAVE_GRAUTEC8000, test "$BOXTYPE" == "dm8000")
-
 if test "$ARCHITECTURE" == "arm" -o "$ARCHITECTURE" == "aarch64"; then
 	AC_DEFINE(HAVE_ARCH_ARM, 1,[define when something is for all arm architectures])
 fi
@@ -503,6 +497,12 @@ if test "$BOXBRAND" == "dags"; then
 	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])
 fi
 
+AM_CONDITIONAL(HAVE_COLORLCD1, test "$BOXTYPE" == "dm8000" -o "$BOXTYPE" == "dm800" -o "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2")
+AM_CONDITIONAL(HAVE_COLORLCD2, test "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2" -o "$BOXTYPE" == "dm820")
+AM_CONDITIONAL(HAVE_COLORLCD3, test "$BOXTYPE" == "dm7080")
+AM_CONDITIONAL(HAVE_GRAUTEC70X0, test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm7080")
+AM_CONDITIONAL(HAVE_GRAUTEC8000, test "$BOXTYPE" == "dm8000")
+
 if test "$BOXBRAND" == "dreambox"; then
 	AC_DEFINE(DREAMBOX, 1, [Dreambox hardware])
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
@@ -547,18 +547,15 @@ if test "$BOXBRAND" == "ebox"; then
 	AC_DEFINE(KEY_MODE_TO_KEY_AUDIO, 1,[define when rc sends a KEY_MODE event for its AV plus])
 fi
 
-if test "$BOXTYPE" == "et10000"; then
-	AC_DEFINE(HAVE_BWLCD128, 1,[define when using a 128x32 black and white display device])
-fi
-
 if test "$STBPLATFORM" == "2genxt" -o "$STBPLATFORM" == "1genxt" -o "$STBPLATFORM" == "7genxt"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 	AC_DEFINE(KEY_F3_TO_KEY_LIST, 1,[define when rc sends a KEY_F3 event for its KEY_LIST key])
 fi
 
+AM_CONDITIONAL(LCD_FRAMEBUFFER_MODE, test "$BOXTYPE" == et8500)
 if test "$BOXTYPE" == "et8500"; then
 	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
-	AC_DEFINE(HAVE_COLORLCD720, 1,[define when using a 720x576 color display device])
+	AC_DEFINE(LCD_FRAMEBUFFER_MODE, 1,[define the framebuffer LCD mode])
 fi
 
 if test "$BOXTYPE" == "et1x000" -o "$BOXTYPE" == "et7x00" -o "$BOXTYPE" == "ultramini"; then
@@ -574,6 +571,10 @@ if test "$BOXTYPE" == "et13000" -o "$BOXTYPE" == "beyonwizu4"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 	AC_DEFINE(KEY_BOOKMARKS_IS_KEY_DIRECTORY, 1,[define when rc sends a KEY_BOOKMARKS but other box use this key for different mapping we remap to KEY_DIRECTORY])
 	AC_DEFINE(FORCE_ALPHABLENDING_ACCELERATION, 1,[define when the framebuffer acceleration has alphablending support, but detection slow down all])
+fi
+
+if test "$BOXTYPE" == "sf4008" -o "$BOXTYPE" == "beyonwizu4"; then
+	AC_DEFINE(LCD_SCROLL_HEX, 1,[define LCD scroll values in hex])
 fi
 
 if test "$STBPLATFORM" == "ew7358" -o "$BOXTYPE" == "bre2ze"; then
@@ -611,21 +612,9 @@ if test "$STBPLATFORM" == "gb7252" -o "$BOXTYPE" == "gbx34k"; then
 	AC_DEFINE(KEY_CONTEXT_MENU_TO_KEY_AUX, 1,[define when rc sends a KEY_CONTEXT_MENU event for its KEY_AUX key])
 fi
 
-if test "$BOXTYPE" == "gbquad4k" -o "$BOXTYPE" == "vuuno4kse"; then
-	AC_DEFINE(HAVE_COLORLCD400, 1,[define when using a 400x176 color display device])
-fi
-
-if test "$BOXTYPE" == "gbue4k"; then
-	AC_DEFINE(HAVE_COLORLCD220, 1,[define when using a 220x176 color display device])
-fi
-
 if test "$BOXBRAND" == "gfutures" -o "$BOXBRAND" == "abcom"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 	AC_DEFINE(KEY_F3_TO_KEY_LIST, 1,[define when rc sends a KEY_F3 event for its KEY_LIST key])
-fi
-
-if test "$BOXTYPE" == "hd2400" -o "$BOXTYPE" == "vuultimo"; then
-	AC_DEFINE(HAVE_BWLCD255, 1,[define when using a 255x64 black and white display device])
 fi
 
 if test "$BOXBRAND" == "ini"; then
@@ -706,20 +695,7 @@ if test "$BOXBRAND" == "vuplus"; then
 	AC_DEFINE(KEY_INFO_TO_KEY_EPG, 1,[define when rc sends a KEY_INFO event for its KEY_EPG key])
 fi
 
-if test "$BOXTYPE" == "vuduo2"; then
-	AC_DEFINE(HAVE_BWLCD140, 1,[define when using a 140x32 black and white display device])
-	AC_DEFINE(FORCE_AUTO_INV, 1,[force Inversion auto for vuplus mipsel boxes])
-fi
-
-if test "$BOXTYPE" == "vusolo4k" -o "$BOXTYPE" == "vuduo4k" -o "$BOXTYPE" == "vuduo4kse"; then
-	AC_DEFINE(HAVE_COLORLCD480, 1,[define when using a 480x320 color display device])
-fi
-
-if test "$BOXTYPE" == "vuultimo4k"; then
-	AC_DEFINE(HAVE_COLORLCD800, 1,[define when using a 800x480 color display device])
-fi
-
-if test "$BOXTYPE" == "vuzero" -o "$STBPLATFORM" == "vu1gen" -o "$BOXTYPE" == "vusolose" -o "$BOXTYPE" == "vusolo2"; then
+if test "$STBPLATFORM" == "vu1gen" -o "$STBPLATFORM" == "vu2gen"; then
 	AC_DEFINE(FORCE_AUTO_INV, 1,[force Inversion auto for vuplus mipsel boxes])
 fi
 

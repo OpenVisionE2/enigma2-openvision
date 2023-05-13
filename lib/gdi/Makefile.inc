@@ -9,7 +9,6 @@ gdi_libenigma_gdi_a_SOURCES = \
 	gdi/epng.cpp \
 	gdi/erect.cpp \
 	gdi/fb.cpp \
-	gdi/fblcd.cpp \
 	gdi/font.cpp \
 	gdi/font_arabic.cpp \
 	gdi/gfont.cpp \
@@ -32,7 +31,6 @@ gdiinclude_HEADERS = \
 	gdi/erect.h \
 	gdi/esize.h \
 	gdi/fb.h \
-	gdi/fblcd.h \
 	gdi/font.h \
 	gdi/gfont.h \
 	gdi/glcddc.h \
@@ -50,4 +48,10 @@ gdiinclude_HEADERS += gdi/sdl.h
 else
 gdi_libenigma_gdi_a_SOURCES += gdi/gfbdc.cpp
 gdiinclude_HEADERS += gdi/gfbdc.h
+endif
+
+if LCD_FRAMEBUFFER_MODE
+gdi_libenigma_gdi_a_SOURCES += \
+	gdi/fblcd.cpp \
+	gdi/fblcd.h
 endif

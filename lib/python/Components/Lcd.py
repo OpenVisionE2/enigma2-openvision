@@ -16,7 +16,6 @@ from Tools.Directories import fileReadLine, fileWriteLine
 model = BoxInfo.getItem("model")
 platform = BoxInfo.getItem("platform")
 VFDRepeats = BoxInfo.getItem("VFDRepeats")
-VFDDelay = BoxInfo.getItem("VFDDelay")
 
 
 class dummyScreen(Screen):
@@ -393,111 +392,101 @@ def InitLcd():
 			ilcd.setLEDBlinkingTime(configElement.value)
 
 		def setPowerLEDstate(configElement):
-			if isfile("/proc/stb/power/powerled"):
-				fileWriteLine("/proc/stb/power/powerled", configElement.value)
+			fileWriteLine("/proc/stb/power/powerled", configElement.value)
 
 		def setPowerLEDstate2(configElement):
-			if isfile("/proc/stb/power/powerled2"):
-				fileWriteLine("/proc/stb/power/powerled2", configElement.value)
+			fileWriteLine("/proc/stb/power/powerled2", configElement.value)
 
 		def setPowerLEDstanbystate(configElement):
-			if isfile("/proc/stb/power/standbyled"):
-				fileWriteLine("/proc/stb/power/standbyled", configElement.value)
+			fileWriteLine("/proc/stb/power/standbyled", configElement.value)
 
 		def setPowerLEDdeepstanbystate(configElement):
-			if isfile("/proc/stb/power/suspendled"):
-				fileWriteLine("/proc/stb/power/suspendled", configElement.value)
+			fileWriteLine("/proc/stb/power/suspendled", configElement.value)
 
 		def setLedPowerColor(configElement):
-			if isfile("/proc/stb/fp/ledpowercolor"):
-				fileWriteLine("/proc/stb/fp/ledpowercolor", configElement.value)
+			fileWriteLine("/proc/stb/fp/ledpowercolor", configElement.value)
 
 		def setLedStandbyColor(configElement):
-			if isfile("/proc/stb/fp/ledstandbycolor"):
-				fileWriteLine("/proc/stb/fp/ledstandbycolor", configElement.value)
+			fileWriteLine("/proc/stb/fp/ledstandbycolor", configElement.value)
 
 		def setLedSuspendColor(configElement):
-			if isfile("/proc/stb/fp/ledsuspendledcolor"):
-				fileWriteLine("/proc/stb/fp/ledsuspendledcolor", configElement.value)
+			fileWriteLine("/proc/stb/fp/ledsuspendledcolor", configElement.value)
 
 		def setLedBlinkControlColor(configElement):
-			if isfile("/proc/stb/fp/led_blink"):
-				fileWriteLine("/proc/stb/fp/led_blink", configElement.value)
+			fileWriteLine("/proc/stb/fp/led_blink", configElement.value)
 
 		def setLedBrightnessControl(configElement):
-			if isfile("/proc/stb/fp/led_brightness"):
-				fileWriteLine("/proc/stb/fp/led_brightness", configElement.value)
+			fileWriteLine("/proc/stb/fp/led_brightness", configElement.value)
 
 		def setLedColorControlColor(configElement):
-			if isfile("/proc/stb/fp/led_color"):
-				fileWriteLine("/proc/stb/fp/led_color", configElement.value)
+			fileWriteLine("/proc/stb/fp/led_color", configElement.value)
 
 		def setLedFadeControlColor(configElement):
-			if isfile("/proc/stb/fp/led_fade"):
-				fileWriteLine("/proc/stb/fp/led_fade", configElement.value)
+			fileWriteLine("/proc/stb/fp/led_fade", configElement.value)
 
 		def setPower4x7On(configElement):
-			if isfile("/proc/stb/fp/power4x7on"):
-				fileWriteLine("/proc/stb/fp/power4x7on", configElement.value)
+			fileWriteLine("/proc/stb/fp/power4x7on", configElement.value)
 
 		def setPower4x7Standby(configElement):
-			if isfile("/proc/stb/fp/power4x7standby"):
-				fileWriteLine("/proc/stb/fp/power4x7standby", configElement.value)
+			fileWriteLine("/proc/stb/fp/power4x7standby", configElement.value)
 
 		def setPower4x7Suspend(configElement):
-			if isfile("/proc/stb/fp/power4x7suspend"):
-				fileWriteLine("/proc/stb/fp/power4x7suspend", configElement.value)
+			fileWriteLine("/proc/stb/fp/power4x7suspend", configElement.value)
 
 		def setXcoreVFD(configElement):
-			if isfile("/sys/module/brcmstb_osmega/parameters/pt6302_cgram"):
-				fileWriteLine("/sys/module/brcmstb_osmega/parameters/pt6302_cgram", configElement.value)
+			fileWriteLine("/sys/module/brcmstb_osmega/parameters/pt6302_cgram", configElement.value)
 
 		config.usage.vfd_xcorevfd = ConfigSelection(choices=[
 			("0", _("12 character")),
 			("1", _("8 character"))
 		], default="0")
-		config.usage.vfd_xcorevfd.addNotifier(setXcoreVFD)
+		if isfile("/sys/module/brcmstb_osmega/parameters/pt6302_cgram"):
+			config.usage.vfd_xcorevfd.addNotifier(setXcoreVFD)
 		config.usage.lcd_powerled = ConfigSelection(choices=[
 			("off", _("Off")),
 			("on", _("On"))
 		], default="on")
-		config.usage.lcd_powerled.addNotifier(setPowerLEDstate)
+		if isfile("/proc/stb/power/powerled"):
+			config.usage.lcd_powerled.addNotifier(setPowerLEDstate)
 		config.usage.lcd_powerled2 = ConfigSelection(choices=[
 			("off", _("Off")),
 			("on", _("On"))
 		], default="on")
-		config.usage.lcd_powerled2.addNotifier(setPowerLEDstate2)
+		if isfile("/proc/stb/power/powerled2"):
+			config.usage.lcd_powerled2.addNotifier(setPowerLEDstate2)
 		config.usage.lcd_standbypowerled = ConfigSelection(choices=[
 			("off", _("Off")),
 			("on", _("On"))
 		], default="on")
-		config.usage.lcd_standbypowerled.addNotifier(setPowerLEDstanbystate)
+		if isfile("/proc/stb/power/standbyled"):
+			config.usage.lcd_standbypowerled.addNotifier(setPowerLEDstanbystate)
 		config.usage.lcd_deepstandbypowerled = ConfigSelection(choices=[
 			("off", _("Off")),
 			("on", _("On"))
 		], default="on")
-		config.usage.lcd_deepstandbypowerled.addNotifier(setPowerLEDdeepstanbystate)
-		config.lcd.ledpowercolor = ConfigSelection(choices=[
-			("0", _("Off")),
-			("1", _("Blue")),
-			("2", _("Red")),
-			("3", _("Violet"))
-		], default="1")
-		config.lcd.ledpowercolor.addNotifier(setLedPowerColor)
-		config.lcd.ledstandbycolor = ConfigSelection(choices=[
-			("0", _("Off")),
-			("1", _("Blue")),
-			("2", _("Red")),
-			("3", _("Violet"))
-		], default="3")
-		config.lcd.ledstandbycolor.addNotifier(setLedStandbyColor)
-		config.lcd.ledsuspendcolor = ConfigSelection(choices=[
-			("0", _("Off")),
-			("1", _("Blue")),
-			("2", _("Red")),
-			("3", _("Violet"))
-		], default="2")
-		config.lcd.ledsuspendcolor.addNotifier(setLedSuspendColor)
+		if isfile("/proc/stb/power/suspendled"):
+			config.usage.lcd_deepstandbypowerled.addNotifier(setPowerLEDdeepstanbystate)
+		if model == "dual":
+			colorchoices = [
+				("0", _("Off")),
+				("1", _("Blue"))
+			]
+		else:
+			colorchoices = [
+				("0", _("Off")),
+				("1", _("Blue")),
+				("2", _("Red")),
+				("3", _("Violet"))
+			]
+		config.lcd.ledpowercolor = ConfigSelection(default="1", choices=colorchoices)
+		if isfile("/proc/stb/fp/ledpowercolor"):
+			config.lcd.ledpowercolor.addNotifier(setLedPowerColor)
+		config.lcd.ledstandbycolor = ConfigSelection(default="1" if model == "dual" else "3", choices=colorchoices)
+		if isfile("/proc/stb/fp/ledstandbycolor"):
+			config.lcd.ledstandbycolor.addNotifier(setLedStandbyColor)
+		config.lcd.ledsuspendcolor = ConfigSelection(default="1" if model == "dual" else "2", choices=colorchoices)
+		if isfile("/proc/stb/fp/ledsuspendledcolor"):
+			config.lcd.ledsuspendcolor.addNotifier(setLedSuspendColor)
 		colorsList = [
 			("0xff0000", _("Red")),
 			("0xff3333", _("Rose")),
@@ -514,28 +503,35 @@ def InitLcd():
 			("0xffffff", _("White")),
 		]
 		config.lcd.ledblinkcontrolcolor = ConfigSelection(choices=colorsList, default="0xffffff")
-		config.lcd.ledblinkcontrolcolor.addNotifier(setLedBlinkControlColor)
+		if isfile("/proc/stb/fp/led_blink"):
+			config.lcd.ledblinkcontrolcolor.addNotifier(setLedBlinkControlColor)
 		config.lcd.ledbrightnesscontrol = ConfigSlider(default=0xff, increment=25, limits=(0, 0xff))
-		config.lcd.ledbrightnesscontrol.addNotifier(setLedBrightnessControl)
+		if isfile("/proc/stb/fp/led_brightness"):
+			config.lcd.ledbrightnesscontrol.addNotifier(setLedBrightnessControl)
 		config.lcd.ledcolorcontrolcolor = ConfigSelection(choices=colorsList, default="0xffffff")
-		config.lcd.ledcolorcontrolcolor.addNotifier(setLedColorControlColor)
+		if isfile("/proc/stb/fp/led_color"):
+			config.lcd.ledcolorcontrolcolor.addNotifier(setLedColorControlColor)
 		config.lcd.ledfadecontrolcolor = ConfigSelection(choices=colorsList, default="0xffffff")
-		config.lcd.ledfadecontrolcolor.addNotifier(setLedFadeControlColor)
+		if isfile("/proc/stb/fp/led_fade"):
+			config.lcd.ledfadecontrolcolor.addNotifier(setLedFadeControlColor)
 		config.lcd.power4x7on = ConfigSelection(choices=[
 			("off", _("Off")),
 			("on", _("On"))
 		], default="on")
-		config.lcd.power4x7on.addNotifier(setPower4x7On)
+		if isfile("/proc/stb/fp/power4x7on"):
+			config.lcd.power4x7on.addNotifier(setPower4x7On)
 		config.lcd.power4x7standby = ConfigSelection(choices=[
 			("off", _("Off")),
 			("on", _("On"))
 		], default="on")
-		config.lcd.power4x7standby.addNotifier(setPower4x7Standby)
+		if isfile("/proc/stb/fp/power4x7standby"):
+			config.lcd.power4x7standby.addNotifier(setPower4x7Standby)
 		config.lcd.power4x7suspend = ConfigSelection(choices=[
 			("off", _("Off")),
 			("on", _("On"))
 		], default="on")
-		config.lcd.power4x7suspend.addNotifier(setPower4x7Suspend)
+		if isfile("/proc/stb/fp/power4x7suspend"):
+			config.lcd.power4x7suspend.addNotifier(setPower4x7Suspend)
 		if platform in ("dm4kgen", "8100s"):
 			standby_default = 4
 		elif model == "osmega":
@@ -547,18 +543,16 @@ def InitLcd():
 			config.lcd.contrast.addNotifier(setLCDcontrast)
 		else:
 			config.lcd.contrast = ConfigNothing()
+		max_limit = 10
+		default_bright = 10
 		if model in ("h3", "ebox5000", "ebox5100", "sh1", "spycat", "novacombo", "novatwin"):
-			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 4))
-			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 4))
-			config.lcd.bright = ConfigSlider(default=4, limits=(0, 4))
+			max_limit = 4
+			default_bright = 4
 		elif model == "osmega":
-			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 10))
-			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 10))
-			config.lcd.bright = ConfigSlider(default=10, limits=(0, 10))
-		else:
-			config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, 10))
-			config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, 10))
-			config.lcd.bright = ConfigSlider(default=BoxInfo.getItem("DefaultDisplayBrightness"), limits=(0, 10))
+			default_bright = BoxInfo.getItem("DefaultDisplayBrightness")
+		config.lcd.standby = ConfigSlider(default=standby_default, limits=(0, max_limit))
+		config.lcd.dimbright = ConfigSlider(default=standby_default, limits=(0, max_limit))
+		config.lcd.bright = ConfigSlider(default=default_bright, limits=(0, max_limit))
 		config.lcd.dimbright.addNotifier(setLCDdimbright)
 		config.lcd.dimbright.apply = lambda: setLCDdimbright(config.lcd.dimbright)
 		config.lcd.dimdelay = ConfigSelection(choices=[
@@ -624,7 +618,7 @@ def InitLcd():
 		VFD_scroll_repeats = BoxInfo.getItem("VFD_scroll_repeats")
 		if VFD_scroll_repeats and VFDRepeats:
 			def scroll_repeats(configElement):
-				fileWriteLine(VFD_scroll_repeats, configElement.value)
+				eDBoxLCD.getInstance().set_VFD_scroll_repeats(int(configElement.value))
 
 			config.usage.vfd_scroll_repeats = ConfigSelection(choices=[
 				("0", _("None")),
@@ -640,10 +634,7 @@ def InitLcd():
 		VFD_scroll_delay = BoxInfo.getItem("VFD_scroll_delay")
 		if VFD_scroll_delay and VFDRepeats:
 			def scroll_delay(configElement):
-				if VFDDelay:
-					fileWriteLine(VFD_scroll_delay, hex(int(configElement.value)))
-				else:
-					fileWriteLine(VFD_scroll_delay, configElement.value)
+				eDBoxLCD.getInstance().set_VFD_scroll_delay(int(configElement.value))
 
 			config.usage.vfd_scroll_delay = ConfigSlider(default=150, increment=10, limits=(0, 500))
 			config.usage.vfd_scroll_delay.addNotifier(scroll_delay, immediate_feedback=False)
@@ -654,10 +645,7 @@ def InitLcd():
 		VFD_initial_scroll_delay = BoxInfo.getItem("VFD_initial_scroll_delay")
 		if VFD_initial_scroll_delay and VFDRepeats:
 			def initial_scroll_delay(configElement):
-				if VFDDelay:
-					fileWriteLine(VFD_initial_scroll_delay, hex(int(configElement.value)))
-				else:
-					fileWriteLine(VFD_initial_scroll_delay, configElement.value)
+				eDBoxLCD.getInstance().set_VFD_initial_scroll_delay(int(configElement.value))
 
 			config.usage.vfd_initial_scroll_delay = ConfigSelection(choices=[
 				("3000", "3 %s" % _("seconds")),
@@ -673,10 +661,7 @@ def InitLcd():
 		VFD_final_scroll_delay = BoxInfo.getItem("VFD_final_scroll_delay")
 		if VFD_final_scroll_delay and VFDRepeats:
 			def final_scroll_delay(configElement):
-				if VFDDelay:
-					fileWriteLine(VFD_final_scroll_delay, hex(int(configElement.value)))
-				else:
-					fileWriteLine(VFD_final_scroll_delay, configElement.value)
+				eDBoxLCD.getInstance().set_VFD_final_scroll_delay(int(configElement.value))
 
 			config.usage.vfd_final_scroll_delay = ConfigSelection(choices=[
 				("3000", "3 %s" % _("seconds")),

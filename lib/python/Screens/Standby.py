@@ -17,7 +17,7 @@ from Tools.Directories import mediaFilesInUse
 from Tools.Notifications import AddNotification
 from time import time, localtime
 from GlobalActions import globalActionMap
-from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, quitMainloop, iRecordableService
+from enigma import eDVBVolumecontrol, eTimer, eDVBLocalTimeHandler, eServiceReference, eStreamServer, quitMainloop, iRecordableService, eDBoxLCD
 from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand
 
 displaybrand = getOEMShowDisplayBrand()
@@ -474,18 +474,11 @@ class TryQuitMainloop(MessageBox):
 					open("/proc/stb/lcd/mode", "w").write(0)
 				except:
 					print("[Standby] Write to /proc/stb/lcd/mode failed.")
-			if model == "vusolo4k":
+			if model in ("vusolo4k", "pulse4k"):  # Workaround for white display flash.
 				try:
-					print("[Standby] Write to /proc/stb/fp/oled_brightness")
-					open("/proc/stb/fp/oled_brightness", "w").write("0")
+					eDBoxLCD.getInstance().setLCDBrightness(0)
 				except:
-					print("[Standby] Write to /proc/stb/fp/oled_brightness failed.")
-			if model == "pulse4k":
-				try:
-					print("[Standby] Write to /proc/stb/lcd/oled_brightness")
-					open("/proc/stb/lcd/oled_brightness", "w").write("0")
-				except:
-					print("[Standby] Write to /proc/stb/lcd/oled_brightness failed.")
+					print("[Standby] Write to oled_brightness failed.")
 			self.quitMainloop()
 		else:
 			MessageBox.close(self, True)
