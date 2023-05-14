@@ -1341,6 +1341,27 @@ def InitUsageConfig():
 				debugPath.append((pathjoin(partition.mountpoint, "logs", ""), path))
 	config.crash.debugPath = ConfigSelection(default="/home/root/logs/", choices=debugPath)
 
+	config.crash.gstdebug = ConfigYesNo(default=False)
+	config.crash.gstdebugcategory = ConfigSelection(default="*", choices=[
+		("*", _("All")),
+		("*audio*", _("Audio")),
+		("*video*", _("Video"))
+	])
+	config.crash.gstdebuglevel = ConfigSelection(default="INFO", choices=[
+		"none",
+		"ERROR",
+		"WARNING",
+		"FIXME",
+		"INFO",
+		"DEBUG",
+		"LOG",
+		"TRACE",
+		"MEMDUMP"
+	])
+	config.crash.gstdot = ConfigYesNo(default=False)
+
+	config.crash.coredump = ConfigYesNo(default=False)
+
 	def updateDebugPath(configElement):
 		if not exists(config.crash.debugPath.value):
 			mkdir(config.crash.debugPath.value, 0o755)
@@ -1349,7 +1370,7 @@ def InitUsageConfig():
 
 	config.crash.debugFileCount = ConfigSelectionNumber(min=2, max=20, stepwidth=1, default=5, wraparound=True)
 	config.crash.daysloglimit = ConfigSelectionNumber(min=1, max=30, stepwidth=1, default=8, wraparound=True)
-	config.crash.sizeloglimit = ConfigSelectionNumber(min=1, max=20, stepwidth=1, default=2, wraparound=True)
+	config.crash.sizeloglimit = ConfigSelectionNumber(min=1, max=250, stepwidth=1, default=2, wraparound=True)
 	config.crash.debugFileCount.save_forced = True
 
 	config.logmanager = ConfigSubsection()
