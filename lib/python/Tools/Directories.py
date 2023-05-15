@@ -132,7 +132,7 @@ def resolveFilename(scope, base="", path_prefix=None):
 	if base == "":  # If base is "" then set path to the scope.  Otherwise use the scope to resolve the base filename.
 		path, flags = defaultPaths.get(scope)
 		if scope == SCOPE_GUISKIN:  # If the scope is SCOPE_GUISKIN append the current skin to the scope path.
-			from Components.config import config  # This import must be here as this module finds the config file as part of the config initialisation.
+			from Components.config import config  # This import must be here as this module finds the config file as part of the config initialization.
 			skin = dirname(config.skin.primary_skin.value)
 			path = pathjoin(path, skin)
 		elif scope in (SCOPE_PLUGIN_ABSOLUTE, SCOPE_PLUGIN_RELATIVE):
@@ -145,7 +145,7 @@ def resolveFilename(scope, base="", path_prefix=None):
 					relative = "%s%s%s" % (pluginCode[0], sep, pluginCode[1])
 					path = pathjoin(plugins, relative)
 	elif scope == SCOPE_GUISKIN:
-		from Components.config import config  # This import must be here as this module finds the config file as part of the config initialisation.
+		from Components.config import config  # This import must be here as this module finds the config file as part of the config initialization.
 		skin = dirname(config.skin.primary_skin.value)
 		resolveList = [
 			pathjoin(scopeConfig, skin),
@@ -158,7 +158,7 @@ def resolveFilename(scope, base="", path_prefix=None):
 		]
 		path = itemExists(resolveList, base)
 	elif scope == SCOPE_LCDSKIN:
-		from Components.config import config  # This import must be here as this module finds the config file as part of the config initialisation.
+		from Components.config import config  # This import must be here as this module finds the config file as part of the config initialization.
 		skin = dirname(config.skin.display_skin.value) if hasattr(config.skin, "display_skin") else ""
 		resolveList = [
 			pathjoin(scopeConfig, "display", skin),
@@ -171,7 +171,7 @@ def resolveFilename(scope, base="", path_prefix=None):
 		]
 		path = itemExists(resolveList, base)
 	elif scope == SCOPE_FONTS:
-		from Components.config import config  # This import must be here as this module finds the config file as part of the config initialisation.
+		from Components.config import config  # This import must be here as this module finds the config file as part of the config initialization.
 		skin = dirname(config.skin.primary_skin.value)
 		display = dirname(config.skin.display_skin.value) if hasattr(config.skin, "display_skin") else None
 		resolveList = [

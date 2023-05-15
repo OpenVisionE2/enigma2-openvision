@@ -58,8 +58,8 @@ class VuKexec(Screen):
 				move(fileForceUpdate, fileForceUpdate.replace("force.update", "noforce.update"))
 		self["actions"].setEnabled(False)  # This function takes time so disable the ActionMap to avoid responding to multiple button presses
 		if isfile("/usr/bin/kernel_auto.bin") and isfile("/usr/bin/STARTUP.cpio.gz"):
-			self["footnote"].text = _("Vu+ MultiBoot Initialisation - will reboot after 10 seconds.")
-			self["description"].text = _("Vu+ MultiBoot Initialisation in progress\n\nWill reboot after restoring any eMMC slots\nThis can take from 1 -> 5 minutes per slot.")
+			self["footnote"].text = _("Vu+ MultiBoot Initialization - will reboot after 10 seconds.")
+			self["description"].text = _("Vu+ MultiBoot Initialization in progress\n\nWill reboot after restoring any eMMC slots\nThis can take from 1 -> 5 minutes per slot.")
 			with open("/STARTUP", 'w') as f:
 				f.write(STARTUP)
 			with open("/STARTUP_RECOVERY", 'w') as f:

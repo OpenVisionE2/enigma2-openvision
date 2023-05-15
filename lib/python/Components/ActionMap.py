@@ -280,8 +280,8 @@ class HelpableActionMap(ActionMap):
 
 class HelpableNumberActionMap(NumberActionMap, HelpableActionMap):
 	def __init__(self, parent, contexts, actions=None, prio=0, description=None):
-		# Initialise NumberActionMap with empty context and actions
-		# so that the underlying ActionMap is only initialised with
+		# Initialize NumberActionMap with empty context and actions
+		# so that the underlying ActionMap is only initialized with
 		# these once, via the HelpableActionMap.
 		#
 		NumberActionMap.__init__(self, [], {})

@@ -266,10 +266,10 @@ class HelpMenu(Screen, ShowRemoteControl):
 # [ ( actionmap, context, [(action, help), (action, help), ...] ), (actionmap, ... ), ... ]
 #
 # The helplist is ordered by the order that the Helpable[Number]ActionMaps
-# are initialised.
+# are initialized.
 #
 # The lookup of actions is by searching the HelpableActionMaps by priority,
-# then my order of initialisation.
+# then my order of initialization.
 #
 # The lookup of actions for a key press also stops at the first valid action
 # encountered.

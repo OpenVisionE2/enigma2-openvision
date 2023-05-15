@@ -72,7 +72,7 @@ geolocationFields = {
 class Geolocation:
 	def __init__(self):
 		self.geolocation = {}
-		# Enable this line to force load the geolocation data on initialisation.
+		# Enable this line to force load the geolocation data on initialization.
 		# NOT: Doing this without user concent may violate privacy laws!
 		# self.getGeolocationData(fields=None)
 

@@ -516,7 +516,7 @@ from GlobalActions import globalActionMap
 
 if enigma.eAVSwitch.getInstance().haveScartSwitch():
 	profile("Scart")
-	print("[StartEnigma] Initialising Scart module")
+	print("[StartEnigma] Initializing Scart module")
 	from Screens.Scart import Scart
 
 profile("VolumeControl")

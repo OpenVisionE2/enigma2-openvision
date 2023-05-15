@@ -249,7 +249,7 @@ class ConfigElement(object):
 			self.immediateNotifiers = value
 		elif value and callable(value):
 			self.immediateNotifiers = list(value)
-			print("[Config] Warning: Notifier initialisation requires a list of notifiers!")
+			print("[Config] Warning: Notifier initialization requires a list of notifiers!")
 		else:
 			self.immediateNotifiers = []
 		self.verifyNotifiers(self.immediateNotifiers)
@@ -264,7 +264,7 @@ class ConfigElement(object):
 			self.finalNotifiers = value
 		elif value:
 			self.finalNotifiers = list(value)
-			print("[Config] Warning: Notifier initialisation requires a list of notifiers!")
+			print("[Config] Warning: Notifier initialization requires a list of notifiers!")
 		else:
 			self.finalNotifiers = []
 		self.verifyNotifiers(self.finalNotifiers)

@@ -459,7 +459,7 @@ int eDVBSubtitleParser::subtitle_process_segment(uint8_t *segment)
 			region_fill_flag = 1;
 		}
 
-//	create and initialise buffer only when buffer does not yet exist.
+//	create and initialize buffer only when buffer does not yet exist.
 
 		if (region->buffer==0) {
 			region->buffer = new gPixmap(eSize(region->width, region->height), 8, 1);
