@@ -128,6 +128,7 @@ def getMultiBootSlots():
 								slot["device"] = device
 								slot["startupfile"] = basename(file)
 								slot["slotType"] = "eMMC" if "mmc" in slot["device"] else "USB"
+								BoxInfo.setItem("HasMultibootMTD", slot.get("mtd"))
 								if "rootsubdir" in line:
 									BoxInfo.setItem("HasRootSubdir", True)
 									slot["kernel"] = getArgValue(line, "kernel")
