@@ -8,6 +8,7 @@ from Components.Sources.StaticText import StaticText
 from Components.config import config, configfile, ConfigSelection, ConfigIP, ConfigInteger, getConfigListEntry, ConfigBoolean
 from Components.ConfigList import ConfigListScreen
 from Components.ImportChannels import ImportChannels
+from Tools.Directories import isPluginInstalled
 from os import listdir
 
 from enigma import getPeerStreamingBoxes
@@ -114,6 +115,9 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		self.list.append(getConfigListEntry(_("Import from remote receiver URL"),
 			config.usage.remote_fallback_import,
 			_("Import channels and/or EPG from remote receiver URL or IP.")))
+		if isPluginInstalled("FastChannelChange") and config.plugins.fccsetup.activate.value and config.usage.remote_fallback_enabled.value:
+			config.plugins.fccsetup.activate.value = False
+			config.plugins.fccsetup.activate.save()
 		if config.usage.remote_fallback_enabled.value or config.usage.remote_fallback_import.value:
 			self.list.append(getConfigListEntry(_("Enable import timer from fallback tuner"),
 				config.usage.remote_fallback_external_timer,

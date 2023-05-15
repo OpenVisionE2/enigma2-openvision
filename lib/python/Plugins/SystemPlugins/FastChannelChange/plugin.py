@@ -24,6 +24,8 @@ config.plugins.fccsetup.disableforrec = ConfigYesNo(default=True)
 
 FccInstance = None
 
+FallbackTuner = False
+
 
 def FCCChanged():
 	if FccInstance:
@@ -515,11 +517,19 @@ class FCCSetup(Screen, ConfigListScreen):
 			self.createSetup()
 
 	def keySave(self):
+		global FallbackTuner
 		if not self.isSupport:
 			self.keyCancel()
 			return
-
+		if config.plugins.fccsetup.activate.value and config.usage.remote_fallback_enabled.value:
+			config.usage.remote_fallback_enabled.value = False
+			config.usage.remote_fallback_enabled.save()
+			FallbackTuner = False
 		ConfigListScreen.keySave(self)
+		if not config.plugins.fccsetup.activate.value and not FallbackTuner:
+			config.usage.remote_fallback_enabled.value = True
+			config.usage.remote_fallback_enabled.save()
+			FallbackTuner = True
 		FCCChanged()
 
 
