@@ -9,14 +9,11 @@ from Components.config import config, configfile, ConfigSelection, ConfigIP, Con
 from Components.ConfigList import ConfigListScreen
 from Components.ImportChannels import ImportChannels
 from Tools.Directories import isPluginInstalled
-from os import listdir
 
 from enigma import getPeerStreamingBoxes
 
 
 class SetupFallbacktuner(ConfigListScreen, Screen):
-	DIR_ENIGMA2 = "/etc/enigma2"
-
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		Screen.setTitle(self, _("Fallback tuner setup"))
@@ -24,13 +21,12 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		self.onChangedEntry = []
 		ConfigListScreen.__init__(self, [], session=session, on_change=self.changedEntry)
 
-		self["actions2"] = ActionMap(["SetupActions", "ColorActions"],
+		self["actions2"] = ActionMap(["SetupActions"],
 		{
 			"ok": self.run,
 			"menu": self.keyCancel,
 			"cancel": self.keyCancel,
 			"save": self.run,
-			"yellow": self.purgeChannelList,
 			"left": self.keyLeft,
 			"right": self.keyRight
 		}, -2)
@@ -49,13 +45,6 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		self.remote_fallback_prev = config.usage.remote_fallback_import.value
 		self["config"].onSelectionChanged.append(self.selectionChanged)
 		self.selectionChanged()
-		self.checkdoPurge()
-
-	def checkdoPurge(self):
-		for characters in [file for file in listdir(self.DIR_ENIGMA2) if "+" in file]:
-			self["key_yellow"] = StaticText(_("Purge channel list"))
-			return True
-		return False
 
 	def createConfig(self):
 
@@ -111,7 +100,7 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 		self.list = []
 		self.list.append(getConfigListEntry(_("Enable fallback remote receiver"),
 			config.usage.remote_fallback_enabled,
-			_("Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on local tuner.\n\nYou can use this receiver only in client mode using server channel list, timers and EPG.\n\nIf YELLOW button is available, it means that channel list include characters bad, e.g. \"+\", then list cannot be import from server.\n\nIf you press YELLOW button then it will clean up list to remove these characters.")))
+			_("Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on local tuner.\n\nYou can use this receiver only in client mode using server channel list, timers and EPG.")))
 		self.list.append(getConfigListEntry(_("Import from remote receiver URL"),
 			config.usage.remote_fallback_import,
 			_("Import channels and/or EPG from remote receiver URL or IP.")))
@@ -308,24 +297,3 @@ class SetupFallbacktuner(ConfigListScreen, Screen):
 	def keyRight(self):
 		ConfigListScreen.keyRight(self)
 		self.createSetup()
-
-	def purgeChannelList(self):
-		from os.path import exists, join
-		from enigma import eDVBDB
-		from Screens.MessageBox import MessageBox
-		from shutil import move
-		if self.checkdoPurge():
-			for characters in [file for file in listdir(self.DIR_ENIGMA2) if "+" in file]:
-				purgefile = join(self.DIR_ENIGMA2, characters)
-				if exists(purgefile) and "+" in purgefile:
-					move(purgefile, purgefile.replace("+", ""))
-					readbouquets = open("/etc/enigma2/bouquets.tv", "r").read()
-					purge = readbouquets.replace("+", "")
-					with open("/etc/enigma2/bouquets.tv", "w") as fd:
-						fd.write(purge)
-						fd.close()
-			eDVBDB.getInstance().reloadBouquets()
-			eDVBDB.getInstance().reloadServicelist()
-			return self.session.open(MessageBox, _("Channel list was successfully purged."), type=MessageBox.TYPE_INFO, timeout=5)
-		else:
-			return self.session.open(MessageBox, _("Channel list is clean no characters to purge."), type=MessageBox.TYPE_INFO, timeout=5)

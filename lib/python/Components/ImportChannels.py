@@ -24,7 +24,6 @@ from six.moves.urllib.request import Request, urlopen
 import xml.etree.ElementTree as et
 
 supportfiles = ('lamedb', 'blacklist', 'whitelist', 'alternatives.')
-
 channelslistpath = "/etc/enigma2"
 
 
@@ -68,7 +67,8 @@ class ImportChannels():
 		try:
 			return self.getUrl(self.url + "/api/settings")
 		except HTTPError as err:
-			self.ImportChannelsDone(False, _("%s") % err)
+			self.ImportChannelsNotDone(True, "%s" % err)
+			return
 
 	def getFallbackSettingsValue(self, settings, e2settingname):
 		if isinstance(settings, bytes):
@@ -102,7 +102,7 @@ class ImportChannels():
 		if result:
 			self.checkEPGCallback()
 		else:
-			AddNotificationWithID("ChannelsImportNOK", MessageBox, _("EPG and Channels not received receiver %s is turned off") % self.url, type=MessageBox.TYPE_ERROR, timeout=10) if config.usage.remote_fallback_nok.value else None
+			self.ImportChannelsNotDone(True, _("EPG and Channels not received receiver %s is turned off") % self.url)
 
 	def forceSaveEPGonRemoteReceiver(self):
 		url = "%s/api/saveepg" % self.url
@@ -183,7 +183,7 @@ class ImportChannels():
 		eEPGCache.getInstance().load()
 		print("[ImportChannels] importEPGCallback New EPG data loaded...")
 		print("[ImportChannels] importEPGCallback Closing importer.")
-		self.ImportChannelsDone(False, _("EPG imported successfully from %s") % self.url) if config.usage.remote_fallback_ok.value else None
+		self.ImportChannelsDone(True, _("EPG imported successfully from %s") % self.url)
 
 	def threaded_function(self):
 		settings = self.getFallbackSettings()
@@ -198,7 +198,7 @@ class ImportChannels():
 					urlopen(self.url + "/api/saveepg")
 				except Exception as err:
 					print("[ImportChannels] %s" % err)
-					self.ImportChannelsDone(False, _("Server not available")) if config.usage.remote_fallback_nok.value else None
+					self.ImportChannelsNotDone(True, _("Server not available"))
 					return AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Set new value to \"Fallback remote receiver\" change URL %s") % self.url, type=MessageBox.TYPE_ERROR, timeout=10)
 				print("[ImportChannels] Get EPG Location")
 				try:
@@ -221,7 +221,7 @@ class ImportChannels():
 									shutil.move("%s" % epgdatserver, "%s" % (config.misc.epgcache_filename.value))
 									eEPGCache.getInstance().load()
 									shutil.rmtree(epgdattmp)
-									self.ImportChannelsDone(False, _("EPG imported successfully from %s") % self.url) if config.usage.remote_fallback_ok.value else None
+									self.ImportChannelsDone(True, _("EPG imported successfully from %s") % self.url)
 									return self.importChannelsCallback()
 							except Exception as err:
 								print("[ImportChannels] cannot save EPG %s" % err)
@@ -230,41 +230,78 @@ class ImportChannels():
 					return self.downloadEPG(), self.importChannelsCallback() if "channels_epg" in self.remote_fallback_import else None
 		return self.importChannelsCallback()
 
+	def ImportGetFilelist(self, remote=False, *files):
+		result = []
+		for file in files:
+			# determine the type of bouquet file
+			type = 1 if file.endswith('.tv') else 2
+			# read the contents of the file
+			try:
+				if remote:
+					try:
+						content = self.getUrl("%s/file?file=%s/%s" % (self.url, channelslistpath, quote(file))).readlines()
+						content = map(lambda l: l.decode('utf-8', 'replace'), content) if getPyVS() >= 3 else content
+					except Exception as err:
+						print("[ImportChannels] Exception: %s" % str(err))
+						self.ImportChannelsNotDone(True, _("%s\nRead failled %s/%s from %s") % (err, channelslistpath, file, self.url))
+						return
+				else:
+					with open('%s/%s' % (channelslistpath, file), 'r') as f:
+						content = f.readlines()
+			except Exception as e:
+				# for the moment just log and ignore
+				print("[ImportChannels] %s" % str(e))
+				continue
+
+			# check the contents for more bouquet files
+			for line in content:
+#				print ("[ImportChannels] %s" % line)
+				# check if it contains another bouquet reference
+				r = re.match('#SERVICE 1:7:%d:0:0:0:0:0:0:0:FROM BOUQUET "(.*)" ORDER BY bouquet' % type, line)
+				if r:
+					# recurse
+					result.extend(self.ImportGetFilelist(remote, r.group(1)))
+
+			# add add the file itself
+			result.append(file)
+
+		# return the file list
+		return result
+
 	def importChannelsCallback(self):
 		if "channels" in self.remote_fallback_import:
-			channelslist = ('lamedb', 'bouquets.', 'userbouquet.', 'blacklist', 'whitelist', 'alternatives.')
-			channelslistserver = "/tmp/channelslist"
-			try:
+			print("[ImportChannels] Enumerate remote files")
+			files = self.ImportGetFilelist(True, 'bouquets.tv', 'bouquets.radio')
+
+			print("[ImportChannels] Enumerate remote support files")
+			for file in loads(self.getUrl("%s/file?dir=%s" % (self.url, channelslistpath)).read())["files"]:
+				if basename(file).startswith(supportfiles):
+					files.append(file.replace(channelslistpath, ''))
+
+			print("[ImportChannels] Fetch remote files")
+			for file in files:
+				print("[ImportChannels] Downloading %s..." % file)
 				try:
-					mkdir("/tmp/channelslist")
-				except:
-					print("[ImportChannels] channelslist folder exists in tmp")
-				files = [file for file in loads(urlopen("%s/file?dir=%s" % (self.url, channelslistpath), timeout=5).read())["files"] if basename(file).startswith(channelslist)]
-				count = 0
-				for file in files:
-					count += 1
-					file = file if getPyVS() >= 3 else file.encode("UTF-8")
-					print("[ImportChannels] Downloading %s" % file)
-					try:
-						open("%s/%s" % (channelslistserver, basename(file)), "wb").write(urlopen("%s/file?file=%s" % (self.url, file), timeout=5).read())
-					except:
-						return self.ImportChannelsDone(False, _("ERROR downloading file %s. Use button YELLOW in server \"Purge channel list\"") % file) if config.usage.remote_fallback_nok.value else None
-			except:
-				print("[ImportChannels] You need to configure IP in ClientMode, do it from ImportChannels setup")
-				return AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Set new value to \"Fallback remote receiver\" change URL %s") % self.url, type=MessageBox.TYPE_ERROR, timeout=10)
+					open(join(self.tmp_dir, basename(file)), "wb").write(self.getUrl("%s/file?file=%s/%s" % (self.url, channelslistpath, quote(file))).read())
+				except Exception as err:
+					self.ImportChannelsNotDone(True, _("%s\nFailed to download %s/%s from %s") % (err, channelslistpath, file, self.url))
+					return
+
+			print("[ImportChannels] Enumerate local files")
+			files = self.ImportGetFilelist(False, 'bouquets.tv', 'bouquets.radio')
 			print("[ImportChannels] Removing files...")
-			files = [file for file in listdir("%s" % channelslistpath) if file.startswith(channelslist) and file.startswith(channelslistserver)]
 			for file in files:
-				remove("%s/%s" % (channelslistpath, file))
-			print("[ImportChannels] copying files...")
-			files = [x for x in listdir(channelslistserver)]
+				if exists(join(channelslistpath, file)):
+					remove(join(channelslistpath, file))
+			print("[ImportChannels] Updating files...")
+			files = [x for x in listdir(self.tmp_dir)]
 			for file in files:
-				shutil.move("%s/%s" % (channelslistserver, file), "%s/%s" % (channelslistpath, file))
-			shutil.rmtree(channelslistserver)
+				print("- Moving %s..." % file)
+				shutil.move(join(self.tmp_dir, file), join(channelslistpath, file))
 			eDVBDB.getInstance().reloadBouquets()
 			eDVBDB.getInstance().reloadServicelist()
 			from Components.ChannelsImporter import ChannelsImporter
-			self.ImportChannelsDone(False, _("Channels imported successfully from %s") % self.url) if config.usage.remote_fallback_ok.value and files else None
+			self.ImportChannelsDone(True, _("Channels imported successfully from %s") % self.url) if files else None
 			ChannelsImporter() if not config.clientmode.enabled.value and not files else None
 
 	def ImportChannelsDone(self, flag, message=None):
@@ -272,5 +309,9 @@ class ImportChannels():
 			shutil.rmtree(self.tmp_dir, True)
 		if config.usage.remote_fallback_ok.value:
 			AddNotificationWithID("ChannelsImportOK", MessageBox, _("%s") % message, type=MessageBox.TYPE_INFO, timeout=5)
-		elif config.usage.remote_fallback_nok.value:
+
+	def ImportChannelsNotDone(self, flag, message=None):
+		if hasattr(self, "tmp_dir") and exists(self.tmp_dir):
+			shutil.rmtree(self.tmp_dir, True)
+		if config.usage.remote_fallback_nok.value:
 			AddNotificationWithID("ChannelsImportNOK", MessageBox, _("%s") % message, type=MessageBox.TYPE_ERROR, timeout=5)
