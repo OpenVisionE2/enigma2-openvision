@@ -411,12 +411,6 @@ void eRCDeviceInputDev::handleCode(long rccode)
 		}
 #endif
 
-#if KEY_HELP_TO_KEY_INFO
-		if (ev->code == KEY_HELP) {
-			ev->code = KEY_INFO;
-		}
-#endif
-
 #if defined(KEY_INFO_TO_KEY_EPG) && !defined(HAVE_HISIAPI)
 		if (ev->code == KEY_INFO) {
 			ev->code = KEY_EPG;
