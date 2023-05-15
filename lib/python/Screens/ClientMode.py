@@ -19,9 +19,7 @@ from enigma import ePoint
 class ClientModeScreen(ConfigListScreen, Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.setup_title = screentitle = _("Client mode")
-		title = screentitle
-		Screen.setTitle(self, title)
+		self.setTitle(_("Client Mode Tuner Settings"))
 		self.skinName = "Setup"
 		self.initial_state = config.clientmode.enabled.value
 		self.onChangedEntry = []
