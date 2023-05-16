@@ -344,7 +344,7 @@ def InitUsageConfig():
 		if savedValue and savedValue != defaultValue:
 			config.usage.timeshift_path.setChoices([(defaultValue, defaultValue), (savedValue, savedValue)], default=defaultValue)
 			config.usage.timeshift_path.value = savedValue
-	if not exists(config.usage.timeshift_path.value):
+	if not "/" in config.usage.timeshift_path.value and not exists(config.usage.timeshift_path.value):
 		makedirs(config.usage.timeshift_path.value, 0o755) # Create Timeshift DefaultValue directorie and users Directories. PathStatus of Timeshift module values this directorie.
 	config.usage.timeshift_path.save()
 	config.usage.allowed_timeshift_paths = ConfigLocations(default=[resolveFilename(SCOPE_TIMESHIFT)])
