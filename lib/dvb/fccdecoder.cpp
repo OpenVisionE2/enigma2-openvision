@@ -49,8 +49,6 @@ int eFCCDecoder::allocateFcc()
 				eDebug("[eFCCDecoder] Alloc %s", filename);
 
 			m_fccs[i] = fccFd;
-			if (fccFd == m_fccs[0])
-				return -1;
 			break;
 		}
 	}
