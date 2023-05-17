@@ -14,6 +14,7 @@ from Tools.Directories import SCOPE_SKINS, fileReadLine, fileReadXML, fileWriteL
 
 MODULE_NAME = __name__.split(".")[-1]
 
+model = BoxInfo.getItem("model")
 socfamily = BoxInfo.getItem("socfamily")
 FbcTunerPowerAlwaysOn = BoxInfo.getItem("FbcTunerPowerAlwaysOn")
 
@@ -916,6 +917,8 @@ class NimManager:
 							entry["internally_connectable"] = 1
 					elif id:
 						entry["internally_connectable"] = entry["frontend_device"] - 1
+						if model == "vuduo2" and entry["i2c"] != entries[id - 1]["i2c"]:
+							entry["internally_connectable"] = None
 			else:
 				entry["frontend_device"] = None
 			if "multi_type" not in entry:
@@ -1624,7 +1627,7 @@ def InitNimManager(nimmgr, update_slots=[]):
 		nim.turningspeedH = ConfigFloat(default=[2, 3], limits=[(0, 9), (0, 9)])
 		nim.turningspeedV = ConfigFloat(default=[1, 7], limits=[(0, 9), (0, 9)])
 		nim.powerMeasurement = ConfigYesNo(True)
-		nim.powerThreshold = ConfigInteger(default=BoxInfo.getItem("model") == "dm8000" and 15 or 50, limits=(0, 100))
+		nim.powerThreshold = ConfigInteger(default=model == "dm8000" and 15 or 50, limits=(0, 100))
 		nim.turningSpeed = ConfigSelection(turning_speed_choices, "fast")
 		nim.fastTurningBegin = ConfigDateTime(default=mktime(datetime(1970, 1, 1, 7, 0).timetuple()), formatstring=_("%H:%M"), increment=900)
 		nim.fastTurningEnd = ConfigDateTime(default=mktime(datetime(1970, 1, 1, 19, 0).timetuple()), formatstring=_("%H:%M"), increment=900)
