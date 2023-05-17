@@ -22,7 +22,7 @@ from Components.SystemInfo import BoxInfo
 from Components.Sources.StaticText import StaticText
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
-from Screens.Standby import getReasons, QUIT_RESTART, QUIT_REBOOT, TryQuitMainloop
+from Screens.Standby import getReasons, QUIT_RESTART, TryQuitMainloop
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import SCOPE_PLUGINS, resolveFilename, fileContains
 from Tools.Downloader import DownloadWithProgress
@@ -278,7 +278,7 @@ class FlashImage(Screen):
 			imagesList = getImageList()
 			currentimageslot = getCurrentImage()
 			choices = []
-			slotdict = {k: v for k, v in canMultiBoot.items() if not v['device'].startswith('/dev/sda')} if not BoxInfo.getItem("HasKexecUSB") else {k: v for k, v in canMultiBoot.items()}
+			slotdict = {k: v for k, v in canMultiBoot.items() if not v['device'].startswith('/dev/sda')} if not BoxInfo.setItem("HasKexecUSB", False) else {k: v for k, v in canMultiBoot.items()}
 			numberSlots = len(slotdict) + 1 if not hasKexec else len(slotdict)
 			for x in range(1, numberSlots):
 				choices.append(((_("slot%s - %s (current image) with, backup") if x == currentimageslot else _("slot%s - %s, with backup")) % (x, imagesList[x]['imagename']), (x, "with backup")))
@@ -440,7 +440,7 @@ class FlashImage(Screen):
 					kz0 = BoxInfo.getItem("mtdkernel")
 					rz0 = BoxInfo.getItem("mtdrootfs")
 					command = "/usr/bin/ofgwrite -kkz0 -rrz0 '%s'" % imagefiles  # slot0 treat as kernel/root only multiboot receiver
-				if BoxInfo.getItem("HasKexecUSB") and mtd and "mmcblk" not in mtd:
+				if BoxInfo.setItem("HasKexecUSB", True) and mtd and "mmcblk" not in mtd:
 					command = "/usr/bin/ofgwrite -r%s -kzImage -s'%s/linuxrootfs' -m%s '%s'" % (mtd, vumodel, self.multibootslot, imagefiles)  # USB flash slot kexec
 				else:
 					command = "/usr/bin/ofgwrite -k -r -m%s '%s'" % (self.multibootslot, imagefiles)  # eMMC flash slot kexec
@@ -691,7 +691,7 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 				with open("/%s/STARTUP_%d" % (self.tmp_dir, usbslot), 'w') as f:
 					f.write(STARTUP_usbslot)
 				print("[MultiBootSelection] STARTUP_%d --> %s, self.tmp_dir: %s" % (usbslot, STARTUP_usbslot, self.tmp_dir))
-			self.session.open(TryQuitMainloop, QUIT_REBOOT)
+			self.session.open(TryQuitMainloop, QUIT_RESTART)
 
 	def KexecMountRet(self, result=None, retval=None, extra_args=None):
 		self.device_uuid = "UUID=" + result.split("UUID=")[1].split(" ")[0].replace('"', '')
