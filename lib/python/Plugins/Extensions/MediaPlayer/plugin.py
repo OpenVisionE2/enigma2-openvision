@@ -2,7 +2,7 @@
 from os import listdir, remove
 from os.path import basename, dirname, splitext, isfile, split
 import time
-from enigma import iPlayableService, eTimer, eServiceCenter, iServiceInformation, ePicLoad
+from enigma import iPlayableService, eTimer, eServiceCenter, iServiceInformation, ePicLoad, eServiceReference, getDesktop
 from ServiceReference import ServiceReference
 from Screens.Screen import Screen
 from Screens.HelpMenu import HelpableScreen
@@ -26,6 +26,7 @@ from Components.SystemInfo import BoxInfo
 from Tools.Directories import fileExists, resolveFilename, SCOPE_CONFIG, SCOPE_PLAYLIST, SCOPE_GUISKIN
 from Tools.BoundFunction import boundFunction
 from Plugins.Extensions.MediaPlayer.settings import MediaPlayerSettings
+from Plugins.Plugin import PluginDescriptor
 import random
 
 
@@ -643,7 +644,6 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 			self.openServiceList()
 
 	def playAudioCD(self):
-		from enigma import eServiceReference
 		if len(self.cdAudioTrackFiles):
 			self.playlist.clear()
 			self.savePlaylistOnExit = False
@@ -670,7 +670,6 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 
 	def showEventInformation(self):
 		from Screens.EventView import EventViewSimple
-		from ServiceReference import ServiceReference
 		evt = self[self.currList].getCurrentEvent()
 		if evt:
 			self.session.open(EventViewSimple, evt, ServiceReference(self.getCurrent()))
@@ -1145,17 +1144,21 @@ class MediaPlayer(Screen, InfoBarBase, InfoBarScreenSaver, InfoBarSeek, InfoBarA
 
 
 class MediaPlayerLCDScreen(Screen):
-	skin = (
-	"""<screen name="MediaPlayerLCDScreen" position="0,0" size="132,64" id="1">
-		<widget name="text1" position="4,0" size="132,35" font="Regular;16"/>
-		<widget name="text3" position="4,36" size="132,14" font="Regular;10"/>
-		<widget name="text4" position="4,49" size="132,14" font="Regular;10"/>
-	</screen>""",
-	"""<screen name="MediaPlayerLCDScreen" position="0,0" size="96,64" id="2">
-		<widget name="text1" position="0,0" size="96,35" font="Regular;14"/>
-		<widget name="text3" position="0,36" size="96,14" font="Regular;10"/>
-		<widget name="text4" position="0,49" size="96,14" font="Regular;10"/>
-	</screen>""")
+	screenWidth = getDesktop(0).size().width()
+	if screenWidth == 1920:
+		skin = """
+		<screen name="MediaPlayerLCDScreen" position="0,0" size="132,64">
+			<widget name="text1" position="4,0" size="132,35" font="Regular;16"/>
+			<widget name="text3" position="4,36" size="132,14" font="Regular;10"/>
+			<widget name="text4" position="4,49" size="132,14" font="Regular;10"/>
+		</screen>"""
+	else:
+		skin = """
+		<screen name="MediaPlayerLCDScreen" position="0,0" size="96,64">
+			<widget name="text1" position="0,0" size="96,35" font="Regular;14"/>
+			<widget name="text3" position="0,36" size="96,14" font="Regular;10"/>
+			<widget name="text4" position="0,49" size="96,14" font="Regular;10"/>
+		</screen>"""
 
 	def __init__(self, session, parent):
 		Screen.__init__(self, session)
@@ -1193,8 +1196,6 @@ def menu(menuid, **kwargs):
 
 
 def filescan_open(list, session, **kwargs):
-	from enigma import eServiceReference
-
 	mp = session.open(MediaPlayer)
 	mp.playlist.clear()
 	mp.savePlaylistOnExit = False
@@ -1212,7 +1213,6 @@ def filescan_open(list, session, **kwargs):
 
 
 def audioCD_open(list, session, **kwargs):
-	from enigma import eServiceReference
 	if isfile('/media/audiocd/cdplaylist.cdpls'):
 		list = open("/media/audiocd/cdplaylist.cdpls")
 	else:
@@ -1231,7 +1231,6 @@ def audioCD_open(list, session, **kwargs):
 
 
 def audioCD_open_mn(session, **kwargs):
-	from enigma import eServiceReference
 	if isfile('/media/audiocd/cdplaylist.cdpls'):
 		list = open("/media/audiocd/cdplaylist.cdpls")
 	else:
@@ -1253,8 +1252,6 @@ def movielist_open(list, session, **kwargs):
 	if not list:
 		# sanity
 		return
-	from enigma import eServiceReference
-	from Screens.InfoBar import InfoBar
 	f = list[0]
 	if f.mimetype == "video/mp2t":
 		stype = 1
@@ -1318,9 +1315,6 @@ def filescan(**kwargs):
 			openfnc=audioCD_open,
 		),
 		]
-
-
-from Plugins.Plugin import PluginDescriptor
 
 
 def Plugins(**kwargs):
