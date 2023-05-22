@@ -28,12 +28,16 @@ from Tools.Directories import SCOPE_PLUGINS, resolveFilename, fileContains
 from Tools.Downloader import DownloadWithProgress
 from Tools.MultiBoot import deleteImage, getCurrentImage, getCurrentImageMode, getImageList, restoreImages
 
+OFGWRITE = "/usr/bin/ofgwrite"
+
 model = BoxInfo.getItem("model")
 platform = BoxInfo.getItem("platform")
 canMultiBoot = BoxInfo.getItem("canMultiBoot")
 canMode12 = BoxInfo.getItem("canMode12")
 HasUsbhdd = BoxInfo.getItem('HasUsbhdd')
 hasKexec = BoxInfo.getItem("hasKexec")
+mtdkernel = BoxInfo.getItem("mtdkernel")
+mtdrootfs = BoxInfo.getItem("mtdrootfs")
 
 if platform == "vu4kgen":
 	VuUUIDSlot = BoxInfo.getItem("VuUUIDSlot")
@@ -434,19 +438,37 @@ class FlashImage(Screen):
 		imagefiles = findimagefiles(self.unzippedimage)
 		mtd = canMultiBoot[self.multibootslot]["device"].split("/")[2]  # USB get mtd root fs slot kexec
 		if imagefiles:
+#			from Tools.MultiBoot import getMultiBootSlots
+#			bootSlots = getMultiBootSlots()
+#			if bootSlots:
+#				mtdKernel = bootSlots[self.multibootslot]["kernel"] if hasKexec else bootSlots[self.multibootslot]["kernel"].split(sep)[2]
+#				mtdRootFS = bootSlots[self.multibootslot]["device"] if bootSlots[self.multibootslot].get("ubi") else bootSlots[self.multibootslot]["device"].split(sep)[2]
+#			else:
+#				mtdKernel = mtdkernel
+#				mtdRootFS = mtdrootfs
 			if canMultiBoot and not hasKexec:
-				command = "/usr/bin/ofgwrite -k -r -m%s '%s'" % (self.multibootslot, imagefiles)
+				command = OFGWRITE + " -k -r -m%s '%s'" % (self.multibootslot, imagefiles)
+#				command = OFGWRITE + " -k%s -r%s -m0 '%s'" % (mtdkernel, mtdrootfs, imagefiles) if rootSubDir is None
 			elif not canMultiBoot:
-				command = "/usr/bin/ofgwrite -k -r '%s'" % imagefiles
-			else:  # kexec
+				command = OFGWRITE + " -k -r '%s'" % imagefiles
+			elif model in ("dm820", "dm7080"):  # Temp solution ofgwrite auto detection not ready.
+				command = OFGWRITE + " -rmmcblk0p1 '%s'" % imagefiles
+			elif platform == "dmamlogic":  # Temp solution ofgwrite auto detection not ready.
+				command = OFGWRITE + " -k%s -r%s '%s'" % (mtdkernel, mtdrootfs, imagefiles)
+			elif mtdkernel == mtdrootfs:  # Receiver with kernel and rootfs on one partition.
+				command = OFGWRITE + " -r '%s'" % imagefiles
+#			elif hasKexec and rootSubDir:  # Kexec Root Image.
+#				command = OFGWRITE + " -k -r -f '%s'" % imagefiles
+#				Console().ePopen("umount /proc/cmdline")
+			elif hasKexec:  # kexec
 				if self.multibootslot == 0:
-					kz0 = BoxInfo.getItem("mtdkernel")
-					rz0 = BoxInfo.getItem("mtdrootfs")
-					command = "/usr/bin/ofgwrite -kkz0 -rrz0 '%s'" % imagefiles  # slot0 treat as kernel/root only multiboot receiver
+					command = OFGWRITE + " -k%s -r%s '%s'" % (mtdkernel, mtdrootfs, imagefiles)  # slot0 treat as kernel/root only multiboot receiver
 				if platform == "vu4kgen" and BoxInfo.setItem("HasKexecUSB", True) and mtd and "mmcblk" not in mtd:
-					command = "/usr/bin/ofgwrite -r%s -kzImage -s'%s/linuxrootfs' -m%s '%s'" % (mtd, vumodel, self.multibootslot, imagefiles)  # USB flash slot kexec
+					command = OFGWRITE + " -kzImage -r%s -s'%s/linuxrootfs' -m%s '%s'" % (mtd, vumodel, self.multibootslot, imagefiles)  # USB flash slot kexec
 				else:
-					command = "/usr/bin/ofgwrite -k -r -m%s '%s'" % (self.multibootslot, imagefiles)  # eMMC flash slot kexec
+					command = OFGWRITE + " -k -r -m%s '%s'" % (self.multibootslot, imagefiles)  # eMMC flash slot kexec
+			else:  # Normal non MultiBoot receiver.
+				command = OFGWRITE + " -k -r '%s'" % imagefiles
 			self.containerofgwrite = Console()
 			self.containerofgwrite.ePopen(command, self.FlashimageDone)
 			fbClass.getInstance().lock()
