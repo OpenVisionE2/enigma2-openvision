@@ -25,6 +25,7 @@ import xml.etree.ElementTree as et
 
 supportfiles = ('lamedb', 'blacklist', 'whitelist', 'alternatives.')
 channelslistpath = "/etc/enigma2"
+channelsepg = False
 
 
 class ImportChannels():
@@ -189,7 +190,6 @@ class ImportChannels():
 		settings = self.getFallbackSettings()
 		self.getTerrestrialRegion(settings)
 		self.tmp_dir = tempfile.mkdtemp(prefix="ImportChannels_")
-
 		if "epg" in self.remote_fallback_import and not config.clientmode.enabled.value:
 			if config.usage.remote_fallback_import_restart.value or config.usage.remote_fallback_import_standby.value:
 				config.clientmode_notifications_ok.value = False
@@ -201,6 +201,8 @@ class ImportChannels():
 					self.ImportChannelsNotDone(True, _("Server not available"))
 					return AddNotificationWithID("ChannelsImportNOK", MessageBox, _("Set new value to \"Fallback remote receiver\" change URL %s") % self.url, type=MessageBox.TYPE_ERROR, timeout=10)
 				print("[ImportChannels] Get EPG Location")
+				if "channels_epg" in self.remote_fallback_import:
+					self.importChannelsCallback()
 				try:
 					searchPaths = ("/etc/enigma2/", "/media/hdd/")
 					for epg in searchPaths:
@@ -222,7 +224,6 @@ class ImportChannels():
 									eEPGCache.getInstance().load()
 									shutil.rmtree(epgdattmp)
 									self.ImportChannelsDone(True, _("EPG imported successfully from %s") % self.url)
-									return self.importChannelsCallback()
 							except Exception as err:
 								print("[ImportChannels] cannot save EPG %s" % err)
 				except Exception as err:
@@ -269,6 +270,11 @@ class ImportChannels():
 		return result
 
 	def importChannelsCallback(self):
+		global channelsepg
+		if "channels_epg" in self.remote_fallback_import:
+			config.usage.remote_fallback_import.value = "channels"
+			config.usage.remote_fallback_import.save()
+			channelsepg = True
 		if "channels" in self.remote_fallback_import:
 			print("[ImportChannels] Enumerate remote files")
 			files = self.ImportGetFilelist(True, 'bouquets.tv', 'bouquets.radio')
@@ -280,11 +286,16 @@ class ImportChannels():
 
 			print("[ImportChannels] Fetch remote files")
 			for file in files:
-				print("[ImportChannels] Downloading %s..." % file)
+				if exists(file):
+					print("[ImportChannels] Downloading %s..." % file)
 				try:
 					open(join(self.tmp_dir, basename(file)), "wb").write(self.getUrl("%s/file?file=%s/%s" % (self.url, channelslistpath, quote(file))).read())
 				except Exception as err:
-					self.ImportChannelsNotDone(True, _("%s\nFailed to download %s/%s from %s") % (err, channelslistpath, file, self.url))
+					if not "epg" in self.remote_fallback_import:
+						self.ImportChannelsNotDone(True, _("%s\nFailed to download %s/%s from %s") % (err, channelslistpath, file, self.url))
+					if channelsepg:
+						config.usage.remote_fallback_import.value = "channels_epg"
+						config.usage.remote_fallback_import.save()
 					return
 
 			print("[ImportChannels] Enumerate local files")
@@ -298,11 +309,15 @@ class ImportChannels():
 			for file in files:
 				print("- Moving %s..." % file)
 				shutil.move(join(self.tmp_dir, file), join(channelslistpath, file))
+			from Screens.InfoBar import InfoBar
+			from Screens.ClientMode import ClientModeScreen
 			eDVBDB.getInstance().reloadBouquets()
 			eDVBDB.getInstance().reloadServicelist()
-			from Components.ChannelsImporter import ChannelsImporter
-			self.ImportChannelsDone(True, _("Channels imported successfully from %s") % self.url) if files else None
-			ChannelsImporter() if not config.clientmode.enabled.value and not files else None
+			InfoBar.instance.servicelist.showFavourites()
+			self.ImportChannelsDone(True, _("Channels imported successfully from %s") % self.url)
+			if not files and not config.clientmode.enabled.value and not "0.0.0.0" in ClientModeScreen.getRemoteAddress(self):
+				from Components.ChannelsImporter import ChannelsImporter  # resource to import channels from ChannelsImporter
+				ChannelsImporter()
 
 	def ImportChannelsDone(self, flag, message=None):
 		if hasattr(self, "tmp_dir") and exists(self.tmp_dir):

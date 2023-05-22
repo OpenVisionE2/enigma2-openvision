@@ -133,6 +133,10 @@ class ClientModeScreen(ConfigListScreen, Screen):
 
 	def checkFTPconnection(self):
 		print("[ClientMode] checkFTPconnection Testing FTP connection...")
+		if self.getRemoteAddress() == "0.0.0.0":
+			mbox = self.session.open(MessageBox, _("IP %s is not valid.\nDisable client mode if you are going to use this address.") % self.getRemoteAddress(), MessageBox.TYPE_ERROR)
+			mbox.setTitle(_("FTP connection failure"))
+			return False
 		try:
 			from ftplib import FTP
 			ftp = FTP()
