@@ -29,12 +29,15 @@ from Tools.Downloader import DownloadWithProgress
 from Tools.MultiBoot import deleteImage, getCurrentImage, getCurrentImageMode, getImageList, restoreImages
 
 model = BoxInfo.getItem("model")
-vumodel = model[2:]
+platform = BoxInfo.getItem("platform")
 canMultiBoot = BoxInfo.getItem("canMultiBoot")
 canMode12 = BoxInfo.getItem("canMode12")
 HasUsbhdd = BoxInfo.getItem('HasUsbhdd')
-VuUUIDSlot = BoxInfo.getItem("VuUUIDSlot")
 hasKexec = BoxInfo.getItem("hasKexec")
+
+if platform == "vu4kgen":
+	VuUUIDSlot = BoxInfo.getItem("VuUUIDSlot")
+	vumodel = model[2:]
 
 FEED_URLS = [
 	("EGAMI", "https://image.egami-image.com/json/"),
@@ -440,7 +443,7 @@ class FlashImage(Screen):
 					kz0 = BoxInfo.getItem("mtdkernel")
 					rz0 = BoxInfo.getItem("mtdrootfs")
 					command = "/usr/bin/ofgwrite -kkz0 -rrz0 '%s'" % imagefiles  # slot0 treat as kernel/root only multiboot receiver
-				if BoxInfo.setItem("HasKexecUSB", True) and mtd and "mmcblk" not in mtd:
+				if platform == "vu4kgen" and BoxInfo.setItem("HasKexecUSB", True) and mtd and "mmcblk" not in mtd:
 					command = "/usr/bin/ofgwrite -r%s -kzImage -s'%s/linuxrootfs' -m%s '%s'" % (mtd, vumodel, self.multibootslot, imagefiles)  # USB flash slot kexec
 				else:
 					command = "/usr/bin/ofgwrite -k -r -m%s '%s'" % (self.multibootslot, imagefiles)  # eMMC flash slot kexec
@@ -494,7 +497,7 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 		{
 			"ok": self.keyOk,
 			"cancel": (self.cancel, _("Cancel the image selection and exit")),
-			"red": (self.cancel, _("Cancel")) if not usbIn else (self.KexecMount, _("Add USB slots (require receiver Vu+ 4k)")),
+			"red": (self.cancel, _("Cancel")) if not usbIn else ((self.KexecMount, _("Add USB slots (Vu+)")) if platform == "vu4kgen" else (self.cancel, _("Cancel"))),
 			"green": (self.keyOk, _("Select image and reboot")),
 			"yellow": (self.delImage, _("Select image and delete")),
 			"blue": (self.order, _("Orde image per modes and slots (require receiver with mode slot 12)")),
@@ -640,71 +643,72 @@ class MultiBootSelection(SelectImage, HelpableScreen):
 		else:
 			self["key_yellow"].setText("")
 
-	def KexecMount(self):
-		hdd = []
-		usblist = list(HasUsbhdd.keys())
-		print("[MultiBootSelection] usblist=", usblist)
-		if not VuUUIDSlot:
-			with open("/proc/mounts", "r") as fd:
-				xlines = fd.readlines()
-				for hddkey in range(len(usblist)):
-					for xline in xlines:
-						print("[MultiBootSelection] xline, usblist", xline, "   ", usblist[hddkey])
-						if xline.find(usblist[hddkey]) != -1 and "ext4" in xline:
-							index = xline.find(usblist[hddkey])
-							print("[MultiBootSelection] key, line ", usblist[hddkey], "   ", xline)
-							hdd.append(xline[index:index + 4])
-						else:
-							continue
-			print("[MultiBootSelection] hdd available ", hdd)
-			if not hdd:
-					self.session.open(MessageBox, _("FlashImage: Add USB STARTUP slots - No EXT4 USB attached."), MessageBox.TYPE_INFO, timeout=10)
-					self.cancel()
+	if platform == "vu4kgen":
+		def KexecMount(self):
+			hdd = []
+			usblist = list(HasUsbhdd.keys())
+			print("[MultiBootSelection] usblist=", usblist)
+			if not VuUUIDSlot:
+				with open("/proc/mounts", "r") as fd:
+					xlines = fd.readlines()
+					for hddkey in range(len(usblist)):
+						for xline in xlines:
+							print("[MultiBootSelection] xline, usblist", xline, "   ", usblist[hddkey])
+							if xline.find(usblist[hddkey]) != -1 and "ext4" in xline:
+								index = xline.find(usblist[hddkey])
+								print("[MultiBootSelection] key, line ", usblist[hddkey], "   ", xline)
+								hdd.append(xline[index:index + 4])
+							else:
+								continue
+				print("[MultiBootSelection] hdd available ", hdd)
+				if not hdd:
+						self.session.open(MessageBox, _("FlashImage: Add USB STARTUP slots - No EXT4 USB attached."), MessageBox.TYPE_INFO, timeout=10)
+						self.cancel()
+				else:
+					usb = hdd[0][0:3]
+					free = Harddisk(usb).Totalfree()
+					print("[MultiBootSelection] USB free space", free)
+					if free < 1024:
+						des = str(round((float(free)), 2)) + _("MB")
+						print("[MultiBootSelection][add USB STARTUP slot] limited free space", des)
+						self.session.open(MessageBox, _("FlashImage: Add USB STARTUP slots - USB (%s) only has %s free. At least 1GB is required.") % (usb, des), MessageBox.TYPE_INFO, timeout=30)
+						self.cancel()
+						return
+					Console().ePopen("/sbin/blkid | grep " + "/dev/" + hdd[0], self.KexecMountRet)
 			else:
-				usb = hdd[0][0:3]
-				free = Harddisk(usb).Totalfree()
-				print("[MultiBootSelection] USB free space", free)
-				if free < 1024:
-					des = str(round((float(free)), 2)) + _("MB")
-					print("[MultiBootSelection][add USB STARTUP slot] limited free space", des)
-					self.session.open(MessageBox, _("FlashImage: Add USB STARTUP slots - USB (%s) only has %s free. At least 1GB is required.") % (usb, des), MessageBox.TYPE_INFO, timeout=30)
-					self.cancel()
-					return
-				Console().ePopen("/sbin/blkid | grep " + "/dev/" + hdd[0], self.KexecMountRet)
-		else:
-			hiKey = sorted(canMultiBoot.keys(), reverse=True)[0]
-			self.session.openWithCallback(self.addSTARTUPs, MessageBox, _("Add 4 more Vu+ Multiboot USB slots after slot %s ?") % hiKey, MessageBox.TYPE_YESNO, timeout=30)
+				hiKey = sorted(canMultiBoot.keys(), reverse=True)[0]
+				self.session.openWithCallback(self.addSTARTUPs, MessageBox, _("Add 4 more Vu+ Multiboot USB slots after slot %s ?") % hiKey, MessageBox.TYPE_YESNO, timeout=30)
 
-	def addSTARTUPs(self, answer):
-		hiKey = sorted(canMultiBoot.keys(), reverse=True)[0]
-		hiUUIDkey = VuUUIDSlot[1]
-		print("[MultiBootSelection]1 answer, hiKey,  hiUUIDkey", answer, "   ", hiKey, "   ", hiUUIDkey)
-		if answer is False:
-			self.close()
-		else:
-			for usbslot in range(hiKey + 1, hiKey + 5):
-				STARTUP_usbslot = "kernel=%s/linuxrootfs%d/zImage root=%s rootsubdir=%s/linuxrootfs%d" % (vumodel, usbslot, VuUUIDSlot[0], vumodel, usbslot) # /STARTUP_<n>
+		def addSTARTUPs(self, answer):
+			hiKey = sorted(canMultiBoot.keys(), reverse=True)[0]
+			hiUUIDkey = VuUUIDSlot[1]
+			print("[MultiBootSelection]1 answer, hiKey,  hiUUIDkey", answer, "   ", hiKey, "   ", hiUUIDkey)
+			if answer is False:
+				self.close()
+			else:
+				for usbslot in range(hiKey + 1, hiKey + 5):
+					STARTUP_usbslot = "kernel=%s/linuxrootfs%d/zImage root=%s rootsubdir=%s/linuxrootfs%d" % (vumodel, usbslot, VuUUIDSlot[0], vumodel, usbslot) # /STARTUP_<n>
+					if model == "vuduo4k":
+						STARTUP_usbslot += " rootwait=40"
+					elif model == "vuduo4kse":
+						STARTUP_usbslot += " rootwait=35"
+					with open("/%s/STARTUP_%d" % (self.tmp_dir, usbslot), 'w') as f:
+						f.write(STARTUP_usbslot)
+					print("[MultiBootSelection] STARTUP_%d --> %s, self.tmp_dir: %s" % (usbslot, STARTUP_usbslot, self.tmp_dir))
+				self.session.open(TryQuitMainloop, QUIT_RESTART)
+
+		def KexecMountRet(self, result=None, retval=None, extra_args=None):
+			self.device_uuid = "UUID=" + result.split("UUID=")[1].split(" ")[0].replace('"', '')
+			usb = result.split(":")[0]
+			for usbslot in range(4, 8):
+				STARTUP_usbslot = "kernel=%s/linuxrootfs%d/zImage root=%s rootsubdir=%s/linuxrootfs%d" % (vumodel, usbslot, self.device_uuid, vumodel, usbslot) # /STARTUP_<n>
 				if model == "vuduo4k":
 					STARTUP_usbslot += " rootwait=40"
 				elif model == "vuduo4kse":
 					STARTUP_usbslot += " rootwait=35"
+				print("[MultiBootSelection] STARTUP_%d --> %s, self.tmp_dir: %s" % (usbslot, STARTUP_usbslot, self.tmp_dir))
 				with open("/%s/STARTUP_%d" % (self.tmp_dir, usbslot), 'w') as f:
 					f.write(STARTUP_usbslot)
-				print("[MultiBootSelection] STARTUP_%d --> %s, self.tmp_dir: %s" % (usbslot, STARTUP_usbslot, self.tmp_dir))
+
+			BoxInfo.setItem('HasKexecUSB', True)
 			self.session.open(TryQuitMainloop, QUIT_RESTART)
-
-	def KexecMountRet(self, result=None, retval=None, extra_args=None):
-		self.device_uuid = "UUID=" + result.split("UUID=")[1].split(" ")[0].replace('"', '')
-		usb = result.split(":")[0]
-		for usbslot in range(4, 8):
-			STARTUP_usbslot = "kernel=%s/linuxrootfs%d/zImage root=%s rootsubdir=%s/linuxrootfs%d" % (vumodel, usbslot, self.device_uuid, vumodel, usbslot) # /STARTUP_<n>
-			if model == "vuduo4k":
-				STARTUP_usbslot += " rootwait=40"
-			elif model == "vuduo4kse":
-				STARTUP_usbslot += " rootwait=35"
-			print("[MultiBootSelection] STARTUP_%d --> %s, self.tmp_dir: %s" % (usbslot, STARTUP_usbslot, self.tmp_dir))
-			with open("/%s/STARTUP_%d" % (self.tmp_dir, usbslot), 'w') as f:
-				f.write(STARTUP_usbslot)
-
-		BoxInfo.setItem('HasKexecUSB', True)
-		self.session.open(TryQuitMainloop, QUIT_RESTART)

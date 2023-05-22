@@ -13,6 +13,7 @@ MODULE_NAME = __name__.split(".")[-1]
 
 canMode12 = BoxInfo.getItem("canMode12")
 hasKexec = BoxInfo.getItem("hasKexec")
+platform = BoxInfo.getItem("platform")
 
 PREFIX = "MultiBoot_"
 MOUNT = "/bin/mount"
@@ -89,7 +90,8 @@ def getMultiBootSlots():
 	global bootSlots, startupDevice
 	bootSlots = {}
 	mode12Found = False
-	BoxInfo.setItem("VuUUIDSlot", "")
+	if platform == "vu4kgen":
+		BoxInfo.setItem("VuUUIDSlot", "")
 	UUID = ""
 	UUIDnum = 0
 	if startupDevice is None:
@@ -173,11 +175,14 @@ def getCurrentImage():
 				for slot in bootSlots.keys():
 					if bootSlots[slot]["device"] == device:
 						return slot
-		else: # kexec kernel multiboot VU+
-			rootsubdir = [x for x in bootArgs.split() if x.startswith("rootsubdir")]
-			char = "/" if "/" in rootsubdir[0] else "="
-			BoxInfo.setItem("VuUUIDSlot", UUID, UUIDnum if UUIDnum != 0 else "")
-			return int(rootsubdir[0].rsplit(char, 1)[1][11:])
+		else:
+			if platform == "vu4kgen":
+				rootsubdir = [x for x in bootArgs.split() if x.startswith("rootsubdir")]
+				char = "/" if "/" in rootsubdir[0] else "="
+				BoxInfo.setItem("VuUUIDSlot", UUID, UUIDnum if UUIDnum != 0 else "")
+				return int(rootsubdir[0].rsplit(char, 1)[1][11:])
+			else:
+				pass
 	return None
 
 

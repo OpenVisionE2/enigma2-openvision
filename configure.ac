@@ -687,6 +687,7 @@ if test "$BOXTYPE" == "tyrant" -o "$BOXTYPE" == "xcombo" -o "$STBPLATFORM" == "v
 	AC_DEFINE(KEY_F3_TO_KEY_LIST, 1,[define when rc sends a KEY_F3 event for its KEY_LIST key])
 fi
 
+AM_CONDITIONAL(VUPLUS4K, test "$STBPLATFORM" == "vu4kgen")
 if test "$BOXBRAND" == "vuplus"; then
 	AC_DEFINE(FORCE_NO_BLENDING_ACCELERATION, 1,[define when the framebuffer acceleration does not have alphablending support, though the autodetection might indicate that it does])
 	AC_DEFINE(FORCE_ADVANCED_REMOTE, 1,[define to fixup the input device identification when the remote control is actually an 'advanced' remote (with play/forward/rewind keys)])

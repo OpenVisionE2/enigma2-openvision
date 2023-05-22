@@ -13,6 +13,7 @@ from Components.ProgressBar import ProgressBar
 from Components.Sources.StaticText import StaticText
 from Components.Label import Label
 from Components.ScrollLabel import ScrollLabel
+from Components.SystemInfo import BoxInfo
 from Components.config import config, ConfigBoolean, configfile
 from Tools.Geolocation import geolocation
 from Screens.LocaleSelection import LocaleWizard
@@ -190,6 +191,9 @@ geolocationData = geolocation.getGeolocationData(fields="isp,org,mobile,proxy,qu
 wizardManager.registerWizard(AutoRestoreWizard, config.misc.firstrun.value and checkForAvailableAutoBackup(), priority=10)
 if geolocationData.get("status", None) != "success":
 	wizardManager.registerWizard(LocaleWizard, config.misc.firstrun.value, priority=10)
+if BoxInfo.getItem("platform") == "vu4kgen":
+	from Screens.VuKexec import VuWizard
+	wizardManager.registerWizard(VuWizard, config.misc.firstrun.value, priority=2)
 wizardManager.registerWizard(TimeWizard, config.misc.firstrun.value, priority=20)
 if OverscanWizard:
 	wizardManager.registerWizard(OverscanWizard, config.misc.do_overscanwizard.value, priority=30)
