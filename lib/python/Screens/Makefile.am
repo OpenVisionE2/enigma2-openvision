@@ -16,6 +16,7 @@ install_PYTHON = \
 	EventView.py \
 	FactoryReset.py \
 	FixedMenu.py \
+	FlashExpander.py \
 	FlashImage.py \
 	Globals.py \
 	HarddiskSetup.py \

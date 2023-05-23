@@ -156,6 +156,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 			<item entryID="harddisk_setup" level="0" text="Harddisk Setup" weight="5"><setup id="HardDisk" /></item>
 			<item entryID="harddisk_init" level="0" text="Initialization" weight="10"><screen module="HarddiskSetup" screen="HarddiskSelection" /></item>
 			<item entryID="harddisk_check" level="0" text="Filesystem Check" weight="15"><screen module="HarddiskSetup" screen="HarddiskFsckSelection" /></item>
+			<item entryID="flash_expander" level="2" text="Flash Expander" weight="40"><screen module="FlashExpander" screen="FlashExpander" /></item>
 		</menu>
 
 		<!-- Menu / Setup / Recordings, Playback & Timeshift -->
