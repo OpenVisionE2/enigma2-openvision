@@ -307,9 +307,6 @@ class PliExtraInfo(Poll, Converter):
 				if isfile("/proc/stb/vmpeg/0/framerate"):
 					print("[PliExtraInfo] Read /proc/stb/vmpeg/0/framerate")
 					fps = (int(open("/proc/stb/vmpeg/0/framerate", "r").read()) + 500) // 1000
-				elif isfile("/proc/stb/vmpeg/0/frame_rate"):
-					print("[PliExtraInfo] Read /proc/stb/vmpeg/0/frame_rate")
-					fps = (int(open("/proc/stb/vmpeg/0/frame_rate", "r").read()) + 500) // 1000
 				elif isfile("/proc/stb/vmpeg/0/fallback_framerate"):
 					print("[PliExtraInfo] Read /proc/stb/vmpeg/0/fallback_framerate")
 					fps = (int(open("/proc/stb/vmpeg/0/fallback_framerate", "r").read()) + 0) // 1000
