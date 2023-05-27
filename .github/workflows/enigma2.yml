@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        gcc: [12]
+        gcc: [13]
     steps:
     - uses: actions/checkout@v2
     - name: install gcc ${{ matrix.gcc }}
