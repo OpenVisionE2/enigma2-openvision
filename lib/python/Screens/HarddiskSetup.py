@@ -12,12 +12,12 @@ class HarddiskSetup(Screen):
 		Screen.__init__(self, session)
 		self.action = action
 		self.question = question
-		self.setTitle(_("Setup hard disk"))
+		self.setTitle(_("Format Disk"))
 		self["model"] = Label(_("Model: ") + hdd.model())
 		self["capacity"] = Label(_("Capacity: ") + hdd.capacity())
 		self["bus"] = Label(_("Bus: ") + hdd.bus())
 		self["key_red"] = Label(_("Cancel"))
-		self["key_green"] = Label(text) # text can be either "Initialize" or "Check"
+		self["key_green"] = Label(text) # text can be either "Format" or "Check"
 		self["actions"] = ActionMap(["OkCancelActions"],
 		{
 			"ok": self.hddQuestion,
@@ -53,7 +53,7 @@ class HarddiskSetup(Screen):
 class HarddiskSelection(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.setTitle(_("Select hard disk"))
+		self.setTitle(_("Format Disk Settings"))
 		self.skinName = "HarddiskSelection" # For derived classes
 		if harddiskmanager.HDDCount() == 0:
 			tlist = []
@@ -77,8 +77,8 @@ class HarddiskSelection(Screen):
 	def doIt(self, selection):
 		self.session.openWithCallback(self.close, HarddiskSetup, selection,
 			action=selection.createInitializeJob,
-			text=_("Initialize"),
-			question=_("Do you really want to initialize the device?\nAll data on the disk will be lost!"))
+			text=_("Format"),
+			question=_("Do you really want to format the device in the Linux file system?\nAll data on the device will be lost!"))
 
 	def okbuttonClick(self):
 		selection = self["hddlist"].getCurrent()
