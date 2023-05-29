@@ -191,7 +191,7 @@ geolocationData = geolocation.getGeolocationData(fields="isp,org,mobile,proxy,qu
 wizardManager.registerWizard(AutoRestoreWizard, config.misc.firstrun.value and checkForAvailableAutoBackup(), priority=10)
 if geolocationData.get("status", None) != "success":
 	wizardManager.registerWizard(LocaleWizard, config.misc.firstrun.value, priority=10)
-if BoxInfo.getItem("platform") == "vu4kgen":
+if BoxInfo.getItem("canKexec"):
 	from Screens.VuKexec import VuWizard
 	wizardManager.registerWizard(VuWizard, config.misc.firstrun.value, priority=2)
 wizardManager.registerWizard(TimeWizard, config.misc.firstrun.value, priority=20)
