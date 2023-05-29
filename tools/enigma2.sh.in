@@ -6,7 +6,7 @@ datarootdir="@datarootdir@"
 
 export PATH="${PATH}:/usr/script"
 
-if [ -d /home/root ]; then
+if [ -d "/home/root" ]; then
 	export HOME="/home/root"
 	cd
 fi
@@ -16,36 +16,34 @@ fi
 # do not impact running code.
 #
 function check_busybox_update {
-	if [ -e /etc/enigma2/.busybox_update_required ]; then
+	if [ -e "/etc/enigma2/.busybox_update_required" ]; then
 		DEFERRED=`cat /etc/enigma2/.busybox_update_required`
-		rm /etc/enigma2/.busybox_update_required
+		rm -f /etc/enigma2/.busybox_update_required
 		${DEFERRED} 2>&1 | tee -a /home/root/opkgupgrade.log
 	fi
 }
 
 BRANDCHECK=`sed -En 's|^brand=(.+)$|\1|p' /usr/lib/enigma.info`
-MODELCHECK=`sed -En 's|^model=(.+)$|\1|p' /usr/lib/enigma.info`
 PLATFORMCHECK=`sed -En 's|^platform=(.+)$|\1|p' /usr/lib/enigma.info`
-SOCFAMILY=`sed -En 's|^socfamily=(....).*$|\1|p' /usr/lib/enigma.info`
 PYVER=`sed -En 's|^python=(.+)$|\1|p' /usr/lib/enigma.info`
 
-if [ "${PLATFORMCHECK}" == "octagonhisil" ] || [ "${PLATFORMCHECK}" == "octagonhisilnew" ] || [ "${PLATFORMCHECK}" == "uclanhisil" ] || [ "${PLATFORMCHECK}" == "gbmv200" ] || [ "${PLATFORMCHECK}" == "qviarthisil" ] || [ "${MODELCHECK}" == "beyonwizv2" ] || [ "${MODELCHECK}" == "viper4k" ] || [ "${MODELCHECK}" == "ip8" ]; then
+if [ -f "@bindir@/libreader" ]; then
 	COUNT=`ps -ef | grep libreader | grep -v "grep" | wc -l`
 	if [ "${COUNT}" -eq "0" ];then
-		libreader 720P_50
+		@bindir@/libreader 720P_50
 	fi
 fi
 
-if [ -f /proc/stb/fp/led_color ]; then
+if [ -f "/proc/stb/fp/led_color" ]; then
 	echo "00ffffff" > /proc/stb/fp/led_color
-elif [ -f /proc/stb/fp/led_brightness ]; then
+elif [ -f "/proc/stb/fp/led_brightness" ]; then
 	echo "000000ff" > /proc/stb/fp/led_brightness
 fi
 
 if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
 	/sbin/insmod /lib/modules/4.9/extra/lcd/lcd.ko
 	echo "1" > /proc/stb/fp/nec_ir
-	[ -f /sys/class/remote/amremote/protocol ] && echo "2" > /sys/class/remote/amremote/protocol
+	[ -f "/sys/class/remote/amremote/protocol" ] && echo "2" > /sys/class/remote/amremote/protocol
 fi
 
 # LC_ALL available?
@@ -54,7 +52,7 @@ if [ -z $LC_ALL ] && [ ${PYVER::1} == 3 ]; then
 fi
 
 # Check for sundtek tuner helper lib.
-if [ -e /opt/lib/libmediaclient.so ]; then
+if [ -e "/opt/lib/libmediaclient.so" ]; then
 	LIBS="/opt/lib/libmediaclient.so @libdir@/libopen.so.0.0.0"
 else
 	LIBS="@libdir@/libopen.so.0.0.0"
@@ -62,13 +60,14 @@ fi
 
 # This should not be done as it will suppress the appropriate diagnostic message from within Enigma2.
 #
-# if [ ! -e /etc/enigma2/settings ]; then
+# if [ ! -e "/etc/enigma2/settings" ]; then
 # 	touch /etc/enigma2/settings
 # fi
 
 # Enigma main loop.
 while : ; do
 	# Show backdrop on enigma2 start.
+	killall -9 showiframe; sleep 1
 	SKIN=`sed -En 's|^config\.skin\.primary_skin=(.+)/skin\.xml$|\1|p' "@sysconfdir@/enigma2/settings"`
 	if [ -n "${SKIN}" ]; then
 		SEARCHDIRS="@sysconfdir@/enigma2/$SKIN @sysconfdir@/enigma2/skin_common @sysconfdir@/enigma2 @datadir@/enigma2/$SKIN @datadir@/enigma2/skin_default @datadir@/enigma2"
@@ -76,18 +75,15 @@ while : ; do
 		SEARCHDIRS="@sysconfdir@/enigma2/skin_common @sysconfdir@/enigma2 @datadir@/enigma2/skin_default @datadir@/enigma2"
 	fi
 	for DIR in $SEARCHDIRS; do
-		if [ -d "${DIR}" ] && [ -f "${DIR}/backdrop.mvi" ] && [ -x "@bindir@/showiframe" ]; then
-			if [ "${SOCFAMILY}" == "hisi" ]; then
-				killall -9 showiframe; sleep 0.1
-			fi
-			"@bindir@/showiframe" "${DIR}/backdrop.mvi"
+		if [ -d "${DIR}" ] && [ -f "${DIR}/backdrop.mvi" ] && [ -f "@bindir@/showiframe" ]; then
+			@bindir@/showiframe ${DIR}/backdrop.mvi
 			break
 		fi
 	done
 
 	# Hook to execute scripts always before enigma2 start.
-	if [ -x "@bindir@/enigma2_pre_start.sh" ]; then
-		"@bindir@/enigma2_pre_start.sh"
+	if [ -f "@bindir@/enigma2_pre_start.sh" ]; then
+		@bindir@/enigma2_pre_start.sh
 	fi
 
 	if [ "${BRANDCHECK}" == "dreambox" ]; then
@@ -103,8 +99,8 @@ while : ; do
 	fi
 
 	# Dreamci.
-	if [ -x "@bindir@/enigma2_pre_start_ciplus.sh" ]; then
-		"@bindir@/enigma2_pre_start_ciplus.sh"
+	if [ -f "@bindir@/enigma2_pre_start_ciplus.sh" ]; then
+		@bindir@/enigma2_pre_start_ciplus.sh
 	fi
 
 	# Start enigma.
@@ -138,7 +134,7 @@ while : ; do
 		for FILE in `ls -t "${DEBUGDIR}"enigma2_debug_*.log`; do
 			let "KEEP--"
 			if [ "${KEEP}" -lt "1" ]; then
-				rm "${FILE}"
+				rm -f "${FILE}"
 			fi
 		done
 		# Today's log file.
@@ -165,6 +161,11 @@ while : ; do
 	# >128 signal
 
 	RET=$?
+
+	if [ "${RET}" -ne "1" ] && [ -f "@bindir@/libreader" ]; then
+		killall -9 libreader; sleep 5
+	fi
+
 	case ${RET} in
 		1)
 			if [ "${BRANDCHECK}" == "atto" ]; then
@@ -176,22 +177,22 @@ while : ; do
 				echo "0" > /sys/class/leds/wetek\:blue\:ethled/brightness
 				echo "mem" > /sys/power/state
 			fi
-			if [ -f /proc/stb/fp/led_color ]; then
+			if [ -f "/proc/stb/fp/led_color" ]; then
 				echo "00ffffff" > /proc/stb/fp/led_color
-			elif [ -f /proc/stb/fp/led_brightness ]; then
+			elif [ -f "/proc/stb/fp/led_brightness" ]; then
 				echo "00000008" > /proc/stb/fp/led_brightness
 			fi
 			check_busybox_update
-			if [ -x "@bindir@/turnoff_power" ]; then
-				"@bindir@/turnoff_power"
-			elif [ -x "@bindir@/hihalt" ]; then
-				"@bindir@/hihalt"
+			if [ -f "@bindir@/turnoff_power" ]; then
+				@bindir@/turnoff_power
+			elif [ -f "@bindir@/hihalt" ]; then
+				@bindir@/hihalt
 			else
 				/sbin/halt
 			fi
 			;;
 		2)
-			[ -f /proc/stb/fp/force_restart ] && echo "1" > /proc/stb/fp/force_restart
+			[ -f "/proc/stb/fp/force_restart" ] && echo "1" > /proc/stb/fp/force_restart
 			check_busybox_update
 			/sbin/reboot
 			;;
@@ -199,7 +200,7 @@ while : ; do
 			;;
 		4)
 			/sbin/rmmod lcd
-			"@sbindir@/fpupgrade" --upgrade 2>&1 | tee /home/root/fpupgrade.log
+			@sbindir@/fpupgrade --upgrade 2>&1 | tee /home/root/fpupgrade.log
 			sleep 0.1;
 			/sbin/rmmod fp
 			/sbin/modprobe fp
@@ -212,28 +213,28 @@ while : ; do
 			fi
 			;;
 		7)
-			rm -R /etc/enigma2
+			rm -fR /etc/enigma2
 			;;
 		12)
-			if [ -e /dev/block/by-name/bootoptions ]; then
+			if [ -e "/dev/block/by-name/bootoptions" ]; then
 				mkdir -p /tmp/bootoptions
 				mount /dev/block/by-name/bootoptions /tmp/bootoptions
 				cp -f /tmp/bootoptions/STARTUP_ANDROID /tmp/bootoptions/STARTUP_ONCE
 			else
 				echo "rescue" > /proc/stb/fp/boot_mode
 			fi
-			[ -e "@bindir@/setenv" ] && "@bindir@/setenv" default_sys 1
-			[ -e "@sbindir@/fw_setenv" ] && "@sbindir@/fw_setenv" bootfromnand 1
+			[ -e "@bindir@/setenv" ] && @bindir@/setenv default_sys 1
+			[ -e "@sbindir@/fw_setenv" ] && @sbindir@/fw_setenv bootfromnand 1
 			check_busybox_update
 			/sbin/reboot
 			;;
 		16)
 			if [ "${PLATFORMCHECK}" == "dmamlogic" ]; then
-				"@sbindir@/to-the-rescue"
+				@sbindir@/to-the-rescue
 			fi
-			if [ -e /dev/block/by-name/flag ]; then
+			if [ -e "/dev/block/by-name/flag" ]; then
 				echo -n "0" > /dev/block/by-name/flag
-			elif [ -e /dev/block/by-name/bootoptions ]; then
+			elif [ -e "/dev/block/by-name/bootoptions" ]; then
 				mkdir -p /tmp/bootoptions
 				mount /dev/block/by-name/bootoptions /tmp/bootoptions
 				cp -f /tmp/bootoptions/STARTUP_RECOVERY /tmp/bootoptions/STARTUP_ONCE
@@ -251,7 +252,7 @@ while : ; do
 			fi
 			done < /tmp/upgrade_mountpoints.txt
 			# Bind the console (when available).
-			[ -f /sys/class/vtconsole/vtcon1/bind ] && echo "1" > /sys/class/vtconsole/vtcon1/bind
+			[ -f "/sys/class/vtconsole/vtcon1/bind" ] && echo "1" > /sys/class/vtconsole/vtcon1/bind
 			PREVUPD="0"
 			CURRUPD="999"
 			opkg update 2>&1 | tee /home/root/opkgupgrade.log
@@ -267,9 +268,9 @@ while : ; do
 			;;
 		43)
 			# Auto install and autobackup.
-			[ -f /sys/class/vtconsole/vtcon1/bind ] && echo "1" > /sys/class/vtconsole/vtcon1/bind
+			[ -f "/sys/class/vtconsole/vtcon1/bind" ] && echo "1" > /sys/class/vtconsole/vtcon1/bind
 			/etc/init.d/settings-restore.sh
-			if [ -f /etc/init.d/avahi-daemon ]; then
+			if [ -f "/etc/init.d/avahi-daemon" ]; then
 				/etc/init.d/avahi-daemon stop
 			fi
 			ifdown eth1
@@ -278,26 +279,26 @@ while : ; do
 			ip addr flush dev eth0 scope global
 			/etc/init.d/networking stop
 			killall -9 udhcpc
-			rm /var/run/udhcpc*
+			rm -f /var/run/udhcpc*
 			/etc/init.d/dbus-1 reload
 			/etc/init.d/networking start
-			if [ -f /etc/init.d/avahi-daemon ]; then
+			if [ -f "/etc/init.d/avahi-daemon" ]; then
 				/etc/init.d/avahi-daemon start
 			fi
 			/etc/init.d/softcam restart
 			break
 			;;
 		44)
-			"@libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/bin/fbclear"
-			"@bindir@/showiframe" "@libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/wait.mvi"
+			@libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/bin/fbclear
+			@bindir@/showiframe @libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/wait.mvi
 			echo "fpupload" >/proc/vfd && sleep 3 && dd bs=256k if=/tmp/micom.bin of=/dev/mcu
-			"@bindir@/showiframe" "@libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/reboot.mvi"
+			@bindir@/showiframe @libdir@/enigma2/python/Plugins/SystemPlugins/MICOMUpgrade/reboot.mvi
 			# Wait forever for the user to power off.
 			while(true) ; do sleep 60 ; done
 			;;
 		45)
 			echo "    " > /dev/lcd0
-			"@bindir@/gigablue_wol"
+			@bindir@/gigablue_wol
 			;;
 		*)
 			break

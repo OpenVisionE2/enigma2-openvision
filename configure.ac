@@ -517,16 +517,16 @@ if test "$STBPLATFORM" == "dmamlogic"; then
 	AC_DEFINE(HAVE_DMAMLOGIC, 1, [Dreambox Amlogic hardware])
 fi
 
-if test "$BOXTYPE" == "dm7080"; then
+if test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2"; then
 	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
+fi
+
+if test "$BOXTYPE" == "dm520"; then
 	AC_DEFINE(CONFIG_ION, 1,[define when we need to use ION allocator])
 fi
 
-if test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm820" -o "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2"; then
+if test "$BOXTYPE" == "dm7080" -o "$BOXTYPE" == "dm820"; then
 	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
-fi
-
-if test "$BOXTYPE" == "dm820" -o "$BOXTYPE" == "dm520"; then
 	AC_DEFINE(CONFIG_ION, 1,[define when we need to use ION allocator])
 fi
 
