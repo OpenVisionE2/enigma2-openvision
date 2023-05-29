@@ -581,6 +581,7 @@ int eDVBServicePMTHandler::getProgramInfo(program &program)
 	{
 		unsigned int i;
 		int first_non_mpeg = -1;
+		int first_mpeg = -1;
 		int audio_cached = -1;
 		int autoaudio[eDVBService::cacheMax];
 		int autoaudio_level = 4;
@@ -686,6 +687,12 @@ int eDVBServicePMTHandler::getProgramInfo(program &program)
 					}
 				}
 			}
+
+			if (autoaudio_languages.empty() && audioStream::atMPEG && first_mpeg == -1)
+			{
+				first_mpeg = i;
+			}
+
 			if (!as->language_code.empty())
 			{
 				int x = 1;
@@ -773,6 +780,8 @@ int eDVBServicePMTHandler::getProgramInfo(program &program)
 				program.defaultAudioStream = defaultAudio;
 			else if (first_non_mpeg != -1 && (defaultac3 || defaultddp))
 				program.defaultAudioStream = first_non_mpeg;
+			else if (first_non_mpeg != -1 && first_mpeg != -1 && first_non_mpeg < first_mpeg && (!defaultac3 || !defaultddp))
+				program.defaultAudioStream = first_mpeg;
 		}
 
 		bool allow_hearingimpaired = eConfigManager::getConfigBoolValue("config.autolanguage.subtitle_hearingimpaired");
