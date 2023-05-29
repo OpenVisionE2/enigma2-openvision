@@ -32,11 +32,6 @@ def FCCChanged():
 		FccInstance.FCCSetupChanged()
 
 
-def checkSupportFCC():
-	global g_max_fcc
-	return bool(g_max_fcc)
-
-
 class FCCSupport:
 	def __init__(self, session):
 		self.session = session
@@ -63,7 +58,7 @@ class FCCSupport:
 
 		self.activating = False
 
-		self.fccSetupActivate = checkSupportFCC() and config.plugins.fccsetup.activate.value
+		self.fccSetupActivate = config.plugins.fccsetup.activate.value
 		self.maxFCC = int(config.plugins.fccsetup.maxfcc.value)
 		self.zapdownEnable = config.plugins.fccsetup.zapupdown.value
 		self.historyEnable = config.plugins.fccsetup.history.value
@@ -143,7 +138,7 @@ class FCCSupport:
 	def FCCSetupChanged(self):
 		fcc_changed = False
 
-		newFccSetupActivate = checkSupportFCC() and config.plugins.fccsetup.activate.value
+		newFccSetupActivate = config.plugins.fccsetup.activate.value
 		if self.fccSetupActivate != newFccSetupActivate:
 			self.fccSetupActivate = newFccSetupActivate
 			self.setProcFCC(self.fccSetupActivate)
@@ -461,7 +456,7 @@ class FCCSetup(Screen, ConfigListScreen):
 		self.list = []
 		ConfigListScreen.__init__(self, self.list, session=self.session, fullUI=True)
 
-		self.isSupport = checkSupportFCC()
+		self.isSupport = BoxInfo.getItem("platform") == "vu4kgen"
 
 		if self.isSupport:
 			self["description"] = StaticText("")
@@ -579,26 +574,22 @@ def main(menuid, **kwargs):
 
 def Plugins(**kwargs):
 	list = []
+	list.append(
+		PluginDescriptor(name="FCCSupport",
+		description="Fast Channel Change support",
+		where=[PluginDescriptor.WHERE_SESSIONSTART],
+		fnc=FCCSupportInit))
 
-	global g_max_fcc
-	if g_max_fcc:
-		list.append(
-			PluginDescriptor(name="FCCSupport",
-			description="Fast Channel Change support",
-			where=[PluginDescriptor.WHERE_SESSIONSTART],
-			fnc=FCCSupportInit))
+	list.append(
+		PluginDescriptor(name="FCCExtensionMenu",
+		description="Fast Channel Change menu",
+		where=[PluginDescriptor.WHERE_EXTENSIONSINGLE],
+		fnc=addExtentions))
 
-		list.append(
-			PluginDescriptor(name="FCCExtensionMenu",
-			description="Fast Channel Change menu",
-			where=[PluginDescriptor.WHERE_EXTENSIONSINGLE],
-			fnc=addExtentions))
-
-		list.append(
-			PluginDescriptor(name=_("FCCSetup"),
-			description=_("Fast Channel Change setup"),
-			where=[PluginDescriptor.WHERE_MENU],
-			needsRestart=False,
-			fnc=main))
-
+	list.append(
+		PluginDescriptor(name=_("FCCSetup"),
+		description=_("Fast Channel Change setup"),
+		where=[PluginDescriptor.WHERE_MENU],
+		needsRestart=False,
+		fnc=main))
 	return list
