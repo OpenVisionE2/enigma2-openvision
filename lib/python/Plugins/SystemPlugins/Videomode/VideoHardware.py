@@ -12,7 +12,7 @@ brand = BoxInfo.getItem("brand")
 platform = BoxInfo.getItem("platform")
 socfamily = BoxInfo.getItem("socfamily").replace('bcm', '').replace('hisi', '')
 chipsetstring = about.getChipSetString()
-has_hdmi = BoxInfo.getItem("hdmi")
+has_dvi = BoxInfo.getItem("dvi")
 has_scart = BoxInfo.getItem("scart")
 has_yuv = BoxInfo.getItem("yuv")
 has_rca = BoxInfo.getItem("rca")
@@ -102,34 +102,34 @@ class VideoHardware:
 		modes["Jack"] = ["PAL", "NTSC", "Multi"]
 
 	if socfamily in ("7376", "7444"):
-		modes["DVI"] = ["720p", "1080p", "2160p", "1080i", "576p", "576i", "480p", "480i"]
+		modes["HDMI"] = ["720p", "1080p", "2160p", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080p", "1080i", "2160p"}
 	elif socfamily in ("7252", "7251", "7251s", "7252s", "72604", "7278", "3798mv200", "3798mv310", "3798cv200", "3798mv300"):
-		modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i", "576p", "576i", "480p", "480i"]
+		modes["HDMI"] = ["720p", "1080p", "2160p", "2160p30", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
 	elif socfamily in ("7241", "7358", "7362", "73625", "7356", "73565", "7424", "7425", "7435", "7581", "3716mv410") or brand == "azbox":
-		modes["DVI"] = ["720p", "1080p", "1080i", "576p", "576i", "480p", "480i"]
+		modes["HDMI"] = ["720p", "1080p", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080p", "1080i"}
 	elif AmlogicFamily:
 		if platform == "dmamlogic":
-			modes["DVI"] = ["720p", "1080p", "smpte", "2160p30", "2160p", "1080i", "576p", "576i", "480p", "480i"]
+			modes["HDMI"] = ["720p", "1080p", "smpte", "2160p30", "2160p", "1080i", "576p", "576i", "480p", "480i"]
 			widescreen_modes = {"720p", "1080p", "1080i", "2160p", "smpte"}
 		elif chipsetstring == "meson-6" and platform != "dmamlogic":
-			modes["DVI"] = ["720p", "1080p", "1080i"]
+			modes["HDMI"] = ["720p", "1080p", "1080i"]
 			widescreen_modes = {"720p", "1080p", "1080i"}
 		elif chipsetstring in ("meson-64", "s905d") or socfamily in ("aml905d", "meson64") and platform != "dmamlogic":
-			modes["DVI"] = ["720p", "1080p", "2160p", "2160p30", "1080i"]
+			modes["HDMI"] = ["720p", "1080p", "2160p", "2160p30", "1080i"]
 			widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
 	else:
-		modes["DVI"] = ["720p", "1080i", "576p", "576i", "480p", "480i"]
+		modes["HDMI"] = ["720p", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080i"}
 
 # For raspberrypi feel free to check https://pimylifeup.com/raspberry-pi-screen-resolution/ and adapt the code.
 
-	modes["DVI-PC"] = ["PC"]
+	modes["HDMI-PC"] = ["PC"]
 
 	if has_yuv:
-		modes["YPbPr"] = modes["DVI"]
+		modes["YPbPr"] = modes["HDMI"]
 
 	if "YPbPr" in modes and not has_yuv:
 		del modes["YPbPr"]
@@ -190,9 +190,9 @@ class VideoHardware:
 		self.readAvailableModes()
 		self.readPreferredModes()
 
-		if "DVI-PC" in self.modes and not self.getModeList("DVI-PC"):
-			print("[Videomode] VideoHardware remove DVI-PC because of not existing modes")
-			del self.modes["DVI-PC"]
+		if "HDMI-PC" in self.modes and not self.getModeList("HDMI-PC"):
+			print("[Videomode] VideoHardware remove HDMI-PC because of not existing modes")
+			del self.modes["HDMI-PC"]
 		if "Scart" in self.modes and not self.getModeList("Scart"):
 			print("[Videomode] VideoHardware remove Scart because of not existing modes")
 			del self.modes["Scart"]
@@ -264,7 +264,7 @@ class VideoHardware:
 	def isModeAvailable(self, port, mode, rate):
 		rate = self.rates[mode][rate]
 		for mode in rate.values():
-			if port == "DVI":
+			if port == "HDMI":
 				if mode not in self.modes_preferred:
 					return False
 			else:
@@ -398,7 +398,7 @@ class VideoHardware:
 		return True
 
 	def isPortUsed(self, port):
-		if port == "DVI":
+		if port == "HDMI":
 			self.readPreferredModes()
 			return len(self.modes_preferred) != 0
 		else:
@@ -430,10 +430,10 @@ class VideoHardware:
 		portlist = self.getPortList()
 		for port in portlist:
 			descr = port
-			if descr == 'DVI' and has_hdmi:
-				descr = 'HDMI'
-			elif descr == 'DVI-PC' and has_hdmi:
-				descr = 'HDMI-PC'
+			if descr == 'HDMI' and has_dvi:
+				descr = 'DVI'
+			elif descr == 'HDMI-PC' and has_dvi:
+				descr = 'DVI-PC'
 			lst.append((port, descr))
 
 			# create list of available modes

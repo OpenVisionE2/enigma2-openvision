@@ -2,7 +2,7 @@ installdir = $(pkglibdir)/python/Plugins/SystemPlugins/Videomode
 
 SUBDIRS = meta
 
-install_PYTHON =	\
+install_PYTHON = \
 	__init__.py \
 	plugin.py \
 	VideoHardware.py \
