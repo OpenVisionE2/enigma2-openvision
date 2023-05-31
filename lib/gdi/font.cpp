@@ -154,7 +154,7 @@ inline FT_Error fontRenderClass::getGlyphImage(FTC_Image_Desc *font, FT_UInt gly
 
 std::string fontRenderClass::AddFont(const std::string &filename, const std::string &name, int scale, int renderflags)
 {
-	eDebugNoNewLineStart("[Font] Adding font '%s'", filename.c_str());
+//	eDebugNoNewLineStart("[Font] Adding font '%s'", filename.c_str());
 	fflush(stdout);
 	int error;
 	FT_Face face;
@@ -187,7 +187,7 @@ fontRenderClass::fontListEntry::~fontListEntry()
 fontRenderClass::fontRenderClass(): fb(fbClass::getInstance())
 {
 	instance=this;
-	eDebug("[Font] Initializing lib.");
+	eTrace("[Font] Initializing lib.");
 	{
 		if (FT_Init_FreeType(&library))
 		{
@@ -195,7 +195,7 @@ fontRenderClass::fontRenderClass(): fb(fbClass::getInstance())
 			return;
 		}
 	}
-	eDebug("[Font] Loading fonts.");
+	eTrace("[Font] Loading fonts.");
 	fflush(stdout);
 	font=0;
 #if HAVE_ARCH_ARM

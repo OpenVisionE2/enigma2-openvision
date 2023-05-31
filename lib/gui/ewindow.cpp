@@ -16,7 +16,7 @@ eWindow::eWindow(eWidgetDesktop *desktop, int z): eWidget(0)
 	if(eWindow::m_has_animation_mode==-1) {
 		if (::access("/proc/stb/fb/animation_mode", R_OK) < 0)
 		{
-			eDebug("[eWindow] animation mode not supported");
+			eTrace("[eWindow] animation mode not supported");
 			m_animation_mode = 0;
 			eWindow::m_has_animation_mode=0;
 		}
