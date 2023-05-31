@@ -10,9 +10,8 @@ from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.ServiceEventTracker import ServiceEventTracker, InfoBarBase
 from Components.config import config
-from Tools.Directories import pathExists
 from Components.Harddisk import harddiskmanager
-from os.path import isfile
+from os.path import isfile, exists
 
 lastpath = ""
 
@@ -691,7 +690,7 @@ class DVDPlayer(Screen, InfoBarBase, InfoBarNotifications, InfoBarSeek, InfoBarP
 
 	def scanHotplug(self):
 		devicepath = harddiskmanager.getAutofsMountpoint(harddiskmanager.getCD())
-		if pathExists(devicepath):
+		if exists(devicepath):
 			from Components.Scanner import scanDevice
 			res = scanDevice(devicepath)
 			list = [(r.description, r, res[r], self.session) for r in res]

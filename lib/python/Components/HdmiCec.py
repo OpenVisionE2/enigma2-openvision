@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from os import remove, statvfs, uname
-from os.path import isfile, join
+from os.path import isfile, join, exists
 from six import ensure_str, ensure_binary
 from struct import pack
 from sys import maxsize
@@ -12,7 +12,6 @@ from enigma import eActionMap, eHdmiCEC, eTimer
 from Components.config import config, ConfigSelection, ConfigYesNo, ConfigSubsection, ConfigText, NoSave
 from Components.Console import Console
 import Screens.Standby
-from Tools.Directories import pathExists
 
 config.hdmicec = ConfigSubsection()
 config.hdmicec.enabled = ConfigYesNo(default=False)  # Query from this value in hdmi_cec.cpp
@@ -1233,7 +1232,7 @@ class HdmiCec:
 			print(debugtext)
 			return
 		log_path = config.crash.debugPath.value
-		if pathExists(log_path):
+		if exists(log_path):
 			stat = statvfs(log_path)
 			disk_free = stat.f_bavail * stat.f_bsize / 1024
 			if self.disk_full:

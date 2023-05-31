@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from os import listdir
-from os.path import join, isdir
+from os.path import join, isdir, isfile, exists
 import re
 import unicodedata
 from Components.Renderer.Renderer import Renderer
 from enigma import ePixmap
 from Tools.Alternatives import GetWithAlternative
-from Tools.Directories import pathExists, SCOPE_GUISKIN, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 from Components.Harddisk import harddiskmanager
 from ServiceReference import ServiceReference
 
@@ -52,19 +52,19 @@ class PiconLocator:
 		if self.activePiconPath is not None:
 			for ext in ('.png', '.svg'):
 				pngname = self.activePiconPath + serviceName + ext
-				if pathExists(pngname):
+				if isfile(pngname):
 					return pngname
 		else:
 			for path in self.searchPaths:
 				for ext in ('.png', '.svg'):
 					pngname = path + serviceName + ext
-					if pathExists(pngname):
+					if isfile(pngname):
 						self.activePiconPath = path
 						return pngname
 		return ""
 
 	def addSearchPath(self, value):
-		if pathExists(value):
+		if exists(value):
 			if not value.endswith('/'):
 				value += '/'
 			if not value.startswith('/media/net') and not value.startswith('/media/autofs') and value not in self.searchPaths:
@@ -110,10 +110,10 @@ class PiconLocator:
 		if not pngname: # picon default
 			tmp = resolveFilename(SCOPE_GUISKIN, 'picon_default.png') # picon_default in current active skin
 			tmp2 = self.findPicon("picon_default") # picon_default in picon folder
-			if pathExists(tmp2):
+			if isfile(tmp2):
 				pngname = tmp2
 			else:
-				if pathExists(tmp):
+				if isfile(tmp):
 					pngname = tmp
 				else:
 					pngname = resolveFilename(SCOPE_GUISKIN, 'picon_default.png')
@@ -158,7 +158,7 @@ class Picon(Renderer):
 		if self.instance:
 			if what[0] in (self.CHANGED_DEFAULT, self.CHANGED_ALL, self.CHANGED_SPECIFIC):
 				pngname = piconLocator.getPiconName(self.source.text)
-				if not pathExists(pngname): # no picon for service found
+				if not isfile(pngname): # no picon for service found
 					pngname = self.defaultpngname
 				if self.pngname != pngname:
 					if pngname:

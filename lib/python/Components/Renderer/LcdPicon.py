@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from os.path import getsize
+from os.path import getsize, isfile
 from Components.Renderer.Renderer import Renderer
 from enigma import ePixmap, ePicLoad
-from Tools.Directories import pathExists, SCOPE_GUISKIN, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 from Components.SystemInfo import BoxInfo
 from Components.config import config
 from Components.Renderer.Picon import PiconLocator
@@ -70,7 +70,7 @@ class LcdPicon(Renderer):
 		if self.instance:
 			if what[0] in (self.CHANGED_DEFAULT, self.CHANGED_ALL, self.CHANGED_SPECIFIC):
 				pngname = lcdPiconLocator.getPiconName(self.source.text)
-				if not pathExists(pngname): # no picon for service found
+				if not isfile(pngname): # no picon for service found
 					pngname = self.defaultpngname
 				if self.pngname != pngname:
 					if pngname:
