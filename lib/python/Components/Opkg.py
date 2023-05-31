@@ -142,6 +142,7 @@ class OpkgComponent:
 		if not hasattr(config.plugins, "softwaremanager"):
 			config.plugins.softwaremanager = ConfigSubsection()
 		if not hasattr(config.plugins.softwaremanager, "overwriteSettingsFiles"):
+			config.plugins.softwaremanager.overwriteBusyBox = ConfigYesNo(default=True)
 			config.plugins.softwaremanager.overwriteSettingsFiles = ConfigYesNo(default=False)
 			config.plugins.softwaremanager.overwriteDriversFiles = ConfigYesNo(default=True)
 			config.plugins.softwaremanager.overwriteEmusFiles = ConfigYesNo(default=True)
@@ -188,13 +189,6 @@ class OpkgComponent:
 		elif cmd == self.CMD_RESET_FLAG:
 			packages = [x[0] for x in self.excludeList]
 			argv = ["flag", "ok"] + packages
-			deferred = []
-			for package in packages:
-				if package.startswith("busybox"):
-					deferred.append(package)
-			if deferred:
-				deferred = [self.opkg, "install", "--force-reinstall"] + deferred
-				fileWriteLine("/etc/enigma2/.busybox_update_required", " ".join(deferred), source=MODULE_NAME)
 		elif cmd == self.CMD_LIST:
 			self.fetchedList = []
 			self.excludeList = []
@@ -310,19 +304,19 @@ class OpkgComponent:
 			print("[Opkg] Error: Failed to parse line '%s'!  (%s)" % (line, str(err)))
 
 	def isExcluded(self, item):
-		if item.find("busybox") > -1:
+		if item.find("busybox") > -1 and not config.plugins.softwaremanager.overwriteBusyBox.value:
 			exclude = True
 		elif item.find("-settings-") > -1 and not config.plugins.softwaremanager.overwriteSettingsFiles.value:
 			exclude = True
-		elif item.find("kernel-module-") > -1 and not config.plugins.softwaremanager.overwriteDriversFiles.value:
+		elif item.find("kernel-module") > -1 and not config.plugins.softwaremanager.overwriteDriversFiles.value:
 			exclude = True
 		elif item.find("-softcams-") > -1 and not config.plugins.softwaremanager.overwriteEmusFiles.value:
 			exclude = True
 		elif item.find("-picons-") > -1 and not config.plugins.softwaremanager.overwritePiconsFiles.value:
 			exclude = True
-		elif item.find("-bootlogo") > -1 and not config.plugins.softwaremanager.overwriteBootlogoFiles.value:
+		elif item.find("%s-bootlogo" % BoxInfo.getItem("distro")) > -1 and not config.plugins.softwaremanager.overwriteBootlogoFiles.value:
 			exclude = True
-		elif item.find("%s-spinner" % BoxInfo.getItem("distro")) > -1 and not config.plugins.softwaremanager.overwriteSpinnerFiles.value:
+		elif item.find("-spinner-") > -1 and not config.plugins.softwaremanager.overwriteSpinnerFiles.value:
 			exclude = True
 		else:
 			exclude = False
