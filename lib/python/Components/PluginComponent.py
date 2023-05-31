@@ -5,7 +5,7 @@ from bisect import insort
 from Components.ActionMap import loadKeymap
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Tools.Import import my_import
-from Tools.Profile import profile
+#from Tools.Profile import profile
 from Plugins.Plugin import PluginDescriptor
 
 
@@ -52,7 +52,7 @@ class PluginComponent:
 					continue
 				path = join(directory_category, pluginname)
 				if isdir(path):
-						profile('plugin ' + pluginname)
+#						profile('plugin ' + pluginname)
 						try:
 							plugin = my_import('.'.join(["Plugins", c, pluginname, "plugin"]))
 							plugins = plugin.Plugins(path=path)
