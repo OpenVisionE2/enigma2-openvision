@@ -229,10 +229,11 @@ self.session.scart.VCRSbChanged(3)
 		<item entryID="enable_kexec_multiboot" level="2" text="Enable Vu+ MultiBoot" requires="canKexec"><screen module="VuKexec" screen="VuKexec">1</screen></item>
 		<item entryID="sleep" level="0" text="Sleep Timer" weight="20"><screen module="SleepTimerEdit" screen="SleepTimerEdit" /></item>
 		<item entryID="restart" level="0" text="Restart" weight="25"><screen module="Standby" screen="TryQuitMainloop">2</screen></item>
-		<item entryID="deep_standby" level="0" text="Deep Standby" weight="30" requires="DeepstandbySupport"><screen module="Standby" screen="TryQuitMainloop">1</screen></item>
-		<item entryID="deep_standby" level="0" text="Shutdown" weight="35" requires="!DeepstandbySupport"><screen module="Standby" screen="TryQuitMainloop">1</screen></item>
-		<item entryID="maintenance_mode" level="0" text="Recovery Mode" weight="40" requires="RecoveryMode"><screen module="Standby" screen="TryQuitMainloop">16</screen></item>
-		<item entryID="dualboot" level="0" text="Switch to Android" weight="45" requires="canDualBoot"><screen module="Standby" screen="SwitchToAndroid" /></item>
-		<item entryID="android_mode" level="0" text="Android Mode" weight="50" requires="AndroidMode"><screen module="Standby" screen="TryQuitMainloop">12</screen></item>
+		<item entryID="restart_force" level="0" text="Restart (Force)" weight="30"><screen module="Standby" screen="TryQuitMainloop">8</screen></item>
+		<item entryID="deep_standby" level="0" text="Deep Standby" weight="35" requires="DeepstandbySupport"><screen module="Standby" screen="TryQuitMainloop">1</screen></item>
+		<item entryID="deep_standby" level="0" text="Shutdown" weight="40" requires="!DeepstandbySupport"><screen module="Standby" screen="TryQuitMainloop">1</screen></item>
+		<item entryID="maintenance_mode" level="0" text="Recovery Mode" weight="45" requires="RecoveryMode"><screen module="Standby" screen="TryQuitMainloop">16</screen></item>
+		<item entryID="dualboot" level="0" text="Switch to Android" weight="50" requires="canDualBoot"><screen module="Standby" screen="SwitchToAndroid" /></item>
+		<item entryID="android_mode" level="0" text="Android Mode" weight="55" requires="AndroidMode"><screen module="Standby" screen="TryQuitMainloop">12</screen></item>
 	</menu>
 </menu>
