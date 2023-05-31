@@ -2,7 +2,7 @@
 from enigma import ePicLoad, eTimer, getDesktop, gMainDC, eSize
 
 from Screens.Screen import Screen
-from Tools.Directories import resolveFilename, pathExists, SCOPE_MEDIA, SCOPE_GUISKIN
+from Tools.Directories import resolveFilename, SCOPE_MEDIA, SCOPE_GUISKIN
 
 from Components.Pixmap import Pixmap, MovingPixmap
 from Components.ActionMap import ActionMap
@@ -79,7 +79,8 @@ class picshow(Screen):
 		self["thn"] = Pixmap()
 
 		currDir = config.pic.lastDir.value
-		if not pathExists(currDir):
+		from os.path import exists
+		if not exists(currDir):
 			currDir = "/"
 
 		self.filelist = FileList(currDir, matchingPattern="(?i)^.*\.(jpeg|jpg|jpe|png|bmp|gif|svg)")
