@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Tools.Profile import profile
+#from Tools.Profile import profile
 from enigma import eServiceReference
 from Tools.StbHardware import getBoxProc
 from Tools.Directories import fileExists, isPluginInstalled
@@ -8,11 +8,11 @@ import Screens.MovieSelection
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 
-profile("LOAD:enigma")
+#profile("LOAD:enigma")
 import enigma
 from os import sys
 
-profile("LOAD:InfoBarGenerics")
+#profile("LOAD:InfoBarGenerics")
 from Screens.InfoBarGenerics import InfoBarShowHide, \
 	InfoBarNumberZap, InfoBarChannelSelection, InfoBarMenu, InfoBarRdsDecoder, InfoBarResolutionSelection, InfoBarAspectSelection, \
 	InfoBarEPG, InfoBarSeek, InfoBarInstantRecord, InfoBarRedButton, InfoBarTimerButton, InfoBarVmodeButton, \
@@ -24,12 +24,12 @@ from Screens.InfoBarGenerics import InfoBarShowHide, \
 	InfoBarHDMI, InfoBarHdmi2, setResumePoint, delResumePoint
 from Screens.Hotkey import InfoBarHotkey
 
-profile("LOAD:InitBar_Components")
+#profile("LOAD:InitBar_Components")
 from Components.ActionMap import HelpableActionMap
 from Components.config import config
 from Components.ServiceEventTracker import ServiceEventTracker, InfoBarBase
 
-profile("LOAD:HelpableScreen")
+#profile("LOAD:HelpableScreen")
 from Screens.HelpMenu import HelpableScreen
 from Components.SystemInfo import BoxInfo
 

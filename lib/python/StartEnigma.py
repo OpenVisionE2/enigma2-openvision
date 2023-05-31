@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from Tools.Profile import profile, profileFinal  # This facilitates the start up progress counter.
-profile("StartPython")
+#from Tools.Profile import profile, profileFinal  # This facilitates the start up progress counter.
+#profile("StartPython")
 import Tools.RedirectOutput  # Don't remove this line. This import facilitates connecting stdout and stderr redirections to the log files.
 
 import enigma  # Establish enigma2 connections to processing methods.
@@ -333,7 +333,7 @@ import sys  # This is needed for the twisted redirection access to stderr and st
 
 MODULE_NAME = "StartEnigma"  # This is done here as "__name__.split(".")[-1]" returns "__main__" for this module.
 
-profile("Twisted")
+#profile("Twisted")
 print("[StartEnigma] Initializing Twisted.")
 try:  # Configure the twisted processor
 	from twisted.python.runtime import platform
@@ -373,10 +373,10 @@ except ImportError:
 
 # Initialize the country, language and locale data.
 #
-profile("International")
+#profile("International")
 from Components.International import international
 
-profile("SystemInfo")
+#profile("SystemInfo")
 from Components.SystemInfo import BoxInfo
 from Tools.OEMInfo import getOEMShowDisplayModel, getOEMShowDisplayBrand, getOEMShowModel
 
@@ -397,7 +397,7 @@ print("[StartEnigma] Platform = %s" % platform)
 print("[StartEnigma] SoC family = %s" % socfamily)
 print("[StartEnigma] Enigma2 revision = %s" % enigma.getE2Rev())
 
-profile("Imports")
+#profile("Imports")
 from os.path import isdir, isfile, islink, join as pathjoin
 from time import localtime, strftime, time
 
@@ -406,24 +406,24 @@ from Components.Console import Console
 # from Screens.Standby import QUIT_ERROR_RESTART
 from Tools.Directories import InitDefaultPaths, SCOPE_GUISKIN, SCOPE_PLUGINS, fileUpdateLine, resolveFilename
 
-profile("CreateDefaultPaths")
+#profile("CreateDefaultPaths")
 InitDefaultPaths()
 
-profile("BusyBoxInetd")
+#profile("BusyBoxInetd")
 if isfile("/etc/init.d/inetd.busybox"):
 	print("[StartEnigma] Starting BusyBox inetd to allow FTP access.")
 	Console().ePopen("/etc/init.d/inetd.busybox start")
 	print("[StartEnigma] Finished starting BusyBox inetd.")
 
 if BoxInfo.getItem("multilib"):
-	profile("MultiLib")
+#	profile("MultiLib")
 	# import usb.core
 	from usb.backend.libusb1 import get_backend
 	get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")
 
 # These entries could be moved back to UsageConfig.py when it is safe to bring UsageConfig init to this location in StartEnigma2.py.
 #
-profile("InitializeConfigs")
+#profile("InitializeConfigs")
 config.crash = ConfigSubsection()
 config.crash.debugInternational = ConfigYesNo(default=False)
 config.crash.debugActionMaps = ConfigYesNo(default=False)
@@ -461,26 +461,26 @@ config.parental = ConfigSubsection()
 config.parental.lock = ConfigOnOff(default=False)
 config.parental.setuplock = ConfigOnOff(default=False)
 
-profile("ClientMode")
+#profile("ClientMode")
 from Components.ClientMode import InitClientMode
 InitClientMode()
 
-profile("SimpleSummary")
+#profile("SimpleSummary")
 from Screens import InfoBar
 from Screens.SimpleSummary import SimpleSummary
 
-profile("Bouquets")
+#profile("Bouquets")
 if not config.clientmode.enabled.value or not config.clientmode_import_restart.value:
 	enigma.eDVBDB.getInstance().reloadBouquets()
 
-profile("ParentalControl")
+#profile("ParentalControl")
 from Components.ParentalControl import InitParentalControl
 InitParentalControl()
 
-profile("Navigation")
+#profile("Navigation")
 from Navigation import Navigation
 
-profile("Skin")
+#profile("Skin")
 from skin import readSkin
 
 # The skin module must be loaded before a resolveFilename() can be run against a skin!
@@ -488,91 +488,91 @@ from skin import readSkin
 config.misc.blackradiopic = ConfigText(default=resolveFilename(SCOPE_GUISKIN, "black.mvi"))
 config.misc.radiopic = ConfigText(default=resolveFilename(SCOPE_GUISKIN, "radio.mvi"))
 
-profile("Plugins")
+#profile("Plugins")
 from Components.PluginComponent import plugins  # Initialize autorun plugins and plugin menu entries.
 
-profile("Wizard")
+#profile("Wizard")
 from Screens.Wizard import wizardManager
 from Screens.StartWizard import *
 from Tools.BoundFunction import boundFunction
 from Plugins.Plugin import PluginDescriptor
 
-profile("ScreenGlobals")
+#profile("ScreenGlobals")
 from Screens.Globals import Globals
 from Screens.SessionGlobals import SessionGlobals
 from Screens.Screen import Screen
 
-profile("Screen")
+#profile("Screen")
 Screen.globalScreen = Globals()
 
-profile("Standby")
+#profile("Standby")
 import Screens.Standby
 
-profile("MainMenu")
+#profile("MainMenu")
 from Screens.Menu import MainMenu, mdom
 
-profile("GloabalActions")
+#profile("GloabalActions")
 from GlobalActions import globalActionMap
 
 if enigma.eAVSwitch.getInstance().haveScartSwitch():
-	profile("Scart")
+#	profile("Scart")
 	print("[StartEnigma] Initializing Scart module")
 	from Screens.Scart import Scart
 
-profile("VolumeControl")
+#profile("VolumeControl")
 from Components.VolumeControl import VolumeControl
 
-profile("Skin")
+#profile("Skin")
 from skin import InitSkins
 InitSkins()
 
-profile("InputDevice")
+#profile("InputDevice")
 from Components.InputDevice import InitInputDevices
 InitInputDevices()
 
-profile("Hotplug")
+#profile("Hotplug")
 import Components.InputHotplug
 
-profile("AVSwitch")
+#profile("AVSwitch")
 from Components.AVSwitch import InitAVSwitch
 InitAVSwitch()
 
 if BoxInfo.getItem("fan"):
-	profile("FanControl")
+#	profile("FanControl")
 	from Components.FanControl import fancontrol
 
 if BoxInfo.getItem("HasHDMIin"):
-	profile("HdmiRecord")
+#	profile("HdmiRecord")
 	from Components.HdmiRecord import InitHdmiRecord
 	InitHdmiRecord()
 
-profile("RecordingConfig")
+#profile("RecordingConfig")
 from Components.RecordingConfig import InitRecordingConfig
 InitRecordingConfig()
 
-profile("UsageConfig")
+#profile("UsageConfig")
 from Components.UsageConfig import InitUsageConfig
 InitUsageConfig()
 
 if config.crash.pythonStackOnSpinner.value:
-	profile("StackTracePrinter")
+#	profile("StackTracePrinter")
 	from Components.StackTrace import StackTracePrinter
 	StackTracePrinterInst = StackTracePrinter()
 
-profile("TimeZones")
+#profile("TimeZones")
 from Components.Timezones import InitTimeZones
 InitTimeZones()
 
-profile("Keymap")
+#profile("Keymap")
 from Components.ActionMap import loadKeymap
 loadKeymap(config.usage.keymap.value)
 
-profile("Network")
+#profile("Network")
 from Components.Network import InitNetwork
 InitNetwork()
 
 if BoxInfo.getItem("LCDSupport"):
-	profile("LCD")
+#	profile("LCD")
 	from Components.Lcd import IconCheck, InitLcd
 	InitLcd()
 	IconCheck()
@@ -585,15 +585,15 @@ if platform in ("dm4kgen", "gb7252") or model in ("dm7080", "dm820"):
 	fileUpdateLine("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", conditionValue="on", replacementValue="off", source=MODULE_NAME)
 	fileUpdateLine("/proc/stb/audio/hdmi_rx_monitor", conditionValue="on", replacementValue="off", source=MODULE_NAME)
 
-profile("RFMod")
+#profile("RFMod")
 from Components.RFmod import InitRFmod
 InitRFmod()
 
-profile("Init:LogManager")
+#profile("Init:LogManager")
 from Screens.LogManager import AutoLogManager
 AutoLogManager()
 
-profile("EpgCacheScheduler")
+#profile("EpgCacheScheduler")
 from Components.EpgLoadSave import EpgCacheLoadCheck, EpgCacheSaveCheck
 EpgCacheSaveCheck()
 EpgCacheLoadCheck()
@@ -623,45 +623,45 @@ def runScreen():
 
 	config.misc.startCounter.value += 1
 	config.misc.startCounter.save()
-	profile("ReadPluginList")
+#	profile("ReadPluginList")
 	enigma.pauseInit()
 	plugins.readPluginList(resolveFilename(SCOPE_PLUGINS))
 	enigma.resumeInit()
-	profile("InitSession")
+#	profile("InitSession")
 	nav = Navigation(config.misc.isNextRecordTimerAfterEventActionAuto.value, config.misc.isNextPowerTimerAfterEventActionAuto.value)  # Wake up to standby for RecordTimer and PowerTimer.
 	session = Session(desktop=enigma.getDesktop(0), summaryDesktop=enigma.getDesktop(1), navigation=nav)
 	from Components.SystemInfo import BoxInfo
 	if BoxInfo.getItem("ci"):
-		profile("CommonInterface")
+#		profile("CommonInterface")
 		from Screens.Ci import CiHandler, InitCiConfig
 		InitCiConfig()
 		CiHandler.setSession(session)
 	screensToRun = [x.__call__ for x in plugins.getPlugins(PluginDescriptor.WHERE_WIZARD)]
-	profile("InitWizards")
+#	profile("InitWizards")
 	screensToRun += wizardManager.getWizards()
 	screensToRun.append((100, InfoBar.InfoBar))
 #	screensToRun.sort()
 	enigma.ePythonConfigQuery.setQueryFunc(configfile.getResolvedKey)
 	config.misc.epgcache_filename.addNotifier(setEPGCachePath)
 	runNextScreen(session, screensToRun)
-	profile("InitVolumeControl")
+#	profile("InitVolumeControl")
 	vol = VolumeControl(session)
-	profile("InitPowerKey")
+#	profile("InitPowerKey")
 	power = PowerKey(session)
 	if BoxInfo.getItem("VFDSymbol"):
-		profile("VFDSymbols")
+#		profile("VFDSymbols")
 		from Components.VfdSymbols import SymbolsCheck
 		SymbolsCheck(session)
 	session.scart = AutoScartControl(session) if enigma.eAVSwitch.getInstance().haveScartSwitch() else None  # We need session.scart to access it from within menu.xml.
-	profile("InitTrashcan")
+#	profile("InitTrashcan")
 	from Tools.Trashcan import init
 	init(session)
-	profile("RunReactor")
-	profileFinal()
+#	profile("RunReactor")
+#	profileFinal()
 	if platform == "odinm7" or model == "xp1000":
 		fileUpdateLine("/dev/dbox/oled0", conditionValue=None, replacementValue="-E2-", create=True, source=MODULE_NAME)
 	runReactor()
-	profile("Wakeup")
+#	profile("Wakeup")
 	from Tools.StbHardware import setFPWakeuptime, setRTCtime
 	from Screens.SleepTimerEdit import isNextWakeupTime
 	powerTimerWakeupAuto = False
@@ -725,11 +725,11 @@ def runScreen():
 		recordTimerWakeupAuto = startTimePowerList[1] == 0 and startTimePowerList[2]
 	config.misc.isNextRecordTimerAfterEventActionAuto.value = recordTimerWakeupAuto
 	config.misc.isNextRecordTimerAfterEventActionAuto.save()
-	profile("StopNavService")
+#	profile("StopNavService")
 	session.nav.stopService()
-	profile("NavShutdown")
+#	profile("NavShutdown")
 	session.nav.shutdown()
-	profile("SaveConfigfile")
+#	profile("SaveConfigfile")
 	configfile.save()
 	from Screens.InfoBarGenerics import saveResumePoints
 	saveResumePoints()
