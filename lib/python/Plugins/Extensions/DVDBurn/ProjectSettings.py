@@ -6,9 +6,10 @@ from Components.ActionMap import ActionMap
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
 from Components.FileList import FileList
-from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS, SCOPE_FONTS, SCOPE_HDD
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_FONTS, SCOPE_HDD
 from Components.config import config, getConfigListEntry
 from Components.ConfigList import ConfigListScreen
+from os.path import isfile
 
 
 class FileBrowser(Screen, HelpableScreen):
@@ -70,7 +71,7 @@ class FileBrowser(Screen, HelpableScreen):
 			self.filelist.descent()
 			if self.scope == "image":
 				path = self["filelist"].getCurrentDirectory() or ""
-				if fileExists(path + "VIDEO_TS"):
+				if isfile(path + "VIDEO_TS"):
 					self.close(path, self.scope, self.configRef)
 		else:
 			ret = self["filelist"].getCurrentDirectory() + '/' + self["filelist"].getFilename()

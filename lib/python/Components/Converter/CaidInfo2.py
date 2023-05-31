@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from Components.Converter.Converter import Converter
 from enigma import iServiceInformation
-from Tools.Directories import fileExists
 from Components.Element import cached
 from Components.Converter.Poll import Poll
 from os import stat
+from os.path import isfile
 
 info = {}
 old_ecm_mtime = None
@@ -312,7 +312,7 @@ class CaidInfo2(Poll, Converter, object):
 				self.poll_interval = self.my_interval
 				self.poll_enabled = True
 				ecm_info = self.ecmfile()
-				if fileExists("/tmp/ecm.info"):
+				if isfile("/tmp/ecm.info"):
 					try:
 						caid = "%0.4X" % int(ecm_info.get("caid", ""), 16)
 						return "%s" % self.systemTxtCaids.get(caid[:2])

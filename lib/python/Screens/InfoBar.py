@@ -2,7 +2,8 @@
 #from Tools.Profile import profile
 from enigma import eServiceReference
 from Tools.StbHardware import getBoxProc
-from Tools.Directories import fileExists, isPluginInstalled
+from Tools.Directories import isPluginInstalled
+from os.path import isfile
 # workaround for required config entry dependencies.
 import Screens.MovieSelection
 from Screens.Screen import Screen
@@ -203,14 +204,14 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 
 		print('[InfoBar] zoomRate:', self.zoomrate)
 		print('[InfoBar] zoomval:', zoomval)
-		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
+		if isfile("/proc/stb/vmpeg/0/zoomrate"):
 			print("[InfoBar] Write to /proc/stb/vmpeg/0/zoomrate")
 			open("/proc/stb/vmpeg/0/zoomrate", "w").write(int(zoomval))
 
 	def ZoomOff(self):
 		self.zoomrate = 0
 		self.zoomin = 1
-		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
+		if isfile("/proc/stb/vmpeg/0/zoomrate"):
 			print("[InfoBar] Write to /proc/stb/vmpeg/0/zoomrate")
 			open("/proc/stb/vmpeg/0/zoomrate", "w").write(str(0))
 

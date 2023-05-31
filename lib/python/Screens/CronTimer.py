@@ -9,7 +9,6 @@ from Components.Pixmap import Pixmap
 from Components.Sources.Boolean import Boolean
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
-from Tools.Directories import fileExists
 from os import listdir, rename, mkdir, symlink
 from os.path import exists, isfile, islink
 from six import ensure_str
@@ -144,7 +143,7 @@ class CronTimers(Screen):
 		self.updateList()
 
 	def autostart(self):
-		if fileExists("/etc/rc2.d/S90crond"):
+		if isfile("/etc/rc2.d/S90crond"):
 			self.Console.ePopen("update-rc.d -f crond remove")
 		else:
 			self.Console.ePopen("update-rc.d -f crond defaults 90 60")

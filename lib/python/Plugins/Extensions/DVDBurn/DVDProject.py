@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Tools.Directories import fileExists
+from os.path import isfile
 from Components.config import config, ConfigSubsection, ConfigInteger, ConfigText, ConfigSelection, ConfigSequence, ConfigSubList
 from . import DVDTitle
 import xml.dom.minidom
@@ -93,7 +93,7 @@ class DVDProject:
 		name = self.settings.name.getValue()
 		i = 0
 		filename = path + name + ".ddvdp.xml"
-		while fileExists(filename):
+		while isfile(filename):
 			i = i + 1
 			filename = path + name + str(i).zfill(3) + ".ddvdp.xml"
 		try:
@@ -114,7 +114,7 @@ class DVDProject:
 
 	def loadProject(self, filename):
 		#try:
-			if not fileExists(filename):
+			if not isfile(filename):
 				self.error = "xml file not found!"
 				#raise AttributeError
 			file = open(filename, "r")
@@ -131,13 +131,13 @@ class DVDProject:
 
 			for key in self.filekeys:
 				val = self.settings.dict()[key].getValue()
-				if not fileExists(val):
+				if not isfile(val):
 					if val[0] != "/":
 						if key.find("font") == 0:
 							val = resolveFilename(SCOPE_FONTS) + val
 						else:
 							val = resolveFilename(SCOPE_PLUGINS) + "Extensions/DVDBurn/" + val
-						if fileExists(val):
+						if isfile(val):
 							self.settings.dict()[key].setValue(val)
 							continue
 					self.error += "\n%s '%s' not found" % (key, val)

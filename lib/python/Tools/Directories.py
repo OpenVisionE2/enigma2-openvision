@@ -697,7 +697,7 @@ def getExtension(file):
 
 def mediaFilesInUse(session):
 	from Components.MovieList import KNOWN_EXTENSIONS
-	TRANSMISSION_PART = fileExists("/usr/bin/transmission-daemon") and popen("pidof transmission-daemon").read() and ".part" or "N/A"
+	TRANSMISSION_PART = isfile("/usr/bin/transmission-daemon") and popen("pidof transmission-daemon").read() and ".part" or "N/A"
 	files = [basename(x[2]) for x in lsof() if getExtension(x[2]) in (KNOWN_EXTENSIONS, TRANSMISSION_PART)]
 	service = session.nav.getCurrentlyPlayingServiceOrGroup()
 	filename = service and service.getPath()
