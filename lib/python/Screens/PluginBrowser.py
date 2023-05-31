@@ -432,7 +432,7 @@ class PluginDownloadBrowser(Screen):
 					for partition in harddiskmanager.getMountedPartitions(False, mounts):
 						if partition.filesystem(mounts) in supported_filesystems:
 							candidates.append((partition.description, partition.mountpoint))
-					if candidates:
+					if candidates and BoxInfo.getItem("LCDSupport"):
 						from Components.Renderer import LcdPicon
 						self.postInstallCall = LcdPicon.initLcdPiconPaths
 						self.session.openWithCallback(self.installDestinationCallback, ChoiceBox, title=_("Install display picons on"), list=candidates)
