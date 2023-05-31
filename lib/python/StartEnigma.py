@@ -514,7 +514,7 @@ from Screens.Menu import MainMenu, mdom
 #profile("GloabalActions")
 from GlobalActions import globalActionMap
 
-if enigma.eAVSwitch.getInstance().haveScartSwitch():
+if BoxInfo.getItem("scart"):
 #	profile("Scart")
 	print("[StartEnigma] Initializing Scart module")
 	from Screens.Scart import Scart
@@ -585,9 +585,10 @@ if platform in ("dm4kgen", "gb7252") or model in ("dm7080", "dm820"):
 	fileUpdateLine("/proc/stb/hdmi-rx/0/hdmi_rx_monitor", conditionValue="on", replacementValue="off", source=MODULE_NAME)
 	fileUpdateLine("/proc/stb/audio/hdmi_rx_monitor", conditionValue="on", replacementValue="off", source=MODULE_NAME)
 
-#profile("RFMod")
-from Components.RFmod import InitRFmod
-InitRFmod()
+if BoxInfo.getItem("RFmodSupport"):
+	#profile("RFMod")
+	from Components.RFmod import InitRFmod
+	InitRFmod()
 
 #profile("Init:LogManager")
 from Screens.LogManager import AutoLogManager
@@ -652,7 +653,7 @@ def runScreen():
 #		profile("VFDSymbols")
 		from Components.VfdSymbols import SymbolsCheck
 		SymbolsCheck(session)
-	session.scart = AutoScartControl(session) if enigma.eAVSwitch.getInstance().haveScartSwitch() else None  # We need session.scart to access it from within menu.xml.
+	session.scart = AutoScartControl(session) if BoxInfo.getItem("scart") else None  # We need session.scart to access it from within menu.xml.
 #	profile("InitTrashcan")
 	from Tools.Trashcan import init
 	init(session)
