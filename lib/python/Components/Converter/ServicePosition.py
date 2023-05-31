@@ -31,6 +31,7 @@ class ServicePosition(Poll, Converter):
 		self.detailed = 'Detailed' in args
 		self.showHours = 'ShowHours' in args
 		self.showNoSeconds = 'ShowNoSeconds' in args
+		self.vfd = '7seg' in args
 
 		if type == "Length":
 			self.type = self.TYPE_LENGTH
@@ -453,36 +454,45 @@ class ServicePosition(Poll, Converter):
 
 			else: # Skin Setting
 				if not self.detailed:
-					if self.showHours:
-						if self.showNoSeconds:
-							if self.type == self.TYPE_VFD_LENGTH:
-								return sign_l + "%d:%02d" % (l / 3600, l % 3600 / 60)
-							elif self.type == self.TYPE_VFD_POSITION:
-								return sign_p + "%d:%02d" % (p / 3600, p % 3600 / 60)
-							elif self.type == self.TYPE_REMAINING:
-								return sign_r + "%d:%02d" % (r / 3600, r % 3600 / 60)
+					if not self.vfd:
+						if self.showHours:
+							if self.showNoSeconds:
+								if self.type == self.TYPE_VFD_LENGTH:
+									return sign_l + "%d:%02d" % (l / 3600, l % 3600 / 60)
+								elif self.type == self.TYPE_VFD_POSITION:
+									return sign_p + "%d:%02d" % (p / 3600, p % 3600 / 60)
+								elif self.type == self.TYPE_REMAINING:
+									return sign_r + "%d:%02d" % (r / 3600, r % 3600 / 60)
+							else:
+								if self.type == self.TYPE_VFD_LENGTH:
+									return sign_l + "%d:%02d:%02d" % (l / 3600, l % 3600 / 60, l % 60)
+								elif self.type == self.TYPE_VFD_POSITION:
+									return sign_p + "%d:%02d:%02d" % (p / 3600, p % 3600 / 60, p % 60)
+								elif self.type == self.TYPE_REMAINING:
+									return sign_r + "%d:%02d:%02d" % (r / 3600, r % 3600 / 60, r % 60)
 						else:
-							if self.type == self.TYPE_VFD_LENGTH:
-								return sign_l + "%d:%02d:%02d" % (l / 3600, l % 3600 / 60, l % 60)
-							elif self.type == self.TYPE_VFD_POSITION:
-								return sign_p + "%d:%02d:%02d" % (p / 3600, p % 3600 / 60, p % 60)
-							elif self.type == self.TYPE_REMAINING:
-								return sign_r + "%d:%02d:%02d" % (r / 3600, r % 3600 / 60, r % 60)
+							if self.showNoSeconds:
+								if self.type == self.TYPE_VFD_LENGTH:
+									return ngettext("%d Min", "%d Mins", (l / 60)) % (l / 60)
+								elif self.type == self.TYPE_VFD_POSITION:
+									return sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
+								elif self.type == self.TYPE_VFD_REMAINING:
+									return sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
+							else:
+								if self.type == self.TYPE_VFD_LENGTH:
+									return sign_l + "%d:%02d" % (l / 60, l % 60)
+								elif self.type == self.TYPE_VFD_POSITION:
+									return sign_p + "%d:%02d" % (p / 60, p % 60)
+								elif self.type == self.TYPE_REMAINING:
+									return sign_r + "%d:%02d" % (r / 60, r % 60)
 					else:
-						if self.showNoSeconds:
-							if self.type == self.TYPE_VFD_LENGTH:
-								return ngettext("%d Min", "%d Mins", (l / 60)) % (l / 60)
-							elif self.type == self.TYPE_VFD_POSITION:
-								return sign_p + ngettext("%d Min", "%d Mins", (p / 60)) % (p / 60)
-							elif self.type == self.TYPE_VFD_REMAINING:
-								return sign_r + ngettext("%d Min", "%d Mins", (r / 60)) % (r / 60)
+						f = r / 60
+						if f < 60:
+							s = r % 60
 						else:
-							if self.type == self.TYPE_VFD_LENGTH:
-								return sign_l + "%d:%02d" % (l / 60, l % 60)
-							elif self.type == self.TYPE_VFD_POSITION:
-								return sign_p + "%d:%02d" % (p / 60, p % 60)
-							elif self.type == self.TYPE_REMAINING:
-								return sign_r + "%d:%02d" % (r / 60, r % 60)
+							f /= 60
+							s = r % 3600 / 60
+						return "%2d:%02d" % (f, s)
 				else:
 					if self.showHours:
 						if self.type == self.TYPE_VFD_LENGTH:

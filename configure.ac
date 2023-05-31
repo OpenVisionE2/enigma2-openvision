@@ -536,6 +536,7 @@ if test "$STBPLATFORM" == "dm4kgen"; then
 	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
 	AC_DEFINE(CONFIG_ION, 1,[define when we need to use ION allocator])
 	AC_DEFINE(DM9X0_LCD, 1,[define when we need to move lcd text a bit to the right])
+	AC_DEFINE(LCD_DM9X0_Y_OFFSET, 4,[define LCD Y offset for dm9x0])
 fi
 
 if test "$BOXTYPE" == "e4hd" -o "$BOXTYPE" == "e4hdhybrid"; then

@@ -347,7 +347,7 @@ SystemInfo["LCDMiniTVPiP"] = BoxInfo.getItem("LCDMiniTV") and not model == "gb80
 SystemInfo["DefaultDisplayBrightness"] = platform == "dm4kgen" and 8 or 5
 SystemInfo["DreamBoxAudio"] = platform == "dm4kgen" or model in ("dm7080", "dm800")
 SystemInfo["DreamBoxDVI"] = model in ("dm8000", "dm800")
-SystemInfo["VFDRepeats"] = brand != "ixuss" and displaytype != "7segment" and "7seg" not in displaytype
+SystemInfo["VFDRepeats"] = brand != "ixuss" and not BoxInfo.getItem("7segment")
 SystemInfo["VFDSymbol"] = BoxInfo.getItem("vfdsymbol")
 SystemInfo["ArchIsARM64"] = architecture == "aarch64" or "64" in architecture
 SystemInfo["ArchIsARM"] = architecture.startswith(("arm", "cortex"))
