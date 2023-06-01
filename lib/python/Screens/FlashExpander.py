@@ -71,7 +71,7 @@ class FlashExpander(Setup):
 		}, prio=0, description=_("Common Setup Actions"))  # Override the ConfigList "fullUIActions" action map so that we can control the GREEN button here.
 		self["actions"] = HelpableActionMap(self, ["ColorActions"], {
 			"green": (self.keyGreen, getGreenHelpText),
-			"yellow": (self.keyFormat, _("Formal a disk"))
+			"yellow": (self.keyFormat, _("Formal disk"))
 		}, prio=-1, description=_("Flash Expander Actions"))
 		choiceList = [config.flashExpander.location.getSelectionList()[0]]
 		if config.flashExpander.location.saved_value:
@@ -314,7 +314,7 @@ class FlashExpander(Setup):
 			fstabnew.append("/%s/%s %s none  bind 0 0" % (EXPANDER_MOUNT, EXPANDER_MOUNT, EXPANDER_DIRECTORY))
 		fstabnew.append("")
 		fileWriteLines("/etc/fstab", "\n".join(fstabnew), source=MODULE_NAME)
-		print("[FlashExpander] fstabUpdate DEBUG: Ending fstab:\n%s" % "\n".join(fstab))
+		print("[FlashExpander] fstabUpdate DEBUG: Ending fstab:\n%s" % "\n".join(fstabnew))
 
 	def readDevices(self, callback=None):
 		def getBlockIdDataCallback(output=None, retVal=None, extraArgs=None):
