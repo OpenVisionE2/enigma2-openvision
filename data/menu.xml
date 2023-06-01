@@ -91,11 +91,14 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 			<id val="osd_menu" />
 			<item entryID="user_interface" level="0" text="User Interface Setup" weight="5"><setup id="UserInterface" /></item>
 			<item entryID="primary_skin_selector" level="0" text="Skin Setup" weight="10"><screen module="SkinSelector" screen="SkinSelector" /></item>
-			<menu entryID="display_selection" level="0" text="Front Panel Display" weight="15" requires="LCDSupport">
+			<menu entryID="display_selection" level="0" text="Front Panel Display" weight="15">
 				<id val="lcd" />
-				<item entryID="display_skin_selector" level="0" text="Skin Setup" weight="5"><screen module="SkinSelector" screen="LcdSkinSelector" /></item>
-				<item entryID="lcd_setup" level="1" text="LCD Setup" weight="10"><setup id="FrontDisplay" /></item>
+				<item entryID="display_skin_selector" level="0" text="LCD Skin Setup" weight="5" requires="LCDSupport"><screen module="SkinSelector" screen="LcdSkinSelector" /></item>
+				<item entryID="lcd_setup" level="1" text="LCD Setup" weight="10" requires="LCDSupport"><setup id="LCDDisplay" /></item>
 				<item entryID="led_setup" level="1" text="LED Setup" weight="15"><setup id="LEDDisplay" /></item>
+				<item entryID="vfd_setup" level="1" text="VFD Setup" weight="20"><setup id="VFDDisplay" /></item>
+				<item entryID="minitv_setup" level="1" text="MiniTV Setup" weight="25" requires="LCDMiniTV"><setup id="MiniTVDisplay" /></item>
+				<item entryID="symbol_setup" level="1" text="Display Icons and Symbols" weight="30"><setup id="SymbolDisplay" /></item>
 			</menu>
 			<item entryID="subtitle_setup" level="2" text="Subtitle Setup" weight="20"><setup id="Subtitle" /></item>
 			<item entryID="locale_setup" level="0" text="Locale/Language Setup" weight="25"><screen module="LocaleSelection" /></item>

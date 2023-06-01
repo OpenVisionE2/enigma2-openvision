@@ -572,11 +572,10 @@ loadKeymap(config.usage.keymap.value)
 from Components.Network import InitNetwork
 InitNetwork()
 
-if BoxInfo.getItem("LCDSupport"):
-#	profile("LCD")
-	from Components.Lcd import IconCheck, InitLcd
-	InitLcd()
-	IconCheck()
+#profile("LCD")
+from Components.Lcd import IconCheck, InitLcd
+InitLcd()
+IconCheck()
 
 # Disable internal vfd clock until we can adjust it for standby.
 if platform == "inihdx":
