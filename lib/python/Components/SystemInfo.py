@@ -332,7 +332,7 @@ SystemInfo["NCamIsActive"] = BoxInfo.getItem("NCamInstalled") and fileCheck("/tm
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/enigma/distro")
 SystemInfo["OLDE2API"] = model == "dm800"
 SystemInfo["7segment"] = displaytype == "7segment" or "7seg" in displaytype
-SystemInfo["LCDSupport"] = "lcd" in displaytype or "lcd" in model
+SystemInfo["LCDSupport"] = ("lcd" in displaytype or "lcd" in model) and not "text" in displaytype
 SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or fileCheck("/proc/hisi") or fileCheck("/usr/bin/hihalt") or fileCheck("/usr/lib/hisilicon")
 SystemInfo["DefineSat"] = platform in ("octagonhisil", "octagonhisilnew", "gbmv200", "uclanhisil") or model in ("beyonwizv2", "viper4k")
 SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileCheck("/proc/device-tree/amlogic-dt-id") or fileCheck("/usr/bin/amlhalt") or fileCheck("/sys/module/amports")
