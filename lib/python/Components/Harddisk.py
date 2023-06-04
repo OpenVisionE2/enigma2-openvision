@@ -171,11 +171,8 @@ class Harddisk:
 
 	def capacity(self):
 		cap = self.diskSize()
-		if cap == 0:
-			return ""
-		if cap < 1000:
-			return _("%d MB") % cap
-		return _("%.2f GB") % (cap // 1000.0)
+		cap *= 1000000 # convert to MB to bytes
+		return bytesToHumanReadable(cap)
 
 	def model(self):
 		if self.device[:2] == "hd":
@@ -211,7 +208,7 @@ class Harddisk:
 				freetot += (stat.f_bfree // 1000) * (stat.f_bsize // 1000)
 			except (IOError, OSError):
 				pass
-		return freetot
+		return int(freetot)
 
 	def Totalfree(self):
 		return self.totalFree()
@@ -579,6 +576,18 @@ def addInstallTask(job, package):
 	task.setTool("opkg")
 	task.args.append("install")
 	task.args.append(package)
+
+
+def bytesToHumanReadable(size_bytes, binary=False):
+	# input is bytes, convert from KB, MB before use.
+	size_units = ("B", "kB", "MB", "GB", "TB")
+	base = 1024 if binary else 1000
+	i = 0
+	L = len(size_units) - 1
+	while i < L and size_bytes >= base:
+		size_bytes /= base
+		i += 1
+	return ("%.2f %s" if i != 0 and size_bytes < 10 else "%.0f %s") % (size_bytes, size_units[i])
 
 
 class HarddiskManager:
