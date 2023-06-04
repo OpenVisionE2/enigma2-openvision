@@ -74,15 +74,8 @@ class MovieInfo(Converter):
 					return _("Directory")
 				filesize = info.getFileSize(service)
 				if filesize is not None:
-					if filesize >= 104857600000: #100000*1024*1024
-						return _("%.0f GB") % (filesize / 1073741824.0)
-					elif filesize >= 1073741824: #1024*1024*1024
-						return _("%.2f GB") % (filesize / 1073741824.0)
-					elif filesize >= 1048576:
-						return _("%.0f MB") % (filesize / 1048576.0)
-					elif filesize >= 1024:
-						return "%.0f %s" % (filesize / 1024.0, _("kB"))
-					return "%d %s" % (filesize, _("B"))
+					from Components.Harddisk import bytesToHumanReadable
+					return bytesToHumanReadable(filesize)
 		return ""
 
 	text = property(getText)
