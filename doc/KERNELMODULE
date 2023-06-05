@@ -197,6 +197,7 @@ Here is the list of variables currently supported:
 	"transcoding" or "/proc/enigma/transcoding" replaces "getHaveTranscoding()"
 		("getHaveTranscoding1()" in OE-Alliance's "boxbranding")
 	"ubinize" or "/proc/enigma/ubinize" replaces "getMachineUBINIZE()"
+	"uhd4k" or "/proc/enigma/uhd4k" replaces "getUHD4K()"
 	"vfdsymbol" or "/proc/enigma/vfdsymbol" replaces "getHaveVFDSymbol()"
 	"wol" or "/proc/enigma/wol" replaces "getHaveWOL()"
 		(Also "getHaveWWOL()" in OE-Alliance's "boxbranding" as we don't split Wake-on-LAN and Wake-on-WLAN)
@@ -770,6 +771,14 @@ ubinize:
 		Mostly we use this for backup tools when want to repack the image.
 
 	Example: -m 2048 -p 128KiB
+
+uhd4k:
+
+	BoxInfo.getItem("uhd4k") (/proc/enigma/uhd4k)
+
+		This variable defines if a receiver supports 4K resolution.
+
+	Example: True
 
 vfdsymbol:
 
