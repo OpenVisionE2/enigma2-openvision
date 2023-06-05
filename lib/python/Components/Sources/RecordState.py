@@ -17,12 +17,13 @@ class RecordState(Source):
 		prev_records = self.records_running
 		if event in (iRecordableService.evEnd, iRecordableService.evStart, None):
 			recs = self.session.nav.getRecordings()
-			LCDsymbol_circle_recording = BoxInfo.getItem("LCDsymbol_circle_recording")
-			if LCDsymbol_circle_recording:
+			if BoxInfo.getItem("LCDsymbol_circle_recording"):
 				if BoxInfo.getItem("model") == "azboxhd":
-					open(LCDsymbol_circle_recording, "w").write(recs and "4" or "3")
+					open("/proc/led", "w").write(recs and "4" or "3")
+				elif BoxInfo.getItem("platform") == "gfuturesbcmarm":
+					open("/proc/stb/lcd/symbol_recording", "w").write(recs and "1" or "0")
 				else:
-					open(LCDsymbol_circle_recording, "w").write(recs and "1" or "0")
+					open("/proc/stb/lcd/symbol_circle", "w").write(recs and "1" or "0")
 			self.records_running = len(recs)
 			if self.records_running != prev_records:
 				self.changed((self.CHANGED_ALL,))
