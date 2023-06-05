@@ -2,23 +2,18 @@
 from Components.config import config, ConfigSelection, ConfigSubDict, ConfigYesNo
 from Components.SystemInfo import BoxInfo
 from Tools.CList import CList
-from enigma import getDesktop
-from Components.About import about
-from Components.Console import Console
 from os.path import isfile
 
 model = BoxInfo.getItem("model")
 brand = BoxInfo.getItem("brand")
 platform = BoxInfo.getItem("platform")
-socfamily = BoxInfo.getItem("socfamily").replace('bcm', '').replace('hisi', '')
-chipsetstring = about.getChipSetString()
+socfamily = BoxInfo.getItem("socfamily").replace('bcm', '').replace('hisi', '').replace('advca', '').replace('smp', '').replace('aml', '')
 has_dvi = BoxInfo.getItem("DreamBoxDVI")
 has_scart = BoxInfo.getItem("scart")
 has_yuv = BoxInfo.getItem("yuv")
 has_rca = BoxInfo.getItem("rca")
 has_avjack = BoxInfo.getItem("avjack")
 Has24hz = BoxInfo.getItem("Has24hz")
-AmlogicFamily = BoxInfo.getItem("AmlogicFamily")
 
 # The "VideoHardware" is the interface to /proc/stb/video.
 # It generates hotplug events, and gives you the list of
@@ -44,45 +39,6 @@ videomode_edid = "/proc/stb/video/videomode_edid"
 disp_cap = "/sys/class/amhdmitx/amhdmitx0/disp_cap"
 
 
-def getUHD():
-	UHD = False
-	if BoxInfo.getItem("ArchIsARM") or BoxInfo.getItem("ArchIsARM64"):
-		UHD = True
-	if isfile(videomode_preferred):
-		with open(videomode_preferred) as fd:
-			preferred = fd.read()[:-1]
-			if "i" or "p" in preferred:
-				if "2160p" in preferred:
-					UHD = True
-				else:
-					UHD = False
-	elif isfile(videomode_choices):
-		with open(videomode_choices) as fd:
-			choices = fd.read()[:-1]
-			if "i" or "p" in choices:
-				if "2160p" in choices:
-					UHD = True
-				else:
-					UHD = False
-	elif isfile(videomode_edid):
-		with open(videomode_edid) as fd:
-			edid = fd.read()[:-1]
-			if "i" or "p" in edid:
-				if "2160p" in edid:
-					UHD = True
-				else:
-					UHD = False
-	elif isfile(disp_cap) and AmlogicFamily:
-		with open(disp_cap) as fd:
-			cap = fd.read()[:-1].replace('*', '')
-			if "i" or "p" in cap:
-				if "2160p" in cap:
-					UHD = True
-				else:
-					UHD = False
-	return UHD
-
-
 class VideoHardware:
 	rates = {} # high-level, use selectable modes.
 	modes = {}  # a list of (high-level) modes for a certain port.
@@ -101,6 +57,8 @@ class VideoHardware:
 		rates["1080p"] = {"50Hz": {50: "1080p50hz"}, "60Hz": {60: "1080p60hz"}, "30Hz": {30: "1080p30hz"}, "25Hz": {25: "1080p25hz"}, "24Hz": {24: "1080p24hz"}, "auto": {60: "1080p60hz"}}
 		rates["2160p"] = {"50Hz": {50: "2160p50hz"}, "60Hz": {60: "2160p60hz"}, "30Hz": {30: "2160p30hz"}, "25Hz": {25: "2160p25hz"}, "24Hz": {24: "2160p24hz"}, "auto": {60: "2160p60hz"}}
 		rates["2160p30"] = {"25Hz": {50: "2160p25hz"}, "30Hz": {60: "2160p30hz"}, "auto": {60: "2160p30hz"}}
+
+		rates["smpte"] = {"50Hz": {50: "smpte50hz"}, "60Hz": {60: "smpte60hz"}, "30Hz": {30: "smpte30hz"}, "25Hz": {25: "smpte25hz"}, "24Hz": {24: "smpte24hz"}, "auto": {60: "smpte60hz"}}
 	else:
 		rates["480i"] = {"60Hz": {60: "480i"}}
 		rates["576i"] = {"50Hz": {50: "576i"}}
@@ -109,19 +67,12 @@ class VideoHardware:
 		rates["720p"] = {"50Hz": {50: "720p50"}, "60Hz": {60: "720p"}, "multi": {50: "720p50", 60: "720p"}, "auto": {50: "720p50", 60: "720p", 24: "720p24"}}
 		rates["1080i"] = {"50Hz": {50: "1080i50"}, "59Hz": {60: "1080i59"}, "60Hz": {60: "1080i"}, "multi": {50: "1080i50", 60: "1080i"}, "auto": {50: "1080i50", 60: "1080i", 24: "1080i24", 59: "1080i59"}}
 		rates["1080p"] = {"50Hz": {50: "1080p50"}, "59Hz": {60: "1080p59"}, "60Hz": {60: "1080p"}, "multi": {50: "1080p50", 60: "1080p"}, "auto": {50: "1080p50", 60: "1080p", 24: "1080p24"}}
-		if getUHD():
+		if BoxInfo.getItem("uhd4k"):
 			if platform == "dm4kgen":
 				rates["2160p"] = {"50Hz": {50: "2160p50"}, "60Hz": {60: "2160p60"}, "multi": {50: "2160p50", 60: "2160p60"}, "auto": {50: "2160p50", 60: "2160p60", 24: "2160p24"}}
 			else:
 				rates["2160p"] = {"50Hz": {50: "2160p50"}, "60Hz": {60: "2160p"}, "multi": {50: "2160p50", 60: "2160p"}, "auto": {50: "2160p50", 60: "2160p", 24: "2160p24"}}
 			rates["2160p30"] = {"25Hz": {50: "2160p25"}, "30Hz": {60: "2160p30"}, "multi": {50: "2160p25", 60: "2160p30"}, "auto": {50: "2160p25", 60: "2160p30", 24: "2160p24"}}
-
-	rates["smpte"] = {"50Hz": {50: "smpte50hz"},
-		"60Hz": {60: "smpte60hz"},
-		"30Hz": {30: "smpte30hz"},
-		"25Hz": {25: "smpte25hz"},
-		"24Hz": {24: "smpte24hz"},
-		"auto": {60: "smpte60hz"}}
 
 	rates["PC"] = {
 		"1024x768": {60: "1024x768"},
@@ -146,25 +97,25 @@ class VideoHardware:
 	if has_avjack:
 		modes["Jack"] = ["PAL", "NTSC", "Multi"]
 
-	if socfamily in ("7376", "7444"):
-		modes["HDMI"] = ["720p", "1080p", "2160p", "1080i", "576p", "576i", "480p", "480i"]
-		widescreen_modes = {"720p", "1080p", "1080i", "2160p"}
-	elif socfamily in ("7252", "7251", "7251s", "7252s", "72604", "7278", "3798mv200", "3798mv310", "3798cv200", "3798mv300"):
-		modes["HDMI"] = ["720p", "1080p", "2160p", "2160p30", "1080i", "576p", "576i", "480p", "480i"]
-		widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
-	elif socfamily in ("7241", "7358", "7362", "73625", "7356", "73565", "7424", "7425", "7435", "7581", "3716mv410") or brand == "azbox":
-		modes["HDMI"] = ["720p", "1080p", "1080i", "576p", "576i", "480p", "480i"]
-		widescreen_modes = {"720p", "1080p", "1080i"}
-	elif AmlogicFamily:
-		if platform == "dmamlogic":
-			modes["HDMI"] = ["720p", "1080p", "smpte", "2160p30", "2160p", "1080i", "576p", "576i", "480p", "480i"]
-			widescreen_modes = {"720p", "1080p", "1080i", "2160p", "smpte"}
-		elif chipsetstring == "meson-6" and platform != "dmamlogic":
-			modes["HDMI"] = ["720p", "1080p", "1080i"]
-			widescreen_modes = {"720p", "1080p", "1080i"}
-		elif chipsetstring in ("meson-64", "s905d") or socfamily in ("aml905d", "meson64") and platform != "dmamlogic":
+	if BoxInfo.getItem("uhd4k"):
+		if socfamily in ("7376", "7444"):
+			modes["HDMI"] = ["720p", "1080p", "2160p", "1080i", "576p", "576i", "480p", "480i"]
+			widescreen_modes = {"720p", "1080p", "1080i", "2160p"}
+		elif socfamily in ("7252", "7251", "7251s", "7252s", "72604", "7278", "3798mv200", "3798mv310", "3798cv200", "3798mv300"):
+			modes["HDMI"] = ["720p", "1080p", "2160p", "2160p30", "1080i", "576p", "576i", "480p", "480i"]
+			widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
+		elif socfamily == "s905":
 			modes["HDMI"] = ["720p", "1080p", "2160p", "2160p30", "1080i"]
 			widescreen_modes = {"720p", "1080p", "1080i", "2160p", "2160p30"}
+		elif platform == "dmamlogic":
+			modes["HDMI"] = ["720p", "1080p", "smpte", "2160p30", "2160p", "1080i", "576p", "576i", "480p", "480i"]
+			widescreen_modes = {"720p", "1080p", "1080i", "2160p", "smpte"}
+	elif socfamily in ("7241", "7358", "7362", "73625", "7356", "73565", "7424", "7425", "7435", "7581", "3716mv410", "3716cv100", "8634", "8655", "8653"):
+		modes["HDMI"] = ["720p", "1080p", "1080i", "576p", "576i", "480p", "480i"]
+		widescreen_modes = {"720p", "1080p", "1080i"}
+	elif socfamily == "8726":
+		modes["HDMI"] = ["720p", "1080p", "1080i"]
+		widescreen_modes = {"720p", "1080p", "1080i"}
 	else:
 		modes["HDMI"] = ["720p", "1080i", "576p", "576i", "480p", "480i"]
 		widescreen_modes = {"720p", "1080i"}
@@ -355,6 +306,7 @@ class VideoHardware:
 				mode_30 = mode_50
 
 		if platform == "dmamlogic":
+			from Components.Console import Console
 			amlmode = list(modes.values())[0]
 			try:
 				print("[Videomode] Amlogic setting videomode to mode: %s" % amlmode)
@@ -383,6 +335,7 @@ class VideoHardware:
 			except:
 				print("[Videomode] Write to /sys/class/video/axis failed!")
 			if isfile("/sys/class/graphics/fb0/stride"):
+				from enigma import getDesktop
 				stride = open("/sys/class/graphics/fb0/stride", "r").read().strip()
 				print("[Videomode] Framebuffer mode:%s  stride:%s axis:%s" % (getDesktop(0).size().width(), stride, axis[mode]))
 
@@ -432,15 +385,6 @@ class VideoHardware:
 		if mode in config.av.videorate:
 			config.av.videorate[mode].value = rate
 			config.av.videorate[mode].save()
-
-	def getAMLMode(self):
-		currentmode = open("/sys/class/display/mode", "r").read().strip()
-		return currentmode[:-4]
-
-	def getWindowsAxis(self):
-		port = config.av.videoport.value
-		mode = config.av.videomode[port].value
-		return axis[mode]
 
 	def isPortAvailable(self, port):
 		# fixme
@@ -572,7 +516,7 @@ class VideoHardware:
 
 		print("[Videomode] VideoHardware -> setting aspect, policy, policy2, wss", aspect, policy, policy2, wss)
 
-		if AmlogicFamily:
+		if BoxInfo.getItem("AmlogicFamily"):
 			if platform == "dmamlogic":
 				arw = "0"
 				if config.av.policy_43.value == "bestfit":
@@ -585,7 +529,7 @@ class VideoHardware:
 					open("/sys/class/video/screen_mode", "w").write(arw)
 				except IOError:
 					print("[Videomode] Write to /sys/class/video/screen_mode failed!")
-			elif chipsetstring.startswith("meson-6") and platform != "dmamlogic":
+			elif socfamily == "8726":
 				arw = "0"
 				if config.av.policy_43.value == "bestfit":
 					arw = "10"
