@@ -2,7 +2,7 @@
 from Components.config import config, ConfigSlider, ConfigSelection, ConfigYesNo, ConfigEnableDisable, ConfigSubsection, ConfigBoolean, ConfigSelectionNumber, ConfigNothing, NoSave
 from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop
 from Components.SystemInfo import BoxInfo
-from os.path import exists
+from os.path import exists, isfile
 
 model = BoxInfo.getItem("model")
 brand = BoxInfo.getItem("brand")
@@ -97,20 +97,20 @@ def InitAVSwitch():
 
 	config.av.colorformat = ConfigSelection(choices=colorformat_choices, default="cvbs")
 	config.av.aspectratio = ConfigSelection(choices={
-			"4_3_letterbox": _("4:3 letterbox"),
-			"4_3_panscan": _("4:3 panscan"),
-			"16_9": _("16:9"),
-			"16_9_always": _("16:9 always"),
-			"16_10_letterbox": _("16:10 letterbox"),
-			"16_10_panscan": _("16:10 panscan"),
-			"16_9_letterbox": _("16:9 letterbox")},
-			default="16_9")
+		"4_3_letterbox": _("4:3 letterbox"),
+		"4_3_panscan": _("4:3 panscan"),
+		"16_9": _("16:9"),
+		"16_9_always": _("16:9 always"),
+		"16_10_letterbox": _("16:10 letterbox"),
+		"16_10_panscan": _("16:10 panscan"),
+		"16_9_letterbox": _("16:9 letterbox")
+	}, default="16_9")
 	config.av.aspect = ConfigSelection(choices={
-			"4_3": _("4:3"),
-			"16_9": _("16:9"),
-			"16_10": _("16:10"),
-			"auto": _("Automatic")},
-			default="auto")
+		"4_3": _("4:3"),
+		"16_9": _("16:9"),
+		"16_10": _("16:10"),
+		"auto": _("Automatic")
+	}, default="auto")
 	policy2_choices = {
 	# TRANSLATORS: (aspect ratio policy: black bars on top/bottom) in doubt, keep english term.
 	"letterbox": _("Letterbox"),
@@ -309,36 +309,75 @@ def InitAVSwitch():
 	else:
 		config.av.hdmicolordepth = ConfigNothing()
 
-	AmlHDRSupport = BoxInfo.getItem("AmlHDRSupport")
-	if AmlHDRSupport:
+	if BoxInfo.getItem("AmlHDRSupport"):
 		def setAMLHDR10(configElement):
 			try:
 				open("/sys/class/amhdmitx/amhdmitx0/config", "w").write(configElement.value)
 			except (IOError, OSError):
 				print("[AVSwitch] Write to /sys/class/amhdmitx/amhdmitx0/config failed!")
 		config.av.amlhdr10_support = ConfigSelection(choices={
-				"hdr10-0": _("Force enabled"),
-				"hdr10-1": _("Force disabled"),
-				"hdr10-2": _("Controlled by HDMI")},
-				default="hdr10-2")
+			"hdr10-0": _("Force enabled"),
+			"hdr10-1": _("Force disabled"),
+			"hdr10-2": _("Controlled by HDMI")
+		}, default="hdr10-2")
 		config.av.amlhdr10_support.addNotifier(setAMLHDR10)
-	else:
-		config.av.amlhdr10_support = ConfigNothing()
 
-	if AmlHDRSupport:
 		def setAMLHLG(configElement):
 			try:
 				open("/sys/class/amhdmitx/amhdmitx0/config", "w").write(configElement.value)
 			except (IOError, OSError):
 				print("[AVSwitch] Write to /sys/class/amhdmitx/amhdmitx0/config failed!")
 		config.av.amlhlg_support = ConfigSelection(choices={
-				"hlg-0": _("Force enabled"),
-				"hlg-1": _("Force disabled"),
-				"hlg-2": _("Controlled by HDMI")},
-				default="hlg-2")
+			"hlg-0": _("Force enabled"),
+			"hlg-1": _("Force disabled"),
+			"hlg-2": _("Controlled by HDMI")
+		}, default="hlg-2")
 		config.av.amlhlg_support.addNotifier(setAMLHLG)
 	else:
+		config.av.amlhdr10_support = ConfigNothing()
 		config.av.amlhlg_support = ConfigNothing()
+
+	if brand == "azbox":
+		def setAZScanMode(configElement):
+			try:
+				open("/proc/input_scan_mode", "w").write(str(configElement.value))
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /proc/input_scan_mode failed!")
+		config.av.az_scanmode = ConfigSelection(choices={
+			"1": _("Source"),
+			"2": _("Progressive"),
+			"3": _("Interlaced top field first"),
+			"4": _("Interlaced bottom field first")
+		}, default="1")
+		config.av.az_scanmode.addNotifier(setAZScanMode)
+
+		def setAZInterlacedAlgo(configElement):
+			try:
+				open("/proc/interlaced_algo", "w").write(str(configElement.value))
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /proc/interlaced_algo failed!")
+		config.av.az_interlaced = ConfigSelection(choices={
+			"1": _("Decoder"),
+			"2": _("MPEG2 progressive (Sequence)"),
+			"3": _("MPEG2 progressive (Menu)")
+		}, default="1")
+		config.av.az_interlaced.addNotifier(setAZInterlacedAlgo)
+
+		def setAZDeinterlacingMode(configElement):
+			try:
+				open("/proc/deinterlace_mode", "w").write(str(configElement.value))
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /proc/deinterlace_mode failed!")
+		config.av.az_deinterlacingmode = ConfigSelection(choices={
+			"1": _("Discard Bob"),
+			"2": _("Weave"),
+			"3": _("Constant Blend")
+		}, default="1")
+		config.av.az_deinterlacingmode.addNotifier(setAZDeinterlacingMode)
+	else:
+		config.av.az_scanmode = ConfigNothing()
+		config.av.az_interlaced = ConfigNothing()
+		config.av.az_deinterlacingmode = ConfigNothing()
 
 	HasHdrType = BoxInfo.getItem("HasHdrType")
 	if HasHdrType:
@@ -457,10 +496,10 @@ def InitAVSwitch():
 		default = "downmix"
 		if platform == "dmamlogic":
 			choices = [
-					("downmix", _("Downmix")),
-					("passthrough", _("Passthrough")),
-					("hdmi_best", _("Use best / Controlled by HDMI"))
-				]
+				("downmix", _("Downmix")),
+				("passthrough", _("Passthrough")),
+				("hdmi_best", _("Use best / Controlled by HDMI"))
+			]
 		else:
 			choices = [
 				("downmix", _("Downmix")),
@@ -469,16 +508,14 @@ def InitAVSwitch():
 
 		def setAC3Downmix(configElement):
 			if platform == "dmamlogic":
-				with open("/sys/class/audiodsp/digital_raw", "w") as trackac3:
-					trackac3.write(configElement.value)
-					trackac3.close()
-			else:
-				with open("/proc/stb/audio/ac3", "w") as trackac3:
-					trackac3.write(configElement.value)
-					trackac3.close()
-			if platform == "dmamlogic":
 				BoxInfo.setItem("CanPcmMultichannel", True)
-			elif BoxInfo.getItem("HasMultichannelPCM", False) and configElement.value == "passthrough":
+				ac3proc = "/sys/class/audiodsp/digital_raw"
+			else:
+				ac3proc = "/proc/stb/audio/ac3"
+			with open(ac3proc, "w") as trackac3:
+				trackac3.write(configElement.value)
+				trackac3.close()
+			if BoxInfo.getItem("HasMultichannelPCM", False) and configElement.value == "passthrough":
 				BoxInfo.setItem("CanPcmMultichannel", True)
 			else:
 				BoxInfo.setItem("CanPcmMultichannel", False)
@@ -609,13 +646,13 @@ def InitAVSwitch():
 		config.av.transcodeaac = ConfigNothing()
 
 	if BoxInfo.getItem("CanAC3PlusTranscode"):
+		default = "force_ac3"
 		DreamBoxAudio = BoxInfo.getItem("DreamBoxAudio")
 		if not DreamBoxAudio and platform not in ("gb7252", "gb72604"):
 			choices = [
 				("use_hdmi_caps", _("Controlled by HDMI")),
 				("force_ac3", _("Convert to AC3"))
 			]
-			default = "force_ac3"
 		elif DreamBoxAudio:
 			choices = [
 				("use_hdmi_caps", _("Controlled by HDMI")),
@@ -624,7 +661,6 @@ def InitAVSwitch():
 				("hdmi_best", _("Use best / Controlled by HDMI")),
 				("force_ddp", _("Force AC3+"))
 			]
-			default = "force_ac3"
 		else:
 			choices = [
 				("downmix", _("Downmix")),
@@ -633,7 +669,6 @@ def InitAVSwitch():
 				("multichannel", _("Convert to multi-channel PCM")),
 				("force_dts", _("Convert to DTS"))
 			]
-			default = "force_ac3"
 
 		def setAC3plusTranscode(configElement):
 			try:

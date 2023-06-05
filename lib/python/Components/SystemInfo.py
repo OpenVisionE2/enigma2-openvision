@@ -8,7 +8,7 @@ from subprocess import PIPE, Popen
 from enigma import Misc_Options, eDVBCIInterfaces, eDVBResourceManager, eGetEnigmaDebugLvl, eDBoxLCD
 
 from Tools.Directories import SCOPE_LIBDIR, SCOPE_SKINS, fileCheck, fileContains, fileReadLine, fileReadLines, resolveFilename
-from Tools.StbHardware import getWakeOnLANType
+from Tools.StbHardware import getWakeOnLANType, getBoxProc
 
 MODULE_NAME = __name__.split(".")[-1]
 
@@ -249,6 +249,8 @@ SystemInfo["CommonInterfaceCIDelay"] = fileCheck("/proc/stb/tsmux/rmx_delay")
 for cislot in range(BoxInfo.getItem("CommonInterface", 0)):
 	SystemInfo["CI%dSupportsHighBitrates" % cislot] = fileCheck("/proc/stb/tsmux/ci%d_tsclk" % cislot)
 	SystemInfo["CI%dRelevantPidsRoutingSupport" % cislot] = fileCheck("/proc/stb/tsmux/ci%d_relevant_pids_routing" % cislot)
+SystemInfo["HasCISSL"] = fileCheck("/etc/ssl/certs/customer.pem") and fileCheck("/etc/ssl/certs/device.pem")
+SystemInfo["CRClockVoltage"] = model == "azboxminime"
 SystemInfo["HasSoftcamInstalled"] = hassoftcaminstalled()
 SystemInfo["NumVideoDecoders"] = getNumVideoDecoders()
 SystemInfo["Udev"] = not fileCheck("/dev/.devfsd")
@@ -258,12 +260,12 @@ SystemInfo["12V_Output"] = Misc_Options.getInstance().detected_12V_output()
 SystemInfo["ZapMode"] = fileCheck("/proc/stb/video/zapmode") or fileCheck("/proc/stb/video/zapping_mode")
 SystemInfo["NumFrontpanelLEDs"] = countFrontpanelLEDs()
 SystemInfo["FrontpanelDisplay"] = fileCheck("/dev/dbox/oled0") or fileCheck("/dev/dbox/lcd0")
-SystemInfo["LCDsymbol_circle_recording"] = fileCheck("/proc/stb/lcd/symbol_circle") or platform == "gfuturesbcmarm" and fileCheck("/proc/stb/lcd/symbol_recording")
+SystemInfo["LCDsymbol_circle_recording"] = fileCheck("/proc/stb/lcd/symbol_circle") or platform == "gfuturesbcmarm" and fileCheck("/proc/stb/lcd/symbol_recording") or exists("/proc/led") and brand == "azbox"
 SystemInfo["LCDsymbol_timeshift"] = fileCheck("/proc/stb/lcd/symbol_timeshift")
 SystemInfo["LCDshow_symbols"] = (model == "et9x00" or platform == "gfuturesbcmarm") and fileCheck("/proc/stb/lcd/show_symbols")
 SystemInfo["LCDsymbol_hdd"] = platform == "gfuturesbcmarm" and fileCheck("/proc/stb/lcd/symbol_hdd")
 SystemInfo["DeepstandbySupport"] = model != "dm800"
-SystemInfo["Fan"] = fileCheck("/proc/stb/fp/fan") or BoxInfo.getItem("fan")
+SystemInfo["Fan"] = BoxInfo.getItem("fan") or fileCheck("/proc/stb/fp/fan") or exists("/proc/fan") or getBoxProc() in ("ultra", "premium+")
 SystemInfo["FanPWM"] = BoxInfo.getItem("Fan") and fileCheck("/proc/stb/fp/fan_pwm")
 SystemInfo["PowerLED"] = fileCheck("/proc/stb/power/powerled")
 SystemInfo["PowerLED2"] = fileCheck("/proc/stb/power/powerled2")
@@ -321,7 +323,6 @@ SystemInfo["HasPhysicalLoopthrough"] = ["Vuplus DVB-S NIM(AVL2108)", "GIGA DVB-S
 SystemInfo["HasFBCtuner"] = ["Vuplus DVB-C NIM(BCM3158)", "Vuplus DVB-C NIM(BCM3148)", "Vuplus DVB-S NIM(7376 FBC)", "Vuplus DVB-S NIM(45308X FBC)", "Vuplus DVB-S NIM(45208 FBC)", "DVB-S2 NIM(45208 FBC)", "DVB-S2X NIM(45308X FBC)", "DVB-S2 NIM(45308 FBC)", "DVB-C NIM(3128 FBC)", "BCM45208", "BCM45308X", "BCM3158"]
 SystemInfo["SmallFlash"] = BoxInfo.getItem("smallflash") and not BoxInfo.getItem("middleflash")
 SystemInfo["MiddleFlash"] = BoxInfo.getItem("middleflash") and not BoxInfo.getItem("smallflash")
-SystemInfo["HasCISSL"] = fileCheck("/etc/ssl/certs/customer.pem") and fileCheck("/etc/ssl/certs/device.pem")
 SystemInfo["CanChangeOsdAlpha"] = access("/proc/stb/video/alpha", R_OK) and True or False
 SystemInfo["CanChangeOsdPlaneAlpha"] = access("/sys/class/graphics/fb0/osd_plane_alpha", R_OK) and True or False
 SystemInfo["ScalerSharpness"] = fileCheck("/proc/stb/vmpeg/0/pep_scaler_sharpness")
@@ -333,9 +334,9 @@ SystemInfo["OpenVisionModule"] = fileCheck("/proc/enigma/distro")
 SystemInfo["OLDE2API"] = model == "dm800"
 SystemInfo["7segment"] = displaytype == "7segment" or "7seg" in displaytype
 SystemInfo["LCDSupport"] = ("lcd" in displaytype or "lcd" in model) and not "text" in displaytype
-SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or fileCheck("/proc/hisi") or fileCheck("/usr/bin/hihalt") or fileCheck("/usr/lib/hisilicon")
+SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or exists("/proc/hisi") or fileCheck("/usr/bin/hihalt") or exists("/usr/lib/hisilicon")
 SystemInfo["DefineSat"] = platform in ("octagonhisil", "octagonhisilnew", "gbmv200", "uclanhisil") or model in ("beyonwizv2", "viper4k")
-SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileCheck("/proc/device-tree/amlogic-dt-id") or fileCheck("/usr/bin/amlhalt") or fileCheck("/sys/module/amports")
+SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileCheck("/proc/device-tree/amlogic-dt-id") or fileCheck("/usr/bin/amlhalt") or exists("/sys/module/amports")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7") or platform == "dmamlogic"
 SystemInfo["AndroidMode"] = BoxInfo.getItem("RecoveryMode") and model == "multibox" or brand == "wetek" or platform == "dmamlogic"
 SystemInfo["grautec"] = fileCheck("/tmp/usbtft")

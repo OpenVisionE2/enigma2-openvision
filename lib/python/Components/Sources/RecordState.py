@@ -19,7 +19,10 @@ class RecordState(Source):
 			recs = self.session.nav.getRecordings()
 			LCDsymbol_circle_recording = BoxInfo.getItem("LCDsymbol_circle_recording")
 			if LCDsymbol_circle_recording:
-				open(LCDsymbol_circle_recording, "w").write(recs and "1" or "0")
+				if BoxInfo.getItem("model") == "azboxhd":
+					open(LCDsymbol_circle_recording, "w").write(recs and "4" or "3")
+				else:
+					open(LCDsymbol_circle_recording, "w").write(recs and "1" or "0")
 			self.records_running = len(recs)
 			if self.records_running != prev_records:
 				self.changed((self.CHANGED_ALL,))

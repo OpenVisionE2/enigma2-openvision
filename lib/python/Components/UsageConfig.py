@@ -1070,11 +1070,19 @@ def InitUsageConfig():
 
 	Fan = BoxInfo.getItem("Fan")
 	if Fan:
-		choicelist = [
-			("off", _("Off")),
-			("on", _("On")),
-			("auto", _("Auto"))
-		]
+		if model == "azboxhd":
+			choicelist = [
+				("0", _("On")),
+				("998", _("Off")),
+				("1", _("Off in Standby")),
+				("2", _("Cycle (5 Min ON ~ 5 Min Off)"))
+			]
+		else:
+			choicelist = [
+				("off", _("Off")),
+				("on", _("On")),
+				("auto", _("Auto"))
+			]
 		if isfile("/proc/stb/fp/fan_choices"):
 			print("[UsageConfig] Read /proc/stb/fp/fan_choices")
 			choicelist = [x for x in choicelist if x[0] in open("/proc/stb/fp/fan_choices", "r").read().strip().split(" ")]
@@ -1410,6 +1418,20 @@ def InitUsageConfig():
 			("holdtilllock", _("Hold till locked"))
 		])
 		config.misc.zapmode.addNotifier(setZapmode, immediate_feedback=False)
+
+	if BoxInfo.getItem("CRClockVoltage"):
+		def CRClock(configElement):
+			open("/proc/sc_clock", "w").write(str(configElement.value))
+		config.ci.crclock = ConfigSlider(default=357, increment=1, limits=(300, 1600))
+		config.ci.crclock.addNotifier(CRClock)
+
+		def CRVoltage(configElement):
+			open("/proc/sc_35v", "w").write(str(configElement.value))
+		config.ci.crvoltage = ConfigSelection(default="0", choices=[
+			("0", _("5V")),
+			("1", _("3.3V"))
+		])
+		config.ci.crvoltage.addNotifier(CRVoltage)
 
 	config.subtitles = ConfigSubsection()
 	config.subtitles.show = ConfigYesNo(default=True)
