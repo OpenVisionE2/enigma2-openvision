@@ -1184,8 +1184,11 @@ class ReceiverInformation(InformationBase):
 		info.append("")
 		info.append(formatLine("H", _("Driver and kernel information")))
 		info.append("")
-		info.append(formatLine("P1", _("Drivers version"), BoxInfo.getItem("driverdate")))
-		info.append(formatLine("P1", _("Kernel version"), BoxInfo.getItem("kernel")))
+		kernel = BoxInfo.getItem("kernel")
+		driverdate = BoxInfo.getItem("driverdate")
+		if driverdate != kernel:
+			info.append(formatLine("P1", _("Drivers version"), driverdate))
+		info.append(formatLine("P1", _("Kernel version"), kernel))
 		ModuleLayout = BoxInfo.getItem("ModuleLayout")
 		info.append(formatLine("P1", _("Kernel module layout"), ModuleLayout if ModuleLayout else _("N/A")))
 		deviceId = fileReadLine("/proc/device-tree/amlogic-dt-id", source=MODULE_NAME)
