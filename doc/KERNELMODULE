@@ -150,7 +150,6 @@ Here is the list of variables currently supported:
 	"displaytype" or "/proc/enigma/displaytype" replaces "getDisplayType()"
 	"distro" or "/proc/enigma/distro" replaces "getImageDistro()"
 	"driverdate" or "/proc/enigma/driverdate" replaces "getDriverDate()"
-	"dvi" or "/proc/enigma/dvi" replaces "getHaveDVI()"
 	"emmc" or "/proc/enigma/emmc" replaces "getEMMC()"
 	"fan" or "/proc/enigma/fan" replaces "getHaveFan()"
 	"feedsurl" or "/proc/enigma/feedsurl" replaces "getFeedsUrl()"
@@ -343,14 +342,6 @@ driverdate:
 		Just to make About/Information screen faster.
 
 	Example: 1.1.2022
-
-dvi:
-
-	BoxInfo.getItem("dvi") (/proc/enigma/dvi)
-
-		This variable defines if a receiver has DVI output.
-
-	Example: False
 
 emmc:
 

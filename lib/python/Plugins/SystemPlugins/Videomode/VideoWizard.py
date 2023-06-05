@@ -7,6 +7,7 @@ from Screens.Wizard import WizardSummary
 from Screens.WizardLanguage import WizardLanguage
 from Tools.Directories import SCOPE_PLUGINS, resolveFilename
 from Components.Sources.StaticText import StaticText
+from Components.Pixmap import Pixmap
 
 
 class VideoWizard(WizardLanguage, ShowRemoteControl):
@@ -16,7 +17,7 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 		ShowRemoteControl.__init__(self)
 		self.setTitle(_("Video Wizard"))
 		self.avSwitch = avSwitch
-		self.hasDVI = BoxInfo.getItem("dvi", False)
+		self.hasDVI = BoxInfo.getItem("DreamBoxDVI")
 		self.hasJack = BoxInfo.getItem("avjack", False)
 		self.hasRCA = BoxInfo.getItem("rca", False)
 		self.hasSCART = BoxInfo.getItem("scart", False)
@@ -24,6 +25,7 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 		self.port = None
 		self.mode = None
 		self.rate = None
+		self["portpic"] = Pixmap()
 		self["lab1"] = StaticText(_("OpenVision"))
 		self["lab2"] = StaticText(_("Lets define enigma2 once more"))
 		self["lab3"] = StaticText(_("Report problems to:"))

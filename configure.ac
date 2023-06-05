@@ -517,6 +517,8 @@ if test "$STBPLATFORM" == "dmamlogic"; then
 	AC_DEFINE(HAVE_DMAMLOGIC, 1, [Dreambox Amlogic hardware])
 fi
 
+AM_CONDITIONAL(DREAMBOXDVI, test "$BOXTYPE" == "dm800" -o "$BOXTYPE" == "dm8000")
+
 if test "$BOXTYPE" == "dm7020hd" -o "$BOXTYPE" == "dm7020hdv2" -o "$BOXTYPE" == "dm800se" -o "$BOXTYPE" == "dm800sev2"; then
 	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
 fi

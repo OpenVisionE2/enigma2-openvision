@@ -9,10 +9,8 @@ install_PYTHON = \
 	VideoWizard.py
 
 dist_install_DATA = \
-	DVI.png \
 	HDMI.png \
 	Jack.png \
-	lcd_DVI.png \
 	lcd_HDMI.png \
 	lcd_Jack.png \
 	lcd_RCA.png \
@@ -22,3 +20,7 @@ dist_install_DATA = \
 	Scart.png \
 	YPbPr.png \
 	videowizard.xml
+
+if DREAMBOXDVI
+dist_install_DATA += DVI.png lcd_DVI.png
+endif

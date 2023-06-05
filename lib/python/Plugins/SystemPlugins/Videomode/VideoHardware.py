@@ -12,7 +12,7 @@ brand = BoxInfo.getItem("brand")
 platform = BoxInfo.getItem("platform")
 socfamily = BoxInfo.getItem("socfamily").replace('bcm', '').replace('hisi', '')
 chipsetstring = about.getChipSetString()
-has_dvi = BoxInfo.getItem("dvi")
+has_dvi = BoxInfo.getItem("DreamBoxDVI")
 has_scart = BoxInfo.getItem("scart")
 has_yuv = BoxInfo.getItem("yuv")
 has_rca = BoxInfo.getItem("rca")
@@ -63,7 +63,7 @@ class VideoHardware:
 		rates["480p"] = {"60Hz": {60: "480p"}}
 		rates["576p"] = {"50Hz": {50: "576p"}}
 		rates["720p"] = {"50Hz": {50: "720p50"}, "60Hz": {60: "720p"}, "multi": {50: "720p50", 60: "720p"}, "auto": {50: "720p50", 60: "720p", 24: "720p24"}}
-		rates["1080i"] = {"50Hz": {50: "1080i50"}, "60Hz": {60: "1080i"}, "multi": {50: "1080i50", 60: "1080i"}, "auto": {50: "1080i50", 60: "1080i", 24: "1080p24"}}
+		rates["1080i"] = {"50Hz": {50: "1080i50"}, "60Hz": {60: "1080i"}, "multi": {50: "1080i50", 60: "1080i"}, "auto": {50: "1080i50", 60: "1080i", 24: "1080i24"}}
 		rates["1080p"] = {"50Hz": {50: "1080p50"}, "60Hz": {60: "1080p"}, "multi": {50: "1080p50", 60: "1080p"}, "auto": {50: "1080p50", 60: "1080p", 24: "1080p24"}}
 		if platform == "dm4kgen":
 			rates["2160p"] = {"50Hz": {50: "2160p50"}, "60Hz": {60: "2160p60"}, "multi": {50: "2160p50", 60: "2160p60"}, "auto": {50: "2160p50", 60: "2160p60", 24: "2160p24"}}
