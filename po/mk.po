@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 18:19+0330\n"
+"POT-Creation-Date: 2023-06-05 07:44+0330\n"
 "PO-Revision-Date: 2021-02-19 14:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: Muzoss-VELEBRDO\n"
@@ -247,14 +247,6 @@ msgstr ""
 msgid "%-m/%d/%Y"
 msgstr ""
 
-#, fuzzy, python-format
-msgid "%.0f GB"
-msgstr "%.2f GB"
-
-#, python-format
-msgid "%.0f MB"
-msgstr ""
-
 #, python-format
 msgid "%.1f?? E"
 msgstr ""
@@ -270,10 +262,6 @@ msgstr ""
 #, python-format
 msgid "%.1f° W"
 msgstr ""
-
-#, python-format
-msgid "%.2f GB"
-msgstr "%.2f GB"
 
 #, python-format
 msgid "%.3f MHz"
@@ -1159,12 +1147,24 @@ msgstr ""
 #, python-format
 msgid ""
 "%s\n"
+"Failed to download %s/%s from %s"
+msgstr ""
+
+#, python-format
+msgid ""
+"%s\n"
 "Press ok for multiboot selection\n"
 "Press exit to close"
 msgstr ""
 "%s\n"
 "Притиснете ок за избор на повеќекратно подигање\n"
 "Притиснете exit за да затворите"
+
+#, python-format
+msgid ""
+"%s\n"
+"Read failled %s/%s from %s"
+msgstr ""
 
 #, python-format
 msgid "%s  (%s)"
@@ -1562,6 +1562,9 @@ msgstr "2"
 msgid "3"
 msgstr "3"
 
+msgid "3.3V"
+msgstr ""
+
 msgid "30"
 msgstr "30"
 
@@ -1658,6 +1661,10 @@ msgstr ""
 msgid "55, 2, 1000, 45"
 msgstr ""
 
+#, fuzzy
+msgid "5V"
+msgstr "5"
+
 msgid "6"
 msgstr "6"
 
@@ -1737,6 +1744,9 @@ msgid "<Current movielist location>"
 msgstr ""
 
 msgid "<Default movie location>"
+msgstr ""
+
+msgid "<Flash expander inactive>"
 msgstr ""
 
 msgid "<Last timer location>"
@@ -1964,6 +1974,10 @@ msgstr "Вашиот приемник нема интернет-врска"
 msgid "Access to the %s commit logs requires an internet connection."
 msgstr "Вашиот приемник нема интернет-врска"
 
+#, fuzzy
+msgid "Activate Expander"
+msgstr "Активирајте timeshift - Крај"
+
 msgid "Activate HbbTV (Redbutton)"
 msgstr "Активирајте HbbTV (ЦрвенаТипка)"
 
@@ -1986,6 +2000,9 @@ msgstr "Активирајте ги мрежните поставки"
 
 msgid "Activate the configured network settings."
 msgstr "Активирајте ги конфигурираните мрежни поставки."
+
+msgid "Activate the flash expander, save all changed settings and exit"
+msgstr ""
 
 msgid "Activate timeshift End"
 msgstr "Активирајте timeshift - Крај"
@@ -2030,7 +2047,7 @@ msgstr "Додај тајмер"
 msgid "Add USB slots"
 msgstr "Сите слотови"
 
-msgid "Add USB slots (require receiver Vu+ 4k)"
+msgid "Add USB slots (Vu+)"
 msgstr ""
 
 msgid "Add a mark"
@@ -2784,6 +2801,14 @@ msgid "Auto standby"
 msgstr "Не оди во стендбај"
 
 #, fuzzy
+msgid "Auto video mode selected"
+msgstr "Избор на режим на видео."
+
+#, fuzzy
+msgid "Auto video mode selected for the TV."
+msgstr "Избор на режим на видео."
+
+#, fuzzy
 msgid "AutoTimer"
 msgstr "Тајмер"
 
@@ -3182,6 +3207,14 @@ msgstr "Светлост"
 msgid "Brightness (Dimmed)"
 msgstr "Светлост"
 
+#, fuzzy
+msgid "Brightness Video"
+msgstr "Светлост"
+
+#, fuzzy
+msgid "Brightness Video & OSD"
+msgstr "Светлост"
+
 msgid "British Indian Ocean Territory"
 msgstr "Територија на Британскиот Индиски Океан"
 
@@ -3259,6 +3292,12 @@ msgid "By default, SNR will be shown in dB (when supported by the tuner). This s
 msgstr "Стандардно, SNR се прикажува во децибели (ако е поддржано од тјунерот). Оваа опција го принудува SNR да биде прикажан како процент."
 
 msgid "By description, then by name"
+msgstr ""
+
+msgid "By disk UUID"
+msgstr ""
+
+msgid "By disk label"
 msgstr ""
 
 msgid "By duration, then by name"
@@ -3541,6 +3580,7 @@ msgstr "Не може да се утврди"
 msgid "Cannot find any signal ..., aborting !"
 msgstr "Не е откриен сигнал ..., откажете!"
 
+#, fuzzy
 msgid "Cannot find images - please try later"
 msgstr "Не можат да се најдат имиџи - обидете се подоцна"
 
@@ -3567,6 +3607,13 @@ msgstr "Кабо Верде"
 
 msgid "Card"
 msgstr "Картичка"
+
+msgid "Card Reader Clock (MHz)"
+msgstr ""
+
+#, fuzzy
+msgid "Card Reader Voltage"
+msgstr "Зголемен напон"
 
 msgid "Card infos (CCcam-Reader)"
 msgstr ""
@@ -3609,6 +3656,9 @@ msgstr ""
 #, fuzzy
 msgid "Change AC3 audio track"
 msgstr "Изберете аудио трака"
+
+msgid "Change Language"
+msgstr "Промени го јазикот"
 
 msgid "Change PIN Pressing [OK]"
 msgstr ""
@@ -3662,12 +3712,6 @@ msgstr "Избор на канал"
 
 msgid "Channel context menu"
 msgstr "Контекстно мени на каналот"
-
-msgid "Channel list is clean no characters to purge."
-msgstr ""
-
-msgid "Channel list was successfully purged."
-msgstr ""
 
 #, fuzzy
 msgid "Channel name"
@@ -3847,6 +3891,9 @@ msgstr ""
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
+msgid "Choose the target location for the expanded '/usr' directory."
+msgstr ""
+
 #, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
 msgstr "Мешање на повеќеканален звук во стерео."
@@ -3938,15 +3985,11 @@ msgid "Client Mode"
 msgstr "Кориснички режим"
 
 #, fuzzy
-msgid "Client Tuner Configuration"
-msgstr "Конфигурација на тјунер"
+msgid "Client Mode Tuner Settings"
+msgstr "Поставки за колекцијата"
 
 msgid "Client is streaming from this box!"
 msgstr "Клиент стримува од ресиверот!"
-
-#, fuzzy
-msgid "Client mode"
-msgstr "иницијален модул"
 
 msgid ""
 "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
@@ -4013,6 +4056,14 @@ msgid "Colombia"
 msgstr "Колумбија"
 
 msgid "Color"
+msgstr "Боја"
+
+#, fuzzy
+msgid "Color Bottom"
+msgstr "Формат на боја"
+
+#, fuzzy
+msgid "Color Top"
 msgstr "Боја"
 
 msgid "Color format"
@@ -4156,6 +4207,9 @@ msgstr "Конфигурирајте колку долго лентата со �
 msgid "Configure for how many minutes finished events should remain visible in the EPG. Useful when you need information about an event which has just finished, or has been delayed."
 msgstr "Конфигурирајте колку минути завршената програма треба да остане видлива во EPG. Корисно е кога ви требаат информации за програма која неодамна заврши или трае малку подолго од планираното."
 
+msgid "Configure front LED color during normal operations."
+msgstr ""
+
 msgid "Configure front LED color during recording in standby."
 msgstr ""
 
@@ -4255,6 +4309,14 @@ msgstr "Прилагодување на осветленоста на предн
 msgid "Configure the brightness level of the front panel display."
 msgstr "Прилагодување на осветленоста на предниот дисплеј."
 
+#, fuzzy
+msgid "Configure the card reader clock in MHz"
+msgstr "Поставете латитуда на вашата локација."
+
+#, fuzzy
+msgid "Configure the card reader voltage"
+msgstr "Избор на третиот јазик за аудио трака."
+
 msgid "Configure the color of the external subtitles, alternative (normal in white, italic in yellow, bold in cyan, underscore in green), white or yellow."
 msgstr "Конфигурација на боја на надворешни преводи, алтернативна (нормално во бело, закосен во жолто, задебелено со цијан, подвлечена во зелена боја), бело или жолто."
 
@@ -4263,6 +4325,10 @@ msgstr "Одреди ја бојата на телетекстот превод�
 
 msgid "Configure the contrast level of the front panel display."
 msgstr "Контраст на предниот дисплеј."
+
+#, fuzzy
+msgid "Configure the current key map file."
+msgstr "Избор на режим на тјунер."
 
 msgid "Configure the cursor behaviour in the channel selection list. When opening the channel selection list you can keep on the current service or already select up/down and you are able to revert the B+/B- buttons."
 msgstr "Го одредува однесувањето на курсорот во списокот за избор на канали. Кога отворате листа за избор на канали, курсорот може да остане на тековната станица или веќе да го означи горниот / долниот канал и можете да ги префрлите копчињата B + / B-."
@@ -4568,6 +4634,10 @@ msgstr ""
 msgid "Console"
 msgstr "Конзола"
 
+#, fuzzy
+msgid "Constant Blend"
+msgstr "Инстант снимање"
+
 msgid "Constellation & FFT mode"
 msgstr "Constellation & FFT mode"
 
@@ -4609,6 +4679,13 @@ msgstr "Продолжи"
 
 msgid "Contrast"
 msgstr "Контраст"
+
+#, fuzzy
+msgid "Contrast Video"
+msgstr "Контраст"
+
+msgid "Contrast Video & OSD"
+msgstr ""
 
 msgid "Control LED can be turned on or off here."
 msgstr ""
@@ -4714,11 +4791,24 @@ msgstr ""
 msgid "Create DVD-ISO"
 msgstr "Креирај ДВД-ИСО"
 
+#, fuzzy
+msgid "Create Expander"
+msgstr "Креирај директориум"
+
 msgid "Create directory"
 msgstr "Креирај директориум"
 
 msgid "Create separate radio userbouquet"
 msgstr "Креирај посебен кориснички букет за радио"
+
+msgid "Create the flash expander in the selected device"
+msgstr ""
+
+#, fuzzy
+msgid "Creating eMMC slots in progress."
+msgstr ""
+"\n"
+"Снимањето е во тек."
 
 msgid "Creating filesystem"
 msgstr "Креирај систем на датотеки"
@@ -4836,6 +4926,9 @@ msgstr "Уредник на списоци"
 
 msgid "Cutlist editor..."
 msgstr "Уредник на списоци ..."
+
+msgid "Cycle (5 Min ON ~ 5 Min Off)"
+msgstr ""
 
 msgid "Cyprus"
 msgstr "Кипар"
@@ -5146,6 +5239,12 @@ msgstr ""
 msgid "Dayname Year/MM/DD"
 msgstr ""
 
+msgid "Deactivate Expander"
+msgstr ""
+
+msgid "Deactivate the flash expander in the selected device"
+msgstr ""
+
 msgid "Debug"
 msgstr ""
 
@@ -5164,6 +5263,10 @@ msgid "Debug logging *"
 msgstr ""
 
 #, fuzzy
+msgid "Decoder"
+msgstr "Декодер во живо"
+
+#, fuzzy
 msgid "Deep Standby"
 msgstr "Deep standby"
 
@@ -5172,6 +5275,9 @@ msgstr "Deep standby"
 
 msgid "Default"
 msgstr "Стандард"
+
+msgid "Default (keymap.xml)"
+msgstr ""
 
 msgid "Default Services Scanner"
 msgstr "Стандардно пребарување на канали"
@@ -5189,6 +5295,14 @@ msgstr "Стандард"
 msgid "Default timer type"
 msgstr "Стандарден тип на тајмер"
 
+#, fuzzy
+msgid "Default video mode selected"
+msgstr "Избор на режим на видео."
+
+#, fuzzy
+msgid "Default video mode selected for the TV."
+msgstr "Избира видео извор прикажан на LCD."
+
 msgid "Default+Picon"
 msgstr "Стандардно + Пикон"
 
@@ -5202,6 +5316,10 @@ msgstr "Доцнење во (ms) пред почетокот на лизгање
 
 msgid "Defined / Active"
 msgstr ""
+
+#, fuzzy
+msgid "Deinterlacing mode"
+msgstr "Еднореден режим"
 
 msgid "Delay after change voltage before switch command"
 msgstr "Доцнење по промена на напон пред да дадете команда за прекинувач"
@@ -5288,6 +5406,10 @@ msgstr "Поставки на тајмерот за спиење"
 msgid "Delete EPG Cache"
 msgstr "Избриши имиџ"
 
+#, fuzzy
+msgid "Delete Expander"
+msgstr "Избриши имиџ"
+
 msgid "Delete Image"
 msgstr "Избриши имиџ"
 
@@ -5358,10 +5480,6 @@ msgstr "Избриши имиџ"
 msgid "Delete logfile"
 msgstr "Избриши датотека"
 
-#, python-format
-msgid "Delete or rename folder \"vuplus\" in path '%s' before initializing."
-msgstr ""
-
 msgid "Delete playlist entry"
 msgstr "Избришете го записот во плејлистата"
 
@@ -5381,6 +5499,9 @@ msgstr "Избришете го знакот под курсорот"
 #, fuzzy
 msgid "Delete the currently displayed log file"
 msgstr "Отстранете го моментално избраниот наслов"
+
+msgid "Delete the flash expander in the selected device"
+msgstr ""
 
 #, fuzzy
 msgid "Delete this tag"
@@ -5559,6 +5680,14 @@ msgstr "Директориум"
 msgid "Directory %s does not exist."
 msgstr "Директориумот %s не постои."
 
+#, fuzzy, python-format
+msgid "Directory '%s' does not exist!"
+msgstr "Директориумот %s не постои."
+
+#, fuzzy, python-format
+msgid "Directory '%s' not writable!"
+msgstr "Директориумот %s не постои."
+
 #, fuzzy
 msgid "Directory Actions"
 msgstr "Прелистувач на директориуми"
@@ -5605,8 +5734,9 @@ msgstr "Оневозможи"
 msgid "Disable move mode"
 msgstr "Деактивирај го режимот за движење"
 
-msgid "Disable the HDD Process on VFD."
-msgstr ""
+#, fuzzy
+msgid "Disable the HDD Process"
+msgstr "Деактивирај PIP"
 
 msgid "Disable timer"
 msgstr "Деактивирајте го тајмерот"
@@ -5619,6 +5749,9 @@ msgid "Disabled in configuration"
 msgstr "Поставки за списокот со филмови"
 
 msgid "Disabled or WPA/WPA2"
+msgstr ""
+
+msgid "Discard Bob"
 msgstr ""
 
 msgid "Dish"
@@ -5649,9 +5782,8 @@ msgstr "Прикажете информации за EPG за тековната
 msgid "Display EPG list for current channel"
 msgstr "Прикажете EPG список за тековниот канал"
 
-#, fuzzy
-msgid "Display Setup"
-msgstr "Поставки на екранот"
+msgid "Display Icons and Symbols"
+msgstr ""
 
 msgid "Display Skin"
 msgstr "Скин за Екран"
@@ -5794,9 +5926,10 @@ msgstr ""
 msgid "Do you really want to exit?"
 msgstr "Дали навистина сакате да излезете?"
 
+#, fuzzy
 msgid ""
-"Do you really want to initialize the device?\n"
-"All data on the disk will be lost!"
+"Do you really want to format the device in the Linux file system?\n"
+"All data on the device will be lost!"
 msgstr ""
 "Дали навистина сакате да го иницијализирате уредот?\n"
 "Сите податоци на дискот ќе бидат изгубени!"
@@ -5845,6 +5978,10 @@ msgid "Do you want to change the current MAC address?\n"
 msgstr "Дали сакате да го ажурирате пакетот:\n"
 
 #, fuzzy
+msgid "Do you want to deactivate this flash expander?"
+msgstr "Дали сакате да ја продолжите репродукцијата од последната точка?"
+
+#, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Дали сакате да ги отстраните сите записници за падови на системот"
 
@@ -5852,6 +5989,10 @@ msgid ""
 "Do you want to delete all the selected files:\n"
 "choose \"No\" to only delete the currently selected file."
 msgstr ""
+
+#, fuzzy
+msgid "Do you want to delete this flash expander directory?"
+msgstr "Дали сакате да ја продолжите репродукцијата од последната точка?"
 
 #, fuzzy
 msgid "Do you want to delete this log file?"
@@ -6136,10 +6277,6 @@ msgstr "EPG:"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ГРЕШКА - Пребарувањето не успеа (%s)!"
 
-#, python-format
-msgid "ERROR downloading file %s. Use button YELLOW in server \"Purge channel list\""
-msgstr ""
-
 msgid "East"
 msgstr "Исток"
 
@@ -6289,7 +6426,7 @@ msgstr "Овозможете Virgin EPG"
 
 #, fuzzy
 msgid "Enable Vu+ MultiBoot"
-msgstr "Активирај го уредувањето букети"
+msgstr "Иницијализација"
 
 msgid "Enable auto cable scan"
 msgstr "Активирајте го автоматското пребарување на кабелска"
@@ -6365,15 +6502,12 @@ msgstr "Активирај или деактивирај користење на
 msgid "Enable parental protection"
 msgstr "Активирај родителска заштита"
 
+#, fuzzy
 msgid ""
 "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on local tuner.\n"
 "\n"
-"You can use this receiver only in client mode using server channel list, timers and EPG.\n"
-"\n"
-"If YELLOW button is available, it means that channel list include characters bad, e.g. \"+\", then list cannot be import from server.\n"
-"\n"
-"If you press YELLOW button then it will clean up list to remove these characters."
-msgstr ""
+"You can use this receiver only in client mode using server channel list, timers and EPG."
+msgstr "Дозволете да пробате да пренесувате канал од дополнителен приемник енигма2 ако локалниот тјунер е зафатен. Наведете го целиот URL, вклучително и http:// и бројот на портата (обично ...:8001), пример: http://IP_addition.Приемник:8001."
 
 msgid "Enable teletext caching"
 msgstr "Активирајте телетекст меморија"
@@ -6393,6 +6527,9 @@ msgstr ""
 msgid "Enable this option to add extra EPG data to the debug log file."
 msgstr ""
 
+msgid "Enable this option to add international language and country load information detected during system boot to the debug log file."
+msgstr ""
+
 msgid "Enable this option to add keyboard keymap data to the debug log file."
 msgstr ""
 
@@ -6403,6 +6540,9 @@ msgid "Enable this option to add remote control data to the debug log file."
 msgstr ""
 
 msgid "Enable this option to add screen names and resolution data to the debug log file."
+msgstr ""
+
+msgid "Enable this option to add skin load information detected during system boot to the debug log file."
 msgstr ""
 
 msgid "Enable this setting if your aerial system needs power"
@@ -6719,6 +6859,12 @@ msgstr "Избран е невалиден директориум: %s"
 msgid "Error: Invalid location!"
 msgstr "Невалидна локација"
 
+msgid "Error: The copy was unsuccessful!"
+msgstr ""
+
+msgid "Error: The delete was unsuccessful!"
+msgstr ""
+
 msgid "Error: The filename may not be blank!"
 msgstr ""
 
@@ -6736,6 +6882,9 @@ msgstr "Се појави грешка, обидете се повторно п�
 
 #, python-format
 msgid "Error: Unable to rename directory '%s' to '%s'!"
+msgstr ""
+
+msgid "Error: mount not successful!"
 msgstr ""
 
 msgid "Esperanto"
@@ -7337,12 +7486,27 @@ msgstr "Фиксно"
 msgid "Fixed X11 font (SD)"
 msgstr ""
 
+#, fuzzy
+msgid "Flash Expander"
+msgstr "Флеш Имиџ"
+
+msgid "Flash Expander Actions"
+msgstr ""
+
 msgid "Flash Image"
 msgstr "Флеш Имиџ"
+
+#, fuzzy, python-format
+msgid "Flash directory '%s' not allowed!"
+msgstr "Не успеав да го создадам директориумот %s."
 
 #, fuzzy
 msgid "Flash type"
 msgstr "Флеш Имиџ"
+
+#, python-format
+msgid "FlashExpander on boot is '%s'.  FlashExpander status is '%s'."
+msgstr ""
 
 msgid "FlashImage: Add USB STARTUP slots - No EXT4 USB attached."
 msgstr ""
@@ -7412,8 +7576,20 @@ msgstr "Принудени статистики за наследниот сиг
 msgid "Force zap to recording service in standby"
 msgstr ""
 
+#, fuzzy
+msgid "Formal disk"
+msgstr "Нормален режим"
+
 msgid "Format"
 msgstr "Форматирање"
+
+#, fuzzy
+msgid "Format Disk"
+msgstr "Форматирање"
+
+#, fuzzy
+msgid "Format Disk Settings"
+msgstr "Поставки за преводи"
 
 msgid "Forward volume keys"
 msgstr "Напред - копче за јачина на звук"
@@ -8000,6 +8176,9 @@ msgstr ""
 msgid "Help Screen Information"
 msgstr "Информации"
 
+msgid "Help text uninitialized"
+msgstr ""
+
 msgid "Helps setting up your antenna"
 msgstr "Помага при поставување на вашата антена"
 
@@ -8236,6 +8415,12 @@ msgstr "INS"
 msgid "IP"
 msgstr "И"
 
+#, python-format
+msgid ""
+"IP %s is not valid.\n"
+"Disable client mode if you are going to use this address."
+msgstr ""
+
 msgid "IP address"
 msgstr "IP-адреса"
 
@@ -8445,6 +8630,10 @@ msgstr "само во плагини"
 msgid "In progress"
 msgstr "Во тек"
 
+#, fuzzy
+msgid "Inactive"
+msgstr "активна"
+
 msgid "Inactivity Sleeptimer"
 msgstr "Неактивност Слептимер"
 
@@ -8489,6 +8678,10 @@ msgid "Include action map data"
 msgstr "Вклучете AIT во http стримови"
 
 #, fuzzy
+msgid "Include international data"
+msgstr "Невалидни податоци за транспондер"
+
+#, fuzzy
 msgid "Include keyboard data"
 msgstr "Внесување податоци за тастатура"
 
@@ -8501,6 +8694,10 @@ msgstr "Конфигурирај тип на далечински управув
 
 msgid "Include screen load data"
 msgstr ""
+
+#, fuzzy
+msgid "Include skin data"
+msgstr "Вклучете задачата за CI"
 
 #, python-format
 msgid ""
@@ -8589,8 +8786,9 @@ msgstr "Време на прикажување на информативната
 msgid "Init"
 msgstr "Иницијализира"
 
+#, fuzzy
 msgid "Init Vu+ MultiBoot"
-msgstr ""
+msgstr "Иницијализација"
 
 msgid "Initial fast forward speed"
 msgstr "Почетна брза брзина нанапред"
@@ -8609,12 +8807,6 @@ msgstr "Почетен квалитет на сигналот"
 
 msgid "Initial signal quality:"
 msgstr "Почетен квалитет на сигналот:"
-
-msgid "Initialization"
-msgstr "Иницијализација"
-
-msgid "Initialize"
-msgstr "Иницијализира"
 
 msgid "Initializing storage device..."
 msgstr "Иницијализирање на уредот за меморија ..."
@@ -8745,6 +8937,15 @@ msgstr "Интерфејс: "
 #, fuzzy
 msgid "Interlaced"
 msgstr "Интерфејс: "
+
+msgid "Interlaced algorithm"
+msgstr ""
+
+msgid "Interlaced bottom field first"
+msgstr ""
+
+msgid "Interlaced top field first"
+msgstr ""
 
 #, fuzzy
 msgid "Interlingua"
@@ -9009,6 +9210,9 @@ msgstr "LAN врска"
 msgid "LCD Setup"
 msgstr "Поставки"
 
+msgid "LCD Skin Setup"
+msgstr ""
+
 #, fuzzy
 msgid "LCD scroll speed"
 msgstr "Последна брзина"
@@ -9037,6 +9241,9 @@ msgid "LED brightness during normal operations."
 msgstr ""
 
 msgid "LED brightness during standby."
+msgstr ""
+
+msgid "LED color during normal operations"
 msgstr ""
 
 #, fuzzy
@@ -9524,6 +9731,12 @@ msgstr "ММЦ картичка"
 msgid "MORE"
 msgstr "ПОВЕЌЕ"
 
+msgid "MPEG2 progressive (Menu)"
+msgstr ""
+
+msgid "MPEG2 progressive (Sequence)"
+msgstr ""
+
 msgid "MPHelp"
 msgstr ""
 
@@ -9721,9 +9934,6 @@ msgstr "Можеби причина е што снимањето момента�
 msgid "Mayotte"
 msgstr "Мајот"
 
-msgid "Media playback Remaining/Elapsed as"
-msgstr ""
-
 msgid "Media player"
 msgstr "Медиа плеер"
 
@@ -9815,6 +10025,9 @@ msgid "MiniDiSEqC A/B"
 msgstr "DiSEqC A/B"
 
 msgid "MiniTV"
+msgstr ""
+
+msgid "MiniTV Setup"
 msgstr ""
 
 msgid "MiniTV with OSD"
@@ -10424,6 +10637,9 @@ msgstr "Мрежа:"
 msgid "NetworkAdapterSelection"
 msgstr ""
 
+msgid "Neutrino (keymap.ntr)"
+msgstr ""
+
 #, fuzzy
 msgid "Never"
 msgstr "никогаш"
@@ -10604,6 +10820,10 @@ msgstr "Нема достапни ажурирања"
 #, fuzzy
 msgid "No updates were available.  Please try again later."
 msgstr "Нема достапни ажурирања. Ве молиме обидете се подоцна."
+
+#, python-format
+msgid "No valid mount for '%s' found!"
+msgstr ""
 
 msgid "No wireless networks found! Searching..."
 msgstr "Не се пронајдени безжични мрежи! Се пребарува ..."
@@ -10883,6 +11103,10 @@ msgstr ""
 msgid "Off"
 msgstr "Исклучи"
 
+#, fuzzy
+msgid "Off in Standby"
+msgstr "Стендбај"
+
 msgid "Offline decode delay (ms)"
 msgstr "Доцнење за дешифрирање офлајн (ms)"
 
@@ -11074,6 +11298,9 @@ msgstr "LED-статус во Стандбај"
 
 msgid "Operating LED status in deep standby mode"
 msgstr "LED-статус во Дееп Стандбај"
+
+msgid "Operating LED status in standby mode"
+msgstr "LED-статус во Стандбај"
 
 #, fuzzy
 msgid "Operating LED status while running"
@@ -11626,6 +11853,12 @@ msgstr "Изберете медиум за да се скенира"
 msgid "Please select medium to use as backup location"
 msgstr "Изберете носител на податоци како резервна цел"
 
+msgid "Please select the device where the flash expander '/usr' directory should created."
+msgstr ""
+
+msgid "Please select the device where the flash expander '/usr' directory should disabled."
+msgstr ""
+
 msgid "Please select the movie path..."
 msgstr "Ве молиме наведете ја филмската патека ..."
 
@@ -11729,6 +11962,12 @@ msgstr "Ве молиме почекајте, мрежата се проверу
 
 msgid "Please wait while your network is restarting..."
 msgstr "Ве молиме почекајте, мрежата се рестартира ..."
+
+msgid "Please wait, copy of flash memory is being deleted. This could take a few minutes to complete."
+msgstr ""
+
+msgid "Please wait, flash memory is being copied to this flash expander. This could take a number of minutes to complete."
+msgstr ""
 
 #, fuzzy, python-format
 msgid "Please wait, restarting %s."
@@ -11837,22 +12076,6 @@ msgid "Power LED can be turned on or off here."
 msgstr ""
 
 #, fuzzy
-msgid "Power LED state during deep-standby."
-msgstr "Вклучете го LED на копчето за напојување на предниот панел во режим на подготвеност."
-
-#, fuzzy
-msgid "Power LED state during standby."
-msgstr "Вклучете го LED на копчето за напојување на предниот панел во режим на подготвеност."
-
-#, fuzzy
-msgid "Power LED state in Deep-Standby"
-msgstr "LED-статус во Дееп Стандбај"
-
-#, fuzzy
-msgid "Power LED state in Standby"
-msgstr "LED-статус во Стандбај"
-
-#, fuzzy
 msgid "Power On Display"
 msgstr "Вклучете го екранот"
 
@@ -11949,6 +12172,12 @@ msgstr ""
 msgid "Preserve bookmarks in cuts"
 msgstr "Отстрани обележувач"
 
+msgid ""
+"Press \"Yes\" for Enable Vu+ MultiBoot.\n"
+"\n"
+"Press \"No\" to continue wizard."
+msgstr ""
+
 msgid "Press '0' to toggle PiP mode"
 msgstr "Притиснете '0' за да го вклучите режимот PiP"
 
@@ -11969,11 +12198,9 @@ msgid "Press EXIT to return to the help screen."
 msgstr "Притиснете OK за да го вклучите изборот."
 
 msgid ""
-"Press GREEN button to enable MultiBoot\n"
+"Press GREEN button to enable MultiBoot.\n"
 "\n"
-"Will reboot within 10 seconds,\n"
-"unless you have eMMC slots to restore.\n"
-"Restoring eMMC slots can take from 1 -> 5 minutes per slot."
+"Your receiver will reboot and create the eMMC partitions."
 msgstr ""
 
 msgid "Press INFO on your remote control for additional information."
@@ -12153,6 +12380,10 @@ msgstr "Бар од десно"
 msgid "Progress:"
 msgstr "Напредок:"
 
+#, fuzzy
+msgid "Progressive"
+msgstr "Напредок"
+
 msgid "Properties of current title"
 msgstr "Детали за избраниот наслов"
 
@@ -12234,10 +12465,6 @@ msgstr ""
 
 msgid "Purge all but the current and permanent locales/languages.  Add the current locale/language if it is not installed.  Delete the current locale/language if it is installed."
 msgstr ""
-
-#, fuzzy
-msgid "Purge channel list"
-msgstr "не е пронајден список со канали"
 
 msgid "Purge deleted user bouquets"
 msgstr "Отстранете ги избришаните букети"
@@ -12447,6 +12674,10 @@ msgid "Really exit the subservices quickzap?"
 msgstr "Дали сте сигурни дека сакате да го напуштите прекинувачот Под-услуги?"
 
 #, fuzzy
+msgid "Really force reboot?"
+msgstr "Дали сакате повторно да се рестартира?"
+
+#, fuzzy
 msgid "Really go to WOL?"
 msgstr "Дали сакате повторно да се рестартира?"
 
@@ -12628,9 +12859,6 @@ msgstr ""
 msgid "Refresh rate"
 msgstr "Стапка на освежување"
 
-msgid "Refresh rate selection."
-msgstr "Избор на стапка на освежување."
-
 #, fuzzy
 msgid "Refresh the screen"
 msgstr "Избор на стапка на освежување."
@@ -12662,6 +12890,10 @@ msgstr "Вчитување на црни листи"
 #, fuzzy
 msgid "Reload bookmarks"
 msgstr "Отстрани обележувач"
+
+#, fuzzy
+msgid "Reload services/bouquets list"
+msgstr "Додај услуга во букет"
 
 #, fuzzy
 msgid "Reloading EPG Cache..."
@@ -12952,6 +13184,10 @@ msgstr "Резолуција"
 
 msgid "Restart"
 msgstr "Рестарт"
+
+#, fuzzy
+msgid "Restart (Force)"
+msgstr "Рестартирајте ги обете"
 
 #, fuzzy
 msgid "Restart GUI"
@@ -13475,6 +13711,10 @@ msgstr "Пребарување на локални екстензии и инс�
 msgid "Scan forwards"
 msgstr "Пребарај нанапред"
 
+#, fuzzy
+msgid "Scan mode"
+msgstr "Режим на скалирање"
+
 msgid "Scan options"
 msgstr "Опции за пребарување"
 
@@ -13714,6 +13954,10 @@ msgstr "Изберете „Да“ за да ја испратите коман
 msgid "Select CAId"
 msgstr "Изберете CAId"
 
+#, fuzzy
+msgid "Select Device"
+msgstr "Изберете филм"
+
 msgid "Select Fast DiSEqC if your aerial system supports this. If you are unsure select 'no'."
 msgstr "Изберете Fast DiSEqC ако системот за антена го поддржува. Ако не сте сигурни, изберете „Не“."
 
@@ -13744,6 +13988,9 @@ msgid "Select a bouquet"
 msgstr "Изберете букет"
 
 msgid "Select a cardserver from the available list."
+msgstr ""
+
+msgid "Select a device to use as the flash expander"
 msgstr ""
 
 msgid "Select a movie"
@@ -13815,9 +14062,6 @@ msgstr "Изберете целна папка"
 
 msgid "Select function"
 msgstr "Изберете функција"
-
-msgid "Select hard disk"
-msgstr "Изберете хард диск"
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr "Изберете колку брзо антената треба да се движи помеѓу сателитите."
@@ -13949,6 +14193,10 @@ msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (
 msgstr "Изберете го протоколот што го користи вашиот SCR уред. Изборите се 'SCR Unicable' (Unicable) или 'SCR JESS' (JESS, исто така познат како Unicable II)."
 
 #, fuzzy
+msgid "Select the refresh rate to be used on the TV."
+msgstr "Го избира режимот за тоа како треба да се прикажува ТВ на LCD-екранот."
+
+#, fuzzy
 msgid "Select the remote control device to be used with the %s %s."
 msgstr "Изберете го тјунерот што ја контролира моторизираната антена."
 
@@ -14002,18 +14250,22 @@ msgstr "Изберете го типот на LNB / уред што се кор�
 msgid "Select the type of Single Cable Reception device you are using."
 msgstr "Изберете го типот на уредот за прием на единечен кабел што го користите."
 
+#, fuzzy
+msgid "Select the video mode to be used on the TV."
+msgstr "Го избира режимот за тоа како треба да се прикажува ТВ на LCD-екранот."
+
 msgid "Select update source"
 msgstr "Изберете извор на ажурирање"
 
 msgid "Select update source to edit"
 msgstr "Изберете извор за ажурирање за уредување"
 
-msgid "Select video input with up/down buttons"
-msgstr "Изберете видео влез со копчиња нагоре / надолу"
+msgid "Select video mode"
+msgstr "Изберете режим на видео"
 
 #, fuzzy
-msgid "Select video mode."
-msgstr "Изберете режим на видео"
+msgid "Select video output port with UP/DOWN buttons"
+msgstr "Изберете видео влез со копчиња нагоре / надолу"
 
 msgid "Select whether your SCR device is externally powered."
 msgstr "Ве молиме изберете дали вашиот SCR уред е со надворешно напојување."
@@ -14440,9 +14692,6 @@ msgstr "Поставки"
 #, fuzzy
 msgid "Setup UI animations"
 msgstr "Поставување на вашиот позиционер"
-
-msgid "Setup hard disk"
-msgstr "Поставки на хард диск"
 
 msgid "Setup menu"
 msgstr "Поставки - Мени"
@@ -15414,6 +15663,10 @@ msgstr "Звук"
 msgid "Sound carrier"
 msgstr "Носач на звук"
 
+#, fuzzy
+msgid "Source"
+msgstr "Изворно барање"
+
 msgid "Source request"
 msgstr "Изворно барање"
 
@@ -16175,6 +16428,10 @@ msgid "Tanzania, United Republic of"
 msgstr "Танзанија, Обединета Република"
 
 #, fuzzy
+msgid "Target location"
+msgstr "Изберете локација"
+
+#, fuzzy
 msgid "Tatar"
 msgstr "Катар"
 
@@ -16438,6 +16695,18 @@ msgstr "Резултатите од тестот ќе бидат зачуван�
 
 msgid "The saved PIN was cleared."
 msgstr "Зачуваниот PIN е исчистен."
+
+msgid "The services/bouquets list is reloaded!"
+msgstr ""
+
+msgid "The set property allows an application to force a preferred interlace or progressive algorithm in case of unsure output format (usually stream)."
+msgstr ""
+
+msgid "The set property allows an application to force the decoder to mark the pictures in a certain way, including forcing progressive, and forcing interlaced bottom first or top first."
+msgstr ""
+
+msgid "The set property allows an application to select the scaler's deinterlacing mode. Deinterlacing is used only when the scaler's input pictures are interlaced. If the scaler is set to deinterlacing but the input is progressive, then the scaler will not use any deinterlacing."
+msgstr ""
 
 msgid "The sleep timer has been activated."
 msgstr "Тајмерот за спиење е активиран."
@@ -16739,6 +17008,22 @@ msgstr "Оваа опција ја поставува острината на с
 
 msgid "This option sets the surpression of false digital contours, that are the result of a limited number of discrete values."
 msgstr "Оваа опција ја поставува супресијата на лажните дигитални контури, кои се резултат на ограничен број дискретни вредности."
+
+#, fuzzy
+msgid "This option sets the video & osd picture brightness."
+msgstr "Оваа опција ја поставува осветленоста на сликата."
+
+#, fuzzy
+msgid "This option sets the video & osd picture contrast."
+msgstr "Оваа опција го поставува контрастот на сликата."
+
+#, fuzzy
+msgid "This option sets the video picture brightness."
+msgstr "Оваа опција ја поставува осветленоста на сликата."
+
+#, fuzzy
+msgid "This option sets the video picture contrast."
+msgstr "Оваа опција го поставува контрастот на сликата."
 
 msgid "This option sets up the picture sharpness, used when the picture is being upscaled."
 msgstr "Оваа опција ја поставува острината на сликата, што се користи кога сликата се зголемува."
@@ -17399,6 +17684,9 @@ msgstr "Вид на пребарување"
 msgid "UNKNOWN"
 msgstr "Непознато"
 
+msgid "UP80 (keymap.u80)"
+msgstr ""
+
 msgid "URL"
 msgstr "URL"
 
@@ -17650,6 +17938,16 @@ msgid "Use as PiP if possible"
 msgstr "Користете како PiP ако е можно"
 
 #, fuzzy
+msgid "Use automatic mode detection"
+msgstr "До избор на аудио"
+
+msgid ""
+"Use automatic mode detection?\n"
+"\n"
+"This option reads all supported modes from your TV. Disable it only if you want to customize the preferred configuration."
+msgstr ""
+
+#, fuzzy
 msgid "Use best / Controlled by HDMI"
 msgstr "контролирана од HDMI"
 
@@ -17683,6 +17981,9 @@ msgstr "Користете индивидуални поставки за сек
 
 msgid "Use interface"
 msgstr "Користете интерфејс"
+
+msgid "Use key map *"
+msgstr ""
 
 msgid "Use official channel numbering"
 msgstr "Користете официјално нумерирање на каналите"
@@ -17764,6 +18065,9 @@ msgstr ""
 msgid "Used service scan type"
 msgstr "Користен тип на пребарување на канали"
 
+msgid "User (keymap.usr)"
+msgstr ""
+
 #, python-format
 msgid "User Band %d"
 msgstr ""
@@ -17839,6 +18143,10 @@ msgstr "Узбекистан"
 msgid "VCR Scart"
 msgstr "VCR scart"
 
+#, fuzzy
+msgid "VFD Setup"
+msgstr "Поставки"
+
 msgid "VLAN connection"
 msgstr "ВЛАН врска"
 
@@ -17902,24 +18210,22 @@ msgstr "Поставки за подобрување на видеото"
 msgid "Video enhancement setup"
 msgstr "Поставки за подобрување на видеото"
 
+msgid "Video output"
+msgstr "Излез на видео"
+
+#, fuzzy
 msgid ""
-"Video input selection\n"
+"Video output port selection.\n"
 "\n"
-"Please press OK if you can see this page on your TV (or select a different input port).\n"
+"Make sure the correct input is selected on the TV. Press OK if you can see this page on your TV.\n"
 "\n"
-"The next input port will be automatically probed in 20 seconds."
+"The next output port will be automatically tried in 10 seconds."
 msgstr ""
 "Избор на видео влез\n"
 "\n"
 "Ве молиме, притиснете ОК ако можете да ја видите оваа страница на вашиот телевизор (или изберете друга порта за влез).\n"
 "\n"
 "Следната влезна порта автоматски ќе се испита за 20 секунди."
-
-msgid "Video mode selection."
-msgstr "Избор на режим на видео."
-
-msgid "Video output"
-msgstr "Излез на видео"
 
 msgid "Video setup"
 msgstr "Поставки на видео"
@@ -18062,14 +18368,7 @@ msgstr "Копчињата за јачина на звук на далечинс
 msgid "Volume up"
 msgstr "Зголемување на звукот"
 
-msgid "Vu+ MultiBoot Initialisation - will reboot after 10 seconds."
-msgstr ""
-
-msgid ""
-"Vu+ MultiBoot Initialisation in progress\n"
-"\n"
-"Will reboot after restoring any eMMC slots\n"
-"This can take from 1 -> 5 minutes per slot."
+msgid "Vu+ MultiBoot Initialization: Your receiver will reboot."
 msgstr ""
 
 msgid "Vu+ MultiBoot Manager"
@@ -18218,6 +18517,9 @@ msgid "Weather Forecast"
 msgstr ""
 
 msgid "Weather Plugin"
+msgstr ""
+
+msgid "Weave"
 msgstr ""
 
 #, fuzzy
@@ -18976,6 +19278,10 @@ msgid "Your %s %s goes to WOL"
 msgstr ""
 
 #, fuzzy, python-format
+msgid "Your %s %s is force rebooting"
+msgstr "Вашиот приемник се рестартира"
+
+#, fuzzy, python-format
 msgid "Your %s %s is rebooting"
 msgstr "Вашиот приемник се рестартира"
 
@@ -19670,10 +19976,6 @@ msgstr "скок напред кон следниот наслов"
 msgid "jump to chapter by number"
 msgstr "скок до поглавје по број"
 
-#, fuzzy
-msgid "kB"
-msgstr "Б"
-
 msgid "languages"
 msgstr "јазици"
 
@@ -20062,13 +20364,25 @@ msgstr "прескокни напред"
 msgid "slot%s %s - %s"
 msgstr "слот %s - %s"
 
-#, python-format
-msgid "slot%s - %s"
-msgstr "слот %s - %s"
-
-#, python-format
-msgid "slot%s - %s (current image)"
+#, fuzzy, python-format
+msgid "slot%s %s - %s (current image)"
 msgstr "слот %s - %s (тековен имиџ)"
+
+#, fuzzy, python-format
+msgid "slot%s %s - %s mode 1"
+msgstr "слот %s - %s режим 1"
+
+#, fuzzy, python-format
+msgid "slot%s %s - %s mode 1 (current image)"
+msgstr "слот %s - %s режим 1 (тековен имиџ)"
+
+#, fuzzy, python-format
+msgid "slot%s %s - %s mode 12"
+msgstr "слот %s - %s режим 12"
+
+#, fuzzy, python-format
+msgid "slot%s %s - %s mode 12 (current image)"
+msgstr "слот %s - %s режим 12 (тековен имиџ)"
 
 #, python-format
 msgid "slot%s - %s (current image) with, backup"
@@ -20079,22 +20393,6 @@ msgid "slot%s - %s (current image), without backup"
 msgstr "слот %s - %s (тековен имиџ), без резервна копија"
 
 #, python-format
-msgid "slot%s - %s mode 1"
-msgstr "слот %s - %s режим 1"
-
-#, python-format
-msgid "slot%s - %s mode 1 (current image)"
-msgstr "слот %s - %s режим 1 (тековен имиџ)"
-
-#, python-format
-msgid "slot%s - %s mode 12"
-msgstr "слот %s - %s режим 12"
-
-#, python-format
-msgid "slot%s - %s mode 12 (current image)"
-msgstr "слот %s - %s режим 12 (тековен имиџ)"
-
-#, python-format
 msgid "slot%s - %s, with backup"
 msgstr "слот %s - %s, со резервна копија"
 
@@ -20102,12 +20400,12 @@ msgstr "слот %s - %s, со резервна копија"
 msgid "slot%s - %s, without backup"
 msgstr "слот %s - %s, без резервна копија"
 
-#, fuzzy
-msgid "slot0 - Recovery mode image"
-msgstr "Стартувај го менито Recovery (Обнова)"
+#, fuzzy, python-format
+msgid "slot0 %s - Recovery mode image"
+msgstr "слот %s - %s (тековен имиџ)"
 
-#, fuzzy
-msgid "slot0 - Recovery mode image (current)"
+#, fuzzy, python-format
+msgid "slot0 %s - Recovery mode image (current)"
 msgstr "слот %s - %s режим 1 (тековен имиџ)"
 
 #, fuzzy
