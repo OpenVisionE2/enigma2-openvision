@@ -1068,8 +1068,7 @@ def InitUsageConfig():
 		config.usage.time.enabled_display.value = False
 		config.usage.time.display.value = config.usage.time.display.default
 
-	Fan = BoxInfo.getItem("Fan")
-	if Fan:
+	if BoxInfo.getItem("Fan"):
 		if model == "azboxhd":
 			choicelist = [
 				("0", _("On")),
@@ -1083,13 +1082,16 @@ def InitUsageConfig():
 				("on", _("On")),
 				("auto", _("Auto"))
 			]
-		if isfile("/proc/stb/fp/fan_choices"):
+		if isfile("/proc/stb/fp/fan_choices") and model != "azboxhd":
 			print("[UsageConfig] Read /proc/stb/fp/fan_choices")
 			choicelist = [x for x in choicelist if x[0] in open("/proc/stb/fp/fan_choices", "r").read().strip().split(" ")]
 		config.usage.fan = ConfigSelection(choicelist)
 
 		def fanChanged(configElement):
-			open(Fan, "w").write(configElement.value)
+			if model == "azboxhd":
+				open("/proc/fan", "w").write(configElement.value)
+			else:
+				open("/proc/stb/fp/fan", "w").write(configElement.value)
 		config.usage.fan.addNotifier(fanChanged)
 
 	FanPWM = BoxInfo.getItem("FanPWM")
