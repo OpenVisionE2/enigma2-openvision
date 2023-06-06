@@ -9,6 +9,8 @@ from Tools.Directories import SCOPE_PLUGINS, resolveFilename
 from Components.Sources.StaticText import StaticText
 from Components.Pixmap import Pixmap
 
+Has24hz = BoxInfo.getItem("Has24hz")
+
 
 class VideoWizard(WizardLanguage, ShowRemoteControl):
 	def __init__(self, session):
@@ -18,9 +20,9 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 		self.setTitle(_("Video Wizard"))
 		self.avSwitch = avSwitch
 		self.hasDVI = BoxInfo.getItem("DreamBoxDVI")
-		self.hasJack = BoxInfo.getItem("avjack", False)
-		self.hasRCA = BoxInfo.getItem("rca", False)
-		self.hasSCART = BoxInfo.getItem("scart", False)
+		self.hasJack = BoxInfo.getItem("avjack")
+		self.hasRCA = BoxInfo.getItem("rca")
+		self.hasSCART = BoxInfo.getItem("scart")
 		self.portCount = 0
 		self.port = None
 		self.mode = None
@@ -82,7 +84,7 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 		for modes in self.avSwitch.getModeList(self.port):
 			if modes[0] == mode:
 				for rate in modes[1]:
-					if rate == "auto" and not BoxInfo.getItem("Has24hz"):
+					if rate == "auto" and not Has24hz:
 						continue
 					if self.port == "HDMI-PC":
 						# print("[WizardVideo] listModes DEBUG: rate='%s'." % rate)
@@ -128,7 +130,7 @@ class VideoWizard(WizardLanguage, ShowRemoteControl):
 	def modeSelect(self, mode):
 		rates = self.listRates(mode)
 		# print("[WizardVideo] modeSelect DEBUG: rates=%s." % rates)
-		if self.port == "HDMI" and mode in ("720p", "1080i", "1080p") and not BoxInfo.getItem("AmlogicFamily"):
+		if self.port == "HDMI" and mode in ("720p", "1080i", "1080p") and BoxInfo.getItem("platform") != "dmamlogic":
 			self.rate = "multi"
 			self.avSwitch.setMode(port=self.port, mode=mode, rate="multi")
 		else:
