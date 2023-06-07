@@ -43,7 +43,7 @@ def MultiContentEntryPixmapAlphaTest(pos=(0, 0), size=(0, 0), png=None, backcolo
 
 
 def MultiContentEntryProgress(pos=(0, 0), size=(0, 0), percent=None, borderWidth=None, foreColor=None, foreColorSelected=None, backColor=None, backColorSelected=None):
-	return eListboxPythonMultiContent.TYPE_PROGRESS, pos[0], pos[1], size[0], size[1], percent, borderWidth, __resolveColor(foreColor), __resolveColor(foreColorSelected), __resolveColor(backColor), __resolveColor(backColorSelected)
+	return eListboxPythonMultiContent.TYPE_PROGRESS, int(pos[0]), int(pos[1]), int(size[0]), int(size[1]), percent, borderWidth, __resolveColor(foreColor), __resolveColor(foreColorSelected), __resolveColor(backColor), __resolveColor(backColorSelected)
 
 
 def MultiContentEntryProgressPixmap(pos=(0, 0), size=(0, 0), percent=None, pixmap=None, borderWidth=None, foreColor=None, foreColorSelected=None, backColor=None, backColorSelected=None):
