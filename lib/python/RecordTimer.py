@@ -16,7 +16,7 @@ from Components.Harddisk import findMountPoint
 from Components.SystemInfo import BoxInfo
 from Components.TimerSanityCheck import TimerSanityCheck
 import Components.ParentalControl
-from Components.UsageConfig import defaultMoviePath
+from Components.UsageConfig import defaultMoviePath, preferredInstantRecordPath, preferredTimerPath
 from Screens.MessageBox import MessageBox
 from Screens.PictureInPicture import PictureInPicture
 import Screens.Standby
@@ -96,34 +96,24 @@ def findSafeRecordPath(dirname):
 
 
 def getRecordingStorageSize():
-	flashsize = statvfs("/")
-	flash = int(flashsize.f_bfree * flashsize.f_frsize)
-	if exists(config.usage.default_path.value):
+	storage = 0
+	if config.usage.default_path.value != "/" and exists(config.usage.default_path.value):
 		size = statvfs(config.usage.default_path.value)
-		storage = int(size.f_bfree * size.f_frsize)
-		if storage > flash:
-			return storage // (1024 * 1024) // 1000
-	if exists(config.usage.timer_path.value):
+		storage = int(size.f_bfree * size.f_frsize) // (1024 * 1024)
+	if config.usage.timer_path.value != "/" and exists(config.usage.timer_path.value) and preferredTimerPath() == config.usage.timer_path.value:
 		size = statvfs(config.usage.timer_path.value)
-		storage = int(size.f_bfree * size.f_frsize)
-		if storage > flash:
-			return storage // (1024 * 1024) // 1000
-	if exists(config.usage.instantrec_path.value):
+		storage = int(size.f_bfree * size.f_frsize) // (1024 * 1024)
+	if config.usage.instantrec_path.value != "/" and exists(config.usage.instantrec_path.value) and preferredInstantRecordPath() == config.usage.instantrec_path.value:
 		size = statvfs(config.usage.instantrec_path.value)
-		storage = int(size.f_bfree * size.f_frsize)
-		if storage > flash:
-			return storage // (1024 * 1024) // 1000
-	return 0
+		storage = int(size.f_bfree * size.f_frsize) // (1024 * 1024)
+	return storage
 
 
 def getTimeshiftStorageSize():
-	flashsize = statvfs("/")
-	flash = int(flashsize.f_bfree * flashsize.f_frsize)
-	if exists(config.usage.timeshift_path.value):
+	if config.usage.timeshift_path.value != "/" and exists(config.usage.timeshift_path.value):
 		size = statvfs(config.usage.timeshift_path.value)
-		storage = int(size.f_bfree * size.f_frsize)
-		if storage > flash:
-			return storage // (1024 * 1024) // 1000
+		storage = int(size.f_bfree * size.f_frsize) // (1024 * 1024)
+		return storage
 	return 0
 
 
@@ -350,9 +340,9 @@ class RecordTimer(Timer):
 		return entry
 
 	def doActivate(self, w):
-		if getRecordingStorageSize() <= 1: # Storage <= 1 GB not recording.
+		if getRecordingStorageSize() < 100:  # Storage < 100 MB not recording.
 			w.state = RecordTimerEntry.StateEnded
-			AddPopup(_("Recording failed: Storage device free size %d GB.") % getRecordingStorageSize(), type=MessageBox.TYPE_ERROR, timeout=0, id="TimerRecordingFailed")
+			AddPopup(_("Recording failed: Storage device free size %d MB.") % getRecordingStorageSize(), type=MessageBox.TYPE_ERROR, timeout=0, id="TimerRecordingFailed")
 		# when activating a timer for servicetype 4097,
 		# and ServiceApp has player enabled, then skip recording.
 		if w.service_ref.ref.toString().startswith("4097:") and isPluginInstalled("ServiceApp") and config.plugins.serviceapp.servicemp3.replace.value or w.service_ref.ref.toString()[:4] in ("5001", "5002"):

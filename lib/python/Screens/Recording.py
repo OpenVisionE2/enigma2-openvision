@@ -118,10 +118,10 @@ class RecordingSettings(Setup):
 			green = self.greenText
 		if isdir(path):
 			size = statvfs(path)
-			storage = int((size.f_bfree * size.f_frsize) // (1024 * 1024) // 1000)
-			if isdir(path) and not stat(path).st_dev in DEFAULT_INHIBIT_DEVICES and fileAccess(path, "w") and storage <= 1:
+			storage = int(size.f_bfree * size.f_frsize) // (1024 * 1024)
+			if isdir(path) and not stat(path).st_dev in DEFAULT_INHIBIT_DEVICES and fileAccess(path, "w") and storage < 100:
 				self.errorItem = self["config"].getCurrentIndex()
-				footnote = _("'%s' Storage device free size %d GB.\n%s") % (path, storage, itemchange)
+				footnote = _("'%s' Storage free size %d MB.\n%s") % (path, storage, itemchange)
 				green = ""
 		self.setFootnote(footnote)
 		self["key_green"].text = green
