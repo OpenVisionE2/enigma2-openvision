@@ -23,6 +23,8 @@ visuallyImpairedCommentary = "NAR qad"
 model = BoxInfo.getItem("model")
 displaytype = BoxInfo.getItem("displaytype")
 
+DEFAULTKEYMAP = eEnv.resolve("${datadir}/enigma2/keymap.xml")
+
 
 def InitUsageConfig():
 	config.usage = ConfigSubsection()
@@ -1252,7 +1254,26 @@ def InitUsageConfig():
 			Misc_Options.getInstance().set_12V_output(configElement.value == "on" and 1 or 0)
 		config.usage.output_12V.addNotifier(set12VOutput, immediate_feedback=False)
 
-	config.usage.keymap = ConfigText(default=eEnv.resolve("${datadir}/enigma2/keymap.xml"))
+	KM = {
+		"xml": _("Default (keymap.xml)"),
+		"usr": _("User (keymap.usr)"),
+		"ntr": _("Neutrino (keymap.ntr)"),
+		"u80": _("UP80 (keymap.u80)")
+	}
+
+	keymapchoices = []
+	for kmap in KM.keys():
+		kmfile = eEnv.resolve("${datadir}/enigma2/keymap.%s" % kmap)
+		if isfile(kmfile):
+			keymapchoices.append((kmfile, KM.get(kmap)))
+
+	if not isfile(DEFAULTKEYMAP):  # BIG PROBLEM
+		keymapchoices.append((DEFAULTKEYMAP, KM.get("xml")))
+
+	config.usage.keymap = ConfigSelection(default=DEFAULTKEYMAP, choices=keymapchoices)
+	config.usage.keytrans = ConfigText(default=eEnv.resolve("${datadir}/enigma2/keytranslation.xml"))
+	config.usage.keymap_usermod = ConfigText(default=eEnv.resolve("${datadir}/enigma2/keymap_usermod.xml"))
+
 	config.usage.alternative_imagefeed = ConfigText(default="", fixed_size=False)
 
 	config.crash.pythonStackOnSpinner = ConfigYesNo(default=False)

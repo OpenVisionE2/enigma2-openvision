@@ -2,6 +2,8 @@ SUBDIRS = countries display fonts extensions keymaps skin_default skin_fallback_
 
 dist_pkgdata_DATA = \
 	black.mvi \
+	keymap.ntr \
+	keymap.u80 \
 	keymap.xml \
 	menu.xml \
 	radio.mvi \
