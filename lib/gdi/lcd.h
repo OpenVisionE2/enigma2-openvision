@@ -57,17 +57,17 @@ public:
 	int getLcdType() { return lcd_type; };
 	virtual void setPalette(gUnmanagedSurface) = 0;
 
-	const char *get_VFD_scroll_delay();
-	void set_VFD_scroll_delay(int delay);
+	const char *get_VFD_scroll_delay() const;
+	void set_VFD_scroll_delay(int delay) const;
 
-	const char *get_VFD_initial_scroll_delay();
-	void set_VFD_initial_scroll_delay(int delay);
+	const char *get_VFD_initial_scroll_delay() const;
+	void set_VFD_initial_scroll_delay(int delay) const;
 
-	const char *get_VFD_final_scroll_delay();
-	void set_VFD_final_scroll_delay(int delay);
+	const char *get_VFD_final_scroll_delay() const;
+	void set_VFD_final_scroll_delay(int delay) const;
 
-	const char *get_VFD_scroll_repeats();
-	void set_VFD_scroll_repeats(int delay);
+	const char *get_VFD_scroll_repeats() const;
+	void set_VFD_scroll_repeats(int delay) const;
 
 
 #ifndef SWIG
@@ -77,7 +77,7 @@ public:
 	int stride() { return _stride; };
 	virtual eSize size() { return res; };
 	virtual void update() = 0;
-#if defined(HAVE_TEXTLCD)
+#if defined(HAVE_TEXTLCD) || defined(HAVE_7SEGMENT)
 	virtual void renderText(ePoint start, const char *text);
 #endif
 #endif
