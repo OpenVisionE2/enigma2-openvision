@@ -364,7 +364,6 @@ void eventData::load(FILE *f)
 		descriptors[id] = p;
 		--size;
 	}
-	(void)ret;
 }
 
 void eventData::save(FILE *f)
@@ -1154,7 +1153,6 @@ void eEPGCache::load()
 			if (renameResult) eDebug("[eEPGCache] failed to rename epg.dat back");
 		}
 	}
-	(void)ret;
 	if(m_debug) {
 		eDebug("[eEPGCache] load() - finished");
 	}

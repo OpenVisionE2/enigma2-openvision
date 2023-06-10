@@ -785,6 +785,7 @@ void ePicLoad::thread()
 {
 	threadrunning = true;
 	hasStarted();
+//	int ret = nice(4);
 	if (nice(4))
 	{
 		eTrace("[ePicLoad] thread failed to modify scheduling priority (%m)");
@@ -851,7 +852,7 @@ void ePicLoad::decodeThumb()
 			int c;
 			int count = 1024*100; // get checksum data out of max 100kB
 			uint32_t crc32 = 0;
-			char crcstr[9];
+			char crcstr[16];
 			*crcstr = 0;
 
 			while (count-- > 0 && (c = getc(f)) != EOF)
@@ -860,6 +861,7 @@ void ePicLoad::decodeThumb()
 			fclose(f);
 			crc32 = ~crc32;
 			sprintf(crcstr, "%08X", crc32);
+//			snprintf(crcstr, 16, "%08lX", crc32);
 
 			cachedir = m_filepara->file;
 			size_t pos = cachedir.find_last_of("/");
@@ -1456,6 +1458,7 @@ int ePicLoad::getFileType(const char * file)
 	int fd = ::open(file, O_RDONLY);
 	if (fd == -1)
 		return -1;
+//	size_t ret = ::read(fd, id, 10);
 	if (::read(fd, id, 10) != 10)
 	{
 		eDebug("[ePicLoad] getFileType failed to read magic num");
