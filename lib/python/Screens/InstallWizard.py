@@ -89,9 +89,12 @@ class InstallWizard(ConfigListScreen, Screen):
 			self.list.append(getConfigListEntry(_("I do not want to perform any service scans"), self.noscan))
 			self.list.append(getConfigListEntry(_("Do an automatic service scan now"), self.autoscan))
 			self.list.append(getConfigListEntry(_("Do a manual service scan now"), self.manualscan))
-			from Plugins.SystemPlugins.FastScan.plugin import getProviderList
-			if getProviderList():
-				self.list.append(getConfigListEntry(_("Do a fast service scan now"), self.fastscan))
+			try:
+				from Plugins.SystemPlugins.FastScan.plugin import getProviderList
+				if getProviderList():
+					self.list.append(getConfigListEntry(_("Do a fast service scan now"), self.fastscan))
+			except:
+				print("[InstallWizard] FastScan plugin not found!")
 			from Components.NimManager import nimmanager
 			if nimmanager.getEnabledNimListOfType("DVB-C"):
 				self.list.append(getConfigListEntry(_("Do a cable service scan now"), self.cablescan))
@@ -126,11 +129,17 @@ class InstallWizard(ConfigListScreen, Screen):
 				from Screens.ScanSetup import ScanSetup
 				self.session.open(ScanSetup)
 			elif self["config"].getCurrent()[1] == self.fastscan:
-				from Plugins.SystemPlugins.FastScan.plugin import FastScanMain
-				FastScanMain(self.session)
+				try:
+					from Plugins.SystemPlugins.FastScan.plugin import FastScanMain
+					FastScanMain(self.session)
+				except:
+					print("[InstallWizard] FastScan plugin not found!")
 			elif self["config"].getCurrent()[1] == self.cablescan:
-				from Plugins.SystemPlugins.CableScan.plugin import CableScanMain
-				CableScanMain(self.session)
+				try:
+					from Plugins.SystemPlugins.CableScan.plugin import CableScanMain
+					CableScanMain(self.session)
+				except:
+					print("[InstallWizard] CableScan plugin not found!")
 			else:
 				self.doNextStep = True
 

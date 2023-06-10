@@ -193,7 +193,6 @@ class LCD:
 
 	def setMode(self, value):
 		if isfile("/proc/stb/lcd/show_symbols"):
-			print("[Lcd] setLCDMode='%s'." % value)
 			fileWriteLine("/proc/stb/lcd/show_symbols", value)
 		if config.lcd.mode.value == "0":
 			BoxInfo.setItem("SeekStatePlay", False)
@@ -215,30 +214,24 @@ class LCD:
 
 	def setPower(self, value):
 		if isfile("/proc/stb/power/vfd"):
-			print("[Lcd] setLCDPower='%s'." % value)
 			fileWriteLine("/proc/stb/power/vfd", value)
 		elif isfile("/proc/stb/lcd/vfd"):
-			print("[Lcd] setLCDPower='%s'." % value)
 			fileWriteLine("/proc/stb/lcd/vfd", value)
 
 	def setShowoutputresolution(self, value):
 		if isfile("/proc/stb/lcd/show_outputresolution"):
-			print("[Lcd] setLCDShowoutputresolution='%s'." % value)
 			fileWriteLine("/proc/stb/lcd/show_outputresolution", value)
 
 	def setfblcddisplay(self, value):
 		if isfile("/proc/stb/fb/sd_detach"):
-			print("[Lcd] setfblcddisplay='%s'." % value)
 			fileWriteLine("/proc/stb/fb/sd_detach", value)
 
 	def setRepeat(self, value):
 		if isfile("/proc/stb/lcd/scroll_repeats"):
-			print("[Lcd] setLCDRepeat='%s'." % value)
 			fileWriteLine("/proc/stb/lcd/scroll_repeats", value)
 
 	def setScrollspeed(self, value):
 		if isfile("/proc/stb/lcd/scroll_delay"):
-			print("[Lcd] setLCDScrollspeed='%s'." % value)
 			fileWriteLine("/proc/stb/lcd/scroll_delay", value)
 
 	def setLEDNormalState(self, value):
@@ -252,7 +245,6 @@ class LCD:
 
 	def setLCDMiniTVMode(self, value):
 		if isfile("/proc/stb/lcd/mode"):
-			print("[Lcd] setLCDMiniTVMode='%s'." % value)
 			fileWriteLine("/proc/stb/lcd/mode", value)
 
 	def setLCDMiniTVPIPMode(self, value):
@@ -261,7 +253,6 @@ class LCD:
 
 	def setLCDMiniTVFPS(self, value):
 		if isfile("/proc/stb/lcd/fps"):
-			print("[Lcd] setLCDMiniTVFPS='%s'." % value)
 			fileWriteLine("/proc/stb/lcd/fps", value)
 
 
@@ -298,12 +289,12 @@ def InitLcd():
 		ilcd = LCD()
 		if can_lcdmodechecking:
 			def setLCDModeMinitTV(configElement):
-				print("[Lcd] setLCDModeMinitTV='%s'." % configElement.value)
-				fileWriteLine("/proc/stb/lcd/mode", configElement.value)
+				if isfile("/proc/stb/lcd/mode"):
+					fileWriteLine("/proc/stb/lcd/mode", configElement.value)
 
 			def setMiniTVFPS(configElement):
-				print("[Lcd] setMiniTVFPS='%s'." % configElement.value)
-				fileWriteLine("/proc/stb/lcd/fps", configElement.value)
+				if isfile("/proc/stb/lcd/fps"):
+					fileWriteLine("/proc/stb/lcd/fps", configElement.value)
 
 			def setLCDModePiP(configElement):
 				pass  # DEBUG: Should this be doing something?
@@ -392,49 +383,64 @@ def InitLcd():
 			ilcd.setLEDBlinkingTime(configElement.value)
 
 		def setPowerLEDstate(configElement):
-			fileWriteLine("/proc/stb/power/powerled", configElement.value)
+			if isfile("/proc/stb/power/powerled"):
+				fileWriteLine("/proc/stb/power/powerled", configElement.value)
 
 		def setPowerLEDstate2(configElement):
-			fileWriteLine("/proc/stb/power/powerled2", configElement.value)
+			if isfile("/proc/stb/power/powerled2"):
+				fileWriteLine("/proc/stb/power/powerled2", configElement.value)
 
 		def setPowerLEDstanbystate(configElement):
-			fileWriteLine("/proc/stb/power/standbyled", configElement.value)
+			if isfile("/proc/stb/power/standbyled"):
+				fileWriteLine("/proc/stb/power/standbyled", configElement.value)
 
 		def setPowerLEDdeepstanbystate(configElement):
-			fileWriteLine("/proc/stb/power/suspendled", configElement.value)
+			if isfile("/proc/stb/power/suspendled"):
+				fileWriteLine("/proc/stb/power/suspendled", configElement.value)
 
 		def setLedPowerColor(configElement):
-			fileWriteLine("/proc/stb/fp/ledpowercolor", configElement.value)
+			if isfile("/proc/stb/fp/ledpowercolor"):
+				fileWriteLine("/proc/stb/fp/ledpowercolor", configElement.value)
 
 		def setLedStandbyColor(configElement):
-			fileWriteLine("/proc/stb/fp/ledstandbycolor", configElement.value)
+			if isfile("/proc/stb/fp/ledstandbycolor"):
+				fileWriteLine("/proc/stb/fp/ledstandbycolor", configElement.value)
 
 		def setLedSuspendColor(configElement):
-			fileWriteLine("/proc/stb/fp/ledsuspendledcolor", configElement.value)
+			if isfile("/proc/stb/fp/ledsuspendledcolor"):
+				fileWriteLine("/proc/stb/fp/ledsuspendledcolor", configElement.value)
 
 		def setLedBlinkControlColor(configElement):
-			fileWriteLine("/proc/stb/fp/led_blink", configElement.value)
+			if isfile("/proc/stb/fp/led_blink"):
+				fileWriteLine("/proc/stb/fp/led_blink", configElement.value)
 
 		def setLedBrightnessControl(configElement):
-			fileWriteLine("/proc/stb/fp/led_brightness", configElement.value)
+			if isfile("/proc/stb/fp/led_brightness"):
+				fileWriteLine("/proc/stb/fp/led_brightness", configElement.value)
 
 		def setLedColorControlColor(configElement):
-			fileWriteLine("/proc/stb/fp/led_color", configElement.value)
+			if isfile("/proc/stb/fp/led_color"):
+				fileWriteLine("/proc/stb/fp/led_color", configElement.value)
 
 		def setLedFadeControlColor(configElement):
-			fileWriteLine("/proc/stb/fp/led_fade", configElement.value)
+			if isfile("/proc/stb/fp/led_fade"):
+				fileWriteLine("/proc/stb/fp/led_fade", configElement.value)
 
 		def setPower4x7On(configElement):
-			fileWriteLine("/proc/stb/fp/power4x7on", configElement.value)
+			if isfile("/proc/stb/fp/power4x7on"):
+				fileWriteLine("/proc/stb/fp/power4x7on", configElement.value)
 
 		def setPower4x7Standby(configElement):
-			fileWriteLine("/proc/stb/fp/power4x7standby", configElement.value)
+			if isfile("/proc/stb/fp/power4x7standby"):
+				fileWriteLine("/proc/stb/fp/power4x7standby", configElement.value)
 
 		def setPower4x7Suspend(configElement):
-			fileWriteLine("/proc/stb/fp/power4x7suspend", configElement.value)
+			if isfile("/proc/stb/fp/power4x7suspend"):
+				fileWriteLine("/proc/stb/fp/power4x7suspend", configElement.value)
 
 		def setXcoreVFD(configElement):
-			fileWriteLine("/sys/module/brcmstb_osmega/parameters/pt6302_cgram", configElement.value)
+			if isfile("/sys/module/brcmstb_osmega/parameters/pt6302_cgram"):
+				fileWriteLine("/sys/module/brcmstb_osmega/parameters/pt6302_cgram", configElement.value)
 
 		config.usage.vfd_xcorevfd = ConfigSelection(choices=[
 			("0", _("12 character")),
@@ -582,13 +588,12 @@ def InitLcd():
 		config.lcd.picon_pack.addNotifier(PiconPackChanged)
 		config.lcd.flip = ConfigYesNo(default=False)
 		config.lcd.flip.addNotifier(setLCDflipped)
-		LcdLiveTV = BoxInfo.getItem("LcdLiveTV")
-		if LcdLiveTV:
+		if BoxInfo.getItem("LcdLiveTV"):
 			def lcdLiveTvChanged(configElement):
-				if "live_enable" in LcdLiveTV:
-					fileWriteLine(LcdLiveTV, configElement.value and "enable" or "disable")
-				else:
-					fileWriteLine(LcdLiveTV, configElement.value and "0" or "1")
+				if isfile("/proc/stb/lcd/live_enable"):
+					fileWriteLine("/proc/stb/lcd/live_enable", configElement.value and "enable" or "disable")
+				if isfile("/proc/stb/fb/sd_detach"):
+					fileWriteLine("/proc/stb/fb/sd_detach", configElement.value and "0" or "1")
 				try:
 					InfoBarInstance = InfoBar.instance
 					InfoBarInstance and InfoBarInstance.session.open(dummyScreen)

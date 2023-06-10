@@ -538,7 +538,7 @@ import Components.InputHotplug
 from Components.AVSwitch import InitAVSwitch
 InitAVSwitch()
 
-if BoxInfo.getItem("fan"):
+if BoxInfo.getItem("Fan"):
 #	profile("FanControl")
 	from Components.FanControl import fancontrol
 

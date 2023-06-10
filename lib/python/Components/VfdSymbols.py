@@ -137,7 +137,7 @@ class SymbolsCheckPoller:
 					self.led = "0"
 			elif self.led == "1":
 				open("/proc/stb/lcd/powerled", "w").write("1")
-		elif model == "dm7020hd" and isfile("/proc/stb/fp/led_set"):
+		elif model in ("dm7020hd", "dm7020hdv2") and isfile("/proc/stb/fp/led_set"):
 			recordings = len(NavigationInstance.instance.getRecordings())
 			self.blink = not self.blink
 			print("[VfdSymbols] Write to /proc/stb/fp/led_set")

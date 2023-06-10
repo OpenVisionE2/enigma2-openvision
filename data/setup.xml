@@ -68,7 +68,6 @@
 		<item level="1" text="Show Transponder Remaining/Elapsed as" description="This option allows you choose how to display the remaining/elapsed time for live TV.">config.usage.swap_time_display_on_vfd</item>
 		<item level="1" text="Show Media playback Remaining/Elapsed as" description="This option allows you to choose how to display the remaining/elapsed time for Media playback.">config.usage.swap_media_time_display_on_vfd</item>
 		<item level="0" text="Show time elapsed as positive" description="This option allows you to choose how to display elapsed time. As + or -">config.usage.elapsed_time_positive_vfd</item>
-		<item level="0" text="Clone TV screen to LCD" description="Shows live tv or informations on LCD." requires="LcdLiveTV">config.lcd.showTv</item>
 		<item level="0" text="Brightness" description="Configure the brightness level of the front panel display.">config.lcd.bright</item>
 		<item level="0" text="Brightness (Dimmed)" description="Configure the brightness level of the front panel display for dimmed operation.">config.lcd.dimbright</item>
 		<item level="0" text="Dim delay" description="Dim the LCD after specified time.">config.lcd.dimdelay</item>
@@ -92,7 +91,7 @@
 		<item level="1" text="Scrolling delay (software renderer)" description="Set the delay time between repeated loops, this is used by software renderer in some skins.">config.lcd.scroll_delay</item>
 		<item level="0" text="Power On Display" description="This option allows you to Power Off the display.">config.lcd.power</item>
 		<item level="0" text="Show HDD progress" description="Disable the HDD Process on VFD.">config.lcd.hdd</item>
-		<item level="0" requires="LcdLiveTV" text="Clone TV screen to LCD" description="Shows live tv or informations on LCD.">config.lcd.fblcddisplay</item>
+		<item level="0" requires="FBLCDDisplay" text="Clone TV screen to LCD" description="Shows live tv or informations on LCD.">config.lcd.fblcddisplay</item>
 		<item level="0" text="Show HDMI-Output Res" description="Show HDMI Output Resulution.">config.lcd.showoutputresolution</item>
 		<item level="0" requires="Power4x7On" text="Switch on the display during operation" description="With this option you can switch on the display during operation.">config.lcd.power4x7on</item>
 		<item level="0" requires="Power4x7Standby" text="Switch on the display during Standby Mode" description="With this option you can switch on the display in Standby Mode.">config.lcd.power4x7standby</item>

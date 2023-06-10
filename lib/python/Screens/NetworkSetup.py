@@ -818,8 +818,11 @@ class AdapterSetup(ConfigListScreen, HelpableScreen, Screen):
 		self.default = None
 
 		if iNetwork.isWirelessInterface(self.iface):
-			from Plugins.SystemPlugins.WirelessLan.Wlan import wpaSupplicant
-			self.ws = wpaSupplicant()
+			try:
+				from Plugins.SystemPlugins.WirelessLan.Wlan import wpaSupplicant
+				self.ws = wpaSupplicant()
+			except:
+				self.ws = None
 			self.encryptionlist = []
 			self.encryptionlist.append(("Unencrypted", _("Unencrypted")))
 			self.encryptionlist.append(("WEP", _("WEP")))
@@ -1337,16 +1340,24 @@ class AdapterSetupConfiguration(Screen, HelpableScreen):
 
 	def WlanStatusClosed(self, *ret):
 		if ret is not None and len(ret):
-			from Plugins.SystemPlugins.WirelessLan.Wlan import iStatus
-			iStatus.stopWlanConsole()
+			try:
+				from Plugins.SystemPlugins.WirelessLan.Wlan import iStatus
+			except ImportError as e:
+				pass
+			else:
+				iStatus.stopWlanConsole()
 			self.updateStatusbar()
 
 	def WlanScanClosed(self, *ret):
 		if ret[0] is not None:
 			self.session.openWithCallback(self.AdapterSetupClosed, AdapterSetup, self.iface, ret[0])
 		else:
-			from Plugins.SystemPlugins.WirelessLan.Wlan import iStatus
-			iStatus.stopWlanConsole()
+			try:
+				from Plugins.SystemPlugins.WirelessLan.Wlan import iStatus
+			except ImportError as e:
+				pass
+			else:
+				iStatus.stopWlanConsole()
 			self.updateStatusbar()
 
 	def restartLan(self, ret=False):

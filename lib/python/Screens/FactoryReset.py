@@ -145,7 +145,7 @@ class FactoryReset(Setup, ProtectedScreen):
 				self.wipeFiles(configDir, self.others)
 		print("[FactoryReset] Stopping the active service to display the backdrop.")
 		self.session.nav.stopService()
-		system("/usr/bin/showiframe /usr/share/backdrop.mvi")
+		system("/usr/bin/showiframe /usr/share/enigma2/backdrop.mvi")
 		print("[FactoryReset] Stopping and exiting enigma2.")
 		_exit(0)
 		self.close()  # We should never get to here!

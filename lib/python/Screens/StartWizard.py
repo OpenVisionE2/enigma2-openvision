@@ -24,7 +24,7 @@ from os.path import isfile, join, isdir, getmtime, dirname
 
 config.misc.firstrun = ConfigBoolean(default=True)
 config.misc.languageselected = ConfigBoolean(default=True)
-if config.misc.firstrun.value == 0:
+if not config.misc.firstrun.value:
 	config.misc.do_overscanwizard = ConfigBoolean(default=False)
 else:
 	config.misc.do_overscanwizard = ConfigBoolean(default=OverscanWizard)
@@ -44,7 +44,7 @@ class StartWizard(WizardLanguage, ShowRemoteControl):
 		self["lab6"] = StaticText(_("https://github.com/OpenVisionE2"))
 
 	def markDone(self):
-		config.misc.firstrun.value = 0
+		config.misc.firstrun.value = False
 		config.misc.firstrun.save()
 		configfile.save()
 

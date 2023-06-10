@@ -7,7 +7,7 @@ from enigma import eConsoleAppContainer
 from Components.config import ConfigSubsection, ConfigYesNo, config
 from Components.Harddisk import harddiskmanager
 from Components.SystemInfo import BoxInfo
-from Tools.Directories import SCOPE_LIBDIR, fileReadLines, fileWriteLine, resolveFilename
+from Tools.Directories import SCOPE_LIBDIR, fileReadLines, resolveFilename
 
 MODULE_NAME = __name__.split(".")[-1]
 
