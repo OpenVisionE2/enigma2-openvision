@@ -14,7 +14,6 @@ displaymodel = BoxInfo.getItem("displaymodel")
 displaybrand = BoxInfo.getItem("displaybrand")
 procType = getBoxProcType()
 procModel = getBoxProc()
-fpVersion = getFPVersion()
 
 if getOEMInfo() == "available":
 	if procModel == "dm525":
@@ -86,7 +85,7 @@ if getOEMInfo() == "available":
 			model = "xpeedlx2t"
 			displaymodel = "LX-2T"
 		elif procModel == "ini-1000de":
-			if fpVersion == "2":
+			if getFPVersion() == "2":
 				model = "xpeedlx2"
 			else:
 				model = "xpeedlx1"

@@ -124,7 +124,10 @@ class VideoFinetune(Screen):
 		Screen.__init__(self, session)
 
 		port = config.av.videoport.value
-		self.hasUHD = port and config.av.videomode[port].value.startswith("2160")
+		try:
+			self.hasUHD = port and config.av.videomode[port].value.startswith("2160")
+		except:
+			self.hasUHD = BoxInfo.getItem("uhd4k")
 
 		self["Canvas"] = CanvasSource()
 

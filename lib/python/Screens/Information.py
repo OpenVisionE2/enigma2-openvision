@@ -44,7 +44,6 @@ MODULE_NAME = __name__.split(".")[-1]
 #servicehisilicon = "/var/lib/opkg/info/enigma2-plugin-systemplugins-servicehisilicon.control"
 
 model = BoxInfo.getItem("model")
-vmodel = getOEMShowModel()
 platform = BoxInfo.getItem("platform")
 displaymodel = getOEMShowDisplayModel()
 displaybrand = getOEMShowDisplayBrand()
@@ -622,7 +621,7 @@ class ImageInformation(InformationBase):
 		if override:
 			info.append(formatLine("P1", _("Info file override"), _("Defined / Active")))
 		info.append(formatLine("P1", _("OpenVision version"), BoxInfo.getItem("imgversion")))
-		info.append(formatLine("P1", _("OpenVision revision"), "%s on %s" % (BoxInfo.getItem("imgrevision"), vmodel)))
+		info.append(formatLine("P1", _("OpenVision revision"), "%s on %s" % (BoxInfo.getItem("imgrevision"), getOEMShowModel())))
 		if config.misc.OVupdatecheck.value:
 			ovUrl = "https://raw.githubusercontent.com/OpenVisionE2/revision/master/%s.conf" % ("old" if BoxInfo.getItem("oe") == "pyro" else "new")
 			try:

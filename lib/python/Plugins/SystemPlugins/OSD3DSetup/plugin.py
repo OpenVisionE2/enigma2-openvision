@@ -85,8 +85,14 @@ def applySettings(mode=config.plugins.OSD3DSetup.mode.value, znorm=int(config.pl
 	mode == "3dmode" in Mode3D and mode or mode == 'sidebyside' and 'sbs' or mode == 'topandbottom' and 'tab' or 'off'
 	if previous != (mode, znorm):
 		try:
-			open(Mode3D, "w").write(mode)
-			open(BoxInfo.getItem("3DZNorm"), "w").write('%d' % znorm)
+			try:
+				open("/proc/stb/fb/3dmode", "w").write(mode)
+			except:
+				open("/proc/stb/fb/primary/3d", "w").write(mode)
+			try:
+				open("/proc/stb/fb/znorm", "w").write('%d' % znorm)
+			except:
+				open("/proc/stb/fb/primary/zoffset", "w").write('%d' % znorm)
 			previous = (mode, znorm)
 		except:
 			return

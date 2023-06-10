@@ -24,6 +24,7 @@ displaybrand = getOEMShowDisplayBrand()
 displaymodel = getOEMShowDisplayModel()
 model = BoxInfo.getItem("model")
 AmlogicFamily = BoxInfo.getItem("AmlogicFamily")
+LCDMiniTV = BoxInfo.getItem("LCDMiniTV")
 
 inStandby = None
 infoBarInstance = None
@@ -43,6 +44,14 @@ QUIT_UPGRADE_PROGRAM = 42
 QUIT_IMAGE_RESTORE = 43 # restart for autobackup restore?
 QUIT_UPGRADE_FPANEL = 44
 QUIT_WOL = 45
+
+
+def setLCDModeMinitTV(value):
+	try:
+		print("[Standby] Write to /proc/stb/lcd/mode")
+		open("/proc/stb/lcd/mode", "w").write(value)
+	except:
+		print("[Standby] Write to /proc/stb/lcd/mode failed.")
 
 
 class TVstate: #load in Navigation
@@ -152,6 +161,10 @@ class StandbyScreen(Screen):
 
 		self.setMute()
 
+		if LCDMiniTV:
+			# set LCDminiTV off
+			setLCDModeMinitTV("0")
+
 		self.paused_service = self.paused_action = False
 
 		self.prev_running_service = self.session.nav.getCurrentlyPlayingServiceOrGroup()
@@ -242,6 +255,9 @@ class StandbyScreen(Screen):
 			RecordTimer.RecordTimerEntry.stopTryQuitMainloop()
 		self.avswitch.setInput("ENCODER")
 		self.leaveMute()
+		# set LCDminiTV
+		if LCDMiniTV:
+			setLCDModeMinitTV(config.lcd.modeminitv.value)
 
 		if isfile("/usr/script/standby_leave.sh"):
 			Console().ePopen("/usr/script/standby_leave.sh")
@@ -470,13 +486,10 @@ class TryQuitMainloop(MessageBox):
 			elif not inStandby:
 				config.misc.RestartUI.value = True
 				config.misc.RestartUI.save()
-			if BoxInfo.getItem("Display") and BoxInfo.getItem("LCDMiniTV"):
+			if LCDMiniTV:
+				# set LCDminiTV off / fix a deep-standby-crash on some boxes
 				print("[Standby] LCDminiTV off")
-				try:
-					print("[Standby] Write to /proc/stb/lcd/mode")
-					open("/proc/stb/lcd/mode", "w").write(0)
-				except:
-					print("[Standby] Write to /proc/stb/lcd/mode failed.")
+				setLCDModeMinitTV("0")
 			if model in ("vusolo4k", "pulse4k"):  # Workaround for white display flash.
 				try:
 					eDBoxLCD.getInstance().setLCDBrightness(0)

@@ -21,7 +21,6 @@ originalAudioTracks = "orj dos ory org esl qaa und mis mul ORY ORJ Audio_ORJ oth
 visuallyImpairedCommentary = "NAR qad"
 
 model = BoxInfo.getItem("model")
-displaytype = BoxInfo.getItem("displaytype")
 
 DEFAULTKEYMAP = eEnv.resolve("${datadir}/enigma2/keymap.xml")
 
@@ -143,7 +142,7 @@ def InitUsageConfig():
 	for i in range(1, 12):
 		choicelist.append((str(i), ngettext("%d second", "%d seconds", i) % i))
 	config.usage.infobar_timeout = ConfigSelection(default="5", choices=choicelist)
-	if BoxInfo.getItem("socfamily").startswith("bcm"):
+	if BoxInfo.getItem("socfamily").lower().startswith("bcm"):
 		config.usage.fadeout = ConfigYesNo(default=True)
 	else:
 		config.usage.fadeout = ConfigYesNo(default=False)
@@ -581,31 +580,28 @@ def InitUsageConfig():
 	config.usage.show_event_progress_in_servicelist.addNotifier(refreshServiceList)
 	config.usage.show_channel_numbers_in_servicelist.addNotifier(refreshServiceList)
 
-	vfd7segment = BoxInfo.getItem("7segment")
-	if vfd7segment:
+	if BoxInfo.getItem("7segment"):
 		config.usage.blinking_display_clock_during_recording = ConfigSelection(default="Rec", choices=[
 			("Rec", _("REC")),
 			("RecBlink", _("Blinking REC")),
 			("Time", _("Time")),
 			("Nothing", _("Nothing"))
 		])
-	else:
-		config.usage.blinking_display_clock_during_recording = ConfigYesNo(default=False)
-
-	if displaytype == "textlcd" or "text" in displaytype:
-		config.usage.blinking_rec_symbol_during_recording = ConfigSelection(default="Channel", choices=[
-			("Rec", _("REC symbol")),
-			("RecBlink", _("Blinking REC symbol")),
-			("Channel", _("Channel name"))
-		])
-	if vfd7segment:
 		config.usage.blinking_rec_symbol_during_recording = ConfigSelection(default="Rec", choices=[
 			("Rec", _("REC")),
 			("RecBlink", _("Blinking REC")),
 			("Time", _("Time"))
 		])
 	else:
+		config.usage.blinking_display_clock_during_recording = ConfigYesNo(default=False)
 		config.usage.blinking_rec_symbol_during_recording = ConfigYesNo(default=True)
+
+	if BoxInfo.getItem("textlcd"):
+		config.usage.blinking_rec_symbol_during_recording = ConfigSelection(default="Channel", choices=[
+			("Rec", _("REC symbol")),
+			("RecBlink", _("Blinking REC symbol")),
+			("Channel", _("Channel name"))
+		])
 
 	config.usage.show_in_standby = ConfigSelection(default="time", choices=[
 		("time", _("Time")),
@@ -1068,8 +1064,7 @@ def InitUsageConfig():
 		config.usage.time.enabled_display.value = False
 		config.usage.time.display.value = config.usage.time.display.default
 
-	Fan = BoxInfo.getItem("Fan")
-	if Fan:
+	if BoxInfo.getItem("Fan"):
 		choicelist = [
 			("off", _("Off")),
 			("on", _("On")),
@@ -1081,20 +1076,27 @@ def InitUsageConfig():
 		config.usage.fan = ConfigSelection(choicelist)
 
 		def fanChanged(configElement):
-			open(Fan, "w").write(configElement.value)
+			try:
+				open("/proc/stb/fp/fan", "w").write(configElement.value)
+			except:
+				print("[UsageConfig] Write to /proc/stb/fp/fan failed!")
 		config.usage.fan.addNotifier(fanChanged)
 
-	FanPWM = BoxInfo.getItem("FanPWM")
-	if FanPWM:
+	if BoxInfo.getItem("FanPWM"):
 		def fanSpeedChanged(configElement):
-			open(FanPWM, "w").write(hex(configElement.value)[2:])
+			try:
+				open("/proc/stb/fp/fan_pwm", "w").write(hex(configElement.value)[2:])
+			except:
+				print("[UsageConfig] Write to /proc/stb/fp/fan_pwm failed!")
 		config.usage.fanspeed = ConfigSlider(default=127, increment=8, limits=(0, 255))
 		config.usage.fanspeed.addNotifier(fanSpeedChanged)
 
-	WakeOnLAN = BoxInfo.getItem("WakeOnLAN")
-	if WakeOnLAN or BoxInfo.getItem("wol"):
+	if BoxInfo.getItem("WakeOnLAN") or BoxInfo.getItem("wol"):
 		def wakeOnLANChanged(configElement):
-			open(WakeOnLAN, "w").write(BoxInfo.getItem("WakeOnLANType")[configElement.value])
+			try:
+				open("/proc/stb/power/wol", "w").write(BoxInfo.getItem("WakeOnLANType")[configElement.value])
+			except:
+				open("/proc/stb/fp/wol", "w").write(BoxInfo.getItem("WakeOnLANType")[configElement.value])
 		config.usage.wakeOnLAN = ConfigYesNo(default=False)
 		config.usage.wakeOnLAN.addNotifier(wakeOnLANChanged)
 
@@ -1399,10 +1401,12 @@ def InitUsageConfig():
 	config.misc.zapkey_delay = ConfigSelectionNumber(default=5, stepwidth=1, min=0, max=20, wraparound=True)
 	config.misc.numzap_picon = ConfigYesNo(default=False)
 
-	ZapMode = BoxInfo.getItem("ZapMode")
-	if ZapMode:
+	if BoxInfo.getItem("ZapMode"):
 		def setZapmode(el):
-			open(ZapMode, "w").write(el.value)
+			try:
+				open("/proc/stb/video/zapmode", "w").write(el.value)
+			except:
+				open("/proc/stb/video/zapping_mode", "w").write(el.value)
 		config.misc.zapmode = ConfigSelection(default="mute", choices=[
 			("mute", _("Black screen")),
 			("hold", _("Hold screen")),

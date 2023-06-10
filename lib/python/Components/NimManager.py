@@ -121,7 +121,7 @@ class SecConfigure:
 
 	def linkNIMs(self, sec, nim1, nim2):
 		print("[NimManager] SecConfigure: Link tuner '%s' to tuner '%s'." % (nim1, nim2))
-		if (nim2 == nim1 - 1) or "7356" in socfamily:
+		if (nim2 == nim1 - 1) or socfamily == "bcm7356":
 			self.linkInternally(nim1)
 		sec.setTunerLinked(nim1, nim2)
 
@@ -912,7 +912,7 @@ class NimManager:
 			entry["internally_connectable"] = None
 			if "frontend_device" in entry:  # Check if internally connectable.
 				if exists("/proc/stb/frontend/%d/rf_switch" % entry["frontend_device"]) and (not id or entries[id]["name"] == entries[id - 1]["name"]):
-					if "7356" in socfamily:
+					if socfamily == "bcm7356":
 						if not id:
 							entry["internally_connectable"] = 1
 					elif id:

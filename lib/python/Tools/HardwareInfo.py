@@ -4,6 +4,7 @@ from Tools.Directories import fileReadLine
 
 MODULE_NAME = __name__.split(".")[-1]
 hw_info = None
+model = BoxInfo.getItem("model")
 
 
 class HardwareInfo:
@@ -21,9 +22,9 @@ class HardwareInfo:
 		hw_info = self
 		self.device_version = fileReadLine("/proc/stb/info/version", "", source=MODULE_NAME).strip()
 		self.device_revision = fileReadLine("/proc/stb/info/board_revision", "", source=MODULE_NAME).strip()
-		self.device_name = BoxInfo.getItem("model")
+		self.device_name = model
 		self.device_brandname = BoxInfo.getItem("brand")
-		self.device_model = BoxInfo.getItem("model")
+		self.device_model = model
 		self.device_model = self.device_model or self.device_name
 		self.device_hw = self.device_model
 		self.machine_name = self.device_model

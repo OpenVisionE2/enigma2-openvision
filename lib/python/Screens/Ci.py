@@ -33,7 +33,7 @@ def setCIEnabled(configElement):
 
 
 def setdvbCiDelay(configElement):
-	open(CommonInterfaceCIDelay, "w").write(configElement.value)
+	open("/proc/stb/tsmux/rmx_delay", "w").write(configElement.value)
 	configElement.save()
 
 

@@ -24,7 +24,7 @@ def timedStopPipPigMode():
 	from Screens.InfoBar import InfoBar
 	if InfoBar.instance and InfoBar.instance.session:
 		if hasPIPVisibleProc:
-			open(hasPIPVisibleProc, "w").write("1")
+			open("/proc/stb/vmpeg/1/visible", "w").write("1")
 		elif hasattr(InfoBar.instance.session, "pip"):
 			InfoBar.instance.session.pip.relocate()
 	global PipPigModeEnabled
@@ -42,7 +42,7 @@ def PipPigMode(value):
 			global PipPigModeEnabled
 			if not PipPigModeEnabled:
 				if hasPIPVisibleProc:
-					open(hasPIPVisibleProc, "w").write("0")
+					open("/proc/stb/vmpeg/1/visible", "w").write("0")
 				elif hasattr(value, "pipservice"):
 					import skin
 					x, y, w, h = skin.parameters.get("PipHidePosition", (16, 16, 16, 16))
@@ -160,7 +160,7 @@ class PictureInPicture(Screen):
 
 	def setExternalPiP(self, onoff):
 		if HasExternalPIP:
-			open(HasExternalPIP, "w").write(onoff and "on" or "off")
+			open("/proc/stb/vmpeg/1/external", "w").write(onoff and "on" or "off")
 
 	def active(self):
 		self.pipActive.show()

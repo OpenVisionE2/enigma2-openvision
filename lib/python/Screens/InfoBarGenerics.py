@@ -2219,9 +2219,8 @@ class InfoBarTimeshift():
 		self.restartSubtitle()
 
 	def setLCDsymbolTimeshift(self):
-		LCDsymbol_timeshift = BoxInfo.getItem("LCDsymbol_timeshift")
-		if LCDsymbol_timeshift:
-			open(LCDsymbol_timeshift, "w").write(self.timeshiftEnabled() and "1" or "0")
+		if BoxInfo.getItem("LCDsymbol_timeshift"):
+			open("/proc/stb/lcd/symbol_timeshift", "w").write(self.timeshiftEnabled() and "1" or "0")
 
 	def __serviceStarted(self):
 		self.pvrStateDialog.hide()
