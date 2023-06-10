@@ -9,7 +9,7 @@ from Components.config import config
 from Screens.Setup import Setup
 from Components.MenuList import MenuList
 from Tools.LoadPixmap import LoadPixmap
-from Tools.Directories import SCOPE_GUISKIN, resolveFilename, fileExists
+from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 from enigma import eTimer, RT_HALIGN_LEFT, eListboxPythonMultiContent, gFont, getDesktop
 from xml.etree import ElementTree
 from operator import itemgetter
@@ -69,7 +69,7 @@ class OscamInfo:
 
 		# Find and parse running oscam
 		for file in ["/tmp/.ncam/ncam.version", "/tmp/.oscam/oscam.version"]:
-			if fileExists(file):
+			if isfile(file):
 				with open(file, 'r') as data:
 					conffile = file.split('/')[-1].replace("version", "conf")
 					for i in data:
@@ -564,7 +564,7 @@ class OscamInfoMenu(Screen):
 			res = [t]
 			if t.startswith("--"):
 				png = resolveFilename(SCOPE_GUISKIN, "div-h.png")
-				if fileExists(png):
+				if isfile(png):
 					png = LoadPixmap(png)
 				if png is not None:
 					x, y, w, h = skin.parameters.get("ChoicelistDash", (0, 2 * f, 800 * f, 2 * f))
@@ -572,7 +572,7 @@ class OscamInfoMenu(Screen):
 					x, y, w, h = skin.parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
 					res.append((eListboxPythonMultiContent.TYPE_TEXT, int(x), int(y), int(w), int(h), 0, RT_HALIGN_LEFT, t[2:]))
 					png2 = resolveFilename(SCOPE_GUISKIN, "buttons/key_" + keys[k] + ".png")
-					if fileExists(png2):
+					if isfile(png2):
 						png2 = LoadPixmap(png2)
 					if png2 is not None:
 						x, y, w, h = skin.parameters.get("ChoicelistIcon", (5 * f, 0, 35 * f, 25 * f))
@@ -581,7 +581,7 @@ class OscamInfoMenu(Screen):
 				x, y, w, h = skin.parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, int(x), int(y), int(w), int(h), 0, RT_HALIGN_LEFT, t))
 				png2 = resolveFilename(SCOPE_GUISKIN, "buttons/key_" + keys[k] + ".png")
-				if fileExists(png2):
+				if isfile(png2):
 					png2 = LoadPixmap(png2)
 				if png2 is not None:
 					x, y, w, h = skin.parameters.get("ChoicelistIcon", (5 * f, 0, 35 * f, 25 * f))
@@ -826,14 +826,14 @@ class oscInfo(Screen, OscamInfo):
 			x += 1
 		if heading and f != 1.5:
 			png = resolveFilename(SCOPE_GUISKIN, "div-h.png")
-			if fileExists(png):
+			if isfile(png):
 				png = LoadPixmap(png)
 			if png is not None:
 				res.append((eListboxPythonMultiContent.TYPE_PIXMAP, 0, int((self.itemheight - 2) * f), self.sizeLH, int(2 * f), png))
 
 		if heading and f == 1.5:
 			pngfhd = resolveFilename(SCOPE_GUISKIN, "div-h-fhd.png")
-			if fileExists(pngfhd):
+			if isfile(pngfhd):
 				pngfhd = LoadPixmap(pngfhd)
 			if pngfhd is not None:
 				res.append((eListboxPythonMultiContent.TYPE_PIXMAP, 0, int((self.itemheight - 2) * f), self.sizeLH, int(2 * f), pngfhd))

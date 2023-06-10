@@ -10,7 +10,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.NimManager import nimmanager, getConfigSatlist
 from Components.Label import Label
 from Tools.Transponder import getChannelNumber, supportedChannels, channel2frequency
-from Tools.Directories import fileExists
+from os.path import isfile
 from Screens.InfoBar import InfoBar
 from Screens.MessageBox import MessageBox
 from enigma import eTimer, eDVBFrontendParametersSatellite, eComponentScan, eDVBFrontendParametersTerrestrial, eDVBFrontendParametersCable, eConsoleAppContainer, eDVBResourceManager, eDVBFrontendParametersATSC
@@ -319,7 +319,7 @@ class CableTransponderSearchSupport:
 			exe_path = "/usr/bin/%s" % bin_name.split()[0]
 			cmd = "%s --init --scan --verbose --wakeup --inv 2 --bus %d" % (bin_name, bus)
 
-		if not fileExists(exe_path):
+		if not isfile(exe_path):
 			self.session.open(MessageBox, _("Cable scan executable utility not found '%s'!") % exe_path, MessageBox.TYPE_ERROR)
 			return
 

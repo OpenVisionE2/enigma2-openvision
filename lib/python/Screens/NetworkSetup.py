@@ -19,7 +19,7 @@ from Components.config import config, ConfigYesNo, ConfigIP, NoSave, ConfigText,
 from Components.ConfigList import ConfigListScreen
 from Components.PluginComponent import plugins
 from Components.ActionMap import ActionMap, NumberActionMap, HelpableActionMap
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_GUISKIN, fileExists, fileContains
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_GUISKIN, fileContains
 from Tools.LoadPixmap import LoadPixmap
 from Plugins.Plugin import PluginDescriptor
 from enigma import eTimer, eConsoleAppContainer
@@ -575,14 +575,14 @@ class IPv6Setup(Screen, ConfigListScreen, HelpableScreen):
 		inetdData += "ftp	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
 		inetdData += "#ftp	stream	" + sockTypetcp + "	nowait	root	ftpd	ftpd -w /\n"
 		inetdData += "telnet	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/telnetd	telnetd\n"
-		if fileExists("/usr/sbin/smbd"):
+		if isfile("/usr/sbin/smbd"):
 			inetdData += "#microsoft-ds	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/smbd	smbd\n"
-		if fileExists("/usr/sbin/nmbd"):
+		if isfile("/usr/sbin/nmbd"):
 			inetdData += "#netbios-ns	dgram	" + sockTypeudp + "	wait	root	/usr/sbin/nmbd	nmbd\n"
-		if fileExists("/usr/bin/streamproxy"):
+		if isfile("/usr/bin/streamproxy"):
 			inetdData += "8001	stream	" + sockTypetcp + "	nowait	root	/usr/bin/streamproxy	streamproxy\n"
 
-		if fileExists("/usr/bin/transtreamproxy"):
+		if isfile("/usr/bin/transtreamproxy"):
 			inetdData += "8002	stream	" + sockTypetcp + "	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
 
 		open("/etc/inetd.conf", "w").write(inetdData)
@@ -679,14 +679,14 @@ class InetdRecovery(Screen, ConfigListScreen):
 		inetdData += "ftp	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/vsftpd	vsftpd\n"
 		inetdData += "#ftp	stream	" + sockTypetcp + "	nowait	root	ftpd	ftpd -w /\n"
 		inetdData += "telnet	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/telnetd	telnetd\n"
-		if fileExists("/usr/sbin/smbd"):
+		if isfile("/usr/sbin/smbd"):
 			inetdData += "#microsoft-ds	stream	" + sockTypetcp + "	nowait	root	/usr/sbin/smbd	smbd\n"
-		if fileExists("/usr/sbin/nmbd"):
+		if isfile("/usr/sbin/nmbd"):
 			inetdData += "#netbios-ns	dgram	" + sockTypeudp + "	wait	root	/usr/sbin/nmbd	nmbd\n"
-		if fileExists("/usr/bin/streamproxy"):
+		if isfile("/usr/bin/streamproxy"):
 			inetdData += "8001	stream	" + sockTypetcp + "	nowait	root	/usr/bin/streamproxy	streamproxy\n"
 
-		if fileExists("/usr/bin/transtreamproxy"):
+		if isfile("/usr/bin/transtreamproxy"):
 			inetdData += "8002	stream	" + sockTypetcp + "	nowait	root	/usr/bin/transtreamproxy	transtreamproxy\n"
 
 		open("/etc/inetd.conf", "w").write(inetdData)
@@ -698,7 +698,7 @@ class InetdRecovery(Screen, ConfigListScreen):
 
 	def inetdRestart(self):
 		commands = []
-		if fileExists("/etc/init.d/inetd.busybox"):
+		if isfile("/etc/init.d/inetd.busybox"):
 			commands.append('/etc/init.d/inetd.busybox restart')
 
 
@@ -2123,15 +2123,15 @@ class NetworkFtp(NSCommon, Screen):
 
 	def FtpStartStop(self):
 		commands = []
-		if not fileExists('/etc/pam.d/vsftpd'):
+		if not isfile('/etc/pam.d/vsftpd'):
 			commands.append('mv /etc/pam.d/vsftpdd /etc/pam.d/vsftpd')
-		if fileExists('/etc/pam.d/vsftpd'):
+		if isfile('/etc/pam.d/vsftpd'):
 			commands.append('killall vsftpd ; mv /etc/pam.d/vsftpd /etc/pam.d/vsftpdd')
 		self.Console.eBatch(commands, self.StartStopCallback, debug=True)
 
 	def activateFtp(self):
 		commands = []
-		if fileExists('/etc/pam.d/vsftpd'):
+		if isfile('/etc/pam.d/vsftpd'):
 			commands.append('mv /etc/pam.d/vsftpd /etc/pam.d/vsftpdd')
 		else:
 			commands.append('mv /etc/pam.d/vsftpdd /etc/pam.d/vsftpd')
@@ -2145,7 +2145,7 @@ class NetworkFtp(NSCommon, Screen):
 		self['labstop'].hide()
 		self['labactive'].setText(_("Disabled"))
 		self.my_ftp_active = False
-		if fileExists('/etc/pam.d/vsftpd'):
+		if isfile('/etc/pam.d/vsftpd'):
 			self['labactive'].setText(_("Enabled"))
 			self['labactive'].show()
 			self.my_ftp_active = True
@@ -2153,7 +2153,7 @@ class NetworkFtp(NSCommon, Screen):
 		self.my_ftp_run = False
 		if ftp_process:
 			self.my_ftp_run = True
-		if fileExists('/etc/pam.d/vsftpd'):
+		if isfile('/etc/pam.d/vsftpd'):
 			self['labstop'].hide()
 			self['labactive'].show()
 			self['labrun'].show()
@@ -2342,7 +2342,7 @@ class NetworkVpnLog(Screen):
 		strview = ''
 		self.Console.ePopen('tail /var/log/messages > /var/log/openvpn.log')
 		time.sleep(1)
-		if fileExists('/var/log/openvpn.log'):
+		if isfile('/var/log/openvpn.log'):
 			f = open('/var/log/openvpn.log', 'r')
 			for line in f.readlines():
 				strview += line
@@ -2382,7 +2382,7 @@ class NetworkZeroTier(NSCommon, Screen):
 
 	def ZeroTierStartStop(self):
 		commands = []
-		if fileExists('/etc/init.d/zerotier'):
+		if isfile('/etc/init.d/zerotier'):
 			if self.my_zerotier_run:
 				commands.append('/etc/init.d/zerotier stop')
 			else:
@@ -2441,7 +2441,7 @@ class NetworkZeroTierLog(Screen):
 		strview = ''
 		self.Console.ePopen('tail /var/log/messages > /var/log/zerotier.log')
 		time.sleep(1)
-		if fileExists('/var/log/zerotier.log'):
+		if isfile('/var/log/zerotier.log'):
 			f = open('/var/log/zerotier.log', 'r')
 			for line in f.readlines():
 				strview += line
@@ -2491,7 +2491,7 @@ class NetworkSamba(NSCommon, Screen):
 
 	def activateSamba(self):
 		commands = []
-		if fileExists('/etc/rc2.d/S20samba.sh'):
+		if isfile('/etc/rc2.d/S20samba.sh'):
 			commands.append('update-rc.d -f samba.sh remove')
 		else:
 			commands.append('update-rc.d -f samba.sh defaults')
@@ -2505,7 +2505,7 @@ class NetworkSamba(NSCommon, Screen):
 		self['labstop'].hide()
 		self['labactive'].setText(_("Disabled"))
 		self.my_Samba_active = False
-		if fileExists('/etc/rc2.d/S20samba.sh'):
+		if isfile('/etc/rc2.d/S20samba.sh'):
 			self['labactive'].setText(_("Enabled"))
 			self['labactive'].show()
 			self.my_Samba_active = True
@@ -2543,7 +2543,7 @@ class NetworkSambaLog(Screen):
 		strview = ''
 		self.Console.ePopen('tail /var/lib/samba/browse.dat* > /var/lib/samba/samba.log')
 		time.sleep(1)
-		if fileExists('/var/lib/samba/samba.log'):
+		if isfile('/var/lib/samba/samba.log'):
 			f = open('/var/lib/samba/samba.log', 'r')
 			for line in f.readlines():
 				strview += line
@@ -2576,7 +2576,7 @@ class NetworkTelnet(NSCommon, Screen):
 
 	def TelnetStartStop(self):
 		commands = []
-		if fileExists('/bin/busybox.nosuid'):
+		if isfile('/bin/busybox.nosuid'):
 			if self.my_telnet_run:
 				commands.append('killall telnetd ; rm -f /usr/sbin/telnetd')
 			else:
@@ -2585,7 +2585,7 @@ class NetworkTelnet(NSCommon, Screen):
 
 	def activateTelnet(self):
 		commands = []
-		if fileExists('/usr/sbin/telnetd'):
+		if isfile('/usr/sbin/telnetd'):
 			commands.append('rm -f /usr/sbin/telnetd')
 		else:
 			commands.append('ln -s /bin/busybox.nosuid /usr/sbin/telnetd')
@@ -2600,12 +2600,12 @@ class NetworkTelnet(NSCommon, Screen):
 		self['labactive'].setText(_("Disabled"))
 		self.my_telnet_active = False
 		self.my_telnet_run = False
-		if fileExists('/usr/sbin/telnetd'):
+		if isfile('/usr/sbin/telnetd'):
 			self['labactive'].setText(_("Enabled"))
 			self['labactive'].show()
 			self.my_telnet_active = True
 
-		if fileExists('/usr/sbin/telnetd'):
+		if isfile('/usr/sbin/telnetd'):
 			self['labstop'].hide()
 			self['labactive'].show()
 			self['labrun'].show()
@@ -2707,7 +2707,7 @@ class NetworkInadyn(NSCommon, Screen):
 			self['key_green'].setText(_("Start"))
 			status_summary = self['status'].text + ' ' + self['labstop'].text
 
-		if fileExists('/etc/inadyn.conf'):
+		if isfile('/etc/inadyn.conf'):
 			f = open('/etc/inadyn.conf', 'r')
 			for line in f.readlines():
 				line = line.strip()
@@ -2783,7 +2783,7 @@ class NetworkInadynSetup(Screen, ConfigListScreen):
 		self.ina_sysactive = NoSave(ConfigYesNo(default='False'))
 		self.ina_system = NoSave(ConfigSelection(default="dyndns@dyndns.org", choices=[("dyndns@dyndns.org", "dyndns@dyndns.org"), ("statdns@dyndns.org", "statdns@dyndns.org"), ("custom@dyndns.org", "custom@dyndns.org"), ("default@no-ip.com", "default@no-ip.com")]))
 
-		if fileExists('/etc/inadyn.conf'):
+		if isfile('/etc/inadyn.conf'):
 			f = open('/etc/inadyn.conf', 'r')
 			for line in f.readlines():
 				line = line.strip()
@@ -2842,7 +2842,7 @@ class NetworkInadynSetup(Screen, ConfigListScreen):
 			self["config"].invalidate(self["config"].getCurrent())
 
 	def saveIna(self):
-		if fileExists('/etc/inadyn.conf'):
+		if isfile('/etc/inadyn.conf'):
 			inme = open('/etc/inadyn.conf', 'r')
 			out = open('/etc/inadyn.conf.tmp', 'w')
 			for line in inme.readlines():
@@ -2868,7 +2868,7 @@ class NetworkInadynSetup(Screen, ConfigListScreen):
 		else:
 			self.session.open(MessageBox, _("Inadyn config is missing!"), MessageBox.TYPE_INFO)
 			self.close()
-		if fileExists('/etc/inadyn.conf.tmp'):
+		if isfile('/etc/inadyn.conf.tmp'):
 			rename('/etc/inadyn.conf.tmp', '/etc/inadyn.conf')
 		self.myStop()
 
@@ -2887,12 +2887,12 @@ class NetworkInadynLog(Screen):
 		 'up': self['infotext'].pageUp,
 		 'down': self['infotext'].pageDown})
 		strview = ''
-		if fileExists('/tmp/inadyn_ip.cache'):
+		if isfile('/tmp/inadyn_ip.cache'):
 			f = open('/tmp/inadyn_ip.cache', 'r')
 			for line in f.readlines():
 				strview += line
 			else:
-				if fileExists('/tmp/inadyn.log'):
+				if isfile('/tmp/inadyn.log'):
 					f = open('/tmp/inadyn.log', 'r')
 					for line in f.readlines():
 						strview += line
@@ -2973,7 +2973,7 @@ class NetworkuShare(NSCommon, Screen):
 		self['labdisabled'].hide()
 		self.my_ushare_active = False
 		self.my_ushare_run = False
-		if not fileExists('/tmp/uShare.log'):
+		if not isfile('/tmp/uShare.log'):
 			open("/tmp/uShare.log", "w").write("")
 		if ServiceIsEnabled('ushare'):
 			self['labdisabled'].hide()
@@ -2997,7 +2997,7 @@ class NetworkuShare(NSCommon, Screen):
 			self['key_green'].setText(_("Start"))
 			status_summary = self['status'].text + ' ' + self['labstop'].text
 
-		if fileExists('/etc/ushare.conf'):
+		if isfile('/etc/ushare.conf'):
 			f = open('/etc/ushare.conf', 'r')
 			for line in f.readlines():
 				line = line.strip()
@@ -3102,7 +3102,7 @@ class NetworkuShareSetup(Screen, ConfigListScreen):
 		self.ushare_ps3 = NoSave(ConfigYesNo(default='True'))
 		self.ushare_system = NoSave(ConfigSelection(default="dyndns@dyndns.org", choices=[("dyndns@dyndns.org", "dyndns@dyndns.org"), ("statdns@dyndns.org", "statdns@dyndns.org"), ("custom@dyndns.org", "custom@dyndns.org")]))
 
-		if fileExists('/etc/ushare.conf'):
+		if isfile('/etc/ushare.conf'):
 			f = open('/etc/ushare.conf', 'r')
 			for line in f.readlines():
 				line = line.strip()
@@ -3175,7 +3175,7 @@ class NetworkuShareSetup(Screen, ConfigListScreen):
 			self["config"].invalidate(self["config"].getCurrent())
 
 	def saveuShare(self):
-		if fileExists('/etc/ushare.conf'):
+		if isfile('/etc/ushare.conf'):
 			inme = open('/etc/ushare.conf', 'r')
 			out = open('/etc/ushare.conf.tmp', 'w')
 			for line in inme.readlines():
@@ -3217,7 +3217,7 @@ class NetworkuShareSetup(Screen, ConfigListScreen):
 			open('/tmp/uShare.log', "a").write(_("uShare config is missing!") + '\n')
 			self.session.open(MessageBox, _("uShare config is missing!"), MessageBox.TYPE_INFO)
 			self.close()
-		if fileExists('/etc/ushare.conf.tmp'):
+		if isfile('/etc/ushare.conf.tmp'):
 			rename('/etc/ushare.conf.tmp', '/etc/ushare.conf')
 		self.myStop()
 
@@ -3240,7 +3240,7 @@ class uShareSelection(Screen):
 		self["key_green"] = StaticText(_("Save"))
 		self["key_yellow"] = StaticText()
 
-		if fileExists('/etc/ushare.conf'):
+		if isfile('/etc/ushare.conf'):
 			f = open('/etc/ushare.conf', 'r')
 			for line in f.readlines():
 				line = line.strip()
@@ -3320,7 +3320,7 @@ class NetworkuShareLog(Screen):
 		strview = ''
 		self.Console.ePopen('tail /tmp/uShare.log > /tmp/tmp.log')
 		time.sleep(1)
-		if fileExists('/tmp/tmp.log'):
+		if isfile('/tmp/tmp.log'):
 			f = open('/tmp/tmp.log', 'r')
 			for line in f.readlines():
 				strview += line
@@ -3399,7 +3399,7 @@ class NetworkMiniDLNA(NSCommon, Screen):
 		self['labdisabled'].hide()
 		self.my_minidlna_active = False
 		self.my_minidlna_run = False
-		if fileExists('/etc/rc2.d/S20minidlna.sh'):
+		if isfile('/etc/rc2.d/S20minidlna.sh'):
 			self['labdisabled'].hide()
 			self['labactive'].show()
 			self.my_minidlna_active = True
@@ -3421,7 +3421,7 @@ class NetworkMiniDLNA(NSCommon, Screen):
 			self['key_green'].setText(_("Start"))
 			status_summary = self['status'].text + ' ' + self['labstop'].text
 
-		if fileExists('/etc/minidlna.conf'):
+		if isfile('/etc/minidlna.conf'):
 			f = open('/etc/minidlna.conf', 'r')
 			for line in f.readlines():
 				line = line.strip()
@@ -3519,7 +3519,7 @@ class NetworkMiniDLNASetup(Screen, ConfigListScreen):
 		self.minidlna_tivo = NoSave(ConfigYesNo(default='True'))
 		self.minidlna_strictdlna = NoSave(ConfigYesNo(default='True'))
 
-		if fileExists('/etc/minidlna.conf'):
+		if isfile('/etc/minidlna.conf'):
 			f = open('/etc/minidlna.conf', 'r')
 			for line in f.readlines():
 				line = line.strip()
@@ -3585,7 +3585,7 @@ class NetworkMiniDLNASetup(Screen, ConfigListScreen):
 			self["config"].invalidate(self["config"].getCurrent())
 
 	def saveMinidlna(self):
-		if fileExists('/etc/minidlna.conf'):
+		if isfile('/etc/minidlna.conf'):
 			inme = open('/etc/minidlna.conf', 'r')
 			out = open('/etc/minidlna.conf.tmp', 'w')
 			for line in inme.readlines():
@@ -3621,7 +3621,7 @@ class NetworkMiniDLNASetup(Screen, ConfigListScreen):
 		else:
 			self.session.open(MessageBox, _("MiniDLNA config is missing!"), MessageBox.TYPE_INFO)
 			self.close()
-		if fileExists('/etc/minidlna.conf.tmp'):
+		if isfile('/etc/minidlna.conf.tmp'):
 			rename('/etc/minidlna.conf.tmp', '/etc/minidlna.conf')
 		self.myStop()
 
@@ -3645,7 +3645,7 @@ class MiniDLNASelection(Screen):
 		self["key_green"] = StaticText(_("Save"))
 		self["key_yellow"] = StaticText()
 
-		if fileExists('/etc/minidlna.conf'):
+		if isfile('/etc/minidlna.conf'):
 			f = open('/etc/minidlna.conf', 'r')
 			for line in f.readlines():
 				line = line.strip()
@@ -3725,7 +3725,7 @@ class NetworkMiniDLNALog(Screen):
 		strview = ''
 		self.Console.ePopen('tail /var/volatile/tmp/minidlna.log > /tmp/tmp.log')
 		time.sleep(1)
-		if fileExists('/tmp/tmp.log'):
+		if isfile('/tmp/tmp.log'):
 			f = open('/tmp/tmp.log', 'r')
 			for line in f.readlines():
 				strview += line

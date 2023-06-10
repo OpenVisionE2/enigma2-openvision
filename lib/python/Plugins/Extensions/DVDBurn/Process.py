@@ -881,10 +881,10 @@ def CreateAuthoringXML_multiset(job):
 
 
 def getISOfilename(isopath, volName):
-	from Tools.Directories import fileExists
+	from os.path import isfile
 	i = 0
 	filename = isopath + '/' + volName + ".iso"
-	while fileExists(filename):
+	while isfile(filename):
 		i = i + 1
 		filename = isopath + '/' + volName + str(i).zfill(3) + ".iso"
 	return filename

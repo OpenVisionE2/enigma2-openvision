@@ -3,10 +3,10 @@ from Components.Renderer.Renderer import Renderer
 from enigma import iServiceInformation
 from string import upper
 from enigma import ePixmap
-from Tools.Directories import fileExists, SCOPE_GUISKIN, resolveFilename
+from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 from Components.Element import cached
 from Components.Converter.Poll import Poll
-from os.path import exists
+from os.path import exists, isfile
 
 
 class PicEmu2(Renderer, Poll):
@@ -51,7 +51,7 @@ class PicEmu2(Renderer, Poll):
 		nameser = []
 		if not info:
 			return ""
-		if fileExists("/etc/init.d/softcam") or fileExists("/etc/init.d/cardserver"):
+		if isfile("/etc/init.d/softcam") or isfile("/etc/init.d/cardserver"):
 			try:
 				for line in open("/etc/init.d/softcam"):
 					if "echo" in line:
@@ -112,7 +112,7 @@ class PicEmu2(Renderer, Poll):
 					info = (service and service.info())
 					if info:
 						caids = info.getInfoObject(iServiceInformation.sCAIDs)
-						if fileExists("/tmp/ecm.info"):
+						if isfile("/tmp/ecm.info"):
 							try:
 								value = self.getText()
 								value = value.lower()
@@ -120,7 +120,7 @@ class PicEmu2(Renderer, Poll):
 									print("[PicEmu2] No emu installed or FTA?")
 									sname = "fta"
 								else:
-									if fileExists("/tmp/ecm.info"):
+									if isfile("/tmp/ecm.info"):
 										try:
 											content = open("/tmp/ecm.info", "r").read()
 										except:
@@ -156,7 +156,7 @@ class PicEmu2(Renderer, Poll):
 					pngname = self.findPicon('fta')
 					if (pngname == ''):
 						tmp = resolveFilename(SCOPE_GUISKIN, 'picon_default.png')
-						if fileExists(tmp):
+						if isfile(tmp):
 							pngname = tmp
 						self.nameCache['default'] = pngname
 
@@ -170,6 +170,6 @@ class PicEmu2(Renderer, Poll):
 	def findPicon(self, serviceName):
 		for path in self.searchPaths:
 			pngname = (((path % self.path) + serviceName) + '.png')
-			if fileExists(pngname):
+			if isfile(pngname):
 				return pngname
 		return ''

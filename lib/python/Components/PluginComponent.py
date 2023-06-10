@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from os import listdir, rmdir
-from os.path import exists, isdir, join
+from os.path import exists, isdir, join, isfile
 from bisect import insort
 from Components.ActionMap import loadKeymap
-from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Tools.Import import my_import
 #from Tools.Profile import profile
 from Plugins.Plugin import PluginDescriptor
@@ -83,7 +83,7 @@ class PluginComponent:
 							new_plugins.append(p)
 
 						keymap = join(path, "keymap.xml")
-						if fileExists(keymap):
+						if isfile(keymap):
 							try:
 								loadKeymap(keymap)
 							except Exception as exc:

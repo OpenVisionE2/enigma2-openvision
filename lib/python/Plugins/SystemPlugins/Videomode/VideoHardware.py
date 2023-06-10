@@ -4,7 +4,6 @@ from Components.SystemInfo import BoxInfo
 from Tools.CList import CList
 from enigma import getDesktop
 from Components.About import about
-from Tools.Directories import fileExists
 from Components.Console import Console
 from os.path import isfile
 

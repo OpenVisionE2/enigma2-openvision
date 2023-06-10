@@ -327,17 +327,17 @@ SystemInfo["HasCISSL"] = fileCheck("/etc/ssl/certs/customer.pem") and fileCheck(
 SystemInfo["CanChangeOsdAlpha"] = access("/proc/stb/video/alpha", R_OK) and True or False
 SystemInfo["CanChangeOsdPlaneAlpha"] = access("/sys/class/graphics/fb0/osd_plane_alpha", R_OK) and True or False
 SystemInfo["ScalerSharpness"] = fileCheck("/proc/stb/vmpeg/0/pep_scaler_sharpness")
-SystemInfo["OScamInstalled"] = fileCheck("/usr/bin/oscam") or fileCheck("/usr/bin/oscam-emu") or fileCheck("/usr/bin/oscam-smod")
+SystemInfo["OScamInstalled"] = isfile("/usr/bin/oscam") or isfile("/usr/bin/oscam-emu") or isfile("/usr/bin/oscam-smod")
 SystemInfo["OScamIsActive"] = BoxInfo.getItem("OScamInstalled") and fileCheck("/tmp/.oscam/oscam.version")
-SystemInfo["NCamInstalled"] = fileCheck("/usr/bin/ncam")
+SystemInfo["NCamInstalled"] = isfile("/usr/bin/ncam")
 SystemInfo["NCamIsActive"] = BoxInfo.getItem("NCamInstalled") and fileCheck("/tmp/.ncam/ncam.version")
 SystemInfo["OpenVisionModule"] = fileCheck("/proc/enigma/distro")
 SystemInfo["OLDE2API"] = model == "dm800"
 SystemInfo["7segment"] = displaytype == "7segment" or "7seg" in displaytype
 SystemInfo["LCDSupport"] = "lcd" in displaytype or "lcd" in model
-SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or fileCheck("/proc/hisi") or fileCheck("/usr/bin/hihalt") or fileCheck("/usr/lib/hisilicon")
+SystemInfo["HiSilicon"] = socfamily.startswith("hisi") or exists("/proc/hisi") or isfile("/usr/bin/hihalt") or exists("/usr/lib/hisilicon")
 SystemInfo["DefineSat"] = platform in ("octagonhisil", "octagonhisilnew", "gbmv200", "uclanhisil") or model in ("beyonwizv2", "viper4k")
-SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileCheck("/proc/device-tree/amlogic-dt-id") or fileCheck("/usr/bin/amlhalt") or fileCheck("/sys/module/amports")
+SystemInfo["AmlogicFamily"] = socfamily.startswith(("aml", "meson")) or fileCheck("/proc/device-tree/amlogic-dt-id") or isfile("/usr/bin/amlhalt") or exists("/sys/module/amports")
 SystemInfo["RecoveryMode"] = fileCheck("/proc/stb/fp/boot_mode") and model not in ("hd51", "h7") or platform == "dmamlogic"
 SystemInfo["AndroidMode"] = BoxInfo.getItem("RecoveryMode") and model == "multibox" or brand == "wetek" or platform == "dmamlogic"
 SystemInfo["grautec"] = fileCheck("/tmp/usbtft")

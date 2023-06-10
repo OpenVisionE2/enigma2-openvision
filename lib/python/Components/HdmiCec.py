@@ -12,7 +12,7 @@ from enigma import eActionMap, eHdmiCEC, eTimer
 from Components.config import config, ConfigSelection, ConfigYesNo, ConfigSubsection, ConfigText, NoSave
 from Components.Console import Console
 import Screens.Standby
-from Tools.Directories import fileExists, pathExists
+from Tools.Directories import pathExists
 
 config.hdmicec = ConfigSubsection()
 config.hdmicec.enabled = ConfigYesNo(default=False)  # Query from this value in hdmi_cec.cpp
@@ -1146,7 +1146,7 @@ class HdmiCec:
 
 	def sethdmipreemphasis(self):
 		f = "/proc/stb/hdmi/preemphasis"
-		if fileExists(f):
+		if isfile(f):
 			if config.hdmicec.preemphasis.value:
 				self.CECwritefile(f, "w", "on")
 			else:
@@ -1155,7 +1155,7 @@ class HdmiCec:
 	def checkifPowerupWithoutWakingTv(self):
 		f = "/tmp/powerup_without_waking_tv.txt"
 		# Returns "True" if openWebif function "Power on without TV" has written "True" to this file:
-		powerupWithoutWakingTv = (self.CECreadfile(f) or "False") if fileExists(f) else "False"
+		powerupWithoutWakingTv = (self.CECreadfile(f) or "False") if isfile(f) else "False"
 		# Write "False" to the file so that turning on the TV is only suppressed once
 		# (and initially, so that openWebif knows that the image supports this feature).
 		self.CECwritefile(f, "w", "False")
@@ -1285,7 +1285,7 @@ class HdmiCec:
 		if self.firstrun or self.sendMessagesIsActive():
 			self.cmdPollTimer.startLongTimer(polltime)
 			return
-		if fileExists(cmdfile):
+		if isfile(cmdfile):
 			files = [cmdfile, errfile]
 			if received is None and not self.cmdWaitTimer.isActive():
 				files.append(msgfile)
@@ -1376,7 +1376,7 @@ class HdmiCec:
 
 	def CECremovefiles(self, FILES):
 		for f in FILES:
-			if fileExists(f):
+			if isfile(f):
 				try:
 					remove(f)
 				except Exception as e:

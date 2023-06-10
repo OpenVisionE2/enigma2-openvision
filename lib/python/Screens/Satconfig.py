@@ -17,8 +17,8 @@ from Screens.ChoiceBox import ChoiceBox
 from Screens.ServiceStopScreen import ServiceStopScreen
 from Screens.AutoDiseqc import AutoDiseqc
 from Tools.BoundFunction import boundFunction
-from Tools.Directories import fileExists
 
+from os.path import isfile
 from time import mktime, localtime, time
 from datetime import datetime
 
@@ -196,13 +196,13 @@ class NimSetup(ConfigListScreen, ServiceStopScreen, Screen):
 							self.fillListWithAdvancedSatEntrys(self.nimConfig.advanced.sat[cur_orb_pos])
 					self.have_advanced = True
 				if self.nimConfig.configMode.value != "nothing" and config.usage.setup_level.index >= 2:
-					if fileExists("/proc/stb/frontend/%d/tone_amplitude" % self.nim.slot):
+					if isfile("/proc/stb/frontend/%d/tone_amplitude" % self.nim.slot):
 						self.toneamplitude = getConfigListEntry(self.indent % _("Tone amplitude"), self.nimConfig.toneAmplitude, _("Your receiver can use tone amplitude. Consult your receiver's manual for more information."))
 						self.list.append(self.toneamplitude)
-					if fileExists("/proc/stb/frontend/%d/use_scpc_optimized_search_range" % self.nim.slot):
+					if isfile("/proc/stb/frontend/%d/use_scpc_optimized_search_range" % self.nim.slot):
 						self.scpc = getConfigListEntry(self.indent % _("SCPC optimized search range"), self.nimConfig.scpcSearchRange, _("Your receiver can use SCPC optimized search range. Consult your receiver's manual for more information."))
 						self.list.append(self.scpc)
-					if fileExists("/proc/stb/frontend/%d/t2mirawmode" % self.nim.slot):
+					if isfile("/proc/stb/frontend/%d/t2mirawmode" % self.nim.slot):
 						self.t2mirawmode = getConfigListEntry(self.indent % _("T2MI RAW Mode"), self.nimConfig.t2miRawMode, _("With T2MI RAW mode disabled (default) we can use single T2MI PLP de-encapsulation. With T2MI RAW mode enabled we can use astra-sm to analyze T2MI"))
 						self.list.append(self.t2mirawmode)
 		if self.nim.isCompatible("DVB-C") or (self.nim.isCombined() and self.nim.canBeCompatible("DVB-C")):

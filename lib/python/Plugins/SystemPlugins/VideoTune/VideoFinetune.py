@@ -5,7 +5,8 @@ from Components.Sources.CanvasSource import CanvasSource
 from Components.ActionMap import ActionMap, NumberActionMap
 from Components.Console import Console
 from Components.SystemInfo import BoxInfo
-from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from os.path import isfile
 from enigma import gFont, getDesktop, gMainDC, eSize, RT_HALIGN_RIGHT, RT_WRAP
 from six.moves import range
 
@@ -130,7 +131,7 @@ class VideoFinetune(Screen):
 		self.basic_colors = [RGB(255, 255, 255), RGB(255, 255, 0), RGB(0, 255, 255), RGB(0, 255, 0), RGB(255, 0, 255), RGB(255, 0, 0), RGB(0, 0, 255), RGB(0, 0, 0)]
 		self.fontsize = getDesktop(0).size().height() == 1080 and 30 or 20
 
-		if fileExists("/proc/stb/fb/dst_left"):
+		if isfile("/proc/stb/fb/dst_left"):
 			print("[VideoFinetune] Read /proc/stb/fb/dst_left")
 			self.left = open("/proc/stb/fb/dst_left", "r").read()
 			print("[VideoFinetune] Read /proc/stb/fb/dst_width")

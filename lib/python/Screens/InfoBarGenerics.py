@@ -35,7 +35,7 @@ from Screens.TimeDateInput import TimeDateInput
 from Screens.UnhandledKey import UnhandledKey
 from ServiceReference import ServiceReference, isPlayableForCur, hdmiInServiceRef
 from Tools.ASCIItranslit import legacyEncode
-from Tools.Directories import fileExists, fileReadLine, fileWriteLine, fileReadLines, fileReadLinesISO, getRecordingFilename, moveFiles, isPluginInstalled
+from Tools.Directories import fileReadLine, fileWriteLine, fileReadLines, fileReadLinesISO, getRecordingFilename, moveFiles, isPluginInstalled
 from Tools.Notifications import AddNotificationWithCallback, AddPopup, current_notifications, lock, notificationAdded, notifications, RemovePopup, AddNotification
 from keyids import KEYFLAGS, KEYIDS, KEYIDNAMES
 from enigma import eTimer, eServiceCenter, eDVBServicePMTHandler, iServiceInformation, iPlayableService, eServiceReference, eEPGCache, eActionMap, getDesktop, eDVBDB
@@ -2286,9 +2286,9 @@ class InfoBarTimeshift():
 
 			fileList = []
 			fileList.append((self.current_timeshift_filename, filename))
-			if fileExists(self.current_timeshift_filename + ".sc"):
+			if isfile(self.current_timeshift_filename + ".sc"):
 				fileList.append((self.current_timeshift_filename + ".sc", filename + ".sc"))
-			if fileExists(self.current_timeshift_filename + ".cuts"):
+			if isfile(self.current_timeshift_filename + ".cuts"):
 				fileList.append((self.current_timeshift_filename + ".cuts", filename + ".cuts"))
 
 			moveFiles(fileList)
@@ -4106,14 +4106,14 @@ class InfoBarZoom:
 		else:
 			zoomval = self.zoomrate
 
-		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
+		if isfile("/proc/stb/vmpeg/0/zoomrate"):
 			print("[InfoBarGenerics] Write to /proc/stb/vmpeg/0/zoomrate")
 			open("/proc/stb/vmpeg/0/zoomrate", "w").write(int(zoomval))
 
 	def ZoomOff(self):
 		self.zoomrate = 0
 		self.zoomin = 1
-		if fileExists("/proc/stb/vmpeg/0/zoomrate"):
+		if isfile("/proc/stb/vmpeg/0/zoomrate"):
 			print("[InfoBarGenerics] Write to /proc/stb/vmpeg/0/zoomrate")
 			open("/proc/stb/vmpeg/0/zoomrate", "w").write(str(0))
 

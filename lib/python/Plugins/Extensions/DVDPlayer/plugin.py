@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from os.path import exists, join
-from Tools.Directories import fileExists
+from os.path import exists, join, isfile
 from Plugins.Plugin import PluginDescriptor
 from Components.Harddisk import harddiskmanager
 
@@ -58,7 +57,7 @@ def filescan(**kwargs):
 	# Overwrite checkFile to only detect local
 	class LocalScanner(Scanner):
 		def checkFile(self, file):
-			return fileExists(file.path)
+			return isfile(file.path)
 
 	return [
 		LocalScanner(mimetypes=["video/x-dvd", "video/x-dvd-iso"],
