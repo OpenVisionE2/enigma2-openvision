@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from Components import Netlink
-import enigma
+from enigma import addInputDevice, removeInputDevice
 from os.path import join
 
 
@@ -22,10 +22,10 @@ class NetlinkReader():
 					action = event['ACTION']
 					if action == 'add':
 						print("[InputHotplug] New input device detected:", devname)
-						enigma.addInputDevice(join('/dev', devname))
+						addInputDevice(join('/dev', devname))
 					elif action == 'remove':
 						print("[InputHotplug] Removed input device:", devname)
-						enigma.removeInputDevice(join('/dev', devname))
+						removeInputDevice(join('/dev', devname))
 				elif subsystem == 'net':
 					from Components.Network import iNetwork
 					iNetwork.hotplug(event)

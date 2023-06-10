@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from Screens.Screen import Screen
 from Components.Label import Label
-import enigma
+from enigma import gFont
 
 
 class NumericalTextInputHelpDialog(Screen):
@@ -35,7 +35,7 @@ class NumericalTextInputHelpDialog(Screen):
 		if label_width < text_width:
 			fnt = self["key0"].instance.getFont()
 			newSize = max(fnt.pointSize * label_width / text_width, int(0.6 * fnt.pointSize))
-			fnt = enigma.gFont(fnt.family, newSize)
+			fnt = gFont(fnt.family, newSize)
 			for x in range(0, 10):
 				self["key%d" % x].instance.setFont(fnt)
 			self["help1"].instance.setFont(fnt)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from os import listdir, readlink, unlink, symlink
 from os.path import exists, split
-import enigma
+from enigma import eConsoleAppContainer
 
 
 class CamControl:
@@ -34,7 +34,7 @@ class CamControl:
 	def command(self, cmd):
 		if exists(self.link):
 			print("[camcontrol] Executing", self.link + ' ' + cmd)
-			enigma.eConsoleAppContainer().execute(self.link + ' ' + cmd)
+			eConsoleAppContainer().execute(self.link + ' ' + cmd)
 
 	def select(self, which):
 		print("[camcontrol] Selecting CAM:", which)

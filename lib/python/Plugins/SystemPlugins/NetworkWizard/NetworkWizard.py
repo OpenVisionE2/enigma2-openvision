@@ -11,9 +11,7 @@ from Components.Network import iNetwork
 from Components.Timezones import TIMEZONE_FILE
 from Tools.Geolocation import geolocation
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, fileReadXML
-from enigma import eTimer
-
-import enigma
+from enigma import eTimer, eConsoleAppContainer
 
 
 class NetworkWizard(WizardLanguage, ShowRemoteControl, Time):
@@ -152,7 +150,7 @@ class NetworkWizard(WizardLanguage, ShowRemoteControl, Time):
 				if interface == self.selectedInterface:
 					if not self.originalInterfaceState[interface]["up"]:
 						if iNetwork.checkforInterface(interface):
-							enigma.eConsoleAppContainer().execute("ifconfig %s down" % interface)
+							eConsoleAppContainer().execute("ifconfig %s down" % interface)
 
 	def listInterfaces(self):
 		self.checkOldInterfaceState()

@@ -2,7 +2,7 @@
 import time
 from os import access, W_OK, mkdir, walk, statvfs, stat, rmdir
 from os.path import realpath, join, split, isdir, getsize
-import enigma
+from enigma import iRecordableService, eBackgroundFileEraser, eLabel
 from Components.config import config
 from Components import Harddisk
 from twisted.internet import threads
@@ -94,7 +94,7 @@ class Trashcan:
 
 	def gotRecordEvent(self, service, event):
 		from RecordTimer import n_recordings
-		if event == enigma.iRecordableService.evEnd:
+		if event == iRecordableService.evEnd:
 			self.cleanIfIdle()
 
 	def destroy(self):
@@ -158,7 +158,7 @@ def purge(cleanset, ctimeLimit, reserveBytes):
 					st = stat(fn)
 					if st.st_ctime < ctimeLimit:
 						print("[Trashcan] Too old:", name, st.st_ctime)
-						enigma.eBackgroundFileEraser.getInstance().erase(fn)
+						eBackgroundFileEraser.getInstance().erase(fn)
 						bytesToRemove -= st.st_size
 					else:
 						candidates.append((st.st_ctime, fn, st.st_size))
@@ -177,7 +177,7 @@ def purge(cleanset, ctimeLimit, reserveBytes):
 		for st_ctime, fn, st_size in candidates:
 			if bytesToRemove < 0:
 				break
-			enigma.eBackgroundFileEraser.getInstance().erase(fn)
+			eBackgroundFileEraser.getInstance().erase(fn)
 			bytesToRemove -= st_size
 			size -= st_size
 		print("[Trashcan] Size after purging:", size, trash)
@@ -191,7 +191,7 @@ def cleanAll(trash):
 		for name in files:
 			fn = join(root, name)
 			try:
-				enigma.eBackgroundFileEraser.getInstance().erase(fn)
+				eBackgroundFileEraser.getInstance().erase(fn)
 			except Exception as e:
 				print("[Trashcan] Failed to erase %s:" % name, e)
 		# Remove empty directories if possible
@@ -256,7 +256,7 @@ class CleanTrashTask(Components.Task.PythonTask):
 							fn = join(root, name)
 							st = stat(fn)
 							if st.st_ctime < self.ctimeLimit:
-								enigma.eBackgroundFileEraser.getInstance().erase(fn)
+								eBackgroundFileEraser.getInstance().erase(fn)
 								bytesToRemove -= st.st_size
 							else:
 								candidates.append((st.st_ctime, fn, st.st_size))
@@ -276,7 +276,7 @@ class CleanTrashTask(Components.Task.PythonTask):
 							break
 						try:
 							# somtimes the file does not exist, can happen if trashcan is on a network, the main box could also be emptying trash at same time.
-							enigma.eBackgroundFileEraser.getInstance().erase(fn)
+							eBackgroundFileEraser.getInstance().erase(fn)
 						except:
 							pass
 						bytesToRemove -= st_size
@@ -315,4 +315,4 @@ class TrashInfo(VariableText, GUIComponent):
 				# occurs when f_blocks is 0 or a similar error
 				self.setText("-?-")
 
-	GUI_WIDGET = enigma.eLabel
+	GUI_WIDGET = eLabel

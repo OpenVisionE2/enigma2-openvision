@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import enigma
+from enigma import run, init_nav, init_record_config, init_parental_control
 import time
 import tests
 
@@ -46,7 +46,7 @@ def test_timer(repeat=0, timer_start=3600, timer_length=1000, sim_length=86400 *
 	t.record(timer)
 
 	# run virtual environment
-	enigma.run(sim_length)
+	run(sim_length)
 
 	print("[test_timer] done.")
 
@@ -73,9 +73,9 @@ def test_timer(repeat=0, timer_start=3600, timer_length=1000, sim_length=86400 *
 
 
 # required stuff for timer (we try to keep this minimal)
-enigma.init_nav()
-enigma.init_record_config()
-enigma.init_parental_control()
+init_nav()
+init_record_config()
+init_parental_control()
 
 
 from events import log

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 #from Tools.Profile import profile
-from enigma import eServiceReference
 from Tools.StbHardware import getBoxProc
 from Tools.Directories import isPluginInstalled
 from os.path import isfile
@@ -10,7 +9,7 @@ from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 
 #profile("LOAD:enigma")
-import enigma
+from enigma import eServiceReference, iPlayableService, eServiceCenter
 from os import sys
 
 #profile("LOAD:InfoBarGenerics")
@@ -81,7 +80,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self.helpList.append((self["actions"], "InfobarActions", [("showRadio", _("Listen to the radio"))]))
 
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
-				enigma.iPlayableService.evUpdatedEventInfo: self.__eventInfoChanged
+				iPlayableService.evUpdatedEventInfo: self.__eventInfoChanged
 			})
 
 		self.current_begin_time = 0
@@ -159,7 +158,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 		self.servicelist.correctChannelNumber()
 
 	def restartLastMovie(self):
-		service = enigma.eServiceReference(config.usage.last_movie_played.value)
+		service = eServiceReference(config.usage.last_movie_played.value)
 		if service:
 			from os.path import exists
 			if exists(service.getPath()):
@@ -169,7 +168,7 @@ class InfoBar(InfoBarBase, InfoBarShowHide,
 
 	def showMovies(self, defaultRef=None):
 		self.lastservice = self.session.nav.getCurrentlyPlayingServiceOrGroup()
-		self.session.openWithCallback(self.movieSelected, Screens.MovieSelection.MovieSelection, defaultRef or enigma.eServiceReference(config.usage.last_movie_played.value), timeshiftEnabled=self.timeshiftEnabled())
+		self.session.openWithCallback(self.movieSelected, Screens.MovieSelection.MovieSelection, defaultRef or eServiceReference(config.usage.last_movie_played.value), timeshiftEnabled=self.timeshiftEnabled())
 
 	def movieSelected(self, service):
 		ref = self.lastservice
@@ -348,7 +347,7 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 			return
 		if answer in ("quitanddelete", "quitanddeleteconfirmed", "deleteandmovielist", "deleteandmovielistconfirmed"):
 			ref = self.session.nav.getCurrentlyPlayingServiceOrGroup()
-			serviceHandler = enigma.eServiceCenter.getInstance()
+			serviceHandler = eServiceCenter.getInstance()
 			if answer in ("quitanddelete", "deleteandmovielist"):
 				msg = ''
 				if config.usage.movielist_trashcan.value:
@@ -622,4 +621,4 @@ class MoviePlayer(InfoBarBase, InfoBarShowHide, InfoBarMenu, InfoBarSeek, InfoBa
 		AddPopup(text="%s/%s: %s" % (index, n, self.ref2HumanName(ref)), type=MessageBox.TYPE_INFO, timeout=5)
 
 	def ref2HumanName(self, ref):
-		return enigma.eServiceCenter.getInstance().info(ref).getName(ref)
+		return eServiceCenter.getInstance().info(ref).getName(ref)
