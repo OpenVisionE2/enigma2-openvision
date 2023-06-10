@@ -16,17 +16,16 @@ from Tools.LoadPixmap import LoadPixmap
 MODULE_NAME = __name__.split(".")[-1].capitalize()
 
 ovSkin = isfile(resolveFilename(SCOPE_SKINS, "OctEtFHD/skin.xml"))
-pliSkin = isfile(resolveFilename(SCOPE_SKINS, "PLi-HD/skin.xml"))
 
-if BoxInfo.getItem("HasFullHDSkinSupport") and ovSkin:
-	DEFAULT_SKIN = "OctEtFHD/skin.xml"
+if BoxInfo.getItem("HasFullHDSkinSupport"):
+	if ovSkin:
+		DEFAULT_SKIN = "OctEtFHD/skin.xml"
+	else:
+		DEFAULT_SKIN = "skin_fallback_1080/skin.xml"
 	EMERGENCY_NAME = "OctEtFHD"
 	EMERGENCY_SKIN = "skin_fallback_1080/skin.xml"
 else:
-	if pliSkin:
-		DEFAULT_SKIN = "PLi-HD/skin.xml"
-	else:
-		DEFAULT_SKIN = "skin_default/skin.xml"
+	DEFAULT_SKIN = "skin_default/skin.xml"
 	EMERGENCY_NAME = "Stone II"
 	EMERGENCY_SKIN = "skin_default/skin.xml"
 
