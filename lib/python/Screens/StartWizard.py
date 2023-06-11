@@ -187,14 +187,19 @@ if not isfile("/etc/installed"):
 	from Components.Console import Console
 	Console().ePopen("opkg list_installed | cut -d ' ' -f 1 > /etc/installed;chmod 444 /etc/installed")
 
-geolocationData = geolocation.getGeolocationData(fields="isp,org,mobile,proxy,query", useCache=False)
 wizardManager.registerWizard(AutoRestoreWizard, config.misc.firstrun.value and checkForAvailableAutoBackup(), priority=10)
+
+geolocationData = geolocation.getGeolocationData(fields="isp,org,mobile,proxy,query", useCache=False)
 if geolocationData.get("status", None) != "success":
 	wizardManager.registerWizard(LocaleWizard, config.misc.firstrun.value, priority=10)
+
 if BoxInfo.getItem("canKexec"):
 	from Screens.VuKexec import VuWizard
 	wizardManager.registerWizard(VuWizard, config.misc.firstrun.value, priority=2)
+
 wizardManager.registerWizard(TimeWizard, config.misc.firstrun.value, priority=20)
+
 if OverscanWizard:
 	wizardManager.registerWizard(OverscanWizard, config.misc.do_overscanwizard.value, priority=30)
+
 wizardManager.registerWizard(StartWizard, config.misc.firstrun.value, priority=40)

@@ -2,8 +2,12 @@
 from Screens.Screen import Screen
 from Plugins.Plugin import PluginDescriptor
 from Components.config import config, ConfigBoolean
+from Components.SystemInfo import BoxInfo
 
-config.misc.firstrun = ConfigBoolean(default=True)
+if BoxInfo.getItem("SmallFlash"):
+	config.misc.firstrun = ConfigBoolean(default=False)
+else:
+	config.misc.firstrun = ConfigBoolean(default=True)
 
 
 def NetworkWizardMain(session, **kwargs):
