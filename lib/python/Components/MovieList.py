@@ -441,7 +441,7 @@ class MovieList(GUIComponent):
 			if config.usage.load_length_of_movies_in_moviellist.value:
 				data.len = x[1].getLength(x[0]) #recalc the movie length...
 			else:
-				data.len = 0 #dont recalc movielist to speedup loading the list
+				data.len = 0 #do not recalc movielist to speedup loading the list
 			self.list[cur_idx] = (x[0], x[1], x[2], data) #update entry in list... so next time we don't need to recalc
 			if config.movielist.show_underlines.value:
 				data.txt = info.getName(serviceref)

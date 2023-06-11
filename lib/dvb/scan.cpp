@@ -1278,7 +1278,7 @@ void eDVBScan::channelDone()
 			}
 		}
 		else
-			SCAN_eDebug("[eDVBScan] dont add... is scrambled!");
+			SCAN_eDebug("[eDVBScan] do not add... is scrambled!");
 		m_pmts_to_read.erase(m_pmt_in_progress++);
 	}
 

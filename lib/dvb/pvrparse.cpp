@@ -1235,7 +1235,7 @@ void eMPEGStreamParserTS::parseData(off_t offset, const void *data, unsigned int
 			int sk = len;
 			if (sk >= m_packetsize)
 				sk = m_packetsize;
-			else if (!m_pktptr) /* we dont want this packet, otherwise m_pktptr = sk (=len) > 4 */
+			else if (!m_pktptr) /* we do not want this packet, otherwise m_pktptr = sk (=len) > 4 */
 				m_pktptr = sk - m_packetsize;
 
 			len -= sk;

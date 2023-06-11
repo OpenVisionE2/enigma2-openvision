@@ -386,7 +386,7 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 					break;
 				tmp=tmp->linked_next;
 			}
-			if (tmp) // we dont like to change tsmux for running services
+			if (tmp) // we do not like to change tsmux for running services
 			{
 				eTrace("[CI] already assigned and running CI!\n");
 				continue;
@@ -556,9 +556,9 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 
 				if (useThis)
 				{
-					if (ci_it->user_mapped)  // we dont like to link user mapped CIs
+					if (ci_it->user_mapped)  // we do not like to link user mapped CIs
 					{
-						eTrace("[CI] user mapped CI already in use... dont link!");
+						eTrace("[CI] user mapped CI already in use... do not link!");
 						continue;
 					}
 
@@ -631,9 +631,9 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 					gotPMT(pmthandler);
 				}
 
-				if (it->cislot && user_mapped) // CI assigned to this pmthandler in this run.. and user mapped? then we break here.. we dont like to link other CIs to user mapped CIs
+				if (it->cislot && user_mapped) // CI assigned to this pmthandler in this run.. and user mapped? then we break here.. we do not like to link other CIs to user mapped CIs
 				{
-					eTrace("[CI] user mapped CI assigned... dont link CIs!");
+					eTrace("[CI] user mapped CI assigned... do not link CIs!");
 					break;
 				}
 			}
@@ -1518,7 +1518,7 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 			(pmt_version == it->second) &&
 			!sendEmpty )
 		{
-			eDebug("[CI] [eDVBCISlot] dont send self capmt version twice");
+			eDebug("[CI] [eDVBCISlot] do not send self capmt version twice");
 			return -1;
 		}
 
@@ -1578,7 +1578,7 @@ int eDVBCISlot::sendCAPMT(eDVBServicePMTHandler *pmthandler, const std::vector<u
 //				eDebugNoNewLine("%02x ", raw_data[i]);
 //			eDebugNoNewLine("\n");
 
-			//dont need tag and lenfield
+			//do not need tag and lenfield
 			ca_manager->sendCAPMT(raw_data + hlen, wp - hlen);
 			running_services[program_number] = pmt_version;
 

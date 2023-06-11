@@ -236,7 +236,7 @@ class RemoteControl:
 		self.remote = self.loadRemoteControl(BoxInfo.getItem("RCMapping"))
 
 	def loadRemoteControl(self, filename):
-		print("[InputDevice] Loading remote control '%s'." % filename)
+		print("[InputDevice] Loading remote control '%s'" % filename)
 		rcs = fileReadXML(filename, source=MODULE_NAME)
 		rcButtons = {}
 		if rcs:

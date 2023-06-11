@@ -1094,7 +1094,7 @@ class RecordTimerEntry(TimerEntry, object):
 				elif cur_ref:
 					self.log(8, "Currently running service is not a live service so stopping it makes no sense.")
 				else:
-					self.log(8, "Currently no service running so we dont need to stop it.")
+					self.log(8, "Currently no service running so we do not need to stop it.")
 			return False
 
 		elif next_state == self.StateRunning:

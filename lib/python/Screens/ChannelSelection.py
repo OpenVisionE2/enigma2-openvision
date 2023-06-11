@@ -1335,7 +1335,7 @@ class ChannelSelectionEdit:
 		mutableList = self.getMutableList()
 		if ref.valid() and mutableList is not None:
 			if not mutableList.removeService(ref):
-				mutableList.flushChanges() #FIXME dont flush on each single removed service
+				mutableList.flushChanges() #FIXME do not flush on each single removed service
 				self.servicelist.removeCurrent()
 				self.servicelist.resetRoot()
 				playingref = self.session.nav.getCurrentlyPlayingServiceOrGroup()

@@ -64,7 +64,7 @@ class VolumeControl:
 		if is_muted:
 			self.volMute() # unmute
 		elif not vol:
-			self.volMute(False, True) # mute but dont show mute symbol
+			self.volMute(False, True) # mute but do not show mute symbol
 		if self.volctrl.isMuted():
 			self.volumeDialog.setValue(0)
 		else:

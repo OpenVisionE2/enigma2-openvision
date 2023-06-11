@@ -420,7 +420,7 @@ public:
 /* some words to structs like struct iServiceInformation_ENUMS
 For some classes we need in python just the SmartPointer Variants.
 So we prevent building wrapper classes for the non smart pointer classes with the SWIG_IGNORE makro.
-But now we have the problem that swig do not export enums for smart pointer classes (i dont know why).
+But now we have the problem that swig do not export enums for smart pointer classes (i do not know why).
 So we move all enum's to own classes (with _ENUMS as name ending) and let our real
 class inherit from the *_ENUMS class. This *_ENUMS classes are normally exportet via swig to python.
 But in the python code we doesn't like to write iServiceInformation_ENUMS.sVideoType....

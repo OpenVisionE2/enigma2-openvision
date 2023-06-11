@@ -1138,7 +1138,7 @@ void eDVBDB::loadBouquet(const char *path)
 
 	if(!found)
 	{
-		eDebug("[eDVBDB] can't open %s: %m", (enigma_conf + ".../" + path).c_str());
+		eDebug("[eDVBDB] can't open %s: %m", (enigma_conf + "/" + path).c_str());
 		if (!strcmp(path, "bouquets.tv"))
 		{
 			file_path = enigma_conf + path;

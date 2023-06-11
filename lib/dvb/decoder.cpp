@@ -1722,7 +1722,7 @@ RESULT eTSMPEGDecoder::showSinglePic(const char *filename)
 		}
 		else
 		{
-			eDebug("[eTSMPEGDecoder] couldnt open %s: %m", filename);
+			eDebug("[eTSMPEGDecoder] could not open %s: %m", filename);
 			return -1;
 		}
 	}

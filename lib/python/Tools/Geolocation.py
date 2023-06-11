@@ -87,7 +87,7 @@ class Geolocation:
 				geolocation = loads(response)
 			status = geolocation.get("status", "unknown/undefined")
 			if status and status == "success":
-				print("[Geolocation] Geolocation data retreived.")
+#				print("[Geolocation] Geolocation data retreived.")
 				for key in geolocation.keys():
 					self.geolocation[key] = geolocation[key]
 				return self.geolocation

@@ -219,7 +219,7 @@ static int extractPTS(pts_t &pts, unsigned char *pkt)
 
 eDVBTeletextParser::eDVBTeletextParser(iDVBDemux *demux) : m_pid(-1)
 {
-	eDebug("[eDVBTeletextParser] Starting!");
+	eTrace("[eDVBTeletextParser] Starting!");
 	setStreamID(0xBD); /* as per en 300 472 */
 
 	setPageAndMagazine(-1, -1, "und");

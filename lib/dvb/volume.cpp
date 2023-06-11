@@ -56,7 +56,7 @@ eDVBVolumecontrol::eDVBVolumecontrol()
 	openMixer();
 #endif
 	volumeUnMute();
-// dont reset volume on start
+// do not reset volume on start
 //	setVolume(100, 100);
 }
 

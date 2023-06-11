@@ -916,12 +916,12 @@ void eDVBSubtitleParser::subtitle_redraw(int page_id)
 					if (clut)
 						entries = clut->entries_2bit;
 					memset(static_cast<void*>(palette), 0, 4 * sizeof(gRGB));
-					// this table is tested on cyfra .. but in EN300743 the table palette[2] and palette[1] is swapped.. i dont understand this ;)
+					// this table is tested on cyfra .. but in EN300743 the table palette[2] and palette[1] is swapped.. i do not understand this ;)
 					palette[0].a = 0xFF;
 					palette[2].r = palette[2].g = palette[2].b = 0xFF;
 					palette[3].r = palette[3].g = palette[3].b = 0x80;
 					break;
-				case subtitle_region::bpp4: // tested on cyfra... but the map is another in EN300743... dont understand this...
+				case subtitle_region::bpp4: // tested on cyfra... but the map is another in EN300743... do not understand this...
 					if (clut)
 						entries = clut->entries_4bit;
 					memset(static_cast<void*>(palette), 0, 16*sizeof(gRGB));

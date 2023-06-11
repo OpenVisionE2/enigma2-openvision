@@ -198,7 +198,7 @@ class LocationBox(Screen, NumericalTextInput, HelpableScreen):
 			self.updateTarget()
 
 	def switchToBookList(self):
-		if self.bookmarksList:  # Dont jump to bookmarks panel if there are no bookmarks.
+		if self.bookmarksList:  # Do not jump to bookmarks panel if there are no bookmarks.
 			self.currList = "booklist"
 			self["filelist"].selectionEnabled(False)
 			self["booklist"].selectionEnabled(True)

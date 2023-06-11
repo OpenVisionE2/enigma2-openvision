@@ -355,7 +355,7 @@ public:
 	{
 		dxNoSDT=1,                 // don't fetch SDT
 		dxDontshow=2,              // don't show service in all services list
-		dxNoDVB=4,                 // dont use PMT for this service ( use cached pids )
+		dxNoDVB=4,                 // don't use PMT for this service ( use cached pids )
 		dxHoldName=8,              // don't change service name if label differs in the SDT
 		dxNewFound=64,             // show in last scanned bouquet ( until next restart )
 		dxIsDedicated3D=128,       // 3D channel

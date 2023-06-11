@@ -107,7 +107,7 @@ int eConsoleAppContainer::execute(const char *cmdline, const char * const argv[]
 	if (running())
 		return -1;
 
-	eDebug("[eConsoleAppContainer] Starting %s", cmdline);
+	eTrace("[eConsoleAppContainer] Starting %s", cmdline);
 	pid=-1;
 	killstate=0;
 

@@ -383,7 +383,7 @@ int main(int argc, char **argv)
 		spinnerPostionX = spinnerPostionY = 100;
 	}
 
-	eDebug("[Enigma] Loading spinners.");
+	eTrace("[Enigma] Loading spinners.");
 	{
 #define MAX_SPINNER 64
 		int i = 0;

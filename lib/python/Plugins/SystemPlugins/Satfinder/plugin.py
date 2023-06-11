@@ -658,7 +658,7 @@ class SatfinderExtra(Satfinder):
 		if from_retune: # give the tuner a chance to retune or we will be reading the old stream
 			time.sleep(1.0)
 
-		if not self.waitTunerLock(currentProcess): # dont even try to read the transport stream if tuner is not locked
+		if not self.waitTunerLock(currentProcess): # do not even try to read the transport stream if tuner is not locked
 			return
 
 		thread.start_new_thread(self.monitorTunerLock, (currentProcess,)) # if tuner loses lock we start again from scratch

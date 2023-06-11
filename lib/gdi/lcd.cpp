@@ -46,7 +46,7 @@ void eLCD::setSize(int xres, int yres, int bpp)
 #endif
 	res = eSize(xres, yres);
 	memset(_buffer, 0, xres * yres * bpp / 8);
-	eDebug("[eLCD] (%dx%dx%d) buffer %p %d bytes, stride %d", xres, yres, bpp, _buffer, xres * yres * bpp / 8, _stride);
+	eTrace("[eLCD] (%dx%dx%d) buffer %p %d bytes, stride %d", xres, yres, bpp, _buffer, xres * yres * bpp / 8, _stride);
 }
 
 eLCD::~eLCD()
@@ -985,7 +985,7 @@ void eLCD::renderText(ePoint start, const char *text)
 		if (::write(lcdfd, message.c_str(), message.size()) == -1)
 #endif
 		{
-			eDebug("[eLCD] renderText %s failed (%m)", text);
+			eTrace("[eLCD] renderText %s failed (%m)", text);
 		}
 	}
 }
@@ -1006,7 +1006,7 @@ eDBoxLCD::eDBoxLCD()
 	else
 		m_oled_brightness_proc = 0;
 
-	eDebug("[eLCD] m_oled_brightness_proc = %d", m_oled_brightness_proc);
+	eTrace("[eLCD] m_oled_brightness_proc = %d", m_oled_brightness_proc);
 
 	lcdfd = open("/dev/dbox/oled0", O_RDWR);
 

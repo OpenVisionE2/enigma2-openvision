@@ -627,7 +627,7 @@ RESULT eAMLTSMPEGDecoder::showSinglePic(const char *filename)
 		}
 		else
 		{
-			eDebug("[eAMLTSMPEGDecoder::showSinglePic] couldnt open %s: %m", filename);
+			eDebug("[eAMLTSMPEGDecoder::showSinglePic] could not open %s: %m", filename);
 			return -1;
 		}
 	}

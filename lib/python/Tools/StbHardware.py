@@ -83,8 +83,8 @@ def getFPVersion():
 		try:
 			with open("/dev/dbox/fp0") as fd:
 				version = ioctl(fd.fileno(), 0)
-		except (IOError, OSError) as err:
-			print("[StbHardware] Error %d: Unable to access '/dev/dbox/fp0', getFPVersion failed!  (%s)" % (err.errno, err.strerror))
+		except:
+			pass
 	return version
 
 

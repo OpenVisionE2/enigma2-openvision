@@ -564,7 +564,7 @@ void eDVBLocalTimeHandler::updateTime( time_t tp_time, eDVBChannel *chan, int up
 				eDebug("[eDVBLocalTimerHandler] we have correction (%d)... use", it->second );
 			}
 			else
-				eDebug("[eDVBLocalTimerHandler] dont have correction.. set Transponder Diff");
+				eDebug("[eDVBLocalTimerHandler] do not have correction.. set Transponder Diff");
 			new_diff=enigma_diff;
 			m_time_ready=true;
 		}

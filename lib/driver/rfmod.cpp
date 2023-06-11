@@ -24,7 +24,7 @@ eRFmod::eRFmod()
 
 	fd = open("/dev/rfmod0", O_RDWR);
 	if (fd < 0)
-		eDebug("[eRFmod] couldnt open /dev/rfmod0: %m");
+		eDebug("[eRFmod] could not open /dev/rfmod0: %m");
 }
 
 eRFmod::~eRFmod()

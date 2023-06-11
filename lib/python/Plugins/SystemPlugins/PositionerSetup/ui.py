@@ -155,7 +155,7 @@ class PositionerSetup(Screen):
 				self.messageTimer.start(2000, True)
 		self.frontendStatus = {}
 		self.diseqc = Diseqc(self.frontend)
-		# True means we dont like that the normal sec stuff sends commands to the rotor!
+		# True means we do not like that the normal sec stuff sends commands to the rotor!
 		self.tuner = Tuner(self.frontend, ignore_rotor=True)
 
 		tp = (cur.get("frequency", 0) / 1000,
