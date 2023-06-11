@@ -77,6 +77,7 @@ EXTRA_OECONF = "\
 	${@bb.utils.contains("MACHINE_FEATURES", "olde2api", "--with-olde2api" , "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "fcc", "--with-fcc" , "", d)} \
 	--with-arch=${TARGET_ARCH} \
+	${@bb.utils.contains("MACHINE_FEATURES", "nofhdskin", "", "--with-fhdskin", d)} \
 	"
 
 do_install_append() {
