@@ -11,18 +11,11 @@ self.selectKey("OK")
 			<list>
 				<listentry caption="Use the wizard to set up basic features" step="network"/>
 				<listentry caption="Exit the wizard" step="end"/>
-				<listentry caption="Speed up the performance" step="pespeedup" />
 			</list>
 			<code>
 self.clearSelectedKeys()
 self.selectKey("UP")
 self.selectKey("DOWN")
-			</code>
-		</step>
-		<step id="pespeedup">
-			<code>
-from Plugins.Extensions.PESpeedUp.plugin import *
-self.session.open(PESpeedUp)
 			</code>
 		</step>
 		<step id="network" >
