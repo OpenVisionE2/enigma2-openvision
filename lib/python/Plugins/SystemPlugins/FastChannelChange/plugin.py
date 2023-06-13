@@ -7,11 +7,10 @@ from Components.ConfigList import ConfigListScreen
 from Components.Sources.StaticText import StaticText
 from Components.ServiceEventTracker import ServiceEventTracker
 from Components.SystemInfo import BoxInfo
-from enigma import iPlayableService, eTimer, eServiceReference, iRecordableService
-import glob
-from enigma import eFCCServiceManager
+from enigma import iPlayableService, eTimer, eServiceReference, iRecordableService, eFCCServiceManager
+from glob import glob
 
-g_max_fcc = len(glob.glob('/dev/fcc?'))
+g_max_fcc = len(glob('/dev/fcc?'))
 g_default_fcc = (g_max_fcc) > 5 and 5 or g_max_fcc
 
 config.plugins.fccsetup = ConfigSubsection()
@@ -456,7 +455,7 @@ class FCCSetup(Screen, ConfigListScreen):
 		self.list = []
 		ConfigListScreen.__init__(self, self.list, session=self.session, fullUI=True)
 
-		self.isSupport = BoxInfo.getItem("platform") == "vu4kgen"
+		self.isSupport = BoxInfo.getItem("FbcTunerPowerAlwaysOn")
 
 		if self.isSupport:
 			self["description"] = StaticText("")

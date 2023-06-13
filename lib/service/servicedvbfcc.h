@@ -30,7 +30,7 @@ protected:
 
 	enum {
 		fcc_start		= 1,
-		fcc_tune_failed	= 2,
+		fcc_tune_failed		= 2,
 		fcc_failed		= 4,
 		fcc_ready		= 8,
 		fcc_decoding		= 16,
