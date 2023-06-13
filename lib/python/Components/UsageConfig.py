@@ -1065,21 +1065,33 @@ def InitUsageConfig():
 		config.usage.time.display.value = config.usage.time.display.default
 
 	if BoxInfo.getItem("Fan"):
-		choicelist = [
-			("off", _("Off")),
-			("on", _("On")),
-			("auto", _("Auto"))
-		]
+		if model == "azboxhd":
+			choicelist = [
+				("998", _("On")),
+				("0", _("Off")),
+				("1", _("Off in Standby")),
+				("2", _("Cycle (5 Min ON ~ 5 Min Off)"))
+			]
+		else:
+			choicelist = [
+				("off", _("Off")),
+				("on", _("On")),
+				("auto", _("Auto"))
+			]
 		if isfile("/proc/stb/fp/fan_choices"):
 			print("[UsageConfig] Read /proc/stb/fp/fan_choices")
 			choicelist = [x for x in choicelist if x[0] in open("/proc/stb/fp/fan_choices", "r").read().strip().split(" ")]
 		config.usage.fan = ConfigSelection(choicelist)
 
 		def fanChanged(configElement):
+			if model == "azboxhd":
+				fanproc = "/proc/fan"
+			else:
+				fanproc = "/proc/stb/fp/fan"
 			try:
-				open("/proc/stb/fp/fan", "w").write(configElement.value)
+				open(fanproc, "w").write(configElement.value)
 			except:
-				print("[UsageConfig] Write to /proc/stb/fp/fan failed!")
+				print("[UsageConfig] Write to %s failed!" % fanproc)
 		config.usage.fan.addNotifier(fanChanged)
 
 	if BoxInfo.getItem("FanPWM"):
@@ -1414,6 +1426,26 @@ def InitUsageConfig():
 			("holdtilllock", _("Hold till locked"))
 		])
 		config.misc.zapmode.addNotifier(setZapmode, immediate_feedback=False)
+
+	if BoxInfo.getItem("CRClockVoltage"):
+		def CRClock(configElement):
+			try:
+				open("/proc/sc_clock", "w").write(str(configElement.value))
+			except:
+				print("[UsageConfig] Write to /proc/sc_clock failed!")
+		config.ci.crclock = ConfigSlider(default=357, increment=1, limits=(300, 1600))
+		config.ci.crclock.addNotifier(CRClock)
+
+		def CRVoltage(configElement):
+			try:
+				open("/proc/sc_35v", "w").write(str(configElement.value))
+			except:
+				print("[UsageConfig] Write to /proc/sc_35v failed!")
+		config.ci.crvoltage = ConfigSelection(default="0", choices=[
+			("0", _("5V")),
+			("1", _("3.3V"))
+		])
+		config.ci.crvoltage.addNotifier(CRVoltage)
 
 	config.subtitles = ConfigSubsection()
 	config.subtitles.show = ConfigYesNo(default=True)

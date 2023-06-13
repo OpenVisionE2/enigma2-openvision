@@ -3084,9 +3084,15 @@ class InfoBarAudioSelection:
 
 class InfoBarSubserviceSelection:
 	def __init__(self):
-		self["SubserviceSelectionAction"] = HelpableActionMap(self, ["InfobarSubserviceSelectionActions"], {
-			"subserviceSelection": (self.subserviceSelection, _("Subservice list")),
-		}, prio=0, description=_("Sub Service Actions"))
+		if model == "azboxhd":
+			self["SubserviceSelectionAction"] = HelpableActionMap(self, ["InfobarSubserviceSelectionActions"], {
+				"subserviceSelection": (self.subserviceSelection, _("Subservice list")),
+				"failsafe": (self.failsafe, _("Fail-Safe")),
+			}, prio=0, description=_("Sub Service Actions"))
+		else:
+			self["SubserviceSelectionAction"] = HelpableActionMap(self, ["InfobarSubserviceSelectionActions"], {
+				"subserviceSelection": (self.subserviceSelection, _("Subservice list")),
+			}, prio=0, description=_("Sub Service Actions"))
 		self["SubserviceQuickzapAction"] = HelpableActionMap(self, ["InfobarSubserviceQuickzapActions"], {
 			"exit": self.keyHide,
 			"nextSubservice": (self.nextSubservice, _("Switch to next sub service")),
@@ -3100,6 +3106,13 @@ class InfoBarSubserviceSelection:
 		self.onClose.append(self.__removeNotifications)
 
 		self.bouquets = self.bsel = self.selectedSubservice = None
+
+	if model == "azboxhd":
+		def failsafe(self):
+			try:
+				open("/proc/failsafe", "w").write("0")
+			except:
+				print("[InfoBarGenerics] Write to /proc/failsafe failed!")
 
 	def __removeNotifications(self):
 		self.session.nav.event.remove(self.checkSubservicesAvail)

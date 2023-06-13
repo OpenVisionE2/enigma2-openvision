@@ -1191,7 +1191,9 @@ RESULT eDVBResourceManager::allocateDemux(eDVBRegisteredFrontend *fe, ePtr<eDVBA
 	int fesource = fe ? fe->m_frontend->getDVBID() : -1;
 	ePtr<eDVBRegisteredDemux> unused;
 	uint8_t d, a;
-
+#ifdef AZBOX
+	int n = 0;
+#endif
 #ifdef HAVE_AMLOGIC
 	// find first unused demux which is on same adapter as frontend
 	while (i != m_demux.end())
@@ -1240,9 +1242,24 @@ RESULT eDVBResourceManager::allocateDemux(eDVBRegisteredFrontend *fe, ePtr<eDVBA
 		{
 			if (!i->m_inuse)
 			{
+#ifdef AZBOX
+					if (use_decode_demux)
+					{
+						if (fesource >= 0 && n == fesource)
+							if (!unused)
+								unused = i;
+					}
+					else
+					{
+						// mark the first unused demux and use that when no better match is found
+						if (!unused)
+							unused = i;
+					}
+#else
 				// mark the first unused demux and use that when no better match is found
 				if (!unused)
 					unused = i;
+#endif
 			}
 			else
 			{
@@ -1260,6 +1277,9 @@ RESULT eDVBResourceManager::allocateDemux(eDVBRegisteredFrontend *fe, ePtr<eDVBA
 		if (use_decode_demux)
 		{
 			++i;
+#ifdef AZBOX
+			++n;
+#endif
 		}
 		else
 		{

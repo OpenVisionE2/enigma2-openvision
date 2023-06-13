@@ -87,6 +87,11 @@ class VideoSetup(ConfigListScreen, Screen):
 		elif config.av.aspect.value == "4_3":
 			self.list.append(getConfigListEntry(_("Display 16:9 content as"), config.av.policy_169, _("When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture.")))
 
+		if BoxInfo.getItem("brand") == "azbox":
+			self.list.append(getConfigListEntry(_("Scan mode"), config.av.az_scanmode, _("The set property allows an application to force the decoder to mark the pictures in a certain way, including forcing progressive, and forcing interlaced bottom first or top first.")))
+			self.list.append(getConfigListEntry(_("Interlaced algorithm"), config.av.az_interlaced, _("The set property allows an application to force a preferred interlace or progressive algorithm in case of unsure output format (usually stream).")))
+			self.list.append(getConfigListEntry(_("Deinterlacing mode"), config.av.az_deinterlacingmode, _("The set property allows an application to select the scaler's deinterlacing mode. Deinterlacing is used only when the scaler's input pictures are interlaced. If the scaler is set to deinterlacing but the input is progressive, then the scaler will not use any deinterlacing.")))
+
 		if config.av.videoport.value == "DVI":
 			if level >= 1:
 				self.list.append(getConfigListEntry(_("Allow unsupported modes"), config.av.edid_override, _("When selected this allows video modes to be selected even if they are not reported as supported.")))

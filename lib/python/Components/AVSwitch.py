@@ -340,6 +340,48 @@ def InitAVSwitch():
 	else:
 		config.av.amlhlg_support = ConfigNothing()
 
+	if brand == "azbox":
+		def setAZScanMode(configElement):
+			try:
+				open("/proc/input_scan_mode", "w").write(str(configElement.value))
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /proc/input_scan_mode failed!")
+		config.av.az_scanmode = ConfigSelection(choices={
+			"1": _("Source"),
+			"2": _("Progressive"),
+			"3": _("Interlaced top field first"),
+			"4": _("Interlaced bottom field first")
+		}, default="1")
+		config.av.az_scanmode.addNotifier(setAZScanMode)
+
+		def setAZInterlacedAlgo(configElement):
+			try:
+				open("/proc/interlaced_algo", "w").write(str(configElement.value))
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /proc/interlaced_algo failed!")
+		config.av.az_interlaced = ConfigSelection(choices={
+			"1": _("Decoder"),
+			"2": _("MPEG2 progressive (Sequence)"),
+			"3": _("MPEG2 progressive (Menu)")
+		}, default="1")
+		config.av.az_interlaced.addNotifier(setAZInterlacedAlgo)
+
+		def setAZDeinterlacingMode(configElement):
+			try:
+				open("/proc/deinterlace_mode", "w").write(str(configElement.value))
+			except (IOError, OSError):
+				print("[AVSwitch] Write to /proc/deinterlace_mode failed!")
+		config.av.az_deinterlacingmode = ConfigSelection(choices={
+			"1": _("Discard Bob"),
+			"2": _("Weave"),
+			"3": _("Constant Blend")
+		}, default="1")
+		config.av.az_deinterlacingmode.addNotifier(setAZDeinterlacingMode)
+	else:
+		config.av.az_scanmode = ConfigNothing()
+		config.av.az_interlaced = ConfigNothing()
+		config.av.az_deinterlacingmode = ConfigNothing()
+
 	HasHdrType = BoxInfo.getItem("HasHdrType")
 	if HasHdrType:
 		def setHdmiHdrType(configElement):
