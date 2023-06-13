@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 18:19+0330\n"
+"POT-Creation-Date: 2023-06-13 23:35+0330\n"
 "PO-Revision-Date: 2021-10-16 21:21+0200\n"
 "Last-Translator: Luis A. Martínez <luis.a.martinez@gmail.com>\n"
 "Language-Team: LAMS\n"
@@ -264,14 +264,6 @@ msgid "%-m/%d/%Y"
 msgstr ""
 
 #, fuzzy, python-format
-msgid "%.0f GB"
-msgstr "%.2f GB"
-
-#, python-format
-msgid "%.0f MB"
-msgstr ""
-
-#, fuzzy, python-format
 msgid "%.1f?? E"
 msgstr "%.1f° L"
 
@@ -286,10 +278,6 @@ msgstr "%.1f° L"
 #, python-format
 msgid "%.1f° W"
 msgstr "%.1f° O"
-
-#, python-format
-msgid "%.2f GB"
-msgstr "%.2f GB"
 
 #, python-format
 msgid "%.3f MHz"
@@ -1313,12 +1301,24 @@ msgstr ""
 #, python-format
 msgid ""
 "%s\n"
+"Failed to download %s/%s from %s"
+msgstr ""
+
+#, python-format
+msgid ""
+"%s\n"
 "Press ok for multiboot selection\n"
 "Press exit to close"
 msgstr ""
 "%s\n"
 "Preme ok para ir á selección de arranque múltiple\n"
 "Preme saír para pechar"
+
+#, python-format
+msgid ""
+"%s\n"
+"Read failled %s/%s from %s"
+msgstr ""
 
 #, python-format
 msgid "%s  (%s)"
@@ -1751,6 +1751,9 @@ msgstr "2"
 msgid "3"
 msgstr "3"
 
+msgid "3.3V"
+msgstr ""
+
 msgid "30"
 msgstr "30"
 
@@ -1857,6 +1860,11 @@ msgid "55, 2, 1000, 45"
 msgstr ""
 
 #
+#, fuzzy
+msgid "5V"
+msgstr "5"
+
+#
 msgid "6"
 msgstr "6"
 
@@ -1943,6 +1951,9 @@ msgstr "<Localización actual da lista de películas>"
 #
 msgid "<Default movie location>"
 msgstr "<Localización por defecto das películas>"
+
+msgid "<Flash expander inactive>"
+msgstr ""
 
 #
 msgid "<Last timer location>"
@@ -2192,6 +2203,10 @@ msgstr "O receptor non ten conexión a Internet"
 msgid "Access to the %s commit logs requires an internet connection."
 msgstr "O receptor non ten conexión a Internet"
 
+#, fuzzy
+msgid "Activate Expander"
+msgstr "Activar o final do timeshift"
+
 msgid "Activate HbbTV (Redbutton)"
 msgstr "Activar HbbTV (botón vermello)"
 
@@ -2219,6 +2234,9 @@ msgstr "Activar a configuración de rede"
 #
 msgid "Activate the configured network settings."
 msgstr "Activar a configuración de rede establecida."
+
+msgid "Activate the flash expander, save all changed settings and exit"
+msgstr ""
 
 msgid "Activate timeshift End"
 msgstr "Activar o final do timeshift"
@@ -2269,7 +2287,7 @@ msgstr "Engadir temporizador"
 msgid "Add USB slots"
 msgstr "Todas as rañuras"
 
-msgid "Add USB slots (require receiver Vu+ 4k)"
+msgid "Add USB slots (Vu+)"
 msgstr ""
 
 #
@@ -2566,6 +2584,9 @@ msgstr "Permitir 10bit"
 msgid "Allow 12bit"
 msgstr "Permitir 12bit"
 
+msgid "Allow forcing the frames per second."
+msgstr ""
+
 msgid "Allow quitting movie player with exit"
 msgstr "Permite saír do movieplayer con Exit"
 
@@ -2582,6 +2603,9 @@ msgid "Allows the TV remote to be used to control the receiver."
 msgstr "Permite usar o mando do TV para controlar o receptor."
 
 msgid "Allows you to assign the selected function to this button."
+msgstr ""
+
+msgid "Allows you to enable the GStreamer pipeline graphs. These are .dot files that describe the topology of your pipeline, along with the caps negotiated in each link."
 msgstr ""
 
 msgid "Allows you to enable/disable displaying icons on the front panel."
@@ -3046,7 +3070,6 @@ msgid "Authoring mode"
 msgstr "Modo de autoría"
 
 #
-#. TRANSLATORS: (aspect ratio policy: automatically select the best aspect ratio mode)
 msgid "Auto"
 msgstr "Auto"
 
@@ -3102,6 +3125,16 @@ msgstr "Reproducir automaticamente a euroconector"
 #, fuzzy
 msgid "Auto standby"
 msgstr "Sen repouso"
+
+#
+#, fuzzy
+msgid "Auto video mode selected"
+msgstr "Selección de modo de vídeo."
+
+#
+#, fuzzy
+msgid "Auto video mode selected for the TV."
+msgstr "Selección de modo de vídeo."
 
 #
 #, fuzzy
@@ -3224,15 +3257,6 @@ msgid "BER:"
 msgstr "BER:"
 
 msgid "BLUE button"
-msgstr ""
-
-msgid "BT 2020 CL"
-msgstr ""
-
-msgid "BT 2020 NCL"
-msgstr ""
-
-msgid "BT 709"
 msgstr ""
 
 msgid "BT2020 CL"
@@ -3545,6 +3569,16 @@ msgstr "Brillo"
 msgid "Brightness (Dimmed)"
 msgstr "Brillo"
 
+#
+#, fuzzy
+msgid "Brightness Video"
+msgstr "Brillo"
+
+#
+#, fuzzy
+msgid "Brightness Video & OSD"
+msgstr "Brillo"
+
 msgid "British Indian Ocean Territory"
 msgstr "Territorio Británico de Ultramar"
 
@@ -3628,6 +3662,12 @@ msgid "By default, SNR will be shown in dB (when supported by the tuner). This s
 msgstr "De forma predeterminada, SNR amósase en dB (cando o sintonizador é compatible). En cambio, este parámetro forza ao SNR a aparecer coma unha porcentaxe."
 
 msgid "By description, then by name"
+msgstr ""
+
+msgid "By disk UUID"
+msgstr ""
+
+msgid "By disk label"
 msgstr ""
 
 msgid "By duration, then by name"
@@ -3925,6 +3965,7 @@ msgstr "Non se pode determinar"
 msgid "Cannot find any signal ..., aborting !"
 msgstr "Non se pode atopar ningún sinal, abortando!"
 
+#, fuzzy
 msgid "Cannot find images - please try later"
 msgstr "Non se poden atopar imaxes, inténtao máis tarde"
 
@@ -3954,6 +3995,14 @@ msgstr "Cabo Verde"
 #
 msgid "Card"
 msgstr "Tarxeta"
+
+msgid "Card Reader Clock (MHz)"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Card Reader Voltage"
+msgstr "Voltaxe incrementada"
 
 msgid "Card infos (CCcam-Reader)"
 msgstr ""
@@ -3998,6 +4047,9 @@ msgstr ""
 #, fuzzy
 msgid "Change AC3 audio track"
 msgstr "Seleccionar pista de son"
+
+msgid "Change Language"
+msgstr "Cambiar idioma"
 
 msgid "Change PIN Pressing [OK]"
 msgstr ""
@@ -4059,12 +4111,6 @@ msgstr "Selección de canle"
 #
 msgid "Channel context menu"
 msgstr "Menú contextual da canle"
-
-msgid "Channel list is clean no characters to purge."
-msgstr ""
-
-msgid "Channel list was successfully purged."
-msgstr ""
 
 #, fuzzy
 msgid "Channel name"
@@ -4260,6 +4306,9 @@ msgstr ""
 msgid "Choose the order in which items are displayed in Help windows"
 msgstr ""
 
+msgid "Choose the target location for the expanded '/usr' directory."
+msgstr ""
+
 #, fuzzy
 msgid "Choose whether AAC sound tracks should be transcoded."
 msgstr "Configurar se as pistas de son multicanle deben mesturarse a estéreo."
@@ -4357,17 +4406,13 @@ msgstr ""
 msgid "Client Mode"
 msgstr "Modo de usuario"
 
+#
 #, fuzzy
-msgid "Client Tuner Configuration"
-msgstr "Configuración do sintonizador"
+msgid "Client Mode Tuner Settings"
+msgstr "Configuración da colección"
 
 msgid "Client is streaming from this box!"
 msgstr "O cliente está a transmitir desde este dispositivo!"
-
-#
-#, fuzzy
-msgid "Client mode"
-msgstr "módulo de inicio"
 
 msgid ""
 "Client mode sets up this receiver to stream from another receiver. In this mode no local tuners will be available and channel lists, EPG, etc, will come from the remote receiver. All tuner settings will be cleared.\n"
@@ -4443,8 +4488,13 @@ msgid "Color"
 msgstr "Cor"
 
 #
-msgid "Color format"
+#, fuzzy
+msgid "Color Bottom"
 msgstr "Formato de cor"
+
+#, fuzzy
+msgid "Color Top"
+msgstr "Cor"
 
 msgid "Combined"
 msgstr "Combinado"
@@ -4606,6 +4656,9 @@ msgstr "Configurar durante canto tempo se mantén visible a barra de informació
 msgid "Configure for how many minutes finished events should remain visible in the EPG. Useful when you need information about an event which has just finished, or has been delayed."
 msgstr "Configurar durante cantos minutos os eventos terminados se manteñen visibles na EPG. Útil cando precisas información sobre un evento que acaba de terminar o se atrasou."
 
+msgid "Configure front LED color during normal operations."
+msgstr ""
+
 msgid "Configure front LED color during recording in standby."
 msgstr ""
 
@@ -4709,6 +4762,14 @@ msgstr "Configurar o nivel de brillo da pantalla do panel frontal."
 msgid "Configure the brightness level of the front panel display."
 msgstr "Configurar o nivel de brillo da pantalla do panel frontal."
 
+#, fuzzy
+msgid "Configure the card reader clock in MHz"
+msgstr "Configurar a latitude da súa localización."
+
+#, fuzzy
+msgid "Configure the card reader voltage"
+msgstr "Configurar o terceiro idioma de son."
+
 msgid "Configure the color of the external subtitles, alternative (normal in white, italic in yellow, bold in cyan, underscore in green), white or yellow."
 msgstr "Configurar a cor dos subtítulos externos, alternativo (normal en branco, cursiva en amarelo, grosa en ciano, subliñado en verde), branco ou amarelo."
 
@@ -4717,6 +4778,11 @@ msgstr "Configurar a cor dos subtítulos de teletexto."
 
 msgid "Configure the contrast level of the front panel display."
 msgstr "Configurar o nivel de contraste da pantalla do panel frontal."
+
+#
+#, fuzzy
+msgid "Configure the current key map file."
+msgstr "Configurar o modo do sintonizador."
 
 msgid "Configure the cursor behaviour in the channel selection list. When opening the channel selection list you can keep on the current service or already select up/down and you are able to revert the B+/B- buttons."
 msgstr "Configurar o comportamento do cursor na lista de selección de canles. Ao abrir a lista de selección de canles, podes mantener o servizo actual ou seleccionar arriba/abaixo e poderás reverter os botóns B+/B-."
@@ -5040,6 +5106,11 @@ msgstr ""
 msgid "Console"
 msgstr "Consola"
 
+#
+#, fuzzy
+msgid "Constant Blend"
+msgstr "Gravación instantánea"
+
 msgid "Constellation & FFT mode"
 msgstr "Modo Constelación & FFT"
 
@@ -5090,6 +5161,14 @@ msgstr "Continuar"
 msgid "Contrast"
 msgstr "Contraste"
 
+#
+#, fuzzy
+msgid "Contrast Video"
+msgstr "Contraste"
+
+msgid "Contrast Video & OSD"
+msgstr ""
+
 msgid "Control LED can be turned on or off here."
 msgstr ""
 
@@ -5101,6 +5180,9 @@ msgid "Controlled by HDMI"
 msgstr "controlado por HDMI"
 
 msgid "Convert to AC3"
+msgstr ""
+
+msgid "Convert to AC3+"
 msgstr ""
 
 msgid "Convert to DTS"
@@ -5126,6 +5208,9 @@ msgstr "Nomes largos de ficheiro"
 
 #, python-format
 msgid "Copyright %s 2018-%s Team OpenVision"
+msgstr ""
+
+msgid "Core dumps are helpful for developers in case of a FATAL SIGNAL crash in the C++ code. Typical core dump size is 110 MB so adjust maximum space used and choose proper location."
 msgstr ""
 
 #
@@ -5204,11 +5289,25 @@ msgid "Create DVD-ISO"
 msgstr "Crear DVD-ISO"
 
 #
+#, fuzzy
+msgid "Create Expander"
+msgstr "Crear directorio"
+
+#
 msgid "Create directory"
 msgstr "Crear directorio"
 
 msgid "Create separate radio userbouquet"
 msgstr "Crea un buqué independente de radio"
+
+msgid "Create the flash expander in the selected device"
+msgstr ""
+
+#, fuzzy
+msgid "Creating eMMC slots in progress."
+msgstr ""
+"\n"
+"Gravación en progreso."
 
 #
 msgid "Creating filesystem"
@@ -5343,6 +5442,9 @@ msgstr "Editor de corte"
 #
 msgid "Cutlist editor..."
 msgstr "Editor de corte…"
+
+msgid "Cycle (5 Min ON ~ 5 Min Off)"
+msgstr ""
 
 msgid "Cyprus"
 msgstr "Chipre"
@@ -5670,6 +5772,12 @@ msgstr ""
 msgid "Dayname Year/MM/DD"
 msgstr ""
 
+msgid "Deactivate Expander"
+msgstr ""
+
+msgid "Deactivate the flash expander in the selected device"
+msgstr ""
+
 msgid "Debug"
 msgstr ""
 
@@ -5687,6 +5795,10 @@ msgstr ""
 msgid "Debug logging *"
 msgstr ""
 
+#, fuzzy
+msgid "Decoder"
+msgstr "Descodificador activo"
+
 #
 #, fuzzy
 msgid "Deep Standby"
@@ -5699,6 +5811,9 @@ msgstr "Repouso profundo"
 #
 msgid "Default"
 msgstr "Por defecto"
+
+msgid "Default (keymap.xml)"
+msgstr ""
 
 msgid "Default Services Scanner"
 msgstr "Escáner predeterminado de servizos"
@@ -5720,6 +5835,15 @@ msgid "Default timer type"
 msgstr "Tipo de temporizador predeterminado"
 
 #
+#, fuzzy
+msgid "Default video mode selected"
+msgstr "Selección de modo de vídeo."
+
+#, fuzzy
+msgid "Default video mode selected for the TV."
+msgstr "Selecciona a fonte de vídeo que se amosa no LCD."
+
+#
 msgid "Default+Picon"
 msgstr "Predeterminado+Picon"
 
@@ -5734,6 +5858,11 @@ msgstr "Retardo, en milisegundos, ao inicio do desprazamento de texto na pantall
 
 msgid "Defined / Active"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Deinterlacing mode"
+msgstr "Modo de liña única"
 
 msgid "Delay after change voltage before switch command"
 msgstr "Retardo entre o cambio de voltaxe e o cambio de comando"
@@ -5822,6 +5951,10 @@ msgstr "Configuración do temporizador de repouso"
 msgid "Delete EPG Cache"
 msgstr "Borrar imaxe"
 
+#, fuzzy
+msgid "Delete Expander"
+msgstr "Borrar imaxe"
+
 msgid "Delete Image"
 msgstr "Borrar imaxe"
 
@@ -5902,10 +6035,6 @@ msgstr "Borrar imaxe"
 msgid "Delete logfile"
 msgstr "Borrar ficheiro"
 
-#, python-format
-msgid "Delete or rename folder \"vuplus\" in path '%s' before initializing."
-msgstr ""
-
 #
 msgid "Delete playlist entry"
 msgstr "Borrar entrada na lista de reprodución"
@@ -5928,6 +6057,9 @@ msgstr "Eliminar o carácter debaixo do cursor de texto"
 #, fuzzy
 msgid "Delete the currently displayed log file"
 msgstr "Eliminar o título seleccionado"
+
+msgid "Delete the flash expander in the selected device"
+msgstr ""
 
 #, fuzzy
 msgid "Delete this tag"
@@ -6009,6 +6141,9 @@ msgstr "Destino do receptor de reserva remoto para DVB-T"
 #, fuzzy
 msgid "Destination of fallback remote receiver."
 msgstr "Destino do receptor de reserva remoto"
+
+msgid "Detail of GStreamer log"
+msgstr ""
 
 msgid "Detailed debug logs"
 msgstr ""
@@ -6104,7 +6239,7 @@ msgstr "Borrar contorno dixital"
 msgid "Dim delay"
 msgstr "Sen atraso"
 
-msgid "Dim the LCD after specified time."
+msgid "Dim the front panel after specified time."
 msgstr ""
 
 #
@@ -6121,6 +6256,16 @@ msgstr "Directorio"
 #
 #, python-format
 msgid "Directory %s does not exist."
+msgstr "O directorio %s non existe."
+
+#
+#, fuzzy, python-format
+msgid "Directory '%s' does not exist!"
+msgstr "O directorio %s non existe."
+
+#
+#, fuzzy, python-format
+msgid "Directory '%s' not writable!"
 msgstr "O directorio %s non existe."
 
 #
@@ -6177,8 +6322,10 @@ msgstr "Desactivar"
 msgid "Disable move mode"
 msgstr "Desactivar o modo movemento"
 
-msgid "Disable the HDD Process on VFD."
-msgstr ""
+#
+#, fuzzy
+msgid "Disable the HDD Process"
+msgstr "Desactivar PiP"
 
 msgid "Disable timer"
 msgstr "Desactivar temporizador"
@@ -6193,6 +6340,9 @@ msgid "Disabled in configuration"
 msgstr "Configuración da lista de películas"
 
 msgid "Disabled or WPA/WPA2"
+msgstr ""
+
+msgid "Discard Bob"
 msgstr ""
 
 msgid "Dish"
@@ -6214,10 +6364,6 @@ msgstr "Amosar o contido 16:9 como"
 msgid "Display 4:3 content as"
 msgstr "Amosar o contido 4:3 como"
 
-#
-msgid "Display >16:9 content as"
-msgstr "Amosar o contido >16:9"
-
 msgid "Display EPG as MultiEPG"
 msgstr "Amosar EPG como MultiEPG"
 
@@ -6228,10 +6374,8 @@ msgstr "Amosar información da EPG para o evento actual"
 msgid "Display EPG list for current channel"
 msgstr "Amosar a lista da EPG para o canle actual"
 
-#
-#, fuzzy
-msgid "Display Setup"
-msgstr "Configuración de pantalla"
+msgid "Display Icons and Symbols"
+msgstr ""
 
 #
 msgid "Display Skin"
@@ -6323,6 +6467,11 @@ msgid "Do not change"
 msgstr "Non cambiar"
 
 #
+#, fuzzy
+msgid "Do not force"
+msgstr "Non cambiar"
+
+#
 msgid "Do not record"
 msgstr "Non gravar"
 
@@ -6392,9 +6541,10 @@ msgstr ""
 msgid "Do you really want to exit?"
 msgstr "Seguro que queres saír?"
 
+#, fuzzy
 msgid ""
-"Do you really want to initialize the device?\n"
-"All data on the disk will be lost!"
+"Do you really want to format the device in the Linux file system?\n"
+"All data on the device will be lost!"
 msgstr ""
 "Seguro que queres inicializar o dispositivo?\n"
 "Perderanse todos os datos do disco!"
@@ -6450,6 +6600,11 @@ msgstr "Queres gravar esta colección a discos DVD?"
 msgid "Do you want to change the current MAC address?\n"
 msgstr "Queres actualizar o paquete:\n"
 
+#
+#, fuzzy
+msgid "Do you want to deactivate this flash expander?"
+msgstr "Queres continuar esta reprodución?"
+
 #, fuzzy
 msgid "Do you want to delete all log files?"
 msgstr "Queres eliminar todos os ficheiros de rexistro de fallos"
@@ -6458,6 +6613,11 @@ msgid ""
 "Do you want to delete all the selected files:\n"
 "choose \"No\" to only delete the currently selected file."
 msgstr ""
+
+#
+#, fuzzy
+msgid "Do you want to delete this flash expander directory?"
+msgstr "Queres continuar esta reprodución?"
 
 #, fuzzy
 msgid "Do you want to delete this log file?"
@@ -6773,10 +6933,6 @@ msgstr "EPG:"
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ERRO - fallou o escaneo (%s)!"
 
-#, python-format
-msgid "ERROR downloading file %s. Use button YELLOW in server \"Purge channel list\""
-msgstr ""
-
 #
 msgid "East"
 msgstr "Leste"
@@ -6916,6 +7072,9 @@ msgstr ""
 msgid "Enable FreeSat EPG"
 msgstr "Activar a EPG freesat"
 
+msgid "Enable GStreamer pipeline graphs *"
+msgstr ""
+
 msgid "Enable HDMI-CEC"
 msgstr "Activar HDMI-CEC"
 
@@ -6940,10 +7099,9 @@ msgstr "Activar a EPG ViaSat"
 msgid "Enable Virgin EPG"
 msgstr "Activar a EPG Virgin"
 
-#
 #, fuzzy
 msgid "Enable Vu+ MultiBoot"
-msgstr "Activar a edición de buqués"
+msgstr "Inicialización"
 
 msgid "Enable auto cable scan"
 msgstr "Activar o escaneo automático de cable"
@@ -6976,6 +7134,11 @@ msgstr "Activar o modo movemento"
 #, fuzzy
 msgid "Enable command line function"
 msgstr "Activar OK para a selección do canle"
+
+#
+#, fuzzy
+msgid "Enable core dumps *"
+msgstr "Activar o modo movemento"
 
 #
 #, fuzzy
@@ -7029,15 +7192,12 @@ msgstr "Activar ou desactivar usando HDMI-CEC."
 msgid "Enable parental protection"
 msgstr "Activar a protección paterna"
 
+#, fuzzy
 msgid ""
 "Enable remote enigma2 receiver to be tried to tune into services that cannot be tuned into locally, e.g. tuner is occupied or service type is unavailable on local tuner.\n"
 "\n"
-"You can use this receiver only in client mode using server channel list, timers and EPG.\n"
-"\n"
-"If YELLOW button is available, it means that channel list include characters bad, e.g. \"+\", then list cannot be import from server.\n"
-"\n"
-"If you press YELLOW button then it will clean up list to remove these characters."
-msgstr ""
+"You can use this receiver only in client mode using server channel list, timers and EPG."
+msgstr "Activar o receptor enigma2 remoto para que intente sintonizar os servizos que non se poden sintonizar localmente (por exemplo, o sintonizador está ocupado ou o tipo de servizo no está dispoñible no sintonizador local) Especifica o URL completo incluíndo http:// e o porto (normalmente 8001 ), Por exemplo, http://outro_receptor.com:8001."
 
 msgid "Enable teletext caching"
 msgstr "Activar o almacenamento en caché de teletexto"
@@ -7057,6 +7217,9 @@ msgstr ""
 msgid "Enable this option to add extra EPG data to the debug log file."
 msgstr ""
 
+msgid "Enable this option to add international language and country load information detected during system boot to the debug log file."
+msgstr ""
+
 msgid "Enable this option to add keyboard keymap data to the debug log file."
 msgstr ""
 
@@ -7067,6 +7230,9 @@ msgid "Enable this option to add remote control data to the debug log file."
 msgstr ""
 
 msgid "Enable this option to add screen names and resolution data to the debug log file."
+msgstr ""
+
+msgid "Enable this option to add skin load information detected during system boot to the debug log file."
 msgstr ""
 
 msgid "Enable this setting if your aerial system needs power"
@@ -7412,6 +7578,12 @@ msgstr "Directorio seleccionado non válido: %s"
 msgid "Error: Invalid location!"
 msgstr "Localición non válida"
 
+msgid "Error: The copy was unsuccessful!"
+msgstr ""
+
+msgid "Error: The delete was unsuccessful!"
+msgstr ""
+
 msgid "Error: The filename may not be blank!"
 msgstr ""
 
@@ -7429,6 +7601,9 @@ msgstr "Houbo un erro. Inténtao de novo máis tarde"
 
 #, python-format
 msgid "Error: Unable to rename directory '%s' to '%s'!"
+msgstr ""
+
+msgid "Error: mount not successful!"
 msgstr ""
 
 msgid "Esperanto"
@@ -7700,6 +7875,10 @@ msgstr "Intercambio de fontes dos subtítulos externos"
 msgid "Externally powered"
 msgstr "Accionado externamente"
 
+#, fuzzy
+msgid "Extra Wide"
+msgstr "extra ancho"
+
 msgid "Extra end time to ignore inactivity sleeptimer"
 msgstr "Tempo de remate extra para ignorar o temporizador de repouso"
 
@@ -7713,10 +7892,6 @@ msgstr "Salir do reprodutor de películas?"
 
 msgid "Extra start time to ignore inactivity sleeptimer"
 msgstr "Tempo de inicio extra para ignorar o temporizador de repouso"
-
-#, fuzzy
-msgid "Extra wide"
-msgstr "extra ancho"
 
 #
 #, fuzzy
@@ -7846,6 +8021,11 @@ msgstr "Restablecemento de fábrica"
 
 msgid "Fade the infobar when hiding"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Fail-Safe"
+msgstr "Fallou"
 
 #
 msgid "Failed"
@@ -8086,12 +8266,28 @@ msgstr "Fixo"
 msgid "Fixed X11 font (SD)"
 msgstr ""
 
+#, fuzzy
+msgid "Flash Expander"
+msgstr "Imaxe flash"
+
+msgid "Flash Expander Actions"
+msgstr ""
+
 msgid "Flash Image"
 msgstr "Imaxe flash"
+
+#
+#, fuzzy, python-format
+msgid "Flash directory '%s' not allowed!"
+msgstr "Fallou a creación do directorio %s."
 
 #, fuzzy
 msgid "Flash type"
 msgstr "Imaxe flash"
+
+#, python-format
+msgid "FlashExpander on boot is '%s'.  FlashExpander status is '%s'."
+msgstr ""
 
 msgid "FlashImage: Add USB STARTUP slots - No EXT4 USB attached."
 msgstr ""
@@ -8146,7 +8342,10 @@ msgstr ""
 msgid "For Media Scanner, enabled will take search more time, but will do a full scan of all subdirs where your media files or extensions are located."
 msgstr ""
 
-msgid "Force AC3+"
+msgid "Force 50Hz"
+msgstr ""
+
+msgid "Force 60Hz"
 msgstr ""
 
 #
@@ -8159,15 +8358,31 @@ msgstr "forzar desactivación"
 msgid "Force enabled"
 msgstr "forzar activación"
 
+msgid "Force frame"
+msgstr ""
+
 msgid "Force legacy signal stats"
 msgstr "Forzar estatísticas de sinais heredados"
 
 msgid "Force zap to recording service in standby"
 msgstr "Forzar o cambio á canle para grabar durante repouso"
 
+#, fuzzy
+msgid "Formal disk"
+msgstr "Modo normal"
+
 #
 msgid "Format"
 msgstr "Formato"
+
+#
+#, fuzzy
+msgid "Format Disk"
+msgstr "Formato"
+
+#, fuzzy
+msgid "Format Disk Settings"
+msgstr "Configuración dos subtítulos"
 
 msgid "Forward volume keys"
 msgstr "Teclas de volume"
@@ -8296,10 +8511,6 @@ msgstr "Restablecemento de fábrica"
 msgid "Full range RGB"
 msgstr ""
 
-#. TRANSLATORS: (aspect ratio policy: display as fullscreen, even if the content aspect ratio does not match the screen ratio)
-msgid "Full screen"
-msgstr "Pantalla completa"
-
 msgid "Full transparency"
 msgstr "Transparencia total"
 
@@ -8329,6 +8540,12 @@ msgstr "versión"
 #, fuzzy
 msgid "GREEN button"
 msgstr "Botón vermello…"
+
+msgid "GStreamer debug log category *"
+msgstr ""
+
+msgid "GStreamer debug log level *"
+msgstr ""
 
 #
 #, fuzzy
@@ -8800,6 +9017,9 @@ msgstr ""
 msgid "Help Screen Information"
 msgstr "Información"
 
+msgid "Help text uninitialized"
+msgstr ""
+
 msgid "Helps setting up your antenna"
 msgstr "Axuda a configurar a antena"
 
@@ -9048,6 +9268,12 @@ msgstr "INS"
 msgid "IP"
 msgstr "I"
 
+#, python-format
+msgid ""
+"IP %s is not valid.\n"
+"Disable client mode if you are going to use this address."
+msgstr ""
+
 #
 msgid "IP address"
 msgstr "Enderezo IP"
@@ -9269,6 +9495,10 @@ msgstr "só nos complementos"
 msgid "In progress"
 msgstr "En progreso"
 
+#, fuzzy
+msgid "Inactive"
+msgstr "activo"
+
 msgid "Inactivity Sleeptimer"
 msgstr "Tempo de inactividade do temporizador de repouso"
 
@@ -9314,6 +9544,10 @@ msgstr "Incluír AIT nos fluxos http"
 msgid "Include action map data"
 msgstr "Incluír AIT nos fluxos http"
 
+#, fuzzy
+msgid "Include international data"
+msgstr "Datos do transpondedor non válidos"
+
 #
 #, fuzzy
 msgid "Include keyboard data"
@@ -9329,6 +9563,11 @@ msgstr "Configurar tipo de control remoto"
 
 msgid "Include screen load data"
 msgstr ""
+
+#
+#, fuzzy
+msgid "Include skin data"
+msgstr "Incluír asignación de CI"
 
 #, python-format
 msgid ""
@@ -9430,8 +9669,9 @@ msgstr "Caducidade da barra de información"
 msgid "Init"
 msgstr "Init"
 
+#, fuzzy
 msgid "Init Vu+ MultiBoot"
-msgstr ""
+msgstr "Inicialización"
 
 #
 msgid "Initial fast forward speed"
@@ -9452,13 +9692,6 @@ msgstr "Calidade de sinal inicial"
 
 msgid "Initial signal quality:"
 msgstr "Calidade de sinal inicial:"
-
-msgid "Initialization"
-msgstr "Inicialización"
-
-#
-msgid "Initialize"
-msgstr "Inicializar"
 
 msgid "Initializing storage device..."
 msgstr "Inicializando o dispositivo de almacenamento…"
@@ -9613,6 +9846,15 @@ msgstr "Interface: "
 #, fuzzy
 msgid "Interlaced"
 msgstr "Interface: "
+
+msgid "Interlaced algorithm"
+msgstr ""
+
+msgid "Interlaced bottom field first"
+msgstr ""
+
+msgid "Interlaced top field first"
+msgstr ""
 
 #, fuzzy
 msgid "Interlingua"
@@ -9778,11 +10020,6 @@ msgstr "Ir á anterior posición marcada"
 msgid "Jump to the currently active locale/language"
 msgstr ""
 
-#
-#. TRANSLATORS: (aspect ratio policy: scale as close to fullscreen as possible)
-msgid "Just scale"
-msgstr "Só escalar"
-
 msgid "KA-SAT"
 msgstr "KA-SAT"
 
@@ -9894,6 +10131,9 @@ msgstr "Conexión LAN"
 msgid "LCD Setup"
 msgstr "Configuración"
 
+msgid "LCD Skin Setup"
+msgstr ""
+
 #
 #, fuzzy
 msgid "LCD scroll speed"
@@ -9926,6 +10166,9 @@ msgid "LED brightness during normal operations."
 msgstr ""
 
 msgid "LED brightness during standby."
+msgstr ""
+
+msgid "LED color during normal operations"
 msgstr ""
 
 #, fuzzy
@@ -10077,7 +10320,6 @@ msgid "Lets define enigma2 once more"
 msgstr ""
 
 #
-#. TRANSLATORS: (aspect ratio policy: black bars on top/bottom) in doubt, keep english term.
 msgid "Letterbox"
 msgstr "Letterbox"
 
@@ -10468,6 +10710,12 @@ msgstr "Tarxeta MMC"
 msgid "MORE"
 msgstr "MÁIS"
 
+msgid "MPEG2 progressive (Menu)"
+msgstr ""
+
+msgid "MPEG2 progressive (Sequence)"
+msgstr ""
+
 msgid "MPHelp"
 msgstr ""
 
@@ -10685,9 +10933,6 @@ msgstr "Tal vez a razón é porque a gravación está en execución. Por favor, 
 msgid "Mayotte"
 msgstr "Mayotte"
 
-msgid "Media playback Remaining/Elapsed as"
-msgstr ""
-
 #
 msgid "Media player"
 msgstr "Reprodutor multimedia"
@@ -10793,6 +11038,9 @@ msgid "MiniDiSEqC A/B"
 msgstr "DiSEqC A/B"
 
 msgid "MiniTV"
+msgstr ""
+
+msgid "MiniTV Setup"
 msgstr ""
 
 msgid "MiniTV with OSD"
@@ -11483,6 +11731,9 @@ msgstr "Rede:"
 msgid "NetworkAdapterSelection"
 msgstr ""
 
+msgid "Neutrino (keymap.ntr)"
+msgstr ""
+
 #
 #, fuzzy
 msgid "Never"
@@ -11687,6 +11938,10 @@ msgstr "No hai actualizacións dispoñibles"
 msgid "No updates were available.  Please try again later."
 msgstr "No hai actualizacións dispoñibles. Por favor, volve a intentalo intentalo máis tarde."
 
+#, python-format
+msgid "No valid mount for '%s' found!"
+msgstr ""
+
 msgid "No wireless networks found! Searching..."
 msgstr "Non se atoparon redes sen fíos! Buscando…"
 
@@ -11733,11 +11988,6 @@ msgstr "Non, nunca"
 #
 msgid "None"
 msgstr "Ningún"
-
-#
-#. TRANSLATORS: (aspect ratio policy: display as fullscreen, with stretching the left/right)
-msgid "Nonlinear"
-msgstr "Non lineal"
 
 msgid "Norfolk Island"
 msgstr "Illas Norfolk"
@@ -11985,6 +12235,11 @@ msgstr ""
 msgid "Off"
 msgstr "Apagado"
 
+#
+#, fuzzy
+msgid "Off in Standby"
+msgstr "Repouso"
+
 msgid "Offline decode delay (ms)"
 msgstr "Retardo da descodificación sen conexión (ms)"
 
@@ -12054,6 +12309,9 @@ msgstr "só desde o modo de repouso profundo"
 #, fuzzy
 msgid "Only from standby"
 msgstr "só desde o modo de repouso"
+
+msgid "Only log debug information of GStreamer category. * means all categories."
+msgstr ""
 
 msgid "Only move the dish quickly after this hour."
 msgstr "Mover o prato rápidamente só despois desta hora."
@@ -12191,6 +12449,9 @@ msgstr "Estado do LED en modo de repouso"
 
 msgid "Operating LED status in deep standby mode"
 msgstr "Estado do LED en modo de repouso profundo"
+
+msgid "Operating LED status in standby mode"
+msgstr "Estado do LED en modo de repouso"
 
 #, fuzzy
 msgid "Operating LED status while running"
@@ -12369,6 +12630,10 @@ msgstr "Palestina, Estado de"
 msgid "Pali"
 msgstr ""
 
+#
+msgid "Pan&scan"
+msgstr "Pan&scan"
+
 msgid "Panama"
 msgstr "Panamá"
 
@@ -12381,12 +12646,6 @@ msgstr "Pánico a"
 
 msgid "Panjabi / Punjabi"
 msgstr ""
-
-#
-#. TRANSLATORS: (aspect ratio policy: cropped content on left/right) in doubt, keep english term
-#, fuzzy
-msgid "Panscan"
-msgstr "Pan&scan"
 
 msgid "Papua New Guinea"
 msgstr "Papúa Nova Guinea"
@@ -12542,7 +12801,6 @@ msgid "Picture player"
 msgstr "Reprodutor de imaxes"
 
 #
-#. TRANSLATORS: (aspect ratio policy: black bars on left/right) in doubt, keep english term.
 msgid "Pillarbox"
 msgstr "Pillarbox"
 
@@ -12804,6 +13062,12 @@ msgstr "Por favor, selecciona o medio que desexas escanear"
 msgid "Please select medium to use as backup location"
 msgstr "Por favor, selecciona un medio para usar como localización da copia de seguridade"
 
+msgid "Please select the device where the flash expander '/usr' directory should created."
+msgstr ""
+
+msgid "Please select the device where the flash expander '/usr' directory should disabled."
+msgstr ""
+
 #
 msgid "Please select the movie path..."
 msgstr "Por favor, selecciona a localización das películas…"
@@ -12925,6 +13189,12 @@ msgstr "Por favor, espera mentres comprobamos a rede…"
 #
 msgid "Please wait while your network is restarting..."
 msgstr "Por favor, espera mentres se reinicia a rede…"
+
+msgid "Please wait, copy of flash memory is being deleted. This could take a few minutes to complete."
+msgstr ""
+
+msgid "Please wait, flash memory is being copied to this flash expander. This could take a number of minutes to complete."
+msgstr ""
 
 #, fuzzy, python-format
 msgid "Please wait, restarting %s."
@@ -13049,22 +13319,6 @@ msgid "Power LED can be turned on or off here."
 msgstr ""
 
 #, fuzzy
-msgid "Power LED state during deep-standby."
-msgstr "Acender o LED de alimentación durante o repouso profundo."
-
-#, fuzzy
-msgid "Power LED state during standby."
-msgstr "Acender o LED de alimentación durante o repouso."
-
-#, fuzzy
-msgid "Power LED state in Deep-Standby"
-msgstr "Estado do LED en modo de repouso profundo"
-
-#, fuzzy
-msgid "Power LED state in Standby"
-msgstr "Estado do LED en modo de repouso"
-
-#, fuzzy
 msgid "Power On Display"
 msgstr "Pantalla de acendido"
 
@@ -13167,6 +13421,12 @@ msgstr ""
 msgid "Preserve bookmarks in cuts"
 msgstr "Eliminar marcador"
 
+msgid ""
+"Press \"Yes\" for Enable Vu+ MultiBoot.\n"
+"\n"
+"Press \"No\" to continue wizard."
+msgstr ""
+
 msgid "Press '0' to toggle PiP mode"
 msgstr "Preme ‘0’ para alternar ao modo PiP"
 
@@ -13189,11 +13449,9 @@ msgid "Press EXIT to return to the help screen."
 msgstr "Preme OK para alternar a selección."
 
 msgid ""
-"Press GREEN button to enable MultiBoot\n"
+"Press GREEN button to enable MultiBoot.\n"
 "\n"
-"Will reboot within 10 seconds,\n"
-"unless you have eMMC slots to restore.\n"
-"Restoring eMMC slots can take from 1 -> 5 minutes per slot."
+"Your receiver will reboot and create the eMMC partitions."
 msgstr ""
 
 msgid "Press INFO on your remote control for additional information."
@@ -13400,6 +13658,10 @@ msgstr "Barra de progreso dereita"
 msgid "Progress:"
 msgstr "Progreso:"
 
+#, fuzzy
+msgid "Progressive"
+msgstr "Progreso"
+
 #
 msgid "Properties of current title"
 msgstr "Propiedades do título actual"
@@ -13487,10 +13749,6 @@ msgstr ""
 
 msgid "Purge all but the current and permanent locales/languages.  Add the current locale/language if it is not installed.  Delete the current locale/language if it is installed."
 msgstr ""
-
-#, fuzzy
-msgid "Purge channel list"
-msgstr "ningunha lista de canles"
 
 msgid "Purge deleted user bouquets"
 msgstr "Eliminar definitivamente os buqués borrados"
@@ -13720,6 +13978,11 @@ msgstr "Seguro que queres saír do cambio rápido de subcananles?"
 
 #
 #, fuzzy
+msgid "Really force reboot?"
+msgstr "Seguro que queres reiniciar agora?"
+
+#
+#, fuzzy
 msgid "Really go to WOL?"
 msgstr "Seguro que queres reiniciar agora?"
 
@@ -13923,10 +14186,6 @@ msgid "Refresh rate"
 msgstr "Taxa de refresco"
 
 #
-msgid "Refresh rate selection."
-msgstr "Selección da taxa de refresco."
-
-#
 #, fuzzy
 msgid "Refresh the screen"
 msgstr "Selección da taxa de refresco."
@@ -13960,6 +14219,11 @@ msgstr "Recargas as listas negras"
 #, fuzzy
 msgid "Reload bookmarks"
 msgstr "Eliminar marcador"
+
+#
+#, fuzzy
+msgid "Reload services/bouquets list"
+msgstr "Engadir servizo ao buqué"
 
 #, fuzzy
 msgid "Reloading EPG Cache..."
@@ -14293,6 +14557,10 @@ msgstr "Resolución"
 #
 msgid "Restart"
 msgstr "Reiniciar"
+
+#, fuzzy
+msgid "Restart (Force)"
+msgstr "Reiniciar ambos"
 
 #
 #, fuzzy
@@ -14875,6 +15143,11 @@ msgstr "Escanear extensións locais e instálalas."
 msgid "Scan forwards"
 msgstr "Buscar cara adiante"
 
+#
+#, fuzzy
+msgid "Scan mode"
+msgstr "Modo de escalado"
+
 msgid "Scan options"
 msgstr "Opcións do escaneo"
 
@@ -14915,6 +15188,11 @@ msgstr "Escaneando…"
 #
 msgid "Scans default lamedbs sorted by satellite with a connected dish positioner"
 msgstr "Escanea o lamedbs por defecto ordenados por satélite cun posicionador de antena conectado"
+
+#
+#, fuzzy
+msgid "Scart Color format"
+msgstr "Formato de cor"
 
 msgid "Schedule EPG and channel list import"
 msgstr ""
@@ -15135,6 +15413,11 @@ msgstr "Selecciona ‘si’ para enviar só o comando DiSEqC cando cambie dun sa
 msgid "Select CAId"
 msgstr "Seleccionar CAId"
 
+#
+#, fuzzy
+msgid "Select Device"
+msgstr "Seleccionar película"
+
 msgid "Select Fast DiSEqC if your aerial system supports this. If you are unsure select 'no'."
 msgstr "Selecciona Fast DiSEqC se o teu sistema aéreo é compatible. Se non estás seguro, selecciona ‘non’."
 
@@ -15169,6 +15452,9 @@ msgid "Select a bouquet"
 msgstr "Seleccionar un buqué"
 
 msgid "Select a cardserver from the available list."
+msgstr ""
+
+msgid "Select a device to use as the flash expander"
 msgstr ""
 
 #
@@ -15250,10 +15536,6 @@ msgstr "Seleccionar carpeta de destino"
 
 msgid "Select function"
 msgstr "Seleccionar funcion"
-
-#
-msgid "Select hard disk"
-msgstr "Seleccionar disco duro"
 
 msgid "Select how quickly the dish should move between satellites."
 msgstr "Seleccionar a velocidade da antena para cambiar de satélite."
@@ -15392,6 +15674,10 @@ msgid "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (
 msgstr "Seleccionar o protocolo utilizado polo dispositivo SCR. As opcións son ‘SCR Unicable’ (Unicable) o ‘SCR JESS’ (JESS, tamén coñecido como Unicable II)."
 
 #, fuzzy
+msgid "Select the refresh rate to be used on the TV."
+msgstr "Selecciona o modo no que debe amosarse a televisión en vivo no LCD."
+
+#, fuzzy
 msgid "Select the remote control device to be used with the %s %s."
 msgstr "Seleccionar o sintonizador que controla a antena motorizada."
 
@@ -15445,6 +15731,10 @@ msgstr "Seleccionar o tipo de LNB/dispositivo que se utiliza (normalmente ‘Uni
 msgid "Select the type of Single Cable Reception device you are using."
 msgstr "Seleccionar o tipo de dispositivo de recepción de cable único que estás a utilizar."
 
+#, fuzzy
+msgid "Select the video mode to be used on the TV."
+msgstr "Selecciona o modo no que debe amosarse a televisión en vivo no LCD."
+
 #
 msgid "Select update source"
 msgstr "Seleccionar fonte de actualización"
@@ -15454,13 +15744,13 @@ msgid "Select update source to edit"
 msgstr "Seleccionar fonte de actualización para editar"
 
 #
-msgid "Select video input with up/down buttons"
-msgstr "Seleccionar entrada de vídeo cos botóns arriba/abaixo"
+msgid "Select video mode"
+msgstr "Seleccionar modo de video"
 
 #
 #, fuzzy
-msgid "Select video mode."
-msgstr "Seleccionar modo de video"
+msgid "Select video output port with UP/DOWN buttons"
+msgstr "Seleccionar entrada de vídeo cos botóns arriba/abaixo"
 
 msgid "Select whether your SCR device is externally powered."
 msgstr "Seleccionar se o dispositivo SCR ten alimentación externa."
@@ -15918,10 +16208,6 @@ msgstr "Configuración"
 #, fuzzy
 msgid "Setup UI animations"
 msgstr "Configurar o posicionador"
-
-#
-msgid "Setup hard disk"
-msgstr "Configurar o disco duro"
 
 msgid "Setup menu"
 msgstr "Menu de configuración"
@@ -16989,6 +17275,10 @@ msgstr "Son"
 msgid "Sound carrier"
 msgstr "Portadora de son"
 
+#, fuzzy
+msgid "Source"
+msgstr "Solicitude de orixe"
+
 msgid "Source request"
 msgstr "Solicitude de orixe"
 
@@ -17064,9 +17354,6 @@ msgid "Specify timeframe to ignore the shutdown in standby"
 msgstr "Especifica un período de tempo para ignorar o apagado en modo de repouso"
 
 msgid "Speed"
-msgstr ""
-
-msgid "Speed up the performance"
 msgstr ""
 
 #
@@ -17423,6 +17710,17 @@ msgstr "Información sobre os clientes de fluxo"
 
 msgid "Streaming clients info"
 msgstr "Información sobre os clientes de fluxo"
+
+msgid "Stretch full"
+msgstr ""
+
+msgid "Stretch linear"
+msgstr ""
+
+#
+#, fuzzy
+msgid "Stretch nonlinear"
+msgstr "Non lineal"
 
 msgid "Strict DLNA"
 msgstr ""
@@ -17832,6 +18130,10 @@ msgid "Tanzania, United Republic of"
 msgstr "Tanzania, República Unida de"
 
 #, fuzzy
+msgid "Target location"
+msgstr "Seleccionar localización"
+
+#, fuzzy
 msgid "Tatar"
 msgstr "Qatar"
 
@@ -18121,6 +18423,18 @@ msgstr "Os resultados escribíronse en %s"
 
 msgid "The saved PIN was cleared."
 msgstr "Eliminouse o PIN gardado."
+
+msgid "The services/bouquets list is reloaded!"
+msgstr ""
+
+msgid "The set property allows an application to force a preferred interlace or progressive algorithm in case of unsure output format (usually stream)."
+msgstr ""
+
+msgid "The set property allows an application to force the decoder to mark the pictures in a certain way, including forcing progressive, and forcing interlaced bottom first or top first."
+msgstr ""
+
+msgid "The set property allows an application to select the scaler's deinterlacing mode. Deinterlacing is used only when the scaler's input pictures are interlaced. If the scaler is set to deinterlacing but the input is progressive, then the scaler will not use any deinterlacing."
+msgstr ""
 
 #
 msgid "The sleep timer has been activated."
@@ -18440,6 +18754,22 @@ msgstr "Esta opción configura a nitidez do escalado ao estirar a imaxe de 4:3 a
 
 msgid "This option sets the surpression of false digital contours, that are the result of a limited number of discrete values."
 msgstr "Esta opción configura a supresión de bordes digitales falsos, resultado dun número limitado de valores discretos."
+
+#, fuzzy
+msgid "This option sets the video & osd picture brightness."
+msgstr "Esta opción configura o brillo da imaxe."
+
+#, fuzzy
+msgid "This option sets the video & osd picture contrast."
+msgstr "Esta opción configura o contraste da imaxe."
+
+#, fuzzy
+msgid "This option sets the video picture brightness."
+msgstr "Esta opción configura o brillo da imaxe."
+
+#, fuzzy
+msgid "This option sets the video picture contrast."
+msgstr "Esta opción configura o contraste da imaxe."
 
 msgid "This option sets up the picture sharpness, used when the picture is being upscaled."
 msgstr "Esta opción configura a nitidez da imaxe, úsase cando se amplía a imaxe."
@@ -19187,6 +19517,9 @@ msgstr "Tipo de escaneo"
 msgid "UNKNOWN"
 msgstr "DESCOÑECIDO"
 
+msgid "UP80 (keymap.u80)"
+msgstr ""
+
 msgid "URL"
 msgstr "URL"
 
@@ -19457,6 +19790,16 @@ msgid "Use as PiP if possible"
 msgstr "Usar como PiP se é posible"
 
 #, fuzzy
+msgid "Use automatic mode detection"
+msgstr " (autodetección)"
+
+msgid ""
+"Use automatic mode detection?\n"
+"\n"
+"This option reads all supported modes from your TV. Disable it only if you want to customize the preferred configuration."
+msgstr ""
+
+#, fuzzy
 msgid "Use best / Controlled by HDMI"
 msgstr "controlado por HDMI"
 
@@ -19491,6 +19834,9 @@ msgstr "Usar axustes individuais para cada directorio"
 #
 msgid "Use interface"
 msgstr "Usar interface"
+
+msgid "Use key map *"
+msgstr ""
 
 msgid "Use official channel numbering"
 msgstr "Usar a numeración oficial de canles"
@@ -19582,6 +19928,9 @@ msgstr ""
 msgid "Used service scan type"
 msgstr "Tipo de escaneo de canles usado"
 
+msgid "User (keymap.usr)"
+msgstr ""
+
 #, python-format
 msgid "User Band %d"
 msgstr "Banda de usuario %d"
@@ -19666,6 +20015,11 @@ msgstr "Uzbekistán"
 msgid "VCR Scart"
 msgstr "Euroconector VCR"
 
+#
+#, fuzzy
+msgid "VFD Setup"
+msgstr "Configuración"
+
 msgid "VLAN connection"
 msgstr "Conexión VLAN"
 
@@ -19713,6 +20067,10 @@ msgstr ""
 msgid "Very slow"
 msgstr "Rañura do sintonizador"
 
+#, fuzzy
+msgid "Video"
+msgstr "Video PID"
+
 msgid "Video PID"
 msgstr "Video PID"
 
@@ -19737,26 +20095,23 @@ msgid "Video enhancement setup"
 msgstr "Configuración da mellora de video"
 
 #
+msgid "Video output"
+msgstr "Saída de video"
+
+#
+#, fuzzy
 msgid ""
-"Video input selection\n"
+"Video output port selection.\n"
 "\n"
-"Please press OK if you can see this page on your TV (or select a different input port).\n"
+"Make sure the correct input is selected on the TV. Press OK if you can see this page on your TV.\n"
 "\n"
-"The next input port will be automatically probed in 20 seconds."
+"The next output port will be automatically tried in 10 seconds."
 msgstr ""
 "Selección de entrada de vídeo\n"
 "\n"
 "Preme OK se podes ver esta páxina no teu televisor (ou selecciona outro porto de entrada).\n"
 "\n"
 "O seguinte porto de entrada probarase automaticamente en 20 segundos."
-
-#
-msgid "Video mode selection."
-msgstr "Selección de modo de vídeo."
-
-#
-msgid "Video output"
-msgstr "Saída de video"
 
 #
 msgid "Video setup"
@@ -19925,14 +20280,7 @@ msgstr "As teclas de volume do mando do receptor controlarán o volume do TV."
 msgid "Volume up"
 msgstr "Subir volume"
 
-msgid "Vu+ MultiBoot Initialisation - will reboot after 10 seconds."
-msgstr ""
-
-msgid ""
-"Vu+ MultiBoot Initialisation in progress\n"
-"\n"
-"Will reboot after restoring any eMMC slots\n"
-"This can take from 1 -> 5 minutes per slot."
+msgid "Vu+ MultiBoot Initialization: Your receiver will reboot."
 msgstr ""
 
 msgid "Vu+ MultiBoot Manager"
@@ -20088,6 +20436,9 @@ msgid "Weather Forecast"
 msgstr ""
 
 msgid "Weather Plugin"
+msgstr ""
+
+msgid "Weave"
 msgstr ""
 
 #
@@ -20646,13 +20997,13 @@ msgstr "non compatible"
 msgid "Xhosa"
 msgstr ""
 
-msgid "YCbCr420"
+msgid "YCbCr 420"
 msgstr ""
 
-msgid "YCbCr422"
+msgid "YCbCr 422"
 msgstr ""
 
-msgid "YCbCr444"
+msgid "YCbCr 444"
 msgstr ""
 
 msgid "YELLOW button"
@@ -20877,6 +21228,10 @@ msgstr "O receptor non ten conexión a Internet"
 #, python-format
 msgid "Your %s %s goes to WOL"
 msgstr ""
+
+#, fuzzy, python-format
+msgid "Your %s %s is force rebooting"
+msgstr "O receptor está a reiniciar"
 
 #, fuzzy, python-format
 msgid "Your %s %s is rebooting"
@@ -21634,10 +21989,6 @@ msgstr "saltar ao título seguinte"
 msgid "jump to chapter by number"
 msgstr "saltar a un capítulo por número"
 
-#
-msgid "kB"
-msgstr "kB"
-
 msgid "languages"
 msgstr "idiomas"
 
@@ -22078,13 +22429,25 @@ msgstr "saltar cara adiante"
 msgid "slot%s %s - %s"
 msgstr "rañura %s - %s"
 
-#, python-format
-msgid "slot%s - %s"
-msgstr "rañura %s - %s"
-
-#, python-format
-msgid "slot%s - %s (current image)"
+#, fuzzy, python-format
+msgid "slot%s %s - %s (current image)"
 msgstr "rañura %s - %s (imaxe actual)"
+
+#, fuzzy, python-format
+msgid "slot%s %s - %s mode 1"
+msgstr "rañura %s - %s modo 1"
+
+#, fuzzy, python-format
+msgid "slot%s %s - %s mode 1 (current image)"
+msgstr "rañura %s - %s modo 1 (imaxe actual)"
+
+#, fuzzy, python-format
+msgid "slot%s %s - %s mode 12"
+msgstr "rañura %s - %s modo 12"
+
+#, fuzzy, python-format
+msgid "slot%s %s - %s mode 12 (current image)"
+msgstr "slot %s - %s mode 12 (imaxe actual)"
 
 #, python-format
 msgid "slot%s - %s (current image) with, backup"
@@ -22095,22 +22458,6 @@ msgid "slot%s - %s (current image), without backup"
 msgstr "rañura %s - %s (imaxe actual), sen copia de seguridade"
 
 #, python-format
-msgid "slot%s - %s mode 1"
-msgstr "rañura %s - %s modo 1"
-
-#, python-format
-msgid "slot%s - %s mode 1 (current image)"
-msgstr "rañura %s - %s modo 1 (imaxe actual)"
-
-#, python-format
-msgid "slot%s - %s mode 12"
-msgstr "rañura %s - %s modo 12"
-
-#, python-format
-msgid "slot%s - %s mode 12 (current image)"
-msgstr "slot %s - %s mode 12 (imaxe actual)"
-
-#, python-format
 msgid "slot%s - %s, with backup"
 msgstr "rañura %s - %s, con copia de seguridade"
 
@@ -22118,12 +22465,12 @@ msgstr "rañura %s - %s, con copia de seguridade"
 msgid "slot%s - %s, without backup"
 msgstr "rañura %s - %s, sen copia de seguridade"
 
-#, fuzzy
-msgid "slot0 - Recovery mode image"
-msgstr "Arrancar desde o Menú de recuperación"
+#, fuzzy, python-format
+msgid "slot0 %s - Recovery mode image"
+msgstr "rañura %s - %s (imaxe actual)"
 
-#, fuzzy
-msgid "slot0 - Recovery mode image (current)"
+#, fuzzy, python-format
+msgid "slot0 %s - Recovery mode image (current)"
 msgstr "rañura %s - %s modo 1 (imaxe actual)"
 
 #, fuzzy
