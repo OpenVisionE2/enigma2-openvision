@@ -67,32 +67,22 @@ class VideoSetup(ConfigListScreen, Screen):
 			else:
 				self.list.append(getConfigListEntry(_("Refresh rate"), config.av.videorate[config.av.videomode[config.av.videoport.value].value], _("Configure the refresh rate of the screen.")))
 
-		port = config.av.videoport.value
-		if port not in config.av.videomode:
-			mode = None
-		else:
-			mode = config.av.videomode[port].value
-
-		# some modes (720p, 1080i) are always widescreen. Don't let the user select something here, "auto" is not what he wants.
-		force_wide = self.hw.isWidescreenMode(port, mode)
-
-		if not force_wide:
-			self.list.append(getConfigListEntry(_("Aspect ratio"), config.av.aspect, _("Configure the aspect ratio of the screen.")))
-
-		if force_wide or config.av.aspect.value in ("16_9", "16_10"):
-			self.list.extend((
-				getConfigListEntry(_("Display 4:3 content as"), config.av.policy_43, _("When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture.")),
-				getConfigListEntry(_("Display >16:9 content as"), config.av.policy_169, _("When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture."))
-			))
-		elif config.av.aspect.value == "4_3":
-			self.list.append(getConfigListEntry(_("Display 16:9 content as"), config.av.policy_169, _("When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture.")))
+		self.list.append(getConfigListEntry(_("Aspect ratio"), config.av.aspect, _("Configure the aspect ratio of the screen.")))
+		self.list.append(getConfigListEntry(_("Display 4:3 content as"), config.av.policy_43, _("When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture.")))
+		try:
+			if hasattr(config.av, 'policy_169'):
+				self.list.append(getConfigListEntry(_("Display 16:9 content as"), config.av.policy_169, _("When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture.")))
+		except:
+			pass
 
 		if BoxInfo.getItem("brand") == "azbox":
 			self.list.append(getConfigListEntry(_("Scan mode"), config.av.az_scanmode, _("The set property allows an application to force the decoder to mark the pictures in a certain way, including forcing progressive, and forcing interlaced bottom first or top first.")))
 			self.list.append(getConfigListEntry(_("Interlaced algorithm"), config.av.az_interlaced, _("The set property allows an application to force a preferred interlace or progressive algorithm in case of unsure output format (usually stream).")))
 			self.list.append(getConfigListEntry(_("Deinterlacing mode"), config.av.az_deinterlacingmode, _("The set property allows an application to select the scaler's deinterlacing mode. Deinterlacing is used only when the scaler's input pictures are interlaced. If the scaler is set to deinterlacing but the input is progressive, then the scaler will not use any deinterlacing.")))
 
-		if config.av.videoport.value == "DVI":
+		self.list.append(getConfigListEntry(_("Force frame"), config.av.force, _("Allow forcing the frames per second.")))
+
+		if config.av.videoport.value == "HDMI":
 			if level >= 1:
 				self.list.append(getConfigListEntry(_("Allow unsupported modes"), config.av.edid_override, _("When selected this allows video modes to be selected even if they are not reported as supported.")))
 				if BoxInfo.getItem("HasBypassEdidChecking"):
@@ -119,7 +109,7 @@ class VideoSetup(ConfigListScreen, Screen):
 					self.list.append(getConfigListEntry(_("Video sync mode"), config.av.sync_mode, _("This option allows you to use video sync mode.")))
 
 		if config.av.videoport.value == "Scart":
-			self.list.append(getConfigListEntry(_("Color format"), config.av.colorformat, _("Configure which color format should be used on the SCART output.")))
+			self.list.append(getConfigListEntry(_("Scart Color format"), config.av.colorformat, _("Configure which color format should be used on the SCART output.")))
 			if level >= 1:
 				self.list.append(getConfigListEntry(_("WSS on 4:3"), config.av.wss, _("When enabled, content with an aspect ratio of 4:3 will be stretched to fit the screen.")))
 				if BoxInfo.getItem("ScartSwitch"):

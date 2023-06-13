@@ -13,7 +13,7 @@ class HardwareInfo:
 	device_revision = ""
 	device_model = None
 	device_brandname = None
-	device_hdmi = False
+	device_hdmi = True
 
 	def __init__(self):
 		global hw_info
@@ -34,7 +34,8 @@ class HardwareInfo:
 			self.device_string = "%s (%s)" % (self.device_hw, self.device_version)
 		else:
 			self.device_string = self.device_hw
-		self.device_hdmi = BoxInfo.getItem("hdmi")  # Only some early DMM boxes do not have HDMI hardware.
+		if BoxInfo.getItem("DreamBoxDVI"):
+			self.device_hdmi = False  # Only dm800 and dm8000 do not have HDMI hardware.
 		print("[HardwareInfo] Detected: '%s'." % self.get_device_string())
 
 	def get_device_name(self):

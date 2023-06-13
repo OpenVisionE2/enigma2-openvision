@@ -15,10 +15,13 @@ from Components.SystemInfo import BoxInfo
 from Components.VolumeControl import VolumeControl
 from Components.PluginComponent import plugins
 from Plugins.Plugin import PluginDescriptor
+from Tools.AVHelper import pChoice
 
 from enigma import iPlayableService, eTimer, eSize, eDVBDB, eServiceReference, eServiceCenter, iServiceInformation
 
-CanProc = BoxInfo.getItem("CanProc")
+model = BoxInfo.getItem("model")
+platform = BoxInfo.getItem("platform")
+DreamBoxAudio = BoxInfo.getItem("DreamBoxAudio")
 
 FOCUS_CONFIG, FOCUS_STREAMS = range(2)
 [PAGE_AUDIO, PAGE_SUBTITLES] = ["audio", "subtitles"]
@@ -123,211 +126,217 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 			if self.subtitlelist:
 				conflist.append(getConfigListEntry(_("To subtitle selection"), self.settings.menupage))
 			if BoxInfo.getItem("CanDownmixAC3"):
-				if BoxInfo.getItem("platform") == "dmamlogic":
+				if DreamBoxAudio:
 					choice_list = [
-							("downmix", _("Downmix")),
-							("passthrough", _("Passthrough")),
-							("hdmi_best", _("Use best / Controlled by HDMI"))
-						]
+						(pChoice("downmix")),
+						(pChoice("passthrough")),
+						(pChoice("multichannel")),
+						(pChoice("hdmi_best"))
+					]
+				elif platform == "dmamlogic":
+					choice_list = [
+						("0", _("Downmix")),
+						("1", _("Passthrough")),
+						("2", _("Use best / Controlled by HDMI"))
+					]
 				else:
 					choice_list = [
-						("downmix", _("Downmix")),
-						("passthrough", _("Passthrough"))
+						(pChoice("downmix")),
+						(pChoice("passthrough"))
 					]
-				if CanProc:
-					with open("/proc/stb/audio/ac3_choices", "r") as ac3_choices:
-						ac3_choices.read().split('\n', 1)[0]
-						ac3_choices.close()
 				self.settings.downmix_ac3 = ConfigSelection(choices=choice_list, default=config.av.downmix_ac3.value)
 				self.settings.downmix_ac3.addNotifier(self.changeAC3Downmix, initial_call=False)
 				conflist.append(getConfigListEntry(_("AC3 downmix"), self.settings.downmix_ac3, None))
 
 			if BoxInfo.getItem("CanDownmixAAC"):
-				choice_list = [
-					("downmix", _("Downmix")),
-					("passthrough", _("Passthrough"))
-				]
-				if CanProc:
-					with open("/proc/stb/audio/aac_choices", "r") as aac_choices:
-						aac_choices.read().split('\n', 1)[0]
-						aac_choices.close()
+				if DreamBoxAudio:
+					choice_list = [
+						(pChoice("downmix")),
+						(pChoice("passthrough")),
+						(pChoice("multichannel")),
+						(pChoice("hdmi_best"))
+					]
+				elif platform == "gb7252" or model == "gbx34k":
+					choice_list = [
+						(pChoice("downmix")),
+						(pChoice("passthrough")),
+						(pChoice("multichannel")),
+						(pChoice("force_ac3")),
+						(pChoice("force_dts")),
+						(pChoice("use_hdmi_cacenter")),
+						(pChoice("wide")),
+						(pChoice("extrawide"))
+					]
+				else:
+					choice_list = [
+						(pChoice("downmix")),
+						(pChoice("passthrough"))
+					]
 				self.settings.downmix_aac = ConfigSelection(choices=choice_list, default=config.av.downmix_aac.value)
 				self.settings.downmix_aac.addNotifier(self.changeAACDownmix, initial_call=False)
 				conflist.append(getConfigListEntry(_("AAC downmix"), self.settings.downmix_aac, None))
 
-			CanDownmixAACPlus = BoxInfo.getItem("CanDownmixAACPlus")
-			if CanDownmixAACPlus:
+			if BoxInfo.getItem("CanDownmixAACPlus"):
 				choice_list = [
-					("downmix", _("Downmix")),
-					("passthrough", _("Passthrough")),
-					("multichannel", _("Convert to multi-channel PCM")),
-					("force_ac3", _("Convert to AC3")),
-					("force_dts", _("Convert to DTS")),
-					("use_hdmi_cacenter", _("Use HDMI cacenter")),
-					("wide", _("Wide")),
-					("extrawide", _("Extra wide"))
+					(pChoice("downmix")),
+					(pChoice("passthrough")),
+					(pChoice("multichannel")),
+					(pChoice("force_ac3")),
+					(pChoice("force_dts")),
+					(pChoice("use_hdmi_cacenter")),
+					(pChoice("wide")),
+					(pChoice("extrawide"))
 				]
-				if CanProc:
-					with open(CanDownmixAACPlus, "r") as aacplus_choices:
-						aacplus_choices.read().split('\n', 1)[0]
-						aacplus_choices.close()
 				self.settings.downmix_aacplus = ConfigSelection(choices=choice_list, default=config.av.downmix_aacplus.value)
 				self.settings.downmix_aacplus.addNotifier(self.changeAACDownmixPlus, initial_call=False)
 				conflist.append(getConfigListEntry(_("AAC+ downmix"), self.settings.downmix_aacplus, None))
 
 			if BoxInfo.getItem("CanDownmixDTS"):
 				choice_list = [
-					("downmix", _("Downmix")),
-					("passthrough", _("Passthrough"))
+					(pChoice("downmix")),
+					(pChoice("passthrough"))
 				]
-				if CanProc:
-					with open("/proc/stb/audio/dts_choices", "r") as dts_choices:
-						dts_choices.read().split('\n', 1)[0]
-						dts_choices.close()
 				self.settings.downmix_dts = ConfigSelection(choices=choice_list, default=config.av.downmix_dts.value)
 				self.settings.downmix_dts.addNotifier(self.changeDTSDownmix, initial_call=False)
 				conflist.append(getConfigListEntry(_("DTS downmix"), self.settings.downmix_dts, None))
 
-			CanDTSHD = BoxInfo.getItem("CanDTSHD")
-			if CanDTSHD:
-				choice_list = [
-					("downmix", _("Downmix")),
-					("force_dts", _("Convert to DTS")),
-					("use_hdmi_caps", _("Controlled by HDMI")),
-					("multichannel", _("Convert to multi-channel PCM")),
-					("hdmi_best", _("Use best / Controlled by HDMI"))
-				]
-				if CanProc:
-					with open(CanDTSHD, "r") as dtshd_choices:
-						dtshd_choices.read().split('\n', 1)[0]
-						dtshd_choices.close()
+			if BoxInfo.getItem("CanDTSHD"):
+				if model in ("dm7080", "dm820"):
+					choice_list = [
+						(pChoice("force_dts")),
+						(pChoice("use_hdmi_caps"))
+					]
+				else:
+					choice_list = [
+						(pChoice("downmix")),
+						(pChoice("force_dts")),
+						(pChoice("use_hdmi_caps")),
+						(pChoice("multichannel")),
+						(pChoice("hdmi_best"))
+					]
 				self.settings.dtshd = ConfigSelection(choices=choice_list, default=config.av.dtshd.value)
 				self.settings.dtshd.addNotifier(self.changeDTSHD, initial_call=False)
 				conflist.append(getConfigListEntry(_("DTS-HD HR/DTS-HD MA/DTS"), self.settings.dtshd, None))
 
-			CanAACTranscode = BoxInfo.getItem("CanAACTranscode")
-			if CanAACTranscode:
+			if BoxInfo.getItem("CanAACTranscode"):
 				choice_list = [
-					("off", _("Off")),
-					("ac3", _("AC3")),
-					("dts", _("DTS"))
+					(pChoice("off")),
+					(pChoice("ac3")),
+					(pChoice("dts"))
 				]
-				if CanProc:
-					with open(CanAACTranscode, "r") as aac_transcode_choices:
-						aac_transcode_choices.read().split('\n', 1)[0]
-						aac_transcode_choices.close()
 				self.settings.transcodeaac = ConfigSelection(choices=choice_list, default=config.av.transcodeaac.value)
 				self.settings.transcodeaac.addNotifier(self.setAACTranscode, initial_call=False)
 				conflist.append(getConfigListEntry(_("AAC transcoding"), self.settings.transcodeaac, None))
 
 			if BoxInfo.getItem("CanAC3PlusTranscode"):
-				choice_list = [
-					("use_hdmi_caps", _("Controlled by HDMI")),
-					("force_ac3", _("Convert to AC3"))
-				]
-				if CanProc:
-					with open("/proc/stb/audio/ac3plus_choices", "r") as ac3plus_choices:
-						ac3plus_choices.read().split('\n', 1)[0]
-						ac3plus_choices.close()
+				if DreamBoxAudio:
+					choice_list = [
+						(pChoice("use_hdmi_caps")),
+						(pChoice("force_ac3")),
+						(pChoice("multichannel")),
+						(pChoice("hdmi_best")),
+						(pChoice("force_ddp"))
+					]
+				elif platform == "gb7252" or model == "gbx34k":
+					choice_list = [
+						(pChoice("downmix")),
+						(pChoice("passthrough")),
+						(pChoice("force_ac3")),
+						(pChoice("multichannel")),
+						(pChoice("force_dts"))
+					]
+				else:
+					choice_list = [
+						(pChoice("use_hdmi_caps")),
+						(pChoice("force_ac3"))
+					]
 				self.settings.transcodeac3plus = ConfigSelection(choices=choice_list, default=config.av.transcodeac3plus.value)
 				self.settings.transcodeac3plus.addNotifier(self.setAC3plusTranscode, initial_call=False)
 				conflist.append(getConfigListEntry(_("AC3+ transcoding"), self.settings.transcodeac3plus, None))
 
 			if BoxInfo.getItem("CanWMAPRO"):
 				choice_list = [
-					("downmix", _("Downmix")),
-					("passthrough", _("Passthrough")),
-					("multichannel", _("Convert to multi-channel PCM")),
-					("hdmi_best", _("Use best / Controlled by HDMI"))
+					(pChoice("downmix")),
+					(pChoice("passthrough")),
+					(pChoice("multichannel")),
+					(pChoice("hdmi_best"))
 				]
-				if CanProc:
-					with open("/proc/stb/audio/wmapro_choices", "r") as wmapro_choices:
-						wmapro_choices.read().split('\n', 1)[0]
-						wmapro_choices.close()
 				self.settings.wmapro = ConfigSelection(choices=choice_list, default=config.av.wmapro.value)
 				self.settings.wmapro.addNotifier(self.changeWMAPro, initial_call=False)
 				conflist.append(getConfigListEntry(_("WMA pro downmix"), self.settings.wmapro, None))
 
 			if BoxInfo.getItem("CanBTAudio"):
-				choice_list = [("off", _("Off")), ("on", _("On"))]
+				choice_list = [
+					(pChoice("off")),
+					(pChoice("on"))
+				]
 				self.settings.btaudio = ConfigSelection(choices=choice_list, default=config.av.btaudio.value)
 				self.settings.btaudio.addNotifier(self.changeBTAudio, initial_call=False)
 				conflist.append(getConfigListEntry(_("Enable bluetooth audio"), self.settings.btaudio, None))
 
 			if BoxInfo.getItem("Has3DSurround"):
 				choice_list = [
-					("none", _("Off")),
-					("hdmi", _("HDMI")),
-					("spdif", _("SPDIF")),
-					("dac", _("DAC"))
+					(pChoice("none")),
+					(pChoice("hdmi")),
+					(pChoice("spdif")),
+					(pChoice("dac"))
 				]
-				if CanProc:
-					with open("/proc/stb/audio/3d_surround_choices", "r") as surround:
-						surround.read().split('\n', 1)[0]
-						surround.close()
 				self.settings.surround_3d = ConfigSelection(choices=choice_list, default=config.av.surround_3d.value)
 				self.settings.surround_3d.addNotifier(self.change3DSurround, initial_call=False)
 				conflist.append(getConfigListEntry(_("3D surround"), self.settings.surround_3d, None))
 
 			if BoxInfo.getItem("Has3DSpeaker") and config.av.surround_3d.value != "none":
 				choice_list = [
-					("center", _("Center")),
-					("wide", _("Wide")),
-					("extrawide", _("Extra wide"))
+					(pChoice("center")),
+					(pChoice("wide")),
+					(pChoice("extrawide"))
 				]
-				if CanProc:
-					with open("/proc/stb/audio/3d_surround_speaker_position_choices", "r") as speaker:
-						speaker.read().split('\n', 1)[0]
-						speaker.close()
 				self.settings.speaker_3d = ConfigSelection(choices=choice_list, default=config.av.speaker_3d.value)
 				self.settings.speaker_3d.addNotifier(self.change3DSpeaker, initial_call=False)
 				conflist.append(getConfigListEntry(_("3D surround speaker position"), self.settings.speaker_3d, None))
 
 			if BoxInfo.getItem("Has3DSurroundSpeaker"):
 				choice_list = [
-					("disabled", _("Off")),
-					("center", _("Center")),
-					("wide", _("Wide")),
-					("extrawide", _("Extra wide"))
+					(pChoice("disabled")),
+					(pChoice("center")),
+					(pChoice("wide")),
+					(pChoice("extrawide"))
 				]
-				if CanProc:
-					with open("/proc/stb/audio/3dsurround_choices", "r") as surroundspeaker:
-						surroundspeaker.read().split('\n', 1)[0]
-						surroundspeaker.close()
 				self.settings.surround_3d_speaker = ConfigSelection(choices=choice_list, default=config.av.surround_3d_speaker.value)
 				self.settings.surround_3d_speaker.addNotifier(self.change3DSurroundSpeaker, initial_call=False)
 				conflist.append(getConfigListEntry(_("3D surround speaker position on or off"), self.settings.surround_3d_speaker, None))
 
 			if BoxInfo.getItem("HasAutoVolume"):
 				choice_list = [
-					("none", _("Off")),
-					("hdmi", _("HDMI")),
-					("spdif", _("SPDIF")),
-					("dac", _("DAC"))
+					(pChoice("none")),
+					(pChoice("hdmi")),
+					(pChoice("spdif")),
+					(pChoice("dac"))
 				]
-				if CanProc:
-					with open("/proc/stb/audio/avl_choices", "r") as avl_choices:
-						avl_choices.read().split('\n', 1)[0]
-						avl_choices.close()
 				self.settings.autovolume = ConfigSelection(choices=choice_list, default=config.av.autovolume.value)
 				self.settings.autovolume.addNotifier(self.changeAutoVolume, initial_call=False)
 				conflist.append(getConfigListEntry(_("Audio auto volume level"), self.settings.autovolume, None))
 
 			if BoxInfo.getItem("HasAutoVolumeLevel"):
 				choice_list = [
-					("disabled", _("Off")),
-					("enabled", _("On"))
+					(pChoice("disabled")),
+					(pChoice("enabled"))
 				]
-				if CanProc:
-					with open("/proc/stb/audio/autovolumelevel_choices", "r") as autovolumelevel_choices:
-						autovolumelevel_choices.read().split('\n', 1)[0]
-						autovolumelevel_choices.close()
 				self.settings.autovolumelevel = ConfigSelection(choices=choice_list, default=config.av.autovolumelevel.value)
 				self.settings.autovolumelevel.addNotifier(self.changeAutoVolumeLevel, initial_call=False)
 				conflist.append(getConfigListEntry(_("Audio auto volume level"), self.settings.autovolumelevel, None))
 
 			if BoxInfo.getItem("CanPcmMultichannel"):
-				self.settings.multichannel_pcm = ConfigOnOff(default=config.av.multichannel_pcm.value)
+				if DreamBoxAudio:
+					choice_list = [
+						(pChoice("downmix")),
+						(pChoice("passthrough")),
+						(pChoice("multichannel")),
+						(pChoice("hdmi_best"))
+					]
+					self.settings.multichannel_pcm = ConfigSelection(choices=choice_list, default=config.av.multichannel_pcm.value)
+				else:
+					self.settings.multichannel_pcm = ConfigOnOff(default=config.av.multichannel_pcm.value)
 				self.settings.multichannel_pcm.addNotifier(self.changePCMMultichannel, initial_call=False)
 				conflist.append(getConfigListEntry(_("PCM multi-channel"), self.settings.multichannel_pcm, None))
 
@@ -372,7 +381,10 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 			else:
 				conflist.append(("",))
 			if BoxInfo.getItem("HasBypassEdidChecking"):
-				choice_list = [("00000000", _("Off")), ("00000001", _("On"))]
+				choice_list = [
+					("00000000", _("Off")),
+					("00000001", _("On"))
+				]
 				self.settings.bypass_edid_checking = ConfigSelection(choices=choice_list, default=config.av.bypass_edid_checking.value)
 				self.settings.bypass_edid_checking.addNotifier(self.changeEDIDChecking, initial_call=False)
 				conflist.append(getConfigListEntry(_("Bypass HDMI EDID checking"), self.settings.bypass_edid_checking, None))
@@ -496,18 +508,27 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 		config.av.autovolumelevel.save()
 
 	def changePCMMultichannel(self, multichan):
-		if multichan.value:
+		if DreamBoxAudio:
 			config.av.multichannel_pcm.setValue(multichan.value)
 		else:
-			config.av.multichannel_pcm.setValue(False)
+			if multichan.value:
+				config.av.multichannel_pcm.setValue(True)
+			else:
+				config.av.multichannel_pcm.setValue(False)
 		config.av.multichannel_pcm.save()
 		self.fillList()
 
 	def changeAC3Downmix(self, downmix):
 		HasMultichannelPCM = BoxInfo.getItem("HasMultichannelPCM")
-		config.av.downmix_ac3.setValue(downmix.value)
-		if HasMultichannelPCM:
-			config.av.multichannel_pcm.setValue(False)
+		if DreamBoxAudio or platform == "dmamlogic":
+			config.av.downmix_ac3.setValue(downmix.value)
+		else:
+			if downmix.value:
+				config.av.downmix_ac3.setValue(True)
+				if HasMultichannelPCM:
+					config.av.multichannel_pcm.setValue(False)
+			else:
+				config.av.downmix_ac3.setValue(False)
 		config.av.downmix_ac3.save()
 		if HasMultichannelPCM:
 			config.av.multichannel_pcm.save()
@@ -522,7 +543,13 @@ class AudioSelection(ConfigListScreen, Screen, HelpableScreen):
 		config.av.dtshd.save()
 
 	def changeAACDownmix(self, downmix):
-		config.av.downmix_aac.setValue(downmix.value)
+		if DreamBoxAudio or platform == "gb7252" or model == "gbx34k":
+			config.av.downmix_aac.setValue(downmix.value)
+		else:
+			if downmix.value:
+				config.av.downmix_aac.setValue(True)
+			else:
+				config.av.downmix_aac.setValue(False)
 		config.av.downmix_aac.save()
 
 	def changeAACDownmixPlus(self, downmix):

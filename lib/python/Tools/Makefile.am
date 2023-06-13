@@ -4,6 +4,7 @@ install_PYTHON = \
 	__init__.py \
 	Alternatives.py \
 	ASCIItranslit.py \
+	AVHelper.py \
 	BoundFunction.py \
 	camcontrol.py \
 	CIHelper.py \

@@ -400,8 +400,8 @@ self.autoResize()
 		<widget name="txt_gamma" position="20,100" size="120,20"/>
 		<widget name="sld_gamma" position="150,100" size="290,20"/>
 	</screen>
-	<!-- Default wizard -->
-	<screen name="DefaultWizard" position="fill" title="Welcome..." flags="wfNoBorder">
+	<!-- Video wizard -->
+	<screen name="VideoWizard" position="fill" title="Welcome..." flags="wfNoBorder">
 		<panel name="WizardMarginsTemplate"/>
 		<panel name="WizardPictureLangTemplate"/>
 		<panel name="RemoteControlTemplate"/>
@@ -1841,7 +1841,7 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth) // 2, orgpos.y() + 
 	</screen>
 	<!-- it's the same screen... -->
 	<screen name="StartWizard" position="fill" title="Welcome..." flags="wfNoBorder">
-		<panel name="DefaultWizard"/>
+		<panel name="VideoWizard"/>
 	</screen>
 	<!-- Subservice quickzap -->
 	<screen name="SubservicesQuickzap" position="center,center" size="512,200" title="Subservices" backgroundColor="transparent" flags="wfNoBorder">

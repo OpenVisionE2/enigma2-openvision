@@ -296,9 +296,7 @@ SystemInfo["3DMode"] = fileCheck("/proc/stb/fb/3dmode") or fileCheck("/proc/stb/
 SystemInfo["3DZNorm"] = fileCheck("/proc/stb/fb/znorm") or fileCheck("/proc/stb/fb/primary/zoffset")
 SystemInfo["Blindscan_t2_available"] = brand == "vuplus"
 SystemInfo["HasFullHDSkinSupport"] = BoxInfo.getItem("fhdskin")
-SystemInfo["HasEMMC"] = BoxInfo.getItem("emmc")
 SystemInfo["HasMMC"] = BoxInfo.getItem("mmc") or "root" in cmdline and cmdline["root"].startswith("/dev/mmcblk") if isfile("/proc/cmdline") else "mmcblk" in mtdkernel
-SystemInfo["MMCEMMC"] = BoxInfo.getItem("HasMMC") or BoxInfo.getItem("HasEMMC")
 SystemInfo["HasTranscoding"] = BoxInfo.getItem("transcoding") or BoxInfo.getItem("multitranscoding") or fileCheck("/proc/stb/encoder/0") or fileCheck("/dev/bcm_enc0")
 SystemInfo["HasH265Encoder"] = fileContains("/proc/stb/encoder/0/vcodec_choices", "h265")
 SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model == "vusolo4k" or platform == "gb7252"
@@ -347,6 +345,7 @@ SystemInfo["LCDMiniTV"] = fileCheck("/proc/stb/lcd/mode")
 SystemInfo["LCDMiniTVPiP"] = BoxInfo.getItem("LCDMiniTV") and not model == "gb800ueplus" and not platform == "gb7252"
 SystemInfo["DefaultDisplayBrightness"] = platform == "dm4kgen" and 8 or 5
 SystemInfo["DreamBoxAudio"] = platform == "dm4kgen" or model in ("dm7080", "dm800")
+SystemInfo["DreamBoxDVI"] = model in ("dm8000", "dm800")
 SystemInfo["VFDRepeats"] = brand != "ixuss" and not BoxInfo.getItem("7segment")
 SystemInfo["VFDSymbol"] = BoxInfo.getItem("vfdsymbol")
 SystemInfo["ArchIsARM64"] = architecture == "aarch64" or "64" in architecture
@@ -362,7 +361,6 @@ SystemInfo["FrontpanelLEDBrightnessControl"] = fileCheck("/proc/stb/fp/led_brigh
 SystemInfo["FrontpanelLEDColorControl"] = fileCheck("/proc/stb/fp/led_color")
 SystemInfo["FrontpanelLEDFadeControl"] = fileCheck("/proc/stb/fp/led_fade")
 SystemInfo["FCC"] = False
-SystemInfo["CanProc"] = BoxInfo.getItem("MMCEMMC") and brand != "vuplus"
 SystemInfo["CanAACTranscode"] = fileCheck("/proc/stb/audio/aac_transcode_choices")
 SystemInfo["CanAC3PlusTranscode"] = fileContains("/proc/stb/audio/ac3plus_choices", "force_ac3")
 SystemInfo["CanAudioDelay"] = fileCheck("/proc/stb/audio/audio_delay_pcm") or fileCheck("/proc/stb/audio/audio_delay_bitstream")
@@ -382,13 +380,9 @@ SystemInfo["Has3DSurroundSpeaker"] = fileCheck("/proc/stb/audio/3dsurround_choic
 SystemInfo["HasAutoVolume"] = fileContains("/proc/stb/audio/avl_choices", "none") or fileContains("/proc/stb/audio/avl_choices", "hdmi") or fileCheck("/proc/stb/audio/avl")
 SystemInfo["HasAutoVolumeLevel"] = fileCheck("/proc/stb/audio/autovolumelevel_choices") or fileCheck("/proc/stb/audio/autovolumelevel")
 SystemInfo["HasBypassEdidChecking"] = fileCheck("/proc/stb/hdmi/bypass_edid_checking")
-SystemInfo["HasColordepthChoices"] = fileCheck("/proc/stb/video/hdmi_colordepth_choices")
 SystemInfo["HasColordepth"] = fileCheck("/proc/stb/video/hdmi_colordepth")
-SystemInfo["HasColorimetryChoices"] = fileCheck("/proc/stb/video/hdmi_colorimetry_choices")
 SystemInfo["HasColorimetry"] = fileCheck("/proc/stb/video/hdmi_colorimetry")
-SystemInfo["HasColorspaceChoices"] = fileCheck("/proc/stb/video/hdmi_colorspace_choices")
 SystemInfo["HasColorspace"] = fileCheck("/proc/stb/video/hdmi_colorspace")
-SystemInfo["HasColorspaceSimple"] = BoxInfo.getItem("HasColorspace") and BoxInfo.getItem("FbcTunerPowerAlwaysOn")
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")
 SystemInfo["HasMultichannelPCM"] = fileCheck("/proc/stb/audio/multichannel_pcm")
