@@ -324,8 +324,8 @@ void bsodFatal(const char *component)
 	gPainter p(my_dc);
 	p.resetOffset();
 	p.resetClip(eRect(ePoint(0, 0), my_dc->size()));
-	p.setBackgroundColor(gRGB(eConfigManager::getConfigValue("config.crash.backgroundcolor")));
-	p.setForegroundColor(gRGB(eConfigManager::getConfigValue("config.crash.foregroundcolor")));
+	p.setBackgroundColor(gRGB(eConfigManager::getConfigIntValue("config.crash.backgroundcolor")));
+	p.setForegroundColor(gRGB(eConfigManager::getConfigIntValue("config.crash.foregroundcolor")));
 
 	int hd =  my_dc->size().width() == 1920;
 	ePtr<gFont> font = new gFont("Regular", hd ? 30 : 20);
