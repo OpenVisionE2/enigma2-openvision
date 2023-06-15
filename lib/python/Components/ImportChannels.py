@@ -314,6 +314,7 @@ class ImportChannels():
 			eDVBDB.getInstance().reloadBouquets()
 			eDVBDB.getInstance().reloadServicelist()
 			InfoBar.instance.servicelist.showAllServices()
+			InfoBar.instance.servicelist.showFavourites()
 			self.ImportChannelsDone(True, _("Channels imported successfully from %s") % self.url)
 			if not files and not config.clientmode.enabled.value and not "0.0.0.0" in ClientModeScreen.getRemoteAddress(self):
 				from Components.ChannelsImporter import ChannelsImporter  # resource to import channels from ChannelsImporter
