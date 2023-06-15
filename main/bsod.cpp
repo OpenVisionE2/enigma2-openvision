@@ -324,8 +324,6 @@ void bsodFatal(const char *component)
 	gPainter p(my_dc);
 	p.resetOffset();
 	p.resetClip(eRect(ePoint(0, 0), my_dc->size()));
-	int backgroundcolor = 0x00BBFF;
-	int foregroundcolor = 0xFFFFFF;
 	int backgroundcolor = eConfigManager::getConfigIntValue("config.crash.backgroundcolor");
 	int foregroundcolor = eConfigManager::getConfigIntValue("config.crash.foregroundcolor");
 	p.setBackgroundColor(gRGB(backgroundcolor));
