@@ -1373,6 +1373,40 @@ def InitUsageConfig():
 	config.crash.sizeloglimit = ConfigSelectionNumber(min=1, max=250, stepwidth=1, default=2, wraparound=True)
 	config.crash.debugFileCount.save_forced = True
 
+	config.crash.backgroundcolor = ConfigSelection(default="0x00BBFF", choices=[
+		("0XFF0000", _("Red")),
+		("0XFF5500", _("Orange")),
+		("0XDD9900", _("Yellow")),
+		("0X99DD00", _("Lime")),
+		("0X00FF00", _("Green")),
+		("0X00FF99", _("Aqua")),
+		("0X00BBFF", _("Olympic")),
+		("0X0000FF", _("Blue")),
+		("0X6666FF", _("Azure")),
+		("0X9900FF", _("Purple")),
+		("0XFF00FF", _("Fuchsia")),
+		("0XFFFFFF", _("White")),
+		("0XC0C0C0", _("Silver")),
+		("0X000000", _("Black"))
+	])
+
+	config.crash.foregroundcolor = ConfigSelection(default="0xFFFFFF", choices=[
+		("0XFF0000", _("Red")),
+		("0XFF5500", _("Orange")),
+		("0XDD9900", _("Yellow")),
+		("0X99DD00", _("Lime")),
+		("0X00FF00", _("Green")),
+		("0X00FF99", _("Aqua")),
+		("0X00BBFF", _("Olympic")),
+		("0X0000FF", _("Blue")),
+		("0X6666FF", _("Azure")),
+		("0X9900FF", _("Purple")),
+		("0XFF00FF", _("Fuchsia")),
+		("0XFFFFFF", _("White")),
+		("0XC0C0C0", _("Silver")),
+		("0X000000", _("Black"))
+	])
+
 	config.logmanager = ConfigSubsection()
 	config.logmanager.showinextensions = ConfigYesNo(default=False)
 	config.logmanager.path = ConfigText(default="/")

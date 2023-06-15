@@ -506,7 +506,7 @@ def InitLcd():
 			("0x6666ff", _("Azure")),
 			("0x9900ff", _("Purple")),
 			("0xff0066", _("Pink")),
-			("0xffffff", _("White")),
+			("0xffffff", _("White"))
 		]
 		config.lcd.ledblinkcontrolcolor = ConfigSelection(choices=colorsList, default="0xffffff")
 		if isfile("/proc/stb/fp/led_blink"):
