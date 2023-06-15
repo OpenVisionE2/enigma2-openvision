@@ -3,6 +3,7 @@
 #include <csignal>
 #include <fstream>
 #include <sstream>
+#include <string>
 #include <algorithm>
 #ifdef __GLIBC__
 #include <execinfo.h>
@@ -324,8 +325,8 @@ void bsodFatal(const char *component)
 	gPainter p(my_dc);
 	p.resetOffset();
 	p.resetClip(eRect(ePoint(0, 0), my_dc->size()));
-	int backgroundcolor = eConfigManager::getConfigIntValue("config.crash.backgroundcolor");
-	int foregroundcolor = eConfigManager::getConfigIntValue("config.crash.foregroundcolor");
+	std::string backgroundcolor = eConfigManager::getConfigValue("config.crash.backgroundcolor");
+	std::string foregroundcolor = eConfigManager::getConfigValue("config.crash.foregroundcolor");
 	p.setBackgroundColor(gRGB(backgroundcolor));
 	p.setForegroundColor(gRGB(foregroundcolor));
 
