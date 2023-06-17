@@ -23,7 +23,7 @@ from six.moves.urllib.parse import quote
 from six.moves.urllib.request import Request, urlopen
 import xml.etree.ElementTree as et
 
-supportfiles = ('lamedb', 'blacklist', 'whitelist', 'alternatives.')
+supportfiles = ('lamedb', 'blacklist', 'whitelist', 'alternatives.', 'iptosat.json', 'iptosat.conf')
 channelslistpath = "/etc/enigma2"
 channelsepg = False
 
