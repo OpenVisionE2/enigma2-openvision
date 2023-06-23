@@ -16,7 +16,7 @@ from operator import itemgetter
 from Components.SystemInfo import BoxInfo
 from os.path import isfile
 import time
-import skin
+from skin import parameters
 from six.moves.urllib.error import URLError
 from six.moves.urllib.request import HTTPHandler, HTTPDigestAuthHandler, HTTPPasswordMgrWithDefaultRealm, Request, urlopen, build_opener, install_opener
 from process import ProcessList
@@ -567,24 +567,24 @@ class OscamInfoMenu(Screen):
 				if isfile(png):
 					png = LoadPixmap(png)
 				if png is not None:
-					x, y, w, h = skin.parameters.get("ChoicelistDash", (0, 2 * f, 800 * f, 2 * f))
+					x, y, w, h = parameters.get("ChoicelistDash", (0, 2 * f, 800 * f, 2 * f))
 					res.append((eListboxPythonMultiContent.TYPE_PIXMAP, int(x), int(y), int(w), int(h), png))
-					x, y, w, h = skin.parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
+					x, y, w, h = parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
 					res.append((eListboxPythonMultiContent.TYPE_TEXT, int(x), int(y), int(w), int(h), 0, RT_HALIGN_LEFT, t[2:]))
 					png2 = resolveFilename(SCOPE_GUISKIN, "buttons/key_" + keys[k] + ".png")
 					if isfile(png2):
 						png2 = LoadPixmap(png2)
 					if png2 is not None:
-						x, y, w, h = skin.parameters.get("ChoicelistIcon", (5 * f, 0, 35 * f, 25 * f))
+						x, y, w, h = parameters.get("ChoicelistIcon", (5 * f, 0, 35 * f, 25 * f))
 						res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, x, y, w, h, png2))
 			else:
-				x, y, w, h = skin.parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
+				x, y, w, h = parameters.get("ChoicelistName", (45 * f, 2 * f, 800 * f, 25 * f))
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, int(x), int(y), int(w), int(h), 0, RT_HALIGN_LEFT, t))
 				png2 = resolveFilename(SCOPE_GUISKIN, "buttons/key_" + keys[k] + ".png")
 				if isfile(png2):
 					png2 = LoadPixmap(png2)
 				if png2 is not None:
-					x, y, w, h = skin.parameters.get("ChoicelistIcon", (5 * f, 0, 35 * f, 25 * f))
+					x, y, w, h = parameters.get("ChoicelistIcon", (5 * f, 0, 35 * f, 25 * f))
 					res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, int(x), int(y), int(w), int(h), png2))
 			menuentries.append(res)
 			if k < len(keys) - 1:

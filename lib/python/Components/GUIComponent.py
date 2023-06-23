@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import skin
+from skin import applyAllAttributes
 
 from enigma import ePoint, eSize
 
@@ -36,7 +36,7 @@ class GUIComponent(object):
 			self.instance.hide()
 
 		if self.skinAttributes:
-			skin.applyAllAttributes(self.instance, desktop, self.skinAttributes, parent.scale)
+			applyAllAttributes(self.instance, desktop, self.skinAttributes, parent.scale)
 			return True
 		return False
 

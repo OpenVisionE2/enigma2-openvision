@@ -44,8 +44,8 @@ def PipPigMode(value):
 				if hasPIPVisibleProc:
 					open("/proc/stb/vmpeg/1/visible", "w").write("0")
 				elif hasattr(value, "pipservice"):
-					import skin
-					x, y, w, h = skin.parameters.get("PipHidePosition", (16, 16, 16, 16))
+					from skin import parameters
+					x, y, w, h = parameters.get("PipHidePosition", (16, 16, 16, 16))
 					pip = InfoBar.instance.session.pip
 					pip.move(x, y, doSave=False)
 					pip.resize(w, h, doSave=False)

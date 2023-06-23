@@ -15,7 +15,7 @@ from Screens.LocationBox import defaultInhibitDirs
 from ServiceReference import ServiceReference
 from Tools.Trashcan import getTrashFolder
 import NavigationInstance
-import skin
+from skin import parseFont, parseColor
 from enigma import eListboxPythonMultiContent, eListbox, gFont, iServiceInformation, eSize, loadPNG, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_CENTER, BT_SCALE, BT_KEEP_ASPECT_RATIO, BT_HALIGN_CENTER, BT_VALIGN_CENTER, eServiceReference, eServiceCenter, eTimer, getDesktop
 
 AUDIO_EXTENSIONS = frozenset((".dts", ".mp3", ".wav", ".wave", ".wv", ".oga", ".ogg", ".flac", ".m4a", ".mp2", ".m2a", ".wma", ".ac3", ".mka", ".aac", ".ape", ".alac", ".amr", ".au", ".mid"))
@@ -303,7 +303,7 @@ class MovieList(GUIComponent):
 			print("[MovieList] wrong '%s' skin parameters" % string)
 
 		def font(value):
-			font = skin.parseFont(value, ((1, 1), (1, 1)))
+			font = parseFont(value, ((1, 1), (1, 1)))
 			self.fontName = font.family
 			self.fontSize = font.pointSize
 
@@ -320,13 +320,13 @@ class MovieList(GUIComponent):
 			self.pbarLargeWidth = int(value)
 
 		def pbarColour(value):
-			self.pbarColour = skin.parseColor(value).argb()
+			self.pbarColour = parseColor(value).argb()
 
 		def pbarColourSeen(value):
-			self.pbarColourSeen = skin.parseColor(value).argb()
+			self.pbarColourSeen = parseColor(value).argb()
 
 		def pbarColourRec(value):
-			self.pbarColourRec = skin.parseColor(value).argb()
+			self.pbarColourRec = parseColor(value).argb()
 
 		def spaceIconeText(value):
 			self.spaceIconeText = int(value)

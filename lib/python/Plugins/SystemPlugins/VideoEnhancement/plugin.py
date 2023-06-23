@@ -7,7 +7,7 @@ from Components.Sources.StaticText import StaticText
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from . import VideoEnhancement
-import skin
+from skin import parameters
 
 
 class VideoEnhancementSetup(ConfigListScreen, Screen):
@@ -36,7 +36,7 @@ class VideoEnhancementSetup(ConfigListScreen, Screen):
 
 		self.list = []
 		self.xtdlist = []
-		self.seperation = skin.parameters.get("ConfigListSeperator", 300)
+		self.seperation = parameters.get("ConfigListSeperator", 300)
 		ConfigListScreen.__init__(self, self.list, session=self.session, on_change=self.changedEntry)
 		self.createSetup()
 
@@ -268,7 +268,7 @@ class VideoEnhancementPreview(ConfigListScreen, Screen):
 		self.maxValue = maxValue
 		self.configStepsEntry = None
 		self.isStepSlider = None
-		self.seperation = skin.parameters.get("ConfigListSeperator", 300)
+		self.seperation = parameters.get("ConfigListSeperator", 300)
 
 		self.list = []
 		self.configEntry = configEntry
