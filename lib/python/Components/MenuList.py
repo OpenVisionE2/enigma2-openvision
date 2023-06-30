@@ -22,9 +22,13 @@ class MenuList(GUIComponent):
 		instance.setContent(None)
 		instance.selectionChanged.get().remove(self.selectionChanged)
 
-	def selectionChanged(self):
-		for callback in self.onSelectionChanged:
-			callback()
+	def enableAutoNavigation(self, enabled):
+		if self.instance:
+			self.instance.enableAutoNavigation(enabled)
+
+	def selectionEnabled(self, enabled):
+		if self.instance:
+			self.instance.setSelectionEnable(enabled)
 
 	def getList(self):
 		return self.list
@@ -33,31 +37,33 @@ class MenuList(GUIComponent):
 		self.list = list
 		self.l.setList(self.list)
 
-	def selectionEnabled(self, enabled):
-		if self.instance:
-			self.instance.setSelectionEnable(enabled)
+	def count(self):
+		return len(self.list)
+
+	def selectionChanged(self):
+		for callback in self.onSelectionChanged:
+			callback()
 
 	def getCurrent(self):
 		return self.l.getCurrentSelection()
 
+	current = property(getCurrent)
+
 	def getCurrentIndex(self):
 		return self.l.getCurrentSelectionIndex()
-
-	def getSelectionIndex(self):
-		return self.getCurrentIndex()
-
-	def getSelectedIndex(self):
-		return self.getCurrentIndex()
-
-	def count(self):
-		return len(self.list)
 
 	def setCurrentIndex(self, index):
 		if self.instance:
 			self.instance.moveSelectionTo(index)
 
-	def moveToIndex(self, index):
-		self.setCurrentIndex(index)
+	index = property(getCurrentIndex, setCurrentIndex)
+
+	def getTopIndex(self):
+		return self.instance.getTopIndex() if self.instance else -1
+
+	def setTopIndex(self, index):
+		if self.instance:
+			self.instance.setTopIndex(index)
 
 	def goTop(self):
 		if self.instance:
@@ -71,6 +77,22 @@ class MenuList(GUIComponent):
 		if self.instance:
 			self.instance.goLineUp()
 
+	def goFirst(self):
+		if self.instance:
+			self.instance.goFirst()
+
+	def goLeft(self):
+		if self.instance:
+			self.instance.goLeft()
+
+	def goRight(self):
+		if self.instance:
+			self.instance.goRight()
+
+	def goLast(self):
+		if self.instance:
+			self.instance.goLast()
+
 	def goLineDown(self):
 		if self.instance:
 			self.instance.goLineDown()
@@ -83,15 +105,17 @@ class MenuList(GUIComponent):
 		if self.instance:
 			self.instance.goBottom()
 
-	def getTopIndex(self):
-		return self.instance.getTopIndex() if self.instance else -1
+	# Old method names.
+	# These methods should be found and removed from all code.
+	def getSelectionIndex(self):
+		return self.getCurrentIndex()
 
-	def setTopIndex(self, index):
-		if self.instance:
-			self.instance.setTopIndex(index)
+	def getSelectedIndex(self):
+		return self.getCurrentIndex()
 
-	# Old navigation method names.
-	#
+	def moveToIndex(self, index):
+		self.setCurrentIndex(index)
+
 	def top(self):
 		self.goTop()
 

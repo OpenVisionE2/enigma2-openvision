@@ -608,7 +608,7 @@ class TimerLog(Screen, HelpableScreen):
 		return [("%s: %s" % (strftime("%s %s" % (config.usage.date.daylong.value, config.usage.time.long.value), localtime(x[0])), x[2]), x) for x in self.logEntries]
 
 	def layoutFinished(self):
-		self["loglist"].instance.enableAutoNavigation(False)
+		self["loglist"].enableAutoNavigation(False)
 		self.updateText()
 
 	def updateText(self):
