@@ -135,7 +135,11 @@ public:
 	RESULT setRadioPic(const std::string &filename);
 		/* what 0=auto, 1=video, 2=audio. */
 	RESULT getPTS(int what, pts_t &pts);
+#if SIGCXX_MAJOR_VERSION == 3
+	RESULT connectVideoEvent(const sigc::slot<void(struct videoEvent)> &event, ePtr<eConnection> &connection);
+#else
 	RESULT connectVideoEvent(const sigc::slot1<void, struct videoEvent> &event, ePtr<eConnection> &connection);
+#endif
 	int getVideoWidth();
 	int getVideoHeight();
 	int getVideoProgressive();

@@ -8,8 +8,9 @@ class TemplatedMultiContent(StringList):
 	def __init__(self, args):
 		StringList.__init__(self, args)
 		from enigma import BT_HALIGN_CENTER, BT_HALIGN_LEFT, BT_HALIGN_RIGHT, BT_KEEP_ASPECT_RATIO, BT_SCALE, BT_VALIGN_BOTTOM, BT_VALIGN_CENTER, BT_VALIGN_TOP, RT_ELLIPSIS, RT_HALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_BOTTOM, RT_VALIGN_CENTER, RT_VALIGN_TOP, RT_WRAP, gFont
-		from skin import parseFont
+		from skin import getSkinFactor, parseFont
 		from Components.MultiContent import MultiContentEntryLinearGradient, MultiContentEntryLinearGradientAlphaBlend, MultiContentEntryPixmap, MultiContentEntryPixmapAlphaBlend, MultiContentEntryPixmapAlphaTest, MultiContentEntryProgress, MultiContentEntryProgressPixmap, MultiContentEntryRectangle, MultiContentEntryText, MultiContentTemplateColor
+		f = getSkinFactor()  # This is needed for special ViX skins using f in the template.
 		loc = locals()
 		del loc["self"]  # Cleanup locals a bit.
 		del loc["args"]
@@ -50,8 +51,8 @@ class TemplatedMultiContent(StringList):
 					else:
 						tmp.append(src[x])
 			except Exception as error:
-					print("[TemplatedMultiContent] Error: %s." % error)
-					tmp = self.source.list
+				print("[TemplatedMultiContent] Error: %s." % error)
+				tmp = self.source.list
 			self.content.setList(tmp)
 		self.setTemplate()
 		self.downstream_elements.changed(what)

@@ -699,8 +699,11 @@ void eAMLTSMPEGDecoder::parseVideoInfo()
 		}
 	}
 }
-
+#if SIGCXX_MAJOR_VERSION == 3
+RESULT eAMLTSMPEGDecoder::connectVideoEvent(const sigc::slot<void(struct videoEvent)> &event, ePtr<eConnection> &conn)
+#else
 RESULT eAMLTSMPEGDecoder::connectVideoEvent(const sigc::slot1<void, struct videoEvent> &event, ePtr<eConnection> &conn)
+#endif
 {
 	conn = new eConnection(this, m_video_event.connect(event));
 	return 0;

@@ -91,6 +91,8 @@ static void adjustBlitThreshold(unsigned int cputime, int area)
 #endif
 #endif
 
+#define ALPHA_TEST_MASK 0xFF000000
+
 gLookup::gLookup()
 	:size(0), lookup(0)
 {
@@ -111,9 +113,9 @@ void gLookup::build(int _size, const gPalette &pal, const gRGB &start, const gRG
 		size=0;
 	}
 	size=_size;
-	if (size <= 0)
+	if (!size)
 		return;
-	lookup=new gColor[static_cast<size_t>(size)];
+	lookup=new gColor[size];
 
 	lookup[0] = pal.findColor(start);
 
@@ -140,7 +142,6 @@ void gLookup::build(int _size, const gPalette &pal, const gRGB &start, const gRG
 
 gUnmanagedSurface::gUnmanagedSurface():
 	x(0), y(0), bpp(0), bypp(0), stride(0),
-	clut(),
 	data(0),
 	data_phys(0)
 {
@@ -150,7 +151,6 @@ gUnmanagedSurface::gUnmanagedSurface(int width, int height, int _bpp):
 	x(width),
 	y(height),
 	bpp(_bpp),
-	clut(),
 	data(0),
 	data_phys(0)
 {
@@ -315,7 +315,7 @@ void gPixmap::fill(const gRegion &region, const gColor &color)
 			}
 #endif
 #endif
-		} else
+		}	else
 #if HAVE_HISIAPI
 			if (surface->bpp != 0)
 #endif
@@ -610,8 +610,8 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 	{
 		ASSERT(src.size().width());
 		ASSERT(src.size().height());
-		scale_x = pos.size().width() * FIX / src.size().width();
-		scale_y = pos.size().height() * FIX / src.size().height();
+		scale_x = pos.size().width() * FIX / src.size().width(); //NOSONAR
+		scale_y = pos.size().height() * FIX / src.size().height(); //NOSONAR
 		if (flag & blitKeepAspectRatio)
 		{
 			if (scale_x > scale_y)
@@ -690,7 +690,9 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 
 //		eDebug("[gPixmap] srcarea after scale: %d %d %d %d",
 //			srcarea.x(), srcarea.y(), srcarea.width(), srcarea.height());
-
+#ifdef FORCE_NO_ACCELNEVER
+		accel = false;
+#else
 		if (accel)
 		{
 			if (srcarea.surface() * src.surface->bypp < accelerationthreshold)
@@ -706,10 +708,13 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 				/* alpha blending is requested */
 				if (gAccel::getInstance()->hasAlphaBlendingSupport())
 				{
-#ifndef FORCE_ALPHABLENDING_ACCELERATION
+#ifdef FORCE_ALPHABLENDING_ACCELERATION
 					/* Hardware alpha blending is broken on the few
 					 * boxes that support it, so only use it
 					 * when scaling */
+
+					accel = true;
+#else
 					if (flag & blitScale)
 						accel = true;
 					else if (flag & blitAlphaTest) /* Alpha test only on 8-bit */
@@ -728,6 +733,7 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 
 #ifdef GPIXMAP_CHECK_THRESHOLD
 		accel = (surface->data_phys && src.surface->data_phys);
+#endif
 #endif
 
 #ifdef GPIXMAP_DEBUG
@@ -893,8 +899,8 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 				{
 					// no real alphatest yet
 					int width=area.width();
-					uint8_t *s = srcptr;
-					uint8_t *d = dstptr;
+					unsigned char *s = (unsigned char*)srcptr;
+					unsigned char *d = (unsigned char*)dstptr;
 					// use duff's device here!
 					while (width--)
 					{
@@ -937,17 +943,17 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 					int width = area.width();
 					uint32_t *src = srcptr;
 					uint32_t *dst = dstptr;
+
 					while (width--)
 					{
 						if (!((*src)&0xFF000000))
 						{
-							++src;
-							++dst;
+							src++;
+							dst++;
 						} else
 							*dst++=*src++;
 					}
-				}
-				else if (flag & blitAlphaBlend)
+				} else if (flag & blitAlphaBlend)
 				{
 					int width = area.width();
 					gRGB *src = (gRGB*)srcptr;
@@ -1031,11 +1037,8 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 			uint8_t *srcptr=(uint8_t*)src.surface->data;
 			uint8_t *dstptr=(uint8_t*)surface->data;
 
-			srcptr+=srcarea.left()+srcarea.top()*src.surface->stride;
-			dstptr+=area.left()+area.top()*surface->stride;
-
-			if (flag & blitAlphaBlend)
-				eWarning("[gPixmap] ignore unsupported 32bpp -> 16bpp alphablend!");
+			srcptr+=srcarea.left()*src.surface->bypp+srcarea.top()*src.surface->stride;
+			dstptr+=area.left()*surface->bypp+area.top()*surface->stride;
 
 			for (int y=0; y<area.height(); y++)
 			{
@@ -1043,14 +1046,51 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 				uint32_t *srcp=(uint32_t*)srcptr;
 				uint16_t *dstp=(uint16_t*)dstptr;
 
-				if (flag & blitAlphaTest)
+				if (flag & blitAlphaBlend)
 				{
 					while (width--)
 					{
 						if (!((*srcp)&0xFF000000))
 						{
-							++srcp;
-							++dstp;
+							srcp++;
+							dstp++;
+						} else
+						{
+							gRGB icol = *srcp++;
+#if BYTE_ORDER == LITTLE_ENDIAN
+							uint32_t jcol = bswap_16(*dstp);
+#else
+							uint32_t jcol = *dstp;
+#endif
+							int bg_b = (jcol >> 8) & 0xF8;
+							int bg_g = (jcol >> 3) & 0xFC;
+							int bg_r = (jcol << 3) & 0xF8;
+
+							int a = icol.a;
+							int r = icol.r;
+							int g = icol.g;
+							int b = icol.b;
+
+							r = ((r-bg_r)*a)/255 + bg_r;
+							g = ((g-bg_g)*a)/255 + bg_g;
+							b = ((b-bg_b)*a)/255 + bg_b;
+
+#if BYTE_ORDER == LITTLE_ENDIAN
+							*dstp++ = bswap_16( (b >> 3) << 11 | (g >> 2) << 5 | r  >> 3 );
+#else
+							*dstp++ = (b >> 3) << 11 | (g >> 2) << 5 | r  >> 3 ;
+#endif
+						}
+					}
+				}
+				else if (flag & blitAlphaTest)
+				{
+					while (width--)
+					{
+						if (!((*srcp)&0xFF000000))
+						{
+							srcp++;
+							dstp++;
 						} else
 						{
 							uint32_t icol = *srcp++;
@@ -1100,10 +1140,10 @@ void gPixmap::blit(const gPixmap &src, const eRect &_pos, const gRegion &clip, i
 
 void gPixmap::mergePalette(const gPixmap &target)
 {
-	if (surface->clut.colors <= 0 || target.surface->clut.colors <= 0)
+	if ((!surface->clut.colors) || (!target.surface->clut.colors))
 		return;
 
-	gColor *lookup=new gColor[static_cast<size_t>(surface->clut.colors)];
+	gColor *lookup=new gColor[surface->clut.colors];
 
 	for (int i=0; i<surface->clut.colors; i++)
 		lookup[i].color=target.surface->clut.findColor(surface->clut.data[i]);
