@@ -29,6 +29,7 @@ else:
 	EMERGENCY_SKIN = "skin_default/skin.xml"
 	EMERGENCY_NAME = "Stone II"
 
+SKIN_DEFAULT = "skin_default/skin.xml"
 DEFAULT_DISPLAY_SKIN = "skin_default/skin_display_grautec.xml" if BoxInfo.getItem("grautec") else "skin_default/skin_display.xml"
 USER_SKIN = "skin_user.xml"
 USER_SKIN_TEMPLATE = "skin_user_%s.xml"
@@ -62,11 +63,12 @@ variables = {}
 
 config.skin = ConfigSubsection()
 skin = resolveFilename(SCOPE_SKINS, DEFAULT_SKIN)
-if not isfile(skin):
-	print("[Skin] Error: Default skin '%s' is not readable or is not a file!  Using emergency skin." % skin)
-	DEFAULT_SKIN = EMERGENCY_SKIN
 config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
 config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
+if not isfile(skin):
+	print("[Skin] Error: Default skin '%s' is not readable or is not a file!  Using emergency skin." % skin)
+	DEFAULT_SKIN = SKIN_DEFAULT
+DEFAULT_SKIN = EMERGENCY_SKIN
 
 currentPrimarySkin = None
 currentDisplaySkin = None
@@ -110,7 +112,7 @@ def InitSkins():
 	runCallbacks = False
 	# Add the emergency skin.  This skin should provide enough functionality
 	# to enable basic GUI functions to work.
-	loadSkin(EMERGENCY_SKIN, scope=SCOPE_GUISKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID)
+	loadSkin(SKIN_DEFAULT, scope=SCOPE_GUISKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID)
 	# Add the subtitle skin.
 	loadSkin(SUBTITLE_SKIN, scope=SCOPE_GUISKIN, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID)
 	# Add the main GUI skin.
