@@ -1,7 +1,7 @@
 #ifndef __lib_python_python_class_h
 
 #ifndef SKIP_PART2
-	#define __lib_python_python_class_h
+#define __lib_python_python_class_h
 #endif
 
 #include <string>
@@ -16,13 +16,32 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #define PyString_AS_STRING PyUnicode_AsUTF8
 #define PyString_AsString PyUnicode_AsUTF8
+//#define PyString_AsString PyBytes_AsString
 #define PyString_Check PyUnicode_Check
-
+#define PyInt_FromLong PyLong_FromLong
 #define PyInt_AsLong PyLong_AsLong
 #define PyInt_Check PyLong_Check
 #define PyInt_AsUnsignedLongMask PyLong_AsUnsignedLongMask
-
 #define PyExc_StandardError PyExc_Exception
+#define PyString_FromString PyUnicode_FromString
+#define PyString_Size PyBytes_Size
+/*
+#else
+#define PyUnicodeObject PyStringObject
+#define PyUnicode_FromStringAndSize PyString_FromStringAndSize
+//#define PyUnicode_AsUTF8 PyString_AS_STRING
+#define PyUnicode_AsUTF8 PyString_AsString
+#define PyBytes_AsString PyString_AsString
+#define PyUnicode_Check PyString_Check
+#define PyLong_FromLong PyInt_FromLong
+#define PyLong_AsLong PyInt_AsLong
+#define PyLong_Check PyInt_Check
+#define PyLong_AsUnsignedLongMask PyInt_AsUnsignedLongMask
+#define PyExc_Exception PyExc_StandardError
+#define PyUnicode_FromString PyString_FromString
+#define PyBytes_Size PyString_Size
+#define PyUnicode_AsUTF8AndSize PyString_Size
+*/
 #endif
 
 class ePyObject
@@ -208,7 +227,7 @@ public:
 
 #endif // ! PYTHON_REFCOUNT_DEBUG
 
-#endif  // !SWIG && !SKIP_PART1
+#endif // !SWIG && !SKIP_PART1
 
 #ifndef SKIP_PART2
 #ifndef SWIG
@@ -303,6 +322,7 @@ inline ePyObject Impl_PyLong_FromLongLong(const char* file, int line, long long 
 {
 	return ePyObject(PyLong_FromLongLong(val), file, line);
 }
+
 inline ePyObject Impl_PyLong_FromUnsignedLongLong(const char* file, int line, unsigned long long val)
 {
 	return ePyObject(PyLong_FromUnsignedLongLong(val), file, line);
@@ -416,6 +436,7 @@ inline ePyObject Impl_PyLong_FromLongLong(long long val)
 {
 	return PyLong_FromLongLong(val);
 }
+
 inline ePyObject Impl_PyLong_FromUnsignedLongLong(unsigned long long val)
 {
 	return PyLong_FromUnsignedLongLong(val);
@@ -449,6 +470,7 @@ inline void Impl_DECREF(PyObject *ob)
 {
 	Py_DECREF(ob);
 }
+
 #define Org_Py_INCREF(obj) Impl_INCREF(obj)
 #define Org_Py_DECREF(obj) Impl_DECREF(obj)
 #undef Py_DECREF

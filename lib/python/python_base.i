@@ -1,5 +1,6 @@
 %{
 #include <lib/base/ebase.h>
+#include <lib/python/python.h>
 #include "structmember.h"
 
 extern "C" {

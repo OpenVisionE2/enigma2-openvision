@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
-
+#include <lib/python/python.h>
 #include <lib/base/init.h>
 #include <lib/base/init_num.h>
 #include <lib/base/eerror.h>
@@ -178,7 +178,7 @@ int eMMI_UI::mmiScreenClose(int slot, int timeout)
 
 	ePyObject tuple = PyTuple_New(2);
 	PyTuple_SET_ITEM(tuple, 0, PyString_FromString("CLOSE"));
-	PyTuple_SET_ITEM(tuple, 1, PyLong_FromLong(timeout));
+	PyTuple_SET_ITEM(tuple, 1, PyInt_FromLong(timeout));
 	PyList_SET_ITEM(data.mmiScreen, 0, tuple);
 	data.mmiScreenReady = 1;
 	stateChanged(slot);

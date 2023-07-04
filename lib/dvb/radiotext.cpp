@@ -4,7 +4,7 @@
 #include <lib/dvb/idemux.h>
 #include <lib/dvb/decoder.h>
 #include <lib/gdi/gpixmap.h>
-
+#include <lib/python/python.h>
 DEFINE_REF(eDVBRdsDecoder);
 
 /* mode 0: RDS data is included in the audio stream

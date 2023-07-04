@@ -65,25 +65,37 @@ public:
 		NEW_CSW,
 		NEW_UCSW,
 		NEW_TONEBURST,
-		CSW,                         // state of the committed switch
-		UCSW,                        // state of the uncommitted switch
-		TONEBURST,                   // current state of toneburst switch
-		NEW_ROTOR_CMD,               // prev sent rotor cmd
-		NEW_ROTOR_POS,               // new rotor position (not validated)
-		ROTOR_CMD,                   // completed rotor cmd (finalized)
-		ROTOR_POS,                   // current rotor position
-		SAT_POSITION,                // current frontend satellite position
-		ADVANCED_LINKED_ROOT,        // number slot connected frontend
-		LINKED_PREV_PTR,             // prev double linked list (for linked FEs)
-		LINKED_NEXT_PTR,             // next double linked list (for linked FEs)
-		SATPOS_DEPENDS_PTR,          // pointer to FE with configured rotor (with twin/quattro lnb)
-		ADVANCED_SATPOSDEPENDS_ROOT, // root frontend with rotor (advanced satpos depending)
-		ADVANCED_SATPOSDEPENDS_LINK, // link to FE with configured rotor (with twin/quattro lnb, advanced satpos depending)
-		FREQ_OFFSET,                 // current frequency offset
-		CUR_VOLTAGE,                 // current voltage
-		CUR_TONE,                    // current continuous tone
-		SATCR,                       // current SatCR
-		DICTION,                     // current "diction" (0 = normal, 1 = Unicable, 2 = JESS)
+		CSW,				// state of the committed switch
+		UCSW,				// state of the uncommitted switch
+		TONEBURST,			// current state of toneburst switch
+		NEW_ROTOR_CMD,			// prev sent rotor cmd
+		NEW_ROTOR_POS,			// new rotor position (not validated)
+		ROTOR_CMD,			// completed rotor cmd (finalized)
+		ROTOR_POS,			// current rotor position
+		SAT_POSITION,			// current frontend satellite position
+		ADVANCED_LINKED_ROOT,		// number slot connected frontend
+		LINKED_PREV_PTR,		// prev double linked list (for linked FEs)
+		LINKED_NEXT_PTR,		// next double linked list (for linked FEs)
+		SATPOS_DEPENDS_PTR,		// pointer to FE with configured rotor (with twin/quattro lnb)
+		ADVANCED_SATPOSDEPENDS_ROOT,	// root frontend with rotor (advanced satpos depending)
+		ADVANCED_SATPOSDEPENDS_LINK,	// link to FE with configured rotor (with twin/quattro lnb, advanced satpos depending)
+		CUR_FREQ,			// current frequency
+		CUR_SYM,			// current symbolrate
+		CUR_LOF,			// current local oszillator frequency
+		CUR_BAND,			// current band
+		FREQ_OFFSET,			// current frequency offset
+		CUR_VOLTAGE,			// current voltage
+		CUR_TONE,			// current continuous tone
+		SATCR,				// current SatCR
+		DICTION,			// current diction
+		PIN,				// pin
+		DISEQC_WDG,			// Watchdog for buggy DiSEqC-implementation (VuZero)
+		SPECTINV_CNT,			// spectral inversation counter (need for offset calculation)
+		LFSR,				// PRNG collision handling
+		TAKEOVER_COUNTDOWN,
+		TAKEOVER_MASTER,
+		TAKEOVER_SLAVE,
+		TAKEOVER_RELEASE,
 		NUM_DATA_ENTRIES
 	};
 #if SIGCXX_MAJOR_VERSION == 3

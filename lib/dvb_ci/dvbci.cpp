@@ -25,7 +25,7 @@
 #include <lib/dvb_ci/dvbci_ccmgr.h>
 
 #include <dvbsi++/ca_program_map_section.h>
-#include <Python.h>
+#include <lib/python/python.h>
 
 eDVBCIInterfaces *eDVBCIInterfaces::instance = 0;
 
@@ -931,29 +931,21 @@ PyObject *eDVBCIInterfaces::getDescrambleRules(int slotid)
 	while(caids)
 	{
 		--caids;
-		PyList_SET_ITEM(caid_list, caids, PyLong_FromLong(*caid_it));
+		PyList_SET_ITEM(caid_list, caids, PyInt_FromLong(*caid_it));
 		++caid_it;
 	}
 	serviceSet::iterator ref_it(slot->possible_services.begin());
 	while(services)
 	{
 		--services;
-#if PY_MAJOR_VERSION < 3
 		PyList_SET_ITEM(service_list, services, PyString_FromString(ref_it->toString().c_str()));
-#else
-		PyList_SET_ITEM(service_list, services, PyUnicode_FromString(ref_it->toString().c_str()));
-#endif
 		++ref_it;
 	}
 	providerSet::iterator provider_it(slot->possible_providers.begin());
 	while(providers)
 	{
 		ePyObject tuple = PyTuple_New(2);
-#if PY_MAJOR_VERSION < 3
 		PyTuple_SET_ITEM(tuple, 0, PyString_FromString(provider_it->first.c_str()));
-#else
-		PyTuple_SET_ITEM(tuple, 0, PyUnicode_FromString(provider_it->first.c_str()));
-#endif
 		PyTuple_SET_ITEM(tuple, 1, PyLong_FromUnsignedLong(provider_it->second));
 		--providers;
 		PyList_SET_ITEM(provider_list, providers, tuple);
@@ -1019,22 +1011,14 @@ RESULT eDVBCIInterfaces::setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject)
 	{
 		--size;
 		ePyObject refstr = PyList_GET_ITEM(service_list, size);
-#if PY_MAJOR_VERSION < 3
 		if (!PyString_Check(refstr))
-#else
-		if (!PyUnicode_Check(refstr))
-#endif
 		{
 			char buf[255];
 			snprintf(buf, 255, "eDVBCIInterfaces::setDescrambleRules entry in service list is not a string.. it is '%s'!!", PyObject_TypeStr(refstr));
 			PyErr_SetString(PyExc_TypeError, buf);
 			return -1;
 		}
-#if PY_MAJOR_VERSION < 3
 		const char *tmpstr = PyString_AS_STRING(refstr);
-#else
-		const char *tmpstr = PyUnicode_AsUTF8(refstr);
-#endif
 		eServiceReference ref(tmpstr);
 		if (ref.valid())
 			slot->possible_services.insert(ref);
@@ -1060,29 +1044,21 @@ RESULT eDVBCIInterfaces::setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject)
 			PyErr_SetString(PyExc_TypeError, buf);
 			return -1;
 		}
-#if PY_MAJOR_VERSION < 3
 		if (!PyString_Check(PyTuple_GET_ITEM(tuple, 0)))
-#else
-		if (!PyUnicode_Check(PyTuple_GET_ITEM(tuple, 0)))
-#endif
 		{
 			char buf[255];
 			snprintf(buf, 255, "eDVBCIInterfaces::setDescrambleRules 1st entry in provider tuple is not a string it is '%s'", PyObject_TypeStr(PyTuple_GET_ITEM(tuple, 0)));
 			PyErr_SetString(PyExc_TypeError, buf);
 			return -1;
 		}
-		if (!PyLong_Check(PyTuple_GET_ITEM(tuple, 1)))
+		if (!PyInt_Check(PyTuple_GET_ITEM(tuple, 1)))
 		{
 			char buf[255];
 			snprintf(buf, 255, "eDVBCIInterfaces::setDescrambleRules 2nd entry in provider tuple is not a long it is '%s'", PyObject_TypeStr(PyTuple_GET_ITEM(tuple, 1)));
 			PyErr_SetString(PyExc_TypeError, buf);
 			return -1;
 		}
-#if PY_MAJOR_VERSION < 3
 		const char *tmpstr = PyString_AS_STRING(PyTuple_GET_ITEM(tuple, 0));
-#else
-		const char *tmpstr = PyUnicode_AsUTF8(PyTuple_GET_ITEM(tuple, 0));
-#endif
 		uint32_t orbpos = PyLong_AsUnsignedLong(PyTuple_GET_ITEM(tuple, 1));
 		if (strlen(tmpstr))
 			slot->possible_providers.insert(std::pair<std::string, uint32_t>(tmpstr, orbpos));
@@ -1094,14 +1070,14 @@ RESULT eDVBCIInterfaces::setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject)
 	{
 		--size;
 		ePyObject caid = PyList_GET_ITEM(caid_list, size);
-		if (!PyLong_Check(caid))
+		if (!PyInt_Check(caid))
 		{
 			char buf[255];
 			snprintf(buf, 255, "eDVBCIInterfaces::setDescrambleRules entry in caid list is not a long it is '%s'!!", PyObject_TypeStr(caid));
 			PyErr_SetString(PyExc_TypeError, buf);
 			return -1;
 		}
-		int tmpcaid = PyLong_AsLong(caid);
+		int tmpcaid = PyInt_AsLong(caid);
 		if (tmpcaid > 0 && tmpcaid < 0x10000)
 			slot->possible_caids.insert(tmpcaid);
 		else
@@ -1129,7 +1105,7 @@ PyObject *eDVBCIInterfaces::readCICaIds(int slotid)
 		if (ci_caids)
 		{
 			for (std::vector<uint16_t>::const_iterator it = ci_caids->begin(); it != ci_caids->end(); ++it)
-				PyList_SET_ITEM(list, idx++, PyLong_FromLong(*it));
+				PyList_SET_ITEM(list, idx++, PyInt_FromLong(*it));
 		}
 		return list;
 	}

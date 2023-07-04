@@ -2,7 +2,7 @@
 #include <linux/dvb/frontend.h>
 #include <linux/dvb/dmx.h>
 #include <linux/dvb/version.h>
-
+#include <lib/python/python.h>
 #include <lib/base/cfile.h>
 #include <lib/base/eerror.h>
 #include <lib/base/estring.h>
@@ -238,7 +238,7 @@ void eDVBAdapterLinux::scanDevices()
 			if (ok)
 				m_frontend.push_back(ePtr<eDVBFrontend>(fe));
 		}
-		++num_fe;
+		++num_fe; // NOSONAR
 	}
 
 		// scan demux
@@ -543,8 +543,7 @@ eDVBUsbAdapter::eDVBUsbAdapter(int nr)
 	mappedFrontendName[virtualFrontendName] = usbFrontendName;
 	if (pipe(pipeFd) == -1)
 	{
-		eWarning("[eDVBUsbAdapter] failed to create pipe (%m)");
-		goto error;
+		eDebug("[eDVBUsbAdapter] failed to create pipe (%m)");
 	}
 	running = true;
 	pthread_create(&pumpThread, NULL, threadproc, (void*)this);
@@ -807,7 +806,7 @@ void eDVBResourceManager::setUsbTuner()
 			if ((res = sscanf(line.c_str(), "NIM Socket %d:", &fe_idx)) == 1)
 				continue;
 
-			if ((fe_idx != -1) && (line.find("\tName: ") == 0) && (line.find("VTUNER") != -1))
+			if ((fe_idx != -1) && (line.find("\tName: ") == 0) && (line.find("VTUNER") != std::string::npos))
 				usbtuner_idx[usbtuner_count++] = fe_idx;
 		}
 		in.close();
@@ -1179,15 +1178,20 @@ alloc_fe_by_id_not_possible:
 	return err;
 }
 
+#define capHoldDecodeReference 64
+
 RESULT eDVBResourceManager::allocateDemux(eDVBRegisteredFrontend *fe, ePtr<eDVBAllocatedDemux> &demux, int &cap)
 {
+	/* find first unused demux which is on same adapter as frontend (or any, if PVR)
+		never use the first one unless we need a decoding demux. */
+
 	eDebug("[eDVBResourceManager] allocate demux cap=%02X", cap);
 	eSmartPtrList<eDVBRegisteredDemux>::iterator i(m_demux.begin());
 
 	if (i == m_demux.end())
 		return -1;
 
-	iDVBAdapter *adapter = fe ? fe->m_adapter : m_adapter.begin();
+	iDVBAdapter *adapter = fe ? fe->m_adapter : m_adapter.begin(); /* look for a demux on the same adapter as the frontend, or the first adapter for dvr playback */
 	int fesource = fe ? fe->m_frontend->getDVBID() : -1;
 	ePtr<eDVBRegisteredDemux> unused;
 	uint8_t d, a;
@@ -1383,8 +1387,10 @@ RESULT eDVBResourceManager::allocateChannel(const eDVBChannelID &channelid, eUse
 
 	int err = allocateFrontend(fe, feparm, simulate);
 	if (err)
+	{
+		eDebugNoSimulate("[eDVBResourceManager] can't allocate frontend!");
 		return err;
-
+	}
 	RESULT res;
 	ePtr<eDVBChannel> ch = new eDVBChannel(this, fe);
 
@@ -1392,6 +1398,7 @@ RESULT eDVBResourceManager::allocateChannel(const eDVBChannelID &channelid, eUse
 	if (res)
 	{
 		channel = 0;
+		eDebugNoSimulate("[eDVBResourceManager] channel id not found!");
 		return errChidNotFound;
 	}
 
@@ -2179,7 +2186,7 @@ void eDVBChannel::getNextSourceSpan(off_t current_offset, size_t bytes_read, off
 			}
 			if (!m_cue->m_decoding_demux)
 			{
-				eDebug("[eDVBChannel] getNextSourceSpan, no decoding demux. couldn't seek to %lld... ignore request!", pts);
+				eDebug("[eDVBChannel] getNextSourceSpan, no decoding demux. couldn't seek to %llu... ignore request!", pts);
 				start = current_offset;
 				size = max;
 				continue;
@@ -2229,7 +2236,7 @@ void eDVBChannel::getNextSourceSpan(off_t current_offset, size_t bytes_read, off
 			} else
 			{
 				pts = nextap;
-				eDebug("[eDVBChannel] next ap is %lld\n", pts);
+				eDebug("[eDVBChannel] next ap is %llu\n", pts);
 			}
 		}
 
@@ -2239,7 +2246,7 @@ void eDVBChannel::getNextSourceSpan(off_t current_offset, size_t bytes_read, off
 		m_tstools_lock.unlock();
 		if (r)
 		{
-			eDebug("[eDVBChannel] get offset for pts=%lld failed!", pts);
+			eDebug("[eDVBChannel] get offset for pts=%llu failed!", pts);
 			continue;
 		}
 
@@ -2282,18 +2289,18 @@ void eDVBChannel::getNextSourceSpan(off_t current_offset, size_t bytes_read, off
 				/* when skipping reverse, however, choose the zone before. */
 				/* This returns a size 0 block, in case you noticed... */
 				--i;
-				eDebug("[eDVBChannel] skip to previous block, which is %ju..%ju", i->first, i->second);
+				eDebug("[eDVBChannel] skip to previous block, which is %jd..%jd", (intmax_t)i->first, (intmax_t)i->second);
 				size_t len = diff_upto(i->second, i->first, max);
 				start = i->second - len;
 				eDebug("[eDVBChannel] skipping to %jd, %zd", (intmax_t)start, len);
 			}
 
-			eDebug("[eDVBChannel] result: %jd, %zx (%ju %ju)", (intmax_t)start, size, i->first, i->second);
+			eDebug("[eDVBChannel] result: %jd, %zx (%jd %jd)", (intmax_t)start, size, (intmax_t)i->first, (intmax_t)i->second);
 			return;
 		}
 	}
 
-	if ((current_offset < 0) && (m_skipmode_m < 0))
+	if ((current_offset < -m_skipmode_m) && (m_skipmode_m < 0))
 	{
 		eDebug("[eDVBChannel] reached SOF");
 		m_skipmode_m = 0;
@@ -2482,6 +2489,18 @@ RESULT eDVBChannel::getDemux(ePtr<iDVBDemux> &demux, int cap)
 			return -1;
 
 		demux = *our_demux;
+
+		/* don't hold a reference to the decoding demux, we don't need it. */
+
+		/* FIXME: by dropping the 'allocated demux' in favour of the 'iDVBDemux',
+		   the refcount is lost. thus, decoding demuxes are never allocated.
+
+		   this poses a big problem for PiP. */
+
+		if (cap & capHoldDecodeReference) // this is set in eDVBResourceManager::allocateDemux for Dm500HD/DM800 and DM8000
+			;
+		else if (cap & capDecode)
+			our_demux = 0;
 	}
 	else
 		demux = *our_demux;

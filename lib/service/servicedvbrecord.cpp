@@ -6,7 +6,7 @@
 #include <lib/base/nconfig.h> 
 #include <lib/base/httpstream.h>
 #include <fcntl.h>
-
+#include <lib/python/python.h>
 	/* for cutlist */
 #include <byteswap.h>
 #include <netinet/in.h>

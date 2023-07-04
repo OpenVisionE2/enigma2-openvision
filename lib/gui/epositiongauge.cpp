@@ -1,6 +1,6 @@
 #include <lib/gui/epositiongauge.h>
 #include <lib/gui/epixmap.h>
-
+#include <lib/python/python.h>
 ePositionGauge::ePositionGauge(eWidget *parent)
 	: eWidget(parent)
 {
@@ -85,7 +85,7 @@ void ePositionGauge::setInOutList(ePyObject list)
 			continue;
 
 		ePyObject ppts = PyTuple_GET_ITEM(tuple, 0), ptype = PyTuple_GET_ITEM(tuple, 1);
-		if (!(PyLong_Check(ppts) && PyInt_Check(ptype)))
+		if (!(PyInt_Check(ppts) && PyInt_Check(ptype)))
 			continue;
 
 		pts_t pts = PyLong_AsLongLong(ppts);

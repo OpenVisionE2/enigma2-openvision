@@ -10,7 +10,7 @@
 #include <lib/base/eerror.h>
 #include <lib/base/estring.h>
 #include <lib/dvb_ci/dvbci_session.h>
-
+#include <lib/python/python.h>
 #include <Python.h>
 
 #define MAX_LENGTH_BYTES 4

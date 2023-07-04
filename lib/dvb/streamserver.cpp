@@ -16,7 +16,7 @@
 #include <lib/base/nconfig.h>
 #include <lib/base/cfile.h>
 #include <lib/base/e2avahi.h>
-
+#include <lib/python/python.h>
 #include <lib/dvb/streamserver.h>
 #include <lib/dvb/encoder.h>
 

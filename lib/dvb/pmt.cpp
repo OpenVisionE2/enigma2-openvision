@@ -26,7 +26,7 @@
 #include <dvbsi++/application_name_descriptor.h>
 #include <dvbsi++/application_profile.h>
 #include <dvbsi++/application_descriptor.h>
-
+#include <lib/python/python.h>
 #define PACK_VERSION(major,minor,micro) (((major) << 16) + ((minor) << 8) + (micro))
 #define UNPACK_VERSION(version,major,minor,micro) { \
 		major = (version)&0xff; \

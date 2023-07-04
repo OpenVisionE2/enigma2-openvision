@@ -51,7 +51,8 @@ public:
 		fcc_state_decoding,
 		fcc_state_failed
 	};
-	SWIG_VOID(RESULT)  playFCCService(const eServiceReference &ref, ePtr<iPlayableService> &SWIG_OUTPUT);
+	SWIG_VOID(RESULT)
+	playFCCService(const eServiceReference &ref, ePtr<iPlayableService> &SWIG_OUTPUT);
 	RESULT stopFCCService(const eServiceReference &sref);
 	RESULT stopFCCService();
 	RESULT cleanupFCCService();
@@ -65,6 +66,7 @@ public:
 	bool isEnable() { return m_fcc_enable; }
 	bool isStateDecoding(iPlayableService* service);
 	void setNormalDecoding(iPlayableService* service);
+	void setNav(eNavigation *navptr) { m_core = navptr; }
 };
 
 #endif /* __dvb_fcc_h */

@@ -1,7 +1,7 @@
 #define PNG_SKIP_SETJMP_CHECK
 #include <png.h>
 #include <fcntl.h>
-
+#include <lib/python/python.h>
 #include <lib/base/cfile.h>
 #include <lib/base/wrappers.h>
 #include <lib/gdi/picload.h>
@@ -1494,12 +1494,12 @@ SWIG_VOID(int) loadPic(ePtr<gPixmap> &result, std::string filename, int x, int y
 	}
 
 	ePyObject tuple = PyTuple_New(7);
-	PyTuple_SET_ITEM(tuple, 0,  PyLong_FromLong(x));
-	PyTuple_SET_ITEM(tuple, 1,  PyLong_FromLong(y));
-	PyTuple_SET_ITEM(tuple, 2,  PyLong_FromLong(asp1));
-	PyTuple_SET_ITEM(tuple, 3,  PyLong_FromLong(asp2));
-	PyTuple_SET_ITEM(tuple, 4,  PyLong_FromLong(0));
-	PyTuple_SET_ITEM(tuple, 5,  PyLong_FromLong(resize_mode));
+	PyTuple_SET_ITEM(tuple, 0,  PyInt_FromLong(x));
+	PyTuple_SET_ITEM(tuple, 1,  PyInt_FromLong(y));
+	PyTuple_SET_ITEM(tuple, 2,  PyInt_FromLong(asp1));
+	PyTuple_SET_ITEM(tuple, 3,  PyInt_FromLong(asp2));
+	PyTuple_SET_ITEM(tuple, 4,  PyInt_FromLong(0));
+	PyTuple_SET_ITEM(tuple, 5,  PyInt_FromLong(resize_mode));
 	if(background)
 		PyTuple_SET_ITEM(tuple, 6,  PyString_FromString("#ff000000"));
 	else

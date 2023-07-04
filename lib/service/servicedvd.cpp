@@ -9,7 +9,7 @@
 #include <lib/base/init.h>
 #include <lib/gui/esubtitle.h>
 #include <lib/gdi/gpixmap.h>
-
+#include <lib/python/python.h>
 #include <byteswap.h>
 #include <netinet/in.h>
 #ifndef BYTE_ORDER
@@ -1175,9 +1175,9 @@ eAutoInitPtr<eServiceFactoryDVD> init_eServiceFactoryDVD(eAutoInitNumbers::servi
 #if PY_MAJOR_VERSION >= 3
 	static struct PyModuleDef servicedvd_moduledef = {
 		PyModuleDef_HEAD_INIT,
-		"servicedvd",	/* m_name */
-		"servicedvd",	/* m_doc */
-		-1,				/* m_size */
+		"servicedvd",		/* m_name */
+		"servicedvd",		/* m_doc */
+		-1,			/* m_size */
 		NULL,			/* m_methods */
 		NULL,			/* m_reload */
 		NULL,			/* m_traverse */

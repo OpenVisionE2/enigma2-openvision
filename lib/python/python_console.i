@@ -1,5 +1,6 @@
 %{
 #include <lib/base/console.h>
+#include <lib/python/python.h>
 #include "structmember.h"
 #include <Python.h>
 
