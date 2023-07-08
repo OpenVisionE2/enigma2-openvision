@@ -206,12 +206,14 @@ void eDVBCISession::createSession(eDVBCISlot *slot, const unsigned char *resourc
 //		session=new eDVBCIAuthSession;
 		eDebug("[CI SESS] AuthSession");
 		[[fallthrough]];
-	case 0x00800041://EBU Teletext 00800041       128        1           1
+// Is this needed?
+	case 0x00800041: //EBU Teletext 00800041 128 1 1
 		eDebug("[CI SESS] Create EBU teletext session but no support for now.");
 		session=0;
 		status=0xF0;
 		break;
-	case 0x00780041://EPG event  00780041       120        *           1
+// Is this needed?
+	case 0x00780041: //EPG event 00780041 120 * 1
 		eDebug("[CI SESS] Create EPG event session but no support for now.");
 		session=0;
 		status=0xF0;

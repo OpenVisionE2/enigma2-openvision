@@ -1,28 +1,32 @@
 # -*- coding: utf-8 -*-
-from Screens.Screen import Screen
-from Screens.ChannelSelection import *
-from Screens.ChoiceBox import ChoiceBox
-from Screens.Standby import TryQuitMainloop
-from Screens.MessageBox import MessageBox
+from six import ensure_str
+
+from os import remove, unlink
+from os.path import isfile
+from xml.etree.cElementTree import parse
+
+from enigma import eDVBCI_UI, eDVBCIInterfaces, eEnv, eServiceCenter
+
+
 from Components.ActionMap import ActionMap
-from Components.Sources.List import List
-from Components.Sources.StaticText import StaticText
 from Components.config import ConfigNothing
 from Components.ConfigList import ConfigList
 from Components.Label import Label
-from Components.SelectionList import SelectionList
 from Components.MenuList import MenuList
+from Components.SelectionList import SelectionList
 from Components.SystemInfo import BoxInfo
 from ServiceReference import ServiceReference
 from Plugins.Plugin import PluginDescriptor
-from xml.etree.cElementTree import parse
-from enigma import eDVBCI_UI, eDVBCIInterfaces, eEnv, eServiceCenter
+from Screens.ChannelSelection import *
+from Screens.ChoiceBox import ChoiceBox
+from Screens.MessageBox import MessageBox
+from Screens.Screen import Screen
+from Components.Sources.List import List
+from Components.Sources.StaticText import StaticText
+from Screens.Standby import TryQuitMainloop
 from Tools.BoundFunction import boundFunction
 from Tools.CIHelper import cihelper
 from Tools.XMLTools import stringToXML
-
-from os import remove, unlink
-from os.path import exists
 
 CommonInterface = BoxInfo.getItem("CommonInterface")
 
@@ -39,20 +43,17 @@ class CIselectMainMenu(Screen):
 
 	def __init__(self, session, args=0):
 		Screen.__init__(self, session)
-		self.setTitle(_("CI assignment"))
 		self["key_red"] = StaticText(_("Close"))
 		self["key_green"] = StaticText(_("Edit"))
-		self["actions"] = ActionMap(["ColorActions", "SetupActions"],
+		self["actions"] = ActionMap(["CancelSaveActions"],
 			{
-				"green": self.greenPressed,
-				"red": self.close,
-				"ok": self.greenPressed,
+				"save": self.greenPressed,
 				"cancel": self.close
 			}, -1)
 
 		NUM_CI = CommonInterface
 
-		print("[CommonInterfaceAssignment] CI_Wizzard FOUND %d CI Slots " % NUM_CI)
+		print("[CI_Wizzard] FOUND %d CI Slots " % NUM_CI)
 
 		self.dlg = None
 		self.state = {}
@@ -73,11 +74,14 @@ class CIselectMainMenu(Screen):
 					self.list.append((appname, ConfigNothing(), 0, slot))
 		else:
 			self.list.append((_("no CI slots found"), ConfigNothing(), 1, -1))
-
 		menuList = ConfigList(self.list)
 		menuList.list = self.list
 		menuList.l.setList(self.list)
 		self["CiList"] = menuList
+		self.onShown.append(self.setWindowTitle)
+
+	def setWindowTitle(self):
+		self.setTitle(_("CI assignment"))
 
 	def greenPressed(self):
 		cur = self["CiList"].getCurrent()
@@ -85,9 +89,9 @@ class CIselectMainMenu(Screen):
 			action = cur[2]
 			slot = cur[3]
 			if action == 1:
-				print("[CommonInterfaceAssignment] CI_Wizzard there is no CI Slot in your receiver")
+				print("[CI_Wizzard] there is no CI Slot in your receiver")
 			else:
-				print("[CommonInterfaceAssignment] CI_Wizzard selected CI Slot : %d" % slot)
+				print("[CI_Wizzard] selected CI Slot : %d" % slot)
 				if config.usage.setup_level.index > 1: # advanced
 					self.session.open(CIconfigMenu, slot)
 				else:
@@ -116,7 +120,6 @@ class CIconfigMenu(Screen):
 	def __init__(self, session, ci_slot="9"):
 
 		Screen.__init__(self, session)
-		self.setTitle(_("CI assignment"))
 		self.ci_slot = ci_slot
 		self.filename = eEnv.resolve("${sysconfdir}/enigma2/ci") + str(self.ci_slot) + ".xml"
 
@@ -129,7 +132,7 @@ class CIconfigMenu(Screen):
 		self["ServiceList_desc"] = StaticText(_("Assigned services/provider:"))
 		self["ServiceList_info"] = StaticText()
 
-		self["actions"] = ActionMap(["ColorActions", "SetupActions", "MenuActions"],
+		self["actions"] = ActionMap(["ColorActions", "OkCancelActions", "MenuActions"],
 			{
 				"green": self.greenPressed,
 				"red": self.redPressed,
@@ -139,7 +142,7 @@ class CIconfigMenu(Screen):
 				"cancel": self.cancel
 			}, -1)
 
-		print("[CommonInterfaceAssignment] CI_Wizzard_Config Configuring CI Slots : %d  " % self.ci_slot)
+		print("[CI_Wizzard_Config] Configuring CI Slots : %d  " % self.ci_slot)
 
 		i = 0
 		self.caidlist = []
@@ -147,7 +150,7 @@ class CIconfigMenu(Screen):
 			i += 1
 			self.caidlist.append((str(hex(int(caid))), str(caid), i))
 
-		print("[CommonInterfaceAssignment] CI_Wizzard_Config_CI%d read following CAIds from CI: %s" % (self.ci_slot, self.caidlist))
+		print("[CI_Wizzard_Config_CI%d] read following CAIds from CI: %s" % (self.ci_slot, self.caidlist))
 
 		self.selectedcaid = []
 		self.servicelist = []
@@ -163,6 +166,10 @@ class CIconfigMenu(Screen):
 		if config.usage.setup_level.index <= 1: # advanced
 			self.selectedcaid = self.caidlist
 			self.finishedCAidSelection(self.selectedcaid)
+		self.onShown.append(self.setWindowTitle)
+
+	def setWindowTitle(self):
+		self.setTitle(_("CI assignment"))
 
 	def redPressed(self):
 		self.delete()
@@ -177,7 +184,7 @@ class CIconfigMenu(Screen):
 		self.session.openWithCallback(self.finishedCAidSelection, CAidSelect, self.caidlist, self.selectedcaid)
 
 	def menuPressed(self):
-		if exists(self.filename):
+		if isfile(self.filename):
 			self.session.openWithCallback(self.deleteXMLfile, MessageBox, _("Delete file") + " " + self.filename + "?", MessageBox.TYPE_YESNO)
 
 	def deleteXMLfile(self, answer):
@@ -185,7 +192,7 @@ class CIconfigMenu(Screen):
 			try:
 				remove(self.filename)
 			except:
-				print("[CommonInterfaceAssignment] CI_Config_CI%d error remove xml..." % self.ci_slot)
+				print("[CI_Config_CI%d] error remove xml..." % self.ci_slot)
 			else:
 				self.session.openWithCallback(self.restartGui, MessageBox, _("Restart GUI now?"), MessageBox.TYPE_YESNO)
 
@@ -279,7 +286,7 @@ class CIconfigMenu(Screen):
 
 	def saveXML(self):
 		try:
-			fp = file(self.filename, 'w')
+			fp = open(self.filename, 'w')
 			fp.write("<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n")
 			fp.write("<ci>\n")
 			fp.write("\t<slot>\n")
@@ -302,11 +309,11 @@ class CIconfigMenu(Screen):
 			fp.write("</ci>\n")
 			fp.close()
 		except:
-			print("[CommonInterfaceAssignment] CI_Config_CI%d xml not written" % self.ci_slot)
+			print("[CI_Config_CI%d] xml not written" % self.ci_slot)
 			unlink(self.filename)
 
 	def loadXML(self):
-		if not exists(self.filename):
+		if not isfile(self.filename):
 			self.setServiceListInfo()
 			return
 
@@ -320,7 +327,7 @@ class CIconfigMenu(Screen):
 		try:
 			tree = parse(self.filename).getroot()
 			for slot in tree.findall("slot"):
-				read_slot = getValue(slot.findall("id"), False).encode("UTF-8")
+				read_slot = ensure_str(getValue(slot.findall("id"), False))
 				i = 0
 				for caid in slot.findall("caid"):
 					read_caid = caid.get("id").encode("UTF-8")
@@ -329,22 +336,21 @@ class CIconfigMenu(Screen):
 					i += 1
 
 				for service in slot.findall("service"):
-					read_service_name = service.get("name").encode("UTF-8")
-					read_service_ref = service.get("ref").encode("UTF-8")
+					read_service_name = ensure_str(service.get("name"))
+					read_service_ref = ensure_str(service.get("ref"))
 					self.read_services.append(read_service_ref)
 
 				for provider in slot.findall("provider"):
-					read_provider_name = provider.get("name").encode("UTF-8")
-					read_provider_dvbname = provider.get("dvbnamespace").encode("UTF-8")
+					read_provider_name = ensure_str(provider.get("name"))
+					read_provider_dvbname = ensure_str(provider.get("dvbnamespace"))
 					self.read_providers.append((read_provider_name, read_provider_dvbname))
-
 				self.ci_config.append((int(read_slot), (self.read_services, self.read_providers, self.usingcaid)))
 		except:
-			print("[CommonInterfaceAssignment] CI_Config_CI%d error parsing xml..." % self.ci_slot)
+			print("[CI_Config_CI%d] error parsing xml..." % self.ci_slot)
 			try:
 				remove(self.filename)
 			except:
-				print("[CommonInterfaceAssignment] CI_Activate_Config_CI%d error remove damaged xml..." % self.ci_slot)
+				print("[CI_Activate_Config_CI%d] error remove damaged xml..." % self.ci_slot)
 
 		for item in self.read_services:
 			if len(item):
@@ -375,7 +381,7 @@ class easyCIconfigMenu(CIconfigMenu):
 
 	def __init__(self, session, ci_slot="9"):
 		CIconfigMenu.__init__(self, session, ci_slot)
-		self["actions"] = ActionMap(["ColorActions", "SetupActions", "MenuActions"],
+		self["actions"] = ActionMap(["ColorActions", "OkCancelActions", "MenuActions"],
 			{
 				"green": self.greenPressed,
 				"red": self.redPressed,
@@ -397,19 +403,18 @@ class CAidSelect(Screen):
 			<widget source="introduction" render="Label" position="0,400" size="450,40" zPosition="10" font="Regular;21" horizontalAlignment="center" verticalAlignment="center" backgroundColor="#25062748" transparent="1" />
 		</screen>"""
 
-	def __init__(self, session, list, selected_caids):
+	def __init__(self, session, _list, selected_caids):
 
 		Screen.__init__(self, session)
-		self.setTitle(_("select CAId's"))
 
 		self.list = SelectionList()
 		self["list"] = self.list
 
-		for listindex in range(len(list)):
-			if find_in_list(selected_caids, list[listindex][0], 0):
-				self.list.addSelection(list[listindex][0], list[listindex][1], listindex, True)
+		for listindex in range(len(_list)):
+			if find_in_list(selected_caids, _list[listindex][0], 0):
+				self.list.addSelection(_list[listindex][0], _list[listindex][1], listindex, True)
 			else:
-				self.list.addSelection(list[listindex][0], list[listindex][1], listindex, False)
+				self.list.addSelection(_list[listindex][0], _list[listindex][1], listindex, False)
 
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Save"))
@@ -422,10 +427,14 @@ class CAidSelect(Screen):
 			"green": self.greenPressed,
 			"red": self.cancel
 		}, -1)
+		self.onShown.append(self.setWindowTitle)
+
+	def setWindowTitle(self):
+		self.setTitle(_("select CAId's"))
 
 	def greenPressed(self):
-		list = self.list.getSelectionsList()
-		self.close(list)
+		_list = self.list.getSelectionsList()
+		self.close(_list)
 
 	def cancel(self):
 		self.close()
@@ -435,6 +444,9 @@ class myProviderSelection(ChannelSelectionBase):
 	skin = """
 		<screen name="myProviderSelection" position="center,center" size="560,440" title="Select provider to add...">
 			<ePixmap pixmap="buttons/red.png" position="0,0" size="140,40" alphaTest="on" />
+			<ePixmap pixmap="buttons/green.png" position="140,0" size="140,40" alphaTest="on" />
+			<ePixmap pixmap="buttons/yellow.png" position="280,0" size="140,40" alphaTest="on" />
+			<ePixmap pixmap="buttons/blue.png" position="420,0" size="140,40" alphaTest="on" />
 			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="140,40" font="Regular;20" horizontalAlignment="center" verticalAlignment="center" backgroundColor="#9f1313" transparent="1" />
 			<widget source="key_green" render="Label" position="140,0" zPosition="1" size="140,40" font="Regular;20" horizontalAlignment="center" verticalAlignment="center" backgroundColor="#1f771f" transparent="1" />
 			<widget source="key_yellow" render="Label" position="280,0" zPosition="1" size="140,40" font="Regular;20" horizontalAlignment="center" verticalAlignment="center" backgroundColor="#a08500" transparent="1" />
@@ -446,8 +458,7 @@ class myProviderSelection(ChannelSelectionBase):
 
 	def __init__(self, session, title):
 		ChannelSelectionBase.__init__(self, session)
-		self.setTitle(_("Select provider to add..."))
-		self.onShown.append(self.showSatellites)
+		self.onShown.append(self.__onExecCallback)
 		self.bouquet_mark_edit = EDIT_BOUQUET
 
 		self["actions"] = ActionMap(["OkCancelActions", "ChannelSelectBaseActions"],
@@ -473,6 +484,10 @@ class myProviderSelection(ChannelSelectionBase):
 
 	def showFavourites(self):
 		pass
+
+	def __onExecCallback(self):
+		self.showSatellites()
+		self.setTitle(_("Select provider to add..."))
 
 	def channelSelected(self): # just return selected service
 		ref = self.getCurrentSelection()
@@ -583,7 +598,6 @@ class myChannelSelection(ChannelSelectionBase):
 
 	def __init__(self, session, title):
 		ChannelSelectionBase.__init__(self, session)
-		self.setTitle(_("Select service to add..."))
 		self.onShown.append(self.__onExecCallback)
 		self.bouquet_mark_edit = OFF
 
@@ -601,11 +615,12 @@ class myChannelSelection(ChannelSelectionBase):
 		self["key_red"] = StaticText(_("All"))
 		self["key_green"] = StaticText(_("Close"))
 		self["key_yellow"] = StaticText()
-		self["key_blue"] = StaticText(_("Favourites"))
+		self["key_blue"] = StaticText(_("Favorites"))
 		self["introduction"] = StaticText(_("Press OK to select a service."))
 
 	def __onExecCallback(self):
 		self.setModeTv()
+		self.setTitle(_("Select service to add..."))
 		self.isFavourites()
 
 	def isFavourites(self):
@@ -704,7 +719,7 @@ def sessionstart(reason, session):
 def autostart(reason, **kwargs):
 	global global_session
 	if reason == 0:
-		print("[CommonInterfaceAssignment] CI_Assignment activating ci configs:")
+		print("[CI_Assignment] activating ci configs:")
 		activate_all(global_session)
 	elif reason == 1:
 		global_session = None
@@ -716,7 +731,7 @@ def main(session, **kwargs):
 
 def menu(menuid, **kwargs):
 	if menuid == "cam" and isModule():
-		return [(_("Common Interface assignment"), main, "ci_assign", 11)]
+		return [(_("Common Interface Assignment"), main, "ci_assign", 11)]
 	return []
 
 
@@ -726,4 +741,4 @@ def Plugins(**kwargs):
 		description = _("a gui to assign services/providers/caids to common interface modules")
 	return [PluginDescriptor(where=PluginDescriptor.WHERE_SESSIONSTART, needsRestart=False, fnc=sessionstart),
 			PluginDescriptor(where=PluginDescriptor.WHERE_AUTOSTART, needsRestart=False, fnc=autostart),
-			PluginDescriptor(name=_("Common Interface assignment"), description=description, where=PluginDescriptor.WHERE_MENU, needsRestart=False, fnc=menu)]
+			PluginDescriptor(name=_("Common Interface Assignment"), description=description, where=PluginDescriptor.WHERE_MENU, needsRestart=False, fnc=menu)]

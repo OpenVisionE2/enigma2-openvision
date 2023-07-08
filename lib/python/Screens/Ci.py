@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
-from Screens.Screen import Screen
-from Screens.MessageBox import MessageBox
-from Tools.BoundFunction import boundFunction
-from Components.Sources.StaticText import StaticText
-from Components.ActionMap import ActionMap
-from Components.ActionMap import NumberActionMap
+from enigma import eTimer, eDVBCI_UI
+
+from Components.ActionMap import ActionMap, NumberActionMap
 from Components.Label import Label
 from Components.config import config, ConfigSubsection, ConfigSelection, ConfigSubList, getConfigListEntry, KEY_LEFT, KEY_RIGHT, KEY_0, ConfigNothing, ConfigPIN, ConfigYesNo, NoSave
 from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.SystemInfo import BoxInfo
-from enigma import eTimer, eDVBCI_UI
+from Components.Sources.StaticText import StaticText
+from Screens.MessageBox import MessageBox
+from Screens.Screen import Screen
 import Screens.Standby
+from Tools.BoundFunction import boundFunction
 
-brand = BoxInfo.getItem("brand")
-CommonInterfaceCIDelay = BoxInfo.getItem("CommonInterfaceCIDelay")
 CommonInterface = BoxInfo.getItem("CommonInterface")
-HasCISSL = BoxInfo.getItem("HasCISSL")
+CommonInterfaceCIDelay = BoxInfo.getItem("CommonInterfaceCIDelay")
 
 extrahw = "/var/lib/opkg/info/enigma2-plugin-drivers-extrahw-cardreader.control"
 forceNotShowCiMessages = False
@@ -50,15 +48,12 @@ def InitCiConfig():
 			config.ci[slot].enabled = ConfigYesNo(default=True)
 			config.ci[slot].enabled.slotid = slot
 			config.ci[slot].enabled.addNotifier(setCIEnabled)
-			config.ci[slot].canDescrambleMultipleServices = ConfigSelection(choices=[("auto", _("auto")), ("no", _("no")), ("yes", _("yes"))], default="auto")
+			config.ci[slot].canDescrambleMultipleServices = ConfigSelection(choices=[("auto", _("Auto")), ("no", _("No")), ("yes", _("Yes"))], default="auto")
 			config.ci[slot].use_static_pin = ConfigYesNo(default=True)
 			config.ci[slot].static_pin = ConfigPIN(default=0)
 			config.ci[slot].show_ci_messages = ConfigYesNo(default=True)
 			if BoxInfo.getItem("CI%dSupportsHighBitrates" % slot):
-				if brand in ("dags", "blackbox"):
-					config.ci[slot].canHandleHighBitrates = ConfigYesNo(default=True)
-				else:
-					config.ci[slot].canHandleHighBitrates = ConfigYesNo(default=False)
+				config.ci[slot].canHandleHighBitrates = ConfigYesNo(default=True)
 				config.ci[slot].canHandleHighBitrates.slotid = slot
 				config.ci[slot].canHandleHighBitrates.addNotifier(setCIBitrate)
 			if BoxInfo.getItem("CI%dRelevantPidsRoutingSupport" % slot):
@@ -66,22 +61,15 @@ def InitCiConfig():
 				config.ci[slot].relevantPidsRouting.slotid = slot
 				config.ci[slot].relevantPidsRouting.addNotifier(setRelevantPidsRouting)
 		if CommonInterfaceCIDelay:
-			config.cimisc.dvbCiDelay = ConfigSelection(default="256", choices=[("16"), ("32"), ("64"), ("128"), ("256")])
+			config.cimisc.dvbCiDelay = ConfigSelection(default="256", choices=[("16", "16"), ("32", "32"), ("64", "64"), ("128", "128"), ("256", "256")])
 			config.cimisc.dvbCiDelay.addNotifier(setdvbCiDelay)
-		if brand in ("entwopia", "tripledot", "dreambox"):
-			if HasCISSL:
-				config.cimisc.civersion = ConfigSelection(default="ciplus1", choices=[("auto", _("Auto")), ("ciplus1", _("CI Plus 1.2")), ("ciplus2", _("CI Plus 1.3")), ("legacy", _("CI Legacy"))])
-			else:
-				config.cimisc.civersion = ConfigSelection(default="legacy", choices=[("legacy", _("CI Legacy"))])
-		else:
-			config.cimisc.civersion = ConfigSelection(default="auto", choices=[("auto", _("Auto")), ("ciplus1", _("CI Plus 1.2")), ("ciplus2", _("CI Plus 1.3")), ("legacy", _("CI Legacy"))])
 
 
 class MMIDialog(Screen):
 	def __init__(self, session, slotid, action, handler=eDVBCI_UI.getInstance(), wait_text="", screen_data=None):
 		Screen.__init__(self, session)
 
-		print("[Ci] MMIDialog with action" + str(action))
+		print("[CI] MMIDialog with action %s" % str(action))
 
 		self.mmiclosed = False
 		self.tag = None
@@ -94,6 +82,7 @@ class MMIDialog(Screen):
 		self["title"] = Label("")
 		self["subtitle"] = Label("")
 		self["bottom"] = Label("")
+		self["key_menu"] = StaticText(_("MENU"))
 		self["entries"] = ConfigList([])
 
 		self["actions"] = NumberActionMap(["SetupActions", "MenuActions"],
@@ -146,7 +135,7 @@ class MMIDialog(Screen):
 			x.addEndNotifier(self.pinEntered)
 			self["subtitle"].setText(entry[2])
 			list.append(getConfigListEntry("", x))
-			self["bottom"].setText(_("please press OK when ready"))
+			self["bottom"].setText(_("Please press OK when ready"))
 
 	def pinEntered(self, value):
 		self.okbuttonClick()
@@ -174,7 +163,7 @@ class MMIDialog(Screen):
 			answer = str(cur[1].value)
 			length = len(answer)
 			while length < cur[1].getLength():
-				answer = '0' + answer
+				answer = "0%s" % answer
 				length += 1
 			self.answer = answer
 			if config.ci[self.slotid].use_static_pin.value:
@@ -225,7 +214,7 @@ class MMIDialog(Screen):
 			self["entries"].handleKey(key)
 			if self.is_pin_list == 4:
 				self.okbuttonClick()
-		except:
+		except Exception:
 			pass
 
 	def keyNumberGlobal(self, number):
@@ -250,7 +239,7 @@ class MMIDialog(Screen):
 		List = self["entries"]
 		try:
 			List.instance.moveSelectionTo(0)
-		except:
+		except Exception:
 			pass
 		List.l.setList(list)
 
@@ -289,7 +278,7 @@ class MMIDialog(Screen):
 						answer = str(config.ci[self.slotid].static_pin.value)
 						length = len(answer)
 						while length < config.ci[self.slotid].static_pin.getLength():
-							answer = '0' + answer
+							answer = "0%s" % answer
 							length += 1
 						self.handler.answerEnq(self.slotid, answer)
 						self.showWait()
@@ -310,12 +299,17 @@ class MMIDialog(Screen):
 
 	def ciStateChanged(self):
 		do_close = False
-		if self.action == 0 or self.action == 1: #reset = 0, init = 1
+		if self.action == 0:			#reset
+			do_close = True
+		if self.action == 1:			#init
 			do_close = True
 
 		#module still there ?
+		if self.handler.getState(self.slotid) != 2:
+			do_close = True
+
 		#mmi session still active ?
-		if self.handler.getState(self.slotid) != 2 or self.handler.getMMIState(self.slotid) != 1:
+		if self.handler.getMMIState(self.slotid) != 1:
 			do_close = True
 
 		if do_close:
@@ -344,35 +338,34 @@ class CiMessageHandler:
 			handler = eDVBCI_UI.getInstance()
 			if slot in self.dlgs:
 				self.dlgs[slot].ciStateChanged()
-			elif handler.availableMMI(slot) == 1:
-				if self.session:
-					show_ui = False
-					if config.ci[slot].show_ci_messages.value and not config.misc.firstrun.value:
-						show_ui = True
-					screen_data = handler.getMMIScreen(slot)
-					if config.ci[slot].use_static_pin.value:
-						if screen_data is not None and len(screen_data):
-							ci_tag = screen_data[0][0]
-							if ci_tag == 'ENQ' and len(screen_data) >= 2 and screen_data[1][0] == 'PIN':
-								if str(config.ci[slot].static_pin.value) == "0":
-									show_ui = True
-								else:
-									answer = str(config.ci[slot].static_pin.value)
-									length = len(answer)
-									while length < config.ci[slot].static_pin.getLength():
-										answer = '0' + answer
-										length += 1
-									handler.answerEnq(slot, answer)
-									show_ui = False
-									self.auto_close = True
-							elif ci_tag == 'CLOSE' and self.auto_close:
+			elif handler.availableMMI(slot) == 1 and self.session:
+				show_ui = False
+				if config.ci[slot].show_ci_messages.value:
+					show_ui = True
+				screen_data = handler.getMMIScreen(slot)
+				if config.ci[slot].use_static_pin.value:
+					if screen_data is not None and len(screen_data):
+						ci_tag = screen_data[0][0]
+						if ci_tag == "ENQ" and len(screen_data) >= 2 and screen_data[1][0] == "PIN":
+							if str(config.ci[slot].static_pin.value) == "0":
+								show_ui = True
+							else:
+								answer = str(config.ci[slot].static_pin.value)
+								length = len(answer)
+								while length < config.ci[slot].static_pin.getLength():
+									answer = "0%s" % answer
+									length += 1
+								handler.answerEnq(slot, answer)
 								show_ui = False
-								self.auto_close = False
-					if show_ui and not forceNotShowCiMessages and not Screens.Standby.inStandby:
-						try:
-							self.dlgs[slot] = self.session.openWithCallback(self.dlgClosed, MMIDialog, slot, 3, screen_data=screen_data)
-						except:
-							pass
+								self.auto_close = True
+						elif ci_tag == "CLOSE" and self.auto_close:
+							show_ui = False
+							self.auto_close = False
+				if show_ui and not forceNotShowCiMessages and not Screens.Standby.inStandby:
+					try:
+						self.dlgs[slot] = self.session.openWithCallback(self.dlgClosed, MMIDialog, slot, 3, screen_data=screen_data)
+					except Exception:
+						pass
 
 	def dlgClosed(self, slot):
 		if slot in self.dlgs:
@@ -394,13 +387,14 @@ class CiSelection(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.setTitle(_("Common Interface"))
-		self["actions"] = ActionMap(["OkCancelActions", "CiSelectionActions"],
+		self["actions"] = ActionMap(["SetupActions", "CiSelectionActions"],
 			{
 				"left": self.keyLeft,
 				"right": self.keyLeft,
 				"ok": self.okbuttonClick,
 				"cancel": self.cancel
 			}, -1)
+		self["key_red"] = StaticText(_("Cancel"))
 
 		self.dlg = None
 		self.state = {}
@@ -443,7 +437,7 @@ class CiSelection(Screen):
 		try:
 			self["entries"].handleKey(key)
 			self["entries"].getCurrent()[1].save()
-		except:
+		except Exception:
 			pass
 
 	def keyLeft(self):
@@ -456,19 +450,22 @@ class CiSelection(Screen):
 		self.state[slot] = state
 		if self.slot > 1:
 			self.list.append(("**************************", ConfigNothing(), 3, slot))
-		self.list.append((_("CI enabled"), config.ci[slot].enabled, -1, slot))
-		if self.state[slot] in (0, 3):
-			self.list.append((self.state[slot] == 0 and _("no module found") or _("module disabled"), ConfigNothing(), 2, slot))
-			return
+		self.list.append((_("CI %s enabled" % (slot)), config.ci[slot].enabled, -1, slot))
 		self.list.append((_("Reset"), ConfigNothing(), 0, slot))
 		self.list.append((_("Init"), ConfigNothing(), 1, slot))
 
-		if self.state[slot] == 1: #module in init
+		if self.state[slot] == 0:  # no module
+			self.list.append((_("no module found"), ConfigNothing(), 2, slot))
+		elif self.state[slot] == 1: #module in init
 			self.list.append((_("init module"), ConfigNothing(), 2, slot))
 		elif self.state[slot] == 2: #module ready
 			appname = eDVBCI_UI.getInstance().getAppName(slot)
 			self.list.append((appname, ConfigNothing(), 2, slot))
-		self.list.append(getConfigListEntry(_("Set persistent PIN code"), config.ci[slot].use_static_pin, 3, slot))
+		elif self.state[slot] == 3:  # module disabled by the user
+			self.list.append((_("module disabled"), ConfigNothing(), 2, slot))
+			return
+
+		self.list.append(getConfigListEntry(_("Set pin code persistent"), config.ci[slot].use_static_pin, 3, slot))
 		self.list.append((_("Enter persistent PIN code"), ConfigNothing(), 5, slot))
 		self.list.append((_("Reset persistent PIN code"), ConfigNothing(), 6, slot))
 		self.list.append(getConfigListEntry(_("Show CI messages"), config.ci[slot].show_ci_messages, 3, slot))
@@ -476,22 +473,36 @@ class CiSelection(Screen):
 		if BoxInfo.getItem("CI%dSupportsHighBitrates" % slot):
 			self.list.append(getConfigListEntry(_("High bitrate support"), config.ci[slot].canHandleHighBitrates, 3, slot))
 		if BoxInfo.getItem("CI%dRelevantPidsRoutingSupport" % slot):
-			self.list.append(getConfigListEntry(_("PID Filtering"), config.ci[slot].relevantPidsRouting, 3, slot))
+			self.list.append(getConfigListEntry(_("Relevant PIDs Routing"), config.ci[slot].relevantPidsRouting, 3, slot))
 		if CommonInterfaceCIDelay:
 			self.list.append(getConfigListEntry(_("DVB CI Delay"), config.cimisc.dvbCiDelay, 3, slot))
-		if HasCISSL:
-			self.list.append(getConfigListEntry(_("CI Operation Mode"), config.cimisc.civersion, _("Choose the CI protocol operation mode for standard CI or CI Plus.")))
-		else:
-			self.list.append(getConfigListEntry(_("CI Operation Mode"), config.cimisc.civersion, _("Your hardware can detect CI mode itself or works only in legacy mode.")))
 
 	def updateState(self, slot):
-		self.list = []
-		self.slot = 0
-		for module in range(CommonInterface):
-			state = eDVBCI_UI.getInstance().getState(module)
-			if state != -1:
-				self.slot += 1
-				self.appendEntries(module, state)
+		state = eDVBCI_UI.getInstance().getState(slot)
+		self.state[slot] = state
+
+		slotidx = 0
+		while len(self.list[slotidx]) < 3 or self.list[slotidx][3] != slot:
+			slotidx += 1
+
+		if slot > 0:
+			slotidx += 1  # do not change separator
+		slotidx += 1  # do not change CI Enabled
+		slotidx += 1  # do not change Reset
+		slotidx += 1  # do not change Init
+
+		if state == 0:  # no module
+			self.list[slotidx] = (_("no module found"), ConfigNothing(), 2, slot)
+		elif state == 1:  # module in init
+			self.list[slotidx] = (_("init module"), ConfigNothing(), 2, slot)
+		elif state == 2:  # module ready
+			appname = eDVBCI_UI.getInstance().getAppName(slot)
+			self.list[slotidx] = (appname, ConfigNothing(), 2, slot)
+			if len(self.list) <= slotidx + 1:
+				self.list = []
+				self.appendEntries(slot, state)
+		elif state == 3:
+			self.list = self.list[0:slotidx + 1]
 		lst = self["entries"]
 		lst.list = self.list
 		lst.l.setList(self.list)
@@ -513,9 +524,9 @@ class CiSelection(Screen):
 		if cur and len(cur) > 2:
 			action = cur[2]
 			slot = cur[3]
-			if action == 3:
-				pass
-			elif action == 0: #reset
+			# if action == 3:
+			#	pass
+			if action == 0: #reset
 				eDVBCI_UI.getInstance().setReset(slot)
 			elif action == 1: #init
 				eDVBCI_UI.getInstance().setInit(slot)
@@ -525,7 +536,7 @@ class CiSelection(Screen):
 				config.ci[slot].static_pin.value = 0
 				config.ci[slot].static_pin.save()
 				self.session.openWithCallback(self.cancelCB, MessageBox, _("The saved PIN was cleared."), MessageBox.TYPE_INFO)
-			elif action == 2 and self.state[slot] == 2:
+			elif self.state[slot] == 2:
 				self.dlg = self.session.openWithCallback(self.dlgClosed, MMIDialog, slot, action)
 
 	def cancelCB(self, value):
@@ -543,7 +554,6 @@ class PermanentPinEntry(ConfigListScreen, Screen):
 	def __init__(self, session, pin, pin_slot):
 		Screen.__init__(self, session)
 		self.skinName = ["ParentalControlChangePin", "Setup"]
-		self.setTitle(_("Enter PIN code"))
 		self.onChangedEntry = []
 
 		self.slot = pin_slot
@@ -555,17 +565,9 @@ class PermanentPinEntry(ConfigListScreen, Screen):
 		self.pin2.addEndNotifier(boundFunction(self.valueChanged, 2))
 		self.list.append(getConfigListEntry(_("Enter PIN"), NoSave(self.pin1)))
 		self.list.append(getConfigListEntry(_("Reenter PIN"), NoSave(self.pin2)))
-		ConfigListScreen.__init__(self, self.list)
+		ConfigListScreen.__init__(self, self.list, fullUI=True)
 
-		self["actions"] = NumberActionMap(["DirectionActions", "ColorActions", "OkCancelActions"],
-		{
-			"cancel": self.cancel,
-			"red": self.cancel,
-			"save": self.keyOK,
-		}, -1)
-
-		self["key_red"] = StaticText(_("Cancel"))
-		self["key_green"] = StaticText(_("OK"))
+		self.setTitle(_("Enter pin code"))
 
 	def valueChanged(self, pin, value):
 		if pin == 1:
@@ -573,7 +575,7 @@ class PermanentPinEntry(ConfigListScreen, Screen):
 		elif pin == 2:
 			self.keyOK()
 
-	def keyOK(self):
+	def keySave(self):
 		if self.pin1.value == self.pin2.value:
 			self.pin.value = self.pin1.value
 			self.pin.save()
@@ -581,5 +583,5 @@ class PermanentPinEntry(ConfigListScreen, Screen):
 		else:
 			self.session.open(MessageBox, _("The PIN codes you entered are different."), MessageBox.TYPE_ERROR)
 
-	def cancel(self):
+	def keyCancel(self):
 		self.close(None)

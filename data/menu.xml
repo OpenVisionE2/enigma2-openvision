@@ -129,16 +129,6 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 			<item entryID="password_setup" level="2" text="Password" weight="25"><screen module="NetworkSetup" screen="NetworkPassword" /></item>
 		</menu>
 
-		<!-- Menu / Setup / Common Interface -->
-		<!-- No point in a sub menu for only one item!
-		<menu entryID="cicam_setup" level="0" text="Common Interface" weight="7" requires="CommonInterface">
-			<id val="cicam" />
-		-->
-		<item entryID="ci_setup" level="0" text="Common Interface" weight="5" requires="CommonInterface"><screen module="Ci" screen="CiSelection" /></item>
-		<!--
-		</menu>
-		-->
-
 		<!-- Menu / Setup / Softcam -->
 		<!-- No point in a sub menu for only one item!
 		<menu entryID="cam_setup" level="0" text="SoftCam / CI" weight="10">

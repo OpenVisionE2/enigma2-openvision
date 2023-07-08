@@ -14,7 +14,6 @@
 
 #include <lib/base/eerror.h>
 #include <lib/base/nconfig.h> // access to python config
-//#include <lib/base/esimpleconfig.h> access to startup config
 #include <lib/dvb/db.h>
 #include <lib/dvb/pmt.h>
 #include <lib/dvb_ci/dvbci.h>
@@ -26,12 +25,77 @@
 #include <lib/dvb_ci/dvbci_ccmgr.h>
 
 #include <dvbsi++/ca_program_map_section.h>
-
+#include <Python.h>
 
 eDVBCIInterfaces *eDVBCIInterfaces::instance = 0;
 
 pthread_mutex_t eDVBCIInterfaces::m_pmt_handler_lock = PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP;
 pthread_mutex_t eDVBCIInterfaces::m_slot_lock = PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP;
+
+static char* readInputCI(int NimNumber)
+{
+	char id1[] = "NIM Socket";
+	char id2[] = "Input_Name";
+	char keys1[] = "1234567890";
+	char keys2[] = "12ABCDabcd";
+	char *inputName = 0;
+	char buf[256];
+	FILE *f;
+
+	f = fopen("/proc/bus/nim_sockets", "rt");
+	if (f)
+	{
+		while (fgets(buf, sizeof(buf), f))
+		{
+			char *p = strcasestr(buf, id1);
+			if (!p)
+				continue;
+
+			p += strlen(id1);
+			p += strcspn(p, keys1);
+			if (*p && strtol(p, 0, 0) == NimNumber)
+				break;
+		}
+
+		while (fgets(buf, sizeof(buf), f))
+		{
+			if (strcasestr(buf, id1))
+				break;
+
+			char *p = strcasestr(buf, id2);
+			if (!p)
+				continue;
+
+			p = strchr(p + strlen(id2), ':');
+			if (!p)
+				continue;
+
+			p++;
+			p += strcspn(p, keys2);
+			size_t len = strspn(p, keys2);
+			if (len > 0)
+			{
+				inputName = strndup(p, len);
+				break;
+			}
+		}
+
+		fclose(f);
+	}
+
+	return inputName;
+}
+
+static std::string getTunerLetterDM(int NimNumber)
+{
+	char *srcCI = readInputCI(NimNumber);
+	if (srcCI) {
+		std::string ret = std::string(srcCI);
+		free(srcCI);
+		return ret;
+	}
+	return eDVBCISlot::getTunerLetter(NimNumber);
+}
 
 eDVBCIInterfaces::eDVBCIInterfaces()
  : m_messagepump_thread(this,1,"eDVBCI"), m_messagepump_main(eApp,1,"eDVBCI"), m_runTimer(eTimer::create(this))
@@ -69,7 +133,11 @@ eDVBCIInterfaces::eDVBCIInterfaces()
 	}
 
 	for (eSmartPtrList<eDVBCISlot>::iterator it(m_slots.begin()); it != m_slots.end(); ++it)
+#ifdef DREAMBOX_DUAL_TUNER
+		it->setSource(getTunerLetterDM(0));
+#else 
 		it->setSource("A");
+#endif
 
 	for (int tuner_no = 0; tuner_no < 26; ++tuner_no) // NOTE: this assumes tuners are A .. Z max.
 	{
@@ -80,7 +148,11 @@ eDVBCIInterfaces::eDVBCIInterfaces()
 		if(::access(path.str().c_str(), R_OK) < 0)
 			break;
 
+#ifdef DREAMBOX_DUAL_TUNER
+		setInputSource(tuner_no, getTunerLetterDM(tuner_no));
+#else 
 		setInputSource(tuner_no, eDVBCISlot::getTunerLetter(tuner_no));
+#endif
 	}
 
 	eDebug("[CI] done, found %d common interface slots", num_ci);
@@ -583,7 +655,11 @@ void eDVBCIInterfaces::recheckPMTHandlers()
 							if (tunernum != -1)
 							{
 								setInputSource(tunernum, ci_source.str());
+#ifdef DREAMBOX_DUAL_TUNER
+								ci_it->setSource(getTunerLetterDM(tunernum));
+#else 
 								ci_it->setSource(eDVBCISlot::getTunerLetter(tunernum));
+#endif
 							}
 							else
 							{
@@ -712,7 +788,11 @@ void eDVBCIInterfaces::removePMTHandler(eDVBServicePMTHandler *pmthandler)
 					{
 						case finish_use_tuner_a:
 						{
+#ifdef DREAMBOX_DUAL_TUNER
+							finish_source = getTunerLetterDM(0);
+#else  
 							finish_source = "A";
+#endif
 							break;
 						}
 
@@ -735,7 +815,11 @@ void eDVBCIInterfaces::removePMTHandler(eDVBServicePMTHandler *pmthandler)
 					if(finish_source == "")
 					{
 						eDebug("[CI] warning: CI streaming finish mode not set, assuming \"tuner A\"");
+#ifdef DREAMBOX_DUAL_TUNER
+							finish_source = getTunerLetterDM(0);
+#else
 						finish_source = "A";
+#endif  
 					}
 
 					slot->setSource(finish_source);
@@ -854,14 +938,22 @@ PyObject *eDVBCIInterfaces::getDescrambleRules(int slotid)
 	while(services)
 	{
 		--services;
+#if PY_MAJOR_VERSION < 3
 		PyList_SET_ITEM(service_list, services, PyString_FromString(ref_it->toString().c_str()));
+#else
+		PyList_SET_ITEM(service_list, services, PyUnicode_FromString(ref_it->toString().c_str()));
+#endif
 		++ref_it;
 	}
 	providerSet::iterator provider_it(slot->possible_providers.begin());
 	while(providers)
 	{
 		ePyObject tuple = PyTuple_New(2);
+#if PY_MAJOR_VERSION < 3
 		PyTuple_SET_ITEM(tuple, 0, PyString_FromString(provider_it->first.c_str()));
+#else
+		PyTuple_SET_ITEM(tuple, 0, PyUnicode_FromString(provider_it->first.c_str()));
+#endif
 		PyTuple_SET_ITEM(tuple, 1, PyLong_FromUnsignedLong(provider_it->second));
 		--providers;
 		PyList_SET_ITEM(provider_list, providers, tuple);
@@ -927,14 +1019,22 @@ RESULT eDVBCIInterfaces::setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject)
 	{
 		--size;
 		ePyObject refstr = PyList_GET_ITEM(service_list, size);
+#if PY_MAJOR_VERSION < 3
 		if (!PyString_Check(refstr))
+#else
+		if (!PyUnicode_Check(refstr))
+#endif
 		{
 			char buf[255];
 			snprintf(buf, 255, "eDVBCIInterfaces::setDescrambleRules entry in service list is not a string.. it is '%s'!!", PyObject_TypeStr(refstr));
 			PyErr_SetString(PyExc_TypeError, buf);
 			return -1;
 		}
+#if PY_MAJOR_VERSION < 3
 		const char *tmpstr = PyString_AS_STRING(refstr);
+#else
+		const char *tmpstr = PyUnicode_AsUTF8(refstr);
+#endif
 		eServiceReference ref(tmpstr);
 		if (ref.valid())
 			slot->possible_services.insert(ref);
@@ -960,7 +1060,11 @@ RESULT eDVBCIInterfaces::setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject)
 			PyErr_SetString(PyExc_TypeError, buf);
 			return -1;
 		}
+#if PY_MAJOR_VERSION < 3
 		if (!PyString_Check(PyTuple_GET_ITEM(tuple, 0)))
+#else
+		if (!PyUnicode_Check(PyTuple_GET_ITEM(tuple, 0)))
+#endif
 		{
 			char buf[255];
 			snprintf(buf, 255, "eDVBCIInterfaces::setDescrambleRules 1st entry in provider tuple is not a string it is '%s'", PyObject_TypeStr(PyTuple_GET_ITEM(tuple, 0)));
@@ -974,7 +1078,11 @@ RESULT eDVBCIInterfaces::setDescrambleRules(int slotid, SWIG_PYOBJECT(ePyObject)
 			PyErr_SetString(PyExc_TypeError, buf);
 			return -1;
 		}
+#if PY_MAJOR_VERSION < 3
 		const char *tmpstr = PyString_AS_STRING(PyTuple_GET_ITEM(tuple, 0));
+#else
+		const char *tmpstr = PyUnicode_AsUTF8(PyTuple_GET_ITEM(tuple, 0));
+#endif
 		uint32_t orbpos = PyLong_AsUnsignedLong(PyTuple_GET_ITEM(tuple, 1));
 		if (strlen(tmpstr))
 			slot->possible_providers.insert(std::pair<std::string, uint32_t>(tmpstr, orbpos));
@@ -1250,7 +1358,7 @@ eDVBCISlot::eDVBCISlot(eMainloop *context, int nr)
 	if (enabled)
 		openDevice();
 	else
-		eDVBCI_UI::getInstance()->m_messagepump.send(eDVBCIInterfaces::Message(eDVBCIInterfaces::Message::slotStateChanged, getSlotID(), 3)); // state disabled
+		/* emit */ eDVBCI_UI::getInstance()->m_messagepump.send(eDVBCIInterfaces::Message(eDVBCIInterfaces::Message::slotStateChanged, getSlotID(), 3)); // state disabled
 }
 
 void eDVBCISlot::openDevice()
@@ -1650,7 +1758,7 @@ int eDVBCISlot::setEnabled(bool enabled)
 		openDevice();
 	else {
 		closeDevice();
-		eDVBCI_UI::getInstance()->m_messagepump.send(eDVBCIInterfaces::Message(eDVBCIInterfaces::Message::slotStateChanged, getSlotID(), 3)); // state disabled
+		/* emit */ eDVBCI_UI::getInstance()->m_messagepump.send(eDVBCIInterfaces::Message(eDVBCIInterfaces::Message::slotStateChanged, getSlotID(), 3)); // state disabled
 	}
 	return 0;
 }
