@@ -4,7 +4,7 @@ from os.path import dirname, isfile, join as pathjoin, splitext
 from os import unlink
 from xml.etree.cElementTree import Element, ElementTree, fromstring
 
-from enigma import BT_ALPHABLEND, BT_ALPHATEST, BT_HALIGN_CENTER, BT_HALIGN_LEFT, BT_HALIGN_RIGHT, BT_KEEP_ASPECT_RATIO, BT_SCALE, BT_VALIGN_BOTTOM, BT_VALIGN_CENTER, BT_VALIGN_TOP, addFont, eLabel, eListbox, ePixmap, ePoint, eRect, eSize, eSlider, eSubtitleWidget, eWindow, eWindowStyleManager, eWindowStyleSkinned, getDesktop, gFont, getFontFaces, gMainDC, gRGB
+from enigma import BT_ALPHABLEND, BT_ALPHATEST, BT_HALIGN_CENTER, BT_HALIGN_LEFT, BT_HALIGN_RIGHT, BT_KEEP_ASPECT_RATIO, BT_SCALE, BT_VALIGN_BOTTOM, BT_VALIGN_CENTER, BT_VALIGN_TOP, addFont, eLabel, eListbox, ePixmap, ePoint, eRect, eRectangle, eSize, eSlider, eSubtitleWidget, eWindow, eWindowStyleManager, eWindowStyleSkinned, getDesktop, gFont, getFontFaces, gMainDC, gRGB
 
 from Components.config import ConfigSubsection, ConfigText, config
 from Components.SystemInfo import BoxInfo
@@ -315,12 +315,12 @@ def parseColor(value, default=0x00FFFFFF):
 		try:
 			value = gRGB(int(value[1:], 0x10))
 		except ValueError:
-			skinError("The color code '%s' must be #aarrggbb, using #00ffffff (White)" % value)
+			skinError("The color code '%s' must be #aarrggbb, using #00FFFFFF (White)" % value)
 			value = gRGB(default)
 	elif value in colors:
 		value = colors[value]
 	else:
-		skinError("The color '%s' must be #aarrggbb or valid named color, using #00ffffff (White)" % value)
+		skinError("The color '%s' must be #aarrggbb or valid named color, using #00FFFFFF (White)" % value)
 		value = gRGB(default)
 	return value
 
@@ -433,6 +433,21 @@ def parseFont(value, scale=((1, 1), (1, 1))):
 	return gFont(name, int(size * scale[1][0] / scale[1][1]))
 
 
+def parseGradient(value):
+	data = [x.strip() for x in value.split(",")]
+	if len(data) > 2:
+		options = {
+			"horizontal": ePixmap.GRADIENT_HORIZONTAL,
+			"vertical": ePixmap.GRADIENT_VERTICAL,
+		}
+		direction = parseOptions(options, "gradient", data[2], ePixmap.GRADIENT_VERTICAL)
+		alphaBend = BT_ALPHABLEND if len(data) == 4 and parseBoolean("1", data[3]) else 0
+		return (parseColor(data[0], default=0x00000000), parseColor(data[1], 0x00FFFFFF), direction, alphaBend)
+	else:
+		skinError("The gradient '%s' must be 'startColor,endColor,direction[,blend]', using '#00000000,#00FFFFFF,vertical' (Black,White,vertical)" % value)
+		return (0x000000, 0x00FFFFFF, ePixmap.GRADIENT_VERTICAL, 0)
+
+
 def parseHorizontalAlignment(value):
 	options = {
 		"left": 0,
@@ -450,11 +465,35 @@ def parseInteger(value, default=0):
 
 def parseItemAlignment(value):
 	options = {
-		"default": eListbox.itemAlignDefault,
-		"center": eListbox.itemAlignCenter,
-		"justify": eListbox.itemAlignJustify,
+		"default": eListbox.itemAlignLeftTop,
+		"center": eListbox.itemAlignCenterMiddle,
+		"justify": eListbox.itemAlignJustifyFull,
+		"leftTop": eListbox.itemAlignLeftTop,
+		"leftMiddle": eListbox.itemAlignLeftMiddle,
+		"leftBottom": eListbox.itemAlignLeftBottom,
+		"rightTop": eListbox.itemAlignRightTop,
+		"rightMiddle": eListbox.itemAlignRightMiddle,
+		"rightBottom": eListbox.itemAlignRightBottom,
+		"centerTop": eListbox.itemAlignCenterTop,
+		"centerMiddle": eListbox.itemAlignCenterMiddle,
+		"centerBottom": eListbox.itemAlignCenterBottom,
+		"justifyTop": eListbox.itemAlignJustifyTop,
+		"justifyMiddle": eListbox.itemAlignJustifyMiddle,
+		"justifyBottom": eListbox.itemAlignJustifyBottom,
+		"justifyLeft": eListbox.itemAlignJustifyLeft,
+		"justifyRight": eListbox.itemAlignJustifyRight
 	}
-	return parseOptions(options, "scrollbarItemAlignment", value, eListbox.itemAlignDefault)
+	return parseOptions(options, "itemAlignment", value, eListbox.itemAlignLeftTop)
+
+
+def parseScrollbarLength(value, default):
+	if value and value.isdigit():
+		return int(value)
+	options = {
+		"full": 0,
+		"auto": -1
+	}
+	return options.get(value, default)
 
 
 def parseListOrientation(value):
@@ -752,6 +791,12 @@ class AttributeParser:
 	def backgroundColorSelected(self, value):
 		self.guiObject.setBackgroundColorSelected(parseColor(value, 0x00000000))
 
+	def backgroundGradient(self, value):
+		self.guiObject.setBackgroundGradient(*parseGradient(value))
+
+	def backgroundGradientSelected(self, value):
+		self.guiObject.setBackgroundGradientSelected(*parseGradient(value))
+
 	def backgroundCrypted(self, value):
 		self.guiObject.setBackgroundColor(parseColor(value, 0x00000000))
 
@@ -813,6 +858,9 @@ class AttributeParser:
 	def foregroundNotCrypted(self, value):
 		self.guiObject.setForegroundColor(parseColor(value, 0x00FFFFFF))
 
+	def gradient(self, value):
+		self.guiObject.setGradient(*parseGradient(value))
+
 	def halign(self, value):  # This legacy definition uses an inconsistent name, use 'horizontalAlignment' instead!
 		self.horizontalAlignment(value)
 		attribDeprecationWarning("halign", "horizontalAlignment")
@@ -827,9 +875,17 @@ class AttributeParser:
 	def includes(self, value):  # Same as conditional.  Created to partner new "excludes" attribute.
 		pass
 
+	def itemAlignment(self, value):
+		self.guiObject.setItemAlignment(parseItemAlignment(value))
+
 	def itemHeight(self, value):
 		# print("[Skin] DEBUG: Scale itemHeight %d -> %d." % (int(value), self.applyVerticalScale(value)))
 		self.guiObject.setItemHeight(self.applyVerticalScale(value))
+
+	def itemSpacing(self, value):
+		if len(value.split(",")) == 1:  # These values will be stripped in parseCoordinate().
+			value = "%s,%s" % (value, value)
+		self.guiObject.setItemSpacing(parsePosition(value, self.scaleTuple, self.guiObject, self.desktop))
 
 	def itemWidth(self, value):
 		# print("[Skin] DEBUG: Scale itemWidth %d -> %d." % (int(value), self.applyHorizontalScale(value)))
@@ -887,9 +943,6 @@ class AttributeParser:
 		self.scrollbarBackgroundPixmap(value)
 		attribDeprecationWarning("scrollbarbackgroundPixmap", "scrollbarBackgroundPixmap")
 
-	def scrollbarItemAlignment(self, value):
-		self.guiObject.setItemAlignment(parseItemAlignment(value))
-
 	def scrollbarMode(self, value):
 		self.guiObject.setScrollbarMode(parseScrollbarMode(value))
 
@@ -901,6 +954,9 @@ class AttributeParser:
 
 	def scrollbarBorderColor(self, value):
 		self.guiObject.setScrollbarBorderColor(parseColor(value, 0x00FFFFFF))
+
+	def scrollbarLength(self, value):
+		self.guiObject.setScrollbarLength(parseScrollbarLength(value, 0))
 
 	def scrollbarSliderBorderColor(self, value):  # This legacy definition uses an inconsistent name, use'scrollbarBorderColor' instead!
 		self.scrollbarBorderColor(value)
@@ -962,6 +1018,16 @@ class AttributeParser:
 	def selectionPixmap(self, value):
 		self.guiObject.setSelectionPixmap(parsePixmap(value, self.desktop))
 
+	def selectionZoom(self, value):
+		value = parseInteger(value, 0)
+		if value > 500:
+			value = 500
+		self.guiObject.setSelectionZoom(float("%d.%02d" % ((value // 100) + 1, value % 100)))
+
+	def selectionZoomSize(self, value):
+		size = parseValuePair(value, self.scaleTuple, self.guiObject, self.desktop)
+		self.guiObject.setSelectionZoomSize(size[0], size[1])
+
 	def shadowColor(self, value):
 		self.guiObject.setShadowColor(parseColor(value, 0x00000000))
 
@@ -974,6 +1040,9 @@ class AttributeParser:
 	def sliderPixmap(self, value):  # For compatibility same as 'scrollbarSliderPixmap', use 'scrollbarForegroundPixmap' instead.
 		self.scrollbarForegroundPixmap(value)
 		attribDeprecationWarning("sliderPixmap", "scrollbarForegroundPixmap")
+
+	def spacingColor(self, value):
+		self.guiObject.setSpacingColor(parseColor(value, 0x00000000))
 
 	def text(self, value):
 		if value:
@@ -1606,6 +1675,13 @@ def readSkin(screen, skin, names, desktop):
 		collectAttributes(w.skinAttributes, widget, context, skinPath, ignore=("name",))
 		screen.additionalWidgets.append(w)
 
+	def processRectangle(widget, context):
+		w = additionalWidget()
+		w.widget = eRectangle
+		w.skinAttributes = []
+		collectAttributes(w.skinAttributes, widget, context, skinPath, ignore=("name",))
+		screen.additionalWidgets.append(w)
+
 	def processScreen(widget, context):
 		widgets = widget
 		for w in widgets:
@@ -1650,6 +1726,7 @@ def readSkin(screen, skin, names, desktop):
 		"applet": processApplet,
 		"eLabel": processLabel,
 		"ePixmap": processPixmap,
+		"eRectangle": processRectangle,
 		"panel": processPanel
 	}
 
