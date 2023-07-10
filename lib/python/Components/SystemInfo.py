@@ -354,7 +354,7 @@ SystemInfo["StatePlayPause"] = False
 SystemInfo["StandbyState"] = False
 SystemInfo["HasH9SD"] = model in ("h9", "i55plus") and fileCheck("/dev/mmcblk0p1")
 SystemInfo["HasSDnomount"] = model in ("h9", "h3", "i55plus") and (False, "none") or model in ("multibox", "h9combo", "h3") and (True, "mmcblk0")
-SystemInfo["canBackupEMC"] = model in ("hd51", "h7", "vs1500") or platform == "8100s" and ("disk.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or platform == "edision4k" and ("emmc.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or BoxInfo.getItem("DefineSat") and ("usb_update.bin", "none") or model in ("og2ott4k", "ip8") and ("usb_update.bin", "none")
+SystemInfo["canBackupEMC"] = model in ("hd51", "h7", "vs1500") or platform == "8100s" and ("disk.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or platform == "edision4k" and ("emmc.img", str(BoxInfo.getItem("MultiBootStartupDevice"))) or BoxInfo.getItem("DefineSat") and ("usb_update.bin", "none") or model == "ip8" or platform == "qviarthisil" and ("usb_update.bin", "none")
 SystemInfo["FrontpanelLEDBlinkControl"] = fileCheck("/proc/stb/fp/led_blink")
 SystemInfo["FrontpanelLEDBrightnessControl"] = fileCheck("/proc/stb/fp/led_brightness")
 SystemInfo["FrontpanelLEDColorControl"] = fileCheck("/proc/stb/fp/led_color")
