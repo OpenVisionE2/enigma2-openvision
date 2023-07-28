@@ -300,12 +300,12 @@ SystemInfo["HasTranscoding"] = BoxInfo.getItem("transcoding") or BoxInfo.getItem
 SystemInfo["HasH265Encoder"] = fileContains("/proc/stb/encoder/0/vcodec_choices", "h265")
 SystemInfo["CanNotDoSimultaneousTranscodeAndPIP"] = model == "vusolo4k" or platform == "gb7252"
 SystemInfo["HasFrontDisplayPicon"] = model in ("et8500", "vusolo4k", "vuuno4kse", "vuduo4k", "vuduo4kse", "vuultimo4k") or platform == "gb7252"
-SystemInfo["Has24hz"] = fileCheck("/proc/stb/video/videomode_24hz") or platform == "dmamlogic"
 SystemInfo["HasHDMI"] = BoxInfo.getItem("hdmi")
 SystemInfo["HasHDMI-CEC"] = BoxInfo.getItem("HasHDMI") and (fileCheck("/dev/cec0") or fileCheck("/dev/hdmi_cec") or fileCheck("/dev/misc/hdmi_cec0"))
 SystemInfo["HasHDMIHDin"] = BoxInfo.getItem("hdmihdin")
 SystemInfo["HasHDMIFHDin"] = BoxInfo.getItem("hdmifhdin")
 SystemInfo["HasHDMIin"] = BoxInfo.getItem("HasHDMIHDin") or BoxInfo.getItem("HasHDMIFHDin")
+SystemInfo["HasHDMIinPiP"] = BoxInfo.getItem("HasHDMIin") and brand != "dreambox"
 SystemInfo["hasXcoreVFD"] = (model == "osmega" or platform == "4kspycat") and fileCheck("/sys/module/brcmstb_%s/parameters/pt6302_cgram" % model)
 SystemInfo["HasOfflineDecoding"] = model not in ("osmini", "osminiplus", "et7000mini", "et11000", "mbmicro", "mbtwinplus", "mbmicrov2", "et7x00", "et8500")
 SystemInfo["hasKexec"] = fileContains("/proc/cmdline", "kexec=1")
@@ -385,7 +385,7 @@ SystemInfo["HasColorspace"] = fileCheck("/proc/stb/video/hdmi_colorspace")
 SystemInfo["HasHDMIpreemphasis"] = fileCheck("/proc/stb/hdmi/preemphasis")
 SystemInfo["HasHdrType"] = fileCheck("/proc/stb/video/hdmi_hdrtype")
 SystemInfo["HasMultichannelPCM"] = fileCheck("/proc/stb/audio/multichannel_pcm")
-SystemInfo["HDMIAudioSource"] = fileCheck("/proc/stb/hdmi/audio_source")
+SystemInfo["HDMIAudioSource"] = fileCheck("/proc/stb/hdmi/audio_source") or fileCheck("/sys/devices/virtual/amhdmitx/amhdmitx0/audio_source")
 SystemInfo["HDRSupport"] = fileCheck("/proc/stb/hdmi/hlg_support_choices") or fileCheck("/proc/stb/hdmi/hlg_support")
 SystemInfo["RFmodSupport"] = isfile("/dev/rfmod0")
 SystemInfo["AmlHDRSupport"] = isfile("/sys/class/amhdmitx/amhdmitx0/config")

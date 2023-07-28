@@ -192,11 +192,8 @@ class StandbyScreen(Screen):
 		if hasattr(self.session, "pip"):
 			del self.session.pip
 		self.session.pipshown = False
-
-		if BoxInfo.getItem("ScartSwitch"):
-			self.avswitch.setInput("SCART")
-		else:
-			self.avswitch.setInput("AUX")
+		#set input to vcr scart
+		self.avswitch.setInput("off")
 
 		if isfile("/proc/stb/hdmi/output"):
 			try:
@@ -253,7 +250,7 @@ class StandbyScreen(Screen):
 		globalActionMap.setEnabled(True)
 		if RecordTimer.RecordTimerEntry.receiveRecordEvents:
 			RecordTimer.RecordTimerEntry.stopTryQuitMainloop()
-		self.avswitch.setInput("ENCODER")
+		self.avswitch.setInput("encoder")
 		self.leaveMute()
 		# set LCDminiTV
 		if LCDMiniTV:

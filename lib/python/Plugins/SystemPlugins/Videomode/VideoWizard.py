@@ -10,7 +10,7 @@ from Components.Sources.StaticText import StaticText
 from Components.Pixmap import Pixmap
 
 has_dvi = BoxInfo.getItem("DreamBoxDVI")
-has_scart = BoxInfo.getItem("scart")
+has_scart = BoxInfo.getItem("SCART")
 
 
 class VideoWizard(WizardLanguage, ShowRemoteControl):

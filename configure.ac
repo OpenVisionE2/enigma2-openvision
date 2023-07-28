@@ -542,6 +542,7 @@ fi
 if test "$BOXTYPE" == "dm7080" -o "$BOXTYPE" == "dm820"; then
 	AC_DEFINE(DREAMBOX_DUAL_TUNER, 1,[define dreambox dual tuner])
 	AC_DEFINE(CONFIG_ION, 1,[define when we need to use ION allocator])
+	AC_DEFINE(HAVE_HDMIIN_DREAMBOX, 1,[has dreambox hdmi in])
 fi
 
 if test "$STBPLATFORM" == "dm4kgen"; then
@@ -549,6 +550,7 @@ if test "$STBPLATFORM" == "dm4kgen"; then
 	AC_DEFINE(CONFIG_ION, 1,[define when we need to use ION allocator])
 	AC_DEFINE(DM9X0_LCD, 1,[define when we need to move lcd text a bit to the right])
 	AC_DEFINE(LCD_DM9X0_Y_OFFSET, 4,[define LCD Y offset for dm9x0])
+	AC_DEFINE(HAVE_HDMIIN_DREAMBOX, 1,[has dreambox hdmi in])
 fi
 
 if test "$BOXTYPE" == "e4hd" -o "$BOXTYPE" == "e4hdhybrid"; then
@@ -624,6 +626,7 @@ if test "$STBPLATFORM" == "gb7252" -o "$BOXTYPE" == "gbx34k"; then
 	AC_DEFINE(KEY_F2_TO_KEY_F6, 1,[define when rc sends a KEY_F2 event for its KEY_F6 key])
 	AC_DEFINE(KEY_SCREEN_TO_KEY_MODE, 1,[define when rc sends a KEY_MODE event for its KEY_ASPECT key])
 	AC_DEFINE(KEY_CONTEXT_MENU_TO_KEY_AUX, 1,[define when rc sends a KEY_CONTEXT_MENU event for its KEY_AUX key])
+	AC_DEFINE(VIDEO_MODE_50, 1,[gigablue workaround for wrong videomode proc])
 fi
 
 if test "$BOXBRAND" == "gfutures" -o "$BOXBRAND" == "abcom"; then

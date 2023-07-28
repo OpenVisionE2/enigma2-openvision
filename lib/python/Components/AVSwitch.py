@@ -1,29 +1,55 @@
 # -*- coding: utf-8 -*-
 from Components.config import config, ConfigSlider, ConfigSelection, ConfigYesNo, ConfigEnableDisable, ConfigSubsection, ConfigBoolean, ConfigSelectionNumber, ConfigNothing, NoSave
-from enigma import eAVSwitch, eDVBVolumecontrol, getDesktop
+from enigma import eAVControl, eDVBVolumecontrol, getDesktop
 from Components.SystemInfo import BoxInfo
 from os.path import isfile
 from Tools.AVHelper import pChoice, readChoices
+from Tools.Directories import fileWriteLine
+
+MODULE_NAME = __name__.split(".")[-1]
 
 model = BoxInfo.getItem("model")
 brand = BoxInfo.getItem("brand")
 platform = BoxInfo.getItem("platform")
-has_scart = BoxInfo.getItem("SCART")
 
 
 class AVSwitch:
-	def setInput(self, input):
-		INPUT = {"ENCODER": 0, "SCART": 1, "AUX": 2}
-		eAVSwitch.getInstance().setInput(INPUT[input])
-
-	def setColorFormat(self, value):
-		eAVSwitch.getInstance().setColorFormat(value)
+	def setAspect(self, configElement):
+		eAVControl.getInstance().setAspect(configElement.value, 1)
 
 	def setAspectRatio(self, value):
-		eAVSwitch.getInstance().setAspectRatio(value)
+		if value < 100:
+			eAVControl.getInstance().setAspectRatio(value)
+		else:  # Aspect Switcher
+			value -= 100
+			offset = config.av.aspectswitch.offsets[str(value)].value
+			newheight = 576 - offset
+			newtop = offset // 2
+			if value:
+				newwidth = 720
+			else:
+				newtop = 0
+				newwidth = 0
+				newheight = 0
+
+			eAVControl.getInstance().setAspectRatio(2)  # 16:9
+			eAVControl.getInstance().setVideoSize(newtop, 0, newwidth, newheight)
+
+	def setColorFormat(self, value):
+		if not self.current_port:
+			self.current_port = config.av.videoport.value
+		if self.current_port == "YPbPr":
+			eAVControl.getInstance().setColorFormat("yuv")
+		elif self.current_port == "RCA":
+			eAVControl.getInstance().setColorFormat("cvbs")
+		else:
+			eAVControl.getInstance().setColorFormat(value)
+
+	def setInput(self, input):
+		eAVControl.getInstance().setInput(input, 1)
 
 	def setSystem(self, value):
-		eAVSwitch.getInstance().setVideomode(value)
+		eAVControl.getInstance().setVideoMode(mode)
 
 	def getOutputAspect(self):
 		valstr = config.av.aspectratio.value
@@ -76,7 +102,7 @@ class AVSwitch:
 			value = 2 # auto(4:3_off)
 		else:
 			value = 1 # auto
-		eAVSwitch.getInstance().setWSS(value)
+		eAVControl.getInstance().setWSS(configElement.value, 1)
 
 
 def InitAVSwitch():
@@ -90,7 +116,7 @@ def InitAVSwitch():
 	# when YUV, Scart or S-Video is not support by HW, don't let the user select it
 	if BoxInfo.getItem("yuv"):
 		colorformat_choices["yuv"] = "YPbPr"
-	if has_scart:
+	if BoxInfo.getItem("SCART"):
 		colorformat_choices["rgb"] = "RGB"
 	if BoxInfo.getItem("svideo"):
 		colorformat_choices["svideo"] = "S-Video"
@@ -187,13 +213,13 @@ def InitAVSwitch():
 	iAVSwitch = AVSwitch()
 
 	def setColorFormat(configElement):
-		if model == "et6x00":
-			map = {"cvbs": 3, "rgb": 3, "svideo": 2, "yuv": 3}
-		elif platform == "gb7356" or model.startswith('et'):
-			map = {"cvbs": 0, "rgb": 3, "svideo": 2, "yuv": 3}
+		if config.av.videoport and config.av.videoport.value == "YPbPr":
+			iAVSwitch.setColorFormat("yuv")
+		elif config.av.videoport and config.av.videoport.value == "RCA":
+			iAVSwitch.setColorFormat("cvbs")
 		else:
-			map = {"cvbs": 0, "rgb": 1, "svideo": 2, "yuv": 3}
-		iAVSwitch.setColorFormat(map[configElement.value])
+			iAVSwitch.setColorFormat(configElement.value)
+	config.av.colorformat.addNotifier(setColorFormat)
 
 	def setAspectRatio(configElement):
 		map = {"4_3_letterbox": 0, "4_3_panscan": 1, "16_9": 2, "16_9_always": 3, "16_10_letterbox": 4, "16_10_panscan": 5, "16_9_letterbox": 6}
@@ -207,17 +233,13 @@ def InitAVSwitch():
 		iAVSwitch.setAspectWSS()
 
 	# this will call the "setup-val" initial
-	config.av.colorformat.addNotifier(setColorFormat)
 	config.av.aspectratio.addNotifier(setAspectRatio)
 	config.av.tvsystem.addNotifier(setSystem)
 	config.av.wss.addNotifier(setWSS)
 
-	iAVSwitch.setInput("ENCODER") # init on startup
-	detected = has_scart
-	if detected:
-		detected = eAVSwitch.getInstance().haveScartSwitch()
+	iAVSwitch.setInput("encoder") # init on startup
 
-	BoxInfo.setItem("ScartSwitch", detected)
+	BoxInfo.setItem("ScartSwitch", eAVControl.getInstance().hasScartSwitch())
 
 	if BoxInfo.getItem("HasBypassEdidChecking"):
 		choices = [
@@ -470,17 +492,25 @@ def InitAVSwitch():
 		config.av.allow_10bit.addNotifier(setDisable10Bit)
 
 	if BoxInfo.getItem("HDMIAudioSource"):
-		choices = [
-			(pChoice("pcm")),
-			(pChoice("spdif"))
-		]
-		default = "pcm"
+		if BoxInfo.getItem("AmlogicFamily"):
+			choices = [
+				("0", _("PCM")),
+				("1", _("SPDIF")),
+				("2", _("Bluetooth"))
+			]
+			default = "0"
+		else:
+			choices = [
+				(pChoice("pcm")),
+				(pChoice("spdif"))
+			]
+			default = "pcm"
 
 		def setAudioSource(configElement):
-			try:
-				open("/proc/stb/hdmi/audio_source", "w").write(configElement.value)
-			except (IOError, OSError):
-				print("[AVSwitch] Write to /proc/stb/hdmi/audio_source failed!")
+			if BoxInfo.getItem("AmlogicFamily"):
+				fileWriteLine("/sys/devices/virtual/amhdmitx/amhdmitx0/audio_source", configElement.value, source=MODULE_NAME)
+			else:
+				fileWriteLine("/proc/stb/hdmi/audio_source", configElement.value, source=MODULE_NAME)
 		config.av.hdmi_audio_source = ConfigSelection(choices=choices, default=default)
 		config.av.hdmi_audio_source.addNotifier(setAudioSource)
 	else:
