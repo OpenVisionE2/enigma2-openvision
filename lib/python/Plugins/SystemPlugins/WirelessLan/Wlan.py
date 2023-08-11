@@ -143,7 +143,7 @@ class Wlan:
 						'essid': strip(self.asciify(result.essid)),
 						'iface': self.iface,
 						'maxrate': ifobj._formatBitrate(result.rate[-1][-1]),
-						'noise': '',#result.quality.nlevel-0x100,
+						'noise': '', #result.quality.nlevel-0x100,
 						'quality': str(quality),
 						'signal': str(signal),
 						'custom': extra,
